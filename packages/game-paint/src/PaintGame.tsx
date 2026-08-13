@@ -19,6 +19,7 @@ import type { PaintLevel, PhaseSpec } from "./level.ts";
 import type { GameTaskV2 } from "@domigo/content-schema";
 import { CardHost } from "./cards/CardHost.tsx";
 import { Key, KeyBit } from "./cards/Glance.tsx";
+import { type AuftaktCard, auftaktExit, auftaktPosition, auftaktStep, auftaktTasks } from "./cards/auftakt.ts";
 import { answerTextOf } from "./cards/resolution.ts";
 import { InkWipe, PaintedCage, type CardAlign, alignedWrap } from "./cards/CardShell.tsx";
 import { PAINT_OVERLAY_CSS } from "./cards/overlay-css.ts";
@@ -54,6 +55,16 @@ export interface PaintGameProps {
    *  library (which outlives the run, and the chapter) is the APP's job. The
    *  game says what happened; the shell decides what to keep. */
   onTipCollected?: (tip: TipPayload) => void;
+  /** R5-W2 · J1-B · has this child already read this chapter's opening?
+   *
+   *  Same seam as `onTipCollected`, for the same reason: the package asks no
+   *  storage anything, the shell answers. Undefined ⇒ SHOW the opening — what
+   *  every test fixture, the card bench and the proof tapes get for free, and
+   *  the safe default in both directions (the worst case is a child seeing a
+   *  good opening twice). */
+  openingSeen?: boolean;
+  /** …and the ear: fired once, when the last beat is put down. */
+  onOpeningRead?: () => void;
 }
 
 /** R5-W1 · D1 · THE CARD BENCH (dev-only, `?karten=<id>`). It lives behind this
@@ -130,8 +141,12 @@ declare global {
 interface OverlayState {
   req: TaskRequest;
   item: GameTaskItem | null; // null = a card without a task (powerup/pay/ceremony)
-  card: "task" | "finale" | "grant" | "bonuspay" | "ceremony" | "console" | "bonusend" | "cagehint" | "goal"
-    | "tip" | "regel" | "merkseite" | "score" | "out";
+  // R5-W2 · J1-B: the opening's four beats. `goal` is beat 1 — the value the boot
+  // state writes, the ceremony beat sim.ts already carries, and the address the
+  // card bench photographs. Their ORDER is deliberately NOT here: it lives in
+  // cards/auftakt.ts, where a test can walk it from both ends without a DOM.
+  card: AuftaktCard | "task" | "finale" | "grant" | "bonuspay" | "ceremony" | "console" | "bonusend"
+    | "cagehint" | "tip" | "regel" | "merkseite" | "score" | "out";
   attempts: number;
   typed: string;
   /** PB-F1/F2-20: which side of the canvas the card sits on — always AWAY from
@@ -241,7 +256,7 @@ const chapterClassmateCount = (level: PaintLevel): number =>
   [...level.phases, ...(level.arena ? [level.arena] : [])]
     .reduce((n, p) => n + p.entities.filter((e) => e.role === "cage" && e.params?.classmate !== undefined).length, 0);
 
-export default function PaintGame({ level, art, tasks, hubHref, buildSha, startPhase, debugGrid, debugPerf, noWarm, onTipCollected,}: PaintGameProps): React.ReactElement {
+export default function PaintGame({ level, art, tasks, hubHref, buildSha, startPhase, debugGrid, debugPerf, noWarm, onTipCollected, openingSeen, onOpeningRead,}: PaintGameProps): React.ReactElement {
   const hostRef = useRef<HTMLDivElement | null>(null);
   const gameRef = useRef<Phaser.Game | null>(null);
   const sceneRef = useRef<PaintScene | null>(null);
@@ -259,12 +274,18 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
   // the chapter opens on a painted book page that names the Auftrag, the
   // chapter, the *Warum* and what there is to collect, over a frozen world.
   // It is the FIRST thing rendered, so the freeze exists before the first tick.
-  const [overlay, setOverlay] = useState<OverlayState | null>({
-    req: { use: "quickfire", ctx: { type: "ceremony", beat: "goal" } },
-    item: null, card: "goal", attempts: 0, typed: "", align: "center",
-  });
-  /** has the goal card been put down? (the world fades up once, at that beat) */
-  const [booted, setBooted] = useState(false);
+  // R5-W2 · J1-B: …unless this child has read it before. Chosen in the STATE
+  // INITIALISER, not in an effect — an effect would mount the opening and tear
+  // it down a frame later, and a card that flashes is worse than one that stays.
+  const [overlay, setOverlay] = useState<OverlayState | null>(() =>
+    openingSeen === true ? null : {
+      req: { use: "quickfire", ctx: { type: "ceremony", beat: "goal" } },
+      item: null, card: "goal", attempts: 0, typed: "", align: "center",
+    });
+  /** has the opening been read to its end? (the world fades up once, at beat 4)
+   *  R5-W2 · J1-B: a returner has no card to put down, so the world is already
+   *  up — otherwise the skip would hand them a world that never fades in. */
+  const [booted, setBooted] = useState(openingSeen === true);
   const [bonusLeft, setBonusLeft] = useState(-1);
   const [knots, setKnots] = useState(-1);
 
@@ -461,7 +482,28 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
       sceneRef.current?.dismissTask(o.req.ctx);
       return;
     }
-    if (o.card === "goal") setBooted(true);
+    // R5-W2 · J1-B · THE OPENING'S FOUR BEATS, on the same device the reading
+    // card uses (`tip → regel`, below): hand over and return WITHOUT touching
+    // the scene.
+    //
+    // `sceneRef.current?.setOverlay(false)` deliberately does NOT run here, and
+    // the reason is stronger than for the rule page. On a rule page the world
+    // would be un-frozen a beat too early; on the OPENING it has never been
+    // un-frozen at all — the boot ceremony is the first thing rendered, so the
+    // freeze exists before the first tick. Un-freezing between beat 2 and beat 3
+    // would start the chapter running underneath a card the child is still
+    // reading, which is the class pickups.test.ts's „a Regel-Seite FREEZES the
+    // world" was written for.
+    const auftakt = auftaktExit(o.card);
+    if (auftakt.next !== null) {
+      setOverlay({ ...o, card: auftakt.next });
+      return;
+    }
+    // …and the LAST beat starts the chapter. `setBooted` moved here from `goal`:
+    // the world fades up when the DOOR closes behind the opening, not when its
+    // first page turns. Three beats in front of a still-black world is a bug
+    // that looks like a design.
+    if (auftakt.boot) { setBooted(true); onOpeningRead?.(); }
     // M-B beat 2 → beat 3: the score page taps forward to the door out. Both
     // live inside the canvas, so the chapter never ends off screen.
     if (o.card === "score") {
@@ -479,6 +521,21 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
     }
     sceneRef.current?.setOverlay(false);
     setOverlay(null);
+  };
+
+  /** R5-W2 · J1-B · ONE BEAT BACK. The brief's rule: „ein Auftakt darf nicht
+   *  schneller sein als das Lesen" — a child who wants beat 2 again comes back.
+   *
+   *  It stores NOTHING. A back-pointer on OverlayState would make the opening a
+   *  graph (four beats, four remembered predecessors, four ways to be wrong);
+   *  the index into AUFTAKT makes it the line it actually is. Termination is
+   *  then arithmetic rather than a promise: the index strictly decreases and the
+   *  chain answers null at its end, so „zurück" on beat 1 is not drawn AND could
+   *  not fire if it were. Like the forward step it never touches the scene. */
+  const backCard = (o: OverlayState): void => {
+    const prev = auftaktStep(o.card, -1);
+    if (prev === null) return;
+    setOverlay({ ...o, card: prev });
   };
 
   // R3-8 · THE BATTLE FRAMING (doc 42 §1). A card up ⇒ the world freezes AND
@@ -1087,7 +1144,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
         {overlay && (
           <Overlay
             o={overlay} level={level} art={art} phaseId={phaseId}
-            onResolve={resolveCorrect} onWorldChange={applyWorldChange} onDismiss={dismissCard} onPay={payBonus}
+            onResolve={resolveCorrect} onWorldChange={applyWorldChange} onDismiss={dismissCard} onBack={backCard} onPay={payBonus}
             letters={letters.got} bonusTotal={bonusLetterTotal(level)}
             bilanz={bilanz} hubHref={hubHref} onRestart={restart}
             collectedTips={collectedTips}
@@ -1110,7 +1167,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
 // ── the overlay card ──────────────────────────────────────────────────────────
 
 function Overlay({
-  o, level, art, phaseId, onResolve, onWorldChange, onDismiss, onPay, letters, bonusTotal, bilanz, hubHref, onRestart,
+  o, level, art, phaseId, onResolve, onWorldChange, onDismiss, onBack = () => {}, onPay, letters, bonusTotal, bilanz, hubHref, onRestart,
   collectedTips,
 }: {
   o: OverlayState;
@@ -1124,6 +1181,11 @@ function Overlay({
   onResolve: (o: OverlayState) => void;
   onWorldChange: (o: OverlayState, written?: string) => void;
   onDismiss: (o: OverlayState) => void;
+  /** R5-W2 · J1-B: one beat back inside the opening. OPTIONAL and defaulted,
+   *  because dev/CardGallery hands this component a structurally-typed prop bag
+   *  — a required prop it forgets is not a type error, it is a runtime „onBack
+   *  is not a function" the first time a bench surface is clicked. */
+  onBack?: (o: OverlayState) => void;
   onPay: (price: number) => void;
   letters: number;
   bonusTotal: number;
@@ -1165,131 +1227,187 @@ function Overlay({
   const staged = (children: React.ReactNode, extraClass = ""): React.ReactElement => (
     <div className="pb-veil pb-veil-deep" style={wrap}>
       <InkWipe />
-      <div className={`pb-card ${extraClass}`.trim()} style={card}>{children}</div>
+      {/* R5-W2 · J1-B: KEYED BY THE BEAT. Every ceremony mounts the same element
+          type, so React diffs it instead of remounting — and the `pb-page` page
+          turn would play once and then just swap text underneath. Four beats
+          would be one page whose words change, the opposite of what this packet
+          is for. Safe for the other eleven ceremonies: `o.card` is constant for
+          a card's whole life, so nothing that re-renders (a typed field, a tally
+          clock) can earn a spurious remount from this. */}
+      <div key={o.card} className={`pb-card ${extraClass}`.trim()} style={card}>{children}</div>
     </div>
   );
 
-  if (o.card === "goal") {
-    // THE OBJECTIVE SCREEN (doc 44 §2.6, promoted to law from doc 42 §3's GOAL
-    // CARD grammar) — the chapter never starts mid-noise: „Dein Auftrag" → the
-    // chapter's PAINTED TITLE PLATE, the name set into its lower band → what is
-    // bewitched and what freeing looks like → the *Warum* → the collectible
-    // legend → „Los geht's!", over a frozen world that fades up behind it.
-    //
-    // PK-R6 · C: the plate is new here, and so is the legend being COUNTED. The
-    // page used to promise „Buchstaben sammeln · Klassenkinder befreien" with no
-    // numbers at all, which is the one thing an objective screen may not do —
-    // it is the chapter's contract with the child, so every number in it comes
-    // from the world (the letter-honesty law, doc 41 §7, applied to the promise
-    // rather than to the HUD).
+  /** R5-W2 · J1-B · THE FOOT EVERY BEAT WEARS.
+   *
+   *  One component, because four hand-built button rows is four chances to
+   *  drift — and because the one promise this opening makes a child (»you may go
+   *  back, and it is four pages long«) has to sit in the same place on every
+   *  page, or it is not a promise.
+   *
+   *  The counter is COUNTED from the chain, like every number the book prints
+   *  (doc 41 §7). „←" rather than an arrow emoji: the emphasis gate bans the
+   *  emoji list and explicitly whitelists this glyph. */
+  const auftaktFoot = (nextDe: string): React.ReactElement | null => {
+    const pos = auftaktPosition(o.card);
+    if (pos === null) return null;
+    return (
+      <div style={{ display: "flex", alignItems: "center", gap: 10, marginTop: 14, flexWrap: "wrap" }}>
+        <button className="pb-btn-primary" style={{ ...btn, fontSize: 16 }} onClick={() => onDismiss(o)}>{nextDe}</button>
+        {auftaktStep(o.card, -1) !== null && (
+          // „Zurück" alone already means »back to the map« on the door card, and
+          // one word with two meanings inside one chapter is ein-Ding-ein-Wort
+          // broken in the shell. »blättern« is the book's own verb.
+          <button className="pb-btn-ghost" style={btn} onClick={() => onBack(o)}>← Zurück blättern</button>
+        )}
+        <span className="pb-quiet" style={{ marginLeft: "auto" }}>{pos.at} von {pos.of}</span>
+      </div>
+    );
+  };
+
+  // ── R5-W2 · J1-B · THE CHAPTER OPENING, IN FOUR BEATS ─────────────────────
+  //
+  // Koki: „der level start sollte ein bisschen mehr story mode like eingeführt
+  // werden mit mehreren visuellen cards und teasern und konkreter story
+  // beschreibung und expliziter aufgaben (nicht nur eine simple karte mit allen
+  // listungen)."
+  //
+  // One card becomes four beats: the book opens (1) → what happened (2) → what
+  // you must do (3) → the door in (4). The chain lives in cards/auftakt.ts so a
+  // test can walk it without a DOM; the world stays frozen across all four and
+  // only beat 4 gives it back.
+  if (auftaktPosition(o.card) !== null) {
     const plate = level.goalPlate !== undefined ? art[level.goalPlate] : undefined;
     const drained = chapterRoleCount(level, "drained");
-    const legend: React.ReactElement[] = [];
-    // PK-R6 · H1 (round-1 critique, ceremonies finding 2): these four lines were
-    // marked with ✨ 🎨 🔓 📜 — the reader's own operating-system emoji, drawn by
-    // a font nobody in this project chose, on the chapter's opening page. They
-    // are painted now (cards/PaintedIcons), and the row is a hanging indent so a
-    // line that wraps no longer runs back under its own picture.
-    // R5-W1 · D1: the legend is the OBJECTIVE, so it leads the page and it is
-    // read as pictures. Each row is a painted mark at 26 px, the counted thing
-    // in the card's own emphasis (KeyBit), and the rest of the line quiet
-    // beside it. It used to sit under two paragraphs of prose at 13.5 px with
-    // a 19 px mark — the contract in the smallest type on its own page.
-    const item = (key: string, icon: PaintedIconName, text: React.ReactNode): React.ReactElement => (
-      <span key={key} style={{ display: "flex", gap: 10, alignItems: "center" }}>
-        <span style={{ display: "flex", flex: "0 0 auto" }}><PaintedIcon name={icon} size={26} art={art} /></span>
-        <span>{text}</span>
-      </span>
+    const kapitel = /^ch(\d{2})$/.exec(level.chapter)?.[1];
+
+    /** The first painted stem that actually landed wins; if none did, the beat
+     *  draws no picture rather than breaking. Art arrives batch by batch and a
+     *  card may never depend on a file existing (the keen-art law). */
+    const painted = (...stems: Array<string | undefined>): string | undefined => {
+      for (const st of stems) if (st !== undefined && art[st] !== undefined) return art[st];
+      return undefined;
+    };
+    const scene = (url: string | undefined): React.ReactElement | null =>
+      url === undefined ? null : (
+        <div style={{ ...plateMount, aspectRatio: "1 / 1", margin: "0 0 10px", maxHeight: 190 }}>
+          <img src={url} alt="" aria-hidden style={{ width: "100%", height: "100%", objectFit: "contain", display: "block" }} />
+        </div>
+      );
+    const eyebrow = (text: string): React.ReactElement => (
+      <p style={{ fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: "#a8926a", margin: "0 0 6px", fontFamily: "var(--font-label, inherit)" }}>
+        {text}
+      </p>
     );
-    if (bilanz.lettersTotal > 0) {
-      legend.push(item("letters", "spark", <><KeyBit>{bilanz.lettersTotal} {level.collectNounDe}</KeyBit> liegen verstreut — sammle sie ein</>));
-    }
-    if (drained > 0) {
-      // R5-C1 (doc 45 C6): „graue Dinge" was a placeholder Koki asked to have
-      // replaced — „Dinge" names nothing. They are the unit's own school things.
-      // (Rebase-Merge: C1s Wortlaut in D1s Betonung — der gezählte Teil trägt
-      // KeyBit wie die Buchstaben-Zeile darüber, nicht mehr <strong>.)
-      legend.push(item("drained", "palette", <><KeyBit>{drained} entfärbte Schulsachen</KeyBit> stehen grau da — sag, was sie sind, dann kommt die Farbe zurück</>));
-    }
-    if (bilanz.freedTotal > 0) {
-      // R5-C1: the objective screen promised four of the chapter's five
-      // countable things and stayed silent about the cages — while the HUD
-      // counted „Befreit x/5" from the first second. Counted from the world,
-      // like every other number on this page (`bilanz.freedTotal` IS the
-      // chapter's cage count, chapterRoleCount(level, "cage")).
-      legend.push(item("cages", "cage", <><KeyBit>{bilanz.freedTotal} Käfige</KeyBit> sind zu — mach jeden auf</>));
-    }
-    if (bilanz.kidsTotal > 0) {
-      // R5-C1: the plural branch used to read „3 Klassenkinder STECKT fest".
-      // Latent while a chapter has exactly one, wrong the day one does not.
-      // …and the classmate line comes AFTER the cages, as a refinement of them.
-      // Read the other way round it counts twice: „ein Klassenkind" plus „fünf
-      // Käfige" is six things to a six-year-old, when the child is one OF the
-      // five.
-      legend.push(item("kids", "cage", bilanz.kidsTotal === 1
-        ? <>In einem steckt <KeyBit>ein Klassenkind</KeyBit> — finde es</>
-        : <>In {bilanz.kidsTotal} davon stecken <KeyBit>Klassenkinder</KeyBit> — finde sie</>));
-    }
-    if (bilanz.tipsTotal > 0) {
-      // R5-C1 (Kritiker-Runde 2): „sind aus dem Buch gerissen" left the tearing
-      // uncaused — a second mystery running beside the one the card just named.
-      // Same villain, said out loud.
-      // …and it names him rather than saying „er": the antecedent sits two
-      // paragraphs up with four other nouns in between, which is a long hunt
-      // for a first-grader tracking a pronoun (Kritiker-Runde 2).
-      legend.push(item("tips", "rule", <><KeyBit>{bilanz.tipsTotal} Regel-Seiten</KeyBit> hat der Tinten-Schatten herausgerissen — finde sie</>));
-    }
-    if (bilanz.booksTotal > 0) {
-      // R5-C1 (Kritiker-Runde 2): the score page tallied „Bonus-Bücher 3 von 3"
-      // for something the child had never been shown, named or told about — and
-      // it sits directly under „Buchstaben gesammelt", one Buch- root apart.
-      // Counted from the world like every other promise on this page.
-      legend.push(item("books", "book", <><KeyBit>{bilanz.booksTotal} Bonus-Bücher</KeyBit> liegen versteckt — nimm sie mit</>));
-    }
-    return staged(
-      <div style={{ textAlign: "left" }}>
-        <p style={{ fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: "#a8926a", margin: "0 0 6px", fontFamily: "var(--font-label, inherit)" }}>
-          Dein Auftrag
-        </p>
-        {plate !== undefined ? (
-          // the painted plate IS the title: the piece is composed with an empty
-          // lower band for exactly this, so the chapter's name is set INTO the
-          // picture rather than typed above it
-          <div style={{ ...plateMount, aspectRatio: "2048 / 1260", margin: "0 0 10px" }}>
-            <img src={plate} alt="" aria-hidden style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
-            <h2
-              style={{
-                position: "absolute", left: 0, right: 0, bottom: "6%", margin: 0, padding: "0 6%",
-                textAlign: "center", fontSize: 19, lineHeight: 1.15,
-                color: "#3a2f1c", fontFamily: "var(--font-display, inherit)",
-              }}
-            >
+
+    // ── BEAT 1 · DAS BUCH SCHLÄGT AUF ────────────────────────────────────────
+    // The painted title plate, and through a window IN the card the real room
+    // behind it with the boy standing in it (SceneCut, R5-W1 · D2 — THE ROOM IS
+    // THE ROOM, HE IS THE BOY THEY PLAY). The premise line leads: a child who
+    // reads only this page has still read the one sentence the chapter is FOR.
+    if (o.card === "goal") {
+      return staged(
+        <div style={{ textAlign: "left" }}>
+          {eyebrow(kapitel !== undefined ? `Kapitel ${Number(kapitel)}` : "Dein Auftrag")}
+          {plate !== undefined ? (
+            <div style={{ ...plateMount, aspectRatio: "2048 / 1260", margin: "0 0 10px" }}>
+              <img src={plate} alt="" aria-hidden style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+              <h2 style={{ position: "absolute", left: 0, right: 0, bottom: "6%", margin: 0, padding: "0 6%", textAlign: "center", fontSize: 19, lineHeight: 1.15, color: "#3a2f1c", fontFamily: "var(--font-display, inherit)" }}>
+                {level.name}
+              </h2>
+            </div>
+          ) : (
+            <h2 style={{ fontSize: 21, lineHeight: 1.15, margin: "0 0 8px", color: "#3a2f1c", fontFamily: "var(--font-display, inherit)" }}>
               {level.name}
             </h2>
+          )}
+          <SceneCut art={art} backdrop={roomStem} pose="stand" heroHeight={80} height={124} />
+          <Key>{level.whyDe}</Key>
+          {auftaktFoot("Weiter")}
+        </div>,
+        "pb-page",
+      );
+    }
+
+    // ── BEAT 2 · WAS GESCHEHEN IST ───────────────────────────────────────────
+    // The story beat: a TEASER PICTURE with one line under it, not a paragraph.
+    // ⚠ THE CLOAK LAW IS AT ITS SHARPEST HERE (cloakErrorsDe, check-paint-copy):
+    // this beat is about the antagonist, and he has no name before ch15. He is
+    // „der Tinten-Schatten" — a description of his ink, never a proper name.
+    // STORY_SPINE_CH01.md is the authority for every word of it.
+    if (o.card === "schatten") {
+      return staged(
+        <div style={{ textAlign: "left" }}>
+          {eyebrow("Was geschehen ist")}
+          {scene(painted("auftakt_ch01_b", "schulhaus_ch01_b", "schulhaus_ch01_a"))
+            ?? <SceneCut art={art} backdrop={roomStem} pose="stand" heroHeight={80} height={124} />}
+          <Key>{level.goalDe}</Key>
+          {auftaktFoot("Weiter")}
+        </div>,
+        "pb-page",
+      );
+    }
+
+    // ── BEAT 3 · DEIN AUFTRAG ────────────────────────────────────────────────
+    // The tasks EXPLICITLY, one line each with its OWN picture — Koki's „nicht
+    // nur eine simple karte mit allen listungen". Every number is COUNTED from
+    // the world (doc 41 §7): this page is the chapter's contract with the child,
+    // and a typed number is the one thing a contract may not contain.
+    if (o.card === "aufgaben") {
+      // R5-W2 · J1-B: the LINES come from cards/auftakt.ts, where a test walks
+      // them at n = 0, 1 and 2. This renderer only decides what a row LOOKS
+      // like; what it says is the tested part, because German has a singular and
+      // `Nimm 1 Bonus-Bücher mit` compiles perfectly.
+      const tasks = auftaktTasks({
+        letters: bilanz.lettersTotal, collectNounDe: level.collectNounDe,
+        drained, cages: bilanz.freedTotal, kids: bilanz.kidsTotal,
+        tips: bilanz.tipsTotal, books: bilanz.booksTotal,
+      });
+      /** Three rungs, so the beat is buildable today and better the day the rest
+       *  of the paint lands: the beat's own mark → the painted HUD miniature →
+       *  the code-drawn icon. AQ8 delivered three marks for five rows; the two
+       *  without one keep their painted-code mark, and both draw at the SAME
+       *  size in the SAME slot so the mixture reads as deliberate. */
+      const rows = tasks.map((t) => {
+        const url = t.mark !== undefined ? art[t.mark] : undefined;
+        return (
+          <div key={t.key} style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
+            <span style={{ display: "flex", flex: "0 0 auto", width: 34, height: 34, alignItems: "center", justifyContent: "center" }}>
+              {url !== undefined
+                ? <img src={url} alt="" aria-hidden style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "contain", display: "block" }} />
+                : <PaintedIcon name={t.icon} size={30} art={art} />}
+            </span>
+            <span>
+              <KeyBit>{t.askDe}</KeyBit>
+              <span className="pb-quiet" style={{ display: "block" }}>{t.whyDe}</span>
+            </span>
           </div>
-        ) : (
-          <h2 style={{ fontSize: 21, lineHeight: 1.15, margin: "0 0 8px", color: "#3a2f1c", fontFamily: "var(--font-display, inherit)" }}>
-            {level.name}
-          </h2>
-        )}
-        {/* THE PREMISE is the key line of this page. The first exemplar round
-            put the legend first and pushed it to the bottom, and the blind
-            critic caught it immediately: „the one sentence that states the
-            entire language-learning premise … pushed down to the smallest,
-            last-read line". It is what the whole chapter is FOR — it leads. */}
-        <Key>{level.whyDe}</Key>
-        {/* then the contract, as picture rows: what the chapter asks of the
-            child, countable at a glance */}
-        <div style={{ display: "grid", gap: 9, fontSize: 14.5, color: "#4a4030", margin: "10px 0 12px", lineHeight: 1.3 }}>
-          {legend}
-        </div>
-        {/* and last the prose that sets it up, quiet — it is the story, and a
-            story may take a breath */}
-        <p className="pb-quiet" style={{ margin: "0 0 14px" }}>{level.goalDe}</p>
-        {/* PK-R6 · H1 (finding 8): starting the chapter is the one thing this
-            page wants — it is the warm button now, not a white pill like every
-            other control in the game. */}
-        <button className="pb-btn-primary" style={{ ...btn, fontSize: 16 }} onClick={() => onDismiss(o)}>Los geht's!</button>
+        );
+      });
+      return staged(
+        <div style={{ textAlign: "left" }}>
+          {eyebrow("Dein Auftrag")}
+          <div style={{ display: "grid", gap: 11, fontSize: 14.5, color: "#4a4030", margin: "2px 0 0", lineHeight: 1.3 }}>
+            {rows}
+          </div>
+          {auftaktFoot("Weiter")}
+        </div>,
+        "pb-page",
+      );
+    }
+
+    // ── BEAT 4 · LOS GEHT'S ──────────────────────────────────────────────────
+    // The door into the room. ⚠ The button text is the literal „Los geht's!" and
+    // must stay so: check-paint-copy ends on a VACUITY probe that looks for this
+    // exact string in this file, and without it every copy law above it goes
+    // blind before it goes red.
+    return staged(
+      <div style={{ textAlign: "left" }}>
+        {eyebrow("Los geht's")}
+        {scene(painted("auftakt_ch01_d", level.doorPlate))
+          ?? <SceneCut art={art} backdrop={roomStem} pose="stand" heroHeight={80} height={124} />}
+        <Key>Dein erster Raum: {level.phases[0]?.nameDe ?? level.name}.</Key>
+        {auftaktFoot("Los geht's!")}
       </div>,
       "pb-page",
     );

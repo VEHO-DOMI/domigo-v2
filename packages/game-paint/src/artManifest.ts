@@ -84,6 +84,30 @@ export const HERO_STEMS = [
  *  plain node script: importing the .tsx would drag JSX into a file that only
  *  strips types. `PaintedIcons.test.ts` asserts this list and the icon set are
  *  the same set, in both directions — so the copy cannot rot silently. */
+/** R5-W2 · J1-B · THE CHAPTER OPENING'S OWN PICTURES.
+ *
+ *  The stems the four beats read straight out of the art map. Declared here —
+ *  once — so the cards, the loader and the »loaded by nothing« audit read the
+ *  same names, and a rename at import time is a one-line change.
+ *
+ *  CLAIMED, NOT REQUIRED: every one of them falls back (painted cell → the
+ *  school-house cell → the scene cut → nothing at all), because art lands batch
+ *  by batch and a card may never break on a missing file. A hard requirement
+ *  here would fail the build for a chapter whose paint has not arrived.
+ *
+ *  Deliberately NOT listed, because nothing shows them: `auftakt_ch01_a` (the
+ *  open book — beat 1 already carries the chapter's painted title plate, and two
+ *  books on one card is one too many), `auftakt_ch01_c` (the task note, whose
+ *  three empty rows do not match beat 3's five task lines) and
+ *  `schulhaus_ch01_c` (the façade detail, ordered as scenery rather than for a
+ *  card). They stay in the audit's dead list ON PURPOSE — that list is only
+ *  worth reading if it is honest. */
+export const AUFTAKT_STEMS: readonly string[] = [
+  "auftakt_ch01_b", "auftakt_ch01_d",
+  "auftakt_mark_letters", "auftakt_mark_cages", "auftakt_mark_tips",
+  "schulhaus_ch01_a", "schulhaus_ch01_b",
+];
+
 export const PAINTED_ICON_NAMES: readonly string[] = [
   "spark", "cage", "wisp", "rule", "book", "palette", "door",
   "knot", "inkwell", "blot", "brush", "slate", "rosette",

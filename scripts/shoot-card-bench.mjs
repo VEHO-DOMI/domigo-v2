@@ -30,7 +30,8 @@ const CDP_PORT = 9333;
 export const SURFACES = [
   "choice", "oddone", "restore", "wheel", "order", "mistake", "memory", "typed", "spell",
   "choice-hints",
-  "goal", "tip", "tip-regel", "score", "out", "grant", "cagehint", "bonuspay",
+  "goal", "auftakt-schatten", "auftakt-aufgaben", "auftakt-los",
+  "tip", "tip-regel", "score", "out", "grant", "cagehint", "bonuspay",
   "ceremony-merle", "ceremony-wisp", "console", "bonusend-perfect", "bonusend-timeout",
 ];
 
