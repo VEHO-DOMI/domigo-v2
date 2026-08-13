@@ -254,6 +254,14 @@ dabei — die R5-Session verifiziert am Code, nie blind übernehmen (Specs rotte
   „corporate"; „it can be a bit messy — think of naive design"; das Spiel darf davon
   am meisten tragen; die Plattform folgt SPÄTER (eigenes Vorhaben, hier nur
   vorgemerkt). Font bleibt gelobt. → DESIGN-Richtung (+ evtl. ASSET).
+  **★ ENTSCHIEDEN (Koki, 2026-08-13): VARIANTE 2 »naiv«** — schief gesetzt,
+  Wachsmalstift-Kanten, gestrichelte Innenlinie, dickere Knöpfe. Entschieden an
+  Bildern, nicht an Adjektiven: `scripts/shoot-naive-samples.mjs` legte drei Muster
+  derselben Karte vor (Belege lokal in `docs/Rayman X DomiGo Screenshots/I1b
+  Naiv-Varianten 2026-08-13/`, CP-15). Der Look existiert bislang NUR als
+  Wegwerf-Stylesheet in diesem Skript — **einmal richtig gebaut wird er in Session
+  J1** (`SESSION-PROMPTS/R5-OPUS-WAVE-2026-08-11/PASSOVER_J1.md`), zusammen mit dem
+  Kapitel-Auftakt, der die erste Fläche im neuen Look ist.
 
 ## H · Prozess-Doktrin (re-ratifiziert + amendiert — bindend für R5)
 
