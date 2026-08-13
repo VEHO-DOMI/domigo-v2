@@ -46,6 +46,14 @@ export interface PaintGameProps {
   /** R5-W1 · E1: attach the measuring instrument (teacher door, ?perf=1).
    *  Off ⇒ the probe is never constructed and nothing is wrapped. */
   debugPerf?: boolean;
+  /** R5-W2 · I1 · a Regel-Seite was found. THE ONE SEAM out of this package.
+   *
+   *  `game-paint` writes nothing — no fetch, no storage — and that is a property
+   *  worth keeping: it is why the proof tapes can replay the whole chapter in
+   *  CI. So the chapter's own Merkseite is in-memory here, and the durable
+   *  library (which outlives the run, and the chapter) is the APP's job. The
+   *  game says what happened; the shell decides what to keep. */
+  onTipCollected?: (tip: TipPayload) => void;
 }
 
 /** R5-W1 · D1 · THE CARD BENCH (dev-only, `?karten=<id>`). It lives behind this
@@ -233,7 +241,7 @@ const chapterClassmateCount = (level: PaintLevel): number =>
   [...level.phases, ...(level.arena ? [level.arena] : [])]
     .reduce((n, p) => n + p.entities.filter((e) => e.role === "cage" && e.params?.classmate !== undefined).length, 0);
 
-export default function PaintGame({ level, art, tasks, hubHref, buildSha, startPhase, debugGrid, debugPerf, noWarm }: PaintGameProps): React.ReactElement {
+export default function PaintGame({ level, art, tasks, hubHref, buildSha, startPhase, debugGrid, debugPerf, noWarm, onTipCollected,}: PaintGameProps): React.ReactElement {
   const hostRef = useRef<HTMLDivElement | null>(null);
   const gameRef = useRef<Phaser.Game | null>(null);
   const sceneRef = useRef<PaintScene | null>(null);
@@ -674,6 +682,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
             if (!tipsTakenRef.current.some((t) => t.id === tip.id)) tipsTakenRef.current = [...tipsTakenRef.current, tip];
             setTipsCount(tipsTakenRef.current.length);
             setCollectedTips(tipsTakenRef.current);
+            onTipCollected?.(tip);
             openCard({
               req: { use: "quickfire", ctx: { type: "ceremony", beat: "tip" } },
               item: null, card: "tip", attempts: 0, typed: "", align: "center",

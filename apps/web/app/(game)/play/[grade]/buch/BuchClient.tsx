@@ -4,6 +4,7 @@
 import dynamic from "next/dynamic";
 import type { PaintLevel } from "@domigo/game-paint/level";
 import type { GameTaskV2 } from "@domigo/content-schema";
+import { rememberRegelSeite } from "@/lib/regelbuch";
 
 const PaintGame = dynamic(() => import("@domigo/game-paint/game"), {
   ssr: false,
@@ -37,5 +38,23 @@ export default function BuchClient(props: {
   if (cardBench !== undefined) {
     return <PaintDevGallery level={props.level} art={props.art} tasks={props.tasks} which={cardBench} />;
   }
-  return <PaintGame {...game} />;
+  // R5-W2 · I1 · THE SEAM. This file is the only place the painted book meets
+  // the app, so it is where a found rule page becomes something that outlives
+  // the run. The game itself stays network- and storage-free (its proof tapes
+  // replay the whole chapter in CI on exactly that property).
+  return (
+    <PaintGame
+      {...game}
+      onTipCollected={(tip) => {
+        rememberRegelSeite({
+          chapter: props.level.chapter,
+          topicDe: tip.topicDe,
+          merksatzDe: tip.merksatzDe,
+          schluesselDe: tip.schluesselDe,
+          beispielEn: tip.beispielEn,
+          belegDe: tip.belegDe,
+        });
+      }}
+    />
+  );
 }

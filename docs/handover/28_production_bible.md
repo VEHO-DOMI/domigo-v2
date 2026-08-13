@@ -213,6 +213,7 @@ a defect (the Story-Modus launch shipped reachable only by typed URL — never a
 | `/play/1/world` (Keen world map) | **teachers only** until year-1 release | admin dashboard card + `/play/1` hub card (teacher-only render) |
 | `/play/1/run?level=…` (Keen levels) | **teachers only** until year-1 release | world-map buildings (never direct) |
 | `/play/1/buch` (The Painted Book, doc 31) | **teachers only** until year-1 release | admin dashboard auto-list (from M2); world-map slot at release |
+| `/play/1` → **Dein Regelbuch** (the Regel-Seiten library, doc 45 E3; R5-W2 I1) | **teachers only** until year-1 release — same posture as the book it comes from | a section on the `/play/1` hub, rendered only for teachers and only once at least one Regel-Seite has been collected (F2-33: a counter with nothing to count is not drawn). It is not a route: no URL to reach it by, and nothing to reach if the book was never opened. |
 | `/admin` | teachers | teacher sign-in landing |
 | `/signin` | everyone | public root |
 

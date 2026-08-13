@@ -9,6 +9,7 @@
  */
 /* eslint-disable @next/next/no-img-element -- decorative ligne-claire banners served from synced public/art assets; next/image adds no value for these */
 import Link from "next/link";
+import RegelbuchBoard from "./RegelbuchBoard";
 import { redirect } from "next/navigation";
 import { loadGameMap, loadReleasedChapters, loadStory, storyIdForGrade } from "@domigo/content-loader";
 import { getDb, getSolvedGameItemIds } from "@domigo/db";
@@ -260,6 +261,13 @@ export default async function HubPage({ params }: { params: Promise<{ grade: str
           <JournalBoard days={days} label={tripCopy.boardLabel} dayNoun={tripCopy.hubNoun} stampedWord={tripCopy.boardStampedWord} />
         </section>
       )}
+
+      {/* R5-W2 · I1 · DAS REGELBUCH (doc 45 E3). Teacher-gated to match the
+          painted book it comes from — students cannot reach /play/1/buch before
+          the year-1 release, so a library card on their hub would be a promise
+          of an empty shelf. It renders nothing at all until something is in it,
+          the same law the HUD chips obey (F2-33). ACCESS-MAP row: doc 28 §8b. */}
+      {teacher !== null && <RegelbuchBoard />}
 
       {teacher !== null && (
         <section style={{ marginTop: 20 }}>
