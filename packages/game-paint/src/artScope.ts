@@ -47,6 +47,7 @@ export interface ScopeLevel {
   goalPlate?: string | undefined;
   scorePlate?: string | undefined;
   doorPlate?: string | undefined;
+  rulePlate?: string | undefined;
 }
 
 /** Every phase of a level, in one list (phases + arena + bonus room). */
@@ -105,6 +106,14 @@ export const domArtStems = (level: ScopeLevel): Set<string> => {
   if (level.goalPlate !== undefined) out.add(level.goalPlate);
   if (level.scorePlate !== undefined) out.add(level.scorePlate);
   if (level.doorPlate !== undefined) out.add(level.doorPlate);
+  if (level.rulePlate !== undefined) out.add(level.rulePlate);
+  // R5-W2 · I1: the reading card opens the page it just found, so every tip skin
+  // brings its `_open` cell to the DOM side. It is CLAIMED, not REQUIRED — the
+  // card falls back (open → idle → painted icon) under the keen-art law, and a
+  // hard requirement here would break a chapter whose art has not landed yet.
+  for (const ph of allScopePhases(level)) {
+    for (const e of ph.entities) if (e.role === "tip") out.add(`${e.skin}_open`);
+  }
   for (const s of ALWAYS_STEMS) out.add(s);
   return out;
 };
@@ -158,6 +167,7 @@ export const levelRequiredStems = (level: ScopeLevel, label = ""): Map<string, s
   if (level.goalPlate !== undefined) need(String(level.goalPlate), `${label} goalPlate`);
   if (level.scorePlate !== undefined) need(String(level.scorePlate), `${label} scorePlate`);
   if (level.doorPlate !== undefined) need(String(level.doorPlate), `${label} doorPlate`);
+  if (level.rulePlate !== undefined) need(String(level.rulePlate), `${label} rulePlate`);
   for (const ph of allScopePhases(level)) {
     for (const [stem, where] of phaseRequiredStems(level, ph.id, label)) need(stem, where);
   }

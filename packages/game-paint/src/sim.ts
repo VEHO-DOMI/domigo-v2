@@ -86,6 +86,30 @@ export const SPEAKER_MARGIN_PX = 8;
  *  der Rückstoß rückwärts gegen den Blick, statt eine Seite zu würfeln. */
 export const KNOCK_DIR_MIN_PX = 6;
 
+/** R5-W2 · I1 · everything a Regel-Seite carries to the card that reads it.
+ *
+ *  It is ONE named object rather than six positional strings for a reason the
+ *  compiler cannot help with otherwise: `(id, topicDe, merksatzDe, schluesselDe,
+ *  beispielEn, belegDe)` are all `string`, so any two of them swapped type-checks
+ *  perfectly and shows a child the wrong line. Named fields make that mis-order
+ *  impossible to write. */
+export interface TipPayload {
+  id: string;
+  /** the page's own skin, so the card can open the very page that was found
+   *  (`<skin>_a` as it lay in the world, `<skin>_open` once it is read). */
+  skin: string;
+  /** which of the unit's rules this page is. */
+  topicDe: string;
+  /** the rule, kid-worded — the card's lede. */
+  merksatzDe: string;
+  /** the one phrase of it the card sets in bold; a substring of `merksatzDe`. */
+  schluesselDe: string;
+  /** the English example, verbatim from the unit's own pages. */
+  beispielEn: string;
+  /** which page of the child's book the example comes from. */
+  belegDe: string;
+}
+
 export type SimEvent =
   | { type: "toast"; msg: string }
   | { type: "task"; req: TaskRequest }
@@ -103,7 +127,7 @@ export type SimEvent =
    *  the shell can render the page without looking anything up — and the world
    *  is frozen for it, because a rule you are meant to READ may not scroll past
    *  while a moth is chasing you. */
-  | { type: "tip"; id: string; topicDe: string; merksatzDe: string; got: number }
+  | ({ type: "tip"; got: number } & TipPayload)
   /** PK-R3b · R3-16: a Bonus-Buch. Score only — no card, no freeze. */
   | { type: "book"; id: string; got: number }
   /** R3-4/R3-6 · impact made visible: chalk dust where something broke or the
@@ -801,8 +825,12 @@ export class Sim {
         events.push({
           type: "tip",
           id: ev.id,
+          skin: String(e?.skin ?? "regelseite"),
           topicDe: String(e?.params.topicDe ?? ""),
           merksatzDe: String(e?.params.merksatzDe ?? ""),
+          schluesselDe: String(e?.params.schluesselDe ?? ""),
+          beispielEn: String(e?.params.beispielEn ?? ""),
+          belegDe: String(e?.params.belegDe ?? ""),
           got: this.tipsGot,
         });
         break;

@@ -98,15 +98,18 @@
      }
     },
     {
-     "id": "p1-regel-tobe",
+     "id": "p1-regel-kurzformen",
      "role": "tip",
      "skin": "regelseite",
      "c": 32,
      "r": 12,
      "tier": "E",
      "params": {
-      "topicDe": "to be — bin, bist, ist",
-      "merksatzDe": "Ich bin — du bist — es ist. Das kleine Wort ist immer dabei."
+      "topicDe": "Kurzformen — I'm · it's · isn't",
+      "merksatzDe": "Aus I am wird I'm, aus it is wird it's, aus is not wird isn't.",
+      "schluesselDe": "aus is not wird isn't",
+      "beispielEn": "It's brown and red.",
+      "belegDe": "MORE! 1 · Unit 1 · Seite 14"
      }
     },
     {
@@ -291,7 +294,10 @@
      "tier": "E",
      "params": {
       "topicDe": "Begrüßen und verabschieden",
-      "merksatzDe": "Hello zum Ankommen, bye zum Gehen — und thanks, wenn dir wer hilft."
+      "merksatzDe": "How are you? fragt, wie es geht — die Antwort ist I'm fine, thanks.",
+      "schluesselDe": "How are you? fragt, wie es geht",
+      "beispielEn": "How are you? – I'm fine, thanks.",
+      "belegDe": "MORE! 1 · Unit 1 · Seite 15"
      }
     },
     {
@@ -412,8 +418,11 @@
      "r": 11,
      "tier": "E",
      "params": {
-      "topicDe": "Zahlen von one bis twenty",
-      "merksatzDe": "One, two, three … zähl auf Englisch bis twenty — thirteen hat ein -teen."
+      "topicDe": "Zahlen von one bis twenty-five",
+      "merksatzDe": "Englisch zählt andersherum: erst twenty, dann three — twenty-three.",
+      "schluesselDe": "erst twenty, dann three",
+      "beispielEn": "twenty-three, twenty-four, twenty-five",
+      "belegDe": "MORE! 1 · Unit 1 · Seite 10"
      }
     },
     {
@@ -548,5 +557,6 @@
  },
  "tipsTotal": 3,
  "doorPlate": "plate_ch01_door",
- "scorePlate": "plate_ch01_score"
+ "scorePlate": "plate_ch01_score",
+ "rulePlate": "plate_ch01_rule"
 }

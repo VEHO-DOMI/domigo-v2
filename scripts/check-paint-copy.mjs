@@ -138,6 +138,77 @@ for (const file of paintFiles) {
   }
 }
 
+// ── 2c · THE REGEL-SEITEN EXAMPLE LAW (R5-W2 · I1, doc 45 E2) ────────────────
+// Koki read the three rule pages and called them „ein Alibi". The reason no gate
+// caught that is structural: `tip-honesty` (level.ts) is a PURE module — it can
+// count, cap and register-check a string, but it cannot open the textbook. So
+// the claim „this is what your book says" was, until here, only ever a promise.
+//
+// Two laws, and the split between them is the point:
+//   ATTESTATION — the example must appear VERBATIM in the MORE! 1 transcripts.
+//     This is the quotes-not-claims rule: a validator that checks the SHAPE of a
+//     citation and never the source passes a fabricated one every time.
+//   GROUNDING — every token of it must be in the unit's own lexicon, the same
+//     list `check-story-grounding` and `check-game-tasks` hold cards to. The
+//     example is the one field a child reads as English, so it obeys the English
+//     law; the German Merksatz cannot (it is mixed — „How are you? fragt, wie es
+//     geht" — and no tokenizer can split that honestly). That is exactly WHY the
+//     example lives in its own English-only field instead of inside the Merksatz.
+//
+// Attestation runs over the whole MORE! 1 corpus rather than a chapter→unit slice
+// (no level file declares its unit), and the matching file is PRINTED — so a
+// quote pulled from the wrong unit is visible rather than silently green. The
+// lexicon is what keeps the example inside the child's own unit.
+const TRANSCRIPTS = "content/build/transcripts/g1";
+const LEXICON = "docs/design/g1/grounding/u01-lexicon.json";
+const corpus = [];
+if (fs.existsSync(TRANSCRIPTS)) {
+  for (const sub of ["sb", "wb"]) {
+    const dir = path.join(TRANSCRIPTS, sub);
+    if (!fs.existsSync(dir)) continue;
+    for (const f of fs.readdirSync(dir)) {
+      if (f.endsWith(".txt")) corpus.push({ file: path.join(sub, f), text: fs.readFileSync(path.join(dir, f), "utf8") });
+    }
+  }
+}
+const lex = fs.existsSync(LEXICON) ? JSON.parse(fs.readFileSync(LEXICON, "utf8")) : { words: [], phrases: [], properNouns: [] };
+const lexWords = new Set(lex.words.map((w) => w.toLowerCase()));
+const lexProper = new Set(lex.properNouns.map((w) => w.toLowerCase()));
+const lexPhrases = lex.phrases.map((p) => p.toLowerCase());
+// The tokenizer and the crude lemmatizer are check-story-grounding's, verbatim —
+// one grounding law with one implementation, or the two gates drift apart.
+const enTokens = (en) => (en.toLowerCase().match(/[a-zäöüß'-]+/gi) ?? []).filter((t) => t.length > 0);
+const EN_FREE = new Set(["oh", "ssh", "psst", "brrr", "puh", "miaow", "wow", "hey", "but", "now", "do", "too"]);
+const enGrounded = (tok, extra) =>
+  lexWords.has(tok) || lexProper.has(tok) || extra.has(tok)
+  || (tok.endsWith("ies") && lexWords.has(`${tok.slice(0, -3)}y`))
+  || (tok.endsWith("es") && lexWords.has(tok.slice(0, -2)))
+  || (tok.endsWith("s") && (lexWords.has(tok.slice(0, -1)) || lexProper.has(tok.slice(0, -1))));
+
+let examplesSeen = 0;
+for (const file of paintFiles) {
+  if (!file.endsWith(".level.json")) continue;
+  const json = JSON.parse(fs.readFileSync(file, "utf8"));
+  for (const [at, text] of strings(json)) {
+    if (!/(^|\.)beispielEn$/.test(at)) continue;
+    examplesSeen += 1;
+    const hit = corpus.find((c) => c.text.includes(text));
+    if (!hit) {
+      fail(`${file} ${at}`, `example-law: „${text}" steht NICHT wörtlich in den MORE!-1-Transkripten — eine Regel-Seite zitiert das Buch oder sie zitiert nichts`);
+    } else {
+      console.log(`  ✓ ${at}: „${text}" — belegt in ${hit.file}`);
+    }
+    const extra = new Set();
+    const low = text.toLowerCase();
+    for (const p of lexPhrases) if (low.includes(p)) for (const t of enTokens(p)) extra.add(t);
+    for (const t of enTokens(text)) {
+      if (!EN_FREE.has(t) && !enGrounded(t, extra)) {
+        fail(`${file} ${at}`, `grounding: EN token not in the unit lexicon: "${t}" (line: "${text}")`);
+      }
+    }
+  }
+}
+
 // ── 2b · THE RETIRED PHRASES ─────────────────────────────────────────────────
 // Koki's replay named these one by one. Each was a line the world does not back:
 // a camp that doc 44 §1.4 abolished, a letter-being that exists as no entity,
@@ -180,6 +251,25 @@ if (probe.includes("THE DESATURATION LAW")) {
 }
 if (probe.length < probeSrc.length * 0.4) {
   fail("VACUITY", `the stripper kept only ${Math.round((probe.length / probeSrc.length) * 100)}% of ${PROBE_FILE} — that is not a comment strip, that is a hole`);
+}
+// …and the same proof for the example law (2c). All three of its inputs can go
+// missing WITHOUT any assertion firing — an empty corpus finds no quote to
+// refute, an empty lexicon grounds nothing, and a renamed field is simply never
+// scanned. Each of those failures reads as a green gate, which is the worst
+// possible way for a citation check to break.
+if (corpus.length < 10) {
+  fail("VACUITY", `only ${corpus.length} MORE! 1 transcript files loaded from ${TRANSCRIPTS} — the example law cannot attest anything`);
+}
+if (lexWords.size < 100) {
+  fail("VACUITY", `the unit lexicon holds ${lexWords.size} words — ${LEXICON} did not load, so grounding passes everything`);
+}
+if (examplesSeen === 0) {
+  fail("VACUITY", "no `beispielEn` was scanned in any paint level — either the field was renamed or the walk missed it; the example law is asleep");
+}
+// The corpus must be able to REFUTE, not only to confirm: a `.includes()` over a
+// string that swallowed the whole book would attest any sentence at all.
+if (corpus.some((c) => c.text.includes("It's magenta and invisible."))) {
+  fail("VACUITY", "the transcript corpus attests a sentence that is not in the book — the attestation test is not discriminating");
 }
 
 // ── the verdict ──────────────────────────────────────────────────────────────

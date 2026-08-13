@@ -89,6 +89,15 @@ export default function CardGallery({ level, art, tasks, Overlay, which }: Galle
   const tipEntity = [...level.phases, ...(level.arena ? [level.arena] : [])]
     .flatMap((p) => p.entities)
     .find((e) => e.params?.merksatzDe !== undefined);
+  const tipFixture = {
+    id: String(tipEntity?.id ?? "tip"),
+    skin: String(tipEntity?.skin ?? "regelseite"),
+    topicDe: String(tipEntity?.params?.topicDe ?? "Regel"),
+    merksatzDe: String(tipEntity?.params?.merksatzDe ?? "—"),
+    schluesselDe: String(tipEntity?.params?.schluesselDe ?? ""),
+    beispielEn: String(tipEntity?.params?.beispielEn ?? ""),
+    belegDe: String(tipEntity?.params?.belegDe ?? ""),
+  };
   const doorEntity = [...level.phases, ...(level.arena ? [level.arena] : [])]
     .flatMap((p) => p.entities)
     .find((e) => e.params?.price !== undefined);
@@ -173,10 +182,11 @@ export default function CardGallery({ level, art, tasks, Overlay, which }: Galle
       "Hinweise erscheinen erst nach Fehlversuchen — im Bench über die Runden-Zeile sichtbar gemacht"),
     // ── the eleven ceremony panels ─────────────────────────────────────────
     ceremony("goal", "Ziel-Karte", { card: "goal" }),
-    ceremony("tip", "Regel-Seite", {
-      card: "tip",
-      tip: { topicDe: String(tipEntity?.params?.topicDe ?? "Regel"), merksatzDe: String(tipEntity?.params?.merksatzDe ?? "—") },
-    }),
+    // R5-W2 · I1: the reading card has TWO beats, so the bench has two surfaces.
+    // Both read the chapter's OWN page — a bench fixture that invents its copy
+    // photographs a card nobody ships.
+    ceremony("tip", "Regel-Seite · gefunden", { card: "tip", tip: tipFixture }),
+    ceremony("tip-regel", "Regel-Seite · die Regel", { card: "regel", tip: tipFixture }, undefined, "p2"),
     ceremony("score", "Bilanz-Seite", { card: "score" }),
     ceremony("out", "Tür hinaus", { card: "out" }),
     ceremony("grant", "Die Gabe", { card: "grant" }, undefined, "p2"),

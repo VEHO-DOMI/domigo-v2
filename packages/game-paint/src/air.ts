@@ -252,8 +252,16 @@ export interface ShaftQuad {
 }
 
 /** The beam, subdivided. Bilinear over the planned quad, so a piece can never
- *  leave it — and therefore can never leave the air band the plan clamped it to. */
-export const shaftQuads = (s: ShaftPiece): ShaftQuad[] => {
+ *  leave it — and therefore can never leave the air band the plan clamped it to.
+ *
+ *  R5-W2 · I1: the parameter is the two fields this actually reads rather than a
+ *  whole `ShaftPiece`, so the treasure beam (cue.ts) can borrow the subdivision
+ *  instead of re-deriving it. That matters: what makes a beam look like light
+ *  and not like a translucent triangle is exactly this — the rim ring and the
+ *  last slice both land under SHAFT_EDGE_MAX, so the beam has no visible edge
+ *  and no visible foot. A second implementation would have to rediscover that.
+ *  Every existing caller passes a full ShaftPiece and is unaffected. */
+export const shaftQuads = (s: Pick<ShaftPiece, "points" | "alphaTop">): ShaftQuad[] => {
   const [tl, tr, fr, fl] = s.points;
   if (!tl || !tr || !fr || !fl) return [];
   const at = (u: number, v: number): [number, number] => {

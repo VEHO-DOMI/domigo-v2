@@ -10,6 +10,8 @@ import React, { useEffect, useRef, useState } from "react";
 import Phaser from "phaser";
 import { bindTypingGuard } from "@domigo/game-feel/typing-guard";
 import { PaintScene, type TaskRequest } from "./PaintScene.ts";
+import type { TipPayload } from "./sim.ts";
+import { Merkseite, RuleFound, RuleRead } from "./cards/RulePage.tsx";
 import { PerfProbe, type FirstFrameReport, type PerfReport, type WeakEstimate } from "./perf.ts";
 import { IDLE_PAD, type Pad } from "./player.ts";
 import { LOGICAL_H, LOGICAL_W, LOOP_FPS, RENDER_SCALE, airModelByName } from "./paint.ts";
@@ -44,6 +46,14 @@ export interface PaintGameProps {
   /** R5-W1 · E1: attach the measuring instrument (teacher door, ?perf=1).
    *  Off ⇒ the probe is never constructed and nothing is wrapped. */
   debugPerf?: boolean;
+  /** R5-W2 · I1 · a Regel-Seite was found. THE ONE SEAM out of this package.
+   *
+   *  `game-paint` writes nothing — no fetch, no storage — and that is a property
+   *  worth keeping: it is why the proof tapes can replay the whole chapter in
+   *  CI. So the chapter's own Merkseite is in-memory here, and the durable
+   *  library (which outlives the run, and the chapter) is the APP's job. The
+   *  game says what happened; the shell decides what to keep. */
+  onTipCollected?: (tip: TipPayload) => void;
 }
 
 /** R5-W1 · D1 · THE CARD BENCH (dev-only, `?karten=<id>`). It lives behind this
@@ -121,7 +131,7 @@ interface OverlayState {
   req: TaskRequest;
   item: GameTaskItem | null; // null = a card without a task (powerup/pay/ceremony)
   card: "task" | "finale" | "grant" | "bonuspay" | "ceremony" | "console" | "bonusend" | "cagehint" | "goal"
-    | "tip" | "score" | "out";
+    | "tip" | "regel" | "merkseite" | "score" | "out";
   attempts: number;
   typed: string;
   /** PB-F1/F2-20: which side of the canvas the card sits on — always AWAY from
@@ -138,8 +148,10 @@ interface OverlayState {
   bonusend?: { got: number; total: number; timeout: boolean; secsLeft: number; phrase: PhraseSlot[][] };
   /** bonuspay: what THIS door costs, read from its own params (PB-R1 · R3-2). */
   price?: number;
-  /** tip: the Regel-Seite's own rule, carried from the level (PK-R3b · R3-16). */
-  tip?: { topicDe: string; merksatzDe: string };
+  /** tip: the Regel-Seite's own rule, carried from the level (PK-R3b · R3-16).
+   *  R5-W2 · I1: the whole payload now, because the reading card's second stage
+   *  shows the example and its source, not only the Merksatz. */
+  tip?: TipPayload;
   /** PK-R6 · D: which round of a reawakening this card is („Runde 3/6", doc 44
    *  §3.3). Present only on the ceremony's own cards — an ordinary encounter
    *  has no place in a sequence and must not pretend to. */
@@ -229,7 +241,7 @@ const chapterClassmateCount = (level: PaintLevel): number =>
   [...level.phases, ...(level.arena ? [level.arena] : [])]
     .reduce((n, p) => n + p.entities.filter((e) => e.role === "cage" && e.params?.classmate !== undefined).length, 0);
 
-export default function PaintGame({ level, art, tasks, hubHref, buildSha, startPhase, debugGrid, debugPerf, noWarm }: PaintGameProps): React.ReactElement {
+export default function PaintGame({ level, art, tasks, hubHref, buildSha, startPhase, debugGrid, debugPerf, noWarm, onTipCollected,}: PaintGameProps): React.ReactElement {
   const hostRef = useRef<HTMLDivElement | null>(null);
   const gameRef = useRef<Phaser.Game | null>(null);
   const sceneRef = useRef<PaintScene | null>(null);
@@ -283,10 +295,19 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
   // ── PK-R3b · R3-16/17 · the collectibles that OUTLIVE a phase mount ────────
   // Coming back from the Kleckskammer remounts the phase you left, so anything
   // the chapter counts has to be remembered out here — exactly like freed cages.
-  /** ids taken this chapter, kept apart because the HUD counts them apart. */
-  const tipsTakenRef = useRef<string[]>([]);
+  /** R5-W2 · I1: the PAGES taken this chapter, not just their ids. The archive
+   *  („die Merkseite") re-reads them after the world has already deleted the
+   *  pickup, and a phase remount is the only other place the payload exists —
+   *  so what is not banked here is gone. Kept apart from the books because the
+   *  HUD counts them apart. */
+  const tipsTakenRef = useRef<TipPayload[]>([]);
   const booksTakenRef = useRef<string[]>([]);
   const [tipsCount, setTipsCount] = useState(0);
+  /** R5-W2 · I1: the same pages as a rendered value. The ref above is the one
+   *  that survives a phase remount; this is what the Merkseite reads, because a
+   *  component that re-renders on the COUNT would otherwise be handed the
+   *  previous render's list. */
+  const [collectedTips, setCollectedTips] = useState<readonly TipPayload[]>([]);
   const [booksCount, setBooksCount] = useState(0);
   /** letters FOUND this chapter: banked from finished phases + this phase's own
    *  running count. Found, not held — see Sim.lettersCollected. */
@@ -445,6 +466,15 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
     // live inside the canvas, so the chapter never ends off screen.
     if (o.card === "score") {
       setOverlay({ ...o, card: "out", req: { use: "quickfire", ctx: { type: "ceremony", beat: "out" } } });
+      return;
+    }
+    // R5-W2 · I1 · the reading card's own two beats, on the same device: the
+    // find hands over to the rule. `setOverlay(false)` deliberately does NOT run
+    // here — the world stays frozen across BOTH beats, because a rule is read in
+    // peace (sim.ts) and un-freezing under a card the child is still reading is
+    // the exact class pickups.test.ts:„the freeze" was written for.
+    if (o.card === "tip") {
+      setOverlay({ ...o, card: "regel", req: { use: "quickfire", ctx: { type: "ceremony", beat: "tip" } } });
       return;
     }
     sceneRef.current?.setOverlay(false);
@@ -625,7 +655,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
         grantedAbilities: () => abilitiesRef.current,
         freedCageIds: () => freedRef.current,
         cageHintShown: () => cageHintShownRef.current,
-        collectedPickupIds: () => [...tipsTakenRef.current, ...booksTakenRef.current],
+        collectedPickupIds: () => [...tipsTakenRef.current.map((t) => t.id), ...booksTakenRef.current],
         airModel,
         spawnCell: fromBonus ? ret.spawn : undefined,
         debugGrid,
@@ -648,13 +678,15 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
             // rather than this purse (paying Klecks must not un-find letters)
             phaseLettersRef.current = sceneRef.current?.getState()?.lettersCollected ?? 0;
           },
-          onTip: (id, topicDe, merksatzDe) => {
-            if (!tipsTakenRef.current.includes(id)) tipsTakenRef.current = [...tipsTakenRef.current, id];
+          onTip: (tip) => {
+            if (!tipsTakenRef.current.some((t) => t.id === tip.id)) tipsTakenRef.current = [...tipsTakenRef.current, tip];
             setTipsCount(tipsTakenRef.current.length);
+            setCollectedTips(tipsTakenRef.current);
+            onTipCollected?.(tip);
             openCard({
               req: { use: "quickfire", ctx: { type: "ceremony", beat: "tip" } },
               item: null, card: "tip", attempts: 0, typed: "", align: "center",
-              tip: { topicDe, merksatzDe },
+              tip,
             });
           },
           onBook: (id) => {
@@ -1021,7 +1053,22 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
             and the Regel-Seiten chip waits until the chapter hides some). */}
         <span style={{ display: "flex", flexWrap: "wrap", gap: 6, justifyContent: "flex-end" }}>
           {freedCount > 0 && <Chip icon="cage" label="Befreit" value={`${freedCount}/${cageTotal}`} art={art} />}
-          {tipTotal > 0 && <Chip icon="rule" label="Regel-Seiten" value={`${tipsCount}/${tipTotal}`} art={art} />}
+          {/* R5-W2 · I1 · THE CHIP IS A DOOR. „Ins Buch kleben" has been the
+              button on every rule page since R3-16, and the child could never
+              open that book. Now the counter opens it — what has been collected
+              stays lookup-able, which is the didactic condition Koki set. It is
+              the only interactive element in the HUD, so it says so out loud
+              (title + aria-label) rather than relying on a child noticing. */}
+          {tipTotal > 0 && (
+            <Chip
+              icon="rule" label="Regel-Seiten" value={`${tipsCount}/${tipTotal}`} art={art}
+              onClick={() => openCard({
+                req: { use: "quickfire", ctx: { type: "ceremony", beat: "tip" } },
+                item: null, card: "merkseite", attempts: 0, typed: "", align: "center",
+              })}
+              titleDe="Deine Merkseite öffnen"
+            />
+          )}
           {booksCount > 0 && <Chip icon="book" label="Bonus-Bücher" value={`${booksCount}`} art={art} />}
           {knots > 0 && <Chip icon="knot" label="Knoten" value={`${knots}`} art={art} />}
           {inBonus && bonusLeft >= 0 && <Chip icon="inkwell" label="Tinte" value={`${Math.ceil(bonusLeft / 60)}s`} art={art} />}
@@ -1043,6 +1090,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
             onResolve={resolveCorrect} onWorldChange={applyWorldChange} onDismiss={dismissCard} onPay={payBonus}
             letters={letters.got} bonusTotal={bonusLetterTotal(level)}
             bilanz={bilanz} hubHref={hubHref} onRestart={restart}
+            collectedTips={collectedTips}
           />
         )}
       </div>
@@ -1063,6 +1111,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
 
 function Overlay({
   o, level, art, phaseId, onResolve, onWorldChange, onDismiss, onPay, letters, bonusTotal, bilanz, hubHref, onRestart,
+  collectedTips,
 }: {
   o: OverlayState;
   level: PaintLevel;
@@ -1081,6 +1130,10 @@ function Overlay({
   bilanz: Bilanz;
   hubHref: string;
   onRestart: () => void;
+  /** R5-W2 · I1: the rule pages found so far, for the Merkseite. Passed in
+   *  rather than read from a ref, because this component re-renders on the
+   *  count — and a ref would hand it last render's list. */
+  collectedTips: readonly TipPayload[];
 }): React.ReactElement {
   const wrap: React.CSSProperties = { ...alignedWrap(o.align), background: "rgba(30, 24, 12, 0.35)" };
   // PK-R6 · H1 (round-1 critique, finding 3): the ceremony panels used to carry
@@ -1242,28 +1295,50 @@ function Overlay({
     );
   }
   if (o.card === "tip") {
-    // R3-16 · A REGEL-SEITE (doc 41 §5). OSWIN tore the unit's rule pages out of
-    // the book and scattered them; finding one puts it back. The page shows the
-    // rule and nothing else — no question, no score, no „weiter so": it is the
-    // one moment in the chapter that is purely a gift.
+    // R3-16 · A REGEL-SEITE (doc 41 §5), beat 1 of 2. OSWIN tore the unit's rule
+    // pages out of the book and scattered them; finding one puts it back. This
+    // beat is the FIND — the page and nothing else. No question, no score, no
+    // „weiter so": it is the one moment in the chapter that is purely a gift.
     return staged(
-      <div style={{ textAlign: "left" }}>
-        <p style={{ fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: "#a8926a", margin: "0 0 2px", fontFamily: "var(--font-label, inherit)" }}>
-          Regel-Seite gefunden
-        </p>
-        {/* R5-W1 · D1: the torn page is the PICTURE this page leads with, and
-            the rule itself is its key line. The topic is a label above it —
-            what the page is about ranks under what it says. */}
-        <div style={{ display: "flex", gap: 10, alignItems: "center", margin: "0 0 8px" }}>
-          {/* the torn page itself, painted — it was an emoji scroll, which is
-              the one picture a card about a page out of THIS book may not use */}
-          <PaintedIcon name="rule" size={44} art={art} />
-          <span className="pb-quiet" style={{ margin: 0, fontSize: 14 }}>{o.tip?.topicDe}</span>
-        </div>
-        <Key>{o.tip?.merksatzDe}</Key>
-        <div style={{ height: 12 }} />
-        <button className="pb-btn-primary" style={btn} onClick={() => onDismiss(o)}>Ins Buch kleben</button>
-      </div>,
+      <RuleFound
+        art={art}
+        skin={o.tip?.skin ?? "regelseite"}
+        topicDe={o.tip?.topicDe ?? ""}
+        onNext={() => onDismiss(o)}
+      />,
+      "pb-page",
+    );
+  }
+  if (o.card === "regel") {
+    // …beat 2: the page is open and the rule is on it — the German lede with its
+    // one accented phrase, the English the book itself prints, and which page of
+    // the child's own book it came from.
+    return staged(
+      <RuleRead
+        art={art}
+        plateUrl={level.rulePlate !== undefined ? art[level.rulePlate] : undefined}
+        skin={o.tip?.skin ?? "regelseite"}
+        topicDe={o.tip?.topicDe ?? ""}
+        merksatzDe={o.tip?.merksatzDe ?? ""}
+        schluesselDe={o.tip?.schluesselDe ?? ""}
+        beispielEn={o.tip?.beispielEn ?? ""}
+        belegDe={o.tip?.belegDe ?? ""}
+        onDone={() => onDismiss(o)}
+      />,
+      "pb-page",
+    );
+  }
+  if (o.card === "merkseite") {
+    // …the same page, reachable at any time from the HUD. It is a LOOK, not a
+    // beat: dismissing it returns the child to exactly where they were.
+    return staged(
+      <Merkseite
+        art={art}
+        plateUrl={level.rulePlate !== undefined ? art[level.rulePlate] : undefined}
+        found={collectedTips}
+        total={bilanz.tipsTotal}
+        onClose={() => onDismiss(o)}
+      />,
       "pb-page",
     );
   }
@@ -1793,7 +1868,19 @@ const plateMount: React.CSSProperties = {
   boxShadow: "inset 0 2px 10px rgba(120, 96, 52, 0.28), 0 2px 10px rgba(40,28,12,0.18)",
 };
 
-function Chip({ icon, label, value, art }: { icon: PaintedIconName; label: string; value: string; art?: Record<string, string> }): React.ReactElement {
+function Chip({ icon, label, value, art, onClick, titleDe }: {
+  icon: PaintedIconName; label: string; value: string; art?: Record<string, string>;
+  onClick?: () => void; titleDe?: string;
+}): React.ReactElement {
+  if (onClick !== undefined) {
+    return (
+      <button type="button" className="pb-hud-chip pb-hud-chip-btn" onClick={onClick} title={titleDe} aria-label={`${label} ${value} — ${titleDe ?? ""}`}>
+        <PaintedIcon name={icon} size={17} art={art} />
+        <span className="pb-hud-chip-label">{label}</span>
+        <span className="pb-hud-chip-value">{value}</span>
+      </button>
+    );
+  }
   return (
     <span className="pb-hud-chip" style={{ fontFamily: "var(--font-label, inherit)", fontSize: 13 }}>
       <PaintedIcon name={icon} size={17} art={art} />

@@ -14,7 +14,15 @@ import {
 } from "./overlay-css.ts";
 import { LETTER_FLY_MS } from "./resolution.ts";
 
-/** Every `.pb-…` class whose rule declares an `animation:` shorthand. */
+/** Every `.pb-…` class whose rule declares MOTION — an `animation:` shorthand or
+ *  a `transition:`.
+ *
+ *  R5-W2 · I1: it used to mean `animation:` only, and that was a hole rather
+ *  than a definition. Three classes (`.pb-card button`, `.pb-help-body`, and the
+ *  HUD chip this packet made clickable) move via `transition:` and were
+ *  therefore invisible to BOTH halves of this law — never required to be killed,
+ *  and unkillable without tripping the symmetry check. A child who asks for
+ *  reduced motion is asking for no motion, not for no keyframes. */
 const animatedClasses = (css: string): Set<string> => {
   const out = new Set<string>();
   // strip the reduced-motion block — its job is to REMOVE animation
@@ -22,7 +30,7 @@ const animatedClasses = (css: string): Set<string> => {
   for (const m of body.matchAll(/([^{}]+)\{([^{}]*)\}/g)) {
     const selector = m[1] ?? "";
     const decls = m[2] ?? "";
-    if (!/(^|\s|;)animation:/.test(decls)) continue;
+    if (!/(^|\s|;)(animation|transition):/.test(decls)) continue;
     for (const c of selector.matchAll(/\.(pb-[a-z0-9-]+)/g)) out.add(c[1]!);
   }
   return out;

@@ -214,3 +214,212 @@ export const hasNoStraightMachineEdge = (pts: readonly CuePt[]): boolean =>
     const q = pts[(i + 1) % pts.length] as CuePt;
     return Math.abs(p.x - q.x) > 1e-6 && Math.abs(p.y - q.y) > 1e-6;
   });
+
+// ── R5-W2 · I1 · THE TREASURE CUE ────────────────────────────────────────────
+//
+// Koki's replay: the Regel-Seite is „lackluster" — in the world it was an 18 px
+// image with no tween, no glow and no shadow, and `ENGAGEABLE_ROLES` does not
+// contain `tip`, so not even the chalk arrow above ever reached it. It sat there
+// exactly as inert as the floor it sat on.
+//
+// This is the same instrument as `chalkArrow`, pointed at a different job, and
+// it obeys the same four moves: a bob with a NAMED beat, light that LAGS the
+// thing it lights, a glow that breathes counter-phase, and motes that RISE.
+// What differs is the register. A cue beckons — it is a chalk arrow that says
+// „press up here". A treasure does not beckon; it waits, and it is lit. So the
+// beat is slower (58 ticks against 46), the halo is wider and softer, and the
+// beam does not move at all: the page rises and falls INSIDE a still shaft of
+// light, which is the strongest reading of the lag rule this file has.
+//
+// Canon: doc 41 §5 (the Regel-Seite is the chapter's prestige collectible) and
+// the Rayman cookbook §6, whose readability law reserves the engine's glow
+// channel for exactly one thing — „glow = collectible/hint ONLY". A rule page is
+// that case, so this is the glow spending its budget where the law put it.
+//
+// It stays OUT of the engage path on purpose. Widening ENGAGEABLE_ROLES would
+// make ↑ open a card on a page the child is supposed to simply walk into
+// (serving.ts routes that set), so this is a render-layer treatment keyed on the
+// role — the letters' treatment, not the cue's plumbing.
+
+/** Travel of the page's float (px) and its beat (ticks) — slower than the
+ *  cue's: a treasure breathes where a cue knocks. */
+export const TREASURE_BOB_PX = 2.2;
+export const TREASURE_BOB_TICKS = 58;
+/** How far the light and the motes hang behind the page. */
+export const TREASURE_LAG_TICKS = 6;
+/** The pool of light around it. */
+export const TREASURE_HALO_RINGS = 5;
+export const TREASURE_HALO_GAIN = 1.5;
+export const TREASURE_HALO_PULSE = 0.45;
+export const TREASURE_HALO_SWELL_PX = 2.4;
+/** The beam: height in page-heights, mouth and foot half-widths in page-widths,
+ *  and its lean off vertical (the light in this book comes from the top left). */
+export const TREASURE_SHAFT_H_MUL = 3.2;
+export const TREASURE_SHAFT_MOUTH_MUL = 0.30;
+export const TREASURE_SHAFT_FOOT_MUL = 0.78;
+export const TREASURE_SHAFT_TILT = 0.13;
+export const TREASURE_SHAFT_ALPHA = 0.13;
+/** THE BACKING — a soft dark disc behind the page.
+ *
+ *  Prescribed by the blind look critic, which judged our sunlit hall against the
+ *  reference frames and lost DECISIVELY: „gold pickups in a gold room is the base
+ *  error… the highest-contrast element in the composition is a hazard, not the
+ *  prize". Its fix, verbatim: „darken behind, blow out inside" — manufacture the
+ *  missing value and hue separation LOCALLY instead of repainting the level.
+ *
+ *  It is cool (the room is warm) and it sits under the halo, so on a bright
+ *  ground it cuts a hole for the page to sit in. On a DARK ground the same fill
+ *  is lighter than what it covers, so it turns into a faint violet bloom instead
+ *  of a black blob — which is why this is a disc behind the object and not a
+ *  brightness dial: one device that cannot be wrong in either room.
+ *
+ *  The strength is set from the critics' own measurement, not from taste. They
+ *  measured our page at mean luminance 204 against a 207 local background — the
+ *  prize was DARKER than the wall — and set the target A hits: the pickup must
+ *  beat its local ground, not sink into it. */
+export const TREASURE_BACK_COLOUR = 0x3a3260;
+export const TREASURE_BACK_ALPHA = 0.34;
+export const TREASURE_BACK_RINGS = 4;
+export const TREASURE_BACK_R_MUL = 0.95;
+
+/** The contact shadow under the page.
+ *
+ *  MEASURED REASON, not decoration. Added light is invisible on a bright ground:
+ *  in p1 (a sunlit hall) the halo below draws 905 commands a frame and cannot be
+ *  seen, while in p2 (a night classroom) the same numbers read beautifully. The
+ *  cookbook's readability law (§6) says what to do about that — the play plane
+ *  separates by CONTRAST, not by luminosity budget — so the page also casts.
+ *  A shadow subtracts, which works on any ground, and it grounds the float:
+ *  without it a bobbing page reads as sliding rather than as hovering. */
+export const TREASURE_SHADOW_ALPHA = 0.22;
+export const TREASURE_SHADOW_RX_MUL = 0.62;
+export const TREASURE_SHADOW_RY_MUL = 0.14;
+/** How much the shadow tightens as the page rises — a shadow that does not
+ *  answer the float is a sticker under a moving object. */
+export const TREASURE_SHADOW_LIFT_GAIN = 0.16;
+
+/** The dust standing in the beam. */
+export const TREASURE_MOTE_COUNT = 9;
+export const TREASURE_MOTE_RISE_PX = 20;
+export const TREASURE_MOTE_TICKS = 76;
+export const TREASURE_MOTE_ALPHA_PEAK = 0.40;
+
+export interface TreasureCue {
+  /** how far the PAGE is lifted this tick (px, positive = up). */
+  bobPx: number;
+  /** the beam as one quad, mouth first — handed to air.shaftQuads, which owns
+   *  the subdivision that gives a beam no visible rim and no visible foot. */
+  shaft: { points: readonly [number, number][]; alphaTop: number };
+  halo: readonly CueRing[];
+  /** the cool dark pool the page sits in, drawn UNDER the halo. */
+  backing: readonly CueRing[];
+  motes: readonly CueFleck[];
+  /** the contact shadow on the floor the page stands on. */
+  shadow: { cx: number; cy: number; rx: number; ry: number; alpha: number };
+}
+
+/** The page's own lift at one tick.
+ *
+ *  Exported separately because TWO readers need the same number — the sprite
+ *  that is lifted and the light that lags it — and two derivations of one motion
+ *  is how a lag silently becomes a jitter. */
+export const treasureBobPx = (phase: number, seed: number, reducedMotion: boolean): number =>
+  reducedMotion
+    ? 0
+    : Math.sin((phase / TREASURE_BOB_TICKS) * Math.PI * 2 + hash01(seed * 7919) * Math.PI * 2) * TREASURE_BOB_PX;
+
+/**
+ * The whole treasure presence, in world px.
+ *
+ * `x` is the page's centre and `yFoot` its UNBOBBED standing line (entities are
+ * drawn origin 0.5,1); `wPx`/`hPx` are its rendered size. `phase` is the sim's
+ * ABSOLUTE tick count — never „ticks since seen", or the page would pulse the
+ * moment it came on screen (a retired class, see the head of this file).
+ */
+export const treasureCue = (
+  x: number,
+  yFoot: number,
+  wPx: number,
+  hPx: number,
+  seed = 1,
+  phase = 0,
+  reducedMotion = false,
+): TreasureCue => {
+  const bob = treasureBobPx(phase, seed, reducedMotion);
+  const lagBob = treasureBobPx(phase - TREASURE_LAG_TICKS, seed, reducedMotion);
+  const midY = yFoot - hPx * 0.5;
+
+  // THE BEAM. It is anchored to the FLOOR the page stands on and does not bob:
+  // light does not wobble with the thing it falls on, and a still beam is what
+  // makes the page's own float legible. It also STOPS at yFoot — a beam that
+  // runs past the object it lights is the „straight cut across the shelf" defect
+  // planShafts was written to avoid.
+  const mouthHalf = (wPx * TREASURE_SHAFT_MOUTH_MUL) / 2;
+  const footHalf = (wPx * TREASURE_SHAFT_FOOT_MUL) / 2;
+  const len = hPx * TREASURE_SHAFT_H_MUL;
+  const drop = Math.tan(TREASURE_SHAFT_TILT) * len;
+  const shaft = {
+    points: [
+      [x - drop - mouthHalf, yFoot - len],
+      [x - drop + mouthHalf, yFoot - len],
+      [x + footHalf, yFoot],
+      [x - footHalf, yFoot],
+    ] as readonly [number, number][],
+    alphaTop: TREASURE_SHAFT_ALPHA,
+  };
+
+  // THE GLOW, breathing against the float — one bell-strike, not two wobbles.
+  const breath = reducedMotion ? 0 : -Math.sin(((phase - TREASURE_LAG_TICKS) / TREASURE_BOB_TICKS) * Math.PI * 2);
+  const haloY = midY + lagBob;
+  const halo: CueRing[] = [];
+  for (let i = 0; i < TREASURE_HALO_RINGS; i++) {
+    halo.push({
+      cx: x,
+      cy: haloY,
+      r: hPx * (0.5 + i * 0.30) + TREASURE_HALO_SWELL_PX * breath * (i / TREASURE_HALO_RINGS),
+      alpha: (0.048 * (1 - i / TREASURE_HALO_RINGS) ** 1.2 + 0.010) * TREASURE_HALO_GAIN * (1 + TREASURE_HALO_PULSE * breath),
+    });
+  }
+
+  // THE BACKING, feathered outward from the page's middle. Same lagged anchor as
+  // the halo: light and shade belong to each other.
+  const backing: CueRing[] = [];
+  for (let i = 0; i < TREASURE_BACK_RINGS; i++) {
+    backing.push({
+      cx: x,
+      cy: haloY,
+      r: hPx * TREASURE_BACK_R_MUL * (1 + i * 0.30),
+      alpha: (TREASURE_BACK_ALPHA / TREASURE_BACK_RINGS) * (1 - i / TREASURE_BACK_RINGS) ** 0.8,
+    });
+  }
+
+  // THE DUST standing in the beam. Sideways place and size belong to the seed;
+  // only height and alpha run, or powder becomes rain.
+  const motes: CueFleck[] = [];
+  for (let i = 0; i < TREASURE_MOTE_COUNT; i++) {
+    const own = hash01(seed * 641 + i * 53);
+    const u = reducedMotion
+      ? (i + 0.5) / TREASURE_MOTE_COUNT
+      : (((phase - TREASURE_LAG_TICKS) / TREASURE_MOTE_TICKS + own) % 1 + 1) % 1;
+    const spread = (hash01(seed * 331 + i * 71) - 0.5) * wPx * 1.15;
+    motes.push({
+      x: x + spread,
+      y: haloY + hPx * 0.35 - u * TREASURE_MOTE_RISE_PX,
+      r: 0.30 + hash01(seed * 13 + i * 29) * 0.45,
+      alpha: TREASURE_MOTE_ALPHA_PEAK * Math.sin(u * Math.PI) * (0.55 + 0.45 * hash01(seed * 97 + i * 41)),
+    });
+  }
+  // THE CONTACT SHADOW, answering the float: higher page → smaller, fainter
+  // pool. Anchored to yFoot, never to the bobbed body, or the shadow would
+  // float too and the page would read as sliding.
+  const rise = bob / TREASURE_BOB_PX; // −1…1 (0 under reduced motion, where bob is 0)
+  const tighten = 1 - TREASURE_SHADOW_LIFT_GAIN * rise;
+  const shadow = {
+    cx: x,
+    cy: yFoot,
+    rx: wPx * TREASURE_SHADOW_RX_MUL * tighten,
+    ry: hPx * TREASURE_SHADOW_RY_MUL * tighten,
+    alpha: TREASURE_SHADOW_ALPHA * tighten,
+  };
+  return { bobPx: bob, shaft, halo, backing, motes, shadow };
+};

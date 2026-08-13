@@ -870,6 +870,136 @@ export const PAINT_OVERLAY_CSS = `
 }
 .pb-quiet-i { font-style: italic; }
 
+/* R5-W2 · I1 · THE READING CARD (cards/RulePage.tsx).
+   Three static classes — no @keyframes, no transition — so the reduced-motion
+   kill list stays exactly as long as the animated set it mirrors. The find beat
+   gets its light from a painted gradient, not from movement: a page that pulses
+   under a child who is trying to read is a page nobody reads. */
+.pb-eyebrow {
+  font-family: var(--font-label, inherit);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #a8926a;
+  margin: 0 0 2px;
+}
+.pb-treasure {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 6px 0 10px;
+  height: 156px;
+}
+/* the warm pool the page was lying in, carried into the card so the find looks
+   the same on both sides of the pickup */
+/* THE RULE LINE. Quiet ink and quiet weight, so the one key phrase inside it
+   and the English example below both outrank it — but a size of its own,
+   because this is the sentence the child is actually here to read and the
+   ordinary quiet line (12.5px) is a caption size, not a reading size. */
+.pb-rule-line {
+  font-size: 15px;
+  line-height: 1.45;
+  margin: 0 0 8px;
+}
+
+/* beat 1: the found page leans, the way a loose sheet does — a page laid out
+   perfectly square reads as a UI asset rather than as something picked up */
+.pb-treasure-tilt {
+  position: relative;
+  z-index: 1;
+  display: block;
+  transform: rotate(-4deg);
+}
+
+/* beat 2: the painted open book as a band across the top of the rule */
+.pb-rule-band {
+  position: relative;
+  height: 78px;
+  overflow: hidden;
+  border-radius: 13px 9px 14px 10px / 10px 14px 9px 13px;
+  border: 2px solid #b78d51;
+  box-shadow: inset 0 2px 10px rgba(120, 96, 52, 0.28);
+  margin: 0 0 10px;
+}
+.pb-rule-band img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -46%);
+  width: 100%;
+  height: auto;
+}
+
+/* the one chip that is a door: same paint, plus the affordances a button owes
+   a child — a pointer, a hover lift, and a focus ring that is not the browser's
+   blue (this page has no blue in it anywhere else) */
+.pb-hud-chip-btn {
+  cursor: pointer;
+  font: inherit;
+  transition: transform 120ms ease-out, box-shadow 120ms ease-out;
+}
+.pb-hud-chip-btn:hover { transform: translateY(-1px); box-shadow: 0 3px 9px rgba(60, 42, 16, 0.26); }
+.pb-hud-chip-btn:focus-visible { outline: 3px solid #d99a3c; outline-offset: 2px; }
+
+/* DIE MERKSEITE — the collected rules, and the gaps where the rest still are */
+.pb-merk-list { display: grid; gap: 9px; margin: 8px 0 4px; }
+.pb-merk-slot {
+  border-left: 3px solid #d9bd86;
+  padding: 4px 0 4px 10px;
+}
+.pb-merk-topic {
+  font-family: var(--font-label, inherit);
+  font-size: 11.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #a8926a;
+  margin: 0 0 2px;
+}
+/* a slot that is still missing: the torn stub, greyed, and no text — what is on
+   a page you have not found is not something you know */
+.pb-merk-gap {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  border-left-color: #cdbfa4;
+  opacity: 0.62;
+  filter: grayscale(0.7);
+}
+.pb-merk-done {
+  font-family: var(--font-display, inherit);
+  font-weight: 800;
+  color: #a8541a;
+  margin: 8px 0 0;
+}
+
+/* the chapter's painted open book, the gap the page was torn out of */
+.pb-treasure-plate {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 100%;
+  width: auto;
+  max-width: 96%;
+  object-fit: contain;
+  opacity: 0.88;
+  pointer-events: none;
+}
+/* the torn page rides OVER the book — it is the subject, the book is the stage */
+.pb-treasure-page {
+  position: relative;
+  z-index: 1;
+  display: block;
+  filter: drop-shadow(0 3px 7px rgba(60, 42, 16, 0.38));
+}
+.pb-treasure-glow {
+  position: absolute;
+  inset: -12% -18%;
+  background: radial-gradient(ellipse at 50% 52%, rgba(255, 227, 164, 0.55) 0%, rgba(255, 227, 164, 0.22) 38%, rgba(255, 227, 164, 0) 72%);
+  pointer-events: none;
+}
+
 /* THE VERB, STAMPED ON THE PICTURE. It was tried beside the ask first and read
    as a stray control floating at the card's left edge; pressed into the corner
    of the thing it acts on it is a seal, and it costs the card no height. */
@@ -930,6 +1060,15 @@ export const PAINT_OVERLAY_CSS = `
   .pb-letter, .pb-word, .pb-doff, .pb-tether, .pb-rays, .pb-spark, .pb-hero-in,
   .pb-row-in, .pb-door-bloom {
     animation: none !important;
+  }
+  /* R5-W2 · I1 · …and the TRANSITIONS, which the kill list never covered because
+     it only ever looked for the animation shorthand. »Reduced motion« means no
+     motion, not no keyframes. Three of these four predate this packet and were
+     moving under reduced motion the whole time — declared in the PR, not fixed
+     quietly. (No backticks in here: this whole stylesheet is one template
+     literal, and a backtick ends it.) */
+  .pb-card button, .pb-card .pb-chip, .pb-hud-chip-btn, .pb-help-body {
+    transition: none !important;
   }
 }
 `;

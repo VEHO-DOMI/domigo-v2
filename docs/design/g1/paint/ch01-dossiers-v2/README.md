@@ -126,7 +126,16 @@ Ausnahme als EIN Set-Piece). Trails = Sätze (Läufe 3er), Wort pro Phase aus de
 
 ## §Regel-Seiten-Budget (doc 44 §4: 3 Seiten = u01-Topics)
 
-p1 = »to be« · p2 = »Begrüßen/Verabschieden« · p3 = »Zahlen 1–20« (Bestand bestätigt).
+p1 = »Kurzformen« · p2 = »Begrüßen/Verabschieden« · p3 = »Zahlen«.
+
+**Geändert in R5-W2 I1 (2026-08-13):** p1 hieß »to be« — MORE! 1 führt „the verb to be"
+laut eigener Ziel-Liste erst in **Unit 2**; Unit 1 druckt stattdessen die drei Note-Kästen
+`I'm = I am` · `it's = it is` · `isn't = is not`. Koki-Tor: auf »Kurzformen« gedreht.
+**Offene Frage an Koki (nicht hier entschieden):** die Zahlen-Spanne. G9 (§Kanon oben) sagt
+»Rad = Zahlen 1–20«, aber das ausgelieferte Rad (`qf.moths.w1/w2/p1w1`) bietet **25 Werte**
+(one … twenty-five), und Unit 1s Ziel-Liste sagt wörtlich »the numbers 1–25«. Die
+Regel-Seite folgt dem Bestand und dem Buch (1–25); G9s Zeile bleibt unangetastet, bis Koki
+sie bestätigt oder widerruft — siehe REPORT_I1.
 
 ## Status (2026-08-11)
 
