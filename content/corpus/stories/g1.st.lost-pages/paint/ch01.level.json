@@ -557,5 +557,6 @@
  },
  "tipsTotal": 3,
  "doorPlate": "plate_ch01_door",
- "scorePlate": "plate_ch01_score"
+ "scorePlate": "plate_ch01_score",
+ "rulePlate": "plate_ch01_rule"
 }

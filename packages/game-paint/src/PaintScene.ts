@@ -28,7 +28,7 @@ import { INK_BODY, INK_CROWN_DARK, INK_CROWN_LIT, INK_DEPTH_ROWS, inkCrownPoints
 import { type FistState } from "./fist.ts";
 import { type Pad, type PlayerState } from "./player.ts";
 import { CHALK_COLOURS, type EntityState, type EntityWorld, GUARDIAN_SCRIPT, JOY_ROLES, SHARD_TICKS, engageTargetId, telegraphTicksFor } from "./entities.ts";
-import { COLLECT_ANCHOR_PX, MAGNET_FIELD_PX, Sim, type SimEvent, type TaskRequest } from "./sim.ts";
+import { COLLECT_ANCHOR_PX, MAGNET_FIELD_PX, Sim, type SimEvent, type TaskRequest, type TipPayload } from "./sim.ts";
 import { FOCUS_MS, focusView } from "./camera.ts";
 import {
   AWAKEN_ROOM_MS, CAGE_AT_REST, CAGE_OPEN_TICKS, CELL_IS_DIRECTIONAL, type EntPoseInput, REST_SQUASH, RESTORE_SPARKLE_MS, WASHED_ROLES,
@@ -235,7 +235,7 @@ export interface PaintCallbacks {
    *  R5-C1: with the id of the cage it fired at, so the card can name it. */
   onCageHint: (id: string) => void;
   /** PK-R3b · R3-16: a Regel-Seite was found — the shell shows its rule page. */
-  onTip: (id: string, topicDe: string, merksatzDe: string) => void;
+  onTip: (tip: TipPayload) => void;
   /** PK-R3b · R3-16: a Bonus-Buch was found — score only, no card. */
   onBook: (id: string, got: number) => void;
 }
@@ -1247,7 +1247,7 @@ export class PaintScene extends Phaser.Scene {
           this.letterImgs.delete(`${ev.c},${ev.r}`);
           break;
         }
-        case "tip": cb.onTip(ev.id, ev.topicDe, ev.merksatzDe); break;
+        case "tip": cb.onTip({ id: ev.id, skin: ev.skin, topicDe: ev.topicDe, merksatzDe: ev.merksatzDe, schluesselDe: ev.schluesselDe, beispielEn: ev.beispielEn, belegDe: ev.belegDe }); break;
         case "book": cb.onBook(ev.id, ev.got); break;
         case "puff": this.puff(fromSubs(ev.x), fromSubs(ev.y), ev.kind); break;
         case "exit": cb.onExit(ev.to); break;

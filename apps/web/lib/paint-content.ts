@@ -130,6 +130,7 @@ const PaintLevelFile = z.object({
   goalPlate: z.string().min(1).optional(),
   scorePlate: z.string().min(1).optional(),
   doorPlate: z.string().min(1).optional(),
+  rulePlate: z.string().min(1).optional(),
   goalDe: z.string().min(1),
   whyDe: z.string().min(1),
   hintsDe: z.array(z.string().min(1)),

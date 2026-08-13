@@ -194,6 +194,10 @@ export interface PaintLevel {
   /** …and the door-out ceremony's own plate — the chapter's biggest payoff
    *  gets the biggest picture (batch-ap `ceremony_plates`). */
   doorPlate?: string;
+  /** R5-W2 · I1: the reading card's own plate. `plate_ch01_rule` was imported
+   *  with the other two in batch-ap and then referenced by nothing for three
+   *  waves — the third sheet of a set of three, paid for and never hung. */
+  rulePlate?: string;
   /** PK-R3b · R3-16 (doc 41 §5): how many Regel-Seiten this chapter hides — one
    *  per grammar topic of its unit. DECLARED here and PLACED in the phases, and
    *  the `tip-honesty` law proves the two agree; the HUD and the score page then

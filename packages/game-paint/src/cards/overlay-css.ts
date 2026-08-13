@@ -870,6 +870,36 @@ export const PAINT_OVERLAY_CSS = `
 }
 .pb-quiet-i { font-style: italic; }
 
+/* R5-W2 · I1 · THE READING CARD (cards/RulePage.tsx).
+   Three static classes — no @keyframes, no transition — so the reduced-motion
+   kill list stays exactly as long as the animated set it mirrors. The find beat
+   gets its light from a painted gradient, not from movement: a page that pulses
+   under a child who is trying to read is a page nobody reads. */
+.pb-eyebrow {
+  font-family: var(--font-label, inherit);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #a8926a;
+  margin: 0 0 2px;
+}
+.pb-treasure {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 6px 0 10px;
+  min-height: 132px;
+}
+/* the warm pool the page was lying in, carried into the card so the find looks
+   the same on both sides of the pickup */
+.pb-treasure-glow {
+  position: absolute;
+  inset: -12% -18%;
+  background: radial-gradient(ellipse at 50% 52%, rgba(255, 227, 164, 0.55) 0%, rgba(255, 227, 164, 0.22) 38%, rgba(255, 227, 164, 0) 72%);
+  pointer-events: none;
+}
+
 /* THE VERB, STAMPED ON THE PICTURE. It was tried beside the ask first and read
    as a stray control floating at the card's left edge; pressed into the corner
    of the thing it acts on it is a seal, and it costs the card no height. */

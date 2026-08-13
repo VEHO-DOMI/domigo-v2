@@ -10,6 +10,8 @@ import React, { useEffect, useRef, useState } from "react";
 import Phaser from "phaser";
 import { bindTypingGuard } from "@domigo/game-feel/typing-guard";
 import { PaintScene, type TaskRequest } from "./PaintScene.ts";
+import type { TipPayload } from "./sim.ts";
+import { RuleFound, RuleRead } from "./cards/RulePage.tsx";
 import { PerfProbe, type FirstFrameReport, type PerfReport, type WeakEstimate } from "./perf.ts";
 import { IDLE_PAD, type Pad } from "./player.ts";
 import { LOGICAL_H, LOGICAL_W, LOOP_FPS, RENDER_SCALE, airModelByName } from "./paint.ts";
@@ -121,7 +123,7 @@ interface OverlayState {
   req: TaskRequest;
   item: GameTaskItem | null; // null = a card without a task (powerup/pay/ceremony)
   card: "task" | "finale" | "grant" | "bonuspay" | "ceremony" | "console" | "bonusend" | "cagehint" | "goal"
-    | "tip" | "score" | "out";
+    | "tip" | "regel" | "score" | "out";
   attempts: number;
   typed: string;
   /** PB-F1/F2-20: which side of the canvas the card sits on — always AWAY from
@@ -138,8 +140,10 @@ interface OverlayState {
   bonusend?: { got: number; total: number; timeout: boolean; secsLeft: number; phrase: PhraseSlot[][] };
   /** bonuspay: what THIS door costs, read from its own params (PB-R1 · R3-2). */
   price?: number;
-  /** tip: the Regel-Seite's own rule, carried from the level (PK-R3b · R3-16). */
-  tip?: { topicDe: string; merksatzDe: string };
+  /** tip: the Regel-Seite's own rule, carried from the level (PK-R3b · R3-16).
+   *  R5-W2 · I1: the whole payload now, because the reading card's second stage
+   *  shows the example and its source, not only the Merksatz. */
+  tip?: TipPayload;
   /** PK-R6 · D: which round of a reawakening this card is („Runde 3/6", doc 44
    *  §3.3). Present only on the ceremony's own cards — an ordinary encounter
    *  has no place in a sequence and must not pretend to. */
@@ -283,8 +287,12 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
   // ── PK-R3b · R3-16/17 · the collectibles that OUTLIVE a phase mount ────────
   // Coming back from the Kleckskammer remounts the phase you left, so anything
   // the chapter counts has to be remembered out here — exactly like freed cages.
-  /** ids taken this chapter, kept apart because the HUD counts them apart. */
-  const tipsTakenRef = useRef<string[]>([]);
+  /** R5-W2 · I1: the PAGES taken this chapter, not just their ids. The archive
+   *  („die Merkseite") re-reads them after the world has already deleted the
+   *  pickup, and a phase remount is the only other place the payload exists —
+   *  so what is not banked here is gone. Kept apart from the books because the
+   *  HUD counts them apart. */
+  const tipsTakenRef = useRef<TipPayload[]>([]);
   const booksTakenRef = useRef<string[]>([]);
   const [tipsCount, setTipsCount] = useState(0);
   const [booksCount, setBooksCount] = useState(0);
@@ -445,6 +453,15 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
     // live inside the canvas, so the chapter never ends off screen.
     if (o.card === "score") {
       setOverlay({ ...o, card: "out", req: { use: "quickfire", ctx: { type: "ceremony", beat: "out" } } });
+      return;
+    }
+    // R5-W2 · I1 · the reading card's own two beats, on the same device: the
+    // find hands over to the rule. `setOverlay(false)` deliberately does NOT run
+    // here — the world stays frozen across BOTH beats, because a rule is read in
+    // peace (sim.ts) and un-freezing under a card the child is still reading is
+    // the exact class pickups.test.ts:„the freeze" was written for.
+    if (o.card === "tip") {
+      setOverlay({ ...o, card: "regel", req: { use: "quickfire", ctx: { type: "ceremony", beat: "tip" } } });
       return;
     }
     sceneRef.current?.setOverlay(false);
@@ -625,7 +642,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
         grantedAbilities: () => abilitiesRef.current,
         freedCageIds: () => freedRef.current,
         cageHintShown: () => cageHintShownRef.current,
-        collectedPickupIds: () => [...tipsTakenRef.current, ...booksTakenRef.current],
+        collectedPickupIds: () => [...tipsTakenRef.current.map((t) => t.id), ...booksTakenRef.current],
         airModel,
         spawnCell: fromBonus ? ret.spawn : undefined,
         debugGrid,
@@ -648,13 +665,13 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
             // rather than this purse (paying Klecks must not un-find letters)
             phaseLettersRef.current = sceneRef.current?.getState()?.lettersCollected ?? 0;
           },
-          onTip: (id, topicDe, merksatzDe) => {
-            if (!tipsTakenRef.current.includes(id)) tipsTakenRef.current = [...tipsTakenRef.current, id];
+          onTip: (tip) => {
+            if (!tipsTakenRef.current.some((t) => t.id === tip.id)) tipsTakenRef.current = [...tipsTakenRef.current, tip];
             setTipsCount(tipsTakenRef.current.length);
             openCard({
               req: { use: "quickfire", ctx: { type: "ceremony", beat: "tip" } },
               item: null, card: "tip", attempts: 0, typed: "", align: "center",
-              tip: { topicDe, merksatzDe },
+              tip,
             });
           },
           onBook: (id) => {
@@ -1242,28 +1259,35 @@ function Overlay({
     );
   }
   if (o.card === "tip") {
-    // R3-16 · A REGEL-SEITE (doc 41 §5). OSWIN tore the unit's rule pages out of
-    // the book and scattered them; finding one puts it back. The page shows the
-    // rule and nothing else — no question, no score, no „weiter so": it is the
-    // one moment in the chapter that is purely a gift.
+    // R3-16 · A REGEL-SEITE (doc 41 §5), beat 1 of 2. OSWIN tore the unit's rule
+    // pages out of the book and scattered them; finding one puts it back. This
+    // beat is the FIND — the page and nothing else. No question, no score, no
+    // „weiter so": it is the one moment in the chapter that is purely a gift.
     return staged(
-      <div style={{ textAlign: "left" }}>
-        <p style={{ fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: "#a8926a", margin: "0 0 2px", fontFamily: "var(--font-label, inherit)" }}>
-          Regel-Seite gefunden
-        </p>
-        {/* R5-W1 · D1: the torn page is the PICTURE this page leads with, and
-            the rule itself is its key line. The topic is a label above it —
-            what the page is about ranks under what it says. */}
-        <div style={{ display: "flex", gap: 10, alignItems: "center", margin: "0 0 8px" }}>
-          {/* the torn page itself, painted — it was an emoji scroll, which is
-              the one picture a card about a page out of THIS book may not use */}
-          <PaintedIcon name="rule" size={44} art={art} />
-          <span className="pb-quiet" style={{ margin: 0, fontSize: 14 }}>{o.tip?.topicDe}</span>
-        </div>
-        <Key>{o.tip?.merksatzDe}</Key>
-        <div style={{ height: 12 }} />
-        <button className="pb-btn-primary" style={btn} onClick={() => onDismiss(o)}>Ins Buch kleben</button>
-      </div>,
+      <RuleFound
+        art={art}
+        skin={o.tip?.skin ?? "regelseite"}
+        topicDe={o.tip?.topicDe ?? ""}
+        onNext={() => onDismiss(o)}
+      />,
+      "pb-page",
+    );
+  }
+  if (o.card === "regel") {
+    // …beat 2: the page is open and the rule is on it — the German lede with its
+    // one accented phrase, the English the book itself prints, and which page of
+    // the child's own book it came from.
+    return staged(
+      <RuleRead
+        art={art}
+        skin={o.tip?.skin ?? "regelseite"}
+        topicDe={o.tip?.topicDe ?? ""}
+        merksatzDe={o.tip?.merksatzDe ?? ""}
+        schluesselDe={o.tip?.schluesselDe ?? ""}
+        beispielEn={o.tip?.beispielEn ?? ""}
+        belegDe={o.tip?.belegDe ?? ""}
+        onDone={() => onDismiss(o)}
+      />,
       "pb-page",
     );
   }
