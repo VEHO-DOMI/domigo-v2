@@ -371,8 +371,21 @@ export const PAINT_OVERLAY_CSS = `
   border-bottom-right-radius: inherit;
   background:
     linear-gradient(315deg, #e6d5ac 0%, #f3e8ce 42%, rgba(243,232,206,0) 43%),
-    linear-gradient(315deg, rgba(120,92,50,0.34) 0%, rgba(120,92,50,0) 46%);
-  box-shadow: -2px -2px 5px rgba(70,52,26,0.16);
+    /* R5-W2 · J1-A: the fold's own shading, one step deeper now that it works
+       alone — see the box-shadow note below. */
+    linear-gradient(315deg, rgba(120,92,50,0.42) 0%, rgba(120,92,50,0) 46%);
+  /* NO box-shadow. TWO BLIND CRITICS, ORDER SWAPPED, INDEPENDENTLY REPORTED THE
+     SAME THING (2026-08-13, 80 % and 90 % confidence): »a hard-edged,
+     axis-aligned rectangular ghost sits behind the paper corner-fold — it reads
+     as a mis-registered art layer, not a shadow cast by the curled paper«.
+     They were right, and the cause is geometric. This element is a 34 × 34
+     SQUARE; only its GRADIENT is triangular (it goes transparent at 43 %). A
+     box-shadow is cast by the box, not by the paint — so the fold was a triangle
+     throwing a square shadow.
+     Painting the depth into the gradient instead means the shading can only ever
+     follow the shape that is actually visible. (clip-path would also work and
+     was rejected: it clips the inherited corner radius too, which would square
+     off the one corner this whole element exists to round.) */
 }
 /* the hand-inked rule inside the trim — the mark that makes a sheet of paper
    read as a PAGE. Pointer-transparent, so it never eats a tap. */
