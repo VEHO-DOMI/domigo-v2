@@ -889,10 +889,68 @@ export const PAINT_OVERLAY_CSS = `
   justify-content: center;
   align-items: center;
   margin: 6px 0 10px;
-  min-height: 132px;
+  height: 156px;
 }
 /* the warm pool the page was lying in, carried into the card so the find looks
    the same on both sides of the pickup */
+/* THE RULE LINE. Quiet ink and quiet weight, so the one key phrase inside it
+   and the English example below both outrank it — but a size of its own,
+   because this is the sentence the child is actually here to read and the
+   ordinary quiet line (12.5px) is a caption size, not a reading size. */
+.pb-rule-line {
+  font-size: 15px;
+  line-height: 1.45;
+  margin: 0 0 8px;
+}
+
+/* beat 1: the found page leans, the way a loose sheet does — a page laid out
+   perfectly square reads as a UI asset rather than as something picked up */
+.pb-treasure-tilt {
+  position: relative;
+  z-index: 1;
+  display: block;
+  transform: rotate(-4deg);
+}
+
+/* beat 2: the painted open book as a band across the top of the rule */
+.pb-rule-band {
+  position: relative;
+  height: 78px;
+  overflow: hidden;
+  border-radius: 13px 9px 14px 10px / 10px 14px 9px 13px;
+  border: 2px solid #b78d51;
+  box-shadow: inset 0 2px 10px rgba(120, 96, 52, 0.28);
+  margin: 0 0 10px;
+}
+.pb-rule-band img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -46%);
+  width: 100%;
+  height: auto;
+}
+
+/* the chapter's painted open book, the gap the page was torn out of */
+.pb-treasure-plate {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 100%;
+  width: auto;
+  max-width: 96%;
+  object-fit: contain;
+  opacity: 0.88;
+  pointer-events: none;
+}
+/* the torn page rides OVER the book — it is the subject, the book is the stage */
+.pb-treasure-page {
+  position: relative;
+  z-index: 1;
+  display: block;
+  filter: drop-shadow(0 3px 7px rgba(60, 42, 16, 0.38));
+}
 .pb-treasure-glow {
   position: absolute;
   inset: -12% -18%;

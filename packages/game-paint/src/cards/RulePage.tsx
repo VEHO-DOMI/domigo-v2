@@ -47,20 +47,25 @@ const PageArt = ({ art, skin, state, size }: {
 }): React.ReactElement => {
   const src = art[`${skin}_${state}`] ?? art[`${skin}_a`];
   if (src === undefined) return <PaintedIcon name="rule" size={size} art={art} />;
-  return <img src={src} alt="" aria-hidden style={{ height: size, width: "auto", display: "block" }} />;
+  return <img className="pb-treasure-page" src={src} alt="" aria-hidden style={{ height: size, width: "auto" }} />;
 };
 
-/** BEAT 1 — the find. The torn page, held up, and nothing else to read yet. */
+/** BEAT 1 — the find. The torn page ALONE, in the light it was lying in.
+ *
+ *  The book is deliberately NOT here. It arrives in beat 2, once the page has
+ *  been read — because the button that ends this card says „Ins Buch kleben",
+ *  and showing the book at the moment of finding gives away the beat the child
+ *  has not earned yet. What this frame has to say is: you found something. */
 export const RuleFound = ({ art, skin, topicDe, onNext }: {
   art: Record<string, string>; skin: string; topicDe: string; onNext: () => void;
 }): React.ReactElement => (
   <div style={{ textAlign: "center" }}>
     <p className="pb-eyebrow">Regel-Seite gefunden</p>
-    {/* the page sits in its own light — the same warm bloom the door-out beat
-        uses, so a find reads like the payoff it is and not like a notice */}
     <div className="pb-treasure">
       <div className="pb-treasure-glow" aria-hidden />
-      <PageArt art={art} skin={skin} state="a" size={132} />
+      <span className="pb-treasure-tilt">
+        <PageArt art={art} skin={skin} state="a" size={132} />
+      </span>
     </div>
     <Quiet>{topicDe}</Quiet>
     <button className="pb-btn-primary" onClick={onNext}>Seite aufschlagen</button>
@@ -68,8 +73,8 @@ export const RuleFound = ({ art, skin, topicDe, onNext }: {
 );
 
 /** BEAT 2 — the rule. The page is open; the lesson is the only thing moving. */
-export const RuleRead = ({ art, skin, topicDe, merksatzDe, schluesselDe, beispielEn, belegDe, onDone }: {
-  art: Record<string, string>; skin: string; topicDe: string;
+export const RuleRead = ({ art, plateUrl, skin, topicDe, merksatzDe, schluesselDe, beispielEn, belegDe, onDone }: {
+  art: Record<string, string>; plateUrl?: string | undefined; skin: string; topicDe: string;
   merksatzDe: string; schluesselDe: string; beispielEn: string; belegDe: string;
   onDone: () => void;
 }): React.ReactElement => {
@@ -77,12 +82,33 @@ export const RuleRead = ({ art, skin, topicDe, merksatzDe, schluesselDe, beispie
   return (
     <div style={{ textAlign: "left" }}>
       <p className="pb-eyebrow">Die Regel</p>
-      <div style={{ display: "flex", gap: 12, alignItems: "center", margin: "0 0 10px" }}>
-        <PageArt art={art} skin={skin} state="open" size={62} />
-        <Quiet>{topicDe}</Quiet>
-      </div>
-      {/* the rule leads; ONE phrase inside it carries the accent */}
-      <Key>{before}<KeyBit>{key}</KeyBit>{after}</Key>
+      {/* the chapter's painted open book, as a band: the page is back where it
+          belongs, and the rule is written on it. Cropped rather than shown
+          whole — a 4:3 picture over four lines of text would BE the card. */}
+      {plateUrl !== undefined && (
+        <div className="pb-rule-band">
+          <img src={plateUrl} alt="" aria-hidden />
+        </div>
+      )}
+      {/* no icon beside the topic: the band above is already the book, and two
+          pictures of the same object in 80 px is clutter, not richness. The
+          `_open` cell still earns its keep — it is what the band degrades to
+          when a chapter has no plate of its own (keen-art law). */}
+      {plateUrl === undefined && (
+        <div style={{ display: "flex", gap: 10, alignItems: "center", margin: "0 0 8px" }}>
+          <PageArt art={art} skin={skin} state="open" size={46} />
+        </div>
+      )}
+      <Quiet>{topicDe}</Quiet>
+      {/* THE RULE, and the one phrase in it that carries the lesson.
+          MEASURED, not assumed: wrapping the whole Merksatz in `Key` renders it
+          as `pb-key-long` — display face at weight 600 — and a `KeyBit` inside
+          THAT is 800 against 600 in the same ink, which on screen is no
+          emphasis at all (measured: rgb(51,41,26) vs rgb(42,33,20)). The bit is
+          built to carry a QUIET line, so the rule is set quiet and the key is
+          the only marked thing in it. That also restores D1's own ranking: the
+          English below is the strongest thing on the card, not the third. */}
+      <p className="pb-quiet pb-rule-line">{before}<KeyBit>{key}</KeyBit>{after}</p>
       {/* …and the English the book itself prints, stroked, because it is the
           thing the child is here to learn to read */}
       <Key en>{beispielEn}</Key>

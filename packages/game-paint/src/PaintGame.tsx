@@ -1280,6 +1280,7 @@ function Overlay({
     return staged(
       <RuleRead
         art={art}
+        plateUrl={level.rulePlate !== undefined ? art[level.rulePlate] : undefined}
         skin={o.tip?.skin ?? "regelseite"}
         topicDe={o.tip?.topicDe ?? ""}
         merksatzDe={o.tip?.merksatzDe ?? ""}
