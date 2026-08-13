@@ -188,23 +188,40 @@ export const DEPTH_COOL = { r: 0.34, g: 0.18 } as const;
 export const BODY_DEEP_AT = 2;
 /**
  * …and how much darker that row actually is, measured on the shipped p1 sheet:
- * 31.67 % against row 1's 45.94 %. The multiply is divided by this, so the
+ * 30.30 % against row 1's 46.01 %. The multiply is divided by this, so the
  * composed value keeps following the same smooth curve while the darkness
  * itself moves out of the tint and into the pigment.
  *
  * It is a MEASUREMENT, not a preference, so `composition.test.ts` re-derives it
  * from the shipped art: repaint the deep row and the test says so.
  */
-export const BODY_DEEP_SHADE = 0.689;
+export const BODY_DEEP_SHADE = 0.659;
+/**
+ * …and where the body band has to ARRIVE when a kit is painted (D-50, come due).
+ *
+ * `BAND_HANDOVER.body = 0.52` is not a general truth — it was measured to land
+ * the shared body (46.2 %) on the shared fade (16.6 %). p1's painted deep paper
+ * is 13.84 %, darker relative to its own body, so the same walk stops 10 points
+ * short and the band change becomes a visible edge. The handover is therefore
+ * ART, and a painted kit brings its own:
+ *
+ *   H = BODY_DEEP_SHADE × (fade / bodyDeep) = 0.659 × (13.84 / 30.30) = 0.301
+ *
+ * which lands the last body row exactly on the fade paper's own value — the drawn
+ * chain becomes 46.0 → 35.3 → 24.6 → 13.8, three even steps and no join at all.
+ * `check-composition` re-derives it from the shipped sheets, so a repaint that
+ * moves either value fails loudly instead of reopening the seam.
+ */
+export const BODY_HANDOVER_PAINTED = 0.301;
 
 /** Which painted sheet a cell this deep is laid in. */
 export const bandAt = (d: number): "body" | "fade" | "sediment" =>
   d >= SEDIMENT_DEPTH ? "sediment" : d >= FADE_DEPTH ? "fade" : "body";
 
 /** The multiply a cell this deep wears, 1 at the surface, falling monotonically. */
-export const depthShadeAt = (d: number): number => {
+export const depthShadeAt = (d: number, bodyHandover: number = BAND_HANDOVER.body): number => {
   const band = bandAt(d);
-  if (band === "body") return 1 - (1 - BAND_HANDOVER.body) * (Math.min(d, FADE_DEPTH - 1) / (FADE_DEPTH - 1));
+  if (band === "body") return 1 - (1 - bodyHandover) * (Math.min(d, FADE_DEPTH - 1) / (FADE_DEPTH - 1));
   if (band === "fade") {
     return 1 - (1 - BAND_HANDOVER.fade) * ((d - FADE_DEPTH) / (SEDIMENT_DEPTH - 1 - FADE_DEPTH));
   }
@@ -217,8 +234,8 @@ export const depthShadeAt = (d: number): number => {
  * distance rather than as dirt, and the darkest dark in the book is still a
  * colour rather than an absence of one.
  */
-export const depthTintAt = (d: number, pigmentShade = 1): number => {
-  const total = depthShadeAt(d);
+export const depthTintAt = (d: number, pigmentShade = 1, bodyHandover: number = BAND_HANDOVER.body): number => {
+  const total = depthShadeAt(d, bodyHandover);
   // The multiply only has to carry the part of the fall the PAINT does not.
   // `cool` still tracks the TRUE depth, not the reduced multiply — otherwise a
   // deeper-painted row would read as nearer, which is the opposite of the point.
@@ -1034,7 +1051,12 @@ export const planMass = (
           // — the five lights are what audit 6 counts as variety, and a ramp
           // that replaced them instead of scaling them would turn a long floor
           // back into wallpaper while looking, to the eye, like a fix.
-          tint: mixMultiply(courseTintAt(c, r, k, 11), depthTintAt(bucket, deepBody === undefined ? 1 : BODY_DEEP_SHADE)),
+          tint: mixMultiply(
+            courseTintAt(c, r, k, 11),
+            kit.bodyDeep === undefined
+              ? depthTintAt(bucket)
+              : depthTintAt(bucket, deepBody === undefined ? 1 : BODY_DEEP_SHADE, BODY_HANDOVER_PAINTED),
+          ),
           depth: DEPTH.body,
         });
         seg = segEnd + 1;

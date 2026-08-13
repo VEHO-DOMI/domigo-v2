@@ -21,6 +21,7 @@ import {
   RAMP_ROWS,
   BODY_DEEP_AT,
   BODY_DEEP_SHADE,
+  BODY_HANDOVER_PAINTED,
   SEDIMENT_DEPTH,
   bandAt,
   depthBucketAt,
@@ -303,18 +304,20 @@ describe("the carved mass (doc 36 §2)", () => {
     // different sets of measured values — a law that only worked for the sheets
     // it was tuned on would be a coincidence, not a law.
     const ART_LUM = { body: 46.2, bodyDeep: null, fade: 16.6, sediment: 4.8 } as const;
-    const P1_LUM = { body: 45.94, bodyDeep: 31.67, fade: 16.6, sediment: 4.8 } as const;
+    const P1_LUM = { body: 46.01, bodyDeep: 30.30, fade: 13.84, sediment: 4.8 } as const;
     const lumOfTint = (t: number): number =>
       (((t >> 16) & 255) * 0.2126 + ((t >> 8) & 255) * 0.7152 + (t & 255) * 0.0722) / 255;
     /** what the child actually sees: painted value × the multiply laid over it */
     const drawnWith = (art: { body: number; bodyDeep: number | null; fade: number; sediment: number }) =>
       (d: number): number => {
+        const painted = art.bodyDeep !== null;
+        const H = painted ? BODY_HANDOVER_PAINTED : undefined;
         const band = bandAt(d);
-        if (band !== "body") return art[band] * depthShadeAt(d);
-        const deep = art.bodyDeep !== null && d >= BODY_DEEP_AT;
+        if (band !== "body") return art[band] * depthShadeAt(d, H);
+        const deep = painted && d >= BODY_DEEP_AT;
         const pigment = deep && art.bodyDeep !== null ? art.bodyDeep : art.body;
         // the deep row's own darkness is divided back out of the multiply
-        const shade = deep ? Math.min(1, depthShadeAt(d) / BODY_DEEP_SHADE) : depthShadeAt(d);
+        const shade = deep ? Math.min(1, depthShadeAt(d, H) / BODY_DEEP_SHADE) : depthShadeAt(d, H);
         return pigment * shade;
       };
     const drawnAt = drawnWith(ART_LUM);
@@ -328,8 +331,13 @@ describe("the carved mass (doc 36 §2)", () => {
 
     it.each(KITS)("falls MONOTONICALLY through both changes of paper — no cliff, no step back up (%s)", (_name, art) => {
       const drawn = drawnWith(art);
+      // 0.01 rather than 0: ART_LUM/P1_LUM are MEASUREMENTS of the shipped
+      // sheets, carried to two decimals. A painted kit's handover is derived
+      // from them, so the last body row lands on the fade paper to within a few
+      // ten-thousandths of a point — equality beyond the inputs' own precision
+      // is noise, not brightening.
       for (let d = 1; d < 30; d++) {
-        expect(drawn(d)).toBeLessThanOrEqual(drawn(d - 1) + 1e-9);
+        expect(drawn(d)).toBeLessThanOrEqual(drawn(d - 1) + 0.01);
       }
     });
 
@@ -340,22 +348,25 @@ describe("the carved mass (doc 36 §2)", () => {
       const joinB = drawn(SEDIMENT_DEPTH - 1) - drawn(SEDIMENT_DEPTH);
       expect(joinA).toBeLessThan(10); // was 46.2 → 16.6 = 29.6 points in one row
       expect(joinB).toBeLessThan(5); //  was 16.6 →  4.8 = 11.8 points in one row
-      expect(joinA).toBeGreaterThanOrEqual(0);
-      expect(joinB).toBeGreaterThanOrEqual(0);
+      expect(joinA).toBeGreaterThanOrEqual(-0.01);
+      expect(joinB).toBeGreaterThanOrEqual(-0.01);
     });
 
     it("swapping in the painted deep row does NOT double-darken the band", () => {
-      // The whole point of BODY_DEEP_SHADE: the composed value at every body
-      // depth must stay within a point or two of what the multiply-only ramp
-      // drew, while the darkness itself comes from paint. If the division were
-      // dropped, depth 3 would land near 45.94 × 0.689 × 0.52 = 16.5 % — a
-      // 7-point hole punched into the middle of the body band.
+      // The point of BODY_DEEP_SHADE and BODY_HANDOVER_PAINTED together: the
+      // darkness moves into PIGMENT without the multiply darkening it a second
+      // time. Drop either and depth 3 falls off a cliff — with the division gone
+      // it would land near 46.01 × 0.659 × 0.52 = 15.8 while its neighbour sits
+      // at 24.6. So the law is that the body band falls in EVEN steps.
       const painted = drawnWith(P1_LUM);
-      const shared = drawnWith(ART_LUM);
-      for (let d = 0; d < FADE_DEPTH; d++) {
-        // both kits are ~46 % paper, so their drawn body values must track
-        expect(Math.abs(painted(d) - shared(d))).toBeLessThan(2.5);
-      }
+      const steps: number[] = [];
+      for (let d = 1; d < FADE_DEPTH; d++) steps.push(painted(d - 1) - painted(d));
+      const biggest = Math.max(...steps);
+      const smallest = Math.min(...steps);
+      expect(smallest).toBeGreaterThan(0);
+      expect(biggest / smallest).toBeLessThan(1.35);
+      // …and it arrives exactly on the fade paper it hands over to
+      expect(Math.abs(painted(FADE_DEPTH - 1) - P1_LUM.fade)).toBeLessThan(0.01);
     });
 
     it.each(KITS)("keeps the deepest paper READABLE — the darkest dark is still a colour (%s)", (_name, art) => {

@@ -134,10 +134,24 @@ const saturation = (png) => {
  * exactly this on both axes of all eight cells — its worst horizontal join,
  * 32.11, sits in the cell whose naive score is 0.07.
  *
- * So the join is measured one row/column IN from the duplicate as well, and the
- * worse of the two counts. A duplicated edge is then worth nothing: it moves the
- * discontinuity, it does not remove it.
+ * ── AND WHY "ONE PIXEL IN" IS ALSO NOT ENOUGH ────────────────────────────────
+ * Stepping one column in defeats a one-column duplicate and nothing more. Worse,
+ * it cannot tell a cheat from the CORRECT technique, because both begin the same
+ * way: a properly blended tile also has identical pixels at its join. The two
+ * only separate in what happens NEXT.
+ *
+ * So the join is measured as a PROFILE — |col k − col (W−1−k)| for k = 0…8 — and
+ * what is judged is its shape:
+ *
+ *   AS3 (a real cross-fade)   0.00 · 0.00 · 0.00 · 1.64 · 3.39 · 5.17 · 6.93 …
+ *   AS2 (a pasted column)    13.72 · 45.17 · 49.72 · 55.40 · 61.16 · 69.71 …
+ *
+ * A blended seam climbs out of its join no faster than the painting's own
+ * texture. A hidden one JUMPS — because the pixels behind the duplicate belong
+ * to a different part of the picture. Both are measured here: the join itself,
+ * and the largest single step in the profile.
  */
+const PROFILE_DEPTH = 8;
 const selfTile = (png) => {
   const { width: W, height: H, data } = png;
   const at = (x, y, o) => data[(y * W + x) * 4 + o];
@@ -153,10 +167,19 @@ const selfTile = (png) => {
   };
   let inner = 0;
   for (let y = 0; y < H; y++) for (let x = 1; x < W; x++) for (let o = 0; o < 3; o++) inner += Math.abs(at(x, y, o) - at(x - 1, y, o));
+  const jump = (profile) => {
+    let worst = 0;
+    for (let i = 1; i < profile.length; i++) worst = Math.max(worst, profile[i] - profile[i - 1]);
+    return worst;
+  };
+  const lrProfile = [], tbProfile = [];
+  for (let k = 0; k <= PROFILE_DEPTH; k++) {
+    lrProfile.push(colDiff(k, W - 1 - k));
+    tbProfile.push(rowDiff(k, H - 1 - k));
+  }
   return {
-    // the naive join, and the join with a duplicated edge stepped over
-    lr: Math.max(colDiff(0, W - 1), colDiff(0, W - 2)),
-    tb: Math.max(rowDiff(0, H - 1), rowDiff(0, H - 2)),
+    lr: lrProfile[0], tb: tbProfile[0],
+    lrJump: jump(lrProfile), tbJump: jump(tbProfile),
     inner: inner / ((W - 1) * H * 3),
   };
 };
@@ -192,14 +215,14 @@ const opaqueFaults = (png, stem) => {
 
 const SHEETS = [
   {
-    file: "batch-as2/mass_body_p1.png", cols: 4, rows: 2, mode: "opaque",
-    // ALL EIGHT CELLS ARE DECLARED so that running this script prints the
-    // complete acceptance report for the batch. Batch AS2 does not pass it.
+    file: "batch-as3/mass_body_p1.png", cols: 4, rows: 2, mode: "opaque",
     pieces: [
       [0, "mass_body_p1_a", { luma: [42, 50], tiles: true }],
       [1, "mass_body_p1_b", { luma: [42, 50], tiles: true }],
       [2, "mass_body_p1_c", { luma: [42, 50], tiles: true }],
       [3, "mass_body_p1_d", { luma: [42, 50], tiles: true }],
+      // row 2 — "eine Blende tiefer" (spec §3). No band of its own: it is the
+      // deep half of the body band, so the fall stops being a filter.
       [4, "mass_bodydeep_p1_a", { luma: [26, 38], tiles: true }],
       [5, "mass_bodydeep_p1_b", { luma: [26, 38], tiles: true }],
       [6, "mass_bodydeep_p1_c", { luma: [26, 38], tiles: true }],
@@ -207,10 +230,18 @@ const SHEETS = [
     ],
   },
   {
-    file: "batch-as2/mass_deep_p1.png", cols: 4, rows: 1, mode: "opaque",
+    file: "batch-as3/mass_deep_p1.png", cols: 4, rows: 1, mode: "opaque",
     pieces: [
       [0, "mass_fade_p1_a", { luma: [12, 18], tiles: true }],
       [1, "mass_fade_p1_b", { luma: [12, 18], tiles: true }],
+      // Cell 2 IS the sediment and it now passes every check (8.25 %,
+      // saturation 56.7 %, seam clean) — and it is still NOT imported, for the
+      // same measured reason as last round: `BAND_HANDOVER.fade` was tuned to
+      // meet a near-black floor, so against a lightened one the drawn chain
+      // steps back UP (13.84 × 0.55 = 7.61, then 8.25) and "never brightens as
+      // it deepens" is a law. p1 draws ZERO sediment pieces (only p2 reaches it),
+      // so importing it here would buy nothing visible and cost a law. It lands
+      // with p2's kit, together with making the handover kit-derived. See D-50.
     ],
   },
 ];
@@ -263,8 +294,14 @@ for (const sheet of SHEETS) {
     if (opt.tiles === true) {
       seam = selfTile(img);
       const worst = Math.max(seam.lr, seam.tb);
-      if (worst > seam.inner * SEAM_OVER_TEXTURE) {
+      const limit = seam.inner * SEAM_OVER_TEXTURE;
+      if (worst > limit) {
         failures.push(`${stem}: does not tile with itself — join ${worst.toFixed(2)} against its own mean step ${seam.inner.toFixed(2)} (${(worst / seam.inner).toFixed(1)}×, limit ${SEAM_OVER_TEXTURE}×)`);
+        continue;
+      }
+      const jump = Math.max(seam.lrJump, seam.tbJump);
+      if (jump > limit) {
+        failures.push(`${stem}: its seam is HIDDEN, not closed — the join reads ${worst.toFixed(2)} but the picture jumps ${jump.toFixed(2)} within ${PROFILE_DEPTH} px of it, against a texture step of ${seam.inner.toFixed(2)}. A blended edge climbs out gently; a duplicated one hides a cut.`);
         continue;
       }
     }
@@ -285,10 +322,10 @@ for (const sheet of SHEETS) {
 // ── report ───────────────────────────────────────────────────────────────────
 for (const w of written) {
   const sat = w.sat === null ? "" : `  sat ${w.sat.toFixed(1)}%`;
-  const seam = w.seam === null ? "" : `  seam ${(Math.max(w.seam.lr, w.seam.tb) / w.seam.inner).toFixed(1)}× texture`;
+  const seam = w.seam === null ? "" : `  seam ${(Math.max(w.seam.lr, w.seam.tb) / w.seam.inner).toFixed(2)}× · climb ${(Math.max(w.seam.lrJump, w.seam.tbJump) / w.seam.inner).toFixed(2)}×`;
   console.log(`  ${w.stem.padEnd(22)} ${String(w.w).padStart(4)}×${String(w.h).padEnd(4)} opaque  luma ${w.luma.toFixed(2).padStart(6)}%${sat}${seam}  ← ${w.from}`);
 }
-console.log(`\nHELD (not imported): batch-as2/mass_edges_p1.png — side edges do not tile vertically (74 px gap; join delta 102.6/126.7). Measured boxes for AS3: ${Object.keys(HELD_EDGE_BOXES).length} pieces recorded in this file.`);
+console.log(`\nHELD (not imported): batch-as3/mass_edges_p1.png — AS3 fixed the padding (both side edges now fill their full 512 cell) and edgeL joins at 0.59, but edgeR still joins at 16.43, and the underside/corner motifs still straddle their cell boundaries (cell 2's slab spans x 946..1394). ${Object.keys(HELD_EDGE_BOXES).length} measured boxes recorded in this file.`);
 if (failures.length > 0) {
   console.error(`\nimport-batch-as: ${failures.length} FAILURE(S)`);
   for (const f of failures) console.error(`  ✗ ${f}`);
