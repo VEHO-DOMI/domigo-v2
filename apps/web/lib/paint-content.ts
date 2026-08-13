@@ -45,7 +45,11 @@ const PaintParams = z.record(z.string(), z.unknown()).check((ctx) => {
   if ("cage" in p && (typeof p.cage !== "string" || p.cage.trim() === "")) {
     ctx.issues.push({ code: "custom", input: p, path: ["cage"], message: "params.cage must be a non-empty entity id" });
   }
-  for (const k of ["topicDe", "merksatzDe"] as const) {
+  // R5-W2 · I1: the same guard for the three fields the reading card added.
+  // `params` is an OPEN record, so these arrive whether or not they are named
+  // here — which is exactly why they are named here: unchecked, a null or a
+  // number would be rendered as the rule, the key or the quotation itself.
+  for (const k of ["topicDe", "merksatzDe", "schluesselDe", "beispielEn", "belegDe"] as const) {
     if (k in p && (typeof p[k] !== "string" || p[k].trim() === "")) {
       ctx.issues.push({ code: "custom", input: p, path: [k], message: `params.${k} must be a non-empty string` });
     }

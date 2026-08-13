@@ -95,6 +95,22 @@ export interface EntityParams {
    *  it is authored content and passes the same register + length laws every
    *  other line a six-year-old reads does (the `tip-honesty` law). */
   merksatzDe?: string;
+  /** tip: the ONE phrase of the Merksatz the card sets in bold — the thing to
+   *  remember if nothing else survives the walk home. It must be a substring of
+   *  `merksatzDe` (the law proves it), because a key that paraphrases the rule
+   *  is a second rule, and a page teaches one. */
+  schluesselDe?: string;
+  /** tip: the English example, quoted VERBATIM from the unit's own pages. This
+   *  is the field Koki's „ein Alibi" verdict (doc 45 E2) exists to fix: the
+   *  `tip-example` law greps every one of these in the MORE! 1 transcripts, so a
+   *  rule page cannot ship an example the book does not print. English-only by
+   *  law, which is also what makes it machine-groundable — the German Merksatz
+   *  is mixed („How are you? fragt, wie es geht") and no tokenizer can split it. */
+  beispielEn?: string;
+  /** tip: where the example comes from, in the child's own words („MORE! 1 ·
+   *  Unit 1 · Seite 14"). Display copy; the ATTESTATION is the grep above, not
+   *  this string — a label cannot be trusted to prove itself. */
+  belegDe?: string;
   /** spawned hidden, revealed by a link. */
   hidden?: boolean;
   [key: string]: unknown;
@@ -659,6 +675,22 @@ export interface LawFailure {
  *  sentence, out loud, in one breath. */
 export const MAX_MERKSATZ = 78;
 
+/** How long a Regel-Seite's bold key may be — bound to `cards/Glance.tsx`'s
+ *  KEY_MAX_CHARS, not chosen beside it. A `Key` longer than that number silently
+ *  drops its stroke, so a cap authored independently would be a cap that lies:
+ *  every Merksatz shipped today is 60–72 chars and therefore renders with NO
+ *  emphasis at all, which is the defect this field exists to end. `level.ts` may
+ *  not import the card layer (the node gates type-strip this file without
+ *  React), so `cards/glance-binding.test.ts` holds the two numbers together. */
+export const MAX_SCHLUESSEL = 56;
+
+/** What a Regel-Seite's English example may be made of: printable ASCII plus the
+ *  typographic dashes and apostrophes the transcripts actually use. It is a
+ *  NEGATIVE test for German — an umlaut or ß here means a Merksatz was pasted
+ *  into the English slot, and the grounding gate downstream would then be
+ *  checking a German sentence against an English lexicon. */
+const ENGLISH_ONLY = /^[\x20-\x7E–—…‘’]+$/;
+
 /** How long the objective screen's paragraph may run in total (R5-C1). It is
  *  the one place the book speaks in more than one sentence, so a card-line cap
  *  would be wrong — but the per-sentence cap above still applies to each of its
@@ -832,6 +864,35 @@ export const checkLevelLaws = (level: PaintLevel): LawFailure[] => {
         failures.push({ phase: "*", law: "tip-honesty", detail: `Regel-Seite ${t.id}: Merksatz is ${satz.length} chars (max ${MAX_MERKSATZ}) — „${satz}"` });
       }
       for (const err of registerErrorsDe(satz)) failures.push({ phase: "*", law: "tip-honesty", detail: `Regel-Seite ${t.id}: ${err}` });
+
+      // R5-W2 · I1 · THE ONE BOLD KEY. The card sets exactly one phrase in bold,
+      // and it has to be a phrase OF the rule — a key that paraphrases is a
+      // second rule on a page that teaches one.
+      const key = t.params?.schluesselDe;
+      if (key === undefined || key.trim() === "") {
+        failures.push({ phase: "*", law: "tip-honesty", detail: `Regel-Seite ${t.id} names no Schlüssel — the card would set the whole Merksatz in bold, which is the same as setting none of it` });
+      } else if (!satz.includes(key)) {
+        failures.push({ phase: "*", law: "tip-honesty", detail: `Regel-Seite ${t.id}: der Schlüssel „${key}" steht nicht im Merksatz — ein Schlüssel, der die Regel umschreibt, ist eine zweite Regel` });
+      } else if (key.length > MAX_SCHLUESSEL) {
+        failures.push({ phase: "*", law: "tip-honesty", detail: `Regel-Seite ${t.id}: Schlüssel is ${key.length} chars (max ${MAX_SCHLUESSEL}) — over that the card drops the stroke and the bold key is silently not bold` });
+      }
+
+      // R5-W2 · I1 · THE EXAMPLE IS THE BOOK'S, NOT OURS (doc 45 E2). Presence,
+      // language and length live here; the ATTESTATION — that the sentence is
+      // really printed in MORE! 1 — is `scripts/check-paint-copy.mjs`, which can
+      // read the transcripts this pure module may not.
+      const bsp = t.params?.beispielEn;
+      if (bsp === undefined || bsp.trim() === "") {
+        failures.push({ phase: "*", law: "tip-honesty", detail: `Regel-Seite ${t.id} has no English example — a rule page without one teaches a rule about nothing` });
+      } else if (!ENGLISH_ONLY.test(bsp)) {
+        failures.push({ phase: "*", law: "tip-honesty", detail: `Regel-Seite ${t.id}: beispielEn is not English — „${bsp}"` });
+      } else if (bsp.length > MAX_SCHLUESSEL) {
+        failures.push({ phase: "*", law: "tip-honesty", detail: `Regel-Seite ${t.id}: beispielEn is ${bsp.length} chars (max ${MAX_SCHLUESSEL}) — the card sets it as a Key and it would lose its stroke` });
+      }
+      const beleg = t.params?.belegDe;
+      if (beleg === undefined || beleg.trim() === "") {
+        failures.push({ phase: "*", law: "tip-honesty", detail: `Regel-Seite ${t.id} names no Beleg — the child may always see which page of their own book this came from` });
+      }
     }
   }
 

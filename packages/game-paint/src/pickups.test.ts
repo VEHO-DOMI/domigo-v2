@@ -269,6 +269,59 @@ describe("the tip-honesty law (doc 41 §7)", () => {
     expect(lawsNamed(l).join(" ")).toMatch(/register-law/);
   });
 
+  // ── R5-W2 · I1 · the three fields that make a rule page teach ──────────────
+  // Each of these is a failure class that shipped SILENTLY until this packet: a
+  // page with no key set its whole Merksatz in bold (i.e. none of it, since every
+  // shipped Merksatz is 60–72 chars and the card drops the stroke over 56), and a
+  // page with no example taught a rule about nothing.
+
+  it("a Schlüssel that is not IN the Merksatz turns it RED (a key that paraphrases is a second rule)", () => {
+    const l = clone();
+    const t = l.phases.flatMap((p) => p.entities).find((e) => e.role === "tip")!;
+    t.params!.schluesselDe = "merk dir den Apostroph"; // true, useful — and not the sentence
+    expect(lawsNamed(l).join(" ")).toMatch(/steht nicht im Merksatz/);
+  });
+
+  it("a Schlüssel over the card's stroke cap turns it RED", () => {
+    const l = clone();
+    const t = l.phases.flatMap((p) => p.entities).find((e) => e.role === "tip")!;
+    // 57 chars: one past MAX_SCHLUESSEL, and a substring of the Merksatz it sits in
+    t.params!.merksatzDe = `${"a".repeat(57)} — und so weiter.`;
+    t.params!.schluesselDe = "a".repeat(57);
+    expect(lawsNamed(l).join(" ")).toMatch(/Schlüssel is 57 chars/);
+  });
+
+  it("a page with no English example turns it RED", () => {
+    const l = clone();
+    const t = l.phases.flatMap((p) => p.entities).find((e) => e.role === "tip")!;
+    t.params!.beispielEn = "";
+    expect(lawsNamed(l).join(" ")).toMatch(/no English example/);
+  });
+
+  it("German LETTERS in the English slot turn it RED", () => {
+    // Why this guard is worth having even though it is cheap: downstream,
+    // check-paint-copy grounds this field token-by-token against an ENGLISH
+    // lexicon, so a German line here would be measured with the wrong ruler.
+    //
+    // What it does NOT catch, stated so nobody trusts it further than it goes:
+    // German that happens to be pure ASCII („Der Apostroph zeigt, was fehlt.")
+    // passes this test — a pure module cannot tell languages apart without a
+    // word list, and level.ts has none by design. That case is caught one gate
+    // later, where the lexicon lives: check-paint-copy reports „Apostroph",
+    // „zeigt" and „fehlt" as un-grounded. Verified by tamper, not assumed.
+    const l = clone();
+    const t = l.phases.flatMap((p) => p.entities).find((e) => e.role === "tip")!;
+    t.params!.beispielEn = "Die Kurzform steht für zwei Wörter.";
+    expect(lawsNamed(l).join(" ")).toMatch(/is not English/);
+  });
+
+  it("a page with no Beleg turns it RED (the child may always see which page of their book this is)", () => {
+    const l = clone();
+    const t = l.phases.flatMap((p) => p.entities).find((e) => e.role === "tip")!;
+    delete t.params!.belegDe;
+    expect(lawsNamed(l).join(" ")).toMatch(/names no Beleg/);
+  });
+
   it("a Regel-Seite placed where no child can reach it turns entity-reachable RED", () => {
     const l = clone();
     const t = l.phases.flatMap((p) => p.entities).find((e) => e.role === "tip")!;
