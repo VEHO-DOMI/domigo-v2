@@ -180,6 +180,25 @@ shot holds on his face a beat too long, unreadable. Doc 31's "frees AND forgives
 deuteragonist + the Blank · Koki's surface-villain whodunit) remain fully constructible; the
 choice moves to the G2 design gate. Doc 20 is NOT rewritten this round.
 
+### 1.10 What the child may call him — »der Tinten-Schatten« (new; sharpens doc 31 §6 "the cloak"; ratifies Koki's Session-C1 gate answer, 2026-08-11)
+A threat with no designation cannot be written about, and doc 45's C4 caught the copy solving
+that the forbidden way — the mission card said „OSWINs Tinte". So every chapter before the
+unmask uses exactly one designation, and it is **»der Tinten-Schatten«: a description of his
+ink, never a proper name.** He is only what the pages show of him — the colour taken out of the
+schoolhouse, the pages torn from the book, the ink that stayed behind — and no line claims more:
+no face, no motive, no history, and above all no name. Do not confuse him with the
+**Tinten-Geister** of §1.6: those are harmless ambient wisps the child walks past, and they are
+not his agents. Nor is he embodied in ch01 — the year's cloaked ink silhouette (doc 45 §C4) is a
+later beat; **ch01 carries only the first anonymous note (§4), and that absence is the
+characterization.** This is a machine law, not an intention: `cloakErrorsDe`
+(`packages/content-schema/src/game-tasks.ts`) is enforced twice over, by the engine's
+`chapter-copy` law and again by `scripts/check-paint-copy.mjs`, so a slipped name fails a gate
+rather than reaching a child.
+*Production note: the designation is load-bearing in exactly two places today — the mission card
+(`ch01.level.json` `goalDe`: the title names the loss, the line names the cause) and the balance
+screen's rule-page legend — and it is the ONE name every chapter up to ch15 may use for him.
+§1.1's origin becomes readable only at the unmask, when the two words are finally allowed to meet.*
+
 ---
 
 ## §2 · LAW AMENDMENTS
