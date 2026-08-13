@@ -331,3 +331,57 @@ describe("PK-R6 · H2 · the world behind the card is out of focus, except its s
     expect(defocus()).toMatch(/pointer-events:\s*none/);
   });
 });
+
+/* ── R5-W2 · J1-A · THE NAIVE LOOK, AS KNOBS ─────────────────────────────────
+   Koki ruled the look from three pictures (doc 45 §G2, 2026-08-13). It was a
+   throwaway stylesheet in a screenshot script; this round builds it once. These
+   three cases hold the two properties that make it a BUILD rather than a paste:
+   the values are knobs in one place, and the lean is a picture rather than
+   motion. */
+describe("R5-W2 · J1-A · the naive card is knobs, and its lean survives the landing", () => {
+  const card = baseRule(PAINT_OVERLAY_CSS, "pb-card");
+
+  it("declares the look's knobs on the card itself — and READS them", () => {
+    // on .pb-card and not on a root: everything that wears this look is a
+    // DESCENDANT of the card, so the HUD outside the veil and the platform
+    // outside the game cannot inherit it. The scope wall is the cascade, not
+    // a promise in a doc (doc 45 §G2 defers the platform to its own round).
+    for (const t of ["--pb-paper", "--pb-ink", "--pb-ink-w", "--pb-card-r", "--pb-chip-r", "--pb-card-tilt"]) {
+      expect(card, `${t} is not declared on .pb-card`).toContain(`${t}:`);
+    }
+    expect(card).toMatch(/border-radius:\s*var\(--pb-card-r\)/);
+    expect(card).toMatch(/border:\s*var\(--pb-ink-w\) solid var\(--pb-ink\)/);
+    expect(card).toMatch(/transform:\s*rotate\(var\(--pb-card-tilt/);
+  });
+
+  it("has no naive knob declared outside the card — the scope wall, as a grep", () => {
+    // a second declaration site is how a token quietly becomes global: the HUD
+    // chip and the hub would start inheriting a look nobody ruled on for them.
+    const outside = PAINT_OVERLAY_CSS.replace(/\.pb-card\s*\{[^}]*\}/, "");
+    for (const t of ["--pb-paper:", "--pb-ink:", "--pb-card-tilt:", "--pb-chip-r:"]) {
+      expect(outside, `${t} is declared a second time, outside .pb-card`).not.toContain(t);
+    }
+  });
+
+  it("the lean rides the entrance — the card never snaps crooked in its last frame", () => {
+    // the landing keyframes overwrite »transform« wholesale, so a rotation that
+    // lived only in the base rule would fly in square and jerk over at the end.
+    // A screenshot at rest cannot see this; the parser can.
+    const frames = PAINT_OVERLAY_CSS.match(/@keyframes pb-card-in\s*\{[^]*?\n\}/)?.[0] ?? "";
+    const steps = [...frames.matchAll(/transform:[^;]*;/g)].map((m) => m[0]);
+    expect(steps.length, "the landing lost its keyframes").toBeGreaterThanOrEqual(2);
+    for (const s of steps) expect(s).toContain("rotate(var(--pb-card-tilt");
+  });
+
+  it("the crooked things are STILL — a static rotate is a picture, not motion", () => {
+    // both halves of the end-states law above would fire on a mistake here, and
+    // they would be right: listing these would STRAIGHTEN the book for exactly
+    // the child who asked for less movement.
+    const animated = animatedClasses(PAINT_OVERLAY_CSS);
+    const killed = killedClasses(PAINT_OVERLAY_CSS);
+    for (const cls of ["pb-plate-wrap", "pb-plate", "pb-stamp", "pb-key"]) {
+      expect(animated.has(cls), `${cls} declares motion`).toBe(false);
+      expect(killed.has(cls), `${cls} sits in the reduced-motion kill list`).toBe(false);
+    }
+  });
+});

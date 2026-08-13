@@ -264,11 +264,53 @@ export const PAINT_OVERLAY_CSS = `
    settles back, and blooms its contact shadow from nothing to deep and back —
    so the frame the harness catches has weight in it. The mined 420 ms / 260 ms
    are untouched; only the curve inside them is now a landing. */
+/* R5-W2 · J1-A: the landing carries THE LEAN. These keyframes overwrite
+   »transform« wholesale, so a rotation that lived only in the base rule would
+   fly in square and jerk crooked over the last frames — a snap no screenshot at
+   rest can catch. The fallback is not decoration: an unresolvable var()
+   invalidates the whole declaration, and a card with »transform: none« mid
+   flight is a regression that a still image also cannot see. */
 @keyframes pb-card-in {
-  0%   { opacity: 0; transform: translateY(18px) scale(0.93); box-shadow: 0 2px 7px rgba(26,17,8,0.12); }
-  62%  { opacity: 1; transform: translateY(-3px) scale(1.028); box-shadow: 0 26px 62px rgba(26,17,8,0.5); }
+  0%   { opacity: 0; transform: translateY(18px) scale(0.93) rotate(var(--pb-card-tilt, -1.1deg)); box-shadow: 0 2px 7px rgba(26,17,8,0.12); }
+  62%  { opacity: 1; transform: translateY(-3px) scale(1.028) rotate(var(--pb-card-tilt, -1.1deg)); box-shadow: 0 26px 62px rgba(26,17,8,0.5); }
 }
 .pb-card {
+  /* ── R5-W2 · J1-A · THE NAIVE KNOBS (doc 45 §G2, Kokis Wahl aus drei Mustern)
+     Koki ruled the look from pictures, not from adjectives: »schief gesetzt,
+     Wachsmalstift-Kanten, gestrichelte Innenlinie, dickere Knöpfe«. These are
+     the numbers that picture was made of, and every one of them carries its
+     reason in AUFTAKT_UND_NAIV_LOOK.md — changing the look later is this block,
+     not a hunt through a thousand lines.
+
+     THEY LIVE HERE AND NOT ON A ROOT, and that is the scope wall doing its work
+     mechanically instead of by discipline: every surface that wears this look —
+     chip, inner rule, plate, seal, key stroke — is a DESCENDANT of the card, so
+     the HUD outside the veil and the platform outside the game cannot inherit
+     what they are not inside. Doc 45 §G2 defers the platform to its own round;
+     this block is why that deferral costs nothing. */
+  --pb-paper: #fff2cd;
+  --pb-paper-lit: #fffaea;
+  --pb-seal: #ffd98a;
+  --pb-ink: #6b3f18;
+  --pb-ink-cast: rgba(107,63,24,0.9);
+  --pb-ink-line: rgba(107,63,24,0.45);
+  --pb-ink-w: 4px;
+  --pb-ink-w-chip: 3px;
+  --pb-text: #3a2410;
+  --pb-accent: #b0461a;
+  --pb-accent-lit: #d66a2a;
+  --pb-quiet-ink: #7a5c33;
+  --pb-card-r: 26px 14px 30px 16px / 16px 30px 14px 26px;
+  --pb-card-r-in: 22px 12px 26px 14px / 14px 26px 12px 22px;
+  --pb-chip-r: 18px 9px 20px 11px / 11px 20px 9px 18px;
+  /* NOTHING IS QUITE SQUARE — four angles, one block. Raising the card tilt
+     costs viewport room on both axes: the rotated bounding box grows by
+     height x sin(a) across and width x sin(a) down, and .pb-veil clips. */
+  --pb-card-tilt: -1.1deg;
+  --pb-plate-tilt: 1deg;
+  --pb-stamp-tilt: -11deg;
+  --pb-key-tilt: -1.6deg;
+
   position: relative;
   padding: 18px 22px;
   text-align: center;
@@ -276,7 +318,7 @@ export const PAINT_OVERLAY_CSS = `
   /* doc 42 §5 · B19: the three faces are already loaded app-wide — the overlays
      simply start using them (prompts → body, headlines → display, chips → label) */
   font-family: var(--font-body, system-ui, sans-serif);
-  background-color: #ffeec4;
+  background-color: var(--pb-paper);
   background-image:
     radial-gradient(120% 85% at 14% 4%, rgba(255,253,244,0.95), rgba(255,253,244,0) 58%),
     radial-gradient(85% 70% at 92% 98%, rgba(186,152,96,0.34), rgba(186,152,96,0) 62%),
@@ -288,18 +330,24 @@ export const PAINT_OVERLAY_CSS = `
        7 px read as squared exercise paper rather than as a sheet — caught in
        the render, which is why the render happens before the commit. */
     repeating-linear-gradient(97deg, rgba(146,114,64,0.035) 0 1px, rgba(146,114,64,0) 1px 23px);
-  border: 3.5px solid #8a5a2b;
-  border-radius: 17px 23px 15px 21px / 21px 15px 23px 17px;
+  border: var(--pb-ink-w) solid var(--pb-ink);
+  border-radius: var(--pb-card-r);
+  /* THE LEAN. A book is laid down crooked; a dialog box is not. It is STATIC,
+     therefore it is a picture and not motion — which is why it is deliberately
+     absent from the reduced-motion kill list below. A child who asked for less
+     movement asked for less movement, not for a straightened book. */
+  transform: rotate(var(--pb-card-tilt));
+  /* declared, not inherited from the default: the whole 375-px safety argument
+     is that the overhang is SYMMETRIC, and that is only true about the centre */
+  transform-origin: center;
   box-shadow:
-    /* the sheets under this one: the card is the top page of a book, not a
-       rectangle in mid-air (blind critic on the exemplar) */
-    5px 6px 0 -2px rgba(255,238,196,0.95),
-    6px 7px 0 -1px rgba(138,90,43,0.55),
-    10px 12px 0 -4px rgba(255,238,196,0.85),
-    11px 13px 0 -3px rgba(138,90,43,0.4),
-    0 12px 34px rgba(26,17,8,0.42),
-    inset 0 0 0 1px rgba(255,251,238,0.7),
-    inset 0 0 30px rgba(150,116,64,0.2);
+    /* R5-W2 · J1-A: the judged picture spent the four-layer sheet stack for one
+       hard cast and one ambient. The sheets-under-it device (blind critic on the
+       exemplar: »a drop-shadowed rectangle … a floating modal«) is now carried
+       by the deckled edge and the turned corner instead. Restoring the stack is
+       two lines if a critic asks for it back. */
+    7px 9px 0 -1px var(--pb-ink-cast),
+    0 14px 30px rgba(26,17,8,0.4);
   animation: pb-card-in ${CARD_ENTER_MS}ms ${CARD_ENTER_DELAY_MS}ms cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
 }
 /* R5-W1 · D1 — THE PAGE, not a panel. Blind critic on the exemplar: „a
@@ -316,7 +364,11 @@ export const PAINT_OVERLAY_CSS = `
   width: 34px;
   height: 34px;
   pointer-events: none;
-  border-bottom-right-radius: 20px;
+  /* R5-W2 · J1-A: »inherit«, not a number. The card's bottom-right corner went
+     from 15px/23px to 30px/14px, and a 20 px flap on a 30 px corner detaches
+     visibly. Reading the parent's computed corner means this can never drift
+     again, whatever the tilt block is set to next. */
+  border-bottom-right-radius: inherit;
   background:
     linear-gradient(315deg, #e6d5ac 0%, #f3e8ce 42%, rgba(243,232,206,0) 43%),
     linear-gradient(315deg, rgba(120,92,50,0.34) 0%, rgba(120,92,50,0) 46%);
@@ -328,8 +380,11 @@ export const PAINT_OVERLAY_CSS = `
   content: "";
   position: absolute;
   inset: 6px;
-  border: 2px solid rgba(138,90,43,0.5);
-  border-radius: 13px 18px 11px 16px / 16px 11px 18px 13px;
+  /* R5-W2 · J1-A: DASHED. In the judged picture this is the mark that reads as
+     drawn-by-hand rather than printed — a ruled line a child could have made
+     with a crayon along the inside of the page. */
+  border: 2.5px dashed var(--pb-ink-line);
+  border-radius: var(--pb-card-r-in);
   pointer-events: none;
 }
 
@@ -340,25 +395,28 @@ export const PAINT_OVERLAY_CSS = `
    that presses in under the finger. The inline styles that build these buttons
    keep only their LAYOUT, so this is the single place their look lives. */
 .pb-card button, .pb-card .pb-chip {
-  background-color: #fff6d8;
+  background-color: var(--pb-paper-lit);
   background-image:
     radial-gradient(120% 100% at 28% 0%, rgba(255,255,255,0.9), rgba(255,255,255,0) 68%),
     radial-gradient(70% 60% at 84% 100%, rgba(176,142,88,0.16), rgba(176,142,88,0) 70%),
     repeating-linear-gradient(97deg, rgba(146,114,64,0.035) 0 1px, rgba(146,114,64,0) 1px 19px);
-  border: 2.5px solid #8a5a2b;
-  border-radius: 11px 8px 12px 9px / 9px 12px 8px 11px;
-  box-shadow:
-    0 3px 0 rgba(138,90,43,0.55),
-    0 3px 9px rgba(40,28,12,0.16),
-    inset 0 1px 0 rgba(255,253,244,0.9);
+  border: var(--pb-ink-w-chip) solid var(--pb-ink);
+  border-radius: var(--pb-chip-r);
+  /* R5-W2 · J1-A: one crayon lip, as judged. The ambient blur and the inset
+     highlight went with it — a naive chip is a shape with an edge, not a
+     rendered surface. */
+  box-shadow: 0 4px 0 var(--pb-ink-cast);
   color: #3d3122;
   transition: transform 90ms ease-out, box-shadow 90ms ease-out;
 }
 .pb-card button:active:not(:disabled) {
   /* the tilt rides along, or a pressed chip would snap square under the finger
-     (see THE CROOKED CHIPS below) */
-  transform: translateY(2px) rotate(var(--pb-tilt, 0deg));
-  box-shadow: 0 0 0 rgba(138,90,43,0.55), 0 1px 4px rgba(40,28,12,0.18), inset 0 1px 3px rgba(120,92,50,0.28);
+     (see THE CROOKED CHIPS below).
+     R5-W2 · J1-A: the press is 4 px because the LIP is now 4 px. A 2 px press
+     against a 4 px lip leaves the chip floating on half a shadow — the seam a
+     flat colour override never shows, because nobody photographs a held finger. */
+  transform: translateY(4px) rotate(var(--pb-tilt, 0deg));
+  box-shadow: 0 0 0 var(--pb-ink-cast), inset 0 1px 3px rgba(120,92,50,0.28);
 }
 .pb-card button:disabled { opacity: 0.55; box-shadow: inset 0 1px 4px rgba(120,92,50,0.24); }
 
@@ -630,21 +688,24 @@ export const PAINT_OVERLAY_CSS = `
     radial-gradient(120% 100% at 26% 0%, rgba(255,248,224,0.92), rgba(255,248,224,0) 66%),
     radial-gradient(80% 70% at 86% 100%, rgba(150,104,38,0.3), rgba(150,104,38,0) 72%),
     repeating-linear-gradient(97deg, rgba(122,86,34,0.05) 0 1px, rgba(122,86,34,0) 1px 17px);
-  border-color: #9a6a28;
+  /* R5-W2 · J1-A: only the EDGE joins the naive family — the amber PAPER and the
+     quiet paper below it stay, because that contrast is the action hierarchy and
+     overlay-css.test.ts polices it. A hierarchy expressed in ink weight alone is
+     one a six-year-old does not read. */
+  border-color: var(--pb-ink);
   color: #402d10;
   box-shadow:
-    0 3px 0 rgba(122,86,34,0.5),
-    0 5px 14px rgba(52,34,10,0.26),
-    inset 0 1px 0 rgba(255,252,236,0.85);
+    0 4px 0 var(--pb-ink-cast),
+    0 5px 14px rgba(52,34,10,0.26);
 }
 .pb-card button.pb-btn-primary:active:not(:disabled) {
-  transform: translateY(3px);
-  box-shadow: 0 0 0 rgba(122,86,34,0.5), 0 1px 5px rgba(52,34,10,0.22), inset 0 1px 4px rgba(120,80,26,0.3);
+  transform: translateY(4px);
+  box-shadow: 0 0 0 var(--pb-ink-cast), inset 0 1px 4px rgba(120,80,26,0.3);
 }
 .pb-card .pb-btn-ghost {
   background-color: rgba(253,246,228,0.62);
   background-image: none;
-  border-color: rgba(160,124,70,0.5);
+  border-color: var(--pb-ink-line);
   color: #6b5c40;
   box-shadow: inset 0 0 0 1px rgba(255,253,244,0.55);
 }
@@ -769,12 +830,17 @@ export const PAINT_OVERLAY_CSS = `
   width: fit-content;
   max-width: 100%;
   margin: 0 auto 8px;
+  /* R5-W2 · J1-A: the lean sits on the WRAPPER, not on the plate. The judged
+     sample rotated the plate alone, which slides .pb-stamp (pinned at
+     right:-8px; bottom:-8px) off the corner it is pressed into — this wrapper
+     exists precisely so the plate and its seal travel together (see above). */
+  transform: rotate(var(--pb-plate-tilt));
 }
 .pb-plate {
   position: relative;
   width: fit-content;
   max-width: 100%;
-  border: 3px solid #8a5a2b;
+  border: var(--pb-ink-w) solid var(--pb-ink);
   border-radius: 15px 10px 16px 11px / 11px 16px 10px 15px;
   box-shadow: inset 0 2px 10px rgba(120,92,50,0.22), 0 3px 10px rgba(40,28,12,0.18);
   background-color: #fdf6e4;
@@ -817,7 +883,8 @@ export const PAINT_OVERLAY_CSS = `
   font-weight: 800;
   font-size: 23px;
   line-height: 1.16;
-  color: #2a2114;
+  color: var(--pb-text);
+  letter-spacing: 0.2px;
   text-wrap: balance;
 }
 /* the stroke: laid on by hand, so it is not quite level, thins at both ends
@@ -828,10 +895,14 @@ export const PAINT_OVERLAY_CSS = `
   left: 12%;
   right: 12%;
   bottom: 0;
-  height: 5px;
-  border-radius: 5px;
-  transform: rotate(-0.7deg);
-  background: linear-gradient(90deg, rgba(200,110,40,0), #c86e28 22%, #8a5a2b 58%, rgba(138,90,43,0) 100%);
+  /* R5-W2 · J1-A: a wax crayon, not a fineliner — thicker, rounder, more
+     off-level. ⚠ The zero-alpha ends are rgba() and not »transparent« on
+     purpose: »transparent« is rgba(0,0,0,0) and would fringe the stroke grey
+     as it fades. */
+  height: 6px;
+  border-radius: 6px;
+  transform: rotate(var(--pb-key-tilt));
+  background: linear-gradient(90deg, rgba(214,106,42,0), var(--pb-accent-lit) 20%, var(--pb-accent) 55%, rgba(176,70,26,0) 100%);
   pointer-events: none;
 }
 /* A LINE TOO LONG TO BE AN ASK leads without shouting: same face, less weight,
@@ -848,7 +919,7 @@ export const PAINT_OVERLAY_CSS = `
 
 /* the English ask carries the book's own accent, so the lesson is also the
    warmest thing on the card rather than the smallest */
-.pb-key-en { color: #a8541a; }
+.pb-key-en { color: var(--pb-accent); }
 
 /* the inline half of the device: the one word or number inside a line that
    carries it. No stroke — a stroke under a fragment mid-sentence reads as a
@@ -866,7 +937,7 @@ export const PAINT_OVERLAY_CSS = `
   margin: 0 0 3px;
   font-size: 12.5px;
   line-height: 1.35;
-  color: #8a7a58;
+  color: var(--pb-quiet-ink);
 }
 .pb-quiet-i { font-style: italic; }
 
@@ -1013,11 +1084,14 @@ export const PAINT_OVERLAY_CSS = `
   width: 42px;
   height: 42px;
   color: #6f5a34;
-  transform: rotate(-5deg);
+  /* R5-W2 · J1-A: pressed harder and more crookedly. Net angle against the room
+     is -10deg, because the wrapper it hangs off now leans +1deg — one degree,
+     under the noise floor, and deliberately NOT corrected with a fifth knob. */
+  transform: rotate(var(--pb-stamp-tilt));
   border-radius: 15px 12px 16px 13px / 13px 16px 12px 15px;
-  background-color: #ffe1a4;
+  background-color: var(--pb-seal);
   background-image: radial-gradient(120% 100% at 26% 0%, rgba(255,255,255,0.9), rgba(255,255,255,0) 66%);
-  box-shadow: inset 0 0 0 2.5px rgba(138,90,43,0.9), 0 2px 7px rgba(40,28,12,0.3);
+  box-shadow: inset 0 0 0 3px var(--pb-ink-cast), 0 3px 8px rgba(40,28,12,0.35);
 }
 
 /* THE HELP FOLD — the hint ladder, folded until the child has earned a rung
