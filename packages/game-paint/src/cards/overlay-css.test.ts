@@ -53,6 +53,20 @@ const baseRule = (css: string, cls: string): string => {
   return "";
 };
 
+/** Every rule outside the media block, as { sel, decls } — R5-W3 · J2. */
+const rules = (css: string): { sel: string; decls: string }[] => {
+  const body = css.replace(/@media\s*\(prefers-reduced-motion[^{]*\{[\s\S]*$/, "");
+  return [...body.matchAll(/([^{}]+)\{([^{}]*)\}/g)].map((m) => ({ sel: m[1] ?? "", decls: m[2] ?? "" }));
+};
+
+/** The values of a rule's `border-width:`, or []. Splits on TOP-LEVEL spaces
+ *  only, because every width in the hand is a `calc(... * 1.25)` and calc
+ *  contains spaces of its own. */
+const widths = (decls: string): string[] => {
+  const m = decls.match(/(^|[\s;])border-width:\s*([^;]+)/);
+  return m ? m[2]!.trim().split(/\s+(?![^(]*\))/) : [];
+};
+
 describe("the end-states law (doc 42 §1)", () => {
   const animated = animatedClasses(PAINT_OVERLAY_CSS);
   const killed = killedClasses(PAINT_OVERLAY_CSS);
@@ -350,7 +364,16 @@ describe("R5-W2 · J1-A · the naive card is knobs, and its lean survives the la
       expect(card, `${t} is not declared on .pb-card`).toContain(`${t}:`);
     }
     expect(card).toMatch(/border-radius:\s*var\(--pb-card-r\)/);
-    expect(card).toMatch(/border:\s*var\(--pb-ink-w\) solid var\(--pb-ink\)/);
+    // R5-W3 · J2 · R21: the card's edge became FOUR widths (the hand), and
+    // »border:« carries only one. The law is unchanged — the card must read the
+    // knobs it declares — but its proof moved from one spelling to the property
+    // itself, plus a guard against the failure the new spelling invites: a later
+    // »border:« shorthand in this rule would silently flatten all four sides
+    // back to one, and no screenshot at rest would look wrong for it.
+    expect(card).toMatch(/border-style:\s*solid/);
+    expect(card).toMatch(/border-color:\s*var\(--pb-ink\)/);
+    expect(card).toMatch(/border-width:[^;]*var\(--pb-ink-w\)/);
+    expect(card, "a border shorthand would silently reset the three longhands").not.toMatch(/(^|\s|;)border:\s/);
     expect(card).toMatch(/transform:\s*rotate\(var\(--pb-card-tilt/);
   });
 
@@ -382,6 +405,118 @@ describe("R5-W2 · J1-A · the naive card is knobs, and its lean survives the la
     for (const cls of ["pb-plate-wrap", "pb-plate", "pb-stamp", "pb-key"]) {
       expect(animated.has(cls), `${cls} declares motion`).toBe(false);
       expect(killed.has(cls), `${cls} sits in the reduced-motion kill list`).toBe(false);
+    }
+  });
+});
+
+/** R5-W3 · J2 · R21 · THE HAND, AND WHERE IT STOPS.
+ *
+ *  Koki's D2 ruling (docs/design/g1/paint/CARDUI_R5W_D2/README.md): the ANSWER
+ *  chips lie there by hand, no two at the same angle — but »Los geht's!« and
+ *  »Weiter« stay square, »weil der eine Schritt nach vorn kein hingeworfener
+ *  Zettel ist«. Until this round that canon was held by nothing but selector
+ *  scoping and two lines of prose: no test anywhere under packages/ asserted it.
+ *
+ *  This is the round that would have broken it — the geometry round reaches for
+ *  every ruled edge on the card, and the button rule has the most visible edge
+ *  of all. So the ruling stops being a habit and becomes a check. */
+describe("R5-W3 · J2 · R21 · the hand, and where it stops (Kokis D2-Kanon)", () => {
+  const ACTIONS = [".pb-btn-primary", ".pb-btn-ghost", ".pb-help-tab"];
+  const all = rules(PAINT_OVERLAY_CSS);
+
+  it("the tilt knob never leaves [data-chips] — that scoping IS the canon", () => {
+    // every other button computes rotate(var(--pb-tilt, 0deg)) => 0deg, and it
+    // does so because the knob does not exist for it. Move one declaration up to
+    // .pb-card and every button on every card leans, the forward step included.
+    const sites = all.filter((r) => /--pb-tilt:/.test(r.decls));
+    expect(sites.length, "the four chip angles are gone").toBe(4);
+    for (const r of sites) expect(r.sel, `--pb-tilt escapes its scope: ${r.sel}`).toContain("[data-chips]");
+  });
+
+  it("no action button rotates on its own", () => {
+    for (const r of all) {
+      if (!ACTIONS.some((a) => r.sel.includes(a))) continue;
+      for (const d of r.decls.split(";")) {
+        if (!/rotate\(/.test(d)) continue;
+        // the exact spelling, not »no rotate at all«: the generic chip's :active
+        // legitimately carries rotate(var(--pb-tilt, 0deg)) so a press can ride
+        // an angle it does not itself create. A hand-written rotate(0deg) fails
+        // here too, correctly — it is the spelling that invites a number.
+        expect(d, `${r.sel} rotates on its own`).toContain("rotate(var(--pb-tilt, 0deg))");
+      }
+    }
+  });
+
+  it("the frames wear the hand and the buttons do not", () => {
+    // the positive half first: without it this passes on a stylesheet where the
+    // round was never built, and a law that green-lights nothing proves nothing
+    for (const cls of ["pb-card", "pb-plate"]) {
+      expect(widths(baseRule(PAINT_OVERLAY_CSS, cls)).length, `${cls} lost its hand`).toBe(4);
+    }
+    // …and the negative half
+    for (const r of all) {
+      const isAction = ACTIONS.some((a) => r.sel.includes(a));
+      if (!isAction && !r.sel.includes(".pb-chip")) continue;
+      expect(widths(r.decls).length, `${r.sel} wears the frames' hand`).toBeLessThanOrEqual(1);
+    }
+    // the chip keeps the SHORTHAND, and the shorthand is the statement
+    // »one weight, all four sides«
+    expect(PAINT_OVERLAY_CSS).toContain("border: var(--pb-ink-w-chip) solid var(--pb-ink)");
+  });
+
+  it("the hand redistributes weight and never adds any", () => {
+    // opposite pairs sum to 2: the border box grows by zero on both axes. The
+    // card already spends 4,3 px of its 14 px side clearance on the lean, and at
+    // 375 px there is nothing left to spend.
+    for (const cls of ["pb-card", "pb-plate"]) {
+      const n = widths(baseRule(PAINT_OVERLAY_CSS, cls)).map((w) => Number(/\*\s*([\d.]+)\s*\)/.exec(w)?.[1]));
+      expect(n.every(Number.isFinite), `${cls}'s hand is not multipliers of --pb-ink-w`).toBe(true);
+      expect(n[0]! + n[2]!, `${cls} grew taller`).toBeCloseTo(2, 5);
+      expect(n[1]! + n[3]!, `${cls} grew wider`).toBeCloseTo(2, 5);
+    }
+    // the two literal-width surfaces, against their own documented base. An
+    // exception that is not declared is not an exception.
+    const LITERAL_BASE: Record<string, number> = { "pb-card::before": 5.0, "pb-rule-band": 4.0 };
+    for (const [cls, base] of Object.entries(LITERAL_BASE)) {
+      const n = widths(baseRule(PAINT_OVERLAY_CSS, cls.replace("::before", ""))).map((w) => Number.parseFloat(w));
+      const four = cls.endsWith("::before")
+        ? widths(all.find((r) => r.sel.includes(".pb-card::before"))?.decls ?? "").map((w) => Number.parseFloat(w))
+        : n;
+      expect(four.length, `${cls} lost its hand`).toBe(4);
+      expect(four[0]! + four[2]!, `${cls} grew taller`).toBeCloseTo(base, 5);
+      expect(four[1]! + four[3]!, `${cls} grew wider`).toBeCloseTo(base, 5);
+    }
+  });
+
+  it("--pb-ink-rgb has not drifted from --pb-ink", () => {
+    // the one new knob is the same colour written a second way, for the surfaces
+    // that need the family's pen at a strength of their own. A second name is a
+    // drift risk; this is the price that makes it defensible.
+    const card = baseRule(PAINT_OVERLAY_CSS, "pb-card");
+    const hex = /--pb-ink:\s*#([0-9a-f]{6})/i.exec(card)?.[1] ?? "";
+    const rgb = /--pb-ink-rgb:\s*(\d+),\s*(\d+),\s*(\d+)/.exec(card)?.slice(1).map(Number) ?? [];
+    expect(hex, "--pb-ink is not a 6-digit hex any more").toHaveLength(6);
+    expect(rgb, "--pb-ink-rgb has drifted from --pb-ink").toEqual([0, 2, 4].map((i) => parseInt(hex.slice(i, i + 2), 16)));
+  });
+
+  it("the four open surfaces read the family's ink — no pre-family contour is left inside the veil", () => {
+    // R21: the open surfaces join. »#b78d51« was the amber contour of the era
+    // before this look; after this round the ONE copy left is .pb-hud-chip, which
+    // sits OUTSIDE the veil and cannot resolve a --pb-* token at all. That single
+    // remaining hit turns a documented exception into something grep can see.
+    // counted over DECLARATIONS, not raw text: a comment that names the old hex
+    // (this round's do) is prose, and a law that trips on prose is a law nobody
+    // keeps.
+    const declsOnly = PAINT_OVERLAY_CSS.replace(/\/\*[\s\S]*?\*\//g, "");
+    const hits = [...declsOnly.matchAll(/#b78d51/g)].length;
+    expect(hits, "a pre-family contour came back inside the card").toBe(1);
+    expect(baseRule(PAINT_OVERLAY_CSS, "pb-hud-chip")).toContain("#b78d51");
+    for (const cls of ["pb-rule-band", "pb-merk-slot", "pb-eyebrow", "pb-merk-topic"]) {
+      expect(baseRule(PAINT_OVERLAY_CSS, cls), `${cls} still carries a hard-coded ink`).toMatch(/var\(--pb-(ink|quiet-ink)/);
+    }
+    // and the two dead rules stay dead — dressing them would have been theatre
+    for (const dead of [".pb-portrait", ".pb-treasure-plate"]) {
+      expect(PAINT_OVERLAY_CSS, `${dead} came back`).not.toContain(`${dead} {`);
     }
   });
 });

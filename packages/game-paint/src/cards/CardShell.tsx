@@ -61,7 +61,14 @@ export const cardBtn: React.CSSProperties = {
   // R5-W1 · D1: a chip is a TARGET a six-year-old hits with a finger, and it
   // carries the English word the card is teaching — so it is the second-biggest
   // type on the card now, and 46 px tall (the touch floor the item asked for).
-  fontSize: 17, padding: "11px 18px", minHeight: 46, cursor: "pointer",
+  //
+  // R5-W3 · J2 · 18, and it is a RULE now, not a scattering. The judged naive
+  // sample carried »font-size: 18px« on chips; J1 declined to build it as a look
+  // knob for a good reason (nearly every chip sets its size inline, so a
+  // stylesheet rule would have reached only the three rule-page buttons and made
+  // an exception exactly there) and handed the number here instead. Koki ruled 18
+  // on 2026-08-14. This is the one place the answer chips get their size.
+  fontSize: 18, padding: "11px 18px", minHeight: 46, cursor: "pointer",
   fontFamily: "var(--font-label, inherit)", fontWeight: 600,
 };
 
@@ -480,6 +487,12 @@ export function CardShell({
         <Tether align={align} />
         {(clockMs ?? 0) > 0 && <ChalkClock ms={clockMs ?? QUICKFIRE_MS} armCount={armCount} />}
 
+        {/* R5-W3 · J2 · D-52: the sheet that scrolls when a card outgrows the veil.
+            The tether and the chalk clock stay OUTSIDE it on purpose — the tether
+            lies entirely beyond the card's own edge, and the clock is the card's
+            frame furniture, not its writing. */}
+        <div className="pb-card-scroll">
+
         {/* PK-R6 · D · THE ROUND COUNTER (doc 44 §3.3, „6 rounds, Runde n/6").
             A ceremony a six-year-old can see the end of: six is a long way to
             be asked questions by a friend who is still grey, and the difference
@@ -544,7 +557,10 @@ export function CardShell({
           Später ↩
         </button>
 
-        {/* beat 1 of the resolution: the answer flies home over the card face */}
+        </div>
+
+        {/* beat 1 of the resolution: the answer flies home over the card face.
+            Outside the sheet: it flies ACROSS the whole card, not down its text. */}
         {flight !== null && flight !== undefined && flight.length > 0 && <AnswerHome answer={flight} />}
       </div>
     </div>

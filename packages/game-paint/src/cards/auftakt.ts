@@ -19,8 +19,23 @@
 //     it is a promise, and the promise this replaces was already broken once
 //     (pickups.test.ts: „a Regel-Seite FREEZES the world").
 
-/** The four beats of a chapter opening. */
-export type AuftaktCard = "goal" | "schatten" | "aufgaben" | "los";
+/** The beats of a chapter opening.
+ *
+ *  R5-W3 · J2 · R29 — FIVE, because the task beat split in two. Two blind
+ *  didactics critics, run months and sessions apart and each blind to the other,
+ *  independently called one card carrying all five task lines too much for a
+ *  six-year-old (75 % and 90 %), and both named the same second fault: with
+ *  every line in the same weight, nothing said which job was the chapter's and
+ *  which was a bonus. Convergence is what turned that from an opinion into a
+ *  finding, and the architect's standing ruling was: split on convergence.
+ *
+ *  The seam is DO versus GATHER. »aufgaben« carries what the chapter asks the
+ *  child to do — give the colour back (which is where the whole English
+ *  mechanic lives) and open the cages. »sammeln« carries what they pick up
+ *  along the way. That split answers both critics at once: two or three lines a
+ *  card instead of five, and the mechanic no longer shares a weight with the
+ *  bonus book. */
+export type AuftaktCard = "goal" | "schatten" | "aufgaben" | "sammeln" | "los";
 
 /** The beats in order.
  *
@@ -28,25 +43,39 @@ export type AuftaktCard = "goal" | "schatten" | "aufgaben" | "los";
  *  the boot state writes, the ceremony beat `sim.ts` already carries, and the
  *  address the card bench is photographed at (`?karten=goal`). Renaming it for
  *  tidiness would rename all three and buy a label. */
-export const AUFTAKT: readonly AuftaktCard[] = ["goal", "schatten", "aufgaben", "los"];
+export const AUFTAKT: readonly AuftaktCard[] = ["goal", "schatten", "aufgaben", "sammeln", "los"];
 
 const isAuftakt = (card: string): card is AuftaktCard =>
   (AUFTAKT as readonly string[]).includes(card);
 
+/** Which beats THIS chapter has.
+ *
+ *  A task beat with no lines is not a beat, it is a blank page — and ch02–15
+ *  will not all have both kinds. So the chain is COMPUTED from the same counts
+ *  the lines are, and every step, position and exit is asked about that chain
+ *  rather than about the full list. (The alternative — a static five and an
+ *  empty card when a chapter lacks a group — is the bug this signature exists
+ *  to make unrepresentable.) */
+export const auftaktChain = (c: AuftaktCounts): readonly AuftaktCard[] =>
+  AUFTAKT.filter((b) =>
+    b === "aufgaben" || b === "sammeln" ? auftaktTasks(c, b).length > 0 : true);
+
 /** One step along the chain, or null at its ends.
  *
  *  Null for any card that is not IN the chain, so a task card can never be
- *  walked into the opening by a stray call. */
-export const auftaktStep = (card: string, d: 1 | -1): AuftaktCard | null => {
-  if (!isAuftakt(card)) return null;
-  return AUFTAKT[AUFTAKT.indexOf(card) + d] ?? null;
+ *  walked into the opening by a stray call — and a beat this chapter skipped is
+ *  not in the chain, so it cannot be stepped into either. */
+export const auftaktStep = (card: string, d: 1 | -1, chain: readonly AuftaktCard[] = AUFTAKT): AuftaktCard | null => {
+  if (!isAuftakt(card) || !chain.includes(card)) return null;
+  return chain[chain.indexOf(card) + d] ?? null;
 };
 
 /** Which beat a child is on, 1-based — and how many there are. The foot prints
  *  these, and like every other number the book shows they are COUNTED, never
- *  typed (doc 41 §7, the letter-honesty law). */
-export const auftaktPosition = (card: string): { at: number; of: number } | null =>
-  isAuftakt(card) ? { at: AUFTAKT.indexOf(card) + 1, of: AUFTAKT.length } : null;
+ *  typed (doc 41 §7, the letter-honesty law). »4 von 5« on a chapter that skips
+ *  a beat would be a typed number wearing a count's clothes. */
+export const auftaktPosition = (card: string, chain: readonly AuftaktCard[] = AUFTAKT): { at: number; of: number } | null =>
+  isAuftakt(card) && chain.includes(card) ? { at: chain.indexOf(card) + 1, of: chain.length } : null;
 
 /** What the shell must DO when a beat is put down.
  *
@@ -67,9 +96,9 @@ export interface AuftaktExit {
   boot: boolean;
 }
 
-export const auftaktExit = (card: string): AuftaktExit => {
-  if (!isAuftakt(card)) return { next: null, unfreeze: false, boot: false };
-  const next = auftaktStep(card, 1);
+export const auftaktExit = (card: string, chain: readonly AuftaktCard[] = AUFTAKT): AuftaktExit => {
+  if (!isAuftakt(card) || !chain.includes(card)) return { next: null, unfreeze: false, boot: false };
+  const next = auftaktStep(card, 1, chain);
   const last = next === null;
   return { next, unfreeze: last, boot: last };
 };
@@ -110,7 +139,14 @@ export interface AuftaktTask {
  *  EVERY NUMBER IS PASSED IN, never typed (doc 41 §7): this page is the promise
  *  the chapter makes, and a promise with a typed number in it is the one thing
  *  it may not be. A category the chapter does not have draws no line at all. */
-export const auftaktTasks = (c: AuftaktCounts): AuftaktTask[] => {
+export const auftaktTasks = (c: AuftaktCounts, group?: "aufgaben" | "sammeln"): AuftaktTask[] => {
+  const GROUP_OF: Record<string, "aufgaben" | "sammeln"> = {
+    // what the chapter asks a child to DO — and »drained« is first because it is
+    // the one line that names the mechanic the whole game runs on
+    drained: "aufgaben", cages: "aufgaben",
+    // …and what they gather on the way
+    letters: "sammeln", tips: "sammeln", books: "sammeln",
+  };
   const out: AuftaktTask[] = [];
   if (c.letters > 0) {
     // ⚠ `collectNounDe` is AUTHORED AND PLURAL („Buchstaben"), and its singular
@@ -174,5 +210,7 @@ export const auftaktTasks = (c: AuftaktCounts): AuftaktTask[] => {
       whyDe: c.books === 1 ? "Es liegt versteckt." : "Sie liegen versteckt.",
     });
   }
-  return out;
+  // filtered at the END, not while building, so each group keeps the order the
+  // lines are authored in and a group is never silently reordered by its filter
+  return group === undefined ? out : out.filter((t) => GROUP_OF[t.key] === group);
 };

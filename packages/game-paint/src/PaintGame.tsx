@@ -19,14 +19,14 @@ import type { PaintLevel, PhaseSpec } from "./level.ts";
 import type { GameTaskV2 } from "@domigo/content-schema";
 import { CardHost } from "./cards/CardHost.tsx";
 import { Key, KeyBit } from "./cards/Glance.tsx";
-import { type AuftaktCard, auftaktExit, auftaktPosition, auftaktStep, auftaktTasks } from "./cards/auftakt.ts";
+import { type AuftaktCard, type AuftaktCounts, auftaktChain, auftaktExit, auftaktPosition, auftaktStep, auftaktTasks } from "./cards/auftakt.ts";
 import { type ArenaBeat, arenaExit, arenaLines, arenaPosition, arenaStep } from "./cards/arena.ts";
 import { answerTextOf } from "./cards/resolution.ts";
 import { tierOfAsker } from "./cards/serving.ts";
 import { windowMsFor } from "./cards/timer.ts";
 import { prefersReducedMotion } from "./cards/motion.ts";
 import { askerIdOf } from "./sim.ts";
-import { InkWipe, PaintedCage, type CardAlign, alignedWrap } from "./cards/CardShell.tsx";
+import { InkWipe, PaintedCage, type CardAlign, alignedWrap, cardBtn } from "./cards/CardShell.tsx";
 import { PAINT_OVERLAY_CSS } from "./cards/overlay-css.ts";
 import { PaintedIcon, type PaintedIconName } from "./cards/PaintedIcons.tsx";
 import { CeremonyBurst, PaintedHero, SceneCut, useCeremonyClock } from "./cards/CeremonyStage.tsx";
@@ -286,6 +286,24 @@ function afterPaint(fn: () => void): void {
   }
   if (typeof window !== "undefined") window.setTimeout(go, 150);
 }
+
+/** R5-W3 · J2 · R29 · the opening's counts, from the LEVEL alone.
+ *
+ *  These are the chapter's TOTALS, not the child's progress: the opening runs
+ *  before anything has been collected, and it is the chapter's contract with the
+ *  child rather than a score. They live here, at module scope, because the beat
+ *  CHAIN is computed from them and the chain is needed in three places that sit
+ *  outside the overlay — stepping forward, stepping back, and the foot's counter.
+ *  One derivation, so »4 von 5« can never disagree with what the beats do. */
+const auftaktCountsFor = (level: PaintLevel): AuftaktCounts => ({
+  letters: chapterLetterTotal(level),
+  collectNounDe: level.collectNounDe,
+  drained: chapterRoleCount(level, "drained"),
+  cages: chapterRoleCount(level, "cage"),
+  kids: chapterClassmateCount(level),
+  tips: level.tipsTotal ?? chapterRoleCount(level, "tip"),
+  books: chapterRoleCount(level, "book"),
+});
 
 export default function PaintGame({ level, art, tasks, hubHref, buildSha, startPhase, debugGrid, debugPerf, noWarm, onTipCollected, openingSeen, onOpeningRead,}: PaintGameProps): React.ReactElement {
   const hostRef = useRef<HTMLDivElement | null>(null);
@@ -558,7 +576,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
       sceneRef.current?.setOverlay(false); // der Kampf darf jetzt losgehen
       return;
     }
-    const auftakt = auftaktExit(o.card);
+    const auftakt = auftaktExit(o.card, auftaktChain(auftaktCountsFor(level)));
     if (auftakt.next !== null) {
       setOverlay({ ...o, card: auftakt.next });
       return;
@@ -597,7 +615,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
    *  chain answers null at its end, so „zurück" on beat 1 is not drawn AND could
    *  not fire if it were. Like the forward step it never touches the scene. */
   const backCard = (o: OverlayState): void => {
-    const prev = auftaktStep(o.card, -1);
+    const prev = auftaktStep(o.card, -1, auftaktChain(auftaktCountsFor(level)));
     if (prev === null) return;
     setOverlay({ ...o, card: prev });
   };
@@ -1330,6 +1348,9 @@ function Overlay({
    *  the first room's plate, and the cut falls back to nothing — keen-art law. */
   const roomStem = allPhasesOf(level).find((p) => p.id === phaseId)?.plates?.far
     ?? level.phases[0]?.plates?.far;
+  // R5-W3 · J2 · R29: this chapter's counts and its beat chain, derived once.
+  const auftaktCounts = auftaktCountsFor(level);
+  const auftaktBeats = auftaktChain(auftaktCounts);
   const staged = (children: React.ReactNode, extraClass = ""): React.ReactElement => (
     <div className="pb-veil pb-veil-deep" style={wrap}>
       <InkWipe />
@@ -1340,7 +1361,12 @@ function Overlay({
           is for. Safe for the other eleven ceremonies: `o.card` is constant for
           a card's whole life, so nothing that re-renders (a typed field, a tally
           clock) can earn a spurious remount from this. */}
-      <div key={o.card} className={`pb-card ${extraClass}`.trim()} style={card}>{children}</div>
+      {/* R5-W3 · J2 · D-52: the writing sits on its own sheet inside the card, so
+          a beat that outgrows the veil scrolls instead of being sliced through
+          top and bottom. The card keeps its frame, its lean and its seal. */}
+      <div key={o.card} className={`pb-card ${extraClass}`.trim()} style={card}>
+        <div className="pb-card-scroll">{children}</div>
+      </div>
     </div>
   );
 
@@ -1355,12 +1381,12 @@ function Overlay({
    *  (doc 41 §7). „←" rather than an arrow emoji: the emphasis gate bans the
    *  emoji list and explicitly whitelists this glyph. */
   const auftaktFoot = (nextDe: string): React.ReactElement | null => {
-    const pos = auftaktPosition(o.card);
+    const pos = auftaktPosition(o.card, auftaktBeats);
     if (pos === null) return null;
     return (
       <div style={{ display: "flex", alignItems: "center", gap: 10, marginTop: 14, flexWrap: "wrap" }}>
-        <button className="pb-btn-primary" style={{ ...btn, fontSize: 16 }} onClick={() => onDismiss(o)}>{nextDe}</button>
-        {auftaktStep(o.card, -1) !== null && (
+        <button className="pb-btn-primary" style={btn} onClick={() => onDismiss(o)}>{nextDe}</button>
+        {auftaktStep(o.card, -1, auftaktBeats) !== null && (
           // „Zurück" alone already means »back to the map« on the door card, and
           // one word with two meanings inside one chapter is ein-Ding-ein-Wort
           // broken in the shell. »blättern« is the book's own verb.
@@ -1404,7 +1430,7 @@ function Overlay({
         </h2>
         <Key>{lines.storyDe}</Key>
         <div style={{ display: "flex", alignItems: "center", gap: 10, marginTop: 14, flexWrap: "wrap" }}>
-          <button className="pb-btn-primary" style={{ ...btn, fontSize: 16 }} onClick={() => onDismiss(o)}>
+          <button className="pb-btn-primary" style={btn} onClick={() => onDismiss(o)}>
             {arenaStep(o.card, 1) === null ? "Los!" : "Weiter"}
           </button>
           <span style={{ marginLeft: "auto", fontSize: 12, color: "#a8926a", fontFamily: "var(--font-label, inherit)" }}>
@@ -1427,7 +1453,7 @@ function Overlay({
   // you must do (3) → the door in (4). The chain lives in cards/auftakt.ts so a
   // test can walk it without a DOM; the world stays frozen across all four and
   // only beat 4 gives it back.
-  if (auftaktPosition(o.card) !== null) {
+  if (auftaktPosition(o.card, auftaktBeats) !== null) {
     const plate = level.goalPlate !== undefined ? art[level.goalPlate] : undefined;
     const drained = chapterRoleCount(level, "drained");
     const kapitel = /^ch(\d{2})$/.exec(level.chapter)?.[1];
@@ -1510,16 +1536,13 @@ function Overlay({
     // nur eine simple karte mit allen listungen". Every number is COUNTED from
     // the world (doc 41 §7): this page is the chapter's contract with the child,
     // and a typed number is the one thing a contract may not contain.
-    if (o.card === "aufgaben") {
+    if (o.card === "aufgaben" || o.card === "sammeln") {
       // R5-W2 · J1-B: the LINES come from cards/auftakt.ts, where a test walks
       // them at n = 0, 1 and 2. This renderer only decides what a row LOOKS
       // like; what it says is the tested part, because German has a singular and
       // `Nimm 1 Bonus-Bücher mit` compiles perfectly.
-      const tasks = auftaktTasks({
-        letters: bilanz.lettersTotal, collectNounDe: level.collectNounDe,
-        drained, cages: bilanz.freedTotal, kids: bilanz.kidsTotal,
-        tips: bilanz.tipsTotal, books: bilanz.booksTotal,
-      });
+      // R5-W3 · J2 · R29: …and WHICH lines, because the beat split in two.
+      const tasks = auftaktTasks(auftaktCounts, o.card);
       /** Three rungs, so the beat is buildable today and better the day the rest
        *  of the paint lands: the beat's own mark → the painted HUD miniature →
        *  the code-drawn icon. AQ8 delivered three marks for five rows; the two
@@ -1543,7 +1566,11 @@ function Overlay({
       });
       return staged(
         <div style={{ textAlign: "left" }}>
-          {eyebrow("Dein Auftrag")}
+          {/* R5-W3 · J2 · R29: two beats, two headings. »Dein Auftrag« is what the
+              chapter asks a child to DO; »Was du sammelst« is what they gather on
+              the way. Both critics wanted the mechanic to stop sharing a weight
+              with the bonus book — this is where that separation becomes visible. */}
+          {eyebrow(o.card === "aufgaben" ? "Dein Auftrag" : "Was du sammelst")}
           {/* R5-W2 · J1-B · Kritiker-Runde 1 (90 %, High): this beat shipped with
               no scene at all — »a label, five rows and two buttons … the one beat
               that reads as a plain checklist/settings dialog, not a story page«.
@@ -2128,7 +2155,7 @@ function ScorePage({
           ? "„Die Seite ist wieder voll“, schreibt das Buch. „Du hast alle gefunden.“"
           : "„Fast“, schreibt das Buch. „Ein paar stecken noch fest.“"}
       </p>
-      <button className="pb-btn-primary" style={{ ...btn, fontSize: 16 }} onClick={onNext}>Seite umblättern</button>
+      <button className="pb-btn-primary" style={btn} onClick={onNext}>Seite umblättern</button>
     </div>
   );
 }
@@ -2184,13 +2211,20 @@ function Chip({ icon, label, value, art, onClick, titleDe }: {
  *  rectangle with an 8 px radius — the single flattest thing on a painted page,
  *  and it sat on the objective screen the chapter opens with. Its paint is now
  *  the „pb-card button" rule in overlay-css, the same one the task cards' chips
- *  wear; what stays here is size and face. */
+ *  wear; what stays here is size and face.
+ *
+ *  R5-W3 · J2: it is BUILT FROM `cardBtn` now instead of repeating it. The two
+ *  were the same object written in two files and had already drifted: this said
+ *  15 while three ceremony buttons forced 16 inline, so »the ceremony button«
+ *  was two different sizes depending on which one a child was looking at. What
+ *  stays here is the one deliberate difference — a ceremony's foot is COMPACT,
+ *  because the card is a page of writing and not a keypad — and it is stated
+ *  once, as an override, where a reader can see it. */
 const btn: React.CSSProperties = {
-  fontSize: 15,
+  ...cardBtn,
+  fontSize: 16,
   padding: "8px 16px",
-  cursor: "pointer",
-  fontFamily: "var(--font-label, inherit)",
-  fontWeight: 600,
+  minHeight: 40,
 };
 
 /** Pointer-capture touch buttons writing straight into the shared pad.
