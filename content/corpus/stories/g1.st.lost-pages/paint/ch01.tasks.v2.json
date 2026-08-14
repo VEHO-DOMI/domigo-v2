@@ -111,7 +111,7 @@
    ],
    "stimulus": {
     "type": "entity",
-    "showsDe": "Der Radiergummi ist ganz grau geworden",
+    "showsDe": "Der kleine Hüpfer ist ganz grau geworden",
     "art": "eraser_a"
    },
    "storyDe": "Sag, wer er ist — dann gib ihm die Farbe!",
@@ -935,7 +935,7 @@
    ],
    "stimulus": {
     "type": "entity",
-    "showsDe": "Das Heft flattert grau und blass vorbei",
+    "showsDe": "Ein Stapel Seiten flattert grau vorbei",
     "art": "heft_a"
    },
    "storyDe": "Sag, wer es ist — dann gib ihm die Farbe!",
@@ -1463,7 +1463,7 @@
    "kind": "mistake",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Die Tafel schreibt einen Satz über sich selbst",
+    "showsDe": "Sie schreibt einen Satz über sich selbst",
     "art": "tafel_land1"
    },
    "storyDe": "Ein Wort stimmt nicht — tipp es an!",
@@ -1636,9 +1636,9 @@
    "grounding": "u01 phrase: how are you",
    "evidence": [
     "you",
-    "How",
     "?",
-    "are"
+    "are",
+    "How"
    ]
   },
   {
@@ -1766,7 +1766,7 @@
    ],
    "stimulus": {
     "type": "entity",
-    "showsDe": "Eine Schere liegt ganz grau unter dem Pult",
+    "showsDe": "Zwei graue Griffe liegen unter dem Pult",
     "art": "obj_scissors_a"
    },
    "storyDe": "Sag, was sie ist — dann gib ihr die Farbe!",

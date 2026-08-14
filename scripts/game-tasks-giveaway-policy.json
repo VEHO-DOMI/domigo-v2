@@ -1,0 +1,65 @@
+{
+  "schema": "taskGiveawayPolicy@1",
+  "note": "R5-W3 · G2 · Die Daten der Verrats-Schicht (Schicht 18 in scripts/check-game-tasks.mjs). Zwei Abschnitte: deGloss = die deutschen Entsprechungen, die der Korpus NICHT selbst mitbringt; declared = die Karten, bei denen der deutsche Rahmen die Aufgabe IST. Die Wordbank (content/corpus/units/g1-u01/wordbank.json) traegt zu jedem ihrer Eintraege ein de[] und ist die erste Quelle — hier steht nur, was dort fehlt. Kein Eintrag ohne Grund (Hausregel: eine Stellschraube ist nie nackt).",
+  "deGloss": {
+    "g1u01.x.numbers": {
+      "reason": "Die Zahlen sind bewusst KEINE Wordbank-Eintraege, sondern eine lexiconClass (variety.ts §lexiconClasses) — deshalb bringen sie keine deutsche Seite mit. Ohne diese Tabelle waere >Dreh das Rad auf die dreizehn< neben der Antwort >thirteen< unsichtbar.",
+      "excluded": "ein / eine stehen absichtlich NICHT hier: als unbestimmter Artikel stehen sie in fast jedem deutschen Satz und wuerden gegen die Antwort >one< dauernd falschen Alarm schlagen. Das Zahlwort >eins< ist aufgenommen.",
+      "pairs": {
+        "eins": ["one"],
+        "zwei": ["two"],
+        "drei": ["three"],
+        "vier": ["four"],
+        "fünf": ["five"],
+        "sechs": ["six"],
+        "sieben": ["seven"],
+        "acht": ["eight"],
+        "neun": ["nine"],
+        "zehn": ["ten"],
+        "elf": ["eleven"],
+        "zwölf": ["twelve"],
+        "dreizehn": ["thirteen"],
+        "vierzehn": ["fourteen"],
+        "fünfzehn": ["fifteen"],
+        "sechzehn": ["sixteen"],
+        "siebzehn": ["seventeen"],
+        "achtzehn": ["eighteen"],
+        "neunzehn": ["nineteen"],
+        "zwanzig": ["twenty"],
+        "einundzwanzig": ["twenty-one"],
+        "zweiundzwanzig": ["twenty-two"],
+        "dreiundzwanzig": ["twenty-three"],
+        "vierundzwanzig": ["twenty-four"],
+        "fünfundzwanzig": ["twenty-five"]
+      }
+    },
+    "g1u01.x.colours": {
+      "reason": "Gleicher Grund wie bei den Zahlen: die Farben sind eine lexiconClass ohne deutsche Seite. Genau hier sitzt die Rettungs-Karte (>Ich war blau wie das Meer!< neben der Antwort >blue<) — sichtbar machen, dann deklarieren.",
+      "pairs": {
+        "rot": ["red"],
+        "gelb": ["yellow"],
+        "blau": ["blue"],
+        "grün": ["green"],
+        "orange": ["orange"],
+        "braun": ["brown"],
+        "rosa": ["pink"],
+        "weiß": ["white"],
+        "weiss": ["white"],
+        "schwarz": ["black"]
+      }
+    }
+  },
+  "families": [
+    {
+      "id": "farb-gleichnis",
+      "match": { "kind": "restore" },
+      "fields": ["colourAskDe"],
+      "exempts": ["18b"],
+      "reason": "Das Wesen steht GRAU auf dem Schirm (Entsaettigungs-Gesetz, doc 41 §2) — seine Farbe ist nicht zu sehen, also muss die deutsche Zeile sie sagen, sonst ist Schritt 2 unloesbar. Der deutsche Rahmen IST hier die Aufgabe: deutsche Farbe rein, englisches Farbwort raus.",
+      "doc": "packages/content-schema/src/game-tasks.ts (restore: >This is why the German ask is a REQUIRED field rather than flavour<) · D-34",
+      "obliges": {
+        "simileDe": "Die Ausnahme kauft eine STRENGERE Pflicht: die Farbzeile muss ein GLEICHNIS sein (>Ich war blau wie das Meer!<), nie eine nackte Forderung (>Gib mir mein Gelb!<). Das Bild traegt die Bedeutung, das Farbwort allein waere eine Vokabelabfrage im Rahmen einer Geschichte. Die Karte obj-scissors zeigt, wie weit das traegt: >Ich war wie eine Mandarine!< kommt ganz ohne deutsches Farbwort aus."
+      }
+    }
+  ]
+}

@@ -419,3 +419,37 @@ Register-Abschnitt einen datierten Nachtrag, der sagt, welche Quelle maßgeblich
 *Vorbeugend:* wo zwei Wellen gleichzeitig an ein Register anhängen, ist das ein heißes
 Feld (P-8) — entweder serialisieren, oder die Nummernvergabe erst beim Merge festlegen.
 
+
+**PB-41 · Die Form des Codes ist die Form der Lücke.** *(G2, 2026-08-14.)* Die
+Giveaway-Prüfung war neun handgeschriebene Aufrufe in einem `switch` — und vier Arten
+hatten schlicht keinen. Kein Gesetz war verletzt, kein Test rot, das Tor meldete seit
+Monaten grün über alle 54 Karten: die Regel galt einfach für 42 davon. Genau diese vier
+Arten sind die Boss-Batterie, also war die schärfste Prüfung des Kapitels die
+ungeprüfte. *Regel:* Wo eine Regel je Fall EINZELN angeschlossen wird, ist die Zahl der
+Anschlüsse die eigentliche Abdeckung — nicht die Existenz der Regel. Solche Regeln
+bekommen EINE Projektion über die ganze Union (hier `answerSurfaceOf`-Muster), damit der
+erschöpfende `switch` das Vergessen unmöglich macht. Und: **frag bei jedem Gesetz, wie
+viele der Fälle es wirklich erreicht, bevor du seinem Grün glaubst.**
+
+**PB-42 · Ein Tamper kann durch das FALSCHE Gesetz rot werden.** *(G2, 2026-08-14 —
+Schwesterfall zu PB-15.)* Der Tamper für die Tafel-Kreide (»die Kreide trägt die
+Korrektur«) schlug rot — aber nicht bei der neuen Schicht 18e, sondern bei Schicht 1,
+deren Boss-Evidence-Invariante schon verlangt, dass das fehlerhafte Wort auf der Tafel
+steht. Gezählt hätte er trotzdem: rot ist rot. Bewiesen hätte er nichts. Aufgefallen ist
+es nur, weil derselbe Tamper einmal am echten Kartensatz und einmal am Selbsttest lief
+und die beiden verschiedene Meldungen brachten. *Regel:* Ein Tamper zählt erst, wenn die
+Meldung geprüft wird, die er auslöst — nicht die Tatsache, dass etwas rot wurde. Der
+Fall gehört so gebaut, dass NUR das neue Gesetz greifen kann (hier: den fehlerhaften
+Satz stehen lassen und die Korrektur DANEBEN kreiden).
+
+**PB-43 · Ein blinder Prüfer, der ein Bild nicht sehen kann, urteilt über eine halbe
+Karte.** *(G2, 2026-08-14.)* Zwei frische Prüfer nannten dieselbe Boss-Karte unabhängig
+»nicht lösbar«: im Text stehe nicht, wer da spricht. Am Bildschirm ist es unübersehbar —
+ihr Porträt sitzt oben auf der Karte und dieselbe Tafel steht daneben im Raum. Dazu kam
+ein echter Fund derselben Familie: die Projektion zeigte bei `mistake`-Karten den Satz,
+aber nie die drei Verbesserungs-Knöpfe, die das Kind danach drückt — jeder Blind-Löser
+hat dort seit jeher eine halbe Aufgabe beurteilt (Gegenstück zum Memory-Fall PK-R3b·W4b,
+wo die Projektion zu VIEL zeigte). *Regel:* Vor jeder Blind-Runde prüfen, ob die
+Projektion die Karte VOLLSTÄNDIG trägt; wo die Antwort am Bild hängt, wird am Bildschirm
+geurteilt, nicht am Text. Ein »unlösbar« aus einer unvollständigen Projektion ist ein
+Befund über das Werkzeug, nicht über die Karte.

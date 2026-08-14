@@ -1,7 +1,7 @@
 // PB-T6 · THE gameTasks@2 AUTHORING GATE (run: node --experimental-strip-types
 // scripts/check-game-tasks.mjs; exit 1 on any violation; CI-runnable).
 //
-// Seventeen layers over every content/corpus/stories/*/paint/*.tasks.v2.json:
+// Eighteen layers over every content/corpus/stories/*/paint/*.tasks.v2.json:
 //   1. SCHEMA + cross-field invariants — GameTasksFileV2 (content-schema),
 //      which now also carries the BINDING LAW (entity stimulus ⟺ skins).
 //   2. GROUNDING — every student-visible English token is in the unit lexicon.
@@ -35,6 +35,14 @@
 //      Their exemptions live in scripts/game-tasks-variety-policy.json, where an
 //      exemption must buy a stricter obligation (0d) and must suppress something
 //      real (0k) or it is deleted.
+//  18. THE GIVEAWAY CLASS (R5-W3 · G2, R25) — layer 3's giveaway rule reached
+//      five of nine kinds and two of six student-visible fields. It now reaches
+//      ALL of them, through one projection per card instead of nine hand-written
+//      call sites, and it can read across languages. Sub-laws: 18a same-language
+//      leak · 18b the GERMAN equivalent of the answer (the wordbank's own de[]
+//      plus the number/colour table in scripts/game-tasks-giveaway-policy.json)
+//      · 18c/18d the declared exception, policed in both directions · 18e the
+//      guardian's board (evidence) — the chalk may not carry the solution.
 //
 // (Beifang, R5-W2 · G1: this header said "Seven layers" while the file enforced
 // twelve, and it skipped straight from 9 to 11 although layer 10 — the
@@ -45,7 +53,7 @@
 // (same lexicon, same law) — kept compact and local on purpose.
 import fs from "node:fs";
 import path from "node:path";
-import { GameTasksFileV2, MAX_LINE_DE, registerErrorsDe } from "../packages/content-schema/src/game-tasks.ts";
+import { GameTasksFileV2, MAX_LINE_DE, registerErrorsDe, seededShuffle } from "../packages/content-schema/src/game-tasks.ts";
 import { CALM_DE, TIMED_USES, URGENCY_DE, spokenDeOf, timerClassFor } from "../packages/game-paint/src/cards/timer.ts";
 // PK-R6 · D: the reawakening's length is a LAW, not a number this file may
 // restate — imported from the engine that plays it (doc 44 §3.3's six rounds).
@@ -88,7 +96,16 @@ const walkArt = (dir) => {
 walkArt(PAINT_ART_ROOT);
 
 let failures = 0;
-const fail = (where, msg) => { failures += 1; console.error(`✗ ${where}: ${msg}`); };
+/** When the selftest is driving, failures are COLLECTED instead of printed: a
+ *  deliberate red light on stderr reads exactly like a real one, and the cases
+ *  have to assert on the message anyway (E5's rebase lesson — a selftest that
+ *  only counts failures passes when the wrong law fires). */
+let captured = null;
+const fail = (where, msg) => {
+  failures += 1;
+  if (captured !== null) { captured.push(`${where}: ${msg}`); return; }
+  console.error(`✗ ${where}: ${msg}`);
+};
 
 // ── grounding vocabulary (mirrors check-story-grounding.mjs) ──
 const words = new Set(lex.words.map((w) => w.toLowerCase()));
@@ -117,10 +134,281 @@ function checkEn(where, en) {
 function checkDe(where, de) {
   for (const msg of registerErrorsDe(de)) fail(where, msg);
 }
-// giveaway: a content answer-token must not appear in the task's own prompt/story
-function checkGiveaway(where, answer, ...deenFields) {
-  const ansToks = new Set(tokens(answer).filter((t) => t.length > 2 && !FREE.has(t)));
-  for (const f of deenFields) for (const t of tokens(f)) if (ansToks.has(t)) fail(where, `giveaway: answer token "${t}" appears in a prompt/story field`);
+// ── 18 · THE GIVEAWAY CLASS (R5-W3 · G2 · R25) ───────────────────────────────
+// A giveaway is an UNINTENDED reveal (doc 29 §4.3): the card already contains
+// its own answer, so the child practises nothing. The rule existed; its REACH
+// did not. Until this layer it was nine hand-written call sites, and four kinds
+// — order, oddone, mistake, memory — had simply never been given one. Those four
+// are exactly the boss battery: all six boss cards were ungated, and so were the
+// six oddone cards out in the field (12 of 54).
+//
+// Three things make the difference between a law and a nuisance here, and all
+// three were measured on the shipped chapter before a line of this was written:
+//
+//  1. ONLY THE DISCRIMINATING WORDS COUNT. A word the card also puts in a
+//     distractor cannot spoil anything — "Zwei davon" is harmless next to the
+//     options `two books / one books / two book`, because "two" does not choose.
+//     (The refinement is not new: scripts/check-story-grounding.mjs argued it for
+//     v1 and it never reached v2.) A blunt sweep flags 51 places on this chapter;
+//     with this rule and the next, 13 remain — and those 13 are real.
+//  2. ONLY THE FIRST SIGHT COUNTS. The hint ladder (deDesc/deWord) exists to
+//     reveal, one rung at a time, AFTER a wrong attempt. Policing it as a leak
+//     would make the ladder unauthorable. Koki's ruling, 2026-08-14: the gate is
+//     hard on what the child sees BEFORE answering, and the hints stay free.
+//  3. THE ANSWER HAS A GERMAN SIDE. `checkGiveaway` compared spellings, so
+//     "Die Tafel schreibt einen Satz über sich selbst" next to the answer
+//     `board` was invisible — on every boss window of the chapter. The German
+//     side comes from the corpus itself (wordbank de[]), not from a table
+//     invented here; only what the corpus cannot know (numbers, colours — they
+//     are lexiconClasses, not wordbank entries) is authored, with its reason.
+const GIVEAWAY_POLICY_FILE = "scripts/game-tasks-giveaway-policy.json";
+const givePolicy = JSON.parse(fs.readFileSync(GIVEAWAY_POLICY_FILE, "utf8"));
+
+/** Closed-class words carry no lexical load: "it", "is", "a" in an answer
+ *  discriminate nothing, and the old `length > 2` filter was a proxy for this
+ *  that also threw away `red`, `two`, `ten` — three of the words this chapter
+ *  most wants to protect. */
+const CLOSED = new Set(["the", "a", "an", "is", "are", "am", "it", "it's", "i", "i'm", "you", "your", "my", "to", "in", "on", "at", "and", "or", "not", "what", "this", "that", "of", "he", "she", "they", "we"]);
+const contentToks = (s) => tokens(s).filter((t) => !CLOSED.has(t) && !FREE.has(t));
+
+/** deutsch → englisch. The wordbank speaks first (it is the corpus), the policy
+ *  file only fills what the wordbank structurally cannot carry. */
+function buildDeGloss() {
+  const map = new Map();
+  const add = (de, en) => {
+    const key = String(de).toLowerCase().trim();
+    if (key.length === 0) return;
+    if (!map.has(key)) map.set(key, new Set());
+    map.get(key).add(String(en).toLowerCase().trim());
+  };
+  for (const e of wordbank) for (const de of e.de ?? []) add(de, e.en);
+  for (const [cls, block] of Object.entries(givePolicy.deGloss ?? {})) {
+    for (const [de, ens] of Object.entries(block.pairs ?? {})) {
+      for (const en of ens) {
+        add(de, en);
+        // 18f · the English side is a claim about the unit. A gloss pointing at a
+        // word this unit never teaches would quietly widen the law past the corpus.
+        for (const tok of tokens(en)) {
+          if (!grounded(tok, new Set())) fail(`giveaway-policy:${cls}`, `18f · glosses "${de}" as "${en}", but "${tok}" is not in MORE! 1 Unit 1`);
+        }
+      }
+    }
+    if (!block.reason) fail(`giveaway-policy:${cls}`, "18f · a gloss block must say WHY it exists (the reason is the review surface)");
+  }
+  return map;
+}
+
+/** What the card OFFERS the child to choose between — the surface a distractor
+ *  lives on. Wider than the answer: this is what makes a shared word harmless. */
+function offeredOf(t) {
+  switch (t.kind) {
+    case "choice": return t.options;
+    case "typed": return [t.answer, ...(t.accept ?? [])];
+    case "spell": return [t.answer];
+    case "wheel": return [...t.values, t.shown];
+    case "order": return t.orderedChips;
+    case "oddone": return t.items;
+    case "mistake": return [...t.sentence, ...(t.correctionOptions ?? [])];
+    case "memory": return t.pairs.flatMap((p) => [p.a, p.b]);
+    case "restore": return [...t.nameOptions, ...t.colourOptions];
+    default: return [];
+  }
+}
+
+/** The words that actually CHOOSE — the answer minus everything a distractor
+ *  also says. An exhaustive switch on the discriminated union, so a tenth kind
+ *  cannot slip past this layer the way four kinds slipped past the old one. */
+function decidingWordsOf(t) {
+  const only = (answer, alternatives) => {
+    const shared = new Set(alternatives.flatMap((a) => contentToks(a)));
+    return contentToks(answer).filter((w) => !shared.has(w));
+  };
+  switch (t.kind) {
+    case "choice": return only(t.answer, t.options.filter((o) => o !== t.answer));
+    case "typed": return [...new Set([t.answer, ...(t.accept ?? [])].flatMap((a) => contentToks(a)))];
+    case "spell": return contentToks(t.answer);
+    case "wheel": return only(t.answer, t.values.filter((v) => v !== t.answer));
+    // an order card is answered by a SEQUENCE, not by a word — no word of it can
+    // be given away, and the leak lives on the board instead (18e)
+    case "order": return [];
+    case "oddone": return [...new Set(t.correct.flatMap((c) => only(c, t.items.filter((i) => !t.correct.includes(i)))))];
+    case "mistake": return only(t.fix.correction ?? "", (t.correctionOptions ?? []).filter((o) => o !== t.fix.correction));
+    // every English word on a memory board is half of a pair the child must find
+    case "memory": return [...new Set(t.pairs.flatMap((p) => contentToks(p.b)))];
+    case "restore": return [
+      ...only(t.name, t.nameOptions.filter((o) => o !== t.name)),
+      ...only(t.colour, t.colourOptions.filter((o) => o !== t.colour)),
+    ];
+    default: return [];
+  }
+}
+
+/** What the child reads BEFORE answering. `de` marks the fields the cross-language
+ *  law may read — a German needle hunted through English prose would fire on every
+ *  word the two languages share. */
+function firstSightOf(t) {
+  const out = [];
+  if (t.promptEn) out.push({ field: "promptEn", text: t.promptEn, de: false });
+  out.push({ field: "storyDe", text: t.storyDe, de: true });
+  if (t.stimulus?.type === "entity") out.push({ field: "showsDe", text: t.stimulus.showsDe, de: true });
+  if (t.stimulus?.type === "image") out.push({ field: "altDe", text: t.stimulus.altDe, de: true });
+  if (t.kind === "restore") out.push({ field: "colourAskDe", text: t.colourAskDe, de: true });
+  return out;
+}
+
+/** What the guardian's chalk may legitimately show (PaintScene.writeEvidence).
+ *  Deliberately NARROWER than `offeredOf`: a mistake card offers its corrections
+ *  as buttons, but the board shows only her false sentence. */
+function boardAllowanceOf(t) {
+  switch (t.kind) {
+    case "oddone": return t.items;
+    case "order": return t.orderedChips;
+    case "mistake": return t.sentence;
+    case "memory": return t.pairs.map((p) => p.a);
+    default: return offeredOf(t);
+  }
+}
+
+/** WHERE THE GERMAN IS ALLOWED TO SAY IT — derived, not declared.
+ *
+ * Two of this chapter's card FORMS are built on a German scaffold, and for them
+ * a cross-language match is the pedagogy rather than a leak. Both are read off
+ * the content's own declared axes, so nobody has to maintain a list:
+ *
+ *  · `form: "command"` — the form IS "tell someone to do or not do something"
+ *    (TASK_FORMS, content-schema). „Sag ihm, er soll ZUHÖREN!" names the deed in
+ *    German so the child can produce it in English; strip the German and there is
+ *    no task left. The obligation this exemption buys is already banked and
+ *    already enforced: a card only HAS a form because layer 13 made it declare
+ *    one, and layers 14–16 hold that declaration to voice, rhythm and coverage.
+ *  · `use: "rescue"` — the cage cards. The portrait on these is the CAGE
+ *    (`satchel_*`), never the inmate: the being behind the bars has no painted
+ *    cell, so the German line is the only thing that says who is in there
+ *    (D-34, verbatim: „Die Rettungs-Karten NENNEN ihn deshalb").
+ *
+ * Everything else stays under the law — including `form: "name-it"`, where the
+ * being stands painted and desaturated on screen and the ask is literally "pick
+ * its English name". Six of that form's nine cards already describe instead of
+ * naming („ein kleiner Kasten", „eine graue Tasche", „ein flacher Bildschirm");
+ * the three that named it were the finding, not the norm. */
+const scaffoldFieldsOf = (t) => new Set([
+  ...(t.form === "command" ? ["storyDe"] : []),
+  ...(t.use === "rescue" ? ["showsDe"] : []),
+]);
+
+/** Layer 18 for ONE card. Returns failures instead of printing them, so the
+ *  selftest can run the real law over a prepared traitor card, and so 18c can
+ *  run it twice — once with the family honoured, once bare. */
+function giveawayFailures(t, deGloss, declaredFields) {
+  const out = [];
+  const deciding = decidingWordsOf(t);
+  const scaffold = scaffoldFieldsOf(t);
+  for (const { field, text, de } of firstSightOf(t)) {
+    if (!text) continue;
+    if (declaredFields.has(field)) continue;
+    // 18a · the same-language leak
+    for (const w of deciding) {
+      if (hasWord(text, w)) out.push({ law: "18a", field, detail: `giveaway: the deciding answer word "${w}" already stands in ${field} — "${text}"` });
+    }
+    if (!de || scaffold.has(field)) continue;
+    // 18b · the German equivalent of the answer
+    const decidingSet = new Set(deciding);
+    for (const [deWord, ens] of deGloss) {
+      if (!hasWord(text, deWord)) continue;
+      for (const en of ens) {
+        const enToks = contentToks(en);
+        if (enToks.length > 0 && enToks.every((x) => decidingSet.has(x))) {
+          out.push({ law: "18b", field, detail: `giveaway across languages: ${field} says "${deWord}", which is the German for the answer "${en}" — "${text}"` });
+        }
+      }
+    }
+  }
+  // 18e · the guardian's board
+  if (t.evidence) {
+    const allowed = new Set(boardAllowanceOf(t).flatMap((s) => tokens(s)));
+    for (const line of t.evidence) {
+      for (const w of tokens(line)) {
+        if (!allowed.has(w)) out.push({ law: "18e", field: "evidence", detail: `the board chalks "${w}", which this card never puts in front of the child — the chalk may only show what the card itself offers ("${line}")` });
+      }
+    }
+    if (t.kind === "order") {
+      const same = (a, b) => a.length === b.length && a.every((x, i) => x === b[i]);
+      const sorted = (a) => [...a].sort();
+      if (!same(sorted(t.evidence), sorted(t.orderedChips))) {
+        out.push({ law: "18e", field: "evidence", detail: `the board shows [${t.evidence.join(" ")}] but the chips are [${t.orderedChips.join(" ")}] — the child reorders what she reads, so the board must carry exactly those chips` });
+      } else if (same(t.evidence, t.orderedChips)) {
+        out.push({ law: "18e", field: "evidence", detail: `the board already shows the SOLVED order [${t.evidence.join(" ")}] — the child only has to copy it` });
+      } else {
+        const shuffled = seededShuffle(t.orderedChips, t.id);
+        if (!same(t.evidence, shuffled)) {
+          out.push({ law: "18e", field: "evidence", detail: `the board shows [${t.evidence.join(" ")}] while the card deals the chips as [${shuffled.join(" ")}] — two different scrambles of one puzzle; the board is the deal (boss.o1's own grounding line states this)` });
+        }
+      }
+    }
+  }
+  return out;
+}
+
+const DE_GLOSS = buildDeGloss();
+
+// ── 18c/18d · THE DECLARED EXCEPTION ─────────────────────────────────────────
+// Where the reveal cannot be derived from a form (above), it is DECLARED — the
+// house shape twice over: doc 29 §4.3's identityAnswer/identityNote (declare the
+// intended reveal, then police the declaration) and the variety policy's family
+// device (match + reason + doc + a STRICTER obligation bought in return).
+//
+// Policed in both directions, because a one-way exception rots into a blanket
+// pass. A family must match a card that exists, name a field that card really
+// shows, carry a reason in prose, and buy an obligation (18d) — and it must
+// actually suppress a failure (18c, the 0k device): an exemption nobody needs
+// reads as a considered relaxation and is really dead text.
+const FAMILIES = givePolicy.families ?? [];
+const familyMatches = (f, t) =>
+  (f.match?.kind === undefined || f.match.kind === t.kind) &&
+  (f.match?.use === undefined || f.match.use === t.use) &&
+  (f.match?.form === undefined || f.match.form === t.form);
+const declaredFieldsFor = (t) => {
+  const out = new Set();
+  for (const f of FAMILIES) if (familyMatches(f, t)) for (const field of f.fields ?? []) out.add(field);
+  return out;
+};
+
+/** The obligations a family buys. Each is ENFORCED, not merely declared —
+ *  an obligation nobody checks is a sentence, not a duty. */
+const OBLIGATIONS = {
+  // a colour ask must carry a picture, never a bare demand
+  simileDe: (t, field, text) => (/\bwie\b/i.test(text) ? null : `obliges "simileDe", but ${field} names the colour without a comparison — "${text}"`),
+};
+
+function checkGiveawayFamilies(file, items) {
+  for (const f of FAMILIES) {
+    const where = `${file} giveaway-policy:${f.id}`;
+    const covered = items.filter((t) => familyMatches(f, t));
+    if (covered.length === 0) { fail(where, "18d · family matches no card any more — a stale exemption hides the next gap"); continue; }
+    if (!f.reason || f.reason.trim().length === 0) fail(where, "18d · a family must say WHY (the reason is the review surface)");
+    if ((f.fields ?? []).length === 0) fail(where, "18d · a family that names no field exempts nothing");
+    if (Object.keys(f.obliges ?? {}).length === 0) fail(where, `18d · exempts [${(f.exempts ?? []).join(" · ")}] and obliges nothing — an exemption buys a stricter obligation, never a pass`);
+    // 18c · honoured against bare: does this family suppress anything real?
+    let suppressed = 0;
+    for (const t of covered) {
+      const bare = giveawayFailures(t, DE_GLOSS, new Set());
+      suppressed += bare.filter((e) => (f.fields ?? []).includes(e.field)).length;
+      // and the obligation it bought, on every card it covers
+      const shown = new Map(firstSightOf(t).map((x) => [x.field, x.text]));
+      for (const field of f.fields ?? []) {
+        if (!shown.has(field)) { fail(`${where} ${t.id}`, `18d · exempts "${field}", which this card never shows the child`); continue; }
+        for (const [name, check] of Object.entries(OBLIGATIONS)) {
+          if (f.obliges?.[name] === undefined) continue;
+          const msg = check(t, field, shown.get(field));
+          if (msg !== null) fail(`${file} ${t.id}`, `18d · ${msg}`);
+        }
+      }
+      for (const name of Object.keys(f.obliges ?? {})) {
+        if (OBLIGATIONS[name] === undefined) fail(where, `18d · obliges "${name}", which nothing enforces — an obligation nobody checks is a sentence, not a duty`);
+      }
+    }
+    if (suppressed === 0) fail(where, `18c · exempts ${(f.fields ?? []).join(" · ")}, but nothing on those fields is flagged with or without the family — an exemption nobody needs is dead text. Delete it`);
+  }
 }
 
 // ── the English + German surface of each kind ──
@@ -141,19 +429,23 @@ function checkItem(chId, t) {
   if (palette && FIELD_USES.has(t.use) && !palette.has(t.kind)) {
     fail(w, `palette: ${chId}'s field is [${[...palette].join(" · ")}] — a "${t.kind}" card cannot be served as "${t.use}" here (doc 41 §1)`);
   }
-  // English surface + giveaway, per kind
+  // 18 · THE GIVEAWAY CLASS — one projection for all nine kinds. This used to be
+  // five `checkGiveaway(...)` calls hand-written into the switch below, which is
+  // why four kinds had none: the shape of the code was the shape of the gap.
+  for (const e of giveawayFailures(t, DE_GLOSS, declaredFieldsFor(t))) fail(w, `${e.law} · ${e.detail}`);
+  // English surface, per kind
   checkEn(w, t.promptEn);
   switch (t.kind) {
-    case "choice": t.options.forEach((o) => checkEn(w, o)); checkEn(w, t.answer); checkGiveaway(w, t.answer, t.promptEn, t.storyDe); break;
-    case "typed": checkEn(w, t.answer); (t.accept ?? []).forEach((a) => checkEn(w, a)); checkGiveaway(w, t.answer, t.promptEn, t.storyDe); break;
-    case "spell": checkEn(w, t.answer); checkGiveaway(w, t.answer, t.promptEn, t.storyDe); break;
+    case "choice": t.options.forEach((o) => checkEn(w, o)); checkEn(w, t.answer); break;
+    case "typed": checkEn(w, t.answer); (t.accept ?? []).forEach((a) => checkEn(w, a)); break;
+    case "spell": checkEn(w, t.answer); break;
     // PK-R6 · F: `shown` is grounded too. On a word-to-digit wheel the ring is
     // digits, so `values` and `answer` carry NO English at all — the datum the
     // skin draws (skins.tsx renders `state.shown`) is then the only English on
     // the card, and until now it was the one student-visible string layer 2
     // never read. An out-of-unit number word could have shipped through a green
     // grounding check.
-    case "wheel": t.values.forEach((v) => checkEn(w, v)); checkEn(w, t.answer); checkEn(w, t.shown); checkGiveaway(w, t.answer, t.promptEn, t.storyDe); break;
+    case "wheel": t.values.forEach((v) => checkEn(w, v)); checkEn(w, t.answer); checkEn(w, t.shown); break;
     case "order": t.orderedChips.forEach((c) => checkEn(w, c)); break;
     case "oddone": t.items.forEach((i) => checkEn(w, i)); break;
     case "mistake": t.sentence.forEach((s) => checkEn(w, s)); checkEn(w, t.fix.correction); (t.correctionOptions ?? []).forEach((o) => checkEn(w, o)); break;
@@ -165,11 +457,9 @@ function checkItem(chId, t) {
       checkDe(w, t.colourAskDe);
       if (t.colourAskDe.length > MAX_LINE) fail(w, `length: colourAskDe is ${t.colourAskDe.length} chars (max ${MAX_LINE}) — "${t.colourAskDe}"`);
       // BOTH answers must be earned. The colour ask is German and the answer is
-      // English, so a naive token compare would never catch „gib mir mein Gelb"
-      // next to „yellow" — but it does catch the real leak, an English colour
-      // word written into the very line that asks for it.
-      checkGiveaway(w, t.name, t.promptEn, t.storyDe, t.colourAskDe);
-      checkGiveaway(w, t.colour, t.promptEn, t.storyDe, t.colourAskDe);
+      // English — the case this file used to name as knowingly out of reach
+      // („gib mir mein Gelb" next to `yellow`). Layer 18b reaches it now, and
+      // where the German ask IS the task the card declares it (18c/18d).
       break;
   }
 }
@@ -515,6 +805,81 @@ function checkNoTwins(file, items) {
   }
 }
 
+// ── SELFTEST (`--selftest`) — the red light of layer 18, seen once per class ──
+// Until today this gate had no tamper of its own: eighteen laws and not one
+// proof that any of them can go red. PB-15 is the reason the cases below look
+// the way they do — a tamper only proves something when it runs on the case
+// where RIGHT and PLAUSIBLY-WRONG come apart. So every traitor card here is
+// paired with the honest card it is one word away from, and two of the cases
+// exist purely to stay GREEN.
+//
+// The traitors run through the REAL law (`giveawayFailures`), not a copy of it.
+if (process.argv.includes("--selftest")) {
+  const card = (over) => ({ id: "self.1", use: "encounter", kind: "choice", storyDe: "Sag es ihr!", stimulus: { type: "entity", showsDe: "Ein Ding steht da" }, ...over });
+  const laws = (t, fields = new Set()) => giveawayFailures(t, DE_GLOSS, fields).map((e) => e.law);
+  const detail = (t) => giveawayFailures(t, DE_GLOSS, new Set()).map((e) => e.detail).join(" | ");
+  /** Run the family hygiene over one restore card and hand back what it SAID —
+   *  the messages, not a count. */
+  const familyMsgs = (colourAskDe) => {
+    captured = [];
+    checkGiveawayFamilies("selftest", [card({ kind: "restore", name: "pen", nameOptions: ["pen", "book", "chair", "desk"], colour: "yellow", colourOptions: ["yellow", "red", "blue"], colourAskDe })]);
+    const out = captured;
+    captured = null;
+    return out;
+  };
+
+  // the honest shape each traitor is one word away from
+  const honestOddone = card({ kind: "oddone", storyDe: "Welches Wort ist KEINE Farbe?", items: ["green", "red", "brown", "window"], correct: ["window"], evidence: ["green", "red", "brown", "window"] });
+  const honestOrder = card({ id: "boss.o1", kind: "order", storyDe: "Ordne ihre Zahlen!", orderedChips: ["nine", "ten", "eleven", "twelve"], evidence: seededShuffle(["nine", "ten", "eleven", "twelve"], "boss.o1") });
+  const honestMistake = card({ kind: "mistake", sentence: ["This", "is", "a", "door", "."], errorIndex: 3, fix: { mode: "replace", correction: "board" }, correctionOptions: ["board", "floor", "chair"], evidence: ["This is a door."], stimulus: { type: "entity", showsDe: "Sie schreibt einen Satz über sich selbst" } });
+  const honestMemory = card({ kind: "memory", storyDe: "Finde zu jeder Zahl das Wort!", pairs: [{ a: "3", b: "three" }, { a: "12", b: "twelve" }], evidence: ["3", "12"] });
+  // merle.r4, verbatim in shape: the German DOES say „Fenster" and the answer IS
+  // „Close the window!" — and it does not spoil anything, because two of the three
+  // options say `window` too. The blunt rule this layer replaces flags it.
+  const sharedWord = card({ storyDe: "Sag es ihr!", stimulus: { type: "entity", showsDe: "Merle hat das Fenster weit aufgerissen" }, options: ["Open the window!", "Clean the board!", "Close the window!"], answer: "Close the window!" });
+
+  const cases = [
+    // ── the four kinds that had no giveaway rule at all ──
+    ["order · the board already shows the solved order", laws(card({ ...honestOrder, evidence: ["nine", "ten", "eleven", "twelve"] })), (l) => l.includes("18e") && detail(card({ ...honestOrder, evidence: ["nine", "ten", "eleven", "twelve"] })).includes("SOLVED")],
+    ["order · the board carries a chip the card never deals", laws(card({ ...honestOrder, evidence: ["nine", "ten", "eleven", "thirteen"] })), (l) => l.includes("18e")],
+    ["oddone · the German names the odd one out", laws(card({ ...honestOddone, storyDe: "Welches Wort ist kein Fenster?" })), (l) => l.includes("18b")],
+    // PB-15 again, and this one was found BY the tamper: the first version of
+    // this case chalked „This is a board." — which layer 1's boss-evidence
+    // invariant already refuses (the chalk must contain the faulty word). It went
+    // red for the wrong reason, i.e. it proved nothing about 18e. The case that
+    // separates them keeps the faulty sentence AND adds the fix beside it.
+    ["mistake · the chalk carries the correction next to the error", laws(card({ ...honestMistake, evidence: ["This is a door.", "board"] })), (l) => l.includes("18e")],
+    ["memory · the German says one pair out loud", laws(card({ ...honestMemory, storyDe: "Finde die Zahl zwölf!" })), (l) => l.includes("18b")],
+    // ── the leak that really shipped, reproduced (A5's rule: a tamper is worth
+    //    most when it is the defect that was live) ──
+    ["boss.m1 · showsDe said »Die Tafel« while the answer was `board`", laws(card({ ...honestMistake, stimulus: { type: "entity", showsDe: "Die Tafel schreibt einen Satz über sich selbst" } })), (l) => l.includes("18b")],
+    // ── the same-language leak, on a kind that already had a rule ──
+    ["choice · the answer word stands in the story line", laws(card({ storyDe: "Sag: Listen!", options: ["Listen!", "Look!", "Come on!"], answer: "Listen!" })), (l) => l.includes("18a")],
+    // ── the exemption machinery, in both directions ──
+    ["a family that suppresses nothing is dead text", familyMsgs("Ich war wie die Sonne!"), (m) => m.some((x) => x.includes("18c") && x.includes("dead text"))],
+    ["an obligation nobody keeps: a bare colour demand", familyMsgs("Gib mir mein Gelb!"), (m) => m.some((x) => x.includes("18d") && x.includes("simileDe"))],
+    // ── and the cases that must stay GREEN ──
+    ["NON-TAMPER · the four honest boss shapes stay silent", [honestOddone, honestOrder, honestMistake, honestMemory].flatMap((t) => laws(t)), (l) => l.length === 0],
+    ["NON-TAMPER · a German word two options share does not spoil", laws(sharedWord), (l) => l.length === 0],
+    // ── PB-15: the pair that separates right from plausibly-wrong. Same card,
+    //    same German, same answer — only the distractors change. ──
+    ["…and the SAME card goes red once the distractors stop sharing it", laws(card({ ...sharedWord, options: ["Clean the board!", "Sit down!", "Close the window!"] })), (l) => l.includes("18b")],
+  ];
+
+  failures = 0;
+  let bad = 0;
+  for (const [name, got, ok] of cases) {
+    const pass = ok(got);
+    if (!pass) bad++;
+    console.log(`  ${pass ? "✓" : "✗"} ${name}${pass ? "" : ` → ${JSON.stringify(got)}`}`);
+  }
+  // House convention (check-fonts.mjs): a selftest EXITS 0 once it has seen its
+  // own red light — it must not paint CI red on every run.
+  if (bad > 0) { console.error(`check-game-tasks --selftest: ${bad} case(s) did NOT bite — layer 18 cannot be trusted`); process.exit(1); }
+  console.log(`check-game-tasks --selftest: OK — ${cases.length} cases, every red light seen and both green cases still green`);
+  process.exit(0);
+}
+
 // ── walk every *.tasks.v2.json ──
 const files = [];
 if (fs.existsSync(STORIES)) {
@@ -543,6 +908,7 @@ for (const file of files) {
   }
   const level = JSON.parse(fs.readFileSync(levelFile, "utf8"));
   checkAgainstLevel(file, level, parsed.data.items);
+  checkGiveawayFamilies(file, parsed.data.items);
   checkNoTwins(file, parsed.data.items);
   checkPortraits(file, parsed.data.items);
   checkTimerPolicy(file, parsed.data.items);
@@ -562,5 +928,5 @@ for (const file of files) {
   }
 }
 
-if (failures === 0) console.log(`check-game-tasks: OK — ${itemCount} tasks across ${files.length} file(s): schema, grounding, giveaway, register, binding, coverage, length, twins, portraits, timer-policy, form, voice, rhythm, distinctness, coverage-ledger all green`);
+if (failures === 0) console.log(`check-game-tasks: OK — ${itemCount} tasks across ${files.length} file(s): schema, grounding, giveaway, register, binding, coverage, length, twins, portraits, timer-policy, form, voice, rhythm, distinctness, coverage-ledger, giveaway-class (all nine kinds, both languages, the board) all green`);
 else { console.error(`check-game-tasks: ${failures} failure(s)`); process.exit(1); }

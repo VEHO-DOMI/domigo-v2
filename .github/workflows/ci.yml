@@ -56,7 +56,8 @@ jobs:
       - run: node scripts/check-story-grounding.mjs
       - run: node scripts/check-design-sheets.mjs
       - run: node --experimental-strip-types scripts/check-paint-art.mjs # PB-T2: no silent placeholder art
-      - run: node --experimental-strip-types scripts/check-game-tasks.mjs # PB-T6: gameTasks@2 schema + grounding + giveaway
+      - run: node --experimental-strip-types scripts/check-game-tasks.mjs --selftest # G2: the card gate's own red light must be reachable — one prepared traitor card per class
+      - run: node --experimental-strip-types scripts/check-game-tasks.mjs # PB-T6: gameTasks@2 schema + grounding + giveaway (layer 18: all nine kinds, both languages, the board)
       - run: node scripts/check-story-art.mjs # the story-art manifest and the prompt library agree, both ways
       - run: node scripts/check-level-design.mjs --selftest # B1: the gate's own red light must be reachable
       - run: node scripts/check-level-design.mjs # R5-P1/B1: stem dedup, vocab coverage, dossier↔level anchors, named thresholds
