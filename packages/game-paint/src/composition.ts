@@ -687,7 +687,33 @@ export const CH01_COMPOSITION: Record<string, CompositionSpec> = {
     key: 28,
     wash: { colors: [0x3a3348, 0x4a3f4e, 0x5d4f52] },
     far: shell("p4", 0.25),
-    midFar: midFarBand("p4", midBand("p4", 96)),
+    // R5-W2 · H1 · THE CLASS IS MISSING, AND NOW YOU CAN SEE IT.
+    //
+    // The arena's whole premise is the story bible's own line: „Reihen leerer
+    // Stühle in der Ferne — die Klasse fehlt, und das Loch ist die Erzählung."
+    // The art for it has been on disk all along and the level declares it —
+    // `arena.plates.mid = "band_p4_audience"`, rows of empty wooden SCHOOL
+    // chairs. It has never been drawn: `plates` feeds only the legacy backdrop,
+    // and `buildBackdrop` returns early for any composed phase, which p4 is.
+    // `pnpm check:paint-art` has been listing it under „loaded by nothing" the
+    // whole time. What rendered instead was `l2_p4` — blue Victorian armchairs
+    // and a sofa. The chapter fought its boss in a parlour.
+    //
+    // So the near band is the school chairs, and the armchairs keep the row
+    // BEHIND them: ghosted, smaller and slower, they read as the back of a hall
+    // rather than as competing furniture — and nothing has to be deleted for
+    // the premise to arrive. This is also what the victory beat needs; „warm
+    // light over the chair band" had no chair band to warm.
+    // …and the far row is where they belong, not the near one. The line says
+    // „in der FERNE", and `midFarBand` is exactly that: 0.68 of the height,
+    // lifted above the near row's top edge, parallax 0.36, ghosted to 0.62 —
+    // the back of a hall. Measured, not preferred: the value law (doc 36 §1)
+    // reads L2 off `mid`, and the school chairs' wood is brighter than the
+    // dusk band allows (22.3 % against a 14–21 % window, and the L1↔L2 lift
+    // collapsing to 2.8 %). Putting them near would have meant either bending
+    // a measured readability law or repainting a sheet this session may not.
+    // Behind the armchairs they cost nothing and read as what they are.
+    midFar: { ...midFarBand("p4", midBand("p4", 96)), segments: ["band_p4_audience"] },
     mid: midBand("p4", 96),
     // two stage lamps, nearly vertical and wider than a window's beam — the one
     // room in the chapter whose light is aimed rather than let in.
