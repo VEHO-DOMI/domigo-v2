@@ -1543,16 +1543,15 @@
    "kind": "order",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Die Tafel kritzelt ihre Wörter wild durcheinander",
+    "showsDe": "Die Tafel kritzelt vier Zahlen durcheinander",
     "art": "tafel_land1"
    },
-   "storyDe": "Bring ihre Wörter in die richtige Reihenfolge!",
+   "storyDe": "Ordne ihre Zahlen — die kleinste zuerst!",
    "orderedChips": [
-    "This",
-    "is",
-    "a",
-    "board",
-    "."
+    "nine",
+    "ten",
+    "eleven",
+    "twelve"
    ],
    "skins": [
     "tafel"
@@ -1561,16 +1560,14 @@
     "p4"
    ],
    "hints": {
-    "deDesc": "Fang mit „This“ an.",
-    "deWord": "This is a board."
+    "deDesc": "Zähl in Gedanken mit: neun, zehn, elf, zwölf."
    },
-   "grounding": "u01 frame: This is a … + board",
+   "grounding": "u01 numbers 1-20 (p3-Regel-Seite »Zahlen 1-20«); loest die Zahlen-Zusage der Arena ein (arena.md §Uebergabe). Evidence = die gemischte Auslage, die seededShuffle fuer diese id baut.",
    "evidence": [
-    "board",
-    "a",
-    "This",
-    "is",
-    "."
+    "twelve",
+    "ten",
+    "nine",
+    "eleven"
    ]
   },
   {
@@ -1633,8 +1630,8 @@
     "p4"
    ],
    "hints": {
-    "deDesc": "Fang mit „How“ an.",
-    "deWord": "How are you?"
+    "deDesc": "Fang mit dem Frage-Wort an.",
+    "deWord": "Auf Deutsch: Wie geht es dir?"
    },
    "grounding": "u01 phrase: how are you",
    "evidence": [
