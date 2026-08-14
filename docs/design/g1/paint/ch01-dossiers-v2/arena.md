@@ -39,10 +39,15 @@ Füße 166–218** · KNOT_SPAN ±78/92/104 px · Perioden 300/260/220 t · Tele
 30 t (500 ms) · Zentrum trackt das Kind (/48, ≤0,6 px/t; Bestand: WELT-Clamp mit
 Rand-Marge 24 px — **wird per stageClamp-Vorleistung §10 auf die Bühne c5–30
 gebunden**) · GUARDIAN_SCRIPT E: 3 Knoten. **Zwei Körper-Lesarten (A6, deklariert):**
-Physik/Test rechnen 52 px (entities-Kommentar + Test-Hardcode), PaintScene ZEICHNET
-GUARDIAN_DISPLAY_H = 68 — der Test-Kommentar „PaintScene.entTargetH for a guardian"
-ist gegen die Szene gedriftet = **DEBT-Register-Kandidat** (vorbestehende
-Engine-Drift, blockt hier nichts: alle Decken-/Band-Aussagen unten in BEIDEN
+★ **ERLEDIGT — nachgetragen K1, 2026-08-14 (blinder Prüferfund).** Dieser Absatz
+beschrieb eine Drift, die es nicht mehr gibt: der Test-Hardcode `= 52` ist entfernt,
+`GUARDIAN_DISPLAY_H = 68` liegt seit H1 in `packages/game-paint/src/anim.ts#GUARDIAN_DISPLAY_H` und wird vom
+Flug-Test importiert statt kopiert — »a copy cannot drift if there is no copy«
+(`guardian-flight.test.ts#DEBT A6 / D-21`). Nur ein beschreibender Kommentar in
+`entities.ts` trägt die 52 noch, ohne dass irgendeine Physik sie benutzt. **Wer diese
+Zeile liest, muss D-21 NICHT mehr fixen.** Historischer Wortlaut zur Einordnung:
+_Physik/Test rechnen 52 px, PaintScene ZEICHNET 68 — der Test-Kommentar ist gegen die
+Szene gedriftet_ (vorbestehende Engine-Drift, blockte hier nichts: alle Decken-/Band-Aussagen unten in BEIDEN
 Lesarten wahr). Kamera: View 22×14 Zellen (352×224); **y-Schloss bei 96** mit Kind
 am Boden (PaintScene:314, von `guardian-flight.test.ts` aus camera.ts
 NACHGERECHNET) → sichtbar Reihen 6–19.
@@ -281,7 +286,13 @@ floorRow-Erkennung des Flug-Tests ist KEIN Voll-Reihen-Check, sondern
 `startsWith("####################")` (20 führende #) — ihr Ergebnis bleibt unter
 dem neuen Profil r16 (die Podest-Reihen r14/r15 beginnen `.....###`, matchen nie) ✓.
 
-**P1-ENGINE-VORLEISTUNGEN (deklariert — werden im Grid-Schnitt gebaut):**
+**P1-ENGINE-VORLEISTUNGEN — ★ INZWISCHEN GEBAUT (nachgetragen K1, 2026-08-14):** die
+folgende Liste liest sich als Zukunftsarbeit und ist keine mehr. Nachgeprüft: `stageClamp`
+steht als `stageMinC: 5 / stageMaxC: 30` in der ausgelieferten Level-Datei und wird in
+`entities.ts` gelesen · das Käfig-Tor lebt als `cagesGated` und ist in `entities.test.ts`
+getestet · die Horizontal-Assertion liegt in `guardian-flight.test.ts`, das §10 dieses
+Dossiers wörtlich zitiert. **Wer hier ansetzt, baut Gebautes nach.** Die Liste bleibt als
+Vertrag stehen — sie beschreibt, was gelten MUSS, nicht was noch fehlt:
 1. **stageClamp (Level-Param):** Flug-Zentrum-Clamp auf die Bühne c5–30 statt auf
    die Welt — Zentrum ∈ [80+Spann, 496−Spann]: Spann 78 → [158, 418] · 92 →
    [172, 404] · 104 → [184, 392] (Welt-Clamp-Bestand zum Vergleich: [102, 474] /

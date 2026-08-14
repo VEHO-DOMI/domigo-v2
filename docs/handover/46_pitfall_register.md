@@ -378,6 +378,15 @@ ausgelasteter Maschine 7–96 s und kippen in ein 5- bzw. 30-Sekunden-Limit; all
 gefahren grün. Die Suite meldete dadurch „781 von 782". *Regel:* Einzeln nachfahren, das
 Ergebnis so berichten — und ein Test, der bei ~90 % seines Limits läuft, ist ein latenter
 Wackelkandidat: das Limit hinschreiben statt es zu erben.
+**Nachtrag K1, 2026-08-14 — die Variante, die keinen Testnamen nennt:** dieselbe Suite lief
+morgens 967/967 in 63 s und nachmittags als »1 failed | 966 passed«, während zwei
+Prüfer-Subagenten die Maschine auslasteten. Der Fehlschlag hatte **keinen Testnamen** — die
+einzige Fehlermeldung war `Timeout calling "onTaskUpdate"` aus vitests eigenem
+Worker-Kanal (`rpc.js` `onTimeoutError`). Es war also kein Gesetz rot, sondern ein Worker
+stumm. Mit `npx vitest run --maxWorkers=3` wieder 44/44 Dateien und 967/967 Tests.
+*Erkennungsmerkmal:* steht in der Zusammenfassung eine gescheiterte Datei, aber im ganzen
+Lauf kein einziges `✗` mit Testnamen, dann ist die Maschine das Problem, nicht der Code —
+Parallelität senken und erneut fahren, bevor irgendetwas gemeldet wird.
 
 **PB-39 · Ursachensuche frisst die kleinen Nebenaufträge.** *(F3, 2026-08-12)*
 Cue-Lockung und Käfig-Wackeln blieben in F2 UND F3 unbeurteilt, weil das Budget in die
