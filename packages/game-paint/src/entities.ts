@@ -192,6 +192,24 @@ export const CHALK_LIFE_TICKS = 180;
  *  throws every 150 t at tier E, so a window opens roughly every 7.5 s). */
 export const DODGES_PER_WINDOW = 3;
 
+/** R5-W2 · H1 · THE STATES A CARD OWNS — the declared exception to the world's
+ *  one standing rule about entity state: *a state this tick refuses to advance
+ *  must be owned by something else, and that owner must hand it back.*
+ *
+ *  Every other parked state has its own road home in this file — `stagger`
+ *  times out, `burst` retires itself, `caged`/`closed` are reachable with ↑.
+ *  `window` has none by design: the card IS the timer, and the hand-back is the
+ *  card closing. That was fine right up until the day one exit forgot to hand
+ *  back, and the chapter became unwinnable (see `sim.dismissTask`).
+ *
+ *  So the exception is written down rather than implied, and declaring a state
+ *  here buys a stricter duty instead of a pass: `dismiss-resumes.test.ts`
+ *  proves every entry here comes back from BOTH card exits — solved and put
+ *  down — and reports any entry that is no longer reachable as dead text. A new
+ *  parked state fails that law until it is declared, and declaring it fails the
+ *  law until both exits are wired. */
+export const CARD_OWNED_STATES: ReadonlySet<string> = new Set(["window"]);
+
 // ── R3-5 · REDEMPTION CHANGES STATE, NEVER PRESENCE (doc 40 §3) ──────────────
 // Redeeming used to park a being in a terminal `dazed` and stop stepping it:
 // the freed moth never flew its Freudenrunde, the book drifted off as if

@@ -1293,10 +1293,14 @@ export class PaintScene extends Phaser.Scene {
   }
 
   /** Called by React when a task card is DISMISSED („Später") — the anti-
-   *  softlock exit: no redeem, no reward, the world just resumes. */
+   *  softlock exit: no redeem, no reward, the world just resumes.
+   *
+   *  R5-W2 · H1: symmetric with `resolveTask` above, because dismissal now
+   *  carries events too (the guardian's recovery says so out loud). A world
+   *  change nobody renders is a world change the child cannot read. */
   dismissTask(ctx: TaskRequest["ctx"]): void {
     this.burstAt = null;
-    this.sim.dismissTask(ctx);
+    this.handleSimEvents(this.sim.dismissTask(ctx));
   }
 
   spendLetters(n: number): boolean {

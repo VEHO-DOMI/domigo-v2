@@ -611,9 +611,42 @@ export class Sim {
     return events;
   }
 
-  /** The shell reports the task DISMISSED („Später") — no reward, no redeem. */
-  dismissTask(_ctx: TaskRequest["ctx"]): void {
+  /** The shell reports the task DISMISSED („Später") — no reward, no redeem.
+   *
+   *  R5-W2 · H1 · …AND THE WORLD COMES BACK. This used to be the single line
+   *  below, and for every asker but one that was enough: a field being keeps
+   *  patrolling, a cage keeps standing. The guardian is the exception, because
+   *  she is the only being the SIM parks in a state her own tick refuses to
+   *  advance — `window` has no timer and no fallback, unlike `stagger`, which
+   *  has carried one since it was written („the no-card fallback that keeps her
+   *  from freezing", entities.ts). So putting a boss card down left her hanging
+   *  for good: no flight, no throw, no second window, `guardianDefeated` false
+   *  forever, and therefore both the cage gate and the exit gate toasting until
+   *  the child restarts the chapter. The clock reached it without a child's
+   *  hand at all.
+   *
+   *  She returns to `stagger` and not to `fly` on purpose: it is the road the
+   *  engine already maintains — its exit ships and is tested, its cell is
+   *  painted, and its length is the tier's own `staggerTicks`. No new state, no
+   *  new constant, no new cell; the recovery is a beat the child can see rather
+   *  than a snap. `dodges` was already zeroed when the dip began, so the next
+   *  window costs the same three dodges as any other.
+   *
+   *  The condition is the STATE, never the role: a chalk hit raises a boss card
+   *  while she is mid-flight, and yanking her out of a telegraph the child has
+   *  started reading would be the same class of defect pointing the other way. */
+  dismissTask(ctx: TaskRequest["ctx"], events: SimEvent[] = []): SimEvent[] {
     this.overlayOpen = false;
+    const id = askerIdOf(ctx);
+    const asker = id === null ? undefined : this.world.entities.find((e) => e.id === id);
+    if (asker?.role === "guardian" && asker.state === "window") {
+      asker.state = "stagger";
+      asker.timer = 0;
+      asker.vx = 0;
+      asker.vy = 0;
+      events.push({ type: "toast", msg: "Die Tafel richtet sich wieder auf." });
+    }
+    return events;
   }
 
   spendLetters(n: number): boolean {
