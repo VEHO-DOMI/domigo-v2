@@ -6,7 +6,7 @@ Kritiker; die gebauten Grids werden ohnehin maschinen-/tape-/screenshot-geprüft
 Das Boss-VERHALTEN (F1–F6: Eskalation, Drop-Mechanik, Aufgaben-Vielfalt,
 Arena-Anleitung, Score-Dimension) ist das **P4-Paket** und wird hier
 ausschließlich als deklarierte »P4-Paket«-Zeilen geführt.
-Vertrag: doc 45 §B/§F-LOB · doc 44 §2/§4-ch01 (faustlos: walk/jump/Halte-Sprung/↑ —
+Vertrag: doc 45 §B/§F-LOB · doc 44 §2/§4-ch01 (faustlos: Bodenlauf/jump/Halte-Sprung/↑ — bis 2026-08-14 stand hier »walk«, s. §Kanon —
 kein run als Pflicht [README §Kanon-Klärung], keine Faust, kein Deflect) · README
 §Kanon/§Zensus/§Abdeckung · Cookbook §1 (»Boss set-pieces are tuned to ONE screen«),
 §8/§9. Vorgänger `../ch01-dossiers/arena.md` = Ideen-Mine; dessen Deflect-Kette
@@ -75,7 +75,7 @@ lehrten" wird zur Tabelle):**
 
 | Gelehrt (Phase) | Arena-Prüfung | Status |
 |---|---|---|
-| p1 · walk + Tap-Sprung an Kanten | Podest-Aufstieg 32 px (Tap 45–50 ≫ 32) · Ausweichen ist GEHEN (128 t ≫ Telegraph 30 t) | Bühne, dieses Dossier ✓ |
+| p1 · Bodenlauf + Tap-Sprung an Kanten | Podest-Aufstieg 32 px (Tap 45–50 ≫ 32) · Ausweichen braucht kein Sprinten (**[HISTORISCH] 128 t** bei 1,25 px/t; beim gültigen Tempo 2,25 px/t sind es 71 t — beides weit über dem Telegraph von 30 t) | Bühne, dieses Dossier ✓ |
 | p2 · Telegraph-Lesen (Schütze board) | Telegraph-Boden 30 t der Tafel lesen und Position wählen | Bühne ✓ · Wurf-Tuning F3 = P4 |
 | p2 · Rad/Zahlen-Serie (B10-Heimat) + **p3-Regel-Seite „Zahlen 1–25"** („Thema zahlt in der Arena" — p3 §3) | **ÜBERGABE ANGENOMMEN (vertraglich):** die Boss-Karten-Fenster fahren Zahlen-Aufgaben (order/memory mit 1–25 = Kandidaten) — die Arena nimmt das p3-Versprechen hiermit ausdrücklich an | Umsetzung F5 = **P4-Paket**, Vertrag HIER |
 | p3 · Halte-Sprung (Pier 48 px, Loch-Hopser) | **optionaler Halte-Schnörkel** (§3-Podeste): Luft-Fang der F4-Drops per Halte-Sprung vom Podest — opt-in, NIE Pflicht (Fairness des Examens bleibt) | Schnittstelle an P4/F4 |
@@ -101,7 +101,7 @@ AUFTRITT = RUHE        Podest O c28–30; Tafel-Flugband darüber   ✕ (33,15) 
 **Ein-Screen-Gesetz, ehrlich benannt:** vertikal EXAKT (Kamera-y-Schloss 96, alles
 Spielbare in Reihen 6–19 sichtbar); horizontal ist der Raum 1,64 View-Breiten —
 das Ein-Raum-Gefühl tragen (a) das y-Schloss, (b) das Kind-trackende Flug-Zentrum —
-**vertikal testbewiesen; horizontal NUR ein Tracking-Argument (0,6 < 1,25 px/t —
+**vertikal testbewiesen; horizontal NUR ein Tracking-Argument (**[HISTORISCH]** 0,6 < 1,25 px/t; beim gültigen Tempo 2,25 px/t ist der Vorsprung größer —
 das Kind kann das Zentrum abhängen), ungeprüft: Horizontal-Assertion = P1-Vorleistung
 §10** —, (c) Null Sub-Ziele außerhalb des Sieg-Trakts.
 Dichte: EIN Wesen (Guardian) + EIN Käfig = deklariertes Set-Piece (README-Regler
@@ -194,9 +194,12 @@ Gefangenen-Silhouette NICHT weiter — sie liegt auf einem eigenen Blatt, das
   Berührungs-Risiko** (Kontakt = Karte + iframes, nie Sturz/Tod — deklarierte
   Lektion, keine Falle; Feinabstimmung = P4-Paket).
 - **Ausweich-Bahn:** Freifläche c8–27 = 320 px ≫ max. KNOT_SPAN-Schatten 208 px —
-  es gibt zu jedem Zeitpunkt Boden außerhalb der Pfad-Projektion; walk 1,25 px/t
-  quert die halbe Bahn (160 px) in 128 t ≫ Telegraph-Boden 30 t: Ausweichen ist
-  Gehen, nie Sprinten (kein run als Pflicht ✓). Gilt unverändert unter stageClamp
+  es gibt zu jedem Zeitpunkt Boden außerhalb der Pfad-Projektion; **[HISTORISCH]**
+  walk 1,25 px/t quert die halbe Bahn (160 px) in 128 t ≫ Telegraph-Boden 30 t:
+  Ausweichen ist Gehen, nie Sprinten (kein run als Pflicht ✓). **Beim gültigen Tempo
+  2,25 px/t braucht dieselbe halbe Bahn 71 t — immer noch weit über dem 30-t-Telegraph;
+  die AUSSAGE hält, nur ihre Formulierung („Gehen") beschreibt kein Tempo mehr, das
+  ch01 hat (§Amendments, README §Kanon).** Gilt unverändert unter stageClamp
   (Zentrum [184–392] liegt im Welt-Korridor [128–448] — nur enger).
 - **Sieg-Trakt:** Podest OST überqueren (Tap-Sprung 32, 3 Zellen, Abtritt 32) →
   Käfig (31,15) → ✕ (33,15). **„Nichts Feindliches östlich der Bühne" ist erst mit
@@ -208,7 +211,7 @@ Gefangenen-Silhouette NICHT weiter — sie liegt auf einem eigenen Blatt, das
   und Sieg-Trakt gleichzeitig im Bild — **vertikal testbewiesen**
   (`guardian-flight.test.ts`: head ≥ seenTop, feet ≤ seenBottom, aus camera.ts
   nachgerechnet). **Horizontal ist die Tafel-Sichtbarkeit NUR ein
-  Tracking-Argument (Zentrum-Kappe 0,6 < walk 1,25 px/t — das Kind kann das
+  Tracking-Argument (**[HISTORISCH]** Zentrum-Kappe 0,6 < walk 1,25 px/t; beim gültigen Tempo 2,25 ist der Vorsprung größer, das Argument hält erst recht — das Kind kann das
   Zentrum abhängen), ungeprüft (A3); Horizontal-Assertion + stageClamp = 
   P1-Vorleistung §10, löst es final.**
 
@@ -325,7 +328,9 @@ Laufen, weil das Examen nie eine Fähigkeit VERLANGT, die es als Kür gelehrt ha
 Beide Hälften dieser Begründung hängen am Zwei-Tempo-Bild:
 
 1. Die zitierte §1-Zeile („kein run als Pflicht") gibt es seit dem Ein-Tempo-Kanon
-   nicht mehr — sie ist oben als historisch markiert.
+   nicht mehr — §1 trägt an genau dieser Stelle das »Amendment R8, 2026-08-14«, das
+   den Satz für gegenstandslos erklärt (die Absicht dahinter — das Examen verlangt
+   keine Fähigkeit über den Tap-Sprung hinaus — gilt unverändert weiter).
 2. Schwerer: Das Kind läuft 2,25 px/t, die Scherbe rutscht 0,875 px/t. **Sie ist damit
    deutlich langsamer als die einzige Gangart, die das Kapitel hat — „Weggehen" IST
    wieder die ganze Antwort**, also genau das, was der Takt verhindern sollte.
