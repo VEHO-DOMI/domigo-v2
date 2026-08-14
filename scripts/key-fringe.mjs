@@ -144,10 +144,18 @@ export const keyFringe = (img, threshold = fringeThreshold(img)) => {
  * converges in one pass and the second finds nothing.
  */
 export const stripKeyFringe = (img) => {
-  const { w, h, px } = img;
   const threshold = fringeThreshold(img);
   const hits = keyFringe(img, threshold);
-  if (hits.length === 0) return { healed: 0, cut: 0, total: 0, threshold };
+  const isBad = (r, g, b) => magentaness(r, g, b) > threshold;
+  return { ...healHits(img, hits, isBad), threshold };
+};
+
+/** The heal, shared by both defect classes. `isBad` says which colours may not
+ *  be borrowed from — the two classes disagree about what a defect IS, and
+ *  agree completely about how to repair one. */
+const healHits = (img, hits, isBad) => {
+  const { w, h, px } = img;
+  if (hits.length === 0) return { healed: 0, cut: 0, total: 0 };
   let healed = 0;
   let cut = 0;
   // read from a snapshot so a healed pixel cannot seed the next heal (the
@@ -157,7 +165,7 @@ export const stripKeyFringe = (img) => {
     if (x < 0 || y < 0 || x >= w || y >= h) return null;
     const j = (y * w + x) * 4;
     if (src[j + 3] < CUT_ALPHA) return null;
-    if (magentaness(src[j], src[j + 1], src[j + 2]) > threshold) return null;
+    if (isBad(src[j], src[j + 1], src[j + 2])) return null;
     return j;
   };
   for (const p of hits) {
@@ -187,7 +195,7 @@ export const stripKeyFringe = (img) => {
     // we are removing (72 px survived a first repair exactly this way), so a
     // still-magenta mean is discarded for the NEAREST honest pixel — the colour
     // the cut was standing in front of.
-    if (magentaness(out[0], out[1], out[2]) > threshold) {
+    if (isBad(out[0], out[1], out[2])) {
       out = [src[nearest.j], src[nearest.j + 1], src[nearest.j + 2]];
     }
     px[p.i] = out[0];
@@ -195,8 +203,86 @@ export const stripKeyFringe = (img) => {
     px[p.i + 2] = out[2];
     healed++;
   }
-  return { healed, cut, total: hits.length, threshold };
+  return { healed, cut, total: hits.length };
 };
+
+// ── R5-W3 · A5 · D-51 · THE SECOND CLASS: A SPECK THE IMPORTER WOULD ERASE ───
+//
+// A blind format checker found 12 violations of the IMPORTER's deletion rule in
+// the AQ6 sheet and traced them to the production master: `satchel_a.png` has
+// exactly three such pixels — (114,267) (114,268) (212,320) — and every sheet
+// built from it inherits them, four cells at a time.
+//
+// The register prescribed `strip-key-fringe.mjs`. That is a NO-OP here, and the
+// reason is in this file's own header: a fringe pixel must be ON THE SKIN,
+// „because a cut mark can only live where the cut happened". These three are
+// deep in the interior. The detector is not wrong — it is answering a different
+// question, and D-51 is a different defect: not a cut mark, but a pixel that the
+// IMPORTER's own predicate would silently delete on the next round-trip. So it
+// gets its own name, its own detector, and the same repair.
+//
+// The predicate is the importers' own, verbatim (import-batch-as.mjs:81,
+// import-batch-aq7.mjs:101), because the defect is DEFINED as „a pixel any
+// import would delete". Copying it here rather than re-deriving it is the point:
+// two definitions of one defect is how a gate and a tool come to disagree.
+export const importerWouldDelete = (r, g, b) => r > 120 && b > 120 && r - g > 55 && b - g > 55;
+
+/** How big a matching blob may be and still be a SPECK rather than paint.
+ *
+ *  This cap is the whole safety argument, and it is measured, not guessed: over
+ *  the 326 shipped stems the bare predicate matches ~85 000 px across 80 stems —
+ *  p2's night classroom and the slide kit are genuinely violet and would be
+ *  repainted. Restricted to 8-connected components of at most four pixels it
+ *  matches ~47 px across 18 stems. A four-pixel island of near-key colour inside
+ *  a painting is not a material; it is a leftover. */
+export const SPECK_MAX_PX = 4;
+
+/** Isolated pixels that match the importer's deletion predicate and belong to no
+ *  painted mass. Returns the same `{x, y, i}` shape `keyFringe` does. */
+export const keySpecks = (img, maxPx = SPECK_MAX_PX) => {
+  const { w, h, px } = img;
+  const bad = (i) => px[i + 3] >= CUT_ALPHA && importerWouldDelete(px[i], px[i + 1], px[i + 2]);
+  const seen = new Uint8Array(w * h);
+  const hits = [];
+  for (let y = 0; y < h; y++) {
+    for (let x = 0; x < w; x++) {
+      const p = y * w + x;
+      if (seen[p] === 1 || !bad(p * 4)) continue;
+      // 8-connected flood over the WHOLE component before judging its size.
+      // Stopping early looks like an optimisation and is a defect: the pixels
+      // already queued stay marked while their unvisited neighbours do not, so
+      // the next scan line re-seeds the same mass as a fresh blob, and a violet
+      // wall dissolves into hundreds of „specks". Measured while building this:
+      // the early-exit version reported 199 px on one chalk sprite alone.
+      const blob = [];
+      const stack = [p];
+      seen[p] = 1;
+      while (stack.length > 0) {
+        const q = stack.pop();
+        blob.push(q);
+        const qx = q % w;
+        const qy = (q - qx) / w;
+        for (let dy = -1; dy <= 1; dy++) {
+          for (let dx = -1; dx <= 1; dx++) {
+            const nx = qx + dx;
+            const ny = qy + dy;
+            if (nx < 0 || ny < 0 || nx >= w || ny >= h) continue;
+            const n = ny * w + nx;
+            if (seen[n] === 1 || !bad(n * 4)) continue;
+            seen[n] = 1;
+            stack.push(n);
+          }
+        }
+      }
+      if (blob.length > maxPx) continue; // a mass of real paint, not a speck
+      for (const q of blob) hits.push({ x: q % w, y: (q - (q % w)) / w, i: q * 4 });
+    }
+  }
+  return hits;
+};
+
+/** Heal the specks with the same repair the fringe gets. */
+export const stripKeySpecks = (img) => healHits(img, keySpecks(img), importerWouldDelete);
 
 export const writePng = (file, img) => {
   img.png.data = Buffer.from(img.px.buffer, img.px.byteOffset, img.px.byteLength);

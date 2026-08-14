@@ -27,7 +27,8 @@
 import fs from "node:fs";
 import path from "node:path";
 import { PNG } from "pngjs";
-import { COMPOSITION, heroEdgeFor, nearPlaneTint } from "../packages/game-paint/src/composition.ts";
+import { COMPOSITION, MARKER_H, MARKER_VISIBLE_MIN, heroEdgeFor, markerEdgeFor, markerPlacementFor, markerVisibleFraction, nearPlaneTint } from "../packages/game-paint/src/composition.ts";
+import { HERO2_SRC_SCALE } from "../packages/game-paint/src/rigSpec.ts";
 import { planLayers, planeCovers } from "../packages/game-paint/src/layers.ts";
 import {
   BODY_DEEP_SHADE,
@@ -200,10 +201,20 @@ for (const { label, ph, spec } of withSpec) {
     L4: spec.fg ? measureStems(spec.fg.segments) : null,
   };
   const K = spec.key;
-  // Fable, PK-C2b review: documented separation waiver — the arena is a single-screen
-// stage whose only hostile is the high-contrast guardian; l2_p4 gets a one-sheet
-// darken in the F2 art touch-up, then this entry is deleted and the law re-arms.
-const SEPARATION_WAIVERS = { "ch01/p4": "until the F2 l2_p4 touch-up (doc 37)" };
+  // R5-W3 · A5 · THE ARENA'S WAIVER IS SPENT — the table is empty on purpose.
+//
+// Fable, PK-C2b, granted one: „the arena is a single-screen stage whose only
+// hostile is the high-contrast guardian; l2_p4 gets a one-sheet darken in the
+// F2 art touch-up, then this entry is deleted and the law re-arms." The darken
+// happened — not on l2_p4 but on the sheet that took its place at the front of
+// the room, `band_p4_audience` (R15, `scripts/set-plane-value.mjs`) — and the
+// arena now clears the law on its own numbers: 12.7 points against the 12 it
+// asks for. So the entry is gone and ch01/p4 is guarded like every other room.
+//
+// It stays a table rather than becoming a boolean because the shape is the
+// point: a waiver is a named room with a written reason and an expiry, never a
+// quiet `if`. The next one that is needed will be visible here.
+const SEPARATION_WAIVERS = {};
 
 const BANDS = bandsFor(K);
   for (const [name, m] of Object.entries(planes)) {
@@ -573,6 +584,53 @@ for (const { label, spec } of withSpec) {
   note(`${label}: contour ${lum.toFixed(1)}% · swell ${(edge.swell * 100).toFixed(0)}% · nearest plane ${worst.toFixed(1)} points away`);
 }
 
+// ── 9b · THE CHECKPOINT'S EDGE AND ITS CLEARANCE (R5-W3 · A5 · D-45) ─────────
+// Audit 9 gives the child a contour and measures it. The one prop whose entire
+// job is to be spotted from across the room had none, and nothing measured it,
+// because audit 9 only ever looked at him. B1's critic saw both halves at once:
+// „kein Eigenkontrast in den hellen Leveln" and „beim Banking in p1 vom Spieler
+// komplett verdeckt". This is those two sentences as numbers.
+console.log("9b · checkpoint-edge audit (R5-W3 · A5 · D-45)");
+const MARKER_STEM = "krakel_a";
+let markersSeen = 0;
+for (const { label, ph, spec } of withSpec) {
+  const cells = [];
+  ph.rows.forEach((row, r) => { [...row].forEach((g, c) => { if (g === "C") cells.push({ c, r }); }); });
+  if (cells.length === 0) { note(`${label}: no checkpoint`); continue; }
+  markersSeen += cells.length;
+  const own = measureStems([MARKER_STEM]);
+  if (!own) { fail("marker-edge", `${label}: ${MARKER_STEM} is missing — cannot measure the marker`); continue; }
+  const edge = markerEdgeFor(spec.key);
+  const edgeLum = lumOf((edge.tint >> 16) & 255, (edge.tint >> 8) & 255, edge.tint & 255) * 100;
+  // 1 · an un-swollen copy is a cast shadow, not an outline (audit 9's own rule)
+  if (!(edge.swell > 0)) fail("marker-edge", `${label}: the marker's contour has no swell`);
+  // 2 · …and it is a real value STEP against the marker AND against the planes
+  //     the marker is seen against. Without it, p3 leaves 2.3 points.
+  for (const [name, m] of [["the marker itself", own], ["L1", measureStems(spec.far.segments)], ["L2", spec.mid ? measureStems(spec.mid.segments) : null]]) {
+    if (!m) continue;
+    const step = Math.abs(edgeLum - m.lum);
+    if (step < HERO_EDGE_MIN_STEP) fail("marker-edge", `${label}: the marker's contour (${edgeLum.toFixed(1)}%) is only ${step.toFixed(1)} points from ${name} (${m.lum.toFixed(1)}%) — the law needs ${HERO_EDGE_MIN_STEP}`);
+  }
+  // 3 · …and the marker is not standing behind the child who is banking at it
+  const markerSrc = srcSize(MARKER_STEM);
+  const heroSrc = srcSize("hero2_idle");
+  if (!markerSrc || !heroSrc) { fail("marker-edge", `${label}: cannot measure the boxes (marker or hero sheet missing)`); continue; }
+  // both widths derived from the REAL sheets through the engine's own scale —
+  // the 52-vs-68 lesson: a check that types its own number checks its own number
+  const markerW = MARKER_H * (markerSrc.w / markerSrc.h);
+  const heroW = heroSrc.w * HERO2_SRC_SCALE;
+  for (const { c, r } of cells) {
+    const place = markerPlacementFor(ph.rows, c, r);
+    const vis = markerVisibleFraction(markerW, heroW, place.dx);
+    if (vis < MARKER_VISIBLE_MIN) {
+      fail("marker-edge", `${label} c${c}: only ${(vis * 100).toFixed(0)} % of the checkpoint clears the child banking at it (law ${(MARKER_VISIBLE_MIN * 100).toFixed(0)} %) — ${place.why}`);
+    } else {
+      note(`${label} c${c}: ${place.why} (${place.dx} px) · ${(vis * 100).toFixed(0)} % clear · contour ${edgeLum.toFixed(1)}% vs marker ${own.lum.toFixed(1)}%`);
+    }
+  }
+}
+if (markersSeen === 0) fail("marker-edge", "no phase carries a checkpoint — this audit would pass vacuously");
+
 // ── 10 · THE PAINTED SCALE (R5-W1 · A1) ──────────────────────────────────────
 // Koki, replaying the build: „Lego, das nicht zusammenpasst."
 //
@@ -593,7 +651,10 @@ for (const { label, spec } of withSpec) {
 // by its own anatomy (CRUST_H), and the one that never had the defect.
 console.log("10 · painted-scale audit (mass.ts paintScaleOf — R5-W1 · A1)");
 const SCALE_PARITY_TOL = 0.15;
+/** Below this a declared window is a hairline, not an anatomy (R5-A5 · R3). */
+const MIN_WINDOW_SRC_PX = 24;
 const courseLocks = new Set();
+const windowsSeen = new Set();
 for (const { label, ph, spec } of withSpec) {
   const plan = planMass(ph.rows, spec.mass, srcSize);
   const want = paintScaleOf(spec.mass, srcSize);
@@ -603,16 +664,43 @@ for (const { label, ph, spec } of withSpec) {
     const src = srcSize(p.stem);
     if (!src) continue;
     const s = tileScaleFor(p, src);
-    // 10a · SCALE PARITY — one painted world means one painted scale. The
-    // vertical axis carries it; a trim may fit its own width across, because an
-    // 8 px trim is 8 px wide for anatomical reasons — but that is DECLARED
-    // (srcScaleX), never a side effect of the box it happened to fill.
-    if (Math.abs(s.y - want) > want * SCALE_PARITY_TOL) {
-      const cur = offScale.get(p.stem);
-      if (cur === undefined || Math.abs(s.y - want) > Math.abs(cur - want)) offScale.set(p.stem, s.y);
-      continue;
+    // 10a · SCALE PARITY — one painted world means one painted scale, on BOTH
+    // axes.
+    //
+    // R5-W3 · A5 · R3: this used to measure the vertical axis and then `continue`
+    // past anything declaring a horizontal override, on the argument that such a
+    // width is „anatomical … audited above". It was audited nowhere. Measured
+    // when that exemption was finally opened: the carved trims drew 0.0323 world
+    // px per source px across against 0.0802 down — every side trim in the
+    // chapter squashed 2.49×, under a comment promising the opposite, with this
+    // audit green because the exemption was the thing that hid it.
+    //
+    // A declared width is not a licence to leave the scale; it is a licence to
+    // show LESS of the painting. So both axes are held to the same number, and
+    // the declaration itself is checked against the sheet below.
+    for (const axis of ["y", "x"]) {
+      if (Math.abs(s[axis] - want) > want * SCALE_PARITY_TOL) {
+        const key = `${p.stem}.${axis}`;
+        const cur = offScale.get(key);
+        if (cur === undefined || Math.abs(s[axis] - want) > Math.abs(cur - want)) offScale.set(key, s[axis]);
+      }
     }
-    if (p.srcScaleX !== undefined) continue; // an anatomical width, audited above
+    if (Math.abs(s.y - want) > want * SCALE_PARITY_TOL) continue;
+    // 10a′ · THE DECLARED WINDOW AGAINST THE SHEET'S REAL ANATOMY. You cannot
+    // show more of a painting than exists, and a hairline of one is not a
+    // material — both are red, and the share is REPORTED either way so a trim
+    // that shows a tenth of its sheet is a number somebody can act on.
+    if (p.srcW !== undefined) {
+      if (!(p.srcW > 0 && p.srcW <= src.w + 0.5)) {
+        fail("painted-scale", `${label}: ${p.stem} shows ${p.srcW.toFixed(1)} source px across a ${src.w}-px sheet — you cannot window more of a painting than exists`);
+      } else if (p.srcW < MIN_WINDOW_SRC_PX) {
+        fail("painted-scale", `${label}: ${p.stem}'s window is ${p.srcW.toFixed(1)} source px — that is a hairline of paint, not an anatomy`);
+      } else if (!windowsSeen.has(p.stem)) {
+        windowsSeen.add(p.stem);
+        note(`${label}: ${p.stem} shows ${((p.srcW / src.w) * 100).toFixed(0)} % of its ${src.w}-px sheet (${p.w.toFixed(1)} world px at ${s.x.toFixed(4)} — the world's own ${want.toFixed(4)})`);
+      }
+      continue; // a windowed piece has no horizontal repeat to lock
+    }
     // 10b · NO GRID LOCK — a period under two cells is the defect; a period ON
     // a whole number of cells is the SAME defect one octave up, permanently in
     // phase with the cell grid, the plank joints and the trims.
@@ -646,7 +734,8 @@ for (const { label, ph, spec } of withSpec) {
     }
   }
   for (const [stem, got] of offScale) {
-    fail("painted-scale", `${label}: ${stem} draws ${got.toFixed(4)} world px per source px, the walk course draws ${want.toFixed(4)} — the same painting at two scales is two materials`);
+    const [bare, axis] = stem.split(".");
+    fail("painted-scale", `${label}: ${bare} draws ${got.toFixed(4)} world px per source px on ${axis}, the walk course draws ${want.toFixed(4)} — the same painting at two scales is two materials`);
   }
   if (offScale.size === 0) {
     note(`${label}: every tiled mass surface at ${want.toFixed(4)} world px/source px — a 512-wide painting every ${((512 * want) / TILE).toFixed(2)} cells`);

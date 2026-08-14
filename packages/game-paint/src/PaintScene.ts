@@ -13,8 +13,9 @@
 
 import Phaser from "phaser";
 import { glyphAt, isSlope, isSolid } from "./collide.ts";
-import { type CompositionSpec, type MassKit, ROOM_SHADOW_INK, compositionFor, heroEdgeFor, nearPlaneTint } from "./composition.ts";
+import { type CompositionSpec, MARKER_H, type MassKit, ROOM_SHADOW_INK, compositionFor, heroEdgeFor, markerPlacementFor, nearPlaneTint } from "./composition.ts";
 import { phaseArtScope } from "./artScope.ts";
+import { captiveStem, isCaptiveKey } from "./artManifest.ts";
 import { TextureWarmer, type WarmScene, type WarmStats } from "./warmer.ts";
 import { WARM_MPX_PER_FRAME } from "./warm.ts";
 import { PatternLedger } from "./tilePatterns.ts";
@@ -33,8 +34,8 @@ import { COLLECT_ANCHOR_PX, MAGNET_FIELD_PX, Sim, type SimEvent, type TaskReques
 import { FOCUS_MS, focusView } from "./camera.ts";
 import {
   AWAKEN_ROOM_MS, BOSS_BEAT_SWELL, CAGE_AT_REST, CAGE_OPEN_TICKS, CELL_IS_DIRECTIONAL, type EntPoseInput,
-  GUARDIAN_DISPLAY_H, GUARDIAN_KEEPIN_MAX, REST_SQUASH, RESTORE_SPARKLE_MS, WASHED_ROLES,
-  awakenRoomBloom, awakenRoomSweep, bouncerSquash, cageBreath, cageNearT, entPoseCell, entSeed, floodBloomFor, greyLuma,
+  type EntSizeInput, GUARDIAN_DISPLAY_H, GUARDIAN_KEEPIN_MAX, REST_SQUASH, RESTORE_SPARKLE_MS, WASHED_ROLES,
+  awakenRoomBloom, awakenRoomSweep, bouncerSquash, cageBreath, cageNearT, entDisplayH, entPoseCell, entSeed, floodBloomFor, greyLuma,
   guardianManoeuvre, guardianPitchRad, guardianRollScaleX, poseStateOf, washAlphaFor,
 } from "./anim.ts";
 import { CUE_CHALK, CUE_HALO, TREASURE_BACK_COLOUR, chalkArrow, treasureCue, treasureBobPx } from "./cue.ts";
@@ -305,19 +306,6 @@ export const GUARDIAN_BOARDS: Record<string, { dyFrac: number; wFrac: number }> 
 /** How long the guardian spends writing before its card opens (doc 41 §4 asks
  *  for a 30–45 t readability telegraph). */
 export const EVIDENCE_BEAT_TICKS = 36;
-
-/** Display heights in world px for the duel's two newly-wired sheets (R3-4). */
-/** PK-R6 · C1 · display height per drained-object skin, in world px (TILE=16).
- *  Measured against each Batch-AC sheet's aspect so the six read as one set of
- *  classroom things at one scale rather than six unrelated stickers. */
-const DRAINED_H: Record<string, number> = {
-  obj_desk: 28, // 368×353 — the biggest thing in the room
-  obj_schoolbag: 26, // 378×341
-  obj_book: 24, // 268×358
-  obj_sharpener: 22, // 254×353
-  obj_pencil: 30, // 69×393 — tall and thin; height is what makes it legible
-  obj_gluestick: 28, // 124×396
-};
 
 /** PK-R6 · H2 (round-2 finding 5): 9 → 12. Measured off the frame the critique
  *  cited: at 9 px the stick is 27 screen px of a 1056-px picture, thinner than
@@ -765,6 +753,8 @@ export class PaintScene extends Phaser.Scene {
   /** PK-R6 · H1 · a hostile's own cast shadow — its cell, inked, one step behind
    *  the light (finding 3). Mirrored every frame in renderEntities. */
   private hostileShadeImgs = new Map<string, Phaser.GameObjects.Image>();
+  /** R5-W3 · A5 · D-48 · the occupant layer, one per cage that declares one. */
+  private captiveImgs = new Map<string, Phaser.GameObjects.Image>();
   /** PK-R6 · H1: the warm light the returning colour arrives on (anim.floodBloomFor,
    *  round-1 critique finding 8). Same sheet, same place, added rather than
    *  laid over — so the being brightens in its own shape instead of gaining a
@@ -920,6 +910,8 @@ export class PaintScene extends Phaser.Scene {
   private letterImgs = new Map<string, Phaser.GameObjects.Image>();
   /** PB-F3: checkpoint art by column, so the ACTIVE one can light up. */
   private checkpointImgs = new Map<string, Phaser.GameObjects.Image>();
+  /** R5-W3 · A5 · D-45 · its contour, keyed the same way so the two stay paired. */
+  private checkpointShades = new Map<string, Phaser.GameObjects.Image>();
   private ringImgs: Array<{ img: Phaser.GameObjects.Image; baseY: number }> = [];
   private keys!: Record<string, Phaser.Input.Keyboard.Key>;
   /** PB-C1: this phase's art direction, or null ⇒ the pre-C1 render path. */
@@ -1468,6 +1460,20 @@ export class PaintScene extends Phaser.Scene {
         shade.setVisible(!e.hidden);
         this.hostileShadeImgs.set(e.id, shade);
       }
+      // R5-W3 · A5 · D-48 · WHO IS IN THERE. All four cages wear one shell, so
+      // until now the sound system, the tablet, the chair and the class photo
+      // were the same picture. The occupant is its own layer, drawn BEHIND the
+      // cage — the bars belong in front of the captive — and cut on the shell's
+      // own box, so `syncOverlay` alone aligns it and it inherits the breath,
+      // the pop and every future transform without a second copy of any of them.
+      if (e.role === "cage" && isCaptiveKey(e.params?.captive)) {
+        const key = `pb-${captiveStem(e.params.captive)}`;
+        if (this.textures.exists(key)) {
+          const cap = this.add.image(fromSubs(e.x), fromSubs(e.y), key).setDepth(6.99).setOrigin(0.5, 1);
+          cap.setVisible(!e.hidden);
+          this.captiveImgs.set(e.id, cap);
+        }
+      }
       // R3-15 · the grey wash sits a hair in front of its being, wearing the
       // SAME texture every frame — so it drains whatever cell the being is
       // showing, including cells and skins that do not exist yet.
@@ -1599,48 +1605,13 @@ export class PaintScene extends Phaser.Scene {
     return h;
   }
 
-  /** world-space display heights per role — painted cells arrive at 512px native */
-  private entTargetH(e: { role: string; skin: string; params?: Record<string, unknown> }): number {
-    if (e.role === "guardian") return GUARDIAN_DISPLAY_H;
-    if (e.role === "swarm") return 34;
-    if (e.role === "crusher") return 30;
-    if (e.role === "door.trigger") return e.skin === "klecksdoor" ? 30 : 34;
-    // PK-R6 · H2 (round-2 finding 4: „the object the characters are draped over
-    // and celebrating on is an amorphous green quilted blob with no bars, hinge,
-    // door or face"). The art is none of those things — `pencilcase_burst` is a
-    // painted case with its lid thrown wide, its zip flying off and a dark well
-    // where somebody was. It was being drawn 24 px tall. At that size a 413-px
-    // sheet keeps its outline and loses everything inside it, and what survives
-    // is a green shape.
-    //
-    // A PERSON-CAGE is therefore sized like what it is: the one container in the
-    // chapter big enough to have held the girl standing next to it (she renders
-    // 30). The other cages are unchanged — they hold a moth, and a pencil case
-    // the size of a desk would be the opposite lie.
-    if (e.role === "cage") return this.holdsAPerson(e) ? 34 : e.skin === "pencilcase" ? 24 : 22;
-    // PK-R6 · C1: a drained object is FURNITURE-SIZED, and the six of them are
-    // not one size — a desk the height of a pencil would read as a toy. Heights
-    // are per skin, chosen against each sheet's own aspect (the tall-thin
-    // stationery gets a few px more so its silhouette still names it at 1×,
-    // which is what step 1 of its restore card asks the child to do).
-    if (e.role === "drained") return DRAINED_H[e.skin] ?? 26;
-    // PK-R6 · D: a classmate is a CHILD — the same height class as the hero,
-    // not a creature. Her act cells carry props (a desk under her shoes, a
-    // window, books on the floor) inside the same 512 px frame, so they read at
-    // the same scale her idle does; the number is her standing height.
-    if (e.role === "classmate") return 30;
-    if (e.role === "powerup") return 26;
-    if (e.role === "tip") return 18; // R3-16: a torn page, smaller than a being
-    if (e.role === "book") return 15;
-    if (e.role.startsWith("platform")) return 10;
-    return 24; // chasers, gunners, flyers, bouncers
-  }
-
-  /** Does this cage hold a classmate? The level's own pointer answers — the
-   *  `classmate-pair` law proves it exists before ship — so the renderer never
-   *  has to know that ch01's person-cage happens to be a pencil case. */
-  private holdsAPerson(e: { role: string; params?: Record<string, unknown> }): boolean {
-    return e.role === "cage" && typeof e.params?.classmate === "string";
+  /** world-space display heights per role — painted cells arrive at 512px native.
+   *
+   *  The table itself lives in `anim.ts` (D-48). It has to: the composition gate
+   *  weighs the entity plane by the area a being DRAWS, and a gate cannot import
+   *  a private method of a Phaser scene. One owner, two readers. */
+  private entTargetH(e: EntSizeInput): number {
+    return entDisplayH(e);
   }
 
   /**
@@ -1944,6 +1915,15 @@ export class PaintScene extends Phaser.Scene {
           this.syncOverlay(wash, img);
           wash.setAlpha(a * img.alpha);
         }
+      }
+      // R5-W3 · A5 · D-48 · the occupant rides its cage exactly, and leaves with
+      // the lid: once the cage is redeemed the silhouette is not the promise any
+      // more, it is a thing that has been let out (arena.md §5 — „der geöffnete
+      // Käfig trägt die Gefangenen-Silhouette NICHT weiter").
+      const cap = this.captiveImgs.get(e.id);
+      if (cap) {
+        cap.setVisible(!e.hidden && !e.redeemed);
+        if (cap.visible) this.syncOverlay(cap, img);
       }
       // PK-R6 · H1 · THE COLOUR ARRIVING (round-1 critique, finding 8). The same
       // mirror trick as the wash, run the other way: a warm ADD-blended copy of
@@ -4319,6 +4299,15 @@ export class PaintScene extends Phaser.Scene {
         }
         // the lit one breathes; the waiting ones sit still
         img.setAlpha(lit && !this.cfg.reducedMotion ? 0.92 + Math.sin(t / 14) * 0.08 : 1);
+        // R5-W3 · A5 · D-45 · the contour swaps with its body in the SAME block.
+        // One owner: a shade updated anywhere else lags the cell it is the edge
+        // of, which is the defect `syncOverlay` exists to prevent one lane over.
+        const shade = this.checkpointShades.get(col);
+        if (shade && shade.texture.key !== want) {
+          const edge = this.heroEdge();
+          shade.setTexture(want);
+          shade.setScale((MARKER_H / (shade.frame.height || 1)) * (1 + edge.swell));
+        }
       }
     }
     // ── the letters ──
@@ -4829,8 +4818,18 @@ export class PaintScene extends Phaser.Scene {
           // „Krakel skizziert dich!" — now the sentence has someone in it.
           const krakelStem = this.textures.exists("pb-krakel_a") ? "pb-krakel_a" : "pb-checkpoint_easel";
           if (this.textures.exists(krakelStem)) {
-            const img = this.add.image(cx, this.standLineBelow(c, r), krakelStem).setOrigin(0.5, 1).setDepth(3);
-            img.setScale(26 / img.height);
+            // R5-W3 · A5 · D-45 · he steps aside, and he carries the room's edge.
+            // Both halves of one finding: the marker had no self-contrast in the
+            // bright rooms AND stood behind the child who was banking at it.
+            const place = markerPlacementFor(this.grid, c, r);
+            const foot = this.standLineBelow(c, r);
+            const edge = this.heroEdge();
+            const shade = this.add.image(cx + place.dx, foot, krakelStem).setOrigin(0.5, 1).setDepth(2.99);
+            shade.setTint(edge.tint).setAlpha(edge.alpha);
+            shade.setScale((MARKER_H / shade.height) * (1 + edge.swell));
+            this.checkpointShades.set(`${c}`, shade);
+            const img = this.add.image(cx + place.dx, foot, krakelStem).setOrigin(0.5, 1).setDepth(3);
+            img.setScale(MARKER_H / img.height);
             this.checkpointImgs.set(`${c}`, img);
           } else if (this.textures.exists("pb-checkpoint_easel")) {
             const img = this.add.image(cx, this.standLineBelow(c, r), "pb-checkpoint_easel").setOrigin(0.5, 1).setDepth(3);

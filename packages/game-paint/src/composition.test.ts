@@ -27,6 +27,7 @@ import {
   depthBucketAt,
   depthShadeAt,
   depthTintAt,
+  type MassPiece,
   paintScaleOf,
   tileAnchorFor,
   tileScaleFor,
@@ -425,16 +426,39 @@ describe("the carved mass (doc 36 §2)", () => {
       }
     });
 
-    it("gives the carved trims the painting's VERTICAL scale and their own width", () => {
-      // an 8 px trim must fit its 8 px anatomy across, and still carry
-      // page-edges the same physical size as the books it runs beside
+    // R5-W3 · A5 · R3 · THIS TEST USED TO ASSERT THE DEFECT.
+    //
+    // It read `expect(512 * tileScaleFor(q, SRC).x).toBeCloseTo(EDGE_W)` — i.e.
+    // the WHOLE painting squeezed across 8 px — and called it „their own width",
+    // under a planner comment promising „page-edges the same physical size as
+    // the books they run beside". Those two sentences cannot both be true. The
+    // shipped trims drew 0.0323 world px per source px across against 0.0802
+    // down: a 2.49× horizontal squash, asserted by its own unit test and skipped
+    // by audit 10 because declaring the override was what bought the exemption.
+    //
+    // The trim shows a WINDOW of its texture at the world's scale instead.
+    it("gives the carved trims the painting's scale on BOTH axes, and a window", () => {
       const trims = planMass(grid, kit, afSrc).filter((q) => q.kind === "edgeL" || q.kind === "edgeR");
       expect(trims.length).toBeGreaterThan(0);
+      const want = paintScaleOf(kit, afSrc);
       for (const q of trims) {
         expect(q.tile).toBe(true);
-        expect(tileScaleFor(q, SRC).y).toBeCloseTo(paintScaleOf(kit, afSrc), 6);
-        expect(512 * tileScaleFor(q, SRC).x).toBeCloseTo(EDGE_W, 6);
+        expect(tileScaleFor(q, SRC).y).toBeCloseTo(want, 6);
+        // …and across, which is the whole repair
+        expect(tileScaleFor(q, SRC).x).toBeCloseTo(want, 6);
+        // the window is DECLARED, and it is exactly the source that fits
+        expect(q.srcW).toBeDefined();
+        expect((q.srcW ?? 0) * want).toBeCloseTo(q.w, 6);
       }
+    });
+
+    it("…and the squash it replaced can no longer be expressed", () => {
+      // the old law, run against the new planner: a 512-px sheet across an 8-px
+      // trim would mean a scale of 0.0156, and nothing draws at that any more
+      const q = planMass(grid, kit, afSrc).find((p) => p.kind === "edgeL");
+      expect(q).toBeDefined();
+      const old = EDGE_W / 512;
+      expect(tileScaleFor(q as MassPiece, SRC).x).not.toBeCloseTo(old, 4);
     });
 
     it("leaves the room's own paper showing down a ONE-CELL column", () => {

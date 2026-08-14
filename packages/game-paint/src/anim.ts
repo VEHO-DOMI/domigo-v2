@@ -516,6 +516,86 @@ export const GUARDIAN_KEEPIN_MAX = 16;
  *  enough that it reads as her rearing rather than as a zoom. */
 export const BOSS_BEAT_SWELL = 0.13;
 
+// ── R5-W3 · A5 · D-48 · HOW BIG EVERY BEING IS — the same move, one floor down
+//
+// `GUARDIAN_DISPLAY_H` moved here because a private table meant the proof could
+// not import it, and a proof that carries its own copy proves the copy. The
+// table it came from is still private, so the same defect is still available to
+// every other role — and one of them was already living it.
+//
+// D-48: the four `satchel` cages drew 22 px. At that height a 347×480 painting
+// keeps its outline and loses everything inside it, so all four inmates — the
+// sound system, the tablet, the chair, the class photo — were the same shape.
+// A blind reviewer and a 22-px render said so independently, after THREE art
+// rounds had been commissioned for something nobody could see.
+//
+// PK-R6 · H2 had already made this exact ruling one cage over („at that size a
+// 413-px sheet keeps its outline and loses everything inside it, and what
+// survives is a green shape") and raised the person-cage to 34 — then left the
+// other four at the size the finding condemned, because they hold objects and
+// „a pencil case the size of a desk would be the opposite lie". That reasoning
+// is about the CONTAINER's plausibility. What it costs is the CAPTIVE's
+// identity, and a cage is the one shape this chapter teaches: the whole rescue
+// beat is a child looking at a cage and naming what is inside it. There is no
+// size class of cage that is allowed to be unreadable, so the branch collapses
+// to one number — the one a cage with a child in it already uses.
+export const CAGE_DISPLAY_H = 34;
+
+/** PK-R6 · C1 · display height per drained-object skin, in world px (TILE=16).
+ *  Measured against each Batch-AC sheet's aspect so the six read as one set of
+ *  classroom things at one scale rather than six unrelated stickers. */
+export const DRAINED_DISPLAY_H: Readonly<Record<string, number>> = {
+  obj_desk: 28, // 368×353 — the biggest thing in the room
+  obj_schoolbag: 26, // 378×341
+  obj_book: 24, // 268×358
+  obj_sharpener: 22, // 254×353
+  obj_pencil: 30, // 69×393 — tall and thin; height is what makes it legible
+  obj_gluestick: 28, // 124×396
+};
+export const DRAINED_DISPLAY_H_DEFAULT = 26;
+
+export interface EntSizeInput { role: string; skin: string; params?: Record<string, unknown> }
+
+/**
+ * The drawn height of a being in world px — PURE, because two readers need the
+ * same answer and only one of them can run Phaser.
+ *
+ * The renderer draws it; the composition gate WEIGHS it. Until this function
+ * existed, `check-composition.mjs` measured the entity plane by counting the
+ * pixels each painter happened to ship — so a 347×480 cage sheet outvoted the
+ * whole plane while occupying 350 px² of world, and D-48 was invisible to the
+ * one audit whose job is to see it. A gate that measures a model of the frame
+ * instead of the frame is the defect audit 10c exists to prevent; this is the
+ * same fix, aimed at beings instead of terrain.
+ */
+export const entDisplayH = (e: EntSizeInput): number => {
+  if (e.role === "guardian") return GUARDIAN_DISPLAY_H;
+  if (e.role === "swarm") return 34;
+  if (e.role === "crusher") return 30;
+  if (e.role === "door.trigger") return e.skin === "klecksdoor" ? 30 : 34;
+  if (e.role === "cage") return CAGE_DISPLAY_H;
+  if (e.role === "drained") return DRAINED_DISPLAY_H[e.skin] ?? DRAINED_DISPLAY_H_DEFAULT;
+  // PK-R6 · D: a classmate is a CHILD — the same height class as the hero, not
+  // a creature. Her act cells carry props (a desk under her shoes, a window,
+  // books on the floor) inside the same 512 px frame, so they read at the same
+  // scale her idle does; the number is her standing height.
+  if (e.role === "classmate") return 30;
+  if (e.role === "powerup") return 26;
+  if (e.role === "tip") return 18; // R3-16: a torn page, smaller than a being
+  if (e.role === "book") return 15;
+  if (e.role.startsWith("platform")) return 10;
+  return 24; // chasers, gunners, flyers, bouncers
+};
+
+/** The area a being OWNS in the frame, in world px² — its drawn height squared
+ *  by its own sheet's aspect. Area, not height, is what an eye competes over,
+ *  so this is the weight the composition gate reads and the unit R13 measures a
+ *  cue against. */
+export const entDisplayArea = (e: EntSizeInput, src: { w: number; h: number }): number => {
+  const h = entDisplayH(e);
+  return h * h * (src.h > 0 ? src.w / src.h : 1);
+};
+
 /** Her banked pairs, left and right. These cells carry their OWN direction, so
  *  the renderer must not also mirror them — see `CELL_IS_DIRECTIONAL`. (`roll`
  *  is the sheet's `bank_l0`; stage G mapped it to the name the turn state was

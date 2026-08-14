@@ -322,6 +322,68 @@ export const heroEdgeFor = (key: number): HeroEdge =>
     // the light of the room finding his edge
     : { tint: 0xffe4b0, alpha: 0.30, swell: 0.13, dx: 1, dy: 1 };
 
+// ── R5-W3 · A5 · D-45 · THE CHECKPOINT GETS THE SAME EDGE THE CHILD DOES ─────
+//
+// B1's critic: the Krakel marker „hat in den hellen Leveln keinen Eigenkontrast
+// und wurde beim Banking in p1 vom Spieler komplett verdeckt". Two defects in
+// one sentence, and both are measurable.
+//
+// THE VALUE, measured with check-composition's own formula: `krakel_a` is
+// 48.8 % mean luminance. p1's furniture band is 54.6 % and p3's is 51.1 % — so
+// the one prop in the chapter whose entire job is to be spotted from across the
+// room stands 5.8 and 2.3 points from the furniture it stands against. That is
+// less separation than the child himself had before H2 gave him a contour, and
+// audit 9 could not see it because audit 9 only ever looked at him.
+//
+// The repair is not new art and not a new idea: it is HIS contour, pointed at
+// the marker. `heroEdgeFor` is already room-aware — ink in a lit hall, warm rim
+// in a dark one — which is exactly the property a marker needs across five
+// rooms. Aliasing rather than copying is the point: one scheme, two readers, no
+// second table to drift.
+export const markerEdgeFor = (key: number): HeroEdge => heroEdgeFor(key);
+
+/** The marker's drawn height in world px (PaintScene.buildProps). */
+export const MARKER_H = 26;
+
+/**
+ * D-45's second half. The marker stood dead-centre on the very cell the child
+ * stands on to bank: 30.0 × 26.0 px at depth 3, behind a 23.0 × 35.6 px boy at
+ * depth 10, origins both (0.5, 1) on one standing line. That hides 598 of its
+ * 780 px² — 77 % — and the 23 % that survives is two slivers three pixels wide.
+ * „Completely hidden" was very nearly literal, and no contour can fix an object
+ * that is not on the screen.
+ *
+ * So Krakel steps aside — which is also the truer picture, because a person
+ * sketching you stands BESIDE you. He only steps where the grid has ground to
+ * step onto; where it has none he stays, and the audit says so out loud rather
+ * than letting him quietly disappear.
+ */
+export const MARKER_STANDOFF_PX = 18;
+/** How much of the marker must clear the child who is banking at it. */
+export const MARKER_VISIBLE_MIN = 0.55;
+
+const SOLID_GLYPHS = new Set(["#", "~", "="]);
+const solidAt = (rows: readonly string[], c: number, r: number): boolean =>
+  r >= 0 && r < rows.length && c >= 0 && c < (rows[r]?.length ?? 0) && SOLID_GLYPHS.has(rows[r]?.[c] ?? " ");
+
+/** Which way the marker steps, and how far. LEFT is tried first: in p1 the only
+ *  other thing near the checkpoint is a bouncer homing one cell to its RIGHT. */
+export const markerPlacementFor = (rows: readonly string[], c: number, r: number): { dx: number; why: string } => {
+  const standable = (cc: number): boolean => solidAt(rows, cc, r + 1) && !solidAt(rows, cc, r);
+  if (standable(c - 1)) return { dx: -MARKER_STANDOFF_PX, why: "stepped left onto its own ground" };
+  if (standable(c + 1)) return { dx: MARKER_STANDOFF_PX, why: "stepped right onto its own ground" };
+  return { dx: 0, why: "nowhere to step — the cell is one wide" };
+};
+
+/** The fraction of the marker's drawn box the child does NOT cover, both boxes
+ *  origin (0.5, 1) on one standing line. An axis-aligned FLOOR, not a pixel
+ *  truth: two painted silhouettes overlap less than their boxes do, so a number
+ *  that clears the law here clears it on the screen too. */
+export const markerVisibleFraction = (markerW: number, heroW: number, dx: number): number => {
+  const overlap = Math.max(0, (markerW + heroW) / 2 - Math.abs(dx));
+  return markerW <= 0 ? 0 : Math.max(0, 1 - Math.min(overlap, markerW) / markerW);
+};
+
 // ── PK-R6 · H2 · THE DARKS GO DEEPER (round-2 finding 9, major) ──────────────
 // „The compositions collapse into near-uniform pale yellow/tan colour fields with
 // almost no dark anchor shapes to organise the eye … push the darkest darks in
@@ -699,22 +761,30 @@ export const CH01_COMPOSITION: Record<string, CompositionSpec> = {
     // whole time. What rendered instead was `l2_p4` — blue Victorian armchairs
     // and a sofa. The chapter fought its boss in a parlour.
     //
-    // So the near band is the school chairs, and the armchairs keep the row
-    // BEHIND them: ghosted, smaller and slower, they read as the back of a hall
-    // rather than as competing furniture — and nothing has to be deleted for
-    // the premise to arrive. This is also what the victory beat needs; „warm
-    // light over the chair band" had no chair band to warm.
-    // …and the far row is where they belong, not the near one. The line says
-    // „in der FERNE", and `midFarBand` is exactly that: 0.68 of the height,
-    // lifted above the near row's top edge, parallax 0.36, ghosted to 0.62 —
-    // the back of a hall. Measured, not preferred: the value law (doc 36 §1)
-    // reads L2 off `mid`, and the school chairs' wood is brighter than the
-    // dusk band allows (22.3 % against a 14–21 % window, and the L1↔L2 lift
-    // collapsing to 2.8 %). Putting them near would have meant either bending
-    // a measured readability law or repainting a sheet this session may not.
-    // Behind the armchairs they cost nothing and read as what they are.
-    midFar: { ...midFarBand("p4", midBand("p4", 96)), segments: ["band_p4_audience"] },
-    mid: midBand("p4", 96),
+    // R5-W3 · A5 · …AND NOW THEY ARE THE ROW YOU ARE STANDING IN.
+    //
+    // H1 could only get the chairs into the room, not to the front of it. It
+    // put them in the FAR row and wrote down exactly why: the value law reads
+    // L2 off `mid`, and the school chairs' wood measured 22.3 % against a
+    // 14–21 % window, with the L1↔L2 lift collapsing to 2.8 %. Its last line
+    // was „repainting a sheet this session may not". Koki's verdict on the
+    // result was that the armchairs were still in front — his „Ohrensessel
+    // statt Schulstühle" was half-answered — so this session may, and did.
+    //
+    // `scripts/set-plane-value.mjs` took the sheet to a DECLARED 14.8 %: one
+    // multiplicative pass, hue and saturation untouched, the same painting at
+    // a different key. That number is not taste, it is the only window two
+    // laws leave open — audit 1's band [14.0, 21.0], and the ABSOLUTE L2↔L3
+    // separation of 12 points against this room's L3 of 27.5 %, which caps L2
+    // at 15.5. So the chairs take the near row, and the armchairs fall back to
+    // where `midFarBand` puts anything behind: 0.68 of the height, lifted past
+    // the near row's top edge, parallax 0.36, ghosted to 0.62 — the back of a
+    // hall. Nothing is deleted; the parlour becomes the depth behind the class.
+    //
+    // The victory beat needed this too: „warmes Licht überm Stuhl-Band" had no
+    // chair band to warm while the chairs were the far row.
+    mid: { ...midBand("p4", 96), segments: ["band_p4_audience"] },
+    midFar: midFarBand("p4", midBand("p4", 96)),
     // two stage lamps, nearly vertical and wider than a window's beam — the one
     // room in the chapter whose light is aimed rather than let in.
     // PK-R6 · H2 (round-2 finding 9): …and the lamps are now DRAWN. This phase

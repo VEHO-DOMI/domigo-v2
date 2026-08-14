@@ -15,6 +15,8 @@ import { PLACEHOLDER_UNTIL, isPlaceholderStem } from "../packages/game-paint/src
 // so the gate can no longer demand a stem the loader would never fetch (and
 // vice versa) — Audit A below is that assertion.
 import { allScopePhases, domArtStems, levelRequiredStems, phaseArtScope, phaseRequiredStems } from "../packages/game-paint/src/artScope.ts";
+import { captiveStem, isCaptiveKey } from "../packages/game-paint/src/artManifest.ts";
+import { entDisplayH } from "../packages/game-paint/src/anim.ts";
 import { keyFringe, readPng } from "./key-fringe.mjs";
 import { DEAD_ART_CEILING } from "../packages/game-paint/src/perfBudget.ts";
 
@@ -165,6 +167,95 @@ for (const stem of [...fringeStems].sort()) {
   fringeTotal += hits.length;
   const at = hits[0];
   fail(`colour-key fringe on "${stem}": ${hits.length} magenta px on its cut edge (first at ${at.x},${at.y}) — run: node --experimental-strip-types scripts/strip-key-fringe.mjs`);
+}
+
+// ── R5-W3 · A5 · D-48 · THE CAPTIVE MUST SURVIVE ITS OWN CAGE ────────────────
+//
+// The finding this closes: four cages, four different things inside them, and on
+// the screen all four were the same picture. Three art rounds were commissioned
+// before anybody measured why — `entTargetH` drew the cage 22 px tall, and the
+// paint that tells a sound system from a tablet is smaller than that.
+//
+// So the ruling (34 px) gets a law, and the law is measured the way the finding
+// was: take the two captives that look MOST alike, draw both at the height the
+// engine actually uses, and count how many pixels on the screen separate them.
+// Measured over the shipped sheets:
+//
+//     drawn height   closest pair differs by
+//         18 px            3.2 px
+//         22 px            4.7 px      ← what shipped, and what the blind
+//         26 px            6.7 px        reviewer could not tell apart
+//         30 px            8.7 px
+//         34 px           11.3 px      ← the ruling
+//         48 px           22.4 px
+//
+// The floor is 8. It is not a taste: it sits between the height a blind reviewer
+// rejected and the height the same reviewer accepted („ab 34 px trennen sich
+// Lautsprecher-Kegel und Tablet"), and it is what makes this check DISCRIMINATE —
+// put the cage back to 22 and it goes red at 4.7. A law that could not fail
+// would have proven nothing.
+//
+// What it does NOT claim: that a child can name them. No script can measure
+// that; the blind critic does, and its verdict is the one that counts.
+const CAPTIVE_MIN_SEPARATION_PX = 8;
+
+/** Box-downscale a sheet's ALPHA to the drawn height — a silhouette's identity
+ *  is its shape, and the shape is what the cage's size takes away. */
+const maskAt = (png, H) => {
+  const W = Math.max(1, Math.round((png.width / png.height) * H));
+  const a = new Float64Array(W * H);
+  for (let y = 0; y < H; y++) {
+    const y0 = Math.floor((y * png.height) / H);
+    const y1 = Math.max(y0 + 1, Math.floor(((y + 1) * png.height) / H));
+    for (let x = 0; x < W; x++) {
+      const x0 = Math.floor((x * png.width) / W);
+      const x1 = Math.max(x0 + 1, Math.floor(((x + 1) * png.width) / W));
+      let s = 0;
+      let n = 0;
+      for (let yy = y0; yy < y1; yy++) for (let xx = x0; xx < x1; xx++) { s += png.data[((yy * png.width + xx) << 2) + 3]; n++; }
+      a[y * W + x] = n === 0 ? 0 : s / n / 255;
+    }
+  }
+  return { W, H, a };
+};
+
+const captiveCages = [];
+for (const { level } of levels) {
+  for (const ph of allScopePhases(level)) {
+    for (const e of ph.entities) {
+      if (e.role === "cage" && isCaptiveKey(e.params?.captive)) captiveCages.push({ phase: ph.id, id: e.id, key: e.params.captive });
+    }
+  }
+}
+if (captiveCages.length > 0) {
+  const H = entDisplayH({ role: "cage", skin: "satchel" });
+  const masks = new Map();
+  for (const { key } of captiveCages) {
+    if (masks.has(key)) continue;
+    const file = fileOf.get(captiveStem(key));
+    if (!file) { fail(`captive "${key}" is declared by a cage but ${captiveStem(key)}.png is not on disk`); continue; }
+    masks.set(key, maskAt(readPng(file).png, H));
+  }
+  const keys = [...masks.keys()].sort();
+  let worst = { d: Infinity, pair: "" };
+  for (let i = 0; i < keys.length; i++) {
+    for (let j = i + 1; j < keys.length; j++) {
+      const p = masks.get(keys[i]);
+      const q = masks.get(keys[j]);
+      let d = 0;
+      for (let k = 0; k < p.a.length; k++) d += Math.abs(p.a[k] - q.a[k]);
+      if (d < worst.d) worst = { d, pair: `${keys[i]}/${keys[j]}` };
+    }
+  }
+  if (keys.length < 2) {
+    console.log(`  captive legibility: only ${keys.length} captive declared — nothing to tell apart`);
+  } else if (worst.d < CAPTIVE_MIN_SEPARATION_PX) {
+    fail(`captive legibility: at the ${H}px the engine draws a cage, "${worst.pair}" differ by only ${worst.d.toFixed(1)} px on screen (law: ${CAPTIVE_MIN_SEPARATION_PX}) — the cage is too small for the paint inside it (D-48)`);
+  } else {
+    console.log(`  captive legibility: ${captiveCages.length} cages · ${keys.length} captives at ${H}px · closest pair "${worst.pair}" differs by ${worst.d.toFixed(1)} px (law: ${CAPTIVE_MIN_SEPARATION_PX})`);
+  }
+} else {
+  console.log("  captive legibility: no cage declares a captive — nothing measured");
 }
 
 if (failures === 0) {

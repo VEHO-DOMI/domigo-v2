@@ -422,11 +422,25 @@ export interface MassPiece {
   /** world px drawn per SOURCE px — the painted-scale law. Undefined keeps the
    *  legacy rule (one source height = the piece's own height). */
   srcScale?: number;
-  /** horizontal override, for a strip whose WIDTH is dictated by the anatomy it
-   *  trims rather than by the painting's scale (the carved side trims are 8 px
-   *  wide because the trim is 8 px wide; their page-edges must still be the
-   *  same physical size as the books they run beside). */
-  srcScaleX?: number;
+  /**
+   * R5-W3 · A5 · R3 · HOW MANY SOURCE PIXELS THIS PIECE SHOWS ACROSS ITS WIDTH.
+   *
+   * The field this replaces (`srcScaleX`) declared the DESTINATION — „a trim is
+   * 8 px wide" — and let the sheet's own width decide the scale. The result was
+   * measured: `mass_edge_l/r` are 248 px wide and drew at 8 / 248 = 0.0323 world
+   * px per source px against the world's 0.0802, so **every carved trim in the
+   * chapter was squashed 2.49× horizontally** — while the comment beside the
+   * arithmetic promised the exact opposite, that „its page-edges come out the
+   * same physical size as the books beside them". Nothing could report it,
+   * because audit 10 SKIPPED any piece that declared the override.
+   *
+   * Declaring the SOURCE WINDOW instead makes the arithmetic checkable against
+   * the sheet: `x = w / srcW`, a window wider than the painting is a red light
+   * rather than a squash, and the trim shows PART of its texture at true scale
+   * instead of all of it at the wrong one — which is what a trim is: a cut
+   * through matter, not a shrunken picture of matter.
+   */
+  srcW?: number;
   /**
    * Which axes the pattern is anchored to world space on.
    *
@@ -454,7 +468,8 @@ export interface MassPiece {
  */
 export const tileScaleFor = (p: MassPiece, src: { w: number; h: number }): { x: number; y: number } => {
   const y = p.srcScale ?? (src.h > 0 ? p.h / src.h : 1);
-  return { x: p.srcScaleX ?? y, y };
+  // a declared WINDOW divides; an undeclared one keeps the painting square
+  return { x: p.srcW !== undefined && p.srcW > 0 ? p.w / p.srcW : y, y };
 };
 
 /** Where the pattern is pinned, in SOURCE px (Phaser's `tilePosition`).
@@ -1128,10 +1143,14 @@ export const planMass = (
       // stop existing and its page-edges come out the same physical size as the
       // books beside them. And it takes the same depth light as the mass, so a
       // trim six rows down is as deep as the paper it is carved into.
-      const trim = (stem: string): Partial<MassPiece> => ({
+      // R5-W3 · A5 · R3: the window is sized by the WORLD's paint scale, so the
+      // page-edges really do come out the same physical size as the books beside
+      // them — which is what the paragraph above has always promised and what
+      // the old `EDGE_W / srcW(stem)` did the opposite of (2.49× squash).
+      const trim = (stem: string, wPx: number): Partial<MassPiece> => ({
         tile: true,
         srcScale: paintScale,
-        srcScaleX: EDGE_W / Math.max(srcW(stem), 1),
+        srcW: wPx / paintScale,
         tileAnchor: "xy",
         tint: mixMultiply(TRIM_SHADE, depthTintAt(depthBucketAt(depthAt(grid, c, r)))),
       });
@@ -1147,8 +1166,8 @@ export const planMass = (
       // room's own paper down the middle, which is the whole read: an edge is a
       // cut through matter, and you have to be able to see the matter.
       const trimW = airL && airR ? EDGE_W * 0.55 : EDGE_W;
-      if (airL) out.push({ kind: "edgeL", stem: kit.edgeL, c, r, x: x - EDGE_OUT, y, w: trimW, h: TILE, ...trim(kit.edgeL), depth: DEPTH.trim });
-      if (airR) out.push({ kind: "edgeR", stem: kit.edgeR, c, r, x: x + TILE + EDGE_OUT - trimW, y, w: trimW, h: TILE, ...trim(kit.edgeR), depth: DEPTH.trim });
+      if (airL) out.push({ kind: "edgeL", stem: kit.edgeL, c, r, x: x - EDGE_OUT, y, w: trimW, h: TILE, ...trim(kit.edgeL, trimW), depth: DEPTH.trim });
+      if (airR) out.push({ kind: "edgeR", stem: kit.edgeR, c, r, x: x + TILE + EDGE_OUT - trimW, y, w: trimW, h: TILE, ...trim(kit.edgeR, trimW), depth: DEPTH.trim });
       if (airL && airD) out.push({ kind: "cornerBL", stem: kit.cornerBL, c, r, x: x - EDGE_OUT, y: y + TILE - CORNER + EDGE_OUT, w: CORNER, h: CORNER, tint: cornerTint, depth: DEPTH.trim });
       if (airR && airD) out.push({ kind: "cornerBR", stem: kit.cornerBR, c, r, x: x + TILE + EDGE_OUT - CORNER, y: y + TILE - CORNER + EDGE_OUT, w: CORNER, h: CORNER, tint: cornerTint, depth: DEPTH.trim });
       // inner corners: where a wall rises out of the floor beside this cell.
