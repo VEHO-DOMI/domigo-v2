@@ -1084,6 +1084,31 @@ export const PAINT_OVERLAY_CSS = `
   pointer-events: none;
 }
 
+/* R5-W2 · J1-D · THE STRUCK-THROUGH WRONG FORM (cards/Glance.tsx). Not the
+   browser's own line-through: that draws a hairline through the middle of the
+   glyphs in the text's own colour, which on painted paper reads as a rendering
+   fault rather than as a correction. This is one INK STROKE in the correction
+   ink, laid across at a slight angle the way a teacher's pen does it, thinning
+   at both ends. Static — a stroke that animates is a stroke a child watches
+   instead of reads — so it is deliberately absent from the kill list below. */
+.pb-struck {
+  position: relative;
+  white-space: nowrap;
+  color: #8a7a58;
+}
+.pb-struck::after {
+  content: "";
+  position: absolute;
+  left: -3%;
+  right: -3%;
+  top: 52%;
+  height: 3px;
+  border-radius: 3px;
+  transform: rotate(-1.9deg);
+  background: linear-gradient(90deg, rgba(176,70,26,0), var(--pb-accent) 18%, var(--pb-accent) 82%, rgba(176,70,26,0));
+  pointer-events: none;
+}
+
 /* THE VERB, STAMPED ON THE PICTURE. It was tried beside the ask first and read
    as a stray control floating at the card's left edge; pressed into the corner
    of the thing it acts on it is a seal, and it costs the card no height. */

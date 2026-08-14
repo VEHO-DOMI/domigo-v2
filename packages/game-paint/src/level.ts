@@ -111,6 +111,60 @@ export interface EntityParams {
    *  Unit 1 · Seite 14"). Display copy; the ATTESTATION is the grep above, not
    *  this string — a label cannot be trusted to prove itself. */
   belegDe?: string;
+  /** tip: HOW IT SOUNDS — the line that stops a contraction being filed as a
+   *  writing trick.
+   *
+   *  From the teacher's critique (J1-D, Koki's ruling of 2026-08-13): short
+   *  forms are first a SPOKEN phenomenon, and a child who only ever meets them
+   *  on paper learns them as a spelling rule with no sound attached.
+   *
+   *  THE NOTATION IS THE ANCHOR FORM, and Koki chose it over the book's own
+   *  phonetic brackets for a reason worth keeping: [aɪm] is the strongest thing
+   *  to check (the MORE! 1 wordlist prints exactly that notation) and the
+   *  weakest thing to READ — a first-year child cannot decode it unaided, so it
+   *  only works read aloud by someone else. The anchor works alone AND is still
+   *  machine-grounded, by a different route: the word it anchors to must be one
+   *  the child has already met, so `ausspracheDe` is checked against the unit's
+   *  own lexicon (scripts/check-paint-copy.mjs). „Sprich I'm wie das i in time"
+   *  is legal because `time` is in Unit 1 — the unit is CALLED Time for school. */
+  ausspracheDe?: string;
+  /** tip: the English word `ausspracheDe` anchors to — declared, not guessed.
+   *
+   *  ⚠ THIS FIELD EXISTS BECAUSE THE LAW COULD NOT BE WRITTEN WITHOUT IT. The
+   *  first attempt grounded every English-looking token in the line against the
+   *  unit lexicon, and it fired on „auf", „ein", „laut", „leise" — German prose
+   *  words that a tokenizer cannot tell from English ones. That is the SAME
+   *  reason `beispielEn` is English-only and the German Merksatz is not graded:
+   *  a mixed line cannot be split by machine. So the anchor is named here, and
+   *  the law checks two things it can actually check — the word is in the unit's
+   *  own lexicon, and it really appears in the line.
+   *
+   *  Optional: a line that teaches RHYTHM rather than a sound („laut auf three,
+   *  leise auf twenty") anchors to nothing and claims nothing. */
+  ankerEn?: string;
+  /** tip: THE TRAP — the wrong form, struck through, with the right one beside
+   *  it. „Nicht: I'am — richtig: I'm."
+   *
+   *  From the same critique: one wrong form struck through beats three right
+   *  ones when the mistake is about PLACEMENT. A child who has only ever seen
+   *  correct forms has nothing to recognise their own slip against, and „I'am"
+   *  is not a different rule — it is this rule with the apostrophe in the wrong
+   *  place, which is exactly the shape the page has to name.
+   *
+   *  TWO FIELDS, NOT ONE delimited string: six positional strings in a row all
+   *  typed `string` is a shape where any two can be swapped and it still
+   *  compiles, and a parser would face one law where two are available.
+   *
+   *  THE PAIR IS GATED HARDER THAN THE EXAMPLE IS, which is unusual and is the
+   *  point. `richtigeFormEn` faces the example law. `falscheFormEn` faces its
+   *  INVERSE: it must appear NOWHERE in the transcripts, because a »wrong form«
+   *  the book prints is not wrong — it is a form the author had not read yet.
+   *  And the two must be the SAME form mis-set (see `sameFormMisplaced`): a trap
+   *  that is simply a different sentence teaches a child to distrust a word
+   *  instead of to place an apostrophe. Both or neither. */
+  falscheFormEn?: string;
+  /** tip: the right form the trap corrects. See `falscheFormEn`. Both or neither. */
+  richtigeFormEn?: string;
   /** spawned hidden, revealed by a link. */
   hidden?: boolean;
   [key: string]: unknown;
@@ -700,6 +754,57 @@ const ENGLISH_ONLY = /^[\x20-\x7E–—…‘’]+$/;
  *  would be wrong — but the per-sentence cap above still applies to each of its
  *  sentences, which is the clause that actually bites: the shipped ch01 line
  *  ran 51 + 115 and no gate in the repo had ever looked at it. */
+/** Levenshtein distance, small and exact — the strings here are one short
+ *  English phrase each, so the simple two-row form is the right size. */
+const editDistance = (a: string, b: string): number => {
+  let prev = Array.from({ length: b.length + 1 }, (_, i) => i);
+  for (let i = 1; i <= a.length; i++) {
+    const cur = [i];
+    for (let j = 1; j <= b.length; j++) {
+      cur[j] = Math.min(
+        (prev[j] ?? 0) + 1,
+        (cur[j - 1] ?? 0) + 1,
+        (prev[j - 1] ?? 0) + (a[i - 1] === b[j - 1] ? 0 : 1),
+      );
+    }
+    prev = cur;
+  }
+  return prev[b.length] ?? 0;
+};
+
+/** R5-W2 · J1-D · Is `bad` the SAME form as `good`, only mis-set?
+ *
+ *  This is the law that makes a trap a TRAP. Two shapes count, because the
+ *  teacher's own two examples are two shapes:
+ *    · a PERMUTATION of the same words — »How you are?« ← »How are you?«,
+ *      »three-twenty« ← »twenty-three«;
+ *    · a small IN-WORD slip — »I'am« ← »I'm«, two edits apart.
+ *  Hyphens split like spaces, because English number words are compounds and a
+ *  compound is exactly where their placement law lives.
+ *
+ *  Anything else is a different sentence, and a trap built from a different
+ *  sentence teaches a child to distrust a word instead of to place an
+ *  apostrophe. */
+export const sameFormMisplaced = (bad: string, good: string): boolean => {
+  // ⚠ PUNCTUATION IS NOT PART OF A WORD, and this cost the law its first real
+  // case: »How you are?« against »How are you?« is the textbook word-order slip,
+  // and a tokenizer that keeps the question mark attached sees »are?« vs »you?«
+  // and calls them different words. The permutation test asks whether the same
+  // WORDS were laid down in a different order, so it strips everything that is
+  // not a letter or an apostrophe — the apostrophe stays because it is the very
+  // thing »I'am« misplaces, and that case is judged by edit distance below.
+  const toks = (str: string): string[] => str
+    .toLowerCase()
+    .split(/[\s-]+/)
+    .map((w) => w.replace(/[^\p{L}']/gu, ""))
+    .filter(Boolean)
+    .sort();
+  const a = toks(bad);
+  const b = toks(good);
+  if (a.length === b.length && a.every((t, i) => t === b[i])) return true;
+  return editDistance(bad.toLowerCase(), good.toLowerCase()) <= 2;
+};
+
 export const MAX_GOAL_DE = 200;
 
 /** "Close enough to a reachable node to count" — the same tolerance every
@@ -896,6 +1001,28 @@ export const checkLevelLaws = (level: PaintLevel): LawFailure[] => {
       const beleg = t.params?.belegDe;
       if (beleg === undefined || beleg.trim() === "") {
         failures.push({ phase: "*", law: "tip-honesty", detail: `Regel-Seite ${t.id} names no Beleg — the child may always see which page of their own book this came from` });
+      }
+
+      // R5-W2 · J1-D · THE TRAP (Koki's ruling of 2026-08-13). Optional as a
+      // pair and impossible as a half: a struck-through wrong form with no right
+      // one beside it is a mistake nobody corrects.
+      const bad = t.params?.falscheFormEn;
+      const good = t.params?.richtigeFormEn;
+      if ((bad === undefined) !== (good === undefined)) {
+        failures.push({ phase: "*", law: "tip-trap", detail: `Regel-Seite ${t.id}: die Falle hat nur eine Hälfte — eine durchgestrichene Form ohne die richtige daneben ist ein Fehler, den niemand richtigstellt` });
+      } else if (bad !== undefined && good !== undefined) {
+        for (const [what, str] of [["falscheFormEn", bad], ["richtigeFormEn", good]] as const) {
+          if (!ENGLISH_ONLY.test(str)) {
+            failures.push({ phase: "*", law: "tip-trap", detail: `Regel-Seite ${t.id}: ${what} is not English — »${str}«` });
+          } else if (str.length > MAX_SCHLUESSEL) {
+            failures.push({ phase: "*", law: "tip-trap", detail: `Regel-Seite ${t.id}: ${what} is ${str.length} chars (max ${MAX_SCHLUESSEL})` });
+          }
+        }
+        if (bad === good) {
+          failures.push({ phase: "*", law: "tip-trap", detail: `Regel-Seite ${t.id}: beide Formen sind gleich — eine Falle ohne Unterschied lehrt nichts` });
+        } else if (!sameFormMisplaced(bad, good)) {
+          failures.push({ phase: "*", law: "tip-trap", detail: `Regel-Seite ${t.id}: »${bad}« ist keine falsch gesetzte Fassung von »${good}«, sondern ein anderer Satz — die Falle soll den PLATZ zeigen, nicht ein neues Wort` });
+        }
       }
     }
   }

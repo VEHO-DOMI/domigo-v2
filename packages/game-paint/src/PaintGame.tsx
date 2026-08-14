@@ -1457,6 +1457,9 @@ function Overlay({
         merksatzDe={o.tip?.merksatzDe ?? ""}
         schluesselDe={o.tip?.schluesselDe ?? ""}
         beispielEn={o.tip?.beispielEn ?? ""}
+        ausspracheDe={o.tip?.ausspracheDe ?? ""}
+        falscheFormEn={o.tip?.falscheFormEn ?? ""}
+        richtigeFormEn={o.tip?.richtigeFormEn ?? ""}
         belegDe={o.tip?.belegDe ?? ""}
         onDone={() => onDismiss(o)}
       />,

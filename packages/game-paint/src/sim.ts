@@ -106,6 +106,12 @@ export interface TipPayload {
   schluesselDe: string;
   /** the English example, verbatim from the unit's own pages. */
   beispielEn: string;
+  /** R5-W2 · J1-D: how it SOUNDS, and the wrong form struck through. Both
+   *  optional at the payload boundary — a chapter authored before this round
+   *  has neither, and the card simply omits the line. */
+  ausspracheDe: string;
+  falscheFormEn: string;
+  richtigeFormEn: string;
   /** which page of the child's book the example comes from. */
   belegDe: string;
 }
@@ -830,6 +836,9 @@ export class Sim {
           merksatzDe: String(e?.params.merksatzDe ?? ""),
           schluesselDe: String(e?.params.schluesselDe ?? ""),
           beispielEn: String(e?.params.beispielEn ?? ""),
+          ausspracheDe: String(e?.params.ausspracheDe ?? ""),
+          falscheFormEn: String(e?.params.falscheFormEn ?? ""),
+          richtigeFormEn: String(e?.params.richtigeFormEn ?? ""),
           belegDe: String(e?.params.belegDe ?? ""),
           got: this.tipsGot,
         });

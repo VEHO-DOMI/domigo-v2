@@ -109,6 +109,10 @@
       "merksatzDe": "Aus I am wird I'm, aus it is wird it's, aus is not wird isn't.",
       "schluesselDe": "aus is not wird isn't",
       "beispielEn": "It's brown and red.",
+     "ausspracheDe": "Sprich I'm wie das i in time — lang: aim.",
+     "ankerEn": "time",
+     "falscheFormEn": "I'am",
+     "richtigeFormEn": "I'm",
       "belegDe": "MORE! 1 · Unit 1 · Seite 14"
      }
     },
@@ -297,6 +301,9 @@
       "merksatzDe": "How are you? fragt, wie es geht — die Antwort ist I'm fine, thanks.",
       "schluesselDe": "How are you? fragt, wie es geht",
       "beispielEn": "How are you? – I'm fine, thanks.",
+     "ausspracheDe": "How are you? klingt wie ein Wort: hau-a-ju.",
+     "falscheFormEn": "How you are?",
+     "richtigeFormEn": "How are you?",
       "belegDe": "MORE! 1 · Unit 1 · Seite 15"
      }
     },
@@ -422,6 +429,10 @@
       "merksatzDe": "Englisch zählt andersherum: erst twenty, dann three — twenty-three.",
       "schluesselDe": "erst twenty, dann three",
       "beispielEn": "twenty-three, twenty-four, twenty-five",
+     "ausspracheDe": "twenty-three: laut auf three, leise auf twenty.",
+     "ankerEn": "three",
+     "falscheFormEn": "three-twenty",
+     "richtigeFormEn": "twenty-three",
       "belegDe": "MORE! 1 · Unit 1 · Seite 10"
      }
     },

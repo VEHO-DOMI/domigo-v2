@@ -289,3 +289,27 @@ export const PictureMark = ({ size = 16 }: { size?: number }): React.ReactElemen
     <path d="M3.2 15.4l4.6-4.2 3.6 3.2 3.8-4.4 5.6 5.6" />
   </svg>
 );
+
+/** R5-W2 · J1-D · THE STRUCK-THROUGH WRONG FORM — the book's third sanctioned
+ *  emphasis device, and the only one that means „NOT this".
+ *
+ *  From the teacher's critique: one wrong form struck through beats three right
+ *  ones when the mistake is about placement. „I'am" is not a different rule; it
+ *  is this rule with the apostrophe in the wrong place, and that is the shape
+ *  the page has to name.
+ *
+ *  WHY IT IS A DEVICE AND NOT AN `<s>`. The browser's own strike draws a hairline
+ *  through the middle of the glyphs in whatever colour the text is, which on
+ *  painted paper reads as a rendering fault — and an inline one in RulePage.tsx
+ *  is exactly the drift cards/emphasis.test.ts exists to stop, even though
+ *  neither tag is on its ban list today. That guard only works if the devices
+ *  live HERE, where it can see them. So this is one INK STROKE: hand-laid, not
+ *  quite level, thinning at both ends, in the correction ink.
+ *
+ *  It carries no aria trickery on purpose. The line around it reads „Nicht: … —
+ *  richtig: …", so a screen reader gets the whole sentence right without the
+ *  stroke; a struck word HIDDEN from a reader is a word that reader is never
+ *  warned about. */
+export const Struck = ({ children }: { children: React.ReactNode }): React.ReactElement => (
+  <span className="pb-struck">{children}</span>
+);
