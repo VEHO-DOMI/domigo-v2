@@ -519,6 +519,29 @@ export const DIP_TICKS = 36;
  *  point of the beat. */
 export const SINK_SPEED = Math.round(1.1 * SUBS);
 
+/** R5-W2 · H1 · DIE BÜHNE, IN PIXELN — eine Herleitung für JEDE ihrer Bewegungen.
+ *
+ *  `stageMinC`/`stageMaxC` (arena.md §10, P1-Vorleistung 1) binden die Tafel an
+ *  die Bretter c5–30, damit die Seitenbühnen heilig bleiben: der Auftritt im
+ *  Westen ist eine Ruhe-Zone, der Sieg-Trakt im Osten wird nie überflogen.
+ *
+ *  Die Klemme kannte bis hierher nur die HALBE Bewegung — sie saß allein am
+ *  Flug-ZENTRUM (`homeX`), während der Dip frei `playerX ± DIP_STANDOFF_PX`
+ *  ansteuerte. GEMESSEN am ausgelieferten Piloten: der ganze Kampf wird auf den
+ *  Spalten 1,25–4,63 ausgetragen und die Tafel bis c4,13 mitgezogen — westlich
+ *  ihrer Bühne, in der Kulisse, auf dem Spawn. Dort spielt heute auch der
+ *  komplette Sieg-Bogen. Ein Gesetz, das nur für einen von neun Zuständen gilt,
+ *  ist kein Gesetz; darum liest es ab jetzt jede Bewegung aus DIESER Funktion. */
+const stageBoundsOf = (
+  e: Pick<EntityState, "params">,
+  grid: readonly string[],
+): { minPx: number; maxPx: number } => ({
+  minPx: e.params?.stageMinC !== undefined ? Number(e.params.stageMinC) * TILE : FLIGHT_MARGIN_PX,
+  maxPx: e.params?.stageMaxC !== undefined
+    ? (Number(e.params.stageMaxC) + 1) * TILE
+    : (grid[0]?.length ?? 0) * TILE - FLIGHT_MARGIN_PX,
+});
+
 export const spawnEntities = (specs: EntitySpec[], links: LinkSpec[]): EntityWorld => ({
   entities: specs.map((s) => {
     const cellX = (s.c * TILE + TILE / 2) * SUBS;
@@ -1051,7 +1074,11 @@ export const stepEntities = (
         // speaker law parks the request against a boss who is no longer moving.
         if (e.state === "dip") {
           const side: 1 | -1 = e.x <= inp.playerX ? -1 : 1;
-          const tx = inp.playerX + side * DIP_STANDOFF_PX * SUBS;
+          // sie LEHNT sich zum Kind, aber sie verlässt ihre Bühne nicht: ein
+          // Kind in der Kulisse zieht sie sonst mit hinaus (siehe stageBoundsOf)
+          const stage = stageBoundsOf(e, grid);
+          const want = inp.playerX + side * DIP_STANDOFF_PX * SUBS;
+          const tx = Math.min(Math.max(want, stage.minPx * SUBS), stage.maxPx * SUBS);
           const step = Math.round((tx - e.x) / 6);
           e.vx = step;
           e.x += step;
@@ -1097,8 +1124,7 @@ export const stepEntities = (
         // Band (Zentrum ∈ [stageMin+Spann, stageMax−Spann]) — die Seitenbühnen
         // (Auftritt West, Sieg-Trakt Ost) sind damit mechanisch heilig; ohne
         // Params bleibt exakt das alte Welt-Verhalten.
-        const stageMinPx = e.params?.stageMinC !== undefined ? Number(e.params.stageMinC) * TILE : FLIGHT_MARGIN_PX;
-        const stageMaxPx = e.params?.stageMaxC !== undefined ? (Number(e.params.stageMaxC) + 1) * TILE : (grid[0]?.length ?? 0) * TILE - FLIGHT_MARGIN_PX;
+        const { minPx: stageMinPx, maxPx: stageMaxPx } = stageBoundsOf(e, grid);
         const loC = (stageMinPx + span) * SUBS;
         const hiC = Math.max(loC, (stageMaxPx - span) * SUBS);
         const wantC = Math.min(Math.max(inp.playerX, loC), hiC);
@@ -1177,6 +1203,30 @@ export const stepEntities = (
   // mid-`for…of` would be stepped on the tick it was created and lose a frame
   // of its 1-second life to the throw that made it.
   const born: ProjectileState[] = [];
+
+  // ── R5-W2 · H1 · THE OVER-REACH TALLY, COUNTED FROM BOTH ENDS ──────────────
+  // Three spent pieces over-reach her and bring her down (doc 44 §4 ch01 C4:
+  // „dodging N throws opens the counter-window").
+  //
+  // It used to be counted in ONE place — the landing branch — and that was a
+  // dead end for the child who needs the most help. A six-year-old who freezes
+  // is standing exactly where the chalk is aimed, so every piece hits and none
+  // of them ever reached the boards. MEASURED on the real Sim in the shipped
+  // arena: 53 throws, 53 hits, ZERO windows in 200 seconds, hp never moves —
+  // chapter 1's boss could not be beaten by a child who stands still. The
+  // i-frames the old comment relied on are 120 ticks against a throw cycle of
+  // 210+, so they lapse between pieces and cannot carry the load.
+  //
+  // Being hit is still no shortcut: the hit raises a card that unties NOTHING
+  // (sim.ts `encounter` says so in as many words), and only the WINDOW unties a
+  // knot — which still has to be answered. Dodging stays strictly better, and
+  // now costs a knockback and an interrupting card less.
+  const tallyOverreach = (p: ProjectileState): void => {
+    if (p.kind !== "chalk") return;
+    const src = w.entities.find((e) => e.id === p.fromId && e.role === "guardian" && !e.redeemed);
+    if (src && src.state !== "stagger" && src.state !== "window" && src.state !== "dip") src.dodges += 1;
+  };
+
   for (const p of w.projectiles) {
     if (p.dead) continue;
     // ── PK-R6 · E · THE LINGERING SHARD (doc 44 §4 ch01 C4) ─────────────────
@@ -1225,8 +1275,7 @@ export const stepEntities = (
         // piece of chalk reaches the floor its thrower is already back on her
         // path, so opening the window from here would only ever interrupt a
         // telegraph the child had started reading.
-        const src = w.entities.find((e) => e.id === p.fromId && e.role === "guardian" && !e.redeemed);
-        if (src && src.state !== "stagger" && src.state !== "window" && src.state !== "dip") src.dodges += 1;
+        tallyOverreach(p);
         // …and it leaves its splinter on the boards (doc 44 §4 ch01 C4)
         born.push({
           id: w.nextProjectileId++, kind: "shard", x: p.x, y: g,
@@ -1270,6 +1319,10 @@ export const stepEntities = (
     if (!p.deflected && inp.playerIframes === 0 && (p.kind !== "chalk" || p.age > CHALK_ARM_TICKS) &&
       Math.abs(p.x - inp.playerX) / SUBS < 10 && Math.abs(p.y - (inp.playerY - 15 * SUBS)) / SUBS < 16) {
       p.dead = true;
+      // the piece is SPENT — it broke on the child instead of on the boards, and
+      // it counts the same (see tallyOverreach). No splinter: it never reached
+      // the floor, so there is nothing lying there to step on afterwards.
+      tallyOverreach(p);
       const src = w.entities.find((e) => e.id === p.fromId);
       events.push({ type: "encounter", id: p.fromId, role: src?.role ?? "gunner", skin: src?.skin ?? p.kind });
     }

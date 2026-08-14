@@ -315,6 +315,69 @@ describe("her whole body stays in the visible band (readable = seeable)", () => 
     }
   });
 
+  it("R5-W2 · H1 · die Buehnen-Klammer haelt auch den DIP auf der Buehne", () => {
+    // GEMESSEN, nicht vermutet: der ausgelieferte p4-Pilot kaempft den ganzen
+    // Boss auf Spalte 1,25–4,63 und zieht die Tafel bis c4,13 — westlich der
+    // Buehne c5–30, mitten in die Kulisse, auf den Spawn. Dort spielt heute
+    // auch der ganze Sieg-Bogen (sink → sad → consoled).
+    //
+    // Die Ursache ist eine Klammer, die nur die HALBE Bewegung kennt: der Dip
+    // steuert `playerX ± DIP_STANDOFF_PX` an, waehrend stageMinC/stageMaxC nur
+    // das Flug-ZENTRUM (`homeX`) klemmen. arena.md §3 erklaert die Westkulisse
+    // aber zur RUHE-Zone („die Kulisse (x<80) wird NIE ueberflogen") und §6 den
+    // Sieg-Trakt zum nie ueberflogenen Ort — beides war unwahr.
+    //
+    // Deshalb prueft dieses Gesetz JEDEN Zustand, nicht nur den Flug, und es
+    // sucht sich die Gegenbeispiele nicht aus: es stellt das Kind der Reihe
+    // nach in JEDE begehbare Spalte des ausgelieferten Raums.
+    const level = JSON.parse(fs.readFileSync(levelPath, "utf8")) as PaintLevel;
+    const arena = level.arena!;
+    const spec = arena.entities.find((e) => e.role === "guardian")!;
+    const rows = arena.rows;
+    const stageMinPx = Number(spec.params!.stageMinC) * TILE;
+    const stageMaxPx = (Number(spec.params!.stageMaxC) + 1) * TILE;
+    const floorRow = rows.findIndex((r, i) => i > 0 && r.startsWith("####################"));
+
+    // every column a child can actually stand in, read off the shipped rows
+    const standable = [...Array(rows[0]!.length).keys()].filter(
+      (c) => rows[floorRow - 1]![c] === "." && rows[floorRow]![c] === "#",
+    );
+    expect(standable.length, "der Boden des Raums ist leer gelesen").toBeGreaterThan(20);
+
+    const dipped = new Set<number>();
+    for (const col of standable) {
+      const w: EntityWorld = spawnEntities([spec], rows);
+      const g = w.entities[0]!;
+      // ein Kind, das stehen bleibt, steht genau im Ziel — die i-Frames sind
+      // der Grund, warum trotzdem ein Fenster aufgeht (entities.test.ts,
+      // ANTI-SOFTLOCK). Ohne sie traefe jedes Stueck und nichts zaehlte.
+      let iframes = 0;
+      let windows = 0;
+      for (let t = 0; t < 4000 && windows < 1; t++) {
+        const parked = input({
+          playerX: (col * TILE + TILE / 2) * SUBS,
+          playerY: floorRow * TILE * SUBS,
+          playerIframes: iframes,
+        });
+        const evs = stepEntities(w, rows, parked);
+        if (iframes > 0) iframes--;
+        for (const ev of evs) {
+          if (ev.type === "encounter") iframes = 120; // PAINT.iframeTicks
+          if (ev.type === "guardianStagger") windows++;
+        }
+        if (g.state === "dip") dipped.add(col);
+        const x = g.x / SUBS;
+        expect(x, `Kind auf c${col}, Zustand ${g.state}, Tick ${t}: westlich der Buehne`)
+          .toBeGreaterThanOrEqual(stageMinPx);
+        expect(x, `Kind auf c${col}, Zustand ${g.state}, Tick ${t}: im Sieg-Trakt`)
+          .toBeLessThanOrEqual(stageMaxPx);
+      }
+      expect(windows, `Kind auf c${col}: der Lauf hat nie ein Fenster geoeffnet`).toBe(1);
+    }
+    // ein Gesetz, das den Dip nie gefahren hat, hat nichts bewiesen
+    expect(dipped.size, "nicht jeder Lauf hat den Dip erreicht").toBe(standable.length);
+  });
+
   it("the band constant is the one the paths are actually flown at", () => {
     const p = flightPointAt(0, 0, 3, 3, 0);
     // spiral at u=0 sits on the +x axis, so dy is 0 there; a quarter later it is

@@ -27,6 +27,8 @@
 // nimmt.
 
 import { describe, expect, it } from "vitest";
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
 import { Sim, type TaskRequest } from "./sim.ts";
 import { IDLE_PAD } from "./player.ts";
 import {
@@ -484,5 +486,72 @@ describe("R5-W2 · H1 · DAS SELBSTFAHR-GESETZ (die Klasse hinter dem Softlock)"
     for (const declared of CARD_OWNED_STATES) {
       expect(states.has(declared), `»${declared}« steht in CARD_OWNED_STATES, wird aber nie geschrieben`).toBe(true);
     }
+  });
+});
+
+// ── R5-W2 · H1 (Teil 2) · DER KAMPF IST OHNE EINE EINZIGE TASTE ZU GEWINNEN ──
+//
+// Der Fund, den diese Datei erzwungen hat, hatte einen Zwilling im selben
+// Fenster, und der stand ebenfalls live:
+//
+//   Die Überreiz-Zählung („drei geworfene Stücke bringen sie herunter") wurde an
+//   EINEM Ende gezählt — wenn ein Stück den Boden erreicht. Ein Kind, das stehen
+//   bleibt, steht aber genau im Ziel: JEDES Stück trifft, KEINES erreicht je die
+//   Bretter. GEMESSEN am echten Sim im ausgelieferten Raum: 53 Würfe, 53
+//   Treffer, NULL Fenster in 200 Sekunden, hp unverändert. Kapitel 1 war für ein
+//   Kind, das sich nicht bewegt, nicht zu gewinnen.
+//
+//   Das Gesetz dagegen gab es längst (entities.test.ts, ANTI-SOFTLOCK) — es lief
+//   nur im falschen Raum: sein Testboden liegt auf der Flughöhe der Tafel, wo
+//   Kreide auf den Brettern zerbricht, bevor sie ein Kind erreichen kann.
+//
+// Deshalb steht die Behauptung hier in ihrer stärksten Form: nicht „ein Fenster
+// geht auf", sondern „der Kampf ist ZU ENDE zu spielen" — und zwar mit einem
+// leeren Gamepad im AUSGELIEFERTEN Raum.
+describe("R5-W2 · H1 · ein Kind, das stehen bleibt, kann den Kampf gewinnen", () => {
+  const shipped = (): PaintLevel =>
+    JSON.parse(
+      readFileSync(
+        resolve(__dirname, "../../../content/corpus/stories/g1.st.lost-pages/paint/ch01.level.json"),
+        "utf8",
+      ),
+    ) as PaintLevel;
+
+  /** Spielt die Arena mit einem Pad, das nie gedrückt wird. Fenster-Karten
+   *  werden gelöst, Treffer-Karten weggelegt — genau das, was ein Kind kann,
+   *  das die Tastatur nicht anfasst. */
+  const playStandingStill = (): { defeated: boolean; ticks: number; windows: number; hits: number } => {
+    const level = shipped();
+    const sim = new Sim({
+      level, phaseId: "p4",
+      grantedAbilities: () => [...level.abilities],
+      freedCageIds: () => [],
+    });
+    let windows = 0;
+    let hits = 0;
+    let t = 0;
+    for (; t < 20000 && !sim.guardianDefeated; t++) {
+      for (const ev of sim.step(IDLE_PAD)) {
+        if (ev.type !== "task") continue;
+        if (ev.req.ctx.type === "guardian") { sim.solveTask(ev.req.ctx); windows++; } else { sim.dismissTask(ev.req.ctx); hits++; }
+        sim.setOverlay(false);
+      }
+    }
+    return { defeated: sim.guardianDefeated, ticks: t, windows, hits };
+  };
+
+  it("die drei Knoten gehen auf, ohne dass das Kind je eine Richtung drückt", () => {
+    const r = playStandingStill();
+    expect(r.defeated, "die Tafel wird nie besiegt — der Kampf ist eine Sackgasse").toBe(true);
+    expect(r.windows, "jeder Knoten braucht sein eigenes beantwortetes Fenster")
+      .toBe(GUARDIAN_SCRIPT.E.knots);
+  });
+
+  it("und Ausweichen bleibt trotzdem die bessere Antwort", () => {
+    // Sonst wäre die Reparatur eine Einladung, stehen zu bleiben. Der Preis des
+    // Stehenbleibens sind die Treffer-Karten: jede unterbricht den Kampf und
+    // löst KEINEN Knoten (sim.ts `encounter` sagt das wörtlich).
+    const r = playStandingStill();
+    expect(r.hits, "ohne Preis wäre Stehenbleiben gratis").toBeGreaterThan(0);
   });
 });
