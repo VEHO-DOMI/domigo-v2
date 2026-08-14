@@ -546,6 +546,17 @@ export function renderTaskText(t: GameTaskV2): string {
       break;
     case "mistake":
       lines.push("Satz: " + t.sentence.map((w, i) => `${i}:${w}`).join(" "));
+      // R5-W3 · G2 · P-18, the other way round. The memory card once printed its
+      // answer key and every blind solver was handed the solution; this one
+      // printed HALF a card and every blind solver was asked to judge a task the
+      // child never plays. A mistake card has two steps — tap the wrong word,
+      // then pick the fix from three buttons (cards/skins.tsx renders
+      // `state.correctionOptions`) — and the second step was simply missing here.
+      // Found when a blind verifier called a boss card unfair on the strength of
+      // a projection that hid the choice it was judging.
+      if (t.correctionOptions !== undefined) {
+        lines.push("Verbesserungen: " + seededShuffle(t.correctionOptions, t.id).join(" · "));
+      }
       break;
     case "wheel":
       lines.push(`Rad zeigt „${t.shown}" → dreh auf: ` + t.values.join(" · "));

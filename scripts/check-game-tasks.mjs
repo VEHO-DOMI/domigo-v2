@@ -843,7 +843,12 @@ if (process.argv.includes("--selftest")) {
     ["order · the board already shows the solved order", laws(card({ ...honestOrder, evidence: ["nine", "ten", "eleven", "twelve"] })), (l) => l.includes("18e") && detail(card({ ...honestOrder, evidence: ["nine", "ten", "eleven", "twelve"] })).includes("SOLVED")],
     ["order · the board carries a chip the card never deals", laws(card({ ...honestOrder, evidence: ["nine", "ten", "eleven", "thirteen"] })), (l) => l.includes("18e")],
     ["oddone · the German names the odd one out", laws(card({ ...honestOddone, storyDe: "Welches Wort ist kein Fenster?" })), (l) => l.includes("18b")],
-    ["mistake · the chalk carries the correction", laws(card({ ...honestMistake, evidence: ["This is a board."] })), (l) => l.includes("18e")],
+    // PB-15 again, and this one was found BY the tamper: the first version of
+    // this case chalked „This is a board." — which layer 1's boss-evidence
+    // invariant already refuses (the chalk must contain the faulty word). It went
+    // red for the wrong reason, i.e. it proved nothing about 18e. The case that
+    // separates them keeps the faulty sentence AND adds the fix beside it.
+    ["mistake · the chalk carries the correction next to the error", laws(card({ ...honestMistake, evidence: ["This is a door.", "board"] })), (l) => l.includes("18e")],
     ["memory · the German says one pair out loud", laws(card({ ...honestMemory, storyDe: "Finde die Zahl zwölf!" })), (l) => l.includes("18b")],
     // ── the leak that really shipped, reproduced (A5's rule: a tamper is worth
     //    most when it is the defect that was live) ──

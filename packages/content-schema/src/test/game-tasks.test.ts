@@ -152,6 +152,9 @@ test("renderTaskText — the projection shows the student's surface, per kind", 
   assert.match(renderTaskText(GameTaskV2.parse(OR())), /Chips: /);
   assert.match(renderTaskText(GameTaskV2.parse(OD())), /Was passt NICHT\?/);
   assert.match(renderTaskText(GameTaskV2.parse(MI())), /Satz: 0:This/);
+  // R5-W3 · G2: the fix buttons are half the card — a projection without them
+  // asks a blind solver to judge a task no child plays (skins.tsx renders them)
+  assert.match(renderTaskText(GameTaskV2.parse(MI())), /Verbesserungen: /);
   assert.match(renderTaskText(GameTaskV2.parse(ME())), /Paare/);
   assert.match(renderTaskText(GameTaskV2.parse(TY())), /Grüße\./);
   // stimulus surfaces in the projection
