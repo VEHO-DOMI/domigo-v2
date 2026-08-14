@@ -364,7 +364,7 @@ Sechzigstel. Aus der gemessenen Geschwindigkeitsleiter abgeleitet, nimmt die Sch
 eine spätere Physik-Änderung von selbst mit. *Regel:* Eine Konstante, die aus einer
 anderen folgt, wird als Formel geschrieben, nicht als Zahl. (⚠ Gegenprobe aus K1:
 `SKID_SPEED` IST als Formel geschrieben — aus zwei Gangarten, die es nicht mehr gibt.
-Eine Formel muss auf Größen zeigen, die noch gelten; siehe D-79.)
+Eine Formel muss auf Größen zeigen, die noch gelten; siehe D-86.)
 
 **PB-37 · Der blinde Kritiker bekommt auch die eigene FRISCHE Änderung vorgelegt.**
 *(F4, 2026-08-12)* Der Prüfer bestätigte die Anholung — und fand im selben Durchgang
