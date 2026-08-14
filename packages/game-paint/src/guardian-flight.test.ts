@@ -22,8 +22,11 @@ import {
   KNOT_SPAN_PX,
   GUARDIAN_SCRIPT,
   KNOT_PERIOD_TICKS,
+  SHARD_REACH_Y_PX,
   SHARD_TICKS,
+  SKID_SPEED,
   TELEGRAPH_FLOOR_TICKS,
+  type ProjectileState,
   flightPointAt,
   guardianKnotSolved,
   spawnEntities,
@@ -41,7 +44,7 @@ import {
 } from "./anim.ts";
 import { GUARDIAN_RIG_CELLS } from "./artManifest.ts";
 import { KNOT_PATHS, flightUnitAt, pathForKnot } from "./flight.ts";
-import { LOGICAL_H, SUBS, TICK_MS, TILE } from "./paint.ts";
+import { LOGICAL_H, PAINT, SUBS, TICK_MS, TILE } from "./paint.ts";
 import { cameraTargetY, clampScroll } from "./camera.ts";
 import type { EntitySpec, PaintLevel } from "./level.ts";
 
@@ -825,5 +828,150 @@ describe("she flies it — the drawn attitude (finding 2)", () => {
       expect(mean).toBeGreaterThan(FLIGHT_ROLL_MIN);
       expect(mean).toBeLessThan(1);
     }
+  });
+});
+
+// ── R5-W2 · H1 (Teil 3) · DREI VERBEN, NICHT DREI TEMPI ─────────────────────
+//
+// Kokis F3, wörtlich: „Erst EINE Kreide, progressiv mehr, am Ende fast
+// bodendeckend — unausweichlich werdend." Die Eskalation war bisher drei
+// Skalare — dasselbe, schneller. Jetzt hat jeder Knoten sein eigenes Verb, und
+// jedes Gesetz hier prüft, dass das Verb FAIR ist: eine Gabel ohne Lücke wäre
+// keine Wahl, sondern eine Strafe.
+describe("die Eskalation der Wurfbilder (Auftrag 2b)", () => {
+  const throwsAtKnot = (ki: 0 | 1 | 2): ProjectileState[] => {
+    const w: EntityWorld = spawnEntities([guardianSpec("E")], []);
+    const g = w.entities[0]!;
+    g.hp = 3 - ki; // knotIndex(hp, 3) === ki
+    const seen: ProjectileState[] = [];
+    for (let t = 0; t < 900 && seen.length === 0; t++) {
+      const before = new Set(w.projectiles.map((p) => p.id));
+      stepEntities(w, GRID, input());
+      const born = w.projectiles.filter((p) => p.kind === "chalk" && !before.has(p.id));
+      if (born.length > 0) seen.push(...born);
+      g.hp = 3 - ki; // sie soll auf DIESEM Knoten bleiben
+    }
+    return seen;
+  };
+
+  it("wirft 1 · 2 · 2 Stücke — die Zahl der Bilder wächst und hört dann auf", () => {
+    expect(throwsAtKnot(0).length, "Knoten 1 ist die einzelne Kreide").toBe(1);
+    expect(throwsAtKnot(1).length, "Knoten 2 ist die Gabel").toBe(2);
+    expect(throwsAtKnot(2).length, "Knoten 3 bleibt die Gabel — es rutscht, statt mehr zu werden").toBe(2);
+  });
+
+  it("die Gabel lässt IMMER einen Platz zum Stehen", () => {
+    // ABGELEITET: die Lücke ist so breit, wie ein gehendes Kind fliegt, solange
+    // die Kreide fliegt. Sie muss beide Kontaktboxen PLUS den Körper überbieten,
+    // sonst ist die Gabel keine Wahl.
+    const both = throwsAtKnot(1);
+    const gapPx = Math.abs(both[0]!.vx - both[1]!.vx) * CHALK_FLIGHT_TICKS / SUBS;
+    expect(gapPx, "die beiden Aufschläge liegen aufeinander").toBeGreaterThan(0);
+    // die Kontaktbox der fliegenden Kreide ist ±10 px, der Körper 12 px breit
+    expect(gapPx, `Lücke ${gapPx.toFixed(1)} px trägt kein Kind`).toBeGreaterThan(10 + 10 + 12);
+    expect(gapPx, "die Lücke ist so weit, dass sie niemand als Gabel liest").toBeLessThan(TILE * 6);
+  });
+
+  it("die Gabel VERKÜRZT den Kampf nicht — ein Fenster kostet weiter drei Würfe", () => {
+    // Ohne das wäre die Eskalation eine Abkürzung: zwei Stücke, zwei Zähler,
+    // Fenster nach anderthalb Würfen. Das führende Stück zählt deshalb nicht.
+    for (const ki of [0, 1, 2] as const) {
+      const scoring = throwsAtKnot(ki).filter((p) => p.scores !== false).length;
+      expect(scoring, `Knoten ${ki + 1} zählt ${scoring} Stücke je Wurf`).toBe(1);
+    }
+    expect(DODGES_PER_WINDOW, "die Ökonomie selbst bleibt unberührt").toBe(3);
+  });
+
+  it("und sie wechselt die Seite, damit »immer nach rechts« nie die Antwort ist", () => {
+    const w: EntityWorld = spawnEntities([guardianSpec("E")], []);
+    const g = w.entities[0]!;
+    g.hp = 2; // Knoten 2
+    const signs = new Set<number>();
+    for (let t = 0; t < 3000; t++) {
+      const before = new Set(w.projectiles.map((p) => p.id));
+      stepEntities(w, GRID, input());
+      const born = w.projectiles.filter((p) => p.kind === "chalk" && !before.has(p.id));
+      if (born.length === 2) {
+        const lead = born.find((p) => p.scores === false)!;
+        const aimed = born.find((p) => p.scores !== false)!;
+        signs.add(Math.sign(lead.vx - aimed.vx));
+      }
+      g.hp = 2;
+    }
+    expect([...signs].sort(), "die Gabel zeigt immer zur selben Seite").toEqual([-1, 1]);
+  });
+});
+
+describe("der Schwall — was landet, bleibt nicht liegen (Auftrag 2b)", () => {
+  /** Bretter, so weit das Auge reicht — die freie Fläche der Bühne. */
+  const OPEN: string[] = [
+    ...Array.from({ length: 13 }, () => "........................................"),
+    "........................................",
+    "########################################",
+  ];
+  /** Dieselben Bretter MIT einer Kreide-Kiste ab Spalte 11, wie die Bühne sie
+   *  an ihren beiden Rändern hat (Podest = Voll-Säule ab r14). */
+  const CRATE: string[] = [
+    ...Array.from({ length: 12 }, () => "........................................"),
+    "...........###..........................",
+    "...........###..........................",
+    "########################################",
+  ];
+
+  const shardAfter = (ki: 0 | 1 | 2, ticks: number, grid = OPEN): ProjectileState | undefined => {
+    const w: EntityWorld = spawnEntities([guardianSpec("E")], []);
+    const g = w.entities[0]!;
+    g.hp = 3 - ki;
+    g.x = 9 * TILE * SUBS;
+    w.projectiles.push({
+      id: 1, kind: "chalk", x: 9 * TILE * SUBS, y: 13 * TILE * SUBS,
+      vx: SUBS, vy: SUBS, deflected: false, fromId: g.id, dead: false, age: 20, colour: "red",
+    });
+    for (let t = 0; t < ticks; t++) { stepEntities(w, grid, input({ playerX: 0, playerY: 0 })); g.hp = 3 - ki; }
+    return w.projectiles.find((p) => p.kind === "shard");
+  };
+  /** Wie lange die Scherbe überlebt — die Zahl, an der beide Zweige sich trennen. */
+  const shardLife = (grid: string[]): number => {
+    let alive = 0;
+    for (let t = 2; t <= SHARD_TICKS + 4; t += 2) if (shardAfter(2, t, grid) !== undefined) alive = t;
+    return alive;
+  };
+
+  it("bis Knoten 2 liegt die Scherbe still — der Schwall ist der DRITTE Knoten", () => {
+    for (const ki of [0, 1] as const) {
+      const s = shardAfter(ki, 30);
+      expect(s, `Knoten ${ki + 1}: keine Scherbe entstanden`).toBeDefined();
+      expect(s!.vx, `Knoten ${ki + 1}: sie rutscht zu früh`).toBe(0);
+    }
+  });
+
+  it("am dritten Knoten rutscht sie — schneller als Gehen, langsamer als Laufen", () => {
+    const s = shardAfter(2, 30);
+    expect(s, "keine Scherbe entstanden").toBeDefined();
+    expect(Math.abs(s!.vx), "sie rutscht nicht").toBeGreaterThan(0);
+    // ABGELEITET aus den beiden Gangarten des Kindes: Weggehen darf aufhören zu
+    // genügen, aber das Examen verlangt nie das Laufen (arena.md §1).
+    expect(Math.abs(s!.vx)).toBeGreaterThan(PAINT.walkMax / 2 / 2);
+    expect(Math.abs(s!.vx), "sie ist schneller als ein rennendes Kind").toBeLessThan(PAINT.runMax);
+    expect(Math.abs(s!.vx)).toBe(SKID_SPEED);
+  });
+
+  it("sie zerbricht an der Kistenwand — ein Splitter erklimmt NIE ein Podest", () => {
+    // Das ist die Auszahlung, die arena.md §3 dem Podest zuschreibt
+    // (»Scherben-Zuflucht«), hier als Mechanik statt als Absicht — und BEIDE
+    // Zweige stehen im selben Test, sonst könnte er auch grün sein, weil die
+    // Scherbe schlicht nie gerutscht ist.
+    const open = shardLife(OPEN);
+    const crate = shardLife(CRATE);
+    expect(open, "auf freien Brettern lebt sie ihre volle Sekunde").toBeGreaterThanOrEqual(SHARD_TICKS);
+    expect(crate, "sie ist über die Kistenwand gerutscht").toBeLessThan(open);
+    expect(crate, "sie ist gar nicht erst losgefahren").toBeGreaterThan(4);
+  });
+
+  it("ein Kind auf dem Podest ist vor Boden-Splittern sicher — ohne eine Zeile Code", () => {
+    // 32 px Podesthöhe gegen eine 12-px-Bissbox: die Zahlen selbst sagen es.
+    // Der Test hält sie fest, damit ein späteres »das Podest ein bisschen
+    // niedriger« diese Zuflucht nicht still abschafft.
+    expect(TILE * 2, "die Podesthöhe der Bühne").toBeGreaterThan(SHARD_REACH_Y_PX);
   });
 });
