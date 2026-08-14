@@ -258,10 +258,25 @@ dabei — die R5-Session verifiziert am Code, nie blind übernehmen (Specs rotte
   Wachsmalstift-Kanten, gestrichelte Innenlinie, dickere Knöpfe. Entschieden an
   Bildern, nicht an Adjektiven: `scripts/shoot-naive-samples.mjs` legte drei Muster
   derselben Karte vor (Belege lokal in `docs/Rayman X DomiGo Screenshots/I1b
-  Naiv-Varianten 2026-08-13/`, CP-15). Der Look existiert bislang NUR als
-  Wegwerf-Stylesheet in diesem Skript — **einmal richtig gebaut wird er in Session
-  J1** (`SESSION-PROMPTS/R5-OPUS-WAVE-2026-08-11/PASSOVER_J1.md`), zusammen mit dem
-  Kapitel-Auftakt, der die erste Fläche im neuen Look ist.
+  Naiv-Varianten 2026-08-13/`, CP-15).
+  **★★ GEBAUT (J1, 2026-08-14, PR #277).** Der Look ist kein Wegwerf-Stylesheet mehr:
+  zwanzig benannte Werte (Papier, Tinte, Kantenstärken, drei Radien, vier Neigungen)
+  stehen als Custom Properties **im Regelblock `.pb-card` selbst** —
+  `packages/game-paint/src/cards/overlay-css.ts`. Das ist die Scope-Wand als Mechanik
+  statt als Disziplin: alles, was den Look trägt, ist ein Nachfahre der Karte, also
+  **kann** die HUD-Leiste außerhalb des Schleiers ihn ebensowenig erben wie die
+  Plattform. Die hier vermerkte Vertagung der Plattform kostet damit nichts mehr.
+  Vier eingearbeitete Nähte, die kein Standbild zeigt (die Landung trägt die Neigung
+  mit · die umgeschlagene Ecke erbt den Radius · der Chip-Druck wächst mit seiner
+  Lippe · die Neigung sitzt auf dem Tafel-RAHMEN, nicht auf der Tafel), und eine
+  bewusste Nicht-Übernahme (`font-size: 18px`, weil fast jeder Chip seine Größe inline
+  setzt). Das Regelwerk mit der Begründung je Wert:
+  `docs/design/g1/paint/AUFTAKT_UND_NAIV_LOOK.md`.
+  Zwei blinde Kritiker, Reihenfolge getauscht, wählten unabhängig den neuen Look —
+  und nannten beide denselben verbleibenden Abstand zum Maßstab: unter der
+  Papiertextur ist es weiterhin ein regelmäßiges Vektor-Baukastensystem. **Offenes
+  Tor: eine Geometrie-Runde** (unregelmäßige Strichstärken, je Ecke ein anderer
+  Radius, auf allen Elementen) — sie berührt R5-W1 · D2 und ist deshalb Kokis.
 
 ## H · Prozess-Doktrin (re-ratifiziert + amendiert — bindend für R5)
 
