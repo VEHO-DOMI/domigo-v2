@@ -14,6 +14,7 @@ import { describe, expect, it } from "vitest";
 import fs from "node:fs";
 import path from "node:path";
 import { PAINTED_ICON_NAMES } from "./PaintedIcons.tsx";
+import { PAINTED_ICON_NAMES as MANIFEST_ICON_NAMES } from "../artManifest.ts";
 
 /** The exact glyphs this packet removed — named, so the check can never be
  *  accused of banning arrows („↑", „←", „↻" are the game's own key cues and
@@ -54,5 +55,21 @@ describe("the ceremonies carry painted pictures, never platform emoji", () => {
       expect(PAINTED_ICON_NAMES).toContain(m[1]);
       expect(PAINTED_ICON_NAMES).toContain(m[2]);
     }
+  });
+});
+
+/* ── R5-W2 · J1-C · THE ICON NAMES EXIST TWICE, AND MUST STAY ONE SET ─────────
+   `artScope.domArtStems` declares a painted stem per icon so the art audit stops
+   reporting live art as »loaded by nothing«. It cannot import this file — the
+   audit runs as a plain node script that only strips types, and this file has
+   JSX in it — so the names are copied into artManifest.ts.
+   A copy that nothing checks is a copy that rots, and the failure would be
+   silent in the safe direction: a new icon would render fine and quietly
+   re-enter the dead-art count. Proven in BOTH directions. */
+describe("R5-W2 · J1-C · the painted-icon names are one set, held in two files", () => {
+  it("every icon has a declared stem, and every declared stem has an icon", () => {
+    const inIcons = [...PAINTED_ICON_NAMES].sort();
+    const inManifest = [...MANIFEST_ICON_NAMES].sort();
+    expect(inManifest, "artManifest.PAINTED_ICON_NAMES has drifted from the icon set").toEqual(inIcons);
   });
 });
