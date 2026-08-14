@@ -33,8 +33,10 @@ const MB = 1048576;
 
 const selftest = process.argv.includes("--selftest");
 let failures = 0;
+const reported = [];
 const fail = (msg) => {
   failures++;
+  reported.push(msg);
   console.error(`✗ ${msg}`);
 };
 
@@ -137,6 +139,20 @@ if (dead.length > deadLimit) {
     `${dead.length} painted stems are loaded by nothing, over the ceiling of ${deadLimit}. ` +
       `Art may land before its wiring — the pile may not grow unnoticed. Wire it, delete it, or raise the ceiling WITH a reason.`,
   );
+}
+
+// The selftest bent PHASE_ART_MB out of step with the guard document on
+// purpose. It passes when — and only when — that specific budget was named.
+// (House convention, check-ci-gates.mjs: a selftest EXITS 0 when it has seen
+// its own red light. Anything else fails the CI step that runs it.)
+if (selftest) {
+  const sawIt = reported.some((m) => m.startsWith("PHASE_ART_MB:"));
+  if (sawIt) {
+    console.log(`check-perf-budget SELFTEST: OK — the red light works (${failures} failure(s) for a budget bent on purpose)`);
+    process.exit(0);
+  }
+  console.error("✗ SELFTEST FAILED: PHASE_ART_MB was bent out of step with the guard document and this check stayed silent about it");
+  process.exit(1);
 }
 
 if (failures > 0) {

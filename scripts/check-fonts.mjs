@@ -26,8 +26,10 @@ const ROOTS = ["apps/web/app", "apps/web/components", "apps/web/lib", "packages"
 const selftest = process.argv.includes("--selftest");
 
 let failures = 0;
+const reported = [];
 const fail = (msg) => {
   failures++;
+  reported.push(msg);
   console.error(`✗ ${msg}`);
 };
 
@@ -85,6 +87,19 @@ if (declared === 0 && !selftest) {
   // a vacuity guard: if nobody declares a local font any more, this check has
   // quietly stopped checking anything and should be re-read, not trusted
   fail("no next/font/local declaration found anywhere — this check has nothing left to police; re-read it before deleting it");
+}
+
+// The selftest fed in a file that imports next/font/google on purpose. It
+// passes when — and only when — that file was the one named. (House
+// convention: a selftest EXITS 0 once it has seen its own red light.)
+if (selftest) {
+  const sawIt = reported.some((m) => m.includes("__selftest-layout.tsx"));
+  if (sawIt) {
+    console.log(`check-fonts SELFTEST: OK — the red light works (${failures} failure(s) for an import added on purpose)`);
+    process.exit(0);
+  }
+  console.error("✗ SELFTEST FAILED: a next/font/google import was fed in on purpose and this check stayed green");
+  process.exit(1);
 }
 
 if (failures > 0) {
