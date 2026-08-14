@@ -278,9 +278,9 @@ export const TREASURE_SHAFT_ALPHA = 0.13;
  *  prize was DARKER than the wall — and set the target A hits: the pickup must
  *  beat its local ground, not sink into it. */
 export const TREASURE_BACK_COLOUR = 0x3a3260;
-export const TREASURE_BACK_ALPHA = 0.34;
+export const TREASURE_BACK_ALPHA = 0.46;
 export const TREASURE_BACK_RINGS = 4;
-export const TREASURE_BACK_R_MUL = 0.95;
+export const TREASURE_BACK_R_MUL = 1.30;
 
 /** The contact shadow under the page.
  *
