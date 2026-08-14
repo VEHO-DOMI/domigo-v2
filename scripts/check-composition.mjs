@@ -200,10 +200,20 @@ for (const { label, ph, spec } of withSpec) {
     L4: spec.fg ? measureStems(spec.fg.segments) : null,
   };
   const K = spec.key;
-  // Fable, PK-C2b review: documented separation waiver — the arena is a single-screen
-// stage whose only hostile is the high-contrast guardian; l2_p4 gets a one-sheet
-// darken in the F2 art touch-up, then this entry is deleted and the law re-arms.
-const SEPARATION_WAIVERS = { "ch01/p4": "until the F2 l2_p4 touch-up (doc 37)" };
+  // R5-W3 · A5 · THE ARENA'S WAIVER IS SPENT — the table is empty on purpose.
+//
+// Fable, PK-C2b, granted one: „the arena is a single-screen stage whose only
+// hostile is the high-contrast guardian; l2_p4 gets a one-sheet darken in the
+// F2 art touch-up, then this entry is deleted and the law re-arms." The darken
+// happened — not on l2_p4 but on the sheet that took its place at the front of
+// the room, `band_p4_audience` (R15, `scripts/set-plane-value.mjs`) — and the
+// arena now clears the law on its own numbers: 12.7 points against the 12 it
+// asks for. So the entry is gone and ch01/p4 is guarded like every other room.
+//
+// It stays a table rather than becoming a boolean because the shape is the
+// point: a waiver is a named room with a written reason and an expiry, never a
+// quiet `if`. The next one that is needed will be visible here.
+const SEPARATION_WAIVERS = {};
 
 const BANDS = bandsFor(K);
   for (const [name, m] of Object.entries(planes)) {

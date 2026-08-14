@@ -699,22 +699,30 @@ export const CH01_COMPOSITION: Record<string, CompositionSpec> = {
     // whole time. What rendered instead was `l2_p4` — blue Victorian armchairs
     // and a sofa. The chapter fought its boss in a parlour.
     //
-    // So the near band is the school chairs, and the armchairs keep the row
-    // BEHIND them: ghosted, smaller and slower, they read as the back of a hall
-    // rather than as competing furniture — and nothing has to be deleted for
-    // the premise to arrive. This is also what the victory beat needs; „warm
-    // light over the chair band" had no chair band to warm.
-    // …and the far row is where they belong, not the near one. The line says
-    // „in der FERNE", and `midFarBand` is exactly that: 0.68 of the height,
-    // lifted above the near row's top edge, parallax 0.36, ghosted to 0.62 —
-    // the back of a hall. Measured, not preferred: the value law (doc 36 §1)
-    // reads L2 off `mid`, and the school chairs' wood is brighter than the
-    // dusk band allows (22.3 % against a 14–21 % window, and the L1↔L2 lift
-    // collapsing to 2.8 %). Putting them near would have meant either bending
-    // a measured readability law or repainting a sheet this session may not.
-    // Behind the armchairs they cost nothing and read as what they are.
-    midFar: { ...midFarBand("p4", midBand("p4", 96)), segments: ["band_p4_audience"] },
-    mid: midBand("p4", 96),
+    // R5-W3 · A5 · …AND NOW THEY ARE THE ROW YOU ARE STANDING IN.
+    //
+    // H1 could only get the chairs into the room, not to the front of it. It
+    // put them in the FAR row and wrote down exactly why: the value law reads
+    // L2 off `mid`, and the school chairs' wood measured 22.3 % against a
+    // 14–21 % window, with the L1↔L2 lift collapsing to 2.8 %. Its last line
+    // was „repainting a sheet this session may not". Koki's verdict on the
+    // result was that the armchairs were still in front — his „Ohrensessel
+    // statt Schulstühle" was half-answered — so this session may, and did.
+    //
+    // `scripts/set-plane-value.mjs` took the sheet to a DECLARED 14.8 %: one
+    // multiplicative pass, hue and saturation untouched, the same painting at
+    // a different key. That number is not taste, it is the only window two
+    // laws leave open — audit 1's band [14.0, 21.0], and the ABSOLUTE L2↔L3
+    // separation of 12 points against this room's L3 of 27.5 %, which caps L2
+    // at 15.5. So the chairs take the near row, and the armchairs fall back to
+    // where `midFarBand` puts anything behind: 0.68 of the height, lifted past
+    // the near row's top edge, parallax 0.36, ghosted to 0.62 — the back of a
+    // hall. Nothing is deleted; the parlour becomes the depth behind the class.
+    //
+    // The victory beat needed this too: „warmes Licht überm Stuhl-Band" had no
+    // chair band to warm while the chairs were the far row.
+    mid: { ...midBand("p4", 96), segments: ["band_p4_audience"] },
+    midFar: midFarBand("p4", midBand("p4", 96)),
     // two stage lamps, nearly vertical and wider than a window's beam — the one
     // room in the chapter whose light is aimed rather than let in.
     // PK-R6 · H2 (round-2 finding 9): …and the lamps are now DRAWN. This phase
