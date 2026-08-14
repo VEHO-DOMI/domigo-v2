@@ -13,7 +13,7 @@
 
 import Phaser from "phaser";
 import { glyphAt, isSlope, isSolid } from "./collide.ts";
-import { type CompositionSpec, type MassKit, ROOM_SHADOW_INK, compositionFor, heroEdgeFor, nearPlaneTint } from "./composition.ts";
+import { type CompositionSpec, MARKER_H, type MassKit, ROOM_SHADOW_INK, compositionFor, heroEdgeFor, markerPlacementFor, nearPlaneTint } from "./composition.ts";
 import { phaseArtScope } from "./artScope.ts";
 import { captiveStem, isCaptiveKey } from "./artManifest.ts";
 import { TextureWarmer, type WarmScene, type WarmStats } from "./warmer.ts";
@@ -910,6 +910,8 @@ export class PaintScene extends Phaser.Scene {
   private letterImgs = new Map<string, Phaser.GameObjects.Image>();
   /** PB-F3: checkpoint art by column, so the ACTIVE one can light up. */
   private checkpointImgs = new Map<string, Phaser.GameObjects.Image>();
+  /** R5-W3 · A5 · D-45 · its contour, keyed the same way so the two stay paired. */
+  private checkpointShades = new Map<string, Phaser.GameObjects.Image>();
   private ringImgs: Array<{ img: Phaser.GameObjects.Image; baseY: number }> = [];
   private keys!: Record<string, Phaser.Input.Keyboard.Key>;
   /** PB-C1: this phase's art direction, or null ⇒ the pre-C1 render path. */
@@ -4297,6 +4299,15 @@ export class PaintScene extends Phaser.Scene {
         }
         // the lit one breathes; the waiting ones sit still
         img.setAlpha(lit && !this.cfg.reducedMotion ? 0.92 + Math.sin(t / 14) * 0.08 : 1);
+        // R5-W3 · A5 · D-45 · the contour swaps with its body in the SAME block.
+        // One owner: a shade updated anywhere else lags the cell it is the edge
+        // of, which is the defect `syncOverlay` exists to prevent one lane over.
+        const shade = this.checkpointShades.get(col);
+        if (shade && shade.texture.key !== want) {
+          const edge = this.heroEdge();
+          shade.setTexture(want);
+          shade.setScale((MARKER_H / (shade.frame.height || 1)) * (1 + edge.swell));
+        }
       }
     }
     // ── the letters ──
@@ -4807,8 +4818,18 @@ export class PaintScene extends Phaser.Scene {
           // „Krakel skizziert dich!" — now the sentence has someone in it.
           const krakelStem = this.textures.exists("pb-krakel_a") ? "pb-krakel_a" : "pb-checkpoint_easel";
           if (this.textures.exists(krakelStem)) {
-            const img = this.add.image(cx, this.standLineBelow(c, r), krakelStem).setOrigin(0.5, 1).setDepth(3);
-            img.setScale(26 / img.height);
+            // R5-W3 · A5 · D-45 · he steps aside, and he carries the room's edge.
+            // Both halves of one finding: the marker had no self-contrast in the
+            // bright rooms AND stood behind the child who was banking at it.
+            const place = markerPlacementFor(this.grid, c, r);
+            const foot = this.standLineBelow(c, r);
+            const edge = this.heroEdge();
+            const shade = this.add.image(cx + place.dx, foot, krakelStem).setOrigin(0.5, 1).setDepth(2.99);
+            shade.setTint(edge.tint).setAlpha(edge.alpha);
+            shade.setScale((MARKER_H / shade.height) * (1 + edge.swell));
+            this.checkpointShades.set(`${c}`, shade);
+            const img = this.add.image(cx + place.dx, foot, krakelStem).setOrigin(0.5, 1).setDepth(3);
+            img.setScale(MARKER_H / img.height);
             this.checkpointImgs.set(`${c}`, img);
           } else if (this.textures.exists("pb-checkpoint_easel")) {
             const img = this.add.image(cx, this.standLineBelow(c, r), "pb-checkpoint_easel").setOrigin(0.5, 1).setDepth(3);

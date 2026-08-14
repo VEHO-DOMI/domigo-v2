@@ -27,7 +27,8 @@
 import fs from "node:fs";
 import path from "node:path";
 import { PNG } from "pngjs";
-import { COMPOSITION, heroEdgeFor, nearPlaneTint } from "../packages/game-paint/src/composition.ts";
+import { COMPOSITION, MARKER_H, MARKER_VISIBLE_MIN, heroEdgeFor, markerEdgeFor, markerPlacementFor, markerVisibleFraction, nearPlaneTint } from "../packages/game-paint/src/composition.ts";
+import { HERO2_SRC_SCALE } from "../packages/game-paint/src/rigSpec.ts";
 import { planLayers, planeCovers } from "../packages/game-paint/src/layers.ts";
 import {
   BODY_DEEP_SHADE,
@@ -61,7 +62,6 @@ import {
   planShafts,
   shaftQuads,
 } from "../packages/game-paint/src/air.ts";
-import { entDisplayArea } from "../packages/game-paint/src/anim.ts";
 import { letterGlyphs } from "../packages/game-paint/src/letters.ts";
 import { TILE } from "../packages/game-paint/src/paint.ts";
 
@@ -583,6 +583,53 @@ for (const { label, spec } of withSpec) {
   }
   note(`${label}: contour ${lum.toFixed(1)}% · swell ${(edge.swell * 100).toFixed(0)}% · nearest plane ${worst.toFixed(1)} points away`);
 }
+
+// ── 9b · THE CHECKPOINT'S EDGE AND ITS CLEARANCE (R5-W3 · A5 · D-45) ─────────
+// Audit 9 gives the child a contour and measures it. The one prop whose entire
+// job is to be spotted from across the room had none, and nothing measured it,
+// because audit 9 only ever looked at him. B1's critic saw both halves at once:
+// „kein Eigenkontrast in den hellen Leveln" and „beim Banking in p1 vom Spieler
+// komplett verdeckt". This is those two sentences as numbers.
+console.log("9b · checkpoint-edge audit (R5-W3 · A5 · D-45)");
+const MARKER_STEM = "krakel_a";
+let markersSeen = 0;
+for (const { label, ph, spec } of withSpec) {
+  const cells = [];
+  ph.rows.forEach((row, r) => { [...row].forEach((g, c) => { if (g === "C") cells.push({ c, r }); }); });
+  if (cells.length === 0) { note(`${label}: no checkpoint`); continue; }
+  markersSeen += cells.length;
+  const own = measureStems([MARKER_STEM]);
+  if (!own) { fail("marker-edge", `${label}: ${MARKER_STEM} is missing — cannot measure the marker`); continue; }
+  const edge = markerEdgeFor(spec.key);
+  const edgeLum = lumOf((edge.tint >> 16) & 255, (edge.tint >> 8) & 255, edge.tint & 255) * 100;
+  // 1 · an un-swollen copy is a cast shadow, not an outline (audit 9's own rule)
+  if (!(edge.swell > 0)) fail("marker-edge", `${label}: the marker's contour has no swell`);
+  // 2 · …and it is a real value STEP against the marker AND against the planes
+  //     the marker is seen against. Without it, p3 leaves 2.3 points.
+  for (const [name, m] of [["the marker itself", own], ["L1", measureStems(spec.far.segments)], ["L2", spec.mid ? measureStems(spec.mid.segments) : null]]) {
+    if (!m) continue;
+    const step = Math.abs(edgeLum - m.lum);
+    if (step < HERO_EDGE_MIN_STEP) fail("marker-edge", `${label}: the marker's contour (${edgeLum.toFixed(1)}%) is only ${step.toFixed(1)} points from ${name} (${m.lum.toFixed(1)}%) — the law needs ${HERO_EDGE_MIN_STEP}`);
+  }
+  // 3 · …and the marker is not standing behind the child who is banking at it
+  const markerSrc = srcSize(MARKER_STEM);
+  const heroSrc = srcSize("hero2_idle");
+  if (!markerSrc || !heroSrc) { fail("marker-edge", `${label}: cannot measure the boxes (marker or hero sheet missing)`); continue; }
+  // both widths derived from the REAL sheets through the engine's own scale —
+  // the 52-vs-68 lesson: a check that types its own number checks its own number
+  const markerW = MARKER_H * (markerSrc.w / markerSrc.h);
+  const heroW = heroSrc.w * HERO2_SRC_SCALE;
+  for (const { c, r } of cells) {
+    const place = markerPlacementFor(ph.rows, c, r);
+    const vis = markerVisibleFraction(markerW, heroW, place.dx);
+    if (vis < MARKER_VISIBLE_MIN) {
+      fail("marker-edge", `${label} c${c}: only ${(vis * 100).toFixed(0)} % of the checkpoint clears the child banking at it (law ${(MARKER_VISIBLE_MIN * 100).toFixed(0)} %) — ${place.why}`);
+    } else {
+      note(`${label} c${c}: ${place.why} (${place.dx} px) · ${(vis * 100).toFixed(0)} % clear · contour ${edgeLum.toFixed(1)}% vs marker ${own.lum.toFixed(1)}%`);
+    }
+  }
+}
+if (markersSeen === 0) fail("marker-edge", "no phase carries a checkpoint — this audit would pass vacuously");
 
 // ── 10 · THE PAINTED SCALE (R5-W1 · A1) ──────────────────────────────────────
 // Koki, replaying the build: „Lego, das nicht zusammenpasst."

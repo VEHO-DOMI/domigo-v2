@@ -322,6 +322,68 @@ export const heroEdgeFor = (key: number): HeroEdge =>
     // the light of the room finding his edge
     : { tint: 0xffe4b0, alpha: 0.30, swell: 0.13, dx: 1, dy: 1 };
 
+// ── R5-W3 · A5 · D-45 · THE CHECKPOINT GETS THE SAME EDGE THE CHILD DOES ─────
+//
+// B1's critic: the Krakel marker „hat in den hellen Leveln keinen Eigenkontrast
+// und wurde beim Banking in p1 vom Spieler komplett verdeckt". Two defects in
+// one sentence, and both are measurable.
+//
+// THE VALUE, measured with check-composition's own formula: `krakel_a` is
+// 48.8 % mean luminance. p1's furniture band is 54.6 % and p3's is 51.1 % — so
+// the one prop in the chapter whose entire job is to be spotted from across the
+// room stands 5.8 and 2.3 points from the furniture it stands against. That is
+// less separation than the child himself had before H2 gave him a contour, and
+// audit 9 could not see it because audit 9 only ever looked at him.
+//
+// The repair is not new art and not a new idea: it is HIS contour, pointed at
+// the marker. `heroEdgeFor` is already room-aware — ink in a lit hall, warm rim
+// in a dark one — which is exactly the property a marker needs across five
+// rooms. Aliasing rather than copying is the point: one scheme, two readers, no
+// second table to drift.
+export const markerEdgeFor = (key: number): HeroEdge => heroEdgeFor(key);
+
+/** The marker's drawn height in world px (PaintScene.buildProps). */
+export const MARKER_H = 26;
+
+/**
+ * D-45's second half. The marker stood dead-centre on the very cell the child
+ * stands on to bank: 30.0 × 26.0 px at depth 3, behind a 23.0 × 35.6 px boy at
+ * depth 10, origins both (0.5, 1) on one standing line. That hides 598 of its
+ * 780 px² — 77 % — and the 23 % that survives is two slivers three pixels wide.
+ * „Completely hidden" was very nearly literal, and no contour can fix an object
+ * that is not on the screen.
+ *
+ * So Krakel steps aside — which is also the truer picture, because a person
+ * sketching you stands BESIDE you. He only steps where the grid has ground to
+ * step onto; where it has none he stays, and the audit says so out loud rather
+ * than letting him quietly disappear.
+ */
+export const MARKER_STANDOFF_PX = 18;
+/** How much of the marker must clear the child who is banking at it. */
+export const MARKER_VISIBLE_MIN = 0.55;
+
+const SOLID_GLYPHS = new Set(["#", "~", "="]);
+const solidAt = (rows: readonly string[], c: number, r: number): boolean =>
+  r >= 0 && r < rows.length && c >= 0 && c < (rows[r]?.length ?? 0) && SOLID_GLYPHS.has(rows[r]?.[c] ?? " ");
+
+/** Which way the marker steps, and how far. LEFT is tried first: in p1 the only
+ *  other thing near the checkpoint is a bouncer homing one cell to its RIGHT. */
+export const markerPlacementFor = (rows: readonly string[], c: number, r: number): { dx: number; why: string } => {
+  const standable = (cc: number): boolean => solidAt(rows, cc, r + 1) && !solidAt(rows, cc, r);
+  if (standable(c - 1)) return { dx: -MARKER_STANDOFF_PX, why: "stepped left onto its own ground" };
+  if (standable(c + 1)) return { dx: MARKER_STANDOFF_PX, why: "stepped right onto its own ground" };
+  return { dx: 0, why: "nowhere to step — the cell is one wide" };
+};
+
+/** The fraction of the marker's drawn box the child does NOT cover, both boxes
+ *  origin (0.5, 1) on one standing line. An axis-aligned FLOOR, not a pixel
+ *  truth: two painted silhouettes overlap less than their boxes do, so a number
+ *  that clears the law here clears it on the screen too. */
+export const markerVisibleFraction = (markerW: number, heroW: number, dx: number): number => {
+  const overlap = Math.max(0, (markerW + heroW) / 2 - Math.abs(dx));
+  return markerW <= 0 ? 0 : Math.max(0, 1 - Math.min(overlap, markerW) / markerW);
+};
+
 // ── PK-R6 · H2 · THE DARKS GO DEEPER (round-2 finding 9, major) ──────────────
 // „The compositions collapse into near-uniform pale yellow/tan colour fields with
 // almost no dark anchor shapes to organise the eye … push the darkest darks in
