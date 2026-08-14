@@ -39,6 +39,7 @@ Ein Test hält beide Hälften: die Karte muss die Knöpfe deklarieren UND lesen,
 | `--pb-paper` | `#fff2cd` | Das Blatt, aus dem die Karte gerissen ist. Wärmer und heller als der Bestand (`#ffeec4`): das gewählte Muster verschiebt das Papier Richtung Buttermilch, weil kräftigeres Papier gegen die dicke Tinte grau wirkt. Die sechs Verlaufsschichten darüber bleiben unangetastet — sie sind der Grund, warum die Fläche als Papier liest und nicht als Farbfeld, und sie waren im beurteilten Bild sichtbar. |
 | `--pb-paper-lit` | `#fffaea` | Dasselbe Blatt, eine Stufe heller: ein Chip ist kein anderes Material, er ist dieselbe Seite, die höher liegt. |
 | `--pb-seal` | `#ffd98a` | Das Wachssiegel in der Ecke. Als einzige Fläche satter als das Papier, sonst ist es kein Siegel, sondern ein Fleck. |
+| `--pb-ink-rgb` | `107, 63, 24` | **R5-W3 · J2.** Derselbe Stift als Kanäle, für die eine Fläche, die ihn in eigener Stärke braucht (die Bilanz-Linie). Ein zweiter Name für eine Farbe ist ein Drift-Risiko — bezahlt durch ein Gesetz, das die drei Zahlen aus `--pb-ink` neu ableitet und rot wird, wenn sie auseinandergehen. |
 | `--pb-ink` | `#6b3f18` | Jede gezogene Kante der Familie. Deutlich dunkler als der Bestand (`#8a5a2b`) — Wachsmalstift drückt, Fineliner nicht. |
 | `--pb-ink-cast` | `rgba(107,63,24,0.9)` | Derselbe Stift als **harter** Schlagschatten. Hart, nicht weich: ein weicher Schatten ist eine Lichtsimulation, ein harter ist ein zweiter Strich. |
 | `--pb-ink-line` | `rgba(107,63,24,0.45)` | Derselbe Stift auf Flüsterstärke: die gestrichelte Innenlinie und die leise Kante des »Später«-Knopfes. |
@@ -55,11 +56,21 @@ Ein Test hält beide Hälften: die Karte muss die Knöpfe deklarieren UND lesen,
 | `--pb-stamp-tilt` | `-11deg` | Ein Siegel wird gestempelt, nicht gesetzt. Netto −10° gegen den Raum, weil der Rahmen darunter +1° trägt — ein Grad unter der Wahrnehmungsschwelle, und ausdrücklich NICHT mit einem fünften Knopf »korrigiert«. |
 | `--pb-key-tilt` | `-1.6deg` | Der Kreidestrich unter der Schlüsselzeile. Schiefer als die Karte, weil er nachträglich per Hand gezogen wurde. |
 
-### Vier Werte, die bewusst KEIN Knopf sind
+### Fünf Werte, die bewusst KEIN Knopf sind
 
 Ein Knopf für eine Zahl, die niemand nachstellt, ist ein zweiter Name für dasselbe.
 Literal bleiben: die 4 px Chip-Lippe · die 2,5 px Strichstärke der Innenlinie · die
-6 px Höhe des Kreidestrichs · die 0,2 px Sperrung der Schlüsselzeile. Ebenso bleiben
+6 px Höhe des Kreidestrichs · die 0,2 px Sperrung der Schlüsselzeile — und seit
+R5-W3 · J2 **DIE HAND**: die vier Seitenfaktoren `1,25 · 0,80 · 0,75 · 1,20`, je
+Fläche anders rotiert. Sie sind kein Knopf, weil niemand *eine Seite einer Fläche*
+nachstellt, und weil ein gemeinsamer Knopf pro Fläche neu deklariert werden müsste —
+genau das Leck, gegen das die Scope-Wand steht. Zwei Eigenschaften machen sie sicher
+statt bloß anders: **gegenüberliegende Paare summieren sich auf exakt 2**, die Hand
+verteilt Gewicht also um und fügt keins hinzu (die Karte zahlt schon 4,3 px ihrer
+14 px Seitenluft an die Neigung); und **jede zyklische Rotation erhält diese
+Eigenschaft**, weshalb vier Flächen vier verschiedene Hände aus einem Zahlensatz
+bekommen. Eine Hand überall wäre eine systematische Schräge — der ursprüngliche
+Befund, eine Ebene höher geschoben statt beantwortet. Ebenso bleiben
 die Schatten-**Listen** literal: ein Knopf, dessen Wert eine ganze Schattenliste ist,
 ist nicht besser editierbar als die Regel selbst.
 
@@ -112,18 +123,32 @@ Kind ENTZIFFERN muss, bleibt so klar wie irgend möglich.
 
 ## §3 · Die Takt-Grammatik des Auftakts
 
-Damit ch02–ch15 sie erben, ohne zu raten. Ein Kapitel-Auftakt hat **vier Takte, in
-dieser Reihenfolge**, und jeder beantwortet genau eine Frage des Kindes.
+Damit ch02–ch15 sie erben, ohne zu raten. Ein Kapitel-Auftakt hat **bis zu fünf
+Takte, in dieser Reihenfolge**, und jeder beantwortet genau eine Frage des Kindes.
+
+**★ R5-W3 · J2 · R29 — aus vier wurden fünf.** Zwei blinde Didaktik-Kritiker,
+Sessions auseinander und blind zueinander, nannten unabhängig fünf Aufgabenzeilen
+auf EINER Karte zu viel für ein Sechsjähriges (75 % und 90 %) — und beide dieselbe
+zweite Schwäche: bei gleichem Gewicht sagt nichts, welche Aufgabe die des Kapitels
+ist und welche ein Bonus. Konvergenz macht das zur Tatsache; die stehende
+Architekten-Regel war *teilen bei Konvergenz*. Die Naht ist **TUN gegen SAMMELN**.
 
 | Takt | Die Frage | Was darauf steht | Woher es kommt |
 |---|---|---|---|
 | 1 · Das Buch schlägt auf | *Wo bin ich?* | Kapitelnummer · die gemalte Titeltafel mit dem Kapitelnamen · ein Fenster in den echten Raum mit dem Jungen darin · **der Warum-Satz** | `level.chapter` · `goalPlate` · `level.name` · `SceneCut(plates.far)` · `level.whyDe` |
 | 2 · Was geschehen ist | *Was ist passiert?* | EIN Bild und EINE Zeile darunter | `auftakt_<ch>_b` → Schulhaus-Zelle → SceneCut · `level.goalDe` |
-| 3 · Dein Auftrag | *Was soll ich tun?* | Je Aufgabe eine Zeile mit **eigener Marke**, gezählte Zahl fett, Begründung leise darunter | `auftaktTasks()` aus der gezählten Bilanz |
-| 4 · Los geht's | *Wie fange ich an?* | Die Tür · der Name des ersten Raums · **»Los geht's!«** | `auftakt_<ch>_d` → `doorPlate` → SceneCut · `phases[0].nameDe` |
+| 3 · Dein Auftrag | *Was soll ich tun?* | Die Aufgaben, die das Kapitel VERLANGT — Farbe zurückgeben (die Zeile, auf der der englische Mechanismus steht) und Käfige öffnen | `auftaktTasks(counts, "aufgaben")` |
+| 4 · Was du sammelst | *Was nehme ich mit?* | Was unterwegs eingesammelt wird: Buchstaben, Regel-Seiten, Bonus-Bücher | `auftaktTasks(counts, "sammeln")` |
+| 5 · Los geht's | *Wie fange ich an?* | Die Tür · der Name des ersten Raums · **»Los geht's!«** | `auftakt_<ch>_d` → `doorPlate` → SceneCut · `phases[0].nameDe` |
 
 ### Die sechs Gesetze der Grammatik
 
+0. **Ein Takt ohne Inhalt ist kein Takt.** Die Kette wird aus den Zählungen
+   BERECHNET (`auftaktChain`), nicht als feste Liste geführt: ein Kapitel ohne
+   Sammelstücke zeigt vier Takte, eines ohne Handlungsaufgaben ebenfalls vier,
+   eines ohne beides drei — nie fünf mit einer leeren Seite. Und weil der Fuß
+   seine Zahl aus derselben Kette zieht, kann »4 von 5« nicht behaupten, was die
+   Takte nicht tun. Ein Test läuft alle vier Kapitelformen ab.
 1. **Der Warum-Satz steht in Takt 1, nicht am Ende.** Ein Kind, das nur die erste
    Seite liest, hat trotzdem den einen Satz gelesen, für den das Kapitel da ist.
    (Der Blind-Kritiker auf dem alten Exemplar: die Prämisse war »in die kleinste,
@@ -133,8 +158,11 @@ dieser Reihenfolge**, und jeder beantwortet genau eine Frage des Kindes.
 3. **Jede Zahl in Takt 3 wird gezählt, nie getippt** (doc 41 §7). Diese Seite ist der
    Vertrag des Kapitels mit dem Kind — eine getippte Zahl ist das Einzige, was ein
    Vertrag nicht enthalten darf.
-4. **Die Welt bleibt über ALLE vier Takte eingefroren.** Nur der letzte gibt sie
-   zurück. `auftaktExit()` sagt das für genau einen Takt, und ein Test hält es.
+4. **Die Welt bleibt über ALLE Takte eingefroren.** Nur der letzte gibt sie
+   zurück. `auftaktExit()` sagt das für genau einen Takt, und seit dem Schnitt
+   prüft der Test es auf JEDER Kette, die ein Kapitel erzeugen kann — der Schnitt
+   hat die Zahl möglicher Ketten vervielfacht, und eine Kapitelform, die niemand
+   getestet hat, ist genau die, die die Welt unter einer offenen Karte startet.
 5. **Jeder Takt außer dem ersten kann zurückblättern**, und der Fuß mit
    Weiter · Zurück · Zähler sieht auf allen vier gleich aus. Ein Auftakt darf nicht
    schneller sein als das Lesen.
@@ -176,10 +204,12 @@ und aus einem benannten Grund gelassen. **Offen** heißt: niemand hat entschiede
 | `CardShell.tsx` »Später«-Kante | inline gesetzt, schlägt das Stylesheet | ✅ umgestellt (liest `--pb-ink-line`) |
 | `.pb-hud-chip` / `.pb-hud-chip-btn` | die Zählerleiste am Seitenrand | ⛔ **bewusst nicht** — sitzt AUSSERHALB des Schleiers und kann die Knöpfe nicht erben. Das Muster hat sie nie gezeigt, Koki hat sie nie beurteilt. |
 | `.pb-veil` · `.pb-defocus` · `.pb-wipe` · `.pb-tether` | die Bühne, nicht die Karte | ⛔ bewusst nicht — kein Papier, keine Kante |
-| `.pb-portrait` | der Bildrahmen im Kartenkopf | ❔ **offen** — kartenintern, aber im Muster nicht enthalten. Trägt noch `#b78d51`. |
-| `.pb-rule-band` · `.pb-merk-slot` · `.pb-merk-topic` | die Regel-Seiten-Flächen aus I1 | ❔ **offen** — dieselbe Lage |
-| `.pb-treasure-plate` · `.pb-treasure-page` · `.pb-treasure-glow` | die Schatz-Darstellung aus I1 | ❔ **offen** — hängt an der Kontrast-Runde (J1-E), dort wird ohnehin gemessen |
-| `.pb-score-row` · `.pb-count` · `.pb-eyebrow` · `.pb-help*` | Typografie-Details der Ceremony-Karten | ❔ offen |
+| ~~`.pb-portrait`~~ | der Bildrahmen im Kartenkopf | 🗑 **ENTFERNT (J2)** — war eine TOTE Regel: R5-W1 · D1 hat das Bild von einem Slot zur PLATTE befördert, und seither wendet kein TSX die Klasse an (repo-weit geprüft, inkl. der Frage, ob ein Klassenname je zur Laufzeit gebaut wird — wird er nicht). Eine tote Regel zu schminken hätte die Tabelle grün gemacht, ohne dass ein Kind oder ein Kritiker etwas sieht. |
+| `.pb-rule-band` · `.pb-merk-slot` · `.pb-merk-topic` | die Regel-Seiten-Flächen aus I1 | ✅ **umgestellt (J2)** — Band und Stub lesen die Tinte, das Band trägt die Hand. ⚠ Erst mit `--pb-ink-line` gebaut und von einem blinden Kritiker zu Recht kassiert: »die goldene Linie leistet etwas — sie sagt, dieses Rechteck ist besonders«. Beitreten war richtig, im FLÜSTERTON beitreten nicht; jetzt volle Tintenstärke. |
+| ~~`.pb-treasure-plate`~~ · `.pb-treasure-page` · `.pb-treasure-glow` | die Schatz-Darstellung aus I1 | 🗑 **`-plate` ENTFERNT (J2, tot, kein Konsument)** · die zwei lebenden ⛔ **bewusst nicht**: sie tragen keine gezogene Kante und keine Konturfarbe — es gibt nichts, dem sie beitreten könnten. Eine Farbe zu tokenisieren, die einmal gelesen wird, ist ein zweiter Name für eine Zahl. |
+| `.pb-score-row` · `.pb-eyebrow` · `.pb-help*` | Typografie-Details der Ceremony-Karten | ✅ **umgestellt (J2)** — und bei `.pb-eyebrow`/`.pb-merk-topic` war es zugleich eine Lesbarkeits-REPARATUR: `#a8926a` auf `--pb-paper` misst **2,70 : 1** und fällt bei 12 px durch AA; `--pb-quiet-ink` misst **5,53 : 1**. Die Bilanz-Linie tauscht ihre Eigen-Tinte gegen `--pb-ink-rgb` bei 1/1,4 der alten Deckung — gleiche gefühlte Stärke, Farbe in der Familie. |
+| `.pb-count` | die gezählten Zahlen | ⛔ **bewusst nicht (J2)** — steht in §2 auf der Liste »bleibt unnaiv«. Eine Zahl, die man zweimal lesen muss, ist eine falsche Zahl. |
+| `.pb-ring-track` · `.pb-ring` | die Kreide-Uhr | ⛔ bewusst nicht — ein Countdown ist kein Rahmen; ein wackeliger 6-px-Balken liest als Darstellungsfehler. |
 | Plattform/Hub (`apps/web`) | außerhalb des Spiels | ⛔ bewusst nicht — doc 45 §G2 vertagt sie ausdrücklich |
 
 Die »offenen« Flächen sind ein Wort (`var(--pb-ink)`) davon entfernt, der Familie
@@ -221,7 +251,81 @@ die Transformationsmatrix im Browser liest `0.0191974`.
 
 ---
 
-## §6 · Offene Fragen an den Architekten
+### D-52 · die Telefon-Messung (R5-W3 · J2)
+
+Auf der ECHTEN Seite bei 375 × 812 gemessen, nie auf der Karten-Bank (die ist eine
+feste 1056 × 672-Bühne und erfindet einen Beschnitt, den die Seite nicht hat).
+
+⚠ **Zwei Messfallen, beide zuerst hineingetappt und dann gemessen statt geglaubt:**
+der Automatisierungs-Tab ist **verborgen** (`document.hidden === true`), also läuft
+die `pb-page-in`-Seitenwende nie an — die erste Messreihe maß eine Karte, die im
+0-%-Keyframe einer 3D-Drehung feststeckte, und ihre Zahlen waren wertlos. Und die
+Bühnenhöhe ist erst nach dem Layout-Settle stabil (954,9 px vorher, 555,5 px
+danach): Phaser setzt dem Wirt `height: 100%`, das sich gegen eine Kette
+prozentualer Höhen auflöst. **Beweis ist deshalb das BILD, nicht der Zahlenwert.**
+
+| Takt | Karte hoch | Schnitt oben | Schnitt unten |
+|---|---|---|---|
+| 1 · Kapitel 1 | 507,2 | – (21,1 Luft) | – (27,2 Luft) |
+| 2 · Was geschehen ist | 591,6 | **18,1** | **18,1** |
+| 3 · Dein Auftrag (alt, fünf Zeilen) | **719,3** | **81,9** | **81,9** |
+| 4 · Los geht's | 530,3 | – (12,6 Luft) | – (12,6 Luft) |
+
+Der Schleier ist **555,5 px** hoch und zentriert, schneidet also symmetrisch.
+Takt 3 verlor 163,8 px = 23 % der Karte, samt »Zurück blättern«.
+
+**Nachher:** die Karte bekommt `max-height: calc(100% - 24px)` (24 px, weil die
+Neigung die Bounding-Box um `Breite × sin(1,1°)` wachsen lässt und der harte
+Schlagschatten 9 px darunter fällt), und das BLATT darin scrollt. Nach dem
+Aufgaben-Schnitt braucht auf 375 × 812 **kein Takt mehr zu scrollen** — beide
+neuen Aufgaben-Takte passen ganz, mit beiden Knöpfen sichtbar.
+
+⚠ **Nebenwirkung, ehrlich:** Karten, die der Schleier VORHER schon beschnitten hat,
+scrollen jetzt — auch auf dem Desktop. Die Punkte-Karte ist der sichtbarste Fall:
+vorher fehlten ihr oben und unten die Kanten, jetzt ist sie ganz und drei ihrer
+fünf Zeilen liegen unter der Falz. Erreichbar statt abgeschnitten ist die bessere
+Hälfte des Tauschs, aber es IST ein Tausch, und er gehört vor Kokis Auge.
+
+## §6 · DREI-STRIKES-STOPP — die Geometrie-Runde erreicht ihr Ziel NICHT (R5-W3 · J2)
+
+**Gebaut ist alles, was R21 verlangt.** Gemessen im Browser, nicht behauptet: die
+Kartenkante rendert **5 / 3 / 3 / 4,5 px** (oben/rechts/unten/links; der Browser
+rundet 3,2 → 3 und 4,8 → 4,5 auf Gerätepixel). Die vier Seiten widersprechen sich
+also wirklich, im Verhältnis 1,67 : 1 oben-zu-unten.
+
+**Und trotzdem sieht es kein Kritiker.** Drei blinde, frische Kritiker:
+
+| Runde | Was sie sahen | Urteil |
+|---|---|---|
+| 1 · ganze Bühne | vorher/nachher derselben Karte | »I cannot see a difference« (90 %) |
+| 2 · ganze Bühne, Reihenfolge getauscht | dasselbe | »I cannot see a difference« (75 %) |
+| 3 · Karte formatfüllend, ausdrücklich nach der KANTE gefragt | drei Fassungen | »the border is the same weight all the way round« (85 %) |
+
+**Ihre Tatsachenbehauptung ist widerlegt** — nachgemessen unterscheiden sich
+**6,3 %** aller Bildpunkte der Karte (max. Abweichung 658/765), und die
+Rechnerwerte oben stehen im Browser. Das ist derselbe Fehlertyp, den J1 gebankt
+hat (»ein Kritiker-Befund ist eine Spezifikation, keine Messung«), diesmal
+dreifach. **Ihr Geschmacksurteil bleibt gültig, und es ist das Ergebnis dieser
+Runde:**
+
+> Eine Kante, die auf jeder Seite eine ANDERE gleichmäßige Stärke hat, ist immer
+> noch eine gleichmäßige Kante. Was die Kritiker sehen wollen, ist Variation
+> **ENTLANG** der Linie — Zittern, Auslaufen, Doppelstrich. Das kann ein
+> CSS-`border` grundsätzlich nicht: er hat pro Seite genau eine Zahl.
+
+**Drei Strikes am selben Kriterium ⇒ Stopp und Eskalation mit Beweisen, statt mit
+Gewalt weiter** (AAA-Mandat). Die gebaute Arbeit bleibt: sie ist korrekt,
+tokenisiert, per Tamper gesichert, und sie kostet nichts. Sie schließt die Lücke
+nur nicht.
+
+**Was die Lücke schließen würde — Architekten-Entscheidung, nicht meine:**
+`border-image` mit einem gemalten Kantenstreifen (oder ein SVG-Rahmen). Das ist
+eine KUNST-Bestellung, keine CSS-Runde, und beide Kritiker der ersten zwei Runden
+haben unabhängig dasselbe als größten verbleibenden Abstand genannt: den gemalten
+Blättern fehlt gerichtetes Licht, und die UI-Teile drumherum sind gleichförmig.
+Das ist A5s Spur, nicht J2s.
+
+## §7 · Offene Fragen an den Architekten
 
 Nicht einseitig entschieden — das hier ist Fables Sitz.
 
@@ -233,10 +337,11 @@ Nicht einseitig entschieden — das hier ist Fables Sitz.
    Blind-Kritiker auf dem Exemplar). Das beurteilte Muster hat sie gegen einen harten
    Schlagschatten getauscht. Zwei Zeilen, um sie zurückzuholen. Soll die neue Kante
    den Buchseiten-Eindruck allein tragen?
-3. **Die Chip-Schriftgröße** (siehe §1, bewusste Nicht-Übernahme): eine
-   Lesbarkeitsentscheidung, kein Look-Knopf — aber jemand sollte sie treffen.
-4. **Der Telefon-Beschnitt.** Auf 375 × 812 wird die Auftakt-Karte oben und unten
-   abgeschnitten (Bildtafel angeschnitten, Schlussabsatz unter der Falz). **Vorbestehend,
-   nicht von dieser Runde verursacht** — belegt durch zwei Aufnahmen im selben Aufbau.
-   Aber PR 3 legt MEHR auf diese Karte, also braucht es vorher eine Richtung: Karte
-   scrollbar, Inhalt je Takt kleiner, oder Bühne höher?
+3. ~~Die Chip-Schriftgröße~~ — **ENTSCHIEDEN (Koki, 2026-08-14): 18 px**, gebaut als
+   EINE Regel in `cardBtn`. Die zweite, abgedriftete Kopie in `PaintGame.tsx`
+   (15 px, während drei Zeremonien-Knöpfe inline 16 erzwangen) speist sich jetzt
+   daraus statt sie zu wiederholen.
+4. ~~Der Telefon-Beschnitt~~ — **ERLEDIGT (J2, D-52)**: gemessen, Ursache benannt
+   (der Schleier ist 555,5 px hoch und zentriert), Karte gedeckelt, Blatt scrollt,
+   und nach dem Aufgaben-Schnitt scrollt auf dem Telefon gar kein Takt mehr. Die
+   Nebenwirkung auf die Punkte-Karte steht in §5 und gehört vor Kokis Auge.
