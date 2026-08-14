@@ -181,7 +181,12 @@ export default function CardGallery({ level, art, tasks, Overlay, which }: Galle
     card("choice-hints", "choice · Hinweis-Ebene", byKind("choice"), { round: { n: 3, of: 6 } },
       "Hinweise erscheinen erst nach Fehlversuchen — im Bench über die Runden-Zeile sichtbar gemacht"),
     // ── the eleven ceremony panels ─────────────────────────────────────────
-    ceremony("goal", "Ziel-Karte", { card: "goal" }),
+    // R5-W2 · J1-B · the opening's four beats, each photographable on its own.
+    // `goal` keeps its id: it is the address the bench has always used for beat 1.
+    ceremony("goal", "Auftakt · 1 · Das Buch schlägt auf", { card: "goal" }),
+    ceremony("auftakt-schatten", "Auftakt · 2 · Was geschehen ist", { card: "schatten" }),
+    ceremony("auftakt-aufgaben", "Auftakt · 3 · Dein Auftrag", { card: "aufgaben" }),
+    ceremony("auftakt-los", "Auftakt · 4 · Los geht's", { card: "los" }),
     // R5-W2 · I1: the reading card has TWO beats, so the bench has two surfaces.
     // Both read the chapter's OWN page — a bench fixture that invents its copy
     // photographs a card nobody ships.

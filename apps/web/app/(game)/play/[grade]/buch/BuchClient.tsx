@@ -1,10 +1,12 @@
 "use client";
 // The ssr:false seam: Phaser only ever loads in the browser (the ArcadeClient
 // pattern; keeps the bundle guard's one-lazy-chunk law intact).
+import { useState } from "react";
 import dynamic from "next/dynamic";
 import type { PaintLevel } from "@domigo/game-paint/level";
 import type { GameTaskV2 } from "@domigo/content-schema";
 import { rememberRegelSeite } from "@/lib/regelbuch";
+import { auftaktSeen, rememberAuftakt } from "@/lib/auftakt";
 
 const PaintGame = dynamic(() => import("@domigo/game-paint/game"), {
   ssr: false,
@@ -35,6 +37,14 @@ export default function BuchClient(props: {
   cardBench?: string;
 }) {
   const { cardBench, ...game } = props;
+  // R5-W2 · J1-B: resolved once, at first render — an effect would mount the
+  // opening and tear it down a frame later, and a card that flashes is worse
+  // than a card that stays. The SSR pass answers `false` (show it), which is
+  // the safe direction in both senses.
+  // It sits ABOVE the bench's early return on purpose — a hook behind a
+  // branch is a hook that runs in one render and not the next.
+  const [openingSeen] = useState(() => auftaktSeen(props.level.chapter));
+
   if (cardBench !== undefined) {
     return <PaintDevGallery level={props.level} art={props.art} tasks={props.tasks} which={cardBench} />;
   }
@@ -45,6 +55,13 @@ export default function BuchClient(props: {
   return (
     <PaintGame
       {...game}
+      // R5-W2 · J1-B · THE OPENING'S OWN SEAM. Read ONCE, at first render,
+      // through a state initialiser (the GameClient idiom): localStorage is
+      // client-only, and this component still gets a server pass. No hydration
+      // mismatch is possible either way — PaintGame is dynamic(ssr:false), so
+      // the flag is never consumed during that pass.
+      openingSeen={openingSeen}
+      onOpeningRead={() => { rememberAuftakt(props.level.chapter); }}
       onTipCollected={(tip) => {
         rememberRegelSeite({
           chapter: props.level.chapter,

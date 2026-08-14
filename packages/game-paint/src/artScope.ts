@@ -26,7 +26,7 @@
 // loader loads, and scripts/check-paint-art.mjs asserts floor ⊆ ceiling. A
 // stem the gate insists on that the loader would skip fails the build.
 
-import { GLYPH_STEMS, HERO2_STEMS, HERO_STEMS, PAINTED_ICON_NAMES, entitySkinStems, guardianSkinStems } from "./artManifest.ts";
+import { AUFTAKT_STEMS, GLYPH_STEMS, HERO2_STEMS, HERO_STEMS, PAINTED_ICON_NAMES, entitySkinStems, guardianSkinStems } from "./artManifest.ts";
 import { COMPOSITION, compositionStems } from "./composition.ts";
 import { CHALK_PROJECTILE_STEMS } from "./entities.ts";
 
@@ -124,6 +124,8 @@ export const domArtStems = (level: ScopeLevel): Set<string> => {
   // genuinely gone dead. Declared by NAME, from the icon set itself, so a new
   // icon cannot be forgotten here.
   for (const n of PAINTED_ICON_NAMES) out.add(`hud_${n}`);
+  // R5-W2 · J1-B: the opening's four beats read these straight out of the map.
+  for (const s of AUFTAKT_STEMS) out.add(s);
   for (const s of ALWAYS_STEMS) out.add(s);
   return out;
 };

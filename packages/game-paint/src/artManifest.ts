@@ -72,6 +72,33 @@ export const HERO_STEMS = [
   "rotor_a", "rotor_b", "rotor_c",
 ];
 
+/** R5-W2 · J1-B · THE CHAPTER OPENING'S OWN PICTURES.
+ *
+ *  The stems the four beats read straight out of the art map. Declared here —
+ *  once — so the cards, the loader and the »loaded by nothing« audit read the
+ *  same names, and a rename at import time is a one-line change.
+ *
+ *  CLAIMED, NOT REQUIRED: every one of them falls back (painted cell → the
+ *  school-house cell → the scene cut → nothing at all), because art lands batch
+ *  by batch and a card may never break on a missing file. A hard requirement
+ *  here would fail the build for a chapter whose paint has not arrived.
+ *
+ *  Deliberately NOT listed, because nothing shows them: `auftakt_ch01_a` (the
+ *  open book — beat 1 already carries the chapter's painted title plate, and two
+ *  books on one card is one too many) and `schulhaus_ch01_c` (the façade detail,
+ *  ordered as scenery rather than for a card). They stay in the audit's dead list
+ *  ON PURPOSE — that list is only worth reading if it is honest.
+ *
+ *  `auftakt_ch01_c` WAS on that list and is not any more: the blind look critic
+ *  called beat 3 »the one beat that reads as a plain checklist/settings dialog,
+ *  not a story page« (90 %), and the note is the PAPER the tasks are written on
+ *  rather than a form whose three rows must match five lines. */
+export const AUFTAKT_STEMS: readonly string[] = [
+  "auftakt_ch01_b", "auftakt_ch01_c", "auftakt_ch01_d",
+  "auftakt_mark_letters", "auftakt_mark_cages", "auftakt_mark_tips",
+  "schulhaus_ch01_a", "schulhaus_ch01_b",
+];
+
 /** R5-W2 · J1-C · THE PAINTED ICON STEMS.
  *
  *  `PaintedIcon` (cards/PaintedIcons.tsx) draws its code-built glyph unless a
