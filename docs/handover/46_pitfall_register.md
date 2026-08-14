@@ -399,3 +399,23 @@ mit und niemand merkt, dass sie nie beurteilt wurden.
 > Merk-Posten mehr, sondern ein Tor: `scripts/check-ci-gates.mjs` erzwingt, dass jedes
 > `scripts/check-*.mjs` in `.github/workflows/ci.yml` verdrahtet ist. So sieht die
 > Auflösung einer Falle aus — sie verschwindet aus dem Gedächtnis und wird eine Maschine.
+
+## Nachtrag vom Rebase-Tag
+
+**PB-40 · Eine Umnummerierung gilt nur bis zum nächsten Merge — der bereits gemergte
+Zweig behält die Nummern.** *(K1, 2026-08-14, am eigenen PR erlebt.)* K1 hat das
+Schulden-Register entdoppelt und die verschobenen Zeilen ab D-62 neu vergeben. Während
+der PR auf den Merge wartete, landete W1 zuerst — und hatte parallel **D-62…D-68** für
+seine eigenen sieben Befunde belegt. **Die Kollisionsklasse, gegen die K1 gebaut war,
+ist K1 selbst passiert**, und zwar unvermeidbar: zwei Zweige können dieselbe freie
+Nummer sehen, solange keiner von beiden gemergt ist. *Regel:* Wer ein Register
+umnummeriert, rechnet damit, es beim Rebase noch einmal tun zu müssen — und tut es nach
+der einen Regel, die keinen Streit kennt: **die bereits gemergte Vergabe behält ihre
+Nummer, der offene Zweig weicht aus.** Mitzuziehen sind dann NICHT nur die Zeilen,
+sondern auch die Umrechnungstabelle, jeder Code-Querverweis und jeder Verweis aus
+anderen Registern (in K1 waren das drei Code-Stellen und ein PB-Eintrag). Und: der
+PR-Text und die Commit-Nachrichten tragen danach veraltete Nummern — deshalb bekommt der
+Register-Abschnitt einen datierten Nachtrag, der sagt, welche Quelle maßgeblich ist.
+*Vorbeugend:* wo zwei Wellen gleichzeitig an ein Register anhängen, ist das ein heißes
+Feld (P-8) — entweder serialisieren, oder die Nummernvergabe erst beim Merge festlegen.
+
