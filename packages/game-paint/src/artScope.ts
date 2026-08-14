@@ -26,7 +26,7 @@
 // loader loads, and scripts/check-paint-art.mjs asserts floor ⊆ ceiling. A
 // stem the gate insists on that the loader would skip fails the build.
 
-import { AUFTAKT_STEMS, GLYPH_STEMS, HERO2_STEMS, HERO_STEMS, PAINTED_ICON_NAMES, entitySkinStems, guardianSkinStems } from "./artManifest.ts";
+import { AUFTAKT_STEMS, GLYPH_STEMS, HERO2_STEMS, HERO_STEMS, PAINTED_ICON_NAMES, captiveStem, entitySkinStems, guardianSkinStems, isCaptiveKey } from "./artManifest.ts";
 import { COMPOSITION, compositionStems } from "./composition.ts";
 import { CHALK_PROJECTILE_STEMS } from "./entities.ts";
 
@@ -35,7 +35,7 @@ import { CHALK_PROJECTILE_STEMS } from "./entities.ts";
 export interface ScopePhase {
   id: string;
   rows: readonly string[];
-  entities: ReadonlyArray<{ id?: string; role?: string; skin: string }>;
+  entities: ReadonlyArray<{ id?: string; role?: string; skin: string; params?: Record<string, unknown> | undefined }>;
   plates?: Record<string, string | undefined> | undefined;
 }
 
@@ -242,6 +242,9 @@ export const phaseArtScope = (level: ScopeLevel, phaseId: string, present: Itera
       guardianHere = true;
       for (const s of guardianSkinStems(e.skin)) add(s);
     }
+    // R5-W3 · A5 · D-48: the captive is scoped BY KEY, one layer per cage, and
+    // deliberately not through `closure` — see the prefix note in artManifest.
+    if (e.role === "cage" && isCaptiveKey(e.params?.captive)) add(captiveStem(e.params.captive));
   }
 
   // 4 · chalk, only where something throws it

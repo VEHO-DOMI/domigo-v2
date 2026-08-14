@@ -61,6 +61,7 @@ import {
   planShafts,
   shaftQuads,
 } from "../packages/game-paint/src/air.ts";
+import { entDisplayArea } from "../packages/game-paint/src/anim.ts";
 import { letterGlyphs } from "../packages/game-paint/src/letters.ts";
 import { TILE } from "../packages/game-paint/src/paint.ts";
 

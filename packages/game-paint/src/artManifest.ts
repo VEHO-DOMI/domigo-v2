@@ -30,6 +30,25 @@ export const GLYPH_STEMS: Record<string, string[]> = {
  *  pb-<skin>_<state> → pb-<skin>_a → procedural blob). */
 export const entitySkinStems = (skin: string): string[] => [`${skin}_a`];
 
+// ── R5-W3 · A5 · D-48 · WHO IS IN THE CAGE (batch AQ6) ───────────────────────
+//
+// All four cages in ch01 wear the `satchel` shell, and until now that shell was
+// the whole picture: four different captives, one silhouette. The occupant is
+// its own small layer, drawn behind the unchanged cage.
+//
+// THE PREFIX IS LOAD-BEARING. `artScope.phaseArtScope` closes over a skin name —
+// every stem beginning `satchel_` joins the scope of every phase holding a
+// satchel cage. Naming these `satchel_in_*` would therefore pull all four
+// captives into all four phases, which is four times the texture for three
+// pictures nobody can see. `captive_*` is invisible to that closure and is
+// added per cage, by key.
+export const CAPTIVE_KEYS = ["soundsystem", "tablet", "chair", "picture"] as const;
+export type CaptiveKey = (typeof CAPTIVE_KEYS)[number];
+export const captiveStem = (key: string): string => `captive_${key}`;
+export const CAPTIVE_STEMS: readonly string[] = CAPTIVE_KEYS.map(captiveStem);
+export const isCaptiveKey = (v: unknown): v is CaptiveKey =>
+  typeof v === "string" && (CAPTIVE_KEYS as readonly string[]).includes(v);
+
 // ── PK-R6 · E · THE GUARDIAN FLIGHT RIG (doc 44 §3.2 · §4 ch01 C4) ───────────
 // A boss is the one being whose missing cell does NOT read as a missing cell:
 // the only-present fallback chain quietly lands on `_a`, so a deleted `spiral2`

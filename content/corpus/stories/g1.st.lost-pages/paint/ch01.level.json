@@ -83,6 +83,7 @@
      "r": 12,
      "tier": "E",
      "params": {
+      "captive": "soundsystem",
       "captiveDe": "die Musikanlage"
      }
     },
@@ -239,6 +240,7 @@
      "r": 7,
      "tier": "E",
      "params": {
+      "captive": "tablet",
       "captiveDe": "das Tablet"
      }
     },
@@ -403,6 +405,7 @@
      "r": 12,
      "tier": "E",
      "params": {
+      "captive": "chair",
       "captiveDe": "der Stuhl"
      }
     },
@@ -522,6 +525,7 @@
     "r": 15,
     "tier": "E",
     "params": {
+     "captive": "picture",
      "captiveDe": "das Klassenfoto"
     }
    }
