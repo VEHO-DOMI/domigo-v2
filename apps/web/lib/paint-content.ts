@@ -49,7 +49,12 @@ const PaintParams = z.record(z.string(), z.unknown()).check((ctx) => {
   // `params` is an OPEN record, so these arrive whether or not they are named
   // here — which is exactly why they are named here: unchecked, a null or a
   // number would be rendered as the rule, the key or the quotation itself.
-  for (const k of ["topicDe", "merksatzDe", "schluesselDe", "beispielEn", "belegDe"] as const) {
+  // R5-W2 · J1-D: `ausspracheDe` and the trap pair join the loop. ⚠ THIS IS THE
+  // STEP EVERY NEW LEVEL FIELD FORGETS: this schema strips what it does not
+  // name, so an unlisted field passes the authoring gate on disk and arrives at
+  // the child as undefined — visible nowhere except on the card that is missing
+  // a line nobody notices.
+  for (const k of ["topicDe", "merksatzDe", "schluesselDe", "beispielEn", "belegDe", "ausspracheDe", "falscheFormEn", "richtigeFormEn"] as const) {
     if (k in p && (typeof p[k] !== "string" || p[k].trim() === "")) {
       ctx.issues.push({ code: "custom", input: p, path: [k], message: `params.${k} must be a non-empty string` });
     }

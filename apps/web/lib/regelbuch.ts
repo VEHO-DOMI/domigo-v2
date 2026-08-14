@@ -31,6 +31,11 @@ export interface RegelbuchEntry {
   merksatzDe: string;
   schluesselDe: string;
   beispielEn: string;
+  /** R5-W2 · J1-D — optional so a page collected before this round still
+   *  reads back out of the library instead of failing its shape check. */
+  ausspracheDe?: string;
+  falscheFormEn?: string;
+  richtigeFormEn?: string;
   belegDe: string;
 }
 

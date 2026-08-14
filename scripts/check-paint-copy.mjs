@@ -209,6 +209,47 @@ for (const file of paintFiles) {
   }
 }
 
+// ── 2c · R5-W2 · J1-D · THE ANCHOR AND THE TRAP ──────────────────────────────
+//
+// Koki chose the ANCHOR form for the pronunciation line („Sprich I'm wie das i in
+// time") over the book's own phonetic brackets, and the choice buys a check as
+// well as a reader: the word it anchors to must be one the child has already
+// met. So every English word inside an `ausspracheDe` is grounded against the
+// unit lexicon exactly like an example is — „time" is legal because Unit 1 is
+// CALLED Time for school.
+//
+// The trap is gated HARDER than the example, and in the opposite direction. A
+// »wrong form« the book prints is not wrong; it is a form the author had not
+// read yet. So `richtigeFormEn` must be attested and `falscheFormEn` must NOT be.
+let ausspracheSeen = 0;
+let ankersSeen = 0;
+let trapsSeen = 0;
+for (const file of paintFiles) {
+  if (!file.endsWith(".level.json")) continue;
+  const json = JSON.parse(fs.readFileSync(file, "utf8"));
+  for (const [at, text] of strings(json)) {
+    if (/(^|\.)ausspracheDe$/.test(at)) ausspracheSeen += 1;
+    if (/(^|\.)ankerEn$/.test(at)) {
+      ankersSeen += 1;
+      const tok = text.toLowerCase().replace(/[^\p{L}']/gu, "");
+      if (!enGrounded(tok, new Set())) {
+        fail(`${file} ${at}`, `anchor-law: „${text}" steht nicht im Wortschatz dieser Unit — eine Aussprache-Zeile darf nur an ein Wort ankern, das das Kind schon kennt`);
+      } else {
+        console.log(`  ✓ ${at}: „${text}" — steht im Wortschatz der Unit`);
+      }
+    }
+    if (/(^|\.)falscheFormEn$/.test(at)) {
+      trapsSeen += 1;
+      const hit = corpus.find((c) => c.text.includes(text));
+      if (hit) {
+        fail(`${file} ${at}`, `trap-law: „${text}" steht WÖRTLICH in ${hit.file} — eine Form, die das Buch druckt, ist keine falsche Form`);
+      } else {
+        console.log(`  ✓ ${at}: „${text}" — kommt in keinem Transkript vor, taugt also als Falle`);
+      }
+    }
+  }
+}
+
 // ── 2b · THE RETIRED PHRASES ─────────────────────────────────────────────────
 // Koki's replay named these one by one. Each was a line the world does not back:
 // a camp that doc 44 §1.4 abolished, a letter-being that exists as no entity,
@@ -265,6 +306,17 @@ if (lexWords.size < 100) {
 }
 if (examplesSeen === 0) {
   fail("VACUITY", "no `beispielEn` was scanned in any paint level — either the field was renamed or the walk missed it; the example law is asleep");
+}
+// R5-W2 · J1-D: the same guard for the two new fields. A law that scans nothing
+// reports OK, and an OK that means »I looked at zero things« is the worst kind.
+if (ausspracheSeen === 0) {
+  fail("VACUITY", "no `ausspracheDe` was scanned — the pronunciation line vanished");
+}
+if (ankersSeen === 0) {
+  fail("VACUITY", "no `ankerEn` was scanned — the anchor law is asleep");
+}
+if (trapsSeen === 0) {
+  fail("VACUITY", "no `falscheFormEn` was scanned — the trap law is asleep");
 }
 // The corpus must be able to REFUTE, not only to confirm: a `.includes()` over a
 // string that swallowed the whole book would attest any sentence at all.

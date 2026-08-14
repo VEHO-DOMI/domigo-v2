@@ -96,6 +96,9 @@ export default function CardGallery({ level, art, tasks, Overlay, which }: Galle
     merksatzDe: String(tipEntity?.params?.merksatzDe ?? "—"),
     schluesselDe: String(tipEntity?.params?.schluesselDe ?? ""),
     beispielEn: String(tipEntity?.params?.beispielEn ?? ""),
+    ausspracheDe: String(tipEntity?.params?.ausspracheDe ?? ""),
+    falscheFormEn: String(tipEntity?.params?.falscheFormEn ?? ""),
+    richtigeFormEn: String(tipEntity?.params?.richtigeFormEn ?? ""),
     belegDe: String(tipEntity?.params?.belegDe ?? ""),
   };
   const doorEntity = [...level.phases, ...(level.arena ? [level.arena] : [])]

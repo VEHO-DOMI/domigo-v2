@@ -23,7 +23,7 @@
 // pages rendered with NO emphasis at all. The rule now leads as a long Key and
 // carries one KeyBit inside it — the house device, used as designed.
 import React from "react";
-import { Key, KeyBit, Quiet } from "./Glance.tsx";
+import { Key, KeyBit, Quiet, Struck } from "./Glance.tsx";
 import { PaintedIcon } from "./PaintedIcons.tsx";
 
 /** The Merksatz split around its key phrase: [before, key, after].
@@ -81,9 +81,10 @@ export const RuleFound = ({ art, skin, topicDe, got, total, onNext }: {
 );
 
 /** BEAT 2 — the rule. The page is open; the lesson is the only thing moving. */
-export const RuleRead = ({ art, plateUrl, skin, topicDe, merksatzDe, schluesselDe, beispielEn, belegDe, onDone }: {
+export const RuleRead = ({ art, plateUrl, skin, topicDe, merksatzDe, schluesselDe, beispielEn, belegDe, ausspracheDe, falscheFormEn, richtigeFormEn, onDone }: {
   art: Record<string, string>; plateUrl?: string | undefined; skin: string; topicDe: string;
   merksatzDe: string; schluesselDe: string; beispielEn: string; belegDe: string;
+  ausspracheDe?: string; falscheFormEn?: string; richtigeFormEn?: string;
   onDone: () => void;
 }): React.ReactElement => {
   const [before, key, after] = splitKey(merksatzDe, schluesselDe);
@@ -120,6 +121,20 @@ export const RuleRead = ({ art, plateUrl, skin, topicDe, merksatzDe, schluesselD
       {/* …and the English the book itself prints, stroked, because it is the
           thing the child is here to learn to read */}
       <Key en>{beispielEn}</Key>
+      {/* R5-W2 · J1-D · HOW IT SOUNDS. A short form is first a SPOKEN thing, and
+          a child who only ever meets it on paper files it as a spelling trick.
+          It sits directly under the English it is about, and quietly: it is a
+          help with the line above, not a second line to learn. */}
+      {ausspracheDe !== undefined && ausspracheDe !== "" && <Quiet>{ausspracheDe}</Quiet>}
+      {/* …and THE TRAP. One wrong form struck through beats three right ones
+          when the mistake is about placement. The sentence carries the meaning
+          on its own, so a screen reader that ignores the stroke still reads it
+          correctly — a struck word hidden from a reader is never a warning. */}
+      {falscheFormEn !== undefined && falscheFormEn !== "" && richtigeFormEn !== undefined && richtigeFormEn !== "" && (
+        <p className="pb-quiet pb-rule-line" style={{ marginTop: 2 }}>
+          Nicht: <Struck>{falscheFormEn}</Struck> — richtig: <KeyBit>{richtigeFormEn}</KeyBit>
+        </p>
+      )}
       <Quiet italic>{belegDe}</Quiet>
       <div style={{ height: 10 }} />
       <button className="pb-btn-primary" onClick={onDone}>Ins Buch kleben</button>
