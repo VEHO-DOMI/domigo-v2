@@ -1166,11 +1166,59 @@ export const PAINT_OVERLAY_CSS = `
   font-family: var(--font-label, inherit);
 }
 
+/* ── R5-W3 · E5 · THE LOADING CARD ─────────────────────────────────────────
+   Koki's standing trade: „lieber ein kleiner Ladebildschirm als je ein
+   Stottern zur Laufzeit". Building a phase costs 127-448 ms of blocked main
+   thread (measured 2026-08-14 per build step), and it runs in the same step
+   that draws the first frame — so without this the child watches a frozen
+   picture and reads it as the game hanging. With it, the wait has a face and a
+   promise, which is what a wait is allowed to be.
+
+   It is deliberately CHEAP: one paper panel, one line of type, one soft pulse.
+   Nothing here may cost a frame, because the thing it exists to cover is
+   already the most expensive moment in the level. */
+@keyframes pb-building-breathe {
+  0%, 100% { opacity: 0.55; }
+  50%      { opacity: 1; }
+}
+.pb-building {
+  position: absolute;
+  inset: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: radial-gradient(120% 90% at 50% 45%, #fffaea, #f3e0b4);
+}
+.pb-building-panel {
+  background: var(--pb-paper, #fff2cd);
+  color: var(--pb-text, #3a2410);
+  border: var(--pb-ink-w, 4px) solid var(--pb-ink, #6b3f18);
+  border-radius: var(--pb-card-r, 26px 14px 30px 16px / 16px 30px 14px 26px);
+  transform: rotate(var(--pb-card-tilt, -1.1deg));
+  padding: 18px 26px;
+  text-align: center;
+  max-width: 78%;
+  box-shadow: 0 3px 0 var(--pb-ink-cast, rgba(107,63,24,0.9));
+}
+.pb-building-title {
+  font-family: var(--font-fredoka), system-ui, sans-serif;
+  font-size: 20px;
+  margin: 0;
+}
+.pb-building-quiet {
+  color: var(--pb-quiet-ink, #7a5c33);
+  font-size: 14px;
+  margin: 6px 0 0;
+  animation: pb-building-breathe 1600ms ease-in-out infinite;
+}
+
 /* ── THE END-STATES LAW: every animated class above, killed ─────────────── */
 @media (prefers-reduced-motion: reduce) {
   .pb-veil, .pb-wipe, .pb-card, .pb-ring, .pb-verdict, .pb-page, .pb-world-in,
   .pb-letter, .pb-word, .pb-doff, .pb-tether, .pb-rays, .pb-spark, .pb-hero-in,
-  .pb-row-in, .pb-door-bloom {
+  .pb-row-in, .pb-door-bloom, .pb-building-quiet {
     animation: none !important;
   }
   /* R5-W2 · I1 · …and the TRANSITIONS, which the kill list never covered because
@@ -1182,5 +1230,6 @@ export const PAINT_OVERLAY_CSS = `
   .pb-card button, .pb-card .pb-chip, .pb-hud-chip-btn, .pb-help-body {
     transition: none !important;
   }
+}
 }
 `;

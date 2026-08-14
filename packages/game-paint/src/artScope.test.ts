@@ -6,6 +6,7 @@
 // against the REAL shipped chapter and the REAL art tree.
 
 import { describe, expect, it } from "vitest";
+import { PHASE_ART_MB } from "./perfBudget.ts";
 import fs from "node:fs";
 import path from "node:path";
 import {
@@ -58,9 +59,9 @@ const bytesOf = (stems: Iterable<string>): number => {
 };
 
 const MB = 1048576;
-/** No single phase may queue more than this before its first frame. Measured
- *  at landing: the heaviest phase (p2) is 26.6 MB, against 111.1 MB before. */
-const PHASE_BUDGET_MB = 35;
+/** R5-W3 · E5: the number itself now lives in perfBudget.ts, so the guard
+ *  document, this test and the CI checker cannot drift apart. */
+const PHASE_BUDGET_MB = PHASE_ART_MB;
 
 describe("art scope", () => {
   it("finds the shipped chapter and its art", () => {

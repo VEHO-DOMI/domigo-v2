@@ -16,9 +16,13 @@
 import { readFileSync, existsSync, readdirSync, statSync } from "node:fs";
 import { gzipSync } from "node:zlib";
 import path from "node:path";
+import { BUNDLE_OTHER_KB, BUNDLE_PHASER_KB } from "../packages/game-paint/src/perfBudget.ts";
 
-const PHASER_BUDGET = 400 * 1024; // gz; Phaser core ≈ 310 KB gz today
-const OTHER_BUDGET = 150 * 1024; // gz; biggest non-Phaser chunk ≈ 69 KB today
+// R5-W3 · E5: both ceilings come from perfBudget.ts, the one place the guard
+// document, the tests and this gate all read — a budget that exists in three
+// copies is three budgets.
+const PHASER_BUDGET = BUNDLE_PHASER_KB * 1024; // gz; Phaser core ≈ 310 KB gz today
+const OTHER_BUDGET = BUNDLE_OTHER_KB * 1024; // gz; biggest non-Phaser chunk ≈ 114 KB today
 const MARKER = "phaser.io"; // Phaser's banner URL survives minification
 
 const CHUNKS_DIR = path.resolve(process.cwd(), "apps/web/.next/static/chunks");

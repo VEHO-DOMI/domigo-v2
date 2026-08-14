@@ -8,7 +8,7 @@ import "server-only";
  */
 import fs from "node:fs";
 import path from "node:path";
-import crypto from "node:crypto";
+import { stamped } from "./art-fingerprint";
 
 const ART_DIRS = ["hero", "ch01"] as const;
 
@@ -33,15 +33,8 @@ const ART_DIRS = ["hero", "ch01"] as const;
  * instance — the result is cached below, so no request pays it twice. The commit
  * sha stays as the fallback for any file that cannot be read.
  */
-const VERSION = process.env.VERCEL_GIT_COMMIT_SHA ?? "";
-
-const fingerprint = (abs: string): string => {
-  try {
-    return crypto.createHash("sha1").update(fs.readFileSync(abs)).digest("hex").slice(0, 8);
-  } catch {
-    return VERSION;
-  }
-};
+// R5-W3 · E5: the helper moved to art-fingerprint.ts, because keen/tile/story
+// art was serving 66 MB under the same immutable header with NO cache key.
 
 let cache: Record<string, string> | null = null;
 
@@ -53,8 +46,7 @@ export const resolvePaintArt = (): Record<string, string> => {
     const abs = path.join(root, dir);
     if (!fs.existsSync(abs)) continue;
     for (const f of fs.readdirSync(abs).filter((x) => x.endsWith(".png"))) {
-      const v = fingerprint(path.join(abs, f));
-      out[f.replace(/\.png$/, "")] = `/art/g1/paint/${dir}/${f}${v ? `?v=${v}` : ""}`;
+      out[f.replace(/\.png$/, "")] = stamped(`/art/g1/paint/${dir}/${f}`, path.join(abs, f));
     }
   }
   cache = out;

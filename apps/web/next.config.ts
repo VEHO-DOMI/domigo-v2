@@ -38,11 +38,15 @@ const nextConfig: NextConfig = {
   // across ~620 files, so that is hundreds of round trips a child pays for on
   // a school connection before anything moves — for bytes that never change.
   //
-  // Safe because the URL now carries a build version (lib/paint-art.ts appends
-  // ?v=<commit sha>), so new art arrives under a new URL rather than waiting
-  // for a cache to expire. Gated on VERCEL_ENV on purpose: locally there is no
-  // sha to bust with, and an immutable header would make the art lanes reload
-  // their browser to see a repaint.
+  // Safe because every /art URL carries its own FILE's content fingerprint —
+  // `lib/art-fingerprint.ts`, used by paint-art · keen-art · tile-art ·
+  // story-art — so a repainted picture arrives under a new address and an
+  // unchanged one keeps its cached copy. (R5-W3 · E5: this comment used to say
+  // "?v=<commit sha>" from lib/paint-art.ts. Both halves had rotted — E4 had
+  // already replaced the commit sha with a per-file hash, and three of the four
+  // resolvers were emitting NO key at all while this header promised a year of
+  // immutability over 66 MB of keen art.) Gated on VERCEL_ENV on purpose: an
+  // immutable header locally would make the art lanes reload to see a repaint.
   ...(process.env.VERCEL_ENV
     ? {
         headers: async () => [

@@ -16,6 +16,7 @@ import { PLACEHOLDER_UNTIL, isPlaceholderStem } from "../packages/game-paint/src
 // vice versa) — Audit A below is that assertion.
 import { allScopePhases, domArtStems, levelRequiredStems, phaseArtScope, phaseRequiredStems } from "../packages/game-paint/src/artScope.ts";
 import { keyFringe, readPng } from "./key-fringe.mjs";
+import { DEAD_ART_CEILING } from "../packages/game-paint/src/perfBudget.ts";
 
 const R = process.cwd();
 const ART_ROOT = path.join(R, "apps/web/public/art/g1/paint");
@@ -102,6 +103,19 @@ for (const { file, level } of levels) {
     let bytes = 0;
     for (const s of dead) { const f = fileOf.get(s); if (f) bytes += fs.statSync(f).size; }
     console.warn(`⚠ ${dead.length} painted stems are loaded by nothing (${(bytes / 1048576).toFixed(1)} MB): ${dead.slice(0, 8).join(", ")}${dead.length > 8 ? ", …" : ""}`);
+    // R5-W3 · E5 · THE RATCHET. The warning above ran on every build for three
+    // sessions while the pile went 53 → 57 → 59 → 61 stems, because a warning
+    // costs nothing to ignore. The keen-art freedom stays — art may land before
+    // its wiring — but the pile may no longer grow in SILENCE: adding sheets
+    // means raising the ceiling in the same PR, with a reason a reviewer reads.
+    // The full annotated list, by group: docs/design/g1/paint/DEAD_ART_2026-08-14.md
+    if (dead.length > DEAD_ART_CEILING) {
+      fail(
+        `${dead.length} painted stems are loaded by nothing — the ceiling is ${DEAD_ART_CEILING} (perfBudget.ts). ` +
+          `Wire them, delete them, or raise DEAD_ART_CEILING in this same PR with a reason. New since the ceiling: ` +
+          dead.slice(DEAD_ART_CEILING).join(", "),
+      );
+    }
   }
 }
 

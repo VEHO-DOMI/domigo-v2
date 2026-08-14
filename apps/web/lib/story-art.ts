@@ -10,6 +10,7 @@
  */
 import fs from "node:fs";
 import path from "node:path";
+import { stamped } from "./art-fingerprint";
 import { REPO_ROOT, loadStoryArt } from "@domigo/content-loader";
 import type { Chapter, Story as StoryT } from "@domigo/content-schema";
 
@@ -40,7 +41,10 @@ function availMap(grade: number): Map<string, string> {
     for (const f of fs.readdirSync(dir)) {
       if (f.startsWith(".")) continue;
       const stem = f.replace(/\.[a-z0-9]+$/i, "");
-      if (!m.has(stem)) m.set(stem, f);
+      // R5-W3 · E5: the file name carries its own content fingerprint, because
+      // next.config serves every /art/* URL immutable for a year — without a key
+      // a repainted picture never reaches a child who has the old one.
+      if (!m.has(stem)) m.set(stem, stamped(f, path.join(dir, f)));
     }
     return m;
   }
