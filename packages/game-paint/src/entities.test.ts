@@ -184,7 +184,7 @@ describe("the fist-less dodge window (PK-R6 · C2, flying under · E)", () => {
     // 200 seconds, and hp never moves. A guard that cannot see the room it
     // guards is not a guard, so this one now flies the shipped room.
     const arena = shippedArena();
-    const w = spawnEntities([arena.guardian], arena.rows);
+    const w = spawnEntities([arena.guardian], []);
     const g = w.entities[0]!;
     let iframes = 0;
     let staggers = 0;

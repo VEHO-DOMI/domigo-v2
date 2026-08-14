@@ -346,7 +346,7 @@ describe("her whole body stays in the visible band (readable = seeable)", () => 
 
     const dipped = new Set<number>();
     for (const col of standable) {
-      const w: EntityWorld = spawnEntities([spec], rows);
+      const w: EntityWorld = spawnEntities([spec], []);
       const g = w.entities[0]!;
       // ein Kind, das stehen bleibt, steht genau im Ziel — die i-Frames sind
       // der Grund, warum trotzdem ein Fenster aufgeht (entities.test.ts,
@@ -376,6 +376,109 @@ describe("her whole body stays in the visible band (readable = seeable)", () => 
     }
     // ein Gesetz, das den Dip nie gefahren hat, hat nichts bewiesen
     expect(dipped.size, "nicht jeder Lauf hat den Dip erreicht").toBe(standable.length);
+  });
+
+  it("R5-W2 · H1 · SIE SPRINGT NIE — auch nicht am Knotenwechsel", () => {
+    // Der Übergang zwischen zwei Knoten war der einzige Ort, an dem sich die
+    // Tafel TELEPORTIERT hat: `guardianKnotSolved` setzte `state = "fly"` und
+    // `flightTick = 0`, schrieb aber keine Position — und der Flug WEIST seine
+    // Lage zu, statt sie zu integrieren. Nachgerechnet: 42,7 px senkrecht am
+    // zweiten Knoten, 68,1 px senkrecht plus 102 px waagrecht am dritten.
+    //
+    // Die Schranke wird hier ABGELEITET, nicht getippt: der grösste ehrliche
+    // Schritt, den eine Bahn selbst je macht, gemessen an genau den Bahnen, die
+    // ausgeliefert werden. Was die Maschine tut, darf nie grösser sein als das.
+    let honestStep = 0;
+    for (const [ki, span] of KNOT_SPAN_PX.entries()) {
+      const period = KNOT_PERIOD_TICKS[ki]!;
+      let prev = flightPointAt(0, 0, 3 - ki, 3, 0);
+      for (let t = 1; t <= period; t++) {
+        const p = flightPointAt(0, 0, 3 - ki, 3, t);
+        honestStep = Math.max(honestStep, Math.hypot(p.x - prev.x, p.y - prev.y) / SUBS);
+        prev = p;
+      }
+      expect(span, "die Spannweiten sind die ausgelieferten").toBeGreaterThan(0);
+    }
+    // Der Dip ist eine EASE und darf im ersten Schritt gross ausfallen — das ist
+    // ein Ausholen, das man sieht, und es wird jeden Tick kleiner. Der Defekt
+    // war etwas anderes: eine VERSETZUNG in einem einzigen Tick, ohne Bewegung
+    // davor und ohne Bewegung danach. Genau dort wird deshalb gemessen — an dem
+    // Tick, an dem der Knoten aufgeht, und an dem, an dem sie die neue Bahn
+    // betritt.
+    for (const tier of TIERS) {
+      const w: EntityWorld = spawnEntities([guardianSpec(tier)], []);
+      const g = w.entities[0]!;
+      const knots = GUARDIAN_SCRIPT[tier].knots;
+      let solved = 0;
+      let handoffs = 0;
+      let justCameLoose = false;
+      let prev = { x: g.x, y: g.y };
+      for (let t = 0; t < 20000 && solved < knots; t++) {
+        const wasUntie = g.state === "untie";
+        const wasLoose = justCameLoose;
+        justCameLoose = false;
+        for (const ev of stepEntities(w, GRID, pacing(t))) {
+          if (ev.type === "guardianStagger") {
+            g.state = "window"; // die Karte geht auf …
+            guardianKnotSolved(w, g.id); // … und wird beantwortet
+            solved++;
+            justCameLoose = true;
+          }
+        }
+        const d = Math.hypot(g.x - prev.x, g.y - prev.y) / SUBS;
+        // (a) der ERSTE Tick nach dem gelösten Knoten. Genau hier stand der
+        // Defekt: die Maschine hatte `fly` und `flightTick = 0` gesetzt, ohne
+        // eine Position zu schreiben, und der Flug WEIST zu — also fand das
+        // Kind sie im nächsten Bild anderswo. Jetzt hält der Takt sie still.
+        if (wasLoose) {
+          expect(d, `Stufe ${tier}, Tick ${t}: der gelöste Knoten versetzt sie um ${d.toFixed(1)} px`)
+            .toBeLessThanOrEqual(honestStep);
+        }
+        // (b) der Tick, an dem sie die neue Bahn betritt
+        if (wasUntie && g.state === "fly") {
+          handoffs++;
+          expect(d, `Stufe ${tier}, Tick ${t}: das Aufsetzen auf die neue Bahn versetzt sie um ${d.toFixed(1)} px`)
+            .toBeLessThanOrEqual(honestStep);
+          expect(g.flightTick, "die neue Form muss bei Phase 0 beginnen").toBe(0);
+        }
+        prev = { x: g.x, y: g.y };
+      }
+      expect(handoffs, `Stufe ${tier}: kein einziger Bahnwechsel wurde gefahren`).toBe(knots - 1);
+    }
+  });
+
+  it("R5-W2 · H1 · und sie verlässt die Bühne auch über die Knotenwechsel nicht", () => {
+    // Die Spannweite wächst mit jedem Knoten (78 → 92 → 104), das Zentrum aber
+    // wanderte erst wieder, wenn sie schon flog: für rund zwei Dutzend Ticks
+    // griff die neue, breitere Bahn über den Bühnenrand hinaus (gemessen bis
+    // c4,37 bei einer Bühne ab c5). Der Knoten-Takt lässt das Zentrum mitlaufen,
+    // BEVOR die neue Bahn zum ersten Mal abgetastet wird — dieses Gesetz hält
+    // ihn daran fest, über den ganzen Kampf.
+    const level = JSON.parse(fs.readFileSync(levelPath, "utf8")) as PaintLevel;
+    const arena = level.arena!;
+    const spec = arena.entities.find((e) => e.role === "guardian")!;
+    const rows = arena.rows;
+    const stageMinPx = Number(spec.params!.stageMinC) * TILE;
+    const stageMaxPx = (Number(spec.params!.stageMaxC) + 1) * TILE;
+    const floorRow = rows.findIndex((r, i) => i > 0 && r.startsWith("####################"));
+
+    const w: EntityWorld = spawnEntities([spec], []);
+    const g = w.entities[0]!;
+    let solved = 0;
+    const seen = new Set<string>();
+    for (let t = 0; t < 20000 && g.state !== "consoled"; t++) {
+      // ein Kind ganz im Westen — der Fall, der die Tafel am weitesten zieht
+      const inp = input({ playerX: (1 * TILE + TILE / 2) * SUBS, playerY: floorRow * TILE * SUBS });
+      for (const ev of stepEntities(w, rows, inp)) {
+        if (ev.type === "guardianStagger") { g.state = "window"; guardianKnotSolved(w, g.id); solved++; }
+      }
+      seen.add(g.state);
+      const x = g.x / SUBS;
+      expect(x, `Zustand ${g.state}, Tick ${t}: westlich der Buehne`).toBeGreaterThanOrEqual(stageMinPx);
+      expect(x, `Zustand ${g.state}, Tick ${t}: im Sieg-Trakt`).toBeLessThanOrEqual(stageMaxPx);
+    }
+    expect(solved, "der Lauf hat nicht alle Knoten gelöst").toBe(GUARDIAN_SCRIPT.E.knots);
+    expect(seen, "der Knoten-Takt wurde nie gefahren").toContain("untie");
   });
 
   it("the band constant is the one the paths are actually flown at", () => {
