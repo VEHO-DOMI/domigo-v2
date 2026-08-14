@@ -72,18 +72,6 @@ export const HERO_STEMS = [
   "rotor_a", "rotor_b", "rotor_c",
 ];
 
-/** R5-W2 · J1-C · THE PAINTED ICON STEMS.
- *
- *  `PaintedIcon` (cards/PaintedIcons.tsx) draws its code-built glyph unless a
- *  painted stem named `hud_<name>` exists in the art map, in which case it draws
- *  that instead. Those stems are therefore read by the DOM on every card — and
- *  none of them was ever declared to `artScope.domArtStems`, so the art audit
- *  has been reporting live art as »loaded by nothing«.
- *
- *  The names live HERE and not next to the icons because the audit runs in a
- *  plain node script: importing the .tsx would drag JSX into a file that only
- *  strips types. `PaintedIcons.test.ts` asserts this list and the icon set are
- *  the same set, in both directions — so the copy cannot rot silently. */
 /** R5-W2 · J1-B · THE CHAPTER OPENING'S OWN PICTURES.
  *
  *  The stems the four beats read straight out of the art map. Declared here —
@@ -97,17 +85,32 @@ export const HERO_STEMS = [
  *
  *  Deliberately NOT listed, because nothing shows them: `auftakt_ch01_a` (the
  *  open book — beat 1 already carries the chapter's painted title plate, and two
- *  books on one card is one too many), `auftakt_ch01_c` (the task note, whose
- *  three empty rows do not match beat 3's five task lines) and
- *  `schulhaus_ch01_c` (the façade detail, ordered as scenery rather than for a
- *  card). They stay in the audit's dead list ON PURPOSE — that list is only
- *  worth reading if it is honest. */
+ *  books on one card is one too many) and `schulhaus_ch01_c` (the façade detail,
+ *  ordered as scenery rather than for a card). They stay in the audit's dead list
+ *  ON PURPOSE — that list is only worth reading if it is honest.
+ *
+ *  `auftakt_ch01_c` WAS on that list and is not any more: the blind look critic
+ *  called beat 3 »the one beat that reads as a plain checklist/settings dialog,
+ *  not a story page« (90 %), and the note is the PAPER the tasks are written on
+ *  rather than a form whose three rows must match five lines. */
 export const AUFTAKT_STEMS: readonly string[] = [
   "auftakt_ch01_b", "auftakt_ch01_c", "auftakt_ch01_d",
   "auftakt_mark_letters", "auftakt_mark_cages", "auftakt_mark_tips",
   "schulhaus_ch01_a", "schulhaus_ch01_b",
 ];
 
+/** R5-W2 · J1-C · THE PAINTED ICON STEMS.
+ *
+ *  `PaintedIcon` (cards/PaintedIcons.tsx) draws its code-built glyph unless a
+ *  painted stem named `hud_<name>` exists in the art map, in which case it draws
+ *  that instead. Those stems are therefore read by the DOM on every card — and
+ *  none of them was ever declared to `artScope.domArtStems`, so the art audit
+ *  has been reporting live art as »loaded by nothing«.
+ *
+ *  The names live HERE and not next to the icons because the audit runs in a
+ *  plain node script: importing the .tsx would drag JSX into a file that only
+ *  strips types. `PaintedIcons.test.ts` asserts this list and the icon set are
+ *  the same set, in both directions — so the copy cannot rot silently. */
 export const PAINTED_ICON_NAMES: readonly string[] = [
   "spark", "cage", "wisp", "rule", "book", "palette", "door",
   "knot", "inkwell", "blot", "brush", "slate", "rosette",
