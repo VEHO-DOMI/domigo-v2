@@ -19,6 +19,7 @@
  */
 import fs from "node:fs";
 import path from "node:path";
+import { stamped } from "./art-fingerprint";
 
 /** "school-room" → "school" (the on-disk + drop-folder namespace). */
 export function tileArtDir(generator: string): string {
@@ -34,7 +35,7 @@ export function resolveTileArt(grade: number, generator: string): Record<string,
   for (const f of fs.readdirSync(dir)) {
     if (f.startsWith(".") || !/\.(png|jpe?g|webp)$/i.test(f)) continue;
     const stem = f.replace(/\.[a-z0-9]+$/i, "");
-    if (out[stem] === undefined) out[stem] = `/${sub.split(path.sep).join("/")}/${f}`;
+    if (out[stem] === undefined) out[stem] = stamped(`/${sub.split(path.sep).join("/")}/${f}`, path.join(dir, f));
   }
   return out;
 }

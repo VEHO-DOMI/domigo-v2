@@ -67,8 +67,33 @@ jobs:
       - run: node scripts/measure-motion.mjs --selftest # W1: drawn-vs-seen motion — a shear must not read as zero
       - run: node scripts/check-registers.mjs --selftest # K1: the register gate's own red light must be reachable
       - run: node scripts/check-registers.mjs # K1: D-/PB-numbers unique, code references resolve by SYMBOL not by line
+      - run: node --experimental-strip-types scripts/check-perf-budget.mjs --selftest # E5: the budget guard's own red light must be reachable
+      - run: node --experimental-strip-types scripts/check-perf-budget.mjs # E5: the PERF_WAECHTER numbers, the code and the enforcers must agree
+      - run: node scripts/check-fonts.mjs --selftest # E5: the font guard's own red light must be reachable
+      - run: node scripts/check-fonts.mjs # E5/D-33 (nach K1s Entdopplung D-72): no next/font/google — the build may not depend on gstatic being up
       - run: node scripts/check-ci-gates.mjs --selftest # E2: the guard's own red light must be reachable
       - run: node scripts/check-ci-gates.mjs # E2: every gate on disk is wired into THIS file — the gap cannot reopen
+
+  perf-contract:
+    # R5-W3 · E5 · docs/PERF_WAECHTER.md §1: no PR that touches rendering,
+    # assets, entities or the card DOM ships without its before/after numbers.
+    # Pull requests only — there is no PR body on a push to main.
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - uses: actions/setup-node@v4
+        with: { node-version: 24 }
+      - run: node scripts/check-perf-table.mjs --selftest # the detector must tell a filled table from a blank one
+      - name: the PERF_WAECHTER table is present when it is owed
+        env:
+          PR_BODY: ${{ github.event.pull_request.body }}
+        run: |
+          git fetch --no-tags --depth=1 origin "${{ github.base_ref }}" > /dev/null 2>&1 || true
+          CHANGED_FILES="$(git diff --name-only "origin/${{ github.base_ref }}"...HEAD)"
+          export CHANGED_FILES
+          node scripts/check-perf-table.mjs
 
   build:
     runs-on: ubuntu-latest

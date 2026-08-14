@@ -265,6 +265,28 @@ const chapterClassmateCount = (level: PaintLevel): number =>
   [...level.phases, ...(level.arena ? [level.arena] : [])]
     .reduce((n, p) => n + p.entities.filter((e) => e.role === "cage" && e.params?.classmate !== undefined).length, 0);
 
+/**
+ * R5-W3 · E5 · Run `fn` only once the browser has actually PAINTED.
+ *
+ * Two frames, because one is not enough: the first carries React's commit, the
+ * second is the one the compositor puts on the glass. And a hard fallback,
+ * because a hidden tab gets no frame clock at all (P-56/P-57) — there the game
+ * must still start, just without the courtesy of a visible card. Whichever
+ * comes first wins, and it fires exactly once.
+ */
+function afterPaint(fn: () => void): void {
+  let fired = false;
+  const go = (): void => {
+    if (fired) return;
+    fired = true;
+    fn();
+  };
+  if (typeof window !== "undefined" && typeof window.requestAnimationFrame === "function") {
+    window.requestAnimationFrame(() => window.requestAnimationFrame(go));
+  }
+  if (typeof window !== "undefined") window.setTimeout(go, 150);
+}
+
 export default function PaintGame({ level, art, tasks, hubHref, buildSha, startPhase, debugGrid, debugPerf, noWarm, onTipCollected, openingSeen, onOpeningRead,}: PaintGameProps): React.ReactElement {
   const hostRef = useRef<HTMLDivElement | null>(null);
   const gameRef = useRef<Phaser.Game | null>(null);
@@ -272,6 +294,8 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
   const padRef = useRef<Pad>({ ...IDLE_PAD });
   const firstPhase = startPhase ?? level.phases[0]?.id ?? "p1";
   const [phaseId, setPhaseId] = useState(firstPhase);
+  /** R5-W3 · E5: a phase is being built — the loading card is up (see afterPaint). */
+  const [building, setBuilding] = useState(true);
   const [phaseName, setPhaseName] = useState("");
   const [letters, setLetters] = useState({ got: 0, total: 0 });
   const [done, setDone] = useState(false);
@@ -698,6 +722,9 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
             scope: () => sceneRef.current?.artScope() ?? null,
             artKeys: () => new Set(Object.keys(art)),
             warmed: () => sceneRef.current?.warmReport() ?? null,
+            // R5-W3 · E5: the per-step build cost, so create() is a list of
+            // named blocks rather than one number nobody can act on
+            build: () => sceneRef.current?.buildReport() ?? null,
           })
         : null;
     probe?.install(PaintScene.prototype);
@@ -765,6 +792,8 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
         }),
         callbacks: {
           onExit: (next) => handoff(next),
+          // R5-W3 · E5: there is a picture now — take the loading card down.
+          onReady: () => setBuilding(false),
           onLetterTaken: (c, r) => {
             const cellKey = `${c},${r}`;
             const cur = lettersTakenRef.current.get(pid) ?? [];
@@ -920,7 +949,14 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
       const name = phase?.nameDe ?? pid;
       setPhaseName(name);
       setPhaseId(pid);
-      game.scene.add("paint", scene, true);
+      // R5-W3 · E5 · THE CARD MUST BE ON SCREEN BEFORE THE BUILD STARTS.
+      // Building a phase blocks the main thread for 127-448 ms (measured per
+      // step, 2026-08-14) and nothing can be painted while it does — so adding
+      // the scene in the same turn as `setBuilding(true)` would show the card
+      // only AFTER the freeze it exists to cover. Two frames of daylight are
+      // enough for React to render it and the browser to paint it.
+      setBuilding(true);
+      afterPaint(() => game.scene.add("paint", scene, true));
     };
 
     const handoff = (next: string): void => {
@@ -1203,6 +1239,14 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
           className={booted ? "pb-world-in" : undefined}
           style={{ borderRadius: 10, overflow: "hidden", boxShadow: "0 2px 14px rgba(30,20,10,0.25)" }}
         />
+        {building && (
+          <div className="pb-building" role="status" aria-live="polite">
+            <div className="pb-building-panel">
+              <p className="pb-building-title">Das Buch schlägt eine Seite auf …</p>
+              <p className="pb-building-quiet">Die Farbe wird noch aufgetragen.</p>
+            </div>
+          </div>
+        )}
         {overlay && (
           <Overlay
             o={overlay} level={level} art={art} phaseId={phaseId}

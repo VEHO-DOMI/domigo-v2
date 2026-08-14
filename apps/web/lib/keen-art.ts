@@ -14,6 +14,7 @@
  */
 import fs from "node:fs";
 import path from "node:path";
+import { stamped } from "./art-fingerprint";
 
 export interface KeenArt {
   /** world-map stems (page_underlay, building_chNN, finn_map, pixel_map, flag) */
@@ -42,7 +43,7 @@ function scanDir(dir: string, urlBase: string): Record<string, string> {
     if (!/\.(png|jpg|webp)$/i.test(f)) continue;
     const stem = f.replace(/\.(png|jpg|webp)$/i, "");
     if (stem.startsWith("_")) continue; // _style_key etc: synced, never rendered
-    out[stem] = `${urlBase}/${f}`;
+    out[stem] = stamped(`${urlBase}/${f}`, path.join(dir, f));
   }
   return out;
 }

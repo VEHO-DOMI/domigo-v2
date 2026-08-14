@@ -148,6 +148,9 @@ export interface FirstFrameReport {
   /** What the warmer had already handed the card, if one is installed.
    *  Opaque here on purpose: this file measures, it does not interpret. */
   warmed: unknown;
+  /** R5-W3 · E5: what each build step inside create() cost, in order. One
+   *  number for create() cannot be acted on; a list of named blocks can. */
+  build: unknown;
   notes: string[];
 }
 
@@ -373,6 +376,9 @@ export interface PerfHost {
   /** R5-N3 · E4: what the pre-warmer has handed the card so far, when one is
    *  installed. Optional so the probe stays usable without it. */
   warmed?: () => unknown;
+  /** R5-W3 · E5: create()'s cost split into its named build steps, when the
+   *  scene keeps that ledger. Optional, like `warmed`. */
+  build?: () => unknown;
 }
 
 const round = (v: number, dp = 3): number => {
@@ -880,6 +886,7 @@ export class PerfProbe {
       glTexturesBefore: this.ff.glBefore,
       glTexturesAfter: this.ff.glAfter,
       warmed: this.host.warmed?.() ?? null,
+      build: this.host.build?.() ?? null,
       notes,
     };
   }

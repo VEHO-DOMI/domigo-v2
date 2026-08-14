@@ -17,6 +17,7 @@ import { type CompositionSpec, type MassKit, ROOM_SHADOW_INK, compositionFor, he
 import { phaseArtScope } from "./artScope.ts";
 import { TextureWarmer, type WarmScene, type WarmStats } from "./warmer.ts";
 import { WARM_MPX_PER_FRAME } from "./warm.ts";
+import { PatternLedger } from "./tilePatterns.ts";
 import { type LayerPiece, coverFit, planLayers } from "./layers.ts";
 import { AIR_DEPTH, LIFE_PARALLAX, type AirPiece, planBandShade, planHaze, planLife, planMotes, planShafts, planSources, shaftQuads, vignetteBands } from "./air.ts";
 import { NEAR_PLANE_KINDS, CRUST_MARK_DEPTH, MASS_MARK_DEPTH, type MassPiece, type SurfaceMark, claimedPlatformCells, crustGrain, hash01, ledgeGrain, massGrain, planMass, planPlatformShadows, tileAnchorFor, tileScaleFor } from "./mass.ts";
@@ -217,6 +218,12 @@ const LETTER_SPARKS = 4;
 // ── PK-R6 · H2 · the letters, embedded rather than pasted on (finding 8) ─────
 /** How many grain specks are stamped into each drawn glyph. */
 const LETTER_GRAIN_SPECKS = 130;
+/** R5-W3 · E5: widest world that may be baked into one texture. 4096 is the
+ *  floor every WebGL 1 implementation guarantees; ch01's longest phase is 1152
+ *  px wide, so today nothing comes close — the ceiling exists for the chapter
+ *  that eventually does, and it falls back to live Graphics rather than to a
+ *  missing floor. */
+const BAKE_MAX_PX = 4096;
 /** …and the shadow it drops on whatever it is floating over: how far down that
  *  surface may be before the letter is too high to cast anything readable. */
 const LETTER_SHADOW_REACH_PX = 26;
@@ -224,6 +231,12 @@ const LETTER_SHADOW_TINT = 0x2a2333;
 
 export interface PaintCallbacks {
   onExit: (next: string) => void;
+  /** R5-W3 · E5: the phase has been built AND its first frame has been drawn —
+   *  i.e. there is now a picture on the canvas. The shell keeps its loading
+   *  card up until this fires; without it the card would come down while
+   *  create() still holds the main thread, which is the frozen screen the card
+   *  exists to prevent. Optional, so a host that does not show one still runs. */
+  onReady?: () => void;
   onLetters: (got: number, total: number) => void;
   /** R5-A2: a letter CELL was consumed — the shell's ledger records it so a
    *  phase remount cannot respawn it. */
@@ -916,6 +929,12 @@ export class PaintScene extends Phaser.Scene {
   /** R5-N3 · E4: hands this phase's textures to the graphics card during the
    *  download, so the first drawn frame is not where they all arrive at once. */
   private warmer: TextureWarmer | null = null;
+  /** R5-W3 · E5 · D-32: one tile pattern per picture, not one per piece.
+   *  The scene owns them (see tilePatterns.ts for why not the first sprite). */
+  private readonly tilePatterns = new PatternLedger<object>();
+  /** R5-W3 · E5: textures baked in create() — removed when the phase ends, or
+   *  the next phase inherits a picture of the last one's floor. */
+  private readonly bakedKeys: string[] = [];
   /** create() has run ⇒ the next drawn frame is the one the child sees */
   private warmCreated = false;
   /** frames drawn since create() — the warmer waits for the first one */
@@ -1059,13 +1078,41 @@ export class PaintScene extends Phaser.Scene {
     });
   }
 
+  /**
+   * R5-W3 · E5 · WHERE THE BUILD TIME GOES, WITHOUT GUESSING.
+   *
+   * `?perf=1` reports one number for create(), and one number cannot be acted
+   * on: this session spent its first hour bisecting a frame by hiding objects
+   * one at a time because no instrument could say which block cost what. So
+   * every build step is timed as it runs. The cost is twelve `performance.now()`
+   * calls per level start — unmeasurable against a build that takes hundreds of
+   * milliseconds — and the payoff is that the next session reads the answer
+   * instead of hunting for it.
+   */
+  private readonly buildMs: Array<{ step: string; ms: number }> = [];
+  private timed(step: string, run: () => void): void {
+    const t0 = performance.now();
+    run();
+    this.buildMs.push({ step, ms: Math.round((performance.now() - t0) * 10) / 10 });
+  }
+
+  /** R5-W3 · E5: the per-step build cost, for the perf door. */
+  buildReport(): ReadonlyArray<{ step: string; ms: number }> {
+    return this.buildMs;
+  }
+
   create(): void {
-    this.buildFallbackTextures();
-    this.buildBackdrop();
-    this.buildAir();
-    this.buildTerrain();
-    this.buildProps();
-    this.buildRig();
+    // R5-W3 · E5 · D-32: the scene owns the shared tile patterns, so it gives
+    // them back exactly once. Registered HERE and not beside the warmer's own
+    // shutdown hook, because that one is skipped entirely under `?warm=0` —
+    // and a teacher's diagnostic switch must never change what gets freed.
+    this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => this.releaseTilePatterns());
+    this.timed("fallbackTextures", () => this.buildFallbackTextures());
+    this.timed("backdrop", () => this.buildBackdrop());
+    this.timed("air", () => this.buildAir());
+    this.timed("terrain", () => this.buildTerrain());
+    this.timed("props", () => this.buildProps());
+    this.timed("rig", () => this.buildRig());
     // R5-A6 · the picture-vs-grid instrument (teacher door, ?grid=1): outline
     // every cell the collision owns, in world space. A Schein-Lücke — drawn
     // matter and claimed matter telling different stories — shows in one
@@ -1085,7 +1132,7 @@ export class PaintScene extends Phaser.Scene {
     this.ropeG = this.add.graphics().setDepth(9);
 
     // player/world/letters/bonus clock all spawned by the Sim in the constructor
-    this.buildEntityImgs();
+    this.timed("entityImgs", () => this.buildEntityImgs());
     this.projG = this.add.graphics().setDepth(8);
     // behind her (entities sit at 7) — a tail drawn in front reads as confetti
     this.trailG = this.add.graphics().setDepth(6.9);
@@ -1143,7 +1190,13 @@ export class PaintScene extends Phaser.Scene {
     this.cameras.main.setZoom(RENDER_SCALE);
     this.cameras.main.centerOn(fromSubs(this.player.x), fromSubs(this.player.y) - LOGICAL_H / 4);
     this.scale.refresh(); // the P-48 lesson: assert geometry at scene entry
-    this.finishWarming();
+    this.timed("finishWarming", () => this.finishWarming());
+    // R5-W3 · E5 · TELL THE SHELL WHEN THERE IS A PICTURE, not when the code
+    // got here. create() runs INSIDE the step that draws the first frame
+    // (P-54), so "create returned" is still a blank canvas; the frame after
+    // this one is the first the child could actually see. POST_RENDER of the
+    // current step is exactly that moment.
+    this.game.events.once(Phaser.Core.Events.POST_RENDER, () => this.cfg.callbacks.onReady?.());
   }
 
   /**
@@ -3583,7 +3636,7 @@ export class PaintScene extends Phaser.Scene {
     if (!this.textures.exists(key)) return; // only-present law
     if (p.kind === "loop") {
       const src = this.textures.get(key).getSourceImage() as HTMLImageElement;
-      const t = this.add.tileSprite(p.x, p.y, p.w, p.h, key).setOrigin(0, 0).setDepth(p.depth).setScrollFactor(p.parallax, pY);
+      const t = this.tiled(p.x, p.y, p.w, p.h, key).setOrigin(0, 0).setDepth(p.depth).setScrollFactor(p.parallax, pY);
       t.setTileScale(p.h / src.height);
       if (p.alpha !== undefined) t.setAlpha(p.alpha);
       if (p.tint !== undefined) t.setTint(p.tint);
@@ -3725,8 +3778,8 @@ export class PaintScene extends Phaser.Scene {
     if (midStem !== null) {
       const src = this.textures.get(midStem).getSourceImage() as HTMLImageElement;
       const dispH = 86; // sits at the horizon; the far plate + sky stay visible above
-      const mid = this.add
-        .tileSprite(0, this.worldHpx - dispH - 34, this.worldWpx + LOGICAL_W * 2, dispH, midStem)
+      const mid = this
+        .tiled(0, this.worldHpx - dispH - 34, this.worldWpx + LOGICAL_W * 2, dispH, midStem)
         .setOrigin(0, 0)
         .setDepth(-9)
         .setScrollFactor(0.5, 0.9)
@@ -3738,8 +3791,8 @@ export class PaintScene extends Phaser.Scene {
     if (nearStem !== null) {
       const src = this.textures.get(nearStem).getSourceImage() as HTMLImageElement;
       const dh = 62;
-      const near = this.add
-        .tileSprite(-LOGICAL_W, this.worldHpx - dh - 22, this.worldWpx + LOGICAL_W * 2, dh, nearStem)
+      const near = this
+        .tiled(-LOGICAL_W, this.worldHpx - dh - 22, this.worldWpx + LOGICAL_W * 2, dh, nearStem)
         .setOrigin(0, 0)
         .setDepth(0)
         .setAlpha(0.95)
@@ -3787,6 +3840,55 @@ export class PaintScene extends Phaser.Scene {
     }
   }
 
+  /**
+   * R5-W3 · E5 · EVERY TILED PIECE IN THIS SCENE IS BUILT HERE (debt D-32).
+   *
+   * Phaser hands each TileSprite its own power-of-two copy of its source on the
+   * graphics card — one megabyte per piece for a 512² painting, and phase p2
+   * cuts 331 pieces out of a handful of paintings. Measured before this helper
+   * existed: 933 GL textures / 452 MB resident for p2, against 527 texture keys
+   * / 111 MB of actual source pixels.
+   *
+   * The copies are identical whenever the source frame is, so the ledger keeps
+   * the first and hands every duplicate straight back. What stays per-object is
+   * everything that makes a piece look like itself — tile scale, tile offset,
+   * tint, alpha, depth, scroll factor — because those are applied at draw time
+   * and never touch the shared picture.
+   *
+   * `dirty = false` stops the sprite regenerating over the shared pattern, and
+   * `preDestroy` is taught to let go of it: without that, destroying one piece
+   * would delete a texture its siblings are still drawing with.
+   */
+  private tiled(x: number, y: number, w: number, h: number, key: string): Phaser.GameObjects.TileSprite {
+    const t = this.add.tileSprite(x, y, w, h, key);
+    const raw = t as unknown as { fillPattern: object | null; dirty: boolean; preDestroy: () => void };
+    const own = raw.fillPattern;
+    if (own !== null && own !== undefined) {
+      const { use, handBack } = this.tilePatterns.claim(key, own);
+      if (handBack !== null) {
+        const renderer = this.sys.renderer as unknown as { deleteTexture?: (tex: object) => void };
+        renderer.deleteTexture?.(handBack);
+      }
+      raw.fillPattern = use;
+      raw.dirty = false;
+    }
+    const inherited = raw.preDestroy;
+    raw.preDestroy = function (this: typeof raw): void {
+      this.fillPattern = null; // the scene owns it; deleteTexture(null) is a no-op
+      inherited.call(this);
+    };
+    return t;
+  }
+
+  /** Give back every pattern and baked texture the scene kept. Once, at SHUTDOWN. */
+  private releaseTilePatterns(): void {
+    const renderer = this.sys.renderer as unknown as { deleteTexture?: (tex: object) => void };
+    for (const pattern of this.tilePatterns.owned()) renderer.deleteTexture?.(pattern);
+    this.tilePatterns.clear();
+    for (const key of this.bakedKeys) if (this.textures.exists(key)) this.textures.remove(key);
+    this.bakedKeys.length = 0;
+  }
+
   /** Place one planned mass piece (doc 36 §2). */
   private placeMassPiece(p: MassPiece): void {
     if (p.stem === null) return; // fallbackFill — the graphics pass drew it
@@ -3824,7 +3926,7 @@ export class PaintScene extends Phaser.Scene {
       // what let the shipped build and its green gates disagree (R5-W1 · A1)
       const scale = tileScaleFor(p, { w: src.width, h: src.height });
       const anchor = tileAnchorFor(p, scale);
-      const t = this.add.tileSprite(p.x, p.y, p.w, p.h, key).setOrigin(0, 0).setDepth(p.depth);
+      const t = this.tiled(p.x, p.y, p.w, p.h, key).setOrigin(0, 0).setDepth(p.depth);
       t.setTileScale(scale.x, scale.y);
       t.tilePositionX = anchor.x;
       t.tilePositionY = anchor.y;
@@ -3933,7 +4035,7 @@ export class PaintScene extends Phaser.Scene {
       const ts = dh / srcH("canopy_fringe_loop");
       runs(
         (c, r) => r <= 1 && isSolid(glyphAt(this.grid, c, r)) && !isSolid(glyphAt(this.grid, c, r + 1)),
-        (c0, c1, r) => { this.add.tileSprite(c0 * TILE, (r + 1) * TILE - 4, (c1 - c0 + 1) * TILE, dh, "pb-canopy_fringe_loop").setOrigin(0, 0).setDepth(2).setTileScale(ts); },
+        (c0, c1, r) => { this.tiled(c0 * TILE, (r + 1) * TILE - 4, (c1 - c0 + 1) * TILE, dh, "pb-canopy_fringe_loop").setOrigin(0, 0).setDepth(2).setTileScale(ts); },
       );
     }
     if (this.textures.exists("pb-plank_loop")) {
@@ -3942,7 +4044,7 @@ export class PaintScene extends Phaser.Scene {
       runs(
         (c, r) => glyphAt(this.grid, c, r) === "=",
         (c0, c1, r) => {
-          this.add.tileSprite(c0 * TILE, r * TILE - 2, (c1 - c0 + 1) * TILE, dh, "pb-plank_loop").setOrigin(0, 0).setDepth(2).setTileScale(ts);
+          this.tiled(c0 * TILE, r * TILE - 2, (c1 - c0 + 1) * TILE, dh, "pb-plank_loop").setOrigin(0, 0).setDepth(2).setTileScale(ts);
           if (this.textures.exists("pb-plank_cap_l")) this.add.image(c0 * TILE + 1, r * TILE - 2, "pb-plank_cap_l").setOrigin(1, 0).setScale(ts).setDepth(2);
           if (this.textures.exists("pb-plank_cap_r")) this.add.image((c1 + 1) * TILE - 1, r * TILE - 2, "pb-plank_cap_r").setOrigin(0, 0).setScale(ts).setDepth(2);
         },
@@ -3953,7 +4055,7 @@ export class PaintScene extends Phaser.Scene {
       const ts = dh / srcH("spikes_nibs_loop");
       runs(
         (c, r) => glyphAt(this.grid, c, r) === "^",
-        (c0, c1, r) => { this.add.tileSprite(c0 * TILE, (r + 1) * TILE - dh, (c1 - c0 + 1) * TILE, dh, "pb-spikes_nibs_loop").setOrigin(0, 0).setDepth(3).setTileScale(ts); },
+        (c0, c1, r) => { this.tiled(c0 * TILE, (r + 1) * TILE - dh, (c1 - c0 + 1) * TILE, dh, "pb-spikes_nibs_loop").setOrigin(0, 0).setDepth(3).setTileScale(ts); },
       );
     }
     // R5-W1 · A2 · THE INK MOVES, ALWAYS. The surface strip was a STATIC
@@ -3968,7 +4070,7 @@ export class PaintScene extends Phaser.Scene {
       runs(
         (c, r) => glyphAt(this.grid, c, r) === "w" && glyphAt(this.grid, c, r - 1) !== "w",
         (c0, c1, r) => {
-          const t = this.add.tileSprite(c0 * TILE, r * TILE, (c1 - c0 + 1) * TILE, dh, "pb-pool_ink_loop")
+          const t = this.tiled(c0 * TILE, r * TILE, (c1 - c0 + 1) * TILE, dh, "pb-pool_ink_loop")
             .setOrigin(0, 0).setDepth(3).setTileScale(ts);
           this.inkSurfaces.push(t);
           this.inkRuns.push({ x0: c0 * TILE, x1: (c1 + 1) * TILE, y: r * TILE });
@@ -3985,7 +4087,7 @@ export class PaintScene extends Phaser.Scene {
       runs(
         (c, r) => r > 1 && isSolid(glyphAt(this.grid, c, r)) && isSolid(glyphAt(this.grid, c, r - 1)) && glyphAt(this.grid, c, r) !== "~",
         (c0, c1, r) => {
-          const t = this.add.tileSprite(c0 * TILE, r * TILE, (c1 - c0 + 1) * TILE, TILE, "pb-pit_inner_tile").setOrigin(0, 0).setDepth(1).setTileScale(scale);
+          const t = this.tiled(c0 * TILE, r * TILE, (c1 - c0 + 1) * TILE, TILE, "pb-pit_inner_tile").setOrigin(0, 0).setDepth(1).setTileScale(scale);
           t.tilePositionX = (c0 * TILE) / scale;
           t.tilePositionY = (r * TILE) / scale;
         },
@@ -4012,8 +4114,8 @@ export class PaintScene extends Phaser.Scene {
           let c1 = c;
           while (c1 + 1 < w && surface(c1 + 1)) c1++;
           const runW = (c1 - c + 1) * TILE;
-          this.add
-            .tileSprite(c * TILE, r * TILE - 7, runW, dispH, "pb-strip_ground_loop")
+          this
+            .tiled(c * TILE, r * TILE - 7, runW, dispH, "pb-strip_ground_loop")
             .setOrigin(0, 0)
             .setDepth(2)
             .setTileScale(tileScale);
@@ -4044,7 +4146,7 @@ export class PaintScene extends Phaser.Scene {
           if (!icy(c)) { c++; continue; }
           let c1 = c;
           while (c1 + 1 < w && icy(c1 + 1)) c1++;
-          this.add.tileSprite(c * TILE, r * TILE - 7, (c1 - c + 1) * TILE, dispH, "pb-strip_ice_loop").setOrigin(0, 0).setDepth(2).setTileScale(ts);
+          this.tiled(c * TILE, r * TILE - 7, (c1 - c + 1) * TILE, dispH, "pb-strip_ice_loop").setOrigin(0, 0).setDepth(2).setTileScale(ts);
           c = c1 + 1;
         }
       }
@@ -4093,6 +4195,44 @@ export class PaintScene extends Phaser.Scene {
   }
 
   /**
+   * R5-W3 · E5 · DRAW IT ONCE, NOT SIXTY TIMES A SECOND.
+   *
+   * Paints `paint` into a world-sized texture and puts a single image on the
+   * display list in its place. For content that never changes after create()
+   * this is the whole difference between one quad per frame and a command
+   * buffer the renderer re-tessellates every frame (see buildGrain for the
+   * measurement that found it).
+   *
+   * THE FALLBACK IS DELIBERATE AND LOUD. A texture cannot be wider than the
+   * card allows, and a future chapter may build a level longer than that. Above
+   * the ceiling this returns the plain Graphics — slower, but correct and
+   * visible — rather than silently dropping the layer. `keen-art` taught the
+   * house rule: a missing picture must never be the quiet outcome.
+   */
+  private bakeStatic(
+    name: string,
+    depth: number,
+    paint: (g: Phaser.GameObjects.Graphics) => void,
+  ): void {
+    const w = Math.ceil(this.worldWpx);
+    const h = Math.ceil(this.worldHpx);
+    if (w > BAKE_MAX_PX || h > BAKE_MAX_PX) {
+      const live = this.add.graphics().setDepth(depth);
+      paint(live);
+      return;
+    }
+    // built off the display list: it must never be drawn, only harvested
+    const g = this.make.graphics({ x: 0, y: 0 }, false);
+    paint(g);
+    const key = `bake-${this.cfg.phaseId}-${name}`;
+    if (this.textures.exists(key)) this.textures.remove(key);
+    g.generateTexture(key, w, h);
+    g.destroy();
+    this.bakedKeys.push(key);
+    this.add.image(0, 0, key).setOrigin(0, 0).setDepth(depth);
+  }
+
+  /**
    * PK-R6 · H1 · THE GRAIN ON THE WALK COURSE (round-1 critique, finding 1).
    *
    * Scuffs and shine along the floor, at intervals that owe the tile nothing —
@@ -4100,17 +4240,38 @@ export class PaintScene extends Phaser.Scene {
    * every other variation in the course is still a multiple of the course.
    * Placed once at build time onto ONE Graphics: it never changes, and a static
    * canvas is cheaper than several hundred sprites.
+   *
+   * ★ R5-W3 · E5 · …AND THEN IT IS BAKED, because "static" is not what Phaser
+   * hears. A Graphics object keeps a COMMAND BUFFER, and the renderer walks and
+   * re-tessellates that buffer on every single frame — a rounded rectangle
+   * becomes arcs, arcs become triangles, and none of it is cached. These three
+   * layers hold 298 + 108 + 45 marks on p2, which is 15 503 + 5 623 + 2 347
+   * commands re-chewed sixty times a second for a picture that never changes.
+   *
+   * MEASURED (2026-08-14, production build, own Chrome, Apple M1, p2): hiding
+   * exactly these three objects took the frame from 115.8 ms to 1.9 ms, and
+   * showing them again put it back to 118.7 ms. Isolated one by one they cost
+   * 73.3 · 27.3 · 11.1 ms — 112 ms of a 116 ms frame, in three objects out of
+   * 478. Nothing else in the scene moved the number: hiding all 331 tile
+   * sprites changed it by 0.5 ms, hiding all 113 images by 6.8 ms.
+   *
+   * So the marks are drawn once into a texture and the scene carries one quad
+   * per layer instead of a command buffer. The picture is identical — the same
+   * calls, the same order, the same rounding — it is simply drawn once instead
+   * of sixty times a second.
    */
   private buildGrain(): void {
     const claimed = claimedPlatformCells(this.grid);
     const draw = (marks: readonly SurfaceMark[], depth: number, round: number): void => {
       if (marks.length === 0) return;
-      const g = this.add.graphics().setDepth(depth);
-      for (const m of marks) {
-        g.fillStyle(m.kind === "shine" ? GRAIN_SHINE : GRAIN_SCUFF, m.alpha);
-        // rounded, because a hard rectangle on a painted floor reads as a sticker
-        g.fillRoundedRect(m.x, m.y, m.w, m.h, Math.min(m.h / 2, round));
-      }
+      const paint = (g: Phaser.GameObjects.Graphics): void => {
+        for (const m of marks) {
+          g.fillStyle(m.kind === "shine" ? GRAIN_SHINE : GRAIN_SCUFF, m.alpha);
+          // rounded, because a hard rectangle on a painted floor reads as a sticker
+          g.fillRoundedRect(m.x, m.y, m.w, m.h, Math.min(m.h / 2, round));
+        }
+      };
+      this.bakeStatic(`grain${depth}`, depth, paint);
     };
     draw(crustGrain(this.grid, claimed), CRUST_MARK_DEPTH, 1.2);
     // …and the patina on the mass below it, which is the surface the round-1
