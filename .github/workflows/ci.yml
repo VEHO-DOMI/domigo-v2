@@ -62,6 +62,7 @@ jobs:
       - run: node scripts/check-level-design.mjs # R5-P1/B1: stem dedup, vocab coverage, dossier↔level anchors, named thresholds
       - run: node scripts/check-composition.mjs # PB-C1/doc 36: plane coverage, carved mass, value bands, no naked fill
       - run: node --experimental-strip-types scripts/check-paint-copy.mjs # C1: cloak, register and quote laws over the shell copy
+      - run: node scripts/measure-presence.mjs --selftest # J1-E: the contrast instrument proves itself, or its numbers mean nothing
       - run: node scripts/check-ci-gates.mjs --selftest # E2: the guard's own red light must be reachable
       - run: node scripts/check-ci-gates.mjs # E2: every gate on disk is wired into THIS file — the gap cannot reopen
 
