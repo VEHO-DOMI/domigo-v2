@@ -68,7 +68,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { PNG } from "pngjs";
 
-// D-33 asked for exactly this one line: the lab root is overridable, so the
+// D-69 (vor der K1-Entdopplung: D-33) asked for exactly this one line: the lab root is overridable, so the
 // import can be pointed at a fixture copy and TAMPER-TESTED without anyone
 // editing the delivered batch in place.
 const LAB = process.env.CODEX_LAB ?? path.join(process.env.HOME, "Code", "codex-art-lab");

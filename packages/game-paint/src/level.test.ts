@@ -520,7 +520,7 @@ describe("checkLevelLaws", () => {
         expect(laws(chapter({
           name: "Zeit für die Schule — Das Schulhaus ohne Farbe",
           goalDe: "Der Tinten-Schatten hat dem Schulhaus die Farben genommen. Fünf stecken in Käfigen — mach sie alle wieder frei.",
-          whyDe: "Das Buch hört auf Englisch: Wer es richtig sagt, holt die Farbe zurück.",
+          whyDe: "Das Buch versteht Englisch: Wer es richtig sagt, holt die Farbe zurück.",
           hintsDe: ["Springen: SPACE — halten für höher!"],
         }))).toEqual([]);
       });

@@ -3,11 +3,33 @@
 Neuableitung nach doc 45 §B auf der faustlosen doc-44-§4-Basis. Vorgänger:
 `../ch01-dossiers/` (PB-W3, Koki-gegated — G-Amendments gelten fort, Faust-Inhalte
 superseded). Pro Phase ein Dossier durch die Kritiker-Schleife VOR dem Grid-Schnitt.
-Standard-Zahlen für alle Dossiers: Viewport 22 Spalten · walk 1,25 / run 2,25 px/t ·
-Tap-Apex 50 / Halte-Apex 101 px · JUMP_UP 4 · Magnet 25,6 px.
+Standard-Zahlen für alle Dossiers: Viewport 22 Spalten · **Bodentempo 2,25 px/t
+(`PAINT.runMax`) — ch01 ist ein Ein-Tempo-Kapitel, siehe §Kanon** · Tap-Apex 50 /
+Halte-Apex 101 px · JUMP_UP 4 · Magnet 25,6 px.
+_(HISTORISCH: bis 2026-08-14 stand hier „walk 1,25 / run 2,25 px/t". Die 1,25 sind
+`PAINT.walkMax` — ein Wert, den ch01 nie als Ziel benutzt.)_
 
 ## §Kanon — Supersessions & Tore (aktenkundig)
 
+- **★★ EIN-TEMPO-KANON (R8, Architekt 2026-08-14; in K1 an der Quelle nachgemessen):
+  ch01 ist ein Ein-Tempo-Kapitel, und das Tempo ist RUN — 2,25 px/t.**
+  Belegkette, Glied für Glied: `ch01.level.json` führt `abilities: ["jump","run"]` ·
+  in keiner Phase, in der Arena und im Bonusraum steht ein `powerup`-Wesen, also ist
+  die Grant-Subtraktion (`level.ts` `abilitiesEnteringPhase`, `PaintGame.tsx` `grantSet`)
+  leer und beide Fähigkeiten liegen ab dem Aufsetzen in der Hand · `sim.ts` reicht
+  `canRun: abilities.includes("run")` durch · `player.ts` wählt daraufhin
+  `PAINT.runMax` (576 Subs = 2,25 px/t) statt `PAINT.walkMax` (320 Subs = 1,25 px/t).
+  Es gibt keine Geh-Taste: **jede Richtungseingabe zielt auf 2,25 px/t.** Die
+  „walk"-POSE ist trotzdem kurz zu sehen — sie zeichnet, solange das Tempo unter
+  `PAINT.runEngage` (448 Subs = 1,75 px/t) liegt, aus dem Stand also rund 14 Ticks
+  (≈0,23 s bei `PAINT.groundAccel` 32). Pose ≠ Tempo.
+  **Woher der Irrtum kam — und warum er kein Flüchtigkeitsfehler war:** p9 §Anker
+  begründete „run existiert in ch01 nicht" mit einem KOMMENTAR im Spielcode
+  (`player.ts`: „the sprint verb (ch13 unlock)"). Der Kommentar ist veraltet; die
+  ausgelieferten Level-Daten widerlegen ihn. Ein Kommentar ist keine Auslieferung.
+  **Folge für alle Dossiers:** jede Rechnung, die 1,25 px/t einsetzt, ist HISTORISCH
+  markiert und darf keine neue Geometrie mehr tragen. Sie sind nicht gelöscht — sie
+  zeigen, unter welcher Annahme der Raum geschnitten wurde.
 - **G9 (2026-07-23):** Rad = Tap-Lock statt auto-lock — **gilt unverändert**.
   Die ZAHLEN-SPANNE derselben Zeile (»1–20«) ist dagegen **von Koki am 2026-08-13
   auf 1–25 korrigiert** (R5-W2 I1). Grund, dreifach belegt: das ausgelieferte Rad
@@ -16,6 +38,13 @@ Tap-Apex 50 / Halte-Apex 101 px · JUMP_UP 4 · Magnet 25,6 px.
   Korpus-Lexikon führt alle 25. Die 1–20 der alten Zeile beschrieb einen Zustand,
   den der Bestand nie hatte. Nicht still gelöscht, sondern hier datiert überholt.
 - **G12-Artenliste gilt** (choice·wheel·spell·order·oddone·memory·typed für ch01). **KLÄRUNG (Kritiker-Fund): der shipped Boss-Pool nutzt zusätzlich `mistake` (×2)** — entweder Liste um mistake ergänzen (Empfehlung; die Maschine existiert und ist getestet) oder Pool in P4 umbauen. PR-Nick.
+  **★ D-24 ENTSCHIEDEN (R11, Architekt 2026-08-14): `spell` debütiert in ch02 — die
+  ch01-Palette bleibt, wie sie ist.** Damit ist der Streit um die p2-Rettungskarte
+  TABLET beigelegt: sie fährt als `choice` („It's a tablet"), wie sie live steht und
+  wie sie korpus-verifiziert ist. `spell` bleibt in der obigen Artenliste stehen,
+  weil die Liste die MASCHINE beschreibt (die Art existiert und ist getestet) —
+  ch01 vergibt sie nur an keine Karte. Was NICHT geändert wird: die Palette wird
+  nicht erweitert, und die Dossier-Zeile behauptet keinen `spell`-Wunsch mehr.
 - **★ KOKI-TOR (gemeinsam mit dem restoreRoom-Override) · B20-Delta:** doc 44
   formuliert den Kontraktions-Picker über ein restauriertes Objekt; v2 nutzt ihn als
   Befreiungs-Karte des gekäfigten Stuhls (obj_chair-Bild) — gleiche Änderungsklasse
@@ -54,6 +83,15 @@ Tap-Apex 50 / Halte-Apex 101 px · JUMP_UP 4 · Magnet 25,6 px.
 4. **Run-Kanon-Klärung RATIFIZIERT:** „3 Schwarm-Karten garantiert" gilt für
    GEH-Tempo; ein rennendes Kind fängt S3, Minimum 2 — die ehrliche Zeile bleibt,
    Run wird NICHT gedrosselt.
+   **★ ÜBERHOLT am 2026-08-14 durch den Ein-Tempo-Kanon (§Kanon oben).** Der Satz
+   ist nicht falsch, aber seine Voraussetzung existiert nicht: ch01 hat kein
+   Geh-Tempo, das man wählen könnte. Damit fällt die Fallunterscheidung weg und die
+   ehrliche Untergrenze des Spießrutenlaufs ist **2 Karten**, nicht 3 — die zweite
+   Hälfte der alten Zeile („ein rennendes Kind fängt S3, Minimum 2") ist der
+   Normalfall geworden. Was daraus folgt, ist eine DESIGN-Frage (B10 will 3–4
+   Rad-Aufgaben in Folge) und gehört nicht in ein Register: als Schuld gefiled,
+   Entscheid beim Architekten. **Der Beschluss „Run wird NICHT gedrosselt" gilt
+   unverändert weiter.**
 
 ## §Käfig-Zensus v2 (doc 44 §2.3: „restage per dossier" — hier der Restage)
 
@@ -65,6 +103,24 @@ Tap-Apex 50 / Halte-Apex 101 px · JUMP_UP 4 · Magnet 25,6 px.
 | 4 | p3 | satchel | DER STUHL (B20) | v2.2 ✓ |
 | 5 | arena | satchel | DAS KLASSENFOTO (picture, B20-Karte; obj_picture → D-21) | v2.1 ✓ |
 Summe v2 = 5 (statt doc-44-„7") — Dichte-Entscheid der Neuableitung, im PR sichtbar.
+
+**★★ KÄFIG-GRÖSSE — D-48 ENTSCHIEDEN (Architekt 2026-08-14, hier als Kanon):
+jeder Käfig rendert 34 px.** Bisher entschied `PaintScene.entTargetH` nach Hülle und
+Inhalt: `holdsAPerson(e) ? 34 : e.skin === "pencilcase" ? 24 : 22`. Bei 22 px waren
+die vier AQ6-Insassen-Zellen (Musikanlage · Tablet · Stuhl · Bild) nicht
+voneinander unterscheidbar — unabhängig von einem blinden Prüfer bestätigt und im
+eigenen 22-px-Render nachgestellt. 34 px ist die Größe, die ein Käfig mit Kind
+schon heute nutzt; ab dort trennen sich Lautsprecher-Kegel und Tablet.
+**Verdrahtet wird das in Session A5, nicht hier** — K1 schreibt nur den Kanon.
+
+⚠ **Was A5 dabei nicht still brechen darf (in K1 gefunden):** die Wackel-Herleitung
+begründet ihren Ausschlag ausdrücklich mit dem GRÖSSENUNTERSCHIED — „ein Käfig mit
+einem Kind darin ist 34 px hoch, ein Ranzen 22 — bei festem Winkel wackelt der
+große automatisch 1,5-mal weiter" (`anim.ts`, wortgleich in `breath.test.ts`).
+Rendern alle Käfige 34 px, ist dieser Faktor 1,0 und die Begründung leer. Der Test
+läuft weiter grün (er misst Pixel proportional zur Höhe), aber der KOMMENTAR wäre
+dann eine Behauptung ohne Fall. A5 leitet ihn neu her oder benennt ihn als
+historisch — beides ist in Ordnung, stilles Stehenlassen nicht.
 
 ## §Abdeckung — die Vokabel-Vergabe des Kapitels (B8; Maschinen-Check = P1-PAKET, Task 15 — bis dahin Hand-geprüft)
 
@@ -88,7 +144,7 @@ Raum-Trennung. Vergabe v2:
 | desk | Entfärbtes Ding | p2 | ✓ obj_desk |
 | pencil (Objekt) | — GESTRICHEN (Duplikat zu p1-Läufer) → Ersatz: **scissors** | p2 | **Codex D-13** (bis dahin obj_pencil, DEBT) |
 | pencil case | Merles Person-Käfig | p2 | ✓ |
-| (Zahlen 1–20) | Motten-SCHWARM-Spießrutenlauf, 3 Schwärme = 3–4 Rad-Aufgaben in Folge (B10-HEIMAT) | p2 Lampen-Korridor | ✓ moths |
+| (Zahlen 1–25) | Motten-SCHWARM-Spießrutenlauf, 3 Schwärme = 3–4 Rad-Aufgaben in Folge (B10-HEIMAT) | p2 Lampen-Korridor | ✓ moths |
 | ruler | Fähre (Plattform) | p3 | ✓ |
 | exercise book | Flatterer (flyer) | p3 | ✓ heft |
 | glue stick · sharpener | Entfärbte Dinge | p3 | ✓ |
