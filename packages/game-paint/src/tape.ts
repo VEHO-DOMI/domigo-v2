@@ -84,6 +84,12 @@ export interface TapeExpect {
   guardianWroteLow?: boolean;
   /** Did the consolation reach its end — she sank, rested, and was consoled? */
   guardianConsoled?: boolean;
+  /** R5-W2 · H1 · Lag sie schon auf den Brettern, als die Karte über ihr wieder
+   *  aufging? Der Sieg-Bogen spielte bis dahin NACH beiden Karten, in einem
+   *  Raum, in dem niemand mehr hinsah — und kein Feld dieser Liste konnte das
+   *  sehen, weil jedes von ihnen ein Ja/Nein oder eine Anzahl ist und keines
+   *  eine Reihenfolge. Dieses hier ist die Reihenfolge. */
+  guardianLanded?: boolean;
 }
 
 export interface PhaseTape {
@@ -200,6 +206,13 @@ export const replayPhaseTape = (
   let exited = false;
   let exitTo: string | null = null;
   let tasksSolved = 0;
+  /** R5-W2 · H1 · liegt gerade eine Karte über der Landung? */
+  let awaitLanding = false;
+  /** R5-W2 · H1 · war sie WIRKLICH unten, als die Karte über ihr wieder ging?
+   *  Die einzige Eigenschaft der neuen Reihenfolge, die ein kopfloses Abspiel
+   *  sehen kann — und sie wird rot in dem Augenblick, in dem die Haltezeit
+   *  wieder verschwindet. */
+  let guardianLanded = false;
   // PK-R6 · E · the flight fight's own tally (declared here because `handle`
   // below writes to it — the counter-window is an EVENT, not a sampled state)
   let telegraphs = 0;
@@ -238,7 +251,15 @@ export const replayPhaseTape = (
         freed.push(ev.id);
         sim.setOverlay(false); // the ceremony card dismissed
       } else if (ev.type === "guardianDown") {
-        sim.setOverlay(false); // the console card closes scene-side
+        // ── R5-W2 · H1 · DIE LANDUNG GEHÖRT IN DEN ABLAUF ────────────────────
+        // Hier stand ein sofortiges `setOverlay(false)`, und das LÖSCHT die
+        // Haltezeit, die `guardianDown` gerade gekauft hat. Der Abspiel-Shell
+        // hätte damit den ganzen Lande-Beat übersprungen und wäre grün über
+        // eine Reihenfolge gelaufen, die er nie gefahren ist.
+        // Der echte Shell hebt sofort die Finale-Karte: der Schleier bleibt
+        // OBEN, die Haltezeit läuft dahinter ab, und erst danach geht es
+        // weiter. Genau das wird hier nachgestellt.
+        awaitLanding = true;
       } else if (ev.type === "cageHint") {
         // PB-F3: the one-time cage hint. PB-R1 · R3-1: „one-time" means once per
         // CHAPTER — on every later hint PaintGame returns without opening a card,
@@ -284,6 +305,13 @@ export const replayPhaseTape = (
   let t = 0;
   for (; t < masks.length && !exited; t++) {
     handle(sim.step(maskToPad(masks[t] ?? 0)));
+    // die Karte über der Landung: sie bleibt oben, bis die Haltezeit durch ist
+    if (awaitLanding && sim.holdTicks === 0) {
+      const g = sim.world.entities.find((e) => e.role === "guardian");
+      guardianLanded = g !== undefined && (g.state === "sad" || g.state === "consoled");
+      awaitLanding = false;
+      sim.setOverlay(false);
+    }
     watchGuardian();
     // R5-W1 · F1: the pose-honesty law swept over every shipped tick. A tape is
     // the only place we own a long, real, deterministic run of the actual game,
@@ -318,6 +346,7 @@ export const replayPhaseTape = (
     guardianWindows: windows,
     guardianWroteLow: wroteLow,
     guardianConsoled: consoled,
+    guardianLanded,
   };
   return { exited, exitTo, ticksUsed: t, tasksSolved, grantsPicked, world, poseViolations };
 };
@@ -370,6 +399,7 @@ export const worldAssertionErrors = (expect: TapeExpect | undefined, world: Repl
   cmp("guardianWindows", world.guardianWindows);
   cmp("guardianWroteLow", world.guardianWroteLow);
   cmp("guardianConsoled", world.guardianConsoled);
+  cmp("guardianLanded", world.guardianLanded);
   return errs;
 };
 

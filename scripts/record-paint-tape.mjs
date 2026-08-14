@@ -32,13 +32,14 @@ const runPilot = (phaseId, entryAbilities, program, { maxTicks = 60 * 120, trace
   const masks = [];
   let exited = false;
   let exitTo = null;
+  let awaitLanding = false;
 
   const handle = (evs) => {
     for (const ev of evs) {
       if (ev.type === "task") handle(sim.solveTask(ev.req.ctx));
       else if (ev.type === "powerup") { if (!abilities.includes(ev.grants)) abilities.push(ev.grants); sim.setOverlay(false); }
       else if (ev.type === "cageFreed") { freed.push(ev.id); sim.setOverlay(false); }
-      else if (ev.type === "guardianDown") sim.setOverlay(false);
+      else if (ev.type === "guardianDown") awaitLanding = true; // R5-W2 · H1: die Karte bleibt über der Landung oben (siehe tape.ts)
       else if (ev.type === "cageHint") sim.setOverlay(false); // PB-F3: the one-time hint
       // PK-R3b · R3-16: a Regel-Seite freezes the world so it can be read, so
       // the pilot must put it down again — the cagehint lesson, applied to the
@@ -52,6 +53,9 @@ const runPilot = (phaseId, entryAbilities, program, { maxTicks = 60 * 120, trace
     if (masks.length >= maxTicks || exited) return false;
     masks.push(padToMask(pad));
     handle(sim.step(pad));
+    // R5-W2 · H1: dieselbe Reihenfolge wie im Abspiel-Shell — sonst nimmt der
+    // Rekorder ein Band auf, das die Prüfung anders fährt als er selbst.
+    if (awaitLanding && sim.holdTicks === 0) { awaitLanding = false; sim.setOverlay(false); }
     return !exited;
   };
 
@@ -365,6 +369,7 @@ for (const phaseId of phases) {
     guardianWindows: verdict.world.guardianWindows,
     guardianWroteLow: verdict.world.guardianWroteLow,
     guardianConsoled: verdict.world.guardianConsoled,
+    guardianLanded: verdict.world.guardianLanded,
   };
   proof.phases[phaseId] = tape;
   console.log(`✓ ${phaseId}: exit → ${verdict.exitTo} in ${verdict.ticksUsed} ticks, ${verdict.tasksSolved} tasks auto-solved, runs=${tape.pads.length}, world=${JSON.stringify(tape.expect)}`);
