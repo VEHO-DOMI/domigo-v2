@@ -67,6 +67,7 @@ jobs:
       - run: node scripts/measure-motion.mjs --selftest # W1: drawn-vs-seen motion — a shear must not read as zero
       - run: node scripts/check-registers.mjs --selftest # K1: the register gate's own red light must be reachable
       - run: node scripts/check-registers.mjs # K1: D-/PB-numbers unique, code references resolve by SYMBOL not by line
+      - run: node scripts/check-png-identity.mjs --selftest # E5: the pixel-identity proof's own red light must be reachable
       - run: node --experimental-strip-types scripts/check-perf-budget.mjs --selftest # E5: the budget guard's own red light must be reachable
       - run: node --experimental-strip-types scripts/check-perf-budget.mjs # E5: the PERF_WAECHTER numbers, the code and the enforcers must agree
       - run: node scripts/check-fonts.mjs --selftest # E5: the font guard's own red light must be reachable

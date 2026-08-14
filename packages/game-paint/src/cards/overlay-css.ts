@@ -1166,24 +1166,6 @@ export const PAINT_OVERLAY_CSS = `
   font-family: var(--font-label, inherit);
 }
 
-/* ── THE END-STATES LAW: every animated class above, killed ─────────────── */
-@media (prefers-reduced-motion: reduce) {
-  .pb-veil, .pb-wipe, .pb-card, .pb-ring, .pb-verdict, .pb-page, .pb-world-in,
-  .pb-letter, .pb-word, .pb-doff, .pb-tether, .pb-rays, .pb-spark, .pb-hero-in,
-  .pb-row-in, .pb-door-bloom {
-    animation: none !important;
-  }
-  /* R5-W2 · I1 · …and the TRANSITIONS, which the kill list never covered because
-     it only ever looked for the animation shorthand. »Reduced motion« means no
-     motion, not no keyframes. Three of these four predate this packet and were
-     moving under reduced motion the whole time — declared in the PR, not fixed
-     quietly. (No backticks in here: this whole stylesheet is one template
-     literal, and a backtick ends it.) */
-  .pb-card button, .pb-card .pb-chip, .pb-hud-chip-btn, .pb-help-body {
-    transition: none !important;
-  }
-}
-
 /* ── R5-W3 · E5 · THE LOADING CARD ─────────────────────────────────────────
    Koki's standing trade: „lieber ein kleiner Ladebildschirm als je ein
    Stottern zur Laufzeit". Building a phase costs 127-448 ms of blocked main
@@ -1231,7 +1213,23 @@ export const PAINT_OVERLAY_CSS = `
   margin: 6px 0 0;
   animation: pb-building-breathe 1600ms ease-in-out infinite;
 }
+
+/* ── THE END-STATES LAW: every animated class above, killed ─────────────── */
 @media (prefers-reduced-motion: reduce) {
-  .pb-building-quiet { animation: none !important; opacity: 1; }
+  .pb-veil, .pb-wipe, .pb-card, .pb-ring, .pb-verdict, .pb-page, .pb-world-in,
+  .pb-letter, .pb-word, .pb-doff, .pb-tether, .pb-rays, .pb-spark, .pb-hero-in,
+  .pb-row-in, .pb-door-bloom, .pb-building-quiet {
+    animation: none !important;
+  }
+  /* R5-W2 · I1 · …and the TRANSITIONS, which the kill list never covered because
+     it only ever looked for the animation shorthand. »Reduced motion« means no
+     motion, not no keyframes. Three of these four predate this packet and were
+     moving under reduced motion the whole time — declared in the PR, not fixed
+     quietly. (No backticks in here: this whole stylesheet is one template
+     literal, and a backtick ends it.) */
+  .pb-card button, .pb-card .pb-chip, .pb-hud-chip-btn, .pb-help-body {
+    transition: none !important;
+  }
+}
 }
 `;
