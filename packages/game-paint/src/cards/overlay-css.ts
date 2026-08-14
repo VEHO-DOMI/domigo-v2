@@ -482,6 +482,14 @@ export const PAINT_OVERLAY_CSS = `
 .pb-card-scroll {
   min-height: 0;
   overflow-y: auto;
+  /* ⚠ NOT optional, and not tidiness. CSS says that if ONE axis is not
+     »visible«, the other computes to »auto« — so »overflow-y: auto« alone hands
+     the sheet a horizontal scrollbar too, and a line one sub-pixel wider than
+     its box is enough to draw it. Measured on the real page: scrollWidth 265
+     against clientWidth 264, and the result was a dark bar straight across the
+     card under the button. The card is a page: it is read downwards and never
+     sideways. */
+  overflow-x: hidden;
   /* a child dragging the last task line must not drag the page underneath */
   overscroll-behavior: contain;
   /* the bar is drawn in the book's own ink at whisper strength, and its thumb

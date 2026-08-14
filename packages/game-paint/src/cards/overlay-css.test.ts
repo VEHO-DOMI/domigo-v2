@@ -488,6 +488,17 @@ describe("R5-W3 · J2 · R21 · the hand, and where it stops (Kokis D2-Kanon)", 
     }
   });
 
+  it("the scrolling sheet never scrolls SIDEWAYS", () => {
+    // CSS: if one axis is not »visible«, the other computes to »auto«. So the
+    // vertical scroll hands the sheet a HORIZONTAL bar for free, and one
+    // sub-pixel of overflow is enough to draw it — measured on the real page as
+    // scrollWidth 265 vs clientWidth 264, rendered as a dark bar across the card
+    // under the button. A card is read downwards and never sideways.
+    const sheet = baseRule(PAINT_OVERLAY_CSS, "pb-card-scroll");
+    expect(sheet, "the sheet lost its vertical scroll").toMatch(/overflow-y:\s*auto/);
+    expect(sheet, "overflow-y alone also enables a horizontal bar").toMatch(/overflow-x:\s*hidden/);
+  });
+
   it("--pb-ink-rgb has not drifted from --pb-ink", () => {
     // the one new knob is the same colour written a second way, for the surfaces
     // that need the family's pen at a strength of their own. A second name is a
