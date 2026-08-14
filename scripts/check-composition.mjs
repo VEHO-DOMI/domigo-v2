@@ -651,7 +651,10 @@ if (markersSeen === 0) fail("marker-edge", "no phase carries a checkpoint — th
 // by its own anatomy (CRUST_H), and the one that never had the defect.
 console.log("10 · painted-scale audit (mass.ts paintScaleOf — R5-W1 · A1)");
 const SCALE_PARITY_TOL = 0.15;
+/** Below this a declared window is a hairline, not an anatomy (R5-A5 · R3). */
+const MIN_WINDOW_SRC_PX = 24;
 const courseLocks = new Set();
+const windowsSeen = new Set();
 for (const { label, ph, spec } of withSpec) {
   const plan = planMass(ph.rows, spec.mass, srcSize);
   const want = paintScaleOf(spec.mass, srcSize);
@@ -661,16 +664,43 @@ for (const { label, ph, spec } of withSpec) {
     const src = srcSize(p.stem);
     if (!src) continue;
     const s = tileScaleFor(p, src);
-    // 10a · SCALE PARITY — one painted world means one painted scale. The
-    // vertical axis carries it; a trim may fit its own width across, because an
-    // 8 px trim is 8 px wide for anatomical reasons — but that is DECLARED
-    // (srcScaleX), never a side effect of the box it happened to fill.
-    if (Math.abs(s.y - want) > want * SCALE_PARITY_TOL) {
-      const cur = offScale.get(p.stem);
-      if (cur === undefined || Math.abs(s.y - want) > Math.abs(cur - want)) offScale.set(p.stem, s.y);
-      continue;
+    // 10a · SCALE PARITY — one painted world means one painted scale, on BOTH
+    // axes.
+    //
+    // R5-W3 · A5 · R3: this used to measure the vertical axis and then `continue`
+    // past anything declaring a horizontal override, on the argument that such a
+    // width is „anatomical … audited above". It was audited nowhere. Measured
+    // when that exemption was finally opened: the carved trims drew 0.0323 world
+    // px per source px across against 0.0802 down — every side trim in the
+    // chapter squashed 2.49×, under a comment promising the opposite, with this
+    // audit green because the exemption was the thing that hid it.
+    //
+    // A declared width is not a licence to leave the scale; it is a licence to
+    // show LESS of the painting. So both axes are held to the same number, and
+    // the declaration itself is checked against the sheet below.
+    for (const axis of ["y", "x"]) {
+      if (Math.abs(s[axis] - want) > want * SCALE_PARITY_TOL) {
+        const key = `${p.stem}.${axis}`;
+        const cur = offScale.get(key);
+        if (cur === undefined || Math.abs(s[axis] - want) > Math.abs(cur - want)) offScale.set(key, s[axis]);
+      }
     }
-    if (p.srcScaleX !== undefined) continue; // an anatomical width, audited above
+    if (Math.abs(s.y - want) > want * SCALE_PARITY_TOL) continue;
+    // 10a′ · THE DECLARED WINDOW AGAINST THE SHEET'S REAL ANATOMY. You cannot
+    // show more of a painting than exists, and a hairline of one is not a
+    // material — both are red, and the share is REPORTED either way so a trim
+    // that shows a tenth of its sheet is a number somebody can act on.
+    if (p.srcW !== undefined) {
+      if (!(p.srcW > 0 && p.srcW <= src.w + 0.5)) {
+        fail("painted-scale", `${label}: ${p.stem} shows ${p.srcW.toFixed(1)} source px across a ${src.w}-px sheet — you cannot window more of a painting than exists`);
+      } else if (p.srcW < MIN_WINDOW_SRC_PX) {
+        fail("painted-scale", `${label}: ${p.stem}'s window is ${p.srcW.toFixed(1)} source px — that is a hairline of paint, not an anatomy`);
+      } else if (!windowsSeen.has(p.stem)) {
+        windowsSeen.add(p.stem);
+        note(`${label}: ${p.stem} shows ${((p.srcW / src.w) * 100).toFixed(0)} % of its ${src.w}-px sheet (${p.w.toFixed(1)} world px at ${s.x.toFixed(4)} — the world's own ${want.toFixed(4)})`);
+      }
+      continue; // a windowed piece has no horizontal repeat to lock
+    }
     // 10b · NO GRID LOCK — a period under two cells is the defect; a period ON
     // a whole number of cells is the SAME defect one octave up, permanently in
     // phase with the cell grid, the plank joints and the trims.
@@ -704,7 +734,8 @@ for (const { label, ph, spec } of withSpec) {
     }
   }
   for (const [stem, got] of offScale) {
-    fail("painted-scale", `${label}: ${stem} draws ${got.toFixed(4)} world px per source px, the walk course draws ${want.toFixed(4)} — the same painting at two scales is two materials`);
+    const [bare, axis] = stem.split(".");
+    fail("painted-scale", `${label}: ${bare} draws ${got.toFixed(4)} world px per source px on ${axis}, the walk course draws ${want.toFixed(4)} — the same painting at two scales is two materials`);
   }
   if (offScale.size === 0) {
     note(`${label}: every tiled mass surface at ${want.toFixed(4)} world px/source px — a 512-wide painting every ${((512 * want) / TILE).toFixed(2)} cells`);
