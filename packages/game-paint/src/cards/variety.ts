@@ -128,7 +128,11 @@ export interface VarietyInput {
 
 // ── small shared helpers ─────────────────────────────────────────────────────
 const norm = (s: string) => s.toLowerCase().trim();
-const hasWord = (haystack: string, needle: string): boolean =>
+/** R5-W2 · H1: exported so the gate's arena-number law asks the question the
+ *  same way this file does. An `order` card's answer surface is its chips
+ *  JOINED, so a naive `Set.has` on it finds nothing — and a law that silently
+ *  finds nothing is a law that always passes. */
+export const hasWord = (haystack: string, needle: string): boolean =>
   new RegExp(`(^|[^a-z'])${needle.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}($|[^a-z'])`, "i").test(haystack);
 
 /** Every string the CHILD must produce or judge to answer this card. Coverage

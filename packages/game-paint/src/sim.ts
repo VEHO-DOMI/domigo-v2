@@ -344,7 +344,9 @@ export class Sim {
       // seeds PAST the flood for the same reason the classmate's does below:
       // the pop and the grey→colour flood are freedTick-driven and must not
       // replay either (critic finding, R5 verify wave).
-      if (e) { e.redeemed = true; e.state = "open"; e.freedTick = COLOUR_FLOOD_TICKS; }
+      // R5-W2 · H1 · `freed` too, or a cage the child finished before the
+      // Kleckskammer trip would offer its rescue a second time on the way back.
+      if (e) { e.redeemed = true; e.freed = true; e.state = "open"; e.freedTick = COLOUR_FLOOD_TICKS; }
       // PK-R6 · D: a freed cage's PERSON is freed too. A phase is remounted
       // whenever the child comes back from the Kleckskammer, and without this
       // Merle would be hidden again behind a cage that is already open —
@@ -556,6 +558,11 @@ export class Sim {
       }
     } else if (ctx.type === "cage") {
       const freed = this.cfg.freedCageIds().length + 1;
+      // R5-W2 · H1: THIS is the moment a cage is actually done — not the burst,
+      // which only takes the lid off. Marking it here is what closes the ↑ road
+      // back again, so an answered cage stops offering a card it no longer owes.
+      const cage = this.world.entities.find((x) => x.id === ctx.id);
+      if (cage) cage.freed = true;
       events.push({ type: "cageFreed", id: ctx.id, skin: ctx.skin, classmate: ctx.classmate, count: freed });
       applyLinks(this.world, "opened", ctx.id);
     } else if (ctx.type === "classmate") {
@@ -611,9 +618,42 @@ export class Sim {
     return events;
   }
 
-  /** The shell reports the task DISMISSED („Später") — no reward, no redeem. */
-  dismissTask(_ctx: TaskRequest["ctx"]): void {
+  /** The shell reports the task DISMISSED („Später") — no reward, no redeem.
+   *
+   *  R5-W2 · H1 · …AND THE WORLD COMES BACK. This used to be the single line
+   *  below, and for every asker but one that was enough: a field being keeps
+   *  patrolling, a cage keeps standing. The guardian is the exception, because
+   *  she is the only being the SIM parks in a state her own tick refuses to
+   *  advance — `window` has no timer and no fallback, unlike `stagger`, which
+   *  has carried one since it was written („the no-card fallback that keeps her
+   *  from freezing", entities.ts). So putting a boss card down left her hanging
+   *  for good: no flight, no throw, no second window, `guardianDefeated` false
+   *  forever, and therefore both the cage gate and the exit gate toasting until
+   *  the child restarts the chapter. The clock reached it without a child's
+   *  hand at all.
+   *
+   *  She returns to `stagger` and not to `fly` on purpose: it is the road the
+   *  engine already maintains — its exit ships and is tested, its cell is
+   *  painted, and its length is the tier's own `staggerTicks`. No new state, no
+   *  new constant, no new cell; the recovery is a beat the child can see rather
+   *  than a snap. `dodges` was already zeroed when the dip began, so the next
+   *  window costs the same three dodges as any other.
+   *
+   *  The condition is the STATE, never the role: a chalk hit raises a boss card
+   *  while she is mid-flight, and yanking her out of a telegraph the child has
+   *  started reading would be the same class of defect pointing the other way. */
+  dismissTask(ctx: TaskRequest["ctx"], events: SimEvent[] = []): SimEvent[] {
     this.overlayOpen = false;
+    const id = askerIdOf(ctx);
+    const asker = id === null ? undefined : this.world.entities.find((e) => e.id === id);
+    if (asker?.role === "guardian" && asker.state === "window") {
+      asker.state = "stagger";
+      asker.timer = 0;
+      asker.vx = 0;
+      asker.vy = 0;
+      events.push({ type: "toast", msg: "Die Tafel richtet sich wieder auf." });
+    }
+    return events;
   }
 
   spendLetters(n: number): boolean {
@@ -791,6 +831,15 @@ export class Sim {
           this.askRound(mate, events);
           break;
         }
+        this.ask({ use: "rescue", ctx: { type: "cage", id: ev.id, skin: ev.skin, classmate: e?.params.classmate as string | undefined } }, events);
+        break;
+      }
+      // R5-W2 · H1 · the same rescue, raised again at a cage that is already
+      // open and still owes it. No hold and no iris: the opening is a beat that
+      // has already played, and replaying it would re-stage a moment the child
+      // has seen. Only the card comes back.
+      case "cageAsk": {
+        const e = this.world.entities.find((x) => x.id === ev.id);
         this.ask({ use: "rescue", ctx: { type: "cage", id: ev.id, skin: ev.skin, classmate: e?.params.classmate as string | undefined } }, events);
         break;
       }

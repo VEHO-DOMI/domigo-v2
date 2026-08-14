@@ -49,7 +49,11 @@ import { GameTasksFileV2, MAX_LINE_DE, registerErrorsDe } from "../packages/cont
 import { CALM_DE, TIMED_USES, URGENCY_DE, spokenDeOf, timerClassFor } from "../packages/game-paint/src/cards/timer.ts";
 // PK-R6 · D: the reawakening's length is a LAW, not a number this file may
 // restate — imported from the engine that plays it (doc 44 §3.3's six rounds).
-import { AWAKEN_ROUNDS } from "../packages/game-paint/src/entities.ts";
+import { AWAKEN_ROUNDS, GUARDIAN_SCRIPT } from "../packages/game-paint/src/entities.ts";
+// R5-W2 · H1 · the arena's number promise is checked by RUNNING the router for
+// as many windows as the fight really opens (the layer-15 precedent).
+import { initRoute, nextTask } from "../packages/game-paint/src/cards/routing.ts";
+import { answerSurfaceOf, hasWord } from "../packages/game-paint/src/cards/variety.ts";
 // R5-W2 · G1 · WHO RAISES WHICH POOL. These tables used to be copied into this
 // file under the comment "these two tables mirror sim.ts and must move with it".
 // The variety laws would have been the third copy, so they moved to the engine
@@ -296,6 +300,47 @@ function checkAgainstLevel(file, level, items) {
         for (const [use, min] of [["boss", 2], ["finale", 1]]) {
           const n = boundCards(items, use, e.skin, ph.id).length;
           if (n < min) fail(at, `coverage: guardian skin "${e.skin}" has ${n} ${use} card(s) here — needs ≥${min}`);
+        }
+        // ── R5-W2 · H1 · THE ARENA'S NUMBER PROMISE, KEPT BY MACHINE ─────────
+        //
+        // The arena dossier ACCEPTED a contract from p3 in writing: p3 places a
+        // Regel-Seite for „Zahlen 1–20" and the boss windows are where the
+        // child is asked to use them. It was undischarged in every real run,
+        // and nothing could see that, because the promise lived in prose and
+        // the pool looked fine — six cards, one of them numbers.
+        //
+        // The catch is the ARITHMETIC of the fight. A clean run opens exactly
+        // `knots` windows (three at tier E), the pool serves in file order from
+        // a fresh cursor, and the number card sat sixth. A child who never got
+        // hit never saw a number. So the check replays the REAL router for as
+        // many serves as the fight actually makes — the layer-15 precedent: do
+        // not model the serve, run it — and asks whether a number word was on
+        // any of those cards.
+        const knots = GUARDIAN_SCRIPT[e.tier]?.knots ?? 0;
+        const numbers = new Set(
+          (policy.chapters?.[level.chapter]?.lexiconClasses?.["g1u01.x.numbers"]?.words ?? [])
+            .map((w) => String(w).toLowerCase()),
+        );
+        if (knots > 0 && numbers.size === 0) {
+          fail(at, "coverage: the numbers lexicon class is empty — the arena's promise cannot be checked");
+        } else if (knots > 0) {
+          let st = initRoute();
+          const served = [];
+          for (let i = 0; i < knots; i++) {
+            const { task, next } = nextTask(items, "boss", { phase: ph.id, skin: e.skin }, st);
+            if (!task) break;
+            served.push(task);
+            st = next;
+          }
+          // an `order` card's answer surface is its chips JOINED into one
+          // string, so a Set lookup on it finds nothing and the law would
+          // always pass — ask the same way variety.ts asks.
+          const hit = served.some((t) =>
+            answerSurfaceOf(t).some((s) => [...numbers].some((n) => hasWord(s, n))));
+          if (!hit) {
+            fail(at, `coverage: the arena promised p3's numbers 1–20, but the ${knots} window(s) a clean fight opens serve `
+              + `${served.map((t) => t.id).join(", ")} — not one asks for a number`);
+          }
         }
       } else if (e.role === "cage") {
         // PK-R6 · D · WHOSE POOL A PERSON-CAGE OWNS (doc 44 §3.3). A cage that

@@ -17,7 +17,7 @@ import {
   phaseRequiredStems,
   type ScopeLevel,
 } from "./artScope.ts";
-import { compositionFor } from "./composition.ts";
+import { compositionFor, compositionStems } from "./composition.ts";
 
 const CONTENT = path.resolve(__dirname, "../../../content/corpus/stories");
 const ART_ROOT = path.resolve(__dirname, "../../../apps/web/public/art/g1/paint");
@@ -107,11 +107,23 @@ describe("art scope", () => {
           const scope = phaseArtScope(level, ph.id, present);
           const composed = compositionFor(level.chapter, ph.id) !== null;
           const plates = Object.values(ph.plates ?? {}).filter((v): v is string => v !== undefined);
+          const spec = compositionFor(level.chapter, ph.id);
+          const drawn = new Set(spec ? compositionStems(spec) : []);
           for (const plate of plates) {
             // composed phase ⇒ buildBackdrop() returns before it can draw a
             // plate, so loading one would be pure waste; legacy phase ⇒ it is
             // the backdrop and must be there.
-            expect(scope.has(plate)).toBe(!composed);
+            //
+            // R5-W2 · H1 · …unless the COMPOSITION names the same stem. The law
+            // is „nothing is loaded that the renderer cannot reach", and being
+            // listed under `plates` is only one of the two ways to be reached.
+            // p4 declares `plates.mid = "band_p4_audience"` — the empty school
+            // chairs the arena is about — and now draws it as its far row, so
+            // it is in scope for the composition's sake, not the plate's. The
+            // check therefore asks the renderer's real question, and still goes
+            // red for a plate-only stem on a composed phase (the waste this
+            // law exists to catch).
+            expect(scope.has(plate)).toBe(!composed || drawn.has(plate));
           }
         }
       });

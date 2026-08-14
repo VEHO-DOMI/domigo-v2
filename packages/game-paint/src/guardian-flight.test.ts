@@ -34,10 +34,12 @@ import {
   type WorldInput,
 } from "./entities.ts";
 import {
-  FLIGHT_BANK_FACE, FLIGHT_PITCH_MAX_RAD, FLIGHT_PITCH_REF_VY, FLIGHT_ROLL_MIN, FLIGHT_ROLL_REF_VX,
-  FLIGHT_ROLL_TICKS, GUARDIAN_GROUNDED_CELLS, GUARDIAN_LANDED_CELLS, entPoseCell, guardianManoeuvre,
+  BOSS_BEAT_SWELL, FLIGHT_BANK_FACE, FLIGHT_PITCH_MAX_RAD, FLIGHT_PITCH_REF_VY, FLIGHT_ROLL_MIN,
+  FLIGHT_ROLL_REF_VX, FLIGHT_ROLL_TICKS, GUARDIAN_DISPLAY_H, GUARDIAN_GROUNDED_CELLS,
+  GUARDIAN_KEEPIN_MAX, GUARDIAN_LANDED_CELLS, entPoseCell, guardianManoeuvre,
   guardianPitchRad, guardianRollScaleX,
 } from "./anim.ts";
+import { GUARDIAN_RIG_CELLS } from "./artManifest.ts";
 import { KNOT_PATHS, flightUnitAt, pathForKnot } from "./flight.ts";
 import { LOGICAL_H, SUBS, TICK_MS, TILE } from "./paint.ts";
 import { cameraTargetY, clampScroll } from "./camera.ts";
@@ -244,7 +246,31 @@ describe("her whole body stays in the visible band (readable = seeable)", () => 
     const seenTop = scrollY;
     const seenBottom = scrollY + LOGICAL_H;
 
-    const GUARDIAN_DISPLAY_H = 52; // PaintScene.entTargetH for a guardian
+    // R5-W2 · H1 · THE BODY AS DRAWN, AT ITS BIGGEST — not a number typed here.
+    //
+    // This line used to read `const GUARDIAN_DISPLAY_H = 52;` with a comment
+    // claiming it was `PaintScene.entTargetH for a guardian`. It was 68. The
+    // one check that exists to prove her whole body stays on screen was
+    // measuring a body 16 px shorter than the drawn one, and a copy cannot
+    // drift if there is no copy — so the constants moved to anim.ts and are
+    // imported (DEBT A6 / D-21).
+    //
+    // Height alone is still not what the child sees. Every cell is scaled from
+    // the idle by its OWN proportions (`entTargetH / refFrameHOf`), and the
+    // release cell swells by BOSS_BEAT_SWELL at the top of a tell. So the worst
+    // case is: the tallest cell on her sheet, swollen, at the top of her band.
+    // Both factors are read from the shipped art rather than asserted, so a
+    // repainted sheet moves this proof with it.
+    const ART = path.resolve(__dirname, "../../../apps/web/public/art/g1/paint/ch01");
+    /** PNG height straight out of the IHDR — no decoder, no dependency. */
+    const pngH = (stem: string): number =>
+      fs.readFileSync(path.join(ART, `${stem}.png`)).readUInt32BE(20);
+    const refH = pngH(`${g.skin}_a`); // the cell every other one is scaled from
+    const tallest = Math.max(...GUARDIAN_RIG_CELLS.map((c) => pngH(`${g.skin}_${c}`)));
+    const drawnH = (GUARDIAN_DISPLAY_H / refH) * tallest * (1 + BOSS_BEAT_SWELL);
+    expect(drawnH, "die Rechnung muss die gezeichnete Höhe treffen, nicht die Ruhe-Höhe")
+      .toBeGreaterThan(GUARDIAN_DISPLAY_H);
+
     const centreX = (g.c * TILE + TILE / 2) * SUBS;
     const centreY = (g.r + 1) * TILE * SUBS;
 
@@ -253,7 +279,9 @@ describe("her whole body stays in the visible band (readable = seeable)", () => 
       for (let t = 0; t <= period; t++) {
         const p = flightPointAt(centreX, centreY, knots[0]!, knots[1]!, t);
         const feet = p.y / SUBS;
-        const head = feet - GUARDIAN_DISPLAY_H;
+        // the framing clamp may push her back down by at most this much; what
+        // it cannot reach is what the child loses off the top of the screen
+        const head = feet - drawnH + GUARDIAN_KEEPIN_MAX;
         expect(head, `knot ${i + 1} tick ${t}: her top edge is above the view`).toBeGreaterThanOrEqual(seenTop);
         expect(feet, `knot ${i + 1} tick ${t}: her feet are below the view`).toBeLessThanOrEqual(seenBottom);
         // …and she never flies into the floor she is fighting over
