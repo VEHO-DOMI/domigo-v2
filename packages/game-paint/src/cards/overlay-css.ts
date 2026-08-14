@@ -292,6 +292,11 @@ export const PAINT_OVERLAY_CSS = `
   --pb-paper-lit: #fffaea;
   --pb-seal: #ffd98a;
   --pb-ink: #6b3f18;
+  /* the same pen as channels, for the two surfaces that need it at a strength
+     of their own. A second name for one colour is a drift risk, and it is paid
+     for by a law in overlay-css.test.ts that re-derives these three numbers
+     from --pb-ink and fails if they ever disagree. */
+  --pb-ink-rgb: 107, 63, 24;
   --pb-ink-cast: rgba(107,63,24,0.9);
   --pb-ink-line: rgba(107,63,24,0.45);
   --pb-ink-w: 4px;
@@ -312,6 +317,24 @@ export const PAINT_OVERLAY_CSS = `
   --pb-key-tilt: -1.6deg;
 
   position: relative;
+  /* ── R5-W3 · J2 · D-52 · THE CARD NEVER OUTGROWS ITS VEIL ─────────────────
+     Measured on the real page at 375 x 812 (never on the card bench: that is a
+     fixed 1056 x 672 stage and invents a crop the page does not have). The veil
+     is 555,5 px tall there and clips with align-items: center, so a taller card
+     loses the SAME amount off the top and the bottom at once. Two of the four
+     opening beats did: »Was geschehen ist« by 18,1 px each end, »Dein Auftrag«
+     by 81,9 px each end — 23 % of that card, its eyebrow sliced through and its
+     »Zurueck blaettern« cut in half.
+
+     The cap is on the CARD, the scrolling is on the sheet inside it (below), and
+     that split is the whole design: the frame, the hand-inked rule, the turned
+     corner and the lean stay put while the writing moves under them. Subtracting
+     24px leaves room for what reaches PAST the border box — the lean adds
+     width x sin(1,1 deg) to the bounding box, and the hard cast falls 9 px below
+     it; both would otherwise be shaved by the veil. */
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100% - 24px);
   padding: 18px 22px;
   text-align: center;
   color: #3b3122;
@@ -330,7 +353,37 @@ export const PAINT_OVERLAY_CSS = `
        7 px read as squared exercise paper rather than as a sheet — caught in
        the render, which is why the render happens before the commit. */
     repeating-linear-gradient(97deg, rgba(146,114,64,0.035) 0 1px, rgba(146,114,64,0) 1px 23px);
-  border: var(--pb-ink-w) solid var(--pb-ink);
+  /* ── R5-W3 · J2 · R21 · THE HAND ─────────────────────────────────────────
+     Two blind look critics, order swapped between them, independently reported
+     the same thing: under the paper texture this is still a regular vector
+     construction kit. One uniform stroke on all four sides is the largest part
+     of why — a crayon drawn along a page never lays down the same weight twice.
+
+     So the four sides disagree, by ONE number set the whole family shares:
+
+         1,25   0,80   0,75   1,20      (top · right · bottom · left)
+
+     Two properties make it safe rather than merely different. Opposite pairs sum
+     to exactly 2 (1,25 + 0,75 · 0,80 + 1,20), so the hand REDISTRIBUTES weight
+     and adds none: the box grows by zero on both axes, which matters because the
+     card already spends 4,3 px of its 14 px side clearance on the lean. And any
+     cyclic rotation of the set keeps that property — so the plate, the inner rule
+     and the rule band each wear a DIFFERENT rotation of the same hand. One hand
+     everywhere would read as a systematic bias, which is the original complaint
+     moved up one level rather than answered.
+
+     Spread is 1,67 : 1, deliberately tighter than the corner spread already
+     shipping (30 : 14 = 2,14 : 1): a stroke reads as a mistake more easily than
+     a corner does.
+
+     THE SHORTHAND IS GONE ON PURPOSE. »border:« takes one width for four sides,
+     so four widths need the three longhands — and a later »border:« in this rule
+     would silently flatten all four again, which is why the test now forbids one
+     here rather than merely checking for the longhands. */
+  border-style: solid;
+  border-color: var(--pb-ink);
+  border-width: calc(var(--pb-ink-w) * 1.25) calc(var(--pb-ink-w) * 0.8)
+                calc(var(--pb-ink-w) * 0.75) calc(var(--pb-ink-w) * 1.2);
   border-radius: var(--pb-card-r);
   /* THE LEAN. A book is laid down crooked; a dialog box is not. It is STATIC,
      therefore it is a picture and not motion — which is why it is deliberately
@@ -396,9 +449,60 @@ export const PAINT_OVERLAY_CSS = `
   /* R5-W2 · J1-A: DASHED. In the judged picture this is the mark that reads as
      drawn-by-hand rather than printed — a ruled line a child could have made
      with a crayon along the inside of the page. */
-  border: 2.5px dashed var(--pb-ink-line);
+  /* R5-W3 · J2 · R21: the hand, rotated twice (0,75 · 1,20 · 1,25 · 0,80) and
+     written as literals, because 2,5 px is one of the four widths doc §1 keeps
+     deliberately off the knob board — tying it to --pb-ink-w would make one dial
+     move five things at five scales. Pairs still sum to 5,0, so the inner rule
+     sits where it sat. A bonus the dashes give for free: dash length scales with
+     border width, so four weights draw four rhythms on one closed line — which
+     is what a hand does and a ruler cannot. */
+  border-style: dashed;
+  border-color: var(--pb-ink-line);
+  border-width: 1.9px 3px 3.1px 2px;
   border-radius: var(--pb-card-r-in);
   pointer-events: none;
+}
+
+/* ── R5-W3 · J2 · D-52 · THE SHEET INSIDE THE CARD ─────────────────────────
+   The scroll lives HERE and not on .pb-card, and that is not a preference: an
+   element with »overflow« clips every descendant whose containing block is
+   inside it. The wax seal hangs 8 px past the corner and the tether that ties a
+   card to the being it is about sits ENTIRELY outside the card (»right: 100%«,
+   108 px of it) — scrolling the card itself would have erased both. This
+   wrapper is position: static, so their containing block stays .pb-card and
+   they are not clipped. Proven in the browser before it was written, not
+   assumed from the spec.
+
+   »min-height: 0« is the flex rule that makes it work at all: a flex item's
+   floor is its content, so without this the sheet refuses to shrink and the cap
+   above does nothing.
+
+   It scrolls only when it must — a card that fits is untouched, and two of the
+   four opening beats fit. */
+.pb-card-scroll {
+  min-height: 0;
+  overflow-y: auto;
+  /* ⚠ NOT optional, and not tidiness. CSS says that if ONE axis is not
+     »visible«, the other computes to »auto« — so »overflow-y: auto« alone hands
+     the sheet a horizontal scrollbar too, and a line one sub-pixel wider than
+     its box is enough to draw it. Measured on the real page: scrollWidth 265
+     against clientWidth 264, and the result was a dark bar straight across the
+     card under the button. The card is a page: it is read downwards and never
+     sideways. */
+  overflow-x: hidden;
+  /* a child dragging the last task line must not drag the page underneath */
+  overscroll-behavior: contain;
+  /* the bar is drawn in the book's own ink at whisper strength, and its thumb
+     gets four disagreeing corners like everything else the hand touched —
+     the browser default is a grey UI part sitting on painted paper */
+  scrollbar-width: thin;
+  scrollbar-color: var(--pb-ink-line) transparent;
+}
+.pb-card-scroll::-webkit-scrollbar { width: 7px; }
+.pb-card-scroll::-webkit-scrollbar-track { background: transparent; }
+.pb-card-scroll::-webkit-scrollbar-thumb {
+  background: var(--pb-ink-line);
+  border-radius: 6px 4px 7px 5px / 5px 7px 4px 6px;
 }
 
 /* ── every control on the card is a painted chip ───────────────────────────
@@ -516,32 +620,20 @@ export const PAINT_OVERLAY_CSS = `
   animation: pb-ring-erase var(--pb-ring-s, ${QUICKFIRE_MS / 1000}s) linear forwards;
 }
 
-/* ── THE PORTRAIT (doc 44 §3.1.5) ───────────────────────────────────────────
-   The asker's own painted art, inside the card, in the book's materials: the
-   gouache cream field and amber contour every other painted surface in this
-   overlay wears. Deliberately UNANIMATED — a portrait that flew in would fight
-   the card it arrives inside, and an unanimated class needs no end-state
-   clause because its base style is the only state it has. */
-.pb-portrait {
-  display: block;
-  margin: 0 auto 8px;
-  width: min(130px, 34%);
-  min-width: 88px;
-  aspect-ratio: 1 / 1;
-  border-radius: 14px 11px 15px 12px / 12px 15px 11px 14px;
-  border: 2px solid #b78d51;
-  background: #fffdf5 radial-gradient(120% 100% at 50% 12%, rgba(255, 255, 255, 0.9), rgba(233, 219, 186, 0.55));
-  box-shadow: inset 0 1px 6px rgba(120, 96, 52, 0.22), 0 2px 8px rgba(30, 20, 10, 0.16);
-  overflow: hidden;
-}
-.pb-portrait img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  display: block;
-  padding: 6px;
-  box-sizing: border-box;
-}
+/* ── THE PORTRAIT · REMOVED (R5-W3 · J2 · R21) ──────────────────────────────
+   ».pb-portrait« and ».pb-portrait img« are gone. They were dead: R5-W1 · D1
+   promoted the picture from a slot to THE PLATE (cards/Glance.tsx), and no TSX
+   in this repo has applied the class since — verified by grep across packages,
+   apps, scripts and docs, and by confirming that no class name here is ever
+   BUILT at runtime (every className is a literal; the only interpolated »pb-«
+   strings in the codebase are Phaser TEXTURE keys, a different namespace).
+
+   R21 named it one of four open surfaces that should join the look family. It
+   could not: dressing a rule nothing renders would have turned the consistency
+   table green on a change no child and no critic can see. Deleting it is the
+   honest half of the same ruling, and it also removes a trap — the comment that
+   stood here announced this as the live portrait, 300 lines above the rule that
+   actually is one. */
 
 /* ── THE RESOLUTION BEAT · 1 · the answer flies home (doc 44 §3.1.7) ────────
    v0 »dg-bs-letter-fly«, verbatim: 460 ms per letter on the same curve, the
@@ -739,9 +831,15 @@ export const PAINT_OVERLAY_CSS = `
   bottom: 0;
   height: 1.6px;
   border-radius: 2px;
+  /* R5-W3 · J2 · R21: joins the family. Its own comment calls this a brush
+     stroke, and it was painted in an ink no other surface on the card uses. It
+     is the same pen now — at 1/1,4 of the old alpha, because --pb-ink is that
+     much darker against the paper (deltas 105,126,141 vs 148,179,181), so the
+     hue changes and the perceived weight does not. A tally rule that outshouts
+     the number it separates is a worse card, not a more consistent one. */
   background: linear-gradient(90deg,
-    rgba(150,116,64,0) 0%, rgba(150,116,64,0.5) 7%, rgba(150,116,64,0.26) 48%,
-    rgba(150,116,64,0.46) 86%, rgba(150,116,64,0) 100%);
+    rgba(var(--pb-ink-rgb),0) 0%, rgba(var(--pb-ink-rgb),0.36) 7%, rgba(var(--pb-ink-rgb),0.19) 48%,
+    rgba(var(--pb-ink-rgb),0.33) 86%, rgba(var(--pb-ink-rgb),0) 100%);
   pointer-events: none;
 }
 
@@ -853,7 +951,14 @@ export const PAINT_OVERLAY_CSS = `
   position: relative;
   width: fit-content;
   max-width: 100%;
-  border: var(--pb-ink-w) solid var(--pb-ink);
+  /* R5-W3 · J2 · R21: the hand, rotated once (1,20 · 1,25 · 0,80 · 0,75) — NOT
+     the card's rotation, so the two ruled edges on one card are not crooked the
+     same way. Pairs sum to 2, so the plate's outer size is unchanged and the
+     seal pressed into its corner does not move. */
+  border-style: solid;
+  border-color: var(--pb-ink);
+  border-width: calc(var(--pb-ink-w) * 1.2) calc(var(--pb-ink-w) * 1.25)
+                calc(var(--pb-ink-w) * 0.8) calc(var(--pb-ink-w) * 0.75);
   border-radius: 15px 10px 16px 11px / 11px 16px 10px 15px;
   box-shadow: inset 0 2px 10px rgba(120,92,50,0.22), 0 3px 10px rgba(40,28,12,0.18);
   background-color: #fdf6e4;
@@ -964,7 +1069,11 @@ export const PAINT_OVERLAY_CSS = `
   font-size: 12px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #a8926a;
+  /* R5-W3 · J2 · R21: joins the family — and it is a legibility fix, not only a
+     rename. Measured against --pb-paper (#fff2cd): #a8926a is 2,70 : 1, which
+     fails AA at this size; --pb-quiet-ink is 5,53 : 1. Doc §2 lets the look widen
+     the gap to the paper and never narrow it. */
+  color: var(--pb-quiet-ink);
   margin: 0 0 2px;
 }
 .pb-treasure {
@@ -1002,7 +1111,21 @@ export const PAINT_OVERLAY_CSS = `
   height: 78px;
   overflow: hidden;
   border-radius: 13px 9px 14px 10px / 10px 14px 9px 13px;
-  border: 2px solid #b78d51;
+  /* R5-W3 · J2 · R21: joins the family. »#b78d51« was the last pre-family contour
+     left INSIDE the veil — one amber hairline in a house of crayon edges.
+     ⚠ CORRECTED IN THE SAME ROUND, by a blind critic who was right: the first
+     attempt used --pb-ink-line (whisper strength) and that flattened the
+     hierarchy — »the gold line does a job: it says this rectangle is special,
+     look inside it«, and against the dashes at the same weight the picture frame
+     stopped announcing itself. Joining the family was correct; joining it at a
+     WHISPER was not. Full-strength ink keeps the frame loud AND in the family.
+     The hand, rotated three
+     times (0,80 · 0,75 · 1,20 · 1,25) as literals on a 2 px base; pairs sum to
+     4,0, so the band's outer height is unchanged and the book art centred inside
+     it does not shift. */
+  border-style: solid;
+  border-color: var(--pb-ink);
+  border-width: 1.6px 1.5px 2.4px 2.5px;
   box-shadow: inset 0 2px 10px rgba(120, 96, 52, 0.28);
   margin: 0 0 10px;
 }
@@ -1029,7 +1152,11 @@ export const PAINT_OVERLAY_CSS = `
 /* DIE MERKSEITE — the collected rules, and the gaps where the rest still are */
 .pb-merk-list { display: grid; gap: 9px; margin: 8px 0 4px; }
 .pb-merk-slot {
-  border-left: 3px solid #d9bd86;
+  /* R5-W3 · J2 · R21: joins the family. One edge cannot disagree with itself, so
+     this stub's hand is its RADIUS instead — the two ends round differently, which
+     is what makes it a torn stub rather than a table rule. */
+  border-left: 3px solid var(--pb-ink-line);
+  border-radius: 3px 0 0 4px / 4px 0 0 3px;
   padding: 4px 0 4px 10px;
 }
 .pb-merk-topic {
@@ -1037,7 +1164,11 @@ export const PAINT_OVERLAY_CSS = `
   font-size: 11.5px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #a8926a;
+  /* R5-W3 · J2 · R21: joins the family — and it is a legibility fix, not only a
+     rename. Measured against --pb-paper (#fff2cd): #a8926a is 2,70 : 1, which
+     fails AA at this size; --pb-quiet-ink is 5,53 : 1. Doc §2 lets the look widen
+     the gap to the paper and never narrow it. */
+  color: var(--pb-quiet-ink);
   margin: 0 0 2px;
 }
 /* a slot that is still missing: the torn stub, greyed, and no text — what is on
@@ -1046,7 +1177,9 @@ export const PAINT_OVERLAY_CSS = `
   display: flex;
   align-items: center;
   gap: 9px;
-  border-left-color: #cdbfa4;
+  /* R5-W3 · J2 · R21: the third way of saying »quieter« is gone. This slot already
+     says it twice below, and a hard-coded hex was the drift the token block exists
+     to end — the stub now inherits the family's pen and lets opacity do the work. */
   opacity: 0.62;
   filter: grayscale(0.7);
 }
@@ -1057,19 +1190,13 @@ export const PAINT_OVERLAY_CSS = `
   margin: 8px 0 0;
 }
 
-/* the chapter's painted open book, the gap the page was torn out of */
-.pb-treasure-plate {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  height: 100%;
-  width: auto;
-  max-width: 96%;
-  object-fit: contain;
-  opacity: 0.88;
-  pointer-events: none;
-}
+/* ».pb-treasure-plate« (the chapter's painted open book behind the found page)
+   REMOVED in R5-W3 · J2 for the same reason as the portrait above: no TSX has
+   ever applied it. Its live siblings below — the page, its glow and its lean —
+   stay exactly as they are: they carry no ruled edge and no contour colour, so
+   there is nothing on them for the family to join. Saying that out loud is the
+   point; the alternative was to tokenise a colour that is read once, which is a
+   second name for one number. */
 /* the torn page rides OVER the book — it is the subject, the book is the stage */
 .pb-treasure-page {
   position: relative;
@@ -1146,7 +1273,10 @@ export const PAINT_OVERLAY_CSS = `
   font-size: 12.5px;
   font-family: var(--font-label, inherit);
   font-weight: 700;
-  color: #8a5a2b;
+  /* R5-W3 · J2 · R21: joins the family. #8a5a2b is literally the ink this look
+     REPLACED (doc §1, the --pb-ink row names it) — so this is a rename that was
+     overdue, and it nudges contrast 5,26 → 5,53 : 1 on the way. */
+  color: var(--pb-quiet-ink);
 }
 .pb-help-body {
   overflow: hidden;
@@ -1162,7 +1292,10 @@ export const PAINT_OVERLAY_CSS = `
   margin: 7px 2px 0;
   font-size: 13px;
   line-height: 1.4;
-  color: #8a5a2b;
+  /* R5-W3 · J2 · R21: joins the family. #8a5a2b is literally the ink this look
+     REPLACED (doc §1, the --pb-ink row names it) — so this is a rename that was
+     overdue, and it nudges contrast 5,26 → 5,53 : 1 on the way. */
+  color: var(--pb-quiet-ink);
   font-family: var(--font-label, inherit);
 }
 

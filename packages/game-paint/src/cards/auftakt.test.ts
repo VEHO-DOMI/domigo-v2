@@ -4,13 +4,17 @@
 // freeze law in particular is why this module exists as pure code at all: it
 // used to be a comment inside a 480-line switch, and a comment is not a check.
 import { describe, expect, it } from "vitest";
-import { AUFTAKT, auftaktExit, auftaktPosition, auftaktStep, auftaktTasks } from "./auftakt.ts";
+import { AUFTAKT, auftaktChain, auftaktExit, auftaktPosition, auftaktStep, auftaktTasks } from "./auftakt.ts";
 
 describe("R5-W2 · J1-B · the opening's chain", () => {
-  it("is four beats, and beat 1 is still called `goal`", () => {
+  it("is FIVE beats, and beat 1 is still called `goal`", () => {
     // not sentiment: `goal` is the value the boot state writes, the ceremony
-    // beat sim.ts already carries, and the address the bench photographs
-    expect(AUFTAKT).toEqual(["goal", "schatten", "aufgaben", "los"]);
+    // beat sim.ts already carries, and the address the bench photographs.
+    // R5-W3 · J2 · R29: four became five when the task beat split into
+    // do-this / gather-this. Two blind didactics critics, blind to each other,
+    // converged on »one card with five task lines is too much for a
+    // six-year-old«; the standing ruling was split-on-convergence.
+    expect(AUFTAKT).toEqual(["goal", "schatten", "aufgaben", "sammeln", "los"]);
   });
 
   it("EVERY beat is reachable from the first, forward, with nothing skipped", () => {
@@ -45,8 +49,8 @@ describe("R5-W2 · J1-B · the opening's chain", () => {
   });
 
   it("counts its own position — the foot never types a number", () => {
-    expect(auftaktPosition("goal")).toEqual({ at: 1, of: 4 });
-    expect(auftaktPosition("los")).toEqual({ at: 4, of: 4 });
+    expect(auftaktPosition("goal")).toEqual({ at: 1, of: 5 });
+    expect(auftaktPosition("los")).toEqual({ at: 5, of: 5 });
     expect(auftaktPosition("task")).toBeNull();
   });
 
@@ -118,5 +122,79 @@ describe("R5-W2 · J1-B · the mechanic is named where the child acts", () => {
     expect(t.find((x) => x.key === "drained")!.whyDe).toContain("auf Englisch");
     expect(auftaktTasks({ letters: 1, collectNounDe: "Buchstaben", drained: 1, cages: 1, kids: 1, tips: 1, books: 1 })
       .find((x) => x.key === "drained")!.whyDe).toContain("auf Englisch");
+  });
+});
+
+/** R5-W3 · J2 · R29 — THE SPLIT ITSELF.
+ *
+ *  Beat 3 became two beats. These are the laws that split needs and the old
+ *  four-beat chain never had to answer: which line belongs to which beat, and
+ *  what a chapter does when it has one kind of task and not the other. */
+describe("R5-W3 · J2 · R29 · the task beat, split in two", () => {
+  const base = { letters: 27, collectNounDe: "Buchstaben", drained: 6, cages: 5, kids: 1, tips: 3, books: 3 };
+
+  it("puts the DOING on one beat and the GATHERING on the other, and loses no line", () => {
+    const doing = auftaktTasks(base, "aufgaben").map((t) => t.key);
+    const gathering = auftaktTasks(base, "sammeln").map((t) => t.key);
+    expect(doing).toEqual(["drained", "cages"]);
+    expect(gathering).toEqual(["letters", "tips", "books"]);
+    // the split is a PARTITION: every line lands on exactly one beat, and the
+    // union is still the whole contract. A split that quietly drops a task
+    // would be the worst possible outcome of a readability fix.
+    expect([...doing, ...gathering].sort()).toEqual(auftaktTasks(base).map((t) => t.key).sort());
+  });
+
+  it("names the mechanic on the FIRST of the two — it no longer shares a weight with the bonus book", () => {
+    // both critics' second finding: with five identical rows, nothing said which
+    // job was the chapter's. »drained« is the line that carries »sag auf
+    // Englisch«, so it leads the beat a child acts on.
+    expect(auftaktTasks(base, "aufgaben")[0]?.key).toBe("drained");
+    expect(auftaktTasks(base, "aufgaben")[0]?.whyDe).toContain("auf Englisch");
+  });
+
+  it("neither beat carries more than three lines, at the shipped chapter's counts", () => {
+    // the whole point of the round: five on one page was the finding
+    expect(auftaktTasks(base, "aufgaben").length).toBeLessThanOrEqual(3);
+    expect(auftaktTasks(base, "sammeln").length).toBeLessThanOrEqual(3);
+  });
+
+  it("a chapter with no gathering shows FOUR beats, not five with a blank one", () => {
+    // ch02–15 inherit this grammar and will not all have both kinds
+    const noGather = { ...base, letters: 0, tips: 0, books: 0 };
+    expect(auftaktChain(noGather)).toEqual(["goal", "schatten", "aufgaben", "los"]);
+    expect(auftaktPosition("los", auftaktChain(noGather))).toEqual({ at: 4, of: 4 });
+    // and the skipped beat cannot be stepped into from either side
+    expect(auftaktStep("aufgaben", 1, auftaktChain(noGather))).toBe("los");
+    expect(auftaktStep("los", -1, auftaktChain(noGather))).toBe("aufgaben");
+    expect(auftaktStep("sammeln", 1, auftaktChain(noGather))).toBeNull();
+  });
+
+  it("a chapter with no doing shows four beats the other way round", () => {
+    const noDo = { ...base, drained: 0, cages: 0 };
+    expect(auftaktChain(noDo)).toEqual(["goal", "schatten", "sammeln", "los"]);
+    expect(auftaktStep("schatten", 1, auftaktChain(noDo))).toBe("sammeln");
+  });
+
+  it("a chapter with no tasks at all still opens and still closes", () => {
+    const none = { ...base, letters: 0, drained: 0, cages: 0, tips: 0, books: 0 };
+    expect(auftaktChain(none)).toEqual(["goal", "schatten", "los"]);
+    // and the freeze law survives the shortening: exactly one beat gives the
+    // world back, and it is still the last one
+    expect(auftaktChain(none).filter((c) => auftaktExit(c, auftaktChain(none)).unfreeze)).toEqual(["los"]);
+  });
+
+  it("the freeze law holds on EVERY chain a chapter can produce", () => {
+    // the split multiplied the number of possible chains; the law that exactly
+    // one beat un-freezes must hold on all of them, or a chapter shape nobody
+    // tested starts the world under a card a child is still reading
+    for (const doing of [true, false]) for (const gathering of [true, false]) {
+      const c = { ...base, drained: doing ? 6 : 0, cages: doing ? 5 : 0,
+                  letters: gathering ? 27 : 0, tips: gathering ? 3 : 0, books: gathering ? 3 : 0 };
+      const chain = auftaktChain(c);
+      expect(chain.filter((b) => auftaktExit(b, chain).unfreeze), `chain ${chain.join("→")}`).toEqual(["los"]);
+      expect(chain.filter((b) => auftaktExit(b, chain).boot), `chain ${chain.join("→")}`).toEqual(["los"]);
+      expect(chain[0]).toBe("goal");
+      expect(chain[chain.length - 1]).toBe("los");
+    }
   });
 });
