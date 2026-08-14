@@ -50,7 +50,7 @@
  * delivery, and it is superseded there.
  *
  * Row 2 of `cage_insassen` — Codex's four INVENTED cages, wicker baskets with
- * padlocks (D-35) — is not in this file and never will be: wiring it would
+ * padlocks (D-71, vor K1s Entdopplung D-35) — is not in this file and never will be: wiring it would
  * replace ch01's cage design in silence, and the cage design is a Koki gate.
  */
 import crypto from "node:crypto";
