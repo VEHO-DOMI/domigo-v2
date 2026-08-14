@@ -45,6 +45,18 @@ const LOGICAL_W = 352;
 const RENDER_SCALE = 3;
 const EXPECT_W = LOGICAL_W * RENDER_SCALE; // 1056
 
+// ── R28 (Fable, 2026-08-14): DER RADIUS IST DIE KANTE ───────────────────────
+// Runde 2 zeigte, dass die Zahl fast vollständig davon abhängt, WO man misst:
+// an der Kante +46,5 · zwei Objekthöhen weiter draußen +13,2. Die Unterlage
+// reicht bis ~1,81 Objekthöhen und kann außerhalb davon naturgemäß nichts
+// bewirken — ein Ziel, das sich auf einen anderen Ring bezieht als die Messung,
+// ist kein Ziel. Also ist der KANTEN-Ring ab jetzt das Maß (dort trennt ein
+// Kind), und der ferne Ring läuft als Begleitspalte mit, damit niemand einen
+// Kantensieg mit einer verdunkelten Wand verwechselt.
+export const EDGE_RING = { inner: 0.8, outer: 1.2 };
+export const WALL_RING = { inner: 2.0, outer: 3.2 };
+export const TARGET_DL = 50; // die Zahl der blinden Kritiker, AM KANTEN-RING
+
 const lum = (r, g, b) => 0.2126 * r + 0.7152 * g + 0.0722 * b;
 
 /** Hue in degrees, or null for a pixel with no chroma to speak of. */
@@ -67,12 +79,14 @@ const hueGap = (a, b) => {
 
 /** The measurement itself: the object's box against an ANNULUS around it.
  *
- *  The ring is deliberately OUTSIDE the whole cue — the backing disc and the
- *  halo are part of the object's presentation, not of the wall it has to beat.
- *  Inner radius 2.0·h, outer 3.2·h from the object's centre. The shaft column is
- *  NOT excluded: if a beam brightens the wall above the page, that is a real
- *  cost and it belongs in the number. */
-export const measure = (png, box, { inner = 2.0, outer = 3.2 } = {}) => {
+ *  DEFAULT = THE EDGE (0.8–1.2·h), by R28. That is where a child separates a
+ *  thing from its ground, and it is where the backing can act at all. The far
+ *  ring (2.0–3.2·h) is still measurable — pass WALL_RING — and the CLI prints
+ *  it alongside, because a win at the edge bought by darkening the whole wall
+ *  would be a different, worse change. The shaft column is NOT excluded: if a
+ *  beam brightens the wall above the page, that is a real cost and belongs in
+ *  the number. */
+export const measure = (png, box, { inner = EDGE_RING.inner, outer = EDGE_RING.outer } = {}) => {
   const { width: W, height: H, data } = png;
   const cx = box.x + box.w / 2;
   const cy = box.y + box.h / 2;
@@ -219,6 +233,7 @@ if (!dir) {
   process.exit(1);
 }
 const asJson = args.includes("--json");
+const role = args.indexOf("--role") === -1 ? "tip" : args[args.indexOf("--role") + 1];
 
 const rows = [];
 for (const f of fs.readdirSync(dir).filter((n) => n.endsWith(".png")).sort()) {
@@ -235,23 +250,46 @@ for (const f of fs.readdirSync(dir).filter((n) => n.endsWith(".png")).sort()) {
     console.error(`✗ ${stem}: sidecar says scale ${meta.scale}, this tool measures at ${RENDER_SCALE}`);
     process.exit(1);
   }
-  const m = measure(png, meta.box);
-  rows.push({ frame: stem, object: meta.object ?? "?", ...m });
+  // R5-W3 · W1: die Box darf aus dem Zettel kommen, den `shoot-world.mjs`
+  // schreibt — der Zeichenort meldet die Bildschirm-Lage selbst. Von Hand
+  // getippte Boxen waren die letzte weiche Stelle in dieser Messkette.
+  const box = meta.box ?? (() => {
+    const ent = (meta.entities ?? []).find((e) => e.role === role && e.breath?.scr);
+    if (!ent) return null;
+    const s = ent.breath.scr;
+    return { x: Math.round(s.x), y: Math.round(s.y), w: Math.round(s.w), h: Math.round(s.h) };
+  })();
+  if (box === null) {
+    console.error(`✗ ${stem}: weder meta.box noch ein »${role}« mit gezeichneter Bildschirm-Lage im Zettel`);
+    process.exit(1);
+  }
+  const m = measure(png, box);
+  const wall = measure(png, box, WALL_RING);
+  rows.push({
+    frame: stem,
+    object: meta.object ?? (meta.entities ?? []).find((e) => e.role === role)?.id ?? "?",
+    ...m,
+    dLWall: wall.dL,
+  });
 }
 
 if (asJson) {
   console.log(JSON.stringify(rows, null, 2));
 } else {
-  console.log(`scale ${RENDER_SCALE}× · frames ${EXPECT_W}px wide · ring 2.0–3.2 × object height\n`);
-  console.log("frame                 object                  L_obj  L_ring     ΔL    p95  clip%     ΔH");
+  console.log(`scale ${RENDER_SCALE}× · frames ${EXPECT_W}px wide`);
+  console.log(`ring = THE EDGE ${EDGE_RING.inner}–${EDGE_RING.outer} × object height (R28) · wall ring ${WALL_RING.inner}–${WALL_RING.outer} alongside\n`);
+  console.log("frame                 object                  L_obj  L_ring     ΔL  ΔL_wall    p95  clip%     ΔH");
   for (const r of rows) {
     console.log(
       `${r.frame.padEnd(21)} ${String(r.object).padEnd(22)} `
       + `${r.lObj.toFixed(1).padStart(6)} ${r.lRing.toFixed(1).padStart(7)} `
       + `${(r.dL >= 0 ? "+" : "") + r.dL.toFixed(1)}`.padStart(7)
+      + ` ${((r.dLWall >= 0 ? "+" : "") + r.dLWall.toFixed(1)).padStart(8)}`
       + ` ${r.p95.toFixed(0).padStart(6)} ${r.clipPct.toFixed(1).padStart(6)} `
       + `${r.dH === null ? "   n/a" : r.dH.toFixed(0).padStart(6)}`,
     );
   }
-  console.log(`\n(target: ΔL ≥ +50 — the blind critics' own number)`);
+  const best = Math.max(...rows.map((r) => r.dL));
+  console.log(`\n(target: ΔL ≥ +${TARGET_DL} AT THE EDGE — the blind critics' number, given its radius by R28)`);
+  console.log(`  best in this set: ${(best >= 0 ? "+" : "") + best.toFixed(1)} → ${best >= TARGET_DL ? "TARGET MET" : `${(TARGET_DL - best).toFixed(1)} short`}`);
 }
