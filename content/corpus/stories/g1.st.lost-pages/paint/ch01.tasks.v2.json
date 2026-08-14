@@ -1560,7 +1560,7 @@
     "p4"
    ],
    "hints": {
-    "deDesc": "Zähl in Gedanken mit: neun, zehn, elf, zwölf."
+    "deDesc": "Welche Zahl ist die kleinste? Fang dort an."
    },
    "grounding": "u01 numbers 1-20 (p3-Regel-Seite »Zahlen 1-20«); loest die Zahlen-Zusage der Arena ein (arena.md §Uebergabe). Evidence = die gemischte Auslage, die seededShuffle fuer diese id baut.",
    "evidence": [
@@ -1692,7 +1692,7 @@
    "kind": "typed",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Die Tafel weint Kreide-Tränen und schaut dich an",
+    "showsDe": "Die Tafel ruht auf den Brettern und schaut dich an",
     "art": "tafel_rest"
    },
    "storyDe": "Schreib ihr ein liebes Wort: Hallo auf Englisch!",

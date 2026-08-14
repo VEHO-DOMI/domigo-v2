@@ -341,9 +341,47 @@ const stepRedeemed = (e: EntityState): void => {
  * the freeze intends. It raises no events by construction (`stepRedeemed`
  * cannot), so a cinematic beat can never open a card behind its own card.
  */
-export const stepRedeemedOnly = (w: EntityWorld): void => {
+/** R5-W2 · H1 · DIE LANDUNG GEHÖRT ZUM HALTEN.
+ *
+ *  Die beiden Zustände, in denen die besiegte Tafel noch in Bewegung ist. Sie
+ *  ist NIE `redeemed` (nichts im ganzen Paket setzt das an einem Guardian), also
+ *  überspringt der Erlösten-Takt sie — und weil `guardianDown` ausserdem gar
+ *  keine Haltezeit gesetzt hat, spielte der komplette Sieg-Bogen erst NACH
+ *  beiden Karten, in einem Raum, in dem niemand mehr hinsieht. Das Kind las
+ *  „…und sie blüht sonnengelb auf", während sie noch in der Luft hing.
+ *
+ *  Gefiltert wird über die ZUSTÄNDE, nicht über `redeemed = true`: das würde in
+ *  `cagesGated`, in den `dazed`-Auffangzweig und in die Band-Behauptung
+ *  `redeemedPresent` lecken. Ein schmales Prädikat sagt genau das, was gilt. */
+const LANDING_STATES: ReadonlySet<string> = new Set(["sink", "sad"]);
+
+/** Ihre Landung, als eigener Schritt — damit BEIDE Takte sie fahren können: der
+ *  volle Welt-Takt und der Halte-Takt hinter einer offenen Karte. Gibt zurück,
+ *  ob dieser Schritt das Wesen bereits erledigt hat. */
+const stepGuardianLanding = (e: EntityState, grid: readonly string[]): boolean => {
+  if (e.role !== "guardian" || !LANDING_STATES.has(e.state)) return false;
+  if (e.state === "sink") {
+    const floorY = groundAt(grid, e.x, e.y) ?? e.y;
+    e.vx = 0;
+    e.y = Math.min(e.y + SINK_SPEED, floorY);
+    if (e.y >= floorY) { e.y = floorY; e.state = "sad"; e.timer = 0; }
+    return true;
+  }
+  // `sad` — sie ruht aus, bevor die Konsole antwortet (doc 44 §2.2: sie RUHT,
+  // sie weint nicht)
+  if (e.timer > SAD_TICKS) { e.state = "consoled"; e.timer = 0; }
+  return true;
+};
+
+export const stepRedeemedOnly = (w: EntityWorld, grid: readonly string[] = []): void => {
   for (const e of w.entities) {
-    if (e.hidden || !e.redeemed) continue;
+    if (e.hidden) continue;
+    if (e.role === "guardian" && LANDING_STATES.has(e.state)) {
+      e.timer += 1;
+      stepGuardianLanding(e, grid);
+      continue;
+    }
+    if (!e.redeemed) continue;
     stepRedeemed(e);
   }
 };
@@ -1095,21 +1133,12 @@ export const stepEntities = (
 
         // THE TERMINAL BEATS — she is down, and she comes to rest (doc 44 §4
         // ch01 C4: „she sinks to the ground, exhausted").
-        if (e.state === "sink") {
-          const floor = groundAt(grid, e.x, e.y);
-          const floorY = floor ?? e.y;
-          e.vx = 0;
-          e.y = Math.min(e.y + SINK_SPEED, floorY);
-          if (e.y >= floorY) { e.y = floorY; e.state = "sad"; e.timer = 0; }
-          break;
-        }
-        if (e.state === "sad") {
-          // R3-5 kept: the board reacts BEFORE the victory cell. What changed is
-          // the reaction — doc 44 §2.2 flexibilised the signature beat („the
-          // Tafel slumps exhausted"), so she rests rather than cries.
-          if (e.timer > SAD_TICKS) { e.state = "consoled"; e.timer = 0; }
-          break;
-        }
+        // R3-5 kept: the board reacts BEFORE the victory cell. What changed is
+        // the reaction — doc 44 §2.2 flexibilised the signature beat („the Tafel
+        // slumps exhausted"), so she rests rather than cries. R5-W2 · H1: the
+        // landing lives in its own function, because the HOLD has to be able to
+        // play it too (see stepGuardianLanding).
+        if (stepGuardianLanding(e, grid)) break;
         // `window` (the counter-task) and `consoled` are scene-driven states.
         if (e.state === "window" || e.state === "consoled") break;
 
