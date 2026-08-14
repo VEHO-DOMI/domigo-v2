@@ -176,9 +176,11 @@ export interface ChapterShellState {
   /** PK-R3b · R3-16 — PaintGame's tipsTakenRef/booksTakenRef: a Regel-Seite
    *  taken before the Kleckskammer is still taken when the phase remounts. */
   pickedUp: string[];
+  /** R5-W2 · H1 (Teil 3): die Arena-Anleitung, einmal je KAPITEL. */
+  arenaBriefShown: boolean;
 }
 
-export const newChapterShell = (): ChapterShellState => ({ cageHintShown: false, pickedUp: [] });
+export const newChapterShell = (): ChapterShellState => ({ cageHintShown: false, arenaBriefShown: false, pickedUp: [] });
 
 /**
  * Replay a phase tape through the REAL Sim — the same shell contract
@@ -201,6 +203,7 @@ export const replayPhaseTape = (
     grantedAbilities: () => abilities,
     freedCageIds: () => freed,
     cageHintShown: () => shell.cageHintShown,
+    arenaBriefShown: () => shell.arenaBriefShown,
     collectedPickupIds: () => shell.pickedUp,
   });
   let exited = false;
@@ -260,6 +263,15 @@ export const replayPhaseTape = (
         // OBEN, die Haltezeit läuft dahinter ab, und erst danach geht es
         // weiter. Genau das wird hier nachgestellt.
         awaitLanding = true;
+      } else if (ev.type === "arenaBrief") {
+        // R5-W2 · H1 (Teil 3): die Arena-Anleitung friert die Welt ein, also
+        // schuldet der Shell ihr eine Ablage — sonst bleibt jedes Band der
+        // Arena an der Bühnen-Schwelle stehen. Dieselbe Lehre wie beim
+        // Käfig-Hinweis und der Regel-Seite, hier vorab angewandt.
+        if (!shell.arenaBriefShown) {
+          shell.arenaBriefShown = true;
+          sim.setOverlay(false);
+        }
       } else if (ev.type === "cageHint") {
         // PB-F3: the one-time cage hint. PB-R1 · R3-1: „one-time" means once per
         // CHAPTER — on every later hint PaintGame returns without opening a card,

@@ -20,6 +20,7 @@ import type { GameTaskV2 } from "@domigo/content-schema";
 import { CardHost } from "./cards/CardHost.tsx";
 import { Key, KeyBit } from "./cards/Glance.tsx";
 import { type AuftaktCard, auftaktExit, auftaktPosition, auftaktStep, auftaktTasks } from "./cards/auftakt.ts";
+import { type ArenaBeat, arenaExit, arenaLines, arenaPosition, arenaStep } from "./cards/arena.ts";
 import { answerTextOf } from "./cards/resolution.ts";
 import { tierOfAsker } from "./cards/serving.ts";
 import { windowMsFor } from "./cards/timer.ts";
@@ -149,7 +150,7 @@ interface OverlayState {
   // state writes, the ceremony beat sim.ts already carries, and the address the
   // card bench photographs. Their ORDER is deliberately NOT here: it lives in
   // cards/auftakt.ts, where a test can walk it from both ends without a DOM.
-  card: AuftaktCard | "task" | "finale" | "grant" | "bonuspay" | "ceremony" | "console" | "bonusend"
+  card: AuftaktCard | ArenaBeat | "task" | "finale" | "grant" | "bonuspay" | "ceremony" | "console" | "bonusend"
     | "cagehint" | "tip" | "regel" | "merkseite" | "score" | "out";
   attempts: number;
   typed: string;
@@ -319,6 +320,8 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
   const lettersTakenRef = useRef(new Map<string, string[]>());
   /** PB-F3: the cage hint is a once-per-chapter teacher, not a nag. */
   const cageHintShownRef = useRef(false);
+  /** R5-W2 · H1 (Teil 3): die Arena-Anleitung, einmal je Kapitel. */
+  const arenaBriefShownRef = useRef(false);
   const [freedCount, setFreedCount] = useState(0);
   const [freedKids, setFreedKids] = useState(0);
   // ── PK-R3b · R3-16/17 · the collectibles that OUTLIVE a phase mount ────────
@@ -520,6 +523,17 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
     // would start the chapter running underneath a card the child is still
     // reading, which is the class pickups.test.ts's „a Regel-Seite FREEZES the
     // world" was written for.
+    // R5-W2 · H1 (Teil 3) · DIE ARENA-ANLEITUNG, auf demselben Gerät.
+    // Der Unterschied zum Auftakt ist der letzte Takt: hier MUSS die Welt
+    // zurück, denn sie lief vorher schon — das Kind stand mitten im Spiel, als
+    // die Karte kam. `arenaExit` sagt beides in einem Booleschen.
+    const arena = arenaExit(o.card);
+    if (arenaPosition(o.card) !== null) {
+      if (arena.next !== null) { setOverlay({ ...o, card: arena.next }); return; }
+      setOverlay(null);
+      sceneRef.current?.setOverlay(false); // der Kampf darf jetzt losgehen
+      return;
+    }
     const auftakt = auftaktExit(o.card);
     if (auftakt.next !== null) {
       setOverlay({ ...o, card: auftakt.next });
@@ -738,6 +752,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
         grantedAbilities: () => abilitiesRef.current,
         freedCageIds: () => freedRef.current,
         cageHintShown: () => cageHintShownRef.current,
+        arenaBriefShown: () => arenaBriefShownRef.current,
         collectedPickupIds: () => [...tipsTakenRef.current.map((t) => t.id), ...booksTakenRef.current],
         airModel,
         spawnCell: fromBonus ? ret.spawn : undefined,
@@ -844,6 +859,18 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
             openCard({
               req: { use: "quickfire", ctx: { type: "ceremony", beat: "cagehint" } }, item: null, card: "cagehint",
               attempts: 0, typed: "", align: "center", cagehint: { captiveDe: captiveOfCage(level, cageId).captiveDe },
+            });
+          },
+          onArenaBrief: () => {
+            // R5-W2 · H1 (Teil 3) · DIE KNOTEN-ERKLÄRUNG (Kokis F1/F2).
+            // Zweite Hälfte der Freeze-Paarung, wie am Käfig-Hinweis: der Sim
+            // fragt vorher, dieser Zweig sollte also unerreichbar sein — aber
+            // ein Shell, der eine Karte ablehnt, gibt IMMER die Welt zurück.
+            if (arenaBriefShownRef.current) { sceneRef.current?.setOverlay(false); return; }
+            arenaBriefShownRef.current = true;
+            openCard({
+              req: { use: "quickfire", ctx: { type: "ceremony", beat: "goal" } }, item: null, card: "wer",
+              attempts: 0, typed: "", align: "center",
             });
           },
           onCageFreed: (id, skin, classmate, count) => {
@@ -1299,6 +1326,51 @@ function Overlay({
       </div>
     );
   };
+
+  // ── R5-W2 · H1 (Teil 3) · DIE KNOTEN-ERKLÄRUNG, IN ZWEI TAKTEN ────────────
+  //
+  // Koki im Replay: „Why do we have knots? What is the idea again?" (doc 45 F1)
+  // und „Klare Arena-Anleitung. Wie besiegt man den Boss?" (F2). Der Platz dafür
+  // stand seit R5-P1 im Dossier deklariert und leer (`arena.md` §3, p4-objective:
+  // „Slot hier DEKLARIERT, damit der Bau ihn verdrahtet"), samt gemalter Tafel.
+  //
+  // Erst WER SIE IST, dann WIE ES GEHT — die Reihenfolge ist die Aussage des
+  // Kapitels: sie ist kein Gegner, sie ist verwunschen (doc 45 F6). Die Kette
+  // liegt in `cards/arena.ts`, damit ein Test sie ohne DOM von beiden Enden
+  // gehen kann; nur der letzte Takt gibt die Welt zurück.
+  if (arenaPosition(o.card) !== null) {
+    const beat = o.card as ArenaBeat;
+    const lines = arenaLines(beat);
+    const pos = arenaPosition(o.card)!;
+    const plate = level.goalPlate !== undefined ? art[level.goalPlate] : undefined;
+    return staged(
+      <div style={{ textAlign: "left" }}>
+        <p style={{ fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: "#a8926a", margin: "0 0 6px", fontFamily: "var(--font-label, inherit)" }}>
+          {lines.titleDe}
+        </p>
+        {/* Nur der ERSTE Takt trägt das Bild. Takt 2 ist eine Anleitung, und ein
+            zweites Mal dieselbe Tafel würde sagen »hier steht nichts Neues«. */}
+        {beat === "wer" && plate !== undefined && (
+          <div style={{ ...plateMount, aspectRatio: "2048 / 1260", margin: "0 0 10px" }}>
+            <img src={plate} alt="" aria-hidden style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+          </div>
+        )}
+        <h2 style={{ fontSize: 19, lineHeight: 1.2, margin: "0 0 8px", color: "#3a2f1c", fontFamily: "var(--font-display, inherit)" }}>
+          {lines.showsDe}
+        </h2>
+        <Key>{lines.storyDe}</Key>
+        <div style={{ display: "flex", alignItems: "center", gap: 10, marginTop: 14, flexWrap: "wrap" }}>
+          <button className="pb-btn-primary" style={{ ...btn, fontSize: 16 }} onClick={() => onDismiss(o)}>
+            {arenaStep(o.card, 1) === null ? "Los!" : "Weiter"}
+          </button>
+          <span style={{ marginLeft: "auto", fontSize: 12, color: "#a8926a", fontFamily: "var(--font-label, inherit)" }}>
+            {pos.at} / {pos.of}
+          </span>
+        </div>
+      </div>,
+      "pb-page",
+    );
+  }
 
   // ── R5-W2 · J1-B · THE CHAPTER OPENING, IN FOUR BEATS ─────────────────────
   //

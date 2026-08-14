@@ -235,6 +235,8 @@ export interface PaintCallbacks {
   /** PB-F3 · F2-8: the first cage the fist can open, once per phase.
    *  R5-C1: with the id of the cage it fired at, so the card can name it. */
   onCageHint: (id: string) => void;
+  /** R5-W2 · H1 (Teil 3): das Kind hat die Bühnen-Schwelle übertreten. */
+  onArenaBrief: () => void;
   /** PK-R3b · R3-16: a Regel-Seite was found — the shell shows its rule page. */
   onTip: (tip: TipPayload) => void;
   /** PK-R3b · R3-16: a Bonus-Buch was found — score only, no card. */
@@ -256,6 +258,7 @@ export interface PaintSceneCfg {
   /** PB-R1 · R3-1: chapter state again — has the fist hint already been taught?
    *  The sim must not freeze the world for a card the shell will not open. */
   cageHintShown?: () => boolean;
+  arenaBriefShown?: () => boolean;
   /** PK-R3b · R3-16: Regel-Seiten / Bonus-Bücher already taken this chapter. */
   collectedPickupIds?: () => readonly string[];
   /** R5-A2: the Kleckskammer round-trip — spawn override + surviving letter
@@ -899,6 +902,7 @@ export class PaintScene extends Phaser.Scene {
       grantedAbilities: cfg.grantedAbilities,
       freedCageIds: cfg.freedCageIds,
       cageHintShown: cfg.cageHintShown,
+      arenaBriefShown: cfg.arenaBriefShown,
       collectedPickupIds: cfg.collectedPickupIds,
       airModel: cfg.airModel,
       spawnCell: cfg.spawnCell,
@@ -1243,6 +1247,7 @@ export class PaintScene extends Phaser.Scene {
         case "cageFreed": cb.onCageFreed(ev.id, ev.skin, ev.classmate, ev.count); break;
         case "guardianDown": cb.onGuardianDown(ev.id, ev.skin); break;
         case "cageHint": cb.onCageHint(ev.id); break;
+        case "arenaBrief": cb.onArenaBrief(); break;
         case "letters": cb.onLetters(ev.got, ev.total); break;
         case "letterTaken": {
           this.cfg.callbacks.onLetterTaken?.(ev.c, ev.r);

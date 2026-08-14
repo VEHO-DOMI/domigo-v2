@@ -40,6 +40,7 @@ const runPilot = (phaseId, entryAbilities, program, { maxTicks = 60 * 120, trace
       else if (ev.type === "powerup") { if (!abilities.includes(ev.grants)) abilities.push(ev.grants); sim.setOverlay(false); }
       else if (ev.type === "cageFreed") { freed.push(ev.id); sim.setOverlay(false); }
       else if (ev.type === "guardianDown") awaitLanding = true; // R5-W2 · H1: die Karte bleibt über der Landung oben (siehe tape.ts)
+      else if (ev.type === "arenaBrief") sim.setOverlay(false); // R5-W2 · H1: die Arena-Anleitung friert ein, also ablegen
       else if (ev.type === "cageHint") sim.setOverlay(false); // PB-F3: the one-time hint
       // PK-R3b · R3-16: a Regel-Seite freezes the world so it can be read, so
       // the pilot must put it down again — the cagehint lesson, applied to the
