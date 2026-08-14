@@ -38,6 +38,25 @@ export interface EntityState {
   homeX: number;
   homeY: number;
   redeemed: boolean;
+  /** R5-W2 · H1 · cages only: has this cage's RESCUE actually been answered?
+   *
+   *  It cannot be read off `redeemed` or off the state, and that gap was a
+   *  softlock. A cage sets `redeemed` the instant it BURSTS — it has to, or the
+   *  throw-open would not animate behind the ink iris, which runs under a hold
+   *  that steps redeemed beings only. And `burst` turns into `open` on its own
+   *  after CAGE_OPEN_TICKS whether or not anybody answered anything. So both of
+   *  the marks that look like „done" really mean „the lid is off".
+   *
+   *  Meanwhile `engageTargetId` skips redeemed beings, so putting the rescue
+   *  card down with „Später" left the cage open, unanswered and unreachable
+   *  FOREVER — its captive owed a card that ↑ could no longer raise. A
+   *  classmate cage is safe by accident (it hands over to the ceremony, and
+   *  `awakenAsk` is that ceremony's declared road back); the four object cages
+   *  had none, and one of them holds the class photo the whole first chapter
+   *  is about.
+   *
+   *  Only a plain cage can OWE — see `cageOwesCard`. */
+  freed: boolean;
   hidden: boolean; // revealed via links
   /** PK-R6 · C2 · guardians only: chalk thrown at this child that MISSED since
    *  the last counter-window. See DODGES_PER_WINDOW — this is the fist-less
@@ -110,6 +129,12 @@ export type EntityEvent =
   | { type: "engaged"; id: string; role: string; skin: string }
   | { type: "cageHit"; id: string; hpLeft: number }
   | { type: "cageBurst"; id: string; skin: string }
+  /** R5-W2 · H1: the child stepped up to an already-open cage whose rescue is
+   *  still owed and pressed ↑. Same anti-softlock half as `awakenAsk` below,
+   *  for the beings that never had one — and deliberately NOT a second
+   *  `cageBurst`, because the lid is already off and the ink iris is a beat
+   *  that has already played. */
+  | { type: "cageAsk"; id: string; skin: string }
   | { type: "cageGated"; id: string }
   /** PK-R6 · D: the child stepped up to a half-woken classmate and pressed ↑.
    *  The ceremony resumes at the round she is on — this is the anti-softlock
@@ -528,6 +553,7 @@ export const spawnEntities = (specs: EntitySpec[], links: LinkSpec[]): EntityWor
     homeX: cellX,
     homeY: cellY,
     redeemed: false,
+    freed: false,
     hidden: s.params?.hidden === true,
     dodges: 0,
     throws: 0,
@@ -582,6 +608,20 @@ const inEngageReach = (e: EntityState, playerX: number, playerY: number): boolea
   && Math.abs(e.y - playerY) / SUBS < ENGAGE_REACH_Y_PX;
 
 /**
+ * R5-W2 · H1 · Does this cage still owe the child a card?
+ *
+ * The anti-softlock law (PB-T1) says every card can be put down and the world
+ * comes back. For a plain cage that was only half true: the lid came off, the
+ * card went down, and ↑ could never raise it again (see `EntityState.freed`).
+ *
+ * A cage with a CLASSMATE never owes one — it hands its beat to her ceremony
+ * the moment it bursts, and `awakenAsk` is that ceremony's own road back. So
+ * the road is opened for exactly the cages that lost theirs.
+ */
+export const cageOwesCard = (w: EntityWorld, e: EntityState): boolean =>
+  e.role === "cage" && !e.freed && classmateOfCage(w, e.id) === null;
+
+/**
  * Which being a ↑ press would engage right now, or null. PURE and exported so
  * the RENDERER draws the cue from the same answer the sim acts on — the „the
  * picture and the pickup can never disagree" rule the letter magnet already
@@ -594,7 +634,12 @@ export const engageTargetId = (
 ): string | null => {
   let best: { id: string; d: number } | null = null;
   for (const e of w.entities) {
-    if (e.hidden || e.redeemed || !ENGAGEABLE_ROLES.has(e.role)) continue;
+    if (e.hidden || !ENGAGEABLE_ROLES.has(e.role)) continue;
+    // R5-W2 · H1: redemption normally ends the conversation — except for a cage,
+    // which is `redeemed` from the moment its lid comes off, long before its
+    // rescue has been answered. One that still owes a card stays askable, or
+    // „Später" strands its captive for good.
+    if (e.redeemed && !cageOwesCard(w, e)) continue;
     if (!inEngageReach(e, playerX, playerY)) continue;
     const d = Math.abs(e.x - playerX);
     if (best === null || d < best.d) best = { id: e.id, d };
@@ -708,7 +753,18 @@ export const stepEntities = (
   for (const e of w.entities) {
     if (e.hidden) continue;
     // R3-5: a freed friend keeps LIVING (joy → rest); it is no longer skipped
-    if (e.redeemed) { stepRedeemed(e); continue; }
+    if (e.redeemed) {
+      stepRedeemed(e);
+      // R5-W2 · H1 · THE ROAD BACK, and it has to live here rather than in the
+      // `cage` case below, because this short-circuit is exactly what made the
+      // softlock: a cage is `redeemed` from the moment its lid comes off, so
+      // its own case has not run since. Everything else about an open cage IS
+      // finished — only the ↑ ask comes back, and only while it still owes one.
+      if (e.id === engageId && cageOwesCard(w, e)) {
+        events.push({ type: "cageAsk", id: e.id, skin: e.skin });
+      }
+      continue;
+    }
     e.timer += 1;
     switch (e.role) {
       case "chaser": {
@@ -905,6 +961,9 @@ export const stepEntities = (
           events.push({ type: "cageGated", id: e.id });
           break;
         }
+        // (the road back for an ALREADY-open cage lives in the redeemed
+        //  short-circuit at the top of this loop — this case never runs once
+        //  the lid is off)
         if (e.state !== "burst" && e.id === engageId) {
           e.state = "burst"; e.redeemed = true; e.timer = 0; e.freedTick = 0;
           events.push({ type: "cageBurst", id: e.id, skin: e.skin });

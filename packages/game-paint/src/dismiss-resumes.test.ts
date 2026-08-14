@@ -181,6 +181,141 @@ describe("R5-W2 · H1 · »Später« auf der Boss-Karte gibt die Welt zurück", 
 });
 
 // ─────────────────────────────────────────────────────────────────────────────
+// DER RÜCKWEG ZUM KÄFIG — dieselbe Klasse, das andere Wesen.
+//
+// Ein Käfig setzt `redeemed`, sobald der DECKEL abgeht — er muss, sonst spielt
+// das Aufspringen nicht hinter der Tinten-Blende, die unter einem Halt läuft,
+// der nur erlöste Wesen weiterdreht. Und `burst` wird nach CAGE_OPEN_TICKS von
+// allein zu `open`, ob jemand geantwortet hat oder nicht. Beide Marken, die
+// nach »fertig« aussehen, heißen in Wahrheit »der Deckel ist ab«.
+//
+// `engageTargetId` überspringt erlöste Wesen. Also ließ »Später« auf der
+// Rettungs-Karte den Käfig offen, unbeantwortet und FÜR IMMER unerreichbar —
+// sein Insasse schuldete eine Karte, die ↑ nicht mehr stellen konnte. Ein
+// Klassenkind-Käfig ist aus Versehen sicher (er übergibt an die Zeremonie, und
+// `awakenAsk` ist deren erklärter Rückweg); die vier Ding-Käfige hatten keinen,
+// und in einem davon hängt das Klassenfoto, um das es im ganzen Kapitel geht.
+// ─────────────────────────────────────────────────────────────────────────────
+
+const CAGE_ROOM: readonly string[] = [
+  ...Array.from({ length: 14 }, () => row(".")),
+  put(row("."), 20, "S"),
+  row("#"),
+  row("#"),
+];
+
+const cageLevel = (): PaintLevel => ({
+  schema: "paintLevel@1",
+  id: "g1-ch99", chapter: "ch99", draft: true, name: "Test",
+  goalDe: "x", whyDe: "x", hintsDe: [], collectNounDe: "x", abilities: ["jump"],
+  phases: [{
+    id: "p1", nameDe: "Test", surface: "normal", plates: {},
+    rows: [...CAGE_ROOM],
+    entities: [{ id: "cage5", role: "cage", skin: "satchel", c: 20, r: 14, tier: "E", params: { captiveDe: "das Klassenfoto" } }],
+    links: [], exit: { to: "done" },
+  }],
+});
+
+/** ↑ drücken und die Rettungs-Karte einsammeln, falls eine kommt.
+ *
+ *  Getippt statt gehalten, und wiederholt: ↑ ist eine steigende Flanke, und
+ *  direkt nach dem Aufspringen läuft noch der kurze Öffnungs-Halt, in dem die
+ *  Welt keine Eingabe annimmt. Ein einzelner Druck auf Tick 0 fällt genau da
+ *  hinein — was beim Schreiben dieses Tests erst wie der Bug aussah und keiner
+ *  war (der Halt endet nach CAGE_OPEN_TICKS von selbst). Ein Kind tippt eben
+ *  noch einmal. */
+const pressUp = (sim: Sim, ticks = 90): TaskRequest["ctx"] | null => {
+  let found: TaskRequest["ctx"] | null = null;
+  for (let t = 0; t < ticks; t++) {
+    for (const ev of sim.step({ ...IDLE_PAD, up: t % 2 === 0 })) {
+      if (ev.type === "task" && ev.req.ctx.type === "cage") found = ev.req.ctx;
+    }
+    if (found) return found;
+  }
+  return found;
+};
+
+describe("R5-W2 · H1 · »Später« am Käfig sperrt den Insassen nicht aus", () => {
+  const make5 = (): Sim =>
+    new Sim({ level: cageLevel(), phaseId: "p1", grantedAbilities: () => [], freedCageIds: () => [] });
+
+  it("↑ öffnet den Käfig und stellt seine Karte (die Vorbedingung)", () => {
+    const sim = make5();
+    expect(pressUp(sim), "der Käfig muss überhaupt fragen").not.toBeNull();
+  });
+
+  it("DER RÜCKWEG: weggelegt, und ↑ stellt dieselbe Karte noch einmal", () => {
+    const sim = make5();
+    const first = pressUp(sim);
+    expect(first).not.toBeNull();
+    sim.dismissTask(first!);
+
+    const again = pressUp(sim);
+    expect(again, "ohne Rückweg hinge das Klassenfoto für immer im offenen Käfig").not.toBeNull();
+  });
+
+  it("und danach fragt er NICHT mehr — ein beantworteter Käfig schuldet nichts", () => {
+    const sim = make5();
+    const first = pressUp(sim);
+    sim.solveTask(first!);
+    expect(pressUp(sim), "gelöst heißt gelöst").toBeNull();
+  });
+
+  it("ein KLASSENKIND-Käfig bekommt keinen zweiten Rückweg — er hat schon einen", () => {
+    // Die Ausnahme in `cageOwesCard` ist keine Höflichkeit: ein Käfig mit
+    // Klassenkind übergibt beim Aufspringen an ihre Zeremonie und stellt seine
+    // eigene Rettungs-Karte NIE. Ohne die Ausnahme bliebe er ewig „schuldig"
+    // und ↑ an ihm würde eine Käfig-Karte stellen statt ihrer Runde — zwei
+    // Rettungen für ein Wesen. Ein Tamper, der die Ausnahme streicht, muss
+    // hier rot werden, sonst ist sie totes Wort.
+    const mateLevel: PaintLevel = {
+      schema: "paintLevel@1",
+      id: "g1-ch99", chapter: "ch99", draft: true, name: "Test",
+      goalDe: "x", whyDe: "x", hintsDe: [], collectNounDe: "x", abilities: ["jump"],
+      phases: [{
+        id: "p1", nameDe: "Test", surface: "normal", plates: {},
+        rows: [...CAGE_ROOM],
+        entities: [
+          { id: "cage-merle", role: "cage", skin: "pencilcase", c: 20, r: 14, tier: "E", params: { classmate: "merle" } },
+          { id: "merle", role: "classmate", skin: "merle", c: 22, r: 14, tier: "E", params: { cage: "cage-merle", hidden: true } },
+        ],
+        links: [], exit: { to: "done" },
+      }],
+    };
+    const sim = new Sim({ level: mateLevel, phaseId: "p1", grantedAbilities: () => [], freedCageIds: () => [] });
+
+    // aufspringen lassen und die erste Runde einsammeln
+    let asked: TaskRequest["ctx"] | null = null;
+    for (let t = 0; t < 90 && asked === null; t++) {
+      for (const ev of sim.step({ ...IDLE_PAD, up: t % 2 === 0 })) {
+        if (ev.type === "task") asked = ev.req.ctx;
+      }
+    }
+    expect(asked?.type, "der Käfig übergibt an ihre Zeremonie").toBe("classmate");
+    sim.dismissTask(asked!);
+
+    // ↑ am KÄFIG darf jetzt keine Käfig-Karte stellen
+    let again: TaskRequest["ctx"] | null = null;
+    for (let t = 0; t < 90 && again === null; t++) {
+      for (const ev of sim.step({ ...IDLE_PAD, up: t % 2 === 0 })) {
+        if (ev.type === "task") again = ev.req.ctx;
+      }
+    }
+    expect(again?.type, "der Rückweg des Klassenkinds ist ihre Runde, nicht die Käfig-Karte").not.toBe("cage");
+  });
+
+  it("der Rückweg spielt die Blende nicht noch einmal (das Aufspringen war schon)", () => {
+    const sim = make5();
+    const first = pressUp(sim);
+    sim.dismissTask(first!);
+    for (let t = 0; t < 40; t++) sim.step(IDLE_PAD); // den Öffnungs-Halt auslaufen lassen
+    const before = sim.holdTicks;
+    pressUp(sim);
+    expect(sim.holdTicks, "kein zweiter Tinten-Iris").toBe(before);
+  });
+});
+
+// ─────────────────────────────────────────────────────────────────────────────
 // DAS SELBSTFAHR-GESETZ — die KLASSE, nicht der Einzelfall.
 //
 // Der Softlock oben war kein Tippfehler, sondern eine Lücke in einer Regel, die

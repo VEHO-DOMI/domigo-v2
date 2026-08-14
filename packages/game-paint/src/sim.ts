@@ -344,7 +344,9 @@ export class Sim {
       // seeds PAST the flood for the same reason the classmate's does below:
       // the pop and the grey→colour flood are freedTick-driven and must not
       // replay either (critic finding, R5 verify wave).
-      if (e) { e.redeemed = true; e.state = "open"; e.freedTick = COLOUR_FLOOD_TICKS; }
+      // R5-W2 · H1 · `freed` too, or a cage the child finished before the
+      // Kleckskammer trip would offer its rescue a second time on the way back.
+      if (e) { e.redeemed = true; e.freed = true; e.state = "open"; e.freedTick = COLOUR_FLOOD_TICKS; }
       // PK-R6 · D: a freed cage's PERSON is freed too. A phase is remounted
       // whenever the child comes back from the Kleckskammer, and without this
       // Merle would be hidden again behind a cage that is already open —
@@ -556,6 +558,11 @@ export class Sim {
       }
     } else if (ctx.type === "cage") {
       const freed = this.cfg.freedCageIds().length + 1;
+      // R5-W2 · H1: THIS is the moment a cage is actually done — not the burst,
+      // which only takes the lid off. Marking it here is what closes the ↑ road
+      // back again, so an answered cage stops offering a card it no longer owes.
+      const cage = this.world.entities.find((x) => x.id === ctx.id);
+      if (cage) cage.freed = true;
       events.push({ type: "cageFreed", id: ctx.id, skin: ctx.skin, classmate: ctx.classmate, count: freed });
       applyLinks(this.world, "opened", ctx.id);
     } else if (ctx.type === "classmate") {
@@ -824,6 +831,15 @@ export class Sim {
           this.askRound(mate, events);
           break;
         }
+        this.ask({ use: "rescue", ctx: { type: "cage", id: ev.id, skin: ev.skin, classmate: e?.params.classmate as string | undefined } }, events);
+        break;
+      }
+      // R5-W2 · H1 · the same rescue, raised again at a cage that is already
+      // open and still owes it. No hold and no iris: the opening is a beat that
+      // has already played, and replaying it would re-stage a moment the child
+      // has seen. Only the card comes back.
+      case "cageAsk": {
+        const e = this.world.entities.find((x) => x.id === ev.id);
         this.ask({ use: "rescue", ctx: { type: "cage", id: ev.id, skin: ev.skin, classmate: e?.params.classmate as string | undefined } }, events);
         break;
       }
