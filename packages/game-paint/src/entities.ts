@@ -119,6 +119,13 @@ export interface ProjectileState {
    *  on the piece rather than recomputed by the renderer, so the stick that
    *  shatters is the stick that flew, and its shard inherits the same colour. */
   colour: string;
+  /** R5-W2 · H1 (Teil 3) · Zählt dieses Stück auf die Überreiz-Zählung?
+   *
+   *  Undefiniert heisst JA — jedes Stück, das je geworfen wurde, zählte, und das
+   *  soll so bleiben. Nur das FÜHRENDE Stück der Gabel steht auf `false`: sonst
+   *  wäre ein Fenster ab Knoten 2 nach anderthalb Würfen offen statt nach drei,
+   *  und die Eskalation würde den Kampf VERKÜRZEN statt ihn zu verdichten. */
+  scores?: boolean;
 }
 
 export type EntityEvent =
@@ -556,6 +563,29 @@ export const DIP_TICKS = 36;
  *  subs/tick. TASTE: 1.1 px/tick — heavier than she flies, which is the whole
  *  point of the beat. */
 export const SINK_SPEED = Math.round(1.1 * SUBS);
+
+/** R5-W2 · H1 (Teil 3) · DIE GABEL — wie weit das führende Stück vorgreift.
+ *
+ *  ABGELEITET, nicht getippt: so weit, wie ein gehendes Kind fliegt, solange die
+ *  Kreide fliegt. Damit liegt der zweite Aufschlag genau dort, wo das Kind
+ *  ankommt, wenn es einfach weitergeht — und die Lücke zwischen beiden Punkten
+ *  (55 px bei Gehtempo) ist immer breiter als die zwei Kontaktboxen plus Körper,
+ *  also gibt es IMMER einen Platz zum Stehen. Eine Gabel ohne Lücke wäre keine
+ *  Wahl, sondern eine Strafe. */
+export const FORK_LEAD_PX = Math.round((PAINT.walkMax / SUBS) * CHALK_FLIGHT_TICKS);
+
+/** Ab welchem Knoten die Gabel geworfen wird (0-basiert wie `knotIndex`). */
+export const FORK_FROM_KNOT = 1;
+/** Ab welchem Knoten die gelandeten Scherben über die Bretter rutschen. */
+export const SKID_FROM_KNOT = 2;
+
+/** Wie schnell eine gelandete Scherbe rutscht, in subs/Tick.
+ *
+ *  ABGELEITET als Mitte der beiden Gangarten des Kindes: schneller als Gehen,
+ *  damit Weggehen aufhört, die ganze Antwort zu sein — langsamer als Laufen,
+ *  weil das Examen nie eine Fähigkeit VERLANGT, die es als Kür gelehrt hat
+ *  (arena.md §1: kein run als Pflicht). Springen bleibt die Antwort. */
+export const SKID_SPEED = Math.round((PAINT.walkMax + PAINT.runMax) / 2 / 2);
 
 /** R5-W2 · H1 · DER KNOTEN-TAKT — wie lange sie den gelösten Knoten hält.
  *
@@ -1272,16 +1302,43 @@ export const stepEntities = (
             // the child's feet at exactly CHALK_FLIGHT_TICKS and both axes fall
             // out. Aimed at where they STAND, which is why moving is the answer.
             const colour = CHALK_COLOURS[e.throws % CHALK_COLOURS.length] ?? "white";
+            const throwNo = e.throws;
             e.throws += 1;
             const x0 = e.x + 10 * SUBS * e.dir;
             const y0 = e.y - 22 * SUBS;
             const T = CHALK_FLIGHT_TICKS;
-            w.projectiles.push({
-              id: w.nextProjectileId++, kind: "chalk", x: x0, y: y0,
-              vx: Math.round((inp.playerX - x0) / T),
-              vy: Math.round((inp.playerY - y0 - (CHALK_GRAVITY * T * (T + 1)) / 2) / T),
-              deflected: false, fromId: e.id, dead: false, age: 0, colour,
-            });
+            // ── R5-W2 · H1 (Teil 3) · DREI VERBEN, NICHT DREI TEMPI ───────────
+            // Kokis F3: „Erst EINE Kreide, progressiv mehr, am Ende fast
+            // bodendeckend — unausweichlich werdend." Die Eskalation war bisher
+            // drei Skalare: dasselbe, schneller. Jetzt bekommt jeder Knoten ein
+            // eigenes VERB, auf das das Kind anders antworten muss:
+            //   Knoten 1 — die einzelne Kreide: aus dem Fleck gehen.
+            //   Knoten 2 — DIE GABEL: ein Stück, wo du stehst, eines eine
+            //              Geh-Länge daneben. Die Richtung wird zur Entscheidung.
+            //   Knoten 3 — DER SCHWALL: die Gabel bleibt, und was landet, RUTSCHT.
+            //              Weggehen hört auf zu genügen; springen oder aufs
+            //              Podest (arena.md §3 nennt genau das als dessen
+            //              Auszahlung).
+            const ki2 = knotIndex(e.hp, script.knots);
+            // Die Seite der Gabel wechselt deterministisch — kein Math.random im
+            // Gameplay (Repo-Gesetz), und ein Kind, das immer nach rechts läuft,
+            // darf nicht immer richtig liegen.
+            const forkSign = throwNo % 2 === 0 ? 1 : -1;
+            const aims: Array<{ at: number; scores: boolean }> = ki2 >= FORK_FROM_KNOT
+              ? [
+                { at: inp.playerX, scores: true },
+                { at: inp.playerX + forkSign * FORK_LEAD_PX * SUBS, scores: false },
+              ]
+              : [{ at: inp.playerX, scores: true }];
+            for (const aim of aims) {
+              w.projectiles.push({
+                id: w.nextProjectileId++, kind: "chalk", x: x0, y: y0,
+                vx: Math.round((aim.at - x0) / T),
+                vy: Math.round((inp.playerY - y0 - (CHALK_GRAVITY * T * (T + 1)) / 2) / T),
+                deflected: false, fromId: e.id, dead: false, age: 0, colour,
+                scores: aim.scores,
+              });
+            }
             e.state = "throw";
             e.timer = 0;
           }
@@ -1337,7 +1394,7 @@ export const stepEntities = (
   // knot — which still has to be answered. Dodging stays strictly better, and
   // now costs a knockback and an interrupting card less.
   const tallyOverreach = (p: ProjectileState): void => {
-    if (p.kind !== "chalk") return;
+    if (p.kind !== "chalk" || p.scores === false) return;
     const src = w.entities.find((e) => e.id === p.fromId && e.role === "guardian" && !e.redeemed);
     if (src && src.state !== "stagger" && src.state !== "window" && src.state !== "dip") src.dodges += 1;
   };
@@ -1351,6 +1408,20 @@ export const stepEntities = (
     // throw landed, which is what turns dodging from a reflex into a place.
     if (p.kind === "shard") {
       p.age++;
+      // R5-W2 · H1 (Teil 3): eine rutschende Scherbe fährt, bis die Bretter
+      // aufhören. An einer Kistenwand zerbricht sie — sie kann also NIE ein
+      // Podest erklimmen, und das ist genau die Zuflucht, die arena.md §3 dem
+      // Podest zuschreibt (»Scherben-Zuflucht«).
+      if (p.vx !== 0) {
+        const ahead = p.x + p.vx;
+        const still = groundAt(grid, ahead, p.y - SUBS);
+        if (still === null || still !== p.y) {
+          p.dead = true;
+          events.push({ type: "puff", x: p.x, y: p.y, kind: "chalk" });
+          continue;
+        }
+        p.x = ahead;
+      }
       if (p.age > SHARD_TICKS) {
         p.dead = true;
         events.push({ type: "puff", x: p.x, y: p.y, kind: "chalk" });
@@ -1392,9 +1463,18 @@ export const stepEntities = (
         // telegraph the child had started reading.
         tallyOverreach(p);
         // …and it leaves its splinter on the boards (doc 44 §4 ch01 C4)
+        // ── R5-W2 · H1 (Teil 3) · DER SCHWALL ───────────────────────────
+        // Die Scherbe trug seit jeher ein `vx` und hat es nie benutzt. Am
+        // letzten Knoten rutscht sie jetzt darauf über die Bretter, in der
+        // Richtung, in die ihr Stück ohnehin flog — was landet, bleibt nicht
+        // liegen, und Weggehen hört auf, die ganze Antwort zu sein.
+        const src0 = w.entities.find((e) => e.id === p.fromId && e.role === "guardian");
+        const skids = src0 !== undefined
+          && knotIndex(src0.hp, GUARDIAN_SCRIPT[src0.tier].knots) >= SKID_FROM_KNOT;
         born.push({
           id: w.nextProjectileId++, kind: "shard", x: p.x, y: g,
-          vx: 0, vy: 0, deflected: false, fromId: p.fromId, dead: false, age: 0, colour: p.colour,
+          vx: skids ? Math.sign(p.vx) * SKID_SPEED : 0,
+          vy: 0, deflected: false, fromId: p.fromId, dead: false, age: 0, colour: p.colour,
         });
       }
     }

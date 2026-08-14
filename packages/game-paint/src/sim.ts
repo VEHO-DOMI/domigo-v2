@@ -140,6 +140,11 @@ export type SimEvent =
    *  id rides along — one teaching card that says „jemand" over a sound system
    *  teaches the wrong shape. */
   | { type: "cageHint"; id: string }
+  /** R5-W2 · H1 (Teil 3) · DIE KNOTEN-ERKLÄRUNG. Feuert EINMAL, wenn das Kind
+   *  die Bühnen-Schwelle übertritt — dort, wo das Dossier den Takt seit R5-P1
+   *  deklariert hat (`arena.md` §3, p4-objective) und wo Koki ihn verlangt hat
+   *  („Why do we have knots?", doc 45 F1/F2). */
+  | { type: "arenaBrief" }
   | { type: "letters"; got: number; total: number }
   | { type: "letterTaken"; c: number; r: number }
   /** PK-R3b · R3-16: a Regel-Seite was picked up. It carries its own rule, so
@@ -165,6 +170,11 @@ export interface SimCfg {
    *  because the shell owns the state that outlives a phase mount. Defaults to
    *  „not yet" so a bare Sim (tests, tools) behaves as before. */
   cageHintShown?: () => boolean;
+  /** R5-W2 · H1 (Teil 3): hat der Shell die Arena-Anleitung in DIESEM Kapitel
+   *  schon gezeigt? Dieselbe Paarung wie beim Käfig-Hinweis — der Shell wird
+   *  GEFRAGT, bevor die Welt eingefroren wird, damit die Welt nie für eine
+   *  Karte stehen bleibt, die der Shell dann gar nicht öffnet. */
+  arenaBriefShown?: () => boolean;
   /** PK-R3b · R3-16: Regel-Seiten and Bonus-Bücher already taken in EARLIER
    *  mounts of this chapter (ids). A phase is remounted whenever the child comes
    *  back from the Kleckskammer, and a rule page that respawns there is a page
@@ -258,6 +268,8 @@ export class Sim {
   fistOnSolid = false;
   /** PB-F3: the cage hint is once per phase mount, never a nag. */
   cageHintFired = false;
+  /** R5-W2 · H1 (Teil 3): die Arena-Anleitung, einmal je Phasen-Aufbau. */
+  arenaBriefFired = false;
   /** PK-R6 · C1: was ↑ pressed THIS tick (rising edge)? Recomputed every step. */
   engagePressed = false;
   /** R5-W1 · F1: were the controls locked during the step just taken? The pose
@@ -460,6 +472,7 @@ export class Sim {
     }
 
     this.stepEntityWorld(events);
+    this.atStageThreshold(events);
     this.nearOpenableCage(events);
     this.touchCheckpoints(events);
     this.collectLetters(events);
@@ -984,6 +997,32 @@ export class Sim {
         return;
       }
     }
+  }
+
+  /** R5-W2 · H1 (Teil 3) · DIE ARENA-ANLEITUNG, an der Schwelle.
+   *
+   *  „Wie besiegt man den Boss? Muss instruiert und gescaffoldet sein" (doc 45
+   *  F2). Der Ort ist nicht frei gewählt: `arena.md` §3 verortet den Takt an der
+   *  BÜHNEN-SCHWELLE — dem Übertritt von der Kulisse auf die Bretter. Genau dort
+   *  wechselt der Raum seine Bedeutung, und genau dort steht das Kind noch
+   *  ausserhalb jeder Wurfbahn (die Westkulisse ist seit Teil 2 mechanisch
+   *  ruhig, weil die Klammer nun auch den Dip hält).
+   *
+   *  Die Schwelle wird vom LEVEL gelesen (`stageMinC` der Tafel), nicht getippt:
+   *  dieselbe Zahl, die ihre Bahn klemmt, ist die Kante, an der ihre Anleitung
+   *  fällig wird. Ein Raum, der die Bühne verschiebt, verschiebt beides.
+   *
+   *  Die Freeze-Paarung ist die des Käfig-Hinweises, und zwar aus dessen Narbe
+   *  heraus: der Shell wird GEFRAGT, bevor `overlayOpen` gesetzt wird — sonst
+   *  friert die Welt für eine Karte, die der Shell dann nicht öffnet. */
+  private atStageThreshold(events: SimEvent[]): void {
+    if (this.arenaBriefFired || this.cfg.arenaBriefShown?.() === true) return;
+    const g = this.world.entities.find((e) => e.role === "guardian" && !e.hidden);
+    if (!g || g.params?.stageMinC === undefined) return;
+    if (fromSubs(this.player.x) < Number(g.params.stageMinC) * TILE) return;
+    this.arenaBriefFired = true;
+    this.overlayOpen = true; // die Anleitung ist eine Karte: die Welt wartet
+    events.push({ type: "arenaBrief" });
   }
 
   private touchCheckpoints(events: SimEvent[]): void {
