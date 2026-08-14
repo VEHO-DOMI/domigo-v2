@@ -75,8 +75,8 @@ hat nichts bewiesen; deshalb trägt jedes `--selftest` und CI läuft beide Seite
 
 Die drei Familien liegen als Dateien im Repo (`apps/web/app/fonts/`) und werden
 über `next/font/local` geladen. **Nie wieder `next/font/google`** — das lud die
-Schriften beim BAUEN aus dem Netz und machte grüne Builds vom Erreichbarkeit
-eines Dritten abhängig (D-33). `scripts/check-fonts.mjs` hält die Tür zu.
+Schriften beim BAUEN aus dem Netz und machte grüne Builds von der Erreichbarkeit
+eines Dritten abhängig (D-33 (nach K1s Entdopplung: D-72)). `scripts/check-fonts.mjs` hält die Tür zu.
 
 ## Zwei Regeln, die diese Codebasis teuer gelernt hat
 

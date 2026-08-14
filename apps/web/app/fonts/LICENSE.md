@@ -16,7 +16,7 @@ charge. The full licence text ships with each family upstream:
 Google Fonts itself serves for the weight ranges the type system uses — the very
 files `next/font/google` used to download during every build. They were fetched
 once from `fonts.gstatic.com` and committed, so the build no longer depends on a
-third-party server being reachable (debt D-33: PR #273 ran the same commit three
+third-party server being reachable (debt D-33 (nach K1s Entdopplung: D-72): PR #273 ran the same commit three
 times, twice red; the same failure took down a build in this session).
 
 Each is a VARIABLE font: one file carries the whole weight axis, which is what

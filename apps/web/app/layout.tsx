@@ -7,7 +7,7 @@ import "./globals.css";
 
 // The DomiGo type system: Fredoka (display), Inter (body), Quicksand (labels).
 //
-// R5-W3 · E5 · THE BUILD NO LONGER PHONES OUT (debt D-33). These three came
+// R5-W3 · E5 · THE BUILD NO LONGER PHONES OUT (debt D-33 (nach K1s Entdopplung: D-72)). These three came
 // from `next/font/google`, which fetches the .woff2 files from fonts.gstatic.com
 // AT BUILD TIME — so a green build depended on a third party being reachable.
 // It was observed on PR #273 (the same commit run three times: twice red, once

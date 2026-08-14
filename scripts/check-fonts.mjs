@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// R5-W3 · E5 · THE BUILD MAY NOT PHONE OUT FOR ITS TYPE (debt D-33).
+// R5-W3 · E5 · THE BUILD MAY NOT PHONE OUT FOR ITS TYPE (debt D-33 (nach K1s Entdopplung: D-72)).
 //
 // `next/font/google` downloads the .woff2 files from fonts.gstatic.com WHILE
 // BUILDING. That made a green build depend on somebody else's server: PR #273
