@@ -17,6 +17,8 @@ import {
   CHALK_ARM_TICKS,
   CHALK_COLOURS,
   CHALK_FLIGHT_TICKS,
+  CHALK_GRAVITY,
+  FORK_LEAD_PX,
   DODGES_PER_WINDOW,
   FLIGHT_BAND_PX,
   KNOT_SPAN_PX,
@@ -973,5 +975,112 @@ describe("der Schwall — was landet, bleibt nicht liegen (Auftrag 2b)", () => {
     // Der Test hält sie fest, damit ein späteres »das Podest ein bisschen
     // niedriger« diese Zuflucht nicht still abschafft.
     expect(TILE * 2, "die Podesthöhe der Bühne").toBeGreaterThan(SHARD_REACH_Y_PX);
+  });
+});
+
+// ── R5-W2 · H1 (Teil 3) · DIE BILD-TAKTE DES KAMPFES (Auftrag 1) ────────────
+//
+// Auftrag 1 verlangt Lesbarkeit als BILD: Licht auf der Tafel im Ausholen,
+// Aufschlagmarken für die Kreide, eine Fanfare am Fenster. Es gibt in diesem
+// Paket kein Audio-System, also ist jede Fanfare Licht — und diese Datei kann
+// keinen Bildschirm prüfen. Was sie prüfen KANN, ist die Arithmetik, aus der die
+// Bilder gerechnet werden: der Takt der Ansage und der gelöste Aufschlagpunkt.
+// Beides sind reine Zahlen, und beide waren vorher gar nicht vorhanden.
+describe("die Ansage ist ein Takt, kein Dauerzustand (Auftrag 1)", () => {
+  /** Dieselbe Kurve, die die Szene dem Halo füttert (PaintScene.bossTellT) —
+   *  hier als reine Nachrechnung, weil PaintScene Phaser importiert und in
+   *  diesem kopflosen Paket nicht geladen werden kann. */
+  const tellT = (state: string, timer: number, hp = 3): number => {
+    if (state === "throw") return 0;
+    if (state === "stagger" || state === "window") return Math.max(0, 1 - timer / 26);
+    if (state !== "telegraph") return 0;
+    return Math.max(0, Math.min(1, timer / Math.max(telegraphTicksFor("E", hp, 3), 1)));
+  };
+
+  it("sie steigt durch das Ausholen — sonst sagt das Licht nichts", () => {
+    const need = telegraphTicksFor("E", 3, 3);
+    const samples = [0, 0.25, 0.5, 0.75, 1].map((f) => tellT("telegraph", Math.round(need * f)));
+    for (let i = 1; i < samples.length; i++) {
+      expect(samples[i]!, `Schritt ${i} fällt statt zu steigen`).toBeGreaterThan(samples[i - 1]!);
+    }
+    expect(samples[samples.length - 1]).toBeCloseTo(1, 5);
+  });
+
+  it("und SCHNAPPT beim Wurf zurück — Anspannung, dann Entladung", () => {
+    // Der eigentliche Fund: `bossBeatT` steht im Wurf auf 1 und liefe als Licht
+    // weiter, obwohl das Stück längst fliegt. Ein Kind läse „die Ansage läuft
+    // noch", während sie schon vorbei ist.
+    expect(tellT("telegraph", telegraphTicksFor("E", 3, 3))).toBeCloseTo(1, 5);
+    expect(tellT("throw", 0), "das Licht hängt im Wurf nach").toBe(0);
+    expect(tellT("throw", 6)).toBe(0);
+  });
+
+  it("das Fenster bekommt seine eigene Fanfare, und sie klingt ab", () => {
+    expect(tellT("stagger", 0), "der Augenblick des Fensters leuchtet nicht").toBeGreaterThan(0.9);
+    expect(tellT("window", 13)).toBeLessThan(tellT("window", 0));
+    expect(tellT("window", 40), "die Fanfare leuchtet ewig weiter").toBe(0);
+  });
+
+  it("im ruhigen Flug leuchtet gar nichts extra", () => {
+    for (const st of ["fly", "untie", "dip", "sink", "sad", "consoled"]) {
+      expect(tellT(st, 30), `${st} leuchtet, obwohl nichts angesagt wird`).toBe(0);
+    }
+  });
+});
+
+describe("die Aufschlagmarke steht da, wo das Stück landet (Auftrag 1)", () => {
+  it("der gelöste Bogen sagt den Aufschlag voraus — auf wenige Pixel genau", () => {
+    // Der Bogen wird beim Wurf GELÖST (entities.ts), also ist der Aufschlag in
+    // geschlossener Form bekannt, sobald das Stück die Hand verlässt. Genau das
+    // zeichnet die Marke. Hier wird die Vorhersage gegen den echten Flug
+    // gefahren: driftet die eine, ist die Marke eine Lüge.
+    // Das Kind steht WEIT weg und ist unverwundbar: sonst zerbricht das Stück an
+    // ihm, statt seinen Bogen zu Ende zu fliegen (bei nahem Kind beisst es
+    // direkt nach der Zündverzögerung — genau der Fall, für den CHALK_ARM_TICKS
+    // existiert). Geprüft werden soll die BAHN, nicht der Treffer.
+    const far = (): WorldInput => input({ playerX: 8 * TILE * SUBS, playerIframes: 999 });
+    const w: EntityWorld = spawnEntities([guardianSpec("E")], []);
+    const g = w.entities[0]!;
+    let born: ProjectileState | undefined;
+    for (let t = 0; t < 900 && born === undefined; t++) {
+      const before = new Set(w.projectiles.map((p) => p.id));
+      stepEntities(w, GRID, far());
+      born = w.projectiles.find((p) => p.kind === "chalk" && !before.has(p.id));
+    }
+    expect(born, "kein Wurf zustande gekommen").toBeDefined();
+    const p0 = born!;
+    // die Vorhersage, wie die Szene sie rechnet
+    const left = CHALK_FLIGHT_TICKS - p0.age;
+    const predX = (p0.x + p0.vx * left) / SUBS;
+    const predY = (p0.y + p0.vy * left + (CHALK_GRAVITY * left * (left + 1)) / 2) / SUBS;
+    // …und der echte Flug
+    let real = { x: 0, y: 0 };
+    for (let t = 0; t < left; t++) {
+      stepEntities(w, GRID, far());
+      const live = w.projectiles.find((p) => p.id === p0.id);
+      if (live) real = { x: live.x / SUBS, y: live.y / SUBS };
+    }
+    expect(Math.abs(real.x - predX), `Marke ${predX.toFixed(1)} gegen Flug ${real.x.toFixed(1)}`).toBeLessThan(4);
+    expect(Math.abs(real.y - predY)).toBeLessThan(4);
+    expect(g.throws, "der Wurf hat gar nicht stattgefunden").toBeGreaterThan(0);
+  });
+
+  it("die Gabel bekommt ZWEI Marken, und sie liegen auseinander", () => {
+    // Das ist die Zeichnung, die die Gabel überhaupt lesbar macht: ohne sie sind
+    // es zwei Stücke aus einer Wolke, die irgendwo einschlagen.
+    const w: EntityWorld = spawnEntities([guardianSpec("E")], []);
+    const g = w.entities[0]!;
+    g.hp = 2; // Knoten 2 — die Gabel
+    let pair: ProjectileState[] = [];
+    for (let t = 0; t < 900 && pair.length === 0; t++) {
+      const before = new Set(w.projectiles.map((p) => p.id));
+      stepEntities(w, GRID, input());
+      pair = w.projectiles.filter((p) => p.kind === "chalk" && !before.has(p.id));
+      g.hp = 2;
+    }
+    expect(pair.length).toBe(2);
+    const markX = (p: ProjectileState): number => (p.x + p.vx * (CHALK_FLIGHT_TICKS - p.age)) / SUBS;
+    expect(Math.abs(markX(pair[0]!) - markX(pair[1]!)), "die beiden Marken liegen übereinander")
+      .toBeGreaterThan(FORK_LEAD_PX * 0.7);
   });
 });

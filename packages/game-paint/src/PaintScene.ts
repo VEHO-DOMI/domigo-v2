@@ -27,7 +27,7 @@ import { type AirModel, DELTA_CAP_MS, LOGICAL_H, LOGICAL_W, MAX_TICKS_PER_FRAME,
 import { INK_BODY, INK_CROWN_DARK, INK_CROWN_LIT, INK_DEPTH_ROWS, inkCrownPoints, inkDepthAt, inkDepthTint, inkScrollAt, planInkColumns } from "./ink.ts";
 import { type FistState } from "./fist.ts";
 import { type Pad, type PlayerState } from "./player.ts";
-import { CHALK_COLOURS, type EntityState, type EntityWorld, GUARDIAN_SCRIPT, JOY_ROLES, KNOT_BEAT_TICKS, SHARD_TICKS, engageTargetId, telegraphTicksFor } from "./entities.ts";
+import { CHALK_COLOURS, CHALK_FLIGHT_TICKS, CHALK_GRAVITY, type EntityState, type EntityWorld, GUARDIAN_SCRIPT, JOY_ROLES, KNOT_BEAT_TICKS, SHARD_TICKS, engageTargetId, telegraphTicksFor } from "./entities.ts";
 import { COLLECT_ANCHOR_PX, MAGNET_FIELD_PX, Sim, type SimEvent, type TaskRequest, type TipPayload } from "./sim.ts";
 import { FOCUS_MS, focusView } from "./camera.ts";
 import {
@@ -391,6 +391,21 @@ const BOSS_HALO_COLOUR = 0xffe9b8;
  *  is added. Kept low: felt as separation, never seen as a glow. */
 const BOSS_HALO_SPREAD = 1.1;
 const BOSS_HALO_ADD = 0.4;
+/** R5-W2 · H1 (Teil 3) · wie viel heller der Halo im Ausholen wird, als Anteil
+ *  seines Ruhewerts. Gewählt, damit die Ansage auf 1× sichtbar ist, ohne dass
+ *  die Tafel ihre Zeichnung verliert — das Licht liegt auf ihr, also frisst zu
+ *  viel davon genau das Bild, das gelesen werden soll. */
+const BOSS_TELL_GAIN = 1.1;
+/** Wie lange die Fenster-Fanfare nachleuchtet, in Ticks. */
+const BOSS_FLARE_TICKS = 26;
+/** Wie gross die Aufschlagmarke beim Wurf ist, in px — sie zieht sich zu, je
+ *  näher das Stück kommt. Halb so breit wie eine Zelle: gross genug, um auf 1×
+ *  gelesen zu werden, klein genug, um kein Möbelstück zu sein. */
+const MARK_R_PX = 8;
+const MARK_ALPHA = 0.55;
+/** Wie viele Staubwolken den Ring der Fenster-Fanfare bilden. Acht: genug für
+ *  einen Kranz, wenig genug, dass die Tafel darunter noch zu lesen ist. */
+const FLARE_PUFFS = 8;
 
 // ── PK-R6 · H2 · THE TELL IS CHALK DUST (round-2 finding 1, critical) ────────
 // „The attack telegraph is a flat clip-art glove, not a painted object … a flat
@@ -1869,6 +1884,35 @@ export class PaintScene extends Phaser.Scene {
     // painted and drawn by nothing (doc 38 §2) while the duel threw a circle;
     // it now flies as the stick it is, tumbling so the arc reads.
     this.projG.clear();
+    // ── R5-W2 · H1 (Teil 3) · DIE AUFSCHLAGMARKE ──────────────────────────────
+    // Der Bogen ist GELÖST (entities.ts rechnet vx/vy beim Wurf so aus, dass das
+    // Stück nach genau CHALK_FLIGHT_TICKS auf Fusshöhe ankommt), also ist der
+    // Aufschlagpunkt in geschlossener Form bekannt, sobald es die Hand verlässt.
+    // Also wird er GEZEICHNET: ein handgekreidetes Kreuz, das sich zuzieht,
+    // während das Stück fällt.
+    //
+    // Das ist die eine Zeichnung, die die GABEL überhaupt lesbar macht: zwei
+    // Marken, eine Geh-Länge auseinander, je eine unter einem Kometen — statt
+    // zweier Stücke, die aus einer Wolke kommen und irgendwo einschlagen. Und am
+    // dritten Knoten wächst die Marke in die Rutschlinie hinein, damit der
+    // Splitter immer an etwas entlangfährt, das dem Kind vorher gezeigt wurde.
+    for (const pr of this.world.projectiles) {
+      if (pr.kind !== "chalk" || pr.deflected || this.cfg.reducedMotion) continue;
+      const left = CHALK_FLIGHT_TICKS - pr.age;
+      if (left <= 0) continue;
+      // wohin es fällt: dieselbe Arithmetik, mit der der Wurf gelöst wurde
+      const hitX = fromSubs(pr.x + pr.vx * left);
+      const hitY = fromSubs(pr.y + pr.vy * left + (CHALK_GRAVITY * left * (left + 1)) / 2);
+      const t = Math.max(0, Math.min(1, pr.age / CHALK_FLIGHT_TICKS));
+      const r = MARK_R_PX * (1 - 0.55 * t);
+      const a = MARK_ALPHA * (0.35 + 0.65 * t);
+      const light = CHALK_LIGHT[pr.colour] ?? CHALK_LIGHT_FALLBACK;
+      // ein Kreuz aus zwei Strichen, nicht ein Kreis: eine Zielscheibe ist eine
+      // Bedienoberfläche, ein Kreide-Kreuz ist etwas, das jemand gezeichnet hat
+      this.projG.lineStyle(1.2, light, a);
+      this.projG.lineBetween(hitX - r, hitY - r * 0.5, hitX + r, hitY + r * 0.5);
+      this.projG.lineBetween(hitX - r, hitY + r * 0.5, hitX + r, hitY - r * 0.5);
+    }
     let used = 0;
     for (const pr of this.world.projectiles) {
       const thrower = this.world.entities.find((e) => e.id === pr.fromId);
@@ -2752,7 +2796,35 @@ export class PaintScene extends Phaser.Scene {
    * BOSS_HALO_SPREAD and laid behind her, so the separation is the shape of the
    * thing it separates. Built lazily per guardian, exactly like `giftGlow`.
    */
-  private bossRim(id: string, img: Phaser.GameObjects.Image): void {
+  /** R5-W2 · H1 (Teil 3) · `t` ist der Takt des Ausholens, 0…1.
+   *
+   *  Der Halo war eine Konstante — er trennte sie vom Regal und sagte sonst
+   *  nichts. Jetzt RAMPT er durch das Ausholen und schnappt beim Wurf zurück,
+   *  also ist das Licht selbst die Ansage. Es liegt dabei buchstäblich AUF ihr
+   *  (eine ADD-geblendete Kopie ihrer eigenen Zelle), kann also nie aus dem
+   *  Register laufen — was ein zusätzlicher Leucht-Fleck täte, sobald sie kippt
+   *  oder rollt. */
+  /** R5-W2 · H1 (Teil 3) · DER TAKT DER ANSAGE, inklusive Nachhall.
+   *
+   *  `bossBeatT` rampt durch das Ausholen und steht danach auf 1, solange sie
+   *  wirft — als Licht gelesen hiesse das »die Ansage läuft noch«, obwohl das
+   *  Stück schon fliegt. Hier SCHNAPPT es beim Wurf zurück: das ist der Beat,
+   *  den ein Kind eigentlich liest — Anspannung, Entladung.
+   *
+   *  Dazu der zweite Anlass, an dem die Tafel leuchtet: das FENSTER. Wenn sie
+   *  sich überreizt und herunterkommt, blitzt dasselbe Licht kurz auf und klingt
+   *  ab — die Fanfare, die es in diesem Spiel nicht als Ton geben kann (es gibt
+   *  gar kein Audio-System in diesem Paket). */
+  private bossTellT(e: { role: string; state: string; timer: number; tier: "E" | "M" | "S"; hp: number }): number {
+    if (e.state === "throw") return 0; // die Entladung: das Licht fällt sofort ab
+    if (e.state === "stagger" || e.state === "window") {
+      // die Fanfare klingt über ihren eigenen Nachhall ab
+      return Math.max(0, 1 - e.timer / BOSS_FLARE_TICKS);
+    }
+    return this.bossBeatT(e);
+  }
+
+  private bossRim(id: string, img: Phaser.GameObjects.Image, t = 0): void {
     let rim = this.bossRimImgs.get(id);
     if (!rim) {
       rim = this.add.image(img.x, img.y, img.texture.key).setOrigin(img.originX, img.originY).setDepth(6.8);
@@ -2762,7 +2834,10 @@ export class PaintScene extends Phaser.Scene {
     rim.setVisible(img.visible).setTexture(img.texture.key);
     rim.setPosition(img.x, img.y + img.displayHeight * (BOSS_HALO_SPREAD - 1) * 0.5);
     rim.setScale(img.scaleX * BOSS_HALO_SPREAD, img.scaleY * BOSS_HALO_SPREAD);
-    rim.setFlipX(img.flipX).setRotation(img.rotation).setAlpha(BOSS_HALO_ADD * img.alpha);
+    // BOSS_HALO_ADD ist der Ruhewert und bleibt der Boden: das Standbild darf
+    // nie dunkler werden als vorher (reduzierte Bewegung liefert t = 0).
+    rim.setFlipX(img.flipX).setRotation(img.rotation)
+      .setAlpha(BOSS_HALO_ADD * (1 + BOSS_TELL_GAIN * t) * img.alpha);
   }
 
   private renderBossGlow(): void {
@@ -2776,7 +2851,7 @@ export class PaintScene extends Phaser.Scene {
     // ── the halo ──────────────────────────────────────────────────────────
     // Drawn under reduced motion too: it is a still picture, and it is the only
     // thing separating her from the shelf.
-    this.bossRim(g.id, img);
+    this.bossRim(g.id, img, this.cfg.reducedMotion ? 0 : this.bossTellT(g));
 
     // ── the tell ──────────────────────────────────────────────────────────
     // PK-R6 · H2 (round-2 finding 1, critical). Chalk dust, gathering off her own
@@ -3300,6 +3375,28 @@ export class PaintScene extends Phaser.Scene {
     this.pushedBeats.add(beat);
     this.bossPushId = g.id;
     this.bossPushMs = 0;
+
+    // ── R5-W2 · H1 (Teil 3) · DIE FENSTER-FANFARE ─────────────────────────────
+    // Es gibt in diesem Paket KEIN Audio-System (kein `this.sound`, kein
+    // `AudioContext`, nichts) — der Kommentar an der Kreide sagt es selbst: „A
+    // piece of chalk hitting a wooden floor is the loudest thing in the fight
+    // and it happened in total silence." Eine Fanfare kann hier also nur Licht
+    // sein. Der Augenblick, in dem sie sich überreizt und herunterkommt, ist der
+    // wichtigste des Kampfes; er bekommt einen Ring aus Kreidestaub um ihre
+    // Tafelkante, und der Halo blitzt dazu (siehe `bossTellT`).
+    if (beat.startsWith("dip:") && !this.cfg.reducedMotion) {
+      const img = this.entityImgs.get(g.id);
+      if (img) {
+        for (let i = 0; i < FLARE_PUFFS; i++) {
+          const th = (i / FLARE_PUFFS) * Math.PI * 2;
+          this.puff(
+            img.x + Math.cos(th) * img.displayWidth * 0.55,
+            img.y - img.displayHeight * 0.5 + Math.sin(th) * img.displayHeight * 0.45,
+            "chalk",
+          );
+        }
+      }
+    }
   }
 
   /** How far the fight's push-in has pushed, 0…1 — in and back out over
