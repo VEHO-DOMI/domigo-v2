@@ -90,10 +90,30 @@ const Tether = ({ align }: { align: CardAlign }): React.ReactElement | null =>
   align === "center" ? null : <span className={`pb-tether pb-tether-${align === "right" ? "l" : "r"}`} aria-hidden />;
 
 /** The chalk-erase countdown — only where the timer policy allows a clock at
- *  all (cards/timer.ts, doc 44 §2.9); CardHost owns the timer behind it. */
-export const ChalkClock = ({ ms }: { ms: number }): React.ReactElement => (
+ *  all (cards/timer.ts, doc 44 §2.9); CardHost owns the timer behind it.
+ *
+ *  R5-W2 · H1 · DIE STEH-UHR (Kokis Ruling, 14.08.2026). Vorher lief sie ab dem
+ *  Einblenden, also lief sie beim LESEN — und ein Erstleser braucht die halbe
+ *  Karte allein dafür. Jetzt steht sie voll und still, bis das Kind die Karte
+ *  zum ersten Mal berührt, und beginnt bei JEDER weiteren Berührung von vorn.
+ *
+ *  Der Neustart ist der `key`: ein neuer Schlüssel hängt das Element neu ein,
+ *  und eine CSS-Animation beginnt beim Einhängen. Derselbe Zähler treibt drüben
+ *  den echten Wecker (CardHost), also können Bild und Maschine nicht
+ *  auseinanderlaufen — die häufigste Art, wie eine Uhr lügt.
+ *
+ *  `armed === false` heisst: keine Animation, volle Breite. Das ist zugleich der
+ *  Ruhezustand, den das Gesetz der reduzierten Bewegung ohnehin verlangt. */
+export const ChalkClock = ({ ms, armCount = 0 }: { ms: number; armCount?: number }): React.ReactElement => (
   <div className="pb-ring-track" aria-hidden>
-    <div className="pb-ring" style={{ ["--pb-ring-s" as string]: `${ms}ms` } as React.CSSProperties} />
+    <div
+      key={armCount}
+      className="pb-ring"
+      style={{
+        ["--pb-ring-s" as string]: `${ms}ms`,
+        ...(armCount === 0 ? { animationName: "none" } : {}),
+      } as React.CSSProperties}
+    />
   </div>
 );
 
@@ -366,7 +386,7 @@ const hasAnswer = (t: GameTaskV2): t is Extract<GameTaskV2, { kind: "typed" | "s
   t.kind === "typed" || t.kind === "spell";
 
 export function CardShell({
-  task, attempts, onDismiss, align = "center", clockMs, art, portraitWash, round, flight, doff = false,
+  task, attempts, onDismiss, align = "center", clockMs, armCount = 0, onActivity, art, portraitWash, round, flight, doff = false,
   colourAskDe, actStep, children,
 }: {
   task: GameTaskV2;
@@ -375,6 +395,14 @@ export function CardShell({
   align?: CardAlign;
   /** ms the chalk clock has to run, or 0 for no clock at all */
   clockMs?: number;
+  /** R5-W2 · H1 · wie oft das Kind die Karte schon berührt hat. 0 = noch nie,
+   *  und dann steht die Uhr voll und still da (Kokis Steh-Uhr). Jeder weitere
+   *  Wert lässt sie von vorn laufen — der Wert IST der Neustart. */
+  armCount?: number;
+  /** R5-W2 · H1 · eine ROHE Berührung der Karte. Bewusst nicht `dispatch`: das
+   *  Kreide-Rad meldet erst nach 180 ms Stillstand, ein Kind am Rad würde sonst
+   *  mitten in der eigenen Antwort abgeschnitten. */
+  onActivity?: () => void;
   /** the level's only-present art map (stem → url), for the portrait slot */
   art?: Record<string, string>;
   /** how drained the asker is right now (0…1) — the portrait matches the world */
@@ -438,9 +466,19 @@ export function CardShell({
           so the card, its wipe and everything else paint over it. */}
       <div className="pb-defocus" aria-hidden />
       <InkWipe />
-      <div className="pb-card" style={{ ...cardBox, width: align === "center" ? "90%" : "46%", minWidth: 300 }}>
+      {/* R5-W2 · H1 · die Steh-Uhr hört auf ROHE Eingabe, in der Capture-Phase:
+          jede Berührung der Karte zählt, egal welches Bedienteil sie fängt, und
+          sie zählt BEVOR das Bedienteil sie verbraucht. Kartenart-blind mit
+          Absicht — ein Rad, ein Chip und eine Tastatur sind für ein Kind
+          derselbe Handgriff. */}
+      <div
+        className="pb-card"
+        style={{ ...cardBox, width: align === "center" ? "90%" : "46%", minWidth: 300 }}
+        onPointerDownCapture={onActivity}
+        onKeyDownCapture={onActivity}
+      >
         <Tether align={align} />
-        {(clockMs ?? 0) > 0 && <ChalkClock ms={clockMs ?? QUICKFIRE_MS} />}
+        {(clockMs ?? 0) > 0 && <ChalkClock ms={clockMs ?? QUICKFIRE_MS} armCount={armCount} />}
 
         {/* PK-R6 · D · THE ROUND COUNTER (doc 44 §3.3, „6 rounds, Runde n/6").
             A ceremony a six-year-old can see the end of: six is a long way to

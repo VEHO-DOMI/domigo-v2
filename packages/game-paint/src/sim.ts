@@ -56,7 +56,12 @@ import { type Ability, type PaintLevel, type PhaseSpec, allPhases, findGlyph } f
  *     NO task and never touches a card pool — it is a panel the shell opens
  *     and closes. */
 export interface TaskRequest {
-  use: "quickfire" | "encounter" | "door" | "rescue" | "boss" | "bonus" | "bonuspay";
+  // R5-W2 · H1: `finale` gehörte immer schon dazu — `cards/serving.ts` erklärt
+  // die Tafel seit jeher zur Sprecherin von `["boss", "finale"]`, und der Shell
+  // zieht die Klimax-Karte auch aus diesem Pool. Nur der TYP kannte ihn nicht,
+  // also musste die Karte auf einer Boss-Anfrage reiten — und bekam dadurch die
+  // Boss-Uhr. Der Typ sagt jetzt, was die Welt ohnehin tut.
+  use: "quickfire" | "encounter" | "door" | "rescue" | "boss" | "bonus" | "bonuspay" | "finale";
   ctx:
     | { type: "entity"; id: string; skin: string }
     | { type: "cage"; id: string; skin: string; classmate?: string }

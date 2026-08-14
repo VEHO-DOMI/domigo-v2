@@ -21,6 +21,10 @@ import { CardHost } from "./cards/CardHost.tsx";
 import { Key, KeyBit } from "./cards/Glance.tsx";
 import { type AuftaktCard, auftaktExit, auftaktPosition, auftaktStep, auftaktTasks } from "./cards/auftakt.ts";
 import { answerTextOf } from "./cards/resolution.ts";
+import { tierOfAsker } from "./cards/serving.ts";
+import { windowMsFor } from "./cards/timer.ts";
+import { prefersReducedMotion } from "./cards/motion.ts";
+import { askerIdOf } from "./sim.ts";
 import { InkWipe, PaintedCage, type CardAlign, alignedWrap } from "./cards/CardShell.tsx";
 import { PAINT_OVERLAY_CSS } from "./cards/overlay-css.ts";
 import { PaintedIcon, type PaintedIconName } from "./cards/PaintedIcons.tsx";
@@ -149,6 +153,10 @@ interface OverlayState {
     | "cagehint" | "tip" | "regel" | "merkseite" | "score" | "out";
   attempts: number;
   typed: string;
+  /** R5-W2 · H1 · wie lang die Uhr dieser Karte läuft, in ms — 0 heisst „keine".
+   *  Einmal in `openCard` gerechnet (die einzige Stelle, die Pool, Wesen und
+   *  Level zugleich kennt) und dann getragen, nicht neu hergeleitet. */
+  clockMs?: number;
   /** PB-F1/F2-20: which side of the canvas the card sits on — always AWAY from
    *  the being it is about, so „schau sie an" is physically possible. */
   align: CardAlign;
@@ -399,11 +407,29 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
    *  exactly once either way) */
   const changedRef = useRef(false);
 
+  /** R5-W2 · H1 · WIE LANG DIESE KARTE LÄUFT — an EINER Stelle entschieden.
+   *
+   *  `openCard` ist die einzige Stelle, die Pool, Wesen und Level gleichzeitig
+   *  in der Hand hat, also wird die Zahl hier gerechnet und mitgeführt statt in
+   *  der Karte noch einmal hergeleitet. Dasselbe Paar Funktionen rechnet sie im
+   *  Tor nach, also können Spiel und Prüfung nicht auseinanderlaufen — sie
+   *  taten es (Tor las den AUTORIERTEN Pool, die Laufzeit den SERVIERTEN). */
+  const clockMsOf = (next: OverlayState): number =>
+    next.item === null
+      ? 0
+      : windowMsFor(
+        next.req.use,
+        next.item.kind,
+        tierOfAsker(level, sceneRef.current?.getState()?.phase ?? "", askerIdOf(next.req.ctx)),
+        prefersReducedMotion(),
+      );
+
   /** The one door every card comes through, so the hold can hold it. */
   const openCard = (next: OverlayState): void => {
-    if (holdRef.current) { queuedRef.current = next; return; }
+    const withClock: OverlayState = { ...next, clockMs: clockMsOf(next) };
+    if (holdRef.current) { queuedRef.current = withClock; return; }
     changedRef.current = false;
-    setOverlay(next);
+    setOverlay(withClock);
   };
 
   /** Beat 2: the world changes, and is watched. */
@@ -842,10 +868,19 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
             // R3-11: the Namens-Konsole is a SEEABLE asker (doc 41 §3) and is
             // typed as one now; it was only ever mis-filed as a hazard.
             const consoleReq: TaskRequest = { use: "boss", ctx: { type: "console", id, skin } };
+            // R5-W2 · H1 · DIE KLIMAX-KARTE FÄHRT IHREN EIGENEN POOL.
+            // Sie wird aus dem „finale"-Pool gezogen, ritt aber auf einer
+            // BOSS-Anfrage — und die Uhr liest den SERVIERTEN Pool. Über
+            // `fin.t1`, wo ein Erstleser h-e-l-l-o TIPPT, lief damit die
+            // Boss-Uhr, während `timer.test.ts` und Tor-Schicht 12 sie beide als
+            // ruhig beglaubigten: die Karte, die sie prüften, gab es zur
+            // Laufzeit nicht. Lief die Uhr ab, schob es das Kind an seiner
+            // eigenen Auszahlung vorbei (`typed: ""` ⇒ `chalkTheGift` fiel aus).
+            const finaleReq: TaskRequest = { use: "finale", ctx: { type: "console", id, skin } };
             const align = alignAwayFrom(id);
             const item = pickTask("finale", { phase: pid, skin });
             if (!item) { openCard({ req: consoleReq, item: null, card: "console", attempts: 0, typed: "", align }); return; }
-            openCard({ req: consoleReq, item, card: "finale", attempts: 0, typed: "", align, wash: sceneRef.current?.washOf(id) ?? 0 });
+            openCard({ req: finaleReq, item, card: "finale", attempts: 0, typed: "", align, wash: sceneRef.current?.washOf(id) ?? 0 });
           },
         },
       });
@@ -1851,6 +1886,7 @@ function Overlay({
       round={o.round}
       // doc 44 §2.9: the timer class comes from the pool the WORLD asked for
       servedUse={o.req.use}
+      clockMs={o.clockMs}
       onWorldChange={(written) => onWorldChange(o, written)}
       onResolve={() => onResolve(o)}
       onDismiss={() => onDismiss(o)}
