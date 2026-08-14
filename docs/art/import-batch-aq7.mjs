@@ -46,7 +46,7 @@
  * `regelseite_a` OVERWRITES the stem imported by import-batch-aq: that is the
  * point of the round. The old one carried a painted pink glow seam that fell
  * apart into a contour at 18 px and that two blind critics independently read as
- * an editor's selection marquee (D-40). The new one has no seam.
+ * an editor's selection marquee (D-80; vor der K1-Entdopplung: D-40). The new one has no seam.
  */
 import fs from "node:fs";
 import path from "node:path";
@@ -165,7 +165,7 @@ const keyDistance = (png) => {
 // ── the sheets ───────────────────────────────────────────────────────────────
 const SHEETS = [
   {
-    // AQ7 Blatt 4 — THE RULE PAGE WITHOUT THE SEAM (D-40). Overwrites the stem
+    // AQ7 Blatt 4 — THE RULE PAGE WITHOUT THE SEAM (D-80, vor der K1-Entdopplung: D-40). Overwrites the stem
     // import-batch-aq wrote; that is the repair this sheet was ordered for.
     file: "batch-aq7/regelseite_a.png", cols: 1, rows: 1,
     pieces: [[0, "regelseite_a"]],

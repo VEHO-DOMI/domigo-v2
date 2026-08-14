@@ -1562,7 +1562,7 @@
    "hints": {
     "deDesc": "Welche Zahl ist die kleinste? Fang dort an."
    },
-   "grounding": "u01 numbers 1-20 (p3-Regel-Seite »Zahlen 1-20«); loest die Zahlen-Zusage der Arena ein (arena.md §Uebergabe). Evidence = die gemischte Auslage, die seededShuffle fuer diese id baut.",
+   "grounding": "u01 numbers 1-25 (p3-Regel-Seite »Zahlen 1-25«); loest die Zahlen-Zusage der Arena ein (arena.md §Uebergabe). Evidence = die gemischte Auslage, die seededShuffle fuer diese id baut.",
    "evidence": [
     "twelve",
     "ten",

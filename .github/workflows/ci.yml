@@ -65,6 +65,8 @@ jobs:
       - run: node scripts/measure-presence.mjs --selftest # J1-E: the contrast instrument proves itself, or its numbers mean nothing
       - run: node scripts/frame-sink.mjs --selftest # W1/P-66: the camera proves it is alive, or a still frame ships as evidence
       - run: node scripts/measure-motion.mjs --selftest # W1: drawn-vs-seen motion — a shear must not read as zero
+      - run: node scripts/check-registers.mjs --selftest # K1: the register gate's own red light must be reachable
+      - run: node scripts/check-registers.mjs # K1: D-/PB-numbers unique, code references resolve by SYMBOL not by line
       - run: node scripts/check-ci-gates.mjs --selftest # E2: the guard's own red light must be reachable
       - run: node scripts/check-ci-gates.mjs # E2: every gate on disk is wired into THIS file — the gap cannot reopen
 

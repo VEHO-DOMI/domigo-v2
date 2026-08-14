@@ -237,3 +237,79 @@ Ein Blatt ist erst angenommen, wenn:
 4. und ein blinder Prüfer den Frame Seite an Seite gegen die Rayman-Frames legt
    und die Massen als EIN gemalter Körper durchgehen (die Runde, die dieses
    Spec ausgelöst hat: `REPORT_A1_2026-08-11.md`).
+
+---
+
+## §9 · DIE VERDRAHTUNGS-KONVENTION (R4 — Vorbedingung JEDER p2+-Bestellung)
+
+_Nachgetragen von K1 am 2026-08-14. Bis hierher sagte das Spec, WAS zu malen ist,
+und schwieg darüber, unter welchem NAMEN die Engine es findet. Genau daran ist die
+p1-Lieferung fast gescheitert: Blattname und Stem-Name sind nicht dasselbe. Diese
+Konvention ist aus dem lebenden Code abgeleitet (`composition.ts#paintedInterior`,
+`composition.ts#crustOf`, `composition.ts#shell`), nicht erfunden._
+
+### 9.1 · Das Namensgesetz: `<klasse>_<phase>_<zelle>`
+
+Jeder Stem, den die Engine aus einem Massen-Blatt zieht, folgt genau diesem Muster.
+`<phase>` ist `p1`…`p4` oder `p9`; `<zelle>` ist `a`, `b`, `c`, `d` (Zellen-Reihenfolge
+des Blattes von links nach rechts).
+
+| Blatt (Bestellung) | Zellen | Ergibt die Stems | Klasse |
+|---|---|---|---|
+| `mass_body_<phase>.png` 2048×1024 | Reihe 1, Zellen 0–3 | `mass_body_<phase>_a` … `_d` | `body` |
+| ↑ dasselbe Blatt | Reihe 2, Zellen 4–7 | `mass_bodydeep_<phase>_a` … `_d` | `bodyDeep` |
+| `mass_deep_<phase>.png` 2048×512 | Zellen 0–1 | `mass_fade_<phase>_a` · `_b` | `fade` |
+| ↑ dasselbe Blatt | Zelle 2 | *(Sediment — s. 9.3)* | `sediment` |
+| `mass_edges_<phase>.png` 2048×1024 | 8 Zellen | *(Trims — s. 9.3)* | Trims |
+| Kurs-Blatt der Phase | 2 + 2 | `crust_<phase>_a` · `_b` · `crust_<phase>_cap_l` · `_cap_r` | `crust` |
+| Hüllen-Blatt der Phase | 2 | `l1_<phase>_a` · `_b` | `shell` |
+
+**★ DIE FALLE, die diese Tabelle schließt — Blattname ≠ Stem-Name.** Das Blatt heißt
+`mass_deep_<phase>.png`, die Stems daraus heißen `mass_fade_<phase>_*`. Und die zweite
+Zellreihe des Body-Blattes hat einen eigenen Klassennamen (`bodydeep`), den das Spec
+bisher nirgends nannte — es sagte nur „dieselben vier, eine Blende tiefer" (§3). Eine
+Kommission, die das nicht mitliefert, produziert Blätter, die niemand einhängen kann.
+
+### 9.2 · Das Phasen-Gesetz: `PAINTED_MASS_PHASES`
+
+Welche Phase ihr eigenes Papier hat, steht als **deklarierte Liste** im Code —
+`composition.ts#PAINTED_MASS_PHASES`. Stand 2026-08-14: `new Set(["p1"])`, also genau
+eine gemalte Phase; alle übrigen ziehen weiter aus dem geteilten Körper
+(`composition.ts#sharedInterior`).
+
+Die Regel dazu steht im Code selbst und gilt wörtlich:
+
+> „It has to be a DECLARED list rather than a probe, because `massStems` feeds
+> `check-paint-art`, which hard-fails on a stem with no PNG (D-27) — naming a phase
+> here before its sheets land reds the gate. **Add a phase on the same commit that
+> adds its art, never before.**"
+
+Für die Bestellung heißt das: **eine Phase wird nicht „schon mal vorbereitet".** Der
+Eintrag und die PNGs reisen im selben Commit, sonst ist das Tor rot.
+
+### 9.3 · Was NICHT pro Phase kommt (und warum)
+
+* **Das Sediment bleibt geteilt** (`mass_sediment`). Der Grund ist gemessen, nicht
+  vorsichtig: die Übergabe-Konstanten sind kunst-spezifisch, und über die
+  ausgelieferten Grids zeichnet p1 **null** Sediment-Stücke — nur p2 erreicht das
+  Sediment überhaupt (15 Stücke). Ein gemaltes p1-Sediment würde also nichts ändern,
+  was ein Kind sieht, und dabei das Tiefen-Gesetz brechen. **Es wartet auf p2s Kit —
+  und mit ihm die Ableitung der Übergabe-Konstanten aus den eigenen Messwerten
+  (D-50).**
+* **Die Trims bleiben geteilt** (`mass_edge_l/_r`, `mass_corner_bl/_br`,
+  `mass_incorner_l/_r`, `mass_ramp_up/_down`). Grund: das Kanten-Blatt aus Batch AS2
+  wurde zurückgehalten, weil seine Seitenkanten senkrecht nicht kacheln (D-47). Kein
+  Raum hat bis heute eigene Trims.
+
+### 9.4 · Offen geblieben: die Setzstücke (§6)
+
+`mass.ts` hat weiterhin **keine** `setpiece`-Art. §6 ist damit unverändert eine
+Bestellung ohne Anschluss — bewusst gefiled, nicht gebaut. Wer das erste Setzstück-Blatt
+bestellt, baut den Anschluss im selben Zug; sonst entsteht Kunst ohne Aufhänger.
+
+### 9.5 · Abnahme-Zusatz für p2+
+
+Zusätzlich zu §8 gilt ab der zweiten Phase: **die Bestellkarte zitiert §9.1 wörtlich**
+(Blatt → Zellen → Stems), und die Import-Runde weist nach, dass jeder in 9.1 genannte
+Stem nach dem Import existiert. Ein Blatt, dessen Zellen unter anderen Namen landen,
+ist nicht angenommen — auch dann nicht, wenn es schön ist.

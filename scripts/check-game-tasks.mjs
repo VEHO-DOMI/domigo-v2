@@ -304,7 +304,7 @@ function checkAgainstLevel(file, level, items) {
         // ── R5-W2 · H1 · THE ARENA'S NUMBER PROMISE, KEPT BY MACHINE ─────────
         //
         // The arena dossier ACCEPTED a contract from p3 in writing: p3 places a
-        // Regel-Seite for „Zahlen 1–20" and the boss windows are where the
+        // Regel-Seite for „Zahlen 1–25" and the boss windows are where the
         // child is asked to use them. It was undischarged in every real run,
         // and nothing could see that, because the promise lived in prose and
         // the pool looked fine — six cards, one of them numbers.
@@ -338,7 +338,7 @@ function checkAgainstLevel(file, level, items) {
           const hit = served.some((t) =>
             answerSurfaceOf(t).some((s) => [...numbers].some((n) => hasWord(s, n))));
           if (!hit) {
-            fail(at, `coverage: the arena promised p3's numbers 1–20, but the ${knots} window(s) a clean fight opens serve `
+            fail(at, `coverage: the arena promised p3's numbers 1–25, but the ${knots} window(s) a clean fight opens serve `
               + `${served.map((t) => t.id).join(", ")} — not one asks for a number`);
           }
         }

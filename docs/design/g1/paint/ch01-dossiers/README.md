@@ -1,5 +1,24 @@
 # ch01 Zweck-Dossiers — DEIN Design-Gate (PB-W3, 2026-07-23)
 
+> ## ⛔ HISTORISCH — NICHT MEHR DER DESIGN-KANON (Banner nachgetragen K1, 2026-08-14)
+>
+> **Der geltende Design-Kanon ist `../ch01-dossiers-v2/`.** Dieser Ordner ist sein
+> Vorgänger; das v2-README sagt das seit dem 2026-08-10, dieser Ordner sagte es bisher
+> nirgends selbst — und wer hier landete, konnte das nicht wissen. Das ist der Grund
+> für den Banner.
+>
+> **Was hier weitergilt:** die G-Amendments unten (Kokis Verdikt vom 2026-07-23) —
+> v2 baut ausdrücklich darauf auf. **Was NICHT mehr gilt:** alle Faust-Inhalte
+> (ch01 ist faustlos) und jede Geometrie-, Karten- oder Zahlen-Angabe; dafür ist
+> allein v2 maßgeblich. Wer amendieren will, amendiert v2 — auch das Tor
+> `scripts/check-level-design.mjs` liest ausschließlich v2.
+>
+> **Eine lebende Ausnahme, bewusst so gelassen:**
+> `packages/content-schema/src/game-tasks.ts` verweist als `frozen` auf `tasks.md` in
+> DIESEM Ordner — das ist der eingefrorene Stand, gegen den das Karten-Schema
+> geschrieben wurde, und ein solcher Verweis darf auf einen historischen Stand zeigen.
+> Er wird deshalb nicht umgehängt.
+
 > **★ GATE BESTANDEN MIT AMENDMENTS (Kokis Verdikt, 2026-07-23 abend — eingearbeitet):**
 > **G1** Kapitel beginnt IM Schulgebäude (p1 = „Die Eingangshalle"; kein Draußen, keine
 > Wiese; jedes Kapitel = eigene Welt, man springt zwischen Welten) · **G2** Zweck-Tabellen

@@ -6,7 +6,7 @@ Kritiker; die gebauten Grids werden ohnehin maschinen-/tape-/screenshot-geprüft
 Das Boss-VERHALTEN (F1–F6: Eskalation, Drop-Mechanik, Aufgaben-Vielfalt,
 Arena-Anleitung, Score-Dimension) ist das **P4-Paket** und wird hier
 ausschließlich als deklarierte »P4-Paket«-Zeilen geführt.
-Vertrag: doc 45 §B/§F-LOB · doc 44 §2/§4-ch01 (faustlos: walk/jump/Halte-Sprung/↑ —
+Vertrag: doc 45 §B/§F-LOB · doc 44 §2/§4-ch01 (faustlos: Bodenlauf/jump/Halte-Sprung/↑ — bis 2026-08-14 stand hier »walk«, s. §Kanon —
 kein run als Pflicht [README §Kanon-Klärung], keine Faust, kein Deflect) · README
 §Kanon/§Zensus/§Abdeckung · Cookbook §1 (»Boss set-pieces are tuned to ONE screen«),
 §8/§9. Vorgänger `../ch01-dossiers/arena.md` = Ideen-Mine; dessen Deflect-Kette
@@ -17,7 +17,9 @@ kein run als Pflicht [README §Kanon-Klärung], keine Faust, kein Deflect) · RE
 - Terrain-Notation: **„Boden ab rK"** = Voll-Säule Reihen K…25, Steh-Reihe K−1,
   Fußlinie K·16. **„Platte rK"** = EIN-Reihen-Platte in Reihe K (darunter frei),
   Steh-Reihe K−1, Fußlinie K·16.
-- Spieler: walk 1,25 / run 2,25 px/t · Tap-Apex 45–50 / Halte-Apex 101 (P0-Messung) ·
+- Spieler: **Bodentempo 2,25 px/t (`PAINT.runMax`) — ch01 ist ein Ein-Tempo-Kapitel,
+  README §Kanon 2026-08-14; HISTORISCH stand hier »walk 1,25 / run 2,25 px/t«** ·
+  Tap-Apex 45–50 / Halte-Apex 101 (P0-Messung) ·
   **Gravitations-UHR: +1 px/t nur jeden 3. Luft-Tick** (fallend sofort zählend) ·
   Körper 12×30, Kopf = Füße−30.
 - Fähre: Deck-Fußlinie = PlattformY−6 = **282**; Attach NUR im Fallen (`!grounded`),
@@ -37,10 +39,15 @@ Füße 166–218** · KNOT_SPAN ±78/92/104 px · Perioden 300/260/220 t · Tele
 30 t (500 ms) · Zentrum trackt das Kind (/48, ≤0,6 px/t; Bestand: WELT-Clamp mit
 Rand-Marge 24 px — **wird per stageClamp-Vorleistung §10 auf die Bühne c5–30
 gebunden**) · GUARDIAN_SCRIPT E: 3 Knoten. **Zwei Körper-Lesarten (A6, deklariert):**
-Physik/Test rechnen 52 px (entities-Kommentar + Test-Hardcode), PaintScene ZEICHNET
-GUARDIAN_DISPLAY_H = 68 — der Test-Kommentar „PaintScene.entTargetH for a guardian"
-ist gegen die Szene gedriftet = **DEBT-Register-Kandidat** (vorbestehende
-Engine-Drift, blockt hier nichts: alle Decken-/Band-Aussagen unten in BEIDEN
+★ **ERLEDIGT — nachgetragen K1, 2026-08-14 (blinder Prüferfund).** Dieser Absatz
+beschrieb eine Drift, die es nicht mehr gibt: der Test-Hardcode `= 52` ist entfernt,
+`GUARDIAN_DISPLAY_H = 68` liegt seit H1 in `packages/game-paint/src/anim.ts#GUARDIAN_DISPLAY_H` und wird vom
+Flug-Test importiert statt kopiert — »a copy cannot drift if there is no copy«
+(`guardian-flight.test.ts#DEBT A6 / D-21`). Nur ein beschreibender Kommentar in
+`entities.ts` trägt die 52 noch, ohne dass irgendeine Physik sie benutzt. **Wer diese
+Zeile liest, muss D-21 NICHT mehr fixen.** Historischer Wortlaut zur Einordnung:
+_Physik/Test rechnen 52 px, PaintScene ZEICHNET 68 — der Test-Kommentar ist gegen die
+Szene gedriftet_ (vorbestehende Engine-Drift, blockte hier nichts: alle Decken-/Band-Aussagen unten in BEIDEN
 Lesarten wahr). Kamera: View 22×14 Zellen (352×224); **y-Schloss bei 96** mit Kind
 am Boden (PaintScene:314, von `guardian-flight.test.ts` aus camera.ts
 NACHGERECHNET) → sichtbar Reihen 6–19.
@@ -48,8 +55,12 @@ NACHGERECHNET) → sichtbar Reihen 6–19.
 ## 1 · Auftrag & Raum-Idee
 
 Das Examen (VL 1.11): die Bühne prüft, was die Phasen lehrten — sie lehrt selbst
-NICHTS Neues (Tap-Sprung genügt für jede Kante; kein Halte-Sprung, kein run
-als PFLICHT). Die EINE Raum-Idee: **die symmetrische Prüfungs-Bühne vor leerem
+NICHTS Neues (Tap-Sprung genügt für jede Kante; kein Halte-Sprung).
+**Amendment R8, 2026-08-14:** hier stand zusätzlich „kein run als PFLICHT". Der Satz
+ist gegenstandslos geworden — ch01 hat nur EIN Bodentempo, und das ist Run (README
+§Kanon). Die Absicht dahinter gilt unverändert weiter und steht schon im Satz davor:
+**das Examen verlangt keine Fähigkeit über den Tap-Sprung hinaus.** ⚠ Diese Zeile war
+zitierte Begründung einer Engine-Konstante (`entities.ts#SKID_SPEED`) — s. §Amendments. Die EINE Raum-Idee: **die symmetrische Prüfungs-Bühne vor leerem
 Saal** — Auftritt aus der Seitenbühne WEST (Kulisse), flache Bretter-Bühne mit zwei
 Kreide-Kisten-Podesten unter dem Flugband der Tafel, Seitenbühne OST als
 **Sieg-Trakt** (Käfig #5 + ✕-Schild hinter dem Vorhang). Das Publikum: leere
@@ -69,9 +80,9 @@ lehrten" wird zur Tabelle):**
 
 | Gelehrt (Phase) | Arena-Prüfung | Status |
 |---|---|---|
-| p1 · walk + Tap-Sprung an Kanten | Podest-Aufstieg 32 px (Tap 45–50 ≫ 32) · Ausweichen ist GEHEN (128 t ≫ Telegraph 30 t) | Bühne, dieses Dossier ✓ |
+| p1 · Bodenlauf + Tap-Sprung an Kanten | Podest-Aufstieg 32 px (Tap 45–50 ≫ 32) · Ausweichen braucht kein Sprinten (**[HISTORISCH] 128 t** bei 1,25 px/t; beim gültigen Tempo 2,25 px/t sind es 71 t — beides weit über dem Telegraph von 30 t) | Bühne, dieses Dossier ✓ |
 | p2 · Telegraph-Lesen (Schütze board) | Telegraph-Boden 30 t der Tafel lesen und Position wählen | Bühne ✓ · Wurf-Tuning F3 = P4 |
-| p2 · Rad/Zahlen-Serie (B10-Heimat) + **p3-Regel-Seite „Zahlen 1–20"** („Thema zahlt in der Arena" — p3 §3) | **ÜBERGABE ANGENOMMEN (vertraglich):** die Boss-Karten-Fenster fahren Zahlen-Aufgaben (order/memory mit 1–20 = Kandidaten) — die Arena nimmt das p3-Versprechen hiermit ausdrücklich an | Umsetzung F5 = **P4-Paket**, Vertrag HIER |
+| p2 · Rad/Zahlen-Serie (B10-Heimat) + **p3-Regel-Seite „Zahlen 1–25"** („Thema zahlt in der Arena" — p3 §3) | **ÜBERGABE ANGENOMMEN (vertraglich):** die Boss-Karten-Fenster fahren Zahlen-Aufgaben (order/memory mit 1–25 = Kandidaten) — die Arena nimmt das p3-Versprechen hiermit ausdrücklich an | Umsetzung F5 = **P4-Paket**, Vertrag HIER |
 | p3 · Halte-Sprung (Pier 48 px, Loch-Hopser) | **optionaler Halte-Schnörkel** (§3-Podeste): Luft-Fang der F4-Drops per Halte-Sprung vom Podest — opt-in, NIE Pflicht (Fairness des Examens bleibt) | Schnittstelle an P4/F4 |
 | p3 · „Wait — then step!" (Timing) | Wurf-Zyklen abwarten, dann queren (Scherben-Fenster) | Eskalations-Feinschliff F3 = P4 |
 
@@ -95,7 +106,7 @@ AUFTRITT = RUHE        Podest O c28–30; Tafel-Flugband darüber   ✕ (33,15) 
 **Ein-Screen-Gesetz, ehrlich benannt:** vertikal EXAKT (Kamera-y-Schloss 96, alles
 Spielbare in Reihen 6–19 sichtbar); horizontal ist der Raum 1,64 View-Breiten —
 das Ein-Raum-Gefühl tragen (a) das y-Schloss, (b) das Kind-trackende Flug-Zentrum —
-**vertikal testbewiesen; horizontal NUR ein Tracking-Argument (0,6 < 1,25 px/t —
+**vertikal testbewiesen; horizontal NUR ein Tracking-Argument (**[HISTORISCH]** 0,6 < 1,25 px/t; beim gültigen Tempo 2,25 px/t ist der Vorsprung größer —
 das Kind kann das Zentrum abhängen), ungeprüft: Horizontal-Assertion = P1-Vorleistung
 §10** —, (c) Null Sub-Ziele außerhalb des Sieg-Trakts.
 Dichte: EIN Wesen (Guardian) + EIN Käfig = deklariertes Set-Piece (README-Regler
@@ -110,12 +121,12 @@ Vorhang, Reihenfolge Sieg→Foto→Tor ist die Aussage}.
 |---|---|---|---|---|---|---|
 | (Gelände) | **Decke** | Reihe r0 c0–35 (Bestand) | Proszenium-Sturz | Raumdeckel überm Flugband — nie berührt, **in BEIDEN Körper-Lesarten (A6):** 52-px-Körper → Band-Kopf min. 114; gezeichnet (68) → Ober-Kante min. 98; beide ≫ r0-Unterkante 16 ✓; 98 liegt 2 px unter der y-Schloss-Kante 96 (knapp — windup via guardianKeepIn, Bestand) | VL 1.11 | Vorhang-Kit D-19 |
 | (Gelände) | **Seitenbühne WEST** + Spawn | Boden ab r16 c0–4 · **S (3,15)** (Bestand) | Auftritt aus der Kulisse | RUHE-Zone, **statisch UND dynamisch wahr:** statisch nächstes Entity = Tafel c17, Δc14 (E6-Klasse geprüft); dynamisch bindet der **stageClamp (P1-Vorleistung §10)** die Bahn-Westkante an x80 = Bühnenrand — die Kulisse (x<80) wird NIE überflogen, das Kind kann am Auftritt stehen und den Raum lesen. Arena trägt keine Regel-Seite | **Anti 2** (A8: Anti 5 gestrichen — deckt Damage-Chains, nicht Ruhe) · E6-Klasse | Seitenvorhang D-19 |
-| (Gelände) | **Podest WEST** | **Boden ab r14 c5–7** (Voll-Säule, Fußlinie 224) | gestapelte Kreide-Kisten am Bühnenrand | Wahl-Insel **mit AUSZAHLUNG (Design-Fix 2 — die hohle Nähe-Begründung der v2.0 ist gestrichen):** (a) **Scherben-Zuflucht** — F3s Eskalation legt den Boden-Scherben-Teppich (§1 nennt den Boden wörtlich so), die +32-px-Inseln sind die deklarierte Zuflucht = Bühnen-Schnittstelle an P4/F3; (b) **Drop-Fang** — F4-Drops fallen durchs Flugband, Höhe = Fang-Vorteil = Schnittstelle an P4/F4; (c) **optionaler Halte-Schnörkel** — Halte-Sprung vom Podest (Apex 101: Füße bis 123, Sammel-Anker bis ~113, quer durchs Band 166–218) fängt Drops in der Luft, opt-in, nie Pflicht. Gegenpreis: Band-Überlapp-Risiko (§6). Tap-Sprung 32<45 ✓. **B2-Fix an der eigenen Vergangenheit: die Bestands-Podeste waren Platten r14 mit 16-px-Spalt darüber dem Boden — Körper 30 px passt nie durch, der Spalt war tote Schein-Passage (exakt die B2/B4-Klasse). Voll-Säulen erden die Kisten.** | VL 1.11 · B2/B4 · Cookbook-Gebot 8 (»a bent path always pays« — jetzt zahlt er) | podium_chalkcrate ✓ · crust_p4_a/b+caps ✓ |
+| (Gelände) | **Podest WEST** | **Boden ab r14 c5–7** (Voll-Säule, Fußlinie 224) | gestapelte Kreide-Kisten am Bühnenrand | Wahl-Insel **mit AUSZAHLUNG (Design-Fix 2 — die hohle Nähe-Begründung der v2.0 ist gestrichen):** (a) **Scherben-Zuflucht** — die Eskalation legt den Boden-Scherben-Teppich, die +32-px-Inseln sind die deklarierte Zuflucht = Bühnen-Schnittstelle an P4/F3 (**Korrektur 2026-08-14:** hier stand „§1 nennt den Boden wörtlich so" — §1 sagt „Scherben-FENSTER", nicht Scherben-Teppich; der Selbstverweis ging ins Leere. Gebaut ist der Teppich inzwischen: s. §Amendments); (b) **Drop-Fang** — F4-Drops fallen durchs Flugband, Höhe = Fang-Vorteil = Schnittstelle an P4/F4; (c) **optionaler Halte-Schnörkel** — Halte-Sprung vom Podest (Apex 101: Füße bis 123, Sammel-Anker bis ~113, quer durchs Band 166–218) fängt Drops in der Luft, opt-in, nie Pflicht. Gegenpreis: Band-Überlapp-Risiko (§6). Tap-Sprung 32<45 ✓. **B2-Fix an der eigenen Vergangenheit: die Bestands-Podeste waren Platten r14 mit 16-px-Spalt darüber dem Boden — Körper 30 px passt nie durch, der Spalt war tote Schein-Passage (exakt die B2/B4-Klasse). Voll-Säulen erden die Kisten.** | VL 1.11 · B2/B4 · Cookbook-Gebot 8 (»a bent path always pays« — jetzt zahlt er) | podium_chalkcrate ✓ · crust_p4_a/b+caps ✓ |
 | (Gelände) | **Podest OST** | **Boden ab r14 c28–30** (Spiegel: 35−c von WEST) | dito, Gegenseite | **Symmetrie EXAKT um c17,5** (Bestand c25–27 war um 3 Spalten schief — VL-1.11-Verstoß der v1); Auszahlung dito WEST (Zuflucht/Fang/Schnörkel); zugleich die Stufe in den Sieg-Trakt (Überquerung Tap-Sprung, §6) | VL 1.11 | dito |
 | tafel | ★ Guardian **DIE FLIEGENDE TAFEL** | **home (17,11)** (Bestand; Zentrum x 280, 8 px westlich der Raummitte 288 — irrelevant, das Flug-Zentrum trackt ohnehin das Kind) | das verzauberte Herz des Klassenzimmers, wird ERLÖST — **das Examen gehört aufs Podium, die Kulissen sind heilig** | Bühne liefert, was die Choreografie braucht (F-LOB bleibt): flacher Boden r16 als Scherben-Teppich-Fläche, Freifläche c8–27 = 320 px Ausweich-Bahn ≫ max. Pfad-Schatten 208 px, Flugband 166–218 kollisionsfrei (§6). **stageClamp (P1-Vorleistung §10) bindet das Flug-Zentrum an die Bühne c5–30** — Zentrum [184–392] bei Spann 104 statt Welt-Clamp [128–448]; Band ±26, KNOT_SPAN, Perioden IDENTISCH → F-LOB-Choreografie unangetastet. **Alles Verhaltens-artige (Wurf-Raten, Eskalation, Drops, Karten) = P4-Paket** | doc 44 §4-C4 · G4 · B12 (Zustands-Zellen live) | tafel_* ≥25 Zellen ✓ + fx_chalk/chalk_* ✓ |
 | p4-objective | **Objective-Beat-PLATZHALTER** | Karten-Ebene; **räumlich verortet (Design-Befund 8): feuert an der Bühnen-Schwelle c5** (Übertritt Kulisse→Bühne) | »Dein Auftrag«-Rahmen vor dem Examen | Slot hier DEKLARIERT, damit der Bau ihn verdrahtet; **Inhalt/Copy = F2 = P4-Paket · Musik-/Licht-Wechsel beim Betreten = P4-Paket** (v1-Beat wieder geführt) | doc 44 §2.6 · G12 | plate_ch01_goal ✓ |
-| p4-cage5 | ★ Käfig #5 — **DAS KLASSENFOTO** | **(31,15)** auf dem Boden hinter dem Ost-Vorhang | hinter der Bühne lehnt das gerahmte Foto der Klasse — grau, gefangen; die leeren Stühle im Saal sind SEIN Loch | ↑ öffnet (faustlos-Bestand) NACH dem Sieg; **vor dem Sieg: Käfig-Gate (P1-Vorleistung §10) — ↑ feuert die Toast-Klasse des ✕ (`sim.ts:840`-Muster; Copy = P4) statt der Öffnung → der Foto-Beat, der zweitgrößte Gefühls-Beat des Kapitels, feuert NIE unter schwebendem Boss.** Kein physisches Tor (ehrlich, kein Fake-Gate). Karte = Picker der B20-Klasse **„It's a picture"** (README-Tor: gleiche Änderungsklasse wie der Stuhl-Picker — steht unter DEMSELBEN Koki-Nick); **Karten-Bild-Lücke deklariert (H3, Design-Befund 7): bis obj_picture (D-18) landet, fährt die B20-Karte text-only** — p3 wählte den Stuhl, WEIL obj_chair existiert; die Arena deklariert die Lücke, statt sie zu verschweigen | Konv. 5 · B8 · B20-Klasse · C6 · Cookbook-Käfig 6 | Hülle satchel ✓ (D-2: open-Zellen fehlen der Klasse) · Foto **D-18** |
-| p4-exit | Exit-Glyph **✕** | **(33,15)** (Bestand) | das Schild zur Abschluss-Seite | sim-Tor Bestand bestätigt: vor dem Sieg feuert `sim.ts:840` den Toast „Die Tafel möchte noch reden!" — **das ERSCHEINEN erst nach Sieg (Vorgänger-Beat #8) ist NICHT gebaut (PaintScene:4081 rendert ab Load) = P4-Paket-Zeile** | G11-Folge | prop_exit ✓ |
+| p4-cage5 | ★ Käfig #5 — **DAS KLASSENFOTO** | **(31,15)** auf dem Boden hinter dem Ost-Vorhang | hinter der Bühne lehnt das gerahmte Foto der Klasse — grau, gefangen; die leeren Stühle im Saal sind SEIN Loch | ↑ öffnet (faustlos-Bestand) NACH dem Sieg; **vor dem Sieg: Käfig-Gate (P1-Vorleistung §10) — ↑ feuert die Toast-Klasse des ✕ (`sim.ts#gateToastCooldown`-Muster; Copy = P4) statt der Öffnung → der Foto-Beat, der zweitgrößte Gefühls-Beat des Kapitels, feuert NIE unter schwebendem Boss.** Kein physisches Tor (ehrlich, kein Fake-Gate). Karte = Picker der B20-Klasse **„It's a picture"** (README-Tor: gleiche Änderungsklasse wie der Stuhl-Picker — steht unter DEMSELBEN Koki-Nick); **Karten-Bild-Lücke deklariert (H3, Design-Befund 7): bis obj_picture (D-18) landet, fährt die B20-Karte text-only** — p3 wählte den Stuhl, WEIL obj_chair existiert; die Arena deklariert die Lücke, statt sie zu verschweigen | Konv. 5 · B8 · B20-Klasse · C6 · Cookbook-Käfig 6 | Hülle satchel ✓ (D-2: open-Zellen fehlen der Klasse) · Foto **D-18** |
+| p4-exit | Exit-Glyph **✕** | **(33,15)** (Bestand) | das Schild zur Abschluss-Seite | sim-Tor Bestand bestätigt: vor dem Sieg feuert `sim.ts#gateToastCooldown` den Toast „Die Tafel möchte noch reden!" — **das ERSCHEINEN erst nach Sieg (Vorgänger-Beat #8) ist NICHT gebaut (`PaintScene.ts#prop_exit` rendert ab Load) = P4-Paket-Zeile** | G11-Folge | prop_exit ✓ |
 | (Konsole) | **G6-Namens-Konsole — Bestand bestätigt** | Finale-Karte (Karten-Ebene) | die Klasse schreibt der Tafel das erste liebe Wort | **Bestand (belegt):** `fin.t1` typed „hello" (accept hi/hi!/hello!) in `ch01.tasks.v2.json` + `chalkTheGift` (PaintScene:1776) schreibt DAS KIND-WORT auf ihre Tafel + Sonnenblumen-Bloom. **Frankenstein-Rest an P2 übergeben (Design-Befund 6): der `fin.t1`-Stimulus „Die Tafel weint Kreide-Tränen" widerspricht doc 44 §2.2 / entities.ts („she rests rather than cries") — Fix = P2-Skript-Scope, hier aktenkundig.** Nicht gebaut: Namens-Eingabe/-Speicherung (Vorgänger #7 ★); `nameconsole_empty/line.png` existieren, sind aber CODE-UNREFERENZIERT (artManifest 0 Treffer) = **P4-Paket** | G6 · Candy | nameconsole_* ✓ (unverdrahtet) |
 | (Streichungen) | keine Buchstaben · keine Regel-Seite · kein Bonus-Buch · keine Stacheln · kein zweiter Gegner | — | die Prüfung hat keine Requisiten-Streu | Trail-Gesetz (B21) zahlt in den Phasen; Regel-Budget 3 = p1–p3 (README §Zensus, bestätigt); Sammel-Drops in der Arena sind F4 = P4-Paket; Stachel-/Zweitwesen-Absenz im Bestand ENUMERIERT (Arena-Entities = 1: tafel) | B1 · B8 · Anti 8 | — |
 
@@ -162,6 +173,19 @@ Gefangenen-Silhouette NICHT weiter — sie liegt auf einem eigenen Blatt, das
 
 ## 6 · Bewegungs-Geometrie (aus den Ankern; Gravitations-Uhr berücksichtigt)
 
+> **★ HISTORISCH-MARKE (R8, Architekt 2026-08-14).** Jede Rechnung in diesem
+> Abschnitt, die „bei walk" rechnet oder 1,25 px/t einsetzt, beschreibt ein Tempo,
+> das ch01 nie benutzt hat (README §Kanon: Bodentempo = 2,25 px/t, `PAINT.runMax`).
+> Die Rechnungen bleiben stehen, weil sie zeigen, unter welcher Annahme der Raum
+> geschnitten wurde — sie tragen aber **keine neue Geometrie** mehr. Was daraus
+> folgt, ist zweierlei und nicht dasselbe:
+>
+> * **Weiten-Nachweise („Flugweite ≥ nötig") halten erst recht.** Mehr Tempo heißt
+>   mehr horizontale Flugweite; jede Marge wird größer, keine kleiner.
+> * **Lande-Genauigkeit ist eine NEUE Frage.** Wo eine kleine Plattform getroffen
+>   werden muss, kann mehr Tempo über das Ziel hinaustragen. Kein Nachweis in
+>   diesem Abschnitt deckt das ab — als Schuld gefiled, nicht hier entschieden.
+
 - **Podest-Aufstieg:** Boden-Füße 256 → Podest-Füße 224 = 32 px; Tap-Apex 45–50 ≫ 32 ✓
   — **kein Halte-Sprung nötig, die Prüfung verlangt nichts Ungelehrtes** (Kopffreiheit:
   Podest-Kopf 194, Decke endet 16 — frei). Der Halte-Sprung existiert nur als
@@ -175,9 +199,12 @@ Gefangenen-Silhouette NICHT weiter — sie liegt auf einem eigenen Blatt, das
   Berührungs-Risiko** (Kontakt = Karte + iframes, nie Sturz/Tod — deklarierte
   Lektion, keine Falle; Feinabstimmung = P4-Paket).
 - **Ausweich-Bahn:** Freifläche c8–27 = 320 px ≫ max. KNOT_SPAN-Schatten 208 px —
-  es gibt zu jedem Zeitpunkt Boden außerhalb der Pfad-Projektion; walk 1,25 px/t
-  quert die halbe Bahn (160 px) in 128 t ≫ Telegraph-Boden 30 t: Ausweichen ist
-  Gehen, nie Sprinten (kein run als Pflicht ✓). Gilt unverändert unter stageClamp
+  es gibt zu jedem Zeitpunkt Boden außerhalb der Pfad-Projektion; **[HISTORISCH]**
+  walk 1,25 px/t quert die halbe Bahn (160 px) in 128 t ≫ Telegraph-Boden 30 t:
+  Ausweichen ist Gehen, nie Sprinten (kein run als Pflicht ✓). **Beim gültigen Tempo
+  2,25 px/t braucht dieselbe halbe Bahn 71 t — immer noch weit über dem 30-t-Telegraph;
+  die AUSSAGE hält, nur ihre Formulierung („Gehen") beschreibt kein Tempo mehr, das
+  ch01 hat (§Amendments, README §Kanon).** Gilt unverändert unter stageClamp
   (Zentrum [184–392] liegt im Welt-Korridor [128–448] — nur enger).
 - **Sieg-Trakt:** Podest OST überqueren (Tap-Sprung 32, 3 Zellen, Abtritt 32) →
   Käfig (31,15) → ✕ (33,15). **„Nichts Feindliches östlich der Bühne" ist erst mit
@@ -189,7 +216,7 @@ Gefangenen-Silhouette NICHT weiter — sie liegt auf einem eigenen Blatt, das
   und Sieg-Trakt gleichzeitig im Bild — **vertikal testbewiesen**
   (`guardian-flight.test.ts`: head ≥ seenTop, feet ≤ seenBottom, aus camera.ts
   nachgerechnet). **Horizontal ist die Tafel-Sichtbarkeit NUR ein
-  Tracking-Argument (Zentrum-Kappe 0,6 < walk 1,25 px/t — das Kind kann das
+  Tracking-Argument (**[HISTORISCH]** Zentrum-Kappe 0,6 < walk 1,25 px/t; beim gültigen Tempo 2,25 ist der Vorsprung größer, das Argument hält erst recht — das Kind kann das
   Zentrum abhängen), ungeprüft (A3); Horizontal-Assertion + stageClamp = 
   P1-Vorleistung §10, löst es final.**
 
@@ -233,7 +260,7 @@ vorgemerkt. Kreidestaub-fx ✓ Bestand.
 | Namens-Runde | finale+ | typed (Name) | **P4-Paket** (G6-Erweiterung, nameconsole_* liegen bereit) |
 
 **G12-Klärungs-Zeile (A2-Beifang, deklariert):** `mistake` ist eine echte
-Karten-Maschine (machines.test.ts:321), fehlt aber in der README-G12-Artenliste
+Karten-Maschine (`cards/machines.test.ts#mistakeMachine`), fehlt aber in der README-G12-Artenliste
 für ch01 (choice·wheel·spell·order·oddone·memory·typed) — README-Liste und
 Task-Bestand widersprechen sich. **README-Klärung als Amendment beantragt:**
 Artenliste um `mistake` ergänzen ODER den Boss-Pool begründet umbauen — Entscheid
@@ -259,7 +286,13 @@ floorRow-Erkennung des Flug-Tests ist KEIN Voll-Reihen-Check, sondern
 `startsWith("####################")` (20 führende #) — ihr Ergebnis bleibt unter
 dem neuen Profil r16 (die Podest-Reihen r14/r15 beginnen `.....###`, matchen nie) ✓.
 
-**P1-ENGINE-VORLEISTUNGEN (deklariert — werden im Grid-Schnitt gebaut):**
+**P1-ENGINE-VORLEISTUNGEN — ★ INZWISCHEN GEBAUT (nachgetragen K1, 2026-08-14):** die
+folgende Liste liest sich als Zukunftsarbeit und ist keine mehr. Nachgeprüft: `stageClamp`
+steht als `stageMinC: 5 / stageMaxC: 30` in der ausgelieferten Level-Datei und wird in
+`entities.ts` gelesen · das Käfig-Tor lebt als `cagesGated` und ist in `entities.test.ts`
+getestet · die Horizontal-Assertion liegt in `guardian-flight.test.ts`, das §10 dieses
+Dossiers wörtlich zitiert. **Wer hier ansetzt, baut Gebautes nach.** Die Liste bleibt als
+Vertrag stehen — sie beschreibt, was gelten MUSS, nicht was noch fehlt:
 1. **stageClamp (Level-Param):** Flug-Zentrum-Clamp auf die Bühne c5–30 statt auf
    die Welt — Zentrum ∈ [80+Spann, 496−Spann]: Spann 78 → [158, 418] · 92 →
    [172, 404] · 104 → [184, 392] (Welt-Clamp-Bestand zum Vergleich: [102, 474] /
@@ -269,7 +302,7 @@ dem neuen Profil r16 (die Podest-Reihen r14/r15 beginnen `.....###`, matchen nie
    nie überflogen**. F-LOB unangetastet: Band ±26, KNOT_SPAN, Perioden identisch —
    nur der Zentrums-Korridor wird schmaler.
 2. **Käfig-Gate vor Sieg (sim-Zeile):** ↑ am Käfig #5 vor dem Guardian-Sieg feuert
-   die Toast-Klasse des ✕ (`sim.ts:840`-Muster; Copy = P4-Paket) statt der
+   die Toast-Klasse des ✕ (`sim.ts#gateToastCooldown`-Muster; Copy = P4-Paket) statt der
    Öffnung — der Foto-Beat feuert nie mitten im Kampf. Kein physisches Tor.
 3. **Horizontal-Assertion** in `guardian-flight.test.ts`: Tafel-x bleibt unter
    stageClamp im Kamera-Frame (schließt A3 final; vertikal ist bereits bewiesen).
@@ -278,3 +311,51 @@ dem neuen Profil r16 (die Podest-Reihen r14/r15 beginnen `.....###`, matchen nie
 versetzt; `ch01.proof.json`) · grids-v2-Spiegel = D-8-Regime des P1-Pakets ·
 README-Amendments (§4: picture-Zeile + Zensus Zeile 5 · §9: G12-mistake-Klärung)
 im PR sichtbar.
+
+## §Amendments (K1, 2026-08-14) — was die Bühne inzwischen wirklich tut
+
+### A1 · DER SCHERBEN-TEPPICH IST GEBAUT (R27)
+
+Das Dossier hat den Teppich als Absicht geführt („F3s Eskalation legt den
+Boden-Scherben-Teppich"). H1 Teil 3 hat ihn gebaut, und zwar so:
+
+* Jede gelandete Kreide hinterlässt ihre Scherbe auf den Brettern — das gab es schon.
+* **Neu: ab dem dritten Knoten rutscht die liegende Scherbe** (`entities.ts#SKID_FROM_KNOT`,
+  0-basiert `= 2`) in der Richtung weiter, in die ihr Stück ohnehin flog
+  (`entities.ts#SKID_SPEED`). Der Boden wird damit über den Kampf hinweg voller, statt
+  nur bestreut zu sein — die +32-px-Podest-Inseln sind die Zuflucht, als die das Dossier
+  sie deklariert hat. Die Zuflucht ist also eingelöst, nicht mehr versprochen.
+* Die liegende Scherbe ist eine GEFAHR mit langsamem Puls, kein Deko-Fleck
+  (`PaintScene.ts#a lying shard is smaller than the stick it came off`).
+
+### A2 · ⚠ EIN BEFUND, DEN K1 NICHT SELBST HEILEN DARF: die Rutsch-Geschwindigkeit
+
+`SKID_SPEED` ist ausdrücklich **„als Mitte der beiden Gangarten des Kindes"** abgeleitet —
+„schneller als Gehen, damit Weggehen aufhört, die ganze Antwort zu sein — langsamer als
+Laufen, weil das Examen nie eine Fähigkeit VERLANGT, die es als Kür gelehrt hat
+(arena.md §1: kein run als Pflicht)". Die Formel lautet
+`(PAINT.walkMax + PAINT.runMax) / 2 / 2` = 224 Subs = **0,875 px/t**.
+
+Beide Hälften dieser Begründung hängen am Zwei-Tempo-Bild:
+
+1. Die zitierte §1-Zeile („kein run als Pflicht") gibt es seit dem Ein-Tempo-Kanon
+   nicht mehr — §1 trägt an genau dieser Stelle das »Amendment R8, 2026-08-14«, das
+   den Satz für gegenstandslos erklärt (die Absicht dahinter — das Examen verlangt
+   keine Fähigkeit über den Tap-Sprung hinaus — gilt unverändert weiter).
+2. Schwerer: Das Kind läuft 2,25 px/t, die Scherbe rutscht 0,875 px/t. **Sie ist damit
+   deutlich langsamer als die einzige Gangart, die das Kapitel hat — „Weggehen" IST
+   wieder die ganze Antwort**, also genau das, was der Takt verhindern sollte.
+
+Das ist ein GEFÜHLS-Entscheid (wie schnell darf eine Scherbe ein Kind jagen?) und
+gehört dem Architekten und Koki, nicht einem Register. **Als Schuld gefiled, hier nicht
+geändert.** Wer ihn anfasst, ändert eine Zahl im Kampf und braucht die Feel-Runde dazu.
+
+### A3 · Verweise stehen jetzt auf Symbolen, nicht auf Zeilennummern
+
+Alle Verweise dieses Dossiers, die auf eine ZEILENNUMMER zeigten, waren verrutscht:
+sim.ts Zeile 840 traf nicht mehr den ✕-Toast, PaintScene Zeile 4081 nicht mehr das
+Erscheinen des Schilds. Die Zeilen gab es alle noch — nur zeigte keine mehr auf das
+Gemeinte, und genau das sieht eine Bereichsprüfung nie.
+Sie sind auf die Form `` `datei#symbol` `` umgestellt und werden von
+`scripts/check-registers.mjs` maschinell geprüft. **Neue Verweise bitte nur in dieser
+Form** — eine Zeilennummer altert still, ein Symbolname nicht.

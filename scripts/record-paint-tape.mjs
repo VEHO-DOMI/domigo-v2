@@ -303,8 +303,9 @@ const PILOTS = {
   },
   // p9 „Die Kleckskammer" (R5-P1, p9.md §10): DIE WELLE — Tape A, der
   // PERFEKT-Lauf: 12/12 (SCHOOLTHINGS) tap-traversierbar vor Uhr-Ablauf,
-  // dann ✕. (Tape B/Timeout + Rückkehr-Band: deklarierte Schuld, hängt am
-  // offenen D-5-Koki-Tor + Proof-Schema — DEBT_REGISTER.)
+  // dann ✕. (Tape B/Timeout + Rückkehr-Band: deklarierte Schuld — D-23. Der frühere
+  // Zusatz »hängt am offenen D-5-Koki-Tor« ist seit K1/2026-08-14 gestrichen: D-5 ist
+  // seit B1 nicht nur genickt, sondern GEBAUT; es fehlt nur noch die Schema-Erweiterung.)
   p9: {
     abilities: ["jump", "run"],
     program: [
