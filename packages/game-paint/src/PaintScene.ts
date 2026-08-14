@@ -706,8 +706,23 @@ const ICE = 0xd7e9f2;
 const INK = 0x243048;
 const GRASS = 0x59a83c;
 
+/** R5-W3 · W1 · DER ZEICHEN-ABGRIFF, und warum er ein eigener Schalter ist.
+ *
+ *  Der Käfig-Widerspruch (Instrument »≈16 px«, blinder Prüfer »≈1 px«, dieselben
+ *  Bilder) war unentscheidbar, weil niemand sagen konnte, welche Drehung in
+ *  EINEM bestimmten Bild wirklich gezeichnet war: die Zahl kam aus einer
+ *  Nachrechnung, das Urteil aus dem Bild. Also legt der Zeichenort seine eigene
+ *  Transformation ab, und der Beipackzettel jeder Aufnahme trägt sie mit.
+ *
+ *  Hinter einem Konstanten-Schalter, den der Bundler in der Produktion entfernt:
+ *  Performance ist paramount, und dieser Abgriff kostet eine Map-Schreibung pro
+ *  Käfig pro Bild. Im ausgelieferten Spiel existiert er nicht. */
+const DRAW_PROBE = process.env.NODE_ENV !== "production";
+
 export class PaintScene extends Phaser.Scene {
   private cfg: PaintSceneCfg;
+  /** siehe DRAW_PROBE — nur im Dev-Build befüllt. */
+  private lastBreath = new Map<string, { rot: number; dy: number; sx: number; sy: number; hPx: number; scr: { x: number; y: number; w: number; h: number } | null }>();
   /** PB-T2: ALL gameplay lives in the headless sim — the scene draws and
    *  routes events. The proof-tape replayer runs the same Sim in CI, so the
    *  scene may never grow gameplay logic of its own again. */
@@ -1171,12 +1186,26 @@ export class PaintScene extends Phaser.Scene {
   getState(): {
     x: number; y: number; vx: number; vy: number; pose: string; grounded: boolean;
     onSlide: boolean;
+    /** R5-W3 · W1: WELCHER Tick dieses Bild ist. Ohne ihn ist jede Bildreihe
+     *  eine Anekdote — die ganze »16 px gegen 1 px«-Debatte am Käfig war nur
+     *  möglich, weil keine Aufnahme sagen konnte, wann sie entstanden ist. */
+    tick: number;
     phase: string; letters: number; hovering: boolean; overlay: boolean;
     /** R3-16/M-B: what the Bilanz reads from — found, not held (see Sim). */
     lettersCollected: number; tips: number; books: number;
     knots: number; guardianDown: boolean; bonusLeft: number;
-    camX: number;
-    entities: Array<{ id: string; role: string; skin: string; state: string; redeemed: boolean; x: number; y: number }>;
+    /** R5-W3 · W1: beide Kamera-Achsen, damit aus einer Weltlage eine
+     *  BILDSCHIRM-Lage wird — ohne camY kann keine Aufnahme sagen, wo im Bild
+     *  das Ding steht, das sie zeigt. */
+    camX: number; camY: number;
+    entities: Array<{
+      id: string; role: string; skin: string; state: string; redeemed: boolean; x: number; y: number;
+      /** R5-W3 · W1 (dev-only): was zuletzt WIRKLICH gezeichnet wurde — Drehung,
+       *  Hub und Skalierung des Käfig-Rüttelns samt gezeichneter Höhe. Nicht
+       *  nachgerechnet, sondern am Zeichenort abgegriffen: ein Begleittext, der
+       *  eine Bewegung behauptet, ist damit nachprüfbar. */
+      breath?: { rot: number; dy: number; sx: number; sy: number; hPx: number; scr: { x: number; y: number; w: number; h: number } | null };
+    }>;
     projectiles: Array<{ kind: string; x: number; y: number; deflected: boolean }>;
   } | null {
     if (!this.player) return null; // boot-safe: the HUD poll may fire pre-create
@@ -1188,6 +1217,7 @@ export class PaintScene extends Phaser.Scene {
       pose: this.player.pose,
       grounded: this.player.grounded,
       onSlide: this.player.onSlide, // D1 spike visibility
+      tick: this.tickCount,
       phase: this.cfg.phaseId,
       letters: this.lettersGot,
       lettersCollected: this.sim.lettersCollected,
@@ -1199,7 +1229,12 @@ export class PaintScene extends Phaser.Scene {
       guardianDown: this.guardianDefeated,
       bonusLeft: this.bonusLeftTicks,
       camX: fromSubs(this.camX),
-      entities: (this.world?.entities ?? []).map((e) => ({ id: e.id, role: e.role, skin: e.skin, state: e.state, redeemed: e.redeemed, x: fromSubs(e.x), y: fromSubs(e.y) })),
+      camY: fromSubs(this.camY),
+      entities: (this.world?.entities ?? []).map((e) => ({
+        id: e.id, role: e.role, skin: e.skin, state: e.state, redeemed: e.redeemed,
+        x: fromSubs(e.x), y: fromSubs(e.y),
+        ...(DRAW_PROBE ? { breath: this.lastBreath.get(e.id) } : {}),
+      })),
       projectiles: (this.world?.projectiles ?? []).map((p) => ({ kind: p.kind, x: fromSubs(p.x), y: fromSubs(p.y), deflected: p.deflected })),
     };
   }
@@ -1765,6 +1800,24 @@ export class PaintScene extends Phaser.Scene {
         img.y += br.dy - lift;
         if (pop > 0) img.setRotation(0.13 * pop);
         else if (e.role === "cage") img.setRotation(e.redeemed ? 0 : br.rot);
+        // R5-W3 · W1: was hier gezeichnet wird, ist ab jetzt zitierfähig — samt
+        // der Stelle IM BILD, an der es steht. Ohne die muss ein Messgerät die
+        // Kamera-Mathematik nachbauen, und ein nachgebautes Fenster misst
+        // irgendwann den Hintergrund und meldet »bewegt sich nicht«.
+        //
+        // Und es steht NACH Skalierung, Hub und Drehung, nicht davor: davor
+        // liefert getBounds() die Lage des VORIGEN Bildes — ein Fenster, das um
+        // ein Bild hinterherhinkt, ist genau die Klasse Fehler, die diese
+        // Session aufräumt.
+        if (DRAW_PROBE && (e.role === "cage" || e.role === "tip")) {
+          const cam = this.cameras.main;
+          const b = img.getBounds();
+          const view = cam.worldView;
+          const scr = view.width > 0
+            ? { x: (b.x - view.x) * cam.zoom, y: (b.y - view.y) * cam.zoom, w: b.width * cam.zoom, h: b.height * cam.zoom }
+            : null;
+          this.lastBreath.set(e.id, { rot: br.rot, dy: br.dy, sx: br.sx, sy: br.sy, hPx: targetH, scr });
+        }
       }
       // …and a cell that already faces a direction is never mirrored: flipping a
       // right-bank cell would draw a LEFT bank while she flies right (the facing
