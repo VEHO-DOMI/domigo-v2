@@ -27,7 +27,7 @@ import { type AirModel, DELTA_CAP_MS, LOGICAL_H, LOGICAL_W, MAX_TICKS_PER_FRAME,
 import { INK_BODY, INK_CROWN_DARK, INK_CROWN_LIT, INK_DEPTH_ROWS, inkCrownPoints, inkDepthAt, inkDepthTint, inkScrollAt, planInkColumns } from "./ink.ts";
 import { type FistState } from "./fist.ts";
 import { type Pad, type PlayerState } from "./player.ts";
-import { CHALK_COLOURS, type EntityState, type EntityWorld, GUARDIAN_SCRIPT, JOY_ROLES, SHARD_TICKS, engageTargetId, telegraphTicksFor } from "./entities.ts";
+import { CHALK_COLOURS, type EntityState, type EntityWorld, GUARDIAN_SCRIPT, JOY_ROLES, KNOT_BEAT_TICKS, SHARD_TICKS, engageTargetId, telegraphTicksFor } from "./entities.ts";
 import { COLLECT_ANCHOR_PX, MAGNET_FIELD_PX, Sim, type SimEvent, type TaskRequest, type TipPayload } from "./sim.ts";
 import { FOCUS_MS, focusView } from "./camera.ts";
 import {
@@ -354,12 +354,12 @@ const TRAIL_ANCHOR_Y = GUARDIAN_DISPLAY_H * 0.5;
 /** The states that leave a trail: the ones where she is actually flying. A
  *  telegraph holds station and a dip is a deliberate descent — a tail on either
  *  would say „still moving" while the picture says „about to throw". */
-const TRAIL_STATES: ReadonlySet<string> = new Set(["fly", "throw"]);
+const TRAIL_STATES: ReadonlySet<string> = new Set(["fly", "throw", "untie"]);
 /** PK-R6 · H1: the states in which she is genuinely in the air, and may
  *  therefore be tilted by her own flight (finding 2). `dip` is a deliberate
  *  controlled descent to the child and `sink`/`sad`/`consoled` are the landing —
  *  a board tipped while it settles reads as a board falling over. */
-const AIRBORNE_STATES: ReadonlySet<string> = new Set(["fly", "throw", "telegraph"]);
+const AIRBORNE_STATES: ReadonlySet<string> = new Set(["fly", "throw", "telegraph", "untie"]);
 
 // ── PK-R6 · H1 · THE BOSS SEPARATION HALO (round-1 critique, finding 3) ──────
 // „The dark wood frame and green board sit at almost the same value as the
@@ -2875,43 +2875,63 @@ export class PaintScene extends Phaser.Scene {
     G.lineStyle(2.4, KNOT_SHADOW, 0.26).strokePoints(pts, false);
     G.lineStyle(1.4, KNOT_CHALK, 0.5).strokePoints(pts, false);
     G.lineStyle(0.7, KNOT_CHALK_LIT, 0.9).strokePoints(pts, false);
+    // ── R5-W2 · H1 · DER KNOTEN, DER GERADE AUFGEHT ─────────────────────────
+    // Die Schnur war ein Standbild: sie las eine Zahl und zeichnete Lumpen oder
+    // Buchten. Der wichtigste Augenblick des Kampfes — ein Knoten geht auf —
+    // fand darin gar nicht statt, er war schon vorbei, wenn man hinsah. Jetzt
+    // löst sich der Knoten über den Knoten-Takt hinweg auf, und sein loses Ende
+    // fällt aus der Schnur.
+    // Reduzierte Bewegung: der Ruhezustand IST der Endzustand (aufgegangen).
+    const untieT = g.state !== "untie"
+      ? -1
+      : this.cfg.reducedMotion ? 1 : Math.max(0, Math.min(1, g.timer / KNOT_BEAT_TICKS));
     for (let i = 0; i < total; i++) {
       const t = w <= 0 ? 0.5 : (i * KNOT_SPACING + 3) / (w + 6);
       const x = cx - w / 2 - 3 + (w + 6) * t;
       const y = sag(t);
       const tied = i < left; // knots come undone from the LEFT as she loses them
+      // dieser eine ist der, der GERADE aufgeht (Knoten fallen von links)
+      const undoing = i === left && untieT >= 0;
+      const lumpA = undoing ? 1 - untieT : 1;
+      const openA = undoing ? untieT : 1;
       const lean = (hash01(i * 977 + 31) - 0.5) * 0.9; // each knot sits its own way
-      if (tied) {
+      if (undoing) {
+        // das lose Ende fällt aus der Schnur und verweht
+        G.lineStyle(1.1, KNOT_CHALK, 0.7 * (1 - untieT));
+        G.lineBetween(x, y + 0.4, x + 1.6 * untieT, y + 1.2 + KNOT_R * 5 * untieT);
+      }
+      if (tied || undoing) {
         // A KNOT IS A LUMP, NOT A BEAD. The cord doubles back on itself: a fat
         // short stroke across the line, a loop thrown over it, and the crease
         // where the two bights bite. Nothing here is a circle and nothing is
         // filled pure white.
-        G.lineStyle(2.9, KNOT_SHADOW, 0.28);
+        G.lineStyle(2.9, KNOT_SHADOW, 0.28 * lumpA);
         G.lineBetween(x - KNOT_R + 0.7, y + 1.2 + lean, x + KNOT_R + 0.7, y + 0.7 - lean);
-        G.lineStyle(2.7, KNOT_CHALK, 0.92);
+        G.lineStyle(2.7, KNOT_CHALK, 0.92 * lumpA);
         G.lineBetween(x - KNOT_R, y + 0.5 + lean, x + KNOT_R, y - lean);
-        G.lineStyle(1.5, KNOT_CHALK_LIT, 0.75);
+        G.lineStyle(1.5, KNOT_CHALK_LIT, 0.75 * lumpA);
         G.lineBetween(x - KNOT_R * 0.7, y - 0.5 + lean, x + KNOT_R * 0.55, y - 0.9 - lean);
         // the bight thrown over the top, and the crease under it
-        G.lineStyle(1.2, KNOT_CHALK, 0.8);
+        G.lineStyle(1.2, KNOT_CHALK, 0.8 * lumpA);
         G.beginPath();
         G.arc(x, y - 0.2, KNOT_R * 0.86, Math.PI * 0.9, Math.PI * 2.2, false);
         G.strokePath();
-        G.lineStyle(0.8, KNOT_SHADOW, 0.4);
+        G.lineStyle(0.8, KNOT_SHADOW, 0.4 * lumpA);
         G.lineBetween(x - 0.9, y + 0.9 + lean, x + 1.1, y + 0.4 - lean);
-      } else {
+      }
+      if (!tied) {
         // UNDONE: the cord has gone slack here. An open bight that does not close,
         // in spent chalk, with the loose end falling out of it — „you already did
         // this", said in the material the cord is made of.
-        G.lineStyle(1.6, KNOT_SHADOW, 0.2);
+        G.lineStyle(1.6, KNOT_SHADOW, 0.2 * openA);
         G.beginPath();
         G.arc(x + 0.6, y + 0.9, KNOT_R * 0.72, Math.PI * 1.15, Math.PI * 2.6, false);
         G.strokePath();
-        G.lineStyle(1.1, KNOT_DONE, 0.85);
+        G.lineStyle(1.1, KNOT_DONE, 0.85 * openA);
         G.beginPath();
         G.arc(x, y + 0.3, KNOT_R * 0.72, Math.PI * 1.15, Math.PI * 2.6, false);
         G.strokePath();
-        G.lineStyle(0.9, KNOT_DONE, 0.5);
+        G.lineStyle(0.9, KNOT_DONE, 0.5 * openA);
         G.lineBetween(x + KNOT_R * 0.5, y + KNOT_R * 0.6, x + KNOT_R * 1.3, y + KNOT_R * 1.6);
       }
     }
@@ -3265,8 +3285,12 @@ export class PaintScene extends Phaser.Scene {
     const g = this.world?.entities.find((e) => e.role === "guardian" && !e.redeemed);
     if (!g) return;
     // „the fight starts" = the first frame the child and the boss are in the same
-    // room with her in the air; „the window opens" = every dip.
-    const beat = g.state === "dip" ? `dip:${g.hp}` : this.bossPushId === null ? "enter" : "";
+    // room with her in the air; „the window opens" = every dip; „a knot comes
+    // loose" = the untie beat, which is the one moment the fight visibly turns
+    // (R5-W2 · H1). Keyed on hp so each of the three reads once.
+    const beat = g.state === "untie"
+      ? `untie:${g.hp}`
+      : g.state === "dip" ? `dip:${g.hp}` : this.bossPushId === null ? "enter" : "";
     if (beat === "" || this.pushedBeats.has(beat)) return;
     this.pushedBeats.add(beat);
     this.bossPushId = g.id;

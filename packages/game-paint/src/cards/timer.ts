@@ -22,8 +22,10 @@
 // this module under --experimental-strip-types, so the policy may not drag a
 // stylesheet, a scene or Phaser in behind it.
 import type { GameTaskV2 } from "@domigo/content-schema";
+import { PAINT } from "../paint.ts";
 
 export type TimerClass = "timed" | "calm";
+export type Tier = "E" | "M" | "S";
 
 /** The pools where urgency IS the fiction (doc 44 §2.9, verbatim): the
  *  quickfire/swarm pestering, and the guardian's attack windows. */
@@ -54,6 +56,45 @@ export const timerClassFor = (use: string, kind: string): TimerClass =>
  *  imported so this module stays free of the stylesheet (see the header). */
 export const clockMsFor = (use: string, kind: string, reducedMotion: boolean, ringMs: number): number =>
   reducedMotion || timerClassFor(use, kind) === "calm" ? 0 : ringMs;
+
+/** R5-W2 · H1 · WIE LANG DAS FENSTER IST — Kokis Ruling vom 14.08.2026, wörtlich.
+ *
+ *  `PAINT.quickfireSeconds` (E 6 · M 5 · S 4) steht seit jeher im Repo, ist von
+ *  `paint.test.ts` festgeschrieben — und hatte in `game-paint` NULL Leser. Die
+ *  Uhr lief statt dessen für JEDE getaktete Karte auf einer einzigen Zahl
+ *  (45 s), die als CSS-Rückfall gedacht war. Dieselbe Tabelle fährt im
+ *  Schwester-Paket (`game-2d`) längst echt; hier war sie eine Zusage ohne Leser.
+ *
+ *  Die Stufe kommt vom WESEN, das fragt (`tierOfAsker`), nicht von der Karte:
+ *  ein Kapitel stellt seinen Schwierigkeitsgrad an seinen Bewohnern ein, nicht
+ *  an seinem Text. Ohne bekanntes Wesen gilt E — die längste Uhr; eine unklare
+ *  Herkunft darf ein Kind nie härter treffen.
+ *
+ *  ⚠ Die Zahl ist die Zahl EINES ZUGES, nicht die der ganzen Karte: die Uhr
+ *  steht still, solange gelesen wird, und beginnt bei jeder Berührung von vorn
+ *  (siehe CardHost). Ohne diese Lesart wäre die Memory-Karte des Bosses bei
+ *  sechs Sekunden per Konstruktion unlösbar — acht Aufdecker bei perfektem
+ *  Gedächtnis. */
+export const windowMsFor = (use: string, kind: string, tier: Tier, reducedMotion: boolean): number =>
+  clockMsFor(use, kind, reducedMotion, PAINT.quickfireSeconds[tier] * 1000);
+
+/** R5-W2 · H1 · DIE STEH-UHR, als Entscheidung statt als Verhalten.
+ *
+ *  Kokis Ruling wörtlich: die Uhr steht voll und still, solange gelesen wird —
+ *  sie startet beim ERSTEN Antippen der Karte und beginnt bei JEDEM weiteren
+ *  Tippen von vorn. Lesen ist gratis; nur Zögern mitten in der Antwort kostet.
+ *
+ *  Die Regel steht hier und nicht als `if` in einem Effekt, weil dieses Paket
+ *  keinen DOM prüfen kann (kein jsdom, keine Testing-Library — jedes Gesetz hier
+ *  ist kopflos). Als Funktion ist sie behauptbar; als Effekt wäre sie ein
+ *  Versprechen. Dasselbe Muster wie `cards/auftakt.ts`: die Entscheidung wandert
+ *  dorthin, wo ein Test sie ohne Bildschirm gehen kann.
+ *
+ *  `armCount` ist ein ZÄHLER, kein Schalter: derselbe Wert treibt den Wecker und
+ *  den `key` des Balkens, also können Bild und Maschine nicht auseinanderlaufen
+ *  — die häufigste Art, wie eine Uhr lügt. */
+export const armedClockMs = (clockMs: number, armCount: number): number =>
+  clockMs <= 0 || armCount <= 0 ? 0 : clockMs;
 
 /** The German a card actually speaks, for the copy half of the policy check. */
 export const spokenDeOf = (t: GameTaskV2): string[] =>

@@ -29,13 +29,21 @@ import {
   redeemEntity,
   restoreFreedClassmate,
   rideAttachCheck,
+  SAD_TICKS,
+  SINK_SPEED,
   spawnEntities,
   stepEntities,
   stepRedeemedOnly,
 } from "./entities.ts";
 import { CAGE_OPEN_TICKS, COLOUR_FLOOD_TICKS } from "./anim.ts";
+import { groundSurfaceAt } from "./collide.ts";
 import { cameraTargetX, clampScroll, stepCameraAxis, stepCameraY } from "./camera.ts";
 import { type Ability, type PaintLevel, type PhaseSpec, allPhases, findGlyph } from "./level.ts";
+
+/** R5-W2 · H1 · Wie lange sie NACH dem Ausruhen noch liegt, bevor die Karte
+ *  kommt, die den Beat beschreibt. Ein Atemzug, damit »sie ruht« ein Bild ist
+ *  und kein Durchgangsframe — dieselbe Rolle wie die Blende am Käfig. */
+const LANDING_SETTLE_TICKS = 18;
 
 /** Every world-triggered card carries the SKIN of the being that triggered it
  *  (PB-F1): the router binds the served card to that being, so a card can never
@@ -56,7 +64,12 @@ import { type Ability, type PaintLevel, type PhaseSpec, allPhases, findGlyph } f
  *     NO task and never touches a card pool — it is a panel the shell opens
  *     and closes. */
 export interface TaskRequest {
-  use: "quickfire" | "encounter" | "door" | "rescue" | "boss" | "bonus" | "bonuspay";
+  // R5-W2 · H1: `finale` gehörte immer schon dazu — `cards/serving.ts` erklärt
+  // die Tafel seit jeher zur Sprecherin von `["boss", "finale"]`, und der Shell
+  // zieht die Klimax-Karte auch aus diesem Pool. Nur der TYP kannte ihn nicht,
+  // also musste die Karte auf einer Boss-Anfrage reiten — und bekam dadurch die
+  // Boss-Uhr. Der Typ sagt jetzt, was die Welt ohnehin tut.
+  use: "quickfire" | "encounter" | "door" | "rescue" | "boss" | "bonus" | "bonuspay" | "finale";
   ctx:
     | { type: "entity"; id: string; skin: string }
     | { type: "cage"; id: string; skin: string; classmate?: string }
@@ -387,7 +400,7 @@ export class Sim {
       // event — see entities.stepRedeemedOnly.
       if (this.holdOpen || this.holdTicks > 0) {
         if (this.holdTicks > 0) this.holdTicks--;
-        stepRedeemedOnly(this.world);
+        stepRedeemedOnly(this.world, this.grid);
       }
       return events; // the world holds its breath during a task
     }
@@ -606,6 +619,23 @@ export class Sim {
         if (ev.type === "guardianDown") {
           this.guardianDefeated = true;
           const g = this.world.entities.find((x) => x.id === ev.id);
+          // ── R5-W2 · H1 · DIE LANDUNG WIRD GESEHEN ────────────────────────
+          // Der Sieg-Bogen spielte bisher in einem leeren Raum. `guardianDown`
+          // setzte KEINE Haltezeit (anders als der berstende Käfig, der seine
+          // seit jeher hat), und die Karte, die den Beat beschreibt, geht
+          // sofort auf — eine offene Karte hält aber die ganze Welt an. Also
+          // sank sie erst, NACHDEM Finale- und Konsolen-Karte wieder zu waren:
+          // das Kind las „…und sie blüht sonnengelb auf", während sie noch in
+          // der Luft hing, und die Karte deklariert dabei `tafel_rest`.
+          //
+          // Die Haltezeit wird aus IHRER Lage gerechnet, nicht getippt — genau
+          // das Muster, das der Käfig schon benutzt. Fällt sie tiefer, dauert
+          // es länger; das ist keine Zahl, die veralten kann.
+          if (g) {
+            const floorY = groundSurfaceAt(this.grid, g.x / SUBS, Math.max(Math.floor(g.y / SUBS / TILE) - 1, 0), 24);
+            const fall = floorY === null ? 0 : Math.max(0, (floorY.yPx * SUBS - g.y) / SINK_SPEED);
+            this.holdTicks = Math.ceil(fall) + SAD_TICKS + LANDING_SETTLE_TICKS;
+          }
           events.push({ type: "guardianDown", id: ev.id, skin: g?.skin ?? "" });
         } else if (ev.type === "guardianKnot") {
           events.push({ type: "toast", msg: `Noch ${ev.knotsLeft} Knoten!` });
@@ -807,8 +837,11 @@ export class Sim {
         break;
       }
       case "cageGated": {
-        // R5-P1 Arena-Gesetz: Kaefig wartet auf den Sieg (Copy = P4-Platzhalter)
-        if (this.gateToastCooldown === 0) { events.push({ type: "toast", msg: "Erst die Tafel beruhigen!" }); this.gateToastCooldown = 120; }
+        // R5-P1 Arena-Gesetz: der Kaefig wartet auf den Sieg. Die Copy war als
+        // P4-Platzhalter markiert; R5-W2 · H1 loest sie ein — sie sagt jetzt die
+        // REIHENFOLGE, die der Raum erzaehlt (Sieg → Foto → Tor), statt eine
+        // Anweisung, die klingt, als koenne man etwas falsch machen.
+        if (this.gateToastCooldown === 0) { events.push({ type: "toast", msg: "Erst die Tafel — dann der Käfig." }); this.gateToastCooldown = 120; }
         break;
       }
       case "cageBurst": {
@@ -1025,6 +1058,38 @@ export class Sim {
       }
       if (this.phase.entities.some((e) => e.role === "guardian") && !this.guardianDefeated) {
         if (this.gateToastCooldown === 0) { events.push({ type: "toast", msg: "Die Tafel möchte noch reden!" }); this.gateToastCooldown = 120; }
+        return;
+      }
+      // ── R5-W2 · H1 · DER AUSGANG WARTET AUFS KLASSENFOTO (Koki, 14.08.2026)
+      //
+      // Die leeren Stühle im Saal sind das LOCH, das dieses Kapitel erzählt, und
+      // das Foto im letzten Käfig ist das erste Bild der fehlenden Klasse —
+      // der zweitgrösste Gefühls-Beat des Kapitels. Ohne dieses Tor konnte ein
+      // Kind zwei Kacheln daran vorbeilaufen und die Seite umblättern.
+      //
+      // Gefahrlos ist es erst seit Teil 1: ein Käfig galt als erledigt, sobald
+      // der Deckel absprang, also sperrte »Später« auf der Rettungs-Karte den
+      // Insassen für immer aus — ein Tor darauf wäre eine SPERRE gewesen. Der
+      // Rückweg (`cageOwesCard` + `cageAsk`) steht, deshalb steht jetzt das Tor.
+      // Gefragt wird nach `freed`, nicht nach `redeemed`: der Deckel ist nicht
+      // die Rettung, die beantwortete Karte ist es.
+      // NUR in der Boss-Phase: p1–p3 sind Lehr-Räume, deren Käfige man liegen
+      // lassen darf (der Bilanz-Bogen zählt sie). Ein Tor über alle Phasen wäre
+      // eine andere, viel grössere Entscheidung als die, die getroffen wurde.
+      const caged = this.phase.entities.some((e) => e.role === "guardian")
+        ? this.world.entities.find((e) => e.role === "cage" && !e.freed)
+        : undefined;
+      if (caged) {
+        if (this.gateToastCooldown === 0) {
+          // Die Zeile kommt vom KÄFIG, nicht aus dem Shell: `captiveDe` ist die
+          // Wahrheit des Levels („das Klassenfoto"), und ein Shell, der »Die
+          // Tafel« für alle fünfzehn Kapitel hineinschreibt, ist genau die
+          // Klasse, die dieser Auftrag anderswo als Schuld gemeldet hat.
+          const who = String(caged.params.captiveDe ?? "der Insasse");
+          const Who = who.charAt(0).toUpperCase() + who.slice(1);
+          events.push({ type: "toast", msg: `${Who} hängt noch im Käfig!` });
+          this.gateToastCooldown = 120;
+        }
         return;
       }
       this.exitFired = true;

@@ -1,4 +1,6 @@
 import { describe, expect, it } from "vitest";
+import fs from "node:fs";
+import path from "node:path";
 import {
   applyLinks,
   engageTargetId,
@@ -33,6 +35,23 @@ const GRID: string[] = [
 const spec = (over: Partial<EntitySpec>): EntitySpec => ({
   id: "e1", role: "chaser", skin: "pencil", c: 10, r: 11, tier: "E", ...over,
 });
+
+/** R5-W2 · H1 · THE ROOM THE FIGHT IS ACTUALLY FOUGHT IN.
+ *
+ *  The local GRID above is a fine fixture for a walker, and a misleading one for
+ *  the boss: its floor (row 12) sits at exactly the height she hovers at, so
+ *  chalk touches the boards almost the moment it leaves her. The shipped arena
+ *  drops the floor four rows below her band, which is what puts the child in the
+ *  path of every piece. Any law about the FIGHT is read out of the shipped rows
+ *  from here on — the source, never a stand-in for it. */
+const shippedArena = (): { rows: string[]; guardian: EntitySpec; floorRow: number } => {
+  const p = path.resolve(__dirname, "../../../content/corpus/stories/g1.st.lost-pages/paint/ch01.level.json");
+  const level = JSON.parse(fs.readFileSync(p, "utf8")) as { arena: { rows: string[]; entities: EntitySpec[] } };
+  const rows = level.arena.rows;
+  const guardian = level.arena.entities.find((e) => e.role === "guardian")!;
+  const floorRow = rows.findIndex((r, i) => i > 0 && r.startsWith("####################"));
+  return { rows, guardian, floorRow };
+};
 
 const idleInput = (over: Partial<WorldInput> = {}): WorldInput => ({
   playerX: 2 * TILE * SUBS,
@@ -152,24 +171,37 @@ describe("the fist-less dodge window (PK-R6 · C2, flying under · E)", () => {
 
   it("ANTI-SOFTLOCK: even a child who never moves gets into the fight", () => {
     // A six-year-old who freezes is standing exactly where the chalk is aimed,
-    // so every piece would hit and no window could ever open — except that a hit
-    // grants i-frames, and chalk passes THROUGH an invulnerable child to the
-    // floor, where it counts as the dodge it effectively was. The fight
-    // therefore always progresses; this pins that it does.
-    const w = tafel();
+    // so every piece hits. The fight must progress anyway — being hit is never
+    // death here, and it may never be a dead end either.
+    //
+    // ⚠ R5-W2 · H1 — THIS LAW USED TO RUN IN THE WRONG ROOM, and that is why it
+    // passed over a live defect for months. It flew her in the local GRID, whose
+    // floor is row 12 — the very height she hovers at — so every piece of chalk
+    // reached the boards within a few ticks and counted, and a hit was rare. In
+    // the SHIPPED arena the floor is four rows BELOW her band, so the chalk
+    // meets the child first, every single time: measured on the real Sim, a
+    // child who never presses a key takes 53 throws / 53 hits / ZERO windows in
+    // 200 seconds, and hp never moves. A guard that cannot see the room it
+    // guards is not a guard, so this one now flies the shipped room.
+    const arena = shippedArena();
+    const w = spawnEntities([arena.guardian], []);
     const g = w.entities[0]!;
     let iframes = 0;
     let staggers = 0;
     for (let t = 0; t < 4000 && staggers === 0; t++) {
-      const inp = idleInput({ playerX: 17 * TILE * SUBS, playerIframes: iframes });
-      const evs = stepEntities(w, GRID, inp);
+      const inp = idleInput({
+        playerX: (17 * TILE + TILE / 2) * SUBS,
+        playerY: arena.floorRow * TILE * SUBS,
+        playerIframes: iframes,
+      });
+      const evs = stepEntities(w, arena.rows, inp);
       if (iframes > 0) iframes--;
       for (const ev of evs) {
         if (ev.type === "encounter") iframes = 120; // PAINT.iframeTicks
         if (ev.type === "guardianStagger") staggers++;
       }
     }
-    expect(staggers).toBe(1);
+    expect(staggers, "ein Kind, das stehen bleibt, erreicht kein Fenster").toBe(1);
     expect(g.state === "stagger" || g.state === "window").toBe(true);
   });
 });

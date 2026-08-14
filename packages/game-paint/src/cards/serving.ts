@@ -15,6 +15,7 @@
 // under `node --experimental-strip-types` the same way it already loads
 // `timer.ts` and `AWAKEN_ROUNDS`.
 import type { EntityRole, EntitySpec, PaintLevel, PhaseSpec } from "../level.ts";
+import type { Tier } from "./timer.ts";
 
 /** The beings that come AT the child. `sim.ts` sends their contact through the
  *  `encounter` event; which pool that becomes is `askerUsesOf` below. */
@@ -119,4 +120,33 @@ export function raisedUsesOf(level: Pick<PaintLevel, "phases" | "arena" | "bonus
   for (const ph of allPhasesOf(level)) for (const e of ph.entities ?? []) for (const u of askerUsesOf(e)) uses.add(u);
   if (uses.size > 0) uses.add("quickfire");
   return uses;
+}
+
+/** R5-W2 · H1 · WELCHE STUFE FRAGT HIER? (Kokis Tier-Uhren, Ruling 14.08.2026)
+ *
+ *  Die Stufe steht auf dem WESEN (`ch01.level.json`: die Tafel trägt `"tier":
+ *  "E"`), nicht auf der Karte — ein Kapitel stellt seinen Schwierigkeitsgrad an
+ *  seinen Bewohnern ein. Sie darf deshalb auch nicht in `TaskRequest` wandern:
+ *  zwei der sieben ctx-Arten haben überhaupt kein Wesen, und ein Feld, das
+ *  meistens leer ist, wird von seinen Lesern geraten statt gelesen.
+ *
+ *  Rein, damit dieselbe Funktion die Laufzeit UND das Tor bedienen kann: was das
+ *  Kind sieht und was `check-game-tasks` prüft, ist dann per Konstruktion
+ *  dieselbe Zahl. Die Arena hängt an `level.arena`, nicht an `phases` — dafür
+ *  gibt es `allPhasesOf`, das genau diese Blindheit schon einmal geschlossen hat.
+ *
+ *  Ohne bekanntes Wesen: `"E"` — die LÄNGSTE Uhr. Eine unklare Herkunft darf ein
+ *  Kind nie härter treffen als eine bekannte. */
+export function tierOfAsker(
+  level: Pick<PaintLevel, "phases" | "arena" | "bonus">,
+  phaseId: string,
+  askerId: string | null | undefined,
+): Tier {
+  if (askerId === null || askerId === undefined) return "E";
+  for (const ph of allPhasesOf(level)) {
+    if (ph.id !== phaseId) continue;
+    const e = (ph.entities ?? []).find((x) => x.id === askerId);
+    if (e !== undefined) return e.tier;
+  }
+  return "E";
 }

@@ -32,7 +32,7 @@ const IDLE_CELLS = ["a", "b", "c", "d"] as const;
 // Every threshold is DERIVED from the sim constant it depicts (imported, never
 // re-typed), so a tuning change to the sim moves the pose with it.
 
-import { AWAKEN_ROUNDS, BOUNCE_UP, ENEMY_WALK, FLYER_SWEEP_PX, JOY_ROLES } from "./entities.ts";
+import { AWAKEN_ROUNDS, BOUNCE_UP, ENEMY_WALK, FLYER_SWEEP_PX, JOY_ROLES, UNTIE_RECOIL_TICKS } from "./entities.ts";
 import { hash01 } from "./mass.ts";
 import { SUBS } from "./paint.ts";
 
@@ -835,6 +835,16 @@ export const entPoseCell = (e: EntPoseInput): string => {
     // while it is up, and she may not keep wobbling either: the four chalked
     // words have to sit still to be read. She holds the settled land cell.
     if (e.state === "window") return "land1";
+    // R5-W2 · H1 · DER KNOTEN-TAKT, in zwei Bildern: erst hält sie den
+    // gelösten Knoten auf Dip-Höhe (dieselbe gesetzte Lande-Zelle, in der das
+    // Kind sie gerade gelesen hat), dann ROLLT sie durch den Aufstieg auf die
+    // neue Bahn — die Spiral-Zellen sind genau das Bild „durch eine Kurve
+    // gerollt", das die Bahnwechsel ohnehin tragen.
+    if (e.state === "untie") {
+      return e.timer <= UNTIE_RECOIL_TICKS
+        ? (LAND_CELLS[bobFrame(e.timer, 2)] ?? "land0")
+        : (SPIRAL_CELLS[bobFrame(e.timer, 4)] ?? "spiral0");
+    }
     // the fist path (chapters that grant one) reels her in the air
     if (e.state === "stagger") return LAND_CELLS[bobFrame(e.timer, 2)] ?? "land0";
     if (e.state === "telegraph") return windupCell(e.timer);

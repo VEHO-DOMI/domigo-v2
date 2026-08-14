@@ -29,7 +29,7 @@ import { MACHINES } from "./machines.ts";
 import { CardShell, Cheer, type CardAlign } from "./CardShell.tsx";
 import { QUICKFIRE_MS, VERDICT_MS } from "./overlay-css.ts";
 import { prefersReducedMotion } from "./motion.ts";
-import { clockMsFor } from "./timer.ts";
+import { armedClockMs, clockMsFor } from "./timer.ts";
 import { RESTORE_HOLD_MS, type ResolutionBeat, answerTextOf, flightMs } from "./resolution.ts";
 import {
   ChoiceCard, TypedCard, SpellCard, OrderCard, OddCard, WheelCard, MistakeCard, MemoryCard,
@@ -62,7 +62,7 @@ export function writtenTextOf(state: unknown, task: GameTaskV2): string {
 }
 
 export function CardHost({
-  task, onResolve, onWorldChange, onDismiss, align = "center", art, portraitWash, servedUse, round,
+  task, onResolve, onWorldChange, onDismiss, align = "center", art, portraitWash, servedUse, clockMs: clockMsProp, round,
 }: {
   task: GameTaskV2;
   /** the card is finished: close it (and hand on any beat it opened) */
@@ -83,8 +83,14 @@ export function CardHost({
   /** how drained the asker is right now — the portrait matches the world */
   portraitWash?: number;
   /** the pool the WORLD asked for, which is not always the card's authored
-   *  `use` (the unbound-quickfire fallback). Drives the timer policy. */
+   *  `use` (the unbound-quickfire fallback). The fallback when no shell decided
+   *  a length — a bench, a story card, a test. */
   servedUse?: string;
+  /** R5-W2 · H1 · wie lang das Fenster dieser Karte ist, in ms; 0 = keine Uhr.
+   *  Der Shell rechnet es in `openCard`, wo Pool, Wesen und Level zugleich
+   *  bekannt sind — die Stufe (E 6 s · M 5 s · S 4 s) hängt am WESEN, und die
+   *  Karte kennt ihr Wesen nicht. */
+  clockMs?: number;
   /** PK-R6 · D: „Runde n/6" when this card is one beat of a reawakening
    *  (doc 44 §3.3) — a ceremony a child can see the end of. */
   round?: { n: number; of: number };
@@ -111,18 +117,41 @@ export function CardHost({
     beatsRef.current = [];
   }, []);
 
-  // doc 44 §2.9 · the timer policy, from the one map every reader shares
-  const clockMs = clockMsFor(servedUse ?? task.use, task.kind, prefersReducedMotion(), QUICKFIRE_MS);
+  // doc 44 §2.9 · the timer policy, from the one map every reader shares. The
+  // shell decides the LENGTH (it knows which being is asking, and the tier lives
+  // on the being); the fallback keeps a bench or a test honest.
+  const clockMs = clockMsProp ?? clockMsFor(servedUse ?? task.use, task.kind, prefersReducedMotion(), QUICKFIRE_MS);
 
+  // ── R5-W2 · H1 · DIE STEH-UHR (Kokis Ruling, 14.08.2026) ──────────────────
+  // „Der Kreide-Ring wird voll und STILL gezeichnet, solange das Kind liest; er
+  // startet beim ERSTEN Antippen der Karte und beginnt bei JEDEM weiteren
+  // Tippen von vorn. Lesen ist gratis, nur Zögern mitten in der Antwort kostet."
+  //
+  // Deshalb ist die Zahl oben das Budget EINES ZUGES, nicht das der ganzen
+  // Karte — und genau das macht sechs Sekunden überhaupt erst tragbar: die
+  // Memory-Karte des Bosses braucht acht Aufdecker bei perfektem Gedächtnis und
+  // wäre unter einer Karten-Uhr per Konstruktion unlösbar.
+  //
+  // ⚠ Gezählt wird ROHE EINGABE, niemals `dispatch`. Das Kreide-Rad ist ein
+  // Scroll-Wähler, der erst nach 180 ms Stillstand meldet (skins.tsx) — ein Kind,
+  // das sieben Sekunden am Rad sucht, löst NICHTS aus und würde mitten in der
+  // eigenen Antwort abgeschnitten.
+  const [armCount, setArmCount] = React.useState(0);
+  const onActivity = React.useCallback(() => {
+    if (endedRef.current) return;
+    setArmCount((n) => n + 1);
+  }, []);
+
+  const runMs = armedClockMs(clockMs, armCount);
   React.useEffect(() => {
-    if (clockMs === 0) return;
+    if (runMs === 0) return; // ungestartet = voll und still
     const t = window.setTimeout(() => {
       if (endedRef.current) return;
       endedRef.current = true;
       cbRef.current.onDismiss(); // the swarm gives up: no reward, no penalty
-    }, clockMs);
+    }, runMs);
     return () => window.clearTimeout(t);
-  }, [clockMs]);
+  }, [runMs, armCount]);
 
   const dispatch: Dispatch<unknown> = (a) => {
     if (endedRef.current) return;
@@ -182,6 +211,8 @@ export function CardHost({
       onDismiss={dismiss}
       align={align}
       clockMs={clockMs}
+      armCount={armCount}
+      onActivity={onActivity}
       art={art}
       portraitWash={portraitWash}
       round={round}

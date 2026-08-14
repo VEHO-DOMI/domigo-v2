@@ -341,9 +341,47 @@ const stepRedeemed = (e: EntityState): void => {
  * the freeze intends. It raises no events by construction (`stepRedeemed`
  * cannot), so a cinematic beat can never open a card behind its own card.
  */
-export const stepRedeemedOnly = (w: EntityWorld): void => {
+/** R5-W2 · H1 · DIE LANDUNG GEHÖRT ZUM HALTEN.
+ *
+ *  Die beiden Zustände, in denen die besiegte Tafel noch in Bewegung ist. Sie
+ *  ist NIE `redeemed` (nichts im ganzen Paket setzt das an einem Guardian), also
+ *  überspringt der Erlösten-Takt sie — und weil `guardianDown` ausserdem gar
+ *  keine Haltezeit gesetzt hat, spielte der komplette Sieg-Bogen erst NACH
+ *  beiden Karten, in einem Raum, in dem niemand mehr hinsieht. Das Kind las
+ *  „…und sie blüht sonnengelb auf", während sie noch in der Luft hing.
+ *
+ *  Gefiltert wird über die ZUSTÄNDE, nicht über `redeemed = true`: das würde in
+ *  `cagesGated`, in den `dazed`-Auffangzweig und in die Band-Behauptung
+ *  `redeemedPresent` lecken. Ein schmales Prädikat sagt genau das, was gilt. */
+const LANDING_STATES: ReadonlySet<string> = new Set(["sink", "sad"]);
+
+/** Ihre Landung, als eigener Schritt — damit BEIDE Takte sie fahren können: der
+ *  volle Welt-Takt und der Halte-Takt hinter einer offenen Karte. Gibt zurück,
+ *  ob dieser Schritt das Wesen bereits erledigt hat. */
+const stepGuardianLanding = (e: EntityState, grid: readonly string[]): boolean => {
+  if (e.role !== "guardian" || !LANDING_STATES.has(e.state)) return false;
+  if (e.state === "sink") {
+    const floorY = groundAt(grid, e.x, e.y) ?? e.y;
+    e.vx = 0;
+    e.y = Math.min(e.y + SINK_SPEED, floorY);
+    if (e.y >= floorY) { e.y = floorY; e.state = "sad"; e.timer = 0; }
+    return true;
+  }
+  // `sad` — sie ruht aus, bevor die Konsole antwortet (doc 44 §2.2: sie RUHT,
+  // sie weint nicht)
+  if (e.timer > SAD_TICKS) { e.state = "consoled"; e.timer = 0; }
+  return true;
+};
+
+export const stepRedeemedOnly = (w: EntityWorld, grid: readonly string[] = []): void => {
   for (const e of w.entities) {
-    if (e.hidden || !e.redeemed) continue;
+    if (e.hidden) continue;
+    if (e.role === "guardian" && LANDING_STATES.has(e.state)) {
+      e.timer += 1;
+      stepGuardianLanding(e, grid);
+      continue;
+    }
+    if (!e.redeemed) continue;
     stepRedeemed(e);
   }
 };
@@ -518,6 +556,49 @@ export const DIP_TICKS = 36;
  *  subs/tick. TASTE: 1.1 px/tick — heavier than she flies, which is the whole
  *  point of the beat. */
 export const SINK_SPEED = Math.round(1.1 * SUBS);
+
+/** R5-W2 · H1 · DER KNOTEN-TAKT — wie lange sie den gelösten Knoten hält.
+ *
+ *  Vorher gab es diesen Takt nicht: `guardianKnotSolved` setzte `state = "fly"`
+ *  und `flightTick = 0` und schrieb KEINE Position — und weil der Flug seine
+ *  Lage ZUWEIST statt sie zu integrieren, stand sie im nächsten Tick woanders.
+ *  Nachgerechnet mit der echten Ganzzahl-Arithmetik: Knoten 2 springt 42,7 px
+ *  senkrecht, Knoten 3 springt 68,1 px senkrecht UND 102 px waagrecht, weil das
+ *  Flug-Zentrum seit dem Beginn des Dips (≥37 Ticks) eingefroren war. Der Sprung
+ *  landet obendrein als `vx`/`vy` in der Lage-Mechanik, also sättigt die Neigung,
+ *  und die goldene Spur zieht eine gerade Linie quer durchs Bild.
+ *
+ *  Der Takt ist die Reparatur UND der Beat: sie hält den verlorenen Knoten kurz
+ *  auf Dip-Höhe (am nächsten, am grössten — dort, wo das Kind sie gerade gelesen
+ *  hat), und steigt dann auf die neue Bahn, die sie bei Phase 0 betritt. */
+export const UNTIE_RECOIL_TICKS = THROW_TICKS;
+/** Das ganze Fenster des Takts. Länger als der Aufstieg (der auf der /6-Rampe
+ *  des Dips läuft), kürzer als ein Drittel des engsten Wurfzyklus auf Stufe E —
+ *  der Takt darf den Kampf rhythmisieren, nicht anhalten. */
+export const KNOT_BEAT_TICKS = 48;
+
+/** R5-W2 · H1 · DIE BÜHNE, IN PIXELN — eine Herleitung für JEDE ihrer Bewegungen.
+ *
+ *  `stageMinC`/`stageMaxC` (arena.md §10, P1-Vorleistung 1) binden die Tafel an
+ *  die Bretter c5–30, damit die Seitenbühnen heilig bleiben: der Auftritt im
+ *  Westen ist eine Ruhe-Zone, der Sieg-Trakt im Osten wird nie überflogen.
+ *
+ *  Die Klemme kannte bis hierher nur die HALBE Bewegung — sie saß allein am
+ *  Flug-ZENTRUM (`homeX`), während der Dip frei `playerX ± DIP_STANDOFF_PX`
+ *  ansteuerte. GEMESSEN am ausgelieferten Piloten: der ganze Kampf wird auf den
+ *  Spalten 1,25–4,63 ausgetragen und die Tafel bis c4,13 mitgezogen — westlich
+ *  ihrer Bühne, in der Kulisse, auf dem Spawn. Dort spielt heute auch der
+ *  komplette Sieg-Bogen. Ein Gesetz, das nur für einen von neun Zuständen gilt,
+ *  ist kein Gesetz; darum liest es ab jetzt jede Bewegung aus DIESER Funktion. */
+const stageBoundsOf = (
+  e: Pick<EntityState, "params">,
+  grid: readonly string[],
+): { minPx: number; maxPx: number } => ({
+  minPx: e.params?.stageMinC !== undefined ? Number(e.params.stageMinC) * TILE : FLIGHT_MARGIN_PX,
+  maxPx: e.params?.stageMaxC !== undefined
+    ? (Number(e.params.stageMaxC) + 1) * TILE
+    : (grid[0]?.length ?? 0) * TILE - FLIGHT_MARGIN_PX,
+});
 
 export const spawnEntities = (specs: EntitySpec[], links: LinkSpec[]): EntityWorld => ({
   entities: specs.map((s) => {
@@ -1013,6 +1094,32 @@ export const stepEntities = (
       case "guardian": {
         const script = GUARDIAN_SCRIPT[e.tier];
         if (w.guardianKnots < 0) w.guardianKnots = script.knots;
+        /** THE FLIGHT CENTRE follows the child — slowly, and clamped inside the
+         *  stage. Mined in shape from the legacy `cloud` brain (drift toward the
+         *  player's column, THEN telegraph, THEN fire): a tell thrown from off
+         *  screen is not a tell.
+         *
+         *  R5-W2 · H1: it is a function now because the `untie` beat needs it
+         *  BEFORE the new path is ever sampled. The centre freezes the moment
+         *  she dips, so by the time a knot came loose it was ≥37 ticks stale —
+         *  and the next knot's span is WIDER (78 → 92 → 104), so she used to
+         *  re-enter the world reaching past her own stage. */
+        const trackCentre = (): void => {
+          const span = KNOT_SPAN_PX[knotIndex(e.hp, script.knots)] ?? 78;
+          const { minPx, maxPx } = stageBoundsOf(e, grid);
+          const loC = (minPx + span) * SUBS;
+          const hiC = Math.max(loC, (maxPx - span) * SUBS);
+          const wantC = Math.min(Math.max(inp.playerX, loC), hiC);
+          const dC = wantC - e.homeX;
+          e.homeX += Math.max(-CENTRE_MAX_STEP, Math.min(CENTRE_MAX_STEP, Math.trunc(dC / CENTRE_EASE_DIV)));
+          // …und der Korridor gilt für das ZENTRUM selbst, nicht nur für sein
+          // Ziel. Die Rampe TRUNKIERT (`trunc(dC / 48)`), also bleibt sie die
+          // letzten paar Subs vor dem Rand mit Schrittweite 0 stehen — und der
+          // Rand wandert bei jedem Knoten nach innen, weil die Spannweite
+          // wächst. Gemessen war sie deshalb 0,07 px westlich der Bühne, für
+          // immer. Eine Klemme ist hier billiger als eine Rampe ohne Rest.
+          e.homeX = Math.min(Math.max(e.homeX, loC), hiC);
+        };
         // ── PK-R6 · E · THE FLYING TAFEL (doc 44 §4 ch01 C4) ────────────────
         // „She hovers above the arena tracing readable paths — spirals,
         // figure-eights, zigzags … telegraph: she dips and rears, ≥500 ms …
@@ -1026,23 +1133,65 @@ export const stepEntities = (
 
         // THE TERMINAL BEATS — she is down, and she comes to rest (doc 44 §4
         // ch01 C4: „she sinks to the ground, exhausted").
-        if (e.state === "sink") {
-          const floor = groundAt(grid, e.x, e.y);
-          const floorY = floor ?? e.y;
-          e.vx = 0;
-          e.y = Math.min(e.y + SINK_SPEED, floorY);
-          if (e.y >= floorY) { e.y = floorY; e.state = "sad"; e.timer = 0; }
-          break;
-        }
-        if (e.state === "sad") {
-          // R3-5 kept: the board reacts BEFORE the victory cell. What changed is
-          // the reaction — doc 44 §2.2 flexibilised the signature beat („the
-          // Tafel slumps exhausted"), so she rests rather than cries.
-          if (e.timer > SAD_TICKS) { e.state = "consoled"; e.timer = 0; }
-          break;
-        }
+        // R3-5 kept: the board reacts BEFORE the victory cell. What changed is
+        // the reaction — doc 44 §2.2 flexibilised the signature beat („the Tafel
+        // slumps exhausted"), so she rests rather than cries. R5-W2 · H1: the
+        // landing lives in its own function, because the HOLD has to be able to
+        // play it too (see stepGuardianLanding).
+        if (stepGuardianLanding(e, grid)) break;
         // `window` (the counter-task) and `consoled` are scene-driven states.
         if (e.state === "window" || e.state === "consoled") break;
+
+        // ── R5-W2 · H1 · DER KNOTEN-TAKT (Auftrag 2: Eskalation, die man spürt)
+        // Zwischen zwei Knoten lag bisher NICHTS: die Karte ging zu, und im
+        // nächsten Tick stand sie 43 bis 68 px höher und bis zu 102 px weiter
+        // links, auf einer neuen Bahn, mitten in deren Verlauf. Ein Kind, das
+        // gerade eine Frage beantwortet hat, bekam den wichtigsten Übergang des
+        // Kampfes als Bildfehler serviert.
+        //
+        // Jetzt ist es ein Takt: sie hält den gelösten Knoten kurz auf
+        // Dip-Höhe — am nächsten, am grössten, dort wo das Kind sie gerade
+        // gelesen hat — und STEIGT dann auf die neue Bahn, die sie sauber bei
+        // Phase 0 betritt. Das Zentrum wandert während des ganzen Takts mit,
+        // also ist es nicht mehr schal, wenn die (breitere) neue Bahn zum ersten
+        // Mal abgetastet wird. Aus dem Sprung wird Bewegung, und aus dem
+        // Übergang ein Beat.
+        if (e.state === "untie") {
+          // Das Zentrum wandert nur in der ersten Hälfte des Takts mit. Danach
+          // steht ihr Ziel STILL, damit die /6-Rampe es auch wirklich erreicht:
+          // gegen ein Ziel, das sich weiterbewegt, behält eine Ease einen festen
+          // Rückstand (0,6 px/Tick ÷ 1/6 = 3,6 px), und der müsste am Ende doch
+          // wieder weggeschnappt werden — also genau die Versetzung, die dieser
+          // Takt abschaffen soll, nur kleiner. Die letzten zwölf Ticks
+          // entscheidet sie sich für ihre neue Bahn.
+          if (e.timer <= KNOT_BEAT_TICKS - UNTIE_RECOIL_TICKS) trackCentre();
+          if (e.timer <= UNTIE_RECOIL_TICKS) {
+            // der Rückstoss: sie hält, wo sie steht. Die Bewegung dieses Takts
+            // gehört der Schnur (die Szene lässt den Knoten fallen) und dem
+            // Ganzkörper-Ausdruck — ein Glied allein käme durch ein gemaltes
+            // Blatt nicht durch (die Lehre aus F3).
+            e.vx = 0;
+            e.vy = 0;
+            break;
+          }
+          const p = flightPointAt(e.homeX, e.homeY, e.hp, script.knots, 0);
+          const sx = Math.round((p.x - e.x) / 6); // dieselbe /6-Rampe wie der Dip
+          const sy = Math.round((p.y - e.y) / 6);
+          e.vx = sx;
+          e.vy = sy;
+          e.x += sx;
+          e.y += sy;
+          if (Math.abs(e.vx) > SUBS / 4) e.dir = (e.vx > 0 ? 1 : -1) as 1 | -1;
+          if (e.timer > KNOT_BEAT_TICKS) {
+            // exakt auf Phase 0 aufsetzen, damit die neue Form von vorn beginnt
+            e.x = p.x;
+            e.y = p.y;
+            e.flightTick = 0;
+            e.state = "fly";
+            e.timer = 0;
+          }
+          break;
+        }
 
         // THE DIP — three dodged throws over-reach her and she comes DOWN to
         // the child to write (doc 44 §4 ch01 C4 + the boss-evidence law, doc 41
@@ -1051,7 +1200,11 @@ export const stepEntities = (
         // speaker law parks the request against a boss who is no longer moving.
         if (e.state === "dip") {
           const side: 1 | -1 = e.x <= inp.playerX ? -1 : 1;
-          const tx = inp.playerX + side * DIP_STANDOFF_PX * SUBS;
+          // sie LEHNT sich zum Kind, aber sie verlässt ihre Bühne nicht: ein
+          // Kind in der Kulisse zieht sie sonst mit hinaus (siehe stageBoundsOf)
+          const stage = stageBoundsOf(e, grid);
+          const want = inp.playerX + side * DIP_STANDOFF_PX * SUBS;
+          const tx = Math.min(Math.max(want, stage.minPx * SUBS), stage.maxPx * SUBS);
           const step = Math.round((tx - e.x) / 6);
           e.vx = step;
           e.x += step;
@@ -1086,24 +1239,12 @@ export const stepEntities = (
           break;
         }
 
-        // THE FLIGHT CENTRE follows the child — slowly, and clamped inside the
-        // stage. Mined in shape from the legacy `cloud` brain (drift toward the
-        // player's column, THEN telegraph, THEN fire): a tell thrown from off
-        // screen is not a tell.
-        const ki = knotIndex(e.hp, script.knots);
-        const span = KNOT_SPAN_PX[ki] ?? 78;
         // R5-P1 (Arena-Dossier-Vorleistung): die Tafel gehört auf die BÜHNE.
         // params.stageMinC/stageMaxC klemmen das Flug-Zentrum auf das Bühnen-
         // Band (Zentrum ∈ [stageMin+Spann, stageMax−Spann]) — die Seitenbühnen
         // (Auftritt West, Sieg-Trakt Ost) sind damit mechanisch heilig; ohne
         // Params bleibt exakt das alte Welt-Verhalten.
-        const stageMinPx = e.params?.stageMinC !== undefined ? Number(e.params.stageMinC) * TILE : FLIGHT_MARGIN_PX;
-        const stageMaxPx = e.params?.stageMaxC !== undefined ? (Number(e.params.stageMaxC) + 1) * TILE : (grid[0]?.length ?? 0) * TILE - FLIGHT_MARGIN_PX;
-        const loC = (stageMinPx + span) * SUBS;
-        const hiC = Math.max(loC, (stageMaxPx - span) * SUBS);
-        const wantC = Math.min(Math.max(inp.playerX, loC), hiC);
-        const dC = wantC - e.homeX;
-        e.homeX += Math.max(-CENTRE_MAX_STEP, Math.min(CENTRE_MAX_STEP, Math.trunc(dC / CENTRE_EASE_DIV)));
+        trackCentre();
 
         if (e.state === "fly") {
           e.flightTick += 1;
@@ -1177,6 +1318,30 @@ export const stepEntities = (
   // mid-`for…of` would be stepped on the tick it was created and lose a frame
   // of its 1-second life to the throw that made it.
   const born: ProjectileState[] = [];
+
+  // ── R5-W2 · H1 · THE OVER-REACH TALLY, COUNTED FROM BOTH ENDS ──────────────
+  // Three spent pieces over-reach her and bring her down (doc 44 §4 ch01 C4:
+  // „dodging N throws opens the counter-window").
+  //
+  // It used to be counted in ONE place — the landing branch — and that was a
+  // dead end for the child who needs the most help. A six-year-old who freezes
+  // is standing exactly where the chalk is aimed, so every piece hits and none
+  // of them ever reached the boards. MEASURED on the real Sim in the shipped
+  // arena: 53 throws, 53 hits, ZERO windows in 200 seconds, hp never moves —
+  // chapter 1's boss could not be beaten by a child who stands still. The
+  // i-frames the old comment relied on are 120 ticks against a throw cycle of
+  // 210+, so they lapse between pieces and cannot carry the load.
+  //
+  // Being hit is still no shortcut: the hit raises a card that unties NOTHING
+  // (sim.ts `encounter` says so in as many words), and only the WINDOW unties a
+  // knot — which still has to be answered. Dodging stays strictly better, and
+  // now costs a knockback and an interrupting card less.
+  const tallyOverreach = (p: ProjectileState): void => {
+    if (p.kind !== "chalk") return;
+    const src = w.entities.find((e) => e.id === p.fromId && e.role === "guardian" && !e.redeemed);
+    if (src && src.state !== "stagger" && src.state !== "window" && src.state !== "dip") src.dodges += 1;
+  };
+
   for (const p of w.projectiles) {
     if (p.dead) continue;
     // ── PK-R6 · E · THE LINGERING SHARD (doc 44 §4 ch01 C4) ─────────────────
@@ -1225,8 +1390,7 @@ export const stepEntities = (
         // piece of chalk reaches the floor its thrower is already back on her
         // path, so opening the window from here would only ever interrupt a
         // telegraph the child had started reading.
-        const src = w.entities.find((e) => e.id === p.fromId && e.role === "guardian" && !e.redeemed);
-        if (src && src.state !== "stagger" && src.state !== "window" && src.state !== "dip") src.dodges += 1;
+        tallyOverreach(p);
         // …and it leaves its splinter on the boards (doc 44 §4 ch01 C4)
         born.push({
           id: w.nextProjectileId++, kind: "shard", x: p.x, y: g,
@@ -1270,6 +1434,10 @@ export const stepEntities = (
     if (!p.deflected && inp.playerIframes === 0 && (p.kind !== "chalk" || p.age > CHALK_ARM_TICKS) &&
       Math.abs(p.x - inp.playerX) / SUBS < 10 && Math.abs(p.y - (inp.playerY - 15 * SUBS)) / SUBS < 16) {
       p.dead = true;
+      // the piece is SPENT — it broke on the child instead of on the boards, and
+      // it counts the same (see tallyOverreach). No splinter: it never reached
+      // the floor, so there is nothing lying there to step on afterwards.
+      tallyOverreach(p);
       const src = w.entities.find((e) => e.id === p.fromId);
       events.push({ type: "encounter", id: p.fromId, role: src?.role ?? "gunner", skin: src?.skin ?? p.kind });
     }
@@ -1300,11 +1468,11 @@ export const guardianKnotSolved = (w: EntityWorld, id: string): EntityEvent[] =>
     g.timer = 0;
     return [{ type: "guardianDown", id }];
   }
-  // …and back into the air, on the NEXT knot's path from its own phase 0, so a
-  // new shape starts cleanly instead of halfway through itself.
-  g.state = "fly";
+  // …und in den KNOTEN-TAKT, nicht direkt zurück in den Flug (R5-W2 · H1).
+  // `flightTick` bleibt hier absichtlich stehen: der Takt setzt ihn erst beim
+  // Aufsetzen auf Phase 0 zurück, und bis dahin fliegt sie gar keine Bahn.
+  g.state = "untie";
   g.timer = 0;
-  g.flightTick = 0;
   g.dodges = 0;
   return [{ type: "guardianKnot", id, knotsLeft: g.hp }];
 };

@@ -27,6 +27,8 @@
 // nimmt.
 
 import { describe, expect, it } from "vitest";
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
 import { Sim, type TaskRequest } from "./sim.ts";
 import { IDLE_PAD } from "./player.ts";
 import {
@@ -483,6 +485,195 @@ describe("R5-W2 · H1 · DAS SELBSTFAHR-GESETZ (die Klasse hinter dem Softlock)"
     const states = new Set([...observedPairs().keys()].map((p) => p.split("|")[1]!));
     for (const declared of CARD_OWNED_STATES) {
       expect(states.has(declared), `»${declared}« steht in CARD_OWNED_STATES, wird aber nie geschrieben`).toBe(true);
+    }
+  });
+});
+
+// ── R5-W2 · H1 (Teil 2) · DER KAMPF IST OHNE EINE EINZIGE TASTE ZU GEWINNEN ──
+//
+// Der Fund, den diese Datei erzwungen hat, hatte einen Zwilling im selben
+// Fenster, und der stand ebenfalls live:
+//
+//   Die Überreiz-Zählung („drei geworfene Stücke bringen sie herunter") wurde an
+//   EINEM Ende gezählt — wenn ein Stück den Boden erreicht. Ein Kind, das stehen
+//   bleibt, steht aber genau im Ziel: JEDES Stück trifft, KEINES erreicht je die
+//   Bretter. GEMESSEN am echten Sim im ausgelieferten Raum: 53 Würfe, 53
+//   Treffer, NULL Fenster in 200 Sekunden, hp unverändert. Kapitel 1 war für ein
+//   Kind, das sich nicht bewegt, nicht zu gewinnen.
+//
+//   Das Gesetz dagegen gab es längst (entities.test.ts, ANTI-SOFTLOCK) — es lief
+//   nur im falschen Raum: sein Testboden liegt auf der Flughöhe der Tafel, wo
+//   Kreide auf den Brettern zerbricht, bevor sie ein Kind erreichen kann.
+//
+// Deshalb steht die Behauptung hier in ihrer stärksten Form: nicht „ein Fenster
+// geht auf", sondern „der Kampf ist ZU ENDE zu spielen" — und zwar mit einem
+// leeren Gamepad im AUSGELIEFERTEN Raum.
+describe("R5-W2 · H1 · ein Kind, das stehen bleibt, kann den Kampf gewinnen", () => {
+  const shipped = (): PaintLevel =>
+    JSON.parse(
+      readFileSync(
+        resolve(__dirname, "../../../content/corpus/stories/g1.st.lost-pages/paint/ch01.level.json"),
+        "utf8",
+      ),
+    ) as PaintLevel;
+
+  /** Spielt die Arena mit einem Pad, das nie gedrückt wird. Fenster-Karten
+   *  werden gelöst, Treffer-Karten weggelegt — genau das, was ein Kind kann,
+   *  das die Tastatur nicht anfasst. */
+  const playStandingStill = (): { defeated: boolean; ticks: number; windows: number; hits: number } => {
+    const level = shipped();
+    const sim = new Sim({
+      level, phaseId: "p4",
+      grantedAbilities: () => [...level.abilities],
+      freedCageIds: () => [],
+    });
+    let windows = 0;
+    let hits = 0;
+    let t = 0;
+    for (; t < 20000 && !sim.guardianDefeated; t++) {
+      for (const ev of sim.step(IDLE_PAD)) {
+        if (ev.type !== "task") continue;
+        if (ev.req.ctx.type === "guardian") { sim.solveTask(ev.req.ctx); windows++; } else { sim.dismissTask(ev.req.ctx); hits++; }
+        sim.setOverlay(false);
+      }
+    }
+    return { defeated: sim.guardianDefeated, ticks: t, windows, hits };
+  };
+
+  it("die drei Knoten gehen auf, ohne dass das Kind je eine Richtung drückt", () => {
+    const r = playStandingStill();
+    expect(r.defeated, "die Tafel wird nie besiegt — der Kampf ist eine Sackgasse").toBe(true);
+    expect(r.windows, "jeder Knoten braucht sein eigenes beantwortetes Fenster")
+      .toBe(GUARDIAN_SCRIPT.E.knots);
+  });
+
+  it("und Ausweichen bleibt trotzdem die bessere Antwort", () => {
+    // Sonst wäre die Reparatur eine Einladung, stehen zu bleiben. Der Preis des
+    // Stehenbleibens sind die Treffer-Karten: jede unterbricht den Kampf und
+    // löst KEINEN Knoten (sim.ts `encounter` sagt das wörtlich).
+    const r = playStandingStill();
+    expect(r.hits, "ohne Preis wäre Stehenbleiben gratis").toBeGreaterThan(0);
+  });
+});
+
+// ── R5-W2 · H1 (Teil 2) · DER SIEG-BOGEN SPIELTE IN EINEM LEEREN RAUM ────────
+//
+// Drei Dinge trafen zusammen: `guardianDown` setzte KEINE Haltezeit (anders als
+// der berstende Käfig, der seine seit jeher hat); die Karte, die den Beat
+// beschreibt, geht sofort auf; und eine offene Karte hält die ganze Welt an.
+// Also sank die Tafel erst, NACHDEM Finale- und Konsolen-Karte wieder zu waren.
+// Das Kind las „…und sie blüht sonnengelb auf", während sie noch in der Luft
+// hing — und die Karte deklariert dabei ihr eigenes Ruhe-Bild (`tafel_rest`).
+//
+// Dazu kommt Kokis Tor vom 14.08.: der Ausgang wartet aufs Klassenfoto.
+describe("R5-W2 · H1 · die Landung wird gesehen, und der Ausgang wartet aufs Foto", () => {
+  const shipped = (): PaintLevel =>
+    JSON.parse(
+      readFileSync(
+        resolve(__dirname, "../../../content/corpus/stories/g1.st.lost-pages/paint/ch01.level.json"),
+        "utf8",
+      ),
+    ) as PaintLevel;
+
+  const arena = (): Sim => {
+    const level = shipped();
+    return new Sim({
+      level, phaseId: "p4",
+      grantedAbilities: () => [...level.abilities],
+      freedCageIds: () => [],
+    });
+  };
+
+  /** Spielt bis zum Sieg und lässt die Karte danach OFFEN — genau die Lage, in
+   *  der der Beat bisher verschluckt wurde.
+   *
+   *  Die letzte Karte wird NICHT geschlossen, und das ist kein Detail: genau so
+   *  verhält sich der echte Shell. Auf `guardianDown` geht sofort die
+   *  Finale-Karte auf, der Schleier bleibt also oben — und `setOverlay(false)`
+   *  würde die Haltezeit löschen. Ein Test, der hier schliesst, prüft einen
+   *  Ablauf, den kein Kind je erlebt. */
+  const winAndHold = (): Sim => {
+    const sim = arena();
+    let won = false;
+    for (let t = 0; t < 20000 && !won; t++) {
+      for (const ev of sim.step(IDLE_PAD)) {
+        if (ev.type !== "task") continue;
+        if (ev.req.ctx.type === "guardian") sim.solveTask(ev.req.ctx); else sim.dismissTask(ev.req.ctx);
+        if (sim.guardianDefeated) { won = true; break; } // die Karte BLEIBT offen
+        sim.setOverlay(false);
+      }
+    }
+    expect(sim.guardianDefeated, "der Lauf hat die Tafel nie besiegt").toBe(true);
+    // …und der Shell hebt SOFORT die Finale-Karte. `solveTask` selbst räumt
+    // `overlayOpen` ab, also muss der Schleier hier ausdrücklich wieder hoch —
+    // sonst prüfte dieser Test eine offene Welt und wäre hohl. (Er WAR hohl:
+    // der Tamper lief glatt durch, bis diese Zeile stand.)
+    sim.setOverlay(true);
+    return sim;
+  };
+
+  it("sie kommt zur Ruhe, WÄHREND die Karte offen ist — nicht erst danach", () => {
+    const sim = winAndHold();
+    const g = () => sim.world.entities.find((e) => e.role === "guardian")!;
+    expect(g().state, "direkt nach dem Sieg sinkt sie").toBe("sink");
+    for (let t = 0; t < 600 && g().state !== "consoled"; t++) sim.step(IDLE_PAD);
+    expect(g().state, "hinter der offenen Karte ist der ganze Bogen gelaufen").toBe("consoled");
+  });
+
+  it("und sie liegt am Ende wirklich AUF etwas — nicht in der Luft", () => {
+    // Nicht „tiefer als vorher": sie kann auf einem Kreide-Kisten-Podest zur
+    // Ruhe kommen, dessen Oberkante HÖHER liegt als die Tiefe, auf die der Dip
+    // sie zieht. Die Behauptung, die den Beat trägt, ist deshalb „ihre Füsse
+    // stehen auf der ersten festen Fläche unter ihr", und die wird aus den
+    // ausgelieferten Zeilen gelesen.
+    const sim = winAndHold();
+    const g = () => sim.world.entities.find((e) => e.role === "guardian")!;
+    for (let t = 0; t < 600 && g().state !== "consoled"; t++) sim.step(IDLE_PAD);
+
+    const rows = shipped().arena!.rows;
+    const col = Math.floor(g().x / SUBS / TILE);
+    const feetRow = Math.round(g().y / SUBS / TILE);
+    expect(rows[feetRow]?.[col], `sie ruht über Zeile ${feetRow}, und da ist nichts`).toBe("#");
+    expect(rows[feetRow - 1]?.[col], "sie steckt in der Masse statt darauf").not.toBe("#");
+  });
+
+  it("KOKIS TOR: der Ausgang bleibt zu, solange das Klassenfoto hängt", () => {
+    // Beide Richtungen in einem Test, nach dem Muster von proof-tapes.test.ts:
+    // ein Tor, das immer zu ist, ist genauso kaputt wie eines, das immer offen
+    // ist. (Die Boss-Phase ist von jenem Muster ausgenommen — „that exit is the
+    // fight's to open" — also gab es für sie bisher gar keine solche Prüfung.)
+    const walkOntoExit = (freeTheCage: boolean): boolean => {
+      const sim = arena();
+      for (const e of sim.world.entities) if (e.role === "guardian") e.hidden = true;
+      (sim as unknown as { guardianDefeated: boolean }).guardianDefeated = true;
+      if (freeTheCage) for (const e of sim.world.entities) if (e.role === "cage") { e.freed = true; e.redeemed = true; }
+      sim.warp(sim.exitCell.c, sim.exitCell.r);
+      for (let t = 0; t < 240; t++) {
+        for (const ev of sim.step(IDLE_PAD)) if (ev.type === "exit") return true;
+      }
+      return false;
+    };
+    expect(walkOntoExit(false), "der Ausgang ging auf, obwohl das Foto noch im Käfig hängt").toBe(false);
+    expect(walkOntoExit(true), "der Ausgang blieb zu, obwohl das Foto frei ist — das Tor sperrt").toBe(true);
+  });
+
+  it("…und das Tor gilt NUR in der Boss-Phase (p1–p3 bleiben Lehr-Räume)", () => {
+    // Ein Tor über alle Phasen wäre eine viel grössere Entscheidung als die, die
+    // getroffen wurde — p1 bis p3 dürfen ihre Käfige liegen lassen.
+    const level = shipped();
+    for (const ph of level.phases) {
+      if (!(ph.entities ?? []).some((e) => e.role === "cage")) continue;
+      const sim = new Sim({ level, phaseId: ph.id, grantedAbilities: () => [...level.abilities], freedCageIds: () => [] });
+      for (const d of (ph.entities ?? []).filter((e) => e.role === "door.trigger" && e.params?.kind === "exit")) {
+        sim.solveTask({ type: "door", id: d.id, kind: String(d.params?.kind ?? "exit"), skin: d.skin });
+      }
+      for (const e of sim.world.entities) if (e.role === "powerup") e.redeemed = true;
+      sim.warp(sim.exitCell.c, sim.exitCell.r);
+      let out = false;
+      for (let t = 0; t < 240 && !out; t++) {
+        for (const ev of sim.step(IDLE_PAD)) if (ev.type === "exit") out = true;
+      }
+      expect(out, `${ph.id}: der Käfig-Riegel darf hier gar nicht greifen`).toBe(true);
     }
   });
 });
