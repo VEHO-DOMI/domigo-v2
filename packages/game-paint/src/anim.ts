@@ -470,6 +470,52 @@ export const GUARDIAN_GROUNDED_CELLS: ReadonlySet<string> = new Set(["sad", "daz
  *  Grounded is CORRECT here and only here: she is beaten and has come down. */
 export const GUARDIAN_LANDED_CELLS: ReadonlySet<string> = new Set(["rest", "win"]);
 
+// ── R5-W2 · H1 · HOW BIG SHE IS — one owner, because two owners drifted ──────
+//
+// These three lived privately inside PaintScene, which meant the visibility
+// proof (`guardian-flight.test.ts`) could not import them. It carried its own
+// copy of the first — `const GUARDIAN_DISPLAY_H = 52; // PaintScene.entTargetH`
+// — against a shipped 68. So the one check that exists to prove her whole body
+// stays on screen was proving a body 16 px shorter than the drawn one, and it
+// never saw the crop that arithmetic below now measures (DEBT A6 / D-21).
+//
+// They sit in anim.ts and not in paint.ts because they describe the RIG, next
+// to the cell sets and the pitch/roll grammar that read the same sheet; and
+// anim.ts is Phaser-free, so the proof can import them.
+
+/** Her drawn height in px, at her idle cell.
+ *
+ *  68 puts the board at roughly one and a half children while keeping her whole
+ *  silhouette inside the room: her flight band tops out at world y 166, the
+ *  arena's camera is pinned at y 96 (a 20-row world under a 14-row view), so 70
+ *  is the ceiling — and the tallest cell on the sheet spends the rest, because
+ *  every cell is scaled from the idle by its own proportions. */
+export const GUARDIAN_DISPLAY_H = 68;
+
+/** How far past the top of the view her drawing may be pushed back down, in px.
+ *
+ *  A framing clamp for the tallest cell at the top of her band, not a second
+ *  camera — and 6 was not enough. Measured, not estimated: her tallest cell is
+ *  `windup` at 440 px against the 397-px idle it is scaled from (1.108×), and
+ *  it swells by `BOSS_BEAT_SWELL` at the top of the tell, so she draws 85.2 px
+ *  where 68 was budgeted. At the very top of her band (knot 3, tick 0, feet at
+ *  world y 166 — the same 166 the display height was chosen against) her head
+ *  lands **15.16 px above** the arena camera's top edge at y 96.
+ *
+ *  16 is that number, rounded up: the smallest integer that satisfies the
+ *  requirement the visibility proof now DERIVES from the PNGs and the shipped
+ *  flight paths, rather than trusting anything written here. It is a real
+ *  nudge — she is pushed down by up to 16 px when she flies highest — and that
+ *  is a trade the frame review can see and overrule; the alternatives are a
+ *  shorter body or a shallower band, both of which are bigger changes than a
+ *  clamp doing the job its own name claims. */
+export const GUARDIAN_KEEPIN_MAX = 16;
+
+/** PK-R6 · H2 (round-2 finding 8: „boss scale-up on key attack beats"). How much
+ *  bigger she gets at the top of a tell. Enough to be felt at a glance, small
+ *  enough that it reads as her rearing rather than as a zoom. */
+export const BOSS_BEAT_SWELL = 0.13;
+
 /** Her banked pairs, left and right. These cells carry their OWN direction, so
  *  the renderer must not also mirror them — see `CELL_IS_DIRECTIONAL`. (`roll`
  *  is the sheet's `bank_l0`; stage G mapped it to the name the turn state was

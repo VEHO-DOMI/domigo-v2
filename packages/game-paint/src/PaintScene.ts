@@ -31,7 +31,8 @@ import { CHALK_COLOURS, type EntityState, type EntityWorld, GUARDIAN_SCRIPT, JOY
 import { COLLECT_ANCHOR_PX, MAGNET_FIELD_PX, Sim, type SimEvent, type TaskRequest, type TipPayload } from "./sim.ts";
 import { FOCUS_MS, focusView } from "./camera.ts";
 import {
-  AWAKEN_ROOM_MS, CAGE_AT_REST, CAGE_OPEN_TICKS, CELL_IS_DIRECTIONAL, type EntPoseInput, REST_SQUASH, RESTORE_SPARKLE_MS, WASHED_ROLES,
+  AWAKEN_ROOM_MS, BOSS_BEAT_SWELL, CAGE_AT_REST, CAGE_OPEN_TICKS, CELL_IS_DIRECTIONAL, type EntPoseInput,
+  GUARDIAN_DISPLAY_H, GUARDIAN_KEEPIN_MAX, REST_SQUASH, RESTORE_SPARKLE_MS, WASHED_ROLES,
   awakenRoomBloom, awakenRoomSweep, bouncerSquash, cageBreath, cageNearT, entPoseCell, entSeed, floodBloomFor, greyLuma,
   guardianManoeuvre, guardianPitchRad, guardianRollScaleX, poseStateOf, washAlphaFor,
 } from "./anim.ts";
@@ -323,15 +324,11 @@ const SHARD_DISPLAY_H = 6;
 // is the ceiling and the tallest cell on the sheet (`windup`, 11 % over the idle
 // it is scaled from) is what spends the rest. See `guardianKeepIn` for the last
 // few px of that arithmetic.
-const GUARDIAN_DISPLAY_H = 68;
-/** How far past the top of the view her drawing may be pushed back down, in px.
- *  Small on purpose: this is a framing clamp for the tallest cell at the top of
- *  her band, not a second camera. */
-const GUARDIAN_KEEPIN_MAX = 6;
-/** PK-R6 · H2 (round-2 finding 8: „boss scale-up on key attack beats"). How much
- *  bigger she gets at the top of a tell. Enough to be felt at a glance, small
- *  enough that it reads as her rearing rather than as a zoom. */
-const BOSS_BEAT_SWELL = 0.13;
+// R5-W2 · H1 · the three numbers that decide HOW BIG SHE IS now live in
+// anim.ts, next to the rig they describe. They were here, private to a Phaser
+// module — so the visibility proof could not import them and carried its own
+// copy of the first one instead. It carried 52 against a drawn 68, and had been
+// proving a body 16 px shorter than the one on screen (DEBT A6 / D-21).
 
 // ── PK-R6 · E · THE GOLDEN TRAIL, IN CODE (doc 44 B14 · the art review's
 // ruling) ────────────────────────────────────────────────────────────────────
