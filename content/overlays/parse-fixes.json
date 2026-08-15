@@ -5,5 +5,64 @@
         "exampleSb": "Adult tickets are €14.40."
       }
     }
+  },
+  "g1-u01": {
+    "patch": {
+      "g1u01.w.desk": {
+        "forms": [
+          "desk",
+          "desks"
+        ]
+      },
+      "g1u01.w.tablet": {
+        "forms": [
+          "tablet",
+          "tablets"
+        ]
+      },
+      "g1u01.w.chair": {
+        "forms": [
+          "chair",
+          "chairs"
+        ]
+      },
+      "g1u01.w.school-bag": {
+        "forms": [
+          "school bag",
+          "school bags"
+        ]
+      },
+      "g1u01.w.book": {
+        "forms": [
+          "book",
+          "books"
+        ]
+      },
+      "g1u01.w.school-tie": {
+        "forms": [
+          "school tie",
+          "school ties"
+        ]
+      },
+      "g1u01.w.shoe": {
+        "forms": [
+          "shoe",
+          "shoes"
+        ]
+      },
+      "g1u01.w.address": {
+        "forms": [
+          "address",
+          "address email",
+          "addresses"
+        ]
+      },
+      "g1u01.w.picture": {
+        "forms": [
+          "picture",
+          "pictures"
+        ]
+      }
+    }
   }
 }

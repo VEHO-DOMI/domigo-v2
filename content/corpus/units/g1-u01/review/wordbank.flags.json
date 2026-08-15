@@ -1,8 +1,8 @@
 {
   "schema": "wordbank-flags@1",
   "slug": "g1-u01",
-  "round": 1,
-  "bankHash": "6b8c1ede4887",
+  "round": 2,
+  "bankHash": "5f5da1237202",
   "reviewedBy": "fable",
   "flags": [
     {
@@ -22,6 +22,6 @@
   ],
   "unit": {
     "verdict": "ok",
-    "note": "Lens A: clean, 68/68 verbatim (249 entries checked across u01–u05 batch). Lens B: `go` form adjudicated correct. Both flags resolved with evidence."
+    "note": "R5-W4 · G3 (D-75). Neun zählbare Nomen bekommen ihre Pluralform — bisher belegte die Wortbank nur die Einzahl, während Karten wie `enc.ranzen.q4` schon „shoes\" zeigen (unbelegte Behauptung, Gesetz 13e). BELEGREGEL dieser Runde: eine Form wird NUR eingetragen, wenn sie verbatim im Unit-1-Transkript steht. Belege: SB p. 15 ex. 18 „The desks and the chairs are brown and black.\" → desks, chairs · SB p. 14 ex. 16 „Switch on your tablets.\" / „Don't open your books.\" → tablets, books · WB p. 8 ex. 4 „your / don't / school bags. / open\" → school bags · SB p. 13, Überschrift „School ties\" → school ties · SB p. 13 ex. 2, Listennummer 12 → shoes · SB p. 8 Kann-Vertrag „understand and spell names / email addresses\" → addresses · SB p. 13 ex. 2 „Read the words and number the pictures.\" → pictures. NICHT eingetragen, weil im Unit-1-Transkript nicht belegt (je 0 Treffer in SB und WB, einzeln nachgezählt): pens, pencils, rubbers, windows, doors, boards, rulers, hats, shirts, skirts, sweaters, hairbands, projectors, sound systems, exercise books, pencil cases, classes, times. NICHT eingetragen trotz Beleg: `children` (SB p. 16 „child (pl children)\", WB p. 13 „Sit down, children.\") — die Form macht drei bestehende Item-Glossen `children → Kinder` (g1u01.w.class, w.their, w.to-sit-down) zu V-6-Verstößen; deren Reparaturweg liegt in `content/overlays/item-fixes.json` und damit außerhalb dieser Lane. Als Befund an den Architekten gemeldet."
   }
 }

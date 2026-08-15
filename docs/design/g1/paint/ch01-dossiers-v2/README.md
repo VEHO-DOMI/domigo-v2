@@ -137,7 +137,7 @@ läuft weiter grün (er misst Pixel proportional zur Höhe), aber der KOMMENTAR 
 dann eine Behauptung ohne Fall. A5 leitet ihn neu her oder benennt ihn als
 historisch — beides ist in Ordnung, stilles Stehenlassen nicht.
 
-## §Abdeckung — die Vokabel-Vergabe des Kapitels (B8; Maschinen-Check = P1-PAKET, Task 15 — bis dahin Hand-geprüft)
+## §Abdeckung — die Vokabel-Vergabe des Kapitels (B8; **Maschinen-Check LIVE:** `scripts/check-level-design.mjs` Block 2)
 
 **Dedup-Prädikat (maschinenscharf, Geltungsbereich KAPITEL):** kein ASSET-STEM
 erscheint zweimal in der Menge {Entities mit Rolle chaser|gunner|flyer|bouncer|
@@ -162,7 +162,7 @@ Raum-Trennung. Vergabe v2:
 | (Zahlen 1–25) | Motten-SCHWARM-Spießrutenlauf, 3 Schwärme = 3–4 Rad-Aufgaben in Folge (B10-HEIMAT) | p2 Lampen-Korridor | ✓ moths |
 | ruler | Fähre (Plattform) | p3 | ✓ |
 | exercise book | Flatterer (flyer) | p3 | ✓ heft |
-| glue stick · sharpener | Entfärbte Dinge | p3 | ✓ |
+| ~~glue stick · sharpener~~ | Entfärbte Dinge `obj_gluestick`/`obj_sharpener` — **die OBJEKTE stehen im Level, die WÖRTER sind kein Unit-Wortschatz** | p3 | ✓ (Kunst da, Anspruch gestrichen) |
 | **chair** | **Käfig-#4-Insasse (Karte B20 „It's a chair")** | p3 | Wesen-Kunst **D-13** |
 | school bag (2./3. Rolle) | Schaukel + Stampfer | p3 | ✓ (Farb-Trennung D-14) |
 | board | DIE FLIEGENDE TAFEL (Guardian) | p4 | ✓ |
@@ -170,8 +170,29 @@ Raum-Trennung. Vergabe v2:
 | **picture** (wordbank g1u01.w.picture) | Käfig-#5-Insasse (Arena, B20-Karte) | p4 | obj_picture **D-21** |
 | **sound system** | Käfig-#1-Insasse (Empfehlung, B20-Klasse — PR-Nick) | p1 | Wesen **D-18** |
 | **tablet** | Käfig-#2-Insasse (Empfehlung — PR-Nick) | p2 | Wesen **D-19** |
-| projector | Fiktions-Träger (projiziert die Schwarm-Zahlen; Trail-Wort PROJECTOR) | p2 | Turm-Kunst **D-19** |
-| (Kleidungs-Neun) | NUR Karten-Ebene (u08-Kapitel) | tasks | — |
+| projector | Fiktions-Träger (projiziert die Schwarm-Zahlen; Trail-Wort PROJECTOR) — **keine Antwort-Karte: deklarierte Ausnahme bis 2026-12-31, Besitzer Welle 5 / Uniform** | p2 | Turm-Kunst **D-19** |
+| **Uniform-Neun** (hairband · sunglasses · hat · school tie · shirt · sweater · skirt · socks · shoe) | **AB WELLE 5: neun Sammelobjekte, 3/3/3 über p1–p3, plus drei Benenn-Karten** (`UNIFORM_SAMMELN_DESIGN.md`). Heute: sieben davon nur ABLENKER auf `enc.ranzen.q3/q4` (`shoe` seit der Pluralform `shoes`), zwei stehen auf gar keiner Karte → **deklarierte Ausnahme bis 2026-12-31, Besitzer Welle 5 / Uniform** | p1–p3 (ab W5) | Codex **AQ10** |
+
+**★★ EHRLICHKEITS-NACHZUG (R5-W4 · G3, 2026-08-15 — D-77, Kokis Befund).** Diese
+Tabelle behauptete Abdeckung, die niemand nachgemessen hatte. Zwei Klassen von
+Lüge sind jetzt maschinell ausgeschlossen:
+1. **`kind:"cards"` prüfte nichts.** Gemessen an der Antwortfläche aller 54
+   Karten produziert ein Kind **keines** der zehn oben deklarierten Wörter. Sechs
+   der Uniform-Neun stehen als ABLENKER auf `enc.ranzen.q3/q4` — ein Ablenker
+   wird gelesen, nicht erworben. `hairband`, `sunglasses`, `shoe` und `projector`
+   stehen auf gar keiner Karte. Ab jetzt muss ein `cards`-Anspruch eine echte
+   Antwort-Karte haben ODER eine Ausnahme mit `why` + `expires` + `owner` tragen;
+   nach Ablauf wird das Tor rot. (Diese Lesart ist schärfer als Gesetz 17a in
+   `variety.ts`, das ein Wort schon dann als beantwortet zählt, wenn seine ID in
+   irgendeinem `exercises`-Array steht — eine Behauptung, keine Messung.)
+2. **Tote Ansprüche.** `glue stick` und `sharpener` standen in der Tabelle und in
+   `CLAIMS`, ohne dass Unit 1 die Wörter lehrt: die Master-Vokabelliste kennt sie
+   nicht (nachgezählt — 26 Word-File-Einträge, beide nicht dabei), nur die
+   buch­eigene Wortliste führt sie unter `U1/11`. Die Level-OBJEKTE bleiben, der
+   Anspruch ist gestrichen, und ein neues Gesetz verbietet jeden Anspruch auf ein
+   Wort, das die Wortbank nicht führt. → Aufnahme in die Wortbank ist ein
+   Pipeline-Auftrag an den Architekten (der `add`-Pfad kann heute nur
+   v1-Wörter).
 
 **restoreRoom-OVERRIDE (doc 44 §4 C1, hiermit ausgesprochen):** Die Keen-Sechs
 (desk, school bag, door, board, window, chair) werden NICHT 1:1 restauriert. ch01-v2
