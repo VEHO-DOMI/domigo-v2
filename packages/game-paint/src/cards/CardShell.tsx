@@ -20,6 +20,7 @@
 //    then the card DOFFS so the world's change can be watched (the restore-hold).
 import React from "react";
 import type { GameTaskV2 } from "@domigo/content-schema";
+import { captiveStem, isCaptiveKey } from "../artManifest.ts";
 import { gapLevelFor, renderGapHint } from "./hint.ts";
 import { QUICKFIRE_MS, focusPctFor } from "./overlay-css.ts";
 import { LETTER_LEAD_MS, LETTER_STAGGER_MS, lettersFor } from "./resolution.ts";
@@ -45,6 +46,26 @@ export const alignedWrap = (align: CardAlign): React.CSSProperties => ({
   // same value rather than each guessing.
   ["--pb-focus" as string]: focusPctFor(align),
 } as React.CSSProperties);
+
+/**
+ * R5-W4 · D3 · F-30 · R52 · THE FOCUS WRAP.
+ *
+ * The focus mode puts the card in the MIDDLE, which looks at first like a
+ * repeal of PB-F1/F2-20 („a card is put down away from the being it talks
+ * about") — and is not. That law exists so the child can still see what is
+ * being asked about, and it is served here by the two things that actually
+ * point: the veil's light and the ink thread, both still derived from `align`,
+ * i.e. from the side the being is on. Only the LAYOUT moves.
+ *
+ * So `--pb-focus` and the tether keep reading the original side, while the
+ * flex box centres. The padding stays, because a centred card at a modest
+ * width must still not touch the frame on a 375 px phone.
+ */
+export const focusedWrap = (align: CardAlign): React.CSSProperties => ({
+  ...alignedWrap(align),
+  justifyContent: "center",
+  padding: "0 14px",
+});
 
 export const cardWrap: React.CSSProperties = alignedWrap("center");
 /** PK-R6 · H1 (round-1 critique, finding 3): the card's LOOK moved out of here
@@ -93,6 +114,40 @@ export const InkWipe = (): React.ReactElement => (
  *  actually missing instead: a brush stroke leaving the card's world-facing edge
  *  with a warm bead at its tip, pointing back at the being. Null for a centred
  *  card, which has no being to point at (a ceremony talks to the child). */
+/**
+ * R5-W4 · D3 · R56 · WHAT THE COUNTER COUNTS.
+ *
+ * Koki, replay of 15 August: „‚Runde 1 von 6' — warum Runde? Vielleicht
+ * ‚Frage 1 von 6'." He is right about the word: a round is something you last,
+ * a question is something you answer, and this counter counts the second. And
+ * the slash went with it — „1/6" is a score, „1 von 6" is a place in a line.
+ *
+ * The two words live here as constants, not inline, so ch02 and everything
+ * after it inherit the ruling instead of re-deciding it. They are the ONLY
+ * German strings this packet is allowed to write; every other line on every
+ * card belongs to the copy lane.
+ */
+const ROUND_LABEL_DE = "Frage";
+const ROUND_OF_DE = "von";
+
+/**
+ * R5-W4 · D3 · F-14 · R54 · A CAGE NAMES EITHER A THING OR A PERSON.
+ *
+ * The world already makes this distinction (`isCaptiveKey(e.params.captive)` in
+ * PaintScene): a thing-cage carries one of the four captive keys and its
+ * occupant is painted on its own `captive_*` sheet, while the chapter's one
+ * person-cage carries the classmate's name and her occupant cell is the caged
+ * pose of her own skin. The naming law itself is imported rather than retyped —
+ * two copies of a stem convention are two conventions waiting to disagree.
+ *
+ * Returns a STEM, never a url: whether the sheet has actually landed is the
+ * art map's question, and the keen-art law wants that asked at the last moment.
+ */
+export const cageCellFor = (name: string | undefined): string | undefined => {
+  if (name === undefined || name === "") return undefined;
+  return isCaptiveKey(name) ? captiveStem(name) : `${name}_caged0`;
+};
+
 const Tether = ({ align }: { align: CardAlign }): React.ReactElement | null =>
   align === "center" ? null : <span className={`pb-tether pb-tether-${align === "right" ? "l" : "r"}`} aria-hidden />;
 
@@ -393,7 +448,7 @@ const hasAnswer = (t: GameTaskV2): t is Extract<GameTaskV2, { kind: "typed" | "s
   t.kind === "typed" || t.kind === "spell";
 
 export function CardShell({
-  task, attempts, onDismiss, align = "center", clockMs, armCount = 0, onActivity, art, portraitWash, round, flight, doff = false,
+  task, attempts, onDismiss, align = "center", clockMs, armCount = 0, onActivity, art, portraitWash, captive, round, flight, doff = false,
   colourAskDe, actStep, children,
 }: {
   task: GameTaskV2;
@@ -414,6 +469,15 @@ export function CardShell({
   art?: Record<string, string>;
   /** how drained the asker is right now (0…1) — the portrait matches the world */
   portraitWash?: number;
+  /** R5-W4 · D3 · F-14 · R54 · WHO IS IN THE CAGE, on the card as in the world.
+   *  All four object cages wear the one `satchel` shell, so until now the sound
+   *  system, the tablet, the chair and the class photo were the same picture —
+   *  Koki, 15 August: „beim Käfig zeigt das Bild immer noch die Schultasche,
+   *  nicht die Musikanlage; das Bild soll zeigen, was drin ist."
+   *  The key comes off the cage entity (`params.captive`), and the card draws
+   *  the occupant's own cell BEHIND the shell, exactly as `PaintScene` does at
+   *  depth 6.99 behind 7. A person-cage names her caged cell instead. */
+  captive?: string;
   /** PK-R6 · D: the reawakening's own counter („Runde 3/6", doc 44 §3.3) */
   round?: { n: number; of: number };
   /** the answer flying home, or null while the card is still being played */
@@ -447,6 +511,10 @@ export function CardShell({
   // picture was the one kind that showed none
   const picture = task.stimulus.type === "image" ? art?.[task.stimulus.stem] : undefined;
   const hasPlate = portrait !== undefined || picture !== undefined;
+  // R5-W4 · D3 · F-14 · the occupant's cell, when this card is about a cage and
+  // the sheet has landed. Keen-art law: a missing cell leaves the shell exactly
+  // as it was, so no card hangs on a file.
+  const occupant = art?.[cageCellFor(captive) ?? ""];
 
   // ── R5-W1 · D1 · THE GLANCE GRAMMAR ────────────────────────────────────────
   // plate → key → quiet → act → help. Which line is the KEY is decided in
@@ -466,7 +534,7 @@ export function CardShell({
   ];
 
   return (
-    <div className={`pb-veil${doff ? " pb-doff" : ""}`} style={alignedWrap(align)}>
+    <div className={`pb-veil pb-veil-focus${doff ? " pb-doff" : ""}`} style={focusedWrap(align)}>
       {/* PK-R6 · H2 (round-2 finding 6): the world beside the card, pushed out
           of focus so its cut-off edges read as a backdrop rather than as a
           framing mistake — sharp over the being the card is about. Listed FIRST
@@ -480,7 +548,13 @@ export function CardShell({
           derselbe Handgriff. */}
       <div
         className="pb-card"
-        style={{ ...cardBox, width: align === "center" ? "90%" : "46%", minWidth: 300 }}
+        /* R5-W4 · D3 · F-30: in focus the card is centred, so its width is no
+           longer a function of which half of the canvas it was pushed into. It
+           takes a reading width instead — wide enough for the ask, narrow enough
+           that the being it talks about is still there beside it on a desktop.
+           `min()` rather than a percentage: 88 % of a 1280 px canvas is a
+           billboard, and 460 px of a 375 px phone is an overflow. */
+        style={{ ...cardBox, width: "min(460px, 88%)", minWidth: 0, maxWidth: "100%" }}
         onPointerDownCapture={onActivity}
         onKeyDownCapture={onActivity}
       >
@@ -493,15 +567,15 @@ export function CardShell({
             frame furniture, not its writing. */}
         <div className="pb-card-scroll">
 
-        {/* PK-R6 · D · THE ROUND COUNTER (doc 44 §3.3, „6 rounds, Runde n/6").
-            A ceremony a six-year-old can see the end of: six is a long way to
-            be asked questions by a friend who is still grey, and the difference
-            between a rite and an interrogation is knowing how far it runs. It
-            is a LABEL, never a clock — the reawakening is calm by the timer
-            policy (doc 44 §2.9) and no chalk ring ever runs beside it. */}
+        {/* PK-R6 · D · THE ROUND COUNTER (doc 44 §3.3). A ceremony a six-year-old
+            can see the end of: six is a long way to be asked questions by a
+            friend who is still grey, and the difference between a rite and an
+            interrogation is knowing how far it runs. It is a LABEL, never a
+            clock — the reawakening is calm by the timer policy (doc 44 §2.9)
+            and no chalk ring ever runs beside it. */}
         {round !== undefined && (
           <p style={{ fontSize: 11.5, letterSpacing: "0.16em", textTransform: "uppercase", color: "#a8926a", margin: "0 0 6px", fontFamily: "var(--font-label, inherit)" }}>
-            Runde {round.n}/{round.of}
+            {ROUND_LABEL_DE} {round.n} {ROUND_OF_DE} {round.of}
           </p>
         )}
 
@@ -510,7 +584,7 @@ export function CardShell({
             doc 44 §3.1 rules that a bare text card is not a legitimate card
             surface, and „nothing yet" is the state art batches leave behind. */}
         {portrait !== undefined ? (
-          <Plate url={portrait} altDe={task.stimulus.type === "entity" ? task.stimulus.showsDe : ""} wash={portraitWash} mark={mark} />
+          <Plate url={portrait} behindUrl={occupant} altDe={task.stimulus.type === "entity" ? task.stimulus.showsDe : ""} wash={portraitWash} mark={mark} />
         ) : picture !== undefined ? (
           <Plate url={picture} altDe={task.stimulus.type === "image" ? task.stimulus.altDe : ""} mark={mark} />
         ) : (
@@ -520,11 +594,17 @@ export function CardShell({
           <ActPlate mark={mark} />
         )}
 
-        {/* the caption belongs to the picture: what the child is looking at,
-            said once, quietly */}
-        {task.stimulus.type === "entity" && <Quiet italic>{task.stimulus.showsDe}</Quiet>}
+        {/* R5-W4 · D3 · THE CAPTION IS THE CONTEXT, NOT THE SMALL PRINT.
+            Koki, 15 August: „der deutsche Satz ist winzig klein." He was right
+            and the measurement agrees — this line rode the quiet layer at
+            12.5 px, the smallest type on the card, while it is the one sentence
+            that says what the picture IS. It has its own class now: the ink and
+            the restraint of the quiet layer, at a size a first-reader can hold.
+            The quiet layer itself stays where it is, so the glance grammar
+            (one key line leads, the rest steps back) does not flatten out. */}
+        {task.stimulus.type === "entity" && <p className="pb-cap">{task.stimulus.showsDe}</p>}
         {task.stimulus.type === "image" && picture === undefined && (
-          <Quiet italic><span style={{ display: "inline-flex", verticalAlign: "-0.2em", marginRight: 5 }}><PictureMark /></span>{task.stimulus.altDe}</Quiet>
+          <p className="pb-cap"><span style={{ display: "inline-flex", verticalAlign: "-0.2em", marginRight: 5 }}><PictureMark /></span>{task.stimulus.altDe}</p>
         )}
 
         {/* ZONE 2 · THE ASK — the painted verb and the one marked line, as one

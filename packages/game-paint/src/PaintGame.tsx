@@ -2026,6 +2026,16 @@ function Overlay({
       align={o.align}
       art={art}
       portraitWash={o.wash}
+      // R5-W4 · D3 · F-14 · R54 · WHO IS IN THE CAGE, handed to the card.
+      // Koki, 15 August: „das Bild soll zeigen, was drin ist." The world has
+      // known this since A5 (`params.captive` per cage, drawn behind the bars);
+      // the card never asked. A person-cage names the classmate instead — she
+      // has her own caged cell — and the shell turns either name into a stem.
+      captive={o.req.ctx.type === "cage"
+        ? o.req.ctx.classmate
+          ?? (allPhasesOf(level).flatMap((p) => p.entities)
+            .find((x) => x.id === askerIdOf(o.req.ctx))?.params?.captive as string | undefined)
+        : undefined}
       round={o.round}
       // doc 44 §2.9: the timer class comes from the pool the WORLD asked for
       servedUse={o.req.use}

@@ -188,8 +188,36 @@ export const wheelMachine: CardMachine<WheelState, WheelAction> = {
 // scrollTop and the machine's index, and they are unit-tested in the node env
 // exactly like spellSlots — the spell-card precedent.
 
-/** Row height of the dial in CSS px (five rows are visible: 2 · lens · 2). */
+/** Row height of the dial in LAYOUT px (five rows are visible: 2 · lens · 2). */
 export const WHEEL_ITEM_H = 44;
+
+/**
+ * R5-W4 · D3 · F-20 · THE DIAL'S PITCH, IN THE UNIT `scrollTop` IS SPOKEN IN.
+ *
+ * Koki, replay of 15 August: „12 steht fett, ich bin bei 13, ausgewählt ist es
+ * nicht — um eins verschoben."
+ *
+ * The dial used to read its row height from `getBoundingClientRect().height`.
+ * That is the VISUAL box — the axis-aligned hull after every ancestor
+ * transform — while `scrollTop`, `paddingTop` and the scroll-snap grid are all
+ * LAYOUT px, which a CSS transform does not touch. Dividing one by the other is
+ * a unit error, and `.pb-card` makes it permanent: it carries
+ * `transform: rotate(-1.1deg)` at rest and deliberately keeps it under
+ * reduced-motion. A 44 × 184 row rotated by 1.1° hulls to
+ * `44·cos1.1° + 184·sin1.1° ≈ 47.5` px, so `round(44·i / 47.5) = round(0.926·i)`
+ * — one whole row of drift from i ≈ 7 on, with no animation running at all.
+ * On Koki's screen `thirteen` sat at index 12 and index 11 („twelve") was set
+ * bold. The spring-in `scale(0.93)` only widens the same wound for 420 ms.
+ *
+ * `offsetHeight` is the layout box, so it is the same unit as `scrollTop`, and
+ * it is what the whole dial — lens, padding, snap grid and index — now shares.
+ * The zero guard is for the states where layout has not run yet (first render,
+ * a detached node): the declared height is the honest answer there.
+ */
+export const wheelRowPitch = (el: { offsetHeight: number } | null | undefined): number => {
+  const h = el?.offsetHeight ?? 0;
+  return h > 0 ? h : WHEEL_ITEM_H;
+};
 /** How long the column must hold still before a drag counts as SETTLED. This
  *  is the auto-lock clock — the one thing the mined wheel was missing (doc 42
  *  §2: „snap settles ⇒ value locks; no Einloggen press"). */

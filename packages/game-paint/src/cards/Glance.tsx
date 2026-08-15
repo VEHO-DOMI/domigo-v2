@@ -17,11 +17,37 @@ import { ACT_LABEL_DE, type ActMark } from "./glance.ts";
  *  ActPlate). `wash` keeps the portrait exactly as drained as the being in the
  *  world (the desaturation law, doc 41 §2): a full-colour face over a grey desk
  *  would hand a restore card's own answer away. */
-export const Plate = ({ url, altDe, wash = 0, height = 132, mark }: {
-  url: string; altDe: string; wash?: number; height?: number; mark?: ActMark;
+export const Plate = ({ url, behindUrl, altDe, wash = 0, height = 132, mark }: {
+  url: string; behindUrl?: string; altDe: string; wash?: number; height?: number; mark?: ActMark;
 }): React.ReactElement => (
   <div className="pb-plate-wrap">
     <div className="pb-plate">
+      {/* R5-W4 · D3 · F-14 · R54 · WHAT IS INSIDE, DRAWN INSIDE. The cage shell
+          is one picture for four different captives, so the occupant is its own
+          layer BEHIND it — the same stacking the world already uses (the bars
+          belong in front of the captive: PaintScene depth 6.99 behind 7, both
+          anchored bottom-centre). Absolute so it cannot change the plate's box,
+          and it wears the SAME wash as the shell: a full-colour thing behind
+          grey bars would hand the restore law's own answer away. */}
+      {behindUrl !== undefined && (
+        <img
+          src={behindUrl}
+          alt=""
+          aria-hidden
+          style={{
+            // The occupant sheets are painted in register with the cage's
+            // resting cell (both 347 x 480), but a cage that is SHAKING shows a
+            // wider cell (385 x 479) — so the layer is fitted into the shell's
+            // own box rather than assumed to match it, anchored bottom-centre
+            // like every being in the world (origin 0.5, 1).
+            position: "absolute", inset: 0,
+            width: "100%", height: "100%",
+            objectFit: "contain", objectPosition: "50% 100%",
+            filter: wash > 0 ? `grayscale(${wash})` : undefined,
+            pointerEvents: "none",
+          }}
+        />
+      )}
       {/* bounded on BOTH axes: the cells are painted at whatever aspect their
           being needs, and a wide one sized by height alone grew until it was
           the whole card (found in the render, first exemplar round) */}
@@ -29,6 +55,7 @@ export const Plate = ({ url, altDe, wash = 0, height = 132, mark }: {
         src={url}
         alt={altDe}
         style={{
+          position: "relative",
           maxHeight: height, maxWidth: "100%", height: "auto", width: "auto",
           filter: wash > 0 ? `grayscale(${wash})` : undefined,
         }}

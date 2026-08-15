@@ -118,6 +118,38 @@ export const PAINT_OVERLAY_CSS = `
   animation: pb-veil-in 300ms ease-out;
 }
 
+/* ── R5-W4 · D3 · F-30 · R52 · THE FOCUS MODE ──────────────────────────────
+   Koki, 15 August, pointing at his own Keen run-mode: „alles ausgeblendet, nur
+   die Aufgabe — gutes UI/UX; unsere schöne Karte sollte so getriggert werden,
+   dass man sich voll darauf konzentriert und alles andere ausgeblendet ist."
+
+   That reference is not another game — it is this repo's arcade lane
+   (packages/game-2d/src/ArcadeGame.tsx), which puts its task on
+   »radial-gradient(ellipse 75% 65% at 50% 45%, rgba(20,18,33,0.55), 0.9)« over a
+   world it has taken almost to black. Read as a measurement, not copied as a
+   style: the naive look stays exactly as J1 built it. (No backticks anywhere in
+   this file: the whole stylesheet is one template literal and a backtick ends
+   it — the rule is written at the bottom of the file and it caught this comment
+   on the first typecheck.)
+
+   The ink here is deep enough that the world reads as NIGHT rather than as
+   dimmed — the target is a mean luminance of 15 % or less outside the card and
+   the focus hole. What it may NOT do is put the world out entirely: the card
+   is always ABOUT something standing over there (PB-F1/F2-20), the ink thread
+   points at it, and a child who cannot see the thing being asked about has
+   been given a quiz instead of a story. So the light stays over »--pb-focus«,
+   which is still derived from the side the card was NOT put down on.
+
+   »!important« for the same reason the base rule carries one: the wrapper
+   writes a flat background inline, and this must win over both. */
+.pb-veil.pb-veil-focus {
+  background:
+    radial-gradient(112% 88% at var(--pb-focus, 50%) 45%,
+      rgba(26,19,9,0.58) 0%,
+      rgba(22,16,7,0.92) 40%,
+      rgba(16,11,5,0.965) 100%) !important;
+}
+
 /* ── the world behind the card, out of focus ───────────────────────────────
    PK-R6 · H2 (round-2 finding 6): „the card sits right-of-center, cutting a
    floating shelf/platform in half at the frame edge behind it" — the strip of
@@ -145,6 +177,16 @@ export const PAINT_OVERLAY_CSS = `
   mask-image: radial-gradient(46% 52% at var(--pb-focus, 50%) 48%,
     rgba(0,0,0,0) 0 30%, rgba(0,0,0,0.5) 62%, rgba(0,0,0,1) 100%);
   -webkit-mask-image: radial-gradient(46% 52% at var(--pb-focus, 50%) 48%,
+    rgba(0,0,0,0) 0 30%, rgba(0,0,0,0.5) 62%, rgba(0,0,0,1) 100%);
+}
+/* R5-W4 · D3 · F-30 · in focus the sharp window closes in a little: with the
+   world this dark, a wide clear patch reads as a hole in the ink rather than as
+   the one thing still lit. The stops keep their shape (clear centre → full at
+   the frame), so the focus-hole law and its test are untouched. */
+.pb-veil-focus .pb-defocus {
+  mask-image: radial-gradient(40% 46% at var(--pb-focus, 50%) 48%,
+    rgba(0,0,0,0) 0 30%, rgba(0,0,0,0.5) 62%, rgba(0,0,0,1) 100%);
+  -webkit-mask-image: radial-gradient(40% 46% at var(--pb-focus, 50%) 48%,
     rgba(0,0,0,0) 0 30%, rgba(0,0,0,0.5) 62%, rgba(0,0,0,1) 100%);
 }
 
@@ -316,6 +358,25 @@ export const PAINT_OVERLAY_CSS = `
   --pb-stamp-tilt: -11deg;
   --pb-key-tilt: -1.6deg;
 
+  /* R5-W4 · D3 · R62 · the pages under the top one: a sliver of paper and the
+     ink line that ends it. Slightly duller and slightly darker than the card's
+     own paper and ink, because a page below the top one is a page in shade. */
+  --pb-sheet-face: #f6e6bf;
+  --pb-sheet-edge: #c19a5e;
+
+  /* ── R5-W4 · D3 · R63 · THE SLOT FOR A PAINTED EDGE (Codex AQ11) ──────────
+     J2 stopped after three rounds at the same criterion and said why: three
+     blind critics agreed that a border whose four sides each have a different
+     but EVEN weight is still an even border, and that the wobble ALONG a line
+     is the thing a CSS border cannot draw. The answer is a painted edge as an
+     image, which is an art commission, not a stylesheet round.
+
+     This is where it lands. While the token is »none« the rule below is inert
+     and the hand-weighted border above is what draws — so this ships today
+     changing nothing, and the day the sheet arrives it is one token. */
+  --pb-edge-image: none;
+  --pb-edge-slice: 42;
+
   position: relative;
   /* ── R5-W3 · J2 · D-52 · THE CARD NEVER OUTGROWS ITS VEIL ─────────────────
      Measured on the real page at 375 x 812 (never on the card bench: that is a
@@ -393,16 +454,46 @@ export const PAINT_OVERLAY_CSS = `
   /* declared, not inherited from the default: the whole 375-px safety argument
      is that the overhang is SYMMETRIC, and that is only true about the centre */
   transform-origin: center;
+  /* ── R5-W4 · D3 · R62 · THE SHEETS UNDER IT, PUT BACK AND LOUDER ─────────
+     J1-A spent this stack and left the note that restoring it was two lines if
+     a critic asked. One did: J2's critic, the only one who ever saw both
+     versions filling the frame, picked the offset paper edges — »reads as the
+     top page of a stack« — and then called them »zu zaghaft«. Koki ruled R62:
+     build them, one step stronger.
+
+     Stronger here is OFFSET and EDGE, not opacity: what makes a stack legible
+     is that you can count the sheets, so each one shows a sliver of its own
+     paper AND its own ink line, at a spacing wide enough to survive the card
+     bench's downscale. They ride the border box, so the deckled corners and the
+     lean carry through them for free — a stack of pages that are all cut the
+     same way and all lie the same way, which is what a book is.
+
+     Order matters: earlier layers paint OVER later ones, so the sheets sit
+     between the card and its cast, and the cast moves out past the stack it now
+     belongs to rather than to the top page alone. */
   box-shadow:
-    /* R5-W2 · J1-A: the judged picture spent the four-layer sheet stack for one
-       hard cast and one ambient. The sheets-under-it device (blind critic on the
-       exemplar: »a drop-shadowed rectangle … a floating modal«) is now carried
-       by the deckled edge and the turned corner instead. Restoring the stack is
-       two lines if a critic asks for it back. */
-    7px 9px 0 -1px var(--pb-ink-cast),
-    0 14px 30px rgba(26,17,8,0.4);
+    5px 6px 0 -2px var(--pb-sheet-face),
+    5px 6px 0 -1px var(--pb-sheet-edge),
+    11px 13px 0 -4px var(--pb-sheet-face),
+    11px 13px 0 -3px var(--pb-sheet-edge),
+    14px 17px 0 -3px var(--pb-ink-cast),
+    0 16px 32px rgba(26,17,8,0.42);
   animation: pb-card-in ${CARD_ENTER_MS}ms ${CARD_ENTER_DELAY_MS}ms cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
 }
+/* R5-W4 · D3 · R63 · …and the rule that spends it. A »border-image-source« of
+   »none« is a no-op by specification, so this whole block is dead weight until
+   the painted sheet exists — and on the day it does, nothing else has to move:
+   the widths, the radii and the lean are all already right. »fill« is
+   deliberately absent (the paper is a gradient, not part of the sheet), and
+   »border-image-repeat: round« is what keeps a hand-drawn wobble from being
+   stretched into a smear on a wide card. */
+.pb-card {
+  border-image-source: var(--pb-edge-image);
+  border-image-slice: var(--pb-edge-slice);
+  border-image-width: 1;
+  border-image-repeat: round;
+}
+
 /* R5-W1 · D1 — THE PAGE, not a panel. Blind critic on the exemplar: „a
    drop-shadowed rectangle … a floating modal". Two marks fix that, both free:
    the SHEETS UNDER IT (two offset paper edges, so the card is the top page of
@@ -1059,6 +1150,23 @@ export const PAINT_OVERLAY_CSS = `
 }
 .pb-quiet-i { font-style: italic; }
 
+/* R5-W4 · D3 · THE PICTURE'S CAPTION — Koki, 15 August: „der deutsche Satz ist
+   winzig klein". It was riding the quiet layer at 12.5 px, which made the one
+   line that says WHAT THE PICTURE IS the smallest type on the card. It keeps
+   the quiet layer's ink (measured 5.53 : 1 on the paper, well over the 4.5 : 1
+   the guideline asks of body type) and its italic restraint, and takes a size a
+   six-year-old reads without leaning in. It is its own class rather than a
+   bigger .pb-quiet on purpose: the hint lines under a dial („zieh am Rad") are
+   quiet BY DESIGN, and growing them with the caption would flatten the glance
+   grammar D1 built. */
+.pb-cap {
+  margin: 0 0 5px;
+  font-size: 15.5px;
+  line-height: 1.35;
+  font-style: italic;
+  color: var(--pb-quiet-ink);
+}
+
 /* R5-W2 · I1 · THE READING CARD (cards/RulePage.tsx).
    Three static classes — no @keyframes, no transition — so the reduced-motion
    kill list stays exactly as long as the animated set it mirrors. The find beat
@@ -1363,6 +1471,5 @@ export const PAINT_OVERLAY_CSS = `
   .pb-card button, .pb-card .pb-chip, .pb-hud-chip-btn, .pb-help-body {
     transition: none !important;
   }
-}
 }
 `;

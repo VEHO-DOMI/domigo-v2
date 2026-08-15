@@ -11,8 +11,11 @@ import {
   BURST_MAX, BURST_MIN, COUNT_UP_MS, COUNT_UP_STAGGER_MS, bonusPhrase, phraseText,
   burstMotes, countUpAt, countUpTotalMs, heroParts, runCompletion,
 } from "./ceremony.ts";
-import { RIG_PART_ORDER } from "../rigSpec.ts";
+import { HERO2_STEMS, RIG_PART_ORDER } from "../rigSpec.ts";
 import { letterGlyphs } from "../letters.ts";
+import { heroCellFor, heroCellPresent } from "./CeremonyStage.tsx";
+import fs from "node:fs";
+import path from "node:path";
 
 describe("the count-up (the chapter's numbers, arriving)", () => {
   it("starts at nothing and ends EXACTLY on the target", () => {
@@ -194,5 +197,45 @@ describe("R5-C1 · the bonus room's phrase, laid out (p9.md §5/§10)", () => {
 
   it("splits into the declared words, not into one run", () => {
     expect(bonusPhrase(rows, ["school", "things"], all).map((w) => w.length)).toEqual([6, 6]);
+  });
+});
+
+// ── R5-W4 · D3 · R55 · THE CEREMONY DRAWS THE HERO THE CHILD IS PLAYING ─────
+//
+// Koki, 15 August: „auf den Karten ist der ALTE Charakter — hier soll der neue
+// sein." The world moved to the painted `hero2_*` cells with H3; the ceremony
+// panels kept assembling the old modular rig, so two different boys shipped in
+// one chapter and every gate stayed green.
+describe("R5-W4 · D3 · R55 · the ceremony hero is the world's hero", () => {
+  it("a leap is the cheer and a stand is the idle — the world's own mapping", () => {
+    expect(heroCellFor("jump")).toBe("hero2_cheer");
+    expect(heroCellFor("stand")).toBe("hero2_idle");
+  });
+
+  it("the cells it names are the ones the world ships", () => {
+    for (const pose of ["jump", "stand"] as const) {
+      const cell = heroCellFor(pose);
+      expect(cell, `no cell for ${pose}`).not.toBe(null);
+      expect(HERO2_STEMS as readonly string[], `${cell} is not a shipped cell`).toContain(cell!);
+    }
+  });
+
+  it("prefers the new cell, falls back to the old rig, and admits when there is neither", () => {
+    // the whole keen-art ladder in one place
+    // the rig's own stems, asked of the rig rather than guessed at
+    const rigOnly = Object.fromEntries(
+      heroParts(1, "jump").filter((p) => p.part === "body" || p.part === "head").map((p) => [p.stem, "x"]),
+    );
+    const both = { ...rigOnly, hero2_cheer: "x" };
+    expect(heroCellPresent(both)).toBe(true);
+    expect(heroCellPresent(rigOnly)).toBe(true); // old rig still counts as a boy
+    expect(heroCellPresent({})).toBe(false);     // and nothing is honestly nothing
+  });
+
+  it("the shipped chapter really has the new cells, so this is not a fallback in practice", () => {
+    const dir = path.resolve(__dirname, "../../../../apps/web/public/art/g1/paint/ch01");
+    for (const pose of ["jump", "stand"] as const) {
+      expect(fs.existsSync(path.join(dir, `${heroCellFor(pose)}.png`)), `${heroCellFor(pose)}.png is missing`).toBe(true);
+    }
   });
 });

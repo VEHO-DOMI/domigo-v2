@@ -9,7 +9,7 @@ import { CardBack } from "./Glance.tsx";
 import { scrollBehavior } from "./motion.ts";
 import {
   WHEEL_ITEM_H, WHEEL_SETTLE_MS, spellSlots, spellTrayDisabled,
-  wheelIndexAt, wheelLockActions, wheelScrollFor, wheelStep,
+  wheelIndexAt, wheelLockActions, wheelRowPitch, wheelScrollFor, wheelStep,
 } from "./machines.ts";
 import type {
   ChoiceState, ChoiceAction, TypedState, TypedAction, SpellState, SpellAction,
@@ -191,20 +191,23 @@ const SLATE = "#2f3f4a";
 const CHALK = "#f6f2e8";
 const CHALK_DIM = "#93a3ad";
 
-/**
- * The row height as RENDERED, never as declared — found in the browser during
- * PK-R3a. The card springs in with `transform: scale(0.94)`, and a child can
- * start dragging the dial while that is still true (page zoom does the same
- * thing permanently). Rows then measure ~41 px while the code believes 44, and
- * `round(scrollTop / 44)` drifts by a whole row once the scale is long enough —
- * the dial would lock in a number the child never put under the lens. Measuring
- * costs one layout read per scroll and removes the class.
- */
-const rowHeightOf = (el: HTMLElement): number =>
-  (el.children[0] as HTMLElement | undefined)?.getBoundingClientRect().height || WHEEL_ITEM_H;
-
 export function WheelCard({ state, dispatch }: { state: WheelState; dispatch: Dispatch<WheelAction> }): React.ReactElement {
   const listRef = React.useRef<HTMLDivElement | null>(null);
+  /**
+   * R5-W4 · D3 · F-20 · ONE PITCH, READ BY EVERYTHING.
+   *
+   * The old defect was not only the unit (see `wheelRowPitch`) — it was that
+   * the LENS was never measured at all. The ring, the padding, the frame and
+   * the fades were all pinned to the declared `WHEEL_ITEM_H` while the bold
+   * index alone was computed against a measured height, so the moment those two
+   * numbers parted the chalk ring and the chosen row pointed at different
+   * places BY CONSTRUCTION. They now read one variable. It starts at the
+   * declared height, and the measurement writes back into the same value the
+   * rows are declared with — so declaration and measurement converge in one
+   * pass instead of arguing.
+   */
+  const pitchRef = React.useRef(WHEEL_ITEM_H);
+  const [rowH, setRowH] = React.useState(WHEEL_ITEM_H);
   /** where the DIAL is (the DOM is the truth between renders) */
   const idxRef = React.useRef(0);
   /** did a HUMAN cause the scroll that is settling? only then do we lock. */
@@ -222,8 +225,16 @@ export function WheelCard({ state, dispatch }: { state: WheelState; dispatch: Di
   React.useEffect(() => {
     const el = listRef.current;
     if (!el) return;
+    /** re-read the layout pitch, and let the DECLARED height follow it */
+    const measure = (): number => {
+      const p = wheelRowPitch(el.children[0] as HTMLElement | undefined);
+      pitchRef.current = p;
+      // converges: the rows are declared AT this value, so the next read agrees
+      setRowH((prev) => (Math.abs(prev - p) >= 0.5 ? p : prev));
+      return p;
+    };
     const paint = (): void => {
-      const i = wheelIndexAt(el.scrollTop, n, rowHeightOf(el));
+      const i = wheelIndexAt(el.scrollTop, n, measure());
       idxRef.current = i;
       for (let k = 0; k < el.children.length; k++) {
         const d = el.children[k] as HTMLElement;
@@ -245,7 +256,7 @@ export function WheelCard({ state, dispatch }: { state: WheelState; dispatch: Di
     };
     const arm = (): void => { userRef.current = true; };
     paintRef.current = paint;
-    el.scrollTop = wheelScrollFor(idxRef.current, rowHeightOf(el));
+    el.scrollTop = wheelScrollFor(idxRef.current, measure());
     paint();
     el.addEventListener("scroll", onScroll, { passive: true });
     el.addEventListener("pointerdown", arm, { passive: true });
@@ -273,7 +284,7 @@ export function WheelCard({ state, dispatch }: { state: WheelState; dispatch: Di
     const el = listRef.current;
     if (!el) return;
     userRef.current = false;
-    el.scrollTo({ top: wheelScrollFor(wheelStep(idxRef.current, delta, n), rowHeightOf(el)), behavior: scrollBehavior() });
+    el.scrollTo({ top: wheelScrollFor(wheelStep(idxRef.current, delta, n), pitchRef.current), behavior: scrollBehavior() });
   };
   /** Tapping a row brings it under the lens AND answers with it — one tap, the
    *  same commitment a release carries. */
@@ -281,7 +292,7 @@ export function WheelCard({ state, dispatch }: { state: WheelState; dispatch: Di
     const el = listRef.current;
     if (!el) return;
     userRef.current = true;
-    el.scrollTo({ top: wheelScrollFor(i, rowHeightOf(el)), behavior: scrollBehavior() });
+    el.scrollTo({ top: wheelScrollFor(i, pitchRef.current), behavior: scrollBehavior() });
   };
   const lockNow = (): void => dispatch(wheelLockActions(liveRef.current.state, idxRef.current));
 
@@ -308,7 +319,7 @@ export function WheelCard({ state, dispatch }: { state: WheelState; dispatch: Di
         </div>
 
         <div style={{
-          position: "relative", height: WHEEL_ITEM_H * 5, width: 190, overflow: "hidden",
+          position: "relative", height: rowH * 5, width: 190, overflow: "hidden",
           borderRadius: 12, background: SLATE, border: "3px solid #8a7a58",
           boxShadow: "inset 0 2px 10px rgba(0,0,0,0.35)",
         }}>
@@ -319,7 +330,7 @@ export function WheelCard({ state, dispatch }: { state: WheelState; dispatch: Di
             aria-label="Zahlenrad"
             style={{
               height: "100%", overflowY: "scroll", scrollSnapType: "y mandatory",
-              paddingTop: WHEEL_ITEM_H * 2, paddingBottom: WHEEL_ITEM_H * 2,
+              paddingTop: rowH * 2, paddingBottom: rowH * 2,
               scrollbarWidth: "none", touchAction: "pan-y",
             }}
           >
@@ -330,7 +341,7 @@ export function WheelCard({ state, dispatch }: { state: WheelState; dispatch: Di
                 aria-selected={state.values[state.index] === v}
                 onClick={() => pickRow(i)}
                 style={{
-                  height: WHEEL_ITEM_H, display: "flex", alignItems: "center", justifyContent: "center",
+                  height: rowH, display: "flex", alignItems: "center", justifyContent: "center",
                   scrollSnapAlign: "center", cursor: "pointer", color: CHALK_DIM, fontSize: 17,
                   fontWeight: 700, fontFamily: "var(--font-display, inherit)", letterSpacing: 0.5,
                   transition: "font-size 120ms, color 120ms, opacity 120ms",
@@ -340,13 +351,15 @@ export function WheelCard({ state, dispatch }: { state: WheelState; dispatch: Di
               </div>
             ))}
           </div>
-          {/* Fibel's magnifier: a chalk ring drawn over the middle row */}
+          {/* Fibel's magnifier: a chalk ring drawn over the middle row. It sits
+              at TWO PITCHES down, the same pitch the index is computed with —
+              that identity is the whole fix (F-20). */}
           <div style={{
-            position: "absolute", top: WHEEL_ITEM_H * 2, left: 10, right: 10, height: WHEEL_ITEM_H,
+            position: "absolute", top: rowH * 2, left: 10, right: 10, height: rowH,
             border: `2px solid ${CHALK}`, borderRadius: 22, pointerEvents: "none", opacity: 0.85,
           }} />
-          <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: WHEEL_ITEM_H * 1.6, background: `linear-gradient(${SLATE}, transparent)`, pointerEvents: "none" }} />
-          <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: WHEEL_ITEM_H * 1.6, background: `linear-gradient(transparent, ${SLATE})`, pointerEvents: "none" }} />
+          <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: rowH * 1.6, background: `linear-gradient(${SLATE}, transparent)`, pointerEvents: "none" }} />
+          <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: rowH * 1.6, background: `linear-gradient(transparent, ${SLATE})`, pointerEvents: "none" }} />
         </div>
       </div>
 

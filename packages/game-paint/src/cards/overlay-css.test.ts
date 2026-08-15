@@ -8,6 +8,8 @@
 // other — every animated class is killed, and nothing is killed that is not
 // animated (a stale entry is how a kill list quietly stops meaning anything).
 import { describe, expect, it } from "vitest";
+import fs from "node:fs";
+import path from "node:path";
 import {
   CARD_ENTER_DELAY_MS, CARD_ENTER_MS, IRIS_B_DELAY_MS, IRIS_B_MS, IRIS_MS,
   PAINT_OVERLAY_CSS, QUICKFIRE_MS,
@@ -529,5 +531,120 @@ describe("R5-W3 · J2 · R21 · the hand, and where it stops (Kokis D2-Kanon)", 
     for (const dead of [".pb-portrait", ".pb-treasure-plate"]) {
       expect(PAINT_OVERLAY_CSS, `${dead} came back`).not.toContain(`${dead} {`);
     }
+  });
+});
+
+// ── R5-W4 · D3 · D-105 · THE STYLESHEET IS WELL-FORMED ──────────────────────
+//
+// This file shipped a stray `}` after the reduced-motion block. Nothing caught
+// it and nothing could: the stylesheet is ONE template literal, so `tsc` sees a
+// string, every check in this file matches with regexes that do not care about
+// nesting, and a browser silently discards a top-level `}` and carries on. It
+// was found by counting braces by hand — which is exactly the kind of check a
+// person does once and a machine should do forever.
+//
+// The count runs on the CSS with comments stripped, because a comment may of
+// course contain a brace, and it also walks the depth so an EARLY stray close
+// (the dangerous case: it would end a block sooner than the author meant and
+// quietly re-scope everything after it) is reported at the line it happens on
+// rather than as a total at the end.
+describe("R5-W4 · D3 · D-105 · the stylesheet's braces balance", () => {
+  // comments out, LINE COUNT kept: a report that names a line the reader cannot
+  // find in the file is a report they have to redo by hand
+  const withoutComments = (css: string): string =>
+    css.replace(/\/\*[\s\S]*?\*\//g, (c) => "\n".repeat((c.match(/\n/g) ?? []).length));
+
+  /** how many lines of TypeScript sit above the template literal, so the number
+   *  this test prints is the line the reader opens the FILE at */
+  const headerLines = (): number => {
+    // NOT indexOf(PAINT_OVERLAY_CSS): the literal interpolates its timing
+    // constants, so the runtime string never appears verbatim in the source.
+    // The line the literal OPENS on is the stable anchor.
+    const src = fs.readFileSync(path.resolve(__dirname, "./overlay-css.ts"), "utf8");
+    const lines = src.split("\n");
+    // `at` is 0-based, and the literal's first line is the (empty) remainder of
+    // the line the backtick opens on — so CSS line 1 IS that file line.
+    const at = lines.findIndex((l) => /PAINT_OVERLAY_CSS\s*=\s*`/.test(l));
+    return at < 0 ? 0 : at;
+  };
+
+  it("never closes a block that was not open, and ends at depth zero", () => {
+    const lines = withoutComments(PAINT_OVERLAY_CSS).split("\n");
+    const offset = headerLines();
+    let depth = 0;
+    let firstNegative: number | null = null;
+    for (let i = 0; i < lines.length; i++) {
+      for (const ch of lines[i]!) {
+        if (ch === "{") depth++;
+        else if (ch === "}") {
+          depth--;
+          if (depth < 0 && firstNegative === null) firstNegative = i + 1 + offset;
+        }
+      }
+    }
+    expect(firstNegative, "a `}` closes a block that was never opened — overlay-css.ts line").toBe(null);
+    expect(depth, "the stylesheet ends inside an unclosed block").toBe(0);
+  });
+
+  it("the reduced-motion block is the LAST thing in the file, and there is exactly one", () => {
+    // P-78: a second block is how a kill list silently splits in two.
+    const blocks = [...PAINT_OVERLAY_CSS.matchAll(/@media\s*\(prefers-reduced-motion/g)];
+    expect(blocks.length, "more than one reduced-motion block").toBe(1);
+    expect(PAINT_OVERLAY_CSS.trimEnd().endsWith("}"), "the file no longer ends on a closing brace").toBe(true);
+  });
+});
+
+// ── R5-W4 · D3 · the three surfaces this packet changed ─────────────────────
+describe("R5-W4 · D3 · the caption, the focus and the edge slot", () => {
+  it("the picture's caption is readable type, not small print (Koki, 15 Aug)", () => {
+    const cap = baseRule(PAINT_OVERLAY_CSS, "pb-cap");
+    expect(cap, "the caption class is gone").not.toBe("");
+    const size = Number(/font-size:\s*([\d.]+)px/.exec(cap)?.[1] ?? 0);
+    expect(size, "the caption fell back under the readable floor").toBeGreaterThanOrEqual(15);
+    // …and the quiet layer did NOT come with it: the hint lines under a dial are
+    // quiet by design, and growing them would flatten D1's glance grammar.
+    const quiet = Number(/font-size:\s*([\d.]+)px/.exec(baseRule(PAINT_OVERLAY_CSS, "pb-quiet"))?.[1] ?? 0);
+    expect(quiet).toBeLessThan(size);
+  });
+
+  it("the focus veil is deeper than the plain one, and still lit over its subject", () => {
+    const focus = baseRule(PAINT_OVERLAY_CSS, "pb-veil.pb-veil-focus") || (() => {
+      const m = /\.pb-veil\.pb-veil-focus\s*\{([^}]*)\}/.exec(PAINT_OVERLAY_CSS);
+      return m?.[1] ?? "";
+    })();
+    expect(focus, "the focus mode is gone").not.toBe("");
+    expect(focus, "the focus veil stopped aiming at the being").toContain("var(--pb-focus");
+    // every alpha in the focus veil outruns the plain veil's deepest stop (0.56)
+    const alphas = [...focus.matchAll(/rgba\([^)]*?,\s*([\d.]+)\)/g)].map((m) => Number(m[1]));
+    expect(alphas.length).toBeGreaterThanOrEqual(3);
+    expect(Math.min(...alphas), "the focus veil is no darker than the plain one").toBeGreaterThan(0.4);
+    expect(Math.max(...alphas), "the world is not taken far enough down").toBeGreaterThanOrEqual(0.9);
+    // but never all the way out: the card is always ABOUT something over there
+    expect(Math.max(...alphas), "the world is switched off entirely").toBeLessThan(1);
+  });
+
+  it("the painted-edge slot is present and inert until the sheet lands (R63)", () => {
+    const card = baseRule(PAINT_OVERLAY_CSS, "pb-card");
+    expect(card).toContain("--pb-edge-image: none");
+    expect(PAINT_OVERLAY_CSS).toContain("border-image-source: var(--pb-edge-image)");
+    // inert means inert: while the token is none, the hand-weighted border is
+    // still what draws, so the four different widths must survive untouched
+    expect(card, "the hand lost its four widths").toMatch(/border-width:\s*calc/);
+  });
+
+  it("the sheets under the card are countable — two of them, each with its own edge (R62)", () => {
+    const card = baseRule(PAINT_OVERLAY_CSS, "pb-card");
+    expect(card).toContain("--pb-sheet-face");
+    expect(card).toContain("--pb-sheet-edge");
+    const shadow = /box-shadow:\s*([^;]*);/.exec(card)?.[1] ?? "";
+    expect((shadow.match(/--pb-sheet-face/g) ?? []).length, "not two sheets").toBe(2);
+    expect((shadow.match(/--pb-sheet-edge/g) ?? []).length, "the sheets lost their ink lines").toBe(2);
+    // the cast must sit OUTSIDE the stack it now belongs to, or the stack reads
+    // as a shadow with lines in it rather than as pages
+    const castX = Number(/([\d]+)px\s+[\d]+px\s+0\s+-?\d+px\s+var\(--pb-ink-cast\)/.exec(shadow)?.[1] ?? 0);
+    const sheetX = [...shadow.matchAll(/([\d]+)px\s+[\d]+px\s+0\s+-?\d+px\s+var\(--pb-sheet-face\)/g)]
+      .map((m) => Number(m[1]));
+    expect(sheetX.length).toBe(2);
+    expect(castX, "the cast fell inside the stack").toBeGreaterThan(Math.max(...sheetX));
   });
 });
