@@ -1815,10 +1815,15 @@ function Overlay({
         {/* the wording is untouched — copy is C1's lane; only its RANK moved */}
         <Key>Du hast {letters} <PaintedIcon name="spark" size={22} /> — {can ? "bezahlen?" : `sammle erst ${price}!`}</Key>
         <p className="pb-quiet" style={{ margin: "0 0 12px" }}>
-          {/* Rebase-Merge: C1s typografischer Schluss („…“), nicht das
-              ASCII-Zeichen — das Zitat-Gesetz in check-paint-copy prüft genau
-              das, und C1 ist die Copy-Spur. */}
-          <KeyBit>Klecks</KeyBit> grinst: „{price} Buchstaben, und die Tür ist deine. Drinnen warten {bonusTotal} — schaffst du alle, bevor die Tinte trocknet?“
+          {/* R5-W4 · C2 · F-22. Koki, on this card: „Klecks grinst … wer ist das,
+              was ist das? Die Kinder an der Hand nehmen — nicht in dieser
+              aufgesetzten Sprache." He was right twice over: the card never said
+              who Klecks IS (he appears here and nowhere else in the chapter), and
+              it never said what the room is FOR. So the line now does three
+              plain jobs in order — who he is, what the deal is, what the clock
+              is — and the grin is gone; a quip is not an introduction.
+              Every number is still READ from the data (PB-R1 · R3-2). */}
+          Das ist <KeyBit>Klecks</KeyBit>. Er wohnt hinter der Tür und sammelt Buchstaben. Für {price} lässt er dich hinein — drinnen liegen {bonusTotal} neue, und die Tinte trocknet dabei.
         </p>
         {can && <button className="pb-btn-primary" style={btn} onClick={() => onPay(price)}>{price} zahlen &amp; rein</button>}
         <button className="pb-btn-ghost" style={{ ...btn, marginLeft: can ? 10 : 0 }} onClick={() => onDismiss(o)}>Später</button>
@@ -1883,7 +1888,16 @@ function Overlay({
                 anderen Kapitel falsch wäre). */}
             <p className="pb-quiet" style={{ margin: "0 0 4px" }}>Die Farbe strömt zurück — <KeyBit>{captiveDe}</KeyBit> ist wieder da!</p>
             <Key en>„Hello! I'm Merle. Thanks!“</Key>
-            <p className="pb-quiet" style={{ margin: "0 0 12px" }}>(Hallo! Ich bin Merle. Danke!) — Sie bleibt in der Klasse und winkt dir zu.</p>
+            {/* R5-W4 · C2 · F-18 / R49. „Sie bleibt in der Klasse und winkt dir
+                zu." was true of the OLD world only: doc 44 §1's „redemption
+                changes state, never presence" was read as „she stands still",
+                and Koki's replay asked for the opposite — she should move
+                through her room. The ruling (R49) is: the freed stay in THEIR
+                room and move inside it. So the line drops the standing-and-
+                waving pose and says the state, which is true whether F5's roam
+                zone has landed yet or not: she is back, and she is in the class.
+                Nothing here claims a motion the world may not be playing. */}
+            <p className="pb-quiet" style={{ margin: "0 0 12px" }}>(Hallo! Ich bin Merle. Danke!) — Sie ist wieder da und bleibt in der Klasse.</p>
           </>
         ) : (
           // R5-C1 (Koki's replay, 07:26:41): this said „Ein Buchstaben-Wesen
@@ -2003,13 +2017,26 @@ function Overlay({
         {/* Rebase-Merge: C1s Phrasen-Zeile bleibt, der Satz darunter zieht in
             D1s <Key> — beides ist additiv, keins ersetzt das andere. */}
         <Key>
+          {/* R5-W4 · C2 · F-22. Koki, on this card: „12 von 12 School Things —
+              warum School Things? Sticker auf die Karte — nicht erklärt,
+              random." Both faults are the same fault: the card announced a
+              RESULT and never said what the room had been for. It now says what
+              the letters DO (they spell the word drawn right above this line)
+              and where the sticker goes (into the book the child is inside).
+              The word itself is deliberately NOT typed here: this shell serves
+              all fifteen chapters and `b.phrase` carries whichever word the
+              chapter laid out, so a typed „SCHOOL THINGS" would be a caption
+              that goes stale the first time a chapter spells something else —
+              the letter-honesty law (doc 41 §7) applied to a word instead of a
+              number. „Klecks zwinkert" is gone with the grin on his other card. */}
           {perfect
             // R5-C1 (B-p9-5): the seconds the child had left over — the room's
             // only bragging right, and it was sitting in `bonusState()` unused.
-            ? `PERFEKT! Klecks stempelt dir einen Sticker auf die Karte — mit ${b.secsLeft} Sekunden übrig!`
+            // It stays: the ink clock the child just watched is its context.
+            ? `Alle ${b.total} Buchstaben gefunden — zusammen ergeben sie das Wort da oben. Dafür klebt dir Klecks einen Sticker ins Buch, mit ${b.secsLeft} Sekunden übrig!`
             : b.timeout
-              ? `Die Tinte ist getrocknet — ${b.got} von ${b.total}. Klecks zwinkert: „Komm wieder!“`
-              : `${b.got} von ${b.total} — Klecks zwinkert: „Fast! Komm wieder!“`}
+              ? `Die Tinte ist getrocknet — ${b.got} von ${b.total} Buchstaben. Die Lücken oben bleiben offen. Komm wieder!`
+              : `${b.got} von ${b.total} Buchstaben — die Lücken oben bleiben offen. Komm wieder!`}
         </Key>
         <div style={{ height: 12 }} />
         <button className="pb-btn-primary" style={btn} onClick={() => onDismiss(o)}>Weiter</button>

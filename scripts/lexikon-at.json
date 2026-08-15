@@ -1,0 +1,84 @@
+{
+  "schema": "lexikonAt@1",
+  "note": "R5-W4 · C2 · DIE MASCHINEN-FORM DES ÖSTERREICHISCHEN LEXIKONS. Gelesen von scripts/check-copy-register.mjs. Die PROSA-Fassung ist docs/design/g1/paint/LEXIKON_AT.md und gehört Session K2 — diese Datei spiegelt sie, sie ersetzt sie nicht. Warum zwei Dateien: eine Markdown-Tabelle zu parsen ist brüchig (eine Spalte verschoben und das Tor liest Unsinn, ohne rot zu werden), und K2 mergt VOR C2, ist beim Bau dieser Datei aber noch nicht auf main. Die Kopplung steht deshalb im Tor: sobald LEXIKON_AT.md existiert, muss JEDER Kern-Begriff von hier auch dort stehen — sonst rot. Solange die Datei fehlt, sagt das Tor das in einer eigenen Zeile, nie stillschweigend.",
+  "prosaQuelle": "docs/design/g1/paint/LEXIKON_AT.md",
+  "geltung": "NUR Spielzeilen — die Karten, die Level-Copy und die deutschen Zeilen der Spiel-Hülle. NICHT der Korpus (content/corpus/units/**): dort führt die Wortbank die Übersetzungs-Glosse (pencil case → Federmäppchen), und die gehört G3. Zwei Listen, zwei Zuständigkeiten; wo sie sich widersprechen, gewinnt für SPIELZEILEN diese hier (K2-Passover §6a).",
+  "belegSchluessel": {
+    "live": "In einer Zeile gefunden, die C2 am 2026-08-15 geändert hat — die Klasse ist aus dem echten Fehler abgeleitet, nicht erfunden.",
+    "lexikon": "Aus K2s Lexikon-Auftrag übernommen, im Spiel heute nicht vorgekommen — vorbeugend, damit die nächste Session nicht neu hineinläuft."
+  },
+  "eintraege": [
+    {
+      "kern": "Füllfeder",
+      "at": "die Füllfeder",
+      "verboten": ["Füller"],
+      "belegt": "live",
+      "bemerkung": "Koki: »Der Füller ist eher deutsch, Füllfeder sagt man in Österreich — ALLE Beschreibungen österreichisch.« Drei Zeilen getroffen (enc.pen.r1 showsDe + hints.deWord, enc.pen.k1/k2 showsDe). Die Wortbank glosst pen → Kugelschreiber; das ist die Korpus-Seite und bleibt G3s."
+    },
+    {
+      "kern": "Radiergummi",
+      "at": "der Radiergummi",
+      "verboten": ["Radierer"],
+      "belegt": "lexikon",
+      "bemerkung": "Im Spiel stand nie »Radierer«, aber die Umschreibung »der kleine Hüpfer« — dieselbe Wunde von der anderen Seite. Das Muster epitheton-statt-nomen unten deckt sie ab."
+    },
+    {
+      "kern": "Federpennal",
+      "at": "das Federpennal",
+      "verboten": ["Federtasche", "Federmäppchen", "Mäppchen"],
+      "belegt": "live",
+      "bemerkung": "Zwei Zeilen getroffen (enc.ranzen.q1 storyDe, enc.ranzen.q3 hints.deDesc — beide sagten »Federtasche«). Keen sagte schon »Federpennal«, die Karten sagten etwas anderes. Die Wortbank-Glosse »Federmäppchen« bleibt im Korpus stehen."
+    },
+    {
+      "kern": "Schultasche",
+      "at": "die Schultasche",
+      "verboten": ["Ranzen", "Schulranzen"],
+      "belegt": "lexikon",
+      "bemerkung": "Der Skin heißt intern `ranzen` und darf so heißen — deshalb prüft dieses Tor GROSS-geschriebene Nomen. Ein deutsches Nomen ist im Satz groß, eine Kennung im Code klein; das ist der Unterschied, an dem die Regel hängt."
+    },
+    {
+      "kern": "Klebestift",
+      "at": "der Klebestift / der Uhu-Stick",
+      "verboten": [],
+      "belegt": "live",
+      "bemerkung": "Koki nennt ihn »Uhu-Stick«, und so heißt er im Hinweis. Auf der Karte enc.obj-gluestick.r1 steht »der Klebestift«, weil die englische Antwort `glue stick` heißt und »Uhu-Stick« das Antwortwort `stick` im eigenen Namen trägt (Schicht 18a hat es gemessen). K2s Lexikon führt beide Namen; C2 entscheidet je Zeile — hier entschieden."
+    },
+    {
+      "kern": "Spitzer",
+      "at": "der Spitzer",
+      "verboten": [],
+      "belegt": "live",
+      "bemerkung": "Koki: »ein kleiner Kasten — der Spitzer, so heißen die in Österreich, deswegen musst du das nachschauen.« Die Karte sagte »Ein kleiner Kasten liegt grau im Hof«."
+    },
+    {
+      "kern": "Stuhl",
+      "at": "der Stuhl",
+      "verboten": [],
+      "belegt": "lexikon",
+      "bemerkung": "SPANNUNG, im Report an Fable gemeldet: die Wortbank glosst chair → [Stuhl, Sessel], K2s Lexikon führt »der Sessel« als AT-Erstwahl, die ratifizierte Insassen-Tabelle (STORY_SPINE_CH01 §2) sagt »der Stuhl«. Der Spine gewinnt, weil EIN Ding EIN Wort quer über alle Karten trägt; »Sessel« ist zulässige Zweitform, kein Verbot."
+    }
+  ],
+  "muster": [
+    {
+      "id": "epitheton-statt-nomen",
+      "re": "kleine[rn]? (Hüpfer|Stift|Kasten)",
+      "felder": ["showsDe"],
+      "belegt": "live",
+      "warum": "Koki: »Der kleine Hüpfer? Das ist der Radiergummi — wir sollen auf Deutsch genau beschreiben, was es ist.« Drei Karten umschrieben ihr Wesen, statt es zu nennen (eraser, obj_gluestick, obj_sharpener). Die Umschreibung war kein Stil, sondern ein Ausweichen vor Schicht 18b — jetzt ist das Nennen Pflicht (Obligation nounDe) und die Umschreibung verboten."
+    },
+    {
+      "id": "gleichnis-in-der-farbzeile",
+      "re": "\\bwie\\b",
+      "felder": ["colourAskDe"],
+      "belegt": "live",
+      "warum": "R47. Koki: »Ich war rot wie ein Apfel — aufgesetzt, forced, sparen wir uns.« Neun Karten trugen das Gleichnis, weil eine Obligation es verlangte. Die Obligation ist ersetzt; dieses Muster hält die Zeilen frei, auch wenn jemand später von Hand eine neue schreibt. Das Muster ist BEWUSST ein nacktes »wie«: die erste Fassung verlangte einen Artikel danach und übersah damit zwei der neun Zeilen, die sie abschaffen sollte (»wie warmes Holz«, »wie frisches Brot« — dort steht ein Adjektiv). In einer Farbzeile hat das Wort keine andere Aufgabe als den Vergleich."
+    },
+    {
+      "id": "schweizer-ss",
+      "re": "\\b(heisst|heissen|begrüsse|begrüssen|gross|grosse|weiss|weisse|Strasse|Fuss|schliesse|schliessen|draussen)",
+      "felder": ["*"],
+      "belegt": "live",
+      "warum": "Österreichisches Standarddeutsch schreibt ß, nicht ss — »heißt«, »Begrüße«, »groß«. Zwei Zeilen trugen die Schweizer Form (door.p1.d3 hints.deWord »Wie heisst du?«, door.p3.d2 storyDe »Begrüsse es«) neben einem korrekten »Gruß« im selben File; das war Unachtsamkeit, keine Konvention. Korrekte ss-Wörter (muss, dass, Fluss, Kuss) stehen absichtlich NICHT in der Liste — sie wären falsche Alarme."
+    }
+  ]
+}

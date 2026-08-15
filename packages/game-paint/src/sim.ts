@@ -625,7 +625,14 @@ export class Sim {
     } else if (ctx.type === "door") {
       this.doorSolved.add(ctx.id);
       applyLinks(this.world, "opened", ctx.id);
-      events.push({ type: "toast", msg: "Die Tür freut sich!" });
+      // R5-W4 · C2 · R48: the toast said „Die Tür freut sich!" and Koki's reply
+      // was „Die Tür freut sich? Die geht einfach auf." The payoff is already on
+      // screen — `applyLinks(…, "opened")` opens the door in the same tick — so
+      // the line was a caption on a thing the child was watching happen, in a
+      // voice the chapter does not use. It is dropped rather than reworded: the
+      // Spine's own tone rule says a payoff clause belongs only where the world
+      // does NOT show it, and here the world does. („Die Tür wartet auf ihr
+      // Wort!" stays, at :1095 — that one covers something invisible.)
     } else if (ctx.type === "guardian") {
       const out = guardianKnotSolved(this.world, ctx.id);
       for (const ev of out) {
