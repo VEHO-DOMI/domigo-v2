@@ -608,17 +608,31 @@ export const FLIGHT_BAND_PX = 26;
 /** How wide each knot's shape is, in px either side of her flight centre.
  *  Escalating: the arena gets bigger as she gets angrier. Bounded by the arena
  *  itself — see FLIGHT_MARGIN_PX. */
-export const KNOT_SPAN_PX = [78, 92, 104] as const;
+// ── R5-W4 · H2 · DIE REIHEN GEHEN BIS FÜNF (D-83) ───────────────────────────
+// Alle drei Tabellen hier waren DREI Einträge lang, und `knotIndex` klemmte auf
+// 2 — die Stufen M (vier Schichten) und S (fünf) hätten ihre letzten Schichten
+// mit den Werten der dritten geflogen. Die Fortsetzung ist EXTRAPOLIERT, nicht
+// erfunden, und jede Reihe behält ihre eigene Bewegungsrichtung:
+//   Spannweite  78 → 92 → 104 (+14, +12) → 114 (+10) → 122 (+8)  — wächst,
+//               aber immer träger, weil FLIGHT_MARGIN_PX und die Bühne die
+//               obere Schranke setzen (Prüfung: guardian-flight.test.ts).
+//   Periode    300 → 260 → 220 (−40) → 190 (−30) → 165 (−25)     — schrumpft,
+//               ebenfalls gedämpft: eine Bahn, die schneller wird als das Kind
+//               lesen kann, ist keine Eskalation mehr, sondern ein Würfel.
+//   Rate         1 → 0,85 → 0,72 (×0,85 / ×0,847) → 0,61 → 0,52  — dieselbe
+//               geometrische Reihe fortgesetzt (×0,85), und TELEGRAPH_FLOOR_TICKS
+//               fängt sie unten ab, damit kein Tell unter 500 ms fällt.
+export const KNOT_SPAN_PX = [78, 92, 104, 114, 122] as const;
 /** How long one full pass of a knot's path takes, in ticks (5.0 s / 4.3 s /
  *  3.7 s at 60 Hz). TASTE: the absolute values are feel; what is NOT taste is
  *  that they shorten — doc 44 asks for „three knots, escalating", and a path
  *  the child has already learned has to arrive faster to stay a fight. */
-export const KNOT_PERIOD_TICKS = [300, 260, 220] as const;
+export const KNOT_PERIOD_TICKS = [300, 260, 220, 190, 165] as const;
 /** How much faster her CLOCKS run per knot (throw rate and telegraph alike),
  *  as a multiplier on the tier script. The telegraph is clamped by
  *  TELEGRAPH_FLOOR_TICKS afterwards, so this can never buy speed with fairness.
  *  TASTE: 15 % then 28 % — one step the child feels, one they brace for. */
-export const KNOT_RATE = [1, 0.85, 0.72] as const;
+export const KNOT_RATE = [1, 0.85, 0.72, 0.61, 0.52] as const;
 /** How close to the arena's edge her flight centre may drift, in px. Keeps a
  *  full-span path inside the stage instead of half-off it. */
 export const FLIGHT_MARGIN_PX = 24;
@@ -754,11 +768,21 @@ export const SKID_FROM_KNOT = 2;
 
 /** Wie schnell eine gelandete Scherbe rutscht, in subs/Tick.
  *
- *  ABGELEITET als Mitte der beiden Gangarten des Kindes: schneller als Gehen,
- *  damit Weggehen aufhört, die ganze Antwort zu sein — langsamer als Laufen,
- *  weil das Examen nie eine Fähigkeit VERLANGT, die es als Kür gelehrt hat
- *  (arena.md §1: kein run als Pflicht). Springen bleibt die Antwort. */
-export const SKID_SPEED = Math.round((PAINT.walkMax + PAINT.runMax) / 2 / 2);
+ *  ── R5-W4 · H2 · DIE SCHERBE HOLT DAS KIND JETZT WIRKLICH EIN (D-86) ───────
+ *  Die alte Herleitung — »Mitte der beiden Gangarten, dann halbiert« — stammt
+ *  aus einem Zwei-Tempo-Modell, das es nicht mehr gibt. Ausgerechnet ergab sie
+ *  **0,875 px/t** gegen ein Kind, das in diesem Kapitel mit **2,25 px/t** läuft:
+ *  die Scherbe war zweieinhalbmal langsamer als ihr Ziel und hat es nie erreicht.
+ *  Damit tat sie genau das nicht, wofür sie gebaut wurde — »Weggehen ist die
+ *  ganze Antwort« zu beenden (K1s Amendment A2 im Arena-Dossier, dort als
+ *  offener Befund an Architekt und Koki gemeldet).
+ *
+ *  Sie rutscht deshalb mit dem TEMPO DES KINDES. Nicht schneller: eine Scherbe,
+ *  die einholt, obwohl man wegläuft, wäre eine Strafe fürs Laufen. Genau gleich
+ *  schnell heißt: Weglaufen verschafft Abstand, aber keinen Ausweg — der Ausweg
+ *  ist der Sprung, und der ist die Fähigkeit, die diese Arena prüft (arena.md
+ *  §1: kein run als Pflicht, Springen als Antwort). */
+export const SKID_SPEED = PAINT.runMax;
 
 /** R5-W2 · H1 · DER KNOTEN-TAKT — wie lange sie den gelösten Knoten hält.
  *

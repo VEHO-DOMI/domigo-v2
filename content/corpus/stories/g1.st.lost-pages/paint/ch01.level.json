@@ -560,7 +560,6 @@
     "r": 11,
     "tier": "E",
     "params": {
-     "knots": 3,
      "stageMinC": 5,
      "stageMaxC": 30
     }

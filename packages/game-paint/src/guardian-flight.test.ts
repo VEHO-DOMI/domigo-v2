@@ -24,6 +24,7 @@ import {
   KNOT_SPAN_PX,
   GUARDIAN_SCRIPT,
   KNOT_PERIOD_TICKS,
+  KNOT_RATE,
   SHARD_REACH_Y_PX,
   SHARD_TICKS,
   SKID_SPEED,
@@ -46,7 +47,7 @@ import {
   guardianPitchRad, guardianRollScaleX,
 } from "./anim.ts";
 import { GUARDIAN_RIG_CELLS } from "./artManifest.ts";
-import { KNOT_PATHS, flightUnitAt, pathForKnot } from "./flight.ts";
+import { BOLT_SHORT, KNOT_PATHS, ZIG_TEETH, flightUnitAt, pathForKnot } from "./flight.ts";
 import { LOGICAL_H, PAINT, SUBS, TICK_MS, TILE } from "./paint.ts";
 import { cameraTargetY, clampScroll } from "./camera.ts";
 import type { EntitySpec, PaintLevel } from "./level.ts";
@@ -189,13 +190,86 @@ describe("the flying Tafel never wears the retired grounded easel (PB-F1)", () =
 // ── THE READABLE PATHS ──────────────────────────────────────────────────────
 describe("the three knot paths (doc 44 §4 ch01 C4)", () => {
   it("escalates spiral → figure-eight → zigzag, gentlest first", () => {
-    expect(KNOT_PATHS).toEqual(["spiral", "eight", "zigzag"]);
+    expect(KNOT_PATHS.slice(0, 3)).toEqual(["spiral", "eight", "zigzag"]);
     expect(pathForKnot(3, 3)).toBe("spiral"); // knot 1: full health
     expect(pathForKnot(2, 3)).toBe("eight");
     expect(pathForKnot(1, 3)).toBe("zigzag"); // knot 3: the last one
-    // a longer fight (tier S has five knots) never runs off the end
-    expect(pathForKnot(1, 5)).toBe("zigzag");
     expect(pathForKnot(5, 5)).toBe("spiral");
+  });
+
+  // ── R5-W4 · H2 · DIE ESKALATION HÖRT NICHT MEHR BEI DREI AUF (D-83) ───────
+  it("jede Stufe fliegt so viele VERSCHIEDENE Bahnen, wie sie Schichten hat", () => {
+    // Der Defekt in einem Satz: die Tabellen waren drei lang, `knotIndex`
+    // klemmte auf 2, und die vierte und fünfte Schicht der Stufen M und S
+    // bekamen die Werte der dritten. Für ch01 (Stufe E) folgenlos — für jedes
+    // Kapitel danach eine Eskalation, die in der Mitte stehen bleibt.
+    for (const tier of TIERS) {
+      const knots = GUARDIAN_SCRIPT[tier].knots;
+      const flown = new Set(Array.from({ length: knots }, (_, i) => pathForKnot(knots - i, knots)));
+      expect(flown.size, `Stufe ${tier}: ${knots} Schichten, aber nur ${flown.size} Bahnen`).toBe(knots);
+    }
+    expect(GUARDIAN_SCRIPT.S.knots, "Stufe S ist die längste Reihe, die es gibt").toBe(5);
+  });
+
+  it("und die vier Reihen sind GLEICH LANG — sonst klemmt eine still", () => {
+    // Die eigentliche Klasse hinter D-83: vier Tabellen, ein Index. Wer eine
+    // verlängert und die anderen vergisst, bekommt keinen Fehler, sondern eine
+    // Stufe, die halb eskaliert. Dieses Gesetz ist billiger als der Fund.
+    expect(KNOT_SPAN_PX.length).toBe(KNOT_PATHS.length);
+    expect(KNOT_PERIOD_TICKS.length).toBe(KNOT_PATHS.length);
+    expect(KNOT_RATE.length).toBe(KNOT_PATHS.length);
+    // …und keine Reihe darf kürzer sein als die längste Stufe
+    for (const tier of TIERS) expect(KNOT_PATHS.length).toBeGreaterThanOrEqual(GUARDIAN_SCRIPT[tier].knots);
+  });
+
+  it("die Reihen bewegen sich in EINE Richtung — Eskalation, keine Zufallszahlen", () => {
+    for (let i = 1; i < KNOT_PATHS.length; i++) {
+      expect(KNOT_SPAN_PX[i]!, "die Spannweite wächst").toBeGreaterThan(KNOT_SPAN_PX[i - 1]!);
+      expect(KNOT_PERIOD_TICKS[i]!, "die Periode schrumpft").toBeLessThan(KNOT_PERIOD_TICKS[i - 1]!);
+      expect(KNOT_RATE[i]!, "die Uhren ziehen an").toBeLessThan(KNOT_RATE[i - 1]!);
+    }
+    // …und gedämpft: kein Schritt ist grösser als der davor (sonst wäre die
+    // fünfte Schicht ein Sprung ins Unlesbare statt eine Steigerung)
+    for (let i = 2; i < KNOT_PATHS.length; i++) {
+      expect(KNOT_SPAN_PX[i]! - KNOT_SPAN_PX[i - 1]!)
+        .toBeLessThanOrEqual(KNOT_SPAN_PX[i - 1]! - KNOT_SPAN_PX[i - 2]!);
+      expect(KNOT_PERIOD_TICKS[i - 1]! - KNOT_PERIOD_TICKS[i]!)
+        .toBeLessThanOrEqual(KNOT_PERIOD_TICKS[i - 2]! - KNOT_PERIOD_TICKS[i - 1]!);
+    }
+  });
+
+  it("die zwei neuen Bahnen setzen die Reihe fort, statt sie zu wiederholen", () => {
+    // clover: der Achter mit einer dritten Schleife. Gemessen wird, was ein
+    // Kind wirklich unterscheidet — wie oft sie die Richtung wechselt, während
+    // sie einmal durchfliegt. (Erster Anlauf zählte Abtastpunkte nahe der
+    // Mitte: das misst die VERWEILDAUER dort, nicht die Zahl der Durchgänge,
+    // und ging prompt in die falsche Richtung, weil der Klee steiler
+    // durchfährt. Eine Zahl, die das Gegenteil ihrer Behauptung misst.)
+    const reversals = (p: Parameters<typeof flightUnitAt>[0]): number => {
+      const N = 4000;
+      let turns = 0;
+      let prev = flightUnitAt(p, 1 / N).fy - flightUnitAt(p, 0).fy;
+      for (let i = 1; i < N; i++) {
+        const d = flightUnitAt(p, (i + 1) / N).fy - flightUnitAt(p, i / N).fy;
+        if (d !== 0 && prev !== 0 && Math.sign(d) !== Math.sign(prev)) turns++;
+        if (d !== 0) prev = d;
+      }
+      return turns;
+    };
+    expect(reversals("clover"), "der Klee dreht öfter als der Achter")
+      .toBeGreaterThan(reversals("eight"));
+    // …und er geht durch die Mitte, wie der Achter auch
+    for (const u of [0, 0.5]) {
+      expect(flightUnitAt("clover", u).fx).toBeCloseTo(0, 9);
+      expect(flightUnitAt("clover", u).fy).toBeCloseTo(0, 9);
+    }
+    // bolt: der Zickzack mit ungleichen Zähnen — die Höhe wechselt, also lässt
+    // sich der nächste Zahn nicht mehr aus dem letzten ablesen.
+    const peak = (teeth: number): number[] =>
+      Array.from({ length: teeth }, (_, k) => Math.abs(flightUnitAt("bolt", (k + 0.5) / teeth).fy));
+    const peaks = peak(ZIG_TEETH);
+    expect(new Set(peaks.map((x) => x.toFixed(3))).size, "alle Zähne gleich hoch = derselbe Zickzack").toBeGreaterThan(1);
+    expect(Math.min(...peaks)).toBeCloseTo(BOLT_SHORT, 6);
   });
 
   it("every shape is CLOSED — she can trace it forever with no seam", () => {
@@ -1062,14 +1136,22 @@ describe("der Schwall — was landet, bleibt nicht liegen (Auftrag 2b)", () => {
     }
   });
 
-  it("am dritten Knoten rutscht sie — schneller als Gehen, langsamer als Laufen", () => {
+  it("am dritten Knoten rutscht sie — und HOLT das Kind ein (D-86)", () => {
+    // ── R5-W4 · H2 · WAS HIER FALSCH WAR ──────────────────────────────────
+    // Die alte Herleitung („Mitte der beiden Gangarten, dann halbiert") ergab
+    // 0,875 px/t gegen ein Kind, das in diesem Kapitel 2,25 px/t läuft. Die
+    // Scherbe war zweieinhalbmal langsamer als ihr Ziel — sie hat es nie
+    // erreicht, und damit tat sie genau das nicht, wofür sie gebaut wurde:
+    // „Weggehen ist die ganze Antwort" zu beenden. Das Gesetz prüfte damals
+    // nur `> walkMax/4`, also eine Schranke, die auch eine wirkungslose
+    // Scherbe nimmt. Jetzt prüft es die EIGENSCHAFT statt einer Zahl.
     const s = shardAfter(2, 30);
     expect(s, "keine Scherbe entstanden").toBeDefined();
     expect(Math.abs(s!.vx), "sie rutscht nicht").toBeGreaterThan(0);
-    // ABGELEITET aus den beiden Gangarten des Kindes: Weggehen darf aufhören zu
-    // genügen, aber das Examen verlangt nie das Laufen (arena.md §1).
-    expect(Math.abs(s!.vx)).toBeGreaterThan(PAINT.walkMax / 2 / 2);
-    expect(Math.abs(s!.vx), "sie ist schneller als ein rennendes Kind").toBeLessThan(PAINT.runMax);
+    expect(Math.abs(s!.vx), "eine Scherbe, die langsamer ist als das Kind, jagt niemanden")
+      .toBeGreaterThanOrEqual(PAINT.runMax);
+    expect(Math.abs(s!.vx), "…aber schneller als das Kind wäre eine Strafe fürs Laufen")
+      .toBeLessThanOrEqual(PAINT.runMax);
     expect(Math.abs(s!.vx)).toBe(SKID_SPEED);
   });
 
