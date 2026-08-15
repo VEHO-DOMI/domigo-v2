@@ -106,7 +106,8 @@
       "exampleSb": null,
       "cf": null,
       "forms": [
-        "desk"
+        "desk",
+        "desks"
       ],
       "taughtGloss": false
     },
@@ -154,7 +155,8 @@
       "exampleSb": null,
       "cf": null,
       "forms": [
-        "tablet"
+        "tablet",
+        "tablets"
       ],
       "taughtGloss": false
     },
@@ -171,7 +173,8 @@
       "exampleSb": null,
       "cf": null,
       "forms": [
-        "chair"
+        "chair",
+        "chairs"
       ],
       "taughtGloss": false
     },
@@ -187,7 +190,8 @@
       "exampleSb": null,
       "cf": null,
       "forms": [
-        "school bag"
+        "school bag",
+        "school bags"
       ],
       "taughtGloss": false
     },
@@ -283,7 +287,8 @@
       "exampleSb": null,
       "cf": null,
       "forms": [
-        "book"
+        "book",
+        "books"
       ],
       "taughtGloss": false
     },
@@ -348,7 +353,8 @@
       "exampleSb": null,
       "cf": null,
       "forms": [
-        "school tie"
+        "school tie",
+        "school ties"
       ],
       "taughtGloss": false
     },
@@ -428,7 +434,8 @@
       "exampleSb": null,
       "cf": null,
       "forms": [
-        "shoe"
+        "shoe",
+        "shoes"
       ],
       "taughtGloss": false
     },
@@ -629,7 +636,8 @@
       "cf": null,
       "forms": [
         "address",
-        "address email"
+        "address email",
+        "addresses"
       ],
       "taughtGloss": false
     },
@@ -1049,7 +1057,8 @@
       "exampleSb": "Look at the pictures.",
       "cf": null,
       "forms": [
-        "picture"
+        "picture",
+        "pictures"
       ],
       "taughtGloss": false
     },

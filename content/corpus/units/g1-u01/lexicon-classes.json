@@ -1,0 +1,44 @@
+{
+  "schema": "lexicon-classes@1",
+  "slug": "g1-u01",
+  "note": "R5-W4 · G3 (R59, D-89). Was eine Karte in `exercises` nennt, muss es geben. Wortbank-Einträge und Grammatik-Strukturen tragen ihre eigene ID; drei Wortgruppen der Unit aber werden GELEHRT, ohne je ein Wortbank-Eintrag zu sein — Zahlen, Farben, Höflichkeitsformeln. Sie standen deshalb bisher nur maschinenlesbar in scripts/game-tasks-variety-policy.json, also außerhalb des Korpus, obwohl der Korpus die einzige Englisch-Autorität ist. Hier stehen sie mit Buchbeleg. Jedes Wort unten ist im Unit-1-Transkript (content/build/transcripts/g1/) nachgezählt worden; kein Wort ohne Treffer. Die Policy darf enger sein als diese Liste (sie entscheidet, was eine Karte ANTWORTEN lassen darf), aber nie weiter — check-game-tasks.mjs erzwingt policy ⊆ corpus.",
+  "classes": {
+    "g1u01.x.numbers": {
+      "title": "Die Zahlen 1–25",
+      "why": "Der Kann-Vertrag der Unit (SB p. 8) nennt „the numbers 1–25\" als eigenes Lernziel. Die Rad-Karten des Kapitels und die Motten-Schwärme leben darauf, aber keine Zahl ist ein Wortbank-Eintrag.",
+      "evidence": [
+        "SB p. 10 ex. 6 „Listen. Then write the numbers.\" — die Abzeichen zeigen one … twenty-five",
+        "SB p. 10 ex. 7 „Look and count. Tick or correct the numbers.\"",
+        "WB p. 4 und p. 6 (Verweis „🔵 WB p. 4, 6\" am Fuß von SB p. 10)"
+      ],
+      "words": [
+        "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten",
+        "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen",
+        "eighteen", "nineteen", "twenty", "twenty-one", "twenty-two", "twenty-three",
+        "twenty-four", "twenty-five"
+      ]
+    },
+    "g1u01.x.colours": {
+      "title": "Die zehn Farben",
+      "why": "Der Kann-Vertrag der Unit (SB p. 8) nennt „10 words for colours\". Die Farbhälfte jeder restore-Karte ist die Kernmechanik des Kapitels — auch hier ist keine Farbe ein Wortbank-Eintrag.",
+      "evidence": [
+        "SB p. 12 ex. 12 b „Listen and colour.\" — die Zeile lautet verbatim: red yellow blue orange green brown pink white black grey",
+        "WB p. 4 (Verweis „🔵 WB p. 4\" am Fuß von SB p. 12) und WB p. 11 ex. 20"
+      ],
+      "words": [
+        "red", "yellow", "blue", "orange", "green", "brown", "pink", "white", "black", "grey"
+      ],
+      "narrowedByPolicy": "Die Varietäts-Policy führt neun dieser zehn: `grey` ist im Spiel der ENTFÄRBTE Zustand, den die Karte aufhebt, also nie eine Antwort. Das Buch lehrt es trotzdem — deshalb steht es hier und nicht dort."
+    },
+    "g1u01.x.politeness": {
+      "title": "Die Höflichkeitsformeln",
+      "why": "Die Unit eröffnet mit Begrüßen und Verabschieden (SB p. 8 „meet and greet people\"); die Formeln tragen den wiederkehrenden Ton des Kapitels, sind aber keine Wortbank-Einträge.",
+      "evidence": [
+        "WB p. 11 ex. 20 — die Wortliste zum Abhaken führt please, thank you, Hello!, Bye!",
+        "SB p. 8 Kann-Vertrag „meet and greet people\"",
+        "hi / thanks / sorry im Unit-1-Dialog belegt (SB und WB, je ≥1 Treffer)"
+      ],
+      "words": ["hello", "hi", "please", "thanks", "thank you", "sorry", "bye"]
+    }
+  }
+}

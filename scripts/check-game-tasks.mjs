@@ -866,6 +866,131 @@ function checkNoTwins(file, items) {
   }
 }
 
+/** 19 · WHAT A CARD CLAIMS TO EXERCISE MUST EXIST (R5-W4 · G3; R59, doc 45 D-89).
+ *
+ *  `exercises` is the coverage ledger's only input — law 17a counts a unit word
+ *  as ANSWERED the moment its id appears in one of these arrays. The schema
+ *  guarded the array (non-empty, no duplicates) and nothing else, so a name that
+ *  resolves to nothing was a silent pass in BOTH directions: the card claimed a
+ *  lesson it never taught, and the word it should have covered stayed invisible.
+ *  `qf.moths.*` shipped that way — pointing at `g1u01.x.numbers`, which no file
+ *  in the corpus defined.
+ *
+ *  Three registries may answer for an id, and they are separate on purpose:
+ *    · the unit's WORDBANK        — one entry per taught word
+ *    · the unit's STRUCTURES      — one entry per taught grammar structure
+ *    · the unit's LEXICON CLASSES — the taught word GROUPS that are no single
+ *      entry (numbers, colours, politeness). They live in the corpus, where the
+ *      English authority lives; the variety policy may name the same class to
+ *      NARROW it (grey is taught but never an answer) and is accepted as a
+ *      resolver so a class can be introduced from either side without a red day.
+ *
+ *  The narrowing is policed rather than trusted: a policy class may be a subset
+ *  of the corpus class, never wider. A policy word the unit does not teach is
+ *  exactly the drift this layer exists to catch. */
+function checkExercisesExist(file, items, reg) {
+  const w = path.basename(file);
+  for (const t of items) {
+    for (const id of t.exercises ?? []) {
+      const where = [];
+      if (reg.wordbankIds.has(id)) where.push("wordbank");
+      if (reg.structureIds.has(id)) where.push("structures");
+      if (reg.corpusClasses.has(id)) where.push("corpus lexicon class");
+      if (reg.policyClasses.has(id)) where.push("policy lexiconClass");
+      if (where.length === 0) {
+        fail(`${w}:${t.id}`, `19a · exercises names "${id}", which is defined nowhere — not a wordbank entry, not a grammar structure, not a lexicon class of ${reg.unitSlug}. A card that claims a lesson nothing defines teaches nothing and hides the word that should have covered it (R59, D-89)`);
+      }
+    }
+  }
+  // 19b · the policy may narrow a corpus class, never widen it
+  for (const [id, policyWords] of reg.policyClasses) {
+    const corpusWords = reg.corpusClasses.get(id);
+    if (corpusWords === undefined) continue;
+    const extra = policyWords.filter((x) => !corpusWords.has(x.toLowerCase()));
+    if (extra.length > 0) {
+      fail(`${w}:${id}`, `19b · the variety policy lets "${id}" answer [${extra.join(" · ")}], which the corpus class does not teach — a policy may narrow the corpus (grey is taught but never an answer), never widen it`);
+    }
+  }
+}
+
+/** Read the three registries for the unit a chapter teaches. Kept beside the law
+ *  so the selftest can hand it a fabricated registry and drive the real code. */
+function exerciseRegistry(unitSlug, chapter) {
+  const dir = `content/corpus/units/${unitSlug}`;
+  const readJson = (p) => (fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, "utf8")) : null);
+  const bank = readJson(`${dir}/wordbank.json`);
+  const grammar = readJson(`${dir}/grammar.json`);
+  const classes = readJson(`${dir}/lexicon-classes.json`);
+  const corpusClasses = new Map();
+  for (const [id, c] of Object.entries(classes?.classes ?? {})) {
+    corpusClasses.set(id, new Set((c.words ?? []).map((x) => x.toLowerCase())));
+  }
+  const policyClasses = new Map();
+  for (const [id, c] of Object.entries(policy.chapters?.[chapter]?.lexiconClasses ?? {})) {
+    policyClasses.set(id, c.words ?? []);
+  }
+  return {
+    unitSlug,
+    wordbankIds: new Set((bank?.entries ?? []).map((e) => e.id)),
+    structureIds: new Set((grammar?.items ?? []).map((i) => i.structureId)),
+    corpusClasses,
+    policyClasses,
+  };
+}
+
+// ── SELFTEST · layer 19 (own block, own red light) ──────────────────────────
+// House rule: a gate that has never been seen going red is a claim. Layer 19 is
+// two laws, so it gets two traitors — and, because a tamper that changes nothing
+// proves nothing, a NON-TAMPER that runs the REAL corpus of this repo through
+// the REAL function and must stay silent.
+if (process.argv.includes("--selftest")) {
+  const reg = (over = {}) => ({
+    unitSlug: "g1-u01",
+    wordbankIds: new Set(["g1u01.w.pen"]),
+    structureIds: new Set(["g1u01.s.imperatives"]),
+    corpusClasses: new Map([["g1u01.x.colours", new Set(["red", "grey"])]]),
+    policyClasses: new Map([["g1u01.x.colours", ["red"]]]),
+    ...over,
+  });
+  const run = (items, r = reg()) => {
+    captured = [];
+    checkExercisesExist("ch01.tasks.v2.json", items, r);
+    const out = captured;
+    captured = null;
+    return out;
+  };
+  const card = (exercises) => ({ id: "self.1", exercises });
+  const realReg = exerciseRegistry("g1-u01", "ch01");
+  const realItems = JSON.parse(
+    fs.readFileSync("content/corpus/stories/g1.st.lost-pages/paint/ch01.tasks.v2.json", "utf8"),
+  ).items;
+
+  const cases19 = [
+    ["an id nothing defines", run([card(["g1u01.x.numbers"])]), (m) => m.some((x) => /19a · .*defined nowhere/.test(x))],
+    ["a wordbank id resolves", run([card(["g1u01.w.pen"])]), (m) => m.length === 0],
+    ["a structure id resolves", run([card(["g1u01.s.imperatives"])]), (m) => m.length === 0],
+    ["a corpus lexicon class resolves", run([card(["g1u01.x.colours"])]), (m) => m.length === 0],
+    // a class the POLICY declares and the corpus does not is still a definition —
+    // this is what keeps a class introducible from either side without a red day
+    ["a policy-only class resolves", run([card(["g1u01.x.politeness"])], reg({ corpusClasses: new Map(), policyClasses: new Map([["g1u01.x.politeness", ["please"]]]) })), (m) => m.length === 0],
+    // 19b, in BOTH directions — this is the pair that separates right from
+    // plausibly-wrong: same class, same corpus, only the policy list moves
+    ["a policy narrower than the corpus is fine", run([card(["g1u01.x.colours"])]), (m) => m.length === 0],
+    ["…and the SAME class goes red once the policy adds a word the unit never taught", run([card(["g1u01.x.colours"])], reg({ policyClasses: new Map([["g1u01.x.colours", ["red", "purple"]]]) })), (m) => m.some((x) => /19b · .*purple/.test(x))],
+    // one typo's worth of difference, on a real id
+    ["a near-miss id (one letter) is not a definition", run([card(["g1u01.w.pens"])]), (m) => m.some((x) => /19a/.test(x))],
+    ["NON-TAMPER · the real 54 cards against the real corpus stay silent", run(realItems, realReg), (m) => m.length === 0],
+  ];
+  let bad19 = 0;
+  for (const [name, got, ok] of cases19) {
+    const pass = ok(got);
+    if (!pass) bad19++;
+    console.log(`  ${pass ? "✓" : "✗"} 19 · ${name}${pass ? "" : ` → ${JSON.stringify(got)}`}`);
+  }
+  if (bad19 > 0) { console.error(`check-game-tasks --selftest: ${bad19} layer-19 case(s) did NOT bite`); process.exit(1); }
+  console.log(`check-game-tasks --selftest: layer 19 OK — ${cases19.length} cases, both red lights seen, the real corpus still green`);
+}
+
 // ── SELFTEST (`--selftest`) — the red light of layer 18, seen once per class ──
 // Until today this gate had no tamper of its own: eighteen laws and not one
 // proof that any of them can go red. PB-15 is the reason the cases below look
@@ -1039,6 +1164,9 @@ for (const file of files) {
   checkGiveawayFamilies(file, parsed.data.items);
   checkNoTwins(file, parsed.data.items);
   checkPortraits(file, parsed.data.items);
+  // 19 · every `exercises` name resolves in the unit this chapter teaches (R59,
+  // D-89). Unit per chapter as everywhere else in this file: ch01 teaches g1-u01.
+  checkExercisesExist(file, parsed.data.items, exerciseRegistry("g1-u01", parsed.data.chapter));
   checkTimerPolicy(file, parsed.data.items);
   // 13-17 · THE VARIETY LAWS — one imported pass, so the gate, the audit doc and
   // the unit tests all compute the same numbers from the same code.

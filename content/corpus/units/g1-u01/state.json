@@ -176,6 +176,34 @@
       "contentHash": "56d9684d48f7f7014ab9860d9e867b8385df21ddf157aa557cce772c7daea5a8",
       "note": "trusted patch (mechanical): 7 answer-pool fix(es) [g1u01.gi.imperatives.ff.001, g1u01.gi.imperatives.tf.001, g1u01.gi.imperatives.tf.004, g1u01.gi.imperatives.tr.004, g1u01.gi.questions-personal-info.ec.002, g1u01.gi.questions-personal-info.ff.001, g1u01.gi.questions-personal-info.tr.001] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
       "at": "2026-07-12T11:30:31.301Z"
+    },
+    {
+      "state": "wordbank_review",
+      "by": "pipeline",
+      "contentHash": "6b8c1ede4887",
+      "note": "round 2 doc: 0 open flag(s)",
+      "at": "2026-08-15T10:35:11.567Z"
+    },
+    {
+      "state": "wordbank_draft",
+      "at": "2026-08-15T10:35:40.250Z",
+      "by": "pipeline",
+      "contentHash": "5f5da1237202e7d128b613a78f62b3fed7168271ca1997c6096e9d5184f01d73",
+      "note": "re-parse after later state — review impact"
+    },
+    {
+      "state": "wordbank_approved",
+      "by": "fable",
+      "contentHash": "5f5da1237202e7d128b613a78f62b3fed7168271ca1997c6096e9d5184f01d73",
+      "note": "round 2: 0 verdict(s), 9 edit(s), 0 drop(s), 0 add(s)",
+      "at": "2026-08-15T10:35:40.311Z"
+    },
+    {
+      "state": "approved",
+      "by": "g3",
+      "contentHash": "56d9684d48f7f7014ab9860d9e867b8385df21ddf157aa557cce772c7daea5a8",
+      "note": "R5-W4 · G3: die ITEM-Freigabe vom 2026-07-12 gilt unverändert weiter — die Runde davor hat nur die WORTBANK neu freigegeben (neun Pluralformen, D-75), kein Item wurde berührt. Diese Zeile stellt den wahren Ist-Zustand der Unit wieder her: `listApprovedUnits` (content-loader) liest ausschliesslich die LETZTE Transition und hatte g1-u01 sonst aus der ausgelieferten Liste geworfen (56 statt 57). Die Fragilität selbst ist als D-146 gefiled.",
+      "at": "2026-08-15T10:36:00.000Z"
     }
   ]
 }
