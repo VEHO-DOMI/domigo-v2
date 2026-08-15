@@ -279,6 +279,19 @@ dabei — die R5-Session verifiziert am Code, nie blind übernehmen (Specs rotte
   abgeblendet, die Karte steht im Zentrum — **kein** eigener Voll-Bildschirm-Modus und
   keine zweite Ansicht. Der Tether zur Weltstelle **bleibt**, damit das Kind weiß, wer
   gerade fragt. Damit ist das Tor zu.
+  **★★ GEBAUT (D3a, 2026-08-15, PR #301).** Als gebaut: die Welt steht während einer
+  Karte auf **14,5 % Luminanz**, der Tether bleibt. **★ BESTÄTIGT (Koki, 2026-08-15;
+  Ruling R101): 14,5 % bleiben** — ein Kritiker wollte 25–35 % („die Welt ist nicht
+  zurückgetreten, sie ist gelöscht"), Kokis Entscheid ist: fürs Erste so lassen und im
+  Spiel nachsehen. **★ AUSNAHME (Ruling R89, zweiter Teil): schmale Bühnen dürfen bis
+  12 % ausweichen** — mit der zentrierten Karte kann das fragende Wesen sonst teilweise
+  hinter der Karte liegen.
+  **★ OFFEN, mit Adresse (Ruling R89, erster Teil): die Antwort-Knöpfe stehen mit
+  1,07 : 1 auf ihrem eigenen Papier** (`#fffaea` auf `#fff2cd`, D3a gemessen). Ziel
+  **≥ 1,3 : 1**; der Fix gehört **D3b**, und die Schuld-Nummer vergibt D3b aus seinem
+  eigenen Block (D-210…219) — hier steht sie deshalb ohne Nummer, aber nicht ohne
+  Eigentümer. *(Zur Vermeidung eines alten Missverständnisses: „F-30" war die interne
+  Fund-Nummer aus D3s Passover, kein Eintrag dieses Ledgers.)*
 - **G2 · NAIVE DESIGN fürs Spiel.** Farben/Look der Karten kinder-freundlicher, nicht
   „corporate"; „it can be a bit messy — think of naive design"; das Spiel darf davon
   am meisten tragen; die Plattform folgt SPÄTER (eigenes Vorhaben, hier nur
@@ -348,13 +361,39 @@ Engagement-Modus-Richtung~~ (entschieden 2026-08-15, R52) · (aus #249
 fortbestehend: F22/G10-Klammer · 3 zählbare Räder · Timeout-Kosten · E6/M5/S4-Uhren ·
 Boss-Memory-Uhr · Lehrerin-Kanon + Boss-Swap-Vetos).
 
-**Neu aus Welle 4 (2026-08-15) — fünf Tore, Empfehlungen im BOOT-SHEET:** R41 Farb-Palette
+**Neu aus Welle 4 (2026-08-15) — fünf Tore, Empfehlungen im BOOT-SHEET:** ~~R41 Farb-Palette
 (die Ziel-Palette für die Codex-Bestellung AQ12: Buch rot · Uhu-Stick orange · Füllfeder
 gelb · Heft grün · Spitzer blau · Radiergummi rosa · Schultasche+Tisch braun · Schere
-orange) · R51 Reihenfolge der fünf Regel-Seiten · R44 stille Anker (Checkpoints ohne
-Zeremonie — statt „ganz weg") · Teeter-Pose: das RAUS ist entschieden (R46), offen ist
-allein, ob AAA-Balance-Zellen NEU bestellt werden · W2s Kriterien für den geprüften
+orange)~~ · R51 Reihenfolge der fünf Regel-Seiten · ~~R44 stille Anker (Checkpoints ohne
+Zeremonie — statt „ganz weg")~~ · ~~Teeter-Pose: das RAUS ist entschieden (R46), offen ist
+allein, ob AAA-Balance-Zellen NEU bestellt werden~~ · W2s Kriterien für den geprüften
 Rayman-Referenzsatz (v1 wird ausgeführt, Koki ergänzt).
+
+**★ Vier davon sind zu, eines steht noch offen (Stand 2026-08-15 abends, Rulings R67–R103):**
+
+* **Teeter/Balance — ZU (Ruling R68): NICHT nachbestellen.** Der Grund ist Material, nicht
+  Geschmack: W2s geprüfter Referenzsatz enthält **kein einziges Rayman-Balance-Bild**, die
+  Auftrags-Voraussetzung („Rayman hat Balance-Zellen") war also falsch. Ein Vorbild, das es
+  nicht gibt, kann man nicht treffen. Das RAUS aus R46 bleibt; drei Tore, die dieselbe
+  Frage stellten (W2-Tor 3 = F5-Tor 4 = Boot-Sheet-Tor 4), sind damit **ein** geschlossenes.
+* **Farb-Palette — ZU (Ruling R79): AQ12 ist neu zugeschnitten.** Importiert werden **Buch
+  rot · Radiergummi rosa · Stift gelb**; das **Heft NICHT** (es war schon grün), der
+  **Spitzer bleibt blau**. Nachgeschoben als **AQ12b** (Füllfeder als echte Füllfeder,
+  Schultasche braun) und **AQ12c** (die Schultasche des p3-Crushers hat einen eigenen
+  Blatt-Namen). Wer die Farbe einer Karte ändert, ändert das Blatt zuerst — die Karte folgt
+  dem gemessenen Blatt (R41).
+* **Stille Anker — ZU (Rulings R44 · R83):** Checkpoints sind stille Anker, und zwar in
+  **allen** Kapiteln; das Gesetz steht ab jetzt in doc 44 **§1.11**. Die **Neu-Platzierung**
+  der Anker ist ausdrücklich NICHT mitentschieden — sie bleibt ein Gespräch mit Koki.
+* **Regel-Seiten — ZU an der Zahl (Ruling R98): fünf bleiben fünf**, die Plural-Seite wird
+  nicht geteilt (eine sechste nur, wenn Koki es nach dem Spielen will → I2b, eigener PR).
+  **Offen bleibt allein die REIHENFOLGE der fünf Seiten (R51)** — das ist das eine Tor
+  dieses Blocks, das noch auf dich wartet.
+* **Regel-Seiten-Kontrast — ZU als Bestellung (Ruling R85):** der Kontrast-Loop steht bei
+  Strike 3, und der Grund ist Material, nicht Code — also **AQ16** („Regel-Seite in
+  gesättigter, kühler Eigenfarbe") statt einer vierten Glow-Runde. Merles Roam-Felder und
+  die Sims-Frage gehen in Welle 5; der Anfall gilt für **beide** Läufer (Bleistift p1,
+  Füllfeder p2).
 
 **Quelle:** Kokis Wortlaut-Transkript liegt der R5-Session bei (Scratchpad-Kopie; der
 blinde Abdeckungs-Check lief gegen den Wortlaut). Screenshots: Kokis Aufnahmen vom

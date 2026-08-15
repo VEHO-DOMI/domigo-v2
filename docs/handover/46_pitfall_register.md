@@ -39,6 +39,19 @@ Vorbild.
 Was durch einen Bau überholt ist, wird als *überholt* markiert und bleibt stehen.
 Eine Falle wandert ins große `P-`-Register, sobald sie ein zweites Programm beißt.
 
+**★ Ratifiziert 2026-08-15 (Ruling R70) — wie hier nummeriert wird.** Zwei Regeln, beide
+aus der Praxis der Welle 4 und beide vom Architekten bestätigt:
+1. **Dicht, lückenlos, in der Reihenfolge des Eintreffens.** Nummern werden **nicht**
+   reserviert und **nicht** übersprungen: das Tor `check-registers` erzwingt, dass jede
+   Zahl von 1 bis zur höchsten vorhanden ist — eine „freigehaltene" Nummer macht es rot.
+   Wer eine Falle meldet, die schon steht, bekommt **keine** neue Nummer, sondern eine
+   Zeile am bestehenden Eintrag plus (wenn er sie unter anderem Namen kannte) eine Zeile
+   in der Umrechnung unten. Genau so entstanden PB-44…51: vierzehn gemeldete Fallen,
+   **acht** Einträge, sechs Doppelungen.
+2. **Nummern vergibt ausschließlich die K-Bahn** (die Kanon-/Register-Session einer Welle).
+   Jede andere Session schreibt ihre Fallen als Text in ihren Report — sonst vergeben
+   zehn parallele Sessions dieselbe Zahl zehnmal.
+
 ## Umrechnung — alte P-Nummer → PB
 
 Wer eine ältere Passover-Zeile oder einen PR-Text mit `P-5x`/`P-6x` liest, findet hier

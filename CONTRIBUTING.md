@@ -87,17 +87,26 @@ Zeilenende** — die letzten zwei Bytes sind `"` und `}`. Das entspricht
 Python-`json.dump(..., ensure_ascii=False, indent=1)`, wie es die Skripte unter
 `scripts/story/` benutzen.
 
-**Es ist aber nicht reproduzierbar, und das ist der Grund für diese Regel.** Gegen einen
-frischen Dump weichen **elf Zeilen** ab (113–116, 306–308, 435–438): sie tragen fünf statt
-sechs Leerzeichen — von Hand nachgetragene `ausspracheDe`/`ankerEn`/`falscheFormEn`/
-`richtigeFormEn`-Felder in den `regelseite`-Objekten. Wer die Datei neu dumpt, schreibt
-diese elf Zeilen still um und erzeugt einen Diff, der mit der eigenen Änderung nichts zu
-tun hat.
+**Der Stand ist gemessen, nicht geglaubt (2026-08-15, Commit `3daaf47`; Ruling R73).**
+~~Bis zum 15.08. stand hier: „nicht reproduzierbar — gegen einen frischen Dump weichen elf
+Zeilen ab (113–116, 306–308, 435–438)".~~ Das galt und gilt nicht mehr: die elf Zeilen
+waren die von Hand nachgetragenen `ausspracheDe`/`ankerEn`/`falscheFormEn`/
+`richtigeFormEn`-Felder in den `regelseite`-Objekten, und **Session I2 hat genau diese
+Felder entfernt.** Heute ist die Datei **byte-identisch** zu ihrem eigenen Dump:
+**18 053 Bytes · 624 Zeilen · kein End-Newline · md5 `94b94950918d92c5ef74476daaa0f1f5`**.
 
-**Also: in der Datei editieren, nicht sie erzeugen.** Nachmessen, wenn du unsicher bist:
+**Die Regel bleibt trotzdem: in der Datei editieren, nicht sie erzeugen.** Sie hängt nicht
+an der Abweichung, sondern an drei Dingen, die ein Neu-Dump still zerstört: das fehlende
+End-Newline, die Ein-Leerzeichen-Einrückung und die echten UTF-8-Umlaute. Und sie hängt an
+der Arbeitsweise: in einer Welle, in der zehn Branches dieselbe Datei anfassen, ist ein
+komplett neu geschriebenes JSON ein Konflikt in jeder Zeile statt in der einen, die man
+geändert hat. **Byte-identisch heute heißt nicht dumpbar morgen** — die erste von Hand
+nachgetragene Zeile bricht es wieder.
+
+Nachmessen, wenn du unsicher bist — der Befehl beweist beides, Format und Identität:
 
 ```bash
-git show origin/main:content/corpus/stories/g1.st.lost-pages/paint/ch01.level.json | tail -c 4 | xxd
+git show origin/main:content/corpus/stories/g1.st.lost-pages/paint/ch01.level.json | python3 -c 'import sys,json; t=sys.stdin.buffer.read().decode(); print("byte-identisch:", t == json.dumps(json.loads(t), indent=1, ensure_ascii=False), "| End-Newline:", t.endswith(chr(10)))'
 ```
 
 Das gilt für die Level-Dateien. `ch01.tasks.v2.json` endet dagegen **mit** einem
