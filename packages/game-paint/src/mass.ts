@@ -41,8 +41,49 @@ export const CORNER = 12;
  * "lacks the soft falloff into the books that the reference achieves on every
  * beam-to-background transition". A trim that announces itself is a trim that
  * has stopped being anatomy.
+ *
+ * ── R5-W4 · A6: 0.62 OVERSHOT, AND A GREY MULTIPLY WAS THE WRONG INSTRUMENT ──
+ * Two findings, both measured by `check-composition` audit 11 and both visible
+ * in Koki's frames of 2026-08-15.
+ *
+ * 1 · 0.62 draws the trim at 44.3 % against a 46.6 % body — **1.9 points UNDER
+ *     it**. Round 2 was chasing a rail and walked past the target: a cut edge
+ *     darker than the face it is cut into is a groove. §5's law is +6…12, and
+ *     the audit now holds a signed window rather than a cap, so this cannot
+ *     drift again without a red light.
+ *
+ * 2 · A GREY multiply cannot fix what was actually wrong. It scales all three
+ *     channels alike, so it moves value and leaves the family untouched — and
+ *     the family is the complaint: „die vertikalen Kanten haben graue und braune
+ *     Blöcke, die nicht zum Rest passen", „die Außenwand ist hässlich mit diesen
+ *     Grautönen". The strip is painted at 37.2 % saturation beside a 60.2 % body;
+ *     no amount of grey darkening makes it belong.
+ *
+ * So the lay-back is now a COLOUR, derived rather than chosen. The trim is the
+ * cut face of the body, so its target is the body's own colour direction carried
+ * to the body's value + 8:
+ *
+ *   body   (155.4, 113.3,  65.6)   46.60 %   sat 60.2 %
+ *   trim   (212.9, 177.8, 135.8)   71.45 %   sat 37.2 %
+ *   target (182.1, 132.8,  76.9)   54.60 %  = body direction at body + 8
+ *   tint   target / trim           = (0.855, 0.747, 0.566) = 0xdabe90
+ *
+ * Drawn result, measured: 54.6 % (carve +8.0, inside §5's window) and saturation
+ * 57.7 % against the body's 60.2 % — 2.5 points apart where 23.0 stood. The grey
+ * is gone as a number, not as an impression.
+ *
+ * THIS IS A CORRECTION, NOT A COMMISSION, and Koki said so when he chose it on
+ * 2026-08-15: it buys the four unpainted rooms a trim that belongs to their mass
+ * until AS5 paints them one. It cannot fix what it does not touch — the walk
+ * course of the night classroom is still 138° of hue from the body under it,
+ * because that is the BODY's sheet and no trim tint reaches it. Audit 11 keeps
+ * saying so, under a dated waiver.
+ *
+ * One number rather than four because there is one kit: p2/p3/p4/p9 share
+ * `mass_edge_l/r` and `mass_body_a/b`. A room that paints its own gets its own
+ * (`composition.ts#TRIM_SHADE_BY_PHASE`), which is where p1's now lives.
  */
-export const TRIM_SHADE = 0x9e9e9e;
+export const TRIM_SHADE = 0xdabe90;
 /**
  * R5-W1 · A1 · THE PAINTED-SCALE LAW (Koki's „Lego, das nicht zusammenpasst").
  *
@@ -1147,14 +1188,18 @@ export const planMass = (
       // page-edges really do come out the same physical size as the books beside
       // them — which is what the paragraph above has always promised and what
       // the old `EDGE_W / srcW(stem)` did the opposite of (2.49× squash).
+      // R5-W4 · A6: the lay-back is the KIT's, not the school's. `TRIM_SHADE` was
+      // calibrated against one sheet (71.5 % over a 46.2 % body); applied to a
+      // room that has painted its own trims it turns a carved edge into a groove.
+      // See `composition.ts#TRIM_SHADE_BY_PHASE`.
       const trim = (stem: string, wPx: number): Partial<MassPiece> => ({
         tile: true,
         srcScale: paintScale,
         srcW: wPx / paintScale,
         tileAnchor: "xy",
-        tint: mixMultiply(TRIM_SHADE, depthTintAt(depthBucketAt(depthAt(grid, c, r)))),
+        tint: mixMultiply(kit.trimShade ?? TRIM_SHADE, depthTintAt(depthBucketAt(depthAt(grid, c, r)))),
       });
-      const cornerTint = mixMultiply(TRIM_SHADE, depthTintAt(depthBucketAt(depthAt(grid, c, r))));
+      const cornerTint = mixMultiply(kit.trimShade ?? TRIM_SHADE, depthTintAt(depthBucketAt(depthAt(grid, c, r))));
       // THE ONE-CELL COLUMN (critic round 2, both final reviewers, independently:
       // "reads as a flat translucent placeholder box", "an ivory baluster inserted
       // NEXT TO a book stack, not grown from the same stuff").

@@ -313,3 +313,143 @@ Zusätzlich zu §8 gilt ab der zweiten Phase: **die Bestellkarte zitiert §9.1 w
 (Blatt → Zellen → Stems), und die Import-Runde weist nach, dass jeder in 9.1 genannte
 Stem nach dem Import existiert. Ein Blatt, dessen Zellen unter anderen Namen landen,
 ist nicht angenommen — auch dann nicht, wenn es schön ist.
+
+---
+
+## §10 · DAS MASSEN-KIT p2 · p3 · p4 · p9 — die Bestellung AS5
+
+_Geschrieben in R5-W4 · Session A6 (2026-08-15), nachdem p1s Kanten importiert und
+verdrahtet waren und das neue Kohärenz-Gesetz (`scripts/check-composition.mjs`
+Audit 11) zum ersten Mal gemessen hat, woran die vier übrigen Räume scheitern.
+Jede Zahl unten ist eine Messung dieser Session, keine Schätzung. **Ohne Maße
+keine Bestellung** — das ist der Grund, warum dieser Abschnitt existiert._
+
+### 10.0 · Was AS5 kaufen muss, in einem Satz
+
+Vier Räume ziehen heute **denselben warmen Bücherkörper** (`mass_body_a/b`) unter
+einem Laufkurs, der für ihren Raum gemalt ist. Audit 11 misst den Bruch:
+
+| Raum | Laufkurs (gemessen) | ΔFarbton Kurs↔Körper | ΔSättigung | Befund |
+|---|---|---|---|---|
+| p2 Klassenzimmer bei Nacht | 26,17 % · H 258,9° · S 58,5 % | **138°** | 4,8 | violetter Kurs auf warmem Papier |
+| p3 Schulhof-Garten | 52,03 % · H 28,6° · S 37,9 % | 16° | **40,8** | Kurs 40,8 Punkte flacher als sein Papier |
+| p4 Tafel-Bühne | 18,49 % · H 338,7° · S 74,4 % | **56°** | 13,1 | Bühnenrot auf Honigbraun |
+| p9 Kleckskammer | 22,27 % · H 260,2° · S 34,6 % | **137°** | 16,7 | tintiger Kurs auf warmem Papier |
+
+Kein Tint erreicht ein Körper-Blatt. **Nur Malerei schließt das.** Bis dahin
+tragen die vier Räume eine datierte Ausnahme (`COHERENCE_WAIVERS`, Ablauf
+**2026-09-30**), die maschinell verfällt.
+
+### 10.1 · Je Phase drei Blätter — Maße, Zellen, Stems
+
+Die Stem-Namen folgen §9.1 wörtlich; die Import-Runde weist jeden einzelnen nach (§9.5).
+
+| Blatt | Maße | Raster | Zellen → Stems |
+|---|---|---|---|
+| `mass_body_<phase>.png` | **2048 × 1024** | 4 × 2 à 512² | R1 Z0–3 → `mass_body_<phase>_a…_d` · R2 Z4–7 → `mass_bodydeep_<phase>_a…_d` |
+| `mass_deep_<phase>.png` | **2048 × 512** | 4 × 1 à 512² | Z0–1 → `mass_fade_<phase>_a` · `_b` · Z2 Sediment · Z3 Reserve |
+| `mass_edges_<phase>.png` | **2048 × 1024** | 4 × 2 à 512² | s. 10.3 — **acht Zellen, neu belegt** |
+
+**UNGEKEYT** (voll deckend): `mass_body`, `mass_deep`. **GEKEYT `#FF00FF`**: `mass_edges`.
+
+### 10.2 · Die Werte je Phase (Vorgabe, nicht Vorschlag)
+
+Mittlere Leuchtdichte über die **gemalten** Pixel, Rec-709, wie `check-composition`
+und der Importer sie messen. Der Körper ist der Anker: alles andere steht relativ zu ihm.
+
+| Zelle | Zielwert | Woher |
+|---|---|---|
+| `body` (R1) | **46 ± 4 %** | §3, unverändert — Audit 1 misst L3 hieraus |
+| `bodydeep` (R2) | **26 – 38 %** | die Fenster, die p1s Lieferung besteht (gemessen 28,3–31,6) |
+| `fade` | **12 – 18 %** | §4, unverändert (p1 misst 13,8/13,8) |
+| Sediment | **7 – 10 %**, Sättigung ≥ 12 % | §4 + Kokis AUFHELLEN-Ruling |
+| **alle Trims** | **Körper + 6 … + 12 Punkte** | §5 — und jetzt als VORZEICHEN-Fenster maschinell gehalten (Audit 11 `carve`) |
+
+**★ NEU UND BINDEND — das Kohärenz-Gesetz (Audit 11).** Zusätzlich zu den Werten
+gilt für jedes gelieferte Kit, gemessen NACH den Multiplikationen der Engine:
+
+- **Farbton:** jede Fuge (Kurs↔Körper, Kurs↔Seite, Seite↔Körper, Ecke↔Seite)
+  ≤ **25°**.
+- **Sättigung:** dieselben Fugen ≤ **25 Punkte**.
+- **Schnittkante:** Trim − Körper zwischen **+2 und +14** Punkten. Unter dem
+  Körper ist es eine Rille, weit darüber eine Schiene — beides ist gefallen.
+- **Gleiches Licht:** Ecke gegen Seite ≤ **10 Punkte** Leuchtdichte.
+
+Die Palettenkarte je Raum (CP-14, in JEDE Kommissionskarte):
+
+| Phase | Raum | Papier | Farbfamilie, gemessen am eigenen Laufkurs |
+|---|---|---|---|
+| p2 | Klassenzimmer bei Nacht (K 30) | dieselben Bücher, mondkühl entsättigt | **H 259° ± 25**, S 58 % ± 25 |
+| p3 | Schulhof-Garten (K 86) | gepresstes Papier-Steinwerk, Sandputz | **H 29° ± 25**, S 38 % ± 25 |
+| p4 | Tafel-Bühne (K 28) | dunkles Holz, Bühnenbretter, Messing | **H 339° ± 25**, S 74 % ± 25 |
+| p9 | Kleckskammer (K 14) | Tintenpapier, Indigo, blasse Papier-Glimmer | **H 260° ± 25**, S 35 % ± 25 |
+
+### 10.3 · Das Kanten-Blatt, neu belegt — und die drei Lehren aus AS3
+
+AS3s Kanten-Blatt ist heute importiert; **sechs seiner acht Zellen sind
+angenommen**, zwei nicht. Die Neubelegung schreibt beide Befunde fest:
+
+- **Zelle 0/1 · Seitenkante links / rechts.** Senkrecht (oben↔unten) nahtlos
+  kachelbar. **Waagrecht ausdrücklich NICHT** — eine Seitenkante hat eine gemalte
+  Außen- und eine geschnittene Innenfläche. AS3 besteht das achtfach (Stoß 2,63
+  gegen einen Texturschritt von 12,96), und genau diese Achsen-Trennung ist neu
+  im Prüfer (`opt.tiles: "v" | "h" | true`).
+- **Zelle 2/3 · Unterseiten-Kante links / rechts — ABGELEHNT bei AS3, neu bestellt.**
+  Sie muss **waagrecht (links↔rechts) nahtlos kacheln**, denn die Engine wiederholt
+  sie entlang einer Unterseite. AS3s Fassung stößt bei **75,73 bzw. 75,40** gegen
+  einen Texturschritt von 5,58 — das Dreizehnfache — und **kein waagrechtes
+  Teilfenster von 120 px Breite aufwärts, an keiner Position, kachelt**. Es sind
+  Einzelstücke mit einem fertigen Ende, gemalt wie eine Kappe statt wie ein Band.
+  ⚠ **Ohne diese Zelle bleibt D-27 offen und die Unterseite jeder Masse ein roher
+  waagrechter Schnitt.** Sie ist die einzige Kante ohne Anatomie.
+- **Zelle 4/5 · Außenecken unten links / rechts.** Einzelstücke, werden gestreckt
+  gezeichnet, **keine Kachel-Anforderung**. (AS3s Prüfzettel hat sie als
+  Kachel-Fehler gemeldet — er hat eine Ecke gefragt, eine Tapete zu sein.)
+- **Zelle 6/7 · Innenecken links / rechts.** Wie 4/5.
+
+**★ ZWEITES BLATT, NEU: `mass_ramps_<phase>.png`, 2048 × 512, 4 × 1 à 512², GEKEYT.**
+Zellen 0/1 → `mass_ramp_<phase>_up` / `_down`, Zellen 2/3 Reserve. **Grund:** §5 hat
+Rampen nie bestellt, alle acht Kanten-Zellen sind belegt, und deshalb ziehen ALLE
+fünf Räume — p1 eingeschlossen — weiterhin den geteilten Platzhalter
+`mass_ramp_up/_down`. Das ist der graue Keil links unten im Schulhof-Garten auf
+Kokis Bild `07.29.42`. Werte wie die übrigen Trims (Körper + 6…12).
+
+### 10.4 · Format-Gesetze, verschärft an dem, was AS3 gekostet hat
+
+Zusätzlich zu §7 gilt für AS5:
+
+1. **KEIN Schmier zwischen den Motiven.** AS3s Kanten-Blatt trägt breite Bänder
+   gestreckter Pixel zwischen seinen Motiven. Sie sind nicht importiert worden —
+   aber sie haben den **eigenen Prüfzettel des Lieferanten auf `"state": "FAIL"`
+   gesetzt**, weil er ganze 512er-Zellen gemessen hat statt der Stücke darin.
+   Drei seiner vier Befunde waren der Schmier. Flächen, die nicht Motiv sind,
+   sind reines `#FF00FF`.
+2. **Der Schlüssel ist exakt.** Jedes Schlüsselpixel exakt `#FF00FF`
+   (AS3: 1.209.297 von 1.209.297 — vorbildlich). Kein gemaltes Pixel darf die
+   Saum-Regel des Importers erfüllen (`r>120 && b>120 && r−g>55 && b−g>55`);
+   AS3 hat in allen acht Kästen **null** Treffer.
+3. **Jede Zelle nennt ihren Kasten.** `[x0, y0, x1, y1]`, inklusive
+   Blatt-Koordinaten, **am gelieferten Blatt gemessen**. Der Kasten muss die
+   Malerei exakt umschließen: mehr als 2 px Schlüssel an einer Kante lässt den
+   Import fallen — bei einer kachelnden Leiste wiederholt sich diese Lücke sonst
+   die ganze Flanke hinunter. **Das ist D-96 in einer Regel:** AS2s Kästen an AS3
+   angelegt ergaben einen Stoß von 63,35 statt 2,63, und der Fehler war die
+   Tabelle, nicht die Malerei.
+4. **Die Naht wird relativ gemessen, nie absolut.** Stoß ≤ **1,5 ×** dem eigenen
+   mittleren Spaltenschritt des Blattes, UND der Anstieg innerhalb von 8 px
+   ebenso — eine verdoppelte Randspalte liest 0,00 und springt einen Pixel weiter
+   innen (die Klasse, an der AS2 gescheitert ist).
+5. **Lieferschein.** AS3 kam ohne (nur mit einem Prüfzettel, der sich selbst rot
+   meldete). Fable hat die Aufnahme ausnahmsweise erlaubt; **AS5 wird ohne
+   Lieferschein nicht angenommen**, und seine Zahlen werden an den KÄSTEN
+   gerechnet, nicht an ganzen Zellen.
+
+### 10.5 · Abnahme (zusätzlich zu §8 und §9.5)
+
+Ein Kit ist erst angenommen, wenn `node scripts/check-composition.mjs` seine Zeile
+in Audit 11 als **coherent** druckt und der Eintrag des Raums in
+`COHERENCE_WAIVERS` im selben PR **gelöscht** ist — das Tor schlägt an, wenn eine
+Ausnahme stehen bleibt, die nicht mehr gebraucht wird. Dazu je Raum ein Eintrag in
+`composition.ts#TRIM_SHADE_BY_PHASE`, sobald er eigene Trims hat, und die Aufnahme
+in `PAINTED_MASS_PHASES` / `PAINTED_TRIM_PHASES` **im selben Commit wie die PNGs**
+(§9.2).

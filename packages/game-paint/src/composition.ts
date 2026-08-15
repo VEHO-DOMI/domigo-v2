@@ -77,6 +77,20 @@ export interface MassKit {
   rampUp: string;
   rampDown: string;
   /**
+   * R5-W4 · A6 — HOW FAR THIS ROOM LAYS ITS TRIMS BACK, as a multiply.
+   *
+   * `mass.ts#TRIM_SHADE` is one number for the whole school, and it was
+   * calibrated against ONE sheet: the shared 71.5 %-luminance trim over a 46.2 %
+   * body. That was defensible while every room drew the same two strips. It stops
+   * being defensible the moment a room has trims of its own — 0.62 applied to
+   * p1's painted 54.9 % lands at 34 %, twelve points UNDER its own body, and the
+   * carved edge turns into a groove.
+   *
+   * So the lay-back belongs to the kit, beside the art it is calibrated for.
+   * Absent, the global still applies, which is what every unpainted room wants.
+   */
+  trimShade?: number;
+  /**
    * Floating platforms are COMPLETE OBJECTS — a palette, widest first.
    * `deck` is where the WALK SURFACE sits inside the art, as a fraction of its
    * height: the AF2 bench carries a backrest over its seat (deck 0.10), so
@@ -587,17 +601,73 @@ const sharedInterior = (): Pick<MassKit, "body" | "fade" | "sediment"> => ({
   sediment: "mass_sediment",
 });
 
-const sharedMass = (phase: string): Omit<MassKit, "crust" | "crustCapL" | "crustCapR" | "slide"> => ({
-  ...(PAINTED_MASS_PHASES.has(phase) ? paintedInterior(phase) : sharedInterior()),
-  // The TRIMS stay shared for every phase: batch AS2's edge sheet was held back
-  // this round (its side edges do not tile vertically — see import-batch-as.mjs),
-  // so no room has painted trims of its own yet.
+/**
+ * R5-W4 · A6 · WHICH PHASES OWN PAINTED TRIMS.
+ *
+ * A second declared list, and deliberately not the same one as
+ * `PAINTED_MASS_PHASES`, because the two arrive on different sheets: p1's body
+ * landed in AS3 last week and its edges landed today. Folding them together
+ * would mean a room could not have one without the other, and the next room will
+ * be in exactly that position.
+ *
+ * Same law as §9.2, for the same reason: `massStems` feeds `check-paint-art`,
+ * which hard-fails on a stem with no PNG. **A phase joins this list on the same
+ * commit that adds its art, never before.**
+ *
+ * WHAT p1 GETS, and what it still does not: sides, both outer corners, both
+ * inner corners — six of the eight cells AS3 delivered. The two UNDERSIDE cells
+ * are not here because they cannot tile left↔right (75.73 against a texture step
+ * of 5.58, and no sub-window of any width at any offset tiles either), so there
+ * is no `edgeD` field and no `MassKind` for one: SPEC §9.4's rule cuts both ways,
+ * and a hook without art is the same mistake as art without a hook. D-27 stays
+ * open with a number instead of a shrug. RAMPS were never on that sheet at all.
+ */
+const PAINTED_TRIM_PHASES = new Set(["p1"]);
+
+/**
+ * R5-W4 · A6 · THE LAY-BACK, PER ROOM (Koki's ruling of 2026-08-15).
+ *
+ * `mass.ts#TRIM_SHADE` = 0x9e9e9e stays the default for any room not named here.
+ * These are the rooms whose own measurement says the default is wrong for them.
+ * Every number is derived by `scripts/check-composition.mjs` audit 11 from the
+ * kit's own PNGs and re-checked on every CI run, so a repainted sheet cannot
+ * leave a stale constant behind — the audit fails on the drift, by name.
+ *
+ * p1 — the painted trims (AS3) are already commissioned to §5's target: 55.09 %
+ * against a 46.01 % body, +9.08. The global 0.62 would drag them to 34.2 %, a
+ * groove twelve points UNDER the body. A painted edge carries its own anatomy
+ * and does not need value to be legible, so it takes the room's light unchanged.
+ */
+const TRIM_SHADE_BY_PHASE: Record<string, number | undefined> = {
+  p1: 0xffffff,
+};
+
+const paintedTrims = (phase: string): Pick<MassKit, "edgeL" | "edgeR" | "cornerBL" | "cornerBR" | "inCornerL" | "inCornerR"> => ({
+  edgeL: `mass_edge_${phase}_l`,
+  edgeR: `mass_edge_${phase}_r`,
+  cornerBL: `mass_corner_${phase}_bl`,
+  cornerBR: `mass_corner_${phase}_br`,
+  inCornerL: `mass_incorner_${phase}_l`,
+  inCornerR: `mass_incorner_${phase}_r`,
+});
+
+/** the shared placeholder trims — one set of strips for every unpainted room */
+const sharedTrims = (): Pick<MassKit, "edgeL" | "edgeR" | "cornerBL" | "cornerBR" | "inCornerL" | "inCornerR"> => ({
   edgeL: "mass_edge_l",
   edgeR: "mass_edge_r",
   cornerBL: "mass_corner_bl",
   cornerBR: "mass_corner_br",
   inCornerL: "mass_incorner_l",
   inCornerR: "mass_incorner_r",
+});
+
+const sharedMass = (phase: string): Omit<MassKit, "crust" | "crustCapL" | "crustCapR" | "slide"> => ({
+  ...(PAINTED_MASS_PHASES.has(phase) ? paintedInterior(phase) : sharedInterior()),
+  ...(PAINTED_TRIM_PHASES.has(phase) ? paintedTrims(phase) : sharedTrims()),
+  trimShade: TRIM_SHADE_BY_PHASE[phase],
+  // Ramps are on nobody's sheet yet — §5 ordered eight cells and all eight are
+  // sides, undersides and corners. They stay shared in every room, p1 included,
+  // and they are the grey wedge in p3. Re-ordered as AS5.
   rampUp: "mass_ramp_up",
   rampDown: "mass_ramp_down",
   platObjects: PLAT_OBJECTS[phase] ?? PLAT_OBJECTS.p1 ?? [],

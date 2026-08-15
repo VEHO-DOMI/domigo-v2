@@ -67,17 +67,81 @@ export const INK_WAVE2_SHARE = 0.42;
  */
 export const INK_BODY = 0x3e2e6c;
 /**
- * The lit lip of the crown, and the dark line that sits under it. Two lines,
- * not one band: a boundary between materials is what the eye reads as a
- * surface, and a single lighter strip only ever read as a change of fill.
+ * ── R5-W4 · A6 · THE CROWN BECOMES A MENISCUS ────────────────────────────────
+ * Koki, 2026-08-15: „Was ist dieser violette Bogen über der Tinte? Wenn man
+ * reinfällt, muss klar sein, worin man gefallen ist."
  *
- * The lit lip came down with the pigment. At `0xa8c0ee` it was 74.6 % luminance
- * against a 22 % body — a 52-point jump, which is why the same critic called the
- * highlights "gilded metal" rather than an oily shimmer. Ink is glossy, not
- * polished: the lip keeps its hue family and loses half the jump.
+ * The crown he is looking at was two polylines of CONSTANT width — 1.6 px dark,
+ * 1.4 px lit, a fixed 2.2 px apart — riding a ±1.3 px sine. Everything about
+ * that description is a drawn line and nothing about it is a liquid. Three
+ * measurements say why it could not read as one:
+ *
+ *  1 · IT WAS THE WRONG COLOUR, AND SO WAS ITS NEIGHBOUR. `INK_CROWN_LIT`
+ *      measured 54.3 % against a 21.1 % body — a 33-point jump, still the
+ *      "gilded metal" note one round later — while the painted surface strip
+ *      under it (`pool_ink_loop.png`) is a neutral grey-green (51, 55, 52). So
+ *      the pool was three colour families stacked: a violet body, a grey-green
+ *      painting, and a light violet line on top. The only actual PAINT in the
+ *      thing was the one part that did not belong to it.
+ *  2 · CONSTANT WIDTH IS THE TELL. Surface tension makes a liquid's edge THICK
+ *      where the surface dips and thin where it lifts; a band of unvarying
+ *      thickness is a contour, which is exactly the word he used.
+ *  3 · IT WAS ONE UNBROKEN ARC across the whole pool. Real gloss is broken —
+ *      it catches on some crests and not others.
+ *
+ * What replaces it: a filled band in the ink's OWN pigment, darker and more
+ * saturated than the body (that is what the lip of a dark liquid does — it is
+ * the deepest part of the pool you can see, not the brightest), whose thickness
+ * swells in the troughs; and above it a narrow, BROKEN sheen at less than
+ * two-thirds of the old jump.
+ *
+ * The motion is untouched, and that is a measurement too, not an omission: at
+ * three sample points the surface moves 0.58–0.96 px over 45 ticks and its
+ * texture drifts 4.05 px. The complaint was never that it stood still (that was
+ * B1's, and A2 fixed it) — it was that a moving line is still a line.
  */
-export const INK_CROWN_LIT = 0x9282c8;
+export const INK_MENISCUS = 0x2a1a5c;
+/** the narrow, broken gloss — same family, and it no longer shouts */
+export const INK_SHEEN = 0x7565b0;
+/** kept: the deep line under the lip, which is the only part that worked */
 export const INK_CROWN_DARK = 0x1a1534;
+
+/** Base thickness of the meniscus band, world px, at a crest. */
+export const INK_LIP_MIN_PX = 1.3;
+/** How much thicker it gets in a trough. A dip holds more ink than a lift. */
+export const INK_LIP_SWELL_PX = 2.4;
+/**
+ * ── THE PAINTED SURFACE JOINS ITS OWN POOL ───────────────────────────────────
+ * `pool_ink_loop.png` — the one piece of real painting in the whole pool — is a
+ * neutral grey-green: mean (51.2, 55.1, 52.2), 21.2 % luminance, and its hue is
+ * 90° of nothing in particular. `INK_BODY` under it is (62, 46, 108) at 21.1 %
+ * and hue 255.5°. Identical value, unrelated family: the exact recipe for two
+ * objects instead of one substance, and the reason the pool needed a line drawn
+ * around it to read at all.
+ *
+ * Multiplying by the ink's own direction fixes the family. Taken all the way
+ * (0x9567ff) it matches the hue exactly and costs 11 points of luminance;
+ * at 0.8 of the way it costs 8.8 and still lands 1.7° from the body:
+ *
+ *   blend  tint       drawn mean         L        ΔH      S
+ *   0.6    0xc0a4ff   (38.4,35.4,52.2)   14.6 %    4.6°   32.2 %
+ *   0.8    0xaa85ff   (34.2,28.8,52.2)   12.4 %    1.7°   44.8 %
+ *   1.0    0x9567ff   (29.9,22.2,52.2)   10.2 %    0.0°   57.4 %
+ *
+ * 0.8 is taken. It clears the family law the crown already lives under (within
+ * 12° of the body) with room, keeps the surface readable as its own band rather
+ * than a black hole, and — the part that matters for the read — carries the
+ * sheet's PAINTED highlights with it: a cream fleck at (220, 215, 200) lands at
+ * (147, 112, 200), a violet gleam at 49 % instead of a grey one. That is the
+ * oily shimmer the D-43 critic asked for, and it comes from the painting rather
+ * than from a line laid on top of it.
+ */
+export const INK_SURFACE_TINT = 0xaa85ff;
+
+/** Sheen dashes are drawn only on the upper `INK_SHEEN_SHARE` of the swell —
+ *  so the gloss catches some crests and skips others, instead of ringing the
+ *  whole pool like a drawn outline. */
+export const INK_SHEEN_SHARE = 0.38;
 /** How many rows down the ink keeps losing light before it bottoms out.
  *
  *  CRITIC ROUND 2 (blind, measuring pixels): "the body fill is flat — 2 unique
@@ -187,4 +251,95 @@ export const inkCrownPoints = (
   for (let x = x0; x <= x1; x += step) out.push({ x, y: inkCrownOffsetAt(x, tick) });
   if (out[out.length - 1]?.x !== x1) out.push({ x: x1, y: inkCrownOffsetAt(x1, tick) });
   return out;
+};
+
+/**
+ * How thick the lip is at world x, in world px.
+ *
+ * Surface tension is the whole idea: where the surface dips, more of the pool's
+ * own depth is turned towards the camera and the dark lip fattens; where it
+ * lifts, the lip thins to almost nothing. That relationship — thickness moving
+ * WITH the wave — is the difference between a liquid edge and a drawn one, and
+ * it is the property the old constant-width pair could not have at any colour.
+ *
+ * Pure in (x, tick), like everything else here: a replayed tape draws the same
+ * lip twice.
+ */
+export const inkLipThicknessAt = (x: number, tick: number): number => {
+  const dip = (inkCrownOffsetAt(x, tick) + INK_WAVE_AMPL_PX) / (2 * INK_WAVE_AMPL_PX);
+  return INK_LIP_MIN_PX + INK_LIP_SWELL_PX * Math.min(1, Math.max(0, dip));
+};
+
+/**
+ * ── THE SPLASH (Koki: „wenn man reinfällt, muss klar sein, worin man gefallen
+ *    ist") ────────────────────────────────────────────────────────────────────
+ * Falling into the ink produced no picture at all. `sim.ts` answers a hazard
+ * with a toast („Platsch!"), a knockback and an instant warp to the last
+ * checkpoint — correct, and completely invisible: the child is somewhere else
+ * before anything can happen where they fell.
+ *
+ * So the pool draws its own answer, in its own pigment, at the place the entry
+ * happened. Deterministic like everything else here: a drop's position is a pure
+ * function of (index, age in ticks), so a replayed tape throws the same drops.
+ *
+ * Deliberately NOT `fx_blob.png`. That sheet exists, is paid for and is unwired
+ * (`DEAD_ART_2026-08-14.md` lists it for deletion), and it was the obvious
+ * candidate — but measured it is TEAL, mean (50, 143, 140) at 48.2 % luminance,
+ * and the only multiply that would carry it into the ink's family is 0xff429e,
+ * which is a repaint by another name. Filed for the architect, not forced.
+ */
+export const INK_SPLASH_TICKS = 26;
+export const INK_SPLASH_DROPS = 7;
+
+/** One drop of a splash, `age` ticks after it began, in world px relative to the
+ *  entry point. `null` once the splash is spent. */
+export const inkSplashDropAt = (
+  i: number,
+  age: number,
+): { x: number; y: number; r: number; alpha: number } | null => {
+  if (age < 0 || age >= INK_SPLASH_TICKS) return null;
+  const t = age / INK_SPLASH_TICKS;
+  // a fan, no two drops on the same arc, and no randomness anywhere
+  const spread = ((i / (INK_SPLASH_DROPS - 1)) * 2 - 1) * 13;
+  const lift = 9 + (i % 3) * 3;
+  return {
+    x: spread * t * 1.6,
+    // Up fast, then down: the parabola every thrown thing draws. Normalised so
+    // `lift` is the height actually reached — `2t − 2.6t²` peaks at 5/13 of its
+    // own coefficient, so an un-normalised version threw drops 3.5 px when it
+    // said 9, which the test caught.
+    y: -lift * (5.2 * t - 6.76 * t * t),
+    r: 1.9 - 0.9 * t + (i % 2) * 0.35,
+    alpha: Math.max(0, 0.9 * (1 - t * t)),
+  };
+};
+
+/**
+ * The x-runs where the sheen catches, on this tick — the broken half of the
+ * gloss law.
+ *
+ * A highlight that follows the entire surface is an outline with a lighter
+ * colour; it was the second half of why the old crown read as a drawn arc. Gloss
+ * only appears where the surface is turned towards the light, so a dash exists
+ * only over the LIFTED part of the swell (`INK_SHEEN_SHARE` of it), which the
+ * two coprime sines break into uneven pieces that travel — never the same
+ * pattern twice inside a pool's time on screen, and never a full ring.
+ */
+export const inkSheenRuns = (
+  x0: number,
+  x1: number,
+  tick: number,
+  step = 4,
+): Array<{ x0: number; x1: number }> => {
+  const lit = (x: number): boolean =>
+    inkCrownOffsetAt(x, tick) < -INK_WAVE_AMPL_PX * (1 - 2 * INK_SHEEN_SHARE);
+  const runs: Array<{ x0: number; x1: number }> = [];
+  let start: number | null = null;
+  for (let x = x0; x <= x1; x += step) {
+    if (lit(x)) { if (start === null) start = x; continue; }
+    if (start !== null) { runs.push({ x0: start, x1: x - step }); start = null; }
+  }
+  if (start !== null) runs.push({ x0: start, x1 });
+  // a one-sample dash is a dot, and a dotted pool reads as noise
+  return runs.filter((r) => r.x1 - r.x0 >= step);
 };

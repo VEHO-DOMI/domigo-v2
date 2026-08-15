@@ -26,7 +26,9 @@ import { LETTER_STYLE, letterGlyphs } from "./letters.ts";
 import { type PhraseSlot, bonusPhrase } from "./cards/ceremony.ts";
 import { PICKUP_ROLES, type PaintLevel, type PhaseSpec } from "./level.ts";
 import { type AirModel, DELTA_CAP_MS, LOGICAL_H, LOGICAL_W, MAX_TICKS_PER_FRAME, RENDER_SCALE, SUBS, TICK_MS, TILE, fromSubs, mixMultiply } from "./paint.ts";
-import { INK_BODY, INK_CROWN_DARK, INK_CROWN_LIT, INK_DEPTH_ROWS, inkCrownPoints, inkDepthAt, inkDepthTint, inkScrollAt, planInkColumns } from "./ink.ts";
+// `INK_DEPTH_ROWS` and `inkDepthAt` were imported here and referenced nowhere —
+// dropped with the crown rewrite (R5-W4 · A6).
+import { INK_BODY, INK_CROWN_DARK, INK_MENISCUS, INK_SHEEN, INK_SPLASH_DROPS, INK_SPLASH_TICKS, INK_SURFACE_TINT, inkCrownOffsetAt, inkCrownPoints, inkDepthTint, inkLipThicknessAt, inkScrollAt, inkSheenRuns, inkSplashDropAt, planInkColumns } from "./ink.ts";
 import { type FistState } from "./fist.ts";
 import { type Pad, type PlayerState } from "./player.ts";
 import { CHALK_COLOURS, CHALK_FLIGHT_TICKS, CHALK_GRAVITY, type EntityState, type EntityWorld, GUARDIAN_SCRIPT, JOY_ROLES, KNOT_BEAT_TICKS, SHARD_TICKS, engageTargetId, telegraphTicksFor } from "./entities.ts";
@@ -804,6 +806,10 @@ export class PaintScene extends Phaser.Scene {
   private readonly inkSurfaces: Phaser.GameObjects.TileSprite[] = [];
   private readonly inkRuns: Array<{ x0: number; x1: number; y: number }> = [];
   private inkCrownG: Phaser.GameObjects.Graphics | null = null;
+  /** last tick's player position, in world px — the only way the scene can see
+   *  a warp without owning a line of `sim.ts` (R5-W4 · A6, `noteInkEntry`) */
+  private inkPrev: { x: number; y: number } | null = null;
+  private inkSplash: { x: number; y: number; tick: number } | null = null;
   private projG!: Phaser.GameObjects.Graphics;
   /** PK-R6 · E: the code-drawn golden tail behind the flying guardian. */
   private trailG!: Phaser.GameObjects.Graphics;
@@ -1351,7 +1357,40 @@ export class PaintScene extends Phaser.Scene {
     if (this.inkRuns.length === 0) return;
     const drift = inkScrollAt(this.tickCount);
     for (const t of this.inkSurfaces) t.tilePositionX = drift / t.tileScaleX;
+    this.noteInkEntry();
     this.drawInkCrown();
+  }
+
+  /**
+   * R5-W4 · A6 · WHERE THE CHILD WENT IN.
+   *
+   * The scene has to work this out for itself, and that is a boundary rather
+   * than a preference: the hazard's whole chain lives in `sim.ts`
+   * (`onPlayerEvent` → toast → knockback → `warp`), and this session does not own
+   * a line of it, nor an insert anchor in `handleSimEvents`. Adding a SimEvent
+   * for a splash would be reaching into three other sessions' files in a wave
+   * built to keep branches off each other.
+   *
+   * It does not need one. A warp is visible from outside: the player moves
+   * further in ONE tick than any physics in this game can move them. So the
+   * scene keeps last tick's position, and when it sees a jump that large from a
+   * point that was over a pool, that point is where they fell in. No new event,
+   * no shared file, and still a pure function of the sim's own state.
+   *
+   * `TILE * 3` is the threshold: terminal fall speed is well under a tile per
+   * tick, so nothing legitimate crosses it, and a checkpoint is always further
+   * away than that or it would not be a checkpoint.
+   */
+  private noteInkEntry(): void {
+    const px = this.player.x / SUBS;
+    const py = this.player.y / SUBS;
+    const prev = this.inkPrev;
+    this.inkPrev = { x: px, y: py };
+    if (prev === null) return;
+    if (Math.hypot(px - prev.x, py - prev.y) <= TILE * 3) return;
+    const run = this.inkRuns.find((r) => prev.x >= r.x0 && prev.x <= r.x1 && prev.y >= r.y - TILE && prev.y <= r.y + TILE * 6);
+    if (run === undefined) return;
+    this.inkSplash = { x: prev.x, y: run.y, tick: this.tickCount };
   }
 
   /** Route the sim's events to Phaser/React — the only gameplay-adjacent
@@ -3847,12 +3886,31 @@ export class PaintScene extends Phaser.Scene {
   }
 
   /**
-   * R5-W1 · A2 · THE CROWN — the ink's surface, redrawn every tick.
+   * R5-W4 · A6 · THE MENISCUS — the ink's surface, redrawn every tick.
    *
-   * Two strokes, never one: a lit lip on the wave and a dark line under it. A
-   * single lighter band (what shipped before) reads as a change of fill colour;
-   * a boundary between two values is what the eye reads as the place where one
-   * material stops and another begins.
+   * What stood here until today was a pair of parallel polylines of constant
+   * width, and Koki read it exactly as it was built: „Was ist dieser violette
+   * Bogen über der Tinte?" A2's reasoning for two strokes rather than one was
+   * sound — a boundary between values is what the eye reads as a surface — but a
+   * boundary of UNVARYING thickness in a colour brighter than everything around
+   * it is a contour line, and no colour choice was going to rescue that.
+   *
+   * Three things change, and each is one of the three tells:
+   *
+   *   1 · A FILLED BAND instead of a stroke, in the ink's own pigment, DARKER
+   *       and more saturated than the body. The lip of a dark liquid is the
+   *       deepest thing you can see, not the brightest.
+   *   2 · THICKNESS THAT MOVES WITH THE WAVE (`inkLipThicknessAt`): fat in the
+   *       troughs, thin on the crests. That is surface tension, and it is the
+   *       one property a drawn line cannot fake.
+   *   3 · A BROKEN SHEEN (`inkSheenRuns`) instead of a continuous highlight —
+   *       short dashes only where the surface lifts into the light, so the gloss
+   *       catches some crests and skips others.
+   *
+   * The dark line under the lip survives from A2: it is the shadow the lip casts
+   * into its own liquid, and it was the part that always worked.
+   *
+   * Still pure in the SIM TICK — a replayed tape draws the same water twice.
    */
   private drawInkCrown(): void {
     const g = this.inkCrownG;
@@ -3861,14 +3919,49 @@ export class PaintScene extends Phaser.Scene {
     g.clear();
     for (const run of this.inkRuns) {
       const pts = inkCrownPoints(run.x0, run.x1, tick);
-      // the dark line first, a hair lower — it is the shadow the lip casts into
-      // its own liquid, so it must never be drawn over the lip
-      g.lineStyle(1.6, INK_CROWN_DARK, 0.85).beginPath();
-      pts.forEach((p, i) => (i === 0 ? g.moveTo(p.x, run.y + p.y + 2.2) : g.lineTo(p.x, run.y + p.y + 2.2)));
+      if (pts.length < 2) continue;
+      // the shadow the lip casts into its own liquid, a hair below the band
+      g.lineStyle(1.2, INK_CROWN_DARK, 0.8).beginPath();
+      pts.forEach((p, i) => {
+        const y = run.y + p.y + inkLipThicknessAt(p.x, tick) + 0.8;
+        return i === 0 ? g.moveTo(p.x, y) : g.lineTo(p.x, y);
+      });
       g.strokePath();
-      g.lineStyle(1.4, INK_CROWN_LIT, 0.95).beginPath();
-      pts.forEach((p, i) => (i === 0 ? g.moveTo(p.x, run.y + p.y) : g.lineTo(p.x, run.y + p.y)));
-      g.strokePath();
+      // the lip itself: a closed band whose lower edge swells in the troughs
+      const head = pts[0];
+      if (head === undefined) continue;
+      g.fillStyle(INK_MENISCUS, 0.92).beginPath();
+      g.moveTo(head.x, run.y + head.y);
+      for (const p of pts) g.lineTo(p.x, run.y + p.y);
+      for (let i = pts.length - 1; i >= 0; i--) {
+        const p = pts[i];
+        if (p === undefined) continue;
+        g.lineTo(p.x, run.y + p.y + inkLipThicknessAt(p.x, tick));
+      }
+      g.closePath();
+      g.fillPath();
+      // and the gloss, only where the surface turns towards the light
+      for (const seg of inkSheenRuns(run.x0, run.x1, tick)) {
+        g.lineStyle(0.9, INK_SHEEN, 0.75).beginPath();
+        let first = true;
+        for (let x = seg.x0; x <= seg.x1; x += 4) {
+          const y = run.y + inkCrownOffsetAt(x, tick) + 0.5;
+          if (first) { g.moveTo(x, y); first = false; } else g.lineTo(x, y);
+        }
+        g.strokePath();
+      }
+    }
+    // the splash, thrown from wherever the child last stood over ink
+    const splash = this.inkSplash;
+    if (splash !== null) {
+      const age = tick - splash.tick;
+      if (age >= INK_SPLASH_TICKS) { this.inkSplash = null; return; }
+      for (let i = 0; i < INK_SPLASH_DROPS; i++) {
+        const d = inkSplashDropAt(i, age);
+        if (d === null || d.alpha <= 0) continue;
+        g.fillStyle(i % 2 === 0 ? INK_MENISCUS : INK_SHEEN, d.alpha);
+        g.fillCircle(splash.x + d.x, splash.y + d.y, d.r);
+      }
     }
   }
 
@@ -4104,6 +4197,11 @@ export class PaintScene extends Phaser.Scene {
         (c0, c1, r) => {
           const t = this.tiled(c0 * TILE, r * TILE, (c1 - c0 + 1) * TILE, dh, "pb-pool_ink_loop")
             .setOrigin(0, 0).setDepth(3).setTileScale(ts);
+          // R5-W4 · A6: the painted surface is the only real paint in the pool
+          // and it was the one part that did not belong to it — a neutral
+          // grey-green over a violet body. The tint brings it into the ink's own
+          // family (1.7° apart) and carries its painted flecks with it.
+          t.setTint(INK_SURFACE_TINT);
           this.inkSurfaces.push(t);
           this.inkRuns.push({ x0: c0 * TILE, x1: (c1 + 1) * TILE, y: r * TILE });
         },
