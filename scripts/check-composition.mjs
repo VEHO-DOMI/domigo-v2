@@ -258,7 +258,7 @@ for (const story of fs.existsSync(CONTENT) ? fs.readdirSync(CONTENT) : []) {
     const all = [...level.phases, ...(level.arena ? [level.arena] : []), ...(level.bonus ? [level.bonus] : [])];
     for (const ph of all) {
       const spec = COMPOSITION[level.chapter]?.[ph.id] ?? null;
-      phases.push({ label: `${level.chapter}/${ph.id}`, ph, spec });
+      phases.push({ label: `${level.chapter}/${ph.id}`, ph, spec, level });
     }
   }
 }
@@ -694,10 +694,38 @@ for (const { label, spec } of withSpec) {
 // because audit 9 only ever looked at him. B1's critic saw both halves at once:
 // „kein Eigenkontrast in den hellen Leveln" and „beim Banking in p1 vom Spieler
 // komplett verdeckt". This is those two sentences as numbers.
+/**
+ * ── R5-W4 · A6 · RETIRED WHERE THERE IS NOTHING TO SEE (Auftrag 6, R44) ──────
+ * This audit measures whether the checkpoint marker is LEGIBLE: its contour
+ * against the planes behind it, and how much of it clears the child banking at
+ * it. Both are statements about a thing on screen.
+ *
+ * B4 (R44) made ch01 a silent chapter: `checkpointStyle: "silent"` keeps every
+ * `C` glyph, its warp target and all four checkpoint laws, and stops DRAWING the
+ * easel — Koki, 2026-08-15, the markers read as clutter beside the enemies. So
+ * in ch01 this audit now asserts the visibility of something invisible.
+ *
+ * It is scoped, not switched off, and the difference matters: `checkpointStyle`
+ * is per chapter and B4 deliberately left the drawing code standing behind the
+ * flag, so ch02+ still show their markers. A blanket off-switch would disarm
+ * D-45 for every chapter that still needs it. Scoping keeps the law armed
+ * exactly where the marker exists and silent exactly where it does not — and
+ * the day a chapter turns its ceremony back on, the law comes back with it,
+ * with no one having to remember.
+ *
+ * The `krakel_*` sheets stay on disk this wave (dead-art count documented);
+ * deleting them is Welle 5's call, not this session's.
+ */
 console.log("9b · checkpoint-edge audit (R5-W3 · A5 · D-45)");
 const MARKER_STEM = "krakel_a";
 let markersSeen = 0;
-for (const { label, ph, spec } of withSpec) {
+let silentChapters = 0;
+for (const { label, ph, spec, level } of withSpec) {
+  if (level.checkpointStyle === "silent") {
+    silentChapters++;
+    note(`${label}: checkpoints are SILENT (B4 · R44) — nothing is drawn, so there is nothing to measure`);
+    continue;
+  }
   const cells = [];
   ph.rows.forEach((row, r) => { [...row].forEach((g, c) => { if (g === "C") cells.push({ c, r }); }); });
   if (cells.length === 0) { note(`${label}: no checkpoint`); continue; }
@@ -733,7 +761,17 @@ for (const { label, ph, spec } of withSpec) {
     }
   }
 }
-if (markersSeen === 0) fail("marker-edge", "no phase carries a checkpoint — this audit would pass vacuously");
+// The vacuity guard has to tell the two silences apart. A chapter that DECLARES
+// itself silent is a decision (R44) and the audit is correctly dormant; a
+// chapter that draws its markers and yet offers none to measure is the bug this
+// guard was written for, and it still fails.
+if (markersSeen === 0) {
+  if (silentChapters > 0 && silentChapters === withSpec.length) {
+    note(`dormant: all ${silentChapters} phase(s) declare silent checkpoints — the law re-arms itself the moment a chapter draws one again`);
+  } else {
+    fail("marker-edge", "no phase carries a checkpoint — this audit would pass vacuously");
+  }
+}
 
 // ── 10 · THE PAINTED SCALE (R5-W1 · A1) ──────────────────────────────────────
 // Koki, replaying the build: „Lego, das nicht zusammenpasst."

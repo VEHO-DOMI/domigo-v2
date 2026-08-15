@@ -407,6 +407,13 @@ angenommen**, zwei nicht. Die Neubelegung schreibt beide Befunde fest:
   Kachel-Fehler gemeldet — er hat eine Ecke gefragt, eine Tapete zu sein.)
 - **Zelle 6/7 · Innenecken links / rechts.** Wie 4/5.
 
+**★ Motivgesetz.** Eine Kante zeigt die FLÄCHE, die an dieser Stelle wirklich
+sichtbar wäre: Seitenkanten = der SCHNITT durch das Material (bei Büchern der
+cremefarbene, waagrecht gestreifte Buchschnitt — nie ein Buchdeckel von vorn, nie
+Rücken/Prägung/Glanz); Unterseiten = die Unterseite des Stapels; Ecken = derselbe
+Schnitt, der um die Ecke geht. AS3 fiel genau daran (zwei blinde Kritiker,
+entgegengesetzte Reihenfolge, beide reihten die Flanke als Letzte).
+
 **★ ZWEITES BLATT, NEU: `mass_ramps_<phase>.png`, 2048 × 512, 4 × 1 à 512², GEKEYT.**
 Zellen 0/1 → `mass_ramp_<phase>_up` / `_down`, Zellen 2/3 Reserve. **Grund:** §5 hat
 Rampen nie bestellt, alle acht Kanten-Zellen sind belegt, und deshalb ziehen ALLE
