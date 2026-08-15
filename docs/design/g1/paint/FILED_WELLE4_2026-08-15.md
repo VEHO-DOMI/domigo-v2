@@ -114,6 +114,7 @@ hier steht die D-Nummer nur als Adresse).
 | 93 | D3s `artScope.ts`-Zeile ist unverbraucht — eine Beanspruchung ohne Verdrahtung wäre eine falsche Behauptung gegenüber der Kunst-Prüfung | Handover D3 | **D3b** (verdrahten oder zurückgeben) |
 | 94 | Ein Kritiker rechnet die Möbel des Messstands dem Werk zu, wenn man sie mitfotografiert (abgeschnittenes Bank-Label) | D3 | **Verworfen als Produktfehler, aufgenommen als Lehre** — Bildvorlagen ohne Werkzeug-Möbel schneiden |
 | 95 | Vorschlag an die Methoden-Skill: das Kritiker-Raster „eine Spalte ≤3 ⇒ REWORK" hat auf Planungsdokumenten keinen Fixpunkt; besser „kein Befund wiederholt sich UND die Noten steigen" | G3 | **Nicht ins Fallen-Register** (es ist keine Projekt-Falle) → **an Fable, `fable-method`** |
+| 96 | **Das ch01-Design-Blatt widerspricht doc 44 an vier Stellen** (Fibel schenkt die Faust · stehender Wächter mit Knoten und Faust-Deflect · Merle »runs to the camp« · die Keen-Sechs als restaurierte Objekte) — gefunden vom blinden Kanon-Leser dieser Session, nicht von einer Welle-4-Lane | K3 (neu) | **D-246** · Kapitel-Blatt-Runde **Welle 5** — bewusst nicht nebenbei gefixt |
 
 ---
 
@@ -132,7 +133,8 @@ hier steht die D-Nummer nur als Adresse).
 | H2 | 13 |
 | D3 | 11 (9 aus der Tabelle + Dimm-Frage + Messstand-Lehre) |
 | HANDOVER D3 | 4 (die Dimm-Frage steht bei D3) |
-| **Summe** | **95 Zeilen** |
+| K3 (neu, aus der Verifikation) | 1 |
+| **Summe** | **96 Zeilen** |
 
 **Wie diese Zahl geprüft ist.** Ein frischer, blinder Vollständigkeits-Prüfer hat vier der
 zehn Reports (W2 · G3 · A6 · H2) noch einmal ganz gelesen, seine EIGENE Liste gebaut und
