@@ -1354,7 +1354,7 @@ export class PaintScene extends Phaser.Scene {
           this.letterImgs.delete(`${ev.c},${ev.r}`);
           break;
         }
-        case "tip": cb.onTip({ id: ev.id, skin: ev.skin, topicDe: ev.topicDe, merksatzDe: ev.merksatzDe, schluesselDe: ev.schluesselDe, beispielEn: ev.beispielEn, belegDe: ev.belegDe, ausspracheDe: ev.ausspracheDe, falscheFormEn: ev.falscheFormEn, richtigeFormEn: ev.richtigeFormEn }); break;
+        case "tip": cb.onTip({ id: ev.id, skin: ev.skin, topicDe: ev.topicDe, erklaerungDe: ev.erklaerungDe, merksatzDe: ev.merksatzDe, schluesselDe: ev.schluesselDe, beispieleEn: ev.beispieleEn, belegDe: ev.belegDe }); break;
         case "book": cb.onBook(ev.id, ev.got); break;
         case "puff": this.puff(fromSubs(ev.x), fromSubs(ev.y), ev.kind); break;
         case "exit": cb.onExit(ev.to); break;

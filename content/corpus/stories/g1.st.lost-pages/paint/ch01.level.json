@@ -106,25 +106,50 @@
      "r": 12,
      "tier": "E",
      "params": {
-      "topicDe": "Kurzformen — I'm · it's · isn't",
-      "merksatzDe": "Aus I am wird I'm, aus it is wird it's, aus is not wird isn't.",
-      "schluesselDe": "aus is not wird isn't",
-      "beispielEn": "It's brown and red.",
-     "ausspracheDe": "Sprich I'm wie das i in time — lang: aim.",
-     "ankerEn": "time",
-     "falscheFormEn": "I'am",
-     "richtigeFormEn": "I'm",
-      "belegDe": "MORE! 1 · Unit 1 · Seite 14"
+      "topicDe": "Kurzformen — I'm · it's · isn't · don't",
+      "erklaerungDe": "Beide Formen sind richtig. Die kurze nimmst du fast immer, wenn du sprichst.",
+      "merksatzDe": "Der Apostroph steht da, wo ein Buchstabe fehlt: is not wird isn't.",
+      "schluesselDe": "wo ein Buchstabe fehlt",
+      "beispieleEn": [
+       "I am here. – I'm here.",
+       "It is my school bag. – It's my school bag.",
+       "It is not dark here. – It isn't dark here.",
+       "I do not understand. – I don't understand."
+      ],
+      "lehrtEn": [
+       "I'm",
+       "It's",
+       "isn't",
+       "don't"
+      ],
+      "belegDe": "MORE! 1 · Unit 1 · Seite 11, 13, 14"
      }
     },
     {
-     "id": "p1-buch",
-     "role": "book",
-     "skin": "bonusbuch",
+     "id": "p1-regel-befehle",
+     "role": "tip",
+     "skin": "regelseite",
      "c": 19,
      "r": 11,
      "tier": "E",
-     "params": {}
+     "params": {
+      "topicDe": "Befehle — tun und nicht tun",
+      "erklaerungDe": "Ein Befehl braucht kein du — das Verb allein meint schon dich.",
+      "merksatzDe": "Willst du das Gegenteil, stellst du Don't vor das Verb.",
+      "schluesselDe": "stellst du Don't vor das Verb",
+      "beispieleEn": [
+       "Sit down!",
+       "Don't sit down!",
+       "Close the door!",
+       "Don't close the door!"
+      ],
+      "lehrtEn": [
+       "Sit down",
+       "Close",
+       "Don't"
+      ],
+      "belegDe": "MORE! 1 · Unit 1 · Seite 15"
+     }
     },
     {
      "id": "p1-obj-book",
@@ -299,24 +324,47 @@
      "r": 17,
      "tier": "E",
      "params": {
-      "topicDe": "Begrüßen und verabschieden",
-      "merksatzDe": "How are you? fragt, wie es geht — die Antwort ist I'm fine, thanks.",
-      "schluesselDe": "How are you? fragt, wie es geht",
-      "beispielEn": "How are you? – I'm fine, thanks.",
-     "ausspracheDe": "How are you? klingt wie ein Wort: hau-a-ju.",
-     "falscheFormEn": "How you are?",
-     "richtigeFormEn": "How are you?",
+      "topicDe": "Fragen und Begrüßen",
+      "erklaerungDe": "What's ist kurz für What is. Und how fragt danach, WIE etwas ist.",
+      "merksatzDe": "Sprichst du über dich: I'm. Über ein Ding: It's.",
+      "schluesselDe": "Über ein Ding: It's",
+      "beispieleEn": [
+       "Hello! What's your name? – I'm Merle.",
+       "How are you? – I'm great, thanks.",
+       "What's your email address? – It's merle@school.com."
+      ],
+      "lehrtEn": [
+       "Hello",
+       "How are you",
+       "What's"
+      ],
       "belegDe": "MORE! 1 · Unit 1 · Seite 15"
      }
     },
     {
-     "id": "p2-buch",
-     "role": "book",
-     "skin": "bonusbuch",
-     "c": 33,
-     "r": 4,
+     "id": "p2-regel-zahlen",
+     "role": "tip",
+     "skin": "regelseite",
+     "c": 17,
+     "r": 15,
      "tier": "E",
-     "params": {}
+     "params": {
+      "topicDe": "Zahlen bis twenty-five",
+      "erklaerungDe": "Im Deutschen sagst du dreiundzwanzig — die Drei zuerst. Englisch dreht das um.",
+      "merksatzDe": "Erst twenty, dann three — zusammen twenty-three.",
+      "schluesselDe": "twenty-three",
+      "beispieleEn": [
+       "I can count to twenty-five.",
+       "There are twenty-three books.",
+       "I want twenty-four pencils."
+      ],
+      "lehrtEn": [
+       "twenty-three",
+       "twenty-four",
+       "twenty-five"
+      ],
+      "belegDe": "MORE! 1 · Unit 1 · Seite 8, 10"
+     }
     },
     {
      "id": "p2-obj-desk",
@@ -421,32 +469,31 @@
      }
     },
     {
-     "id": "p3-regel-zahlen",
+     "id": "p3-regel-plural",
      "role": "tip",
      "skin": "regelseite",
-     "c": 8,
-     "r": 11,
-     "tier": "E",
-     "params": {
-      "topicDe": "Zahlen von one bis twenty-five",
-      "merksatzDe": "Englisch zählt andersherum: erst twenty, dann three — twenty-three.",
-      "schluesselDe": "erst twenty, dann three",
-      "beispielEn": "twenty-three, twenty-four, twenty-five",
-     "ausspracheDe": "twenty-three: laut auf three, leise auf twenty.",
-     "ankerEn": "three",
-     "falscheFormEn": "three-twenty",
-     "richtigeFormEn": "twenty-three",
-      "belegDe": "MORE! 1 · Unit 1 · Seite 10"
-     }
-    },
-    {
-     "id": "p3-buch",
-     "role": "book",
-     "skin": "bonusbuch",
      "c": 26,
      "r": 12,
      "tier": "E",
-     "params": {}
+     "params": {
+      "topicDe": "Plural — die Mehrzahl",
+      "erklaerungDe": "Steht vor dem y ein Mitlaut, wird es zu -ies. Steht dort a, e, i, o oder u, bleibt das y.",
+      "merksatzDe": "Meist ein -s, nach Konsonant + y ein -ies — ein paar Wörter gehen eigene Wege.",
+      "schluesselDe": "nach Konsonant + y ein -ies",
+      "beispieleEn": [
+       "one book – two books",
+       "one baby – three babies",
+       "one boy – two boys",
+       "one child – five children"
+      ],
+      "lehrtEn": [
+       "books",
+       "babies",
+       "boys",
+       "children"
+      ],
+      "belegDe": "MORE! 1 · Unit 1 · Seite 15"
+     }
     },
     {
      "id": "p3-obj-gluestick",
@@ -570,7 +617,7 @@
    "to": "p2"
   }
  },
- "tipsTotal": 3,
+ "tipsTotal": 5,
  "doorPlate": "plate_ch01_door",
  "scorePlate": "plate_ch01_score",
  "rulePlate": "plate_ch01_rule"

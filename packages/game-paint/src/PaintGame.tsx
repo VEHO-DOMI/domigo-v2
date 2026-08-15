@@ -1623,22 +1623,19 @@ function Overlay({
     );
   }
   if (o.card === "regel") {
-    // …beat 2: the page is open and the rule is on it — the German lede with its
-    // one accented phrase, the English the book itself prints, and which page of
-    // the child's own book it came from.
+    // …beat 2: the page is open and the rule is on it — four steps down the
+    // page (R5-W4 · I2): what this rule is called, what happens in it, the rule
+    // with its one accented phrase, and two to four English lines showing it.
     return staged(
       <RuleRead
         art={art}
         plateUrl={level.rulePlate !== undefined ? art[level.rulePlate] : undefined}
         skin={o.tip?.skin ?? "regelseite"}
         topicDe={o.tip?.topicDe ?? ""}
+        erklaerungDe={o.tip?.erklaerungDe ?? ""}
         merksatzDe={o.tip?.merksatzDe ?? ""}
         schluesselDe={o.tip?.schluesselDe ?? ""}
-        beispielEn={o.tip?.beispielEn ?? ""}
-        ausspracheDe={o.tip?.ausspracheDe ?? ""}
-        falscheFormEn={o.tip?.falscheFormEn ?? ""}
-        richtigeFormEn={o.tip?.richtigeFormEn ?? ""}
-        belegDe={o.tip?.belegDe ?? ""}
+        beispieleEn={o.tip?.beispieleEn ?? []}
         onDone={() => onDismiss(o)}
       />,
       "pb-page",

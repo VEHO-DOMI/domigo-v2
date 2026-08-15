@@ -91,6 +91,16 @@ export interface EntityParams {
   /** tip: which of the unit's grammar topics this Regel-Seite carries. Unique
    *  per chapter — two pages of the same rule are one page and a duplicate. */
   topicDe?: string;
+  /** tip: THE NOTION — what actually happens in this rule, in kid words, before
+   *  the rule is stated as a rule (R5-W4 · I2, Koki's replay of 2026-08-15:
+   *  „wir wollen mehr Notions, Erklärungen, Beispiele — didaktisch reicher").
+   *
+   *  It is a different job from `merksatzDe` and the two must not collapse into
+   *  one sentence twice: the Erklärung says WHAT HAPPENS („Zwei Wörter rücken
+   *  zusammen und werden eins."), the Merksatz gives the RULE with the one
+   *  phrase worth carrying home. Roomier than the Merksatz because it may take
+   *  two short sentences; still short enough to be read in one go. */
+  erklaerungDe?: string;
   /** tip: the rule itself, kid-worded. Rendered verbatim on the pickup card, so
    *  it is authored content and passes the same register + length laws every
    *  other line a six-year-old reads does (the `tip-honesty` law). */
@@ -100,71 +110,59 @@ export interface EntityParams {
    *  `merksatzDe` (the law proves it), because a key that paraphrases the rule
    *  is a second rule, and a page teaches one. */
   schluesselDe?: string;
-  /** tip: the English example, quoted VERBATIM from the unit's own pages. This
-   *  is the field Koki's „ein Alibi" verdict (doc 45 E2) exists to fix: the
-   *  `tip-example` law greps every one of these in the MORE! 1 transcripts, so a
-   *  rule page cannot ship an example the book does not print. English-only by
-   *  law, which is also what makes it machine-groundable — the German Merksatz
-   *  is mixed („How are you? fragt, wie es geht") and no tokenizer can split it. */
-  beispielEn?: string;
-  /** tip: where the example comes from, in the child's own words („MORE! 1 ·
-   *  Unit 1 · Seite 14"). Display copy; the ATTESTATION is the grep above, not
-   *  this string — a label cannot be trusted to prove itself. */
+  /** tip: THE EXAMPLES — 2–4 English lines that show the rule at work.
+   *
+   *  ★ THEY ARE OURS, NOT THE BOOK'S (Koki's ruling of 2026-08-15, K-1):
+   *  „nicht die exakt selben sätze aus dem buch (wir schreiben immer unsere
+   *  eigenen beispiele – die natürlich aber zum kontext und level passen)".
+   *  That RETIRES I1's verbatim-quotation gate. It is not a loosening: every
+   *  other piece of English in this game — task prompts, scene lines, the boss —
+   *  has always been our own, grounded against the unit lexicon
+   *  (scripts/check-story-grounding.mjs §A). The rule pages were the one
+   *  exception, and this brings them home. It also closes a real hole: `isn't`
+   *  has NO groundable sentence in Unit 1 (the only one the book prints is
+   *  „Number 8 isn't correct.", which fails grounding because »number« and
+   *  »correct« are not Unit-1 vocabulary), so a borrowed example could never
+   *  show the third contraction the page's own title promises.
+   *
+   *  WHAT STILL BINDS THEM, all machine-proved:
+   *    · GROUNDING — every token in the unit lexicon (check-paint-copy.mjs);
+   *    · COVERAGE + RELEVANCE — against `lehrtEn`, below;
+   *    · English-only and one card line long, here.
+   *  An ARRAY rather than one string because a rule with one example is a rule
+   *  demonstrated once, and the shipped pages proved that reads as an alibi. */
+  beispieleEn?: string[];
+  /** tip: THE FORMS THIS PAGE TEACHES — declared, so the examples can be judged
+   *  against something other than their author's intention.
+   *
+   *  This is what replaces the retired quotation gate, and it is stricter than
+   *  the quotation ever was, because it checks BOTH directions:
+   *    · COVERAGE — every form named here appears in at least one example. That
+   *      kills the exact defect I1's teacher-critic caught by hand: the card
+   *      titled „I'm · it's · isn't" showed two of the three, and no gate could
+   *      see it. A title is a promise, and this is the gate that keeps it.
+   *    · RELEVANCE — every example carries at least one of these forms, so no
+   *      grounded-but-off-topic sentence can pad the list.
+   *  Matched case-insensitively as substrings: the forms are written as a child
+   *  meets them („I'm", „Don't", „How are you"), not as regexes. */
+  lehrtEn?: string[];
+  /** tip: which page of the unit this rule lives on („MORE! 1 · Unit 1 · Seite
+   *  14"). ★ DATA, NOT DISPLAY since R5-W4 · I2 — Koki: „Die Regel soll NICHT
+   *  aufs Buch verweisen … wir restaurieren unser eigenes Buch." It stays in the
+   *  file for the teacher's and the register's sake; no surface renders it. */
   belegDe?: string;
-  /** tip: HOW IT SOUNDS — the line that stops a contraction being filed as a
-   *  writing trick.
-   *
-   *  From the teacher's critique (J1-D, Koki's ruling of 2026-08-13): short
-   *  forms are first a SPOKEN phenomenon, and a child who only ever meets them
-   *  on paper learns them as a spelling rule with no sound attached.
-   *
-   *  THE NOTATION IS THE ANCHOR FORM, and Koki chose it over the book's own
-   *  phonetic brackets for a reason worth keeping: [aɪm] is the strongest thing
-   *  to check (the MORE! 1 wordlist prints exactly that notation) and the
-   *  weakest thing to READ — a first-year child cannot decode it unaided, so it
-   *  only works read aloud by someone else. The anchor works alone AND is still
-   *  machine-grounded, by a different route: the word it anchors to must be one
-   *  the child has already met, so `ausspracheDe` is checked against the unit's
-   *  own lexicon (scripts/check-paint-copy.mjs). „Sprich I'm wie das i in time"
-   *  is legal because `time` is in Unit 1 — the unit is CALLED Time for school. */
-  ausspracheDe?: string;
-  /** tip: the English word `ausspracheDe` anchors to — declared, not guessed.
-   *
-   *  ⚠ THIS FIELD EXISTS BECAUSE THE LAW COULD NOT BE WRITTEN WITHOUT IT. The
-   *  first attempt grounded every English-looking token in the line against the
-   *  unit lexicon, and it fired on „auf", „ein", „laut", „leise" — German prose
-   *  words that a tokenizer cannot tell from English ones. That is the SAME
-   *  reason `beispielEn` is English-only and the German Merksatz is not graded:
-   *  a mixed line cannot be split by machine. So the anchor is named here, and
-   *  the law checks two things it can actually check — the word is in the unit's
-   *  own lexicon, and it really appears in the line.
-   *
-   *  Optional: a line that teaches RHYTHM rather than a sound („laut auf three,
-   *  leise auf twenty") anchors to nothing and claims nothing. */
-  ankerEn?: string;
-  /** tip: THE TRAP — the wrong form, struck through, with the right one beside
-   *  it. „Nicht: I'am — richtig: I'm."
-   *
-   *  From the same critique: one wrong form struck through beats three right
-   *  ones when the mistake is about PLACEMENT. A child who has only ever seen
-   *  correct forms has nothing to recognise their own slip against, and „I'am"
-   *  is not a different rule — it is this rule with the apostrophe in the wrong
-   *  place, which is exactly the shape the page has to name.
-   *
-   *  TWO FIELDS, NOT ONE delimited string: six positional strings in a row all
-   *  typed `string` is a shape where any two can be swapped and it still
-   *  compiles, and a parser would face one law where two are available.
-   *
-   *  THE PAIR IS GATED HARDER THAN THE EXAMPLE IS, which is unusual and is the
-   *  point. `richtigeFormEn` faces the example law. `falscheFormEn` faces its
-   *  INVERSE: it must appear NOWHERE in the transcripts, because a »wrong form«
-   *  the book prints is not wrong — it is a form the author had not read yet.
-   *  And the two must be the SAME form mis-set (see `sameFormMisplaced`): a trap
-   *  that is simply a different sentence teaches a child to distrust a word
-   *  instead of to place an apostrophe. Both or neither. */
-  falscheFormEn?: string;
-  /** tip: the right form the trap corrects. See `falscheFormEn`. Both or neither. */
-  richtigeFormEn?: string;
+  // R5-W4 · I2 · WHAT USED TO STAND HERE AND WHY IT IS GONE (Koki, 2026-08-15,
+  // reading the three shipped pages): `ausspracheDe` + `ankerEn` (the spoken
+  // anchor, „Sprich I'm wie das i in time") — „das ‚how to pronounce' ist
+  // unnötig"; `falscheFormEn` + `richtigeFormEn` (the struck-through trap) —
+  // „Wir wollen KEINE Fehler zeigen, nur die richtigen Notions und Beispiele —
+  // es sei denn, das Buch zeigt es selbst so." Both were J1-D's answer to a
+  // teacher critique and both were built well; they are removed because the
+  // card they made is denser than the child it is for, not because they failed.
+  //
+  // They are kept OUT by construction, not by memory: `tip-honesty` rejects any
+  // params key it does not know, so re-adding one of these turns the gate red
+  // instead of quietly reaching a card that no longer renders it.
   /** spawned hidden, revealed by a link. */
   hidden?: boolean;
   [key: string]: unknown;
@@ -733,6 +731,28 @@ export interface LawFailure {
  *  sentence, out loud, in one breath. */
 export const MAX_MERKSATZ = 78;
 
+/** How long a Regel-Seite's Notion may be (R5-W4 · I2). Roomier than the
+ *  Merksatz because it is allowed two short sentences — the Merksatz is one
+ *  line to carry home, the Erklärung is the thing that makes it make sense. Not
+ *  roomier than that: past ~120 characters the card stops being a page a child
+ *  reads and becomes a paragraph they skip, which is the failure the whole
+ *  round exists to undo. */
+export const MAX_ERKLAERUNG = 120;
+
+/** How many examples a Regel-Seite carries. At least two, because one example
+ *  is a rule demonstrated once and that is what read as „ein Alibi"; at most
+ *  four, because the card sets them as a list and a fifth line pushes the
+ *  button off a phone screen. */
+export const MIN_BEISPIELE = 2;
+export const MAX_BEISPIELE = 4;
+
+/** Every params field a `role: "tip"` entity may carry. Stated as a closed set
+ *  because this is the one payload rendered straight to a child: an open record
+ *  turns a mistyped field name into a missing card line that nothing reports. */
+export const TIP_PARAM_KEYS: ReadonlySet<string> = new Set([
+  "topicDe", "erklaerungDe", "merksatzDe", "schluesselDe", "beispieleEn", "lehrtEn", "belegDe", "hidden",
+]);
+
 /** How long a Regel-Seite's bold key may be — bound to `cards/Glance.tsx`'s
  *  KEY_MAX_CHARS, not chosen beside it. A `Key` longer than that number silently
  *  drops its stroke, so a cap authored independently would be a cap that lies:
@@ -754,57 +774,6 @@ const ENGLISH_ONLY = /^[\x20-\x7E–—…‘’]+$/;
  *  would be wrong — but the per-sentence cap above still applies to each of its
  *  sentences, which is the clause that actually bites: the shipped ch01 line
  *  ran 51 + 115 and no gate in the repo had ever looked at it. */
-/** Levenshtein distance, small and exact — the strings here are one short
- *  English phrase each, so the simple two-row form is the right size. */
-const editDistance = (a: string, b: string): number => {
-  let prev = Array.from({ length: b.length + 1 }, (_, i) => i);
-  for (let i = 1; i <= a.length; i++) {
-    const cur = [i];
-    for (let j = 1; j <= b.length; j++) {
-      cur[j] = Math.min(
-        (prev[j] ?? 0) + 1,
-        (cur[j - 1] ?? 0) + 1,
-        (prev[j - 1] ?? 0) + (a[i - 1] === b[j - 1] ? 0 : 1),
-      );
-    }
-    prev = cur;
-  }
-  return prev[b.length] ?? 0;
-};
-
-/** R5-W2 · J1-D · Is `bad` the SAME form as `good`, only mis-set?
- *
- *  This is the law that makes a trap a TRAP. Two shapes count, because the
- *  teacher's own two examples are two shapes:
- *    · a PERMUTATION of the same words — »How you are?« ← »How are you?«,
- *      »three-twenty« ← »twenty-three«;
- *    · a small IN-WORD slip — »I'am« ← »I'm«, two edits apart.
- *  Hyphens split like spaces, because English number words are compounds and a
- *  compound is exactly where their placement law lives.
- *
- *  Anything else is a different sentence, and a trap built from a different
- *  sentence teaches a child to distrust a word instead of to place an
- *  apostrophe. */
-export const sameFormMisplaced = (bad: string, good: string): boolean => {
-  // ⚠ PUNCTUATION IS NOT PART OF A WORD, and this cost the law its first real
-  // case: »How you are?« against »How are you?« is the textbook word-order slip,
-  // and a tokenizer that keeps the question mark attached sees »are?« vs »you?«
-  // and calls them different words. The permutation test asks whether the same
-  // WORDS were laid down in a different order, so it strips everything that is
-  // not a letter or an apostrophe — the apostrophe stays because it is the very
-  // thing »I'am« misplaces, and that case is judged by edit distance below.
-  const toks = (str: string): string[] => str
-    .toLowerCase()
-    .split(/[\s-]+/)
-    .map((w) => w.replace(/[^\p{L}']/gu, ""))
-    .filter(Boolean)
-    .sort();
-  const a = toks(bad);
-  const b = toks(good);
-  if (a.length === b.length && a.every((t, i) => t === b[i])) return true;
-  return editDistance(bad.toLowerCase(), good.toLowerCase()) <= 2;
-};
-
 export const MAX_GOAL_DE = 200;
 
 /** "Close enough to a reachable node to count" — the same tolerance every
@@ -986,42 +955,95 @@ export const checkLevelLaws = (level: PaintLevel): LawFailure[] => {
         failures.push({ phase: "*", law: "tip-honesty", detail: `Regel-Seite ${t.id}: Schlüssel is ${key.length} chars (max ${MAX_SCHLUESSEL}) — over that the card drops the stroke and the bold key is silently not bold` });
       }
 
-      // R5-W2 · I1 · THE EXAMPLE IS THE BOOK'S, NOT OURS (doc 45 E2). Presence,
-      // language and length live here; the ATTESTATION — that the sentence is
-      // really printed in MORE! 1 — is `scripts/check-paint-copy.mjs`, which can
-      // read the transcripts this pure module may not.
-      const bsp = t.params?.beispielEn;
-      if (bsp === undefined || bsp.trim() === "") {
-        failures.push({ phase: "*", law: "tip-honesty", detail: `Regel-Seite ${t.id} has no English example — a rule page without one teaches a rule about nothing` });
-      } else if (!ENGLISH_ONLY.test(bsp)) {
-        failures.push({ phase: "*", law: "tip-honesty", detail: `Regel-Seite ${t.id}: beispielEn is not English — „${bsp}"` });
-      } else if (bsp.length > MAX_SCHLUESSEL) {
-        failures.push({ phase: "*", law: "tip-honesty", detail: `Regel-Seite ${t.id}: beispielEn is ${bsp.length} chars (max ${MAX_SCHLUESSEL}) — the card sets it as a Key and it would lose its stroke` });
-      }
-      const beleg = t.params?.belegDe;
-      if (beleg === undefined || beleg.trim() === "") {
-        failures.push({ phase: "*", law: "tip-honesty", detail: `Regel-Seite ${t.id} names no Beleg — the child may always see which page of their own book this came from` });
+      // R5-W4 · I2 · THE NOTION (Koki, 2026-08-15: „wir wollen mehr Notions,
+      // Erklärungen, Beispiele"). Checked separately from the Merksatz and NOT
+      // allowed to be the same sentence twice: the reason the card carries both
+      // is that they do different jobs, and two paraphrases of one rule is the
+      // padding this round exists to remove.
+      const erk = t.params?.erklaerungDe;
+      if (erk === undefined || erk.trim() === "") {
+        failures.push({ phase: "*", law: "tip-honesty", detail: `Regel-Seite ${t.id} has no Erklärung — the card would state a rule it never explains` });
+      } else {
+        if (erk.length > MAX_ERKLAERUNG) {
+          failures.push({ phase: "*", law: "tip-honesty", detail: `Regel-Seite ${t.id}: Erklärung is ${erk.length} chars (max ${MAX_ERKLAERUNG}) — „${erk}"` });
+        }
+        if (erk.trim() === satz.trim()) {
+          failures.push({ phase: "*", law: "tip-honesty", detail: `Regel-Seite ${t.id}: Erklärung und Merksatz sind derselbe Satz — die Erklärung sagt, WAS passiert, der Merksatz gibt die Regel; zweimal dasselbe ist eine Zeile zu viel` });
+        }
+        for (const err of registerErrorsDe(erk)) failures.push({ phase: "*", law: "tip-honesty", detail: `Regel-Seite ${t.id}: ${err}` });
       }
 
-      // R5-W2 · J1-D · THE TRAP (Koki's ruling of 2026-08-13). Optional as a
-      // pair and impossible as a half: a struck-through wrong form with no right
-      // one beside it is a mistake nobody corrects.
-      const bad = t.params?.falscheFormEn;
-      const good = t.params?.richtigeFormEn;
-      if ((bad === undefined) !== (good === undefined)) {
-        failures.push({ phase: "*", law: "tip-trap", detail: `Regel-Seite ${t.id}: die Falle hat nur eine Hälfte — eine durchgestrichene Form ohne die richtige daneben ist ein Fehler, den niemand richtigstellt` });
-      } else if (bad !== undefined && good !== undefined) {
-        for (const [what, str] of [["falscheFormEn", bad], ["richtigeFormEn", good]] as const) {
-          if (!ENGLISH_ONLY.test(str)) {
-            failures.push({ phase: "*", law: "tip-trap", detail: `Regel-Seite ${t.id}: ${what} is not English — »${str}«` });
-          } else if (str.length > MAX_SCHLUESSEL) {
-            failures.push({ phase: "*", law: "tip-trap", detail: `Regel-Seite ${t.id}: ${what} is ${str.length} chars (max ${MAX_SCHLUESSEL})` });
+      // R5-W4 · I2 · THE EXAMPLES ARE OURS (Koki's ruling K-1, 2026-08-15 — see
+      // `beispieleEn` in EntityParams for the full reasoning and for what it
+      // retires). Presence, count, language and length live here; GROUNDING —
+      // that every word is one this unit teaches — is
+      // `scripts/check-paint-copy.mjs`, which can read the lexicon this pure
+      // module may not.
+      const bsp = t.params?.beispieleEn;
+      if (!Array.isArray(bsp)) {
+        failures.push({ phase: "*", law: "tip-honesty", detail: `Regel-Seite ${t.id} has no English examples — a rule page without them teaches a rule about nothing` });
+      } else if (bsp.length < MIN_BEISPIELE || bsp.length > MAX_BEISPIELE) {
+        failures.push({ phase: "*", law: "tip-honesty", detail: `Regel-Seite ${t.id} carries ${bsp.length} example(s) — the card wants ${MIN_BEISPIELE}–${MAX_BEISPIELE}; one example is a rule shown once, five push the button off the screen` });
+      } else {
+        for (const [i, ex] of bsp.entries()) {
+          if (typeof ex !== "string" || ex.trim() === "") {
+            failures.push({ phase: "*", law: "tip-honesty", detail: `Regel-Seite ${t.id}: beispieleEn[${i}] is empty` });
+          } else if (!ENGLISH_ONLY.test(ex)) {
+            failures.push({ phase: "*", law: "tip-honesty", detail: `Regel-Seite ${t.id}: beispieleEn[${i}] is not English — „${ex}"` });
+          } else if (ex.length > MAX_SCHLUESSEL) {
+            failures.push({ phase: "*", law: "tip-honesty", detail: `Regel-Seite ${t.id}: beispieleEn[${i}] is ${ex.length} chars (max ${MAX_SCHLUESSEL}) — the card sets it as a Key and it would lose its stroke` });
           }
         }
-        if (bad === good) {
-          failures.push({ phase: "*", law: "tip-trap", detail: `Regel-Seite ${t.id}: beide Formen sind gleich — eine Falle ohne Unterschied lehrt nichts` });
-        } else if (!sameFormMisplaced(bad, good)) {
-          failures.push({ phase: "*", law: "tip-trap", detail: `Regel-Seite ${t.id}: »${bad}« ist keine falsch gesetzte Fassung von »${good}«, sondern ein anderer Satz — die Falle soll den PLATZ zeigen, nicht ein neues Wort` });
+      }
+
+      // R5-W4 · I2 · COVERAGE AND RELEVANCE — what replaces the retired
+      // quotation gate, and stricter than it was, because it reads both ways.
+      //
+      // COVERAGE is the one that earns its keep. I1 shipped a card titled
+      // „Kurzformen — I'm · it's · isn't" that explained two of the three, and
+      // every machine gate in the repo was green; a human teacher caught it.
+      // A title is a promise, and a promise a machine can check should be.
+      const lehrt = t.params?.lehrtEn;
+      const examples = Array.isArray(bsp) ? bsp.filter((x): x is string => typeof x === "string") : [];
+      if (!Array.isArray(lehrt) || lehrt.length === 0) {
+        failures.push({ phase: "*", law: "tip-honesty", detail: `Regel-Seite ${t.id} declares no lehrtEn — without it nothing can check that the examples show the rule the page is named after` });
+      } else if (lehrt.length > MAX_BEISPIELE) {
+        failures.push({ phase: "*", law: "tip-honesty", detail: `Regel-Seite ${t.id} claims to teach ${lehrt.length} forms — a page teaches one rule, so at most ${MAX_BEISPIELE} forms of it` });
+      } else if (examples.length > 0) {
+        const low = examples.map((e) => e.toLowerCase());
+        for (const form of lehrt) {
+          if (typeof form !== "string" || form.trim() === "") {
+            failures.push({ phase: "*", law: "tip-honesty", detail: `Regel-Seite ${t.id}: lehrtEn holds an empty form` });
+          } else if (!low.some((e) => e.includes(form.toLowerCase()))) {
+            failures.push({ phase: "*", law: "tip-honesty", detail: `Regel-Seite ${t.id}: die Seite nennt „${form}", aber kein Beispiel zeigt es — der Titel verspricht dann mehr, als die Karte hält` });
+          }
+        }
+        for (const [i, ex] of low.entries()) {
+          if (!lehrt.some((f) => typeof f === "string" && f.trim() !== "" && ex.includes(f.toLowerCase()))) {
+            failures.push({ phase: "*", law: "tip-honesty", detail: `Regel-Seite ${t.id}: beispieleEn[${i}] „${examples[i]}" zeigt keine der Formen, die diese Seite lehrt — ein Beispiel, das die Regel nicht vorführt, füllt nur die Liste` });
+          }
+        }
+      }
+
+      // `belegDe` is DATA, not display (Koki 2026-08-15: the card no longer
+      // points at the book). Still required: the teacher and the register need
+      // to know which page of the unit a rule came from, and a field nobody is
+      // forced to fill is a field that rots.
+      const beleg = t.params?.belegDe;
+      if (beleg === undefined || beleg.trim() === "") {
+        failures.push({ phase: "*", law: "tip-honesty", detail: `Regel-Seite ${t.id} names no Beleg — the teacher's view and the register need the unit page even though no card shows it` });
+      }
+
+      // R5-W4 · I2 · THE TYPO GATE. `params` is an open record everywhere else
+      // in this file, which is right for a format where every role brings its
+      // own knobs — and wrong for the one payload a child READS: a mistyped
+      // `beispieleEN` would vanish silently and the card would render a page
+      // with no examples on it. It is also what keeps J1-D's four retired
+      // fields retired: re-adding `ausspracheDe` turns this red instead of
+      // reaching a card that stopped rendering it.
+      for (const k of Object.keys(t.params ?? {})) {
+        if (!TIP_PARAM_KEYS.has(k)) {
+          failures.push({ phase: "*", law: "tip-honesty", detail: `Regel-Seite ${t.id}: unknown params field „${k}" — a rule page carries ${[...TIP_PARAM_KEYS].join(", ")} and nothing else; a typo here reaches the child as a missing line` });
         }
       }
     }

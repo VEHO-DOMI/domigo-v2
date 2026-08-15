@@ -220,18 +220,36 @@ um die Arena-Dimension (F6).
 Dichte-Regler: 0,5–0,75 Wesen-Begegnungen je Screen (Schwarm-Gauntlet p2 = deklarierte
 Ausnahme als EIN Set-Piece). Trails = Sätze (Läufe 3er), Wort pro Phase aus dem Feld.
 
-## §Regel-Seiten-Budget (doc 44 §4: ~~3~~ **5** Seiten = u01-Topics)
+## §Regel-Seiten-Budget (R51: ~~3~~ **5** Seiten = die Grammatik der Unit)
 
 ~~p1 = »Kurzformen« · p2 = »Begrüßen/Verabschieden« · p3 = »Zahlen«.~~
 
 **★ ENTSCHIEDEN (Koki, 2026-08-15; Ruling R51): FÜNF Seiten, verteilt p1/p1/p2/p2/p3.**
 »Kurzformen« · »Befehle« · »Fragen/Begrüßen« · »Zahlen« · »Plural«. Damit ist auch doc 45
 **E4** („reichen 3 für die Unit?") beantwortet: nein. Vorgaben je Seite — **kein sichtbarer
-Buchbeleg, keine Aussprache, keine Falsch-Beispiele**, und **≥2 Beispiele wörtlich aus dem
-Buch**. ⚠ **Gebaut wird das in Session I2**; bis dahin liefert das Level 3 `tip`-Entities
-und `tipsTotal: 3` — die Zahl 5 ist Kanon, aber noch keine Weltsache, und keine Karte darf
-sie versprechen, bevor die Seiten existieren. Die Reihenfolge der fünf ist ein offenes
-Koki-Tor.
+Buchbeleg, keine Aussprache, keine Falsch-Beispiele** ~~und ≥2 Beispiele wörtlich aus dem
+Buch~~.
+
+**★ DIE ZITAT-VORGABE IST ÜBERHOLT (Koki, 2026-08-15, Ruling K-1 — D-150):** »nicht die
+exakt selben sätze aus dem buch (wir schreiben immer unsere eigenen beispiele – die
+natürlich aber zum kontext und level passen)«. Die Beispiele sind seit I2 UNSERE Sätze;
+gebunden bleiben sie durch das u01-Lexikon (jedes Wort) und neu durch `lehrtEn`
+(ABDECKUNG: jede Form, die der Titel nennt, steht in einem Beispiel · RELEVANZ: kein
+Beispiel am Thema vorbei). Datiert überholt, nicht still gelöscht.
+
+**ALS GEBAUT IN R5-W4 I2 (2026-08-15):**
+
+p1 = »Kurzformen« **+ »Befehle«** · p2 = »Fragen und Begrüßen« **+ »Zahlen«** ·
+p3 = **»Plural«**.
+
+Warum fünf: MORE! 1 Unit 1 druckt auf S. 15 drei Grammatik-Kästen — **Plural +
+unregelmäßige Plurale**, **Questions**, **Imperatives** — dazu die vier Note-Kästen der
+Kurzformen (S. 11/13/14) und die Zahlen 1–25 (S. 8/10). Von diesen fünf trugen die alten
+drei Seiten eine ganze (Kurzformen), eine halbe (Fragen, als »Begrüßen/Verabschieden«)
+und eine Randnotiz (Zahlen); **Plural und Imperative fehlten ganz.** Kokis Wort dafür:
+»ein Kuratierungsproblem«. Das Level trägt jetzt fünf `tip`-Entities und `tipsTotal: 5`;
+`tip-honesty` beweist die Zahl gegen die Welt. Die REIHENFOLGE der fünf bleibt ein
+offenes Koki-Tor (Tabelle im I2-Report).
 
 **Geändert in R5-W2 I1 (2026-08-13):** p1 hieß »to be« — MORE! 1 führt „the verb to be"
 laut eigener Ziel-Liste erst in **Unit 2**; Unit 1 druckt stattdessen die drei Note-Kästen

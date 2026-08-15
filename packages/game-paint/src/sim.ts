@@ -103,7 +103,7 @@ export const KNOCK_DIR_MIN_PX = 6;
  *
  *  It is ONE named object rather than six positional strings for a reason the
  *  compiler cannot help with otherwise: `(id, topicDe, merksatzDe, schluesselDe,
- *  beispielEn, belegDe)` are all `string`, so any two of them swapped type-checks
+ *  erklaerungDe, belegDe)` are all `string`, so any two of them swapped type-checks
  *  perfectly and shows a child the wrong line. Named fields make that mis-order
  *  impossible to write. */
 export interface TipPayload {
@@ -113,19 +113,18 @@ export interface TipPayload {
   skin: string;
   /** which of the unit's rules this page is. */
   topicDe: string;
+  /** R5-W4 · I2: the NOTION — what happens in this rule, before it is stated as
+   *  a rule. The card's first line. */
+  erklaerungDe: string;
   /** the rule, kid-worded — the card's lede. */
   merksatzDe: string;
   /** the one phrase of it the card sets in bold; a substring of `merksatzDe`. */
   schluesselDe: string;
-  /** the English example, verbatim from the unit's own pages. */
-  beispielEn: string;
-  /** R5-W2 · J1-D: how it SOUNDS, and the wrong form struck through. Both
-   *  optional at the payload boundary — a chapter authored before this round
-   *  has neither, and the card simply omits the line. */
-  ausspracheDe: string;
-  falscheFormEn: string;
-  richtigeFormEn: string;
-  /** which page of the child's book the example comes from. */
+  /** R5-W4 · I2: 2–4 English lines that show the rule at work. OURS, not the
+   *  book's (Koki's ruling K-1), grounded against the unit lexicon. */
+  beispieleEn: readonly string[];
+  /** which page of the child's book this rule lives on. Carried so the archive
+   *  and the library keep it; NO surface renders it (Koki, 2026-08-15). */
   belegDe: string;
 }
 
@@ -935,12 +934,15 @@ export class Sim {
           id: ev.id,
           skin: String(e?.skin ?? "regelseite"),
           topicDe: String(e?.params.topicDe ?? ""),
+          erklaerungDe: String(e?.params.erklaerungDe ?? ""),
           merksatzDe: String(e?.params.merksatzDe ?? ""),
           schluesselDe: String(e?.params.schluesselDe ?? ""),
-          beispielEn: String(e?.params.beispielEn ?? ""),
-          ausspracheDe: String(e?.params.ausspracheDe ?? ""),
-          falscheFormEn: String(e?.params.falscheFormEn ?? ""),
-          richtigeFormEn: String(e?.params.richtigeFormEn ?? ""),
+          // filtered to strings rather than mapped through String(): a stray
+          // number in the array should show up as a MISSING line the gates can
+          // see, not as the word „42" set in the accent ink.
+          beispieleEn: Array.isArray(e?.params.beispieleEn)
+            ? e.params.beispieleEn.filter((x): x is string => typeof x === "string")
+            : [],
           belegDe: String(e?.params.belegDe ?? ""),
           got: this.tipsGot,
         });

@@ -45,18 +45,28 @@ const PaintParams = z.record(z.string(), z.unknown()).check((ctx) => {
   if ("cage" in p && (typeof p.cage !== "string" || p.cage.trim() === "")) {
     ctx.issues.push({ code: "custom", input: p, path: ["cage"], message: "params.cage must be a non-empty entity id" });
   }
-  // R5-W2 · I1: the same guard for the three fields the reading card added.
+  // R5-W2 · I1: the same guard for the fields the reading card added.
   // `params` is an OPEN record, so these arrive whether or not they are named
   // here — which is exactly why they are named here: unchecked, a null or a
   // number would be rendered as the rule, the key or the quotation itself.
-  // R5-W2 · J1-D: `ausspracheDe` and the trap pair join the loop. ⚠ THIS IS THE
-  // STEP EVERY NEW LEVEL FIELD FORGETS: this schema strips what it does not
-  // name, so an unlisted field passes the authoring gate on disk and arrives at
-  // the child as undefined — visible nowhere except on the card that is missing
-  // a line nobody notices.
-  for (const k of ["topicDe", "merksatzDe", "schluesselDe", "beispielEn", "belegDe", "ausspracheDe", "falscheFormEn", "richtigeFormEn"] as const) {
+  // R5-W4 · I2: `erklaerungDe` joins; `beispielEn` becomes the ARRAY
+  // `beispieleEn`, and `lehrtEn` arrives beside it. The four J1-D fields
+  // (`ausspracheDe`, `ankerEn`, `falscheFormEn`, `richtigeFormEn`) are gone and
+  // are kept out by `tip-honesty`'s typo gate, which is role-aware and can say
+  // „a rule page does not carry this" — something this record cannot, because
+  // here every role's params look alike.
+  for (const k of ["topicDe", "erklaerungDe", "merksatzDe", "schluesselDe", "belegDe"] as const) {
     if (k in p && (typeof p[k] !== "string" || p[k].trim() === "")) {
       ctx.issues.push({ code: "custom", input: p, path: [k], message: `params.${k} must be a non-empty string` });
+    }
+  }
+  // …and the two arrays. Same reason, one level deeper: an array holding a
+  // number reaches the card as a line set in the accent ink that says „42".
+  for (const k of ["beispieleEn", "lehrtEn"] as const) {
+    if (!(k in p)) continue;
+    const v = p[k];
+    if (!Array.isArray(v) || v.length === 0 || v.some((x) => typeof x !== "string" || x.trim() === "")) {
+      ctx.issues.push({ code: "custom", input: p, path: [k], message: `params.${k} must be a non-empty array of non-empty strings` });
     }
   }
 });

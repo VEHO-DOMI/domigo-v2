@@ -14,7 +14,7 @@ import { COLOUR_FLOOD_TICKS, WASHED_ROLES, WASH_ALPHA, washAlphaFor } from "./an
 import { MAGNET_FIELD_PX, Sim } from "./sim.ts";
 import { IDLE_PAD } from "./player.ts";
 import { SUBS, TILE } from "./paint.ts";
-import { allPhases, checkLevelLaws, type PaintLevel } from "./level.ts";
+import { allPhases, checkLevelLaws, type EntitySpec, type PaintLevel } from "./level.ts";
 
 const LEVEL = path.resolve(__dirname, "../../../content/corpus/stories/g1.st.lost-pages/paint/ch01.level.json");
 const level = JSON.parse(fs.readFileSync(LEVEL, "utf8")) as PaintLevel;
@@ -164,20 +164,27 @@ describe("the static-state collectibles (R3-16, doc 41 §5)", () => {
     }
   });
 
-  it("EVERY Regel-Seite can actually be walked into, and hands over its own rule", () => {
-    // the tapes prove two of the three by execution; this proves all of them,
-    // including the one deliberately hidden high in p1 that no pilot detours to.
+  it("EVERY Regel-Seite can actually be walked into, and hands over its whole payload", () => {
+    // the tapes prove some of them by execution; this proves ALL of them,
+    // including the ones deliberately off the pilots' line. R5-W4 · I2: the
+    // examples are matched too, because they are the half a child reads as
+    // English and the half that changed shape this round — a payload that
+    // arrives with the rule and without its examples is a card with a hole in
+    // it, and the old assertion could not have seen that.
     for (const ph of level.phases) {
       for (const spec of ph.entities.filter((e) => e.role === "tip")) {
         const sim = newSim(ph.id);
         sim.warp(spec.c, spec.r);
-        let got: { topicDe: string; merksatzDe: string } | null = null;
+        let got: { topicDe: string; erklaerungDe: string; merksatzDe: string; beispieleEn: readonly string[] } | null = null;
         for (let t = 0; t < 90 && got === null; t++) {
           for (const ev of sim.step({ ...IDLE_PAD })) if (ev.type === "tip") got = ev;
         }
         expect(got, `${ph.id}/${spec.id} was never picked up`).not.toBeNull();
         expect(got!.merksatzDe).toBe(spec.params!.merksatzDe);
         expect(got!.topicDe).toBe(spec.params!.topicDe);
+        expect(got!.erklaerungDe).toBe(spec.params!.erklaerungDe);
+        expect([...got!.beispieleEn], `${spec.id} lost its examples on the way to the card`)
+          .toEqual(spec.params!.beispieleEn);
       }
     }
   });
@@ -204,16 +211,31 @@ describe("the static-state collectibles (R3-16, doc 41 §5)", () => {
     expect(fired, "a remounted phase must not re-serve a page the child already has").toBe(false);
   });
 
-  it("a Bonus-Buch is score only — it never stops the world", () => {
-    const spec = level.phases.flatMap((p) => p.entities.filter((e) => e.role === "book").map((e) => ({ ph: p.id, e })))[0]!;
-    const sim = newSim(spec.ph);
-    sim.warp(spec.e.c, spec.e.r);
-    let fired = false;
-    for (let t = 0; t < 90 && !fired; t++) {
-      for (const ev of sim.step({ ...IDLE_PAD })) if (ev.type === "book") fired = true;
+  // R5-W4 · I2 · THE BONUS-BÜCHER ARE GONE (R53, Koki's replay 2026-08-15:
+  // „Bonusbücher: unerklärt, fehl am Platz"). Three `role: "book"` entities that
+  // the chapter never introduced, counted by a HUD chip a child had no way to
+  // read. Uniform collectibles take their place in a later wave.
+  //
+  // The old test walked into the FIRST book and proved it did not freeze the
+  // world. What replaces it is not nothing: `booksTotal` is derived at runtime
+  // from `chapterRoleCount(level, "book")` and is declared NOWHERE, so a book
+  // that crept back in would silently raise the HUD total with no gate to see
+  // it. This is that gate, and it is stated over every phase the chapter has.
+  it("ch01 holds no Bonus-Buch at all, so nothing can count one", () => {
+    for (const ph of allPhases(level)) {
+      const books = ph.entities.filter((e) => e.role === "book");
+      expect(books.map((e) => e.id), `${ph.id} still holds a Bonus-Buch`).toEqual([]);
     }
-    expect(fired).toBe(true);
-    expect(sim.overlayOpen, "a score pickup must not interrupt play").toBe(false);
+    // …and the counter the HUD chip and the Bilanz row read stays at zero for a
+    // whole phase of play, which is what actually keeps both of them hidden.
+    const sim = newSim("p1");
+    for (let t = 0; t < 240; t++) {
+      for (const ev of sim.step({ ...IDLE_PAD })) {
+        expect(ev.type, "a book event fired in a chapter with no books").not.toBe("book");
+      }
+      if (sim.overlayOpen) sim.setOverlay(false);
+    }
+    expect(sim.booksGot).toBe(0);
   });
 });
 
@@ -244,8 +266,12 @@ describe("the tip-honesty law (doc 41 §7)", () => {
 
   it("promising a page the chapter does not place turns it RED", () => {
     const l = clone();
-    l.tipsTotal = (l.tipsTotal ?? 0) + 1;
-    expect(lawsNamed(l).join(" ")).toMatch(/declares 4 Regel-Seiten but places 3/);
+    const placed = l.phases.flatMap((p) => p.entities.filter((e) => e.role === "tip")).length;
+    l.tipsTotal = placed + 1;
+    // written from what the chapter HOLDS rather than from two literals: the
+    // old form said „declares 4 … places 3" and went red the moment the chapter
+    // gained a page, which is a test that breaks on content instead of on code.
+    expect(lawsNamed(l).join(" ")).toMatch(new RegExp(`declares ${placed + 1} Regel-Seiten but places ${placed}`));
   });
 
   it("a page with no Merksatz turns it RED (an empty rule page is a broken promise)", () => {
@@ -291,11 +317,18 @@ describe("the tip-honesty law (doc 41 §7)", () => {
     expect(lawsNamed(l).join(" ")).toMatch(/Schlüssel is 57 chars/);
   });
 
-  it("a page with no English example turns it RED", () => {
+  it("a page with no English examples turns it RED", () => {
     const l = clone();
     const t = l.phases.flatMap((p) => p.entities).find((e) => e.role === "tip")!;
-    t.params!.beispielEn = "";
-    expect(lawsNamed(l).join(" ")).toMatch(/no English example/);
+    delete t.params!.beispieleEn;
+    expect(lawsNamed(l).join(" ")).toMatch(/no English examples/);
+  });
+
+  it("a single example turns it RED — a rule shown once is a rule asserted", () => {
+    const l = clone();
+    const t = l.phases.flatMap((p) => p.entities).find((e) => e.role === "tip")!;
+    t.params!.beispieleEn = [(t.params!.beispieleEn as string[])[0]!];
+    expect(lawsNamed(l).join(" ")).toMatch(/carries 1 example\(s\)/);
   });
 
   it("German LETTERS in the English slot turn it RED", () => {
@@ -311,15 +344,73 @@ describe("the tip-honesty law (doc 41 §7)", () => {
     // „zeigt" and „fehlt" as un-grounded. Verified by tamper, not assumed.
     const l = clone();
     const t = l.phases.flatMap((p) => p.entities).find((e) => e.role === "tip")!;
-    t.params!.beispielEn = "Die Kurzform steht für zwei Wörter.";
+    t.params!.beispieleEn = ["Die Kurzform steht für zwei Wörter.", "It's my school bag."];
     expect(lawsNamed(l).join(" ")).toMatch(/is not English/);
   });
 
-  it("a page with no Beleg turns it RED (the child may always see which page of their book this is)", () => {
+  it("a page with no Beleg turns it RED (the teacher's view and the register still need the unit page)", () => {
     const l = clone();
     const t = l.phases.flatMap((p) => p.entities).find((e) => e.role === "tip")!;
     delete t.params!.belegDe;
     expect(lawsNamed(l).join(" ")).toMatch(/names no Beleg/);
+  });
+
+  // ── R5-W4 · I2 · the three laws that arrived with Koki's ruling K-1 ─────────
+  // The examples are OURS now, not quotations, so the gate that proved they were
+  // in the book is gone. These are what took its place — and between them they
+  // catch a class the quotation gate never could.
+
+  // ⚠ ONE CLONE, ONE SWEEP, FIVE TAMPERS — and the reason is measured, not
+  // stylistic. `checkLevelLaws` costs 2–3 s on the shipped chapter (the
+  // trap-pocket law is O(nodes × BFS), see the block header above), so five
+  // tampers written as five `it()` blocks would add 10–15 s to every run of
+  // this suite. It showed: the first draft of this round did exactly that, and
+  // the extra pressure pushed `content-levels.test.ts` — a NEIGHBOURING file
+  // with a 30 s cap — over its timeout on a loaded machine, i.e. this packet
+  // would have handed the next session a red suite that had nothing to do with
+  // its own change.
+  //
+  // The five tampers are independent BY CONSTRUCTION: each one breaks a
+  // DIFFERENT rule page, so no two can mask each other and the single sweep
+  // reports all five failures at once. The `notReported` list at the end is
+  // what keeps that honest — it names the message each tamper must produce, so
+  // a law that silently stops firing cannot hide behind its four neighbours.
+  it("★ the five laws that arrived with Koki's ruling K-1, each proven RED", () => {
+    const l = clone();
+    const tips = l.phases.flatMap((p) => p.entities.filter((e) => e.role === "tip"));
+    expect(tips.length, "this test needs one page per tamper").toBeGreaterThanOrEqual(5);
+    const [a, b, c, d, e] = tips as [EntitySpec, EntitySpec, EntitySpec, EntitySpec, EntitySpec];
+
+    // 1 · no Notion at all
+    delete a.params!.erklaerungDe;
+    // 2 · a Notion that is just the Merksatz again — the padding this round
+    //     exists to remove may not grow back quietly
+    b.params!.erklaerungDe = b.params!.merksatzDe;
+    // 3 · THE DEFECT THIS ROUND EXISTS FOR: a form the title promises and no
+    //     example shows. I1 shipped „Kurzformen — I'm · it's · isn't" and
+    //     explained two of the three; every gate was green and a human teacher
+    //     caught it by reading.
+    const forms = c.params!.lehrtEn as string[];
+    const dropped = forms[forms.length - 1]!;
+    c.params!.beispieleEn = (c.params!.beispieleEn as string[])
+      .filter((x) => !x.toLowerCase().includes(dropped.toLowerCase()));
+    // 4 · an example that is grounded, well-formed, in register — and about a
+    //     different rule entirely
+    d.params!.beispieleEn = [(d.params!.beispieleEn as string[])[0]!, "Open the window!"];
+    // 5 · a params field the schema does not know. Catches a TYPO
+    //     (`beispieleEN` would vanish into an open record and reach the child as
+    //     a card with no examples) and keeps J1-D's four retired fields retired.
+    e.params!.ausspracheDe = "Sprich I'm wie das i in time.";
+
+    const said = lawsNamed(l).join(" ");
+    const notReported = ([
+      ["Notion fehlt", /has no Erklärung/],
+      ["Notion = Merksatz", /derselbe Satz/],
+      ["Abdeckung", /aber kein Beispiel zeigt es/],
+      ["Relevanz", /zeigt keine der Formen/],
+      ["unbekanntes Feld", /unknown params field „ausspracheDe"/],
+    ] as const).filter(([, re]) => !re.test(said)).map(([name]) => name);
+    expect(notReported, `these tampers did NOT turn the law red:\n${said}`).toEqual([]);
   });
 
   it("a Regel-Seite placed where no child can reach it turns entity-reachable RED", () => {
