@@ -375,3 +375,48 @@ Reserviert: D-200…D-209.
 | D-207 | `scripts/shoot-card-bench.mjs` hat den CDP-Port **9333 fest verdrahtet**. Bei zehn parallelen Sessions ist das ein Kollisionsrisiko; zwei Läufe gleichzeitig treffen denselben Browser. | `shoot-card-bench.mjs:26`. | Port aus einer Option ableiten (z. B. `--cdp`), wie es `shoot-world.mjs` tut. | W2 / Werkzeug-Spur | D3 |
 | D-208 | `create()` reisst sein 100-ms-Budget in ALLEN fünf Phasen, vorher wie nachher (p2 vorher 778,8 → nachher 665,0 ms). Nicht von dieser Runde verursacht. | `measure-create.mjs`-Läufe vorher/nachher, im PR. | **E6 in Welle 5** (R40). | E6 | E4/E5, hier bestätigt |
 | D-209 | Der Fokus-Modus dunkelt die BÜHNE ab; die HUD-Chips („Befreit", „Regel-Seiten", „Buchstaben") liegen ausserhalb davon auf der Seite und bleiben hell. Kokis Wortlaut ist „alles andere ausgeblendet". | Bild `04-karte-nachher-fokus.png` gegen die Leiste im laufenden Spiel. | **D3b**: eine Klasse an der HUD-Zeile in `PaintGame.tsx` (Struktur, erst nach C2-Merge erlaubt). | D3b | Kokis Replay 15.08. |
+
+## R5-W4b · DIE SECHS ABSCHNITTE (Fable, 2026-08-15 abends) — vorab angelegt, damit sechs parallele Sessions nicht am Datei-Ende kollidieren
+Jede Welle-4b-Session trägt ihre Schulden NUR in ihren eigenen Abschnitt unten ein und vergibt NUR Nummern aus ihrem reservierten Block (Reservierung ist eine Prosa-Zeile, keine Tabellenzeile — `check-registers` zählt nur `| D-nnn |`-Zeilen). PB-Nummern vergibt ausschließlich K3. Merge-Reihenfolge 4b: K3 → C3 → D3b → H3 → A6b → W3. Herkunft: `BOOT-SHEET.md` §„WELLE 4 · MERGE-ZUG + NACHSTEUER" + die sechs Passover (PLATFORM MASTER/SESSION-PROMPTS/R5-OPUS-WAVE-2026-08-11/).
+
+## R5-W4b · D3b — Karten II (2026-08-15)
+
+Reserviert: D-210…D-219.
+
+| Nr. | Befund | Beleg | Fix | Wer/wann | Herkunft |
+|---|---|---|---|---|---|
+
+## R5-W4b · C3 — Farb-Import (2026-08-15)
+
+Reserviert: D-220…D-229.
+
+| Nr. | Befund | Beleg | Fix | Wer/wann | Herkunft |
+|---|---|---|---|---|---|
+
+## R5-W4b · H3 — Tafel II (2026-08-15)
+
+Reserviert: D-230…D-239.
+
+| Nr. | Befund | Beleg | Fix | Wer/wann | Herkunft |
+|---|---|---|---|---|---|
+
+## R5-W4b · K3 — Kanon-Sweep (2026-08-15)
+
+Reserviert: D-240…D-249.
+
+| Nr. | Befund | Beleg | Fix | Wer/wann | Herkunft |
+|---|---|---|---|---|---|
+
+## R5-W4b · W3 — Werkzeug III (2026-08-15)
+
+Reserviert: D-250…D-259.
+
+| Nr. | Befund | Beleg | Fix | Wer/wann | Herkunft |
+|---|---|---|---|---|---|
+
+## R5-W4b · A6b — Kanten II (2026-08-15)
+
+Reserviert: D-260…D-269.
+
+| Nr. | Befund | Beleg | Fix | Wer/wann | Herkunft |
+|---|---|---|---|---|---|
