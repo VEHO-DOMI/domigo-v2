@@ -26,6 +26,7 @@ import {
   awakenClassmate,
   classmateOfCage,
   guardianKnotSolved,
+  JOY_ROLES,
   redeemEntity,
   restoreFreedClassmate,
   rideAttachCheck,
@@ -146,6 +147,13 @@ export type SimEvent =
   | { type: "arenaBrief" }
   | { type: "letters"; got: number; total: number }
   | { type: "letterTaken"; c: number; r: number }
+  /** R5-W4 · B4 · D-4: a BEING was answered — a moth that asked its number, a
+   *  drained object that got its colour back, a pencil that was sent away. Every
+   *  other ledgered fact already had an event with an id on it (`cageFreed`,
+   *  `tip`, `book`); this one did not, so the shell never learned about it and
+   *  `spawnEntities` handed the child the same moth again after every
+   *  Kleckskammer trip. Koki, 2026-08-15: „die Sachen bleiben erfasst." */
+  | { type: "entityResolved"; id: string; role: string }
   /** PK-R3b · R3-16: a Regel-Seite was picked up. It carries its own rule, so
    *  the shell can render the page without looking anything up — and the world
    *  is frozen for it, because a rule you are meant to READ may not scroll past
@@ -179,6 +187,19 @@ export interface SimCfg {
    *  back from the Kleckskammer, and a rule page that respawns there is a page
    *  the HUD counts twice. Same contract as freedCageIds. */
   collectedPickupIds?: () => readonly string[];
+  /** R5-W4 · B4 · D-4: beings already ANSWERED in an earlier mount of this
+   *  chapter (ids) — moths, chasers, bouncers, flyers, crushers, gunners and the
+   *  `drained` objects. Cages, Regel-Seiten and Bücher had their ledgers; these
+   *  did not, so „die Tür ist ein bezahlter Reset-Knopf" (D-4): a bonus trip
+   *  un-answered every encounter in the phase.
+   *
+   *  ONE list, not two. The passover offered `resolvedEntityIds` and
+   *  `restoredEntityIds` side by side, but the measurement says they are the same
+   *  bit: `redeemEntity` sets `redeemed` for a moth and for a desk alike, and
+   *  what differs is only the RESTING POSE the constructor replays for each role.
+   *  Two names for one fact is how two ledgers drift apart.
+   *  Same contract as freedCageIds. */
+  resolvedEntityIds?: () => readonly string[];
   /** PB-F2: which jump-feel candidate to run (dev only; ships as `current`). */
   airModel?: AirModel;
   /** R5-A2 · the Kleckskammer round-trip, part 1: spawn HERE instead of at the
@@ -384,6 +405,29 @@ export class Sim {
       const e = this.world.entities.find((x) => x.id === id);
       if (e) e.redeemed = true;
     }
+    // ── R5-W4 · B4 · D-4 · WAS BEANTWORTET WAR, BLEIBT BEANTWORTET ───────────
+    // Koki, 15.08.2026: „die Motte oben kann man wieder triggern … die Sachen
+    // bleiben erfasst." `spawnEntities` above rebuilds the whole world at its
+    // birth values, so every remembered fact has to be re-applied on top of it —
+    // this is that loop, for the beings that never had one.
+    //
+    // The END states, not the beginning ones. `redeemEntity` (entities.ts) sets
+    // `freedTick = 0` and `state = "joy"` BECAUSE it wants the colour to flood
+    // in and the moth to fly its lap — that is the reward for answering, and it
+    // has already been watched. Replaying it on arrival would hand the child a
+    // celebration for something they did before they went shopping. So: the
+    // flood clock is parked at its end (`COLOUR_FLOOD_TICKS`), and the pose is
+    // the one `stepRedeemed` settles into — „rest" for the creatures that fly a
+    // lap, „dazed" for the static-state beings that never leave their cell.
+    // Exactly the shape `restoreFreedClassmate` uses for a freed cage's person.
+    for (const id of cfg.resolvedEntityIds?.() ?? []) {
+      const e = this.world.entities.find((x) => x.id === id);
+      if (!e) continue;
+      e.redeemed = true;
+      e.timer = 0;
+      e.freedTick = COLOUR_FLOOD_TICKS;
+      e.state = JOY_ROLES.has(e.role) ? "rest" : "dazed";
+    }
     // R5-A2: spawning ON the door one just returned through must not re-fire
     // it (the Klecks card would reopen in the arrival tick) — seed its
     // cooldown, mirroring entities.overlapsPlayer's door box (12, 26).
@@ -580,6 +624,12 @@ export class Sim {
         redeemEntity(this.world, ctx.id);
         applyLinks(this.world, "redeemed", ctx.id);
         events.push({ type: "toast", msg: "Danke!" });
+        // R5-W4 · B4 · D-4: …and TELL THE SHELL. Up to here this branch changed
+        // the world and announced nothing with an id on it, so the fact died
+        // with the mount — which is why a paid trip to the Kleckskammer used to
+        // hand every moth back unasked. The cage branch below has always emitted
+        // `cageFreed`; this is the same courtesy for everyone else.
+        if (e) events.push({ type: "entityResolved", id: e.id, role: e.role });
       }
     } else if (ctx.type === "cage") {
       const freed = this.cfg.freedCageIds().length + 1;
@@ -1039,8 +1089,15 @@ export class Sim {
     const r = Math.floor((fromSubs(this.player.y) - 1) / TILE);
     if (glyphAt(this.grid, c, r) === "C" || glyphAt(this.grid, c, r + 1) === "C") {
       if (this.respawnCell?.c !== c) {
+        // The anchor itself is unconditional — this line is what an ink splash
+        // comes back to, and R44 changed only how the anchor SHOWS itself.
         this.respawnCell = { c, r: Math.max(r, 1) };
-        events.push({ type: "toast", msg: "Krakel skizziert dich!" });
+        // R5-W4 · B4 · R44: …so a silent chapter takes the anchor and says
+        // nothing. Announcing a being the child cannot see would be worse than
+        // the clutter Koki asked us to remove.
+        if (this.cfg.level.checkpointStyle !== "silent") {
+          events.push({ type: "toast", msg: "Krakel skizziert dich!" });
+        }
       }
     }
   }

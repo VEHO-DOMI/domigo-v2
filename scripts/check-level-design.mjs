@@ -321,6 +321,92 @@ export const thresholdFails = (lvl, dossierDir) => {
   return out;
 };
 
+// ── 6 · BUCHSTABEN-ANKER (R5-W4 · B4 · R45) ─────────────────────────────────
+// Block 3 bindet jede ENTITY an ihre Manifest-Zeile. Die Buchstaben-Zeilen fielen
+// dabei durch das Netz: ihre erste Zelle heißt „O·O·L", nicht „p1-moths-1", und
+// der Parser dort verlangt ein „-" in der id. Ergebnis: die einzige Maschinen-
+// Prüfung auf ein `*` war `collectible-reachable` in level.ts — WO die Zellen
+// liegen, stand nur in der Prosa, und eine Prosa-Zeile, die niemand liest, ist
+// nach dem ersten Umzug falsch. (Genau das war sie: diese Runde verschiebt zwei
+// O, und ohne diesen Block hätten p1.md und p9.md still die alten Koordinaten
+// weitergetragen.)
+//
+// Format (eine Zeile je Buchstaben-Gruppe, in der Manifest-Tabelle):
+//   | A·B·C | … | **(c,r) (c,r) (c,r)** | …
+// Geprüft in beiden Richtungen — und, WENN eine Schreibung mitgegeben wird, auch
+// gegen sie: die Kette muss die Zeichen tragen, die letters.ts an genau diesen
+// Zellen ausgibt. Dieses Skript läuft in CI mit blankem `node` und kann
+// composition.ts (TypeScript) deshalb nicht importieren, also lässt es die
+// Zeichen-Hälfte aus und prüft die KOORDINATEN — das ist die Klasse, die
+// verrottet. Der Selbsttest unten reicht eine Schreibung herein und hat das rote
+// Licht beider Hälften gesehen.
+export const letterAnchorFails = (lvl, dossierDir, spellOf = () => "") => {
+  const out = [];
+  const phs = [...lvl.phases, ...(lvl.bonus ? [lvl.bonus] : []), ...(lvl.arena ? [lvl.arena] : [])];
+  for (const ph of phs) {
+    const df = DOSSIER_OF[ph.id];
+    if (!df) continue;
+    const dp = path.join(dossierDir, df);
+    if (!fs.existsSync(dp)) continue;
+
+    // every `*` of the phase, in the order letters.ts hands out the characters
+    const stars = [];
+    ph.rows.forEach((row, r) => [...row].forEach((g, c) => { if (g === "*") stars.push({ c, r }); }));
+    stars.sort((a, b) => a.c - b.c || a.r - b.r);
+    if (stars.length === 0) continue;
+    const spelled = spellOf(ph.id);
+    const charAt = (i) => (spelled.length > 0 ? (spelled[i % spelled.length] ?? "?") : "?");
+
+    const claimed = new Map(); // "c,r" → the letter row that claims it
+    for (const line of fs.readFileSync(dp, "utf8").split("\n")) {
+      const cells = line.split("|");
+      if (cells.length < 4) continue;
+      const id = (cells[1] ?? "").trim();
+      // a letter row is a chain of single characters joined by "·" — the one
+      // shape Block 3's id rule can never match, which is why it was invisible
+      if (!/^[A-Za-z](·[A-Za-z])*$/.test(id)) continue;
+      const chain = id.split("·");
+      // Only the FIRST bold group of the Anker cell counts. The dossiers bold
+      // the live coordinates and then argue underneath them, and that argument
+      // can itself quote cells — p3's E·S·T row carries the three anchors plus
+      // the three pre-B1 ones it replaced, inside its own „ALS GEBAUT" note.
+      // Reading the whole cell turned that history into six anchors.
+      const anker = (cells[3] ?? "");
+      const bold = anker.match(/\*\*([^*]+)\*\*/);
+      const scope = bold ? bold[1] : anker;
+      const pairs = [...scope.matchAll(/\(\s*(\d+)\s*,\s*(\d+)\s*\)/g)].map((m) => ({ c: Number(m[1]), r: Number(m[2]) }));
+      if (pairs.length !== chain.length) {
+        out.push(`buchstaben: ${df}-Zeile "${id}" nennt ${chain.length} Zeichen, aber ${pairs.length} Zelle(n)`);
+        continue;
+      }
+      for (const [k, cell] of pairs.entries()) {
+        const key = `${cell.c},${cell.r}`;
+        if (claimed.has(key)) out.push(`buchstaben: ${df} nennt (${key}) zweimal ("${claimed.get(key)}" und "${id}")`);
+        claimed.set(key, id);
+        const glyph = ph.rows[cell.r]?.[cell.c] ?? ".";
+        if (glyph !== "*") {
+          out.push(`buchstaben: ${df}-Zeile "${id}" deklariert einen Buchstaben (${key}), das Grid trägt dort "${glyph}"`);
+          continue;
+        }
+        if (spelled.length === 0) continue; // coordinates only — see the note above
+        const idx = stars.findIndex((s) => s.c === cell.c && s.r === cell.r);
+        const want = charAt(idx);
+        if (chain[k].toUpperCase() !== want.toUpperCase()) {
+          out.push(`buchstaben: ${df}-Zeile "${id}" nennt "${chain[k]}" bei (${key}), der Trail buchstabiert dort "${want}"`);
+        }
+      }
+    }
+    // …und keine Zelle bleibt unbenannt
+    for (const [i, s] of stars.entries()) {
+      if (!claimed.has(`${s.c},${s.r}`)) {
+        const who = spelled.length > 0 ? ` "${charAt(i)}"` : ` #${i}`;
+        out.push(`buchstaben: ${ph.id} trägt den Buchstaben${who} bei (${s.c},${s.r}), ${df} nennt die Zelle in keiner Buchstaben-Zeile`);
+      }
+    }
+  }
+  return out;
+};
+
 // ── SELBSTTEST (`--selftest`) ────────────────────────────────────────────────
 // Bis heute hatte dieses Gate als EINZIGES dieser Spur keinen Tamper-Beweis.
 // Ein Check, dessen rotes Licht nie jemand gesehen hat, ist eine Behauptung.
@@ -394,6 +480,25 @@ if (process.argv.includes("--selftest")) {
       claimFails(CLAIMS, wordbank.entries, allSkins, JSON.parse(fs.readFileSync(TASKS, "utf8")).items, TODAY),
       (f) => f.length === 0],
   );
+  // ── Block 6 · Buchstaben-Anker (R45) ──────────────────────────────────────
+  // Eigene Welt: drei `*` in bekannter Spalten-Ordnung, Wort „ABC".
+  const lrows = ["####################", ...Array.from({ length: 17 }, () => "....................")];
+  lrows[10] = "....*......*...*....";           // c4, c11, c15
+  lrows.push("..S...............X.", "#".repeat(20), "#".repeat(20));
+  const llvl = { phases: [{ id: "p1", rows: lrows, entities: [] }] };
+  const spell = () => "ABC";
+  const lwrite = (body) => { fs.writeFileSync(path.join(tmp, "p1.md"), body); return letterAnchorFails(llvl, tmp, spell); };
+  const LGOOD = "| A·B·C | Buchstaben | **(4,10) (11,10) (15,10)** | Prosa | Mechanik |\n";
+  cases.push(
+    ["BUCHSTABEN: die wahre Zeile ist grün", lwrite(LGOOD), (f) => f.length === 0],
+    ["BUCHSTABEN: eine Koordinate veraltet", lwrite("| A·B·C | Buchstaben | **(4,10) (12,10) (15,10)** | p | m |\n"),
+      (f) => f.some((x) => /das Grid trägt dort "\."/.test(x)) && f.some((x) => /in keiner Buchstaben-Zeile/.test(x))],
+    ["BUCHSTABEN: Zeile ganz gelöscht", lwrite("nichts hier\n"), (f) => f.length === 3],
+    ["BUCHSTABEN: Zeichen und Trail widersprechen sich", lwrite("| A·C·B | Buchstaben | **(4,10) (11,10) (15,10)** | p | m |\n"),
+      (f) => f.some((x) => /nennt "C" bei \(11,10\), der Trail buchstabiert dort "B"/.test(x))],
+    ["BUCHSTABEN: Kette und Zellen zählen verschieden", lwrite("| A·B·C | Buchstaben | **(4,10) (11,10)** | p | m |\n"),
+      (f) => f.some((x) => /nennt 3 Zeichen, aber 2 Zelle\(n\)/.test(x))],
+  );
   let bad = 0;
   for (const [name, got, ok] of cases) {
     const pass = ok(got);
@@ -438,10 +543,11 @@ for (const ph of phases) {
 }
 
 fails.push(...thresholdFails(level, DOSSIERS));
+fails.push(...letterAnchorFails(level, DOSSIERS));
 
 if (fails.length) {
   console.error(`check-level-design: ${fails.length} Verstöße`);
   for (const f of fails) console.error("  ✗ " + f);
   process.exit(1);
 }
-console.log(`check-level-design: OK — Dedup (${seenStems.size} Wesen-Stems einmalig), Abdeckung (${wordbank.entries.filter((e) => e.kind === "wordfile").length} Vokabeln klassifiziert), Manifest-Anker deckungsgleich über ${phases.length} Phasen, Schwellen benannt, jede Entity mit Zweck`);
+console.log(`check-level-design: OK — Dedup (${seenStems.size} Wesen-Stems einmalig), Abdeckung (${wordbank.entries.filter((e) => e.kind === "wordfile").length} Vokabeln klassifiziert), Manifest-Anker deckungsgleich über ${phases.length} Phasen, Schwellen benannt, Buchstaben-Anker deckungsgleich, jede Entity mit Zweck`);

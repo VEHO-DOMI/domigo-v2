@@ -993,7 +993,8 @@
         "guardianTelegraphs": 0,
         "guardianWindows": 0,
         "guardianWroteLow": false,
-        "guardianConsoled": false
+        "guardianConsoled": false,
+        "guardianLanded": false
       }
     }
   }

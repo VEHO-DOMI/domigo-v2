@@ -179,9 +179,15 @@ const runPilot = (phaseId, entryAbilities, program, { maxTicks = 60 * 120, trace
 const PILOTS = {
   // p1 „Die Eingangshalle" (R5-P1, Dossier p1.md §10): GESTRANDET-HOCH.
   // Trail SCHOOLBAG 9/9 in drei Läufen: S/C/H im Bank-Lauf (der Bogen über
-  // der 2-Spalten-Lücke zahlt C im Flug) · O/O/L in der Brett-Lektion (Δr2-Tap
-  // auf die Stufe, dann der deklarierte 48-px-HALTE-Sprung) · B/A/G in der
-  // Spind-Leiter. Die Keller-Grube wird per Doppel-Tap gequert (B zahlt die
+  // der 2-Spalten-Lücke zahlt C im Flug) · O/O/L in der Brett-Lektion · B/A/G
+  // in der Spind-Leiter.
+  // R5-W4 · B4 · R45: die Brett-Lektion zahlt jetzt VERSETZT, weil das erste O
+  // von der Stufe (29,14) auf den Hallenboden (24,16) gezogen ist — es lagen
+  // zwei O in einem Blick beieinander (Kokis Bild 07.18.30). Gemessen am
+  // aufgenommenen Band: O(24,16) Tick 223 im Läufer-Flur · O(31,11) Tick 286
+  // beim Δr2-Tap auf die Stufe · L(33,11) Tick 335 im 48-px-HALTE-Sprung.
+  // Die Tastenfolge ist dabei BYTE-GLEICH geblieben — der Magnet zahlt die neue
+  // Zelle im Vorbeigehen, der Lauf musste nicht neu hergeleitet werden. Die Keller-Grube wird per Doppel-Tap gequert (B zahlt die
   // Landung). Läufer-/Hüpfer-Kontakt = Karte + iframes, ehrlich im Band.
   p1: {
     abilities: ["jump", "run"],
@@ -191,10 +197,10 @@ const PILOTS = {
       ["walkTo", 9], ["settle"],
       ["jump", { dir: "right", hold: 6 }], ["settle"], // Bank-Bogen 1 → S, C im Flug
       ["jump", { dir: "right", hold: 6 }], ["settle"], // Bank-Bogen 2 → H
-      ["walkTo", 27], ["settle"], // der Läufer-Flur (Band c20–28)
-      ["jump", { dir: "right", hold: 6, steer: 10 }], ["settle"], // AUF die Stufe → O
-      ["jump", { dir: "right", hold: 26, steer: 12 }], ["settle"], // HALTE aufs Brett-Podest → O
-      ["walkTo", 33], ["settle"], // → L
+      ["walkTo", 27], ["settle"], // der Läufer-Flur (Band c20–28) → das ERSTE O (24,16) im Gehen
+      ["jump", { dir: "right", hold: 6, steer: 10 }], ["settle"], // AUF die Stufe → das zweite O (31,11)
+      ["jump", { dir: "right", hold: 26, steer: 12 }], ["settle"], // HALTE aufs Brett-Podest → L
+      ["walkTo", 33], ["settle"],
       ["walkTo", 38], ["settle"], // runter zum Krakel-Checkpoint
       ["walkTo", 39], ["settle"],
       ["jump", { dir: "right", hold: 6, steer: 12 }], ["settle"], // Lücke 1 → Steg
@@ -303,6 +309,10 @@ const PILOTS = {
   },
   // p9 „Die Kleckskammer" (R5-P1, p9.md §10): DIE WELLE — Tape A, der
   // PERFEKT-Lauf: 12/12 (SCHOOLTHINGS) tap-traversierbar vor Uhr-Ablauf,
+  // R5-W4 · B4 · R45: die beiden O liegen nicht mehr auf EINER Reihe zwei
+  // Spalten nebeneinander, sondern als Diagonale über den Kamm — (17,6) und
+  // (21,8), Tick 172 und 218. Tastenfolge byte-gleich; der Kamm-Lauf zahlt das
+  // zweite O weiterhin im Gehen, das erste fällt jetzt in den Steigflug.
   // dann ✕. (Tape B/Timeout + Rückkehr-Band: deklarierte Schuld — D-23. Der frühere
   // Zusatz »hängt am offenen D-5-Koki-Tor« ist seit K1/2026-08-14 gestrichen: D-5 ist
   // seit B1 nicht nur genickt, sondern GEBAUT; es fehlt nur noch die Schema-Erweiterung.)
@@ -314,8 +324,8 @@ const PILOTS = {
       ["walkTo", 12], ["settle"],
       ["jump", { dir: "right", hold: 6, steer: 8 }], ["settle"], // Bogen → C → auf B
       ["walkTo", 15], ["settle"],
-      ["jump", { dir: "right", hold: 6, steer: 8 }], ["settle"], // Bogen → H → auf den KAMM
-      ["walkTo", 21], ["settle"], // O, O im Kamm-Lauf
+      ["jump", { dir: "right", hold: 6, steer: 8 }], ["settle"], // Bogen → H, dann O (17,6) im Steigflug → auf den KAMM
+      ["walkTo", 21], ["settle"], // → das zweite O (21,8) am Ost-Ende des Kamms
       ["jump", { dir: "right", hold: 6, steer: 8 }], ["settle"], // Bogen → L, T im Fall → auf E
       ["walkTo", 25], ["settle"],
       ["jump", { dir: "right", hold: 6, steer: 8 }], ["settle"], // Bogen → H, I im Fall → auf F
