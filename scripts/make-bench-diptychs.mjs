@@ -49,8 +49,13 @@ for (const id of ids) {
   const aPath = path.join(afterDir, `${id}.png`);
   if (!existsSync(bPath)) { console.log(`  – ${id} (kein Vorher-Bild)`); continue; }
   // one halving = the size the game is played at; two = a review thumbnail
-  // that a repository can carry without becoming an image host
-  const times = process.argv.includes("--thumb") ? 2 : 1;
+  // that a repository can carry without becoming an image host.
+  //
+  // R5-W4 · W2 · `--crop`: KEINE Halbierung. Ein Ausschnitt existiert genau
+  // deshalb, weil die Stelle sonst zu klein zum Urteilen ist (D-102); ihn danach
+  // auf die Hälfte zu rechnen gäbe die gewonnene Auflösung wieder her und machte
+  // den Ausschnitt sinnlos. Die Paare bleiben hier also in voller Größe.
+  const times = process.argv.includes("--crop") ? 0 : process.argv.includes("--thumb") ? 2 : 1;
   let b = PNG.sync.read(readFileSync(bPath));
   let a = PNG.sync.read(readFileSync(aPath));
   for (let i = 0; i < times; i++) { b = halve(b); a = halve(a); }

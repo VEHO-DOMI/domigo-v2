@@ -14,8 +14,36 @@
  * seconds each here, which is half an hour per round.) No new dependency:
  * Node 22 ships the WebSocket client this needs.
  *
- * Usage:  node scripts/shoot-card-bench.mjs <outDir> [--port 3007] [--only a,b]
- * The dev server must already be running (the bench is dev-only by law).
+ * ── R5-W4 · W2 · DREI ERWEITERUNGEN ─────────────────────────────────────────
+ *
+ * 1 · AUSSCHNITTE (D-102). Zwei Kritiker-Runden sind daran verbrannt, dass eine
+ *     Karten-KANTE auf einem Vollbild rund 6 % der Fläche einnimmt. Ein Kritiker
+ *     kann nur beurteilen, was das Bild in beurteilbarer Größe zeigt. `--crop`
+ *     liefert deshalb einen formatfüllenden Ausschnitt: das Motiv muss ≥ 40 %
+ *     der Ausgabefläche belegen, sonst bricht der Lauf ab (`--selftest` beweist
+ *     das rote Licht). Ein Selektor, der nichts trifft, ist ein HARTER Fehler —
+ *     nie stillschweigend ein Vollbild statt eines Ausschnitts.
+ *
+ * 2 · FLÄCHENLISTE MERGEBAR. `SURFACES` ist ein schlichtes id-Array mit EINER
+ *     id je Zeile und Schluss-Komma, damit eine andere Lane Flächen anhängen
+ *     kann, ohne dass zwei Branches auf dieselbe Zeile schreiben. Die
+ *     Ausschnitt-Daten liegen getrennt davon in `CROPS`.
+ *
+ * 3 · STUMME FEHLER GIBT ES NICHT MEHR. W1 meldete einen Abbruch nach ~15
+ *     Flächen und musste in vier Teilmengen fotografieren. Die Ursache war nicht
+ *     zu benennen, weil dieses Skript für sie BLIND war: kein `error`- und kein
+ *     `close`-Listener auf der Verbindung, keine Behandlung eines abgestürzten
+ *     Tabs. Ein Renderer-Absturz sah aus wie ein Hänger. Beides ist jetzt
+ *     verdrahtet, samt Zeitlimit je Aufruf, und `--from/--to` ist ein erklärter
+ *     Modus mit Selbsttest statt eines Umwegs von Hand.
+ *
+ * Usage:
+ *   node scripts/shoot-card-bench.mjs <outDir> [--port 3007] [--only a,b]
+ *                                     [--from N --to M] [--crop <name|selector>]
+ *   node scripts/shoot-card-bench.mjs --selftest      (ohne Dev-Server)
+ * The dev server must already be running (the bench is dev-only by law), and its
+ * teacher door needs `apps/web/.env.local` with `DEV_TEACHER_ID=<irgendwas>` —
+ * ohne die leitet `?karten=` auf /signin um (307) und die Bühne malt nie.
  */
 import { spawn } from "node:child_process";
 import { existsSync, mkdirSync, writeFileSync } from "node:fs";
@@ -26,23 +54,190 @@ import path from "node:path";
 const CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
 const CDP_PORT = 9333;
 
-/** every surface the bench declares — kept in step with dev/CardGallery.tsx */
+/** Das Fenster, in dem die Bank fotografiert wird (CSS-Pixel), und die
+ *  Geräteskalierung — ein Ausschnitt wird auf dieses Format hochgezogen. */
+const WINDOW = { w: 1120, h: 760 };
+const DSF = 2;
+
+/** every surface the bench declares — kept in step with dev/CardGallery.tsx.
+ *  EINE id je Zeile, Schluss-Komma: so hängt eine andere Lane an, ohne mit
+ *  dieser Zeile zu kollidieren. */
 export const SURFACES = [
-  "choice", "oddone", "restore", "wheel", "order", "mistake", "memory", "typed", "spell",
+  "choice",
+  "oddone",
+  "restore",
+  "wheel",
+  "order",
+  "mistake",
+  "memory",
+  "typed",
+  "spell",
   "choice-hints",
-  "goal", "auftakt-schatten", "auftakt-aufgaben", "auftakt-los",
-  "tip", "tip-regel", "score", "out", "grant", "cagehint", "bonuspay",
-  "ceremony-merle", "ceremony-wisp", "console", "bonusend-perfect", "bonusend-timeout",
+  "goal",
+  "auftakt-schatten",
+  "auftakt-aufgaben",
+  "auftakt-los",
+  "tip",
+  "tip-regel",
+  "score",
+  "out",
+  "grant",
+  "cagehint",
+  "bonuspay",
+  "ceremony-merle",
+  "ceremony-wisp",
+  "console",
+  "bonusend-perfect",
+  "bonusend-timeout",
 ];
 
+/**
+ * Das Ausschnitt-Vokabular: Name → was gemeint ist.
+ *
+ * `sel`  CSS-Selektor des Motivs (der erste Treffer zählt).
+ * `band` optional: nur ein Streifen entlang einer Kante des Treffers, in CSS-px.
+ *        Für „Kante" ist genau das der Punkt — die gemalte Deckle-Kante ist ein
+ *        Band, nicht die ganze Karte.
+ * `pad`  Kontext ringsum in CSS-px. Ohne Kontext ist ein Ausschnitt nicht
+ *        beurteilbar; zu viel Kontext macht ihn wieder zur Briefmarke — deshalb
+ *        die 40-%-Regel unten.
+ */
+export const CROP_TARGETS = {
+  kante: { sel: ".pb-card", band: { side: "left", px: 96 }, pad: 40 },
+  "kante-unten": { sel: ".pb-card", band: { side: "bottom", px: 96 }, pad: 40 },
+  karte: { sel: ".pb-card", pad: 24 },
+  chip: { sel: ".pb-chip", pad: 44 },
+  schluessel: { sel: ".pb-key", pad: 44 },
+  portrait: { sel: ".pb-portrait", pad: 40 },
+  siegel: { sel: ".pb-verdict", pad: 48 },
+  plakette: { sel: ".pb-plate", pad: 40 },
+};
+
+/**
+ * Flächenbezogene Abweichungen, NACH id geschlüsselt — bewusst getrennt von
+ * `SURFACES`, damit Anhänge an die Flächenliste und Anhänge an die Ausschnitte
+ * nie dieselbe Textstelle berühren. Leer heißt: das Vokabular oben gilt.
+ * Form: `"<flaeche>": { "<ausschnitt>": { sel?, band?, pad? } }`.
+ */
+export const CROPS = {};
+
+/** Was für Fläche + Ausschnitt wirklich gilt (Fläche schlägt Vokabular). */
+export const cropSpec = (surface, name) => {
+  const base = CROP_TARGETS[name];
+  const over = CROPS[surface]?.[name];
+  if (base === undefined && over === undefined) return null;
+  return { ...(base ?? {}), ...(over ?? {}) };
+};
+
+// ── Geometrie: rein, prüfbar, ohne Browser ──────────────────────────────────
+
+/** Der Anteil, den ein Ausschnitt mindestens füllen muss. Darunter ist er
+ *  wieder das, was er ersetzen sollte: ein Motiv auf einer Briefmarke. */
+export const MIN_FILL = 0.40;
+
+/**
+ * Aus dem Rechteck des Treffers wird das MOTIV (ggf. nur ein Kantenband) …
+ * @param {{x:number,y:number,width:number,height:number}} rect
+ */
+export const roiOf = (rect, band) => {
+  if (!band) return { ...rect };
+  const px = Math.min(band.px, band.side === "left" || band.side === "right" ? rect.width : rect.height);
+  switch (band.side) {
+    case "left": return { x: rect.x, y: rect.y, width: px, height: rect.height };
+    case "right": return { x: rect.x + rect.width - px, y: rect.y, width: px, height: rect.height };
+    case "top": return { x: rect.x, y: rect.y, width: rect.width, height: px };
+    case "bottom": return { x: rect.x, y: rect.y + rect.height - px, width: rect.width, height: px };
+    default: throw new Error(`unbekannte Bandseite: ${band.side}`);
+  }
+};
+
+/**
+ * … und daraus der Bildausschnitt samt Vergrößerung.
+ * Rückgabe: { clip: {x,y,width,height,scale}, fill } — `fill` ist der Anteil,
+ * den das Motiv an der Ausgabefläche hat.
+ */
+export const clipOf = (roi, pad = 0, win = WINDOW, dsf = DSF) => {
+  const x = roi.x - pad;
+  const y = roi.y - pad;
+  const width = roi.width + 2 * pad;
+  const height = roi.height + 2 * pad;
+  const scale = Math.min(win.w / width, win.h / height) * dsf;
+  return {
+    clip: { x, y, width, height, scale },
+    fill: (roi.width * roi.height) / (width * height),
+  };
+};
+
+/** Der Lauf-Plan bei `--from/--to` — als eigene Funktion, damit der Selbsttest
+ *  beweisen kann, dass Teilmengen die Liste lückenlos decken. */
+export const planOf = (surfaces, { only = null, from = null, to = null } = {}) => {
+  let list = only === null ? surfaces : surfaces.filter((s) => only.has(s));
+  if (from !== null || to !== null) list = list.slice(from ?? 0, to ?? list.length);
+  return list;
+};
+
+// ── Selbsttest: ohne Dev-Server, ohne Chrome ────────────────────────────────
+const selftest = () => {
+  const assert = (ok, msg) => { if (!ok) { console.error(`✗ ${msg}`); process.exitCode = 1; } else console.log(`✓ ${msg}`); };
+  const rect = { x: 200, y: 120, width: 480, height: 360 };
+
+  // 1 · das Kantenband ist wirklich ein Band, nicht die ganze Karte
+  const band = roiOf(rect, { side: "left", px: 96 });
+  assert(band.width === 96 && band.height === 360 && band.x === 200, "Kantenband: 96 px breit, volle Höhe, am linken Rand");
+  const unten = roiOf(rect, { side: "bottom", px: 96 });
+  assert(unten.height === 96 && unten.y === 120 + 360 - 96, "Kantenband unten sitzt am unteren Rand");
+
+  // 2 · ein formatfüllender Ausschnitt füllt wirklich
+  const gut = clipOf(rect, 24);
+  assert(gut.fill >= MIN_FILL, `Karte + 24 px Rand füllt ${(gut.fill * 100).toFixed(0)} % (≥ ${MIN_FILL * 100} %)`);
+  assert(gut.clip.scale > 1, `und wird vergrößert (Faktor ${gut.clip.scale.toFixed(2)})`);
+
+  // 3 · DAS ROTE LICHT: zu viel Rand ⇒ das Motiv verschwindet ⇒ muss durchfallen.
+  //     Der Tamper setzt den Rand per WERT (nicht per Textsuche) und erzwingt
+  //     mit einer Zusicherung, dass er wirklich etwas verändert hat — ein
+  //     Tamper, der nichts verändert, beweist nichts.
+  const schlecht = clipOf(rect, 300);
+  if (schlecht.fill >= gut.fill) { console.error("✗ Tamper hat nichts verändert — er beweist nichts"); process.exit(1); }
+  assert(schlecht.fill < MIN_FILL, `Karte + 300 px Rand füllt nur ${(schlecht.fill * 100).toFixed(0)} % ⇒ ROT`);
+
+  // 4 · ein schmales Motiv in einem breiten Fenster: die 40-%-Regel greift auch da
+  const schmal = clipOf(roiOf(rect, { side: "left", px: 96 }), 40);
+  assert(schmal.fill >= MIN_FILL, `Kantenband + 40 px Rand füllt ${(schmal.fill * 100).toFixed(0)} %`);
+  const zuViel = clipOf(roiOf(rect, { side: "left", px: 96 }), 90);
+  assert(zuViel.fill < MIN_FILL, `Kantenband + 90 px Rand füllt nur ${(zuViel.fill * 100).toFixed(0)} % ⇒ ROT`);
+
+  // 5 · das Vokabular trifft nur erklärte Namen
+  assert(cropSpec("choice", "kante") !== null, "»kante« ist ein erklaerter Ausschnitt");
+  assert(cropSpec("choice", "gibtsnicht") === null, "ein unbekannter Name ist KEIN Ausschnitt (harter Fehler)");
+
+  // 6 · Teilmengen decken die Flächenliste lückenlos und überschneidungsfrei
+  const alle = planOf(SURFACES);
+  assert(alle.length === SURFACES.length, `voller Lauf = ${SURFACES.length} Flächen`);
+  const teile = [];
+  for (let i = 0; i < SURFACES.length; i += 10) teile.push(planOf(SURFACES, { from: i, to: i + 10 }));
+  const vereint = teile.flat();
+  assert(vereint.join(",") === SURFACES.join(","),
+    `Teilmengen à 10 ergeben die Liste wieder (${teile.map((t) => t.length).join("+")} = ${SURFACES.length})`);
+  assert(new Set(vereint).size === vereint.length, "und keine Fläche kommt doppelt vor");
+
+  if (process.exitCode) console.error("✗ selftest: die Ausschnitt-Rechnung unterscheidet NICHT.");
+  else console.log("✓ selftest: formatfüllend wird angenommen, zu klein wird rot, Teilmengen decken die Liste.");
+  process.exit(process.exitCode ?? 0);
+};
+
 const args = process.argv.slice(2);
+if (args.includes("--selftest")) selftest();
+
 const outDir = args[0];
 if (!outDir) {
-  console.error("usage: node scripts/shoot-card-bench.mjs <outDir> [--port N] [--only a,b]");
+  console.error("usage: node scripts/shoot-card-bench.mjs <outDir> [--port N] [--only a,b] [--from N --to M] [--crop name]");
   process.exit(1);
 }
+const num = (name) => (args.indexOf(name) === -1 ? null : Number(args[args.indexOf(name) + 1]));
 const port = args.indexOf("--port") === -1 ? 3007 : Number(args[args.indexOf("--port") + 1]);
 const only = args.indexOf("--only") === -1 ? null : new Set(args[args.indexOf("--only") + 1].split(","));
+const cropName = args.indexOf("--crop") === -1 ? null : args[args.indexOf("--crop") + 1];
+const wanted = planOf(SURFACES, { only, from: num("--from"), to: num("--to") });
 
 if (!existsSync(CHROME)) {
   console.error(`shoot-card-bench: no Chrome at ${CHROME}`);
@@ -58,8 +253,8 @@ const chrome = spawn(CHROME, [
   "--disable-gpu",
   "--hide-scrollbars",
   "--no-first-run",
-  "--force-device-scale-factor=2",
-  "--window-size=1120,760",
+  `--force-device-scale-factor=${DSF}`,
+  `--window-size=${WINDOW.w},${WINDOW.h}`,
   `--user-data-dir=${profile}`,
   `--remote-debugging-port=${CDP_PORT}`,
   "about:blank",
@@ -78,23 +273,52 @@ async function endpoint() {
   throw new Error("Chrome never opened its debugging port");
 }
 
-/** minimal CDP client: send(method, params) → result */
+/**
+ * minimal CDP client: send(method, params) → result.
+ *
+ * W2: die Verbindung sagt jetzt Bescheid, wenn sie stirbt. Vorher gab es weder
+ * `error`- noch `close`-Listener: brach die Verbindung ab, blieb jedes offene
+ * Versprechen für immer offen, und der Lauf sah aus wie ein Hänger statt wie
+ * ein Fehler. Dazu ein Zeitlimit je Aufruf, damit ein verlorenes Paket den Lauf
+ * nicht aufhängt, und ein Abbruchgrund, den man in einen Report schreiben kann.
+ */
 function client(ws) {
   let id = 0;
   const waiting = new Map();
+  let dead = null;
+  const kill = (why) => {
+    dead = why;
+    for (const { reject } of waiting.values()) reject(new Error(`CDP-Verbindung tot: ${why}`));
+    waiting.clear();
+  };
   ws.addEventListener("message", (e) => {
     const m = JSON.parse(e.data);
+    if (m.method === "Inspector.targetCrashed" || m.method === "Target.targetCrashed") {
+      kill(`der Tab ist abgestürzt (${m.method}) — typischerweise Renderer-Speicher`);
+      return;
+    }
     if (m.id !== undefined && waiting.has(m.id)) {
       const { resolve, reject } = waiting.get(m.id);
       waiting.delete(m.id);
       m.error ? reject(new Error(m.error.message)) : resolve(m.result);
     }
   });
-  return (method, params = {}, sessionId) =>
+  ws.addEventListener("error", () => kill("Websocket-Fehler"));
+  ws.addEventListener("close", (e) => kill(`Websocket geschlossen (Code ${e.code}${e.reason ? `, ${e.reason}` : ""})`));
+  return (method, params = {}, sessionId, timeoutMs = 60_000) =>
     new Promise((resolve, reject) => {
+      if (dead) { reject(new Error(`CDP-Verbindung tot: ${dead}`)); return; }
       id += 1;
-      waiting.set(id, { resolve, reject });
-      ws.send(JSON.stringify({ id, method, params, sessionId }));
+      const mine = id;
+      const timer = setTimeout(() => {
+        waiting.delete(mine);
+        reject(new Error(`${method} hat nach ${timeoutMs} ms nicht geantwortet`));
+      }, timeoutMs);
+      waiting.set(mine, {
+        resolve: (v) => { clearTimeout(timer); resolve(v); },
+        reject: (e) => { clearTimeout(timer); reject(e); },
+      });
+      ws.send(JSON.stringify({ id: mine, method, params, sessionId }));
     });
 }
 
@@ -109,12 +333,33 @@ const page = (method, params) => send(method, params, sessionId);
 await page("Page.enable");
 await page("Runtime.enable");
 
+/** Das Rechteck des Motivs auf der Seite — oder ein harter Fehler.
+ *  Ein Selektor, der nichts trifft, darf NIE stillschweigend zum Vollbild
+ *  werden: genau so entstünde wieder das Bild, das der Kritiker nicht
+ *  beurteilen kann, diesmal ohne dass es jemand merkt. */
+async function rectOf(id, sel) {
+  const { result } = await page("Runtime.evaluate", {
+    expression: `(() => { const e = document.querySelector(${JSON.stringify(sel)});
+      if (!e) return null;
+      const r = e.getBoundingClientRect();
+      return { x: r.x, y: r.y, width: r.width, height: r.height }; })()`,
+    returnByValue: true,
+  });
+  if (result.value === null || result.value === undefined) {
+    throw new Error(`${id}: der Selektor »${sel}« trifft auf dieser Flaeche nichts — kein Ausschnitt möglich`);
+  }
+  const r = result.value;
+  if (r.width < 1 || r.height < 1) throw new Error(`${id}: »${sel}« ist ${r.width}×${r.height} gross — nichts zu fotografieren`);
+  return r;
+}
+
 /** navigate and wait until the bench has actually PAINTED the stage — not until
  *  the network is quiet: the bench is a lazy chunk behind a dev compile, and a
  *  fallback („Bench lädt …") photographed as the card is the one failure this
  *  whole instrument exists to prevent. */
 async function shoot(id) {
-  const out = path.join(outDir, `${id}.png`);
+  const suffix = cropName === null ? "" : `__${cropName}`;
+  const out = path.join(outDir, `${id}${suffix}.png`);
   await page("Page.navigate", { url: `http://localhost:${port}/play/1/buch?karten=${id}` });
   let ready = false;
   for (let i = 0; i < 120; i++) {
@@ -130,15 +375,41 @@ async function shoot(id) {
   // one more beat so the card's own entrance animation has finished (420 ms
   // after a 260 ms delay) — a card photographed mid-spring is not the card
   await sleep(1100);
-  const { data } = await page("Page.captureScreenshot", { format: "png" });
+
+  let params = { format: "png" };
+  let note = "";
+  if (cropName !== null) {
+    const spec = cropName.startsWith(".") || cropName.startsWith("#") || cropName.startsWith("[")
+      ? { sel: cropName, pad: 40 }
+      : cropSpec(id, cropName);
+    if (spec === null) {
+      throw new Error(`unbekannter Ausschnitt »${cropName}« — erklaert sind: ${Object.keys(CROP_TARGETS).join(", ")}`);
+    }
+    const { clip, fill } = clipOf(roiOf(await rectOf(id, spec.sel), spec.band), spec.pad ?? 0);
+    if (fill < MIN_FILL) {
+      throw new Error(`${id}: der Ausschnitt »${cropName}« fuellt nur ${(fill * 100).toFixed(0)} % des Bildes `
+        + `(gefordert ≥ ${MIN_FILL * 100} %) — so ist die Stelle nicht beurteilbar`);
+    }
+    params = { format: "png", clip, captureBeyondViewport: true };
+    note = `  Ausschnitt »${cropName}«: ${Math.round(clip.width)}×${Math.round(clip.height)} px `
+      + `× ${clip.scale.toFixed(2)}, Motiv füllt ${(fill * 100).toFixed(0)} %`;
+  }
+  const { data } = await page("Page.captureScreenshot", params);
   writeFileSync(out, Buffer.from(data, "base64"));
-  console.log(`  ✓ ${id}`);
+  console.log(`  ✓ ${id}${note}`);
 }
 
-const wanted = SURFACES.filter((s) => only === null || only.has(s));
 try {
   for (const id of wanted) await shoot(id);
-  console.log(`shoot-card-bench: ${wanted.length} surface(s) → ${outDir}`);
+  const wie = cropName === null ? "Vollbild" : `Ausschnitt »${cropName}«`;
+  console.log(`shoot-card-bench: ${wanted.length} surface(s), ${wie} → ${outDir}`);
+} catch (err) {
+  // Ein Abbruch nennt ab jetzt seinen Grund UND wie weit der Lauf kam — W1
+  // hatte beides nicht und musste raten.
+  console.error(`\n✗ shoot-card-bench abgebrochen: ${err.message}`);
+  console.error(`  geplant waren ${wanted.length} Flächen: ${wanted.join(", ")}`);
+  console.error(`  Weitermachen ab der abgebrochenen Stelle: --from <n> --to <m> (erklärter Modus, vom Selbsttest gedeckt).`);
+  process.exitCode = 1;
 } finally {
   ws.close();
   chrome.kill();

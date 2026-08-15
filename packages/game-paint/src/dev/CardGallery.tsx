@@ -24,6 +24,7 @@ import type { PaintLevel } from "../level.ts";
 import { CardHost } from "../cards/CardHost.tsx";
 import { PAINT_OVERLAY_CSS } from "../cards/overlay-css.ts";
 import { LOGICAL_H, LOGICAL_W, RENDER_SCALE } from "../paint.ts";
+import { benchBilanz } from "./bench-counts.ts";
 
 /** The ceremony renderer, handed in by PaintGame. Typed structurally — the
  *  gallery must not import PaintGame (see the bundle note above). */
@@ -105,13 +106,13 @@ export default function CardGallery({ level, art, tasks, Overlay, which }: Galle
     .flatMap((p) => p.entities)
     .find((e) => e.params?.price !== undefined);
 
-  const bilanz = {
-    kids: 1, kidsTotal: 1,
-    freed: 5, freedTotal: 6,
-    tips: 2, tipsTotal: 3,
-    letters: 24, lettersTotal: 27,
-    books: 1, booksTotal: 1,
-  };
+  // R5-W4 · W2 · D-103: aus dem LEVEL abgeleitet, nicht getippt. Die alten
+  // Literale sagten 6 Käfige und 1 Bonusbuch; das Kapitel hält 5 und 3 — der
+  // blinde Kritiker beurteilte also eine Punkte-Seite, die es nie gab. Und
+  // sobald I2 die Regel-Seiten auf 5 setzt und die Bücher löscht, wären auch
+  // die heute noch richtigen Zahlen falsch. Herleitung + Begründung stehen in
+  // `bench-counts.ts`, geprüft gegen `ch01.level.json` in `bench-fixture.test.ts`.
+  const bilanz = benchBilanz(level);
 
   // R5-W1 · D2: WHICH ROOM a ceremony happens in. The scene cut looks through
   // the card at the phase's own plate, so a bench that runs every panel in p1
