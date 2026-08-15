@@ -145,7 +145,7 @@ export const useCeremonyClock = (untilMs: number): number => {
  * cage he had not opened yet. He does not any more.
  */
 export const heroCellFor = (pose: PlayerPose): string | null =>
-  heroFullCell(pose, 0, 0, 999, pose === "jump", false, 0);
+  heroFullCell(pose, 0, 0, 999, pose === "jump");
 
 /** Is there a painted hero for this beat at all? The keen-art law, asked once:
  *  the new cell if it has landed, the old rig if the chapter has only that, and
