@@ -86,20 +86,24 @@ const noop = (): void => {};
 export default function CardGallery({ level, art, tasks, Overlay, which }: GalleryProps): React.ReactElement {
   const byKind = (kind: string): GameTaskV2 | undefined => tasks.find((t) => t.kind === kind);
 
-  // the chapter's own rule page, so the tip panel shows a real Merksatz
+  // the chapter's own rule page, so the tip panel shows a real Merksatz.
+  // R5-W4 · I2: found by ROLE, not by „carries a merksatzDe" — the old predicate
+  // would have handed the bench any future entity that happened to grow that
+  // param, and a bench fixture picked by accident is a bench that reviews the
+  // wrong thing.
   const tipEntity = [...level.phases, ...(level.arena ? [level.arena] : [])]
     .flatMap((p) => p.entities)
-    .find((e) => e.params?.merksatzDe !== undefined);
+    .find((e) => e.role === "tip");
   const tipFixture = {
     id: String(tipEntity?.id ?? "tip"),
     skin: String(tipEntity?.skin ?? "regelseite"),
     topicDe: String(tipEntity?.params?.topicDe ?? "Regel"),
+    erklaerungDe: String(tipEntity?.params?.erklaerungDe ?? ""),
     merksatzDe: String(tipEntity?.params?.merksatzDe ?? "—"),
     schluesselDe: String(tipEntity?.params?.schluesselDe ?? ""),
-    beispielEn: String(tipEntity?.params?.beispielEn ?? ""),
-    ausspracheDe: String(tipEntity?.params?.ausspracheDe ?? ""),
-    falscheFormEn: String(tipEntity?.params?.falscheFormEn ?? ""),
-    richtigeFormEn: String(tipEntity?.params?.richtigeFormEn ?? ""),
+    beispieleEn: Array.isArray(tipEntity?.params?.beispieleEn)
+      ? tipEntity.params.beispieleEn.filter((x): x is string => typeof x === "string")
+      : [],
     belegDe: String(tipEntity?.params?.belegDe ?? ""),
   };
   const doorEntity = [...level.phases, ...(level.arena ? [level.arena] : [])]

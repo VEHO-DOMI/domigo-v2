@@ -126,6 +126,17 @@ export const domArtStems = (level: ScopeLevel): Set<string> => {
   for (const n of PAINTED_ICON_NAMES) out.add(`hud_${n}`);
   // R5-W2 · J1-B: the opening's four beats read these straight out of the map.
   for (const s of AUFTAKT_STEMS) out.add(s);
+  // R5-W4 · I2: the Merkseite's own three cells. Same argument as the icons
+  // above, one wave later: `merkseite_page`/`_stub`/`_seal` landed with AQ7,
+  // were listed as DEAD_ART group A („bezahlt, unverdrahtet"), and are now
+  // rendered — the archive card draws the stub for every page still missing and
+  // the hub's Regelbuch is set on the page. Claimed, not required: the keen-art
+  // chain degrades to the rule page and then to the drawn icon.
+  // ⚠ OWNERSHIP: Rahmen §5 reserves this function for D3 this wave. Koki ruled
+  // on 2026-08-15 that the hub gets real painted paper, which cannot be honest
+  // without this claim, so I2 takes ONE additive line here — declared in the PR
+  // and flagged to D3. Both edits append; a rebase resolves by keeping both.
+  for (const s of ["merkseite_page", "merkseite_stub", "merkseite_seal"]) out.add(s);
   for (const s of ALWAYS_STEMS) out.add(s);
   return out;
 };

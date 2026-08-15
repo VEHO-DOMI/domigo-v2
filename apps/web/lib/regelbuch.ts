@@ -24,25 +24,40 @@
  */
 
 /** One rule page as the library keeps it. Mirrors the game's TipPayload minus
- *  the entity id, plus where it was found. */
+ *  the entity id, plus where it was found and how many the chapter holds. */
 export interface RegelbuchEntry {
   chapter: string;
   topicDe: string;
+  /** R5-W4 · I2 — the Notion, so the hub reads the same four steps as the card. */
+  erklaerungDe: string;
   merksatzDe: string;
   schluesselDe: string;
-  beispielEn: string;
-  /** R5-W2 · J1-D — optional so a page collected before this round still
-   *  reads back out of the library instead of failing its shape check. */
-  ausspracheDe?: string;
-  falscheFormEn?: string;
-  richtigeFormEn?: string;
+  /** R5-W4 · I2 — 2–4 English lines, ours, grounded in the unit's vocabulary. */
+  beispieleEn: string[];
+  /** ★ HOW MANY PAGES THE CHAPTER HOLDS, banked with the page rather than looked
+   *  up by the board (R5-W4 · I2).
+   *
+   *  The hub has to draw a torn stub for every page still missing, so it needs a
+   *  total — and the board is a client component with no access to the level
+   *  file. The alternative was a literal („ch01 has 5"), and the house law is
+   *  that a count comes from the level or it does not exist: the HUD, the score
+   *  page and the Auftakt all read `tipsTotal`, and the one place that hard-coded
+   *  a number is the bench fixture nobody trusts. So the number travels with the
+   *  page, out of `bilanz.tipsTotal`, through the seam that already exists. */
+  total: number;
+  /** the unit page this rule lives on. Kept, never rendered (Koki, 2026-08-15). */
   belegDe: string;
 }
 
 export interface RegelbuchFile {
   /** bumped when the shape changes; an unreadable version is dropped, never
-   *  migrated in place — this is a convenience cache, not a record. */
-  v: 1;
+   *  migrated in place — this is a convenience cache, not a record.
+   *
+   *  v2 (R5-W4 · I2): `beispielEn` → `beispieleEn`, `erklaerungDe` and `total`
+   *  arrive, the three J1-D fields leave. A v1 book is dropped rather than
+   *  upgraded, and nothing is lost by that: the painted book is teacher-preview
+   *  only in production, so no child has a collection today. */
+  v: 2;
   entries: RegelbuchEntry[];
 }
 
@@ -57,10 +72,11 @@ export const readRegelbuch = (): RegelbuchEntry[] => {
     const raw = window.localStorage.getItem(KEY);
     if (raw === null) return [];
     const parsed = JSON.parse(raw) as Partial<RegelbuchFile>;
-    if (parsed?.v !== 1 || !Array.isArray(parsed.entries)) return [];
+    if (parsed?.v !== 2 || !Array.isArray(parsed.entries)) return [];
     return parsed.entries.filter(
       (e): e is RegelbuchEntry =>
-        typeof e?.topicDe === "string" && e.topicDe !== "" && typeof e?.merksatzDe === "string",
+        typeof e?.topicDe === "string" && e.topicDe !== "" && typeof e?.merksatzDe === "string"
+        && Array.isArray(e?.beispieleEn),
     );
   } catch {
     return [];
@@ -113,7 +129,7 @@ export const rememberRegelSeite = (entry: RegelbuchEntry): RegelbuchEntry[] => {
     : [...have, entry];
   if (typeof window !== "undefined" && next !== have) {
     try {
-      window.localStorage.setItem(KEY, JSON.stringify({ v: 1, entries: next } satisfies RegelbuchFile));
+      window.localStorage.setItem(KEY, JSON.stringify({ v: 2, entries: next } satisfies RegelbuchFile));
       snapRaw = null; // this tab wrote it, so its own cache is stale
     } catch {
       /* quota or private mode: the run keeps working, the library just does not grow */

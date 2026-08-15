@@ -66,9 +66,16 @@ export default function BuchClient(props: {
         rememberRegelSeite({
           chapter: props.level.chapter,
           topicDe: tip.topicDe,
+          erklaerungDe: tip.erklaerungDe,
           merksatzDe: tip.merksatzDe,
           schluesselDe: tip.schluesselDe,
-          beispielEn: tip.beispielEn,
+          beispieleEn: [...tip.beispieleEn],
+          // R5-W4 · I2: the chapter's own count rides along, so the hub can draw
+          // a torn stub for every page still missing without knowing the level.
+          // Read from the level here rather than from the payload — this is the
+          // one side of the seam that HAS the level, and the alternative was a
+          // literal on the board.
+          total: props.level.tipsTotal ?? 0,
           belegDe: tip.belegDe,
         });
       }}

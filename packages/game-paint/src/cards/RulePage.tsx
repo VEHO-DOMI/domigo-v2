@@ -23,7 +23,10 @@
 // pages rendered with NO emphasis at all. The rule now leads as a long Key and
 // carries one KeyBit inside it — the house device, used as designed.
 import React from "react";
-import { Key, KeyBit, Quiet, Struck } from "./Glance.tsx";
+// `Struck` left with the trap it drew (R5-W4 · I2, Koki: „Wir wollen KEINE
+// Fehler zeigen"). It stays exported from Glance for other cards; filed for D3
+// as a dead export if none of them take it up.
+import { KeyBit, Quiet } from "./Glance.tsx";
 import { PaintedIcon } from "./PaintedIcons.tsx";
 
 /** The Merksatz split around its key phrase: [before, key, after].
@@ -41,11 +44,16 @@ export const splitKey = (satz: string, key: string): readonly [string, string, s
 
 /** The painted page, with the keen-art fallback chain stated once:
  *  the asked-for cell → the page as it lay in the world → the drawn icon.
- *  A card may never break on a file that has not landed yet. */
+ *  A card may never break on a file that has not landed yet.
+ *
+ *  `stub` (R5-W4 · I2) is the torn remnant of a page still missing — a cell of
+ *  its own rather than the whole page greyed down. It rides the same chain, so
+ *  a chapter whose art batch has not landed shows the rule page instead of a
+ *  hole, which is the keen-art law working as designed. */
 const PageArt = ({ art, skin, state, size }: {
-  art: Record<string, string>; skin: string; state: "a" | "open"; size: number;
+  art: Record<string, string>; skin: string; state: "a" | "open" | "stub"; size: number;
 }): React.ReactElement => {
-  const src = art[`${skin}_${state}`] ?? art[`${skin}_a`];
+  const src = art[`${skin}_${state}`] ?? art[`${skin}_a`] ?? art.regelseite_a;
   if (src === undefined) return <PaintedIcon name="rule" size={size} art={art} />;
   return <img className="pb-treasure-page" src={src} alt="" aria-hidden style={{ height: size, width: "auto" }} />;
 };
@@ -80,14 +88,70 @@ export const RuleFound = ({ art, skin, topicDe, got, total, onNext }: {
   </div>
 );
 
-/** BEAT 2 — the rule. The page is open; the lesson is the only thing moving. */
-export const RuleRead = ({ art, plateUrl, skin, topicDe, merksatzDe, schluesselDe, beispielEn, belegDe, ausspracheDe, falscheFormEn, richtigeFormEn, onDone }: {
+/** The examples, as a quiet list. Shared by the pickup card and the archive so
+ *  the two can never drift into two different ideas of what an example looks
+ *  like — that drift is exactly what made the hub board and the in-game card
+ *  read as two products in Koki's replay.
+ *
+ *  ⚠ STYLED INLINE, ON PURPOSE. `cards/overlay-css.ts` belongs to another lane
+ *  this wave (Rahmen §5), so this round adds no class names to it: everything
+ *  new here is either an existing class or an inline rule that reads the same
+ *  `--pb-*` tokens the sheet defines. Not a shortcut — a boundary. */
+const Beispiele = ({ lines }: { lines: readonly string[] }): React.ReactElement => (
+  <ul style={{ listStyle: "none", margin: "0 0 2px", padding: 0, display: "grid", gap: 5 }}>
+    {lines.map((line) => (
+      // `pb-key pb-key-long pb-key-en` — the house's own long-Key look: display
+      // face, accent ink, and NO stroke. MEASURED, not chosen blind: a plain
+      // `<Key en>` per line stroked all four of them, and four crayon strokes
+      // stacked is the device saying „this is THE one thing" four times. The
+      // stroke marks the single ask on a card; a list of examples is not that.
+      // (The class pair is what `Key` itself switches to past 56 characters —
+      // reused rather than re-invented, because `cards/overlay-css.ts` belongs
+      // to another lane this wave and this round adds no class names to it.)
+      <li key={line} className="pb-key pb-key-long pb-key-en" style={{ margin: 0 }}>{line}</li>
+    ))}
+  </ul>
+);
+
+/** The rule proper, set apart from the Notion above it by a ruled edge rather
+ *  than by a second colour. The two lines do different jobs (what happens · the
+ *  rule to keep) and the old card gave them identical weight, which is how a
+ *  page with two prose lines starts reading as one line said twice. The ink
+ *  stays QUIET because that is what makes the KeyBit inside it visible at all —
+ *  I1 measured the alternative and found 800-on-600 in one ink, i.e. no
+ *  emphasis. */
+const Merksatz = ({ satz, schluessel }: { satz: string; schluessel: string }): React.ReactElement => {
+  const [before, key, after] = splitKey(satz, schluessel);
+  return (
+    <p
+      className="pb-quiet pb-rule-line"
+      style={{ borderLeft: "3px solid var(--pb-ink-line)", borderRadius: "3px 0 0 4px / 4px 0 0 3px", padding: "1px 0 1px 10px" }}
+    >
+      {before}<KeyBit>{key}</KeyBit>{after}
+    </p>
+  );
+};
+
+/** BEAT 2 — the rule. The page is open; the lesson is the only thing moving.
+ *
+ *  R5-W4 · I2 · REBUILT ON KOKI'S REPLAY OF 2026-08-15. What left, in his words:
+ *  the book reference („Die Regel soll NICHT aufs Buch verweisen — wir
+ *  restaurieren unser eigenes Buch"), the pronunciation line („das ‚how to
+ *  pronounce' ist unnötig") and the struck-through wrong form („Wir wollen KEINE
+ *  Fehler zeigen, nur die richtigen Notions und Beispiele"). What arrived:
+ *  „mehr Notions, Erklärungen, Beispiele — didaktisch reicher, besser
+ *  organisiert."
+ *
+ *  THE ORDER IS THE TEACHING, and it is four steps down, not five things beside
+ *  each other: the page is NAMED, then what happens is EXPLAINED, then the rule
+ *  is STATED with its one bold key, then it is SHOWN two to four times. The old
+ *  card put the topic in the same quiet ink as the rule and hung three helper
+ *  lines under the example; a child had to work out which line was the lesson. */
+export const RuleRead = ({ art, plateUrl, skin, topicDe, erklaerungDe, merksatzDe, schluesselDe, beispieleEn, onDone }: {
   art: Record<string, string>; plateUrl?: string | undefined; skin: string; topicDe: string;
-  merksatzDe: string; schluesselDe: string; beispielEn: string; belegDe: string;
-  ausspracheDe?: string; falscheFormEn?: string; richtigeFormEn?: string;
+  erklaerungDe: string; merksatzDe: string; schluesselDe: string; beispieleEn: readonly string[];
   onDone: () => void;
 }): React.ReactElement => {
-  const [before, key, after] = splitKey(merksatzDe, schluesselDe);
   return (
     <div style={{ textAlign: "left" }}>
       <p className="pb-eyebrow">Die Regel</p>
@@ -108,34 +172,18 @@ export const RuleRead = ({ art, plateUrl, skin, topicDe, merksatzDe, schluesselD
           <PageArt art={art} skin={skin} state="open" size={46} />
         </div>
       )}
-      <Quiet>{topicDe}</Quiet>
-      {/* THE RULE, and the one phrase in it that carries the lesson.
-          MEASURED, not assumed: wrapping the whole Merksatz in `Key` renders it
-          as `pb-key-long` — display face at weight 600 — and a `KeyBit` inside
-          THAT is 800 against 600 in the same ink, which on screen is no
-          emphasis at all (measured: rgb(51,41,26) vs rgb(42,33,20)). The bit is
-          built to carry a QUIET line, so the rule is set quiet and the key is
-          the only marked thing in it. That also restores D1's own ranking: the
-          English below is the strongest thing on the card, not the third. */}
-      <p className="pb-quiet pb-rule-line">{before}<KeyBit>{key}</KeyBit>{after}</p>
-      {/* …and the English the book itself prints, stroked, because it is the
-          thing the child is here to learn to read */}
-      <Key en>{beispielEn}</Key>
-      {/* R5-W2 · J1-D · HOW IT SOUNDS. A short form is first a SPOKEN thing, and
-          a child who only ever meets it on paper files it as a spelling trick.
-          It sits directly under the English it is about, and quietly: it is a
-          help with the line above, not a second line to learn. */}
-      {ausspracheDe !== undefined && ausspracheDe !== "" && <Quiet>{ausspracheDe}</Quiet>}
-      {/* …and THE TRAP. One wrong form struck through beats three right ones
-          when the mistake is about placement. The sentence carries the meaning
-          on its own, so a screen reader that ignores the stroke still reads it
-          correctly — a struck word hidden from a reader is never a warning. */}
-      {falscheFormEn !== undefined && falscheFormEn !== "" && richtigeFormEn !== undefined && richtigeFormEn !== "" && (
-        <p className="pb-quiet pb-rule-line" style={{ marginTop: 2 }}>
-          Nicht: <Struck>{falscheFormEn}</Struck> — richtig: <KeyBit>{richtigeFormEn}</KeyBit>
-        </p>
-      )}
-      <Quiet italic>{belegDe}</Quiet>
+      {/* THE PAGE'S NAME. It reuses the archive's own topic style, which is what
+          makes the pickup card and the Merkseite behind the HUD chip read as one
+          book — the label face, quiet ink, AA-measured at 5,53 : 1 (J2). */}
+      <p className="pb-merk-topic">{topicDe}</p>
+      {/* …WHAT HAPPENS, in kid words. The step the old card never had, and the
+          one Koki asked for by name („mehr Notions"). */}
+      <p className="pb-quiet pb-rule-line">{erklaerungDe}</p>
+      {/* …THE RULE, with the one phrase that carries the lesson. */}
+      <Merksatz satz={merksatzDe} schluessel={schluesselDe} />
+      {/* …and the English, two to four times, because a rule shown once is a
+          rule asserted. Ours, not the book's (Koki's ruling K-1). */}
+      <Beispiele lines={beispieleEn} />
       <div style={{ height: 10 }} />
       <button className="pb-btn-primary" onClick={onDone}>Ins Buch kleben</button>
     </div>
@@ -159,7 +207,7 @@ export const RuleRead = ({ art, plateUrl, skin, topicDe, merksatzDe, schluesselD
 export const Merkseite = ({ art, plateUrl, found, total, onClose }: {
   art: Record<string, string>;
   plateUrl?: string | undefined;
-  found: readonly { topicDe: string; merksatzDe: string; schluesselDe: string; beispielEn: string; belegDe: string }[];
+  found: readonly { topicDe: string; erklaerungDe: string; merksatzDe: string; schluesselDe: string; beispieleEn: readonly string[] }[];
   total: number;
   onClose: () => void;
 }): React.ReactElement => {
@@ -177,26 +225,43 @@ export const Merkseite = ({ art, plateUrl, found, total, onClose }: {
         ? "Alle Regel-Seiten sind wieder im Buch."
         : `${found.length} von ${total} Regel-Seiten sind wieder im Buch.`}</Quiet>
       <div className="pb-merk-list">
-        {found.map((t) => {
-          const [before, key, after] = splitKey(t.merksatzDe, t.schluesselDe);
-          return (
-            <div className="pb-merk-slot" key={t.topicDe}>
-              <p className="pb-merk-topic">{t.topicDe}</p>
-              <p className="pb-quiet pb-rule-line">{before}<KeyBit>{key}</KeyBit>{after}</p>
-              <Key en>{t.beispielEn}</Key>
-              <Quiet italic>{t.belegDe}</Quiet>
-            </div>
-          );
-        })}
+        {/* R5-W4 · I2: the archive slot now carries the SAME four steps as the
+            pickup card — name, Notion, rule, examples — and no book reference.
+            Two renderings of one page taught a child two shapes of the same
+            rule; that was Koki's „besser organisiert" in its smallest form. */}
+        {found.map((t) => (
+          <div className="pb-merk-slot" key={t.topicDe}>
+            <p className="pb-merk-topic">{t.topicDe}</p>
+            <p className="pb-quiet pb-rule-line">{t.erklaerungDe}</p>
+            <Merksatz satz={t.merksatzDe} schluessel={t.schluesselDe} />
+            <Beispiele lines={t.beispieleEn} />
+          </div>
+        ))}
+        {/* R5-W4 · I2: the missing slot finally shows the sheet PAINTED for it.
+            `merkseite_stub` landed with batch AQ7 and had been loaded by nothing
+            since (DEAD_ART group A); until now the gap borrowed the rule page's
+            own cell greyed out, which is a different object wearing a filter.
+            The keen-art chain still stands behind it — a stub that has not
+            landed degrades to the page, then to the drawn icon. */}
         {Array.from({ length: missing }, (_, i) => (
           <div className="pb-merk-slot pb-merk-gap" key={`gap-${i}`}>
-            <PageArt art={art} skin="regelseite" state="a" size={38} />
+            <PageArt art={art} skin="merkseite" state="stub" size={38} />
             <Quiet italic>Diese Seite fehlt noch.</Quiet>
           </div>
         ))}
       </div>
+      {/* R5-W4 · I2: the finished book gets its painted SEAL — the third AQ7 cell
+          that had never been loaded. It is the one moment this card is allowed a
+          picture that says nothing new: the sentence beside it is the news, the
+          seal is the feeling. Degrades to no image at all rather than to a
+          stand-in, because a wrong picture here would read as a fourth rule. */}
       {complete && (
-        <p className="pb-merk-done">Das Buch ist wieder ganz.</p>
+        <p className="pb-merk-done" style={{ display: "flex", alignItems: "center", gap: 8 }}>
+          {art.merkseite_seal !== undefined && (
+            <img src={art.merkseite_seal} alt="" aria-hidden style={{ height: 30, width: "auto" }} />
+          )}
+          Das Buch ist wieder ganz.
+        </p>
       )}
       <div style={{ height: 10 }} />
       <button className="pb-btn-primary" onClick={onClose}>Weiterspielen</button>

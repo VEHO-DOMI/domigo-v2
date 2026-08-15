@@ -138,27 +138,36 @@ for (const file of paintFiles) {
   }
 }
 
-// ── 2c · THE REGEL-SEITEN EXAMPLE LAW (R5-W2 · I1, doc 45 E2) ────────────────
-// Koki read the three rule pages and called them „ein Alibi". The reason no gate
-// caught that is structural: `tip-honesty` (level.ts) is a PURE module — it can
-// count, cap and register-check a string, but it cannot open the textbook. So
-// the claim „this is what your book says" was, until here, only ever a promise.
+// ── 2c · THE REGEL-SEITEN EXAMPLE LAW (R5-W4 · I2, Koki's ruling K-1) ────────
+// Koki read the three rule pages and called them „ein Alibi". I1's answer was an
+// ATTESTATION gate: every example had to appear verbatim in the MORE! 1
+// transcripts. On 2026-08-15 Koki retired it — „nicht die exakt selben sätze aus
+// dem buch (wir schreiben immer unsere eigenen beispiele – die natürlich aber
+// zum kontext und level passen)".
 //
-// Two laws, and the split between them is the point:
-//   ATTESTATION — the example must appear VERBATIM in the MORE! 1 transcripts.
-//     This is the quotes-not-claims rule: a validator that checks the SHAPE of a
-//     citation and never the source passes a fabricated one every time.
-//   GROUNDING — every token of it must be in the unit's own lexicon, the same
-//     list `check-story-grounding` and `check-game-tasks` hold cards to. The
-//     example is the one field a child reads as English, so it obeys the English
-//     law; the German Merksatz cannot (it is mixed — „How are you? fragt, wie es
-//     geht" — and no tokenizer can split that honestly). That is exactly WHY the
-//     example lives in its own English-only field instead of inside the Merksatz.
+// That is not a loosening, and it is worth writing down why. Every OTHER piece
+// of English in this game — task prompts, scene lines, the boss console — has
+// always been ours, held to the unit lexicon by check-story-grounding.mjs §A.
+// The rule pages were the single exception. K-1 ends the exception.
 //
-// Attestation runs over the whole MORE! 1 corpus rather than a chapter→unit slice
-// (no level file declares its unit), and the matching file is PRINTED — so a
-// quote pulled from the wrong unit is visible rather than silently green. The
-// lexicon is what keeps the example inside the child's own unit.
+// WHAT NOW HOLDS AN EXAMPLE HONEST, in three places rather than one:
+//   GROUNDING (here) — every token in the unit's own lexicon, the same list
+//     check-story-grounding and check-game-tasks hold every card to. This is the
+//     hard gate, and it is what keeps our own sentence inside the child's own
+//     week: „It isn't dark here." is legal, „It isn't correct." is not.
+//   COVERAGE + RELEVANCE (level.ts `lehrtEn`) — every form the page claims to
+//     teach appears in some example, and every example shows some claimed form.
+//     The attestation gate could never check either.
+//   THE READING (blind didactic critics, per page, in the session that authors
+//     them) — is the English natural and correct? That is the intelligence pass
+//     the house law demands of anything a child reads, and it is the half a
+//     grep was standing in for.
+//
+// The corpus grep survives as a PRINTED NOTE, not a verdict: if a sentence we
+// wrote happens to be word-for-word the book's, that is worth SEEING (it usually
+// means an author reached for the nearest line instead of writing one), but it
+// is no longer a failure — the question form „What's your email address?" cannot
+// be paraphrased without ceasing to be the rule.
 const TRANSCRIPTS = "content/build/transcripts/g1";
 const LEXICON = "docs/design/g1/grounding/u01-lexicon.json";
 const corpus = [];
@@ -186,69 +195,48 @@ const enGrounded = (tok, extra) =>
   || (tok.endsWith("s") && (lexWords.has(tok.slice(0, -1)) || lexProper.has(tok.slice(0, -1))));
 
 let examplesSeen = 0;
+let erklaerungenSeen = 0;
+let lehrtSeen = 0;
+let liftedSeen = 0;
 for (const file of paintFiles) {
   if (!file.endsWith(".level.json")) continue;
   const json = JSON.parse(fs.readFileSync(file, "utf8"));
   for (const [at, text] of strings(json)) {
-    if (!/(^|\.)beispielEn$/.test(at)) continue;
+    if (/(^|\.)erklaerungDe$/.test(at)) erklaerungenSeen += 1;
+    if (/(^|\.)lehrtEn\[\d+\]$/.test(at)) lehrtSeen += 1;
+    // the array walker yields `…params.beispieleEn[0]`, so the index rides in
+    // the path — matched explicitly rather than by a loose suffix, because a
+    // regex that also matched the bare field name would silently scan nothing
+    // if the field ever became a string again.
+    if (!/(^|\.)beispieleEn\[\d+\]$/.test(at)) continue;
     examplesSeen += 1;
-    const hit = corpus.find((c) => c.text.includes(text));
-    if (!hit) {
-      fail(`${file} ${at}`, `example-law: „${text}" steht NICHT wörtlich in den MORE!-1-Transkripten — eine Regel-Seite zitiert das Buch oder sie zitiert nichts`);
-    } else {
-      console.log(`  ✓ ${at}: „${text}" — belegt in ${hit.file}`);
-    }
     const extra = new Set();
     const low = text.toLowerCase();
     for (const p of lexPhrases) if (low.includes(p)) for (const t of enTokens(p)) extra.add(t);
+    let clean = true;
     for (const t of enTokens(text)) {
       if (!EN_FREE.has(t) && !enGrounded(t, extra)) {
+        clean = false;
         fail(`${file} ${at}`, `grounding: EN token not in the unit lexicon: "${t}" (line: "${text}")`);
       }
+    }
+    // …and the note, not a verdict (K-1). A sentence of ours that is also the
+    // book's word for word is legal but worth seeing.
+    const hit = corpus.find((c) => c.text.includes(text));
+    if (hit) {
+      liftedSeen += 1;
+      console.log(`  ℹ ${at}: „${text}" — steht 1:1 in ${hit.file}; erlaubt, aber prüfe, ob ein eigener Satz besser passt`);
+    } else if (clean) {
+      console.log(`  ✓ ${at}: „${text}" — eigener Satz, jedes Wort im Wortschatz der Unit`);
     }
   }
 }
 
-// ── 2c · R5-W2 · J1-D · THE ANCHOR AND THE TRAP ──────────────────────────────
-//
-// Koki chose the ANCHOR form for the pronunciation line („Sprich I'm wie das i in
-// time") over the book's own phonetic brackets, and the choice buys a check as
-// well as a reader: the word it anchors to must be one the child has already
-// met. So every English word inside an `ausspracheDe` is grounded against the
-// unit lexicon exactly like an example is — „time" is legal because Unit 1 is
-// CALLED Time for school.
-//
-// The trap is gated HARDER than the example, and in the opposite direction. A
-// »wrong form« the book prints is not wrong; it is a form the author had not
-// read yet. So `richtigeFormEn` must be attested and `falscheFormEn` must NOT be.
-let ausspracheSeen = 0;
-let ankersSeen = 0;
-let trapsSeen = 0;
-for (const file of paintFiles) {
-  if (!file.endsWith(".level.json")) continue;
-  const json = JSON.parse(fs.readFileSync(file, "utf8"));
-  for (const [at, text] of strings(json)) {
-    if (/(^|\.)ausspracheDe$/.test(at)) ausspracheSeen += 1;
-    if (/(^|\.)ankerEn$/.test(at)) {
-      ankersSeen += 1;
-      const tok = text.toLowerCase().replace(/[^\p{L}']/gu, "");
-      if (!enGrounded(tok, new Set())) {
-        fail(`${file} ${at}`, `anchor-law: „${text}" steht nicht im Wortschatz dieser Unit — eine Aussprache-Zeile darf nur an ein Wort ankern, das das Kind schon kennt`);
-      } else {
-        console.log(`  ✓ ${at}: „${text}" — steht im Wortschatz der Unit`);
-      }
-    }
-    if (/(^|\.)falscheFormEn$/.test(at)) {
-      trapsSeen += 1;
-      const hit = corpus.find((c) => c.text.includes(text));
-      if (hit) {
-        fail(`${file} ${at}`, `trap-law: „${text}" steht WÖRTLICH in ${hit.file} — eine Form, die das Buch druckt, ist keine falsche Form`);
-      } else {
-        console.log(`  ✓ ${at}: „${text}" — kommt in keinem Transkript vor, taugt also als Falle`);
-      }
-    }
-  }
-}
+// R5-W4 · I2 · J1-D's anchor law and trap law stood here. Both are gone with the
+// fields they policed (`ausspracheDe`/`ankerEn`, `falscheFormEn`/`richtigeFormEn`)
+// — see level.ts EntityParams for Koki's two reasons. Nothing replaced them:
+// they guarded lines the card no longer shows, and `tip-honesty`'s typo gate is
+// what stops the fields creeping back.
 
 // ── 2b · THE RETIRED PHRASES ─────────────────────────────────────────────────
 // Koki's replay named these one by one. Each was a line the world does not back:
@@ -305,23 +293,26 @@ if (lexWords.size < 100) {
   fail("VACUITY", `the unit lexicon holds ${lexWords.size} words — ${LEXICON} did not load, so grounding passes everything`);
 }
 if (examplesSeen === 0) {
-  fail("VACUITY", "no `beispielEn` was scanned in any paint level — either the field was renamed or the walk missed it; the example law is asleep");
+  fail("VACUITY", "no `beispieleEn[n]` was scanned in any paint level — either the field was renamed or the walk missed it; the grounding law is asleep");
 }
-// R5-W2 · J1-D: the same guard for the two new fields. A law that scans nothing
-// reports OK, and an OK that means »I looked at zero things« is the worst kind.
-if (ausspracheSeen === 0) {
-  fail("VACUITY", "no `ausspracheDe` was scanned — the pronunciation line vanished");
+// R5-W4 · I2: the same guard for the two fields that arrived with K-1. A law
+// that scans nothing reports OK, and an OK that means »I looked at zero things«
+// is the worst kind.
+if (erklaerungenSeen === 0) {
+  fail("VACUITY", "no `erklaerungDe` was scanned — the Notion vanished from every rule page");
 }
-if (ankersSeen === 0) {
-  fail("VACUITY", "no `ankerEn` was scanned — the anchor law is asleep");
+if (lehrtSeen === 0) {
+  fail("VACUITY", "no `lehrtEn[n]` was scanned — nothing declares what a page teaches, so tip-honesty's coverage law has nothing to check against");
 }
-if (trapsSeen === 0) {
-  fail("VACUITY", "no `falscheFormEn` was scanned — the trap law is asleep");
-}
-// The corpus must be able to REFUTE, not only to confirm: a `.includes()` over a
-// string that swallowed the whole book would attest any sentence at all.
+// The corpus must still be able to REFUTE. It no longer decides pass/fail, but
+// the 1:1 NOTE above is only worth reading if a `.includes()` over it cannot
+// match anything at all — a corpus that swallowed the whole book would flag
+// every sentence we write as lifted, and the note would be noise.
 if (corpus.some((c) => c.text.includes("It's magenta and invisible."))) {
-  fail("VACUITY", "the transcript corpus attests a sentence that is not in the book — the attestation test is not discriminating");
+  fail("VACUITY", "the transcript corpus attests a sentence that is not in the book — the 1:1 note is not discriminating");
+}
+if (liftedSeen > 0) {
+  console.log(`  … ${liftedSeen} von ${examplesSeen} Beispielen stehen 1:1 im Buch (erlaubt seit K-1, aber sichtbar)`);
 }
 
 // ── the verdict ──────────────────────────────────────────────────────────────

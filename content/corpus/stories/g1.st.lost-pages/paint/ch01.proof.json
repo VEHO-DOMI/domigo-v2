@@ -193,7 +193,8 @@
         "guardianTelegraphs": 0,
         "guardianWindows": 0,
         "guardianWroteLow": false,
-        "guardianConsoled": false
+        "guardianConsoled": false,
+        "guardianLanded": false
       }
     },
     "p2": {
@@ -400,14 +401,15 @@
         "tasksSolved": 12,
         "redeemedPresent": true,
         "classmatesAwake": 1,
-        "tipsGot": 1,
-        "booksGot": 1,
+        "tipsGot": 2,
+        "booksGot": 0,
         "scorePageShown": false,
         "guardianPathsFlown": 0,
         "guardianTelegraphs": 0,
         "guardianWindows": 0,
         "guardianWroteLow": false,
-        "guardianConsoled": false
+        "guardianConsoled": false,
+        "guardianLanded": false
       }
     },
     "p3": {
@@ -553,7 +555,8 @@
         "guardianTelegraphs": 0,
         "guardianWindows": 0,
         "guardianWroteLow": false,
-        "guardianConsoled": false
+        "guardianConsoled": false,
+        "guardianLanded": false
       }
     },
     "p4": {
