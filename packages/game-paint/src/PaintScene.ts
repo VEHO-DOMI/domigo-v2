@@ -31,7 +31,7 @@ import { type AirModel, DELTA_CAP_MS, LOGICAL_H, LOGICAL_W, MAX_TICKS_PER_FRAME,
 import { INK_BODY, INK_CROWN_DARK, INK_MENISCUS, INK_SHEEN, INK_SPLASH_DROPS, INK_SPLASH_TICKS, INK_SURFACE_TINT, inkCrownOffsetAt, inkCrownPoints, inkDepthTint, inkLipThicknessAt, inkScrollAt, inkSheenRuns, inkSplashDropAt, planInkColumns } from "./ink.ts";
 import { type FistState } from "./fist.ts";
 import { type Pad, type PlayerState } from "./player.ts";
-import { CHALK_COLOURS, CHALK_FLIGHT_TICKS, CHALK_GRAVITY, type EntityState, type EntityWorld, GUARDIAN_SCRIPT, JOY_ROLES, KNOT_BEAT_TICKS, SHARD_TICKS, engageTargetId, telegraphTicksFor } from "./entities.ts";
+import { CHALK_COLOURS, CHALK_FLIGHT_TICKS, CHALK_GRAVITY, type EntityState, type EntityWorld, GUARDIAN_SCRIPT, JOY_ROLES, KNOT_BEAT_TICKS, SHARD_TICKS, WIPE_TICKS, engageTargetId, telegraphTicksFor } from "./entities.ts";
 import { COLLECT_ANCHOR_PX, MAGNET_FIELD_PX, Sim, type SimEvent, type TaskRequest, type TipPayload } from "./sim.ts";
 import { FOCUS_MS, focusView } from "./camera.ts";
 import {
@@ -460,6 +460,133 @@ const CHARGE_MOTES = 9;
 // the same way twice and no two knots are twins.
 /** The cord's chalk, the slate its shadow falls on, and the spent chalk an
  *  untied knot leaves behind. */
+// ── R5-W4 · H2 · DIE KRITZEL-SCHICHTEN (R50) ────────────────────────────────
+// Die Textur wird EINMAL in dieser Auflösung gebacken und danach auf die
+// gemessene Tafelfläche skaliert (`boardAnchor`). 256 × 128 ist reichlich: die
+// Fläche misst im Spiel rund 35 × 18 px, wir backen also mit siebenfacher
+// Dichte und können sie später ohne Neubacken grösser ziehen.
+/**
+ * Gebacken wird in der GERÄTE-Auflösung, die das Blatt am Ende wirklich
+ * einnimmt — nicht grosszügig darüber.
+ *
+ * GEMESSEN: die Schiefertafel ist rund 33 logische px breit, die Kamera zoomt
+ * mit RENDER_SCALE (3), also sind das 99 echte Bildschirmpixel. Der erste Bau
+ * buk 256 px und liess sie auf ein Drittel schrumpfen — und eine lineare
+ * Verkleinerung um Faktor acht macht aus feinen Kreidestrichen genau das, was
+ * im Bild zu sehen war: einen rosa Schmierfleck. 96 px trifft die Gerätezeile
+ * fast eins zu eins, also bleibt jeder Strich ein Strich.
+ */
+const SCRIBBLE_W = 96;
+const SCRIBBLE_H = 96;
+/**
+ * Die Fläche ist FAST QUADRATISCH, nicht 2:1 — nachgemessen an der Zelle, die
+ * sie wirklich trägt: `tafel_a` ist 331 × 397, auf GUARDIAN_DISPLAY_H (68) sind
+ * das 57 px Breite, und `GUARDIAN_BOARDS.tafel.wFrac` (0,62) schneidet daraus
+ * 35 px Schiefertafel. Die Höhe der Schiefertafel liegt in derselben Grössen-
+ * ordnung. Ein 2:1-Band lag als schmaler Streifen quer über ihrem Gesicht.
+ */
+const SCRIBBLE_ASPECT = 1;
+/**
+ * Wie gross die Kritzelei GEGEN `boardAnchor.w` ausfällt — beide Zahlen am Bild
+ * gemessen, nicht geschätzt.
+ *
+ * `boardAnchor.w` ist die Breite, auf die der BEWEISTEXT umbricht (0,62 der
+ * Blattbreite), und die ist grosszügiger als die Schiefertafel selbst: im
+ * Aufnahme-Ausschnitt misst die grüne Fläche rund 23 × 38 Welt-px, während
+ * `anchor.w` 33 liefert. Mit einem Quadrat dieser Kantenlänge lagen zwei
+ * Kreidestriche AUSSERHALB des Rahmens, einer quer über den Staffelei-Beinen —
+ * und Kreide, die neben der Tafel in der Luft hängt, liest sich als Fehler,
+ * nicht als Kritzelei. Beide Werte bleiben etwas unter dem Gemessenen, weil sie
+ * sich mit ihr NEIGT und ein Rechteck über Eck mehr Platz braucht.
+ */
+const SCRIBBLE_FIT_W = 0.70;
+const SCRIBBLE_FIT_H = 1.05;
+/**
+ * Wie weit die Kritzelei ÜBER `boardAnchor.y` sitzt, als Anteil der Blatthöhe.
+ *
+ * Auch das ist gemessen, und zwar mit einer Kontrollaufnahme: einmal mit
+ * Kritzelei, einmal mit `alpha = 0` und sonst identisch. Im Kontrollbild trägt
+ * die Tafel nur ihr eigenes Gesicht, und die grüne Fläche liegt zwischen
+ * Bildschirm-y 164 und 284 — ihre Mitte also bei 224, während `boardAnchor.y`
+ * (der Ankerpunkt des BEWEISTEXTES) bei 249 sitzt, rund 8 Welt-px tiefer. Mit
+ * dieser Differenz hing ein Kreidestrich über der Staffelei-Querstange.
+ *
+ * Der Anker selbst bleibt unangetastet: an ihm hängen der Beweistext und das
+ * HELLO, und die sitzen dort seit Wellen richtig. Diese Zahl korrigiert nur die
+ * Kritzelei, die die ganze FLÄCHE braucht statt einer Textzeile.
+ */
+const SCRIBBLE_LIFT_FRAC = 0.12;
+const SCRIBBLE_LAYERS = 3;
+/**
+ * Wie viele Striche je Schicht — 0 geht zuletzt weg, 2 zuerst.
+ *
+ * GEMESSEN statt geschätzt: der erste Bau (7/14/26 dünne Striche) deckte 1,1 %,
+ * 1,0 % und 1,9 % der Fläche ab. „Über und über vollgekritzelt" ist das nicht —
+ * das sind drei Schmierer. Die Zahlen hier sind gegen die gemessene Deckung
+ * gewählt (siehe `SCRIBBLE_COVER_MIN` im Test): die unterste Schicht ist noch
+ * lesbar als „ein paar Striche", alle drei zusammen lassen kaum Grün übrig.
+ */
+const SCRIBBLE_STROKES: readonly number[] = [12, 21, 33];
+/**
+ * Strichbreite IN DER TEXTUR, als Anteil ihrer Kantenlänge.
+ *
+ * GEFUNDEN AM LEBENDEN SPIEL, und es ist die Falle jedes gebackenen Overlays:
+ * die Textur ist 256 px breit und wird auf rund 27 px gezogen — ein Faktor von
+ * fast zehn. Der erste Bau zeichnete Striche von 1,1 bis 2,6 px, also 0,11 bis
+ * 0,27 px auf dem Schirm: die Kritzelei war da, sie war in den Daten korrekt,
+ * und sie war UNSICHTBAR. Deshalb steht die Breite jetzt als Anteil da und
+ * nicht als Pixelzahl — sie wandert mit, wenn jemand die Backgrösse ändert.
+ */
+const SCRIBBLE_THICK_MIN = 0.045;
+const SCRIBBLE_THICK_VAR = 0.030;
+/**
+ * Die Backversion — sie steht IM Texturschlüssel.
+ *
+ * Ohne sie hat mich diese Datei eine halbe Stunde gekostet: die Textur wird
+ * unter einem festen Schlüssel gebacken und beim nächsten Mal wiederverwendet,
+ * wenn es sie schon gibt. Nach einer Code-Änderung lebte im laufenden Spiel
+ * also weiter die ALTE Kritzelei, und ich habe eine Messung an einem Bild
+ * gemacht, das mein geänderter Code nie gezeichnet hat. Wer die Zeichnung
+ * ändert, zählt hier hoch — dann kann kein Bild mehr aus einem früheren Bau
+ * stammen. (Dieselbe Klasse wie ein Test, der eine stale Datei liest.)
+ */
+const SCRIBBLE_BAKE_V = 7;
+/** Die Kreidefarben je Schicht. Die unterste ist einfarbig (ein Kind hatte nur
+ *  ein Stück Kreide), die oberste trägt den ganzen Kasten — so liest sich das
+ *  Wegwischen als „da war etwas", nicht als „es wird heller". */
+const SCRIBBLE_PALETTE: readonly (readonly number[])[] = [
+  [0xfff6e2],
+  [0xfff6e2, 0xfff3d0, 0xf6e4c0],
+  [0xfff6e2, 0xfff3d0, 0xffe0e0, 0xdcecff, 0xfff0b8],
+];
+/** Direkt über ihrem Blatt (das Sprite liegt bei ~7), aber UNTER dem
+ *  Beweistext (`giftText` liegt bei 8): die vier Kreide-Wörter, die sie im
+ *  Fenster auf sich schreibt, müssen lesbar bleiben. */
+const SCRIBBLE_DEPTH = 7.04;
+const SCRIBBLE_ALPHA = 0.72;
+/** Die Schicht, die als Nächstes drankommt, liegt heller — das ist der ganze
+ *  Hinweis, den das Kind braucht, worauf sein Wischen zielt. */
+const SCRIBBLE_TOP_ALPHA = 0.95;
+/** Die feuchte Spur hinter dem Wischer und ihre Kante. */
+const WIPE_DAMP = 0x2f4a3a;
+const WIPE_EDGE = 0xfff6d8;
+const WIPE_MOTES = 7;
+
+// ── R5-W4 · H2 · DAS WARME LICHT ÜBERM STUHL-BAND (D-39) ────────────────────
+// Hinter den Wesen, vor der Kulisse: das Licht liegt AUF dem Saal, nicht über
+// dem Kind. Die Höhe ist die Bank-Reihe der Arena (`band_p4_audience` sitzt als
+// mittlere Platte auf den Zeilen um r10–r14); die Fläche wird EINMAL gezeichnet
+// und danach nur eingeblendet.
+const WARM_DEPTH = 2.6;
+const WARM_COLOUR = 0xffcf7a;
+const WARM_BANDS = 5;
+const WARM_TOP_PX = 150;
+const WARM_H_PX = 96;
+const WARM_RISE_PX = 22;
+/** Über wie viele Bilder es aufgeht — knapp eine Sekunde, wie das Aufblühen
+ *  der Tafel selbst. */
+const WARM_FADE_TICKS = 54;
+
 const KNOT_CHALK = 0xf1e4c2;
 const KNOT_CHALK_LIT = 0xfffaea;
 const KNOT_SHADOW = 0x241c2e;
@@ -847,6 +974,14 @@ export class PaintScene extends Phaser.Scene {
   private ghosts: Array<{ key: string; x: number; y: number; rot: number; sx: number; sy: number; flip: boolean }> = [];
   /** PK-R6 · H2 · the knot cord over her easel (round-2 finding 4). */
   private knotG!: Phaser.GameObjects.Graphics;
+  /** R5-W4 · H2 (R50): die drei gebackenen Kritzel-Schichten auf ihrer Fläche.
+   *  Leer, bis die erste Tafel gezeichnet wird — `ensureScribbles`. */
+  private scribbleImgs: Phaser.GameObjects.Image[] = [];
+  /** R5-W4 · H2 (D-39): die ✕-Schilder dieser Phase. In der Arena bleiben sie
+   *  verborgen, bis die Tafel sauber ist; überall sonst hängen sie von Anfang an. */
+  private exitImgs: Phaser.GameObjects.Image[] = [];
+  /** R5-W4 · H2 (D-39): das warme Licht überm Stuhl-Band nach dem Sieg. */
+  private warmG: Phaser.GameObjects.Graphics | null = null;
   /** PK-R6 · H2 · the fight's own push-in (round-2 finding 8), in ms since the
    *  beat that called for it. Wall-clock, like every other presentation clock in
    *  this scene, and subordinate to the card lean — see the camera block. */
@@ -1404,6 +1539,20 @@ export class PaintScene extends Phaser.Scene {
         case "powerup": cb.onPowerup(ev.grants); break;
         case "cageFreed": cb.onCageFreed(ev.id, ev.skin, ev.classmate, ev.count); break;
         case "guardianDown": cb.onGuardianDown(ev.id, ev.skin); break;
+        // R5-W4 · H2 (R50): der Augenblick, in dem eine Kritzel-Schicht wirklich
+        // verschwindet. Der Zustand `wipe` trägt die Bewegung, aber nicht den
+        // SCHLAG — und ein Kind, das gerade etwas geschafft hat, braucht ihn.
+        // Kreidestaub dort, wo die Schicht war, und ihr eigenes Aufleuchten.
+        case "guardianWipe": {
+          const e = this.world?.entities.find((x) => x.id === ev.id);
+          const anchor = this.boardAnchor(ev.id);
+          if (e && anchor) {
+            this.puff(this.entityImgs.get(ev.id)?.x ?? fromSubs(e.x), anchor.y, "chalk");
+            this.giftOwner = ev.id; // dieselbe Blüte, die das HELLO bekommt
+            this.giftTick = 0;
+          }
+          break;
+        }
         case "cageHint": cb.onCageHint(ev.id); break;
         case "arenaBrief": cb.onArenaBrief(); break;
         case "letters": cb.onLetters(ev.got, ev.total); break;
@@ -3089,107 +3238,245 @@ export class PaintScene extends Phaser.Scene {
   }
 
   /**
-   * PK-R6 · H2 · THE KNOT CORD (round-2 finding 4).
+   * ── R5-W4 · H2 · DIE KRITZEL-SCHICHTEN (Ruling R50, Koki 15.08.2026) ───────
    *
-   * „Anchor a persistent progress meter near the boss's easel so the player
-   * always sees how far into the fight they are." It is a cord, not a bar: the
-   * chapter's own unit for this fight is the KNOT (doc 44 §4 ch01 C4 — „three
-   * knots of 5 windows"), the toast already says „Noch 2 Knoten!", and a health
-   * bar would be the one piece of arcade furniture in a hand-painted book.
+   * Hier hing bis zu dieser Welle eine SCHNUR mit Knoten über ihrem Kopf. Sie
+   * war gut gebaut und sie war das falsche Bild: Koki hat die Knoten-Lore als
+   * Fremdkörper erkannt („ein Frankenstein-Artefakt aus der vorigen Version"),
+   * und eine Schnur über einer vollgekritzelten Tafel erzählt zwei Geschichten
+   * gleichzeitig. Der Fortschrittsmesser bleibt — er wandert nur dorthin, wo er
+   * hingehört: AUF SIE. Drei Kritzel-Schichten auf ihrer Fläche, und jede, die
+   * das Kind wegwischt, legt ein Stück Grün frei. Das ist derselbe Dienst
+   * („immer sehen, wie weit man ist") in der Sprache dieses Kapitels, und es
+   * kostet keine eigene Erklärung.
    *
-   * Persistent whenever a live guardian is on screen, tied to her drawing so it
-   * travels with her, and clamped into the frame so it survives her flying to the
-   * top of her band. Read straight off `world.guardianKnots` — no second counter
-   * to drift out of step with the one the HUD chip and the toast already share.
+   * ZWEI DINGE SIND HIER TECHNISCH ENTSCHEIDEND.
+   *
+   * 1 · GEBACKEN, NICHT GEZEICHNET. Die Schnur leerte eine `Graphics` und
+   *     emittierte 60 bis 75 Strichbefehle PRO BILD, und Phaser tesselliert
+   *     einen Command-Buffer bei jedem einzelnen Bild neu (E5s Messung: drei
+   *     statische `Graphics` = 112 ms von 116 ms Bildzeit). Die Schichten
+   *     entstehen deshalb EINMAL als Textur und sind danach drei Sprites, die
+   *     ihrer Lage folgen — Kosten pro Bild: drei `setPosition`.
+   * 2 · DETERMINISTISCH. Kein `Math.random`: jeder Strich sitzt auf einem
+   *     `hash01`-Wert seines eigenen Index. Dasselbe Kapitel zeichnet in jedem
+   *     Lauf dieselbe Kritzelei, sonst wäre jede Bildreihe und jedes Proof-Band
+   *     eine andere Tafel.
+   *
+   * Bis Codex AQ13 die gemalten Blätter liefert (`tafel_scribble`, `tafel_wipe`)
+   * ist das hier der Platzhalter, der die Mechanik trotzdem vollständig zeigt.
+   * Die gemalten Kreide-Blätter des Bestands (`chalk_mark_a/b`) sind bewusst
+   * NICHT das Material: beide sind EIN breiter Wischer, kein Gekritzel — und ein
+   * Wischer, den man siebenmal stempelt, liest sich als Fleck, nicht als
+   * Schrift. Was hier gebraucht wird, sind viele kleine, verschiedene Striche,
+   * und die sind gezeichnet billiger und ehrlicher als gestempelt.
    */
   private renderKnotCord(): void {
-    this.knotG.clear();
+    // Der Sieg-Trakt hängt HIER, und das ist eine bewusste Entscheidung mit
+    // einem Preis: diese Methode ist der einzige Pro-Bild-Haken, den die Arena
+    // in dieser Welle besitzt (ihre Aufrufzeile in `render()` gehört einer
+    // anderen Spur). Sie heisst deshalb noch `renderKnotCord`, obwohl sie längst
+    // die ganze Boss-Schicht zeichnet — umbenennen hiesse, an fremden Zeilen zu
+    // arbeiten, und ein Name ist billiger zu korrigieren als ein Konflikt.
+    this.renderVictoryTract();
     const g = this.world?.entities.find((e) => e.role === "guardian" && !e.redeemed);
-    if (!g) return;
-    const img = this.entityImgs.get(g.id);
-    if (!img || !img.visible) return;
-    const total = GUARDIAN_SCRIPT[g.tier].knots;
-    const left = Math.max(0, Math.min(total, this.world?.guardianKnots ?? total));
-    if (total <= 0) return;
-    const G = this.knotG;
-    const w = (total - 1) * KNOT_SPACING;
-    const cx = img.x;
-    // above her top edge, and never above the top of the frame
-    const cy = Math.max(fromSubs(this.camY) + 8, img.y - img.displayHeight - KNOT_CORD_LIFT);
-    // THE CORD. It sags under its own weight, and every point on it is nudged by
-    // a hash of its index — a cord drawn with a compass is a UI rule with a bend
-    // in it. Deterministic: same index, same nudge, forever.
-    const SEG = 18;
-    const sag = (t: number): number =>
-      cy + Math.sin(t * Math.PI) * 2.4 + (hash01(Math.round(t * 100) * 733 + 17) - 0.5) * 0.7;
-    const pts: Phaser.Geom.Point[] = [];
-    for (let i = 0; i <= SEG; i++) {
-      const t = i / SEG;
-      pts.push(new Phaser.Geom.Point(cx - w / 2 - 3 + (w + 6) * t, sag(t)));
+    const img = g ? this.entityImgs.get(g.id) : undefined;
+    if (!g || !img || !img.visible) {
+      for (const s of this.scribbleImgs) s.setVisible(false);
+      this.knotG.clear();
+      return;
     }
-    // laid twice: the slate's shadow under a chalk line that is not the same
-    // weight all the way along (the brushed edge — see paintedBubblePath)
-    G.lineStyle(2.4, KNOT_SHADOW, 0.26).strokePoints(pts, false);
-    G.lineStyle(1.4, KNOT_CHALK, 0.5).strokePoints(pts, false);
-    G.lineStyle(0.7, KNOT_CHALK_LIT, 0.9).strokePoints(pts, false);
-    // ── R5-W2 · H1 · DER KNOTEN, DER GERADE AUFGEHT ─────────────────────────
-    // Die Schnur war ein Standbild: sie las eine Zahl und zeichnete Lumpen oder
-    // Buchten. Der wichtigste Augenblick des Kampfes — ein Knoten geht auf —
-    // fand darin gar nicht statt, er war schon vorbei, wenn man hinsah. Jetzt
-    // löst sich der Knoten über den Knoten-Takt hinweg auf, und sein loses Ende
-    // fällt aus der Schnur.
-    // Reduzierte Bewegung: der Ruhezustand IST der Endzustand (aufgegangen).
-    const untieT = g.state !== "untie"
-      ? -1
-      : this.cfg.reducedMotion ? 1 : Math.max(0, Math.min(1, g.timer / KNOT_BEAT_TICKS));
-    for (let i = 0; i < total; i++) {
-      const t = w <= 0 ? 0.5 : (i * KNOT_SPACING + 3) / (w + 6);
-      const x = cx - w / 2 - 3 + (w + 6) * t;
-      const y = sag(t);
-      const tied = i < left; // knots come undone from the LEFT as she loses them
-      // dieser eine ist der, der GERADE aufgeht (Knoten fallen von links)
-      const undoing = i === left && untieT >= 0;
-      const lumpA = undoing ? 1 - untieT : 1;
-      const openA = undoing ? untieT : 1;
-      const lean = (hash01(i * 977 + 31) - 0.5) * 0.9; // each knot sits its own way
-      if (undoing) {
-        // das lose Ende fällt aus der Schnur und verweht
-        G.lineStyle(1.1, KNOT_CHALK, 0.7 * (1 - untieT));
-        G.lineBetween(x, y + 0.4, x + 1.6 * untieT, y + 1.2 + KNOT_R * 5 * untieT);
+    const total = GUARDIAN_SCRIPT[g.tier].knots;
+    // `guardianKnots` ist −1, bis der erste Welt-Takt eines Guardians läuft, und
+    // genau dann steht die Welt still: die Arena-Anleitung friert sie ein, und
+    // das Kind liest »sie ist über und über vollgekritzelt«. GEFUNDEN AM
+    // LEBENDEN SPIEL — mit `?? total` allein war die Tafel in diesem einen
+    // Augenblick blitzsauber, also ausgerechnet dort, wo der Satz sie erklärt.
+    // Ein Zähler, der noch nicht gezählt hat, heisst »alle«, nicht »keine«.
+    const counted = this.world?.guardianKnots ?? -1;
+    const left = counted < 0 ? total : Math.max(0, Math.min(total, counted));
+    const anchor = this.boardAnchor(g.id);
+    if (total <= 0 || anchor === null) {
+      for (const s of this.scribbleImgs) s.setVisible(false);
+      this.knotG.clear();
+      return;
+    }
+    this.ensureScribbles();
+
+    // Die oberste noch stehende Schicht ist die, die als NÄCHSTES weggeht —
+    // sie liegt heller, damit das Kind sieht, worauf sein Wischen zielt.
+    const wiping = g.state === "wipe";
+    const t = wiping ? Math.max(0, Math.min(1, g.timer / WIPE_TICKS)) : 0;
+    const w = anchor.w * SCRIBBLE_FIT_W;
+    const h = anchor.w * SCRIBBLE_FIT_H * SCRIBBLE_ASPECT;
+
+    for (let i = 0; i < this.scribbleImgs.length; i++) {
+      const s = this.scribbleImgs[i]!;
+      const standing = i < left;
+      s.setVisible(standing && img.visible);
+      if (!standing) continue;
+      s.setPosition(img.x, anchor.y - SCRIBBLE_LIFT_FRAC * img.displayHeight);
+      s.setDisplaySize(w, h);
+      s.setFlipX(img.flipX);
+      s.setRotation(img.rotation);
+      const top = i === left - 1;
+      s.setAlpha((top ? SCRIBBLE_TOP_ALPHA : SCRIBBLE_ALPHA) * img.alpha);
+      // Der Wischer nimmt NUR die oberste Schicht, und er nimmt sie von links
+      // nach rechts — dieselbe Richtung, in der ein Kind eine Tafel wischt.
+      if (top && wiping) {
+        const gone = Math.round(SCRIBBLE_W * t);
+        s.setCrop(gone, 0, SCRIBBLE_W - gone, SCRIBBLE_H);
+      } else s.setCrop();
+    }
+
+    // ── DER WISCHER ───────────────────────────────────────────────────────
+    // Nur während des Wischens, und dann als das, was ein Kind in der Hand
+    // hätte: eine feuchte Spur an der Kante, wo die Kritzelei gerade
+    // verschwindet, plus der Kreidestaub, den sie dabei verliert.
+    this.knotG.clear();
+    if (!wiping || this.cfg.reducedMotion) return;
+    this.knotG.setDepth(SCRIBBLE_DEPTH + 0.01);
+    const G = this.knotG;
+    const x0 = img.x - w / 2;
+    const edge = x0 + w * t;
+    const yTop = anchor.y - SCRIBBLE_LIFT_FRAC * img.displayHeight - h / 2;
+    G.fillStyle(WIPE_DAMP, 0.34);
+    G.fillRect(x0, yTop, Math.max(0, w * t), h);
+    G.lineStyle(1.6, WIPE_EDGE, 0.85);
+    G.lineBetween(edge, yTop, edge, yTop + h);
+    for (let i = 0; i < WIPE_MOTES; i++) {
+      // dieselbe Hash-Regel wie die Kritzel: gleicher Index, gleicher Fleck
+      const a = hash01(i * 613 + 41);
+      const b = hash01(i * 977 + 17);
+      const life = (t + a) % 1;
+      G.fillStyle(WIPE_EDGE, 0.5 * (1 - life));
+      G.fillCircle(edge + 1.2 + a * 3.4, yTop + b * h, 0.6 + life * 1.1);
+    }
+  }
+
+  /**
+   * ── R5-W4 · H2 · DER SIEG-TRAKT (D-39, arena.md §5 „der Saal antwortet") ────
+   *
+   * Drei Zusagen des Dossiers standen seit R5-P1 als Vertrag da und waren nie
+   * gebaut — H1 hat sie beim Abschluss ausdrücklich als offen übergeben:
+   *
+   *   1 · das Klassenfoto hängt nach dem Sieg SICHTBAR im Käfig. Bis dahin ist
+   *       es die graue Silhouette (`captive_picture`), die §5 als „Verlockung"
+   *       beschreibt; danach ist es das Bild selbst (`obj_picture` — bezahlt,
+   *       gemalt und bis heute von NICHTS geladen, deshalb Gruppe A der
+   *       Tot-Kunst-Liste).
+   *   2 · warmes Licht fällt auf das Stuhl-Band. Der Saal sitzt das ganze
+   *       Kapitel über im Halbdunkel; dass er antwortet, ist die einzige
+   *       Belohnung, die dieser Raum für sich selbst hat.
+   *   3 · das ✕ erscheint erst nach dem Sieg. Vorher war es sichtbar und
+   *       verweigerte sich per Toast — ein Ausgang, der zu ist, ist kein
+   *       Ausgang, er ist eine Enttäuschung mit Wegbeschreibung.
+   *
+   * Alles drei kostet zusammen einen Blick auf zwei Flaggen des Sim und eine
+   * einzige gefüllte Fläche; nichts davon wird pro Bild neu tesselliert.
+   */
+  private renderVictoryTract(): void {
+    const g = this.world?.entities.find((e) => e.role === "guardian");
+    if (!g) return; // kein Boss in diesem Raum — kein Sieg-Trakt
+    const won = g.state === "sink" || g.state === "sad" || g.state === "consoled";
+
+    // 3 · das ✕ wartet auf die saubere Tafel
+    for (const x of this.exitImgs) x.setVisible(won);
+
+    if (!won) return;
+
+    // 1 · das Foto in Farbe, hinter den Stäben
+    for (const [id, cap] of this.captiveImgs) {
+      const cage = this.world?.entities.find((e) => e.id === id);
+      if (cage?.params?.captive !== "picture") continue;
+      const key = "pb-obj_picture";
+      if (this.textures.exists(key) && cap.texture.key !== key) {
+        // dieselbe Fusslinie, dieselbe Breite — nur eben in Farbe
+        const w = cap.displayWidth;
+        cap.setTexture(key);
+        cap.setDisplaySize(w, w * (cap.height / cap.width));
       }
-      if (tied || undoing) {
-        // A KNOT IS A LUMP, NOT A BEAD. The cord doubles back on itself: a fat
-        // short stroke across the line, a loop thrown over it, and the crease
-        // where the two bights bite. Nothing here is a circle and nothing is
-        // filled pure white.
-        G.lineStyle(2.9, KNOT_SHADOW, 0.28 * lumpA);
-        G.lineBetween(x - KNOT_R + 0.7, y + 1.2 + lean, x + KNOT_R + 0.7, y + 0.7 - lean);
-        G.lineStyle(2.7, KNOT_CHALK, 0.92 * lumpA);
-        G.lineBetween(x - KNOT_R, y + 0.5 + lean, x + KNOT_R, y - lean);
-        G.lineStyle(1.5, KNOT_CHALK_LIT, 0.75 * lumpA);
-        G.lineBetween(x - KNOT_R * 0.7, y - 0.5 + lean, x + KNOT_R * 0.55, y - 0.9 - lean);
-        // the bight thrown over the top, and the crease under it
-        G.lineStyle(1.2, KNOT_CHALK, 0.8 * lumpA);
-        G.beginPath();
-        G.arc(x, y - 0.2, KNOT_R * 0.86, Math.PI * 0.9, Math.PI * 2.2, false);
-        G.strokePath();
-        G.lineStyle(0.8, KNOT_SHADOW, 0.4 * lumpA);
-        G.lineBetween(x - 0.9, y + 0.9 + lean, x + 1.1, y + 0.4 - lean);
+    }
+
+    // 2 · warmes Licht überm Stuhl-Band. EINMAL gezeichnet und danach nur noch
+    //     eingeblendet: eine gefüllte Fläche, die jedes Bild neu entsteht, ist
+    //     genau der Posten, den E5 aus dieser Datei herausgemessen hat.
+    if (this.warmG === null) {
+      this.warmG = this.add.graphics().setDepth(WARM_DEPTH).setAlpha(0);
+      this.warmG.setBlendMode(Phaser.BlendModes.ADD);
+      const wpx = this.worldWpx;
+      for (let i = WARM_BANDS; i >= 1; i--) {
+        const k = i / WARM_BANDS;
+        this.warmG.fillStyle(WARM_COLOUR, 0.05 * (1 - k) + 0.02);
+        this.warmG.fillRect(0, WARM_TOP_PX - k * WARM_RISE_PX, wpx, WARM_H_PX + k * WARM_RISE_PX);
       }
-      if (!tied) {
-        // UNDONE: the cord has gone slack here. An open bight that does not close,
-        // in spent chalk, with the loose end falling out of it — „you already did
-        // this", said in the material the cord is made of.
-        G.lineStyle(1.6, KNOT_SHADOW, 0.2 * openA);
-        G.beginPath();
-        G.arc(x + 0.6, y + 0.9, KNOT_R * 0.72, Math.PI * 1.15, Math.PI * 2.6, false);
-        G.strokePath();
-        G.lineStyle(1.1, KNOT_DONE, 0.85 * openA);
-        G.beginPath();
-        G.arc(x, y + 0.3, KNOT_R * 0.72, Math.PI * 1.15, Math.PI * 2.6, false);
-        G.strokePath();
-        G.lineStyle(0.9, KNOT_DONE, 0.5 * openA);
-        G.lineBetween(x + KNOT_R * 0.5, y + KNOT_R * 0.6, x + KNOT_R * 1.3, y + KNOT_R * 1.6);
+    }
+    if (this.warmG.alpha < 1) {
+      this.warmG.setAlpha(this.cfg.reducedMotion ? 1 : Math.min(1, this.warmG.alpha + 1 / WARM_FADE_TICKS));
+    }
+  }
+
+  /** Die drei Schichten, EINMAL gebacken. Siehe `renderKnotCord` §1. */
+  private ensureScribbles(): void {
+    if (this.scribbleImgs.length > 0) return;
+    for (let layer = 0; layer < SCRIBBLE_LAYERS; layer++) {
+      const key = `h2-scribble-v${SCRIBBLE_BAKE_V}-${this.cfg.phaseId}-${layer}`;
+      if (!this.textures.exists(key)) {
+        const g = this.make.graphics({ x: 0, y: 0 }, false);
+        this.paintScribbleLayer(g, layer);
+        g.generateTexture(key, SCRIBBLE_W, SCRIBBLE_H);
+        g.destroy();
+        this.bakedKeys.push(key);
+      }
+      const img = this.add.image(0, 0, key).setOrigin(0.5, 0.5).setDepth(SCRIBBLE_DEPTH).setVisible(false);
+      this.scribbleImgs.push(img);
+    }
+  }
+
+  /**
+   * Eine Schicht Kritzelei, gezeichnet wie ein Kind, das sich langweilt.
+   *
+   * Die drei Schichten sind nicht dreimal dasselbe in anderer Dichte, sondern
+   * drei Arten von Gekritzel — sonst liest sich das Wegwischen als „es wird
+   * heller" statt als „da war etwas, und jetzt ist es weg":
+   *   0 · ein paar Striche und Rechenzeichen, dünn und einzeln  (geht ZULETZT)
+   *   1 · Wörter als Wellenlinien, Kringel, ein durchgestrichenes Wort
+   *   2 · voll: Gekritzel über Gekritzel, in mehreren Kreidefarben (geht ZUERST)
+   */
+  private paintScribbleLayer(g: Phaser.GameObjects.Graphics, layer: number): void {
+    const W = SCRIBBLE_W;
+    const H = SCRIBBLE_H;
+    const rnd = (n: number): number => hash01(n * 2654435761 + layer * 7919 + 13);
+    const strokes = SCRIBBLE_STROKES[layer] ?? 8;
+    const palette = SCRIBBLE_PALETTE[layer] ?? [0xf1e4c2];
+    const pad = W * 0.06;
+    for (let i = 0; i < strokes; i++) {
+      const colour = palette[Math.floor(rnd(i * 5 + 1) * palette.length) % palette.length]!;
+      const x = pad + rnd(i * 11 + 2) * (W - 2 * pad);
+      const y = pad + rnd(i * 13 + 3) * (H - 2 * pad);
+      const len = W * (0.22 + rnd(i * 17 + 4) * 0.40);
+      const thick = W * (SCRIBBLE_THICK_MIN + rnd(i * 19 + 5) * SCRIBBLE_THICK_VAR);
+      g.lineStyle(thick, colour, 0.6 + rnd(i * 23 + 6) * 0.4);
+      const kind = Math.floor(rnd(i * 29 + 7) * 3);
+      if (kind === 0) {
+        // eine Wellenlinie — „ein Wort", wie ein Kind es hinkritzelt
+        const pts: Phaser.Geom.Point[] = [];
+        const wobble = H * (0.04 + rnd(i * 31 + 8) * 0.06);
+        for (let k = 0; k <= 8; k++) {
+          pts.push(new Phaser.Geom.Point(x + (len * k) / 8, y + Math.sin(k * 1.9 + i) * wobble));
+        }
+        g.strokePoints(pts, false);
+      } else if (kind === 1) {
+        // ein Kringel
+        g.beginPath();
+        g.arc(x, y, W * (0.07 + rnd(i * 37 + 9) * 0.10), 0, Math.PI * 2 * (0.7 + rnd(i * 41 + 10) * 0.3), false);
+        g.strokePath();
+      } else {
+        // ein Strich, manchmal gekreuzt (das durchgestrichene Wort)
+        g.lineBetween(x, y, x + len, y + (rnd(i * 43 + 11) - 0.5) * H * 0.09);
+        if (layer >= 1 && rnd(i * 47 + 12) > 0.68) {
+          g.lineBetween(x + len * 0.1, y - H * 0.04, x + len * 0.9, y + H * 0.04);
+        }
       }
     }
   }
@@ -4985,6 +5272,13 @@ export class PaintScene extends Phaser.Scene {
         } else if (g === "X" || g === "B") {
           const img = this.add.image(cx, this.standLineBelow(c, r), this.tex("prop_exit")).setOrigin(0.5, 1).setDepth(3);
           img.setScale(24 / img.height);
+          // R5-W4 · H2 (D-39, arena.md §10): in der ARENA erscheint das ✕ erst
+          // nach dem Sieg — der Vertrag steht seit R5-P1 im Dossier und war nie
+          // gebaut. Bis dahin hing dort ein Ausgang, den das Kind sah, ansteuern
+          // konnte und dann per Toast abgewiesen bekam: ein Versprechen, das der
+          // Raum nicht hielt. Nur ein Handle wird hier gemerkt; wann es sichtbar
+          // wird, entscheidet `renderVictoryTract`.
+          this.exitImgs.push(img);
         } else if (g === "s") {
           const img = this.add.image(cx, this.standLineBelow(c, r), this.tex("prop_spring")).setOrigin(0.5, 1).setDepth(3);
           img.setScale(13 / img.height);

@@ -262,6 +262,11 @@ export const phaseArtScope = (level: ScopeLevel, phaseId: string, present: Itera
   if (guardianHere) {
     for (const s of CHALK_PROJECTILE_STEMS) add(s);
     closure("chalk");
+    // R5-W4 · H2 (D-39): …und das Klassenfoto in FARBE, das der Sieg-Trakt an
+    // die Stelle der grauen Silhouette hängt. Es steht nur hier, weil nur ein
+    // Raum mit Boss einen Sieg-Trakt hat — ein Blatt, das jede Phase lädt und
+    // nur eine zeigt, ist genau die Sorte Budget, die niemand bemerkt.
+    add("obj_picture");
   }
 
   // 5 · the backdrop — branching on the SCENE'S OWN condition

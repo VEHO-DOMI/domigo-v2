@@ -1571,6 +1571,256 @@
    ]
   },
   {
+   "id": "g1.paint.ch01.boss.k1",
+   "use": "boss",
+   "kind": "choice",
+   "form": "command",
+   "exercises": [
+    "g1u01.w.to-clean",
+    "g1u01.s.imperatives"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Ihre Tafelfläche ist voller alter Kritzel.",
+    "art": "tafel_land1"
+   },
+   "storyDe": "Welcher Befehl passt jetzt zu ihr?",
+   "options": [
+    "Clean!",
+    "Open!",
+    "Listen!"
+   ],
+   "answer": "Clean!",
+   "skins": [
+    "tafel"
+   ],
+   "phases": [
+    "p4"
+   ],
+   "hints": {
+    "deDesc": "Sag ihr, was mit der Fläche geschehen soll."
+   },
+   "grounding": "u01 to-clean + imperatives (SB p. 15). Die Aufgabe des Kapitels als Befehl — Kokis »Clean the board!«."
+  },
+  {
+   "id": "g1.paint.ch01.boss.k2",
+   "use": "boss",
+   "kind": "choice",
+   "form": "pick-correct-form",
+   "exercises": [
+    "g1u01.s.contractions",
+    "g1u01.w.board"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Ein Satz steht dreimal auf ihr, verschieden.",
+    "art": "tafel_land1"
+   },
+   "storyDe": "Welcher Satz ist richtig geschrieben?",
+   "options": [
+    "It's a board.",
+    "Its a board.",
+    "It a board."
+   ],
+   "answer": "It's a board.",
+   "skins": [
+    "tafel"
+   ],
+   "phases": [
+    "p4"
+   ],
+   "hints": {
+    "deDesc": "Einmal fehlt ein Haken, einmal ein ganzes Wort."
+   },
+   "grounding": "u01 contractions (it is → it's). Kein deutsches Wort nennt die Antwort — sie steht als Bild im Raum."
+  },
+  {
+   "id": "g1.paint.ch01.boss.k3",
+   "use": "boss",
+   "kind": "choice",
+   "form": "ask-it",
+   "exercises": [
+    "g1u01.w.your",
+    "g1u01.s.questions-personal-info"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Sie sieht dich an und wartet auf eine Frage.",
+    "art": "tafel_land1"
+   },
+   "storyDe": "Frag sie, wie sie heißt!",
+   "options": [
+    "What's your name?",
+    "How are you?",
+    "How many?"
+   ],
+   "answer": "What's your name?",
+   "skins": [
+    "tafel"
+   ],
+   "phases": [
+    "p4"
+   ],
+   "hints": {
+    "deDesc": "Zuerst der Name, dann alles andere."
+   },
+   "grounding": "u01 questions-personal-info + your (SB p. 8)."
+  },
+  {
+   "id": "g1.paint.ch01.boss.q2",
+   "use": "boss",
+   "kind": "oddone",
+   "form": "belongs-or-not",
+   "exercises": [
+    "g1u01.w.pen",
+    "g1u01.w.pencil",
+    "g1u01.w.chair"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Sie kritzelt drei Wörter untereinander.",
+    "art": "tafel_land1"
+   },
+   "storyDe": "Womit schreibt man NICHT?",
+   "select": "odd",
+   "items": [
+    "pen",
+    "pencil",
+    "chair"
+   ],
+   "correct": [
+    "chair"
+   ],
+   "skins": [
+    "tafel"
+   ],
+   "phases": [
+    "p4"
+   ],
+   "hints": {
+    "deDesc": "Zwei liegen im Federpennal. Eines steht im Saal."
+   },
+   "grounding": "u01 pen/pencil/chair. Die leeren Sitzmöbel des Saals sind der Beleg im Raum.",
+   "evidence": [
+    "pen",
+    "pencil",
+    "chair"
+   ]
+  },
+  {
+   "id": "g1.paint.ch01.boss.m3",
+   "use": "boss",
+   "kind": "mistake",
+   "exercises": [
+    "g1u01.s.plurals",
+    "g1u01.w.chair"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Sie zählt, was im Saal alles herumsteht.",
+    "art": "tafel_land1"
+   },
+   "storyDe": "Ein Wort hat die falsche Form — tipp es an!",
+   "sentence": [
+    "Here",
+    "are",
+    "two",
+    "chair",
+    "."
+   ],
+   "errorIndex": 3,
+   "fix": {
+    "mode": "replace",
+    "correction": "chairs"
+   },
+   "correctionOptions": [
+    "chairs",
+    "desks",
+    "books"
+   ],
+   "skins": [
+    "tafel"
+   ],
+   "phases": [
+    "p4"
+   ],
+   "hints": {
+    "deDesc": "Bei mehr als einem ändert sich das Wortende."
+   },
+   "grounding": "u01 plurals (SB p. 12). Der Saal steht voller davon — die Welt zeigt die Mehrzahl.",
+   "evidence": [
+    "Here",
+    "are",
+    "two",
+    "chair",
+    "."
+   ]
+  },
+  {
+   "id": "g1.paint.ch01.boss.k4",
+   "use": "boss",
+   "kind": "choice",
+   "form": "social-formula",
+   "exercises": [
+    "g1u01.x.politeness"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Sie hat dir ein Stück Kreide hingelegt.",
+    "art": "tafel_land1"
+   },
+   "storyDe": "Was sagst du jetzt zu ihr?",
+   "options": [
+    "Thank you.",
+    "Please.",
+    "Hello."
+   ],
+   "answer": "Thank you.",
+   "skins": [
+    "tafel"
+   ],
+   "phases": [
+    "p4"
+   ],
+   "hints": {
+    "deDesc": "Sie hat dir etwas gegeben, ohne zu fragen."
+   },
+   "grounding": "u01 politeness class (thank you / please / hello)."
+  },
+  {
+   "id": "g1.paint.ch01.boss.k5",
+   "use": "boss",
+   "kind": "choice",
+   "form": "count-it",
+   "exercises": [
+    "g1u01.x.numbers",
+    "g1u01.w.how-many"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Sie kritzelt Zahlen der Reihe nach auf sich.",
+    "art": "tafel_land1"
+   },
+   "storyDe": "Was kommt nach seven?",
+   "promptEn": "How many?",
+   "options": [
+    "eight",
+    "eighteen",
+    "six"
+   ],
+   "answer": "eight",
+   "skins": [
+    "tafel"
+   ],
+   "phases": [
+    "p4"
+   ],
+   "hints": {
+    "deDesc": "Zähl in Gedanken weiter — eins nach dem anderen."
+   },
+   "grounding": "u01 numbers + how-many; die Reihenfolge der Zahlwoerter, ohne dass ein Bild sie tragen muss."
+  },
+  {
    "id": "g1.paint.ch01.boss.q1",
    "use": "boss",
    "kind": "oddone",

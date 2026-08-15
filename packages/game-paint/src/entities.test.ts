@@ -15,6 +15,7 @@ import {
   JOY_TICKS,
   KNOT_PERIOD_TICKS,
   SAD_TICKS,
+  type EntityEvent,
   type EntityWorld,
   type WorldInput,
 } from "./entities.ts";
@@ -324,11 +325,25 @@ describe("the guardian machine (G11 grammar)", () => {
       staggered = evs.some((v) => v.type === "guardianStagger") || staggered;
     }
     expect(staggered).toBe(true);
-    // three solved windows = down (tier E)
+    // R5-W4 · H2 (R50): drei gelöste Fenster sind nur noch die halbe Rechnung.
+    // Jede Antwort setzt sie auf die Bretter, und erst das Kind, das HINGEHT,
+    // nimmt eine Kritzel-Schicht weg — deshalb wird hier nach jedem Lösen auch
+    // gewischt, und die beiden Ereignisse entstehen jetzt im Welt-Takt statt im
+    // Rückgabewert.
     expect(GUARDIAN_SCRIPT.E.knots).toBe(3);
-    expect(guardianKnotSolved(w, "g").some((v) => v.type === "guardianKnot")).toBe(true);
-    expect(guardianKnotSolved(w, "g").some((v) => v.type === "guardianKnot")).toBe(true);
-    expect(guardianKnotSolved(w, "g").some((v) => v.type === "guardianDown")).toBe(true);
+    const wipeAtHer = (): EntityEvent[] => {
+      const out: EntityEvent[] = [];
+      for (let t = 0; t < 600 && g.state !== "untie" && g.state !== "sink"; t++) {
+        out.push(...stepEntities(w, GRID, idleInput({ playerX: g.x, playerY: g.y })));
+      }
+      return out;
+    };
+    guardianKnotSolved(w, "g");
+    expect(wipeAtHer().some((v) => v.type === "guardianKnot")).toBe(true);
+    guardianKnotSolved(w, "g");
+    expect(wipeAtHer().some((v) => v.type === "guardianKnot")).toBe(true);
+    guardianKnotSolved(w, "g");
+    expect(wipeAtHer().some((v) => v.type === "guardianDown")).toBe(true);
     // R3-5 kept, PK-R6 · E re-staged: the last knot no longer jumps to the
     // victory cell. She comes DOWN first (`sink` — the flight sheet's land
     // cells), rests exhausted on the boards (`sad`), and only then is consoled.

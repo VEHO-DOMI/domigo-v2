@@ -1257,7 +1257,12 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
             />
           )}
           {booksCount > 0 && <Chip icon="book" label="Bonus-Bücher" value={`${booksCount}`} art={art} />}
-          {knots > 0 && <Chip icon="knot" label="Knoten" value={`${knots}`} art={art} />}
+          {/* R5-W4 · H2 (R50): der Zähler zählt dasselbe wie vorher — was die
+              Tafel noch zwischen sich und ihrem sauberen Zustand hat. Nur heisst
+              das jetzt eine KRITZEL-Schicht statt eines Knotens. Das interne
+              Symbol `knots` bleibt (R50); das Glyph `knot` zeichnet noch eine
+              Schleife und ist als Kunst-Bedarf gemeldet (PaintedIcons.tsx). */}
+          {knots > 0 && <Chip icon="knot" label="Kritzel" value={`${knots}`} art={art} />}
           {inBonus && bonusLeft >= 0 && <Chip icon="inkwell" label="Tinte" value={`${Math.ceil(bonusLeft / 60)}s`} art={art} />}
           {letters.total > 0 && <Chip icon="spark" label={level.collectNounDe} value={`${letters.got}/${letters.total}`} art={art} />}
         </span>
@@ -1755,7 +1760,13 @@ function Overlay({
             Rebase-Merge: C1s Wortlaut (kein „Fibel") in D1s Rang — ein
             Schlüssel je Karte, der Rest leise. */}
         <Key>Das Buch schenkt dir die <KeyBit>FAUST</KeyBit>!</Key>
-        <p className="pb-quiet" style={{ margin: "0 0 12px" }}>Halte <KeyBit>X</KeyBit> zum Laden — wirf sie auf Knoten und Kreide!</p>
+        {/* R5-W4 · H2: die Zeile nannte „Knoten" — ein Wort, das es seit R50
+            nicht mehr gibt. Nachgeprüft, dass diese Karte in ch01 gar nicht
+            feuern KANN (kein `role:"powerup"` und kein `grants` im Level,
+            `abilities` = jump/run, `punch` fehlt), also ist das hier keine
+            Reparatur für dieses Kapitel, sondern die Vorsorge für das, das die
+            Faust wirklich vergibt: sie nennt jetzt das Ziel statt der Lore. */}
+        <p className="pb-quiet" style={{ margin: "0 0 12px" }}>Halte <KeyBit>X</KeyBit> zum Laden — wirf sie auf alles, was dir im Weg steht!</p>
         <button className="pb-btn-primary" style={btn} onClick={() => onDismiss(o)}>Weiter</button>
       </>,
     );

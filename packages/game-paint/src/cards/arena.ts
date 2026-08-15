@@ -21,6 +21,18 @@
 // und beides in je zwei Sätzen. (D-52 ist ausserdem ein offenes Koki-Tor: die
 // Auftakt-Karte wird auf 375 × 812 oben UND unten beschnitten. Ein zweiter
 // Vier-Takter würde dieselbe Schuld erben.)
+//
+// ── R5-W4 · H2 · WAS SICH GEÄNDERT HAT (Ruling R50, Koki 15.08.2026) ─────────
+// Die Frage, die dieser Takt beantwortet, ist eine ANDERE geworden. Koki hat
+// den ausgelieferten Takt gespielt und die Lore als Fremdkörper erkannt: „sie
+// fliegt und ist über und über verknotet … die Knoten hat ihr die Tinte
+// gemacht" — ein Rest der Vorgänger-Fassung, und für Zehnjährige archaisch.
+// Neu: sie ist VOLLGEKRITZELT, niemand hat sie sauber gemacht, deshalb ist sie
+// grantig, deshalb wirft sie Kreide — und die Aufgabe IST die Mechanik: das
+// Kind wischt die Kritzel-Schichten weg („Clean the board!", ein Imperativ der
+// Unit). Die STRUKTUR dieses Moduls bleibt unberührt; nur die sechs Zeilen und
+// ihre Begründung wechseln. Interne Symbole (`knots`, `KNOT_*`) bleiben, weil
+// ein Umbenennen Register-Runden ohne einen einzigen sichtbaren Gewinn kostet.
 
 /** Die zwei Takte der Arena-Anleitung, in ihrer Reihenfolge. */
 export type ArenaBeat = "wer" | "wie";
@@ -76,8 +88,14 @@ export const arenaExit = (card: string): ArenaExit => {
 // ≤ MAX_LINE_DE (56) je Zeile · kein Antagonisten-Name (Cloak-Gesetz, `chapter-
 // copy` + `check-paint-copy`) · kein Angst-Register · KEIN Ruhe-Wort, denn diese
 // Phase trägt seit Teil 2 eine Uhr (`cards/timer.ts` CALM_DE) · kein englisches
-// Antwort-Wort. Die Knoten-ZAHL steht bewusst in keiner Zeile: sie kommt aus dem
-// Tier-Skript und würde als getippte Zahl irgendwann falsch (doc 41 §7).
+// Antwort-Wort. Die Zahl der Schichten steht bewusst in keiner Zeile: sie kommt
+// aus dem Tier-Skript (E drei · M vier · S fünf) und wäre als getippte Zahl auf
+// jeder anderen Stufe falsch (doc 41 §7). Deshalb sagt Takt 2 „eine Schicht"
+// und nicht, wie viele es sind — die Anzahl zeigt der Kritzel-Zähler im HUD.
+//
+// Wortwahl nach K2s Lexikon (R5-W4): „wischen" ist die Erstwahl, „löschen" die
+// Zweitwahl — und in einer Zeile, die neben einem Menü steht, klingt „löschen"
+// nach Datei. „grantig" ist das Wort für ihre Laune; „böse" steht in BANNED_DE.
 
 export interface ArenaLines {
   /** die Überschrift des Taktes */
@@ -91,23 +109,27 @@ export interface ArenaLines {
 /**
  * Was jeder Takt sagt.
  *
- * Takt 1 („wer") nennt den Zustand, nicht den Feind: sie ist verknotet, und die
- * Knoten sind das, was der Tinten-Schatten in sie hineingebunden hat. Damit ist
- * die Frage „warum Knoten?" in dem Augenblick beantwortet, in dem sie aufkommt.
+ * Takt 1 („wer") nennt den Zustand, nicht den Feind: sie ist vollgekritzelt,
+ * niemand hat sie je geputzt, und DAVON ist sie grantig. Die Frage „warum wirft
+ * sie mit Kreide?" ist damit beantwortet, bevor sie aufkommt — und die Antwort
+ * enthält bereits den Auftrag, weil das Gegenteil von vollgekritzelt sauber ist.
  *
- * Takt 2 („wie") ist die Schleife in der Sprache des Kindes: ausweichen → sie
- * hält inne → antworten → ein Knoten geht auf. Vier Glieder, weil das Kind alle
- * vier braucht; der Bindestrich-Rhythmus ist derselbe wie auf den Tür-Karten.
+ * Takt 2 („wie") ist die Schleife in der Sprache des Kindes, in genau der
+ * Reihenfolge, in der das Kind sie erlebt: ausweichen → sie kommt herunter →
+ * antworten → hingehen → eine Schicht wegwischen. Das HINGEHEN steht drin, weil
+ * es seit dieser Welle eine eigene Handlung ist: die gelöste Karte allein macht
+ * die Tafel nicht sauber (Koki: „wenn sie unten ist und man zu ihr geht, wird
+ * gewischt"). Der Bindestrich-Rhythmus ist derselbe wie auf den Tür-Karten.
  */
 export const arenaLines = (beat: ArenaBeat): ArenaLines =>
   beat === "wer"
     ? {
       titleDe: "Die Tafel",
-      showsDe: "Sie fliegt, und sie ist über und über verknotet.",
-      storyDe: "Die Knoten hat ihr die Tinte gemacht. LÖSE sie!",
+      showsDe: "Sie fliegt, vollgekritzelt und ziemlich grantig.",
+      storyDe: "Niemand hat sie je geputzt. WISCH sie sauber!",
     }
     : {
       titleDe: "So geht es",
-      showsDe: "Ihrer Kreide ausweichen — dann hält sie inne.",
-      storyDe: "ANTWORTE ihr, und ein Knoten geht auf.",
+      showsDe: "Weich ihrer Kreide aus, dann kommt sie herunter.",
+      storyDe: "ANTWORTE ihr, geh hin und WISCH eine Schicht weg!",
     };

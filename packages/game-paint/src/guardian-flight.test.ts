@@ -24,10 +24,12 @@ import {
   KNOT_SPAN_PX,
   GUARDIAN_SCRIPT,
   KNOT_PERIOD_TICKS,
+  KNOT_RATE,
   SHARD_REACH_Y_PX,
   SHARD_TICKS,
   SKID_SPEED,
   TELEGRAPH_FLOOR_TICKS,
+  wipeWaitTicksFor,
   type ProjectileState,
   flightPointAt,
   guardianKnotSolved,
@@ -45,7 +47,7 @@ import {
   guardianPitchRad, guardianRollScaleX,
 } from "./anim.ts";
 import { GUARDIAN_RIG_CELLS } from "./artManifest.ts";
-import { KNOT_PATHS, flightUnitAt, pathForKnot } from "./flight.ts";
+import { BOLT_SHORT, KNOT_PATHS, ZIG_TEETH, flightUnitAt, pathForKnot } from "./flight.ts";
 import { LOGICAL_H, PAINT, SUBS, TICK_MS, TILE } from "./paint.ts";
 import { cameraTargetY, clampScroll } from "./camera.ts";
 import type { EntitySpec, PaintLevel } from "./level.ts";
@@ -126,7 +128,11 @@ describe("the flying Tafel never wears the retired grounded easel (PB-F1)", () =
       const knots = GUARDIAN_SCRIPT[tier].knots;
       let solved = 0;
       for (let t = 0; t < 20000 && solved <= knots; t++) {
-        const evs = stepEntities(w, GRID, pacing(t));
+        // R5-W4 · H2 (R50): eine beantwortete Karte setzt sie nur noch auf die
+        // Bretter — die Schicht geht erst weg, wenn das Kind HINGEHT. Also geht
+        // dieses Kind hin, sobald sie wartet; täte es das nicht, höbe sie mit
+        // der Schicht wieder ab und der Kampf hätte kein Ende.
+        const evs = stepEntities(w, GRID, g.state === "wipeable" ? input({ playerX: g.x, playerY: g.y }) : pacing(t));
         flight.add(g.state);
         for (const ev of evs) {
           if (ev.type === "guardianStagger") {
@@ -134,8 +140,9 @@ describe("the flying Tafel never wears the retired grounded easel (PB-F1)", () =
             g.state = "window";
             flight.add(g.state);
             guardianKnotSolved(w, g.id);
-            solved++;
           }
+          // gezählt wird jetzt, was WIRKLICH eine Schicht gekostet hat
+          if (ev.type === "guardianKnot" || ev.type === "guardianDown") solved++;
         }
         if (g.state === "sink" || g.state === "sad" || g.state === "consoled") terminal.add(g.state);
       }
@@ -183,13 +190,86 @@ describe("the flying Tafel never wears the retired grounded easel (PB-F1)", () =
 // ── THE READABLE PATHS ──────────────────────────────────────────────────────
 describe("the three knot paths (doc 44 §4 ch01 C4)", () => {
   it("escalates spiral → figure-eight → zigzag, gentlest first", () => {
-    expect(KNOT_PATHS).toEqual(["spiral", "eight", "zigzag"]);
+    expect(KNOT_PATHS.slice(0, 3)).toEqual(["spiral", "eight", "zigzag"]);
     expect(pathForKnot(3, 3)).toBe("spiral"); // knot 1: full health
     expect(pathForKnot(2, 3)).toBe("eight");
     expect(pathForKnot(1, 3)).toBe("zigzag"); // knot 3: the last one
-    // a longer fight (tier S has five knots) never runs off the end
-    expect(pathForKnot(1, 5)).toBe("zigzag");
     expect(pathForKnot(5, 5)).toBe("spiral");
+  });
+
+  // ── R5-W4 · H2 · DIE ESKALATION HÖRT NICHT MEHR BEI DREI AUF (D-83) ───────
+  it("jede Stufe fliegt so viele VERSCHIEDENE Bahnen, wie sie Schichten hat", () => {
+    // Der Defekt in einem Satz: die Tabellen waren drei lang, `knotIndex`
+    // klemmte auf 2, und die vierte und fünfte Schicht der Stufen M und S
+    // bekamen die Werte der dritten. Für ch01 (Stufe E) folgenlos — für jedes
+    // Kapitel danach eine Eskalation, die in der Mitte stehen bleibt.
+    for (const tier of TIERS) {
+      const knots = GUARDIAN_SCRIPT[tier].knots;
+      const flown = new Set(Array.from({ length: knots }, (_, i) => pathForKnot(knots - i, knots)));
+      expect(flown.size, `Stufe ${tier}: ${knots} Schichten, aber nur ${flown.size} Bahnen`).toBe(knots);
+    }
+    expect(GUARDIAN_SCRIPT.S.knots, "Stufe S ist die längste Reihe, die es gibt").toBe(5);
+  });
+
+  it("und die vier Reihen sind GLEICH LANG — sonst klemmt eine still", () => {
+    // Die eigentliche Klasse hinter D-83: vier Tabellen, ein Index. Wer eine
+    // verlängert und die anderen vergisst, bekommt keinen Fehler, sondern eine
+    // Stufe, die halb eskaliert. Dieses Gesetz ist billiger als der Fund.
+    expect(KNOT_SPAN_PX.length).toBe(KNOT_PATHS.length);
+    expect(KNOT_PERIOD_TICKS.length).toBe(KNOT_PATHS.length);
+    expect(KNOT_RATE.length).toBe(KNOT_PATHS.length);
+    // …und keine Reihe darf kürzer sein als die längste Stufe
+    for (const tier of TIERS) expect(KNOT_PATHS.length).toBeGreaterThanOrEqual(GUARDIAN_SCRIPT[tier].knots);
+  });
+
+  it("die Reihen bewegen sich in EINE Richtung — Eskalation, keine Zufallszahlen", () => {
+    for (let i = 1; i < KNOT_PATHS.length; i++) {
+      expect(KNOT_SPAN_PX[i]!, "die Spannweite wächst").toBeGreaterThan(KNOT_SPAN_PX[i - 1]!);
+      expect(KNOT_PERIOD_TICKS[i]!, "die Periode schrumpft").toBeLessThan(KNOT_PERIOD_TICKS[i - 1]!);
+      expect(KNOT_RATE[i]!, "die Uhren ziehen an").toBeLessThan(KNOT_RATE[i - 1]!);
+    }
+    // …und gedämpft: kein Schritt ist grösser als der davor (sonst wäre die
+    // fünfte Schicht ein Sprung ins Unlesbare statt eine Steigerung)
+    for (let i = 2; i < KNOT_PATHS.length; i++) {
+      expect(KNOT_SPAN_PX[i]! - KNOT_SPAN_PX[i - 1]!)
+        .toBeLessThanOrEqual(KNOT_SPAN_PX[i - 1]! - KNOT_SPAN_PX[i - 2]!);
+      expect(KNOT_PERIOD_TICKS[i - 1]! - KNOT_PERIOD_TICKS[i]!)
+        .toBeLessThanOrEqual(KNOT_PERIOD_TICKS[i - 2]! - KNOT_PERIOD_TICKS[i - 1]!);
+    }
+  });
+
+  it("die zwei neuen Bahnen setzen die Reihe fort, statt sie zu wiederholen", () => {
+    // clover: der Achter mit einer dritten Schleife. Gemessen wird, was ein
+    // Kind wirklich unterscheidet — wie oft sie die Richtung wechselt, während
+    // sie einmal durchfliegt. (Erster Anlauf zählte Abtastpunkte nahe der
+    // Mitte: das misst die VERWEILDAUER dort, nicht die Zahl der Durchgänge,
+    // und ging prompt in die falsche Richtung, weil der Klee steiler
+    // durchfährt. Eine Zahl, die das Gegenteil ihrer Behauptung misst.)
+    const reversals = (p: Parameters<typeof flightUnitAt>[0]): number => {
+      const N = 4000;
+      let turns = 0;
+      let prev = flightUnitAt(p, 1 / N).fy - flightUnitAt(p, 0).fy;
+      for (let i = 1; i < N; i++) {
+        const d = flightUnitAt(p, (i + 1) / N).fy - flightUnitAt(p, i / N).fy;
+        if (d !== 0 && prev !== 0 && Math.sign(d) !== Math.sign(prev)) turns++;
+        if (d !== 0) prev = d;
+      }
+      return turns;
+    };
+    expect(reversals("clover"), "der Klee dreht öfter als der Achter")
+      .toBeGreaterThan(reversals("eight"));
+    // …und er geht durch die Mitte, wie der Achter auch
+    for (const u of [0, 0.5]) {
+      expect(flightUnitAt("clover", u).fx).toBeCloseTo(0, 9);
+      expect(flightUnitAt("clover", u).fy).toBeCloseTo(0, 9);
+    }
+    // bolt: der Zickzack mit ungleichen Zähnen — die Höhe wechselt, also lässt
+    // sich der nächste Zahn nicht mehr aus dem letzten ablesen.
+    const peak = (teeth: number): number[] =>
+      Array.from({ length: teeth }, (_, k) => Math.abs(flightUnitAt("bolt", (k + 0.5) / teeth).fy));
+    const peaks = peak(ZIG_TEETH);
+    expect(new Set(peaks.map((x) => x.toFixed(3))).size, "alle Zähne gleich hoch = derselbe Zickzack").toBeGreaterThan(1);
+    expect(Math.min(...peaks)).toBeCloseTo(BOLT_SHORT, 6);
   });
 
   it("every shape is CLOSED — she can trace it forever with no seam", () => {
@@ -422,10 +502,17 @@ describe("her whole body stays in the visible band (readable = seeable)", () => 
         const wasUntie = g.state === "untie";
         const wasLoose = justCameLoose;
         justCameLoose = false;
-        for (const ev of stepEntities(w, GRID, pacing(t))) {
+        // R5-W4 · H2: das Kind geht zur wartenden Tafel — und der Augenblick,
+        // den dieses Gesetz misst, ist seither ein anderer: nicht mehr der
+        // Tick, an dem die Karte beantwortet wird, sondern der, an dem die
+        // Schicht WIRKLICH weggeht und der Knoten-Takt beginnt.
+        const inp = g.state === "wipeable" ? input({ playerX: g.x, playerY: g.y }) : pacing(t);
+        for (const ev of stepEntities(w, GRID, inp)) {
           if (ev.type === "guardianStagger") {
             g.state = "window"; // die Karte geht auf …
             guardianKnotSolved(w, g.id); // … und wird beantwortet
+          }
+          if (ev.type === "guardianKnot" || ev.type === "guardianDown") {
             solved++;
             justCameLoose = true;
           }
@@ -472,10 +559,15 @@ describe("her whole body stays in the visible band (readable = seeable)", () => 
     let solved = 0;
     const seen = new Set<string>();
     for (let t = 0; t < 20000 && g.state !== "consoled"; t++) {
-      // ein Kind ganz im Westen — der Fall, der die Tafel am weitesten zieht
-      const inp = input({ playerX: (1 * TILE + TILE / 2) * SUBS, playerY: floorRow * TILE * SUBS });
+      // ein Kind ganz im Westen — der Fall, der die Tafel am weitesten zieht.
+      // R5-W4 · H2: nur zum Wischen kommt es herüber; für jeden geprüften
+      // Flug-Tick steht es weiterhin so weit weg, wie die Bühne es zulässt.
+      const inp = g.state === "wipeable"
+        ? input({ playerX: g.x, playerY: g.y })
+        : input({ playerX: (1 * TILE + TILE / 2) * SUBS, playerY: floorRow * TILE * SUBS });
       for (const ev of stepEntities(w, rows, inp)) {
-        if (ev.type === "guardianStagger") { g.state = "window"; guardianKnotSolved(w, g.id); solved++; }
+        if (ev.type === "guardianStagger") { g.state = "window"; guardianKnotSolved(w, g.id); }
+        if (ev.type === "guardianKnot" || ev.type === "guardianDown") solved++;
       }
       seen.add(g.state);
       const x = g.x / SUBS;
@@ -623,7 +715,15 @@ describe("the counter-window economy (doc 44 §4 ch01 C4)", () => {
     // ground, in her `win` cell, for as long as the child is in the arena.
     const w = spawnEntities([guardianSpec("E")], []);
     const g = w.entities[0]!;
-    for (let k = 0; k < GUARDIAN_SCRIPT.E.knots; k++) guardianKnotSolved(w, g.id);
+    // R5-W4 · H2 (R50): dreimal lösen reicht nicht mehr — dreimal lösen UND
+    // dreimal hingehen. Der Weg dorthin ist der Beweis, dass der neue Bogen
+    // wirklich am selben Ende ankommt wie der alte.
+    for (let k = 0; k < GUARDIAN_SCRIPT.E.knots; k++) {
+      guardianKnotSolved(w, g.id);
+      for (let t = 0; t < 2000 && g.state !== "untie" && g.state !== "sink"; t++) {
+        stepEntities(w, GRID, input({ playerX: g.x, playerY: g.y }));
+      }
+    }
     expect(g.state).toBe("sink");
     for (let t = 0; t < 2000; t++) stepEntities(w, GRID, pacing(t));
     expect(g.state).toBe("consoled");
@@ -634,6 +734,95 @@ describe("the counter-window economy (doc 44 §4 ch01 C4)", () => {
     for (let t = 0; t < 3000; t++) stepEntities(w, GRID, pacing(t));
     expect(g.state).toBe("consoled");
     expect({ x: g.x, y: g.y }).toEqual(restedAt);
+  });
+
+  // ── R5-W4 · H2 · DAS WISCHEN (Ruling R50) ─────────────────────────────────
+  // „Clean the board!" ist seit Kokis Befund vom 15.08. die Aufgabe UND die
+  // Mechanik. Diese vier Gesetze halten die drei Eigenschaften fest, an denen
+  // der Umbau scheitern könnte: die Karte allein zahlt nicht, das Warten hat
+  // ein Ende, das Ende hat einen Rückweg, und die Wartezeit ist lang genug für
+  // ein Kind, das nur GEHEN kann.
+  //
+  // Der Prüfraum ist ausdrücklich die AUSGELIEFERTE Arena, nicht das Zimmer
+  // oben in dieser Datei: P-67 — ein Wächter, dessen Boden auf der Flughöhe der
+  // Tafel liegt, lief hier schon einmal über einen live stehenden Softlock
+  // hinweg.
+  describe("R5-W4 · H2 · die Kritzel-Schicht geht erst weg, wenn das Kind wischt", () => {
+    const shipped = (): PaintLevel =>
+      JSON.parse(fs.readFileSync(
+        path.resolve(__dirname, "../../../content/corpus/stories/g1.st.lost-pages/paint/ch01.level.json"),
+        "utf8",
+      )) as PaintLevel;
+    const arenaWorld = (): { w: EntityWorld; g: typeof w.entities[0]; rows: readonly string[] } => {
+      const arena = shipped().arena!;
+      const spec = arena.entities.find((e) => e.role === "guardian")!;
+      const w = spawnEntities([spec], []);
+      return { w, g: w.entities[0]!, rows: arena.rows };
+    };
+    /** Bis sie auf den Brettern wartet — das Kind rührt sich dabei nicht. */
+    const settleHer = (w: EntityWorld, g: EntityWorld["entities"][0], rows: readonly string[]): void => {
+      guardianKnotSolved(w, g.id);
+      for (let t = 0; t < 600 && g.state !== "wipeable"; t++) {
+        stepEntities(w, rows, input({ playerX: 0, playerY: 0 }));
+      }
+      expect(g.state, "sie muss sich auf die Bretter setzen").toBe("wipeable");
+    };
+
+    it("eine beantwortete Karte allein nimmt KEINE Schicht — sie setzt sich nur", () => {
+      const { w, g, rows } = arenaWorld();
+      const before = g.hp;
+      settleHer(w, g, rows);
+      expect(g.hp, "die Antwort ist der halbe Weg, nicht der ganze").toBe(before);
+      expect(w.guardianKnots, "…und der Zähler im HUD lügt auch nicht").not.toBe(before - 1);
+    });
+
+    it("das Kind geht hin — und GENAU EINE Schicht geht weg", () => {
+      const { w, g, rows } = arenaWorld();
+      const before = g.hp;
+      settleHer(w, g, rows);
+      let wipes = 0;
+      for (let t = 0; t < 600 && g.state !== "untie"; t++) {
+        for (const ev of stepEntities(w, rows, input({ playerX: g.x, playerY: g.y }))) {
+          if (ev.type === "guardianKnot" || ev.type === "guardianDown") wipes++;
+        }
+      }
+      expect(wipes, "genau eine Meldung, nicht null und nicht zwei").toBe(1);
+      expect(g.hp).toBe(before - 1);
+      expect(w.guardianKnots).toBe(before - 1);
+    });
+
+    it("KEIN ZUSTAND OHNE RÜCKWEG: wer nicht hingeht, verliert die Karte — nicht das Spiel", () => {
+      // Der teuerste Fehler dieses Umbaus wäre eine Tafel, die für immer auf
+      // ein Kind wartet, das nicht kommt. Sie hebt wieder ab, mit der Schicht.
+      const { w, g, rows } = arenaWorld();
+      const before = g.hp;
+      settleHer(w, g, rows);
+      const wait = wipeWaitTicksFor(g, rows);
+      let lifted = false;
+      for (let t = 0; t < wait + 120 && !lifted; t++) {
+        stepEntities(w, rows, input({ playerX: 0, playerY: 0 })); // das Kind bleibt weg
+        if (g.state !== "wipeable") lifted = true;
+      }
+      expect(lifted, `sie muss binnen ${wait} Ticks wieder aufsteigen`).toBe(true);
+      expect(g.hp, "die Schicht bleibt — die Karte hat nicht gezählt").toBe(before);
+      // …und sie fliegt danach wirklich weiter, statt in `untie` zu kleben
+      for (let t = 0; t < 400 && g.state !== "fly"; t++) stepEntities(w, rows, input({ playerX: 0, playerY: 0 }));
+      expect(g.state, "der Kampf geht weiter").toBe("fly");
+    });
+
+    it("die Wartezeit reicht für ein Kind, das nur GEHEN kann — hergeleitet, nicht geraten", () => {
+      // arena.md §1: „kein run als Pflicht". Die Wartezeit wird deshalb gegen
+      // walkMax gerechnet, obwohl dieses Kapitel in Wahrheit mit runMax läuft —
+      // die langsamere Gangart ist die sichere Seite. Hier steht die Rechnung
+      // selbst, gegen die ausgelieferte Bühne.
+      const { g, rows } = arenaWorld();
+      const stageWidthPx = (Number(g.params.stageMaxC) + 1 - Number(g.params.stageMinC)) * TILE;
+      const walkTicks = Math.ceil((stageWidthPx * SUBS) / PAINT.walkMax);
+      expect(wipeWaitTicksFor(g, rows)).toBeGreaterThanOrEqual(walkTicks);
+      // und mit dem echten Tempo dieses Kapitels hat das Kind mehr als das Doppelte
+      const runTicks = Math.ceil((stageWidthPx * SUBS) / PAINT.runMax);
+      expect(wipeWaitTicksFor(g, rows)).toBeGreaterThan(runTicks * 2);
+    });
   });
 
   it("being HIT never unties a knot — knots are earned in the window only", () => {
@@ -947,14 +1136,22 @@ describe("der Schwall — was landet, bleibt nicht liegen (Auftrag 2b)", () => {
     }
   });
 
-  it("am dritten Knoten rutscht sie — schneller als Gehen, langsamer als Laufen", () => {
+  it("am dritten Knoten rutscht sie — und HOLT das Kind ein (D-86)", () => {
+    // ── R5-W4 · H2 · WAS HIER FALSCH WAR ──────────────────────────────────
+    // Die alte Herleitung („Mitte der beiden Gangarten, dann halbiert") ergab
+    // 0,875 px/t gegen ein Kind, das in diesem Kapitel 2,25 px/t läuft. Die
+    // Scherbe war zweieinhalbmal langsamer als ihr Ziel — sie hat es nie
+    // erreicht, und damit tat sie genau das nicht, wofür sie gebaut wurde:
+    // „Weggehen ist die ganze Antwort" zu beenden. Das Gesetz prüfte damals
+    // nur `> walkMax/4`, also eine Schranke, die auch eine wirkungslose
+    // Scherbe nimmt. Jetzt prüft es die EIGENSCHAFT statt einer Zahl.
     const s = shardAfter(2, 30);
     expect(s, "keine Scherbe entstanden").toBeDefined();
     expect(Math.abs(s!.vx), "sie rutscht nicht").toBeGreaterThan(0);
-    // ABGELEITET aus den beiden Gangarten des Kindes: Weggehen darf aufhören zu
-    // genügen, aber das Examen verlangt nie das Laufen (arena.md §1).
-    expect(Math.abs(s!.vx)).toBeGreaterThan(PAINT.walkMax / 2 / 2);
-    expect(Math.abs(s!.vx), "sie ist schneller als ein rennendes Kind").toBeLessThan(PAINT.runMax);
+    expect(Math.abs(s!.vx), "eine Scherbe, die langsamer ist als das Kind, jagt niemanden")
+      .toBeGreaterThanOrEqual(PAINT.runMax);
+    expect(Math.abs(s!.vx), "…aber schneller als das Kind wäre eine Strafe fürs Laufen")
+      .toBeLessThanOrEqual(PAINT.runMax);
     expect(Math.abs(s!.vx)).toBe(SKID_SPEED);
   });
 

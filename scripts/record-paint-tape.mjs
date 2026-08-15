@@ -123,10 +123,19 @@ const runPilot = (phaseId, entryAbilities, program, { maxTicks = 60 * 120, trace
       // actually DOWN, CLOSED LOOP on the sim's own flag (the A-3 principle
       // this file already applies to platforms: never a tick count, because the
       // number of throws it takes depends on every tick spent upstream).
+      //
+      // R5-W4 · H2 (Ruling R50): seit dem Umbau reicht Pendeln nicht mehr. Eine
+      // beantwortete Karte setzt die Tafel auf die Bretter, und erst die
+      // BERÜHRUNG nimmt eine Kritzel-Schicht weg — ein Pilot, der nur hin und
+      // her läuft, käme nie zum Ausgang und würde damit behaupten, die Arena sei
+      // unspielbar. Also geht er hin, und zwar wieder GESCHLOSSEN: auf ihren
+      // Zustand, nicht auf eine Tickzahl. (Nur p4 fährt dieses Makro.)
       const [half, timeout = 6000] = args;
       for (let i = 0; i < timeout; i++) {
         if (sim.guardianDefeated) break;
-        const right = Math.floor(i / half) % 2 === 0;
+        const g = sim.world.entities.find((e) => e.role === "guardian");
+        const waiting = g && (g.state === "wipeable" || g.state === "settle");
+        const right = waiting ? g.x > sim.player.x : Math.floor(i / half) % 2 === 0;
         if (!tick(pad(right ? { right: true } : { left: true }))) break;
       }
     } else if (op === "pace") {
