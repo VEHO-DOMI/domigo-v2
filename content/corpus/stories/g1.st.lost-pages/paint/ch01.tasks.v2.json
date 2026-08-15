@@ -82,7 +82,7 @@
     "showsDe": "Der Bleistift setzt die Spitze auf dein neues Heft.",
     "art": "pencil_a"
    },
-   "storyDe": "Verbiete es ihm — er soll das NICHT tun!",
+   "storyDe": "Er will in dein Heft schreiben — verbiete es ihm!",
    "options": [
     "Don't write!",
     "Don't read!",
@@ -111,7 +111,7 @@
    ],
    "stimulus": {
     "type": "entity",
-    "showsDe": "Der kleine Hüpfer ist ganz grau geworden",
+    "showsDe": "Der Radiergummi hüpft grau herum.",
     "art": "eraser_a"
    },
    "storyDe": "Sag, wer er ist — dann gib ihm die Farbe!",
@@ -122,7 +122,7 @@
     "hat"
    ],
    "name": "rubber",
-   "colourAskDe": "„Ich war blau wie das Meer!“, ruft er.",
+   "colourAskDe": "Der Radiergummi war blau.",
    "colourOptions": [
     "blue",
     "green",
@@ -183,7 +183,7 @@
    ],
    "stimulus": {
     "type": "entity",
-    "showsDe": "Er hält drei Sätze über ein Fenster hoch.",
+    "showsDe": "Der Radiergummi hält drei Sätze über ein Fenster hoch.",
     "art": "eraser_b"
    },
    "storyDe": "Es ist KEIN Fenster — welcher Satz stimmt?",
@@ -215,7 +215,7 @@
    ],
    "stimulus": {
     "type": "entity",
-    "showsDe": "Ein dickes Buch lehnt blass an der Wand.",
+    "showsDe": "Das Buch lehnt grau an der Wand.",
     "art": "obj_book_a"
    },
    "storyDe": "Sag, was es ist — dann gib ihm die Farbe!",
@@ -226,13 +226,13 @@
     "picture"
    ],
    "name": "book",
-   "colourAskDe": "„Ich war rot wie ein Apfel!“, seufzt es.",
+   "colourAskDe": "Das Buch war blau.",
    "colourOptions": [
     "red",
     "blue",
     "brown"
    ],
-   "colour": "red",
+   "colour": "blue",
    "skins": [
     "obj_book"
    ],
@@ -241,7 +241,7 @@
    ],
    "hints": {
     "deDesc": "Man schlägt es auf und liest darin.",
-    "deWord": "Auf Deutsch: das Buch — und Rot."
+    "deWord": "Auf Deutsch: das Buch — und Blau."
    }
   },
   {
@@ -255,10 +255,10 @@
    ],
    "stimulus": {
     "type": "entity",
-    "showsDe": "Eine graue Tasche hängt hoch am Spind.",
+    "showsDe": "Die Schultasche hängt grau am Spind.",
     "art": "obj_schoolbag_a"
    },
-   "storyDe": "Sag, was es ist — dann gib ihr die Farbe!",
+   "storyDe": "Sag, was sie ist — dann gib ihr die Farbe!",
    "nameOptions": [
     "school bag",
     "pencil case",
@@ -266,7 +266,7 @@
     "hat"
    ],
    "name": "school bag",
-   "colourAskDe": "„Ich war braun wie frisches Brot!“",
+   "colourAskDe": "Die Schultasche war braun.",
    "colourOptions": [
     "brown",
     "blue",
@@ -294,10 +294,10 @@
    ],
    "stimulus": {
     "type": "entity",
-    "showsDe": "Hinter den Gittern glimmt die graue Musikanlage.",
+    "showsDe": "Im Käfig steckt die Musikanlage — ganz grau.",
     "art": "satchel_a"
    },
-   "storyDe": "Sag im ganzen Satz, was da drinsteckt!",
+   "storyDe": "Was ist im Käfig? Sag es auf Englisch!",
    "options": [
     "It's a sound system.",
     "It's a pencil sharpener.",
@@ -392,7 +392,7 @@
     "showsDe": "Die Tür will wissen, wer da vor ihr steht.",
     "art": "door_a"
    },
-   "storyDe": "Frag sie nach ihrem NAMEN!",
+   "storyDe": "Frag sie, WIE sie heißt!",
    "options": [
     "What's your name?",
     "How are you?",
@@ -407,7 +407,7 @@
    ],
    "hints": {
     "deDesc": "Frag nach dem, womit man gerufen wird.",
-    "deWord": "Auf Deutsch: Wie heisst du?"
+    "deWord": "Auf Deutsch: Wie heißt du?"
    }
   },
   {
@@ -424,7 +424,7 @@
     "showsDe": "Durch den Türspalt zieht kalte Nachtluft.",
     "art": "door_a"
    },
-   "storyDe": "Sag ihr, sie soll ZUGEHEN!",
+   "storyDe": "Sag der Tür, sie soll ZUGEHEN!",
    "options": [
     "Close!",
     "Open!",
@@ -519,7 +519,7 @@
     "showsDe": "Hinter dem Gartentor summt und raschelt es.",
     "art": "door_a"
    },
-   "storyDe": "Sag ihr, sie soll ZUHÖREN!",
+   "storyDe": "Sag dem Tor, es soll ZUHÖREN!",
    "options": [
     "Listen!",
     "Look!",
@@ -550,7 +550,7 @@
     "showsDe": "Das Gartentor öffnet sich zum ersten Mal.",
     "art": "door_open"
    },
-   "storyDe": "Begrüsse es, bevor du hindurchgehst!",
+   "storyDe": "Begrüße es, bevor du hindurchgehst!",
    "options": [
     "Hello!",
     "Bye!",
@@ -610,10 +610,10 @@
    ],
    "stimulus": {
     "type": "entity",
-    "showsDe": "Der Füller steht grau da, die Spitze blass",
+    "showsDe": "Die Füllfeder steht grau da.",
     "art": "pen_a"
    },
-   "storyDe": "Sag, wer er ist — dann gib ihm die Farbe!",
+   "storyDe": "Sag, wer sie ist — dann gib ihr die Farbe!",
    "nameOptions": [
     "pen",
     "pencil",
@@ -621,7 +621,7 @@
     "paintbrush"
    ],
    "name": "pen",
-   "colourAskDe": "„Ich war gelb wie die Sonne!“, sagt er.",
+   "colourAskDe": "Die Füllfeder war gelb.",
    "colourOptions": [
     "yellow",
     "black",
@@ -636,7 +636,7 @@
    ],
    "hints": {
     "deDesc": "Damit schreibst du mit Tinte.",
-    "deWord": "Auf Deutsch: der Füller — und Gelb."
+    "deWord": "Auf Deutsch: die Füllfeder — und Gelb."
    },
    "grounding": "u01 object: pen + colour: yellow (the sheet's golden body, hue 48°)"
   },
@@ -651,10 +651,10 @@
    ],
    "stimulus": {
     "type": "entity",
-    "showsDe": "Der Füller schreibt eine Frage in die Luft.",
+    "showsDe": "Die Füllfeder schreibt eine Frage in die Luft.",
     "art": "pen_act"
    },
-   "storyDe": "Frag ihn, WIE ES IHM GEHT!",
+   "storyDe": "Frag sie, WIE es ihr heute geht!",
    "options": [
     "How are you?",
     "What's your name?",
@@ -683,10 +683,10 @@
    ],
    "stimulus": {
     "type": "entity",
-    "showsDe": "Der Füller tropft ein Fragezeichen auf das Blatt.",
+    "showsDe": "Die Füllfeder tropft ein Fragezeichen aufs Blatt.",
     "art": "pen_b"
    },
-   "storyDe": "Frag ihn nach seiner E-MAIL!",
+   "storyDe": "Frag sie nach ihrer E-MAIL!",
    "options": [
     "What's your address?",
     "What's your name?",
@@ -715,7 +715,7 @@
    ],
    "stimulus": {
     "type": "entity",
-    "showsDe": "Der Farbkasten hat vier Wörter auf den Deckel gemalt",
+    "showsDe": "Der Farbkasten hat vier Wörter auf den Deckel gemalt.",
     "art": "paintbox_a"
    },
    "storyDe": "Was gehört NICHT zum Malen?",
@@ -790,10 +790,10 @@
    ],
    "stimulus": {
     "type": "entity",
-    "showsDe": "Die Schultasche hat alles falsch einsortiert",
+    "showsDe": "Die Schultasche hat alles falsch einsortiert.",
     "art": "ranzen_a"
    },
-   "storyDe": "Was gehört NICHT in die Federtasche?",
+   "storyDe": "Was gehört NICHT ins Federpennal?",
    "select": "odd",
    "items": [
     "pen",
@@ -826,7 +826,7 @@
    ],
    "stimulus": {
     "type": "entity",
-    "showsDe": "Die Schultasche wirft ihre Karten durcheinander",
+    "showsDe": "Die Schultasche wirft ihre Karten durcheinander.",
     "art": "ranzen_act"
    },
    "storyDe": "Welches Wort ist KEINE Zahl?",
@@ -885,7 +885,7 @@
     "p3"
    ],
    "hints": {
-    "deDesc": "Eines davon steckt in der Federtasche."
+    "deDesc": "Eines davon steckt im Federpennal."
    }
   },
   {
@@ -935,7 +935,7 @@
    ],
    "stimulus": {
     "type": "entity",
-    "showsDe": "Ein Stapel Seiten flattert grau vorbei",
+    "showsDe": "Das Heft flattert grau vorbei.",
     "art": "heft_a"
    },
    "storyDe": "Sag, wer es ist — dann gib ihm die Farbe!",
@@ -946,7 +946,7 @@
     "picture"
    ],
    "name": "exercise book",
-   "colourAskDe": "„Ich war grün wie das Gras!“, flüstert es.",
+   "colourAskDe": "Das Heft war grün.",
    "colourOptions": [
     "green",
     "red",
@@ -1037,7 +1037,7 @@
    ],
    "stimulus": {
     "type": "entity",
-    "showsDe": "Ein Zahlen-Falter surrt dir um die Nase",
+    "showsDe": "Ein Zahlen-Falter surrt dir um die Nase.",
     "art": "moths_a"
    },
    "storyDe": "Dreh das Rad auf seine Zahl!",
@@ -1093,7 +1093,7 @@
    ],
    "stimulus": {
     "type": "entity",
-    "showsDe": "Der Falter setzt sich kurz auf deine Schulter",
+    "showsDe": "Der Falter setzt sich kurz auf deine Schulter.",
     "art": "moths_rest"
    },
    "storyDe": "Lies seine Zahl — dreh das Rad darauf!",
@@ -1149,7 +1149,7 @@
    ],
    "stimulus": {
     "type": "entity",
-    "showsDe": "Ein Zahlen-Falter trägt ein Wort auf dem Flügel",
+    "showsDe": "Ein Zahlen-Falter trägt ein Wort auf dem Flügel.",
     "art": "moths_a"
    },
    "storyDe": "Dreh das Rad auf die Zahl zu seinem Wort!",
@@ -1205,7 +1205,7 @@
    ],
    "stimulus": {
     "type": "entity",
-    "showsDe": "Der Falter hält dir sein Wort entgegen",
+    "showsDe": "Der Falter hält dir sein Wort entgegen.",
     "art": "moths_b"
    },
    "storyDe": "Lies sein Wort — dreh das Rad darauf!",
@@ -1261,10 +1261,10 @@
    ],
    "stimulus": {
     "type": "entity",
-    "showsDe": "Merle steht da und reißt den Mund weit auf",
+    "showsDe": "Merle ist halb verwunschen — jeder Satz hilft ihr.",
     "art": "merle_act_sing1"
    },
-   "storyDe": "Mitten in der Stunde wird Merle ganz laut.",
+   "storyDe": "Sie singt mitten in der Stunde — das soll sie lassen!",
    "promptEn": "What do you say?",
    "options": [
     "Clean the board!",
@@ -1295,7 +1295,7 @@
    ],
    "stimulus": {
     "type": "entity",
-    "showsDe": "Merle steht mit beiden Schuhen oben auf dem Tisch",
+    "showsDe": "Merle steht mit beiden Schuhen oben auf dem Tisch.",
     "art": "merle_act_stand0"
    },
    "storyDe": "Der Tisch ist kein Boden — sag es ihr!",
@@ -1330,10 +1330,10 @@
    ],
    "stimulus": {
     "type": "entity",
-    "showsDe": "Auf dem Tisch ringeln sich lauter Kreide-Kringel",
+    "showsDe": "Auf dem Tisch ringeln sich lauter Kreide-Kringel.",
     "art": "merle_act_scribble1"
    },
-   "storyDe": "Merle hat den ganzen Tisch vollgemalt.",
+   "storyDe": "Merle hat den Tisch vollgekritzelt. Was sagst du ihr?",
    "promptEn": "What do you say?",
    "options": [
     "Read the book!",
@@ -1365,7 +1365,7 @@
    ],
    "stimulus": {
     "type": "entity",
-    "showsDe": "Merle hat das Fenster weit aufgerissen",
+    "showsDe": "Merle hat das Fenster weit aufgerissen.",
     "art": "merle_act_window1"
    },
    "storyDe": "Die Blätter fliegen von den Tischen — sag es ihr!",
@@ -1400,7 +1400,7 @@
    ],
    "stimulus": {
     "type": "entity",
-    "showsDe": "Merles Bücher liegen verstreut auf dem Boden",
+    "showsDe": "Merles Bücher liegen verstreut auf dem Boden.",
     "art": "merle_act_books1"
    },
    "storyDe": "Die Stunde beginnt — sag ihr, was jetzt dran ist!",
@@ -1434,10 +1434,10 @@
    ],
    "stimulus": {
     "type": "entity",
-    "showsDe": "Merle dreht sich um und geht zur Tür hinaus",
+    "showsDe": "Merle dreht sich um und geht zur Tür hinaus.",
     "art": "merle_act_leave0"
    },
-   "storyDe": "Halt sie auf — die Stunde ist noch nicht vorbei!",
+   "storyDe": "Die Stunde ist nicht vorbei — sie soll bleiben!",
    "promptEn": "What do you say?",
    "options": [
     "Read the book!",
@@ -1725,7 +1725,7 @@
    ],
    "stimulus": {
     "type": "entity",
-    "showsDe": "Ein Tisch steht grau im dunklen Klassenzimmer",
+    "showsDe": "Der Tisch steht grau im Klassenzimmer.",
     "art": "obj_desk_a"
    },
    "storyDe": "Sag, was er ist — dann gib ihm die Farbe!",
@@ -1736,7 +1736,7 @@
     "window"
    ],
    "name": "desk",
-   "colourAskDe": "„Ich war braun wie warmes Holz!“, brummt er.",
+   "colourAskDe": "Der Tisch war braun.",
    "colourOptions": [
     "brown",
     "pink",
@@ -1766,7 +1766,7 @@
    ],
    "stimulus": {
     "type": "entity",
-    "showsDe": "Zwei graue Griffe liegen unter dem Pult",
+    "showsDe": "Die Schere liegt grau unter dem Pult.",
     "art": "obj_scissors_a"
    },
    "storyDe": "Sag, was sie ist — dann gib ihr die Farbe!",
@@ -1777,7 +1777,7 @@
     "ruler"
    ],
    "name": "scissors",
-   "colourAskDe": "„Ich war wie eine Mandarine!“, ruft sie.",
+   "colourAskDe": "Die Schere war orange.",
    "colourOptions": [
     "orange",
     "green",
@@ -1792,7 +1792,7 @@
    ],
    "hints": {
     "deDesc": "Damit schneidest du Papier.",
-    "deWord": "Auf Deutsch: die Schere — und die Farbe einer Mandarine."
+    "deWord": "Auf Deutsch: die Schere — und Orange."
    },
    "grounding": "u01 object: scissors + colour: orange (painted sheet, 96 % of its saturated pigment at hue 20–40°). The ask names a Mandarine rather than the colour: German „orange\" IS the English answer token, so the sibling cards' pattern would give it away."
   },
@@ -1806,10 +1806,10 @@
    ],
    "stimulus": {
     "type": "entity",
-    "showsDe": "Ein kleiner Stift steht grau im Gras",
+    "showsDe": "Der Klebestift steht grau im Gras.",
     "art": "obj_gluestick_a"
    },
-   "storyDe": "Sag, was es ist — dann gib ihm die Farbe!",
+   "storyDe": "Sag, was er ist — dann gib ihm die Farbe!",
    "nameOptions": [
     "glue stick",
     "paintbrush",
@@ -1817,13 +1817,13 @@
     "rubber"
    ],
    "name": "glue stick",
-   "colourAskDe": "„Ich war grün wie ein junges Blatt!“",
+   "colourAskDe": "Der Klebestift war orange.",
    "colourOptions": [
     "green",
     "orange",
     "white"
    ],
-   "colour": "green",
+   "colour": "orange",
    "skins": [
     "obj_gluestick"
    ],
@@ -1832,7 +1832,7 @@
    ],
    "hints": {
     "deDesc": "Damit klebst du Bilder ins Heft.",
-    "deWord": "Auf Deutsch: der Klebestift — und Grün."
+    "deWord": "Auf Deutsch: der Klebestift — der Uhu-Stick."
    },
    "grounding": "u01 phrase: glue stick + colour: green (obj_gluestick_a measures hue 84° over the barrel; the cap is cream)"
   },
@@ -1846,10 +1846,10 @@
    ],
    "stimulus": {
     "type": "entity",
-    "showsDe": "Ein kleiner Kasten liegt grau im Hof",
+    "showsDe": "Der Spitzer liegt grau im Hof.",
     "art": "obj_sharpener_a"
    },
-   "storyDe": "Sag, was es ist — dann gib ihm die Farbe!",
+   "storyDe": "Sag, was er ist — dann gib ihm die Farbe!",
    "nameOptions": [
     "pencil sharpener",
     "glue stick",
@@ -1857,13 +1857,13 @@
     "rubber"
    ],
    "name": "pencil sharpener",
-   "colourAskDe": "„Ich war gelb wie der Honig!“, klappert er.",
+   "colourAskDe": "Der Spitzer war blau.",
    "colourOptions": [
     "yellow",
     "blue",
     "pink"
    ],
-   "colour": "yellow",
+   "colour": "blue",
    "skins": [
     "obj_sharpener"
    ],
@@ -1872,7 +1872,7 @@
    ],
    "hints": {
     "deDesc": "Damit wird der Bleistift wieder spitz.",
-    "deWord": "Auf Deutsch: der Spitzer — und Gelb."
+    "deWord": "Auf Deutsch: der Spitzer — und Blau."
    },
    "grounding": "u01 phrase: pencil sharpener + colour: yellow (obj_sharpener_a measures hue 43° over 63% of the body — a golden metal sharpener)"
   },
@@ -1886,7 +1886,7 @@
    ],
    "stimulus": {
     "type": "entity",
-    "showsDe": "Im Regal-Winkel glimmt ein flacher Bildschirm",
+    "showsDe": "Im Käfig steckt das Tablet — ganz grau.",
     "art": "satchel_shake"
    },
    "storyDe": "Sag, was da drin ist — dann geht der Käfig auf!",
@@ -1918,7 +1918,7 @@
    ],
    "stimulus": {
     "type": "entity",
-    "showsDe": "Hinter den Gittern sitzt still ein grauer Stuhl",
+    "showsDe": "Im Käfig steckt der Stuhl — ganz grau.",
     "art": "satchel_shake"
    },
    "storyDe": "Sag, was du siehst — dann springt der Käfig auf!",
@@ -1946,7 +1946,7 @@
    "kind": "choice",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Im Käfig hängt das Klassenfoto — ganz grau",
+    "showsDe": "Im Käfig hängt das Klassenfoto — ganz grau.",
     "art": "satchel_shake"
    },
    "storyDe": "Sag, was da hängt — dann ist es wieder frei!",

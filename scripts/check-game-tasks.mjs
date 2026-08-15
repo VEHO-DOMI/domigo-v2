@@ -375,9 +375,70 @@ const declaredFieldsFor = (t) => {
 
 /** The obligations a family buys. Each is ENFORCED, not merely declared —
  *  an obligation nobody checks is a sentence, not a duty. */
+// R5-W4 · C2: `simileDe` is GONE, not merely unused. It obliged the colour ask
+// to be an image-simile („Ich war blau wie das Meer!"), and R47 retired that
+// rule on Koki's replay of 2026-08-15 („aufgesetzt, forced, sparen wir uns").
+// An obligation nothing obliges is dead text by this file's own §18d, so it is
+// deleted rather than parked — `nounDe` is what the exemption buys now.
+// A BARE `wie`, deliberately. The first draft of this rule asked for an article
+// after it (`wie ein|der|die|das…`) and MISSED two of the nine lines it was
+// written to retire: „Ich war braun wie warmes Holz!" and „Ich war braun wie
+// frisches Brot!" put an adjective there instead. Counting the before/after for
+// the report is what found it — the rule matched 7 of 9. Inside a colour ask
+// there is no other job for the word: it is only ever a comparison. (This is
+// the shape the retired `simileDe` obligation had all along.)
+const SIMILE_DE = /\bwie\b/i;
 const OBLIGATIONS = {
-  // a colour ask must carry a picture, never a bare demand
-  simileDe: (t, field, text) => (/\bwie\b/i.test(text) ? null : `obliges "simileDe", but ${field} names the colour without a comparison — "${text}"`),
+  /** THE GERMAN NAMES THE BEING — AND NEVER THE ANSWER.
+   *
+   *  Three duties in one, because the exemption relaxes 18a AND 18b on two
+   *  fields and a one-way relaxation is a hole (the §18c/18d comment above says
+   *  so in its own words):
+   *
+   *    1. the field must carry its skin's German noun — after R47 the VIOLATION
+   *       is describing around the being („ein kleiner Kasten"), which is the
+   *       exact opposite of what this gate used to force;
+   *    2. the field must carry no deciding ENGLISH answer word. This is 18a
+   *       re-asserted INSIDE the exemption, and it is not theoretical: the first
+   *       draft of the glue stick's line said „Der Uhu-Stick", which hands the
+   *       child the answer word `stick` in German (measured — 18a fired). Koki's
+   *       word lives in the hint ladder, which is deliberately free;
+   *    3. the colour ask must have no simile left. Scoped to `colourAskDe`
+   *       because that is the field R47 rules on — `showsDe` may still say what
+   *       a thing looks like. */
+  nounDe: (t, field, text) => {
+    // Two ways to name the being, because the two families measure it in two
+    // places. A drained thing IS its skin, so the noun hangs off the skin. The
+    // four cage cards all share ONE skin (`satchel` — the portrait is the cage),
+    // so theirs hangs off the card instead, out of the ratified inmate table.
+    const skin = (t.skins ?? [])[0];
+    const shortId = String(t.id).replace(/^g1\.paint\.ch\d+\./, "");
+    const noun = givePolicy.nounDe?.pairs?.[skin] ?? givePolicy.nounDe?.captives?.[shortId];
+    if (noun === undefined) {
+      return `obliges "nounDe", but no German noun is declared for "${shortId}" (skin "${skin}") — add it to ${GIVEAWAY_POLICY_FILE} under nounDe.pairs (by skin) or nounDe.captives (by card), or the obligation exempts this card for free`;
+    }
+    if (!hasWord(text, noun)) {
+      return `obliges "nounDe", but ${field} never names the being — it must say „${noun}" and instead says "${text}"`;
+    }
+    // A COGNATE IS NOT A LEAK, AND IT IS NOT DECLARED EITHER — IT IS DERIVED.
+    // „Die Schere war orange." carries the English answer word `orange`, and no
+    // authoring can avoid it: the German for orange IS orange. That is a fact
+    // about the word, not a fault in the line, and the old simile („Ich war wie
+    // eine Mandarine!") existed to dodge exactly it — a dodge R47 retired.
+    // So the exception is read off the gloss table the giveaway law already
+    // owns: a word is a cognate when its own German side spells it the same.
+    // Nothing to maintain, and it stays narrow by construction — `stick` and
+    // `rubber` have German sides that differ, so they still go red.
+    const cognate = (en) => DE_GLOSS.get(en)?.has(en) === true;
+    const leaked = decidingWordsOf(t).filter((w) => hasWord(text, w) && !cognate(w));
+    if (leaked.length > 0) {
+      return `obliges "nounDe", which frees the GERMAN name and nothing else — but ${field} also carries the English answer word${leaked.length > 1 ? "s" : ""} ${leaked.map((w) => `"${w}"`).join(" · ")} — "${text}"`;
+    }
+    if (field === "colourAskDe" && SIMILE_DE.test(text)) {
+      return `obliges "nounDe", but ${field} is still a simile — R47 retired the image-simile: the being says its noun and its colour, plainly ("${text}")`;
+    }
+    return null;
+  },
 };
 
 function checkGiveawayFamilies(file, items) {
@@ -819,10 +880,47 @@ if (process.argv.includes("--selftest")) {
   const laws = (t, fields = new Set()) => giveawayFailures(t, DE_GLOSS, fields).map((e) => e.law);
   const detail = (t) => giveawayFailures(t, DE_GLOSS, new Set()).map((e) => e.detail).join(" | ");
   /** Run the family hygiene over one restore card and hand back what it SAID —
-   *  the messages, not a count. */
-  const familyMsgs = (colourAskDe) => {
+   *  the messages, not a count.
+   *
+   *  R5-W4 · C2: the family now covers TWO fields (`showsDe` + `colourAskDe`)
+   *  and buys `nounDe` instead of `simileDe`, so the fixture carries a skin and
+   *  an honest pair of lines, and each case tampers with exactly one of them. */
+  const restoreCard = (over) => card({
+    kind: "restore", skins: ["pen"],
+    stimulus: { type: "entity", showsDe: "Die Füllfeder steht grau da." },
+    name: "pen", nameOptions: ["pen", "book", "chair", "desk"],
+    colour: "yellow", colourOptions: ["yellow", "red", "blue"],
+    colourAskDe: "Die Füllfeder war gelb.",
+    ...over,
+  });
+  /** The glue stick, which is where the leak actually shipped — see the
+   *  gluestick note in scripts/game-tasks-giveaway-policy.json. */
+  const glueCard = (over) => card({
+    kind: "restore", skins: ["obj_gluestick"],
+    stimulus: { type: "entity", showsDe: "Der Klebestift steht grau im Gras." },
+    name: "glue stick", nameOptions: ["glue stick", "paintbrush", "pencil sharpener", "rubber"],
+    colour: "orange", colourOptions: ["orange", "green", "white"],
+    colourAskDe: "Der Klebestift war orange.",
+    ...over,
+  });
+  /** A cage card, whose portrait is the CAGE — so the German line is the only
+   *  thing that says who is inside. `id` is real because the inmate table is
+   *  keyed by card, not by skin (all four cages share the `satchel` skin). */
+  const cageCard = (over) => card({
+    id: "g1.paint.ch01.rsc.tablet.r1", use: "rescue", form: "state-it", skins: ["satchel"],
+    stimulus: { type: "entity", showsDe: "Im Käfig steckt das Tablet — ganz grau." },
+    storyDe: "Sag, was da drin ist — dann geht der Käfig auf!",
+    options: ["It's a tablet.", "It's a pencil case.", "It's a book."],
+    answer: "It's a tablet.",
+    ...over,
+  });
+  const familyMsgs = (t) => {
     captured = [];
-    checkGiveawayFamilies("selftest", [card({ kind: "restore", name: "pen", nameOptions: ["pen", "book", "chair", "desk"], colour: "yellow", colourOptions: ["yellow", "red", "blue"], colourAskDe })]);
+    // A family that matches NO card reports 18d staleness — a different law than
+    // the one each case below is about. So the family under test gets only `t`,
+    // and the other one gets a single honest card to match.
+    const companion = t.use === "rescue" ? restoreCard() : cageCard();
+    checkGiveawayFamilies("selftest", [t, companion]);
     const out = captured;
     captured = null;
     return out;
@@ -856,8 +954,38 @@ if (process.argv.includes("--selftest")) {
     // ── the same-language leak, on a kind that already had a rule ──
     ["choice · the answer word stands in the story line", laws(card({ storyDe: "Sag: Listen!", options: ["Listen!", "Look!", "Come on!"], answer: "Listen!" })), (l) => l.includes("18a")],
     // ── the exemption machinery, in both directions ──
-    ["a family that suppresses nothing is dead text", familyMsgs("Ich war wie die Sonne!"), (m) => m.some((x) => x.includes("18c") && x.includes("dead text"))],
-    ["an obligation nobody keeps: a bare colour demand", familyMsgs("Gib mir mein Gelb!"), (m) => m.some((x) => x.includes("18d") && x.includes("simileDe"))],
+    ["a family that suppresses nothing is dead text",
+      familyMsgs(restoreCard({ stimulus: { type: "entity", showsDe: "Ein Ding steht da." }, colourAskDe: "Die Füllfeder war hell." })),
+      (m) => m.some((x) => x.includes("18c") && x.includes("dead text"))],
+    ["an obligation nobody keeps: the being is described instead of named",
+      familyMsgs(restoreCard({ colourAskDe: "Das kleine Ding war gelb." })),
+      (m) => m.some((x) => x.includes("18d") && x.includes("never names the being"))],
+    // ── R5-W4 · C2 · what the NOUN obligation buys, in all four directions ──
+    // The exemption frees the German name on two fields. Each case below asks
+    // whether it freed anything ELSE — and the last two exist to stay GREEN, so
+    // the carve-outs cannot quietly widen into a pass.
+    ["the German may name the being, never the English answer (the leak that shipped: »Uhu-Stick« carries `stick`)",
+      familyMsgs(glueCard({ stimulus: { type: "entity", showsDe: "Der Klebestift heißt auch Uhu-Stick." } })),
+      (m) => m.some((x) => x.includes("18d") && x.includes('"stick"'))],
+    ["R47 · a colour ask that is still a simile",
+      familyMsgs(restoreCard({ colourAskDe: "Die Füllfeder war gelb wie die Sonne." })),
+      (m) => m.some((x) => x.includes("18d") && x.includes("simile"))],
+    // …and the form the first draft of the rule MISSED: an adjective where the
+    // article was expected. Two of the nine retired lines looked like this
+    // („wie warmes Holz", „wie frisches Brot"), so the narrow rule would have
+    // let them back in — the case exists because the rule was once wrong.
+    ["R47 · …including the article-less simile the first rule let through",
+      familyMsgs(restoreCard({ colourAskDe: "Die Füllfeder war gelb wie warmes Holz." })),
+      (m) => m.some((x) => x.includes("18d") && x.includes("simile"))],
+    ["a cage that describes its inmate instead of naming it (the line that shipped: »ein flacher Bildschirm«)",
+      familyMsgs(cageCard({ stimulus: { type: "entity", showsDe: "Im Regal-Winkel glimmt ein flacher Bildschirm" } })),
+      (m) => m.some((x) => x.includes("18d") && x.includes("never names the being"))],
+    ["NON-TAMPER · a cognate is not a leak — »orange« is the German for `orange`",
+      familyMsgs(glueCard()), (m) => m.length === 0],
+    ["NON-TAMPER · …and so is »Tablet«, which is why the cage may name it",
+      familyMsgs(cageCard()), (m) => m.length === 0],
+    ["NON-TAMPER · the honest pair of lines says nothing at all",
+      familyMsgs(restoreCard()), (m) => m.length === 0],
     // ── and the cases that must stay GREEN ──
     ["NON-TAMPER · the four honest boss shapes stay silent", [honestOddone, honestOrder, honestMistake, honestMemory].flatMap((t) => laws(t)), (l) => l.length === 0],
     ["NON-TAMPER · a German word two options share does not spoil", laws(sharedWord), (l) => l.length === 0],
