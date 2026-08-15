@@ -72,7 +72,7 @@ jobs:
       - run: node --experimental-strip-types scripts/check-perf-budget.mjs --selftest # E5: the budget guard's own red light must be reachable
       - run: node --experimental-strip-types scripts/check-perf-budget.mjs # E5: the PERF_WAECHTER numbers, the code and the enforcers must agree
       - run: node scripts/check-fonts.mjs --selftest # E5: the font guard's own red light must be reachable
-      - run: node scripts/check-fonts.mjs # E5/D-33 (nach K1s Entdopplung D-72): no next/font/google — the build may not depend on gstatic being up
+      - run: node scripts/check-fonts.mjs # E5/D-79: no next/font/google — the build may not depend on gstatic being up
       - run: node scripts/shoot-card-bench.mjs --selftest # W2/D-102: die Ausschnitt-Rechnung der Kartenbank — ein Motiv unter 40 % der Bildflaeche muss rot werden
       - run: node scripts/check-ci-gates.mjs --selftest # E2: the guard's own red light must be reachable
       - run: node scripts/check-ci-gates.mjs # E2: every gate on disk is wired into THIS file — the gap cannot reopen

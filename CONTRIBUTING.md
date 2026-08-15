@@ -76,7 +76,32 @@ hat nichts bewiesen; deshalb trägt jedes `--selftest` und CI läuft beide Seite
 Die drei Familien liegen als Dateien im Repo (`apps/web/app/fonts/`) und werden
 über `next/font/local` geladen. **Nie wieder `next/font/google`** — das lud die
 Schriften beim BAUEN aus dem Netz und machte grüne Builds von der Erreichbarkeit
-eines Dritten abhängig (D-33 (nach K1s Entdopplung: D-72)). `scripts/check-fonts.mjs` hält die Tür zu.
+eines Dritten abhängig (D-79). `scripts/check-fonts.mjs` hält die Tür zu.
+
+## Die Level-Datei wird chirurgisch editiert, nie neu geschrieben
+
+`content/corpus/stories/g1.st.lost-pages/paint/ch01.level.json` hat ein Format, das
+kein Werkzeug wiederherstellen kann: **ein Leerzeichen Einrückung je Ebene, Umlaute als
+echte UTF-8-Zeichen (nicht in der Backslash-u-Schreibweise), und KEIN abschließendes
+Zeilenende** — die letzten zwei Bytes sind `"` und `}`. Das entspricht
+Python-`json.dump(..., ensure_ascii=False, indent=1)`, wie es die Skripte unter
+`scripts/story/` benutzen.
+
+**Es ist aber nicht reproduzierbar, und das ist der Grund für diese Regel.** Gegen einen
+frischen Dump weichen **elf Zeilen** ab (113–116, 306–308, 435–438): sie tragen fünf statt
+sechs Leerzeichen — von Hand nachgetragene `ausspracheDe`/`ankerEn`/`falscheFormEn`/
+`richtigeFormEn`-Felder in den `regelseite`-Objekten. Wer die Datei neu dumpt, schreibt
+diese elf Zeilen still um und erzeugt einen Diff, der mit der eigenen Änderung nichts zu
+tun hat.
+
+**Also: in der Datei editieren, nicht sie erzeugen.** Nachmessen, wenn du unsicher bist:
+
+```bash
+git show origin/main:content/corpus/stories/g1.st.lost-pages/paint/ch01.level.json | tail -c 4 | xxd
+```
+
+Das gilt für die Level-Dateien. `ch01.tasks.v2.json` endet dagegen **mit** einem
+Zeilenende — es ist keine Repo-weite JSON-Regel, sondern eine Eigenschaft dieser Dateien.
 
 ## Zwei Regeln, die diese Codebasis teuer gelernt hat
 

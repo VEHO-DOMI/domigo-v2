@@ -71,6 +71,21 @@ _(HISTORISCH: bis 2026-08-14 stand hier „walk 1,25 / run 2,25 px/t". Die 1,25 
   polizieren, die ein Checkpoint gar nicht bezahlen kann). Versetzt:
   p1 (38,17)→**(47,17)** · p2 (20,10)→**(58,14)** · p3 (26,21)→**(40,20)**;
   p4/p9 kreuzen keine Tinte und tragen darum weiterhin keinen.
+  **★ Nachtrag 2026-08-15 (R44): Checkpoints sind STILLE ANKER.** Kein Krakel, keine
+  Staffelei, keine Zeremonie, kein Toast — das `C`-Glyph, das Warp-Ziel und die vier
+  Gesetze oben bleiben unverändert. Eine Neu-Platzierung ist ausdrücklich NICHT
+  entschieden; sie ist ein Koki-Gespräch für später.
+
+- **★ DIE LEVEL-DATEI WIRD CHIRURGISCH EDITIERT (K2, 2026-08-15 — nachgemessen).**
+  `ch01.level.json` steht im Format `json.dumps(indent=1, ensure_ascii=False)`: **ein
+  Leerzeichen Einrückung je Ebene, Umlaute als echte UTF-8-Zeichen, KEIN End-Newline**
+  (die letzten zwei Bytes sind `"` und `}`). **Sie ist aber nicht reproduzierbar:** gegen
+  einen frischen Dump weichen **genau elf Zeilen** ab (113–116, 306–308, 435–438) — dort
+  stehen fünf statt sechs Leerzeichen, von Hand nachgetragene Felder in den
+  `regelseite`-Objekten. Wer die Datei neu dumpt, schreibt diese elf Zeilen still um.
+  *Regel:* **nie neu formatieren, nur chirurgisch editieren.** Steht ausführlich in
+  `CONTRIBUTING.md`. (Gilt für die Level-Dateien; `ch01.tasks.v2.json` endet dagegen MIT
+  einem Zeilenende — es ist keine Repo-weite JSON-Regel.)
 
 ## §Tor-Antworten 2026-08-11 (Koki, nach Merge #252 — RATIFIZIERT)
 
@@ -184,9 +199,18 @@ um die Arena-Dimension (F6).
 Dichte-Regler: 0,5–0,75 Wesen-Begegnungen je Screen (Schwarm-Gauntlet p2 = deklarierte
 Ausnahme als EIN Set-Piece). Trails = Sätze (Läufe 3er), Wort pro Phase aus dem Feld.
 
-## §Regel-Seiten-Budget (doc 44 §4: 3 Seiten = u01-Topics)
+## §Regel-Seiten-Budget (doc 44 §4: ~~3~~ **5** Seiten = u01-Topics)
 
-p1 = »Kurzformen« · p2 = »Begrüßen/Verabschieden« · p3 = »Zahlen«.
+~~p1 = »Kurzformen« · p2 = »Begrüßen/Verabschieden« · p3 = »Zahlen«.~~
+
+**★ ENTSCHIEDEN (Koki, 2026-08-15; Ruling R51): FÜNF Seiten, verteilt p1/p1/p2/p2/p3.**
+»Kurzformen« · »Befehle« · »Fragen/Begrüßen« · »Zahlen« · »Plural«. Damit ist auch doc 45
+**E4** („reichen 3 für die Unit?") beantwortet: nein. Vorgaben je Seite — **kein sichtbarer
+Buchbeleg, keine Aussprache, keine Falsch-Beispiele**, und **≥2 Beispiele wörtlich aus dem
+Buch**. ⚠ **Gebaut wird das in Session I2**; bis dahin liefert das Level 3 `tip`-Entities
+und `tipsTotal: 3` — die Zahl 5 ist Kanon, aber noch keine Weltsache, und keine Karte darf
+sie versprechen, bevor die Seiten existieren. Die Reihenfolge der fünf ist ein offenes
+Koki-Tor.
 
 **Geändert in R5-W2 I1 (2026-08-13):** p1 hieß »to be« — MORE! 1 führt „the verb to be"
 laut eigener Ziel-Liste erst in **Unit 2**; Unit 1 druckt stattdessen die drei Note-Kästen
