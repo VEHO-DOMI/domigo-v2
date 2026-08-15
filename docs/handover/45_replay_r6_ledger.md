@@ -177,6 +177,11 @@ dabei — die R5-Session verifiziert am Code, nie blind übernehmen (Specs rotte
 - **D3 · Nebenfiguren als kleine Begleiter.** Kritzel (zeichnet dein Porträt am
   Checkpoint), Klecks (Bonusraum-Tor) u. a. stellen sich per Pop-up vor — „small
   little companions", keine Voll-Mentoren. → LORE.
+  **★ TEILWEISE ERLEDIGT (2026-08-15): Kritzel entfällt.** R44 macht die Checkpoints zu
+  **stillen Ankern** — kein Krakel, keine Staffelei, keine Zeremonie, kein Toast; das
+  `C`-Glyph, das Warp-Ziel und das Gesetz bleiben. Damit gibt es die Figur nicht mehr, die
+  sich am Checkpoint vorstellen sollte. **Offen bleibt allein die Klecks-Vorstellung** —
+  sie baut Session C2 (Copy). → LORE (Rest: C2).
 - **D4 · Der Bonusraum gehört in die Lore** [12 Collectibles, 14:55:25]. Warum gibt es
   die Kleckskammer, was bedeutet sie im Buch? → LORE.
 - **D5 · Orts-Übergänge begründen** [Schulhofgarten, 16:36:27]. Der Spieler soll
@@ -194,6 +199,13 @@ dabei — die R5-Session verifiziert am Code, nie blind übernehmen (Specs rotte
 - **D8 · Bonusbücher-RULING (KOKI-TOR).** Kanon-Fund: doc 41 §5 nennt sie Score-
   Pickups; doc 27 §5s kanonische Ökonomie kennt sie NICHT — unversöhnt. Optionen:
   in die XP-Schicht falten (PK-R7), umfiktionalisieren, oder streichen. → KOKI-TOR.
+  **★ ENTSCHIEDEN (Koki, 2026-08-15; Ruling R53): RAUS AUS ch01.** Die
+  **neun Uniform-Sammelobjekte der Unit 1** (WB p. 12 „Cool clothes") nehmen ihren Platz
+  ein — gebaut wird das in **Welle 5**. Das Kanon-Gesetz steht in doc 44 §2.7 (Amendment
+  2026-08-15) samt Abgrenzung gegen ch08; das ch01-Budget in doc 44 §4 ch01 sagt jetzt
+  **Bonusbücher: 0**. Für die übrigen Kapitel ist damit nichts entschieden. ⚠ Nebenwirkung:
+  die Kunst-Allowlist für `bonusbuch_a` (doc 44 §5.4, läuft 2026-09-30 ab) wird für ch01
+  gegenstandslos — als Schuld gefiled (K2-Abschnitt im Schulden-Register).
 - **D9 · Prämissen-Checks beantwortet** (Kokis „correct me if I'm wrong"): OSWIN war
   approved (doc 31 §6, 2026-07-19) — Widerruf jetzt aktenkundig (D6); die Identität
   sollte dem SPIELER laut Kanon ohnehin verborgen sein (C4); Fibel = Pool-Name,
@@ -213,6 +225,12 @@ dabei — die R5-Session verifiziert am Code, nie blind übernehmen (Specs rotte
   Referenz-/Lernseiten wiederauffindbar („it's twofold"). → FEATURE (Menü-Bibliothek).
 - **E4 · N-Check:** reichen 3 für die Unit? (Kanon doc 41 §5: N = Grammatik-Themen;
   gegen das Buch prüfen.) → CONTENT-Check.
+  **★ BEANTWORTET (2026-08-15, Ruling R51): NEIN — es sind FÜNF.** Kurzformen · Befehle ·
+  Fragen/Begrüßen · Zahlen · Plural, verteilt p1/p1/p2/p2/p3. Die Seiten tragen keinen
+  sichtbaren Buchbeleg, keine Aussprache und keine Falsch-Beispiele, und je Seite stehen
+  **≥2 Beispiele wörtlich aus dem Buch**. ⚠ Die WELT zieht erst mit Session I2 nach
+  (heute 3 `tip`-Entities, `tipsTotal: 3`) — bis dahin ist 5 Kanon, aber noch keine
+  Weltsache. → gebaut in I2.
 - **E5 · Merkseite + Reward wiren.** Doc 41 §5 versprach „collect all N = Merkseite
   completes + reward" — nie gebaut; nur eine Bilanz-Zahl. → FEATURE.
 - **E6 · Spawn-Kollision** [16:36:27]: p3 spawnt DIREKT in eine Regel-Seite und
@@ -226,6 +244,13 @@ dabei — die R5-Session verifiziert am Code, nie blind übernehmen (Specs rotte
   Kanon spezifiziert die Mechanik (doc 44 §3.2/§4: 3 Knoten × E/M/S-Fenster), aber
   KEINE In-Game-Zeile erklärt sie (einzige Prosa: die tote Fibel-Karte, C8). Entweder
   in-fiktional scaffolden — oder das Sieg-Konzept ersetzen. → DESIGN + COPY.
+  **★ GESCHLOSSEN (2026-08-15) durch R50 — das Konzept ist ersetzt, nicht erklärt.** Die
+  Tafel ist **vollgekritzelt**, und die drei Stufen sind **Kritzel-Schichten, die das Kind
+  WEGWISCHT** („Clean the board!"). Eine Tafel sauber zu machen braucht keine Erklärzeile —
+  damit ist die Frage „warum Knoten?" gegenstandslos statt beantwortet. Mechanik unverändert
+  (doc 44 §4 ch01, Amendment 2026-08-15). ⚠ Beim Nachlesen: die Quellenangabe oben nennt
+  „doc 44 §3.2/§4" — **§3.2 enthält kein Knoten-Wort**; die Mechanik stand nur in dem einen
+  Satz in §4 ch01.
 - **F2 · Klare Arena-Anleitung.** Wie besiegt man den Boss? Muss instruiert und
   gescaffoldet sein (eigene Objective-Beat für die Arena). → DESIGN + COPY.
 - **F3 · Eskalationskurve.** Erst EINE Kreide, progressiv mehr, am Ende fast
@@ -250,6 +275,10 @@ dabei — die R5-Session verifiziert am Code, nie blind übernehmen (Specs rotte
   es „somewhat messy"): eine eingelockte Arena-Ansicht — „you're locked in there" —
   mit den Charakter-Animationen, die die Veränderungen ZEIGEN (bes. Merles Runden).
   Design-Exploration durch die Kritiker-Schleife; Richtungs-Entscheid = KOKI-TOR.
+  **★ ENTSCHIEDEN (Koki, 2026-08-15; Ruling R52): KEEN-STIL-FOKUS.** Die Welt wird stark
+  abgeblendet, die Karte steht im Zentrum — **kein** eigener Voll-Bildschirm-Modus und
+  keine zweite Ansicht. Der Tether zur Weltstelle **bleibt**, damit das Kind weiß, wer
+  gerade fragt. Damit ist das Tor zu.
 - **G2 · NAIVE DESIGN fürs Spiel.** Farben/Look der Karten kinder-freundlicher, nicht
   „corporate"; „it can be a bit messy — think of naive design"; das Spiel darf davon
   am meisten tragen; die Plattform folgt SPÄTER (eigenes Vorhaben, hier nur
@@ -314,9 +343,18 @@ Kartenhaut (G2, nach Richtungs-Entscheid) · Boss-Drop-Miniaturen (F4) ·
 
 ## Anhang · Kokis offene Tore aus dieser Runde
 
-D6 Namens-Runde · D8 Bonusbücher-Ruling · G1 Engagement-Modus-Richtung · (aus #249
+D6 Namens-Runde · ~~D8 Bonusbücher-Ruling~~ (entschieden 2026-08-15, R53) · ~~G1
+Engagement-Modus-Richtung~~ (entschieden 2026-08-15, R52) · (aus #249
 fortbestehend: F22/G10-Klammer · 3 zählbare Räder · Timeout-Kosten · E6/M5/S4-Uhren ·
 Boss-Memory-Uhr · Lehrerin-Kanon + Boss-Swap-Vetos).
+
+**Neu aus Welle 4 (2026-08-15) — fünf Tore, Empfehlungen im BOOT-SHEET:** R41 Farb-Palette
+(die Ziel-Palette für die Codex-Bestellung AQ12: Buch rot · Uhu-Stick orange · Füllfeder
+gelb · Heft grün · Spitzer blau · Radiergummi rosa · Schultasche+Tisch braun · Schere
+orange) · R51 Reihenfolge der fünf Regel-Seiten · R44 stille Anker (Checkpoints ohne
+Zeremonie — statt „ganz weg") · Teeter-Pose: das RAUS ist entschieden (R46), offen ist
+allein, ob AAA-Balance-Zellen NEU bestellt werden · W2s Kriterien für den geprüften
+Rayman-Referenzsatz (v1 wird ausgeführt, Koki ergänzt).
 
 **Quelle:** Kokis Wortlaut-Transkript liegt der R5-Session bei (Scratchpad-Kopie; der
 blinde Abdeckungs-Check lief gegen den Wortlaut). Screenshots: Kokis Aufnahmen vom

@@ -144,6 +144,17 @@ grounds of the chapters they were freed in** — the world map shows them; inter
 them; late-year beats (doc 31's "appears once more late in the year") draw on them. "Alliance"
 is the fiction word for: the game visibly remembers everyone you freed, where you freed them.
 
+> **★ Amendment 2026-08-15 (ruling R49) — "gather" means PRESENT, never MOTIONLESS.**
+> Koki, on Merle after her rescue: she „soll sich durchs Level bewegen". This does not
+> overturn the law, it **restores** it: doc 40 §3 already says *"redemption changes STATE,
+> never removes presence — the coded side plays the joy loop as a home-orbit, then settles
+> the friend near its home cell"*, and doc 39 R3-5 asks that the freed being „visibly fly
+> its Freudenrunde **and remain**". The narrowing happened downstream, in
+> `STORY_SPINE_CH01.md` ("Niemand geht irgendwohin"), and it is corrected there.
+> **The binding shape: a freed being owns a ROAM ZONE inside the room it was freed in.**
+> It walks, hops, waves and idles within that zone; it never leaves the phase, never
+> follows the player, and never despawns. What is bounded is the ROOM, not the feet.
+
 ### 1.5 The henchman law (sharpens doc 31 §6 "guardians are OSWIN's creations")
 Each chapter's guardian is **a being of that unit that OSWIN bewitched FIRST and used as his
 pawn** — the guardian did the unit's bewitching for him. The surface story: you defeat a boss.
@@ -284,8 +295,28 @@ packet; the frame is one engine component (§3.4).
 The counting laws (letter-honesty, magnet, HUD chip `{collectNounDe}`) are engine-level and
 unchanged; **the SKIN and noun are per-unit and must be motivated by the unit**. Assignments
 in §4 (ch01 Buchstaben · ch03 Goldmünzen · ch04 Gefühls-Gesichter · ch05 Noten · ch07
-Zutaten · ch12 Kerzen · ch14 Tickets …). Regel-Seiten and Bonus-Bücher stay global (they are
+Zutaten · ch12 Kerzen · ch14 Tickets …). Regel-Seiten and ~~Bonus-Bücher~~ stay global (they are
 the book's own objects, present in every chapter).
+
+> **★ Amendment 2026-08-15 (Koki, ruling R53) — ch01 gains a SECOND collectible class, and
+> the Bonus-Bücher leave it.** ch01 now carries, **in addition to the Buchstaben**, the
+> **nine uniform collectibles of Unit 1** (WB p. 12 „Cool clothes"): hairband · sunglasses ·
+> hat · school tie · shirt · sweater · skirt · socks · shoe. They take the place the
+> Bonus-Bücher held, which are **out of ch01** (doc 45 D8 is thereby decided). So
+> „Bonus-Bücher stay global" no longer holds for ch01; Regel-Seiten still do.
+>
+> **The demarcation against ch08 „Das Kleiderzimmer", and the collision it has to survive.**
+> The rule is *no word is INTRODUCED twice*, and the corpus itself already breaks a naive
+> reading of it: **`sweater` and `shoe`/`shoes` sit in BOTH wordbanks** (`g1u01.w.sweater`
+> and `g1u08.w.sweater`; `g1u01.w.shoe` and `g1u08.w.shoes`) — measured against
+> `content/corpus/units/g1-u01/wordbank.json` and `…/g1-u08/wordbank.json` on 2026-08-15,
+> not asserted. **Therefore the law reads: u01 INTRODUCES, u08 REUSES and EXTENDS.** ch01
+> teaches the nine as new vocabulary; ch08 keeps its own U8 mechanic (clothes as world
+> objects, Knöpfe as collectible, do/does woven through) and introduces only what u08 adds
+> — `jacket`, `trousers` — treating the overlap as revision, never as first contact. G3
+> delivers the full wording in `UNIFORM_SAMMELN_DESIGN.md` §0; until it lands, this
+> paragraph is the binding text.
+
 **The density clause (B21):** collectibles are scattered GENEROUSLY along the intended line
 of play — the trail's density is a deliberate pacing signal for story mode (Koki: "quite
 generously across the level… to indicate the pace"). This is a level-authoring law,
@@ -383,6 +414,9 @@ Ch01 authors the rounds fresh from u01 imperatives (mix of stop-thats and positi
 the Keen rounds were all negative; ours follow the corpus). Correct → the classmate regains
 one degree of motion/colour; final round → full colour, joy loop, the cage opens. Per-chapter
 variants re-skin the same machine (ch12 uses was/were questions instead of imperatives).
+**Amendment 2026-08-15 (R49):** and then she STAYS — present and in motion. The freed
+classmate roams her zone inside that room (walk, hop, wave, idle); she does not stand still
+at the cage, does not follow the player, and never leaves the phase. See §1.4.
 
 ### 3.4 Objective screens (PK-R5)
 One engine component (the GOAL CARD frame over `startFrozen` + 240 ms fade-in, doc 42 §3) +
@@ -445,7 +479,10 @@ ch01–06 sheets are honored as pointers; where a dossier overrides them, it say
   `restore` (name → colour) frees it and the world keeps the colour (shipped R3b machine —
   restaged, not rebuilt). Letter collectibles with magnet (live) + **number quickfires on the
   wheel** (swirling numbers, auto-lock — the Keen swarm re-staged as u01's numbers 1–25).
-- **Freeables & skin:** collectible = **Buchstaben** (canon). Regel-Seiten 3 (u01 topics).
+- **Freeables & skin:** collectible = **Buchstaben** (canon) **+ die neun Uniform-Objekte der
+  Unit 1** (R53, §2.7 amendment). Regel-Seiten ~~3~~ **5** (u01 topics — R51: Kurzformen ·
+  Befehle · Fragen/Begrüßen · Zahlen · Plural). **Bonusbücher: 0** (R53 — sie sind aus ch01
+  heraus; die Uniform-Objekte nehmen ihren Platz ein).
 - **Task battery:** restore ×objects (u01 things + colours) · wheel numbers · choice/oddone
   school things · door-series imperatives (M-E coverage) · reawakening rounds (below) ·
   **the contraction-picker Koki liked (B20)** — "It's a chair / Is a chair / Its a chair /
@@ -459,10 +496,27 @@ ch01–06 sheets are honored as pointers; where a dossier overrides them, it say
   chalk shards linger 1 s as floor hazards). A chalk hit = knockback + a boss-window task
   (never damage-death); dodging N throws opens the counter-window where she **writes her lie
   ON the board** (boss-evidence law: the four scribbled words render on her face) — the card
-  asks about what she wrote (name/colour/number/imperative culmination). Three knots of 5
-  windows E/M/S-tiered. Consolation: she sinks to the ground, exhausted — the class **writes
-  the first lesson back on her** (typed HELLO — the existing finale beat lands here).
-- **Reawakening (C3):** Merle's cage is the on-path person-cage; freed → ghost-pale Merle
+  asks about what she wrote (name/colour/number/imperative culmination). ~~Three knots of 5
+  windows E/M/S-tiered.~~ **Three SCRIBBLE LAYERS of 5 windows E/M/S-tiered — the child
+  WIPES each one off ("Clean the board!").** Consolation: she sinks to the ground,
+  exhausted — the class **writes the first lesson back on her** (typed HELLO — the existing
+  finale beat lands here).
+
+  > **★ Amendment 2026-08-15 (Koki's replay of 15.08. — ruling R50).** The board is not
+  > *tangled*, she is **scribbled all over**, and what the child does is **clean her**.
+  > Koki, verbatim: „vollgekritzelt, nicht gewaschen; man muss sie sauber machen — Clean
+  > the blackboard!" **Nothing about the mechanic changes** — paths, chalk throws, the
+  > E/M/S window tiers, the sinking, the typed HELLO all stand exactly as written above;
+  > only the fiction of the three stages moves from *untying knots* to *wiping off scribble
+  > layers*. Internal symbols (`params.knots`, `KNOT_*`) keep their names — they are code,
+  > not player-facing lines. This also closes doc 45 **F1** („Why do we have knots? What is
+  > the idea again?"): wiping a board needs no explanation. ⚠ Note for anyone citing the
+  > source: doc 45 F1 points at „doc 44 §3.2/§4", but **§3.2 contains no knot at all** —
+  > the mechanic was specified in this one sentence and nowhere else.
+
+- **Reawakening (C3):** *(after the six rounds she STAYS — present and roaming inside p2, never
+  motionless at the cage and never leaving the phase; §1.4/§3.3 amendments of 2026-08-15, R49)*
+  Merle's cage is the on-path person-cage; freed → ghost-pale Merle
   plays out 6 wrong-actions (fresh-authored from u01: sings mid-lesson, won't sit down,
   scribbles on the desk, tears the window open, books on the floor, walks out mid-class);
   correct commands (mix: "Don't sing!" / "Sit down!" / "Close the window!" / "Take out your
@@ -629,7 +683,11 @@ ch01–06 sheets are honored as pointers; where a dossier overrides them, it say
 - **Field modality:** furniture platforming; **the bouncy bed** (bouncer debut as terrain);
   clothes scattered as world objects.
 - **Freeables & skin:** the scattered clothes themselves (collect + name — Koki's seed);
-  collectible = **Knöpfe** (buttons popped off the tangled clothes).
+  collectible = **Knöpfe** (buttons popped off the tangled clothes). **Amendment 2026-08-15
+  (R53):** unchanged — ch08 keeps this mechanic and its own U8 words. Since ch01 now also
+  collects clothing (the nine u01 uniform items, §2.7), ch08's naming beats treat
+  `sweater` and `shoes` as **revision** and introduce only u08's additions (`jacket`,
+  `trousers`); the two chapters share two words by the book's own design, not by accident.
 - **Task battery:** clothes naming (restore/choice) · **do/does questions woven through**
   ("Does it fit? Do you wear it?") · this/that stays OUT (it is u10's grammar — doc 27's
   ch08 cell is corrected by the corpus, as its own caveat requires).

@@ -70,14 +70,35 @@ umgeschrieben** — laufende Sessions haben sie schon gelesen.
 | P-64 | H1 Teil 2 | PB-21 |
 | P-65 | H1 Teil 3 | **PB-22** (die Port-Falle) |
 | P-66 | H1 Teil 3 | **PB-4** (dieselbe Falle wie E4s P-56) |
+| P-65 | H1 Architekt | **PB-22** (dieselbe wie H1 Teil 3 — im Architekten-Report neu nummeriert) |
+| P-66 | H1 Architekt | **PB-4** (dito) |
+| P-67 | H1 Architekt | **PB-18** (Fixture-Raum ≠ ausgelieferter Raum; = H1 Teil 2s P-61) |
+| P-68 | H1 Architekt | **PB-19** (zwei Handlisten; = H1 Teil 2s P-62) |
+| P-69 | H1 Architekt | **PB-20** (Test hebt den Schleier nie; = H1 Teil 2s P-63) |
+| P-70 | H1 Architekt | **PB-51** (roher `sim.step()`) — **neu** |
+| P-71 | H1 Architekt | **PB-21** (trunkierende Ease; = H1 Teil 2s P-64) |
+| P-72 | E5 | **PB-44** — neu |
+| P-73 | E5 | **PB-45** — neu |
+| P-74 | E5 | **PB-46** — neu |
+| P-75 | E5 | **PB-47** — neu |
+| P-76 | E5 | **PB-48** — neu |
+| P-77 | E5 | **PB-49** — neu |
+| P-78 | E5 | **PB-50** — neu |
 
-> **⚠ Die zwei Nummern, die am ehesten Ärger machen:** `P-65` bedeutet je nach Session
+> **⚠ Die Nummern, die am ehesten Ärger machen:** `P-65` bedeutet je nach Session
 > zwei verschiedene Dinge (G1: falsch skopiertes Gesetz = **PB-13** · H1: die Port-Falle
 > = **PB-22**), und `P-66` ebenso (G1: blinde Löser finden Autoren-Rückschritte =
 > **PB-14** · H1: der verborgene Tab = **PB-4**). Wer eine dieser Zahlen zitiert findet,
 > liest nach, aus welcher Session sie stammt. **`PERF_WAECHTER.md` meint mit P-56/P-57
 > die E4-Bedeutungen (PB-4/PB-5), mit P-65 die Port-Falle (PB-22); `PASSOVER_W1.md`
 > meint mit P-66 den verborgenen Tab (PB-4).**
+>
+> **★ Seit 2026-08-15 (K2) kommen drei weitere Doppelbelegungen dazu**, weil H1 im
+> Architekten-Report seine eigenen Teil-2-Fallen neu durchnummeriert hat: `P-67` heißt bei
+> G1 **PB-15**, bei H1 **PB-18**; `P-68` bei G1 **PB-16**, bei H1 **PB-19**; `P-69` bei G1
+> **PB-17**, bei H1 **PB-20**. **Faustregel: eine `P-6x`-Zahl ohne Session-Angabe ist nicht
+> auflösbar** — steht keine Session dabei, wird beim Autor nachgefragt statt geraten.
+> `PASSOVER_K2.md` meint mit P-65…P-71 durchgehend die **H1-Architekt**-Bedeutungen.
 
 ---
 
@@ -116,6 +137,9 @@ H1s Blindvergleich gegen Rayman ist daran gescheitert und blieb der einzige offe
 Punkt seiner Definition of Done. *Regel:* `computer{action:"screenshot"}` benutzen, das
 liefert das echte Bild. Und jede Bildserie beginnt mit dem Selbsttest: **zwei Aufnahmen
 mit einem Schritt dazwischen MÜSSEN sich im md5 unterscheiden**, sonst Abbruch.
+**★ Eingeschränkt am 2026-08-15 durch PB-44:** das gilt für die **MCP-Browser-Flächen**.
+Ein selbst gestarteter `--headless=new`-Chrome ist sichtbar und zeichnet — dort greift
+stattdessen die Kontrollmessungs-Pflicht aus PB-44.
 
 **PB-5 · Die Erstbild-Zahl ist in der Automatisierung nicht stabil.** *(E4, 2026-08-12;
 früher P-57)* 36–236 ms in derselben Bedingung — weil der verborgene Tab während des
@@ -123,6 +147,9 @@ Ladens gar kein Bild zeichnet, also genau in dem Fenster nicht, das der Vorwärm
 bedienen soll. Nach drei Anläufen: Drei-Strikes-Stopp. *Regel:* Messfläche für
 Bildraten und Erstbild ist Kokis sichtbarer Schirm (`?perf=1`, `&warm=0`). GPU-Zeit über
 `EXT_disjoint_timer_query` bleibt zulässig, weil sie GPU-ARBEIT zählt statt Wartezeit.
+**★ Eingeschränkt am 2026-08-15 durch PB-44:** Kokis Schirm ist nicht mehr die EINZIGE
+zulässige Messfläche — ein selbst gestarteter, sichtbarer Chrome zählt auch, **sofern eine
+leere Kontrollseite im selben Lauf 60 fps zeigt**.
 
 **PB-6 · Ein Cache-Buster am Commit wirft nach JEDEM Merge alles weg.** *(E4,
 2026-08-12; früher P-58)* `?v=<COMMIT_SHA>` an jeder Kunst-URL bedeutete: wer direkt
@@ -453,3 +480,76 @@ wo die Projektion zu VIEL zeigte). *Regel:* Vor jeder Blind-Runde prüfen, ob di
 Projektion die Karte VOLLSTÄNDIG trägt; wo die Antwort am Bild hängt, wird am Bildschirm
 geurteilt, nicht am Text. Ein »unlösbar« aus einer unvollständigen Projektion ist ein
 Befund über das Werkzeug, nicht über die Karte.
+
+## R5-Welle 4 · aus den Reports E5 und H1 (aufgenommen von K2, 2026-08-15)
+
+> **Was diese Runde beim Aufnehmen gelernt hat.** E5 und H1 haben vierzehn Fallen gemeldet
+> (E5 `P-72`…`P-78`, H1 `P-65`…`P-71`). Aufgenommen sind **acht**. Die anderen **sechs
+> standen bereits im Register** — H1 hatte seine eigenen Befunde aus Teil 2 und Teil 3 im
+> Architekten-Report neu durchnummeriert, sodass `P-67`…`P-69` und `P-71` dieselben Gesetze
+> tragen wie **PB-18**…**PB-21**, und `P-65`/`P-66` dieselben wie **PB-22**/**PB-4**. Sie
+> bekommen deshalb KEINE zweite Nummer, sondern nur eine Zeile in der Umrechnungstabelle —
+> ein Gesetz, zwei Adressen, wäre genau der Fehler, gegen den dieses Register gebaut ist.
+> Geprüft wurde das doppelt: von der aufnehmenden Session und von einem blinden Klassierer,
+> der nur die 43 Einträge und die 14 Wortlaute sah. Beide kamen auf dieselben sechs.
+
+**PB-44 · »Der Automatisierungs-Tab ist verborgen« gilt für die MCP-Flächen — NICHT für
+einen selbst gestarteten Chrome.** *(E5, 2026-08-14; früher P-72.)* Ein mit
+`--headless=new` selbst gestarteter Chrome zeigt seine Seite und lässt `requestAnimationFrame`
+laufen; gemessen wurden **60,2 fps auf einer leeren Kontrollseite und 9 fps im Spiel im
+selben Lauf**. Damit ist die bis dahin geltende Fassung von **PB-4**/**PB-5** zu weit
+gefasst: nicht jede Automatisierung ist blind, nur die fremdgesteuerte Fläche ist es.
+*Regel:* Bildraten dürfen aus einem SELBST gestarteten, sichtbaren Chrome berichtet werden —
+aber **nur mit einer Kontrollmessung im selben Lauf, die 60 zeigen MUSS**. Ohne sie weiß
+niemand, ob eine niedrige Zahl das Spiel beschreibt oder das Werkzeug. Aus einer
+MCP-Browser-Fläche bleibt jede Bildraten-Aussage verboten.
+
+**PB-45 · Eine Phaser-`Graphics` mit statischem Inhalt wird JEDES Bild neu
+tesselliert.** *(E5, 2026-08-14; früher P-73.)* »Einmal beim Bauen gezeichnet« ist eine
+Aussage über den eigenen Code, nicht über die Engine — der Quellkommentar sagte genau das
+und die Engine hörte das Wort *statisch* nie. Drei solche Objekte trugen die Bildzeit,
+nachdem 265 MB Texturen und 22 Zeichenaufrufe entfernt worden waren, **ohne dass sich die
+Zahl bewegt hatte**. *Regel:* Statisches gehört in eine Textur
+(`generateTexture`/`RenderTexture`), nicht in eine `Graphics`.
+
+**PB-46 · Jede `TileSprite` legt eine EIGENE Kopie ihres Bildes auf der Grafikkarte
+an.** *(E5, 2026-08-14; früher P-74.)* Belegt am Phaser-Quelltext (`updateTileTexture`) —
+unabhängig davon, wie oft dasselbe Bild sonst verwendet wird. Zehn Kacheln desselben
+Blattes sind zehn Texturen, nicht eine. *Regel:* `TileSprite`-Zahlen im Texturspeicher
+mitrechnen; wo dieselbe Fläche mehrfach vorkommt, eine andere Bauart wählen.
+
+**PB-47 · Ein Lastinjektions-Test, der die Last NACH dem Messpunkt verbrennt, misst
+nichts.** *(E5, 2026-08-14; früher P-75.)* `sweep()`/`cpuBoundness` speiste seine
+Rechenlast in demselben Bild ein, aber hinter der Stelle, an der die Bildzeit genommen
+wird — die Zahl konnte sich strukturell nicht bewegen. E5 hat der Zahl anfangs geglaubt.
+*Regel:* Bevor man einem Instrument vertraut, liest man nach, **WO** es misst; und ein
+Instrument, dessen Ausschlag unmöglich ist, wird repariert oder gestrichen, nicht gedeutet.
+
+**PB-48 · Verlustfreie PNG-Werkzeuge dürfen die Farbwerte durchsichtiger Bildpunkte
+überschreiben.** *(E5, 2026-08-14; früher P-76.)* Gerendert ist das identisch — für ein
+Repo, dessen Tore die ROHWERTE lesen, nicht: auf einem einzigen Blatt trugen **42 177
+vollständig durchsichtige Bildpunkte neue Farbwerte**. Gefunden hat es der eigene
+Pixel-Beweis beim ersten Lauf; der Gewinn fiel von 16,7 auf 13,2 % und war dafür
+wasserdicht. *Regel:* **Pixelgleichheit heißt alle vier Kanäle, überall** — auch dort, wo
+Alpha 0 ist. Nach jedem PNG-schreibenden Skript `art-recompress` + `check-png-identity`
+(D-98).
+
+**PB-49 · `createMs` misst nur `create()` — Sim, Raster und Kunst-Umfang entstehen im
+KONSTRUKTOR.** *(E5, 2026-08-14; früher P-77.)* Arbeit aus `create()` in den Konstruktor zu
+schieben verbessert die berichtete Zahl und sonst nichts; der Spieler wartet genauso lang.
+*Regel:* immer **`bau + aufbau`** berichten, nie `createMs` allein. Eine Metrik, deren
+Grenze verschiebbar ist, ist ohne ihre Nachbarzahl wertlos.
+
+**PB-50 · Ein zweiter `@media (prefers-reduced-motion)`-Block bricht die beiden Parser des
+End-States-Gesetzes auseinander.** *(E5, 2026-08-14; früher P-78.)* Beide greifen gierig
+bis Dateiende; ein zweiter Block teilt den Text so, dass jeder von ihnen nur noch eine
+Hälfte sieht — ohne Fehlermeldung. *Regel:* Neue Reduced-Motion-Regeln gehören **VOR** den
+bestehenden Block, nicht in einen eigenen. (Verwandt: **PB-17** — dieselbe Familie
+»Parser-Gier«, anderer Mechanismus.)
+
+**PB-51 · `sim.step()` roh gerufen lässt Ereignisse unbeantwortet und friert die Welt
+ein.** *(H1, 2026-08-14; früher P-70.)* Das sah wie ein Produktfehler aus und war der
+Prüfaufbau: der Shell beantwortet die Sim-Ereignisse, der rohe Schritt tut es nicht.
+*Regel:* im Harness `h.step()` rufen, das den Shell mitfährt — und wenn eine Welt im Test
+einfriert, zuerst den Aufbau verdächtigen, dann das Produkt. (Gegenstück zu **PB-27**, wo
+die Welt aus echtem Produktgrund einfriert.)

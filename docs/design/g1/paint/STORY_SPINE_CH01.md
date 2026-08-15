@@ -27,24 +27,44 @@ in ihrer Zeile oder DARÜBER schon eingeführt sind.
 
 | # | Beat | Was das Kind hier NEU erfährt | Was es danach weiß |
 |---|---|---|---|
-| 0 | **Auftrags-Karte** (vor dem ersten Bild) | Dem Schulhaus sind die Farben genommen worden. Der Verursacher ist **der Tinten-Schatten** — kein Name, keine Gestalt. Manche Schulsachen stehen grau da, andere stellen sich quer. Fünf Käfige, ein Klassenkind, drei Regel-Seiten, 27 Buchstaben. | die Bedrohung · den Auftrag · die fünf Zählungen |
+| 0 | **Auftrags-Karte** (vor dem ersten Bild) | Dem Schulhaus sind die Farben genommen worden. Der Verursacher ist **der Tinten-Schatten** — kein Name, keine Gestalt. Manche Schulsachen stehen grau da, andere stellen sich quer. Fünf Käfige, ein Klassenkind, ~~drei~~ **fünf** Regel-Seiten (R51), 27 Buchstaben. | die Bedrohung · den Auftrag · die fünf Zählungen |
 | 1 | **p1, die ersten Schritte** | Gehen, springen. Ein grauer Gegenstand + ↑ = sag, was er ist, die Farbe kommt zurück und bleibt. | die Restaurier-Geste |
-| 2 | **p1, erste Begegnung** (Bleistift/Radierer) | Eine verwunschene Schulsache stellt sich quer; sie fragt etwas; die richtige Antwort macht ihr Platz. | den Unterschied Ding ↔ Wesen |
+| 2 | **p1, erste Begegnung** (Bleistift/Radiergummi) | Eine verwunschene Schulsache stellt sich quer; sie fragt etwas; die richtige Antwort macht ihr Platz. | den Unterschied Ding ↔ Wesen |
 | 3 | **p1, die Käfig-Lehrkarte** | Ein Käfig hält etwas fest. Davorstellen, ↑ drücken, sagen was gefangen ist. | die Käfig-Geste |
-| 4 | **p1, Käfig #1 — die Musikanlage** | Im Käfig steckt ein DING. Befreite bleiben, wo sie befreit wurden. | die Befreiungs-Regel |
-| 5 | **p1, Regel-Seite »to be«** | Aus dem Buch sind Seiten gerissen; wer eine findet, klebt sie zurück. | die dritte Sammel-Klasse |
+| 4 | **p1, Käfig #1 — die Musikanlage** | Im Käfig steckt ein DING. Befreite bleiben in dem Raum, in dem sie befreit wurden — und bewegen sich darin (R49). | die Befreiungs-Regel |
+| 5 | **p1, Regel-Seite »Kurzformen«** | Aus dem Buch sind Seiten gerissen; wer eine findet, klebt sie zurück. | die dritte Sammel-Klasse |
 | 5a | **p1, die Tür am Ende** | Auch die Tür ist verwunschen: sie klemmt, sie fragt, sie will ihr Wort. Erst dann geht sie auf. | dass jede Phase mit einem Wort endet |
 | 6 | **p2, Käfig #2 — das Tablet** | Zweites Ding im Käfig — die Regel aus Beat 4 wiederholt sich. | (Festigung) |
 | 7 | **p2, Klecks an der Tür** (c61, kurz vor Merle) | Klecks verlangt 8 Buchstaben für seine Kammer. | dass Buchstaben eine Währung sind |
 | 8 | **p2, Merles Käfig** | Hier steckt ein MENSCH: eine Klassenkameradin. Sie ist halb verwunschen; sechs richtige Kommandos geben ihr die Bewegung zurück. | dass die Klasse mit im Buch ist |
-| 9 | **p2, Merle ist frei** | Sie bleibt an ihrem Käfig stehen und winkt. Niemand geht irgendwohin. | die Allianz — sichtbar, nicht behauptet |
+| 9 | **p2, Merle ist frei** | ~~Sie bleibt an ihrem Käfig stehen und winkt. Niemand geht irgendwohin.~~ **Sie bleibt in IHREM Raum und bewegt sich darin (geht, hüpft, winkt) — sie verlässt die Phase nie.** (R49) | die Allianz — sichtbar, nicht behauptet |
 | 10 | **p3** | Käfig #4 hält einen Stuhl; zwei weitere entfärbte Schulsachen; die Zahlen-Seite. | (Festigung) |
 | 11 | **Arena, Auftritt** | Der Saal ist leer — lauter leere Stühle. Die Klasse fehlt. | warum das Kapitel dorthin führt |
-| 12 | **Arena, die Fliegende Tafel** | Sie ist das größte verwunschene Wesen des Kapitels. Drei Knoten. | den Kapitel-Gegner |
+| 12 | **Arena, die Fliegende Tafel** | Sie ist das größte verwunschene Wesen des Kapitels — **vollgekritzelt**. ~~Drei Knoten.~~ **Drei Kritzel-Schichten; das Kind WISCHT sie weg — „Clean the board!"** (R50) | den Kapitel-Gegner |
 | 13 | **Arena, der Sieg** | Das Kind schreibt ihr ein freundliches Wort; sie blüht auf. Niemand wird besiegt — sie wird befreit. | doc 44 §1.5, ohne das Wort |
 | 14 | **Arena, Käfig #5 — das Klassenfoto** | Das erste Bild der fehlenden Klasse. | worauf das Jahr hinausläuft |
 | 15 | **Bilanz-Seite** | Was gefunden, was befreit wurde. | den Stand |
 | 16 | **Tür hinaus** | Die Seite ist wieder farbig; es gibt eine nächste. | den Fortgang |
+
+> **★ Amendment 2026-08-15 (Kokis Replay vom 15.08., Rulings R49 · R50 · R51).** Drei Zeilen
+> dieser Tabelle waren Kanon und sind es nicht mehr; die alte Fassung steht durchgestrichen
+> daneben, damit man sieht, wogegen frühere Dokumente gebaut wurden.
+> * **Beat 9 (R49) — Befreite bewegen sich.** Koki: Merle „soll sich durchs Level bewegen".
+>   Das ist **keine Kanon-Änderung, sondern eine Wiederherstellung**: doc 40 §3 sagt seit
+>   jeher „redemption changes STATE, never removes presence — the coded side plays the joy
+>   loop as a **home-orbit**, then settles the friend near its home cell", und doc 39 R3-5
+>   verlangt, dass das befreite Wesen „visibly fly its Freudenrunde **and remain**".
+>   Verengt hat allein diese Tabelle („Niemand geht irgendwohin"). Gemeint war nie
+>   Bewegungslosigkeit, sondern **Anwesenheit**: der Raum ist die Grenze, nicht der Fleck.
+> * **Beat 12 (R50) — die Tafel ist vollgekritzelt, nicht verknotet.** Koki: „man muss sie
+>   sauber machen — Clean the blackboard!" Die Mechanik bleibt unverändert (Pfade, Kreide,
+>   Fenster E/M/S, Sinken, HELLO); nur die Fiktion der drei Stufen wechselt von *Knoten
+>   lösen* zu *Kritzel-Schichten wegwischen*. Interne Symbole (`knots`, `KNOT_*`) bleiben
+>   stehen — sie sind Code-Namen, keine Spielzeilen.
+> * **Beat 0 (R51) — fünf Regel-Seiten, nicht drei.** ⚠ **Die Welt zieht erst mit Session I2
+>   nach**; bis dahin liefert das Level 3 `tip`-Entities und `tipsTotal: 3`. Wer heute eine
+>   Zeile gegen die Zahl 5 schreibt, schreibt gegen den Kanon und **gegen die aktuelle Welt** —
+>   die Auftrags-Karte darf 5 erst versprechen, wenn die fünfte Seite existiert.
 
 **Was das Kind am Ende von ch01 NICHT weiß** (und keine Zeile andeuten darf): wer der
 Tinten-Schatten ist · dass er einmal ein Kind mit diesem Buch war · dass die Lehrerin
@@ -63,13 +83,13 @@ Wesen kann in zweien gleichzeitig sein.**
 | Zustand | Wie das Kind ihn erkennt | Die Geste | Das Wort in der Copy |
 |---|---|---|---|
 | **ENTFÄRBT** — die Farbe ist weg | steht grau da (still oder in Bewegung), ↑-Pfeil oder Begegnung | sagen, was es ist · dann die Farbe wählen · sie kommt zurück und BLEIBT | **entfärbt** · **eine entfärbte Schulsache** — nie „Dinge" |
-| **VERWUNSCHEN** — es stellt sich quer | bewegt sich auf dich zu, blockiert, fragt etwas | die Aufgabe lösen → es macht Platz | **verwunschen** · das große: **die Fliegende Tafel** |
+| **VERWUNSCHEN** — es stellt sich quer | bewegt sich auf dich zu, blockiert, fragt etwas | die Aufgabe lösen → es macht Platz | **verwunschen** · das große: **die Fliegende Tafel (vollgekritzelt)** |
 | **GEFANGEN** — es steckt im Käfig | zugesperrter Käfig, Licht hinter den Gittern | davorstellen · ↑ · sagen, was drinsteckt | **gefangen** — bei vier Käfigen ein **ETWAS**, bei Merle ein **JEMAND** |
 
 **Die Überschneidung ist echt und muss in der Copy erlaubt bleiben.** Neun Wesen tragen
 eine `restore`-Karte, aber nur **sechs** stehen still (`role:"drained"`): Schultasche,
 Buch, Tisch, „Schere" (heute noch Bleistift-Kunst, D-13), Klebestift, Spitzer. Die
-anderen **drei — Radierer (hüpft), Füller (läuft), Heft (flattert) — sind verwunschen
+anderen **drei — Radiergummi (hüpft), Füllfeder (läuft), Heft (flattert) — sind verwunschen
 UND entfärbt**: sie stellen sich dir quer *und* haben ihre Farbe verloren. Ihre
 Restore-Karte darf deshalb genau denselben Ton haben wie die der sechs stillen; was sie
 NICHT darf, ist so tun, als stünden sie still.
@@ -77,7 +97,10 @@ NICHT darf, ist so tun, als stünden sie still.
 *Folge für die Zählung:* die Auftrags-Karte verspricht **6 entfärbte Schulsachen** und
 meint die sechs stillen — das ist die Zahl, die das Spiel zählt (`role:"drained"`). Die
 drei beweglichen sind ein Bonus, kein gebrochenes Versprechen. Keine Zeile darf „neun"
-sagen.
+sagen — gemeint sind hier die **entfärbten Schulsachen**. (Nicht zu verwechseln mit den
+**neun Uniform-Sammelobjekten** aus doc 44 §2.7, R53: eine andere Klasse, eine andere
+Zählung, und sie werden erst in Welle 5 gebaut. Ein blinder Leser ist am 15.08. über genau
+diese zwei Neunen gestolpert.)
 
 **Die Namens-Tabelle der Gefangenen** (ratifiziert, README §Tor-Antworten 2026-08-11) —
 verbindlich für jede Zeremonie-Zeile:
@@ -120,10 +143,12 @@ Tor ist das erste sichtbare Ziel, das noch nicht erreichbar ist.
 
 **2 · p2 · Das Klassenzimmer bei Nacht — DIE ZWEI STOCKWERKE.** Unten das dunkle
 Klassenzimmer, oben der Lampen-Korridor durch die **Zahlen-Falter** (die Dossiers nennen sie „Motten“ — in der Copy heißen sie durchgehend Falter). Hier steht die einzige
-Person des Kapitels: Merles Federmäppchen liegt auf dem Konfiskations-Pult im Mondlicht —
+Person des Kapitels: Merles Federpennal liegt auf dem Konfiskations-Pult im Mondlicht —
 eingezogen, wie am letzten Schultag. Ihre sechs Runden sind der emotionale Kern: sie ist
 halb verwunschen, und das Kind gibt ihr mit jedem richtigen Kommando ein Stück Bewegung
-zurück. Danach **bleibt** sie an ihrem Käfig und winkt.
+zurück. ~~Danach **bleibt** sie an ihrem Käfig und winkt.~~ **Danach bleibt sie in IHREM
+Raum und bewegt sich darin — sie geht, hüpft, winkt, und sie verlässt die Phase nie**
+(Amendment 2026-08-15, R49).
 
 **3 · p3 · Der Schulhof-Garten — DAS TERRASSIERTE V.** Der Raum, der prüft, was p1 und p2
 gelehrt haben: rutschen, warten, aufsteigen. Der Käfig hält einen Stuhl — das banalste
@@ -136,7 +161,10 @@ Rolle: der einzige Ort des Kapitels ohne Aufgabe.
 
 **5 · Arena · Die Bühne vor leerem Saal.** Reihen leerer Stühle in der Ferne — die Klasse
 fehlt, und das Loch ist die Erzählung. Die Fliegende Tafel ist das Wesen, das dem
-Tinten-Schatten die Arbeit abnimmt. Besiegt wird sie nicht: das Kind schreibt ihr das erste
+Tinten-Schatten die Arbeit abnimmt. **Sie ist über und über vollgekritzelt, und was das
+Kind mit ihr tut, ist sie sauber machen: drei Kritzel-Schichten, jede wird
+WEGGEWISCHT — „Clean the board!"** (Amendment 2026-08-15, R50; vorher hieß es „drei
+Knoten", die man löst). Besiegt wird sie nicht: das Kind schreibt ihr das erste
 freundliche Wort, das je auf ihr stand, und sie blüht sonnengelb auf. Dahinter hängt das
 Klassenfoto im letzten Käfig — das erste Bild der Klasse, die das Kind ein Jahr lang suchen
 wird.
@@ -145,9 +173,15 @@ wird.
 Tür ist selbst verwunschen: sie klemmt, sie zieht, sie will gefragt sein. Zehn
 Tür-Karten teilen sich die drei Ausgänge, und sie sind die einzige Karten-Art, die in
 JEDER Phase auftauchen kann — deshalb tragen sie den wiederkehrenden Ton des Kapitels:
-höflich sein wirkt. Beim Lösen freut sich die Tür sichtbar („Die Tür freut sich!"), beim
+höflich sein wirkt. ~~Beim Lösen freut sich die Tür sichtbar („Die Tür freut sich!"), beim
 Vorbeigehen ohne Wort sagt sie es („Die Tür wartet auf ihr Wort!"). Beide Zeilen sind
-gedeckt — die Tür ist ein Entity, das antwortet.
+gedeckt — die Tür ist ein Entity, das antwortet.~~
+
+> **★ Amendment 2026-08-15 (R48).** Koki: „die Tür geht einfach auf." **Beim Lösen geht die
+> Tür auf — mehr nicht.** Die Zeile „Die Tür freut sich!" und ihr Toast entfallen; eine Tür
+> hat kein Gesicht, und die Welt zeigt die Freude nicht, also behauptet sie keine Copy
+> (§4 Behauptungs-Ledger). **„Die Tür wartet auf ihr Wort!" bleibt** — sie ist gedeckt: die
+> Tür ist ein Entity, das beim Vorbeigehen ohne Wort tatsächlich antwortet.
 
 **6 · Bilanz und Tür.** Die Bilanz zählt, was die Welt hergegeben hat. Die letzte Tür ist
 die nächste Seite.
@@ -191,14 +225,14 @@ leer ist, wird umgeschrieben (Spalte »Konsequenz«) oder als Weltsache bestellt
 | Behauptung | Weltsache, die sie deckt | Beleg |
 |---|---|---|
 | „Sag, was es ist — dann kommt die Farbe zurück." | Der graue Schleier läuft nach dem Lösen auf 0 und bleibt dort; das Ding steht danach farbig in der Welt. | `anim.ts washAlphaFor` (redeemed ⇒ `full · (1−floodT)`) |
-| „Merle bleibt und winkt dir zu." | Befreite Klassenkinder gehen in `settle → joy → rest → wave` und kehren immer an ihren Platz zurück. | `entities.ts` (`WAVE_EVERY_TICKS`, Kommentar :216) |
+| ~~„Merle bleibt und winkt dir zu."~~ **„Merle bleibt hier — sieh nur, wie sie sich freut!"** (R49) | Befreite Klassenkinder gehen in `settle → joy → rest → wave` und **bewegen sich in ihrer Roam-Zone**, statt auf einem Fleck zu stehen; den Raum verlassen sie nie. | `entities.ts` (`WAVE_EVERY_TICKS`); Gesetz: doc 40 §3 „home-orbit" |
 | „Der Käfig springt auf." | ↑ am Käfig ⇒ `burst`, Skalen-Pop + Kreide-Staub, danach Ruhezustand offen. | `entities.ts:867`, `PaintScene cagePopT` |
 | „Da ist Licht hinter den Gittern." | Die gemalte Käfig-Karte zeigt Gitter, geschlossenen Riegel, warmes Licht dahinter. | `cards/CardShell.tsx` PaintedCage |
 | „Sie blüht sonnengelb auf." | Nach dem getippten Wort läuft die Blüte über die ganze Tafel. | `PaintScene.chalkTheGift` + Bloom-Konstanten :555–563 |
 | „27 Buchstaben liegen verstreut." | 9 + 9 + 9 in p1/p2/p3, 0 in der Arena. | Level gezählt; `pickups.test.ts` behauptet 27 |
 | „6 entfärbte Schulsachen warten." | Genau 6 Entities mit `role:"drained"`. | Level gezählt |
 | „Ein Klassenkind steckt fest." | Genau 1 Käfig mit `params.classmate`. | Gesetz `classmate-cage` in `level.ts` |
-| „3 Regel-Seiten sind aus dem Buch gerissen." | 3 `tip`-Entities, `tipsTotal: 3`. | Gesetz `tip-honesty` |
+| „~~3~~ **5** Regel-Seiten sind aus dem Buch gerissen." (R51) | ⚠ **heute noch 3** `tip`-Entities, `tipsTotal: 3` — **die fünfte und vierte Seite baut Session I2**. Bis dahin ist „5" Kanon, aber noch nicht Weltsache: die Zeile darf erst mitziehen, wenn das Level nachgezogen hat. | Gesetz `tip-honesty` |
 | „5 Käfige." | 4 in den Phasen + 1 in der Arena. | Level gezählt |
 | „Klecks: 8 Buchstaben, drinnen warten 12." | Preis und Bonus-Summe werden aus den Daten gelesen, nie getippt. | `PaintGame.tsx` bonuspay |
 
@@ -208,8 +242,8 @@ leer ist, wird umgeschrieben (Spalte »Konsequenz«) oder als Weltsache bestellt
 |---|---|---|
 | „Da steckt **jemand** fest!" (Käfig-Lehrkarte) | Der erste Käfig hält eine Musikanlage. | Objekt-Grammatik; die Karte nennt, was sie sieht |
 | „Ein **Buchstaben-Wesen** flattert frei und dreht eine Freudenrunde!" | Es gibt kein Buchstabenwesen — weder Entity noch Sprite noch Animation. Frei wurden: Musikanlage, Tablet, Stuhl, Klassenfoto. | Pro Käfig eine eigene, wahre Zeile (§2-Tabelle) |
-| „Bring alle, die du befreist, zum **Lager am Rand der Seite** — dort wartet die Klasse." | Kein Lager. Nirgends. Doc 44 §1.4 hat es abgeschafft; die Welt lässt Befreite an Ort und Stelle. | Ersetzt durch die sichtbare Regel: *sie bleiben, wo du sie befreit hast* |
-| „Sie kommt mit ins Lager!" (×2) | Merle steht an ihrem Käfig; die Tafel bleibt auf ihrer Bühne. | dito |
+| „Bring alle, die du befreist, zum **Lager am Rand der Seite** — dort wartet die Klasse." | Kein Lager. Nirgends. Doc 44 §1.4 hat es abgeschafft; die Welt lässt Befreite in dem Raum, in dem sie befreit wurden. | Ersetzt durch die sichtbare Regel: *sie bleiben in dem Raum, in dem du sie befreit hast — und bewegen sich darin* (R49) |
+| „Sie kommt mit ins Lager!" (×2) | Merle bleibt in ihrem Raum und bewegt sich darin; die Tafel bleibt auf ihrer Bühne. | dito |
 | „»Danke!«, ruft die Klasse aus dem Lager." | Es gibt keine Klasse im Bild — nur leere Stühle in der Arena. | Die Zeile spricht von den Befreiten, die dastehen |
 | „**Fibel** schenkt dir die FAUST!" | ch01 vergibt keine Faust (`abilities: ["jump","run"]`, 0 Powerups) — die Karte ist unerreichbar. | Karte raus |
 | „…sagt **Fibel**. Die Seite ist wieder voll." | Fibel kommt in ch01 nicht vor. | Ersetzt |
@@ -232,7 +266,7 @@ tun ist.**
 |---|---|---|
 | `stimulus.showsDe` | **was zu sehen ist** — der Blick auf das Wesen, bevor gefragt wird | eine Bildunterschrift, kein Satzbau-Kunststück; nur Sichtbares |
 | `storyDe` | **was zu tun ist** — der Auftrag, in einer Zeile | endet auf die Aufforderung; GROSSBUCHSTABEN markieren das Schlüsselwort (SETZEN, AUFGEHEN, ZUHÖREN) |
-| `colourAskDe` | nur `restore`: das Wesen sagt, welche Farbe es war | immer das Bild-Gleichnis: *„Ich war grün wie ein junges Blatt!"* — Farbe + ein Ding aus der Natur oder dem Alltag |
+| `colourAskDe` | nur `restore`: das Wesen sagt, welche Farbe es war | ~~immer das Bild-Gleichnis: *„Ich war grün wie ein junges Blatt!"* — Farbe + ein Ding aus der Natur oder dem Alltag~~ **Nomen + Farbe, schlicht: „Der Radiergummi war blau." Kein Gleichnis, kein Vergleich.** (R47) |
 | `hints.deDesc` | erster Hinweis nach einem Fehlversuch: **umschreiben, nie nennen** | beschreibt die Funktion („Damit klebst du Bilder ins Heft.") |
 | `hints.deWord` | zweiter Hinweis: das **deutsche** Wort | Muster „Auf Deutsch: der Klebestift." (+ die Farbe bei `restore`) |
 
@@ -241,7 +275,7 @@ stehen als Maßstab hier, nicht als Vorlage zum Abschreiben. Je Karten-Art eine:
 
 | `use` / `kind` | Beispiel-Karte | showsDe / storyDe |
 |---|---|---|
-| encounter / restore | `enc.obj-book.r1` | „Ein dickes Buch lehnt blass an der Wand." / „Sag, was es ist — dann gib ihm die Farbe!" |
+| encounter / restore | `enc.obj-book.r1` | „Ein dickes Buch lehnt blass an der Wand." / „Sag, was es ist — dann gib ihm die Farbe!" · `colourAskDe` **neu (R47): „Das Buch war rot."** — vorher ~~„Ich war rot wie ein Apfel!", seufzt es.~~ |
 | encounter / choice | `enc.paintbox.c1` | „Ein Farbkasten klappert wütend mit dem Deckel." / „Begrüße ihn — dann hört er auf zu spritzen!" |
 | encounter / oddone | `enc.heft.q1` | „Das Heft schlägt eine Seite mit vier Wörtern auf." / „Was gehört NICHT in die Schultasche?" |
 | encounter / wheel | `enc.heft.w2` | „Das Heft flattert und zeigt dir ein Wort." / „Lies das Wort — dreh das Rad darauf!" |
@@ -271,6 +305,13 @@ stehen als Maßstab hier, nicht als Vorlage zum Abschreiben. Je Karten-Art eine:
 - **Register:** kein *Monster*, *Blut*, *böse*, *Bösewicht*, *schrei…*, *sterben*, *tot*.
   Der Geist der Regel ist weiter als die Liste: nichts, was Angst macht. *gruselig*,
   *Gefahr*, *Falle* würden durchrutschen und gehören trotzdem nicht hierher.
+- **Register: österreichisches Deutsch** (neu, 2026-08-15). Jedes Nomen einer sichtbaren
+  Zeile steht in **`LEXIKON_AT.md`** — die Füllfeder (nicht *Füller*), das Federpennal
+  (nicht *Federmäppchen*), der Radiergummi (nie *Radierer*), die Schultasche (nie *Ranzen*
+  in einer sichtbaren Zeile; als Skin-Name bleibt `ranzen`), der Uhu-Stick bzw. der
+  Klebestift, der Spitzer. **„böse" ist BANNED — „grantig" ist das Wort.** Die
+  Korpus-Glossen (`wordbank.json`, `vocab.json`) bleiben davon unberührt: sie sagen, was
+  das Kind LERNT, das Lexikon sagt, wie die Erzählstimme es NENNT.
 - **Kein Antagonisten-Name** in irgendeiner sichtbaren Zeile vor ch15 (Maschinen-Gesetz
   `chapter-copy` + `check-paint-copy`). Der Verursacher heißt **der Tinten-Schatten** —
   eine Beschreibung seiner Tinte, kein Eigenname.
