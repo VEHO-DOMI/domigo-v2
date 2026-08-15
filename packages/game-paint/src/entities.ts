@@ -523,18 +523,28 @@ const stepRedeemed = (e: EntityState, grid: readonly string[] = []): void => {
  *  Gefiltert wird über die ZUSTÄNDE, nicht über `redeemed = true`: das würde in
  *  `cagesGated`, in den `dazed`-Auffangzweig und in die Band-Behauptung
  *  `redeemedPresent` lecken. Ein schmales Prädikat sagt genau das, was gilt. */
-const LANDING_STATES: ReadonlySet<string> = new Set(["sink", "sad"]);
+// R5-W4 · H2: `settle` kommt dazu — der kurze Fall aus der Dip-Höhe auf die
+// Bretter, den sie nach einer gelösten Karte macht, um gewischt zu werden. Er
+// gehört GENAU hierher und nicht in den Flug-Zweig: er muss auch im Halte-Takt
+// hinter einer offenen Karte weiterlaufen, sonst bliebe sie in der Luft stehen,
+// während das Kind noch etwas liest — dieselbe Falle, die den Sieg-Bogen schon
+// einmal in einem leeren Raum spielen liess.
+const LANDING_STATES: ReadonlySet<string> = new Set(["sink", "sad", "settle"]);
 
 /** Ihre Landung, als eigener Schritt — damit BEIDE Takte sie fahren können: der
  *  volle Welt-Takt und der Halte-Takt hinter einer offenen Karte. Gibt zurück,
  *  ob dieser Schritt das Wesen bereits erledigt hat. */
 const stepGuardianLanding = (e: EntityState, grid: readonly string[]): boolean => {
   if (e.role !== "guardian" || !LANDING_STATES.has(e.state)) return false;
-  if (e.state === "sink") {
+  if (e.state === "sink" || e.state === "settle") {
     const floorY = groundAt(grid, e.x, e.y) ?? e.y;
     e.vx = 0;
     e.y = Math.min(e.y + SINK_SPEED, floorY);
-    if (e.y >= floorY) { e.y = floorY; e.state = "sad"; e.timer = 0; }
+    // R5-W4 · H2: derselbe Fall, zwei Ausgänge. `sink` ist das Ende des Kampfes
+    // (sie ruht aus), `settle` ist eine Pause darin (sie wartet aufs Wischen).
+    // Die Bewegung ist identisch, weil es dieselbe Bewegung IST — nur der Grund
+    // unterscheidet sich, und der steht im Zustand.
+    if (e.y >= floorY) { e.y = floorY; e.state = e.state === "sink" ? "sad" : "wipeable"; e.timer = 0; }
     return true;
   }
   // `sad` — sie ruht aus, bevor die Konsole antwortet (doc 44 §2.2: sie RUHT,
@@ -769,6 +779,53 @@ export const UNTIE_RECOIL_TICKS = THROW_TICKS;
  *  des Dips läuft), kürzer als ein Drittel des engsten Wurfzyklus auf Stufe E —
  *  der Takt darf den Kampf rhythmisieren, nicht anhalten. */
 export const KNOT_BEAT_TICKS = 48;
+
+// ── R5-W4 · H2 · DAS WISCHEN (Ruling R50, Koki 15.08.2026) ───────────────────
+// „Die Aufgaben werden getriggert, und wenn sie unten ist und man zu ihr geht,
+// wird — nach der Aufgabe — gelöscht." Eine gelöste Karte allein macht die
+// Tafel also nicht mehr sauber: sie SETZT SICH AUF DIE BRETTER und wartet, das
+// Kind geht hin, und erst die Berührung nimmt eine Kritzel-Schicht weg.
+//
+// Drei Zustände, und jeder hat seinen Rückweg — die Lehre aus dem `window`-
+// Softlock, der monatelang live stand (CARD_OWNED_STATES): `settle` endet am
+// Boden, `wipe` endet an seiner eigenen Uhr, und `wipeable` endet an BEIDEN
+// Enden (Berührung ODER Wartezeit). Keiner von ihnen gehört einer Karte,
+// deshalb bleibt CARD_OWNED_STATES unangetastet und das Selbstfahr-Gesetz
+// gilt für sie ohne Ausnahme.
+
+/** Wie lange der Wischer über die Fläche fährt, in Ticks.
+ *
+ *  TASTE: 36 (0,6 s) — lang genug, dass ein Strich als Strich gelesen wird,
+ *  kurz genug, dass der Kampf nicht stehen bleibt. Drei Viertel des
+ *  Knoten-Takts, damit der Aufstieg danach der längere Atemzug bleibt. */
+export const WIPE_TICKS = 36;
+
+/**
+ * Wie lange sie auf das Kind wartet, in Ticks — HERGELEITET, nicht getippt.
+ *
+ * Die Frage, die diese Zahl beantworten muss, ist eine Fairness-Frage: ein Kind,
+ * das die Karte gelöst hat und sich SOFORT auf den Weg macht, darf seine Antwort
+ * nie verlieren — egal, wo auf der Bühne es gerade steht. Also ist die Zahl die
+ * Zeit, die ein Kind braucht, um die ganze Bühne zu durchqueren, plus einen
+ * Knoten-Takt als Reaktionszeit.
+ *
+ * Gerechnet wird mit `walkMax`, nicht mit `runMax`, obwohl dieses Kapitel in
+ * Wahrheit mit 2,25 px/t läuft: die Wartezeit darf nie an einer Fähigkeit
+ * hängen, die die Arena als Kür lehrt und nie verlangt (arena.md §1, „kein run
+ * als Pflicht"). Die langsamere Gangart ist die sichere Seite — sie schenkt
+ * Zeit, sie nimmt keine.
+ *
+ * Für die ausgelieferte Arena (c5–30, also 416 px): 416·SUBS/walkMax = 333 t,
+ * plus 48 t = **381 Ticks ≈ 6,4 s**. Ein Kind am fernsten Punkt der Bühne kommt
+ * mit 2,25 px/t nach 185 Ticks an — es hat also mehr als die doppelte Zeit.
+ */
+export const wipeWaitTicksFor = (
+  e: Pick<EntityState, "params">,
+  grid: readonly string[],
+): number => {
+  const { minPx, maxPx } = stageBoundsOf(e, grid);
+  return Math.ceil(((maxPx - minPx) * SUBS) / PAINT.walkMax) + KNOT_BEAT_TICKS;
+};
 
 /** R5-W2 · H1 · DIE BÜHNE, IN PIXELN — eine Herleitung für JEDE ihrer Bewegungen.
  *
@@ -1351,6 +1408,65 @@ export const stepEntities = (
         // `window` (the counter-task) and `consoled` are scene-driven states.
         if (e.state === "window" || e.state === "consoled") break;
 
+        // ── R5-W4 · H2 · SIE WARTET AUFS WISCHEN (R50) ─────────────────────
+        // Hier steht sie auf den Brettern, die Karte ist beantwortet, und die
+        // Kritzel-Schicht ist noch da. Zwei Ausgänge, und beide sind gebaut:
+        //
+        //   Berührung  → `wipe`  → die Schicht geht weg, sie steigt auf
+        //   Wartezeit  → `untie` → sie steigt MIT der Schicht auf
+        //
+        // Der zweite Ausgang ist der Preis, und er ist bewusst mild: die Karte
+        // zählt nicht, aber die Welt bleibt heil — kein Zustand ohne Rückweg,
+        // kein Kind, das den Kampf nicht zu Ende spielen kann. Die Wartezeit
+        // ist so bemessen, dass nur ein Kind sie verliert, das gar nicht
+        // hingeht (siehe wipeWaitTicksFor).
+        //
+        // Der Auslöser ist die BERÜHRUNG, nicht ↑. Kokis Satz sagt „wenn sie
+        // unten ist und man zu ihr geht" — und ↑ würde die Tafel in
+        // ENGAGEABLE_ROLES ziehen, mitsamt der ↑-Wolke und dem Selbstfahr-
+        // Gesetz, das für genau diese Rolle eine Ausnahme macht. Die REICHWEITE
+        // ist dieselbe, die dieses Kapitel schon für „das Kind steht an diesem
+        // Ding" benutzt: ein Sechsjähriger parkt neben einer Sache, nicht auf
+        // ihrem Mittelpixel.
+        if (e.state === "wipeable") {
+          e.vx = 0;
+          e.vy = 0;
+          if (inEngageReach(e, inp.playerX, inp.playerY)) {
+            e.state = "wipe";
+            e.timer = 0;
+            break;
+          }
+          if (e.timer > wipeWaitTicksFor(e, grid)) {
+            e.state = "untie";
+            e.timer = 0;
+            e.dodges = 0;
+          }
+          break;
+        }
+        if (e.state === "wipe") {
+          e.vx = 0;
+          e.vy = 0;
+          if (e.timer > WIPE_TICKS) {
+            // DAS IST DIE STELLE, an der eine Schicht wirklich verschwindet —
+            // nicht mehr die gelöste Karte. `hp` zählt, was noch auf ihr steht.
+            e.hp -= 1;
+            w.guardianKnots = e.hp;
+            e.dodges = 0;
+            e.timer = 0;
+            if (e.hp <= 0) {
+              // sie ist sauber. Sie liegt schon auf den Brettern, also ist der
+              // Fall kurz — `sink` rechnet ihn aus ihrer Lage, nicht aus einer
+              // getippten Höhe, und läuft deshalb hier einfach durch.
+              e.state = "sink";
+              events.push({ type: "guardianDown", id: e.id });
+            } else {
+              e.state = "untie";
+              events.push({ type: "guardianKnot", id: e.id, knotsLeft: e.hp });
+            }
+          }
+          break;
+        }
+
         // ── R5-W2 · H1 · DER KNOTEN-TAKT (Auftrag 2: Eskalation, die man spürt)
         // Zwischen zwei Knoten lag bisher NICHTS: die Karte ging zu, und im
         // nächsten Tick stand sie 43 bis 68 px höher und bis zu 102 px weiter
@@ -1412,7 +1528,24 @@ export const stepEntities = (
           // sie LEHNT sich zum Kind, aber sie verlässt ihre Bühne nicht: ein
           // Kind in der Kulisse zieht sie sonst mit hinaus (siehe stageBoundsOf)
           const stage = stageBoundsOf(e, grid);
-          const want = inp.playerX + side * DIP_STANDOFF_PX * SUBS;
+          // ── R5-W4 · H2 · SIE KOMMT AUF DEN BODEN DES KINDES ────────────────
+          // GEMESSEN, nicht vermutet: von fünf Fenstern eines echten Laufs
+          // gingen zwei verloren, und beide Male stand sie am Ende auf einem
+          // KREIDE-KISTEN-PODEST (y 224) und das Kind auf dem Boden (y 256) —
+          // 32 px höher, hinter einer Voll-Säule, 42 bis 61 px entfernt. Das
+          // Kind lief gegen die Kiste und kam nie in Reichweite; die Karte war
+          // beantwortet und verfiel trotzdem.
+          //
+          // Seit dem Wischen ist die Dip-Lage auch ihre LANDEPLATZ-Wahl, also
+          // muss sie die Fläche treffen, auf der das Kind steht: erst die Seite,
+          // zu der sie ohnehin lehnt, sonst die andere, sonst die Spalte des
+          // Kindes selbst. Alle drei Kandidaten sind deterministisch und in
+          // dieser Reihenfolge — kein Zufall, kein Suchen.
+          const childGround = groundAt(grid, inp.playerX, inp.playerY);
+          const sameFloor = (px: number): boolean => groundAt(grid, px, inp.playerY) === childGround;
+          let want = inp.playerX + side * DIP_STANDOFF_PX * SUBS;
+          if (!sameFloor(want)) want = inp.playerX - side * DIP_STANDOFF_PX * SUBS;
+          if (!sameFloor(want)) want = inp.playerX;
           const tx = Math.min(Math.max(want, stage.minPx * SUBS), stage.maxPx * SUBS);
           const step = Math.round((tx - e.x) / 6);
           e.vx = step;
@@ -1710,30 +1843,36 @@ export const stepEntities = (
 const eventsPushDeflect = (events: EntityEvent[], id: number): void => { events.push({ type: "projectileDeflected", id }); };
 const eventsPushStagger = (events: EntityEvent[], id: string): void => { events.push({ type: "guardianStagger", id }); };
 
-/** The scene calls this when the counter-window task is SOLVED: one knot unties. */
+/**
+ * The scene calls this when the counter-window task is SOLVED.
+ *
+ * ── R5-W4 · H2 · WAS SICH GEÄNDERT HAT (Ruling R50) ─────────────────────────
+ * Bis hierher WAR die gelöste Karte der Sieg über eine Stufe: `hp` fiel in
+ * derselben Zeile, und die Tafel stieg sofort wieder auf. Koki hat daraus zwei
+ * Handlungen gemacht — „die Aufgaben werden getriggert, und wenn sie unten ist
+ * und man zu ihr geht, wird gelöscht" — und deshalb tut diese Funktion jetzt
+ * genau eine Sache: sie setzt die Tafel auf die Bretter.
+ *
+ * `hp` bleibt UNBERÜHRT. Es fällt an genau einer Stelle im ganzen Paket, und
+ * das ist das Ende des Wischens (`stepEntities`, Zustand `wipe`). Das ist kein
+ * Umzug aus Geschmack: solange zwei Stellen `hp` senken könnten, wäre „die
+ * Karte zählt nur mit dem Wischen" eine Behauptung über Reihenfolgen statt
+ * eine Eigenschaft der Maschine — und die Wartezeit, die eine Karte verfallen
+ * lässt, hätte einen zweiten, stillen Weg an sich vorbei.
+ *
+ * Sie gibt deshalb auch KEIN Ereignis mehr zurück: es gibt an dieser Stelle
+ * nichts zu vermelden. Der Toast und der Sieg gehören dem Wischen.
+ */
 export const guardianKnotSolved = (w: EntityWorld, id: string): EntityEvent[] => {
   const g = w.entities.find((e) => e.id === id && e.role === "guardian");
   if (!g || g.redeemed) return [];
-  g.hp -= 1;
-  w.guardianKnots = g.hp;
-  if (g.hp <= 0) {
-    // PK-R6 · E · THE CONSOLATION (doc 44 §4 ch01 C4: „she sinks to the ground,
-    // exhausted"). R3-5's law is untouched — a reaction still comes BEFORE the
-    // victory cell — but the reaction is now the landing: `sink` settles her out
-    // of the air onto the boards, `sad` is her resting there, and only then does
-    // the console beat's `consoled` brighten her. She has already dipped low for
-    // the window, so this is a short last fall, not a plummet.
-    g.state = "sink";
-    g.timer = 0;
-    return [{ type: "guardianDown", id }];
-  }
-  // …und in den KNOTEN-TAKT, nicht direkt zurück in den Flug (R5-W2 · H1).
-  // `flightTick` bleibt hier absichtlich stehen: der Takt setzt ihn erst beim
-  // Aufsetzen auf Phase 0 zurück, und bis dahin fliegt sie gar keine Bahn.
-  g.state = "untie";
+  // PK-R6 · E · doc 44 §4 ch01 C4 („she sinks to the ground"), jetzt zweimal
+  // gebraucht: einmal als Pause im Kampf, einmal als sein Ende. Sie hat für das
+  // Fenster ohnehin schon tief gedippt, das ist also ein kurzer Fall.
+  g.state = "settle";
   g.timer = 0;
   g.dodges = 0;
-  return [{ type: "guardianKnot", id, knotsLeft: g.hp }];
+  return [];
 };
 
 // ── PK-R6 · D · THE REAWAKENING MACHINE (doc 44 §3.3) ────────────────────────

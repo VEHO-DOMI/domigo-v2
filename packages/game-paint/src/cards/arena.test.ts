@@ -8,6 +8,7 @@
 import { describe, expect, it } from "vitest";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
+import { MAX_LINE_DE } from "@domigo/content-schema";
 import { ARENA_BEATS, arenaExit, arenaLines, arenaPosition, arenaStep, type ArenaBeat } from "./arena.ts";
 import { CALM_DE, URGENCY_DE } from "./timer.ts";
 import { Sim } from "../sim.ts";
@@ -15,8 +16,10 @@ import { IDLE_PAD } from "../player.ts";
 import { SUBS, TILE } from "../paint.ts";
 import type { PaintLevel } from "../level.ts";
 
-/** Dieselbe Grenze, die `check-game-tasks` auf jede sichtbare Zeile legt. */
-const MAX_LINE_DE = 56;
+// R5-W4 · H2: die Grenze stand hier als getippte 56 — ein zweites Exemplar
+// derselben Zahl, also genau die Klasse P-68 (ein Wert, den zwei Handlisten
+// tragen müssen, wird von einer vergessen). Sie kommt jetzt aus der einen
+// Quelle, die `check-game-tasks` und `level.ts` ohnehin lesen.
 
 const shipped = (): PaintLevel =>
   JSON.parse(
@@ -97,23 +100,44 @@ describe("was die Anleitung sagt", () => {
     }
   });
 
-  it("nennt keine Zahl — die Knoten kommen aus dem Tier-Skript", () => {
+  it("nennt keine Zahl — die Schichten kommen aus dem Tier-Skript", () => {
     // doc 41 §7: keine Zahl wird getippt, die die Welt auch zählen kann. Die
-    // Knotenzahl hängt an der Stufe, eine getippte Drei wäre auf M und S falsch.
+    // Zahl der Kritzel-Schichten hängt an der Stufe (E drei · M vier · S fünf),
+    // ein getipptes „dreimal" wäre auf M und S falsch. Deshalb sagt Takt 2
+    // „eine Schicht" statt „dreimal"; die Anzahl trägt der HUD-Zähler.
     for (const l of all) {
       const text = Object.values(l).join(" ");
-      expect(text).not.toMatch(/\d|\bdrei\b|\bvier\b|\bfünf\b/i);
+      expect(text).not.toMatch(/\d|\bdrei\b|\bdreimal\b|\bvier\b|\bviermal\b|\bfünf\b|\bfünfmal\b/i);
+    }
+  });
+
+  it("trägt die NEUE Lore und keinen Rest der alten (R50)", () => {
+    // Kokis Befund vom 15.08.: „verknotet" und „die Knoten hat ihr die Tinte
+    // gemacht" waren ein Frankenstein-Artefakt der Vorgänger-Fassung. Die
+    // sichtbaren Zeilen dürfen das Wort nicht mehr führen — die INTERNEN
+    // Symbole (`knots`, `KNOT_*`) bleiben ausdrücklich (R50), deshalb prüft
+    // dieses Gesetz die Zeilen und nicht den Quelltext.
+    for (const l of all) {
+      const text = Object.values(l).join(" ").toLowerCase();
+      expect(text, `„${text}" trägt noch die Knoten-Lore`).not.toMatch(/knoten|verknotet|tinte/);
     }
   });
 
   it("beantwortet BEIDE Fragen, die Koki gestellt hat", () => {
-    // F1 „warum Knoten?" — der erste Takt muss die Knoten benennen.
-    // F2 „wie besiegt man ihn?" — der zweite muss die Schleife benennen.
-    expect(arenaLines("wer" as ArenaBeat).storyDe.toLowerCase()).toContain("knoten");
+    // F1 „warum wirft sie?" — der erste Takt muss den Zustand benennen, aus dem
+    // ihre Laune folgt: vollgekritzelt, ungeputzt, grantig.
+    // F2 „wie besiegt man sie?" — der zweite muss die ganze Schleife benennen,
+    // inklusive des HINGEHENS, das seit R5-W4 eine eigene Handlung ist.
+    const wer = Object.values(arenaLines("wer" as ArenaBeat)).join(" ").toLowerCase();
+    expect(wer, "der erste Takt muss die Kritzelei benennen").toMatch(/kritzel/);
+    expect(wer, "…und ihre Laune").toContain("grantig");
+    expect(wer, "…und den Auftrag").toMatch(/wisch/);
     const wie = Object.values(arenaLines("wie" as ArenaBeat)).join(" ").toLowerCase();
-    expect(wie, "der zweite Takt muss das Ausweichen nennen").toContain("ausweichen");
+    expect(wie, "der zweite Takt muss das Ausweichen nennen").toMatch(/weich .* aus|ausweichen/);
     expect(wie, "…und das Antworten").toMatch(/antworte/);
-    expect(wie, "…und was es einbringt").toContain("knoten");
+    expect(wie, "…und das Hingehen").toMatch(/geh hin/);
+    expect(wie, "…und das Wischen einer Schicht").toMatch(/wisch/);
+    expect(wie, "…und dass es je eine Schicht ist").toContain("schicht");
   });
 });
 

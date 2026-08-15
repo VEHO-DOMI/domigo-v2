@@ -135,6 +135,12 @@ export type SimEvent =
   | { type: "powerup"; grants: string }
   | { type: "cageFreed"; id: string; skin: string; classmate: string | undefined; count: number }
   | { type: "guardianDown"; id: string; skin: string }
+  /** R5-W4 · H2 (R50): eine Kritzel-Schicht ist gerade weggewischt worden.
+   *  `layersLeft` ist der Zählerstand DANACH — 0 heisst sauber. Der Zustand
+   *  `wipe` allein trägt den Takt nicht: die Szene braucht den EINEN Augenblick,
+   *  in dem die Schicht verschwindet, für ihren Staub und ihre Blüte, und ein
+   *  Augenblick ist ein Ereignis, kein Zustand, den man pro Bild abfragt. */
+  | { type: "guardianWipe"; id: string; layersLeft: number }
   /** PB-F3 · F2-8: the child is standing next to a cage the fist can open */
   /** R5-C1: the hint card names what it is standing in front of, so the cage's
    *  id rides along — one teaching card that says „jemand" over a sound system
@@ -683,33 +689,19 @@ export class Sim {
       // does NOT show it, and here the world does. („Die Tür wartet auf ihr
       // Wort!" stays, at :1095 — that one covers something invisible.)
     } else if (ctx.type === "guardian") {
-      const out = guardianKnotSolved(this.world, ctx.id);
-      for (const ev of out) {
-        if (ev.type === "guardianDown") {
-          this.guardianDefeated = true;
-          const g = this.world.entities.find((x) => x.id === ev.id);
-          // ── R5-W2 · H1 · DIE LANDUNG WIRD GESEHEN ────────────────────────
-          // Der Sieg-Bogen spielte bisher in einem leeren Raum. `guardianDown`
-          // setzte KEINE Haltezeit (anders als der berstende Käfig, der seine
-          // seit jeher hat), und die Karte, die den Beat beschreibt, geht
-          // sofort auf — eine offene Karte hält aber die ganze Welt an. Also
-          // sank sie erst, NACHDEM Finale- und Konsolen-Karte wieder zu waren:
-          // das Kind las „…und sie blüht sonnengelb auf", während sie noch in
-          // der Luft hing, und die Karte deklariert dabei `tafel_rest`.
-          //
-          // Die Haltezeit wird aus IHRER Lage gerechnet, nicht getippt — genau
-          // das Muster, das der Käfig schon benutzt. Fällt sie tiefer, dauert
-          // es länger; das ist keine Zahl, die veralten kann.
-          if (g) {
-            const floorY = groundSurfaceAt(this.grid, g.x / SUBS, Math.max(Math.floor(g.y / SUBS / TILE) - 1, 0), 24);
-            const fall = floorY === null ? 0 : Math.max(0, (floorY.yPx * SUBS - g.y) / SINK_SPEED);
-            this.holdTicks = Math.ceil(fall) + SAD_TICKS + LANDING_SETTLE_TICKS;
-          }
-          events.push({ type: "guardianDown", id: ev.id, skin: g?.skin ?? "" });
-        } else if (ev.type === "guardianKnot") {
-          events.push({ type: "toast", msg: `Noch ${ev.knotsLeft} Knoten!` });
-        }
-      }
+      // ── R5-W4 · H2 · DIE ANTWORT IST DER HALBE WEG (Ruling R50) ───────────
+      // Hier stand der ganze Sieg-Bogen: `hp` fiel, und im selben Zug wurde
+      // gerechnet, getoastet und gewonnen. Seit R50 endet eine gelöste Karte
+      // damit, dass die Tafel sich auf die Bretter setzt — mehr nicht. Was aus
+      // der Schicht wird, entscheidet das Kind mit seinen Füssen, und der Rest
+      // dieses Bogens ist deshalb dorthin gewandert, wo das WISCHEN gemeldet
+      // wird (`onEntityEvent`, `guardianKnot`/`guardianDown`).
+      //
+      // Der Nebeneffekt ist ein besserer Bau als vorher: der Sieg hängt jetzt
+      // an einem Ereignis der Welt statt an einem Rückgabewert einer
+      // Karten-Antwort — dieselbe Zeile fängt ihn, egal wodurch er ausgelöst
+      // wurde.
+      guardianKnotSolved(this.world, ctx.id);
     }
     // `console` and `ceremony` carry no world change — the beat IS the payoff,
     // and answering it simply gives the world back.
@@ -910,7 +902,10 @@ export class Sim {
         // P4-Platzhalter markiert; R5-W2 · H1 loest sie ein — sie sagt jetzt die
         // REIHENFOLGE, die der Raum erzaehlt (Sieg → Foto → Tor), statt eine
         // Anweisung, die klingt, als koenne man etwas falsch machen.
-        if (this.gateToastCooldown === 0) { events.push({ type: "toast", msg: "Erst die Tafel — dann der Käfig." }); this.gateToastCooldown = 120; }
+        // R5-W4 · H2 (R50): dieselbe Reihenfolge, aber sie nennt jetzt die
+        // Handlung, die den ersten Schritt abschliesst — Koki wollte die Copy
+        // „viel direkter".
+        if (this.gateToastCooldown === 0) { events.push({ type: "toast", msg: "Erst die Tafel sauber — dann der Käfig." }); this.gateToastCooldown = 120; }
         break;
       }
       case "cageBurst": {
@@ -1002,6 +997,47 @@ export class Sim {
         const g = this.world.entities.find((x) => x.id === ev.id);
         if (g) g.state = "window";
         this.ask({ use: "boss", ctx: { type: "guardian", id: ev.id, skin: g?.skin ?? "" } }, events);
+        break;
+      }
+      // ── R5-W4 · H2 · DAS WISCHEN MELDET SICH (Ruling R50) ──────────────────
+      // Die beiden Ereignisse kamen bis hierher aus dem Rückgabewert von
+      // `solveTask` und wurden dort auch beantwortet. Seit dem Wischen entstehen
+      // sie mitten in einem gewöhnlichen Welt-Takt, also müssen sie durch diesen
+      // Trichter — und ohne einen Fall hier würde der `default`-Zweig sie
+      // schlucken, still, mitsamt dem Sieg.
+      case "guardianKnot": {
+        // Plural von Hand, weil „Noch 1 Kritzel-Schichten!" ein Kind über
+        // dieselbe Zeile stolpern lässt, die es gerade gelesen hat.
+        const n = ev.knotsLeft;
+        events.push({ type: "toast", msg: `Noch ${n} Kritzel-Schicht${n === 1 ? "" : "en"}!` });
+        events.push({ type: "guardianWipe", id: ev.id, layersLeft: n });
+        break;
+      }
+      case "guardianDown": {
+        this.guardianDefeated = true;
+        const g = this.world.entities.find((x) => x.id === ev.id);
+        // ── R5-W2 · H1 · DIE LANDUNG WIRD GESEHEN ──────────────────────────
+        // Der Sieg-Bogen spielte bisher in einem leeren Raum. `guardianDown`
+        // setzte KEINE Haltezeit (anders als der berstende Käfig, der seine
+        // seit jeher hat), und die Karte, die den Beat beschreibt, geht sofort
+        // auf — eine offene Karte hält aber die ganze Welt an. Also sank sie
+        // erst, NACHDEM Finale- und Konsolen-Karte wieder zu waren: das Kind
+        // las „…und sie blüht sonnengelb auf", während sie noch in der Luft
+        // hing, und die Karte deklariert dabei `tafel_rest`.
+        //
+        // Die Haltezeit wird aus IHRER Lage gerechnet, nicht getippt — genau
+        // das Muster, das der Käfig schon benutzt. Fällt sie tiefer, dauert es
+        // länger; das ist keine Zahl, die veralten kann. Seit R5-W4 steht sie
+        // beim letzten Wischen schon auf den Brettern, der Fall ist also fast
+        // null und die Haltezeit fast nur noch ihre Ruhe — dieselbe Formel,
+        // ohne eine einzige Anpassung, weil sie IHRE LAGE liest.
+        if (g) {
+          const floorY = groundSurfaceAt(this.grid, g.x / SUBS, Math.max(Math.floor(g.y / SUBS / TILE) - 1, 0), 24);
+          const fall = floorY === null ? 0 : Math.max(0, (floorY.yPx * SUBS - g.y) / SINK_SPEED);
+          this.holdTicks = Math.ceil(fall) + SAD_TICKS + LANDING_SETTLE_TICKS;
+        }
+        events.push({ type: "guardianWipe", id: ev.id, layersLeft: 0 });
+        events.push({ type: "guardianDown", id: ev.id, skin: g?.skin ?? "" });
         break;
       }
       case "shooed":
@@ -1162,7 +1198,10 @@ export class Sim {
         return;
       }
       if (this.phase.entities.some((e) => e.role === "guardian") && !this.guardianDefeated) {
-        if (this.gateToastCooldown === 0) { events.push({ type: "toast", msg: "Die Tafel möchte noch reden!" }); this.gateToastCooldown = 120; }
+        // R5-W4 · H2 (R50): der Grund, warum das Tor zu ist, steht jetzt in der
+        // Zeile selbst. „Sie möchte noch reden" war unter der alten Lore wahr
+        // und ist unter der neuen eine Ausrede — das Kind sieht die Kritzelei.
+        if (this.gateToastCooldown === 0) { events.push({ type: "toast", msg: "Die Tafel ist noch voller Kritzel!" }); this.gateToastCooldown = 120; }
         return;
       }
       // ── R5-W2 · H1 · DER AUSGANG WARTET AUFS KLASSENFOTO (Koki, 14.08.2026)

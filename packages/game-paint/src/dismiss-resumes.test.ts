@@ -36,9 +36,11 @@ import {
   DODGES_PER_WINDOW,
   ENGAGEABLE_ROLES,
   GUARDIAN_SCRIPT,
+  WIPE_TICKS,
   guardianKnotSolved,
   spawnEntities,
   stepEntities,
+  wipeWaitTicksFor,
   type EntityState,
   type EntityWorld,
   type WorldInput,
@@ -114,6 +116,36 @@ const openWindow = (sim: Sim, ticks = 600): TaskRequest["ctx"] | null => {
   return null;
 };
 
+/**
+ * R5-W4 · H2 (Ruling R50) · DAS KIND GEHT HIN — und zwar mit den FÜSSEN.
+ *
+ * Seit R50 macht eine beantwortete Karte die Tafel nicht mehr sauber: sie setzt
+ * sich auf die Bretter, und erst die Berührung nimmt eine Kritzel-Schicht weg.
+ * Jeder Bogen, der hier vorher mit `solveTask` endete, braucht deshalb diesen
+ * zweiten Schritt.
+ *
+ * Gedrückt wird eine echte Richtungstaste, nicht eine gesetzte Position: der
+ * Weg ist die halbe Mechanik, und ein Helfer, der das Kind neben sie BEAMT,
+ * würde genau die Frage überspringen, die dieser Umbau stellt („kommt ein Kind
+ * überhaupt rechtzeitig an?"). Gibt zurück, ob eine Schicht wirklich fiel.
+ */
+const walkAndWipe = (sim: Sim, ticks = 900): boolean => {
+  for (let t = 0; t < ticks; t++) {
+    const g = guardian(sim);
+    if (g.state !== "settle" && g.state !== "wipeable" && g.state !== "wipe") {
+      // sie wartet nicht (mehr) — entweder ist die Schicht schon weg oder die
+      // Wartezeit ist abgelaufen. Beides ist eine Antwort, kein Hängen.
+      if (t > 0) return g.state !== "untie" || g.hp < GUARDIAN_SCRIPT.E.knots;
+    }
+    const toRight = g.x > sim.player.x;
+    for (const ev of sim.step({ ...IDLE_PAD, left: !toRight, right: toRight })) {
+      if (ev.type === "guardianDown") return true;
+      if (ev.type === "toast" && /Kritzel-Schicht/.test(ev.msg)) return true;
+    }
+  }
+  return false;
+};
+
 describe("R5-W2 · H1 · »Später« auf der Boss-Karte gibt die Welt zurück", () => {
   it("ein Gegenfenster geht überhaupt auf (die Vorbedingung des Gesetzes)", () => {
     const sim = make();
@@ -161,9 +193,10 @@ describe("R5-W2 · H1 · »Später« auf der Boss-Karte gibt die Welt zurück", 
 
       const again = openWindow(sim);
       expect(again, `Knoten ${knot + 1}: Fenster nach dem Weglegen`).not.toBeNull();
-      sim.solveTask(again!); // … dann doch lösen
+      sim.solveTask(again!); // … dann doch lösen …
+      expect(walkAndWipe(sim), `Knoten ${knot + 1}: hingehen und wischen`).toBe(true); // … und wischen
     }
-    expect(sim.guardianDefeated, "drei gelöste Fenster besiegen sie, auch mit »Später« dazwischen").toBe(true);
+    expect(sim.guardianDefeated, "drei gewischte Schichten besiegen sie, auch mit »Später« dazwischen").toBe(true);
   });
 
   it("das Weglegen sagt dem Kind, was geschieht (ein stiller Boss liest sich als Absturz)", () => {
@@ -394,6 +427,17 @@ const observedPairs = (): Map<string, { hp: number; redeemed: boolean }> => {
       }
       guardianKnotSolved(w, "g");
       note(w);
+      // R5-W4 · H2 (R50): die Antwort setzt sie nur noch auf die Bretter. Das
+      // Kind geht hin — sonst fällt keine Schicht, sie steigt wieder auf, und
+      // die Endzustände dieser Maschine (`sink`/`sad`/`consoled`) blieben der
+      // Sammlung für immer verborgen. Genau die Blindheit, gegen die dieser
+      // Sammler geschrieben wurde.
+      for (let t = 0; t < 1200; t++) {
+        const g = w.entities[0]!;
+        if (g.state !== "settle" && g.state !== "wipeable" && g.state !== "wipe") break;
+        stepEntities(w, GRID, idleInput({ playerX: g.x, playerY: g.y }));
+        note(w);
+      }
     }
     for (let t = 0; t < 400; t++) { stepEntities(w, GRID, idleInput()); note(w); }
   }
@@ -421,6 +465,15 @@ const observedPairs = (): Map<string, { hp: number; redeemed: boolean }> => {
     note(sim.world);
     sim.solveTask(ctx!);
     note(sim.world);
+    // …und hin zu ihr, mit echten Tasten (R5-W4 · H2)
+    for (let t = 0; t < 1200; t++) {
+      const g = guardian(sim);
+      if (g.state !== "settle" && g.state !== "wipeable" && g.state !== "wipe") break;
+      const toRight = g.x > sim.player.x;
+      sim.step({ ...IDLE_PAD, left: !toRight, right: toRight });
+      note(sim.world);
+    }
+    note(sim.world);
   }
   for (let t = 0; t < 400; t++) { sim.step(IDLE_PAD); note(sim.world); }
 
@@ -434,11 +487,24 @@ const observedPairs = (): Map<string, { hp: number; redeemed: boolean }> => {
  *  Counting it would have made this whole law vacuous — every state would have
  *  „moved" and nothing could ever have gone red. Caught by the `window` probe
  *  below, which is exactly why that probe exists. */
+/** Wie lange die Probe hinschaut — HERGELEITET, nicht getippt (R5-W4 · H2).
+ *
+ *  240 Ticks reichten, solange der langsamste selbstfahrende Zustand ein
+ *  `stagger` von 90 Ticks war. `wipeable` wartet auf das KIND, und die Wartezeit
+ *  ist die Zeit, die ein gehendes Kind für die Bühne braucht — in diesem
+ *  Prüfraum über 500 Ticks. Mit dem alten Horizont hätte diese Probe einen
+ *  Zustand als »gestrandet« gemeldet, der sich sehr wohl selbst weiterdreht:
+ *  ein Wächter, der zu kurz hinsieht, erfindet Fehler, und ein Wächter, der
+ *  Fehler erfindet, wird übergangen. Die Zahl kommt deshalb aus derselben
+ *  Funktion wie die Wartezeit — verlängert jemand das Warten, wächst die Probe
+ *  mit. */
+const IDLE_PROBE_TICKS = wipeWaitTicksFor({ params: {} }, GRID) + WIPE_TICKS + 2;
+
 const idleFrom = (
   role: EntityRole,
   state: string,
   as: { hp?: number; redeemed?: boolean } = {},
-  ticks = 240,
+  ticks = IDLE_PROBE_TICKS,
 ): { moved: boolean; changed: boolean; entity: EntityState } => {
   const w = spawnEntities(
     [{ id: "x", role, skin: role === "guardian" ? "tafel" : "pencil", c: 20, r: 10, tier: "E", params: {} }],
@@ -540,11 +606,69 @@ describe("R5-W2 · H1 · ein Kind, das stehen bleibt, kann den Kampf gewinnen", 
     return { defeated: sim.guardianDefeated, ticks: t, windows, hits };
   };
 
-  it("die drei Knoten gehen auf, ohne dass das Kind je eine Richtung drückt", () => {
-    const r = playStandingStill();
+  /** Dasselbe Kind, aber es GEHT — und mehr kann es nicht: keine Sprungtaste,
+   *  kein Rennen, nur ←/→, und die nur dann, wenn die Tafel auf den Brettern
+   *  auf es wartet. Das ist die Fähigkeit, die dieses Kapitel auf dem allerersten
+   *  Bildschirm lehrt. */
+  const playWalkingOnly = (): { defeated: boolean; ticks: number; windows: number; wipes: number } => {
+    const level = shipped();
+    const sim = new Sim({
+      level, phaseId: "p4",
+      grantedAbilities: () => [...level.abilities],
+      freedCageIds: () => [],
+    });
+    let windows = 0;
+    let wipes = 0;
+    let t = 0;
+    for (; t < 20000 && !sim.guardianDefeated; t++) {
+      const g = sim.world.entities.find((e) => e.role === "guardian")!;
+      const waiting = g.state === "wipeable" || g.state === "settle";
+      const toRight = g.x > sim.player.x;
+      const pad = waiting ? { ...IDLE_PAD, left: !toRight, right: toRight } : IDLE_PAD;
+      for (const ev of sim.step(pad)) {
+        if (ev.type === "toast" && /Kritzel-Schicht/.test(ev.msg)) wipes++;
+        if (ev.type !== "task") continue;
+        if (ev.req.ctx.type === "guardian") { sim.solveTask(ev.req.ctx); windows++; } else { sim.dismissTask(ev.req.ctx); }
+        sim.setOverlay(false);
+      }
+    }
+    return { defeated: sim.guardianDefeated, ticks: t, windows, wipes };
+  };
+
+  it("ein Kind, das GEHT, gewinnt — die Fähigkeit, die der erste Bildschirm lehrt", () => {
+    // ── R5-W4 · H2 · WAS SICH AN DIESEM GESETZ GEÄNDERT HAT (Ruling R50) ────
+    // H1 hat hier einen gemessenen Defekt geschlossen: ein stehendes Kind konnte
+    // Kapitel 1 nicht gewinnen (53 Würfe, 53 Treffer, 0 Fenster). Das Gesetz
+    // hiess deshalb „ohne je eine Richtung zu drücken".
+    //
+    // Koki hat die Mechanik am 15.08. verändert: „wenn sie unten ist und man zu
+    // ihr geht, wird gelöscht." Damit ist HINGEHEN Teil der Aufgabe, und ein
+    // Kind, das die Tastatur gar nicht anfasst, gewinnt nicht mehr — nicht durch
+    // einen Defekt, sondern durch eine Entscheidung.
+    //
+    // Der Boden, den dieses Gesetz schützt, wandert deshalb mit: er liegt jetzt
+    // bei GEHEN. Kein Sprung, kein Rennen, kein Timing — nur ←/→, die erste und
+    // einzige Fähigkeit, die die Arena voraussetzt (arena.md §1: „kein run als
+    // Pflicht"). Genau danach ist auch die Wartezeit bemessen (wipeWaitTicksFor
+    // rechnet mit walkMax, nicht mit runMax).
+    const r = playWalkingOnly();
     expect(r.defeated, "die Tafel wird nie besiegt — der Kampf ist eine Sackgasse").toBe(true);
-    expect(r.windows, "jeder Knoten braucht sein eigenes beantwortetes Fenster")
+    expect(r.windows, "jede Schicht braucht ihr eigenes beantwortetes Fenster")
       .toBe(GUARDIAN_SCRIPT.E.knots);
+    expect(r.wipes, "…und jede beantwortete Karte braucht ihr Wischen")
+      .toBe(GUARDIAN_SCRIPT.E.knots - 1); // die letzte meldet sich als Sieg, nicht als Toast
+  });
+
+  it("ein Kind, das stehen bleibt, steckt trotzdem NIE fest", () => {
+    // Die zweite Hälfte des alten Gesetzes, und sie gilt unverändert: der Preis
+    // fürs Nicht-Hingehen ist, dass die Schicht stehen bleibt — nie, dass die
+    // Welt stehen bleibt. Sie hebt wieder ab, das nächste Fenster kommt, und das
+    // Kind kann sich jederzeit umentscheiden. Ein Zustand ohne Rückweg wäre
+    // genau der Softlock, den H1 hier ausgegraben hat.
+    const r = playStandingStill();
+    expect(r.defeated, "ohne Hingehen fällt keine Schicht").toBe(false);
+    expect(r.windows, "aber die Fenster kommen weiter — der Kampf lebt")
+      .toBeGreaterThan(GUARDIAN_SCRIPT.E.knots);
   });
 
   it("und Ausweichen bleibt trotzdem die bessere Antwort", () => {
@@ -596,10 +720,17 @@ describe("R5-W2 · H1 · die Landung wird gesehen, und der Ausgang wartet aufs F
     const sim = arena();
     let won = false;
     for (let t = 0; t < 20000 && !won; t++) {
-      for (const ev of sim.step(IDLE_PAD)) {
+      // R5-W4 · H2 (R50): der Sieg beginnt nicht mehr am Kartenrand, sondern an
+      // der Tafel. Das Kind geht hin, sobald sie wartet — mit echten Tasten,
+      // denn der Weg IST seit dieser Welle die halbe Mechanik.
+      const g0 = sim.world.entities.find((e) => e.role === "guardian")!;
+      const waiting = g0.state === "wipeable" || g0.state === "settle";
+      const toRight = g0.x > sim.player.x;
+      const pad = waiting ? { ...IDLE_PAD, left: !toRight, right: toRight } : IDLE_PAD;
+      for (const ev of sim.step(pad)) {
+        if (ev.type === "guardianDown") { won = true; break; } // die Karte BLEIBT offen
         if (ev.type !== "task") continue;
         if (ev.req.ctx.type === "guardian") sim.solveTask(ev.req.ctx); else sim.dismissTask(ev.req.ctx);
-        if (sim.guardianDefeated) { won = true; break; } // die Karte BLEIBT offen
         sim.setOverlay(false);
       }
     }

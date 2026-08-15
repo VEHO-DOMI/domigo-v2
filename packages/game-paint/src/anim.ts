@@ -954,7 +954,21 @@ export const entPoseCell = (e: EntPoseInput): string => {
     // victory cell — she RESTS, exhausted, on the boards she just fell onto.
     if (e.state === "sad") return "rest";
     // she is still coming down: the sinking wobble
-    if (e.state === "sink" || e.state === "dip") return LAND_CELLS[bobFrame(e.timer, 2)] ?? "land0";
+    if (e.state === "sink" || e.state === "dip" || e.state === "settle") return LAND_CELLS[bobFrame(e.timer, 2)] ?? "land0";
+    // ── R5-W4 · H2 · DIE ZWEI ZUSTÄNDE DES WISCHENS (Ruling R50) ────────────
+    // Sie sitzt auf den Brettern und wartet darauf, dass das Kind kommt. Das
+    // ist dieselbe gesetzte Lande-Zelle, in der sie auch ihre Karte hält —
+    // richtig so: was sich in diesem Augenblick bewegen soll, ist der Wischer,
+    // nicht sie. Ohne diese beiden Zeilen fiele jeder der Zustände auf den
+    // Auffangzweig ganz unten und die gelandete Tafel würde SCHWEBEN, mitten
+    // auf den Brettern, mit dem Kind daneben.
+    //
+    // `wipe` bekommt den Zweier-Bob: das Rütteln, das ein Wischtuch macht.
+    // Beide Zustände sind ausdrücklich KEINE Endzustände — der Bob ist die
+    // billigste Art, das auch zu zeigen, bis Codex AQ13 die eigenen
+    // `tafel_wipe`-Zwischenbilder liefert.
+    if (e.state === "wipeable") return "land1";
+    if (e.state === "wipe") return LAND_CELLS[bobFrame(e.timer, 2)] ?? "land0";
     // PB-F1/F2-25: `window` IS the counter-task moment — the card asks the child
     // to LOOK at her, so she may not swap to a different drawing of herself
     // while it is up, and she may not keep wobbling either: the four chalked
