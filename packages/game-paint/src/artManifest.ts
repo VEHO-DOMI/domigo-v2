@@ -77,7 +77,9 @@ export const HERO2_STEMS = [
   "hero2_run0", "hero2_run1", "hero2_run2", "hero2_run3",
   "hero2_jump", "hero2_apex", "hero2_fall", "hero2_land",
   "hero2_idle", "hero2_hit", "hero2_cheer",
-  "hero2_teeter0", "hero2_teeter1",
+  // R5-W4 · F5 · R46: `hero2_teeter0/1` sind raus (Zellen gelöscht) — ein
+  // Pflicht-Stem ohne Blatt liesse `check-paint-art` eine Datei fordern, die es
+  // nicht mehr gibt.
 ];
 
 /** The hero rig (rigSpec contract, 19 stems). */

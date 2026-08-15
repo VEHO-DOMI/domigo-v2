@@ -14,7 +14,7 @@
  * guardian machine here.
  */
 import { PAINT, SUBS, TILE } from "./paint.ts";
-import { glyphAt, groundSurfaceAt, isSolid, walkSurfaceAhead } from "./collide.ts";
+import { glyphAt, groundSurfaceAt, isHazard, isSolid, walkSurfaceAhead } from "./collide.ts";
 import { flightUnitAt, knotIndex, pathForKnot } from "./flight.ts";
 import type { EntitySpec, LinkSpec } from "./level.ts";
 
@@ -288,8 +288,145 @@ export const JOY_ROLES = new Set(["chaser", "gunner", "flyer", "bouncer", "crush
 const joyRadiusPx = (role: string): { rx: number; ry: number; lift: number } =>
   role === "flyer" || role === "swarm" ? { rx: 26, ry: 12, lift: 10 } : { rx: 11, ry: 5, lift: 4 };
 
-/** The post-redeem step: a lap of joy, then home to stay. */
-const stepRedeemed = (e: EntityState): void => {
+// ── R5-W4 · F5 · DER KRITZEL-ANFALL (Kokis Replay 15.08.) ────────────────────
+// „Der Bleistift könnte crazier animiert sein, nicht nur links-rechts laufen —
+// dann macht ‚Listen!' Sinn, statt dass er nur wie die anderen verloren wirkt."
+//
+// Das ist kein Animationswunsch, es ist das Spine-Gesetz: die Karte behauptet
+// „Der Bleistift kritzelt wild über das Papier." und lässt das Kind darauf
+// antworten „Listen!". Die Welt zeigt dazu einen Läufer, der brav patrouilliert.
+// Der Text behauptet mehr als das Bild — und der Befehl ZUHÖREN ergibt nur
+// gegen etwas Sinn, das gerade NICHT zuhört.
+//
+// Der Anfall ist deshalb ein SIM-Zustand, kein Render-Trick: was das Kind
+// beantwortet, muss in der Simulation passiert sein, sonst behauptet die
+// nächste Karte wieder etwas, das nur der Zeichner weiss.
+//
+// Drei Bedingungen, die den Entwurf festlegen:
+//  · NETTO NULL. Der Körper kehrt am Ende des Anfalls exakt auf den Punkt
+//    zurück, an dem er ihn begonnen hat. Sonst wandert ein Läufer über die
+//    Laufzeit aus seinem autorisierten Band (`patrolMinC/MaxC` — das Band, mit
+//    dem ein Lehr-Screen seine Null-Gefahr-Zone garantiert), und die
+//    Beweisbänder eines Kapitels wären nicht mehr wiederholbar.
+//  · GERADE ANZAHL RICHTUNGSWECHSEL, damit auch die Blickrichtung zurückkommt.
+//  · KEIN NEUES FELD an EntityState und KEIN neues Level-Datum: der Takt kommt
+//    aus dem, was schon da ist (dem eigenen Namen und der eigenen Uhr).
+/** Wie lange ein Anfall dauert — Vielfaches von FRENZY_FLIP_TICKS, damit
+ *  Ausschlag UND Blickrichtung am Ende wieder auf null stehen. */
+export const FRENZY_FLIP_TICKS = 7;
+export const FRENZY_TICKS = FRENZY_FLIP_TICKS * 6; // 42 Ticks ≈ 0,7 s
+/** Ausfallschritt um den Ankerpunkt, in logischen px. Klein: er kritzelt, er
+ *  greift nicht an — der Angriff ist `telegraph`/`act` und bleibt unberührt. */
+export const FRENZY_REACH_PX = 3;
+/** Wie lange er zwischen zwei Anfällen patrouilliert (Spanne; der eigene Name
+ *  wählt daraus, damit zwei Läufer im selben Raum nicht im Gleichtakt zucken). */
+export const FRENZY_EVERY_MIN = 150;
+export const FRENZY_EVERY_SPAN = 70;
+
+/** Der Abstand zwischen zwei Anfällen für DIESES Wesen. Rein und aus dem Namen
+ *  — dieselbe Streuung, die das Käfig-Rütteln benutzt. */
+export const frenzyEveryFor = (id: string): number =>
+  FRENZY_EVERY_MIN + (id.length * 37 + id.charCodeAt(0) * 7 + id.charCodeAt(id.length - 1)) % FRENZY_EVERY_SPAN;
+
+/** Der Ausschlag des Kritzelns bei Anfall-Tick `t`, in SUBS und ganzzahlig.
+ *
+ *  Ganzzahlig und über DIFFERENZEN angewandt (siehe unten): so summiert sich
+ *  die Bewegung über einen Anfall exakt zu null, statt „ungefähr" zu null —
+ *  eine Rundung pro Tick wäre über 42 Ticks ein Drift, und ein Drift wäre
+ *  genau der Band-Bruch, den diese Kurve vermeiden soll. */
+export const frenzyOffsetSubs = (t: number): number =>
+  Math.round(Math.sin((t / FRENZY_FLIP_TICKS) * Math.PI * 2) * FRENZY_REACH_PX * SUBS);
+
+/** Wie oft die Blickrichtung bis Anfall-Tick `t` gekippt ist. Gerade Zahl am
+ *  Ende = die Blickrichtung ist wieder die, mit der er hereinkam — deshalb
+ *  braucht der Anfall kein gespeichertes „Wie stand er vorher". */
+export const frenzyFlipsBy = (t: number): number => Math.floor(t / FRENZY_FLIP_TICKS);
+
+// ── R5-W4 · F5 · MERLE GEHT HERUM (F-26, R49) ────────────────────────────────
+// „Merle soll, wenn sie draußen ist, nicht nur dastehen, sondern sich durchs
+// Level bewegen — hin und her gehen, hüpfen — ein freigesetzter Charakter."
+//
+// Der Kanon dazu ist mit R49 geändert: Befreite bleiben in ihrem RAUM, bewegen
+// sich aber. Das „in ihrem Raum" ist die ganze Schwierigkeit — ein befreites
+// Kind, das in die Tinte läuft oder von der Kante fällt, wäre kein Geschenk,
+// sondern ein Bug mit Gesicht.
+//
+// Die Zone kommt deshalb AUS DEM GITTER und nicht aus einer getippten Zahl:
+// links und rechts von ihrer Zelle so weit, wie der Boden AUF IHRER HÖHE weiter
+// trägt. Drei Bedingungen, jede mit einem Grund:
+//  · GLEICHE HÖHE, exakt. Nicht „höchstens eine Kachel Gefälle" wie beim
+//    Läufer: die Sonde ist hier auch die Zusage, dass ihre Füsse die ganze Zeit
+//    auf derselben Linie stehen — dann braucht das Gehen keine Bodenprüfung pro
+//    Tick und kann nie in einer Rundung versinken.
+//  · KEINE GEFAHR im Feld, in dem sie steht, und keine unter ihren Füssen.
+//  · GEDECKELT bei ROAM_MAX_CELLS, damit eine lange Halle sie nicht durchs
+//    halbe Level schickt — „ihr Raum" ist eine Aussage über Nähe, nicht über
+//    Begehbarkeit.
+//
+// Gemessen im ausgelieferten p2: Merle steht auf c65/r13, ihr Boden ist die
+// Vierer-Kachel c63…c66 in Reihe 14, links und rechts Luft mit tiefem Fall.
+// Ihre Zone ist also VIER Kacheln breit. Das ist wenig — und es ist die
+// Wahrheit des Levels, nicht eine Zahl, die ich mir ausdenke. Die Bitte um ein
+// echtes `roamMinC/MaxC`-Feld steht im Report an den Architekten.
+/** Wie weit ihr Raum höchstens reicht, in Kacheln je Seite. */
+export const ROAM_MAX_CELLS = 6;
+/** Ihr Gehtempo — halb so schnell wie ein Läufer: sie flieht nicht, sie geht. */
+export const ROAM_SPEED = Math.round(0.3 * SUBS);
+/** Wie lange sie steht, bevor sie losgeht, und wie lange ein Gang dauert. */
+export const ROAM_REST_TICKS = 240;
+export const ROAM_TICKS = 300;
+/** Der Hüpfer ist ein BEAT IM GEHEN, kein eigener Zustand: ein eigener Zustand
+ *  würde `timer` zurücksetzen und damit die Uhr des Gangs jedes Mal neu starten
+ *  — sie käme nie ans Ende und nie zum Winken. */
+export const HOP_EVERY_TICKS = 96;
+export const HOP_TICKS = 24;
+export const HOP_RISE_PX = 6;
+
+/** Steht sie in diesem Tick des Gangs gerade im Sprung? */
+export const roamHopT = (timer: number): number => {
+  const u = ((timer % HOP_EVERY_TICKS) + HOP_EVERY_TICKS) % HOP_EVERY_TICKS;
+  return u < HOP_TICKS ? Math.sin((u / HOP_TICKS) * Math.PI) : 0;
+};
+
+/** Ihr Raum, in SUBS — aus dem Gitter, nie aus `params`.
+ *
+ *  `xSubs`/`ySubs` sind ihre Füsse (die Wesen-Konvention). Zurück kommt immer
+ *  ein gültiges Fenster: im schlimmsten Fall ihr eigener Standpunkt, und dann
+ *  steht sie eben — besser als ein Schritt ins Nichts. */
+export const roamZone = (
+  grid: readonly string[],
+  xSubs: number,
+  ySubs: number,
+): { minX: number; maxX: number } => {
+  const feetPx = ySubs / SUBS;
+  const step = TILE * SUBS;
+  const tragfähig = (probeSubs: number): boolean => {
+    const s = walkSurfaceAhead(grid, probeSubs / SUBS, feetPx, { maxDropTiles: 0 });
+    if (s === null || s.yPx !== feetPx) return false; // exakt dieselbe Standlinie
+    if (isHazard(s.glyph)) return false; // keine Tinte unter den Füssen
+    const c = Math.floor(probeSubs / SUBS / TILE);
+    const r = Math.floor((feetPx - 1) / TILE);
+    return !isHazard(glyphAt(grid, c, r)); // und keine im Feld, in dem sie steht
+  };
+  let minX = xSubs;
+  let maxX = xSubs;
+  for (let i = 1; i <= ROAM_MAX_CELLS; i++) {
+    if (!tragfähig(xSubs - i * step)) break;
+    minX = xSubs - i * step;
+  }
+  for (let i = 1; i <= ROAM_MAX_CELLS; i++) {
+    if (!tragfähig(xSubs + i * step)) break;
+    maxX = xSubs + i * step;
+  }
+  return { minX, maxX };
+};
+
+/** The post-redeem step: a lap of joy, then home to stay.
+ *
+ *  R5-W4 · F5: …und seit R49 geht sie danach herum, weshalb dieser Schritt das
+ *  GITTER braucht. Es ist optional (Vorgabe: leer ⇒ keine Zone ⇒ sie steht wie
+ *  bisher), damit kein bestehender Aufrufer und kein Test bricht. */
+const stepRedeemed = (e: EntityState, grid: readonly string[] = []): void => {
   // R3-15: the timer runs for EVERY redeemed being, not only the ones that fly a
   // lap — a knotted school bag gets its afterlife exactly like a moth does even
   // though it stays put. Before this the timer froze at redemption and a cage
@@ -307,7 +444,33 @@ const stepRedeemed = (e: EntityState): void => {
   if (e.role === "classmate") {
     if (e.state === "settle" && e.timer > SETTLE_TICKS) { e.state = "joy"; e.timer = 0; }
     else if (e.state === "joy" && e.timer > JOY_TICKS) { e.state = "rest"; e.timer = 0; }
-    else if (e.state === "rest" && e.timer > WAVE_EVERY_TICKS) { e.state = "wave"; e.timer = 0; }
+    // R5-W4 · F5 · R49 · IHR KREIS: stehen → gehen → winken → stehen.
+    //
+    // Der Gang steht VOR dem Winken und führt IN das Winken hinein, statt beide
+    // aus dem Stehen zu ziehen. Der Grund ist mechanisch: aus `rest` heraus
+    // gewinnt immer die kleinere Zahl, und ein Gang, der früher fällig ist als
+    // das Winken (240 gegen 420), hätte das Winken für immer verschluckt —
+    // R49 ändert den Kanon, es streicht ihn nicht. Sie geht ein Stück, dreht
+    // sich zum Kind und winkt: das ist ausserdem die bessere Geste.
+    else if (e.state === "rest" && e.timer > ROAM_REST_TICKS) { e.state = "roam"; e.timer = 0; }
+    else if (e.state === "roam") {
+      // Der Anker ist ihr HEIMATPUNKT — der Fleck, an dem sie aus dem Käfig
+      // getreten ist — und nicht der, an dem der letzte Gang zufällig endete.
+      //
+      // Beim Schreiben des 3000-Tick-Tests genau daran gescheitert: mit einem
+      // Anker, der sich bei jedem Gang neu setzt, wandert die Zone mit ihr mit,
+      // und „sie bleibt in ihrem Raum" gilt pro Gang statt fürs Kapitel. Der
+      // Test hat sie 47 Subs ausserhalb erwischt. R49 meint den Raum, nicht den
+      // Schritt.
+      const { minX, maxX } = roamZone(grid, e.homeX, e.homeY);
+      e.x = Math.min(maxX, Math.max(minX, e.x + ROAM_SPEED * e.dir));
+      if (e.x <= minX && e.dir < 0) e.dir = 1;
+      else if (e.x >= maxX && e.dir > 0) e.dir = -1;
+      // der Hüpfer ist ein Beat IM Gang (siehe roamHopT): er hebt sie kurz an
+      // und setzt sie exakt wieder ab, weil ihre Standlinie `homeY` ist
+      e.y = e.homeY - Math.round(roamHopT(e.timer) * HOP_RISE_PX * SUBS);
+      if (e.timer > ROAM_TICKS) { e.state = "wave"; e.timer = 0; e.y = e.homeY; }
+    } else if (e.state === "rest" && e.timer > WAVE_EVERY_TICKS) { e.state = "wave"; e.timer = 0; }
     else if (e.state === "wave" && e.timer > WAVE_TICKS) { e.state = "rest"; e.timer = 0; }
     return;
   }
@@ -389,7 +552,7 @@ export const stepRedeemedOnly = (w: EntityWorld, grid: readonly string[] = []): 
       continue;
     }
     if (!e.redeemed) continue;
-    stepRedeemed(e);
+    stepRedeemed(e, grid);
   }
 };
 
@@ -865,7 +1028,7 @@ export const stepEntities = (
     if (e.hidden) continue;
     // R3-5: a freed friend keeps LIVING (joy → rest); it is no longer skipped
     if (e.redeemed) {
-      stepRedeemed(e);
+      stepRedeemed(e, grid);
       // R5-W2 · H1 · THE ROAD BACK, and it has to live here rather than in the
       // `cage` case below, because this short-circuit is exactly what made the
       // softlock: a cage is `redeemed` from the moment its lid comes off, so
@@ -899,6 +1062,22 @@ export const stepEntities = (
           }
           const sameBand = Math.abs(e.y - inp.playerY) / SUBS < 24;
           if (sameBand && Math.abs(e.x - inp.playerX) / SUBS < AGGRO_X_PX) { e.state = "telegraph"; e.timer = 0; }
+          // R5-W4 · F5 · …und alle paar Sekunden kritzelt er. Die Prüfung steht
+          // NACH der Aggro-Prüfung: ein Kind, das gerade herankommt, bekommt den
+          // Angriff, nicht den Anfall — der Anfall ist Charakter, kein Hindernis.
+          else if (e.timer > frenzyEveryFor(e.id)) { e.state = "frenzy"; e.timer = 0; e.vx = 0; }
+        } else if (e.state === "frenzy") {
+          // Bewegung über DIFFERENZEN: die Summe über den ganzen Anfall ist
+          // exakt null, also steht der Körper am Ende auf dem Anker-Punkt.
+          e.x += frenzyOffsetSubs(e.timer) - frenzyOffsetSubs(e.timer - 1);
+          if (e.timer % FRENZY_FLIP_TICKS === 0) e.dir = (e.dir * -1) as 1 | -1;
+          // …ein Kind, das während des Anfalls herankommt, wird trotzdem gesehen.
+          // Beim Abbruch geht der Körper auf den Anker ZURÜCK (der Ausschlag ist
+          // absolut gemessen), damit „netto null" nicht nur für den vollständig
+          // gelaufenen Anfall gilt, sondern für jeden.
+          const nah = Math.abs(e.y - inp.playerY) / SUBS < 24 && Math.abs(e.x - inp.playerX) / SUBS < AGGRO_X_PX;
+          if (nah) { e.x -= frenzyOffsetSubs(e.timer); e.state = "telegraph"; e.timer = 0; }
+          else if (e.timer >= FRENZY_TICKS) { e.state = "patrol"; e.timer = 0; }
         } else if (e.state === "turn") {
           if (e.timer === TURN_FLIP_AT) e.dir = (e.dir * -1) as 1 | -1;
           if (e.timer > TURN_TICKS) { e.state = "patrol"; e.timer = 0; }

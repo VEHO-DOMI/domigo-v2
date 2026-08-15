@@ -1,9 +1,10 @@
 // PK-R6 · H3 · the full-pose override hook — the pure map from frame state to
 // authored v2 cell. The tests pin exactly the reads the two critic rounds
 // demanded: a run whose frames DIFFER, a landing that squashes, faces that
-// change per state, and a teeter that only fires at a real edge.
+// change per state, and — seit R5-W4 · F5 · R46 — dass an einer Kante NICHTS
+// Besonderes mehr passiert.
 import { describe, expect, it } from "vitest";
-import { HERO2_APEX_VY, HERO2_CROUCH_TICKS, HERO2_RISE2_VY, HERO2_STEMS, HERO2_STRIDE_TICKS, HERO2_TEETER_TICKS, heroFullCell } from "./rigSpec.ts";
+import { HERO2_APEX_VY, HERO2_CROUCH_TICKS, HERO2_RISE2_VY, HERO2_STEMS, HERO2_STRIDE_TICKS, heroFullCell } from "./rigSpec.ts";
 
 interface CellOpts {
   pose?: Parameters<typeof heroFullCell>[0];
@@ -11,8 +12,6 @@ interface CellOpts {
   vy?: number;
   landedAgo?: number;
   cheering?: boolean;
-  atEdge?: boolean;
-  tick?: number;
   jumpedAgo?: number;
 }
 const cell = (over: CellOpts = {}): string | null =>
@@ -22,8 +21,6 @@ const cell = (over: CellOpts = {}): string | null =>
     over.vy ?? 0,
     over.landedAgo ?? 99,
     over.cheering ?? false,
-    over.atEdge ?? false,
-    over.tick ?? 0,
     over.jumpedAgo ?? 99,
   );
 
@@ -75,11 +72,20 @@ describe("heroFullCell — the v2 override map", () => {
     expect(cell({ pose: "hit", landedAgo: 0 })).toBe("hero2_hit");
   });
 
-  it("the teeter fires only at a real edge, and alternates its two cells", () => {
-    expect(cell({ pose: "stand", atEdge: false })).toBe("hero2_idle");
-    expect(cell({ pose: "stand", atEdge: true, tick: 0 })).toBe("hero2_teeter0");
-    expect(cell({ pose: "stand", atEdge: true, tick: HERO2_TEETER_TICKS })).toBe("hero2_teeter1");
-    expect(cell({ pose: "stand", atEdge: true, tick: HERO2_TEETER_TICKS * 2 })).toBe("hero2_teeter0");
+  // R5-W4 · F5 · R46 · DER GEGEN-TEST. Hier stand „der Teeter feuert nur an
+  // einer echten Kante". Das Gesetz ist umgedreht, nicht gelöscht: an der Kante
+  // steht der Held wie überall, und KEINE Eingabe des Standes darf noch eine
+  // Teeter-Zelle hervorbringen. Ein Test, der nur verschwindet, lässt den
+  // nächsten Aufräumer die Zelle stillschweigend zurückholen.
+  it("an der Kante steht der Held wie überall — es gibt keine Teeter-Zelle mehr", () => {
+    expect(cell({ pose: "stand" })).toBe("hero2_idle");
+    for (const walkTime of [0, 9, 18, 27, 36, 999]) {
+      for (const vy of [-1280, 0, 1280]) {
+        const c = cell({ pose: "stand", walkTime, vy });
+        expect(c).not.toMatch(/teeter/);
+      }
+    }
+    expect(HERO2_STEMS.join(" ")).not.toMatch(/teeter/);
   });
 
   it("hands the un-painted states back to the composed rig", () => {
@@ -94,16 +100,12 @@ describe("heroFullCell — the v2 override map", () => {
       for (const vy of [-1280, -80, -10, 10, 80, 1280]) {
         for (const walkTime of [0, 9, 18, 27, 36]) {
           for (const landedAgo of [0, 99]) {
-            for (const atEdge of [false, true]) {
-              for (const tick of [0, HERO2_TEETER_TICKS]) {
-                for (const ja of [0, 99]) {
-                  const c = heroFullCell(pose, walkTime, vy, landedAgo, false, atEdge, tick, ja);
-                  if (c !== null) emitted.add(c);
-                }
-                const c = heroFullCell(pose, walkTime, vy, landedAgo, false, atEdge, tick);
-                if (c !== null) emitted.add(c);
-              }
+            for (const ja of [0, 99]) {
+              const c = heroFullCell(pose, walkTime, vy, landedAgo, false, ja);
+              if (c !== null) emitted.add(c);
             }
+            const c = heroFullCell(pose, walkTime, vy, landedAgo, false);
+            if (c !== null) emitted.add(c);
           }
         }
       }

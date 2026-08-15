@@ -132,10 +132,11 @@ export const ROTOR_STEMS = ["rotor_a", "rotor_b", "rotor_c"] as const;
 // „landing shows no squash", „facial expression frozen". The part rig CAN'T fix
 // that — its one body cell per state is the ceiling. batch-ap's hero_rig_v2
 // paints the answer as FULL-BODY cells: a four-frame run with real leg
-// extension, a jump arc ending in an authored landing squash, per-state faces,
-// and the ledge teeter. This override draws those cells whole for the core
-// locomotion states and hands everything else (hang, swing, vine, hover,
-// charge) back to the composed rig, which remains the identity source.
+// extension, a jump arc ending in an authored landing squash, and per-state
+// faces. (The sheet's ledge teeter came with it and is retired again — R5-W4 ·
+// F5 · R46, herleitung bei HERO2_STEMS.) This override draws those cells whole
+// for the core locomotion states and hands everything else (hang, swing, vine,
+// hover, charge) back to the composed rig, which remains the identity source.
 
 /** v2 cells are authored ≈423 px tall at idle → the same ~35-logical-px read
  *  as the composed rig. One dial, same law as RIG_SRC_SCALE. */
@@ -175,15 +176,32 @@ export const HERO2_CROUCH_TICKS = 2;
  *  der zweiten Zelle einen einzigen Tick — gemessen, nicht vermutet. */
 export const HERO2_RISE2_VY = Math.abs(PAINT.jumpVy);
 
-/** The teeter alternates its two cells at this period (presentation clock). */
-export const HERO2_TEETER_TICKS = 28;
+// ── R5-W4 · F5 · DIE KANTE HÖRT AUF ZU FALLEN (R46) ──────────────────────────
+// Die Teeter-Pose ist RAUS, und der Grund steht in den Pixeln, nicht im
+// Geschmack: `hero2_teeter0/1` messen 409×243 und 397×237 gegen 278×430 bei
+// `hero2_idle`. Fußverankert (PaintScene zeichnet jede v2-Zelle origin 0.5,1
+// auf derselben Fußlinie) schrumpft der Held damit an JEDER Kante auf gut die
+// halbe Höhe — Kokis „glitchy, komische Fall-Animation".
+//
+// Der Schnitt war kein Versehen. `docs/art/import-batch-ap.mjs` Kopf-Note 2
+// („THE LEDGE CUT", Import-Ruling 10.08.) hält fest: beide Zellen tragen einen
+// GEMALTEN Felsvorsprung unter den Schuhen — Welt-Geometrie in einer
+// Figuren-Zelle, die sonst als fliegender Felsen erschiene. Der Import endete
+// deshalb bei Blatt-y=1800, wo die Sohlen ruhen. Das löste ein Problem und
+// erzeugte dieses: die Zelle ist an der Brust gekappt, weil ihr Rahmen an den
+// Schuhen endet statt am Scheitel.
+//
+// Ein halber Held an jeder Kante ist teurer als eine fehlende Balance-Geste, und
+// die Balance-Geste ist ohne neue Kunst nicht zu retten (es gibt kein zweites
+// Blatt ohne Boden darunter). Also fällt der Zweig ganz: `stand` heißt wieder
+// `hero2_idle`, an der Kante wie überall. Eine Nachbestellung muss Zellen OHNE
+// Bodengeometrie verlangen — sonst kehrt genau dieser Konflikt zurück.
 
 export const HERO2_STEMS = [
   "hero2_run0", "hero2_run1", "hero2_run2", "hero2_run3",
   "hero2_jump", "hero2_jump2", "hero2_apex", "hero2_fall", "hero2_land",
   "hero2_crouch",
   "hero2_idle", "hero2_hit", "hero2_cheer",
-  "hero2_teeter0", "hero2_teeter1",
 ] as const;
 // hero2_det is imported as a spare (the run cells already carry determination).
 
@@ -200,8 +218,6 @@ export const heroFullCell = (
   vySubs: number,
   landedAgo: number,
   cheering: boolean,
-  atEdge: boolean,
-  tick: number,
   /** R5-F4 · Ticks seit dem Absprung. Optional (Vorgabe „lange her"), damit
    *  jeder bestehende Aufrufer und jeder Test unverändert bleibt. */
   jumpedAgo = 99,
@@ -225,9 +241,8 @@ export const heroFullCell = (
   if (pose === "run" || pose === "walk") {
     return `hero2_run${Math.floor(walkTime / HERO2_STRIDE_TICKS) % 4}`;
   }
-  if (pose === "stand") {
-    if (atEdge) return `hero2_teeter${Math.floor(tick / HERO2_TEETER_TICKS) % 2}`;
-    return "hero2_idle";
-  }
+  // R5-W4 · F5 · R46: hier stand der Kanten-Zweig. Er ist ersatzlos weg — an der
+  // Kante steht der Held wie überall sonst (siehe die Herleitung bei HERO2_STEMS).
+  if (pose === "stand") return "hero2_idle";
   return null; // hover, charge, hang, vine, swing — the composed rig's states
 };
