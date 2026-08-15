@@ -247,11 +247,37 @@ export const TREASURE_BOB_PX = 2.2;
 export const TREASURE_BOB_TICKS = 58;
 /** How far the light and the motes hang behind the page. */
 export const TREASURE_LAG_TICKS = 6;
-/** The pool of light around it. */
+/** The pool of light around it.
+ *
+ *  R5-W4 · F5 · R37 · EINE STUFE KRÄFTIGER, UND IN EINER KÜHLEN FAMILIE.
+ *
+ *  Kokis Urteil: „Die Regel-Seite: animierter … und der Glow höher; etwas, das
+ *  man haben will, wenn man es sieht." Das Ruling R37 sagt, WORAN gemessen wird:
+ *  ΔL *und* ΔH — Helligkeit UND Farbabstand — plus Platzierung.
+ *
+ *  Gemessen auf `origin/main` (measure-presence, drei Phasen, je vier Bilder):
+ *    p2 (Nacht-Klassenzimmer)  ΔL +130,5 · ΔH 180  → gewinnt längst
+ *    p3 (Turnsaal, warm)       ΔL  +67,5 · ΔH   3  ← genau der alte Befund
+ *                              ΔL_wall +17,2         „Gold in einem goldenen
+ *                                                     Raum": Helligkeit ja,
+ *                                                     Farbabstand null.
+ *  Die Kur ist deshalb NICHT „heller", sondern „andersfarbig": das Licht um die
+ *  Seite bekommt eine eigene, KÜHLE Farbe statt des warmen Cue-Golds. Der Pfeil
+ *  behält sein Gold (`CUE_HALO`) — er ist ein Kreidezeichen und gehört in die
+ *  Kreide-Familie; die Seite ist ein Fund und darf aus dem Raum herausfallen.
+ *
+ *  Warum das p2 nicht kaputtmacht: dort trägt der Auftritt +130 ΔL. Der
+ *  Farbabstand sinkt (die Seite steht in einem blauen Raum), die Trennung
+ *  bleibt über die Helligkeit erhalten — und die MISST diese Session in allen
+ *  drei Phasen nach, statt es zu behaupten. */
 export const TREASURE_HALO_RINGS = 5;
-export const TREASURE_HALO_GAIN = 1.5;
-export const TREASURE_HALO_PULSE = 0.45;
+export const TREASURE_HALO_GAIN = 2.1;
+export const TREASURE_HALO_PULSE = 0.55;
 export const TREASURE_HALO_SWELL_PX = 2.4;
+/** Die kühle Familie des Fundes: ein blasses Teal-Blau. Hell genug, dass es im
+ *  Nachtraum noch als Licht liest, kalt genug, dass es im Sonnensaal vom
+ *  Gold-Ocker abfällt. */
+export const TREASURE_HALO_COLOUR = 0x9fe4ff;
 /** The beam: height in page-heights, mouth and foot half-widths in page-widths,
  *  and its lean off vertical (the light in this book comes from the top left). */
 export const TREASURE_SHAFT_H_MUL = 3.2;
@@ -307,6 +333,8 @@ export const TREASURE_MOTE_ALPHA_PEAK = 0.40;
 export interface TreasureCue {
   /** how far the PAGE is lifted this tick (px, positive = up). */
   bobPx: number;
+  /** R5-W4 · F5 · die Breitenskalierung der Pirouette (−1 … +1). */
+  spinSx: number;
   /** the beam as one quad, mouth first — handed to air.shaftQuads, which owns
    *  the subdivision that gives a beam no visible rim and no visible foot. */
   shaft: { points: readonly [number, number][]; alphaTop: number };
@@ -327,6 +355,54 @@ export const treasureBobPx = (phase: number, seed: number, reducedMotion: boolea
   reducedMotion
     ? 0
     : Math.sin((phase / TREASURE_BOB_TICKS) * Math.PI * 2 + hash01(seed * 7919) * Math.PI * 2) * TREASURE_BOB_PX;
+
+// ── R5-W4 · F5 · DIE PIROUETTE (F-16) ────────────────────────────────────────
+// „vielleicht eine Pirouette, ein Wirbel — etwas, das man haben will, wenn man
+// es sieht." Ein Wippen sagt „ich schwebe"; eine Drehung sagt „ich bin ein
+// Gegenstand mit Vorder- und Rückseite, und ich zeige sie dir".
+//
+// Es ist eine Drehung um die HOCHACHSE, also die Breite als Kosinus — dieselbe
+// Billboard-Drehung, die Sammelobjekte seit jeher tragen. Zwei Entscheidungen:
+//  · SIE VERSCHWINDET NIE GANZ. Bei einer echten Kosinus-Breite steht die Seite
+//    zweimal pro Umlauf hochkant und ist für ein paar Bilder weg. Für eine
+//    Belohnung, die AUFFALLEN soll, ist ein regelmässiges Nichts das Gegenteil
+//    des Ziels — also ein Boden von 22 % Breite. Das Vorzeichen bleibt: sie
+//    zeigt weiter abwechselnd Vorder- und Rückseite.
+//  · DER WIRBEL IST STETIG. Alle sechs Sekunden gibt sie zwei zusätzliche
+//    Umdrehungen dazu — als Summe (Stufenzähler + Smoothstep im Fenster), damit
+//    der Winkel an der Fenstergrenze nicht zurückspringt. Ein Sprung im Winkel
+//    ist ein sichtbarer Ruck, und ein Ruck ist genau das, was der Perf-Wächter
+//    und das Auge gleichermassen bestrafen.
+/** Ein voller Umlauf in Ticks (2,8 s bei 60 Hz). */
+export const TREASURE_SPIN_TICKS = 168;
+/** Schmalste Breite im Profil, als Anteil der vollen Breite. */
+export const TREASURE_SPIN_MIN = 0.22;
+/** Der Wirbel: alle 6 s, über 40 Ticks, zwei zusätzliche Umdrehungen. */
+export const TREASURE_WHIRL_EVERY = 360;
+export const TREASURE_WHIRL_TICKS = 40;
+export const TREASURE_WHIRL_TURNS = 2;
+
+/** Wie viele Umdrehungen die Seite bis zu diesem Tick gemacht hat — stetig,
+ *  auch über die Wirbel-Grenze hinweg (siehe oben). Ausgelagert und exportiert,
+ *  weil zwei Leser dieselbe Zahl brauchen: das Sprite, das sich dreht, und der
+ *  Schatten, der mit ihm schmaler wird. */
+export const treasureTurns = (phase: number, seed: number): number => {
+  const own = hash01(seed * 3571);
+  const cycle = ((phase % TREASURE_WHIRL_EVERY) + TREASURE_WHIRL_EVERY) % TREASURE_WHIRL_EVERY;
+  const u = Math.min(1, Math.max(0, cycle / TREASURE_WHIRL_TICKS));
+  const eased = u * u * (3 - 2 * u); // Smoothstep: kein Knick an beiden Enden
+  return phase / TREASURE_SPIN_TICKS + own
+    + TREASURE_WHIRL_TURNS * (Math.floor(phase / TREASURE_WHIRL_EVERY) + eased);
+};
+
+/** Die Breitenskalierung der Seite in diesem Tick, −1 … +1. Das VORZEICHEN ist
+ *  die Rückseite (Phaser spiegelt bei negativer Skalierung), der Betrag die
+ *  perspektivische Verkürzung. */
+export const treasureSpinSx = (phase: number, seed: number, reducedMotion: boolean): number => {
+  if (reducedMotion) return 1;
+  const c = Math.cos(treasureTurns(phase, seed) * Math.PI * 2);
+  return Math.sign(c || 1) * (TREASURE_SPIN_MIN + (1 - TREASURE_SPIN_MIN) * Math.abs(c));
+};
 
 /**
  * The whole treasure presence, in world px.
@@ -414,12 +490,17 @@ export const treasureCue = (
   // float too and the page would read as sliding.
   const rise = bob / TREASURE_BOB_PX; // −1…1 (0 under reduced motion, where bob is 0)
   const tighten = 1 - TREASURE_SHADOW_LIFT_GAIN * rise;
+  // R5-W4 · F5: …und der Schatten wird mit der Pirouette schmaler. Ein Schatten,
+  // der breit bleibt, während sich sein Gegenstand ins Profil dreht, ist wieder
+  // der Aufkleber unter einem bewegten Ding, den TREASURE_SHADOW_LIFT_GAIN schon
+  // einmal beseitigt hat — dieselbe Regel, zweite Achse.
+  const spin = Math.abs(treasureSpinSx(phase, seed, reducedMotion));
   const shadow = {
     cx: x,
     cy: yFoot,
-    rx: wPx * TREASURE_SHADOW_RX_MUL * tighten,
+    rx: wPx * TREASURE_SHADOW_RX_MUL * tighten * spin,
     ry: hPx * TREASURE_SHADOW_RY_MUL * tighten,
     alpha: TREASURE_SHADOW_ALPHA * tighten,
   };
-  return { bobPx: bob, shaft, halo, backing, motes, shadow };
+  return { bobPx: bob, spinSx: treasureSpinSx(phase, seed, reducedMotion), shaft, halo, backing, motes, shadow };
 };

@@ -35,10 +35,11 @@ import { FOCUS_MS, focusView } from "./camera.ts";
 import {
   AWAKEN_ROOM_MS, BOSS_BEAT_SWELL, CAGE_AT_REST, CAGE_OPEN_TICKS, CELL_IS_DIRECTIONAL, type EntPoseInput,
   type EntSizeInput, GUARDIAN_DISPLAY_H, GUARDIAN_KEEPIN_MAX, REST_SQUASH, RESTORE_SPARKLE_MS, WASHED_ROLES,
+  WIGGLE_AT_REST,
   awakenRoomBloom, awakenRoomSweep, bouncerSquash, cageBreath, cageNearT, entDisplayH, entPoseCell, entSeed, floodBloomFor, greyLuma,
-  guardianManoeuvre, guardianPitchRad, guardianRollScaleX, poseStateOf, washAlphaFor,
+  guardianManoeuvre, guardianPitchRad, guardianRollScaleX, idleWiggle, poseStateOf, washAlphaFor,
 } from "./anim.ts";
-import { CUE_CHALK, CUE_HALO, TREASURE_BACK_COLOUR, chalkArrow, treasureCue, treasureBobPx } from "./cue.ts";
+import { CUE_CHALK, CUE_HALO, TREASURE_BACK_COLOUR, TREASURE_HALO_COLOUR, chalkArrow, treasureCue, treasureBobPx, treasureSpinSx } from "./cue.ts";
 import { RIG, launchCoil, rigPose, withCheer, withFistAway, withBrace } from "./rig.ts";
 import {
   BURST_CORE, BURST_HOT, BURST_INK, BURST_SPIKES,
@@ -1681,12 +1682,15 @@ export class PaintScene extends Phaser.Scene {
       // …then the shadow, under everything else including the beam's foot
       this.tipLightG.fillStyle(0x2a2014, cue.shadow.alpha);
       this.tipLightG.fillEllipse(cue.shadow.cx, cue.shadow.cy, cue.shadow.rx * 2, cue.shadow.ry * 2);
+      // R5-W4 · F5 · R37: das Licht der Seite ist KÜHL (TREASURE_HALO_COLOUR),
+      // das Kreide-Gold (CUE_HALO) bleibt dem ↑-Zeichen. Gemessen wurde, warum:
+      // in p3 stand die Seite bei ΔH 3 — Gold in einem goldenen Raum.
       for (const q of shaftQuads(cue.shaft)) {
-        this.tipLightG.fillStyle(CUE_HALO, q.alpha);
+        this.tipLightG.fillStyle(TREASURE_HALO_COLOUR, q.alpha);
         this.tipLightG.fillPoints(q.points.map(([qx, qy]) => new Phaser.Geom.Point(qx, qy)), true);
       }
       for (const r of cue.halo) {
-        this.tipLightG.fillStyle(CUE_HALO, r.alpha);
+        this.tipLightG.fillStyle(TREASURE_HALO_COLOUR, r.alpha);
         this.tipLightG.fillCircle(r.cx, r.cy, r.r);
       }
       for (const m of cue.motes) {
@@ -1835,9 +1839,25 @@ export class PaintScene extends Phaser.Scene {
         // läuft NACH dieser Methode und kopiert Drehung und Skalierung in den
         // Schattenwurf — der Schatten wackelt gratis mit.
         const br = e.role === "cage" && !e.redeemed && !e.hidden
-          ? cageBreath(this.tickCount, entSeed(e.id), this.cageNearT(e), targetH, this.cfg.reducedMotion)
+          ? cageBreath(this.tickCount, entSeed(e.id), this.cageNearT(e), targetH, this.cfg.reducedMotion, this.cageSeenT(e))
           : CAGE_AT_REST;
-        img.setScale(k * (1 + 0.18 * pop) * sq.sx * br.sx, k * (1 - 0.16 * pop) * sq.sy * br.sy);
+        // R5-W4 · F5 · DIE ZAPPEL-WIPPE (Kokis „das Buch soll wackeln"). Sie
+        // reiht sich in genau dieselbe Zeile ein wie Käfig-Atem und Hüpfer-
+        // Quetschung — ein Besitzer für die Transformation eines Sprites — und
+        // sie gilt nur für die entfärbten Dinge: Käfige haben ihr Atmen, die
+        // Regel-Seiten ihren Auftritt, und ein erlöstes Ding hat seinen Frieden.
+        const wg = e.role === "drained" && !e.redeemed && !e.hidden
+          ? idleWiggle(this.tickCount, entSeed(e.id), targetH, this.cfg.reducedMotion)
+          : WIGGLE_AT_REST;
+        // R5-W4 · F5 · DIE PIROUETTE DER REGEL-SEITE (F-16) reitet auf derselben
+        // Zeile wie alles andere — ein Besitzer für die Transformation eines
+        // Sprites. Sie ist eine reine Funktion in cue.ts, hier steht nur ihr
+        // Faktor; das Vorzeichen ist die Rückseite, die Phaser gratis spiegelt.
+        const spinSx = e.role === "tip" && !e.redeemed && !e.hidden
+          ? treasureSpinSx(this.tickCount, entSeed(e.id), this.cfg.reducedMotion)
+          : 1;
+        img.setScale(k * (1 + 0.18 * pop) * sq.sx * br.sx * spinSx, k * (1 - 0.16 * pop) * sq.sy * br.sy);
+        img.x += wg.dx;
         // R5-W2 · I1 · the Regel-Seite's float rides the SAME line as the cage's
         // breath, for the reason stated just above: one owner for a sprite's
         // transform. A second `img.y +=` somewhere else is how a float becomes a
@@ -1848,6 +1868,10 @@ export class PaintScene extends Phaser.Scene {
         img.y += br.dy - lift;
         if (pop > 0) img.setRotation(0.13 * pop);
         else if (e.role === "cage") img.setRotation(e.redeemed ? 0 : br.rot);
+        // …und die Wippe dreht um den FUSS, weil jedes Wesen mit origin (0.5, 1)
+        // gezeichnet wird: die Drehachse IST die Standlinie. Um die Mitte gedreht
+        // führe eine Ecke in den Boden.
+        else if (e.role === "drained") img.setRotation(wg.rot);
         // R5-W3 · W1: was hier gezeichnet wird, ist ab jetzt zitierfähig — samt
         // der Stelle IM BILD, an der es steht. Ohne die muss ein Messgerät die
         // Kamera-Mathematik nachbauen, und ein nachgebautes Fenster misst
@@ -1857,14 +1881,18 @@ export class PaintScene extends Phaser.Scene {
         // liefert getBounds() die Lage des VORIGEN Bildes — ein Fenster, das um
         // ein Bild hinterherhinkt, ist genau die Klasse Fehler, die diese
         // Session aufräumt.
-        if (DRAW_PROBE && (e.role === "cage" || e.role === "tip")) {
+        // R5-W4 · F5: die entfärbten Dinge stehen jetzt mit im Beipackzettel —
+        // sonst wäre „das Buch wippt 4,8 px" wieder ein Eindruck statt einer
+        // Zahl, die `measure-motion.mjs` gegen das Bild halten kann.
+        if (DRAW_PROBE && (e.role === "cage" || e.role === "tip" || e.role === "drained")) {
           const cam = this.cameras.main;
           const b = img.getBounds();
           const view = cam.worldView;
           const scr = view.width > 0
             ? { x: (b.x - view.x) * cam.zoom, y: (b.y - view.y) * cam.zoom, w: b.width * cam.zoom, h: b.height * cam.zoom }
             : null;
-          this.lastBreath.set(e.id, { rot: br.rot, dy: br.dy, sx: br.sx, sy: br.sy, hPx: targetH, scr });
+          const rot = e.role === "drained" ? wg.rot : br.rot;
+          this.lastBreath.set(e.id, { rot, dy: br.dy, sx: br.sx, sy: br.sy, hPx: targetH, scr });
         }
       }
       // …and a cell that already faces a direction is never mirrored: flipping a
@@ -3258,7 +3286,7 @@ export class PaintScene extends Phaser.Scene {
     // stacking both would over-squash the one frame that finally has it.
     const fullCell = heroFullCell(
       this.player.pose, this.player.walkTime, this.player.vy,
-      this.player.landedAgo, cheer > 0, this.heroAtEdge(), this.tickCount,
+      this.player.landedAgo, cheer > 0,
       this.player.jumpedAgo, // R5-F4: die Uhr, an der die Hocke hängt
     );
     const full = fullCell !== null && this.textures.exists(this.tex(fullCell)) ? fullCell : null;
@@ -4376,6 +4404,22 @@ export class PaintScene extends Phaser.Scene {
   }
 
   /** Wie nah steht das Kind an diesem Käfig? (0…1, als Rampe — siehe anim.) */
+  /** R5-W4 · F5 · R38: steht dieser Käfig im Kamerafenster? 1 = ja.
+   *
+   *  Bewusst der EINFACHE Test — die Weltansicht der Kamera, um eine halbe
+   *  Käfigbreite grosszügig gemacht, damit ein Käfig am Bildrand nicht mitten
+   *  im Stemmen abgeschaltet wird. Kein weicher Verlauf über die Distanz: das
+   *  wäre wieder eine Nähe-Kurve unter anderem Namen, und R38 sagt genau das
+   *  Gegenteil. Wer gezeichnet wird, stemmt sich ganz. */
+  private cageSeenT(e: EntityState): number {
+    const view = this.cameras.main.worldView;
+    if (view.width <= 0) return 0;
+    const x = fromSubs(e.x);
+    const y = fromSubs(e.y);
+    const pad = TILE;
+    return x >= view.x - pad && x <= view.right + pad && y >= view.y - pad && y <= view.bottom + pad ? 1 : 0;
+  }
+
   private cageNearT(e: EntityState): number {
     return cageNearT(
       fromSubs(e.x) - fromSubs(this.player.x),
@@ -4954,18 +4998,9 @@ export class PaintScene extends Phaser.Scene {
     this.rigRoot.add(this.heroFull);
   }
 
-  /** PK-R6 · H3 · standing at a walkable edge? (the teeter's trigger). True
-   *  when he is grounded-standing and the tile ahead-below his leading foot
-   *  has no floor — the classic look-before-you-step probe, read from the
-   *  same grid the collider reads. Presentation-only: no sim state moves. */
-  private heroAtEdge(): boolean {
-    if (this.player.pose !== "stand" || !this.player.grounded) return false;
-    const c = Math.floor((fromSubs(this.player.x) + this.player.facing * (TILE * 0.6)) / TILE);
-    const r = Math.floor(fromSubs(this.player.y) / TILE);
-    const below = glyphAt(this.grid, c, r);
-    const below2 = glyphAt(this.grid, c, r + 1);
-    return !isSolid(below) && !isSlope(below) && !isSolid(below2);
-  }
+  // R5-W4 · F5 · R46: hier stand `heroAtEdge()`, die Kanten-Sonde des Teeters.
+  // Mit der Pose fällt auch ihr einziger Leser weg — eine Sonde ohne Leser wäre
+  // toter Code, den der nächste Aufräumer neu erklären müsste.
 
   /**
    * PK-R6 · H1 · THE PAINTED SPEECH BUBBLE (round-1 critique, finding 6:

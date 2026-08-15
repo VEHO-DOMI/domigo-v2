@@ -32,7 +32,7 @@ const IDLE_CELLS = ["a", "b", "c", "d"] as const;
 // Every threshold is DERIVED from the sim constant it depicts (imported, never
 // re-typed), so a tuning change to the sim moves the pose with it.
 
-import { AWAKEN_ROUNDS, BOUNCE_UP, ENEMY_WALK, FLYER_SWEEP_PX, JOY_ROLES, UNTIE_RECOIL_TICKS } from "./entities.ts";
+import { AWAKEN_ROUNDS, BOUNCE_UP, ENEMY_WALK, FLYER_SWEEP_PX, JOY_ROLES, UNTIE_RECOIL_TICKS, roamHopT } from "./entities.ts";
 import { hash01 } from "./mass.ts";
 import { SUBS } from "./paint.ts";
 
@@ -362,9 +362,16 @@ export const bouncerSquash = (bounceTick: number, vy: number, reducedMotion = fa
 // Pixel Ausschlag an der Oberkante. Es war nicht kaputt, es war zu klein.
 //
 // Drei Entscheidungen dahinter:
-//  · Der Ausschlag wird in PIXELN angegeben, nicht in Radiant. Ein Käfig mit
-//    einem Kind darin ist 34 px hoch, ein Ranzen 22 — bei festem Winkel wackelt
-//    der große automatisch 1,5-mal weiter. Was das Auge liest, ist der Weg.
+//  · Der Ausschlag wird in PIXELN angegeben, nicht in Radiant. Was das Auge
+//    liest, ist der Weg, nicht der Winkel.
+//    ┌ HISTORISCH (D-87, geschlossen in R5-W4 · F5). Diese Begründung lautete
+//    │ ursprünglich: „Ein Käfig mit einem Kind darin ist 34 px hoch, ein Ranzen
+//    │ 22 — bei festem Winkel wackelt der große automatisch 1,5-mal weiter."
+//    │ Das stimmte, bis D-48 alle Käfige auf einheitlich 34 px setzte; seither
+//    │ ist der Faktor 1,0 und der Fall existiert in ch01 nicht mehr. Die Regel
+//    │ BLEIBT trotzdem richtig — sie ist der Grund, dass ein künftiges Kapitel
+//    │ mit anders hohen Behältern ohne Nachtunen gleich weit wackelt. Sie steht
+//    └ ab jetzt auf diesem Grund, nicht mehr auf dem verschwundenen Beispiel.
 //  · Kein Metronom-Sinus, sondern eine ABKLINGENDE STOSS-FOLGE: jemand stemmt
 //    sich gegen die Wand, dann setzt es sich. Das Auge wird von Veränderung
 //    angezogen, nicht von gleichmäßigem Schwingen — und ein sauberer Sinus
@@ -429,6 +436,10 @@ export const cageBreath = (
   nearT: number,
   heightPx: number,
   reducedMotion = false,
+  /** R5-W4 · F5 · R38: 1, wenn der Käfig im Kamerafenster steht. Optional mit
+   *  Vorgabe 0, damit jeder bestehende Aufrufer und jeder Test unverändert
+   *  bleibt und die alte Kurve exakt weiterrechnet. */
+  seenT = 0,
 ): CageBreath => {
   if (reducedMotion) return { ...CAGE_AT_REST, rot: CAGE_REST_RAD };
   // jeder Käfig stemmt sich zu seiner eigenen Zeit — zwei im selben Raum im
@@ -438,7 +449,26 @@ export const cageBreath = (
   const decay = u < CAGE_SETTLE_TICKS ? (1 - u / CAGE_SETTLE_TICKS) ** 2 : 0;
   const env = Math.max(decay, nearT * CAGE_NEAR_FLOOR);
   const rock = Math.sin((u / CAGE_ROCK_TICKS) * Math.PI * 2) * env;
-  const ampPx = CAGE_SWAY_PX * (CAGE_FAR_SCALE + (1 - CAGE_FAR_SCALE) * nearT);
+  // R5-W4 · F5 · R38 · SICHTBAR STATT NAH.
+  //
+  // Der Ausschlag hing bis hierher allein an der Nähe, und `cageNearT` deckelt
+  // bei 42 px — zweieinhalb Kacheln. Gemessen mit genau dieser Funktion, für
+  // einen 34-px-Käfig bei Kamera-Zoom 3, gezeichnete Oberkanten-Bahn über ein
+  // volles Rüttel-Fenster:
+  //      daneben (0 px)     nearT 1,00 → 16,4 Schirm-px
+  //      2 Kacheln (32 px)  nearT 0,63 → 12,7
+  //      4 Kacheln (64 px)  nearT 0,00 →  7,1
+  //      6 Kacheln (96 px)  nearT 0,00 →  7,1
+  // Das Kind sieht den Käfig fast immer aus der dritten Zeile — und dort ist er
+  // das »wackelt nicht deutlich« aus Kokis Replay (D-64).
+  //
+  // R38 dreht die Abhängigkeit um: WER GEZEICHNET WIRD, STEMMT SICH GANZ. Die
+  // Nähe bleibt als Zusatz — sie ist es, die das Rütteln dicht am Kind nie ganz
+  // aufhören lässt (`env`s Boden oben). Ein Gefangener hört ja nicht auf, weil
+  // niemand danebensteht; er hört auf, wenn niemand HINSIEHT — und genau das
+  // sagt „im Kamerafenster" aus.
+  const gesehen = Math.max(seenT, nearT);
+  const ampPx = CAGE_SWAY_PX * (CAGE_FAR_SCALE + (1 - CAGE_FAR_SCALE) * gesehen);
   const h = Math.max(heightPx, 1);
   return {
     rot: Math.asin(Math.max(-1, Math.min(1, (ampPx * rock) / h)))
@@ -844,6 +874,15 @@ const CLASSMATE_CELLS: Record<string, readonly [string, string]> = {
   wave: ["wave0", "wave1"],
 };
 
+// ── R5-W4 · F5 · IHR GANG (F-26, R49) ────────────────────────────────────────
+// Ihr Blatt hat DREI Geh-Zellen (`merle_walk1/2/3`), nicht zwei — deshalb stehen
+// sie hier eigens und nicht in der Paar-Tabelle darüber. Sie lagen seit dem
+// Import ohne einen einzigen Leser im Repo; das ist der Leser.
+const ROAM_CELLS = ["walk1", "walk2", "walk3"] as const;
+/** Der Hüpfer trägt ihre Freuden-Zelle: es ist die einzige gemalte, in der sie
+ *  vom Boden abhebt — und sie stimmt inhaltlich, denn genau darum hüpft sie. */
+const HOP_CELL = "joy";
+
 /** The pose a card's art binding names, as a STATE — `merle_act_sing1` +
  *  skin `merle` → `act_sing`. This is the whole reason the world and the card
  *  cannot disagree about what she is doing: the round declares its pose ONCE,
@@ -861,6 +900,12 @@ export const poseStateOf = (stem: string, skin: string): string | null => {
  *  begins `act_` is a WRONG-ACTION POSE the shell set from the open round's art
  *  binding (`merle_act_sing1` → `act_sing`), so its pair is `<state>0/1`. */
 export const classmateCell = (state: string, timer: number): string => {
+  // R5-W4 · F5: der Gang zuerst — er hat drei Zellen und einen Sprung-Beat,
+  // und er teilt sich die Uhr mit ihm (roamHopT liest denselben `timer`), damit
+  // gezeichneter Sprung und gehobener Körper derselbe Moment sind.
+  if (state === "roam") {
+    return roamHopT(timer) > 0 ? HOP_CELL : (ROAM_CELLS[bobFrame(timer, ROAM_CELLS.length)] ?? ROAM_CELLS[0]);
+  }
   const named = CLASSMATE_CELLS[state];
   if (named) return named[bobFrame(timer, 2)] ?? named[0];
   if (state.startsWith("act_")) return `${state}${bobFrame(timer, 2)}`;
@@ -947,6 +992,11 @@ export const entPoseCell = (e: EntPoseInput): string => {
   if (e.state === "telegraph") return "telegraph";
   // a crusher's `act` IS its slam — the stomp cell is that moment
   if (e.state === "act") return e.role === "crusher" ? "stomp" : "act";
+  // R5-W4 · F5 · der Kritzel-Anfall trägt die HANDLUNGS-Zelle (`pencil_act` ist
+  // genau die Zeichnung, die die Karte zeigt: er kritzelt). Damit sagen Welt und
+  // Karte dasselbe — die Karte bindet `stimulus.art: "pencil_act"`, und das
+  // Porträt-Gesetz beweist schon, dass es eine echte Zelle dieses Wesens ist.
+  if (e.state === "frenzy") return "act";
   if (e.state === "burst") return "burst";
   if (e.state === "shaking") return "shake";
   // R5-W1 · F1: die Aufprall-Zelle steht jetzt eine DAUER, gezählt ab der
@@ -960,4 +1010,73 @@ export const entPoseCell = (e: EntPoseInput): string => {
   if (!e.role.startsWith("platform") && Math.abs(e.vx) >= RUN_VX) return "run";
   const frames = Math.min(Math.max(e.idleFrames ?? 2, 1), IDLE_CELLS.length);
   return IDLE_CELLS[bobFrame(e.timer, frames)] ?? "a";
+};
+
+// ── R5-W4 · F5 · DIE ZAPPEL-WIPPE (Kokis Replay 15.08.) ──────────────────────
+// „Alle Objekte im Level, mit denen man interagiert, müssen herausstechen — das
+// Buch soll z. B. links-rechts wackeln, Aufmerksamkeit auf sich ziehen; der
+// Pfeil allein reicht nicht."
+//
+// Der Pfeil KANN nicht reichen, und das ist keine Geschmacksfrage: `chalkArrow`
+// wird von `renderEngageCue` für GENAU EIN Wesen gezeichnet — das nächste in
+// Reichweite (`engageTargetId`). Bevor das Kind danebensteht, verrät die Welt
+// gar nichts. Sechs entfärbte Dinge stehen in ch01 vollkommen still, während
+// Radierer, Füllfeder und Heft sich bewegen: das Auge liest „Kulisse" bei den
+// Stillen und „Wesen" bei den Bewegten — und ausgerechnet die Stillen sind die,
+// die man anfassen soll. Die Wippe dreht das um; der Pfeil bleibt, wo er ist.
+//
+// Vier Entscheidungen, aus dem Bestand hergeleitet statt getippt:
+//  · WEG STATT WINKEL, wie beim Käfig (CAGE_SWAY_PX): ein Ding wird als so weit
+//    bewegt gelesen, wie sich seine Oberkante verschiebt. Der Winkel folgt aus
+//    Weg und Höhe, damit ein Buch und ein Ranzen gleich weit wippen.
+//  · UM DEN FUSS gedreht, nicht um die Mitte — die Dinge stehen auf dem Boden;
+//    eine Drehung um die Mitte hebt eine Ecke IN den Boden hinein.
+//  · GEGENPHASIGER SEITWEG. Reine Drehung liest sich als Kippen, reines
+//    Schieben als Rutschen. Beides zusammen, um eine Vierteldrehung versetzt,
+//    liest sich als „zappeln": das Ding lehnt sich in die Richtung, in die es
+//    auch geht.
+//  · PHASE AUS DEM EIGENEN NAMEN (entSeed, wie das Käfig-Rütteln). Sechs Dinge
+//    im Gleichtakt wären ein Metronom — sichtbar, aber als Maschine.
+//
+// Reduzierte Bewegung: KEIN Ersatz-Kipp wie beim Käfig. Dort ist die Schräglage
+// eine Tatsache („hier ist jemand drin"), hier wäre sie eine Behauptung: ein
+// dauerhaft schief stehendes Buch ist nicht „anfassbar", sondern umgefallen.
+/** Ausschlag der Oberkante, in logischen px (×3 auf dem Schirm). Bewusst unter
+ *  dem Käfig-Wert (3,7): der Käfig hat einen Gefangenen, der sich WEHRT — ein
+ *  Buch wippt nur, damit man es bemerkt. */
+export const WIGGLE_SWAY_PX = 1.6;
+/** Seitweg des Fusses, in logischen px. Klein: er trägt die Lesart „geht",
+ *  nicht die Bewegung selbst. */
+export const WIGGLE_SHIFT_PX = 0.9;
+/** Eine volle Hin-und-Her-Bewegung pro 72 Ticks (1,2 s bei 60 Hz) — der Takt,
+ *  in dem ein Kind eine Wiederholung noch als eine Bewegung liest. */
+export const WIGGLE_TICKS = 72;
+
+export interface IdleWiggle { rot: number; dx: number }
+export const WIGGLE_AT_REST: IdleWiggle = { rot: 0, dx: 0 };
+
+/**
+ * Wie ein entfärbtes Ding in diesem Tick zappelt. Rein und deterministisch —
+ * dieselbe Bedingung wie beim Käfig-Atmen: „das Buch wackelt sichtbar" muss
+ * eine Tabelle sein können und kein Screenshot.
+ *
+ * `heightPx` ist die GEZEICHNETE Höhe dieses Dings; daraus wird der Winkel
+ * zurückgerechnet, damit der Ausschlag in Pixeln stimmt statt im Winkel.
+ */
+export const idleWiggle = (
+  tick: number,
+  seed: number,
+  heightPx: number,
+  reducedMotion = false,
+): IdleWiggle => {
+  if (reducedMotion) return WIGGLE_AT_REST;
+  const phase = hash01(seed * 5171) * Math.PI * 2;
+  const u = (tick / WIGGLE_TICKS) * Math.PI * 2 + phase;
+  const h = Math.max(heightPx, 1);
+  return {
+    // asin, nicht der rohe Sinus: gefragt ist der WEG der Oberkante, und der
+    // ist h · sin(rot) — dieselbe Rückrechnung wie in cageBreath
+    rot: Math.asin(Math.max(-1, Math.min(1, (WIGGLE_SWAY_PX * Math.sin(u)) / h))),
+    dx: Math.cos(u) * WIGGLE_SHIFT_PX,
+  };
 };

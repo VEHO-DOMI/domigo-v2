@@ -21,7 +21,7 @@ import { IDLE_PAD, type Pad } from "./player.ts";
 import { SUBS, TICK_MS, TILE } from "./paint.ts";
 import { RESTORE_HOLD_MS } from "./cards/resolution.ts";
 import { VERDICT_MS } from "./cards/overlay-css.ts";
-import { AWAKEN_ROUNDS, JOY_TICKS, SETTLE_TICKS, WAVE_EVERY_TICKS } from "./entities.ts";
+import { AWAKEN_ROUNDS, JOY_TICKS, SETTLE_TICKS, WAVE_EVERY_TICKS, roamZone } from "./entities.ts";
 import {
   AWAKEN_FLOOD_WASH, AWAKEN_ROOM_MS, AWAKEN_ROOM_PEAK, AWAKEN_ROOM_RISE_MS, AWAKEN_STEP_WASH,
   CAGE_OPEN_TICKS, COLOUR_FLOOD_TICKS, FLOOD_BLOOM_PEAK, FLOOD_BLOOM_PEAK_AT,
@@ -172,7 +172,15 @@ describe("PK-R6 · D · the reawakening sequence", () => {
     expect(washAlphaFor(merle, true)).toBe(0); // reduced motion: already finished
   });
 
-  it("afterwards she STAYS — settle → joy → her spot, waving now and then", () => {
+  // R5-W4 · F5 · R49 · DAS GESETZ HAT SICH GEÄNDERT, DER TEST ZIEHT MIT.
+  // Bis hierher stand hier „und verlässt nie ihren Fleck" (`m.x === homeX`).
+  // Das Ruling R49 (Spine Beat 9, doc 44 §1) ersetzt das: Befreite bleiben in
+  // ihrem RAUM, bewegen sich aber. Der Fleck wird also zur ZONE — abgeleitet aus
+  // dem Gitter, nicht getippt (entities.roamZone). Was der Test schützt, ist
+  // unverändert: sie verschwindet nicht, sie wandert nicht aus dem Level, und
+  // ihre Zellen sind ihre eigenen. Was ein neues Gesetz erlaubt, muss der alte
+  // Test erlauben — sonst schiebt der nächste Leser das Gesetz zurück.
+  it("afterwards she STAYS — settle → joy → ihr Raum, waving now and then", () => {
     const sim = newSim();
     let req = taskOf(openTheCage(sim))!;
     for (let i = 0; i < AWAKEN_ROUNDS; i++) {
@@ -183,15 +191,20 @@ describe("PK-R6 · D · the reawakening sequence", () => {
     sim.setOverlay(false); // the ceremony card is put down; the world runs again
 
     const seen = new Set<string>();
-    const homeX = merleOf(sim).homeX;
+    const merle0 = merleOf(sim);
+    const zone = roamZone(sim.grid, merle0.homeX, merle0.homeY);
     for (let t = 0; t < SETTLE_TICKS + JOY_TICKS + WAVE_EVERY_TICKS + 200; t++) {
       sim.step(pad());
       const m = merleOf(sim);
       seen.add(m.state);
       expect(m.hidden).toBe(false); // never leaves the page
-      expect(m.x).toBe(homeX); // and never leaves her spot
+      // R49: nicht mehr der Fleck, sondern der RAUM — und der ist aus dem
+      // Gitter abgeleitet, also kann dieser Test nicht mit einer getippten
+      // Zahl auseinanderlaufen.
+      expect(m.x).toBeGreaterThanOrEqual(zone.minX);
+      expect(m.x).toBeLessThanOrEqual(zone.maxX);
     }
-    expect([...seen].sort()).toEqual(["joy", "rest", "settle", "wave"]);
+    expect([...seen].sort()).toEqual(["joy", "rest", "roam", "settle", "wave"]);
     // …and the cells she shows are her own painted ones, not a fallback
     expect(classmateCell("settle", 0)).toBe("settle0");
     expect(classmateCell("joy", 0)).toBe("joy");
