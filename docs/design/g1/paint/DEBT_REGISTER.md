@@ -218,3 +218,76 @@ Häuser mit derselben Hausnummer. Alle Verweise sind mitgezogen.
 | D-107 | Boss-Karte `boss.m2` — die Grammatik-Stufe der Verneinung | Zwei blinde Prüfer unabhängig: »Not speak!« → »Don't speak!« verlangt die Regel »don't + Verb«, die deutlich über dem Rest der Batterie liegt (sonst Vokabel-Zuordnung), und die wörtliche deutsche Entsprechung (»Nicht sprechen!«) stützt ausgerechnet die FALSCHE Form. Das Grounding-Feld nennt die Regel als bewussten commonError von Unit 1. | Prüfen, ob Unit 1 die Verneinung wirklich trägt (Korpus-Frage, nicht Gate-Frage) — wenn ja, bleibt die Karte; wenn nein, gehört sie in ein späteres Kapitel. | Korpus-Abgleich `g1u01.s.imperatives`, dann ggf. Karten-Tausch | R5-W3 G2 · zwei blinde Prüfer |
 | D-108 | Die Blind-Löser-Projektion kann kein BILD zeigen (`renderTaskText`) | Zwei Prüfer nannten `boss.m1` unabhängig »nicht lösbar«, weil im Text nicht steht, WER spricht — am Bildschirm ist es unübersehbar (ihr Porträt auf der Karte, dieselbe Tafel im Raum, beide fotografiert in `REPORTS/REPORT_G2_2026-08-14/`). Die Projektion trägt `showsDe`, aber nie das Porträt (`stimulus.art`). Jedes Text-Urteil über eine Karte, deren Antwort am Bild hängt, ist damit strukturell unvollständig. | Entweder die Projektion nennt den Sprecher (Klartext, nicht den Stem-Namen), oder Blind-Runden über bild-getragene Karten laufen künftig am Bildschirm statt am Text. | `renderTaskText` in `packages/content-schema/src/game-tasks.ts` (dort ist in G2 schon die fehlende Verbesserungs-Zeile ergänzt worden) | R5-W3 G2 · zwei blinde Prüfer konvergent |
 | D-109 | Antwort-Positionen und Wiederholungen in den oddone-Karten | Blinde Prüfer, zwei Beobachtungen: (a) über die sieben oddone-Karten steht die richtige Antwort NIE an Position 2 (Positionen 1,3,3,3,1,4,4) — wer das Muster merkt, rät mit 33 % statt 25 %; (b) »chair« ist bei zwei aufeinanderfolgenden Karten die Antwort. Beides ist Varietäts-Recht (Schichten 13–17), nicht Verrats-Recht — G1s Revier. | Prüfen, ob die Varietäts-Gesetze eine Positions-Streuung fordern sollten (die Positions-Regel 16e gibt es für Merles Runden bereits). | `variety.ts` + `game-tasks-variety-policy.json` | R5-W3 G2 · blinde Prüfer |
+
+## R5-W4 · DIE ZEHN ABSCHNITTE (Fable, 2026-08-15) — vorab angelegt, damit zehn parallele Sessions nicht am Datei-Ende kollidieren
+Jede Welle-4-Session trägt ihre Schulden NUR in ihren eigenen Abschnitt unten ein und vergibt NUR Nummern aus ihrem reservierten Block (Reservierung ist eine Prosa-Zeile, keine Tabellenzeile — `check-registers` zählt nur `| D-nnn |`-Zeilen). PB-Nummern vergibt ausschließlich K2. Herkunft: `RAHMEN_WELLE4.md` §4.4 (PLATFORM MASTER/SESSION-PROMPTS/R5-OPUS-WAVE-2026-08-11/).
+
+## R5-W4 · W2 — Werkzeug-Wahrheit II (2026-08-15)
+
+Reserviert: D-110…D-119. (Die Session füllt die Tabelle unten; leer = noch nichts gefiled.)
+
+| Nr. | Befund | Beleg | Fix | Wer/wann | Herkunft |
+|---|---|---|---|---|---|
+
+## R5-W4 · K2 — Kanon & Register II (2026-08-15)
+
+Reserviert: D-120…D-129. (Die Session füllt die Tabelle unten; leer = noch nichts gefiled.)
+
+| Nr. | Befund | Beleg | Fix | Wer/wann | Herkunft |
+|---|---|---|---|---|---|
+
+## R5-W4 · C2 — Copy & Farb-Wahrheit (2026-08-15)
+
+Reserviert: D-130…D-139. (Die Session füllt die Tabelle unten; leer = noch nichts gefiled.)
+
+| Nr. | Befund | Beleg | Fix | Wer/wann | Herkunft |
+|---|---|---|---|---|---|
+
+## R5-W4 · G3 — Wortschatz-Vollständigkeit (2026-08-15)
+
+Reserviert: D-140…D-149. (Die Session füllt die Tabelle unten; leer = noch nichts gefiled.)
+
+| Nr. | Befund | Beleg | Fix | Wer/wann | Herkunft |
+|---|---|---|---|---|---|
+
+## R5-W4 · I2 — Regel-Seiten & Sammel-Bilanz (2026-08-15)
+
+Reserviert: D-150…D-159. (Die Session füllt die Tabelle unten; leer = noch nichts gefiled.)
+
+| Nr. | Befund | Beleg | Fix | Wer/wann | Herkunft |
+|---|---|---|---|---|---|
+
+## R5-W4 · B4 — Level-Logik/Geometrie/Persistenz (2026-08-15)
+
+Reserviert: D-160…D-169. (Die Session füllt die Tabelle unten; leer = noch nichts gefiled.)
+
+| Nr. | Befund | Beleg | Fix | Wer/wann | Herkunft |
+|---|---|---|---|---|---|
+
+## R5-W4 · F5 — Animation/Posen/Feel (2026-08-15)
+
+Reserviert: D-170…D-179. (Die Session füllt die Tabelle unten; leer = noch nichts gefiled.)
+
+| Nr. | Befund | Beleg | Fix | Wer/wann | Herkunft |
+|---|---|---|---|---|---|
+
+## R5-W4 · A6 — Bild/Kanten/Tinte (2026-08-15)
+
+Reserviert: D-180…D-189. (Die Session füllt die Tabelle unten; leer = noch nichts gefiled.)
+
+| Nr. | Befund | Beleg | Fix | Wer/wann | Herkunft |
+|---|---|---|---|---|---|
+
+## R5-W4 · H2 — Die Tafel II (2026-08-15)
+
+Reserviert: D-190…D-199. (Die Session füllt die Tabelle unten; leer = noch nichts gefiled.)
+
+| Nr. | Befund | Beleg | Fix | Wer/wann | Herkunft |
+|---|---|---|---|---|---|
+
+## R5-W4 · D3 — Karten-UI III (2026-08-15)
+
+Reserviert: D-200…D-209. (Die Session füllt die Tabelle unten; leer = noch nichts gefiled.)
+
+| Nr. | Befund | Beleg | Fix | Wer/wann | Herkunft |
+|---|---|---|---|---|---|
