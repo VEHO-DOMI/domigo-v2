@@ -359,3 +359,114 @@ Gemeinte, und genau das sieht eine Bereichsprüfung nie.
 Sie sind auf die Form `` `datei#symbol` `` umgestellt und werden von
 `scripts/check-registers.mjs` maschinell geprüft. **Neue Verweise bitte nur in dieser
 Form** — eine Zeilennummer altert still, ein Symbolname nicht.
+
+---
+
+## §Amendments (R5-W4 · H2, 2026-08-15) — ALS GEBAUT
+
+Kokis Replay vom 15.08. hat die Lore dieses Raums umgeworfen (**Ruling R50**), und
+damit auch drei Zusagen dieses Dossiers eingelöst, die seit R5-P1 als Vertrag
+dastanden. Was hier steht, ist gebaut und mit Gesetzen belegt — keine Absicht.
+
+### B1 · Die Tafel ist VOLLGEKRITZELT, nicht verknotet
+
+Aus „drei Knoten, die ihr die Tinte gemacht hat" werden **drei Kritzel-Schichten,
+die niemand je weggewischt hat**. Die Mechanik des Kampfes bleibt Wort für Wort:
+Flug, Telegraph, Kreide, drei Ausweicher, Fenster, Karte, Sinken, HELLO. Was
+dazukommt, ist der **zweite Schritt einer gelösten Karte**:
+
+> Karte gelöst → sie setzt sich auf die Bretter (`entities.ts#guardianKnotSolved`
+> → Zustand `settle`) → sie wartet (`wipeable`) → **das Kind geht hin und berührt
+> sie** → `wipe` → jetzt erst fällt die Schicht.
+
+`hp` sinkt an **genau einer Stelle im ganzen Paket**: am Ende des Wischens. Damit
+ist „die Karte zählt nur mit dem Wischen" keine Reihenfolgen-Behauptung, sondern
+eine Eigenschaft der Maschine.
+
+**Der Rückweg ist gebaut, nicht versprochen:** wer nicht hingeht, verliert die
+Karte — nie die Welt. Nach `entities.ts#wipeWaitTicksFor` hebt sie mit der Schicht
+wieder ab, das nächste Fenster kommt. Die Wartezeit ist HERGELEITET: die Zeit, die
+ein **gehendes** Kind für die ganze Bühne braucht (`walkMax`, nicht `runMax` —
+§1s Absicht, das Examen verlangt keine Kür), plus einen Knoten-Takt. Für die
+ausgelieferte Bühne sind das 381 Ticks; mit dem echten Tempo dieses Kapitels hat
+das Kind mehr als die doppelte Zeit.
+
+**Auslöser ist die BERÜHRUNG, nicht ↑.** Kokis Satz sagt „wenn sie unten ist und
+man zu ihr geht". ↑ hätte die Tafel in `entities.ts#ENGAGEABLE_ROLES` gezogen,
+mitsamt der ↑-Wolke und einer Ausnahme im Selbstfahr-Gesetz.
+
+### B2 · Sie kommt auf den BODEN DES KINDES herunter (Fund, gemessen)
+
+Der Dip suchte seine Lage bisher nur nach `DIP_STANDOFF_PX` und der Bühnenklemme.
+Seit dem Wischen ist die Dip-Lage auch ihr **Landeplatz**, und gemessen an einem
+echten Lauf gingen dadurch **zwei von fünf Fenstern verloren**: sie stand auf einem
+Kreide-Kisten-Podest (y 224), das Kind auf dem Boden davor (y 256) — 32 px höher,
+hinter einer Voll-Säule, 42 bis 61 px entfernt. Das Kind lief gegen die Kiste und
+kam nie in Reichweite; die Karte war beantwortet und verfiel trotzdem.
+
+`entities.ts#stepEntities` (Dip-Zweig) wählt ihre Lage jetzt auf der **Fläche, auf
+der das Kind steht**: erst die Seite, zu der sie ohnehin lehnt, sonst die andere,
+sonst die Spalte des Kindes. Nachgemessen danach: 3 Fenster, 3 Wischen, 0 verpasst.
+
+### B3 · Die Knoten-Schnur ist weg — der Fortschritt sitzt auf IHR
+
+`PaintScene.ts#renderKnotCord` zeichnete eine Schnur mit Knoten über ihrem Kopf.
+Sie war gut gebaut und sie war das falsche Bild. Der Fortschrittsmesser bleibt, er
+wandert nur dorthin, wo er hingehört: **drei Kritzel-Schichten auf ihrer Fläche**,
+die nächste zu wischende etwas heller. Nebenbei ein Perf-Gewinn: die Schnur
+emittierte 60 bis 75 Strichbefehle **pro Bild** (E5s gemessene Klasse), die
+Schichten sind gebacken und kosten drei `setPosition`.
+
+Die Zeichnung ist **prozedural** — Codex **AQ13** liefert die gemalten Blätter
+(`tafel_scribble`, `tafel_wipe`, `tafel_faces_scribbled`) und ersetzt sie dann.
+Drei Zahlen daraus sind am Bild gemessen und gehören in die Bestellung: die
+Schiefertafel misst rund **23 × 38 Welt-px**, sie sitzt rund **8 px höher** als
+`PaintScene.ts#boardAnchor` (der Anker des Beweistextes), und gebacken wird in
+**Geräte-Auflösung** (96 px), weil eine 256-px-Textur auf 33 px verkleinert aus
+Kreidestrichen einen Schmierfleck macht.
+
+### B4 · Der Sieg-Trakt ist eingelöst (D-39, §5 „der Saal antwortet", §10)
+
+Drei Zusagen, alle gebaut in `PaintScene.ts#renderVictoryTract`:
+1. **Das Klassenfoto hängt nach dem Sieg in Farbe im Käfig.** Vorher die graue
+   Silhouette (`captive_picture`, §5s „Verlockung"), danach das Bild selbst
+   (`obj_picture` — bezahlt, gemalt, und bis heute von nichts geladen). Die eine
+   nötige Zeile steht im Guardian-Zweig von `artScope.ts#phaseArtScope`; die
+   Tot-Kunst-Zahl fällt damit von 61 auf 60.
+2. **Warmes Licht überm Stuhl-Band**, einmal gezeichnet, danach eingeblendet.
+3. **Das ✕ erscheint erst nach dem Sieg.** Vorher hing dort ein Ausgang, der
+   sichtbar war, ansteuerbar war und dann per Toast abwies — eine Enttäuschung
+   mit Wegbeschreibung.
+
+### B5 · Die Batterie ist doppelt so gross (Kokis F-36)
+
+Sechs Boss-Karten werden **dreizehn**. §9s Tabelle gilt weiter, ergänzt um:
+Befehl (»Clean!« — die Aufgabe des Kapitels als Karte), Kurzform, Frage nach dem
+Namen, ein zweites Ausschluss-Rätsel, einen Mehrzahl-Fehler, Höflichkeit und eine
+zweite Zahl-Karte.
+
+**Wo sie stehen, ist ein Gesetz, kein Geschmack:** `check-game-tasks` spielt den
+echten Router `knots`-mal ab einem frischen Cursor durch und verlangt eine
+Zahl-Antwort darunter (§Übergabe, die Zahlen-Zusage an p3). Neue Karten VOR der
+Zahl-Karte hätten sie auf Platz ≥4 geschoben und das Tor rot gemacht. Neu ist
+deshalb `cards/boss-router.test.ts`, das genau diese Bedingung festhält — und ein
+Tamper hat sie rot gesehen.
+
+### B6 · A2 ist geschlossen: die Scherbe holt das Kind ein (D-86)
+
+Der offene Feel-Befund aus §Amendments A2 ist entschieden. `SKID_SPEED` war
+0,875 px/t gegen ein Kind mit 2,25 px/t — die Scherbe hat ihr Ziel nie erreicht
+und tat damit genau das nicht, wofür sie gebaut wurde. Sie rutscht jetzt mit dem
+**Tempo des Kindes**: Weglaufen verschafft Abstand, aber keinen Ausweg, und der
+Ausweg bleibt der Sprung. Nicht schneller — eine Scherbe, die einholt, obwohl man
+wegläuft, wäre eine Strafe fürs Laufen.
+
+### B7 · Zwei stille Daten sind weg
+
+`params.knots` im Level war **totes Datum** (repoweit null Leser; die Zahl kommt
+aus `entities.ts#GUARDIAN_SCRIPT`) — gestrichen. Und die vier Knoten-Reihen
+(`KNOT_PATHS`, `KNOT_SPAN_PX`, `KNOT_PERIOD_TICKS`, `KNOT_RATE`) waren drei
+Einträge lang, während die Stufen M und S vier und fünf Schichten stellen: ihre
+letzten Schichten flogen die Werte der dritten. Alle vier Reihen sind jetzt fünf
+lang, begründet extrapoliert, mit zwei neuen Bahnen (`clover`, `bolt`) — und ein
+Gesetz hält fest, dass die vier Reihen **gleich lang** bleiben.

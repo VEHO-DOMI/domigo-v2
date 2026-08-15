@@ -1581,10 +1581,10 @@
    ],
    "stimulus": {
     "type": "entity",
-    "showsDe": "Sie hält dir ihre vollgekritzelte Seite hin.",
+    "showsDe": "Ihre Tafelfläche ist voller alter Kritzel.",
     "art": "tafel_land1"
    },
-   "storyDe": "Sag ihr auf Englisch, was sie jetzt braucht!",
+   "storyDe": "Welcher Befehl passt jetzt zu ihr?",
    "options": [
     "Clean!",
     "Open!",
@@ -1598,7 +1598,7 @@
     "p4"
    ],
    "hints": {
-    "deDesc": "Denk daran, was du gleich mit ihr tust."
+    "deDesc": "Sag ihr, was mit der Fläche geschehen soll."
    },
    "grounding": "u01 to-clean + imperatives (SB p. 15). Die Aufgabe des Kapitels als Befehl — Kokis »Clean the board!«."
   },
@@ -1613,7 +1613,7 @@
    ],
    "stimulus": {
     "type": "entity",
-    "showsDe": "Drei Sätze über sich selbst stehen auf ihr.",
+    "showsDe": "Ein Satz steht dreimal auf ihr, verschieden.",
     "art": "tafel_land1"
    },
    "storyDe": "Welcher Satz ist richtig geschrieben?",
@@ -1717,10 +1717,10 @@
    ],
    "stimulus": {
     "type": "entity",
-    "showsDe": "Sie zählt die leeren Sitzmöbel im Saal.",
+    "showsDe": "Sie zählt, was im Saal alles herumsteht.",
     "art": "tafel_land1"
    },
-   "storyDe": "Ein Wort ist falsch geschrieben — tipp es an!",
+   "storyDe": "Ein Wort hat die falsche Form — tipp es an!",
    "sentence": [
     "Here",
     "are",
@@ -1745,7 +1745,7 @@
     "p4"
    ],
    "hints": {
-    "deDesc": "Bei mehr als einem ändert sich das Wort am Ende."
+    "deDesc": "Bei mehr als einem ändert sich das Wortende."
    },
    "grounding": "u01 plurals (SB p. 12). Der Saal steht voller davon — die Welt zeigt die Mehrzahl.",
    "evidence": [
@@ -1798,10 +1798,10 @@
    ],
    "stimulus": {
     "type": "entity",
-    "showsDe": "Sie kritzelt eine Reihe Striche auf sich.",
+    "showsDe": "Sie kritzelt Zahlen der Reihe nach auf sich.",
     "art": "tafel_land1"
    },
-   "storyDe": "Zähl ihre Striche — wie viele sind es?",
+   "storyDe": "Was kommt nach seven?",
    "promptEn": "How many?",
    "options": [
     "eight",
@@ -1816,9 +1816,9 @@
     "p4"
    ],
    "hints": {
-    "deDesc": "Zähl langsam, einen Strich nach dem anderen."
+    "deDesc": "Zähl in Gedanken weiter — eins nach dem anderen."
    },
-   "grounding": "u01 numbers + how-many; zweite Einlösung der Zahlen-Zusage der Arena."
+   "grounding": "u01 numbers + how-many; die Reihenfolge der Zahlwoerter, ohne dass ein Bild sie tragen muss."
   },
   {
    "id": "g1.paint.ch01.boss.q1",
