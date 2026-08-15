@@ -73,6 +73,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { PNG } from "pngjs";
+import assert from "node:assert/strict";
 
 // D-69 (vor der K1-Entdopplung: D-33) asked for exactly this one line: the lab root is overridable, so the
 // import can be pointed at a fixture copy and TAMPER-TESTED without anyone
@@ -550,11 +551,18 @@ const toneTo = (png, target) => {
 };
 
 const rememberBody = (stem, L) => {
-  if (!/^mass_body_p1_/.test(stem)) return;
+  // R5-W4b · A6b: was `/^mass_body_p1_/`. Generalised to any phase so `--verify`
+  // can anchor p2/p3/p4/p9's trims to THEIR OWN body instead of p1's paper. The
+  // live import is unaffected — `SHEETS` still carries p1 alone — but the moment
+  // a second phase lands, "the body" has to mean that phase's body.
+  if (!/^mass_body_p\d+_/.test(stem)) return;
   bodyRef.lumas.push(L);
   bodyRef.mean = bodyRef.lumas.reduce((a, b) => a + b, 0) / bodyRef.lumas.length;
   bodyRef.spread = Math.max(...bodyRef.lumas) - Math.min(...bodyRef.lumas);
 };
+
+/** start a fresh body anchor — one per phase when several are measured in a run */
+const resetBody = () => { bodyRef.lumas = []; bodyRef.mean = 0; bodyRef.spread = 0; };
 
 // ── HELD AGAIN, AND THIS TIME THE GEOMETRY IS PROVEN GOOD ────────────────────
 // The block below imports cleanly: the boxes are re-measured, the sides tile
@@ -733,6 +741,143 @@ const cutPiece = (png, sheet, pos, stem, opt = {}) => {
   return { img, faults, L, S, seam, key, tone };
 };
 
+/**
+ * ── `--verify`: RUN THE GATE WITHOUT IMPORTING (R5-W4b · A6b) ────────────────
+ *
+ * AS5 arrived with a Lieferschein that reports every seam as `0.0`. It is not
+ * lying and it is not right: it measures the join the naive way — last row
+ * against first — which is the exact cheat `selfTile`'s profile exists to
+ * defeat. Its own proof image, `tile_proof_p1.png`, shows a hard dark bar at
+ * every junction it scores 0.0.
+ *
+ * So the answer is not a paragraph in a report telling the lab what the gate
+ * wants. It is the gate, runnable:
+ *
+ *   node docs/art/import-batch-as.mjs --verify            # every phase
+ *   node docs/art/import-batch-as.mjs --verify --phase=p3
+ *   CODEX_LAB=/somewhere node … --verify --batch=batch-as5b
+ *
+ * It writes NOTHING. Every cell goes through `cutPiece` — the shipping cut, the
+ * shipping key health, the shipping windows, the shipping seam profile — and the
+ * verdict printed is the verdict an import would reach. A delivery can therefore
+ * be judged before it is accepted, and a re-order can prove itself before it is
+ * sent.
+ *
+ * The boxes below are the LIEFERSCHEIN's own declared bounding boxes, not boxes
+ * re-derived here. That is deliberate: §10.4 makes the delivery name its boxes,
+ * and this is where that claim gets tested (`boxFaults` fails a box that carries
+ * key on any side). Measuring our own box instead would silently repair the one
+ * thing the supplier is contractually responsible for.
+ */
+const AS5_EDGE_BOXES = {
+  p1: { edgeL: [0, 0, 134, 511], edgeR: [890, 0, 1023, 511], edgeD_l: [1024, 366, 1535, 511], edgeD_r: [1536, 366, 2047, 511], cornerBL: [0, 512, 255, 1023], cornerBR: [768, 512, 1023, 1023], inCornerL: [1024, 762, 1279, 1023], inCornerR: [1792, 762, 2047, 1023] },
+  p2: { edgeL: [0, 0, 134, 511], edgeR: [890, 0, 1023, 511], edgeD_l: [1024, 366, 1535, 511], edgeD_r: [1536, 366, 2047, 511], cornerBL: [0, 512, 255, 1023], cornerBR: [768, 512, 1023, 1023], inCornerL: [1024, 762, 1279, 1023], inCornerR: [1792, 762, 2047, 1023] },
+  p3: { edgeL: [0, 0, 264, 511], edgeR: [850, 0, 1023, 511], edgeD_l: [1024, 354, 1535, 511], edgeD_r: [1536, 357, 2047, 511], cornerBL: [0, 512, 384, 1023], cornerBR: [728, 512, 1023, 1023], inCornerL: [1024, 752, 1390, 1023], inCornerR: [1756, 752, 2047, 1023] },
+  p4: { edgeL: [0, 0, 134, 511], edgeR: [890, 0, 1023, 511], edgeD_l: [1024, 362, 1535, 511], edgeD_r: [1536, 362, 2047, 511], cornerBL: [0, 512, 255, 1023], cornerBR: [768, 512, 1023, 1023], inCornerL: [1024, 757, 1279, 1023], inCornerR: [1792, 757, 2047, 1023] },
+  p9: { edgeL: [0, 0, 136, 511], edgeR: [887, 0, 1023, 511], edgeD_l: [1024, 361, 1535, 511], edgeD_r: [1536, 361, 2047, 511], cornerBL: [0, 512, 259, 1023], cornerBR: [764, 512, 1023, 1023], inCornerL: [1024, 756, 1283, 1023], inCornerR: [1788, 756, 2047, 1023] },
+};
+/** the ramp sheet is one box for every phase — a stepped wedge inside a keyed cell */
+const AS5_RAMP_BOX = [26, 119, 486, 511];
+/** cell → stem suffix, seam axis, and how much of the box may legally be key */
+const AS5_EDGE_CELLS = [
+  [0, "edge", "_l", "v", 0.90], [1, "edge", "_r", "v", 0.90],
+  [2, "edgeD", "_l", "h", 0.90], [3, "edgeD", "_r", "h", 0.90],
+  [4, "corner", "_bl", null, 0.55], [5, "corner", "_br", null, 0.55],
+  [6, "incorner", "_l", null, 0.55], [7, "incorner", "_r", null, 0.55],
+];
+
+const as5Sheets = (phase, batch) => {
+  const boxes = AS5_EDGE_BOXES[phase];
+  const out = [];
+  // p1's interior is already imported and accepted; AS5 re-delivers only its
+  // trims. Its body anchor therefore comes off disk, not off this batch.
+  if (phase !== "p1") {
+    out.push({
+      file: `${batch}/mass_body_${phase}.png`, cols: 4, rows: 2, mode: "opaque",
+      pieces: [
+        ...["a", "b", "c", "d"].map((c, i) => [i, `mass_body_${phase}_${c}`, { luma: [42, 50], tiles: true }]),
+        ...["a", "b", "c", "d"].map((c, i) => [i + 4, `mass_bodydeep_${phase}_${c}`, { luma: [26, 38], tiles: true }]),
+      ],
+    });
+    out.push({
+      file: `${batch}/mass_deep_${phase}.png`, cols: 4, rows: 1, mode: "opaque",
+      pieces: [
+        [0, `mass_fade_${phase}_a`, { luma: [12, 18], tiles: true }],
+        [1, `mass_fade_${phase}_b`, { luma: [12, 18], tiles: true }],
+        [2, `mass_sediment_${phase}`, { luma: [7, 10], sat: 12, tiles: true }],
+        // cell 3 is the declared reserve — no engine consumer, so not measured
+      ],
+    });
+  }
+  out.push({
+    file: `${batch}/mass_edges_${phase}.png`, cols: 4, rows: 2, mode: "keyed",
+    pieces: AS5_EDGE_CELLS.map(([pos, cls, suf, axis, alpha]) => [
+      pos, `mass_${cls}_${phase}${suf}`,
+      { box: boxes[["edgeL", "edgeR", "edgeD_l", "edgeD_r", "cornerBL", "cornerBR", "inCornerL", "inCornerR"][pos]], aboveBody: [6, 12], alpha, ...(axis === null ? {} : { tiles: axis }) },
+    ]),
+  });
+  out.push({
+    file: `${batch}/mass_ramps_${phase}.png`, cols: 4, rows: 1, mode: "keyed",
+    pieces: [
+      [0, `mass_ramp_${phase}_up`, { box: AS5_RAMP_BOX, aboveBody: [6, 12], alpha: 0.45 }],
+      [1, `mass_ramp_${phase}_down`, { box: AS5_RAMP_BOX, aboveBody: [6, 12], alpha: 0.45 }],
+    ],
+  });
+  return out;
+};
+
+/** seed the body anchor from art already on disk — p1's paper is canon, not a delivery */
+const seedBodyFromDisk = (phase) => {
+  resetBody();
+  for (const c of ["a", "b", "c", "d"]) {
+    const p = path.join(OUT, `mass_body_${phase}_${c}.png`);
+    if (fs.existsSync(p)) rememberBody(`mass_body_${phase}_${c}`, luma(read(p)));
+  }
+  return bodyRef.lumas.length;
+};
+
+if (process.argv.includes("--verify")) {
+  const arg = (name, dflt) => (process.argv.find((a) => a.startsWith(`--${name}=`)) ?? `--${name}=${dflt}`).split("=")[1];
+  const batch = arg("batch", "batch-as5");
+  const only = process.argv.some((a) => a.startsWith("--phase=")) ? [arg("phase", "p1")] : ["p1", "p2", "p3", "p4", "p9"];
+  const tally = { pass: 0, fail: 0, missing: 0 };
+  const orders = [];
+
+  console.log(`\nVERIFY — ${batch} against the gate an import would apply. Nothing is written.\n`);
+  for (const phase of only) {
+    const seeded = phase === "p1" ? seedBodyFromDisk("p1") : (resetBody(), 0);
+    console.log(`\n── ${phase} ${"─".repeat(72)}`);
+    if (seeded > 0) console.log(`   body anchor from disk: ${bodyRef.mean.toFixed(2)} % over ${seeded} variants (spread ${bodyRef.spread.toFixed(2)})`);
+    for (const sheet of as5Sheets(phase, batch)) {
+      const src = path.join(LAB, sheet.file);
+      if (!fs.existsSync(src)) { console.log(`   ✗ MISSING  ${sheet.file}`); tally.missing++; continue; }
+      const png = read(src);
+      console.log(`\n   ${sheet.file}  ${png.width}×${png.height}  ${sheet.mode}`);
+      for (const [pos, stem, opt = {}] of sheet.pieces) {
+        const cut = cutPiece(png, sheet, pos, stem, opt);
+        if (cut.img !== null) { rememberBody(stem, cut.L); measured.set(stem, cut.L); }
+        const axes = seamAxes(opt.tiles);
+        const seam = cut.seam === null || axes.length === 0
+          ? "—"
+          : axes.map((ax) => `${ax} ${(cut.seam[ax] / cut.seam.inner).toFixed(2)}× climb ${(cut.seam[`${ax}Jump`] / cut.seam.inner).toFixed(2)}×`).join(" ");
+        const win = opt.luma ?? (opt.aboveBody === undefined ? null : bodyWindow(opt.aboveBody));
+        const ok = cut.faults.length === 0;
+        if (ok) tally.pass++; else { tally.fail++; orders.push(`${stem}: ${cut.faults[0]}`); }
+        console.log(
+          `     Z${pos} ${stem.padEnd(24)} L ${cut.L.toFixed(2).padStart(6)}%` +
+          `  ${(win === null ? "—" : `${win[0].toFixed(1)}–${win[1].toFixed(1)}`).padStart(13)}` +
+          `  ${seam.padEnd(38)} ${ok ? "✓" : "✗"}`,
+        );
+        for (const f of cut.faults) console.log(`          ↳ ${f}`);
+      }
+    }
+  }
+  console.log(`\n${"═".repeat(84)}`);
+  console.log(`  ${tally.pass} cell(s) PASS · ${tally.fail} FAIL · ${tally.missing} sheet(s) missing`);
+  console.log(`\n  A cell that fails here would fail the import. The list above IS the re-order.\n`);
+  process.exit(tally.fail > 0 || tally.missing > 0 ? 1 : 0);
+}
+
 // ── selftest ─────────────────────────────────────────────────────────────────
 // The red light this import must be able to show is not hypothetical — it is the
 // exact mistake the round inherited. So the selftest cuts the DELIVERED sheet
@@ -762,6 +907,40 @@ if (process.argv.includes("--selftest")) {
   // …and the axis must actually discriminate: a side edge does NOT tile
   // left↔right, so asking for the wrong axis has to fail. If it passed, the
   // axis option would be decoration.
+  // ── AND THE CHEAT ITSELF HAS TO GO RED (R5-W4b · A6b) ──────────────────────
+  // Everything above proves the check can see an OPEN seam. It does not prove it
+  // can see a HIDDEN one — and a hidden seam is what batch AS5 actually shipped:
+  // every one of its 24 tiling cells reports a join of exactly 0.00 and jumps
+  // 5–57× its own texture step one row further in. A naive "last row against
+  // first" check scores all of them perfect.
+  //
+  // So the cheat is MANUFACTURED here, from art already in this file's
+  // dependency set, on the case where right and plausibly-wrong diverge: take
+  // the stale box, which is known not to tile (join 65.09), and copy its top
+  // boundary row onto its bottom one. The naive number becomes 0.00 — flawless —
+  // and the picture is unchanged one row in. If the profile check were deleted,
+  // this case would PASS. That is the whole point of it.
+  const dupBoundaryRow = (src, box) => {
+    const [bx0, by0, bx1, by1] = box;
+    const copy = crop(src, 0, 0, src.width, src.height);
+    for (let x = bx0; x <= bx1; x++) {
+      const from = (by0 * copy.width + x) * 4, to = (by1 * copy.width + x) * 4;
+      for (let o = 0; o < 4; o++) copy.data[to + o] = copy.data[from + o];
+    }
+    return copy;
+  };
+  const honest = cutPiece(png, sheet, 0, "cheat_before", { box: STALE_SIDE_BOXES.edgeL, tiles: "v" });
+  const cheat = cutPiece(dupBoundaryRow(png, STALE_SIDE_BOXES.edgeL), sheet, 0, "cheat_after", { box: STALE_SIDE_BOXES.edgeL, tiles: "v" });
+  // A tamper that changed nothing proves nothing — so prove it changed.
+  assert(honest.seam.tb > 50, `tamper fixture is wrong: the stale box was expected to join badly, it joins at ${honest.seam.tb.toFixed(2)}`);
+  assert(cheat.seam.tb < 0.01, `the tamper did not take: the duplicated row still joins at ${cheat.seam.tb.toFixed(2)}, so this case tests nothing`);
+  if (!cheat.faults.some((f) => f.includes("HIDDEN"))) {
+    bad++;
+    console.error(`✗ hidden seam: a join of ${cheat.seam.tb.toFixed(2)} with a ${cheat.seam.tbJump.toFixed(2)} jump behind it was ACCEPTED — the profile check is decoration`);
+  } else {
+    console.log(`✓ hidden seam: duplicating the boundary row turns a ${honest.seam.tb.toFixed(2)} join into ${cheat.seam.tb.toFixed(2)} — and it is still REJECTED, because the picture jumps ${cheat.seam.tbJump.toFixed(2)} behind the duplicate`);
+  }
+
   const wrongAxis = cutPiece(png, sheet, 0, "axis_edgeL", { box: EDGE_BOXES.edgeL, tiles: "h" });
   if (!wrongAxis.faults.some((f) => f.includes("left↔right"))) {
     bad++;
