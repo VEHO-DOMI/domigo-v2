@@ -465,19 +465,99 @@ const CHARGE_MOTES = 9;
 // gemessene Tafelfläche skaliert (`boardAnchor`). 256 × 128 ist reichlich: die
 // Fläche misst im Spiel rund 35 × 18 px, wir backen also mit siebenfacher
 // Dichte und können sie später ohne Neubacken grösser ziehen.
-const SCRIBBLE_W = 256;
-const SCRIBBLE_H = 128;
-const SCRIBBLE_ASPECT = SCRIBBLE_H / SCRIBBLE_W;
+/**
+ * Gebacken wird in der GERÄTE-Auflösung, die das Blatt am Ende wirklich
+ * einnimmt — nicht grosszügig darüber.
+ *
+ * GEMESSEN: die Schiefertafel ist rund 33 logische px breit, die Kamera zoomt
+ * mit RENDER_SCALE (3), also sind das 99 echte Bildschirmpixel. Der erste Bau
+ * buk 256 px und liess sie auf ein Drittel schrumpfen — und eine lineare
+ * Verkleinerung um Faktor acht macht aus feinen Kreidestrichen genau das, was
+ * im Bild zu sehen war: einen rosa Schmierfleck. 96 px trifft die Gerätezeile
+ * fast eins zu eins, also bleibt jeder Strich ein Strich.
+ */
+const SCRIBBLE_W = 96;
+const SCRIBBLE_H = 96;
+/**
+ * Die Fläche ist FAST QUADRATISCH, nicht 2:1 — nachgemessen an der Zelle, die
+ * sie wirklich trägt: `tafel_a` ist 331 × 397, auf GUARDIAN_DISPLAY_H (68) sind
+ * das 57 px Breite, und `GUARDIAN_BOARDS.tafel.wFrac` (0,62) schneidet daraus
+ * 35 px Schiefertafel. Die Höhe der Schiefertafel liegt in derselben Grössen-
+ * ordnung. Ein 2:1-Band lag als schmaler Streifen quer über ihrem Gesicht.
+ */
+const SCRIBBLE_ASPECT = 1;
+/**
+ * Wie gross die Kritzelei GEGEN `boardAnchor.w` ausfällt — beide Zahlen am Bild
+ * gemessen, nicht geschätzt.
+ *
+ * `boardAnchor.w` ist die Breite, auf die der BEWEISTEXT umbricht (0,62 der
+ * Blattbreite), und die ist grosszügiger als die Schiefertafel selbst: im
+ * Aufnahme-Ausschnitt misst die grüne Fläche rund 23 × 38 Welt-px, während
+ * `anchor.w` 33 liefert. Mit einem Quadrat dieser Kantenlänge lagen zwei
+ * Kreidestriche AUSSERHALB des Rahmens, einer quer über den Staffelei-Beinen —
+ * und Kreide, die neben der Tafel in der Luft hängt, liest sich als Fehler,
+ * nicht als Kritzelei. Beide Werte bleiben etwas unter dem Gemessenen, weil sie
+ * sich mit ihr NEIGT und ein Rechteck über Eck mehr Platz braucht.
+ */
+const SCRIBBLE_FIT_W = 0.70;
+const SCRIBBLE_FIT_H = 1.05;
+/**
+ * Wie weit die Kritzelei ÜBER `boardAnchor.y` sitzt, als Anteil der Blatthöhe.
+ *
+ * Auch das ist gemessen, und zwar mit einer Kontrollaufnahme: einmal mit
+ * Kritzelei, einmal mit `alpha = 0` und sonst identisch. Im Kontrollbild trägt
+ * die Tafel nur ihr eigenes Gesicht, und die grüne Fläche liegt zwischen
+ * Bildschirm-y 164 und 284 — ihre Mitte also bei 224, während `boardAnchor.y`
+ * (der Ankerpunkt des BEWEISTEXTES) bei 249 sitzt, rund 8 Welt-px tiefer. Mit
+ * dieser Differenz hing ein Kreidestrich über der Staffelei-Querstange.
+ *
+ * Der Anker selbst bleibt unangetastet: an ihm hängen der Beweistext und das
+ * HELLO, und die sitzen dort seit Wellen richtig. Diese Zahl korrigiert nur die
+ * Kritzelei, die die ganze FLÄCHE braucht statt einer Textzeile.
+ */
+const SCRIBBLE_LIFT_FRAC = 0.12;
 const SCRIBBLE_LAYERS = 3;
-/** Wie viele Striche je Schicht — 0 geht zuletzt weg, 2 zuerst. */
-const SCRIBBLE_STROKES: readonly number[] = [7, 14, 26];
+/**
+ * Wie viele Striche je Schicht — 0 geht zuletzt weg, 2 zuerst.
+ *
+ * GEMESSEN statt geschätzt: der erste Bau (7/14/26 dünne Striche) deckte 1,1 %,
+ * 1,0 % und 1,9 % der Fläche ab. „Über und über vollgekritzelt" ist das nicht —
+ * das sind drei Schmierer. Die Zahlen hier sind gegen die gemessene Deckung
+ * gewählt (siehe `SCRIBBLE_COVER_MIN` im Test): die unterste Schicht ist noch
+ * lesbar als „ein paar Striche", alle drei zusammen lassen kaum Grün übrig.
+ */
+const SCRIBBLE_STROKES: readonly number[] = [12, 21, 33];
+/**
+ * Strichbreite IN DER TEXTUR, als Anteil ihrer Kantenlänge.
+ *
+ * GEFUNDEN AM LEBENDEN SPIEL, und es ist die Falle jedes gebackenen Overlays:
+ * die Textur ist 256 px breit und wird auf rund 27 px gezogen — ein Faktor von
+ * fast zehn. Der erste Bau zeichnete Striche von 1,1 bis 2,6 px, also 0,11 bis
+ * 0,27 px auf dem Schirm: die Kritzelei war da, sie war in den Daten korrekt,
+ * und sie war UNSICHTBAR. Deshalb steht die Breite jetzt als Anteil da und
+ * nicht als Pixelzahl — sie wandert mit, wenn jemand die Backgrösse ändert.
+ */
+const SCRIBBLE_THICK_MIN = 0.045;
+const SCRIBBLE_THICK_VAR = 0.030;
+/**
+ * Die Backversion — sie steht IM Texturschlüssel.
+ *
+ * Ohne sie hat mich diese Datei eine halbe Stunde gekostet: die Textur wird
+ * unter einem festen Schlüssel gebacken und beim nächsten Mal wiederverwendet,
+ * wenn es sie schon gibt. Nach einer Code-Änderung lebte im laufenden Spiel
+ * also weiter die ALTE Kritzelei, und ich habe eine Messung an einem Bild
+ * gemacht, das mein geänderter Code nie gezeichnet hat. Wer die Zeichnung
+ * ändert, zählt hier hoch — dann kann kein Bild mehr aus einem früheren Bau
+ * stammen. (Dieselbe Klasse wie ein Test, der eine stale Datei liest.)
+ */
+const SCRIBBLE_BAKE_V = 7;
 /** Die Kreidefarben je Schicht. Die unterste ist einfarbig (ein Kind hatte nur
  *  ein Stück Kreide), die oberste trägt den ganzen Kasten — so liest sich das
  *  Wegwischen als „da war etwas", nicht als „es wird heller". */
 const SCRIBBLE_PALETTE: readonly (readonly number[])[] = [
-  [0xf1e4c2],
-  [0xf1e4c2, 0xfff3d0, 0xf6d9b0],
-  [0xf1e4c2, 0xffd9d9, 0xd9e8ff, 0xfff0b8, 0xd9ffe4],
+  [0xfff6e2],
+  [0xfff6e2, 0xfff3d0, 0xf6e4c0],
+  [0xfff6e2, 0xfff3d0, 0xffe0e0, 0xdcecff, 0xfff0b8],
 ];
 /** Direkt über ihrem Blatt (das Sprite liegt bei ~7), aber UNTER dem
  *  Beweistext (`giftText` liegt bei 8): die vier Kreide-Wörter, die sie im
@@ -3207,7 +3287,14 @@ export class PaintScene extends Phaser.Scene {
       return;
     }
     const total = GUARDIAN_SCRIPT[g.tier].knots;
-    const left = Math.max(0, Math.min(total, this.world?.guardianKnots ?? total));
+    // `guardianKnots` ist −1, bis der erste Welt-Takt eines Guardians läuft, und
+    // genau dann steht die Welt still: die Arena-Anleitung friert sie ein, und
+    // das Kind liest »sie ist über und über vollgekritzelt«. GEFUNDEN AM
+    // LEBENDEN SPIEL — mit `?? total` allein war die Tafel in diesem einen
+    // Augenblick blitzsauber, also ausgerechnet dort, wo der Satz sie erklärt.
+    // Ein Zähler, der noch nicht gezählt hat, heisst »alle«, nicht »keine«.
+    const counted = this.world?.guardianKnots ?? -1;
+    const left = counted < 0 ? total : Math.max(0, Math.min(total, counted));
     const anchor = this.boardAnchor(g.id);
     if (total <= 0 || anchor === null) {
       for (const s of this.scribbleImgs) s.setVisible(false);
@@ -3220,15 +3307,15 @@ export class PaintScene extends Phaser.Scene {
     // sie liegt heller, damit das Kind sieht, worauf sein Wischen zielt.
     const wiping = g.state === "wipe";
     const t = wiping ? Math.max(0, Math.min(1, g.timer / WIPE_TICKS)) : 0;
-    const w = anchor.w;
-    const h = w * SCRIBBLE_ASPECT;
+    const w = anchor.w * SCRIBBLE_FIT_W;
+    const h = anchor.w * SCRIBBLE_FIT_H * SCRIBBLE_ASPECT;
 
     for (let i = 0; i < this.scribbleImgs.length; i++) {
       const s = this.scribbleImgs[i]!;
       const standing = i < left;
       s.setVisible(standing && img.visible);
       if (!standing) continue;
-      s.setPosition(img.x, anchor.y);
+      s.setPosition(img.x, anchor.y - SCRIBBLE_LIFT_FRAC * img.displayHeight);
       s.setDisplaySize(w, h);
       s.setFlipX(img.flipX);
       s.setRotation(img.rotation);
@@ -3252,7 +3339,7 @@ export class PaintScene extends Phaser.Scene {
     const G = this.knotG;
     const x0 = img.x - w / 2;
     const edge = x0 + w * t;
-    const yTop = anchor.y - h / 2;
+    const yTop = anchor.y - SCRIBBLE_LIFT_FRAC * img.displayHeight - h / 2;
     G.fillStyle(WIPE_DAMP, 0.34);
     G.fillRect(x0, yTop, Math.max(0, w * t), h);
     G.lineStyle(1.6, WIPE_EDGE, 0.85);
@@ -3333,7 +3420,7 @@ export class PaintScene extends Phaser.Scene {
   private ensureScribbles(): void {
     if (this.scribbleImgs.length > 0) return;
     for (let layer = 0; layer < SCRIBBLE_LAYERS; layer++) {
-      const key = `h2-scribble-${this.cfg.phaseId}-${layer}`;
+      const key = `h2-scribble-v${SCRIBBLE_BAKE_V}-${this.cfg.phaseId}-${layer}`;
       if (!this.textures.exists(key)) {
         const g = this.make.graphics({ x: 0, y: 0 }, false);
         this.paintScribbleLayer(g, layer);
@@ -3362,18 +3449,19 @@ export class PaintScene extends Phaser.Scene {
     const rnd = (n: number): number => hash01(n * 2654435761 + layer * 7919 + 13);
     const strokes = SCRIBBLE_STROKES[layer] ?? 8;
     const palette = SCRIBBLE_PALETTE[layer] ?? [0xf1e4c2];
+    const pad = W * 0.06;
     for (let i = 0; i < strokes; i++) {
       const colour = palette[Math.floor(rnd(i * 5 + 1) * palette.length) % palette.length]!;
-      const x = 6 + rnd(i * 11 + 2) * (W - 12);
-      const y = 6 + rnd(i * 13 + 3) * (H - 12);
-      const len = 8 + rnd(i * 17 + 4) * (W / 3);
-      const thick = 1.1 + rnd(i * 19 + 5) * 1.5;
-      g.lineStyle(thick, colour, 0.55 + rnd(i * 23 + 6) * 0.4);
+      const x = pad + rnd(i * 11 + 2) * (W - 2 * pad);
+      const y = pad + rnd(i * 13 + 3) * (H - 2 * pad);
+      const len = W * (0.22 + rnd(i * 17 + 4) * 0.40);
+      const thick = W * (SCRIBBLE_THICK_MIN + rnd(i * 19 + 5) * SCRIBBLE_THICK_VAR);
+      g.lineStyle(thick, colour, 0.6 + rnd(i * 23 + 6) * 0.4);
       const kind = Math.floor(rnd(i * 29 + 7) * 3);
       if (kind === 0) {
         // eine Wellenlinie — „ein Wort", wie ein Kind es hinkritzelt
         const pts: Phaser.Geom.Point[] = [];
-        const wobble = 1.4 + rnd(i * 31 + 8) * 2.2;
+        const wobble = H * (0.04 + rnd(i * 31 + 8) * 0.06);
         for (let k = 0; k <= 8; k++) {
           pts.push(new Phaser.Geom.Point(x + (len * k) / 8, y + Math.sin(k * 1.9 + i) * wobble));
         }
@@ -3381,13 +3469,13 @@ export class PaintScene extends Phaser.Scene {
       } else if (kind === 1) {
         // ein Kringel
         g.beginPath();
-        g.arc(x, y, 2.5 + rnd(i * 37 + 9) * 4.5, 0, Math.PI * 2 * (0.7 + rnd(i * 41 + 10) * 0.3), false);
+        g.arc(x, y, W * (0.07 + rnd(i * 37 + 9) * 0.10), 0, Math.PI * 2 * (0.7 + rnd(i * 41 + 10) * 0.3), false);
         g.strokePath();
       } else {
         // ein Strich, manchmal gekreuzt (das durchgestrichene Wort)
-        g.lineBetween(x, y, x + len, y + (rnd(i * 43 + 11) - 0.5) * 6);
+        g.lineBetween(x, y, x + len, y + (rnd(i * 43 + 11) - 0.5) * H * 0.09);
         if (layer >= 1 && rnd(i * 47 + 12) > 0.68) {
-          g.lineBetween(x + len * 0.1, y - 2.5, x + len * 0.9, y + 2.5);
+          g.lineBetween(x + len * 0.1, y - H * 0.04, x + len * 0.9, y + H * 0.04);
         }
       }
     }
