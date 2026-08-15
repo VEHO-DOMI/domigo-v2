@@ -242,6 +242,9 @@ export interface PaintCallbacks {
   /** R5-A2: a letter CELL was consumed — the shell's ledger records it so a
    *  phase remount cannot respawn it. */
   onLetterTaken?: (c: number, r: number) => void;
+  /** R5-W4 · B4 · D-4: a being was answered — the shell's ledger records it so a
+   *  phase remount cannot ask for it again. */
+  onEntityResolved?: (id: string, role: string) => void;
   onTask: (req: TaskRequest) => void;
   onPowerup: (grants: string) => void;
   onCageFreed: (id: string, skin: string, classmate: string | undefined, freedCount: number) => void;
@@ -275,6 +278,9 @@ export interface PaintSceneCfg {
   arenaBriefShown?: () => boolean;
   /** PK-R3b · R3-16: Regel-Seiten / Bonus-Bücher already taken this chapter. */
   collectedPickupIds?: () => readonly string[];
+  /** R5-W4 · B4 · D-4: beings already answered in an earlier mount (ids). The
+   *  scene only forwards it — see SimCfg for the contract. */
+  resolvedEntityIds?: () => readonly string[];
   /** R5-A2: the Kleckskammer round-trip — spawn override + surviving letter
    *  state (see SimCfg; the scene only forwards). */
   spawnCell?: { c: number; r: number };
@@ -908,10 +914,23 @@ export class PaintScene extends Phaser.Scene {
   private fistImg!: Phaser.GameObjects.Image;
   private ropeG!: Phaser.GameObjects.Graphics;
   private letterImgs = new Map<string, Phaser.GameObjects.Image>();
-  /** PB-F3: checkpoint art by column, so the ACTIVE one can light up. */
+  /** PB-F3: checkpoint art by column, so the ACTIVE one can light up.
+   *  R5-W4 · B4 · R44: empty for the whole phase when the chapter is `silent`. */
   private checkpointImgs = new Map<string, Phaser.GameObjects.Image>();
   /** R5-W3 · A5 · D-45 · its contour, keyed the same way so the two stay paired. */
   private checkpointShades = new Map<string, Phaser.GameObjects.Image>();
+  /** R5-W4 · B4 · R44 · THE STILLE ANKER SWITCH. A chapter that declares
+   *  `"silent"` keeps its `C` glyphs, its warp target and every checkpoint law —
+   *  it just stops SHOWING them (Koki, 2026-08-15: the easels read as clutter
+   *  wedged in beside the enemies). A chapter that declares nothing keeps the
+   *  ceremony it always had, so ch02+ are untouched until someone says
+   *  otherwise. The drawing code below is left standing behind this one flag on
+   *  purpose: re-placing the anchors later is then a one-word change, and the
+   *  test can flip the flag and watch the objects come back — a silence proven
+   *  by deletion could not be proven at all. */
+  private get checkpointsDrawn(): boolean {
+    return this.cfg.level.checkpointStyle !== "silent";
+  }
   private ringImgs: Array<{ img: Phaser.GameObjects.Image; baseY: number }> = [];
   private keys!: Record<string, Phaser.Input.Keyboard.Key>;
   /** PB-C1: this phase's art direction, or null ⇒ the pre-C1 render path. */
@@ -945,6 +964,10 @@ export class PaintScene extends Phaser.Scene {
       cageHintShown: cfg.cageHintShown,
       arenaBriefShown: cfg.arenaBriefShown,
       collectedPickupIds: cfg.collectedPickupIds,
+      // R5-W4 · B4: this constructor copies field by field rather than spreading,
+      // so a new SimCfg field that is not named HERE arrives as `undefined` and
+      // the ledger silently does nothing. One line, and it is load-bearing.
+      resolvedEntityIds: cfg.resolvedEntityIds,
       airModel: cfg.airModel,
       spawnCell: cfg.spawnCell,
       letterLedger: cfg.letterLedger,
@@ -1344,6 +1367,7 @@ export class PaintScene extends Phaser.Scene {
         case "cageHint": cb.onCageHint(ev.id); break;
         case "arenaBrief": cb.onArenaBrief(); break;
         case "letters": cb.onLetters(ev.got, ev.total); break;
+        case "entityResolved": cb.onEntityResolved?.(ev.id, ev.role); break;
         case "letterTaken": {
           this.cfg.callbacks.onLetterTaken?.(ev.c, ev.r);
           const img = this.letterImgs.get(`${ev.c},${ev.r}`);
@@ -4287,8 +4311,13 @@ export class PaintScene extends Phaser.Scene {
   private renderReadability(): void {
     const t = this.tickCount;
     // ── the active checkpoint ──
+    // R5-W4 · B4 · R44: the style is named here as well as in buildProps, even
+    // though a silent chapter leaves `checkpointImgs` empty and the loop would
+    // idle anyway. Guarding on emptiness alone would mean the lighting quietly
+    // returns the day anyone fills that map from somewhere else; guarding on the
+    // declaration means the silence holds wherever the art comes from.
     const activeCol = this.sim.respawnCell?.c;
-    if (this.checkpointImgs.size > 0 && this.textures.exists("pb-krakel_active")) {
+    if (this.checkpointsDrawn && this.checkpointImgs.size > 0 && this.textures.exists("pb-krakel_active")) {
       for (const [col, img] of this.checkpointImgs) {
         const lit = Number(col) === activeCol;
         const want = lit ? "pb-krakel_active" : "pb-krakel_a";
@@ -4797,6 +4826,15 @@ export class PaintScene extends Phaser.Scene {
           img.setScale(15 / img.height);
           this.ringImgs.push({ img, baseY: cy }); // positions live in the Sim
         } else if (g === "*") {
+          // R5-W4 · B4 · F-23 · KOKIS „STALE" BUCHSTABEN. The grid says where a
+          // letter COULD be; only the sim knows which ones are still there. It
+          // already skips the taken cells when it builds the phase
+          // (`sim.ts` — `takenCells`), but this loop read the raw grid, so a
+          // remount after the Kleckskammer painted every letter back and none of
+          // them could be picked up again: „einfach nur mehr da, stale".
+          // The sprites vanish reactively on a LIVE `letterTaken`, which is
+          // exactly the event a remount never replays.
+          if (!this.sim.letterCells.has(`${c},${r}`)) continue;
           const char = glyphs.get(`${c},${r}`) ?? "A";
           const img = this.add.image(cx, cy, this.letterTex(char)).setDepth(4);
           img.setDisplaySize(PaintScene.LETTER_PX, PaintScene.LETTER_PX);
@@ -4811,7 +4849,12 @@ export class PaintScene extends Phaser.Scene {
         } else if (g === "V") {
           const img = this.add.image(cx, cy, this.tex("prop_vine")).setDepth(3);
           img.setScale(TILE / img.height);
-        } else if (g === "C") {
+        } else if (g === "C" && this.checkpointsDrawn) {
+          // R5-W4 · B4 · R44: everything below — contour, body, the legacy easel
+          // AND the procedural pole-and-pennant fallback — hangs off that flag.
+          // The fallback is the one that bites: it draws a marker with no texture
+          // at all, so silencing only the painted arms would have silenced
+          // nothing on a machine where the art failed to load.
           // PB-F3 · F2-6: KRAKEL, not a nameless easel. `krakel_a` is the easel
           // WITH him standing beside it waving; `krakel_active` is the same
           // scene with his sketch lit warm gold. The game has always said

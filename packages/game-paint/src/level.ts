@@ -10,6 +10,13 @@ import { MAX_LINE_DE, cloakErrorsDe, registerErrorsDe } from "@domigo/content-sc
 import { type Grid, glyphAt, isOneWay, isSlope, isSolid } from "./collide.ts";
 import { PAINT, SUBS, TILE } from "./paint.ts";
 import { platformPathAt } from "./entities.ts";
+// R5-W4 · B4 · R45: READ-ONLY, both of them. The law has to see the trail the
+// way the renderer sees it, and the renderer gets the characters from exactly
+// these two places — deriving them a second time here is how a law starts
+// policing a world nobody is playing. Neither module imports anything, so
+// there is no cycle to worry about.
+import { compositionFor } from "./composition.ts";
+import { letterGlyphs } from "./letters.ts";
 
 export const LEVEL_SCHEMA = "paintLevel@1";
 
@@ -256,6 +263,22 @@ export interface PaintLevel {
    *  read this one number, so „y von N" can never promise a page the world does
    *  not contain (the letter-honesty pattern, doc 41 §7). */
   tipsTotal?: number;
+  /** R5-W4 · B4 · R44 — HOW A CHECKPOINT SHOWS ITSELF. Koki, 2026-08-15, on the
+   *  Krakel easel: „so wie sie platziert sind, machen sie keinen Sinn,
+   *  gequetscht neben die Gegner. Jetzt komplett raus, später besprechen wir,
+   *  wo sie hingehören."
+   *
+   *  `"silent"` is the STILLE ANKER state: the `C` glyph, the warp target and
+   *  every `checkpoint-*` law stay exactly as they are — the anchor still
+   *  catches an ink splash — but nothing is drawn, nothing lights up and
+   *  nothing is announced. `"krakel"` is the ceremony as it was.
+   *
+   *  This is a DECLARATION, not an amputation, and that is the whole point:
+   *  the drawing code is still here and one word turns it back on, so the day
+   *  Koki settles where the anchors belong is a one-line day. It is also why
+   *  the law below makes the field mandatory wherever a `C` exists — a later
+   *  reader must be able to tell „on purpose" from „someone broke it". */
+  checkpointStyle?: "silent" | "krakel";
   abilities: Ability[];
   phases: PhaseSpec[];
 }
@@ -275,6 +298,12 @@ export const allPhases = (level: PaintLevel): PhaseSpec[] => [
 export const parsePaintLevel = (level: PaintLevel): PaintLevel => {
   if (level.schema !== LEVEL_SCHEMA) fail(`schema must be ${LEVEL_SCHEMA}`);
   if (level.phases.length === 0) fail("no phases");
+  // R44: a typo'd style would silently fall through to the ceremony, which is
+  // exactly the „looks configured, behaves absent" failure the zod loader taught
+  // us to fear. Loud beats tolerant.
+  if (level.checkpointStyle !== undefined && level.checkpointStyle !== "silent" && level.checkpointStyle !== "krakel") {
+    fail(`checkpointStyle must be "silent" or "krakel" (got "${String(level.checkpointStyle)}")`);
+  }
   const ids = new Set<string>();
   for (const ph of allPhases(level)) {
     if (ids.has(ph.id)) fail(`duplicate phase id ${ph.id}`);
@@ -403,6 +432,11 @@ export const standable = (grid: Grid, c: number, r: number): boolean =>
  *  challenge" (cookbook §8.6) — 4 columns is well inside the 22-column
  *  viewport, so the child can SEE the anchor from the landing. */
 export const CHECKPOINT_AFTER_MAX = 4;
+
+/** R5-W4 · B4 · R45: how far apart two cells carrying the SAME character must
+ *  sit, measured as `max(|Δc|, |Δr|)` in tiles. Derivation and the measured
+ *  chapter-wide spread that picked the number: the `letter-spread` law below. */
+export const LETTER_MIN_SEPARATION = 4;
 
 export const submerged = (grid: Grid, c: number, r: number): boolean =>
   glyphAt(grid, c, r) === "w" || glyphAt(grid, c, r - 1) === "w";
@@ -821,6 +855,27 @@ export const checkLevelLaws = (level: PaintLevel): LawFailure[] => {
     if (level.phases.length !== 3) {
       failures.push({ phase: "*", law: "phase-count", detail: `chapters are 3 phases + arena (has ${level.phases.length})` });
     }
+    // R5-W4 · B4 · R44 · SILENCE MUST BE DECLARED.
+    //
+    // The checkpoint art is off in ch01 and the `C` glyphs stayed. Six months
+    // from now that is indistinguishable from a renderer someone broke: the
+    // grids carry anchors, the laws below police them, and nothing appears on
+    // screen. So the chapter has to SAY which it is. This law is small on
+    // purpose — it does not judge the choice, it only forbids leaving the
+    // question unanswered wherever the question exists.
+    //
+    // Deliberately not a render check: whether the scene actually stays quiet is
+    // a fact about GameObjects, and a grid law cannot see one. That half is
+    // proven in checkpoint-silence.test.ts, which counts the objects a real
+    // scene build makes and flips this very field to make the count move.
+    const anchored = allPhases(level).filter((ph) => ph.rows.some((row) => row.includes("C")));
+    if (anchored.length > 0 && level.checkpointStyle === undefined) {
+      failures.push({
+        phase: "*",
+        law: "checkpoint-silent",
+        detail: `${anchored.length} phase(s) carry a checkpoint (${anchored.map((p) => p.id).join(", ")}) but the chapter declares no checkpointStyle — an anchor that draws nothing must say it means to, or the next reader reads it as a bug`,
+      });
+    }
     // R4 · doc 44 §2.3 · THE CAGE LAW (replaces PB's „six-cages"). Cages are for
     // CLASSMATES: exactly ONE per chapter, and every child must meet it. The
     // unit's OTHER bewitched beings are freed in whatever form their fiction
@@ -1197,6 +1252,57 @@ export const checkLevelLaws = (level: PaintLevel): LawFailure[] => {
       for (let c = 0; c < row.length; c++) {
         if (row[c] === "*" && !nearReachable(c, r, 1, 1, 3)) {
           failures.push({ phase: ph.id, law: "collectible-reachable", detail: `letter at (${c},${r}) unreachable` });
+        }
+      }
+    }
+
+    // ── R5-W4 · B4 · R45 · THE TRAIL MAY NOT STUTTER ────────────────────────
+    // Koki, 15.08.2026, over p1: »Zwei O direkt nebeneinander — nicht gut
+    // geplant.« His screenshot (07.18.30) shows both of them and an L in one
+    // glance: 2 columns and 3 rows apart, inside a 22×14-tile view. They do not
+    // read as two collectibles, they read as a typo.
+    //
+    // WHY THIS IS A ROW LAW WHEN IT SOUNDS LIKE A COLUMN LAW. letters.ts hands
+    // out the characters by COLUMN order, so the double letter of a word
+    // („sch-OO-l") is always column-adjacent by construction. Pulling the pair
+    // apart sideways would hand every other cell a different character and
+    // respell the trail. The only axis actually free is the row — so the law is
+    // stated as a Chebyshev distance, which a row move alone can satisfy.
+    //
+    // WHY 4. Two measurements set it, from opposite sides.
+    //   · From ABOVE: every same-character pair in the chapter as built sits at
+    //     Chebyshev 2, 3, 11, 26, 39 or 44. Koki's two are the 2 and the 3; the
+    //     nearest pair nobody has ever complained about is the 11. So anything
+    //     from 4 to 10 reddens exactly his two and nothing else.
+    //   · From BELOW: p9's Kleckskammer decides which end of that band is real.
+    //     Its double-O lives on one plateau whose letter window is five columns
+    //     wide (c17–c21, pinned by the H and the L on either side) and three
+    //     rows tall, so the widest honest pair it can hold is 4. Buying 5 or 6
+    //     would mean sending one O down to the floor and back up again — in a
+    //     room with a 35-second clock, which is the room's whole contract.
+    // 4 is therefore the largest number the chapter can actually carry. It is
+    // the FLOOR of the useful band, not the middle, and p9 now sits exactly on
+    // it: filed as debt, because a later re-cut of that chamber should widen the
+    // crest and buy the law some room rather than the law pretending it has any.
+    //
+    // Note it deliberately does NOT fire on same-character pairs at a distance
+    // (p9 spells SCHOOLTHINGS and carries three): a word is allowed to use a
+    // letter twice. What it forbids is using it twice IN ONE BREATH.
+    const trail = letterGlyphs(ph.rows, compositionFor(level.chapter, ph.id)?.words);
+    for (let i = 0; i < trail.length; i++) {
+      for (let j = i + 1; j < trail.length; j++) {
+        const a = trail[i]!;
+        const b = trail[j]!;
+        if (a.char !== b.char) continue;
+        const dc = Math.abs(a.c - b.c);
+        const dr = Math.abs(a.r - b.r);
+        const apart = Math.max(dc, dr);
+        if (apart < LETTER_MIN_SEPARATION) {
+          failures.push({
+            phase: ph.id,
+            law: "letter-spread",
+            detail: `two „${a.char}" sit at (${a.c},${a.r}) and (${b.c},${b.r}) — ${apart} tile(s) apart (Δc ${dc}, Δr ${dr}), the law needs ${LETTER_MIN_SEPARATION}; a repeat inside one glance reads as a mistake, not as a word`,
+          });
         }
       }
     }

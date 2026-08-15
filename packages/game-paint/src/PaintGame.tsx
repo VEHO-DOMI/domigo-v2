@@ -360,6 +360,11 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
    *  into double-collectability. Same outlives-a-mount contract as the refs
    *  below. */
   const lettersTakenRef = useRef(new Map<string, string[]>());
+  /** R5-W4 · B4 · D-4: beings already answered — moths, chasers, drained things.
+   *  A FLAT array, unlike `lettersTakenRef` above: entity ids are unique across
+   *  the whole chapter, so they need no phase key, while a cell like „18,8"
+   *  exists in every phase and would collide without one. */
+  const resolvedEntitiesRef = useRef<string[]>([]);
   /** PB-F3: the cage hint is a once-per-chapter teacher, not a nag. */
   const cageHintShownRef = useRef(false);
   /** R5-W2 · H1 (Teil 3): die Arena-Anleitung, einmal je Kapitel. */
@@ -799,6 +804,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
         cageHintShown: () => cageHintShownRef.current,
         arenaBriefShown: () => arenaBriefShownRef.current,
         collectedPickupIds: () => [...tipsTakenRef.current.map((t) => t.id), ...booksTakenRef.current],
+        resolvedEntityIds: () => resolvedEntitiesRef.current,
         airModel,
         spawnCell: fromBonus ? ret.spawn : undefined,
         debugGrid,
@@ -816,6 +822,14 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
             const cellKey = `${c},${r}`;
             const cur = lettersTakenRef.current.get(pid) ?? [];
             if (!cur.includes(cellKey)) lettersTakenRef.current.set(pid, [...cur, cellKey]);
+          },
+          // R5-W4 · B4 · D-4: the same bookkeeping for beings. Guarded against
+          // doubles like every ledger above it — a list that grows on every
+          // re-answer would still work, but it would stop being readable.
+          onEntityResolved: (id) => {
+            if (!resolvedEntitiesRef.current.includes(id)) {
+              resolvedEntitiesRef.current = [...resolvedEntitiesRef.current, id];
+            }
           },
           onLetters: (got, total) => {
             setLetters({ got, total });

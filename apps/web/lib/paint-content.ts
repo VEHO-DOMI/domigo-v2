@@ -153,6 +153,14 @@ const PaintLevelFile = z.object({
   /** PK-R3b · R3-16: how many Regel-Seiten the chapter hides (doc 41 §5). The
    *  `tip-honesty` law proves this against what the phases actually place. */
   tipsTotal: z.number().int().positive().optional(),
+  /** R5-W4 · B4 · R44: how the chapter's checkpoints show themselves —
+   *  `"silent"` draws nothing, `"krakel"` plays the easel ceremony. It has to be
+   *  named HERE as well as in the level model: this schema strips what it does
+   *  not list, so a field declared only on the disk side passes every authoring
+   *  gate and then reaches the browser as `undefined` — the anchors would go on
+   *  drawing, and the level file would look configured (B1's lesson, and the
+   *  same reason goalPlate is spelled out above). */
+  checkpointStyle: z.enum(["silent", "krakel"]).optional(),
   abilities: z.array(z.enum(["jump", "punch", "hang", "swing", "hover", "run"])),
   phases: z.array(PaintPhase).min(1),
   arena: PaintPhase.optional(),
