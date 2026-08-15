@@ -122,13 +122,13 @@
     "hat"
    ],
    "name": "rubber",
-   "colourAskDe": "Der Radiergummi war blau.",
+   "colourAskDe": "Der Radiergummi war rosa.",
    "colourOptions": [
+    "pink",
     "blue",
-    "green",
-    "brown"
+    "green"
    ],
-   "colour": "blue",
+   "colour": "pink",
    "skins": [
     "eraser"
    ],
