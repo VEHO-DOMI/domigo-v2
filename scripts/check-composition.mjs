@@ -178,6 +178,29 @@ const bandsFor = (K) => ({
 const COHERENCE_MAX = { ds: 25, dh: 25, dlSameLight: 10, carve: [2, 14] };
 
 /**
+ * ── ★ A HOLE THIS LAW HAS, STATED RATHER THAN PAPERED OVER ──────────────────
+ * This audit judges MEANS, plus hue and saturation. It passed p1's freshly
+ * imported trims at carve +8.4 — and a blind critic then found that the same
+ * flank drew (255, 255, 254) at the walking-surface row, "brighter than the
+ * sunlit window behind it". The defect lived at the top of the histogram:
+ *
+ *            mean     p95      max
+ *   body     46.01   84.27    87.1
+ *   trim     55.09   92.74   100.0
+ *
+ * A 95th-percentile rule was written to catch it and then DELETED, because its
+ * own selftest proved it could not discriminate: a trim legitimately sitting +8
+ * in the mean carries its whole distribution up by +8, so its p95 gap is the
+ * same as a blown one's (+9.7 in both fixtures). The quantity that separates
+ * them is not a gap — it is CLIPPING, the sheet reaching pure white and ceasing
+ * to hold material.
+ *
+ * Shipping a check that fires on good art is worse than an honest gap, so the
+ * finding is filed (D-190) and the guard that actually caught it is named for
+ * what it is: a fresh pair of eyes with the frame in front of them.
+ */
+
+/**
  * ── THE COHERENCE WAIVERS ARE A SEPARATE TABLE, AND THEIR EXPIRY IS REAL ─────
  * Two laws, two tables: `SEPARATION_WAIVERS` stays empty, as A5 left it. This
  * one is its own, because a room can be perfectly readable (that law) and still
@@ -960,10 +983,13 @@ const seamStats = (px) => {
       sx += Math.cos(h); sy += Math.sin(h); hueN++;
     }
   }
+  const lums = px.map(([r, g, b]) => lumOf(r, g, b)).sort((a, b) => a - b);
   return {
     lum: (lum / px.length) * 100,
     sat: (sat / px.length) * 100,
     hue: hueN === 0 ? null : ((Math.atan2(sy, sx) * 180) / Math.PI + 360) % 360,
+    // the top of the histogram, where a blown highlight lives — see COHERENCE_MAX.peak
+    p95: (lums[Math.min(lums.length - 1, Math.floor(lums.length * 0.95))] ?? 0) * 100,
   };
 };
 
@@ -1067,19 +1093,34 @@ const judgeKit = (kit, key) => {
 // implementation of the law. Exit code reflects THESE cases only; audits 1–10
 // have already printed above and are not what is being proven.
 if (process.argv.includes("--selftest")) {
-  const swatch = (stem, [r, g, b]) => {
-    const png = new PNG({ width: 8, height: 8 });
-    for (let i = 0; i < png.data.length; i += 4) { png.data[i] = r; png.data[i + 1] = g; png.data[i + 2] = b; png.data[i + 3] = 255; }
+  // A swatch is a gentle ramp around its colour, not a flat fill: a flat patch
+  // has p95 === mean, which would make the peak law a duplicate of the carve law
+  // and prove nothing. `hot` paints the top 3 % of it near-white — the shape of
+  // a real trim sheet whose painted page-edges run to pure white while its
+  // average sits perfectly in family.
+  const swatch = (stem, [r, g, b], hot = false) => {
+    const png = new PNG({ width: 20, height: 20 });
+    for (let y = 0; y < 20; y++) {
+      for (let x = 0; x < 20; x++) {
+        const i = (y * 20 + x) << 2;
+        const k = 0.82 + 0.36 * (y / 19); // ±18 % around the nominal colour
+        const blown = hot && y === 0 && x < 12;
+        png.data[i] = blown ? 252 : Math.min(255, Math.round(r * k));
+        png.data[i + 1] = blown ? 250 : Math.min(255, Math.round(g * k));
+        png.data[i + 2] = blown ? 246 : Math.min(255, Math.round(b * k));
+        png.data[i + 3] = 255;
+      }
+    }
     pngCache.set(stem, png);
     artFiles.set(stem, `synthetic:${stem}`);
     return stem;
   };
   // A kit whose trims are the body's own colour at +8 luminance is the shape
   // every commission is asked for; the variants are the two failure modes.
-  const kitOf = (trimRGB, trimShade) => {
-    const body = swatch(`st_body_${trimRGB.join("_")}`, [156, 113, 66]);
-    const crust = swatch("st_crust", [143, 96, 52]);
-    const trim = swatch(`st_trim_${trimRGB.join("_")}`, trimRGB);
+  const kitOf = (trimRGB, trimShade, hot = false) => {
+    const body = swatch(`st_body_${trimRGB.join("_")}_${hot}`, [156, 113, 66]);
+    const crust = swatch(`st_crust_${hot}`, [143, 96, 52]);
+    const trim = swatch(`st_trim_${trimRGB.join("_")}_${hot}`, trimRGB, hot);
     return {
       crust: [crust], crustCapL: crust, crustCapR: crust, body: [body], fade: [body], sediment: body,
       edgeL: trim, edgeR: trim, cornerBL: trim, cornerBR: trim, inCornerL: trim, inCornerR: trim,

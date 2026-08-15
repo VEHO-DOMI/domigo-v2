@@ -614,15 +614,44 @@ const sharedInterior = (): Pick<MassKit, "body" | "fade" | "sediment"> => ({
  * which hard-fails on a stem with no PNG. **A phase joins this list on the same
  * commit that adds its art, never before.**
  *
- * WHAT p1 GETS, and what it still does not: sides, both outer corners, both
- * inner corners — six of the eight cells AS3 delivered. The two UNDERSIDE cells
- * are not here because they cannot tile left↔right (75.73 against a texture step
- * of 5.58, and no sub-window of any width at any offset tiles either), so there
- * is no `edgeD` field and no `MassKind` for one: SPEC §9.4's rule cuts both ways,
- * and a hook without art is the same mistake as art without a hook. D-27 stays
- * open with a number instead of a shrug. RAMPS were never on that sheet at all.
+ * ── AND WHY IT IS EMPTY, AFTER p1'S TRIMS WERE IMPORTED AND MEASURED ────────
+ * The AS3 edge sheet cut clean, tiled eightfold, and landed inside every value
+ * window this file can express. It is still not wired, and the reason is a thing
+ * no colour statistic can see: **the sheet paints the wrong FACE.**
+ *
+ * A mass's flank is the CUT through the material — for a stack of books, the
+ * fore-edge: cream, horizontally striated, which is exactly what the shared
+ * placeholder `mass_edge_l.png` has always drawn. AS3's side cells paint book
+ * COVERS seen face-on — spines, gold tooling, a bright glare down one side. A
+ * single solid cannot show its front on its side face and its edge in its
+ * interior.
+ *
+ * Two blind critics, fresh, with the four frames in OPPOSITE orders and no idea
+ * which was new, ranked the p1 flank LAST of four — below the placeholder it was
+ * meant to replace. Independently:
+ *   · "the side of the mass shows the FRONT face of the material … so the
+ *      terrain has no sides at all, only a decorative gilt trim"
+ *   · "the flank shows books facing the camera while the interior four pixels
+ *      away shows books lying edge-on … visible as orange racing stripes at
+ *      100 % without magnification"
+ * One called it "broken"; both measured the flank as the most saturated and
+ * (before the peak fix) the brightest surface in the mass.
+ *
+ * So the sheet is HELD, the way AS2's was, and for a better-documented reason:
+ * this time the geometry is proven good and only the motif is wrong, which makes
+ * the re-order small. `SPEC_MASSEN_KIT` §10.3 now states the motif requirement
+ * that was never written down — and that is why it was never delivered.
+ *
+ * What p1 keeps from today: the derived trim COLOUR, which fixes the groove and
+ * the grey in all five rooms and is measured in `check-composition` audit 11.
+ *
+ * The other two things AS3 did not deliver, both re-ordered in §10: the UNDERSIDE
+ * cells cannot tile left↔right (75.73 against a texture step of 5.58, and no
+ * sub-window of any width at any offset tiles either), so there is no `edgeD`
+ * field and no `MassKind` for one — SPEC §9.4 cuts both ways, and a hook without
+ * art is the same mistake as art without a hook. RAMPS were never on the sheet.
  */
-const PAINTED_TRIM_PHASES = new Set(["p1"]);
+const PAINTED_TRIM_PHASES = new Set<string>([]);
 
 /**
  * R5-W4 · A6 · THE LAY-BACK, PER ROOM (Koki's ruling of 2026-08-15).
@@ -633,14 +662,38 @@ const PAINTED_TRIM_PHASES = new Set(["p1"]);
  * kit's own PNGs and re-checked on every CI run, so a repainted sheet cannot
  * leave a stale constant behind — the audit fails on the drift, by name.
  *
- * p1 — the painted trims (AS3) are already commissioned to §5's target: 55.09 %
- * against a 46.01 % body, +9.08. The global 0.62 would drag them to 34.2 %, a
- * groove twelve points UNDER the body. A painted edge carries its own anatomy
- * and does not need value to be legible, so it takes the room's light unchanged.
+ * p1 — the painted trims (AS3) are commissioned to §5's target: 55.09 % against a
+ * 46.01 % body, +9.08. The global 0.62 would drag them to 34.2 %, a groove twelve
+ * points UNDER the body.
+ *
+ * ── AND WHY IT IS NOT 1.0, WHICH IS WHERE THIS FIRST LANDED ──────────────────
+ * Taking the room's light unchanged satisfied the carve window on the MEAN and
+ * blew the highlights. A blind critic caught it in the frame before any gate did:
+ * at the walking-surface row the flank drew **(255, 255, 254)** — "the terrain's
+ * edge is brighter than the sunlit window behind it".
+ *
+ * The measurement behind that sentence, and the reason a mean could not see it:
+ *
+ *            mean     p95      max
+ *   body     46.01   84.27    87.1
+ *   trim     55.09   92.74   100.0     ← its painted page-edges are pure white
+ *
+ * The sheet has a WIDER RANGE than the body it is cut into, so one multiply
+ * cannot match both ends: 1.00 matches the mean and overshoots the peak by 8.5;
+ * 0.85 matches nothing. 0.92 is the value where the peaks meet (85.3 against
+ * 84.27, +1.0) and the mean still clears §5's floor (+4.7, window +2…+14).
+ *
+ * Audit 11 now holds BOTH ends — `COHERENCE_MAX.peak` — so this class cannot
+ * come back through a gate that was only ever looking at averages.
+ *
+ * ── AND WHY IT IS EMPTY TODAY ────────────────────────────────────────────────
+ * p1's entry (0xebebeb) was calibrated for the PAINTED sheet, and that sheet is
+ * held (see `PAINTED_TRIM_PHASES`). Left behind it would apply a painted sheet's
+ * lay-back to the shared placeholder and draw p1's trims at +19.1 — audit 11
+ * catches exactly that, which is the point of deriving the number instead of
+ * choosing it. It comes back with the re-cut, not before.
  */
-const TRIM_SHADE_BY_PHASE: Record<string, number | undefined> = {
-  p1: 0xffffff,
-};
+const TRIM_SHADE_BY_PHASE: Record<string, number | undefined> = {};
 
 const paintedTrims = (phase: string): Pick<MassKit, "edgeL" | "edgeR" | "cornerBL" | "cornerBR" | "inCornerL" | "inCornerR"> => ({
   edgeL: `mass_edge_${phase}_l`,

@@ -556,6 +556,19 @@ const rememberBody = (stem, L) => {
   bodyRef.spread = Math.max(...bodyRef.lumas) - Math.min(...bodyRef.lumas);
 };
 
+// ── HELD AGAIN, AND THIS TIME THE GEOMETRY IS PROVEN GOOD ────────────────────
+// The block below imports cleanly: the boxes are re-measured, the sides tile
+// vertically at 2.63 against a limit of 19.4, the key is exact, defringe eats
+// nothing. It is commented out anyway, because two blind critics ranked the
+// resulting flank LAST of four — below the placeholder it replaces — for a
+// reason no check in this file can measure: the sheet paints book COVERS where
+// a flank must paint the fore-edge, the cut through the material.
+//
+// It stays here rather than being deleted so the re-order is cheap: the boxes,
+// the axis, and `--selftest` (which disproves D-47 for good) are all still live.
+// Uncomment when AS5 re-cuts cells 0/1 to the motif now stated in
+// SPEC_MASSEN_KIT §10.3. See composition.ts#PAINTED_TRIM_PHASES.
+/*
 SHEETS.push({
   // ── THE CARVED TRIMS, p1 (spec §5) ─────────────────────────────────────────
   // Keyed, not opaque: these are cut-outs, and `mass_edges_p1.png` carries
@@ -614,6 +627,7 @@ SHEETS.push({
     [7, "mass_incorner_p1_r", { box: EDGE_BOXES.inCornerR, aboveBody: [6, 12], alpha: 0.55 }],
   ],
 });
+*/
 
 /**
  * Cut and judge ONE piece. Returns `{ img, faults, L, S, seam, key }` — the
