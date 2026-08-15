@@ -9,7 +9,8 @@
 // clock the tallies count against. The arithmetic behind all three is pure and
 // tested (cards/ceremony.ts) — what lives here is only the drawing of it.
 import React from "react";
-import { burstMotes, heroParts, runCompletion } from "./ceremony.ts";
+import { burstMotes, heroArtPresent, heroParts, runCompletion } from "./ceremony.ts";
+import { heroFullCell } from "../rigSpec.ts";
 import { prefersReducedMotion } from "./motion.ts";
 import type { PlayerPose } from "../player.ts";
 
@@ -50,7 +51,13 @@ export function SceneCut({
 }): React.ReactElement | null {
   const bg = backdrop !== undefined ? art[backdrop] : undefined;
   const hero = <PaintedHero art={art} height={heroHeight} pose={pose} facing={facing} />;
-  if (bg === undefined && hero === null) return null;
+  // R5-W4 · D3: this guard used to read `hero === null`, which is never true —
+  // `hero` is a JSX ELEMENT, and an element is an object whatever the component
+  // returns when React later calls it. So the „no rig, no boy" half of the
+  // degrade rule three lines up was written down and never wired: a chapter
+  // with no hero art still got an empty 152 px panel. It asks the art directly
+  // now, which is the question it always meant to ask.
+  if (bg === undefined && !heroCellPresent(art, pose)) return null;
   return (
     // the wrapper is fit-content everywhere else (a plate is as wide as its
     // picture); a WINDOW is as wide as the card it is cut into
@@ -117,6 +124,39 @@ export const useCeremonyClock = (untilMs: number): number => {
  * a level whose hero batch is still ungenerated simply gets no figure, exactly
  * as the keen-art law says (the game never breaks on a missing file).
  */
+/**
+ * R5-W4 · D3 · R55 · WHICH CELL OF THE NEW HERO A CEREMONY STRIKES.
+ *
+ * Koki, replay of 15 August: „auf den Karten ist der ALTE Charakter — hier soll
+ * der neue sein."
+ *
+ * The world has run on the painted `hero2_*` cells since H3; only the ceremony
+ * panels still assembled the old modular rig, so the boy on the cards was a
+ * different boy from the one the child had just been playing. The mapping is
+ * NOT re-decided here — `heroFullCell` is the world's own pose→cell function
+ * and it is asked the same question, so the two can never drift apart:
+ *
+ *   · a ceremony that LEAPS is the celebration    → hero2_cheer
+ *   · a ceremony that STANDS is a standing moment → hero2_idle
+ *     („er steht vor dem geschlossenen Käfig", „er steht an ihrer Tafel")
+ *
+ * That is a change of expression as well as of figure: the old rig hard-coded
+ * `head_celebrate` onto every ceremony pose, so the boy grinned in front of a
+ * cage he had not opened yet. He does not any more.
+ */
+export const heroCellFor = (pose: PlayerPose): string | null =>
+  heroFullCell(pose, 0, 0, 999, pose === "jump", false, 0);
+
+/** Is there a painted hero for this beat at all? The keen-art law, asked once:
+ *  the new cell if it has landed, the old rig if the chapter has only that, and
+ *  honestly `false` if it has neither — a card then lays itself out without a
+ *  hole where a child should be. */
+export const heroCellPresent = (art: Record<string, string>, pose: PlayerPose = "jump"): boolean => {
+  const cell = heroCellFor(pose);
+  if (cell !== null && art[cell] !== undefined) return true;
+  return heroArtPresent(art, pose);
+};
+
 export function PaintedHero({
   art, height, pose = "jump", facing = 1, className,
 }: {
@@ -128,6 +168,33 @@ export function PaintedHero({
   facing?: 1 | -1;
   className?: string;
 }): React.ReactElement | null {
+  // THE NEW HERO FIRST. One painted cell, drawn at the height the beat asks
+  // for: the cells carry their own generous transparent margin, so the figure
+  // is sized by height and lets its width follow rather than being boxed.
+  const cell = heroCellFor(pose);
+  const cellUrl = cell !== null ? art[cell] : undefined;
+  if (cellUrl !== undefined) {
+    return (
+      <img
+        className={className}
+        src={cellUrl}
+        alt=""
+        aria-hidden
+        style={{
+          display: "block",
+          height,
+          width: "auto",
+          transform: facing === -1 ? "scaleX(-1)" : undefined,
+          // the scene gives him a cast shadow so he carries his own dark edge
+          // against any wall; on parchment one soft drop does the same work
+          filter: "drop-shadow(0 7px 12px rgba(30,20,10,0.32))",
+        }}
+      />
+    );
+  }
+
+  // …and the old modular rig only if this chapter's hero2 batch has not landed.
+  // It is a fallback, not a second look: no card may hang on one file.
   const parts = heroParts(height, pose).filter((p) => art[p.stem] !== undefined);
   // a hero without a body or a face is not a graceful fallback, it is a bug
   // wearing one — draw nobody rather than a floating pair of mittens

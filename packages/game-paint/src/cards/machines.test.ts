@@ -7,7 +7,7 @@ import {
   MACHINES, autoSolve, normText, spellSlots, spellTrayDisabled,
   choiceMachine, typedMachine, spellMachine, orderMachine,
   oddMachine, wheelMachine, mistakeMachine, memoryMachine, restoreMachine,
-  WHEEL_ITEM_H, wheelIndexAt, wheelLockActions, wheelScrollFor, wheelStep,
+  WHEEL_ITEM_H, wheelIndexAt, wheelLockActions, wheelRowPitch, wheelScrollFor, wheelStep,
 } from "./machines.ts";
 
 const shipped = GameTasksFileV2.parse(
@@ -177,25 +177,54 @@ describe("wheel", () => {
       for (let i = 0; i < n; i++) expect(wheelIndexAt(wheelScrollFor(i), n)).toBe(i);
     });
 
-    // FOUND IN THE BROWSER (PK-R3a): the card springs in at `scale(0.94)`, so
-    // while that transform is live the rows measure ~41.4 px, not the declared
-    // 44. With the declared height hard-coded, `round(scrollTop / 44)` drifts by
-    // a whole row once the scale is long enough — the dial would lock a number
-    // the child never put under the lens. The skin now MEASURES the row; these
-    // cases prove the helpers are honest at any rendered height.
-    it("resolves the right row at a SCALED render height, all the way down a long scale", () => {
-      const scaled = 44 * 0.94; // the spring-in transform, mid-flight
+    // ── R5-W4 · D3 · F-20 · THE UNIT, NOT THE NUMBER ────────────────────────
+    //
+    // The two cases that stood here asserted `round(i·h / h) === i` for a
+    // "scaled" h — an identity of arithmetic that holds for ANY h, and so said
+    // nothing at all about the DOM. Worse, the second one PINNED the defect as
+    // law („mixing units → off by one"), which is why every gate stayed green
+    // while Koki watched the dial bold „twelve" with „thirteen" under the lens.
+    //
+    // What is actually true: `scrollTop` is a LAYOUT length. A CSS transform —
+    // `.pb-card`'s permanent `rotate(-1.1deg)`, plus the spring-in
+    // `scale(0.93)` — changes the VISUAL box and leaves `scrollTop` alone. So
+    // the pitch fed to these helpers must come from the layout box, and the
+    // law worth holding is that the visual box is NEVER what is fed in.
+    it("reads the pitch from the LAYOUT box, not from the visual one", () => {
+      // the two boxes of one 44 x 184 row inside a card rotated by 1.1°:
+      // layout 44, visual 44·cos1.1° + 184·sin1.1° ≈ 47.53
+      const row = { offsetHeight: 44, getBoundingClientRect: () => ({ height: 47.53 }) };
+      expect(wheelRowPitch(row)).toBe(44);
+      // and the discrimination: a fake whose two boxes AGREE would pass either
+      // way, so it would prove nothing. This one only passes on the layout read.
+      expect(wheelRowPitch(row)).not.toBeCloseTo(row.getBoundingClientRect().height, 1);
+    });
+
+    it("falls back to the declared height before layout has run", () => {
+      expect(wheelRowPitch({ offsetHeight: 0 })).toBe(WHEEL_ITEM_H);
+      expect(wheelRowPitch(undefined)).toBe(WHEEL_ITEM_H);
+      expect(wheelRowPitch(null)).toBe(WHEEL_ITEM_H);
+    });
+
+    it("resolves every row of a long scale when pitch and scrollTop share a unit", () => {
+      const pitch = wheelRowPitch({ offsetHeight: WHEEL_ITEM_H });
       for (let i = 0; i < 20; i++) {
-        expect(wheelIndexAt(wheelScrollFor(i, scaled), 20, scaled)).toBe(i);
+        expect(wheelIndexAt(wheelScrollFor(i, pitch), 20, pitch)).toBe(i);
       }
     });
 
-    it("the hard-coded height is what drifts — the measured one does not", () => {
-      const scaled = 44 * 0.94;
-      // row 19 sits at 786 px when rendered scaled; read against the DECLARED
-      // 44 px that is row 18 — one whole row of silent wrongness.
-      expect(wheelIndexAt(wheelScrollFor(19, scaled), 20)).toBe(18);
-      expect(wheelIndexAt(wheelScrollFor(19, scaled), 20, scaled)).toBe(19);
+    it("KOKI'S CASE: the visual pitch drifts by a whole row from index 7 on", () => {
+      const visual = 44 * Math.cos((1.1 * Math.PI) / 180) + 184 * Math.sin((1.1 * Math.PI) / 180);
+      expect(visual).toBeGreaterThan(47); // the rotated hull, at rest
+      // his screen: „thirteen" is index 12 on a scale that starts at „one",
+      // and the visual pitch bolds index 11 — „twelve".
+      expect(wheelIndexAt(wheelScrollFor(12, WHEEL_ITEM_H), 20, visual)).toBe(11);
+      // where the drift begins, and that it never happens on the layout pitch
+      expect(wheelIndexAt(wheelScrollFor(6, WHEEL_ITEM_H), 20, visual)).toBe(6);
+      expect(wheelIndexAt(wheelScrollFor(7, WHEEL_ITEM_H), 20, visual)).toBe(6);
+      for (let i = 0; i < 20; i++) {
+        expect(wheelIndexAt(wheelScrollFor(i, WHEEL_ITEM_H), 20, WHEEL_ITEM_H)).toBe(i);
+      }
     });
 
     it("the ▲▼ step stops at the ends (a column has a top and a bottom)", () => {

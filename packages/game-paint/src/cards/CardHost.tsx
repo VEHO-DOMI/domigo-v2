@@ -62,7 +62,7 @@ export function writtenTextOf(state: unknown, task: GameTaskV2): string {
 }
 
 export function CardHost({
-  task, onResolve, onWorldChange, onDismiss, align = "center", art, portraitWash, servedUse, clockMs: clockMsProp, round,
+  task, onResolve, onWorldChange, onDismiss, align = "center", art, portraitWash, captive, servedUse, clockMs: clockMsProp, round,
 }: {
   task: GameTaskV2;
   /** the card is finished: close it (and hand on any beat it opened) */
@@ -82,6 +82,10 @@ export function CardHost({
   art?: Record<string, string>;
   /** how drained the asker is right now — the portrait matches the world */
   portraitWash?: number;
+  /** R5-W4 · D3 · F-14 · the art stem of whoever is inside the cage this card is
+   *  about, so the picture shows what is in there (R54). Undefined for every
+   *  card that is not about a cage. */
+  captive?: string;
   /** the pool the WORLD asked for, which is not always the card's authored
    *  `use` (the unbound-quickfire fallback). The fallback when no shell decided
    *  a length — a bench, a story card, a test. */
@@ -215,6 +219,7 @@ export function CardHost({
       onActivity={onActivity}
       art={art}
       portraitWash={portraitWash}
+      captive={captive}
       round={round}
       flight={beat === "letters" ? answerTextOf(task) : null}
       doff={beat === "hold"}
