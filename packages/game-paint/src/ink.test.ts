@@ -7,15 +7,24 @@ import { describe, expect, it } from "vitest";
 import {
   INK_BODY,
   INK_CROWN_DARK,
-  INK_CROWN_LIT,
   INK_DEPTH_FLOOR,
   INK_DEPTH_ROWS,
+  INK_LIP_MIN_PX,
+  INK_LIP_SWELL_PX,
+  INK_MENISCUS,
+  INK_SHEEN,
+  INK_SPLASH_DROPS,
+  INK_SPLASH_TICKS,
+  INK_SURFACE_TINT,
   INK_WAVE_AMPL_PX,
   inkCrownOffsetAt,
   inkCrownPoints,
   inkDepthAt,
   inkDepthTint,
+  inkLipThicknessAt,
   inkScrollAt,
+  inkSheenRuns,
+  inkSplashDropAt,
   planInkColumns,
 } from "./ink.ts";
 
@@ -99,12 +108,74 @@ describe("the ink hides what is behind it (B1 critic: halbtransparent)", () => {
   });
 });
 
-describe("the crown is a boundary, not a band", () => {
-  it("carries a lit lip AND a dark line, far enough apart to read as an edge", () => {
-    const lum = (c: number) => (((c >> 16) & 255) * 0.2126 + ((c >> 8) & 255) * 0.7152 + (c & 255) * 0.0722) / 255;
-    // a single lighter strip is what shipped and what read as a change of fill;
-    // two values with a real step between them is what reads as a surface
-    expect(lum(INK_CROWN_LIT) - lum(INK_CROWN_DARK)).toBeGreaterThan(0.4);
+// ── R5-W4 · A6 · THE CROWN IS A MENISCUS, NOT A CONTOUR ─────────────────────
+// Koki, 2026-08-15: „Was ist dieser violette Bogen über der Tinte?" The old
+// laws here asked the crown to be a BOUNDARY — two values a step apart — and it
+// satisfied them completely while still reading as a drawn arc, because the
+// property that gives a liquid away is not its colours, it is that its edge
+// changes thickness. These tests pin that property instead.
+describe("the surface is a meniscus, not a contour", () => {
+  it("swells in the troughs and thins on the crests — surface tension, not a stroke", () => {
+    let thin = Infinity, fat = -Infinity, atCrest = 0, atTrough = 0;
+    for (let x = 0; x <= 240; x += 1) {
+      const t = inkLipThicknessAt(x, 0);
+      thin = Math.min(thin, t);
+      fat = Math.max(fat, t);
+      // the deepest dip and the highest lift over this window, and their lips
+      if (inkCrownOffsetAt(x, 0) > inkCrownOffsetAt(atTrough, 0)) atTrough = x;
+      if (inkCrownOffsetAt(x, 0) < inkCrownOffsetAt(atCrest, 0)) atCrest = x;
+    }
+    // the OLD crown's answer to all three of these was "2.2 px", everywhere
+    expect(fat - thin).toBeGreaterThan(1.5);
+    expect(inkLipThicknessAt(atTrough, 0)).toBeGreaterThan(inkLipThicknessAt(atCrest, 0) + 1);
+    expect(thin).toBeGreaterThanOrEqual(INK_LIP_MIN_PX - 1e-9);
+    expect(fat).toBeLessThanOrEqual(INK_LIP_MIN_PX + INK_LIP_SWELL_PX + 1e-9);
+  });
+
+  it("is deterministic — a replayed tape draws the same lip", () => {
+    expect(inkLipThicknessAt(37, 91)).toBe(inkLipThicknessAt(37, 91));
+    expect(inkSheenRuns(0, 200, 91)).toEqual(inkSheenRuns(0, 200, 91));
+  });
+
+  it("breaks its gloss instead of ringing the pool", () => {
+    const runs = inkSheenRuns(0, 400, 0);
+    expect(runs.length).toBeGreaterThan(0);
+    const lit = runs.reduce((s, r) => s + (r.x1 - r.x0), 0);
+    // a continuous highlight IS the drawn arc; the sheen must cover a minority
+    expect(lit).toBeLessThan(400 * 0.5);
+    // …and it must move, or it is a decal
+    expect(inkSheenRuns(0, 400, 0)).not.toEqual(inkSheenRuns(0, 400, 75));
+  });
+
+  it("throws a splash that rises, falls, fades and ends — »worin bin ich gefallen?«", () => {
+    const top = (i: number): number => {
+      let best = 0;
+      for (let a = 0; a < INK_SPLASH_TICKS; a++) best = Math.min(best, inkSplashDropAt(i, a)?.y ?? 0);
+      return best;
+    };
+    for (let i = 0; i < INK_SPLASH_DROPS; i++) {
+      expect(top(i), `drop ${i} never leaves the surface`).toBeLessThan(-4); // world px UP
+      expect(inkSplashDropAt(i, 0)?.y).toBeCloseTo(0, 6); // starts at the surface
+      const last = inkSplashDropAt(i, INK_SPLASH_TICKS - 1);
+      expect(last?.alpha ?? 1).toBeLessThan(0.2); // and has faded before it stops
+    }
+    // it ENDS — a splash that outlives its own window is a decal
+    expect(inkSplashDropAt(0, INK_SPLASH_TICKS)).toBeNull();
+    // and it fans: the outer drops travel further than the middle one
+    const mid = Math.floor(INK_SPLASH_DROPS / 2);
+    const spread = (i: number): number => Math.abs(inkSplashDropAt(i, INK_SPLASH_TICKS - 1)?.x ?? 0);
+    expect(spread(0)).toBeGreaterThan(spread(mid));
+    expect(spread(INK_SPLASH_DROPS - 1)).toBeGreaterThan(spread(mid));
+    // deterministic, like every other pixel in this file
+    expect(inkSplashDropAt(3, 11)).toEqual(inkSplashDropAt(3, 11));
+  });
+
+  it("keeps the lip DARKER than the body — a dark liquid's edge is its depth", () => {
+    // the inversion is the finding: the old lit lip sat 33 points ABOVE the body,
+    // which is what „gilded metal" and „violetter Bogen" were both describing
+    expect(lumOf(INK_MENISCUS)).toBeLessThan(lumOf(INK_BODY));
+    expect(lumOf(INK_CROWN_DARK)).toBeLessThan(lumOf(INK_MENISCUS));
+    expect(lumOf(0x9282c8) - lumOf(INK_BODY)).toBeGreaterThan(30); // the old lip fails it
   });
 });
 
@@ -142,18 +213,25 @@ describe("the ink is INK, not sky (D-43 — blind critic: H220° against a H227�
     expect(old).toBeLessThan(MIN_SEPARATION);
   });
 
-  it("keeps its crown in the same hue family — a rim, not a second material", () => {
-    for (const c of [INK_CROWN_LIT, INK_CROWN_DARK]) {
+  it("keeps every part of its surface in the same hue family — one substance", () => {
+    // A6 adds the painted strip's tint to this list. It was the one part of the
+    // pool that had never been asked: a neutral grey-green sheet laid over a
+    // violet body, 90° of nothing, and it is the reason the pool needed a line
+    // drawn round it before it read at all.
+    for (const c of [INK_MENISCUS, INK_SHEEN, INK_CROWN_DARK, INK_SURFACE_TINT]) {
       const gap = Math.abs(hueOf(c) - hueOf(INK_BODY));
-      expect(Math.min(gap, 360 - gap)).toBeLessThan(12);
+      expect(Math.min(gap, 360 - gap), `${c.toString(16)} at ${hueOf(c).toFixed(1)}°`).toBeLessThan(12);
     }
   });
 
-  it("shimmers rather than gleams — the lip is oil, not polished metal", () => {
-    // the critic read the old 52-point jump as gilded metal
-    expect(lumOf(INK_CROWN_LIT) - lumOf(INK_BODY)).toBeLessThan(40);
-    expect(lumOf(INK_CROWN_LIT) - lumOf(INK_BODY)).toBeGreaterThan(20);
-    expect(lumOf(0xa8c0ee) - lumOf(0x2c3a58)).toBeGreaterThan(40); // the old pair fails it
+  it("shimmers rather than gleams — the gloss is oil, not polished metal", () => {
+    // A3's critic read a 52-point jump as gilded metal; A2 halved it to 33 and
+    // Koki still read the result as an arc laid on top. The sheen is narrow and
+    // broken now, so it can afford to be quieter still.
+    expect(lumOf(INK_SHEEN) - lumOf(INK_BODY)).toBeLessThan(30);
+    expect(lumOf(INK_SHEEN) - lumOf(INK_BODY)).toBeGreaterThan(12);
+    expect(lumOf(0xa8c0ee) - lumOf(0x2c3a58)).toBeGreaterThan(40); // the original pair fails it
+    expect(lumOf(0x9282c8) - lumOf(INK_BODY)).toBeGreaterThan(30); // and so does A2's
   });
 });
 

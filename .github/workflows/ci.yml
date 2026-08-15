@@ -61,7 +61,8 @@ jobs:
       - run: node scripts/check-story-art.mjs # the story-art manifest and the prompt library agree, both ways
       - run: node scripts/check-level-design.mjs --selftest # B1: the gate's own red light must be reachable
       - run: node scripts/check-level-design.mjs # R5-P1/B1: stem dedup, vocab coverage, dossier↔level anchors, named thresholds
-      - run: node scripts/check-composition.mjs # PB-C1/doc 36: plane coverage, carved mass, value bands, no naked fill
+      - run: node scripts/check-composition.mjs --selftest # A6: the edge-coherence law's own red light must be reachable
+      - run: node scripts/check-composition.mjs # PB-C1/doc 36: plane coverage, carved mass, value bands, no naked fill, edge coherence
       - run: node --experimental-strip-types scripts/check-paint-copy.mjs # C1: cloak, register and quote laws over the shell copy
       - run: node scripts/check-copy-register.mjs --selftest # C2: the register gate's own red light must be reachable
       - run: node scripts/check-copy-register.mjs # C2: every German line a child reads is Austrian (scripts/lexikon-at.json)
