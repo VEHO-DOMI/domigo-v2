@@ -352,6 +352,21 @@ Die Stem-Namen folgen §9.1 wörtlich; die Import-Runde weist jeden einzelnen na
 
 **UNGEKEYT** (voll deckend): `mass_body`, `mass_deep`. **GEKEYT `#FF00FF`**: `mass_edges`.
 
+**★ UND ZWEI BLÄTTER FÜR p1 (nachgetragen R5-W4b · A6b).** p1 ist der einzige
+Raum mit gemaltem Innenleben, hat aber **keine eigenen Kanten und keine eigene
+Rampe** — die Kanten sind mit dem AS3-Rückzug entfallen (§10.3), die Rampen wurden
+nie bestellt (§10.3, zweites Blatt). Beide gehören in dieselbe Lieferung, sonst
+bleibt der eine fertige Raum der einzige mit Platzhalter-Leisten:
+
+| Blatt | Maße | Raster | Zellen → Stems |
+|---|---|---|---|
+| `mass_edges_p1.png` | **2048 × 1024** | 4 × 2 à 512² | wie §10.3, **Motivgesetz bindend** |
+| `mass_ramps_p1.png` | **2048 × 512** | 4 × 1 à 512² | Z0/Z1 → `mass_ramp_p1_up` / `_down`, Z2/Z3 Reserve |
+
+Der Anker für p1 ist sein **eigener**, bereits abgenommener Körper (46 %), nicht
+ein absoluter Zielwert: alle Trims Körper + 6 … + 12 (§10.2). Die Kommission liegt
+in `~/Code/codex-art-lab/CODEX_MASTER_PROMPT_AS5_MASSEN_KIT.md`.
+
 ### 10.2 · Die Werte je Phase (Vorgabe, nicht Vorschlag)
 
 Mittlere Leuchtdichte über die **gemalten** Pixel, Rec-709, wie `check-composition`
@@ -386,8 +401,22 @@ Die Palettenkarte je Raum (CP-14, in JEDE Kommissionskarte):
 
 ### 10.3 · Das Kanten-Blatt, neu belegt — und die drei Lehren aus AS3
 
-AS3s Kanten-Blatt ist heute importiert; **sechs seiner acht Zellen sind
-angenommen**, zwei nicht. Die Neubelegung schreibt beide Befunde fest:
+**★ ALS-GEBAUT-STAND (nachgetragen in R5-W4b · A6b, 2026-08-15).** Der Absatz, der
+hier stand, beschrieb einen Zwischenstand von wenigen Stunden: A6 hatte das
+AS3-Kanten-Blatt importiert und sechs seiner acht Zellen angenommen. **Noch in
+derselben Session wurde der Import zurückgezogen** — zwei frische, blinde
+Kritiker bekamen die Bilder in entgegengesetzter Reihenfolge und reihten die neue
+Flanke beide unabhängig als LETZTE von vier, unter den Platzhalter, den sie
+ersetzen sollte. Der Grund steht als Motivgesetz unten in diesem Abschnitt.
+
+Auf `main` gilt deshalb: **KEINE Zelle von AS3 ist angenommen**, der Import-Block
+in `docs/art/import-batch-as.mjs` ist auskommentiert, und p1 zieht weiterhin die
+geteilten Platzhalter-Leisten (in seiner eigenen Farbe, `TRIM_SHADE_BY_PHASE`).
+Was von A6 **live geblieben ist**, ist die Geometrie-Arbeit und nur sie: die neu
+gemessenen `EDGE_BOXES`, die Achsen-Trennung der Naht-Prüfung und der
+Selbsttest, der beide Kasten-Zeilen festnagelt. Der Neuschnitt ist dadurch billig.
+
+Die Zellen-Belegung unten bleibt der Vertrag für jede künftige Lieferung:
 
 - **Zelle 0/1 · Seitenkante links / rechts.** Senkrecht (oben↔unten) nahtlos
   kachelbar. **Waagrecht ausdrücklich NICHT** — eine Seitenkante hat eine gemalte
