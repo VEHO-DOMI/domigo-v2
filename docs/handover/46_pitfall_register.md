@@ -832,3 +832,15 @@ Ein optionales Feld ist genau deshalb still: es DARF fehlen. *Regel:* Jede handg
 Weiterreich-Stelle bekommt einen Wiring-Guard (Test oder Spread), sobald ein optionales
 Feld dazukommt. (Dieselbe Familie wie **PB-19** — zwei Listen, die von Hand synchron
 gehalten werden.)
+
+**PB-80 · Ein JSON neu zu dumpen formatiert die ganze Datei um — auch wenn nur ein Feld
+dazukommt.** *(K3, 2026-08-15 — beim Abschluss dieser Runde selbst hineingetreten.)* Die
+Mission-Control-Karte wurde per `json.dump(..., indent=1)` geschrieben; die Datei stand aber
+auf `indent=2`. Ergebnis: **1778 geänderte Zeilen für eine neue Karte** — und damit ein
+Konflikt für jede andere Session, die dieselbe Datei anfasst. Aufgefallen ist es nur, weil der
+`--stat` nach dem Commit gelesen wurde. *Regel:* Vor dem Schreiben eines fremden JSON das
+**bestehende Format messen** (Einrückung, `ensure_ascii`, End-Newline) und beim Dump exakt
+reproduzieren — oder chirurgisch editieren. Und nach jedem maschinellen Schreiben `git diff
+--stat` lesen: eine Zeilenzahl, die nicht zur Änderung passt, ist der Befund.
+(Dieselbe Familie wie die Level-Datei-Regel in `CONTRIBUTING.md`: nie neu erzeugen, nur
+editieren — dort ist sie aufgeschrieben, hier ist sie zum zweiten Mal passiert.)
