@@ -12,15 +12,19 @@
 
 import { describe, expect, it } from "vitest";
 import fs from "node:fs";
+import zlib from "node:zlib";
 import path from "node:path";
 import {
   CHALK_ARM_TICKS,
   CHALK_COLOURS,
   CHALK_FLIGHT_TICKS,
   CHALK_GRAVITY,
+  DIP_STANDOFF_PX,
   FORK_LEAD_PX,
   DODGES_PER_WINDOW,
   FLIGHT_BAND_PX,
+  GUARDIAN_HELD_STATES,
+  GUARDIAN_WIPE_REACH_PX,
   KNOT_SPAN_PX,
   GUARDIAN_SCRIPT,
   KNOT_PERIOD_TICKS,
@@ -43,7 +47,8 @@ import {
 import {
   BOSS_BEAT_SWELL, FLIGHT_BANK_FACE, FLIGHT_PITCH_MAX_RAD, FLIGHT_PITCH_REF_VY, FLIGHT_ROLL_MIN,
   FLIGHT_ROLL_REF_VX, FLIGHT_ROLL_TICKS, GUARDIAN_DISPLAY_H, GUARDIAN_GROUNDED_CELLS,
-  GUARDIAN_KEEPIN_MAX, GUARDIAN_LANDED_CELLS, entPoseCell, guardianManoeuvre,
+  GUARDIAN_KEEPIN_MAX,
+  GUARDIAN_SLATE, GUARDIAN_LANDED_CELLS, entPoseCell, guardianManoeuvre,
   guardianPitchRad, guardianRollScaleX,
 } from "./anim.ts";
 import { GUARDIAN_RIG_CELLS } from "./artManifest.ts";
@@ -174,6 +179,28 @@ describe("the flying Tafel never wears the retired grounded easel (PB-F1)", () =
           `state "${state}" (timer ${timer}) resolves to "${cell}" — that is the RETIRED easel, and swapping bodies mid-fight is PB-F1`,
         ).toBe(false);
       }
+    }
+  });
+
+  it("R5-W4b · H3 (D-190) · jeder erreichbare Zustand ist entweder Flug oder FESTGEHALTEN", () => {
+    // Die Über-Reichweite zählt nur, solange sie den Kampf führt. Welche
+    // Zustände das NICHT sind, stand zweimal getippt in `entities.ts` und war
+    // beide Male unvollständig (`settle`/`wipeable`/`wipe` fehlten seit dem
+    // Wischen). Jetzt steht die Liste einmal — und dieses Gesetz sorgt dafür,
+    // dass sie vollständig BLEIBT: die Maschine liefert die Zustände selbst,
+    // wie beim Staffelei-Gesetz darüber, und jeder muss klassifiziert sein.
+    const FLYING = new Set(["fly", "telegraph", "throw", "untie", "turn", "roll", "consoled"]);
+    const { flight, terminal } = statesReached();
+    for (const state of [...flight, ...terminal]) {
+      expect(
+        GUARDIAN_HELD_STATES.has(state) || FLYING.has(state),
+        `der Zustand "${state}" ist weder Flug noch festgehalten — `
+        + `dann zählt ein vorbeifliegendes Stück Kreide dort NACH GEFÜHL, nicht nach Gesetz`,
+      ).toBe(true);
+    }
+    // …und die vier Halte-Zustände des Wischens sind wirklich drin
+    for (const s of ["settle", "wipeable", "wipe", "window"]) {
+      expect(GUARDIAN_HELD_STATES.has(s), `"${s}" fehlt in GUARDIAN_HELD_STATES`).toBe(true);
     }
   });
 
@@ -373,6 +400,126 @@ describe("her whole body stays in the visible band (readable = seeable)", () => 
         expect(feet, `knot ${i + 1} tick ${t}: she is inside the boards`).toBeLessThan(floorRow * TILE);
       }
     }
+  });
+
+  it("R5-W4b · H3 · GUARDIAN_SLATE ist aus den Blättern gerechnet, Zelle für Zelle", () => {
+    // Die Kritzel-Schichten (AQ13) liegen auf der SCHIEFERTAFEL, und die wandert
+    // zwischen ihren Zellen um über 30 % der Blattbreite. `anim.ts#GUARDIAN_SLATE`
+    // hält, wo sie in jeder Zelle liegt — eine Tabelle mit 80 Zahlen, also genau
+    // die Sorte Kopie, die still veraltet, sobald jemand ein Blatt neu malt.
+    // Deshalb wird sie hier neu ausgezählt, aus den ausgelieferten PNGs, mit
+    // derselben Regel, die `docs/art/import-batch-aq13.mjs` benutzt.
+    //
+    // Der Decoder unten ist absichtlich klein und gehört dieser Datei: `pngjs`
+    // ist im Repo-Wurzel-`package.json` deklariert, nicht in diesem Paket, und
+    // eine Abhängigkeit in ein Paket zu schreiben, an dem drei Spuren
+    // gleichzeitig arbeiten, ist teurer als 30 Zeilen Auspacken.
+    const ART = path.resolve(__dirname, "../../../apps/web/public/art/g1/paint/ch01");
+    /** RGBA8, nicht interlaced — genau das, was dieses Kapitel ausliefert. */
+    const decode = (file: string): { w: number; h: number; px: Buffer } => {
+      const buf = fs.readFileSync(file);
+      const w = buf.readUInt32BE(16), h = buf.readUInt32BE(20);
+      expect(buf[24], `${file}: 8 bit je Kanal erwartet`).toBe(8);
+      expect(buf[25], `${file}: RGBA erwartet`).toBe(6);
+      const chunks: Buffer[] = [];
+      for (let off = 8; off + 8 <= buf.length;) {
+        const len = buf.readUInt32BE(off);
+        const type = buf.toString("ascii", off + 4, off + 8);
+        if (type === "IDAT") chunks.push(buf.subarray(off + 8, off + 8 + len));
+        off += 12 + len;
+      }
+      const raw = zlib.inflateSync(Buffer.concat(chunks));
+      const px = Buffer.alloc(w * h * 4);
+      const bpp = 4, stride = w * bpp;
+      for (let y = 0; y < h; y++) {
+        const ft = raw[y * (stride + 1)]!;
+        const line = raw.subarray(y * (stride + 1) + 1, y * (stride + 1) + 1 + stride);
+        for (let i = 0; i < stride; i++) {
+          const a = i >= bpp ? px[y * stride + i - bpp]! : 0;
+          const b = y > 0 ? px[(y - 1) * stride + i]! : 0;
+          const c = i >= bpp && y > 0 ? px[(y - 1) * stride + i - bpp]! : 0;
+          let v = line[i]!;
+          if (ft === 1) v += a;
+          else if (ft === 2) v += b;
+          else if (ft === 3) v += (a + b) >> 1;
+          else if (ft === 4) {
+            const p = a + b - c, pa = Math.abs(p - a), pb = Math.abs(p - b), pc = Math.abs(p - c);
+            v += pa <= pb && pa <= pc ? a : pb <= pc ? b : c;
+          }
+          px[y * stride + i] = v & 0xff;
+        }
+      }
+      return { w, h, px };
+    };
+
+    for (const [cell, s] of Object.entries(GUARDIAN_SLATE)) {
+      const { w, h, px } = decode(path.join(ART, `tafel_${cell}.png`));
+      let x0 = w, y0 = h, x1 = -1, y1 = -1;
+      for (let y = 0; y < h; y++) {
+        for (let x = 0; x < w; x++) {
+          const i = (y * w + x) * 4;
+          const r = px[i]!, g = px[i + 1]!, b = px[i + 2]!, a = px[i + 3]!;
+          if (a > 200 && g > r * 1.10 && g > b * 1.05 && g > 30 && r < 130) {
+            if (x < x0) x0 = x;
+            if (x > x1) x1 = x;
+            if (y < y0) y0 = y;
+            if (y > y1) y1 = y;
+          }
+        }
+      }
+      expect(x1, `tafel_${cell}: keine grüne Schreibfläche gefunden`).toBeGreaterThan(-1);
+      const near = (got: number, want: number, what: string): void => {
+        expect(Math.abs(got - want), `tafel_${cell} ${what}: gemessen ${got.toFixed(3)}, Tabelle ${want}`)
+          .toBeLessThanOrEqual(0.002);
+      };
+      near((x0 + x1 + 1) / 2 / w, s.cx, "cx");
+      near((y0 + y1 + 1) / 2 / h, s.cy, "cy");
+      near((x1 - x0 + 1) / w, s.w, "w");
+      near((y1 - y0 + 1) / h, s.h, "h");
+    }
+  });
+
+  it("R5-W4b · H3 · Standoff und Wisch-Reichweite sind aus IHRER Breite gerechnet, nicht getippt", () => {
+    // Die Zeile „Re-derive this the day either body is re-scaled" stand seit
+    // PK-R6 · H2 als Kommentar über DIP_STANDOFF_PX — und wurde beim ersten
+    // Anlass prompt übersehen: die Herleitung dort rechnete mit „84 px tall"
+    // gegen ausgelieferte 68. Ein Kommentar, der um Nachrechnen BITTET, ist
+    // kein Gesetz. Dieses hier ist eins: es liest das Seitenverhältnis aus dem
+    // Blatt und die Höhe aus anim.ts und rechnet beide Zahlen neu aus. Wer die
+    // Tafel wieder skaliert, sieht hier rot, bevor das Kind in sie hineinläuft.
+    const level = JSON.parse(fs.readFileSync(levelPath, "utf8")) as PaintLevel;
+    const g = level.arena!.entities.find((e) => e.role === "guardian")!;
+    const ART = path.resolve(__dirname, "../../../apps/web/public/art/g1/paint/ch01");
+    const idle = fs.readFileSync(path.join(ART, `${g.skin}_a.png`));
+    const w = idle.readUInt32BE(16);
+    const h = idle.readUInt32BE(20);
+
+    /** halbe Tafel, in denselben Welt-px, in denen die Sim rechnet */
+    const halfBoard = (GUARDIAN_DISPLAY_H * (w / h)) / 2;
+    /** halbes Kind — dieselbe Konstante, aus der die Sim ihre Körperbox baut */
+    const halfChild = 8; // BODY_HALF_PX (entities.ts, modul-privat)
+
+    // 1 · die Berührung passiert an der KANTE: Mitte-zu-Mitte-Reichweite =
+    //     halbe Tafel + halbes Kind. Weniger hiesse: das Kind muss in ihre
+    //     Zeichnung hineinlaufen, um sie anzufassen.
+    expect(GUARDIAN_WIPE_REACH_PX, "Wisch-Reichweite trifft ihre Kante nicht mehr")
+      .toBe(Math.round(halfBoard + halfChild));
+
+    // 2 · und sie landet so weit davor, dass ein Weg bleibt: der Standoff ist
+    //     die Reichweite plus die 22 px, die das Kind zu Fuss zurücklegt.
+    //     (Vorher: 45 Abstand gegen 22 Reichweite = 23 px Weg. Derselbe Weg,
+    //     obwohl beide Zahlen gewachsen sind.)
+    expect(DIP_STANDOFF_PX - GUARDIAN_WIPE_REACH_PX, "der Weg zum Wischen ist verschwunden")
+      .toBeGreaterThanOrEqual(16);
+    expect(DIP_STANDOFF_PX - GUARDIAN_WIPE_REACH_PX, "der Weg zum Wischen ist eine Wanderung geworden")
+      .toBeLessThanOrEqual(28);
+
+    // 3 · und der Standoff passt in die Buehne: auch am fernsten Punkt findet
+    //     der Dip eine Seite, auf der er innerhalb der Klammer landet.
+    const stageMinPx = Number(g.params!.stageMinC) * TILE;
+    const stageMaxPx = (Number(g.params!.stageMaxC) + 1) * TILE;
+    expect(stageMaxPx - stageMinPx, "die Buehne ist schmaler als zwei Standoffs")
+      .toBeGreaterThan(2 * DIP_STANDOFF_PX);
   });
 
   it("R5-P1 · die Buehnen-Klammer haelt jede Bahn horizontal im Sieg-freien Frame (A3-Schluss)", () => {

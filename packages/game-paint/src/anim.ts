@@ -500,6 +500,55 @@ export const GUARDIAN_GROUNDED_CELLS: ReadonlySet<string> = new Set(["sad", "daz
  *  Grounded is CORRECT here and only here: she is beaten and has come down. */
 export const GUARDIAN_LANDED_CELLS: ReadonlySet<string> = new Set(["rest", "win"]);
 
+/**
+ * ── R5-W4b · H3 · WO DIE SCHIEFERTAFEL IN JEDER ZELLE LIEGT ─────────────────
+ *
+ * Anteile der Zelle selbst: `cx`/`cy` die Mitte der grünen Schreibfläche,
+ * `w`/`h` ihre Grösse — je als Bruchteil der Zellbreite bzw. -höhe. Damit kann
+ * die Szene ein Blatt (AQ13s Kritzel-Schichten) auf die Fläche legen, egal
+ * welche Zelle sie gerade trägt.
+ *
+ * WARUM ES DIESE TABELLE BRAUCHT: bis hierher hing die Kritzelei an EINEM
+ * Anker je Skin (`PaintScene.GUARDIAN_BOARDS`, `dyFrac`/`wFrac`) — richtig für
+ * eine Textzeile, die ohnehin mittig umbricht, und falsch für ein Bild. Am
+ * Blatt gemessen wandert die Fläche zwischen den Zellen von **cx 0,350
+ * (`spiral1`) bis 0,651 (`a`)**: das sind über 30 % der Blattbreite, bei 89 px
+ * Darstellungshöhe rund 22 Welt-px. Mit einem gemittelten Anker läge gemalte
+ * Kreide in der Hälfte ihrer Posen auf dem Holzrahmen oder neben ihr in der
+ * Luft — was H2s prozedurale Kleckse verziehen haben, weil sie keine Form
+ * hatten, und was gemalte Buchstaben sofort verraten.
+ *
+ * GEMESSEN, nicht getastet: die grüne Fläche jeder Zelle ist mit derselben
+ * Regel ausgezählt worden, mit der `docs/art/import-batch-aq13.mjs` das
+ * Schnittfenster bestimmt (`a > 200 && g > r·1,10 && g > b·1,05 && g > 30 &&
+ * r < 130`), und `guardian-flight.test.ts` rechnet die ganze Tabelle bei jedem
+ * Lauf aus den PNGs nach (mit einem kleinen eigenen Decoder, damit dieses Paket
+ * dafür keine neue Abhängigkeit bekommt). Wer die Blätter neu malt, sieht dort
+ * rot, statt es am Schirm zu suchen.
+ */
+export const GUARDIAN_SLATE: Readonly<Record<string, { cx: number; cy: number; w: number; h: number }>> = {
+  a: { cx: 0.651, cy: 0.438, w: 0.547, h: 0.534 },
+  b: { cx: 0.525, cy: 0.440, w: 0.629, h: 0.539 },
+  c: { cx: 0.613, cy: 0.439, w: 0.606, h: 0.561 },
+  d: { cx: 0.572, cy: 0.451, w: 0.675, h: 0.555 },
+  roll: { cx: 0.580, cy: 0.413, w: 0.664, h: 0.618 },
+  bank_l1: { cx: 0.463, cy: 0.425, w: 0.684, h: 0.616 },
+  bank_r0: { cx: 0.470, cy: 0.440, w: 0.822, h: 0.652 },
+  bank_r1: { cx: 0.419, cy: 0.450, w: 0.647, h: 0.702 },
+  spiral0: { cx: 0.544, cy: 0.351, w: 0.680, h: 0.514 },
+  spiral1: { cx: 0.350, cy: 0.561, w: 0.531, h: 0.615 },
+  spiral2: { cx: 0.456, cy: 0.583, w: 0.638, h: 0.634 },
+  spiral3: { cx: 0.548, cy: 0.497, w: 0.672, h: 0.720 },
+  windup0: { cx: 0.564, cy: 0.430, w: 0.614, h: 0.624 },
+  windup1: { cx: 0.534, cy: 0.472, w: 0.556, h: 0.507 },
+  windup: { cx: 0.602, cy: 0.503, w: 0.622, h: 0.498 },
+  throw: { cx: 0.589, cy: 0.450, w: 0.668, h: 0.565 },
+  land0: { cx: 0.612, cy: 0.471, w: 0.636, h: 0.642 },
+  land1: { cx: 0.521, cy: 0.477, w: 0.644, h: 0.639 },
+  rest: { cx: 0.516, cy: 0.466, w: 0.691, h: 0.543 },
+  win: { cx: 0.516, cy: 0.470, w: 0.697, h: 0.525 },
+};
+
 // ── R5-W2 · H1 · HOW BIG SHE IS — one owner, because two owners drifted ──────
 //
 // These three lived privately inside PaintScene, which meant the visibility
@@ -515,30 +564,54 @@ export const GUARDIAN_LANDED_CELLS: ReadonlySet<string> = new Set(["rest", "win"
 
 /** Her drawn height in px, at her idle cell.
  *
- *  68 puts the board at roughly one and a half children while keeping her whole
- *  silhouette inside the room: her flight band tops out at world y 166, the
- *  arena's camera is pinned at y 96 (a 20-row world under a 14-row view), so 70
- *  is the ceiling — and the tallest cell on the sheet spends the rest, because
- *  every cell is scaled from the idle by its own proportions. */
-export const GUARDIAN_DISPLAY_H = 68;
+ *  R5-W4b · H3: **89, and the number is a ratio, not a taste.** Four blind
+ *  critics lost the arena against Rayman 4 of 4 and named the same first
+ *  reason: the board does not read as a boss. Measured against the child who
+ *  stands next to her — `hero2_idle` is 430 px authored, drawn through
+ *  `HERO2_SRC_SCALE` at **35,58 px** — she was 68, i.e. **1,93×**. The Rayman
+ *  boss frame the panel judges against (`docs/study/rayman-ref-set` (e), Mr
+ *  Sax) puts its boss at roughly three children. The standing target is 2,5×:
+ *  35,58 × 2,5 = 88,9 ⇒ **89**.
+ *
+ *  Why this was not simply possible before: the ceiling is the ROOM, not the
+ *  resolution (`tafel_a` is 331×397 — at 89 px she is still downscaled 4,5:1).
+ *  The room is bounded by the gap between the top of her flight band and the
+ *  camera's pinned top edge, and the tallest cell spends it: `windup` is 440 px
+ *  against the 397-px idle (1,108×) and swells by `BOSS_BEAT_SWELL` at the top
+ *  of the tell, so she draws `H × 1,2524`. With the stage where it stood (her
+ *  centre at row 11, band top at world y 166, camera pinned at y 96) the
+ *  ceiling was `(70 + KEEPIN 16) / 1,2524 = 68,67` — 68 was 0,67 px under the
+ *  wall and there was nothing left to spend.
+ *
+ *  So the room was made, not borrowed: the arena's playfield moved **two rows
+ *  down** inside the same 20-row grid (`ch01.level.json` arena block — floor
+ *  r16→r18, podiums r14/15→r16/17, her spawn r11→r13). The camera is pinned to
+ *  the world's bottom edge, so the visible rectangle is unchanged and no
+ *  backdrop had to grow: only the floor sank, and the air above her grew from
+ *  70 px to **102 px**. New ceiling `(102 + 16) / 1,2524 = 94,2`; 89 keeps
+ *  5,2 px of margin, and `guardian-flight.test.ts` re-derives all of it from
+ *  the level and the PNGs rather than from this paragraph. */
+export const GUARDIAN_DISPLAY_H = 89;
 
 /** How far past the top of the view her drawing may be pushed back down, in px.
  *
  *  A framing clamp for the tallest cell at the top of her band, not a second
  *  camera — and 6 was not enough. Measured, not estimated: her tallest cell is
  *  `windup` at 440 px against the 397-px idle it is scaled from (1.108×), and
- *  it swells by `BOSS_BEAT_SWELL` at the top of the tell, so she draws 85.2 px
- *  where 68 was budgeted. At the very top of her band (knot 3, tick 0, feet at
- *  world y 166 — the same 166 the display height was chosen against) her head
- *  lands **15.16 px above** the arena camera's top edge at y 96.
+ *  it swells by `BOSS_BEAT_SWELL` at the top of the tell, so she draws
+ *  `H × 1,2524` where H was budgeted.
  *
- *  16 is that number, rounded up: the smallest integer that satisfies the
- *  requirement the visibility proof now DERIVES from the PNGs and the shipped
- *  flight paths, rather than trusting anything written here. It is a real
- *  nudge — she is pushed down by up to 16 px when she flies highest — and that
- *  is a trade the frame review can see and overrule; the alternatives are a
- *  shorter body or a shallower band, both of which are bigger changes than a
- *  clamp doing the job its own name claims. */
+ *  R5-W4b · H3, re-derived after the stage moved two rows down and she grew to
+ *  89: at the very top of her band (knot 3, tick 0, feet at world y 198 — her
+ *  centre is row 13 now) she draws 111,46 px, so her head lands at 86,54 —
+ *  **9,46 px above** the arena camera's top edge at y 96. The clamp therefore
+ *  spends 10 of its 16 px at the worst tick and nothing at all for most of the
+ *  band; before this session it spent 15,16 of 16 and had 0,84 px left. 16
+ *  stays: it is still the smallest integer that covers the shipped flight
+ *  paths with room for the next cell, and the requirement is DERIVED from the
+ *  PNGs and the level by the visibility proof rather than trusted from here.
+ *  It is a real nudge — she is pushed down by up to 16 px when she flies
+ *  highest — and that is a trade the frame review can see and overrule. */
 export const GUARDIAN_KEEPIN_MAX = 16;
 
 /** PK-R6 · H2 (round-2 finding 8: „boss scale-up on key attack beats"). How much

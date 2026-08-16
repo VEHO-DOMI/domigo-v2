@@ -596,17 +596,28 @@ describe("PB-T1 · walker edge contract", () => {
 // asserted here in the same spirit: she MOVES, the movement is a shape, and the
 // shape is the same shape every run.
 describe("the arena guardian flies her knot's path", () => {
+  // R5-W4b · H3: diese Vorrichtung stand als STAND-IN da — Zeile `c: 17, r: 11`
+  // und ein getipptes `floorY = 16 * TILE * SUBS`, beides eine Kopie der Arena
+  // von damals. Als die Bühne zwei Reihen tiefer wanderte, prüfte sie einen
+  // Raum, den es nicht mehr gibt (und wurde rot, was ihr hoch anzurechnen ist).
+  // `shippedArena()` steht seit H1 zwei Bildschirme weiter oben, mit genau
+  // diesem Satz darüber: „Any law about the FIGHT is read out of the shipped
+  // rows from here on — the source, never a stand-in for it." Jetzt auch hier.
+  const SHIPPED = shippedArena();
   const arena = (): EntityWorld =>
-    spawnEntities([spec({ id: "tafel", role: "guardian", skin: "tafel", c: 17, r: 11, tier: "E", params: { knots: 3 } })], []);
+    spawnEntities([spec({
+      id: "tafel", role: "guardian", skin: "tafel",
+      c: SHIPPED.guardian.c, r: SHIPPED.guardian.r, tier: "E", params: { knots: 3 },
+    })], []);
   const far = (): WorldInput => idleInput({ playerX: 30 * TILE * SUBS });
 
   it("is airborne from the first tick and never touches the boards while it fights", () => {
     const w = arena();
     const g = w.entities[0]!;
     expect(g.state).toBe("fly");
-    const floorY = 16 * TILE * SUBS; // the arena's walking surface
+    const floorY = SHIPPED.floorRow * TILE * SUBS; // die ausgelieferte Lauffläche
     for (let t = 0; t < 3000; t++) {
-      stepEntities(w, GRID, far());
+      stepEntities(w, SHIPPED.rows, far());
       if (g.state === "sink" || g.state === "sad" || g.state === "consoled") break;
       expect(g.y).toBeLessThan(floorY);
     }
@@ -641,7 +652,7 @@ describe("the arena guardian flies her knot's path", () => {
       const w = arena();
       const g = w.entities[0]!;
       const out: string[] = [];
-      for (let t = 0; t < 1200; t++) { stepEntities(w, GRID, far()); out.push(`${g.state}:${g.x}:${g.y}`); }
+      for (let t = 0; t < 1200; t++) { stepEntities(w, SHIPPED.rows, far()); out.push(`${g.state}:${g.x}:${g.y}`); }
       return out.join("|");
     };
     expect(trace()).toBe(trace());
