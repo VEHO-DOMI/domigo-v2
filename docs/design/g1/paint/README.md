@@ -17,10 +17,20 @@ sheets one folder up are idea-mines only (§1.6); everything creative here is fr
 ## The decisions this gate freezes (say no to any and only that piece reworks)
 
 - **The cast assignments (fresh, from the approved pools):** FIBEL = the guide who
-  grants verbs · KRAKEL = the sketch-checkpoint artist (the audit's
-  "checkpoint-as-character" made ours) · KLECKS = the bonus-door host (our magician
+  grants verbs · ~~KRAKEL = the sketch-checkpoint artist (the audit's
+  "checkpoint-as-character" made ours)~~ **KRAKEL is no longer cast — see the amendment
+  below** · KLECKS = the bonus-door host (our magician
   analog). Person-cages ch01–05: **Merle · Fenn · Ilvy · Piet · Veit** (Veit in ch05
   because your can/can't beat needs a "he").
+
+  > **★ Amendment 2026-08-15 (rulings R44 · R83; law now in doc 44 §1.11).** Checkpoints
+  > are **silent anchors**: the chapter declares `checkpointStyle: "silent"` and nothing is
+  > announced — no Krakel appearing, no easel, no sketch, no toast. The `C` glyph, the warp
+  > target and the four placement laws are untouched, and the painted sheets `krakel_a` /
+  > `krakel_active` still draw the glyph itself (they are its artwork, not dead art). Every
+  > chapter sheet below that still lists „Krakels Staffelei" in its cast row is describing a
+  > chapter nobody has built; each row now says so. Re-placing the anchors is explicitly
+  > NOT decided — that is a conversation with Koki.
 - **The five guardians (all redeemed, never beaten-and-left):** the awakened
   blackboard (ch01) · the zoo turnstile (ch02) · the ship's figurehead (ch03) · the
   torn calendar (ch04) · the runaway drum kit (ch05, whose consolation gifts FAVOR

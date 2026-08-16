@@ -39,6 +39,19 @@ Vorbild.
 Was durch einen Bau überholt ist, wird als *überholt* markiert und bleibt stehen.
 Eine Falle wandert ins große `P-`-Register, sobald sie ein zweites Programm beißt.
 
+**★ Ratifiziert 2026-08-15 (Ruling R70) — wie hier nummeriert wird.** Zwei Regeln, beide
+aus der Praxis der Welle 4 und beide vom Architekten bestätigt:
+1. **Dicht, lückenlos, in der Reihenfolge des Eintreffens.** Nummern werden **nicht**
+   reserviert und **nicht** übersprungen: das Tor `check-registers` erzwingt, dass jede
+   Zahl von 1 bis zur höchsten vorhanden ist — eine „freigehaltene" Nummer macht es rot.
+   Wer eine Falle meldet, die schon steht, bekommt **keine** neue Nummer, sondern eine
+   Zeile am bestehenden Eintrag plus (wenn er sie unter anderem Namen kannte) eine Zeile
+   in der Umrechnung unten. Genau so entstanden PB-44…51: vierzehn gemeldete Fallen,
+   **acht** Einträge, sechs Doppelungen.
+2. **Nummern vergibt ausschließlich die K-Bahn** (die Kanon-/Register-Session einer Welle).
+   Jede andere Session schreibt ihre Fallen als Text in ihren Report — sonst vergeben
+   zehn parallele Sessions dieselbe Zahl zehnmal.
+
 ## Umrechnung — alte P-Nummer → PB
 
 Wer eine ältere Passover-Zeile oder einen PR-Text mit `P-5x`/`P-6x` liest, findet hier
@@ -140,6 +153,8 @@ mit einem Schritt dazwischen MÜSSEN sich im md5 unterscheiden**, sonst Abbruch.
 **★ Eingeschränkt am 2026-08-15 durch PB-44:** das gilt für die **MCP-Browser-Flächen**.
 Ein selbst gestarteter `--headless=new`-Chrome ist sichtbar und zeichnet — dort greift
 stattdessen die Kontrollmessungs-Pflicht aus PB-44.
+**★ Erweitert am 2026-08-15 durch PB-69:** der verborgene Tab verfälscht nicht nur
+Zahlen — er kann einen echten Defekt **unreproduzierbar** machen.
 
 **PB-5 · Die Erstbild-Zahl ist in der Automatisierung nicht stabil.** *(E4, 2026-08-12;
 früher P-57)* 36–236 ms in derselben Bedingung — weil der verborgene Tab während des
@@ -172,6 +187,9 @@ aus dem HAUPT-Klon, der auf Port 3000 stehen geblieben war — fremder, alter Co
 Aussage „live geprüft" wäre falsch gewesen. Dieselbe Klasse: Port 3999 war von einem
 fremden `frame-sink` belegt. *Regel:* eigener Port je Session, und vor jedem Live-Lauf
 `typeof sim.<neueMethode> === "function"` prüfen.
+**★ Erweitert am 2026-08-15 durch PB-66:** derselbe Haupt-Klon führt auch STATISCH in die
+Irre — er steht auf einem fremden Zweig mit unversionierter Arbeit; Datei-Aussagen von
+dort sind falsch, obwohl sie wie Befunde aussehen.
 
 ## Tests, Tore und Tamper
 
@@ -186,6 +204,11 @@ fallen. J1 nennt das den wertvollsten Moment der Nacht, und zu Recht: ein bestan
 Tamper heißt, dass die Prüfung blind ist. *Regel:* Der Selbsttest wird auf dem Fall
 gebaut, der die beiden Antworten trennt. Und eine Ausnahme muss eine **strengere**
 Pflicht kaufen und etwas **unterdrücken** — sonst gehört sie gelöscht.
+**★ Nachtrag 2026-08-15:** dieselbe Regel kam in der Welle 4 aus **drei** Richtungen
+zurück (F5: ein Tamper, der grün bleibt, hat eine Regel gefunden, die keinen Fall hat ·
+H2: ein Gesetz, das nie rot war, ist eine Behauptung · A6: eine Ausnahme ohne Bestellung
+dahinter ist der Defekt mit Papieren) — keine davon hat eine eigene Nummer bekommen. Das
+**Gegenstück** hat eine: **PB-74**, das Tor, das am falschen Fall rot wird.
 
 **PB-18 · Eine Projektion der Quelle ist nicht die Quelle.** *(H1 Teil 2, 2026-08-14;
 früher P-61)* Der Testraum in `entities.test.ts` hat Boden in Reihe 12, die Tafel fliegt
@@ -194,6 +217,9 @@ Anti-Softlock-Prüfung lief deshalb **monatelang grün über einen Softlock, der
 der Produktion stand**. *Regel:* Jedes Kampf-Gesetz liest `shippedArena()`. Allgemein:
 was ein Gesetz prüfen soll, bekommt die echte Auslieferung vorgesetzt, nie ein
 handgebautes Modell davon.
+**★ Zum zweiten Mal bestätigt (H2, 2026-08-15):** die Landung auf dem Kreide-Kisten-Podest
+hätte kein Test gemeldet, »weil jeder Test sein eigenes flaches Zimmer benutzt«. Keine
+zweite Nummer — dieselbe Falle, zweiter Vorfall.
 
 **PB-19 · Zwei Handlisten heißt: ein neues Feld muss in BEIDE.** *(H1 Teil 2,
 2026-08-14; früher P-62)* `record-paint-tape.mjs` stempelt aus einer Handliste,
@@ -258,6 +284,9 @@ zeigte: **„tippe die längste Antwort" gewann auf 7 von 12 Karten.** *Regel:* 
 das auf die RICHTIGE Antwort zeigt, ist das erklärte Gerüst des Kapitels; eines, das auf
 eine falsche zeigt, ist ein Fehler. Und was zwei blinde Löser unabhängig sagen, ist
 Tatsache.
+**★ Eingeschränkt am 2026-08-15 durch PB-57:** Tatsache ist, was sie **sehen** — die
+**Ursache**, die sie dafür nennen, ist eine Hypothese (B4s Kritiker sahen richtig »kein
+Sprung« und meinten die Kameraposition, nicht das Level).
 
 **PB-16 · Die Wortbank-`forms` führen keinen Plural.** *(G1, 2026-08-13; früher P-68)*
 `book` und `shoe` haben keinen Plural-Eintrag; ein Plural auf dem Bildschirm darf den
@@ -338,6 +367,8 @@ Nachgemessen kostete **jedes Bild drei Sechzigstel**, weil der Auslöser die Uhr
 mittrieb. Eine vier Ticks kurze Anholung ist in Drei-Tick-Schritten gar nicht abbildbar
 — der gesamte F2-Bildbeweis war gröber als behauptet. *Regel:* Bevor eine Bildserie als
 Beweis gilt, wird nachgewiesen, dass das Aufnehmen die Simulation nicht weiterdreht.
+**★ Ergänzt am 2026-08-15 durch PB-59:** eine uhr-neutrale Reihe kann trotzdem aliasen —
+die Schrittweite muss die Periode der Bewegung unterbieten.
 
 **PB-30 · Sichtbar ist nicht wirksam: die Zahl kann stimmen und die Wirkung null sein.**
 *(Dreimal: F1 · F3 · F4.)* F1 parametrisierte das Käfig-Wackeln im WINKEL (±0,07 rad) —
@@ -414,6 +445,11 @@ stumm. Mit `npx vitest run --maxWorkers=3` wieder 44/44 Dateien und 967/967 Test
 *Erkennungsmerkmal:* steht in der Zusammenfassung eine gescheiterte Datei, aber im ganzen
 Lauf kein einziges `✗` mit Testnamen, dann ist die Maschine das Problem, nicht der Code —
 Parallelität senken und erneut fahren, bevor irgendetwas gemeldet wird.
+**★ Dritter Vorfall (W2, 2026-08-15) — auf UNVERÄNDERTEM `origin/main` nachgemessen:**
+1013 von 1013 Tests grün, trotzdem Exit 1. Damit ist belegt, dass der Ausgangs-Code hier
+nichts über den Zweig aussagt. Im Schulden-Register ist **D-116** die kanonische Adresse
+dieser Familie (D-157 verweist dorthin; **D-197 ist eine andere Sache** — das 30-s-Limit
+eines einzelnen Tests, Fix bei W3).
 
 **PB-39 · Ursachensuche frisst die kleinen Nebenaufträge.** *(F3, 2026-08-12)*
 Cue-Lockung und Käfig-Wackeln blieben in F2 UND F3 unbeurteilt, weil das Budget in die
@@ -457,6 +493,11 @@ Anschlüsse die eigentliche Abdeckung — nicht die Existenz der Regel. Solche R
 bekommen EINE Projektion über die ganze Union (hier `answerSurfaceOf`-Muster), damit der
 erschöpfende `switch` das Vergessen unmöglich macht. Und: **frag bei jedem Gesetz, wie
 viele der Fälle es wirklich erreicht, bevor du seinem Grün glaubst.**
+**★ Zweiter Vorfall (C2, 2026-08-15) — dieselbe Falle in einer Textregel statt in einem
+`switch`:** ein Gleichnis-Muster verlangte einen Artikel nach »wie« und traf damit 7 von
+9 Fällen (»wie warmes Holz«, »wie frisches Brot« fielen durch). Gefunden erst beim
+**Auszählen vorher/nachher**. Ergänzte Regel: wer eine Klasse abschafft, zählt sie vorher
+und nachher — die Differenz deckt die Löcher in der eigenen Regel auf.
 
 **PB-42 · Ein Tamper kann durch das FALSCHE Gesetz rot werden.** *(G2, 2026-08-14 —
 Schwesterfall zu PB-15.)* Der Tamper für die Tafel-Kreide (»die Kreide trägt die
@@ -553,3 +594,253 @@ Prüfaufbau: der Shell beantwortet die Sim-Ereignisse, der rohe Schritt tut es n
 *Regel:* im Harness `h.step()` rufen, das den Shell mitfährt — und wenn eine Welt im Test
 einfriert, zuerst den Aufbau verdächtigen, dann das Produkt. (Gegenstück zu **PB-27**, wo
 die Welt aus echtem Produktgrund einfriert.)
+
+## R5-Welle 4 · aus den zehn Reports der Welle (aufgenommen von K3, 2026-08-15)
+
+> **Was diese Runde beim Aufnehmen gelernt hat.** Die zehn Sessions der Welle 4 haben
+> **35 Fallen als Fließtext** gemeldet (Nummern vergibt nur die K-Bahn, R70). Aufgenommen
+> sind **28**. Von den sieben übrigen sind **vier Doppelungen bestehender Einträge** —
+> dreimal **PB-15** (»ein Tamper, der grün bleibt« · »ein Gesetz, das nie rot war« · »eine
+> Ausnahme, die keine Pflicht kauft« sind derselbe Satz aus drei Richtungen), einmal
+> **PB-38** (Zeitlimit statt Testfehler), einmal **PB-18** (jeder Test benutzt sein eigenes
+> flaches Zimmer) —, **zwei Kandidaten sind untereinander dasselbe Gesetz** (ein
+> Messfenster, das den Rahmen statt das Objekt erfasst: F5s Bewegungsmesser und A6s
+> Zell-statt-Stück-Messung stehen zusammen in **PB-58**), und **einer gehört gar nicht
+> hierher** (G3s Vorschlag zum Kritiker-Raster ist eine Methoden-Lehre für die
+> `fable-method`-Skill-Datei, nicht für dieses Register — an Fable geroutet).
+> Geprüft wurde das wie beim letzten Mal doppelt: von der aufnehmenden Session und von
+> einem **blinden Klassierer**, der nur die 51 bestehenden Einträge und die 35 Wortlaute
+> sah, nicht die Zuordnung. Beide kamen auf dieselben vier Doppelungen; wo der Klassierer
+> zusätzlich »lieber als Zeile am alten Eintrag« vorschlug, ist im Zweifel die eigene
+> Nummer vergeben **und** der alte Eintrag mit einem Verweis versehen — eine Falle, die
+> einen bestehenden Satz EINSCHRÄNKT, muss von beiden Seiten auffindbar sein.
+
+**PB-52 · Ein Umbenennen ist nie nur ein Umbenennen — das Genus zieht Fürwörter auf
+fremden Karten nach.** *(C2, 2026-08-15.)* Aus »der Füller« wurde »die Füllfeder«, und
+damit standen auf drei anderen Karten Fürwörter falsch, die niemand angefasst hatte. Mit
+dem Auge findet man das nicht: die falschen Zeilen sind grammatisch tadellos, nur nicht
+mehr über dasselbe Wesen. *Regel:* Nach jeder Nomen-Änderung eine maschinelle Genus-Prüfung
+über ALLE Zeilen desselben Wesens — die Änderung ist erst fertig, wenn diese Liste leer ist.
+
+**PB-53 · Ein Ersetzen über alle Vorkommen trifft auch die Stelle, die richtig war.**
+*(C2, 2026-08-15.)* Ein `replace_all` für »Sag, was es ist« korrigierte drei Karten und
+brach die vierte — beim Buch war »es« korrekt. Der Durchlauf danach hat es gefangen, aber
+nur, weil es einen gab. *Regel:* Copy-Änderungen gehen **je Karte, nie global**. Ein
+globales Ersetzen ist eine Behauptung über jede Fundstelle, und die hat man nicht geprüft.
+
+**PB-54 · Ein Tor darf nur behaupten, was es mit Abstand messen kann.** *(C2, 2026-08-15.)*
+Braun und Orange sind derselbe Farbton; drei Herleitungen fanden keine sichere Trennung
+zwischen ihnen. Statt die Schwelle zurechtzubiegen, bis sie die gewünschte Antwort gibt,
+misst das Tor jetzt die **Familie** (Abstand 2,5 bis unendlich) und bindet das feine Wort
+an eine **ratifizierte Zahl**, die bei einem Neuanstrich schal wird. *Regel:* Wo die
+Messung nicht trennt, misst das Tor die gröbere Größe und macht die feine zur erklärten
+Entscheidung. Eine erfundene Genauigkeit ist schlechter als eine benannte Grenze.
+(Verwandt: **PB-36** — Schwellwerte ableiten statt raten; dort geht es um die Herkunft der
+Zahl, hier um ihre Auflösung.)
+
+**PB-55 · Ein Anker-Feld in einem Dossier kann Geschichte enthalten.** *(B4, 2026-08-15.)*
+Ein neuer Prüfblock las alle Koordinaten aus der Anker-Spalte und fand in p3 sechs statt
+drei — die drei zusätzlichen standen in einer »ALS GEBAUT«-Notiz **innerhalb** derselben
+Tabellenzelle. Das Dokument war richtig, der Leser zu gierig. *Regel:* In einer Zelle, die
+auch Prosa tragen darf, zählt **nur die erste fettgesetzte Gruppe**; was darunter
+argumentiert wird, darf zitieren. Wer eine Tabelle maschinell liest, schreibt diese Regel
+in den Leser, nicht in die Hoffnung.
+
+**PB-56 · zsh trennt `$VAR` nicht in Wörter.** *(B4, 2026-08-15.)* Ein
+`for spec in …; set -- $spec` übergab »p2 58,14« als EIN Argument und legte eine Datei
+namens `shoot_p2 58,14.txt` an. Die Falle steht seit Wochen im Gedächtnis-Index und hat
+trotzdem wieder zugeschlagen — deshalb steht sie jetzt hier, wo sie beim Arbeiten gelesen
+wird. *Regel:* Literale Listen schreiben, nicht Variablen splitten (`${=VAR}`, wenn es
+unbedingt sein muss) — und den **ersten** Durchlauf einer Schleife ansehen, bevor man ihr
+glaubt.
+
+**PB-57 · Ein Kritiker-Urteil über ein Bild ist ein Urteil über die BILDAUSWAHL.**
+*(B4, 2026-08-15.)* Zwei unabhängige Kritiker sagten übereinstimmend »hier gibt es keinen
+Sprung« — und beide hatten recht, über die Kameraposition, nicht über das Level. Der
+Sprung existierte, er war nur nicht im Bild. *Regel:* Konvergenz zweier Blinder beweist
+die **Wahrnehmung**, nicht die **Ursache**. Vor jeder Ableitung aus einem Kritiker-Befund:
+prüfen, ob das Bild die geprüfte Eigenschaft überhaupt zeigen konnte.
+(Schränkt **PB-14** ein — »was zwei blinde Löser unabhängig sagen, ist Tatsache« gilt für
+das, was sie SEHEN; die Diagnose bleibt zu prüfen.)
+
+**PB-58 · Ein Messfenster, das nicht das Objekt umschließt, misst den Rahmen.**
+*(Zweimal am selben Tag: F5 · A6, 2026-08-15.)* F5s Bewegungsmesser hatte den bewegten
+Gegenstand nicht aus dem Fenster gefiltert; der Hintergrund dominierte die Korrelation und
+das Werkzeug meldete »steht still«, wo das p1-Buch 7,56 px zurücklegte — **dieser Fehler
+hat vier Sessions lang einen Widerspruch am Leben gehalten**. A6s Lieferant maß ganze
+512er-Zellen statt der Stücke darin und zählte damit die breiten Bänder gestreckter Pixel
+zwischen den Motiven mit; an den echten Kästen gemessen verschwanden drei von vier
+FAIL-Befunden (Eck-Helligkeit 47,4 → 54,3). *Regel:* Vor jeder Messung das Fenster auf
+das Objekt legen und **das benennen, was mitgemessen wird**. Eine Zahl über den falschen
+Ausschnitt ist nicht ungenau, sondern über etwas anderes.
+
+**PB-59 · `--pure` heilt die Uhr, nicht die Abtastung.** *(F5, 2026-08-15.)* Eine
+bereinigte Bildreihe kann trotzdem aliasen: liegt die Schrittweite über der Periode der
+gemessenen Bewegung, ist die berichtete Spanne Zufall. *Regel:* Die Schrittweite einer
+Messreihe muss die Periode der Bewegung **unterbieten** — und die Periode gehört in den
+Bericht, sonst kann niemand nachrechnen, ob sie es tut. (Verwandt: **PB-29** — dort geht
+es darum, dass das Werkzeug die Uhr nicht treibt; hier darum, wie oft es hinsieht.)
+
+**PB-60 · Ein frischer Worktree hat keine `.env.local` — und damit keine Lehrer-Tür.**
+*(Zweimal unabhängig: W2 · F5, 2026-08-15.)* `git worktree add` bringt nur getrackte
+Dateien mit; `apps/web/.env.local` mit `DEV_TEACHER_ID` ist gitignored. Ohne sie antwortet
+`/play/1/buch` mit 307 auf `/signin`, jedes Foto-Werkzeug bricht mit »die Bühne wurde nie
+gemalt« ab — und die Ursache steht in keiner Fehlermeldung. *Regel:* Erste Handlung jeder
+Bahn nach `pnpm install`: die Datei aus dem Haupt-Clone kopieren (nie committen) und
+`curl` gegen die Tür — **HTTP 200, nicht 307**, bevor irgendetwas gemessen wird.
+
+**PB-61 · Ein Anker, der sich mitbewegt, ist keine Zone.** *(F5, 2026-08-15.)* Merles
+Gang-Zone wurde bei jedem Gang neu an ihrer **aktuellen** Position aufgehängt; ein
+3000-Tick-Test erwischte sie 47 Teilschritte außerhalb ihres Raums. Jeder einzelne Schritt
+war regelkonform, die Summe war es nicht. *Regel:* »Bleibt in ihrem Raum« heißt
+**Heimatpunkt**, nicht letzter Schritt — und eine Zonen-Zusicherung wird über eine lange
+Strecke geprüft, nicht über einen Schritt.
+
+**PB-62 · Ein Zähler, der noch nicht gezählt hat, heißt ALLE, nicht KEINE.**
+*(H2, 2026-08-15.)* Die Tafel war beim ersten Bild ausgerechnet blitzsauber, während das
+Kind »vollgekritzelt« las: der Fortschritts-Zähler stand auf 0, und die Zeichenregel las 0
+als »nichts mehr übrig« statt als »noch nichts abgewischt«. *Regel:* Bei jedem Zähler
+zuerst den **Nullzustand** zeichnen und ansehen — das ist der Zustand, den jedes Kind als
+erstes sieht, und der einzige, den kein Testlauf zufällig durchläuft.
+
+**PB-63 · Gebacken und aufgehängt wird an der Fläche, die das Blatt WIRKLICH einnimmt.**
+*(H2, 2026-08-15.)* Zwei getrennte Anläufe, dieselbe Klasse: 256 px auf 33 px verkleinert
+macht aus Kreidestrichen Matsch, und die Schiefertafel misst 23 × 38 Welt-px und sitzt
+8 px höher als der Text-Anker, an dem sie aufgehängt worden war. *Regel:* Vor dem Backen
+die Zielfläche in Welt-Pixeln **messen** — Größe UND Ort — und danach malen. Eine
+Auflösung ist keine Qualität, sondern ein Verhältnis.
+
+**PB-64 · Ein Texturschlüssel ohne Version serviert nach jeder Änderung das ALTE Bild.**
+*(H2, 2026-08-15.)* Solange der Schlüssel gleich blieb, lebte die alte Kritzelei weiter —
+gemessen wurde an einem Bild, das der eigene Code nie gezeichnet hat. *Regel:* Jeder
+zur Laufzeit erzeugte Texturschlüssel trägt eine Version, die sich mit dem Inhalt ändert;
+und wer eine Änderung am Bild misst, prüft zuerst, dass er sein eigenes Bild vor sich hat.
+(Verwandt: **PB-6** — dort war die Invalidierung zu gierig, hier fehlt sie ganz.)
+
+**PB-65 · Wo eine neue Aufgabe in einer Reihenfolge stehen darf, ist ein Gesetz — kein
+Geschmack.** *(H2, 2026-08-15.)* Der Auftrag schlug vor, neue Boss-Karten »z. B. nach
+`boss.m1`« einzufügen. Das hätte den Build rot gemacht: ein Tor spielt den echten
+Karten-Router dreimal ab einem frischen Zeiger durch und verlangt eine Zahl-Aufgabe unter
+den ersten dreien — die stand auf Platz 3 und wäre auf Platz 4 gerutscht. *Regel:* Vor dem
+Einfügen in eine bestehende Reihenfolge die Tore lesen, die diese Reihenfolge prüfen — und
+das eigene Ergebnis mit einem Gesetz festschreiben, damit die nächste Einfügung nicht
+still bricht.
+
+**PB-66 · Der Haupt-Clone ist nicht der Hauptstand.** *(D3, 2026-08-15.)*
+`~/Code/domigo-v2` steht auf einem fremden Zweig mit unversionierter Arbeit: dort wich
+`overlay-css.ts` um **286 Zeilen** ab, und alle vier `captive_*.png` fehlten ganz.
+Dateiaussagen von dort sind falsch, und zwar **überzeugend** falsch — sie sehen aus wie
+Befunde. *Regel:* Jede Aussage über eine Datei kommt aus dem **eigenen Worktree** oder aus
+`git show origin/main:<pfad>`. (Erweitert **PB-22**, das dieselbe Quelle für die laufende
+Klasse regelt: dort die Frage »kennt der Server meinen Code«, hier »lese ich überhaupt die
+richtige Datei«.)
+
+**PB-67 · Ein Backup ist nur so aktuell wie sein Zeitpunkt.** *(D3, 2026-08-15.)* Acht
+geänderte Dateien lagen im Scratchpad; beim **zweiten** Durchlauf hat dieselbe, inzwischen
+veraltete Kopie eine spätere Änderung stillschweigend zurückgenommen. Die Prüfsummen
+sagten »identisch« — und sie hatten recht: identisch mit dem falschen Stand. *Regel:* Nach
+jedem Zurückspielen den **zuletzt geänderten Wert selbst ansehen**, nicht nur Prüfsummen
+vergleichen; und vor jedem zweiten Tamper die Sicherung neu ziehen. (Die Sicherung geht in
+den Scratchpad, nie über git — `git checkout --` verwirft die unfestgeschriebene Arbeit
+derselben Datei.)
+
+**PB-68 · Ein Backtick in `overlay-css.ts` beendet das Stylesheet — auch im Kommentar.**
+*(D3, 2026-08-15.)* Die Datei ist EIN Template-Literal; ein Backtick in einem Kommentar
+zerlegt sie. Zweimal passiert, beide Male sofort vom Typecheck gefangen. *Regel:* In dieser
+Datei nur »…«, auch in Kommentaren. (Dieselbe Familie wie **PB-17** — ein Zeichen, das in
+einem scheinbar harmlosen Kontext die umschließende Quotierung beendet.)
+
+**PB-69 · Ein verborgener Tab kann einen Fehler VERSTECKEN, nicht nur eine Messung
+verfälschen.** *(D3, 2026-08-15.)* Im fernsteuerbaren Tab stand die Karte in ihrer
+Einblende eingefroren, und in genau diesem Zustand heben sich Drehung und Verkleinerung
+fast auf — der Rad-Fehler war dort **nicht reproduzierbar**. Erst das Erzwingen des
+Ruhezustands hat ihn gezeigt. *Regel:* Ein »geht doch« aus einem verborgenen Tab ist kein
+Freispruch. Ein Negativbefund braucht dieselbe Fläche wie ein Positivbefund — den
+sichtbaren, ausgelaufenen Zustand. (Erweitert **PB-4**/**PB-44**: dort verfälscht der
+verborgene Tab Zahlen, hier verschluckt er einen echten Defekt.)
+
+**PB-70 · Prüfe dein eigenes Dokument gegen das Tor, das du gerade gebaut hast.**
+*(G3, 2026-08-15.)* Vormittags entstand ein Gesetz gegen Abdeckungs-Behauptungen ohne
+Messung; nachmittags stand im eigenen Design-Dokument »jedes Kind begegnet jedem der neun
+Wörter« — und die Zusage hing am **optionalen** Bonusraum hinter einer
+Acht-Buchstaben-Tür. Ein blinder Kritiker fand es, nicht der Autor. *Regel:* Wer in einer
+Session ein Tor gegen eine Behauptungsklasse baut, liest seine eigenen Ergebnisse
+derselben Session einmal ausdrücklich gegen dieses Tor.
+
+**PB-71 · Ein Zeichen, das »die eine Sache« bedeutet, verliert seinen Sinn durch
+Wiederholung.** *(I2, 2026-08-15.)* Das gemalte Notizbuch war zuerst hinter JEDE Regel
+gespannt — es ist EIN aufgeschlagenes Buch, also gehört es einmal ans Kapitel, nicht
+hinter jeden Absatz; und die vier Beispiele trugen zuerst je einen Kreidestrich, der im
+Haus die EINE Sache einer Karte markiert. Viermal untereinander sagt er nichts mehr.
+*Regel:* Vor der Wiederholung eines Zeichens fragen, was es **einzeln** bedeutet — ein
+Bedeutungsträger, der zum Muster wird, ist danach Dekoration.
+
+**PB-72 · Die Naht-Prüfung hat eine ACHSE.** *(A6, 2026-08-15.)* Eine Seitenkante muss
+senkrecht kacheln und waagrecht ausdrücklich **nicht** — sie hat eine gemalte Außen- und
+eine geschnittene Innenfläche. Das Tor verlangte blind beide Achsen und bat damit eine
+Wand, ein Rohr zu sein. *Regel:* Jede Kachel-Prüfung nennt die Achse, in der sie gilt;
+eine achslose Naht-Regel meldet gute Kunst als Fehler.
+
+**PB-73 · Ein Körper kann auf seiner Seitenfläche nicht seine Vorderseite zeigen — und
+eine Motiv-Anforderung, die nicht in der Spec steht, kommt nicht.** *(A6, 2026-08-15.)*
+Zwei blinde Kritiker reihten die neue, technisch einwandfreie Kante als LETZTE von vier,
+unter den Platzhalter, den sie ersetzen sollte: sie malt Buchdeckel von vorn, wo der
+Buchschnitt hingehört. Keine Messung dieser Session konnte das sehen. *Regel:* Zu jeder
+Kunst-Bestellung gehört die **Motiv-Anforderung** (was die Fläche darstellt), nicht nur
+Maß und Farbe — und ein Blatt, das geometrisch besteht und motivisch falsch ist, wird
+zurückgehalten, nicht importiert.
+
+**PB-74 · Ein Tor, das auf guter Kunst anschlägt, ist schlechter als eine ehrliche
+Lücke.** *(A6, 2026-08-15.)* Eine Regel für die hellsten fünf Prozent wurde geschrieben
+und **wieder gelöscht**, weil ihr eigener Selbsttest bewies, dass sie eine ehrliche
++8-Kante nicht von einer ausgebrannten trennt: beide liefern +9,7. Die trennende Größe war
+nicht der Abstand, sondern das Ausbrennen auf Weiß. *Regel:* Ein Tor, das korrekte Arbeit
+rot färbt, wird gelöscht und die Lücke benannt — im Code und im Register. (Gegenstück zu
+**PB-15**: dort beweist ein Tor nichts, weil es nie rot wird; hier schadet es, weil es am
+falschen Fall rot wird.)
+
+**PB-75 · Grau kann keine Familie ändern.** *(A6, 2026-08-15.)* Eine graue Multiplikation
+skaliert alle drei Kanäle gleich — sie bewegt den **Wert** und lässt die **Sättigung**
+unberührt. Genau die war die Beschwerde: ein 37,2-%-Streifen neben einem 60,2-%-Körper.
+Nebenbefund derselben Messung: eine Kante, die dunkler ist als ihre Fläche, ist eine
+Rille. *Regel:* Farbkorrekturen werden aus der Richtung des Körpers **abgeleitet**
+(Ton + Sättigung), nicht als Helligkeitsfaktor aufgesetzt.
+
+**PB-76 · Ein neues Gesetz macht alten Inhalt falsch — zuerst im Dokument, das es
+aufstellt.** *(K2, 2026-08-15.)* Der Story-Spine führte das österreichische Register ein
+und benutzte selbst »Radierer« (2×), »Füller« (1×) und »Federmäppchen« (1×). *Regel:* Mit
+jedem neuen Gesetz im selben Durchgang eine maschinelle Nachsuche über den **Bestand**
+fahren — und die erste Datei in dieser Suche ist die, in der das Gesetz steht.
+
+**PB-77 · Eine Abwesenheits-Behauptung, an `origin/main` gemessen, wird durch den eigenen
+PR falsch.** *(K2, 2026-08-15.)* »Füllfeder und grantig kommen im ganzen Repo nicht vor«
+stimmte im Moment der Messung und war ab dem Merge des PRs falsch, der beide Wörter
+einführt. Eine Abwesenheits-Behauptung ist die Klasse, die am seltensten nachgeprüft wird.
+*Regel:* Jede »X kommt nicht vor«-Aussage bekommt **Stand und Geltungsbereich** in
+denselben Satz (»auf `<commit>`, außerhalb dieses PRs«) — oder sie wird nicht geschrieben.
+
+**PB-78 · Ein naives `grep` zählt falsch, und die Zahl sieht trotzdem gut aus.**
+*(K2, 2026-08-15.)* »wischen« findet »zwischen«; ein Lauf ohne `-I` zählt Treffer in
+PNG-Dateien mit — bei »Uhu« waren das 233 statt 22. *Regel:* Zu jeder gezählten Zahl
+gehört die **Zählmethode** in den Text (Wortgrenze, Dateifilter, Groß-/Kleinschreibung);
+eine Zahl ohne ihr Rezept ist eine Behauptung.
+
+**PB-79 · Ein optionales Feld, das eine Weiterreich-Zeile vergisst, ist typ-still.**
+*(B4, 2026-08-15.)* `PaintScene` kopiert die Sim-Konfiguration Feld für Feld statt per
+Spread; das neue Feld kam als `undefined` an, `typecheck` schwieg, und genau ein Test biss.
+Ein optionales Feld ist genau deshalb still: es DARF fehlen. *Regel:* Jede handgeschriebene
+Weiterreich-Stelle bekommt einen Wiring-Guard (Test oder Spread), sobald ein optionales
+Feld dazukommt. (Dieselbe Familie wie **PB-19** — zwei Listen, die von Hand synchron
+gehalten werden.)
+
+**PB-80 · Ein JSON neu zu dumpen formatiert die ganze Datei um — auch wenn nur ein Feld
+dazukommt.** *(K3, 2026-08-15 — beim Abschluss dieser Runde selbst hineingetreten.)* Die
+Mission-Control-Karte wurde per `json.dump(..., indent=1)` geschrieben; die Datei stand aber
+auf `indent=2`. Ergebnis: **1778 geänderte Zeilen für eine neue Karte** — und damit ein
+Konflikt für jede andere Session, die dieselbe Datei anfasst. Aufgefallen ist es nur, weil der
+`--stat` nach dem Commit gelesen wurde. *Regel:* Vor dem Schreiben eines fremden JSON das
+**bestehende Format messen** (Einrückung, `ensure_ascii`, End-Newline) und beim Dump exakt
+reproduzieren — oder chirurgisch editieren. Und nach jedem maschinellen Schreiben `git diff
+--stat` lesen: eine Zeilenzahl, die nicht zur Änderung passt, ist der Befund.
+(Dieselbe Familie wie die Level-Datei-Regel in `CONTRIBUTING.md`: nie neu erzeugen, nur
+editieren — dort ist sie aufgeschrieben, hier ist sie zum zweiten Mal passiert.)

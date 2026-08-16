@@ -56,15 +56,25 @@ in ihrer Zeile oder DARÜBER schon eingeführt sind.
 >   verlangt, dass das befreite Wesen „visibly fly its Freudenrunde **and remain**".
 >   Verengt hat allein diese Tabelle („Niemand geht irgendwohin"). Gemeint war nie
 >   Bewegungslosigkeit, sondern **Anwesenheit**: der Raum ist die Grenze, nicht der Fleck.
+>   **★ Ratifiziert 2026-08-15 (Ruling R71):** der Architekt hat diese Lesart bestätigt —
+>   R49 ist die **Wiederherstellung** von doc 39/40, keine neue Regel. Wer beide Fassungen
+>   nebeneinander liest, folgt der älteren: sie ist die Quelle, dieser Spine war die
+>   Verengung. Als gebaut (F5, Welle 4): Merle besitzt eine Roam-Zone in ihrem Raum.
 > * **Beat 12 (R50) — die Tafel ist vollgekritzelt, nicht verknotet.** Koki: „man muss sie
 >   sauber machen — Clean the blackboard!" Die Mechanik bleibt unverändert (Pfade, Kreide,
 >   Fenster E/M/S, Sinken, HELLO); nur die Fiktion der drei Stufen wechselt von *Knoten
 >   lösen* zu *Kritzel-Schichten wegwischen*. Interne Symbole (`knots`, `KNOT_*`) bleiben
 >   stehen — sie sind Code-Namen, keine Spielzeilen.
-> * **Beat 0 (R51) — fünf Regel-Seiten, nicht drei.** ⚠ **Die Welt zieht erst mit Session I2
->   nach**; bis dahin liefert das Level 3 `tip`-Entities und `tipsTotal: 3`. Wer heute eine
->   Zeile gegen die Zahl 5 schreibt, schreibt gegen den Kanon und **gegen die aktuelle Welt** —
->   die Auftrags-Karte darf 5 erst versprechen, wenn die fünfte Seite existiert.
+> * **Beat 0 (R51) — fünf Regel-Seiten, nicht drei.** ~~⚠ Die Welt zieht erst mit Session I2
+>   nach; bis dahin liefert das Level 3 `tip`-Entities und `tipsTotal: 3`.~~
+>   **★ Erledigt 2026-08-15 (I2 gemergt, selbst nachgezählt an `ch01.level.json`):** die
+>   Welt liefert **fünf** — `tipsTotal: 5` und fünf `tip`-Entities (p1 Kurzformen +
+>   Befehle · p2 Begrüßen + Zahlen · p3 Plural). Kanon und Welt sagen ab jetzt dieselbe
+>   Zahl; die Auftrags-Karte darf 5 versprechen.
+>   **★ Und die Seiten bleiben fünf (Ruling R98, Kokis Tor-Antwort):** die Plural-Seite
+>   lehrt zwar zwei Dinge (regelmäßig **-s/-ies** und *child–children*), wird aber **nicht**
+>   geteilt. Eine sechste Seite kommt nur, wenn Koki es nach dem Spielen selbst will —
+>   dann als eigener kleiner PR (I2b), nie nebenbei.
 
 **Was das Kind am Ende von ch01 NICHT weiß** (und keine Zeile andeuten darf): wer der
 Tinten-Schatten ist · dass er einmal ein Kind mit diesem Buch war · dass die Lehrerin
@@ -232,7 +242,7 @@ leer ist, wird umgeschrieben (Spalte »Konsequenz«) oder als Weltsache bestellt
 | „27 Buchstaben liegen verstreut." | 9 + 9 + 9 in p1/p2/p3, 0 in der Arena. | Level gezählt; `pickups.test.ts` behauptet 27 |
 | „6 entfärbte Schulsachen warten." | Genau 6 Entities mit `role:"drained"`. | Level gezählt |
 | „Ein Klassenkind steckt fest." | Genau 1 Käfig mit `params.classmate`. | Gesetz `classmate-cage` in `level.ts` |
-| „~~3~~ **5** Regel-Seiten sind aus dem Buch gerissen." (R51) | ⚠ **heute noch 3** `tip`-Entities, `tipsTotal: 3` — **die fünfte und vierte Seite baut Session I2**. Bis dahin ist „5" Kanon, aber noch nicht Weltsache: die Zeile darf erst mitziehen, wenn das Level nachgezogen hat. | Gesetz `tip-honesty` |
+| „~~3~~ **5** Regel-Seiten sind aus dem Buch gerissen." (R51) | ~~⚠ heute noch 3 `tip`-Entities, `tipsTotal: 3` — die fünfte und vierte Seite baut Session I2.~~ **★ Gedeckt seit 2026-08-15 (I2 gemergt, nachgezählt): genau 5 `tip`-Entities und `tipsTotal: 5`.** Kanon und Welt sagen dieselbe Zahl. | Gesetz `tip-honesty` |
 | „5 Käfige." | 4 in den Phasen + 1 in der Arena. | Level gezählt |
 | „Klecks: 8 Buchstaben, drinnen warten 12." | Preis und Bonus-Summe werden aus den Daten gelesen, nie getippt. | `PaintGame.tsx` bonuspay |
 
@@ -287,7 +297,7 @@ stehen als Maßstab hier, nicht als Vorlage zum Abschreiben. Je Karten-Art eine:
 | boss / mistake · order · oddone · memory | `boss.*` | **Inhalt gehört Session H1** (Boss-Paket P4). Ton hier: die Tafel schreibt auf sich selbst — „Die Tafel kritzelt ihre Wörter wild durcheinander." |
 | finale / typed | `fin.t1` | „Die Tafel weint Kreide-Tränen und schaut dich an." / „Schreib ihr ein liebes Wort: Hallo auf Englisch!" |
 
-**Zwei Ton-Regeln, die die Beispiele allein nicht hergeben:**
+**~~Zwei~~ Drei Ton-Regeln, die die Beispiele allein nicht hergeben:**
 1. **Die Auszahlungs-Klausel ist optional, aber nie erfunden.** „…— dann macht er Platz!"
    darf nur dranstehen, wenn die Welt sichtbar antwortet (Farbe kehrt zurück, Käfig
    springt auf, Wesen weicht). Wo die Welt nichts Sichtbares tut, endet die Zeile nach
@@ -295,6 +305,21 @@ stehen als Maßstab hier, nicht als Vorlage zum Abschreiben. Je Karten-Art eine:
 2. **Karten OHNE Wesen** (die acht `qf.free.*`) haben kein `showsDe` — dort gibt es
    nichts zu zeigen. Sie sprechen das Kind direkt an („Du bekommst dein Buch zurück.")
    statt einen Erzähler auf etwas zeigen zu lassen, das nicht da ist.
+3. **★ Neu 2026-08-15 (Ruling R77) — „wer" für Wesen, die sich bewegen; „was" für Dinge,
+   die stehen.** Wörtlich entschieden: *„Sag, **wer** er ist" für Wesen, die sich bewegen —
+   „**was** es ist" für stehende.* Das war bisher C2s Ton-Urteil an drei Karten gegen
+   sechs; ab jetzt ist es die Regel. Sie ist keine Grammatik-Frage, sondern die
+   Unterscheidung, die das Kapitel ohnehin lehrt (Beat 2: **Ding ↔ Wesen**): was
+   herumläuft, sich quer stellt oder antwortet, bekommt ein „wer"; was blass an der Wand
+   lehnt, bekommt ein „was". Wer eine Karte umschreibt, prüft zuerst, ob ihr Gegenüber
+   sich bewegt — und ändert **je Karte, nie global** (die vierte Karte war schon richtig).
+
+> **★ Amendment 2026-08-15 (Ruling R78) — die eine benannte Ausnahme.** Auf der EINEN
+> Leck-Karte bleibt **„der Klebestift"** stehen, obwohl `LEXIKON_AT.md` den *Uhu-Stick*
+> als Erstwahl der Erzählstimme führt (`hints.deWord`, Muster „Auf Deutsch: der
+> Klebestift."). Die Ausnahme ist ausdrücklich, benannt und endet hier: jede weitere
+> Zeile folgt dem Lexikon. Eine Ausnahme, die nicht aufgeschrieben ist, wird beim
+> nächsten Sweep still weggeräumt — deshalb steht sie hier und nicht nur im Kopf.
 
 **Die harten Grenzen** (Maschinen-geprüft, nicht Ermessen):
 - **≤ 56 Zeichen** — und zwar **genau** für `showsDe`, `storyDe`, `colourAskDe`
@@ -312,6 +337,17 @@ stehen als Maßstab hier, nicht als Vorlage zum Abschreiben. Je Karten-Art eine:
   Klebestift, der Spitzer. **„böse" ist BANNED — „grantig" ist das Wort.** Die
   Korpus-Glossen (`wordbank.json`, `vocab.json`) bleiben davon unberührt: sie sagen, was
   das Kind LERNT, das Lexikon sagt, wie die Erzählstimme es NENNT.
+  **★ Nachtrag 2026-08-15 (Ruling R76): „Federpennal" gilt ÜBERALL** — nicht nur in den
+  Spielzeilen. Damit fällt die letzte Zweigleisigkeit (das Keen-Spiel sagte
+  „Federpennal", die Karten „Federmäppchen"): auch die **Wortbank-Glosse** wird
+  nachgezogen, aber ausschließlich über die Korpus-Pipeline der G-Bahn (`ingest-review`,
+  Session G4) — von Hand editiert reißt der Hash-Wächter des Korpus. Bis die Glosse
+  gezogen ist, ist das keine Abweichung, sondern eine offene Bestellung.
+  **★ Nachtrag 2026-08-15 (Ruling R80): Uhu-Stick und Spitzer bleiben Wesen im Level.**
+  Dass der Korpus für sie kein englisches Buchwort führt, ist **kein** Grund, sie aus dem
+  Kapitel zu streichen — sie tragen deutsche Erzähl- und Hinweiszeilen, und genau das ist
+  ihre Aufgabe. Wo eine Zeile ohne englisches Gegenstück steht, ist sie zu KENNZEICHNEN
+  (das Lexikon tut es), nicht zu entfernen.
 - **Kein Antagonisten-Name** in irgendeiner sichtbaren Zeile vor ch15 (Maschinen-Gesetz
   `chapter-copy` + `check-paint-copy`). Der Verursacher heißt **der Tinten-Schatten** —
   eine Beschreibung seiner Tinte, kein Eigenname.

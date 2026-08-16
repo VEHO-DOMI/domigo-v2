@@ -210,6 +210,30 @@ rather than reaching a child.
 screen's rule-page legend — and it is the ONE name every chapter up to ch15 may use for him.
 §1.1's origin becomes readable only at the unmask, when the two words are finally allowed to meet.*
 
+### 1.11 Checkpoints are SILENT ANCHORS (new, 2026-08-15; rulings R44 · R83 — supersedes the checkpoint-as-character casting in `docs/design/g1/paint/README.md` and in every chapter sheet)
+A checkpoint banks your progress and says nothing about it. **As built (ch01, wave 4):** the
+chapter declares `checkpointStyle: "silent"` in its level file, and that one word removes the
+whole ceremony — no Krakel appearing, no easel, no sketch pinned up, no toast. What stays is
+everything the mechanic actually needs: the **`C` glyph** in the grid, the **warp target** the
+child returns to, and the four machine laws that police placement (`checkpoint-count`,
+`checkpoint-placement`, `checkpoint-footing`, `checkpoint-walk` in `packages/game-paint/src/level.ts`),
+including the ANTI-3/6-v2 rule that an anchor stands AFTER the difficulty it pays for, not
+before it. The painted sheets `krakel_a` and `krakel_active` are **not** dead art — they are the
+`C` glyph's own artwork (`artManifest.ts`), and they keep drawing; only the unused third sheet
+goes with the art round.
+
+Why the ceremony went: it interrupted the run to congratulate the child for surviving a jump,
+and it made a named character out of a save point — so the character owed the chapter a story
+it never had. The anchor is stronger mute.
+
+**Two things this does NOT decide.** (1) **Placement.** Where the anchors sit is explicitly
+open: moving them is a conversation with Koki, not a follow-up commit. (2) **The other
+fourteen chapters.** The law above is chapter-wide by design — every chapter sheet that still
+casts KRAKEL as the checkpoint artist is describing a chapter nobody has built yet, and it is
+being corrected to say so; but any chapter may re-open the ceremony deliberately by declaring
+`checkpointStyle: "krakel"`, which is why the option survives in the schema instead of being
+deleted. A chapter that wants the ceremony back must say so in its level file, out loud.
+
 ---
 
 ## §2 · LAW AMENDMENTS
@@ -409,7 +433,8 @@ Keen `boss.ts`). Guardians ride the doc 40 GUARDIAN rig grammar (≥8 states inc
 ### 3.3 The reawakening sequence (PK-R6 pattern-setter, then per chapter)
 The freed classmate stands ghost-pale (desaturation grammar, no new tech) and **acts out the
 unit's wrong-actions round by round — the pose IS the prompt** (Keen duel structure, 6
-rounds, `Runde n/6`): the player picks the command/phrase that stops or guides THAT action.
+rounds, ~~`Runde n/6`~~ **„Frage n von 6"** — amended 2026-08-15, ruling R56): the player
+picks the command/phrase that stops or guides THAT action.
 Ch01 authors the rounds fresh from u01 imperatives (mix of stop-thats and positive commands —
 the Keen rounds were all negative; ours follow the corpus). Correct → the classmate regains
 one degree of motion/colour; final round → full colour, joy loop, the cage opens. Per-chapter
@@ -417,6 +442,12 @@ variants re-skin the same machine (ch12 uses was/were questions instead of imper
 **Amendment 2026-08-15 (R49):** and then she STAYS — present and in motion. The freed
 classmate roams her zone inside that room (walk, hop, wave, idle); she does not stand still
 at the cage, does not follow the player, and never leaves the phase. See §1.4.
+**Amendment 2026-08-15 (R56) — the round counter says „Frage n von 6".** As built:
+`ROUND_LABEL_DE` / `ROUND_OF_DE` in `packages/game-paint/src/cards/CardShell.tsx`. Koki's
+reason, and it is a content reason, not a wording preference: a *Runde* is something you
+survive, a *Frage* is something you answer — and the sequence asks six questions. Every
+chapter that re-skins this machine inherits the German label; the English design term
+"round" stays in this document, where no child reads it.
 
 ### 3.4 Objective screens (PK-R5)
 One engine component (the GOAL CARD frame over `startFrozen` + 240 ms fade-in, doc 42 §3) +
@@ -513,6 +544,21 @@ ch01–06 sheets are honored as pointers; where a dossier overrides them, it say
   > the idea again?"): wiping a board needs no explanation. ⚠ Note for anyone citing the
   > source: doc 45 F1 points at „doc 44 §3.2/§4", but **§3.2 contains no knot at all** —
   > the mechanic was specified in this one sentence and nowhere else.
+
+  > **★ Amendment 2026-08-15 (rulings R88 · R99 · R100 — as built by H2, wave 4).** Three
+  > details of the wipe are now decided and shipped, and they are written here so the next
+  > chapter's guardian inherits them rather than re-litigating them.
+  > * **The wipe fires on CONTACT, not on ↑.** The child walks into the scribble layer and
+  >   it comes off. Reason: the wipe is a physical act in the fiction, and a key-press for
+  >   it would make the one moment of the fight that is not a question feel like a question.
+  > * **A child who stands still loses the CARD, not the game** (R99, Koki's gate answer).
+  >   If it never goes to the board, the boss-window closes and that card is gone; the
+  >   fight continues. The chapter takes something away, it never ends the run — the same
+  >   rule the rest of ch01 follows.
+  > * **The beat-1 plate stays** (R100) — the small picture of the board over the very
+  >   first card. H2 measured the alternative (removing it changed no critic's verdict), so
+  >   it stays on the cheaper side of the trade: it tells the child WHO is asking before the
+  >   first question lands.
 
 - **Reawakening (C3):** *(after the six rounds she STAYS — present and roaming inside p2, never
   motionless at the cage and never leaving the phase; §1.4/§3.3 amendments of 2026-08-15, R49)*

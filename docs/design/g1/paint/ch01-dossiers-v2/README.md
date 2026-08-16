@@ -79,13 +79,20 @@ _(HISTORISCH: bis 2026-08-14 stand hier „walk 1,25 / run 2,25 px/t". Die 1,25 
 - **★ DIE LEVEL-DATEI WIRD CHIRURGISCH EDITIERT (K2, 2026-08-15 — nachgemessen).**
   `ch01.level.json` steht im Format `json.dumps(indent=1, ensure_ascii=False)`: **ein
   Leerzeichen Einrückung je Ebene, Umlaute als echte UTF-8-Zeichen, KEIN End-Newline**
-  (die letzten zwei Bytes sind `"` und `}`). **Sie ist aber nicht reproduzierbar:** gegen
-  einen frischen Dump weichen **genau elf Zeilen** ab (113–116, 306–308, 435–438) — dort
-  stehen fünf statt sechs Leerzeichen, von Hand nachgetragene Felder in den
-  `regelseite`-Objekten. Wer die Datei neu dumpt, schreibt diese elf Zeilen still um.
-  *Regel:* **nie neu formatieren, nur chirurgisch editieren.** Steht ausführlich in
-  `CONTRIBUTING.md`. (Gilt für die Level-Dateien; `ch01.tasks.v2.json` endet dagegen MIT
-  einem Zeilenende — es ist keine Repo-weite JSON-Regel.)
+  (die letzten zwei Bytes sind `"` und `}`).
+  **★ Neu gemessen 2026-08-15 (K3, Commit `3daaf47`; Ruling R73): die Datei ist heute
+  byte-identisch zu ihrem eigenen Dump** — 18 053 Bytes, 624 Zeilen, kein End-Newline,
+  md5 `94b94950918d92c5ef74476daaa0f1f5`. ~~Die elf abweichenden Zeilen (113–116, 306–308,
+  435–438)~~ waren die von Hand nachgetragenen Felder in den `regelseite`-Objekten, und
+  **Session I2 hat genau diese Felder entfernt**; es gibt keine abweichende Zeile mehr.
+  *Regel:* **trotzdem nie neu formatieren, nur chirurgisch editieren** — die Regel hängt am
+  fehlenden End-Newline, an der Ein-Leerzeichen-Einrückung, an den echten Umlauten und
+  daran, dass ein neu geschriebenes JSON in einer Parallel-Welle in jeder Zeile kollidiert
+  statt in der einen, die man geändert hat. Byte-identisch heute heißt nicht dumpbar
+  morgen: das erste von Hand nachgetragene Feld bricht es wieder. Messbefehl und
+  ausführliche Begründung in `CONTRIBUTING.md`. (Gilt für die Level-Dateien;
+  `ch01.tasks.v2.json` endet dagegen MIT einem Zeilenende — es ist keine Repo-weite
+  JSON-Regel.)
 
 ## §Tor-Antworten 2026-08-11 (Koki, nach Merge #252 — RATIFIZIERT)
 
@@ -250,6 +257,14 @@ und eine Randnotiz (Zahlen); **Plural und Imperative fehlten ganz.** Kokis Wort 
 »ein Kuratierungsproblem«. Das Level trägt jetzt fünf `tip`-Entities und `tipsTotal: 5`;
 `tip-honesty` beweist die Zahl gegen die Welt. Die REIHENFOLGE der fünf bleibt ein
 offenes Koki-Tor (Tabelle im I2-Report).
+
+**★ ENTSCHIEDEN (Koki, 2026-08-15; Ruling R98): es bleiben FÜNF — die Plural-Seite wird
+NICHT geteilt.** I2s blinder Leser hatte gemeldet, die Plural-Seite lehre zwei Dinge
+(regelmäßig **-s/-ies** und *child–children*), und eine Teilung auf sechs Seiten
+vorgeschlagen. Kokis Entscheid: erst spielen, dann entscheiden. Eine sechste Seite kommt
+nur auf seinen Wunsch und dann als eigener kleiner PR (I2b) — nicht nebenbei in einer
+anderen Runde, weil jede Änderung an der Seitenzahl die Auftrags-Karte, `tipsTotal` und
+das Gesetz `tip-honesty` gemeinsam bewegt.
 
 **Geändert in R5-W2 I1 (2026-08-13):** p1 hieß »to be« — MORE! 1 führt „the verb to be"
 laut eigener Ziel-Liste erst in **Unit 2**; Unit 1 druckt stattdessen die drei Note-Kästen

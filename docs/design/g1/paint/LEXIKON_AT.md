@@ -86,6 +86,16 @@ sagt, wie die Erzählstimme es NENNT.* Wo beides dasselbe Wort meint, gewinnt de
 wo die Erzählstimme österreichisch klingen soll, gewinnt das Lexikon. **Niemand ändert die
 Glossen, um dieses Lexikon zu bedienen** — die Glossen sind Lehrbuch-Abschrift.
 
+**★ Was „⚠ ungedeckt" NICHT heißt (2026-08-15, Ruling R80 — die einzige K3-Zeile in dieser
+Datei).** Die beiden letzten Zeilen der Tabelle (`glue stick`, `pencil sharpener`) tragen
+kein englisches Buchwort. Das ist eine **Kennzeichnung, keine Streich-Anweisung**: der
+Uhu-Stick und der Spitzer bleiben Wesen im Level. Wörtlich entschieden: *kein SB-Wort ist
+kein Grund zum Streichen.* Beide tragen deutsche Erzähl- und Hinweiszeilen, und ein Wesen,
+das auf Deutsch angesprochen wird und auf Deutsch antwortet, braucht keine Vokabel-Karte,
+um dazuzugehören. Was die Markierung verlangt, ist Ehrlichkeit an genau einer Stelle: **auf
+diesen Karten darf keine englische Antwort abgefragt werden**, für die der Korpus keine
+Grundlage liefert. G3 bleibt zuständig, falls der Korpus die Wörter später doch führt.
+
 ---
 
 ## §4 · Der Bestand am 2026-08-15 (gemessen, nicht geschätzt)
