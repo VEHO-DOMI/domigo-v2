@@ -25,19 +25,21 @@ describe("shipped paint levels", () => {
   });
 
   for (const { file, level } of shipped) {
-// R5-W1 · E1: checkLevelLaws needs ~3 s on the shipped chapter — the
-// trap-pocket law runs one reachability search per reachable cell (114 in p2
-// alone), which is quadratic by design ("honesty beats cleverness", level.ts).
-// Vitest's default 5 s timeout sat close enough to that to flip red or green
-// with machine load: this suite was FLAKY, not broken. The timeout is raised
-// deliberately rather than the law weakened; the quadratic law itself is filed
-// as a follow-up, with the measurement, in the E1 report.
-// (C1 hit and diagnosed the same flake independently, before touching a line —
-// same conclusion, so the explanation is kept once instead of twice.)
+    // R5-W4b · W3 · D-197 (family D-116). This test carried its own `, 30_000`, and a
+    // per-test timeout OVERRIDES `testTimeout` from vitest.config.ts — so the 120 s
+    // that config chose from measurement, naming this very test, never applied here.
+    // pickups.test.ts:260 removed the same override for the same reason; this file was
+    // the one left. It is not a latent risk: on an UNTOUCHED tree this session it went
+    // RED — "Test timed out in 30000ms" — because `checkLevelLaws` runs one
+    // reachability search per reachable cell (quadratic by design, level.ts) and vitest
+    // runs 30 files in parallel workers. Measured twice after removing the override:
+    // 21.5 s / 21.9 s of test time, comfortably inside the config's 120 s and just as
+    // comfortably outside 30 s. The number now lives in exactly one place:
+    // vitest.config.ts, whose own comment carries the measurement it was chosen from.
     it(`${file} parses and passes the laws`, () => {
       const parsed = parsePaintLevel(level);
       const failures = checkLevelLaws(parsed);
       expect(failures, JSON.stringify(failures, null, 1)).toEqual([]);
-    }, 30_000);
+    });
   }
 });

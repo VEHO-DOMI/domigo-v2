@@ -24,7 +24,7 @@
  *        [--phases p1,p2,p3,p4,p9] [--settle 900] [--json out.json]
  */
 import { spawn } from "node:child_process";
-import { mkdtempSync, writeFileSync } from "node:fs";
+import { existsSync, mkdtempSync, readFileSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
 
@@ -33,7 +33,7 @@ const arg = (name, dflt) => {
   return i >= 0 && process.argv[i + 1] ? process.argv[i + 1] : dflt;
 };
 const PORT = Number(arg("port", "3272"));
-const CDP = Number(arg("cdp-port", String(PORT + 1000)));
+const CDP = Number(arg("cdp-port", "0")); // D-207: 0 = Chrome sucht sich einen freien
 const WARM = arg("warm", "1");
 const PHASES = arg("phases", "p1,p2,p3,p4,p9").split(",");
 const SETTLE = Number(arg("settle", "900"));
@@ -49,15 +49,31 @@ const chrome = spawn(CHROME, [
   `--user-data-dir=${profile}`, `--remote-debugging-port=${CDP}`, "about:blank",
 ], { stdio: ["ignore", "ignore", "ignore"] });
 
+// R5-W4b · W3 · D-207-KLASSE, hier live erwischt. Dieses Skript leitete seinen
+// Fernsteuer-Port aus dem Dev-Port ab (PORT + 1000) und fragte dann, ob dort JEMAND
+// antwortet. In dieser Sitzung hat genau das zugeschlagen: ein Chrome aus dem
+// VORIGEN Lauf hielt 4270 noch offen, der zweite Lauf starb mit »Chrome hat seinen
+// Debug-Port nie geöffnet« — eine Meldung über den falschen Prozess. Zwei Läufe
+// hintereinander reichen also schon; es braucht keine zehn parallelen Sessions.
+//
+// Gleiche Reparatur wie in `shoot-card-bench.mjs`: Standard 0 heißt »such dir einen
+// freien«, und die Adresse wird aus `DevToolsActivePort` im EIGENEN Profilordner
+// GELESEN. Wer diese Datei geschrieben hat, ist der Browser, den dieser Lauf
+// gestartet hat — Freiheit und Identität in einem Griff.
 const endpoint = async () => {
+  const portFile = path.join(profile, "DevToolsActivePort");
   for (let i = 0; i < 80; i++) {
-    try {
-      const j = await (await fetch(`http://127.0.0.1:${CDP}/json/version`)).json();
-      if (j.webSocketDebuggerUrl) return j.webSocketDebuggerUrl;
-    } catch { /* not up yet */ }
+    if (existsSync(portFile)) {
+      const [portLine, wsPath] = readFileSync(portFile, "utf8").split("\n");
+      const bound = Number(portLine);
+      if (Number.isInteger(bound) && bound > 0 && wsPath?.trim().startsWith("/devtools/")) {
+        return `ws://127.0.0.1:${bound}${wsPath.trim()}`;
+      }
+    }
     await sleep(250);
   }
-  throw new Error("Chrome hat seinen Debug-Port nie geöffnet");
+  throw new Error("Chrome hat in 20 s keinen DevToolsActivePort geschrieben "
+    + `(Profil ${profile}) — bei fest gewähltem --cdp-port ${CDP} ist das meist ein belegter Port`);
 };
 const client = (ws) => {
   let id = 0;

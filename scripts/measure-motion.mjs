@@ -75,6 +75,62 @@ export const changeBox = (frames, threshold = 12) => {
  * ist Tinte auf Wand, und ein Schwerpunkt ist gegen Inhalts-Änderungen (der
  * Gefangene zappelt) unempfindlicher als jeder Bildvergleich.
  */
+/**
+ * R5-W4b · W3 · D-170 — DER ANTEIL DES BANDES, DER SICH NICHT BEWEGT.
+ *
+ * F5 meldete für die p1-Buch-Wippe 2,00 px, während dasselbe Ding in denselben
+ * Bildern 7,56 px zurücklegt. Die Ursache ist keine Schwelle und kein Rundungsfehler,
+ * sie ist Arithmetik — und deshalb ist sie auch KORRIGIERBAR:
+ *
+ *   Schwerpunkt(t) = (S_bewegt(t) + S_still) / (W_bewegt + W_still)
+ *
+ * `S_still` und `W_still` stehen in JEDEM Bild an derselben Stelle. Die Differenz
+ * zweier Schwerpunkte kürzt sie im Zähler weg, im NENNER bleiben sie stehen:
+ *
+ *   gemessen = wahr · W_bewegt / (W_bewegt + W_still) = wahr · (1 − stillerAnteil)
+ *
+ * Ein Band, das zur Hälfte aus unbewegter dunkler Masse besteht, meldet also exakt
+ * die halbe Strecke — leise, plausibel und falsch. Genau das ist die Auflösung des
+ * Widerspruchs, den die F-Bahn offen übergeben hat (Instrument 16 px gegen Prüfer
+ * »≈1 px«): beide hatten recht über verschiedene Dinge.
+ *
+ * Diese Funktion misst den stillen Anteil, damit die Zahl korrigiert werden kann
+ * statt geglaubt zu werden. »Still« heißt: in KEINEM Bild der Reihe ändert sich
+ * dieser Bildpunkt. Bei einer starr verschobenen, GLEICHFARBIGEN Fläche zählt das
+ * Innere fälschlich als still — bei gemalter Ware (Textur) nicht, und darum geht es
+ * hier. Der Selbsttest benutzt deshalb texturierte Kästen, keine flachen.
+ */
+export const stillDarkShare = (frames, band, threshold = 12) => {
+  const A = frames[0];
+  const W = A.width;
+  const vals = [];
+  for (let y = band.y; y < band.y + band.h; y++) {
+    for (let x = band.x; x < band.x + band.w; x++) vals.push(lum(A.data, (y * W + x) * 4));
+  }
+  if (vals.length === 0) return 0;
+  const sorted = [...vals].sort((a, b) => a - b);
+  const ground = sorted[Math.floor(sorted.length * 0.9)];
+  let still = 0;
+  let total = 0;
+  for (let y = band.y; y < band.y + band.h; y++) {
+    for (let x = band.x; x < band.x + band.w; x++) {
+      const i = (y * W + x) * 4;
+      const w = Math.max(0, ground - lum(A.data, i));
+      if (w <= 0) continue;
+      total += w;
+      let moved = false;
+      for (const B of frames.slice(1)) {
+        if (Math.abs(lum(A.data, i) - lum(B.data, i)) > threshold) { moved = true; break; }
+      }
+      if (!moved) still += w;
+    }
+  }
+  return total === 0 ? 0 : still / total;
+};
+
+/** Was der Schwerpunkt gemeldet hätte, wenn nur das Bewegte im Band gelegen wäre. */
+export const undilute = (measured, share) => (share >= 1 ? null : measured / (1 - share));
+
 export const topCentroid = (png, band) => {
   const W = png.width;
   const vals = [];
@@ -212,6 +268,64 @@ const selftest = () => {
       fails.push(`eine Scherung von 8 px oben auf 0 unten wurde als ${got.toFixed(2)} gemessen — erwartet 4…8,5`);
     }
   }
+  // ── D-170 · DER FALL, DEN DIESER SELBSTTEST NICHT HATTE ────────────────────
+  // Alle Fälle oben stellen ein EINZIGES bewegtes Ding auf leeren Grund: `dark()`
+  // ist zweiwertig, es gibt keine stehende dunkle Masse. Damit war die Verdünnung
+  // per Konstruktion unsichtbar, und das Gerät konnte 2,00 px für 7,56 px melden,
+  // ohne dass ein Tor etwas sagte. Hier steht jetzt ein zweiter, STEHENDER Kasten im
+  // selben Band. Beide sind texturiert — bei einer glatten Fläche zählt das Innere
+  // eines starr verschobenen Kastens fälschlich als »still«, und der Fall würde das
+  // Falsche prüfen.
+  {
+    // Die Textur ist an den KASTEN geheftet (x − offset), nicht ans Bild. Erster
+    // Versuch dieser Fixture heftete sie an feste Bildkoordinaten — dann ändert sich
+    // beim Verschieben kein einziger Bildpunkt im Inneren, und der stille Anteil
+    // meldete 85 % statt 20 %. Der Selbsttest hat das selbst gefangen; er stünde sonst
+    // grün über einer Messung, die das Gegenteil misst. Ein Verlauf statt eines
+    // Musters, damit jeder Punkt sich um mehr als die Schwelle (12) ändert.
+    const zwei = (offset, mitStehendem = true) => {
+      const png = new PNG({ width: W, height: H });
+      for (let y = 0; y < H; y++) {
+        for (let x = 0; x < W; x++) {
+          const i = (y * W + x) * 4;
+          const k = x - offset - 60;
+          let v = 220;
+          if (k >= 0 && k < 40 && y >= 30 && y < 90) v = 30 + k * 2;
+          else if (mitStehendem && x >= 108 && x < 115 && y >= 30 && y < 90) v = 30 + (x - 108) * 2;
+          png.data[i] = v; png.data[i + 1] = v; png.data[i + 2] = v; png.data[i + 3] = 255;
+        }
+      }
+      return png;
+    };
+    const reihe = [zwei(0), zwei(7)];
+    const roh = topCentroid(zwei(7), band) - topCentroid(zwei(0), band);
+    const anteil = stillDarkShare(reihe, band);
+    const korrigiert = undilute(roh, anteil);
+
+    // 1 · der Defekt ist da und wird beziffert: 7 px wahr, roh deutlich weniger
+    if (!(roh > 4.5 && roh < 6.5)) {
+      fails.push(`der stille Kasten müsste 7 px auf rund 5,6 px verdünnen; gemessen ${roh.toFixed(2)}`);
+    }
+    // 2 · das Gerät WEISS, wie viel des Bandes steht (vorher: keine Ahnung)
+    if (!(anteil > 0.1 && anteil < 0.35)) {
+      fails.push(`der stille Anteil des Bandes müsste bei rund 20 % liegen; gemessen ${(anteil * 100).toFixed(0)} %`);
+    }
+    // 3 · und die korrigierte Zahl trifft die Wahrheit wieder
+    if (Math.abs(korrigiert - 7) > 0.5) {
+      fails.push(`nach der Korrektur müssten es wieder 7 px sein; gemessen ${korrigiert.toFixed(2)}`);
+    }
+    // 4 · und die Korrektur darf ein sauberes Band NICHT verbiegen: dieselbe Reihe
+    //     OHNE den stehenden Kasten muss ~0 % stille Masse und die vollen 7 px melden
+    const sauber = stillDarkShare([zwei(0, false), zwei(7, false)], band);
+    if (sauber > 0.05) {
+      fails.push(`ein Band ohne stehende Masse müsste 0 % melden; gemessen ${(sauber * 100).toFixed(0)} %`);
+    }
+    const sauberRoh = topCentroid(zwei(7, false), band) - topCentroid(zwei(0, false), band);
+    if (Math.abs(sauberRoh - 7) > 0.3) {
+      fails.push(`ohne stehende Masse müsste der rohe Schwerpunkt 7 px melden; gemessen ${sauberRoh.toFixed(2)}`);
+    }
+  }
+
   const box = changeBox([base, make(7)]);
   if (box === null || box.w < 5) fails.push("das Änderungs-Fenster findet die bewegte Fläche nicht");
   if (box !== null && (box.y > 30 || box.y + box.h < 90)) {
@@ -226,6 +340,8 @@ const selftest = () => {
   console.log("measure-motion --selftest: OK");
   console.log("  Verschiebung 0 / +7 / −5 px exakt · Bruchteile nicht auf ganze Pixel gerundet");
   console.log("  Schwerpunkt 0 / +7 / −5 px exakt · eine SCHERUNG wird als Weg der Oberkante gelesen");
+  console.log("  D-170: ein STEHENDER Kasten im Band verdünnt 7 px auf 5,6 px — das Gerät beziffert den");
+  console.log("         stillen Anteil (20 %) und rechnet ihn heraus, statt die kleinere Zahl zu melden");
 };
 
 // ── CLI ─────────────────────────────────────────────────────────────────────
@@ -365,6 +481,19 @@ const band = (() => {
   }
 }
 
+// D-170: erst messen, wie viel des Bandes überhaupt in Bewegung ist — sonst ist jede
+// Zahl darunter eine Aussage über den Hintergrund.
+const stillShare = stillDarkShare(rows.map((r) => r.png), band);
+if (stillShare > 0.6) {
+  console.error(`✗ ${(stillShare * 100).toFixed(0)} % der dunklen Masse im Oberkanten-Band bewegt sich in `
+    + "KEINEM Bild der Reihe. Der Schwerpunkt meldet dann rund "
+    + `${((1 - stillShare) * 100).toFixed(0)} % des wahren Weges — die Korrektur wäre ein Faktor `
+    + `${(1 / (1 - stillShare)).toFixed(1)}× und damit zu wacklig, um darauf ein Urteil zu bauen.\n`
+    + "  Das Band enger fassen (das Fenster des WESENS, nicht das gepolsterte Kästchen) "
+    + "oder eine Reihe schießen, in der das Ding wirklich läuft.");
+  process.exit(1);
+}
+
 const baseCentroid = topCentroid(rows[0].png, band) ?? 0;
 const out = rows.map((r) => {
   const rot = r.ent?.breath?.rot ?? null;
@@ -383,6 +512,7 @@ const out = rows.map((r) => {
     rot,
     drawnPx: drawn,
     measuredPx: (topCentroid(r.png, band) ?? 0) - baseCentroid,
+    korrigiertPx: undilute((topCentroid(r.png, band) ?? 0) - baseCentroid, stillShare),
     korrelationPx: shiftPx(rows[0].png, r.png, band),
   };
 });
@@ -392,18 +522,24 @@ if (asJson) {
 } else {
   console.log(`Fenster des »${role}« aus dem Zettel: x ${objBox.x}…${objBox.x + objBox.w} · y ${objBox.y}…${objBox.y + objBox.h}`);
   console.log(`Oberkanten-Band: y ${band.y}…${band.y + band.h} · Zoom ${ZOOM}× · (alles Bewegte im Bild: ${box.w}×${box.h} px)\n`);
-  console.log("Bild                  Tick  Kosten  nearT      rot   gezeichnet   Oberkante");
+  console.log(`Stiller Anteil des Bandes: ${(stillShare * 100).toFixed(0)} % der dunklen Masse bewegt sich nie `
+    + `⇒ der rohe Schwerpunkt meldet ${((1 - stillShare) * 100).toFixed(0)} % des Weges (Korrektur ×`
+    + `${(1 / (1 - stillShare)).toFixed(2)}).\n`);
+  console.log("Bild                  Tick  Kosten  nearT      rot   gezeichnet   Oberkante   korrigiert");
   for (const r of out) {
     console.log(
       `${r.frame.padEnd(20)} ${String(r.tick).padStart(5)} ${String(r.shotCostTicks ?? "?").padStart(7)} `
       + `${(r.nearT ?? 0).toFixed(2).padStart(6)} ${(r.rot ?? 0).toFixed(4).padStart(8)} `
-      + `${(r.drawnPx ?? 0).toFixed(2).padStart(12)} ${r.measuredPx.toFixed(2).padStart(10)}`,
+      + `${(r.drawnPx ?? 0).toFixed(2).padStart(12)} ${r.measuredPx.toFixed(2).padStart(11)} `
+      + `${(r.korrigiertPx ?? 0).toFixed(2).padStart(12)}`,
     );
   }
   const d = stats(out.map((r) => r.drawnPx ?? 0));
   const m = stats(out.map((r) => r.measuredPx));
+  const k = stats(out.map((r) => r.korrigiertPx ?? 0));
   console.log("\n                     SPANNE (Instrument)   NACHBARN max   NACHBARN Mittel");
   console.log(`  gezeichnet        ${d.span.toFixed(2).padStart(15)} px ${d.maxAdj.toFixed(2).padStart(13)} ${d.meanAdj.toFixed(2).padStart(17)}`);
-  console.log(`  im Bild gemessen  ${m.span.toFixed(2).padStart(15)} px ${m.maxAdj.toFixed(2).padStart(13)} ${m.meanAdj.toFixed(2).padStart(17)}`);
+  console.log(`  roh gemessen      ${m.span.toFixed(2).padStart(15)} px ${m.maxAdj.toFixed(2).padStart(13)} ${m.meanAdj.toFixed(2).padStart(17)}`);
+  console.log(`  KORRIGIERT        ${k.span.toFixed(2).padStart(15)} px ${k.maxAdj.toFixed(2).padStart(13)} ${k.meanAdj.toFixed(2).padStart(17)}`);
   console.log("\n(SPANNE ist, was ein Instrument meldet. NACHBARN ist, was ein Mensch beim Durchblättern sieht.)");
 }

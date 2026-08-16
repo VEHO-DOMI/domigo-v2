@@ -42,7 +42,7 @@ ihm stammt kein Bild dieses Satzes.
 
 ## Der Satz
 
-Alle sechs sind **960×713**, aus dem Kasten oben geschnitten, unverändert sonst. Das Spiel-HUD
+Alle sieben sind **960×713**, aus dem Kasten oben geschnitten, unverändert sonst. Das Spiel-HUD
 (Rayman-Kopf links oben, Sammelobjekt-Zähler rechts oben, im Boss-Bild die Lebensleiste) bleibt
 drin: es ist die eigene Bildkomposition des Spiels, und unsere Bilder tragen ihre eigene Anzeige
 ebenfalls. Der md5 pinnt das Bild, damit ein Verifizierer weiß, **welches** Bild galt — lokale
@@ -56,6 +56,7 @@ Kopien driften.
 | **(d)** Held steht am Rand | `d_held_am_rand.png` | `2a1bfe522cae5d655d794d61cb95ec12` | `Rayman Movement Physics/03-jump-tap/f_0069.png` | Der Held steht an der vorderen Kante einer winzigen Insel; der Fallraum bis zum Wasser ist im Vollbild ohne Vergrößern zu sehen. | **R46** — Kokis Tor, ob AAA-Balance-Zellen neu bestellt werden. ⚠ Einschränkung siehe unten. |
 | **(e)** Gegner-Begegnung/Boss-Arena | `e_boss_arena.png` | `26bfb703b262ecf37a1107ff93f680d2` | `July 22nd Rayman Game /06-mr-sax/03_mr-sax-boss-arena-flute-masks.png` | Boss groß rechts, Held klein links, gemalte Arena-Architektur ringsum, eigene Boss-Lebensleiste unten links. | Arena-Aufbau, Größenverhältnis Held:Boss, Lebensleiste (H2). |
 | **(f)** Wasser/Flüssigkeit als Gefahr | `f_wasser_als_gefahr.png` | `6e31594cde41bb2d9c9ecba19807cf92` | `July 22nd Rayman Game /03-swamp-level/02_flower-platform-rising-water.png` | Eine gezackte, schäumende Wasserlinie über die volle Bildbreite, darüber Blüten-Plattformen; der Held in der Luft. | Unsere Tinte als Gefahr: wie eine Flüssigkeit „gefährlich" aussieht, ohne rot zu sein. |
+| **(g)** Käfig mit Insassen | `g_kaefig_mit_insassen.png` | `2a891e47bd1669c1255423ae54fb688d` | `July 22nd Rayman Game /13-getting-every-cage/01_electoon-cages-on-islands.png` | Ein Gitterkäfig frei schwebend in der Bildmitte, der Gefangene **darin sichtbar** zwischen den Stäben; links der Held auf einer Moos-Plattform, seine abgelöste Faust im Flug auf den Käfig zu; rechts bereits befreite Figuren auf einem Podest. Drei Plattformen mit gemalter Wurzel-Unterseite. | **R54** — auf jeder Karte ist das Käfig-Porträt der Käfig **mit** Insassen, das Zeremonie-Motiv der Insasse **ohne** Käfig. Dieses Bild ist der Maßstab für die erste Hälfte: wie viel vom Gefangenen durch die Stäbe zu sehen sein muss, damit ein Käfig „bewohnt" liest. Zusätzlich der einzige Beleg des Satzes für die **Befreiungs-Handlung** (Faust im Flug) und für den Zustand *danach* (Figuren auf dem Podest). |
 
 ## Wie der Satz geprüft wurde
 
@@ -81,6 +82,23 @@ Schwelle würde entweder das Bildschirmfoto durchlassen oder die Boss-Arena verw
 neutralen Namen, wechselnde Reihenfolge) und die sechs Kriteriennamen gesehen — nie die
 Zuordnung, nie einander. Alle vier fanden unabhängig **keine** Player-Reste und keinen
 gespiegelten Rand.
+
+**Nachtrag zu (g), R5-W4b · W3 (2026-08-16).** Das siebte Kriterium ist mit **R67**
+beschlossen; W2 hatte den Kandidaten schon einmal blind vorgelegt (Blindsatz 1, „bild_4"),
+lokal geschnitten lag er aber nicht mehr vor. Er ist aus derselben Quelle mit **demselben
+erklärten Kasten** neu geschnitten und läuft durch dieselben drei Tore (alle sieben grün).
+
+Blind geprüft wurde er **gegen eine Gegenprobe**: ein frischer Prüfer bekam den Kandidaten und
+das bereits abgenommene Kanten-Bild (b) unter neutralen Namen und alle sieben Kriteriennamen.
+Sein Urteil: (g) **JA** auf dem Kandidaten („einziges Bild mit sichtbarem Käfig und Insasse"),
+(g) **NEIN** auf der Gegenprobe. Das Kriterium **unterscheidet** also, es wird nicht bloß
+bestätigt — der Fehler von D-66 war genau umgekehrt. Fremdrahmen fand er auf keinem der beiden.
+Protokoll: `REPORTS/REPORT_W3_2026-08-15/pruefprotokolle/pruefer_G.md`.
+
+⚠ Ehrlich dazu: `_refset.py selftest` benutzt **dieselbe Quelldatei** als „echtes
+Referenzbild"-Gutfall. Seit (g) im Satz ist, ist der Gutfall des Selbsttests dasselbe Bild wie
+Satzbild (g). Für die drei Tore ist das folgenlos (G3 schneidet ohnehin aus der Quelle neu),
+aber es steht hier, damit niemand die Übereinstimmung später für einen Beweis hält.
 
 Ergebnis: (a), (b), (c), (e), (f) haben **je drei unabhängige Ja** aus verschiedenen Runden.
 (d) wurde zweimal ausgetauscht, weil die Prüfer den ersten und den zweiten Kandidaten übereinstimmend
