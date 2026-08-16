@@ -115,7 +115,7 @@ const SHEETS = [
   { file: "ch01/fx_sheet.png", stems: ["fx_chalk", "fx_blob", "fx_letterburst", "fx_heart"] },
   { file: "ch01/being_fibel.png", stems: ["fibel_a", "fibel_gift"] },
   { file: "ch01/being_klecks.png", stems: ["klecksdoor_a", "klecksdoor_b"] },
-  { file: "ch01/being_krakel.png", stems: ["krakel_a", "krakel_b"] },
+  { file: "ch01/being_krakel.png", stems: ["krakel_a"] }, // R5-W4b · A6b: `krakel_b` deleted — never wired, never loaded (DEAD_ART 61 → 60)
   { file: "ch01/cage_pencilcase.png", stems: ["pencilcase_a", "pencilcase_shake", "pencilcase_burst"] },
   { file: "ch01/kid_merle.png", stems: ["merle_a", "merle_b"] },
   { file: "ch01/cage_satchel.png", stems: ["satchel_a", "satchel_shake", "satchel_burst"] },

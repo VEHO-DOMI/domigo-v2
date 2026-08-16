@@ -704,6 +704,34 @@ const paintedTrims = (phase: string): Pick<MassKit, "edgeL" | "edgeR" | "cornerB
   inCornerR: `mass_incorner_${phase}_r`,
 });
 
+/**
+ * ── THE RAMPS ARE NOT DRAWN AT ALL, AND NEVER HAVE BEEN (R5-W4b · A6b) ──────
+ * This round set out to give four rooms a painted ramp. Batch AS5 delivered
+ * them, eight of its cells passed the import gate, and one — p3's — was even
+ * correct against the body it would really lie on. It was imported, wired behind
+ * a `PAINTED_RAMP_PHASES` switch, and then taken out again, because of a
+ * question nobody in this lane had asked:
+ *
+ *   `planMass` pushes a `ramp` piece only for the slope glyphs `/ \ 1 2 3 4`
+ *   (`z` is the chalk slide and is handled by its own branch). Counted across
+ *   EVERY surface of ch01 — p1, p2, p3 and the arena/bonus grids p4, p9 —
+ *   there are ZERO such glyphs. Not few: none.
+ *
+ * So no ramp piece is ever planned, `mass_ramp_up`/`_down` are never drawn, and
+ * a painted ramp would have been texture memory spent on a picture that cannot
+ * appear. `massStems` lists them unconditionally, so both placeholders ARE
+ * loaded into all five phase scopes today, paying for nothing (D-267).
+ *
+ * ⚠ The corollary matters more than the ramps: the "grey wedge" in Koki's
+ * `07.29.42`, which A6's report and this round's brief both attribute to
+ * `mass_ramp_up`, CANNOT be that sheet. Whatever he photographed is something
+ * else, and it is still there. Report §2.
+ */
+const sharedRamps = (): Pick<MassKit, "rampUp" | "rampDown"> => ({
+  rampUp: "mass_ramp_up",
+  rampDown: "mass_ramp_down",
+});
+
 /** the shared placeholder trims — one set of strips for every unpainted room */
 const sharedTrims = (): Pick<MassKit, "edgeL" | "edgeR" | "cornerBL" | "cornerBR" | "inCornerL" | "inCornerR"> => ({
   edgeL: "mass_edge_l",
@@ -718,11 +746,7 @@ const sharedMass = (phase: string): Omit<MassKit, "crust" | "crustCapL" | "crust
   ...(PAINTED_MASS_PHASES.has(phase) ? paintedInterior(phase) : sharedInterior()),
   ...(PAINTED_TRIM_PHASES.has(phase) ? paintedTrims(phase) : sharedTrims()),
   trimShade: TRIM_SHADE_BY_PHASE[phase],
-  // Ramps are on nobody's sheet yet — §5 ordered eight cells and all eight are
-  // sides, undersides and corners. They stay shared in every room, p1 included,
-  // and they are the grey wedge in p3. Re-ordered as AS5.
-  rampUp: "mass_ramp_up",
-  rampDown: "mass_ramp_down",
+  ...sharedRamps(),
   platObjects: PLAT_OBJECTS[phase] ?? PLAT_OBJECTS.p1 ?? [],
 });
 
