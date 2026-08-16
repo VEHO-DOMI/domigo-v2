@@ -92,6 +92,24 @@
  *     Alpha-Maske des Bestands als Schablone gelegt und die Differenz GEDRUCKT.
  *  3. SCHLÜSSEL-REINHEIT. Zählt Pixel, die innerhalb der Key-Toleranz liegen,
  *     aber nicht exakt #FF00FF sind — ein weicher Schlüssel ist ein Saum in spe.
+ *
+ * ── WAS DER IMPORT DIE PHASEN KOSTET (gemessen, nicht geschätzt) ─────────────
+ * Ein Ersatz bei identischen Maßen kann genau eine Perf-Größe bewegen: die
+ * Bilddaten, die eine Phase lädt (`phaseArtScope` × Dateigröße, Budget 35 MB).
+ * Vorher/nachher über alle fünf Phasen, gegen `origin/main`:
+ *
+ *     p1  23,13 → 23,11 MB   (−24,8 KB, 5 Blätter)
+ *     p2  26,41 → 26,38 MB   (−32,2 KB, 6 Blätter)
+ *     p3  21,73 → 21,73 MB   (unberührt)
+ *     p4  21,96 → 21,96 MB   (unberührt)
+ *     p9  15,31 → 15,31 MB   (unberührt)
+ *
+ * Die beiden berührten Phasen werden LEICHTER, weil die anschließende
+ * Rekompression (`oxipng -o max --strip none`) mehr zurückholt, als der
+ * Neuanstrich kostet: über die elf Blätter netto −57 KB, und
+ * `check-png-identity` bezeugt, dass dabei kein einziger Pixel gewandert ist
+ * (−7,3 % Dateigröße, Pixel identisch). Wer hier nachimportiert, misst dieselbe
+ * Zeile neu, statt diese abzuschreiben — die Zahlen altern mit jedem Blatt.
  */
 import fs from "node:fs";
 import path from "node:path";
