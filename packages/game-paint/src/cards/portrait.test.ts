@@ -16,8 +16,9 @@
 import { describe, expect, it } from "vitest";
 import fs from "node:fs";
 import path from "node:path";
-import { cageCellFor } from "./CardShell.tsx";
+import { KLASSENFOTO_STEM, cageCellFor, freeCellsFor } from "./CardShell.tsx";
 import { CAPTIVE_KEYS } from "../artManifest.ts";
+import { domArtStems } from "../artScope.ts";
 
 const ROOT = path.resolve(__dirname, "../../../..");
 type Ent = { id: string; role: string; skin: string; params?: Record<string, unknown> };
@@ -76,5 +77,66 @@ describe("R5-W4 · D3 · the cage portrait names its occupant", () => {
     // not here (the card falls back to the bare shell).
     expect(cageCellFor("aardvark")).toBe("aardvark_caged0");
     expect(onDisk.has("aardvark_caged0")).toBe(false);
+  });
+});
+
+// ── R5-W4b · D3b · R54 · …AND WHAT THE CEREMONY SHOWS ────────────────────────
+//
+// Koki, same replay: „Merle-Erfolgskarte: altes Bild, sie sitzt noch im Käfig —
+// wir haben sie doch befreit." The rescue panel drew `${skin}_a`, i.e. the cage
+// SHELL, so every one of the five rescues celebrated with a picture of a closed
+// bag. The mirror of `cageCellFor` answers the other half of the same question,
+// and these laws are what keep the two halves from drifting apart again.
+describe("R5-W4b · D3b · the ceremony shows the occupant WITHOUT its cage", () => {
+  it("every thing-cage has a free cell that is painted and is NOT the caged one", () => {
+    const things = cages.filter((c) => c.params?.classmate === undefined);
+    expect(things.length).toBe(4);
+    for (const c of things) {
+      const key = c.params?.captive as string;
+      const free = freeCellsFor(key);
+      expect(free.length, `${c.id} names no free cell`).toBeGreaterThan(0);
+      // at least one candidate is on disk — otherwise the ceremony would fall
+      // back to the grey captive sheet and Koki's finding would stand
+      expect(free.some((s) => onDisk.has(s)), `${c.id}: none of ${free.join(" / ")} is painted`).toBe(true);
+      // and it is a DIFFERENT picture from the cage portrait's
+      expect(free).not.toContain(cageCellFor(key));
+    }
+  });
+
+  it("the classmate is celebrated FREE — merle_a, never merle_caged0", () => {
+    const person = cages.find((c) => c.params?.classmate !== undefined)!;
+    const free = freeCellsFor(person.params?.classmate as string);
+    expect(free).toEqual(["merle_a"]);
+    expect(onDisk.has("merle_a")).toBe(true);
+    // the exact confusion this law exists to prevent
+    expect(free).not.toContain(cageCellFor(person.params?.classmate as string));
+  });
+
+  it("the class photo asks for its own sheet first and falls back to the world's", () => {
+    // `klassenfoto_a` is the AQ14 delivery, sent back to the painter this
+    // session by a blind sheet check; `obj_picture` is the photo the chapter
+    // already has and is what draws until the repaint lands. Order matters: the
+    // day the new sheet arrives it must win without a code change.
+    expect(freeCellsFor("picture")).toEqual([KLASSENFOTO_STEM, "obj_picture"]);
+    expect(freeCellsFor("picture").some((s) => onDisk.has(s))).toBe(true);
+  });
+
+  it("names nothing when there is nothing to name", () => {
+    expect(freeCellsFor(undefined)).toEqual([]);
+    expect(freeCellsFor("")).toEqual([]);
+  });
+
+  it("every free cell the ceremony can draw is CLAIMED, so the art audit stays honest", () => {
+    // The audit counts a painted sheet that nothing loads as dead art. Three of
+    // these were on that list („bezahlt, unverdrahtet") until this packet drew
+    // them; a claim that lags the wiring makes the count lie in the safe
+    // direction, which is still a lie.
+    const claimed = domArtStems(level as never);
+    const drawn = cages.flatMap((c) =>
+      freeCellsFor((c.params?.classmate ?? c.params?.captive) as string | undefined));
+    for (const s of drawn) {
+      if (!onDisk.has(s)) continue; // not landed yet — nothing to claim
+      expect(claimed.has(s), `${s} is drawn on a card but not claimed in domArtStems`).toBe(true);
+    }
   });
 });

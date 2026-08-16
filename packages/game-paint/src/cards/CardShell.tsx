@@ -148,6 +148,42 @@ export const cageCellFor = (name: string | undefined): string | undefined => {
   return isCaptiveKey(name) ? captiveStem(name) : `${name}_caged0`;
 };
 
+/**
+ * R5-W4b · D3b · R54 · …AND THE SAME OCCUPANT, OUT.
+ *
+ * Koki, replay of 15 August: „Merle-Erfolgskarte: altes Bild, sie sitzt noch im
+ * Käfig — wir haben sie doch befreit." The ceremony is the beat where the cage
+ * is GONE, so it may not show the shell: a thing steps out as its own painted
+ * object, and a classmate stands in her free cell rather than her caged one.
+ *
+ * The mapping is the mirror of `cageCellFor`, one key, two directions:
+ *
+ *   captive key  →  caged: `captive_<key>`   free: `obj_<key>`
+ *   classmate    →  caged: `<name>_caged0`   free: `<name>_a`
+ *
+ * It returns an ORDERED list rather than one stem, because the class photo has
+ * two answers and which one is right depends on what has landed:
+ *
+ *   · `klassenfoto_a` — the DOM-side sheet ordered as AQ14. Named first so that
+ *     the day it lands it is simply used, with no code change here.
+ *   · `obj_picture` — the photo the chapter already has. It is the WORLD's
+ *     sheet (H2's victory tract hangs it in the cage once the board is clean),
+ *     and a card drawing it costs nothing: the art map holds every painting, and
+ *     one more claim on an already-claimed stem adds no bytes to any phase.
+ *
+ * AQ14 went back to the painter this session (a blind sheet check found figures
+ * without bodies, a glare across a face and a selection path left in the
+ * artwork), so today the second answer is the one that draws. The list is the
+ * keen-art law spelled out: ask for the best cell, take the best that exists.
+ */
+export const KLASSENFOTO_STEM = "klassenfoto_a";
+
+export const freeCellsFor = (name: string | undefined): readonly string[] => {
+  if (name === undefined || name === "") return [];
+  if (!isCaptiveKey(name)) return [`${name}_a`];
+  return name === "picture" ? [KLASSENFOTO_STEM, "obj_picture"] : [`obj_${name}`];
+};
+
 const Tether = ({ align }: { align: CardAlign }): React.ReactElement | null =>
   align === "center" ? null : <span className={`pb-tether pb-tether-${align === "right" ? "l" : "r"}`} aria-hidden />;
 

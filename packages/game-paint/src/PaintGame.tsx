@@ -26,7 +26,7 @@ import { tierOfAsker } from "./cards/serving.ts";
 import { windowMsFor } from "./cards/timer.ts";
 import { prefersReducedMotion } from "./cards/motion.ts";
 import { askerIdOf } from "./sim.ts";
-import { InkWipe, PaintedCage, type CardAlign, alignedWrap, cardBtn } from "./cards/CardShell.tsx";
+import { InkWipe, PaintedCage, type CardAlign, alignedWrap, cageCellFor, cardBtn, freeCellsFor } from "./cards/CardShell.tsx";
 import { PAINT_OVERLAY_CSS } from "./cards/overlay-css.ts";
 import { PaintedIcon, type PaintedIconName } from "./cards/PaintedIcons.tsx";
 import { CeremonyBurst, PaintedHero, SceneCut, useCeremonyClock } from "./cards/CeremonyStage.tsx";
@@ -166,7 +166,11 @@ interface OverlayState {
    *  once — „Ein Buchstaben-Wesen flattert frei" over a tablet, a chair and a
    *  class photo. The skin cannot tell them apart: four of the five are the
    *  same satchel. */
-  ceremony?: { skin: string; captiveDe: string; person: boolean; first: boolean };
+  /** R5-W4b · D3b · R54: …and `captive` is the occupant's KEY — a captive key
+   *  („soundsystem") or a classmate's name („merle"). The skin says which SHELL
+   *  the cage wore; this says who was inside it, which is what the ceremony
+   *  draws now that the beat no longer shows the cage at all. */
+  ceremony?: { skin: string; captiveDe: string; person: boolean; first: boolean; captive?: string };
   /** R5-C1: the one teaching card names the one cage it fired at. */
   cagehint?: { captiveDe: string };
   bonusend?: { got: number; total: number; timeout: boolean; secsLeft: number; phrase: PhraseSlot[][] };
@@ -229,12 +233,23 @@ const priceOfDoor = (level: PaintLevel, id: string | null): number => {
  *  guarantees every cage declares one. `person` keys off `classmate`, the field
  *  the cage laws already police, instead of the hardcoded „merle" the ceremony
  *  card used to compare against (which silently made every OTHER chapter's
- *  classmate a thing). */
-const captiveOfCage = (level: PaintLevel, id: string): { captiveDe: string; person: boolean } => {
+ *  classmate a thing).
+ *
+ *  R5-W4b · D3b: it returns the occupant's KEY as well now — the same value the
+ *  card's cage portrait already receives (`params.classmate ?? params.captive`).
+ *  It comes from here rather than from a second lookup at the call site because
+ *  the entity has already been found: two searches for one cage are two places
+ *  a future field can be read differently. */
+const captiveOfCage = (
+  level: PaintLevel,
+  id: string,
+): { captiveDe: string; person: boolean; captive: string | undefined } => {
   const e = allPhasesOf(level).flatMap((p) => p.entities).find((x) => x.id === id);
+  const captive = e?.params?.classmate ?? e?.params?.captive;
   return {
     captiveDe: String(e?.params?.captiveDe ?? ""),
     person: e?.params?.classmate !== undefined,
+    captive: typeof captive === "string" ? captive : undefined,
   };
 };
 
@@ -1223,7 +1238,14 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
           build step, so the painted layer's animations ride in with the game
           they belong to — and travel with the package, not the app. */}
       <style>{PAINT_OVERLAY_CSS}</style>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "6px 2px", gap: 8 }}>
+      {/* R5-W4b · D3b · D-209: the whole row dims while a card holds the screen
+          (overlay-css `.pb-hud-dim`) — the focus mode's veil covers the stage,
+          and the counters sit above it. One class on the ROW, so a chip added
+          later cannot forget to step back with the rest. */}
+      <div
+        className={overlay !== null ? "pb-hud-dim" : undefined}
+        style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "6px 2px", gap: 8 }}
+      >
         <span className="pb-key-bit" style={{ fontSize: 15, display: "inline-flex", alignItems: "center", gap: 7 }}>
           {/* PK-R6 · H1: the bar's own mark was 🖌 — a platform emoji at the top
               of a hand-painted game. It is the book's brush now, with paint on it. */}
@@ -1866,6 +1888,23 @@ function Overlay({
     // cage laws police.
     const person = o.ceremony?.person === true;
     const captiveDe = o.ceremony?.captiveDe ?? "";
+    // R5-W4b · D3b · R54 · THE FREED ONE, WITHOUT THE THING THAT HELD IT.
+    //
+    // Koki, replay of 15 August: „Merle-Erfolgskarte: altes Bild, sie sitzt noch
+    // im Käfig — wir haben sie doch befreit." The motif read `${skin}_a`, and
+    // the skin is the SHELL: four of the five cages are the same satchel, so
+    // every rescue in the chapter celebrated by showing the child a closed bag.
+    //
+    // The chain is the keen-art law, twice: the free cell if it has landed, the
+    // occupant's own caged sheet if it has not (still the occupant, still no
+    // cage around it), and the drawn mark if the chapter has neither. The SHELL
+    // is deliberately not in this chain — falling back to it would put the cage
+    // back on the one card whose whole subject is that the cage is gone.
+    const ceremonyMotif = o.ceremony === undefined
+      ? undefined
+      : [...freeCellsFor(o.ceremony.captive), cageCellFor(o.ceremony.captive) ?? ""]
+        .map((s) => art[s])
+        .find((url) => url !== undefined);
     return staged(
       <>
         {/* R5-W1 · D2: the rescue happens in the room it happened in, and the
@@ -1882,9 +1921,9 @@ function Overlay({
             // now — its own painted cell, the same picture the child was just
             // looking at in the world. The mark stays as the fallback for a
             // skin whose cell has not landed (keen-art law).
-            o.ceremony !== undefined && art[`${o.ceremony.skin}_a`] !== undefined ? (
+            ceremonyMotif !== undefined ? (
               <img
-                src={art[`${o.ceremony.skin}_a`]}
+                src={ceremonyMotif}
                 alt=""
                 aria-hidden
                 style={{ height: 92, width: "auto", filter: "drop-shadow(0 7px 12px rgba(30,20,10,0.32))" }}

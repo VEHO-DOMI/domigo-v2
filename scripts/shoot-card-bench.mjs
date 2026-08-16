@@ -73,6 +73,7 @@ export const SURFACES = [
   "typed",
   "spell",
   "choice-hints",
+  "kaefig",
   "goal",
   "auftakt-schatten",
   "auftakt-aufgaben",
