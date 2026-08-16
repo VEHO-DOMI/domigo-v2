@@ -1687,6 +1687,44 @@ export class PaintScene extends Phaser.Scene {
           this.captiveImgs.set(e.id, cap);
         }
       }
+      // R5-W4b · C3 · R103 · DER PERSONEN-KÄFIG BLEIBT VORERST LEER — ehrlicher
+      // Stopp mit Messung, kein halber Einbau.
+      //
+      // Der Auftrag lautete: `p2-cage-merle` trägt `params.classmate`, nicht einen
+      // der vier `captive`-Schlüssel, also zeichnet die Schicht oben hinter dem
+      // einen Personen-Käfig des Kapitels NIEMANDEN. Sobald AQ15c das Pennal-
+      // Fenster freistellt, stünde der Käfig leer, obwohl die Karte sagt, Merle
+      // sei darin.
+      //
+      // Gebaut, gemessen, wieder ausgebaut. Die Verzweigung selbst sind sieben
+      // Zeilen; das Problem sitzt in der GRÖSSE, und es ist nicht klein:
+      // `syncOverlay` kopiert den SKALIERUNGSFAKTOR, nicht die Anzeigegröße. Bei
+      // den vier Ding-Käfigen geht das auf, weil `import-batch-aq6` jedes
+      // `captive_*`-Blatt auf die Leinwand der Hülle geschnitten hat — `satchel_a`
+      // und `captive_tablet` sind beide 347×480, ein Faktor passt für beide.
+      // Der Personen-Käfig bricht die Annahme: `pencilcase_a` ist 480×275 (breit,
+      // liegend), `merle_caged0` ist 268×383 (hoch). Bei CAGE_DISPLAY_H = 34 ist
+      // der Faktor 34/275 = 0,1236, also würde Merle roh 47,4 px hoch gezeichnet —
+      // 39 % höher als ihr eigener Käfig.
+      //
+      // Die naheliegende Reparatur (Insasse einmalig auf eine Leinwand in
+      // Käfig-Maßen einpassen, unten zentriert, wie es die Karte in Glance.tsx
+      // tut) wurde gebaut und GERENDERT: sie stimmt rechnerisch — 34,0 px gegen
+      // 34,0 px, gleiche Bodenlinie — und ist trotzdem falsch. Gemessen am
+      // fertigen Bild stehen **3716 Insassen-Pixel (13 %) AUSSERHALB der
+      // Käfig-Silhouette**: Kopf und Zöpfe über der Oberkante, Füße unter dem
+      // Boden, weil das Pennal in seiner Mittelspalte deutlich flacher ist als
+      // seine Leinwand. Richtig eingepasst gehört der Insasse nicht in den
+      // KASTEN, sondern ins FENSTER (gemessen 315×158 bei 55,68 ⇒ Faktor 0,413) —
+      // und diese Geometrie gehört dem Blatt, das AQ15c erst noch liefert.
+      //
+      // Also: kein Einbau auf Verdacht. Heute ist der Nutzen ohnehin null (das
+      // Fenster trägt weiter das alte gemalte Gesicht, D-224), und eine Zahl aus
+      // dem heutigen Blatt fest in die Szene zu schreiben wäre genau die
+      // Kopplung, vor der `import-batch-aq6` warnt. Die Sitzung, die AQ15c
+      // importiert, baut beides in EINEM Zug: leeres Fenster + Insasse, an der
+      // dann gültigen Fenstergeometrie ausgerichtet. Messwerte und Belegbild
+      // liegen im C3-Report; Schuldzeilen D-224 und D-228.
       // R3-15 · the grey wash sits a hair in front of its being, wearing the
       // SAME texture every frame — so it drains whatever cell the being is
       // showing, including cells and skins that do not exist yet.
