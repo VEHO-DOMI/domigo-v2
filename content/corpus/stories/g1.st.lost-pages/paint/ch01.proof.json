@@ -786,19 +786,83 @@
           1
         ],
         [
-          2,
+          401,
           2
         ],
         [
-          36,
+          37,
           1
         ],
         [
-          30,
+          40,
           2
         ],
         [
-          4,
+          40,
+          1
+        ],
+        [
+          40,
+          2
+        ],
+        [
+          40,
+          1
+        ],
+        [
+          40,
+          2
+        ],
+        [
+          40,
+          1
+        ],
+        [
+          40,
+          2
+        ],
+        [
+          40,
+          1
+        ],
+        [
+          40,
+          2
+        ],
+        [
+          40,
+          1
+        ],
+        [
+          40,
+          2
+        ],
+        [
+          40,
+          1
+        ],
+        [
+          40,
+          2
+        ],
+        [
+          40,
+          1
+        ],
+        [
+          40,
+          2
+        ],
+        [
+          13,
+          1
+        ],
+        [
+          28,
+          2
+        ],
+        [
+          5,
           0
         ],
         [
@@ -860,15 +924,15 @@
         "exitTo": "done",
         "cagesFreed": 1,
         "guardianDown": true,
-        "tasksSolved": 10,
+        "tasksSolved": 12,
         "redeemedPresent": false,
         "classmatesAwake": 0,
         "tipsGot": 0,
         "booksGot": 0,
         "scorePageShown": true,
         "guardianPathsFlown": 1,
-        "guardianTelegraphs": 9,
-        "guardianWindows": 3,
+        "guardianTelegraphs": 12,
+        "guardianWindows": 4,
         "guardianWroteLow": true,
         "guardianConsoled": true,
         "guardianLanded": true

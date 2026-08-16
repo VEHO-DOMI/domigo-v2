@@ -123,10 +123,10 @@ Vorhang, Reihenfolge Sieg→Foto→Tor ist die Aussage}.
 | (Gelände) | **Seitenbühne WEST** + Spawn | Boden ab r16 c0–4 · **S (3,15)** (Bestand) | Auftritt aus der Kulisse | RUHE-Zone, **statisch UND dynamisch wahr:** statisch nächstes Entity = Tafel c17, Δc14 (E6-Klasse geprüft); dynamisch bindet der **stageClamp (P1-Vorleistung §10)** die Bahn-Westkante an x80 = Bühnenrand — die Kulisse (x<80) wird NIE überflogen, das Kind kann am Auftritt stehen und den Raum lesen. Arena trägt keine Regel-Seite | **Anti 2** (A8: Anti 5 gestrichen — deckt Damage-Chains, nicht Ruhe) · E6-Klasse | Seitenvorhang D-19 |
 | (Gelände) | **Podest WEST** | **Boden ab r14 c5–7** (Voll-Säule, Fußlinie 224) | gestapelte Kreide-Kisten am Bühnenrand | Wahl-Insel **mit AUSZAHLUNG (Design-Fix 2 — die hohle Nähe-Begründung der v2.0 ist gestrichen):** (a) **Scherben-Zuflucht** — die Eskalation legt den Boden-Scherben-Teppich, die +32-px-Inseln sind die deklarierte Zuflucht = Bühnen-Schnittstelle an P4/F3 (**Korrektur 2026-08-14:** hier stand „§1 nennt den Boden wörtlich so" — §1 sagt „Scherben-FENSTER", nicht Scherben-Teppich; der Selbstverweis ging ins Leere. Gebaut ist der Teppich inzwischen: s. §Amendments); (b) **Drop-Fang** — F4-Drops fallen durchs Flugband, Höhe = Fang-Vorteil = Schnittstelle an P4/F4; (c) **optionaler Halte-Schnörkel** — Halte-Sprung vom Podest (Apex 101: Füße bis 123, Sammel-Anker bis ~113, quer durchs Band 166–218) fängt Drops in der Luft, opt-in, nie Pflicht. Gegenpreis: Band-Überlapp-Risiko (§6). Tap-Sprung 32<45 ✓. **B2-Fix an der eigenen Vergangenheit: die Bestands-Podeste waren Platten r14 mit 16-px-Spalt darüber dem Boden — Körper 30 px passt nie durch, der Spalt war tote Schein-Passage (exakt die B2/B4-Klasse). Voll-Säulen erden die Kisten.** | VL 1.11 · B2/B4 · Cookbook-Gebot 8 (»a bent path always pays« — jetzt zahlt er) | podium_chalkcrate ✓ · crust_p4_a/b+caps ✓ |
 | (Gelände) | **Podest OST** | **Boden ab r14 c28–30** (Spiegel: 35−c von WEST) | dito, Gegenseite | **Symmetrie EXAKT um c17,5** (Bestand c25–27 war um 3 Spalten schief — VL-1.11-Verstoß der v1); Auszahlung dito WEST (Zuflucht/Fang/Schnörkel); zugleich die Stufe in den Sieg-Trakt (Überquerung Tap-Sprung, §6) | VL 1.11 | dito |
-| tafel | ★ Guardian **DIE FLIEGENDE TAFEL** | **home (17,11)** (Bestand; Zentrum x 280, 8 px westlich der Raummitte 288 — irrelevant, das Flug-Zentrum trackt ohnehin das Kind) | das verzauberte Herz des Klassenzimmers, wird ERLÖST — **das Examen gehört aufs Podium, die Kulissen sind heilig** | Bühne liefert, was die Choreografie braucht (F-LOB bleibt): flacher Boden r16 als Scherben-Teppich-Fläche, Freifläche c8–27 = 320 px Ausweich-Bahn ≫ max. Pfad-Schatten 208 px, Flugband 166–218 kollisionsfrei (§6). **stageClamp (P1-Vorleistung §10) bindet das Flug-Zentrum an die Bühne c5–30** — Zentrum [184–392] bei Spann 104 statt Welt-Clamp [128–448]; Band ±26, KNOT_SPAN, Perioden IDENTISCH → F-LOB-Choreografie unangetastet. **Alles Verhaltens-artige (Wurf-Raten, Eskalation, Drops, Karten) = P4-Paket** | doc 44 §4-C4 · G4 · B12 (Zustands-Zellen live) | tafel_* ≥25 Zellen ✓ + fx_chalk/chalk_* ✓ |
+| tafel | ★ Guardian **DIE FLIEGENDE TAFEL** | **home (17,13)** (Bestand; Zentrum x 280, 8 px westlich der Raummitte 288 — irrelevant, das Flug-Zentrum trackt ohnehin das Kind) | das verzauberte Herz des Klassenzimmers, wird ERLÖST — **das Examen gehört aufs Podium, die Kulissen sind heilig** | Bühne liefert, was die Choreografie braucht (F-LOB bleibt): flacher Boden r16 als Scherben-Teppich-Fläche, Freifläche c8–27 = 320 px Ausweich-Bahn ≫ max. Pfad-Schatten 208 px, Flugband 166–218 kollisionsfrei (§6). **stageClamp (P1-Vorleistung §10) bindet das Flug-Zentrum an die Bühne c5–30** — Zentrum [184–392] bei Spann 104 statt Welt-Clamp [128–448]; Band ±26, KNOT_SPAN, Perioden IDENTISCH → F-LOB-Choreografie unangetastet. **Alles Verhaltens-artige (Wurf-Raten, Eskalation, Drops, Karten) = P4-Paket** | doc 44 §4-C4 · G4 · B12 (Zustands-Zellen live) | tafel_* ≥25 Zellen ✓ + fx_chalk/chalk_* ✓ |
 | p4-objective | **Objective-Beat-PLATZHALTER** | Karten-Ebene; **räumlich verortet (Design-Befund 8): feuert an der Bühnen-Schwelle c5** (Übertritt Kulisse→Bühne) | »Dein Auftrag«-Rahmen vor dem Examen | Slot hier DEKLARIERT, damit der Bau ihn verdrahtet; **Inhalt/Copy = F2 = P4-Paket · Musik-/Licht-Wechsel beim Betreten = P4-Paket** (v1-Beat wieder geführt) | doc 44 §2.6 · G12 | plate_ch01_goal ✓ |
-| p4-cage5 | ★ Käfig #5 — **DAS KLASSENFOTO** | **(31,15)** auf dem Boden hinter dem Ost-Vorhang | hinter der Bühne lehnt das gerahmte Foto der Klasse — grau, gefangen; die leeren Stühle im Saal sind SEIN Loch | ↑ öffnet (faustlos-Bestand) NACH dem Sieg; **vor dem Sieg: Käfig-Gate (P1-Vorleistung §10) — ↑ feuert die Toast-Klasse des ✕ (`sim.ts#gateToastCooldown`-Muster; Copy = P4) statt der Öffnung → der Foto-Beat, der zweitgrößte Gefühls-Beat des Kapitels, feuert NIE unter schwebendem Boss.** Kein physisches Tor (ehrlich, kein Fake-Gate). Karte = Picker der B20-Klasse **„It's a picture"** (README-Tor: gleiche Änderungsklasse wie der Stuhl-Picker — steht unter DEMSELBEN Koki-Nick); **Karten-Bild-Lücke deklariert (H3, Design-Befund 7): bis obj_picture (D-18) landet, fährt die B20-Karte text-only** — p3 wählte den Stuhl, WEIL obj_chair existiert; die Arena deklariert die Lücke, statt sie zu verschweigen | Konv. 5 · B8 · B20-Klasse · C6 · Cookbook-Käfig 6 | Hülle satchel ✓ (D-2: open-Zellen fehlen der Klasse) · Foto **D-18** |
-| p4-exit | Exit-Glyph **✕** | **(33,15)** (Bestand) | das Schild zur Abschluss-Seite | sim-Tor Bestand bestätigt: vor dem Sieg feuert `sim.ts#gateToastCooldown` den Toast „Die Tafel möchte noch reden!" — **das ERSCHEINEN erst nach Sieg (Vorgänger-Beat #8) ist NICHT gebaut (`PaintScene.ts#prop_exit` rendert ab Load) = P4-Paket-Zeile** | G11-Folge | prop_exit ✓ |
+| p4-cage5 | ★ Käfig #5 — **DAS KLASSENFOTO** | **(31,17)** auf dem Boden hinter dem Ost-Vorhang | hinter der Bühne lehnt das gerahmte Foto der Klasse — grau, gefangen; die leeren Stühle im Saal sind SEIN Loch | ↑ öffnet (faustlos-Bestand) NACH dem Sieg; **vor dem Sieg: Käfig-Gate (P1-Vorleistung §10) — ↑ feuert die Toast-Klasse des ✕ (`sim.ts#gateToastCooldown`-Muster; Copy = P4) statt der Öffnung → der Foto-Beat, der zweitgrößte Gefühls-Beat des Kapitels, feuert NIE unter schwebendem Boss.** Kein physisches Tor (ehrlich, kein Fake-Gate). Karte = Picker der B20-Klasse **„It's a picture"** (README-Tor: gleiche Änderungsklasse wie der Stuhl-Picker — steht unter DEMSELBEN Koki-Nick); **Karten-Bild-Lücke deklariert (H3, Design-Befund 7): bis obj_picture (D-18) landet, fährt die B20-Karte text-only** — p3 wählte den Stuhl, WEIL obj_chair existiert; die Arena deklariert die Lücke, statt sie zu verschweigen | Konv. 5 · B8 · B20-Klasse · C6 · Cookbook-Käfig 6 | Hülle satchel ✓ (D-2: open-Zellen fehlen der Klasse) · Foto **D-18** |
+| p4-exit | Exit-Glyph **✕** | **(33,17)** (Bestand) | das Schild zur Abschluss-Seite | sim-Tor Bestand bestätigt: vor dem Sieg feuert `sim.ts#gateToastCooldown` den Toast „Die Tafel möchte noch reden!" — **das ERSCHEINEN erst nach Sieg (Vorgänger-Beat #8) ist NICHT gebaut (`PaintScene.ts#prop_exit` rendert ab Load) = P4-Paket-Zeile** | G11-Folge | prop_exit ✓ |
 | (Konsole) | **G6-Namens-Konsole — Bestand bestätigt** | Finale-Karte (Karten-Ebene) | die Klasse schreibt der Tafel das erste liebe Wort | **Bestand (belegt):** `fin.t1` typed „hello" (accept hi/hi!/hello!) in `ch01.tasks.v2.json` + `chalkTheGift` (PaintScene:1776) schreibt DAS KIND-WORT auf ihre Tafel + Sonnenblumen-Bloom. **Frankenstein-Rest an P2 übergeben (Design-Befund 6): der `fin.t1`-Stimulus „Die Tafel weint Kreide-Tränen" widerspricht doc 44 §2.2 / entities.ts („she rests rather than cries") — Fix = P2-Skript-Scope, hier aktenkundig.** Nicht gebaut: Namens-Eingabe/-Speicherung (Vorgänger #7 ★); `nameconsole_empty/line.png` existieren, sind aber CODE-UNREFERENZIERT (artManifest 0 Treffer) = **P4-Paket** | G6 · Candy | nameconsole_* ✓ (unverdrahtet) |
 | (Streichungen) | keine Buchstaben · keine Regel-Seite · kein Bonus-Buch · keine Stacheln · kein zweiter Gegner | — | die Prüfung hat keine Requisiten-Streu | Trail-Gesetz (B21) zahlt in den Phasen; Regel-Budget 3 = p1–p3 (README §Zensus, bestätigt); Sammel-Drops in der Arena sind F4 = P4-Paket; Stachel-/Zweitwesen-Absenz im Bestand ENUMERIERT (Arena-Entities = 1: tafel) | B1 · B8 · Anti 8 | — |
 
@@ -470,3 +470,92 @@ Einträge lang, während die Stufen M und S vier und fünf Schichten stellen: ih
 letzten Schichten flogen die Werte der dritten. Alle vier Reihen sind jetzt fünf
 lang, begründet extrapoliert, mit zwei neuen Bahnen (`clover`, `bolt`) — und ein
 Gesetz hält fest, dass die vier Reihen **gleich lang** bleiben.
+
+## §Amendments (R5-W4b · H3, 2026-08-16) — ALS GEBAUT
+
+Vier blinde Kritiker haben die Bühne gegen Rayman verglichen und 4:0 verloren.
+Ihr erster Grund war kein Geschmack, sondern eine Zahl: **die Tafel las sich
+nicht als Boss.** Was hier steht, ist die Antwort darauf — gebaut, gemessen und
+mit Gesetzen belegt.
+
+### C1 · DIE BÜHNE LIEGT ZWEI REIHEN TIEFER — und §10 gilt verschoben weiter
+
+**Gemessen:** das Kind wird 35,58 px hoch gezeichnet (`hero2_idle` 430 px ×
+`rigSpec#HERO2_SRC_SCALE`), die Tafel war 68 — **1,93×**. Ziel sind 2,5×
+(Referenzsatz (e), Mr Sax: rund drei Kinder).
+
+**Warum das nicht einfach eine grössere Zahl war:** die Decke ist der RAUM, nicht
+die Auflösung. `tafel_a` misst 331 × 397 px, bei 89 px Darstellungshöhe wird sie
+also immer noch 4,5:1 verkleinert. Begrenzt hat sie der Abstand zwischen der
+Oberkante ihres Flugbands und der festgenagelten Kamera-Oberkante — und die
+höchste Zelle gibt ihn aus: `windup` ist 440 px gegen 397 (1,108×) und schwillt
+im Ausholen um `BOSS_BEAT_SWELL`, also zeichnet sie `H × 1,2524`. Mit der alten
+Bühne: `(70 + KEEPIN 16) / 1,2524 = 68,67`. **68 stand 0,67 px unter der Wand.**
+
+Der Raum wurde deshalb GEMACHT, nicht geliehen: das Spielfeld wandert im selben
+20-Reihen-Gitter zwei Reihen nach unten. Die Kamera ist an die Unterkante der
+Welt geklemmt (`clampScroll`: 320 − 224 = 96), der sichtbare Ausschnitt bleibt
+also **exakt derselbe** — es sinkt nur der Boden, und die Luft über ihr wächst
+von 70 auf **102 px**. Neue Decke `(102 + 16) / 1,2524 = 94,2`; gesetzt sind
+**89 px = 2,50×**, mit 5,2 px Marge.
+
+**§10 gilt mit +2 auf jeder Reihenzahl** (die Notation und alle Spalten bleiben):
+
+| §10 sagte | jetzt |
+|---|---|
+| Boden ab r16 | **Boden ab r18** |
+| Podeste r14 c5–7 / c28–30 | **r16** c5–7 / c28–30 |
+| S (3,15) · ✕ (33,15) | **(3,17)** · **(33,17)** |
+| Käfig p4-cage5 (31,15) | **(31,17)** |
+| Tafel guardian (17,11) | **(17,13)** |
+| 4 Voll-Reihen unter dem Boden | **2** (r18/r19) |
+
+Die Vorleistung „Podest-Oberkanten bleiben r14, Boden bleibt r16" aus §10 ist
+damit **abgelöst**: sie stand dort als Schutz für die Flugbahn-Herleitung, und
+genau diese Herleitung ist mitgewandert (`FLIGHT_BAND_PX` unverändert 26, ihr
+Zentrum jetzt (r13+1)·16 = 224, Füße 198–250, Podest-Oberkanten 256 — derselbe
+Abstand wie vorher). Die `floorRow`-Erkennung des Flug-Tests
+(`startsWith("####################")`) findet r18 unverändert ✓.
+
+**Was mitgewandert ist, weil es absolute Welt-Höhen sind:** `DIP_Y_PX` 236 → 268
+(dieselbe Bedeutung: 20 px über der Fußlinie).
+
+### C2 · DIE BERÜHRUNG TRIFFT IHRE KANTE, NICHT IHRE MITTE
+
+`ENGAGE_REACH_PX` (22) ist die Reichweite für Käfige und Regel-Seiten — Dinge,
+die schmaler sind als das Kind hoch ist. Auf eine 74 px breite Tafel angewandt
+hiesse sie: das Kind muss 22 px an ihre MITTE heran, und die liegt 37 px
+innerhalb ihrer eigenen Zeichnung. Es müsste also in sie hineinlaufen, um sie zu
+berühren. Neu: `GUARDIAN_WIPE_REACH_PX = 45` = halbe Tafel (37,1) + halbes Kind
+(8), und `DIP_STANDOFF_PX` 45 → 68, damit der Weg zum Wischen **23 px bleibt** —
+exakt so lang wie vorher, obwohl beide Zahlen gewachsen sind. Beide Zeilen
+rechnet `guardian-flight.test.ts` aus dem Blatt-Seitenverhältnis nach.
+
+### C3 · DIE KRITZELEI IST GEMALT (AQ13), UND SIE LIEGT AUF DER FLÄCHE
+
+Codex AQ13 Blatt 1 ersetzt H2s prozedurale Schichten: `tafel_scribble1/2/3`
+(+ `3b`, dieselbe volle Schicht um (3,−2) versetzt — das Zittern im Ausholen).
+Registriert auf die Schiefertafel von `tafel_a`, maschinell nachgemessen: **0
+gemalte Pixel ausserhalb der Fläche**, Deckung 94 % ihrer Breite und 87 % ihrer
+Höhe. Das „frisch gewischt"-Blatt (`tafel_clean`) ist gegen `tafel_rest`
+registriert und liegt nur auf dieser Zelle.
+
+**Neu und tragend: `packages/game-paint/src/anim.ts#GUARDIAN_SLATE`** — wo die Schreibfläche in JEDER
+Zelle liegt, als Anteil der Zelle. Bis hierher hing die Kritzelei an EINEM Anker
+je Skin, was für eine Textzeile reicht und für ein Bild nicht: gemessen wandert
+die Fläche zwischen den Zellen von cx 0,350 (`spiral1`) bis 0,651 (`a`) — über
+30 % der Blattbreite, bei 89 px Darstellung rund 22 Welt-px. Mit einem
+Mittelwert läge gemalte Kreide in der Hälfte ihrer Posen auf dem Holzrahmen.
+Die Tabelle wird bei jedem Testlauf aus den PNGs neu ausgezählt.
+
+**Blatt 3 (die vier Karten-Porträts) ist zurückgewiesen** — 0 von 4 sitzen auf
+dem Körper des Kartenmoments, drei davon auf dem zurückgezogenen
+Staffelei-Körper (D-230). Die Karten behalten `tafel_land1`.
+
+### C4 · DER WISCH-TAKT IST FOTOGRAFIERT (D-198)
+
+`shoot-world` kann ihn nicht (die erste Karte friert die Welt ein, die Reihe
+wird zu Recht als Standbild abgewiesen), `record-paint-tape` kann keine Bilder.
+Die vier Bilder im Report-Ordner sind mit einem eigenen Werkzeug am gefahrenen
+Kampf entstanden — Karte lösen, hingehen, berühren — mit Handschlag und
+verschiedenen md5: Schicht 3 → 2 → 1 → sauber.
