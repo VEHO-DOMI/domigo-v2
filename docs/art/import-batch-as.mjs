@@ -429,6 +429,34 @@ const SHEETS = [
       // with p2's kit, together with making the handover kit-derived. See D-50.
     ],
   },
+  /**
+   * ── THE ONE CELL PAIR OF AS5 THAT SHIPS (R5-W4b · A6b) ─────────────────────
+   * Batch AS5 delivered 94 cells. Run through this file's own gate
+   * (`--verify`), 24 pass — sixteen corners and eight ramps — and every one of
+   * the 64 cells that carries a tiling duty fails the same way: a join of
+   * exactly 0.00 with a 5–57× jump one row behind a duplicated boundary. Not one
+   * exception in 64. The corners are held back with
+   * their edges (a corner's job is to carry the flank around the turn; painted
+   * corner + placeholder flank is the Lego complaint, built on purpose).
+   *
+   * That leaves the ramps, and of the five only p3's survives the anchor
+   * question: the ramps are painted against their own room bodies, which are
+   * not shipping, while the body actually under them stays the shared paper.
+   * p3 is +8.9 over its own body and +7.76 over the shared one — inside the
+   * window in both worlds, so it cannot become wrong when AS5b lands.
+   * p2 +4.08 · p9 +4.77 · p4 +3.26 · p1 +3.27 against the paper really there.
+   *
+   * `anchorStems` is what makes that judgement machine-made rather than a
+   * sentence: the window is measured off the sheets this ramp will lie against.
+   */
+  {
+    file: "batch-as5/mass_ramps_p3.png", cols: 4, rows: 1, mode: "keyed",
+    pieces: [
+      [0, "mass_ramp_p3_up", { box: [26, 119, 486, 511], aboveBody: [6, 12], anchorStems: ["mass_body_a", "mass_body_b"], alpha: 0.45 }],
+      [1, "mass_ramp_p3_down", { box: [538, 119, 998, 511], aboveBody: [6, 12], anchorStems: ["mass_body_a", "mass_body_b"], alpha: 0.45 }],
+      // cells 2/3 are the declared reserve — empty on every ramp sheet
+    ],
+  },
 ];
 
 /**
@@ -563,6 +591,29 @@ const rememberBody = (stem, L) => {
 
 /** start a fresh body anchor — one per phase when several are measured in a run */
 const resetBody = () => { bodyRef.lumas = []; bodyRef.mean = 0; bodyRef.spread = 0; };
+
+/**
+ * ── A TRIM IS A CLAIM ABOUT THE SURFACE IT IS CUT INTO (R5-W4b · A6b) ────────
+ * `bodyWindow` anchors on the body imported in the same run, which is right when
+ * the kit arrives whole. AS5 does not: its ramps pass, its bodies do not, so a
+ * ramp shipped from AS5 will lie against the SHARED book paper for as long as
+ * that lasts — and +8 over a body nobody can see is not a carve, it is a
+ * coincidence. So a piece may name the stems it will actually sit against and
+ * have its window measured off those, on disk.
+ *
+ * Measured consequence: p3's ramp is +8.9 over its own delivered body and +7.76
+ * over the shared paper — inside the window either way, which is why it is the
+ * only ramp that ships. p2/p4/p9 read +6.6…+8.4 against their own bodies and
+ * +3.3…+4.8 against the paper that is really there. They wait for AS5b.
+ */
+const diskAnchor = (stems) => {
+  const ls = stems
+    .map((s) => path.join(OUT, `${s}.png`))
+    .filter((p) => fs.existsSync(p))
+    .map((p) => luma(read(p)));
+  if (ls.length === 0) return null;
+  return { mean: ls.reduce((a, b) => a + b, 0) / ls.length, spread: Math.max(...ls) - Math.min(...ls) };
+};
 
 // ── HELD AGAIN, AND THIS TIME THE GEOMETRY IS PROVEN GOOD ────────────────────
 // The block below imports cleanly: the boxes are re-measured, the sides tile
@@ -704,12 +755,22 @@ const cutPiece = (png, sheet, pos, stem, opt = {}) => {
   }
 
   const L = luma(img);
-  const window = opt.luma ?? (opt.aboveBody === undefined ? undefined : bodyWindow(opt.aboveBody));
+  const anchor = opt.anchorStems === undefined ? null : diskAnchor(opt.anchorStems);
+  const window = opt.luma
+    ?? (opt.aboveBody === undefined
+      ? undefined
+      : anchor === null
+        ? bodyWindow(opt.aboveBody)
+        : [anchor.mean + opt.aboveBody[0] - anchor.spread / 2, anchor.mean + opt.aboveBody[1] + anchor.spread / 2]);
   if (window !== undefined) {
     const [lo, hi] = window;
     if (L < lo || L > hi) {
       const waived = LUMA_EXCEPTIONS[stem];
-      const where = opt.aboveBody === undefined ? "spec window" : `window derived from this kit's own body`;
+      const where = opt.aboveBody === undefined
+        ? "spec window"
+        : anchor === null
+          ? `window derived from this kit's own body`
+          : `window derived from ${opt.anchorStems.join("+")} on disk — the body this trim is actually cut into (${anchor.mean.toFixed(2)} %)`;
       const msg = `luminance ${L.toFixed(2)} % (${(L - bodyRef.mean).toFixed(2)} above the body), ${where} ${lo.toFixed(2)}–${hi.toFixed(2)} %`;
       if (waived === undefined) faults.push(`${stem}: ${msg} (audit 1 measures L3 from this file)`);
       else notes.push(`⚠ ${stem}: ${msg} — DECLARED EXCEPTION: ${waived}`);
