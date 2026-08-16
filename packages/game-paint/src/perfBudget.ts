@@ -115,13 +115,13 @@ export const BUDGETS: readonly Budget[] = [
   },
   {
     key: "DEAD_ART_CEILING",
-    limit: 57,
+    limit: 53,
     unit: "stems",
     de: "Kunst, die niemand lädt, wächst nicht unbemerkt",
     enforcement: "ci",
     enforcedIn: "scripts/check-paint-art.mjs",
     because:
-      "The keen-art law lets a batch land before its wiring, and that freedom accumulated 53 → 57 → 59 → 61 stems / 44.9 MB across four sessions, under a warning nobody had to act on. Set to today's count with no headroom: the freedom stays, the silence goes — adding sheets means raising this number in the same PR, with a reason. Full annotated list: docs/design/g1/paint/DEAD_ART_2026-08-14.md. R5-W4b · W3 (R90): four wave-4 reports each named a different figure (61/60/58) because every lane that wires or deletes art lowers the pile without touching the ceiling, so nobody knew what it WAS. The ceiling now has ONE owner and sits on a measurement, not on a memory: 57 stems / 37.2 MB, measured with this very script on 3daaf47. A ceiling above reality loses exactly the warning it was built for (D-193), so the slack is printed on every run.",
+      "The keen-art law lets a batch land before its wiring, and that freedom accumulated 53 → 57 → 59 → 61 stems / 44.9 MB across four sessions, under a warning nobody had to act on. Set to today's count with no headroom: the freedom stays, the silence goes — adding sheets means raising this number in the same PR, with a reason. Full annotated list: docs/design/g1/paint/DEAD_ART_2026-08-14.md. R5-W4b · W3 (R90): four wave-4 reports each named a different figure (61/60/58) because every lane that wires or deletes art lowers the pile without touching the ceiling, so nobody knew what it WAS. The ceiling now has ONE owner and sits on a measurement, not on a memory. A ceiling above reality loses exactly the warning it was built for (D-193), so the slack is printed on every run. R5-W4b · HOTFIX after the merge train (R104): W3 measured 57 stems / 37.2 MB on ITS base 3daaf47, but the five PRs merged before it moved the pile — A6b deleted krakel_b, D3b wired obj_chair/obj_soundsystem/obj_tablet — so main measured 53 stems / 36.2 MB on ae0dd42 and W3's selftest (bend the ceiling by one, expect the reality check to fire) could no longer fire. The number now stands on the post-train measurement, and the owner of this ceiling sets it AFTER the last merge of a wave, never in parallel with it.",
   },
 ] as const;
 

@@ -112,30 +112,36 @@ export const opaqueTileStems = (composition = COMPOSITION) => {
 };
 
 // ── Die Ausnahmen ───────────────────────────────────────────────────────────
-// A6b repariert die Kacheln (seine Definition of Done: 0 Magenta-Pixel in deckenden
-// Kacheln, Tabelle je Kachel) und mergt VOR diesem PR. Bis dahin waere das Tor auf
-// main rot — also stehen die neun heute blutenden Stems hier, jeder mit Grund, Datum
-// UND der gemessenen Zahl.
+// Die neun heute blutenden Stems stehen hier, jeder mit Grund, Datum UND der gemessenen
+// Zahl. Reparatur ist KEIN Merge, sondern eine Neulieferung: A6b (PR #306) hat bewiesen,
+// dass die Magenta-Bahnen in Codex' gelieferter QUELLE sitzen (`batch-af2/mass/crust_p4.png`,
+// 512 Versaetze geprueft, kein sauberer Schnitt moeglich, Uebermalen verboten) — deshalb
+// bindet sich das Ablaufdatum an die Krusten-Neulieferung (Kommission AS5b, D-199/D-265,
+// Import-Lane A7), nicht an einen Merge (R106, Hotfix nach dem 4b-Zug). Bis dahin bleibt
+// das Tor lesbar rot statt still gruen.
 //
 // `seen` ist eine RATSCHE, kein Freibrief: waechst die Zahl ueber den Messwert, wird
 // das Tor trotz Ausnahme rot. Eine Ausnahme darf einen bekannten Defekt dulden, nie
 // einen neuen aufnehmen. Vier Hygiene-Richtungen, wie paint-art-allowlist:43-76:
 // fehlender Eintrag · unvollstaendiger · abgelaufener · schaler (Kachel ist repariert).
-const MEASURED_ON = "2026-08-16 @ 3daaf47";
-const UNTIL = "2026-09-15";
-const A6B = "D-199: Innen-Naht der Kruste, gemessen am selben Stand. Reparatur ist A6bs "
-  + "Revier (Quelle neu schneiden, kein Uebermalen) und mergt VOR diesem PR — danach faellt "
-  + "dieser Eintrag von selbst. Bis dahin bleibt das Tor lesbar rot statt still gruen.";
+const MEASURED_ON = "2026-08-16 @ 3daaf47 (unveraendert auf ae0dd42: kein crust_* im 4b-Zug beruehrt)";
+// 2026-09-30 = derselbe Tag, an dem auch COHERENCE_WAIVERS (check-composition) und
+// PLACEHOLDER_UNTIL (composition.ts) ablaufen — drei datierte Ausnahmen, EIN Reparatur-
+// pfad (AS5b → A7). Steht als datierte Pflicht mit Eigentuemer im BOOT-SHEET.
+const UNTIL = "2026-09-30";
+const AS5B = "D-199: Innen-Naht der Kruste, gemessen am selben Stand. Ursache sitzt in Codex' "
+  + "Quelle (A6b, PR #306) — Reparatur = Krusten-Neulieferung AS5b + Import-Lane A7, kein "
+  + "Merge. Faellt von selbst, sobald die neue Kachel liegt (das Tor meldet den Eintrag dann als schal).";
 export const SEAM_ALLOW = [
-  { stem: "crust_p4_a", seen: 2348, until: UNTIL, reason: A6B },
-  { stem: "crust_p4_b", seen: 2670, until: UNTIL, reason: A6B },
-  { stem: "crust_p2_a", seen: 838, until: UNTIL, reason: A6B },
-  { stem: "crust_p2_b", seen: 782, until: UNTIL, reason: A6B },
-  { stem: "crust_p2_cap_l", seen: 717, until: UNTIL, reason: A6B },
-  { stem: "crust_p9_b", seen: 305, until: UNTIL, reason: A6B },
-  { stem: "crust_p3_a", seen: 162, until: UNTIL, reason: A6B },
-  { stem: "crust_p3_b", seen: 4, until: UNTIL, reason: A6B },
-  { stem: "crust_p4_cap_l", seen: 3, until: UNTIL, reason: A6B },
+  { stem: "crust_p4_a", seen: 2348, until: UNTIL, reason: AS5B },
+  { stem: "crust_p4_b", seen: 2670, until: UNTIL, reason: AS5B },
+  { stem: "crust_p2_a", seen: 838, until: UNTIL, reason: AS5B },
+  { stem: "crust_p2_b", seen: 782, until: UNTIL, reason: AS5B },
+  { stem: "crust_p2_cap_l", seen: 717, until: UNTIL, reason: AS5B },
+  { stem: "crust_p9_b", seen: 305, until: UNTIL, reason: AS5B },
+  { stem: "crust_p3_a", seen: 162, until: UNTIL, reason: AS5B },
+  { stem: "crust_p3_b", seen: 4, until: UNTIL, reason: AS5B },
+  { stem: "crust_p4_cap_l", seen: 3, until: UNTIL, reason: AS5B },
 ];
 
 // ── Blatt → Datei ───────────────────────────────────────────────────────────
@@ -278,7 +284,7 @@ for (const a of SEAM_ALLOW) {
 }
 
 if (rows.length > 0) {
-  console.log(`Geduldete Innen-Naehte (D-199, Reparatur bei A6b) — ${rows.length} Kachel(n):`);
+  console.log(`Geduldete Innen-Naehte (D-199, Reparatur = Krusten-Neulieferung AS5b/A7) — ${rows.length} Kachel(n):`);
   for (const r of rows) console.log(r);
 }
 
