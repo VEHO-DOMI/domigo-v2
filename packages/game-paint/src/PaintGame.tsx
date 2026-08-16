@@ -1282,9 +1282,14 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
           {/* R5-W4 · H2 (R50): der Zähler zählt dasselbe wie vorher — was die
               Tafel noch zwischen sich und ihrem sauberen Zustand hat. Nur heisst
               das jetzt eine KRITZEL-Schicht statt eines Knotens. Das interne
-              Symbol `knots` bleibt (R50); das Glyph `knot` zeichnet noch eine
-              Schleife und ist als Kunst-Bedarf gemeldet (PaintedIcons.tsx). */}
-          {knots > 0 && <Chip icon="knot" label="Kritzel" value={`${knots}`} art={art} />}
+              Symbol `knots` bleibt (R50).
+              R5-W4b · H3 (D-192): und das Glyph heisst jetzt auch so. Es zeichnete
+              eine SCHLEIFE neben dem Wort „Kritzel" — das letzte Stück alte Lore
+              im Bild. `slate` (die Tafel) liegt schon in `PaintedIcons.tsx` und
+              zeigt das Ding, dessen Schichten der Zähler zählt; ein neues Glyph
+              zu bestellen wäre Kunst für einen Fehler gewesen, den ein
+              vorhandener Name behebt. */}
+          {knots > 0 && <Chip icon="slate" label="Kritzel" value={`${knots}`} art={art} />}
           {inBonus && bonusLeft >= 0 && <Chip icon="inkwell" label="Tinte" value={`${Math.ceil(bonusLeft / 60)}s`} art={art} />}
           {letters.total > 0 && <Chip icon="spark" label={level.collectNounDe} value={`${letters.got}/${letters.total}`} art={art} />}
         </span>

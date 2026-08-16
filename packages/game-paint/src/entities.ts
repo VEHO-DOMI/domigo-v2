@@ -278,7 +278,16 @@ export const CAGE_OPEN_TICKS = 16;
  *  (doc 44 §1: redemption changes state, never presence). */
 export const WAVE_EVERY_TICKS = 420;
 export const WAVE_TICKS = 96;
-/** How long the Tafel cries before the console beat answers it (R3-5). */
+/** Wie lange die Tafel am Boden RUHT, bevor der Trost-Takt sie beantwortet
+ *  (R3-5).
+ *
+ *  R5-W4b · H3 (D-191): hier stand „cries". Die Maschine sagt seit doc 44 §2.2
+ *  etwas anderes, und zwar an der Stelle, die diese Konstante benutzt
+ *  (`stepGuardianLanding`: „sie RUHT, sie weint nicht"). Zwei Sätze über
+ *  denselben Takt, und der falsche stand dort, wo man zuerst hinsieht. Sie ist
+ *  nicht traurig, weil sie verloren hat — sie ist müde, weil sie endlich sauber
+ *  ist; genau davon hängt ab, ob der Trost-Takt danach als Erlösung liest oder
+ *  als Mitleid. */
 export const SAD_TICKS = 48;
 /** Which roles are redeemable creatures. Cages, doors and powerups also carry
  *  `redeemed`, but they are doc 40 §3 STATIC-STATE — no rig, no orbit. */
@@ -531,6 +540,36 @@ const stepRedeemed = (e: EntityState, grid: readonly string[] = []): void => {
 // einmal in einem leeren Raum spielen liess.
 const LANDING_STATES: ReadonlySet<string> = new Set(["sink", "sad", "settle"]);
 
+/**
+ * ── R5-W4b · H3 (D-190) · WANN EIN VORBEIGEFLOGENES STÜCK NICHT ZÄHLT ───────
+ *
+ * Die Über-Reichweite (`dodges`) zählt, wie oft das Kind ihrer Kreide
+ * ausgewichen ist — drei davon öffnen ein Fenster. Sie darf NUR zählen, solange
+ * sie den Kampf auch führt: eine Tafel, die auf den Brettern sitzt und aufs
+ * Wischen wartet, wirft nicht, also kann ihr auch niemand ausweichen.
+ *
+ * Diese Liste stand zweimal in der Datei, getippt, mit drei Namen — einmal in
+ * `tallyOverreach`, einmal im Deflect-Zweig — und beide waren seit dem Wischen
+ * unvollständig: `settle`, `wipeable` und `wipe` fehlten. Eine Kreide, die
+ * während des Wischens am Kind vorbeiflog, füllte also das NÄCHSTE Fenster
+ * mit, obwohl die Tafel gerade stillstand.
+ *
+ * Jetzt EINE Liste, und sie ist zusammengesetzt statt getippt: die Zustände, in
+ * denen sie am Boden ist (`LANDING_STATES`, oben deklariert), plus die vier, in
+ * denen sie in der Luft festgehalten wird. `guardian-flight.test.ts` fährt die
+ * echte Zustandsmaschine über alle Stufen und verlangt, dass JEDER erreichbare
+ * Zustand entweder hier steht oder ein Flug-Zustand ist — die Liste kann also
+ * nicht still veralten, wenn jemand einen fünften Halte-Zustand baut.
+ */
+export const GUARDIAN_HELD_STATES: ReadonlySet<string> = new Set([
+  ...LANDING_STATES, // sink · sad · settle — sie ist unten
+  "window", //   die Karte gehört ihr gerade nicht (CARD_OWNED_STATES)
+  "stagger", //  ein abgelenktes Stück hat sie erwischt
+  "dip", //      sie ist auf dem Weg herunter, um sich beschreiben zu lassen
+  "wipeable", // sie sitzt auf den Brettern und wartet aufs Kind
+  "wipe", //     das Kind wischt gerade
+]);
+
 /** Ihre Landung, als eigener Schritt — damit BEIDE Takte sie fahren können: der
  *  volle Welt-Takt und der Halte-Takt hinter einer offenen Karte. Gibt zurück,
  *  ob dieser Schritt das Wesen bereits erledigt hat. */
@@ -723,8 +762,14 @@ export const CHALK_PROJECTILE_STEMS: readonly string[] = [
  *  what makes four chalked words readable at 1×, and what guarantees the card's
  *  asker is on screen when it opens (the speaker law, doc 41 §3: a card whose
  *  asker has left the viewport WAITS, and a boss frozen off screen mid-window
- *  would wait forever). */
-export const DIP_Y_PX = 236;
+ *  would wait forever).
+ *
+ *  R5-W4b · H3: 236 → 268. Es ist eine ABSOLUTE Welt-Höhe, keine Relation, und
+ *  die Bühne ist zwei Reihen tiefer gewandert (Boden 256 → 288, `ch01.level.json`
+ *  arena-Block). Die Zahl behält damit genau ihre alte Bedeutung: 20 px über der
+ *  Fußlinie — hoch genug, dass sie sichtbar herunterKOMMT, tief genug, dass
+ *  `settle`/`sink` den Rest in einem kurzen Fall erledigen. */
+export const DIP_Y_PX = 268;
 /**
  * How far short of the child she stops, in px — she dips in FRONT of them, not
  * on top of them.
@@ -735,13 +780,46 @@ export const DIP_Y_PX = 236;
  * alone is more than that, so „in FRONT of them" put her drawing straight
  * through his. Now DERIVED rather than tasted, in the units both bodies are
  * drawn in: half the boy (BODY_HALF_PX, 8) + half the board she actually is at
- * the size PaintScene actually draws her (`entTargetH` for a guardian, 84 px
- * tall × the sheet's 0.62 aspect ⇒ ≈26 wide at the frame, half ≈13… and the
- * spread legs reach past it, so 25) + 12 px of daylight, so the contact pose
- * reads as two beings facing each other rather than one drawing over another.
- * Re-derive this the day either body is re-scaled.
+ * the size PaintScene actually draws her + daylight, so the contact pose reads
+ * as two beings facing each other rather than one drawing over another.
+ *
+ * R5-W4b · H3 — die Zeile „Re-derive this the day either body is re-scaled"
+ * ist fällig geworden (sie wuchs von 68 auf 89 px), und die alte Herleitung
+ * war schon vorher schief: sie rechnete mit „84 px tall" gegen ausgelieferte
+ * 68 und verwechselte `wFrac` (der Anteil der Breite, der Schiefertafel IST)
+ * mit dem Seitenverhältnis des Blattes. Sauber gerechnet:
+ *
+ *   halbe Tafel = GUARDIAN_DISPLAY_H (89) × 331/397 (Blatt-Seitenverhältnis
+ *                 von `tafel_a`) ÷ 2 = **37,1 px**
+ *   halbes Kind = BODY_HALF_PX = 8
+ *   Kanten-Kontakt = 37,1 + 8 = 45 px  (= GUARDIAN_WIPE_REACH_PX unten)
+ *   + 23 px Tageslicht, die das Kind zu Fuß zurücklegt = **68**
+ *
+ * Die 23 px sind kein Geschmack, sondern der ERHALT des alten Gefühls: vorher
+ * standen 45 px Abstand gegen 22 px Reichweite, das Kind ging also 23 px. Es
+ * geht jetzt wieder 23 — derselbe Weg, obwohl beide Zahlen gewachsen sind.
+ * `guardian-flight.test.ts` rechnet beide Zeilen aus den PNGs nach; eine Kopie
+ * kann nicht driften, wenn ein Test sie neu ausrechnet.
  */
-export const DIP_STANDOFF_PX = 45;
+export const DIP_STANDOFF_PX = 68;
+
+/**
+ * Wie nah das Kind an ihre MITTE kommen muss, damit die Berührung das Wischen
+ * auslöst — ihre eigene Reichweite, weil sie nicht die Größe der anderen Dinge
+ * hat.
+ *
+ * `ENGAGE_REACH_PX` (22) ist die Reichweite für Käfige und Regel-Seiten: Dinge,
+ * die schmaler sind als das Kind hoch ist. Auf die Tafel angewandt hieße sie:
+ * das Kind muss 22 px an ihre Mitte heran — und ihre Mitte liegt 37 px innerhalb
+ * ihrer eigenen Zeichnung. Das Kind müsste also IN sie hineinlaufen, um sie zu
+ * berühren; genau der Z-Ordnungs-Fehler, den `DIP_STANDOFF_PX` oben schon einmal
+ * behoben hat (PK-R6 · H2, Befund 2).
+ *
+ * Deshalb misst diese Zahl die KANTE, nicht die Mitte: halbe Tafel (37,1) plus
+ * halbes Kind (8) ⇒ 45. Die Berührung passiert, wenn sich die beiden Körper
+ * berühren — was das Kind am Schirm auch sieht.
+ */
+export const GUARDIAN_WIPE_REACH_PX = 45;
 /** How long the dip takes. Matched to the evidence beat (PaintScene's
  *  EVIDENCE_BEAT_TICKS, 36 t) so the coming-down and the writing read as one
  *  movement rather than two. */
@@ -960,6 +1038,13 @@ export const ENGAGEABLE_ROLES = new Set<string>(["drained", "cage", "classmate"]
 
 const inEngageReach = (e: EntityState, playerX: number, playerY: number): boolean =>
   Math.abs(e.x - playerX) / SUBS < ENGAGE_REACH_PX
+  && Math.abs(e.y - playerY) / SUBS < ENGAGE_REACH_Y_PX;
+
+/** Dasselbe für die gelandete Tafel, mit IHRER Reichweite (`GUARDIAN_WIPE_REACH_PX`
+ *  — die Kante, nicht die Mitte). Die Höhen-Bedingung bleibt die gemeinsame:
+ *  wischen kann nur ein Kind, das auf derselben Fläche steht wie sie. */
+const inWipeReach = (e: EntityState, playerX: number, playerY: number): boolean =>
+  Math.abs(e.x - playerX) / SUBS < GUARDIAN_WIPE_REACH_PX
   && Math.abs(e.y - playerY) / SUBS < ENGAGE_REACH_Y_PX;
 
 /**
@@ -1455,7 +1540,7 @@ export const stepEntities = (
         if (e.state === "wipeable") {
           e.vx = 0;
           e.vy = 0;
-          if (inEngageReach(e, inp.playerX, inp.playerY)) {
+          if (inWipeReach(e, inp.playerX, inp.playerY)) {
             e.state = "wipe";
             e.timer = 0;
             break;
@@ -1732,7 +1817,7 @@ export const stepEntities = (
   const tallyOverreach = (p: ProjectileState): void => {
     if (p.kind !== "chalk" || p.scores === false) return;
     const src = w.entities.find((e) => e.id === p.fromId && e.role === "guardian" && !e.redeemed);
-    if (src && src.state !== "stagger" && src.state !== "window" && src.state !== "dip") src.dodges += 1;
+    if (src && !GUARDIAN_HELD_STATES.has(src.state)) src.dodges += 1;
   };
 
   for (const p of w.projectiles) {
@@ -1837,7 +1922,9 @@ export const stepEntities = (
         // PK-R6 · E: `dip` joins the two states a deflect may not interrupt —
         // she is already on her way down to open a window, and a second one
         // opened on top of it would ask two cards for one over-reach.
-        if (g0.state !== "stagger" && g0.state !== "window" && g0.state !== "dip") {
+        // R5-W4b · H3 (D-190): dieselbe Frage wie in `tallyOverreach`, also
+        // dieselbe Liste — und die steht jetzt EINMAL da.
+        if (!GUARDIAN_HELD_STATES.has(g0.state)) {
           g0.state = "stagger";
           g0.timer = 0;
           eventsPushStagger(events, g0.id);

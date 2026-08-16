@@ -36,7 +36,7 @@ import { COLLECT_ANCHOR_PX, MAGNET_FIELD_PX, Sim, type SimEvent, type TaskReques
 import { FOCUS_MS, focusView } from "./camera.ts";
 import {
   AWAKEN_ROOM_MS, BOSS_BEAT_SWELL, CAGE_AT_REST, CAGE_OPEN_TICKS, CELL_IS_DIRECTIONAL, type EntPoseInput,
-  type EntSizeInput, GUARDIAN_DISPLAY_H, GUARDIAN_KEEPIN_MAX, REST_SQUASH, RESTORE_SPARKLE_MS, WASHED_ROLES,
+  type EntSizeInput, GUARDIAN_DISPLAY_H, GUARDIAN_KEEPIN_MAX, GUARDIAN_SLATE, REST_SQUASH, RESTORE_SPARKLE_MS, WASHED_ROLES,
   WIGGLE_AT_REST,
   awakenRoomBloom, awakenRoomSweep, bouncerSquash, cageBreath, cageNearT, entDisplayH, entPoseCell, entSeed, floodBloomFor, greyLuma,
   guardianManoeuvre, guardianPitchRad, guardianRollScaleX, idleWiggle, poseStateOf, washAlphaFor,
@@ -460,105 +460,32 @@ const CHARGE_MOTES = 9;
 // the same way twice and no two knots are twins.
 /** The cord's chalk, the slate its shadow falls on, and the spent chalk an
  *  untied knot leaves behind. */
-// ── R5-W4 · H2 · DIE KRITZEL-SCHICHTEN (R50) ────────────────────────────────
-// Die Textur wird EINMAL in dieser Auflösung gebacken und danach auf die
-// gemessene Tafelfläche skaliert (`boardAnchor`). 256 × 128 ist reichlich: die
-// Fläche misst im Spiel rund 35 × 18 px, wir backen also mit siebenfacher
-// Dichte und können sie später ohne Neubacken grösser ziehen.
-/**
- * Gebacken wird in der GERÄTE-Auflösung, die das Blatt am Ende wirklich
- * einnimmt — nicht grosszügig darüber.
- *
- * GEMESSEN: die Schiefertafel ist rund 33 logische px breit, die Kamera zoomt
- * mit RENDER_SCALE (3), also sind das 99 echte Bildschirmpixel. Der erste Bau
- * buk 256 px und liess sie auf ein Drittel schrumpfen — und eine lineare
- * Verkleinerung um Faktor acht macht aus feinen Kreidestrichen genau das, was
- * im Bild zu sehen war: einen rosa Schmierfleck. 96 px trifft die Gerätezeile
- * fast eins zu eins, also bleibt jeder Strich ein Strich.
- */
-const SCRIBBLE_W = 96;
-const SCRIBBLE_H = 96;
-/**
- * Die Fläche ist FAST QUADRATISCH, nicht 2:1 — nachgemessen an der Zelle, die
- * sie wirklich trägt: `tafel_a` ist 331 × 397, auf GUARDIAN_DISPLAY_H (68) sind
- * das 57 px Breite, und `GUARDIAN_BOARDS.tafel.wFrac` (0,62) schneidet daraus
- * 35 px Schiefertafel. Die Höhe der Schiefertafel liegt in derselben Grössen-
- * ordnung. Ein 2:1-Band lag als schmaler Streifen quer über ihrem Gesicht.
- */
-const SCRIBBLE_ASPECT = 1;
-/**
- * Wie gross die Kritzelei GEGEN `boardAnchor.w` ausfällt — beide Zahlen am Bild
- * gemessen, nicht geschätzt.
- *
- * `boardAnchor.w` ist die Breite, auf die der BEWEISTEXT umbricht (0,62 der
- * Blattbreite), und die ist grosszügiger als die Schiefertafel selbst: im
- * Aufnahme-Ausschnitt misst die grüne Fläche rund 23 × 38 Welt-px, während
- * `anchor.w` 33 liefert. Mit einem Quadrat dieser Kantenlänge lagen zwei
- * Kreidestriche AUSSERHALB des Rahmens, einer quer über den Staffelei-Beinen —
- * und Kreide, die neben der Tafel in der Luft hängt, liest sich als Fehler,
- * nicht als Kritzelei. Beide Werte bleiben etwas unter dem Gemessenen, weil sie
- * sich mit ihr NEIGT und ein Rechteck über Eck mehr Platz braucht.
- */
-const SCRIBBLE_FIT_W = 0.70;
-const SCRIBBLE_FIT_H = 1.05;
-/**
- * Wie weit die Kritzelei ÜBER `boardAnchor.y` sitzt, als Anteil der Blatthöhe.
- *
- * Auch das ist gemessen, und zwar mit einer Kontrollaufnahme: einmal mit
- * Kritzelei, einmal mit `alpha = 0` und sonst identisch. Im Kontrollbild trägt
- * die Tafel nur ihr eigenes Gesicht, und die grüne Fläche liegt zwischen
- * Bildschirm-y 164 und 284 — ihre Mitte also bei 224, während `boardAnchor.y`
- * (der Ankerpunkt des BEWEISTEXTES) bei 249 sitzt, rund 8 Welt-px tiefer. Mit
- * dieser Differenz hing ein Kreidestrich über der Staffelei-Querstange.
- *
- * Der Anker selbst bleibt unangetastet: an ihm hängen der Beweistext und das
- * HELLO, und die sitzen dort seit Wellen richtig. Diese Zahl korrigiert nur die
- * Kritzelei, die die ganze FLÄCHE braucht statt einer Textzeile.
- */
-const SCRIBBLE_LIFT_FRAC = 0.12;
-const SCRIBBLE_LAYERS = 3;
-/**
- * Wie viele Striche je Schicht — 0 geht zuletzt weg, 2 zuerst.
- *
- * GEMESSEN statt geschätzt: der erste Bau (7/14/26 dünne Striche) deckte 1,1 %,
- * 1,0 % und 1,9 % der Fläche ab. „Über und über vollgekritzelt" ist das nicht —
- * das sind drei Schmierer. Die Zahlen hier sind gegen die gemessene Deckung
- * gewählt (siehe `SCRIBBLE_COVER_MIN` im Test): die unterste Schicht ist noch
- * lesbar als „ein paar Striche", alle drei zusammen lassen kaum Grün übrig.
- */
-const SCRIBBLE_STROKES: readonly number[] = [12, 21, 33];
-/**
- * Strichbreite IN DER TEXTUR, als Anteil ihrer Kantenlänge.
- *
- * GEFUNDEN AM LEBENDEN SPIEL, und es ist die Falle jedes gebackenen Overlays:
- * die Textur ist 256 px breit und wird auf rund 27 px gezogen — ein Faktor von
- * fast zehn. Der erste Bau zeichnete Striche von 1,1 bis 2,6 px, also 0,11 bis
- * 0,27 px auf dem Schirm: die Kritzelei war da, sie war in den Daten korrekt,
- * und sie war UNSICHTBAR. Deshalb steht die Breite jetzt als Anteil da und
- * nicht als Pixelzahl — sie wandert mit, wenn jemand die Backgrösse ändert.
- */
-const SCRIBBLE_THICK_MIN = 0.045;
-const SCRIBBLE_THICK_VAR = 0.030;
-/**
- * Die Backversion — sie steht IM Texturschlüssel.
- *
- * Ohne sie hat mich diese Datei eine halbe Stunde gekostet: die Textur wird
- * unter einem festen Schlüssel gebacken und beim nächsten Mal wiederverwendet,
- * wenn es sie schon gibt. Nach einer Code-Änderung lebte im laufenden Spiel
- * also weiter die ALTE Kritzelei, und ich habe eine Messung an einem Bild
- * gemacht, das mein geänderter Code nie gezeichnet hat. Wer die Zeichnung
- * ändert, zählt hier hoch — dann kann kein Bild mehr aus einem früheren Bau
- * stammen. (Dieselbe Klasse wie ein Test, der eine stale Datei liest.)
- */
-const SCRIBBLE_BAKE_V = 7;
-/** Die Kreidefarben je Schicht. Die unterste ist einfarbig (ein Kind hatte nur
- *  ein Stück Kreide), die oberste trägt den ganzen Kasten — so liest sich das
- *  Wegwischen als „da war etwas", nicht als „es wird heller". */
-const SCRIBBLE_PALETTE: readonly (readonly number[])[] = [
-  [0xfff6e2],
-  [0xfff6e2, 0xfff3d0, 0xf6e4c0],
-  [0xfff6e2, 0xfff3d0, 0xffe0e0, 0xdcecff, 0xfff0b8],
-];
+// ── R5-W4b · H3 · DIE KRITZEL-SCHICHTEN, JETZT GEMALT (AQ13) ────────────────
+//
+// H2 hat sie prozedural gebaut, weil es die Blätter noch nicht gab, und die
+// Datei trug an dieser Stelle 90 Zeilen Herleitung dafür — Backgrösse,
+// Strichbreite als Anteil, eine Backversion im Texturschlüssel, drei Paletten.
+// Die sind mit dem Import gegenstandslos geworden und deshalb gelöscht statt
+// auskommentiert: Codex AQ13 liefert `tafel_scribble1/2/3` (+ `3b`), auf die
+// Schiefertafel von `tafel_a` registriert und mit `docs/art/import-batch-aq13.mjs`
+// nachgemessen (0 gemalte Pixel ausserhalb der Fläche, Deckung 94 % ihrer
+// Breite und 87 % ihrer Höhe).
+//
+// Was von H2s Herleitung BLEIBT, weil es nicht am Material hing: die Schichten
+// sind Sprites und keine `Graphics` (E5s Lehre P-73 — eine statische `Graphics`
+// wird pro Bild neu tesselliert), der Wischer nimmt nur die oberste Schicht,
+// und er nimmt sie von links nach rechts.
+
+/** Die drei Blätter, unterste zuerst — Reihenfolge = Reihenfolge des Wischens
+ *  (Index 0 geht ZULETZT weg). `scribble3b` ist dieselbe volle Schicht, um
+ *  (3,−2) versetzt: das Zittern, das sie im Ausholen bekommt. */
+const SCRIBBLE_STEMS: readonly string[] = ["tafel_scribble1", "tafel_scribble2", "tafel_scribble3"];
+const SCRIBBLE_SHAKE_STEM = "tafel_scribble3b";
+const SCRIBBLE_LAYERS = SCRIBBLE_STEMS.length;
+/** Das Blatt, das nach dem letzten Wischen auf ihrer Ruhe-Zelle liegt: feuchter
+ *  Glanz und ein paar harmlose Schlieren. Gegen `tafel_rest` registriert und
+ *  deshalb NUR dort gezeigt — auf `win` sitzt die Fläche anders. */
+const SCRIBBLE_CLEAN_STEM = "tafel_clean";
 /** Direkt über ihrem Blatt (das Sprite liegt bei ~7), aber UNTER dem
  *  Beweistext (`giftText` liegt bei 8): die vier Kreide-Wörter, die sie im
  *  Fenster auf sich schreibt, müssen lesbar bleiben. */
@@ -571,6 +498,7 @@ const SCRIBBLE_TOP_ALPHA = 0.95;
 const WIPE_DAMP = 0x2f4a3a;
 const WIPE_EDGE = 0xfff6d8;
 const WIPE_MOTES = 7;
+
 
 // ── R5-W4 · H2 · DAS WARME LICHT ÜBERM STUHL-BAND (D-39) ────────────────────
 // Hinter den Wesen, vor der Kulisse: das Licht liegt AUF dem Saal, nicht über
@@ -2434,6 +2362,47 @@ export class PaintScene extends Phaser.Scene {
     return { y: fromSubs(e.y) + board.dyFrac * h, w: Math.max(w * board.wFrac, 8) };
   }
 
+  /**
+   * ── R5-W4b · H3 · DAS RECHTECK IHRER SCHIEFERTAFEL, in Welt-px ─────────────
+   *
+   * `boardAnchor` oben bleibt, was es ist: der Ankerpunkt des BEWEISTEXTES und
+   * des HELLO, ein Punkt plus eine Umbruchbreite, seit Wellen richtig gesetzt.
+   * Ein BILD braucht mehr — es braucht die Fläche, und zwar die der Zelle, die
+   * sie in diesem Bild trägt. Zwischen ihren Zellen wandert die Fläche um über
+   * 30 % der Blattbreite (`anim.ts#GUARDIAN_SLATE`), also würde ein Mittelwert
+   * gemalte Kreide in der Hälfte ihrer Posen auf den Holzrahmen legen.
+   *
+   * Die Zelle steht im Texturschlüssel des Sprites (`pb-tafel_land1`), also
+   * wird sie dort abgelesen statt durch die halbe Szene gereicht. Unbekannte
+   * Zelle ⇒ null, und die Schicht bleibt aus: lieber keine Kritzelei als
+   * Kritzelei an der falschen Stelle.
+   *
+   * Gerechnet wird gegen das Sprite, WIE ES STEHT — Grösse, Spiegelung und
+   * Neigung inbegriffen, weil die Schicht sich mit ihr neigt.
+   */
+  private slateRect(entityId: string): { x: number; y: number; w: number; h: number } | null {
+    const img = this.entityImgs.get(entityId);
+    if (!img) return null;
+    const cell = img.texture.key.replace(/^pb-[a-z0-9]+_/, "");
+    const s = GUARDIAN_SLATE[cell];
+    if (!s) return null;
+    const dw = Math.abs(img.displayWidth);
+    const dh = Math.abs(img.displayHeight);
+    // das Sprite hängt an den FÜSSEN (setOrigin(0.5, 1)): sein Kasten läuft von
+    // (x − dw/2, y − dh) bis (x + dw/2, y)
+    const cx = img.flipX ? 1 - s.cx : s.cx;
+    const ox = (cx - 0.5) * dw;
+    const oy = -(1 - s.cy) * dh;
+    const rot = img.rotation;
+    const cos = Math.cos(rot), sin = Math.sin(rot);
+    return {
+      x: img.x + ox * cos - oy * sin,
+      y: img.y + ox * sin + oy * cos,
+      w: s.w * dw,
+      h: s.h * dh,
+    };
+  }
+
   writeEvidence(entityId: string, lines: readonly string[]): number {
     const e = this.world?.entities.find((x) => x.id === entityId);
     const anchor = this.boardAnchor(entityId);
@@ -3333,8 +3302,8 @@ export class PaintScene extends Phaser.Scene {
     // Ein Zähler, der noch nicht gezählt hat, heisst »alle«, nicht »keine«.
     const counted = this.world?.guardianKnots ?? -1;
     const left = counted < 0 ? total : Math.max(0, Math.min(total, counted));
-    const anchor = this.boardAnchor(g.id);
-    if (total <= 0 || anchor === null) {
+    const slate = this.slateRect(g.id);
+    if (total <= 0 || slate === null) {
       for (const s of this.scribbleImgs) s.setVisible(false);
       this.knotG.clear();
       return;
@@ -3345,50 +3314,72 @@ export class PaintScene extends Phaser.Scene {
     // sie liegt heller, damit das Kind sieht, worauf sein Wischen zielt.
     const wiping = g.state === "wipe";
     const t = wiping ? Math.max(0, Math.min(1, g.timer / WIPE_TICKS)) : 0;
-    const w = anchor.w * SCRIBBLE_FIT_W;
-    const h = anchor.w * SCRIBBLE_FIT_H * SCRIBBLE_ASPECT;
 
     for (let i = 0; i < this.scribbleImgs.length; i++) {
       const s = this.scribbleImgs[i]!;
       const standing = i < left;
       s.setVisible(standing && img.visible);
       if (!standing) continue;
-      s.setPosition(img.x, anchor.y - SCRIBBLE_LIFT_FRAC * img.displayHeight);
-      s.setDisplaySize(w, h);
+      const top = i === left - 1;
+      // Die volle Schicht ZITTERT im Ausholen — dieselbe Kritzelei, um (3,−2)
+      // versetzt (AQ13 Zelle 4). Sie ist der einzige Zustand, in dem die Tafel
+      // sich sichtbar aufregt, und die Kritzelei regt sich mit.
+      const shaking = top && i === SCRIBBLE_LAYERS - 1 && g.state === "telegraph"
+        && !this.cfg.reducedMotion && this.textures.exists(`pb-${SCRIBBLE_SHAKE_STEM}`);
+      const wantKey = `pb-${shaking ? SCRIBBLE_SHAKE_STEM : SCRIBBLE_STEMS[i]!}`;
+      if (this.textures.exists(wantKey) && s.texture.key !== wantKey) s.setTexture(wantKey);
+      s.setPosition(slate.x, slate.y);
+      s.setDisplaySize(slate.w, slate.h);
       s.setFlipX(img.flipX);
       s.setRotation(img.rotation);
-      const top = i === left - 1;
       s.setAlpha((top ? SCRIBBLE_TOP_ALPHA : SCRIBBLE_ALPHA) * img.alpha);
       // Der Wischer nimmt NUR die oberste Schicht, und er nimmt sie von links
       // nach rechts — dieselbe Richtung, in der ein Kind eine Tafel wischt.
+      // Der Schnitt läuft in TEXTUR-Koordinaten, also in der Auflösung des
+      // gelieferten Blattes und nicht in der, auf die es gezogen wird.
       if (top && wiping) {
-        const gone = Math.round(SCRIBBLE_W * t);
-        s.setCrop(gone, 0, SCRIBBLE_W - gone, SCRIBBLE_H);
+        const texW = s.texture.getSourceImage().width || s.width;
+        const texH = s.texture.getSourceImage().height || s.height;
+        const gone = Math.round(texW * t);
+        s.setCrop(gone, 0, texW - gone, texH);
       } else s.setCrop();
     }
 
-    // ── DER WISCHER ───────────────────────────────────────────────────────
-    // Nur während des Wischens, und dann als das, was ein Kind in der Hand
-    // hätte: eine feuchte Spur an der Kante, wo die Kritzelei gerade
-    // verschwindet, plus der Kreidestaub, den sie dabei verliert.
+    this.renderWipe(wiping, t, slate);
+  }
+
+  /**
+   * ── DER WISCHER ────────────────────────────────────────────────────────────
+   *
+   * Nur während des Wischens, und dann als das, was ein Kind in der Hand hätte:
+   * eine feuchte Spur an der Kante, wo die Kritzelei gerade verschwindet, plus
+   * der Kreidestaub, den sie dabei verliert.
+   *
+   * Eigene Methode seit R5-W4b · H3 — bei H2 stand sie als Schwanz an
+   * `renderKnotCord`, und zwei Dinge, die verschiedene Fragen beantworten
+   * („welche Schicht steht noch?" gegen „wie sieht das Wischen aus?"), lesen
+   * sich getrennt besser. Die Bewegung ist deterministisch (`hash01` über den
+   * Index), damit dieselbe Bildreihe zweimal dasselbe zeigt.
+   */
+  private renderWipe(wiping: boolean, t: number, slate: { x: number; y: number; w: number; h: number }): void {
     this.knotG.clear();
     if (!wiping || this.cfg.reducedMotion) return;
     this.knotG.setDepth(SCRIBBLE_DEPTH + 0.01);
     const G = this.knotG;
-    const x0 = img.x - w / 2;
-    const edge = x0 + w * t;
-    const yTop = anchor.y - SCRIBBLE_LIFT_FRAC * img.displayHeight - h / 2;
+    const x0 = slate.x - slate.w / 2;
+    const yTop = slate.y - slate.h / 2;
+    const edge = x0 + slate.w * t;
     G.fillStyle(WIPE_DAMP, 0.34);
-    G.fillRect(x0, yTop, Math.max(0, w * t), h);
+    G.fillRect(x0, yTop, Math.max(0, slate.w * t), slate.h);
     G.lineStyle(1.6, WIPE_EDGE, 0.85);
-    G.lineBetween(edge, yTop, edge, yTop + h);
+    G.lineBetween(edge, yTop, edge, yTop + slate.h);
     for (let i = 0; i < WIPE_MOTES; i++) {
       // dieselbe Hash-Regel wie die Kritzel: gleicher Index, gleicher Fleck
       const a = hash01(i * 613 + 41);
       const b = hash01(i * 977 + 17);
       const life = (t + a) % 1;
       G.fillStyle(WIPE_EDGE, 0.5 * (1 - life));
-      G.fillCircle(edge + 1.2 + a * 3.4, yTop + b * h, 0.6 + life * 1.1);
+      G.fillCircle(edge + 1.2 + a * 3.4, yTop + b * slate.h, 0.6 + life * 1.1);
     }
   }
 
@@ -3454,68 +3445,16 @@ export class PaintScene extends Phaser.Scene {
     }
   }
 
-  /** Die drei Schichten, EINMAL gebacken. Siehe `renderKnotCord` §1. */
+  /** Die drei gemalten Schichten (AQ13), einmal angelegt. Ein fehlendes Blatt
+   *  lässt die Schicht einfach aus, statt die Arena zu stoppen — das
+   *  Keen-Kunst-Gesetz: was da ist, wird gezeigt. */
   private ensureScribbles(): void {
     if (this.scribbleImgs.length > 0) return;
     for (let layer = 0; layer < SCRIBBLE_LAYERS; layer++) {
-      const key = `h2-scribble-v${SCRIBBLE_BAKE_V}-${this.cfg.phaseId}-${layer}`;
-      if (!this.textures.exists(key)) {
-        const g = this.make.graphics({ x: 0, y: 0 }, false);
-        this.paintScribbleLayer(g, layer);
-        g.generateTexture(key, SCRIBBLE_W, SCRIBBLE_H);
-        g.destroy();
-        this.bakedKeys.push(key);
-      }
+      const key = `pb-${SCRIBBLE_STEMS[layer]!}`;
+      if (!this.textures.exists(key)) continue;
       const img = this.add.image(0, 0, key).setOrigin(0.5, 0.5).setDepth(SCRIBBLE_DEPTH).setVisible(false);
       this.scribbleImgs.push(img);
-    }
-  }
-
-  /**
-   * Eine Schicht Kritzelei, gezeichnet wie ein Kind, das sich langweilt.
-   *
-   * Die drei Schichten sind nicht dreimal dasselbe in anderer Dichte, sondern
-   * drei Arten von Gekritzel — sonst liest sich das Wegwischen als „es wird
-   * heller" statt als „da war etwas, und jetzt ist es weg":
-   *   0 · ein paar Striche und Rechenzeichen, dünn und einzeln  (geht ZULETZT)
-   *   1 · Wörter als Wellenlinien, Kringel, ein durchgestrichenes Wort
-   *   2 · voll: Gekritzel über Gekritzel, in mehreren Kreidefarben (geht ZUERST)
-   */
-  private paintScribbleLayer(g: Phaser.GameObjects.Graphics, layer: number): void {
-    const W = SCRIBBLE_W;
-    const H = SCRIBBLE_H;
-    const rnd = (n: number): number => hash01(n * 2654435761 + layer * 7919 + 13);
-    const strokes = SCRIBBLE_STROKES[layer] ?? 8;
-    const palette = SCRIBBLE_PALETTE[layer] ?? [0xf1e4c2];
-    const pad = W * 0.06;
-    for (let i = 0; i < strokes; i++) {
-      const colour = palette[Math.floor(rnd(i * 5 + 1) * palette.length) % palette.length]!;
-      const x = pad + rnd(i * 11 + 2) * (W - 2 * pad);
-      const y = pad + rnd(i * 13 + 3) * (H - 2 * pad);
-      const len = W * (0.22 + rnd(i * 17 + 4) * 0.40);
-      const thick = W * (SCRIBBLE_THICK_MIN + rnd(i * 19 + 5) * SCRIBBLE_THICK_VAR);
-      g.lineStyle(thick, colour, 0.6 + rnd(i * 23 + 6) * 0.4);
-      const kind = Math.floor(rnd(i * 29 + 7) * 3);
-      if (kind === 0) {
-        // eine Wellenlinie — „ein Wort", wie ein Kind es hinkritzelt
-        const pts: Phaser.Geom.Point[] = [];
-        const wobble = H * (0.04 + rnd(i * 31 + 8) * 0.06);
-        for (let k = 0; k <= 8; k++) {
-          pts.push(new Phaser.Geom.Point(x + (len * k) / 8, y + Math.sin(k * 1.9 + i) * wobble));
-        }
-        g.strokePoints(pts, false);
-      } else if (kind === 1) {
-        // ein Kringel
-        g.beginPath();
-        g.arc(x, y, W * (0.07 + rnd(i * 37 + 9) * 0.10), 0, Math.PI * 2 * (0.7 + rnd(i * 41 + 10) * 0.3), false);
-        g.strokePath();
-      } else {
-        // ein Strich, manchmal gekreuzt (das durchgestrichene Wort)
-        g.lineBetween(x, y, x + len, y + (rnd(i * 43 + 11) - 0.5) * H * 0.09);
-        if (layer >= 1 && rnd(i * 47 + 12) > 0.68) {
-          g.lineBetween(x + len * 0.1, y - H * 0.04, x + len * 0.9, y + H * 0.04);
-        }
-      }
     }
   }
 
