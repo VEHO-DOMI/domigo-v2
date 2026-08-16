@@ -1686,26 +1686,45 @@ export class PaintScene extends Phaser.Scene {
           cap.setVisible(!e.hidden);
           this.captiveImgs.set(e.id, cap);
         }
-      // R5-W4b · C3 · R103 · …AND A PERSON-CAGE HAS ONE TOO. The layer above only
-      // ever fired for THING-cages: `p2-cage-merle` carries `params.classmate`,
-      // not one of the four `captive` keys, so the chapter's one person-cage drew
-      // nobody. That went unnoticed while the pencil case had a girl PAINTED
-      // behind its bars — but that painted girl is the old, discarded face (R93),
-      // and the moment AQ15c keys the window out, the cage stands empty while the
-      // card says Merle is in it. Same depth, same origin, same map, so the sync,
-      // the „leaves with the lid" rule and the victory tract all inherit it.
-      //
-      // The stem convention is `cageCellFor`'s (cards/CardShell.tsx) — it is not
-      // imported because that module is React and this one is the scene; the two
-      // copies are filed as D-228 for whoever owns both next.
-      } else if (typeof e.params?.classmate === "string" && e.role === "cage") {
-        const fitted = this.fittedOccupantTexOf(`pb-${e.params.classmate}_caged0`, img.texture.key);
-        if (fitted !== null) {
-          const cap = this.add.image(fromSubs(e.x), fromSubs(e.y), fitted).setDepth(6.99).setOrigin(0.5, 1);
-          cap.setVisible(!e.hidden);
-          this.captiveImgs.set(e.id, cap);
-        }
       }
+      // R5-W4b · C3 · R103 · DER PERSONEN-KÄFIG BLEIBT VORERST LEER — ehrlicher
+      // Stopp mit Messung, kein halber Einbau.
+      //
+      // Der Auftrag lautete: `p2-cage-merle` trägt `params.classmate`, nicht einen
+      // der vier `captive`-Schlüssel, also zeichnet die Schicht oben hinter dem
+      // einen Personen-Käfig des Kapitels NIEMANDEN. Sobald AQ15c das Pennal-
+      // Fenster freistellt, stünde der Käfig leer, obwohl die Karte sagt, Merle
+      // sei darin.
+      //
+      // Gebaut, gemessen, wieder ausgebaut. Die Verzweigung selbst sind sieben
+      // Zeilen; das Problem sitzt in der GRÖSSE, und es ist nicht klein:
+      // `syncOverlay` kopiert den SKALIERUNGSFAKTOR, nicht die Anzeigegröße. Bei
+      // den vier Ding-Käfigen geht das auf, weil `import-batch-aq6` jedes
+      // `captive_*`-Blatt auf die Leinwand der Hülle geschnitten hat — `satchel_a`
+      // und `captive_tablet` sind beide 347×480, ein Faktor passt für beide.
+      // Der Personen-Käfig bricht die Annahme: `pencilcase_a` ist 480×275 (breit,
+      // liegend), `merle_caged0` ist 268×383 (hoch). Bei CAGE_DISPLAY_H = 34 ist
+      // der Faktor 34/275 = 0,1236, also würde Merle roh 47,4 px hoch gezeichnet —
+      // 39 % höher als ihr eigener Käfig.
+      //
+      // Die naheliegende Reparatur (Insasse einmalig auf eine Leinwand in
+      // Käfig-Maßen einpassen, unten zentriert, wie es die Karte in Glance.tsx
+      // tut) wurde gebaut und GERENDERT: sie stimmt rechnerisch — 34,0 px gegen
+      // 34,0 px, gleiche Bodenlinie — und ist trotzdem falsch. Gemessen am
+      // fertigen Bild stehen **3716 Insassen-Pixel (13 %) AUSSERHALB der
+      // Käfig-Silhouette**: Kopf und Zöpfe über der Oberkante, Füße unter dem
+      // Boden, weil das Pennal in seiner Mittelspalte deutlich flacher ist als
+      // seine Leinwand. Richtig eingepasst gehört der Insasse nicht in den
+      // KASTEN, sondern ins FENSTER (gemessen 315×158 bei 55,68 ⇒ Faktor 0,413) —
+      // und diese Geometrie gehört dem Blatt, das AQ15c erst noch liefert.
+      //
+      // Also: kein Einbau auf Verdacht. Heute ist der Nutzen ohnehin null (das
+      // Fenster trägt weiter das alte gemalte Gesicht, D-224), und eine Zahl aus
+      // dem heutigen Blatt fest in die Szene zu schreiben wäre genau die
+      // Kopplung, vor der `import-batch-aq6` warnt. Die Sitzung, die AQ15c
+      // importiert, baut beides in EINEM Zug: leeres Fenster + Insasse, an der
+      // dann gültigen Fenstergeometrie ausgerichtet. Messwerte und Belegbild
+      // liegen im C3-Report; Schuldzeilen D-224 und D-228.
       // R3-15 · the grey wash sits a hair in front of its being, wearing the
       // SAME texture every frame — so it drains whatever cell the being is
       // showing, including cells and skins that do not exist yet.
@@ -1784,64 +1803,6 @@ export class PaintScene extends Phaser.Scene {
       // the half-built texture so a later attempt is not handed an empty one
       this.textures.remove(greyKey);
       return key;
-    }
-  }
-
-  /**
-   * R5-W4b · C3 · R103 · THE OCCUPANT, CUT ON ITS CAGE'S OWN BOX.
-   *
-   * `syncOverlay` copies the cage image's SCALE, not its display size. For the
-   * four thing-cages that is exactly right and costs nothing, because
-   * `import-batch-aq6` cut every `captive_*` sheet on the shell's own box —
-   * `satchel_a` and `captive_tablet` are both 347×480, so one scale fits both.
-   *
-   * A person-cage breaks that assumption, and the numbers are not marginal:
-   * `pencilcase_a` is 480×275 (wide, lying flat) and `merle_caged0` is 268×383
-   * (tall). With `CAGE_DISPLAY_H = 34` the cage's factor is 34/275 = 0.1236, so
-   * the raw occupant would render ≈47 px tall — 39 % taller than the cage she is
-   * inside, head and shoulders floating above the pencil case and nowhere near
-   * its window. `ent-size.test.ts` even encodes the intent she would invert
-   * („a cage is never drawn smaller than the child it could hold").
-   *
-   * Rather than correct the scale every frame — which would mean a second touch
-   * point inside `renderEntities`, the F-lane's region — the mismatch is removed
-   * where it starts: the occupant is composited ONCE onto a canvas the size of
-   * the cage sheet, contained and stood on the same floor line. After that one
-   * scale genuinely does fit both, `syncOverlay` stays untouched, and the layer
-   * inherits the breath, the pop and every future transform for free.
-   *
-   * Contain + bottom-centre is not a fresh invention either: it is the transform
-   * the CARD already uses to put the same girl behind the same shell
-   * (`cards/Glance.tsx`, objectFit contain / objectPosition 50% 100%). The world
-   * and the card being one recipe rather than two that were meant to match is the
-   * same argument `greyTexOf` above makes for the wash.
-   *
-   * Returns null (never a broken image) when a canvas cannot be had — headless,
-   * a tainted context, a sheet that has not landed. The keen-art law wants a
-   * missing sheet to mean „draw nobody", not „draw a placeholder".
-   */
-  private fittedOccupantTexOf(occupantKey: string, cageKey: string): string | null {
-    if (!this.textures.exists(occupantKey) || !this.textures.exists(cageKey)) return null;
-    const fitKey = `${occupantKey}__in__${cageKey}`;
-    if (this.textures.exists(fitKey)) return fitKey;
-    const src = this.textures.get(occupantKey).getSourceImage() as HTMLImageElement | HTMLCanvasElement;
-    const box = this.textures.get(cageKey).getSourceImage() as HTMLImageElement | HTMLCanvasElement;
-    const sw = Math.round(src?.width ?? 0), sh = Math.round(src?.height ?? 0);
-    const bw = Math.round(box?.width ?? 0), bh = Math.round(box?.height ?? 0);
-    if (sw <= 0 || sh <= 0 || bw <= 0 || bh <= 0) return null;
-    const tex = this.textures.createCanvas(fitKey, bw, bh);
-    if (!tex) return null; // headless/canvas-less safety, exactly like greyTexOf
-    try {
-      const k = Math.min(bw / sw, bh / sh);
-      const w = Math.max(1, Math.round(sw * k)), h = Math.max(1, Math.round(sh * k));
-      const ctx = tex.getContext();
-      ctx.clearRect(0, 0, bw, bh);
-      ctx.drawImage(src as CanvasImageSource, Math.round((bw - w) / 2), bh - h, w, h);
-      tex.refresh();
-      return fitKey;
-    } catch {
-      this.textures.remove(fitKey);
-      return null;
     }
   }
 
