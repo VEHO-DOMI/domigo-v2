@@ -1,5 +1,7 @@
 // THE GROUNDING CHECKER (doc 29 §6) — story-mode English truth + giveaway law + register law.
-// Run: node scripts/check-story-grounding.mjs   (exit 1 on any violation; CI-runnable)
+// Run: node --experimental-strip-types scripts/check-story-grounding.mjs
+//      (exit 1 on any violation; CI-runnable. The flag is required since D-123: the
+//       register law is imported from packages/content-schema/src/game-tasks.ts.)
 //
 // A) Every English token in the prologue (ch00), the new ch01 beat scenes (s011+), and every
 //    game task (keen/chNN.tasks.json) must be grounded: in the MORE! 1 Unit-1 lexicon
@@ -7,6 +9,7 @@
 // B) Giveaway law (§4.3): a task's answer token never appears in its own promptEn or storyDe.
 // C) Register law v2 (§1.1): banned German on all story-mode German fields.
 import fs from "node:fs";
+import { BANNED_DE as BANNED_DE_SHARED } from "../packages/content-schema/src/game-tasks.ts";
 
 const BASE = "content/corpus/stories/g1.st.lost-pages";
 const lex = JSON.parse(fs.readFileSync("docs/design/g1/grounding/u01-lexicon.json", "utf8"));
@@ -45,9 +48,19 @@ function checkEn(where, en, glosses) {
 }
 
 // ── register bans (German story fields) ──
-// "schrei" is boundary-aware (schrei NOT followed by b): catches schreien/Schrei
-// (scream) but never schreib*/Schreiber (to write / writer) — core school words.
-const BANNED_DE = [/verhedder/, /Monster/, /Blut/, /böse/, /Bösewicht/, /schrei(?!b)/, /sterben/, /tot /];
+// R5-W4b · W3 · D-123. This list used to be TYPED OUT here as well as exported from
+// content-schema, and a rule with two copies is a rule with one enforced copy — the
+// same argument check-game-tasks.mjs:65-69 already makes about its variety tables.
+// The shared law is now imported, so a word added there reddens BOTH gates.
+//
+// ⚠ MEASURED WHILE MERGING THEM, and the reason one entry stays local: the two lists
+// had ALREADY drifted. This copy carried an eighth pattern, /verhedder/, that the
+// shared list never had. Importing blindly would have silently WEAKENED the register
+// law by dropping it — and the shared list itself belongs to the copy lane this wave,
+// not to tooling. So it stays here as a named local addition until C3 either adopts it
+// into content-schema or drops it with a reason (D-251).
+const BANNED_DE_LOCAL = [/verhedder/];
+const BANNED_DE = [...BANNED_DE_LOCAL, ...BANNED_DE_SHARED];
 function checkDe(where, de) {
   for (const re of BANNED_DE) if (re.test(de ?? "")) fail(where, `register-law violation: ${re} in "${de}"`);
 }

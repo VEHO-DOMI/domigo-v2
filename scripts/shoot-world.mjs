@@ -216,9 +216,29 @@ try {
     await evalIn(`(() => { for (let i = 0; i < 5; i++) window.__domigoPaint.step(); return true; })()`);
     return (await evalIn(`window.__domigoPaint.state().tick`)) > before;
   };
+  // R5-W4b · W3: die Meldung darf nicht behaupten, was sie nicht geprüft hat.
+  // Vorher endete JEDER Fehlschlag hier mit „obwohl keine Karte offen ist" — auch
+  // dann, wenn die Schleife 24-mal an einer Karte hängen blieb und die Lauf-Prüfung
+  // nie erreichte. Das ist eine Falschaussage über die eigene Ursache, und sie hat
+  // eine Sitzung gekostet. Jetzt wird mitgeschrieben, was wirklich passiert ist, und
+  // die Karte wird beim NAMEN genannt (`beat()` kennt ihn, `state().overlay` ist nur
+  // ein Ja/Nein).
+  const karte = async () => evalIn(`(() => { const b = window.__domigoPaint.beat?.(); `
+    + `return b ? (b.overlay ?? "—") : "?"; })()`);
+  // …und sie darf nicht zu früh aufgeben. 24 Runden sind rund sieben Sekunden; ein
+  // FRISCHER kopfloser Browser hat zu dem Zeitpunkt die Szene zwar gebaut (`state()`
+  // antwortet, darum meldet der Wächter oben »Spiel da«), lädt aber noch die Blätter —
+  // eine Phase trägt bis 26 MB. Der Takt steht dann, ohne dass irgendetwas kaputt ist.
+  // Gemessen in dieser Sitzung: mit 24 Runden schlug p1 zweimal fehl, mit 120 lief es.
   let alive = false;
-  for (let i = 0; i < 24; i++) {
+  let runden = 0;
+  let kartenRunden = 0;
+  let letzteKarte = null;
+  for (let i = 0; i < 120; i++) {
+    runden = i + 1;
     if (await evalIn(`window.__domigoPaint.state().overlay === true`)) {
+      kartenRunden += 1;
+      letzteKarte = await karte();
       await evalIn(`window.__domigoPaint.solveTask()`);
       await sleep(180);
       continue;
@@ -227,8 +247,13 @@ try {
     await sleep(180);
   }
   if (!alive) {
-    await fail("die Welt läuft nicht: der Tick bewegt sich nicht, obwohl keine Karte offen ist"
-      + " — jede Reihe wäre N-mal dasselbe Bild (Falle 2)");
+    const nochOffen = await evalIn(`window.__domigoPaint.state().overlay === true`);
+    await fail(nochOffen
+      ? `die Welt steht still, weil eine KARTE sie festhält: »${letzteKarte ?? await karte()}« — `
+        + `${kartenRunden} von ${runden} Runden hingen daran, und solveTask() bekam sie nicht zu. `
+        + "Das ist D-198: ein Kartenfenster friert die Welt ein, und diese Reihe wäre N-mal dasselbe Bild."
+      : `die Welt läuft nicht: der Tick bewegt sich in ${runden} Runden nicht, und offen ist keine Karte `
+        + "— jede Reihe wäre N-mal dasselbe Bild (Falle 2)");
   }
 
   // ── 5 · reduzierte Bewegung ──────────────────────────────────────────────

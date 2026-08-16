@@ -53,7 +53,7 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm content validate
       - run: pnpm content validate-story
-      - run: node scripts/check-story-grounding.mjs
+      - run: node --experimental-strip-types scripts/check-story-grounding.mjs # W3/D-123: imports BANNED_DE from content-schema (.ts) — the flag is what lets it
       - run: node scripts/check-design-sheets.mjs
       - run: node --experimental-strip-types scripts/check-paint-art.mjs # PB-T2: no silent placeholder art
       - run: node --experimental-strip-types scripts/check-game-tasks.mjs --selftest # G2: the card gate's own red light must be reachable — one prepared traitor card per class
@@ -63,6 +63,8 @@ jobs:
       - run: node scripts/check-level-design.mjs # R5-P1/B1: stem dedup, vocab coverage, dossier↔level anchors, named thresholds
       - run: node scripts/check-composition.mjs --selftest # A6: the edge-coherence law's own red light must be reachable
       - run: node scripts/check-composition.mjs # PB-C1/doc 36: plane coverage, carved mass, value bands, no naked fill, edge coherence
+      - run: node --experimental-strip-types scripts/check-png-seams.mjs --selftest # W3/D-199: the seam gate's own red light must be reachable — and genuinely violet paint must stay green
+      - run: node --experimental-strip-types scripts/check-png-seams.mjs # W3/D-199: magenta INSIDE an opaque tile — the class the skin-only fringe gate cannot see
       - run: node --experimental-strip-types scripts/check-paint-copy.mjs # C1: cloak, register and quote laws over the shell copy
       - run: node scripts/check-copy-register.mjs --selftest # C2: the register gate's own red light must be reachable
       - run: node scripts/check-copy-register.mjs # C2: every German line a child reads is Austrian (scripts/lexikon-at.json)

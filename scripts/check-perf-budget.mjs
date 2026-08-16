@@ -43,18 +43,45 @@ const fail = (msg) => {
 // SELFTEST: bend one budget out of step with the document and prove we notice.
 // (A tamper that changes nothing has proven nothing — so the bent value is the
 // one the document quotes, and the checker must name exactly that budget.)
+//
+// R5-W4b · W3 · ZWEITER BIEGE-FALL (R90). Der erste bog ein Budget gegen das
+// DOKUMENT — er beweist die Zitat-Prüfung, nicht den Vergleich mit der Wirklichkeit.
+// Für die Tot-Kunst-Decke ist aber genau der Vergleich das Gesetz. Also wird sie um
+// EINS gesenkt: dann liegt der wirklich gemessene Stapel um ein Blatt darüber, und
+// `dead.length > deadLimit` MUSS anschlagen. Ein Selbsttest, der nur die eine Hälfte
+// des Tores kitzelt, lässt die andere blind.
 const budgets = selftest
-  ? BUDGETS.map((b) => (b.key === "PHASE_ART_MB" ? { ...b, limit: b.limit + 7 } : b))
+  ? BUDGETS.map((b) => {
+    if (b.key === "PHASE_ART_MB") return { ...b, limit: b.limit + 7 };
+    if (b.key === "DEAD_ART_CEILING") return { ...b, limit: b.limit - 1 };
+    return b;
+  })
   : BUDGETS;
 
 const doc = fs.readFileSync(DOC, "utf8");
 const pkgScripts = JSON.parse(fs.readFileSync(path.join(R, "package.json"), "utf8")).scripts ?? {};
 const ci = fs.readFileSync(CI, "utf8");
 
+/**
+ * R5-W4b · W3 — WARUM DAS HIER KEIN `includes` MEHR IST.
+ *
+ * Diese Prüfung stand als `doc.includes(String(b.limit))`: die Ziffernfolge musste
+ * IRGENDWO im Dokument vorkommen. Beim Senken der Tot-Kunst-Decke ist aufgefallen,
+ * was das wert ist — `PERF_WAECHTER.md` enthält den Text „(P-56/P-57)". Hätte ich die
+ * Decke auf 57 gesetzt und die Tabellenzeile vergessen, wäre `doc.includes("57")`
+ * über den Fallen-Namen P-57 wahr gewesen und dieses Tor GRÜN geblieben, während Code
+ * und Dokument auseinanderlaufen. Dasselbe gilt für 53, 56, 59 und 60.
+ *
+ * Die Zahl muss jetzt dort stehen, wo sie etwas bedeutet: als Grenzwert in der
+ * Budget-Tabelle, hinter dem `≤`. Alle sieben Budgets stehen dort so.
+ */
+const quotedAsLimit = (text, limit) => new RegExp(`≤\\s*${limit}\\b`).test(text);
+
 // ── 1 + 2 + 4 · every budget is quoted, enforced, and honest about how ──────
 for (const b of budgets) {
-  if (!doc.includes(String(b.limit))) {
-    fail(`${b.key}: the guard document never mentions ${b.limit} — docs/PERF_WAECHTER.md and perfBudget.ts disagree`);
+  if (!quotedAsLimit(doc, b.limit)) {
+    fail(`${b.key}: the guard document never quotes ≤ ${b.limit} as a limit — `
+      + "docs/PERF_WAECHTER.md and perfBudget.ts disagree (die Ziffern irgendwo im Text zählen nicht)");
   }
   const abs = path.join(R, b.enforcedIn);
   if (!fs.existsSync(abs)) {
@@ -134,6 +161,17 @@ for (const { level } of levels) {
   for (const s of domArtStems(level)) claimed.add(s);
 }
 const dead = [...present].filter((s) => !claimed.has(s));
+// R90 · W3: die Decke gehört EINEM Eigentümer und steht auf dem Messwert, ohne Luft.
+// Luft ist der Defekt, den D-193 beschreibt: eine Decke ÜBER der Wirklichkeit verliert
+// genau die Warnung, für die sie gebaut wurde. Sie wird deshalb bei jedem Lauf
+// AUSGESPROCHEN — wer Kunst verdrahtet oder löscht, sieht sofort, dass er die Decke im
+// selben PR nachziehen muss. (Hart rot wird die Luft NICHT: zwischen dem Merge einer
+// löschenden Bahn und dem Nachziehen der Decke wäre main sonst rot. Der Vorschlag,
+// daraus eine Ratsche zu machen, liegt als D-253 bei der Perf-Spur.)
+if (dead.length < deadLimit) {
+  console.warn(`⚠ die Tot-Kunst-Decke hat ${deadLimit - dead.length} Blatt/Blätter Luft `
+    + `(Decke ${deadLimit}, gemessen ${dead.length}) — R90: auf den Messwert senken, im selben PR.`);
+}
 if (dead.length > deadLimit) {
   fail(
     `${dead.length} painted stems are loaded by nothing, over the ceiling of ${deadLimit}. ` +
@@ -141,17 +179,26 @@ if (dead.length > deadLimit) {
   );
 }
 
-// The selftest bent PHASE_ART_MB out of step with the guard document on
-// purpose. It passes when — and only when — that specific budget was named.
-// (House convention, check-ci-gates.mjs: a selftest EXITS 0 when it has seen
-// its own red light. Anything else fails the CI step that runs it.)
+// The selftest bent TWO budgets on purpose, in two different directions, and it
+// passes only when BOTH red lights were seen — the quote check (PHASE_ART_MB against
+// the guard document) and the reality check (DEAD_ART_CEILING against the pile that
+// is actually on disk). (House convention, check-ci-gates.mjs: a selftest EXITS 0
+// when it has seen its own red light. Anything else fails the CI step that runs it.)
 if (selftest) {
-  const sawIt = reported.some((m) => m.startsWith("PHASE_ART_MB:"));
-  if (sawIt) {
-    console.log(`check-perf-budget SELFTEST: OK — the red light works (${failures} failure(s) for a budget bent on purpose)`);
+  const sawQuote = reported.some((m) => m.startsWith("PHASE_ART_MB:"));
+  const sawDead = reported.some((m) => m.includes("painted stems are loaded by nothing"));
+  if (sawQuote && sawDead) {
+    console.log(`check-perf-budget SELFTEST: OK — beide roten Lichter brennen (${failures} failure(s): `
+      + "ein Budget gegen das Dokument verstellt, die Tot-Kunst-Decke unter den echten Stapel gesenkt)");
     process.exit(0);
   }
-  console.error("✗ SELFTEST FAILED: PHASE_ART_MB was bent out of step with the guard document and this check stayed silent about it");
+  if (!sawQuote) {
+    console.error("✗ SELFTEST FAILED: PHASE_ART_MB was bent out of step with the guard document and this check stayed silent about it");
+  }
+  if (!sawDead) {
+    console.error("✗ SELFTEST FAILED: die Tot-Kunst-Decke wurde unter den wirklich gemessenen Stapel gesenkt "
+      + "und dieses Tor hat nichts gesagt — der Vergleich mit der Wirklichkeit ist blind");
+  }
   process.exit(1);
 }
 

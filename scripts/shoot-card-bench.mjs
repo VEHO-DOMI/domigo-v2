@@ -40,19 +40,78 @@
  * Usage:
  *   node scripts/shoot-card-bench.mjs <outDir> [--port 3007] [--only a,b]
  *                                     [--from N --to M] [--crop <name|selector>]
+ *                                     [--cdp-port N]   (Standard: Chrome sucht sich einen freien)
  *   node scripts/shoot-card-bench.mjs --selftest      (ohne Dev-Server)
  * The dev server must already be running (the bench is dev-only by law), and its
  * teacher door needs `apps/web/.env.local` with `DEV_TEACHER_ID=<irgendwas>` —
  * ohne die leitet `?karten=` auf /signin um (307) und die Bühne malt nie.
  */
 import { spawn } from "node:child_process";
-import { existsSync, mkdirSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { mkdtempSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
 
 const CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
-const CDP_PORT = 9333;
+
+/**
+ * R5-W4b · W3 · D-207 — DER PORT, DER NICHT MEHR KOLLIDIEREN KANN.
+ *
+ * Der Fern-Steuer-Port stand hier als feste 9333. Gemeldet war das als
+ * »Kollisionsrisiko bei zehn parallelen Sessions«; nachgesehen ist es schlimmer als
+ * ein Absturz, weil es KEINER ist:
+ *
+ *   – Chrome startet mit `stdio: ignore` und hatte keinen `error`/`exit`-Horcher.
+ *     Konnte er den Port nicht binden, sagte er das nach /dev/null.
+ *   – `endpoint()` fragte nur, ob IRGENDWER auf 9333 antwortet — nicht, ob es der
+ *     eigene Browser ist. Ein fremder Chrome antwortet beim ersten Versuch.
+ *   – Der Lauf fotografierte dann durch den FREMDEN Browser, mit dessen
+ *     `--window-size` und `--force-device-scale-factor`. `clipOf` rechnet aber gegen
+ *     WINDOW/DSF unten — die Ausschnitte waeren gegen eine Fenstergeometrie
+ *     gerechnet, die der Browser gar nicht hat, und das 40-%-Fuellgesetz gegen den
+ *     falschen Nenner. Falsche Bilder, kein Fehler.
+ *
+ * Beides ist jetzt geloest, und zwar DURCH KONSTRUKTION statt durch Wachsamkeit:
+ *
+ *   FREIHEIT — der Port wird nicht mehr geraten, sondern vor dem Start beim
+ *   Betriebssystem geholt (Lauschen auf 0, Nummer merken, wieder schliessen). Eine
+ *   feste Zahl bleibt fuer den Notfall waehlbar (`--cdp-port N`), wie
+ *   `shoot-world.mjs` es tut.
+ *
+ *   IDENTITAET — der Browser wird gefragt, WAS er offen hat. Dieser Lauf legt ein
+ *   frisches, leeres Profil an; ein solcher Browser hat genau eine leere Seite. Wer
+ *   auf dem Port mit fremden Tabs antwortet, ist nicht meiner, und der Lauf bricht
+ *   MIT NAMEN ab, statt durch ihn zu fotografieren.
+ *
+ * ⚠ Gemessen und verworfen: `--remote-debugging-port=0` + `DevToolsActivePort` aus
+ * dem eigenen Profil zu lesen waere der elegantere Weg (`harvest-perf.mjs` macht es
+ * so). Mit den Flaggen DIESES Skripts schreibt Chrome die Datei aber nicht — 18 s
+ * gewartet, Profil enthaelt `SingletonLock` und keine Portdatei; der Unterschied ist
+ * `--disable-gpu`. Ein eleganter Weg, der bei uns nicht funktioniert, ist kein Weg.
+ */
+const CDP_PORT_DEFAULT = null; // null = beim Betriebssystem einen freien holen
+
+/** Eine Portnummer, die JETZT frei ist — vom Betriebssystem vergeben, nicht geraten. */
+const freePort = async () => {
+  const net = await import("node:net");
+  return new Promise((resolve, reject) => {
+    const srv = net.createServer();
+    srv.on("error", reject);
+    srv.listen(0, "127.0.0.1", () => {
+      const { port } = srv.address();
+      srv.close(() => resolve(port));
+    });
+  });
+};
+
+/**
+ * Ist das der Browser, den ich gestartet habe? Ein frisches Profil hat genau die
+ * eine leere Seite, mit der es gestartet wurde. Alles andere gehoert jemand anderem.
+ */
+export const looksLikeMyFreshBrowser = (targets) => {
+  const seiten = (targets ?? []).filter((t) => t.type === "page");
+  return seiten.every((t) => t.url === "about:blank" || t.url === "");
+};
 
 /** Das Fenster, in dem die Bank fotografiert wird (CSS-Pixel), und die
  *  Geräteskalierung — ein Ausschnitt wird auf dieses Format hochgezogen. */
@@ -221,8 +280,24 @@ const selftest = () => {
     `Teilmengen à 10 ergeben die Liste wieder (${teile.map((t) => t.length).join("+")} = ${SURFACES.length})`);
   assert(new Set(vereint).size === vereint.length, "und keine Fläche kommt doppelt vor");
 
+  // 7 · D-207: die Adresse des EIGENEN Browsers wird gelesen, nicht geraten.
+  //     Der gefährliche Fall ist nicht die kaputte Datei, sondern die HALBE: Chrome
+  //     legt `DevToolsActivePort` an und füllt sie erst. Wer die Portnummer schon
+  //     akzeptiert, bevor der Pfad da steht, baut sich eine Adresse ohne Ziel — und
+  //     genau das sähe aus wie „Chrome antwortet nicht", der Fehler, den D-207
+  //     dreimal als Hänger gemeldet bekam.
+  assert(looksLikeMyFreshBrowser([{ type: "page", url: "about:blank" }]),
+    "ein frisch gestarteter Browser mit einer leeren Seite gilt als meiner");
+  assert(looksLikeMyFreshBrowser([]), "ein Browser ohne Seiten gilt als meiner");
+  assert(!looksLikeMyFreshBrowser([{ type: "page", url: "http://localhost:3007/play/1/buch?karten=choice" }]),
+    "ein Browser mit einer FREMDEN offenen Seite gilt NICHT als meiner (das ist der stille Fall)");
+  assert(looksLikeMyFreshBrowser([{ type: "service_worker", url: "http://x/sw.js" }, { type: "page", url: "about:blank" }]),
+    "was keine Seite ist, zaehlt nicht gegen die Identitaet");
+  assert(CDP_PORT_DEFAULT === null, "ohne Angabe wird der Port beim Betriebssystem geholt, nie geraten");
+
   if (process.exitCode) console.error("✗ selftest: die Ausschnitt-Rechnung unterscheidet NICHT.");
-  else console.log("✓ selftest: formatfüllend wird angenommen, zu klein wird rot, Teilmengen decken die Liste.");
+  else console.log("✓ selftest: formatfüllend wird angenommen, zu klein wird rot, Teilmengen decken die Liste, "
+    + "und ein fremder Browser wird als fremd erkannt.");
   process.exit(process.exitCode ?? 0);
 };
 
@@ -231,13 +306,15 @@ if (args.includes("--selftest")) selftest();
 
 const outDir = args[0];
 if (!outDir) {
-  console.error("usage: node scripts/shoot-card-bench.mjs <outDir> [--port N] [--only a,b] [--from N --to M] [--crop name]");
+  console.error("usage: node scripts/shoot-card-bench.mjs <outDir> [--port N] [--only a,b] [--from N --to M] [--crop name] [--cdp-port N]");
   process.exit(1);
 }
 const num = (name) => (args.indexOf(name) === -1 ? null : Number(args[args.indexOf(name) + 1]));
 const port = args.indexOf("--port") === -1 ? 3007 : Number(args[args.indexOf("--port") + 1]);
 const only = args.indexOf("--only") === -1 ? null : new Set(args[args.indexOf("--only") + 1].split(","));
 const cropName = args.indexOf("--crop") === -1 ? null : args[args.indexOf("--crop") + 1];
+// D-207: ohne Angabe holt sich der Lauf VOR dem Start einen freien Port.
+const cdpPort = num("--cdp-port") ?? CDP_PORT_DEFAULT ?? await freePort();
 const wanted = planOf(SURFACES, { only, from: num("--from"), to: num("--to") });
 
 if (!existsSync(CHROME)) {
@@ -257,21 +334,61 @@ const chrome = spawn(CHROME, [
   `--force-device-scale-factor=${DSF}`,
   `--window-size=${WINDOW.w},${WINDOW.h}`,
   `--user-data-dir=${profile}`,
-  `--remote-debugging-port=${CDP_PORT}`,
+  `--remote-debugging-port=${cdpPort}`,
   "about:blank",
 ], { stdio: ["ignore", "ignore", "ignore"] });
 
-/** the browser's own websocket endpoint, once it is listening */
+// D-207: ohne diese zwei Horcher stirbt ein misslungener Start lautlos.
+let chromeGone = null;
+chrome.on("error", (e) => { chromeGone = `konnte nicht starten: ${e.message}`; });
+chrome.on("exit", (code, signal) => {
+  if (chromeGone === null) chromeGone = `ist ausgestiegen (Code ${code ?? "—"}, Signal ${signal ?? "—"})`;
+});
+
+/**
+ * Die Adresse MEINES Browsers — gelesen, nicht geraten.
+ *
+ * Vorher fragte diese Funktion `http://127.0.0.1:9333/json/version` und nahm die
+ * erste Antwort. Wer immer da lauschte, wurde damit zum Messgeraet. Jetzt kommt die
+ * Adresse aus `DevToolsActivePort` im frisch angelegten Profilordner: diese Datei
+ * kann nur der Prozess geschrieben haben, den dieser Lauf gestartet hat.
+ */
 async function endpoint() {
-  for (let i = 0; i < 60; i++) {
+  // 160 x 250 ms = 40 s. Vorher waren es 15 s, und das ist auf einer Maschine, die
+  // gleichzeitig einen Dev-Server uebersetzt, ZU KNAPP: gemessen in dieser Sitzung
+  // hat Chrome den Port geoeffnet (lsof zeigte ihn LISTEN), waehrend das Skript
+  // schon mit »nie geoeffnet« gestorben war — und dabei seinen Browser stehen liess,
+  // der dann den naechsten Lauf blockierte. Ein zu kurzer Atem erzeugt genau die
+  // Port-Leichen, gegen die D-207 gebaut ist.
+  for (let i = 0; i < 160; i++) {
+    if (chromeGone !== null) {
+      throw new Error(`Chrome ${chromeGone}. Bei fest gewaehltem --cdp-port ${cdpPort} ist das `
+        + "meist ein belegter Port — ohne die Angabe holt sich der Lauf selbst einen freien (D-207).");
+    }
     try {
-      const r = await fetch(`http://127.0.0.1:${CDP_PORT}/json/version`);
+      const r = await fetch(`http://127.0.0.1:${cdpPort}/json/version`);
       const j = await r.json();
-      if (j.webSocketDebuggerUrl) return j.webSocketDebuggerUrl;
-    } catch { /* not up yet */ }
+      if (j.webSocketDebuggerUrl) {
+        // …und erst JETZT die Identitaetsfrage, vor dem ersten Bild.
+        const liste = await (await fetch(`http://127.0.0.1:${cdpPort}/json/list`)).json();
+        if (!looksLikeMyFreshBrowser(liste)) {
+          const fremd = liste.filter((t) => t.type === "page").map((t) => t.url).slice(0, 3);
+          throw new Error(`auf Port ${cdpPort} antwortet ein FREMDER Browser (offene Seiten: `
+            + `${fremd.join(", ")}). Durch den zu fotografieren hiesse, gegen dessen Fenstergroesse `
+            + "zu rechnen — die Ausschnitte waeren falsch, ohne dass etwas fehlschlaegt (D-207). "
+            + "Ohne --cdp-port sucht sich dieser Lauf einen freien Port.");
+        }
+        console.log(`  Fernsteuerung: Port ${cdpPort} (eigener Browser, Profil ${path.basename(profile)})`);
+        return j.webSocketDebuggerUrl;
+      }
+    } catch (e) {
+      if (String(e.message).includes("FREMDER Browser")) throw e;
+      /* noch nicht oben */
+    }
     await sleep(250);
   }
-  throw new Error("Chrome never opened its debugging port");
+  chrome.kill(); // keine Port-Leiche hinterlassen, die den naechsten Lauf blockiert
+  throw new Error(`Chrome hat in 40 s den Port ${cdpPort} nicht geoeffnet`);
 }
 
 /**

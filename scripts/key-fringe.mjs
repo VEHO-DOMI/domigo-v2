@@ -221,7 +221,7 @@ const healHits = (img, hits, isBad) => {
 // IMPORTER's own predicate would silently delete on the next round-trip. So it
 // gets its own name, its own detector, and the same repair.
 //
-// The predicate is the importers' own, verbatim (import-batch-as.mjs:81,
+// The predicate is the importers' own, verbatim (import-batch-as.mjs#isFringe,
 // import-batch-aq7.mjs:101), because the defect is DEFINED as „a pixel any
 // import would delete". Copying it here rather than re-deriving it is the point:
 // two definitions of one defect is how a gate and a tool come to disagree.
