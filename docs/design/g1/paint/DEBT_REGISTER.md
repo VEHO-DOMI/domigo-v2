@@ -472,3 +472,76 @@ Reserviert: D-260…D-269.
 | D-267 | **★ ch01 HAT KEINE EINZIGE STEIGUNG — die Rampen-Blätter werden nie gezeichnet, und wurden es nie.** `planMass` legt ein `ramp`-Stück nur für die Glyphen `/ \\ 1 2 3 4` an (`z` ist die Kreide-Rutsche, eigener Zweig). Über ALLE fünf Flächen gezählt — p1, p2, p3 und die Gitter p4/p9 aus `arena`/`bonus` — sind es **null**. Trotzdem listet `massStems` `mass_ramp_up`/`_down` bedingungslos, also liegen beide Platzhalter in allen fünf Phasen-Scopes und kosten Texturspeicher für ein Bild, das nicht vorkommen kann (gemessen über `phaseArtScope`: p1 21,76 · p2 25,03 · p3 20,36 · p4 20,58 · p9 13,93 MB — beide Platzhalter stecken in jeder dieser Zahlen). **⚠ Folge: der „graue Keil" auf Kokis `07.29.42` KANN nicht `mass_ramp_up` sein** — A6s Report §4 und der A6b-Passover schreiben ihn beide der Rampe zu; das ist eine Fehlzuordnung, und der Keil steht noch. | eigene Zählung über alle Flächen; `mass.ts` Steigungs-Zweig; `collide.ts#SLOPES` | p3s Rampe war importiert und verdrahtet und ist **wieder entfernt**. Rampen erst neu bestellen, wenn eine Fläche wirklich `/ \\ 1 2 3 4` trägt. Den Keil muss jemand am Schirm identifizieren. | Fable / nächste Kunst-Lane | A6b |
 | D-268 | **Die 16 Ecken bestehen das Tor und liegen trotzdem** — Urteil, keine Messung: die Aufgabe einer Ecke ist es, die Flanke um die Kurve zu tragen; eine gemalte Ecke an einer ungemalten Flanke ist Kokis „Lego-Blöcke nebeneinander", von uns selbst gebaut. Ecken kommen mit ihren Kanten. | §2 des Reports | offen zur Überstimmung durch Fable (eine Zeile) | Fable | A6b |
 | D-269 | **`krakel_a`/`krakel_active` sind LEBENDE Kunst** — der Auftrag „`krakel_*` löschen" wäre rot geworden: `artManifest.ts#GLYPH_STEMS` verlangt beide für jeden `C`-Glyph, `PaintScene.ts` zeichnet die Staffelei, `checkpoint-silence.test.ts:177` erwartet `pb-krakel_a`. Nur `krakel_b` hing an nichts. | `check-paint-art` | GELÖST: `krakel_b` gelöscht, tote Kunst 61 → 60, Decke bleibt 61 | A6b | A6b |
+
+## R5-W5 · DIE ZEHN ABSCHNITTE (Fable, 2026-08-16 spät) — vorab angelegt, damit die Welle-5-Sessions nicht am Datei-Ende kollidieren
+Jede Welle-5-Session trägt ihre Schulden NUR in ihren eigenen Abschnitt unten ein und vergibt NUR Nummern aus ihrem reservierten Block (Reservierung ist eine Prosa-Zeile, keine Tabellenzeile — `check-registers` zählt nur `| D-nnn |`-Zeilen). **PB-Nummern vergibt ausschließlich K4** (PB-81 ff.; die neun unnummerierten Fallen aus C3/D3b zuerst). Die drei 5b-Abschnitte (A7 · H4 · D4) bleiben leer, bis Codex AS5b/AQ13b/AQ13c/AQ14b/AQ17 liefert und der blinde Blatt-Prüfer sie durchlässt (R91/R110). Wer eine fremde Nummer braucht, schreibt sie in seinen Report — nie in einen fremden Abschnitt.
+
+## R5-W5 · K4 — Kanon-Sweep II (2026-08-16)
+
+Reserviert: D-270…D-279.
+
+| Nr. | Befund | Beleg | Fix | Wer/wann | Herkunft |
+|---|---|---|---|---|---|
+
+## R5-W5 · C4 — Farb-Import II (2026-08-16)
+
+Reserviert: D-280…D-289.
+
+| Nr. | Befund | Beleg | Fix | Wer/wann | Herkunft |
+|---|---|---|---|---|---|
+
+## R5-W5 · G4 — Uniform-Verdrahtung (2026-08-16)
+
+Reserviert: D-290…D-299.
+
+| Nr. | Befund | Beleg | Fix | Wer/wann | Herkunft |
+|---|---|---|---|---|---|
+
+## R5-W5 · B4b — Level II (2026-08-16)
+
+Reserviert: D-300…D-309.
+
+| Nr. | Befund | Beleg | Fix | Wer/wann | Herkunft |
+|---|---|---|---|---|---|
+
+## R5-W5 · F6 — Feel II (2026-08-16)
+
+Reserviert: D-310…D-319.
+
+| Nr. | Befund | Beleg | Fix | Wer/wann | Herkunft |
+|---|---|---|---|---|---|
+
+## R5-W5 · E6 — create()-Budget + Perf-Wahrheit (2026-08-16)
+
+Reserviert: D-320…D-329.
+
+| Nr. | Befund | Beleg | Fix | Wer/wann | Herkunft |
+|---|---|---|---|---|---|
+
+## R5-W5 · W4 — Werkzeug IV (2026-08-16)
+
+Reserviert: D-330…D-339.
+
+| Nr. | Befund | Beleg | Fix | Wer/wann | Herkunft |
+|---|---|---|---|---|---|
+
+## R5-W5 · A7 — Kanten III (AS5b-Import, Welle 5b) (2026-08-16)
+
+Reserviert: D-340…D-349.
+
+| Nr. | Befund | Beleg | Fix | Wer/wann | Herkunft |
+|---|---|---|---|---|---|
+
+## R5-W5 · H4 — Tafel III (AQ13b/AQ13c-Import, Welle 5b) (2026-08-16)
+
+Reserviert: D-350…D-359.
+
+| Nr. | Befund | Beleg | Fix | Wer/wann | Herkunft |
+|---|---|---|---|---|---|
+
+## R5-W5 · D4 — Karten III (AQ14b/AQ17-Import, Welle 5b) (2026-08-16)
+
+Reserviert: D-360…D-369.
+
+| Nr. | Befund | Beleg | Fix | Wer/wann | Herkunft |
+|---|---|---|---|---|---|
