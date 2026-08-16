@@ -430,33 +430,29 @@ const SHEETS = [
     ],
   },
   /**
-   * ── THE ONE CELL PAIR OF AS5 THAT SHIPS (R5-W4b · A6b) ─────────────────────
+   * ── WHY NOTHING FROM AS5 IS IMPORTED HERE (R5-W4b · A6b) ───────────────────
    * Batch AS5 delivered 94 cells. Run through this file's own gate
    * (`--verify`), 24 pass — sixteen corners and eight ramps — and every one of
    * the 64 cells that carries a tiling duty fails the same way: a join of
    * exactly 0.00 with a 5–57× jump one row behind a duplicated boundary. Not one
-   * exception in 64. The corners are held back with
-   * their edges (a corner's job is to carry the flank around the turn; painted
-   * corner + placeholder flank is the Lego complaint, built on purpose).
+   * exception in 64.
    *
-   * That leaves the ramps, and of the five only p3's survives the anchor
-   * question: the ramps are painted against their own room bodies, which are
-   * not shipping, while the body actually under them stays the shared paper.
-   * p3 is +8.9 over its own body and +7.76 over the shared one — inside the
-   * window in both worlds, so it cannot become wrong when AS5b lands.
-   * p2 +4.08 · p9 +4.77 · p4 +3.26 · p1 +3.27 against the paper really there.
+   * Of the 24 that pass, none ships, for two different reasons:
    *
-   * `anchorStems` is what makes that judgement machine-made rather than a
-   * sentence: the window is measured off the sheets this ramp will lie against.
+   *   CORNERS — a corner's job is to carry the flank around the turn. A painted
+   *   corner against an unpainted flank is Koki's "Lego-Blöcke nebeneinander",
+   *   built on purpose. Corners ship with their edges.
+   *
+   *   RAMPS — p3's was measured correct against the body it would really lie on
+   *   (+7.76 over the shared paper, +8.9 over its own) and WAS imported and
+   *   wired, then removed: ch01 contains ZERO slope glyphs on any of its five
+   *   surfaces, so `planMass` never plans a ramp piece and no ramp sheet is ever
+   *   drawn. Painted ramps are texture memory for a picture that cannot appear.
+   *   Do not re-order ramps until a surface actually carries `/ \ 1 2 3 4`.
+   *
+   * `opt.anchorStems` below stays: it is what made the ramp judgement machine-
+   * made rather than a sentence, and AS5b's trims will need it.
    */
-  {
-    file: "batch-as5/mass_ramps_p3.png", cols: 4, rows: 1, mode: "keyed",
-    pieces: [
-      [0, "mass_ramp_p3_up", { box: [26, 119, 486, 511], aboveBody: [6, 12], anchorStems: ["mass_body_a", "mass_body_b"], alpha: 0.45 }],
-      [1, "mass_ramp_p3_down", { box: [538, 119, 998, 511], aboveBody: [6, 12], anchorStems: ["mass_body_a", "mass_body_b"], alpha: 0.45 }],
-      // cells 2/3 are the declared reserve — empty on every ramp sheet
-    ],
-  },
 ];
 
 /**

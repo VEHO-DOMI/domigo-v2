@@ -705,52 +705,28 @@ const paintedTrims = (phase: string): Pick<MassKit, "edgeL" | "edgeR" | "cornerB
 });
 
 /**
- * ── RAMPS ARE THEIR OWN SWITCH, NOT PART OF THE TRIMS (R5-W4b · A6b) ─────────
- * Batch AS5 delivered ramps and edges on separate sheets, and they landed in
- * opposite states: measured against the gate (`import-batch-as.mjs --verify`),
- * every side and underside cell hides its seam — a join of exactly 0.00 with a
- * 5–57× jump one row behind the duplicated boundary — while the ramps carry no
- * tiling duty at all and sit inside the trim window in all four rooms
- * (p2 +7.0 · p3 +8.9 · p4 +6.6 · p9 +8.4).
+ * ── THE RAMPS ARE NOT DRAWN AT ALL, AND NEVER HAVE BEEN (R5-W4b · A6b) ──────
+ * This round set out to give four rooms a painted ramp. Batch AS5 delivered
+ * them, eight of its cells passed the import gate, and one — p3's — was even
+ * correct against the body it would really lie on. It was imported, wired behind
+ * a `PAINTED_RAMP_PHASES` switch, and then taken out again, because of a
+ * question nobody in this lane had asked:
  *
- * So the ramps could ship and the flanks could not, and folding them into
- * `PAINTED_TRIM_PHASES` would have meant shipping neither. Hence a second set.
+ *   `planMass` pushes a `ramp` piece only for the slope glyphs `/ \ 1 2 3 4`
+ *   (`z` is the chalk slide and is handled by its own branch). Counted across
+ *   EVERY surface of ch01 — p1, p2, p3 and the arena/bonus grids p4, p9 —
+ *   there are ZERO such glyphs. Not few: none.
  *
- * ── AND WHY THE CORNERS ARE NOT HERE, THOUGH THEY ALSO PASS ─────────────────
- * All sixteen corner cells pass too — they are stretched one-shot pieces with no
- * seam to close. They are held back anyway, and the reason is not a measurement:
- * a corner's entire job is to carry the flank around the turn. A painted corner
- * meeting an unpainted flank is Koki's own complaint — "Lego-Blöcke nebeneinander"
- * — manufactured on purpose. A ramp has no such partner: it is a slope object
- * that replaces a grey wedge, and it reads alone. Corners ship with their edges.
+ * So no ramp piece is ever planned, `mass_ramp_up`/`_down` are never drawn, and
+ * a painted ramp would have been texture memory spent on a picture that cannot
+ * appear. `massStems` lists them unconditionally, so both placeholders ARE
+ * loaded into all five phase scopes today, paying for nothing (D-267).
  *
- * ── AND WHY ONLY p3, THOUGH FOUR ROOMS' RAMPS PASS THE DELIVERY GATE ────────
- * This is the finding that decided the set, and it is not visible from the
- * Lieferschein at all. AS5's ramps are each painted +6…+12 over THEIR OWN room
- * body — correct as a kit, and `--verify` scores all four green on that basis.
- * But those bodies are exactly the sheets that fail the tiling gate, so they are
- * not going on screen. What IS under a ramp today is the SHARED warm book paper
- * (`mass_body_a/b`, 46.60 %), and against that the same four ramps read:
- *
- *   p3 +7.76  ✓        p9 +4.77  ✗
- *   p2 +4.08  ✗        p4 +3.26  ✗   (p1 +3.27 against its own body ✗)
- *
- * A trim is a claim about the surface it is cut into, so the anchor has to be
- * the body the child actually sees. Only p3's ramp is inside the window in BOTH
- * worlds — against today's shared paper and against its own body when AS5b
- * lands — so it is the only one that cannot become wrong later.
- *
- * That it is p3 is luck worth naming: the Schulhof-Garten is the room in Koki's
- * `07.29.42`, the screenshot the grey wedge was reported from.
+ * ⚠ The corollary matters more than the ramps: the "grey wedge" in Koki's
+ * `07.29.42`, which A6's report and this round's brief both attribute to
+ * `mass_ramp_up`, CANNOT be that sheet. Whatever he photographed is something
+ * else, and it is still there. Report §2.
  */
-const PAINTED_RAMP_PHASES = new Set(["p3"]);
-
-const paintedRamps = (phase: string): Pick<MassKit, "rampUp" | "rampDown"> => ({
-  rampUp: `mass_ramp_${phase}_up`,
-  rampDown: `mass_ramp_${phase}_down`,
-});
-
-/** the shared placeholder wedge — still p1's, and still the grey one in `07.29.42` */
 const sharedRamps = (): Pick<MassKit, "rampUp" | "rampDown"> => ({
   rampUp: "mass_ramp_up",
   rampDown: "mass_ramp_down",
@@ -770,7 +746,7 @@ const sharedMass = (phase: string): Omit<MassKit, "crust" | "crustCapL" | "crust
   ...(PAINTED_MASS_PHASES.has(phase) ? paintedInterior(phase) : sharedInterior()),
   ...(PAINTED_TRIM_PHASES.has(phase) ? paintedTrims(phase) : sharedTrims()),
   trimShade: TRIM_SHADE_BY_PHASE[phase],
-  ...(PAINTED_RAMP_PHASES.has(phase) ? paintedRamps(phase) : sharedRamps()),
+  ...sharedRamps(),
   platObjects: PLAT_OBJECTS[phase] ?? PLAT_OBJECTS.p1 ?? [],
 });
 
