@@ -623,13 +623,42 @@ describe("R5-W4 · D3 · the caption, the focus and the edge slot", () => {
     expect(Math.max(...alphas), "the world is switched off entirely").toBeLessThan(1);
   });
 
-  it("the painted-edge slot is present and inert until the sheet lands (R63)", () => {
+  it("the painted-edge slot carries the MEASURED numbers and stays inert until a sheet is judged good (R63)", () => {
+    // R5-W4b · D3b: the sheet (AQ11, variant b) is imported and in the repo, and
+    // the slot is still switched off — a blind critic put the built edge beside
+    // the ink border and chose the INK: the tiled crayon line read as „ein dicht
+    // wiederholtes Rillenmuster mit sichtbarer Nahtstelle". An honest stop.
+    //
+    // What this law protects is the MEASUREMENT, not the state. Three rounds
+    // established that the line runs down the middle of a 96 px slice, that the
+    // importer must therefore trim 44 px, and that slice/width/outset are then
+    // 52/52/0. Losing those numbers would cost the next attempt the same three
+    // rounds, so they are pinned here rather than left in a report.
     const card = baseRule(PAINT_OVERLAY_CSS, "pb-card");
     expect(card).toContain("--pb-edge-image: none");
     expect(PAINT_OVERLAY_CSS).toContain("border-image-source: var(--pb-edge-image)");
-    // inert means inert: while the token is none, the hand-weighted border is
-    // still what draws, so the four different widths must survive untouched
+    expect(card, "the measured slice was lost").toMatch(/--pb-edge-slice:\s*52\b/);
+    const w = /--pb-edge-w:\s*(\d+(?:\.\d+)?)px/.exec(card);
+    expect(w, "the explicit edge width was lost — inheriting the ink border squeezes a 52 px strip into 4").not.toBeNull();
+    expect(Number(w![1]), "the width no longer matches the trimmed sheet's slice").toBe(52);
+    expect(card, "the outset was lost — anything but 0 uncovers the card's own shadow stack").toMatch(/--pb-edge-out:\s*0px/);
+    expect(PAINT_OVERLAY_CSS).toContain("border-image-width: var(--pb-edge-w)");
+    // inert means inert: the hand-weighted border is what draws, and it is what
+    // the critic preferred — its four different widths must survive untouched
     expect(card, "the hand lost its four widths").toMatch(/border-width:\s*calc/);
+  });
+
+  it("a child on an expensive connection gets the ink edge instead of the sheet (R63)", () => {
+    // The fallback was promised with the slot and is the reason the whole look
+    // hangs on ONE token. A rule that sets it back to »none« under
+    // prefers-reduced-data is the entire mechanism — and it must sit before the
+    // reduced-motion block at the end of the file (P-78).
+    const data = /@media \(prefers-reduced-data: reduce\) \{([\s\S]*?)\n\}/.exec(PAINT_OVERLAY_CSS);
+    expect(data, "no reduced-data fallback for the painted edge").not.toBeNull();
+    expect(data![1]).toContain("--pb-edge-image: none");
+    const iData = PAINT_OVERLAY_CSS.indexOf("@media (prefers-reduced-data");
+    const iMotion = PAINT_OVERLAY_CSS.indexOf("@media (prefers-reduced-motion");
+    expect(iData, "the reduced-data block fell behind the reduced-motion block (P-78)").toBeLessThan(iMotion);
   });
 
   it("the sheets under the card are countable — two of them, each with its own edge (R62)", () => {

@@ -332,6 +332,22 @@ export const PAINT_OVERLAY_CSS = `
      this block is why that deferral costs nothing. */
   --pb-paper: #fff2cd;
   --pb-paper-lit: #fffaea;
+  /* ── R5-W4b · D3b · D-210 · R89 · THE ANSWER BUTTON GETS ITS OWN PAPER ──────
+     Two blind critics on D3a's card independently named the same biggest fault:
+     the answer chips are a shade of the paper they lie on, so they hang on their
+     ink edge and their lip alone. Measured on the tokens: #fffaea on #fff2cd is
+     1,068 : 1.
+
+     The direction the old chip was reaching for cannot get there. Pure WHITE on
+     this paper is 1,115 : 1 — so no lighter chip can ever meet Koki's 1,3 : 1,
+     and the fix is not a brighter chip but a chip made of a DARKER sheet. This
+     one is 1,349 : 1 against the paper and still carries the card's ink at
+     8,4 : 1, i.e. the text got no harder to read while the shape got findable.
+
+     Its own name rather than »--pb-paper-lit«: a button is not lit paper, and
+     the next hand to brighten the paper family should not silently un-fix
+     this. */
+  --pb-btn-face: #e9ca80;
   --pb-seal: #ffd98a;
   --pb-ink: #6b3f18;
   /* the same pen as channels, for the two surfaces that need it at a strength
@@ -373,9 +389,38 @@ export const PAINT_OVERLAY_CSS = `
 
      This is where it lands. While the token is »none« the rule below is inert
      and the hand-weighted border above is what draws — so this ships today
-     changing nothing, and the day the sheet arrives it is one token. */
+     changing nothing, and the day the sheet arrives it is one token.
+
+     ── R5-W4b · D3b · DAS BLATT IST DA, DER SCHALTER BLEIBT AUS ──────────────
+     AQ11 liegt importiert und geprüft im Repo (»art/g1/cards/card_edge_a.png«,
+     Variante b: ihr dunkelster Punkt trifft #6b3f18). Eingeschaltet wird sie
+     trotzdem nicht — ein blinder Kritiker hat die eingebaute Kante gegen die
+     heutige Tuschekante gestellt und die TUSCHEKANTE gewählt, mit Fundstellen:
+     die gekachelte Wachslinie liest sich als »dicht wiederholtes Rillenmuster
+     mit sichtbarer Nahtstelle«, während die Tuschekante an allen vier Ecken
+     bündig schließt. Drei Anläufe, drei Messungen, ein ehrlicher Halt.
+
+     WAS DIE DREI ANLÄUFE GEMESSEN HABEN — damit der nächste nicht bei null
+     anfängt, sondern bei diesen Zahlen:
+      · Die Wachslinie läuft MITTIG im 96-px-Streifen (y = 46…51, 6 px dick).
+        Ohne Überstand landet sie 48 px INNEN, mit Überstand 48 px liegt sie auf
+        der Kante — deckt dann aber den Schatten-Stapel der Karte auf, was am
+        Schirm wie abgebrochene Ecken aussieht.
+      · Der Importeur schneidet deshalb 44 px ringsum ab; die Linie sitzt danach
+        am äußeren Rand ihres Streifens, Slice und Breite sind 52, Überstand 0.
+      · Was BLEIBT und nicht durch Zahlen zu heilen ist: der wiederholbare
+        Streifen trägt seine Wachs-Lücke an einer FESTEN Stelle, also kehrt sie
+        bei jeder Kachel wieder — ein Stempel, kein Zufall. Das ist eine
+        Eigenschaft des Blattes und gehört in die Nachbestellung (AQ11b), nicht
+        in dieses Stylesheet.
+
+     Bis dahin zeichnet die von Hand gewichtete Tuschekante oben, und dieser
+     Block ist wieder das, was er in D3a war: ein Steckplatz mit einem Token —
+     nur dass die drei Zahlen daneben jetzt gemessen sind statt geraten. */
   --pb-edge-image: none;
-  --pb-edge-slice: 42;
+  --pb-edge-slice: 52;
+  --pb-edge-w: 52px;
+  --pb-edge-out: 0px;
 
   position: relative;
   /* ── R5-W3 · J2 · D-52 · THE CARD NEVER OUTGROWS ITS VEIL ─────────────────
@@ -490,8 +535,28 @@ export const PAINT_OVERLAY_CSS = `
 .pb-card {
   border-image-source: var(--pb-edge-image);
   border-image-slice: var(--pb-edge-slice);
-  border-image-width: 1;
+  border-image-width: var(--pb-edge-w);
   border-image-repeat: round;
+  /* Die gemalte Kante liegt AUF dem Rahmenkasten, also greift sie über das
+     Papier hinaus nach innen. »border-image-outset« bleibt bewusst bei 0: die
+     Karte hat eine gemessene Höhenkappe (D-52), und eine Kante, die nach außen
+     tritt, würde sie am Schleier beschneiden. */
+  border-image-outset: var(--pb-edge-out);
+}
+
+/* ── R5-W4b · D3b · DIE PAPIERKANTE ALS RÜCKFALL ──────────────────────────────
+   Zugesagt war ein Rückfall für Kinder, die auf einer teuren Leitung spielen —
+   »prefers-reduced-data« ist die Bitte des Browsers, keine Bytes zu holen, die
+   nicht sein müssen. Ein 58-kB-Blatt für eine Zierkante ist genau so ein Byte.
+   Der Token geht zurück auf »none«, und weil das gesamte Aussehen der Kante an
+   diesem einen Token hängt, zeichnet dann wieder die von Hand gewichtete
+   Tuschekante von D3a — dieselbe Karte, nur ohne Wachs.
+   Die Regel steht VOR dem reduced-motion-Block am Dateiende (P-78: nie ein
+   zweiter solcher Block, und keine Regel dahinter). */
+@media (prefers-reduced-data: reduce) {
+  .pb-card {
+    --pb-edge-image: none;
+  }
 }
 
 /* R5-W1 · D1 — THE PAGE, not a panel. Blind critic on the exemplar: „a
@@ -603,9 +668,14 @@ export const PAINT_OVERLAY_CSS = `
    that presses in under the finger. The inline styles that build these buttons
    keep only their LAYOUT, so this is the single place their look lives. */
 .pb-card button, .pb-card .pb-chip {
-  background-color: var(--pb-paper-lit);
+  background-color: var(--pb-btn-face);
   background-image:
-    radial-gradient(120% 100% at 28% 0%, rgba(255,255,255,0.9), rgba(255,255,255,0) 68%),
+    /* R5-W4b · D3b · D-210: the white wash that lights the top-left corner used
+       to run at 0,9 — nearly opaque white over most of the chip's face, which is
+       how a chip made of paper one shade off the card ended up reading as the
+       card. It is a HIGHLIGHT now, not a coat: the corner still catches, the
+       body keeps the darker sheet the contrast is measured on. */
+    radial-gradient(120% 100% at 28% 0%, rgba(255,255,255,0.22), rgba(255,255,255,0) 62%),
     radial-gradient(70% 60% at 84% 100%, rgba(176,142,88,0.16), rgba(176,142,88,0) 70%),
     repeating-linear-gradient(97deg, rgba(146,114,64,0.035) 0 1px, rgba(146,114,64,0) 1px 19px);
   border: var(--pb-ink-w-chip) solid var(--pb-ink);
@@ -1257,6 +1327,24 @@ export const PAINT_OVERLAY_CSS = `
 .pb-hud-chip-btn:hover { transform: translateY(-1px); box-shadow: 0 3px 9px rgba(60, 42, 16, 0.26); }
 .pb-hud-chip-btn:focus-visible { outline: 3px solid #d99a3c; outline-offset: 2px; }
 
+/* ── R5-W4b · D3b · D-209 · THE BAR STEPS BACK TOO ────────────────────────────
+   Koki's words for the focus mode were „alles andere ausgeblendet", and D3a's
+   veil only reached the STAGE: the counters live on the page above it, so a
+   card opened into a darkened world with a bright row of chips still lit over
+   it — the one bit of the screen the focus mode could not reach was the one bit
+   made of numbers, which is exactly what pulls an eye.
+
+   It is applied to the ROW, not to a chip: a chip that dimmed itself would
+   still leave the phase name beside it burning, and every future chip would
+   have to remember to opt in. Ink rather than opacity alone — a chip at low
+   alpha over a light page turns into a pale smudge, while draining its colour
+   first lets it read as „set down" rather than „half erased". */
+.pb-hud-dim {
+  opacity: 0.26;
+  filter: grayscale(0.85) brightness(0.86);
+  transition: opacity 260ms ease-out, filter 260ms ease-out;
+}
+
 /* DIE MERKSEITE — the collected rules, and the gaps where the rest still are */
 .pb-merk-list { display: grid; gap: 9px; margin: 8px 0 4px; }
 .pb-merk-slot {
@@ -1468,7 +1556,7 @@ export const PAINT_OVERLAY_CSS = `
      moving under reduced motion the whole time — declared in the PR, not fixed
      quietly. (No backticks in here: this whole stylesheet is one template
      literal, and a backtick ends it.) */
-  .pb-card button, .pb-card .pb-chip, .pb-hud-chip-btn, .pb-help-body {
+  .pb-card button, .pb-card .pb-chip, .pb-hud-chip-btn, .pb-help-body, .pb-hud-dim {
     transition: none !important;
   }
 }

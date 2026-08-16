@@ -137,6 +137,18 @@ export const domArtStems = (level: ScopeLevel): Set<string> => {
   // without this claim, so I2 takes ONE additive line here — declared in the PR
   // and flagged to D3. Both edits append; a rebase resolves by keeping both.
   for (const s of ["merkseite_page", "merkseite_stub", "merkseite_seal"]) out.add(s);
+  // R5-W4b · D3b · R54: the ceremony's own motif — the freed occupant, drawn
+  // WITHOUT the cage (`freeCellsFor` in cards/CardShell.tsx). The first three
+  // were DEAD_ART group A („bezahlt, unverdrahtet") since AQ6 and are rendered
+  // now. `klassenfoto_a` is the class photo's DOM-side sheet, still at the
+  // painter (AQ14 was sent back by a blind sheet check this session) — declared
+  // anyway, because a claim on a stem that has not landed costs nothing and
+  // says what this layer will draw. Until it does, the picture cage falls to
+  // `obj_picture`, which the world's victory tract already claims; `merle_a` is
+  // likewise a world skin. Neither adds art — both add honesty about who draws
+  // them. Claimed, not required: the chain degrades to the caged sheet and then
+  // to the drawn mark, so no card hangs on a file.
+  for (const s of ["obj_soundsystem", "obj_tablet", "obj_chair", "klassenfoto_a", "obj_picture", "merle_a"]) out.add(s);
   for (const s of ALWAYS_STEMS) out.add(s);
   return out;
 };

@@ -109,6 +109,17 @@ export default function CardGallery({ level, art, tasks, Overlay, which }: Galle
   const doorEntity = [...level.phases, ...(level.arena ? [level.arena] : [])]
     .flatMap((p) => p.entities)
     .find((e) => e.params?.price !== undefined);
+  // R5-W4b · D3b · D-206: the cage the Käfig surface photographs, and the card
+  // that belongs to it. The ENTITY is picked first and the task is found by its
+  // key, so the panel can never show one cage's shell with another cage's
+  // occupant behind it — the exact confusion the occupant layer exists to end.
+  const cageEntity = [...level.phases, ...(level.arena ? [level.arena] : [])]
+    .flatMap((p) => p.entities)
+    .find((e) => e.role === "cage" && typeof e.params?.captive === "string");
+  const cageCaptive = cageEntity === undefined ? undefined : String(cageEntity.params?.captive);
+  const cageTask = cageCaptive === undefined
+    ? undefined
+    : tasks.find((t) => t.use === "rescue" && t.id.includes(cageCaptive));
 
   // R5-W4 · W2 · D-103: aus dem LEVEL abgeleitet, nicht getippt. Die alten
   // Literale sagten 6 Käfige und 1 Bonusbuch; das Kapitel hält 5 und 3 — der
@@ -188,6 +199,15 @@ export default function CardGallery({ level, art, tasks, Overlay, which }: Galle
     // reawakening round counter above it
     card("choice-hints", "choice · Hinweis-Ebene", byKind("choice"), { round: { n: 3, of: 6 } },
       "Hinweise erscheinen erst nach Fehlversuchen — im Bench über die Runden-Zeile sichtbar gemacht"),
+    // R5-W4b · D3b · D-206 · DIE KÄFIG-KARTE HAT JETZT EINE FLÄCHE.
+    // D3a baute das Insassen-Portrait (Käfig-Hülle + Insasse dahinter) und
+    // konnte es nirgends fotografieren: die Bank kannte keine Käfig-Karte, also
+    // ist die einzige bildgetragene Neuerung der Runde ungeprüft geblieben.
+    // Karte UND Insasse werden aus dem Kapitel abgeleitet und über den
+    // Schlüssel aneinandergebunden (W2s D-103: was die Bank tippt, kann sie
+    // falsch tippen) — findet sich kein Paar, sagt die Fläche das laut.
+    card("kaefig", "Käfig · Insasse im Portrait", cageTask, { captive: cageCaptive },
+      "das Portrait zeigt die Käfig-Hülle mit dem Insassen dahinter (R54)"),
     // ── the eleven ceremony panels ─────────────────────────────────────────
     // R5-W2 · J1-B · the opening's four beats, each photographable on its own.
     // `goal` keeps its id: it is the address the bench has always used for beat 1.
@@ -210,13 +230,19 @@ export default function CardGallery({ level, art, tasks, Overlay, which }: Galle
     // interpolation in the GAME; it was the bench handing the panel a captive
     // with no name (the old `classmate` field). The level law „cage-captive"
     // makes that state unreachable in play — the bench had invented it.
+    // R5-W4b · D3b · R54: …and the OCCUPANT's key, which the payload grew this
+    // wave. Without it the bench would photograph the fallback mark and a critic
+    // would judge the one thing the panel is not: the ceremony draws who came
+    // out of the cage, and these two fixtures are how that gets reviewed. Both
+    // values are the level's own („merle" is the classmate the person-cage
+    // names, „soundsystem" the captive key the p3 cage carries).
     ceremony("ceremony-merle", "Rettung · Klassenkind", {
       card: "ceremony",
-      ceremony: { skin: "satchel", captiveDe: "Merle", person: true, first: true },
+      ceremony: { skin: "satchel", captiveDe: "Merle", person: true, first: true, captive: "merle" },
     }, "Personen-Käfig — die Klassenkameradin"),
     ceremony("ceremony-wisp", "Rettung · Ding", {
       card: "ceremony",
-      ceremony: { skin: "satchel", captiveDe: "die Musikanlage", person: false, first: false },
+      ceremony: { skin: "satchel", captiveDe: "die Musikanlage", person: false, first: false, captive: "soundsystem" },
     }, "Objekt-Käfig — ch01 hält vier davon", "p3"),
     ceremony("console", "Trost-Karte", { card: "console", typed: "hello" }, undefined, "p4"),
     // R5-W1 · D2: the payload the SHIPPED card takes, not the one the bench
