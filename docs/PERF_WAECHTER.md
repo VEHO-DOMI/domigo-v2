@@ -29,18 +29,22 @@ schreibt die `?perf=1`-Zahlen für ALLE fünf Phasen **vorher/nachher** in ihren
 | Phase-Assets (artScope) | ≤ 35 MB | `artScope.test.ts` — **CI** |
 | Bundle (je Nicht-Phaser-Brocken, gzip) | ≤ 150 KB | `check-game-bundle.mjs` — **CI** |
 | Phaser in EINEM faulen Brocken (gzip) | ≤ 400 KB | `check-game-bundle.mjs` — **CI** |
-| Kunst, die niemand lädt | ≤ 57 Blätter | `check-paint-art.mjs` — **CI** |
+| Kunst, die niemand lädt | ≤ 53 Blätter | `check-paint-art.mjs` — **CI** |
 
-**Zur letzten Zeile (R90, R5-W4b · W3).** Die Tot-Kunst-Decke hat seit dieser Runde
-**einen** Eigentümer. Vier Berichte der Welle 4 nannten drei verschiedene Zahlen
-(61 / 60 / 58), weil jede Bahn, die Kunst verdrahtet oder löscht, den Stapel senkt,
-ohne die Decke zu berühren — am Ende wusste niemand mehr, was sie IST.
-**Gemessen 2026-08-16 nach Welle 4b: 57 Blätter / 37,2 MB** (`check-perf-budget.mjs`,
-Stand `3daaf47`). Die Decke steht auf dem Messwert, **ohne Luft**: eine Decke über der
-Wirklichkeit verliert genau die Warnung, für die sie gebaut wurde (D-193). Wer Blätter
-hinzufügt, hebt sie **im selben PR, mit einem Grund, den ein Prüfer liest**; wer
-Blätter verdrahtet oder löscht, **senkt sie im selben PR** — jeder Lauf sagt die
-verbliebene Luft laut an.
+**Zur letzten Zeile (R90, R5-W4b · W3; R104, Hotfix nach dem Zug).** Die Tot-Kunst-Decke
+hat seit dieser Runde **einen** Eigentümer. Vier Berichte der Welle 4 nannten drei
+verschiedene Zahlen (61 / 60 / 58), weil jede Bahn, die Kunst verdrahtet oder löscht, den
+Stapel senkt, ohne die Decke zu berühren — am Ende wusste niemand mehr, was sie IST.
+**Gemessen 2026-08-16 NACH dem letzten Merge der Welle 4b: 53 Blätter / 36,2 MB**
+(`check-perf-budget.mjs`, Stand `ae0dd42`). W3 hatte auf seiner eigenen Basis `3daaf47`
+57 Blätter / 37,2 MB gemessen; die fünf davor gemergten PRs senkten den Stapel um vier
+(A6b löschte `krakel_b`, D3b verdrahtete `obj_chair`/`obj_soundsystem`/`obj_tablet`) —
+deshalb setzt der Eigentümer die Decke **nach** dem letzten Merge einer Welle, nie
+parallel dazu (R104). Die Decke steht auf dem Messwert, **ohne Luft**: eine Decke über
+der Wirklichkeit verliert genau die Warnung, für die sie gebaut wurde (D-193). Wer
+Blätter hinzufügt, hebt sie **im selben PR, mit einem Grund, den ein Prüfer liest**; wer
+Blätter verdrahtet oder löscht, **senkt sie im selben PR um sein eigenes Delta** — jeder
+Lauf sagt die verbliebene Luft laut an, und der Post-Zug-Eigentümer misst neu.
 
 Budget gerissen → **erst optimieren**; geht es nicht ohne Qualitätsverlust →
 **LADEBILDSCHIRM, nie Ruckler**. Der Ladebildschirm existiert seit R5-W3 · E5

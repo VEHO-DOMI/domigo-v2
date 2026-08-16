@@ -46,14 +46,22 @@ const fail = (msg) => {
 //
 // R5-W4b · W3 · ZWEITER BIEGE-FALL (R90). Der erste bog ein Budget gegen das
 // DOKUMENT — er beweist die Zitat-Prüfung, nicht den Vergleich mit der Wirklichkeit.
-// Für die Tot-Kunst-Decke ist aber genau der Vergleich das Gesetz. Also wird sie um
-// EINS gesenkt: dann liegt der wirklich gemessene Stapel um ein Blatt darüber, und
-// `dead.length > deadLimit` MUSS anschlagen. Ein Selbsttest, der nur die eine Hälfte
-// des Tores kitzelt, lässt die andere blind.
+// Für die Tot-Kunst-Decke ist aber genau der Vergleich das Gesetz. Also wird sie
+// unter den GEMESSENEN Stapel gesenkt, und `dead.length > deadLimit` MUSS anschlagen.
+// Ein Selbsttest, der nur die eine Hälfte des Tores kitzelt, lässt die andere blind.
+//
+// R5-W4b · HOTFIX nach dem Merge-Zug (R104, P-71). Die erste Fassung bog die Decke um
+// EINS unter den KONFIGURIERTEN Wert (57 → 56) und setzte damit stillschweigend voraus,
+// dass Decke und Messwert gleich sind. Genau das war nach dem Zug nicht mehr wahr: fünf
+// PRs vor W3 hatten den Stapel auf 53 gesenkt, 53 > 56 ist falsch, der Wirklichkeits-
+// Zweig blieb stumm — und main wurde rot, obwohl jeder PR für sich grün war. Ein Tamper,
+// der eine Invariante voraussetzt, die eine andere Bahn im selben Zug brechen kann, ist
+// kein Tamper. Deshalb wird die Decke jetzt ERST NACH der Messung gebogen, auf
+// `gemessen − 1` (siehe `deadLimit` unten) — dann feuert der Zweig bei jedem Stapel,
+// gleichgültig wie viel Luft die Konfiguration gerade hat.
 const budgets = selftest
   ? BUDGETS.map((b) => {
     if (b.key === "PHASE_ART_MB") return { ...b, limit: b.limit + 7 };
-    if (b.key === "DEAD_ART_CEILING") return { ...b, limit: b.limit - 1 };
     return b;
   })
   : BUDGETS;
@@ -154,13 +162,17 @@ for (const { level } of levels) {
   }
 }
 
-const deadLimit = budgets.find((b) => b.key === "DEAD_ART_CEILING")?.limit ?? Infinity;
+const deadCeiling = budgets.find((b) => b.key === "DEAD_ART_CEILING")?.limit ?? Infinity;
 const claimed = new Set();
 for (const { level } of levels) {
   for (const ph of allScopePhases(level)) for (const s of phaseArtScope(level, ph.id, present)) claimed.add(s);
   for (const s of domArtStems(level)) claimed.add(s);
 }
 const dead = [...present].filter((s) => !claimed.has(s));
+// SELFTEST (R104/P-71): die Decke wird erst JETZT gebogen — unter den wirklich gemessenen
+// Stapel, nicht unter den konfigurierten Wert. So feuert `dead.length > deadLimit` bei
+// jedem Stapel ≥ 0, ganz gleich, wie viel Luft die Konfiguration gerade hat.
+const deadLimit = selftest ? Math.min(deadCeiling, dead.length - 1) : deadCeiling;
 // R90 · W3: die Decke gehört EINEM Eigentümer und steht auf dem Messwert, ohne Luft.
 // Luft ist der Defekt, den D-193 beschreibt: eine Decke ÜBER der Wirklichkeit verliert
 // genau die Warnung, für die sie gebaut wurde. Sie wird deshalb bei jedem Lauf
