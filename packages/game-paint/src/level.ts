@@ -1612,7 +1612,15 @@ const runLineBelow = (rows: readonly string[], c: number, r: number): number => 
   const width = rows[0]?.length ?? 0;
   let line = r;
   for (let cc = Math.max(0, c - 5); cc <= Math.min(width - 1, c + 5); cc++) {
-    for (let rr = r; rr < rows.length; rr++) if (standable(rows, cc, rr)) line = Math.max(line, rr);
+    // `standable` alone is not enough here, and the shipped chapter proved it:
+    // the SURFACE OF AN INK POOL passes it (a cell with something solid under it
+    // and headroom above), so a piece lying beside a pool measured as though the
+    // pool floor were its run line — p3's socks came out „5 tiles up" while lying
+    // flat on the ground next to the pond. A run line is somewhere a child can
+    // actually stand, and ink is the one place they cannot.
+    for (let rr = r; rr < rows.length; rr++) {
+      if (standable(rows, cc, rr) && !submerged(rows, cc, rr)) line = Math.max(line, rr);
+    }
   }
   return line;
 };
