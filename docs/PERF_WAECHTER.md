@@ -46,6 +46,28 @@ Blätter hinzufügt, hebt sie **im selben PR, mit einem Grund, den ein Prüfer l
 Blätter verdrahtet oder löscht, **senkt sie im selben PR um sein eigenes Delta** — jeder
 Lauf sagt die verbliebene Luft laut an, und der Post-Zug-Eigentümer misst neu.
 
+**Der Post-Zug-Handgriff (R104, W4 — dieser Absatz gehört der Werkzeug-Bahn).** Die
+letzte Bahn einer Welle mergt zuletzt und macht davor drei Handgriffe, in dieser
+Reihenfolge und erst, wenn alle Vorgänger auf `origin/main` stehen: (1) Tot-Kunst neu
+messen und die Decke plus die Zeile in der Tabelle oben plus die Register-Zeilen auf den
+**gemessenen** Wert setzen — nie auf den erinnerten; (2) die datierten Ausnahmen des
+Naht-Wächters prüfen (`check-png-seams.mjs` meldet »schal« und »gesprengt« selbst) und
+das Ergebnis in den PR schreiben, ohne das Datum still zu verlängern (R106); (3) den
+Perf-Nachher-Lauf der Welle fahren und seine Tabelle in den PR setzen. Der Selbsttest des
+Budget-Tores wird dabei **gelaufen, nicht angefasst**: er tampert seit dem Hotfix gegen
+den MESSWERT, nicht gegen die Konfiguration (P-71), und genau diese Eigenschaft ist es,
+die eine Bahn ihm nicht nebenbei wegnehmen darf.
+
+**Was eine EINZELNE Perf-Messreihe nicht trägt (W4, 2026-08-17, D-335).** Drei Läufe von
+`harvest-perf.mjs` mit gültiger Kontrollseite (61,8 fps, sichtbar) zeigen auf **demselben
+Baum** p9 GL-Texturen 259 gegen 86, p2 75 gegen 191 und p4 Heap 94,8 gegen 167,5 MB; die
+Bildrate schwankt je Phase um 5 bis 11. Der Sammler geht alle fünf Phasen in EINER
+Browser-Sitzung durch, und was aus einer vorher besuchten Phase noch im Speicher liegt,
+steht in der nächsten Zeile. Für **CPU je Bild** sind die Zahlen brauchbar; für
+**Texturen und Heap** trägt ein Vorher/Nachher aus je einem Lauf keine Aussage, und ein
+PR, der daraus ein Urteil ableitet, behauptet mehr, als er gemessen hat. Wer diese
+Spalten braucht, misst je Phase in einer frischen Sitzung oder nennt die Streuung mit.
+
 Budget gerissen → **erst optimieren**; geht es nicht ohne Qualitätsverlust →
 **LADEBILDSCHIRM, nie Ruckler**. Der Ladebildschirm existiert seit R5-W3 · E5
 (`.pb-building`, `PaintCallbacks.onReady`).
