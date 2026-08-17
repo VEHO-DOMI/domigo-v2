@@ -13,7 +13,40 @@
 // ein Abbruch. Verglichen werden die BILDPUNKTE, nicht die Bytes: eine kleinere
 // Datei mit identischen Bildpunkten ist genau das Ziel.
 //
-// Run: node scripts/check-png-identity.mjs [--ref <git-ref>]
+// ── R5-W5 · W4 · D-257 + D-98: DER ECHTE LAUF IN CI ─────────────────────────
+//
+// In ci.yml stand von diesem Skript nur die `--selftest`-Zeile. Es hat dort auf
+// jedem Lauf sein rotes Licht bewiesen und nie eine echte Datei angesehen —
+// verteidigbar (im frischen Checkout ist `git diff HEAD` leer), aber es war das
+// einzige Tor der Liste, dessen Rumpf in CI nie lief.
+//
+// Der Grund, warum ein blanker Lauf gegen die Basis NICHT geht: eine
+// Import-Runde malt Blätter ABSICHTLICH neu. „Kein Bildpunkt darf sich gegenüber
+// main ändern" wäre kein Tor, sondern ein Verbot von Kunst.
+//
+// Also läuft in CI genau die Klasse, die D-98 gemessen hat, und nur die: beim
+// A5-Rebase mussten vier Blätter neu abgeleitet werden, die Skripte schrieben
+// mit pngjs-Standardkompression, und `band_p4_audience` wuchs um 190.184 Bytes —
+// bei IDENTISCHEN Bildpunkten. Kein Tor schlug an, weil das Budget-Tor nur die
+// Summe sieht. Die Regel ist deshalb:
+//
+//   Bildpunkte identisch, Bytes kleiner/gleich  → ✓ Nachverdichtung bewiesen
+//   Bildpunkte identisch, Bytes GRÖSSER         → ✗ ROT: ein Skript hat E5s
+//                                                   Nachverdichtung still
+//                                                   zurückgenommen (D-98)
+//   Bildpunkte anders                           → neue Kunst; wird mit Zahlen
+//                                                   gemeldet, ist kein Verstoß
+//
+// Damit läuft der Rumpf an echten Dateien und kann keine Import-Runde
+// fälschlich rot machen.
+//
+// `--strict` ist der WERKBANK-Modus (der bisherige, unveränderte): dort ist
+// jede Abweichung ein Abbruch, weil dort gerade nachverdichtet wurde und sich
+// per Konstruktion nichts ändern darf. D-98s Regel bleibt: jedes PNG-schreibende
+// Skript endet mit `art-recompress.mjs && check-png-identity.mjs --strict`.
+//
+// Run: node scripts/check-png-identity.mjs --strict [--ref <git-ref>]  (Werkbank)
+//      node scripts/check-png-identity.mjs --ref origin/main           (CI)
 //      node scripts/check-png-identity.mjs --selftest   (proves the red light works)
 //
 // Ohne --ref wird gegen HEAD verglichen, also gegen den letzten Commit.
@@ -26,6 +59,7 @@ import { PNG } from "pngjs";
 const args = process.argv.slice(2);
 const ref = args.includes("--ref") ? args[args.indexOf("--ref") + 1] : "HEAD";
 const selftest = args.includes("--selftest");
+const strict = args.includes("--strict");
 
 /** decode a PNG buffer to {w,h,data} — throws on anything that is not one */
 const decode = (buf) => {
@@ -44,6 +78,21 @@ const firstDifference = (a, b) => {
     }
   }
   return null;
+};
+
+/** D-98 · was ein Bildpunkt-gleiches Paar über die Kompression verrät. */
+export const recompressionVerdict = ({ pixelsIdentical, bytesBefore, bytesAfter }) => {
+  if (!pixelsIdentical) return "repaint";
+  return bytesAfter > bytesBefore ? "grown" : "proven";
+};
+
+/** Ist der Alphakanal überall undurchsichtig? Dann liegt ein Viertel der Datei
+ *  ungenutzt auf der Platte (E5s gemessener Hebel: die zehn größten Blätter,
+ *  36,4 MB, sind vollständig undurchsichtig und trotzdem RGBA). Kein rotes
+ *  Licht in dieser Runde — eine Meldung, damit die Zahl sichtbar ist. */
+const fullyOpaque = (img) => {
+  for (let i = 3; i < img.data.length; i += 4) if (img.data[i] !== 255) return false;
+  return true;
 };
 
 if (selftest) {
@@ -69,27 +118,64 @@ if (selftest) {
   // and a size change must be caught too, not silently compared channel-wise
   const small = decode(PNG.sync.write(new PNG({ width: 2, height: 2 })));
   if (firstDifference(make(false), small)?.kind !== "size") { bad++; console.error("✗ a size change went undetected"); }
+
+  // ── W4/D-98 · das Urteil über die Nachverdichtung, alle drei Zweige ────────
+  // Der mittlere Fall ist der, der main gekostet hat: gleiche Bildpunkte,
+  // größere Datei. Ein Selbsttest, der nur „anders/gleich" prüft, sieht ihn nie.
+  const V = [
+    ["gleiche Bildpunkte, kleinere Datei", { pixelsIdentical: true, bytesBefore: 500, bytesAfter: 300 }, "proven"],
+    ["gleiche Bildpunkte, gleich groß", { pixelsIdentical: true, bytesBefore: 500, bytesAfter: 500 }, "proven"],
+    ["gleiche Bildpunkte, GRÖSSERE Datei (D-98)", { pixelsIdentical: true, bytesBefore: 500, bytesAfter: 690 }, "grown"],
+    ["andere Bildpunkte = neue Kunst", { pixelsIdentical: false, bytesBefore: 500, bytesAfter: 900 }, "repaint"],
+  ];
+  for (const [name, input, want] of V) {
+    const got = recompressionVerdict(input);
+    if (got === want) console.log(`  ✓ ${name} → ${got}`);
+    else { bad++; console.error(`  ✗ ${name}: erwartet ${want}, bekommen ${got}`); }
+  }
+  // …und der Alphakanal-Hebel muss beide Antworten geben können
+  const opaque = make(false);
+  const clear = decode(PNG.sync.write(new PNG({ width: 2, height: 2 }))); // pngjs füllt mit Alpha 0
+  if (!fullyOpaque(opaque)) { bad++; console.error("✗ ein vollständig undurchsichtiges Bild wurde nicht als solches gelesen"); }
+  if (fullyOpaque(clear)) { bad++; console.error("✗ ein durchsichtiges Bild wurde als undurchsichtig gelesen"); }
+
   if (bad > 0) { console.error("check-png-identity selftest: FAILED"); process.exit(1); }
-  console.log("✓ selftest: one changed channel in one pixel is found and named; a size change is found; identical images pass.");
+  console.log("✓ selftest: one changed channel in one pixel is found and named; a size change is found; "
+    + "identical images pass; die drei Nachverdichtungs-Urteile stimmen (D-98).");
   process.exit(0);
 }
 
-const changed = execFileSync("git", ["diff", "--name-only", "--diff-filter=M", ref, "--", "*.png"], {
-  encoding: "utf8",
-  maxBuffer: 64 * 1024 * 1024,
-})
-  .split("\n")
-  .map((s) => s.trim())
-  .filter(Boolean);
+// Neu importierte Blätter (`A`) sah dieses Skript per Konstruktion nie — D-257
+// nennt das ausdrücklich. Sie kommen jetzt mit, für die Zahlen; verglichen
+// werden kann bei ihnen naturgemäß nichts.
+const listed = (filter) => {
+  try {
+    return execFileSync("git", ["diff", "--name-only", `--diff-filter=${filter}`, ref, "--", "*.png"], {
+      encoding: "utf8",
+      maxBuffer: 64 * 1024 * 1024,
+    }).split("\n").map((s) => s.trim()).filter(Boolean);
+  } catch (e) {
+    console.error(`check-png-identity: git diff gegen »${ref}« ist fehlgeschlagen — ist die Referenz da?`);
+    console.error(String(e.stderr ?? e.message).trim());
+    process.exit(1);
+  }
+};
 
-if (changed.length === 0) {
-  console.log(`check-png-identity: no modified PNGs against ${ref} — nothing to prove.`);
+const changed = listed("M");
+const added = listed("A");
+
+if (changed.length === 0 && added.length === 0) {
+  console.log(`check-png-identity: keine geänderten oder neuen PNGs gegen ${ref} — nichts zu beweisen.`);
   process.exit(0);
 }
 
 let failures = 0;
 let bytesBefore = 0;
 let bytesAfter = 0;
+let proven = 0;
+const repaints = [];
+const opaqueRgba = [];
+
 for (const file of changed) {
   let before;
   try {
@@ -102,24 +188,69 @@ for (const file of changed) {
   const after = fs.readFileSync(path.resolve(file));
   bytesBefore += before.length;
   bytesAfter += after.length;
-  const d = firstDifference(decode(before), decode(after));
-  if (d !== null) {
+  const imgAfter = decode(after);
+  const d = firstDifference(decode(before), imgAfter);
+
+  if (d !== null && strict) {
     failures++;
     console.error(
       d.kind === "size"
         ? `✗ ${file}: the image CHANGED SIZE ${d.was} → ${d.now}`
         : `✗ ${file}: pixel (${d.x},${d.y}) channel ${d.channel} was ${d.was}, is now ${d.now} — this is not a lossless recompression`,
     );
+    continue;
   }
+
+  const verdict = recompressionVerdict({
+    pixelsIdentical: d === null, bytesBefore: before.length, bytesAfter: after.length,
+  });
+  if (verdict === "grown") {
+    failures++;
+    console.error(`✗ ${file}: JEDER BILDPUNKT IST GLEICH, die Datei ist aber um `
+      + `${(after.length - before.length).toLocaleString("de-AT")} Bytes GEWACHSEN `
+      + `(${before.length.toLocaleString("de-AT")} → ${after.length.toLocaleString("de-AT")}). `
+      + "Das ist D-98: ein PNG-schreibendes Skript hat E5s verlustfreie Nachverdichtung still "
+      + "zurückgenommen. Reparatur: `node scripts/art-recompress.mjs && node scripts/check-png-identity.mjs --strict`.");
+    continue;
+  }
+  if (verdict === "repaint") { repaints.push({ file, before: before.length, after: after.length, d }); continue; }
+  proven++;
+  if (fullyOpaque(imgAfter)) opaqueRgba.push(file);
+}
+
+for (const file of added) {
+  const buf = fs.readFileSync(path.resolve(file));
+  bytesAfter += buf.length;
+  if (fullyOpaque(decode(buf))) opaqueRgba.push(file);
 }
 
 const MB = 1048576;
+const kb = (n) => `${(n / 1024).toFixed(0)} kB`;
+
+if (repaints.length > 0) {
+  console.log(`  ${repaints.length} Blatt/Blätter sind NEU GEMALT (kein Verstoß — Kunst darf sich ändern):`);
+  for (const r of repaints) console.log(`    · ${r.file} — ${kb(r.before)} → ${kb(r.after)}`);
+}
+if (added.length > 0) {
+  console.log(`  ${added.length} Blatt/Blätter sind NEU (gegen ${ref} nicht vergleichbar):`);
+  for (const f of added) console.log(`    · ${f} — ${kb(fs.statSync(path.resolve(f)).size)}`);
+}
+if (opaqueRgba.length > 0) {
+  console.log(`  ⚠ ${opaqueRgba.length} Blatt/Blätter sind vollständig UNDURCHSICHTIG und liegen trotzdem als RGBA `
+    + "auf der Platte — ein Viertel jeder Datei ist ein Alphakanal, der überall 255 ist (E5s Hebel). "
+    + "`node scripts/art-recompress.mjs` holt das verlustfrei heraus. Kein rotes Licht in dieser Runde:");
+  for (const f of opaqueRgba.slice(0, 8)) console.log(`    · ${f}`);
+  if (opaqueRgba.length > 8) console.log(`    · … (+${opaqueRgba.length - 8} weitere)`);
+}
+
 if (failures > 0) {
-  console.error(`check-png-identity: ${failures} of ${changed.length} file(s) changed their pixels`);
+  console.error(`\ncheck-png-identity: ${failures} von ${changed.length} geänderten Blättern verletzen die Regel`);
   process.exit(1);
 }
+const delta = bytesBefore > 0 ? ((bytesAfter - bytesBefore) / bytesBefore) * 100 : 0;
+const trend = `${delta <= 0 ? "−" : "+"}${Math.abs(delta).toFixed(1)} %`;
 console.log(
-  `check-png-identity: OK — ${changed.length} PNG(s) re-encoded, every pixel identical to ${ref}. ` +
-    `${(bytesBefore / MB).toFixed(1)} MB → ${(bytesAfter / MB).toFixed(1)} MB ` +
-    `(−${(((bytesBefore - bytesAfter) / bytesBefore) * 100).toFixed(1)} %).`,
+  `check-png-identity: OK — ${proven} Blatt/Blätter Bildpunkt für Bildpunkt identisch zu ${ref} und nicht gewachsen, `
+  + `${repaints.length} neu gemalt, ${added.length} neu. `
+  + `${(bytesBefore / MB).toFixed(1)} MB → ${(bytesAfter / MB).toFixed(1)} MB (${trend}).`,
 );
