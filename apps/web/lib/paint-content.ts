@@ -69,6 +69,25 @@ const PaintParams = z.record(z.string(), z.unknown()).check((ctx) => {
       ctx.issues.push({ code: "custom", input: p, path: [k], message: `params.${k} must be a non-empty array of non-empty strings` });
     }
   }
+  // R5-W5 · B4b · R85: the freed classmate's roam window (`entities.roamZone`).
+  // These live in `params` rather than on the entity itself for a reason worth
+  // writing down: `PaintEntity` below is a CLOSED z.object, so an unknown field
+  // there is stripped in silence and the level would ship a room nobody reads —
+  // whereas this record is open and passes new keys through. That openness is
+  // also why they are shape-checked HERE: the engine turns them into a loop
+  // bound, and a string "63" would become NaN, which ends every loop on its
+  // first step. She would simply stand still, and no gate would say why.
+  for (const k of ["roamMinC", "roamMaxC"] as const) {
+    if (k in p && (typeof p[k] !== "number" || !Number.isInteger(p[k]) || (p[k] as number) < 0)) {
+      ctx.issues.push({ code: "custom", input: p, path: [k], message: `params.${k} must be a whole column index ≥ 0` });
+    }
+  }
+  // …and the pair has to describe a window, not an inside-out one. West of east
+  // is a typo the grid probe would absorb without complaint (both caps clamp to
+  // 0, so she stands) — silent-but-wrong is exactly what a loader is for.
+  if (typeof p.roamMinC === "number" && typeof p.roamMaxC === "number" && p.roamMinC > p.roamMaxC) {
+    ctx.issues.push({ code: "custom", input: p, path: ["roamMinC"], message: `params.roamMinC (${p.roamMinC}) must not lie east of params.roamMaxC (${p.roamMaxC})` });
+  }
 });
 
 const PaintEntity = z.object({
@@ -110,6 +129,13 @@ const PaintPhase = z.object({
   id: z.string().regex(/^p\d$/),
   nameDe: z.string().min(1),
   surface: z.enum(["normal", "slippery"]),
+  // R5-W5 · B4b · which bank of the ink carries the anchor (level.ts PhaseSpec,
+  // Kokis Entscheid 2026-08-17). Named here for the same reason `inkReturns`
+  // is, twenty lines down: this object STRIPS what it does not list, so an
+  // unlisted field would pass the laws at authoring time and be gone at
+  // runtime — and `checkpoint-placement` would then fail the shipped chapter
+  // for a declaration the file actually makes.
+  checkpointSide: z.enum(["near", "far"]).optional(),
   plates: z
     .object({
       sky: z.string().optional(),

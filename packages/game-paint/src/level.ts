@@ -170,6 +170,25 @@ export interface EntityParams {
   // They are kept OUT by construction, not by memory: `tip-honesty` rejects any
   // params key it does not know, so re-adding one of these turns the gate red
   // instead of quietly reaching a card that no longer renders it.
+  /** classmate: DIE ÄUSSERSTEN SPALTEN IHRES RAUMS, einschliesslich — die
+   *  Antwort auf F5s Frage an den Architekten (R85, Kokis Sims-Lesung: „Merle
+   *  wie Sims: 4 Kacheln").
+   *
+   *  Vorher kam ihr Auslauf allein aus `ROAM_MAX_CELLS`, einer Konstante für
+   *  ALLE Befreiten. Das war kein Entwurf, sondern ein Vorgabewert: in einem
+   *  Vier-Kachel-Sims fiel er nicht auf, in einer langen Halle hätte er sie
+   *  sechs Kacheln weit geschickt, ohne dass jemand es entschieden hätte.
+   *
+   *  Diese zwei Zahlen ersetzen die Konstante FÜR DIESE ENTITY — sie werden
+   *  aber weiterhin mit der Boden- und Gefahr-Sonde VERSCHNITTEN
+   *  (`entities.roamZone`), nie an ihr vorbei. Ein Autor kann sie also enger
+   *  stellen oder in einer tragenden Halle weiter laufen lassen; er kann sie
+   *  nicht in die Tinte oder über eine Kante schreiben. Der Grund ist F5s
+   *  eigener: ein befreites Kind, das von der Kante fällt, wäre kein Geschenk,
+   *  sondern ein Bug mit Gesicht — und diese Zusage darf nicht davon abhängen,
+   *  dass ein Level-Autor sie nachrechnet. */
+  roamMinC?: number;
+  roamMaxC?: number;
   /** spawned hidden, revealed by a link. */
   hidden?: boolean;
   [key: string]: unknown;
@@ -211,6 +230,31 @@ export interface PhaseSpec {
   id: string;
   nameDe: string;
   surface: "normal" | "slippery";
+  /** R5-W5 · B4b · WELCHE SEITE DER SCHWELLE TRÄGT DEN ANKER (Kokis Entscheid
+   *  2026-08-17) — Pflicht in jeder Phase, die ein `C` im Gitter hat.
+   *
+   *  `"far"` ist Kokis Entscheid vom 11.08. (Anti 3/6 v2): erst queren, dann
+   *  gebankt. `"near"` ist die Gegenseite: der Anker steht VOR der Tinte, ein
+   *  Fehlsprung wird also billig wiederholt.
+   *
+   *  Warum die Wahl JE PHASE steht und nicht kapitelweit: sie hängt an der
+   *  BREITE der Querung, und die ist gemessen sehr verschieden. Gemessen am
+   *  ausgelieferten ch01 (Rückweg nach einem Platsch, in Spalten):
+   *
+   *    Phase │ Querung │ far: Fehlsprung / später │ near: Fehlsprung / später
+   *    ──────┼─────────┼──────────────────────────┼──────────────────────────
+   *    p1    │  2 Sp.  │       41 / 2             │        1 / 2
+   *    p2    │ 31 Sp.  │       22 / 4             │        1 / 31 + Querung
+   *    p3    │ 10 Sp.  │       26 / 1             │        1 / 10 + Querung
+   *
+   *  Bei einer zwei Spalten breiten Grube (p1) ist `near` in BEIDE Richtungen
+   *  billiger; bei einem 31 Spalten breiten Becken (p2) würde `near` jeden
+   *  späten Fehltritt den ganzen Motten-Lauf wiederholen lassen. Ein einziger
+   *  kapitelweiter Wert müsste eine der beiden Phasen falsch bedienen — deshalb
+   *  ist es eine Deklaration und keine Konstante. Und sie ist PFLICHT, aus dem
+   *  Grund, aus dem `checkpointStyle` es ist: ein späterer Leser muss „Absicht"
+   *  von „hier hat jemand etwas verschoben" unterscheiden können. */
+  checkpointSide?: "near" | "far";
   plates: Partial<Record<"sky" | "far" | "mid" | "near" | "fg", string>>;
   rows: string[];
   entities: EntitySpec[];
@@ -1356,18 +1400,45 @@ export const checkLevelLaws = (level: PaintLevel): LawFailure[] => {
       for (const [i, p] of crossings.entries()) {
         const cp = checkpoints[i];
         if (!cp) continue; // the count law already spoke
-        const far = eastward ? p.east : p.west; // the bank the child lands on
-        const lo = eastward ? far + 1 : far - CHECKPOINT_AFTER_MAX;
-        const hi = eastward ? far + CHECKPOINT_AFTER_MAX : far - 1;
-        // B · PAIRING — on the FAR bank, and close to it.
-        if (cp.c < lo || cp.c > hi) {
-          const beforeIt = eastward ? cp.c <= p.east : cp.c >= p.west;
+        // B · PAIRING — next to the passage, on the DECLARED side.
+        //
+        // R5-W5 · B4b (Kokis Entscheid 2026-08-17): the side is no longer fixed
+        // to „far". It is read off `ph.checkpointSide`, and the declaration is
+        // MANDATORY here — see the field's own note for the measured reason a
+        // single chapter-wide value cannot serve p1 and p2 at once. What did NOT
+        // change is the distance: either side, the anchor sits WITHIN
+        // CHECKPOINT_AFTER_MAX columns of the bank it belongs to. A retry that
+        // starts a screen away is the defect this clause was written for, and
+        // that is true on both banks.
+        const side = ph.checkpointSide;
+        if (side === undefined) {
           failures.push({
             phase: ph.id,
             law: "checkpoint-placement",
-            detail: beforeIt
-              ? `${ph.id} crosses ink at c${p.west}–${p.east} but its checkpoint sits at (${cp.c},${cp.r}), on the near side — Krakel sketches you AFTER a hard passage, never before it`
-              : `${ph.id} crosses ink at c${p.west}–${p.east} and its checkpoint (${cp.c},${cp.r}) is past the far bank by more than ${CHECKPOINT_AFTER_MAX} columns — retry sits NEXT to the challenge, not a screen away`,
+            detail: `${ph.id} carries a checkpoint but declares no checkpointSide — "near" (retry before the ink) or "far" (bank the crossing) is a design decision, and an undeclared one reads as a slip to the next person who moves a glyph`,
+          });
+        }
+        // die Bank, an der der Anker hängt: bei „far" das Ufer, auf dem das Kind
+        // ANKOMMT, bei „near" das, von dem es ABSPRINGT
+        const bank = side === "near"
+          ? (eastward ? p.west : p.east)
+          : (eastward ? p.east : p.west);
+        // …und die erlaubten Spalten liegen auf der jeweils ABGEWANDTEN Seite
+        const outward = (side === "near") === eastward ? -1 : 1;
+        const near1 = bank + outward;
+        const nearMax = bank + outward * CHECKPOINT_AFTER_MAX;
+        const lo = Math.min(near1, nearMax);
+        const hi = Math.max(near1, nearMax);
+        if (cp.c < lo || cp.c > hi) {
+          const insideOrBeyond = cp.c >= Math.min(p.west, p.east) && cp.c <= Math.max(p.west, p.east)
+            ? "IN the ink itself"
+            : "on the wrong side of it";
+          failures.push({
+            phase: ph.id,
+            law: "checkpoint-placement",
+            detail: side === "near"
+              ? `${ph.id} declares checkpointSide "near" and crosses ink at c${p.west}–${p.east}, but its checkpoint (${cp.c},${cp.r}) is not within ${CHECKPOINT_AFTER_MAX} columns of the take-off bank c${bank} — it sits ${insideOrBeyond}; a near anchor exists so a failed jump is retried AT the jump`
+              : `${ph.id} declares checkpointSide "far" and crosses ink at c${p.west}–${p.east}, but its checkpoint (${cp.c},${cp.r}) is not within ${CHECKPOINT_AFTER_MAX} columns of the landing bank c${bank} — it sits ${insideOrBeyond}; a far anchor banks the crossing and must stand NEXT to it, not a screen away`,
           });
         }
         // C · FOOTING — Krakel sketches you where you can stand.

@@ -39,6 +39,10 @@ import {
 import { CAGE_OPEN_TICKS, COLOUR_FLOOD_TICKS } from "./anim.ts";
 import { groundSurfaceAt } from "./collide.ts";
 import { cameraTargetX, clampScroll, stepCameraAxis, stepCameraY } from "./camera.ts";
+// R5-W5 · B4b · D-186: die Lebensdauer des Spritzers ist die Haltezeit der
+// Kamera. `ink.ts` importiert selbst NICHTS, ein Zyklus ist hier also
+// ausgeschlossen — und sim.ts holt sich Takt-Zahlen schon aus `anim.ts` (oben).
+import { INK_SPLASH_TICKS } from "./ink.ts";
 import { type Ability, type PaintLevel, type PhaseSpec, allPhases, findGlyph } from "./level.ts";
 
 /** R5-W2 · H1 · Wie lange sie NACH dem Ausruhen noch liegt, bevor die Karte
@@ -331,6 +335,25 @@ export class Sim {
   booksGot = 0;
   camX = 0;
   camY = 0;
+  /** R5-W5 · B4b · D-186 · Ticks, in denen die Kamera NICHT nachzieht.
+   *
+   *  Es gibt genau einen Grund dafür, und er ist eine Regie-Entscheidung: der
+   *  Tinten-Spritzer entsteht dort, wo das Kind hineinfiel, während der Warp es
+   *  schon zum Anker gesetzt hat. Wer im selben Tick auch die Sicht mitnimmt,
+   *  zeigt den Spritzer nie — er war gebaut, unit-belegt und deterministisch und
+   *  trotzdem in keiner Aufnahme zu sehen (A6b, eigener Aufnahmeversuch in p2).
+   *  Die Sicht bleibt also kurz stehen, wo der Schlag passiert ist. Siehe warp. */
+  camHoldTicks = 0;
+  /** R5-W5 · B4b · D-186 · Ist die Sicht noch auf dem Weg zum Kind?
+   *
+   *  Solange das so ist, schweigt die Bildschirm-Klammer (W0-F7). Die Klammer
+   *  hält das Kind im BILD; ist das Bild selbst noch unterwegs, hat sie nichts
+   *  zu entscheiden — sonst zieht sie das Kind an den Rand einer Sicht, die es
+   *  noch nicht zeigt, und hebt damit genau den Rückweg auf, den sie nicht kennt.
+   *  Zwei Zustände und nicht einer, weil der Halt in TICKS zählt (die Lebensdauer
+   *  des Spritzers) und das Einholen in STRECKE (die Fahrt zum Anker) — in p2
+   *  sind das 26 Ticks und danach noch bis zu 28 Kacheln. */
+  camDetached = false;
 
   private cfg: SimCfg;
 
@@ -497,10 +520,30 @@ export class Sim {
     this.poseLocked = out.locked;
     // W0-F7 (canonical): the player is boxed inside the visible screen
     // (constants shared with level.ts's reachability model — R5-A7)
-    const minX = this.camX + PAINT.screenBoxLeftPx * SUBS;
-    const maxX = this.camX + (LOGICAL_W - PAINT.screenBoxRightPx) * SUBS;
-    if (this.player.x < minX) this.player = { ...this.player, x: minX, vx: Math.max(this.player.vx, 0) };
-    if (this.player.x > maxX) this.player = { ...this.player, x: maxX, vx: Math.min(this.player.vx, 0) };
+    //
+    // R5-W5 · B4b · D-186 · …AUSSER solange die Sicht noch unterwegs zum Kind
+    // ist (`camDetached`), und das ist keine Feinheit: es ist genau die Warnung,
+    // die zwei Zeilen im alten `warp` standen (»the screen clamp would otherwise
+    // drag the player back toward the stale view«). Die Klammer hält das Kind im
+    // BILD; ist das Bild selbst noch auf dem Weg, hat sie nichts zu entscheiden.
+    //
+    // LIVE GEMESSEN, bevor diese Bedingung existierte (p2, echter Sturz durchs
+    // Loch c32): der Warp setzte das Kind korrekt auf x=936 (Anker c58) — und
+    // einen Tick später zog die Klammer es auf x=724, exakt `camX 408 + 320 − 4`,
+    // den rechten Rand der gehaltenen Sicht. Das liegt mitten über dem Becken,
+    // aus dem es gerade gerettet worden war, und von dort fiel es weiter. Die
+    // Klammer hob also den Rückweg auf, den sie nicht kennt.
+    //
+    // Die drei ersten Prüfungen dieses Verhaltens waren dabei GRÜN: auf dem
+    // Auslöse-Tick läuft die Klammer VOR `onPlayerEvent`, der Wert stimmt dort
+    // auch im kaputten Zustand. Nur der Tick DANACH zeigt es — und nur ein
+    // echter Lauf hat es gezeigt.
+    if (!this.camDetached) {
+      const minX = this.camX + PAINT.screenBoxLeftPx * SUBS;
+      const maxX = this.camX + (LOGICAL_W - PAINT.screenBoxRightPx) * SUBS;
+      if (this.player.x < minX) this.player = { ...this.player, x: minX, vx: Math.max(this.player.vx, 0) };
+      if (this.player.x > maxX) this.player = { ...this.player, x: maxX, vx: Math.min(this.player.vx, 0) };
+    }
     this.prevPad = { ...pad };
     for (const ev of out.events) this.onPlayerEvent(ev, events);
 
@@ -528,9 +571,22 @@ export class Sim {
     this.checkExit(events);
 
     // per-tick camera follow (gameplay: the screen clamp reads camX next tick)
-    const tx = clampScroll(cameraTargetX(this.player.x, this.player.facing), this.worldWpx, LOGICAL_W);
-    this.camX = clampScroll(stepCameraAxis(this.camX, tx), this.worldWpx, LOGICAL_W);
-    this.camY = clampScroll(stepCameraY(this.camY, this.player.y), this.worldHpx, LOGICAL_H);
+    // R5-W5 · B4b · D-186: …ausser während eines Kamera-Haltes. Der Halt läuft
+    // HIER ab und nicht im Warp, weil er in TICKS zählt und nur dieser Schritt
+    // Ticks hat; danach fährt dieselbe eased Fahrt wie immer die Strecke zum
+    // Anker, ohne dass ein Sonderweg für die Rückkehr existiert.
+    if (this.camHoldTicks > 0) {
+      this.camHoldTicks -= 1;
+    } else {
+      const tx = clampScroll(cameraTargetX(this.player.x, this.player.facing), this.worldWpx, LOGICAL_W);
+      this.camX = clampScroll(stepCameraAxis(this.camX, tx), this.worldWpx, LOGICAL_W);
+      this.camY = clampScroll(stepCameraY(this.camY, this.player.y), this.worldHpx, LOGICAL_H);
+      // …und sobald sie angekommen ist, greift die Klammer wieder. `< SUBS` ist
+      // »innerhalb eines Pixels«: `stepCameraAxis` läuft mit einer Mindest-
+      // geschwindigkeit und trifft das Ziel exakt, ein Restweg von unter einem
+      // Pixel ist also das Ende der Fahrt und keine Toleranz auf Verdacht.
+      if (this.camDetached && Math.abs(this.camX - tx) < SUBS) this.camDetached = false;
+    }
     // R3-11: LAST, on the fresh camera — a waiting asker is served the moment
     // the view actually contains it.
     this.servePending(events);
@@ -753,7 +809,21 @@ export class Sim {
     return true;
   }
 
-  warp(c: number, r: number): void {
+  /** Setzt das Kind an eine Zelle. Vorgabe: die Kamera springt mit.
+   *
+   *  R5-W5 · B4b · D-186 · `holdCameraTicks` ist die AUSNAHME und die einzige,
+   *  die es gibt: so viele Ticks lang zieht die Sicht nicht nach, sondern bleibt
+   *  stehen, wo sie war. Der Tinten-Rückweg benutzt sie, damit der Spritzer an
+   *  der Stelle des Sturzes überhaupt im Bild ist (`onPlayerEvent`).
+   *
+   *  Warum HALTEN und nicht »sanft nachziehen«: die Pro-Tick-Kamera fährt mit
+   *  `/4` je Tick (camera.stepCameraAxis). Bei p1 (Anker zwei Kacheln hinter der
+   *  Grube) hätte das gereicht; bei p2 liegen zwischen Becken und Anker bis zu 28
+   *  Kacheln, und dort ist der Spritzer nach drei von 26 Ticks aus dem Bild
+   *  gefahren. Genau das steht in D-186 als »nur sichtbar, wenn der Checkpoint
+   *  nahe am Teich liegt«. Ein Halt ist gegen die Entfernung unempfindlich; eine
+   *  Fahrt ist es nicht. */
+  warp(c: number, r: number, opts: { holdCameraTicks?: number } = {}): void {
     // a warp always detaches and SNAPS the camera (the screen clamp would
     // otherwise drag the player back toward the stale view)
     this.player = {
@@ -772,8 +842,18 @@ export class Sim {
     // …and the drawing follows: a warp clears the rope, the ledge and the vine,
     // so a hand left closed around any of them would be gripping nothing.
     this.finalizePose();
-    this.camX = clampScroll(cameraTargetX(this.player.x, this.player.facing), this.worldWpx, LOGICAL_W);
-    this.camY = clampScroll(this.player.y - Math.round(LOGICAL_H * 0.57) * SUBS, this.worldHpx, LOGICAL_H);
+    const hold = opts.holdCameraTicks ?? 0;
+    if (hold > 0) {
+      // kein Sprung: die Sicht steht schon dort, wo der Spritzer entsteht — und
+      // sie bleibt losgelöst, bis sie das Kind wieder eingeholt hat
+      this.camHoldTicks = hold;
+      this.camDetached = true;
+    } else {
+      this.camX = clampScroll(cameraTargetX(this.player.x, this.player.facing), this.worldWpx, LOGICAL_W);
+      this.camY = clampScroll(this.player.y - Math.round(LOGICAL_H * 0.57) * SUBS, this.worldHpx, LOGICAL_H);
+      this.camHoldTicks = 0;
+      this.camDetached = false;
+    }
   }
 
   private onPlayerEvent(ev: PlayerEvent, events: SimEvent[]): void {
@@ -789,7 +869,13 @@ export class Sim {
       // beat its visual grammar; the mechanic lands with the law.
       events.push({ type: "toast", msg: ev.hazard === "^" ? "Autsch!" : "Platsch!" });
       this.player = applyKnockback(this.player, this.player.facing, false);
-      if (ev.hazard === "w" && this.respawnCell) this.warp(this.respawnCell.c, this.respawnCell.r - 1);
+      // R5-W5 · B4b · D-186: der Rückweg zum Anker hält die Sicht so lange am
+      // Spritzer, wie der Spritzer lebt (`ink.INK_SPLASH_TICKS` — EINE Zahl für
+      // Bild und Regie, damit die Sicht nicht abfährt, während noch Tropfen
+      // fliegen, und nicht wartet, wenn die Kunst kürzer wird).
+      if (ev.hazard === "w" && this.respawnCell) {
+        this.warp(this.respawnCell.c, this.respawnCell.r - 1, { holdCameraTicks: INK_SPLASH_TICKS });
+      }
     }
   }
 
