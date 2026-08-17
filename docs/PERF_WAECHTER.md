@@ -46,6 +46,14 @@ Blätter hinzufügt, hebt sie **im selben PR, mit einem Grund, den ein Prüfer l
 Blätter verdrahtet oder löscht, **senkt sie im selben PR um sein eigenes Delta** — jeder
 Lauf sagt die verbliebene Luft laut an, und der Post-Zug-Eigentümer misst neu.
 
+**Verweis (K4, 2026-08-17):** die drei Regeln, die aus diesem Vorfall geworden sind, stehen
+als Rulings **R104** (der Post-Zug-Schritt gehört dem Eigentümer, nie einer parallelen Bahn)
+· **R105** (keine Ratsche für die Decke, D-253 bleibt zu — Warnung plus Post-Zug-Schritt) ·
+**R115** (jede Perf-Tabelle wird aus **sichtbarem** Chrome gemessen, mit einer Kontrollseite,
+die 60 fps zeigen MUSS; leere ms-Spalten oder eine fehlende Vorher-Spalte sind kein
+Erfüllen) — und die Merge-Pflichten, die daran hängen, stehen in der Merge-Tabelle des
+BOOT-SHEETs, wo Koki sie liest, nicht nur im Text eines PRs.
+
 Budget gerissen → **erst optimieren**; geht es nicht ohne Qualitätsverlust →
 **LADEBILDSCHIRM, nie Ruckler**. Der Ladebildschirm existiert seit R5-W3 · E5
 (`.pb-building`, `PaintCallbacks.onReady`).
