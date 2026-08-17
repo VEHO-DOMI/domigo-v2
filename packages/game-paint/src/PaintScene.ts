@@ -41,7 +41,7 @@ import {
   awakenRoomBloom, awakenRoomSweep, bouncerSquash, cageBreath, cageNearT, entDisplayH, entPoseCell, entSeed, floodBloomFor, greyLuma,
   guardianManoeuvre, guardianPitchRad, guardianRollScaleX, idleWiggle, poseStateOf, washAlphaFor,
 } from "./anim.ts";
-import { CUE_CHALK, CUE_HALO, TREASURE_BACK_COLOUR, TREASURE_HALO_COLOUR, chalkArrow, treasureCue, treasureBobPx, treasureSpinSx } from "./cue.ts";
+import { CUE_CHALK, CUE_HALO, TREASURE_BACK_COLOUR, TREASURE_HALO_COLOUR, chalkArrow, cueMarkY, treasureCue, treasureBobPx, treasureSpinSx } from "./cue.ts";
 import { RIG, launchCoil, rigPose, withCheer, withFistAway, withBrace } from "./rig.ts";
 import {
   BURST_CORE, BURST_HOT, BURST_INK, BURST_SPIKES,
@@ -1863,7 +1863,16 @@ export class PaintScene extends Phaser.Scene {
     // R5-W1 · F1: das Wippen ist nach cue.ts gezogen — dort ist es eine reine
     // Funktion mit einem Namen und einem Test, hier war es ein Literal in einer
     // Datei ohne Testabdeckung. Diese Methode füllt nur noch, was sie bekommt.
-    const y = fromSubs(e.y) - this.entTargetH(e) - 7;
+    //
+    // R5-W5 · F6: …und die Höhe kommt jetzt aus `cueMarkY`, mit ZWEI Oberkanten
+    // (F5s gefiledem Befund: über einem niedrigen Ding verschwand die Marke im
+    // Körper des Kindes, weil sie hinter ihm liegt). Die Oberkante des Kindes
+    // wird an der Figur GEMESSEN, die dieses Bild schon gezeichnet hat —
+    // `renderPlayer` läuft vor dieser Methode —, statt aus einer Höhe abgeleitet,
+    // die anderswo erklärt wird: die gemalten Ganzkörper-Zellen sind nicht alle
+    // gleich hoch (die Landung ist gestaucht, der Sprung gestreckt).
+    const heroTopPx = (this.heroFull.visible ? this.heroFull : this.rigRoot).getBounds().top;
+    const y = cueMarkY(fromSubs(e.y) - this.entTargetH(e), heroTopPx);
     const seed = entSeed(e.id);
     const cue = chalkArrow(x, y, 11, seed, this.tickCount, this.cfg.reducedMotion);
     const g = this.engageCueG;
