@@ -24,14 +24,7 @@
       "family": "music",
       "kind": "music",
       "pedagogy": "info",
-      "take": 1,
-      "loopNote": "Schleife gemessen: 38.48 s (Selbstaehnlichkeit 0.966 Huellkurve / 0.570 Wellenform) ≙ 14.75 Takte bei bestellten 92 BPM",
-      "loopFit": {
-        "seconds": 38.478911564625854,
-        "envScore": 0.9655000595236606,
-        "waveScore": 0.5698145691143662,
-        "barsAtRequestedBpm": 14.75
-      }
+      "take": 1
     },
     "step-paper": {
       "sha1": "1c01f919184bc74c1efeb702e215afb1778d5e9f",
@@ -50,6 +43,7 @@
       ],
       "tailSilenceMs": 0,
       "seamDb": null,
+      "seamRatio": null,
       "loopStartSec": null,
       "loopEndSec": null,
       "family": "foot",
