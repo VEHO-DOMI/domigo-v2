@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { PAINT, SUBS, TILE } from "./paint.ts";
-import { Sim } from "./sim.ts";
+import { Sim as PaintSim } from "./sim.ts";
 import { GUARDIAN_WIPE_REACH_PX } from "./entities.ts";
 import { type PaintLevel } from "./level.ts";
 import {
@@ -463,7 +463,7 @@ describe("R5-F6 · die Wisch-Klammer: das Kind hält an ihrer Kante, und wischt 
    *  aus H3s Bild. Ihre Lage wird festgeschrieben, damit der Abstand eine
    *  Aussage über die Klammer ist und nicht über ihre Choreografie. */
   const wartendeTafel = (state: "wipeable" | "wipe") => {
-    const s = new Sim({ level: arena(), phaseId: "p1", grantedAbilities: () => [], freedCageIds: () => [] });
+    const s = new PaintSim({ level: arena(), phaseId: "p1", grantedAbilities: () => [], freedCageIds: () => [] });
     const board = s.world.entities.find((e) => e.role === "guardian");
     if (board === undefined) throw new Error("keine Tafel in der Vorrichtung");
     board.state = state;
@@ -529,7 +529,7 @@ describe("R5-F6 · die Wisch-Klammer: das Kind hält an ihrer Kante, und wischt 
   });
 
   it("ohne Bodenzustand klemmt nichts — eine fliegende Tafel ist keine Wand", () => {
-    const s = new Sim({ level: arena(), phaseId: "p1", grantedAbilities: () => [], freedCageIds: () => [] });
+    const s = new PaintSim({ level: arena(), phaseId: "p1", grantedAbilities: () => [], freedCageIds: () => [] });
     const board = s.world.entities.find((e) => e.role === "guardian");
     if (board === undefined) throw new Error("keine Tafel in der Vorrichtung");
     board.state = "fly";
