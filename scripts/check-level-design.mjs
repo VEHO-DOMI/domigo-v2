@@ -97,30 +97,37 @@ export const CLAIMS = {
   "window": { kind: "architecture" },
   "tablet": { kind: "cards" },
   "sound system": { kind: "cards" },
-  // Die Uniform-Zehn (WB p. 12 „Cool clothes" + der Projektor): heute ohne
-  // Antwort-Karte, ab Welle 5 Sammelobjekte im Level
-  // (docs/design/g1/paint/UNIFORM_SAMMELN_DESIGN.md, Anspruchstyp `pickup`).
+  // ── R5-W5 · G4 · DIE UNIFORM IST JETZT IM LEVEL ────────────────────────────
+  // Bis heute trugen diese neun eine datierte Ausnahme („Welle 5 / Uniform").
+  // Welle 5 hat die Teile gebaut, also wird die Brücke eingelöst und durch den
+  // Anspruchstyp ersetzt, den das Design dafür vorgesehen hat (§3): `pickup`
+  // prüft BEIDE Hälften, weil jede einzeln wertlos ist — ein Sammelobjekt ohne
+  // Karte ist Dekoration, eine Karte ohne Sammelobjekt fragt nach etwas, das das
+  // Kind nie gesehen hat. Der Stem muss als Rolle `cloth` im Level liegen UND das
+  // Wort muss auf der GENANNTEN Karte antwortbar sein (nicht irgendwo).
   ...Object.fromEntries(
-    [
-      ["hairband", "steht auf keiner Karte — weder als Antwort noch als Ablenker"],
-      ["sunglasses", "steht auf keiner Karte — weder als Antwort noch als Ablenker"],
-      ["shoe", "steht auf keiner Karte — weder als Antwort noch als Ablenker"],
-      ["projector", "steht auf keiner Karte — trägt heute nur die Fiktion des Zahlen-Turms in p2"],
-      ["hat", "nur Ablenker (oddone), nie Antwort"],
-      ["school tie", "nur Ablenker auf enc.ranzen.q3, nie Antwort"],
-      ["shirt", "nur Ablenker auf enc.ranzen.q3, nie Antwort"],
-      ["sweater", "nur Ablenker auf enc.ranzen.q4, nie Antwort"],
-      ["skirt", "nur Ablenker auf enc.ranzen.q4, nie Antwort"],
-      ["socks", "nur Ablenker auf enc.ranzen.q3, nie Antwort"],
-    ].map(([en, why]) => [en, {
-      kind: "cards",
-      exception: {
-        why: `${why}. Kokis Befund vom 15.08.: der Uniform-Wortschatz kommt im Kapitel nicht vor. Welle 5 legt die neun Teile als Sammelobjekte ins Level und benennt sie in drei Karten (3/3/3, je Phase eine); bis dahin ist die Lücke deklariert statt behauptet.`,
-        expires: "2026-12-31",
-        owner: "Welle 5 / Uniform",
-      },
-    }]),
+    ["hairband", "sunglasses", "hat", "school tie", "shirt", "sweater", "skirt", "socks", "shoe"]
+      .map((en) => [en, {
+        kind: "pickup",
+        stems: [`cloth_${en.replace(/ /g, "_")}`],
+        card: `g1.paint.ch01.uni.${en.replace(/ /g, "-")}`,
+      }]),
   ),
+  // Der Projektor gehörte nie zur Uniform — er stand nur in derselben Ausnahme,
+  // weil er dieselbe Lücke teilte. G4 kann ihn NICHT einlösen: er bekommt kein
+  // Sammelobjekt (er trägt die Fiktion des Zahlen-Turms in p2, doc 44) und keine
+  // Karte dieser Welle fragt ihn ab. Die Ausnahme bleibt also stehen, aber nicht
+  // still: sie bekommt einen neuen Grund und einen neuen Eigentümer, weil der
+  // alte („Welle 5 / Uniform") mit dieser Session erledigt ist und eine Ausnahme
+  // mit erledigtem Eigentümer niemanden mehr erreicht (R106).
+  "projector": {
+    kind: "cards",
+    exception: {
+      why: "Kein Uniform-Teil: der Projektor stand nur in derselben Sammel-Ausnahme wie die neun Kleidungswörter, weil er dieselbe Lücke teilte. G4 hat die neun eingelöst; der Projektor braucht eine eigene Entscheidung — Karte, eigenes Objekt, oder als reines Fiktions-Requisit aus der wordfile-Klassifikation nehmen. Bis dahin deklariert statt behauptet.",
+      expires: "2026-12-31",
+      owner: "Architekt — Routing offen (G4 konnte es nicht einlösen, Report R5-W5 · G4)",
+    },
+  },
 };
 const wordbank = JSON.parse(fs.readFileSync(WORDBANK, "utf8"));
 const allSkins = new Set(phases.flatMap((ph) => ph.entities.map((e) => e.skin)));
@@ -154,7 +161,7 @@ const saysWord = (haystack, needle) =>
 
 /** Der eine Block, den auch der Selbsttest fährt: Ansprüche gegen Level UND
  *  Karten, plus die Hygiene der Ausnahmen selbst. */
-export const claimFails = (claims, entries, skins, items, today) => {
+export const claimFails = (claims, entries, skins, items, today, clothStems = new Set()) => {
   const out = [];
   const answerBlob = items.flatMap((t) => answerWordsOf(t)).join(" | ");
   const byEn = new Map(entries.filter((e) => e.kind === "wordfile").map((e) => [e.en, e]));
@@ -173,6 +180,22 @@ export const claimFails = (claims, entries, skins, items, today) => {
     if (!claim) { out.push(`abdeckung: wordfile "${entry.en}" ist unklassifiziert (README §Abdeckung nachziehen)`); continue; }
     if ((claim.kind === "being" || claim.kind === "thing") && !claim.stems.some((s) => skins.has(s))) {
       out.push(`abdeckung: "${entry.en}" behauptet ${claim.kind} [${claim.stems.join("|")}], aber kein Stem im Level (B8)`);
+    }
+    // ── R5-W5 · G4 · `pickup`: das Wort liegt als Sammelobjekt IM Level UND
+    // steht auf der genannten Benenn-Karte. Beide Hälften, weil jede einzeln
+    // wertlos ist (Design §3) — dieselbe schärfere Lesart wie `cards`: ein
+    // Ablenker ist keine Antwort.
+    if (claim.kind === "pickup") {
+      if (!claim.stems.some((st) => clothStems.has(st))) {
+        out.push(`abdeckung: "${entry.en}" behauptet ein Sammelobjekt [${claim.stems.join("|")}], aber im Level liegt kein Kleidungsstueck mit diesem Stem — eine Karte ueber ein Ding, das nirgends liegt, fragt nach etwas, das das Kind nie gesehen hat (Design §3)`);
+      }
+      const card = items.find((t) => t.id === claim.card);
+      if (!card) {
+        out.push(`abdeckung: "${entry.en}" nennt die Benenn-Karte ${claim.card}, die es nicht gibt — der Anspruch zeigt ins Leere (Design §3)`);
+      } else if (![entry.en, ...(entry.forms ?? [])].some((f) => saysWord(answerWordsOf(card).join(" | "), f.toLowerCase()))) {
+        out.push(`abdeckung: "${entry.en}" nennt ${claim.card}, aber dort ist es nicht die ANTWORT (Ablenker zaehlt nicht) — ein Sammelobjekt ohne Abfrage ist Dekoration (Design §3)`);
+      }
+      continue;
     }
     if (claim.kind !== "cards") continue;
 
@@ -209,6 +232,9 @@ fails.push(
     allSkins,
     JSON.parse(fs.readFileSync(TASKS, "utf8")).items,
     TODAY,
+    // nur die Stems, die wirklich als Rolle `cloth` liegen — `pickup` fragt nach
+    // dem Sammelobjekt, nicht nach irgendeinem Stem gleichen Namens
+    new Set(phases.flatMap((ph) => ph.entities.filter((e) => e.role === "cloth").map((e) => e.skin))),
   ),
 );
 
@@ -477,7 +503,7 @@ if (process.argv.includes("--selftest")) {
       claims2({ shoe: { kind: "cards" } }, [ENTRY("shoe", ["shoe", "shoes"])], [{ kind: "choice", answer: "shoes" }]),
       (f) => f.length === 0],
     ["NICHT-TAMPER · der echte Anspruchssatz gegen die echte Wortbank und die echten Karten bleibt still",
-      claimFails(CLAIMS, wordbank.entries, allSkins, JSON.parse(fs.readFileSync(TASKS, "utf8")).items, TODAY),
+      claimFails(CLAIMS, wordbank.entries, allSkins, JSON.parse(fs.readFileSync(TASKS, "utf8")).items, TODAY, new Set(phases.flatMap((ph) => ph.entities.filter((e) => e.role === "cloth").map((e) => e.skin)))),
       (f) => f.length === 0],
   );
   // ── Block 6 · Buchstaben-Anker (R45) ──────────────────────────────────────

@@ -50,7 +50,12 @@ export const TaskHints = z.object({
 });
 export type TaskHints = z.infer<typeof TaskHints>;
 
-export const TASK_USES = ["quickfire", "encounter", "door", "rescue", "boss", "finale", "bonus"] as const;
+// R5-W5 · G4: `pickupset` — the naming cards the scattered uniform owes. They
+// belong to no asker in the world (the piece is already in the child's hands by
+// the time the card opens), and they are not served by the router's pool cursor
+// but chosen by the WORD that was just found — otherwise the third find would
+// always ask the first card, about a piece the child may not even have.
+export const TASK_USES = ["quickfire", "encounter", "door", "rescue", "boss", "finale", "bonus", "pickupset"] as const;
 
 // ── THE FORM AXIS (R5-W2 · G1) ───────────────────────────────────────────────
 // WHY A SECOND AXIS EXISTS AT ALL. Koki played ch01 and found the cards „repeat

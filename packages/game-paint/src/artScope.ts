@@ -149,6 +149,13 @@ export const domArtStems = (level: ScopeLevel): Set<string> => {
   // them. Claimed, not required: the chain degrades to the caged sheet and then
   // to the drawn mark, so no card hangs on a file.
   for (const s of ["obj_soundsystem", "obj_tablet", "obj_chair", "klassenfoto_a", "obj_picture", "merle_a"]) out.add(s);
+  // R5-W5 · G4: the naming cards show the PIECE, and a card is DOM, not Phaser —
+  // so every uniform cell is claimed on this side too. The stems are read off the
+  // level rather than listed, so a piece that is added or renamed later cannot
+  // leave its card with an empty plate.
+  for (const ph of allScopePhases(level)) {
+    for (const e of ph.entities) if (e.role === "cloth") out.add(`${e.skin}_a`);
+  }
   for (const s of ALWAYS_STEMS) out.add(s);
   return out;
 };

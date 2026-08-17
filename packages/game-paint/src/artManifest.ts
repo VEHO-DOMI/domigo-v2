@@ -135,4 +135,5 @@ export const AUFTAKT_STEMS: readonly string[] = [
 export const PAINTED_ICON_NAMES: readonly string[] = [
   "spark", "cage", "wisp", "rule", "book", "palette", "door",
   "knot", "inkwell", "blot", "brush", "slate", "rosette",
+  "uniform", // R5-W5 · G4: the HUD's uniform counter (painted sheet hud_uniform, AQ10)
 ];

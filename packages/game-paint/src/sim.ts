@@ -84,7 +84,10 @@ export interface TaskRequest {
     | { type: "door"; id: string; kind: string; skin: string }
     | { type: "guardian"; id: string; skin: string }
     | { type: "console"; id: string; skin: string }
-    | { type: "ceremony"; beat: "goal" | "grant" | "cagehint" | "bonus" | "tip" | "score" | "out" };
+    // R5-W5 · G4: `cloth` is the naming card the uniform owes at every third
+    // find. It is a ceremony beat and not an entity ask because it belongs to no
+    // being in the world — the piece it is about has already been picked up.
+    | { type: "ceremony"; beat: "goal" | "grant" | "cagehint" | "bonus" | "tip" | "cloth" | "score" | "out" };
 }
 
 /** The being a request is ABOUT, or null for a shell ceremony (nobody asks). */
@@ -170,6 +173,13 @@ export type SimEvent =
   /** R3-4/R3-6 · impact made visible: chalk dust where something broke or the
    *  fist landed. Coordinates are subs; the scene owns what a particle looks like. */
   | { type: "puff"; x: number; y: number; kind: "chalk" | "hit" }
+  /** R5-W5 · G4: a piece of the scattered uniform was taken. Like the Bonus-Buch
+   *  it does NOT stop the world (design §1: „erst begegnen, dann abfragen" — nine
+   *  interruptions would take the run apart). It carries the English word and the
+   *  spot it was lying on, because the word is shown AT THE FIND rather than over
+   *  the child: a word that appears mid-jump over a moving hero is a word nobody
+   *  reads. Coordinates are subs, like every other position in this union. */
+  | { type: "cloth"; id: string; wordEn: string; x: number; y: number }
   | { type: "exit"; to: string };
 
 export interface SimCfg {
@@ -407,9 +417,20 @@ export class Sim {
       if (mate) restoreFreedClassmate(mate, COLOUR_FLOOD_TICKS);
     }
     // R3-16: a Regel-Seite taken before the Kleckskammer stays taken after it
-    for (const id of cfg.collectedPickupIds?.() ?? []) {
+    const takenPickups = new Set(cfg.collectedPickupIds?.() ?? []);
+    for (const id of takenPickups) {
       const e = this.world.entities.find((x) => x.id === id);
       if (e) e.redeemed = true;
+    }
+    // R5-W5 · G4: p9 is the NACHLESE — it carries a second copy of every uniform
+    // piece and may only offer the ones still MISSING (UNIFORM_SAMMELN_DESIGN
+    // §1). A twin names the piece it repeats in `params.repeatOf`, so the same
+    // ledger that seeds the originals silences the twins too: no second channel,
+    // no word list travelling through the config, and a level law proves that
+    // every `repeatOf` points at a uniform piece that really exists.
+    for (const e of this.world.entities) {
+      const repeats = e.role === "cloth" ? e.params.repeatOf : undefined;
+      if (typeof repeats === "string" && takenPickups.has(repeats)) e.redeemed = true;
     }
     // ── R5-W4 · B4 · D-4 · WAS BEANTWORTET WAR, BLEIBT BEANTWORTET ───────────
     // Koki, 15.08.2026: „die Motte oben kann man wieder triggern … die Sachen
@@ -964,6 +985,24 @@ export class Sim {
         break;
       case "pickupTaken": {
         const e = this.world.entities.find((x) => x.id === ev.id);
+        // R5-W5 · G4 · the uniform piece. Modelled on the Bonus-Buch branch
+        // below (a counter and one event, no `overlayOpen`) and NOT on the
+        // Regel-Seite's freeze: the naming card comes later, at every third
+        // find, and it waits until the hero is standing. The chapter-wide tally
+        // is deliberately NOT kept here — a phase is remounted whenever the
+        // child comes back from the Kleckskammer, so a per-sim counter would
+        // restart mid-run; the ledger that survives that lives in the shell.
+        if (ev.role === "cloth") {
+          events.push({
+            type: "cloth",
+            id: ev.id,
+            wordEn: String(e?.params.wordEn ?? ""),
+            x: e?.x ?? this.player.x,
+            y: e?.y ?? this.player.y,
+          });
+          events.push({ type: "puff", x: e?.x ?? this.player.x, y: e?.y ?? this.player.y, kind: "chalk" });
+          break;
+        }
         if (ev.role === "book") {
           this.booksGot++;
           events.push({ type: "book", id: ev.id, got: this.booksGot });

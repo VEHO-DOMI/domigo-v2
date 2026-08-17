@@ -244,6 +244,43 @@ const familyOf = (png) => {
   return { family: best, share: total === 0 ? 0 : bestN / total };
 };
 
+/** Der Anteil ECHTEN Goldes an den deckenden Pixeln — Farbton 36-60°, dazu
+ *  gesaettigt (s > 0,60) UND hell (v > 0,80).
+ *
+ *  Warum eine zweite, engere Messung neben `familyOf`: das Verbot aus §4 gilt
+ *  fuer ANWESENHEIT, nicht fuer Dominanz. Ein blinder Blatt-Pruefer hat am
+ *  17.08. eine goldene SCHNALLE am Schuh gefunden, die die Familien-Messung
+ *  nicht sehen konnte (der Schuh misst 65 % braun; das Gold sind 1,4 % gelbe
+ *  Pixel). Eine blosse Gelb-Anwesenheitspruefung trennt aber nichts: die
+ *  Krawatte traegt 8,6 % und das Hemd 4,6 % warmes Gelb — beides sind
+ *  Lichter im Malstil, beide wie bestellt. Erst die Saettigungs-/Helligkeits-
+ *  Schranke trennt die Klasse sauber, gemessen an dieser Lieferung:
+ *  Hut 87,14 % · Schuh 0,58 % · **alle sieben anderen exakt 0,00 %**.
+ *  Ein Tor, das richtig und plausibel-falsch nicht trennt, ist Deko. */
+const GOLD_SHARE_LIMIT = 0.0025;
+const goldShare = (png) => {
+  let n = 0, gold = 0;
+  for (let i = 0; i < png.data.length; i += 4) {
+    if (png.data[i + 3] < 200) continue;
+    n++;
+    const r = png.data[i], g = png.data[i + 1], b = png.data[i + 2];
+    const max = Math.max(r, g, b), min = Math.min(r, g, b);
+    const v = max / 255, s = max === 0 ? 0 : (max - min) / max;
+    if (s <= 0.6 || v <= 0.8) continue;
+    const d = max - min;
+    let h = max === r ? 60 * (((g - b) / d) % 6) : max === g ? 60 * ((b - r) / d + 2) : 60 * ((r - g) / d + 4);
+    if (h < 0) h += 360;
+    if (h >= 36 && h < 60) gold++;
+  }
+  return n === 0 ? 0 : gold / n;
+};
+
+/** stem → warum diese Zelle trotz des Gold-Verbots gold tragen darf. */
+const DECLARED_GOLD = {
+  cloth_hat_a: "der ganze Hut ist goldgelb — dieselbe Abweichung wie oben (D-291, AQ10b)",
+  cloth_shoe_a: "die SCHNALLE ist gold (0,58 % der Flaeche). Gefunden von einem blinden Blatt-Pruefer, nicht von der Familien-Messung — sie faellt mit dem Schuh in AQ10b (D-291)",
+};
+
 // ── the commission, cell by cell (UNIFORM_SAMMELN_DESIGN §4) ─────────────────
 /** stem → the colour family the commission ordered. */
 const SPEC_COLOUR = {
@@ -375,6 +412,21 @@ for (const sheet of SHEETS) {
         failures.push(`${stem}: ordered »${spec}«, measures »${family}« (${(share * 100).toFixed(0)} % of the opaque pixels)${decl ? ` — declared as »${decl.got}«, which is a third value again` : " — UNDECLARED"}. A colour word nobody held against a pixel is how the restore cards carried wrong answers for weeks (P-65). Repair the sheet, or declare it here with a reason and a debt number.`);
         continue;
       }
+    }
+
+    // ── assertion 2b · das Gold-Verbot gilt fuer ANWESENHEIT ────────────────
+    if (SPEC_COLOUR[stem] !== undefined) {
+      const gs = goldShare(out);
+      const why = DECLARED_GOLD[stem];
+      if (gs >= GOLD_SHARE_LIMIT && why === undefined) {
+        failures.push(`${stem}: ${(gs * 100).toFixed(2)} % der Flaeche ist gesaettigtes Gold — §4 verbietet Gold an dieser Klasse ausdruecklich (die Buchstaben sind 0xf0c040 und haben ein eigenes Halo). Repariere das Blatt, oder deklariere die Stelle hier mit Grund und Schuldnummer.`);
+        continue;
+      }
+      if (gs < GOLD_SHARE_LIMIT && why !== undefined) {
+        failures.push(`${stem}: traegt eine Gold-Deklaration, misst aber nur ${(gs * 100).toFixed(2)} % — das Blatt wurde repariert, die Deklaration ist schal; entferne sie`);
+        continue;
+      }
+      if (why !== undefined) notes.push(`⚠ Gold DEKLARIERT: ${stem} ${(gs * 100).toFixed(2)} % — ${why}`);
     }
 
     const dest = path.join(OUT, `${stem}.png`);

@@ -152,7 +152,7 @@ export type EntityEvent =
   | { type: "powerupTaken"; id: string; grants: string }
   /** PK-R3b · R3-16: a static-state collectible was walked into — a Regel-Seite
    *  (which stops the world to show its rule) or a Bonus-Buch (which does not). */
-  | { type: "pickupTaken"; id: string; role: "tip" | "book"; skin: string }
+  | { type: "pickupTaken"; id: string; role: "tip" | "book" | "cloth"; skin: string }
   | { type: "guardianStagger"; id: string }
   | { type: "guardianKnot"; id: string; knotsLeft: number }
   | { type: "guardianDown"; id: string }
@@ -1445,6 +1445,21 @@ export const stepEntities = (
       // magnet exists to answer, and it applies here twice over.
       case "tip":
       case "book": {
+        if (overlapsPlayer(e, inp, 18, 24)) {
+          e.redeemed = true;
+          e.timer = 0;
+          events.push({ type: "pickupTaken", id: e.id, role: e.role, skin: e.skin });
+        }
+        break;
+      }
+      // R5-W5 · G4 · a piece of the scattered uniform (UNIFORM_SAMMELN_DESIGN
+      // §1). Same no-brain contact take as the two above, and deliberately the
+      // same generous 18×24 box: a piece the child brushes past and does not get
+      // is worse here than for a rule page, because the naming card only ever
+      // asks about pieces that were actually found. The word itself rides in
+      // `params.wordEn` and is read where the toast is built — the entity step
+      // stays a collision test and nothing else.
+      case "cloth": {
         if (overlapsPlayer(e, inp, 18, 24)) {
           e.redeemed = true;
           e.timer = 0;
