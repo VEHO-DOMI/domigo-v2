@@ -248,19 +248,42 @@ describe("R5-F6 · der Anfall der Füllfeder ist ein anderer als der des Bleisti
     // jeder `turn` die Uhr auf null setzt. Eine Fähigkeit, die im ausgelieferten
     // Level unerreichbar ist, gibt es nicht — also prüft das hier das LEVEL, nicht
     // die Funktion.
-    for (const [phaseId, id] of [["p1", "p1-pencil1"], ["p2", "p2-pen"]] as const) {
+    const zaehle = (phaseId: "p1" | "p2", id: string): number => {
       const p = phase(phaseId);
       const w: EntityWorld = spawnEntities(p.entities, []);
       const laeufer = w.entities.find((e) => e.id === id)!;
       let anfaelle = 0;
       let vorher = laeufer.state;
-      for (let t = 0; t < 2000; t++) {
+      for (let t = 0; t < 6000; t++) {
         stepEntities(w, p.rows, input({ playerX: 200 * TILE * SUBS, playerY: 0 }));
         if (laeufer.state === "frenzy" && vorher !== "frenzy") anfaelle++;
         vorher = laeufer.state;
       }
-      expect(anfaelle, `${id} muss in 2000 Ticks in den Anfall kommen`).toBeGreaterThan(0);
+      return anfaelle;
+    };
+    expect(zaehle("p1", "p1-pencil1"), "der Bleistift kritzelt wiederkehrend").toBeGreaterThanOrEqual(10);
+    expect(zaehle("p2", "p2-pen"), "die Füllfeder schreibt überhaupt").toBeGreaterThan(0);
+  });
+
+  it("★★ …und die GRENZE steht auch im Code: einmal ist kein Takt (offener Befund)", () => {
+    // Kein stiller Deckel (Methode §6): die Füllfeder kommt in 6000 Ticks GENAU
+    // EINMAL zum Schreiben, weil ihre Uhr `e.timer` ist und jede Wende sie auf
+    // null setzt. Diese Zahl steht hier, damit sie nicht als „gelöst" durchgeht
+    // und damit der Tag sichtbar wird, an dem ein eigener Zähler sie hebt.
+    const p = phase("p2");
+    const w: EntityWorld = spawnEntities(p.entities, []);
+    const pen = w.entities.find((e) => e.id === "p2-pen")!;
+    let anfaelle = 0;
+    let wenden = 0;
+    let vorher = pen.state;
+    for (let t = 0; t < 6000; t++) {
+      stepEntities(w, p.rows, input({ playerX: 200 * TILE * SUBS, playerY: 0 }));
+      if (pen.state === "frenzy" && vorher !== "frenzy") anfaelle++;
+      if (pen.state === "turn" && vorher !== "turn") wenden++;
+      vorher = pen.state;
     }
+    expect(anfaelle, "GEMESSEN: einmal — mehr wird es erst mit einem eigenen Zähler").toBe(1);
+    expect(wenden, "und das liegt an ihren vielen Wenden").toBeGreaterThan(20);
   });
 
   it("★ das Kind sticht auch ihren Anfall — und der Abbruch setzt sie auf ihre Linie zurück", () => {

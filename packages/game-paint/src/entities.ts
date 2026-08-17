@@ -347,16 +347,32 @@ export const FRENZY_REACH_PX = 3;
  *
  * Also ist der Bereich jetzt so bemessen, dass sein OBERES Ende unter der
  * kürzesten gemessenen Patrouillen-Strecke des Kapitels liegt: 110 + 49 = 159
- * gegen 192. Damit erreichen beide Läufer ihren Anfall (Bleistift 150,
- * Füllfeder 126 — verschieden, also weiter kein Gleichtakt), und der Test
- * „★ BEIDE Läufer kommen im ausgelieferten Kapitel wirklich in ihren Anfall"
- * ist der Wächter, der genau diesen Ausfall gefunden hätte.
+ * gegen 192. Die Schwellen der zwei Läufer sind damit **113** (Bleistift) und
+ * **126** (Füllfeder) — verschieden, also weiter kein Gleichtakt.
  *
- * ⚠ Die TIEFERE Ursache bleibt offen und ist gefiled: solange die Uhr des
- * Anfalls `e.timer` ist, kann ein Läufer in einem engen Raum jederzeit wieder
- * ausgehungert werden. Der dauerhafte Weg ist ein eigener Zähler (wie
- * `freedTick`, der aus genau diesem Grund existiert) — das braucht ein neues
- * Feld an `EntityState`, und dessen einen Platz dieser Welle hat G4.
+ * GEMESSEN, 6000 Ticks im ausgelieferten Kapitel, Kind weit weg:
+ *
+ *   | Läufer      | vorher | nachher | längste Patrouille |
+ *   |-------------|-------:|--------:|-------------------:|
+ *   | Bleistift   |     21 |      21 |          215 Ticks |
+ *   | Füllfeder   |  **0** |   **1** |          192 Ticks |
+ *
+ * Der Bleistift ist also unberührt (sein autorisiertes Band gibt ihm lange
+ * Strecken, beide Schwellen passen hinein), und die Füllfeder kommt überhaupt
+ * erst einmal dazu — bei Tick 126, vor ihrer ersten Wende.
+ *
+ * ⚠ EHRLICH BENANNT, weil eine Zahl, die man nicht ausspricht, als „gelöst"
+ * gelesen wird: EINMAL in 6000 Ticks ist kein Takt. Nach ihrem ersten Anfall
+ * beginnt die Uhr wieder bei null, und ihre Wenden kommen häufiger als 126
+ * Ticks — sie ist danach ausgehungert. Der Bereich konnte den ERSTEN Anfall
+ * kaufen, nicht die Wiederkehr.
+ *
+ * Der dauerhafte Weg ist ein eigener Zähler, der eine Wende ÜBERLEBT (genau das
+ * ist der Grund, warum `freedTick` existiert: „the flood was read off `timer`,
+ * which every state change resets"). Das braucht EIN neues Feld an
+ * `EntityState`, und dessen einen Platz dieser Welle hat G4 (Rahmen §5) — also
+ * geht es als Befund an Fable, nicht als stille Grenzüberschreitung.
+ * `f5-feel.test.ts` hält beide Zahlen fest, damit die Grenze im Code steht.
  */
 export const FRENZY_EVERY_MIN = 110;
 export const FRENZY_EVERY_SPAN = 50;
