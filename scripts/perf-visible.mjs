@@ -469,6 +469,19 @@ for (const phase of PHASES) {
     const xs = takes.map((t) => t[k]).filter((v) => typeof v === "number" && Number.isFinite(v));
     return xs.length ? median(xs) : null;
   };
+  // Die Bauschritte werden GENAUSO gemittelt wie `createMs` darüber. Sonst steht
+  // in der Zeile ein Median über drei Läufe und in der Tabelle darunter der
+  // ERSTE, kalte Lauf — und die Summe der Schritte ist größer als die Zahl, die
+  // sie aufschlüsseln soll. (Beim ersten Lauf dieses Skripts war p1 genau so:
+  // 425 ms Median über 749 ms Schritt-Summe.) Eine Aufschlüsselung, die eine
+  // andere Messung aufschlüsselt als die daneben, ist keine.
+  const stepNames = [...new Set(takes.flatMap((t) => (t.build ?? []).map((s) => s.step)))];
+  const build = stepNames.map((step) => {
+    const xs = takes
+      .map((t) => (t.build ?? []).find((s) => s.step === step)?.ms)
+      .filter((v) => typeof v === "number" && Number.isFinite(v));
+    return { step, ms: xs.length ? median(xs) : null };
+  });
   const row = {
     phase, bauMs, runs: takes.length, attempts,
     loadMs: pick("loadMs"), createMs: pick("createMs"), firstGpuMs: pick("firstGpuMs"),
@@ -476,7 +489,9 @@ for (const phase of PHASES) {
     firstDrawCalls: takes[0].firstDrawCalls, filesQueued: takes[0].filesQueued,
     fps: pick("fps"), cpuP50: pick("cpuP50"), cpuP95: pick("cpuP95"),
     drawCalls: pick("drawCalls"), glTextures: pick("glTextures"), texMb: pick("texMb"),
-    build: takes[0].build, hidden: takes[0].hidden, visibility: takes[0].visibility,
+    build: build.length > 0 ? build : null,
+    buildFirstRun: takes[0].build,
+    hidden: takes[0].hidden, visibility: takes[0].visibility,
     gaps: gapsIn(takes[0]),
   };
   rows.push(row);
@@ -488,7 +503,9 @@ const baseline = BASELINE && existsSync(BASELINE) ? JSON.parse(readFileSync(BASE
 console.log(`\n## PERF-WÄCHTER (${LABEL})\n`);
 console.log(mdTable(rows, baseline));
 const steps = mdBuildSteps(rows);
-if (steps) console.log(`\nBauschritte je Phase (ms), die Aufschlüsselung von »aufbau«:\n\n${steps}`);
+if (steps) {
+  console.log(`\nBauschritte je Phase (ms, Median über ${RUNS} Lauf/Läufe — dieselbe Mittelung wie »aufbau« oben):\n\n${steps}`);
+}
 console.log(`\nGemessen mit: scripts/perf-visible.mjs · eigener Chrome --headless=new · `
   + `sichtbarer Tab (visibilityState=${control.vis}, hidden=${control.hidden}) · Kontrollseite ${verdict.fps.toFixed(1)} fps · Port ${PORT}`);
 for (const r of rows) {
