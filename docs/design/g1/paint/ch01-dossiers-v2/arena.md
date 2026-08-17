@@ -430,9 +430,12 @@ Kreidestrichen einen Schmierfleck macht.
 Drei Zusagen, alle gebaut in `PaintScene.ts#renderVictoryTract`:
 1. **Das Klassenfoto hängt nach dem Sieg in Farbe im Käfig.** Vorher die graue
    Silhouette (`captive_picture`, §5s „Verlockung"), danach das Bild selbst
-   (`obj_picture` — bezahlt, gemalt, und bis heute von nichts geladen). Die eine
-   nötige Zeile steht im Guardian-Zweig von `artScope.ts#phaseArtScope`; die
-   Tot-Kunst-Zahl fällt damit von 61 auf 60.
+   (`obj_picture` — bezahlt, gemalt, **und seit der Welle 4b geladen**). Die eine
+   nötige Zeile steht im Guardian-Zweig von `artScope.ts#phaseArtScope`.
+   *(nachgezogen 2026-08-17, war: „bis heute von nichts geladen … die Tot-Kunst-Zahl fällt
+   damit von 61 auf 60". Beides ist überholt: das Blatt ist verdrahtet, und die Decke steht
+   seit dem Hotfix auf dem gemessenen Wert **53**, nicht auf 61. `obj_picture` bleibt im
+   Saal — Ruling R108.)*
 2. **Warmes Licht überm Stuhl-Band**, einmal gezeichnet, danach eingeblendet.
 3. **Das ✕ erscheint erst nach dem Sieg.** Vorher hing dort ein Ausgang, der
    sichtbar war, ansteuerbar war und dann per Toast abwies — eine Enttäuschung
