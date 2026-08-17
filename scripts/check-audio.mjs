@@ -62,10 +62,25 @@ const LIMITS = {
   musicPhaseMb: 1,
   decodedMb: 16,
   musicLufs: -18, musicLufsTol: 2,
+  // Effekte werden nach LÄNGE verschieden gemessen: EBU R128 braucht
+  // 400-ms-Blöcke, ein 0,25-Sekunden-Schritt hat keinen einzigen. Unter einer
+  // Sekunde ist deshalb der RMS-Pegel das Instrument, darüber LUFS — und jedes
+  // hat sein eigenes Fenster. `audio.measured.json` sagt bei jeder Datei in
+  // `method`, welches galt; hier wird danach verglichen.
   sfxRmsDb: -20, sfxRmsTol: 2,
+  sfxLufs: -16, sfxLufsTol: 2,
   truePeakDb: -1, truePeakTol: 0.2,
   durationTol: 0.3,          // ±30 % um das Zielfenster
-  musicDurationTolSec: 20,   // die Schleifenlänge wird gemessen, nicht bestellt
+  // Die Schleifenlänge wird GEMESSEN, nicht bestellt: `master.mjs` sucht die
+  // Länge, bei der sich das Stück selbst am ähnlichsten ist. Gemessen kam bei
+  // drei Takes desselben Prompts 38,5 s · 26,1 s · 26,1 s heraus (die beiden
+  // letzten exakt zehn Takte bei den bestellten 92 BPM). Ein enges Fenster um
+  // die bestellten 45 s würde also eine SAUBERE Schleife rot machen und eine
+  // schlechte durchlassen. Geprüft wird deshalb nur, dass die Schleife lang
+  // genug ist, um nicht zu nerven, und kurz genug fürs Speicherbudget.
+  musicLoopMinSec: 15,
+  musicLoopMaxSec: 60,
+  stingerTol: 0.5,           // Auftakt und Sieg: ±50 % um ihre Nennlänge
   minRmsDb: -40,             // darunter ist es ein stilles Blatt
   minPeakDb: -20,
   maxFlatFactor: 0,
@@ -199,6 +214,24 @@ if (selftest) {
   };
 
   let ok = true;
+
+  // 0 · DAS INSTRUMENT BEWEIST SICH SELBST, sonst bedeuten seine Zahlen nichts
+  //     (Haus-Regel, wie bei `measure-presence.mjs`). Ein reiner Sinus bekannter
+  //     Frequenz MUSS seinen spektralen Schwerpunkt genau dort haben — sonst
+  //     misst die Fourier-Rechnung etwas anderes als behauptet, und jede
+  //     :371-Aussage darüber wäre wertlos.
+  {
+    const probeFile = mk("probe-1000hz", ["-f", "lavfi", "-i", "sine=frequency=1000:r=44100:d=0.5"]);
+    const pm = measureFile(probeFile, "sfx");
+    const c = pm.centroidsHz[1];
+    if (Math.abs(c - 1000) > 60) {
+      console.error(`✗ SELBSTTEST: ein reiner 1000-Hz-Sinus misst als Schwerpunkt ${c} Hz — das Instrument selbst ist falsch`);
+      ok = false;
+    } else {
+      console.log(`  ✓ Instrument: reiner 1000-Hz-Sinus → Schwerpunkt ${c} Hz`);
+    }
+  }
+
   for (const c of cases) {
     const m = measureFile(c.file, c.kind);
     const fired = c.expect(m);
@@ -225,7 +258,8 @@ if (selftest) {
 
   fs.rmSync(dir, { recursive: true, force: true });
   if (ok) {
-    console.log(`check-audio SELBSTTEST: OK — fuenf rote Lichter brennen, die Kontrolle bleibt gruen.`);
+    console.log("check-audio SELBSTTEST: OK — das Instrument stimmt, fuenf rote Lichter brennen, "
+      + "und die aufsteigende Kontrolle bleibt gruen.");
     process.exit(0);
   }
   process.exit(1);
@@ -318,18 +352,28 @@ for (const { file, kind, spec } of promised) {
 
   // Gesetz 5 · Dauer im Fenster
   const wantSec = spec.durationSec;
-  const okDuration = kind === "music"
-    ? Math.abs(stored.durationSec - wantSec) <= LIMITS.musicDurationTolSec
-    : Math.abs(stored.durationSec - wantSec) <= wantSec * LIMITS.durationTol + 0.05;
-  if (!okDuration) fail("Dauer", `${file}: ${stored.durationSec} s, erwartet ${wantSec} s ± ${kind === "music" ? `${LIMITS.musicDurationTolSec} s` : `${Math.round(LIMITS.durationTol * 100)} %`}`);
+  const isLoop = kind === "music" && !file.startsWith("music-title") && !file.startsWith("music-win");
+  if (isLoop) {
+    if (stored.durationSec < LIMITS.musicLoopMinSec || stored.durationSec > LIMITS.musicLoopMaxSec) {
+      fail("Dauer", `${file}: Schleife ${stored.durationSec} s — erlaubt sind ${LIMITS.musicLoopMinSec}–${LIMITS.musicLoopMaxSec} s (die Länge wird gemessen, nicht bestellt)`);
+    }
+  } else {
+    const tol = kind === "music" ? wantSec * LIMITS.stingerTol : wantSec * LIMITS.durationTol + 0.05;
+    if (Math.abs(stored.durationSec - wantSec) > tol) {
+      fail("Dauer", `${file}: ${stored.durationSec} s, erwartet ${wantSec} s ± ${tol.toFixed(2)} s`);
+    }
+  }
 
   // Gesetz 6 · Lautheit und True Peak
-  if (kind === "music") {
-    if (Math.abs(stored.loudnessDb - LIMITS.musicLufs) > LIMITS.musicLufsTol) {
-      fail("Lautheit", `${file}: ${stored.loudnessDb} LUFS, Fenster ${LIMITS.musicLufs} ± ${LIMITS.musicLufsTol} LU`);
+  {
+    const [target, tol, unit] = kind === "music"
+      ? [LIMITS.musicLufs, LIMITS.musicLufsTol, "LUFS"]
+      : stored.method === "lufs-i"
+        ? [LIMITS.sfxLufs, LIMITS.sfxLufsTol, "LUFS"]
+        : [LIMITS.sfxRmsDb, LIMITS.sfxRmsTol, "dB RMS"];
+    if (Math.abs(stored.loudnessDb - target) > tol) {
+      fail("Lautheit", `${file}: ${stored.loudnessDb} ${unit}, Fenster ${target} ± ${tol} (gemessen als \`${stored.method}\`)`);
     }
-  } else if (Math.abs(stored.loudnessDb - LIMITS.sfxRmsDb) > LIMITS.sfxRmsTol) {
-    fail("Lautheit", `${file}: ${stored.loudnessDb} dB RMS, Fenster ${LIMITS.sfxRmsDb} ± ${LIMITS.sfxRmsTol} dB`);
   }
   if (stored.truePeakDb > LIMITS.truePeakDb + LIMITS.truePeakTol) {
     fail("True Peak", `${file}: ${stored.truePeakDb} dBTP ueber der Decke von ${LIMITS.truePeakDb} dBTP`);

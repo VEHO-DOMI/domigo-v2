@@ -61,28 +61,72 @@ export const peak = (s) => {
 export const db = (x) => (x <= 0 ? -Infinity : 20 * Math.log10(x));
 
 /**
- * Spektraler Schwerpunkt (Hz) eines Fensters — eine direkte DFT über ein
- * Hann-gefenstertes Segment. Kein FFT-Paket: das Fenster ist klein, die Zahl
- * wird dreimal je Datei gebraucht, und eine Abhängigkeit für zwanzig Zeilen
- * Mathematik wäre teurer als die Zeilen.
+ * Schnelle Fouriertransformation, radix-2, an Ort und Stelle.
+ *
+ * Die erste Fassung dieses Moduls rechnete die Fourier-Summe direkt aus. Das war
+ * richtig und unbrauchbar langsam: 2048 Punkte × 1024 Frequenzen × 3 Fenster
+ * sind sechs Millionen Sinus-Aufrufe **je Datei**, und die Musterung hat 219
+ * Dateien zu messen — dieselbe Rechnung läuft ausserdem im CI-Tor bei jedem
+ * Lauf. Gemessen: die Musterung schaffte 31 Dateien in einer Viertelstunde.
+ *
+ * Dies ist derselbe Wert, in n·log(n) statt n². Der Selbsttest unten vergleicht
+ * beide Wege an einem Sinus bekannter Frequenz — eine schnellere Rechnung, die
+ * etwas anderes ausrechnet, wäre die schlechteste aller Verbesserungen.
+ */
+const fft = (re, im) => {
+  const n = re.length;
+  for (let i = 1, j = 0; i < n; i++) {
+    let bit = n >> 1;
+    for (; j & bit; bit >>= 1) j ^= bit;
+    j ^= bit;
+    if (i < j) {
+      const tr = re[i]; re[i] = re[j]; re[j] = tr;
+      const ti = im[i]; im[i] = im[j]; im[j] = ti;
+    }
+  }
+  for (let len = 2; len <= n; len <<= 1) {
+    const ang = (-2 * Math.PI) / len;
+    const wr = Math.cos(ang); const wi = Math.sin(ang);
+    const half = len >> 1;
+    for (let i = 0; i < n; i += len) {
+      let cr = 1; let ci = 0;
+      for (let j = 0; j < half; j++) {
+        const ur = re[i + j]; const ui = im[i + j];
+        const xr = re[i + j + half]; const xi = im[i + j + half];
+        const vr = xr * cr - xi * ci;
+        const vi = xr * ci + xi * cr;
+        re[i + j] = ur + vr; im[i + j] = ui + vi;
+        re[i + j + half] = ur - vr; im[i + j + half] = ui - vi;
+        const nr = cr * wr - ci * wi;
+        ci = cr * wi + ci * wr;
+        cr = nr;
+      }
+    }
+  }
+};
+
+/**
+ * Spektraler Schwerpunkt (Hz) eines Hann-gefensterten Segments — die „Helligkeit"
+ * des Klangs. Aus drei solchen Fenstern wird die Messung, die BLUEPRINT `:371`
+ * zu einer Zahl macht.
  */
 export const centroid = (s, from, to) => {
-  const N = Math.min(2048, to - from);
-  if (N < 64) return 0;
+  const span = to - from;
+  if (span < 64) return 0;
+  const N = Math.min(2048, 2 ** Math.floor(Math.log2(span)));
   const mid = Math.floor((from + to) / 2);
-  const start = Math.max(from, mid - Math.floor(N / 2));
-  const x = new Float64Array(N);
+  const start = Math.max(from, Math.min(s.length - N, mid - Math.floor(N / 2)));
+  const re = new Float64Array(N);
+  const im = new Float64Array(N);
   for (let i = 0; i < N; i++) {
     const w = 0.5 - 0.5 * Math.cos((2 * Math.PI * i) / (N - 1));
-    x[i] = (s[start + i] ?? 0) * w;
+    re[i] = (s[start + i] ?? 0) * w;
   }
+  fft(re, im);
   let num = 0; let den = 0;
-  const bins = Math.floor(N / 2);
+  const bins = N >> 1;
   for (let k = 1; k < bins; k++) {
-    let re = 0; let im = 0;
-    const w = (-2 * Math.PI * k) / N;
-    for (let i = 0; i < N; i++) { const a = w * i; re += x[i] * Math.cos(a); im += x[i] * Math.sin(a); }
-    const mag = Math.hypot(re, im);
+    const mag = Math.hypot(re[k], im[k]);
     num += mag * ((k * SR) / N);
     den += mag;
   }

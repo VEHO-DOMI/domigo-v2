@@ -56,8 +56,20 @@ const XFADE_MS = 20;
 /** Ziel-RMS für kurze Effekte (< 1 s), in dBFS. Empirisch die Lage, in der ein
  *  dichter One-Shot neben einem −18-LUFS-Musikbett sitzt, ohne ihn zu decken. */
 const SFX_TARGET_RMS_DB = -20;
+/**
+ * Effekte AB EINER SEKUNDE (die Fanfaren) werden in LUFS gemessen, nicht in RMS —
+ * erst ab 400-ms-Blöcken hat EBU R128 überhaupt etwas zu messen. Sie brauchen
+ * deshalb ein LUFS-Ziel, und es liegt über dem der Musik: eine Fanfare soll auf
+ * dem Bett liegen, nicht darin. (Die erste Fassung schickte ALLE Effekte durch
+ * die RMS-Normalisierung und verglich sie dann gegen ein RMS-Fenster, obwohl das
+ * Messgerät bei den langen längst LUFS lieferte — Äpfel gegen Birnen. Drei Stems
+ * fielen dadurch komplett durch, `board-bloom` mit allen acht Takes.)
+ */
+const SFX_LONG_TARGET_LUFS = -16;
 const MUSIC_TARGET_LUFS = -18;
 const TARGET_TP_DB = -1;
+/** Ab dieser Länge misst und normalisiert die Kette in LUFS statt in RMS. */
+const LUFS_MIN_SEC = 1.0;
 
 const argv = process.argv.slice(2);
 const flag = (n) => argv.includes(`--${n}`);
@@ -103,6 +115,41 @@ const applyFades = (s) => {
     s[s.length - 1 - i] *= g;
   }
   return s;
+};
+
+/**
+ * Totes Ende abschneiden — NACH der Lautheitsangleichung.
+ *
+ * `silenceremove` läuft ganz am Anfang der Kette, also vor jeder Verstärkung;
+ * was danach unter die Schwelle rutscht, bleibt stehen. Gemessen hatte
+ * `music-win` so 214 ms und `solve-ok` bis zu 335 ms Stille am Ende — Bytes, die
+ * niemand hört, und beim Abspielen eine Latenz, die man fühlt. 20 ms bleiben
+ * stehen, damit der Ausklang nicht abgehackt wirkt.
+ */
+const trimTail = (s, keepMs = 20) => {
+  const win = Math.floor(SR / 1000);
+  const thr = 10 ** (-50 / 20);
+  let i = s.length;
+  while (i - win >= 0 && rms(s, i - win, i) < thr) i -= win;
+  const keep = Math.min(s.length, i + Math.floor((keepMs / 1000) * SR));
+  return keep < s.length ? s.slice(0, keep) : s;
+};
+
+/** Lautheit auf ein LUFS-Ziel bringen — zwei Durchgänge, auf Abtastwerten. */
+const loudnormSamples = (samples, targetI, tmp, name) => {
+  const raw = path.join(tmp, `${name}-ln-in.wav`);
+  const out = path.join(tmp, `${name}-ln-out.wav`);
+  execFileSync("ffmpeg", [
+    "-hide_banner", "-v", "error", "-y", "-f", "f32le", "-ar", String(SR), "-ac", "1",
+    "-i", "pipe:0", "-c:a", "pcm_f32le", raw,
+  ], { input: Buffer.from(samples.buffer, samples.byteOffset, samples.length * 4), maxBuffer: 256 * 1024 * 1024 });
+  const m = loudnormMeasure(raw, targetI, TARGET_TP_DB);
+  run("ffmpeg", ["-hide_banner", "-v", "error", "-y", "-i", raw, "-af",
+    `loudnorm=I=${targetI}:TP=${TARGET_TP_DB}:LRA=11:`
+    + `measured_I=${m.input_i}:measured_TP=${m.input_tp}:measured_LRA=${m.input_lra}:`
+    + `measured_thresh=${m.input_thresh}:offset=${m.target_offset}:linear=true`,
+    "-ac", "1", "-ar", String(SR), "-c:a", "pcm_f32le", out]);
+  return decodeMono(out);
 };
 
 const limitTruePeak = (s, targetDb) => {
@@ -312,7 +359,10 @@ if (MEASURE_ONLY) {
         loopNote = cut.note;
         loopFit = cut.loop;
       } else {
-        applyFades(samples); // Auftakt und Sieg laufen einmal und dürfen ausblenden
+        // Auftakt und Sieg laufen einmal und dürfen ausblenden — aber ohne
+        // totes Ende: `music-win` schleppte 214 ms Stille mit sich.
+        samples = trimTail(samples);
+        applyFades(samples);
       }
     } else {
       // ── Effekte: ERST kappen und ausblenden, DANN normalisieren ────────────
@@ -331,10 +381,19 @@ if (MEASURE_ONLY) {
         const maxN = Math.floor(t.item.targetSeconds * SR);
         if (samples.length > maxN) samples = samples.slice(0, maxN);
       }
+      samples = trimTail(samples);
       applyFades(samples);
-      const cur = db(rms(samples));
-      const gain = 10 ** ((SFX_TARGET_RMS_DB - cur) / 20);
-      for (let i = 0; i < samples.length; i++) samples[i] *= gain;
+      if (samples.length / SR >= LUFS_MIN_SEC) {
+        // Die Fanfaren: ab einer Sekunde misst das Messgerät in LUFS, also wird
+        // hier auch in LUFS normalisiert — sonst normalisiert die Kette nach
+        // einer Zahl und das Tor prüft nach einer anderen.
+        samples = loudnormSamples(samples, SFX_LONG_TARGET_LUFS, tmp, t.name);
+        applyFades(samples);
+      } else {
+        const cur = db(rms(samples));
+        const gain = 10 ** ((SFX_TARGET_RMS_DB - cur) / 20);
+        for (let i = 0; i < samples.length; i++) samples[i] *= gain;
+      }
     }
 
     // 4 · Spitze begrenzen und schreiben
@@ -358,7 +417,26 @@ if (MEASURE_ONLY) {
 // Die Musterung schreibt weder audio.measured.json noch audioFiles.ts — sie
 // entscheidet nichts, sie legt nur nebeneinander.
 if (SURVEY) {
-  fs.writeFileSync(path.join(SURVEY_ROOT, "survey.json"), `${JSON.stringify(measured, null, 2)}\n`);
+  // Je Stem eine Teildatei, dann alle vorhandenen zusammenführen. So dürfen
+  // mehrere Musterungs-Prozesse nebeneinander laufen (die Messung ist an
+  // Prozessstarts gebunden, nicht an Rechenzeit: acht ffmpeg-Aufrufe je Datei
+  // à 300–500 ms, und `execFileSync` blockiert dabei den einzigen JS-Faden).
+  const parts = path.join(SURVEY_ROOT, "_parts");
+  fs.mkdirSync(parts, { recursive: true });
+  const perStem = new Map();
+  for (const [name, m] of Object.entries(measured)) {
+    const stem = name.split("#")[0];
+    if (!perStem.has(stem)) perStem.set(stem, {});
+    perStem.get(stem)[name] = m;
+  }
+  for (const [stem, rows] of perStem) {
+    fs.writeFileSync(path.join(parts, `${stem}.json`), `${JSON.stringify(rows, null, 2)}\n`);
+  }
+  const all = {};
+  for (const f of fs.readdirSync(parts).filter((x) => x.endsWith(".json")).sort()) {
+    Object.assign(all, JSON.parse(fs.readFileSync(path.join(parts, f), "utf8")));
+  }
+  fs.writeFileSync(path.join(SURVEY_ROOT, "survey.json"), `${JSON.stringify(all, null, 2)}\n`);
   const byStemRows = new Map();
   for (const [name, m] of Object.entries(measured)) {
     const stem = name.split("#")[0];

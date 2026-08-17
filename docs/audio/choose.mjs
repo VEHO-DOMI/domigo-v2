@@ -36,6 +36,7 @@ const REASONS = path.join(ROOT, "docs/audio/choices.reasons.json");
 
 const MAX_TAIL_MS = 80;
 const SFX_TARGET_RMS = -20;
+const SFX_LONG_TARGET_LUFS = -16;
 const SFX_TOL = 2;
 const MUSIC_TARGET_LUFS = -18;
 const MUSIC_TOL = 2;
@@ -72,10 +73,15 @@ for (const [stem, all] of [...takes.entries()].sort()) {
   const rejected = [];
   let pool = all.filter((t) => {
     if (t.tailSilenceMs > MAX_TAIL_MS) { rejected.push([t.take, `${t.tailSilenceMs} ms Stille am Ende (Grenze ${MAX_TAIL_MS})`]); return false; }
-    const target = kind === "music" ? MUSIC_TARGET_LUFS : SFX_TARGET_RMS;
-    const tol = kind === "music" ? MUSIC_TOL : SFX_TOL;
+    // Nach dem Instrument vergleichen, mit dem gemessen wurde — unter einer
+    // Sekunde RMS, darüber LUFS (EBU R128 braucht 400-ms-Blöcke).
+    const [target, tol, unit] = kind === "music"
+      ? [MUSIC_TARGET_LUFS, MUSIC_TOL, "LUFS"]
+      : t.method === "lufs-i"
+        ? [SFX_LONG_TARGET_LUFS, SFX_TOL, "LUFS"]
+        : [SFX_TARGET_RMS, SFX_TOL, "dB"];
     if (Math.abs(t.loudnessDb - target) > tol) {
-      rejected.push([t.take, `${t.loudnessDb} ${kind === "music" ? "LUFS" : "dB"} — ausserhalb ${target} ± ${tol} (die Spitzenbegrenzung musste greifen)`]);
+      rejected.push([t.take, `${t.loudnessDb} ${unit} — ausserhalb ${target} ± ${tol}`]);
       return false;
     }
     return true;

@@ -289,9 +289,22 @@ Pipeline-Ergebnis, kein Prompt-Ergebnis:
    Zusammenlegen etwas ausgelöscht und der Take geht zurück.
 2. Hochpass 80 Hz — ein Klassenraum hat keinen Subbass, und ein Tablet-Lautsprecher gibt ihn ohnehin
    nur als Verzerrung wieder.
-3. `loudnorm` in **zwei Durchgängen** (erst messen, dann mit den gemessenen Werten normalisieren —
-   ein Durchgang trifft das Fenster nicht zuverlässig).
-4. Stille vorn/hinten trimmen, 5 ms Fades an beiden Enden.
+3. Lautheit angleichen — **zwei Instrumente, nach Länge**:
+   - **ab 1 s** (Musik und die Fanfaren): `loudnorm` in **zwei Durchgängen** (erst messen, dann mit
+     den gemessenen Werten normalisieren — ein Durchgang trifft das Fenster nicht zuverlässig);
+   - **unter 1 s** (die meisten Effekte): RMS-Normalisierung.
+
+   **Warum zwei.** EBU R128 mittelt über 400-ms-Blöcke. Ein 0,25-Sekunden-Schritt hat keinen
+   einzigen vollständigen — „−16 LUFS" ist dort keine strengere Messung, sondern gar keine.
+   `audio.measured.json` schreibt bei **jeder** Datei in `method`, welches Instrument galt, und das
+   Tor vergleicht gegen das passende Fenster. *(Die erste Fassung schickte alle Effekte durch die
+   RMS-Normalisierung und prüfte sie dann gegen ein RMS-Fenster, obwohl das Messgerät bei den langen
+   längst LUFS lieferte. Drei Stems fielen dadurch komplett durch — `board-bloom` mit allen acht
+   Takes. Aufgefallen in der Musterung, nicht im Betrieb.)*
+4. Stille vorn/hinten trimmen, 5 ms Fades an beiden Enden. **Das Ende wird ein zweites Mal
+   getrimmt, NACH der Lautheitsangleichung** — was vorher unter der Schwelle lag, liegt nach einer
+   Verstärkung darüber und umgekehrt; gemessen schleppte `music-win` so 214 ms Stille mit, `solve-ok`
+   bis zu 335 ms. Das sind Bytes, die niemand hört, und beim Abspielen eine Latenz, die man fühlt.
 5. Musik: **Schleifenlänge messen** (nicht aus dem Tempo rechnen — siehe unten), dann schneiden und
    20 ms Equal-Power-Crossfade Tail→Head einbacken. Die Datei IST danach die Schleife.
 6. **MP3 mono, 96 kbps, 44,1 kHz.** Kein Opus, kein AAC, keine zweite Fassung.
@@ -310,7 +323,7 @@ Pipeline-Ergebnis, kein Prompt-Ergebnis:
 
 | Größe | Musik | SFX | Warum |
 |---|---|---|---|
-| Lautheit | **−18 LUFS (integrated)** ± 2 LU | **−16 LUFS (short-term)** ± 2 LU | Musik liegt unter den Effekten, damit sie trägt statt zu decken |
+| Lautheit | **−18 LUFS** ± 2 LU | **≥ 1 s: −16 LUFS** ± 2 LU · **< 1 s: −20 dBFS RMS** ± 2 dB | Musik liegt unter den Effekten, damit sie trägt statt zu decken. Zwei Instrumente, weil EBU R128 über 400-ms-Blöcke misst und ein 0,25-Sekunden-Schritt keinen einzigen hat — siehe unten |
 | True Peak | ≤ **−1 dBTP** | ≤ **−1 dBTP** | Kopfraum für den MP3-Decoder; sonst zerrt es genau auf billigen Lautsprechern |
 | Dauer | 45 s ± 1,5 s (Loops) | Familienfenster aus §2b ± 30 % | eine Fanfare von 4 s ist keine Fanfare mehr |
 | Nicht-Blatt | RMS > −40 dBFS **und** Peak > −20 dBFS | dito | eine stille Datei ist der Fehler, den niemand hört |
