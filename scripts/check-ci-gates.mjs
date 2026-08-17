@@ -69,6 +69,8 @@ const SELFTEST_ONLY = {
     "misst, wie dunkel die Welt hinter einer offenen Karte ist — dafür muss die Karte offen sein, also braucht es das laufende Spiel",
   "shoot-card-bench.mjs":
     "startet einen eigenen Chrome und fotografiert die Kartenbank; der Selbsttest prüft die Ausschnitt-Rechnung (D-102) ohne Browser",
+  "shoot-world.mjs":
+    "schießt Bildreihen aus einem eigenen Chrome gegen einen laufenden Dev-Server; der Selbsttest prüft ohne Browser, was ohne Browser prüfbar ist — die Kampf-Abtastrate gegen die Takt-Konstanten aus entities.ts und den Beipackzettel (D-259)",
 };
 
 const selftest = process.argv.includes("--selftest");

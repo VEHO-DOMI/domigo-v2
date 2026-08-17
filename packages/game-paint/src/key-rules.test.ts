@@ -52,18 +52,18 @@ const compile = (params: string, expr: string, tol: number): Rule =>
 const findTol = (text: string): number => {
   const m = /^const TOL = (\d+);/m.exec(text);
   expect(m, "kein `const TOL = …` gefunden — die Regel hat ihre Form geändert").not.toBeNull();
-  return Number(m![1]);
+  return Number(m![1]!);
 };
 
 const findKeyRule = (text: string, tol: number): Rule => {
   const m = /^const isMagenta = \(([^)]*)\) =>\s*(.+?);\s*$/m.exec(text);
   expect(m, "kein `const isMagenta = …` gefunden — die Regel hat ihre Form geändert").not.toBeNull();
-  return compile(m![1], m![2], tol);
+  return compile(m![1]!, m![2]!, tol);
 };
 
 const findFringeRule = (text: string, tol: number): Rule => {
   const named = /^const isFringe = \(([^)]*)\) =>\s*(.+?);\s*$/m.exec(text);
-  if (named !== null) return compile(named[1], named[2], tol);
+  if (named !== null) return compile(named[1]!, named[2]!, tol);
   // …und die drei, die dieselbe Regel ohne Namen in eine `if`-Zeile getippt haben
   const inline = /if \((r > \d+ && b > \d+ && r - g > \d+ && b - g > \d+)\)/.exec(text);
   expect(
@@ -71,7 +71,7 @@ const findFringeRule = (text: string, tol: number): Rule => {
     "weder `const isFringe = …` noch die eingetippte Saum-Bedingung gefunden — "
       + "die Regel hat ihre Form geändert und muss angesehen werden",
   ).not.toBeNull();
-  return compile("r, g, b", inline![1], tol);
+  return compile("r, g, b", inline![1]!, tol);
 };
 
 describe("die Schlüsselfarb-Regeln stehen im Repo nur EINMAL (H3 · W4)", () => {

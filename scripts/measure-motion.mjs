@@ -28,6 +28,7 @@
 // stillzustehen scheinen. Dann haben beide recht und die Reihe ist die falsche.
 import fs from "node:fs";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { PNG } from "pngjs";
 
 const ZOOM = 3; // Kamera-Zoom der Malbuch-Szene; steht so in PaintScene
@@ -150,17 +151,49 @@ export const topCentroid = (png, band) => {
   return sw === 0 ? null : sx / sw;
 };
 
+/** Welche Bildpunkte des Bandes sich über die Reihe überhaupt ändern.
+ *  Dasselbe Kriterium, das `stillDarkShare` zählt — hier als Maske, damit die
+ *  Korrelation die stehende Masse überspringen kann (W4/D-255). */
+export const movingMask = (frames, band, threshold = 12) => {
+  const A = frames[0];
+  const W = A.width;
+  const mask = new Uint8Array(band.w * band.h);
+  for (let y = 0; y < band.h; y++) {
+    for (let x = 0; x < band.w; x++) {
+      const i = ((band.y + y) * W + (band.x + x)) * 4;
+      for (const B of frames.slice(1)) {
+        if (Math.abs(lum(A.data, i) - lum(B.data, i)) > threshold) { mask[y * band.w + x] = 1; break; }
+      }
+    }
+  }
+  return mask;
+};
+
 /**
  * Waagrechte Verschiebung von B gegen A im Fensterband, auf Subpixel genau.
  * Bleibt als Gegenprobe: sie beantwortet „wie stark ändert sich das Bild",
  * nicht „wie weit wandert die Oberkante".
+ *
+ * ── R5-W5 · W4 · D-255 · WARUM SIE AUF 0 EINRASTETE ────────────────────────
+ * Die Summe der Helligkeits-Unterschiede über das GANZE Band ist kein
+ * Mittelwert, sondern ein Mehrheitsentscheid: jeder Bildpunkt, der sich nicht
+ * bewegt, ist bei Verschiebung 0 exakt deckungsgleich und zieht das Minimum
+ * dorthin. Ein Band, das überwiegend steht, meldet deshalb 0,00 px — leise und
+ * falsch, und die Zahl stand bis heute NUR im `--json`, wo sie niemand sah.
+ *
+ * Mit `mask` zählen nur die Bildpunkte, die sich über die Reihe überhaupt
+ * ändern. Die stehende Mehrheit kann das Minimum dann nicht mehr nach 0 ziehen.
+ * Was sie weiterhin NICHT kann: eine Scherung auflösen — dafür gibt es den
+ * Schwerpunkt. Deshalb steht sie in der Tabelle als das, was sie ist: eine
+ * Gegenprobe, keine zweite Meinung.
  */
-export const shiftPx = (A, B, band, span = 24) => {
+export const shiftPx = (A, B, band, { span = 24, mask = null } = {}) => {
   const W = A.width;
   const at = (s) => {
     let sad = 0, n = 0;
     for (let y = band.y; y < band.y + band.h; y++) {
       for (let x = band.x; x < band.x + band.w; x++) {
+        if (mask !== null && mask[(y - band.y) * band.w + (x - band.x)] === 0) continue;
         const xs = x + s;
         if (xs < 0 || xs >= W) continue;
         sad += Math.abs(lum(A.data, (y * W + x) * 4) - lum(B.data, (y * W + xs) * 4));
@@ -324,6 +357,74 @@ const selftest = () => {
     if (Math.abs(sauberRoh - 7) > 0.3) {
       fails.push(`ohne stehende Masse müsste der rohe Schwerpunkt 7 px melden; gemessen ${sauberRoh.toFixed(2)}`);
     }
+
+  }
+
+  // ── R5-W5 · W4 · D-255 · DIE ZWEITE ZAHL, DIE AUF 0 EINRASTETE ───────────
+  // Eigene Vorlage, und der Grund steht hier, damit ihn niemand wegvereinfacht:
+  // die D-170-Vorlage oben trägt einen LINEAREN Verlauf. Für den Schwerpunkt ist
+  // das richtig, für eine Korrelation ist es entartet — eine Rampe passt bei
+  // vielen Verschiebungen fast gleich gut, ein falscher Versatz kostet nur einen
+  // konstanten Aufschlag. Der erste Anlauf dieses Falls meldete deshalb 14,83 px
+  // für 7 px, und zwar nicht wegen der Maske, sondern wegen der Vorlage.
+  // Hier steht ein GEMUSTERTER Kasten: sein Minimum ist scharf.
+  {
+    const band = { x: 55, y: 30, w: 60, h: 20 };
+    const muster = (k) => 30 + ((k * 37) % 97) * 1.8; // nicht monoton, Spanne ~170
+    const zwei = (offset, mitStehendem = true) => {
+      const png = new PNG({ width: W, height: H });
+      for (let y = 0; y < H; y++) {
+        for (let x = 0; x < W; x++) {
+          const i = (y * W + x) * 4;
+          // Ein KLEINER bewegter Kasten (12 px) und eine GROSSE stehende Masse
+          // (30 px) im selben Band: so herum lag der echte Fall, und nur so
+          // herum kann die stehende Mehrheit das Minimum nach 0 ziehen.
+          const k = x - offset - 60;
+          let v = 235;
+          if (k >= 0 && k < 12 && y >= 30 && y < 90) v = muster(k);
+          else if (mitStehendem && x >= 84 && x < 114 && y >= 30 && y < 90) v = muster(x - 84);
+          png.data[i] = Math.round(v); png.data[i + 1] = Math.round(v); png.data[i + 2] = Math.round(v); png.data[i + 3] = 255;
+        }
+      }
+      return png;
+    };
+    const reihe = [zwei(0), zwei(7)];
+    const rohKorr = shiftPx(reihe[0], reihe[1], band);
+    const maskKorr = shiftPx(reihe[0], reihe[1], band, { mask: movingMask(reihe, band) });
+    // 1 · der Defekt muss NACHGESTELLT sein, sonst prüft der Fall nichts:
+    //     mit stehender Masse im Band verfehlt die ungemaskte Korrelation die 7.
+    if (Math.abs(rohKorr - 7) <= 0.6) {
+      fails.push("der Fall prüft nichts: die UNGEMASKTE Korrelation findet die 7 px schon ohne Maske "
+        + `(${rohKorr.toFixed(2)}) — dann ist D-255 nicht nachgestellt`);
+    }
+    // 2 · …und die gemaskte findet sie.
+    if (Math.abs(maskKorr - 7) > 0.6) {
+      fails.push(`die gemaskte Korrelation müsste die 7 px finden; gemessen ${maskKorr.toFixed(2)} (D-255)`);
+    }
+    // 3 · NICHT-TAMPER: ohne stehende Masse darf die Maske nichts verbiegen.
+    const sauber = [zwei(0, false), zwei(7, false)];
+    const sauberMask = shiftPx(sauber[0], sauber[1], band, { mask: movingMask(sauber, band) });
+    if (Math.abs(sauberMask - 7) > 0.6) {
+      fails.push(`NICHT-TAMPER: ohne stehende Masse müsste die gemaskte Korrelation 7 px melden; gemessen ${sauberMask.toFixed(2)}`);
+    }
+  }
+
+  // ── R5-W5 · W4 · D-256 · ein Flaggenwert ist kein Verzeichnis ─────────────
+  {
+    const positional = (av) => av.find((a, i) => !a.startsWith("--")
+      && !(i > 0 && av[i - 1].startsWith("--") && av[i - 1] !== "--json" && av[i - 1] !== "--selftest"));
+    const faelle = [
+      [["bilder/", "--role", "cage"], "bilder/"],
+      [["--role", "cage", "bilder/"], "bilder/"],
+      [["--json", "bilder/", "--role", "drained"], "bilder/"],
+      [["--role", "cage"], undefined],
+    ];
+    for (const [av, want] of faelle) {
+      const got = positional(av);
+      if (got !== want) {
+        fails.push(`D-256: aus »${av.join(" ")}« müsste ${want ?? "kein Verzeichnis"} werden, wurde ${got ?? "keines"}`);
+      }
+    }
   }
 
   const box = changeBox([base, make(7)]);
@@ -342,15 +443,32 @@ const selftest = () => {
   console.log("  Schwerpunkt 0 / +7 / −5 px exakt · eine SCHERUNG wird als Weg der Oberkante gelesen");
   console.log("  D-170: ein STEHENDER Kasten im Band verdünnt 7 px auf 5,6 px — das Gerät beziffert den");
   console.log("         stillen Anteil (20 %) und rechnet ihn heraus, statt die kleinere Zahl zu melden");
+  console.log("  D-255: im selben Band rastet die UNGEMASKTE Korrelation auf 0 ein, die gemaskte findet die 7 px");
+  console.log("  D-256: ein Wert direkt hinter einer Flagge wird nicht mehr für das Bildverzeichnis gehalten");
 };
 
 // ── CLI ─────────────────────────────────────────────────────────────────────
+// R5-W5 · W4: der CLI-Block lief bisher schon beim IMPORT los — wer die
+// Messfunktionen aus einem Test heraus benutzen wollte, bekam stattdessen die
+// Gebrauchsanweisung und einen Prozess-Abbruch. Ein Werkzeug, das man nicht
+// gegenprüfen kann, ist schwer zu glauben.
+const istHauptlauf = process.argv[1] !== undefined
+  && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);
+if (istHauptlauf) {
 const argv = process.argv.slice(2);
 if (argv.includes("--selftest")) { selftest(); process.exit(0); }
 
-const dir = argv.find((a) => !a.startsWith("--"));
+// R5-W5 · W4 · D-256: „das erste Argument ohne --" hielt einen FLAGGENWERT für
+// das Verzeichnis. `--role cage bilder/` machte `cage` zum Verzeichnis und brach
+// mit „weniger als zwei Bilder" ab — eine Fehlermeldung, die den Leser in die
+// falsche Richtung schickt. Dasselbe Muster wie in shoot-world.mjs: ein
+// Positional ist nur dann eines, wenn sein Vorgänger keine Flagge war.
+const dir = argv.find((a, i) => !a.startsWith("--") && !(i > 0 && argv[i - 1].startsWith("--") && argv[i - 1] !== "--json" && argv[i - 1] !== "--selftest"));
 if (!dir) {
   console.error("usage: node scripts/measure-motion.mjs <framesDir> [--role cage] [--json]");
+  if (argv.some((a) => a.startsWith("--"))) {
+    console.error("       (ein Wert direkt hinter einer Flagge zählt NICHT als Verzeichnis — D-256)");
+  }
   process.exit(1);
 }
 const role = argv.indexOf("--role") === -1 ? "cage" : argv[argv.indexOf("--role") + 1];
@@ -484,6 +602,8 @@ const band = (() => {
 // D-170: erst messen, wie viel des Bandes überhaupt in Bewegung ist — sonst ist jede
 // Zahl darunter eine Aussage über den Hintergrund.
 const stillShare = stillDarkShare(rows.map((r) => r.png), band);
+const bewegteMaske = movingMask(rows.map((r) => r.png), band);
+const bewegteAnteil = bewegteMaske.reduce((a, b) => a + b, 0) / (band.w * band.h);
 if (stillShare > 0.6) {
   console.error(`✗ ${(stillShare * 100).toFixed(0)} % der dunklen Masse im Oberkanten-Band bewegt sich in `
     + "KEINEM Bild der Reihe. Der Schwerpunkt meldet dann rund "
@@ -513,7 +633,10 @@ const out = rows.map((r) => {
     drawnPx: drawn,
     measuredPx: (topCentroid(r.png, band) ?? 0) - baseCentroid,
     korrigiertPx: undilute((topCentroid(r.png, band) ?? 0) - baseCentroid, stillShare),
-    korrelationPx: shiftPx(rows[0].png, r.png, band),
+    // D-255: nur die bewegten Bildpunkte, sonst zieht die stehende Mehrheit
+    // das Minimum nach 0. Beide Zahlen werden gedruckt (siehe unten).
+    korrelationPx: shiftPx(rows[0].png, r.png, band, { mask: bewegteMaske }),
+    korrelationRohPx: shiftPx(rows[0].png, r.png, band),
   };
 });
 
@@ -524,22 +647,43 @@ if (asJson) {
   console.log(`Oberkanten-Band: y ${band.y}…${band.y + band.h} · Zoom ${ZOOM}× · (alles Bewegte im Bild: ${box.w}×${box.h} px)\n`);
   console.log(`Stiller Anteil des Bandes: ${(stillShare * 100).toFixed(0)} % der dunklen Masse bewegt sich nie `
     + `⇒ der rohe Schwerpunkt meldet ${((1 - stillShare) * 100).toFixed(0)} % des Weges (Korrektur ×`
-    + `${(1 / (1 - stillShare)).toFixed(2)}).\n`);
-  console.log("Bild                  Tick  Kosten  nearT      rot   gezeichnet   Oberkante   korrigiert");
+    + `${(1 / (1 - stillShare)).toFixed(2)}).`);
+  console.log(`Bewegte Bildpunkte im Band: ${(bewegteAnteil * 100).toFixed(0)} % — nur über diese läuft die Korrelation (D-255).\n`);
+
+  // R5-W5 · W4 · D-170/D-255 · SAGEN, WAS GEMESSEN WIRD. Vier Spalten, vier
+  // verschiedene Fragen. Wer sie für dieselbe Zahl hält, vergleicht Äpfel mit
+  // Birnen — genau daran ist die F-Bahn-Debatte gescheitert.
+  console.log("Was in den Spalten steht:");
+  console.log("  gezeichnet  = h · sin(rot) · Zoom aus dem Beipackzettel — der Weg der ÄUSSERSTEN Oberkante");
+  console.log("  Oberkante   = Schwerpunkt der dunklen Masse im OBEREN DRITTEL des Fensters, im Bild gemessen.");
+  console.log("                Ein Schwerpunkt wandert weniger weit als die äußerste Kante: dass diese Spalte");
+  console.log("                unter »gezeichnet« liegt, ist erwartete Geometrie und kein Fehler (D-170, halb).");
+  console.log("  korrigiert  = dieselbe Zahl, um den stillen Anteil des Bandes entzerrt");
+  console.log("  Korrelation = GEGENPROBE, kein zweiter Weg: die beste einheitliche Verschiebung des Bildes.");
+  console.log("                Sie kann eine Scherung nicht auflösen und ist bei viel stehender Masse stumpf.\n");
+
+  console.log("Bild                  Tick  Kosten  nearT      rot   gezeichnet   Oberkante   korrigiert   Korrelation   (roh)");
   for (const r of out) {
     console.log(
       `${r.frame.padEnd(20)} ${String(r.tick).padStart(5)} ${String(r.shotCostTicks ?? "?").padStart(7)} `
       + `${(r.nearT ?? 0).toFixed(2).padStart(6)} ${(r.rot ?? 0).toFixed(4).padStart(8)} `
       + `${(r.drawnPx ?? 0).toFixed(2).padStart(12)} ${r.measuredPx.toFixed(2).padStart(11)} `
-      + `${(r.korrigiertPx ?? 0).toFixed(2).padStart(12)}`,
+      + `${(r.korrigiertPx ?? 0).toFixed(2).padStart(12)} ${r.korrelationPx.toFixed(2).padStart(13)} `
+      + `${r.korrelationRohPx.toFixed(2).padStart(7)}`,
     );
   }
   const d = stats(out.map((r) => r.drawnPx ?? 0));
   const m = stats(out.map((r) => r.measuredPx));
   const k = stats(out.map((r) => r.korrigiertPx ?? 0));
+  const c = stats(out.map((r) => r.korrelationPx));
+  const cr = stats(out.map((r) => r.korrelationRohPx));
   console.log("\n                     SPANNE (Instrument)   NACHBARN max   NACHBARN Mittel");
   console.log(`  gezeichnet        ${d.span.toFixed(2).padStart(15)} px ${d.maxAdj.toFixed(2).padStart(13)} ${d.meanAdj.toFixed(2).padStart(17)}`);
   console.log(`  roh gemessen      ${m.span.toFixed(2).padStart(15)} px ${m.maxAdj.toFixed(2).padStart(13)} ${m.meanAdj.toFixed(2).padStart(17)}`);
   console.log(`  KORRIGIERT        ${k.span.toFixed(2).padStart(15)} px ${k.maxAdj.toFixed(2).padStart(13)} ${k.meanAdj.toFixed(2).padStart(17)}`);
+  console.log(`  Korrelation       ${c.span.toFixed(2).padStart(15)} px ${c.maxAdj.toFixed(2).padStart(13)} ${c.meanAdj.toFixed(2).padStart(17)}`);
+  console.log(`  Korrelation roh   ${cr.span.toFixed(2).padStart(15)} px ${cr.maxAdj.toFixed(2).padStart(13)} ${cr.meanAdj.toFixed(2).padStart(17)}`
+    + "   ← ohne Maske; rastet bei stehender Masse auf 0 ein (D-255)");
   console.log("\n(SPANNE ist, was ein Instrument meldet. NACHBARN ist, was ein Mensch beim Durchblättern sieht.)");
+}
 }

@@ -1967,6 +1967,35 @@ export class PaintScene extends Phaser.Scene {
         // of the frame is a worse picture than a boss one px lower (see
         // GUARDIAN_DISPLAY_H).
         img.y += this.guardianKeepIn(img);
+        // R5-W5 · W4 · D-232 · DIE BOSS-SONDE. Der Guardian war die einzige
+        // Rolle ohne Abgriff am Schirm, und deshalb war jede Aussage über ihre
+        // Größe eine NACHRECHNUNG: H3s „2,50-mal so hoch wie das Kind" ist
+        // gerechnet, nicht gemessen, weil `measure-presence.mjs` ihren Kasten im
+        // Bild gar nicht finden konnte.
+        //
+        // Die Sonde steht HIER und nicht im DRAW_PROBE-Block weiter unten: der
+        // Guardian-Zweig ist ein `else if`, jener Block liegt im `else`, und der
+        // Guardian erreicht ihn deshalb nie. Eine Rolle dort einzutragen wäre
+        // toter Code gewesen — nachgesehen, nicht angenommen.
+        //
+        // Wie überall gilt: hinter dem Konstanten-Schalter, also im
+        // ausgelieferten Spiel nicht vorhanden — und NACH Skalierung, Hub und
+        // Drehung gelesen, sonst liefert getBounds() die Lage des VORIGEN Bildes.
+        if (DRAW_PROBE) {
+          const cam = this.cameras.main;
+          const b = img.getBounds();
+          const view = cam.worldView;
+          this.lastBreath.set(e.id, {
+            rot: img.rotation,
+            dy: 0,
+            sx: img.scaleX,
+            sy: img.scaleY,
+            hPx: targetH,
+            scr: view.width > 0
+              ? { x: (b.x - view.x) * cam.zoom, y: (b.y - view.y) * cam.zoom, w: b.width * cam.zoom, h: b.height * cam.zoom }
+              : null,
+          });
+        }
       }
       else {
         // PK-R6 · H1 · THE OPENING POP (round-1 critique, finding 4): a cage that
