@@ -20,7 +20,7 @@
 //    then the card DOFFS so the world's change can be watched (the restore-hold).
 import React from "react";
 import type { GameTaskV2 } from "@domigo/content-schema";
-import { captiveStem, isCaptiveKey } from "../artManifest.ts";
+import { captiveStem, classmateStem, isCaptiveKey } from "../artManifest.ts";
 import { gapLevelFor, renderGapHint } from "./hint.ts";
 import { QUICKFIRE_MS, focusPctFor } from "./overlay-css.ts";
 import { LETTER_LEAD_MS, LETTER_STAGGER_MS, lettersFor } from "./resolution.ts";
@@ -140,12 +140,18 @@ const ROUND_OF_DE = "von";
  * pose of her own skin. The naming law itself is imported rather than retyped —
  * two copies of a stem convention are two conventions waiting to disagree.
  *
+ * R5-W5 · C4 · D-228: …and the person half is imported now too. It stood here as
+ * a bare `${name}_caged0` template, which made this file the ONLY written source
+ * of a convention the scene needs as soon as the person-cage grows its occupant
+ * layer. Both halves now come from artManifest; `portrait.test.ts` reddens if a
+ * `_caged0` literal ever grows back in this file.
+ *
  * Returns a STEM, never a url: whether the sheet has actually landed is the
  * art map's question, and the keen-art law wants that asked at the last moment.
  */
 export const cageCellFor = (name: string | undefined): string | undefined => {
   if (name === undefined || name === "") return undefined;
-  return isCaptiveKey(name) ? captiveStem(name) : `${name}_caged0`;
+  return isCaptiveKey(name) ? captiveStem(name) : classmateStem(name);
 };
 
 /**
