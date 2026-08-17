@@ -39,7 +39,7 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import crypto from "node:crypto";
-import { execFileSync } from "node:child_process";
+import { execFileSync, spawnSync } from "node:child_process";
 
 const ROOT = process.cwd();
 const PROMPTS = path.join(ROOT, "docs/audio/prompts.ch01.json");
@@ -172,10 +172,34 @@ const centroids3 = (s) => {
   ];
 };
 
-/** Der Sprung an der Schleifen-Naht, in dBFS: wenn die Datei SELBST die
- *  Schleife ist, folgt auf das letzte Abtastwert-Paar das erste. Ein hörbarer
- *  Klick ist genau dieser Sprung. */
-const seamDb = (s) => (s.length < 2 ? -Infinity : db(Math.abs(s[0] - s[s.length - 1])));
+/**
+ * Die Schleifen-Naht — gemessen an der Datei SELBST, nicht an einer geratenen
+ * Schwelle.
+ *
+ * Wenn die Datei die Schleife ist, folgt auf den letzten Abtastwert wieder der
+ * erste. Ein hörbarer Klick ist genau dieser Sprung. Die erste Fassung verlangte
+ * dafür „< −40 dBFS" — eine Zahl aus der Luft. Gemessen an einem echten Stück
+ * lag der Sprung bei −36 dB und war trotzdem völlig in Ordnung: nach dem
+ * Crossfade grenzen dort zwei BENACHBARTE Abtastwerte des Originals aneinander,
+ * und ihr Abstand ist einfach die Steilheit, die das Material an dieser Stelle
+ * hat. Eine absolute Schwelle misst dann die Helligkeit der Musik, nicht die
+ * Qualität der Naht.
+ *
+ * Also wird verglichen, was verglichen gehört: der Sprung an der Naht gegen die
+ * Sprünge, die im Rest der Datei ohnehin vorkommen (99. Perzentil). Ist er kein
+ * Ausreißer, ist die Naht so glatt wie das Stück selbst. Ein Schnitt ohne
+ * Crossfade fällt dabei sofort auf.
+ */
+const seamMetrics = (s) => {
+  if (s.length < 64) return { seamDb: null, seamRatio: null };
+  const step = Math.abs(s[0] - s[s.length - 1]);
+  const diffs = [];
+  const stride = Math.max(1, Math.floor(s.length / 20000));
+  for (let i = 1; i < s.length; i += stride) diffs.push(Math.abs(s[i] - s[i - 1]));
+  diffs.sort((a, b) => a - b);
+  const p99 = diffs[Math.floor(diffs.length * 0.99)] || 1e-9;
+  return { seamDb: Number(db(step).toFixed(1)), seamRatio: Number((step / p99).toFixed(2)) };
+};
 
 /** Länge der Stille am Ende, in ms (Schwelle −50 dBFS auf 1-ms-Fenstern). */
 const tailSilenceMs = (s) => {
@@ -243,16 +267,75 @@ const limitTruePeak = (s, targetDb) => {
 };
 
 /**
- * Musik auf ganze Takte schneiden und die Naht einbacken.
- * Die Datei danach IST die Schleife: `loopStart = 0`, `loopEnd = Dauer`.
+ * Die Schleifenlänge wird GEMESSEN, nicht geglaubt.
+ *
+ * Der naheliegende Weg wäre, aus dem bestellten Tempo eine Taktlänge zu rechnen
+ * und auf ganze Takte zu schneiden. Genau das ist die Falle: ElevenLabs bekommt
+ * „about 92 BPM" als Wunsch, nicht als Vorgabe. Liefert es 88, sitzt jeder
+ * Schnitt daneben — die Naht ist auf Abtastwert-Ebene sauber (der Crossfade
+ * sorgt dafür), und die Schleife stolpert trotzdem bei jedem Durchlauf
+ * musikalisch. Das wäre ein Fehler, den die Messung bestätigt und das Ohr
+ * hört: die schlimmste Sorte.
+ *
+ * Stattdessen wird die Länge gesucht, bei der sich das Stück selbst am
+ * ähnlichsten ist: Für Kandidaten L wird verglichen, wie sehr das Material AB L
+ * dem Material AB 0 gleicht. Das ist genau die Bedingung, die eine Schleife
+ * braucht — und sie kommt ohne jede Annahme über Tempo oder Taktart aus.
+ *
+ * Zwei Stufen, damit es bezahlbar bleibt: grob auf einer 10-ms-Energiehüllkurve
+ * (findet die Periode), fein auf den Abtastwerten (findet den Nulldurchgang der
+ * Phase). Danach IST die Datei die Schleife: `loopStart = 0`, `loopEnd = Dauer`.
  */
+const findLoopLength = (s, hintSec) => {
+  const HOP = Math.floor(SR / 100); // 10 ms
+  const frames = Math.floor(s.length / HOP);
+  const env = new Float64Array(frames);
+  for (let f = 0; f < frames; f++) env[f] = rms(s, f * HOP, (f + 1) * HOP);
+
+  const winF = Math.min(Math.floor(frames / 4), 200); // ~2 s Vergleichsfenster
+  const corr = (lagF) => {
+    let num = 0; let a = 0; let b = 0;
+    for (let i = 0; i < winF; i++) {
+      const x = env[i]; const y = env[lagF + i] ?? 0;
+      num += x * y; a += x * x; b += y * y;
+    }
+    return a === 0 || b === 0 ? 0 : num / Math.sqrt(a * b);
+  };
+
+  const minF = Math.floor(frames * 0.5);
+  const maxF = frames - winF - 1;
+  let bestF = -1; let bestScore = -1;
+  for (let lagF = minF; lagF <= maxF; lagF++) {
+    const c = corr(lagF);
+    if (c > bestScore) { bestScore = c; bestF = lagF; }
+  }
+  if (bestF < 0) return null;
+
+  // Feinsuche auf den Abtastwerten, ±15 ms um den groben Treffer
+  const coarse = bestF * HOP;
+  const span = Math.floor(0.015 * SR);
+  const fineWin = Math.floor(0.25 * SR);
+  let bestN = coarse; let bestFine = -Infinity;
+  for (let L = Math.max(1, coarse - span); L <= Math.min(s.length - fineWin - 1, coarse + span); L++) {
+    let num = 0; let a = 0; let b = 0;
+    for (let i = 0; i < fineWin; i += 4) {
+      const x = s[i]; const y = s[L + i];
+      num += x * y; a += x * x; b += y * y;
+    }
+    const c = a === 0 || b === 0 ? 0 : num / Math.sqrt(a * b);
+    if (c > bestFine) { bestFine = c; bestN = L; }
+  }
+  return { lengthSamples: bestN, envScore: bestScore, waveScore: bestFine, hintSec };
+};
+
+/** Musik auf die gemessene Schleifenlänge schneiden und die Naht einbacken. */
 const cutLoop = (s, bpm, beatsPerBar) => {
-  const barSec = (60 / bpm) * beatsPerBar;
-  const barN = Math.floor(barSec * SR);
   const xf = Math.floor((XFADE_MS / 1000) * SR);
-  const bars = Math.max(1, Math.floor((s.length - xf) / barN));
-  const L = bars * barN;
-  if (L + xf > s.length) return { samples: s, bars: 0, note: "zu kurz fuer einen Takt-Schnitt — ungeschnitten" };
+  const found = findLoopLength(s);
+  if (found === null || found.lengthSamples + xf > s.length) {
+    return { samples: s, note: "keine Schleifenlaenge messbar — ungeschnitten", loop: null };
+  }
+  const L = found.lengthSamples;
   const out = new Float32Array(L);
   out.set(s.subarray(0, L));
   // Equal-Power-Crossfade: der Anfang bekommt das Material, das im nächsten
@@ -262,7 +345,17 @@ const cutLoop = (s, bpm, beatsPerBar) => {
     const t = i / xf;
     out[i] = s[i] * Math.sqrt(t) + s[L + i] * Math.sqrt(1 - t);
   }
-  return { samples: out, bars, note: `${bars} Takte à ${beatsPerBar}/4 bei ${bpm} BPM` };
+  // Zum Vergleich: was der bestellte Takt vorhergesagt hätte. Weichen beide
+  // stark ab, hat der Dienst ein anderes Tempo geliefert als gewünscht — das
+  // steht dann im Protokoll, statt still falsch zu sein.
+  const barSec = (60 / bpm) * beatsPerBar;
+  const bars = L / SR / barSec;
+  return {
+    samples: out,
+    loop: { seconds: L / SR, envScore: found.envScore, waveScore: found.waveScore, barsAtRequestedBpm: Number(bars.toFixed(2)) },
+    note: `Schleife gemessen: ${(L / SR).toFixed(2)} s (Selbstaehnlichkeit ${found.envScore.toFixed(3)} Huellkurve / `
+      + `${found.waveScore.toFixed(3)} Wellenform) ≙ ${bars.toFixed(2)} Takte bei bestellten ${bpm} BPM`,
+  };
 };
 
 // ── Messen einer fertigen Datei ──────────────────────────────────────────────
@@ -284,7 +377,7 @@ const measureFinal = (file, kind) => {
     flatFactor: flatFactor(file),
     centroidsHz: centroids3(s),
     tailSilenceMs: tailSilenceMs(s),
-    seamDb: kind === "music" ? Number(seamDb(s).toFixed(1)) : null,
+    ...(kind === "music" ? seamMetrics(s) : { seamDb: null, seamRatio: null }),
     loopStartSec: kind === "music" ? 0 : null,
     loopEndSec: kind === "music" ? Number(info.duration.toFixed(3)) : null,
   };
@@ -363,13 +456,25 @@ if (MEASURE_ONLY) {
       for (let i = 0; i < samples.length; i++) samples[i] *= gain;
     }
 
+    // 3b · Effekte auf ihr Zielfenster kappen.
+    // Die Effekt-API von ElevenLabs kann minimal 0,5 s; ein Schritt soll aber
+    // 0,25 s dauern. Bestellt wird also länger und hier gekappt — die Energie
+    // eines One-Shots liegt ohnehin in den ersten Millisekunden, und der 5-ms-
+    // Fade unten macht aus dem Schnitt eine Kante, die man nicht hört.
+    if (t.kind === "sfx" && typeof t.item.targetSeconds === "number") {
+      const maxN = Math.floor(t.item.targetSeconds * SR);
+      if (samples.length > maxN) samples = samples.subarray(0, maxN);
+    }
+
     // 4 · Musik-Schleife schneiden (vor den Fades — die Datei IST die Schleife,
     //     also darf sie am Anfang und Ende NICHT ausgeblendet werden)
     let loopNote = null;
+    let loopFit = null;
     if (t.kind === "music" && t.item.loop === true) {
       const cut = cutLoop(samples, t.item.bpm ?? 96, t.item.beatsPerBar ?? 4);
       samples = cut.samples;
       loopNote = cut.note;
+      loopFit = cut.loop;
     } else {
       applyFades(samples);
     }
@@ -382,6 +487,7 @@ if (MEASURE_ONLY) {
       ...measureFinal(t.out, t.kind),
       family: t.item.family, kind: t.kind, pedagogy: t.item.pedagogy ?? "info", take: t.take,
       ...(loopNote ? { loopNote } : {}),
+      ...(loopFit ? { loopFit } : {}),
     };
     console.log(`  ✓ ${t.name} — ${(measured[t.name].bytes / 1024).toFixed(0)} KB, `
       + `${measured[t.name].loudnessDb} (${measured[t.name].method}), TP ${measured[t.name].truePeakDb} dB`

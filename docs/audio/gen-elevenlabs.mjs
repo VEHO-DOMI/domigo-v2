@@ -127,24 +127,36 @@ const subscription = async (key) => {
   return { tier: d.tier, status: d.status, used: d.character_count, limit: d.character_limit };
 };
 
+// ── Der Prompt wird ZUSAMMENGESETZT ──────────────────────────────────────────
+// Der Material-Satz und die Negativliste stehen EINMAL in prompts.ch01.json und
+// werden hier vor bzw. hinter jeden `text` gesetzt. Stünden sie 31-mal
+// abgeschrieben in der Datei, wäre ein Tippfehler in einer Abschrift genau der
+// Riss, durch den ein Klang aus einem anderen Raum ins Kapitel kommt.
+const assemble = (spec, item) => [spec.material, item.text, spec.negatives].filter(Boolean).join(" ");
+
 // ── Die zwei Endpunkte ───────────────────────────────────────────────────────
-const genSfx = (key, item) =>
+// Die Effekt-API kann minimal 0,5 s: `requestSeconds` ist, was bestellt wird,
+// `targetSeconds` das Fenster, auf das master.mjs danach kappt.
+const genSfx = (key, spec, item) =>
   post(key, `${API}/sound-generation?output_format=${OUTPUT_FORMAT}`, {
-    text: item.prompt,
-    duration_seconds: item.durationSeconds,
+    text: assemble(spec, item),
+    duration_seconds: Math.max(0.5, item.requestSeconds ?? item.targetSeconds ?? 0.5),
     prompt_influence: item.promptInfluence ?? 0.6,
     ...(item.loop === true ? { loop: true, model_id: "eleven_text_to_sound_v2" } : {}),
   }, item.stem);
 
-const genMusic = (key, item, take) =>
+const genMusic = (key, spec, item, take) =>
   post(key, `${API}/music?output_format=${OUTPUT_FORMAT}`, {
-    prompt: item.prompt,
+    prompt: assemble(spec, item),
     music_length_ms: item.lengthMs,
     model_id: item.modelId ?? "music_v1",
     force_instrumental: true,
-    // `seed` ist bei ElevenLabs „best effort" — verschiedene Takes brauchen
-    // verschiedene Seeds, sonst liefert der Dienst dreimal dasselbe Stueck.
-    seed: (item.seed ?? 1000) + take,
+    // ⚠ KEIN `seed`. Der Auftrag ging davon aus, er sei „best effort" nutzbar;
+    // die API antwortet auf `prompt` + `seed` mit HTTP 422: „`seed` cannot be
+    // used with `prompt`" (gemessen 17.08.2026). Seed gibt es nur zusammen mit
+    // einem `composition_plan`. Damit sind Musik-Takes NICHT reproduzierbar —
+    // was die Hörbank ohnehin voraussetzt: sie stellt drei verschiedene Takes
+    // nebeneinander, und die Wahl trifft ein Ohr, kein Seed.
   }, `${item.stem}#${take}`);
 
 // ── Protokoll ────────────────────────────────────────────────────────────────
@@ -180,7 +192,7 @@ const main = async () => {
     const kind = it.kind ?? (it.stem.startsWith("music-") ? "music" : "sfx");
     const takes = TAKES_OVERRIDE ?? it.takes ?? (kind === "music" ? 3 : 6);
     for (let n = 1; n <= takes; n++) {
-      const secs = kind === "music" ? (it.lengthMs ?? 45000) / 1000 : (it.durationSeconds ?? 0.5);
+      const secs = kind === "music" ? (it.lengthMs ?? 45000) / 1000 : Math.max(0.5, it.requestSeconds ?? 0.5);
       if (kind === "music") musicSeconds += secs;
       jobs.push({ item: it, kind, take: n, seconds: secs });
     }
@@ -222,7 +234,7 @@ const main = async () => {
         continue;
       }
       try {
-        const r = kind === "music" ? await genMusic(key, item, take) : await genSfx(key, item);
+        const r = kind === "music" ? await genMusic(key, spec, item, take) : await genSfx(key, spec, item);
         fs.writeFileSync(out, r.buf);
         credits += r.credits;
         done++;
@@ -259,7 +271,14 @@ Datei nie vor** — \`scripts/check-secrets.mjs\` prueft das._
 Konto vorher: ${before ? `${before.tier}/${before.status}, ${before.used}/${before.limit}` : "nicht abrufbar"} ·
 nachher: ${after ? `${after.used}/${after.limit}` : "nicht abrufbar"} ·
 **Kontodifferenz: ${delta === null ? "unbekannt" : delta}** ·
-**Summe \`character-cost\`: ${credits}**${delta !== null && delta !== credits ? " ⚠ die beiden Zahlen weichen ab (fremde Nutzung des Kontos moeglich) — beide stehen im Report" : ""}
+**Summe \`character-cost\`: ${credits}**
+
+> Die beiden Zahlen messen NICHT dasselbe (gemessen 17.08.2026): fuer **Musik** meldet der
+> Header \`character-cost\` **0**, waehrend das Konto sich bewegt (45 s ≙ 1198 Credits); fuer
+> **Effekte** meldet der Header einen Wert (0,5 s ≙ 5), waehrend das Konto **stehen bleibt**.
+> Massgeblich ist deshalb die **Kontodifferenz**; der Header ist ein Signal je Anfrage, keine
+> Summe. Weichen beide auf eine dritte Weise ab, koennte jemand anderes dasselbe Konto benutzen —
+> dann gehoeren beide Zahlen mit diesem Vermerk in den Report.
 Takes: ${done} erzeugt/vorhanden, ${failures.length} Fehler · Musik-Sekunden: ${Math.round(musicSeconds)}
 
 | Stem | Take | Art | Sek. | Credits | Bytes | sha1 | Dauer | Verdikt |

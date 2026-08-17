@@ -292,8 +292,19 @@ Pipeline-Ergebnis, kein Prompt-Ergebnis:
 3. `loudnorm` in **zwei Durchgängen** (erst messen, dann mit den gemessenen Werten normalisieren —
    ein Durchgang trifft das Fenster nicht zuverlässig).
 4. Stille vorn/hinten trimmen, 5 ms Fades an beiden Enden.
-5. Musik: Loop-Schnitt auf Taktgrenze, 20 ms Equal-Power-Crossfade Tail→Head.
+5. Musik: **Schleifenlänge messen** (nicht aus dem Tempo rechnen — siehe unten), dann schneiden und
+   20 ms Equal-Power-Crossfade Tail→Head einbacken. Die Datei IST danach die Schleife.
 6. **MP3 mono, 96 kbps, 44,1 kHz.** Kein Opus, kein AAC, keine zweite Fassung.
+
+> **★ Die Schleifenlänge wird gemessen, nicht geglaubt (17.08.2026).** Der Prompt bittet um „about
+> 92 BPM"; das ist ein Wunsch, keine Vorgabe. Am ersten echten Stück gemessen lag die beste
+> Selbstähnlichkeit bei **14,75 Takten** — der Dienst hatte ein anderes Tempo geliefert. Ein
+> Takt-Schnitt hätte hier eine Schleife erzeugt, deren Naht auf Abtastwert-Ebene sauber ist und die
+> bei jedem Durchlauf **musikalisch stolpert**: ein Fehler, den die Messung bestätigt und das Ohr
+> hört. `master.mjs` sucht deshalb die Länge, bei der sich das Stück selbst am ähnlichsten ist
+> (grob auf einer 10-ms-Energiehüllkurve, fein auf den Abtastwerten) — ohne jede Annahme über Tempo
+> oder Taktart. Beide Werte stehen im Protokoll, damit sichtbar bleibt, wie weit der Dienst vom
+> Wunsch abgewichen ist.
 
 ### Die Messfenster (`scripts/check-audio.mjs` erzwingt sie)
 
@@ -305,7 +316,7 @@ Pipeline-Ergebnis, kein Prompt-Ergebnis:
 | Nicht-Blatt | RMS > −40 dBFS **und** Peak > −20 dBFS | dito | eine stille Datei ist der Fehler, den niemand hört |
 | `flat_factor` | 0 | 0 | ein digital abgeschnittenes Signal |
 | Stille-Schwanz | ≤ 80 ms | ≤ 80 ms | Schweigen am Ende ist Latenz, die man fühlt |
-| Loop-Naht | Naht-RMS-Delta < −40 dBFS | — | die Naht darf nicht klicken |
+| Loop-Naht | **`seamRatio` ≤ 1,5** | — | die Naht darf nicht klicken — gemessen an der Datei selbst, siehe unten |
 | **Nicht-Absteigen** | — | **nur `pedagogy: "neutral"`** | siehe unten |
 
 ### Die Messung der Regel `:371` — und was sie ehrlich leisten kann
@@ -335,6 +346,19 @@ ist dort der Helligkeitsverlauf. Für die wörtliche Regel „no descending **pi
 tragen zwei andere Dinge die Last: die Negativliste in **jedem** Prompt (§2c) und **Kokis Ohr** an der
 Hörbank. Die Messung ist der Wächter, der eine ganze Klasse von Fehlern automatisch abfängt — sie ist
 nicht der Beweis, dass die Regel eingehalten ist.
+
+### Die Naht wird an der Datei selbst gemessen
+
+Die erste Fassung verlangte „Naht-RMS-Delta < −40 dBFS" — eine Zahl aus der Luft. Am ersten echten
+Stück gemessen lag der Sprung bei **−36 dB** und war trotzdem einwandfrei: nach dem Crossfade grenzen
+an der Naht zwei **benachbarte** Abtastwerte des Originals aneinander, und ihr Abstand ist schlicht die
+Steilheit, die das Material dort hat. Eine absolute Schwelle misst dann die Helligkeit der Musik, nicht
+die Qualität der Naht — helle Stücke wären immer rot, dumpfe immer grün.
+
+Gemessen wird deshalb **`seamRatio`**: der Sprung an der Naht geteilt durch das 99. Perzentil aller
+Abtastwert-Sprünge derselben Datei. Ist er kein Ausreißer (**≤ 1,5**), ist die Naht so glatt wie das
+Stück selbst. Ein Schnitt ohne Crossfade fällt sofort auf — der Tor-Selbsttest beweist es an genau
+diesem Fall. (Gemessen am ersten Stück: `seamRatio` 0,27.)
 
 ### Toleranzen — warum das Tor nicht auf exakte Gleichheit prüft
 
