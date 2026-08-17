@@ -70,7 +70,11 @@ export interface TaskRequest {
   // zieht die Klimax-Karte auch aus diesem Pool. Nur der TYP kannte ihn nicht,
   // also musste die Karte auf einer Boss-Anfrage reiten — und bekam dadurch die
   // Boss-Uhr. Der Typ sagt jetzt, was die Welt ohnehin tut.
-  use: "quickfire" | "encounter" | "door" | "rescue" | "boss" | "bonus" | "bonuspay" | "finale";
+  // R5-W5 · G4: `pickupset` joins for the same reason `finale` did — the shell
+  // really does open this pool (the uniform's naming card at every third find),
+  // so the type says what the world does. It is the one use no ENTITY event
+  // raises: the piece it is about is already in the child's hands.
+  use: "quickfire" | "encounter" | "door" | "rescue" | "boss" | "bonus" | "bonuspay" | "finale" | "pickupset";
   ctx:
     | { type: "entity"; id: string; skin: string }
     | { type: "cage"; id: string; skin: string; classmate?: string }
