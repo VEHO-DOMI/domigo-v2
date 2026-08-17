@@ -82,6 +82,7 @@ jobs:
       - run: node scripts/check-fonts.mjs --selftest # E5: the font guard's own red light must be reachable
       - run: node scripts/check-fonts.mjs # E5/D-79: no next/font/google — the build may not depend on gstatic being up
       - run: node scripts/shoot-card-bench.mjs --selftest # W2/D-102: die Ausschnitt-Rechnung der Kartenbank — ein Motiv unter 40 % der Bildflaeche muss rot werden
+      - run: node scripts/perf-visible.mjs --selftest # E6/R115: Werkzeug, kein Tor — hier laeuft kein Chrome; geprueft wird nur, dass die Kontrollschwelle (Kontrollseite unter 58 fps ⇒ Abbruch) ihr rotes Licht erreichen kann
       - run: node scripts/check-ci-gates.mjs --selftest # E2: the guard's own red light must be reachable
       - run: node scripts/check-ci-gates.mjs # E2: every gate on disk is wired into THIS file — the gap cannot reopen
 

@@ -1699,6 +1699,27 @@ export class PaintScene extends Phaser.Scene {
    * cross-origin frame, a texture with no source image). That is deliberately
    * behaviour-preserving rather than fail-loud: a chapter must still render, and
    * `washTintFor` below keeps the old darkening as the visible fallback.
+   *
+   * ★ R5-W5 · E6 · PAINT FIRST, REGISTER ONCE — the same arithmetic, one upload.
+   *
+   * This was the most expensive single thing in `create()`: on p3 the grey
+   * copies cost 580 ms of an 771 ms build, and the pixel loop was NOT the
+   * reason. `textures.createCanvas()` registers an EMPTY texture with the
+   * renderer — which uploads it — and `refresh()` after the drawing uploads the
+   * very same texture a second time. Measured on p3 (five sheets, ~650 000
+   * pixels): createCanvas 288.8 ms + refresh 186.4 ms = 475 ms of double
+   * upload, against 75.5 ms for the luminance loop everyone would have blamed.
+   *
+   * So the drawing now happens on a plain canvas the renderer has never seen,
+   * and the FINISHED canvas is registered once (`addCanvas`, measured 8.9 ms).
+   * Same source, same coefficients, same rounding, same alpha — the texture's
+   * pixels cannot differ; only the number of times they travel to the card
+   * does. Measured after: 580 ms → 122.6 ms on p3.
+   *
+   * (The tempting fix — `ctx.filter = "grayscale(1)"` instead of the loop — was
+   * built and measured too: 464 ms against 472 ms, i.e. nothing, because the
+   * loop was never the cost. It is not in here, and that is the point: the
+   * number acquitted the suspect, P-62.)
    */
   private greyTexOf(key: string): string {
     const greyKey = `${key}__grey`;
@@ -1708,11 +1729,14 @@ export class PaintScene extends Phaser.Scene {
     const w = Math.round(src?.width ?? 0);
     const h = Math.round(src?.height ?? 0);
     if (w <= 0 || h <= 0) return key;
-    const tex = this.textures.createCanvas(greyKey, w, h);
-    if (!tex) return key; // headless/canvas-less safety, exactly like letterTex
     try {
-      const ctx = tex.getContext();
-      ctx.clearRect(0, 0, w, h);
+      const canvas = document.createElement("canvas");
+      canvas.width = w;
+      canvas.height = h;
+      // `willReadFrequently` tells the browser to keep this canvas on the CPU:
+      // it is read back exactly once, and a GPU-backed canvas would stall for it
+      const ctx = canvas.getContext("2d", { willReadFrequently: true });
+      if (ctx === null) return key; // headless/canvas-less safety, exactly like letterTex
       ctx.drawImage(src as CanvasImageSource, 0, 0, w, h);
       const img = ctx.getImageData(0, 0, w, h);
       const d = img.data;
@@ -1724,12 +1748,12 @@ export class PaintScene extends Phaser.Scene {
         // d[i + 3] — the alpha is the being's own silhouette and is never touched
       }
       ctx.putImageData(img, 0, 0);
-      tex.refresh();
-      return greyKey;
+      // the first and only time this picture reaches the graphics card
+      return this.textures.addCanvas(greyKey, canvas) === null ? key : greyKey;
     } catch {
-      // a tainted canvas (art served cross-origin) throws on getImageData; drop
-      // the half-built texture so a later attempt is not handed an empty one
-      this.textures.remove(greyKey);
+      // a tainted canvas (art served cross-origin) throws on getImageData —
+      // nothing was registered yet, so there is nothing to clean up: the caller
+      // gets the original key and `washTintFor` keeps the old darkening
       return key;
     }
   }
@@ -3870,8 +3894,35 @@ export class PaintScene extends Phaser.Scene {
 
   private buildFallbackTextures(): void {
     const g = this.add.graphics();
+    /**
+     * ★ R5-W5 · E6 · THE KEY THE RESOLVER REACHES FOR FIRST.
+     *
+     * `tex()` answers `pb-<stem>` whenever that texture is loaded and only then
+     * falls back to `fb-<stem>`; `entTex()` falls back to `fb-ent-<skin>` only
+     * when neither `pb-<skin>_<state>` nor `pb-<skin>_a` exists — so `_a` is the
+     * one key that decides it for every state. When that twin is loaded, the
+     * fallback below cannot be drawn by anything, in any frame.
+     *
+     * Why this matters in milliseconds: this builder is phase-blind and
+     * art-blind — it generated all 42 fallbacks in every phase, and 19 of them
+     * are hero parts at the full rig cell (384×384 = 2.8 of 3.2 megapixels)
+     * whose real sheets ship with every phase (`ALWAYS_STEMS`). Each one is a
+     * canvas allocation plus a texture upload for a picture nothing can reach.
+     *
+     * The guard is deliberately `textures.exists`, NOT the phase's art scope: a
+     * sheet whose download failed is in the scope and missing from the textures,
+     * and that is exactly the case the fallback exists for (the only-present
+     * law). A fallback is skipped only when its real twin is genuinely there.
+     */
+    const realTwin = (fbKey: string): string | null => {
+      if (fbKey === "fb-ent-generic") return null; // the last resort has no twin
+      if (fbKey.startsWith("fb-ent-")) return `pb-${fbKey.slice("fb-ent-".length)}_a`;
+      return `pb-${fbKey.slice("fb-".length)}`;
+    };
     const make = (key: string, draw: () => void, w: number, h: number): void => {
       if (this.textures.exists(key)) return;
+      const twin = realTwin(key);
+      if (twin !== null && this.textures.exists(twin)) return;
       g.clear();
       draw();
       g.generateTexture(key, w, h);
@@ -5154,10 +5205,16 @@ export class PaintScene extends Phaser.Scene {
     const key = `pb-glyph-${char}`;
     if (this.textures.exists(key)) return key;
     const S = 128;
-    const tex = this.textures.createCanvas(key, S, S);
-    if (!tex) return this.tex("prop_letter"); // headless/canvas-less safety
-    const ctx = tex.getContext();
-    ctx.clearRect(0, 0, S, S);
+    // R5-W5 · E6 · same one-upload rule as greyTexOf: `createCanvas` would
+    // register (and upload) an EMPTY texture and `refresh()` would upload the
+    // finished one a second time. The glyph is painted on a canvas the renderer
+    // has never seen and registered once, when it is done. Same drawing calls,
+    // same order, same hash-seeded specks — one journey to the graphics card.
+    const canvas = document.createElement("canvas");
+    canvas.width = S;
+    canvas.height = S;
+    const ctx = canvas.getContext("2d");
+    if (ctx === null) return this.tex("prop_letter"); // headless/canvas-less safety
     ctx.font = LETTER_STYLE.font;
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
@@ -5199,8 +5256,7 @@ export class PaintScene extends Phaser.Scene {
       ctx.fill();
     }
     ctx.globalCompositeOperation = "source-over";
-    tex.refresh();
-    return key;
+    return this.textures.addCanvas(key, canvas) === null ? this.tex("prop_letter") : key;
   }
 
   /**

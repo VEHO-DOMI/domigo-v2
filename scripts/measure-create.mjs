@@ -50,8 +50,6 @@ import { phaseArtScope } from "../packages/game-paint/src/artScope.ts";
 import { CREATE_MS, SETTLED_GPU_MS } from "../packages/game-paint/src/perfBudget.ts";
 
 const CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
-/** own debug port — P-65: one session, one port, never a neighbour's */
-const CDP_PORT = 9355;
 const ALL_PHASES = ["p1", "p2", "p3", "p4", "p9"];
 const LEVEL_PATH = "content/corpus/stories/g1.st.lost-pages/paint/ch01.level.json";
 const ART_DIR = "apps/web/public/art/g1/paint";
@@ -61,6 +59,14 @@ const arg = (name, dflt) => {
   const i = args.indexOf(`--${name}`);
   return i === -1 ? dflt : args[i + 1];
 };
+/** R5-W5 · E6 · the debug port is now a FLAG with a default, not a constant.
+ *  It was hard-coded to 9355, which is the D-207 defect in miniature: a second
+ *  run, or a neighbouring worktree, finds the port taken and either dies with a
+ *  message about somebody else's process or attaches to their browser. This
+ *  script asks the port directly (`/json/version`), so it needs a real number —
+ *  pass `--cdp-port <n>` to move it. (`perf-visible.mjs` is the one that can
+ *  take 0 and read the port back out of its own profile.) */
+const CDP_PORT = Number(arg("cdp-port", 9355));
 const port = Number(arg("port", 4056));
 const runs = Number(arg("runs", 3));
 const warmOffDefault = arg("warm", null) === "0";

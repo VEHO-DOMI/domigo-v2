@@ -67,6 +67,48 @@ Trotzdem bleibt zweierlei wahr:
 * **GPU-Zeit** über `EXT_disjoint_timer_query` ist zulässig und zählt echte
   GPU-Arbeit statt Wartezeit.
 
+## 3b · Wie man die Tabelle nimmt (R115) — R5-W5 · E6
+
+**Es gibt ab jetzt genau EIN Rezept, und es ist ein Skript:**
+
+```
+pnpm build && (cd apps/web && npx next start -p <dein Port>)
+node --experimental-strip-types scripts/perf-visible.mjs --port <dein Port> --runs 3 --json vorher.json
+# … deine Arbeit …
+node --experimental-strip-types scripts/perf-visible.mjs --port <dein Port> --runs 3 --baseline vorher.json
+```
+
+Der zweite Lauf druckt die fertige Wächter-Tabelle mit »vorher / nachher« in
+jeder Zelle — genau in der Form, die `check-perf-table.mjs` im PR-Text verlangt —
+plus die Aufschlüsselung von `create()` je Bauschritt.
+
+**Warum ein Skript und nicht eine Anleitung.** Zwei Sessions der Welle 4b lieferten
+leere ms-Spalten, eine dritte gar keine Vorher-Werte, und jede maß anders. Eine
+Zahl ohne ihr Rezept ist eine Behauptung (PB-78). Drei Dinge macht das Skript
+deshalb selbst:
+
+1. **Die Kontrollmessung ist ein TOR, kein Hinweis.** Vor jeder Zahl über das
+   Spiel misst es eine leere Seite im selben Browser. Unter **58 fps bricht es ab**
+   und druckt nichts. Ohne diese Kontrolle sind »das Spiel läuft mit 9 fps« und
+   »mein Instrument sieht keine 60« dieselbe Beobachtung (P-61). Der Vorgänger
+   `harvest-perf.mjs` hatte dafür nur eine weiche Marke und schrieb sonst »n/b«.
+2. **Es misst `bau + aufbau`, nie `aufbau` allein.** Der Szenen-Konstruktor (Sim,
+   Gitter, Kunst-Umfang) läuft VOR `create()`; wer Arbeit dorthin schiebt,
+   verbessert `createMs` und die Wartezeit des Kindes um keine Millisekunde
+   (P-77). Der Konstruktor wird in Node gemessen, weil kein Browser hineinsieht.
+3. **Eine Lücke wird nie zu einer Null.** Der Erstbild-Rekorder verpasst je Lauf
+   etwa eine von fünf Phasen (D-118); das Skript lädt eine unvollständige Phase
+   bis zu dreimal neu und schreibt sonst »—«.
+
+`--port` ist **Pflicht** — ein Standard-Port misst in einem Haus mit sieben
+parallelen Sessions irgendwann den Server des Nachbarn (P-65).
+
+Der Selbsttest (`node scripts/perf-visible.mjs --selftest`, eine Zeile in `ci.yml`)
+läuft **ohne Browser und ohne Server**: die CI-Maschine hat keinen Chrome. Er
+prüft, dass die Kontrollschwelle in beide Richtungen funktioniert — der Tamper
+biegt die Schwelle über den GEMESSENEN Wert, nie gegen die Konfiguration (P-71).
+Das Skript ist damit ausdrücklich **Werkzeug, kein Tor**.
+
 ## 4 · Das Messritual (so misst Koki)
 
 1. Kapitel mit **`?perf=1`** aufrufen (Lehrer-Tür, wie `?grid=1`). Unten links

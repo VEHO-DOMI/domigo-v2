@@ -5,6 +5,8 @@
 // cannot be read back (Build-D banked that false negative), so composition is
 // verified by arithmetic over the plan, not by sampling the screen.
 import { describe, expect, it } from "vitest";
+import fs from "node:fs";
+import path from "node:path";
 import { CH01_COMPOSITION, HERO_EDGE_KEY_SPLIT, MID_FAR_ALPHA, type MassKit, compositionFor, compositionStems, heroEdgeFor, nearPlaneTint } from "./composition.ts";
 import { K_X, K_Y, PLANE_DEPTH, coverBox, coverFit, coversAxis, planLayers, planeCovers, travelBox, visibleWindow } from "./layers.ts";
 import {
@@ -1069,5 +1071,94 @@ describe("the zone palettes", () => {
     for (const indoor of ["p1", "p2"]) {
       for (const stem of of(indoor)) expect(yard.has(stem)).toBe(false);
     }
+  });
+});
+
+// ── R5-W5 · E6 · D-267 · DIE RAMPEN, UND DAS GESETZ, DAS SIE ZURÜCKHOLT ──────
+//
+// `mass_ramp_up`/`_down` lagen in allen fünf Phasen-Scopes und wurden nie
+// gezeichnet: `planMass` legt ein Rampen-Stück nur für die Steigungs-Glyphen
+// `/ \ 1 2 3 4` an (`z` ist die Kreide-Rutsche mit eigenem Zweig), und ch01 hat
+// davon null. Die zwei Blätter sind gelöscht und aus `massStems` heraus.
+//
+// Damit entsteht eine neue Falle: gibt eine spätere Fläche ihrem Gitter eine
+// Steigung, plant `planMass` wieder ein Rampen-Stück — und das Blatt dazu ist
+// weg. Genau das prüft dieses Gesetz. Es wäre heute leer (ch01 hat keine
+// Steigung), also wird die Regel ZUERST an erfundenen Gittern in beide
+// Richtungen vorgeführt: ein Gesetz, dessen rotes Licht niemand gesehen hat,
+// ist Dekoration (P-56).
+const RAMP_GLYPHS = new Set(["/", "\\", "1", "2", "3", "4"]);
+const needsRampSheets = (rows: readonly string[]): boolean =>
+  rows.some((row) => [...row].some((g) => RAMP_GLYPHS.has(g)));
+
+describe("D-267 · Rampen-Blätter und Gitter dürfen nicht auseinanderlaufen", () => {
+  it("erkennt eine Steigung im Gitter — und erkennt ihre Abwesenheit", () => {
+    expect(needsRampSheets(["####", "#..#"])).toBe(false);
+    expect(needsRampSheets(["#..#", "#/.#"])).toBe(true); // 45° hinauf
+    expect(needsRampSheets(["#..#", "#\\.#"])).toBe(true); // 45° hinunter
+    for (const g of ["1", "2", "3", "4"]) expect(needsRampSheets([`#${g}#`])).toBe(true);
+    expect(needsRampSheets(["#z.#"])).toBe(false); // die Kreide-Rutsche ist kein Rampen-Stück
+  });
+
+  it("lädt in keiner Phase mehr ein Rampen-Blatt (D-267)", () => {
+    for (const [id, spec] of Object.entries(CH01_COMPOSITION)) {
+      const stems = compositionStems(spec);
+      expect(stems, `${id} lädt ${spec.mass.rampUp}`).not.toContain(spec.mass.rampUp);
+      expect(stems, `${id} lädt ${spec.mass.rampDown}`).not.toContain(spec.mass.rampDown);
+    }
+  });
+
+  it("verlangt die Blätter zurück, sobald ein Gitter eine Steigung trägt", () => {
+    const ART = path.resolve(__dirname, "../../../apps/web/public/art/g1/paint");
+    const onDisk = new Set<string>();
+    const walkArt = (dir: string): void => {
+      if (!fs.existsSync(dir)) return;
+      for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
+        const p = path.join(dir, e.name);
+        if (e.isDirectory()) walkArt(p);
+        else if (e.name.endsWith(".png")) onDisk.add(e.name.replace(/\.png$/, ""));
+      }
+    };
+    walkArt(ART);
+
+    const CONTENT = path.resolve(__dirname, "../../../content/corpus/stories");
+    let phasesChecked = 0;
+    let phasesWithSlope = 0;
+    if (fs.existsSync(CONTENT)) {
+      for (const story of fs.readdirSync(CONTENT)) {
+        const paintDir = path.join(CONTENT, story, "paint");
+        if (!fs.existsSync(paintDir)) continue;
+        for (const f of fs.readdirSync(paintDir).filter((x) => x.endsWith(".level.json"))) {
+          const level = JSON.parse(fs.readFileSync(path.join(paintDir, f), "utf8")) as {
+            chapter: string;
+            draft?: boolean;
+            phases: Array<{ id: string; rows: string[] }>;
+            arena?: { id: string; rows: string[] } | null;
+            bonus?: { id: string; rows: string[] } | null;
+          };
+          if (level.draft === true) continue;
+          const all = [...level.phases, ...(level.arena ? [level.arena] : []), ...(level.bonus ? [level.bonus] : [])];
+          for (const ph of all) {
+            phasesChecked += 1;
+            if (!needsRampSheets(ph.rows)) continue;
+            phasesWithSlope += 1;
+            const spec = compositionFor(level.chapter, ph.id);
+            if (spec === null) continue;
+            for (const stem of [spec.mass.rampUp, spec.mass.rampDown]) {
+              expect(
+                onDisk.has(stem),
+                `${f}/${ph.id} trägt eine Steigung, aber ${stem}.png liegt nicht auf der Platte — `
+                  + "die Rampen wurden in R5-W5 · E6 gelöscht (D-267). Eine Fläche mit Steigungen "
+                  + "braucht eine neue Bestellung (R109), keine stille Wiederbelebung.",
+              ).toBe(true);
+            }
+          }
+        }
+      }
+    }
+    // Der Lauf muss überhaupt etwas gesehen haben — sonst prüft er nichts.
+    expect(phasesChecked).toBeGreaterThan(0);
+    // Heute ist der Stand: keine einzige Steigung im ganzen Bestand (D-267).
+    expect(phasesWithSlope).toBe(0);
   });
 });
