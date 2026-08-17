@@ -50,6 +50,17 @@
 import fs from "node:fs";
 import path from "node:path";
 import { PNG } from "pngjs";
+// ── R5-W5 · G4 · THE FRINGE, FROM THE GATE'S OWN MODULE ──────────────────────
+// The aq7-shaped `defringe` below is not the same test `check-paint-art` runs:
+// it kills magenta-ish EDGE pixels by a fixed threshold, while the gate uses
+// `key-fringe.mjs`, which calibrates against each image's own interior and looks
+// four pixels deep. This round proved the gap — all ten imported sheets passed
+// the importer and then failed the gate with 12 525 fringe pixels between them,
+// first pixel at row 0 of each cut edge. An importer whose idea of „clean" is
+// weaker than the gate's just moves the work to a repair tool, so this one now
+// finishes with the SAME function the gate judges by. `key-fringe.mjs` exists
+// precisely so the two can never disagree about what a defect is.
+import { keyFringe, stripKeyFringe } from "../../scripts/key-fringe.mjs";
 
 const LAB = process.env.CODEX_LAB ?? path.join(process.env.HOME, "Code", "codex-art-lab");
 const OUT = path.join(process.cwd(), "apps/web/public/art/g1/paint/ch01");
@@ -427,6 +438,25 @@ for (const sheet of SHEETS) {
         continue;
       }
       if (why !== undefined) notes.push(`⚠ Gold DEKLARIERT: ${stem} ${(gs * 100).toFixed(2)} % — ${why}`);
+    }
+
+    // ── the gate's own fringe pass, before anything is written ──────────────
+    // `key-fringe.mjs` speaks {w,h,px}, pngjs speaks {width,height,data} — the
+    // view below shares the SAME pixel buffer, so healing writes straight into
+    // the image we are about to save. (Handing it the pngjs object directly is a
+    // silent no-op: every field it reads is undefined, it finds nothing, and the
+    // importer reports clean while the gate reports 12 525 fringe pixels. That
+    // happened once in this session; the assertion below is why it cannot again.)
+    const view = { w: out.width, h: out.height, px: out.data };
+    const fringe = keyFringe(view).length;
+    if (fringe > 0) {
+      stripKeyFringe(view);
+      const left = keyFringe(view).length;
+      if (left > 0) {
+        failures.push(`${stem}: ${left} fringe px survive the shared repair — check-paint-art would reject this sheet`);
+        continue;
+      }
+      notes.push(`· Saum: ${stem} — ${fringe} Randpixel geheilt (dieselbe Funktion, nach der das Tor urteilt)`);
     }
 
     const dest = path.join(OUT, `${stem}.png`);
