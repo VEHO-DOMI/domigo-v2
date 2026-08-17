@@ -5205,16 +5205,22 @@ export class PaintScene extends Phaser.Scene {
     const key = `pb-glyph-${char}`;
     if (this.textures.exists(key)) return key;
     const S = 128;
-    // R5-W5 · E6 · same one-upload rule as greyTexOf: `createCanvas` would
-    // register (and upload) an EMPTY texture and `refresh()` would upload the
-    // finished one a second time. The glyph is painted on a canvas the renderer
-    // has never seen and registered once, when it is done. Same drawing calls,
-    // same order, same hash-seeded specks — one journey to the graphics card.
-    const canvas = document.createElement("canvas");
-    canvas.width = S;
-    canvas.height = S;
-    const ctx = canvas.getContext("2d");
-    if (ctx === null) return this.tex("prop_letter"); // headless/canvas-less safety
+    // ★ R5-W5 · E6 · DIESE STELLE BLEIBT, WIE SIE IST — und das ist ein MESSWERT,
+    // keine Bequemlichkeit. Die Ein-Upload-Reparatur aus `greyTexOf` (dort 580 →
+    // 123 ms) wurde hier ebenfalls gebaut, weil es dieselbe Fundstelle derselben
+    // Klasse ist. Gemessen war sie ein RÜCKSCHRITT: `props` stieg in jeder Phase
+    // MIT Buchstaben um das 25- bis 60-Fache (p1 53 → 3250 ms, p9 50 → 1314 ms),
+    // während p4 — die einzige Phase ohne Buchstaben — unverändert blieb. Der
+    // Unterschied zu `greyTexOf`: dort wird ein großes Blatt EINMAL umgerechnet,
+    // hier entsteht je Buchstabe eine eigene Leinwand, auf der Text gesetzt wird;
+    // Phasers `createCanvas` schöpft aus einem Vorrat wiederverwendeter Leinwände,
+    // `document.createElement` nicht. Also: zurückgenommen, Zahl im Register
+    // (D-326). Eine Klassen-Reparatur ist eine Hypothese über jede Fundstelle,
+    // bis jede Fundstelle gemessen ist.
+    const tex = this.textures.createCanvas(key, S, S);
+    if (!tex) return this.tex("prop_letter"); // headless/canvas-less safety
+    const ctx = tex.getContext();
+    ctx.clearRect(0, 0, S, S);
     ctx.font = LETTER_STYLE.font;
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
@@ -5256,7 +5262,8 @@ export class PaintScene extends Phaser.Scene {
       ctx.fill();
     }
     ctx.globalCompositeOperation = "source-over";
-    return this.textures.addCanvas(key, canvas) === null ? this.tex("prop_letter") : key;
+    tex.refresh();
+    return key;
   }
 
   /**
