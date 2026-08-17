@@ -502,6 +502,7 @@ export class Sim {
     const maxX = this.camX + (LOGICAL_W - PAINT.screenBoxRightPx) * SUBS;
     if (this.player.x < minX) this.player = { ...this.player, x: minX, vx: Math.max(this.player.vx, 0) };
     if (this.player.x > maxX) this.player = { ...this.player, x: maxX, vx: Math.min(this.player.vx, 0) };
+    this.clampOutOfWipe();
     this.prevPad = { ...pad };
     for (const ev of out.events) this.onPlayerEvent(ev, events);
 
@@ -522,7 +523,6 @@ export class Sim {
     }
 
     this.stepEntityWorld(events);
-    this.clampOutOfWipe();
     this.atStageThreshold(events);
     this.nearOpenableCage(events);
     this.touchCheckpoints(events);
@@ -566,15 +566,25 @@ export class Sim {
    * anhalten, die Geschwindigkeit NACH INNEN töten, die nach außen lassen. Ein
    * Kind, das weggehen will, darf das jederzeit.
    *
-   * ── Warum die Zahl 44 und nicht 45 ────────────────────────────────────────
+   * ── Warum die Zahl 44 und nicht 45, und warum die REIHENFOLGE das entscheidet ─
    * `GUARDIAN_WIPE_REACH_PX` (45) ist die Kanten-Berührung: halbe Tafel (37,1 aus
    * dem Blatt-Seitenverhältnis) plus halbes Kind (8). Dort berühren sich die
    * beiden Körper, und dort soll das Kind stehen bleiben. Die Berührung selbst
-   * fragt aber `< 45` (`inWipeReach`), also STRIKT darunter: eine Klammer auf 45
-   * würde das Wischen unerreichbar machen — das Kind stünde für immer einen Pixel
-   * zu weit weg und die Tafel liefe in ihre Wartezeit. Die Klammer sitzt deshalb
-   * auf dem größten ganzzahligen Abstand, der noch berührt: 44. Abgeleitet, nicht
-   * getippt, und `collide.test.ts` rechnet beides nach.
+   * fragt `< 45` (`inWipeReach`), also STRIKT darunter — eine Klammer auf 45 würde
+   * das Wischen unerreichbar machen: das Kind stünde für immer einen Pixel zu weit
+   * weg und die Tafel liefe in ihre Wartezeit. Die Klammer sitzt deshalb auf dem
+   * größten ganzzahligen Abstand, der noch berührt: **44**.
+   *
+   * ★ Diese Zahl trägt nur, weil die Klammer VOR `stepEntityWorld` läuft, und das
+   * hat ein Tamper bewiesen, nicht eine Überlegung: in der ersten Fassung stand
+   * sie danach — dann sieht der Wesen-Schritt die UNGEKLAMMERTE Lage dieses Ticks,
+   * die Berührung geht ohnehin auf, und 44 gegen 45 macht keinen Unterschied. Der
+   * Tamper (44 → 45) blieb grün, der Test hat also nichts unterschieden. Hier
+   * oben, direkt nach dem Bildschirm-Kasten, gilt die Zusage wirklich: **der
+   * Wesen-Schritt bekommt das Kind niemals innerhalb ihrer Zeichnung zu sehen** —
+   * und derselbe Tamper wird rot. Der Preis ist ein Tick Verzug (die Klammer liest
+   * ihren Zustand aus dem vorigen Wesen-Schritt), genau wie der Bildschirm-Kasten
+   * seine `camX` aus dem vorigen Tick liest.
    *
    * ── Warum BEIDE Bodenzustände ─────────────────────────────────────────────
    * `wipeable` (sie sitzt und wartet) und `wipe` (das Kind wischt) sind die zwei
@@ -584,9 +594,6 @@ export class Sim {
    * Bodenzustände (`sink`, `sad`, `settle`, `window`, `consoled`) lasse ich
    * ausdrücklich frei — sie gehören dem Sieg-Bogen und der Gegenkarte, nicht dem
    * Wischen; als Befund geht das an die Guardian-Bahn (H4).
-   *
-   * Läuft NACH `stepEntityWorld`, damit der Zustand von DIESEM Tick gilt, und vor
-   * `finalizePose()`, damit die Zeichnung die geklammerte Lage zeigt.
    */
   private clampOutOfWipe(): void {
     const board = this.world.entities.find(
