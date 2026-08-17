@@ -64,6 +64,8 @@ const flag = (n) => argv.includes(`--${n}`);
 const value = (n, d) => { const i = argv.indexOf(`--${n}`); return i >= 0 && argv[i + 1] !== undefined ? argv[i + 1] : d; };
 const ONLY = value("only", "").split(",").map((s) => s.trim()).filter(Boolean);
 const MEASURE_ONLY = flag("measure");
+const SURVEY = flag("survey");
+const SURVEY_ROOT = path.join(ROOT, "docs/audio/survey");
 
 // ── ffmpeg-Hilfen, die nur das Mastering braucht ─────────────────────────────
 const run = (bin, args) => execFileSync(bin, args, { maxBuffer: 256 * 1024 * 1024 });
@@ -213,18 +215,44 @@ const choices = fs.existsSync(CHOICES) ? JSON.parse(fs.readFileSync(CHOICES, "ut
 const measured = {};
 const rejects = [];
 
-/** Alle zu bauenden Ausgabedateien: je Stem eine Liste {out, take}. */
+/**
+ * Alle zu bauenden Ausgabedateien.
+ *
+ * Normal: was `choices.json` sagt — je Stem der gewählte Take (oder eine Liste
+ * für die Varianten), nach `apps/web/public/audio/…`.
+ *
+ * `--survey`: JEDER vorhandene Take jedes Stems, durch dieselbe Kette, nach
+ * `docs/audio/survey/` (gitignored). Das ist das Instrument, mit dem gewählt
+ * wird: „nimm Take 1" ist keine Wahl, sondern die Abwesenheit einer. Erst wenn
+ * alle Takes durch dieselbe Nachbearbeitung gelaufen sind, vergleicht man
+ * Klänge und nicht Zufälle der Lautheit.
+ */
 const targets = [];
-for (const [stem, picks] of Object.entries(choices)) {
-  if (ONLY.length > 0 && !ONLY.includes(stem)) continue;
-  const item = byStem.get(stem);
-  if (item === undefined) { rejects.push(`${stem}: steht in choices.json, aber nicht in prompts.ch01.json`); continue; }
-  const kind = item.kind ?? (stem.startsWith("music-") ? "music" : "sfx");
-  const list = Array.isArray(picks) ? picks : [picks];
-  list.forEach((take, idx) => {
-    const name = list.length > 1 ? `${stem}-${idx + 1}` : stem;
-    targets.push({ stem, item, kind, take, out: path.join(OUT_ROOT, kind, `${name}.mp3`), name });
-  });
+if (SURVEY) {
+  const stems = ONLY.length > 0 ? ONLY : [...byStem.keys()];
+  for (const stem of stems) {
+    const item = byStem.get(stem);
+    if (item === undefined || item.reserved === true) continue;
+    const dir = path.join(TAKES, stem);
+    if (!fs.existsSync(dir)) continue;
+    const kind = item.kind ?? (stem.startsWith("music-") ? "music" : "sfx");
+    for (const f of fs.readdirSync(dir).filter((x) => /^take-\d+\.mp3$/.test(x)).sort()) {
+      const take = Number(/take-(\d+)/.exec(f)?.[1]);
+      targets.push({ stem, item, kind, take, out: path.join(SURVEY_ROOT, stem, `take-${take}.mp3`), name: `${stem}#${take}` });
+    }
+  }
+} else {
+  for (const [stem, picks] of Object.entries(choices)) {
+    if (ONLY.length > 0 && !ONLY.includes(stem)) continue;
+    const item = byStem.get(stem);
+    if (item === undefined) { rejects.push(`${stem}: steht in choices.json, aber nicht in prompts.ch01.json`); continue; }
+    const kind = item.kind ?? (stem.startsWith("music-") ? "music" : "sfx");
+    const list = Array.isArray(picks) ? picks : [picks];
+    list.forEach((take, idx) => {
+      const name = list.length > 1 ? `${stem}-${idx + 1}` : stem;
+      targets.push({ stem, item, kind, take, out: path.join(OUT_ROOT, kind, `${name}.mp3`), name });
+    });
+  }
 }
 
 if (MEASURE_ONLY) {
@@ -259,10 +287,17 @@ if (MEASURE_ONLY) {
     run("ffmpeg", ["-hide_banner", "-v", "error", "-y", "-i", src,
       "-af", `highpass=f=80,${TRIM}`, "-ac", "1", "-ar", String(SR), "-c:a", "pcm_f32le", stageA]);
 
-    // 3 · Lautheit
+    // ── 3 · Musik: Lautheit über loudnorm, dann die Schleife schneiden ───────
+    // Reihenfolge: Der Loop-Schnitt entfernt ein Stück eines 45-Sekunden-Stücks;
+    // die integrierte Lautheit von 38 s desselben Materials weicht davon nur um
+    // Zehntel ab (gemessen: −18,4 statt −18,5). Bei Effekten ist es umgekehrt,
+    // siehe unten.
     let samples;
+    let loopNote = null;
+    let loopFit = null;
     const aInfo = probe(stageA);
-    if (aInfo.duration >= 1.0) {
+
+    if (t.kind === "music") {
       const m = loudnormMeasure(stageA, MUSIC_TARGET_LUFS, TARGET_TP_DB);
       const stageB = path.join(tmp, `${t.name}-b.wav`);
       run("ffmpeg", ["-hide_banner", "-v", "error", "-y", "-i", stageA, "-af",
@@ -271,37 +306,38 @@ if (MEASURE_ONLY) {
         + `measured_thresh=${m.input_thresh}:offset=${m.target_offset}:linear=true`,
         "-ac", "1", "-ar", String(SR), "-c:a", "pcm_f32le", stageB]);
       samples = decodeMono(stageB);
+      if (t.item.loop === true) {
+        const cut = cutLoop(samples, t.item.bpm ?? 96, t.item.beatsPerBar ?? 4);
+        samples = cut.samples;
+        loopNote = cut.note;
+        loopFit = cut.loop;
+      } else {
+        applyFades(samples); // Auftakt und Sieg laufen einmal und dürfen ausblenden
+      }
     } else {
+      // ── Effekte: ERST kappen und ausblenden, DANN normalisieren ────────────
+      //
+      // Die Effekt-API von ElevenLabs kann minimal 0,5 s; ein Schritt soll aber
+      // 0,25 s dauern. Bestellt wird also länger und hier gekappt.
+      //
+      // ⚠ Die Reihenfolge ist der ganze Punkt. Die erste Fassung normalisierte
+      // ZUERST und kappte danach — die Normalisierung maß also eine halbe
+      // Sekunde, ausgeliefert wurde eine Drittelsekunde, und die gemessenen
+      // Lautheiten streuten über fünf Dezibel (−17,9 bis −22,9 dB bei einem Ziel
+      // von −20). Aufgefallen ist das erst in der Musterung des
+      // Kalibrierungs-Exemplars: genau dafür kommt das Exemplar vor der Serie.
       samples = decodeMono(stageA);
+      if (typeof t.item.targetSeconds === "number") {
+        const maxN = Math.floor(t.item.targetSeconds * SR);
+        if (samples.length > maxN) samples = samples.slice(0, maxN);
+      }
+      applyFades(samples);
       const cur = db(rms(samples));
-      const gain = Math.pow(10, (SFX_TARGET_RMS_DB - cur) / 20);
+      const gain = 10 ** ((SFX_TARGET_RMS_DB - cur) / 20);
       for (let i = 0; i < samples.length; i++) samples[i] *= gain;
     }
 
-    // 3b · Effekte auf ihr Zielfenster kappen.
-    // Die Effekt-API von ElevenLabs kann minimal 0,5 s; ein Schritt soll aber
-    // 0,25 s dauern. Bestellt wird also länger und hier gekappt — die Energie
-    // eines One-Shots liegt ohnehin in den ersten Millisekunden, und der 5-ms-
-    // Fade unten macht aus dem Schnitt eine Kante, die man nicht hört.
-    if (t.kind === "sfx" && typeof t.item.targetSeconds === "number") {
-      const maxN = Math.floor(t.item.targetSeconds * SR);
-      if (samples.length > maxN) samples = samples.subarray(0, maxN);
-    }
-
-    // 4 · Musik-Schleife schneiden (vor den Fades — die Datei IST die Schleife,
-    //     also darf sie am Anfang und Ende NICHT ausgeblendet werden)
-    let loopNote = null;
-    let loopFit = null;
-    if (t.kind === "music" && t.item.loop === true) {
-      const cut = cutLoop(samples, t.item.bpm ?? 96, t.item.beatsPerBar ?? 4);
-      samples = cut.samples;
-      loopNote = cut.note;
-      loopFit = cut.loop;
-    } else {
-      applyFades(samples);
-    }
-
-    // 5 · Spitze begrenzen und schreiben
+    // 4 · Spitze begrenzen und schreiben
     limitTruePeak(samples, TARGET_TP_DB);
     encodeMp3(samples, t.out);
 
@@ -316,6 +352,34 @@ if (MEASURE_ONLY) {
       + (loopNote ? `, ${loopNote}` : ""));
   }
   fs.rmSync(tmp, { recursive: true, force: true });
+}
+
+// ── Musterung: eine Tabelle zum Wählen, und SONST nichts anfassen ───────────
+// Die Musterung schreibt weder audio.measured.json noch audioFiles.ts — sie
+// entscheidet nichts, sie legt nur nebeneinander.
+if (SURVEY) {
+  fs.writeFileSync(path.join(SURVEY_ROOT, "survey.json"), `${JSON.stringify(measured, null, 2)}\n`);
+  const byStemRows = new Map();
+  for (const [name, m] of Object.entries(measured)) {
+    const stem = name.split("#")[0];
+    if (!byStemRows.has(stem)) byStemRows.set(stem, []);
+    byStemRows.get(stem).push({ take: m.take, ...m });
+  }
+  console.log("\nMusterung — je Stem alle Takes durch dieselbe Kette:\n");
+  for (const [stem, rows] of byStemRows) {
+    console.log(`  ${stem}`);
+    for (const r of rows.sort((a, b) => a.take - b.take)) {
+      console.log(`    take-${r.take}  ${String(r.durationSec).padStart(6)} s  `
+        + `${String(r.loudnessDb).padStart(7)} ${r.method === "rms" ? "dB " : "LUFS"}  `
+        + `TP ${String(r.truePeakDb).padStart(6)}  `
+        + `Zentroide ${r.centroidsHz.join(" → ").padEnd(22)}  `
+        + `${r.tailSilenceMs} ms Schwanz${r.seamRatio !== null && r.seamRatio !== undefined ? `  Naht ${r.seamRatio}` : ""}`);
+    }
+  }
+  console.log(`\n${Object.keys(measured).length} Takes gemustert → docs/audio/survey/ (gitignored). `
+    + "Wahl in docs/audio/choices.json eintragen, dann ohne --survey laufen lassen.");
+  if (rejects.length > 0) for (const r of rejects) console.error(`  ✗ ${r}`);
+  process.exit(0);
 }
 
 // ── audio.measured.json schreiben ────────────────────────────────────────────

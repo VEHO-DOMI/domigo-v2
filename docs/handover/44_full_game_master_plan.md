@@ -370,6 +370,18 @@ page. What gets BUILT this round is doc 27's layer 4 (§3.5): the visible level 
 funny names, the next-reward HUD line, and unlockables — **first perk class: avatars**
 (Koki's ruling; delta vs the v1 doctrine "avatars are free-choice" is intentional and his).
 
+### 2.11 The sound law (new, 2026-08-17; ruling R124 — supersedes the ALIVE-0 audio doctrine for this game only)
+**The painted book has real sound.** Generated assets (ElevenLabs: seven music pieces, 31 effect
+stems), MP3 mono, **on by default and quiet**, with a visible mute button stored per device.
+`@domigo/game-feel` keeps its synthesized, default-OFF kit for the other games. Unchanged and
+governing every sound the book makes: BLUEPRINT `:371` — a wrong answer gets a soft neutral thud
+and **never a descending one**; the audio gate measures that as a number. ch05's „das erste
+Musikstück des Buches" (§4) is a *diegetic* beat inside the story and is untouched by this — that
+piece is something the child hears a character play, not the chapter's score. Full canon, including
+which sound hangs on which event and what ch01 cannot yet trigger:
+`docs/design/g1/paint/AUDIO_SPINE_CH01.md`. Assets, module and gate built in S1; the wiring into
+`PaintScene`/`PaintGame` is S2.
+
 ---
 
 ## §3 · SYSTEM SPECS (engine work this round)

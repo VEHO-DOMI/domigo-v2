@@ -253,6 +253,12 @@ const main = async () => {
 
   await Promise.all(Array.from({ length: Math.min(MAX_PARALLEL, queue.length) }, worker));
 
+  // Der Kontostand hinkt der Erzeugung nach: unmittelbar nach dem letzten Take
+  // meldet `/v1/user/subscription` noch den alten Wert (gemessen 17.08.2026 —
+  // ein Lauf mit zwei Musikstücken meldete Differenz 0, dreissig Sekunden
+  // später standen 2541 Credits mehr auf dem Konto). Also kurz warten, sonst
+  // steht im Protokoll eine Null, die nach einer Ersparnis aussieht.
+  await sleep(8000);
   const after = await subscription(key);
   const delta = before && after ? after.used - before.used : null;
 

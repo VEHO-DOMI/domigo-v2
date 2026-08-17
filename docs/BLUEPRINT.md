@@ -366,12 +366,14 @@ _Koki's mandate: make the games "come alive and actually playable — akin to a 
 1. **Five-second feel:** every game surface responds deliciously within five seconds — movement with weight, taps that pop, one-tap restart — silent and static-free on a €150 Android, or it doesn't ship.
 2. **The task IS the encounter:** juice wraps AROUND the task moment; `xpForTier` frozen; scaffolds never alter tiers; no timer ever touches unmastered material.
 3. **Diegetic minigames:** each minigame is ONE existing graded format elevated to a physical mechanic; retrieval practice in disguise, graded by the one engine, recorded as real attempts.
-4. **Determinism + budgets sacred:** all randomness seeded; a reduced-motion path for every effect; sound = synthesized WebAudio (zero asset bytes), opt-in, default OFF; bundle gates per PR.
+4. **Determinism + budgets sacred:** all randomness seeded; a reduced-motion path for every effect; sound = synthesized WebAudio (zero asset bytes), opt-in, default OFF *(superseded for the painted book by R124, 2026-08-17 — see the Koki decision below)*; bundle gates per PR.
 5. **Derived progress only:** cosmetic scores/PBs never contradict the ledger; no leaderboards (P-6 later, dual-opt-in).
 6. **Register guard:** juice obeys the story's emotional band (no confetti on G3 tense/reckoning beats — celebration fires on the kid's OWN solve, never the social consequence); wrong = a soft neutral thud + calm copy, never shake/flash/red-pulse/descending audio. The reveal is a teaching moment, not a verdict.
 7. **The self-playtest loop** (VII.6) runs per PR, written into the PR body.
 
 **Koki decisions 2026-07-06(c):** E-1 first (landed as its own PR) · sound+haptics ship in ALIVE-0 (opt-in, default OFF) · G1 RPG pass is the first showcase wave · 3D = diegetic set-pieces only (G4's mission simulator, forfeit-first).
+
+**★ Koki decision 2026-08-17 (R124) — THE PAINTED BOOK GETS REAL SOUND.** Koki: „Es fehlt komplett Musik, Effekte, Sounds. Effekte, wenn man läuft, springt, in den Kampf kommt … und eine passende, fröhliche Musik je Level; der Boss ernster." So for the painted book (`@domigo/game-paint`) the ALIVE-0 sound doctrine above is **superseded**: it ships **generated audio assets** (ElevenLabs — music and effects, MP3 mono), **sound ON by default and quiet**, with a **visible mute button**; the choice is stored per device (`domigo:pb:audio:v1`, never touching `domigo:feel:v1`). `@domigo/game-feel` keeps its synthesized, default-OFF kit for every other game. Two things do **not** change: doctrine 6 below governs every sound the book makes — a wrong answer gets a soft neutral thud and **never a descending one** — and the budgets are still sacred (audio adds its own ceilings: ≤ 6 MB on disk, ≤ 16 MB decoded, `docs/PERF_WAECHTER.md`). Speech is a later round of its own; the pipeline is chapter-capable and reserves the `voice` family. Canon: `docs/design/g1/paint/AUDIO_SPINE_CH01.md`. Built S1 (assets, module, gate); wired by S2.
 
 ### VII.1 Audit corrections the program is built on (all code-verified)
 
