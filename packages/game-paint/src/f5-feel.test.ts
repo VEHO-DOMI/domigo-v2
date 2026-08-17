@@ -36,6 +36,10 @@ import {
   frenzyEveryFor,
   frenzyFlipsBy,
   frenzyOffsetSubs,
+  fitFlips,
+  fitOffsetSubs,
+  fitStyleFor,
+  FIT_STYLE_DEFAULT,
   HOP_EVERY_TICKS,
   HOP_RISE_PX,
   HOP_TICKS,
@@ -140,6 +144,137 @@ describe("R5-F5 · der Kritzel-Anfall (F-6)", () => {
     const b = Array.from({ length: 200 }, (_, t) => frenzyOffsetSubs(t));
     expect(a).toEqual(b);
     expect(FRENZY_TICKS % FRENZY_FLIP_TICKS).toBe(0); // sonst wäre »netto null« Zufall
+  });
+});
+
+// ─────────────────────────────────────────────────────────────────────────────
+// R5-W5 · F6 · ZWEI LÄUFER, ZWEI ANFÄLLE.
+//
+// Der Anfall gehört seit F5 der ROLLE, also beiden Läufern — aber ihre Karten
+// behaupten nicht dasselbe: der Bleistift „kritzelt wild über das Papier", die
+// Füllfeder „schreibt eine Frage in die Luft". Bis hierher fuhren beide dieselbe
+// Zickzack-Kurve seitwärts.
+describe("R5-F6 · der Anfall der Füllfeder ist ein anderer als der des Bleistifts", () => {
+  it("die Tabelle deckt BEIDE Läufer des Kapitels ab — aus dem Level gelesen, nicht getippt", () => {
+    const laeufer = [...phase("p1").entities, ...phase("p2").entities]
+      .filter((e) => e.role === "chaser");
+    expect(laeufer.map((e) => e.id)).toEqual(["p1-pencil1", "p2-pen"]);
+    expect(laeufer.map((e) => fitStyleFor(e.skin))).toEqual(["kritzeln", "schreiben"]);
+  });
+
+  it("ein unbekanntes Blatt bekommt den Kritzler — die Tabelle nimmt keinem etwas weg", () => {
+    expect(fitStyleFor("gibtesnicht")).toBe(FIT_STYLE_DEFAULT);
+    expect(FIT_STYLE_DEFAULT).toBe("kritzeln");
+  });
+
+  it("★ die Füllfeder HEBT sich, statt zu schieben — und der Bleistift schiebt, statt zu heben", () => {
+    const schreiben = Array.from({ length: FRENZY_TICKS + 1 }, (_, t) => fitOffsetSubs(t, "schreiben"));
+    const kritzeln = Array.from({ length: FRENZY_TICKS + 1 }, (_, t) => fitOffsetSubs(t, "kritzeln"));
+    expect(schreiben.every((o) => o.dx === 0)).toBe(true);
+    expect(kritzeln.every((o) => o.dy === 0)).toBe(true);
+    // und beide bewegen sich wirklich (sonst wäre »netto null« nur »nichts«)
+    expect(Math.max(...schreiben.map((o) => -o.dy))).toBeGreaterThan(0);
+    expect(Math.max(...kritzeln.map((o) => Math.abs(o.dx)))).toBeGreaterThan(0);
+  });
+
+  it("★ sie geht NIE unter ihre eigene Standlinie — der Betrag des Sinus ist genau dafür da", () => {
+    // y ist die Fusslinie, kleiner heisst höher: ein positiver dy wäre ein Schritt
+    // IN den Boden. Mit dem rohen Sinus wäre die halbe Schwingung genau das.
+    for (let t = 0; t <= FRENZY_TICKS * 3; t++) {
+      expect(fitOffsetSubs(t, "schreiben").dy, `Tick ${t}`).toBeLessThanOrEqual(0);
+    }
+    // Der höchste Punkt liegt bei 749 Subs = 2,93 px, nicht bei glatten 3: der
+    // Scheitel der Kurve fällt zwischen zwei Ticks (bei t = 1,75). Hier steht die
+    // GEMESSENE Zahl und nicht die nominelle — eine Zusage auf 3,00 px wäre eine
+    // Behauptung über einen Tick, den es nicht gibt.
+    const hub = Math.min(...Array.from({ length: FRENZY_TICKS + 1 }, (_, t) => fitOffsetSubs(t, "schreiben").dy));
+    expect(hub).toBe(-749);
+    expect(hub / SUBS).toBeGreaterThan(-FRENZY_REACH_PX); // unter dem Nennwert…
+    expect(hub / SUBS).toBeLessThan(-(FRENZY_REACH_PX - 0.2)); // …aber nur knapp
+  });
+
+  it("★ ein ganzer Schreib-Anfall bringt sie exakt auf ihre Standlinie zurück", () => {
+    let dy = 0;
+    for (let t = 1; t <= FRENZY_TICKS; t++) {
+      dy += fitOffsetSubs(t, "schreiben").dy - fitOffsetSubs(t - 1, "schreiben").dy;
+    }
+    expect(dy).toBe(0);
+  });
+
+  it("eine schreibende Hand dreht sich nicht um — die kritzelnde schon, und gerade oft", () => {
+    expect(fitFlips("schreiben")).toBe(false);
+    expect(fitFlips("kritzeln")).toBe(true);
+    expect(frenzyFlipsBy(FRENZY_TICKS) % 2).toBe(0);
+  });
+
+  it("★ im AUSGELIEFERTEN p2: sie geht in den Anfall, hebt sich dabei, und steht danach wieder auf ihrer Linie", () => {
+    const p = phase("p2");
+    const w: EntityWorld = spawnEntities(p.entities, []);
+    const pen = w.entities.find((e) => e.id === "p2-pen")!;
+    // Ihre Standlinie ist NICHT ihr Spawn: sie läuft, und der Boden schnappt ihre
+    // Füsse bei jedem Patrouillen-Schritt neu. Der Anker eines Anfalls ist die
+    // Linie, auf der sie ihn BEGINNT — daran wird gemessen.
+    let anker: number | null = null;
+    let vorher = pen.state;
+    let anfaelle = 0;
+    let sahHub = false;
+    let rueckkehren = 0;
+    for (let t = 0; t < 2000; t++) {
+      stepEntities(w, p.rows, input({ playerX: 200 * TILE * SUBS, playerY: 0 }));
+      if (pen.state === "frenzy") {
+        if (vorher !== "frenzy") { anfaelle++; anker = pen.y; }
+        if (anker !== null) {
+          if (pen.y < anker) sahHub = true;
+          expect(pen.y, "nie in den Boden").toBeLessThanOrEqual(anker);
+        }
+      } else if (vorher === "frenzy" && anker !== null) {
+        // der Wechsel-Tick selbst bewegt sie nicht weiter (eine Verzweigung pro
+        // Tick), hier gilt also die Zusage »exakt zurück auf den Anker«
+        expect(pen.y, "kein Läufer, der in der Luft stehen bleibt").toBe(anker);
+        rueckkehren++;
+        anker = null;
+      }
+      vorher = pen.state;
+    }
+    expect(anfaelle, "in 2000 Ticks schreibt sie mindestens einmal").toBeGreaterThan(0);
+    expect(sahHub, "und dabei hebt sie sich wirklich").toBe(true);
+    expect(rueckkehren, "jeder Anfall endet auf seinem Anker").toBe(anfaelle);
+  });
+
+  it("★★ BEIDE Läufer kommen im ausgelieferten Kapitel wirklich in ihren Anfall", () => {
+    // DER WÄCHTER, DER GEFEHLT HAT. F5s Report sagt, der Anfall gelte „für beide
+    // Läufer" — im Code stimmte das, im Kapitel nicht: die Füllfeder erreichte
+    // ihre Schwelle (216) nie, weil ihre längste Patrouille 192 Ticks dauert und
+    // jeder `turn` die Uhr auf null setzt. Eine Fähigkeit, die im ausgelieferten
+    // Level unerreichbar ist, gibt es nicht — also prüft das hier das LEVEL, nicht
+    // die Funktion.
+    for (const [phaseId, id] of [["p1", "p1-pencil1"], ["p2", "p2-pen"]] as const) {
+      const p = phase(phaseId);
+      const w: EntityWorld = spawnEntities(p.entities, []);
+      const laeufer = w.entities.find((e) => e.id === id)!;
+      let anfaelle = 0;
+      let vorher = laeufer.state;
+      for (let t = 0; t < 2000; t++) {
+        stepEntities(w, p.rows, input({ playerX: 200 * TILE * SUBS, playerY: 0 }));
+        if (laeufer.state === "frenzy" && vorher !== "frenzy") anfaelle++;
+        vorher = laeufer.state;
+      }
+      expect(anfaelle, `${id} muss in 2000 Ticks in den Anfall kommen`).toBeGreaterThan(0);
+    }
+  });
+
+  it("★ das Kind sticht auch ihren Anfall — und der Abbruch setzt sie auf ihre Linie zurück", () => {
+    const p = phase("p2");
+    const w: EntityWorld = spawnEntities(p.entities, []);
+    const pen = w.entities.find((e) => e.id === "p2-pen")!;
+    const linie = pen.y;
+    pen.state = "frenzy";
+    pen.timer = 3;
+    pen.y = linie + fitOffsetSubs(3, "schreiben").dy; // mitten im Hub
+    expect(pen.y).toBeLessThan(linie);
+    stepEntities(w, p.rows, input({ playerX: pen.x + 8 * SUBS, playerY: pen.y }));
+    expect(pen.state).toBe("telegraph");
+    expect(pen.y, "kein Läufer, der in der Luft stehen bleibt").toBe(linie);
   });
 });
 
