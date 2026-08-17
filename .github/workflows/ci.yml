@@ -82,6 +82,8 @@ jobs:
       - run: node scripts/check-fonts.mjs --selftest # E5: the font guard's own red light must be reachable
       - run: node scripts/check-fonts.mjs # E5/D-79: no next/font/google — the build may not depend on gstatic being up
       - run: node scripts/shoot-card-bench.mjs --selftest # W2/D-102: die Ausschnitt-Rechnung der Kartenbank — ein Motiv unter 40 % der Bildflaeche muss rot werden
+      - run: node scripts/check-secrets.mjs --selftest # S1: vier Koeder muessen rot werden UND sechs Beinahe-Treffer still bleiben
+      - run: node scripts/check-secrets.mjs # S1: kein API-Schluessel in einer getrackten Datei — die Historie behaelt, was einmal drin war
       - run: node scripts/check-ci-gates.mjs --selftest # E2: the guard's own red light must be reachable
       - run: node scripts/check-ci-gates.mjs # E2: every gate on disk is wired into THIS file — the gap cannot reopen
 
