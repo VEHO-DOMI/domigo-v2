@@ -1236,8 +1236,23 @@ export const planMass = (
       if (g === "z" || !isSlope(g)) continue; // `z` is the slide, handled below
       const up = g === "/" || g === "1" || g === "2";
       const wide = g === "1" || g === "3"; // the 30° pairs span two cells
+      const stem = up ? kit.rampUp : kit.rampDown;
+      // R5-W6 · A7 · D-324. The ramp sheets are optional now, and this is the one
+      // place that would have drawn them. Pushing an undefined stem here would
+      // put an invisible hole in the floor exactly where a child expects to walk
+      // up — silent, and only findable from a screenshot. ch01 carries no slope
+      // glyph at all, so this cannot fire today; the moment a surface grows one,
+      // it should stop the build and be answered with a commission (R109), not
+      // with a placeholder revived by accident.
+      if (stem === undefined) {
+        throw new Error(
+          `planMass: the grid carries the slope glyph "${g}" at column ${c}, row ${r}, but this kit declares no `
+            + `${up ? "rampUp" : "rampDown"} sheet. The shared ramp placeholders were deleted in R5-W5 · E6 (D-267); `
+            + "a surface with slopes needs its own ramp art ordered (SPEC_MASSEN_KIT §10).",
+        );
+      }
       out.push({
-        kind: "ramp", stem: up ? kit.rampUp : kit.rampDown, c, r,
+        kind: "ramp", stem, c, r,
         x: c * TILE, y: r * TILE - CRUST_LIP, w: (wide ? 2 : 1) * TILE, h: TILE + CRUST_LIP,
         depth: DEPTH.ramp,
       });
