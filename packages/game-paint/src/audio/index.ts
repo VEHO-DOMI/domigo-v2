@@ -15,6 +15,24 @@
  *   5. `director.music(phaseId)` beim Phasenwechsel
  *   6. `setMuted/setMusic/setSfx` für den Stumm-Knopf
  *
+ * Drei Dinge, die S2 wissen muss und die hier bewusst offen sind:
+ *
+ * · **`decodeAudio` ist asynchron.** Phaser meldet das Ende über
+ *   `Phaser.Sound.Events.DECODED`; dieser Direktor merkt sich eine Datei schon,
+ *   wenn er sie abgeschickt hat. Ein Klang, der in genau diesem Fenster
+ *   ausgelöst wird, bleibt still (statt zu werfen) — für S1 ist das die
+ *   richtige Vorsicht, für S2 die Stelle, an der ein `once(DECODED)` das letzte
+ *   Prozent holt.
+ * · **Die Landung braucht ihre Schwelle vom Aufrufer.** `land(hard)` erwartet
+ *   dieselbe Entscheidung, die `PaintScene#footwork` für den Kreidestaub schon
+ *   trifft (`fallVy ≥ LAND_DUST_VY·2`) — damit Bild und Ton denselben Augenblick
+ *   meinen. Der Direktor importiert diese Konstante NICHT: ein Wertimport aus
+ *   `paint.ts` wäre die Laufzeit-Kante, die dieser PR nicht haben darf.
+ * · **`footstep(surface)` bekommt den Untergrund aus der PHASE, nicht aus dem
+ *   Glyph.** In ch01 gibt es genau zwei begehbare Glyphen (`#` und die Rutsche
+ *   `z`) — die Räume unterscheiden sich im Material, die Kacheln nicht:
+ *   p1 · p2 · p9 = `paper`, p3 = `garden`, p4 = `board`.
+ *
  * Der Kanon dazu steht in `docs/design/g1/paint/AUDIO_SPINE_CH01.md`.
  */
 

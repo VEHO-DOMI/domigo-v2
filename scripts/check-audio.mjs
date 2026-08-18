@@ -70,7 +70,7 @@ const LIMITS = {
   sfxRmsDb: -20, sfxRmsTol: 2,
   sfxLufs: -16, sfxLufsTol: 2,
   truePeakDb: -1, truePeakTol: 0.2,
-  durationTol: 0.3,          // ±30 % um das Zielfenster
+  sfxMinSec: 0.04,           // darunter ist es ein Knacken, kein Klang
   // Die Schleifenlänge wird GEMESSEN, nicht bestellt: `master.mjs` sucht die
   // Länge, bei der sich das Stück selbst am ähnlichsten ist. Gemessen kam bei
   // drei Takes desselben Prompts 38,5 s · 26,1 s · 26,1 s heraus (die beiden
@@ -357,10 +357,25 @@ for (const { file, kind, spec } of promised) {
     if (stored.durationSec < LIMITS.musicLoopMinSec || stored.durationSec > LIMITS.musicLoopMaxSec) {
       fail("Dauer", `${file}: Schleife ${stored.durationSec} s — erlaubt sind ${LIMITS.musicLoopMinSec}–${LIMITS.musicLoopMaxSec} s (die Länge wird gemessen, nicht bestellt)`);
     }
-  } else {
-    const tol = kind === "music" ? wantSec * LIMITS.stingerTol : wantSec * LIMITS.durationTol + 0.05;
+  } else if (kind === "music") {
+    const tol = wantSec * LIMITS.stingerTol;
     if (Math.abs(stored.durationSec - wantSec) > tol) {
       fail("Dauer", `${file}: ${stored.durationSec} s, erwartet ${wantSec} s ± ${tol.toFixed(2)} s`);
+    }
+  } else {
+    // Bei Effekten ist die Zielzeit eine OBERGRENZE, kein Sollwert.
+    //
+    // Ein Schritt „dauert 0,25 s" heisst: er darf nicht länger sein. Gemessen ist
+    // ein echter Filz-Schritt rund 50 ms Energie und danach nichts — und das ist
+    // besser, nicht schlechter. Die erste Fassung verlangte 0,25 s ± 30 % und
+    // machte damit die knackigsten Aufnahmen rot. Nach unten schützt nur eine
+    // grosszügige Schwelle gegen eine Datei, in der nichts mehr steht; dass
+    // wirklich etwas drin ist, prüft ohnehin das Gesetz „kein stilles Blatt".
+    if (stored.durationSec > wantSec + 0.05) {
+      fail("Dauer", `${file}: ${stored.durationSec} s laenger als die Obergrenze ${wantSec} s`);
+    }
+    if (stored.durationSec < LIMITS.sfxMinSec) {
+      fail("Dauer", `${file}: ${stored.durationSec} s — kuerzer als ${LIMITS.sfxMinSec} s ist kein Klang mehr, sondern ein Knacken`);
     }
   }
 
@@ -458,7 +473,18 @@ if (loudnessByPedagogy.positive.length > 0 && loudnessByPedagogy.neutral.length 
 // ── Gesetz 9b · die Toast-Bindungen passen noch auf sim.ts ──────────────────
 {
   const sim = fs.readFileSync(SIM_TS, "utf8");
-  const literals = [...sim.matchAll(/msg:\s*(?:`([^`]*)`|"([^"]*)")/g)].map((m) => m[1] ?? m[2] ?? "");
+  // ALLE Zeichenketten der Datei, nicht nur die hinter `msg:`.
+  //
+  // Die erste Fassung suchte `msg: "…"` und übersah damit genau die Zeile, um
+  // die es geht: `msg: ev.hazard === "^" ? "Autsch!" : "Platsch!"` — ein
+  // Ausdruck, kein Literal an dieser Stelle. Das Tor meldete daraufhin, die
+  // Copy sei umformuliert worden, obwohl sich nichts geändert hatte. Ein
+  // Fehlalarm ist bei einem Tor teurer als eine etwas lockerere Suche: er
+  // kostet Vertrauen, und ein Tor, dem niemand glaubt, wird abgeschaltet.
+  const literals = [
+    ...[...sim.matchAll(/"((?:[^"\\]|\\.)*)"/g)].map((m) => m[1]),
+    ...[...sim.matchAll(/`((?:[^`\\]|\\.)*)`/g)].map((m) => m[1]),
+  ];
   for (const { stem, pattern } of readToastMatches()) {
     let re;
     try { re = new RegExp(pattern); } catch { fail("Toast-Bindung", `\`${stem}\`: /${pattern}/ ist kein gueltiger Ausdruck`); continue; }

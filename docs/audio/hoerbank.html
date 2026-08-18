@@ -1,0 +1,2473 @@
+<!doctype html>
+<html lang="de">
+<meta charset="utf-8">
+<title>Hörbank — der Klang des Malbuchs, Kapitel 1</title>
+<style>
+  :root { --ink:#2b2620; --paper:#f6ecd4; --line:#d8cbb0; --dim:#7a6e5c; --ok:#2d6a4f; --out:#9b6a6a; }
+  * { box-sizing: border-box; }
+  body { margin:0; padding:2rem 1.25rem 6rem; background:var(--paper); color:var(--ink);
+         font:16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, sans-serif; }
+  .wrap { max-width: 1180px; margin: 0 auto; }
+  h1 { font-size:1.7rem; margin:0 0 .25rem; }
+  .lede { color:var(--dim); margin:0 0 1.5rem; }
+  .rules { background:#fffaf0; border:1px solid var(--line); border-radius:10px; padding:1rem 1.25rem; margin:0 0 2rem; }
+  .rules ol { margin:.5rem 0 0; padding-left:1.2rem; }
+  .rules li { margin:.4rem 0; }
+  h2 { font-size:1.15rem; margin:2.5rem 0 .75rem; padding-bottom:.35rem; border-bottom:2px solid var(--line); }
+  .stem { border:1px solid var(--line); border-radius:10px; background:#fffdf7; padding:1rem 1.1rem; margin:0 0 1.1rem; }
+  .stem h3 { margin:0 0 .3rem; font-size:1rem; }
+  code { background:#efe6cf; padding:.08em .35em; border-radius:4px; font-size:.92em; }
+  .tag { font-size:.72rem; text-transform:uppercase; letter-spacing:.06em; padding:.1em .5em;
+         border-radius:99px; background:#e6dcc2; color:var(--dim); margin-left:.4rem; }
+  .tag.neutral { background:#efdcdc; color:#8a4a4a; }
+  .tag.positive { background:#dcecdc; color:var(--ok); }
+  .need { font-size:.75rem; color:var(--dim); font-weight:400; margin-left:.5rem; }
+  .hangs { margin:.15rem 0 .35rem; font-size:.9rem; }
+  .dim { color:var(--dim); }
+  .prompt { margin:.35rem 0 .8rem; font-size:.86rem; color:var(--dim); font-style:italic; }
+  .takes { display:grid; grid-template-columns:repeat(auto-fill, minmax(232px,1fr)); gap:.7rem; }
+  .take { border:1px solid var(--line); border-radius:8px; padding:.55rem .6rem; background:#fff; }
+  .take.chosen { border-color:var(--ok); box-shadow:0 0 0 2px rgba(45,106,79,.13); }
+  .take.out { opacity:.55; }
+  .take-head { display:flex; justify-content:space-between; align-items:center; gap:.4rem; margin-bottom:.35rem; }
+  .tn { font-weight:600; font-size:.85rem; }
+  .pick { font-size:.78rem; color:var(--dim); white-space:nowrap; }
+  audio { width:100%; height:32px; }
+  .m { font-size:.74rem; color:var(--dim); margin-top:.35rem; font-variant-numeric:tabular-nums; }
+  .why { font-size:.76rem; color:var(--ok); margin-top:.3rem; }
+  .rej { font-size:.76rem; color:var(--out); margin-top:.3rem; }
+  .pub { font-size:.76rem; color:var(--dim); margin:.7rem 0 0; }
+  #bar { position:fixed; left:0; right:0; bottom:0; background:#fffaf0; border-top:1px solid var(--line);
+         padding:.7rem 1.25rem; display:flex; gap:.8rem; align-items:center; justify-content:center; }
+  button { font:inherit; padding:.45rem .9rem; border-radius:8px; border:1px solid var(--line);
+           background:#fff; cursor:pointer; }
+  #out { position:fixed; inset:8% 8% 12%; background:#fff; border:1px solid var(--line); border-radius:10px;
+         padding:1rem; overflow:auto; display:none; z-index:9; }
+  #out textarea { width:100%; height:88%; font:13px/1.4 ui-monospace, Menlo, monospace; }
+</style>
+<div class="wrap">
+<h1>Hörbank — der Klang des Malbuchs, Kapitel 1</h1>
+<p class="lede">Alle Kandidaten nebeneinander. Meine Vorwahl ist mit ★ markiert; du entscheidest.</p>
+
+<div class="rules">
+  <b>Drei Regeln, nach denen dieses Kapitel klingt:</b>
+  <ol>
+    <li><b>Alles ist aus Kreide, Papier, Holz und Filz.</b> Das Kind ist in einem gemalten Schulbuch — es gibt kein Metall, keinen Synthesizer, kein Kino. Jeder Klang wurde im selben kleinen Klassenzimmer aufgenommen, nah und ohne Hall.</li>
+    <li><b>Ein Fehler klingt nie wie ein Urteil.</b> Wenn etwas nicht klappt, kommt ein weicher, gedämpfter Ton, der <i>nicht nach unten fällt</i> — kein Summer, kein trauriges Absacken. Das ist eine Hausregel aus dem Blueprint, und eine Maschine misst sie inzwischen nach.</li>
+    <li><b>Die Musik trägt die Stimmung, nicht die Leistung.</b> Jeder Raum hat sein eigenes Stück; es wird nie bedrohlich, weil ein Kind etwas falsch gemacht hat. Die Tafel im Boss-Raum ist <i>grantig, nicht böse</i> — sie wird sauber gemacht, nicht besiegt.</li>
+  </ol>
+  <p style="margin:.7rem 0 0"><b>So gehst du vor:</b> hör dir je Zeile die Takes an, klick bei dem, der dir am besten gefällt, auf „nehmen". Ganz unten sammelst du deine Wahlen mit einem Klick als Textblock ein und schickst ihn zurück — dann wird genau das veröffentlicht. Wo du nichts änderst, bleibt meine Vorwahl (★).</p>
+</div>
+
+<h2>Musik — die fünf Räume, der Auftakt, der Sieg</h2>
+
+    <article class="stem" id="music-p1">
+      <h3><code>music-p1</code> <span class="tag info">info</span></h3>
+      <p class="hangs">Klingt bei: <b>phase:p1</b> <span class="dim">(scene)</span></p>
+      <p class="prompt">Instrumental only. A curious, bright, gently lost little theme for a child who has just fallen into a painted school book and finds everything stranded high above. Small acoustic ensemble: soft marimba, plucked nylon guitar, light brushed hand percussion, one warm flute. Major key, about 92 BPM, unhurried. Begins and ends on the tonic, no intro, no ritardando, seamless loop. Warm, welcoming, never sad, never tense.</p>
+      <div class="takes">
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 1</span>
+          <label class="pick"><input type="checkbox" name="pick-music-p1" value="1"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/music-p1/take-1.mp3"></audio>
+        <div class="m">38.479 s · -18.4 LUFS · Spitze -1.5 dB<br>Klangfarbe wird dunkler · Naht 0.27</div>
+        
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 2</span>
+          <label class="pick"><input type="checkbox" name="pick-music-p1" value="2"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/music-p1/take-2.mp3"></audio>
+        <div class="m">26.087 s · -18.4 LUFS · Spitze -2.8 dB<br>Klangfarbe wird heller · Naht 0.02</div>
+        
+        
+      </div>
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ meine Wahl</span>
+          <label class="pick"><input type="checkbox" name="pick-music-p1" value="3" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/music-p1/take-3.mp3"></audio>
+        <div class="m">26.093 s · -18.6 LUFS · Spitze -2.8 dB<br>Klangfarbe wird dunkler · Naht 0</div>
+        <div class="why">einziger bzw. bester Take: 26.093 s, -18.6 LUFS, Klangfarbe fallend (1425 → 896 → 564 Hz)</div>
+        
+      </div></div>
+      <p class="pub">Veröffentlicht als <code>music-p1.mp3</code> in <code>public/audio/g1/paint/ch01/music/</code> · 3 Takes gehört, 3 in der engeren Wahl</p>
+    </article>
+
+    <article class="stem" id="music-p2">
+      <h3><code>music-p2</code> <span class="tag info">info</span></h3>
+      <p class="hangs">Klingt bei: <b>phase:p2</b> <span class="dim">(scene)</span></p>
+      <p class="prompt">Instrumental only. A tender, hushed night piece for a moonlit classroom where one half-enchanted classmate is waiting. Very few instruments: celesta, soft nylon guitar harmonics, a single sustained flute, almost no percussion. Major key with an open fourth, about 72 BPM. Quiet and spacious, tender rather than sad. Begins and ends on the tonic, no intro, no ritardando, seamless loop.</p>
+      <div class="takes">
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 1</span>
+          <label class="pick"><input type="checkbox" name="pick-music-p2" value="1"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/music-p2/take-1.mp3"></audio>
+        <div class="m">22.492 s · -19 LUFS · Spitze -4 dB<br>Klangfarbe wird heller · Naht 0.49</div>
+        
+        
+      </div>
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ meine Wahl</span>
+          <label class="pick"><input type="checkbox" name="pick-music-p2" value="2" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/music-p2/take-2.mp3"></audio>
+        <div class="m">37.495 s · -17.9 LUFS · Spitze -4.3 dB<br>Klangfarbe bleibt gleich · Naht 0.06</div>
+        <div class="why">einziger bzw. bester Take: 37.495 s, -17.9 LUFS, Klangfarbe gleichbleibend (1831 → 2304 → 1699 Hz)</div>
+        
+      </div>
+      <div class="take  out">
+        <div class="take-head">
+          <span class="tn">Take 3</span>
+          <label class="pick"><input type="checkbox" name="pick-music-p2" value="3"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/music-p2/take-3.mp3"></audio>
+        <div class="m">32.497 s · -18.3 LUFS · Spitze -1.4 dB<br>Klangfarbe bleibt gleich · Naht 1.83</div>
+        
+        <div class="rej">zurück: Naht-Verhaeltnis 1.83 — die Schleife klickt bei jedem Durchlauf</div>
+      </div></div>
+      <p class="pub">Veröffentlicht als <code>music-p2.mp3</code> in <code>public/audio/g1/paint/ch01/music/</code> · 3 Takes gehört, 2 in der engeren Wahl</p>
+    </article>
+
+    <article class="stem" id="music-p3">
+      <h3><code>music-p3</code> <span class="tag info">info</span></h3>
+      <p class="hangs">Klingt bei: <b>phase:p3</b> <span class="dim">(scene)</span></p>
+      <p class="prompt">Instrumental only. A playful, springy outdoor theme for a terraced school garden where a child slides, waits and climbs. Pizzicato strings, marimba, light shaker and woodblock, one cheerful clarinet. Major key, about 112 BPM, bouncy but not frantic. Begins and ends on the tonic, no intro, no ritardando, seamless loop. Sunny and encouraging.</p>
+      <div class="takes">
+      <div class="take  out">
+        <div class="take-head">
+          <span class="tn">Take 1</span>
+          <label class="pick"><input type="checkbox" name="pick-music-p3" value="1"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/music-p3/take-1.mp3"></audio>
+        <div class="m">34.294 s · -18.6 LUFS · Spitze -1.4 dB<br>Klangfarbe wird heller · Naht 0.03</div>
+        
+        <div class="rej">zurück: 512 ms Stille am Ende (Grenze 80)</div>
+      </div>
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ meine Wahl</span>
+          <label class="pick"><input type="checkbox" name="pick-music-p3" value="2" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/music-p3/take-2.mp3"></audio>
+        <div class="m">34.287 s · -18.5 LUFS · Spitze -2.4 dB<br>Klangfarbe wird dunkler · Naht 0.01</div>
+        <div class="why">einziger bzw. bester Take: 34.287 s, -18.5 LUFS, Klangfarbe fallend (7855 → 1564 → 638 Hz)</div>
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 3</span>
+          <label class="pick"><input type="checkbox" name="pick-music-p3" value="3"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/music-p3/take-3.mp3"></audio>
+        <div class="m">25.717 s · -18.4 LUFS · Spitze -2.4 dB<br>Klangfarbe wird heller · Naht 0.01</div>
+        
+        
+      </div></div>
+      <p class="pub">Veröffentlicht als <code>music-p3.mp3</code> in <code>public/audio/g1/paint/ch01/music/</code> · 3 Takes gehört, 2 in der engeren Wahl</p>
+    </article>
+
+    <article class="stem" id="music-p9">
+      <h3><code>music-p9</code> <span class="tag info">info</span></h3>
+      <p class="hangs">Klingt bei: <b>phase:p9</b> <span class="dim">(scene)</span></p>
+      <p class="prompt">Instrumental only. A mischievous, secretive little theme for a hidden ink chamber full of letters and showing off. Muted pizzicato bass, tiptoeing marimba, occasional water-drop percussion, one sly bass clarinet. Major key with a raised fourth, about 100 BPM. Twinkling and conspiratorial, never menacing. Begins and ends on the tonic, no intro, no ritardando, seamless loop.</p>
+      <div class="takes">
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ meine Wahl</span>
+          <label class="pick"><input type="checkbox" name="pick-music-p9" value="1" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/music-p9/take-1.mp3"></audio>
+        <div class="m">28.797 s · -18.5 LUFS · Spitze -1.3 dB<br>Klangfarbe bleibt gleich · Naht 0.12</div>
+        <div class="why">einziger bzw. bester Take: 28.797 s, -18.5 LUFS, Klangfarbe gleichbleibend (618 → 503 → 580 Hz)</div>
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 2</span>
+          <label class="pick"><input type="checkbox" name="pick-music-p9" value="2"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/music-p9/take-2.mp3"></audio>
+        <div class="m">28.814 s · -18.4 LUFS · Spitze -2.5 dB<br>Klangfarbe wird heller · Naht 0.43</div>
+        
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 3</span>
+          <label class="pick"><input type="checkbox" name="pick-music-p9" value="3"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/music-p9/take-3.mp3"></audio>
+        <div class="m">33.603 s · -18.5 LUFS · Spitze -1.3 dB<br>Klangfarbe wird dunkler · Naht 0.02</div>
+        
+        
+      </div></div>
+      <p class="pub">Veröffentlicht als <code>music-p9.mp3</code> in <code>public/audio/g1/paint/ch01/music/</code> · 3 Takes gehört, 3 in der engeren Wahl</p>
+    </article>
+
+    <article class="stem" id="music-p4">
+      <h3><code>music-p4</code> <span class="tag info">info</span></h3>
+      <p class="hangs">Klingt bei: <b>phase:p4</b> <span class="dim">(scene)</span></p>
+      <p class="prompt">Instrumental only. A determined, purposeful theme for a stage in front of an empty hall, where a child faces a grumpy scribbled-over blackboard and cleans it rather than defeats it. Marching low marimba, steady hand drum, resolute brushed strings, one bold clarinet. Major key with a lowered seventh, about 120 BPM. Serious and driving, but good-natured and never threatening: grumpy, not evil. No horror, no dissonance, no dread. Begins and ends on the tonic, no intro, no ritardando, seamless loop.</p>
+      <div class="takes">
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 1</span>
+          <label class="pick"><input type="checkbox" name="pick-music-p4" value="1"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/music-p4/take-1.mp3"></audio>
+        <div class="m">29.506 s · -18.6 LUFS · Spitze -3.5 dB<br>Klangfarbe wird heller · Naht 0.02</div>
+        
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 2</span>
+          <label class="pick"><input type="checkbox" name="pick-music-p4" value="2"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/music-p4/take-2.mp3"></audio>
+        <div class="m">40.002 s · -17.9 LUFS · Spitze -1.8 dB<br>Klangfarbe wird heller · Naht 0.06</div>
+        
+        
+      </div>
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ meine Wahl</span>
+          <label class="pick"><input type="checkbox" name="pick-music-p4" value="3" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/music-p4/take-3.mp3"></audio>
+        <div class="m">32.006 s · -18.6 LUFS · Spitze -3.2 dB<br>Klangfarbe wird heller · Naht 0.48</div>
+        <div class="why">einziger bzw. bester Take: 32.006 s, -18.6 LUFS, Klangfarbe steigend (624 → 4568 → 1401 Hz)</div>
+        
+      </div></div>
+      <p class="pub">Veröffentlicht als <code>music-p4.mp3</code> in <code>public/audio/g1/paint/ch01/music/</code> · 3 Takes gehört, 3 in der engeren Wahl</p>
+    </article>
+
+    <article class="stem" id="music-title">
+      <h3><code>music-title</code> <span class="tag info">info</span></h3>
+      <p class="hangs">Klingt bei: <b>titleCard</b> <span class="dim">(scene)</span></p>
+      <p class="prompt">Instrumental only. A short warm opening motif for a storybook that speaks for the only time: marimba and nylon guitar stating one inviting melodic phrase and resolving. Major key, about 92 BPM, eight seconds, complete in itself. Gentle, welcoming, no fanfare.</p>
+      <div class="takes">
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 1</span>
+          <label class="pick"><input type="checkbox" name="pick-music-title" value="1"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/music-title/take-1.mp3"></audio>
+        <div class="m">4.494 s · -17.7 LUFS · Spitze -5.4 dB<br>Klangfarbe wird heller · Naht 0</div>
+        
+        
+      </div>
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ meine Wahl</span>
+          <label class="pick"><input type="checkbox" name="pick-music-title" value="2" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/music-title/take-2.mp3"></audio>
+        <div class="m">6.816 s · -18.5 LUFS · Spitze -1.4 dB<br>Klangfarbe bleibt gleich · Naht 0</div>
+        <div class="why">einziger bzw. bester Take: 6.816 s, -18.5 LUFS, Klangfarbe gleichbleibend (800 → 787 → 742 Hz)</div>
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 3</span>
+          <label class="pick"><input type="checkbox" name="pick-music-title" value="3"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/music-title/take-3.mp3"></audio>
+        <div class="m">5.763 s · -18.4 LUFS · Spitze -4.3 dB<br>Klangfarbe wird heller · Naht 0</div>
+        
+        
+      </div></div>
+      <p class="pub">Veröffentlicht als <code>music-title.mp3</code> in <code>public/audio/g1/paint/ch01/music/</code> · 3 Takes gehört, 3 in der engeren Wahl</p>
+    </article>
+
+    <article class="stem" id="music-win">
+      <h3><code>music-win</code> <span class="tag info">info</span></h3>
+      <p class="hangs">Klingt bei: <b>tally</b> <span class="dim">(scene)</span></p>
+      <p class="prompt">Instrumental only. A short happy closing sting for a child who finished a chapter: three or four rising marimba and glockenspiel notes resolving warmly. Major key, about three seconds, no reverb tail, no drum fill, rising only.</p>
+      <div class="takes">
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ meine Wahl</span>
+          <label class="pick"><input type="checkbox" name="pick-music-win" value="1" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/music-win/take-1.mp3"></audio>
+        <div class="m">2.6 s · -18.2 LUFS · Spitze -6.7 dB<br>Klangfarbe wird dunkler · Naht 0.01</div>
+        <div class="why">einziger bzw. bester Take: 2.6 s, -18.2 LUFS, Klangfarbe fallend (579 → 380 → 438 Hz)</div>
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 2</span>
+          <label class="pick"><input type="checkbox" name="pick-music-win" value="2"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/music-win/take-2.mp3"></audio>
+        <div class="m">2.057 s · -18.4 LUFS · Spitze -6.8 dB<br>Klangfarbe wird dunkler · Naht 0</div>
+        
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 3</span>
+          <label class="pick"><input type="checkbox" name="pick-music-win" value="3"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/music-win/take-3.mp3"></audio>
+        <div class="m">2.049 s · -18.4 LUFS · Spitze -4.5 dB<br>Klangfarbe wird heller · Naht 0</div>
+        
+        
+      </div></div>
+      <p class="pub">Veröffentlicht als <code>music-win.mp3</code> in <code>public/audio/g1/paint/ch01/music/</code> · 3 Takes gehört, 3 in der engeren Wahl</p>
+    </article>
+<h2>Bewegung — das Kind selbst</h2>
+
+    <article class="stem" id="step-paper">
+      <h3><code>step-paper</code> <span class="tag info">info</span><span class="need">4 Stück gesucht — sie sollen sich unterscheiden</span></h3>
+      <p class="hangs">Klingt bei: <b>walk</b> <span class="dim">(player · Schrittflanke in PaintScene#footwork, Phasen p1 · p2 · p9)</span></p>
+      <p class="prompt">A single soft footstep of a child in felt slippers on a painted paper floor. One quiet dry tap, tiny paper rustle, immediate stop.</p>
+      <div class="takes">
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ Stufe 2</span>
+          <label class="pick"><input type="checkbox" name="pick-step-paper" value="1" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/step-paper/take-1.mp3"></audio>
+        <div class="m">0.25 s · -20.4 dB · Spitze -6.73 dB<br>Klangfarbe wird dunkler</div>
+        <div class="why">Variante mit Klangfarbe ⌀ 6377 Hz — die 4 Varianten sollen sich unterscheiden</div>
+        
+      </div>
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ Stufe 1</span>
+          <label class="pick"><input type="checkbox" name="pick-step-paper" value="2" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/step-paper/take-2.mp3"></audio>
+        <div class="m">0.25 s · -20.43 dB · Spitze -5.95 dB<br>Klangfarbe wird heller</div>
+        <div class="why">Variante mit Klangfarbe ⌀ 6285 Hz — die 4 Varianten sollen sich unterscheiden</div>
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 3</span>
+          <label class="pick"><input type="checkbox" name="pick-step-paper" value="3"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/step-paper/take-3.mp3"></audio>
+        <div class="m">0.25 s · -20.4 dB · Spitze -6.4 dB<br>Klangfarbe bleibt gleich</div>
+        
+        
+      </div>
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ Stufe 3</span>
+          <label class="pick"><input type="checkbox" name="pick-step-paper" value="4" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/step-paper/take-4.mp3"></audio>
+        <div class="m">0.25 s · -20.42 dB · Spitze -5.75 dB<br>Klangfarbe bleibt gleich</div>
+        <div class="why">Variante mit Klangfarbe ⌀ 6591 Hz — die 4 Varianten sollen sich unterscheiden</div>
+        
+      </div>
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ Stufe 4</span>
+          <label class="pick"><input type="checkbox" name="pick-step-paper" value="5" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/step-paper/take-5.mp3"></audio>
+        <div class="m">0.25 s · -20.34 dB · Spitze -4.8 dB<br>Klangfarbe bleibt gleich</div>
+        <div class="why">Variante mit Klangfarbe ⌀ 7041 Hz — die 4 Varianten sollen sich unterscheiden</div>
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 6</span>
+          <label class="pick"><input type="checkbox" name="pick-step-paper" value="6"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/step-paper/take-6.mp3"></audio>
+        <div class="m">0.25 s · -20.35 dB · Spitze -7.06 dB<br>Klangfarbe bleibt gleich</div>
+        
+        
+      </div></div>
+      <p class="pub">Veröffentlicht als <code>step-paper-1.mp3, step-paper-2.mp3, step-paper-3.mp3, step-paper-4.mp3</code> in <code>public/audio/g1/paint/ch01/sfx/</code> · 6 Takes gehört, 6 in der engeren Wahl</p>
+    </article>
+
+    <article class="stem" id="step-garden">
+      <h3><code>step-garden</code> <span class="tag info">info</span><span class="need">4 Stück gesucht — sie sollen sich unterscheiden</span></h3>
+      <p class="hangs">Klingt bei: <b>walk</b> <span class="dim">(player · Schrittflanke, Phase p3 (Schulhof-Garten))</span></p>
+      <p class="prompt">A single soft footstep on dry crumbly garden soil with a few small grains. One quiet tap, faint grit, immediate stop.</p>
+      <div class="takes">
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ Stufe 2</span>
+          <label class="pick"><input type="checkbox" name="pick-step-garden" value="1" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/step-garden/take-1.mp3"></audio>
+        <div class="m">0.25 s · -20.43 dB · Spitze -7.09 dB<br>Klangfarbe wird heller</div>
+        <div class="why">Variante mit Klangfarbe ⌀ 6345 Hz — die 4 Varianten sollen sich unterscheiden</div>
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 2</span>
+          <label class="pick"><input type="checkbox" name="pick-step-garden" value="2"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/step-garden/take-2.mp3"></audio>
+        <div class="m">0.25 s · -20.36 dB · Spitze -8.35 dB<br>Klangfarbe bleibt gleich</div>
+        
+        
+      </div>
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ Stufe 3</span>
+          <label class="pick"><input type="checkbox" name="pick-step-garden" value="3" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/step-garden/take-3.mp3"></audio>
+        <div class="m">0.25 s · -20.41 dB · Spitze -8.1 dB<br>Klangfarbe bleibt gleich</div>
+        <div class="why">Variante mit Klangfarbe ⌀ 6577 Hz — die 4 Varianten sollen sich unterscheiden</div>
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 4</span>
+          <label class="pick"><input type="checkbox" name="pick-step-garden" value="4"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/step-garden/take-4.mp3"></audio>
+        <div class="m">0.25 s · -20.35 dB · Spitze -3.88 dB<br>Klangfarbe bleibt gleich</div>
+        
+        
+      </div>
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ Stufe 1</span>
+          <label class="pick"><input type="checkbox" name="pick-step-garden" value="5" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/step-garden/take-5.mp3"></audio>
+        <div class="m">0.25 s · -20.35 dB · Spitze -5.78 dB<br>Klangfarbe wird heller</div>
+        <div class="why">Variante mit Klangfarbe ⌀ 6339 Hz — die 4 Varianten sollen sich unterscheiden</div>
+        
+      </div>
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ Stufe 4</span>
+          <label class="pick"><input type="checkbox" name="pick-step-garden" value="6" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/step-garden/take-6.mp3"></audio>
+        <div class="m">0.25 s · -20.35 dB · Spitze -6.17 dB<br>Klangfarbe bleibt gleich</div>
+        <div class="why">Variante mit Klangfarbe ⌀ 7460 Hz — die 4 Varianten sollen sich unterscheiden</div>
+        
+      </div></div>
+      <p class="pub">Veröffentlicht als <code>step-garden-1.mp3, step-garden-2.mp3, step-garden-3.mp3, step-garden-4.mp3</code> in <code>public/audio/g1/paint/ch01/sfx/</code> · 6 Takes gehört, 6 in der engeren Wahl</p>
+    </article>
+
+    <article class="stem" id="step-board">
+      <h3><code>step-board</code> <span class="tag info">info</span><span class="need">4 Stück gesucht — sie sollen sich unterscheiden</span></h3>
+      <p class="hangs">Klingt bei: <b>walk</b> <span class="dim">(player · Schrittflanke, Phase p4 (die Tafel-Bühne, Holzbretter))</span></p>
+      <p class="prompt">A single soft footstep on a hollow wooden stage board. One quiet warm knock with a very short wooden resonance, immediate stop.</p>
+      <div class="takes">
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ Stufe 2</span>
+          <label class="pick"><input type="checkbox" name="pick-step-board" value="1" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/step-board/take-1.mp3"></audio>
+        <div class="m">0.25 s · -20.45 dB · Spitze -6.95 dB<br>Klangfarbe wird heller</div>
+        <div class="why">Variante mit Klangfarbe ⌀ 1580 Hz — die 4 Varianten sollen sich unterscheiden</div>
+        
+      </div>
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ Stufe 3</span>
+          <label class="pick"><input type="checkbox" name="pick-step-board" value="2" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/step-board/take-2.mp3"></audio>
+        <div class="m">0.144 s · -20.43 dB · Spitze -7.98 dB<br>Klangfarbe wird heller</div>
+        <div class="why">Variante mit Klangfarbe ⌀ 1760 Hz — die 4 Varianten sollen sich unterscheiden</div>
+        
+      </div>
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ Stufe 4</span>
+          <label class="pick"><input type="checkbox" name="pick-step-board" value="3" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/step-board/take-3.mp3"></audio>
+        <div class="m">0.049 s · -20.52 dB · Spitze -11.18 dB<br>Klangfarbe wird heller</div>
+        <div class="why">Variante mit Klangfarbe ⌀ 3167 Hz — die 4 Varianten sollen sich unterscheiden</div>
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 4</span>
+          <label class="pick"><input type="checkbox" name="pick-step-board" value="4"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/step-board/take-4.mp3"></audio>
+        <div class="m">0.241 s · -20.45 dB · Spitze -4.82 dB<br>Klangfarbe wird heller</div>
+        
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 5</span>
+          <label class="pick"><input type="checkbox" name="pick-step-board" value="5"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/step-board/take-5.mp3"></audio>
+        <div class="m">0.25 s · -20.46 dB · Spitze -6.7 dB<br>Klangfarbe wird heller</div>
+        
+        
+      </div>
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ Stufe 1</span>
+          <label class="pick"><input type="checkbox" name="pick-step-board" value="6" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/step-board/take-6.mp3"></audio>
+        <div class="m">0.25 s · -20.45 dB · Spitze -9.69 dB<br>Klangfarbe wird heller</div>
+        <div class="why">Variante mit Klangfarbe ⌀ 1503 Hz — die 4 Varianten sollen sich unterscheiden</div>
+        
+      </div></div>
+      <p class="pub">Veröffentlicht als <code>step-board-1.mp3, step-board-2.mp3, step-board-3.mp3, step-board-4.mp3</code> in <code>public/audio/g1/paint/ch01/sfx/</code> · 6 Takes gehört, 6 in der engeren Wahl</p>
+    </article>
+
+    <article class="stem" id="jump">
+      <h3><code>jump</code> <span class="tag info">info</span><span class="need">3 Stück gesucht — sie sollen sich unterscheiden</span></h3>
+      <p class="hangs">Klingt bei: <b>jumped</b> <span class="dim">(player · jumpedAgo === 0)</span></p>
+      <p class="prompt">A child pushing off the ground: a short cloth and paper whoosh with a small felt scuff at the start. Light, rising, no spring, no boing.</p>
+      <div class="takes">
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ Stufe 1</span>
+          <label class="pick"><input type="checkbox" name="pick-jump" value="1" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/jump/take-1.mp3"></audio>
+        <div class="m">0.3 s · -20.39 dB · Spitze -5.17 dB<br>Klangfarbe wird dunkler</div>
+        <div class="why">Variante mit Klangfarbe ⌀ 5549 Hz — die 3 Varianten sollen sich unterscheiden</div>
+        
+      </div>
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ Stufe 3</span>
+          <label class="pick"><input type="checkbox" name="pick-jump" value="2" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/jump/take-2.mp3"></audio>
+        <div class="m">0.3 s · -20.35 dB · Spitze -6.87 dB<br>Klangfarbe bleibt gleich</div>
+        <div class="why">Variante mit Klangfarbe ⌀ 6829 Hz — die 3 Varianten sollen sich unterscheiden</div>
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 3</span>
+          <label class="pick"><input type="checkbox" name="pick-jump" value="3"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/jump/take-3.mp3"></audio>
+        <div class="m">0.3 s · -20.42 dB · Spitze -6.42 dB<br>Klangfarbe wird heller</div>
+        
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 4</span>
+          <label class="pick"><input type="checkbox" name="pick-jump" value="4"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/jump/take-4.mp3"></audio>
+        <div class="m">0.3 s · -20.42 dB · Spitze -5.51 dB<br>Klangfarbe bleibt gleich</div>
+        
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 5</span>
+          <label class="pick"><input type="checkbox" name="pick-jump" value="5"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/jump/take-5.mp3"></audio>
+        <div class="m">0.3 s · -20.41 dB · Spitze -6.79 dB<br>Klangfarbe wird heller</div>
+        
+        
+      </div>
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ Stufe 2</span>
+          <label class="pick"><input type="checkbox" name="pick-jump" value="6" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/jump/take-6.mp3"></audio>
+        <div class="m">0.3 s · -20.32 dB · Spitze -6.55 dB<br>Klangfarbe wird heller</div>
+        <div class="why">Variante mit Klangfarbe ⌀ 6243 Hz — die 3 Varianten sollen sich unterscheiden</div>
+        
+      </div></div>
+      <p class="pub">Veröffentlicht als <code>jump-1.mp3, jump-2.mp3, jump-3.mp3</code> in <code>public/audio/g1/paint/ch01/sfx/</code> · 6 Takes gehört, 6 in der engeren Wahl</p>
+    </article>
+
+    <article class="stem" id="land-soft">
+      <h3><code>land-soft</code> <span class="tag info">info</span><span class="need">2 Stück gesucht — sie sollen sich unterscheiden</span></h3>
+      <p class="hangs">Klingt bei: <b>landed</b> <span class="dim">(player · landedAgo === 0, fallVy &lt; LAND_DUST_VY*2)</span></p>
+      <p class="prompt">A child landing lightly on a painted paper floor: soft felt contact, tiny chalk dust puff. Gentle, settled, no thump.</p>
+      <div class="takes">
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 1</span>
+          <label class="pick"><input type="checkbox" name="pick-land-soft" value="1"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/land-soft/take-1.mp3"></audio>
+        <div class="m">0.3 s · -20.36 dB · Spitze -7.19 dB<br>Klangfarbe bleibt gleich</div>
+        
+        
+      </div>
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ Stufe 1</span>
+          <label class="pick"><input type="checkbox" name="pick-land-soft" value="2" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/land-soft/take-2.mp3"></audio>
+        <div class="m">0.3 s · -20.41 dB · Spitze -6.78 dB<br>Klangfarbe bleibt gleich</div>
+        <div class="why">Variante mit Klangfarbe ⌀ 5919 Hz — die 2 Varianten sollen sich unterscheiden</div>
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 3</span>
+          <label class="pick"><input type="checkbox" name="pick-land-soft" value="3"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/land-soft/take-3.mp3"></audio>
+        <div class="m">0.3 s · -20.4 dB · Spitze -5.85 dB<br>Klangfarbe wird heller</div>
+        
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 4</span>
+          <label class="pick"><input type="checkbox" name="pick-land-soft" value="4"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/land-soft/take-4.mp3"></audio>
+        <div class="m">0.3 s · -20.34 dB · Spitze -6.15 dB<br>Klangfarbe bleibt gleich</div>
+        
+        
+      </div>
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ Stufe 2</span>
+          <label class="pick"><input type="checkbox" name="pick-land-soft" value="5" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/land-soft/take-5.mp3"></audio>
+        <div class="m">0.3 s · -20.41 dB · Spitze -5.79 dB<br>Klangfarbe bleibt gleich</div>
+        <div class="why">Variante mit Klangfarbe ⌀ 6488 Hz — die 2 Varianten sollen sich unterscheiden</div>
+        
+      </div></div>
+      <p class="pub">Veröffentlicht als <code>land-soft-1.mp3, land-soft-2.mp3</code> in <code>public/audio/g1/paint/ch01/sfx/</code> · 5 Takes gehört, 5 in der engeren Wahl</p>
+    </article>
+
+    <article class="stem" id="land-hard">
+      <h3><code>land-hard</code> <span class="tag info">info</span><span class="need">2 Stück gesucht — sie sollen sich unterscheiden</span></h3>
+      <p class="hangs">Klingt bei: <b>landed</b> <span class="dim">(player · landedAgo === 0, fallVy &gt;= LAND_DUST_VY*2)</span></p>
+      <p class="prompt">A child landing after a long drop on a painted paper floor: a fuller felt contact with a wider chalk dust puff and a short paper crumple. Weighty but friendly, no impact boom.</p>
+      <div class="takes">
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 1</span>
+          <label class="pick"><input type="checkbox" name="pick-land-hard" value="1"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/land-hard/take-1.mp3"></audio>
+        <div class="m">0.45 s · -20.36 dB · Spitze -5.52 dB<br>Klangfarbe bleibt gleich</div>
+        
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 2</span>
+          <label class="pick"><input type="checkbox" name="pick-land-hard" value="2"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/land-hard/take-2.mp3"></audio>
+        <div class="m">0.45 s · -20.37 dB · Spitze -4.55 dB<br>Klangfarbe wird heller</div>
+        
+        
+      </div>
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ Stufe 1</span>
+          <label class="pick"><input type="checkbox" name="pick-land-hard" value="3" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/land-hard/take-3.mp3"></audio>
+        <div class="m">0.45 s · -20.42 dB · Spitze -6.25 dB<br>Klangfarbe wird heller</div>
+        <div class="why">Variante mit Klangfarbe ⌀ 5660 Hz — die 2 Varianten sollen sich unterscheiden</div>
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 4</span>
+          <label class="pick"><input type="checkbox" name="pick-land-hard" value="4"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/land-hard/take-4.mp3"></audio>
+        <div class="m">0.45 s · -20.42 dB · Spitze -8.44 dB<br>Klangfarbe wird heller</div>
+        
+        
+      </div>
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ Stufe 2</span>
+          <label class="pick"><input type="checkbox" name="pick-land-hard" value="5" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/land-hard/take-5.mp3"></audio>
+        <div class="m">0.45 s · -20.4 dB · Spitze -5.63 dB<br>Klangfarbe wird heller</div>
+        <div class="why">Variante mit Klangfarbe ⌀ 6694 Hz — die 2 Varianten sollen sich unterscheiden</div>
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 6</span>
+          <label class="pick"><input type="checkbox" name="pick-land-hard" value="6"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/land-hard/take-6.mp3"></audio>
+        <div class="m">0.369 s · -20.39 dB · Spitze -7.06 dB<br>Klangfarbe wird dunkler</div>
+        
+        
+      </div></div>
+      <p class="pub">Veröffentlicht als <code>land-hard-1.mp3, land-hard-2.mp3</code> in <code>public/audio/g1/paint/ch01/sfx/</code> · 6 Takes gehört, 6 in der engeren Wahl</p>
+    </article>
+
+    <article class="stem" id="slide">
+      <h3><code>slide</code> <span class="tag info">info</span><span class="need">2 Stück gesucht — sie sollen sich unterscheiden</span></h3>
+      <p class="hangs">Klingt bei: <b>onSlide</b> <span class="dim">(player · steigende Flanke von PlayerState.onSlide (z-Glyph, p3))</span></p>
+      <p class="prompt">A child starting to slide down a smooth waxed paper slope: a soft continuous friction whisper that begins and settles. Playful, dry, no squeal.</p>
+      <div class="takes">
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 1</span>
+          <label class="pick"><input type="checkbox" name="pick-slide" value="1"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/slide/take-1.mp3"></audio>
+        <div class="m">0.5 s · -20.38 dB · Spitze -4.91 dB<br>Klangfarbe bleibt gleich</div>
+        
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 2</span>
+          <label class="pick"><input type="checkbox" name="pick-slide" value="2"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/slide/take-2.mp3"></audio>
+        <div class="m">0.5 s · -20.34 dB · Spitze -4.68 dB<br>Klangfarbe bleibt gleich</div>
+        
+        
+      </div>
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ Stufe 1</span>
+          <label class="pick"><input type="checkbox" name="pick-slide" value="3" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/slide/take-3.mp3"></audio>
+        <div class="m">0.5 s · -20.41 dB · Spitze -4.39 dB<br>Klangfarbe bleibt gleich</div>
+        <div class="why">Variante mit Klangfarbe ⌀ 6217 Hz — die 2 Varianten sollen sich unterscheiden</div>
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 4</span>
+          <label class="pick"><input type="checkbox" name="pick-slide" value="4"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/slide/take-4.mp3"></audio>
+        <div class="m">0.5 s · -20.33 dB · Spitze -8.09 dB<br>Klangfarbe bleibt gleich</div>
+        
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 5</span>
+          <label class="pick"><input type="checkbox" name="pick-slide" value="5"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/slide/take-5.mp3"></audio>
+        <div class="m">0.5 s · -20.33 dB · Spitze -3.22 dB<br>Klangfarbe wird dunkler</div>
+        
+        
+      </div>
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ Stufe 2</span>
+          <label class="pick"><input type="checkbox" name="pick-slide" value="6" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/slide/take-6.mp3"></audio>
+        <div class="m">0.5 s · -20.38 dB · Spitze -5.02 dB<br>Klangfarbe bleibt gleich</div>
+        <div class="why">Variante mit Klangfarbe ⌀ 7749 Hz — die 2 Varianten sollen sich unterscheiden</div>
+        
+      </div></div>
+      <p class="pub">Veröffentlicht als <code>slide-1.mp3, slide-2.mp3</code> in <code>public/audio/g1/paint/ch01/sfx/</code> · 6 Takes gehört, 6 in der engeren Wahl</p>
+    </article>
+<h2>Die Welt — was das Kind anfasst</h2>
+
+    <article class="stem" id="cage-open">
+      <h3><code>cage-open</code> <span class="tag info">info</span><span class="need">2 Stück gesucht — sie sollen sich unterscheiden</span></h3>
+      <p class="hangs">Klingt bei: <b>cageBurst</b> <span class="dim">(entity)</span></p>
+      <p class="prompt">A small wooden latch flicking open and a light paper cage lid springing up. Wooden click, paper flutter, released. Friendly, no metal, no glass, no snap.</p>
+      <div class="takes">
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ Stufe 2</span>
+          <label class="pick"><input type="checkbox" name="pick-cage-open" value="1" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/cage-open/take-1.mp3"></audio>
+        <div class="m">0.588 s · -20.42 dB · Spitze -4.46 dB<br>Klangfarbe bleibt gleich</div>
+        <div class="why">Variante mit Klangfarbe ⌀ 6950 Hz — die 2 Varianten sollen sich unterscheiden</div>
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 2</span>
+          <label class="pick"><input type="checkbox" name="pick-cage-open" value="2"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/cage-open/take-2.mp3"></audio>
+        <div class="m">0.469 s · -20.35 dB · Spitze -5.09 dB<br>Klangfarbe bleibt gleich</div>
+        
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 3</span>
+          <label class="pick"><input type="checkbox" name="pick-cage-open" value="3"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/cage-open/take-3.mp3"></audio>
+        <div class="m">0.509 s · -20.39 dB · Spitze -4.31 dB<br>Klangfarbe wird dunkler</div>
+        
+        
+      </div>
+      <div class="take  out">
+        <div class="take-head">
+          <span class="tn">Take 4</span>
+          <label class="pick"><input type="checkbox" name="pick-cage-open" value="4"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/cage-open/take-4.mp3"></audio>
+        <div class="m">0.587 s · -29.01 dB · Spitze -1.44 dB<br>Klangfarbe wird dunkler</div>
+        
+        <div class="rej">zurück: -29.01 dB — ausserhalb -20 ± 2</div>
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 5</span>
+          <label class="pick"><input type="checkbox" name="pick-cage-open" value="5"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/cage-open/take-5.mp3"></audio>
+        <div class="m">0.514 s · -20.31 dB · Spitze -3.81 dB<br>Klangfarbe bleibt gleich</div>
+        
+        
+      </div>
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ Stufe 1</span>
+          <label class="pick"><input type="checkbox" name="pick-cage-open" value="6" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/cage-open/take-6.mp3"></audio>
+        <div class="m">0.453 s · -20.4 dB · Spitze -1.16 dB<br>Klangfarbe wird dunkler</div>
+        <div class="why">Variante mit Klangfarbe ⌀ 5190 Hz — die 2 Varianten sollen sich unterscheiden</div>
+        
+      </div></div>
+      <p class="pub">Veröffentlicht als <code>cage-open-1.mp3, cage-open-2.mp3</code> in <code>public/audio/g1/paint/ch01/sfx/</code> · 6 Takes gehört, 5 in der engeren Wahl</p>
+    </article>
+
+    <article class="stem" id="cage-free">
+      <h3><code>cage-free</code> <span class="tag positive">positive</span><span class="need">2 Stück gesucht — sie sollen sich unterscheiden</span></h3>
+      <p class="hangs">Klingt bei: <b>cageFreed</b> <span class="dim">(sim)</span></p>
+      <p class="prompt">A tiny celebration on a toy xylophone: three warm wooden notes rising, with a soft paper flutter underneath. Small, bright, kind. Rising only.</p>
+      <div class="takes">
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 1</span>
+          <label class="pick"><input type="checkbox" name="pick-cage-free" value="1"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/cage-free/take-1.mp3"></audio>
+        <div class="m">1.5 s · -16.3 LUFS · Spitze -3.1 dB<br>Klangfarbe bleibt gleich</div>
+        
+        
+      </div>
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ Stufe 1</span>
+          <label class="pick"><input type="checkbox" name="pick-cage-free" value="2" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/cage-free/take-2.mp3"></audio>
+        <div class="m">0.341 s · -20.46 dB · Spitze -6.88 dB<br>Klangfarbe wird heller</div>
+        <div class="why">Variante mit Klangfarbe ⌀ 2711 Hz — die 2 Varianten sollen sich unterscheiden</div>
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 3</span>
+          <label class="pick"><input type="checkbox" name="pick-cage-free" value="3"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/cage-free/take-3.mp3"></audio>
+        <div class="m">1.343 s · -17.3 LUFS · Spitze -1.9 dB<br>Klangfarbe wird dunkler</div>
+        
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 4</span>
+          <label class="pick"><input type="checkbox" name="pick-cage-free" value="4"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/cage-free/take-4.mp3"></audio>
+        <div class="m">1.488 s · -17.6 LUFS · Spitze -1.5 dB<br>Klangfarbe bleibt gleich</div>
+        
+        
+      </div>
+      <div class="take  out">
+        <div class="take-head">
+          <span class="tn">Take 5</span>
+          <label class="pick"><input type="checkbox" name="pick-cage-free" value="5"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/cage-free/take-5.mp3"></audio>
+        <div class="m">1.419 s · -19.2 LUFS · Spitze -1.5 dB<br>Klangfarbe bleibt gleich</div>
+        
+        <div class="rej">zurück: -19.2 LUFS — ausserhalb -16 ± 2</div>
+      </div>
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ Stufe 2</span>
+          <label class="pick"><input type="checkbox" name="pick-cage-free" value="6" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/cage-free/take-6.mp3"></audio>
+        <div class="m">1.5 s · -16.3 LUFS · Spitze -1.8 dB<br>Klangfarbe wird heller</div>
+        <div class="why">Variante mit Klangfarbe ⌀ 8253 Hz — die 2 Varianten sollen sich unterscheiden</div>
+        
+      </div></div>
+      <p class="pub">Veröffentlicht als <code>cage-free-1.mp3, cage-free-2.mp3</code> in <code>public/audio/g1/paint/ch01/sfx/</code> · 6 Takes gehört, 5 in der engeren Wahl</p>
+    </article>
+
+    <article class="stem" id="door-open">
+      <h3><code>door-open</code> <span class="tag info">info</span><span class="need">2 Stück gesucht — sie sollen sich unterscheiden</span></h3>
+      <p class="hangs">Klingt bei: <b>exit</b> <span class="dim">(sim)</span></p>
+      <p class="prompt">A wooden door in a painted book simply opening: one bolt sliding, one light swing of paper and wood. Matter of fact, unhurried, no creak, no fanfare.</p>
+      <div class="takes">
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ Stufe 1</span>
+          <label class="pick"><input type="checkbox" name="pick-door-open" value="1" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/door-open/take-1.mp3"></audio>
+        <div class="m">0.6 s · -20.43 dB · Spitze -5.9 dB<br>Klangfarbe bleibt gleich</div>
+        <div class="why">Variante mit Klangfarbe ⌀ 5938 Hz — die 2 Varianten sollen sich unterscheiden</div>
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 2</span>
+          <label class="pick"><input type="checkbox" name="pick-door-open" value="2"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/door-open/take-2.mp3"></audio>
+        <div class="m">0.6 s · -20.41 dB · Spitze -6.01 dB<br>Klangfarbe bleibt gleich</div>
+        
+        
+      </div>
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ Stufe 2</span>
+          <label class="pick"><input type="checkbox" name="pick-door-open" value="3" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/door-open/take-3.mp3"></audio>
+        <div class="m">0.6 s · -20.43 dB · Spitze -4.13 dB<br>Klangfarbe bleibt gleich</div>
+        <div class="why">Variante mit Klangfarbe ⌀ 7448 Hz — die 2 Varianten sollen sich unterscheiden</div>
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 5</span>
+          <label class="pick"><input type="checkbox" name="pick-door-open" value="5"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/door-open/take-5.mp3"></audio>
+        <div class="m">0.6 s · -20.39 dB · Spitze -6.32 dB<br>Klangfarbe bleibt gleich</div>
+        
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 6</span>
+          <label class="pick"><input type="checkbox" name="pick-door-open" value="6"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/door-open/take-6.mp3"></audio>
+        <div class="m">0.6 s · -20.37 dB · Spitze -6.01 dB<br>Klangfarbe bleibt gleich</div>
+        
+        
+      </div></div>
+      <p class="pub">Veröffentlicht als <code>door-open-1.mp3, door-open-2.mp3</code> in <code>public/audio/g1/paint/ch01/sfx/</code> · 5 Takes gehört, 5 in der engeren Wahl</p>
+    </article>
+
+    <article class="stem" id="letter-take">
+      <h3><code>letter-take</code> <span class="tag positive">positive</span><span class="need">3 Stück gesucht — es sind aufsteigende Stufen, die Reihenfolge sortiere ich nach Helligkeit</span></h3>
+      <p class="hangs">Klingt bei: <b>letterTaken</b> <span class="dim">(sim · drei Stufen, die Stufe steigt mit `got`)</span></p>
+      <p class="prompt">One single bright note on a small wooden toy xylophone, with a whisper of paper. Clean, short, ringing upward.</p>
+      <div class="takes">
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 1</span>
+          <label class="pick"><input type="checkbox" name="pick-letter-take" value="1"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/letter-take/take-1.mp3"></audio>
+        <div class="m">0.3 s · -20.3 dB · Spitze -7.59 dB<br>Klangfarbe bleibt gleich</div>
+        
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 2</span>
+          <label class="pick"><input type="checkbox" name="pick-letter-take" value="2"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/letter-take/take-2.mp3"></audio>
+        <div class="m">0.3 s · -20.37 dB · Spitze -5.92 dB<br>Klangfarbe wird heller</div>
+        
+        
+      </div>
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ Stufe 1</span>
+          <label class="pick"><input type="checkbox" name="pick-letter-take" value="3" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/letter-take/take-3.mp3"></audio>
+        <div class="m">0.251 s · -20.37 dB · Spitze -3.34 dB<br>Klangfarbe wird dunkler</div>
+        <div class="why">Stufe 1 von 3: Klangfarbe ⌀ 6712 Hz — die Stufen steigen</div>
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 4</span>
+          <label class="pick"><input type="checkbox" name="pick-letter-take" value="4"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/letter-take/take-4.mp3"></audio>
+        <div class="m">0.3 s · -20.42 dB · Spitze -8.45 dB<br>Klangfarbe bleibt gleich</div>
+        
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 5</span>
+          <label class="pick"><input type="checkbox" name="pick-letter-take" value="5"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/letter-take/take-5.mp3"></audio>
+        <div class="m">0.3 s · -20.39 dB · Spitze -7.46 dB<br>Klangfarbe bleibt gleich</div>
+        
+        
+      </div>
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ Stufe 3</span>
+          <label class="pick"><input type="checkbox" name="pick-letter-take" value="6" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/letter-take/take-6.mp3"></audio>
+        <div class="m">0.228 s · -20.33 dB · Spitze -6.4 dB<br>Klangfarbe bleibt gleich</div>
+        <div class="why">Stufe 3 von 3: Klangfarbe ⌀ 8127 Hz — die Stufen steigen</div>
+        
+      </div>
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ Stufe 2</span>
+          <label class="pick"><input type="checkbox" name="pick-letter-take" value="7" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/letter-take/take-7.mp3"></audio>
+        <div class="m">0.3 s · -20.41 dB · Spitze -8.05 dB<br>Klangfarbe bleibt gleich</div>
+        <div class="why">Stufe 2 von 3: Klangfarbe ⌀ 7568 Hz — die Stufen steigen</div>
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 8</span>
+          <label class="pick"><input type="checkbox" name="pick-letter-take" value="8"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/letter-take/take-8.mp3"></audio>
+        <div class="m">0.3 s · -20.41 dB · Spitze -5.43 dB<br>Klangfarbe wird heller</div>
+        
+        
+      </div></div>
+      <p class="pub">Veröffentlicht als <code>letter-take-1.mp3, letter-take-2.mp3, letter-take-3.mp3</code> in <code>public/audio/g1/paint/ch01/sfx/</code> · 8 Takes gehört, 8 in der engeren Wahl</p>
+    </article>
+
+    <article class="stem" id="letters-all">
+      <h3><code>letters-all</code> <span class="tag positive">positive</span></h3>
+      <p class="hangs">Klingt bei: <b>letters</b> <span class="dim">(sim · nur wenn got === total)</span></p>
+      <p class="prompt">A small complete-the-collection flourish: four rising wooden xylophone notes and a light paper shimmer settling. Warm, bright, rising only.</p>
+      <div class="takes">
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 1</span>
+          <label class="pick"><input type="checkbox" name="pick-letters-all" value="1"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/letters-all/take-1.mp3"></audio>
+        <div class="m">1.5 s · -16.3 LUFS · Spitze -1.4 dB<br>Klangfarbe bleibt gleich</div>
+        
+        
+      </div>
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ meine Wahl</span>
+          <label class="pick"><input type="checkbox" name="pick-letters-all" value="2" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/letters-all/take-2.mp3"></audio>
+        <div class="m">1.424 s · -16.3 LUFS · Spitze -2.3 dB<br>Klangfarbe bleibt gleich</div>
+        <div class="why">einziger bzw. bester Take: 1.424 s, -16.3 LUFS, Klangfarbe gleichbleibend (7379 → 7456 → 7798 Hz)</div>
+        
+      </div>
+      <div class="take  out">
+        <div class="take-head">
+          <span class="tn">Take 3</span>
+          <label class="pick"><input type="checkbox" name="pick-letters-all" value="3"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/letters-all/take-3.mp3"></audio>
+        <div class="m">1.171 s · -19.5 LUFS · Spitze -1.3 dB<br>Klangfarbe wird dunkler</div>
+        
+        <div class="rej">zurück: -19.5 LUFS — ausserhalb -16 ± 2</div>
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 4</span>
+          <label class="pick"><input type="checkbox" name="pick-letters-all" value="4"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/letters-all/take-4.mp3"></audio>
+        <div class="m">1.23 s · -16.4 LUFS · Spitze -2.4 dB<br>Klangfarbe wird heller</div>
+        
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 5</span>
+          <label class="pick"><input type="checkbox" name="pick-letters-all" value="5"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/letters-all/take-5.mp3"></audio>
+        <div class="m">1.392 s · -17.3 LUFS · Spitze -1.5 dB<br>Klangfarbe wird dunkler</div>
+        
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 6</span>
+          <label class="pick"><input type="checkbox" name="pick-letters-all" value="6"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/letters-all/take-6.mp3"></audio>
+        <div class="m">1.145 s · -16.4 LUFS · Spitze -2.4 dB<br>Klangfarbe wird dunkler</div>
+        
+        
+      </div></div>
+      <p class="pub">Veröffentlicht als <code>letters-all.mp3</code> in <code>public/audio/g1/paint/ch01/sfx/</code> · 6 Takes gehört, 5 in der engeren Wahl</p>
+    </article>
+
+    <article class="stem" id="wipe">
+      <h3><code>wipe</code> <span class="tag info">info</span><span class="need">3 Stück gesucht — sie sollen sich unterscheiden</span></h3>
+      <p class="hangs">Klingt bei: <b>guardianWipe</b> <span class="dim">(sim · nur wenn layersLeft &gt; 0)</span></p>
+      <p class="prompt">A felt eraser sweeping chalk off a blackboard in one stroke, with fine chalk dust. Dry, brushy, satisfying, no squeak.</p>
+      <div class="takes">
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ Stufe 1</span>
+          <label class="pick"><input type="checkbox" name="pick-wipe" value="1" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/wipe/take-1.mp3"></audio>
+        <div class="m">0.5 s · -20.38 dB · Spitze -3.79 dB<br>Klangfarbe bleibt gleich</div>
+        <div class="why">Variante mit Klangfarbe ⌀ 6772 Hz — die 3 Varianten sollen sich unterscheiden</div>
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 2</span>
+          <label class="pick"><input type="checkbox" name="pick-wipe" value="2"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/wipe/take-2.mp3"></audio>
+        <div class="m">0.5 s · -20.36 dB · Spitze -4.71 dB<br>Klangfarbe bleibt gleich</div>
+        
+        
+      </div>
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ Stufe 2</span>
+          <label class="pick"><input type="checkbox" name="pick-wipe" value="3" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/wipe/take-3.mp3"></audio>
+        <div class="m">0.5 s · -20.35 dB · Spitze -6.86 dB<br>Klangfarbe bleibt gleich</div>
+        <div class="why">Variante mit Klangfarbe ⌀ 7077 Hz — die 3 Varianten sollen sich unterscheiden</div>
+        
+      </div>
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ Stufe 3</span>
+          <label class="pick"><input type="checkbox" name="pick-wipe" value="4" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/wipe/take-4.mp3"></audio>
+        <div class="m">0.5 s · -20.35 dB · Spitze -5.36 dB<br>Klangfarbe bleibt gleich</div>
+        <div class="why">Variante mit Klangfarbe ⌀ 7341 Hz — die 3 Varianten sollen sich unterscheiden</div>
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 5</span>
+          <label class="pick"><input type="checkbox" name="pick-wipe" value="5"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/wipe/take-5.mp3"></audio>
+        <div class="m">0.5 s · -20.29 dB · Spitze -4.41 dB<br>Klangfarbe wird heller</div>
+        
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 6</span>
+          <label class="pick"><input type="checkbox" name="pick-wipe" value="6"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/wipe/take-6.mp3"></audio>
+        <div class="m">0.5 s · -20.36 dB · Spitze -5.12 dB<br>Klangfarbe bleibt gleich</div>
+        
+        
+      </div></div>
+      <p class="pub">Veröffentlicht als <code>wipe-1.mp3, wipe-2.mp3, wipe-3.mp3</code> in <code>public/audio/g1/paint/ch01/sfx/</code> · 6 Takes gehört, 6 in der engeren Wahl</p>
+    </article>
+
+    <article class="stem" id="board-bloom">
+      <h3><code>board-bloom</code> <span class="tag positive">positive</span></h3>
+      <p class="hangs">Klingt bei: <b>guardianDown</b> <span class="dim">(sim · der Name ist ein Code-Relikt: sie wird sauber, nicht besiegt (R50))</span></p>
+      <p class="prompt">Something grumpy turning kind: a warm chord of wooden xylophone and soft chime opening upward and blooming, with a light chalk dust shimmer. Generous, sunny, rising and settling. No triumph brass, no impact.</p>
+      <div class="takes">
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 1</span>
+          <label class="pick"><input type="checkbox" name="pick-board-bloom" value="1"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/board-bloom/take-1.mp3"></audio>
+        <div class="m">1.5 s · -16.3 LUFS · Spitze -3.8 dB<br>Klangfarbe bleibt gleich</div>
+        
+        
+      </div>
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ meine Wahl</span>
+          <label class="pick"><input type="checkbox" name="pick-board-bloom" value="2" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/board-bloom/take-2.mp3"></audio>
+        <div class="m">1.5 s · -16.3 LUFS · Spitze -2.6 dB<br>Klangfarbe bleibt gleich</div>
+        <div class="why">einziger bzw. bester Take: 1.5 s, -16.3 LUFS, Klangfarbe gleichbleibend (8166 → 7082 → 8241 Hz)</div>
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 3</span>
+          <label class="pick"><input type="checkbox" name="pick-board-bloom" value="3"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/board-bloom/take-3.mp3"></audio>
+        <div class="m">1.5 s · -16.3 LUFS · Spitze -2.2 dB<br>Klangfarbe bleibt gleich</div>
+        
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 4</span>
+          <label class="pick"><input type="checkbox" name="pick-board-bloom" value="4"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/board-bloom/take-4.mp3"></audio>
+        <div class="m">1.5 s · -16.3 LUFS · Spitze -2 dB<br>Klangfarbe bleibt gleich</div>
+        
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 5</span>
+          <label class="pick"><input type="checkbox" name="pick-board-bloom" value="5"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/board-bloom/take-5.mp3"></audio>
+        <div class="m">1.5 s · -16.3 LUFS · Spitze -4.9 dB<br>Klangfarbe wird dunkler</div>
+        
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 6</span>
+          <label class="pick"><input type="checkbox" name="pick-board-bloom" value="6"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/board-bloom/take-6.mp3"></audio>
+        <div class="m">1.5 s · -16.3 LUFS · Spitze -1.7 dB<br>Klangfarbe bleibt gleich</div>
+        
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 7</span>
+          <label class="pick"><input type="checkbox" name="pick-board-bloom" value="7"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/board-bloom/take-7.mp3"></audio>
+        <div class="m">1.5 s · -16.3 LUFS · Spitze -2.2 dB<br>Klangfarbe bleibt gleich</div>
+        
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 8</span>
+          <label class="pick"><input type="checkbox" name="pick-board-bloom" value="8"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/board-bloom/take-8.mp3"></audio>
+        <div class="m">1.5 s · -16.4 LUFS · Spitze -3.3 dB<br>Klangfarbe bleibt gleich</div>
+        
+        
+      </div></div>
+      <p class="pub">Veröffentlicht als <code>board-bloom.mp3</code> in <code>public/audio/g1/paint/ch01/sfx/</code> · 8 Takes gehört, 8 in der engeren Wahl</p>
+    </article>
+
+    <article class="stem" id="arena-brief">
+      <h3><code>arena-brief</code> <span class="tag info">info</span></h3>
+      <p class="hangs">Klingt bei: <b>arenaBrief</b> <span class="dim">(sim)</span></p>
+      <p class="prompt">A small stage announcing itself to a child: one warm low wooden marimba swell with a soft paper curtain movement. Serious but gentle and inviting, never scary, no brass braam, no drone.</p>
+      <div class="takes">
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 2</span>
+          <label class="pick"><input type="checkbox" name="pick-arena-brief" value="2"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/arena-brief/take-2.mp3"></audio>
+        <div class="m">1.5 s · -16.4 LUFS · Spitze -3.8 dB<br>Klangfarbe wird heller</div>
+        
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 3</span>
+          <label class="pick"><input type="checkbox" name="pick-arena-brief" value="3"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/arena-brief/take-3.mp3"></audio>
+        <div class="m">1.315 s · -16.3 LUFS · Spitze -3.3 dB<br>Klangfarbe wird dunkler</div>
+        
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 4</span>
+          <label class="pick"><input type="checkbox" name="pick-arena-brief" value="4"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/arena-brief/take-4.mp3"></audio>
+        <div class="m">1.432 s · -16.4 LUFS · Spitze -4.4 dB<br>Klangfarbe wird dunkler</div>
+        
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 5</span>
+          <label class="pick"><input type="checkbox" name="pick-arena-brief" value="5"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/arena-brief/take-5.mp3"></audio>
+        <div class="m">1.17 s · -16.4 LUFS · Spitze -5.4 dB<br>Klangfarbe wird dunkler</div>
+        
+        
+      </div>
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ meine Wahl</span>
+          <label class="pick"><input type="checkbox" name="pick-arena-brief" value="6" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/arena-brief/take-6.mp3"></audio>
+        <div class="m">1.053 s · -16.4 LUFS · Spitze -5.2 dB<br>Klangfarbe bleibt gleich</div>
+        <div class="why">einziger bzw. bester Take: 1.053 s, -16.4 LUFS, Klangfarbe gleichbleibend (420 → 347 → 403 Hz)</div>
+        
+      </div></div>
+      <p class="pub">Veröffentlicht als <code>arena-brief.mp3</code> in <code>public/audio/g1/paint/ch01/sfx/</code> · 5 Takes gehört, 5 in der engeren Wahl</p>
+    </article>
+
+    <article class="stem" id="boss-window">
+      <h3><code>boss-window</code> <span class="tag info">info</span></h3>
+      <p class="hangs">Klingt bei: <b>guardianStagger</b> <span class="dim">(entity)</span></p>
+      <p class="prompt">A held breath: one soft wooden marimba note opening a moment of stillness, with a faint chalk dust settle. An invitation, not a hit.</p>
+      <div class="takes">
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 1</span>
+          <label class="pick"><input type="checkbox" name="pick-boss-window" value="1"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/boss-window/take-1.mp3"></audio>
+        <div class="m">0.5 s · -20.42 dB · Spitze -3.12 dB<br>Klangfarbe bleibt gleich</div>
+        
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 2</span>
+          <label class="pick"><input type="checkbox" name="pick-boss-window" value="2"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/boss-window/take-2.mp3"></audio>
+        <div class="m">0.5 s · -20.39 dB · Spitze -6.57 dB<br>Klangfarbe bleibt gleich</div>
+        
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 3</span>
+          <label class="pick"><input type="checkbox" name="pick-boss-window" value="3"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/boss-window/take-3.mp3"></audio>
+        <div class="m">0.5 s · -20.35 dB · Spitze -6.9 dB<br>Klangfarbe bleibt gleich</div>
+        
+        
+      </div>
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ meine Wahl</span>
+          <label class="pick"><input type="checkbox" name="pick-boss-window" value="4" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/boss-window/take-4.mp3"></audio>
+        <div class="m">0.5 s · -20.42 dB · Spitze -6.39 dB<br>Klangfarbe bleibt gleich</div>
+        <div class="why">einziger bzw. bester Take: 0.5 s, -20.42 dB, Klangfarbe gleichbleibend (5863 → 5774 → 5852 Hz)</div>
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 5</span>
+          <label class="pick"><input type="checkbox" name="pick-boss-window" value="5"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/boss-window/take-5.mp3"></audio>
+        <div class="m">0.5 s · -20.32 dB · Spitze -7.18 dB<br>Klangfarbe bleibt gleich</div>
+        
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 6</span>
+          <label class="pick"><input type="checkbox" name="pick-boss-window" value="6"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/boss-window/take-6.mp3"></audio>
+        <div class="m">0.5 s · -20.39 dB · Spitze -5.61 dB<br>Klangfarbe bleibt gleich</div>
+        
+        
+      </div></div>
+      <p class="pub">Veröffentlicht als <code>boss-window.mp3</code> in <code>public/audio/g1/paint/ch01/sfx/</code> · 6 Takes gehört, 6 in der engeren Wahl</p>
+    </article>
+
+    <article class="stem" id="shoo">
+      <h3><code>shoo</code> <span class="tag info">info</span><span class="need">2 Stück gesucht — sie sollen sich unterscheiden</span></h3>
+      <p class="hangs">Klingt bei: <b>shooed</b> <span class="dim">(entity)</span></p>
+      <p class="prompt">A paper moth flapping away quickly: two or three light paper flutters moving off. Airy, harmless, playful.</p>
+      <div class="takes">
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ Stufe 1</span>
+          <label class="pick"><input type="checkbox" name="pick-shoo" value="1" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/shoo/take-1.mp3"></audio>
+        <div class="m">0.35 s · -20.37 dB · Spitze -4.65 dB<br>Klangfarbe wird heller</div>
+        <div class="why">Variante mit Klangfarbe ⌀ 5191 Hz — die 2 Varianten sollen sich unterscheiden</div>
+        
+      </div>
+      <div class="take  out">
+        <div class="take-head">
+          <span class="tn">Take 3</span>
+          <label class="pick"><input type="checkbox" name="pick-shoo" value="3"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/shoo/take-3.mp3"></audio>
+        <div class="m">0.232 s · -26.69 dB · Spitze -1.49 dB<br>Klangfarbe wird heller</div>
+        
+        <div class="rej">zurück: -26.69 dB — ausserhalb -20 ± 2</div>
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 5</span>
+          <label class="pick"><input type="checkbox" name="pick-shoo" value="5"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/shoo/take-5.mp3"></audio>
+        <div class="m">0.349 s · -20.46 dB · Spitze -1.47 dB<br>Klangfarbe wird heller</div>
+        
+        
+      </div>
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ Stufe 2</span>
+          <label class="pick"><input type="checkbox" name="pick-shoo" value="6" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/shoo/take-6.mp3"></audio>
+        <div class="m">0.35 s · -20.42 dB · Spitze -5.55 dB<br>Klangfarbe wird heller</div>
+        <div class="why">Variante mit Klangfarbe ⌀ 6098 Hz — die 2 Varianten sollen sich unterscheiden</div>
+        
+      </div></div>
+      <p class="pub">Veröffentlicht als <code>shoo-1.mp3, shoo-2.mp3</code> in <code>public/audio/g1/paint/ch01/sfx/</code> · 4 Takes gehört, 3 in der engeren Wahl</p>
+    </article>
+
+    <article class="stem" id="puff-chalk">
+      <h3><code>puff-chalk</code> <span class="tag info">info</span><span class="need">2 Stück gesucht — sie sollen sich unterscheiden</span></h3>
+      <p class="hangs">Klingt bei: <b>puff</b> <span class="dim">(sim · nur kind === &quot;chalk&quot;)</span></p>
+      <p class="prompt">A small puff of chalk dust hitting the air. One tiny dry breath of powder, nothing struck.</p>
+      <div class="takes">
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 1</span>
+          <label class="pick"><input type="checkbox" name="pick-puff-chalk" value="1"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/puff-chalk/take-1.mp3"></audio>
+        <div class="m">0.25 s · -20.4 dB · Spitze -6.29 dB<br>Klangfarbe wird dunkler</div>
+        
+        
+      </div>
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ Stufe 1</span>
+          <label class="pick"><input type="checkbox" name="pick-puff-chalk" value="3" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/puff-chalk/take-3.mp3"></audio>
+        <div class="m">0.25 s · -20.42 dB · Spitze -4.69 dB<br>Klangfarbe wird dunkler</div>
+        <div class="why">Variante mit Klangfarbe ⌀ 6012 Hz — die 2 Varianten sollen sich unterscheiden</div>
+        
+      </div>
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ Stufe 2</span>
+          <label class="pick"><input type="checkbox" name="pick-puff-chalk" value="4" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/puff-chalk/take-4.mp3"></audio>
+        <div class="m">0.25 s · -20.36 dB · Spitze -7.96 dB<br>Klangfarbe wird dunkler</div>
+        <div class="why">Variante mit Klangfarbe ⌀ 6862 Hz — die 2 Varianten sollen sich unterscheiden</div>
+        
+      </div></div>
+      <p class="pub">Veröffentlicht als <code>puff-chalk-1.mp3, puff-chalk-2.mp3</code> in <code>public/audio/g1/paint/ch01/sfx/</code> · 3 Takes gehört, 3 in der engeren Wahl</p>
+    </article>
+
+    <article class="stem" id="being-answered">
+      <h3><code>being-answered</code> <span class="tag positive">positive</span><span class="need">2 Stück gesucht — sie sollen sich unterscheiden</span></h3>
+      <p class="hangs">Klingt bei: <b>entityResolved</b> <span class="dim">(sim)</span></p>
+      <p class="prompt">A small creature being understood: two warm wooden xylophone notes rising, with a soft paper sigh of relief. Modest, kind, rising only.</p>
+      <div class="takes">
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 1</span>
+          <label class="pick"><input type="checkbox" name="pick-being-answered" value="1"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/being-answered/take-1.mp3"></audio>
+        <div class="m">0.578 s · -20.39 dB · Spitze -6.43 dB<br>Klangfarbe bleibt gleich</div>
+        
+        
+      </div>
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ Stufe 2</span>
+          <label class="pick"><input type="checkbox" name="pick-being-answered" value="2" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/being-answered/take-2.mp3"></audio>
+        <div class="m">0.778 s · -20.39 dB · Spitze -4.52 dB<br>Klangfarbe bleibt gleich</div>
+        <div class="why">Variante mit Klangfarbe ⌀ 6884 Hz — die 2 Varianten sollen sich unterscheiden</div>
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 3</span>
+          <label class="pick"><input type="checkbox" name="pick-being-answered" value="3"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/being-answered/take-3.mp3"></audio>
+        <div class="m">0.8 s · -20.37 dB · Spitze -5.79 dB<br>Klangfarbe wird heller</div>
+        
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 4</span>
+          <label class="pick"><input type="checkbox" name="pick-being-answered" value="4"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/being-answered/take-4.mp3"></audio>
+        <div class="m">0.8 s · -20.37 dB · Spitze -5.65 dB<br>Klangfarbe bleibt gleich</div>
+        
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 5</span>
+          <label class="pick"><input type="checkbox" name="pick-being-answered" value="5"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/being-answered/take-5.mp3"></audio>
+        <div class="m">0.8 s · -20.37 dB · Spitze -5.51 dB<br>Klangfarbe bleibt gleich</div>
+        
+        
+      </div>
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ Stufe 1</span>
+          <label class="pick"><input type="checkbox" name="pick-being-answered" value="6" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/being-answered/take-6.mp3"></audio>
+        <div class="m">0.8 s · -20.44 dB · Spitze -5.95 dB<br>Klangfarbe bleibt gleich</div>
+        <div class="why">Variante mit Klangfarbe ⌀ 5721 Hz — die 2 Varianten sollen sich unterscheiden</div>
+        
+      </div></div>
+      <p class="pub">Veröffentlicht als <code>being-answered-1.mp3, being-answered-2.mp3</code> in <code>public/audio/g1/paint/ch01/sfx/</code> · 6 Takes gehört, 6 in der engeren Wahl</p>
+    </article>
+
+    <article class="stem" id="merle-round">
+      <h3><code>merle-round</code> <span class="tag positive">positive</span><span class="need">3 Stück gesucht — es sind aufsteigende Stufen, die Reihenfolge sortiere ich nach Helligkeit</span></h3>
+      <p class="hangs">Klingt bei: <b>classmateRoundSolved</b> <span class="dim">(shell · drei Stufen über ihre sechs Runden)</span></p>
+      <p class="prompt">A single warm wooden xylophone note with a gentle glass-like shimmer opening behind it, as if something frozen were thawing a little. Tender, hopeful, rising.</p>
+      <div class="takes">
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 1</span>
+          <label class="pick"><input type="checkbox" name="pick-merle-round" value="1"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/merle-round/take-1.mp3"></audio>
+        <div class="m">0.6 s · -20.38 dB · Spitze -6.21 dB<br>Klangfarbe bleibt gleich</div>
+        
+        
+      </div>
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ Stufe 3</span>
+          <label class="pick"><input type="checkbox" name="pick-merle-round" value="2" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/merle-round/take-2.mp3"></audio>
+        <div class="m">0.6 s · -20.34 dB · Spitze -5.04 dB<br>Klangfarbe bleibt gleich</div>
+        <div class="why">Stufe 3 von 3: Klangfarbe ⌀ 7537 Hz — die Stufen steigen</div>
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 3</span>
+          <label class="pick"><input type="checkbox" name="pick-merle-round" value="3"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/merle-round/take-3.mp3"></audio>
+        <div class="m">0.178 s · -20.45 dB · Spitze -6.81 dB<br>Klangfarbe wird heller</div>
+        
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 4</span>
+          <label class="pick"><input type="checkbox" name="pick-merle-round" value="4"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/merle-round/take-4.mp3"></audio>
+        <div class="m">0.6 s · -20.3 dB · Spitze -4.03 dB<br>Klangfarbe wird dunkler</div>
+        
+        
+      </div>
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ Stufe 2</span>
+          <label class="pick"><input type="checkbox" name="pick-merle-round" value="5" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/merle-round/take-5.mp3"></audio>
+        <div class="m">0.544 s · -20.37 dB · Spitze -5.1 dB<br>Klangfarbe bleibt gleich</div>
+        <div class="why">Stufe 2 von 3: Klangfarbe ⌀ 5849 Hz — die Stufen steigen</div>
+        
+      </div>
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ Stufe 1</span>
+          <label class="pick"><input type="checkbox" name="pick-merle-round" value="6" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/merle-round/take-6.mp3"></audio>
+        <div class="m">0.273 s · -20.44 dB · Spitze -6.83 dB<br>Klangfarbe wird heller</div>
+        <div class="why">Stufe 1 von 3: Klangfarbe ⌀ 1433 Hz — die Stufen steigen</div>
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 7</span>
+          <label class="pick"><input type="checkbox" name="pick-merle-round" value="7"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/merle-round/take-7.mp3"></audio>
+        <div class="m">0.6 s · -20.41 dB · Spitze -4.89 dB<br>Klangfarbe wird dunkler</div>
+        
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 8</span>
+          <label class="pick"><input type="checkbox" name="pick-merle-round" value="8"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/merle-round/take-8.mp3"></audio>
+        <div class="m">0.493 s · -20.38 dB · Spitze -5.44 dB<br>Klangfarbe bleibt gleich</div>
+        
+        
+      </div></div>
+      <p class="pub">Veröffentlicht als <code>merle-round-1.mp3, merle-round-2.mp3, merle-round-3.mp3</code> in <code>public/audio/g1/paint/ch01/sfx/</code> · 8 Takes gehört, 8 in der engeren Wahl</p>
+    </article>
+
+    <article class="stem" id="solve-ok">
+      <h3><code>solve-ok</code> <span class="tag positive">positive</span><span class="need">3 Stück gesucht — es sind aufsteigende Stufen, die Reihenfolge sortiere ich nach Helligkeit</span></h3>
+      <p class="hangs">Klingt bei: <b>answerAccepted</b> <span class="dim">(shell · drei Stufen: nah · teilweise · richtig)</span></p>
+      <p class="prompt">One clear warm note on a small wooden toy xylophone, ringing briefly and rising. Encouraging, uncomplicated.</p>
+      <div class="takes">
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ Stufe 3</span>
+          <label class="pick"><input type="checkbox" name="pick-solve-ok" value="1" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/solve-ok/take-1.mp3"></audio>
+        <div class="m">0.451 s · -20.43 dB · Spitze -3.51 dB<br>Klangfarbe bleibt gleich</div>
+        <div class="why">Stufe 3 von 3: Klangfarbe ⌀ 7088 Hz — die Stufen steigen</div>
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 2</span>
+          <label class="pick"><input type="checkbox" name="pick-solve-ok" value="2"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/solve-ok/take-2.mp3"></audio>
+        <div class="m">0.339 s · -20.28 dB · Spitze -5.9 dB<br>Klangfarbe wird dunkler</div>
+        
+        
+      </div>
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ Stufe 2</span>
+          <label class="pick"><input type="checkbox" name="pick-solve-ok" value="3" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/solve-ok/take-3.mp3"></audio>
+        <div class="m">0.164 s · -20.47 dB · Spitze -2.42 dB<br>Klangfarbe wird dunkler</div>
+        <div class="why">Stufe 2 von 3: Klangfarbe ⌀ 4379 Hz — die Stufen steigen</div>
+        
+      </div>
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ Stufe 1</span>
+          <label class="pick"><input type="checkbox" name="pick-solve-ok" value="4" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/solve-ok/take-4.mp3"></audio>
+        <div class="m">0.245 s · -20.42 dB · Spitze -3.25 dB<br>Klangfarbe wird dunkler</div>
+        <div class="why">Stufe 1 von 3: Klangfarbe ⌀ 1922 Hz — die Stufen steigen</div>
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 5</span>
+          <label class="pick"><input type="checkbox" name="pick-solve-ok" value="5"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/solve-ok/take-5.mp3"></audio>
+        <div class="m">0.279 s · -20.38 dB · Spitze -5.76 dB<br>Klangfarbe bleibt gleich</div>
+        
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 6</span>
+          <label class="pick"><input type="checkbox" name="pick-solve-ok" value="6"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/solve-ok/take-6.mp3"></audio>
+        <div class="m">0.245 s · -20.44 dB · Spitze -3.57 dB<br>Klangfarbe wird dunkler</div>
+        
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 7</span>
+          <label class="pick"><input type="checkbox" name="pick-solve-ok" value="7"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/solve-ok/take-7.mp3"></audio>
+        <div class="m">0.393 s · -20.42 dB · Spitze -6.43 dB<br>Klangfarbe bleibt gleich</div>
+        
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 8</span>
+          <label class="pick"><input type="checkbox" name="pick-solve-ok" value="8"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/solve-ok/take-8.mp3"></audio>
+        <div class="m">0.245 s · -22 dB · Spitze -1.72 dB<br>Klangfarbe wird dunkler</div>
+        
+        
+      </div></div>
+      <p class="pub">Veröffentlicht als <code>solve-ok-1.mp3, solve-ok-2.mp3, solve-ok-3.mp3</code> in <code>public/audio/g1/paint/ch01/sfx/</code> · 8 Takes gehört, 8 in der engeren Wahl</p>
+    </article>
+<h2>Absagen und Fehltritte — hier gilt die Regel :371</h2>
+
+    <article class="stem" id="cage-locked">
+      <h3><code>cage-locked</code> <span class="tag neutral">neutral</span></h3>
+      <p class="hangs">Klingt bei: <b>cageGated</b> <span class="dim">(entity)</span></p>
+      <p class="prompt">A wooden latch that does not give: one soft muffled wooden tap that stays where it started. Patient and quiet, level in tone, never falling.</p>
+      <div class="takes">
+      <div class="take  out">
+        <div class="take-head">
+          <span class="tn">Take 1</span>
+          <label class="pick"><input type="checkbox" name="pick-cage-locked" value="1"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/cage-locked/take-1.mp3"></audio>
+        <div class="m">0.35 s · -20.34 dB · Spitze -7.6 dB<br>Klangfarbe wird dunkler</div>
+        
+        <div class="rej">zurück: Klangfarbe faellt 7903 → 6962 Hz — BLUEPRINT :371 verbietet genau das</div>
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 2</span>
+          <label class="pick"><input type="checkbox" name="pick-cage-locked" value="2"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/cage-locked/take-2.mp3"></audio>
+        <div class="m">0.35 s · -20.46 dB · Spitze -4.44 dB<br>Klangfarbe wird heller</div>
+        
+        
+      </div>
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ meine Wahl</span>
+          <label class="pick"><input type="checkbox" name="pick-cage-locked" value="4" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/cage-locked/take-4.mp3"></audio>
+        <div class="m">0.35 s · -20.43 dB · Spitze -5.97 dB<br>Klangfarbe bleibt gleich</div>
+        <div class="why">einziger bzw. bester Take: 0.35 s, -20.43 dB, Klangfarbe gleichbleibend (6405 → 4173 → 6808 Hz)</div>
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 5</span>
+          <label class="pick"><input type="checkbox" name="pick-cage-locked" value="5"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/cage-locked/take-5.mp3"></audio>
+        <div class="m">0.35 s · -20.37 dB · Spitze -5.57 dB<br>Klangfarbe bleibt gleich</div>
+        
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 6</span>
+          <label class="pick"><input type="checkbox" name="pick-cage-locked" value="6"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/cage-locked/take-6.mp3"></audio>
+        <div class="m">0.35 s · -20.42 dB · Spitze -2.7 dB<br>Klangfarbe wird heller</div>
+        
+        
+      </div></div>
+      <p class="pub">Veröffentlicht als <code>cage-locked.mp3</code> in <code>public/audio/g1/paint/ch01/sfx/</code> · 5 Takes gehört, 4 in der engeren Wahl</p>
+    </article>
+
+    <article class="stem" id="gate-waits">
+      <h3><code>gate-waits</code> <span class="tag neutral">neutral</span></h3>
+      <p class="hangs">Klingt bei: <b>toast</b> <span class="dim">(sim)</span></p>
+      <p class="prompt">A soft wooden knock that asks rather than refuses: one gentle muted tap on wood, holding its tone. Calm, level, never falling.</p>
+      <div class="takes">
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ meine Wahl</span>
+          <label class="pick"><input type="checkbox" name="pick-gate-waits" value="1" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/gate-waits/take-1.mp3"></audio>
+        <div class="m">0.15 s · -20.46 dB · Spitze -1.69 dB<br>Klangfarbe wird heller</div>
+        <div class="why">einziger bzw. bester Take: 0.15 s, -20.46 dB, Klangfarbe steigend (772 → 590 → 1137 Hz)</div>
+        
+      </div>
+      <div class="take  out">
+        <div class="take-head">
+          <span class="tn">Take 2</span>
+          <label class="pick"><input type="checkbox" name="pick-gate-waits" value="2"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/gate-waits/take-2.mp3"></audio>
+        <div class="m">0.123 s · -23.27 dB · Spitze -1.35 dB<br>Klangfarbe wird dunkler</div>
+        
+        <div class="rej">zurück: -23.27 dB — ausserhalb -20 ± 2</div>
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 3</span>
+          <label class="pick"><input type="checkbox" name="pick-gate-waits" value="3"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/gate-waits/take-3.mp3"></audio>
+        <div class="m">0.119 s · -20.49 dB · Spitze -4.68 dB<br>Klangfarbe wird heller</div>
+        
+        
+      </div>
+      <div class="take  out">
+        <div class="take-head">
+          <span class="tn">Take 4</span>
+          <label class="pick"><input type="checkbox" name="pick-gate-waits" value="4"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/gate-waits/take-4.mp3"></audio>
+        <div class="m">0.273 s · -24.27 dB · Spitze -1.42 dB<br>Klangfarbe wird dunkler</div>
+        
+        <div class="rej">zurück: -24.27 dB — ausserhalb -20 ± 2</div>
+      </div>
+      <div class="take  out">
+        <div class="take-head">
+          <span class="tn">Take 5</span>
+          <label class="pick"><input type="checkbox" name="pick-gate-waits" value="5"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/gate-waits/take-5.mp3"></audio>
+        <div class="m">0.158 s · -21.76 dB · Spitze -1.39 dB<br>Klangfarbe wird dunkler</div>
+        
+        <div class="rej">zurück: Klangfarbe faellt 1022 → 844 Hz — BLUEPRINT :371 verbietet genau das</div>
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 6</span>
+          <label class="pick"><input type="checkbox" name="pick-gate-waits" value="6"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/gate-waits/take-6.mp3"></audio>
+        <div class="m">0.3 s · -20.41 dB · Spitze -6.25 dB<br>Klangfarbe wird heller</div>
+        
+        
+      </div></div>
+      <p class="pub">Veröffentlicht als <code>gate-waits.mp3</code> in <code>public/audio/g1/paint/ch01/sfx/</code> · 6 Takes gehört, 3 in der engeren Wahl</p>
+    </article>
+
+    <article class="stem" id="ink-splash">
+      <h3><code>ink-splash</code> <span class="tag neutral">neutral</span><span class="need">2 Stück gesucht — sie sollen sich unterscheiden</span></h3>
+      <p class="hangs">Klingt bei: <b>encounter</b> <span class="dim">(player · hazard === &quot;w&quot; — die Tinte)</span></p>
+      <p class="prompt">A small soft splash into a shallow ink puddle on paper: one gentle wet plop, damp and muffled, holding its tone as it fades. Never falling in pitch, never harsh.</p>
+      <div class="takes">
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 1</span>
+          <label class="pick"><input type="checkbox" name="pick-ink-splash" value="1"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/ink-splash/take-1.mp3"></audio>
+        <div class="m">0.4 s · -20.45 dB · Spitze -3.12 dB<br>Klangfarbe wird heller</div>
+        
+        
+      </div>
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ Stufe 1</span>
+          <label class="pick"><input type="checkbox" name="pick-ink-splash" value="2" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/ink-splash/take-2.mp3"></audio>
+        <div class="m">0.393 s · -20.43 dB · Spitze -4 dB<br>Klangfarbe bleibt gleich</div>
+        <div class="why">Variante mit Klangfarbe ⌀ 4892 Hz — die 2 Varianten sollen sich unterscheiden</div>
+        
+      </div>
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ Stufe 2</span>
+          <label class="pick"><input type="checkbox" name="pick-ink-splash" value="3" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/ink-splash/take-3.mp3"></audio>
+        <div class="m">0.399 s · -20.44 dB · Spitze -3.11 dB<br>Klangfarbe wird heller</div>
+        <div class="why">Variante mit Klangfarbe ⌀ 7480 Hz — die 2 Varianten sollen sich unterscheiden</div>
+        
+      </div>
+      <div class="take  out">
+        <div class="take-head">
+          <span class="tn">Take 4</span>
+          <label class="pick"><input type="checkbox" name="pick-ink-splash" value="4"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/ink-splash/take-4.mp3"></audio>
+        <div class="m">0.367 s · -22.98 dB · Spitze -1.54 dB<br>Klangfarbe wird heller</div>
+        
+        <div class="rej">zurück: -22.98 dB — ausserhalb -20 ± 2</div>
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 6</span>
+          <label class="pick"><input type="checkbox" name="pick-ink-splash" value="6"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/ink-splash/take-6.mp3"></audio>
+        <div class="m">0.4 s · -20.38 dB · Spitze -3.87 dB<br>Klangfarbe wird heller</div>
+        
+        
+      </div>
+      <div class="take  out">
+        <div class="take-head">
+          <span class="tn">Take 7</span>
+          <label class="pick"><input type="checkbox" name="pick-ink-splash" value="7"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/ink-splash/take-7.mp3"></audio>
+        <div class="m">0.377 s · -21.05 dB · Spitze -1.54 dB<br>Klangfarbe bleibt gleich</div>
+        
+        <div class="rej">zurück: Klangfarbe faellt 5943 → 5537 Hz — BLUEPRINT :371 verbietet genau das</div>
+      </div>
+      <div class="take  out">
+        <div class="take-head">
+          <span class="tn">Take 8</span>
+          <label class="pick"><input type="checkbox" name="pick-ink-splash" value="8"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/ink-splash/take-8.mp3"></audio>
+        <div class="m">0.4 s · -22.64 dB · Spitze -1.48 dB<br>Klangfarbe bleibt gleich</div>
+        
+        <div class="rej">zurück: -22.64 dB — ausserhalb -20 ± 2</div>
+      </div></div>
+      <p class="pub">Veröffentlicht als <code>ink-splash-1.mp3, ink-splash-2.mp3</code> in <code>public/audio/g1/paint/ch01/sfx/</code> · 7 Takes gehört, 4 in der engeren Wahl</p>
+    </article>
+
+    <article class="stem" id="bump">
+      <h3><code>bump</code> <span class="tag neutral">neutral</span><span class="need">2 Stück gesucht — sie sollen sich unterscheiden</span></h3>
+      <p class="hangs">Klingt bei: <b>encounter</b> <span class="dim">(entity)</span></p>
+      <p class="prompt">A soft nudge against cloth: one muffled padded contact, dry and level. Gentle, no impact, no pain, never falling in tone.</p>
+      <div class="takes">
+      <div class="take  out">
+        <div class="take-head">
+          <span class="tn">Take 1</span>
+          <label class="pick"><input type="checkbox" name="pick-bump" value="1"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/bump/take-1.mp3"></audio>
+        <div class="m">0.186 s · -20.33 dB · Spitze -5.84 dB<br>Klangfarbe wird dunkler</div>
+        
+        <div class="rej">zurück: Klangfarbe faellt 7514 → 4796 Hz — BLUEPRINT :371 verbietet genau das</div>
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 2</span>
+          <label class="pick"><input type="checkbox" name="pick-bump" value="2"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/bump/take-2.mp3"></audio>
+        <div class="m">0.35 s · -20.44 dB · Spitze -5.93 dB<br>Klangfarbe wird heller</div>
+        
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 3</span>
+          <label class="pick"><input type="checkbox" name="pick-bump" value="3"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/bump/take-3.mp3"></audio>
+        <div class="m">0.346 s · -20.38 dB · Spitze -6.17 dB<br>Klangfarbe bleibt gleich</div>
+        
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 4</span>
+          <label class="pick"><input type="checkbox" name="pick-bump" value="4"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/bump/take-4.mp3"></audio>
+        <div class="m">0.335 s · -20.41 dB · Spitze -3.82 dB<br>Klangfarbe bleibt gleich</div>
+        
+        
+      </div>
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ Stufe 1</span>
+          <label class="pick"><input type="checkbox" name="pick-bump" value="5" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/bump/take-5.mp3"></audio>
+        <div class="m">0.245 s · -20.41 dB · Spitze -5.77 dB<br>Klangfarbe wird heller</div>
+        <div class="why">Variante mit Klangfarbe ⌀ 5290 Hz — die 2 Varianten sollen sich unterscheiden</div>
+        
+      </div>
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ Stufe 2</span>
+          <label class="pick"><input type="checkbox" name="pick-bump" value="6" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/bump/take-6.mp3"></audio>
+        <div class="m">0.35 s · -20.36 dB · Spitze -6.28 dB<br>Klangfarbe bleibt gleich</div>
+        <div class="why">Variante mit Klangfarbe ⌀ 9200 Hz — die 2 Varianten sollen sich unterscheiden</div>
+        
+      </div></div>
+      <p class="pub">Veröffentlicht als <code>bump-1.mp3, bump-2.mp3</code> in <code>public/audio/g1/paint/ch01/sfx/</code> · 6 Takes gehört, 5 in der engeren Wahl</p>
+    </article>
+
+    <article class="stem" id="solve-thud">
+      <h3><code>solve-thud</code> <span class="tag neutral">neutral</span><span class="need">2 Stück gesucht — sie sollen sich unterscheiden</span></h3>
+      <p class="hangs">Klingt bei: <b>answerNotAccepted</b> <span class="dim">(shell)</span></p>
+      <p class="prompt">One soft muted thud on a wooden desk, wrapped in felt. Warm, level in tone, completely neutral — the sound of a page waiting, not of a mistake. Never falling in pitch, never a buzz.</p>
+      <div class="takes">
+      <div class="take  out">
+        <div class="take-head">
+          <span class="tn">Take 1</span>
+          <label class="pick"><input type="checkbox" name="pick-solve-thud" value="1"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/solve-thud/take-1.mp3"></audio>
+        <div class="m">0.3 s · -20.43 dB · Spitze -4.63 dB<br>Klangfarbe wird dunkler</div>
+        
+        <div class="rej">zurück: Klangfarbe faellt 6278 → 4242 Hz — BLUEPRINT :371 verbietet genau das</div>
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 2</span>
+          <label class="pick"><input type="checkbox" name="pick-solve-thud" value="2"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/solve-thud/take-2.mp3"></audio>
+        <div class="m">0.3 s · -20.39 dB · Spitze -5.28 dB<br>Klangfarbe wird heller</div>
+        
+        
+      </div>
+      <div class="take  out">
+        <div class="take-head">
+          <span class="tn">Take 3</span>
+          <label class="pick"><input type="checkbox" name="pick-solve-thud" value="3"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/solve-thud/take-3.mp3"></audio>
+        <div class="m">0.3 s · -20.44 dB · Spitze -5.76 dB<br>Klangfarbe wird dunkler</div>
+        
+        <div class="rej">zurück: Klangfarbe faellt 5917 → 2868 Hz — BLUEPRINT :371 verbietet genau das</div>
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 4</span>
+          <label class="pick"><input type="checkbox" name="pick-solve-thud" value="4"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/solve-thud/take-4.mp3"></audio>
+        <div class="m">0.3 s · -20.37 dB · Spitze -5.71 dB<br>Klangfarbe wird heller</div>
+        
+        
+      </div>
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ Stufe 2</span>
+          <label class="pick"><input type="checkbox" name="pick-solve-thud" value="5" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/solve-thud/take-5.mp3"></audio>
+        <div class="m">0.3 s · -20.37 dB · Spitze -5.47 dB<br>Klangfarbe bleibt gleich</div>
+        <div class="why">Variante mit Klangfarbe ⌀ 6692 Hz — die 2 Varianten sollen sich unterscheiden</div>
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 6</span>
+          <label class="pick"><input type="checkbox" name="pick-solve-thud" value="6"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/solve-thud/take-6.mp3"></audio>
+        <div class="m">0.3 s · -20.4 dB · Spitze -4.23 dB<br>Klangfarbe bleibt gleich</div>
+        
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 7</span>
+          <label class="pick"><input type="checkbox" name="pick-solve-thud" value="7"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/solve-thud/take-7.mp3"></audio>
+        <div class="m">0.3 s · -20.43 dB · Spitze -5.77 dB<br>Klangfarbe bleibt gleich</div>
+        
+        
+      </div>
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ Stufe 1</span>
+          <label class="pick"><input type="checkbox" name="pick-solve-thud" value="8" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/solve-thud/take-8.mp3"></audio>
+        <div class="m">0.285 s · -20.46 dB · Spitze -4.74 dB<br>Klangfarbe bleibt gleich</div>
+        <div class="why">Variante mit Klangfarbe ⌀ 5561 Hz — die 2 Varianten sollen sich unterscheiden</div>
+        
+      </div></div>
+      <p class="pub">Veröffentlicht als <code>solve-thud-1.mp3, solve-thud-2.mp3</code> in <code>public/audio/g1/paint/ch01/sfx/</code> · 8 Takes gehört, 6 in der engeren Wahl</p>
+    </article>
+<h2>Hülle und Karten</h2>
+
+    <article class="stem" id="page-take">
+      <h3><code>page-take</code> <span class="tag info">info</span><span class="need">2 Stück gesucht — sie sollen sich unterscheiden</span></h3>
+      <p class="hangs">Klingt bei: <b>tip</b> <span class="dim">(sim)</span></p>
+      <p class="prompt">A single sheet of paper being lifted from a wooden desk: a light crisp pick-up with a small wooden tap. Quiet and clean.</p>
+      <div class="takes">
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 1</span>
+          <label class="pick"><input type="checkbox" name="pick-page-take" value="1"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/page-take/take-1.mp3"></audio>
+        <div class="m">0.4 s · -20.41 dB · Spitze -4.77 dB<br>Klangfarbe wird heller</div>
+        
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 2</span>
+          <label class="pick"><input type="checkbox" name="pick-page-take" value="2"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/page-take/take-2.mp3"></audio>
+        <div class="m">0.4 s · -20.41 dB · Spitze -6.12 dB<br>Klangfarbe wird heller</div>
+        
+        
+      </div>
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ Stufe 1</span>
+          <label class="pick"><input type="checkbox" name="pick-page-take" value="3" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/page-take/take-3.mp3"></audio>
+        <div class="m">0.367 s · -20.43 dB · Spitze -6.1 dB<br>Klangfarbe wird dunkler</div>
+        <div class="why">Variante mit Klangfarbe ⌀ 4711 Hz — die 2 Varianten sollen sich unterscheiden</div>
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 4</span>
+          <label class="pick"><input type="checkbox" name="pick-page-take" value="4"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/page-take/take-4.mp3"></audio>
+        <div class="m">0.39 s · -20.34 dB · Spitze -5.58 dB<br>Klangfarbe wird heller</div>
+        
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 5</span>
+          <label class="pick"><input type="checkbox" name="pick-page-take" value="5"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/page-take/take-5.mp3"></audio>
+        <div class="m">0.37 s · -20.43 dB · Spitze -6.27 dB<br>Klangfarbe wird dunkler</div>
+        
+        
+      </div>
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ Stufe 2</span>
+          <label class="pick"><input type="checkbox" name="pick-page-take" value="6" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/page-take/take-6.mp3"></audio>
+        <div class="m">0.341 s · -20.32 dB · Spitze -6.23 dB<br>Klangfarbe wird dunkler</div>
+        <div class="why">Variante mit Klangfarbe ⌀ 7688 Hz — die 2 Varianten sollen sich unterscheiden</div>
+        
+      </div></div>
+      <p class="pub">Veröffentlicht als <code>page-take-1.mp3, page-take-2.mp3</code> in <code>public/audio/g1/paint/ch01/sfx/</code> · 6 Takes gehört, 6 in der engeren Wahl</p>
+    </article>
+
+    <article class="stem" id="card-open">
+      <h3><code>card-open</code> <span class="tag info">info</span><span class="need">3 Stück gesucht — sie sollen sich unterscheiden</span></h3>
+      <p class="hangs">Klingt bei: <b>task</b> <span class="dim">(sim)</span></p>
+      <p class="prompt">A card of thick paper being laid down on a wooden desk: one soft wooden click and a short paper settle. Quiet, tidy.</p>
+      <div class="takes">
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ Stufe 1</span>
+          <label class="pick"><input type="checkbox" name="pick-card-open" value="1" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/card-open/take-1.mp3"></audio>
+        <div class="m">0.205 s · -20.45 dB · Spitze -6.14 dB<br>Klangfarbe wird dunkler</div>
+        <div class="why">Variante mit Klangfarbe ⌀ 5846 Hz — die 3 Varianten sollen sich unterscheiden</div>
+        
+      </div>
+      <div class="take  out">
+        <div class="take-head">
+          <span class="tn">Take 2</span>
+          <label class="pick"><input type="checkbox" name="pick-card-open" value="2"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/card-open/take-2.mp3"></audio>
+        <div class="m">0.3 s · -22.94 dB · Spitze -1.4 dB<br>Klangfarbe wird dunkler</div>
+        
+        <div class="rej">zurück: -22.94 dB — ausserhalb -20 ± 2</div>
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 3</span>
+          <label class="pick"><input type="checkbox" name="pick-card-open" value="3"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/card-open/take-3.mp3"></audio>
+        <div class="m">0.253 s · -20.45 dB · Spitze -4.99 dB<br>Klangfarbe wird dunkler</div>
+        
+        
+      </div>
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ Stufe 2</span>
+          <label class="pick"><input type="checkbox" name="pick-card-open" value="4" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/card-open/take-4.mp3"></audio>
+        <div class="m">0.289 s · -20.41 dB · Spitze -6.47 dB<br>Klangfarbe bleibt gleich</div>
+        <div class="why">Variante mit Klangfarbe ⌀ 6335 Hz — die 3 Varianten sollen sich unterscheiden</div>
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 5</span>
+          <label class="pick"><input type="checkbox" name="pick-card-open" value="5"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/card-open/take-5.mp3"></audio>
+        <div class="m">0.3 s · -20.37 dB · Spitze -6.62 dB<br>Klangfarbe bleibt gleich</div>
+        
+        
+      </div>
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ Stufe 3</span>
+          <label class="pick"><input type="checkbox" name="pick-card-open" value="6" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/card-open/take-6.mp3"></audio>
+        <div class="m">0.184 s · -20.34 dB · Spitze -6.1 dB<br>Klangfarbe wird dunkler</div>
+        <div class="why">Variante mit Klangfarbe ⌀ 7323 Hz — die 3 Varianten sollen sich unterscheiden</div>
+        
+      </div></div>
+      <p class="pub">Veröffentlicht als <code>card-open-1.mp3, card-open-2.mp3, card-open-3.mp3</code> in <code>public/audio/g1/paint/ch01/sfx/</code> · 6 Takes gehört, 5 in der engeren Wahl</p>
+    </article>
+
+    <article class="stem" id="card-close">
+      <h3><code>card-close</code> <span class="tag info">info</span><span class="need">3 Stück gesucht — sie sollen sich unterscheiden</span></h3>
+      <p class="hangs">Klingt bei: <b>cardClosed</b> <span class="dim">(shell)</span></p>
+      <p class="prompt">A card of thick paper being lifted away from a wooden desk: one short paper lift and a soft wooden tap. Quiet, tidy.</p>
+      <div class="takes">
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ Stufe 1</span>
+          <label class="pick"><input type="checkbox" name="pick-card-close" value="1" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/card-close/take-1.mp3"></audio>
+        <div class="m">0.297 s · -20.31 dB · Spitze -6.07 dB<br>Klangfarbe wird dunkler</div>
+        <div class="why">Variante mit Klangfarbe ⌀ 5506 Hz — die 3 Varianten sollen sich unterscheiden</div>
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 2</span>
+          <label class="pick"><input type="checkbox" name="pick-card-close" value="2"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/card-close/take-2.mp3"></audio>
+        <div class="m">0.3 s · -20.25 dB · Spitze -2.17 dB<br>Klangfarbe bleibt gleich</div>
+        
+        
+      </div>
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ Stufe 3</span>
+          <label class="pick"><input type="checkbox" name="pick-card-close" value="3" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/card-close/take-3.mp3"></audio>
+        <div class="m">0.3 s · -20.41 dB · Spitze -5.7 dB<br>Klangfarbe wird heller</div>
+        <div class="why">Variante mit Klangfarbe ⌀ 6241 Hz — die 3 Varianten sollen sich unterscheiden</div>
+        
+      </div>
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ Stufe 2</span>
+          <label class="pick"><input type="checkbox" name="pick-card-close" value="4" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/card-close/take-4.mp3"></audio>
+        <div class="m">0.3 s · -20.43 dB · Spitze -6.43 dB<br>Klangfarbe wird heller</div>
+        <div class="why">Variante mit Klangfarbe ⌀ 5766 Hz — die 3 Varianten sollen sich unterscheiden</div>
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 5</span>
+          <label class="pick"><input type="checkbox" name="pick-card-close" value="5"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/card-close/take-5.mp3"></audio>
+        <div class="m">0.3 s · -20.34 dB · Spitze -7.55 dB<br>Klangfarbe bleibt gleich</div>
+        
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 6</span>
+          <label class="pick"><input type="checkbox" name="pick-card-close" value="6"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/card-close/take-6.mp3"></audio>
+        <div class="m">0.287 s · -20.45 dB · Spitze -7.39 dB<br>Klangfarbe bleibt gleich</div>
+        
+        
+      </div></div>
+      <p class="pub">Veröffentlicht als <code>card-close-1.mp3, card-close-2.mp3, card-close-3.mp3</code> in <code>public/audio/g1/paint/ch01/sfx/</code> · 6 Takes gehört, 6 in der engeren Wahl</p>
+    </article>
+
+    <article class="stem" id="page-turn">
+      <h3><code>page-turn</code> <span class="tag info">info</span><span class="need">2 Stück gesucht — sie sollen sich unterscheiden</span></h3>
+      <p class="hangs">Klingt bei: <b>pageTurned</b> <span class="dim">(shell)</span></p>
+      <p class="prompt">One page of a large picture book turning over. A single clean paper sweep, no book covers, no rustling pile.</p>
+      <div class="takes">
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 1</span>
+          <label class="pick"><input type="checkbox" name="pick-page-turn" value="1"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/page-turn/take-1.mp3"></audio>
+        <div class="m">0.4 s · -20.37 dB · Spitze -5.78 dB<br>Klangfarbe wird dunkler</div>
+        
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 2</span>
+          <label class="pick"><input type="checkbox" name="pick-page-turn" value="2"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/page-turn/take-2.mp3"></audio>
+        <div class="m">0.4 s · -20.39 dB · Spitze -7.85 dB<br>Klangfarbe bleibt gleich</div>
+        
+        
+      </div>
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ Stufe 2</span>
+          <label class="pick"><input type="checkbox" name="pick-page-turn" value="3" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/page-turn/take-3.mp3"></audio>
+        <div class="m">0.4 s · -20.31 dB · Spitze -6.92 dB<br>Klangfarbe wird heller</div>
+        <div class="why">Variante mit Klangfarbe ⌀ 8206 Hz — die 2 Varianten sollen sich unterscheiden</div>
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 5</span>
+          <label class="pick"><input type="checkbox" name="pick-page-turn" value="5"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/page-turn/take-5.mp3"></audio>
+        <div class="m">0.4 s · -20.38 dB · Spitze -5.46 dB<br>Klangfarbe bleibt gleich</div>
+        
+        
+      </div>
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ Stufe 1</span>
+          <label class="pick"><input type="checkbox" name="pick-page-turn" value="6" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/page-turn/take-6.mp3"></audio>
+        <div class="m">0.4 s · -20.35 dB · Spitze -5.71 dB<br>Klangfarbe bleibt gleich</div>
+        <div class="why">Variante mit Klangfarbe ⌀ 6847 Hz — die 2 Varianten sollen sich unterscheiden</div>
+        
+      </div></div>
+      <p class="pub">Veröffentlicht als <code>page-turn-1.mp3, page-turn-2.mp3</code> in <code>public/audio/g1/paint/ch01/sfx/</code> · 5 Takes gehört, 5 in der engeren Wahl</p>
+    </article>
+
+    <article class="stem" id="toast">
+      <h3><code>toast</code> <span class="tag info">info</span><span class="need">2 Stück gesucht — sie sollen sich unterscheiden</span></h3>
+      <p class="hangs">Klingt bei: <b>toast</b> <span class="dim">(sim · der Standardfall — die per toastMatch erkannten Zeilen gehen an gate-waits bzw. ink-splash)</span></p>
+      <p class="prompt">One very quiet wooden tick, like a pencil touching a desk once. Tiny, unobtrusive, over immediately.</p>
+      <div class="takes">
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ Stufe 1</span>
+          <label class="pick"><input type="checkbox" name="pick-toast" value="1" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/toast/take-1.mp3"></audio>
+        <div class="m">0.2 s · -20.37 dB · Spitze -5.36 dB<br>Klangfarbe bleibt gleich</div>
+        <div class="why">Variante mit Klangfarbe ⌀ 5631 Hz — die 2 Varianten sollen sich unterscheiden</div>
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 2</span>
+          <label class="pick"><input type="checkbox" name="pick-toast" value="2"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/toast/take-2.mp3"></audio>
+        <div class="m">0.2 s · -20.38 dB · Spitze -6.61 dB<br>Klangfarbe bleibt gleich</div>
+        
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 3</span>
+          <label class="pick"><input type="checkbox" name="pick-toast" value="3"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/toast/take-3.mp3"></audio>
+        <div class="m">0.2 s · -20.33 dB · Spitze -2.42 dB<br>Klangfarbe wird dunkler</div>
+        
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 4</span>
+          <label class="pick"><input type="checkbox" name="pick-toast" value="4"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/toast/take-4.mp3"></audio>
+        <div class="m">0.2 s · -20.44 dB · Spitze -4.98 dB<br>Klangfarbe bleibt gleich</div>
+        
+        
+      </div>
+      <div class="take  ">
+        <div class="take-head">
+          <span class="tn">Take 5</span>
+          <label class="pick"><input type="checkbox" name="pick-toast" value="5"> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/toast/take-5.mp3"></audio>
+        <div class="m">0.2 s · -20.4 dB · Spitze -8.62 dB<br>Klangfarbe wird dunkler</div>
+        
+        
+      </div>
+      <div class="take chosen ">
+        <div class="take-head">
+          <span class="tn">★ Stufe 2</span>
+          <label class="pick"><input type="checkbox" name="pick-toast" value="6" checked> nehmen</label>
+        </div>
+        <audio controls preload="none" src="survey/toast/take-6.mp3"></audio>
+        <div class="m">0.2 s · -20.38 dB · Spitze -6.6 dB<br>Klangfarbe bleibt gleich</div>
+        <div class="why">Variante mit Klangfarbe ⌀ 8667 Hz — die 2 Varianten sollen sich unterscheiden</div>
+        
+      </div></div>
+      <p class="pub">Veröffentlicht als <code>toast-1.mp3, toast-2.mp3</code> in <code>public/audio/g1/paint/ch01/sfx/</code> · 6 Takes gehört, 6 in der engeren Wahl</p>
+    </article>
+</div>
+
+<div id="bar">
+  <button onclick="collect()">Meine Wahlen einsammeln</button>
+  <span class="dim">— ergibt einen Textblock zum Zurückschicken</span>
+</div>
+<div id="out"><button onclick="document.getElementById('out').style.display='none'">schliessen</button>
+  <p class="dim">Diesen Block an Claude zurückschicken:</p><textarea id="ta"></textarea></div>
+
+<script>
+function collect() {
+  const out = {};
+  document.querySelectorAll('.stem').forEach(function (el) {
+    const stem = el.id;
+    const boxes = el.querySelectorAll('input[type=radio]:checked');
+    const vals = Array.from(boxes).map(function (b) { return Number(b.value); });
+    if (vals.length) out[stem] = vals.length === 1 ? vals[0] : vals;
+  });
+  document.getElementById('ta').value = JSON.stringify(out, null, 2);
+  document.getElementById('out').style.display = 'block';
+}
+</script>
+</html>

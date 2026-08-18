@@ -68,6 +68,8 @@ const SFX_TARGET_RMS_DB = -20;
 const SFX_LONG_TARGET_LUFS = -16;
 const MUSIC_TARGET_LUFS = -18;
 const TARGET_TP_DB = -1;
+/** Wohin der Begrenzer VOR dem Kodieren zieht — siehe die Begründung unten. */
+const ENCODE_CEILING_DB = -1.5;
 /** Ab dieser Länge misst und normalisiert die Kette in LUFS statt in RMS. */
 const LUFS_MIN_SEC = 1.0;
 
@@ -126,13 +128,35 @@ const applyFades = (s) => {
  * niemand hört, und beim Abspielen eine Latenz, die man fühlt. 20 ms bleiben
  * stehen, damit der Ausklang nicht abgehackt wirkt.
  */
+/**
+ * ⚠ DIESE SCHWELLE IST DIESELBE ZAHL wie in `measure.mjs#tailSilenceMs` — und
+ * das ist der ganze Punkt.
+ *
+ * Die Kette schnitt zuerst RELATIV zur eigenen Spitze, die Messung zählte
+ * ABSOLUT ab −50 dBFS. Zwei Instrumente mit zwei Definitionen desselben Wortes:
+ * das Trimmen liess Material zwischen −65 und −50 dBFS stehen, die Messung
+ * nannte es Stille, und das Tor wurde rot an Dateien, die die Kette gerade für
+ * fertig erklärt hatte. Beide benutzen jetzt −50 dBFS.
+ *
+ * Damit eine absolute Schwelle etwas bedeutet, muss sie nach dem Angleichen der
+ * Lautheit greifen — davor misst sie die Lautstärke des Takes statt sein Ende
+ * (bei ungehobenem Material schrumpfte ein leiser Schritt auf 49 ms).
+ */
+const TAIL_SILENCE_DBFS = -50;
 const trimTail = (s, keepMs = 20) => {
   const win = Math.floor(SR / 1000);
-  const thr = 10 ** (-50 / 20);
+  const thr = 10 ** (TAIL_SILENCE_DBFS / 20);
   let i = s.length;
   while (i - win >= 0 && rms(s, i - win, i) < thr) i -= win;
   const keep = Math.min(s.length, i + Math.floor((keepMs / 1000) * SR));
   return keep < s.length ? s.slice(0, keep) : s;
+};
+
+/** RMS auf ein Ziel bringen — ein reiner Faktor, exakt. */
+const normalizeRms = (s, targetDb) => {
+  const gain = 10 ** ((targetDb - db(rms(s))) / 20);
+  for (let i = 0; i < s.length; i++) s[i] *= gain;
+  return s;
 };
 
 /** Lautheit auf ein LUFS-Ziel bringen — zwei Durchgänge, auf Abtastwerten. */
@@ -360,7 +384,8 @@ if (MEASURE_ONLY) {
         loopFit = cut.loop;
       } else {
         // Auftakt und Sieg laufen einmal und dürfen ausblenden — aber ohne
-        // totes Ende: `music-win` schleppte 214 ms Stille mit sich.
+        // totes Ende: `music-win` schleppte 214 ms Stille mit sich. Getrimmt
+        // wird NACH `loudnorm`, damit die absolute Schwelle etwas bedeutet.
         samples = trimTail(samples);
         applyFades(samples);
       }
@@ -381,24 +406,50 @@ if (MEASURE_ONLY) {
         const maxN = Math.floor(t.item.targetSeconds * SR);
         if (samples.length > maxN) samples = samples.slice(0, maxN);
       }
-      samples = trimTail(samples);
-      applyFades(samples);
       if (samples.length / SR >= LUFS_MIN_SEC) {
         // Die Fanfaren: ab einer Sekunde misst das Messgerät in LUFS, also wird
         // hier auch in LUFS normalisiert — sonst normalisiert die Kette nach
         // einer Zahl und das Tor prüft nach einer anderen.
         samples = loudnormSamples(samples, SFX_LONG_TARGET_LUFS, tmp, t.name);
-        applyFades(samples);
+        samples = trimTail(samples);
       } else {
-        const cur = db(rms(samples));
-        const gain = 10 ** ((SFX_TARGET_RMS_DB - cur) / 20);
-        for (let i = 0; i < samples.length; i++) samples[i] *= gain;
+        normalizeRms(samples, SFX_TARGET_RMS_DB);
+        samples = trimTail(samples);
+        // Nach dem Kürzen noch einmal — der Pegel ist ein Mittelwert über die
+        // Datei, und die Datei ist jetzt eine andere.
+        normalizeRms(samples, SFX_TARGET_RMS_DB);
       }
+      applyFades(samples);
     }
 
-    // 4 · Spitze begrenzen und schreiben
-    limitTruePeak(samples, TARGET_TP_DB);
+    // 4 · Spitze begrenzen und schreiben.
+    //
+    // Begrenzt wird auf −1,5 dB, geprüft wird auf −1 dBTP. Der halbe Dezibel ist
+    // kein Sicherheitsabstand aus Vorsicht, sondern die Kodierung: der Begrenzer
+    // arbeitet auf den Abtastwerten VOR dem MP3, und der Decoder rekonstruiert
+    // Spitzen ZWISCHEN ihnen. `cage-open-1` kam mit exakt −1,00 dB Abtastspitze
+    // aus dem Begrenzer und mass danach −0,76 dBTP.
+    limitTruePeak(samples, ENCODE_CEILING_DB);
     encodeMp3(samples, t.out);
+
+    // …und dann NACHMESSEN, statt dem Kopfraum zu glauben.
+    //
+    // Der Begrenzer arbeitet auf den Abtastwerten vor dem MP3; der Decoder
+    // rekonstruiert Spitzen ZWISCHEN ihnen, und wie viel er dabei zulegt, hängt
+    // vom Material ab. Gemessen: `cage-open-1` kam mit −1,5 dB aus dem Begrenzer
+    // und mass danach **−0,76 dBTP** — 0,74 dB Überschwingen bei einem
+    // transientenreichen Klang. Ein fester Kopfraum ist dafür eine geratene
+    // Zahl; die Grenze aus dem Kanon ist −1 dBTP, also wird sie gemessen und
+    // notfalls nachgezogen. Zwei Anläufe reichen immer: der zweite kennt den
+    // Fehler des ersten.
+    for (let attempt = 0; attempt < 2; attempt++) {
+      const got = db(peak(decodeMono(t.out)));
+      if (got <= TARGET_TP_DB) break;
+      const over = got - TARGET_TP_DB;
+      const g = 10 ** (-(over + 0.15) / 20); // 0,15 dB Sicherheit gegen ein zweites Überschwingen
+      for (let i = 0; i < samples.length; i++) samples[i] *= g;
+      encodeMp3(samples, t.out);
+    }
 
     measured[t.name] = {
       ...measureFile(t.out, t.kind),

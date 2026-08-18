@@ -84,6 +84,12 @@ for (const [stem, all] of [...takes.entries()].sort()) {
       rejected.push([t.take, `${t.loudnessDb} ${unit} — ausserhalb ${target} ± ${tol}`]);
       return false;
     }
+    // Eine Schleife, deren Naht ein Ausreisser gegen die eigene Datei ist,
+    // klickt bei jedem Durchlauf — und ein Kind hört sie zwanzigmal je Phase.
+    if (kind === "music" && typeof t.seamRatio === "number" && t.seamRatio > 1.5) {
+      rejected.push([t.take, `Naht-Verhaeltnis ${t.seamRatio} — die Schleife klickt bei jedem Durchlauf`]);
+      return false;
+    }
     return true;
   });
 

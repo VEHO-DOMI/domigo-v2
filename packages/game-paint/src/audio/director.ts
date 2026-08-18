@@ -262,8 +262,23 @@ export const createAudioDirector = (deps: DirectorDeps = {}): AudioDirector => {
     async decodeAfterCreate(phaseId: string): Promise<void> {
       if (!enabled) return;
       // Die Effekt-Bank als Ganzes — sie ist klein und wird überall gebraucht.
+      //
+      // Aber NICHT alle auf einmal: 69 gleichzeitige Anfragen sind auf einer
+      // Schulleitung ein Stoß, der genau in dem Augenblick kommt, in dem die
+      // Phase gerade fertig aufgebaut hat. Sechs auf einmal halten die Leitung
+      // beschäftigt, ohne sie zu verstopfen — und weil der Direktor still
+      // bleibt, solange eine Datei nicht decodiert ist, kostet ein später
+      // eintreffender Schritt-Klang höchstens diesen einen Schritt.
       const bank = playable.filter((s) => s.bus === "sfx").flatMap((s) => filesFor(s));
-      await Promise.all(bank.map(decode));
+      const queue = [...bank];
+      const worker = async (): Promise<void> => {
+        for (;;) {
+          const next = queue.shift();
+          if (next === undefined) return;
+          await decode(next);
+        }
+      };
+      await Promise.all(Array.from({ length: Math.min(6, queue.length) }, worker));
       // Von der Musik NUR die dieser Phase (Budget: decodiert ≤ 16 MB).
       const key = MUSIC_BY_PHASE[phaseId];
       if (key !== undefined) await decode(key);

@@ -325,7 +325,7 @@ Pipeline-Ergebnis, kein Prompt-Ergebnis:
 |---|---|---|---|
 | Lautheit | **−18 LUFS** ± 2 LU | **≥ 1 s: −16 LUFS** ± 2 LU · **< 1 s: −20 dBFS RMS** ± 2 dB | Musik liegt unter den Effekten, damit sie trägt statt zu decken. Zwei Instrumente, weil EBU R128 über 400-ms-Blöcke misst und ein 0,25-Sekunden-Schritt keinen einzigen hat — siehe unten |
 | True Peak | ≤ **−1 dBTP** | ≤ **−1 dBTP** | Kopfraum für den MP3-Decoder; sonst zerrt es genau auf billigen Lautsprechern |
-| Dauer | 45 s ± 1,5 s (Loops) | Familienfenster aus §2b ± 30 % | eine Fanfare von 4 s ist keine Fanfare mehr |
+| Dauer | Schleifen 15–60 s (gemessen, nicht bestellt) · Stinger ± 50 % | **Obergrenze** aus §2b, Untergrenze 40 ms | siehe unten |
 | Nicht-Blatt | RMS > −40 dBFS **und** Peak > −20 dBFS | dito | eine stille Datei ist der Fehler, den niemand hört |
 | `flat_factor` | 0 | 0 | ein digital abgeschnittenes Signal |
 | Stille-Schwanz | ≤ 80 ms | ≤ 80 ms | Schweigen am Ende ist Latenz, die man fühlt |
@@ -359,6 +359,19 @@ ist dort der Helligkeitsverlauf. Für die wörtliche Regel „no descending **pi
 tragen zwei andere Dinge die Last: die Negativliste in **jedem** Prompt (§2c) und **Kokis Ohr** an der
 Hörbank. Die Messung ist der Wächter, der eine ganze Klasse von Fehlern automatisch abfängt — sie ist
 nicht der Beweis, dass die Regel eingehalten ist.
+
+### Die Zielzeit eines Effekts ist eine OBERGRENZE, kein Sollwert
+
+„Ein Schritt dauert 0,25 s" heisst: er darf nicht **länger** sein. Gemessen ist ein echter
+Filz-Schritt rund **50 ms** Energie und danach nichts — und das ist besser, nicht schlechter.
+Die erste Fassung verlangte „Zielzeit ± 30 %" und machte damit ausgerechnet die knackigsten
+Aufnahmen rot. Nach unten schützt nur eine grosszügige Schwelle (40 ms) gegen eine Datei, in der
+nichts mehr steht; dass wirklich etwas drin ist, prüft ohnehin das Gesetz „kein stilles Blatt".
+
+Das Trimmen des Endes arbeitet deshalb **relativ zur Datei**: geschnitten wird, wo 60 dB unter der
+eigenen Spitze nichts mehr kommt. Eine absolute Schwelle misst dort die Lautstärke des Takes statt
+sein Ende (bei −50 dBFS schrumpfte ein leiser Schritt auf 49 ms), und eine zu enge relative Schwelle
+schneidet musikalische Ausklänge ab (bei −45 dB verlor eine Xylophon-Fanfare ihren Nachhall).
 
 ### Die Naht wird an der Datei selbst gemessen
 
