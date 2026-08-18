@@ -219,8 +219,13 @@ child returns to, and the four machine laws that police placement (`checkpoint-c
 `checkpoint-placement`, `checkpoint-footing`, `checkpoint-walk` in `packages/game-paint/src/level.ts`),
 including the ANTI-3/6-v2 rule that an anchor stands AFTER the difficulty it pays for, not
 before it. The painted sheets `krakel_a` and `krakel_active` are **not** dead art — they are the
-`C` glyph's own artwork (`artManifest.ts`), and they keep drawing; only the unused third sheet
-goes with the art round.
+`C` glyph's own artwork (`artManifest.ts#GLYPH_STEMS`), and every phase loads them; only the unused
+third sheet goes with the art round. **In ch01 nobody draws them** *(corrected 2026-08-18 by K5
+after D-305, measured at the code; was: "and they keep drawing")*: the whole `C` drawing branch
+hangs off `PaintScene#checkpointsDrawn`, which is `checkpointStyle !== "silent"` — and ch01
+declares `"silent"`. Loaded in every phase, drawn in none. They draw in a chapter that re-opens
+the ceremony with `checkpointStyle: "krakel"`, and only there. The same claim stood in the debt
+register at D-160 and is corrected there in the same round.
 
 Why the ceremony went: it interrupted the run to congratulate the child for surviving a jump,
 and it made a named character out of a save point — so the character owed the chapter a story
@@ -602,8 +607,58 @@ ch01–06 sheets are honored as pointers; where a dossier overrides them, it say
   books!") restore her motion round by round (§3.3).
 - **Ability:** none granted (arc amendment: the fist moves to ch02 — §4 ch02; doc 31 §4's
   ch01-mid fist grant is superseded).
+  > **★ Footnote 2026-08-18 (K5, ruling R141 — where the stale "ch01-mid" claim still lives).**
+  > The shipped chapter agrees with this line and so does the engine: `ch01.level.json` declares
+  > `"abilities": ["jump","run"]`, there is no `powerup` entity in the file, and
+  > `entities.ts` says it out loud — "opens a cage in a chapter with **no fist**". What is
+  > **not** yet corrected are four second-hand places that still promise the grant, and a
+  > session that reads one of them builds against a chapter that does not exist:
+  > **(1)** doc 31's ability-arc table — the row `| thrown fist | ch01 mid |` (its own §4
+  > amendment header already retires it, the table row did not follow);
+  > **(2)** `docs/design/g1/paint/AUDIO_SPINE_CH01.md` — the "Frei ab" cell reads
+  > "ch01-mid / ch02" for the four fist sounds (its reason column is right: the fist is never
+  > granted); **(3)** `docs/audio/prompts.ch01.json` — four `unlockedIn` fields
+  > ("ch01-mid/ch02 (Faust)" ×3, "ch01-mid (erstes powerup-Entity)" ×1);
+  > **(4)** docs 35/37/38, the replay records that describe "a cage the fist can open" — those
+  > are history and may stay, but they are where the phrase comes from.
+  > **This footnote documents the split; it does not decide it.** The open question is whether
+  > ch01 ever gets a mid-chapter grant back (then the level needs a `powerup` entity and the
+  > cage hint needs its verb) or whether the four places above are corrected to ch02 — and
+  > that is a level decision, taken in **B5**, not a canon-round edit. *(S1 filed it; the
+  > passover that ordered this round had it the other way round — "doc 44 says ch01-mid" —
+  > which is why the location list above is measured rather than repeated.)*
 - **Interlude:** opening — the fall into the book, alone; closing — Merle freed, the first
   OSWIN note (mischievous register).
+
+  > **★ Amendment 2026-08-18 (K5) — three facts of the built chapter that the plan did not
+  > carry yet.** All three are wave-5 decisions (rulings R134 · R135), measured at the level
+  > file and the laws, not estimated.
+  >
+  > **(a) The silent anchors have a SIDE, and it is per phase.** `checkpointSide` is
+  > mandatory wherever a `C` glyph stands, and ch01 declares **p1 `"near"` (c43) · p2 `"far"`
+  > (c58) · p3 `"near"` (c29)**. The chapter-wide "an anchor stands AFTER the difficulty"
+  > rule of §1.11 is therefore a *default*, not an absolute: p2 keeps the far side on purpose,
+  > because its ink basin is 31 columns wide and an anchor in front of it would make every
+  > late misstep repeat the whole moth run. p1 and p3 take the near side, because a child who
+  > has never crossed has never touched a far anchor — measured, that was a 41-column and a
+  > 26-column walk back **per attempt**. This closes Koki's open gate T8 (§1.11 "(1) Placement"
+  > is no longer open for ch01; the other chapters keep it open).
+  >
+  > **(b) ch01 has NO slopes, and that is intent.** The ramp glyphs (`/ \ 1 2 3 4`) occur
+  > **zero** times across all five surfaces — counted twice, independently (A6b, B4b). The
+  > reason it stays that way: ch01 is the chapter that teaches jump and ink, and a slope is a
+  > third floor grammar beside plate and ledge; slopes belong in a chapter that introduces
+  > them. The mass kit's two ramp orders are withdrawn (R109) and the ramp sheets are deleted
+  > (E6), so the intent is now enforced rather than assumed: `composition.test.ts` fails if a
+  > grid carries a slope glyph whose kit has no ramp sheets on disk. **D-304.**
+  >
+  > **(c) The Nachlese spacing is ≥ 4 columns, not ≥ 6.** The uniform design asks for ≥ 6
+  > between two pieces in the bonus room; the room is 44 columns wide, of which 42 are
+  > standable, and nine pieces at 6 apart need 49. The law holds the widest spacing the room
+  > actually carries (`level.ts#CLOTH_P9_MIN_SEPARATION` = 4); on the three floors the design
+  > figure stands unchanged (`level.ts#CLOTH_MIN_SEPARATION` = 6). Reported as a
+  > design-versus-geometry conflict rather than silently rounded away — the design sheet's own
+  > line is corrected by the uniform lane (G5), which owns it. **R134.**
 - **Engine/assets:** flying-guardian path lanes + arced projectiles (§3.2) · chalk shard
   hazard · fresh Tafel sheet (GUARDIAN rig, ≥8 states incl. flight cells) · chalk projectile
   cells (colors) · Merle reawakening poses (WALKER-class cells) · restaged `ch01.level.json`

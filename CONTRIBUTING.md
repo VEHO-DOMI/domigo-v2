@@ -112,7 +112,7 @@ git show origin/main:content/corpus/stories/g1.st.lost-pages/paint/ch01.level.js
 Das gilt für die Level-Dateien. `ch01.tasks.v2.json` endet dagegen **mit** einem
 Zeilenende — es ist keine Repo-weite JSON-Regel, sondern eine Eigenschaft dieser Dateien.
 
-## Zwei Regeln, die diese Codebasis teuer gelernt hat
+## Vier Regeln, die diese Codebasis teuer gelernt hat
 
 * **Eine Zahl, die sich nicht bewegt, wenn man ihre angebliche Ursache entfernt,
   misst etwas anderes.** Prüfe eine Hypothese, indem du die Ursache wegnimmst —
@@ -125,3 +125,10 @@ Zeilenende — es ist keine Repo-weite JSON-Regel, sondern eine Eigenschaft dies
   gesetzt werden müssen, gehören in die Merge-Tabelle, die der Mensch beim Klicken liest.
   Und wer eine Zahl für den Endstand einer Welle setzt — eine Decke, eine Erlaubnisliste,
   einen Zähler —, misst sie **nach** dem letzten Merge, nie parallel dazu.
+* **Ein Korrektur-Block im Rahmen schlägt einen VERBOTEN-Satz im Passover.** *(2026-08-18,
+  R142 — G4 hat es richtig gelesen, hier steht es schriftlich.)* Die Wellen-Rahmen tragen einen
+  Block „Korrekturen nach dem feindlichen Leser"; wo er eine Datei oder Zeile ausdrücklich einer
+  Bahn zuweist, gilt **er**, auch wenn die Verbotsliste desselben Passovers die Datei noch nennt.
+  Der Korrektur-Block ist am Code geprüft und jünger; die Verbotsliste ist eine Vorlage. Wer sich
+  darauf beruft, nennt die Stelle im PR-Text — eine Abweichung, die niemand liest, ist keine
+  deklarierte.
