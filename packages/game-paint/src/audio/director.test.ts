@@ -217,25 +217,76 @@ describe("Abspiel-Regeln", () => {
   });
 });
 
-describe("in S1 hat dieses Modul keinen Aufrufer", () => {
-  it("weder PaintScene noch PaintGame noch sonst eine Datei ausserhalb von audio/ importiert daraus", () => {
-    const offenders: string[] = [];
-    const walk = (dir: string): void => {
-      for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
-        const p = path.join(dir, e.name);
-        if (e.isDirectory()) {
-          if (e.name !== "audio" && e.name !== "node_modules") walk(p);
-          continue;
-        }
-        if (!/\.(ts|tsx)$/.test(e.name)) continue;
-        const src = fs.readFileSync(p, "utf8");
-        if (/from\s+["'][^"']*\/audio\/[^"']*["']/.test(src) || /from\s+["']\.\/audio["']/.test(src)) {
-          offenders.push(path.relative(PKG, p));
-        }
-      }
-    };
-    walk(PKG);
-    expect(offenders, `S1 verdrahtet nichts — S2 tut das. Gefunden in: ${offenders.join(", ")}`).toEqual([]);
+/**
+ * R5-W6 · S2 · HIER STAND DIE UMGEKEHRTE BEHAUPTUNG.
+ *
+ * S1 hat an dieser Stelle bewiesen, dass NIEMAND das Modul importiert — das war
+ * damals die Aussage des PRs („die Fabrik steht, das Spiel ist unverändert").
+ * Genau dieser Test ist beim ersten Lauf dieser Sitzung rot geworden, und das
+ * war er zu Recht: die Behauptung stimmt nicht mehr.
+ *
+ * Er wird nicht gelöscht, sondern UMGEDREHT. Ein Test, der eine Abwesenheit
+ * bewacht hat, wird zu einem, der die Anwesenheit bewacht — denn die neue
+ * Gefahr ist die Umkehrung der alten: nicht »jemand hat zu früh verdrahtet«,
+ * sondern »jemand hat beim Aufräumen eine der vier Anschlussstellen wieder
+ * herausgenommen, und das Kapitel ist still, ohne dass ein Tor es merkt«.
+ * Ein stummes Spiel sieht in keinem Diff und auf keinem Schirmbild anders aus.
+ */
+describe("die vier Anschlussstellen sind verdrahtet (S2)", () => {
+  // `PKG` ist der src-Ordner (siehe oben), die Pfade sind relativ dazu.
+  const read = (rel: string): string => fs.readFileSync(path.join(PKG, rel), "utf8");
+
+  it("der Trichter der Spiel-Logik hört mit — EINE Zeile für alle SimEvents", () => {
+    const src = read("PaintScene.ts");
+    expect(src, "PaintScene#handleSimEvents ruft den Direktor nicht mehr").toMatch(
+      /audio\?\.on\(\s*["']sim["']/,
+    );
+  });
+
+  it("die gefalteten EntityEvents hören mit (die eine Zeile in sim.ts)", () => {
+    expect(read("sim.ts"), "sim.ts reicht die EntityEvents nicht mehr durch").toMatch(
+      /onEntityAudio\?\.\(ev\)/,
+    );
+    expect(read("PaintScene.ts"), "PaintScene klemmt den Durchreicher nicht an").toMatch(
+      /onEntityAudio:\s*\(ev\)\s*=>/,
+    );
+  });
+
+  it("der Szenen-Takt trägt Schritt, Landung, Sprung und Rutsche", () => {
+    const src = read("PaintScene.ts");
+    for (const [what, re] of [
+      ["Schritt", /audio\?\.footstep\(/],
+      ["Landung", /audio\?\.land\(/],
+      ["Sprung", /audio\?\.on\(\s*["']player["']\s*,\s*["']jumped["']/],
+      ["Rutsche", /audio\?\.cue\(\s*["']slide["']/],
+    ] as const) {
+      expect(src, `${what} klingt nicht mehr`).toMatch(re);
+    }
+  });
+
+  it("die Bank wird NACH create() geholt, nie im preload", () => {
+    const src = read("PaintScene.ts");
+    expect(src, "decodeAfterCreate fehlt").toMatch(/audio\?\.decodeAfterCreate\(/);
+    // Der Loader hält das erste Bild an. Eine Klang-Bank im `preload` wäre ein
+    // Kapitel, das später anfängt, damit ein Schritt klingen kann.
+    const preload = /preload\(\)\s*:\s*void\s*\{[\s\S]*?\n  \}/.exec(src)?.[0] ?? "";
+    expect(preload, "die Klang-Bank steht im preload").not.toMatch(/audio|decodeAfterCreate/);
+  });
+
+  it("die Hülle baut genau EINEN Direktor und gibt ihn wieder frei", () => {
+    const src = read("PaintGame.tsx");
+    expect((src.match(/createAudioDirector\(/g) ?? []).length, "mehr als ein Direktor").toBe(1);
+    expect(src, "der Direktor wird nie freigegeben").toMatch(/director\.dispose\(\)/);
+    expect(src, "der geteilte Kontext fehlt in der Phaser-Konfiguration").toMatch(/audio:\s*\{\s*context:\s*audioCtx\s*\}/);
+    // Der Direktor darf NICHT in der Szene gebaut werden: sie stirbt bei jedem
+    // Raumwechsel, und mit ihr die decodierte Bank (siehe PaintSceneCfg#audio).
+    expect(read("PaintScene.ts"), "die Szene baut sich einen eigenen Direktor").not.toMatch(/createAudioDirector\(/);
+  });
+
+  it("die Musik wartet auf das Entsperren — sonst ist sie für immer weg", () => {
+    const src = read("PaintGame.tsx");
+    expect(src, "niemand hört auf Phasers UNLOCKED").toMatch(/Sound\.Events\.UNLOCKED/);
+    expect(src, "die Musik startet ungeprüft in einen gesperrten Kontext").toMatch(/game\.sound\.locked/);
   });
 
   it("die Bank ist klein genug, um als Ganzes zu leben, die Musik nicht", () => {

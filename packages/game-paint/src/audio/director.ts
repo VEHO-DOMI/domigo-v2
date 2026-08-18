@@ -1,10 +1,13 @@
 /**
- * R5 · S1 · DER KLANG-DIREKTOR — ein Modul, das in dieser Runde niemand aufruft.
+ * R5 · S1/S2 · DER KLANG-DIREKTOR.
  *
- * S1 baut die Fabrik und das Modul; **S2 verdrahtet es** (nach Welle 5). Dieser
- * PR ändert das Spielverhalten deshalb nicht, und das ist beweisbar: weder
- * `PaintScene` noch `PaintGame` importieren irgendetwas von hier, und
- * `pnpm check:bundle` liefert dieselbe Zahl wie vorher.
+ * S1 hat die Fabrik gebaut und bewusst niemanden angeklemmt; **S2 (R5-W6) hat
+ * sie verdrahtet**. Vier Anschlussstellen führen herein — der SimEvent-Trichter
+ * in `PaintScene#handleSimEvents`, der Durchreicher für die gefalteten
+ * EntityEvents in `sim.ts#onEntityEvent`, der Szenen-Takt in
+ * `PaintScene#footwork` und die React-Hülle in `PaintGame.tsx`. Dass alle vier
+ * noch angeklemmt sind, hält `director.test.ts` fest: ein stummes Spiel sieht
+ * in keinem Diff anders aus als ein klingendes.
  *
  * ── Warum eine eigene schmale Schnittstelle statt eines Phaser-Imports ──────
  * Der Direktor sitzt auf Phasers `WebAudioSoundManager` auf, kennt ihn aber nur
@@ -32,9 +35,10 @@
 import {
   BUSES, ENTITY_REACTIONS, MUSIC_BY_PHASE, PLAYER_REACTIONS, SIM_REACTIONS,
   STEMS, TOAST_MATCHES, audioUrl, filesOf, isPlay, isReserved, isSilent, stemSpec,
-  type Reaction, type StemSpec,
+  type CueStem, type Reaction, type StemSpec, type Surface,
 } from "./audioManifest.ts";
 import { AUDIO_FILES } from "./audioFiles.ts";
+import { AUDIO_DECODED_MB, decodedBytes } from "./audioBudget.ts";
 import { AUDIO_DEFAULTS, readAudioSettings, writeAudioSettings, type AudioSettings } from "./settings.ts";
 
 // ── Die Schnittstelle zur Tonmaschine ────────────────────────────────────────
@@ -150,6 +154,28 @@ export const mapEvent = (
 
 const DUCKING_FAMILIES = new Set(["positive"]);
 
+/**
+ * R5 · S2 · Was gerade im Speicher liegt — für die Perf-Zeile (`?perf=1`).
+ *
+ * Die decodierte Spitze ist die eine Audio-Zahl, die ein Tor NICHT erzwingen
+ * kann: `check-audio.mjs` rechnet sie deterministisch aus den Dauern der
+ * Dateien, die das Manifest verspricht, aber ob zur LAUFZEIT wirklich nur eine
+ * Phase gleichzeitig im Speicher steht, sieht man erst am laufenden Spiel.
+ * Genau dafür steht sie in der Lehrer-Zeile — gegen `AUDIO_DECODED_MB`
+ * gerechnet, damit die Zahl ohne Nachschlagen lesbar ist.
+ */
+export interface AudioReport {
+  readonly enabled: boolean;
+  /** decodierte Dateien im Speicher */
+  readonly filesLoaded: number;
+  /** ihre Summe in MB, nach derselben Formel wie `audioBudget.decodedBytes` */
+  readonly decodedMb: number;
+  /** die Decke, gegen die sie zu lesen ist */
+  readonly decodedLimitMb: number;
+  /** welches Musikstück gerade läuft (Datei-Name), oder `null` */
+  readonly music: string | null;
+}
+
 export interface AudioDirector {
   /** false, solange es keine Tonmaschine oder keine Dateien gibt */
   readonly enabled: boolean;
@@ -158,7 +184,15 @@ export interface AudioDirector {
   /** ein Ereignis aus einer der drei Unionen */
   on(union: EventUnion, event: string, payload?: Readonly<Record<string, unknown>>): void;
   /** der Schritt-Takt: der Untergrund kommt aus der Phase, die Wucht aus dem Fall */
-  footstep(surface: "paper" | "garden" | "board", speed01?: number): void;
+  footstep(surface: Surface, speed01?: number): void;
+  /**
+   * Ein Klang, der an keinem Ereignis hängt (AUDIO_SPINE §2, `scene`/`shell`).
+   *
+   * `stage` wählt bei den gestuften Klängen die Variante statt der Rotation:
+   * `solve-ok` hat drei Stufen (nah · teilweise · richtig), `merle-round` drei
+   * über ihre sechs Runden. Ohne `stage` gilt die normale Rotation.
+   */
+  cue(stem: CueStem, stage?: number): void;
   /** die Landung, nach derselben Schwelle wie der Kreidestaub */
   land(hard: boolean): void;
   /** die Musik einer Phase, des Auftakts oder der Bilanz */
@@ -167,7 +201,9 @@ export interface AudioDirector {
   setMusic(v: boolean): void;
   setSfx(v: boolean): void;
   readonly settings: AudioSettings;
-  /** alles anhalten und freigeben (Szenen-Ende) */
+  /** was gerade decodiert im Speicher liegt (Lehrer-Zeile `?perf=1`) */
+  report(): AudioReport;
+  /** alles anhalten und freigeben (Ende des Spiels, nicht der Szene) */
   dispose(): void;
 }
 
@@ -256,6 +292,27 @@ export const createAudioDirector = (deps: DirectorDeps = {}): AudioDirector => {
     }
   };
 
+  /**
+   * Eine BESTIMMTE Stufe eines Stems, statt der Rotation.
+   *
+   * Drei Klänge sind gestuft statt variiert: `letter-take` steigt mit der Zahl
+   * der Buchstaben, `solve-ok` mit der Güte der Antwort, `merle-round` mit der
+   * Runde. Bei ihnen wäre die Rotation nicht nur egal, sondern falsch — sie
+   * würde die Stufe verwürfeln, die das Kind hören soll. Über die höchste Stufe
+   * hinaus bleibt es bei der höchsten (die siebte Runde klingt wie die sechste,
+   * statt wieder von vorn anzufangen).
+   */
+  const playStage = (stem: string, stage: number): void => {
+    if (!enabled || host === null) return;
+    if (settings.muted || !settings.sfx) return;
+    const spec = stemSpec(stem);
+    if (spec === undefined) return;
+    const files = filesFor(spec);
+    const file = files[Math.min(files.length - 1, Math.max(0, Math.floor(stage)))];
+    if (file === undefined || !loaded.has(file)) return;
+    try { host.add(file, { volume: BUSES.sfx }).play(); } catch { /* siehe playStem */ }
+  };
+
   return {
     enabled,
 
@@ -289,19 +346,19 @@ export const createAudioDirector = (deps: DirectorDeps = {}): AudioDirector => {
       if (stem === null) return;
       if (stem === "letter-take") {
         // drei Stufen, die Stufe steigt mit `got` — die Rotation gilt hier NICHT
-        const got = Number(payload.got ?? 1);
-        const files = filesFor(stemSpec(stem) as StemSpec);
-        const file = files[Math.min(files.length - 1, Math.max(0, got - 1))];
-        if (file !== undefined && loaded.has(file) && host !== null && !settings.muted && settings.sfx) {
-          try { host.add(file, { volume: BUSES.sfx }).play(); } catch { /* siehe oben */ }
-        }
+        playStage(stem, Number(payload.got ?? 1) - 1);
         return;
       }
       playStem(stem);
     },
 
-    footstep(surface: "paper" | "garden" | "board", speed01 = 1): void {
+    footstep(surface: Surface, speed01 = 1): void {
       playStem(`step-${surface}`, 0.35 + 0.65 * Math.min(1, Math.max(0, speed01)));
+    },
+
+    cue(stem: CueStem, stage?: number): void {
+      if (stage === undefined) { playStem(stem); return; }
+      playStage(stem, stage);
     },
 
     land(hard: boolean): void {
@@ -362,6 +419,21 @@ export const createAudioDirector = (deps: DirectorDeps = {}): AudioDirector => {
 
     get settings(): AudioSettings {
       return settings;
+    },
+
+    report(): AudioReport {
+      let bytes = 0;
+      for (const file of loaded) {
+        const info = AUDIO_FILES[file];
+        if (info !== undefined) bytes += decodedBytes(info.durationSec);
+      }
+      return {
+        enabled,
+        filesLoaded: loaded.size,
+        decodedMb: Math.round((bytes / (1024 * 1024)) * 100) / 100,
+        decodedLimitMb: AUDIO_DECODED_MB,
+        music: currentMusic?.key ?? null,
+      };
     },
 
     dispose(): void {

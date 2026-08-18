@@ -225,6 +225,25 @@ export interface SimCfg {
    *  Two names for one fact is how two ledgers drift apart.
    *  Same contract as freedCageIds. */
   resolvedEntityIds?: () => readonly string[];
+  /**
+   * R5-W6 · S2 · DIE EINE ZEILE, DIE DER KLANG IN `sim.ts` BRAUCHT (deklarierte
+   * Ausnahme zur Eigentums-Karte der Welle 6 — `sim.ts` hat in dieser Welle
+   * keinen anderen Eigentümer, und der Kanon nennt genau diese Stelle).
+   *
+   * Warum sie hier stehen MUSS: `onEntityEvent` FALTET die 16 EntityEvents in
+   * den SimEvent-Strom. `cageBurst` wird zu gar keinem SimEvent (nur zu einer
+   * Karte), `cageGated`/`shooed` werden zu einem Toast, `encounter` zu einer
+   * Frage — oben sind sie als Klang-Auslöser nicht mehr unterscheidbar. Vier
+   * fertige Klänge (Käfig berstet · verschlossener Käfig · Anstossen · Husch)
+   * hätten ohne diesen Durchreicher keinen einzigen Auslöser
+   * (`docs/design/g1/paint/AUDIO_SPINE_CH01.md` §2, Anschlussstelle `entity`).
+   *
+   * Der Sim bleibt rein: ein Zuhörer ohne Rückgabewert, der nichts liest und
+   * nichts setzt. Er läuft nach der Determinismus-Doktrin ausserhalb des
+   * Zustands — ein aufgezeichnetes Band spielt identisch, ob er gesetzt ist
+   * oder nicht (`proof-tapes.test.ts` beweist es: sie fahren ohne ihn).
+   */
+  onEntityAudio?: (ev: EntityEvent) => void;
   /** PB-F2: which jump-feel candidate to run (dev only; ships as `current`). */
   airModel?: AirModel;
   /** R5-A2 · the Kleckskammer round-trip, part 1: spawn HERE instead of at the
@@ -1015,6 +1034,7 @@ export class Sim {
   }
 
   private onEntityEvent(ev: EntityEvent, events: SimEvent[]): void {
+    this.cfg.onEntityAudio?.(ev); // R5-W6 · S2: siehe SimCfg#onEntityAudio
     switch (ev.type) {
       case "encounter": {
         const src = this.world.entities.find((e) => e.id === ev.id);

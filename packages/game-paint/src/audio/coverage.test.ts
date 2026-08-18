@@ -21,7 +21,8 @@ import fs from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
 import {
-  ENTITY_REACTIONS, PLAYER_REACTIONS, SIM_REACTIONS, STEMS, TOAST_MATCHES,
+  CUE_STEMS, ENTITY_REACTIONS, MUSIC_BY_PHASE, PLAYER_REACTIONS, SIM_REACTIONS,
+  STEMS, SURFACE_BY_PHASE, TOAST_MATCHES,
   allReactions, isPlay, isReserved, isSilent,
 } from "./audioManifest.ts";
 
@@ -101,25 +102,104 @@ describe("Abdeckung: jede Ereignis-Art des Spiels hat genau einen Zustand", () =
     const viaEvent = new Set(allReactions().filter((r) => isPlay(r.reaction)).map((r) => (r.reaction as { play: string }).play));
     const viaToast = new Set(TOAST_MATCHES.map((m) => m.stem));
 
+    // ── R5-W6 · S2 · AUS EINER ABSICHT WIRD EIN NACHWEIS ────────────────────
+    // In S1 galten `tap === "scene"` und `tap === "shell"` als erreichbar, weil
+    // dort STAND, dass S2 sie anklemmen würde. Das war für S1 richtig und ist
+    // jetzt zu wenig: eine Anschlussstelle im Manifest ist eine Absicht, und
+    // eine Absicht kann man nicht hören. Erreichbar heisst ab hier: der Stem
+    // steht in einer Ereignis-Tabelle, in einer Toast-Klasse, in `MUSIC_BY_PHASE`,
+    // in der Cue-Union `CUE_STEMS` — oder er ist ein Schritt, den `footstep()`
+    // aus dem Untergrund der Phase zusammensetzt.
+    const viaCue = new Set<string>(CUE_STEMS);
+    const viaSurface = new Set(Object.values(SURFACE_BY_PHASE).map((sf) => `step-${sf}`));
+
+    /**
+     * Die eine benannte Ausnahme (Stand 18.08.2026).
+     *
+     * `solve-thud` — der weiche Ton auf eine falsche Antwort — hängt an der
+     * BEWERTUNG, und die liegt seit R5-W3 in `cards/` (die Karten-Maschinen
+     * rufen `resolveCorrect` erst, wenn es richtig war; das Danebenliegen sieht
+     * die Hülle nie). `cards/**` gehört S2 in Welle 6 nicht, deshalb bleibt der
+     * Klang diese Runde stumm — als Befund im Report, nicht als Versehen.
+     *
+     * Sie steht NAMENTLICH hier und nicht als pauschales `tap === "shell"`:
+     * eine Ausnahme, die eine ganze Klasse durchlässt, hätte auch `card-close`,
+     * `page-turn`, `solve-ok` und Merles Runde durchgelassen — und genau die
+     * vier verdrahtet diese Runde. Wer den Klang später anklemmt, streicht die
+     * Zeile und der Test hält ihn beim Wort.
+     */
+    const DECLARED_SILENT: Readonly<Record<string, string>> = {
+      "solve-thud": "die Bewertung liegt in cards/** — S2 darf dort nicht hin (Befund im S2-Report)",
+    };
+
     const route = (s: (typeof STEMS)[number]): string | null => {
       if (viaEvent.has(s.stem)) return "Ereignis";
       if (viaToast.has(s.stem)) return "Toast-Klasse";
       if (s.bus === "music") return "Phasenwechsel";
-      // `scene` = eine Flanke im Spieler-Zustand pro Takt (Schritt, Rutschen) —
-      // das sind Zustände, keine Ereignisse, und stehen deshalb in keiner Union.
-      if (s.tap === "scene") return "Szenen-Takt";
-      if (s.tap === "shell") return "React-Hülle";
+      if (viaSurface.has(s.stem)) return "Schritt-Takt";
+      if (viaCue.has(s.stem)) return "Cue aus Szene oder Hülle";
       return null;
     };
 
-    const orphans = STEMS.filter((s) => route(s) === null).map((s) => s.stem);
+    const orphans = STEMS.filter((s) => route(s) === null && DECLARED_SILENT[s.stem] === undefined).map((s) => s.stem);
     expect(orphans, `Stems, die niemand auslöst: ${orphans.join(", ")}`).toEqual([]);
 
     // …und die Gegenrichtung: jeder Weg wird von mindestens einem Stem benutzt.
-    // Ein Weg ohne Stem wäre eine Verdrahtung, die S2 umsonst baut.
+    // Ein Weg ohne Stem wäre eine Verdrahtung, die umsonst gebaut wurde.
     const used = new Set(STEMS.map(route));
-    for (const r of ["Ereignis", "Toast-Klasse", "Phasenwechsel", "Szenen-Takt", "React-Hülle"]) {
+    for (const r of ["Ereignis", "Toast-Klasse", "Phasenwechsel", "Schritt-Takt", "Cue aus Szene oder Hülle"]) {
       expect(used.has(r), `kein einziger Stem benutzt den Weg »${r}«`).toBe(true);
     }
+
+    // Und die Ausnahmen altern nicht still: eine, die inzwischen doch klingt,
+    // muss aus der Liste — sonst wächst sie zur Folklore.
+    for (const [stem, why] of Object.entries(DECLARED_SILENT)) {
+      expect(STEMS.some((s) => s.stem === stem), `${stem} gibt es gar nicht mehr`).toBe(true);
+      expect(route(STEMS.find((s) => s.stem === stem)!), `${stem} ist verdrahtet — Ausnahme streichen (${why})`).toBeNull();
+    }
+  });
+});
+
+/**
+ * R5-W6 · S2 · JEDER RAUM DES KAPITELS HAT EINEN BODEN UND EIN STÜCK MUSIK.
+ *
+ * Die zwei Tabellen im Manifest sind nach Phasen-Kennung geschlüsselt, und eine
+ * Phase, die dort fehlt, fällt still auf `paper` zurück bzw. bekommt gar keine
+ * Musik. Beides sieht in keinem Diff anders aus — man hört es erst im Raum, und
+ * zwar nur, wenn man in genau diesen Raum geht. Also fragt der Test das LEVEL,
+ * nicht die Tabelle: die Wahrheit über die Räume steht in `ch01.level.json`.
+ */
+describe("die Räume des Kapitels ↔ die Tabellen des Manifests", () => {
+  const LEVEL = path.resolve(PKG, "../../../content/corpus/stories/g1.st.lost-pages/paint/ch01.level.json");
+  const level = JSON.parse(fs.readFileSync(LEVEL, "utf8")) as {
+    phases: { id: string }[]; arena?: { id: string }; bonus?: { id: string };
+  };
+  const rooms = [
+    ...level.phases.map((p) => p.id),
+    ...(level.arena ? [level.arena.id] : []),
+    ...(level.bonus ? [level.bonus.id] : []),
+  ];
+
+  it("es gibt überhaupt Räume (sonst prüft der Rest nichts)", () => {
+    expect(rooms.length).toBeGreaterThanOrEqual(5);
+  });
+
+  it("jeder Raum nennt seinen Untergrund", () => {
+    const missing = rooms.filter((id) => SURFACE_BY_PHASE[id] === undefined);
+    expect(missing, `Räume ohne Untergrund (die Schritte klängen dort nach Papier): ${missing.join(", ")}`).toEqual([]);
+  });
+
+  it("jeder Raum nennt sein Musikstück, und das Stück gibt es", () => {
+    const missing = rooms.filter((id) => MUSIC_BY_PHASE[id] === undefined);
+    expect(missing, `Räume ohne Musik: ${missing.join(", ")}`).toEqual([]);
+    for (const id of rooms) {
+      const key = MUSIC_BY_PHASE[id] as string;
+      expect(STEMS.some((s) => s.stem === key && s.bus === "music"), `${id} verweist auf ${key}, das es nicht als Musik gibt`).toBe(true);
+    }
+  });
+
+  it("keine Tabelle nennt einen Raum, den es nicht gibt", () => {
+    const ghosts = [...Object.keys(SURFACE_BY_PHASE), ...Object.keys(MUSIC_BY_PHASE)].filter((id) => !rooms.includes(id));
+    expect([...new Set(ghosts)], "Einträge für Räume, die das Level nicht kennt").toEqual([]);
   });
 });

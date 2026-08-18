@@ -9,6 +9,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import Phaser from "phaser";
 import { bindTypingGuard } from "@domigo/game-feel/typing-guard";
+import {
+  type AudioDirector, type AudioSettings, type CueStem, type SoundHost,
+  createAudioDirector, createSharedContext, readAudioSettings, setFeelSound,
+} from "./audio/index.ts";
 import { PaintScene, type TaskRequest } from "./PaintScene.ts";
 import type { TipPayload } from "./sim.ts";
 import { Merkseite, RuleFound, RuleRead } from "./cards/RulePage.tsx";
@@ -328,6 +332,25 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
   const gameRef = useRef<Phaser.Game | null>(null);
   const sceneRef = useRef<PaintScene | null>(null);
   const padRef = useRef<Pad>({ ...IDLE_PAD });
+  // ── R5-W6 · S2 · DER KLANG ────────────────────────────────────────────────
+  // Der Direktor wohnt HIER und nicht in der Szene, weil die Szene bei jedem
+  // Raumwechsel wirklich zerstört wird (`handoff` unten: `scene.stop` +
+  // `scene.remove`). Ein Direktor je Szene würde 69 Effekt-Dateien je Raum neu
+  // decodieren, die Musik abwürgen und die Ratenlimits vergessen — und der
+  // Stumm-Knopf in dieser Leiste hätte niemanden zum Anfassen.
+  const directorRef = useRef<AudioDirector | null>(null);
+  const audioCtxRef = useRef<AudioContext | null>(null);
+  /** welche Musik gerade gelten SOLL — eine Phasen-Kennung oder `music-title` */
+  const musicWantRef = useRef<string>("music-title");
+  /** die Musik anwerfen, sobald die Tonmaschine offen ist (im Effekt gesetzt,
+   *  von den Karten-Takten ausserhalb gerufen) */
+  const applyMusicRef = useRef<(() => void) | null>(null);
+  /** ein Klang aus der Hülle — Karte zu, Seite geblättert, richtig, Merles Runde */
+  const cue = (stem: CueStem, stage?: number): void => directorRef.current?.cue(stem, stage);
+  /** R5-W6 · S2 · was der Lautsprecher gerade zeigt. Aus dem Speicher gelesen,
+   *  nicht geraten — ein Tablet, das gestern still gestellt wurde, bleibt still
+   *  (R124: an, leise, mit sichtbarem Knopf). */
+  const [tone, setTone] = useState<AudioSettings>(() => readAudioSettings());
   const firstPhase = startPhase ?? level.phases[0]?.id ?? "p1";
   const [phaseId, setPhaseId] = useState(firstPhase);
   /** R5-W3 · E5: a phase is being built — the loading card is up (see afterPaint). */
@@ -549,6 +572,14 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
 
   /** Beat 3 is over: close, and hand on whatever the change raised. */
   const resolveCorrect = (o: OverlayState, written = ""): void => {
+    // R5-W6 · S2 · „richtig!" — die einzige Stelle, an der die Hülle eine
+    // richtige Antwort SIEHT (die Bewertung selbst liegt in `cards/`, und dort
+    // darf diese Runde nicht hin; deshalb bleibt der weiche „daneben"-Ton
+    // `solve-thud` diese Runde stumm — im Report als Befund).
+    // Die Stufe kommt aus den Versuchen: beim ersten Treffer die volle Fanfare,
+    // danach die ruhigeren — ein Kind, das dreimal gebraucht hat, soll nicht
+    // lauter gefeiert werden als eines, das es sofort konnte.
+    cue("solve-ok", Math.max(0, 2 - Math.min(2, o.attempts)));
     // idempotent — a path that skipped the beat still changes the world. The
     // paths that come straight here (reduced motion, the dev harness) never saw
     // the child type, so the answer key stands in for their word: it is the only
@@ -565,6 +596,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
   };
 
   const dismissCard = (o: OverlayState): void => {
+    cue("card-close"); // R5-W6 · S2: jede Art, eine Karte wegzulegen
     // PK-R6 · C · the anti-softlock law (PB-T1) applied to the new beat: a hold
     // that never ends would queue every future card forever, so ANY way out of
     // a card clears it. („Später" cannot fire mid-hold — the card is doffed and
@@ -611,6 +643,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
     }
     const auftakt = auftaktExit(o.card, auftaktChain(auftaktCountsFor(level)));
     if (auftakt.next !== null) {
+      cue("page-turn"); // R5-W6 · S2: der Auftakt blättert
       setOverlay({ ...o, card: auftakt.next });
       return;
     }
@@ -618,7 +651,17 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
     // the world fades up when the DOOR closes behind the opening, not when its
     // first page turns. Three beats in front of a still-black world is a bug
     // that looks like a design.
-    if (auftakt.boot) { setBooted(true); onOpeningRead?.(); }
+    if (auftakt.boot) {
+      setBooted(true);
+      onOpeningRead?.();
+      // R5-W6 · S2 · der letzte Takt des Auftakts ist die eine Geste, von der
+      // wir sicher wissen, dass es sie gab: der Kontext darf jetzt aufwachen,
+      // und die Titelmusik macht der Raum-Musik Platz. Für den Rückkehrer, der
+      // diesen Knopf nie sieht, erledigt Phasers Body-Entsperrer dasselbe.
+      void audioCtxRef.current?.resume().catch(() => { /* schon wach */ });
+      musicWantRef.current = phaseId;
+      applyMusicRef.current?.();
+    }
     // M-B beat 2 → beat 3: the score page taps forward to the door out. Both
     // live inside the canvas, so the chapter never ends off screen.
     if (o.card === "score") {
@@ -650,6 +693,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
   const backCard = (o: OverlayState): void => {
     const prev = auftaktStep(o.card, -1, auftaktChain(auftaktCountsFor(level)));
     if (prev === null) return;
+    cue("page-turn"); // R5-W6 · S2: derselbe Klang rückwärts — es ist dieselbe Seite
     setOverlay({ ...o, card: prev });
   };
 
@@ -689,8 +733,18 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
       window.history.replaceState(null, "", url.pathname + (url.search || "") + url.hash);
     }
 
+    // R5-W6 · S2 · DER EINE AudioContext.
+    //
+    // Er wird HIER gebaut und Phaser gereicht, statt Phaser sich einen bauen zu
+    // lassen: so gibt es genau einen (R130), der Direktor kann ihn wecken, und
+    // die Lehrer-Zeile kann seine Abtastrate nennen. Gibt es keinen (Server,
+    // Test), fehlt das Feld einfach und Phaser verhält sich wie bisher.
+    const audioCtx = createSharedContext();
+    audioCtxRef.current = audioCtx;
+
     const game = new Phaser.Game({
       type: Phaser.AUTO,
+      ...(audioCtx !== null ? { audio: { context: audioCtx } } : {}),
       parent: host,
       width: LOGICAL_W * RENDER_SCALE,
       height: LOGICAL_H * RENDER_SCALE,
@@ -749,6 +803,40 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
       scale: { mode: Phaser.Scale.FIT, autoCenter: Phaser.Scale.CENTER_BOTH },
     });
     gameRef.current = game;
+
+    // ── R5-W6 · S2 · DEN DIREKTOR ANKLEMMEN ─────────────────────────────────
+    // `game.sound` ist SPIELWEIT, nicht szenenweit — decodierte Puffer, Master-
+    // Bus und Stummschaltung überleben den Raumwechsel, und deshalb tut es der
+    // Direktor auch. `decodeAudio` gibt es nur auf Phasers WebAudio-Weg; fällt
+    // Phaser auf HTML-Audio oder gar nichts zurück, bekommt der Direktor keine
+    // Tonmaschine und ist still statt kaputt (sein `enabled` ist dann false).
+    const soundHost = game.sound as unknown as SoundHost;
+    const director = createAudioDirector({
+      sound: typeof (game.sound as { decodeAudio?: unknown }).decodeAudio === "function" ? soundHost : null,
+    });
+    directorRef.current = director;
+
+    // ── Warum die Musik am ENTSPERREN hängt und nicht nur am Auftakt-Knopf ──
+    // Am Phaser-Quelltext geprüft (3.90, `WebAudioSoundManager`): ein Klang, der
+    // startet, solange der Kontext `suspended` ist, wird NICHT in eine
+    // Warteschlange gelegt — er läuft in der Kontext-Zeit ab und ist verloren.
+    // `music()` merkt sich aber, dass es dieses Stück schon spielt, und ein
+    // zweiter Aufruf mit demselben Stück kehrt sofort zurück. Wer also vor der
+    // ersten Berührung Musik startet, hat für immer Stille.
+    //
+    // Deshalb: die gewünschte Musik wird gemerkt, aber erst gespielt, wenn die
+    // Tonmaschine offen ist. Das deckt BEIDE Wege ab — das Kind, das den Auftakt
+    // wegtippt, und den Rückkehrer (`openingSeen`), der gar keinen Auftakt sieht
+    // und dessen erste Berührung Phasers eigener Body-Entsperrer abfängt.
+    const applyMusic = (): void => {
+      if (game.sound.locked) return;
+      void director.music(musicWantRef.current).catch(() => { /* eine fehlende Datei macht das Spiel leiser, nicht kaputt */ });
+    };
+    musicWantRef.current = openingSeen === true ? firstPhase : "music-title";
+    applyMusicRef.current = applyMusic;
+    game.sound.once(Phaser.Sound.Events.UNLOCKED, applyMusic);
+    applyMusic(); // falls der Kontext schon offen ist (zweiter Aufruf im selben Tab)
+
     // THE TYPING-MODE LAW (shared, game-feel): while a task card's input has
     // focus, Phaser's window-level key capture is released so W/A/S/D/SPACE
     // reach the field instead of steering the hero (the "school book" softlock)
@@ -789,10 +877,20 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
             void probe.firstFrame(2200).then((r) => {
               const ms = (v: number | null): string => (v === null ? "?" : v.toFixed(1));
               const w = r.warmed as { done?: number; queued?: number; pipelines?: boolean } | null;
+              // R5-W6 · S2 · die Klang-Zeile. Die decodierte Spitze ist die eine
+              // Audio-Zahl, die kein Tor erzwingen kann: `check-audio.mjs`
+              // rechnet sie deterministisch aus den Dauern, aber ob zur LAUFZEIT
+              // wirklich nur EINE Phase gleichzeitig im Speicher steht, sieht man
+              // erst hier. Sie steht neben ihrer Decke, damit die Zahl ohne
+              // Nachschlagen lesbar ist; „—" heisst, dass es keinen Ton gibt
+              // (kein WebAudio, keine Dateien) — auch das ist Information.
+              const a = directorRef.current?.report() ?? null;
+              const rate = audioCtxRef.current?.sampleRate;
               setStartLine(
                 `${r.phase}  laden ${ms(r.loadMs)} ms (${r.filesQueued} Bilder)  ·  aufbau ${ms(r.createMs)} ms\n` +
                   `ERSTES BILD  GPU ${ms(r.firstGpuMs)} ms  ·  danach ${ms(r.settledGpuMs)} ms  ·  ${r.firstDrawCalls ?? "?"} Zeichenaufrufe\n` +
-                  `vorgewärmt ${w?.done ?? "—"} (offen ${w?.queued ?? "—"}, Shader ${w?.pipelines === true ? "ja" : "nein"})`,
+                  `vorgewärmt ${w?.done ?? "—"} (offen ${w?.queued ?? "—"}, Shader ${w?.pipelines === true ? "ja" : "nein"})\n` +
+                  `TON  ${a?.enabled === true ? `${rate === undefined ? "?" : Math.round(rate / 1000)} kHz  ·  ${a.decodedMb.toFixed(2)} von ${a.decodedLimitMb} MB decodiert  ·  ${a.filesLoaded} Dateien  ·  Musik ${a.music ?? "—"}` : "—"}`,
               );
             });
           }, 5000);
@@ -825,6 +923,9 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
         phaseId: pid,
         art,
         pad: padRef.current,
+        // R5-W6 · S2: gereicht, nicht gebaut — er überlebt diesen Raum (siehe
+        // PaintSceneCfg#audio).
+        audio: director,
         reducedMotion,
         grantedAbilities: () => abilitiesRef.current,
         freedCageIds: () => freedRef.current,
@@ -929,6 +1030,10 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
                 sceneRef.current?.setActingPose(ctx.id, round.stimulus.art);
               }
               sceneRef.current?.contactSpark(ctx.id);
+              // R5-W6 · S2 · Merles Runde steigt: drei Stufen über ihre sechs
+              // Runden, je zwei Runden eine Stufe (AUDIO_SPINE §2b). Der Klang
+              // sagt damit dasselbe wie das Bild — sie kommt zurück.
+              cue("merle-round", Math.floor((ctx.round - 1) / 2));
               openCard({
                 req, item: round, card: "task", attempts: 0, typed: "", align,
                 wash: sceneRef.current?.washOf(ctx.id) ?? 0,
@@ -1038,6 +1143,12 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
       const name = phase?.nameDe ?? pid;
       setPhaseName(name);
       setPhaseId(pid);
+      // R5-W6 · S2 · MUSIK JE RAUM. Der Direktor gibt das vorige Stück frei,
+      // bevor er das neue holt (sonst stünden zwei decodierte Stücke im Heap und
+      // das 16-MB-Budget wäre Makulatur). Das Versprechen wird NICHT abgewartet
+      // (R149) — ein Raumwechsel, der auf eine MP3 wartet, ist ein Ruckler.
+      musicWantRef.current = pid;
+      applyMusic();
       // R5-W3 · E5 · THE CARD MUST BE ON SCREEN BEFORE THE BUILD STARTS.
       // Building a phase blocks the main thread for 127-448 ms (measured per
       // step, 2026-08-14) and nothing can be painted while it does — so adding
@@ -1093,6 +1204,10 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
           // belonged anyway: the book writes the Bilanz on its own page.
           game.scene.stop("paint");
           setDone(true);
+          // R5-W6 · S2 · das Kapitel ist zu Ende: die Raum-Musik hört auf und
+          // die Bilanz bekommt ihr eigenes, kurzes Stück (kein Loop).
+          musicWantRef.current = "music-win";
+          applyMusic();
           openCard({
             req: { use: "quickfire", ctx: { type: "ceremony", beat: "score" } },
             item: null, card: "score", attempts: 0, typed: "", align: "center",
@@ -1201,6 +1316,11 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
       probe?.uninstall();
       delete window.__domigoPaintPerf;
       unbindTyping();
+      // R5-W6 · S2: der Direktor stirbt mit dem SPIEL, nicht mit der Szene.
+      director.dispose();
+      directorRef.current = null;
+      void audioCtx?.close().catch(() => { /* ein Kontext, der schon zu ist */ });
+      audioCtxRef.current = null;
       game.destroy(true);
       gameRef.current = null;
       sceneRef.current = null;
@@ -1308,6 +1428,50 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
             with nothing to count is not drawn (the arena collects no letters,
             and the Regel-Seiten chip waits until the chapter hides some). */}
         <span style={{ display: "flex", flexWrap: "wrap", gap: 6, justifyContent: "flex-end" }}>
+          {/* ── R5-W6 · S2 · DER STUMM-KNOPF (R124, Koki: „Ton AN, leise, mit
+              sichtbarem Stumm-Knopf") ────────────────────────────────────────
+              Er steht als ERSTER und immer, anders als die Zähler daneben: ein
+              Knopf, der je nach Spielstand die Position wechselt, ist ein Knopf,
+              den ein Kind zweimal suchen muss.
+
+              DREI Zustände in einem Antippen-Kreis. Der erste Tipp macht still —
+              das ist, was ein Kind (oder eine Lehrerin im Klassenraum) will, und
+              er darf nichts kosten. Der zweite legt die Musik weg und lässt die
+              Effekte stehen: die Rückmeldung „richtig", der Käfig, die Schritte
+              bleiben, nur der Teppich geht. Das ist der Zustand für eine Stunde,
+              in der zwanzig Tablets nebeneinander laufen. Der dritte kommt
+              zurück. Die Beschriftung nennt IMMER den Zustand, in dem man IST;
+              was der nächste Tipp tut, steht im `title`/`aria-label` — sonst
+              müsste ein Kind raten, ob „Ton aus" eine Lage oder ein Befehl ist.
+
+              Kein neuer CSS-Verlauf (D-218): der Knopf trägt `pb-hud-chip-btn`,
+              dieselbe Farbe wie die Regel-Seiten-Tür daneben, und erbt damit
+              ihren geprüften Kontrast (D-210). */}
+          <Chip
+            glyph={<SpeakerGlyph muted={tone.muted} music={tone.music} />}
+            label="Ton"
+            value={tone.muted ? "aus" : tone.music ? "an" : "nur Effekte"}
+            art={art}
+            onClick={() => {
+              const next: AudioSettings = tone.muted
+                ? { muted: false, music: false, sfx: true }   // aus  → nur Effekte
+                : tone.music
+                  ? { muted: true, music: true, sfx: true }   // an   → aus
+                  : { muted: false, music: true, sfx: true };  // nur Effekte → an
+              setTone(next);
+              const d = directorRef.current;
+              d?.setMuted(next.muted);
+              d?.setMusic(next.music);
+              d?.setSfx(next.sfx);
+              // T13 (Koki, 18.08.): derselbe Knopf schaltet die anderen Spiele mit.
+              setFeelSound(!next.muted);
+              // Der Knopf ist selbst eine Geste — wer ihn antippt, hat den
+              // Kontext damit entsperrt; die Musik darf jetzt anfangen.
+              void audioCtxRef.current?.resume().catch(() => { /* schon wach */ });
+              applyMusicRef.current?.();
+            }}
+            titleDe={tone.muted ? "Ton wieder an, nur die Musik bleibt weg" : tone.music ? "Alles still" : "Musik wieder dazu"}
+          />
           {freedCount > 0 && <Chip icon="cage" label="Befreit" value={`${freedCount}/${cageTotal}`} art={art} />}
           {/* R5-W2 · I1 · THE CHIP IS A DOOR. „Ins Buch kleben" has been the
               button on every rule page since R3-16, and the child could never
@@ -2337,14 +2501,50 @@ const plateMount: React.CSSProperties = {
   boxShadow: "inset 0 2px 10px rgba(120, 96, 52, 0.28), 0 2px 10px rgba(40,28,12,0.18)",
 };
 
-function Chip({ icon, label, value, art, onClick, titleDe }: {
-  icon: PaintedIconName; label: string; value: string; art?: Record<string, string>;
+/** R5-W6 · S2 · DER LAUTSPRECHER.
+ *
+ *  Warum er hier steht und nicht bei den anderen Bildern: die gemalten Glyphen
+ *  liegen in `cards/PaintedIcons.tsx`, und diese Runde darf `cards/**` nicht
+ *  anfassen (Eigentums-Karte Welle 6). Ein Lautsprecher gab es dort nicht — es
+ *  sind vierzehn Bilder, alle aus der Welt des Buches (Käfig, Tafel, Tintenfass),
+ *  und ein Lautsprecher gehört nicht hinein: er ist ein GERÄTE-Zeichen, kein
+ *  Ding aus der Geschichte. Also bleibt er, was er ist — eine schlichte Form in
+ *  derselben Tinte wie der Rand des Chips, damit er sich nicht als gemaltes
+ *  Objekt ausgibt. (Falls das Buch später doch einen gemalten bekommen soll:
+ *  Befund im Report, Bestellung entscheidet Fable.)
+ *
+ *  `currentColor` erbt die Schriftfarbe des Chips — damit stimmt der Kontrast
+ *  per Konstruktion mit dem der Beschriftung überein und kann nicht getrennt
+ *  von ihr verrutschen (D-210). */
+function SpeakerGlyph({ muted, music }: { muted: boolean; music: boolean }): React.ReactElement {
+  return (
+    <svg width={17} height={17} viewBox="0 0 17 17" aria-hidden focusable="false" style={{ display: "block", flex: "0 0 auto" }}>
+      <path d="M2.5 6.4h2.6L8.6 3.4v10.2L5.1 10.6H2.5z" fill="currentColor" />
+      {muted ? (
+        <g stroke="currentColor" strokeWidth={1.6} strokeLinecap="round">
+          <path d="M11.2 6.2l3.6 4.6M14.8 6.2l-3.6 4.6" />
+        </g>
+      ) : (
+        <g stroke="currentColor" strokeWidth={1.5} fill="none" strokeLinecap="round">
+          <path d="M10.9 6.3a3.2 3.2 0 0 1 0 4.4" />
+          {music && <path d="M12.9 4.5a5.8 5.8 0 0 1 0 8" />}
+        </g>
+      )}
+    </svg>
+  );
+}
+
+function Chip({ icon, glyph, label, value, art, onClick, titleDe }: {
+  icon?: PaintedIconName; glyph?: React.ReactNode; label: string; value: string; art?: Record<string, string>;
   onClick?: () => void; titleDe?: string;
 }): React.ReactElement {
+  // R5-W6 · S2: entweder ein gemaltes Bild aus dem Buch oder eine schlichte
+  // Form — nie beides und nie keines.
+  const picture = glyph ?? (icon !== undefined ? <PaintedIcon name={icon} size={17} art={art} /> : null);
   if (onClick !== undefined) {
     return (
       <button type="button" className="pb-hud-chip pb-hud-chip-btn" onClick={onClick} title={titleDe} aria-label={`${label} ${value} — ${titleDe ?? ""}`}>
-        <PaintedIcon name={icon} size={17} art={art} />
+        {picture}
         <span className="pb-hud-chip-label">{label}</span>
         <span className="pb-hud-chip-value">{value}</span>
       </button>
@@ -2352,7 +2552,7 @@ function Chip({ icon, label, value, art, onClick, titleDe }: {
   }
   return (
     <span className="pb-hud-chip" style={{ fontFamily: "var(--font-label, inherit)", fontSize: 13 }}>
-      <PaintedIcon name={icon} size={17} art={art} />
+      {picture}
       {label}
       <span className="pb-key-bit" style={{ fontSize: 15 }}>{value}</span>
     </span>
