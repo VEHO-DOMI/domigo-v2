@@ -22,6 +22,11 @@ import {
 // sagt. Der Umstieg auf das gemeinsame Modul ist als Auftrag im W4-Report
 // notiert; bis er passiert, hält dieser Test die fünf Antworten deckungsgleich.
 //
+// ★ STAND 2026-08-18 (R5-W6 · A7): eine der vier Kopien ist eingelöst —
+// `import-batch-as.mjs` importiert die Saum-Regel jetzt aus dem Modul, statt sie
+// zu wiederholen. Der Leser unten erkennt diese Form ausdrücklich an; für die
+// drei übrigen Importer (C4 · H4) gilt der Wächter unverändert weiter.
+//
 // Warum aus der QUELLE gelesen und nicht importiert: die Importer sind
 // Kommandozeilen-Skripte, die beim Import losliefen. Und die Behauptung, die
 // hier geprüft werden soll, ist ohnehin eine über den Quelltext — „in dieser
@@ -62,6 +67,22 @@ const findKeyRule = (text: string, tol: number): Rule => {
 };
 
 const findFringeRule = (text: string, tol: number): Rule => {
+  // ── DIE STÄRKSTE FORM: die Datei KOPIERT die Regel nicht, sie IMPORTIERT sie ─
+  //
+  // R5-W6 · A7 hat `import-batch-as.mjs` auf `scripts/key-fringe.mjs` umgestellt
+  // — genau der Umstieg, den der Kopf dieses Tests als W4-Auftrag notiert. Dann
+  // gibt es keinen Ausdruck mehr zu lesen und auch keinen, der driften könnte:
+  // die Datei RUFT das Modul. Das ist Übereinstimmung durch Konstruktion, und
+  // sie ist stärker als jede Textgleichheit, die dieser Leser prüfen kann.
+  //
+  // Erkannt nur, wenn BEIDE Hälften dastehen — der Import UND die Bindung an den
+  // Namen, den alle Leser darunter erwarten. Damit schlägt der Blindheits-Tamper
+  // unten unverändert an: er löscht die `const isFringe`-Zeile, und dann ist der
+  // Beweis unvollständig und dieser Leser fällt wie vorher durch.
+  const importsModule = /import \{[^}]*\bimporterWouldDelete\b[^}]*\} from "[^"]*key-fringe\.mjs";/.test(text);
+  const aliasesModule = /^const isFringe = importerWouldDelete;$/m.test(text);
+  if (importsModule && aliasesModule) return importerWouldDelete;
+
   const named = /^const isFringe = \(([^)]*)\) =>\s*(.+?);\s*$/m.exec(text);
   if (named !== null) return compile(named[1]!, named[2]!, tol);
   // …und die drei, die dieselbe Regel ohne Namen in eine `if`-Zeile getippt haben
