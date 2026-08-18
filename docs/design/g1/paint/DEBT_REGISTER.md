@@ -607,3 +607,69 @@ Reserviert: D-360…D-369.
 
 | Nr. | Befund | Beleg | Fix | Wer/wann | Herkunft |
 |---|---|---|---|---|---|
+
+## R5-W6 · DIE NEUN ABSCHNITTE (Fable, 2026-08-18) — vorab angelegt, damit die Welle-6-Sessions (und 6b) nicht am Datei-Ende kollidieren; A7 · H4 · D4 behalten ihre Abschnitte aus #311 (D-340…369)
+Jede Session trägt ihre Schulden NUR in ihren eigenen Abschnitt unten ein und vergibt NUR Nummern aus ihrem reservierten Block (Reservierung ist eine Prosa-Zeile, keine Tabellenzeile). **PB-Nummern vergibt ausschließlich K5** (PB-91 ff.). Die 6b-Abschnitte bleiben leer, bis ihre Session bootet.
+
+## R5-W6 · S2 — Audio-Verdrahtung (2026-08-18)
+
+Reserviert: D-370…D-379.
+
+| Nr. | Befund | Beleg | Fix | Wer/wann | Herkunft |
+|---|---|---|---|---|---|
+
+## R5-W6 · C5 — Farb-Import III (AQ12d2/AQ12f2) (2026-08-18)
+
+Reserviert: D-380…D-389.
+
+| Nr. | Befund | Beleg | Fix | Wer/wann | Herkunft |
+|---|---|---|---|---|---|
+
+## R5-W6 · G5 — Uniform II (AQ10b, projector, p9-Regel) (2026-08-18)
+
+Reserviert: D-390…D-399.
+
+| Nr. | Befund | Beleg | Fix | Wer/wann | Herkunft |
+|---|---|---|---|---|---|
+
+## R5-W6 · F7 — Feel III (fitTick, AQ16b, AQ15b-hop) (2026-08-18)
+
+Reserviert: D-400…D-409.
+
+| Nr. | Befund | Beleg | Fix | Wer/wann | Herkunft |
+|---|---|---|---|---|---|
+
+## R5-W6 · L1 — Buchstaben- und Cue-Kontrast (Code) (2026-08-18)
+
+Reserviert: D-410…D-419.
+
+| Nr. | Befund | Beleg | Fix | Wer/wann | Herkunft |
+|---|---|---|---|---|---|
+
+## R5-W6 · K5 — Kanon-Sweep III (2026-08-18)
+
+Reserviert: D-420…D-429.
+
+| Nr. | Befund | Beleg | Fix | Wer/wann | Herkunft |
+|---|---|---|---|---|---|
+
+## R5-W6 · E7 — buildTerrain (Welle 6b) (2026-08-18)
+
+Reserviert: D-430…D-439.
+
+| Nr. | Befund | Beleg | Fix | Wer/wann | Herkunft |
+|---|---|---|---|---|---|
+
+## R5-W6 · B5 — Level III (Welle 6b) (2026-08-18)
+
+Reserviert: D-440…D-449.
+
+| Nr. | Befund | Beleg | Fix | Wer/wann | Herkunft |
+|---|---|---|---|---|---|
+
+## R5-W6 · W5 — Werkzeug V (Welle 6b) (2026-08-18)
+
+Reserviert: D-450…D-459.
+
+| Nr. | Befund | Beleg | Fix | Wer/wann | Herkunft |
+|---|---|---|---|---|---|
