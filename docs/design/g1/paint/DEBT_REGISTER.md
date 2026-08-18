@@ -718,3 +718,41 @@ Reserviert: D-450…D-459.
 
 | Nr. | Befund | Beleg | Fix | Wer/wann | Herkunft |
 |---|---|---|---|---|---|
+
+## R5-W6b · FÜNF WEITERE ABSCHNITTE (Fable, 2026-08-18 spät) — vorab angelegt für die Nach-6b-Bahnen, damit niemand am Datei-Ende kollidiert; H4/D4 behalten D-350…369, E7/B5/W5 D-430…459 (oben)
+Jede Session trägt ihre Schulden NUR in ihren eigenen Abschnitt ein und vergibt NUR Nummern aus ihrem Block. **PB-Nummern vergibt ausschließlich die K-Bahn** (K6: PB-116 ff.). Ein Abschnitt bleibt leer, bis seine Session bootet.
+
+## R5-W6b · C6 — Farb-Import IV (AQ12g/AQ15c-Import, AQ12d3/f3 später) (2026-08-18)
+
+Reserviert: D-460…D-469.
+
+| Nr. | Befund | Beleg | Fix | Wer/wann | Herkunft |
+|---|---|---|---|---|---|
+
+## R5-W6b · F8 — Feel IV (Hüpfer-Verdrahtung, AQ15b-hop2) (2026-08-18)
+
+Reserviert: D-470…D-479.
+
+| Nr. | Befund | Beleg | Fix | Wer/wann | Herkunft |
+|---|---|---|---|---|---|
+
+## R5-W6b · S3 — Audio III (cloth-take, iPad-Pfad, Hörbank-Wahl) (2026-08-18)
+
+Reserviert: D-480…D-489.
+
+| Nr. | Befund | Beleg | Fix | Wer/wann | Herkunft |
+|---|---|---|---|---|---|
+
+## R5-W6b · A8 — Kanten IV (edgeD-Haken, AS5c-Import) (2026-08-18)
+
+Reserviert: D-490…D-499.
+
+| Nr. | Befund | Beleg | Fix | Wer/wann | Herkunft |
+|---|---|---|---|---|---|
+
+## R5-W6b · K6 — Kanon-Sweep IV (Welle-6-Rulings, PB-116 ff., ch01.md §9-Entscheide) (2026-08-18)
+
+Reserviert: D-500…D-509.
+
+| Nr. | Befund | Beleg | Fix | Wer/wann | Herkunft |
+|---|---|---|---|---|---|
