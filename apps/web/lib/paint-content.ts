@@ -91,6 +91,11 @@ const PaintEntity = z.object({
     // lesson above: a role the engine knows and this copy does not is a 500 on
     // the shipped chapter, not a type error.
     "classmate",
+    // R5-W5 · G4: `cloth` — a scattered piece of the school uniform. Added HERE
+    // in the same edit as game-paint's role list, on the standing lesson two
+    // comments up: this copy is what the loader parses, and a role the engine
+    // knows and this list does not is a 500 on the shipped chapter.
+    "cloth",
   ]),
   skin: z.string().min(1),
   c: z.number().int().nonnegative(),

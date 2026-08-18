@@ -383,6 +383,13 @@ for (const phaseId of phases) {
     classmatesAwake: verdict.world.classmatesAwake, // PK-R6 · D
     tipsGot: verdict.world.tipsGot, // PK-R3b · R3-16
     booksGot: verdict.world.booksGot,
+    // R5-W5 · G4: how many uniform pieces the pilot really walked into. The
+    // reachability MODEL already blesses each piece (`entity-reachable`), but a
+    // model blesses a cell — this counts the ones a recorded run actually
+    // touched, which is the difference between „a child could get there" and
+    // „this input did". If a later lane moves a platform out from under a piece,
+    // the number here is what turns red.
+    clothGot: verdict.world.clothGot,
     scorePageShown: verdict.world.scorePageShown, // PK-R3b · M-B
     // PK-R6 · E · the flight fight's choreography (doc 44 §4 ch01 C4)
     guardianPathsFlown: verdict.world.guardianPathsFlown,

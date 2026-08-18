@@ -169,6 +169,39 @@
      "r": 13,
      "tier": "E",
      "params": {}
+    },
+    {
+     "id": "p1-cloth-hairband",
+     "role": "cloth",
+     "skin": "cloth_hairband",
+     "c": 15,
+     "r": 15,
+     "tier": "E",
+     "params": {
+      "wordEn": "hairband"
+     }
+    },
+    {
+     "id": "p1-cloth-hat",
+     "role": "cloth",
+     "skin": "cloth_hat",
+     "c": 41,
+     "r": 21,
+     "tier": "E",
+     "params": {
+      "wordEn": "hat"
+     }
+    },
+    {
+     "id": "p1-cloth-sunglasses",
+     "role": "cloth",
+     "skin": "cloth_sunglasses",
+     "c": 30,
+     "r": 17,
+     "tier": "E",
+     "params": {
+      "wordEn": "sunglasses"
+     }
     }
    ],
    "links": [],
@@ -384,6 +417,39 @@
      "r": 19,
      "tier": "E",
      "params": {}
+    },
+    {
+     "id": "p2-cloth-shirt",
+     "role": "cloth",
+     "skin": "cloth_shirt",
+     "c": 13,
+     "r": 17,
+     "tier": "E",
+     "params": {
+      "wordEn": "shirt"
+     }
+    },
+    {
+     "id": "p2-cloth-school-tie",
+     "role": "cloth",
+     "skin": "cloth_school_tie",
+     "c": 21,
+     "r": 19,
+     "tier": "E",
+     "params": {
+      "wordEn": "school tie"
+     }
+    },
+    {
+     "id": "p2-cloth-sweater",
+     "role": "cloth",
+     "skin": "cloth_sweater",
+     "c": 67,
+     "r": 19,
+     "tier": "E",
+     "params": {
+      "wordEn": "sweater"
+     }
     }
    ],
    "links": [],
@@ -513,6 +579,39 @@
      "r": 19,
      "tier": "E",
      "params": {}
+    },
+    {
+     "id": "p3-cloth-skirt",
+     "role": "cloth",
+     "skin": "cloth_skirt",
+     "c": 28,
+     "r": 16,
+     "tier": "E",
+     "params": {
+      "wordEn": "skirt"
+     }
+    },
+    {
+     "id": "p3-cloth-socks",
+     "role": "cloth",
+     "skin": "cloth_socks",
+     "c": 42,
+     "r": 20,
+     "tier": "E",
+     "params": {
+      "wordEn": "socks"
+     }
+    },
+    {
+     "id": "p3-cloth-shoe",
+     "role": "cloth",
+     "skin": "cloth_shoe",
+     "c": 53,
+     "r": 17,
+     "tier": "E",
+     "params": {
+      "wordEn": "shoe"
+     }
     }
    ],
    "links": [],
@@ -611,7 +710,116 @@
    "############################################",
    "############################################"
   ],
-  "entities": [],
+  "entities": [
+   {
+    "id": "p9-cloth-hairband",
+    "role": "cloth",
+    "skin": "cloth_hairband",
+    "c": 4,
+    "r": 15,
+    "tier": "E",
+    "params": {
+     "wordEn": "hairband",
+     "repeatOf": "p1-cloth-hairband"
+    }
+   },
+   {
+    "id": "p9-cloth-sunglasses",
+    "role": "cloth",
+    "skin": "cloth_sunglasses",
+    "c": 9,
+    "r": 15,
+    "tier": "E",
+    "params": {
+     "wordEn": "sunglasses",
+     "repeatOf": "p1-cloth-sunglasses"
+    }
+   },
+   {
+    "id": "p9-cloth-hat",
+    "role": "cloth",
+    "skin": "cloth_hat",
+    "c": 13,
+    "r": 15,
+    "tier": "E",
+    "params": {
+     "wordEn": "hat",
+     "repeatOf": "p1-cloth-hat"
+    }
+   },
+   {
+    "id": "p9-cloth-shirt",
+    "role": "cloth",
+    "skin": "cloth_shirt",
+    "c": 18,
+    "r": 15,
+    "tier": "E",
+    "params": {
+     "wordEn": "shirt",
+     "repeatOf": "p2-cloth-shirt"
+    }
+   },
+   {
+    "id": "p9-cloth-sweater",
+    "role": "cloth",
+    "skin": "cloth_sweater",
+    "c": 22,
+    "r": 15,
+    "tier": "E",
+    "params": {
+     "wordEn": "sweater",
+     "repeatOf": "p2-cloth-sweater"
+    }
+   },
+   {
+    "id": "p9-cloth-school-tie",
+    "role": "cloth",
+    "skin": "cloth_school_tie",
+    "c": 27,
+    "r": 15,
+    "tier": "E",
+    "params": {
+     "wordEn": "school tie",
+     "repeatOf": "p2-cloth-school-tie"
+    }
+   },
+   {
+    "id": "p9-cloth-skirt",
+    "role": "cloth",
+    "skin": "cloth_skirt",
+    "c": 31,
+    "r": 15,
+    "tier": "E",
+    "params": {
+     "wordEn": "skirt",
+     "repeatOf": "p3-cloth-skirt"
+    }
+   },
+   {
+    "id": "p9-cloth-socks",
+    "role": "cloth",
+    "skin": "cloth_socks",
+    "c": 36,
+    "r": 15,
+    "tier": "E",
+    "params": {
+     "wordEn": "socks",
+     "repeatOf": "p3-cloth-socks"
+    }
+   },
+   {
+    "id": "p9-cloth-shoe",
+    "role": "cloth",
+    "skin": "cloth_shoe",
+    "c": 40,
+    "r": 15,
+    "tier": "E",
+    "params": {
+     "wordEn": "shoe",
+     "repeatOf": "p3-cloth-shoe"
+    }
+   }
+  ],
   "links": [],
   "exit": {
    "to": "p2"

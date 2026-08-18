@@ -509,10 +509,18 @@ Reserviert: D-280…D-289.
 
 ## R5-W5 · G4 — Uniform-Verdrahtung (2026-08-16)
 
-Reserviert: D-290…D-299.
+Reserviert: D-290…D-299 · vergeben: D-290…D-297.
 
 | Nr. | Befund | Beleg | Fix | Wer/wann | Herkunft |
 |---|---|---|---|---|---|
+| D-290 | Der Importer war sauberer als das Tor: alle zehn AQ10-Blätter passierten `defringe()` (feste Schwelle, Kantenpixel) und fielen dann bei `check-paint-art` durch — **12 525 Magenta-Randpixel**, erster je Blatt in Zeile 0 der Schnittkante. Das Tor urteilt mit `key-fringe.mjs`, das gegen das eigene Bildinnere kalibriert und vier Pixel tief liest. | `check-paint-art` 10 Fehler, danach grün | **behoben**: `import-batch-aq10.mjs` schließt mit `stripKeyFringe` aus demselben Modul ab, nach dem das Tor urteilt | G4, 17.08. | eigener Lauf |
+| D-291 | AQ10 weicht in **vier Farben** von der gefrorenen Bestellung ab (Hut goldgelb statt rot — dieselbe Familie wie die Buchstaben 0xf0c040 · Rock grau statt braun — Grau ist der entfärbte Zustand · Socken rot statt weiß-schwarz · Schuh braun statt schwarz, dazu eine **goldene Schnalle**), und alle neun sind **ausgestellt statt hingefallen** gezeichnet (3 blinde Prüfer konvergent, „zero grounding cues"). | `REPORTS/REPORT_G4_2026-08-17/pruefer_*.md`, `p9.png` | Import mit Kokis Entscheid vom 17.08.; Deklarations-Zwang im Importer (undeklarierte Abweichung = roter Import). **Offen: Nachbestellung AQ10b** (vier Farben + Haltung) | Fable (Kommission), 17.08. | Koki-Tor + blinde Prüfer |
+| D-292 | `standable()` besteht auch auf der **Oberfläche einer Tintenlache** (fester Grund darunter, Kopffreiheit darüber). Meine Laufzeilen-Hilfe maß dadurch den Teichgrund als Boden: p3 meldete Höhen „9, 5, 3", obwohl die Socken flach neben dem Teich liegen. | `content-levels.test.ts` rot auf dem echten Kapitel | **behoben**: `runLineBelow` verlangt zusätzlich `!submerged`; ein Testfall pinnt genau diesen Fall | G4, 17.08. | eigenes Gesetz |
+| D-293 | Die p9-Regel des Designs ist **geometrisch unmöglich**: die Kleckskammer hat 44 Spalten (42 begehbar), neun Nachlese-Teile mit ≥6 Spalten Abstand brauchen 49. | gemessen am Gitter | gebaut mit 4–5 Spalten (weitestes Raster, das der Raum trägt), `CLOTH_P9_MIN_SEPARATION = 4` mit der Rechnung im Kommentar. **Entscheidung offen** | Architekt | Design §1 vs. Geometrie |
+| D-294 | `projector` teilte die datierte Uniform-Ausnahme, ist aber kein Kleidungsstück: kein Sammelobjekt, keine Karte, von G4 nicht einlösbar. Eine Ausnahme mit erledigtem Eigentümer erreicht niemanden mehr. | `check-level-design.mjs CLAIMS` | Ausnahme mit **neuem Grund und neuem Eigentümer** umgeschrieben (R106), nicht still verlängert. **Zuhause offen** | Architekt | G3-Erbe |
+| D-295 | Zwei Anker des Passovers liegen eine Konstruktion zu tief: `level.ts:1556` sitzt IN der `inkReturns`-Schleife (die Aufrufzeile liefe je Eintrag einmal), `PaintScene:2355` mitten im Doc-Kommentar von `boardAnchor`. | am Code geöffnet | Aufruf vor `return failures;`, Methode bei `:2344` — beides reine Einfügungen | G4, 17.08. | P-67 |
+| D-296 | Drei **falsche grüne Lichter** in einer Sitzung: `npx vitest` (Binärdatei nicht gefunden) meldete Exit 0 · eine Pipe nach `tail` verschluckte den echten Exit-Code · ein Tamper scheiterte an `ERR_MODULE_NOT_FOUND` statt am Tor. Jedes Mal sah „grün" aus, was nie gelaufen war. | Sitzungsprotokoll | Exit-Code direkt hinter dem Befehl, nie hinter einer Pipe | G4, 17.08. | eigener Lauf |
+| D-297 | Ein Modul-Adapter kann ein Tor **stumm** ausschalten: `keyFringe` erwartet `{w,h,px}`, pngjs liefert `{width,height,data}` — die Übergabe des rohen pngjs-Objekts fand nichts und meldete sauber, während das Tor weiter zehn Blätter ablehnte. | erster Reparaturversuch zu D-290 | Adapter-Ansicht auf denselben Pixelpuffer + Gegenlauf des Tors als Beweis | G4, 17.08. | eigener Lauf |
 
 ## R5-W5 · B4b — Level II (2026-08-16)
 

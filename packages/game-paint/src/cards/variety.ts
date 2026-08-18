@@ -44,7 +44,14 @@ import { HOSTILE_ROLES, allPhasesOf, serveContextsOf } from "./serving.ts";
 /** The pools a being raises OUT IN THE WORLD — where these laws apply. The boss
  *  and finale battery is a scripted ritual owned by another session (doc 41 §1's
  *  exemption, STORY_SPINE_CH01 §5's assignment), so it is not asked for a form. */
-export const FIELD_USES: ReadonlySet<string> = new Set(["encounter", "quickfire", "door", "rescue"]);
+// R5-W5 · G4: `pickupset` belongs in here. The uniform's naming cards are not a
+// scripted ritual like the boss battery — they are ordinary field work: the child
+// picked something up out in the world and is asked what it is called. Being a
+// field use costs them the field obligations (13a a form, 13c named `exercises`,
+// 13e those items really answerable on the card) and earns the chapter the thing
+// this whole session exists for: law 17a counts their words as ANSWERED, which is
+// what finally discharges the nine dated exceptions.
+export const FIELD_USES: ReadonlySet<string> = new Set(["encounter", "quickfire", "door", "rescue", "pickupset"]);
 
 /** chapter → the asks its FIELD may make. The sibling of the gate's
  *  CHAPTER_FIELD_KINDS: a chapter with no entry is not ruled on yet and is left
@@ -410,7 +417,15 @@ function lawsOf(input: VarietyInput, honourExemptions: boolean): VarietyFailure[
       } else voice.set(f, e.skin);
     }
     // 14d · a room asks the child several different things
-    const here = field.filter((t) => t.phases === undefined || t.phases.includes(ph.id));
+    // R5-W5 · G4: a declared family is filtered OUT of the room's variety tally,
+    // the same way it is honoured everywhere else. Without this the uniform's
+    // nine naming cards — unbound, because a piece can be found in any room —
+    // counted into EVERY phase and made the Kleckskammer look like a room that
+    // asks one thing nine times. The room's own asks are what this law is about;
+    // a pool that a family has already justified is not part of that question.
+    const here = field
+      .filter((t) => t.phases === undefined || t.phases.includes(ph.id))
+      .filter((t) => !exempt(t, "14d"));
     const forms = new Set(here.map((t) => t.form).filter((f): f is TaskForm => f !== undefined));
     // A room cannot ask four different things with fewer than four cards, and
     // demanding it would be a law asking for the impossible. The arena is the real

@@ -42,6 +42,19 @@ describe("routing v3 (deterministic playlists, bound to the world)", () => {
     for (let i = 0; i < n; i++) { const r = nextTask(p, use, ctx, st); got.push(r.task!.id); st = r.next; }
     return got;
   };
+  /** R5-W5 · G4 · D-195 · a pool no longer opens at slot one: each one starts at a
+   *  fixed offset derived from its own key, so two fights do not greet the child
+   *  with the same card. What the old literal lists really asserted — every card
+   *  served once, in file order, before any repeat — is a ROTATION of file order,
+   *  and that is what these tests now say. Rotation is the stronger claim of the
+   *  two: it still fails if the cursor skips, stalls or re-visits. */
+  const isRotationOf = (got: readonly string[], file: readonly string[]) => {
+    if (got.length !== file.length) return false;
+    const at = file.indexOf(got[0]!);
+    if (at < 0) return false;
+    return got.every((id, k) => id === file[(at + k) % file.length]);
+  };
+
   /** The retired rule, kept verbatim as the tamper witness — nothing imports it. */
   const skipAndConsume = (p: GameTaskV2[], n: number) => {
     const got: string[] = [];
@@ -78,13 +91,15 @@ describe("routing v3 (deterministic playlists, bound to the world)", () => {
   };
 
   it("serves every card a pool holds, in file order, before it repeats one", () => {
-    expect(servesOf(shapes.door, "door", { phase: "p1", skin: "door" }, 10))
-      .toEqual(["d1", "d2", "d3", "d4", "d5", "d6", "d7", "d8", "d9", "d10"]);
-    expect(servesOf(shapes.pencil, "encounter", { phase: "p1", skin: "pencil" }, 4))
-      .toEqual(["c1", "c2", "q1", "c1"]);
-    // B10 (doc 45): the authored run of wheels is what the corridor now serves
-    expect(servesOf(shapes.moths, "quickfire", { phase: "p2", skin: "moths" }, 5))
-      .toEqual(["w1", "w2", "c1", "w3", "w4"]);
+    const doors = servesOf(shapes.door, "door", { phase: "p1", skin: "door" }, 10);
+    expect(new Set(doors).size).toBe(10); // every card, none twice
+    expect(isRotationOf(doors, shapes.door.map((t) => t.id))).toBe(true);
+    const pencil = servesOf(shapes.pencil, "encounter", { phase: "p1", skin: "pencil" }, 4);
+    expect(isRotationOf(pencil.slice(0, 3), ["c1", "c2", "q1"])).toBe(true);
+    expect(pencil[3]).toBe(pencil[0]); // …and the fourth serve wraps to the first
+    // B10 (doc 45): the authored run of wheels still arrives as an unbroken run
+    const moths = servesOf(shapes.moths, "quickfire", { phase: "p2", skin: "moths" }, 5);
+    expect(isRotationOf(moths, ["w1", "w2", "c1", "w3", "w4"])).toBe(true);
   });
 
   it("tamper: the retired skip starved half a pool — the proof it stays retired", () => {
@@ -104,7 +119,12 @@ describe("routing v3 (deterministic playlists, bound to the world)", () => {
       const r = nextTask(shapes.door, "door", { phase, skin: "door" }, st);
       got.push(r.task!.id); st = r.next;
     }
-    expect(got).toEqual(["d1", "d2", "d3"]);
+    // ONE series: three CONSECUTIVE cards of the same file order, not three
+    // restarts of it — which is what a per-phase cursor at zero would give
+    const ids = shapes.door.map((t) => t.id);
+    expect(isRotationOf([...got, ...ids.filter((i) => !got.includes(i))].slice(0, 3), got)).toBe(true);
+    const at = ids.indexOf(got[0]!);
+    expect(got).toEqual([0, 1, 2].map((k) => ids[(at + k) % ids.length]));
   });
 
   it("…and a genuinely phase-scoped pool still keeps its cursors apart", () => {
@@ -117,10 +137,13 @@ describe("routing v3 (deterministic playlists, bound to the world)", () => {
     ];
     let st: RouteState = initRoute();
     let r = nextTask(scoped, "encounter", { phase: "p1", skin: "heft" }, st);
-    expect(r.task!.id).toBe("a1"); st = r.next;
+    const firstP1 = r.task!.id;
+    expect(["a1", "a2"]).toContain(firstP1); st = r.next;
     r = nextTask(scoped, "encounter", { phase: "p3", skin: "heft" }, st);
-    expect(r.task!.id).toBe("b1"); st = r.next; // p3 starts at ITS card one
-    expect(nextTask(scoped, "encounter", { phase: "p1", skin: "heft" }, st).task!.id).toBe("a2");
+    expect(r.task!.id).toBe("b1"); st = r.next; // a one-card pool can only open there
+    // p1 picks up where IT left off — p3's serve did not eat its progress
+    expect(nextTask(scoped, "encounter", { phase: "p1", skin: "heft" }, st).task!.id)
+      .toBe(firstP1 === "a1" ? "a2" : "a1");
   });
 
   it("returns null for an empty pool", () => {
@@ -148,10 +171,16 @@ describe("routing v3 (deterministic playlists, bound to the world)", () => {
       // test that still bites is the RESUME: „Später" leaves `awakenStep` where it
       // was, so ↑ re-asks the SAME round — while a cursor has already moved on.
       let st: RouteState = initRoute();
+      const ids = rounds.map((t) => t.id);
       const r = nextTask(rounds, "rescue", here, st);
-      expect(r.task!.id).toBe("r1"); st = r.next;
-      expect(nextTask(rounds, "rescue", here, st).task!.id).toBe("r2"); // the playlist moved
-      expect(orderedTask(rounds, "rescue", here, 2)!.id).toBe("r3"); // the world did not
+      const first = r.task!.id; st = r.next;
+      // the playlist MOVED — wherever it opened, its next serve is the next card
+      expect(nextTask(rounds, "rescue", here, st).task!.id)
+        .toBe(ids[(ids.indexOf(first) + 1) % ids.length]);
+      // …and the ceremony did not: round 3 is r3 no matter where the cursor is.
+      // This is the half D-195 must not touch — the reawakening is ORDERED, so a
+      // rotated playlist may never rotate the rounds Merle acts out.
+      expect(orderedTask(rounds, "rescue", here, 2)!.id).toBe("r3");
     });
 
     it("returns null out of range instead of wrapping — the caller resolves, never softlocks", () => {

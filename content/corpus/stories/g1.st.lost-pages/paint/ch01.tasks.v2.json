@@ -2221,6 +2221,233 @@
    "exercises": [
     "g1u01.w.picture"
    ]
+  },
+  {
+   "id": "g1.paint.ch01.uni.hairband",
+   "use": "pickupset",
+   "kind": "choice",
+   "form": "name-it",
+   "exercises": [
+    "g1u01.w.hairband"
+   ],
+   "stimulus": {
+    "type": "image",
+    "stem": "cloth_hairband_a",
+    "altDe": "Der Reif, der die Haare hält. Was ist das?"
+   },
+   "storyDe": "Das lag auf der Garderobenbank. Wie heißt es?",
+   "options": [
+    "hairband",
+    "hat",
+    "sunglasses"
+   ],
+   "answer": "hairband",
+   "hints": {
+    "deDesc": "Der Reif, der die Haare hält.",
+    "deWord": "Auf Deutsch: der Haarreif."
+   },
+   "grounding": "u01 »Cool clothes« (WB S. 12): hairband — das Kind hat das Teil im Level aufgehoben, die Karte fragt seinen Namen (UNIFORM_SAMMELN_DESIGN §1)"
+  },
+  {
+   "id": "g1.paint.ch01.uni.sunglasses",
+   "use": "pickupset",
+   "kind": "choice",
+   "form": "name-it",
+   "exercises": [
+    "g1u01.w.sunglasses"
+   ],
+   "stimulus": {
+    "type": "image",
+    "stem": "cloth_sunglasses_a",
+    "altDe": "Die dunkle Brille für die Sonne. Was ist das?"
+   },
+   "storyDe": "Das lag unter der Bank in der Halle. Wie heißt es?",
+   "options": [
+    "sunglasses",
+    "shirt",
+    "skirt"
+   ],
+   "answer": "sunglasses",
+   "hints": {
+    "deDesc": "Die dunkle Brille für die Sonne.",
+    "deWord": "Auf Deutsch: die Sonnenbrille."
+   },
+   "grounding": "u01 »Cool clothes« (WB S. 12): sunglasses — das Kind hat das Teil im Level aufgehoben, die Karte fragt seinen Namen (UNIFORM_SAMMELN_DESIGN §1)"
+  },
+  {
+   "id": "g1.paint.ch01.uni.hat",
+   "use": "pickupset",
+   "kind": "choice",
+   "form": "name-it",
+   "exercises": [
+    "g1u01.w.hat"
+   ],
+   "stimulus": {
+    "type": "image",
+    "stem": "cloth_hat_a",
+    "altDe": "Das, was man am Kopf trägt. Was ist das?"
+   },
+   "storyDe": "Das lag unten am Rand der Tinte. Wie heißt es?",
+   "options": [
+    "hat",
+    "sweater",
+    "socks"
+   ],
+   "answer": "hat",
+   "hints": {
+    "deDesc": "Das, was man am Kopf trägt.",
+    "deWord": "Auf Deutsch: der Hut."
+   },
+   "grounding": "u01 »Cool clothes« (WB S. 12): hat — das Kind hat das Teil im Level aufgehoben, die Karte fragt seinen Namen (UNIFORM_SAMMELN_DESIGN §1)"
+  },
+  {
+   "id": "g1.paint.ch01.uni.shirt",
+   "use": "pickupset",
+   "kind": "choice",
+   "form": "name-it",
+   "exercises": [
+    "g1u01.w.shirt"
+   ],
+   "stimulus": {
+    "type": "image",
+    "stem": "cloth_shirt_a",
+    "altDe": "Das mit den Knöpfen und dem Kragen. Was ist das?"
+   },
+   "storyDe": "Das hing über dem Stuhlstapel. Wie heißt es?",
+   "options": [
+    "shirt",
+    "school tie",
+    "sweater"
+   ],
+   "answer": "shirt",
+   "hints": {
+    "deDesc": "Das mit den Knöpfen und dem Kragen.",
+    "deWord": "Auf Deutsch: das Hemd."
+   },
+   "grounding": "u01 »Cool clothes« (WB S. 12): shirt — das Kind hat das Teil im Level aufgehoben, die Karte fragt seinen Namen (UNIFORM_SAMMELN_DESIGN §1)"
+  },
+  {
+   "id": "g1.paint.ch01.uni.school-tie",
+   "use": "pickupset",
+   "kind": "choice",
+   "form": "name-it",
+   "exercises": [
+    "g1u01.w.school-tie"
+   ],
+   "stimulus": {
+    "type": "image",
+    "stem": "cloth_school_tie_a",
+    "altDe": "Der grün-weiße Streifen am Hals. Was ist das?"
+   },
+   "storyDe": "Das lag fast schon in der Tinte. Wie heißt es?",
+   "options": [
+    "school tie",
+    "shoe",
+    "hairband"
+   ],
+   "answer": "school tie",
+   "hints": {
+    "deDesc": "Der grün-weiße Streifen am Hals.",
+    "deWord": "Auf Deutsch: die Schulkrawatte."
+   },
+   "grounding": "u01 »Cool clothes« (WB S. 12): school tie — das Kind hat das Teil im Level aufgehoben, die Karte fragt seinen Namen (UNIFORM_SAMMELN_DESIGN §1)"
+  },
+  {
+   "id": "g1.paint.ch01.uni.sweater",
+   "use": "pickupset",
+   "kind": "choice",
+   "form": "name-it",
+   "exercises": [
+    "g1u01.w.sweater"
+   ],
+   "stimulus": {
+    "type": "image",
+    "stem": "cloth_sweater_a",
+    "altDe": "Der warme, blaue mit dem V. Was ist das?"
+   },
+   "storyDe": "Das lag unter dem Fenster. Wie heißt es?",
+   "options": [
+    "sweater",
+    "skirt",
+    "sunglasses"
+   ],
+   "answer": "sweater",
+   "hints": {
+    "deDesc": "Der warme, blaue mit dem V.",
+    "deWord": "Auf Deutsch: der Pullover."
+   },
+   "grounding": "u01 »Cool clothes« (WB S. 12): sweater — das Kind hat das Teil im Level aufgehoben, die Karte fragt seinen Namen (UNIFORM_SAMMELN_DESIGN §1)"
+  },
+  {
+   "id": "g1.paint.ch01.uni.skirt",
+   "use": "pickupset",
+   "kind": "typed",
+   "form": "name-it",
+   "exercises": [
+    "g1u01.w.skirt"
+   ],
+   "stimulus": {
+    "type": "image",
+    "stem": "cloth_skirt_a",
+    "altDe": "Der graue mit den Falten. Was ist das?"
+   },
+   "storyDe": "Vom Mauerturm. Schreib das englische Wort!",
+   "answer": "skirt",
+   "accept": [
+    "a skirt"
+   ],
+   "hints": {
+    "deDesc": "Der graue mit den Falten.",
+    "deWord": "Auf Deutsch: der Rock."
+   },
+   "grounding": "u01 »Cool clothes« (WB S. 12): skirt — dritte Stufe, echte Produktion (Design §1: erst begegnen, dann abfragen)"
+  },
+  {
+   "id": "g1.paint.ch01.uni.socks",
+   "use": "pickupset",
+   "kind": "typed",
+   "form": "name-it",
+   "exercises": [
+    "g1u01.w.socks"
+   ],
+   "stimulus": {
+    "type": "image",
+    "stem": "cloth_socks_a",
+    "altDe": "Die für die Füße, immer als Paar. Was ist das?"
+   },
+   "storyDe": "Ein Paar, ein Wort. Schreib es auf Englisch!",
+   "answer": "socks",
+   "accept": [],
+   "hints": {
+    "deDesc": "Die für die Füße, immer als Paar.",
+    "deWord": "Auf Deutsch: die Socken."
+   },
+   "grounding": "u01 »Cool clothes« (WB S. 12): socks — dritte Stufe, echte Produktion (Design §1: erst begegnen, dann abfragen)"
+  },
+  {
+   "id": "g1.paint.ch01.uni.shoe",
+   "use": "pickupset",
+   "kind": "typed",
+   "form": "name-it",
+   "exercises": [
+    "g1u01.w.shoe"
+   ],
+   "stimulus": {
+    "type": "image",
+    "stem": "cloth_shoe_a",
+    "altDe": "Nur einer, nicht zwei. Was ist das?"
+   },
+   "storyDe": "Nur EINER. Schreib das englische Wort dafür!",
+   "answer": "shoe",
+   "accept": [
+    "one shoe",
+    "a shoe"
+   ],
+   "hints": {
+    "deDesc": "Nur einer, nicht zwei.",
+    "deWord": "Auf Deutsch: der Schuh."
+   },
+   "grounding": "u01 »Cool clothes« (WB S. 12): shoe — dritte Stufe, echte Produktion (Design §1: erst begegnen, dann abfragen)"
   }
  ]
 }

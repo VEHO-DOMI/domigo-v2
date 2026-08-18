@@ -686,6 +686,14 @@ export const entDisplayH = (e: EntSizeInput): number => {
   if (e.role === "powerup") return 26;
   if (e.role === "tip") return 18; // R3-16: a torn page, smaller than a being
   if (e.role === "book") return 15;
+  // R5-W5 · G4: a uniform piece. The commission ordered a RANGE (16-20) and left
+  // the number to a test, because these nine must be told APART from one another
+  // at speed — unlike Rayman's Tings, which are all the same object and only
+  // have to be noticed. Blind silhouette test, 2026-08-17, three strips at 16/18/
+  // 20 px, unlabelled: at 16 the skirt stops reading (its delivered grey sits too
+  // close to the grey world), at 18 all nine are named confidently. 18 it is —
+  // measured before the number was written, not after.
+  if (e.role === "cloth") return 18;
   if (e.role.startsWith("platform")) return 10;
   return 24; // chasers, gunners, flyers, bouncers
 };
