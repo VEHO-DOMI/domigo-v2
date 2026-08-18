@@ -113,21 +113,24 @@ export const CLAIMS = {
         card: `g1.paint.ch01.uni.${en.replace(/ /g, "-")}`,
       }]),
   ),
-  // Der Projektor gehörte nie zur Uniform — er stand nur in derselben Ausnahme,
-  // weil er dieselbe Lücke teilte. G4 kann ihn NICHT einlösen: er bekommt kein
-  // Sammelobjekt (er trägt die Fiktion des Zahlen-Turms in p2, doc 44) und keine
-  // Karte dieser Welle fragt ihn ab. Die Ausnahme bleibt also stehen, aber nicht
-  // still: sie bekommt einen neuen Grund und einen neuen Eigentümer, weil der
-  // alte („Welle 5 / Uniform") mit dieser Session erledigt ist und eine Ausnahme
-  // mit erledigtem Eigentümer niemanden mehr erreicht (R106).
-  "projector": {
-    kind: "cards",
-    exception: {
-      why: "Kein Uniform-Teil: der Projektor stand nur in derselben Sammel-Ausnahme wie die neun Kleidungswörter, weil er dieselbe Lücke teilte. G4 hat die neun eingelöst; der Projektor braucht eine eigene Entscheidung — Karte, eigenes Objekt, oder als reines Fiktions-Requisit aus der wordfile-Klassifikation nehmen. Bis dahin deklariert statt behauptet.",
-      expires: "2026-12-31",
-      owner: "Architekt — Routing offen (G4 konnte es nicht einlösen, Report R5-W5 · G4)",
-    },
-  },
+  // ── R5-W6 · G5 · DER PROJEKTOR IST KEIN KLEIDUNGSSTÜCK (R148) ──────────────
+  // Er stand nur deshalb in derselben datierten Ausnahme wie die neun
+  // Kleidungswörter, weil er dieselbe Lücke teilte — G4 hat die neun eingelöst
+  // und den Projektor als offenes Routing an den Architekten zurückgegeben.
+  // Aufgelöst, ohne Ausnahme und ohne neue Karte: der Projektor IST im Raum, als
+  // gebautes Gelände. `ch01.level.json` p2 trägt den Turm als solide Kacheln in
+  // den Spalten 55–56 über die Reihen 1–7 (selbst nachgezählt, nicht aus dem
+  // Dossier übernommen; p2.md nennt ihn „PROJEKTOR-TURM + KAVERNE — Turm Voll
+  // r1–7 c55–56"), und sein Kegel stiftet den Zahlen-Grund des Spießrutenlaufs.
+  // Damit ist er dasselbe wie `door` und `window`: Welt-Architektur, die ein Kind
+  // sieht und benennt, ohne dass eine Karte sie abfragt oder ein Sammelobjekt
+  // dafür liegt. Kein `pickup` (es gibt nichts aufzuheben), kein `cards` (keine
+  // der 70 Karten lässt das Wort ANTWORTEN, nachgemessen) — und deshalb auch
+  // keine Ausnahme mehr, die 2026-12-31 als rotes Tor zurückkäme.
+  // Die Ehrlichkeits-Grenze dieser Klasse steht im Register (D-25, `ruler`):
+  // `architecture` prüft NICHTS, also darf sie nur tragen, was wirklich im Raum
+  // steht. Für den Projektor ist genau das nachgeschlagen worden.
+  "projector": { kind: "architecture" }, // Projektor-Turm p2 c55–56 / r1–7
 };
 const wordbank = JSON.parse(fs.readFileSync(WORDBANK, "utf8"));
 const allSkins = new Set(phases.flatMap((ph) => ph.entities.map((e) => e.skin)));
@@ -525,6 +528,27 @@ if (process.argv.includes("--selftest")) {
       (f) => f.some((x) => /toter Schlüssel/.test(x))],
     ["ABDECKUNG · die Pluralform zählt als Antwort (D-75: „shoes\" beantwortet `shoe`)",
       claims2({ shoe: { kind: "cards" } }, [ENTRY("shoe", ["shoe", "shoes"])], [{ kind: "choice", answer: "shoes" }]),
+      (f) => f.length === 0],
+    // ── R5-W6 · G5 · der Projektor, ohne Ausnahme (R148) ─────────────────────
+    // Die datierte Ausnahme ist gestrichen, weil der Projektor als GELÄNDE im
+    // Raum steht (p2, Turm c55–56 / r1–7) und deshalb `architecture` ist. Der
+    // Fall unten ist der Beweis, dass sie nicht bloß weggeräumt wurde: gegen die
+    // ECHTE Wortbank und die ECHTEN 70 Karten gemessen, beantwortet KEINE Karte
+    // das Wort — wäre es anders, hätte der Anspruch `cards` heißen müssen, und
+    // dieser Fall würde nicht mehr beißen. Rot zuerst gesehen.
+    ["PROJEKTOR · als `cards` gegen die echten Karten ist rot — kein Kartenschluss beantwortet das Wort",
+      claims2({ projector: { kind: "cards" } },
+        wordbank.entries.filter((e) => e.en === "projector"),
+        JSON.parse(fs.readFileSync(TASKS, "utf8")).items, TODAY),
+      (f) => f.some((x) => /keine Karte lässt es ANTWORTEN/.test(x))],
+    // Und die EHRLICHKEITS-GRENZE derselben Entscheidung, ausdrücklich gepinnt:
+    // `architecture` prüft NICHTS (D-25 hat das an `ruler` schon einmal bezahlt,
+    // als die Fähre aus dem Raum flog und der Anspruch stumm weiterlief). Der
+    // Fall hält fest, dass diese Klasse ein Versprechen des MENSCHEN ist, kein
+    // gemessenes — wer sie vergibt, muss das Ding im Level nachgeschlagen haben.
+    ["PROJEKTOR · `architecture` schweigt auch ohne jedes Objekt im Level — die Klasse ist ein Versprechen, keine Messung (D-25)",
+      claims2({ projector: { kind: "architecture" } },
+        wordbank.entries.filter((e) => e.en === "projector"), []),
       (f) => f.length === 0],
     ["NICHT-TAMPER · der echte Anspruchssatz gegen die echte Wortbank und die echten Karten bleibt still",
       claimFails(CLAIMS, wordbank.entries, allSkins, JSON.parse(fs.readFileSync(TASKS, "utf8")).items, TODAY, new Set(phases.flatMap((ph) => ph.entities.filter((e) => e.role === "cloth").map((e) => e.skin)))),

@@ -176,9 +176,19 @@ Manifestzeile — `check-level-design` Block 5 macht das hart.)
   einziger Weg durch Tinte führt (Gesetz `cloth-reach`, §5). Damit kommt die
   Spannung zurück, ohne dass ein Kind an einem Vokabelwort dreimal scheitert.
 - **p9 (der Nachzügler-Raum) hat seine eigene Regel**, weil dort bis zu neun
-  Teile gleichzeitig liegen können: **Mindestabstand 6 Spalten**, keine zwei in
-  derselben Bildschirmhälfte, alle ebenerdig. p9 ist die Nachlese, nicht die
-  Jagd — hier gilt Erreichbarkeit vor Choreographie.
+  Teile gleichzeitig liegen können: **Mindestabstand 4 Spalten**, alle ebenerdig.
+  p9 ist die Nachlese, nicht die Jagd — hier gilt Erreichbarkeit vor
+  Choreographie. *(Korrigiert R5-W6 · G5, 2026-08-18: dieser Absatz forderte
+  ursprünglich „≥ 6 Spalten" und „keine zwei in derselben Bildschirmhälfte".
+  Beides ist in diesem Raum arithmetisch unmöglich, und die Zahl steht seit
+  Welle 5 anders im Code als im Text — die Kleckskammer ist **44 Spalten breit,
+  davon 42 begehbar**; neun Teile mit je 6 Spalten Abstand brauchen **8 × 6 + 1 =
+  49 Spalten**, also sieben mehr, als der Raum hat. Gebaut und geprüft ist
+  seither `CLOTH_P9_MIN_SEPARATION = 4` (`level.ts`, Gesetz `cloth-spacing`) —
+  der weiteste gleichmäßige Abstand, den der Raum trägt. Die Halbsatz-Forderung
+  „keine zwei in derselben Bildschirmhälfte" fällt aus demselben Grund: neun
+  Teile passen nicht in zwei Hälften, sie war nie gebaut und hätte nie erfüllt
+  werden können. Der Text folgt jetzt der Geometrie, statt sie zu behaupten.)*
 
 ### Das Aufheben: ein Wort auf dem Schirm
 Berührung = eingesammelt. Ein kurzer Toast zeigt das **englische Wort**
@@ -370,6 +380,10 @@ Koki gestört hat.
 Heute tragen die neun Wörter (plus `projector`) in `check-level-design.mjs` eine
 **deklarierte, datierte Ausnahme** — „keine Antwort-Karte, Ablauf 2026-12-31,
 Besitzer Welle 5 / Uniform". Das ist die Brücke, nicht das Ziel.
+*(Stand 2026-08-18: eingelöst. Die neun tragen seit Welle 5 `kind:"pickup"`; der
+Projektor gehörte nie dazu und ist in Welle 6 als `kind:"architecture"` aufgelöst
+— sein Turm steht als Gelände in p2. Es gibt in diesem Kapitel keine
+Uniform-Ausnahme mehr, die ablaufen könnte. R5-W6 · G5, R148.)*
 
 Welle 5 ersetzt sie durch einen neuen Anspruchstyp:
 
@@ -533,7 +547,7 @@ Jede Zeile mit ihrem Besitzer, damit Welle 5 konfliktfrei parallelisieren kann.
 | p3-Karte als `typed` (Präzedenz `fin.t1`) mit `accept`-Liste — die Palette wird NICHT erweitert (R11: `spell` bleibt ch02) | `ch01.tasks.v2.json` | Karten-Lane |
 | **Netz:** nicht eingesammelte Teile bleiben liegen; im Bonusraum p9 liegen beim Betreten genau die noch FEHLENDEN Teile ein zweites Mal (rezeptiv, Toast, keine Karte) | `sim.ts` (Ledger-Abfrage) + `ch01.level.json` p9 | Sim-Lane + Level-Lane |
 | **Zeremonie:** Merle trägt am Kapitelende die gefundenen Teile; Bilanz-Zeile „Kleider n/9" | `cards/ceremony.ts` + `CeremonyStage.tsx` liest den Ledger | Zeremonie-Lane |
-| Gesetz `cloth-spacing` (ein Teil je Bildschirm-Drittel, ≈21 Spalten; ≥2 und ≤5 Spalten neben dem begehbaren Pfad; **≥1 erhöht + ≥1 ebenerdig je Phase**; in p9 ≥6 Spalten Abstand, alle ebenerdig) | `level.ts` Gesetzes-Block | Level-Lane |
+| Gesetz `cloth-spacing` (ein Teil je Bildschirm-Drittel, ≈21 Spalten; ≥2 und ≤5 Spalten neben dem begehbaren Pfad; **≥1 erhöht + ≥1 ebenerdig je Phase**; **in p9 ≥4 Spalten Abstand**, alle ebenerdig) | `level.ts` Gesetzes-Block | Level-Lane |
 | Anspruchstyp `kind:"pickup"` (§3) | `scripts/check-level-design.mjs` Block 2 | Tor-Lane |
 | Neun Entities + neun Manifest-Zeilen (Fiktion + Mechanik, sonst ist Block 5 rot) | `ch01.level.json` + `ch01-dossiers-v2/p1.md`, `p2.md`, `p3.md` | Level-Lane |
 | Neun PNGs | `apps/web/public/art/g1/paint/ch01/cloth_*.png` | Kunst-Lane |

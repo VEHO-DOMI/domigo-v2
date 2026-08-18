@@ -177,7 +177,7 @@ Raum-Trennung. Vergabe v2:
 | **picture** (wordbank g1u01.w.picture) | Käfig-#5-Insasse (Arena, B20-Karte) | p4 | obj_picture **D-21** |
 | **sound system** | Käfig-#1-Insasse (Empfehlung, B20-Klasse — PR-Nick) | p1 | Wesen **D-18** |
 | **tablet** | Käfig-#2-Insasse (Empfehlung — PR-Nick) | p2 | Wesen **D-19** |
-| projector | Fiktions-Träger (projiziert die Schwarm-Zahlen; Trail-Wort PROJECTOR) — **keine Antwort-Karte: deklarierte Ausnahme bis 2026-12-31, Besitzer Welle 5 / Uniform** | p2 | Turm-Kunst **D-19** |
+| projector | **Welt-Architektur** (`kind:"architecture"`, wie door/window): der Projektor-Turm steht als solides Gelände in p2, Spalten 55–56 über die Reihen 1–7, und sein Kegel stiftet den Zahlen-Grund des Spießrutenlaufs; Trail-Wort PROJECTOR. Kein Sammelobjekt, keine Antwort-Karte — **die datierte Ausnahme ist damit aufgelöst, nicht verlängert** (R5-W6 · G5, R148) | p2 | Turm-Kunst **D-19** |
 | **Uniform-Neun** (hairband · sunglasses · hat · school tie · shirt · sweater · skirt · socks · shoe) | **AB WELLE 5: neun Sammelobjekte, 3/3/3 über p1–p3, plus drei Benenn-Karten** (`UNIFORM_SAMMELN_DESIGN.md`). Heute: sieben davon nur ABLENKER auf `enc.ranzen.q3/q4` (`shoe` seit der Pluralform `shoes`), zwei stehen auf gar keiner Karte → **deklarierte Ausnahme bis 2026-12-31, Besitzer Welle 5 / Uniform** | p1–p3 (ab W5) | Codex **AQ10** |
 
 **★★ EHRLICHKEITS-NACHZUG (R5-W4 · G3, 2026-08-15 — D-77, Kokis Befund).** Diese
