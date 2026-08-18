@@ -101,21 +101,16 @@ export interface PerfReport {
   notes: string[];
 }
 
-export interface WeakEstimate {
-  measuredP50Ms: number;
-  measuredP95Ms: number;
-  /** measured slope d(frameTime)/d(injectedMs), 0…1+ */
-  cpuBoundness: number;
-  /** a CHOSEN constant, not a measurement */
-  factor: number;
-  projectedP50Ms: number;
-  projectedP95Ms: number;
-  budgetMs: number;
-  verdict: string;
-  model: string;
-  samples: Array<{ injectedMs: number; p50: number }>;
-}
-
+// R5-W5 · E6 · HIER STAND `WeakEstimate` — die Hochrechnung auf ein schwaches
+// Gerät, samt `cpuBoundness`. Gestrichen (R40), weil ihre Messung strukturell
+// unmöglich war: `sweep()` speiste eine bekannte Rechenlast ein und las die
+// Steigung der Bildzeit ab — aber die Last wurde in `onPostRender` NACH
+// `this.cpu.push(...)` verbrannt, also hinter dem Punkt, an dem die Bildzeit
+// desselben Bildes bereits notiert war. Der Ausschlag, den das Instrument suchte,
+// konnte in seiner eigenen Messung nicht ankommen; es meldete für jede Szene
+// „nicht CPU-gebunden", immer, und die erste Arbeitsstunde von E5 wurde auf
+// dieser Lesung geplant. Ein Instrument, dessen Ausschlag unmöglich ist, wird
+// repariert oder gestrichen, nicht gedeutet (PB-47).
 /**
  * R5-N3 · E4 · THE ONE FRAME THIS INSTRUMENT USED TO THROW AWAY.
  *
@@ -410,7 +405,6 @@ export class PerfProbe {
   /** milliseconds the instrument itself burned this window */
   private overhead = 0;
 
-  private injectMs = 0;
   private notes: string[] = [];
 
   // saved originals, for a clean uninstall
@@ -680,8 +674,7 @@ export class PerfProbe {
       this.lastFrameEnd = end;
       this.frames++;
       this.drawCallRing.push(this.drawCalls);
-      if (this.injectMs > 0) burn(this.injectMs);
-      this.overhead += performance.now() - t0 - this.injectMs;
+      this.overhead += performance.now() - t0;
     };
     ev.on("prestep", this.onPreStep);
     ev.on("postrender", this.onPostRender);
@@ -989,58 +982,12 @@ export class PerfProbe {
     }
   }
 
-  /**
-   * Is the frame CPU-bound? Inject a known scalar load and measure the slope.
-   * A slope near 1 means added CPU cost lands 1:1 in frame time, which is the
-   * only condition under which multiplying by a "slow device" factor is honest.
-   */
-  async sweep(factor = 4): Promise<WeakEstimate> {
-    const deltaMs = 1000 / 60;
-    const samples: Array<{ injectedMs: number; p50: number }> = [];
-    for (const injectMs of [0, 1, 2, 4]) {
-      this.injectMs = injectMs;
-      await this.advance(20, deltaMs);
-      this.reset();
-      await this.advance(60, deltaMs);
-      samples.push({ injectedMs: injectMs, p50: round(this.cpu.stats().p50) });
-    }
-    this.injectMs = 0;
-
-    const first = samples[0];
-    const last = samples[samples.length - 1];
-    const slope = first !== undefined && last !== undefined && last.injectedMs > 0
-      ? (last.p50 - first.p50) / last.injectedMs
-      : 0;
-
-    await this.advance(20, deltaMs);
-    this.reset();
-    await this.advance(120, deltaMs);
-    const s = this.cpu.stats();
-    const reliable = slope >= 0.8;
-    return {
-      measuredP50Ms: round(s.p50),
-      measuredP95Ms: round(s.p95),
-      cpuBoundness: round(slope, 2),
-      factor,
-      projectedP50Ms: round(s.p50 * factor),
-      projectedP95Ms: round(s.p95 * factor),
-      budgetMs: round(FRAME_BUDGET_MS, 1),
-      verdict: !reliable
-        ? "not CPU-bound — the projection over-predicts and must not be quoted as a device figure"
-        : s.p50 * factor <= FRAME_BUDGET_MS
-          ? "comfortable"
-          : s.p50 * factor <= HALF_BUDGET_MS
-            ? "tight (between 30 and 60 fps)"
-            : "over budget",
-      model:
-        `Weak-device figure = measured CPU frame time × ${factor}. The factor ${factor} is a CHOSEN constant ` +
-        "standing for a mid-range school device against this machine on single-threaded scalar JS; it is NOT measured here. " +
-        "The projection models CPU time only — not GPU fill rate, not texture upload, not memory pressure, not GC, not bandwidth. " +
-        "It is valid only while cpuBoundness ≥ 0.8; below that the frame has non-CPU slack and the number over-predicts. " +
-        "A device that is fill-rate-bound will be WORSE than this predicts, not better.",
-      samples,
-    };
-  }
+  // R5-W5 · E6 · HIER STAND `sweep()` — siehe die Begründung oben bei
+  // `WeakEstimate`. Was an dieser Stelle FEHLT, ist Absicht: eine Hochrechnung
+  // auf ein schwaches Gerät braucht eine Messung, die zeigt, dass zusätzliche
+  // Rechenzeit überhaupt in der Bildzeit ankommt. Diese Messung war blind, und
+  // eine blinde Messung durch eine geratene Zahl zu ersetzen wäre schlechter als
+  // gar keine. Wer die Frage braucht, misst sie auf einem echten schwachen Gerät.
 }
 
 const statRound = (s: FrameStats): FrameStats => ({
@@ -1052,15 +999,6 @@ const statRound = (s: FrameStats): FrameStats => ({
   mean: round(s.mean),
 });
 
-/** Burn approximately `ms` of CPU in a tight scalar loop (sweep only). */
-const burn = (ms: number): void => {
-  const t0 = performance.now();
-  let sink = 0;
-  while (performance.now() - t0 < ms) {
-    for (let i = 0; i < 2000; i++) sink += i % 7;
-  }
-  if (sink === -1) throw new Error("unreachable");
-};
 
 const waitFrames = (n: number): Promise<void> =>
   new Promise((resolve) => {

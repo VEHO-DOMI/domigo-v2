@@ -12,7 +12,7 @@ import { bindTypingGuard } from "@domigo/game-feel/typing-guard";
 import { PaintScene, type TaskRequest } from "./PaintScene.ts";
 import type { TipPayload } from "./sim.ts";
 import { Merkseite, RuleFound, RuleRead } from "./cards/RulePage.tsx";
-import { PerfProbe, type FirstFrameReport, type PerfReport, type WeakEstimate } from "./perf.ts";
+import { PerfProbe, type FirstFrameReport, type PerfReport } from "./perf.ts";
 import { IDLE_PAD, type Pad } from "./player.ts";
 import { LOGICAL_H, LOGICAL_W, LOOP_FPS, RENDER_SCALE, airModelByName } from "./paint.ts";
 import type { PaintLevel, PhaseSpec } from "./level.ts";
@@ -133,7 +133,6 @@ export interface PerfApi {
   /** the raw engine — the dev harness exposes it too; this door is the
    *  production-build twin, so an experiment does not need a rebuild. */
   game: Phaser.Game;
-  sweep: (factor?: number) => Promise<WeakEstimate>;
 }
 
 declare global {
@@ -809,7 +808,6 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
         pump: () => probe.pump(),
         status: () => probe.status(),
         game,
-        sweep: (factor) => probe.sweep(factor),
       };
     }
 
