@@ -85,6 +85,15 @@ const LINE_REF_OWNER = "K4 / Kanon-Bahn";
 const LINE_REF_ALLOW = [
   // Der einzige Eintrag, der niemals fällt: D-242 nennt die verbotene Form beim Namen.
   { ref: "datei.ts:123", n: 1, why: "D-242 zitiert die verbotene Form selbst — sie MUSS dort stehen" },
+  // ── Beim Post-Zug-Merge dazugekommen (2026-08-18). Dieses Tor stand waehrend
+  // der Welle 5 noch nicht auf main, also konnten G4, B4b und F6 die alte Form
+  // nicht sehen. Geduldet wie der Rest, mit ihrem EIGENTUEMER benannt — nicht
+  // von dieser Bahn in fremden Abschnitten umgeschrieben.
+  { ref: "level.ts:1556", n: 1, lane: "G4 (D-295)" },
+  { ref: "entities.ts:100", n: 1, lane: "B4b (D-302)" },
+  { ref: "PaintScene.ts:5265", n: 2, lane: "B4b (D-305)" },
+  { ref: "ch01-dossiers-v2/README.md:72", n: 1, lane: "B4b (D-307)" },
+  { ref: "anim.ts:579", n: 1, lane: "F6 (D-317)" },
   { ref: "46_pitfall_register.md:172", n: 1 },
   { ref: "CONTRIBUTING.md:79", n: 1 },
   { ref: "CardGallery.tsx:113", n: 1 },
@@ -152,6 +161,25 @@ const tree = () => {
   walk(".");
   return TREE;
 };
+/** Steht dieser Anker in der Datei?
+ *
+ *  Ein Anker ist meist EIN Symbol (`stepRedeemed`), aber die Dossiers schreiben
+ *  auch Gliedpfade: `PhaseSpec.checkpointSide` heißt „das Feld checkpointSide
+ *  des Typs PhaseSpec". Diese Form steht so NIE im Quelltext — die Schnittstelle
+ *  deklariert oben `PhaseSpec` und weiter unten `checkpointSide?: …`. Ein
+ *  wörtlicher Vergleich meldet sie deshalb als fehlend, obwohl beide Teile da
+ *  sind: ein falsches rotes Licht auf einen völlig richtigen Verweis (gemessen
+ *  am B4b-Eintrag D-306, 2026-08-18).
+ *
+ *  Also: erst wörtlich, dann gliedweise — und JEDES Glied muss vorkommen. Das
+ *  bleibt eine echte Prüfung: ein Symbol, das es nicht gibt, hat kein Glied im
+ *  Text, und ein einteiliger Anker wird unverändert wörtlich gesucht. */
+const anchorIn = (text, anchor) => {
+  if (text.includes(anchor)) return true;
+  const teile = anchor.split(".").filter(Boolean);
+  return teile.length > 1 && teile.every((t) => text.includes(t));
+};
+
 const resolveRef = (ref) => {
   if (fs.existsSync(path.join(R, ref))) return ref;
   const hits = tree().filter((f) => f === ref || f.endsWith(`/${ref}`));
@@ -298,7 +326,7 @@ for (const doc of WATCHED) {
         // Symbol, ist der Verweis eindeutig. Trägt es KEINE, ist die richtige
         // Meldung nicht »mehrdeutig«, sondern »dieses Symbol gibt es nicht« —
         // und die ist es, die den Leser zur Reparatur führt.
-        const carrying = hit.filter((f) => fs.readFileSync(path.join(R, f), "utf8").includes(anchor));
+        const carrying = hit.filter((f) => anchorIn(fs.readFileSync(path.join(R, f), "utf8"), anchor));
         if (carrying.length === 1) continue;
         fail(carrying.length === 0
           ? `${doc}:${i + 1} — Anker »${anchor}« steht in KEINER der ${hit.length} Dateien namens ${ref} `
@@ -307,7 +335,7 @@ for (const doc of WATCHED) {
             + `(${carrying.join(", ")}); vollen Pfad schreiben`);
         continue;
       }
-      if (!fs.readFileSync(path.join(R, hit), "utf8").includes(anchor)) {
+      if (!anchorIn(fs.readFileSync(path.join(R, hit), "utf8"), anchor)) {
         fail(`${doc}:${i + 1} — Anker »${anchor}« steht nicht in ${hit}`);
       }
     }

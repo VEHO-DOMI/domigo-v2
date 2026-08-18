@@ -54,6 +54,7 @@ jobs:
       - run: pnpm content validate
       - run: pnpm content validate-story
       - run: node --experimental-strip-types scripts/check-story-grounding.mjs # W3/D-123: imports BANNED_DE from content-schema (.ts) — the flag is what lets it
+      - run: node scripts/check-design-sheets.mjs --selftest # W4/D-278: das Register-Gesetz trennt den Schrei vom Schreiben — Teilkette gegen Wortgrenze
       - run: node scripts/check-design-sheets.mjs
       - run: node --experimental-strip-types scripts/check-paint-art.mjs # PB-T2: no silent placeholder art
       - run: node --experimental-strip-types scripts/check-game-tasks.mjs --selftest # G2: the card gate's own red light must be reachable — one prepared traitor card per class
