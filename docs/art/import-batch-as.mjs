@@ -74,6 +74,8 @@ import fs from "node:fs";
 import path from "node:path";
 import { PNG } from "pngjs";
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
+import { importerWouldDelete } from "../../scripts/key-fringe.mjs";
 
 // D-69 (vor der K1-Entdopplung: D-33) asked for exactly this one line: the lab root is overridable, so the
 // import can be pointed at a fixture copy and TAMPER-TESTED without anyone
@@ -84,8 +86,27 @@ const OUT = path.join(process.cwd(), "apps/web/public/art/g1/paint/ch01");
 const TOL = 40;
 const read = (p) => PNG.sync.read(fs.readFileSync(p));
 const isMagenta = (r, g, b, tol = TOL) => Math.hypot(r - 255, g, b - 255) < tol;
-/** the importer's own fringe rule — the one that erases painted pixels */
-const isFringe = (r, g, b) => r > 120 && b > 120 && r - g > 55 && b - g > 55;
+/**
+ * The importer's own fringe rule — the one that erases painted pixels.
+ *
+ * ── ONE INSTRUMENT, NOT TWO (R5-W6 · A7) ─────────────────────────────────────
+ * This file used to carry its own copy: `r > 120 && b > 120 && r - g > 55 &&
+ * b - g > 55`. `scripts/key-fringe.mjs#importerWouldDelete` is that predicate
+ * character for character, and it is what the seam guard
+ * (`check-png-seams.mjs`) counts with. Two copies of one rule is a drift the
+ * next edit pays for, and W4's report named this importer's conversion to the
+ * shared module as its own follow-up. So the copy is gone and the guard's
+ * function is imported: gate and guard can no longer disagree about what
+ * "the importer would delete this pixel" means.
+ *
+ * This round's whole finding is that instrument, one level up: the delivery's
+ * own validator measures the SAME seam profile as this file and normalises it
+ * against a different denominator (its "texture step" for `mass_body_p2` Z0 is
+ * 22.25, this file measures 0.21 — a factor of 106). Both are right about the
+ * profile; the gate goes red anyway. A measuring chain works only when maker
+ * and gate hold the same ruler.
+ */
+const isFringe = importerWouldDelete;
 
 function crop(src, x0, y0, w, h) {
   const out = new PNG({ width: w, height: h });
@@ -230,6 +251,38 @@ const selfTile = (png) => {
   };
 };
 const SEAM_OVER_TEXTURE = 1.5;
+
+/**
+ * ── AND THE DENOMINATOR HAS TO BE REAL (R5-W6 · A7) ──────────────────────────
+ * `SEAM_OVER_TEXTURE` judges a join against the painting's own texture, which is
+ * exactly right while there IS one. Batch AS5b has almost none: its cells measure
+ * a mean neighbour-to-neighbour step of 0.05–0.82, so the limit they are held to
+ * is 0.08–1.2 out of 255 and any residual gradient reads as a seam. A ratio stops
+ * meaning anything when its denominator approaches zero — and a mass sheet with
+ * no texture is the more basic defect anyway: it is a colour field, not paint.
+ *
+ * So the floor is MEASURED FROM BOTH SIDES rather than chosen. Every opaque tile
+ * stem the game draws today (34 of them, the list `check-png-seams` derives from
+ * the composition) was run through this same metric:
+ *
+ *   shipping art          1.740 … 6.901
+ *   its lowest            `mass_sediment` at 1.740 — and that is the darkest
+ *                         sheet in the set (4.81 % luminance), where little
+ *                         texture is honest
+ *   every AS5b cell       0.05 … 0.82
+ *
+ * The two sets do not overlap; the gap is a factor of 2.1. 1.5 sits inside it —
+ * under every sheet the game already draws, over every cell of this delivery. A
+ * threshold that separates accepted art from a rejected delivery on measured
+ * numbers is a law; one picked for roundness is a preference. (Re-derive with
+ * the probe in the A7 report before moving it.)
+ *
+ * SCOPE: judged only where a seam is asked for. This is the quantity the seam
+ * ratio divides by, and a sheet nobody tiles — a corner, a cap — is stretched,
+ * not repeated. The texture step is PRINTED for every piece regardless, so
+ * flatness stays visible where it was never load-bearing.
+ */
+const MIN_TEXTURE = 1.5;
 
 /**
  * ── WHY THE SEAM CHECK NEEDED AN AXIS (R5-W4 · A6) ───────────────────────────
@@ -688,6 +741,11 @@ SHEETS.push({
  * Cut and judge ONE piece. Returns `{ img, faults, L, S, seam, key }` — the
  * caller decides whether to write it.
  *
+ * `L` is `null`, never 0, when the cell was rejected before it could be
+ * measured. A cell that failed its key check has no luminance yet; printing
+ * "0.00 %" for it puts a number in a table that no one measured, and tables get
+ * quoted. (`--verify` printed exactly that for 30 of AS5b's 84 cells.)
+ *
  * This is a function rather than the body of a loop for one reason: `--selftest`
  * has to exercise the SHIPPING code path. A selftest that re-implements the
  * cut proves that the copy works.
@@ -700,7 +758,7 @@ const cutPiece = (png, sheet, pos, stem, opt = {}) => {
   if (opt.box !== undefined) {
     const [bx0, by0, bx1, by1] = opt.box;
     if (bx0 < 0 || by0 < 0 || bx1 >= png.width || by1 >= png.height || bx1 < bx0 || by1 < by0) {
-      return { img: null, faults: [`${stem}: box [${opt.box.join(", ")}] falls outside the ${png.width}×${png.height} sheet`], L: 0, S: null, seam: null, key: null };
+      return { img: null, faults: [`${stem}: box [${opt.box.join(", ")}] falls outside the ${png.width}×${png.height} sheet`], L: null, S: null, seam: null, key: null };
     }
     img = crop(png, bx0, by0, bx1 - bx0 + 1, by1 - by0 + 1);
   } else {
@@ -718,9 +776,17 @@ const cutPiece = (png, sheet, pos, stem, opt = {}) => {
     if (key.wouldErase > 0) {
       faults.push(`${stem}: ${key.wouldErase} painted px match the importer's own fringe rule — defringe would eat the painting's edge`);
     }
-    if (faults.length > 0) return { img: null, faults, L: 0, S: null, seam: null, key };
+    if (faults.length > 0) return { img: null, faults, L: null, S: null, seam: null, key };
     chromaKey(img);
     defringe(img);
+    // A BAND is the sheet's shared vertical content window, derived ONCE across
+    // all of its cells (`sheetBand`) and handed in here. Cropped after the key,
+    // because the window is a property of the painting, not of the cell — and
+    // shared, because the four crust cells must keep one coordinate frame or the
+    // caps float off the loop (`import-batch-af.mjs`, mode `band`).
+    if (opt.band !== undefined) {
+      img = crop(img, 0, opt.band[0], img.width, opt.band[1] - opt.band[0] + 1);
+    }
     if (opt.box !== undefined) faults.push(...boxFaults(img, stem, opt.box));
     const share = alphaShare(img);
     if (opt.alpha !== undefined && share < opt.alpha) {
@@ -731,13 +797,13 @@ const cutPiece = (png, sheet, pos, stem, opt = {}) => {
     // `opaque` writes what was painted: no key, no defringe, no content trim.
     faults.push(...opaqueFaults(img, stem));
   }
-  if (faults.length > 0) return { img: null, faults, L: 0, S: null, seam: null, key };
+  if (faults.length > 0) return { img: null, faults, L: null, S: null, seam: null, key };
 
   let tone = null;
   if (opt.toneLike !== undefined) {
     const target = measured.get(opt.toneLike);
     if (target === undefined) {
-      return { img: null, faults: [`${stem}: toneLike names "${opt.toneLike}", which has not been imported before it`], L: 0, S: null, seam: null, key, tone: null };
+      return { img: null, faults: [`${stem}: toneLike names "${opt.toneLike}", which has not been imported before it`], L: null, S: null, seam: null, key, tone: null };
     }
     tone = toneTo(img, target);
     if (tone.refused === true) {
@@ -772,10 +838,14 @@ const cutPiece = (png, sheet, pos, stem, opt = {}) => {
       else notes.push(`⚠ ${stem}: ${msg} — DECLARED EXCEPTION: ${waived}`);
     }
   }
-  let seam = null;
+  // Measured for every piece — the table prints a texture step even where no
+  // seam is owed, because flatness is a fact about the paint, not about tiling.
+  const seam = selfTile(img);
   const axes = seamAxes(opt.tiles);
   if (axes.length > 0) {
-    seam = selfTile(img);
+    if (seam.inner < MIN_TEXTURE) {
+      faults.push(`${stem}: the paint carries almost no texture — mean neighbour step ${seam.inner.toFixed(2)}, floor ${MIN_TEXTURE.toFixed(1)} (every tile the game draws today measures 1.74–6.90). A tiling sheet without texture is a colour field, and the seam ratio below divides by this number.`);
+    }
     const limit = seam.inner * SEAM_OVER_TEXTURE;
     for (const ax of axes) {
       if (seam[ax] > limit) {
@@ -833,8 +903,6 @@ const AS5_EDGE_BOXES = {
   p4: { edgeL: [0, 0, 134, 511], edgeR: [890, 0, 1023, 511], edgeD_l: [1024, 362, 1535, 511], edgeD_r: [1536, 362, 2047, 511], cornerBL: [0, 512, 255, 1023], cornerBR: [768, 512, 1023, 1023], inCornerL: [1024, 757, 1279, 1023], inCornerR: [1792, 757, 2047, 1023] },
   p9: { edgeL: [0, 0, 136, 511], edgeR: [887, 0, 1023, 511], edgeD_l: [1024, 361, 1535, 511], edgeD_r: [1536, 361, 2047, 511], cornerBL: [0, 512, 259, 1023], cornerBR: [764, 512, 1023, 1023], inCornerL: [1024, 756, 1283, 1023], inCornerR: [1788, 756, 2047, 1023] },
 };
-/** the ramp sheet is one box for every phase — a stepped wedge inside a keyed cell */
-const AS5_RAMP_BOX = [26, 119, 486, 511];
 /** cell → stem suffix, seam axis, and how much of the box may legally be key */
 const AS5_EDGE_CELLS = [
   [0, "edge", "_l", "v", 0.90], [1, "edge", "_r", "v", 0.90],
@@ -842,6 +910,99 @@ const AS5_EDGE_CELLS = [
   [4, "corner", "_bl", null, 0.55], [5, "corner", "_br", null, 0.55],
   [6, "incorner", "_l", null, 0.55], [7, "incorner", "_r", null, 0.55],
 ];
+
+/**
+ * ── THE CRUST IS A BAND INSIDE A TALLER CELL, AND ITS HEIGHT IS LOAD-BEARING ──
+ *
+ * The walk course is painted as a horizontal band inside a 512² cell and cut to
+ * that band on import (`import-batch-af.mjs`, mode `band`), because the renderer
+ * derives a tile's scale from its SOURCE HEIGHT: an untrimmed cell draws the art
+ * at ~40 % of its slot with transparent gaps above and below.
+ *
+ * These are therefore not preferences, they are the heights the engine is
+ * already built around — measured off the stems on disk, one per room:
+ */
+const AS5_CRUST_BANDS = { p2: 211, p3: 262, p4: 237, p9: 246 };
+
+/**
+ * The sheet's shared vertical content window, keyed first. Shared and not
+ * per-cell: the four cells of a crust sheet are one run of material, and a cap
+ * cut at its own window sits at a different height from the loop it closes.
+ */
+const sheetBand = (png, sheet) => {
+  const cw = png.width / sheet.cols, ch = png.height / sheet.rows;
+  let y0 = ch, y1 = -1;
+  for (let pos = 0; pos < sheet.cols * sheet.rows; pos++) {
+    const img = crop(png, (pos % sheet.cols) * cw, Math.floor(pos / sheet.cols) * ch, cw, ch);
+    chromaKey(img);
+    defringe(img);
+    const cb = contentBox(img);
+    if (cb === null) continue;
+    y0 = Math.min(y0, cb.y0);
+    y1 = Math.max(y1, cb.y1);
+  }
+  return y1 < 0 ? null : [y0, y1];
+};
+
+/**
+ * ── FOUR CELLS, OR ONE CELL FOUR TIMES (R5-W6 · A7) ──────────────────────────
+ * Every window in this file measures ONE cell against a number. None of them can
+ * see the defect where two cells are the same cell — and AS5b ships it three
+ * times: `crust_p4` cell 2 is byte-identical to cell 0 and cell 3 to cell 1, and
+ * `crust_p3` cell 3 to cell 1. A cap closes a run; it is not the middle tile
+ * again. Every crust sheet already on disk carries four distinct cells, in all
+ * five rooms — so this is the delivery departing from the house's own art, and
+ * every luminance, saturation and seam number it prints for those cells is
+ * "PASS" by construction.
+ *
+ * Byte identity, deliberately, not a statistical likeness: `crust_p1_cap_l` and
+ * `_cap_r` measure the same texture step and the same luminance to two decimals
+ * because they are MIRRORED — which is what a left and a right cap should be.
+ * Only an exact copy is the defect.
+ *
+ * Applied to every sheet, not only the crusts, and the widening earned itself
+ * immediately: `mass_edges_p3` and `mass_edges_p4` deliver ONE underside twice
+ * (cell 3 = cell 2). Measured against the batches around it, distinctness is the
+ * house norm and this delivery is the exception — AS3's accepted edge sheet, AS5,
+ * AS5b's own p1/p2/p9 edge sheets and all four of its body sheets carry eight
+ * distinct cells each. Five cells of AS5b are copies.
+ */
+const duplicateCells = (png, sheet) => {
+  const cw = png.width / sheet.cols, ch = png.height / sheet.rows;
+  const seen = new Map();
+  const dup = new Map();
+  for (let pos = 0; pos < sheet.cols * sheet.rows; pos++) {
+    const img = crop(png, (pos % sheet.cols) * cw, Math.floor(pos / sheet.cols) * ch, cw, ch);
+    const fp = createHash("sha1").update(img.data).digest("hex");
+    if (seen.has(fp)) dup.set(pos, seen.get(fp));
+    else seen.set(fp, pos);
+  }
+  return dup;
+};
+
+/**
+ * Everything a sheet must answer BEFORE its cells are judged one by one: which
+ * cells are copies of each other, and where its shared band lies. Shared by
+ * `--verify` and the import so the two can never drift — that identity is the
+ * entire promise `--verify` makes to the lab.
+ */
+const prepSheet = (png, sheet) => {
+  const dup = duplicateCells(png, sheet);
+  const faults = [];
+  let bandRows = null;
+  if (sheet.band !== undefined) {
+    bandRows = sheetBand(png, sheet);
+    if (bandRows === null) {
+      faults.push(`${sheet.file}: every cell keys to nothing — there is no band to cut`);
+    } else {
+      const h = bandRows[1] - bandRows[0] + 1;
+      if (h !== sheet.band) {
+        faults.push(`${sheet.file}: its shared band is ${h} px (y ${bandRows[0]}..${bandRows[1]}); the stems this replaces are ${sheet.band} px. The renderer scales a crust tile from its SOURCE HEIGHT, so a band of the wrong height draws the course at the wrong size.`);
+      }
+    }
+  }
+  return { dup, bandRows, faults };
+};
 
 const as5Sheets = (phase, batch) => {
   const boxes = AS5_EDGE_BOXES[phase];
@@ -873,13 +1034,46 @@ const as5Sheets = (phase, batch) => {
       { box: boxes[["edgeL", "edgeR", "edgeD_l", "edgeD_r", "cornerBL", "cornerBR", "inCornerL", "inCornerR"][pos]], aboveBody: [6, 12], alpha, ...(axis === null ? {} : { tiles: axis }) },
     ]),
   });
-  out.push({
-    file: `${batch}/mass_ramps_${phase}.png`, cols: 4, rows: 1, mode: "keyed",
-    pieces: [
-      [0, `mass_ramp_${phase}_up`, { box: AS5_RAMP_BOX, aboveBody: [6, 12], alpha: 0.45 }],
-      [1, `mass_ramp_${phase}_down`, { box: AS5_RAMP_BOX, aboveBody: [6, 12], alpha: 0.45 }],
-    ],
-  });
+  // ── NO RAMP SHEET IS EXPECTED, AND THAT IS NOT AN OMISSION (R109, R5-W6 · A7) ─
+  // This function used to append `mass_ramps_<phase>.png` for every phase, so
+  // `--verify` reported five sheets "MISSING" on a delivery that was correct to
+  // ask for none. ch01 carries ZERO slope glyphs (`/ \ 1 2 3 4`) across all five
+  // surfaces, so `planMass` never plans a ramp piece; R109 struck the ramps from
+  // the commission, E6 took them out of `massStems`, and the two placeholder PNGs
+  // are deleted. A gate that demands art the specification withdrew teaches the
+  // lab the wrong lesson and buries the real findings under five false ones.
+  // The moment a surface carries a slope, the ramps come back — as a re-order,
+  // with `composition.test.ts`'s law (slope glyph ⇒ ramp sheets on the plate)
+  // holding the engine side of it.
+
+  // ── THE WALK COURSE (D-199's repair) ───────────────────────────────────────
+  // `crust_<phase>.png`: four cells, keyed, cut to one shared band (mode `band`
+  // in `import-batch-af.mjs`). No luminance window is declared here on purpose —
+  // the course's value is not a per-sheet number but a RELATION to the body it
+  // lies on, and that relation already has a law with better instruments:
+  // `check-composition` audit 11 (ΔH ≤ 25°, ΔS ≤ 25, carve +2…+14). Inventing a
+  // second window here would give the same question two answers.
+  //
+  // What IS checked: the band height (the renderer scales from source height),
+  // the horizontal seam on the two loop cells, the texture floor, cell
+  // distinctness — and, through the keyed path's own `wouldErase` test, that no
+  // painted pixel matches the seam guard's deletion rule. That last one IS
+  // D-199: today's four sheets fail it (838–2670 px), and only a dated exception
+  // in `check-png-seams.mjs` keeps main green.
+  if (AS5_CRUST_BANDS[phase] !== undefined) {
+    out.push({
+      file: `${batch}/crust_${phase}.png`, cols: 4, rows: 1, mode: "keyed",
+      band: AS5_CRUST_BANDS[phase],
+      pieces: [
+        // the loop repeats along the platform top; the caps close it and are
+        // drawn once, so no seam is owed of them (`planMass` §crust run).
+        [0, `crust_${phase}_a`, { tiles: "h" }],
+        [1, `crust_${phase}_b`, { tiles: "h" }],
+        [2, `crust_${phase}_cap_l`, {}],
+        [3, `crust_${phase}_cap_r`, {}],
+      ],
+    });
+  }
   return out;
 };
 
@@ -900,7 +1094,10 @@ if (process.argv.includes("--verify")) {
   const tally = { pass: 0, fail: 0, missing: 0 };
   const orders = [];
 
-  console.log(`\nVERIFY — ${batch} against the gate an import would apply. Nothing is written.\n`);
+  console.log(`\nVERIFY — ${batch} against the gate an import would apply. Nothing is written.`);
+  console.log(`  L = luminance of the PAINTED pixels (— = the cell failed before it could be measured, which is not the same as 0)`);
+  console.log(`  tex = mean neighbour-to-neighbour step, the painting's own texture — floor ${MIN_TEXTURE.toFixed(1)}, shipping art measures 1.74–6.90`);
+  console.log(`  seam = join ÷ tex, and the largest jump within ${PROFILE_DEPTH} px behind it ÷ tex — both must stay under ${SEAM_OVER_TEXTURE}×\n`);
   for (const phase of only) {
     const seeded = phase === "p1" ? seedBodyFromDisk("p1") : (resetBody(), 0);
     console.log(`\n── ${phase} ${"─".repeat(72)}`);
@@ -909,23 +1106,32 @@ if (process.argv.includes("--verify")) {
       const src = path.join(LAB, sheet.file);
       if (!fs.existsSync(src)) { console.log(`   ✗ MISSING  ${sheet.file}`); tally.missing++; continue; }
       const png = read(src);
-      console.log(`\n   ${sheet.file}  ${png.width}×${png.height}  ${sheet.mode}`);
+      const prep = prepSheet(png, sheet);
+      console.log(`\n   ${sheet.file}  ${png.width}×${png.height}  ${sheet.mode}`
+        + (prep.bandRows === null ? "" : `  band y ${prep.bandRows[0]}..${prep.bandRows[1]} = ${prep.bandRows[1] - prep.bandRows[0] + 1} px (stems on disk: ${sheet.band})`));
+      for (const f of prep.faults) { tally.fail++; orders.push(f); console.log(`     ✗ SHEET  ${f}`); }
       for (const [pos, stem, opt = {}] of sheet.pieces) {
-        const cut = cutPiece(png, sheet, pos, stem, opt);
+        const o = prep.bandRows === null ? opt : { ...opt, band: prep.bandRows };
+        const cut = cutPiece(png, sheet, pos, stem, o);
         if (cut.img !== null) { rememberBody(stem, cut.L); measured.set(stem, cut.L); }
+        const faults = [...cut.faults];
+        if (prep.dup.has(pos)) {
+          faults.unshift(`${stem}: cell ${pos} of this sheet is a byte-identical copy of cell ${prep.dup.get(pos)} — the same picture twice, so every number printed on this row is really that cell's. A sheet's cells are separate pieces of material: AS3's accepted edge sheet, AS5's, and AS5b's own p1/p2/p9 edge sheets and all four body sheets carry only distinct cells.`);
+        }
         const axes = seamAxes(opt.tiles);
         const seam = cut.seam === null || axes.length === 0
           ? "—"
           : axes.map((ax) => `${ax} ${(cut.seam[ax] / cut.seam.inner).toFixed(2)}× climb ${(cut.seam[`${ax}Jump`] / cut.seam.inner).toFixed(2)}×`).join(" ");
         const win = opt.luma ?? (opt.aboveBody === undefined ? null : bodyWindow(opt.aboveBody));
-        const ok = cut.faults.length === 0;
-        if (ok) tally.pass++; else { tally.fail++; orders.push(`${stem}: ${cut.faults[0]}`); }
+        const ok = faults.length === 0;
+        if (ok) tally.pass++; else { tally.fail++; orders.push(`${stem}: ${faults[0]}`); }
         console.log(
-          `     Z${pos} ${stem.padEnd(24)} L ${cut.L.toFixed(2).padStart(6)}%` +
+          `     Z${pos} ${stem.padEnd(24)} L ${cut.L === null ? "     —" : `${cut.L.toFixed(2).padStart(6)}%`}` +
           `  ${(win === null ? "—" : `${win[0].toFixed(1)}–${win[1].toFixed(1)}`).padStart(13)}` +
+          `  tex ${(cut.seam === null ? "—" : cut.seam.inner.toFixed(2)).padStart(5)}` +
           `  ${seam.padEnd(38)} ${ok ? "✓" : "✗"}`,
         );
-        for (const f of cut.faults) console.log(`          ↳ ${f}`);
+        for (const f of faults) console.log(`          ↳ ${f}`);
       }
     }
   }
@@ -998,6 +1204,96 @@ if (process.argv.includes("--selftest")) {
     console.log(`✓ hidden seam: duplicating the boundary row turns a ${honest.seam.tb.toFixed(2)} join into ${cheat.seam.tb.toFixed(2)} — and it is still REJECTED, because the picture jumps ${cheat.seam.tbJump.toFixed(2)} behind the duplicate`);
   }
 
+  // ── FLATNESS HAS TO GO RED WHERE THE SEAM RATIO PROVABLY CANNOT (A7) ───────
+  // The seam law is a RATIO — join ÷ texture — so it survives anything that
+  // scales both. Pull every painted pixel toward the sheet's own mean and the
+  // picture keeps its mean luminance, its alpha, its key and its seam ratios;
+  // the only thing that changes is how much paint is left. That is batch AS5b's
+  // defect exactly, manufactured here out of art this file already accepts, on
+  // the one case where MIN_TEXTURE and SEAM_OVER_TEXTURE diverge. Without the
+  // texture floor this case passes — which is the whole reason it exists.
+  const flatten = (src, k) => {
+    const copy = crop(src, 0, 0, src.width, src.height);
+    let n = 0, m = [0, 0, 0];
+    for (let i = 0; i < copy.data.length; i += 4) {
+      if (isMagenta(copy.data[i], copy.data[i + 1], copy.data[i + 2])) continue;
+      for (let o = 0; o < 3; o++) m[o] += copy.data[i + o];
+      n++;
+    }
+    if (n === 0) return copy;
+    m = m.map((v) => v / n);
+    for (let i = 0; i < copy.data.length; i += 4) {
+      if (isMagenta(copy.data[i], copy.data[i + 1], copy.data[i + 2])) continue;
+      for (let o = 0; o < 3; o++) {
+        copy.data[i + o] = Math.max(0, Math.min(255, Math.round(m[o] + (copy.data[i + o] - m[o]) * k)));
+      }
+    }
+    return copy;
+  };
+  const sharp = cutPiece(png, sheet, 0, "texture_before", { box: EDGE_BOXES.edgeL, tiles: "v" });
+  const flat = cutPiece(flatten(png, 0.05), sheet, 0, "texture_after", { box: EDGE_BOXES.edgeL, tiles: "v" });
+  // A tamper that changed nothing proves nothing — so prove both halves moved.
+  assert(sharp.seam.inner > MIN_TEXTURE, `texture fixture is wrong: the accepted sheet was expected to carry texture, it measures ${sharp.seam.inner.toFixed(2)}`);
+  assert(flat.seam.inner < MIN_TEXTURE, `the flattening did not take: texture is still ${flat.seam.inner.toFixed(2)}`);
+  assert(sharp.faults.length === 0, `texture fixture is wrong: the untouched piece already fails — ${sharp.faults.join(" · ")}`);
+  const flatSeamFaults = flat.faults.filter((f) => f.includes("tile with itself") || f.includes("HIDDEN"));
+  if (flatSeamFaults.length > 0) {
+    bad++;
+    console.error(`✗ texture: the flattened piece was caught by the SEAM law (${flatSeamFaults[0]}) — this case no longer isolates flatness, so it proves nothing about MIN_TEXTURE`);
+  } else if (!flat.faults.some((f) => f.includes("almost no texture"))) {
+    bad++;
+    console.error(`✗ texture: a piece whose paint was flattened from ${sharp.seam.inner.toFixed(2)} to ${flat.seam.inner.toFixed(2)} was ACCEPTED — the texture floor is decoration`);
+  } else {
+    console.log(`✓ texture: flattening the same painting from a ${sharp.seam.inner.toFixed(2)} step to ${flat.seam.inner.toFixed(2)} is REJECTED — and the seam law does not fire on it (join ratio ${(sharp.seam.tb / sharp.seam.inner).toFixed(2)}× before, ${(flat.seam.tb / flat.seam.inner).toFixed(2)}× after), so the floor is catching what the ratio cannot`);
+  }
+
+  // ── ONE CELL TWICE HAS TO GO RED, AND A CLEAN SHEET MUST NOT ───────────────
+  // Both directions, because a duplicate check that fires on everything is worse
+  // than none: the accepted AS3 sheet carries eight distinct cells and must stay
+  // silent, and the same sheet with cell 2 pasted over cell 3 must not.
+  const pasteCell = (src, from, to, cols, rows) => {
+    const copy = crop(src, 0, 0, src.width, src.height);
+    const cw = src.width / cols, ch = src.height / rows;
+    const fx = (from % cols) * cw, fy = Math.floor(from / cols) * ch;
+    const tx = (to % cols) * cw, ty = Math.floor(to / cols) * ch;
+    for (let y = 0; y < ch; y++) {
+      for (let x = 0; x < cw; x++) {
+        const si = ((fy + y) * src.width + (fx + x)) * 4, di = ((ty + y) * src.width + (tx + x)) * 4;
+        for (let o = 0; o < 4; o++) copy.data[di + o] = copy.data[si + o];
+      }
+    }
+    return copy;
+  };
+  const cleanDup = duplicateCells(png, { cols: 4, rows: 2 });
+  const pastedDup = duplicateCells(pasteCell(png, 2, 3, 4, 2), { cols: 4, rows: 2 });
+  assert(pastedDup.get(3) === 2, `the paste did not take: cell 3 is not reported as a copy of cell 2 (${[...pastedDup].join(", ") || "no duplicates at all"})`);
+  if (cleanDup.size > 0) {
+    bad++;
+    console.error(`✗ distinctness: the ACCEPTED AS3 sheet was reported as carrying copies (${[...cleanDup].map(([a, b]) => `Z${a}=Z${b}`).join(", ")}) — a check that fires on good art is worse than none`);
+  } else {
+    console.log(`✓ distinctness: the accepted AS3 sheet reads as eight distinct cells, and the same sheet with cell 2 pasted over cell 3 is caught`);
+  }
+
+  // ── A BAND OF THE WRONG HEIGHT HAS TO GO RED ───────────────────────────────
+  // The renderer scales a crust tile from its SOURCE HEIGHT, so the declared band
+  // height is load-bearing geometry. Exercised in both directions on the same
+  // real sheet: the height it actually measures must pass, one pixel off must not.
+  const bandSheet = (h) => ({ file: "selftest-band", cols: 4, rows: 2, mode: "keyed", band: h });
+  const measuredBand = sheetBand(png, bandSheet(0));
+  const trueH = measuredBand[1] - measuredBand[0] + 1;
+  const right = prepSheet(png, bandSheet(trueH));
+  const wrong = prepSheet(png, bandSheet(trueH - 1));
+  assert(right.bandRows !== null, "band fixture is wrong: the sheet keys to nothing");
+  if (right.faults.length > 0) {
+    bad++;
+    console.error(`✗ band: the sheet's OWN measured height ${trueH} was rejected — ${right.faults[0]}`);
+  } else if (!wrong.faults.some((f) => f.includes("shared band"))) {
+    bad++;
+    console.error(`✗ band: a declared height of ${trueH - 1} against a measured ${trueH} was ACCEPTED — the band check is decoration`);
+  } else {
+    console.log(`✓ band: the sheet's own measured band height ${trueH} px passes and ${trueH - 1} px is rejected — the crust cannot be cut to a height the renderer does not scale from`);
+  }
+
   const wrongAxis = cutPiece(png, sheet, 0, "axis_edgeL", { box: EDGE_BOXES.edgeL, tiles: "h" });
   if (!wrongAxis.faults.some((f) => f.includes("left↔right"))) {
     bad++;
@@ -1006,7 +1302,9 @@ if (process.argv.includes("--selftest")) {
     console.log(`✓ axis: the same strip fails left↔right (${wrongAxis.seam.lr.toFixed(2)}) and passes top↔bottom (${wrongAxis.seam.tb.toFixed(2)}) — the axes are told apart`);
   }
   if (bad > 0) { console.error("✗ import-batch-as selftest: FAILED"); process.exit(1); }
-  console.log("✓ selftest: a box measured at the wrong sheet is caught, the re-measured one passes, and the seam axes are distinguished.");
+  console.log("✓ selftest: a box measured at the wrong sheet is caught, the re-measured one passes, the seam axes are\n"
+    + "  distinguished, a hidden seam and a flattened painting both go red, a copied cell is named, and a band of\n"
+    + "  the wrong height is refused — each on a case where the right answer and the plausible wrong one diverge.");
   process.exit(0);
 }
 
@@ -1029,9 +1327,21 @@ for (const sheet of SHEETS) {
     failures.push(`${sheet.file}: cells are ${cw}×${ch}; the mass kit is painted on 512×512 cells and bodyScaleOf reads that width`);
     continue;
   }
+  // (A band sheet is 512×512 at SOURCE too — the band is cut out of the cell
+  //  after the key, so the grid law above still holds for it.)
 
+  // The same two sheet-level laws `--verify` applies, applied here — the promise
+  // that file makes to the lab is that the two paths are ONE gate, and a law that
+  // only the preview runs is a law an import can walk past.
+  const prep = prepSheet(png, sheet);
+  failures.push(...prep.faults);
   for (const [pos, stem, opt = {}] of sheet.pieces) {
-    const cut = cutPiece(png, sheet, pos, stem, opt);
+    if (prep.dup.has(pos)) {
+      failures.push(`${stem}: cell ${pos} of ${sheet.file} is a byte-identical copy of cell ${prep.dup.get(pos)} — the same picture written to two stems`);
+      continue;
+    }
+    const o = prep.bandRows === null ? opt : { ...opt, band: prep.bandRows };
+    const cut = cutPiece(png, sheet, pos, stem, o);
     if (cut.faults.length > 0) { failures.push(...cut.faults); continue; }
     rememberBody(stem, cut.L);
     measured.set(stem, cut.L);

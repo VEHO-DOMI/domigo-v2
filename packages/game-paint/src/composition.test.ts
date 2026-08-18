@@ -1100,12 +1100,33 @@ describe("D-267 · Rampen-Blätter und Gitter dürfen nicht auseinanderlaufen", 
     expect(needsRampSheets(["#z.#"])).toBe(false); // die Kreide-Rutsche ist kein Rampen-Stück
   });
 
-  it("lädt in keiner Phase mehr ein Rampen-Blatt (D-267)", () => {
+  it("deklariert in keiner Phase ein Rampen-Blatt und lädt keines (D-267 + D-324)", () => {
+    // R5-W6 · A7 · D-324: die Kit-Felder sind jetzt optional, und genau deshalb
+    // prueft dieses Gesetz die DEKLARATION und nicht nur den Scope. Solange die
+    // Felder Pflicht waren, trugen sie den Namen einer geloeschten Datei — haette
+    // hier weiter `not.toContain(spec.mass.rampUp)` gestanden, verglichen die
+    // beiden Zeilen ab sofort gegen `undefined` und gingen leer durch.
     for (const [id, spec] of Object.entries(CH01_COMPOSITION)) {
-      const stems = compositionStems(spec);
-      expect(stems, `${id} lädt ${spec.mass.rampUp}`).not.toContain(spec.mass.rampUp);
-      expect(stems, `${id} lädt ${spec.mass.rampDown}`).not.toContain(spec.mass.rampDown);
+      expect(spec.mass.rampUp, `${id} deklariert wieder ein rampUp-Blatt`).toBeUndefined();
+      expect(spec.mass.rampDown, `${id} deklariert wieder ein rampDown-Blatt`).toBeUndefined();
+      const ramps = compositionStems(spec).filter((stem) => stem.startsWith("mass_ramp"));
+      expect(ramps, `${id} laedt ein Rampen-Blatt`).toEqual([]);
     }
+  });
+
+  it("haelt an, statt ein Loch in den Boden zu zeichnen, wenn ein Kit ohne Rampen auf eine Steigung trifft (D-324)", () => {
+    // Beide Richtungen, sonst beweist der Fall nichts: dasselbe Gitter, einmal
+    // mit Rampen-Blaettern im Kit und einmal ohne. Mit ihnen MUSS ein Stueck
+    // geplant werden, ohne sie MUSS es knallen — ein stilles Ueberspringen waere
+    // genau der unsichtbare Boden, den D-324 abstellt.
+    const slope = ["#..#", "#/.#"];
+    const withRamps = planMass(slope, kit, afSrc).filter((q) => q.kind === "ramp");
+    expect(withRamps.length, "ein Kit MIT Rampen plant das Stueck").toBe(1);
+    expect(withRamps[0]?.stem).toBe("ramp_up");
+    const { rampUp: _u, rampDown: _d, ...noRamps } = kit;
+    expect(() => planMass(slope, noRamps, afSrc)).toThrow(/declares no rampUp sheet/);
+    // …und ohne Steigung darf dasselbe rampenlose Kit ganz normal planen.
+    expect(() => planMass(["####", "#..#"], noRamps, afSrc)).not.toThrow();
   });
 
   it("verlangt die Blätter zurück, sobald ein Gitter eine Steigung trägt", () => {
@@ -1144,12 +1165,14 @@ describe("D-267 · Rampen-Blätter und Gitter dürfen nicht auseinanderlaufen", 
             phasesWithSlope += 1;
             const spec = compositionFor(level.chapter, ph.id);
             if (spec === null) continue;
-            for (const stem of [spec.mass.rampUp, spec.mass.rampDown]) {
+            for (const [field, stem] of [["rampUp", spec.mass.rampUp], ["rampDown", spec.mass.rampDown]] as const) {
               expect(
-                onDisk.has(stem),
-                `${f}/${ph.id} trägt eine Steigung, aber ${stem}.png liegt nicht auf der Platte — `
-                  + "die Rampen wurden in R5-W5 · E6 gelöscht (D-267). Eine Fläche mit Steigungen "
-                  + "braucht eine neue Bestellung (R109), keine stille Wiederbelebung.",
+                stem !== undefined && onDisk.has(stem),
+                `${f}/${ph.id} trägt eine Steigung, aber sein Kit `
+                  + (stem === undefined ? `deklariert kein ${field}-Blatt` : `nennt ${stem}, und ${stem}.png liegt nicht auf der Platte`)
+                  + " — die Rampen wurden in R5-W5 · E6 gelöscht (D-267) und ihre Kit-Felder in R5-W6 · A7 "
+                  + "optional gemacht (D-324). Eine Fläche mit Steigungen braucht eine neue Bestellung (R109), "
+                  + "keine stille Wiederbelebung.",
               ).toBe(true);
             }
           }

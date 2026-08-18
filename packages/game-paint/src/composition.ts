@@ -73,9 +73,26 @@ export interface MassKit {
   cornerBR: string;
   inCornerL: string;
   inCornerR: string;
-  /** drawn ramp masses for the 45°/30° slope glyphs. */
-  rampUp: string;
-  rampDown: string;
+  /**
+   * Drawn ramp masses for the 45°/30° slope glyphs — OPTIONAL since R5-W6 · A7
+   * (D-324).
+   *
+   * These were mandatory fields, and the only thing that filled them was
+   * `sharedRamps()`, which named two PNGs that no longer exist: R109 struck the
+   * ramps from the commission and E6 deleted `mass_ramp_up`/`_down` after
+   * measuring that ch01 carries ZERO slope glyphs across all five surfaces, so
+   * `planMass` never plans a ramp piece. A required field whose only value is
+   * the name of a deleted file is worse than an absent one — it type-checks, it
+   * reads as a promise, and the first surface that grows a slope would have
+   * drawn a hole in the floor.
+   *
+   * Absent is now the honest state, and it is enforced from both ends: `planMass`
+   * throws rather than draw nothing if a slope ever meets a kit without ramp art,
+   * and `composition.test.ts`'s D-267 law fails any phase whose grid carries
+   * `/ \ 1 2 3 4` unless its kit both DECLARES the sheets and has them on disk.
+   */
+  rampUp?: string;
+  rampDown?: string;
   /**
    * R5-W4 · A6 — HOW FAR THIS ROOM LAYS ITS TRIMS BACK, as a multiply.
    *
@@ -739,11 +756,6 @@ const paintedTrims = (phase: string): Pick<MassKit, "edgeL" | "edgeR" | "cornerB
  * `mass_ramp_up`, CANNOT be that sheet. Whatever he photographed is something
  * else, and it is still there. Report §2.
  */
-const sharedRamps = (): Pick<MassKit, "rampUp" | "rampDown"> => ({
-  rampUp: "mass_ramp_up",
-  rampDown: "mass_ramp_down",
-});
-
 /** the shared placeholder trims — one set of strips for every unpainted room */
 const sharedTrims = (): Pick<MassKit, "edgeL" | "edgeR" | "cornerBL" | "cornerBR" | "inCornerL" | "inCornerR"> => ({
   edgeL: "mass_edge_l",
@@ -758,7 +770,8 @@ const sharedMass = (phase: string): Omit<MassKit, "crust" | "crustCapL" | "crust
   ...(PAINTED_MASS_PHASES.has(phase) ? paintedInterior(phase) : sharedInterior()),
   ...(PAINTED_TRIM_PHASES.has(phase) ? paintedTrims(phase) : sharedTrims()),
   trimShade: TRIM_SHADE_BY_PHASE[phase],
-  ...sharedRamps(),
+  // No ramp sheets: R109 withdrew them and E6 deleted the two placeholders. A
+  // surface that grows a slope orders its own (D-324, and the field's own note).
   platObjects: PLAT_OBJECTS[phase] ?? PLAT_OBJECTS.p1 ?? [],
 });
 
