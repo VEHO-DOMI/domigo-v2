@@ -31,7 +31,7 @@ schreibt die `?perf=1`-Zahlen für ALLE fünf Phasen **vorher/nachher** in ihren
 | Phaser in EINEM faulen Brocken (gzip) | ≤ 400 KB | `check-game-bundle.mjs` — **CI** |
 | Kunst, die niemand lädt | ≤ 53 Blätter | `check-paint-art.mjs` — **CI** |
 | Audio (Platte) | ≤ 6 MB | `check-audio.mjs` — **CI** |
-| Audio (decodiert, JS-Heap) | ≤ 16 MB | `check-audio.mjs` — **CI** |
+| Audio (decodiert, JS-Heap) | ≤ 16 MB | `check-audio.mjs` — **CI**, zur Laufzeit in `?perf=1` |
 
 **Zur letzten Zeile (R90, R5-W4b · W3; R104, Hotfix nach dem Zug).** Die Tot-Kunst-Decke
 hat seit dieser Runde **einen** Eigentümer. Vier Berichte der Welle 4 nannten drei
@@ -179,6 +179,31 @@ an drei Stellen, und nur eine davon ist die Platte:
 **Decodiertes Audio liegt im JS-Heap, nicht im Texturbudget.** Deshalb heisst die Zahl
 `AUDIO_DECODED_MB` und steht neben den 35 MB `PHASE_ART_MB`, nicht darin. Wer beide addiert,
 addiert zwei verschiedene Speicher.
+
+### R5-W6 · S2 — was seit der Verdrahtung gilt
+
+Die Zahlen oben sind unverändert; drei Sätze kommen dazu, weil der Klang jetzt wirklich läuft.
+
+**Eine Quelle, drei Leser — und jetzt maschinell gebunden.** Die vier Platten-/Heap-Decken stehen
+in `packages/game-paint/src/audio/audioBudget.ts`; `scripts/check-audio.mjs` liest sie von dort und
+vergleicht sie mit den eigenen (Gesetz 10), und dieselbe Prüfung sucht die zwei Zeilen der Tabelle
+oben in diesem Dokument. Wer eine der drei Stellen ändert und die anderen vergisst, bekommt ein
+rotes Licht statt einer stillen Abweichung. **`perfBudget.ts` bleibt davon unberührt** — Klang-Decken
+gehören nicht in die Bild-Budgets, und zwei Bahnen in einer Datei kosten mehr Konflikt-Runden, als
+eine zweite Datei kostet.
+
+**Die decodierte Spitze ist zur Laufzeit ablesbar.** `?perf=1` trägt seit dieser Runde eine vierte
+Zeile: `TON  <kHz> · <MB> von 16 MB decodiert · <n> Dateien · Musik <Stück>`. Sie beantwortet die
+eine Frage, die das Tor nicht beantworten kann — es rechnet die Spitze deterministisch aus den
+Dauern, aber ob im Betrieb wirklich nur EINE Phase gleichzeitig im Speicher steht, sieht man erst
+am laufenden Spiel. Steht dort ein Strich, gibt es keinen Ton (kein WebAudio oder keine Dateien);
+auch das ist Information.
+
+**`create()` bleibt unberührt.** Die Effekt-Bank und die Musik der Phase werden **nach** dem letzten
+Bau-Schritt geholt (`PaintScene#create`, hinter `finishWarming`), nicht im `preload`: der Loader hält
+das erste Bild an, und ein Kapitel, das später anfängt, damit ein Schritt klingen kann, hat den
+Tausch verloren. Der Aufruf gibt sofort zurück und ist bewusst **nicht** `timed` — ein Zeitnehmer
+dort misst eine Null und behauptete damit, es koste nichts.
 
 Die Zahlen stehen einmal in `packages/game-paint/src/audio/audioBudget.ts` (je mit ihrem Beleg)
 und werden von `scripts/check-audio.mjs` erzwungen; das Tor prüft ausserdem, dass diese Tabelle

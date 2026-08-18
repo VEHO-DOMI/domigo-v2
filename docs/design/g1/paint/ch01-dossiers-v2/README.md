@@ -69,12 +69,23 @@ _(HISTORISCH: bis 2026-08-14 stand hier „walk 1,25 / run 2,25 px/t". Die 1,25 
   warpt — `sim.ts` ist glyph-genau auf `w`; Stacheln und Gegner versetzen
   niemanden, eine Regel über „Lücken" oder „Gegner-Bänder" würde also Dinge
   polizieren, die ein Checkpoint gar nicht bezahlen kann). Versetzt:
-  p1 (38,17)→**(47,17)** · p2 (20,10)→**(58,14)** · p3 (26,21)→**(40,20)**;
+  p1 (38,17)→**(43,17)** · p2 (20,10)→**(58,14)** · p3 (26,21)→**(29,16)**;
   p4/p9 kreuzen keine Tinte und tragen darum weiterhin keinen.
   **★ Nachtrag 2026-08-15 (R44): Checkpoints sind STILLE ANKER.** Kein Krakel, keine
   Staffelei, keine Zeremonie, kein Toast — das `C`-Glyph, das Warp-Ziel und die vier
-  Gesetze oben bleiben unverändert. Eine Neu-Platzierung ist ausdrücklich NICHT
-  entschieden; sie ist ein Koki-Gespräch für später.
+  Gesetze oben bleiben unverändert.
+  **★ Nachtrag 2026-08-18 (K5, Schuld D-307, nach Kokis Entscheid vom 17.08. — Ruling R135):
+  die Neu-Platzierung IST entschieden, und die Seite steht jetzt je Phase im Level.**
+  `checkpointSide` ist Pflicht, wo ein `C` steht: **p1 `near` (c43)** · **p2 `far` (c58,
+  unverändert)** · **p3 `near` (c29)**. Die Zahlen oben sind entsprechend nachgezogen
+  *(war: p1 (47,17) · p3 (40,20) — der Stand vor Kokis Entscheid; die Zeile darunter sagte
+  außerdem, eine Neu-Platzierung sei »ausdrücklich NICHT entschieden«)*. Warum gemischt:
+  p2 behält die ferne Seite, weil sein Tintenbecken 31 Spalten breit ist — ein Anker davor
+  ließe jeden späten Fehltritt den ganzen Motten-Lauf wiederholen; p1 und p3 nehmen die nahe
+  Seite, weil ein Kind, das nie hinübergekommen ist, den fernen Anker nie berührt hat
+  (gemessen: 41 bzw. 26 Spalten Rückweg je Fehlversuch). Kokis Tor **T8** ist damit
+  beantwortet und gebaut; das Gesetz `checkpoint-placement` prüft beide Seiten
+  spiegelbildlich.
 
 - **★ DIE LEVEL-DATEI WIRD CHIRURGISCH EDITIERT (K2, 2026-08-15 — nachgemessen).**
   `ch01.level.json` steht im Format `json.dumps(indent=1, ensure_ascii=False)`: **ein
@@ -177,7 +188,7 @@ Raum-Trennung. Vergabe v2:
 | **picture** (wordbank g1u01.w.picture) | Käfig-#5-Insasse (Arena, B20-Karte) | p4 | obj_picture **D-21** |
 | **sound system** | Käfig-#1-Insasse (Empfehlung, B20-Klasse — PR-Nick) | p1 | Wesen **D-18** |
 | **tablet** | Käfig-#2-Insasse (Empfehlung — PR-Nick) | p2 | Wesen **D-19** |
-| projector | Fiktions-Träger (projiziert die Schwarm-Zahlen; Trail-Wort PROJECTOR) — **keine Antwort-Karte: deklarierte Ausnahme bis 2026-12-31, Besitzer Welle 5 / Uniform** | p2 | Turm-Kunst **D-19** |
+| projector | **Welt-Architektur** (`kind:"architecture"`, wie door/window): der Projektor-Turm steht als solides Gelände in p2, Spalten 55–56 über die Reihen 1–7, und sein Kegel stiftet den Zahlen-Grund des Spießrutenlaufs; Trail-Wort PROJECTOR. Kein Sammelobjekt, keine Antwort-Karte — **die datierte Ausnahme ist damit aufgelöst, nicht verlängert** (R5-W6 · G5, R148) | p2 | Turm-Kunst **D-19** |
 | **Uniform-Neun** (hairband · sunglasses · hat · school tie · shirt · sweater · skirt · socks · shoe) | **AB WELLE 5: neun Sammelobjekte, 3/3/3 über p1–p3, plus drei Benenn-Karten** (`UNIFORM_SAMMELN_DESIGN.md`). Heute: sieben davon nur ABLENKER auf `enc.ranzen.q3/q4` (`shoe` seit der Pluralform `shoes`), zwei stehen auf gar keiner Karte → **deklarierte Ausnahme bis 2026-12-31, Besitzer Welle 5 / Uniform** | p1–p3 (ab W5) | Codex **AQ10** |
 
 **★★ EHRLICHKEITS-NACHZUG (R5-W4 · G3, 2026-08-15 — D-77, Kokis Befund).** Diese

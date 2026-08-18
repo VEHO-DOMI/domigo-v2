@@ -124,14 +124,35 @@ export const opaqueTileStems = (composition = COMPOSITION) => {
 // das Tor trotz Ausnahme rot. Eine Ausnahme darf einen bekannten Defekt dulden, nie
 // einen neuen aufnehmen. Vier Hygiene-Richtungen, wie paint-art-allowlist:43-76:
 // fehlender Eintrag · unvollstaendiger · abgelaufener · schaler (Kachel ist repariert).
-const MEASURED_ON = "2026-08-16 @ 3daaf47 (unveraendert auf ae0dd42: kein crust_* im 4b-Zug beruehrt)";
-// 2026-09-30 = derselbe Tag, an dem auch COHERENCE_WAIVERS (check-composition) und
-// PLACEHOLDER_UNTIL (composition.ts) ablaufen — drei datierte Ausnahmen, EIN Reparatur-
-// pfad (AS5b → A7). Steht als datierte Pflicht mit Eigentuemer im BOOT-SHEET.
-const UNTIL = "2026-09-30";
+const MEASURED_ON = "2026-08-16 @ 3daaf47 (unveraendert auf ae0dd42 und auf 4a0d5c4: kein crust_* seither beruehrt)";
+// ── VERLAENGERT AUF 2026-11-30 (R5-W6 · A7, 2026-08-18 — Ruling R147) ────────
+//
+// Diese Ausnahme sollte mit der Krusten-Neulieferung AS5b von selbst fallen. Die
+// Lieferung ist da und traegt die Reparatur wirklich: `batch-as5b/crust_p*.png`
+// enthaelt NULL Pixel, die `importerWouldDelete` trifft, gegen 6938 in der heute
+// verbauten Quelle `batch-af2/mass/crust_p4.png`. Die Bandhoehen treffen den
+// Bestand auf den Pixel (211 · 262 · 237 · 246).
+//
+// Importiert ist sie trotzdem nicht, und der Grund ist nicht die Naht: die
+// gelieferten Krusten tragen KEIN MOTIV. Der Lieferschein sagt es selbst — die
+// Runde hat die Naht mit »periodic material functions« geschlossen, also die
+// Malerei durch eine Texturfunktion ersetzt. Zwei frische, blinde Kritiker haben
+// dasselbe Paar in entgegengesetzter Reihenfolge gesehen und beide unabhaengig
+// die HEUTIGE Kachel gewaehlt: sie sehen dort Planken und liegende Buecher, in
+// der Lieferung »keine benennbaren Objekte«. Ein sauberer Schluessel ist kein
+// Grund, eine gemalte Flaeche gegen eine gerechnete zu tauschen.
+//
+// Also bleibt der Defekt stehen, und die Ausnahme bleibt mit ihm — deklariert,
+// datiert, mit Eigentuemer, nie still. Der neue Reparaturpfad ist AS5c
+// (SPEC_MASSEN_KIT §10.6, in diesem PR mit Zahlen spezifiziert).
+const UNTIL = "2026-11-30";
 const AS5B = "D-199: Innen-Naht der Kruste, gemessen am selben Stand. Ursache sitzt in Codex' "
-  + "Quelle (A6b, PR #306) — Reparatur = Krusten-Neulieferung AS5b + Import-Lane A7, kein "
-  + "Merge. Faellt von selbst, sobald die neue Kachel liegt (das Tor meldet den Eintrag dann als schal).";
+  + "Quelle (A6b, PR #306). AS5b (18.08.) hat den Schluessel repariert (0 Treffer statt 6938), "
+  + "aber die Krusten ohne Motiv geliefert (zwei blinde Kritiker, getauschte Reihenfolge, beide "
+  + "fuer den Bestand) — nicht importierbar. Verlaengert auf 2026-11-30 durch A7 (R147); "
+  + "AS5c-Bestellung spezifiziert in SPEC_MASSEN_KIT §10.6 (A7, 2026-08-18), Kommissionsdatei "
+  + "schreibt Fable, Lieferschein-Pruefung ausstehend. Faellt von selbst, sobald die neue Kachel "
+  + "liegt (das Tor meldet den Eintrag dann als schal).";
 export const SEAM_ALLOW = [
   { stem: "crust_p4_a", seen: 2348, until: UNTIL, reason: AS5B },
   { stem: "crust_p4_b", seen: 2670, until: UNTIL, reason: AS5B },

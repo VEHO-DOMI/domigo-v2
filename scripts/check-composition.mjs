@@ -240,10 +240,25 @@ const COHERENCE_WAIVERS = {
   // The order that ends these is SPEC_MASSEN_KIT §10, written this session with
   // the measurements below in it. That is what the exception buys: not silence,
   // a commission.
-  "ch01/p2": { until: "2026-09-30", why: "Nachtklassenraum zieht den geteilten warmen Buchkörper unter einem violetten Laufkurs — AS5 §10 malt ihm seinen eigenen" },
-  "ch01/p3": { until: "2026-09-30", why: "Hof-Laufkurs ist 40,8 Punkte flacher gesättigt als das geteilte Papier darunter — AS5 §10" },
-  "ch01/p4": { until: "2026-09-30", why: "Bühnen-Laufkurs steht 56° vom geteilten Körper ab — AS5 §10" },
-  "ch01/p9": { until: "2026-09-30", why: "Kleckskammer zieht denselben warmen Körper unter einem tintigen Laufkurs — AS5 §10" },
+  //
+  // ── VERLÄNGERT AUF 2026-11-30 (R5-W6 · A7, 2026-08-18 — Ruling R147) ───────
+  // AS5b ist geliefert und gemessen: von 100 Zellen bestehen 11, und keine
+  // einzige davon hat eine Kachelpflicht — es sind wieder nur Ecken und Kappen.
+  // Alle 64 Zellen, die sich wiederholen müssen, fallen, und der Grund ist
+  // diesmal nicht die Naht: der Lieferschein sagt selbst, die Runde habe die
+  // Fugen mit »periodic material functions« geschlossen. Gemessen heißt das,
+  // die Malerei ist durch eine Rechenfunktion ersetzt — der Pinselschritt der
+  // Blätter liegt bei 0,05–0,82, während JEDE der 34 heute gezeichneten Kacheln
+  // zwischen 1,74 und 6,90 liegt. Ein Körper-Blatt von AS5b zeigt weiche
+  // Streifen, das angenommene p1-Blatt daneben einen gemalten Bücherstapel.
+  // Der Körper bleibt also ungemalt, der Bruch bleibt, die Ausnahme bleibt —
+  // deklariert und datiert, nie still. Reparaturpfad neu: AS5c
+  // (SPEC_MASSEN_KIT §10.6, in diesem PR mit Zahlen je Zelle spezifiziert;
+  // Kommissionsdatei schreibt Fable, Lieferschein-Prüfung ausstehend).
+  "ch01/p2": { until: "2026-11-30", why: "Nachtklassenraum zieht den geteilten warmen Buchkörper unter einem violetten Laufkurs — AS5b lieferte dafür ein Blatt ohne Motiv (A7), AS5c §10.6 malt ihm seinen eigenen" },
+  "ch01/p3": { until: "2026-11-30", why: "Hof-Laufkurs ist 40,8 Punkte flacher gesättigt als das geteilte Papier darunter — AS5b nicht importierbar (A7), AS5c §10.6" },
+  "ch01/p4": { until: "2026-11-30", why: "Bühnen-Laufkurs steht 56° vom geteilten Körper ab — AS5b nicht importierbar (A7), AS5c §10.6" },
+  "ch01/p9": { until: "2026-11-30", why: "Kleckskammer zieht denselben warmen Körper unter einem tintigen Laufkurs — AS5b nicht importierbar (A7), AS5c §10.6" },
 };
 
 /** an expiry that is a DATE, not a sentence */

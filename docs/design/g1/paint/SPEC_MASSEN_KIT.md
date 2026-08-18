@@ -520,3 +520,119 @@ Ausnahme stehen bleibt, die nicht mehr gebraucht wird. Dazu je Raum ein Eintrag 
 `composition.ts#TRIM_SHADE_BY_PHASE`, sobald er eigene Trims hat, und die Aufnahme
 in `PAINTED_MASS_PHASES` / `PAINTED_TRIM_PHASES` **im selben Commit wie die PNGs**
 (§9.2).
+
+### 10.6 · AS5b — was geliefert wurde, was daran gemessen ist, und was AS5c treffen muss
+
+_Als-gebaut, geschrieben in R5-W6 · Session A7 (2026-08-18). Jede Zahl unten ist
+mit `node docs/art/import-batch-as.mjs --verify --batch=batch-as5b` gemessen, dem
+Tor, das ein Import anwenden würde. **Nichts aus AS5b ist importiert.**_
+
+#### Das Ergebnis in einer Zeile
+
+**100 Zellen · 11 bestehen · 89 fallen.** Von den 11 hat **keine einzige eine
+Kachelpflicht** — es sind wieder nur Ecken und Kappen, genau wie bei AS5. Alle
+64 Zellen, die sich wiederholen müssen, fallen.
+
+| Raum | Zellen | bestanden | was besteht |
+|---|---|---|---|
+| p1 | 8 | 4 | vier Ecken |
+| p2 | 23 | 2 | zwei Krusten-Kappen |
+| p3 | 23 | 1 | eine Krusten-Kappe |
+| p4 | 23 | 2 | zwei Außenecken |
+| p9 | 23 | 2 | zwei Krusten-Kappen |
+
+#### 1 · Was AS5b RICHTIG gemacht hat — das gehört genannt
+
+- **Die duplizierte Randzeile ist weg.** AS5s Kernfehler (Fuge 0,00, Sprung
+  5–57×) kommt in keiner Zelle wieder vor.
+- **Der Schlüssel ist repariert, und damit D-199 an der Wurzel.** Die vier
+  gelieferten Krusten-Blätter tragen **0** Pixel, die `importerWouldDelete`
+  trifft — gegen **6938** in der heute verbauten Quelle `batch-af2/mass/crust_p4.png`.
+- **Die Krusten-Bandhöhen treffen den Bestand auf den Pixel:** p2 211 · p3 262 ·
+  p4 237 · p9 246, Abweichung 0. Das ist die Geometrie, an der der Renderer die
+  Kachel skaliert, und sie sitzt.
+
+#### 2 · Warum trotzdem nichts importiert wurde
+
+**Die Naht wurde geschlossen, indem das Bild entfernt wurde.** Der Lieferschein
+schreibt es selbst: die Runde benutze „periodic material functions" statt der
+vorherigen Technik. Gemessen heißt das:
+
+| | Pinselschritt (mittlerer Nachbarschritt) |
+|---|---|
+| die 34 Kacheln, die das Spiel heute zeichnet | **1,74 – 6,90** |
+| jede Zelle aus AS5b | **0,05 – 0,82** |
+
+Die beiden Mengen überschneiden sich nicht. Angesehen bestätigt sich die Zahl:
+das p1-Körperblatt auf der Platte zeigt einen gemalten Bücherstapel mit Rücken,
+Goldbändern und Schnittkanten — das AS5b-Körperblatt zeigt weiche waagrechte
+Streifen ohne einen einzigen Gegenstand. **Zwei frische, blinde Kritiker** haben
+dasselbe Paar in entgegengesetzter Reihenfolge beurteilt und beide unabhängig
+den Bestand gewählt; über die Lieferung schrieben beide, sie enthalte keine
+benennbaren Objekte. Das Motivgesetz (§10.3) ist damit nicht knapp verfehlt,
+sondern gar nicht erst adressiert.
+
+#### 3 · Fünf Zellen sind Kopien anderer Zellen
+
+Kein Wertefenster kann das sehen, deshalb prüft es das Tor jetzt (byte-identisch,
+nicht statistisch — gespiegelte Kappen sind richtig und bleiben grün):
+
+| Blatt | Kopie | | Blatt | Kopie |
+|---|---|---|---|---|
+| `crust_p4` | Z2 = Z0, Z3 = Z1 (beide Kappen = die Schleife) | | `mass_edges_p3` | Z3 = Z2 (zweite Unterseite) |
+| `crust_p3` | Z3 = Z1 (rechte Kappe = Schleife B) | | `mass_edges_p4` | Z3 = Z2 |
+
+AS3, AS5 und die übrigen AS5b-Blätter tragen ausschließlich verschiedene Zellen —
+die Lieferung weicht ab, nicht das Gesetz.
+
+#### 4 · ★ Der Grund, warum das Tor rot war und der Lieferschein grün: zwei Lineale
+
+Für `mass_body_p2` Z0 druckt der Lieferschein dasselbe Nahtprofil, das unser Tor
+misst (`[1.663, 4.656, …]` — Ziffer für Ziffer). Verschieden ist nur der **Nenner**:
+
+| | „eigener Texturschritt" für dieselbe Zelle |
+|---|---|
+| Lieferschein (global gerechnet) | **22,25** |
+| `--verify` (Nachbarpixel-Schritt) | **0,21** |
+
+Faktor 106. Beide Seiten rechnen richtig und das Tor wird trotzdem rot — **weil
+Erzeuger und Tor nicht dasselbe Lineal benutzt haben.** A6b hat `--verify` genau
+dafür gebaut; AS5b ist ohne es abgeschickt worden. Das ist die erste Zeile der
+nächsten Bestellung.
+
+#### 5 · AS5c — die Bestellung, in Zahlen
+
+1. **Fahrt unser Tor, nicht euer eigenes.**
+   `node docs/art/import-batch-as.mjs --verify --batch=<batch>` muss **Exit 0**
+   liefern, bevor die Lieferung abgeht. (Lauf-Anweisung, kein Skript im
+   Codex-Repo — Containment, R109.4.)
+2. **Der Texturschritt ist der Nachbarpixel-Schritt, nicht der Bildkontrast** —
+   mittlere absolute Differenz benachbarter Spalten über alle gemalten Pixel.
+   Beleg für die Verwechslung: 0,21 gegen 22,25 an derselben Zelle.
+3. **Pinselschritt ≥ 1,5**, Zielband **3–6** (der Bereich der angenommenen Kunst).
+   Das ist die maschinelle Fassung des Satzes „hier muss ein Bild sein".
+4. **Motiv vor Naht.** Jede Zelle zeigt benennbare Dinge (§10.3 Motivgesetz):
+   Körper = Bücherstapel/Material des Raums · Kruste = Laufkurs mit Planken und
+   Kanten · Seitenkante = der Schnitt durch das Material. Eine nahtlose Fläche
+   ohne Motiv ist ABGELEHNT, auch wenn jede Zahl passt.
+5. **Kein Helligkeitsverlauf innerhalb einer Zelle** (unverändert aus AS5b-Rückgabe;
+   ein Verlauf kann sich senkrecht nicht selbst fortsetzen — das Licht trägt die
+   Engine, `depthTintAt`).
+6. **Fuge ≤ 1,5× dem Texturschritt UND Anstieg über 8 px ≤ 1,5×.**
+7. **Vier verschiedene Zellen je Blatt.** Gespiegelt ist erlaubt, byte-identisch nicht.
+8. **Krusten-Bandhöhe exakt** p2 211 · p3 262 · p4 237 · p9 246 — die Höhe, aus
+   der der Renderer die Kachel skaliert. (AS5b hat das getroffen; es bleibt Vorgabe.)
+9. **Null Pixel mit `r>120 && b>120 && r−g>55 && b−g>55`** in der Malerei
+   (`importerWouldDelete` — dieselbe Funktion, die der Naht-Wächter zählt).
+   AS5b hat das erreicht; es bleibt Vorgabe, sonst kehrt D-199 zurück.
+10. **Keine Rampen** (R109, unverändert).
+
+#### 6 · Der Datums-Entscheid (Ruling R147, Eigentümer A7, 2026-08-18)
+
+| Ausnahme | Entscheid | Grund |
+|---|---|---|
+| `SEAM_ALLOW` (9 Krusten) | **verlängert auf 2026-11-30** | Reparatur geliefert, aber ohne Motiv — nicht importierbar |
+| `COHERENCE_WAIVERS` (p2/p3/p4/p9) | **verlängert auf 2026-11-30** | die Körper-Blätter bestehen 0 von 64 Kachel-Zellen |
+| `PLACEHOLDER_UNTIL` | **unverändert 2026-09-30** | **gemessen: 0 von 69 verdrahteten Stems sind Platzhalter.** Das Datum feuert heute gar nicht (`check-paint-art.mjs#placeholders` prüft nur bei `length > 0`) — es ist eine scharfe, ruhende Waffe für das nächste Kit. Sie zu verlängern hieße, einen Wächter ohne Anlass zu schwächen |
+
+Kein rotes `main` am 01.10.; keine stille Verlängerung.

@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 /**
- * import-batch-aq10 — R5-W5 · G4 · DIE VERSTREUTE UNIFORM.
- * Imports batch AQ10 into apps/web/public/art/g1/paint/ch01/.
+ * import-batch-aq10 — DIE VERSTREUTE UNIFORM (R5-W5 · G4, fortgeschrieben R5-W6 · G5).
+ * Importiert die Uniform-Blätter nach apps/web/public/art/g1/paint/ch01/.
+ * Quelle dieser Runde: batch-aq10b (die Nachbestellung), zellenweise.
  *
  *   node docs/art/import-batch-aq10.mjs [--dry]
  *
@@ -19,31 +20,46 @@
  *
  * ── ASSERTION 2 · DIE FARBE, GEGEN DIE BESTELLUNG GEMESSEN ────────────────────
  * Die Spec (§4) vergibt je Teil eine Farbe aus den zehn Buchfarben, mit zwei
- * harten Verboten: kein Gold/warmes Gelb (die Buchstaben sind Gold 0xf0c040 und
+ * harten Verboten: kein Gold/warmes Gelb (die Buchstaben sind Gold — EINE Quelle:
+ * `letters.ts` LETTER_GOLD 0xf7c93f seit R146/L1; die 0xf0c040-Nennungen in dieser
+ * Datei sind die alte dritte Kopie und nur noch Familien-Anker, kein Farbwert — und
  * tragen ein eigenes Halo — zwei leuchtende Sammelklassen zerteilen den Blick)
  * und kein Grau (Grau IST im Spiel der entfärbte Zustand). Ein getipptes
  * Farbwort, das nie gegen ein Pixel gehalten wurde, ist die Fehlerklasse P-65:
  * genau so trugen die Farb-Karten wochenlang falsche Antworten durch grüne Tore.
  *
- * Diese Lieferung weicht in VIER Zellen ab. Koki hat am 17.08. entschieden:
- * importieren, Abweichung als datierte Schuld führen, Nachbestellung AQ10b
- * schreibt Fable (die Ersatzblätter fallen an dieselben Stems, ohne Code).
- * Deshalb ist die Prüfung KEIN Verbot, sondern ein Deklarations-Zwang: jede
- * Abweichung muss unten mit gemessener Familie UND Grund stehen. Eine NICHT
- * deklarierte Abweichung bricht den Import — die nächste Lieferung kann also
- * nicht still eine fünfte Farbe verschieben.
+ * Die Prüfung ist KEIN Verbot, sondern ein Deklarations-Zwang: jede Abweichung
+ * muss unten mit gemessener Familie UND Grund stehen. Eine NICHT deklarierte
+ * Abweichung bricht den Import — eine Lieferung kann also nicht still eine
+ * Farbe verschieben.
  *
- * ── WAS DIESE RUNDE BEWUSST NICHT IMPORTIERT ─────────────────────────────────
- *  · `uniform_portraits.png` + `uniform_portraits_2.png` (neun Zellen): dieselben
- *    Teile, aber in einem eigenen gemalten Kartenrahmen. Die Karten holen ihr
- *    Bild aus derselben Pickup-Zelle; ein zweiter Rahmen-Stil würde Kokis noch
- *    offenes Tor T6 (Kartenkante/Karten-Material, AQ17) vorwegnehmen. Bleiben im
- *    Labor.
- *  · `uniform_pickups_2` Zelle 1, das Aufhebe-Funkeln: gold. Gold ist die
- *    Signatur der Buchstaben, und §4 verbietet Funkeln an dieser Klasse
- *    ausdrücklich. Nicht importiert.
- *  · `uniform_pickups_2` Zelle 3 / `uniform_portraits_2` Zellen 1-3: Reserve,
- *    vollflächig Magenta.
+ * ── ASSERTION 3 · DER FREMDE SAUM (R5-W6 · G5, neu) ──────────────────────────
+ * Ein ein Pixel breiter, gesättigter Kontur-Rand in einer Farbe, die dem Motiv
+ * fremd ist. Er fällt durch jeden bestehenden Filter (der Modus sieht 2 % nicht,
+ * das Gold-Maß fragt nur nach Gold, und die zwei Magenta-Filter verlangen
+ * b > 120 — dieser Rand hat b = 45) und wird beim Verkleinern auf die echte
+ * Anzeigehöhe zu einem farbigen Schimmer um das ganze Teil. Herleitung und
+ * Kalibrierung stehen an `alienRim`.
+ *
+ * ── WAS DIESE RUNDE (AQ10b) IMPORTIERT, UND WAS NICHT ────────────────────────
+ * AQ10b hat den Haltungs-Befund eingelöst (die Teile LIEGEN jetzt: zwei blinde
+ * Prüfer unabhängig 7 von 9, Unordnung 4/5 gegen vorher 1/5) und das Gold
+ * beseitigt (Hut 87,14 % → 0,00 %). Sie hat sich dabei aber vier neue Fehler
+ * eingehandelt. Importiert wird deshalb ZELLENWEISE, nicht als Stapel:
+ *   · NEU: sunglasses · hat · shirt · skirt · socks · hud_uniform
+ *   · GEHALTEN (Bestandsschnitt bleibt Kanon): hairband · school tie ·
+ *     sweater · shoe — jede mit ihrem gemessenen Grund an der `held`-Zeile.
+ * Ein Teil-Import ist begründungspflichtig, nicht verboten: neun halb richtige
+ * Blätter gegen vier ganz richtige zu tauschen wäre kein Fortschritt.
+ *
+ * ── WAS AUCH DIESE RUNDE BEWUSST NICHT IMPORTIERT ────────────────────────────
+ *  · `uniform_portraits.png` + `uniform_portraits_2.png`: dieselben Teile in
+ *    einem eigenen gemalten Kartenrahmen. Die Karten holen ihr Bild aus derselben
+ *    Pickup-Zelle; ein zweiter Rahmen-Stil würde Kokis noch offenes Tor T6
+ *    (Kartenkante/Karten-Material, AQ17) vorwegnehmen. Bleiben im Labor.
+ *  · `uniform_pickups_2` Zellen 1 und 3: Reserve, vollflächig Magenta. (Das
+ *    goldene Aufhebe-Funkeln, das in AQ10 auf Zelle 1 lag, hat die Bestellung
+ *    AQ10b gestrichen — die Zelle ist jetzt leer.)
  * Ein importiertes Blatt, das niemand lädt, ist Gewicht, das die Kunst-Prüfung
  * mitschleppt — und DEAD_ART_CEILING steht auf 53 ohne jede Luft.
  */
@@ -286,11 +302,78 @@ const goldShare = (png) => {
   return n === 0 ? 0 : gold / n;
 };
 
-/** stem → warum diese Zelle trotz des Gold-Verbots gold tragen darf. */
-const DECLARED_GOLD = {
-  cloth_hat_a: "der ganze Hut ist goldgelb — dieselbe Abweichung wie oben (D-291, AQ10b)",
-  cloth_shoe_a: "die SCHNALLE ist gold (0,58 % der Flaeche). Gefunden von einem blinden Blatt-Pruefer, nicht von der Familien-Messung — sie faellt mit dem Schuh in AQ10b (D-291)",
+/** ── ASSERTION 3 · DER FREMDE SAUM (neu, R5-W6 · G5) ────────────────────────
+ *  Der Anteil der KONTUR-Pixel, die eine gesaettigte Farbe tragen, die NICHT die
+ *  Familie des Motivs ist.
+ *
+ *  Warum es das gibt. AQ10b liefert drei Zellen mit einem ein Pixel breiten,
+ *  vollgesaettigten roten Rand entlang der Schnittkante (rgb(254,0,45); im Rock
+ *  liegen 2163 der 2279 roten Pixel direkt an einem transparenten Nachbarn).
+ *  Kein bestehendes Tor sieht diese Klasse:
+ *   · `familyOf` misst den MODUS — 2 % Rand kippen keinen braunen Rock;
+ *   · `goldShare` fragt nur nach Gold;
+ *   · `defringe` und `key-fringe.mjs` jagen MAGENTA (`r>120 && b>120 && …`) —
+ *     dieser Rand hat b = 45 und faellt durch beide Filter;
+ *   · und beim Verkleinern auf die Anzeigehoehe mittelt sich der Rand in das
+ *     Motiv hinein: aus einem Pixel Rand wird ein roter Schimmer um das ganze
+ *     Teil. Genau so ist er ueberhaupt aufgefallen — nicht am Blatt, sondern an
+ *     einem selbst gebauten Bild in echter Spielgroesse.
+ *
+ *  Kalibriert an dieser Runde (der Fall, an dem richtig und plausibel-falsch
+ *  auseinandergehen): alle zehn Blaetter des BESTANDS messen 0,000–0,117 %, die
+ *  drei befallenen AQ10b-Zellen 2,48 / 2,70 / 4,56 %. Die Grenze liegt bei
+ *  0,5 % — Faktor 5 unter dem kleinsten echten Befund und Faktor 4 ueber dem
+ *  groessten sauberen Wert.
+ *
+ *  GRENZE DER MESSUNG, ausdruecklich: sie fragt nach einer FREMDEN Familie. Ein
+ *  roter Rand um ein ueberwiegend rotes Motiv sieht sie nicht — die HUD-Ikone
+ *  traegt genau diesen Fall (dominante Familie „red", Rand rot, gemessen
+ *  0,002 %). Deshalb steht sie unten trotzdem als deklarierte Zeile. */
+const RIM_SHARE_LIMIT = 0.005;
+const alienRim = (png) => {
+  const { width: W, height: H, data } = png;
+  const home = familyOf(png).family;
+  let opaque = 0, alien = 0;
+  for (let y = 0; y < H; y++) {
+    for (let x = 0; x < W; x++) {
+      const i = (y * W + x) * 4;
+      if (data[i + 3] < 200) continue;
+      opaque++;
+      let edge = false;
+      for (const [dx, dy] of [[1, 0], [-1, 0], [0, 1], [0, -1], [1, 1], [1, -1], [-1, 1], [-1, -1]]) {
+        const nx = x + dx, ny = y + dy;
+        if (nx < 0 || ny < 0 || nx >= W || ny >= H) { edge = true; continue; }
+        if (data[(ny * W + nx) * 4 + 3] < 200) edge = true;
+      }
+      if (!edge) continue;
+      const r = data[i], g = data[i + 1], b = data[i + 2];
+      const max = Math.max(r, g, b), min = Math.min(r, g, b);
+      const v = max / 255, sat = max === 0 ? 0 : (max - min) / max;
+      if (sat <= 0.6 || v <= 0.6) continue;
+      if (familyOfPixel(r, g, b) === home) continue;
+      alien++;
+    }
+  }
+  return opaque === 0 ? 0 : alien / opaque;
 };
+
+/** stem → warum diese Zelle ihren fremden Saum behalten darf. */
+const DECLARED_RIM = {
+  cloth_skirt_a: "AQ10b malt den Rock in der bestellten Familie BRAUN, traegt aber den roten Kontur-Saum dieser Lieferung (2,70 %). Importiert trotzdem, weil der Bestand GRAU misst — und Grau ist im Spiel der ENTFAERBTE Zustand, also eine Bedeutungsluege auf einem Sammelobjekt. Ein Kontur-Pixel ist Kosmetik, eine falsche Bedeutung ist es nicht. Schuld D-392, Nachbestellung AQ10c.",
+  hud_uniform: "Dieselbe Lieferung, derselbe Saum (an dieser Zelle von der Messung NICHT gesehen, weil ihre dominante Familie selbst rot ist — gemessen 0,002 %, tatsaechlich vorhanden). Importiert, weil die Bestands-Ikone 9,78 % Gold traegt und damit im HUD neben dem Buchstaben-Zaehler genau die Kollision zeichnet, gegen die §4 geschrieben ist. Schuld D-392, Nachbestellung AQ10c.",
+};
+
+/** stem → warum diese Zelle trotz des Gold-Verbots gold tragen darf.
+ *
+ *  R5-W6 · G5: LEER. AQ10b liefert Gold 0,00 % in jeder importierten Zelle — der
+ *  goldgelbe Hut (87,14 %) ist ersetzt, und weil eine schale Deklaration den
+ *  Import selbst bricht (siehe unten), muss die Karte hier leer sein.
+ *  Die Schnalle des Schuhs (0,58 %) liegt weiter im Repo, weil der neue Schuh
+ *  NICHT importiert wurde (Begruendung an seiner `held`-Zeile) — sie ist damit
+ *  keine Aussage dieses Importers mehr, sondern eine Zeile im Schuldregister.
+ *  Die Karte bleibt stehen, damit die naechste Lieferung wieder deklarieren
+ *  kann statt still abzuweichen. */
+const DECLARED_GOLD = {};
 
 // ── the commission, cell by cell (UNIFORM_SAMMELN_DESIGN §4) ─────────────────
 /** stem → the colour family the commission ordered. */
@@ -307,26 +390,17 @@ const SPEC_COLOUR = {
 };
 
 /** stem → { got, why } for every cell whose measured family is NOT the ordered
- *  one. Koki's ruling of 2026-08-17: import, declare, re-order (AQ10b). An
- *  undeclared deviation is a hard failure — that is the whole point of the map. */
-const DECLARED_DEVIATIONS = {
-  cloth_hat_a: {
-    got: "yellow",
-    why: "AQ10 liefert den Hut goldgelb statt rot. Das ist die schwerste der vier: die Buchstaben sind Gold 0xf7c93f (letters.ts LETTER_GOLD — die eine Quelle seit R146; hier stand bis 18.08. 0xf0c040, eine dritte Kopie, die nie stimmte) mit eigenem Halo, und §4 verbot warmes Gelb genau deshalb. Schuld D-291, Nachbestellung AQ10b.",
-  },
-  cloth_skirt_a: {
-    got: "grey",
-    why: "AQ10 liefert den Rock grau statt braun. Grau ist im Spiel der ENTFAERBTE Zustand — ein grauer Rock liest sich als »noch nicht repariert«, obwohl die Uniform verstreut und nicht entfaerbt ist. Schuld D-291, Nachbestellung AQ10b.",
-  },
-  cloth_socks_a: {
-    got: "red",
-    why: "AQ10 liefert die Socken rot statt weiss mit schwarzen Streifen. Das Paar stimmt (Assertion 1), nur die Farbe nicht. Schuld D-291, Nachbestellung AQ10b.",
-  },
-  cloth_shoe_a: {
-    got: "brown",
-    why: "AQ10 liefert den Schuh braun statt schwarz. Die Einzahl stimmt (Assertion 1) — die Falle, die die Spec zuerst nannte, ist NICHT zugeschlagen. Schuld D-291, Nachbestellung AQ10b.",
-  },
-};
+ *  one. An undeclared deviation is a hard failure — that is the whole point of
+ *  the map, and it is why the next delivery cannot quietly shift a colour.
+ *
+ *  R5-W6 · G5: LEER. Die vier Farbschulden von AQ10 (D-291) sind nicht mehr
+ *  deklariert, sondern entschieden: Hut, Rock und Socken kommen in der
+ *  bestellten Familie aus AQ10b; das Haarband und der Schuh werden NICHT
+ *  importiert (ihre Gruende stehen an den `held`-Zeilen), also hat dieser
+ *  Importer ueber sie nichts mehr zu sagen. Eine Deklaration auf einer Zelle,
+ *  die gar nicht mehr geschrieben wird, waere toter Text, der wie eine
+ *  Entscheidung aussieht. */
+const DECLARED_DEVIATIONS = {};
 
 /** stem → how many separate painted things the commission ordered. Only the two
  *  cells where the number carries a word's meaning are named. */
@@ -335,19 +409,29 @@ const SPEC_PIECES = { cloth_socks_a: 2, cloth_shoe_a: 1 };
 // ── the sheets ───────────────────────────────────────────────────────────────
 const SHEETS = [
   {
-    // AQ10 Blatt 1 — acht der neun Teile, 4×2. Reihenfolge laut Lieferschein.
-    file: "batch-aq10/uniform_pickups.png", cols: 4, rows: 2,
+    // AQ10b Blatt 1 — dieselben acht Positionen wie AQ10, 4×2.
+    file: "batch-aq10b/uniform_pickups.png", cols: 4, rows: 2,
     pieces: [
-      [0, "cloth_hairband_a"], [1, "cloth_sunglasses_a"], [2, "cloth_hat_a"], [3, "cloth_school_tie_a"],
-      [4, "cloth_shirt_a"], [5, "cloth_sweater_a"], [6, "cloth_skirt_a"], [7, "cloth_socks_a"],
+      [1, "cloth_sunglasses_a"], [2, "cloth_hat_a"],
+      [4, "cloth_shirt_a"], [6, "cloth_skirt_a"], [7, "cloth_socks_a"],
     ],
+    held: {
+      0: "HAARBAND — AQ10b malt es dunkler neu, obwohl die Bestellung ausdruecklich »Familie halten« sagte: gemessen »red« (94,9 % der deckenden Pixel; die Rosa-Regel verlangt v > 0,75, das Band misst im Mittel 0,57). Ein zweites rotes Sammelobjekt liegt in p1 neben dem Hut. Der Bestandsschnitt misst »pink« und bleibt Kanon. (Ein blinder Blatt-Pruefer las die Zelle als »mauve/altrosa, aber Rosa« — Auge und kalibriertes Geraet sind sich ueber die Pixel einig und nur ueber das Etikett uneins; das Tor entscheidet, und es sagt rot.) D-390, Nachbestellung AQ10c.",
+      3: "KRAWATTE — in der Schlaufe sitzt ein knallroter Teller, rgb(254,0,45), 9,92 % der Zelle, davon 3161 Pixel im INNEREN (also gemalter Inhalt, kein Saum). Bestellt war gruen mit weiss, sonst nichts; ein blinder Blatt-Pruefer nennt ihn mit hoher Sicherheit »eine zusaetzliche, nicht bestellte dritte Farbe an sichtbarer Stelle«. Der Bestandsschnitt ist gruen-weiss und sauber. D-391, Nachbestellung AQ10c.",
+      5: "PULLOVER — traegt den roten Kontur-Saum dieser Lieferung (2,48 %, siehe `alienRim`). Der Bestandsschnitt ist blau, sauber und ohne Saum; die Farbe war nie eine Schuld. Hier gaebe es nur Haltung zu gewinnen und einen sichtbaren roten Schimmer zu verlieren — das ist kein Tausch. D-392, Nachbestellung AQ10c.",
+    },
   },
   {
-    // AQ10 Blatt 2 — der Schuh (im vierten Blatt, damit Blatt 1 sein 4×2-Raster
-    // behaelt), das Funkeln (gehalten: gold) und die HUD-Ikone.
-    file: "batch-aq10/uniform_pickups_2.png", cols: 4, rows: 1,
-    pieces: [[0, "cloth_shoe_a"], [2, "hud_uniform"]],
-    held: [1, 3],
+    // AQ10b Blatt 2 — der Schuh (Position 0), zwei leere Reserve-Zellen und die
+    // HUD-Ikone. Das goldene Aufhebe-Funkeln aus AQ10 existiert in AQ10b nicht
+    // mehr (Zelle 1 ist rein Schluessel) — die Bestellung hatte es gestrichen.
+    file: "batch-aq10b/uniform_pickups_2.png", cols: 4, rows: 1,
+    pieces: [[2, "hud_uniform"]],
+    held: {
+      0: "SCHUH — die Zelle enthaelt NEUN verschiedene Farben (der Bestandsschnitt: 34 916). Das ist keine Geschmacksfrage, sondern eine flache Silhouette ohne Sohle, ohne Oeffnung, ohne Binnenkontur: zwei blinde Pruefer, die nichts voneinander wussten, konnten sie unabhaengig NICHT als Schuh erkennen (»kann ich nicht erkennen«, »schwarz auf Schatten verschmilzt«). Ein Sammelobjekt, dessen Karte ein Bild zeigt und das Wort dazu fragt, muss sein Wort per Silhouette sagen (Squint-Test, §4). Der Bestandsschnitt ist lesbar, aber braun statt schwarz und traegt 0,58 % Gold an der Schnalle — diese Schuld bleibt bewusst offen, weil ein unlesbares Bild teurer ist als eine winzige Schnalle. D-393, Nachbestellung AQ10c.",
+      1: "Reserve, rein Schluessel (in AQ10 stand hier das goldene Funkeln — gestrichen).",
+      3: "Reserve, rein Schluessel.",
+    },
   },
 ];
 
@@ -371,8 +455,8 @@ for (const sheet of SHEETS) {
     continue;
   }
 
-  for (const h of sheet.held ?? []) {
-    notes.push(`· held ${sheet.file} cell ${h} — not imported (see header: gold sparkle / reserve)`);
+  for (const [h, why] of Object.entries(sheet.held ?? {})) {
+    notes.push(`· GEHALTEN ${sheet.file} Zelle ${h} — nicht importiert: ${why}`);
   }
 
   const prepared = new Map();
@@ -426,7 +510,13 @@ for (const sheet of SHEETS) {
     }
 
     // ── assertion 2b · das Gold-Verbot gilt fuer ANWESENHEIT ────────────────
-    if (SPEC_COLOUR[stem] !== undefined) {
+    // R5-W6 · G5 · die Klammer war zu eng: sie hing an `SPEC_COLOUR`, und die
+    // HUD-Ikone hat keine Farb-Zusage. Also lief `hud_uniform` seit AQ10 ganz
+    // ohne Gold-Pruefung durch — gemessen am importierten Bestand: 9,78 %.
+    // Die Ikone zeigt dieselbe Uniform und sitzt im HUD neben dem Buchstaben-
+    // Zaehler, also genau dort, wo die Kollision am teuersten ist. Das Verbot
+    // gilt fuer JEDES Blatt, das dieser Importer schreibt.
+    {
       const gs = goldShare(out);
       const why = DECLARED_GOLD[stem];
       if (gs >= GOLD_SHARE_LIMIT && why === undefined) {
@@ -438,6 +528,24 @@ for (const sheet of SHEETS) {
         continue;
       }
       if (why !== undefined) notes.push(`⚠ Gold DEKLARIERT: ${stem} ${(gs * 100).toFixed(2)} % — ${why}`);
+      notes.push(`✓ Gold: ${stem} ${(gs * 100).toFixed(2)} %`);
+    }
+
+    // ── assertion 3 · der fremde Saum ───────────────────────────────────────
+    {
+      const rs = alienRim(out);
+      const why = DECLARED_RIM[stem];
+      if (rs >= RIM_SHARE_LIMIT && why === undefined) {
+        failures.push(`${stem}: ${(rs * 100).toFixed(2)} % der Flaeche ist ein KONTUR-Saum in einer fremden, gesaettigten Farbe (Grenze ${(RIM_SHARE_LIMIT * 100).toFixed(1)} %; der Bestand misst 0,00-0,12 %). Weder der Magenta-Filter noch key-fringe.mjs sehen ihn, und beim Verkleinern auf 54 px wird daraus ein farbiger Schimmer um das ganze Teil. Repariere das Blatt, oder deklariere die Zelle in DECLARED_RIM mit Grund und Schuldnummer.`);
+        continue;
+      }
+      if (rs < RIM_SHARE_LIMIT && why !== undefined) {
+        notes.push(`⚠ Saum DEKLARIERT (unter der Messgrenze, ${(rs * 100).toFixed(3)} %): ${stem} — ${why}`);
+      } else if (why !== undefined) {
+        notes.push(`⚠ Saum DEKLARIERT: ${stem} ${(rs * 100).toFixed(2)} % — ${why}`);
+      } else {
+        notes.push(`✓ Saum: ${stem} ${(rs * 100).toFixed(2)} % fremde Kontur`);
+      }
     }
 
     // ── the gate's own fringe pass, before anything is written ──────────────

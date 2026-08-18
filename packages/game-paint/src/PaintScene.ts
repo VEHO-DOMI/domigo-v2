@@ -15,6 +15,7 @@ import Phaser from "phaser";
 import { glyphAt, isSlope, isSolid } from "./collide.ts";
 import { type CompositionSpec, MARKER_H, type MassKit, ROOM_SHADOW_INK, compositionFor, heroEdgeFor, markerPlacementFor, nearPlaneTint } from "./composition.ts";
 import { phaseArtScope } from "./artScope.ts";
+import { type AudioDirector, surfaceOfPhase } from "./audio/index.ts";
 import { captiveStem, isCaptiveKey } from "./artManifest.ts";
 import { TextureWarmer, type WarmScene, type WarmStats } from "./warmer.ts";
 import { WARM_MPX_PER_FRAME } from "./warm.ts";
@@ -25,7 +26,7 @@ import { NEAR_PLANE_KINDS, CRUST_MARK_DEPTH, MASS_MARK_DEPTH, type MassPiece, ty
 import { BACKING_REACH, BACKING_STEPS, LETTER_AMBER, LETTER_GOLD, LETTER_STYLE, letterBackingFor, letterGlowGain, letterGlyphs, letterRimFor } from "./letters.ts";
 import { type PhraseSlot, bonusPhrase } from "./cards/ceremony.ts";
 import { PICKUP_ROLES, type PaintLevel, type PhaseSpec } from "./level.ts";
-import { type AirModel, DELTA_CAP_MS, LOGICAL_H, LOGICAL_W, MAX_TICKS_PER_FRAME, RENDER_SCALE, SUBS, TICK_MS, TILE, fromSubs, mixMultiply } from "./paint.ts";
+import { type AirModel, DELTA_CAP_MS, LOGICAL_H, LOGICAL_W, MAX_TICKS_PER_FRAME, PAINT, RENDER_SCALE, SUBS, TICK_MS, TILE, fromSubs, mixMultiply } from "./paint.ts";
 // `INK_DEPTH_ROWS` and `inkDepthAt` were imported here and referenced nowhere —
 // dropped with the crown rewrite (R5-W4 · A6).
 import { INK_BODY, INK_CROWN_DARK, INK_MENISCUS, INK_SHEEN, INK_SPLASH_DROPS, INK_SPLASH_TICKS, INK_SURFACE_TINT, inkCrownOffsetAt, inkCrownPoints, inkDepthTint, inkLipThicknessAt, inkScrollAt, inkSheenRuns, inkSplashDropAt, planInkColumns } from "./ink.ts";
@@ -276,6 +277,18 @@ export interface PaintSceneCfg {
   phaseId: string;
   art: Record<string, string>; // stem → url (only-present)
   pad: Pad; // the SHARED mutable pad (touch/harness write here)
+  /** R5-W6 · S2 · DER KLANG-DIREKTOR — gereicht, nicht gebaut.
+   *
+   *  Er lebt in `PaintGame` und überlebt den Raumwechsel, weil die Szene ihn
+   *  NICHT überlebt: `handoff` ruft `scene.stop` + `scene.remove` und baut eine
+   *  neue (PaintGame :1102). Ein Direktor je Szene würde bei jedem Raumwechsel
+   *  alle 69 Effekt-Dateien neu decodieren (sein `loaded`-Gedächtnis stürbe mit
+   *  ihm), die Musik abwürgen und die Ratenlimits vergessen. Ausserdem braucht
+   *  der Stumm-Knopf ihn, und der wohnt in der Hülle.
+   *
+   *  Optional: ohne ihn (Tests, Bänder, Server-Rendering) ist die Szene stumm
+   *  und sonst unverändert. */
+  audio?: AudioDirector;
   callbacks: PaintCallbacks;
   reducedMotion: boolean;
   /** Abilities live in React (they persist across phase mounts — the Fibel
@@ -798,6 +811,11 @@ export class PaintScene extends Phaser.Scene {
   private cfg: PaintSceneCfg;
   /** siehe DRAW_PROBE — nur im Dev-Build befüllt. */
   private lastBreath = new Map<string, { rot: number; dy: number; sx: number; sy: number; hPx: number; scr: { x: number; y: number; w: number; h: number } | null }>();
+  /** R5-W6 · F7 · D-332 · DIE KIND-SONDE — dev-only, wie die Boss-Sonde daneben.
+   *  W4 hat den Guardian vermessen und dabei aufgeschrieben, warum: „H3s »2,50-mal
+   *  so hoch wie das Kind« ist gerechnet, nicht gemessen." Gerechnet blieb es auch
+   *  danach, denn die andere Hälfte des Verhältnisses fehlte. Das hier ist sie. */
+  private lastHeroBox: { x: number; y: number; w: number; h: number } | null = null;
   /** PB-T2: ALL gameplay lives in the headless sim — the scene draws and
    *  routes events. The proof-tape replayer runs the same Sim in CI, so the
    *  scene may never grow gameplay logic of its own again. */
@@ -986,6 +1004,9 @@ export class PaintScene extends Phaser.Scene {
    *  detected as a CROSSING rather than tested for equality (which a variable
    *  tick budget would skip straight past). */
   private lastStridePhase = 0;
+  /** R5-W6 · S2: die Rutsche ist ein ZUSTAND, kein Ereignis — der Klang gehört
+   *  ihrer steigenden Flanke, sonst schleift er über die ganze Rutschbahn. */
+  private lastOnSlide = false;
   /** PK-R6 · H2 · HOW HARD THE LAST LANDING WAS, 0…1 (round-2 finding 1). The
    *  fall speed the floor took, remembered for as long as the impact mark is
    *  drawn — the sim keeps `landedAgo` but not the speed that produced it, and
@@ -1048,6 +1069,9 @@ export class PaintScene extends Phaser.Scene {
       // so a new SimCfg field that is not named HERE arrives as `undefined` and
       // the ledger silently does nothing. One line, and it is load-bearing.
       resolvedEntityIds: cfg.resolvedEntityIds,
+      // R5-W6 · S2: die gefalteten EntityEvents hören mit — vier Klänge hätten
+      // sonst keinen Auslöser (siehe SimCfg#onEntityAudio).
+      onEntityAudio: (ev) => cfg.audio?.on("entity", ev.type, ev),
       airModel: cfg.airModel,
       spawnCell: cfg.spawnCell,
       letterLedger: cfg.letterLedger,
@@ -1286,6 +1310,17 @@ export class PaintScene extends Phaser.Scene {
     this.cameras.main.centerOn(fromSubs(this.player.x), fromSubs(this.player.y) - LOGICAL_H / 4);
     this.scale.refresh(); // the P-48 lesson: assert geometry at scene entry
     this.timed("finishWarming", () => this.finishWarming());
+    // R5-W6 · S2 · DIE BANK KOMMT NACH create(), NIE IM preload.
+    //
+    // Bewusst hier und bewusst NICHT `timed`: der Aufruf gibt sofort zurück und
+    // holt die Dateien danebenher, also misst ein Zeitnehmer hier eine Null und
+    // suggeriert, es koste nichts. Was es wirklich kostet, steht in der
+    // Lehrer-Zeile (`?perf=1`, decodierte MB) und in der PERF-Tabelle.
+    // Im `preload` wäre es falsch: der Loader hält das erste Bild an, und ein
+    // Kapitel, das eine halbe Sekunde später anfängt, damit ein Schritt klingen
+    // kann, hat den Tausch verloren. Der Direktor bleibt still, solange eine
+    // Datei nicht da ist — das kostet höchstens den einen frühen Klang.
+    void this.cfg.audio?.decodeAfterCreate(this.cfg.phaseId);
     // R5-W3 · E5 · TELL THE SHELL WHEN THERE IS A PICTURE, not when the code
     // got here. create() runs INSIDE the step that draws the first frame
     // (P-54), so "create returned" is still a blank canvas; the frame after
@@ -1346,6 +1381,10 @@ export class PaintScene extends Phaser.Scene {
      *  BILDSCHIRM-Lage wird — ohne camY kann keine Aufnahme sagen, wo im Bild
      *  das Ding steht, das sie zeigt. */
     camX: number; camY: number;
+    /** R5-W6 · F7 · D-332 (dev-only): der Kasten des KINDES am Schirm, in
+     *  Bildschirm-Bildpunkten — das Gegenstück zu `entities[].breath.scr`. Ohne
+     *  ihn war jedes Größenverhältnis Kind:Tafel eine Nachrechnung. */
+    heroBox?: { x: number; y: number; w: number; h: number } | null;
     entities: Array<{
       id: string; role: string; skin: string; state: string; redeemed: boolean; x: number; y: number;
       /** R5-W3 · W1 (dev-only): was zuletzt WIRKLICH gezeichnet wurde — Drehung,
@@ -1378,6 +1417,7 @@ export class PaintScene extends Phaser.Scene {
       bonusLeft: this.bonusLeftTicks,
       camX: fromSubs(this.camX),
       camY: fromSubs(this.camY),
+      ...(DRAW_PROBE ? { heroBox: this.lastHeroBox } : {}),
       entities: (this.world?.entities ?? []).map((e) => ({
         id: e.id, role: e.role, skin: e.skin, state: e.state, redeemed: e.redeemed,
         x: fromSubs(e.x), y: fromSubs(e.y),
@@ -1471,6 +1511,10 @@ export class PaintScene extends Phaser.Scene {
   private handleSimEvents(evs: SimEvent[]): void {
     const cb = this.cfg.callbacks;
     for (const ev of evs) {
+      // R5-W6 · S2: EINE Zeile für alle 16 SimEvents. Der Direktor entscheidet
+      // aus dem Manifest, was klingt, was bewusst schweigt und was in ch01 gar
+      // nicht feuern kann — die Szene bleibt der dumme Verteiler, der sie ist.
+      this.cfg.audio?.on("sim", ev.type, ev as unknown as Record<string, unknown>);
       switch (ev.type) {
         case "toast": this.toast(ev.msg); break;
         case "task": cb.onTask(ev.req); break;
@@ -3089,6 +3133,17 @@ export class PaintScene extends Phaser.Scene {
     // down too soft for dust — `renderContact` grades the mark by it, and a
     // recorded 0 is what stops a gentle step from drawing a crater.
     if (p.landedAgo === 0) this.landHardness = Math.min(fallVy / (LAND_DUST_VY * 3), 1);
+    // R5-W6 · S2 · DIE LANDUNG KLINGT NACH DERSELBEN SCHWELLE WIE DER STAUB.
+    // `LAND_DUST_VY * 2` ist der Vertrag zwischen Bild und Ton (audio/index.ts
+    // :26-30): weich und hart trennen sich genau dort, wo die breite
+    // Staubschürze einsetzt — sonst meinten Auge und Ohr verschiedene
+    // Augenblicke. Sie klingt bei JEDER Landung, auch der staublosen: ein
+    // Schritt von der Kante ist hörbar, auch wenn er nicht raucht.
+    if (p.landedAgo === 0) this.cfg.audio?.land(fallVy >= LAND_DUST_VY * 2);
+    if (p.jumpedAgo === 0) this.cfg.audio?.on("player", "jumped");
+    // Die Rutsche: steigende Flanke, einmal je Rutschbeginn.
+    if (p.onSlide && !this.lastOnSlide) this.cfg.audio?.cue("slide");
+    this.lastOnSlide = p.onSlide;
     if (p.landedAgo === 0 && fallVy >= LAND_DUST_VY) {
       this.puff(x, feetY + 2, "chalk");
       // …and a wider skirt for a real drop, so a long fall lands harder than a
@@ -3107,6 +3162,12 @@ export class PaintScene extends Phaser.Scene {
     const half = (v: number): number => Math.floor(v * 2);
     if (p.grounded && Math.abs(p.vx) >= STEP_DUST_VX && half(phase) !== half(this.lastStridePhase)) {
       this.puff(x - Math.sign(p.vx) * 4, feetY + 1, "chalk");
+      // R5-W6 · S2 · derselbe Fusstritt, jetzt hörbar. Der Untergrund kommt aus
+      // dem RAUM, nicht aus dem Glyph: ch01 hat genau zwei begehbare Glyphen,
+      // aber vier Materialien (audioManifest#SURFACE_BY_PHASE). Die Lautstärke
+      // steigt mit dem Tempo, damit ein Schleichen anders klingt als ein Lauf;
+      // Ratenlimit, Varianten-Rotation und Verstimmung macht der Direktor.
+      this.cfg.audio?.footstep(surfaceOfPhase(this.cfg.phaseId), Math.abs(p.vx) / PAINT.runMax);
     }
     this.lastStridePhase = phase;
   }
@@ -3839,6 +3900,24 @@ export class PaintScene extends Phaser.Scene {
       // the shadow copy is the RIM copy while a contact flash is on him
       shade?.setTexture(key).setTint(rim > 0 ? CONTACT_RIM_TINT : edge.tint);
     }
+    // R5-W6 · F7 · D-332 · DER KASTEN DES KINDES. Ein Kasten, sonst nichts —
+    // das Gegenstück zur Boss-Sonde in renderEntities, mit derselben Begründung
+    // und denselben zwei Vorsichtsmaßnahmen: hinter dem Konstanten-Schalter (im
+    // ausgelieferten Spiel nicht vorhanden) und NACH Lage, Skalierung und
+    // Haut-Textur gelesen — davor liefert getBounds() den vorigen Frame.
+    //
+    // Gelesen wird die Figur, die dieses Bild WIRKLICH gezeichnet hat: liegt eine
+    // gemalte Ganzkörper-Zelle an, ist sie es, sonst der zusammengesetzte Rig.
+    // Dieselbe Wahl trifft renderEngageCue eine Methode weiter oben, und aus
+    // demselben Grund — die gemalten Zellen sind nicht alle gleich hoch.
+    if (DRAW_PROBE) {
+      const cam = this.cameras.main;
+      const view = cam.worldView;
+      const bb = (this.heroFull.visible ? this.heroFull : this.rigRoot).getBounds();
+      this.lastHeroBox = view.width > 0
+        ? { x: (bb.x - view.x) * cam.zoom, y: (bb.y - view.y) * cam.zoom, w: bb.width * cam.zoom, h: bb.height * cam.zoom }
+        : null;
+    }
     this.renderContact();
     this.renderContactBurst();
 
@@ -3960,13 +4039,19 @@ export class PaintScene extends Phaser.Scene {
     this.bossPushMs = 0;
 
     // ── R5-W2 · H1 (Teil 3) · DIE FENSTER-FANFARE ─────────────────────────────
-    // Es gibt in diesem Paket KEIN Audio-System (kein `this.sound`, kein
-    // `AudioContext`, nichts) — der Kommentar an der Kreide sagt es selbst: „A
-    // piece of chalk hitting a wooden floor is the loudest thing in the fight
-    // and it happened in total silence." Eine Fanfare kann hier also nur Licht
-    // sein. Der Augenblick, in dem sie sich überreizt und herunterkommt, ist der
-    // wichtigste des Kampfes; er bekommt einen Ring aus Kreidestaub um ihre
+    // Der Augenblick, in dem die Tafel sich überreizt und herunterkommt, ist der
+    // wichtigste des Kampfes: er bekommt einen Ring aus Kreidestaub um ihre
     // Tafelkante, und der Halo blitzt dazu (siehe `bossTellT`).
+    //
+    // R5-W6 · S2 · UND JETZT KLINGT ER AUCH. Hier stand bis zu dieser Runde
+    // »Es gibt in diesem Paket KEIN Audio-System« — das stimmt seit S1/S2 nicht
+    // mehr, und ein Kommentar, der eine Abwesenheit behauptet, wird als Erlaubnis
+    // gelesen, keine zu suchen. Das Fenster bekommt `boss-window`; die
+    // BOSS-MUSIK braucht hier nichts, denn die Arena ist die Phase `p4` und zieht
+    // `music-p4` über den normalen Raumwechsel (audioManifest#MUSIC_BY_PHASE).
+    // Der `untie`-Takt klingt ebenfalls schon: er meldet sich als SimEvent
+    // `guardianWipe` und trägt dort `wipe`.
+    if (beat.startsWith("dip:")) this.cfg.audio?.on("entity", "guardianStagger", { id: g.id });
     if (beat.startsWith("dip:") && !this.cfg.reducedMotion) {
       const img = this.entityImgs.get(g.id);
       if (img) {
@@ -4076,14 +4161,21 @@ export class PaintScene extends Phaser.Scene {
     // A Regel-Seite reads as a TORN page (a ragged left edge + ruled lines) and
     // a Bonus-Buch as a small closed book with a spine — both distinguishable
     // from a letter at 15–18 px, which is the whole job of a fallback.
+    // R5-W6 · F7 · AQ16b: …und die Not-Zelle trägt jetzt die KÜHLE Familie, weil
+    // das gemalte Blatt sie trägt. Ein pergamentfarbener Ersatz neben einer
+    // kühlen Seite wäre nicht »das Blatt fehlt«, sondern »hier liegen zwei
+    // verschiedene Dinge« — und die Not-Zelle ist genau dann zu sehen, wenn
+    // niemand mehr nachsehen kann, warum. Die vier Farben sind AM IMPORTIERTEN
+    // BLATT abgelesen (Median, 90., 15. und 4. Helligkeits-Perzentil der
+    // deckenden Fläche von `regelseite_a`), nicht geschätzt.
     make("fb-ent-regelseite", () => {
-      g.fillStyle(0xfdf7e6, 1);
+      g.fillStyle(0x34a8fb, 1);
       g.fillRoundedRect(2, 1, 18, 22, 2);
-      g.fillStyle(0xe6d6ae, 1);
+      g.fillStyle(0x44affb, 1);
       for (let i = 0; i < 4; i++) g.fillTriangle(2, 2 + i * 5, 5, 4 + i * 5, 2, 7 + i * 5); // the tear
-      g.lineStyle(1, 0x8a7a58, 0.85);
+      g.lineStyle(1, 0x0b75bd, 0.85);
       g.strokeRoundedRect(2, 1, 18, 22, 2);
-      g.fillStyle(0xa8926a, 1);
+      g.fillStyle(0x159bf7, 1);
       for (let i = 0; i < 4; i++) g.fillRect(6, 6 + i * 4, 11, 1); // ruled lines
     }, 22, 24);
     make("fb-ent-bonusbuch", () => {

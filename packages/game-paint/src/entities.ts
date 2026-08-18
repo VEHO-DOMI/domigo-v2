@@ -97,6 +97,22 @@ export interface EntityState {
    *  because `timer` carries the idle bob's phase: resetting that on every hop
    *  would freeze the two-cell breath onto one frame forever. */
   bounceTick: number;
+  /** R5-W6 · F7 · R151 · Läufer: Ticks seit dem letzten ANFALL — die eigene Uhr
+   *  des Anfalls, und der Grund, warum sie nicht `timer` ist.
+   *
+   *  `timer` wird von JEDEM Zustandswechsel genullt, auch von jeder Wende. F6 hat
+   *  daran gemessen, was das im ausgelieferten Kapitel heisst: die Füllfeder in p2
+   *  steht eng, wendet dauernd, und ihre längste ununterbrochene Patrouille dauert
+   *  192 Ticks. Ihre Schwelle lag bei 216 — eine Schwelle über der längsten
+   *  erreichbaren Strecke ist kein seltenes Ereignis, sondern gar keines. F6 konnte
+   *  mit einem gesenkten Bereich ihren ERSTEN Anfall kaufen (Tick 126), nicht die
+   *  Wiederkehr: danach war sie ausgehungert, EINMAL in 6000 Ticks.
+   *
+   *  Dieser Zähler überlebt die Wende. Er zählt nur hoch und wird NUR vom Anfall
+   *  selbst genullt — dieselbe Bauform und derselbe Grund wie `freedTick` eine
+   *  Zeile weiter oben. Damit ist der Abstand zwischen zwei Anfällen wieder das,
+   *  was sein Name sagt, statt der längsten zufälligen Geraden eines Raums. */
+  fitTick: number;
   params: Record<string, unknown>;
 }
 
@@ -328,54 +344,51 @@ export const FRENZY_TICKS = FRENZY_FLIP_TICKS * 6; // 42 Ticks ≈ 0,7 s
  *  greift nicht an — der Angriff ist `telegraph`/`act` und bleibt unberührt. */
 export const FRENZY_REACH_PX = 3;
 /**
- * Wie lange er zwischen zwei Anfällen patrouilliert (Spanne; der eigene Name
+ * Wie lange ein Läufer zwischen zwei Anfällen läuft (Spanne; der eigene Name
  * wählt daraus, damit zwei Läufer im selben Raum nicht im Gleichtakt zucken).
  *
- * ── R5-W5 · F6 · WARUM DIESE ZAHLEN GESUNKEN SIND (gemessen, nicht geschmeckt) ─
- * F5 hat den Anfall an die ROLLE gehängt und im Report festgehalten, er gelte
- * „für BEIDE Läufer". Im Code stimmt das; im ausgelieferten Kapitel stimmte es
- * nicht. **Gemessen über 2000 Ticks im echten p2: die Füllfeder ist NIE in einen
- * Anfall gekommen — kein einziges Mal.**
+ * ── R5-W6 · F7 · R151 · WARUM DIESE ZAHLEN GESTIEGEN SIND ────────────────────
+ * Die Spanne zählt seit R151 an `fitTick` statt an `timer` (siehe dort). Das ist
+ * kein Feinschliff, sondern ein Wechsel der Messgröße: `timer` misst die
+ * längste zufällige Gerade eines Raums — jede Wende nullt ihn —, `fitTick` misst
+ * Zeit. Dieselbe Zahl bedeutet an der neuen Uhr also etwas völlig anderes:
+ * unverändert stehen gelassen (110+50) hätte sie beide Läufer alle zwei
+ * Sekunden zucken lassen. GEMESSEN an der neuen Uhr mit den alten Zahlen: 49
+ * bzw. 46 Anfälle in 6000 Ticks — deshalb steht hier nicht mehr dieselbe Zahl.
  *
- * Der Grund ist die Uhr. Der Anfall wird aus `e.timer` fällig, und `e.timer` wird
- * von JEDEM Zustandswechsel auf null gesetzt — auch vom `turn`. Die Füllfeder hat
- * kein autorisiertes Band und steht in p2 eng: sie wendet dauernd (gemessen: 323
- * von 2000 Ticks im `turn`), und ihre längste ununterbrochene Patrouille dauert
- * **192 Ticks**. Ihr Schwellwert aus dem alten Bereich war **216**. Eine Schwelle
- * über der längsten erreichbaren Strecke ist kein seltenes Ereignis, sondern gar
- * keines.
- *
- * Also ist der Bereich jetzt so bemessen, dass sein OBERES Ende unter der
- * kürzesten gemessenen Patrouillen-Strecke des Kapitels liegt: 110 + 49 = 159
- * gegen 192. Die Schwellen der zwei Läufer sind damit **113** (Bleistift) und
- * **126** (Füllfeder) — verschieden, also weiter kein Gleichtakt.
+ * Bemessen ist der Bereich am AUSGELIEFERTEN Takt des Bleistifts: er ist der
+ * einzige Läufer, dessen Rhythmus jemals jemand gesehen hat, also ist er der
+ * Maßstab und nicht ein neu erfundener Wert. Das Kapitel hat GENAU ZWEI Läufer
+ * (`p1-pencil1`, `p2-pen` — aufgezählt aus `ch01.level.json`, nicht geschätzt).
  *
  * GEMESSEN, 6000 Ticks im ausgelieferten Kapitel, Kind weit weg:
  *
- *   | Läufer      | vorher | nachher | längste Patrouille |
- *   |-------------|-------:|--------:|-------------------:|
- *   | Bleistift   |     21 |      21 |          215 Ticks |
- *   | Füllfeder   |  **0** |   **1** |          192 Ticks |
+ *   | Läufer   | Schwelle | F5/F6 | jetzt | mittlerer Abstand |
+ *   |-----------|---------:|------:|------:|------------------:|
+ *   | Bleistift |      283 |    21 |    21 |         285 Ticks |
+ *   | Füllfeder|      336 |     1 |    17 |         337 Ticks |
  *
- * Der Bleistift ist also unberührt (sein autorisiertes Band gibt ihm lange
- * Strecken, beide Schwellen passen hinein), und die Füllfeder kommt überhaupt
- * erst einmal dazu — bei Tick 126, vor ihrer ersten Wende.
+ * 285 Ticks sind rund 4,7 Sekunden, 337 rund 5,6: in einer Minute Spiel kritzelt
+ * der Bleistift etwa dreizehnmal und die Füllfeder schreibt etwa elfmal. Die
+ * zwei Schwellen liegen 53 Ticks auseinander — kein Gleichtakt, wie gehabt.
  *
- * ⚠ EHRLICH BENANNT, weil eine Zahl, die man nicht ausspricht, als „gelöst"
- * gelesen wird: EINMAL in 6000 Ticks ist kein Takt. Nach ihrem ersten Anfall
- * beginnt die Uhr wieder bei null, und ihre Wenden kommen häufiger als 126
- * Ticks — sie ist danach ausgehungert. Der Bereich konnte den ERSTEN Anfall
- * kaufen, nicht die Wiederkehr.
- *
- * Der dauerhafte Weg ist ein eigener Zähler, der eine Wende ÜBERLEBT (genau das
- * ist der Grund, warum `freedTick` existiert: „the flood was read off `timer`,
- * which every state change resets"). Das braucht EIN neues Feld an
- * `EntityState`, und dessen einen Platz dieser Welle hat G4 (Rahmen §5) — also
- * geht es als Befund an Fable, nicht als stille Grenzüberschreitung.
- * `f5-feel.test.ts` hält beide Zahlen fest, damit die Grenze im Code steht.
+ * ── Der Befund, den F6 offen stehen ließ, und der hier zu Ende geht ─────────
+ * F5 hat den Anfall an die ROLLE gehängt und im Report festgehalten, er gelte
+ * für BEIDE Läufer. Im Code stimmte das; im ausgelieferten Kapitel stimmte es
+ * nicht: die Füllfeder ist in 2000 Ticks NIE in einen Anfall gekommen. Sie hat
+ * kein autorisiertes Band und steht in p2 eng, wendet also dauernd (gemessen: 323
+ * von 2000 Ticks im `turn`), und ihre längste ununterbrochene Patrouille dauert
+ * 192 Ticks — bei einer Schwelle von 216. F6 hat den Bereich daraufhin auf
+ * 110+50 gesenkt, damit sein oberes Ende unter dieser Strecke liegt, und damit
+ * ihren ERSTEN Anfall gekauft (Tick 126) — nicht die Wiederkehr: danach begann
+ * ihre Uhr wieder bei null und ihre Wenden kamen häufiger als 126 Ticks. F6 hat
+ * die Zahl ausgesprochen statt sie zu verschweigen — EINMAL in 6000 Ticks ist
+ * kein Takt — und den dauerhaften Weg benannt: ein Zähler, der eine Wende
+ * überlebt. Das ist `fitTick`, und mit ihm ist der Bereich wieder das, was sein
+ * Name sagt: ein Abstand in der Zeit, nicht die Länge eines Raums.
  */
-export const FRENZY_EVERY_MIN = 110;
-export const FRENZY_EVERY_SPAN = 50;
+export const FRENZY_EVERY_MIN = 270;
+export const FRENZY_EVERY_SPAN = 70;
 
 /** Der Abstand zwischen zwei Anfällen für DIESES Wesen. Rein und aus dem Namen
  *  — dieselbe Streuung, die das Käfig-Rütteln benutzt. */
@@ -682,7 +695,7 @@ const stepRedeemed = (e: EntityState, grid: readonly string[] = []): void => {
 // gehört GENAU hierher und nicht in den Flug-Zweig: er muss auch im Halte-Takt
 // hinter einer offenen Karte weiterlaufen, sonst bliebe sie in der Luft stehen,
 // während das Kind noch etwas liest — dieselbe Falle, die den Sieg-Bogen schon
-// einmal in einem leeren Raum spielen liess.
+// einmal in einem leeren Raum spielen ließ.
 const LANDING_STATES: ReadonlySet<string> = new Set(["sink", "sad", "settle"]);
 
 /**
@@ -1139,6 +1152,7 @@ export const spawnEntities = (specs: EntitySpec[], links: LinkSpec[]): EntityWor
     bounceTick: 0,
     awakenStep: 0,
     freedTick: 0,
+    fitTick: 0,
     params: s.params ?? {},
     };
   }),
@@ -1351,6 +1365,12 @@ export const stepEntities = (
       continue;
     }
     e.timer += 1;
+    // R5-W6 · F7 · R151: …und die Uhr des Anfalls läuft daneben weiter (siehe
+    // fitTick), weil jede Wende `timer` nullt. Sie zählt für jedes noch nicht
+    // erlöste Wesen — gelesen wird sie nur vom Läufer, aber ein Zähler, der
+    // je nach Rolle stehenbleibt, ist genau die Sorte Uhr, die später jemand
+    // für laufend hält. Der erlöste Zweig hat sein Gegenstück oben.
+    e.fitTick += 1;
     switch (e.role) {
       case "chaser": {
         if (e.state === "patrol") {
@@ -1376,7 +1396,11 @@ export const stepEntities = (
           // R5-W4 · F5 · …und alle paar Sekunden kritzelt er. Die Prüfung steht
           // NACH der Aggro-Prüfung: ein Kind, das gerade herankommt, bekommt den
           // Angriff, nicht den Anfall — der Anfall ist Charakter, kein Hindernis.
-          else if (e.timer > frenzyEveryFor(e.id)) { e.state = "frenzy"; e.timer = 0; e.vx = 0; }
+          // R5-W6 · F7 · R151: …und fällig wird er aus SEINER Uhr, nicht aus
+          // `timer`. Der Unterschied ist im ausgelieferten Kapitel der ganze
+          // Unterschied: `timer` misst die längste zufällige Gerade eines
+          // Raums, `fitTick` misst die Zeit. Genullt wird hier — und nur hier.
+          else if (e.fitTick > frenzyEveryFor(e.id)) { e.state = "frenzy"; e.timer = 0; e.fitTick = 0; e.vx = 0; }
         } else if (e.state === "frenzy") {
           // R5-W5 · F6: welcher der zwei Anfälle — die Karte dieses Läufers sagt
           // es, die Tabelle hält es fest (fitStyleFor).
