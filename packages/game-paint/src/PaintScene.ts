@@ -23,7 +23,7 @@ import { PatternLedger } from "./tilePatterns.ts";
 import { type LayerPiece, coverFit, planLayers } from "./layers.ts";
 import { AIR_DEPTH, LIFE_PARALLAX, type AirPiece, planBandShade, planHaze, planLife, planMotes, planShafts, planSources, shaftQuads, vignetteBands } from "./air.ts";
 import { NEAR_PLANE_KINDS, CRUST_MARK_DEPTH, MASS_MARK_DEPTH, type MassPiece, type SurfaceMark, claimedPlatformCells, crustGrain, hash01, ledgeGrain, massGrain, planMass, planPlatformShadows, tileAnchorFor, tileScaleFor } from "./mass.ts";
-import { LETTER_STYLE, letterGlyphs } from "./letters.ts";
+import { BACKING_REACH, BACKING_STEPS, LETTER_AMBER, LETTER_GOLD, LETTER_STYLE, letterBackingFor, letterGlowGain, letterGlyphs, letterRimFor } from "./letters.ts";
 import { type PhraseSlot, bonusPhrase } from "./cards/ceremony.ts";
 import { PICKUP_ROLES, type PaintLevel, type PhaseSpec } from "./level.ts";
 import { type AirModel, DELTA_CAP_MS, LOGICAL_H, LOGICAL_W, MAX_TICKS_PER_FRAME, PAINT, RENDER_SCALE, SUBS, TICK_MS, TILE, fromSubs, mixMultiply } from "./paint.ts";
@@ -691,10 +691,12 @@ const GIFT_DY_FRAC = 0.1;
 /** How many wisps the pull tail is drawn from, and how far it reaches back. */
 const PULL_TRAIL_POINTS = 7;
 const PULL_TAIL_PX = 16;
-/** The letters' own warm gold and their amber contour (letters.ts LETTER_STYLE),
- *  as numbers — the streak is made of the collectible, not of a new colour. */
-const PULL_COLOUR = 0xf7c93f;
-const PULL_EDGE = 0xa2560f;
+/** The letters' own warm gold and their amber contour — R5-W6 · L1 · R146: aus
+ *  `letters.ts` GEZOGEN, nicht abgeschrieben. Der Streifen ist aus dem
+ *  Sammelstueck gemacht, nicht aus einer neuen Farbe, und eine Kopie, die man
+ *  nachpflegen muesste, ist keine. */
+const PULL_COLOUR = LETTER_GOLD;
+const PULL_EDGE = LETTER_AMBER;
 /** Deterministic ±1.5 px shimmer keyed on the sample's OWN tick (not its index
  *  in the buffer, which shifts every sample and would make the whole tail
  *  crawl). Knuth's multiplicative hash — the same trick the legacy build uses
@@ -5395,22 +5397,49 @@ export class PaintScene extends Phaser.Scene {
         this.letterFxG.fillStyle(LETTER_SHADOW_TINT, 0.06 + 0.16 * near);
         this.letterFxG.fillEllipse(img.x, surfaceY - 1, 7 + 6 * (1 - near), 2.4 + 1.4 * (1 - near));
       }
+      // ── R5-W6 · L1 · ZUERST DER HOF, DER DEN GRUND ZURUECKNIMMT ────────────
+      // R37 und Raymans eigenes Referenzbild sagen dasselbe: ein Sammelstueck
+      // trennt sich vor einer ABGEDUNKELTEN Flaeche, nicht durch mehr Helligkeit.
+      // Gemessen stand p1s Wand bei Luminanz 199 gegen das Gold bei 201 — die
+      // Wand IST die Farbe des Buchstabens. Der Hof ist die einzige Stelle, an
+      // der sich das beheben laesst, ohne das Gold (R41) oder ein Blatt Kunst
+      // anzufassen. Er sitzt AUSSEN am staerksten, weil dort der Ring liegt,
+      // gegen den ein Kind trennt (R28) — und weil ein im Zentrum dichter Hof
+      // den eigenen Schatten des Buchstabens zudecken wuerde.
+      const backing = letterBackingFor(this.comp?.key ?? 88);
+      if (backing.alpha > 0.01) {
+        for (let i = BACKING_STEPS; i >= 1; i--) {
+          const spread = LETTER_HALO_R * BACKING_REACH * (i / BACKING_STEPS);
+          this.letterFxG.fillStyle(backing.colour, (backing.alpha / BACKING_STEPS) * swell);
+          this.letterFxG.fillCircle(img.x, img.y, spread);
+        }
+      }
+      // …dann das warme Licht. Es ist WARMES LICHT: im dunklen Raum traegt es die
+      // Trennung mit; im hellen hellt es genau den Ring auf, gegen den gemessen
+      // wird — es arbeitet dort also gegen sich selbst. Also faehrt es mit der
+      // Helligkeit des Raumes zurueck und ueberlaesst die Arbeit Rand und Hof.
+      const glow = letterGlowGain(this.comp?.key ?? 88);
       for (let i = 0; i < LETTER_HALO_RINGS; i++) {
         const k = 1 - i / LETTER_HALO_RINGS;
-        this.letterFxG.fillStyle(LETTER_HALO_COLOUR, LETTER_HALO_ALPHA * k * k * swell);
+        this.letterFxG.fillStyle(LETTER_HALO_COLOUR, LETTER_HALO_ALPHA * glow * k * k * swell);
         this.letterFxG.fillCircle(img.x, img.y, LETTER_HALO_R * (0.42 + 0.58 * (i / Math.max(LETTER_HALO_RINGS - 1, 1))) * swell);
       }
       for (let i = 0; i < LETTER_SPARKS; i++) {
         const ang = (i / LETTER_SPARKS) * Math.PI * 2 + t / 46 + phase;
         const d = LETTER_HALO_R * 0.92;
-        this.letterFxG.fillStyle(LETTER_HALO_COLOUR, 0.55 * swell);
+        this.letterFxG.fillStyle(LETTER_HALO_COLOUR, 0.55 * glow * swell);
         this.letterFxG.fillCircle(img.x + Math.cos(ang) * d, img.y + Math.sin(ang) * d * 0.8, 0.85);
       }
     }
   }
 
   private letterTex(char: string): string {
-    const key = `pb-glyph-${char}`;
+    // R5-W6 · L1: der Rand folgt dem Raum (letters.ts `letterRimFor`), also
+    // gehoert der Raum in den Cache-Schluessel. Eine Phase ist zu einer Zeit
+    // geladen, die Zahl der Leinwaende bleibt also, wie sie war — und ohne den
+    // Schluessel truege die zweite Phase die Kontur der ersten.
+    const rim = letterRimFor(this.comp?.key ?? 88);
+    const key = `pb-glyph-${char}-k${Math.round(this.comp?.key ?? 88)}`;
     if (this.textures.exists(key)) return key;
     const S = 128;
     // ★ R5-W5 · E6 · DIESE STELLE BLEIBT, WIE SIE IST — und das ist ein MESSWERT,
@@ -5436,6 +5465,22 @@ export class PaintScene extends Phaser.Scene {
     ctx.shadowBlur = 7;
     ctx.shadowOffsetY = 4;
     ctx.lineJoin = "round";
+    // ── DER RAND, DEN DER RAUM DIKTIERT (R5-W6 · L1) ─────────────────────────
+    // Zuerst die breite Kontur in der Gegenfarbe des Raumes — Tinte in der
+    // sonnigen Halle, Kreide im Tintentraum —, dann die bernsteinfarbene darauf,
+    // dann das Gold. Reihenfolge ist die ganze Sache: der Bernstein bleibt so
+    // breit wie immer und das Gold behaelt seine Form; nur nach AUSSEN waechst
+    // ein Saum, den die Wand nicht hat. Gemessen war p1 bei ΔL −15 und ΔH 3°:
+    // gleiche Familie, gleicher Hellwert. Ein Saum aus der Tinte des Buches ist
+    // das Billigste, was diese Trennung kaufen kann, und es kostet kein Pixel
+    // Bildflaeche — im Gegensatz zu einem dunklen Hof auf der Wand.
+    if (rim.width > 0.5) {
+      ctx.globalAlpha = rim.alpha;
+      ctx.lineWidth = rim.width;
+      ctx.strokeStyle = `#${rim.colour.toString(16).padStart(6, "0")}`;
+      ctx.strokeText(char, S / 2, S / 2 + 3);
+      ctx.globalAlpha = 1;
+    }
     ctx.lineWidth = LETTER_STYLE.strokeWidth * 2;
     ctx.strokeStyle = LETTER_STYLE.stroke;
     ctx.strokeText(char, S / 2, S / 2 + 3);

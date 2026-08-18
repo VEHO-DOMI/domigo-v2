@@ -20,7 +20,9 @@
  *
  * ── ASSERTION 2 · DIE FARBE, GEGEN DIE BESTELLUNG GEMESSEN ────────────────────
  * Die Spec (§4) vergibt je Teil eine Farbe aus den zehn Buchfarben, mit zwei
- * harten Verboten: kein Gold/warmes Gelb (die Buchstaben sind Gold 0xf0c040 und
+ * harten Verboten: kein Gold/warmes Gelb (die Buchstaben sind Gold — EINE Quelle:
+ * `letters.ts` LETTER_GOLD 0xf7c93f seit R146/L1; die 0xf0c040-Nennungen in dieser
+ * Datei sind die alte dritte Kopie und nur noch Familien-Anker, kein Farbwert — und
  * tragen ein eigenes Halo — zwei leuchtende Sammelklassen zerteilen den Blick)
  * und kein Grau (Grau IST im Spiel der entfärbte Zustand). Ein getipptes
  * Farbwort, das nie gegen ein Pixel gehalten wurde, ist die Fehlerklasse P-65:
