@@ -116,6 +116,26 @@ interface HarnessApi {
   game: Phaser.Game;
   /** R5-W1 · E1: the measuring instrument, or null unless ?perf=1 is on. */
   perf: PerfApi | null;
+  /**
+   * R5-W6 · S2 · der Lese- und Mitschreib-Griff für den Klang (dev-only).
+   *
+   * Klang ist die einzige Ausgabe dieses Spiels, die ein Schirmbild nicht
+   * zeigt: ein stummes Kapitel und ein klingendes sehen identisch aus. Ohne
+   * diesen Griff wäre der einzige Beweis »ich habe es gehört« — und das kann
+   * keine Sitzung und kein CI-Lauf nachprüfen.
+   *
+   * `log` schreibt JEDEN Aufruf mit, den die Verdrahtung an den Direktor
+   * schickt, mit Zeitstempel: daran sieht man das Ratenlimit der Schritte, eine
+   * Doppel-Auslösung und die Reihenfolge beim Raumwechsel. Er wird nur
+   * angelegt, wenn jemand ihn einschaltet (`?audiolog=1`) — ein Puffer, der
+   * immer mitläuft, ist ein Leck.
+   */
+  audio: {
+    report: () => unknown;
+    context: () => { state: string; sampleRate: number } | null;
+    locked: () => boolean;
+    log: () => ReadonlyArray<{ t: number; call: string; arg: string }>;
+  };
 }
 
 /** R5-W1 · E1: the instrument's read seam. Present only behind the teacher
@@ -345,6 +365,8 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
   /** die Musik anwerfen, sobald die Tonmaschine offen ist (im Effekt gesetzt,
    *  von den Karten-Takten ausserhalb gerufen) */
   const applyMusicRef = useRef<(() => void) | null>(null);
+  /** R5-W6 · S2 · was wirklich geklungen hat — nur mit `?audiolog=1` (Beweis) */
+  const audioLogRef = useRef<{ t: number; call: string; arg: string }[]>([]);
   /** ein Klang aus der Hülle — Karte zu, Seite geblättert, richtig, Merles Runde */
   const cue = (stem: CueStem, stage?: number): void => directorRef.current?.cue(stem, stage);
   /** R5-W6 · S2 · was der Lautsprecher gerade zeigt. Aus dem Speicher gelesen,
@@ -810,9 +832,28 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
     // Direktor auch. `decodeAudio` gibt es nur auf Phasers WebAudio-Weg; fällt
     // Phaser auf HTML-Audio oder gar nichts zurück, bekommt der Direktor keine
     // Tonmaschine und ist still statt kaputt (sein `enabled` ist dann false).
-    const soundHost = game.sound as unknown as SoundHost;
+    // R5-W6 · S2: der Haken auf Phasers DECODED. Ohne ihn hält der Direktor
+    // eine Datei schon beim Abschicken für da, und `add(key)` wirft, weil der
+    // Cache sie noch nicht hat — der erste Raum bliebe zuverlässig stumm
+    // (gemessen mit `scripts/audio-proof.mjs`, 18.08.).
+    const soundHost: SoundHost = Object.assign(game.sound as unknown as SoundHost, {
+      onDecoded: (cb: (key: string) => void) => { game.sound.on(Phaser.Sound.Events.DECODED, cb); },
+    });
+    // R5-W6 · S2 · Beweis-Griff: `?audiolog=1` schreibt mit, was WIRKLICH
+    // geklungen hat — nach Ratenlimit, Rotation und Stumm-Prüfung. Klang ist
+    // die eine Ausgabe dieses Spiels, die kein Schirmbild zeigt; ohne ein
+    // Protokoll wäre der einzige Beweis »ich habe es gehört«. Ohne den
+    // Schalter entsteht kein Puffer.
+    const wantAudioLog = new URLSearchParams(window.location.search).has("audiolog");
     const director = createAudioDirector({
       sound: typeof (game.sound as { decodeAudio?: unknown }).decodeAudio === "function" ? soundHost : null,
+      onPlayed: wantAudioLog
+        ? (p) => {
+            const log = audioLogRef.current;
+            // gedeckelt: ein Beweislauf dauert Minuten, ein Leck dauert länger
+            if (log.length < 4000) log.push({ t: Math.round(performance.now()), call: p.bus, arg: p.file });
+          }
+        : undefined,
     });
     directorRef.current = director;
 
@@ -1265,6 +1306,15 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
       window.__domigoPaint = {
         game, // dev-only: typing-guard probes
         perf: window.__domigoPaintPerf ?? null,
+        audio: {
+          report: () => directorRef.current?.report() ?? null,
+          context: () => {
+            const c = audioCtxRef.current;
+            return c === null ? null : { state: c.state as string, sampleRate: c.sampleRate };
+          },
+          locked: () => game.sound.locked,
+          log: () => audioLogRef.current,
+        },
         press: (p) => {
           const pad = padRef.current;
           pad.left = p.left === true;

@@ -35,7 +35,7 @@
 import {
   BUSES, ENTITY_REACTIONS, MUSIC_BY_PHASE, PLAYER_REACTIONS, SIM_REACTIONS,
   STEMS, TOAST_MATCHES, audioUrl, filesOf, isPlay, isReserved, isSilent, stemSpec,
-  type CueStem, type Reaction, type StemSpec, type Surface,
+  type Bus, type CueStem, type Reaction, type StemSpec, type Surface,
 } from "./audioManifest.ts";
 import { AUDIO_FILES } from "./audioFiles.ts";
 import { AUDIO_DECODED_MB, decodedBytes } from "./audioBudget.ts";
@@ -55,6 +55,25 @@ export interface SoundHost {
   add(key: string, config?: { volume?: number }): HostSound;
   /** Phasers WebAudio-Weg: decodieren, ohne durch den Loader zu gehen. */
   decodeAudio(key: string, data: ArrayBuffer): void;
+  /**
+   * R5-W6 · S2 · Wann das Decodieren FERTIG ist.
+   *
+   * `decodeAudio` ist asynchron: Phaser legt den Puffer erst im Cache ab, wenn
+   * `context.decodeAudioData` zurückkommt, und meldet das über
+   * `Phaser.Sound.Events.DECODED` mit dem Schlüssel als Nutzlast. Bis dahin
+   * wirft `add(key)` — die Datei gibt es aus Sicht des Cache noch nicht.
+   *
+   * S1 hat diese Lücke benannt und bewusst offengelassen (»für S2 die Stelle,
+   * an der ein `once(DECODED)` das letzte Prozent holt«). Sie ist kein
+   * letztes Prozent: der Beweislauf hat gezeigt, dass die Musik des ersten
+   * Raums IMMER dagegen läuft — sie wird in dem Augenblick angefordert, in dem
+   * die Tonmaschine entsperrt, und ihr Decodieren hat gerade erst begonnen.
+   * Ohne dieses Signal bleibt der erste Raum stumm, und zwar zuverlässig.
+   *
+   * Optional, damit der Direktor ohne Phaser prüfbar bleibt: fehlt der Haken,
+   * gilt eine Datei wie bisher mit dem Abschicken als da.
+   */
+  onDecoded?(cb: (key: string) => void): void;
   removeByKey?(key: string): unknown;
   mute: boolean;
   volume: number;
@@ -68,6 +87,19 @@ export interface DirectorDeps {
   readonly settings?: AudioSettings;
   /** ob eine Datei überhaupt existiert; Vorgabe: was audioFiles.ts kennt */
   readonly hasFile?: (file: string) => boolean;
+  /**
+   * R5-W6 · S2 · Wer wirklich geklungen hat (Beweis-Griff, nicht Betrieb).
+   *
+   * Gemeldet wird NACH dem Ratenlimit, NACH der Varianten-Rotation und nach
+   * der Stumm-Prüfung — also das, was aus dem Lautsprecher kam, nicht das, was
+   * jemand angefordert hat. Genau das ist der Unterschied, auf den es beim
+   * Beweis ankommt: die Verdrahtung ruft bei jedem Schritt-Takt, aber nur jeder
+   * dritte darf klingen. Ein Protokoll der AUFRUFE hätte das Ratenlimit nie
+   * gezeigt und ein fehlendes Limit nie verraten.
+   *
+   * Ohne diesen Rückruf entsteht kein Puffer und kostet es nichts.
+   */
+  readonly onPlayed?: (played: { stem: string; file: string; bus: Bus }) => void;
 }
 
 // ── Die Kontext-Fabrik (S2 setzt sie in die Phaser-Konfiguration) ────────────
@@ -154,6 +186,9 @@ export const mapEvent = (
 
 const DUCKING_FAMILIES = new Set(["positive"]);
 
+/** wie lange auf eine decodierte Datei gewartet wird, bevor sie als weg gilt */
+const DECODE_TIMEOUT_MS = 5000;
+
 /**
  * R5 · S2 · Was gerade im Speicher liegt — für die Perf-Zeile (`?perf=1`).
  *
@@ -213,6 +248,7 @@ export const createAudioDirector = (deps: DirectorDeps = {}): AudioDirector => {
   const hasFile = deps.hasFile ?? ((f: string) => AUDIO_FILES[f] !== undefined);
   const fetchAudio = deps.fetchAudio
     ?? (async (url: string) => (await fetch(url)).arrayBuffer());
+  const played = (stem: string, file: string, bus: Bus): void => deps.onPlayed?.({ stem, file, bus });
 
   let settings: AudioSettings = deps.settings ?? readAudioSettings() ?? AUDIO_DEFAULTS;
 
@@ -220,6 +256,10 @@ export const createAudioDirector = (deps: DirectorDeps = {}): AudioDirector => {
   const enabled = host !== null && playable.length > 0;
 
   const loaded = new Set<string>();
+  /** abgeschickt, aber vielleicht noch nicht fertig decodiert */
+  const sent = new Set<string>();
+  const waiters = new Map<string, Array<() => void>>();
+  let hooked = false;
   const lastAt = new Map<string, number>();
   const lastVariant = new Map<string, number>();
   let currentMusic: { key: string; sound: HostSound } | null = null;
@@ -227,14 +267,46 @@ export const createAudioDirector = (deps: DirectorDeps = {}): AudioDirector => {
 
   const filesFor = (spec: StemSpec): readonly string[] => filesOf(spec).filter((f) => hasFile(f));
 
+  /** einmal an Phasers DECODED hängen — der Haken meldet JEDE fertige Datei */
+  const hookDecoded = (): boolean => {
+    if (hooked) return true;
+    if (host === null || host.onDecoded === undefined) return false;
+    host.onDecoded((key: string) => {
+      loaded.add(key);
+      const list = waiters.get(key);
+      if (list === undefined) return;
+      waiters.delete(key);
+      for (const w of list) w();
+    });
+    hooked = true;
+    return true;
+  };
+
+  /**
+   * Eine Datei holen und decodieren — und WARTEN, bis sie wirklich da ist.
+   *
+   * Die Wartezeit ist gedeckelt: eine Datei, die nach fünf Sekunden nicht
+   * decodiert ist, kommt nicht mehr. Ohne Deckel hinge `music()` für immer an
+   * einer kaputten MP3, und mit ihr der Phasenwechsel, der sie angefordert hat.
+   * Danach ist sie einfach nicht `loaded`, und der Direktor bleibt still —
+   * dieselbe Antwort wie auf eine fehlende Datei.
+   */
   const decode = async (file: string): Promise<void> => {
-    if (host === null || loaded.has(file)) return;
+    if (host === null || loaded.has(file) || sent.has(file)) return;
+    sent.add(file);
     try {
       const data = await fetchAudio(audioUrl(file));
+      if (!hookDecoded()) { host.decodeAudio(file, data); loaded.add(file); return; }
+      const done = new Promise<void>((res) => {
+        waiters.set(file, [...(waiters.get(file) ?? []), res]);
+      });
+      const timeout = new Promise<void>((res) => { setTimeout(res, DECODE_TIMEOUT_MS); });
       host.decodeAudio(file, data);
-      loaded.add(file);
+      await Promise.race([done, timeout]);
+      waiters.delete(file);
     } catch {
       /* eine fehlende Datei macht das Spiel leiser, nicht kaputt */
+      sent.delete(file);
     }
   };
 
@@ -287,6 +359,7 @@ export const createAudioDirector = (deps: DirectorDeps = {}): AudioDirector => {
     try {
       const s = host.add(file, { volume: BUSES.sfx * gain * ducked });
       s.play(undefined, { detune });
+      played(stem, file, "sfx");
     } catch {
       /* eine Tonmaschine, die gerade nicht kann, macht das Spiel nicht kaputt */
     }
@@ -310,7 +383,7 @@ export const createAudioDirector = (deps: DirectorDeps = {}): AudioDirector => {
     const files = filesFor(spec);
     const file = files[Math.min(files.length - 1, Math.max(0, Math.floor(stage)))];
     if (file === undefined || !loaded.has(file)) return;
-    try { host.add(file, { volume: BUSES.sfx }).play(); } catch { /* siehe playStem */ }
+    try { host.add(file, { volume: BUSES.sfx }).play(); played(stem, file, "sfx"); } catch { /* siehe playStem */ }
   };
 
   return {
@@ -376,6 +449,7 @@ export const createAudioDirector = (deps: DirectorDeps = {}): AudioDirector => {
         try { currentMusic.sound.stop(); currentMusic.sound.destroy(); } catch { /* egal */ }
         host.removeByKey?.(currentMusic.key);
         loaded.delete(currentMusic.key);
+        sent.delete(currentMusic.key);
         currentMusic = null;
       }
       if (key === null) return;
@@ -396,6 +470,7 @@ export const createAudioDirector = (deps: DirectorDeps = {}): AudioDirector => {
           s.play();
         }
         currentMusic = { key, sound: s };
+        played(key, key, "music");
       } catch {
         currentMusic = null;
       }
@@ -442,6 +517,8 @@ export const createAudioDirector = (deps: DirectorDeps = {}): AudioDirector => {
         currentMusic = null;
       }
       loaded.clear();
+      sent.clear();
+      waiters.clear();
       lastAt.clear();
       lastVariant.clear();
     },
