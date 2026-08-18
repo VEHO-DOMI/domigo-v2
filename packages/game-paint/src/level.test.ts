@@ -21,6 +21,14 @@ const phase = (rows: string[], over: Record<string, unknown> = {}) => ({
   entities: [],
   links: [],
   exit: { to: "done" },
+  // R5-W5 · B4b: seit Kokis Entscheid 2026-08-17 muss jede Phase mit einem `C`
+  // SAGEN, welche Seite der Schwelle den Anker trägt (`checkpoint-placement`).
+  // `"far"` steht hier, weil genau das die Doktrin ist, die die Fixtures dieser
+  // Datei prüfen (Anti 3/6 v2: Anker hinter der Tinte) — die Prüfungen behalten
+  // damit ihre Absicht Wort für Wort. Ein Test, der die andere Seite braucht,
+  // überschreibt es über `over`; die Seiten-Spiegelung selbst liegt in
+  // `checkpoint-silence.test.ts`.
+  checkpointSide: "far" as const,
   ...over,
 });
 
@@ -900,17 +908,27 @@ describe("PB-T2 · envelope law (derived from stepPlayer)", () => {
       expect(laws(cross({ c: 14, r: 18 }))).toEqual([]); // die letzte erlaubte Spalte
     });
 
-    it("DIE UMKEHR: ein Checkpoint VOR der Tinte fällt durch", () => {
+    it("DIE UMKEHR: ein Checkpoint VOR der Tinte fällt durch — wenn die Phase »far« sagt", () => {
+      // R5-W5 · B4b: bis zum 17.08. war »vor der Tinte« IMMER ein Verstoß, und
+      // die Meldung sagte das auch so („never before it"). Kokis Entscheid macht
+      // die Seite zur Deklaration: dieselbe Zelle ist unter `"near"` richtig und
+      // unter `"far"` falsch. Die Absicht dieser Prüfung bleibt damit erhalten —
+      // sie prüft jetzt ausdrücklich den `"far"`-Fall (das Fixture sagt `"far"`),
+      // und das Gegenstück (`"near"` grün, `"far"` rot an DERSELBEN Zelle) steht
+      // als Paar in `checkpoint-silence.test.ts`.
       const f = checkLevelLaws(parsePaintLevel(level(cross({ c: 7, r: 18 }))));
       const p = f.find((x) => x.law === "checkpoint-placement");
-      expect(p, "vor der Passage ist jetzt ein Verstoß").toBeDefined();
-      expect(p!.detail).toMatch(/on the near side.*AFTER a hard passage, never before it/);
+      expect(p, "vor der Passage ist bei »far« ein Verstoß").toBeDefined();
+      expect(p!.detail).toMatch(/declares checkpointSide "far".*not within \d+ columns of the landing bank/);
     });
 
     it("TAMPER: einen Schritt zu weit (5 statt 4 Spalten) fällt ebenfalls durch", () => {
       expect(laws(cross({ c: 14, r: 18 })), "c14 = genau am Rand").toEqual([]);
       const f = checkLevelLaws(parsePaintLevel(level(cross({ c: 15, r: 18 }))));
-      expect(f.find((x) => x.law === "checkpoint-placement")?.detail).toMatch(/past the far bank.*retry sits NEXT to the challenge/);
+      // R5-W5 · B4b: die Entfernungs-Klausel ist unverändert (CHECKPOINT_AFTER_MAX),
+      // nur der Wortlaut nennt jetzt die Seite mit, weil es zwei davon gibt.
+      expect(f.find((x) => x.law === "checkpoint-placement")?.detail)
+        .toMatch(/declares checkpointSide "far".*not within \d+ columns of the landing bank.*must stand NEXT to it, not a screen away/);
     });
 
     it("TAMPER: gar kein Checkpoint an einer gekreuzten Tinte fällt durch", () => {

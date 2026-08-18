@@ -111,3 +111,71 @@ describe("D-85 · warum ein vierter Schwarm es NICHT löst", () => {
     expect(haveCells).toBeLessThan(needCells); // 11,3 Zellen Deckenlänge fehlen
   });
 });
+
+// ─────────────────────────────────────────────────────────────────────────────
+// R5-W5 · B4b · D-161 NEU GEMESSEN — UND ZWAR JE PHASE
+//
+// R82 hat die »2« für den Spießrutenlauf angenommen (Weg c). Der Auftrag dieser
+// Welle war, dieselbe Frage BREITER zu stellen: nicht »wie viele Rad-Karten
+// garantiert der Motten-Lauf«, sondern »wie viele Karten garantiert jede Phase«.
+// Zwei Dinge, die die engere Frage nicht sehen konnte, kommen dabei heraus —
+// beide stehen unten als eigene Prüfung.
+//
+// DAS MODELL ist unverändert das oben (Träger = iframes × runMax, Kontaktrand 38
+// px je Seite). Zwei ehrliche Grenzen, laut ausgesprochen:
+//  · Der Rand 38 px ist der SCHWANK DER MOTTE (Dossier p2 §6.3). Für Läufer,
+//    Presse und Flieger ist er großzügig, also fällt die Zahl konservativ aus —
+//    die Richtung, die eine »garantiert«-Aussage haben muss.
+//  · Läufer, Flieger und Presse PATROULLIEREN; ihre Spalte ist die Mitte ihres
+//    Bandes, nicht ein Standpunkt. Die Zahl ist damit eine Schranke, kein Fahrplan.
+describe("R5-W5 · B4b · D-161 · Karten garantiert JE PHASE", () => {
+  /** Genau die Rollen, die auf BERÜHRUNG fragen (entities.ts: `hostile`) — nur
+   *  die kann der Träger verschlucken. `drained`/`cage`/`classmate` fragen auf ↑
+   *  und hängen an Erreichbarkeit, nicht an Abstand (`entity-reachable`). */
+  const KONTAKT = ["chaser", "gunner", "flyer", "bouncer", "crusher", "swarm"];
+  const alle = [...level.phases, ...(level.arena ? [level.arena] : []), ...(level.bonus ? [level.bonus] : [])];
+  const kontaktSpalten = (id: string): number[] =>
+    alle.find((p) => p.id === id)!.entities.filter((e) => KONTAKT.includes(e.role)).map((e) => e.c).sort((a, b) => a - b);
+
+  it("VAKUITÄT: die Frager je Phase sind die, die im Level stehen", () => {
+    expect(kontaktSpalten("p1")).toEqual([24, 48]);
+    expect(kontaktSpalten("p2")).toEqual([11, 26, 41, 56, 68]);
+    expect(kontaktSpalten("p3")).toEqual([47, 52]);
+    expect(kontaktSpalten("p4"), "die Wächterin ist kein Berührungs-Frager").toEqual([]);
+    expect(kontaktSpalten("p9"), "die Kleckskammer hat gar keine Wesen").toEqual([]);
+  });
+
+  it("★ die Tabelle: p1 2 · p2 3 · p3 1 · p4 0 · p9 0", () => {
+    expect(guaranteed(kontaktSpalten("p1"))).toBe(2);
+    expect(guaranteed(kontaktSpalten("p2"))).toBe(3);
+    expect(guaranteed(kontaktSpalten("p3"))).toBe(1);
+    expect(guaranteed(kontaktSpalten("p4"))).toBe(0);
+    expect(guaranteed(kontaktSpalten("p9"))).toBe(0);
+  });
+
+  it("★ p2 garantiert DREI Karten — und trotzdem nur ZWEI Rad-Karten", () => {
+    // Der Grund, dass beide Zahlen stimmen und keine die andere widerlegt: R43
+    // fragte nach RAD-Karten (den drei Motten). Die Phase hat aber fünf
+    // Berührungs-Frager, und der Läufer am Eingang (c11) und die Füllfeder am
+    // Ausgang (c68) liegen weit genug von den Motten weg, um selbst zu fragen.
+    // Wer »drei Karten in p2« liest, hat also recht — nur sind es nicht drei
+    // Räder. R82 bleibt damit unberührt.
+    const raeder = kontaktSpalten("p2").filter((c) => [26, 41, 56].includes(c));
+    expect(guaranteed(raeder), "die drei Motten allein: unverändert zwei").toBe(2);
+    expect(guaranteed(kontaktSpalten("p2")), "die ganze Phase: drei").toBe(3);
+  });
+
+  it("★ NEU: in p3 verschluckt der Träger den Flieger ganz", () => {
+    // Presse (47) und Flieger (52) liegen 80 px auseinander gegen eine Schranke
+    // von 346. Wer die Presse löst, läuft am Flieger vorbei, ohne dass er fragt —
+    // dieselbe Klasse wie D-85, in einer Phase, die niemand nachgemessen hatte.
+    // NICHT reparieren: das Verschieben eines Wesens in p3 bricht das p3-Band und
+    // ist in dieser Welle nicht bestellt (Report + Register).
+    const [presse, flieger] = kontaktSpalten("p3") as [number, number];
+    expect((flieger - presse) * TILE, "Abstand in px").toBe(80);
+    expect((flieger - presse) * TILE).toBeLessThan(needPx);
+    expect(guaranteed([presse, flieger]), "einer von zwei").toBe(1);
+    // …und derselbe Rechner sagt zwei, sobald der Abstand reicht (diskriminiert)
+    expect(guaranteed([presse, presse + Math.ceil(needPx / TILE)])).toBe(2);
+  });
+});
