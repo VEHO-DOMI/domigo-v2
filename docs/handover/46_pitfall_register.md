@@ -180,6 +180,9 @@ Fehler im Code. *Regel:* nach jedem Rebuild `preview_stop` + `preview_start`.
 P-60)* Ein grünes „REBUILT" erschien, während der Build gar nicht lief — er stand im
 falschen Verzeichnis. *Regel:* Exit-Code getrennt holen (`cmd > log 2>&1; echo
 "EXIT=$?"`), und Tor-Ketten immer mit `&&`, nie mit `;`.
+(**Zweiter Vorfall: C3, 2026-08-15** — eine Torschleife meldete Code 0, obwohl alle sieben
+Tore mit »command not found« gescheitert waren; nur die mitgedruckten Einzel-Exitcodes haben
+es verhindert. Siehe **PB-56**.)
 
 **PB-22 · Frag die laufende Klasse, ob sie deinen Code kennt — glaub nicht der URL.**
 *(H1 Teil 3, 2026-08-14; früher P-65)* Der Live-Lauf sprach zuerst mit einem `next dev`
@@ -653,6 +656,11 @@ trotzdem wieder zugeschlagen — deshalb steht sie jetzt hier, wo sie beim Arbei
 wird. *Regel:* Literale Listen schreiben, nicht Variablen splitten (`${=VAR}`, wenn es
 unbedingt sein muss) — und den **ersten** Durchlauf einer Schleife ansehen, bevor man ihr
 glaubt.
+(**Zweiter Vorfall: C3, 2026-08-15** — `for g in "$LISTE"; do $g; done` rief jede Zeile als
+EINEN Befehlsnamen auf; alle sieben scheiterten mit »command not found«, und **die Schleife
+endete trotzdem mit Code 0** — das ist **PB-8**. C3 hat die Falle als neu gemeldet; sie ist
+es nicht, deshalb steht sie hier und hat keine eigene Nummer bekommen. Zweimal dieselbe
+Falle in einem Monat heißt: die literale Liste ist keine Stilfrage.)
 
 **PB-57 · Ein Kritiker-Urteil über ein Bild ist ein Urteil über die BILDAUSWAHL.**
 *(B4, 2026-08-15.)* Zwei unabhängige Kritiker sagten übereinstimmend »hier gibt es keinen
@@ -749,6 +757,11 @@ derselben Datei.)
 zerlegt sie. Zweimal passiert, beide Male sofort vom Typecheck gefangen. *Regel:* In dieser
 Datei nur »…«, auch in Kommentaren. (Dieselbe Familie wie **PB-17** — ein Zeichen, das in
 einem scheinbar harmlosen Kontext die umschließende Quotierung beendet.)
+**★ Stand 2026-08-15 (D3b): FÜNFMAL passiert** — D3a zweimal, D3b dreimal —, und eine
+aufgeschriebene Hausregel hat es nicht verhindert. Deshalb hat die Datei jetzt einen
+Wächter. Die eigentliche Lehre steckt im ersten Anlauf dieses Wächters und steht als
+eigener Eintrag **PB-86**: er lag in der Suite, die das Stylesheet IMPORTIERT, und war dort
+nutzlos.
 
 **PB-69 · Ein verborgener Tab kann einen Fehler VERSTECKEN, nicht nur eine Messung
 verfälschen.** *(D3, 2026-08-15.)* Im fernsteuerbaren Tab stand die Karte in ihrer
@@ -844,3 +857,125 @@ reproduzieren — oder chirurgisch editieren. Und nach jedem maschinellen Schrei
 --stat` lesen: eine Zeilenzahl, die nicht zur Änderung passt, ist der Befund.
 (Dieselbe Familie wie die Level-Datei-Regel in `CONTRIBUTING.md`: nie neu erzeugen, nur
 editieren — dort ist sie aufgeschrieben, hier ist sie zum zweiten Mal passiert.)
+
+## R5-Welle 4b · aus den Reports der Welle (aufgenommen von K4, 2026-08-17)
+
+> **Die Buchführung dieser Runde.** Zwei der sechs 4b-Sessions haben Fallen als Fließtext
+> gemeldet und die Nummernvergabe ausdrücklich der K-Bahn überlassen (R70): **C3 fünf,
+> D3b vier — neun Wortlaute.** Aufgenommen sind **acht** (PB-81 … PB-88). Der neunte,
+> C3s »zsh zerlegt `$VAR` nicht«, ist eine **Doppelung von PB-56** — dasselbe Gesetz,
+> derselbe Monat, ein zweiter Vorfall; er bekommt keine eigene Nummer, sondern eine
+> Verweiszeile dort. Ein zweiter Halbbefund derselben Meldung (die Schleife endete trotz
+> sieben »command not found« mit Code 0) ist **PB-8** und steht ebenfalls als Verweiszeile.
+> Und D3bs Backtick-Meldung ist zur Hälfte **PB-68** (fünfter Vorfall, Verweiszeile dort) —
+> ihr ungedeckter Kern, die Bauart des Wächters, steht als eigener Eintrag **PB-86**.
+> Geprüft wie bei K3: von der aufnehmenden Session UND von einem **blinden Klassierer**,
+> der nur die 80 bestehenden Einträge und die neun Wortlaute sah, nicht die Zuordnung.
+> Er fand dieselbe eine Doppelung und dieselbe eine Absenz; wo er »lieber als Zeile am
+> alten Eintrag« vorschlug, ist im Zweifel die eigene Nummer vergeben **und** der alte
+> Eintrag mit einem Verweis versehen (R111).
+
+**PB-81 · Ein Prüfer kann nur beurteilen, was das Bild bei beurteilbarer Größe hergibt.**
+*(C3, 2026-08-15.)* Ein Blatt wurde auf BLATTGRÖSSE geprüft und durchgewunken; darin misst
+das Motiv 480 × 275, und ein ein Pixel breiter, ausgefranster Gitterstab ist auf dieser
+Verkleinerung nicht darstellbar. Der blinde Prüfer arbeitete am 8–10-fachen Ausschnitt und
+behielt recht; bei 3× war es dann auch für die Session sichtbar. *Regel:* Prüfer bekommen
+**Ausschnitte auf beurteilbarer Größe**, nie das ganze Blatt; wer den Ausschnitt nicht
+macht, prüft die Verkleinerung. (Nachbar von **PB-57**: dort ist die BILDAUSWAHL das
+Urteil, hier der MASSSTAB. Und die Gegenrichtung von **PB-30**, das die Wirkungsfrage
+ausdrücklich in der ganzen Szene stellen lässt — Wirkung urteilt man im Ganzen, Defekte
+findet man im Ausschnitt.)
+
+**PB-82 · Eine Null aus einer selbst zusammengesteckten Prüfung kann vakuum sein.**
+*(C3, 2026-08-15.)* Die eigene Saum-Gegenprobe übergab dem Prüf-Baustein ein rohes PNG
+statt der erwarteten `{w,h,px}`-Hülle; seine Schleife lief **null Mal** und lieferte eine
+leere Trefferliste. Beinahe hätte die Session dem echten Tor mit dieser Null widersprochen.
+*Regel:* Eine Null von einer Prüfung, die man selbst zusammensteckt, gilt erst, wenn
+derselbe Aufbau an einem Fall, der nicht null ist, seine Zahl auch wirklich zeigt —
+Positivkontrolle vor Verneinung. (Familie **PB-15** — der Selbsttest wird auf dem Fall
+gebaut, der die beiden Antworten trennt — und **PB-47**, wo das Instrument an der falschen
+Stelle misst statt gar nicht.)
+
+**PB-83 · Ein selbstkalibrierender Schwellwert macht eine harmlose Änderung zum Torfall.**
+*(C3, 2026-08-15.)* Das Saum-Tor eicht sich je Bild an dessen eigenem Material. Ein
+Entsättigen senkt damit die Grundlinie und legt Randpunkte frei, die immer schon da waren —
+der korrekte Eingriff wird rot, ohne dass sich der Defekt geändert hätte. *Regel:* Eine
+abgeleitete Schwelle darf sich nicht auf das Material beziehen, das sie beurteilt; wo sie
+es doch tut, gehört der Bezugswert eingefroren und datiert. (**Schränkt PB-36 ein**: eine
+Formel statt einer Konstante nimmt spätere Änderungen mit — aber eben auch die sachfremden.)
+
+**PB-84 · Ein Prädikat, das in zwei Dateien liegt, ist zwei Tests.**
+*(C3, 2026-08-15.)* Das Import-Skript und das Kunst-Tor benutzen verschiedene Formeln für
+»magentafarbener Rand«. Ein Blatt, das der Importer durchlässt, sagt deshalb nichts darüber,
+ob das Tor es durchlässt — und umgekehrt. *Regel:* Dieselbe Frage an zwei Stellen heißt
+zwei Antworten; entweder in ein geteiltes Modul heben oder ausdrücklich hinschreiben, dass
+das Bestehen der einen Stelle die andere nicht deckt. (Familie **PB-19** — zwei von Hand
+synchron gehaltene Listen — und **PB-79**.)
+
+**PB-85 · Der verborgene Tab friert CSS-Übergänge in ihrem STARTBILD ein und kann damit
+einen Fehler ERFINDEN.** *(D3b, 2026-08-15.)* Die Abdunklung der Anzeigeleiste meldete dort
+`opacity: 1`, obwohl die Klasse saß; mit abgeschaltetem Übergang sprang derselbe Knoten
+sofort auf `0.26`. *Regel:* Messungen an Übergängen gehören in den selbst gestarteten,
+**sichtbaren** Chrome — sonst misst man den eingefrorenen ersten Bildpunkt einer Animation.
+(**PB-69** sagt, der verborgene Tab kann einen Fehler VERSTECKEN; das hier ist die andere
+Hälfte desselben Satzes: er kann auch einen erfinden. Fläche und Kontrollmessung: **PB-44**.)
+
+**PB-86 · Ein Wächter über eine Datei, die nicht mehr übersetzt, darf diese Datei nicht
+importieren.** *(D3b, 2026-08-15.)* Der erste Anlauf des neuen Backtick-Wächters lag in der
+Test-Suite, die das Stylesheet importiert — und starb an genau dem Importfehler, den er
+melden sollte. Er war dort nutzlos, und gezeigt hat es der Tamper, nicht das Nachdenken.
+*Regel:* Ein Wächter, der einen Syntax- oder Ladefehler fangen soll, liest seinen
+Prüfgegenstand als **Text**, nie über den Import. Wer den Wächter baut, tampert ihn zuerst
+kaputt und sieht nach, ob er noch redet. (Familie **PB-15** — eine Prüfung, die man nicht
+zum Reden bringt, hat nichts bewiesen.)
+
+**PB-87 · Ein Lieferschein ist eine Behauptung.**
+*(D3b, 2026-08-15.)* Das Begleitpapier einer Kunstlieferung beschrieb ein Bild, das so nicht
+geliefert wurde — zwei Zöpfe vorn links, ein kleiner Reflex neben den Gesichtern. Beides ist
+in dreißig Sekunden am Blatt zu widerlegen. *Regel:* Kein Import ohne eigenen Blick auf das
+Blatt; das Papier daneben ist eine Bestellung, kein Beleg. Das gilt auch — und gerade —
+wenn das Blatt keine Textebene hat: ansehen, nicht abhaken. (Familie **PB-24**, ein
+Kommentar ist keine Auslieferung, und **PB-73**, ein geometrisch bestandenes Blatt kann
+motivisch falsch sein. Der Verfahrensteil steht als Ruling R91/R110: blinder Blatt-Prüfer
+vor jedem Import, der DRAFT-Marker sitzt auf dem Lieferschein im Lab, nicht im Repo.)
+
+**PB-88 · Eine »gescheiterte« Optik hat oft eine Ursache im eigenen Haus.**
+*(D3b, 2026-08-15.)* Die abgebrochenen Ecken der gelieferten Wachskante sahen nach einem
+Fehler des Blattes aus; gemessen war es der eigene Schatten-Stapel, der durch die
+durchsichtige Kante schaute. Zwei Anläufe gingen verloren, weil die Ursache vermutet statt
+gemessen wurde. *Regel:* Bevor eine Lieferung zurückgeht, wird der eigene Aufbau
+ausgeschlossen — die Ebene darüber, der Schatten, der Kompositions-Stapel. (Familie
+**PB-51**, dort friert der Prüfaufbau die Welt ein, und **PB-33**, die Diagnose im Auftrag
+ist eine Hypothese.)
+
+**PB-89 · Ein Wortverbot als Teilketten-Suche verbietet auch harmlose Wörter.**
+*(K4, 2026-08-17 — in dieser Runde selbst hineingetreten.)* Das Design-Blatt-Tor verbietet
+Bedrohungswörter, darunter »schrei« (für *schreien*). Geprüft wird per `text.includes()`, also
+als **Teilkette** — und damit fallen `schreibt` und `beschreibt` mit. Drei Sätze, die den
+Kanon korrekt wiedergaben (»die Klasse schreibt ihr die erste Lektion zurück«), machten das
+Tor rot; der Fehler lag nicht im Text, sondern in der Regel. Umformuliert wurde trotzdem der
+Text, weil `scripts/**` in dieser Bahn tabu ist — und das Tor-Loch steht als **D-278** mit
+Eigentümer. *Regel:* Ein Wortverbot prüft auf **Wortgrenzen** (`\bschrei\w*` mit einer
+Ausnahmeliste, oder die Wortliste ausgeschrieben), nie auf nackte Teilketten; und wer beim
+Umformulieren merkt, dass er einem Tor ausweicht statt einen Fehler zu beheben, schreibt das
+Tor-Loch auf, statt es zu vergessen. (Familie **PB-83** — eine Regel, die harmlose Arbeit rot
+färbt — und **PB-74**.)
+**★ Und es ist SOFORT wieder passiert:** derselbe Lauf, eine Stunde später, im Satz, der von
+dieser Falle handelt (»eine Kanon-Runde, die Zahlen über gebaute Entitäten ändert, schreibt
+Fiktion«). Das ist der Beweis für den Regel-Teil: solange die Prüfung auf Teilketten läuft, ist
+kein Vorsatz stark genug — nach jeder Textänderung an einem Design-Blatt läuft
+`check-design-sheets` **einmal**, bevor committet wird.
+
+**PB-90 · Eine Sammel-Liste, die »alles Offene« verspricht, erntet nicht den Abschnitt, der
+so heißt.** *(K4, 2026-08-17.)* Die »Filed, not acted on«-Liste der Welle 4b wurde aus den
+sechs gleichnamigen Report-Abschnitten gebaut — 41 Zeilen, arithmetisch sauber. Ein blinder
+Vollständigkeits-Prüfer hielt sie gegen die **ganzen** Reports und fand **41 weitere offene
+Posten**, fast alle außerhalb dieser Abschnitte: eine komplette Kunst-Bestellung mit drei
+Schulden, zwei ausdrücklich »NICHT ausgeführt« gemeldete Aufträge, vier verlorene
+Kritiker-Verdikte, vier offene Lieferungen, eine halbierte Messung. Dazu vier Zeilen, die ein
+Erledigt-Häkchen trugen, während ihre Quelle sie offen nennt. *Regel:* Wer eine
+Vollständigkeits-Zusage macht, liest die Quelle **ganz** und sucht die offenen Punkte auch da,
+wo sie nicht unter der erwarteten Überschrift stehen — »nicht verifiziert«, »als Nächstes«,
+»Frage an den Architekten«, »Empfehlung«, und mitten in der Prosa. Und: **eine Adresse ist
+keine Erledigung** — eine Schuld-Nummer zu vergeben schließt nichts. (Familie **PB-41** —
+Abdeckung ist die Zahl der Anschlüsse, nicht die Existenz der Regel.)

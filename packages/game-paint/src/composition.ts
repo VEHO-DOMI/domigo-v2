@@ -438,7 +438,19 @@ export const isPlaceholderStem = (stem: string): boolean => stem.startsWith(PLAC
  */
 export const massStems = (m: MassKit): string[] => {
   const out = [...m.crust, m.crustCapL, m.crustCapR, ...m.body, ...(m.bodyDeep ?? []), ...m.fade, m.sediment];
-  out.push(m.edgeL, m.edgeR, m.cornerBL, m.cornerBR, m.inCornerL, m.inCornerR, m.rampUp, m.rampDown);
+  // ★ R5-W5 · E6 · D-267 · `m.rampUp` und `m.rampDown` stehen hier NICHT MEHR.
+  // Diese Liste ist es, die entscheidet, was eine Phase lädt (über
+  // `compositionStems` → `phaseArtScope`), und ch01 hat null Steigungs-Glyphen
+  // (`/ \ 1 2 3 4`), also plant `planMass` nie ein Rampen-Stück. Beide Blätter
+  // lagen trotzdem in allen fünf Phasen-Scopes und kosteten Texturspeicher für
+  // ein Bild, das nicht vorkommen kann. Die zwei PNGs sind in diesem PR gelöscht
+  // (Kokis Entscheidung 17.08.: löschen statt dulden — die Versionsgeschichte
+  // hält sie, und eine Fläche mit echten Steigungen bestellt Rampen ohnehin neu,
+  // R109). Die Kit-Felder selbst bleiben, weil `mass.ts#planMass` sie verlangt;
+  // dass beides zusammenpassen MUSS, hält jetzt ein Gesetz in
+  // `composition.test.ts` fest: sobald irgendein Gitter einen Steigungs-Glyph
+  // trägt, müssen die Rampen-Blätter seines Kits auf der Platte liegen.
+  out.push(m.edgeL, m.edgeR, m.cornerBL, m.cornerBR, m.inCornerL, m.inCornerR);
   out.push(...m.platObjects.map((p) => p.stem));
   if (m.slide) out.push(m.slide.top, m.slide.mid, m.slide.foot, m.slide.under);
   return [...new Set(out)];

@@ -32,7 +32,17 @@ const arg = (name, dflt) => {
   const i = process.argv.indexOf(`--${name}`);
   return i >= 0 && process.argv[i + 1] ? process.argv[i + 1] : dflt;
 };
-const PORT = Number(arg("port", "3272"));
+// R5-W5 · E6 · KEIN STANDARD-PORT MEHR. Hier stand 3272 — der Port EINER
+// bestimmten Session. In einem Haus mit sieben parallelen Worktrees misst ein
+// vergessenes `--port` dann den Dev-Server des Nachbarn und meldet dessen Zahlen
+// als die eigenen, ohne einen Fehler zu erzeugen (P-65). Lieber ein Abbruch mit
+// Meldung als eine Messung, die die falsche Welt beschreibt.
+const PORT_ARG = arg("port", null);
+if (PORT_ARG === null || !Number.isInteger(Number(PORT_ARG))) {
+  console.error("harvest-perf: --port <n> ist Pflicht (P-65: eigener Port je Session).");
+  process.exit(2);
+}
+const PORT = Number(PORT_ARG);
 const CDP = Number(arg("cdp-port", "0")); // D-207: 0 = Chrome sucht sich einen freien
 const WARM = arg("warm", "1");
 const PHASES = arg("phases", "p1,p2,p3,p4,p9").split(",");

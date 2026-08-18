@@ -128,6 +128,41 @@ export const CUE_MOTE_ALPHA_PEAK = 0.46;
 const bobAt = (phase: number, reducedMotion: boolean): number =>
   reducedMotion ? 0 : Math.sin((phase / CUE_BOB_TICKS) * Math.PI * 2) * CUE_BOB_PX;
 
+// ── R5-W5 · F6 · DIE MARKE VERSTECKT SICH NICHT MEHR HINTER DEM KIND ─────────
+// F5 hat es gefiled, nachdem seine eigene Reparatur es erst möglich machte: „Der
+// ↑-Pfeil kann jetzt hinter dem Kind verschwinden. Mit der vollen Höhe verdeckt
+// der Held den Pfeil über einem niedrigen Ding, neben dem er steht."
+//
+// Der Grund ist eine Rechnung, die nur EIN Ding kennt: die Marke saß immer
+// `CUE_GAP_PX` über der Oberkante des DINGS. Ein Buch ist 24 px hoch, ein
+// Radiergummi weniger, das Kind ist ~35 px — die Marke landete also mitten in
+// seinem Körper. Und sie liegt (mit Absicht) HINTER ihm: Tiefe 9,5 gegen 10 am
+// Kind. Hinter ihm plus in ihm heißt unsichtbar.
+//
+// Zwei Wege standen offen. Die Marke VOR das Kind legen — dann liegt ein Pfeil
+// über seinem Gesicht, und die Tiefe 9,5 war eine bewusste Entscheidung, keine
+// Panne. Oder sie AUSWEICHEN lassen: sie bleibt hinter ihm und steigt über den
+// höheren der beiden Köpfe. Das ist dieser Weg (Kokis Entscheidung, 17.08.), und
+// es ist derselbe Satz wie vorher, nur mit zwei Oberkanten statt einer.
+//
+// Warum hier und nicht im Renderer: `renderEngageCue` „füllt nur noch, was sie
+// bekommt" — die Geometrie gehört in diese Datei, wo sie eine reine Funktion mit
+// einem Test ist. Die Oberkante des Kindes MISST der Renderer an der Figur, die
+// er in diesem Bild schon gezeichnet hat, statt eine Höhe zu behaupten (P-55:
+// wer eine Zahl liest, die er selbst erklärt hat, liest seine eigene Erklärung).
+/** Wie hoch die Marke über der Oberkante schwebt. */
+export const CUE_GAP_PX = 7;
+
+/**
+ * Auf welcher Höhe die Marke sitzt — über dem Ding ODER über dem Kind, je
+ * nachdem, wer höher ist. Kleineres y ist weiter oben, deshalb `Math.min`.
+ *
+ * Steht das Kind woanders, ist `heroTopPx` einfach kein Faktor: dann gewinnt die
+ * Oberkante des Dings und die Marke sitzt genau dort, wo sie immer saß.
+ */
+export const cueMarkY = (thingTopPx: number, heroTopPx: number): number =>
+  Math.min(thingTopPx, heroTopPx) - CUE_GAP_PX;
+
 /**
  * The whole cue, in world px, centred on (x, y).
  *

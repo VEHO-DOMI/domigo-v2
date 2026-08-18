@@ -190,6 +190,7 @@ export const SIM_REACTIONS = {
     { silent: "letter-take hat denselben Augenblick schon beklungen", when: "got < total" },
   ],
   letterTaken: [{ play: "letter-take" }],
+  cloth: [{ play: "letter-take", note: "R5-W5 · G4 (nach S1 gemergt): ein Kleidungsstueck ist gefunden, das Wort steht 2 s am Fundort — bis ein eigener Stem bestellt ist, klingt der Fund wie ein Buchstabe (positiv, 0,3 s); Nachbestellung `cloth-take` = S2/AUDIO_SPINE §2b" }],
   entityResolved: [{ play: "being-answered" }],
   tip: [{ play: "page-take" }],
   book: [{ reserved: "ch01 hat kein book-Entity (nur fünf tip); der Prompt liegt als `book-take` bereit" }],

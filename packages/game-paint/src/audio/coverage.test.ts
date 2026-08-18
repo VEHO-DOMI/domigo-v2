@@ -44,7 +44,7 @@ const unionMembers = (file: string, name: string): readonly string[] => {
 
 describe("Abdeckung: jede Ereignis-Art des Spiels hat genau einen Zustand", () => {
   const cases = [
-    { file: "sim.ts", name: "SimEvent", table: SIM_REACTIONS as Readonly<Record<string, unknown>>, expected: 15 },
+    { file: "sim.ts", name: "SimEvent", table: SIM_REACTIONS as Readonly<Record<string, unknown>>, expected: 16 /* 15 + `cloth` (R5-W5 · G4, 18.08.) — Entscheidung: spielt letter-take */ },
     { file: "player.ts", name: "PlayerEvent", table: PLAYER_REACTIONS as Readonly<Record<string, unknown>>, expected: 8 },
     { file: "entities.ts", name: "EntityEvent", table: ENTITY_REACTIONS as Readonly<Record<string, unknown>>, expected: 16 },
   ];
@@ -62,11 +62,11 @@ describe("Abdeckung: jede Ereignis-Art des Spiels hat genau einen Zustand", () =
     });
   }
 
-  it("zusammen sind es 39 — und jede Reaktion ist genau eines von drei Dingen", () => {
+  it("zusammen sind es 40 (39 + cloth) — und jede Reaktion ist genau eines von drei Dingen", () => {
     const total = ["sim.ts", "player.ts", "entities.ts"]
       .map((f, i) => unionMembers(f, ["SimEvent", "PlayerEvent", "EntityEvent"][i] as string).length)
       .reduce((a, b) => a + b, 0);
-    expect(total).toBe(39);
+    expect(total).toBe(40);
 
     for (const { union, event, reaction } of allReactions()) {
       const kinds = [isPlay(reaction), isSilent(reaction), isReserved(reaction)].filter(Boolean).length;

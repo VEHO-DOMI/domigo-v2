@@ -53,5 +53,10 @@ are PROVISIONAL until the real SB pages are scanned in each unit-audit wave (CP-
 blocks commissions, not this gate); task sets are authored fresh at build behind the
 grounding + blind-solve gates (u02–05 lexicons are wave items).
 
+**Merge-Zug (K4, 2026-08-17 — R104/P-71):** der Eigentümer der Tot-Kunst-Decke misst sie
+**nach** dem letzten Merge einer Welle, nie parallel dazu; jede Bahn ändert im eigenen PR nur
+ihr eigenes Delta. Und Rebase-Pflichten stehen in der Merge-Tabelle des BOOT-SHEETs, wo Koki
+sie liest — eine Pflicht, die nur im Text eines PRs steht, gibt es nicht.
+
 Checker: `node scripts/check-design-sheets.mjs` covers these sheets (corpus-id truth,
 v4 skeleton, register law).

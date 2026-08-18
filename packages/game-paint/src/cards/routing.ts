@@ -42,6 +42,7 @@
 // pool's progress eat another's — and a pool that is the same set of cards in
 // every phase keeps ONE series across the chapter instead of restarting at card
 // one behind every door.
+import { seededShuffle } from "@domigo/content-schema";
 import type { GameTaskV2 } from "@domigo/content-schema";
 
 /** Where and for whom a card is being served. `skin` is the addressed being's
@@ -112,6 +113,32 @@ export function orderedTask(
   return index >= 0 && index < pool.length ? pool[index]! : null;
 }
 
+/**
+ * R5-W5 · G4 · D-195 · WHERE A POOL OPENS.
+ *
+ * Koki: a freshly loaded game always served the same first three cards. Until
+ * now every pool started at index 0, so the first fight of a run asked card 0,
+ * the next pool's first serve asked ITS card 0, and a child who replayed the
+ * chapter met the identical opening three times.
+ *
+ * What this is NOT: a random start. `routing.ts` is deterministic by repo law
+ * (header, line 1), the proof tapes replay recorded input against an exact
+ * expected world, and there is no run seed anywhere in the package to seed from
+ * — `sim.ts` has none and `PaintGameProps` has none. A per-session shuffle would
+ * need a new prop and would invalidate every tape; that is filed for the
+ * architect, not smuggled in here.
+ *
+ * What this IS: the debt entry's own words — „deterministisch gedrehte
+ * Startposition JE KAMPF". The pool key already names the fight (`use|phase|
+ * skin`), so each pool opens at its own fixed offset instead of all of them
+ * opening at zero. Same input, same cards, every time; different pools, different
+ * openings. The offset comes from `seededShuffle`, the hash the cards already
+ * run on, rather than a third FNV variant of its own — the package has two
+ * incompatible ones already, and that is exactly one too many.
+ */
+const startOf = (key: string, n: number): number =>
+  n <= 1 ? 0 : (seededShuffle(Array.from({ length: n }, (_, i) => i), key)[0] ?? 0);
+
 /** The next task for a `use` in this context, and the advanced routing state.
  *  task is null only when the resolved pool is empty (the caller falls back to
  *  the generic pool or just resolves — never a softlock). */
@@ -126,7 +153,7 @@ export function nextTask(
   // exactly one step per serve — the fairness the whole pool depends on: a
   // cursor that ever advances by more than one strands a parity class of cards
   // forever (see the header, and ./variety.ts's reachability law).
-  const i = (st.cursors[key] ?? 0) % pool.length;
+  const i = (st.cursors[key] ?? startOf(key, pool.length)) % pool.length;
   const pick = pool[i]!;
   const next: RouteState = { cursors: { ...st.cursors, [key]: (i + 1) % pool.length } };
   return { task: pick, next };

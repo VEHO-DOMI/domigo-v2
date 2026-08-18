@@ -49,6 +49,38 @@ export const CAPTIVE_STEMS: readonly string[] = CAPTIVE_KEYS.map(captiveStem);
 export const isCaptiveKey = (v: unknown): v is CaptiveKey =>
   typeof v === "string" && (CAPTIVE_KEYS as readonly string[]).includes(v);
 
+/**
+ * R5-W5 · C4 · D-228 · …AND WHO IS IN THE ONE CAGE THAT HOLDS A PERSON.
+ *
+ * A thing-cage carries one of the four captive keys above and its occupant is
+ * painted on its own `captive_*` sheet. The chapter's ONE person-cage carries
+ * the classmate's name instead (`params.classmate`), and her occupant cell is
+ * the caged pose of her own skin — `merle_caged0`, painted in `import-batch-am`
+ * / `import-batch-aq15` and posed by `anim.entPoseCell` (`caged: [caged0,
+ * caged1]`).
+ *
+ * WHY THIS LIVES HERE rather than being typed where it is used. The convention
+ * had exactly one written copy, in `cards/CardShell.tsx#cageCellFor`, and the
+ * scene is going to need the same string the moment the person-cage grows its
+ * occupant layer: C3 built that layer, measured it against the pencil case
+ * (`syncOverlay` copies the SCALE, not the display height, so Merle came out
+ * 47 px tall inside her own 34 px cage — R107) and took it back out until AQ15c
+ * frees the window and fixes the geometry. When that session lands, React and
+ * the scene must not each spell the convention out for themselves: two copies of
+ * a naming law are two laws waiting to disagree — the same argument this file
+ * already makes for the captive prefix, and the argument W3 proved the hard way
+ * on `BANNED_DE` (D-123/D-251, two lists that had silently drifted apart).
+ *
+ * `portrait.test.ts` holds the guard: it reads CardShell's source and reddens if
+ * a second `_caged0` literal ever reappears there.
+ *
+ * The FREE cell of the same person (`<name>_a`, the ceremony's picture) is still
+ * spelled out in `CardShell#freeCellsFor`. That line belongs to the card lane
+ * this wave, so it is reported rather than moved — the mirror of this constant
+ * is the obvious next step, not a second convention.
+ */
+export const classmateStem = (name: string): string => `${name}_caged0`;
+
 // ── PK-R6 · E · THE GUARDIAN FLIGHT RIG (doc 44 §3.2 · §4 ch01 C4) ───────────
 // A boss is the one being whose missing cell does NOT read as a missing cell:
 // the only-present fallback chain quietly lands on `_a`, so a deleted `spiral2`
@@ -135,4 +167,5 @@ export const AUFTAKT_STEMS: readonly string[] = [
 export const PAINTED_ICON_NAMES: readonly string[] = [
   "spark", "cage", "wisp", "rule", "book", "palette", "door",
   "knot", "inkwell", "blot", "brush", "slate", "rosette",
+  "uniform", // R5-W5 · G4: the HUD's uniform counter (painted sheet hud_uniform, AQ10)
 ];

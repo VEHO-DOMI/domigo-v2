@@ -48,6 +48,14 @@ Blätter hinzufügt, hebt sie **im selben PR, mit einem Grund, den ein Prüfer l
 Blätter verdrahtet oder löscht, **senkt sie im selben PR um sein eigenes Delta** — jeder
 Lauf sagt die verbliebene Luft laut an, und der Post-Zug-Eigentümer misst neu.
 
+**Verweis (K4, 2026-08-17):** die drei Regeln, die aus diesem Vorfall geworden sind, stehen
+als Rulings **R104** (der Post-Zug-Schritt gehört dem Eigentümer, nie einer parallelen Bahn)
+· **R105** (keine Ratsche für die Decke, D-253 bleibt zu — Warnung plus Post-Zug-Schritt) ·
+**R115** (jede Perf-Tabelle wird aus **sichtbarem** Chrome gemessen, mit einer Kontrollseite,
+die 60 fps zeigen MUSS; leere ms-Spalten oder eine fehlende Vorher-Spalte sind kein
+Erfüllen) — und die Merge-Pflichten, die daran hängen, stehen in der Merge-Tabelle des
+BOOT-SHEETs, wo Koki sie liest, nicht nur im Text eines PRs.
+
 Budget gerissen → **erst optimieren**; geht es nicht ohne Qualitätsverlust →
 **LADEBILDSCHIRM, nie Ruckler**. Der Ladebildschirm existiert seit R5-W3 · E5
 (`.pb-building`, `PaintCallbacks.onReady`).
@@ -68,6 +76,48 @@ Trotzdem bleibt zweierlei wahr:
   sie gehört auf einen echten Schirm.
 * **GPU-Zeit** über `EXT_disjoint_timer_query` ist zulässig und zählt echte
   GPU-Arbeit statt Wartezeit.
+
+## 3b · Wie man die Tabelle nimmt (R115) — R5-W5 · E6
+
+**Es gibt ab jetzt genau EIN Rezept, und es ist ein Skript:**
+
+```
+pnpm build && (cd apps/web && npx next start -p <dein Port>)
+node --experimental-strip-types scripts/perf-visible.mjs --port <dein Port> --runs 3 --json vorher.json
+# … deine Arbeit …
+node --experimental-strip-types scripts/perf-visible.mjs --port <dein Port> --runs 3 --baseline vorher.json
+```
+
+Der zweite Lauf druckt die fertige Wächter-Tabelle mit »vorher / nachher« in
+jeder Zelle — genau in der Form, die `check-perf-table.mjs` im PR-Text verlangt —
+plus die Aufschlüsselung von `create()` je Bauschritt.
+
+**Warum ein Skript und nicht eine Anleitung.** Zwei Sessions der Welle 4b lieferten
+leere ms-Spalten, eine dritte gar keine Vorher-Werte, und jede maß anders. Eine
+Zahl ohne ihr Rezept ist eine Behauptung (PB-78). Drei Dinge macht das Skript
+deshalb selbst:
+
+1. **Die Kontrollmessung ist ein TOR, kein Hinweis.** Vor jeder Zahl über das
+   Spiel misst es eine leere Seite im selben Browser. Unter **58 fps bricht es ab**
+   und druckt nichts. Ohne diese Kontrolle sind »das Spiel läuft mit 9 fps« und
+   »mein Instrument sieht keine 60« dieselbe Beobachtung (P-61). Der Vorgänger
+   `harvest-perf.mjs` hatte dafür nur eine weiche Marke und schrieb sonst »n/b«.
+2. **Es misst `bau + aufbau`, nie `aufbau` allein.** Der Szenen-Konstruktor (Sim,
+   Gitter, Kunst-Umfang) läuft VOR `create()`; wer Arbeit dorthin schiebt,
+   verbessert `createMs` und die Wartezeit des Kindes um keine Millisekunde
+   (P-77). Der Konstruktor wird in Node gemessen, weil kein Browser hineinsieht.
+3. **Eine Lücke wird nie zu einer Null.** Der Erstbild-Rekorder verpasst je Lauf
+   etwa eine von fünf Phasen (D-118); das Skript lädt eine unvollständige Phase
+   bis zu dreimal neu und schreibt sonst »—«.
+
+`--port` ist **Pflicht** — ein Standard-Port misst in einem Haus mit sieben
+parallelen Sessions irgendwann den Server des Nachbarn (P-65).
+
+Der Selbsttest (`node scripts/perf-visible.mjs --selftest`, eine Zeile in `ci.yml`)
+läuft **ohne Browser und ohne Server**: die CI-Maschine hat keinen Chrome. Er
+prüft, dass die Kontrollschwelle in beide Richtungen funktioniert — der Tamper
+biegt die Schwelle über den GEMESSENEN Wert, nie gegen die Konfiguration (P-71).
+Das Skript ist damit ausdrücklich **Werkzeug, kein Tor**.
 
 ## 4 · Das Messritual (so misst Koki)
 

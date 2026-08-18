@@ -56,6 +56,10 @@ export interface TapeExpect {
    *  regression the letter counts already guard against. */
   tipsGot?: number;
   booksGot?: number;
+  /** R5-W5 · G4: how many uniform pieces this pilot actually reached. An
+   *  unreachable piece is a piece no child ever names, and a law that only reads
+   *  the grid cannot see a piece the RUN never touches — the tape can. */
+  clothGot?: number;
   /** PK-R3b · M-B: did this run end the CHAPTER — i.e. did the shell's
    *  chapter-end sequence (score page → door out) actually fire? The sequence
    *  lives in React, but its trigger is a sim event, and this is that trigger
@@ -226,6 +230,8 @@ export const replayPhaseTape = (
   let prevState = "";
   let tipsGot = 0;
   let booksGot = 0;
+  /** R5-W5 · G4: uniform pieces the pilot picked up on this run. */
+  let clothGot = 0;
   const grantsPicked: string[] = [];
 
   const handle = (evs: SimEvent[]): void => {
@@ -292,6 +298,15 @@ export const replayPhaseTape = (
       } else if (ev.type === "book") {
         booksGot++;
         if (!shell.pickedUp.includes(ev.id)) shell.pickedUp.push(ev.id);
+      } else if (ev.type === "cloth") {
+        // R5-W5 · G4: a uniform piece. It does NOT freeze the world, so there is
+        // no dismissal to owe — but it must reach the shell's ledger, or the
+        // Kleckskammer's second copy of a piece the pilot already picked up would
+        // stand there again on the replay and the chapter tape would diverge from
+        // the game. The naming card is a SHELL concern (the count lives in
+        // PaintGame) and never opens in a headless replay.
+        clothGot++;
+        if (!shell.pickedUp.includes(ev.id)) shell.pickedUp.push(ev.id);
       } else if (ev.type === "exit" && !exited) {
         exited = true;
         exitTo = ev.to;
@@ -349,6 +364,7 @@ export const replayPhaseTape = (
     ).length,
     tipsGot,
     booksGot,
+    clothGot,
     // M-B: PaintGame opens the score page on exactly this condition — an exit
     // whose destination is the end of the chapter (PaintGame.handoff).
     scorePageShown: exitTo === "done",
@@ -405,6 +421,7 @@ export const worldAssertionErrors = (expect: TapeExpect | undefined, world: Repl
   cmp("classmatesAwake", world.classmatesAwake);
   cmp("tipsGot", world.tipsGot);
   cmp("booksGot", world.booksGot);
+  cmp("clothGot", world.clothGot);
   cmp("scorePageShown", world.scorePageShown);
   cmp("guardianPathsFlown", world.guardianPathsFlown);
   cmp("guardianTelegraphs", world.guardianTelegraphs);

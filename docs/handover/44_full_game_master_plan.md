@@ -516,12 +516,22 @@ ch01–06 sheets are honored as pointers; where a dossier overrides them, it say
   one chapter that keeps the classic key — it's the baseline the others vary FROM).
 - **Field modality:** classic tutorial platforming, deliberately bare (C2): walk, jump,
   nothing else. Jumping and avoiding IS the chapter.
-- **Field restage (C1):** the drained classroom objects (desk, school bag, door, board,
-  window, chair — the Keen `restoreRoom` six, re-cast painted) are **scattered across all
+- **Field restage (C1):** the drained classroom objects — **{Schultasche, Buch, Tisch,
+  „Schere", Klebestift, Spitzer}, the Entfärbte-Dinge-Sechs** — are **scattered across all
   three phases**, not one room: each stands grey in the world with an ↑ cue; the two-step
   `restore` (name → colour) frees it and the world keeps the colour (shipped R3b machine —
   restaged, not rebuilt). Letter collectibles with magnet (live) + **number quickfires on the
   wheel** (swirling numbers, auto-lock — the Keen swarm re-staged as u01's numbers 1–25).
+
+  > **★ Amendment 2026-08-17 (K4, Schuld D-272 — ratifizierter Override nachgetragen).**
+  > *War hier:* „(desk, school bag, door, board, window, chair — the Keen `restoreRoom` six,
+  > re-cast painted)". Der `restoreRoom`-Override in
+  > `docs/design/g1/paint/ch01-dossiers-v2/README.md` hat die Keen-Sechs für ch01-v2 ersetzt
+  > — Grund: Vokabel-Vollabdeckung schlägt Keen-Bestandsliste — und Koki hat ihn im PR
+  > bestätigt („bestätigt wie vorgemerkt — kein Einspruch"). **Tür, Fenster und Tafel leben
+  > weiter, nur nicht als Restore-Objekte:** Tür und Fenster sind Architektur, die Tafel ist
+  > der Wächter, der Stuhl ist Käfig-Insasse. Die alte Liste stand hier weiter, während das
+  > Dossier längst die neue baute; dieser Absatz schließt die Lücke.
 - **Freeables & skin:** collectible = **Buchstaben** (canon) **+ die neun Uniform-Objekte der
   Unit 1** (R53, §2.7 amendment). Regel-Seiten ~~3~~ **5** (u01 topics — R51: Kurzformen ·
   Befehle · Fragen/Begrüßen · Zahlen · Plural). **Bonusbücher: 0** (R53 — sie sind aus ch01
@@ -571,6 +581,17 @@ ch01–06 sheets are honored as pointers; where a dossier overrides them, it say
   >   first card. H2 measured the alternative (removing it changed no critic's verdict), so
   >   it stays on the cheaper side of the trade: it tells the child WHO is asking before the
   >   first question lands.
+
+  > **★ Amendment 2026-08-17 (ruling R108 — das Klassenfoto im Sieg-Trakt).** Der fünfte
+  > Käfig der Arena hält das Klassenfoto, und nach dem Sieg hängt es dort in Farbe. Welches
+  > Blatt das zeichnet, ist jetzt entschieden: **`obj_picture` bleibt im Saal** — es ist
+  > bezahlt, gemalt und heute verdrahtet, und ein Umhängen auf ein noch nicht geliefertes
+  > Blatt würde es zu toter Kunst machen. Die Nachbestellung **AQ14b** liefert zwei Zellen,
+  > die die bestehenden ERSETZEN, jede **im Bestandsmaß, nie in 1024²** (R107): die
+  > Farbzelle tritt an die Stelle von `obj_picture` in **435 × 410**, die Grauzelle an die
+  > Stelle von `captive_picture` in **347 × 480**. Der Pfad `klassenfoto_a` bleibt schlafend,
+  > bis die Karten-Bahn ihn einlöst oder streicht. *(Herkunft: H3s Empfehlung aus Welle 4b,
+  > nachdem D3b den AQ14-Entwurf am blinden Blatt-Prüfer zurückgewiesen hatte.)*
 
 - **Reawakening (C3):** *(after the six rounds she STAYS — present and roaming inside p2, never
   motionless at the cage and never leaving the phase; §1.4/§3.3 amendments of 2026-08-15, R49)*
