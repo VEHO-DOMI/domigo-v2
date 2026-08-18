@@ -649,7 +649,7 @@ export const CAGE_DISPLAY_H = 34;
  *  classroom things at one scale rather than six unrelated stickers. */
 export const DRAINED_DISPLAY_H: Readonly<Record<string, number>> = {
   obj_desk: 28, // 368×353 — the biggest thing in the room
-  obj_schoolbag: 26, // 378×341
+  obj_schoolbag: 26, // 367×383 (R5-W5 · C4: stand hier als 378×341 — am Blatt nachgemessen, R107)
   obj_book: 24, // 268×358
   obj_sharpener: 22, // 254×353
   obj_pencil: 30, // 69×393 — tall and thin; height is what makes it legible

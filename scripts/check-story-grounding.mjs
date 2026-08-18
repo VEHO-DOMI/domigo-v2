@@ -53,14 +53,12 @@ function checkEn(where, en, glosses) {
 // same argument check-game-tasks.mjs:65-69 already makes about its variety tables.
 // The shared law is now imported, so a word added there reddens BOTH gates.
 //
-// ⚠ MEASURED WHILE MERGING THEM, and the reason one entry stays local: the two lists
-// had ALREADY drifted. This copy carried an eighth pattern, /verhedder/, that the
-// shared list never had. Importing blindly would have silently WEAKENED the register
-// law by dropping it — and the shared list itself belongs to the copy lane this wave,
-// not to tooling. So it stays here as a named local addition until C3 either adopts it
-// into content-schema or drops it with a reason (D-251).
-const BANNED_DE_LOCAL = [/verhedder/];
-const BANNED_DE = [...BANNED_DE_LOCAL, ...BANNED_DE_SHARED];
+// R5-W5 · C4 · D-251 CLOSED. W3 measured that the two lists had already drifted: this
+// copy carried an eighth pattern, /verhedder/, that the shared list never had, and
+// left it here as a named local addition for the copy lane to rule on. The copy lane
+// ADOPTED it — the pattern now lives in content-schema's BANNED_DE with its reason, so
+// there is one list again and this file holds no rule of its own.
+const BANNED_DE = BANNED_DE_SHARED;
 function checkDe(where, de) {
   for (const re of BANNED_DE) if (re.test(de ?? "")) fail(where, `register-law violation: ${re} in "${de}"`);
 }

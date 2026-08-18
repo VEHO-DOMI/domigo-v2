@@ -1653,6 +1653,14 @@ export class PaintScene extends Phaser.Scene {
       // importiert, baut beides in EINEM Zug: leeres Fenster + Insasse, an der
       // dann gültigen Fenstergeometrie ausgerichtet. Messwerte und Belegbild
       // liegen im C3-Report; Schuldzeilen D-224 und D-228.
+      //
+      // R5-W5 · C4 · D-228 GESCHLOSSEN, so weit es ohne AQ15c geht: die Zelle
+      // heisst `artManifest.classmateStem(e.params.classmate)` — NICHT
+      // `${name}_caged0` von Hand. Wer die Schicht hier baut, ruft die Konstante
+      // auf; dann sagen Karte (CardShell#cageCellFor) und Szene dasselbe, weil
+      // sie dieselbe Zeile lesen. Das war der ganze Inhalt von D-228: die
+      // Konvention stand schriftlich nur EINMAL im Repo, in der Karte, und die
+      // Szene hätte sie beim Einbau zwangsläufig ein zweites Mal getippt.
       // R3-15 · the grey wash sits a hair in front of its being, wearing the
       // SAME texture every frame — so it drains whatever cell the being is
       // showing, including cells and skins that do not exist yet.
