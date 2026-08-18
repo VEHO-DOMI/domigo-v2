@@ -26,6 +26,7 @@ import {
   awakenClassmate,
   classmateOfCage,
   guardianKnotSolved,
+  GUARDIAN_WIPE_REACH_PX,
   JOY_ROLES,
   redeemEntity,
   restoreFreedClassmate,
@@ -569,6 +570,7 @@ export class Sim {
       if (this.player.x < minX) this.player = { ...this.player, x: minX, vx: Math.max(this.player.vx, 0) };
       if (this.player.x > maxX) this.player = { ...this.player, x: maxX, vx: Math.min(this.player.vx, 0) };
     }
+    this.clampOutOfWipe();
     this.prevPad = { ...pad };
     for (const ev of out.events) this.onPlayerEvent(ev, events);
 
@@ -628,6 +630,65 @@ export class Sim {
   /** The single commit point for the pose the scene draws. */
   private finalizePose(): void {
     this.player.pose = derivePose(this.player, this.poseLocked);
+  }
+
+  /**
+   * ── R5-W5 · F6 · DAS KIND LÄUFT NICHT MEHR IN DIE TAFEL (R122, H3s Befund) ──
+   *
+   * H3 hat es gemessen und fotografiert (Bild 05): solange die besiegte Tafel auf
+   * den Brettern sitzt, geht das Kind durch sie hindurch. **36 Ticks gedrückt =
+   * 81 px Weg, und sie ist nur 74 px breit** — es steht dann mitten in ihrer
+   * Zeichnung, hinter der Fläche, die es gerade wischt.
+   *
+   * Eine Klammer hat es dafür nie gegeben: `player.ts`, `sim.ts` und `collide.ts`
+   * kennen weder `wipe` noch `boss` noch `tafel`. Das Kind wird an genau EINER
+   * Stelle in seiner Bewegung begrenzt, nämlich vom Bildschirm-Kasten oben in
+   * `step()` (W0-F7). Diese Klammer ist absichtlich dieselbe Bauform: Lage
+   * anhalten, die Geschwindigkeit NACH INNEN töten, die nach außen lassen. Ein
+   * Kind, das weggehen will, darf das jederzeit.
+   *
+   * ── Warum die Zahl 44 und nicht 45, und warum die REIHENFOLGE das entscheidet ─
+   * `GUARDIAN_WIPE_REACH_PX` (45) ist die Kanten-Berührung: halbe Tafel (37,1 aus
+   * dem Blatt-Seitenverhältnis) plus halbes Kind (8). Dort berühren sich die
+   * beiden Körper, und dort soll das Kind stehen bleiben. Die Berührung selbst
+   * fragt `< 45` (`inWipeReach`), also STRIKT darunter — eine Klammer auf 45 würde
+   * das Wischen unerreichbar machen: das Kind stünde für immer einen Pixel zu weit
+   * weg und die Tafel liefe in ihre Wartezeit. Die Klammer sitzt deshalb auf dem
+   * größten ganzzahligen Abstand, der noch berührt: **44**.
+   *
+   * ★ Diese Zahl trägt nur, weil die Klammer VOR `stepEntityWorld` läuft, und das
+   * hat ein Tamper bewiesen, nicht eine Überlegung: in der ersten Fassung stand
+   * sie danach — dann sieht der Wesen-Schritt die UNGEKLAMMERTE Lage dieses Ticks,
+   * die Berührung geht ohnehin auf, und 44 gegen 45 macht keinen Unterschied. Der
+   * Tamper (44 → 45) blieb grün, der Test hat also nichts unterschieden. Hier
+   * oben, direkt nach dem Bildschirm-Kasten, gilt die Zusage wirklich: **der
+   * Wesen-Schritt bekommt das Kind niemals innerhalb ihrer Zeichnung zu sehen** —
+   * und derselbe Tamper wird rot. Der Preis ist ein Tick Verzug (die Klammer liest
+   * ihren Zustand aus dem vorigen Wesen-Schritt), genau wie der Bildschirm-Kasten
+   * seine `camX` aus dem vorigen Tick liest.
+   *
+   * ── Warum BEIDE Bodenzustände ─────────────────────────────────────────────
+   * `wipeable` (sie sitzt und wartet) und `wipe` (das Kind wischt) sind die zwei
+   * Hälften desselben Vorgangs — R50: „wenn sie unten ist und man zu ihr geht".
+   * In beiden steht sie still auf den Brettern, in beiden kann man in sie
+   * hineinlaufen, und H3s Bild zeigt genau diesen Augenblick. Ihre übrigen
+   * Bodenzustände (`sink`, `sad`, `settle`, `window`, `consoled`) lasse ich
+   * ausdrücklich frei — sie gehören dem Sieg-Bogen und der Gegenkarte, nicht dem
+   * Wischen; als Befund geht das an die Guardian-Bahn (H4).
+   */
+  private clampOutOfWipe(): void {
+    const board = this.world.entities.find(
+      (e) => e.role === "guardian" && !e.hidden && (e.state === "wipeable" || e.state === "wipe"),
+    );
+    if (board === undefined) return;
+    const keepPx = GUARDIAN_WIPE_REACH_PX - 1;
+    const dx = this.player.x - board.x;
+    if (Math.abs(dx) / SUBS >= keepPx) return;
+    const side = dx >= 0 ? 1 : -1; // auf 0 geht er nach rechts heraus, nie hindurch
+    this.player.x = board.x + side * keepPx * SUBS;
+    // nur die Geschwindigkeit NACH INNEN stirbt (wie im Bildschirm-Kasten)
+    if (side > 0) this.player.vx = Math.max(this.player.vx, 0);
+    else this.player.vx = Math.min(this.player.vx, 0);
   }
 
   // ── R3-11 · the speaker law (doc 41 §3) ────────────────────────────────────

@@ -327,10 +327,55 @@ export const FRENZY_TICKS = FRENZY_FLIP_TICKS * 6; // 42 Ticks ≈ 0,7 s
 /** Ausfallschritt um den Ankerpunkt, in logischen px. Klein: er kritzelt, er
  *  greift nicht an — der Angriff ist `telegraph`/`act` und bleibt unberührt. */
 export const FRENZY_REACH_PX = 3;
-/** Wie lange er zwischen zwei Anfällen patrouilliert (Spanne; der eigene Name
- *  wählt daraus, damit zwei Läufer im selben Raum nicht im Gleichtakt zucken). */
-export const FRENZY_EVERY_MIN = 150;
-export const FRENZY_EVERY_SPAN = 70;
+/**
+ * Wie lange er zwischen zwei Anfällen patrouilliert (Spanne; der eigene Name
+ * wählt daraus, damit zwei Läufer im selben Raum nicht im Gleichtakt zucken).
+ *
+ * ── R5-W5 · F6 · WARUM DIESE ZAHLEN GESUNKEN SIND (gemessen, nicht geschmeckt) ─
+ * F5 hat den Anfall an die ROLLE gehängt und im Report festgehalten, er gelte
+ * „für BEIDE Läufer". Im Code stimmt das; im ausgelieferten Kapitel stimmte es
+ * nicht. **Gemessen über 2000 Ticks im echten p2: die Füllfeder ist NIE in einen
+ * Anfall gekommen — kein einziges Mal.**
+ *
+ * Der Grund ist die Uhr. Der Anfall wird aus `e.timer` fällig, und `e.timer` wird
+ * von JEDEM Zustandswechsel auf null gesetzt — auch vom `turn`. Die Füllfeder hat
+ * kein autorisiertes Band und steht in p2 eng: sie wendet dauernd (gemessen: 323
+ * von 2000 Ticks im `turn`), und ihre längste ununterbrochene Patrouille dauert
+ * **192 Ticks**. Ihr Schwellwert aus dem alten Bereich war **216**. Eine Schwelle
+ * über der längsten erreichbaren Strecke ist kein seltenes Ereignis, sondern gar
+ * keines.
+ *
+ * Also ist der Bereich jetzt so bemessen, dass sein OBERES Ende unter der
+ * kürzesten gemessenen Patrouillen-Strecke des Kapitels liegt: 110 + 49 = 159
+ * gegen 192. Die Schwellen der zwei Läufer sind damit **113** (Bleistift) und
+ * **126** (Füllfeder) — verschieden, also weiter kein Gleichtakt.
+ *
+ * GEMESSEN, 6000 Ticks im ausgelieferten Kapitel, Kind weit weg:
+ *
+ *   | Läufer      | vorher | nachher | längste Patrouille |
+ *   |-------------|-------:|--------:|-------------------:|
+ *   | Bleistift   |     21 |      21 |          215 Ticks |
+ *   | Füllfeder   |  **0** |   **1** |          192 Ticks |
+ *
+ * Der Bleistift ist also unberührt (sein autorisiertes Band gibt ihm lange
+ * Strecken, beide Schwellen passen hinein), und die Füllfeder kommt überhaupt
+ * erst einmal dazu — bei Tick 126, vor ihrer ersten Wende.
+ *
+ * ⚠ EHRLICH BENANNT, weil eine Zahl, die man nicht ausspricht, als „gelöst"
+ * gelesen wird: EINMAL in 6000 Ticks ist kein Takt. Nach ihrem ersten Anfall
+ * beginnt die Uhr wieder bei null, und ihre Wenden kommen häufiger als 126
+ * Ticks — sie ist danach ausgehungert. Der Bereich konnte den ERSTEN Anfall
+ * kaufen, nicht die Wiederkehr.
+ *
+ * Der dauerhafte Weg ist ein eigener Zähler, der eine Wende ÜBERLEBT (genau das
+ * ist der Grund, warum `freedTick` existiert: „the flood was read off `timer`,
+ * which every state change resets"). Das braucht EIN neues Feld an
+ * `EntityState`, und dessen einen Platz dieser Welle hat G4 (Rahmen §5) — also
+ * geht es als Befund an Fable, nicht als stille Grenzüberschreitung.
+ * `f5-feel.test.ts` hält beide Zahlen fest, damit die Grenze im Code steht.
+ */
+export const FRENZY_EVERY_MIN = 110;
+export const FRENZY_EVERY_SPAN = 50;
 
 /** Der Abstand zwischen zwei Anfällen für DIESES Wesen. Rein und aus dem Namen
  *  — dieselbe Streuung, die das Käfig-Rütteln benutzt. */
@@ -350,6 +395,69 @@ export const frenzyOffsetSubs = (t: number): number =>
  *  Ende = die Blickrichtung ist wieder die, mit der er hereinkam — deshalb
  *  braucht der Anfall kein gespeichertes „Wie stand er vorher". */
 export const frenzyFlipsBy = (t: number): number => Math.floor(t / FRENZY_FLIP_TICKS);
+
+// ── R5-W5 · F6 · ZWEI LÄUFER, ZWEI ANFÄLLE ───────────────────────────────────
+// F5 hat den Anfall an die ROLLE gehängt, nicht an einen Namen, und das war
+// richtig: beide Läufer des Kapitels behaupten auf ihrer Karte eine Handlung,
+// also gehören beiden ein Anfall. Nur behaupten sie NICHT DIESELBE:
+//
+//   `enc.pencil.k1` — „Der Bleistift kritzelt wild über das Papier."
+//   `enc.pen.k1`    — „Die Füllfeder schreibt eine Frage in die Luft."
+//
+// Bis hierher fuhren beide dieselbe Zickzack-Kurve seitwärts. Für den Bleistift
+// ist das genau richtig; für die Füllfeder sagt die Welt damit „kritzelt", wo die
+// Karte „schreibt in die LUFT" sagt — dasselbe Auseinanderlaufen von Bild und
+// Text, das den Anfall überhaupt nötig gemacht hat, eine Ebene tiefer.
+//
+// ── Warum eine Tabelle nach SKIN, und warum das NICHT der Fehler ist, den F5
+//    ausdrücklich vermeiden wollte ───────────────────────────────────────────
+// F5s Einwand war, eine Prüfung auf einen Skin-Namen hätte den Anfall EINEM
+// Läufer vorbehalten und dem anderen weggenommen — eine Ausnahme, die eine
+// Fähigkeit einschränkt. Diese Tabelle tut das Gegenteil: JEDER Läufer hat einen
+// Anfall, die Tabelle sagt nur, WELCHEN, und ein unbekannter Skin bekommt den
+// Kritzler. Damit kann sie nichts wegnehmen, sondern nur etwas zuweisen — und
+// eine Zuweisung je Blatt ist in diesem Paket die gewachsene Bauform (siehe
+// `DRAINED_DISPLAY_H` in anim.ts, wo dieselbe Frage „was gilt für DIESE
+// Zeichnung" ebenfalls als benannte Tabelle steht).
+/** Die zwei Anfälle: seitwärts kritzeln oder in die Luft schreiben. */
+export type FitStyle = "kritzeln" | "schreiben";
+/** Welcher Anfall zu welchem Blatt gehört. Unbekannt ⇒ Kritzler (siehe unten). */
+export const FIT_STYLE_BY_SKIN: Readonly<Record<string, FitStyle>> = {
+  pencil: "kritzeln",
+  pen: "schreiben",
+};
+export const FIT_STYLE_DEFAULT: FitStyle = "kritzeln";
+export const fitStyleFor = (skin: string): FitStyle => FIT_STYLE_BY_SKIN[skin] ?? FIT_STYLE_DEFAULT;
+
+/**
+ * Der Ausschlag eines Anfalls bei Tick `t`, in SUBS, je Achse und ganzzahlig.
+ *
+ * `kritzeln` ist F5s Kurve, unverändert: seitwärts, sechs Nulldurchgänge, und
+ * über DIFFERENZEN angewandt exakt netto null.
+ *
+ * `schreiben` hebt statt zu schieben — und benutzt den BETRAG des Sinus, nicht
+ * den Sinus. Das ist der ganze Unterschied und er ist keine Feinheit: `y` ist
+ * die FUSSLINIE, kleiner heisst höher. Ein roher Sinus würde die Füllfeder in
+ * der zweiten Hälfte jeder Schwingung unter ihre eigene Standlinie ziehen, also
+ * in den Boden. Der Betrag hebt sie sechsmal an und setzt sie sechsmal exakt
+ * wieder ab; bei `t = FRENZY_TICKS` steht der Wert wieder auf null, ohne dass
+ * eine Rundung sich aufsummieren kann.
+ *
+ * Beide teilen `FRENZY_FLIP_TICKS` und `FRENZY_REACH_PX`, damit die zwei Anfälle
+ * EINEN Takt und EINE Amplitude haben: sie sollen wie zwei Handlungen derselben
+ * Welt wirken, nicht wie zwei Effekte aus zwei Sitzungen.
+ */
+export const fitOffsetSubs = (t: number, style: FitStyle): { dx: number; dy: number } => {
+  const phase = (t / FRENZY_FLIP_TICKS) * Math.PI * 2;
+  if (style === "schreiben") {
+    return { dx: 0, dy: -Math.round(Math.abs(Math.sin(phase)) * FRENZY_REACH_PX * SUBS) };
+  }
+  return { dx: frenzyOffsetSubs(t), dy: 0 };
+};
+
+/** Kippt DIESER Anfall die Blickrichtung? Nur das Kritzeln — eine schreibende
+ *  Hand dreht sich nicht sechsmal um, sie führt einen Strich. */
+export const fitFlips = (style: FitStyle): boolean => style === "kritzeln";
 
 // ── R5-W4 · F5 · MERLE GEHT HERUM (F-26, R49) ────────────────────────────────
 // „Merle soll, wenn sie draußen ist, nicht nur dastehen, sondern sich durchs
@@ -1270,16 +1378,23 @@ export const stepEntities = (
           // Angriff, nicht den Anfall — der Anfall ist Charakter, kein Hindernis.
           else if (e.timer > frenzyEveryFor(e.id)) { e.state = "frenzy"; e.timer = 0; e.vx = 0; }
         } else if (e.state === "frenzy") {
+          // R5-W5 · F6: welcher der zwei Anfälle — die Karte dieses Läufers sagt
+          // es, die Tabelle hält es fest (fitStyleFor).
+          const stil = fitStyleFor(e.skin);
           // Bewegung über DIFFERENZEN: die Summe über den ganzen Anfall ist
           // exakt null, also steht der Körper am Ende auf dem Anker-Punkt.
-          e.x += frenzyOffsetSubs(e.timer) - frenzyOffsetSubs(e.timer - 1);
-          if (e.timer % FRENZY_FLIP_TICKS === 0) e.dir = (e.dir * -1) as 1 | -1;
+          const jetzt = fitOffsetSubs(e.timer, stil);
+          const vorher = fitOffsetSubs(e.timer - 1, stil);
+          e.x += jetzt.dx - vorher.dx;
+          e.y += jetzt.dy - vorher.dy;
+          if (fitFlips(stil) && e.timer % FRENZY_FLIP_TICKS === 0) e.dir = (e.dir * -1) as 1 | -1;
           // …ein Kind, das während des Anfalls herankommt, wird trotzdem gesehen.
           // Beim Abbruch geht der Körper auf den Anker ZURÜCK (der Ausschlag ist
           // absolut gemessen), damit „netto null" nicht nur für den vollständig
-          // gelaufenen Anfall gilt, sondern für jeden.
+          // gelaufenen Anfall gilt, sondern für jeden — bei der Füllfeder ist das
+          // ihre Standlinie, die sie sonst mitten in der Luft verlassen würde.
           const nah = Math.abs(e.y - inp.playerY) / SUBS < 24 && Math.abs(e.x - inp.playerX) / SUBS < AGGRO_X_PX;
-          if (nah) { e.x -= frenzyOffsetSubs(e.timer); e.state = "telegraph"; e.timer = 0; }
+          if (nah) { e.x -= jetzt.dx; e.y -= jetzt.dy; e.state = "telegraph"; e.timer = 0; }
           else if (e.timer >= FRENZY_TICKS) { e.state = "patrol"; e.timer = 0; }
         } else if (e.state === "turn") {
           if (e.timer === TURN_FLIP_AT) e.dir = (e.dir * -1) as 1 | -1;
