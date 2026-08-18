@@ -34,6 +34,7 @@ import {
   type EntityWorld,
   type WorldInput,
   frenzyEveryFor,
+  TURN_TICKS,
   frenzyFlipsBy,
   frenzyOffsetSubs,
   fitFlips,
@@ -261,29 +262,95 @@ describe("R5-F6 · der Anfall der Füllfeder ist ein anderer als der des Bleisti
       }
       return anfaelle;
     };
-    expect(zaehle("p1", "p1-pencil1"), "der Bleistift kritzelt wiederkehrend").toBeGreaterThanOrEqual(10);
-    expect(zaehle("p2", "p2-pen"), "die Füllfeder schreibt überhaupt").toBeGreaterThan(0);
+    // R5-W6 · F7 · R151: …und seit der Anfall an `fitTick` hängt, sind das nicht
+    // mehr Untergrenzen, sondern die GEMESSENEN Zahlen des ausgelieferten
+    // Kapitels. Sie stehen hier als `toBe`, weil eine Untergrenze genau das
+    // durchgelassen hätte, was F6 gefunden hat: die Füllfeder erfüllte
+    // „> 0" mit einem einzigen Anfall in 100 Sekunden.
+    expect(zaehle("p1", "p1-pencil1"), "der Bleistift behält seinen ausgelieferten Takt").toBe(21);
+    expect(zaehle("p2", "p2-pen"), "und die Füllfeder hat jetzt auch einen").toBe(17);
   });
 
-  it("★★ …und die GRENZE steht auch im Code: einmal ist kein Takt (offener Befund)", () => {
-    // Kein stiller Deckel (Methode §6): die Füllfeder kommt in 6000 Ticks GENAU
-    // EINMAL zum Schreiben, weil ihre Uhr `e.timer` ist und jede Wende sie auf
-    // null setzt. Diese Zahl steht hier, damit sie nicht als „gelöst" durchgeht
-    // und damit der Tag sichtbar wird, an dem ein eigener Zähler sie hebt.
+  it("★★ …und der Anfall KEHRT WIEDER: der Abstand ist eine Zeit, keine Raumlänge", () => {
+    // DER BEFUND, DEN F6 OFFEN STEHEN LIESS. Bis hierher stand an dieser Stelle
+    // die Zahl 1: die Füllfeder kam in 6000 Ticks GENAU EINMAL zum Schreiben,
+    // weil ihre Uhr `e.timer` war und jede Wende sie auf null setzte. Ihre 46
+    // Wenden waren damit 46 verlorene Anläufe. Mit `fitTick` (R151) überlebt die
+    // Uhr die Wende — und die Zahl, die hier steht, ist deshalb nicht mehr ein
+    // Deckel, sondern ein Takt: 17 Anfälle in 6000 Ticks, im Mittel alle ~337
+    // Ticks, also rund alle 5,6 Sekunden.
     const p = phase("p2");
     const w: EntityWorld = spawnEntities(p.entities, []);
     const pen = w.entities.find((e) => e.id === "p2-pen")!;
-    let anfaelle = 0;
+    const zeitpunkte: number[] = [];
     let wenden = 0;
     let vorher = pen.state;
     for (let t = 0; t < 6000; t++) {
       stepEntities(w, p.rows, input({ playerX: 200 * TILE * SUBS, playerY: 0 }));
-      if (pen.state === "frenzy" && vorher !== "frenzy") anfaelle++;
+      if (pen.state === "frenzy" && vorher !== "frenzy") zeitpunkte.push(t);
       if (pen.state === "turn" && vorher !== "turn") wenden++;
       vorher = pen.state;
     }
-    expect(anfaelle, "GEMESSEN: einmal — mehr wird es erst mit einem eigenen Zähler").toBe(1);
-    expect(wenden, "und das liegt an ihren vielen Wenden").toBeGreaterThan(20);
+    expect(zeitpunkte.length, "GEMESSEN: siebzehnmal — vorher einmal").toBe(17);
+    expect(wenden, "und sie wendet dabei genauso oft wie vorher").toBeGreaterThan(20);
+    // Der Abstand ist der eigentliche Beweis: eine Uhr, die von der Wende genullt
+    // wird, liefert unregelmäßige, viel zu große Abstände. Diese hier sind ihre
+    // Schwelle (336) plus der Tick, an dem sie fällig wird — mit EINER benannten
+    // Ausnahme: wird sie mitten in einer Wende fällig, wartet sie die Wende ab
+    // (der Anfall geht nur aus `patrol` los). Deshalb ist die Obergrenze
+    // Schwelle + 1 + TURN_TICKS und nicht eine glatte Zahl. GEMESSEN: sechzehn
+    // Abstände, fünfzehnmal 337 und einmal 339.
+    const abstaende = zeitpunkte.slice(1).map((t, i) => t - zeitpunkte[i]!);
+    for (const a of abstaende) {
+      expect(a, "kein Abstand ist kürzer als ihre Schwelle").toBeGreaterThanOrEqual(337);
+      expect(a, "und keiner länger als Schwelle + eine Wende").toBeLessThanOrEqual(337 + TURN_TICKS);
+    }
+    expect(abstaende.filter((a) => a === 337).length, "der Regelfall ist der glatte Abstand").toBe(15);
+  });
+
+  it("★★ `fitTick` überlebt die Wende — genau das, was `timer` nicht kann", () => {
+    // Der Kern von R151 als eigener Satz, damit er nicht nur aus einer Zahl
+    // ableitbar ist: an einer Wende wird `timer` auf null gesetzt (das ist seine
+    // Aufgabe — er misst den ZUSTAND), `fitTick` nicht (er misst die Zeit seit
+    // dem letzten Anfall).
+    const p = phase("p2");
+    const w: EntityWorld = spawnEntities(p.entities, []);
+    const pen = w.entities.find((e) => e.id === "p2-pen")!;
+    let sahWende = false;
+    for (let t = 0; t < 600 && !sahWende; t++) {
+      const vorher = pen.state;
+      const fitVorher = pen.fitTick;
+      stepEntities(w, p.rows, input({ playerX: 200 * TILE * SUBS, playerY: 0 }));
+      if (pen.state === "turn" && vorher !== "turn") {
+        sahWende = true;
+        expect(pen.timer, "die Wende nullt den Zustands-Timer").toBe(0);
+        expect(pen.fitTick, "…aber nicht die Uhr des Anfalls").toBe(fitVorher + 1);
+      }
+    }
+    expect(sahWende, "sie wendet in p2 innerhalb von 600 Ticks").toBe(true);
+  });
+
+  it("★ und NUR der Anfall nullt sie", () => {
+    // Die andere Hälfte derselben Zusage: ohne einen Null-Punkt wäre `fitTick`
+    // ein Lebensalter statt eines Abstands. Der Anfall selbst setzt ihn zurück,
+    // und danach beginnt der Abstand neu.
+    const p = phase("p2");
+    const w: EntityWorld = spawnEntities(p.entities, []);
+    const pen = w.entities.find((e) => e.id === "p2-pen")!;
+    let hoechstStand = 0;
+    let genulltBeimAnfall = false;
+    let vorher = pen.state;
+    for (let t = 0; t < 1200; t++) {
+      hoechstStand = Math.max(hoechstStand, pen.fitTick);
+      stepEntities(w, p.rows, input({ playerX: 200 * TILE * SUBS, playerY: 0 }));
+      if (pen.state === "frenzy" && vorher !== "frenzy") {
+        genulltBeimAnfall = true;
+        expect(pen.fitTick, "der Anfall setzt seine eigene Uhr zurück").toBe(0);
+      }
+      vorher = pen.state;
+    }
+    expect(genulltBeimAnfall, "sie kommt in 1200 Ticks in den Anfall").toBe(true);
+    expect(hoechstStand, "und vorher zählt die Uhr bis an ihre Schwelle").toBeGreaterThanOrEqual(336);
   });
 
   it("★ das Kind sticht auch ihren Anfall — und der Abbruch setzt sie auf ihre Linie zurück", () => {
