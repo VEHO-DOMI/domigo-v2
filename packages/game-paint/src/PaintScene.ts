@@ -809,6 +809,11 @@ export class PaintScene extends Phaser.Scene {
   private cfg: PaintSceneCfg;
   /** siehe DRAW_PROBE — nur im Dev-Build befüllt. */
   private lastBreath = new Map<string, { rot: number; dy: number; sx: number; sy: number; hPx: number; scr: { x: number; y: number; w: number; h: number } | null }>();
+  /** R5-W6 · F7 · D-332 · DIE KIND-SONDE — dev-only, wie die Boss-Sonde daneben.
+   *  W4 hat den Guardian vermessen und dabei aufgeschrieben, warum: „H3s »2,50-mal
+   *  so hoch wie das Kind« ist gerechnet, nicht gemessen." Gerechnet blieb es auch
+   *  danach, denn die andere Hälfte des Verhältnisses fehlte. Das hier ist sie. */
+  private lastHeroBox: { x: number; y: number; w: number; h: number } | null = null;
   /** PB-T2: ALL gameplay lives in the headless sim — the scene draws and
    *  routes events. The proof-tape replayer runs the same Sim in CI, so the
    *  scene may never grow gameplay logic of its own again. */
@@ -1374,6 +1379,10 @@ export class PaintScene extends Phaser.Scene {
      *  BILDSCHIRM-Lage wird — ohne camY kann keine Aufnahme sagen, wo im Bild
      *  das Ding steht, das sie zeigt. */
     camX: number; camY: number;
+    /** R5-W6 · F7 · D-332 (dev-only): der Kasten des KINDES am Schirm, in
+     *  Bildschirm-Bildpunkten — das Gegenstück zu `entities[].breath.scr`. Ohne
+     *  ihn war jedes Größenverhältnis Kind:Tafel eine Nachrechnung. */
+    heroBox?: { x: number; y: number; w: number; h: number } | null;
     entities: Array<{
       id: string; role: string; skin: string; state: string; redeemed: boolean; x: number; y: number;
       /** R5-W3 · W1 (dev-only): was zuletzt WIRKLICH gezeichnet wurde — Drehung,
@@ -1406,6 +1415,7 @@ export class PaintScene extends Phaser.Scene {
       bonusLeft: this.bonusLeftTicks,
       camX: fromSubs(this.camX),
       camY: fromSubs(this.camY),
+      ...(DRAW_PROBE ? { heroBox: this.lastHeroBox } : {}),
       entities: (this.world?.entities ?? []).map((e) => ({
         id: e.id, role: e.role, skin: e.skin, state: e.state, redeemed: e.redeemed,
         x: fromSubs(e.x), y: fromSubs(e.y),
@@ -3888,6 +3898,24 @@ export class PaintScene extends Phaser.Scene {
       // the shadow copy is the RIM copy while a contact flash is on him
       shade?.setTexture(key).setTint(rim > 0 ? CONTACT_RIM_TINT : edge.tint);
     }
+    // R5-W6 · F7 · D-332 · DER KASTEN DES KINDES. Ein Kasten, sonst nichts —
+    // das Gegenstück zur Boss-Sonde in renderEntities, mit derselben Begründung
+    // und denselben zwei Vorsichtsmaßnahmen: hinter dem Konstanten-Schalter (im
+    // ausgelieferten Spiel nicht vorhanden) und NACH Lage, Skalierung und
+    // Haut-Textur gelesen — davor liefert getBounds() den vorigen Frame.
+    //
+    // Gelesen wird die Figur, die dieses Bild WIRKLICH gezeichnet hat: liegt eine
+    // gemalte Ganzkörper-Zelle an, ist sie es, sonst der zusammengesetzte Rig.
+    // Dieselbe Wahl trifft renderEngageCue eine Methode weiter oben, und aus
+    // demselben Grund — die gemalten Zellen sind nicht alle gleich hoch.
+    if (DRAW_PROBE) {
+      const cam = this.cameras.main;
+      const view = cam.worldView;
+      const bb = (this.heroFull.visible ? this.heroFull : this.rigRoot).getBounds();
+      this.lastHeroBox = view.width > 0
+        ? { x: (bb.x - view.x) * cam.zoom, y: (bb.y - view.y) * cam.zoom, w: bb.width * cam.zoom, h: bb.height * cam.zoom }
+        : null;
+    }
     this.renderContact();
     this.renderContactBurst();
 
@@ -4131,14 +4159,21 @@ export class PaintScene extends Phaser.Scene {
     // A Regel-Seite reads as a TORN page (a ragged left edge + ruled lines) and
     // a Bonus-Buch as a small closed book with a spine — both distinguishable
     // from a letter at 15–18 px, which is the whole job of a fallback.
+    // R5-W6 · F7 · AQ16b: …und die Not-Zelle trägt jetzt die KÜHLE Familie, weil
+    // das gemalte Blatt sie trägt. Ein pergamentfarbener Ersatz neben einer
+    // kühlen Seite wäre nicht »das Blatt fehlt«, sondern »hier liegen zwei
+    // verschiedene Dinge« — und die Not-Zelle ist genau dann zu sehen, wenn
+    // niemand mehr nachsehen kann, warum. Die vier Farben sind AM IMPORTIERTEN
+    // BLATT abgelesen (Median, 90., 15. und 4. Helligkeits-Perzentil der
+    // deckenden Fläche von `regelseite_a`), nicht geschätzt.
     make("fb-ent-regelseite", () => {
-      g.fillStyle(0xfdf7e6, 1);
+      g.fillStyle(0x34a8fb, 1);
       g.fillRoundedRect(2, 1, 18, 22, 2);
-      g.fillStyle(0xe6d6ae, 1);
+      g.fillStyle(0x44affb, 1);
       for (let i = 0; i < 4; i++) g.fillTriangle(2, 2 + i * 5, 5, 4 + i * 5, 2, 7 + i * 5); // the tear
-      g.lineStyle(1, 0x8a7a58, 0.85);
+      g.lineStyle(1, 0x0b75bd, 0.85);
       g.strokeRoundedRect(2, 1, 18, 22, 2);
-      g.fillStyle(0xa8926a, 1);
+      g.fillStyle(0x159bf7, 1);
       for (let i = 0; i < 4; i++) g.fillRect(6, 6 + i * 4, 11, 1); // ruled lines
     }, 22, 24);
     make("fb-ent-bonusbuch", () => {
