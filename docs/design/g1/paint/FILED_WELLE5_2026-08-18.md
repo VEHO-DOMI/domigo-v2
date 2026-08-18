@@ -12,9 +12,12 @@ gelesen** — nicht nur die Abschnitte, die »Filed, not acted on« heißen.
 ersten Entwurf 41 Zeilen und erntete genau die gleichnamigen Abschnitte; ein blinder
 Vollständigkeits-Prüfer fand **41 weitere** offene Posten außerhalb davon. Die Lehre steht als
 **PB-90**, und **R131** hat sie zur Regel jeder Kanon-Runde gemacht: *jeder offene Posten, gleich
-unter welcher Überschrift.* Diese Liste ist deshalb in drei Teile geschnitten — Teil A die
-»Filed«-Abschnitte, **Teil B** alles, was außerhalb davon offen ist (Fragen an den Architekten,
-Empfehlungen, Abweichungen, Prosa), **Teil C** was die Welle ausdrücklich NICHT geprüft hat.
+unter welcher Überschrift.* Diese Liste ist deshalb in fünf Teile geschnitten — **A** die
+»Filed«-Abschnitte, **B** alles, was außerhalb davon offen ist (Fragen an den Architekten,
+Empfehlungen, Abweichungen, Prosa), **C** was die Welle ausdrücklich NICHT geprüft hat, **D** was
+die Kanon-Prüfung dieser Runde am Blatt gefunden hat, **E** was ein blinder
+Vollständigkeits-Prüfer nachträglich gefunden hat — **und er hat wieder etwas gefunden** (zwölf
+Posten, darunter Kokis drei älteste Tore; Teil E sagt es im Einzelnen).
 **Zwei der acht Reports (G4 und B4b) haben überhaupt keinen »Filed«-Abschnitt** — ihre offenen
 Posten stehen ausschließlich in Teil B. Genau das ist der Grund für die Regel.
 
@@ -124,7 +127,7 @@ Eine bloße Schuld-Nummer ist **kein** ✓.
 
 | # | Was | Wer sagt es | Wohin |
 |---|---|---|---|
-| 81 | **Kokis Schirm.** Alle Zahlen dieser Welle stammen aus selbst gestarteten Browsern auf einer Entwickler-Maschine — kein echter Compositor, kein echtes Gerät | E6 · W4 · S1 · G4 | **Koki** (R102: sein Perf-Lauf ist willkommen, nie Vorbedingung) |
+| 81 | **Kokis Schirm.** Alle Zahlen dieser Welle stammen aus selbst gestarteten Browsern auf einer Entwickler-Maschine — kein echter Compositor, kein echtes Gerät | E6 · W4 · S1 · G4 · **F6** (»das echte 60-fps-Gefühl gehört Kokis Replay«) | **Koki** (R102: sein Perf-Lauf ist willkommen, nie Vorbedingung) |
 | 82 | **Das Erstbild** schwankt in der Automatisierung stark (36–236 ms) und gehört auf einen echten Schirm | E6 · W4 | `docs/PERF_WAECHTER.md` §3 sagt es selbst |
 | 83 | **Ein gedrosseltes Gerät** und die echte Vercel-Adresse | E6 | **offen** |
 | 84 | **iPad-Verhalten** des Tons (Sperrbildschirm, Siri, `interrupted`-Resume, Entsperren per Berührung) | S1 §7 | **S2**, nur auf echtem Gerät prüfbar |
@@ -151,24 +154,59 @@ Spielkanon und die **gebaute Welt**. Alle drei sind selbst nachgemessen (Skript 
 
 ---
 
+## E · Nachtrag nach dem blinden Vollständigkeits-Prüfer (dieselbe Prüfung, die die 4b-Liste zerlegt hat)
+
+Ein frischer Prüfer bekam **die acht Reports selbst** und die Fassung dieser Liste mit 93 Zeilen
+und eine Frage: *welcher offene Posten fehlt, gleich unter welcher Überschrift?* Er hat **zwölf**
+gefunden — elf davon per Volltextsuche nachgewiesen (die Zeichenfolge kam in der Liste **null**
+Mal vor), dazu eine widersprüchliche Zählung. Alle zwölf sind hier eingearbeitet, keiner
+weggewogen. **Die größte Lücke war die peinlichste:** die Liste behauptete »bei Koki: 8« und führte
+Kokis drei ÄLTESTE Tore nicht.
+
+| # | Befund | Report · Fundstelle | Wohin — Stand 2026-08-18 |
+|---|---|---|---|
+| 94 | **T6 · die Kartenkante.** Vier Kritiker nennen unabhängig die UI-Flächen als Ursache, dass vier von sechs Kartenarten gegen das Referenzbild verlieren | K4 §3 | **offen · Koki.** Empfehlung: das Budget ins gemalte Karten-**Material** (Knopf, Plakette, Papier als Blätter). **Vor seinem Wort startet AQ17 nicht** — und die Karten-Bahn **D4** wartet darauf |
+| 95 | **T7 · die Reihenfolge der fünf Regel-Seiten** — das einzige Tor der Welle 4, das offen blieb | K4 §3 | **offen · Koki.** Sagt er nichts, bleibt die heutige Reihenfolge (R51). Blockiert nichts |
+| 96 | **T8 · wo die stillen Anker stehen** | K4 §3 | **✓ beantwortet und gebaut (B4b, Kokis Entscheid 17.08., R135)**: p1 `near` c43 · p2 `far` c58 · p3 `near` c29. In doc 44 §4 ch01 (a), `ch01.md` §5 und dem Dossier-README nachgezogen (**K5**) |
+| 97 | **Eine Kanon-Zeile wurde inhaltlich geändert und wartete auf Bestätigung** (doc 44 §4 ch01: die Keen-Sechs → Verweis auf den ratifizierten Dossier-Override) | K4 §6 Frage 2 | **D-272** · **✓ bestätigt (R131)**. K4s Sorge war berechtigt: eine Kanon-Zeile, die eine Liste ersetzt, ist mehr als ein Nachtrag |
+| 98 | **Acht PB-Nummern statt der beauftragten neun** (eine Doppelung bekam nur eine Verweiszeile) | K4 §6 Frage 1 | **✓ bestätigt (R131)** — und in dieser Runde siebenmal wiederholt (R70/R111) |
+| 99 | **Zwei ausdrückliche Aufträge an Fable** aus K4s »Was als Nächstes passiert« | K4 §4 | (a) **die elf Rulings ohne Repo-Heimat** — diese Runde hat vierzehn der zweiundzwanzig neuen verortet und **acht** als heimatlos ausgewiesen; K3s/K4s elf bleiben, wo sie ausgewiesen sind · (b) **der Naht-Messfehler in Codex' eigener Prüfkette** (`build_and_validate.py` misst die Naht genau falsch — die Lücke, durch die AS5 ging; **D-264**, bewusst nicht im Lab repariert) → **Fable**, weiter offen |
+| 100 | **Rahmen-Korrektur-Bitte:** `roamMinC/MaxC` liegen in `params`, nicht auf der Entity-Ebene — »bitte im Rahmen der nächsten Welle korrigieren« | B4b §Architekt 2 | **D-302** · **✓ erledigt (K5)**: doc 45 **G5** als Engine-Eigenschaft + Nachtrag im p2-Dossier; der Rahmen der Welle 6 trägt die Korrektur bereits |
+| 101 | **»Als Absicht festschreiben, nicht bauen«** — B4bs eigentliche Empfehlung zu den fehlenden Steigungen war die Dokumentation, nicht das Löschen der Blätter | B4b §5 | **D-304** · **✓ erledigt (K5)**: doc 44 §4 ch01 (b) und `ch01.md` §5 nennen die Boden-Grammatik mit Begründung; erzwungen ist sie seit E6 durch das Rampen-Gesetz |
+| 102 | **Wohin `check-colour-copy` langfristig gehört** — eigene Datei nur, weil W4 in derselben Welle das Farb-Tor besaß; »nach W4 als eigenes Kapitel hineinziehen« | C4 §Fragen 1 | **D-420** (neu) · **W5**. W4 ist gemergt — der Umzug ist damit **fällig** |
+| 103 | **»Jedes Import-Urteil braucht beide Größen« sollte in den Rahmen** | C4 §Fragen 3 | **✓ erledigt (R133/R152)**: als **H9** in doc 45 (Prozess-Doktrin) und als Falle **PB-91** — nicht nur als Praxis zweier Bahnen |
+| 104 | **Der Lese-Spiegel des Architekten stand auf einem alten Stand** (`d3a7eba`/#301 statt `origin/main`): drei Explore-Läufe lieferten Zeilen 60–90 daneben und eine Decke von 61 statt 53 | G4 §6.5 | **✓ als Falle aufgeschrieben**: Verweiszeile bei **PB-66** (»der Haupt-Clone ist nicht der Hauptstand«), erweitert auf **jede** Arbeitskopie, die man nicht selbst angelegt hat. Der Spiegel selbst steht heute auf `2562281` (**K5 nachgesehen**) |
+| 105 | **Absolute Zahlen einer Sitzung sind nicht mit denen einer anderen vergleichbar** — nicht dasselbe wie die Streuung innerhalb eines Baums | E6 §7.1 | **offen als Vorbehalt** · gehört neben **D-335** ins Perf-Dokument (**D-421**, S2/W5) |
+| 106 | **`lint` und `build` nicht lokal geprüft** — CI ist der Beweis, wenn eine Runde keinen Code anfasst | K4 §5 | **✓ gilt unverändert**, auch für diese Runde (Teil C) |
+
+---
+
 ## Die Zahlen dieser Liste
 
 * **Acht von acht Reports ganz gelesen** (K4 249 · C4 153 · G4 201 · B4b 304 · F6 228 · E6 345 ·
   W4 379 · S1 375 = **2 234 Zeilen**).
-* **93 Posten** insgesamt: **39** aus den »Filed«-Abschnitten (Teil A), **41** von außerhalb
+* **106 Posten** insgesamt: **39** aus den »Filed«-Abschnitten (Teil A), **41** von außerhalb
   (Teil B), **10** ausdrückliche Nicht-Prüfungen (Teil C), **3** aus der Kanon-Prüfung dieser
-  Runde (Teil D).
+  Runde (Teil D), **13** aus dem blinden Vollständigkeits-Prüfer (Teil E).
+* **Der Prüfer hat 12 von 13 selbst gefunden** — elf davon per Volltextsuche belegt (die
+  Zeichenfolge stand **null** Mal in der Liste), dazu eine widersprüchliche Zählung. Ohne ihn
+  fehlten in dieser Liste **Kokis drei älteste Tore**.
 * **Zwei der acht Reports haben gar keinen »Filed«-Abschnitt** (G4, B4b) — ihre 16 offenen Posten
   stehen ausschließlich in Teil B. Wer nur geerntet hätte, was so heißt, hätte sie alle verloren.
-* **43 Zeilen tragen ein ✓, 50 nicht** — beides ausgezählt, nicht geschätzt. Das ✓ ist dabei
-  **kein einheitliches »fertig«**: es steht 15-mal für *erledigt/geschlossen/gebaut/korrigiert*,
-  14-mal für *entschieden oder zugewiesen* (die Arbeit steht noch aus, aber sie hat eine Bahn),
-  7-mal für *geprüft, nichts zu tun* oder *deklariert*, 3-mal für *dokumentiert* und 2-mal für
-  *bestellt und geliefert*. Wer nur die Haken zählt, überschätzt den Stand — deshalb steht in
-  jeder Zelle das Verb dabei.
-* **Ohne Eigentümer und ohne Bahn: 6** (Zeilen 10 · 35 · 38 · 45 · 59 · 60) — das sind die, die
-  beim nächsten Wellen-Schnitt zuerst verloren gehen.
-* **Bei Koki: 8** — T10 (p3-Flieger) · T11 (Lizenz) · T12 (Hörbank) · T13 (Dach-Schalter) · der
-  graue Keil · das Spielgefühl des Kamera-Halts · sein Schirm (Perf) · sein Ohr (Klang).
+* **51 Zeilen tragen ein ✓, 55 nicht** — beides ausgezählt, nicht geschätzt. Das ✓ ist dabei
+  **kein einheitliches »fertig«**: es steht etwa zur Hälfte für *erledigt · geschlossen · gebaut ·
+  korrigiert* und zur anderen Hälfte für *entschieden · zugewiesen · bestätigt · geprüft ·
+  deklariert* — dort steht die Arbeit noch aus, sie hat nur eine Bahn. Wer nur die Haken zählt,
+  überschätzt den Stand — deshalb steht in jeder Zelle das Verb dabei.
+* **Ohne benannte SESSION: 6** (Zeilen 10 · 35 · 38 · 45 · 59 · 60) — fünf davon nennen eine
+  grobe Kategorie (Copy-Bahn · game-feel-Bahn · Karten-Bahn · Codex-Bahn · Karten-/Kunst-Bahn),
+  eine (38) gar nichts. *(Der Prüfer hat zu Recht beanstandet, dass »ohne Bahn« hier zuerst stand,
+  während im Zellentext eine Bahn steht: eine Kategorie ist kein Eigentümer, aber sie ist auch
+  nicht nichts.)* Das sind die Posten, die beim nächsten Wellen-Schnitt zuerst verloren gehen,
+  weil niemand sie bootet.
+* **Bei Koki: 10** — **T6** (Kartenkante) · **T7** (Regel-Seiten-Reihenfolge) · T10 (p3-Flieger) ·
+  T11 (Lizenz) · T12 (Hörbank) · T13 (Dach-Schalter) · der graue Keil · das Spielgefühl des
+  Kamera-Halts · sein Schirm (Perf) · sein Ohr (Klang). *(T6 und T7 fehlten in der Fassung vor dem
+  Vollständigkeits-Prüfer — die Zahl stand auf 8 und war falsch.)* **T8 ist beantwortet.**
 * **Ausdrückliche Vorbehalte dieser Liste: 3** (Zeilen 79 · 80 · 89) — Urteile, die aus den
   Reports übernommen und nicht nachgemessen sind.

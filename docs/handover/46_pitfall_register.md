@@ -1023,6 +1023,15 @@ wo sie nicht unter der erwarteten Überschrift stehen — »nicht verifiziert«,
 »Frage an den Architekten«, »Empfehlung«, und mitten in der Prosa. Und: **eine Adresse ist
 keine Erledigung** — eine Schuld-Nummer zu vergeben schließt nichts. (Familie **PB-41** —
 Abdeckung ist die Zahl der Anschlüsse, nicht die Existenz der Regel.)
+**★ Zweiter Vorfall: K5, 2026-08-18 — in der Runde, die diese Regel als Doktrin aufgeschrieben
+hat.** Die Welle-5-Liste wurde diesmal ausdrücklich in »Filed-Abschnitte« und »alles andere«
+geschnitten, und der blinde Vollständigkeits-Prüfer fand trotzdem **zwölf** fehlende Posten —
+darunter **Kokis drei älteste Tore** (Kartenkante · Regel-Seiten-Reihenfolge · Anker), während die
+Liste im selben Atemzug »bei Koki: 8« behauptete. Elf der zwölf waren per Volltextsuche belegbar:
+die Zeichenfolge kam **null** Mal vor. *Zusatz zur Regel:* eine Vollständigkeits-Zusage prüft man
+nicht durch besseres Vorsatz-Fassen, sondern durch den blinden Prüfer — **jedes Mal**, auch wenn
+die Runde die Regel selbst geschrieben hat. Und eine Zusammenfassung, die eine ZAHL behauptet
+(»bei Koki: 8«), liefert die Aufzählung mit, damit die Zahl prüfbar ist.
 
 ## R5-Welle 5 · aus den acht Reports der Welle (aufgenommen von K5, 2026-08-18)
 
