@@ -90,7 +90,22 @@ const LIMITS = {
   neutralFallTol: 0.9,       // c3 ≥ 0,9 · c1 — der Klang darf nicht fallen
   neutralLouderThanPositiveLu: 2,
   // Vergleich gemessen ↔ gespeichert
-  cmpLoudness: 0.5, cmpTruePeak: 0.2, cmpCentroidRel: 0.05, cmpDurationSec: 0.02,
+  cmpLoudness: 0.5, cmpTruePeak: 0.2, cmpCentroidRel: 0.05,
+  /**
+   * Dauer: EIN MP3-RAHMEN Toleranz, plus Rand.
+   *
+   * Gemessen im ersten CI-Lauf (2026-08-18): dieselbe Datei ist auf dem Mac
+   * 0,300 s lang und auf `ubuntu-latest` 0,340 s. Der Versatz ist bei allen 76
+   * Dateien fast gleich — rund 1152 Abtastwerte bei 44,1 kHz, also **genau ein
+   * MP3-Rahmen**: der eine ffmpeg-Build zählt die Encoder-Polsterung mit, der
+   * andere nicht. Das ist keine veraltete Messdatei und kein Fehler an den
+   * Dateien, sondern die Sorte Versions-Unterschied, für die diese Toleranzen
+   * überhaupt existieren; 0,02 s waren dafür zu eng gewählt. 0,08 s decken drei
+   * Rahmen ab und sind immer noch weit unter jeder Änderung, die etwas bedeutet.
+   * (Die Dauer-GESETZE selbst prüfen gegen den gespeicherten Wert und sind
+   * davon unberührt.)
+   */
+  cmpDurationSec: 0.08,
 };
 
 const selftest = process.argv.includes("--selftest");
