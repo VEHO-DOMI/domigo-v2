@@ -539,8 +539,12 @@ Jede Zeile mit ihrem Besitzer, damit Welle 5 konfliktfrei parallelisieren kann.
 | Neun PNGs | `apps/web/public/art/g1/paint/ch01/cloth_*.png` | Kunst-Lane |
 
 **Zwei Fallen für Welle 5:**
-- `DEAD_ART_CEILING` steht bei 61/61 — neun neue PNGs müssen alle verdrahtet
-  sein, sonst ist `check-paint-art` rot.
+- `DEAD_ART_CEILING` steht bei **53/53** — neun neue PNGs müssen alle verdrahtet
+  sein, sonst ist `check-paint-art` rot. *(nachgezogen 2026-08-17 nach dem Hotfix der
+  Welle 4b, war: „steht bei 61/61" — die Decke ist seit dem 16.08. der auf `ae0dd42`
+  GEMESSENE Wert, 53 Blätter / 36,2 MB, ohne Luft. Wer Blätter hinzufügt, hebt sie im
+  selben PR mit Grund; wer welche verdrahtet, senkt sie um sein eigenes Delta; den
+  Endwert der Welle setzt der Post-Zug-Eigentümer, R104.)*
 - Wer die Welt ändert, nimmt die Tapes neu auf, die er bricht: p1/p2/p3.
 
 ---

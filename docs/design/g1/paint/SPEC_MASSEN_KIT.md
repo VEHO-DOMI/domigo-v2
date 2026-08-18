@@ -361,7 +361,7 @@ bleibt der eine fertige Raum der einzige mit Platzhalter-Leisten:
 | Blatt | Maße | Raster | Zellen → Stems |
 |---|---|---|---|
 | `mass_edges_p1.png` | **2048 × 1024** | 4 × 2 à 512² | wie §10.3, **Motivgesetz bindend** |
-| `mass_ramps_p1.png` | **2048 × 512** | 4 × 1 à 512² | Z0/Z1 → `mass_ramp_p1_up` / `_down`, Z2/Z3 Reserve |
+| ~~`mass_ramps_p1.png`~~ | — | — | **ZURÜCKGEZOGEN (R109, 2026-08-17).** *War:* „2048 × 512, 4 × 1 à 512², Z0/Z1 → `mass_ramp_p1_up` / `_down`, Z2/Z3 Reserve". ch01 trägt über alle fünf Flächen **null** Steigungs-Glyphen (D-267) — ein Rampen-Blatt hätte nichts zu zeichnen |
 
 Der Anker für p1 ist sein **eigener**, bereits abgenommener Körper (46 %), nicht
 ein absoluter Zielwert: alle Trims Körper + 6 … + 12 (§10.2). Die Kommission liegt
@@ -443,12 +443,43 @@ Rücken/Prägung/Glanz); Unterseiten = die Unterseite des Stapels; Ecken = derse
 Schnitt, der um die Ecke geht. AS3 fiel genau daran (zwei blinde Kritiker,
 entgegengesetzte Reihenfolge, beide reihten die Flanke als Letzte).
 
-**★ ZWEITES BLATT, NEU: `mass_ramps_<phase>.png`, 2048 × 512, 4 × 1 à 512², GEKEYT.**
-Zellen 0/1 → `mass_ramp_<phase>_up` / `_down`, Zellen 2/3 Reserve. **Grund:** §5 hat
-Rampen nie bestellt, alle acht Kanten-Zellen sind belegt, und deshalb ziehen ALLE
-fünf Räume — p1 eingeschlossen — weiterhin den geteilten Platzhalter
-`mass_ramp_up/_down`. Das ist der graue Keil links unten im Schulhof-Garten auf
-Kokis Bild `07.29.42`. Werte wie die übrigen Trims (Körper + 6…12).
+**★★ ZURÜCKGEZOGEN — DIE NÄCHSTE KOMMISSION BESTELLT KEINE RAMPEN (Ruling R109,
+eingetragen von K4, 2026-08-17).**
+
+*Hier stand:* „**ZWEITES BLATT, NEU: `mass_ramps_<phase>.png`, 2048 × 512, 4 × 1 à 512²,
+GEKEYT.** Zellen 0/1 → `mass_ramp_<phase>_up` / `_down`, Zellen 2/3 Reserve. **Grund:** §5
+hat Rampen nie bestellt, alle acht Kanten-Zellen sind belegt, und deshalb ziehen ALLE fünf
+Räume — p1 eingeschlossen — weiterhin den geteilten Platzhalter `mass_ramp_up/_down`. Das
+ist der graue Keil links unten im Schulhof-Garten auf Kokis Bild `07.29.42`. Werte wie die
+übrigen Trims (Körper + 6…12)."
+
+**Was daran nicht mehr stimmt.** A6b hat danach über alle fünf Flächen von ch01 gezählt, wie
+viele Steigungen es überhaupt gibt: **null.** Die Engine legt ein Rampen-Stück nur für die
+Glyphen `/ \ 1 2 3 4` an, und keine Fläche trägt einen davon. Ein bestelltes Rampen-Blatt
+hätte also nichts zu zeichnen — es wäre bezahlte tote Kunst am Tag seiner Lieferung. Auch die
+Begründung ist widerlegt: der graue Keil auf Kokis Bild **kann** nicht der Rampen-Platzhalter
+sein, und was er stattdessen ist, weiß bis heute niemand (**D-270**). Die Platzhalter selbst
+liegen trotzdem in allen fünf Phasen-Scopes und kosten Texturspeicher für nichts — das ist
+eine Perf-Frage, keine Kunst-Bestellung, und sie gehört der E-Bahn (**D-267**). Die Frage
+„warum hat ch01 eigentlich keine einzige Steigung?" ist eine Level-Frage und gehört der
+B-Bahn.
+
+**Was die nächste Kommission (AS5b) stattdessen enthält — R109 im Wortlaut:**
+1. **Keine Rampen.**
+2. **Die Krusten für p2 / p3 / p4 / p9** in derselben Bestellung (D-265: zwölf von zwanzig
+   Krusten-Blättern bluten Schlüsselfarbe, und die Ursache liegt in der gelieferten Quelle,
+   nicht in unserem Import — Übermalen ist verboten, also hilft nur Neulieferung).
+3. **EINE Naht-Metrik, und zwar die des Wächters** (`importerWouldDelete` je Kachel) — nicht
+   die des Lieferscheins. Drei Zählweisen für denselben Sachverhalt haben in Welle 4b drei
+   verschiedene Zahlen produziert.
+4. **`--verify` als Lauf-Anweisung**, damit Codex seine Lieferung vor dem Absenden durch
+   dasselbe Tor fährt, das der Import anwendet — **als Anweisung, nicht als Skript im
+   Codex-Repo** (Containment).
+5. Die **16 bestandenen Ecken** bleiben liegen und kommen mit ihren Kanten; der
+   `edgeD`-Motor-Haken (D-27) geht mit AS5b in **einem** Commit (Lane A7).
+
+⚠ **Datiert (R106):** AS5b muss bis **2026-09-30** importiert sein — an diesem Tag laufen
+drei geduldete Ausnahmen zugleich ab.
 
 ### 10.4 · Format-Gesetze, verschärft an dem, was AS3 gekostet hat
 
