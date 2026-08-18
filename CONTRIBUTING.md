@@ -120,3 +120,8 @@ Zeilenende — es ist keine Repo-weite JSON-Regel, sondern eine Eigenschaft dies
 * **Grün heißt nicht richtig.** Ein Tor prüft Zitate, keine Behauptungen. Frag
   bei jedem Artefakt: was könnte hier selbstbewusst erfunden werden, das keine
   Strukturprüfung sieht? — und bau die Prüfung genau dafür.
+* **Eine Pflicht, die nur im Text eines PRs steht, gibt es nicht.** *(2026-08-17, R104/P-71 —
+  nach einem Zug, der `main` rot machte.)* Rebase-Schritte und Zahlen, die „am Ende der Welle"
+  gesetzt werden müssen, gehören in die Merge-Tabelle, die der Mensch beim Klicken liest.
+  Und wer eine Zahl für den Endstand einer Welle setzt — eine Decke, eine Erlaubnisliste,
+  einen Zähler —, misst sie **nach** dem letzten Merge, nie parallel dazu.

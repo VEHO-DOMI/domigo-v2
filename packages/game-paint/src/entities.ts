@@ -152,7 +152,7 @@ export type EntityEvent =
   | { type: "powerupTaken"; id: string; grants: string }
   /** PK-R3b · R3-16: a static-state collectible was walked into — a Regel-Seite
    *  (which stops the world to show its rule) or a Bonus-Buch (which does not). */
-  | { type: "pickupTaken"; id: string; role: "tip" | "book"; skin: string }
+  | { type: "pickupTaken"; id: string; role: "tip" | "book" | "cloth"; skin: string }
   | { type: "guardianStagger"; id: string }
   | { type: "guardianKnot"; id: string; knotsLeft: number }
   | { type: "guardianDown"; id: string }
@@ -505,18 +505,52 @@ export const roamHopT = (timer: number): number => {
   return u < HOP_TICKS ? Math.sin((u / HOP_TICKS) * Math.PI) : 0;
 };
 
-/** Ihr Raum, in SUBS — aus dem Gitter, nie aus `params`.
+/** R5-W5 · B4b · DIE GEMALTEN AUSSENSPALTEN, falls das Level sie nennt.
+ *
+ *  Liest `roamMinC`/`roamMaxC` aus den `params` einer Entity und wirft alles
+ *  weg, was keine ganze Zahl ≥ 0 ist. Der Grund für die Strenge hier UND im
+ *  Lade-Schema (`apps/web/lib/paint-content.ts`): `params` ist ein offener
+ *  Record, eine „63" als Zeichenkette käme also unbemerkt an und würde in
+ *  `homeC - minC` zu `NaN` — und ein `NaN`-Deckel lässt jede Schleife sofort
+ *  abbrechen. Sie stünde dann still, und nichts würde rot. */
+export const roamBoundsOf = (
+  params: Record<string, unknown>,
+): { minC?: number; maxC?: number } => {
+  const whole = (v: unknown): number | undefined =>
+    typeof v === "number" && Number.isInteger(v) && v >= 0 ? v : undefined;
+  return { minC: whole(params.roamMinC), maxC: whole(params.roamMaxC) };
+};
+
+/** Ihr Raum, in SUBS — das FENSTER kommt aus dem Gitter, nur der DECKEL darf
+ *  gemalt sein.
  *
  *  `xSubs`/`ySubs` sind ihre Füsse (die Wesen-Konvention). Zurück kommt immer
  *  ein gültiges Fenster: im schlimmsten Fall ihr eigener Standpunkt, und dann
- *  steht sie eben — besser als ein Schritt ins Nichts. */
+ *  steht sie eben — besser als ein Schritt ins Nichts.
+ *
+ *  R5-W5 · B4b · R85: `bounds` ersetzt `ROAM_MAX_CELLS` für diese eine Entity
+ *  (F5s Frage an den Architekten: „der Wert kommt aus dem Level, nicht aus
+ *  einer Konstante"). Er ersetzt die Sonde NICHT — die drei Bedingungen oben
+ *  laufen unverändert davor, und eine gemalte Spalte, die über die tragende
+ *  Fläche hinausgeht, gewinnt nicht. Das ist die ganze Ordnung dieser Änderung:
+ *  das Level darf ihren Raum ENGER oder in einer tragenden Halle WEITER
+ *  erklären, aber die Zusage „sie fällt nicht und sie ertrinkt nicht" bleibt
+ *  beim Gitter und hängt nicht davon ab, dass ein Autor richtig rechnet. */
 export const roamZone = (
   grid: readonly string[],
   xSubs: number,
   ySubs: number,
+  bounds: { minC?: number; maxC?: number } = {},
 ): { minX: number; maxX: number } => {
   const feetPx = ySubs / SUBS;
   const step = TILE * SUBS;
+  // Wie viele Kacheln je Seite überhaupt PROBIERT werden. `Math.max(0, …)`
+  // fängt die Grenze, die auf der falschen Seite ihres Standplatzes steht (ein
+  // `roamMaxC` westlich von ihr): daraus wird „sie steht", nie ein Schritt
+  // durch die Wand.
+  const homeC = Math.floor(xSubs / SUBS / TILE);
+  const westCap = bounds.minC === undefined ? ROAM_MAX_CELLS : Math.max(0, homeC - bounds.minC);
+  const eastCap = bounds.maxC === undefined ? ROAM_MAX_CELLS : Math.max(0, bounds.maxC - homeC);
   const tragfähig = (probeSubs: number): boolean => {
     const s = walkSurfaceAhead(grid, probeSubs / SUBS, feetPx, { maxDropTiles: 0 });
     if (s === null || s.yPx !== feetPx) return false; // exakt dieselbe Standlinie
@@ -527,11 +561,11 @@ export const roamZone = (
   };
   let minX = xSubs;
   let maxX = xSubs;
-  for (let i = 1; i <= ROAM_MAX_CELLS; i++) {
+  for (let i = 1; i <= westCap; i++) {
     if (!tragfähig(xSubs - i * step)) break;
     minX = xSubs - i * step;
   }
-  for (let i = 1; i <= ROAM_MAX_CELLS; i++) {
+  for (let i = 1; i <= eastCap; i++) {
     if (!tragfähig(xSubs + i * step)) break;
     maxX = xSubs + i * step;
   }
@@ -579,7 +613,10 @@ const stepRedeemed = (e: EntityState, grid: readonly string[] = []): void => {
       // und „sie bleibt in ihrem Raum" gilt pro Gang statt fürs Kapitel. Der
       // Test hat sie 47 Subs ausserhalb erwischt. R49 meint den Raum, nicht den
       // Schritt.
-      const { minX, maxX } = roamZone(grid, e.homeX, e.homeY);
+      // R5-W5 · B4b: …und der DECKEL ihres Raums steht jetzt im Level (R85),
+      // nicht mehr allein in `ROAM_MAX_CELLS`. Das Fenster bleibt das des
+      // Gitters — siehe roamZone.
+      const { minX, maxX } = roamZone(grid, e.homeX, e.homeY, roamBoundsOf(e.params));
       e.x = Math.min(maxX, Math.max(minX, e.x + ROAM_SPEED * e.dir));
       if (e.x <= minX && e.dir < 0) e.dir = 1;
       else if (e.x >= maxX && e.dir > 0) e.dir = -1;
@@ -1560,6 +1597,21 @@ export const stepEntities = (
       // magnet exists to answer, and it applies here twice over.
       case "tip":
       case "book": {
+        if (overlapsPlayer(e, inp, 18, 24)) {
+          e.redeemed = true;
+          e.timer = 0;
+          events.push({ type: "pickupTaken", id: e.id, role: e.role, skin: e.skin });
+        }
+        break;
+      }
+      // R5-W5 · G4 · a piece of the scattered uniform (UNIFORM_SAMMELN_DESIGN
+      // §1). Same no-brain contact take as the two above, and deliberately the
+      // same generous 18×24 box: a piece the child brushes past and does not get
+      // is worse here than for a rule page, because the naming card only ever
+      // asks about pieces that were actually found. The word itself rides in
+      // `params.wordEn` and is read where the toast is built — the entity step
+      // stays a collision test and nothing else.
+      case "cloth": {
         if (overlapsPlayer(e, inp, 18, 24)) {
           e.redeemed = true;
           e.timer = 0;

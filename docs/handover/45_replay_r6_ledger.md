@@ -319,6 +319,31 @@ dabei — die R5-Session verifiziert am Code, nie blind übernehmen (Specs rotte
   Papiertextur ist es weiterhin ein regelmäßiges Vektor-Baukastensystem. **Offenes
   Tor: eine Geometrie-Runde** (unregelmäßige Strichstärken, je Ecke ein anderer
   Radius, auf allen Elementen) — sie berührt R5-W1 · D2 und ist deshalb Kokis.
+- **G3 · DAS KARTEN-MATERIAL — die Flächen ringsum verraten den Rechner.**
+  *(neu 2026-08-17, K4; Ruling R112, entschieden 2026-08-16 nach D3bs Runde.)* Sechs blinde
+  Kritiker haben je eine Kartenart Seite an Seite gegen dasselbe geprüfte Referenzbild
+  gestellt. Zwei Karten gewinnen (Zeremonie, Bilanz). Vier verlieren — und **vier nennen
+  unabhängig dieselbe Ursache**: die gemalten MOTIVE tragen, aber die UI-Flächen ringsum
+  („identische Verlaufs-Kästen mit Standard-Schlagschatten, ohne Pinselspur"; „ein klar
+  digitaler UI-Rahmen, der jede Illusion einer gemalten Spielwelt sofort bricht"). Das ist
+  keine Geschmacksfrage mehr, sondern eine Konvergenz — und damit eine Bestellung, keine
+  Meinung. **Entschieden:** Knopf, Plakette und Papierfläche werden **gemalte Blätter**
+  statt CSS-Verläufe — Codex-Kommission **AQ17**, Import durch Lane **D4** (Welle 5b), und
+  die Kartenkante kommt als Teil eines Rahmens mit. **Hängt an Kokis Tor T6** (Kartenkante:
+  Tuschekante lassen · Wachskante einschalten · Budget ins Karten-Material — Empfehlung das
+  Dritte); vor seiner Antwort wird AQ17 nicht gestartet. Der Kanten-Versuch aus D3bs Runde
+  (AQ11, gemessen, eingebaut, nach drei Anläufen wieder abgeschaltet) ist der erste Schritt
+  in dieselbe Richtung gewesen — er ist an der Lieferung gescheitert, nicht an der Idee.
+  Schuld-Adresse: **D-218**.
+- **G4 · `syncOverlay` kopiert die SKALIERUNG, nicht die Anzeigegröße.**
+  *(neu 2026-08-17, K4; Ruling R107, dabei **R92 ausdrücklich zurückgezogen**.)* Eine
+  Engine-Eigenschaft, an der in einer Woche zwei Sessions unabhängig hängengeblieben sind:
+  die Leinwand eines Kunstblattes IST der Slot, in den es gezeichnet wird. Wer ein
+  1024²-Blatt in einen kleinen Käfig hängt, bekommt es nicht klein, sondern falsch —
+  C3 maß 47 px, D3b 47,4 px für dieselbe Figur, die 34 px hoch sein sollte. **Folge für
+  jede Kunst-Bestellung: sie nennt das BESTANDSMASS des Blattes, das sie ersetzt, nie
+  1024².** Schuld-Adressen: **D-211** (Messung D3b), **D-212** (Bestandsmaße). Die alte
+  Fassung R92 („die Engine skaliert schon") ist damit zurückgezogen.
 
 ## H · Prozess-Doktrin (re-ratifiziert + amendiert — bindend für R5)
 
@@ -343,6 +368,38 @@ dabei — die R5-Session verifiziert am Code, nie blind übernehmen (Specs rotte
   PRs and plans"). *(Architekten-Zusatz als Mechanik-Vorschlag: pro Phase ein
   Level-Design-Dossier durch die Kritiker-Schleife VOR dem Umbau — Kokis Wortlaut
   ist „rethink in loops"; das Dossier ist die gewählte Umsetzungsform.)*
+- **H5 · Der Ring der Arena — dreimal von blinden Prüfern verlangt, jetzt bestellt.**
+  *(neu 2026-08-17, K4; Ruling R113.)* Zwei Runden am Wächter (H2 mit vier Kritikern, H3 mit
+  sechs) haben unabhängig dieselbe dritte Forderung gestellt: der **Arena-Raum** braucht eine
+  Kompositions-Runde — die dreißig Stühle stehen im Raum verteilt, statt den Ring zu bilden,
+  in dem ein Boss-Kampf stattfindet. Das ist keine Engine-Frage und keine Farbfrage, sondern
+  ein **Hintergrund-Blatt**: Codex-Kommission **AQ13c** (Stühle an die Wand), Import durch
+  Lane **H4** (Welle 5b). Ausdrücklich **NICHT** Teil von AQ13b — das ist die
+  Kontrast-Nachbestellung der Tafel (ihre Fläche liegt 1,4 Helligkeitsstufen von der Tür
+  hinter ihr, ihr Rahmen 2 Grad vom Braun der Stühle; Ziel 50). Zwei Bestellungen, zwei
+  Ursachen, zwei Blätter — wer sie zusammenlegt, bekommt keine von beiden.
+- **H6 · Eine datierte Ausnahme bindet sich an den REPARATURPFAD, nie an einen Merge.**
+  *(neu 2026-08-17, K4; Ruling R106.)* Der Naht-Wächter der Welle 4b duldete neun
+  Krusten-Kacheln „bis A6b gemergt hat" — A6b hat sie dann nicht repariert (die gelieferte
+  Quelle blutet selbst, kein Schnitt hilft), und die Ausnahme wäre an ihrem Stichtag ohne
+  Zutun rot geworden. **Regel:** jede geduldete Ausnahme nennt die **Kommission und die
+  Import-Bahn**, die sie beendet, plus einen Stichtag, und steht als Pflicht mit Eigentümer
+  dort, wo Koki liest. **Heute offen: bis 2026-09-30 muss AS5b importiert sein (Lane A7)** —
+  an diesem einen Tag laufen DREI Ausnahmen zugleich ab (`SEAM_ALLOW` im Naht-Wächter,
+  `COHERENCE_WAIVERS` im Kompositions-Tor, `PLACEHOLDER_UNTIL` in der Komposition). Wird die
+  Lieferung gerissen, braucht es einen ausdrücklichen Verlängerungs-Beschluss mit Grund —
+  nie eine stille Anhebung.
+- **H7 · Die Pergament-Regel des Farb-Tors bleibt — und die zweite Unterscheidung baut das
+  Tor, nicht die Bahn.** *(neu 2026-08-17, K4; Ruling R114.)* Das Farb-Tor verwirft Pixel
+  unter einer Farbkraft-Schwelle als „Pergament" (Grundierung), damit die Papierfarbe nicht
+  als Motivfarbe zählt. Es kann damit ein absichtlich gedecktes Farbfeld nicht von der
+  Grundierung unterscheiden — eine echte Lücke, aber **die Regel bleibt**, weil sie an neun
+  Bestandsblättern hergeleitet und dort richtig ist. Zwei Folgen: **(1) jede Kunst-Bestellung
+  trägt ihre Zielzahl** (C3 hat es vorgemacht: AQ12d verlangt Farbkraft ≥ 0,53, nachdem 90 %
+  der roten Masse des Vorgängers unter die Schwelle fiel). **(2) Die zweite Unterscheidung —
+  der Flächenanteil eines zusammenhängenden Farbfelds — baut die Werkzeug-Bahn (W4), nie die
+  Bahn, deren Kunst gerade passieren soll.** Wer sein eigenes Tor weicher macht, damit sein
+  Blatt durchkommt, hat kein Tor mehr. Schuld-Adresse: **D-220**.
 
 ---
 

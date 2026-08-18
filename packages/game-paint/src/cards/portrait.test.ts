@@ -17,7 +17,7 @@ import { describe, expect, it } from "vitest";
 import fs from "node:fs";
 import path from "node:path";
 import { KLASSENFOTO_STEM, cageCellFor, freeCellsFor } from "./CardShell.tsx";
-import { CAPTIVE_KEYS } from "../artManifest.ts";
+import { CAPTIVE_KEYS, classmateStem } from "../artManifest.ts";
 import { domArtStems } from "../artScope.ts";
 
 const ROOT = path.resolve(__dirname, "../../../..");
@@ -69,6 +69,36 @@ describe("R5-W4 · D3 · the cage portrait names its occupant", () => {
   it("names nothing when there is nothing to name", () => {
     expect(cageCellFor(undefined)).toBeUndefined();
     expect(cageCellFor("")).toBeUndefined();
+  });
+
+  // ── R5-W5 · C4 · D-228 · ONE SOURCE FOR THE PERSON-CAGE CELL ───────────────
+  //
+  // The person half of this helper used to be a bare `${name}_caged0` template
+  // typed here — the only written copy of a convention the SCENE needs the
+  // moment the person-cage grows its occupant layer (PaintScene, C3's measured
+  // stop at `buildEntityImgs`). Two spellings of one naming law are two laws:
+  // W3 proved it on `BANNED_DE`, where the two copies had already drifted apart
+  // by a whole entry (D-123/D-251). So the law lives in artManifest now, and
+  // these two cases keep it there — the second one reads this file's SOURCE,
+  // because a literal that comes back is not something a value test can see.
+  it("the person-cage cell comes from artManifest, not from a second spelling", () => {
+    expect(cageCellFor("merle")).toBe(classmateStem("merle"));
+    expect(cageCellFor("aardvark")).toBe(classmateStem("aardvark"));
+  });
+
+  it("CardShell spells no cage-cell convention of its own", () => {
+    const src = fs.readFileSync(path.join(__dirname, "CardShell.tsx"), "utf8");
+    // comments explain the law; only CODE may not re-state it
+    const code = src
+      .split("\n")
+      .filter((l) => !/^\s*(\*|\/\/|\/\*)/.test(l))
+      .join("\n");
+    // the tamper this guard was built against: `${name}_caged0` back in the body
+    expect(code, "a `_caged0` literal is back in CardShell — D-228 says the stem convention lives in artManifest.classmateStem")
+      .not.toMatch(/_caged\d/);
+    // …and the guard must be able to SEE such a literal: the same search finds
+    // the one this file itself writes, so a silently-empty read cannot pass.
+    expect(fs.readFileSync(__filename, "utf8")).toMatch(/merle_caged0/);
   });
 
   it("a key the art has not landed for still resolves — presence is asked later", () => {
