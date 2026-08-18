@@ -101,6 +101,48 @@ export const INK_V = 0.22;   // below: the drawn contour
 export const PAPER_S = 0.38; // below: page white, highlight, eye
 export const PARCHMENT = 0.45; // warm chroma below this: the aged-paper base
 
+// ── R5-W5 · W4 · D-220 · DIE ZWEITE UNTERSCHEIDUNG ───────────────────────────
+//
+// Die Pergament-Regel oben verwirft JEDEN warmen Bildpunkt unter der Chroma-
+// Schwelle. An den neun Bestandsblättern ist das richtig. An AQ12s rotem Buch
+// ist es falsch: dort IST warm-und-flau der Bucheinband. 58 413 Bildpunkte
+// fallen weg, übrig bleiben die Goldecken, und das Blatt liest »warm 38°«
+// statt rot. Jedes künftige Blatt in gedeckten Tönen trifft dasselbe (D-220).
+//
+// GEMESSEN, NICHT GERATEN (2026-08-17, alle zehn Blätter). Die Masse, die heute
+// als Pergament wegfällt, liegt auf dem BESTAND bei einem Mittelton von
+// 34…42° (die Füllfeder bei 58°) — das ist Creme, also Altpapier. Auf AQ12s
+// Buch liegt sie bei 3°. Das ist kein Papier, das ist Rot.
+//
+// Der Flächenanteil ALLEIN trennt nicht: die Pergament-Masse des Bestands ist
+// groß (Schere 36 %, Schultasche 38 %, Füllfeder 22 %) und zusammenhängend, und
+// sie als Farbe zu zählen würde die Warm-Mitte über die Drift-Grenze schieben.
+// Der Farbton allein würde reichen, wäre aber zerbrechlich: ein einzelner
+// dunkelroter Schatten dürfte kein Blatt umkippen.
+//
+// Also beides, und in dieser Reihenfolge: warm-und-flau bleibt Pergament, ES SEI
+// DENN die Bildpunkte gehören zu einem ZUSAMMENHÄNGENDEN FELD, das außerhalb
+// des Papier-Tonbands liegt UND groß genug ist, um ein Farbfeld zu sein.
+//
+// Die Zahlen sind an genau dieser Trennung gewählt. Größtes zusammenhängendes
+// Feld außerhalb des Papierbands, in Prozent der deckenden Fläche:
+//   Bestand:  0,00 · 0,02 · 0,03 · 0,11 · 0,11 · 0,25 · 0,28 · 0,35 · 0,37 %
+//   AQ12-Buch:                                                        59,49 %
+// Zwischen 0,37 und 59,49 liegt ein Faktor 160. FIELD_MIN_SHARE = 5 % ist die
+// geometrische Mitte dieser Lücke (√(0,37 · 59,5) ≈ 4,7): dreizehnmal über
+// allem, was der Bestand hat, und zwölfmal unter dem Fall, den die Regel fangen
+// soll. Ein Schwellenwert mitten in einer leeren Lücke ist ein Schwellenwert,
+// über den man nicht streiten muss.
+
+/** Der Tonbereich, in dem altpapierfarbene Grundierung lebt: Creme über Sand
+ *  bis Strohgelb. Gemessen an den neun Bestandsblättern (Mitteltöne 34…58°),
+ *  mit Luft nach beiden Seiten. */
+export const PAPER_HUE = Object.freeze([30, 70]);
+
+/** Wie groß ein zusammenhängendes Feld außerhalb des Papierbands sein muss,
+ *  bevor es als gemaltes Farbfeld zählt und nicht als Grundierung. */
+export const FIELD_MIN_SHARE = 0.05;
+
 /** RGB → [hue°, saturation, value]. */
 export function hsv(r, g, b) {
   r /= 255; g /= 255; b /= 255;
@@ -135,23 +177,101 @@ export const WORD_FAMILY = {
   white: "neutral", black: "neutral", grey: "neutral",
 };
 
-/** Measure one RGBA raster. Returns the family shares, the dominant family (or
- *  MIXED), and the chroma-weighted centre of the warm mass. */
-export function measure(data) {
+/** Die zusammenhängenden Felder (8-verbunden) einer Maske, größtes zuerst.
+ *  Der Flood läuft über die GANZE Komponente, bevor er über ihre Größe urteilt —
+ *  ein früher Abbruch zerlegt eine Fläche in hunderte „Felder" (dieselbe Falle,
+ *  die `key-fringe.mjs#keySpecks` in seinem Kommentar beschreibt). */
+const fields = (mask, w, h) => {
+  const seen = new Uint8Array(w * h);
+  const out = [];
+  for (let p = 0; p < w * h; p++) {
+    if (seen[p] === 1 || mask[p] === 0) continue;
+    const blob = [];
+    const stack = [p];
+    seen[p] = 1;
+    while (stack.length > 0) {
+      const q = stack.pop();
+      blob.push(q);
+      const qx = q % w;
+      const qy = (q - qx) / w;
+      for (let dy = -1; dy <= 1; dy++) {
+        for (let dx = -1; dx <= 1; dx++) {
+          const nx = qx + dx;
+          const ny = qy + dy;
+          if (nx < 0 || ny < 0 || nx >= w || ny >= h) continue;
+          const n = ny * w + nx;
+          if (seen[n] === 1 || mask[n] === 0) continue;
+          seen[n] = 1;
+          stack.push(n);
+        }
+      }
+    }
+    out.push(blob);
+  }
+  return out.sort((a, b) => b.length - a.length);
+};
+
+/**
+ * Measure one RGBA raster. Returns the family shares, the dominant family (or
+ * MIXED), and the chroma-weighted centre of the warm mass.
+ *
+ * `dims` ({w, h}) schaltet die zweite Unterscheidung (D-220) ein: ohne Breite
+ * und Höhe gibt es keine Nachbarschaft, also auch kein „zusammenhängendes
+ * Feld". Ein Aufruf ohne `dims` sagt das im Ergebnis (`fieldRule: false`), damit
+ * niemand die alte Antwort für die neue hält.
+ */
+export function measure(data, dims = null) {
+  const px = data.length / 4;
+  const w = dims?.w ?? px;
+  const h = dims?.h ?? 1;
+  const fieldRule = dims !== null && w * h === px;
+
+  // ── Durchgang 1 · wer ist Kandidat für „Pergament"? ───────────────────────
+  const parchCandidate = new Uint8Array(px);
+  const outOfPaperBand = new Uint8Array(px);
+  let opaqueCount = 0;
+  for (let p = 0; p < px; p++) {
+    const i = p * 4;
+    if (data[i + 3] < OPAQUE) continue;
+    opaqueCount++;
+    const [hu, s, v] = hsv(data[i], data[i + 1], data[i + 2]);
+    if (v < INK_V || s < PAPER_S) continue;
+    if (familyOf(hu) !== "warm" || s * v >= PARCHMENT) continue;
+    parchCandidate[p] = 1;
+    if (hu < PAPER_HUE[0] || hu > PAPER_HUE[1]) outOfPaperBand[p] = 1;
+  }
+
+  // ── Die zweite Unterscheidung · welche Kandidaten sind doch Farbe? ─────────
+  // Ein gedecktes Farbfeld ist zusammenhängend, groß und liegt außerhalb des
+  // Papier-Tonbands. Verstreute dunkle Töne (Schatten, Konturen, Kanten) sind
+  // es nicht — auf dem Bestand messen sie zusammen bis zu 3,9 % der Fläche,
+  // ihr größtes Feld aber nur 0,37 %.
+  const rescued = new Uint8Array(px);
+  let rescuedField = 0;
+  if (fieldRule && opaqueCount > 0) {
+    for (const blob of fields(outOfPaperBand, w, h)) {
+      if (blob.length < FIELD_MIN_SHARE * opaqueCount) break; // sortiert: ab hier nur noch kleinere
+      rescuedField += blob.length;
+      for (const p of blob) rescued[p] = 1;
+    }
+  }
+
+  // ── Durchgang 2 · die Bilanz ──────────────────────────────────────────────
   const fam = new Map();
   let total = 0, parchment = 0, opaque = 0;
   let wx = 0, wy = 0;
-  for (let i = 0; i < data.length; i += 4) {
+  for (let p = 0; p < px; p++) {
+    const i = p * 4;
     if (data[i + 3] < OPAQUE) continue;
     opaque++;
-    const [h, s, v] = hsv(data[i], data[i + 1], data[i + 2]);
+    const [h_, s, v] = hsv(data[i], data[i + 1], data[i + 2]);
     if (v < INK_V || s < PAPER_S) continue;
     const chroma = s * v;
-    const f = familyOf(h);
-    if (f === "warm" && chroma < PARCHMENT) { parchment += chroma; continue; }
+    const f = familyOf(h_);
+    if (parchCandidate[p] === 1 && rescued[p] === 0) { parchment += chroma; continue; }
     fam.set(f, (fam.get(f) ?? 0) + chroma);
     total += chroma;
-    if (f === "warm") { const rad = (h * Math.PI) / 180; wx += chroma * Math.cos(rad); wy += chroma * Math.sin(rad); }
+    if (f === "warm") { const rad = (h_ * Math.PI) / 180; wx += chroma * Math.cos(rad); wy += chroma * Math.sin(rad); }
   }
   const rank = [...fam.entries()].sort((a, b) => b[1] - a[1]);
   const share = (n) => (total === 0 ? 0 : n / total);
@@ -172,6 +292,9 @@ export function measure(data) {
     shares: Object.fromEntries(rank.map(([f, n]) => [f, share(n)])),
     ratio: second === 0 ? Infinity : first / second,
     parchmentShare: total + parchment === 0 ? 0 : parchment / (total + parchment),
+    // D-220: was die zweite Unterscheidung aus dem Pergament zurückgeholt hat.
+    fieldRule,
+    rescuedShare: opaque === 0 ? 0 : rescuedField / opaque,
   };
 }
 
@@ -224,6 +347,28 @@ export function flat(r, g, b, n = 64) {
   return data;
 }
 
+/** …und ein Blatt mit Fläche, für die zweite Unterscheidung (D-220): ein
+ *  Grundton, auf den `paint(x, y)` einzelne Bildpunkte setzen darf. Ohne
+ *  Breite und Höhe gibt es keine Nachbarschaft und damit kein „Feld". */
+export function sheet(base, n = 64) {
+  const data = flat(base[0], base[1], base[2], n);
+  const put = (x, y, rgb) => {
+    const i = (y * n + x) * 4;
+    data[i] = rgb[0]; data[i + 1] = rgb[1]; data[i + 2] = rgb[2]; data[i + 3] = 255;
+  };
+  return { data, dims: { w: n, h: n }, put, n };
+}
+
+// Die drei Töne, an denen die zweite Unterscheidung geprüft wird — gemessen an
+// den echten Blättern, nicht erfunden:
+/** gedecktes Rot wie AQ12s Bucheinband: Ton 5°, S·V 0,38 (gemessen 0,373) */
+export const MUTED_RED = [158, 70, 62];
+/** altpapierfarbene Grundierung wie auf allen neun Bestandsblättern: Ton 40°,
+ *  S·V 0,36 — dieselbe Flauheit, aber im Papierband */
+export const PARCHMENT_CREAM = [191, 161, 100];
+/** sattes Gold wie die Ecken desselben Buchs: Ton 42°, S·V 0,78 */
+export const VIVID_GOLD = [230, 170, 30];
+
 if (selftest) {
   // The specimens run through the REAL measurement and the REAL laws, not a copy.
   const cases = [];
@@ -259,6 +404,48 @@ if (selftest) {
   // 9 · …and the shipped shape does not
   say("NON-TAMPER · one warm word among the options is fine",
     ["brown", "pink", "blue"].filter((w) => WORD_FAMILY[w] === "warm").length, (n) => n === 1);
+
+  // ── R5-W5 · W4 · D-220 · die zweite Unterscheidung, in beide Richtungen ────
+  // Die Fälle sind an den echten Zahlen gebaut: ein gedecktes rotes Feld mit
+  // S·V 0,38 (AQ12 misst 0,373) unter ein paar satten Goldecken. Ohne die
+  // zweite Unterscheidung fällt das Feld als Pergament weg und gemessen wird
+  // das Gold — genau der Vorfall, den D-220 beschreibt.
+  const buch = sheet(MUTED_RED);
+  for (let y = 20; y < 32; y++) for (let x = 20; x < 32; x++) buch.put(x, y, VIVID_GOLD);
+  const buchAlt = measure(buch.data);                 // ohne Fläche = alte Antwort
+  const buchNeu = measure(buch.data, buch.dims);
+  say("ROT ZUERST · ohne die zweite Unterscheidung misst das rote Buch seine GOLDECKEN",
+    buchAlt.warmCentre, (c) => c !== null && c > 30);
+  say("…und mit ihr misst es das Buch: die Warm-Mitte springt auf Rot",
+    buchNeu.warmCentre, (c) => c !== null && c < 20);
+  say("…und sie sagt auch, wie viel sie zurückgeholt hat",
+    buchNeu.rescuedShare, (s) => s > 0.5);
+
+  // Die Gegenrichtung, und sie ist die wichtigere: die altpapierfarbene
+  // Grundierung liegt im Papier-Tonband und muss weiter wegfallen, sonst
+  // wandert die Warm-Mitte jedes Bestandsblatts.
+  const grund = sheet(PARCHMENT_CREAM);
+  for (let y = 24; y < 40; y++) for (let x = 24; x < 40; x++) grund.put(x, y, [228, 108, 12]);
+  const grundNeu = measure(grund.data, grund.dims);
+  say("NON-TAMPER · eine große CREMEFARBENE Fläche bleibt Grundierung, kein Farbfeld",
+    grundNeu, (m) => m.rescuedShare === 0 && m.warmCentre !== null && m.warmCentre < 30);
+
+  // …und verstreute dunkle Töne sind kein Feld, auch wenn sie zusammen viel
+  // Fläche haben. Auf dem Bestand misst diese Streuung bis zu 3,9 % des Blatts,
+  // ihr größtes zusammenhängendes Feld aber nur 0,37 %.
+  const streu = sheet(VIVID_GOLD);
+  let streuPunkte = 0;
+  for (let y = 0; y < streu.n; y += 3) for (let x = 0; x < streu.n; x += 3) { streu.put(x, y, MUTED_RED); streuPunkte++; }
+  const streuAnteil = streuPunkte / (streu.n * streu.n);
+  const streuNeu = measure(streu.data, streu.dims);
+  say(`NON-TAMPER · ${(streuAnteil * 100).toFixed(0)} % verstreute rote Punkte sind kein Feld`,
+    streuNeu, (m) => m.rescuedShare === 0 && m.warmCentre !== null && m.warmCentre > 30);
+
+  // Und der Tamper auf die Regel selbst: ein Blatt, das FLAUgemacht wurde, bis
+  // alles unter die Pergament-Schwelle fällt, hat keine Farbe mehr zu nennen.
+  const flau = sheet(PARCHMENT_CREAM);
+  say("ein Blatt, das künstlich zu Pergament geflaut ist, nennt keine Farbe mehr",
+    measure(flau.data, flau.dims), (m) => m.dominant === "MIXED");
 
   let bad = 0;
   for (const [name, got, ok] of cases) {
@@ -303,7 +490,8 @@ for (const file of files) {
     const sheet = path.join(ART, chapter, `${stem}.png`);
     if (!fs.existsSync(sheet)) { fail(w, `binding: ${sheet} is not on disk`); continue; }
 
-    const m = measure((await readSheet(sheet)).data);
+    const png = await readSheet(sheet);
+    const m = measure(png.data, { w: png.width, h: png.height });
     measured++;
     const declaredFamily = WORD_FAMILY[t.colour];
     const centre = m.warmCentre === null ? "—" : `${m.warmCentre.toFixed(1)}°`;

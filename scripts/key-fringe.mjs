@@ -31,6 +31,8 @@
 // second alone — verified in both directions by the gate's tamper check.
 
 import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { PNG } from "pngjs";
 
 /** How deep the key can bleed inward from a cut. Four, measured: the pure key
@@ -288,3 +290,193 @@ export const writePng = (file, img) => {
   img.png.data = Buffer.from(img.px.buffer, img.px.byteOffset, img.px.byteLength);
   fs.writeFileSync(file, PNG.sync.write(img.png));
 };
+
+// ── R5-W5 · W4 · DIE EINE QUELLE FÜR DIE SCHLÜSSELFARBE ─────────────────────
+//
+// H3 hat gemeldet, was der Kommentar bei `importerWouldDelete` oben schon als
+// Gefahr benennt: dieselbe Frage — „ist dieser Bildpunkt Schlüsselfarbe?" —
+// wird an fünf Stellen im Repo beantwortet. Einmal hier, und je einmal in
+// import-batch-aq12/aq15/aq13/as. Nach der Importer-Regel sauber, nach der
+// Tor-Regel rot: 424 / 180 / 50 px.
+//
+// Und die vier Kopien sind bereits AUSEINANDERGELAUFEN, gemessen 2026-08-17:
+//   · `keyDistance` liefert in aq12 und aq15 zwei Maße ({euclid, manhattan}),
+//     in aq13 nur eines (euclid) — dieselbe Frage, zwei Antwortformen.
+//   · `impureKey` existiert in aq12 und aq15 und fehlt in aq13 und as.
+//   · die Saumregel heißt in as `isFringe`, in den anderen dreien ist sie ohne
+//     Namen in eine `if`-Zeile getippt.
+// Der Wortlaut der Saumregel ist heute noch überall gleich. Das ist Glück, kein
+// Zustand: nichts hält ihn gleich.
+//
+// Also stehen die Regeln ab hier EINMAL, benannt und exportiert. Die Importer
+// gehören anderen Bahnen (C4/A7/H4) und werden hier NICHT angefasst — was diese
+// Runde stattdessen liefert, ist Sichtbarkeit: `key-rules.test.ts` liest die
+// Regel jedes Importers aus seiner Quelle, jagt denselben Prüf-Pixelsatz durch
+// beide und wird ROT, sobald eine Kopie etwas anderes sagt als dieses Modul.
+
+/** Die Schlüsselfarbe selbst: reines Magenta, über das die Lieferungen gemalt
+ *  und aus dem sie geschnitten werden. */
+export const KEY_RGB = Object.freeze([255, 0, 255]);
+
+/** Wie weit ein Bildpunkt von der Schlüsselfarbe abliegen darf und trotzdem
+ *  Schlüssel IST. 40 ist der Wert, den alle vier Importer tragen (`TOL`) —
+ *  gemessen, nicht gewählt: er lässt die Kompressions-Unschärfe der Lieferung
+ *  durch und greift nicht in gemalte Magenta-Töne. */
+export const KEY_TOL = 40;
+
+/** Ist dieser Bildpunkt die Schlüsselfarbe? (der Importer-`isMagenta`) */
+export const isKeyPixel = (r, g, b, tol = KEY_TOL) =>
+  Math.hypot(r - KEY_RGB[0], g - KEY_RGB[1], b - KEY_RGB[2]) < tol;
+
+/** RGBA-Puffer aus allem, was hier als Bild durchgereicht wird: `readPng`
+ *  liefert `{px}`, pngjs liefert `{data}`. */
+const pixelsOf = (img) => img.px ?? img.data;
+
+/**
+ * Wie nah kommt das NÄCHSTE undurchsichtige Bildpunkt-Paar der Schlüsselfarbe?
+ * Beide Maße, weil beide gebraucht werden: der euklidische Abstand ist die
+ * Zahl, an der `isKeyPixel` hängt; der Manhattan-Abstand fängt einen Rest, der
+ * in einem einzigen Kanal sitzt und im euklidischen Mittel untergeht.
+ *
+ * `Infinity` heißt: kein undurchsichtiger Bildpunkt im Bild.
+ */
+export const keyDistance = (img) => {
+  const px = pixelsOf(img);
+  let euclid = Infinity;
+  let manhattan = Infinity;
+  for (let i = 0; i < px.length; i += 4) {
+    if (px[i + 3] <= 8) continue;
+    const dr = px[i] - KEY_RGB[0];
+    const dg = px[i + 1] - KEY_RGB[1];
+    const db = px[i + 2] - KEY_RGB[2];
+    const e = Math.hypot(dr, dg, db);
+    const m = Math.abs(dr) + Math.abs(dg) + Math.abs(db);
+    if (e < euclid) euclid = e;
+    if (m < manhattan) manhattan = m;
+  }
+  return { euclid, manhattan };
+};
+
+/**
+ * Wie viele Bildpunkte sind Schlüsselfarbe, ohne EXAKT die Schlüsselfarbe zu
+ * sein. Das ist der Zustand, den ein Importer sehen will, bevor er schneidet:
+ * reines #ff00ff schneidet sauber weg, ein angeschmutzter Schlüssel hinterlässt
+ * genau den Saum, den dieses Modul oben wieder herausrechnen muss.
+ */
+export const impureKey = (img) => {
+  const px = pixelsOf(img);
+  let n = 0;
+  for (let i = 0; i < px.length; i += 4) {
+    const r = px[i];
+    const g = px[i + 1];
+    const b = px[i + 2];
+    if (!isKeyPixel(r, g, b)) continue;
+    if (r !== KEY_RGB[0] || g !== KEY_RGB[1] || b !== KEY_RGB[2]) n++;
+  }
+  return n;
+};
+
+/** Der Prüf-Pixelsatz, an dem Modul und Importer verglichen werden. Er ist so
+ *  gebaut, dass RICHTIG und PLAUSIBEL-FALSCH auseinandergehen: die Paare 3/4
+ *  und 5/6 liegen KNAPP diesseits und jenseits jeder Schwelle. Ein Satz aus
+ *  reinem Magenta und reinem Grau würde jede denkbare Regel gleich beantworten
+ *  und deshalb nichts unterscheiden (die Lehre aus W3s erstem, blindem Tamper). */
+export const RULE_FIXTURE = Object.freeze([
+  { rgb: [255, 0, 255], was: "der reine Schlüssel" },
+  { rgb: [128, 128, 128], was: "neutrales Grau — nichts davon" },
+  { rgb: [232, 22, 232], was: "Schlüssel mit Kompressions-Unschärfe: Abstand 32, KNAPP innerhalb TOL 40" },
+  { rgb: [222, 32, 222], was: "eine Spur weiter draußen: Abstand 47, KNAPP außerhalb TOL 40" },
+  { rgb: [121, 65, 121], was: "Saum: r/b = 121 (> 120), r−g = 56 (> 55) — KNAPP darüber" },
+  { rgb: [120, 64, 120], was: "derselbe Ton, ein Punkt tiefer: r/b = 120, r−g = 56 — KNAPP darunter" },
+  { rgb: [200, 145, 200], was: "blasses Altrosa: hell genug, aber r−g = 55 ist NICHT > 55" },
+  // Die beiden folgenden Töne trennen die r−g- und die b−g-Schwelle EINZELN.
+  // Ohne sie deckt die jeweils andere Bedingung eine verschobene Schwelle zu —
+  // gemessen, nicht vermutet: ein Tamper auf `r − g > 54` in
+  // import-batch-aq13.mjs lief 2026-08-17 GRÜN durch, weil jeder Prüfton
+  // dieselbe Zahl in beiden Differenzen trug.
+  { rgb: [200, 145, 210], was: "r−g = 55 genau, b−g = 65 — trennt die r−g-Schwelle allein" },
+  { rgb: [210, 145, 200], was: "b−g = 55 genau, r−g = 65 — trennt die b−g-Schwelle allein" },
+  { rgb: [120, 64, 200], was: "r = 120 genau, b weit darüber — trennt die r-Schwelle allein" },
+  { rgb: [200, 64, 120], was: "b = 120 genau, r weit darüber — trennt die b-Schwelle allein" },
+  { rgb: [180, 5, 90], was: "sattes Rot-Violett: r hoch, b zu niedrig — kein Saum" },
+  { rgb: [90, 20, 200], was: "Blau-Violett: b hoch, r zu niedrig — kein Saum" },
+  { rgb: [140, 60, 190], was: "echte violette Malerei, wie sie p2 und das Rutschen-Kit tragen" },
+]);
+
+// ── Selbsttest (Werkbank; die Gesetze fahren in CI als key-rules.test.ts) ────
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)
+    && process.argv.includes("--selftest")) {
+  let bad = 0;
+  const check = (name, got, want) => {
+    if (got === want) console.log(`  ✓ ${name}`);
+    else { bad++; console.error(`  ✗ ${name} — erwartet ${want}, bekommen ${got}`); }
+  };
+
+  // 1 · Der Schlüssel-Test unterscheidet an seiner Schwelle, nicht irgendwo.
+  check("reines #ff00ff ist der Schlüssel", isKeyPixel(255, 0, 255), true);
+  check("Abstand 32 ist noch Schlüssel", isKeyPixel(232, 22, 232), true);
+  check("Abstand 47 ist es nicht mehr", isKeyPixel(222, 32, 222), false);
+  check("Grau ist kein Schlüssel", isKeyPixel(128, 128, 128), false);
+
+  // 2 · Die Saumregel ebenso — und zwar auf dem Punkt genau.
+  check("r/b 121, r−g 56 ist Saum", importerWouldDelete(121, 65, 121), true);
+  check("r/b 120 ist es nicht (die Schwelle ist >, nicht ≥)", importerWouldDelete(120, 64, 120), false);
+  check("r−g genau 55 ist kein Saum", importerWouldDelete(200, 145, 200), false);
+  // …und der Ton, an dem die NACKTE Regel gefährlich wird: echte violette
+  // Malerei erfüllt sie. Das ist kein Fehler der Regel, sondern der Grund,
+  // warum `keySpecks` Klumpen über SPECK_MAX_PX gar nicht erst ansieht — die
+  // Zahl im Kommentar oben (~85 000 px über 80 Blätter) ist genau diese Masse.
+  check("echte violette Malerei erfüllt die NACKTE Saumregel", importerWouldDelete(140, 60, 190), true);
+
+  // 3 · DIE UNTERSCHEIDUNG, auf die es ankommt: die beiden Regeln beantworten
+  //     NICHT dieselbe Frage. Ein Prüfsatz, auf dem sie immer übereinstimmen,
+  //     würde eine vertauschte Regel nie bemerken.
+  const divergent = RULE_FIXTURE.filter(({ rgb }) =>
+    isKeyPixel(...rgb) !== importerWouldDelete(...rgb));
+  if (divergent.length === 0) {
+    bad++;
+    console.error("  ✗ Prüfsatz UNTAUGLICH: Schlüssel-Regel und Saum-Regel sagen überall dasselbe "
+      + "— er könnte die eine nicht von der anderen unterscheiden");
+  } else {
+    console.log(`  ✓ Prüfsatz unterscheidet die beiden Regeln (${divergent.length} von ${RULE_FIXTURE.length} Tönen)`);
+  }
+
+  // 4 · Abstand und Unreinheit an einem gebauten Bild, nicht an einer Behauptung.
+  const mk = (rgba) => {
+    const p = new PNG({ width: rgba.length, height: 1 });
+    rgba.forEach(([r, g, b, a], n) => {
+      p.data[n * 4] = r; p.data[n * 4 + 1] = g; p.data[n * 4 + 2] = b; p.data[n * 4 + 3] = a ?? 255;
+    });
+    return p;
+  };
+  check("keyDistance findet den reinen Schlüssel (euklidisch 0)",
+    keyDistance(mk([[255, 0, 255], [10, 10, 10]])).euclid, 0);
+  check("keyDistance findet den reinen Schlüssel (Manhattan 0)",
+    keyDistance(mk([[255, 0, 255], [10, 10, 10]])).manhattan, 0);
+  check("keyDistance übersieht einen DURCHSICHTIGEN Schlüsselpunkt",
+    keyDistance(mk([[255, 0, 255, 0], [255, 255, 255]])).euclid, Math.hypot(0, 255, 0));
+  check("Manhattan sieht einen Rest, der in EINEM Kanal sitzt",
+    keyDistance(mk([[255, 40, 255]])).manhattan, 40);
+  check("impureKey zählt den angeschmutzten Schlüssel, nicht den reinen",
+    impureKey(mk([[255, 0, 255], [232, 22, 232], [128, 128, 128]])), 1);
+
+  // 5 · Der Größen-Deckel ist die ganze Sicherheits-Behauptung von keySpecks:
+  //     ein Fleck aus vier Punkten ist ein Rest, eine violette FLÄCHE ist Malerei.
+  //     Beide Antworten müssen an einem gebauten Bild fallen, nicht im Kommentar.
+  const violet = (w, h) => {
+    const p = new PNG({ width: w, height: h });
+    for (let i = 0; i < p.data.length; i += 4) {
+      p.data[i] = 140; p.data[i + 1] = 60; p.data[i + 2] = 190; p.data[i + 3] = 255;
+    }
+    return { w, h, px: p.data };
+  };
+  // 2×2 = vier zusammenhängende Punkte: genau SPECK_MAX_PX, also noch ein Rest…
+  check(`ein Fleck von ${SPECK_MAX_PX} Punkten zählt als Rest`, keySpecks(violet(2, 2)).length, 4);
+  // …6×6 = 36: eine Fläche, und die fasst das Werkzeug nicht an.
+  check("eine violette FLÄCHE (36 Punkte) fasst keySpecks nicht an", keySpecks(violet(6, 6)).length, 0);
+
+  if (bad > 0) { console.error("key-fringe --selftest: FEHLGESCHLAGEN"); process.exit(1); }
+  console.log("key-fringe --selftest: OK — Schlüssel- und Saumregel treffen ihre Schwellen auf den Punkt, "
+    + "der Prüfsatz unterscheidet sie, beide Abstandsmaße und die Unreinheit sind an gebauten Bildern belegt.");
+  process.exit(0);
+}

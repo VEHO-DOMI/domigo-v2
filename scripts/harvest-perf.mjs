@@ -70,8 +70,28 @@ const chrome = spawn(CHROME, [
 // freien«, und die Adresse wird aus `DevToolsActivePort` im EIGENEN Profilordner
 // GELESEN. Wer diese Datei geschrieben hat, ist der Browser, den dieser Lauf
 // gestartet hat — Freiheit und Identität in einem Griff.
+// R5-W5 · W4 · D-308, NACHGEMESSEN STATT ÜBERNOMMEN. Gemeldet war: „Chrome 151
+// schreibt `DevToolsActivePort` nicht mehr, deshalb wartet dieses Skript 20 s
+// ins Leere — Reparatur: Endpunkt über HTTP holen, wie `shoot-world` es tut."
+// Nachgesehen am 2026-08-18 mit **Google Chrome 151.0.7922.138** auf dieser
+// Maschine: die Datei WIRD geschrieben, im erwarteten Zweizeilen-Format
+// (`54537` + `/devtools/browser/…`), rund eine Sekunde nach dem Start. Die
+// Prämisse trifft hier also nicht zu.
+//
+// Und der vorgeschlagene Umbau wäre ein Rückschritt: dass die Adresse aus dem
+// EIGENEN Profilordner kommt, ist keine Umständlichkeit, sondern die
+// Identitäts-Garantie, für die D-207 überhaupt gebaut wurde — ein HTTP-Aufruf
+// auf einen festen Port beantwortet nur „antwortet dort jemand?", und genau
+// diese Frage hat schon einmal durch einen FREMDEN Browser fotografiert.
+//
+// Was bleibt, ist der wahre Kern der Meldung: 20 Sekunden warten und dann eine
+// Vermutung ausgeben ist schlechtes Verhalten. Also wird die Wartezeit jetzt
+// abgekürzt, wo sie abkürzbar ist — bei einem FEST gewählten Port kann über
+// HTTP nachgefragt werden, ob dort ein Browser sitzt — und die Meldung sagt,
+// was sie geprüft hat, statt zu raten.
 const endpoint = async () => {
   const portFile = path.join(profile, "DevToolsActivePort");
+  let fremder = null;
   for (let i = 0; i < 80; i++) {
     if (existsSync(portFile)) {
       const [portLine, wsPath] = readFileSync(portFile, "utf8").split("\n");
@@ -80,10 +100,26 @@ const endpoint = async () => {
         return `ws://127.0.0.1:${bound}${wsPath.trim()}`;
       }
     }
+    // …und nach zwei Sekunden einmal nachsehen, WARUM nichts kommt: sitzt auf
+    // dem fest gewählten Port schon jemand, ist die Wartezeit sinnlos.
+    if (i === 8 && CDP > 0 && fremder === null) {
+      try {
+        const j = await (await fetch(`http://127.0.0.1:${CDP}/json/version`)).json();
+        fremder = j.Browser ?? "ein anderer Browser";
+      } catch { fremder = false; }
+    }
     await sleep(250);
   }
-  throw new Error("Chrome hat in 20 s keinen DevToolsActivePort geschrieben "
-    + `(Profil ${profile}) — bei fest gewähltem --cdp-port ${CDP} ist das meist ein belegter Port`);
+  throw new Error(
+    `Chrome hat in 20 s keinen DevToolsActivePort geschrieben (Profil ${profile}).`
+    + (CDP === 0
+      ? " Der Port war frei wählbar (--cdp-port 0), also liegt es NICHT an einer Kollision"
+        + " — geprüft: Chrome 151 schreibt die Datei normalerweise nach ~1 s (D-308)."
+      : fremder
+        ? ` Auf dem fest gewählten Port ${CDP} antwortet bereits »${fremder}« — das ist ein FREMDER`
+          + " Browser, nicht deiner. Lass den Port weg (--cdp-port 0), dann sucht Chrome sich einen freien (D-207)."
+        : ` Auf dem fest gewählten Port ${CDP} antwortet niemand; der Start selbst ist fehlgeschlagen.`),
+  );
 };
 const client = (ws) => {
   let id = 0;

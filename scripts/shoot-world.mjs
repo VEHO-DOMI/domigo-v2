@@ -58,18 +58,97 @@ const flag = (name, fallback) => {
   return i === -1 ? fallback : argv[i + 1];
 };
 const has = (name) => argv.includes(name);
+
+// ── R5-W5 · W4 · D-259 · `--fight`: DIE TAKTE DES KAMPFS ALS BILDREIHE ──────
+//
+// Zwei Gesetze, die dieser Modus braucht und die OHNE Browser prüfbar sind —
+// deshalb stehen sie hier oben, vor allem, was Chrome anfasst, und deshalb kann
+// `--selftest` sie in CI fahren.
+//
+// GESETZ 1 · DIE ABTASTRATE. Der Kampf hat zwei Takte: der Wisch dauert
+// WIPE_TICKS, der Knoten-Schlag KNOT_BEAT_TICKS. Wer seltener abtastet als
+// halb so oft (Nyquist), fotografiert eine Bewegung, die es nicht gibt — die
+// Alias-Falle, die D-171 gemeldet hat. Die Zahlen sind hier KOPIERT, und weil
+// eine Kopie driftet, liest der Selbsttest sie aus `entities.ts` nach.
+const FIGHT_BEATS = { WIPE_TICKS: 36, KNOT_BEAT_TICKS: 48 };
+export const maxEveryForFight = (beats = FIGHT_BEATS) =>
+  Math.floor(Math.min(...Object.values(beats)) / 3); // ein Drittel, nicht die Hälfte: Nyquist ist die
+                                                     // Grenze, an der ein Signal gerade noch existiert,
+                                                     // nicht die, an der man es ansehen kann.
+
+// GESETZ 2 · DER BEIPACKZETTEL. `solveTask()` ist nicht neutral: bei `task` und
+// `finale` ruft es `resolveCorrect()`. Das Werkzeug BEANTWORTET die Aufgabe also
+// richtig und spielt den Kampf ein Stück weit selbst. Eine Bildreihe ohne diesen
+// Hinweis liest sich wie Spiel — und wäre eine Lüge über ihre eigene Herkunft.
+// Also: sobald der Lauf EINE Karte gelöst hat, trägt JEDES Bild der Reihe den
+// Vermerk, nicht nur das eine, an dem es passierte.
+export const BEIPACKZETTEL = "Werkzeug hat die Karte gelöst (solveTask ⇒ resolveCorrect) — "
+  + "diese Reihe zeigt den Kampf, NICHT das Spiel eines Kindes";
+export const fightSidecar = (geloest) => (geloest.length === 0
+  ? { fight: true, karten: [] }
+  : { fight: true, karten: geloest, beipackzettel: BEIPACKZETTEL });
+
 const outDir = argv.find((a) => !a.startsWith("--") && argv[argv.indexOf(a) - 1]?.startsWith("--") !== true);
+
+if (has("--selftest")) {
+  // Was hier läuft, braucht keinen Browser: die Abtast-Regel und der
+  // Beipackzettel sind reine Arithmetik über zwei Konstanten und eine Liste.
+  const fs = await import("node:fs");
+  const url = await import("node:url");
+  const hier = path.dirname(url.fileURLToPath(import.meta.url));
+  let bad = 0;
+  const ok = (name, got, want) => {
+    if (got === want) console.log(`  ✓ ${name}`);
+    else { bad++; console.error(`  ✗ ${name} — erwartet ${want}, bekommen ${got}`); }
+  };
+
+  // 1 · die kopierten Takt-Zahlen müssen die aus dem Spiel sein. Eine Kopie,
+  //     die niemand nachliest, driftet — genau die Klasse, die W4 heute in
+  //     key-fringe.mjs aufgeräumt hat.
+  const ent = fs.readFileSync(path.join(hier, "../packages/game-paint/src/entities.ts"), "utf8");
+  for (const [name, wert] of Object.entries(FIGHT_BEATS)) {
+    const m = new RegExp(`export const ${name} = (\\d+)`).exec(ent);
+    if (m === null) { bad++; console.error(`  ✗ ${name} steht nicht mehr in entities.ts — Takt-Kopie ungültig`); continue; }
+    ok(`${name} stimmt mit entities.ts überein`, Number(m[1]), wert);
+  }
+
+  // 2 · die Abtastrate liegt unter beiden Takten (D-171, Alias-Falle)
+  const maxEvery = maxEveryForFight();
+  ok("die Höchst-Abtastrate liegt unter dem Wisch-Takt", maxEvery < FIGHT_BEATS.WIPE_TICKS / 2, true);
+  ok("…und unter dem Knoten-Schlag", maxEvery < FIGHT_BEATS.KNOT_BEAT_TICKS / 2, true);
+  ok("eine zu grobe Rate wird abgewiesen", maxEvery >= 24, false);
+
+  // 3 · der Beipackzettel erscheint GENAU DANN, wenn eine Karte gelöst wurde —
+  //     beide Richtungen, sonst prüft der Fall nur eine.
+  ok("ohne gelöste Karte kein Beipackzettel", fightSidecar([]).beipackzettel, undefined);
+  ok("mit gelöster Karte steht er drauf", fightSidecar(["wer"]).beipackzettel, BEIPACKZETTEL);
+  ok("…und er nennt den Grund beim Namen", fightSidecar(["wer"]).beipackzettel.includes("resolveCorrect"), true);
+  ok("…und die Karten stehen mit dabei", fightSidecar(["wer", "wie"]).karten.join(","), "wer,wie");
+
+  if (bad > 0) { console.error("shoot-world --selftest: FEHLGESCHLAGEN"); process.exit(1); }
+  console.log("shoot-world --selftest: OK — die Takt-Kopien stimmen mit entities.ts überein, "
+    + "die Abtastrate liegt unter beiden Kampf-Takten, und der Beipackzettel erscheint genau dann, "
+    + "wenn das Werkzeug mitgespielt hat.");
+  process.exit(0);
+}
+
 if (!outDir) {
   console.error("usage: node scripts/shoot-world.mjs <outDir> --phase p1 --port 3021 [...]");
+  console.error("       node scripts/shoot-world.mjs --selftest");
   process.exit(1);
 }
 const phase = flag("--phase", "p1");
 const port = Number(flag("--port", 3021));
 const sinkPort = Number(flag("--sink-port", 3921));
 const cdpPort = Number(flag("--cdp-port", 9341));
-const shots = Number(flag("--shots", 8));
-const every = Number(flag("--every", 6));
-const settle = Number(flag("--settle", 240));
+const fight = has("--fight");
+const shots = Number(flag("--shots", fight ? 24 : 8));
+// D-171: im Kampf wird die Rate ERZWUNGEN, nicht dem Aufrufer überlassen.
+const everyWunsch = Number(flag("--every", fight ? 8 : 6));
+const every = fight ? Math.min(everyWunsch, maxEveryForFight()) : everyWunsch;
+// …und p4 läuft mit 240 Setz-Schritten über sein Ende hinaus (gemessen 17.08.:
+// bei 240 steht der Tick hinterher, bei 20 und 60 läuft die Welt).
+const settle = Number(flag("--settle", fight ? 20 : 240));
 const warp = flag("--warp", null);
 const press = flag("--press", null);
 const stem = flag("--name", "frame");
@@ -230,13 +309,31 @@ try {
   // antwortet, darum meldet der Wächter oben »Spiel da«), lädt aber noch die Blätter —
   // eine Phase trägt bis 26 MB. Der Takt steht dann, ohne dass irgendetwas kaputt ist.
   // Gemessen in dieser Sitzung: mit 24 Runden schlug p1 zweimal fehl, mit 120 lief es.
+  // ── R5-W5 · W4 · WELCHE QUELLE SAGT DIE WAHRHEIT ÜBER EINE OFFENE KARTE ──
+  // Bisher stand hier an drei Stellen `state().overlay === true`. Das ist
+  // `sim.overlayOpen` — die Sicht der SPIELSCHLEIFE darauf, ob sie angehalten
+  // ist. Ob eine Karte auf dem SCHIRM liegt, ist eine andere Frage, und
+  // PaintGame beantwortet sie mit `beat().overlay` (dem Namen der Karte oder
+  // null). Die beiden laufen absichtlich auseinander: an drei Stellen gibt
+  // PaintGame die Welt frei, ohne die Karte zu schließen (Kartenkette
+  // find → Regel, der Arena-Takt „wie", der Ausgang) — dort läuft die Schleife,
+  // und eine Karte liegt trotzdem oben. C3 hat das gemeldet, auf main war es
+  // nicht behoben, und A6bs „der Tick bewegt sich nicht" war dieses Werkzeug.
+  //
+  // Also fragt dieser Lauf ab jetzt das, was er wissen will: liegt eine Karte
+  // auf dem Schirm? `beat().overlay !== null`. Der Kartenname kommt gratis mit,
+  // weshalb die Fehlermeldung unten die Karte beim Namen nennen kann statt zu
+  // behaupten, es liege keine.
+  const karteOffen = async () => evalIn(
+    `(() => { const b = window.__domigoPaint.beat?.(); return b ? b.overlay !== null : false; })()`,
+  );
   let alive = false;
   let runden = 0;
   let kartenRunden = 0;
   let letzteKarte = null;
   for (let i = 0; i < 120; i++) {
     runden = i + 1;
-    if (await evalIn(`window.__domigoPaint.state().overlay === true`)) {
+    if (await karteOffen()) {
       kartenRunden += 1;
       letzteKarte = await karte();
       await evalIn(`window.__domigoPaint.solveTask()`);
@@ -247,7 +344,7 @@ try {
     await sleep(180);
   }
   if (!alive) {
-    const nochOffen = await evalIn(`window.__domigoPaint.state().overlay === true`);
+    const nochOffen = await karteOffen();
     await fail(nochOffen
       ? `die Welt steht still, weil eine KARTE sie festhält: »${letzteKarte ?? await karte()}« — `
         + `${kartenRunden} von ${runden} Runden hingen daran, und solveTask() bekam sie nicht zu. `
@@ -271,12 +368,26 @@ try {
   // …und noch einmal: das Beziehen der Stellung schlägt gern eine Karte auf
   // (Käfig-Hinweis!), und dann steht die Welt wieder.
   for (let i = 0; i < 8; i++) {
-    if (!(await evalIn(`window.__domigoPaint.state().overlay === true`))) break;
+    if (!(await karteOffen())) break;
     await evalIn(`window.__domigoPaint.solveTask()`);
     await sleep(180);
   }
   if (!(await runs())) {
-    await fail("nach dem Stellungsbeziehen läuft die Welt nicht mehr (Karte offen?) — Reihe abgebrochen");
+    // W4: „(Karte offen?)" war eine Vermutung in einer Fehlermeldung — dieselbe
+    // Klasse, die W3 eine Zeile weiter oben ausgeräumt hat. Jetzt wird gefragt,
+    // und zwar vollständig: eine Karte ist nur EINER von zwei Gründen, aus denen
+    // die Welt steht. Der andere ist der HALT (`beat().hold`), mit dem die Arena
+    // den Kampf-Takt festhält — genau die Stelle, an der D-198/D-259 sitzt. Eine
+    // Meldung, die nur nach der Karte fragt, schickt den Leser in die Irre.
+    const zettel = await evalIn(`(() => JSON.stringify(window.__domigoPaint.beat?.() ?? null))()`);
+    const wer = await karte();
+    await fail(await karteOffen()
+      ? `nach dem Stellungsbeziehen hält die Karte »${wer}« die Welt fest, und solveTask() `
+        + `bekam sie in acht Runden nicht zu — Reihe abgebrochen (D-198/D-259: der Kampf braucht --fight). `
+        + `Takt: ${zettel}`
+      : "nach dem Stellungsbeziehen läuft die Welt nicht mehr, und es liegt KEINE Karte oben "
+        + `— der Tick steht aus einem anderen Grund. Takt: ${zettel} `
+        + "(steht dort `hold: true`, hält die Arena den Kampf fest — D-198/D-259, nicht dein Code)");
   }
 
   // ── 7 · der Aufnahmeweg ──────────────────────────────────────────────────
@@ -303,12 +414,36 @@ try {
   console.log(`  Handschlag bestanden (Weg »snapshot«) — die Kamera lebt.`);
 
   // ── 9 · die Reihe ────────────────────────────────────────────────────────
+  // Im Kampf-Modus (D-259) kommen zwei Dinge dazu, und beide sind Ehrlichkeit,
+  // nicht Bequemlichkeit: zwischen den Aufnahmen wird eine aufgehende Karte
+  // weggeräumt (sonst friert sie die Welt ein und die halbe Reihe ist N-mal
+  // dasselbe Bild), und JEDES Bild trägt den Vermerk, dass das Werkzeug dabei
+  // mitgespielt hat.
+  const geloest = [];
   for (let i = 1; i <= shots; i++) {
+    if (fight) {
+      for (let k = 0; k < 6 && (await karteOffen()); k++) {
+        geloest.push(await karte());
+        await evalIn(`window.__domigoPaint.solveTask()`);
+        await sleep(140);
+      }
+    }
     const tick = await evalIn(`window.__domigoPaint.state().tick`);
-    await shoot(`${stem}_${String(i).padStart(3, "0")}`, { serie: stem, nr: i, tickBefore: tick });
+    await shoot(`${stem}_${String(i).padStart(3, "0")}`, {
+      serie: stem, nr: i, tickBefore: tick,
+      ...(fight ? fightSidecar([...new Set(geloest)]) : {}),
+    });
     if (i < shots) await evalIn(`window.__frameSink.drive(${every})`);
   }
   console.log(`  ${shots} Aufnahmen · alle ${every} Ticks · ${path.resolve(outDir)}`);
+  if (fight) {
+    const karten = [...new Set(geloest)];
+    console.log(`  Kampf-Modus: Abtastrate ${every} Ticks (Wisch ${FIGHT_BEATS.WIPE_TICKS} · `
+      + `Knoten-Schlag ${FIGHT_BEATS.KNOT_BEAT_TICKS} — D-171)`);
+    console.log(karten.length === 0
+      ? "  Keine Karte ging auf — die Reihe zeigt den Kampf ohne Zutun des Werkzeugs."
+      : `  ⚠ BEIPACKZETTEL: ${BEIPACKZETTEL}. Gelöste Karten: ${karten.join(", ")}`);
+  }
   await bail(0);
 } catch (err) {
   console.error(`\n✗ ${err.message}`);

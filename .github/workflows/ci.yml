@@ -54,6 +54,7 @@ jobs:
       - run: pnpm content validate
       - run: pnpm content validate-story
       - run: node --experimental-strip-types scripts/check-story-grounding.mjs # W3/D-123: imports BANNED_DE from content-schema (.ts) — the flag is what lets it
+      - run: node scripts/check-design-sheets.mjs --selftest # W4/D-278: das Register-Gesetz trennt den Schrei vom Schreiben — Teilkette gegen Wortgrenze
       - run: node scripts/check-design-sheets.mjs
       - run: node --experimental-strip-types scripts/check-paint-art.mjs # PB-T2: no silent placeholder art
       - run: node --experimental-strip-types scripts/check-game-tasks.mjs --selftest # G2: the card gate's own red light must be reachable — one prepared traitor card per class
@@ -72,18 +73,35 @@ jobs:
       - run: node scripts/check-colour-truth.mjs # C2/R41: each restore card's colour word is the family its own PNG carries
       - run: node scripts/check-colour-copy.mjs --selftest # C4: the colour-copy gate's own red light must be reachable
       - run: node scripts/check-colour-copy.mjs # C4: the German a restore card writes names the colour the card keys (the eraser's hint said „Blau" under a pink answer)
-      - run: node scripts/measure-presence.mjs --selftest # J1-E: the contrast instrument proves itself, or its numbers mean nothing
-      - run: node scripts/frame-sink.mjs --selftest # W1/P-66: the camera proves it is alive, or a still frame ships as evidence
-      - run: node scripts/measure-motion.mjs --selftest # W1: drawn-vs-seen motion — a shear must not read as zero
-      - run: node scripts/measure-veil.mjs --selftest # D3: how dark the world behind the card is — the split must survive a big bright card
+      # ── W4/D-257 · die vier Zeilen hier und shoot-card-bench unten sind
+      # WERKZEUG, KEIN TOR: der Selbsttest sichert das Messgerät, der echte Lauf
+      # braucht Chrome und einen Dev-Server und gehört deshalb in die Session,
+      # neben die Bilder, die er erzeugt. Jede Zeile ist in
+      # scripts/check-ci-gates.mjs#SELFTEST_ONLY mit Grund deklariert; fällt die
+      # Deklaration weg oder wird ein echter Lauf verdrahtet, geht das Tor rot.
+      - run: node scripts/measure-presence.mjs --selftest # J1-E: the contrast instrument proves itself, or its numbers mean nothing — Werkzeug, kein Tor (misst am Schirm)
+      - run: node scripts/frame-sink.mjs --selftest # W1/P-66: the camera proves it is alive, or a still frame ships as evidence — Werkzeug, kein Tor (nimmt Bilder aus einem laufenden Browser entgegen)
+      - run: node scripts/measure-motion.mjs --selftest # W1: drawn-vs-seen motion — a shear must not read as zero — Werkzeug, kein Tor (misst eine geschossene Bildreihe)
+      - run: node scripts/measure-veil.mjs --selftest # D3: how dark the world behind the card is — the split must survive a big bright card — Werkzeug, kein Tor (braucht die offene Karte im laufenden Spiel)
       - run: node scripts/check-registers.mjs --selftest # K1: the register gate's own red light must be reachable
       - run: node scripts/check-registers.mjs # K1: D-/PB-numbers unique, code references resolve by SYMBOL not by line
       - run: node scripts/check-png-identity.mjs --selftest # E5: the pixel-identity proof's own red light must be reachable
+      # W4/D-257 + D-98: der ECHTE Lauf. Nur auf einem PR, weil er gegen die
+      # Basis vergleicht — auf einem Push nach main gibt es keine. Neu gemalte
+      # Blätter sind ausdrücklich erlaubt; rot wird genau die Klasse, die D-98
+      # gemessen hat: identische Bildpunkte in einer GEWACHSENEN Datei, also ein
+      # Skript, das E5s verlustfreie Nachverdichtung still zurückgenommen hat.
+      - name: D-98 · geänderte PNGs gegen die Basis — gleiche Bildpunkte dürfen nicht wachsen
+        if: github.event_name == 'pull_request'
+        run: |
+          git fetch --no-tags --depth=1 origin "${{ github.base_ref }}"
+          node scripts/check-png-identity.mjs --ref FETCH_HEAD
       - run: node --experimental-strip-types scripts/check-perf-budget.mjs --selftest # E5: the budget guard's own red light must be reachable
       - run: node --experimental-strip-types scripts/check-perf-budget.mjs # E5: the PERF_WAECHTER numbers, the code and the enforcers must agree
       - run: node scripts/check-fonts.mjs --selftest # E5: the font guard's own red light must be reachable
       - run: node scripts/check-fonts.mjs # E5/D-79: no next/font/google — the build may not depend on gstatic being up
-      - run: node scripts/shoot-card-bench.mjs --selftest # W2/D-102: die Ausschnitt-Rechnung der Kartenbank — ein Motiv unter 40 % der Bildflaeche muss rot werden
+      - run: node scripts/shoot-card-bench.mjs --selftest # W2/D-102: die Ausschnitt-Rechnung der Kartenbank — ein Motiv unter 40 % der Bildflaeche muss rot werden — Werkzeug, kein Tor (startet einen eigenen Chrome)
+      - run: node scripts/shoot-world.mjs --selftest # W4/D-259: die Kampf-Abtastrate liegt unter beiden Kampf-Takten (entities.ts) und der Beipackzettel erscheint, wenn das Werkzeug mitgespielt hat — Werkzeug, kein Tor (der Lauf braucht Chrome + Dev-Server)
       - run: node scripts/perf-visible.mjs --selftest # E6/R115: Werkzeug, kein Tor — hier laeuft kein Chrome; geprueft wird nur, dass die Kontrollschwelle (Kontrollseite unter 58 fps ⇒ Abbruch) ihr rotes Licht erreichen kann
       - run: node scripts/check-secrets.mjs --selftest # S1: vier Koeder muessen rot werden UND sechs Beinahe-Treffer still bleiben
       - run: node scripts/check-secrets.mjs # S1: kein API-Schluessel in einer getrackten Datei — die Historie behaelt, was einmal drin war
