@@ -233,6 +233,243 @@ function stencil(out, incumbent) {
   return { ghosts, holes };
 }
 
+// ── DIE ABNAHME-MESSUNG (C5, R5-W6) ──────────────────────────────────────────
+// WARUM SIE HIER STEHT, und sie ist ein bezahlter Befund, keine Vorsichtsmaßnahme.
+// Zweimal hintereinander (AQ12d/AQ12f am 17.08., AQ12d2/AQ12f2 am 18.08.) hat der
+// Kunst-Lieferant seinen eigenen Lieferschein auf »PASS« gesetzt, während die
+// Abnahme im Repo dieselben Blätter zurückschickte. Der Grund war nie Unehrlichkeit,
+// sondern zwei LINEALE: die bestellte Zahl »lokale Struktur ≥ 8,0« stammt aus C4s
+// Hochpass-Kern (Bestand = 10,01), der Lieferant maß denselben Bestand mit seinem
+// Kern als 13,208 und las seine 9,317 als Erfolg. Absolutwerte sind zwischen zwei
+// Kernen NICHT übersetzbar — die QUOTE gegen den Bestand ist es. Genau die 80 %
+// standen ohnehin in beiden Bestellungen (Buch 8,0/10,01 · Tasche 7,3/9,09).
+//
+// Also misst dieses Skript beide Seiten mit EINEM Kern und entscheidet an der Quote:
+//     node docs/art/import-batch-aq12.mjs --probe <stem> <lieferung.png>
+//     node docs/art/import-batch-aq12.mjs --selftest
+// Was die Probe prüft, ist das, was die letzten drei Runden entschieden hat:
+//   1. Bestandsmaß und Alpha-Silhouette (Geister/Löcher),
+//   2. die QUOTE der lokalen Struktur auf der Umfärb-Fläche — hält die Umfärbung
+//      die Helligkeitsmodulation, oder ist sie eine Füllung mit Randschatten?
+//   3. Reste des Bestands INNERHALB der Umfärb-Fläche: bytegleiche Inseln, die als
+//      hartkantige Flicken stehenbleiben (AQ12f 1 337 px, AQ12F2 812 px),
+//   4. der Schlüsselabstand.
+// Die Probe ersetzt den blinden Blatt-Prüfer NICHT (R91/R133/R152) — sie sorgt
+// dafür, dass Besteller und Abnahme über DIESELBE Zahl reden, bevor ein Mensch
+// hinsieht.
+const STRUCTURE_QUOTE_MIN = 0.80; // beide AQ12-Bestellungen: 80 % des Bestands
+// Ein FLICKEN (zusammenhängendes Feld ab MIN_PATCH) ist immer ein Rückgabegrund —
+// zwei blinde Prüfer haben genau daran AQ12f erkannt. Einzelne Streupunkte am
+// Materialrand entstehen dagegen auch bei ehrlicher Arbeit (Antialiasing trifft
+// zufällig denselben Byte-Wert); für sie gilt ein benannter Anteil statt Null.
+const LEFTOVER_SHARE_MAX = 0.005; // 0,5 % der Umfärb-Fläche
+const KEY_MIN = 180;              // D-231: kein Clamp bei 150
+
+const luma = (r, g, b) => 0.2126 * r + 0.7152 * g + 0.0722 * b;
+
+/** Farbton/Sättigung/Helligkeit. Eigene Kopie, wie `isMagenta` und `keyDistance`
+ *  auch: `scripts/check-colour-truth.mjs` misst beim Import sofort alle neun
+ *  Blätter (Seiteneffekt) — ein Importer darf davon nicht abhängen. */
+function hsv(r, g, b) {
+  const R = r / 255, G = g / 255, B = b / 255;
+  const mx = Math.max(R, G, B), mn = Math.min(R, G, B), d = mx - mn;
+  let h = 0;
+  if (d !== 0) {
+    if (mx === R) h = 60 * (((G - B) / d) % 6);
+    else if (mx === G) h = 60 * ((B - R) / d + 2);
+    else h = 60 * ((R - G) / d + 4);
+  }
+  if (h < 0) h += 360;
+  return [h, mx === 0 ? 0 : d / mx, mx];
+}
+
+/** Mittlerer |Hochpass| der Helligkeit über einer Maske.
+ *  Kern: 3×3-Laplace [[0,-1,0],[-1,4,-1],[0,-1,0]] / 4. Ein Bildpunkt zählt nur,
+ *  wenn seine vier Nachbarn ebenfalls in der Maske liegen — sonst misst man die
+ *  Silhouettenkante statt der Malerei. Der Kern ist frei wählbar; entscheidend
+ *  ist, dass BEIDE Bilder mit demselben gemessen werden. */
+function localStructure(png, mask) {
+  const { width: W, height: H, data } = png;
+  const L = new Float64Array(W * H);
+  for (let p = 0; p < W * H; p++) L[p] = luma(data[p * 4], data[p * 4 + 1], data[p * 4 + 2]);
+  let sum = 0, n = 0;
+  for (let y = 1; y < H - 1; y++) {
+    for (let x = 1; x < W - 1; x++) {
+      const p = y * W + x;
+      if (!mask[p] || !mask[p - 1] || !mask[p + 1] || !mask[p - W] || !mask[p + W]) continue;
+      sum += Math.abs((4 * L[p] - L[p - 1] - L[p + 1] - L[p - W] - L[p + W]) / 4);
+      n++;
+    }
+  }
+  return { struct: n === 0 ? 0 : sum / n, px: n };
+}
+
+const rgbSame = (a, b, i) =>
+  a.data[i] === b.data[i] && a.data[i + 1] === b.data[i + 1] && a.data[i + 2] === b.data[i + 2];
+
+/** Die Umfärb-Fläche: jeder undurchsichtige Bildpunkt, den die Lieferung anders
+ *  malt als der Bestand. Wer umfärbt, verändert genau diese Fläche — also wird
+ *  auf ihr gemessen, in BEIDEN Bildern an denselben Koordinaten. */
+function recolourMask(inc, del) {
+  const N = inc.width * inc.height;
+  const m = new Uint8Array(N);
+  let n = 0;
+  for (let p = 0; p < N; p++) {
+    if (inc.data[p * 4 + 3] < 200) continue;
+    if (rgbSame(inc, del, p * 4)) continue;
+    m[p] = 1; n++;
+  }
+  return { mask: m, n };
+}
+
+/** Reste der ALTEN HAUT innerhalb der Umfärb-Fläche.
+ *
+ *  Die erste Fassung dieser Funktion zählte jeden bytegleichen Bildpunkt neben der
+ *  Umfärbung — und meldete damit die Goldecken, den Seitenblock, die Tuschekontur,
+ *  den petrolfarbenen Besatz und die bunten Bücher als »Rest«: 6 494 px beim Buch,
+ *  15 516 px bei der Tasche. Das ist die Klasse Fehler, gegen die dieses Skript
+ *  gebaut ist, nur mit umgekehrtem Vorzeichen: ein Tor, das jede ehrliche Lieferung
+ *  rot macht, ist so wertlos wie eins, das jede durchlässt. Ein REST ist deshalb
+ *  definiert als ein unveränderter Bildpunkt, dessen Bestandsfarbe in derselben
+ *  Haut liegt, die die Lieferung ringsum umgefärbt HAT — Gold neben Rot ist kein
+ *  Rest, ein Stück Bestandsblau mitten im neuen Rot schon.
+ *
+ *  Das Band der alten Haut wird aus der Umfärb-Fläche selbst gelesen (Median-
+ *  Farbton, 95-%-Streuung; S und V im 2,5–97,5-%-Band), nicht abgetippt. */
+const MIN_PATCH = 12;
+
+/** Die alte Haut als FARBWOLKE, nicht als Kasten.
+ *
+ *  Erster Versuch war ein Kasten (Farbton ± Streuung, S und V im 2,5–97,5-%-Band).
+ *  Er war für das Buch zu eng (die 124 kühlen Streupunkte lagen knapp unter der
+ *  S-Grenze und wurden nicht gesehen) und für die Tasche zu weit (das Kreuzprodukt
+ *  der Extremwerte schluckte Messing und das goldene Buch). Eine Wolke aus den
+ *  Farben, die WIRKLICH umgefärbt wurden, hat beide Fehler nicht: 36 Farbton- ×
+ *  10 Sättigungs- × 10 Helligkeitsfächer, und ein Fach zählt erst ab MIN_BIN
+ *  Bildpunkten — was in keinem Fach liegt, war nie diese Haut. */
+const MIN_BIN = 10;
+const REACH = 8; // px, in denen ein Rest von der neuen Fläche umschlossen sein muss
+const binOf = (h, sat, val) =>
+  (Math.min(35, Math.floor(h / 10)) * 10 + Math.min(9, Math.floor(sat * 10))) * 10
+  + Math.min(9, Math.floor(val * 10));
+function oldSkinCloud(inc, mask) {
+  const N = inc.width * inc.height;
+  const bins = new Int32Array(36 * 10 * 10);
+  let n = 0;
+  for (let p = 0; p < N; p++) {
+    if (!mask[p]) continue;
+    const [h, sat, val] = hsv(inc.data[p * 4], inc.data[p * 4 + 1], inc.data[p * 4 + 2]);
+    bins[binOf(h, sat, val)]++; n++;
+  }
+  let live = 0;
+  for (let i = 0; i < bins.length; i++) if (bins[i] >= MIN_BIN) live++;
+  return { bins, n, live };
+}
+
+function leftovers(inc, del, mask) {
+  const { width: W, height: H } = inc;
+  const N = W * H;
+  const cloud = oldSkinCloud(inc, mask);
+  if (cloud.n === 0) return { total: 0, patches: [], cloud };
+  const stale = new Uint8Array(N);
+  let total = 0;
+  for (let p = 0; p < N; p++) {
+    if (inc.data[p * 4 + 3] < 200 || mask[p]) continue;
+    if (!rgbSame(inc, del, p * 4)) continue;
+    const [h, sat, val] = hsv(inc.data[p * 4], inc.data[p * 4 + 1], inc.data[p * 4 + 2]);
+    if (cloud.bins[binOf(h, sat, val)] < MIN_BIN) continue;
+    // UMSCHLOSSEN, nicht nur benachbart: ein Rest liegt IN der neuen Fläche. Am
+    // Materialrand (Seitenblock, Besatz, Beschlag) findet man Umgefärbtes immer
+    // auf einer Seite — das ist eine Grenze, kein Flicken. Verlangt werden
+    // deshalb drei der vier Himmelsrichtungen innerhalb von REACH.
+    const x = p % W, y = (p / W) | 0;
+    let sides = 0;
+    for (const [dx, dy] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) {
+      for (let k = 1; k <= REACH; k++) {
+        const nx = x + dx * k, ny = y + dy * k;
+        if (nx < 0 || ny < 0 || nx >= W || ny >= H) break;
+        if (mask[ny * W + nx]) { sides++; break; }
+      }
+    }
+    if (sides < 3) continue;
+    stale[p] = 1; total++;
+  }
+  const seen = new Uint8Array(N), patches = [];
+  for (let p0 = 0; p0 < N; p0++) {
+    if (seen[p0] || !stale[p0]) continue;
+    const st = [p0]; seen[p0] = 1; const blob = [];
+    while (st.length > 0) {
+      const q2 = st.pop(); blob.push(q2);
+      const x = q2 % W, y = (q2 / W) | 0;
+      for (let dy = -1; dy <= 1; dy++) for (let dx = -1; dx <= 1; dx++) {
+        const nx = x + dx, ny = y + dy;
+        if (nx < 0 || ny < 0 || nx >= W || ny >= H) continue;
+        const r = ny * W + nx;
+        if (!seen[r] && stale[r]) { seen[r] = 1; st.push(r); }
+      }
+    }
+    if (blob.length < MIN_PATCH) continue;
+    let bx0 = 1e9, by0 = 1e9, bx1 = -1, by1 = -1;
+    for (const q2 of blob) {
+      const x = q2 % W, y = (q2 / W) | 0;
+      if (x < bx0) bx0 = x; if (x > bx1) bx1 = x;
+      if (y < by0) by0 = y; if (y > by1) by1 = y;
+    }
+    patches.push({ n: blob.length, bx0, by0, bx1, by1 });
+  }
+  return { total, patches: patches.sort((a, b) => b.n - a.n), cloud };
+}
+
+/** Die ganze Abnahme für EIN Blatt. Gibt die Zeilen und das Urteil zurück. */
+export function probeSheet(incumbent, delivery) {
+  const lines = [];
+  const fail = [];
+  const sizeOk = incumbent.width === delivery.width && incumbent.height === delivery.height;
+  lines.push(`Maß           Bestand ${incumbent.width}×${incumbent.height}   Lieferung ${delivery.width}×${delivery.height}   ${sizeOk ? "gleich" : "ABWEICHEND"}`);
+  if (!sizeOk) { fail.push("Maß weicht vom Bestand ab"); return { lines, fail }; }
+
+  let ghosts = 0, holes = 0;
+  for (let i = 0; i < incumbent.data.length; i += 4) {
+    const here = delivery.data[i + 3] > 8, there = incumbent.data[i + 3] > 8;
+    if (here && !there) ghosts++;
+    else if (!here && there) holes++;
+  }
+  lines.push(`Silhouette    Geister ${ghosts}   Löcher ${holes}`);
+  if (ghosts + holes > 0) fail.push(`Alpha-Silhouette weicht ab (${ghosts} Geister, ${holes} Löcher)`);
+
+  const dist = keyDistance(delivery);
+  lines.push(`Schlüssel     Abstand ${dist.euclid.toFixed(2)}e / ${dist.manhattan}m   (Ziel ≥ ${KEY_MIN})`);
+  if (dist.euclid < KEY_MIN) fail.push(`Schlüsselabstand ${dist.euclid.toFixed(2)} < ${KEY_MIN}`);
+
+  const { mask, n } = recolourMask(incumbent, delivery);
+  const a = localStructure(incumbent, mask), b = localStructure(delivery, mask);
+  const quote = a.struct === 0 ? 0 : b.struct / a.struct;
+  lines.push(`Umfärb-Fläche ${n} px`);
+  lines.push(`Struktur      Bestand ${a.struct.toFixed(3)}   Lieferung ${b.struct.toFixed(3)}   QUOTE ${(100 * quote).toFixed(1)} %   (Ziel ≥ ${(100 * STRUCTURE_QUOTE_MIN).toFixed(0)} %)`);
+  if (quote < STRUCTURE_QUOTE_MIN) fail.push(`Struktur-Quote ${(100 * quote).toFixed(1)} % < ${(100 * STRUCTURE_QUOTE_MIN).toFixed(0)} % — die Umfärbung hat die Helligkeitsmodulation verloren`);
+
+  const { total, patches, cloud } = leftovers(incumbent, delivery, mask);
+  const share = n === 0 ? 0 : total / n;
+  lines.push(`Alte Haut     ${cloud.live} belegte Farbfächer (ab ${MIN_BIN} px) aus ${cloud.n} umgefärbten Bildpunkten`);
+  lines.push(`Reste         ${total} px (${(100 * share).toFixed(2)} % der Umfärb-Fläche)   Flicken ab ${MIN_PATCH} px: ${patches.length}   (Ziel: keine Flicken, ≤ ${(100 * LEFTOVER_SHARE_MAX).toFixed(1)} % Streupunkte)`);
+  for (const p of patches.slice(0, 5))
+    lines.push(`              · ${p.n} px   x${p.bx0}–${p.bx1} y${p.by0}–${p.by1}`);
+  // KEIN Urteil, mit Grund (C5, ehrlich gemeldet): drei Fassungen dieses Zählers
+  // haben je einen anderen Fehler gemacht — »jeder bytegleiche Nachbar« meldete
+  // Gold, Seitenblock und Besatz (6 494 px am Buch), der Farb-Kasten war für das
+  // Buch zu eng und für die Tasche zu weit, die Farbwolke mit Umschließung kommt
+  // dem Befund nahe, zählt aber am Buch 953 px, für die ich keine Zeile im Bild
+  // benennen kann (von Hand gemessen sind es 124 sichtbare kühle Reste). Eine
+  // Zahl, die ich nicht erklären kann, darf kein rotes Licht auslösen. Also: sie
+  // wird GEDRUCKT, damit der Prüfer weiß, WO er hinsehen muss, und das Urteil
+  // fällt an der Struktur-Quote und am blinden Blatt-Prüfer. Offene Frage an den
+  // Architekten (C5-Report, D-386).
+  if (patches.length > 0)
+    lines.push(`              (kein Urteil — Hinweis für den Blatt-Prüfer: hier zuerst hinsehen)`);
+
+  return { lines, fail };
+}
+
 // ── die Blätter ──────────────────────────────────────────────────────────────
 // `pieces` ist [Zellindex, Stem]. Die Zellordnung ist NICHT aus dem Lieferschein
 // übernommen, sondern gemessen: der Inhaltskasten jeder Zelle wurde gegen die
@@ -258,6 +495,83 @@ const sheetOf = (rel) => {
   const p = path.join(LAB, rel);
   return fs.existsSync(p) ? read(p) : null;
 };
+
+// ── CLI: die Abnahme-Probe und ihr Selbsttest ────────────────────────────────
+if (process.argv.includes("--selftest")) {
+  // Ein Maß, das nichts zurückweist, misst nichts. Der Selbsttest baut deshalb
+  // den Fall, in dem RICHTIG und PLAUSIBEL-FALSCH auseinandergehen: eine flache
+  // Füllung trifft dieselbe Farbe wie eine echte Umfärbung und hat trotzdem kein
+  // Bild mehr. Genau daran ist AQ12d gescheitert, und genau das hat der
+  // Lieferschein »PASS« genannt.
+  const SZ = 60;
+  const make = (fn) => {
+    const png = new PNG({ width: SZ, height: SZ });
+    for (let y = 0; y < SZ; y++) for (let x = 0; x < SZ; x++) {
+      const i = (y * SZ + x) * 4;
+      const [r, g, b] = fn(x, y);
+      png.data[i] = r; png.data[i + 1] = g; png.data[i + 2] = b; png.data[i + 3] = 255;
+    }
+    return png;
+  };
+  // Bestand: blau mit Wolken (Helligkeit moduliert)
+  const mod = (x, y) => 0.5 + 0.35 * Math.sin(x / 3.1) * Math.cos(y / 2.7);
+  const incumbent = make((x, y) => { const m = mod(x, y); return [40 * m, 70 * m, 190 * m]; });
+  // (a) ehrliche Umfärbung: Farbton gedreht, Modulation behalten
+  const good = make((x, y) => { const m = mod(x, y); return [200 * m, 40 * m, 30 * m]; });
+  // (b) flache Füllung in derselben Farbfamilie — die Falle
+  const flat = make(() => [200 * 0.5, 40 * 0.5, 30 * 0.5]);
+  // (c) ehrliche Umfärbung mit einem stehengebliebenen Bestandsflicken
+  const patch = make((x, y) => {
+    const m = mod(x, y);
+    if (x >= 20 && x < 35 && y >= 20 && y < 35) return [40 * m, 70 * m, 190 * m];
+    return [200 * m, 40 * m, 30 * m];
+  });
+
+  const cases = [
+    ["ehrliche Umfärbung besteht", good, (f) => f.length === 0],
+    ["flache Füllung fällt an der STRUKTUR", flat, (f) => f.some((m) => m.includes("Struktur-Quote"))],
+    ["stehengebliebener Flicken wird als Fundort GEMELDET", patch, (f, lines) =>
+      lines.some((l) => /·\s+\d+ px\s+x2\d–3\d y2\d–3\d/.test(l))],
+  ];
+  let bad = 0;
+  for (const [name, sheet, ok] of cases) {
+    const { fail, lines } = probeSheet(incumbent, sheet);
+    const pass = ok(fail, lines);
+    if (!pass) bad++;
+    console.log(`  ${pass ? "✓" : "✗"} ${name}${fail.length > 0 ? `  →  ${fail.join(" · ")}` : ""}`);
+  }
+  if (bad > 0) {
+    console.error(`\nimport-batch-aq12 --selftest: ${bad} Fall/Fälle nicht wie erwartet`);
+    process.exit(1);
+  }
+  console.log("\nimport-batch-aq12 --selftest: OK — die Probe sieht ihr rotes Licht an der flachen Füllung, meldet den Flicken als Fundort und lässt die ehrliche Umfärbung durch");
+  process.exit(0);
+}
+
+if (process.argv.includes("--probe")) {
+  const at = process.argv.indexOf("--probe");
+  const stem = process.argv[at + 1], file = process.argv[at + 2];
+  if (!stem || !file) {
+    console.error("usage: node docs/art/import-batch-aq12.mjs --probe <stem> <lieferung.png>");
+    process.exit(2);
+  }
+  const dest = path.join(OUT, `${stem}.png`);
+  if (!fs.existsSync(dest)) { console.error(`✗ kein Bestand: ${dest}`); process.exit(2); }
+  if (!fs.existsSync(file)) { console.error(`✗ keine Lieferung: ${file}`); process.exit(2); }
+  const { lines, fail } = probeSheet(read(dest), read(file));
+  console.log(`\nABNAHME-PROBE · ${stem}`);
+  console.log(`  Bestand   ${dest}`);
+  console.log(`  Lieferung ${file}\n`);
+  for (const l of lines) console.log(`  ${l}`);
+  console.log("");
+  if (fail.length > 0) {
+    for (const f of fail) console.error(`  ✗ ${f}`);
+    console.error(`\nABNAHME: ZURÜCK — ${fail.length} Bestell-Zahl(en) verfehlt. Der blinde Blatt-Prüfer entscheidet zusätzlich (R91/R133/R152), nie diese Probe allein.`);
+    process.exit(1);
+  }
+  console.log("  ABNAHME: die Zahlen stimmen. Jetzt entscheidet der blinde Blatt-Prüfer in ZWEI Größen (R133/R152) — erst danach wird importiert.");
+  process.exit(0);
+}
 
 // ── der Import ───────────────────────────────────────────────────────────────
 for (const sheet of SHEETS) {
