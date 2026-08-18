@@ -539,7 +539,10 @@ ch01–06 sheets are honored as pointers; where a dossier overrides them, it say
   > Dossier längst die neue baute; dieser Absatz schließt die Lücke.
 - **Freeables & skin:** collectible = **Buchstaben** (canon) **+ die neun Uniform-Objekte der
   Unit 1** (R53, §2.7 amendment). Regel-Seiten ~~3~~ **5** (u01 topics — R51: Kurzformen ·
-  Befehle · Fragen/Begrüßen · Zahlen · Plural). **Bonusbücher: 0** (R53 — sie sind aus ch01
+  Befehle · Fragen/Begrüßen · Zahlen · Plural). **Bonusbücher: 0** — *aber der Bonus-RAUM steht* (K5, 2026-08-18, D-426: `bonus`-Raum p9 „Die
+  Kleckskammer" mit neun Kleidungsstück-Wiederholungen, Bezahlstelle `p2-klecks`, Eintritt acht
+  Buchstaben; die Zahl 0 zählt die BÜCHER, nicht den Raum — eine Kanon-Runde hat aus ihr einmal
+  „kein Bonusraum in ch01" gemacht und vier Stellen des Kapitel-Blattes danach gestrichen) — (R53 — sie sind aus ch01
   heraus; die Uniform-Objekte nehmen ihren Platz ein).
 - **Task battery:** restore ×objects (u01 things + colours) · wheel numbers · choice/oddone
   school things · door-series imperatives (M-E coverage) · reawakening rounds (below) ·

@@ -137,15 +137,30 @@ Eine bloße Schuld-Nummer ist **kein** ✓.
 
 ---
 
+## D · Was der blinde Kanon-Leser dieser Runde zusätzlich gefunden hat
+
+Nicht aus den acht Reports, sondern aus der Prüfung des nachgezogenen Kapitel-Blattes gegen den
+Spielkanon und die **gebaute Welt**. Alle drei sind selbst nachgemessen (Skript über
+`ch01.level.json`), keiner stand in einem Report.
+
+| # | Befund | Wohin |
+|---|---|---|
+| 91 | **Die Bonustür von ch01 steht gebaut** — Raum `p9` mit neun Kleidungsstück-Wiederholungen, Bezahlstelle `p2-klecks` für acht Buchstaben. Am 17.08. war sie an fünf Stellen des Blattes gestrichen worden, weil doc 44 »Bonusbücher: 0« sagt — das zählt die BÜCHER | **D-426** · Blatt **✓ K5** (fünf Stellen, je mit »war:«-Zeile) · das Ökonomie-Modell (Uhr? Preis? Perfekt?) bleibt offen für **B5 / Karten-Bahn** |
+| 92 | **Keiner der vier Posten der Design-Frage 1 ist gebaut** — null Ring-Glyphen über alle fünf Flächen, keine Rutschfläche, keine Sprung-Plattform. **D-274 behauptet das Gegenteil** und wurde in der ersten Fassung von §9 wörtlich übernommen | **D-425** · Blatt **✓ K5** · die D-274-Zeile gehört K4s Abschnitt → **Architekt** |
+| 93 | **Die Käfig-Zahl ist fünf** (4 × `satchel` + 1 × `pencilcase`), dazu eine `classmate`-Entität und sechs `drained`. Doc 44 §2.3 sagt sieben, `ch01.md` §8 sagt »5 satchel cages«, **D-279 sagt vier** — alle drei falsch | **D-427** (mit **D-279**) · **B5**. Die Messung liegt bei, damit niemand zweimal zählt |
+
+---
+
 ## Die Zahlen dieser Liste
 
 * **Acht von acht Reports ganz gelesen** (K4 249 · C4 153 · G4 201 · B4b 304 · F6 228 · E6 345 ·
   W4 379 · S1 375 = **2 234 Zeilen**).
-* **90 Posten** insgesamt: **39** aus den »Filed«-Abschnitten (Teil A), **41** von außerhalb
-  (Teil B), **10** ausdrückliche Nicht-Prüfungen (Teil C).
+* **93 Posten** insgesamt: **39** aus den »Filed«-Abschnitten (Teil A), **41** von außerhalb
+  (Teil B), **10** ausdrückliche Nicht-Prüfungen (Teil C), **3** aus der Kanon-Prüfung dieser
+  Runde (Teil D).
 * **Zwei der acht Reports haben gar keinen »Filed«-Abschnitt** (G4, B4b) — ihre 16 offenen Posten
   stehen ausschließlich in Teil B. Wer nur geerntet hätte, was so heißt, hätte sie alle verloren.
-* **41 Zeilen tragen ein ✓, 49 nicht** — beides ausgezählt, nicht geschätzt. Das ✓ ist dabei
+* **43 Zeilen tragen ein ✓, 50 nicht** — beides ausgezählt, nicht geschätzt. Das ✓ ist dabei
   **kein einheitliches »fertig«**: es steht 15-mal für *erledigt/geschlossen/gebaut/korrigiert*,
   14-mal für *entschieden oder zugewiesen* (die Arbeit steht noch aus, aber sie hat eine Bahn),
   7-mal für *geprüft, nichts zu tun* oder *deklariert*, 3-mal für *dokumentiert* und 2-mal für
