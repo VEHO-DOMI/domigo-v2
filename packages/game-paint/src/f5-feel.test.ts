@@ -308,26 +308,30 @@ describe("R5-F6 · der Anfall der Füllfeder ist ein anderer als der des Bleisti
     expect(abstaende.filter((a) => a === 337).length, "der Regelfall ist der glatte Abstand").toBe(15);
   });
 
-  it("★★ `fitTick` überlebt die Wende — genau das, was `timer` nicht kann", () => {
+  it("★★ `fitTick` überlebt die GANZE Wende — genau das, was `timer` nicht kann", () => {
     // Der Kern von R151 als eigener Satz, damit er nicht nur aus einer Zahl
     // ableitbar ist: an einer Wende wird `timer` auf null gesetzt (das ist seine
     // Aufgabe — er misst den ZUSTAND), `fitTick` nicht (er misst die Zeit seit
     // dem letzten Anfall).
+    //
+    // ★ Und geprüft wird die GANZE Wende, nicht ihr erster Tick. Erste Fassung
+    // sah nur den Eintritt — ein Tamper, der `fitTick` IM Wende-Zweig nullt,
+    // blieb daran grün, weil der Zweig erst im Tick DANACH läuft. Ein Test, der
+    // den Namen trägt, aber die Stelle verfehlt, ist keiner.
     const p = phase("p2");
     const w: EntityWorld = spawnEntities(p.entities, []);
     const pen = w.entities.find((e) => e.id === "p2-pen")!;
-    let sahWende = false;
-    for (let t = 0; t < 600 && !sahWende; t++) {
-      const vorher = pen.state;
+    let wendeTicks = 0;
+    for (let t = 0; t < 600; t++) {
       const fitVorher = pen.fitTick;
       stepEntities(w, p.rows, input({ playerX: 200 * TILE * SUBS, playerY: 0 }));
-      if (pen.state === "turn" && vorher !== "turn") {
-        sahWende = true;
-        expect(pen.timer, "die Wende nullt den Zustands-Timer").toBe(0);
-        expect(pen.fitTick, "…aber nicht die Uhr des Anfalls").toBe(fitVorher + 1);
+      if (pen.state === "turn") {
+        wendeTicks++;
+        expect(pen.timer, "die Wende hält den Zustands-Timer klein").toBeLessThanOrEqual(TURN_TICKS + 1);
+        expect(pen.fitTick, "…und die Uhr des Anfalls läuft durch sie hindurch weiter").toBe(fitVorher + 1);
       }
     }
-    expect(sahWende, "sie wendet in p2 innerhalb von 600 Ticks").toBe(true);
+    expect(wendeTicks, "sie wendet in p2 mehrfach innerhalb von 600 Ticks").toBeGreaterThan(TURN_TICKS);
   });
 
   it("★ und NUR der Anfall nullt sie", () => {
