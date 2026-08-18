@@ -323,6 +323,14 @@ const assertScale = (png) => {
 };
 
 // ── CLI ──────────────────────────────────────────────────────────────────────
+// R5-W6 · L1: alles ab hier laeuft NUR, wenn diese Datei selbst aufgerufen
+// wurde. Ohne diese Schranke beendet ein blosses `import` den fremden Prozess
+// (die Nutzungsmeldung unten ruft `process.exit(1)`) — und genau das braucht
+// `check-composition.mjs`: es holt sich Luminanz, Farbton und Schwelle HIER,
+// damit Messgeraet und Tor nicht zwei Lineale fuehren.
+const invokedDirectly = process.argv[1] !== undefined
+  && path.resolve(process.argv[1]) === url.fileURLToPath(import.meta.url);
+if (invokedDirectly) {
 const args = process.argv.slice(2);
 if (args.includes("--selftest")) { selftest(); process.exit(0); }
 
@@ -597,4 +605,5 @@ if (asJson) {
   const best = Math.max(...rows.map((r) => r.dL));
   console.log(`\n(target: ΔL ≥ +${TARGET_DL} AT THE EDGE — the blind critics' number, given its radius by R28)`);
   console.log(`  best in this set: ${(best >= 0 ? "+" : "") + best.toFixed(1)} → ${best >= TARGET_DL ? "TARGET MET" : `${(TARGET_DL - best).toFixed(1)} short`}`);
+}
 }

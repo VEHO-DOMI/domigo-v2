@@ -66,7 +66,12 @@ import {
   planShafts,
   shaftQuads,
 } from "../packages/game-paint/src/air.ts";
-import { letterGlyphs } from "../packages/game-paint/src/letters.ts";
+import { LETTER_GOLD, backedGround, letterBackingFor, letterGlyphs, letterRimFor } from "../packages/game-paint/src/letters.ts";
+// R5-W6 · L1: das Messgeraet als MODUL, nicht als zweite Meinung. Der Name
+// `hueGap` ist in dieser Datei schon vergeben (Kanten-Kohaerenz, A7-Revier,
+// eine eigene Umsetzung derselben Rechnung) — deshalb der Alias statt einer
+// Zusammenlegung, die eine fremde Region anfassen wuerde. Gefiled, nicht gebaut.
+import { hueGap as hueGapPresence, lum as lum255, hue as hueOf, separates } from "./measure-presence.mjs";
 import { TILE } from "../packages/game-paint/src/paint.ts";
 
 const R = process.cwd();
@@ -437,6 +442,185 @@ for (const { label, ph, spec } of withSpec) {
   const distinct = new Set(glyphs.map((g) => g.char)).size;
   if (cells > 1 && distinct < 2) fail("glyph", `${label}: all ${cells} letters render the SAME character — the pre-C1 "everything is an A" defect`);
   else note(`${label}: ${cells} letters, ${distinct} distinct characters (${glyphs.map((g) => g.char).join("")})`);
+}
+
+// ── 4b · LETTER PRESENCE (R37 · R5-W6 · L1) ─────────────────────────────────
+//
+// WARUM ES DIESES TOR GIBT. Drei Sessions haben unabhaengig dasselbe gemeldet:
+// die goldenen Sammelbuchstaben verschwinden vor der gelben Wand von p1 (G4:
+// „der eigentliche AAA-Befund", 2/5 gegen Raymans 5/5; F6s Blindpanel mit zwei
+// Pruefern, Reihenfolge getauscht, beide hohe Sicherheit). Am Schirm gemessen
+// (18.08., `measure-presence --letters`, sichtbarer Chrome) stand p1 bei ΔL −15
+// und ΔH 3°: gleiche Familie, gleicher Hellwert, 0 von 9 Buchstaben trennten.
+//
+// WAS ES PRUEFT UND WAS NICHT. Es prueft das GESETZ, nicht das Bild: dass der
+// Rand, den ein Buchstabe in diesem Raum traegt, sich von der Wand dieses
+// Raumes abhebt — und dass das Gold nicht die Farbe der Wand ist. Ein Bild kann
+// es nicht pruefen; eine WebGL-Leinwand ohne `preserveDrawingBuffer` liest sich
+// schwarz zurueck (Kopf dieser Datei). Die Zahl am Schirm bleibt Sache von
+// `measure-presence`; dieses Tor haelt fest, was schon in den Quellen falsch
+// waere — und es benutzt dessen Luminanz, dessen Farbton und dessen Schwelle,
+// damit Erzeuger und Tor nicht zwei Lineale fuehren.
+//
+// DIE DRITTE KLAUSEL IST DIE, DIE DEN TAMPER FAENGT. Ohne sie bestuende eine
+// Wand in Buchstaben-Gold das Tor: der Rand ist Tinte und traegt seine Trennung
+// mit. Gold auf Gold ist aber genau der Befund, um den es geht — bei 14 px
+// Anzeige ist die FLAECHE das, was ein Kind zuerst sieht.
+console.log("4b · letter-presence audit (R37, R5-W6 · L1)");
+/** Was ein Kind hinter den Buchstaben sieht: die L1-Wand der Phase, aus ihren
+ *  Quell-PNGs gemessen — in 0..255 und mit Farbton, also in derselben Sprache
+ *  wie die Schirm-Messung. */
+const wallOf = (spec) => {
+  const stems = spec.far?.segments ?? [];
+  let n = 0, l = 0, rSum = 0, gSum = 0, bSum = 0;
+  const hues = [];
+  for (const stem of stems) {
+    const png = readPng(stem);
+    if (!png) return null;
+    for (let y = 0; y < png.height; y += 3) {
+      for (let x = 0; x < png.width; x += 3) {
+        const i = (png.width * y + x) << 2;
+        if (png.data[i + 3] < 128) continue;
+        const r = png.data[i], g = png.data[i + 1], b = png.data[i + 2];
+        l += lum255(r, g, b);
+        rSum += r; gSum += g; bSum += b;
+        const h = hueOf(r, g, b);
+        if (h !== null) hues.push(h);
+        n++;
+      }
+    }
+  }
+  if (n === 0) return null;
+  return {
+    lum: l / n,
+    hue: hues.length === 0 ? null : hues.reduce((a, v) => a + v, 0) / hues.length,
+    rgb: [rSum / n, gSum / n, bSum / n],
+    stems, samples: n,
+  };
+};
+const rgbOf = (c) => [(c >> 16) & 255, (c >> 8) & 255, c & 255];
+const lumOfColour = (c) => lum255(...rgbOf(c));
+const hueOfColour = (c) => hueOf(...rgbOf(c));
+/** Der Abstand eines Farbwerts zu einem gemessenen Grund, als ΔL und ΔH. */
+const gapTo = (colour, ground) => {
+  const h = hueOfColour(colour);
+  return {
+    dL: lumOfColour(colour) - ground.lum,
+    dH: h === null || ground.hue === null ? 0 : hueGapPresence(h, ground.hue),
+  };
+};
+/** Die dritte Klausel: die FLAECHE darf nicht in der Familie ihres Grundes
+ *  liegen. Kein volles Kriterium, sondern eine Untergrenze — das Gold soll Gold
+ *  bleiben duerfen (R41), es soll nur nicht die Wand sein. */
+const FACE_MIN_DL = 12;
+const FACE_MIN_DH = 20;
+const inFamily = (gap) => Math.abs(gap.dL) < FACE_MIN_DL && gap.dH < FACE_MIN_DH;
+const judgeLetters = (spec) => {
+  const ground = wallOf(spec);
+  if (ground === null) return null;
+  const rim = letterRimFor(spec.key);
+  const backing = spec.__noBacking === true
+    ? { colour: letterBackingFor(spec.key).colour, alpha: 0 }
+    : spec.__weakBacking !== undefined
+      ? { colour: letterBackingFor(spec.key).colour, alpha: spec.__weakBacking }
+      : letterBackingFor(spec.key);
+  // …und der Grund, gegen den die FLAECHE gemessen wird, ist der Grund, den ein
+  // Kind wirklich sieht: die Wand, hinter den Buchstaben zurueckgenommen.
+  // Dieselbe Rechnung, die `renderLetterFx` zeichnet — aus `letters.ts`
+  // geholt, nicht hier nachgebaut.
+  const backed = backedGround(ground.rgb, backing);
+  const backedG = { lum: lum255(...backed), hue: hueOf(...backed) };
+  const rimGap = gapTo(rim.colour, ground);
+  const faceGapRaw = gapTo(LETTER_GOLD, ground);
+  const faceGap = gapTo(LETTER_GOLD, backedG);
+  const edgeGap = {
+    dL: lumOfColour(rim.colour) - lumOfColour(LETTER_GOLD),
+    dH: hueOfColour(rim.colour) === null || hueOfColour(LETTER_GOLD) === null
+      ? 0 : hueGapPresence(hueOfColour(rim.colour), hueOfColour(LETTER_GOLD)),
+  };
+  const broke = [];
+  if (rim.width < 0.5) broke.push("der Buchstabe traegt in diesem Raum ueberhaupt keinen Rand");
+  else if (!separates(rimGap.dL, rimGap.dH)) {
+    broke.push(`Rand gegen Wand ΔL ${rimGap.dL.toFixed(1)} · ΔH ${rimGap.dH.toFixed(0)}° — trennt nicht`);
+  }
+  if (!separates(edgeGap.dL, edgeGap.dH)) {
+    broke.push(`Rand gegen Fuellung ΔL ${edgeGap.dL.toFixed(1)} · ΔH ${edgeGap.dH.toFixed(0)}° — der Buchstabe liest sich nicht als Form`);
+  }
+  // ── DIE KLAUSEL, DIE DAS GESETZ VON R37 IST ────────────────────────────────
+  // Liegt das Gold in der Familie der ROHEN Wand, dann ist der Raum der Fall,
+  // den die Kritiker »die Grundfehler« genannt haben — und die Antwort des
+  // Kanons ist nicht »mach das Ding heller«, sondern »nimm den Grund zurueck«.
+  // Also ist genau dann eine Hinterlegung PFLICHT, und sie muss stark genug
+  // sein, das Gold aus der Familie ihres eigenen Hofes zu holen.
+  if (inFamily(faceGapRaw)) {
+    if (backing.alpha <= 0.01) {
+      broke.push(`Fuellung gegen Wand ΔL ${faceGapRaw.dL.toFixed(1)} · ΔH ${faceGapRaw.dH.toFixed(0)}° — Gold in einem goldenen Raum, und der Raum traegt keinen Hof (R37: Saettigung vor abgedunkelter Flaeche)`);
+    } else if (inFamily(faceGap)) {
+      broke.push(`Fuellung gegen den eigenen Hof ΔL ${faceGap.dL.toFixed(1)} · ΔH ${faceGap.dH.toFixed(0)}° — der Hof (${(backing.alpha * 100).toFixed(0)} %) nimmt den Grund nicht weit genug zurueck`);
+    }
+  }
+  return { ground, backedG, rim, backing, rimGap, faceGap, faceGapRaw, edgeGap, broke };
+};
+for (const { label, ph, spec } of withSpec) {
+  const cells = ph.rows.join("").split("*").length - 1;
+  if (cells === 0) { note(`${label}: keine Trail-Buchstaben — nichts zu trennen`); continue; }
+  const v = judgeLetters(spec);
+  if (v === null) { fail("letter-presence", `${label}: die L1-Wand (${(spec.far?.segments ?? []).join(", ") || "keine"}) ist nicht messbar — ohne Grund gibt es keine Trennung`); continue; }
+  const line = `${label}: Schluessel ${spec.key} · Wand ${v.ground.lum.toFixed(1)} (${v.ground.stems.join("+")}) · Hof ${(v.backing.alpha * 100).toFixed(0)} % → Grund ${v.backedG.lum.toFixed(1)} `
+    + `· Rand 0x${v.rim.colour.toString(16)} ${v.rim.width.toFixed(1)} px, ΔL ${v.rimGap.dL >= 0 ? "+" : ""}${v.rimGap.dL.toFixed(1)}/ΔH ${v.rimGap.dH.toFixed(0)}° `
+    + `· Fuellung↔Grund ΔL ${v.faceGap.dL >= 0 ? "+" : ""}${v.faceGap.dL.toFixed(1)}/ΔH ${v.faceGap.dH.toFixed(0)}°`;
+  if (v.broke.length > 0) fail("letter-presence", `${line} — ${v.broke.join(" · ")}`);
+  else note(`${line} — ${cells} Buchstaben trennen sich von ihrem Raum`);
+}
+
+// ── der Selbsttest dieses Tors, und sein Tamper ──────────────────────────────
+// Er laeuft HIER und nicht im grossen --selftest-Block weiter unten: der gehoert
+// der Kanten-Kohaerenz (A7), endet mit `process.exit(0)` und liegt 750 Zeilen
+// entfernt. Dieser Block beendet den Prozess NICHT — er zaehlt nur seine
+// Fehlschlaege, damit A7s Block danach noch laeuft.
+if (process.argv.includes("--selftest")) {
+  const synth = (stem, [r, g, b]) => {
+    const png = new PNG({ width: 16, height: 16 });
+    for (let i = 0; i < png.data.length; i += 4) {
+      png.data[i] = r; png.data[i + 1] = g; png.data[i + 2] = b; png.data[i + 3] = 255;
+    }
+    pngCache.set(stem, png);
+    artFiles.set(stem, `synthetic:${stem}`);
+    return stem;
+  };
+  const room = (key, wallRGB, name) => ({ key, far: { segments: [synth(`lp_${name}`, wallRGB)] } });
+  const cases = [
+    // [Name, Raum, muss es brechen?, worueber]
+    ["eine sonnige Halle mit blassgelber Wand (p1)", room(88, [226, 224, 147], "hell"), false, null],
+    ["ein Tintentraum mit dunkelblauer Wand (p9)", room(14, [26, 32, 60], "dunkel"), false, null],
+    // ── DER TAMPER, und warum er nicht der woertliche ist ────────────────────
+    // Der Auftrag sagt: »Wand auf Buchstabengelb setzen ⇒ rot«. Genau das steht
+    // hier — mit einer Zeile mehr, ohne die der Tamper nichts beweisen wuerde:
+    // der Hof AUS. Denn seit dieser Runde ist eine goldene Wand kein Fehler
+    // mehr, sondern ein behandelter Fall: der Hof nimmt sie zurueck, und ein Tor,
+    // das auf einen REPARIERTEN Raum rot wird, ist kaputt. Der Tamper trifft
+    // deshalb die Stelle, an der richtig und plausibel-falsch auseinandergehen:
+    // dieselbe goldene Wand, einmal mit und einmal ohne die Behandlung.
+    ["die Wand traegt Buchstaben-Gold, und der Raum hat KEINEN Hof",
+      { ...room(88, [247, 201, 63], "gold"), key: 88, __noBacking: true }, true, "keinen Hof"],
+    ["die Wand traegt Buchstaben-Gold, aber der Hof steht", room(88, [247, 201, 63], "gold2"), false, null],
+    ["die Wand traegt Buchstaben-Gold und der Hof ist zu schwach",
+      { ...room(88, [247, 201, 63], "gold3"), __weakBacking: 0.04 }, true, "nicht weit genug"],
+    // …und die Gegenprobe: dieselbe Wand, zwei Stops dunkler, braucht gar keinen
+    // Hof — sonst waere das Tor auf alles rot und der Tamper bewiese nichts.
+    ["dieselbe Wand, zwei Stops dunkler", room(88, [96, 78, 24], "goldtief"), false, null],
+  ];
+  let bad = 0;
+  for (const [name, spec, mustBreak, about] of cases) {
+    const v = judgeLetters(spec);
+    const why = v === null ? "nicht messbar" : v.broke.join(" · ");
+    const ok = v !== null && (mustBreak
+      ? v.broke.length > 0 && (about === null || why.includes(about))
+      : v.broke.length === 0);
+    if (!ok) bad++;
+    console.log(`${ok ? "✓" : "✗"} letter-presence: ${name}: ${v === null ? "nicht messbar" : (v.broke.length === 0 ? "trennt" : why)}`);
+  }
+  if (bad > 0) { failures += bad; console.error("  ✗ [letter-presence] der Selbsttest dieses Tors unterscheidet nicht"); }
 }
 
 // ── 5 · AIR (PK-R6 · H1, round-1 critique findings 2 · 4 · 5) ────────────────

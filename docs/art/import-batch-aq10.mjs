@@ -312,7 +312,7 @@ const SPEC_COLOUR = {
 const DECLARED_DEVIATIONS = {
   cloth_hat_a: {
     got: "yellow",
-    why: "AQ10 liefert den Hut goldgelb statt rot. Das ist die schwerste der vier: die Buchstaben sind Gold 0xf0c040 mit eigenem Halo, und §4 verbot warmes Gelb genau deshalb. Schuld D-291, Nachbestellung AQ10b.",
+    why: "AQ10 liefert den Hut goldgelb statt rot. Das ist die schwerste der vier: die Buchstaben sind Gold 0xf7c93f (letters.ts LETTER_GOLD — die eine Quelle seit R146; hier stand bis 18.08. 0xf0c040, eine dritte Kopie, die nie stimmte) mit eigenem Halo, und §4 verbot warmes Gelb genau deshalb. Schuld D-291, Nachbestellung AQ10b.",
   },
   cloth_skirt_a: {
     got: "grey",

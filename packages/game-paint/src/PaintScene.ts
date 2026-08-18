@@ -22,7 +22,7 @@ import { PatternLedger } from "./tilePatterns.ts";
 import { type LayerPiece, coverFit, planLayers } from "./layers.ts";
 import { AIR_DEPTH, LIFE_PARALLAX, type AirPiece, planBandShade, planHaze, planLife, planMotes, planShafts, planSources, shaftQuads, vignetteBands } from "./air.ts";
 import { NEAR_PLANE_KINDS, CRUST_MARK_DEPTH, MASS_MARK_DEPTH, type MassPiece, type SurfaceMark, claimedPlatformCells, crustGrain, hash01, ledgeGrain, massGrain, planMass, planPlatformShadows, tileAnchorFor, tileScaleFor } from "./mass.ts";
-import { LETTER_AMBER, LETTER_GOLD, LETTER_STYLE, letterGlowGain, letterGlyphs, letterRimFor } from "./letters.ts";
+import { BACKING_REACH, BACKING_STEPS, LETTER_AMBER, LETTER_GOLD, LETTER_STYLE, letterBackingFor, letterGlowGain, letterGlyphs, letterRimFor } from "./letters.ts";
 import { type PhraseSlot, bonusPhrase } from "./cards/ceremony.ts";
 import { PICKUP_ROLES, type PaintLevel, type PhaseSpec } from "./level.ts";
 import { type AirModel, DELTA_CAP_MS, LOGICAL_H, LOGICAL_W, MAX_TICKS_PER_FRAME, RENDER_SCALE, SUBS, TICK_MS, TILE, fromSubs, mixMultiply } from "./paint.ts";
@@ -5305,10 +5305,27 @@ export class PaintScene extends Phaser.Scene {
         this.letterFxG.fillStyle(LETTER_SHADOW_TINT, 0.06 + 0.16 * near);
         this.letterFxG.fillEllipse(img.x, surfaceY - 1, 7 + 6 * (1 - near), 2.4 + 1.4 * (1 - near));
       }
-      // R5-W6 · L1: dieser Schein ist WARMES LICHT. Im dunklen Raum traegt er die
-      // Trennung mit; im hellen hellt er genau den Ring auf, gegen den gemessen
-      // wird — er arbeitet dort also gegen sich selbst. Also faehrt er mit der
-      // Helligkeit des Raumes zurueck und ueberlaesst die Arbeit der Kontur.
+      // ── R5-W6 · L1 · ZUERST DER HOF, DER DEN GRUND ZURUECKNIMMT ────────────
+      // R37 und Raymans eigenes Referenzbild sagen dasselbe: ein Sammelstueck
+      // trennt sich vor einer ABGEDUNKELTEN Flaeche, nicht durch mehr Helligkeit.
+      // Gemessen stand p1s Wand bei Luminanz 199 gegen das Gold bei 201 — die
+      // Wand IST die Farbe des Buchstabens. Der Hof ist die einzige Stelle, an
+      // der sich das beheben laesst, ohne das Gold (R41) oder ein Blatt Kunst
+      // anzufassen. Er sitzt AUSSEN am staerksten, weil dort der Ring liegt,
+      // gegen den ein Kind trennt (R28) — und weil ein im Zentrum dichter Hof
+      // den eigenen Schatten des Buchstabens zudecken wuerde.
+      const backing = letterBackingFor(this.comp?.key ?? 88);
+      if (backing.alpha > 0.01) {
+        for (let i = BACKING_STEPS; i >= 1; i--) {
+          const spread = LETTER_HALO_R * BACKING_REACH * (i / BACKING_STEPS);
+          this.letterFxG.fillStyle(backing.colour, (backing.alpha / BACKING_STEPS) * swell);
+          this.letterFxG.fillCircle(img.x, img.y, spread);
+        }
+      }
+      // …dann das warme Licht. Es ist WARMES LICHT: im dunklen Raum traegt es die
+      // Trennung mit; im hellen hellt es genau den Ring auf, gegen den gemessen
+      // wird — es arbeitet dort also gegen sich selbst. Also faehrt es mit der
+      // Helligkeit des Raumes zurueck und ueberlaesst die Arbeit Rand und Hof.
       const glow = letterGlowGain(this.comp?.key ?? 88);
       for (let i = 0; i < LETTER_HALO_RINGS; i++) {
         const k = 1 - i / LETTER_HALO_RINGS;

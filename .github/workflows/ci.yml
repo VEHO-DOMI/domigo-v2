@@ -62,8 +62,8 @@ jobs:
       - run: node scripts/check-story-art.mjs # the story-art manifest and the prompt library agree, both ways
       - run: node scripts/check-level-design.mjs --selftest # B1: the gate's own red light must be reachable
       - run: node scripts/check-level-design.mjs # R5-P1/B1: stem dedup, vocab coverage, dossier↔level anchors, named thresholds
-      - run: node scripts/check-composition.mjs --selftest # A6: the edge-coherence law's own red light must be reachable
-      - run: node scripts/check-composition.mjs # PB-C1/doc 36: plane coverage, carved mass, value bands, no naked fill, edge coherence
+      - run: node scripts/check-composition.mjs --selftest # A6: the edge-coherence law's own red light must be reachable — und L1/R5-W6: die Buchstaben-Praesenz mit ihrem Tamper (goldene Wand OHNE Hof ⇒ rot)
+      - run: node scripts/check-composition.mjs # PB-C1/doc 36: plane coverage, carved mass, value bands, no naked fill, edge coherence, letter presence (R37)
       - run: node --experimental-strip-types scripts/check-png-seams.mjs --selftest # W3/D-199: the seam gate's own red light must be reachable — and genuinely violet paint must stay green
       - run: node --experimental-strip-types scripts/check-png-seams.mjs # W3/D-199: magenta INSIDE an opaque tile — the class the skin-only fringe gate cannot see
       - run: node --experimental-strip-types scripts/check-paint-copy.mjs # C1: cloak, register and quote laws over the shell copy

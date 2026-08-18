@@ -32,6 +32,11 @@ export const LETTER_INK = 0x243048;
 /** Die warme Kreide, in der das Buch seine Lichter setzt (PaintScene
  *  LETTER_HALO_COLOUR). Ebenfalls Bestand. */
 export const LETTER_CREAM = 0xfff4cf;
+/** Das Kreide-Weiss des Buches (`cue.ts CUE_CORE`) — der Rand im dunklen Raum.
+ *  Die WARME Kreide taugt dafuer nicht: gegen das Gold steht sie bei ΔL 43 und
+ *  ΔH 1°, also unter dem Kriterium — ein Rand, den man vom Buchstaben nicht
+ *  unterscheiden kann, ist kein Rand. Gemessen, nicht geschaetzt. */
+export const LETTER_CHALK = 0xfffdf6;
 
 /** The painted stem's own key, matched by the engine-drawn glyph. */
 export const LETTER_STYLE = {
@@ -101,7 +106,60 @@ export const letterRimFor = (key: number): LetterRim => {
   const t = roomBrightness(key);
   return t >= 0.5
     ? { colour: LETTER_INK, width: RIM_WIDTH_MAX * t, alpha: 1 }
-    : { colour: LETTER_CREAM, width: RIM_WIDTH_MAX * 0.62 * (1 - t), alpha: 0.85 };
+    : { colour: LETTER_CHALK, width: RIM_WIDTH_MAX * 0.62 * (1 - t), alpha: 0.85 };
+};
+
+// ── DIE ZWEITE HAELFTE: DER GRUND WIRD DUNKLER, NICHT DAS DING HELLER ────────
+//
+// R37, woertlich: „die Regel-Seite braucht Saettigung VOR ABGEDUNKELTER FLAECHE,
+// nicht mehr Helligkeit." Der geprüfte Referenzsatz sagt dasselbe in einem Bild
+// (Kriterium a): Raymans Sammelkugeln stehen vor einer BEWUSST ABGEDUNKELTEN
+// Wand — nicht vor einer helleren.
+//
+// Und es ist die einzige Antwort, die p1 und p3 wirklich haben. Aus den Quellen
+// gemessen steht das Gold der Buchstaben (Luminanz 201) gegen die L1-Wand von p1
+// (199) bei ΔL +1,8 und ΔH 5°: die Wand IST die Farbe des Buchstabens. Ein Rand
+// macht daraus eine lesbare Form — aber die FLAECHE, das, was ein Kind bei 14 px
+// zuerst sieht, bleibt Gold auf Gold. Dagegen hilft nur, den Grund direkt hinter
+// dem Buchstaben zurueckzunehmen.
+//
+// Im dunklen Raum entfaellt sie ersatzlos: dort traegt der positive ΔL (+35 bis
+// +47 gemessen) die Trennung, und ein dunkler Hof auf dunkler Wand ist nichts
+// als verlorene Fuellrate.
+export interface LetterBacking {
+  /** 0xRRGGBB — die Tinte des Buches. */
+  colour: number;
+  /** Deckkraft im aeussersten Ring; 0 = keine Hinterlegung. */
+  alpha: number;
+}
+
+/** Die staerkste Hinterlegung, die ein Raum bekommt. Gerechnet, nicht gewaehlt:
+ *  p1s Wand steht bei 199, die Tinte bei 47 — 0,28 Deckkraft schiebt den Grund
+ *  auf 157 und damit das Gold auf ΔL +44 gegen seinen eigenen Hof. */
+export const BACKING_ALPHA_MAX = 0.28;
+
+/** Wie weit der Hof reicht, als Vielfaches von `PaintScene.LETTER_HALO_R` (8,5).
+ *  Der Ring, gegen den `measure-presence` misst, liegt bei 0,8–1,2 Objekthoehen,
+ *  also 11–17 px bei 14 px Anzeige; 2,1 × 8,5 = 17,9 px deckt ihn gerade ab.
+ *  Ein Hof, der den gemessenen Ring nicht erreicht, kann dort nichts bewirken
+ *  (R28: der Radius IST die Kante). */
+export const BACKING_REACH = 2.1;
+/** In wie vielen Schritten der Hof ausblendet. Drei (die Zahl der Licht-Ringe)
+ *  waren am Bild als KREISE zu sehen — ein Hof, den man als Ring erkennt, ist
+ *  ein Fleck auf der Wand statt eines Schattens. Sechs Schritte sind glatt, und
+ *  sechs Fuellkreise je Buchstabe sind auf einem Bild mit neun Buchstaben
+ *  54 Kreise: nichts, was ein Budget bemerkt. */
+export const BACKING_STEPS = 6;
+
+export const letterBackingFor = (key: number): LetterBacking =>
+  ({ colour: LETTER_INK, alpha: BACKING_ALPHA_MAX * roomBrightness(key) });
+
+/** Ein Grund, hinter den die Hinterlegung gelegt wurde — als Farbkanaele, damit
+ *  Renderer und Tor DIESELBE Rechnung fahren. */
+export const backedGround = (groundRGB: readonly [number, number, number], b: LetterBacking): [number, number, number] => {
+  const ch = (v: number, shift: number): number =>
+    Math.round(v * (1 - b.alpha) + ((b.colour >> shift) & 0xff) * b.alpha);
+  return [ch(groundRGB[0], 16), ch(groundRGB[1], 8), ch(groundRGB[2], 0)];
 };
 
 /**

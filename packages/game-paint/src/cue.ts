@@ -56,7 +56,27 @@ export const CUE_CHALK = 0xf6f2e8;
 export const CUE_CORE = 0xfffdf6;
 export const CUE_INK = 0x243048;
 /** The gilded light the collectible letters wear (PaintScene LETTER_HALO_COLOUR
- *  is the same hue): one glow for every affordance in the book. */
+ *  is the same hue): one glow for every affordance in the book.
+ *
+ *  ── R5-W6 · L1 · WARUM ES TROTZ DER MESSUNG GOLD BLEIBT ────────────────────
+ *  Gemessen (18.08., `measure-presence --arrow`, sichtbarer Chrome) steht der
+ *  Pfeil ueber dem Kaefig in p1 bei ΔL +28,6 / ΔH 2° gegen seinen Grund und in
+ *  p3 bei +33,5 / 3°: hell auf hell, warm auf warm. Ein KUEHLER Hof waere die
+ *  billigste Trennung — und er ist trotzdem nicht zu haben: `f5-feel.test.ts`
+ *  haelt R37 fest, dass die Regel-Seite kuehl leuchtet und das Kreide-Gold dem
+ *  Pfeil bleibt; die zwei Handlungsmoeglichkeiten werden ueber warm gegen kuehl
+ *  auseinandergehalten. Ein kuehler Pfeil-Hof macht sie wieder zu Zwillingen.
+ *  EIN WARM-DUNKLER HOF WURDE GEBAUT UND WIEDER ZURUECKGENOMMEN, weil die
+ *  Messung ihn widerlegt hat. Die Idee war gut (warm bleibt warm, R37 haelt,
+ *  und der Ring wird ruhiger statt heller) und im hellen Raum half sie auch:
+ *  p1 +13,3 statt +4,3. Im DUNKLEN Raum war sie ein Verlust — p2 fiel von
+ *  ΔL +67,7/ΔH 25° auf +32,3/ΔH 1°, weil ein dunkler Hof auf einer dunklen
+ *  Wand nur das Ding selbst verdunkelt. Genau der Fehler, den die Buchstaben
+ *  eine Datei weiter VERMEIDEN, indem ihr Hof dem Schluessel des Raumes folgt.
+ *  Das kann die Marke heute nicht: `chalkArrow` kennt den Raum nicht, und ihre
+ *  Signatur gehoert nicht dieser Bahn. Also bleibt der Hof Gold, die KONTUR
+ *  (Band-Tabelle unten) traegt die Trennung allein, und der Vorschlag „Hof je
+ *  Raum" liegt als D-418 bei Fable. */
 export const CUE_HALO = 0xffe3a4;
 
 /** The arrow at unit size, tip at the top — seven points, the classic
@@ -79,10 +99,26 @@ export const CUE_JITTER_PX = 0.62;
  *  the core. `grow` is how far the pass sits outside the true silhouette in px —
  *  which is what makes the edge a ramp instead of a step. */
 const BANDS: readonly { grow: number; colour: number; alpha: number }[] = [
-  { grow: 1.5, colour: CUE_INK, alpha: 0.1 },
-  { grow: 0.75, colour: CUE_INK, alpha: 0.16 },
-  { grow: 0.2, colour: CUE_CHALK, alpha: 0.62 },
-  { grow: -0.85, colour: CUE_CORE, alpha: 0.94 },
+  // ── R5-W6 · L1 · DIE KONTUR, DIE ES NIE GAB ────────────────────────────────
+  // Die zwei Tinten-Durchgaenge standen bei 10 % und 16 % Deckkraft. Das ist
+  // keine Kontur, das ist ein Hauch: gemessen trug die Marke ueber dem Kaefig in
+  // p1 ΔH 2° gegen die Wand — ein weisses Ding auf einem blassgelben Ding, ohne
+  // irgendetwas dazwischen. Jetzt traegt sie, was jedes Zeichen traegt, das ein
+  // Kind auf hellem Grund finden soll: einen echten Rand.
+  //
+  // ZWEI GRENZEN, die die Zahlen unten festhalten, und beide sind Gesetze
+  // anderer Runden, nicht mein Geschmack:
+  //  · Die Rampe bleibt monoton (aussen breit und schwach, innen schmal und
+  //    dicht) — `cue.test.ts` prueft es Band fuer Band. Deshalb steigt auch die
+  //    Kreide ueber die Tinte, statt unter ihr zu bleiben.
+  //  · Der Zuwachs nach aussen ist gedeckelt, weil F6s Reparatur (Kokis
+  //    Entscheidung 17.08.) verlangt, dass KEIN Teil der Marke in den Kopf des
+  //    Kindes reicht. Bei `grow` 3,2 tat sie es wieder — um 0,71 px. 2,0 ist
+  //    der Wert, der den Rand so breit macht, wie die Marke hoch sitzt.
+  { grow: 2.0, colour: CUE_INK, alpha: 0.34 },
+  { grow: 1.15, colour: CUE_INK, alpha: 0.88 },
+  { grow: 0.2, colour: CUE_CHALK, alpha: 0.92 },
+  { grow: -0.85, colour: CUE_CORE, alpha: 0.96 },
 ];
 
 // ── R5-W1 · F1 · DIE LOCKUNG (Kokis Auftrag: „Kinder sollen hingezogen werden")
