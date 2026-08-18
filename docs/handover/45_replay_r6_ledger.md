@@ -344,6 +344,20 @@ dabei — die R5-Session verifiziert am Code, nie blind übernehmen (Specs rotte
   jede Kunst-Bestellung: sie nennt das BESTANDSMASS des Blattes, das sie ersetzt, nie
   1024².** Schuld-Adressen: **D-211** (Messung D3b), **D-212** (Bestandsmaße). Die alte
   Fassung R92 („die Engine skaliert schon") ist damit zurückgezogen.
+- **G5 · Ein Wert, den die Wesen-Schleife lesen soll, gehört in `params` — nicht auf die
+  Entity-Ebene.** *(neu 2026-08-18, K5; Ruling R135, Befund B4b, Schuld-Adresse **D-302**.)*
+  Die zweite Engine-Eigenschaft, an der ein Rahmen-Satz und der Code auseinanderliefen: der
+  Rahmen der Welle 5 wies Merles Roam-Grenzen der Entity-Ebene zu (`EntitySpec`, `PaintEntity`).
+  Dort erreichen sie die Logik nicht. `stepRedeemed` sieht ausschließlich `EntityState`, und das
+  trägt `params` bereits mit; ein Feld auf der Entity-Ebene hätte zusätzlich ein neues
+  `EntityState`-Feld gebraucht (der eine freie Platz der Welle war vergeben) **und** wäre am
+  Loader verschwunden: `PaintEntity` ist ein geschlossenes `z.object`, das unbekannte Schlüssel
+  still wegwirft. Gebaut ist deshalb `params.roamMinC` / `params.roamMaxC` — mit Präzedenz auf
+  derselben Entity (`cage`, `hidden`). **Sanktioniert, nicht geduldet:** künftige Rahmen und
+  Dossier-Prosa nennen `params`, und wer einen Wert an die Entity-Ebene hängen will, prüft
+  vorher, ob die Funktion, die ihn lesen soll, überhaupt dorthin sieht. Das Versprechen »sie
+  fällt nicht« hängt weiter am Gitter: die gemalten Zahlen ersetzen die Konstante, nicht die
+  Boden-Prüfung (Test: gemalt zehn Kacheln, getragen drei — der Boden gewinnt).
 
 ## H · Prozess-Doktrin (re-ratifiziert + amendiert — bindend für R5)
 
@@ -389,6 +403,17 @@ dabei — die R5-Session verifiziert am Code, nie blind übernehmen (Specs rotte
   `COHERENCE_WAIVERS` im Kompositions-Tor, `PLACEHOLDER_UNTIL` in der Komposition). Wird die
   Lieferung gerissen, braucht es einen ausdrücklichen Verlängerungs-Beschluss mit Grund —
   nie eine stille Anhebung.
+  **★ Amendment 2026-08-18 (K5; Ruling R147) — der Beschluss bekommt sein eigenes, FRÜHERES
+  Datum.** Ein Stichtag allein hilft nicht, wenn die Entscheidung erst am Stichtag fällt: am
+  30.09. laufen drei Ausnahmen gleichzeitig ab, und ein `main`, das an einem Mittwoch von
+  selbst rot wird, ist niemandes Arbeit. Deshalb entscheidet **Lane A7 bis zum 25.09.** —
+  entweder ist importiert, was AS5b/AS5c bestehen, oder alle drei Ausnahmen werden **auf den
+  2026-11-30 verlängert**, deklariert und datiert, mit dem Satz »AS5c bestellt am <Datum>,
+  Lieferschein-Prüfung ausstehend« und A7 als Eigentümer. Der Zwischenstand vom 18.08.:
+  AS5bs zweite Fassung ist geliefert, `import-batch-as.mjs --verify` sagt weiter **6/84**, die
+  Krusten sind ungeprüft. Die vierte datierte Ausnahme desselben Tages ist seit dem Post-Zug
+  die Zeilennummern-Liste des Register-Tors (`check-registers.mjs#LINE_REF_ALLOW`, Eigentümer
+  »K4 / Kanon-Bahn«) — sie hat denselben Stichtag und denselben Mechanismus.
 - **H7 · Die Pergament-Regel des Farb-Tors bleibt — und die zweite Unterscheidung baut das
   Tor, nicht die Bahn.** *(neu 2026-08-17, K4; Ruling R114.)* Das Farb-Tor verwirft Pixel
   unter einer Farbkraft-Schwelle als „Pergament" (Grundierung), damit die Papierfarbe nicht
@@ -400,6 +425,55 @@ dabei — die R5-Session verifiziert am Code, nie blind übernehmen (Specs rotte
   der Flächenanteil eines zusammenhängenden Farbfelds — baut die Werkzeug-Bahn (W4), nie die
   Bahn, deren Kunst gerade passieren soll.** Wer sein eigenes Tor weicher macht, damit sein
   Blatt durchkommt, hat kein Tor mehr. Schuld-Adresse: **D-220**.
+- **H8 · Was eine Kanon-Runde einsammelt: jeden offenen Posten, gleich unter welcher
+  Überschrift.** *(neu 2026-08-18, K5; Ruling R131.)* Die »Filed«-Liste einer Welle ist die
+  einzige Stelle, an der ein Befund überlebt, den keine Bahn erledigt hat — danach steht er nur
+  noch in einem Report in der iCloud. Ihr erster Entwurf für die Welle 4b hatte 41 Zeilen und
+  erntete genau die Abschnitte, die »Filed, not acted on« heißen; ein blinder
+  Vollständigkeits-Prüfer fand **41 weitere** offene Posten, fast alle außerhalb dieser
+  Abschnitte — eine ganze Kunst-Bestellung, zwei ausdrücklich »NICHT ausgeführt« gemeldete
+  Aufträge, vier verlorene Kritiker-Verdikte, eine halbierte Messung —, dazu zwölf verzerrte
+  Zeilen und vier falsche Zählungen. **Regel für jede K-Runde:** die Reports werden GANZ
+  gelesen, gesucht wird auch unter »nicht verifiziert«, »als Nächstes«, »Frage an den
+  Architekten«, »Empfehlung« und in der Prosa, und die Liste geht durch einen blinden
+  Vollständigkeits-Prüfer, der die **Reports selbst** bekommt, nie die Zusammenfassung. Und:
+  **eine Adresse ist keine Erledigung** — eine Schuld-Nummer zu vergeben schließt nichts.
+  (Falle **PB-90**.)
+- **H9 · Ein Import-Urteil braucht ZWEI Größen.** *(neu 2026-08-18, K5; Rulings R133 · R152,
+  Befund C4.)* Ein Kunstblatt wird zweimal beurteilt, von verschiedenen frischen Prüfern:
+  **(1)** am 3- bis 6-fach vergrößerten AUSSCHNITT — das ist die Größe, an der Handwerk
+  sichtbar ist und an der eine Runde einen zerhackten Gitterstab übersehen hat, weil sie das
+  ganze Blatt statt eines Ausschnitts ansah; **(2)** in der **echten Anzeigegröße** (die Karte
+  zeichnet ein Blatt 132 Punkte hoch) — das ist die Größe, in der entschieden wird, ob das Kind
+  den Befund überhaupt sieht. Ein Befund, der bei 5× vernichtend ist, kann hier unsichtbar sein;
+  dann wäre »zurück« die falsche Entscheidung. Wer nur eine Größe misst, entscheidet entweder
+  über unsichtbare Fehler oder übersieht sichtbare. **Gilt für jede Codex-Lieferung**, ohne
+  Ausnahme, vor jedem Import (R91/R110 unverändert: der blinde Blatt-Prüfer löst den
+  DRAFT-Marker des Lieferscheins auf).
+- **H10 · Eine Rückgabe ist eine Bestellung — im selben Review, mit Zahlen.** *(neu
+  2026-08-18, K5; Ruling R132; Kokis Codex-Offensive vom 18.08. schreibt es fort.)* Die Welle 5
+  hat zwei Blätter zurückgeschickt, die **jede bestellte Zahl trafen** und dabei das Gemalte
+  verloren (Buchdeckel: lokale Struktur 10,0 → 2,95, −71 %; Stoff: 1 337 unveränderte
+  Creme-Pixel mit achsparallelen Kanten). Das ist »Wahrheit vor Varietät« plus AAA — und es ist
+  richtig, aber es ist eine **Wellen-Entscheidung**: die Welle bringt dann keine neue Farbe.
+  Damit das kein Verlust ist, gilt: **jede Rückgabe bekommt ihre Nachbestellung mit den
+  gemessenen Zahlen im selben Review** (AQ12d2: Struktur ≥ 8,0 · 0 kühle Restpixel · S·V ≥ 0,53;
+  AQ12f2: 0 unveränderte Creme-Pixel im Stoffkörper · Körnung · S·V ≥ 0,53 — die gelieferten
+  0,525 lagen DARUNTER, die Prosa »jede Zahl getroffen« war falsch). Und die Zahl muss das
+  Material messen, nicht die Farbe: eine Rekolorierung, die die Helligkeits-Modulation des
+  Bestands zerstört, erfüllt jede Farbvorgabe und ist trotzdem eine Posterisierung
+  (AQ16: eindeutige Farben −95 %/−98 %, Struktur-Energie −69 %/−82 %).
+- **H11 · Eine benannte Zeile ist eine Hypothese, bis der Kontrollfluss sie bestätigt.**
+  *(neu 2026-08-18, K5; Ruling R145, Befunde G4 · W4 · F6, Familie **P-67**.)* Vier Zeilen-
+  Angaben der Welle-5-Passover trafen den richtigen Bereich und die falsche Konstruktion:
+  eine Aufruf-Zeile lag IN einer Schleife (sie wäre je Eintrag einmal gelaufen), eine
+  Methoden-Einfügung mitten im Doc-Kommentar der nächsten Funktion, ein Kommentar-Auftrag im
+  Tabu-Block einer fremden Bahn — und die benannte Zeile für die Boss-Sonde lag in einem Zweig,
+  **in den der Boss per Konstruktion nie läuft**: wörtlich befolgt wäre der Auftrag als
+  »erledigt« abgehakt worden, ohne dass je ein Kasten gemessen worden wäre. **Regel:** wer eine
+  Zeile zugewiesen bekommt, öffnet sie am Code und prüft, ob der Kontrollfluss dort ankommt;
+  wer eine Zeile zuweist, nennt zusätzlich das Symbol. Zeilen wandern, Symbole nicht —
+  deshalb verlangt das Register-Tor `datei#symbol` und verbietet `datei` + Doppelpunkt + Zahl.
 
 ---
 
@@ -411,12 +485,43 @@ Motten-Schwarm-Zellen (B10) · Allianz-/Versammlungs-Visuals (D7) · Naive-Desig
 Kartenhaut (G2, nach Richtungs-Entscheid) · Boss-Drop-Miniaturen (F4) ·
 „Klappernder-Deckel"-Zustandszellen u. ä. Karten-Fiktion-in-Welt-Zellen (B12).
 
+## Anhang · Offene Kanon-Widersprüche (K5, 2026-08-18 — dokumentiert, nicht entschieden)
+
+- **Die Faust in ch01: das Gebaute und der Kanon sind einig, vier zweite Hände sind es nicht.**
+  *(Ruling R141, Befund S1; entschieden wird in Lane **B5**, nicht hier.)* `ch01.level.json`
+  gibt `"abilities": ["jump","run"]` und enthält kein `powerup`-Entity; `entities.ts` sagt es
+  selbst (»opens a cage in a chapter with **no fist**«); doc 44 §4 ch01 sagt »none granted«.
+  Weiter »ch01-mid« sagen: doc 31s Fähigkeiten-Tabelle (die Zeile `| thrown fist | ch01 mid |`,
+  obwohl doc 31s eigener Amendment-Kopf sie zurückzieht) · `AUDIO_SPINE_CH01.md` in der Spalte
+  »Frei ab« · `docs/audio/prompts.ch01.json` in vier `unlockedIn`-Feldern · die Replay-Docs
+  35/37/38 mit »a cage the fist can open« (historisch, dürfen so bleiben). **Die Frage, die
+  offen ist:** bekommt ch01 den Mittel-Kapitel-Zuwachs zurück (dann braucht das Level ein
+  `powerup`-Entity und der Käfig-Hinweis sein Verb), oder werden die vier Stellen auf ch02
+  nachgezogen? Fußnote mit derselben Liste steht in doc 44 §4 ch01. *(Der Auftrag dieser Runde
+  nannte den Widerspruch andersherum — »doc 44 sagt ch01-mid« —; die Liste oben ist am Code und
+  an den Dateien nachgemessen.)*
+
 ## Anhang · Kokis offene Tore aus dieser Runde
 
 D6 Namens-Runde · ~~D8 Bonusbücher-Ruling~~ (entschieden 2026-08-15, R53) · ~~G1
 Engagement-Modus-Richtung~~ (entschieden 2026-08-15, R52) · (aus #249
 fortbestehend: F22/G10-Klammer · 3 zählbare Räder · Timeout-Kosten · E6/M5/S4-Uhren ·
 Boss-Memory-Uhr · Lehrerin-Kanon + Boss-Swap-Vetos).
+
+**★ Stand der nummerierten Tore am 2026-08-18 (K5, aus dem BOOT-SHEET nachgeführt — hier steht,
+was offen ist; die Frage im Wortlaut steht dort):**
+
+| Tor | Worum es geht | Stand |
+|---|---|---|
+| **T6** | Kartenkante: Tuschekante lassen · Wachskante einschalten · Budget ins Karten-Material (Empf. das Dritte) | **offen** — AQ17 startet erst danach (G3) |
+| **T7** | Reihenfolge der fünf Regel-Seiten | **offen** — Schweigen heißt: die heutige bleibt |
+| **T8** | wo die stillen Anker stehen | **✓ beantwortet und gebaut** (p1 near c43 · p2 far c58 · p3 near c29; doc 44 §4 ch01 (a)) |
+| **T9** | C4-Buch: rot-flach jetzt einbauen oder Bestand blau bis AQ12d2? | **offen**, Empf. Bestand — hinfällig, sobald AQ12d2 besteht |
+| **T10** | p3-Flieger (D-300): 80 px hinter der Presse gegen eine Schranke von 346 | **offen** (R136), Empf. versetzen in Lane B5; das p3-Band wird danach neu aufgenommen |
+| **T11** | ElevenLabs-Lizenz »For Individual Use Only« bei ~110 Kindern | **offen** (R141), Empf. weiter, Plan beim nächsten Abo-Wechsel; die echte Schranke ist die 62-Minuten-Monatsgrenze, nicht das Guthaben |
+| **T12** | Hörbank hören (~20 min) | **offen** — blockiert nichts; ohne Antwort gilt S1s Vorwahl |
+| **T13** | ein Dach-Schalter für allen Ton | **offen** (R141), Empf. ja, gebaut von Lane S2 — die zwei internen Schlüssel bleiben |
+| — | der graue Keil auf `07.29.42` (**D-270**) | **offen** — braucht Kokis Finger, keine weitere Analyse (dass er kein Rampen-Blatt ist, hat E6 bewiesen) |
 
 **Neu aus Welle 4 (2026-08-15) — fünf Tore, Empfehlungen im BOOT-SHEET:** ~~R41 Farb-Palette
 (die Ziel-Palette für die Codex-Bestellung AQ12: Buch rot · Uhu-Stick orange · Füllfeder

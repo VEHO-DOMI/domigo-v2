@@ -183,6 +183,15 @@ falschen Verzeichnis. *Regel:* Exit-Code getrennt holen (`cmd > log 2>&1; echo
 (**Zweiter Vorfall: C3, 2026-08-15** — eine Torschleife meldete Code 0, obwohl alle sieben
 Tore mit »command not found« gescheitert waren; nur die mitgedruckten Einzel-Exitcodes haben
 es verhindert. Siehe **PB-56**.)
+(**Dritter, vierter und fünfter Vorfall an EINEM Tag: G4, 2026-08-17** — `npx vitest` fand die
+Binärdatei nicht und meldete **Exit 0** · eine Pipe nach `tail` verschluckte wieder den echten
+Exit-Code · ein Tamper-Lauf scheiterte an `ERR_MODULE_NOT_FOUND` statt am Tor und sah dabei aus wie
+ein bestandener Lauf. Jedes Mal war »grün«, was nie gelaufen war. **Sechster Vorfall: K5,
+2026-08-18** — in genau der Sitzung, die diesen Eintrag schreibt: `node scripts/check-registers.mjs
+… | tail -3; echo "EXIT=$?"` druckte `EXIT=0`, während das Tor einen echten Verstoß gemeldet hatte.
+Keine eigene Nummer — dieselbe Falle, und dass sie in ihrem eigenen Register-Eintrag zuschlägt, ist
+der Beweis, dass Vorsatz hier nicht reicht: Ausgabe in eine Datei, Exit-Code direkt hinter dem
+Befehl.)
 
 **PB-22 · Frag die laufende Klasse, ob sie deinen Code kennt — glaub nicht der URL.**
 *(H1 Teil 3, 2026-08-14; früher P-65)* Der Live-Lauf sprach zuerst mit einem `next dev`
@@ -212,6 +221,12 @@ zurück (F5: ein Tamper, der grün bleibt, hat eine Regel gefunden, die keinen F
 H2: ein Gesetz, das nie rot war, ist eine Behauptung · A6: eine Ausnahme ohne Bestellung
 dahinter ist der Defekt mit Papieren) — keine davon hat eine eigene Nummer bekommen. Das
 **Gegenstück** hat eine: **PB-74**, das Tor, das am falschen Fall rot wird.
+**★ Vierter Vorfall (C4, 2026-08-17), die Tamper-Form:** beim Zurückschreiben eines Literals blieb
+der Wert-Test grün und **nur** der Quelltext-Test wurde rot — genau die Unterscheidung, für die er
+existiert. Wäre auch der Wert-Test gefallen, hätte der Tamper nichts über die Unterscheidung
+gesagt. Regel-Zusatz aus diesem Fall: *ein Tamper, der ALLE Prüfungen rot macht, ist so wenig
+aussagekräftig wie einer, der keine rot macht.* Keine eigene Nummer; die Mechanik, mit der ein
+Prüfsatz die Unterscheidung verliert, steht als **PB-106**.
 
 **PB-18 · Eine Projektion der Quelle ist nicht die Quelle.** *(H1 Teil 2, 2026-08-14;
 früher P-61)* Der Testraum in `entities.test.ts` hat Boden in Reihe 12, die Tafel fliegt
@@ -223,6 +238,13 @@ handgebautes Modell davon.
 **★ Zum zweiten Mal bestätigt (H2, 2026-08-15):** die Landung auf dem Kreide-Kisten-Podest
 hätte kein Test gemeldet, »weil jeder Test sein eigenes flaches Zimmer benutzt«. Keine
 zweite Nummer — dieselbe Falle, zweiter Vorfall.
+**★ Zum dritten Mal bestätigt (F6, 2026-08-17), und diesmal in der Auslieferung:** die Füllfeder
+hatte einen vollständig implementierten, korrekt getesteten Anfall — und im ausgelieferten p2 über
+**6000 Ticks null** davon. Der Anfall wird aus `e.timer` fällig, den jeder Zustandswechsel nullt;
+ihre längste ununterbrochene Patrouille misst 192 Ticks, ihre Schwelle stand auf 216. Eine Schwelle
+über der längsten erreichbaren Strecke ist kein seltenes Ereignis, sondern gar keines. Die Tests
+prüften die Funktion, nicht das Level. *Zusatz zur Regel:* wo ein Zustand aus einer Uhr fällig
+wird, zählt der Wächter ihn im **ausgelieferten** Level und pinnt die Zahl. Keine zweite Nummer.
 
 **PB-19 · Zwei Handlisten heißt: ein neues Feld muss in BEIDE.** *(H1 Teil 2,
 2026-08-14; früher P-62)* `record-paint-tape.mjs` stempelt aus einer Handliste,
@@ -245,6 +267,12 @@ umgesetzt. In dieselbe Richtung geht der eigene Irrtum derselben Nacht: Sprenkel
 blauen „C" wurden für einen Magenta-Saum gehalten, gemessen waren es **null** Pixel im
 kritischen Bereich. *Regel:* Das Urteil eines Kritikers ist die Bestellung; jede ZAHL
 darin misst man selbst nach, bevor man sie weiterträgt.
+**★ Zweiter Vorfall (C4, 2026-08-17):** zwei blinde Prüfer meldeten »das Gold der Buchecken ist
+mitgefärbt/ausgebleicht« — nachgemessen sind **0 von 13 640** Gold-Pixeln verändert, sie sind
+bytegleich; der Eindruck ist Simultankontrast (dasselbe Gold wirkt neben Rot blasser als neben
+Blau). Ein zweiter Befund derselben Runde (»ein roter Pixel mitten auf dem goldenen Beschlag«)
+existierte, saß aber auf einem weißen Glanzlicht. Beides steht in den Protokollen, damit die
+Nachbestellung keine Arbeit an einem Phantom verlangt. Keine zweite Nummer — dieselbe Falle.
 
 ## Karten, Pools und Inhalt
 
@@ -661,6 +689,11 @@ EINEN Befehlsnamen auf; alle sieben scheiterten mit »command not found«, und *
 endete trotzdem mit Code 0** — das ist **PB-8**. C3 hat die Falle als neu gemeldet; sie ist
 es nicht, deshalb steht sie hier und hat keine eigene Nummer bekommen. Zweimal dieselbe
 Falle in einem Monat heißt: die literale Liste ist keine Stilfrage.)
+(**Dritter Vorfall: S1, 2026-08-17** — `for g in "check-x.mjs --selftest"; do node scripts/$g; done`
+suchte eine Datei namens »check-x.mjs --selftest«; **sieben Tore meldeten rot, die in Wirklichkeit
+grün waren**, darunter fremde, die in CI laufen. Dreimal in einem Monat, und diesmal in der
+gefährlichsten Richtung: eine rote Lampe, deren Ursache im Aufruf liegt, kostet Vertrauen in die
+Tore selbst. Keine eigene Nummer.)
 
 **PB-57 · Ein Kritiker-Urteil über ein Bild ist ein Urteil über die BILDAUSWAHL.**
 *(B4, 2026-08-15.)* Zwei unabhängige Kritiker sagten übereinstimmend »hier gibt es keinen
@@ -742,6 +775,12 @@ Befunde. *Regel:* Jede Aussage über eine Datei kommt aus dem **eigenen Worktree
 `git show origin/main:<pfad>`. (Erweitert **PB-22**, das dieselbe Quelle für die laufende
 Klasse regelt: dort die Frage »kennt der Server meinen Code«, hier »lese ich überhaupt die
 richtige Datei«.)
+(**Zweiter Vorfall: G4, 2026-08-17, an der anderen Kopie** — der **Lese-Spiegel des Architekten**
+`~/Code/domigo-v2-g2` stand auf `d3a7eba` (#301) statt auf `origin/main`; drei Explore-Läufe
+lieferten dadurch Zeilennummern 60–90 Zeilen daneben und eine Tot-Kunst-Decke von 61 statt 53. Wer
+dort liest, liest die vorige Welle. *Zusatz:* das gilt für **jede** Arbeitskopie, die man nicht
+selbst gerade angelegt hat — vor der ersten Aussage `git log --oneline -1` im Verzeichnis, aus dem
+man liest. Keine eigene Nummer.)
 
 **PB-67 · Ein Backup ist nur so aktuell wie sein Zeitpunkt.** *(D3, 2026-08-15.)* Acht
 geänderte Dateien lagen im Scratchpad; beim **zweiten** Durchlauf hat dieselbe, inzwischen
@@ -895,6 +934,11 @@ derselbe Aufbau an einem Fall, der nicht null ist, seine Zahl auch wirklich zeig
 Positivkontrolle vor Verneinung. (Familie **PB-15** — der Selbsttest wird auf dem Fall
 gebaut, der die beiden Antworten trennt — und **PB-47**, wo das Instrument an der falschen
 Stelle misst statt gar nicht.)
+(**Zweiter Vorfall: G4, 2026-08-17, identischer Formfehler** — der Reparaturversuch übergab dem
+Saum-Modul das rohe pngjs-Objekt (`{width,height,data}`) statt der erwarteten Hülle (`{w,h,px}`);
+es fand **nichts** und meldete sauber, während das Tor unverändert zehn Blätter ablehnte. Ein
+stiller No-Op sieht aus wie ein grünes Licht. Aufgedeckt hat es nur der Gegenlauf des echten Tors.
+Keine eigene Nummer — dieselbe Falle, zweiter Vorfall, und die Schuld-Adresse dazu ist **D-297**.)
 
 **PB-83 · Ein selbstkalibrierender Schwellwert macht eine harmlose Änderung zum Torfall.**
 *(C3, 2026-08-15.)* Das Saum-Tor eicht sich je Bild an dessen eigenem Material. Ein
@@ -979,3 +1023,224 @@ wo sie nicht unter der erwarteten Überschrift stehen — »nicht verifiziert«,
 »Frage an den Architekten«, »Empfehlung«, und mitten in der Prosa. Und: **eine Adresse ist
 keine Erledigung** — eine Schuld-Nummer zu vergeben schließt nichts. (Familie **PB-41** —
 Abdeckung ist die Zahl der Anschlüsse, nicht die Existenz der Regel.)
+**★ Zweiter Vorfall: K5, 2026-08-18 — in der Runde, die diese Regel als Doktrin aufgeschrieben
+hat.** Die Welle-5-Liste wurde diesmal ausdrücklich in »Filed-Abschnitte« und »alles andere«
+geschnitten, und der blinde Vollständigkeits-Prüfer fand trotzdem **zwölf** fehlende Posten —
+darunter **Kokis drei älteste Tore** (Kartenkante · Regel-Seiten-Reihenfolge · Anker), während die
+Liste im selben Atemzug »bei Koki: 8« behauptete. Elf der zwölf waren per Volltextsuche belegbar:
+die Zeichenfolge kam **null** Mal vor. *Zusatz zur Regel:* eine Vollständigkeits-Zusage prüft man
+nicht durch besseres Vorsatz-Fassen, sondern durch den blinden Prüfer — **jedes Mal**, auch wenn
+die Runde die Regel selbst geschrieben hat. Und eine Zusammenfassung, die eine ZAHL behauptet
+(»bei Koki: 8«), liefert die Aufzählung mit, damit die Zahl prüfbar ist.
+
+## R5-Welle 5 · aus den acht Reports der Welle (aufgenommen von K5, 2026-08-18)
+
+_**Ruling R144** hat diese Vergabe an K5 gegeben. Achtunddreißig Wortlaute kamen aus acht Reports
+(C4 · G4 · B4b · F6 · E6 · W4 · S1 · K4). Ein
+**blinder Klassierer** — er sah die 90 bestehenden Einträge und die 38 Wortlaute, nicht meine
+Zuordnung — hat sie gegen den Bestand gehalten. Sieben sind Doppelungen und haben eine
+**Verweiszeile am alten Eintrag** statt einer eigenen Adresse bekommen (R70/R111): sie stehen
+bei PB-8, PB-15, PB-18, PB-23, PB-56, PB-66 und PB-82. Sechs weitere Paare waren untereinander
+dasselbe Gesetz und teilen sich hier je eine Nummer. Bleiben 25 eigene Adressen._
+
+**PB-91 · Ein Blatt braucht ZWEI Prüfgrößen, nicht eine.** *(C4, 2026-08-17; Ruling R133, seit
+R152 für jede Codex-Lieferung Pflicht.)* Der 3- bis 6-fach vergrößerte Ausschnitt beurteilt das
+Handwerk; die **echte Anzeigegröße** (die Karte zeichnet ein Blatt 132 Punkte hoch) beurteilt, was
+beim Kind ankommt. In dieser Runde sagten die Blatt-Prüfer bei 5× zweimal »ZURÜCK«, und erst die
+Kartengröße beantwortete, ob das Kind den Befund überhaupt sieht — bei einem der beiden Blätter
+sah er es (»da klebt ein gelbes Stück Papier drin«), und das trug die Entscheidung. *Regel:* wer
+nur eine Größe misst, entscheidet entweder über unsichtbare Fehler oder übersieht sichtbare.
+(Schärft **PB-81**, das den Ausschnitt fordert, aber nicht die zweite Größe; Doktrin in doc 45 H9.)
+
+**PB-92 · Eine Perf-Zahl ohne A/B im selben Lauf ist eine Meinung mit Nachkommastellen.**
+*(Dreimal unabhängig: C4 · F6 · E6, 2026-08-17; Ruling R143.)* Derselbe Baum, zweimal gemessen,
+unterscheidet sich stärker als die beiden Zweige voneinander: CPU 7,5 gegen 2,2 ms, GL-Texturen
+191 gegen 613, ein Bauschritt streute über das Zehnfache (43,8 · 143,4 · 364,8 · 580,0 ms), und ein
+`vorher`-Ausreißer hätte als »+17 fps« in einer Tabelle gestanden. *Regel:* belastbar ist nur der
+A/B-Vergleich im selben Lauf, und die billigste Prüfung dagegen ist eine **unveränderte Größe als
+Maßstab neben der veränderten** (»`terrain` und `props` hat dieser PR nicht angefasst — ihre
+Streuung IST der Rauschpegel«). Wer eine Einzelzahl über Budget findet, misst nach, statt zu
+melden. (Familie **PB-44**; die Speicher-Spalten-Fassung steht in `docs/PERF_WAECHTER.md`, D-335.)
+
+**PB-93 · Die Kontrollmessung ist gegen genau die Störung blind, die den Lauf entwertet.**
+*(W4-Postzug, 2026-08-18; D-339.)* Zwei Minuten Abstand, derselbe Code, dieselbe Methode,
+**dieselbe gültige Kontrollmessung** — und eine Phase baute 8199 statt 661 ms bei 30 statt 60 fps.
+Die Ursache war ein kopfloser Test-Browser aus einer Sitzung vom **Vortag**, der noch auf der
+Grafikkarte saß. Die Kontrollseite hat es nicht gemerkt, weil sie eine **leere** Seite misst — und
+eine leere Seite schafft auch unter Last 60 Bilder. *Regel:* die Kontrollmessung bleibt Pflicht,
+aber sie ist kein Freibrief: vor jeder Messreihe `pgrep -fl headless` (und ein Blick auf die
+Systemlast), und eine Zahl über Budget wird nachgemessen, nie gemeldet. (Verschärft **PB-44**, das
+die Kontrollmessung eingeführt hat.)
+
+**PB-94 · Ein Wortverbot ohne seinen Grund ist beim nächsten Zusammenlegen unentscheidbar.**
+*(C4, 2026-08-17; D-251.)* »Monster« steht auf der Liste, weil es Angst macht; »verheddert«, weil
+das Kapitel kapitelweit ein anderes Wort benutzt (der Knoten, den der Wächter knüpft, und das Wort
+auf der Karte sollen dasselbe Bild sein). Wer den Grund nicht dazuschreibt, kann eine Liste, die
+in zwei Dateien auseinandergedriftet ist, nicht mehr zusammenführen — genau der Zustand, aus dem
+D-251 kam. *Regel:* jede Zeile einer Verbotsliste trägt ihren Grund, und beim Zusammenlegen
+entscheidet der Grund, nicht die Mehrheit der Kopien. (Nachbar von **PB-89**, das den MECHANISMUS
+eines Wortverbots regelt.)
+
+**PB-95 · Die Reparatur gehört an die Quelle, nicht ans Reparaturwerkzeug.** *(G4, 2026-08-17;
+D-290.)* Zehn frisch importierte Blätter passierten die eigene Kantenreinigung des Importers (feste
+Schwelle) und fielen dann beim Kunst-Tor durch: **12 525 Magenta-Randpixel**, weil das Tor gegen
+das eigene Bildinnere kalibriert und vier Pixel tief schaut. Repariert wurde nicht mit einem
+Nachlauf, sondern indem der Importer mit **derselben Funktion abschließt, nach der das Tor
+urteilt**. *Regel:* wo Erzeuger und Tor dieselbe Frage beantworten, benutzen sie dieselbe
+Implementierung — sonst hat man zwei Wahrheiten und repariert die falsche. (Schärft **PB-84**, das
+das Auseinanderdriften meldet, aber die Richtung der Reparatur nicht nennt.)
+
+**PB-96 · Eine Hilfsrechnung kann den Sonderfall mitzählen, den das Gesetz ausschließt.**
+*(G4, 2026-08-17.)* Das Abstandsgesetz fiel auf dem echten Kapitel mit Höhen »9, 5, 3«, obwohl die
+Objekte flach lagen: die **Oberfläche eines Tintenteichs** besteht die Stand-Prüfung (fester Grund
+darunter, Kopffreiheit darüber), also maß die Laufzeilen-Hilfe den Teichgrund als Boden. Eine
+Laufzeile ist aber, wo ein Kind stehen KANN, und Tinte ist der eine Ort, wo es das nicht kann.
+*Regel:* wer eine Bezugslinie selbst berechnet, prüft zuerst, welche Zellen das Gesetz daneben
+ausdrücklich ausschließt — und pinnt den Fall mit einem Test.
+
+**PB-97 · Eine Klammer, die NACH dem Schritt läuft, den sie schützen soll, schützt ihn nicht —
+und ein Fix, der nur auf dem Auslöse-Tick geprüft wird, ist nicht geprüft.** *(Zweimal in einer
+Welle: F6 und B4b, 2026-08-17.)* F6: die Wisch-Klammer stand hinter dem Wesen-Schritt, der damit
+die UNGEKLAMMERTE Lage des Ticks sah — der Tamper (Grenzwert 44 → 45) blieb **grün**, der Test
+hatte nichts unterschieden; nach vorn gezogen wurde derselbe Tamper rot. B4b: der Kamera-Halt war
+in drei Unit-Tests grün und im echten Lauf kaputt, weil die Bildschirm-Klammer eine Zeile VOR dem
+auslösenden Ereignis läuft — auf dem Auslöse-Tick stimmt der Wert auch im kaputten Zustand.
+*Regel:* bei jedem Eingriff in eine Reihenfolge wird der Tick DANACH mitgeprüft, und wer einen
+Grenzwert »um eins nach innen« setzt, muss zeigen, dass der Wert eins daneben rot wird.
+
+**PB-98 · Ein `undefined` an einem Parameter mit Vorgabewert prüft das Gegenteil.** *(B4b,
+2026-08-17.)* `f(x = "near")` mit `f(undefined)` ergibt `"near"` — der Test »ohne Deklaration muss
+es rot werden« war deshalb grün und prüfte die Vorgabe statt die Abwesenheit. *Regel:* wer die
+ABWESENHEIT eines Feldes prüft, **löscht das Feld** (`delete obj.k` oder ein Objekt ohne den
+Schlüssel), statt `undefined` zu übergeben.
+
+**PB-99 · Ein Vollauf der Suite, der VOR der letzten Änderung liegt, ist keine Aussage über den
+Stand — auch wenn die Zahl echt gemessen ist.** *(B4b, 2026-08-17.)* »1161/1161« war beim Messen
+wahr und beim Hinschreiben veraltet: dazwischen war ein **Pflicht**-Feld dazugekommen, das sechs
+FREMDE Fixtures rot machte. Gefegt worden waren nur die eigenen. *Regel:* wer ein Gesetz
+verpflichtend macht, fegt im selben Zug **per Maschine über alle** Fixtures, nicht nur über seine;
+und der Vollauf ist der **letzte** Schritt vor dem Push, nie ein früherer. (Zeitfalle wie
+**PB-77**, dort für Abwesenheits-Behauptungen.)
+
+**PB-100 · Ein zweites Fenster mit derselben URL ist nicht dieselbe Phase.** *(B4b, 2026-08-17.)*
+Ein `location.reload()` verlor den `?phase=p2`-Parameter; zwei Messreihen liefen darauf in p1, wo
+die gemessene Stelle gar keine Tinte hat, und meldeten folgerichtig »kein Platsch«. *Regel:* vor
+jeder Messung den Zustand an der Maschine gegenlesen (`harness.phase()`), nie der URL glauben —
+auch nicht der eigenen. (**P-65** in neuem Gewand.)
+
+**PB-101 · Ein hochskalierter Ausschnitt erzeugt Befunde, die es nicht gibt.** *(F6, 2026-08-17.)*
+Zwei unabhängige Prüfer meldeten übereinstimmend eine »Doppelbelichtung über dem ganzen Bild« mit
+hoher Sicherheit; am 1:1-Ausschnitt derselben Aufnahme ist keine da. Ursache war die eigene
+Vorrichtung: ein 760-px-Ausschnitt, auf 960 px hochgerechnet. *Regel:* was einem Prüfer vorgelegt
+wird, steht selbst unter Prüfung — Ausschnitte in **Originalgröße** plus separate Vergrößerung, nie
+ein resampeltes Gesamtbild. (Konvergenz zweier Prüfer beweist die Projektion, nicht das Spiel.)
+
+**PB-102 · Ein Blindpanel mit zwei Ordnern, in denen beide Bilder unter getauschten Namen liegen,
+liefert leicht dasselbe Bild zweimal.** *(F6, 2026-08-17.)* Jeder Prüfer bekam je eine Datei aus
+BEIDEN Ordnern und sah dadurch dasselbe Bild zweimal; beide meldeten es unabhängig (per
+md5-Vergleich) und verweigerten das Urteil. *Regel:* jeder Prüfer liest **beide** Dateien aus
+**seinem** Ordner; sonst hängt die Gültigkeit des Panels an einer Pfad-Zeile im Brief. Und: dass
+die Prüfer es gemeldet haben, ist Glück, kein Verfahren.
+
+**PB-103 · Ein »fertig«-Signal, das nicht die Fertigkeit misst, startet den nächsten Schritt zu
+früh.** *(Zwei Spielarten in einer Welle: F6 und E6, 2026-08-17.)* F6: `next build` schreibt
+»✓ Compiled successfully« und arbeitet danach weiter (Typprüfung, Seiten-Daten) — `next start` fand
+kein `BUILD_ID` und starb. E6: die eigene Bereitschafts-Prüfung wartete auf `.next/BUILD_ID`, das
+der **vorige** Lauf hinterlassen hatte, und sprang an, während der neue Build noch lief. *Regel:*
+auf den **Exit-Code** warten, nie auf eine Log-Zeile; und wenn eine Datei das Signal ist, muss sie
+etwas sein, das **nur der neue Lauf** erzeugen kann (vorher löschen, oder auf eine Kennung warten).
+
+**PB-104 · Eine Leinwand-Textur, die zweimal zur Grafikkarte fährt, kostet mehr als die Rechnung,
+die sie füllt.** *(E6, 2026-08-17; D-320.)* `textures.createCanvas(key, w, h)` meldet eine **leere**
+Textur an — und lädt sie hoch —, `refresh()` lädt sie nach dem Malen ein zweites Mal hoch: gemessen
+**475 von 580 ms**, während die verdächtigte Bildpunkt-Schleife 75,5 ms kostete. *Regel:* erst auf
+einer Leinwand fertig malen, die der Renderer nie gesehen hat, dann **einmal** anmelden
+(`addCanvas`). Und: die naheliegende Verdächtige zuerst messen, nicht zuerst optimieren.
+
+**PB-105 · Eine Klassen-Reparatur ist eine Hypothese über jede Fundstelle, bis jede Fundstelle
+gemessen ist.** *(E6, 2026-08-17; D-326.)* Dieselbe Ein-Upload-Reparatur war an einer Stelle
+4,7-mal schneller und an der nächsten **60-mal langsamer** (`props` p1 53 → 3250 ms); nur die eine
+Phase ohne Buchstaben blieb unverändert und hat es bewiesen. *Regel:* das Gesetz »eine Panne
+repariert man als Klasse« bleibt — aber die Klassen-Reparatur wird an **jeder** Fundstelle
+gemessen, bevor sie steht, und eine zurückgenommene Fundstelle bekommt einen Kommentar an Ort und
+Stelle, sonst baut die nächste Sitzung sie noch einmal.
+
+**PB-106 · Ein Prüfsatz, dessen Fälle in zwei Bedingungen dieselbe Zahl tragen, verdeckt eine
+verschobene Schwelle.** *(W4, 2026-08-17; D-334.)* Eine absichtlich um **eins** verschobene
+Schwelle in einem Importer wurde vom neuen Vergleichs-Test **nicht** bemerkt, weil alle Prüffarben
+in zwei Bedingungen denselben Wert trugen und die eine die andere zudeckte; nach der Reparatur fand
+dieselbe Selbstprüfung sofort eine **zweite** blinde Stelle. *Regel:* Prüffälle ziehen die
+Bedingungen auseinander (je Bedingung ein Fall, der nur sie verletzt) — ein Tamper, der besteht,
+widerlegt den Prüfsatz, nicht die Regel. (Mechanik zu **PB-15**.)
+
+**PB-107 · Eine benannte Einfügezeile gehört am Kontrollfluss geprüft, nicht am Zeilenbild.**
+*(W4 · G4 · F6, 2026-08-17; Ruling R145, D-295/D-317/D-330.)* Die für eine Boss-Sonde benannte
+Zeile liegt in einem Zweig, in den der Boss **per Konstruktion nie läuft** — wörtlich befolgt wäre
+der Auftrag als »erledigt« abgehakt worden, ohne dass je ein Kasten gemessen worden wäre. Dieselbe
+Woche: eine Aufruf-Zeile lag IN einer Schleife (sie wäre je Eintrag einmal gelaufen), eine
+Methoden-Einfügung mitten im Doc-Kommentar der nächsten Funktion, ein Kommentar-Auftrag im
+Tabu-Block einer fremden Bahn. *Regel:* wer eine Zeile zugewiesen bekommt, öffnet sie am Code und
+prüft, ob der Kontrollfluss dort ankommt; wer eine Zeile zuweist, nennt zusätzlich das Symbol.
+(**P-67**; Doktrin in doc 45 H11.)
+
+**PB-108 · Eine Ausnahmeliste muss in BEIDE Richtungen scharf sein.** *(W4, 2026-08-17; D-242.)*
+Eine geduldete Ausnahme, die nur »neu« und »häufiger« rot färbt, überlebt ihren Gegenstand: ein
+Eintrag, dessen Verweis **verschwunden** ist, wird sonst nie bemerkt, und die Liste wächst als
+Ratsche in die falsche Richtung. Gebaut ist deshalb: neuer Verweis rot · häufiger als deklariert
+rot · **verschwunden ebenfalls rot (»schal«)** — plus Datum und Eigentümer je Zeile. *Regel:* eine
+Ausnahme darf einen bekannten Zustand **dulden**, sie darf ihn nicht **überleben**. (R106 in
+Werkzeugform; dieselbe Mechanik in `check-png-seams` und `check-ci-gates`.)
+
+**PB-109 · Ein Klang (oder eine Wirkung), der an einem Copy-TEXT hängt, ist eine stille
+Zeitbombe.** *(S1, 2026-08-17.)* Zwei Klänge hingen an einem Toast-**Text**, und die Copy-Bahn darf
+jeden Satz umformulieren — der Klang wäre lautlos verschwunden, ohne dass ein Tor etwas sagt.
+*Regel:* wo eine Wirkung an Copy gebunden ist, prüft ein Tor die Bindung an der Quelle (hier:
+`check-audio` hält jedes `toastMatch` gegen das Literal in `sim.ts`); wo das nicht geht, bekommt
+die Wirkung ein eigenes Ereignis.
+
+**PB-110 · Die Reihenfolge in einer Signalkette ist keine Stilfrage.** *(S1, 2026-08-17.)*
+Normalisieren-dann-kappen und kappen-dann-normalisieren unterscheiden sich um **fünf Dezibel**: die
+Messung sah eine halbe Sekunde, ausgeliefert wurde eine Drittelsekunde (−17,9 bis −22,9 statt −20;
+nach der Umstellung −20,3 bis −20,45). Aufgefallen ist es an der **Musterung des
+Kalibrierungs-Exemplars**, vor der Serie. *Regel:* eine Verarbeitungskette wird an echtem Material
+gemustert, bevor sie auf 219 Dateien läuft — und die Kette misst am Ende, was sie ausliefert, nicht
+was sie in der Mitte hatte.
+
+**PB-111 · Eine ausgedachte Schwelle misst oft etwas anderes als gemeint.** *(S1, 2026-08-17.)*
+»Naht-Sprung < −40 dBFS« misst die **Helligkeit** der Musik, nicht die Naht: nach einem Crossfade
+grenzen dort zwei benachbarte Abtastwerte aneinander. Ersetzt durch ein Verhältnis gegen die
+**eigene** Datei (Sprung geteilt durch das 99. Perzentil der Sprünge derselben Datei). *Regel:*
+eine Schwelle wird gegen das Material normiert, das sie beurteilen soll, und ihr Name muss die
+gemessene Größe nennen. **Gegenspannung, bewusst:** **PB-83** warnt vor selbstkalibrierenden
+Schwellen, weil sie harmlose Änderungen rot färben — die Auflösung ist, dass eine relative Schwelle
+das RICHTIGE misst und deshalb eine erklärte Toleranz braucht, keine absolute Zahl aus der Luft.
+
+**PB-112 · Die Doku eines Anbieters ist eine Behauptung — Parameter, Preis und Zähler werden am
+ersten Take gemessen.** *(S1, 2026-08-17; zwei Vorfälle.)* (a) Ein Parameter, den die Doku als
+»best effort« erlaubt, verbietet die API hart: `seed` + `prompt` → **HTTP 422**, Musik-Takes sind
+damit nicht reproduzierbar. (b) Der Verbrauchszähler **hinkt nach**: ein Lauf meldete Differenz 0,
+Sekunden später standen 2541 Credits mehr da — wer sofort abfragt, schreibt eine Null ins
+Protokoll, die nach einer Ersparnis aussieht. Dazu: der Kosten-Header meldet für Musik 0, während
+das Konto sich bewegt, und für Effekte einen Wert, während das Konto steht. *Regel:* ein
+Trockenlauf mit EINEM Take findet all das für den Preis eines Takes; maßgeblich ist die
+**Kontodifferenz**, gemessen mit Wartezeit.
+
+**PB-113 · Ein Befehl, der ein Skript zweimal aufruft, startet zwei Läufe in dieselben Dateien.**
+*(S1, 2026-08-17.)* Einmal für `tail`, einmal für `grep` — zwei parallele Läufe desselben
+Erzeugers schrieben in dieselben Ausgabedateien. *Regel:* lange Läufe genau einmal starten, Ausgabe
+in eine Datei, und danach lesen (`cmd > log 2>&1; echo "EXIT=$?"` statt `cmd | tee | grep`).
+
+**PB-114 · Eine Warteschleife, die den Text ihres eigenen Befehls mitzählt, wartet für immer.**
+*(S1, 2026-08-17.)* `until [ "$(ps aux | grep -c '[m]aster.mjs')" -le 1 ]` enthält selbst
+»master.mjs« und zählt sich mit; drei Schleifen hingen gleichzeitig und hielten die Kette an,
+obwohl die Arbeit längst fertig war. *Regel:* auf eine **Fertig-Markierung** warten, die das Skript
+am Ende selbst schreibt (`touch …/x.done`), nie auf eine Prozesszählung — und die erste Runde einer
+Warteschleife ansehen, bevor man ihr glaubt.
+
+**PB-115 · Ein Messgerät kann zu langsam sein, um benutzt zu werden — und ein Tor, das zu lange
+braucht, wird übersprungen.** *(S1, 2026-08-17.)* Die direkte Fourier-Summe kostete zwei Millionen
+Sinus-Aufrufe je Fenster; die Musterung schaffte 31 Dateien in einer Viertelstunde, und dieselbe
+Rechnung sollte im CI-Tor laufen. Eine FFT liefert dasselbe Ergebnis (nachgemessen: **0,0000 %**
+Abweichung) in einem Bruchteil. *Regel:* bei einem Tor ist Geschwindigkeit eine
+**Korrektheitsfrage** — was zu lange braucht, wird abgeschaltet, und ein abgeschaltetes Tor ist
+kein Tor. (Familie **PB-41**: Abdeckung ist die Zahl der Anschlüsse, die wirklich laufen.)
