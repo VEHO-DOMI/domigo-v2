@@ -12,7 +12,7 @@ import { bindTypingGuard } from "@domigo/game-feel/typing-guard";
 import { PaintScene, type TaskRequest } from "./PaintScene.ts";
 import type { TipPayload } from "./sim.ts";
 import { Merkseite, RuleFound, RuleRead } from "./cards/RulePage.tsx";
-import { PerfProbe, type FirstFrameReport, type PerfReport, type WeakEstimate } from "./perf.ts";
+import { PerfProbe, type FirstFrameReport, type PerfReport } from "./perf.ts";
 import { IDLE_PAD, type Pad } from "./player.ts";
 import { LOGICAL_H, LOGICAL_W, LOOP_FPS, RENDER_SCALE, airModelByName } from "./paint.ts";
 import type { PaintLevel, PhaseSpec } from "./level.ts";
@@ -133,7 +133,6 @@ export interface PerfApi {
   /** the raw engine — the dev harness exposes it too; this door is the
    *  production-build twin, so an experiment does not need a rebuild. */
   game: Phaser.Game;
-  sweep: (factor?: number) => Promise<WeakEstimate>;
 }
 
 declare global {
@@ -206,6 +205,10 @@ interface Bilanz {
   tips: number; tipsTotal: number;
   letters: number; lettersTotal: number;
   books: number; booksTotal: number;
+  /** R5-W5 · G4: the uniform. Counted over the three floors only — the
+   *  Kleckskammer's second copies are a second CHANCE at the same nine words,
+   *  not nine more pieces, so folding them in would promise a child eighteen. */
+  cloth: number; clothTotal: number;
 }
 
 /** The skin of the being a request is about (a shell ceremony is about none). */
@@ -396,6 +399,16 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
    *  HUD counts them apart. */
   const tipsTakenRef = useRef<TipPayload[]>([]);
   const booksTakenRef = useRef<string[]>([]);
+  /** R5-W5 · G4 · the uniform pieces found this chapter, kept BY WORD and not by
+   *  entity id. The Kleckskammer carries a second copy of every piece (the
+   *  Nachlese, design §1), so two different ids stand for the same word: counting
+   *  ids would let a child who re-finds a piece down there count it twice, and —
+   *  worse — would fire the naming card on a beat that owes nothing. The ids are
+   *  kept alongside because the sim's pickup ledger is addressed by id, and
+   *  because a taken twin must stay taken across a remount. */
+  const clothWordsRef = useRef<string[]>([]);
+  const clothIdsRef = useRef<string[]>([]);
+  const [clothCount, setClothCount] = useState(0);
   const [tipsCount, setTipsCount] = useState(0);
   /** R5-W2 · I1: the same pages as a rendered value. The ref above is the one
    *  that survives a phase remount; this is what the Merkseite reads, because a
@@ -795,7 +808,6 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
         pump: () => probe.pump(),
         status: () => probe.status(),
         game,
-        sweep: (factor) => probe.sweep(factor),
       };
     }
 
@@ -818,7 +830,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
         freedCageIds: () => freedRef.current,
         cageHintShown: () => cageHintShownRef.current,
         arenaBriefShown: () => arenaBriefShownRef.current,
-        collectedPickupIds: () => [...tipsTakenRef.current.map((t) => t.id), ...booksTakenRef.current],
+        collectedPickupIds: () => [...tipsTakenRef.current.map((t) => t.id), ...booksTakenRef.current, ...clothIdsRef.current],
         resolvedEntityIds: () => resolvedEntitiesRef.current,
         airModel,
         spawnCell: fromBonus ? ret.spawn : undefined,
@@ -866,6 +878,36 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
           onBook: (id) => {
             if (!booksTakenRef.current.includes(id)) booksTakenRef.current = [...booksTakenRef.current, id];
             setBooksCount(booksTakenRef.current.length);
+          },
+          // ── R5-W5 · G4 · A PIECE OF THE UNIFORM (design §1) ──────────────────
+          // Returns: does this find owe a naming card? The trigger counts the
+          // LEDGER, not the phase — Fassung 2 of the design fired on the third
+          // find OF A PHASE and thereby inverted its own protective intent: a
+          // child who found only two pieces in a floor got no card at all for
+          // that floor, and that is exactly the less sure child. Counted across
+          // the chapter, every third FRESH word owes a card, so nobody is
+          // skipped and nothing is asked twice.
+          onCloth: (id, wordEn) => {
+            if (!clothIdsRef.current.includes(id)) clothIdsRef.current = [...clothIdsRef.current, id];
+            const fresh = wordEn !== "" && !clothWordsRef.current.includes(wordEn);
+            if (fresh) clothWordsRef.current = [...clothWordsRef.current, wordEn];
+            setClothCount(clothWordsRef.current.length);
+            return fresh && clothWordsRef.current.length % 3 === 0;
+          },
+          onClothCard: () => {
+            // NOT `pickTask`. The router serves a pool by cursor, which would ask
+            // the first authored card at the third find, the second at the sixth
+            // — about pieces the child may never have picked up. The card is
+            // chosen by the WORD instead, so it always asks about the find that
+            // owed it: „die Karte fragt nur Gesammeltes" (design §1). Nine cards
+            // are authored, exactly three are served in a run.
+            const word = clothWordsRef.current[clothWordsRef.current.length - 1];
+            const item = tasks.find((t) => t.use === "pickupset" && "answer" in t && t.answer === word);
+            if (!item) return; // no card for this word: the find still counted, nothing softlocks
+            openCard({
+              req: { use: "pickupset", ctx: { type: "ceremony", beat: "cloth" } },
+              item, card: "task", attempts: 0, typed: "", align: "center",
+            });
           },
           onTask: (req) => {
             const align = alignAwayFrom(idOfCtx(req.ctx));
@@ -1207,6 +1249,10 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
   const cageTotal = chapterRoleCount(level, "cage");
   const kidsTotal = chapterClassmateCount(level);
   const tipTotal = level.tipsTotal ?? chapterRoleCount(level, "tip");
+  // R5-W5 · G4: counted from the level like every other total on this bar, and
+  // over the three floors only (`chapterRoleCount` skips the bonus room) — the
+  // Kleckskammer holds a second copy of each piece, not nine further pieces.
+  const clothTotal = chapterRoleCount(level, "cloth");
   const bilanz: Bilanz = {
     kids: freedKids, kidsTotal,
     freed: freedCount, freedTotal: cageTotal,
@@ -1214,6 +1260,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
     letters: bankedLettersRef.current + phaseLettersRef.current,
     lettersTotal: chapterLetterTotal(level),
     books: booksCount, booksTotal: chapterRoleCount(level, "book"),
+    cloth: clothCount, clothTotal,
   };
 
   return (
@@ -1279,6 +1326,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
             />
           )}
           {booksCount > 0 && <Chip icon="book" label="Bonus-Bücher" value={`${booksCount}`} art={art} />}
+          {clothTotal > 0 && <Chip icon="uniform" label="Kleider" value={`${clothCount}/${clothTotal}`} art={art} />}
           {/* R5-W4 · H2 (R50): der Zähler zählt dasselbe wie vorher — was die
               Tafel noch zwischen sich und ihrem sauberen Zustand hat. Nur heisst
               das jetzt eine KRITZEL-Schicht statt eines Knotens. Das interne
@@ -2190,6 +2238,7 @@ function ScorePage({
   if (bilanz.tipsTotal > 0) rows.push({ icon: "rule", labelDe: "Regel-Seiten gefunden", got: bilanz.tips, total: bilanz.tipsTotal });
   rows.push({ icon: "spark", labelDe: `${level.collectNounDe} gesammelt`, got: bilanz.letters, total: bilanz.lettersTotal });
   if (bilanz.booksTotal > 0) rows.push({ icon: "book", labelDe: "Bonus-Bücher", got: bilanz.books, total: bilanz.booksTotal });
+  if (bilanz.clothTotal > 0) rows.push({ icon: "uniform", labelDe: "Kleider", got: bilanz.cloth, total: bilanz.clothTotal });
 
   const ms = useCeremonyClock(countUpTotalMs(rows.length));
   const completion = runCompletion(rows);

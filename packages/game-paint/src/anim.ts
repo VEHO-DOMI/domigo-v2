@@ -649,7 +649,7 @@ export const CAGE_DISPLAY_H = 34;
  *  classroom things at one scale rather than six unrelated stickers. */
 export const DRAINED_DISPLAY_H: Readonly<Record<string, number>> = {
   obj_desk: 28, // 368×353 — the biggest thing in the room
-  obj_schoolbag: 26, // 378×341
+  obj_schoolbag: 26, // 367×383 (R5-W5 · C4: stand hier als 378×341 — am Blatt nachgemessen, R107)
   obj_book: 24, // 268×358
   obj_sharpener: 22, // 254×353
   obj_pencil: 30, // 69×393 — tall and thin; height is what makes it legible
@@ -686,6 +686,14 @@ export const entDisplayH = (e: EntSizeInput): number => {
   if (e.role === "powerup") return 26;
   if (e.role === "tip") return 18; // R3-16: a torn page, smaller than a being
   if (e.role === "book") return 15;
+  // R5-W5 · G4: a uniform piece. The commission ordered a RANGE (16-20) and left
+  // the number to a test, because these nine must be told APART from one another
+  // at speed — unlike Rayman's Tings, which are all the same object and only
+  // have to be noticed. Blind silhouette test, 2026-08-17, three strips at 16/18/
+  // 20 px, unlabelled: at 16 the skirt stops reading (its delivered grey sits too
+  // close to the grey world), at 18 all nine are named confidently. 18 it is —
+  // measured before the number was written, not after.
+  if (e.role === "cloth") return 18;
   if (e.role.startsWith("platform")) return 10;
   return 24; // chasers, gunners, flyers, bouncers
 };

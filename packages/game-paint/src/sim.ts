@@ -26,6 +26,7 @@ import {
   awakenClassmate,
   classmateOfCage,
   guardianKnotSolved,
+  GUARDIAN_WIPE_REACH_PX,
   JOY_ROLES,
   redeemEntity,
   restoreFreedClassmate,
@@ -39,6 +40,10 @@ import {
 import { CAGE_OPEN_TICKS, COLOUR_FLOOD_TICKS } from "./anim.ts";
 import { groundSurfaceAt } from "./collide.ts";
 import { cameraTargetX, clampScroll, stepCameraAxis, stepCameraY } from "./camera.ts";
+// R5-W5 · B4b · D-186: die Lebensdauer des Spritzers ist die Haltezeit der
+// Kamera. `ink.ts` importiert selbst NICHTS, ein Zyklus ist hier also
+// ausgeschlossen — und sim.ts holt sich Takt-Zahlen schon aus `anim.ts` (oben).
+import { INK_SPLASH_TICKS } from "./ink.ts";
 import { type Ability, type PaintLevel, type PhaseSpec, allPhases, findGlyph } from "./level.ts";
 
 /** R5-W2 · H1 · Wie lange sie NACH dem Ausruhen noch liegt, bevor die Karte
@@ -70,7 +75,11 @@ export interface TaskRequest {
   // zieht die Klimax-Karte auch aus diesem Pool. Nur der TYP kannte ihn nicht,
   // also musste die Karte auf einer Boss-Anfrage reiten — und bekam dadurch die
   // Boss-Uhr. Der Typ sagt jetzt, was die Welt ohnehin tut.
-  use: "quickfire" | "encounter" | "door" | "rescue" | "boss" | "bonus" | "bonuspay" | "finale";
+  // R5-W5 · G4: `pickupset` joins for the same reason `finale` did — the shell
+  // really does open this pool (the uniform's naming card at every third find),
+  // so the type says what the world does. It is the one use no ENTITY event
+  // raises: the piece it is about is already in the child's hands.
+  use: "quickfire" | "encounter" | "door" | "rescue" | "boss" | "bonus" | "bonuspay" | "finale" | "pickupset";
   ctx:
     | { type: "entity"; id: string; skin: string }
     | { type: "cage"; id: string; skin: string; classmate?: string }
@@ -84,7 +93,10 @@ export interface TaskRequest {
     | { type: "door"; id: string; kind: string; skin: string }
     | { type: "guardian"; id: string; skin: string }
     | { type: "console"; id: string; skin: string }
-    | { type: "ceremony"; beat: "goal" | "grant" | "cagehint" | "bonus" | "tip" | "score" | "out" };
+    // R5-W5 · G4: `cloth` is the naming card the uniform owes at every third
+    // find. It is a ceremony beat and not an entity ask because it belongs to no
+    // being in the world — the piece it is about has already been picked up.
+    | { type: "ceremony"; beat: "goal" | "grant" | "cagehint" | "bonus" | "tip" | "cloth" | "score" | "out" };
 }
 
 /** The being a request is ABOUT, or null for a shell ceremony (nobody asks). */
@@ -170,6 +182,13 @@ export type SimEvent =
   /** R3-4/R3-6 · impact made visible: chalk dust where something broke or the
    *  fist landed. Coordinates are subs; the scene owns what a particle looks like. */
   | { type: "puff"; x: number; y: number; kind: "chalk" | "hit" }
+  /** R5-W5 · G4: a piece of the scattered uniform was taken. Like the Bonus-Buch
+   *  it does NOT stop the world (design §1: „erst begegnen, dann abfragen" — nine
+   *  interruptions would take the run apart). It carries the English word and the
+   *  spot it was lying on, because the word is shown AT THE FIND rather than over
+   *  the child: a word that appears mid-jump over a moving hero is a word nobody
+   *  reads. Coordinates are subs, like every other position in this union. */
+  | { type: "cloth"; id: string; wordEn: string; x: number; y: number }
   | { type: "exit"; to: string };
 
 export interface SimCfg {
@@ -331,6 +350,25 @@ export class Sim {
   booksGot = 0;
   camX = 0;
   camY = 0;
+  /** R5-W5 · B4b · D-186 · Ticks, in denen die Kamera NICHT nachzieht.
+   *
+   *  Es gibt genau einen Grund dafür, und er ist eine Regie-Entscheidung: der
+   *  Tinten-Spritzer entsteht dort, wo das Kind hineinfiel, während der Warp es
+   *  schon zum Anker gesetzt hat. Wer im selben Tick auch die Sicht mitnimmt,
+   *  zeigt den Spritzer nie — er war gebaut, unit-belegt und deterministisch und
+   *  trotzdem in keiner Aufnahme zu sehen (A6b, eigener Aufnahmeversuch in p2).
+   *  Die Sicht bleibt also kurz stehen, wo der Schlag passiert ist. Siehe warp. */
+  camHoldTicks = 0;
+  /** R5-W5 · B4b · D-186 · Ist die Sicht noch auf dem Weg zum Kind?
+   *
+   *  Solange das so ist, schweigt die Bildschirm-Klammer (W0-F7). Die Klammer
+   *  hält das Kind im BILD; ist das Bild selbst noch unterwegs, hat sie nichts
+   *  zu entscheiden — sonst zieht sie das Kind an den Rand einer Sicht, die es
+   *  noch nicht zeigt, und hebt damit genau den Rückweg auf, den sie nicht kennt.
+   *  Zwei Zustände und nicht einer, weil der Halt in TICKS zählt (die Lebensdauer
+   *  des Spritzers) und das Einholen in STRECKE (die Fahrt zum Anker) — in p2
+   *  sind das 26 Ticks und danach noch bis zu 28 Kacheln. */
+  camDetached = false;
 
   private cfg: SimCfg;
 
@@ -407,9 +445,20 @@ export class Sim {
       if (mate) restoreFreedClassmate(mate, COLOUR_FLOOD_TICKS);
     }
     // R3-16: a Regel-Seite taken before the Kleckskammer stays taken after it
-    for (const id of cfg.collectedPickupIds?.() ?? []) {
+    const takenPickups = new Set(cfg.collectedPickupIds?.() ?? []);
+    for (const id of takenPickups) {
       const e = this.world.entities.find((x) => x.id === id);
       if (e) e.redeemed = true;
+    }
+    // R5-W5 · G4: p9 is the NACHLESE — it carries a second copy of every uniform
+    // piece and may only offer the ones still MISSING (UNIFORM_SAMMELN_DESIGN
+    // §1). A twin names the piece it repeats in `params.repeatOf`, so the same
+    // ledger that seeds the originals silences the twins too: no second channel,
+    // no word list travelling through the config, and a level law proves that
+    // every `repeatOf` points at a uniform piece that really exists.
+    for (const e of this.world.entities) {
+      const repeats = e.role === "cloth" ? e.params.repeatOf : undefined;
+      if (typeof repeats === "string" && takenPickups.has(repeats)) e.redeemed = true;
     }
     // ── R5-W4 · B4 · D-4 · WAS BEANTWORTET WAR, BLEIBT BEANTWORTET ───────────
     // Koki, 15.08.2026: „die Motte oben kann man wieder triggern … die Sachen
@@ -497,10 +546,31 @@ export class Sim {
     this.poseLocked = out.locked;
     // W0-F7 (canonical): the player is boxed inside the visible screen
     // (constants shared with level.ts's reachability model — R5-A7)
-    const minX = this.camX + PAINT.screenBoxLeftPx * SUBS;
-    const maxX = this.camX + (LOGICAL_W - PAINT.screenBoxRightPx) * SUBS;
-    if (this.player.x < minX) this.player = { ...this.player, x: minX, vx: Math.max(this.player.vx, 0) };
-    if (this.player.x > maxX) this.player = { ...this.player, x: maxX, vx: Math.min(this.player.vx, 0) };
+    //
+    // R5-W5 · B4b · D-186 · …AUSSER solange die Sicht noch unterwegs zum Kind
+    // ist (`camDetached`), und das ist keine Feinheit: es ist genau die Warnung,
+    // die zwei Zeilen im alten `warp` standen (»the screen clamp would otherwise
+    // drag the player back toward the stale view«). Die Klammer hält das Kind im
+    // BILD; ist das Bild selbst noch auf dem Weg, hat sie nichts zu entscheiden.
+    //
+    // LIVE GEMESSEN, bevor diese Bedingung existierte (p2, echter Sturz durchs
+    // Loch c32): der Warp setzte das Kind korrekt auf x=936 (Anker c58) — und
+    // einen Tick später zog die Klammer es auf x=724, exakt `camX 408 + 320 − 4`,
+    // den rechten Rand der gehaltenen Sicht. Das liegt mitten über dem Becken,
+    // aus dem es gerade gerettet worden war, und von dort fiel es weiter. Die
+    // Klammer hob also den Rückweg auf, den sie nicht kennt.
+    //
+    // Die drei ersten Prüfungen dieses Verhaltens waren dabei GRÜN: auf dem
+    // Auslöse-Tick läuft die Klammer VOR `onPlayerEvent`, der Wert stimmt dort
+    // auch im kaputten Zustand. Nur der Tick DANACH zeigt es — und nur ein
+    // echter Lauf hat es gezeigt.
+    if (!this.camDetached) {
+      const minX = this.camX + PAINT.screenBoxLeftPx * SUBS;
+      const maxX = this.camX + (LOGICAL_W - PAINT.screenBoxRightPx) * SUBS;
+      if (this.player.x < minX) this.player = { ...this.player, x: minX, vx: Math.max(this.player.vx, 0) };
+      if (this.player.x > maxX) this.player = { ...this.player, x: maxX, vx: Math.min(this.player.vx, 0) };
+    }
+    this.clampOutOfWipe();
     this.prevPad = { ...pad };
     for (const ev of out.events) this.onPlayerEvent(ev, events);
 
@@ -528,9 +598,22 @@ export class Sim {
     this.checkExit(events);
 
     // per-tick camera follow (gameplay: the screen clamp reads camX next tick)
-    const tx = clampScroll(cameraTargetX(this.player.x, this.player.facing), this.worldWpx, LOGICAL_W);
-    this.camX = clampScroll(stepCameraAxis(this.camX, tx), this.worldWpx, LOGICAL_W);
-    this.camY = clampScroll(stepCameraY(this.camY, this.player.y), this.worldHpx, LOGICAL_H);
+    // R5-W5 · B4b · D-186: …ausser während eines Kamera-Haltes. Der Halt läuft
+    // HIER ab und nicht im Warp, weil er in TICKS zählt und nur dieser Schritt
+    // Ticks hat; danach fährt dieselbe eased Fahrt wie immer die Strecke zum
+    // Anker, ohne dass ein Sonderweg für die Rückkehr existiert.
+    if (this.camHoldTicks > 0) {
+      this.camHoldTicks -= 1;
+    } else {
+      const tx = clampScroll(cameraTargetX(this.player.x, this.player.facing), this.worldWpx, LOGICAL_W);
+      this.camX = clampScroll(stepCameraAxis(this.camX, tx), this.worldWpx, LOGICAL_W);
+      this.camY = clampScroll(stepCameraY(this.camY, this.player.y), this.worldHpx, LOGICAL_H);
+      // …und sobald sie angekommen ist, greift die Klammer wieder. `< SUBS` ist
+      // »innerhalb eines Pixels«: `stepCameraAxis` läuft mit einer Mindest-
+      // geschwindigkeit und trifft das Ziel exakt, ein Restweg von unter einem
+      // Pixel ist also das Ende der Fahrt und keine Toleranz auf Verdacht.
+      if (this.camDetached && Math.abs(this.camX - tx) < SUBS) this.camDetached = false;
+    }
     // R3-11: LAST, on the fresh camera — a waiting asker is served the moment
     // the view actually contains it.
     this.servePending(events);
@@ -547,6 +630,65 @@ export class Sim {
   /** The single commit point for the pose the scene draws. */
   private finalizePose(): void {
     this.player.pose = derivePose(this.player, this.poseLocked);
+  }
+
+  /**
+   * ── R5-W5 · F6 · DAS KIND LÄUFT NICHT MEHR IN DIE TAFEL (R122, H3s Befund) ──
+   *
+   * H3 hat es gemessen und fotografiert (Bild 05): solange die besiegte Tafel auf
+   * den Brettern sitzt, geht das Kind durch sie hindurch. **36 Ticks gedrückt =
+   * 81 px Weg, und sie ist nur 74 px breit** — es steht dann mitten in ihrer
+   * Zeichnung, hinter der Fläche, die es gerade wischt.
+   *
+   * Eine Klammer hat es dafür nie gegeben: `player.ts`, `sim.ts` und `collide.ts`
+   * kennen weder `wipe` noch `boss` noch `tafel`. Das Kind wird an genau EINER
+   * Stelle in seiner Bewegung begrenzt, nämlich vom Bildschirm-Kasten oben in
+   * `step()` (W0-F7). Diese Klammer ist absichtlich dieselbe Bauform: Lage
+   * anhalten, die Geschwindigkeit NACH INNEN töten, die nach außen lassen. Ein
+   * Kind, das weggehen will, darf das jederzeit.
+   *
+   * ── Warum die Zahl 44 und nicht 45, und warum die REIHENFOLGE das entscheidet ─
+   * `GUARDIAN_WIPE_REACH_PX` (45) ist die Kanten-Berührung: halbe Tafel (37,1 aus
+   * dem Blatt-Seitenverhältnis) plus halbes Kind (8). Dort berühren sich die
+   * beiden Körper, und dort soll das Kind stehen bleiben. Die Berührung selbst
+   * fragt `< 45` (`inWipeReach`), also STRIKT darunter — eine Klammer auf 45 würde
+   * das Wischen unerreichbar machen: das Kind stünde für immer einen Pixel zu weit
+   * weg und die Tafel liefe in ihre Wartezeit. Die Klammer sitzt deshalb auf dem
+   * größten ganzzahligen Abstand, der noch berührt: **44**.
+   *
+   * ★ Diese Zahl trägt nur, weil die Klammer VOR `stepEntityWorld` läuft, und das
+   * hat ein Tamper bewiesen, nicht eine Überlegung: in der ersten Fassung stand
+   * sie danach — dann sieht der Wesen-Schritt die UNGEKLAMMERTE Lage dieses Ticks,
+   * die Berührung geht ohnehin auf, und 44 gegen 45 macht keinen Unterschied. Der
+   * Tamper (44 → 45) blieb grün, der Test hat also nichts unterschieden. Hier
+   * oben, direkt nach dem Bildschirm-Kasten, gilt die Zusage wirklich: **der
+   * Wesen-Schritt bekommt das Kind niemals innerhalb ihrer Zeichnung zu sehen** —
+   * und derselbe Tamper wird rot. Der Preis ist ein Tick Verzug (die Klammer liest
+   * ihren Zustand aus dem vorigen Wesen-Schritt), genau wie der Bildschirm-Kasten
+   * seine `camX` aus dem vorigen Tick liest.
+   *
+   * ── Warum BEIDE Bodenzustände ─────────────────────────────────────────────
+   * `wipeable` (sie sitzt und wartet) und `wipe` (das Kind wischt) sind die zwei
+   * Hälften desselben Vorgangs — R50: „wenn sie unten ist und man zu ihr geht".
+   * In beiden steht sie still auf den Brettern, in beiden kann man in sie
+   * hineinlaufen, und H3s Bild zeigt genau diesen Augenblick. Ihre übrigen
+   * Bodenzustände (`sink`, `sad`, `settle`, `window`, `consoled`) lasse ich
+   * ausdrücklich frei — sie gehören dem Sieg-Bogen und der Gegenkarte, nicht dem
+   * Wischen; als Befund geht das an die Guardian-Bahn (H4).
+   */
+  private clampOutOfWipe(): void {
+    const board = this.world.entities.find(
+      (e) => e.role === "guardian" && !e.hidden && (e.state === "wipeable" || e.state === "wipe"),
+    );
+    if (board === undefined) return;
+    const keepPx = GUARDIAN_WIPE_REACH_PX - 1;
+    const dx = this.player.x - board.x;
+    if (Math.abs(dx) / SUBS >= keepPx) return;
+    const side = dx >= 0 ? 1 : -1; // auf 0 geht er nach rechts heraus, nie hindurch
+    this.player.x = board.x + side * keepPx * SUBS;
+    // nur die Geschwindigkeit NACH INNEN stirbt (wie im Bildschirm-Kasten)
+    if (side > 0) this.player.vx = Math.max(this.player.vx, 0);
+    else this.player.vx = Math.min(this.player.vx, 0);
   }
 
   // ── R3-11 · the speaker law (doc 41 §3) ────────────────────────────────────
@@ -753,7 +895,21 @@ export class Sim {
     return true;
   }
 
-  warp(c: number, r: number): void {
+  /** Setzt das Kind an eine Zelle. Vorgabe: die Kamera springt mit.
+   *
+   *  R5-W5 · B4b · D-186 · `holdCameraTicks` ist die AUSNAHME und die einzige,
+   *  die es gibt: so viele Ticks lang zieht die Sicht nicht nach, sondern bleibt
+   *  stehen, wo sie war. Der Tinten-Rückweg benutzt sie, damit der Spritzer an
+   *  der Stelle des Sturzes überhaupt im Bild ist (`onPlayerEvent`).
+   *
+   *  Warum HALTEN und nicht »sanft nachziehen«: die Pro-Tick-Kamera fährt mit
+   *  `/4` je Tick (camera.stepCameraAxis). Bei p1 (Anker zwei Kacheln hinter der
+   *  Grube) hätte das gereicht; bei p2 liegen zwischen Becken und Anker bis zu 28
+   *  Kacheln, und dort ist der Spritzer nach drei von 26 Ticks aus dem Bild
+   *  gefahren. Genau das steht in D-186 als »nur sichtbar, wenn der Checkpoint
+   *  nahe am Teich liegt«. Ein Halt ist gegen die Entfernung unempfindlich; eine
+   *  Fahrt ist es nicht. */
+  warp(c: number, r: number, opts: { holdCameraTicks?: number } = {}): void {
     // a warp always detaches and SNAPS the camera (the screen clamp would
     // otherwise drag the player back toward the stale view)
     this.player = {
@@ -772,8 +928,18 @@ export class Sim {
     // …and the drawing follows: a warp clears the rope, the ledge and the vine,
     // so a hand left closed around any of them would be gripping nothing.
     this.finalizePose();
-    this.camX = clampScroll(cameraTargetX(this.player.x, this.player.facing), this.worldWpx, LOGICAL_W);
-    this.camY = clampScroll(this.player.y - Math.round(LOGICAL_H * 0.57) * SUBS, this.worldHpx, LOGICAL_H);
+    const hold = opts.holdCameraTicks ?? 0;
+    if (hold > 0) {
+      // kein Sprung: die Sicht steht schon dort, wo der Spritzer entsteht — und
+      // sie bleibt losgelöst, bis sie das Kind wieder eingeholt hat
+      this.camHoldTicks = hold;
+      this.camDetached = true;
+    } else {
+      this.camX = clampScroll(cameraTargetX(this.player.x, this.player.facing), this.worldWpx, LOGICAL_W);
+      this.camY = clampScroll(this.player.y - Math.round(LOGICAL_H * 0.57) * SUBS, this.worldHpx, LOGICAL_H);
+      this.camHoldTicks = 0;
+      this.camDetached = false;
+    }
   }
 
   private onPlayerEvent(ev: PlayerEvent, events: SimEvent[]): void {
@@ -789,7 +955,13 @@ export class Sim {
       // beat its visual grammar; the mechanic lands with the law.
       events.push({ type: "toast", msg: ev.hazard === "^" ? "Autsch!" : "Platsch!" });
       this.player = applyKnockback(this.player, this.player.facing, false);
-      if (ev.hazard === "w" && this.respawnCell) this.warp(this.respawnCell.c, this.respawnCell.r - 1);
+      // R5-W5 · B4b · D-186: der Rückweg zum Anker hält die Sicht so lange am
+      // Spritzer, wie der Spritzer lebt (`ink.INK_SPLASH_TICKS` — EINE Zahl für
+      // Bild und Regie, damit die Sicht nicht abfährt, während noch Tropfen
+      // fliegen, und nicht wartet, wenn die Kunst kürzer wird).
+      if (ev.hazard === "w" && this.respawnCell) {
+        this.warp(this.respawnCell.c, this.respawnCell.r - 1, { holdCameraTicks: INK_SPLASH_TICKS });
+      }
     }
   }
 
@@ -964,6 +1136,24 @@ export class Sim {
         break;
       case "pickupTaken": {
         const e = this.world.entities.find((x) => x.id === ev.id);
+        // R5-W5 · G4 · the uniform piece. Modelled on the Bonus-Buch branch
+        // below (a counter and one event, no `overlayOpen`) and NOT on the
+        // Regel-Seite's freeze: the naming card comes later, at every third
+        // find, and it waits until the hero is standing. The chapter-wide tally
+        // is deliberately NOT kept here — a phase is remounted whenever the
+        // child comes back from the Kleckskammer, so a per-sim counter would
+        // restart mid-run; the ledger that survives that lives in the shell.
+        if (ev.role === "cloth") {
+          events.push({
+            type: "cloth",
+            id: ev.id,
+            wordEn: String(e?.params.wordEn ?? ""),
+            x: e?.x ?? this.player.x,
+            y: e?.y ?? this.player.y,
+          });
+          events.push({ type: "puff", x: e?.x ?? this.player.x, y: e?.y ?? this.player.y, kind: "chalk" });
+          break;
+        }
         if (ev.role === "book") {
           this.booksGot++;
           events.push({ type: "book", id: ev.id, got: this.booksGot });

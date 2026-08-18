@@ -51,6 +51,13 @@ export function askerUsesOf(e: Pick<EntitySpec, "role" | "params">): readonly st
   // she is the asker of every round after the latch, from the cage's own pool
   if (e.role === "cage" || e.role === "classmate") return ["rescue"];
   if (e.role === "door.trigger") return [String(e.params?.kind ?? "exit") === "bonus" ? "bonuspay" : "door"];
+  // R5-W5 · G4: a uniform piece raises the naming pool. It is the only asker in
+  // the chapter that is no longer standing in the world when its card opens —
+  // the piece is in the child's hands by then, and the card fires at every third
+  // find (PaintGame `onClothCard`), not on contact. The speaker law's question is
+  // still the right one and still answered: could any being in this chapter ever
+  // raise this pool? These nine can, and nothing else does.
+  if (e.role === "cloth") return ["pickupset"];
   return [];
 }
 

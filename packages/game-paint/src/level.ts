@@ -48,10 +48,20 @@ export type EntityRole =
   // Merksatz when picked up; `book` is a Bonus-Buch, the no-death adaptation of
   // an extra life, worth points and nothing else. Both are doc 40 §3
   // static-state: no rig, no orbit, no brain — they sit and wait.
-  | "tip" | "book";
+  | "tip" | "book"
+  // R5-W5 · G4 (UNIFORM_SAMMELN_DESIGN §1): a piece of the school UNIFORM. The
+  // nine words of the unit's „Cool clothes" page lie scattered through the
+  // school house — flung apart in the fall into the book, not drained of their
+  // colour, which is why they lie there in colour while the chapter's things are
+  // grey. Same static-state class as `tip`/`book`: no rig, no brain, taken on
+  // contact. It differs from both in what the taking MEANS — the English word
+  // appears at the find, and every third piece in the ledger opens a naming
+  // card. It is NOT the chapter's collectible: it feeds no trail, pays no door,
+  // and carries its own counter (doc 44 §2.7 amendment).
+  | "cloth";
 
 /** The pickups that are simply TAKEN on contact (no card, no fight). */
-export const PICKUP_ROLES = new Set<EntityRole>(["tip", "book"]);
+export const PICKUP_ROLES = new Set<EntityRole>(["tip", "book", "cloth"]);
 
 /**
  * Per-entity tuning. Open by design — every role brings its own knobs — but the
@@ -170,6 +180,25 @@ export interface EntityParams {
   // They are kept OUT by construction, not by memory: `tip-honesty` rejects any
   // params key it does not know, so re-adding one of these turns the gate red
   // instead of quietly reaching a card that no longer renders it.
+  /** classmate: DIE ÄUSSERSTEN SPALTEN IHRES RAUMS, einschliesslich — die
+   *  Antwort auf F5s Frage an den Architekten (R85, Kokis Sims-Lesung: „Merle
+   *  wie Sims: 4 Kacheln").
+   *
+   *  Vorher kam ihr Auslauf allein aus `ROAM_MAX_CELLS`, einer Konstante für
+   *  ALLE Befreiten. Das war kein Entwurf, sondern ein Vorgabewert: in einem
+   *  Vier-Kachel-Sims fiel er nicht auf, in einer langen Halle hätte er sie
+   *  sechs Kacheln weit geschickt, ohne dass jemand es entschieden hätte.
+   *
+   *  Diese zwei Zahlen ersetzen die Konstante FÜR DIESE ENTITY — sie werden
+   *  aber weiterhin mit der Boden- und Gefahr-Sonde VERSCHNITTEN
+   *  (`entities.roamZone`), nie an ihr vorbei. Ein Autor kann sie also enger
+   *  stellen oder in einer tragenden Halle weiter laufen lassen; er kann sie
+   *  nicht in die Tinte oder über eine Kante schreiben. Der Grund ist F5s
+   *  eigener: ein befreites Kind, das von der Kante fällt, wäre kein Geschenk,
+   *  sondern ein Bug mit Gesicht — und diese Zusage darf nicht davon abhängen,
+   *  dass ein Level-Autor sie nachrechnet. */
+  roamMinC?: number;
+  roamMaxC?: number;
   /** spawned hidden, revealed by a link. */
   hidden?: boolean;
   [key: string]: unknown;
@@ -211,6 +240,31 @@ export interface PhaseSpec {
   id: string;
   nameDe: string;
   surface: "normal" | "slippery";
+  /** R5-W5 · B4b · WELCHE SEITE DER SCHWELLE TRÄGT DEN ANKER (Kokis Entscheid
+   *  2026-08-17) — Pflicht in jeder Phase, die ein `C` im Gitter hat.
+   *
+   *  `"far"` ist Kokis Entscheid vom 11.08. (Anti 3/6 v2): erst queren, dann
+   *  gebankt. `"near"` ist die Gegenseite: der Anker steht VOR der Tinte, ein
+   *  Fehlsprung wird also billig wiederholt.
+   *
+   *  Warum die Wahl JE PHASE steht und nicht kapitelweit: sie hängt an der
+   *  BREITE der Querung, und die ist gemessen sehr verschieden. Gemessen am
+   *  ausgelieferten ch01 (Rückweg nach einem Platsch, in Spalten):
+   *
+   *    Phase │ Querung │ far: Fehlsprung / später │ near: Fehlsprung / später
+   *    ──────┼─────────┼──────────────────────────┼──────────────────────────
+   *    p1    │  2 Sp.  │       41 / 2             │        1 / 2
+   *    p2    │ 31 Sp.  │       22 / 4             │        1 / 31 + Querung
+   *    p3    │ 10 Sp.  │       26 / 1             │        1 / 10 + Querung
+   *
+   *  Bei einer zwei Spalten breiten Grube (p1) ist `near` in BEIDE Richtungen
+   *  billiger; bei einem 31 Spalten breiten Becken (p2) würde `near` jeden
+   *  späten Fehltritt den ganzen Motten-Lauf wiederholen lassen. Ein einziger
+   *  kapitelweiter Wert müsste eine der beiden Phasen falsch bedienen — deshalb
+   *  ist es eine Deklaration und keine Konstante. Und sie ist PFLICHT, aus dem
+   *  Grund, aus dem `checkpointStyle` es ist: ein späterer Leser muss „Absicht"
+   *  von „hier hat jemand etwas verschoben" unterscheiden können. */
+  checkpointSide?: "near" | "far";
   plates: Partial<Record<"sky" | "far" | "mid" | "near" | "fg", string>>;
   rows: string[];
   entities: EntitySpec[];
@@ -1356,18 +1410,45 @@ export const checkLevelLaws = (level: PaintLevel): LawFailure[] => {
       for (const [i, p] of crossings.entries()) {
         const cp = checkpoints[i];
         if (!cp) continue; // the count law already spoke
-        const far = eastward ? p.east : p.west; // the bank the child lands on
-        const lo = eastward ? far + 1 : far - CHECKPOINT_AFTER_MAX;
-        const hi = eastward ? far + CHECKPOINT_AFTER_MAX : far - 1;
-        // B · PAIRING — on the FAR bank, and close to it.
-        if (cp.c < lo || cp.c > hi) {
-          const beforeIt = eastward ? cp.c <= p.east : cp.c >= p.west;
+        // B · PAIRING — next to the passage, on the DECLARED side.
+        //
+        // R5-W5 · B4b (Kokis Entscheid 2026-08-17): the side is no longer fixed
+        // to „far". It is read off `ph.checkpointSide`, and the declaration is
+        // MANDATORY here — see the field's own note for the measured reason a
+        // single chapter-wide value cannot serve p1 and p2 at once. What did NOT
+        // change is the distance: either side, the anchor sits WITHIN
+        // CHECKPOINT_AFTER_MAX columns of the bank it belongs to. A retry that
+        // starts a screen away is the defect this clause was written for, and
+        // that is true on both banks.
+        const side = ph.checkpointSide;
+        if (side === undefined) {
           failures.push({
             phase: ph.id,
             law: "checkpoint-placement",
-            detail: beforeIt
-              ? `${ph.id} crosses ink at c${p.west}–${p.east} but its checkpoint sits at (${cp.c},${cp.r}), on the near side — Krakel sketches you AFTER a hard passage, never before it`
-              : `${ph.id} crosses ink at c${p.west}–${p.east} and its checkpoint (${cp.c},${cp.r}) is past the far bank by more than ${CHECKPOINT_AFTER_MAX} columns — retry sits NEXT to the challenge, not a screen away`,
+            detail: `${ph.id} carries a checkpoint but declares no checkpointSide — "near" (retry before the ink) or "far" (bank the crossing) is a design decision, and an undeclared one reads as a slip to the next person who moves a glyph`,
+          });
+        }
+        // die Bank, an der der Anker hängt: bei „far" das Ufer, auf dem das Kind
+        // ANKOMMT, bei „near" das, von dem es ABSPRINGT
+        const bank = side === "near"
+          ? (eastward ? p.west : p.east)
+          : (eastward ? p.east : p.west);
+        // …und die erlaubten Spalten liegen auf der jeweils ABGEWANDTEN Seite
+        const outward = (side === "near") === eastward ? -1 : 1;
+        const near1 = bank + outward;
+        const nearMax = bank + outward * CHECKPOINT_AFTER_MAX;
+        const lo = Math.min(near1, nearMax);
+        const hi = Math.max(near1, nearMax);
+        if (cp.c < lo || cp.c > hi) {
+          const insideOrBeyond = cp.c >= Math.min(p.west, p.east) && cp.c <= Math.max(p.west, p.east)
+            ? "IN the ink itself"
+            : "on the wrong side of it";
+          failures.push({
+            phase: ph.id,
+            law: "checkpoint-placement",
+            detail: side === "near"
+              ? `${ph.id} declares checkpointSide "near" and crosses ink at c${p.west}–${p.east}, but its checkpoint (${cp.c},${cp.r}) is not within ${CHECKPOINT_AFTER_MAX} columns of the take-off bank c${bank} — it sits ${insideOrBeyond}; a near anchor exists so a failed jump is retried AT the jump`
+              : `${ph.id} declares checkpointSide "far" and crosses ink at c${p.west}–${p.east}, but its checkpoint (${cp.c},${cp.r}) is not within ${CHECKPOINT_AFTER_MAX} columns of the landing bank c${bank} — it sits ${insideOrBeyond}; a far anchor banks the crossing and must stand NEXT to it, not a screen away`,
           });
         }
         // C · FOOTING — Krakel sketches you where you can stand.
@@ -1556,5 +1637,185 @@ export const checkLevelLaws = (level: PaintLevel): LawFailure[] => {
       }
     }
   }
+  failures.push(...clothLawFailures(level));
   return failures;
+};
+
+// ── R5-W5 · G4 · THE SCATTERED UNIFORM (UNIFORM_SAMMELN_DESIGN §1/§5) ────────
+
+/** What a uniform piece may carry, and nothing else. Same guard as the rule
+ *  page's `TIP_PARAM_KEYS` and for the same reason: a typo in a params key does
+ *  not fail a schema, it reaches the CHILD — as a word bubble with nothing in it,
+ *  or as a Nachlese twin that stands there again after the piece was found. */
+export const CLOTH_PARAM_KEYS: ReadonlySet<string> = new Set(["wordEn", "repeatOf", "hidden"]);
+
+/** How far apart two pieces sit on one floor, in columns. The design's own
+ *  spacing figure is „ein Teil je Bildschirm-Drittel, Abstand also ≈ 21" — but it
+ *  says in the same breath that the column numbers are a GUARDRAIL and the real
+ *  requirement is a named terrain moment per piece (which the dossier manifest,
+ *  Block 5, makes hard). A law may only demand what terrain can actually give:
+ *  ch01's floors put their landings where they put them, and the tightest honest
+ *  pair in this chapter measures 8 columns. The law therefore holds the design's
+ *  OWN hard floor — the 6 it states for the Nachlese — so that a later hand can
+ *  still not drop two pieces on top of each other. */
+export const CLOTH_MIN_SEPARATION = 6;
+
+/** The Nachlese's own spacing. The design asks for ≥ 6 columns there too, and
+ *  that number cannot be met: the Kleckskammer is 44 columns wide, of which 42
+ *  are standable, and nine pieces at 6 columns apart need 49. Measured, not
+ *  estimated. The room is laid out at the widest even spacing it can carry
+ *  (4–5 columns) and the law holds THAT. Reported to the architect as a
+ *  design↔geometry conflict rather than silently rounded away. */
+export const CLOTH_P9_MIN_SEPARATION = 4;
+
+/** The jump band: a piece meant as a jump target sits 2 to 4 tiles above its own
+ *  run line. The upper bound is not a taste call — `REACH_ENVELOPE.JUMP_UP` is
+ *  the proven jump height this chapter checks reachability against, so a piece
+ *  at 5 would be a piece no child can take. */
+export const CLOTH_JUMP_BAND: readonly [number, number] = [2, REACH_ENVELOPE.JUMP_UP];
+
+/** The run line a piece sits above: the LOWEST standable row within five columns
+ *  of it. A phase like p3 is a staircase, so one global floor line would call a
+ *  piece on the third step „five tiles up" and a piece on the first step
+ *  „ground" when both are simply on the path — the local reading is the one that
+ *  matches what a child walking there experiences. */
+const runLineBelow = (rows: readonly string[], c: number, r: number): number => {
+  const width = rows[0]?.length ?? 0;
+  let line = r;
+  for (let cc = Math.max(0, c - 5); cc <= Math.min(width - 1, c + 5); cc++) {
+    // `standable` alone is not enough here, and the shipped chapter proved it:
+    // the SURFACE OF AN INK POOL passes it (a cell with something solid under it
+    // and headroom above), so a piece lying beside a pool measured as though the
+    // pool floor were its run line — p3's socks came out „5 tiles up" while lying
+    // flat on the ground next to the pond. A run line is somewhere a child can
+    // actually stand, and ink is the one place they cannot.
+    for (let rr = r; rr < rows.length; rr++) {
+      if (standable(rows, cc, rr) && !submerged(rows, cc, rr)) line = Math.max(line, rr);
+    }
+  }
+  return line;
+};
+
+/**
+ * The uniform's three laws, kept in their own function so the chapter's one big
+ * law body does not grow a fourth page and so the lane that owns them owns one
+ * place. Called from `checkLevelLaws` above.
+ *
+ *  · `cloth-honesty` — every piece names its word, every word lies on the floors
+ *    exactly ONCE, the arena stays free, and every Nachlese twin truthfully names
+ *    the piece it repeats. The last one is load-bearing: the engine silences a
+ *    twin by looking its `repeatOf` up in the pickup ledger, so a twin that names
+ *    nothing (or names the wrong piece) is a piece the child meets twice and a
+ *    naming card fired on a word they already have.
+ *  · `cloth-reach` — no piece stands IN the ink, and none sits with its back
+ *    against it. Visible beside the danger is wanted (design §1); reachable only
+ *    THROUGH it is forbidden. Full reachability is not repeated here: `cloth`
+ *    joined `PICKUP_ROLES`, so `entity-reachable` already covers it.
+ *  · `cloth-spacing` — per floor: exactly three pieces, at least one in the jump
+ *    band, at least one on the run line, and no two closer than
+ *    `CLOTH_MIN_SEPARATION`. In the Nachlese: all on the floor, spaced by
+ *    `CLOTH_P9_MIN_SEPARATION`.
+ */
+export const clothLawFailures = (level: PaintLevel): LawFailure[] => {
+  const out: LawFailure[] = [];
+  const cloth = (p: PhaseSpec): EntitySpec[] => p.entities.filter((e) => e.role === "cloth");
+  const wordOf = (e: EntitySpec): string =>
+    typeof e.params?.wordEn === "string" ? e.params.wordEn.trim() : "";
+
+  // ── honesty, on the floors ────────────────────────────────────────────────
+  const homeOf = new Map<string, string>(); // piece id → its word
+  const firstSeen = new Map<string, string>(); // word → the piece that owns it
+  for (const ph of level.phases) {
+    for (const e of cloth(ph)) {
+      const w = wordOf(e);
+      if (w === "") {
+        out.push({ phase: ph.id, law: "cloth-honesty", detail: `${e.id} carries no params.wordEn — the find would flash an empty bubble and its card would ask about nothing` });
+        continue;
+      }
+      homeOf.set(e.id, w);
+      const first = firstSeen.get(w);
+      if (first !== undefined) {
+        out.push({ phase: ph.id, law: "cloth-honesty", detail: `„${w}" lies on the floors twice (${first} and ${e.id}) — each word is found exactly once, or the every-third-find card asks about a word the child already banked` });
+      } else firstSeen.set(w, e.id);
+      if (e.params?.repeatOf !== undefined) {
+        out.push({ phase: ph.id, law: "cloth-honesty", detail: `${e.id} declares repeatOf on a FLOOR — repeating belongs to the Kleckskammer's Nachlese; a floor piece that repeats another would be silenced by the ledger and never found at all` });
+      }
+      for (const k of Object.keys(e.params ?? {})) {
+        if (!CLOTH_PARAM_KEYS.has(k)) {
+          out.push({ phase: ph.id, law: "cloth-honesty", detail: `${e.id}: unknown params field „${k}" — a uniform piece carries ${[...CLOTH_PARAM_KEYS].join(", ")} and nothing else; a typo here reaches the child as a missing word` });
+        }
+      }
+    }
+  }
+  if (level.arena) {
+    for (const e of cloth(level.arena)) {
+      out.push({ phase: level.arena.id, law: "cloth-honesty", detail: `${e.id} lies in the arena — that room belongs to the boss, and a collectible there competes with a fight (design §8, answer 3)` });
+    }
+  }
+
+  // ── the Nachlese: a second chance, never a second piece ───────────────────
+  if (level.bonus) {
+    for (const e of cloth(level.bonus)) {
+      const rep = typeof e.params?.repeatOf === "string" ? e.params.repeatOf : "";
+      if (rep === "") {
+        out.push({ phase: level.bonus.id, law: "cloth-honesty", detail: `${e.id} repeats nothing — every piece down here is a SECOND chance at a piece from a floor and must name it in params.repeatOf, or the ledger cannot silence it once the original is found` });
+        continue;
+      }
+      const home = homeOf.get(rep);
+      if (home === undefined) {
+        out.push({ phase: level.bonus.id, law: "cloth-honesty", detail: `${e.id} repeats „${rep}", which is no uniform piece on any floor — the ledger would never silence this twin, so a child who already has the piece meets it a second time` });
+      } else if (home !== wordOf(e)) {
+        out.push({ phase: level.bonus.id, law: "cloth-honesty", detail: `${e.id} says „${wordOf(e)}" but repeats ${rep}, which is „${home}" — the twin and its original must be the same word` });
+      }
+      for (const k of Object.keys(e.params ?? {})) {
+        if (!CLOTH_PARAM_KEYS.has(k)) {
+          out.push({ phase: level.bonus.id, law: "cloth-honesty", detail: `${e.id}: unknown params field „${k}" — see CLOTH_PARAM_KEYS` });
+        }
+      }
+    }
+  }
+
+  // ── reach and placement ───────────────────────────────────────────────────
+  const placed = [...level.phases.map((p) => ({ p, floor: true })), ...(level.bonus ? [{ p: level.bonus, floor: false }] : [])];
+  for (const { p, floor } of placed) {
+    const here = cloth(p);
+    if (here.length === 0) continue;
+
+    for (const e of here) {
+      if (submerged(p.rows, e.c, e.r)) {
+        out.push({ phase: p.id, law: "cloth-reach", detail: `${e.id} at (${e.c},${e.r}) stands IN the ink — the warp fires there, so the piece is taken by nobody` });
+      }
+      // the ground the piece rests on, and the ground either side of it: if any
+      // of the three is ink, the child is picking it up on the very brink
+      const brink = [-1, 0, 1].some((d) => glyphAt(p.rows, e.c + d, e.r + 1) === "w");
+      if (brink) {
+        out.push({ phase: p.id, law: "cloth-reach", detail: `${e.id} at (${e.c},${e.r}) sits on the very brink — the design allows a piece 1 to 4 tiles from an ink edge, but wants at least one tile of firm ground between, so a misstep while picking it up does not end in the ink` });
+      }
+    }
+
+    const cols = here.map((e) => e.c).sort((a, b) => a - b);
+    const min = floor ? CLOTH_MIN_SEPARATION : CLOTH_P9_MIN_SEPARATION;
+    for (let i = 1; i < cols.length; i++) {
+      if (cols[i]! - cols[i - 1]! < min) {
+        out.push({ phase: p.id, law: "cloth-spacing", detail: `two pieces sit ${cols[i]! - cols[i - 1]!} columns apart (minimum ${min}) — pieces that share a screen are one find, not two` });
+      }
+    }
+
+    const heights = here.map((e) => runLineBelow(p.rows, e.c, e.r) - e.r);
+    if (floor) {
+      if (here.length !== 3) {
+        out.push({ phase: p.id, law: "cloth-spacing", detail: `${here.length} uniform pieces on this floor — the chapter places three per floor (3/3/3, design §1)` });
+      }
+      const [lo, hi] = CLOTH_JUMP_BAND;
+      if (!heights.some((h) => h >= lo && h <= hi)) {
+        out.push({ phase: p.id, law: "cloth-spacing", detail: `no piece sits ${lo}–${hi} tiles above its run line (measured: ${heights.join(", ")}) — height is the main axis of a jump-and-run, and a floor whose pieces all lie underfoot never asks for a jump` });
+      }
+      if (!heights.some((h) => h === 0)) {
+        out.push({ phase: p.id, law: "cloth-spacing", detail: `no piece lies ON the run line (measured: ${heights.join(", ")}) — at least one find per floor must cost nothing but walking, or a child who cannot make the jump loses the word as well` });
+      }
+    } else if (heights.some((h) => h !== 0)) {
+      out.push({ phase: p.id, law: "cloth-spacing", detail: `the Nachlese holds a piece off the floor (measured: ${heights.join(", ")}) — down here reachability comes before choreography (design §1)` });
+    }
+  }
+  return out;
 };

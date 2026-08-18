@@ -86,7 +86,11 @@ export type PlayerEvent =
 
 export interface StepOpts {
   slippery?: boolean; // phase-level surface law
-  canRun?: boolean; // the sprint verb (ch13 unlock)
+  // R5-W5 · F6 · D-88: hier stand „(ch13 unlock)". Falsch seit ch01 seine
+  // Fähigkeiten bekam — `ch01.level.json` listet `["jump", "run"]`, das Kind
+  // rennt also vom ersten Raum an (2,25 px/t, die Zahl, aus der die Arena ihre
+  // Wartezeit und ihre Scherben-Geschwindigkeit ableitet).
+  canRun?: boolean; // the sprint verb (granted per level; ch01 grants it)
   canHover?: boolean; // the quill-rotor verb (ch04 unlock)
   canPunch?: boolean; // the thrown-fist verb (ch01-mid unlock)
   canHang?: boolean; // the ledge verb (ch02 unlock)

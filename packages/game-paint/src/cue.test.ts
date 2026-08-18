@@ -9,7 +9,7 @@
 // screenshot: no machine edge, an edge that ramps instead of stepping, and the
 // same mark every time the same being is asked about.
 import { describe, expect, it } from "vitest";
-import { CUE_BOB_PX, CUE_BOB_TICKS, CUE_CHALK, CUE_CORE, CUE_INK, CUE_JITTER_PX, CUE_MOTE_ALPHA_PEAK, CUE_MOTE_COUNT, TREASURE_BACK_ALPHA, TREASURE_BACK_COLOUR, TREASURE_BOB_PX, TREASURE_BOB_TICKS, TREASURE_MOTE_ALPHA_PEAK, TREASURE_MOTE_TICKS, TREASURE_SHAFT_ALPHA, TREASURE_SHAFT_H_MUL, chalkArrow, hasNoStraightMachineEdge, treasureBobPx, treasureCue } from "./cue.ts";
+import { CUE_BOB_PX, CUE_BOB_TICKS, CUE_CHALK, CUE_CORE, CUE_INK, CUE_JITTER_PX, CUE_MOTE_ALPHA_PEAK, CUE_MOTE_COUNT, CUE_GAP_PX, cueMarkY, TREASURE_BACK_ALPHA, TREASURE_BACK_COLOUR, TREASURE_BOB_PX, TREASURE_BOB_TICKS, TREASURE_MOTE_ALPHA_PEAK, TREASURE_MOTE_TICKS, TREASURE_SHAFT_ALPHA, TREASURE_SHAFT_H_MUL, chalkArrow, hasNoStraightMachineEdge, treasureBobPx, treasureCue } from "./cue.ts";
 import { SHAFT_EDGE_MAX, shaftQuads } from "./air.ts";
 
 describe("PK-R6 · H2 · the hand-drawn ↑ cue", () => {
@@ -341,5 +341,39 @@ describe("the treasure backing (the blind critic's fix: darken behind)", () => {
       const c = at(t);
       expect(c.backing[0]!.cy).toBeCloseTo(c.halo[0]!.cy, 6);
     }
+  });
+});
+
+// ── R5-W5 · F6 · DIE MARKE WEICHT ÜBER DEN KOPF AUS ──────────────────────────
+// F5s gefiledeter Befund: seit das Kind in voller Höhe steht, verdeckt es die
+// Marke über einem niedrigen Ding, neben dem es steht — sie liegt hinter ihm
+// (Tiefe 9,5 gegen 10) und saß immer nur über der Oberkante des DINGS.
+describe("R5-F6 · cueMarkY — die Marke sitzt über dem höheren der zwei Köpfe", () => {
+  it("das Ding ist höher: alles bleibt, wie es war", () => {
+    // ein hohes Ding (Oberkante 40) neben einem Kind (Oberkante 60, also tiefer)
+    expect(cueMarkY(40, 60)).toBe(40 - CUE_GAP_PX);
+  });
+
+  it("★ das KIND ist höher: die Marke steigt über seinen Kopf statt in ihm zu verschwinden", () => {
+    // ein niedriges Ding (Oberkante 76 = 24 px hoch auf Boden 100) neben dem Kind
+    // (Oberkante 65 = ~35 px hoch) — vorher saß die Marke bei 69, mitten in ihm
+    expect(cueMarkY(76, 65)).toBe(65 - CUE_GAP_PX);
+    expect(cueMarkY(76, 65)).toBeLessThan(65); // über seinem Kopf, nicht darin
+  });
+
+  it("der Abstand ist derselbe, egal wer gewinnt — eine Marke, ein Abstand", () => {
+    expect(40 - cueMarkY(40, 60)).toBe(CUE_GAP_PX);
+    expect(65 - cueMarkY(76, 65)).toBe(CUE_GAP_PX);
+  });
+
+  it("gleich hoch ist kein Sonderfall", () => {
+    expect(cueMarkY(50, 50)).toBe(50 - CUE_GAP_PX);
+  });
+
+  it("die Marke, die chalkArrow daraus baut, liegt wirklich über der Oberkante", () => {
+    const y = cueMarkY(76, 65);
+    const cue = chalkArrow(100, y, 11, 3, 0, true); // reduzierte Bewegung: kein Wippen
+    const unten = Math.max(...cue.bands.flatMap((b) => b.pts.map((p) => p.y)));
+    expect(unten, "kein Teil der Marke reicht in den Kopf des Kindes").toBeLessThan(65);
   });
 });

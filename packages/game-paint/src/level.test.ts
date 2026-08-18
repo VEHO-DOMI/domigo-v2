@@ -21,6 +21,14 @@ const phase = (rows: string[], over: Record<string, unknown> = {}) => ({
   entities: [],
   links: [],
   exit: { to: "done" },
+  // R5-W5 · B4b: seit Kokis Entscheid 2026-08-17 muss jede Phase mit einem `C`
+  // SAGEN, welche Seite der Schwelle den Anker trägt (`checkpoint-placement`).
+  // `"far"` steht hier, weil genau das die Doktrin ist, die die Fixtures dieser
+  // Datei prüfen (Anti 3/6 v2: Anker hinter der Tinte) — die Prüfungen behalten
+  // damit ihre Absicht Wort für Wort. Ein Test, der die andere Seite braucht,
+  // überschreibt es über `over`; die Seiten-Spiegelung selbst liegt in
+  // `checkpoint-silence.test.ts`.
+  checkpointSide: "far" as const,
   ...over,
 });
 
@@ -900,17 +908,27 @@ describe("PB-T2 · envelope law (derived from stepPlayer)", () => {
       expect(laws(cross({ c: 14, r: 18 }))).toEqual([]); // die letzte erlaubte Spalte
     });
 
-    it("DIE UMKEHR: ein Checkpoint VOR der Tinte fällt durch", () => {
+    it("DIE UMKEHR: ein Checkpoint VOR der Tinte fällt durch — wenn die Phase »far« sagt", () => {
+      // R5-W5 · B4b: bis zum 17.08. war »vor der Tinte« IMMER ein Verstoß, und
+      // die Meldung sagte das auch so („never before it"). Kokis Entscheid macht
+      // die Seite zur Deklaration: dieselbe Zelle ist unter `"near"` richtig und
+      // unter `"far"` falsch. Die Absicht dieser Prüfung bleibt damit erhalten —
+      // sie prüft jetzt ausdrücklich den `"far"`-Fall (das Fixture sagt `"far"`),
+      // und das Gegenstück (`"near"` grün, `"far"` rot an DERSELBEN Zelle) steht
+      // als Paar in `checkpoint-silence.test.ts`.
       const f = checkLevelLaws(parsePaintLevel(level(cross({ c: 7, r: 18 }))));
       const p = f.find((x) => x.law === "checkpoint-placement");
-      expect(p, "vor der Passage ist jetzt ein Verstoß").toBeDefined();
-      expect(p!.detail).toMatch(/on the near side.*AFTER a hard passage, never before it/);
+      expect(p, "vor der Passage ist bei »far« ein Verstoß").toBeDefined();
+      expect(p!.detail).toMatch(/declares checkpointSide "far".*not within \d+ columns of the landing bank/);
     });
 
     it("TAMPER: einen Schritt zu weit (5 statt 4 Spalten) fällt ebenfalls durch", () => {
       expect(laws(cross({ c: 14, r: 18 })), "c14 = genau am Rand").toEqual([]);
       const f = checkLevelLaws(parsePaintLevel(level(cross({ c: 15, r: 18 }))));
-      expect(f.find((x) => x.law === "checkpoint-placement")?.detail).toMatch(/past the far bank.*retry sits NEXT to the challenge/);
+      // R5-W5 · B4b: die Entfernungs-Klausel ist unverändert (CHECKPOINT_AFTER_MAX),
+      // nur der Wortlaut nennt jetzt die Seite mit, weil es zwei davon gibt.
+      expect(f.find((x) => x.law === "checkpoint-placement")?.detail)
+        .toMatch(/declares checkpointSide "far".*not within \d+ columns of the landing bank.*must stand NEXT to it, not a screen away/);
     });
 
     it("TAMPER: gar kein Checkpoint an einer gekreuzten Tinte fällt durch", () => {
@@ -999,4 +1017,111 @@ describe("B3 · envelope law je Kopffreiheits-Stufe (aus stepPlayer abgeleitet)"
   // 51 Steh-Knoten werden STRENGER (5 auf Rand 1, 46 auf Rand 2 — vorher überall
   // 3 gesegnet), 291 werden GROSSZÜGIGER (Rand 4 unter offenem Himmel), 13
   // bleiben gleich.
+});
+
+// ── R5-W5 · G4 · THE SCATTERED UNIFORM ───────────────────────────────────────
+// Its own block, on purpose: the three cloth laws live in their own exported
+// function (`clothLawFailures`) and are tested through `checkLevelLaws`, i.e. the
+// way the gate actually calls them. Every case is a PAIR — the same world twice,
+// with exactly the one property under test moved — because a case that also
+// fires when the logic is wrong has proven nothing.
+describe("R5-W5 · G4 · cloth laws (die verstreute Uniform)", () => {
+  // a floor with a run line at r17, a bench at r16 c4-5 (so a piece on it sits
+  // 2 tiles up), and an ink pocket at c10-11 so the reach law has something to bite
+  const FLOOR = [
+    "################",
+    ...Array.from({ length: 14 }, () => "................"),
+    "........##......", // r15 — the bench: a piece here sits 2 tiles above the run line
+    "..S.........X...", // r16
+    "................", // r17 — the run line
+    "##########ww####", // r18: ink at c10-11
+    "################",
+  ];
+  const piece = (id: string, c: number, r: number, over: Record<string, unknown> = {}) => ({
+    id, role: "cloth" as const, skin: `cloth_${id}`, c, r, tier: "E" as const,
+    params: { wordEn: id, ...over },
+  });
+  const world = (entities: unknown[], bonus?: unknown[]): PaintLevel =>
+    level(FLOOR, {
+      phases: [phase(FLOOR, { entities }) as PaintLevel["phases"][number]],
+      ...(bonus ? { bonus: phase(FLOOR, { id: "p9", entities: bonus }) as PaintLevel["phases"][number] } : {}),
+    });
+  const lawsOn = (lvl: PaintLevel, law: string) =>
+    checkLevelLaws(lvl).filter((f) => f.law === law).map((f) => f.detail);
+
+  // three pieces that satisfy spacing, the jump band and the run line
+  // spaced ≥6 apart, one in the jump band (the bench), one on the run line, and
+  // none of them within a tile of the ink at c10-11
+  const THREE = [piece("shoe", 2, 17), piece("hairband", 9, 15), piece("shirt", 15, 17)];
+
+  it("a lawful floor is silent", () => {
+    const f = checkLevelLaws(world(THREE)).filter((x) => x.law.startsWith("cloth-"));
+    expect(f).toEqual([]);
+  });
+
+  it("cloth-honesty · a piece without its word is red — the toast would be empty", () => {
+    const broken = [{ ...piece("shirt", 12, 17), params: {} }, piece("hairband", 4, 15), piece("shoe", 2, 17)];
+    expect(lawsOn(world(broken), "cloth-honesty").join(" ")).toMatch(/carries no params.wordEn/);
+  });
+
+  it("cloth-honesty · the same word twice on the floors is red (the third-find card would ask a banked word)", () => {
+    const twice = [piece("shirt", 12, 17), { ...piece("shirt", 4, 15), id: "shirt2" }, piece("shoe", 2, 17)];
+    expect(lawsOn(world(twice), "cloth-honesty").join(" ")).toMatch(/lies on the floors twice/);
+  });
+
+  it("cloth-honesty · a typo in a params key is red (it reaches the child as a missing word)", () => {
+    const typo = [piece("shirt", 12, 17, { wordDe: "Hemd" }), piece("hairband", 4, 15), piece("shoe", 2, 17)];
+    expect(lawsOn(world(typo), "cloth-honesty").join(" ")).toMatch(/unknown params field/);
+  });
+
+  // ── the Nachlese pair: the SAME twin, once pointing home and once not ───────
+  it("cloth-honesty · a p9 twin that names its original is silent", () => {
+    const twin = [{ ...piece("shirt", 6, 17, { repeatOf: "shirt" }), id: "p9-shirt" }];
+    expect(lawsOn(world(THREE, twin), "cloth-honesty")).toEqual([]);
+  });
+
+  it("cloth-honesty · …and the same twin pointing at nothing is red (the ledger could never silence it)", () => {
+    const twin = [{ ...piece("shirt", 6, 17, { repeatOf: "nicht-da" }), id: "p9-shirt" }];
+    expect(lawsOn(world(THREE, twin), "cloth-honesty").join(" ")).toMatch(/which is no uniform piece on any floor/);
+  });
+
+  it("cloth-honesty · a twin that repeats one piece but says another word is red", () => {
+    const twin = [{ ...piece("shoe", 6, 17, { repeatOf: "shirt" }), id: "p9-shoe" }];
+    expect(lawsOn(world(THREE, twin), "cloth-honesty").join(" ")).toMatch(/must be the same word/);
+  });
+
+  it("cloth-reach · a piece standing IN the ink is red", () => {
+    const wet = [piece("hairband", 4, 15), piece("shirt", 10, 17), piece("shoe", 2, 17)];
+    expect(lawsOn(world(wet), "cloth-reach").join(" ")).toMatch(/stands IN the ink|on the very brink/);
+  });
+
+  it("cloth-reach · …and one tile of firm ground further along is fine (visible beside the danger IS wanted)", () => {
+    const dry = [piece("hairband", 4, 15), piece("shirt", 8, 17), piece("shoe", 2, 17)];
+    expect(lawsOn(world(dry), "cloth-reach")).toEqual([]);
+  });
+
+  // the case the shipped chapter found: `standable` says yes to the SURFACE of an
+  // ink pool, so a piece lying flat beside one used to measure as a jump target
+  it("cloth-spacing · the surface of an ink pool is not a run line", () => {
+    // c8 is one tile from the pool at c10-11; the piece lies flat on r17
+    const beside = [piece("shoe", 2, 17), piece("shirt", 8, 17), piece("hairband", 15, 15)];
+    const heights = lawsOn(world(beside), "cloth-spacing").join(" ");
+    // it must NOT be reported as „nothing on the run line": the piece at c8 IS on it
+    expect(heights).not.toMatch(/lies ON the run line/);
+  });
+
+  it("cloth-spacing · two pieces on one screen are one find, not two", () => {
+    const tight = [piece("hairband", 4, 15), piece("shirt", 6, 17), piece("shoe", 2, 17)];
+    expect(lawsOn(world(tight), "cloth-spacing").join(" ")).toMatch(/columns apart/);
+  });
+
+  it("cloth-spacing · a floor whose pieces all lie underfoot never asks for a jump", () => {
+    const flat = [piece("hairband", 2, 17), piece("shirt", 9, 17), piece("shoe", 15, 17)];
+    expect(lawsOn(world(flat), "cloth-spacing").join(" ")).toMatch(/tiles above its run line/);
+  });
+
+  it("cloth-spacing · …and a floor with nothing on the run line loses the word for the child who cannot jump", () => {
+    const high = [piece("hairband", 4, 15), piece("shirt", 12, 15), piece("shoe", 2, 15)];
+    expect(lawsOn(world(high), "cloth-spacing").join(" ")).toMatch(/lies ON the run line/);
+  });
 });

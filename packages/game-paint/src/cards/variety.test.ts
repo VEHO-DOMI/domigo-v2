@@ -235,10 +235,15 @@ describe("15 · the RHYTHM law — computed by RUNNING the router", () => {
 
   it("15e · refuses one card greeting the child at two different pools", () => {
     // this is what the three phase-keyed door cursors did before G1: p1, p2 and
-    // p3 each restarted the same ten-card series at card one
+    // p3 each restarted the same ten-card series at card one.
+    // R5-W5 · G4 · D-195: the fixture is now a ONE-card pool bound to two phases.
+    // The two-card version used to rely on both pools opening at index 0, which
+    // is exactly the thing that changed — a fixture that depends on where a hash
+    // happens to land tests the hash, not the law. With a single card the pool
+    // can only ever open on it, in both phases, which is the situation 15e is
+    // about: the child is greeted by the identical card at two different doors.
     const phaseScoped = [
       choice("shared", { use: "door", skins: ["door"], phases: ["p1", "p2"], form: "command" }),
-      choice("other", { use: "door", skins: ["door"], phases: ["p1", "p2"], form: "social-formula" }),
     ];
     expect(laws(phaseScoped)).toContain("15e");
   });

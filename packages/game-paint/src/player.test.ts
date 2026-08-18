@@ -1,5 +1,8 @@
 import { describe, expect, it } from "vitest";
 import { PAINT, SUBS, TILE } from "./paint.ts";
+import { Sim as PaintSim } from "./sim.ts";
+import { GUARDIAN_WIPE_REACH_PX } from "./entities.ts";
+import { type PaintLevel } from "./level.ts";
 import {
   applyKnockback,
   IDLE_PAD,
@@ -405,5 +408,139 @@ describe("the ring swing (via the player)", () => {
     expect(s.st.swing).toBeNull();
     expect(s.st.vy).toBeLessThan(0); // released upward-ish
     expect(s.events.map((e) => e.type)).toContain("jumped");
+  });
+});
+
+// ── R5-W5 · F6 · DIE WISCH-KLAMMER (R122, H3s Befund) ────────────────────────
+// H3 hat gemessen und fotografiert (Report H3 §7, Bild 05): solange die besiegte
+// Tafel auf den Brettern sitzt, läuft das Kind durch sie hindurch — 36 Ticks
+// gedrückt sind 81 px Weg, und sie ist nur 74 px breit. Eine Klammer dagegen gab
+// es nicht: `player.ts`, `sim.ts` und `collide.ts` kannten weder `wipe` noch
+// `boss` noch `tafel`.
+//
+// Diese Prüfung hat ZWEI Hälften, und die zweite ist die wichtigere: eine
+// Klammer, die das Kind aufhält, darf ihm die Berührung nicht wegnehmen. Die
+// Berührung fragt `< GUARDIAN_WIPE_REACH_PX`, also strikt darunter — eine
+// Klammer auf 45 statt 44 würde das Wischen unerreichbar machen und die Tafel in
+// ihre Wartezeit laufen lassen. Genau das ist der Fall, in dem richtig und
+// plausibel-falsch auseinandergehen, also ist er hier ein eigener Test.
+describe("R5-F6 · die Wisch-Klammer: das Kind hält an ihrer Kante, und wischt trotzdem", () => {
+  const W = 40;
+  const row = (fill: string): string => fill.repeat(W);
+  const put = (base: string, at: number, glyph: string): string =>
+    base.slice(0, at) + glyph + base.slice(at + 1);
+  const FLOOR = [
+    ...Array.from({ length: 14 }, () => row(".")),
+    put(row("."), 20, "S"),
+    row("#"),
+    row("#"),
+  ];
+
+  const arena = (): PaintLevel => ({
+    schema: "paintLevel@1",
+    id: "g1-ch99",
+    chapter: "ch99",
+    draft: true,
+    name: "Test",
+    goalDe: "x",
+    whyDe: "x",
+    hintsDe: [],
+    collectNounDe: "x",
+    abilities: ["jump"],
+    phases: [{
+      id: "p1",
+      nameDe: "Test",
+      surface: "normal",
+      plates: {},
+      rows: [...FLOOR],
+      entities: [{ id: "tafel", role: "guardian", skin: "tafel", c: 26, r: 14, tier: "E", params: {} }],
+      links: [],
+      exit: { to: "done" },
+    }],
+  });
+
+  /** Eine Tafel, die auf den Brettern sitzt und aufs Kind wartet — der Zustand
+   *  aus H3s Bild. Ihre Lage wird festgeschrieben, damit der Abstand eine
+   *  Aussage über die Klammer ist und nicht über ihre Choreografie. */
+  const wartendeTafel = (state: "wipeable" | "wipe") => {
+    const s = new PaintSim({ level: arena(), phaseId: "p1", grantedAbilities: () => [], freedCageIds: () => [] });
+    const board = s.world.entities.find((e) => e.role === "guardian");
+    if (board === undefined) throw new Error("keine Tafel in der Vorrichtung");
+    board.state = state;
+    board.timer = 0;
+    board.hp = 3;
+    board.x = (26 * TILE + TILE / 2) * SUBS;
+    board.y = 15 * TILE * SUBS; // dieselbe Standlinie wie das Kind
+    return { s, board };
+  };
+
+  /** Drückt „nach rechts" und gibt den kleinsten Abstand zurück, den das Kind
+   *  zur Mitte der Tafel je hatte — plus die Zustände, die sie durchlief. */
+  const laufeHinein = (ticks: number, state: "wipeable" | "wipe" = "wipeable") => {
+    const { s, board } = wartendeTafel(state);
+    let minPx = Infinity;
+    const states = new Set<string>([board.state]);
+    for (let t = 0; t < ticks; t++) {
+      for (const ev of s.step(pad({ right: true }))) {
+        if (ev.type === "task") s.solveTask(ev.req.ctx);
+      }
+      states.add(board.state);
+      if (board.state === "wipeable" || board.state === "wipe") {
+        minPx = Math.min(minPx, Math.abs(s.player.x - board.x) / SUBS);
+      }
+    }
+    return { minPx, states, s, board };
+  };
+
+  it("★ das Kind läuft NICHT mehr in die Tafel — 90 Ticks gedrückt halten es an ihrer Kante", () => {
+    const { minPx } = laufeHinein(90);
+    // 45 px ist die Kanten-Berührung (halbe Tafel 37,1 + halbes Kind 8);
+    // die Klammer sitzt einen Pixel darunter, also darf 44 nie unterschritten
+    // werden. Ohne die Klammer waren es H3s 81 px Weg mitten hinein.
+    expect(minPx).toBeGreaterThanOrEqual(GUARDIAN_WIPE_REACH_PX - 1);
+  });
+
+  it("★ …und die Berührung geht trotzdem auf: aus »sie wartet« wird »es wischt«", () => {
+    const { states, board } = laufeHinein(90);
+    expect(states.has("wipe"), "die Klammer darf das Wischen nicht wegklemmen").toBe(true);
+    // `untie` allein beweist nichts — dort landet sie nach einem GELUNGENEN
+    // Wischen genauso wie nach abgelaufener Wartezeit. Der Unterschied steht in
+    // `hp`: nur das Wischen nimmt eine Kritzel-Schicht weg.
+    expect(board.hp, "eine Schicht ist wirklich weg").toBe(2);
+  });
+
+  it("die Klammer nimmt nur die Geschwindigkeit NACH INNEN — weggehen geht jederzeit", () => {
+    const { s, board } = wartendeTafel("wipeable");
+    const halteSieFest = (): void => {
+      // Sie bleibt für diesen Test auf den Brettern stehen: geprüft wird die
+      // KLAMMER, nicht ihre Choreografie — sonst fliegt sie nach dem Wischen
+      // los und der gemessene Abstand redet über ihre Bahn statt über die
+      // Klammer (genau daran ist die erste Fassung dieses Tests gescheitert).
+      board.state = "wipeable";
+      board.timer = 0;
+      board.x = (26 * TILE + TILE / 2) * SUBS;
+      board.y = 15 * TILE * SUBS;
+    };
+    for (let t = 0; t < 40; t++) { halteSieFest(); s.step(pad({ right: true })); }
+    const anDerKante = Math.abs(s.player.x - board.x) / SUBS;
+    expect(anDerKante, "erst einmal steht er an ihrer Kante").toBeLessThan(GUARDIAN_WIPE_REACH_PX + 1);
+    for (let t = 0; t < 20; t++) { halteSieFest(); s.step(pad({ left: true })); }
+    expect(Math.abs(s.player.x - board.x) / SUBS, "nach links kommt er frei weg").toBeGreaterThan(anDerKante + 10);
+  });
+
+  it("ohne Bodenzustand klemmt nichts — eine fliegende Tafel ist keine Wand", () => {
+    const s = new PaintSim({ level: arena(), phaseId: "p1", grantedAbilities: () => [], freedCageIds: () => [] });
+    const board = s.world.entities.find((e) => e.role === "guardian");
+    if (board === undefined) throw new Error("keine Tafel in der Vorrichtung");
+    board.state = "fly";
+    board.x = (26 * TILE + TILE / 2) * SUBS;
+    board.y = 15 * TILE * SUBS;
+    const startX = s.player.x;
+    for (let t = 0; t < 60; t++) {
+      for (const ev of s.step(pad({ right: true }))) {
+        if (ev.type === "task") s.solveTask(ev.req.ctx);
+      }
+    }
+    expect(s.player.x, "das Kind kommt voran").toBeGreaterThan(startX);
   });
 });

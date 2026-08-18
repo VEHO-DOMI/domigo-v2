@@ -47,11 +47,25 @@ const nextConfig: NextConfig = {
   // resolvers were emitting NO key at all while this header promised a year of
   // immutability over 66 MB of keen art.) Gated on VERCEL_ENV on purpose: an
   // immutable header locally would make the art lanes reload to see a repaint.
+  //
+  // R5 · S1 · DER KLANG BEKOMMT DIESELBE REGEL — aus demselben Grund.
+  // Die Klang-Dateien des gemalten Kapitels ändern sich nie, und sie sind klein
+  // genug, dass die Rundreise zur CDN mehr kostet als die Bytes. Sicher ist das
+  // aus demselben Grund wie oben: JEDE Audio-Adresse trägt den Fingerabdruck
+  // ihrer eigenen Datei (`packages/game-paint/src/audio/audioManifest.ts#audioUrl`,
+  // gespeist aus dem generierten `audioFiles.ts`) — eine neu gemasterte Datei
+  // kommt unter einer neuen Adresse an. Der Fingerabdruck entsteht dort beim
+  // MASTERN und nicht wie bei den Bildern zur Laufzeit, weil `stamped()` mit
+  // `node:fs` liest und der Klang-Lader im Browser läuft.
   ...(process.env.VERCEL_ENV
     ? {
         headers: async () => [
           {
             source: "/art/:path*",
+            headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }],
+          },
+          {
+            source: "/audio/:path*",
             headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }],
           },
         ],

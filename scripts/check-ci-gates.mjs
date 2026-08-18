@@ -69,6 +69,10 @@ const SELFTEST_ONLY = {
     "misst, wie dunkel die Welt hinter einer offenen Karte ist — dafür muss die Karte offen sein, also braucht es das laufende Spiel",
   "shoot-card-bench.mjs":
     "startet einen eigenen Chrome und fotografiert die Kartenbank; der Selbsttest prüft die Ausschnitt-Rechnung (D-102) ohne Browser",
+  // E6/R115 (beim Post-Zug-Merge dazugekommen): E6 hat sein Rezept-Skript als
+  // sechstes Werkzeug angehaengt. Wortlaut aus E6s eigener ci.yml-Zeile.
+  "perf-visible.mjs":
+    "misst die Perf-Tabelle aus SICHTBAREM Chrome gegen einen laufenden Server — in CI laeuft kein Chrome; der Selbsttest prueft nur, dass die Kontrollschwelle (Kontrollseite unter 58 fps ⇒ Abbruch) ihr rotes Licht erreichen kann",
   "shoot-world.mjs":
     "schießt Bildreihen aus einem eigenen Chrome gegen einen laufenden Dev-Server; der Selbsttest prüft ohne Browser, was ohne Browser prüfbar ist — die Kampf-Abtastrate gegen die Takt-Konstanten aus entities.ts und den Beipackzettel (D-259)",
 };

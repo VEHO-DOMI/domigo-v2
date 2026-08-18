@@ -46,7 +46,8 @@ export type PaintedIconName =
   | "blot" // Klecks himself (🖤)
   | "brush" // the chapter's own mark, in the HUD (🖌)
   | "slate" // the Tafel (🖼)
-  | "rosette"; // a perfect bonus run (🏵)
+  | "rosette" // a perfect bonus run (🏵)
+  | "uniform"; // the scattered school uniform, gathered again (👕)
 
 const paths: Record<PaintedIconName, React.ReactElement> = {
   spark: (
@@ -254,6 +255,28 @@ const paths: Record<PaintedIconName, React.ReactElement> = {
       />
       <circle cx="12.1" cy="9.7" r="3.4" fill="#f7edd5" stroke="#a2560f" strokeWidth="1.1" />
       <path d="M9.8 5.4 C10.5 4.6 11.2 4.2 12 4" fill="none" stroke={SHEEN} strokeWidth="1.1" strokeLinecap="round" />
+    </>
+  ),
+  // R5-W5 · G4 · the uniform counter. A shirt, because it is the piece of the
+  // nine with the plainest silhouette at chip size (17 px) — the hat and the
+  // shoe both read as something else that small. Deliberately NOT gold and
+  // without a sheen-halo: the letters own the glow in this chapter, and this
+  // counter sits two chips away from theirs. The painted sheet `hud_uniform`
+  // (AQ10) overrides this drawing wherever the art has landed; this is what a
+  // reader sees before it does.
+  uniform: (
+    <>
+      {/* the body, hanging a little crooked — it was picked up off a floor */}
+      <path
+        d="M8.6 5.2 C9.6 4.4 10.8 4.1 12.1 4.1 C13.4 4.1 14.5 4.5 15.4 5.3 L18.8 7.4 C19.4 7.8 19.5 8.4 19.1 9.1 L17.9 11 C17.5 11.6 17 11.7 16.4 11.3 L15.6 10.8 L15.9 18.6 C15.9 19.5 15.4 20 14.4 20 L9.4 20 C8.5 20 8 19.5 8.1 18.6 L8.5 10.9 L7.7 11.4 C7.1 11.8 6.6 11.7 6.2 11.1 L5 9.2 C4.6 8.5 4.7 7.9 5.3 7.5 Z"
+        fill="#e8e2cd" stroke="#7a6c4c" strokeWidth="1.2" strokeLinejoin="round"
+      />
+      {/* the collar, open, two strokes that do not mirror each other */}
+      <path d="M9.9 4.6 C10.6 6.2 11.3 7 12.1 7.1 C12.9 7 13.6 6.3 14.2 4.8" fill="none" stroke="#7a6c4c" strokeWidth="1.1" strokeLinecap="round" />
+      {/* one button and the placket — the smallest mark that says »shirt« */}
+      <path d="M12.1 8.3 L12.1 18.4" fill="none" stroke="#a8996f" strokeWidth="0.9" strokeLinecap="round" opacity="0.8" />
+      <circle cx="12.1" cy="12.4" r="0.85" fill="#b7a473" stroke="#7a6c4c" strokeWidth="0.7" />
+      <path d="M9.4 9.4 C9.2 12.4 9.1 15.4 9.2 18.2" fill="none" stroke={SHEEN} strokeWidth="1" strokeLinecap="round" />
     </>
   ),
 };

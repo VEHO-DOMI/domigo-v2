@@ -41,7 +41,7 @@ import {
   awakenRoomBloom, awakenRoomSweep, bouncerSquash, cageBreath, cageNearT, entDisplayH, entPoseCell, entSeed, floodBloomFor, greyLuma,
   guardianManoeuvre, guardianPitchRad, guardianRollScaleX, idleWiggle, poseStateOf, washAlphaFor,
 } from "./anim.ts";
-import { CUE_CHALK, CUE_HALO, TREASURE_BACK_COLOUR, TREASURE_HALO_COLOUR, chalkArrow, treasureCue, treasureBobPx, treasureSpinSx } from "./cue.ts";
+import { CUE_CHALK, CUE_HALO, TREASURE_BACK_COLOUR, TREASURE_HALO_COLOUR, chalkArrow, cueMarkY, treasureCue, treasureBobPx, treasureSpinSx } from "./cue.ts";
 import { RIG, launchCoil, rigPose, withCheer, withFistAway, withBrace } from "./rig.ts";
 import {
   BURST_CORE, BURST_HOT, BURST_INK, BURST_SPIKES,
@@ -261,6 +261,14 @@ export interface PaintCallbacks {
   onTip: (tip: TipPayload) => void;
   /** PK-R3b · R3-16: a Bonus-Buch was found — score only, no card. */
   onBook: (id: string, got: number) => void;
+  /** R5-W5 · G4: a uniform piece was found. The shell owns the chapter-wide
+   *  ledger (a phase remounts, a sim counter would not survive it), so it
+   *  answers the one thing the scene needs to know: is this the third find and
+   *  does it therefore OWE a naming card? The scene holds that card until the
+   *  hero is standing — see `renderCloth` — and then calls `onClothCard`. */
+  onCloth: (id: string, wordEn: string) => boolean;
+  /** R5-W5 · G4: the held naming card may open now (hero grounded, no overlay). */
+  onClothCard: () => void;
 }
 
 export interface PaintSceneCfg {
@@ -1497,6 +1505,19 @@ export class PaintScene extends Phaser.Scene {
         }
         case "tip": cb.onTip({ id: ev.id, skin: ev.skin, topicDe: ev.topicDe, erklaerungDe: ev.erklaerungDe, merksatzDe: ev.merksatzDe, schluesselDe: ev.schluesselDe, beispieleEn: ev.beispieleEn, belegDe: ev.belegDe }); break;
         case "book": cb.onBook(ev.id, ev.got); break;
+        // R5-W5 · G4 · the found uniform piece: its English word, standing at the
+        // spot it was lying on. Two finds in quick succession STACK (design §1) —
+        // the second is lifted clear of the first rather than drawn over it, so
+        // neither word is lost. The shell answers whether this find owes a naming
+        // card; the card itself waits for solid ground in `renderCloth`.
+        case "cloth": {
+          const cx = fromSubs(ev.x);
+          const cy = fromSubs(ev.y);
+          const stacked = this.wordBubbles.filter((b) => Math.abs(b.c.x - cx) < 44 && Math.abs(b.c.y - cy) < 34).length;
+          this.toast(ev.wordEn, { x: cx, y: cy - stacked * 15, holdTicks: PaintScene.CLOTH_WORD_TICKS });
+          if (cb.onCloth(ev.id, ev.wordEn)) this.clothCardDue = true;
+          break;
+        }
         case "puff": this.puff(fromSubs(ev.x), fromSubs(ev.y), ev.kind); break;
         case "exit": cb.onExit(ev.to); break;
         default: break;
@@ -1653,6 +1674,14 @@ export class PaintScene extends Phaser.Scene {
       // importiert, baut beides in EINEM Zug: leeres Fenster + Insasse, an der
       // dann gültigen Fenstergeometrie ausgerichtet. Messwerte und Belegbild
       // liegen im C3-Report; Schuldzeilen D-224 und D-228.
+      //
+      // R5-W5 · C4 · D-228 GESCHLOSSEN, so weit es ohne AQ15c geht: die Zelle
+      // heisst `artManifest.classmateStem(e.params.classmate)` — NICHT
+      // `${name}_caged0` von Hand. Wer die Schicht hier baut, ruft die Konstante
+      // auf; dann sagen Karte (CardShell#cageCellFor) und Szene dasselbe, weil
+      // sie dieselbe Zeile lesen. Das war der ganze Inhalt von D-228: die
+      // Konvention stand schriftlich nur EINMAL im Repo, in der Karte, und die
+      // Szene hätte sie beim Einbau zwangsläufig ein zweites Mal getippt.
       // R3-15 · the grey wash sits a hair in front of its being, wearing the
       // SAME texture every frame — so it drains whatever cell the being is
       // showing, including cells and skins that do not exist yet.
@@ -1699,6 +1728,27 @@ export class PaintScene extends Phaser.Scene {
    * cross-origin frame, a texture with no source image). That is deliberately
    * behaviour-preserving rather than fail-loud: a chapter must still render, and
    * `washTintFor` below keeps the old darkening as the visible fallback.
+   *
+   * ★ R5-W5 · E6 · PAINT FIRST, REGISTER ONCE — the same arithmetic, one upload.
+   *
+   * This was the most expensive single thing in `create()`: on p3 the grey
+   * copies cost 580 ms of an 771 ms build, and the pixel loop was NOT the
+   * reason. `textures.createCanvas()` registers an EMPTY texture with the
+   * renderer — which uploads it — and `refresh()` after the drawing uploads the
+   * very same texture a second time. Measured on p3 (five sheets, ~650 000
+   * pixels): createCanvas 288.8 ms + refresh 186.4 ms = 475 ms of double
+   * upload, against 75.5 ms for the luminance loop everyone would have blamed.
+   *
+   * So the drawing now happens on a plain canvas the renderer has never seen,
+   * and the FINISHED canvas is registered once (`addCanvas`, measured 8.9 ms).
+   * Same source, same coefficients, same rounding, same alpha — the texture's
+   * pixels cannot differ; only the number of times they travel to the card
+   * does. Measured after: 580 ms → 122.6 ms on p3.
+   *
+   * (The tempting fix — `ctx.filter = "grayscale(1)"` instead of the loop — was
+   * built and measured too: 464 ms against 472 ms, i.e. nothing, because the
+   * loop was never the cost. It is not in here, and that is the point: the
+   * number acquitted the suspect, P-62.)
    */
   private greyTexOf(key: string): string {
     const greyKey = `${key}__grey`;
@@ -1708,11 +1758,14 @@ export class PaintScene extends Phaser.Scene {
     const w = Math.round(src?.width ?? 0);
     const h = Math.round(src?.height ?? 0);
     if (w <= 0 || h <= 0) return key;
-    const tex = this.textures.createCanvas(greyKey, w, h);
-    if (!tex) return key; // headless/canvas-less safety, exactly like letterTex
     try {
-      const ctx = tex.getContext();
-      ctx.clearRect(0, 0, w, h);
+      const canvas = document.createElement("canvas");
+      canvas.width = w;
+      canvas.height = h;
+      // `willReadFrequently` tells the browser to keep this canvas on the CPU:
+      // it is read back exactly once, and a GPU-backed canvas would stall for it
+      const ctx = canvas.getContext("2d", { willReadFrequently: true });
+      if (ctx === null) return key; // headless/canvas-less safety, exactly like letterTex
       ctx.drawImage(src as CanvasImageSource, 0, 0, w, h);
       const img = ctx.getImageData(0, 0, w, h);
       const d = img.data;
@@ -1724,12 +1777,12 @@ export class PaintScene extends Phaser.Scene {
         // d[i + 3] — the alpha is the being's own silhouette and is never touched
       }
       ctx.putImageData(img, 0, 0);
-      tex.refresh();
-      return greyKey;
+      // the first and only time this picture reaches the graphics card
+      return this.textures.addCanvas(greyKey, canvas) === null ? key : greyKey;
     } catch {
-      // a tainted canvas (art served cross-origin) throws on getImageData; drop
-      // the half-built texture so a later attempt is not handed an empty one
-      this.textures.remove(greyKey);
+      // a tainted canvas (art served cross-origin) throws on getImageData —
+      // nothing was registered yet, so there is nothing to clean up: the caller
+      // gets the original key and `washTintFor` keeps the old darkening
       return key;
     }
   }
@@ -1863,7 +1916,16 @@ export class PaintScene extends Phaser.Scene {
     // R5-W1 · F1: das Wippen ist nach cue.ts gezogen — dort ist es eine reine
     // Funktion mit einem Namen und einem Test, hier war es ein Literal in einer
     // Datei ohne Testabdeckung. Diese Methode füllt nur noch, was sie bekommt.
-    const y = fromSubs(e.y) - this.entTargetH(e) - 7;
+    //
+    // R5-W5 · F6: …und die Höhe kommt jetzt aus `cueMarkY`, mit ZWEI Oberkanten
+    // (F5s gefiledem Befund: über einem niedrigen Ding verschwand die Marke im
+    // Körper des Kindes, weil sie hinter ihm liegt). Die Oberkante des Kindes
+    // wird an der Figur GEMESSEN, die dieses Bild schon gezeichnet hat —
+    // `renderPlayer` läuft vor dieser Methode —, statt aus einer Höhe abgeleitet,
+    // die anderswo erklärt wird: die gemalten Ganzkörper-Zellen sind nicht alle
+    // gleich hoch (die Landung ist gestaucht, der Sprung gestreckt).
+    const heroTopPx = (this.heroFull.visible ? this.heroFull : this.rigRoot).getBounds().top;
+    const y = cueMarkY(fromSubs(e.y) - this.entTargetH(e), heroTopPx);
     const seed = entSeed(e.id);
     const cue = chalkArrow(x, y, 11, seed, this.tickCount, this.cfg.reducedMotion);
     const g = this.engageCueG;
@@ -2369,6 +2431,54 @@ export class PaintScene extends Phaser.Scene {
     // R3-4's `tafel_hand` — a cartoon mitten holding a stick, drawn over her own
     // face — is RETIRED from the render path (round-2 finding 1, critical). The
     // tell it was doing is now `renderBossGlow`'s chalk dust and chalk sketch.
+  }
+
+  // ── R5-W5 · G4 · THE SCATTERED UNIFORM (UNIFORM_SAMMELN_DESIGN §1) ──────────
+  /** How long a found word stands, in sim TICKS. 120 = 2,0 s at the fixed 60 Hz
+   *  logic tick (`paint.ts TICK_MS`). The design asks for the number in ticks and
+   *  says why: a word bound to frames is shortened by exactly the slow frame that
+   *  makes it hard to read, and by reduced motion, which is the setting most
+   *  likely to be on for a child who needs the extra time. */
+  private static readonly CLOTH_WORD_TICKS = 120;
+
+  /** The found words currently standing in the world, with the tick each dies
+   *  on. They stack rather than displace, so this is a list and not a slot. */
+  private wordBubbles: { c: Phaser.GameObjects.Container; dieTick: number }[] = [];
+
+  /** Does the child owe a naming card, and is the world not yet safe to open it
+   *  in? Set at the third/sixth/ninth find, cleared when the card goes up. */
+  private clothCardDue = false;
+
+  /**
+   * The per-frame duties of the uniform pieces. Deliberately NOT part of
+   * `renderEntities` (R116): the pieces themselves are ordinary pickups and are
+   * already drawn, hidden-on-take and reachability-checked by the machinery the
+   * `PICKUP_ROLES` set drives — adding a role branch there would have bought
+   * nothing and collided with the F-lane. What is left is the two things that
+   * are this collectible's own, and both need a heartbeat rather than an event:
+   *
+   *  1 · AGEING THE WORDS against the sim clock, so „≥ 2,0 Sekunden" is true in
+   *      ticks and not merely in a tween that a dropped frame shortens.
+   *  2 · RELEASING THE HELD NAMING CARD. Design §1: „die Karte öffnet nie mitten
+   *      im Sprung … sie wird in eine Warteschlange gelegt und feuert erst, wenn
+   *      der Held wieder auf dem Boden steht." A piece may lie two to four tiles
+   *      up (the height axis is deliberate), so the third find is quite likely to
+   *      happen in mid-air; a card that opens there takes the landing out of the
+   *      child's hands. The wait is one condition on the hero and one on the
+   *      world, checked every frame, which is the cheapest honest way to say
+   *      „when it is safe".
+   */
+  private renderCloth(): void {
+    for (let i = this.wordBubbles.length - 1; i >= 0; i--) {
+      const b = this.wordBubbles[i]!;
+      if (this.tickCount < b.dieTick) continue;
+      b.c.destroy();
+      this.wordBubbles.splice(i, 1);
+    }
+    if (this.clothCardDue && this.player.grounded && !this.sim.overlayOpen) {
+      this.clothCardDue = false;
+      this.cfg.callbacks.onClothCard();
+    }
   }
 
   // ── R3-12 · the boss-evidence beat (doc 41 §4) ────────────────────────────
@@ -3763,6 +3873,7 @@ export class PaintScene extends Phaser.Scene {
     this.renderEvidence();
     this.renderGift();
     this.renderKnotCord();
+    this.renderCloth(); // R5-W5 · G4: age the found words, release a held naming card
 
     for (const ring of this.ringImgs) {
       ring.img.y = ring.baseY + (this.cfg.reducedMotion ? 0 : Math.sin(this.tickCount / 22) * 1.5);
@@ -3899,8 +4010,35 @@ export class PaintScene extends Phaser.Scene {
 
   private buildFallbackTextures(): void {
     const g = this.add.graphics();
+    /**
+     * ★ R5-W5 · E6 · THE KEY THE RESOLVER REACHES FOR FIRST.
+     *
+     * `tex()` answers `pb-<stem>` whenever that texture is loaded and only then
+     * falls back to `fb-<stem>`; `entTex()` falls back to `fb-ent-<skin>` only
+     * when neither `pb-<skin>_<state>` nor `pb-<skin>_a` exists — so `_a` is the
+     * one key that decides it for every state. When that twin is loaded, the
+     * fallback below cannot be drawn by anything, in any frame.
+     *
+     * Why this matters in milliseconds: this builder is phase-blind and
+     * art-blind — it generated all 42 fallbacks in every phase, and 19 of them
+     * are hero parts at the full rig cell (384×384 = 2.8 of 3.2 megapixels)
+     * whose real sheets ship with every phase (`ALWAYS_STEMS`). Each one is a
+     * canvas allocation plus a texture upload for a picture nothing can reach.
+     *
+     * The guard is deliberately `textures.exists`, NOT the phase's art scope: a
+     * sheet whose download failed is in the scope and missing from the textures,
+     * and that is exactly the case the fallback exists for (the only-present
+     * law). A fallback is skipped only when its real twin is genuinely there.
+     */
+    const realTwin = (fbKey: string): string | null => {
+      if (fbKey === "fb-ent-generic") return null; // the last resort has no twin
+      if (fbKey.startsWith("fb-ent-")) return `pb-${fbKey.slice("fb-ent-".length)}_a`;
+      return `pb-${fbKey.slice("fb-".length)}`;
+    };
     const make = (key: string, draw: () => void, w: number, h: number): void => {
       if (this.textures.exists(key)) return;
+      const twin = realTwin(key);
+      if (twin !== null && this.textures.exists(twin)) return;
       g.clear();
       draw();
       g.generateTexture(key, w, h);
@@ -5183,6 +5321,18 @@ export class PaintScene extends Phaser.Scene {
     const key = `pb-glyph-${char}`;
     if (this.textures.exists(key)) return key;
     const S = 128;
+    // ★ R5-W5 · E6 · DIESE STELLE BLEIBT, WIE SIE IST — und das ist ein MESSWERT,
+    // keine Bequemlichkeit. Die Ein-Upload-Reparatur aus `greyTexOf` (dort 580 →
+    // 123 ms) wurde hier ebenfalls gebaut, weil es dieselbe Fundstelle derselben
+    // Klasse ist. Gemessen war sie ein RÜCKSCHRITT: `props` stieg in jeder Phase
+    // MIT Buchstaben um das 25- bis 60-Fache (p1 53 → 3250 ms, p9 50 → 1314 ms),
+    // während p4 — die einzige Phase ohne Buchstaben — unverändert blieb. Der
+    // Unterschied zu `greyTexOf`: dort wird ein großes Blatt EINMAL umgerechnet,
+    // hier entsteht je Buchstabe eine eigene Leinwand, auf der Text gesetzt wird;
+    // Phasers `createCanvas` schöpft aus einem Vorrat wiederverwendeter Leinwände,
+    // `document.createElement` nicht. Also: zurückgenommen, Zahl im Register
+    // (D-326). Eine Klassen-Reparatur ist eine Hypothese über jede Fundstelle,
+    // bis jede Fundstelle gemessen ist.
     const tex = this.textures.createCanvas(key, S, S);
     if (!tex) return this.tex("prop_letter"); // headless/canvas-less safety
     const ctx = tex.getContext();
@@ -5418,9 +5568,17 @@ export class PaintScene extends Phaser.Scene {
    * overlay, and a word the WORLD speaks has no business being the one thing on
    * screen set in the operating system's font.
    */
-  private toast(text: string): void {
-    const x = fromSubs(this.player.x);
-    const y = fromSubs(this.player.y) - 40;
+  /** R5-W5 · G4 · `at` moves the bubble off the hero and onto a fixed spot in the
+   *  world, and `holdTicks` swaps the wall-clock fade for a TICK life the caller
+   *  ages itself (see `renderCloth`). Both exist for the uniform word, and both
+   *  are opt-in: every existing caller keeps the bubble over the child and the
+   *  900 ms it always had. Design §1 asks for all three properties by name —
+   *  ≥ 2,0 s measured in ticks (so reduced motion and a frame-rate dip cannot
+   *  shorten a word a child is still reading), anchored at the FIND, and words
+   *  that stack instead of shoving each other aside. */
+  private toast(text: string, at?: { x: number; y: number; holdTicks?: number }): void {
+    const x = at ? at.x : fromSubs(this.player.x);
+    const y = (at ? at.y : fromSubs(this.player.y)) - 40;
     const label = this.add
       .text(0, 0, text, { fontFamily: displayFace(), fontSize: "10px", color: "#33291a" })
       .setOrigin(0.5, 0.5)
@@ -5484,6 +5642,19 @@ export class PaintScene extends Phaser.Scene {
     g.strokePoints(lit, false, false);
 
     const bubble = this.add.container(x, y, [g, label]).setDepth(20);
+    // R5-W5 · G4 · a word with a TICK life. It is handed to `renderCloth`, which
+    // ages it against the sim's own clock and destroys it; nothing here parks a
+    // wall-clock timer, because the point of the tick life is that a slow frame
+    // may not cost the child reading time. Reduced motion keeps the word too —
+    // it only loses the pop, which is the one part that moves.
+    if (at?.holdTicks !== undefined) {
+      if (!this.cfg.reducedMotion) {
+        bubble.setScale(0.7).setAlpha(0);
+        this.tweens.add({ targets: bubble, scale: 1, alpha: 1, duration: 170, ease: "Back.easeOut" });
+      }
+      this.wordBubbles.push({ c: bubble, dieTick: this.tickCount + at.holdTicks });
+      return;
+    }
     if (this.cfg.reducedMotion) {
       this.time.delayedCall(900, () => bubble.destroy());
       return;

@@ -50,7 +50,12 @@ export const TaskHints = z.object({
 });
 export type TaskHints = z.infer<typeof TaskHints>;
 
-export const TASK_USES = ["quickfire", "encounter", "door", "rescue", "boss", "finale", "bonus"] as const;
+// R5-W5 · G4: `pickupset` — the naming cards the scattered uniform owes. They
+// belong to no asker in the world (the piece is already in the child's hands by
+// the time the card opens), and they are not served by the router's pool cursor
+// but chosen by the WORD that was just found — otherwise the third find would
+// always ask the first card, about a piece the child may not even have.
+export const TASK_USES = ["quickfire", "encounter", "door", "rescue", "boss", "finale", "bonus", "pickupset"] as const;
 
 // ── THE FORM AXIS (R5-W2 · G1) ───────────────────────────────────────────────
 // WHY A SECOND AXIS EXISTS AT ALL. Koki played ch01 and found the cards „repeat
@@ -423,8 +428,20 @@ export function taskInvariantErrors(t: GameTaskV2): string[] {
  *  reads task files. The Regel-Seiten (doc 41 §5) put authored German in the
  *  LEVEL file, where that checker never looks, so the list moved here — the one
  *  place both the task gate and game-paint's level laws can import it. A rule
- *  with two copies is a rule with one enforced copy. */
-export const BANNED_DE: readonly RegExp[] = [/Monster/, /Blut/, /böse/, /Bösewicht/, /schrei(?!b)/, /sterben/, /tot /];
+ *  with two copies is a rule with one enforced copy.
+ *
+ *  R5-W5 · C4 · D-251 · THE EIGHTH ENTRY, AND WHY IT IS NOT LIKE THE OTHER SEVEN.
+ *  „verhedder" (tangled up) is not too frightening for a six-year-old — it is the
+ *  wrong WORD. The story refoundation (doc 29 §1) replaced it chapter-wide with
+ *  „verknotet" so that the knot the guardian ties, the knot the child unties and
+ *  the word on the card are one image; „verheddert" reopened a second word for
+ *  the same thing. It lived as a local copy inside check-story-grounding.mjs,
+ *  which is how W3 found that the two lists had drifted (D-123/D-251). The copy
+ *  lane adopts it here rather than dropping it: a canon word choice is exactly
+ *  what a shared law is for, and no authored line uses it today (measured over
+ *  story.json, both level files and the task files — nought hits), so the entry
+ *  guards the next line written, not an existing one. */
+export const BANNED_DE: readonly RegExp[] = [/Monster/, /Blut/, /böse/, /Bösewicht/, /schrei(?!b)/, /sterben/, /tot /, /verhedder/];
 
 /** Register violations in a German string (empty = clean). */
 export function registerErrorsDe(text: string | undefined): string[] {

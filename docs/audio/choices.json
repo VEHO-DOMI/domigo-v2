@@ -1,0 +1,128 @@
+{
+  "arena-brief": 6,
+  "being-answered": [
+    6,
+    2
+  ],
+  "board-bloom": 2,
+  "boss-window": 4,
+  "bump": [
+    5,
+    6
+  ],
+  "cage-free": [
+    2,
+    6
+  ],
+  "cage-locked": 4,
+  "cage-open": [
+    6,
+    1
+  ],
+  "card-close": [
+    1,
+    4,
+    3
+  ],
+  "card-open": [
+    1,
+    4,
+    6
+  ],
+  "door-open": [
+    1,
+    3
+  ],
+  "gate-waits": 1,
+  "ink-splash": [
+    2,
+    3
+  ],
+  "jump": [
+    1,
+    6,
+    2
+  ],
+  "land-hard": [
+    3,
+    5
+  ],
+  "land-soft": [
+    2,
+    5
+  ],
+  "letter-take": [
+    3,
+    7,
+    6
+  ],
+  "letters-all": 2,
+  "merle-round": [
+    6,
+    5,
+    2
+  ],
+  "music-p1": 3,
+  "music-p2": 2,
+  "music-p3": 2,
+  "music-p4": 3,
+  "music-p9": 1,
+  "music-title": 2,
+  "music-win": 1,
+  "page-take": [
+    3,
+    6
+  ],
+  "page-turn": [
+    6,
+    3
+  ],
+  "puff-chalk": [
+    3,
+    4
+  ],
+  "shoo": [
+    1,
+    6
+  ],
+  "slide": [
+    3,
+    6
+  ],
+  "solve-ok": [
+    4,
+    3,
+    1
+  ],
+  "solve-thud": [
+    8,
+    5
+  ],
+  "step-board": [
+    6,
+    1,
+    2,
+    3
+  ],
+  "step-garden": [
+    5,
+    1,
+    3,
+    6
+  ],
+  "step-paper": [
+    2,
+    1,
+    4,
+    5
+  ],
+  "toast": [
+    1,
+    6
+  ],
+  "wipe": [
+    1,
+    3,
+    4
+  ]
+}

@@ -30,6 +30,8 @@ schreibt die `?perf=1`-Zahlen für ALLE fünf Phasen **vorher/nachher** in ihren
 | Bundle (je Nicht-Phaser-Brocken, gzip) | ≤ 150 KB | `check-game-bundle.mjs` — **CI** |
 | Phaser in EINEM faulen Brocken (gzip) | ≤ 400 KB | `check-game-bundle.mjs` — **CI** |
 | Kunst, die niemand lädt | ≤ 53 Blätter | `check-paint-art.mjs` — **CI** |
+| Audio (Platte) | ≤ 6 MB | `check-audio.mjs` — **CI** |
+| Audio (decodiert, JS-Heap) | ≤ 16 MB | `check-audio.mjs` — **CI** |
 
 **Zur letzten Zeile (R90, R5-W4b · W3; R104, Hotfix nach dem Zug).** Die Tot-Kunst-Decke
 hat seit dieser Runde **einen** Eigentümer. Vier Berichte der Welle 4 nannten drei
@@ -45,6 +47,14 @@ der Wirklichkeit verliert genau die Warnung, für die sie gebaut wurde (D-193). 
 Blätter hinzufügt, hebt sie **im selben PR, mit einem Grund, den ein Prüfer liest**; wer
 Blätter verdrahtet oder löscht, **senkt sie im selben PR um sein eigenes Delta** — jeder
 Lauf sagt die verbliebene Luft laut an, und der Post-Zug-Eigentümer misst neu.
+
+**Verweis (K4, 2026-08-17):** die drei Regeln, die aus diesem Vorfall geworden sind, stehen
+als Rulings **R104** (der Post-Zug-Schritt gehört dem Eigentümer, nie einer parallelen Bahn)
+· **R105** (keine Ratsche für die Decke, D-253 bleibt zu — Warnung plus Post-Zug-Schritt) ·
+**R115** (jede Perf-Tabelle wird aus **sichtbarem** Chrome gemessen, mit einer Kontrollseite,
+die 60 fps zeigen MUSS; leere ms-Spalten oder eine fehlende Vorher-Spalte sind kein
+Erfüllen) — und die Merge-Pflichten, die daran hängen, stehen in der Merge-Tabelle des
+BOOT-SHEETs, wo Koki sie liest, nicht nur im Text eines PRs.
 
 **Der Post-Zug-Handgriff (R104, W4 — dieser Absatz gehört der Werkzeug-Bahn).** Die
 letzte Bahn einer Welle mergt zuletzt und macht davor drei Handgriffe, in dieser
@@ -89,6 +99,48 @@ Trotzdem bleibt zweierlei wahr:
 * **GPU-Zeit** über `EXT_disjoint_timer_query` ist zulässig und zählt echte
   GPU-Arbeit statt Wartezeit.
 
+## 3b · Wie man die Tabelle nimmt (R115) — R5-W5 · E6
+
+**Es gibt ab jetzt genau EIN Rezept, und es ist ein Skript:**
+
+```
+pnpm build && (cd apps/web && npx next start -p <dein Port>)
+node --experimental-strip-types scripts/perf-visible.mjs --port <dein Port> --runs 3 --json vorher.json
+# … deine Arbeit …
+node --experimental-strip-types scripts/perf-visible.mjs --port <dein Port> --runs 3 --baseline vorher.json
+```
+
+Der zweite Lauf druckt die fertige Wächter-Tabelle mit »vorher / nachher« in
+jeder Zelle — genau in der Form, die `check-perf-table.mjs` im PR-Text verlangt —
+plus die Aufschlüsselung von `create()` je Bauschritt.
+
+**Warum ein Skript und nicht eine Anleitung.** Zwei Sessions der Welle 4b lieferten
+leere ms-Spalten, eine dritte gar keine Vorher-Werte, und jede maß anders. Eine
+Zahl ohne ihr Rezept ist eine Behauptung (PB-78). Drei Dinge macht das Skript
+deshalb selbst:
+
+1. **Die Kontrollmessung ist ein TOR, kein Hinweis.** Vor jeder Zahl über das
+   Spiel misst es eine leere Seite im selben Browser. Unter **58 fps bricht es ab**
+   und druckt nichts. Ohne diese Kontrolle sind »das Spiel läuft mit 9 fps« und
+   »mein Instrument sieht keine 60« dieselbe Beobachtung (P-61). Der Vorgänger
+   `harvest-perf.mjs` hatte dafür nur eine weiche Marke und schrieb sonst »n/b«.
+2. **Es misst `bau + aufbau`, nie `aufbau` allein.** Der Szenen-Konstruktor (Sim,
+   Gitter, Kunst-Umfang) läuft VOR `create()`; wer Arbeit dorthin schiebt,
+   verbessert `createMs` und die Wartezeit des Kindes um keine Millisekunde
+   (P-77). Der Konstruktor wird in Node gemessen, weil kein Browser hineinsieht.
+3. **Eine Lücke wird nie zu einer Null.** Der Erstbild-Rekorder verpasst je Lauf
+   etwa eine von fünf Phasen (D-118); das Skript lädt eine unvollständige Phase
+   bis zu dreimal neu und schreibt sonst »—«.
+
+`--port` ist **Pflicht** — ein Standard-Port misst in einem Haus mit sieben
+parallelen Sessions irgendwann den Server des Nachbarn (P-65).
+
+Der Selbsttest (`node scripts/perf-visible.mjs --selftest`, eine Zeile in `ci.yml`)
+läuft **ohne Browser und ohne Server**: die CI-Maschine hat keinen Chrome. Er
+prüft, dass die Kontrollschwelle in beide Richtungen funktioniert — der Tamper
+biegt die Schwelle über den GEMESSENEN Wert, nie gegen die Konfiguration (P-71).
+Das Skript ist damit ausdrücklich **Werkzeug, kein Tor**.
+
 ## 4 · Das Messritual (so misst Koki)
 
 1. Kapitel mit **`?perf=1`** aufrufen (Lehrer-Tür, wie `?grid=1`). Unten links
@@ -110,3 +162,24 @@ Trotzdem bleibt zweierlei wahr:
 * **Eine Zahl, die sich nicht bewegt, wenn man ihre angebliche Ursache entfernt,
   misst etwas anderes.** Diese Regel hat in E5 zweimal zugeschlagen — einmal gegen
   eine Hypothese, einmal gegen ein Instrument.
+
+## 6 · Audio (R5 · S1, 2026-08-17)
+
+Das gemalte Kapitel hat seit dieser Runde erzeugte Klang-Assets (Ruling R124). Klang kostet
+an drei Stellen, und nur eine davon ist die Platte:
+
+| Wo | Wie viel | Warum die Zahl |
+|---|---|---|
+| Platte, gesamt | **≤ 6 MB** | fünf Musik-Schleifen und rund siebzig Effekt-Dateien in MP3 mono 96 kbps; gemessen gut 3 MB. Die Musik einer Phase wird erst **nach** `create()` geholt, das 100-ms-Tor bleibt also unberührt |
+| Platte, Effekt-Bank | ≤ 1,5 MB | die Bank wird als GANZES decodiert und bleibt es |
+| Platte, Musik je Phase | ≤ 1 MB | eine Phase hält genau ein Stück |
+| **JS-Heap, decodiert** | **≤ 16 MB** | ganze Effekt-Bank (~27 s ≙ 5,2 MB) plus die Musik EINER Phase (~38 s ≙ 7,3 MB). Deterministisch gerechnet: Sekunden × Kanäle × 48 000 × 4 Byte |
+| Musik-Decode je Phasenwechsel | ≤ 300 ms | Laufzeit-Messung, **nicht** maschinell erzwungen — dieselbe ehrliche Einschränkung wie beim Erstbild |
+
+**Decodiertes Audio liegt im JS-Heap, nicht im Texturbudget.** Deshalb heisst die Zahl
+`AUDIO_DECODED_MB` und steht neben den 35 MB `PHASE_ART_MB`, nicht darin. Wer beide addiert,
+addiert zwei verschiedene Speicher.
+
+Die Zahlen stehen einmal in `packages/game-paint/src/audio/audioBudget.ts` (je mit ihrem Beleg)
+und werden von `scripts/check-audio.mjs` erzwungen; das Tor prüft ausserdem, dass diese Tabelle
+hier dieselben Grenzwerte nennt. Kanon: `docs/design/g1/paint/AUDIO_SPINE_CH01.md`.
