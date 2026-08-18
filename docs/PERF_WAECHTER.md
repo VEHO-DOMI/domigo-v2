@@ -30,6 +30,8 @@ schreibt die `?perf=1`-Zahlen für ALLE fünf Phasen **vorher/nachher** in ihren
 | Bundle (je Nicht-Phaser-Brocken, gzip) | ≤ 150 KB | `check-game-bundle.mjs` — **CI** |
 | Phaser in EINEM faulen Brocken (gzip) | ≤ 400 KB | `check-game-bundle.mjs` — **CI** |
 | Kunst, die niemand lädt | ≤ 53 Blätter | `check-paint-art.mjs` — **CI** |
+| Audio (Platte) | ≤ 6 MB | `check-audio.mjs` — **CI** |
+| Audio (decodiert, JS-Heap) | ≤ 16 MB | `check-audio.mjs` — **CI** |
 
 **Zur letzten Zeile (R90, R5-W4b · W3; R104, Hotfix nach dem Zug).** Die Tot-Kunst-Decke
 hat seit dieser Runde **einen** Eigentümer. Vier Berichte der Welle 4 nannten drei
@@ -138,3 +140,24 @@ Das Skript ist damit ausdrücklich **Werkzeug, kein Tor**.
 * **Eine Zahl, die sich nicht bewegt, wenn man ihre angebliche Ursache entfernt,
   misst etwas anderes.** Diese Regel hat in E5 zweimal zugeschlagen — einmal gegen
   eine Hypothese, einmal gegen ein Instrument.
+
+## 6 · Audio (R5 · S1, 2026-08-17)
+
+Das gemalte Kapitel hat seit dieser Runde erzeugte Klang-Assets (Ruling R124). Klang kostet
+an drei Stellen, und nur eine davon ist die Platte:
+
+| Wo | Wie viel | Warum die Zahl |
+|---|---|---|
+| Platte, gesamt | **≤ 6 MB** | fünf Musik-Schleifen und rund siebzig Effekt-Dateien in MP3 mono 96 kbps; gemessen gut 3 MB. Die Musik einer Phase wird erst **nach** `create()` geholt, das 100-ms-Tor bleibt also unberührt |
+| Platte, Effekt-Bank | ≤ 1,5 MB | die Bank wird als GANZES decodiert und bleibt es |
+| Platte, Musik je Phase | ≤ 1 MB | eine Phase hält genau ein Stück |
+| **JS-Heap, decodiert** | **≤ 16 MB** | ganze Effekt-Bank (~27 s ≙ 5,2 MB) plus die Musik EINER Phase (~38 s ≙ 7,3 MB). Deterministisch gerechnet: Sekunden × Kanäle × 48 000 × 4 Byte |
+| Musik-Decode je Phasenwechsel | ≤ 300 ms | Laufzeit-Messung, **nicht** maschinell erzwungen — dieselbe ehrliche Einschränkung wie beim Erstbild |
+
+**Decodiertes Audio liegt im JS-Heap, nicht im Texturbudget.** Deshalb heisst die Zahl
+`AUDIO_DECODED_MB` und steht neben den 35 MB `PHASE_ART_MB`, nicht darin. Wer beide addiert,
+addiert zwei verschiedene Speicher.
+
+Die Zahlen stehen einmal in `packages/game-paint/src/audio/audioBudget.ts` (je mit ihrem Beleg)
+und werden von `scripts/check-audio.mjs` erzwungen; das Tor prüft ausserdem, dass diese Tabelle
+hier dieselben Grenzwerte nennt. Kanon: `docs/design/g1/paint/AUDIO_SPINE_CH01.md`.

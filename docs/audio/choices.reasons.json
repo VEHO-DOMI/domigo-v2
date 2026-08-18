@@ -1,0 +1,1500 @@
+{
+  "arena-brief": {
+    "picked": [
+      {
+        "take": 6,
+        "why": "einziger bzw. bester Take: 1.053 s, -16.4 LUFS, Klangfarbe gleichbleibend (420 → 347 → 403 Hz)",
+        "measured": {
+          "durationSec": 1.053,
+          "loudnessDb": -16.4,
+          "truePeakDb": -5.2,
+          "centroidsHz": [
+            420,
+            347,
+            403
+          ],
+          "tailSilenceMs": 20
+        }
+      }
+    ],
+    "rejected": [],
+    "considered": 5,
+    "of": 5
+  },
+  "being-answered": {
+    "picked": [
+      {
+        "take": 6,
+        "why": "Variante mit Klangfarbe ⌀ 5721 Hz — die 2 Varianten sollen sich unterscheiden",
+        "measured": {
+          "durationSec": 0.8,
+          "loudnessDb": -20.44,
+          "truePeakDb": -5.95,
+          "centroidsHz": [
+            5882,
+            5425,
+            5856
+          ],
+          "tailSilenceMs": 0
+        }
+      },
+      {
+        "take": 2,
+        "why": "Variante mit Klangfarbe ⌀ 6884 Hz — die 2 Varianten sollen sich unterscheiden",
+        "measured": {
+          "durationSec": 0.778,
+          "loudnessDb": -20.39,
+          "truePeakDb": -4.52,
+          "centroidsHz": [
+            7287,
+            6200,
+            7164
+          ],
+          "tailSilenceMs": 20
+        }
+      }
+    ],
+    "rejected": [],
+    "considered": 6,
+    "of": 6
+  },
+  "board-bloom": {
+    "picked": [
+      {
+        "take": 2,
+        "why": "einziger bzw. bester Take: 1.5 s, -16.3 LUFS, Klangfarbe gleichbleibend (8166 → 7082 → 8241 Hz)",
+        "measured": {
+          "durationSec": 1.5,
+          "loudnessDb": -16.3,
+          "truePeakDb": -2.6,
+          "centroidsHz": [
+            8166,
+            7082,
+            8241
+          ],
+          "tailSilenceMs": 1
+        }
+      }
+    ],
+    "rejected": [],
+    "considered": 8,
+    "of": 8
+  },
+  "boss-window": {
+    "picked": [
+      {
+        "take": 4,
+        "why": "einziger bzw. bester Take: 0.5 s, -20.42 dB, Klangfarbe gleichbleibend (5863 → 5774 → 5852 Hz)",
+        "measured": {
+          "durationSec": 0.5,
+          "loudnessDb": -20.42,
+          "truePeakDb": -6.39,
+          "centroidsHz": [
+            5863,
+            5774,
+            5852
+          ],
+          "tailSilenceMs": 0
+        }
+      }
+    ],
+    "rejected": [],
+    "considered": 6,
+    "of": 6
+  },
+  "bump": {
+    "picked": [
+      {
+        "take": 5,
+        "why": "Variante mit Klangfarbe ⌀ 5290 Hz — die 2 Varianten sollen sich unterscheiden",
+        "measured": {
+          "durationSec": 0.245,
+          "loudnessDb": -20.41,
+          "truePeakDb": -5.77,
+          "centroidsHz": [
+            5298,
+            4675,
+            5897
+          ],
+          "tailSilenceMs": 4
+        }
+      },
+      {
+        "take": 6,
+        "why": "Variante mit Klangfarbe ⌀ 9200 Hz — die 2 Varianten sollen sich unterscheiden",
+        "measured": {
+          "durationSec": 0.35,
+          "loudnessDb": -20.36,
+          "truePeakDb": -6.28,
+          "centroidsHz": [
+            8600,
+            10013,
+            8987
+          ],
+          "tailSilenceMs": 0
+        }
+      }
+    ],
+    "rejected": [
+      [
+        1,
+        "Klangfarbe faellt 7514 → 4796 Hz — BLUEPRINT :371 verbietet genau das"
+      ]
+    ],
+    "considered": 5,
+    "of": 6
+  },
+  "cage-free": {
+    "picked": [
+      {
+        "take": 2,
+        "why": "Variante mit Klangfarbe ⌀ 2711 Hz — die 2 Varianten sollen sich unterscheiden",
+        "measured": {
+          "durationSec": 0.341,
+          "loudnessDb": -20.46,
+          "truePeakDb": -6.88,
+          "centroidsHz": [
+            2449,
+            2644,
+            3041
+          ],
+          "tailSilenceMs": 3
+        }
+      },
+      {
+        "take": 6,
+        "why": "Variante mit Klangfarbe ⌀ 8253 Hz — die 2 Varianten sollen sich unterscheiden",
+        "measured": {
+          "durationSec": 1.5,
+          "loudnessDb": -16.3,
+          "truePeakDb": -1.8,
+          "centroidsHz": [
+            6471,
+            9537,
+            8751
+          ],
+          "tailSilenceMs": 0
+        }
+      }
+    ],
+    "rejected": [
+      [
+        5,
+        "-19.2 LUFS — ausserhalb -16 ± 2"
+      ]
+    ],
+    "considered": 5,
+    "of": 6
+  },
+  "cage-locked": {
+    "picked": [
+      {
+        "take": 4,
+        "why": "einziger bzw. bester Take: 0.35 s, -20.43 dB, Klangfarbe gleichbleibend (6405 → 4173 → 6808 Hz)",
+        "measured": {
+          "durationSec": 0.35,
+          "loudnessDb": -20.43,
+          "truePeakDb": -5.97,
+          "centroidsHz": [
+            6405,
+            4173,
+            6808
+          ],
+          "tailSilenceMs": 1
+        }
+      }
+    ],
+    "rejected": [
+      [
+        1,
+        "Klangfarbe faellt 7903 → 6962 Hz — BLUEPRINT :371 verbietet genau das"
+      ]
+    ],
+    "considered": 4,
+    "of": 5
+  },
+  "cage-open": {
+    "picked": [
+      {
+        "take": 6,
+        "why": "Variante mit Klangfarbe ⌀ 5190 Hz — die 2 Varianten sollen sich unterscheiden",
+        "measured": {
+          "durationSec": 0.453,
+          "loudnessDb": -20.4,
+          "truePeakDb": -1.16,
+          "centroidsHz": [
+            8221,
+            4260,
+            3088
+          ],
+          "tailSilenceMs": 4
+        }
+      },
+      {
+        "take": 1,
+        "why": "Variante mit Klangfarbe ⌀ 6950 Hz — die 2 Varianten sollen sich unterscheiden",
+        "measured": {
+          "durationSec": 0.588,
+          "loudnessDb": -20.42,
+          "truePeakDb": -4.46,
+          "centroidsHz": [
+            7046,
+            6996,
+            6809
+          ],
+          "tailSilenceMs": 4
+        }
+      }
+    ],
+    "rejected": [
+      [
+        4,
+        "-29.01 dB — ausserhalb -20 ± 2"
+      ]
+    ],
+    "considered": 5,
+    "of": 6
+  },
+  "card-close": {
+    "picked": [
+      {
+        "take": 1,
+        "why": "Variante mit Klangfarbe ⌀ 5506 Hz — die 3 Varianten sollen sich unterscheiden",
+        "measured": {
+          "durationSec": 0.297,
+          "loudnessDb": -20.31,
+          "truePeakDb": -6.07,
+          "centroidsHz": [
+            5817,
+            5898,
+            4804
+          ],
+          "tailSilenceMs": 3
+        }
+      },
+      {
+        "take": 4,
+        "why": "Variante mit Klangfarbe ⌀ 5766 Hz — die 3 Varianten sollen sich unterscheiden",
+        "measured": {
+          "durationSec": 0.3,
+          "loudnessDb": -20.43,
+          "truePeakDb": -6.43,
+          "centroidsHz": [
+            5246,
+            5729,
+            6323
+          ],
+          "tailSilenceMs": 1
+        }
+      },
+      {
+        "take": 3,
+        "why": "Variante mit Klangfarbe ⌀ 6241 Hz — die 3 Varianten sollen sich unterscheiden",
+        "measured": {
+          "durationSec": 0.3,
+          "loudnessDb": -20.41,
+          "truePeakDb": -5.7,
+          "centroidsHz": [
+            6050,
+            5562,
+            7110
+          ],
+          "tailSilenceMs": 0
+        }
+      }
+    ],
+    "rejected": [],
+    "considered": 6,
+    "of": 6
+  },
+  "card-open": {
+    "picked": [
+      {
+        "take": 1,
+        "why": "Variante mit Klangfarbe ⌀ 5846 Hz — die 3 Varianten sollen sich unterscheiden",
+        "measured": {
+          "durationSec": 0.205,
+          "loudnessDb": -20.45,
+          "truePeakDb": -6.14,
+          "centroidsHz": [
+            6527,
+            6281,
+            4730
+          ],
+          "tailSilenceMs": 4
+        }
+      },
+      {
+        "take": 4,
+        "why": "Variante mit Klangfarbe ⌀ 6335 Hz — die 3 Varianten sollen sich unterscheiden",
+        "measured": {
+          "durationSec": 0.289,
+          "loudnessDb": -20.41,
+          "truePeakDb": -6.47,
+          "centroidsHz": [
+            6275,
+            6818,
+            5913
+          ],
+          "tailSilenceMs": 5
+        }
+      },
+      {
+        "take": 6,
+        "why": "Variante mit Klangfarbe ⌀ 7323 Hz — die 3 Varianten sollen sich unterscheiden",
+        "measured": {
+          "durationSec": 0.184,
+          "loudnessDb": -20.34,
+          "truePeakDb": -6.1,
+          "centroidsHz": [
+            8494,
+            7515,
+            5960
+          ],
+          "tailSilenceMs": 2
+        }
+      }
+    ],
+    "rejected": [
+      [
+        2,
+        "-22.94 dB — ausserhalb -20 ± 2"
+      ]
+    ],
+    "considered": 5,
+    "of": 6
+  },
+  "door-open": {
+    "picked": [
+      {
+        "take": 1,
+        "why": "Variante mit Klangfarbe ⌀ 5938 Hz — die 2 Varianten sollen sich unterscheiden",
+        "measured": {
+          "durationSec": 0.6,
+          "loudnessDb": -20.43,
+          "truePeakDb": -5.9,
+          "centroidsHz": [
+            5945,
+            5819,
+            6049
+          ],
+          "tailSilenceMs": 0
+        }
+      },
+      {
+        "take": 3,
+        "why": "Variante mit Klangfarbe ⌀ 7448 Hz — die 2 Varianten sollen sich unterscheiden",
+        "measured": {
+          "durationSec": 0.6,
+          "loudnessDb": -20.43,
+          "truePeakDb": -4.13,
+          "centroidsHz": [
+            7517,
+            7569,
+            7258
+          ],
+          "tailSilenceMs": 0
+        }
+      }
+    ],
+    "rejected": [],
+    "considered": 5,
+    "of": 5
+  },
+  "gate-waits": {
+    "picked": [
+      {
+        "take": 1,
+        "why": "einziger bzw. bester Take: 0.15 s, -20.46 dB, Klangfarbe steigend (772 → 590 → 1137 Hz)",
+        "measured": {
+          "durationSec": 0.15,
+          "loudnessDb": -20.46,
+          "truePeakDb": -1.69,
+          "centroidsHz": [
+            772,
+            590,
+            1137
+          ],
+          "tailSilenceMs": 20
+        }
+      }
+    ],
+    "rejected": [
+      [
+        2,
+        "-23.27 dB — ausserhalb -20 ± 2"
+      ],
+      [
+        4,
+        "-24.27 dB — ausserhalb -20 ± 2"
+      ],
+      [
+        5,
+        "Klangfarbe faellt 1022 → 844 Hz — BLUEPRINT :371 verbietet genau das"
+      ]
+    ],
+    "considered": 3,
+    "of": 6
+  },
+  "ink-splash": {
+    "picked": [
+      {
+        "take": 2,
+        "why": "Variante mit Klangfarbe ⌀ 4892 Hz — die 2 Varianten sollen sich unterscheiden",
+        "measured": {
+          "durationSec": 0.393,
+          "loudnessDb": -20.43,
+          "truePeakDb": -4,
+          "centroidsHz": [
+            4037,
+            6402,
+            4236
+          ],
+          "tailSilenceMs": 9
+        }
+      },
+      {
+        "take": 3,
+        "why": "Variante mit Klangfarbe ⌀ 7480 Hz — die 2 Varianten sollen sich unterscheiden",
+        "measured": {
+          "durationSec": 0.399,
+          "loudnessDb": -20.44,
+          "truePeakDb": -3.11,
+          "centroidsHz": [
+            7826,
+            5899,
+            8714
+          ],
+          "tailSilenceMs": 5
+        }
+      }
+    ],
+    "rejected": [
+      [
+        4,
+        "-22.98 dB — ausserhalb -20 ± 2"
+      ],
+      [
+        8,
+        "-22.64 dB — ausserhalb -20 ± 2"
+      ],
+      [
+        7,
+        "Klangfarbe faellt 5943 → 5537 Hz — BLUEPRINT :371 verbietet genau das"
+      ]
+    ],
+    "considered": 4,
+    "of": 7
+  },
+  "jump": {
+    "picked": [
+      {
+        "take": 1,
+        "why": "Variante mit Klangfarbe ⌀ 5549 Hz — die 3 Varianten sollen sich unterscheiden",
+        "measured": {
+          "durationSec": 0.3,
+          "loudnessDb": -20.39,
+          "truePeakDb": -5.17,
+          "centroidsHz": [
+            6050,
+            6104,
+            4492
+          ],
+          "tailSilenceMs": 2
+        }
+      },
+      {
+        "take": 6,
+        "why": "Variante mit Klangfarbe ⌀ 6243 Hz — die 3 Varianten sollen sich unterscheiden",
+        "measured": {
+          "durationSec": 0.3,
+          "loudnessDb": -20.32,
+          "truePeakDb": -6.55,
+          "centroidsHz": [
+            5560,
+            6700,
+            6469
+          ],
+          "tailSilenceMs": 0
+        }
+      },
+      {
+        "take": 2,
+        "why": "Variante mit Klangfarbe ⌀ 6829 Hz — die 3 Varianten sollen sich unterscheiden",
+        "measured": {
+          "durationSec": 0.3,
+          "loudnessDb": -20.35,
+          "truePeakDb": -6.87,
+          "centroidsHz": [
+            6784,
+            6885,
+            6818
+          ],
+          "tailSilenceMs": 0
+        }
+      }
+    ],
+    "rejected": [],
+    "considered": 6,
+    "of": 6
+  },
+  "land-hard": {
+    "picked": [
+      {
+        "take": 3,
+        "why": "Variante mit Klangfarbe ⌀ 5660 Hz — die 2 Varianten sollen sich unterscheiden",
+        "measured": {
+          "durationSec": 0.45,
+          "loudnessDb": -20.42,
+          "truePeakDb": -6.25,
+          "centroidsHz": [
+            5033,
+            5770,
+            6178
+          ],
+          "tailSilenceMs": 1
+        }
+      },
+      {
+        "take": 5,
+        "why": "Variante mit Klangfarbe ⌀ 6694 Hz — die 2 Varianten sollen sich unterscheiden",
+        "measured": {
+          "durationSec": 0.45,
+          "loudnessDb": -20.4,
+          "truePeakDb": -5.63,
+          "centroidsHz": [
+            6448,
+            6236,
+            7398
+          ],
+          "tailSilenceMs": 0
+        }
+      }
+    ],
+    "rejected": [],
+    "considered": 6,
+    "of": 6
+  },
+  "land-soft": {
+    "picked": [
+      {
+        "take": 2,
+        "why": "Variante mit Klangfarbe ⌀ 5919 Hz — die 2 Varianten sollen sich unterscheiden",
+        "measured": {
+          "durationSec": 0.3,
+          "loudnessDb": -20.41,
+          "truePeakDb": -6.78,
+          "centroidsHz": [
+            5780,
+            6224,
+            5752
+          ],
+          "tailSilenceMs": 0
+        }
+      },
+      {
+        "take": 5,
+        "why": "Variante mit Klangfarbe ⌀ 6488 Hz — die 2 Varianten sollen sich unterscheiden",
+        "measured": {
+          "durationSec": 0.3,
+          "loudnessDb": -20.41,
+          "truePeakDb": -5.79,
+          "centroidsHz": [
+            6299,
+            6638,
+            6527
+          ],
+          "tailSilenceMs": 0
+        }
+      }
+    ],
+    "rejected": [],
+    "considered": 5,
+    "of": 5
+  },
+  "letter-take": {
+    "picked": [
+      {
+        "take": 3,
+        "why": "Stufe 1 von 3: Klangfarbe ⌀ 6712 Hz — die Stufen steigen",
+        "measured": {
+          "durationSec": 0.251,
+          "loudnessDb": -20.37,
+          "truePeakDb": -3.34,
+          "centroidsHz": [
+            7638,
+            7115,
+            5383
+          ],
+          "tailSilenceMs": 4
+        }
+      },
+      {
+        "take": 7,
+        "why": "Stufe 2 von 3: Klangfarbe ⌀ 7568 Hz — die Stufen steigen",
+        "measured": {
+          "durationSec": 0.3,
+          "loudnessDb": -20.41,
+          "truePeakDb": -8.05,
+          "centroidsHz": [
+            7608,
+            7695,
+            7402
+          ],
+          "tailSilenceMs": 0
+        }
+      },
+      {
+        "take": 6,
+        "why": "Stufe 3 von 3: Klangfarbe ⌀ 8127 Hz — die Stufen steigen",
+        "measured": {
+          "durationSec": 0.228,
+          "loudnessDb": -20.33,
+          "truePeakDb": -6.4,
+          "centroidsHz": [
+            8071,
+            8517,
+            7794
+          ],
+          "tailSilenceMs": 23
+        }
+      }
+    ],
+    "rejected": [],
+    "considered": 8,
+    "of": 8
+  },
+  "letters-all": {
+    "picked": [
+      {
+        "take": 2,
+        "why": "einziger bzw. bester Take: 1.424 s, -16.3 LUFS, Klangfarbe gleichbleibend (7379 → 7456 → 7798 Hz)",
+        "measured": {
+          "durationSec": 1.424,
+          "loudnessDb": -16.3,
+          "truePeakDb": -2.3,
+          "centroidsHz": [
+            7379,
+            7456,
+            7798
+          ],
+          "tailSilenceMs": 4
+        }
+      }
+    ],
+    "rejected": [
+      [
+        3,
+        "-19.5 LUFS — ausserhalb -16 ± 2"
+      ]
+    ],
+    "considered": 5,
+    "of": 6
+  },
+  "merle-round": {
+    "picked": [
+      {
+        "take": 6,
+        "why": "Stufe 1 von 3: Klangfarbe ⌀ 1433 Hz — die Stufen steigen",
+        "measured": {
+          "durationSec": 0.273,
+          "loudnessDb": -20.44,
+          "truePeakDb": -6.83,
+          "centroidsHz": [
+            1271,
+            1335,
+            1693
+          ],
+          "tailSilenceMs": 17
+        }
+      },
+      {
+        "take": 5,
+        "why": "Stufe 2 von 3: Klangfarbe ⌀ 5849 Hz — die Stufen steigen",
+        "measured": {
+          "durationSec": 0.544,
+          "loudnessDb": -20.37,
+          "truePeakDb": -5.1,
+          "centroidsHz": [
+            6177,
+            4686,
+            6683
+          ],
+          "tailSilenceMs": 5
+        }
+      },
+      {
+        "take": 2,
+        "why": "Stufe 3 von 3: Klangfarbe ⌀ 7537 Hz — die Stufen steigen",
+        "measured": {
+          "durationSec": 0.6,
+          "loudnessDb": -20.34,
+          "truePeakDb": -5.04,
+          "centroidsHz": [
+            8693,
+            5339,
+            8579
+          ],
+          "tailSilenceMs": 1
+        }
+      }
+    ],
+    "rejected": [],
+    "considered": 8,
+    "of": 8
+  },
+  "music-p1": {
+    "picked": [
+      {
+        "take": 3,
+        "why": "einziger bzw. bester Take: 26.093 s, -18.6 LUFS, Klangfarbe fallend (1425 → 896 → 564 Hz)",
+        "measured": {
+          "durationSec": 26.093,
+          "loudnessDb": -18.6,
+          "truePeakDb": -2.8,
+          "centroidsHz": [
+            1425,
+            896,
+            564
+          ],
+          "tailSilenceMs": 0,
+          "seamRatio": 0,
+          "loopNote": "Schleife gemessen: 26.09 s (Selbstaehnlichkeit 0.969 Huellkurve / 0.051 Wellenform) ≙ 10.00 Takte bei bestellten 92 BPM"
+        }
+      }
+    ],
+    "rejected": [],
+    "considered": 3,
+    "of": 3
+  },
+  "music-p2": {
+    "picked": [
+      {
+        "take": 2,
+        "why": "einziger bzw. bester Take: 37.495 s, -17.9 LUFS, Klangfarbe gleichbleibend (1831 → 2304 → 1699 Hz)",
+        "measured": {
+          "durationSec": 37.495,
+          "loudnessDb": -17.9,
+          "truePeakDb": -4.3,
+          "centroidsHz": [
+            1831,
+            2304,
+            1699
+          ],
+          "tailSilenceMs": 0,
+          "seamRatio": 0.06,
+          "loopNote": "Schleife gemessen: 37.49 s (Selbstaehnlichkeit 0.987 Huellkurve / 0.829 Wellenform) ≙ 11.25 Takte bei bestellten 72 BPM"
+        }
+      }
+    ],
+    "rejected": [
+      [
+        3,
+        "Naht-Verhaeltnis 1.83 — die Schleife klickt bei jedem Durchlauf"
+      ]
+    ],
+    "considered": 2,
+    "of": 3
+  },
+  "music-p3": {
+    "picked": [
+      {
+        "take": 2,
+        "why": "einziger bzw. bester Take: 34.287 s, -18.5 LUFS, Klangfarbe fallend (7855 → 1564 → 638 Hz)",
+        "measured": {
+          "durationSec": 34.287,
+          "loudnessDb": -18.5,
+          "truePeakDb": -2.4,
+          "centroidsHz": [
+            7855,
+            1564,
+            638
+          ],
+          "tailSilenceMs": 1,
+          "seamRatio": 0.01,
+          "loopNote": "Schleife gemessen: 34.29 s (Selbstaehnlichkeit 0.947 Huellkurve / 0.771 Wellenform) ≙ 16.00 Takte bei bestellten 112 BPM"
+        }
+      }
+    ],
+    "rejected": [
+      [
+        1,
+        "512 ms Stille am Ende (Grenze 80)"
+      ]
+    ],
+    "considered": 2,
+    "of": 3
+  },
+  "music-p4": {
+    "picked": [
+      {
+        "take": 3,
+        "why": "einziger bzw. bester Take: 32.006 s, -18.6 LUFS, Klangfarbe steigend (624 → 4568 → 1401 Hz)",
+        "measured": {
+          "durationSec": 32.006,
+          "loudnessDb": -18.6,
+          "truePeakDb": -3.2,
+          "centroidsHz": [
+            624,
+            4568,
+            1401
+          ],
+          "tailSilenceMs": 0,
+          "seamRatio": 0.48,
+          "loopNote": "Schleife gemessen: 32.01 s (Selbstaehnlichkeit 0.950 Huellkurve / 0.780 Wellenform) ≙ 16.00 Takte bei bestellten 120 BPM"
+        }
+      }
+    ],
+    "rejected": [],
+    "considered": 3,
+    "of": 3
+  },
+  "music-p9": {
+    "picked": [
+      {
+        "take": 1,
+        "why": "einziger bzw. bester Take: 28.797 s, -18.5 LUFS, Klangfarbe gleichbleibend (618 → 503 → 580 Hz)",
+        "measured": {
+          "durationSec": 28.797,
+          "loudnessDb": -18.5,
+          "truePeakDb": -1.3,
+          "centroidsHz": [
+            618,
+            503,
+            580
+          ],
+          "tailSilenceMs": 0,
+          "seamRatio": 0.12,
+          "loopNote": "Schleife gemessen: 28.80 s (Selbstaehnlichkeit 0.976 Huellkurve / 0.972 Wellenform) ≙ 12.00 Takte bei bestellten 100 BPM"
+        }
+      }
+    ],
+    "rejected": [],
+    "considered": 3,
+    "of": 3
+  },
+  "music-title": {
+    "picked": [
+      {
+        "take": 2,
+        "why": "einziger bzw. bester Take: 6.816 s, -18.5 LUFS, Klangfarbe gleichbleibend (800 → 787 → 742 Hz)",
+        "measured": {
+          "durationSec": 6.816,
+          "loudnessDb": -18.5,
+          "truePeakDb": -1.4,
+          "centroidsHz": [
+            800,
+            787,
+            742
+          ],
+          "tailSilenceMs": 13,
+          "seamRatio": 0
+        }
+      }
+    ],
+    "rejected": [],
+    "considered": 3,
+    "of": 3
+  },
+  "music-win": {
+    "picked": [
+      {
+        "take": 1,
+        "why": "einziger bzw. bester Take: 2.6 s, -18.2 LUFS, Klangfarbe fallend (579 → 380 → 438 Hz)",
+        "measured": {
+          "durationSec": 2.6,
+          "loudnessDb": -18.2,
+          "truePeakDb": -6.7,
+          "centroidsHz": [
+            579,
+            380,
+            438
+          ],
+          "tailSilenceMs": 43,
+          "seamRatio": 0.01
+        }
+      }
+    ],
+    "rejected": [],
+    "considered": 3,
+    "of": 3
+  },
+  "page-take": {
+    "picked": [
+      {
+        "take": 3,
+        "why": "Variante mit Klangfarbe ⌀ 4711 Hz — die 2 Varianten sollen sich unterscheiden",
+        "measured": {
+          "durationSec": 0.367,
+          "loudnessDb": -20.43,
+          "truePeakDb": -6.1,
+          "centroidsHz": [
+            5753,
+            6273,
+            2107
+          ],
+          "tailSilenceMs": 10
+        }
+      },
+      {
+        "take": 6,
+        "why": "Variante mit Klangfarbe ⌀ 7688 Hz — die 2 Varianten sollen sich unterscheiden",
+        "measured": {
+          "durationSec": 0.341,
+          "loudnessDb": -20.32,
+          "truePeakDb": -6.23,
+          "centroidsHz": [
+            8548,
+            7629,
+            6888
+          ],
+          "tailSilenceMs": 4
+        }
+      }
+    ],
+    "rejected": [],
+    "considered": 6,
+    "of": 6
+  },
+  "page-turn": {
+    "picked": [
+      {
+        "take": 6,
+        "why": "Variante mit Klangfarbe ⌀ 6847 Hz — die 2 Varianten sollen sich unterscheiden",
+        "measured": {
+          "durationSec": 0.4,
+          "loudnessDb": -20.35,
+          "truePeakDb": -5.71,
+          "centroidsHz": [
+            7409,
+            5940,
+            7193
+          ],
+          "tailSilenceMs": 0
+        }
+      },
+      {
+        "take": 3,
+        "why": "Variante mit Klangfarbe ⌀ 8206 Hz — die 2 Varianten sollen sich unterscheiden",
+        "measured": {
+          "durationSec": 0.4,
+          "loudnessDb": -20.31,
+          "truePeakDb": -6.92,
+          "centroidsHz": [
+            8090,
+            7538,
+            8991
+          ],
+          "tailSilenceMs": 6
+        }
+      }
+    ],
+    "rejected": [],
+    "considered": 5,
+    "of": 5
+  },
+  "puff-chalk": {
+    "picked": [
+      {
+        "take": 3,
+        "why": "Variante mit Klangfarbe ⌀ 6012 Hz — die 2 Varianten sollen sich unterscheiden",
+        "measured": {
+          "durationSec": 0.25,
+          "loudnessDb": -20.42,
+          "truePeakDb": -4.69,
+          "centroidsHz": [
+            7086,
+            6701,
+            4250
+          ],
+          "tailSilenceMs": 2
+        }
+      },
+      {
+        "take": 4,
+        "why": "Variante mit Klangfarbe ⌀ 6862 Hz — die 2 Varianten sollen sich unterscheiden",
+        "measured": {
+          "durationSec": 0.25,
+          "loudnessDb": -20.36,
+          "truePeakDb": -7.96,
+          "centroidsHz": [
+            7561,
+            6760,
+            6264
+          ],
+          "tailSilenceMs": 0
+        }
+      }
+    ],
+    "rejected": [],
+    "considered": 3,
+    "of": 3
+  },
+  "shoo": {
+    "picked": [
+      {
+        "take": 1,
+        "why": "Variante mit Klangfarbe ⌀ 5191 Hz — die 2 Varianten sollen sich unterscheiden",
+        "measured": {
+          "durationSec": 0.35,
+          "loudnessDb": -20.37,
+          "truePeakDb": -4.65,
+          "centroidsHz": [
+            5770,
+            2877,
+            6927
+          ],
+          "tailSilenceMs": 20
+        }
+      },
+      {
+        "take": 6,
+        "why": "Variante mit Klangfarbe ⌀ 6098 Hz — die 2 Varianten sollen sich unterscheiden",
+        "measured": {
+          "durationSec": 0.35,
+          "loudnessDb": -20.42,
+          "truePeakDb": -5.55,
+          "centroidsHz": [
+            5352,
+            6833,
+            6110
+          ],
+          "tailSilenceMs": 0
+        }
+      }
+    ],
+    "rejected": [
+      [
+        3,
+        "-26.69 dB — ausserhalb -20 ± 2"
+      ]
+    ],
+    "considered": 3,
+    "of": 4
+  },
+  "slide": {
+    "picked": [
+      {
+        "take": 3,
+        "why": "Variante mit Klangfarbe ⌀ 6217 Hz — die 2 Varianten sollen sich unterscheiden",
+        "measured": {
+          "durationSec": 0.5,
+          "loudnessDb": -20.41,
+          "truePeakDb": -4.39,
+          "centroidsHz": [
+            6993,
+            5140,
+            6519
+          ],
+          "tailSilenceMs": 0
+        }
+      },
+      {
+        "take": 6,
+        "why": "Variante mit Klangfarbe ⌀ 7749 Hz — die 2 Varianten sollen sich unterscheiden",
+        "measured": {
+          "durationSec": 0.5,
+          "loudnessDb": -20.38,
+          "truePeakDb": -5.02,
+          "centroidsHz": [
+            7914,
+            7936,
+            7397
+          ],
+          "tailSilenceMs": 0
+        }
+      }
+    ],
+    "rejected": [],
+    "considered": 6,
+    "of": 6
+  },
+  "solve-ok": {
+    "picked": [
+      {
+        "take": 4,
+        "why": "Stufe 1 von 3: Klangfarbe ⌀ 1922 Hz — die Stufen steigen",
+        "measured": {
+          "durationSec": 0.245,
+          "loudnessDb": -20.42,
+          "truePeakDb": -3.25,
+          "centroidsHz": [
+            2166,
+            1685,
+            1916
+          ],
+          "tailSilenceMs": 7
+        }
+      },
+      {
+        "take": 3,
+        "why": "Stufe 2 von 3: Klangfarbe ⌀ 4379 Hz — die Stufen steigen",
+        "measured": {
+          "durationSec": 0.164,
+          "loudnessDb": -20.47,
+          "truePeakDb": -2.42,
+          "centroidsHz": [
+            5347,
+            3570,
+            4219
+          ],
+          "tailSilenceMs": 5
+        }
+      },
+      {
+        "take": 1,
+        "why": "Stufe 3 von 3: Klangfarbe ⌀ 7088 Hz — die Stufen steigen",
+        "measured": {
+          "durationSec": 0.451,
+          "loudnessDb": -20.43,
+          "truePeakDb": -3.51,
+          "centroidsHz": [
+            7202,
+            6727,
+            7336
+          ],
+          "tailSilenceMs": 20
+        }
+      }
+    ],
+    "rejected": [],
+    "considered": 8,
+    "of": 8
+  },
+  "solve-thud": {
+    "picked": [
+      {
+        "take": 8,
+        "why": "Variante mit Klangfarbe ⌀ 5561 Hz — die 2 Varianten sollen sich unterscheiden",
+        "measured": {
+          "durationSec": 0.285,
+          "loudnessDb": -20.46,
+          "truePeakDb": -4.74,
+          "centroidsHz": [
+            5508,
+            5264,
+            5911
+          ],
+          "tailSilenceMs": 6
+        }
+      },
+      {
+        "take": 5,
+        "why": "Variante mit Klangfarbe ⌀ 6692 Hz — die 2 Varianten sollen sich unterscheiden",
+        "measured": {
+          "durationSec": 0.3,
+          "loudnessDb": -20.37,
+          "truePeakDb": -5.47,
+          "centroidsHz": [
+            6600,
+            6567,
+            6910
+          ],
+          "tailSilenceMs": 4
+        }
+      }
+    ],
+    "rejected": [
+      [
+        1,
+        "Klangfarbe faellt 6278 → 4242 Hz — BLUEPRINT :371 verbietet genau das"
+      ],
+      [
+        3,
+        "Klangfarbe faellt 5917 → 2868 Hz — BLUEPRINT :371 verbietet genau das"
+      ]
+    ],
+    "considered": 6,
+    "of": 8
+  },
+  "step-board": {
+    "picked": [
+      {
+        "take": 6,
+        "why": "Variante mit Klangfarbe ⌀ 1503 Hz — die 4 Varianten sollen sich unterscheiden",
+        "measured": {
+          "durationSec": 0.25,
+          "loudnessDb": -20.45,
+          "truePeakDb": -9.69,
+          "centroidsHz": [
+            744,
+            1556,
+            2209
+          ],
+          "tailSilenceMs": 1
+        }
+      },
+      {
+        "take": 1,
+        "why": "Variante mit Klangfarbe ⌀ 1580 Hz — die 4 Varianten sollen sich unterscheiden",
+        "measured": {
+          "durationSec": 0.25,
+          "loudnessDb": -20.45,
+          "truePeakDb": -6.95,
+          "centroidsHz": [
+            843,
+            1804,
+            2093
+          ],
+          "tailSilenceMs": 0
+        }
+      },
+      {
+        "take": 2,
+        "why": "Variante mit Klangfarbe ⌀ 1760 Hz — die 4 Varianten sollen sich unterscheiden",
+        "measured": {
+          "durationSec": 0.144,
+          "loudnessDb": -20.43,
+          "truePeakDb": -7.98,
+          "centroidsHz": [
+            431,
+            1592,
+            3258
+          ],
+          "tailSilenceMs": 1
+        }
+      },
+      {
+        "take": 3,
+        "why": "Variante mit Klangfarbe ⌀ 3167 Hz — die 4 Varianten sollen sich unterscheiden",
+        "measured": {
+          "durationSec": 0.049,
+          "loudnessDb": -20.52,
+          "truePeakDb": -11.18,
+          "centroidsHz": [
+            1395,
+            2338,
+            5768
+          ],
+          "tailSilenceMs": 1
+        }
+      }
+    ],
+    "rejected": [],
+    "considered": 6,
+    "of": 6
+  },
+  "step-garden": {
+    "picked": [
+      {
+        "take": 5,
+        "why": "Variante mit Klangfarbe ⌀ 6339 Hz — die 4 Varianten sollen sich unterscheiden",
+        "measured": {
+          "durationSec": 0.25,
+          "loudnessDb": -20.35,
+          "truePeakDb": -5.78,
+          "centroidsHz": [
+            6092,
+            6052,
+            6872
+          ],
+          "tailSilenceMs": 0
+        }
+      },
+      {
+        "take": 1,
+        "why": "Variante mit Klangfarbe ⌀ 6345 Hz — die 4 Varianten sollen sich unterscheiden",
+        "measured": {
+          "durationSec": 0.25,
+          "loudnessDb": -20.43,
+          "truePeakDb": -7.09,
+          "centroidsHz": [
+            5800,
+            6790,
+            6445
+          ],
+          "tailSilenceMs": 0
+        }
+      },
+      {
+        "take": 3,
+        "why": "Variante mit Klangfarbe ⌀ 6577 Hz — die 4 Varianten sollen sich unterscheiden",
+        "measured": {
+          "durationSec": 0.25,
+          "loudnessDb": -20.41,
+          "truePeakDb": -8.1,
+          "centroidsHz": [
+            6333,
+            6802,
+            6597
+          ],
+          "tailSilenceMs": 0
+        }
+      },
+      {
+        "take": 6,
+        "why": "Variante mit Klangfarbe ⌀ 7460 Hz — die 4 Varianten sollen sich unterscheiden",
+        "measured": {
+          "durationSec": 0.25,
+          "loudnessDb": -20.35,
+          "truePeakDb": -6.17,
+          "centroidsHz": [
+            7273,
+            7395,
+            7711
+          ],
+          "tailSilenceMs": 3
+        }
+      }
+    ],
+    "rejected": [],
+    "considered": 6,
+    "of": 6
+  },
+  "step-paper": {
+    "picked": [
+      {
+        "take": 2,
+        "why": "Variante mit Klangfarbe ⌀ 6285 Hz — die 4 Varianten sollen sich unterscheiden",
+        "measured": {
+          "durationSec": 0.25,
+          "loudnessDb": -20.43,
+          "truePeakDb": -5.95,
+          "centroidsHz": [
+            5915,
+            6230,
+            6710
+          ],
+          "tailSilenceMs": 0
+        }
+      },
+      {
+        "take": 1,
+        "why": "Variante mit Klangfarbe ⌀ 6377 Hz — die 4 Varianten sollen sich unterscheiden",
+        "measured": {
+          "durationSec": 0.25,
+          "loudnessDb": -20.4,
+          "truePeakDb": -6.73,
+          "centroidsHz": [
+            6562,
+            6994,
+            5575
+          ],
+          "tailSilenceMs": 0
+        }
+      },
+      {
+        "take": 4,
+        "why": "Variante mit Klangfarbe ⌀ 6591 Hz — die 4 Varianten sollen sich unterscheiden",
+        "measured": {
+          "durationSec": 0.25,
+          "loudnessDb": -20.42,
+          "truePeakDb": -5.75,
+          "centroidsHz": [
+            6592,
+            6557,
+            6625
+          ],
+          "tailSilenceMs": 0
+        }
+      },
+      {
+        "take": 5,
+        "why": "Variante mit Klangfarbe ⌀ 7041 Hz — die 4 Varianten sollen sich unterscheiden",
+        "measured": {
+          "durationSec": 0.25,
+          "loudnessDb": -20.34,
+          "truePeakDb": -4.8,
+          "centroidsHz": [
+            7156,
+            7432,
+            6536
+          ],
+          "tailSilenceMs": 2
+        }
+      }
+    ],
+    "rejected": [],
+    "considered": 6,
+    "of": 6
+  },
+  "toast": {
+    "picked": [
+      {
+        "take": 1,
+        "why": "Variante mit Klangfarbe ⌀ 5631 Hz — die 2 Varianten sollen sich unterscheiden",
+        "measured": {
+          "durationSec": 0.2,
+          "loudnessDb": -20.37,
+          "truePeakDb": -5.36,
+          "centroidsHz": [
+            5815,
+            5196,
+            5881
+          ],
+          "tailSilenceMs": 0
+        }
+      },
+      {
+        "take": 6,
+        "why": "Variante mit Klangfarbe ⌀ 8667 Hz — die 2 Varianten sollen sich unterscheiden",
+        "measured": {
+          "durationSec": 0.2,
+          "loudnessDb": -20.38,
+          "truePeakDb": -6.6,
+          "centroidsHz": [
+            8680,
+            8655,
+            8666
+          ],
+          "tailSilenceMs": 1
+        }
+      }
+    ],
+    "rejected": [],
+    "considered": 6,
+    "of": 6
+  },
+  "wipe": {
+    "picked": [
+      {
+        "take": 1,
+        "why": "Variante mit Klangfarbe ⌀ 6772 Hz — die 3 Varianten sollen sich unterscheiden",
+        "measured": {
+          "durationSec": 0.5,
+          "loudnessDb": -20.38,
+          "truePeakDb": -3.79,
+          "centroidsHz": [
+            6704,
+            6525,
+            7086
+          ],
+          "tailSilenceMs": 0
+        }
+      },
+      {
+        "take": 3,
+        "why": "Variante mit Klangfarbe ⌀ 7077 Hz — die 3 Varianten sollen sich unterscheiden",
+        "measured": {
+          "durationSec": 0.5,
+          "loudnessDb": -20.35,
+          "truePeakDb": -6.86,
+          "centroidsHz": [
+            7086,
+            7056,
+            7090
+          ],
+          "tailSilenceMs": 0
+        }
+      },
+      {
+        "take": 4,
+        "why": "Variante mit Klangfarbe ⌀ 7341 Hz — die 3 Varianten sollen sich unterscheiden",
+        "measured": {
+          "durationSec": 0.5,
+          "loudnessDb": -20.35,
+          "truePeakDb": -5.36,
+          "centroidsHz": [
+            7390,
+            6748,
+            7884
+          ],
+          "tailSilenceMs": 0
+        }
+      }
+    ],
+    "rejected": [],
+    "considered": 6,
+    "of": 6
+  }
+}

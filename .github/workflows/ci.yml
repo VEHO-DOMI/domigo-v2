@@ -85,6 +85,15 @@ jobs:
       - run: node scripts/check-fonts.mjs # E5/D-79: no next/font/google — the build may not depend on gstatic being up
       - run: node scripts/shoot-card-bench.mjs --selftest # W2/D-102: die Ausschnitt-Rechnung der Kartenbank — ein Motiv unter 40 % der Bildflaeche muss rot werden
       - run: node scripts/perf-visible.mjs --selftest # E6/R115: Werkzeug, kein Tor — hier laeuft kein Chrome; geprueft wird nur, dass die Kontrollschwelle (Kontrollseite unter 58 fps ⇒ Abbruch) ihr rotes Licht erreichen kann
+      - run: node scripts/check-secrets.mjs --selftest # S1: vier Koeder muessen rot werden UND sechs Beinahe-Treffer still bleiben
+      - run: node scripts/check-secrets.mjs # S1: kein API-Schluessel in einer getrackten Datei — die Historie behaelt, was einmal drin war
+      # S1: das Klang-Tor MISST Klang (Lautheit, Spitze, Klangfarbe, Schleifen-Naht) und braucht dafuer
+      # ffmpeg. ubuntu-latest bringt keins mit. Die Alternative waere ein Tor, das in CI nur Bytes und
+      # Pruefsummen vergleicht und die Signal-Messung dem Laptop ueberlaesst — also ein Tor, das die
+      # Klasse von Fehlern, fuer die es gebaut wurde, in CI nie sieht (P-65). Der Schritt kostet Sekunden.
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+      - run: node scripts/check-audio.mjs --selftest # S1: fuenf echte Defekte muessen rot werden — und ein AUFSTEIGENDER Klang muss gruen bleiben
+      - run: node scripts/check-audio.mjs # S1/R124: Manifest ↔ Platte ↔ Messdatei, Budgets, und BLUEPRINT :371 als Messung
       - run: node scripts/check-ci-gates.mjs --selftest # E2: the guard's own red light must be reachable
       - run: node scripts/check-ci-gates.mjs # E2: every gate on disk is wired into THIS file — the gap cannot reopen
 

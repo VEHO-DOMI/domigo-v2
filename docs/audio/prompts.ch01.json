@@ -1,0 +1,283 @@
+{
+  "note": "Die Tabellen aus docs/design/g1/paint/AUDIO_SPINE_CH01.md §2b und §3, als Daten. scripts/check-audio.mjs erzwingt, dass Kanon und diese Datei dieselben Stems nennen. `material` und `negatives` stehen EINMAL und werden vom Erzeuger vor bzw. hinter jeden `text` gesetzt — „derselbe Raum\" ist eine Eigenschaft der Pipeline, nicht 31 Abschriften desselben Satzes.",
+  "material": "dry chalk, wood, paper, felt; small classroom, close mic, no reverb tail, no music, no voice.",
+  "negatives": "No descending pitch, no minor cadence, no buzzer, no alarm, no reverb, no music, no voice.",
+  "apiNote": "requestSeconds ist, was bei ElevenLabs bestellt wird (die Effekt-API kann minimal 0,5 s); targetSeconds ist das Fenster, auf das docs/audio/master.mjs kappt und auf das scripts/check-audio.mjs prüft.",
+  "sfx": [
+    {
+      "stem": "step-paper",
+      "family": "foot", "pedagogy": "info",
+      "tap": { "union": "player", "event": "walk", "via": "scene", "note": "Schrittflanke in PaintScene#footwork, Phasen p1 · p2 · p9" },
+      "targetSeconds": 0.25, "requestSeconds": 0.5, "promptInfluence": 0.7, "variants": 4, "takes": 6,
+      "text": "A single soft footstep of a child in felt slippers on a painted paper floor. One quiet dry tap, tiny paper rustle, immediate stop."
+    },
+    {
+      "stem": "step-garden",
+      "family": "foot", "pedagogy": "info",
+      "tap": { "union": "player", "event": "walk", "via": "scene", "note": "Schrittflanke, Phase p3 (Schulhof-Garten)" },
+      "targetSeconds": 0.25, "requestSeconds": 0.5, "promptInfluence": 0.7, "variants": 4, "takes": 6,
+      "text": "A single soft footstep on dry crumbly garden soil with a few small grains. One quiet tap, faint grit, immediate stop."
+    },
+    {
+      "stem": "step-board",
+      "family": "foot", "pedagogy": "info",
+      "tap": { "union": "player", "event": "walk", "via": "scene", "note": "Schrittflanke, Phase p4 (die Tafel-Bühne, Holzbretter)" },
+      "targetSeconds": 0.25, "requestSeconds": 0.5, "promptInfluence": 0.7, "variants": 4, "takes": 6,
+      "text": "A single soft footstep on a hollow wooden stage board. One quiet warm knock with a very short wooden resonance, immediate stop."
+    },
+    {
+      "stem": "jump",
+      "family": "body", "pedagogy": "info",
+      "tap": { "union": "player", "event": "jumped", "via": "scene", "note": "jumpedAgo === 0" },
+      "targetSeconds": 0.3, "requestSeconds": 0.5, "promptInfluence": 0.7, "variants": 3, "takes": 6,
+      "text": "A child pushing off the ground: a short cloth and paper whoosh with a small felt scuff at the start. Light, rising, no spring, no boing."
+    },
+    {
+      "stem": "land-soft",
+      "family": "body", "pedagogy": "info",
+      "tap": { "union": "player", "event": "landed", "via": "scene", "note": "landedAgo === 0, fallVy < LAND_DUST_VY*2" },
+      "targetSeconds": 0.3, "requestSeconds": 0.5, "promptInfluence": 0.7, "variants": 2, "takes": 6,
+      "text": "A child landing lightly on a painted paper floor: soft felt contact, tiny chalk dust puff. Gentle, settled, no thump."
+    },
+    {
+      "stem": "land-hard",
+      "family": "body", "pedagogy": "info",
+      "tap": { "union": "player", "event": "landed", "via": "scene", "note": "landedAgo === 0, fallVy >= LAND_DUST_VY*2" },
+      "targetSeconds": 0.45, "requestSeconds": 0.6, "promptInfluence": 0.7, "variants": 2, "takes": 6,
+      "text": "A child landing after a long drop on a painted paper floor: a fuller felt contact with a wider chalk dust puff and a short paper crumple. Weighty but friendly, no impact boom."
+    },
+    {
+      "stem": "slide",
+      "family": "body", "pedagogy": "info",
+      "tap": { "union": "player", "event": "onSlide", "via": "scene", "note": "steigende Flanke von PlayerState.onSlide (z-Glyph, p3)" },
+      "targetSeconds": 0.5, "requestSeconds": 0.8, "promptInfluence": 0.7, "variants": 2, "takes": 6,
+      "text": "A child starting to slide down a smooth waxed paper slope: a soft continuous friction whisper that begins and settles. Playful, dry, no squeal."
+    },
+
+    {
+      "stem": "cage-open",
+      "family": "world", "pedagogy": "info",
+      "tap": { "union": "entity", "event": "cageBurst", "via": "entity" },
+      "targetSeconds": 0.6, "requestSeconds": 0.8, "promptInfluence": 0.7, "variants": 2, "takes": 6,
+      "text": "A small wooden latch flicking open and a light paper cage lid springing up. Wooden click, paper flutter, released. Friendly, no metal, no glass, no snap."
+    },
+    {
+      "stem": "cage-locked",
+      "family": "neutral", "pedagogy": "neutral",
+      "tap": { "union": "entity", "event": "cageGated", "via": "entity" },
+      "targetSeconds": 0.35, "requestSeconds": 0.5, "promptInfluence": 0.8, "variants": 1, "takes": 6,
+      "text": "A wooden latch that does not give: one soft muffled wooden tap that stays where it started. Patient and quiet, level in tone, never falling."
+    },
+    {
+      "stem": "cage-free",
+      "family": "positive", "pedagogy": "positive",
+      "tap": { "union": "sim", "event": "cageFreed", "via": "sim" },
+      "targetSeconds": 1.5, "requestSeconds": 1.8, "promptInfluence": 0.6, "variants": 2, "takes": 6,
+      "text": "A tiny celebration on a toy xylophone: three warm wooden notes rising, with a soft paper flutter underneath. Small, bright, kind. Rising only."
+    },
+    {
+      "stem": "door-open",
+      "family": "world", "pedagogy": "info",
+      "tap": { "union": "sim", "event": "exit", "via": "sim" },
+      "targetSeconds": 0.6, "requestSeconds": 0.8, "promptInfluence": 0.7, "variants": 2, "takes": 6,
+      "text": "A wooden door in a painted book simply opening: one bolt sliding, one light swing of paper and wood. Matter of fact, unhurried, no creak, no fanfare."
+    },
+    {
+      "stem": "gate-waits",
+      "family": "neutral", "pedagogy": "neutral",
+      "tap": { "union": "sim", "event": "toast", "via": "sim", "toastMatch": "(wartet auf ihr Wort|noch voller Kritzel|noch etwas Wichtiges)" },
+      "targetSeconds": 0.3, "requestSeconds": 0.5, "promptInfluence": 0.8, "variants": 1, "takes": 6,
+      "text": "A soft wooden knock that asks rather than refuses: one gentle muted tap on wood, holding its tone. Calm, level, never falling."
+    },
+    {
+      "stem": "letter-take",
+      "family": "positive", "pedagogy": "positive",
+      "tap": { "union": "sim", "event": "letterTaken", "via": "sim", "note": "drei Stufen, die Stufe steigt mit `got`" },
+      "targetSeconds": 0.3, "requestSeconds": 0.5, "promptInfluence": 0.7, "variants": 3, "takes": 8,
+      "text": "One single bright note on a small wooden toy xylophone, with a whisper of paper. Clean, short, ringing upward."
+    },
+    {
+      "stem": "letters-all",
+      "family": "positive", "pedagogy": "positive",
+      "tap": { "union": "sim", "event": "letters", "via": "sim", "note": "nur wenn got === total" },
+      "targetSeconds": 1.5, "requestSeconds": 1.8, "promptInfluence": 0.6, "variants": 1, "takes": 6,
+      "text": "A small complete-the-collection flourish: four rising wooden xylophone notes and a light paper shimmer settling. Warm, bright, rising only."
+    },
+    {
+      "stem": "page-take",
+      "family": "ui", "pedagogy": "info",
+      "tap": { "union": "sim", "event": "tip", "via": "sim" },
+      "targetSeconds": 0.4, "requestSeconds": 0.6, "promptInfluence": 0.7, "variants": 2, "takes": 6,
+      "text": "A single sheet of paper being lifted from a wooden desk: a light crisp pick-up with a small wooden tap. Quiet and clean."
+    },
+    {
+      "stem": "wipe",
+      "family": "world", "pedagogy": "info",
+      "tap": { "union": "sim", "event": "guardianWipe", "via": "sim", "note": "nur wenn layersLeft > 0" },
+      "targetSeconds": 0.5, "requestSeconds": 0.7, "promptInfluence": 0.7, "variants": 3, "takes": 6,
+      "text": "A felt eraser sweeping chalk off a blackboard in one stroke, with fine chalk dust. Dry, brushy, satisfying, no squeak."
+    },
+    {
+      "stem": "board-bloom",
+      "family": "positive", "pedagogy": "positive",
+      "tap": { "union": "sim", "event": "guardianDown", "via": "sim", "note": "der Name ist ein Code-Relikt: sie wird sauber, nicht besiegt (R50)" },
+      "targetSeconds": 1.5, "requestSeconds": 2.0, "promptInfluence": 0.6, "variants": 1, "takes": 8,
+      "text": "Something grumpy turning kind: a warm chord of wooden xylophone and soft chime opening upward and blooming, with a light chalk dust shimmer. Generous, sunny, rising and settling. No triumph brass, no impact."
+    },
+    {
+      "stem": "arena-brief",
+      "family": "world", "pedagogy": "info",
+      "tap": { "union": "sim", "event": "arenaBrief", "via": "sim" },
+      "targetSeconds": 1.5, "requestSeconds": 1.8, "promptInfluence": 0.6, "variants": 1, "takes": 6,
+      "text": "A small stage announcing itself to a child: one warm low wooden marimba swell with a soft paper curtain movement. Serious but gentle and inviting, never scary, no brass braam, no drone."
+    },
+    {
+      "stem": "boss-window",
+      "family": "world", "pedagogy": "info",
+      "tap": { "union": "entity", "event": "guardianStagger", "via": "entity" },
+      "targetSeconds": 0.5, "requestSeconds": 0.7, "promptInfluence": 0.7, "variants": 1, "takes": 6,
+      "text": "A held breath: one soft wooden marimba note opening a moment of stillness, with a faint chalk dust settle. An invitation, not a hit."
+    },
+    {
+      "stem": "ink-splash",
+      "family": "neutral", "pedagogy": "neutral",
+      "tap": { "union": "player", "event": "encounter", "via": "sim", "toastMatch": "Platsch", "note": "hazard === \"w\" — die Tinte" },
+      "targetSeconds": 0.4, "requestSeconds": 0.5, "promptInfluence": 0.8, "variants": 2, "takes": 8,
+      "text": "A small soft splash into a shallow ink puddle on paper: one gentle wet plop, damp and muffled, holding its tone as it fades. Never falling in pitch, never harsh."
+    },
+    {
+      "stem": "bump",
+      "family": "neutral", "pedagogy": "neutral",
+      "tap": { "union": "entity", "event": "encounter", "via": "entity" },
+      "targetSeconds": 0.35, "requestSeconds": 0.5, "promptInfluence": 0.8, "variants": 2, "takes": 6,
+      "text": "A soft nudge against cloth: one muffled padded contact, dry and level. Gentle, no impact, no pain, never falling in tone."
+    },
+    {
+      "stem": "shoo",
+      "family": "world", "pedagogy": "info",
+      "tap": { "union": "entity", "event": "shooed", "via": "entity" },
+      "targetSeconds": 0.35, "requestSeconds": 0.5, "promptInfluence": 0.7, "variants": 2, "takes": 6,
+      "text": "A paper moth flapping away quickly: two or three light paper flutters moving off. Airy, harmless, playful."
+    },
+    {
+      "stem": "puff-chalk",
+      "family": "world", "pedagogy": "info",
+      "tap": { "union": "sim", "event": "puff", "via": "sim", "note": "nur kind === \"chalk\"" },
+      "targetSeconds": 0.25, "requestSeconds": 0.5, "promptInfluence": 0.7, "variants": 2, "takes": 6,
+      "text": "A small puff of chalk dust hitting the air. One tiny dry breath of powder, nothing struck."
+    },
+    {
+      "stem": "being-answered",
+      "family": "positive", "pedagogy": "positive",
+      "tap": { "union": "sim", "event": "entityResolved", "via": "sim" },
+      "targetSeconds": 0.8, "requestSeconds": 1.0, "promptInfluence": 0.6, "variants": 2, "takes": 6,
+      "text": "A small creature being understood: two warm wooden xylophone notes rising, with a soft paper sigh of relief. Modest, kind, rising only."
+    },
+    {
+      "stem": "merle-round",
+      "family": "positive", "pedagogy": "positive",
+      "tap": { "union": "shell", "event": "classmateRoundSolved", "via": "shell", "note": "drei Stufen über ihre sechs Runden" },
+      "targetSeconds": 0.6, "requestSeconds": 0.8, "promptInfluence": 0.6, "variants": 3, "takes": 8,
+      "text": "A single warm wooden xylophone note with a gentle glass-like shimmer opening behind it, as if something frozen were thawing a little. Tender, hopeful, rising."
+    },
+
+    {
+      "stem": "card-open",
+      "family": "ui", "pedagogy": "info",
+      "tap": { "union": "sim", "event": "task", "via": "sim" },
+      "targetSeconds": 0.3, "requestSeconds": 0.5, "promptInfluence": 0.7, "variants": 3, "takes": 6,
+      "text": "A card of thick paper being laid down on a wooden desk: one soft wooden click and a short paper settle. Quiet, tidy."
+    },
+    {
+      "stem": "card-close",
+      "family": "ui", "pedagogy": "info",
+      "tap": { "union": "shell", "event": "cardClosed", "via": "shell" },
+      "targetSeconds": 0.3, "requestSeconds": 0.5, "promptInfluence": 0.7, "variants": 3, "takes": 6,
+      "text": "A card of thick paper being lifted away from a wooden desk: one short paper lift and a soft wooden tap. Quiet, tidy."
+    },
+    {
+      "stem": "page-turn",
+      "family": "ui", "pedagogy": "info",
+      "tap": { "union": "shell", "event": "pageTurned", "via": "shell" },
+      "targetSeconds": 0.4, "requestSeconds": 0.6, "promptInfluence": 0.7, "variants": 2, "takes": 6,
+      "text": "One page of a large picture book turning over. A single clean paper sweep, no book covers, no rustling pile."
+    },
+    {
+      "stem": "toast",
+      "family": "ui", "pedagogy": "info",
+      "tap": { "union": "sim", "event": "toast", "via": "sim", "note": "der Standardfall — die per toastMatch erkannten Zeilen gehen an gate-waits bzw. ink-splash" },
+      "targetSeconds": 0.2, "requestSeconds": 0.5, "promptInfluence": 0.7, "variants": 2, "takes": 6,
+      "text": "One very quiet wooden tick, like a pencil touching a desk once. Tiny, unobtrusive, over immediately."
+    },
+    {
+      "stem": "solve-ok",
+      "family": "positive", "pedagogy": "positive",
+      "tap": { "union": "shell", "event": "answerAccepted", "via": "shell", "note": "drei Stufen: nah · teilweise · richtig" },
+      "targetSeconds": 0.5, "requestSeconds": 0.6, "promptInfluence": 0.7, "variants": 3, "takes": 8,
+      "text": "One clear warm note on a small wooden toy xylophone, ringing briefly and rising. Encouraging, uncomplicated."
+    },
+    {
+      "stem": "solve-thud",
+      "family": "neutral", "pedagogy": "neutral",
+      "tap": { "union": "shell", "event": "answerNotAccepted", "via": "shell" },
+      "targetSeconds": 0.3, "requestSeconds": 0.5, "promptInfluence": 0.85, "variants": 2, "takes": 8,
+      "text": "One soft muted thud on a wooden desk, wrapped in felt. Warm, level in tone, completely neutral — the sound of a page waiting, not of a mistake. Never falling in pitch, never a buzz."
+    },
+
+    { "stem": "cage-hit", "reserved": true, "unlockedIn": "ch01-mid/ch02 (Faust)", "family": "world", "pedagogy": "info", "tap": { "union": "entity", "event": "cageHit", "via": "entity" }, "targetSeconds": 0.5, "requestSeconds": 0.6, "variants": 2, "takes": 6, "text": "A light paper-and-wood cage rattling from a blow that did not open it: a short wooden shudder." },
+    { "stem": "fist-throw", "reserved": true, "unlockedIn": "ch01-mid/ch02 (Faust)", "family": "body", "pedagogy": "info", "tap": { "union": "player", "event": "fistThrown", "via": "scene" }, "targetSeconds": 0.4, "requestSeconds": 0.5, "variants": 3, "takes": 6, "text": "A rolled paper fist thrown through the air: one short cloth and paper whoosh leaving the hand." },
+    { "stem": "fist-hit", "reserved": true, "unlockedIn": "ch01-mid/ch02 (Faust)", "family": "world", "pedagogy": "info", "tap": { "union": "sim", "event": "puff", "via": "sim", "note": "kind === \"hit\"" }, "targetSeconds": 0.35, "requestSeconds": 0.5, "variants": 2, "takes": 6, "text": "A rolled paper fist landing on something solid and painted: one dry padded contact with a small chalk burst." },
+    { "stem": "deflect", "reserved": true, "unlockedIn": "ch02 (Faust)", "family": "world", "pedagogy": "info", "tap": { "union": "entity", "event": "projectileDeflected", "via": "entity" }, "targetSeconds": 0.35, "requestSeconds": 0.5, "variants": 2, "takes": 6, "text": "A flying piece of chalk batted back: one crisp dry wooden tick reversing direction." },
+    { "stem": "powerup-take", "reserved": true, "unlockedIn": "ch01-mid (erstes powerup-Entity)", "family": "positive", "pedagogy": "positive", "tap": { "union": "entity", "event": "powerupTaken", "via": "entity" }, "targetSeconds": 1.5, "requestSeconds": 1.8, "variants": 1, "takes": 6, "text": "A new ability arriving: four rising wooden xylophone notes opening into a warm shimmer. Bright, generous, rising only." },
+    { "stem": "book-take", "reserved": true, "unlockedIn": "das erste Kapitel mit einem book-Entity", "family": "positive", "pedagogy": "positive", "tap": { "union": "sim", "event": "book", "via": "sim" }, "targetSeconds": 0.5, "requestSeconds": 0.6, "variants": 2, "takes": 6, "text": "A small bonus book picked up: one warm wooden note and a short paper flip. Pleased, modest." },
+    { "stem": "hover", "reserved": true, "unlockedIn": "ch04 (Federkiel-Rotor)", "family": "body", "pedagogy": "info", "tap": { "union": "player", "event": "hoverStart", "via": "scene" }, "targetSeconds": 0.5, "requestSeconds": 0.7, "variants": 2, "takes": 6, "text": "A quill starting to spin like a rotor: a light airy paper flutter settling into a steady soft whir." },
+    { "stem": "ledge-grab", "reserved": true, "unlockedIn": "ch02", "family": "body", "pedagogy": "info", "tap": { "union": "player", "event": "grabbedLedge", "via": "scene" }, "targetSeconds": 0.35, "requestSeconds": 0.5, "variants": 2, "takes": 6, "text": "Two hands catching a paper ledge: one short cloth grip with a small paper crease." },
+    { "stem": "swing-start", "reserved": true, "unlockedIn": "das erste Kapitel mit einem o-Glyph", "family": "body", "pedagogy": "info", "tap": { "union": "player", "event": "swingStart", "via": "scene" }, "targetSeconds": 0.4, "requestSeconds": 0.5, "variants": 2, "takes": 6, "text": "A hand closing on a hanging ring and taking the weight: one cloth grip and a soft rope creak of paper." },
+    { "stem": "spring", "reserved": true, "unlockedIn": "das erste Kapitel mit einem s-Glyph", "family": "body", "pedagogy": "info", "tap": { "union": "player", "event": "sprung", "via": "scene" }, "targetSeconds": 0.4, "requestSeconds": 0.5, "variants": 2, "takes": 6, "text": "A paper spring launching a child upward: one quick folded-paper release, light and rising." },
+    { "stem": "spike-touch", "reserved": true, "unlockedIn": "das erste Kapitel mit einem ^-Glyph", "family": "neutral", "pedagogy": "neutral", "tap": { "union": "player", "event": "encounter", "via": "sim", "note": "hazard === \"^\"" }, "targetSeconds": 0.35, "requestSeconds": 0.5, "variants": 2, "takes": 6, "text": "Brushing against a sharp pen nib: one soft dry paper scrape, level in tone. Neutral, never falling, never sharp." }
+  ],
+  "music": [
+    {
+      "stem": "music-p1", "kind": "music", "family": "music", "pedagogy": "info",
+      "tap": { "union": "scene", "event": "phase:p1", "via": "scene" },
+      "lengthMs": 45000, "bpm": 92, "beatsPerBar": 4, "loop": true, "takes": 3, "seed": 1101,
+      "text": "Instrumental only. A curious, bright, gently lost little theme for a child who has just fallen into a painted school book and finds everything stranded high above. Small acoustic ensemble: soft marimba, plucked nylon guitar, light brushed hand percussion, one warm flute. Major key, about 92 BPM, unhurried. Begins and ends on the tonic, no intro, no ritardando, seamless loop. Warm, welcoming, never sad, never tense."
+    },
+    {
+      "stem": "music-p2", "kind": "music", "family": "music", "pedagogy": "info",
+      "tap": { "union": "scene", "event": "phase:p2", "via": "scene" },
+      "lengthMs": 45000, "bpm": 72, "beatsPerBar": 4, "loop": true, "takes": 3, "seed": 1102,
+      "text": "Instrumental only. A tender, hushed night piece for a moonlit classroom where one half-enchanted classmate is waiting. Very few instruments: celesta, soft nylon guitar harmonics, a single sustained flute, almost no percussion. Major key with an open fourth, about 72 BPM. Quiet and spacious, tender rather than sad. Begins and ends on the tonic, no intro, no ritardando, seamless loop."
+    },
+    {
+      "stem": "music-p3", "kind": "music", "family": "music", "pedagogy": "info",
+      "tap": { "union": "scene", "event": "phase:p3", "via": "scene" },
+      "lengthMs": 45000, "bpm": 112, "beatsPerBar": 4, "loop": true, "takes": 3, "seed": 1103,
+      "text": "Instrumental only. A playful, springy outdoor theme for a terraced school garden where a child slides, waits and climbs. Pizzicato strings, marimba, light shaker and woodblock, one cheerful clarinet. Major key, about 112 BPM, bouncy but not frantic. Begins and ends on the tonic, no intro, no ritardando, seamless loop. Sunny and encouraging."
+    },
+    {
+      "stem": "music-p9", "kind": "music", "family": "music", "pedagogy": "info",
+      "tap": { "union": "scene", "event": "phase:p9", "via": "scene" },
+      "lengthMs": 45000, "bpm": 100, "beatsPerBar": 4, "loop": true, "takes": 3, "seed": 1109,
+      "text": "Instrumental only. A mischievous, secretive little theme for a hidden ink chamber full of letters and showing off. Muted pizzicato bass, tiptoeing marimba, occasional water-drop percussion, one sly bass clarinet. Major key with a raised fourth, about 100 BPM. Twinkling and conspiratorial, never menacing. Begins and ends on the tonic, no intro, no ritardando, seamless loop."
+    },
+    {
+      "stem": "music-p4", "kind": "music", "family": "music", "pedagogy": "info",
+      "tap": { "union": "scene", "event": "phase:p4", "via": "scene" },
+      "lengthMs": 45000, "bpm": 120, "beatsPerBar": 4, "loop": true, "takes": 3, "seed": 1104,
+      "text": "Instrumental only. A determined, purposeful theme for a stage in front of an empty hall, where a child faces a grumpy scribbled-over blackboard and cleans it rather than defeats it. Marching low marimba, steady hand drum, resolute brushed strings, one bold clarinet. Major key with a lowered seventh, about 120 BPM. Serious and driving, but good-natured and never threatening: grumpy, not evil. No horror, no dissonance, no dread. Begins and ends on the tonic, no intro, no ritardando, seamless loop."
+    },
+    {
+      "stem": "music-title", "kind": "music", "family": "music", "pedagogy": "info",
+      "tap": { "union": "scene", "event": "titleCard", "via": "shell" },
+      "lengthMs": 8000, "bpm": 92, "beatsPerBar": 4, "loop": false, "takes": 3, "seed": 1100,
+      "text": "Instrumental only. A short warm opening motif for a storybook that speaks for the only time: marimba and nylon guitar stating one inviting melodic phrase and resolving. Major key, about 92 BPM, eight seconds, complete in itself. Gentle, welcoming, no fanfare."
+    },
+    {
+      "stem": "music-win", "kind": "music", "family": "music", "pedagogy": "info",
+      "tap": { "union": "scene", "event": "tally", "via": "shell" },
+      "lengthMs": 3000, "bpm": 92, "beatsPerBar": 4, "loop": false, "takes": 3, "seed": 1199,
+      "text": "Instrumental only. A short happy closing sting for a child who finished a chapter: three or four rising marimba and glockenspiel notes resolving warmly. Major key, about three seconds, no reverb tail, no drum fill, rising only."
+    }
+  ]
+}
