@@ -1,19 +1,25 @@
 /**
- * R5 · S1 · Der Klang des Malbuchs — die öffentliche Fläche.
+ * R5 · S1/S2 · Der Klang des Malbuchs — die öffentliche Fläche.
  *
- * In dieser Runde ruft niemand hier hinein: S2 verdrahtet das Modul, nachdem
- * Welle 5 durch ist. Bis dahin ist dieser Ordner eine fertige, geprüfte Fabrik
- * ohne Kunden — der Beweis dafür ist, dass `pnpm check:bundle` dieselbe Zahl
- * liefert wie vor diesem PR.
+ * S1 hat diesen Ordner als fertige Fabrik ohne Kunden abgeliefert; S2 (R5-W6)
+ * hat ihn angeklemmt. Die Liste unten ist deshalb keine Anleitung mehr, sondern
+ * eine Karte: sie sagt, WO im Spiel jeder dieser Aufrufe heute steht.
  *
- * Was S2 braucht, in der Reihenfolge, in der er es braucht:
+ * Die Wege herein, in der Reihenfolge, in der das Spiel sie braucht:
  *   1. `createSharedContext()` → `audio: { context }` in der Phaser-Config
- *   2. `createAudioDirector({ sound: this.sound })` in `PaintScene#create`
- *   3. `director.decodeAfterCreate(phaseId)` NACH `create()` — nie im `preload`
- *   4. `director.on("sim", ev.type, ev)` im vorhandenen Trichter
- *      `handleSimEvents`, plus je eine Zeile für die Entity- und Szenen-Takte
- *   5. `director.music(phaseId)` beim Phasenwechsel
- *   6. `setMuted/setMusic/setSfx` für den Stumm-Knopf
+ *      (`PaintGame.tsx`, beim Bau des Spiels)
+ *   2. `createAudioDirector({ sound: game.sound })` — ebenfalls in `PaintGame`,
+ *      NICHT in der Szene: die Szene stirbt bei jedem Raumwechsel, der Direktor
+ *      soll seine decodierte Bank behalten (siehe `PaintSceneCfg#audio`)
+ *   3. `director.decodeAfterCreate(phaseId)` am Ende von `PaintScene#create` —
+ *      nie im `preload`, der hält das erste Bild an
+ *   4. `director.on("sim", …)` im Trichter `handleSimEvents`, `on("entity", …)`
+ *      über `SimCfg#onEntityAudio`, `land`/`footstep`/`cue` im Szenen-Takt
+ *      `footwork`, `cue(…)` in den Karten-Takten der Hülle
+ *   5. `director.music(phaseId)` beim Phasenwechsel — aber erst, wenn Phasers
+ *      Tonmaschine ENTSPERRT ist (`game.sound.locked`): ein Klang, der vorher
+ *      startet, wird nicht in eine Warteschlange gelegt, er ist verloren
+ *   6. `setMuted/setMusic/setSfx` am Stumm-Knopf in der HUD-Leiste
  *
  * Drei Dinge, die S2 wissen muss und die hier bewusst offen sind:
  *
@@ -37,20 +43,22 @@
  */
 
 export {
-  BUSES, ENTITY_REACTIONS, MUSIC_BY_PHASE, PLAYER_REACTIONS, SIM_REACTIONS, STEMS, TOAST_MATCHES,
-  allReactions, audioUrl, filesOf, isPlay, isReserved, isSilent, manifestFiles, stemSpec,
-  type AudioFamily, type Bus, type Pedagogy, type Reaction, type StemSpec, type Tap,
+  BUSES, CUE_STEMS, ENTITY_REACTIONS, MUSIC_BY_PHASE, PLAYER_REACTIONS, SIM_REACTIONS,
+  STEMS, SURFACE_BY_PHASE, TOAST_MATCHES,
+  allReactions, audioUrl, filesOf, isPlay, isReserved, isSilent, manifestFiles, stemSpec, surfaceOfPhase,
+  type AudioFamily, type Bus, type CueStem, type Pedagogy, type Reaction, type StemSpec, type Surface, type Tap,
 } from "./audioManifest.ts";
 
 export { AUDIO_FILES, type AudioFileInfo } from "./audioFiles.ts";
 
 export {
   createAudioDirector, createSharedContext, mapEvent,
-  type AudioDirector, type DirectorDeps, type EventUnion, type HostSound, type SoundHost,
+  type AudioDirector, type AudioReport, type DirectorDeps, type EventUnion, type HostSound, type SoundHost,
 } from "./director.ts";
 
 export {
-  AUDIO_DEFAULTS, AUDIO_SETTINGS_KEY, readAudioSettings, writeAudioSettings,
+  AUDIO_DEFAULTS, AUDIO_SETTINGS_KEY, FEEL_SETTINGS_KEY,
+  readAudioSettings, setFeelSound, writeAudioSettings,
   type AudioSettings,
 } from "./settings.ts";
 

@@ -16,6 +16,7 @@
 //   7. kein stilles Blatt, kein abgeschnittenes Signal, kein Stille-Schwanz
 //   8. BLUEPRINT `:371`: ein neutraler Klang FÄLLT NICHT
 //   9. Schleifen-Naht kein Ausreisser · Toast-Bindungen passen noch auf sim.ts
+//  10. die vier Decken hier sagen dasselbe wie `audio/audioBudget.ts` (R5-W6 · S2)
 //   + die zwei PERF_WAECHTER-Zeilen stehen im Aushang
 //
 // ── Warum mit Toleranz und nicht auf Gleichheit ────────────────────────────
@@ -52,6 +53,7 @@ const MANIFEST_TS = path.join(R, "packages/game-paint/src/audio/audioManifest.ts
 const SIM_TS = path.join(R, "packages/game-paint/src/sim.ts");
 const AUDIO_ROOT = path.join(R, "apps/web/public/audio/g1/paint/ch01");
 const GUARD_DOC = path.join(R, "docs/PERF_WAECHTER.md");
+const BUDGET_TS = path.join(R, "packages/game-paint/src/audio/audioBudget.ts");
 
 const MB = 1024 * 1024;
 
@@ -506,6 +508,40 @@ if (loudnessByPedagogy.positive.length > 0 && loudnessByPedagogy.neutral.length 
     if (!literals.some((l) => re.test(l))) {
       fail("Toast-Bindung", `\`${stem}\`: /${pattern}/ passt auf KEINE Toast-Zeile in sim.ts mehr. `
         + `Wurde die Copy umformuliert? Dann waere der Klang still verschwunden — deshalb steht hier ein rotes Licht.`);
+    }
+  }
+}
+
+// ── R5-W6 · S2 · Gesetz 10: die Decken hier ↔ `audio/audioBudget.ts` ────────
+//
+// Der Aushang war ans Tor gebunden (unten), die TypeScript-Datei nicht: die
+// vier Zahlen standen zweimal von Hand da. Sie stimmten — aber »sie stimmen
+// heute« ist keine Bindung, und ein Budget, das an einer von zwei Stellen
+// angehoben wird, hebt sich in Wahrheit gar nicht an: der Code rechnet dann mit
+// der einen Zahl und das Tor prueft die andere, und beide Seiten haben recht.
+//
+// Gelesen wird per Textsuche statt per Import, weil dieses Skript ein `.mjs`
+// ist und `audioBudget.ts` eine Typdatei — ein Uebersetzungsschritt fuer vier
+// Zahlen waere teurer als die Suche. Findet die Suche einen Schluessel NICHT,
+// ist das ein Verstoss und kein Achselzucken: eine Decke, die aus der Datei
+// verschwindet, ist genau der Fall, den dieses Gesetz fangen soll.
+{
+  const ts = fs.readFileSync(BUDGET_TS, "utf8");
+  const limitOf = (key) => {
+    const m = new RegExp(`key:\\s*"${key}"[\\s\\S]{0,200}?limit:\\s*([0-9.]+)`).exec(ts);
+    return m === null ? null : Number(m[1]);
+  };
+  for (const [key, here] of [
+    ["AUDIO_DISK_MB", LIMITS.diskMb],
+    ["AUDIO_SFX_DISK_MB", LIMITS.sfxDiskMb],
+    ["AUDIO_MUSIC_PHASE_MB", LIMITS.musicPhaseMb],
+    ["AUDIO_DECODED_MB", LIMITS.decodedMb],
+  ]) {
+    const there = limitOf(key);
+    if (there === null) {
+      fail("Budget-Bindung", `\`${key}\` steht nicht mehr in audio/audioBudget.ts — das Tor prueft eine Decke, die der Code nicht kennt`);
+    } else if (there !== here) {
+      fail("Budget-Bindung", `\`${key}\`: audioBudget.ts sagt ${there}, dieses Tor sagt ${here} — eine der beiden Zahlen ist veraltet`);
     }
   }
 }

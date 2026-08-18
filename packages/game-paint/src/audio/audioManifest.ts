@@ -30,11 +30,12 @@
  * `guardianDown` und `puff`. Ein Klang am falschen `encounter` wäre lautlos und
  * niemandem aufgefallen.
  *
- * ── Dieses Modul hat in S1 KEINEN Aufrufer ──────────────────────────────────
- * S2 verdrahtet es. Die Importe hier sind ausschliesslich `import type` — sie
- * verschwinden beim Bauen, es entsteht keine Laufzeit-Kante, und die
- * Bundle-Grösse bleibt unverändert. Ohne sie liessen sich die Unionen nicht
- * ableiten und die Abdeckung müsste abgetippt werden.
+ * ── Warum die Importe hier `import type` sind ───────────────────────────────
+ * Sie verschwinden beim Bauen, es entsteht keine Laufzeit-Kante von diesem
+ * Manifest zurück in die Spiel-Logik, und ohne sie liessen sich die Unionen
+ * nicht ableiten — die Abdeckung müsste abgetippt werden und wäre am Tag ihrer
+ * Entstehung vollständig und danach nie wieder. (In S1 hatte dieses Modul gar
+ * keinen Aufrufer; seit S2 · R5-W6 ist es verdrahtet.)
  */
 
 import type { EntityEvent } from "../entities.ts";
@@ -146,6 +147,42 @@ export const STEMS: readonly StemSpec[] = [
 export const MUSIC_BY_PHASE: Readonly<Record<string, string>> = {
   p1: "music-p1", p2: "music-p2", p3: "music-p3", p4: "music-p4", p9: "music-p9",
 } as const;
+
+/**
+ * R5 · S2 · Der Untergrund einer Phase.
+ *
+ * Der Schritt-Klang kommt aus dem RAUM, nicht aus dem Glyph: in ch01 gibt es
+ * genau zwei begehbare Glyphen (`#` und die Rutsche `z`), aber vier Materialien
+ * unter den Füssen. Die Tabelle stand bisher nur als Prosa in `audio/index.ts`;
+ * hier ist sie Daten, und `manifest.test.ts` prüft sie gegen die Phasen des
+ * Levels — eine Phase ohne Eintrag geht auf `paper`, statt still zu sein.
+ */
+export type Surface = "paper" | "garden" | "board";
+export const SURFACE_BY_PHASE: Readonly<Record<string, Surface>> = {
+  p1: "paper", p2: "paper", p3: "garden", p4: "board", p9: "paper",
+} as const;
+
+export const surfaceOfPhase = (phaseId: string): Surface => SURFACE_BY_PHASE[phaseId] ?? "paper";
+
+/**
+ * R5 · S2 · Die Klänge, die an KEINEM Ereignis hängen.
+ *
+ * Fünf Stems tragen im Manifest die Anschlussstelle `scene` oder `shell` und
+ * kommen in keiner der drei Ereignis-Tabellen vor — weil es das Ereignis nicht
+ * gibt: die Rutsche ist ein ZUSTAND (`player.onSlide`), und „Karte zu",
+ * „Seite geblättert", „richtig!" und Merles Runde passieren in React, wo die
+ * Spiel-Logik nicht hinsieht.
+ *
+ * Sie brauchen also einen eigenen Weg herein — aber einen SCHMALEN. Diese
+ * geschlossene Union ist er: der Direktor bleibt die einzige Stelle, die
+ * entscheidet, was klingt und wie laut; die Hülle sagt nur, DASS etwas passiert
+ * ist. Ein Aufrufer kann sich keinen beliebigen Stem greifen, und
+ * `coverage.test.ts` prüft die andere Richtung mit — jeder Stem mit Dateien auf
+ * der Platte muss entweder in einer Reaktions-Tabelle, in dieser Union oder in
+ * `MUSIC_BY_PHASE` stehen, sonst ist er ein toter Klang.
+ */
+export const CUE_STEMS = ["slide", "card-close", "page-turn", "solve-ok", "merle-round"] as const;
+export type CueStem = (typeof CUE_STEMS)[number];
 
 /**
  * Zwei Klänge hängen an einem SimEvent `toast` mit einem BESTIMMTEN Text — der
