@@ -1325,11 +1325,18 @@ describe("der Schwall — was landet, bleibt nicht liegen (Auftrag 2b)", () => {
 // ── R5-W2 · H1 (Teil 3) · DIE BILD-TAKTE DES KAMPFES (Auftrag 1) ────────────
 //
 // Auftrag 1 verlangt Lesbarkeit als BILD: Licht auf der Tafel im Ausholen,
-// Aufschlagmarken für die Kreide, eine Fanfare am Fenster. Es gibt in diesem
-// Paket kein Audio-System, also ist jede Fanfare Licht — und diese Datei kann
-// keinen Bildschirm prüfen. Was sie prüfen KANN, ist die Arithmetik, aus der die
-// Bilder gerechnet werden: der Takt der Ansage und der gelöste Aufschlagpunkt.
-// Beides sind reine Zahlen, und beide waren vorher gar nicht vorhanden.
+// Aufschlagmarken für die Kreide, eine Fanfare am Fenster.
+//
+// R5-W6b · H4 · D-370: seit S1/S2 klingt der Kampf auch — `boss-window` am
+// Fenster, `wipe` je Schicht, `puff-chalk` am Aufschlag, `music-p4` als Raum.
+// Die Fanfare ist damit Licht UND Ton. Für diese Datei ändert das nichts; es
+// steht hier, weil ein Kommentar, der eine Abwesenheit behauptet, als Erlaubnis
+// gelesen wird, keine zu suchen.
+//
+// Was diese Datei prüfen kann, ist weder Bild noch Ton, sondern die Arithmetik,
+// aus der beides gerechnet wird: der Takt der Ansage und der gelöste
+// Aufschlagpunkt. Beides sind reine Zahlen, und beide waren vorher gar nicht
+// vorhanden.
 describe("die Ansage ist ein Takt, kein Dauerzustand (Auftrag 1)", () => {
   /** Dieselbe Kurve, die die Szene dem Halo füttert (PaintScene.bossTellT) —
    *  hier als reine Nachrechnung, weil PaintScene Phaser importiert und in
