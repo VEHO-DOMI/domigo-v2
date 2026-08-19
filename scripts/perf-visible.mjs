@@ -162,23 +162,37 @@ export const mdTable = (rows, baseline = null) => {
  * Richtung nicht mehr lesbar.
  */
 export const mdBuildSteps = (rows) => {
-  const seen = new Map(); // step -> parent
-  for (const r of rows) for (const s of r.build ?? []) if (!seen.has(s.step)) seen.set(s.step, s.parent ?? null);
+  // Der Schlüssel ist ELTERN + NAME, nicht der Name allein. `terrain` und
+  // `props` haben beide ein Kind namens »· gitter«; beim ersten Lauf dieser
+  // Tabelle hat das eine das andere geschluckt und die props-Zeile fehlte
+  // stillschweigend. Eine Aufschlüsselung, in der eine Zeile verschwinden kann,
+  // ohne dass es auffällt, ist genau die Sorte Werkzeug, die man nicht merkt.
+  const key = (s) => `${s.parent ?? ""}\u0000${s.step}`;
+  const seen = new Map(); // key -> {step, parent}
+  for (const r of rows) for (const s of r.build ?? []) if (!seen.has(key(s))) seen.set(key(s), { step: s.step, parent: s.parent ?? null });
   if (seen.size === 0) return "";
   // Reihenfolge: Eltern in Auftrittsreihenfolge, jedes Kind direkt unter seinem
-  const parents = [...seen.keys()].filter((k) => seen.get(k) === null);
+  const parents = [...seen.values()].filter((v) => v.parent === null).map((v) => v.step);
   const ordered = [];
   for (const par of parents) {
-    ordered.push(par);
-    for (const [k, v] of seen) if (v === par) ordered.push(k);
+    ordered.push({ step: par, parent: null });
+    for (const v of seen.values()) if (v.parent === par) ordered.push(v);
   }
-  for (const [k, v] of seen) if (v !== null && !parents.includes(v) && !ordered.includes(k)) ordered.push(k);
+  // Kinder, deren Eltern KEIN gemessener Schritt ist (Quersummen über mehrere
+  // Schritte), bekommen eine eigene Überschrift — sonst hängen sie optisch unter
+  // dem letzten Schritt der Tabelle und werden als dessen Kinder gelesen.
+  const waisen = [...seen.values()].filter((v) => v.parent !== null && !parents.includes(v.parent));
+  for (const gruppe of new Set(waisen.map((v) => v.parent))) {
+    ordered.push({ step: gruppe, parent: null, ueberschrift: true });
+    for (const v of waisen) if (v.parent === gruppe) ordered.push(v);
+  }
   const head = `| Bauschritt (ms) | ${rows.map((r) => r.phase).join(" | ")} |`;
   const sep = `|---|${rows.map(() => "---").join("|")}|`;
-  const body = ordered.map((step) => {
-    const child = seen.get(step) !== null;
-    const cells = rows.map((r) => num((r.build ?? []).find((s) => s.step === step)?.ms));
-    return `| ${child ? "&nbsp;&nbsp;" : "**"}${step}${child ? "" : "**"} | ${cells.join(" | ")} |`;
+  const cellOf = (r, v) => num((r.build ?? []).find((s) => s.step === v.step && (s.parent ?? null) === v.parent)?.ms);
+  const body = ordered.map((v) => {
+    if (v.ueberschrift === true) return `| _${v.step}_ | ${rows.map(() => "").join(" | ")} |`;
+    const child = v.parent !== null;
+    return `| ${child ? "&nbsp;&nbsp;" : "**"}${v.step}${child ? "" : "**"} | ${rows.map((r) => cellOf(r, v)).join(" | ")} |`;
   });
   const sums = rows.map((r) => num((r.build ?? []).filter((s) => (s.parent ?? null) === null).reduce((a, s) => a + s.ms, 0)));
   return [head, sep, ...body, `| **Summe (nur Eltern)** | ${sums.join(" | ")} |`].join("\n");
@@ -527,7 +541,12 @@ const measureOnce = async (phase) => withPage(async ({ page, evalIn }) => {
       ox: r3(o.originX), oy: r3(o.originY),
       depth: r3(o.depth), alpha: r3(o.alpha), rot: r3(o.rotation),
       visible: o.visible, blend: o.blendMode,
-      tex: o.texture?.key ?? null, frame: o.frame?.name ?? null,
+      // \`texture.key\` einer TileSprite ist eine je Lauf NEU erfundene UUID (Phaser
+      // legt für das Füllmuster eine eigene Leinwand-Textur an) — als Identität
+      // also wertlos. \`displayTexture\` ist das Blatt, das wirklich gemeint ist.
+      tex: o.displayTexture?.key ?? o.texture?.key ?? null,
+      frame: o.displayFrame?.name ?? o.frame?.name ?? null,
+      texRaw: o.texture?.key ?? null,
       tint: o.tintTopLeft ?? null,
       tsx: r3(o.tileScaleX), tsy: r3(o.tileScaleY),
       tpx: r3(o.tilePositionX), tpy: r3(o.tilePositionY),
@@ -587,12 +606,15 @@ for (const phase of PHASES) {
   // sie aufschlüsseln soll. (Beim ersten Lauf dieses Skripts war p1 genau so:
   // 425 ms Median über 749 ms Schritt-Summe.) Eine Aufschlüsselung, die eine
   // andere Messung aufschlüsselt als die daneben, ist keine.
-  const stepNames = [...new Set(takes.flatMap((t) => (t.build ?? []).map((s) => s.step)))];
-  const build = stepNames.map((step) => {
+  const stepKeys = new Map();
+  for (const t of takes) for (const s of t.build ?? []) {
+    const k = `${s.parent ?? ""}\u0000${s.step}`;
+    if (!stepKeys.has(k)) stepKeys.set(k, { step: s.step, parent: s.parent ?? null });
+  }
+  const build = [...stepKeys.values()].map(({ step, parent }) => {
     const xs = takes
-      .map((t) => (t.build ?? []).find((s) => s.step === step)?.ms)
+      .map((t) => (t.build ?? []).find((s) => s.step === step && (s.parent ?? null) === parent)?.ms)
       .filter((v) => typeof v === "number" && Number.isFinite(v));
-    const parent = takes.flatMap((t) => t.build ?? []).find((s) => s.step === step)?.parent ?? null;
     return { step, parent, ms: xs.length ? median(xs) : null };
   });
   const row = {

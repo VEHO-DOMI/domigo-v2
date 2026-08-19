@@ -230,8 +230,6 @@ const LETTER_GRAIN_SPECKS = 130;
  *  that eventually does, and it falls back to live Graphics rather than to a
  *  missing floor. */
 const BAKE_MAX_PX = 4096;
-/** Durchsichtiger Saum um eine zugeschnittene Backtextur (E7) — siehe bakeStatic. */
-const BAKE_PAD = 2;
 /** …and the shadow it drops on whatever it is floating over: how far down that
  *  surface may be before the letter is too high to cast anything readable. */
 const LETTER_SHADOW_REACH_PX = 26;
@@ -1329,6 +1327,19 @@ export class PaintScene extends Phaser.Scene {
     this.cameras.main.centerOn(fromSubs(this.player.x), fromSubs(this.player.y) - LOGICAL_H / 4);
     this.scale.refresh(); // the P-48 lesson: assert geometry at scene entry
     this.timed("finishWarming", () => this.finishWarming());
+    // ── R5-W6b · E7 · DIE QUERSUMME, DIE KEINEM SCHRITT GEHÖRT ───────────────
+    // `tiled()` wird aus DREI Schritten gerufen — `backdrop`, `air` und
+    // `terrain` —, diese Zahlen sind also KEIN Kind eines einzelnen Schrittes,
+    // sondern eine Summe quer durch create(). Sie stehen unter einem eigenen
+    // Eltern-Namen, damit niemand sie unter `terrain` addiert; ihre Zeit steckt
+    // bereits in den drei Schritten oben. Sie beantworten genau eine Frage:
+    // wie viel davon ist Phasers TileSprite-Konstruktor (Leinwand in
+    // Zweierpotenz-Größe plus Fahrt zur Grafikkarte, je Sprite) und wie viel
+    // ist unser eigenes Muster-Tauschen aus E5s Ledger.
+    const quer = "quer durch create() (steckt schon oben drin)";
+    this.buildMs.push({ step: "· Phaser-TileSprite-Konstruktor", ms: this.ctorMs, parent: quer });
+    this.buildMs.push({ step: "· unser Muster-Tausch (E5-Ledger)", ms: this.swapMs, parent: quer });
+    this.buildMs.push({ step: "· Kachel-Sprites — STÜCK, nicht ms", ms: this.tileCount, parent: quer });
     // R5-W6 · S2 · DIE BANK KOMMT NACH create(), NIE IM preload.
     //
     // Bewusst hier und bewusst NICHT `timed`: der Aufruf gibt sofort zurück und
@@ -4529,7 +4540,11 @@ export class PaintScene extends Phaser.Scene {
    * would delete a texture its siblings are still drawing with.
    */
   private tiled(x: number, y: number, w: number, h: number, key: string): Phaser.GameObjects.TileSprite {
+    const tCtor = performance.now();
     const t = this.add.tileSprite(x, y, w, h, key);
+    this.ctorMs += performance.now() - tCtor;
+    this.tileCount += 1;
+    const tSwap = performance.now();
     const raw = t as unknown as { fillPattern: object | null; dirty: boolean; preDestroy: () => void };
     const own = raw.fillPattern;
     if (own !== null && own !== undefined) {
@@ -4546,8 +4561,14 @@ export class PaintScene extends Phaser.Scene {
       this.fillPattern = null; // the scene owns it; deleteTexture(null) is a no-op
       inherited.call(this);
     };
+    this.swapMs += performance.now() - tSwap;
     return t;
   }
+
+  /** R5-W6b · E7 · Messfelder: Phasers TileSprite-Konstruktor gegen unser Tauschen. */
+  private ctorMs = 0;
+  private swapMs = 0;
+  private tileCount = 0;
 
   /** Give back every pattern and baked texture the scene kept. Once, at SHUTDOWN. */
   private releaseTilePatterns(): void {
@@ -4559,10 +4580,15 @@ export class PaintScene extends Phaser.Scene {
   }
 
   /** Place one planned mass piece (doc 36 §2). */
+  /** R5-W6b · E7 · Messfelder: was `placeMassPiece` in Kacheln bzw. Bilder steckt. */
+  private tileMs = 0;
+  private imgMs = 0;
+
   private placeMassPiece(p: MassPiece): void {
     if (p.stem === null) return; // fallbackFill — the graphics pass drew it
     const key = `pb-${p.stem}`;
     if (!this.textures.exists(key)) return; // only-present law
+    const tPiece = performance.now();
     // PK-R6 · H2 (round-2 finding 7): the nearest standable plane is laid in its
     // own light — see composition.nearPlaneTint for the measurements and for why
     // the push is scaled by the room's key rather than fixed. Combined with
@@ -4602,12 +4628,14 @@ export class PaintScene extends Phaser.Scene {
       // …and lay this segment in its OWN light (the no-metronome law): a MULTIPLY
       // by a near-white, so the course changes value without changing material
       if (p.tint !== undefined && p.tint !== 0xffffff) t.setTint(p.tint);
+      this.tileMs += performance.now() - tPiece;
       return;
     }
     const img = this.add.image(p.x, p.y, key).setOrigin(p.originX ?? 0, p.originY ?? 0).setDepth(p.depth);
     img.setDisplaySize(p.w, p.h);
     if (p.tint !== undefined && p.tint !== 0xffffff) img.setTint(p.tint);
     if (p.rot !== undefined) img.setRotation(p.rot);
+    this.imgMs += performance.now() - tPiece;
   }
 
   private buildTerrain(): void {
@@ -4719,6 +4747,8 @@ export class PaintScene extends Phaser.Scene {
     };
     const solidFromRow = (min: number): readonly Cell[] => idx.solid.filter((x) => x.r >= min);
     const srcH = (stem: string): number => (this.textures.get(`pb-${stem}`).getSourceImage() as HTMLImageElement).height;
+    let tDeco = performance.now();
+    const deco = (name: string): void => { this.buildMs.push({ step: `· · ${name}`, ms: performance.now() - tDeco, parent: "terrain" }); tDeco = performance.now(); };
     if (this.textures.exists("pb-canopy_fringe_loop")) {
       const dh = 26;
       const ts = dh / srcH("canopy_fringe_loop");
@@ -4728,6 +4758,7 @@ export class PaintScene extends Phaser.Scene {
         (c0, c1, r) => { this.tiled(c0 * TILE, (r + 1) * TILE - 4, (c1 - c0 + 1) * TILE, dh, "pb-canopy_fringe_loop").setOrigin(0, 0).setDepth(2).setTileScale(ts); },
       );
     }
+    deco("krone");
     if (this.textures.exists("pb-plank_loop")) {
       const dh = 9;
       const ts = dh / srcH("plank_loop");
@@ -4741,6 +4772,7 @@ export class PaintScene extends Phaser.Scene {
         },
       );
     }
+    deco("planke");
     if (this.textures.exists("pb-spikes_nibs_loop")) {
       const dh = 15;
       const ts = dh / srcH("spikes_nibs_loop");
@@ -4750,6 +4782,7 @@ export class PaintScene extends Phaser.Scene {
         (c0, c1, r) => { this.tiled(c0 * TILE, (r + 1) * TILE - dh, (c1 - c0 + 1) * TILE, dh, "pb-spikes_nibs_loop").setOrigin(0, 0).setDepth(3).setTileScale(ts); },
       );
     }
+    deco("stachel");
     // R5-W1 · A2 · THE INK MOVES, ALWAYS. The surface strip was a STATIC
     // tileSprite: B1's critic measured it moving „um kein einziges Pixel" over
     // 45 ticks, which is what made a lake read as a painted rectangle. Its
@@ -4778,6 +4811,7 @@ export class PaintScene extends Phaser.Scene {
       this.inkCrownG = this.add.graphics().setDepth(3.1);
       this.drawInkCrown();
     }
+    deco("tinte");
     // the interior fill + the surface strips are the RETIRED model — with a
     // kit present the carved mass draws body/fade/sediment and crust instead
     if (kit === null && this.textures.exists("pb-pit_inner_tile")) {
@@ -4793,6 +4827,7 @@ export class PaintScene extends Phaser.Scene {
       );
     }
 
+    deco("grube");
     // painted strips along every exposed surface run (strips-over-tiles)
     if (kit === null && this.textures.exists("pb-strip_ground_loop")) {
       const src = this.textures.get("pb-strip_ground_loop").getSourceImage() as HTMLImageElement;
@@ -4821,6 +4856,7 @@ export class PaintScene extends Phaser.Scene {
         }
       });
     }
+    deco("bodenstreifen");
     if (this.textures.exists("pb-strip_ice_loop")) {
       const src = this.textures.get("pb-strip_ice_loop").getSourceImage() as HTMLImageElement;
       const dispH = 30;
@@ -4841,6 +4877,7 @@ export class PaintScene extends Phaser.Scene {
       });
     }
 
+    deco("eisstreifen");
     this.mark("· verzierung", tSub, "terrain");
 
     // ── the carved mass (doc 36 §2) — crust + caps + trims + corners + body
@@ -4886,8 +4923,15 @@ export class PaintScene extends Phaser.Scene {
       this.mark("· schatten", tSub, "terrain");
 
       tSub = performance.now();
+      this.tileMs = 0;
+      this.imgMs = 0;
       for (const piece of plan) this.placeMassPiece(piece);
-      this.mark(`· platzieren (${plan.length})`, tSub, "terrain");
+      // Der Name bleibt gleich, ganz gleich wie viele Stücke der Plan hat: eine
+      // Zeile, deren Beschriftung sich je Phase ändert, wird zu fünf Zeilen mit
+      // je vier Strichen und ist keine Tabelle mehr.
+      this.mark("· platzieren", tSub, "terrain");
+      this.buildMs.push({ step: "· · davon Kacheln", ms: this.tileMs, parent: "terrain" });
+      this.buildMs.push({ step: "· · davon Bilder", ms: this.imgMs, parent: "terrain" });
 
       tSub = performance.now();
       this.buildGrain();
@@ -4910,45 +4954,58 @@ export class PaintScene extends Phaser.Scene {
    * visible — rather than silently dropping the layer. `keen-art` taught the
    * house rule: a missing picture must never be the quiet outcome.
    */
+  /**
+   * ★ R5-W6b · E7 · DIESE STELLE BLEIBT WELTGROSS — und das ist ein MESSWERT,
+   * keine Bequemlichkeit.
+   *
+   * Gebacken wird IMMER eine weltgroße Leinwand (p1 1024×416, dreimal je Raum),
+   * obwohl die Marken darauf nur einen Teil bedecken. Der Zuschnitt auf den
+   * kleinsten umschließenden Kasten wurde gebaut und gemessen: **41–47 %
+   * weniger Backfläche** (5,22 → 3,07 MPx über die fünf Räume). Er ist trotzdem
+   * ZURÜCKGENOMMEN, weil er das Bild nicht unverändert lässt:
+   *
+   *   · Kein einziger Bildpunkt VERSCHIEBT sich — in Weltkoordinaten
+   *     nachgezählt: »nur alt 0 · nur neu 0« auf jedem geprüften Blech.
+   *   · Aber die Kantenglättung wackelt: 9–58 Punkte je Blech (von 284–1585)
+   *     bekommen andere Farbwerte, bis zu 64 von 255 — allerdings ausschließlich
+   *     auf Punkten mit Deckkraft 3–11, also unter 1/255 nach dem Zusammenrechnen.
+   *   · Ursache, in drei Versuchen mit je eigener Kontrollmessung eingekreist:
+   *     JEDE Änderung der Leinwand-MASSE rastert anders. Zuschnitt in beiden
+   *     Achsen: 14 von 15 Blechen anders. Nur in der Höhe, mit Saum: ebenfalls
+   *     14 von 15. Nur in der Höhe, Breite auf den Zähler gleich: die fünf
+   *     UNZUGESCHNITTENEN Bleche kamen identisch zurück, die neun
+   *     zugeschnittenen nicht. Es gibt also keinen maßändernden Zuschnitt, der
+   *     bildgleich ist.
+   *   · Die Kontrolle, ohne die keine dieser Zahlen zählt: derselbe Bau zweimal
+   *     gemessen ⇒ **15 von 15 Blechen auf den Zähler identisch**.
+   *
+   * Kokis Weisung lautet »gar kein Qualitätsverlust«, und E6 hat unter derselben
+   * Weisung einen 30-fach schnelleren Graustufen-Filter wegen 0–12 Punkten
+   * Abweichung verworfen (D-325). Dieselbe Elle, dieselbe Antwort. Die Zahlen
+   * stehen hier, damit die nächste Sitzung sie nicht noch einmal bezahlt — und
+   * damit Koki den Handel mit EINEM Wort umdrehen kann, wenn er ihn will.
+   */
   private bakeStatic(
     name: string,
     depth: number,
-    paint: (g: Phaser.GameObjects.Graphics, ox: number, oy: number) => void,
-    box: { x: number; y: number; w: number; h: number } | null = null,
+    paint: (g: Phaser.GameObjects.Graphics) => void,
   ): void {
-    // ── R5-W6b · E7 · NUR SO GROSS WIE DAS, WAS DRAUFSTEHT ───────────────────
-    // Gebacken wurde bisher IMMER eine weltgroße Leinwand — auf p1 1024×416,
-    // dreimal je Raum —, obwohl die Marken darauf nur einen Teil bedecken. Eine
-    // Textur kostet beim Anlegen und beim Hochladen zur Grafikkarte nach ihrer
-    // FLÄCHE, nicht nach ihrem Inhalt: gemessen decken die drei Marken-Sätze
-    // 37 bis 72 % der Weltfläche ab, der Rest war durchsichtiger Ballast.
-    //
-    // Warum das Bild sich davon NICHT ändert: der Ausschnitt wird um GANZE
-    // Bildpunkte verschoben (`Math.floor`), also behält jede Marke ihren
-    // Nachkommaanteil und damit ihre Kantenglättung; das Bild wird an genau
-    // derselben Weltstelle wieder abgesetzt. Der Rand bekommt `BAKE_PAD`
-    // durchsichtige Bildpunkte, damit die bilineare Filterung am Texturrand
-    // dasselbe liest wie vorher (ohne Saum würde sie den Randpunkt wiederholen,
-    // statt ins Durchsichtige zu laufen) — die einzige Stelle, an der ein
-    // Zuschnitt überhaupt sichtbar werden könnte.
-    const ox = box === null ? 0 : Math.floor(box.x) - BAKE_PAD;
-    const oy = box === null ? 0 : Math.floor(box.y) - BAKE_PAD;
-    const w = box === null ? Math.ceil(this.worldWpx) : Math.ceil(box.x + box.w) - ox + BAKE_PAD;
-    const h = box === null ? Math.ceil(this.worldHpx) : Math.ceil(box.y + box.h) - oy + BAKE_PAD;
+    const w = Math.ceil(this.worldWpx);
+    const h = Math.ceil(this.worldHpx);
     if (w > BAKE_MAX_PX || h > BAKE_MAX_PX) {
       const live = this.add.graphics().setDepth(depth);
-      paint(live, 0, 0); // der Ausweichweg zeichnet in Weltkoordinaten
+      paint(live);
       return;
     }
     // built off the display list: it must never be drawn, only harvested
     const g = this.make.graphics({ x: 0, y: 0 }, false);
-    paint(g, ox, oy);
+    paint(g);
     const key = `bake-${this.cfg.phaseId}-${name}`;
     if (this.textures.exists(key)) this.textures.remove(key);
     g.generateTexture(key, w, h);
     g.destroy();
     this.bakedKeys.push(key);
-    this.add.image(ox, oy, key).setOrigin(0, 0).setDepth(depth);
+    this.add.image(0, 0, key).setOrigin(0, 0).setDepth(depth);
   }
 
   /**
@@ -4983,23 +5040,16 @@ export class PaintScene extends Phaser.Scene {
     const claimed = claimedPlatformCells(this.grid);
     const draw = (marks: readonly SurfaceMark[], depth: number, round: number): void => {
       if (marks.length === 0) return;
-      // R5-W6b · E7: der kleinste Kasten, der alle Marken enthält — siehe
-      // bakeStatic für den Grund und für den Beweis, dass es dasselbe Bild ist.
-      let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
-      for (const m of marks) {
-        if (m.x < x0) x0 = m.x;
-        if (m.y < y0) y0 = m.y;
-        if (m.x + m.w > x1) x1 = m.x + m.w;
-        if (m.y + m.h > y1) y1 = m.y + m.h;
-      }
-      const paint = (g: Phaser.GameObjects.Graphics, ox: number, oy: number): void => {
+      const paint = (g: Phaser.GameObjects.Graphics): void => {
         for (const m of marks) {
           g.fillStyle(m.kind === "shine" ? GRAIN_SHINE : GRAIN_SCUFF, m.alpha);
           // rounded, because a hard rectangle on a painted floor reads as a sticker
-          g.fillRoundedRect(m.x - ox, m.y - oy, m.w, m.h, Math.min(m.h / 2, round));
+          g.fillRoundedRect(m.x, m.y, m.w, m.h, Math.min(m.h / 2, round));
         }
       };
-      this.bakeStatic(`grain${depth}`, depth, paint, { x: x0, y: y0, w: x1 - x0, h: y1 - y0 });
+      // Ein Zuschnitt auf den umschließenden Kasten spart 41–47 % Backfläche und
+      // ist trotzdem nicht bildgleich — die Messung dazu steht in bakeStatic.
+      this.bakeStatic(`grain${depth}`, depth, paint);
     };
     draw(crustGrain(this.grid, claimed), CRUST_MARK_DEPTH, 1.2);
     // …and the patina on the mass below it, which is the surface the round-1
