@@ -74,6 +74,7 @@ jobs:
       - run: node scripts/check-colour-copy.mjs --selftest # C4: the colour-copy gate's own red light must be reachable
       - run: node scripts/check-colour-copy.mjs # C4: the German a restore card writes names the colour the card keys (the eraser's hint said „Blau" under a pink answer)
       - run: node docs/art/import-batch-aq12.mjs --selftest # C5: the import acceptance probe must still be able to call a flat fill a flat fill
+      - run: node docs/art/import-batch-aq15.mjs --selftest # C6: die Fenster-Abnahme muss den abgeschnittenen Stabfuss sehen — der Fehler, den eine Pruefung mit der Oeffnungsmaske des Lieferanten per Bauart uebersieht
       # ── W4/D-257 · die vier Zeilen hier und shoot-card-bench unten sind
       # WERKZEUG, KEIN TOR: der Selbsttest sichert das Messgerät, der echte Lauf
       # braucht Chrome und einen Dev-Server und gehört deshalb in die Session,
