@@ -331,7 +331,13 @@ export const PAINT_OVERLAY_CSS = `
      what they are not inside. Doc 45 §G2 defers the platform to its own round;
      this block is why that deferral costs nothing. */
   --pb-paper: #fff2cd;
-  --pb-paper-lit: #fffaea;
+  /* R5-W6b · D4: hier stand »--pb-paper-lit: #fffaea«, das belichtete Papier. Es
+     wurde im ganzen Quelltext nie gelesen — kein einziges »var(...)« darauf, seit
+     D1. Ein Farbton, den niemand benutzt, ist keine Reserve, sondern die Drift,
+     gegen die der Rest dieses Blocks verteidigt: die naechste Hand haette ihn fuer
+     eine gueltige zweite Papierfarbe gehalten. Gestrichen; wenn eine Karte je
+     »belichtet« aussehen soll, ist das eine Entscheidung mit einem Bild daneben,
+     nicht ein Token, das schon einmal vorsorglich dasteht. */
   /* ── R5-W4b · D3b · D-210 · R89 · THE ANSWER BUTTON GETS ITS OWN PAPER ──────
      Two blind critics on D3a's card independently named the same biggest fault:
      the answer chips are a shade of the paper they lie on, so they hang on their
@@ -344,9 +350,10 @@ export const PAINT_OVERLAY_CSS = `
      one is 1,349 : 1 against the paper and still carries the card's ink at
      8,4 : 1, i.e. the text got no harder to read while the shape got findable.
 
-     Its own name rather than »--pb-paper-lit«: a button is not lit paper, and
-     the next hand to brighten the paper family should not silently un-fix
-     this. */
+     Its own name rather than a shade of the paper family: a button is not lit
+     paper, and the next hand to brighten that family should not silently un-fix
+     this. (Der Ton »--pb-paper-lit«, gegen den dieser Absatz ursprünglich
+     argumentierte, ist in R5-W6b gestrichen worden — er wurde nie gelesen.) */
   --pb-btn-face: #e9ca80;
   --pb-seal: #ffd98a;
   --pb-ink: #6b3f18;
