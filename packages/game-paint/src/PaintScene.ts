@@ -3218,9 +3218,16 @@ export class PaintScene extends Phaser.Scene {
    * verdict: „the landed chalk shard has no impact burst at all").
    *
    * A piece of chalk hitting a wooden floor is the loudest thing in the fight
-   * and it happened in total silence, mid-frame, with nothing to mark it — so a
+   * and it passed unmarked, mid-frame, with nothing to show for it — so a
    * screenshot of the moment showed a white dot on a patterned floor and the
    * child got no confirmation that the thing they dodged had actually landed.
+   * This burst is that confirmation.
+   *
+   * R5-W6b · H4 · D-370: since S1/S2 the landing also SOUNDS — sim emits `puff` with
+   * `kind: "chalk"`, which the director maps to the `puff-chalk` stem (two
+   * variants, rate-limited to 120 ms because the dust arrives in clusters —
+   * audioManifest#SIM_REACTIONS). The burst is the picture of that beat, not a
+   * stand-in for a sound the game cannot make.
    *
    * Code-drawn, deterministic (angles come from the fleck's index, never from
    * `Math.random` — repo law), in the chalk's OWN colour so the burst names the
@@ -3348,8 +3355,14 @@ export class PaintScene extends Phaser.Scene {
    *
    *  Dazu der zweite Anlass, an dem die Tafel leuchtet: das FENSTER. Wenn sie
    *  sich überreizt und herunterkommt, blitzt dasselbe Licht kurz auf und klingt
-   *  ab — die Fanfare, die es in diesem Spiel nicht als Ton geben kann (es gibt
-   *  gar kein Audio-System in diesem Paket). */
+   *  ab — die Fanfare des Kampfes, als Licht.
+   *
+   *  R5-W6b · H4 · D-370: derselbe Augenblick KLINGT seit S1/S2 auch —
+   *  `pumpBossPush` meldet den Dip als
+   *  `guardianStagger`, und der Direktor spielt darauf `boss-window`
+   *  (audioManifest#ENTITY_REACTIONS); die Arena trägt dazu `music-p4` über den
+   *  normalen Raumwechsel. Das Licht ist also nicht mehr der einzige Träger der
+   *  Ansage, sondern ihr Bild-Anteil — und diese Kurve rechnet weiterhin nur den. */
   private bossTellT(e: { role: string; state: string; timer: number; tier: "E" | "M" | "S"; hp: number }): number {
     if (e.state === "throw") return 0; // die Entladung: das Licht fällt sofort ab
     if (e.state === "stagger" || e.state === "window") {
@@ -4043,14 +4056,16 @@ export class PaintScene extends Phaser.Scene {
     // wichtigste des Kampfes: er bekommt einen Ring aus Kreidestaub um ihre
     // Tafelkante, und der Halo blitzt dazu (siehe `bossTellT`).
     //
-    // R5-W6 · S2 · UND JETZT KLINGT ER AUCH. Hier stand bis zu dieser Runde
-    // »Es gibt in diesem Paket KEIN Audio-System« — das stimmt seit S1/S2 nicht
-    // mehr, und ein Kommentar, der eine Abwesenheit behauptet, wird als Erlaubnis
-    // gelesen, keine zu suchen. Das Fenster bekommt `boss-window`; die
-    // BOSS-MUSIK braucht hier nichts, denn die Arena ist die Phase `p4` und zieht
-    // `music-p4` über den normalen Raumwechsel (audioManifest#MUSIC_BY_PHASE).
-    // Der `untie`-Takt klingt ebenfalls schon: er meldet sich als SimEvent
-    // `guardianWipe` und trägt dort `wipe`.
+    // UND ER KLINGT (S2, Verdrahtung; H4, D-370 — die Fassung davor zitierte
+    // noch den Satz, den sie widerlegte). Was am Kampf heute hörbar ist:
+    //   · das Fenster  — der Dip unten meldet `guardianStagger`, Stem `boss-window`
+    //   · der Wisch    — SimEvent `guardianWipe`, Stem `wipe`, drei Varianten,
+    //                    eine je Schicht (`layersLeft`)
+    //   · der Aufschlag— SimEvent `puff` mit `kind: "chalk"`, Stem `puff-chalk`
+    //   · der Raum     — die Arena ist Phase `p4` und zieht `music-p4` über den
+    //                    normalen Raumwechsel (audioManifest#MUSIC_BY_PHASE)
+    // Eigene Boss-Musik braucht es hier deshalb nicht. Der Ring aus Kreidestaub
+    // unten ist der BILD-Anteil dieses Beats, nicht sein Ersatz.
     if (beat.startsWith("dip:")) this.cfg.audio?.on("entity", "guardianStagger", { id: g.id });
     if (beat.startsWith("dip:") && !this.cfg.reducedMotion) {
       const img = this.entityImgs.get(g.id);
