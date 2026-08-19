@@ -369,6 +369,10 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
   const audioLogRef = useRef<{ t: number; call: string; arg: string }[]>([]);
   /** ein Klang aus der Hülle — Karte zu, Seite geblättert, richtig, Merles Runde */
   const cue = (stem: CueStem, stage?: number): void => directorRef.current?.cue(stem, stage);
+  /** R5-W6b · D4 · D-371 · das Urteil einer Karte, an den Direktor. Die Karte
+   *  meldet WIE es ausging, nicht WAS klingt (`director.ts#CARD_GRADE_STEMS`);
+   *  „richtig" bleibt dort still, weil `resolveCorrect` es selbst spielt. */
+  const cardGrade = (grade: "correct" | "wrong"): void => directorRef.current?.card(grade);
   /** R5-W6 · S2 · was der Lautsprecher gerade zeigt. Aus dem Speicher gelesen,
    *  nicht geraten — ein Tablet, das gestern still gestellt wurde, bleibt still
    *  (R124: an, leise, mit sichtbarem Knopf). */
@@ -594,10 +598,12 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
 
   /** Beat 3 is over: close, and hand on whatever the change raised. */
   const resolveCorrect = (o: OverlayState, written = ""): void => {
-    // R5-W6 · S2 · „richtig!" — die einzige Stelle, an der die Hülle eine
-    // richtige Antwort SIEHT (die Bewertung selbst liegt in `cards/`, und dort
-    // darf diese Runde nicht hin; deshalb bleibt der weiche „daneben"-Ton
-    // `solve-thud` diese Runde stumm — im Report als Befund).
+    // R5-W6 · S2 · „richtig!" — die Stelle, an der die Hülle eine richtige
+    // Antwort SIEHT.
+    // R5-W6b · D4 · D-371: der weiche „daneben"-Ton ist nicht mehr stumm, aber er
+    // kommt NICHT von hier — die Karte meldet ihr Urteil selbst (`onGrade`), und
+    // deshalb bleibt „richtig" in `CARD_GRADE_STEMS` bewusst ohne Klang: sonst
+    // stünden zwei Fanfaren auf demselben Beat.
     // Die Stufe kommt aus den Versuchen: beim ersten Treffer die volle Fanfare,
     // danach die ruhigeren — ein Kind, das dreimal gebraucht hat, soll nicht
     // lauter gefeiert werden als eines, das es sofort konnte.
@@ -1577,6 +1583,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
           <Overlay
             o={overlay} level={level} art={art} phaseId={phaseId}
             onResolve={resolveCorrect} onWorldChange={applyWorldChange} onDismiss={dismissCard} onBack={backCard} onPay={payBonus}
+            onGrade={cardGrade}
             letters={letters.got} bonusTotal={bonusLetterTotal(level)}
             bilanz={bilanz} hubHref={hubHref} onRestart={restart}
             collectedTips={collectedTips}
@@ -1599,7 +1606,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
 // ── the overlay card ──────────────────────────────────────────────────────────
 
 function Overlay({
-  o, level, art, phaseId, onResolve, onWorldChange, onDismiss, onBack = () => {}, onPay, letters, bonusTotal, bilanz, hubHref, onRestart,
+  o, level, art, phaseId, onResolve, onWorldChange, onDismiss, onBack = () => {}, onGrade = () => {}, onPay, letters, bonusTotal, bilanz, hubHref, onRestart,
   collectedTips,
 }: {
   o: OverlayState;
@@ -1618,6 +1625,11 @@ function Overlay({
    *  — a required prop it forgets is not a type error, it is a runtime „onBack
    *  is not a function" the first time a bench surface is clicked. */
   onBack?: (o: OverlayState) => void;
+  /** R5-W6b · D4 · D-371: die Wertung einer Karte, nach oben durchgereicht — die
+   *  Karte meldet ihr Urteil, der Direktor entscheidet, was daraus klingt.
+   *  OPTIONAL aus demselben Grund wie `onBack`: die Bank (dev/CardGallery)
+   *  reicht ein strukturell getipptes Bündel herein und hat keinen Direktor. */
+  onGrade?: (grade: "correct" | "wrong") => void;
   onPay: (price: number) => void;
   letters: number;
   bonusTotal: number;
@@ -2398,6 +2410,8 @@ function Overlay({
       onWorldChange={(written) => onWorldChange(o, written)}
       onResolve={() => onResolve(o)}
       onDismiss={() => onDismiss(o)}
+      // R5-W6b · D4 · D-371 · der eine Rückkanal für die Wertung (BLUEPRINT :371)
+      onGrade={onGrade}
     />
   );
 }

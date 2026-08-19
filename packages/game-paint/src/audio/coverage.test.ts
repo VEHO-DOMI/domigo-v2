@@ -25,6 +25,7 @@ import {
   STEMS, SURFACE_BY_PHASE, TOAST_MATCHES,
   allReactions, isPlay, isReserved, isSilent,
 } from "./audioManifest.ts";
+import { CARD_GRADE_STEMS } from "./director.ts";
 
 const SRC = path.dirname(new URL(import.meta.url).pathname);
 const PKG = path.join(SRC, "..");
@@ -114,26 +115,30 @@ describe("Abdeckung: jede Ereignis-Art des Spiels hat genau einen Zustand", () =
     const viaSurface = new Set(Object.values(SURFACE_BY_PHASE).map((sf) => `step-${sf}`));
 
     /**
-     * Die eine benannte Ausnahme (Stand 18.08.2026).
+     * R5-W6b · D4 · D-371 — DIE AUSNAHME IST WEG, WEIL DER KLANG EINEN AUSLÖSER HAT.
      *
-     * `solve-thud` — der weiche Ton auf eine falsche Antwort — hängt an der
-     * BEWERTUNG, und die liegt seit R5-W3 in `cards/` (die Karten-Maschinen
-     * rufen `resolveCorrect` erst, wenn es richtig war; das Danebenliegen sieht
-     * die Hülle nie). `cards/**` gehört S2 in Welle 6 nicht, deshalb bleibt der
-     * Klang diese Runde stumm — als Befund im Report, nicht als Versehen.
+     * Hier stand eine einzige benannte Ausnahme: `solve-thud` hängt an der
+     * BEWERTUNG, die seit R5-W3 in `cards/` liegt, und S2 durfte dort nicht hin.
+     * D4 hat die Schnittstelle gebaut (`director.ts#CARD_GRADE_STEMS` +
+     * `AudioDirector#card`), also fällt die Zeile — und das Gesetz unten hält
+     * den Auslöser jetzt beim Wort: verschwindet die Verdrahtung, ist der Stem
+     * wieder ein Waisenkind und dieser Test rot.
      *
-     * Sie steht NAMENTLICH hier und nicht als pauschales `tap === "shell"`:
-     * eine Ausnahme, die eine ganze Klasse durchlässt, hätte auch `card-close`,
-     * `page-turn`, `solve-ok` und Merles Runde durchgelassen — und genau die
-     * vier verdrahtet diese Runde. Wer den Klang später anklemmt, streicht die
-     * Zeile und der Test hält ihn beim Wort.
+     * Die Liste bleibt als LEERES Fach stehen, nicht als gelöschter Absatz: der
+     * nächste Klang ohne Weg soll seine Ausnahme benennen müssen, statt sie zu
+     * erfinden.
      */
-    const DECLARED_SILENT: Readonly<Record<string, string>> = {
-      "solve-thud": "die Bewertung liegt in cards/** — S2 darf dort nicht hin (Befund im S2-Report)",
-    };
+    const DECLARED_SILENT: Readonly<Record<string, string>> = {};
+
+    // R5-W6b · D4: die Karten-Wertung als eigener Weg — abgeleitet aus der
+    // TABELLE, die der Direktor wirklich benutzt, nicht danebengeschrieben.
+    // `correct: null` steht dort mit Grund (die Hülle spielt „richtig" selbst),
+    // deshalb zählt nur, was einen Stem trägt.
+    const viaCard = new Set<string>(Object.values(CARD_GRADE_STEMS).filter((v) => v !== null));
 
     const route = (s: (typeof STEMS)[number]): string | null => {
       if (viaEvent.has(s.stem)) return "Ereignis";
+      if (viaCard.has(s.stem)) return "Karten-Wertung";
       if (viaToast.has(s.stem)) return "Toast-Klasse";
       if (s.bus === "music") return "Phasenwechsel";
       if (viaSurface.has(s.stem)) return "Schritt-Takt";
@@ -147,7 +152,7 @@ describe("Abdeckung: jede Ereignis-Art des Spiels hat genau einen Zustand", () =
     // …und die Gegenrichtung: jeder Weg wird von mindestens einem Stem benutzt.
     // Ein Weg ohne Stem wäre eine Verdrahtung, die umsonst gebaut wurde.
     const used = new Set(STEMS.map(route));
-    for (const r of ["Ereignis", "Toast-Klasse", "Phasenwechsel", "Schritt-Takt", "Cue aus Szene oder Hülle"]) {
+    for (const r of ["Ereignis", "Karten-Wertung", "Toast-Klasse", "Phasenwechsel", "Schritt-Takt", "Cue aus Szene oder Hülle"]) {
       expect(used.has(r), `kein einziger Stem benutzt den Weg »${r}«`).toBe(true);
     }
 

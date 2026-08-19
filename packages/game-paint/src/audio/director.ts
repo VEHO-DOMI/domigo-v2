@@ -182,6 +182,37 @@ export const mapEvent = (
   return { stem: null, why: "keine Reaktion hinterlegt" };
 };
 
+/**
+ * R5-W6b · D4 · D-371 — DIE WERTUNG EINER KARTE, ALS KLANG.
+ *
+ * `solve-thud` war der einzige fertig gemasterte Klang OHNE Auslöser: die
+ * Bewertung liegt seit R5-W3 in `cards/` (die Karten-Maschinen melden nur das
+ * Richtige nach oben), und die Audio-Session S2 durfte dort nicht hin. Diese
+ * Tabelle ist die eine Schnittstelle, die das schliesst — die Karte sagt, WIE
+ * es ausgegangen ist, und was das klingt, entscheidet weiterhin die Audio-Bahn.
+ *
+ * `correct: null` ist eine ENTSCHEIDUNG, kein Loch: die Hülle spielt die
+ * richtige Antwort bereits selbst (`PaintGame#resolveCorrect` ruft
+ * `cue("solve-ok", …)` mit der Stufe aus den Versuchen). Ein zweiter Klang von
+ * hier wäre ein Doppelklang auf demselben Beat — und der Sinn dieser Runde ist
+ * der FEHLENDE Ton, nicht ein zusätzlicher.
+ *
+ * Sie steht hier und nicht in der Karte, damit `coverage.test.ts` sie lesen
+ * kann: das Abdeckungs-Gesetz („jeder Stem hat einen Weg") beweist den Auslöser
+ * dann an der Verdrahtung selbst statt an einer Behauptung daneben.
+ *
+ * BLUEPRINT :371 — falsch klingt neutral und weich, nie absteigend. Die Bank
+ * ist gemessen (`check-audio.mjs`), hier wird nur verdrahtet.
+ */
+export const CARD_GRADE_STEMS = {
+  correct: null,
+  wrong: "solve-thud",
+} as const satisfies Readonly<Record<CardGrade, string | null>>;
+
+/** wie eine Karte ausgegangen ist — dieselben zwei Wörter wie `machines.ts#grade`,
+ *  ohne das dritte („pending" ist kein Ereignis, sondern der Normalzustand) */
+export type CardGrade = "correct" | "wrong";
+
 // ── Der Direktor ─────────────────────────────────────────────────────────────
 
 const DUCKING_FAMILIES = new Set(["positive"]);
@@ -228,6 +259,15 @@ export interface AudioDirector {
    * über ihre sechs Runden. Ohne `stage` gilt die normale Rotation.
    */
   cue(stem: CueStem, stage?: number): void;
+  /**
+   * R5-W6b · D4 · D-371 — eine Karte ist bewertet worden.
+   *
+   * Die EINZIGE Stelle, an der `cards/**` den Direktor anspricht: die Karte
+   * meldet ihr Urteil, nicht einen Klangnamen. Was daraus klingt (und dass
+   * „richtig" hier still bleibt, weil die Hülle es selbst spielt), steht in
+   * `CARD_GRADE_STEMS`.
+   */
+  card(grade: CardGrade): void;
   /** die Landung, nach derselben Schwelle wie der Kreidestaub */
   land(hard: boolean): void;
   /** die Musik einer Phase, des Auftakts oder der Bilanz */
@@ -432,6 +472,12 @@ export const createAudioDirector = (deps: DirectorDeps = {}): AudioDirector => {
     cue(stem: CueStem, stage?: number): void {
       if (stage === undefined) { playStem(stem); return; }
       playStage(stem, stage);
+    },
+
+    card(grade: CardGrade): void {
+      const stem = CARD_GRADE_STEMS[grade];
+      if (stem === null) return; // „richtig" klingt schon aus der Hülle — siehe oben
+      playStem(stem);
     },
 
     land(hard: boolean): void {

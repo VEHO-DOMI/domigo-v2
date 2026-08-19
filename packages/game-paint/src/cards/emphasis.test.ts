@@ -52,7 +52,7 @@ const DEFINES_DEVICE = new Set(["cards/Glance.tsx", "cards/overlay-css.ts"]);
  *  files fails this test and has to argue with this comment. */
 const CONTROL_WEIGHTS: Record<string, { count: number; why: string }> = {
   "cards/skins.tsx": { count: 5, why: "chip · answer slot · typed field · slate numeral · dial row" },
-  "cards/CardShell.tsx": { count: 2, why: "the resolution beat's own type (Zurückgeholt! + the answer flying home)" },
+  "cards/CardShell.tsx": { count: 2, why: "the resolution beat's own type (Zurück im Buch! + the answer flying home)" },
 };
 
 describe("the emphasis guard (R5-W1 · D1)", () => {
