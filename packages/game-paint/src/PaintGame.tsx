@@ -93,6 +93,10 @@ export function PaintDevGallery(props: {
   art: Record<string, string>;
   tasks: GameTaskItem[];
   which?: string;
+  /** R5-W6b · W5 · C5: WELCHE Karte die Flaeche zeigt (`?karte=<id>`). Ohne sie
+   *  nimmt die Bank die erste Karte ihrer Art — beim Umfaerben also immer
+   *  dieselbe, und ein Schirmbild der Buch-Karte war nicht herstellbar. */
+  karte?: string;
 }): React.ReactElement {
   return (
     <React.Suspense fallback={<p style={{ fontSize: 15 }}>Bench lädt …</p>}>
