@@ -71,6 +71,8 @@ jobs:
       - run: node scripts/check-copy-register.mjs # C2: every German line a child reads is Austrian (scripts/lexikon-at.json)
       - run: node scripts/check-colour-truth.mjs --selftest # C2: the colour measurement must be able to call a red sheet red
       - run: node scripts/check-colour-truth.mjs # C2/R41 + C4/D-280 (W5/D-420: eine Datei, zwei Kapitel): jede restore-Karte traegt die Farbfamilie ihres eigenen PNG — und die deutschen Zeilen der Karte nennen die Farbe, die die Karte kodiert
+      - run: node scripts/check-sheet-colours.mjs --selftest # W5/D-403: das rote Licht der Farbzahl je ZELLE muss erreichbar sein — ein posterisiertes Blatt wird rot, das echte bleibt gruen
+      - run: node scripts/check-sheet-colours.mjs # W5/D-403+D-404: jede Zelle einzeln gezaehlt (nie als Summe einer Sammeldatei) haelt 80 % ihrer Farbzahl, und jede Abweichung vom Helligkeits-Korridor traegt eine benannte, datierte Ausnahme
       - run: node docs/art/import-batch-aq12.mjs --selftest # C5: the import acceptance probe must still be able to call a flat fill a flat fill
       - run: node docs/art/import-batch-aq15.mjs --selftest # C6: die Fenster-Abnahme muss den abgeschnittenen Stabfuss sehen — der Fehler, den eine Pruefung mit der Oeffnungsmaske des Lieferanten per Bauart uebersieht
       - run: node docs/art/import-batch-aq13.mjs --selftest # H4: die Tafel- und Ring-Abnahme misst gegen den BESTAND, nicht gegen die Zahlen des Lieferscheins — der Zwilling, der unten buendige Sitz und die Gesichtsquote gegen ein selbst gerechnetes N muessen rot werden
