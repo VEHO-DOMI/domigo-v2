@@ -15,6 +15,8 @@ permissions:
 jobs:
   typecheck:
     runs-on: ubuntu-latest
+    # D-510 · eine Zeitgrenze, damit ein haengender Schritt nicht sechs Stunden blockiert
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
@@ -25,6 +27,8 @@ jobs:
 
   lint:
     runs-on: ubuntu-latest
+    # D-510 · eine Zeitgrenze, damit ein haengender Schritt nicht sechs Stunden blockiert
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
@@ -35,6 +39,8 @@ jobs:
 
   unit:
     runs-on: ubuntu-latest
+    # D-510 · eine Zeitgrenze, damit ein haengender Schritt nicht sechs Stunden blockiert
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
@@ -45,6 +51,8 @@ jobs:
 
   content-validate:
     runs-on: ubuntu-latest
+    # D-510 · eine Zeitgrenze, damit ein haengender Schritt nicht sechs Stunden blockiert
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
@@ -130,7 +138,12 @@ jobs:
       # ffmpeg. ubuntu-latest bringt keins mit. Die Alternative wäre ein Tor, das in CI nur Bytes und
       # Prüfsummen vergleicht und die Signal-Messung dem Laptop überlässt — also ein Tor, das die
       # Klasse von Fehlern, für die es gebaut wurde, in CI nie sieht (P-65). Der Schritt kostet Sekunden.
-      - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+      # 19.08.: dieser Schritt hing 56 Minuten an einem Paket-Spiegel und blockierte das
+      # Boot-Tor der ganzen Welle 7. Er kostet normal Sekunden; eine Zeitgrenze macht aus
+      # einem Haenger einen roten Schritt, den ein Neustart behebt (die Klasse, nicht der Fall).
+      - name: "ffmpeg fuer das Klang-Tor — Zeitgrenze statt Haenger"
+        timeout-minutes: 4
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
       - run: node scripts/check-audio.mjs --selftest # S1: fünf echte Defekte müssen rot werden — und ein AUFSTEIGENDER Klang muss grün bleiben
       - run: node scripts/check-audio.mjs # S1/R124: Manifest ↔ Platte ↔ Messdatei, Budgets, und BLUEPRINT :371 als Messung
 
@@ -162,6 +175,8 @@ jobs:
     # Pull requests only — there is no PR body on a push to main.
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
+    # D-510 · eine Zeitgrenze, damit ein haengender Schritt nicht sechs Stunden blockiert
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
         with: { fetch-depth: 0 }
@@ -187,6 +202,8 @@ jobs:
 
   build:
     runs-on: ubuntu-latest
+    # D-510 · eine Zeitgrenze, damit ein haengender Schritt nicht sechs Stunden blockiert
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
