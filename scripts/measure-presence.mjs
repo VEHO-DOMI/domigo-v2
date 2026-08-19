@@ -121,18 +121,43 @@ const HERO_H_PX = 35;
 
 export const lum = (r, g, b) => 0.2126 * r + 0.7152 * g + 0.0722 * b;
 
-/** Hue in degrees, or null for a pixel with no chroma to speak of. */
-export const hue = (r, g, b) => {
+/**
+ * DER Farbton dieses Repos, in EINER Rechnung (R5-W6b · W5 · L1-Befund).
+ *
+ * L1 hat gemeldet, dass `check-composition.mjs` denselben Winkel ZWEIMAL
+ * ausrechnet: einmal ueber diese Funktion (Buchstaben-Praesenz) und einmal als
+ * eigene Inline-Rechnung in `seamStats` (Kanten-Kohaerenz). Aliasiert statt
+ * zusammengelegt, um keine fremde Region anzufassen — genau die Art Doppelpfad,
+ * die spaeter auseinanderlaeuft, ohne dass ein Tor es merkt: zwei Zahlen, beide
+ * »Farbton« genannt, die eines Tages verschiedene Dinge messen.
+ *
+ * Der Kern steht deshalb hier, EINMAL, und beide Leser rufen ihn. Grad in
+ * [0, 360), oder `null` fuer einen Bildpunkt, dessen Winkel nicht definiert IST
+ * (max === min — Grau hat keine Richtung, das ist keine Schwelle, sondern
+ * Geometrie). Die Eingabe darf 0–255 sein oder 0–1: der Winkel haengt nur an
+ * den Verhaeltnissen.
+ */
+export const hueDeg = (r, g, b) => {
   const max = Math.max(r, g, b);
   const min = Math.min(r, g, b);
   const d = max - min;
-  if (d < 8) return null;
+  if (d === 0) return null;
   let h;
   if (max === r) h = 60 * (((g - b) / d) % 6);
   else if (max === g) h = 60 * ((b - r) / d + 2);
   else h = 60 * ((r - g) / d + 4);
   return (h + 360) % 360;
 };
+
+/** Wie wenig Buntheit noch als Farbe zaehlt (0–255-Skala). Unterhalb davon
+ *  meldet `hue` KEINEN Winkel — nicht, weil er falsch waere, sondern weil er
+ *  bei fast-Grau vom Rauschen bestimmt wird. Das ist die einzige Zutat, die
+ *  `hue` ueber `hueDeg` legt. */
+export const CHROMA_MIN = 8;
+
+/** Hue in degrees, or null for a pixel with no chroma to speak of. */
+export const hue = (r, g, b) =>
+  (Math.max(r, g, b) - Math.min(r, g, b) < CHROMA_MIN ? null : hueDeg(r, g, b));
 
 export const hueGap = (a, b) => {
   const d = Math.abs(a - b) % 360;
