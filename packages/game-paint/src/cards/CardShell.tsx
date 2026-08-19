@@ -20,7 +20,7 @@
 //    then the card DOFFS so the world's change can be watched (the restore-hold).
 import React from "react";
 import type { GameTaskV2 } from "@domigo/content-schema";
-import { captiveStem, classmateStem, isCaptiveKey } from "../artManifest.ts";
+import { captiveStem, classmateFreeStem, classmateStem, isCaptiveKey } from "../artManifest.ts";
 import { gapLevelFor, renderGapHint } from "./hint.ts";
 import { QUICKFIRE_MS, focusPctFor } from "./overlay-css.ts";
 import { LETTER_LEAD_MS, LETTER_STAGGER_MS, lettersFor } from "./resolution.ts";
@@ -186,7 +186,7 @@ export const KLASSENFOTO_STEM = "klassenfoto_a";
 
 export const freeCellsFor = (name: string | undefined): readonly string[] => {
   if (name === undefined || name === "") return [];
-  if (!isCaptiveKey(name)) return [`${name}_a`];
+  if (!isCaptiveKey(name)) return [classmateFreeStem(name)];
   return name === "picture" ? [KLASSENFOTO_STEM, "obj_picture"] : [`obj_${name}`];
 };
 
@@ -229,9 +229,17 @@ export const ChalkClock = ({ ms, armCount = 0 }: { ms: number; armCount?: number
  *  exactly as grey — a full-colour face over a grey desk would hand a restore
  *  card's second step away for free. */
 
-/** PK-R6 · C · THE ANSWER COMES HOME (doc 44 §3.1.7). „Zurückgeholt!" over the
+/** PK-R6 · C · THE ANSWER COMES HOME (doc 44 §3.1.7). „Zurück im Buch!" over the
  *  child's own answer, flying in per character on the mined 55 ms stagger — or
  *  gliding back whole when it is too long to read as letters.
+ *
+ *  R5-W6b · D4 · R160 · DAS WORT KOMMT AUS DEM RICHTIGEN BUCH. Die Zeile hiess
+ *  bis heute „Zurückgeholt!" und war ein Rest aus Lost Pages: sie sagt, dass
+ *  etwas zurück ist, aber nicht WOHIN. Dieses Kapitel hat ein Buch, aus dem die
+ *  Seiten gerissen wurden — die Auflösung sagt deshalb, dass die Seite wieder
+ *  drin ist. P5 hat „Befreit!" vorgeschlagen; das Wort ist zweimal vergeben (der
+ *  Käfig-Zähler im HUD, PaintGame#Chip label=»Befreit«, und das Arcade-Verdikt),
+ *  und ein Wort für zwei Dinge ist keins.
  *
  *  PK-R6 · H1 (round-1 critique, finding 4 — „almost entirely washed out and
  *  illegible"). Every character now sits in a SLOT that already carries a chalk
@@ -261,7 +269,7 @@ export const AnswerHome = ({ answer }: { answer: string }): React.ReactElement =
       }}
     >
       <span style={{ fontSize: 13, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: "#3f6329", fontFamily: "var(--font-label, inherit)" }}>
-        Zurückgeholt!
+        Zurück im Buch!
       </span>
       <span
         aria-hidden

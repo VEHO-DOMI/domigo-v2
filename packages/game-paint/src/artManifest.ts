@@ -74,12 +74,23 @@ export const isCaptiveKey = (v: unknown): v is CaptiveKey =>
  * `portrait.test.ts` holds the guard: it reads CardShell's source and reddens if
  * a second `_caged0` literal ever reappears there.
  *
- * The FREE cell of the same person (`<name>_a`, the ceremony's picture) is still
- * spelled out in `CardShell#freeCellsFor`. That line belongs to the card lane
- * this wave, so it is reported rather than moved — the mirror of this constant
- * is the obvious next step, not a second convention.
+ * R5-W6b · D4 · D-285 — UND JETZT AUCH DIE FREIE ZELLE. Der Absatz oben endete
+ * bis heute mit »die Spiegel-Konstante ist der offensichtlich nächste Schritt«:
+ * die FREIE Zelle derselben Person (`<name>_a`, das Bild der Zeremonie) stand als
+ * Literal in `CardShell#freeCellsFor`, also dieselbe Klasse eine Zeile weiter.
+ * C4 hat sie gemeldet statt sie zu bewegen, weil die Karten-Bahn ihr nicht
+ * gehörte; sie gehört ihr jetzt. Beide Zellen derselben Person kommen damit aus
+ * derselben Datei, und wer die Namenskonvention ändert, ändert sie einmal.
  */
 export const classmateStem = (name: string): string => `${name}_caged0`;
+
+/**
+ * R5-W6b · D4 · D-285 — die FREIE Zelle einer Person: ihre erste, ungefangene
+ * Pose. Das `_a` ist die Stammkonvention dieses Kapitels (»die erste Zelle dieser
+ * Kunst«, wie `satchel_a`, `regelseite_a`), und sie ist der Grund, warum die
+ * Zeremonie nach der Befreiung ein Kind zeigt und keinen Käfig.
+ */
+export const classmateFreeStem = (name: string): string => `${name}_a`;
 
 // ── PK-R6 · E · THE GUARDIAN FLIGHT RIG (doc 44 §3.2 · §4 ch01 C4) ───────────
 // A boss is the one being whose missing cell does NOT read as a missing cell:

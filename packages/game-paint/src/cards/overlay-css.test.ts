@@ -15,6 +15,7 @@ import {
   PAINT_OVERLAY_CSS, QUICKFIRE_MS,
 } from "./overlay-css.ts";
 import { LETTER_FLY_MS } from "./resolution.ts";
+import { cardBtn } from "./CardShell.tsx";
 
 /** Every `.pb-…` class whose rule declares MOTION — an `animation:` shorthand or
  *  a `transition:`.
@@ -284,6 +285,34 @@ describe("the end-states law (doc 42 §1)", () => {
     // the same specificity) loses to it and quietly stops being lighter
     expect(PAINT_OVERLAY_CSS.indexOf(".pb-card .pb-btn-ghost"))
       .toBeGreaterThan(PAINT_OVERLAY_CSS.indexOf(".pb-card button, .pb-card .pb-chip"));
+  });
+
+  it("R5-W6b · D4 · a primary button that brings no inline padding still fits its own text", () => {
+    // P5 read „Ins Buch kleben" as „ns Buch kleben", twice in a row. The cause was
+    // never the text: `.pb-card button` hands out colour, edge and radius but no
+    // padding, no font-size and no font-family, and the three RulePage buttons are
+    // the only primaries in the game that set nothing inline. Browser defaults
+    // (~6 px horizontal padding, 13 px system font) under a 4 px ink edge with an
+    // uneven radius (--pb-chip-r: 18/9/20/11) is what ate the first letter.
+    //
+    // The law is on the RULE rather than on the three call sites, because the next
+    // painted button will be written the same way. And it is measured against
+    // CardShell#cardBtn instead of against a literal: two numbers for one look are
+    // two numbers waiting to disagree (the argument artManifest.ts makes for stems).
+    const primary = PAINT_OVERLAY_CSS.match(/\.pb-card button\.pb-btn-primary[^{]*\{([^}]*)\}/)?.[1] ?? "";
+    const px = (decl: string): number => Number(primary.match(new RegExp(`(^|[\\s;])${decl}:\\s*([0-9.]+)px`))?.[2] ?? NaN);
+
+    const padX = Number(primary.match(/(^|[\s;])padding:\s*[0-9.]+px\s+([0-9.]+)px/)?.[2] ?? NaN);
+    const inlinePadX = Number(String(cardBtn.padding).split(/\s+/)[1]?.replace("px", ""));
+    expect(padX, "die Primär-Regel deklariert kein waagrechtes Polster — der Radius frisst den ersten Buchstaben").toBe(inlinePadX);
+    expect(padX).toBeGreaterThanOrEqual(16);
+
+    expect(px("font-size"), "keine Schriftgröße: der Knopf erbt 13 px Systemschrift neben 18 px Fließtext").toBe(cardBtn.fontSize);
+    expect(px("min-height"), "keine Mindesthöhe: der Fingerboden aus D1 gilt für JEDEN Knopf").toBe(cardBtn.minHeight);
+    // …und dieselbe Hand wie die Antwort-Chips: die Regel-Seite trug bis heute die
+    // Systemschrift des Browsers mitten im Buch (P5s zweiter Halbsatz).
+    expect(primary).toMatch(/font-family:\s*var\(--font-label/);
+    expect(String(cardBtn.fontFamily)).toContain("--font-label");
   });
 
   it("the HUD chip is painted paper, not a pill", () => {

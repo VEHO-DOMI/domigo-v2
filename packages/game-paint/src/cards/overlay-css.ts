@@ -448,17 +448,37 @@ export const PAINT_OVERLAY_CSS = `
      simply start using them (prompts → body, headlines → display, chips → label) */
   font-family: var(--font-body, system-ui, sans-serif);
   background-color: var(--pb-paper);
+  /* ── R5-W6b · D4 · R155 (Kokis Tor T6 = c) · DAS PAPIER IST JETZT GEMALT ───
+     Koki hat entschieden, dass die Kartenkante Code bleibt und das Geld ins
+     MATERIAL geht. AQ17 hat dafür ein Blatt geliefert, und es ist an der Datei
+     nachgemessen: 512×512, voll deckend, beidachsig kachelbar (Naht waagrecht
+     1,01× · senkrecht 1,00× der eigenen Textur — ein Sprung unter dem eigenen
+     Rauschen ist keine Naht), Mittelwert rgb(254, 242, 205) und damit ein Punkt
+     neben dem --pb-paper, das seit D1 unter der Karte liegt.
+
+     WAS BLEIBT UND WAS GEHT. Die zwei LICHT-Verläufe bleiben: ein Blatt Papier
+     ist flach, eine Karte im Buch liegt in einem Licht, und dieses Licht kommt
+     von links oben und wärmt rechts unten nach. Was GEHT, ist die künstliche
+     Faser (»repeating-linear-gradient(97deg …)«) und die drei blassen Flecken:
+     genau das trägt das gemalte Blatt jetzt selbst, und zwei Papiersprachen
+     übereinander sind der Fehler, den J2 hier schon einmal gemessen hat (zwei
+     gekreuzte Fasern lasen sich als Rechenpapier).
+
+     DIE KACHELGRÖSSE ist die Größe, in der das Blatt gemalt wurde: 512 px. Die
+     Karte ist ~460 px breit, es steht also höchstens EINE Kachel im Bild und
+     die geprüfte Naht kommt am Schirm gar nicht vor. Halb so groß (256) wäre
+     auf einem 2×-Schirm punktgenau, aber es wäre auch die doppelte Körnung —
+     eine Entscheidung über das Aussehen, die dem Maler gehört, nicht dem
+     Stylesheet. Die Datei liegt unter art/g1/cards/ und nicht im Kunstbaum:
+     »check-paint-art« zählt dort jedes Blatt, das die Engine nicht lädt, als
+     tote Kunst — und dieses hier lädt der BROWSER (siehe import-batch-aq17). */
   background-image:
     radial-gradient(120% 85% at 14% 4%, rgba(255,253,244,0.95), rgba(255,253,244,0) 58%),
     radial-gradient(85% 70% at 92% 98%, rgba(186,152,96,0.34), rgba(186,152,96,0) 62%),
-    radial-gradient(34% 26% at 68% 30%, rgba(170,138,84,0.16), rgba(170,138,84,0) 74%),
-    radial-gradient(26% 34% at 22% 74%, rgba(170,138,84,0.13), rgba(170,138,84,0) 76%),
-    radial-gradient(18% 46% at 46% 58%, rgba(176,142,88,0.1), rgba(176,142,88,0) 78%),
     radial-gradient(52% 16% at 76% 62%, rgba(255,253,244,0.5), rgba(255,253,244,0) 72%),
-    /* ONE fibre direction, long period, barely there. Two crossing grains at
-       7 px read as squared exercise paper rather than as a sheet — caught in
-       the render, which is why the render happens before the commit. */
-    repeating-linear-gradient(97deg, rgba(146,114,64,0.035) 0 1px, rgba(146,114,64,0) 1px 23px);
+    url("/art/g1/cards/card_paper.png");
+  background-repeat: repeat;
+  background-size: auto, auto, auto, 512px 512px;
   /* ── R5-W3 · J2 · R21 · THE HAND ─────────────────────────────────────────
      Two blind look critics, order swapped between them, independently reported
      the same thing: under the paper texture this is still a regular vector
@@ -949,29 +969,89 @@ export const PAINT_OVERLAY_CSS = `
    underneath (they are the same object, differently lit), so this is a
    hierarchy inside the book's materials rather than two unrelated buttons. */
 .pb-card button.pb-btn-primary, .pb-card a.pb-btn-primary {
+  /* die AMBER-Fläche bleibt als Untergrund: sie ist der Kontrast, auf dem die
+     Handlungs-Hierarchie beruht (overlay-css.test.ts prüft ihn), und sie ist
+     zugleich das, was ein Kind sieht, falls das gemalte Blatt einmal nicht
+     ausgeliefert wird — ein Knopf ohne Bild ist dann blass, nie unsichtbar */
   background-color: #f0c473;
-  background-image:
-    radial-gradient(120% 100% at 26% 0%, rgba(255,248,224,0.92), rgba(255,248,224,0) 66%),
-    radial-gradient(80% 70% at 86% 100%, rgba(150,104,38,0.3), rgba(150,104,38,0) 72%),
-    repeating-linear-gradient(97deg, rgba(122,86,34,0.05) 0 1px, rgba(122,86,34,0) 1px 17px);
-  /* R5-W2 · J1-A: only the EDGE joins the naive family — the amber PAPER and the
-     quiet paper below it stay, because that contrast is the action hierarchy and
-     overlay-css.test.ts polices it. A hierarchy expressed in ink weight alone is
-     one a six-year-old does not read. */
-  border-color: var(--pb-ink);
+  /* ── R5-W6b · D4 · DER GEMALTE KNOPF (AQ17, Zellen 0 · 1 · 2) ─────────────
+     Das Blatt ist 2048×512 und trägt vier 512er Zellen: Ruhe · gedrückt · Ghost
+     · Reserve. Die Reserve bleibt mit Absicht unbenutzt — ein Blatt darf mehr
+     können als die Runde braucht.
+
+     DIE RECHNUNG, und warum sie hier ausgeschrieben steht statt geraten zu sein.
+     Der gemalte Knopf füllt seine Zelle nicht aus: gemessen (import-batch-aq17
+     misst es bei jedem Lauf nach) liegt er bei x 67–444, y 165–340, also
+     378×176 Bildpunkte in einer 512er Zelle. Damit GENAU dieser Kasten auf dem
+     Knopf landet und nicht die Zelle, wird das Blatt auf
+         Breite  2048 / 378 = 541,80 %
+         Höhe     512 / 176 = 290,91 %
+     der Knopffläche gezogen, und die Verschiebung ist der Kastenanfang, in
+     Prozent der Differenz Fläche−Bild:
+         waagrecht  (67 + 512 · Zelle) / (2048 − 378)
+         senkrecht   165 / (512 − 176)
+     Die gedrückte Zelle ist dieselbe Zeichnung 4 px tiefer im Blatt; ihre
+     Verschiebung ist deshalb 169/336 statt 165/336 — sie holt die 4 px zurück,
+     denn den Druck macht weiterhin »transform: translateY(4px)« gegen die 4 px
+     Lippe (J1-A). Sonst sänke der Knopf um 8.
+
+     »background-origin: border-box«, weil das Blatt seine EIGENE Tuschekante
+     mitbringt — deshalb ist der CSS-Rand hier durchsichtig statt in --pb-ink — zwei
+     Kanten übereinander wären eine doppelte Linie, und die gemalte ist die, für
+     die Koki bezahlt hat. Die Rand-BREITE bleibt stehen, damit sich am Layout
+     nichts verschiebt. */
+  background-image: url("/art/g1/cards/card_buttons.png");
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-size: 541.80% 290.91%;
+  background-position: 4.012% 49.107%;
+  border-color: transparent;
   color: #402d10;
   box-shadow:
     0 4px 0 var(--pb-ink-cast),
     0 5px 14px rgba(52,34,10,0.26);
+  /* ── R5-W6b · D4 · DER KNOPF, DER SEINE SCHRIFT ABSCHNITT ──────────────
+     P5 hat »Ins Buch kleben« am Schirm als »ns Buch kleben« gelesen, zweimal in
+     Folge gemeldet. Es war nie die Schrift und nie der Text: die Basisregel
+     ».pb-card button« oben gibt Farbe, Rand und Radius — aber KEIN Polster, KEINE
+     Schriftgröße, KEINE Schriftfamilie. Jeder andere Primärknopf im Spiel bekommt
+     die drei Zahlen inline mit (PaintGame#btn, skins.tsx#cardBtn); genau die drei
+     Regel-Seiten-Knöpfe (RulePage »Seite aufschlagen« · »Ins Buch kleben« ·
+     »Weiterspielen«) setzen nur die Klasse. Sie erbten deshalb die Vorgaben des
+     Browsers — rund 6 px waagrechtes Polster und 13 px Systemschrift — und lagen
+     damit unter einem 4 px starken Tuscherand mit ungleichem Eckradius
+     (--pb-chip-r, die 18/9/20/11). Der Radius frisst bei 6 px Polster den ersten und
+     letzten Buchstaben; das ist das abgeschnittene »I«.
+
+     Die drei Zahlen stehen deshalb JETZT in der Regel, und zwar dieselben, die
+     CardShell#cardBtn seit Kokis Ruling vom 14.08. trägt. Das ist ein Klassen-Fix,
+     kein Instanz-Fix: er trifft jeden Knopf, der die Klasse trägt und sein Polster
+     nicht selbst mitbringt — und an den inline gesetzten ändert er nichts, weil
+     Inline die Regel schlägt. Ein Gesetz in overlay-css.test.ts hält die Zahlen
+     fest, damit die nächste Hand sie nicht wieder wegkommentiert. */
+  padding: 11px 18px;
+  font-size: 18px;
+  min-height: 46px;
+  font-family: var(--font-label, inherit);
+  font-weight: 600;
 }
 .pb-card button.pb-btn-primary:active:not(:disabled) {
   transform: translateY(4px);
   box-shadow: 0 0 0 var(--pb-ink-cast), inset 0 1px 4px rgba(120,80,26,0.3);
+  /* Zelle 1 (gedrückt), um ihre eigenen 4 px zurückgeholt — siehe die Rechnung oben */
+  background-position: 34.671% 50.298%;
 }
 .pb-card .pb-btn-ghost {
   background-color: rgba(253,246,228,0.62);
-  background-image: none;
-  border-color: var(--pb-ink-line);
+  /* Zelle 2: dasselbe Blatt, der stille Zustand. Der Ghost ist der Weg HINAUS,
+     und er ist gemalt wie der Weg hinein — dieselbe Hand, weniger Farbe
+     (gemessen 1,56 : 1 gegen das Papier, der Primärknopf 1,42 : 1). */
+  background-image: url("/art/g1/cards/card_buttons.png");
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-size: 541.80% 290.91%;
+  background-position: 65.329% 49.107%;
+  border-color: transparent;
   color: #6b5c40;
   box-shadow: inset 0 0 0 1px rgba(255,253,244,0.55);
 }

@@ -17,7 +17,7 @@ import { describe, expect, it } from "vitest";
 import fs from "node:fs";
 import path from "node:path";
 import { KLASSENFOTO_STEM, cageCellFor, freeCellsFor } from "./CardShell.tsx";
-import { CAPTIVE_KEYS, classmateStem } from "../artManifest.ts";
+import { CAPTIVE_KEYS, classmateFreeStem, classmateStem } from "../artManifest.ts";
 import { domArtStems } from "../artScope.ts";
 
 const ROOT = path.resolve(__dirname, "../../../..");
@@ -99,6 +99,23 @@ describe("R5-W4 · D3 · the cage portrait names its occupant", () => {
     // …and the guard must be able to SEE such a literal: the same search finds
     // the one this file itself writes, so a silently-empty read cannot pass.
     expect(fs.readFileSync(__filename, "utf8")).toMatch(/merle_caged0/);
+  });
+
+  it("R5-W6b · D4 · D-285 · CardShell spells no FREE-cell convention of its own either", () => {
+    const src = fs.readFileSync(path.join(__dirname, "CardShell.tsx"), "utf8");
+    const code = src
+      .split("\n")
+      .filter((l) => !/^\s*(\*|\/\/|\/\*)/.test(l))
+      .join("\n");
+    // die Klasse, die D-228 für die KÄFIG-Zelle geschlossen hat, eine Zeile weiter:
+    // `${name}_a` stand bis heute im Rumpf von `freeCellsFor`. Der Tamper, gegen den
+    // dieser Wächter gebaut ist, ist genau diese Schablone zurück im Code.
+    expect(code, "eine `${name}_a`-Schablone ist zurück in CardShell — die Konvention lebt in artManifest.classmateFreeStem")
+      .not.toMatch(/\$\{name\}_a/);
+    expect(freeCellsFor("merle")).toEqual([classmateFreeStem("merle")]);
+    // …und der Wächter kann so eine Schablone auch SEHEN: die Zeile hier drüber
+    // steht als Text in dieser Datei, ein stiller Leerlauf käme nicht durch.
+    expect(fs.readFileSync(__filename, "utf8")).toMatch(/\$\{name\}_a/);
   });
 
   it("a key the art has not landed for still resolves — presence is asked later", () => {

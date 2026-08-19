@@ -25,7 +25,7 @@
 //    card had already vanished, so a child never saw their own answer land.
 import React, { useState } from "react";
 import type { GameTaskV2 } from "@domigo/content-schema";
-import { MACHINES } from "./machines.ts";
+import { MACHINES, type Grade } from "./machines.ts";
 import { CardShell, Cheer, type CardAlign } from "./CardShell.tsx";
 import { QUICKFIRE_MS, VERDICT_MS } from "./overlay-css.ts";
 import { prefersReducedMotion } from "./motion.ts";
@@ -62,7 +62,7 @@ export function writtenTextOf(state: unknown, task: GameTaskV2): string {
 }
 
 export function CardHost({
-  task, onResolve, onWorldChange, onDismiss, align = "center", art, portraitWash, captive, servedUse, clockMs: clockMsProp, round,
+  task, onResolve, onWorldChange, onDismiss, onGrade, align = "center", art, portraitWash, captive, servedUse, clockMs: clockMsProp, round,
 }: {
   task: GameTaskV2;
   /** the card is finished: close it (and hand on any beat it opened) */
@@ -76,6 +76,17 @@ export function CardHost({
    *  there rather than the answer key's. */
   onWorldChange?: (written: string) => void;
   onDismiss: () => void;
+  /** R5-W6b · D4 · D-371 — DAS URTEIL, NACH OBEN GEMELDET.
+   *
+   *  Die Bewertung liegt hier drin (die Maschine gradet, die Hülle sieht nur das
+   *  Ergebnis), und deshalb war der weiche Ton auf eine falsche Antwort der
+   *  einzige gemasterte Klang ohne Auslöser: die Hülle erfuhr nie, dass daneben
+   *  gegriffen wurde. Genau EIN Rückkanal, mit dem Vokabular der Maschine — die
+   *  Karte meldet ihr Urteil, nie einen Klangnamen. Was daraus wird, entscheidet
+   *  `audio/director.ts#CARD_GRADE_STEMS`.
+   *
+   *  Optional: eine Bank, ein Test, eine Story-Karte hat keinen Direktor. */
+  onGrade?: (grade: Exclude<Grade, "pending">) => void;
   /** which side of the canvas to sit on (PB-F1/F2-20) */
   align?: CardAlign;
   /** the level's only-present art map (stem → url) for the portrait slot */
@@ -106,8 +117,8 @@ export function CardHost({
   /** the card may only end ONCE — a late timer must not fire after an answer,
    *  and a second tap during the resolution must not resolve twice */
   const endedRef = React.useRef(false);
-  const cbRef = React.useRef({ onResolve, onDismiss, onWorldChange });
-  cbRef.current = { onResolve, onDismiss, onWorldChange };
+  const cbRef = React.useRef({ onResolve, onDismiss, onWorldChange, onGrade });
+  cbRef.current = { onResolve, onDismiss, onWorldChange, onGrade };
   /** the resolution's timers, cleared on unmount. PK-R1's whole root cause was
    *  a rule with two clocks and a timer nobody owned; this packet does not add
    *  another one that can fire into a torn-down tree — so every beat's handle
@@ -188,7 +199,13 @@ export function CardHost({
       });
       return;
     }
-    if (g === "wrong") { setAttempts((x) => x + 1); setState(m.init(task)); return; }
+    if (g === "wrong") {
+      // R5-W6b · D4 · D-371 · BLUEPRINT :371 — der weiche neutrale Thud, und zwar
+      // GENAU hier: eine Stelle tiefer (im Zurücksetzen) käme er auch beim
+      // Neuaufbau der Karte, eine Stelle höher bei jedem `pending`.
+      cbRef.current.onGrade?.("wrong");
+      setAttempts((x) => x + 1); setState(m.init(task)); return;
+    }
     setState(next);
   };
 

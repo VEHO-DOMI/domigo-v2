@@ -9,7 +9,7 @@
 //
 // THE ORDER IS THE POINT (doc 44 §3.1.7 + doc 42 §3's restore-hold):
 //
-//   1. LETTERS   the answer flies home, per char, „Zurückgeholt!"
+//   1. LETTERS   the answer flies home, per char, „Zurück im Buch!" (R160)
 //   2. HOLD      the world's change PLAYS and is watched — the colour flood,
 //                the joy lap, the cage opening. The card is out of the way.
 //   3. CHEER     only now does the card celebrate.
