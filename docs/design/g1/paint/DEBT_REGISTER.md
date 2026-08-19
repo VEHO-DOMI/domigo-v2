@@ -824,7 +824,7 @@ Reserviert: D-510…D-519.
 | Nr. | Befund | Beleg | Fix | Wer/wann | Herkunft |
 |---|---|---|---|---|---|
 
-## R5-W7 · D5 — Karten IV (Auftragsschirm R165/F2, AQ14c-Import, AQ17b/c-Kante + Plaketten, `--pb-edge-image`) (2026-08-19)
+## R5-W7 · D5 — Karten IV (Auftragsschirm R165/F2 mit Sammel-Legende, AQ17b-Plaketten Z0/Z1, aq17-Selbsttest, `--pb-edge-image` nach AQ17C; AQ14c zurück → D6) (2026-08-19)
 
 Reserviert: D-520…D-529.
 
@@ -838,7 +838,7 @@ Reserviert: D-530…D-539.
 | Nr. | Befund | Beleg | Fix | Wer/wann | Herkunft |
 |---|---|---|---|---|---|
 
-## R5-W7 · C7 — Farb-Import V (AQ12d3/f3, AQ12g2, AQ15d Z2 + Achsen-aus-dem-Bestand, AQ10c über den geliehenen aq10-Importer) (2026-08-19)
+## R5-W7 · C7 — Farb-Import V (AQ12d3 Buch ROT + Kartenzeilen, AQ12g2, AQ15d Z2 + Achsen-aus-dem-Bestand, AQ10c über den geliehenen aq10-Importer, AQ18 l1_p3_a; AQ12f3 zurück → AQ12F4) (2026-08-19)
 
 Reserviert: D-540…D-549.
 
