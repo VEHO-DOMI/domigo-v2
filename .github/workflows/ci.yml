@@ -53,42 +53,59 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm content validate
       - run: pnpm content validate-story
-      - run: node --experimental-strip-types scripts/check-story-grounding.mjs # W3/D-123: imports BANNED_DE from content-schema (.ts) — the flag is what lets it
-      - run: node scripts/check-design-sheets.mjs --selftest # W4/D-278: das Register-Gesetz trennt den Schrei vom Schreiben — Teilkette gegen Wortgrenze
-      - run: node scripts/check-design-sheets.mjs
-      - run: node --experimental-strip-types scripts/check-paint-art.mjs # PB-T2: no silent placeholder art
-      - run: node --experimental-strip-types scripts/check-game-tasks.mjs --selftest # G2: the card gate's own red light must be reachable — one prepared traitor card per class
-      - run: node --experimental-strip-types scripts/check-game-tasks.mjs # PB-T6: gameTasks@2 schema + grounding + giveaway (layer 18: all nine kinds, both languages, the board)
-      - run: node scripts/check-story-art.mjs # the story-art manifest and the prompt library agree, both ways
-      - run: node scripts/check-level-design.mjs --selftest # B1: the gate's own red light must be reachable
-      - run: node scripts/check-level-design.mjs # R5-P1/B1: stem dedup, vocab coverage, dossier↔level anchors, named thresholds
-      - run: node scripts/check-composition.mjs --selftest # A6: the edge-coherence law's own red light must be reachable — und L1/R5-W6: die Buchstaben-Praesenz mit ihrem Tamper (goldene Wand OHNE Hof ⇒ rot)
-      - run: node scripts/check-composition.mjs # PB-C1/doc 36: plane coverage, carved mass, value bands, no naked fill, edge coherence, letter presence (R37)
-      - run: node --experimental-strip-types scripts/check-png-seams.mjs --selftest # W3/D-199: the seam gate's own red light must be reachable — and genuinely violet paint must stay green
-      - run: node --experimental-strip-types scripts/check-png-seams.mjs # W3/D-199: magenta INSIDE an opaque tile — the class the skin-only fringe gate cannot see
-      - run: node --experimental-strip-types scripts/check-paint-copy.mjs # C1: cloak, register and quote laws over the shell copy
-      - run: node scripts/check-copy-register.mjs --selftest # C2: the register gate's own red light must be reachable
-      - run: node scripts/check-copy-register.mjs # C2: every German line a child reads is Austrian (scripts/lexikon-at.json)
-      - run: node scripts/check-colour-truth.mjs --selftest # C2: the colour measurement must be able to call a red sheet red
-      - run: node scripts/check-colour-truth.mjs # C2/R41 + C4/D-280 (W5/D-420: eine Datei, zwei Kapitel): jede restore-Karte traegt die Farbfamilie ihres eigenen PNG — und die deutschen Zeilen der Karte nennen die Farbe, die die Karte kodiert
-      - run: node scripts/check-sheet-colours.mjs --selftest # W5/D-403: das rote Licht der Farbzahl je ZELLE muss erreichbar sein — ein posterisiertes Blatt wird rot, das echte bleibt gruen
-      - run: node scripts/check-sheet-colours.mjs # W5/D-403+D-404: jede Zelle einzeln gezaehlt (nie als Summe einer Sammeldatei) haelt 80 % ihrer Farbzahl, und jede Abweichung vom Helligkeits-Korridor traegt eine benannte, datierte Ausnahme
-      - run: node docs/art/import-batch-aq12.mjs --selftest # C5: the import acceptance probe must still be able to call a flat fill a flat fill
+      # ══ DIE TORE, GEORDNET (R5-W6b · W5, letzte Merge-Position) ═══════════════
+      #
+      # Fünf Bahnen dieser Welle durften hier anhängen; W5 ordnet zuletzt. Die
+      # Ordnung ist ein Gesetz und keine Kosmetik:
+      #
+      #   1 · Je Tor steht die SELBSTTEST-Zeile unmittelbar vor der echten Zeile.
+      #       Ein Selbsttest, der zehn Zeilen entfernt läuft, wird beim Lesen
+      #       eines roten Laufs nicht mitgelesen — und die erste Frage bei einem
+      #       roten Tor ist immer: misst es überhaupt noch?
+      #   2 · Jede Zeile nennt SESSION und GESETZ. Ein `- run:` ohne Herkunft ist
+      #       in einem Jahr ein Schritt, den niemand zu löschen wagt und niemand
+      #       versteht.
+      #   3 · Die Werkzeuge stehen in EINEM Block, nicht verteilt. Sie sind kein
+      #       Tor, und wer das über vier Stellen verteilt liest, hält irgendwann
+      #       eines für eines (D-257, genau dieser Vorfall).
+      #
+      # Vier Tore tragen KEINE Selbsttest-Zeile, weil sie keinen Selbsttest
+      # haben: sie sind älter als das Gesetz »neues Tor = Skript mit Selbsttest«.
+      # Sie sind unten benannt und als D-454 aufgeschrieben — nicht stillgelegt.
+      # (Und die erste Fassung dieser Kommentare schrieb dort das Flag AUS —
+      # worauf check-ci-gates die echte Zeile für eine Selbsttest-Zeile hielt
+      # und vier Tore als »läuft nie an einer echten Datei« meldete. Der
+      # Wächter liest ZEILEN, nicht Befehle; er hat damit recht behalten.)
+
+      # ── Inhalt: Text, Karten, Level ──────────────────────────────────────────
+      - run: node --experimental-strip-types scripts/check-story-grounding.mjs # W3/D-123: jedes verbotene deutsche Wort kommt aus content-schema (.ts) — das Flag ist, was es erlaubt · ohne eigenen Selbsttest (D-454)
+      - run: node --experimental-strip-types scripts/check-paint-copy.mjs # C1: Umhang-, Register- und Zitat-Gesetz über der Schalen-Kopie · ohne eigenen Selbsttest (D-454)
+      - run: node scripts/check-copy-register.mjs --selftest # C2: das rote Licht des Register-Tors muss erreichbar sein
+      - run: node scripts/check-copy-register.mjs # C2: jede deutsche Zeile, die ein Kind liest, ist österreichisch (scripts/lexikon-at.json)
+      - run: node scripts/check-design-sheets.mjs --selftest # W4/D-278 + W5/D-424: das Register-Gesetz trennt den Schrei vom Schreiben (Teilkette gegen Wortgrenze) und lässt den Kanon-Begriff »Tinten-Geister« durch, ohne »Geist« freizugeben
+      - run: node scripts/check-design-sheets.mjs # W4/K5: kein Angst-Wort auf einem Design-Blatt, alle Korpus-ids und Abschnitte vorhanden
+      - run: node --experimental-strip-types scripts/check-game-tasks.mjs --selftest # G2: das rote Licht des Karten-Tors muss erreichbar sein — je Klasse eine vorbereitete Verräter-Karte
+      - run: node --experimental-strip-types scripts/check-game-tasks.mjs # PB-T6: gameTasks@2 Schema + Erdung + Verrat (Schicht 18: alle neun Arten, beide Sprachen, das Brett)
+      - run: node scripts/check-level-design.mjs --selftest # B1: das rote Licht des Tors muss erreichbar sein
+      - run: node scripts/check-level-design.mjs # R5-P1/B1: Stem-Dedup, Vokabel-Abdeckung, Dossier↔Level-Anker, benannte Schwellen
+      - run: node scripts/check-registers.mjs --selftest # K1: das rote Licht des Register-Tors muss erreichbar sein
+      - run: node scripts/check-registers.mjs # K1: D-/PB-Nummern eindeutig, Code-Verweise lösen per SYMBOL auf, nie per Zeile
+
+      # ── Bild: was auf den Blättern wirklich steht ────────────────────────────
+      - run: node --experimental-strip-types scripts/check-paint-art.mjs # PB-T2: keine stille Platzhalter-Kunst; und die Tot-Kunst-Ratsche (DEAD_ART_CEILING) · ohne eigenen Selbsttest (D-454)
+      - run: node scripts/check-story-art.mjs # das Story-Kunst-Manifest und die Prompt-Bibliothek stimmen überein, in beide Richtungen · ohne eigenen Selbsttest (D-454)
+      - run: node scripts/check-composition.mjs --selftest # A6: das rote Licht des Kanten-Kohärenz-Gesetzes muss erreichbar sein · L1/R5-W6: die Buchstaben-Präsenz mit ihrem Tamper (goldene Wand OHNE Hof ⇒ rot) · W5/R5-W6b: EINE Farbton-Rechnung (beide Leser, derselbe Winkel)
+      - run: node scripts/check-composition.mjs # PB-C1/doc 36: Ebenen-Abdeckung, geschnittene Masse, Wertbänder, keine nackte Füllung, Kanten-Kohärenz, Buchstaben-Präsenz (R37)
+      - run: node --experimental-strip-types scripts/check-png-seams.mjs --selftest # W3/D-199: das rote Licht des Naht-Tors muss erreichbar sein — und echt violette Malerei muss grün bleiben
+      - run: node --experimental-strip-types scripts/check-png-seams.mjs # W3/D-199: Magenta INNERHALB einer deckenden Kachel — die Klasse, die das reine Haut-Fransen-Tor nicht sieht
+      - run: node scripts/check-colour-truth.mjs --selftest # C2 + C4: beide Kapitel zählen getrennt — die Messung muss ein rotes Blatt rot nennen können, und die Kopie muss die falsche Farbe im Hinweis finden
+      - run: node scripts/check-colour-truth.mjs # C2/R41 + C4/D-280 (W5/D-420: eine Datei, zwei Kapitel): jede restore-Karte trägt die Farbfamilie ihres eigenen PNG — und die deutschen Zeilen der Karte nennen die Farbe, die die Karte kodiert
+      - run: node scripts/check-sheet-colours.mjs --selftest # W5/D-403: das rote Licht der Farbzahl je ZELLE muss erreichbar sein — ein posterisiertes Blatt wird rot, das echte bleibt grün
+      - run: node scripts/check-sheet-colours.mjs # W5/D-403+D-404: jede Zelle einzeln gezählt (nie als Summe einer Sammeldatei) hält 80 % ihrer Farbzahl, und jede Abweichung vom Helligkeits-Korridor trägt eine benannte, datierte Ausnahme
       - run: node docs/art/import-batch-aq15.mjs --selftest # C6: die Fenster-Abnahme muss den abgeschnittenen Stabfuss sehen — der Fehler, den eine Pruefung mit der Oeffnungsmaske des Lieferanten per Bauart uebersieht
+      - run: node docs/art/import-batch-aq12.mjs --selftest # C5: die Abnahme-Probe muss eine flache Füllung weiterhin eine flache Füllung nennen können
       - run: node docs/art/import-batch-aq13.mjs --selftest # H4: die Tafel- und Ring-Abnahme misst gegen den BESTAND, nicht gegen die Zahlen des Lieferscheins — der Zwilling, der unten buendige Sitz und die Gesichtsquote gegen ein selbst gerechnetes N muessen rot werden
-      # ── W4/D-257 · die vier Zeilen hier und shoot-card-bench unten sind
-      # WERKZEUG, KEIN TOR: der Selbsttest sichert das Messgerät, der echte Lauf
-      # braucht Chrome und einen Dev-Server und gehört deshalb in die Session,
-      # neben die Bilder, die er erzeugt. Jede Zeile ist in
-      # scripts/check-ci-gates.mjs#SELFTEST_ONLY mit Grund deklariert; fällt die
-      # Deklaration weg oder wird ein echter Lauf verdrahtet, geht das Tor rot.
-      - run: node scripts/measure-presence.mjs --selftest # J1-E: the contrast instrument proves itself, or its numbers mean nothing — Werkzeug, kein Tor (misst am Schirm)
-      - run: node scripts/frame-sink.mjs --selftest # W1/P-66: the camera proves it is alive, or a still frame ships as evidence — Werkzeug, kein Tor (nimmt Bilder aus einem laufenden Browser entgegen)
-      - run: node scripts/measure-motion.mjs --selftest # W1: drawn-vs-seen motion — a shear must not read as zero — Werkzeug, kein Tor (misst eine geschossene Bildreihe)
-      - run: node scripts/measure-veil.mjs --selftest # D3: how dark the world behind the card is — the split must survive a big bright card — Werkzeug, kein Tor (braucht die offene Karte im laufenden Spiel)
-      - run: node scripts/check-registers.mjs --selftest # K1: the register gate's own red light must be reachable
-      - run: node scripts/check-registers.mjs # K1: D-/PB-numbers unique, code references resolve by SYMBOL not by line
-      - run: node scripts/check-png-identity.mjs --selftest # E5: the pixel-identity proof's own red light must be reachable
+      - run: node scripts/check-png-identity.mjs --selftest # E5: das rote Licht des Bildpunkt-Beweises muss erreichbar sein
       # W4/D-257 + D-98: der ECHTE Lauf. Nur auf einem PR, weil er gegen die
       # Basis vergleicht — auf einem Push nach main gibt es keine. Neu gemalte
       # Blätter sind ausdrücklich erlaubt; rot wird genau die Klasse, die D-98
@@ -99,24 +116,45 @@ jobs:
         run: |
           git fetch --no-tags --depth=1 origin "${{ github.base_ref }}"
           node scripts/check-png-identity.mjs --ref FETCH_HEAD
-      - run: node --experimental-strip-types scripts/check-perf-budget.mjs --selftest # E5: the budget guard's own red light must be reachable
-      - run: node --experimental-strip-types scripts/check-perf-budget.mjs # E5: the PERF_WAECHTER numbers, the code and the enforcers must agree
-      - run: node scripts/check-fonts.mjs --selftest # E5: the font guard's own red light must be reachable
-      - run: node scripts/check-fonts.mjs # E5/D-79: no next/font/google — the build may not depend on gstatic being up
-      - run: node scripts/shoot-card-bench.mjs --selftest # W2/D-102: die Ausschnitt-Rechnung der Kartenbank — ein Motiv unter 40 % der Bildflaeche muss rot werden — Werkzeug, kein Tor (startet einen eigenen Chrome)
-      - run: node scripts/shoot-world.mjs --selftest # W4/D-259: die Kampf-Abtastrate liegt unter beiden Kampf-Takten (entities.ts) und der Beipackzettel erscheint, wenn das Werkzeug mitgespielt hat — Werkzeug, kein Tor (der Lauf braucht Chrome + Dev-Server)
-      - run: node scripts/perf-visible.mjs --selftest # E6/R115: Werkzeug, kein Tor — hier laeuft kein Chrome; geprueft wird nur, dass die Kontrollschwelle (Kontrollseite unter 58 fps ⇒ Abbruch) ihr rotes Licht erreichen kann
-      - run: node scripts/check-secrets.mjs --selftest # S1: vier Koeder muessen rot werden UND sechs Beinahe-Treffer still bleiben
-      - run: node scripts/check-secrets.mjs # S1: kein API-Schluessel in einer getrackten Datei — die Historie behaelt, was einmal drin war
-      # S1: das Klang-Tor MISST Klang (Lautheit, Spitze, Klangfarbe, Schleifen-Naht) und braucht dafuer
-      # ffmpeg. ubuntu-latest bringt keins mit. Die Alternative waere ein Tor, das in CI nur Bytes und
-      # Pruefsummen vergleicht und die Signal-Messung dem Laptop ueberlaesst — also ein Tor, das die
-      # Klasse von Fehlern, fuer die es gebaut wurde, in CI nie sieht (P-65). Der Schritt kostet Sekunden.
+
+      # ── Budgets, Schrift, Geheimnisse ───────────────────────────────────────
+      - run: node --experimental-strip-types scripts/check-perf-budget.mjs --selftest # E5: das rote Licht des Budget-Wächters muss erreichbar sein
+      - run: node --experimental-strip-types scripts/check-perf-budget.mjs # E5: die PERF_WAECHTER-Zahlen, der Code und die Vollstrecker müssen übereinstimmen
+      - run: node scripts/check-fonts.mjs --selftest # E5: das rote Licht des Schrift-Wächters muss erreichbar sein
+      - run: node scripts/check-fonts.mjs # E5/D-79: kein next/font/google — der Bau darf nicht davon abhängen, dass gstatic läuft
+      - run: node scripts/check-secrets.mjs --selftest # S1: vier Köder müssen rot werden UND sechs Beinahe-Treffer still bleiben
+      - run: node scripts/check-secrets.mjs # S1: kein API-Schlüssel in einer getrackten Datei — die Historie behält, was einmal drin war
+
+      # ── Klang ───────────────────────────────────────────────────────────────
+      # S1: das Klang-Tor MISST Klang (Lautheit, Spitze, Klangfarbe, Schleifen-Naht) und braucht dafür
+      # ffmpeg. ubuntu-latest bringt keins mit. Die Alternative wäre ein Tor, das in CI nur Bytes und
+      # Prüfsummen vergleicht und die Signal-Messung dem Laptop überlässt — also ein Tor, das die
+      # Klasse von Fehlern, für die es gebaut wurde, in CI nie sieht (P-65). Der Schritt kostet Sekunden.
       - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
-      - run: node scripts/check-audio.mjs --selftest # S1: fuenf echte Defekte muessen rot werden — und ein AUFSTEIGENDER Klang muss gruen bleiben
+      - run: node scripts/check-audio.mjs --selftest # S1: fünf echte Defekte müssen rot werden — und ein AUFSTEIGENDER Klang muss grün bleiben
       - run: node scripts/check-audio.mjs # S1/R124: Manifest ↔ Platte ↔ Messdatei, Budgets, und BLUEPRINT :371 als Messung
-      - run: node scripts/check-ci-gates.mjs --selftest # E2: the guard's own red light must be reachable
-      - run: node scripts/check-ci-gates.mjs # E2: every gate on disk is wired into THIS file — the gap cannot reopen
+
+      # ── WERKZEUG, KEIN TOR (W4/D-257) ───────────────────────────────────────
+      # Diese sieben Zeilen fahren in CI ABSICHTLICH nur ihren Selbsttest: der
+      # sichert das Messgerät, der echte Lauf braucht Chrome und einen laufenden
+      # Dev-Server und gehört deshalb in die Sitzung, neben die Bilder, die er
+      # erzeugt. Jede ist in scripts/check-ci-gates.mjs#SELFTEST_ONLY mit Grund
+      # deklariert; fällt die Deklaration weg oder wird ein echter Lauf
+      # verdrahtet, geht check-ci-gates rot. (W5: vorher standen sie an vier
+      # Stellen verteilt — die Zahl im Kommentar stimmte seit E6 nicht mehr.)
+      - run: node scripts/measure-presence.mjs --selftest # J1-E: das Kontrast-Messgerät beweist sich selbst, sonst bedeuten seine Zahlen nichts — misst am Schirm
+      - run: node scripts/frame-sink.mjs --selftest # W1/P-66: die Kamera beweist, dass sie lebt, sonst geht ein Standbild als Beweis durch — nimmt Bilder aus einem laufenden Browser entgegen
+      - run: node scripts/measure-motion.mjs --selftest # W1: gezeichnete gegen gesehene Bewegung — eine Scherung darf nicht als Null gelesen werden — misst eine geschossene Bildreihe
+      - run: node scripts/measure-veil.mjs --selftest # D3: wie dunkel die Welt hinter der Karte ist — die Trennung muss eine große helle Karte überleben — braucht die offene Karte im laufenden Spiel
+      - run: node scripts/measure-residue.mjs --selftest # W5/D-386: Gold und Kontur bleiben in ihren eigenen Zeilen, der stehengebliebene Flicken wird gefunden und verortet — braucht zwei Blätter (Bestand + Lieferung), die im Repo nicht beide liegen
+      - run: node scripts/shoot-card-bench.mjs --selftest # W2/D-102 + W5: die Ausschnitt-Rechnung der Kartenbank (ein Motiv unter 40 % der Bildfläche muss rot werden) — startet einen eigenen Chrome
+      - run: node scripts/shoot-world.mjs --selftest # W4/D-259: die Kampf-Abtastrate liegt unter beiden Kampf-Takten (entities.ts) und der Beipackzettel erscheint, wenn das Werkzeug mitgespielt hat — der Lauf braucht Chrome + Dev-Server
+      - run: node scripts/perf-visible.mjs --selftest # E6/R115: hier läuft kein Chrome; geprüft wird nur, dass die Kontrollschwelle (Kontrollseite unter 58 fps ⇒ Abbruch) ihr rotes Licht erreichen kann
+      - run: node scripts/art-recompress.mjs --selftest # W5/D-339: die Doppellauf-Sperre — eine TOTE Sperre wird übernommen, eine lebende hält, ein laufendes oxipng schlägt beides; der echte Lauf schreibt PNGs und gehört in die Sitzung
+
+      # ── zuletzt: das Tor, das diese Datei bewacht ────────────────────────────
+      - run: node scripts/check-ci-gates.mjs --selftest # E2: das rote Licht des Wächters muss erreichbar sein
+      - run: node scripts/check-ci-gates.mjs # E2: jedes Tor auf der Platte ist in DIESER Datei verdrahtet — die Lücke kann nicht wieder aufgehen
 
   perf-contract:
     # R5-W3 · E5 · docs/PERF_WAECHTER.md §1: no PR that touches rendering,
@@ -134,7 +172,15 @@ jobs:
         env:
           PR_BODY: ${{ github.event.pull_request.body }}
         run: |
-          git fetch --no-tags --depth=1 origin "${{ github.base_ref }}" > /dev/null 2>&1 || true
+          # R5-W6b · W5: OHNE --depth=1. Der flache Hol-Vorgang liefert einen
+          # origin/main OHNE Eltern; sobald main dem PR-Stand voraus ist, hat
+          # `...` (Drei-Punkt = gemeinsamer Vorfahr) keinen mehr, und der
+          # Schritt endet mit »fatal: no merge base« — ein ROTES Tor, das nichts
+          # ueber die Tabelle sagt, die es prueft. Genau das ist an diesem PR
+          # passiert, als zwei Bahnen der Welle vor ihm gemergt wurden.
+          # Der Checkout dieses Jobs hat fetch-depth: 0, die volle Historie
+          # kostet hier also nichts.
+          git fetch --no-tags origin "${{ github.base_ref }}" > /dev/null 2>&1 || true
           CHANGED_FILES="$(git diff --name-only "origin/${{ github.base_ref }}"...HEAD)"
           export CHANGED_FILES
           node scripts/check-perf-table.mjs

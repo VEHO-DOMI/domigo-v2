@@ -75,6 +75,12 @@ const SELFTEST_ONLY = {
     "misst die Perf-Tabelle aus SICHTBAREM Chrome gegen einen laufenden Server — in CI laeuft kein Chrome; der Selbsttest prueft nur, dass die Kontrollschwelle (Kontrollseite unter 58 fps ⇒ Abbruch) ihr rotes Licht erreichen kann",
   "shoot-world.mjs":
     "schießt Bildreihen aus einem eigenen Chrome gegen einen laufenden Dev-Server; der Selbsttest prüft ohne Browser, was ohne Browser prüfbar ist — die Kampf-Abtastrate gegen die Takt-Konstanten aus entities.ts und den Beipackzettel (D-259)",
+  // R5-W6b · W5 · zwei neue Werkzeuge, und beide aus demselben Grund: was sie
+  // messen, liegt nicht im Repo.
+  "measure-residue.mjs":
+    "vergleicht ein Bestands-Blatt mit einer LIEFERUNG aus dem Codex-Labor; die Lieferung liegt per Konstruktion nicht im Repo (CP-15), also gibt es in CI kein Paar zu messen. Der Selbsttest baut sich seines und prüft beide Richtungen: Gold und Kontur bleiben stumm, der Flicken wird gefunden",
+  "art-recompress.mjs":
+    "SCHREIBT PNGs (verlustfreie Nachverdichtung) — ein echter Lauf in CI würde die Arbeitskopie verändern und den Beweis von check-png-identity aushebeln. Der Selbsttest prüft die Doppellauf-Sperre (D-339) ohne eine Datei anzufassen",
 };
 
 const selftest = process.argv.includes("--selftest");
