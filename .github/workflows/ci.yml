@@ -141,7 +141,7 @@ jobs:
       # 19.08.: dieser Schritt hing 56 Minuten an einem Paket-Spiegel und blockierte das
       # Boot-Tor der ganzen Welle 7. Er kostet normal Sekunden; eine Zeitgrenze macht aus
       # einem Haenger einen roten Schritt, den ein Neustart behebt (die Klasse, nicht der Fall).
-      - name: ffmpeg fuer das Klang-Tor (Zeitgrenze: haengender Spiegel wird rot, nicht ewig)
+      - name: "ffmpeg fuer das Klang-Tor — Zeitgrenze statt Haenger"
         timeout-minutes: 4
         run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
       - run: node scripts/check-audio.mjs --selftest # S1: fünf echte Defekte müssen rot werden — und ein AUFSTEIGENDER Klang muss grün bleiben
