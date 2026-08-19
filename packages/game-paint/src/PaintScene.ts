@@ -1208,16 +1208,32 @@ export class PaintScene extends Phaser.Scene {
    * milliseconds — and the payoff is that the next session reads the answer
    * instead of hunting for it.
    */
-  private readonly buildMs: Array<{ step: string; ms: number }> = [];
-  private timed(step: string, run: () => void): void {
+  private readonly buildMs: Array<{ step: string; ms: number; parent: string | null }> = [];
+  /**
+   * R5-W6b · E7 · A BREAKDOWN MUST NEVER BE ADDED TO ITS OWN PARENT.
+   *
+   * `parent` names the step a measurement sits INSIDE. Without it a caller has
+   * no way to tell a top-level block from a slice of one, so it sums both and
+   * prints a total larger than create() ever was — E6 shipped exactly that
+   * table once (p1: 425 ms »aufbau« over 749 ms of steps) and had to repair it.
+   * Children are printed indented and are excluded from every sum.
+   */
+  private timed(step: string, run: () => void, parent: string | null = null): void {
     const t0 = performance.now();
     run();
-    this.buildMs.push({ step, ms: Math.round((performance.now() - t0) * 10) / 10 });
+    this.buildMs.push({ step, ms: Math.round((performance.now() - t0) * 10) / 10, parent });
+  }
+
+  /** Record the time since `t0` as a child line. Used where wrapping a block in
+   *  a closure would move a `const` out of the scope that reads it — a timer
+   *  must never be the reason code is restructured. */
+  private mark(step: string, t0: number, parent: string): void {
+    this.buildMs.push({ step, ms: performance.now() - t0, parent });
   }
 
   /** R5-W3 · E5: the per-step build cost, for the perf door. */
-  buildReport(): ReadonlyArray<{ step: string; ms: number }> {
-    return this.buildMs;
+  buildReport(): ReadonlyArray<{ step: string; ms: number; parent: string | null }> {
+    return this.buildMs.map((b) => ({ ...b, ms: Math.round(b.ms * 10) / 10 }));
   }
 
   create(): void {
@@ -4597,6 +4613,8 @@ export class PaintScene extends Phaser.Scene {
     const h = this.grid.length;
     const w = this.grid[0]?.length ?? 0;
     const CANOPY = 0x2e4d33;
+    // R5-W6b · E7 · the sub-step clocks. Children of "terrain" — see `timed`.
+    let tSub = performance.now();
     for (let r = 0; r < h; r++) {
       for (let c = 0; c < w; c++) {
         const g = glyphAt(this.grid, c, r);
@@ -4653,7 +4671,9 @@ export class PaintScene extends Phaser.Scene {
         }
       }
     }
+    this.mark("· gitter", tSub, "terrain");
 
+    tSub = performance.now();
     // R5-N3 · A4 · THE INK BODY, POURED INSTEAD OF STAMPED (D-42).
     // One gradient per vertical run of ink, so the depth ramp works per PIXEL
     // instead of per 16-px row. The staircase the blind critic measured — four
@@ -4665,7 +4685,9 @@ export class PaintScene extends Phaser.Scene {
       fill.fillGradientStyle(top, top, bot, bot, 1, 1, 1, 1);
       fill.fillRect(col.c * TILE, col.r0 * TILE, TILE, (col.r1 - col.r0 + 1) * TILE);
     }
+    this.mark("· tinten-spalten", tSub, "terrain");
 
+    tSub = performance.now();
     // AA2 run-based dressing: canopy fringe, planks, spikes, pool, pit soil
     const runs = (pred: (c: number, r: number) => boolean, draw: (c0: number, c1: number, r: number) => void): void => {
       for (let r = 0; r < h; r++) {
@@ -4807,9 +4829,12 @@ export class PaintScene extends Phaser.Scene {
       }
     }
 
+    this.mark("· verzierung", tSub, "terrain");
+
     // ── the carved mass (doc 36 §2) — crust + caps + trims + corners + body
     // + fade + sediment, ramps, the slide, and complete platform objects ─────
     if (kit !== null) {
+      tSub = performance.now();
       // R5-W1 · A1 — THE PLAN THE AUDITS SEE IS NOW THE PLAN THAT SHIPS.
       // This call omitted `srcSize`, so `planMass`'s `aspect()` answered 1 for
       // every stem in the browser while every audit and every test fed it the
@@ -4823,6 +4848,8 @@ export class PaintScene extends Phaser.Scene {
         const img = tex?.getSourceImage() as HTMLImageElement | undefined;
         return img === undefined ? null : { w: img.width, h: img.height };
       });
+      this.mark("· planMass", tSub, "terrain");
+      tSub = performance.now();
       // ── PK-R6 · H2 · WHAT THE FURNITURE THROWS (round-2 finding 9) ─────────
       // Read off the SAME plan the renderer is about to place, never re-planned:
       // a shadow computed from a second call would be a shadow of a different
@@ -4844,8 +4871,15 @@ export class PaintScene extends Phaser.Scene {
           }
         }
       }
+      this.mark("· schatten", tSub, "terrain");
+
+      tSub = performance.now();
       for (const piece of plan) this.placeMassPiece(piece);
+      this.mark(`· platzieren (${plan.length})`, tSub, "terrain");
+
+      tSub = performance.now();
       this.buildGrain();
+      this.mark("· koernung", tSub, "terrain");
     }
   }
 
@@ -5537,7 +5571,14 @@ export class PaintScene extends Phaser.Scene {
   private buildProps(): void {
     const h = this.grid.length;
     const w = this.grid[0]?.length ?? 0;
+    let tSub = performance.now();
     const glyphs = new Map(letterGlyphs(this.grid, this.comp?.words).map((g) => [`${g.c},${g.r}`, g.char]));
+    this.mark("· letterGlyphs", tSub, "props");
+    // The letter canvases are built INSIDE the loop below, so their cost is
+    // counted here and SUBTRACTED from the loop line — children that overlap
+    // sum to more than the parent they explain, which is not a breakdown.
+    let letterMs = 0;
+    tSub = performance.now();
     for (let r = 0; r < h; r++) {
       for (let c = 0; c < w; c++) {
         const g = glyphAt(this.grid, c, r);
@@ -5558,7 +5599,10 @@ export class PaintScene extends Phaser.Scene {
           // exactly the event a remount never replays.
           if (!this.sim.letterCells.has(`${c},${r}`)) continue;
           const char = glyphs.get(`${c},${r}`) ?? "A";
-          const img = this.add.image(cx, cy, this.letterTex(char)).setDepth(4);
+          const tLetter = performance.now();
+          const letterKey = this.letterTex(char);
+          letterMs += performance.now() - tLetter;
+          const img = this.add.image(cx, cy, letterKey).setDepth(4);
           img.setDisplaySize(PaintScene.LETTER_PX, PaintScene.LETTER_PX);
           img.setData("baseY", cy); // PB-F3: the rest line its bob returns to
           this.letterImgs.set(`${c},${r}`, img); // count lives in the Sim
@@ -5614,6 +5658,8 @@ export class PaintScene extends Phaser.Scene {
         }
       }
     }
+    this.buildMs.push({ step: "· gitter", ms: performance.now() - tSub - letterMs, parent: "props" });
+    this.buildMs.push({ step: "· letterTex", ms: letterMs, parent: "props" });
     // R5-A2: seed the HUD from the sim, not from zero — a ledger remount
     // starts with the purse the child left with (a fresh mount stays 0).
     this.cfg.callbacks.onLetters(this.sim.lettersGot, this.sim.lettersTotal);

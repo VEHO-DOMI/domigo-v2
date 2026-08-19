@@ -140,17 +140,37 @@ export const mdTable = (rows, baseline = null) => {
 };
 
 /** Die Bauschritt-Tabelle je Phase — die Aufschlüsselung, um die es E6 geht. */
+/**
+ * R5-W6b · E7 · DIE AUFSCHLÜSSELUNG, UND WAS DARIN EIN KIND IST.
+ *
+ * Schritte mit `parent` sitzen INNERHALB ihres Elternschritts. Sie werden
+ * eingerückt gedruckt und in KEINE Summe genommen — sonst steht unter einer
+ * create()-Zahl eine Summe, die größer ist als sie (E6 hat genau diese Tabelle
+ * einmal ausgeliefert und reparieren müssen). Die Tabelle steht quer: Zeilen
+ * sind Schritte, Spalten sind Phasen — bei zwölf Schritten ist die andere
+ * Richtung nicht mehr lesbar.
+ */
 export const mdBuildSteps = (rows) => {
-  const steps = [...new Set(rows.flatMap((r) => (r.build ?? []).map((s) => s.step)))];
-  if (steps.length === 0) return "";
-  const head = `| Phase | ${steps.join(" | ")} | Summe |`;
-  const sep = `|---|${steps.map(() => "---").join("|")}|---|`;
-  const body = rows.map((r) => {
-    const by = new Map((r.build ?? []).map((s) => [s.step, s.ms]));
-    const sum = (r.build ?? []).reduce((a, s) => a + s.ms, 0);
-    return `| ${r.phase} | ${steps.map((s) => num(by.get(s))).join(" | ")} | ${num(sum)} |`;
+  const seen = new Map(); // step -> parent
+  for (const r of rows) for (const s of r.build ?? []) if (!seen.has(s.step)) seen.set(s.step, s.parent ?? null);
+  if (seen.size === 0) return "";
+  // Reihenfolge: Eltern in Auftrittsreihenfolge, jedes Kind direkt unter seinem
+  const parents = [...seen.keys()].filter((k) => seen.get(k) === null);
+  const ordered = [];
+  for (const par of parents) {
+    ordered.push(par);
+    for (const [k, v] of seen) if (v === par) ordered.push(k);
+  }
+  for (const [k, v] of seen) if (v !== null && !parents.includes(v) && !ordered.includes(k)) ordered.push(k);
+  const head = `| Bauschritt (ms) | ${rows.map((r) => r.phase).join(" | ")} |`;
+  const sep = `|---|${rows.map(() => "---").join("|")}|`;
+  const body = ordered.map((step) => {
+    const child = seen.get(step) !== null;
+    const cells = rows.map((r) => num((r.build ?? []).find((s) => s.step === step)?.ms));
+    return `| ${child ? "&nbsp;&nbsp;" : "**"}${step}${child ? "" : "**"} | ${cells.join(" | ")} |`;
   });
-  return [head, sep, ...body].join("\n");
+  const sums = rows.map((r) => num((r.build ?? []).filter((s) => (s.parent ?? null) === null).reduce((a, s) => a + s.ms, 0)));
+  return [head, sep, ...body, `| **Summe (nur Eltern)** | ${sums.join(" | ")} |`].join("\n");
 };
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -480,7 +500,8 @@ for (const phase of PHASES) {
     const xs = takes
       .map((t) => (t.build ?? []).find((s) => s.step === step)?.ms)
       .filter((v) => typeof v === "number" && Number.isFinite(v));
-    return { step, ms: xs.length ? median(xs) : null };
+    const parent = takes.flatMap((t) => t.build ?? []).find((s) => s.step === step)?.parent ?? null;
+    return { step, parent, ms: xs.length ? median(xs) : null };
   });
   const row = {
     phase, bauMs, runs: takes.length, attempts,
