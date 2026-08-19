@@ -450,6 +450,14 @@ describe("R5-A2 · spawnCell + letterLedger (the bonus trip loses nothing)", () 
     const before = sim.lettersGot;
     for (let t = 0; t < 120 && sim.lettersGot === before; t++) {
       for (const ev of sim.step(IDLE_PAD)) if (ev.type === "letterTaken") taken.push(`${ev.c},${ev.r}`);
+      // R5-W6b · B5: die Regel-Seite »Befehle« steht seit D-408 auf dem
+      // Wand-Absatz (12,15) — eine Kachel neben dem Buchstaben (11,14), den
+      // dieser Test einsammelt. Sie wird bei BERÜHRUNG genommen und friert die
+      // Welt mit ihrer Karte ein; ohne diese Zeile stünde der zweite Aufruf vor
+      // einem stehenden Spiel und der Test meldete einen Ledger-Fehler, den es
+      // nicht gibt. Die Karte wird hier abgelegt, genau wie das Kind sie ablegt
+      // (PB-T1: jede Karte kann man weglegen, die Welt kommt zurück).
+      if (sim.overlayOpen) sim.setOverlay(false);
     }
     expect(sim.lettersGot, `a letter near (${c},${r}) should have been magneted in`).toBe(before + 1);
   };

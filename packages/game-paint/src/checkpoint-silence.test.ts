@@ -383,14 +383,22 @@ describe("R5-W5 · B4b · checkpoint-placement kennt zwei Seiten", () => {
       .toMatch(/declares no checkpointSide/);
   });
 
-  it("★ das AUSGELIEFERTE ch01: p1 near · p2 far · p3 near, und kein Verstoß", () => {
+  // R5-W6b · B5 (Kokis Entscheid 2026-08-19): p2 wechselt von „far" auf „near".
+  // WAS DIE ZAHL GEDREHT HAT — P5s Durchlauf vom 18.08. und eine Nachmessung im
+  // Sim: mit dem fernen Anker bankt ein Kind, das NIE hinübergekommen ist, gar
+  // nichts, also greift immer der Phasenanfang. Gemessen an derselben Stelle
+  // (Sturz c37,8): **35,3 Spalten Rückweg vorher, 14,3 nachher**. Die alte
+  // Begründung hier („ein West-Anker würde den Motten-Lauf wiederholen") verglich
+  // gegen einen Zustand, den es nicht gibt: der ferne Anker ist beim Fehlversuch
+  // noch nicht gebankt, also wiederholt HEUTE jeder Fehltritt den ganzen Raum.
+  it("★ das AUSGELIEFERTE ch01: p1 near · p2 near · p3 near, und kein Verstoß", () => {
     const shipped = JSON.parse(fs.readFileSync(
       path.resolve(__dirname, "../../../content/corpus/stories/g1.st.lost-pages/paint/ch01.level.json"),
       "utf8",
     )) as PaintLevel;
     const sideOf = (id: string): string | undefined => shipped.phases.find((p) => p.id === id)?.checkpointSide;
     expect(sideOf("p1"), "Grube 2 Spalten: der Sprung wird am Sprung wiederholt").toBe("near");
-    expect(sideOf("p2"), "Becken 31 Spalten: ein West-Anker würde den Motten-Lauf wiederholen").toBe("far");
+    expect(sideOf("p2"), "Becken 31 Spalten: der Rückweg fällt von 35,3 auf 14,3 Spalten").toBe("near");
     expect(sideOf("p3"), "Tal 10 Spalten").toBe("near");
     expect(checkLevelLaws(parsePaintLevel(shipped)).map((f) => f.law)).not.toContain("checkpoint-placement");
   });
