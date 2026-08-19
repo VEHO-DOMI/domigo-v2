@@ -140,15 +140,15 @@ describe("R5-W5 · B4b · D-161 · Karten garantiert JE PHASE", () => {
   it("VAKUITÄT: die Frager je Phase sind die, die im Level stehen", () => {
     expect(kontaktSpalten("p1")).toEqual([24, 48]);
     expect(kontaktSpalten("p2")).toEqual([11, 26, 41, 56, 68]);
-    expect(kontaktSpalten("p3")).toEqual([47, 52]);
+    expect(kontaktSpalten("p3")).toEqual([23, 47]);
     expect(kontaktSpalten("p4"), "die Wächterin ist kein Berührungs-Frager").toEqual([]);
     expect(kontaktSpalten("p9"), "die Kleckskammer hat gar keine Wesen").toEqual([]);
   });
 
-  it("★ die Tabelle: p1 2 · p2 3 · p3 1 · p4 0 · p9 0", () => {
+  it("★ die Tabelle: p1 2 · p2 3 · p3 2 · p4 0 · p9 0", () => {
     expect(guaranteed(kontaktSpalten("p1"))).toBe(2);
     expect(guaranteed(kontaktSpalten("p2"))).toBe(3);
-    expect(guaranteed(kontaktSpalten("p3"))).toBe(1);
+    expect(guaranteed(kontaktSpalten("p3"))).toBe(2);
     expect(guaranteed(kontaktSpalten("p4"))).toBe(0);
     expect(guaranteed(kontaktSpalten("p9"))).toBe(0);
   });
@@ -165,17 +165,24 @@ describe("R5-W5 · B4b · D-161 · Karten garantiert JE PHASE", () => {
     expect(guaranteed(kontaktSpalten("p2")), "die ganze Phase: drei").toBe(3);
   });
 
-  it("★ NEU: in p3 verschluckt der Träger den Flieger ganz", () => {
-    // Presse (47) und Flieger (52) liegen 80 px auseinander gegen eine Schranke
-    // von 346. Wer die Presse löst, läuft am Flieger vorbei, ohne dass er fragt —
-    // dieselbe Klasse wie D-85, in einer Phase, die niemand nachgemessen hatte.
-    // NICHT reparieren: das Verschieben eines Wesens in p3 bricht das p3-Band und
-    // ist in dieser Welle nicht bestellt (Report + Register).
-    const [presse, flieger] = kontaktSpalten("p3") as [number, number];
-    expect((flieger - presse) * TILE, "Abstand in px").toBe(80);
-    expect((flieger - presse) * TILE).toBeLessThan(needPx);
-    expect(guaranteed([presse, flieger]), "einer von zwei").toBe(1);
-    // …und derselbe Rechner sagt zwei, sobald der Abstand reicht (diskriminiert)
-    expect(guaranteed([presse, presse + Math.ceil(needPx / TILE)])).toBe(2);
+  it("★ REPARIERT (D-300 · Kokis Entscheid R158): in p3 kann der Flieger wieder fragen", () => {
+    // WAR (B4b, 17.08.): Presse (c47) und Flieger (c52) lagen 80 px auseinander
+    // gegen eine Schranke von 346 px — wer die Presse löste, lief am Flieger
+    // vorbei, ohne dass er fragte. Dieselbe Klasse wie D-85, in einer Phase, die
+    // niemand nachgemessen hatte.
+    //
+    // GEBAUT (B5, 19.08.): der Flieger steht jetzt VOR der Presse auf c23.
+    // Warum nicht dahinter: 346 px sind 22 Spalten (TILE 16), also läge die
+    // erste erlaubte Zelle hinter der Presse bei c69 — p3 ist 64 Spalten breit
+    // und endet mit der Tür auf c60. Nach rechts gibt es die Strecke nicht; nach
+    // links schon, und dort trifft das Kind ihn ZUERST, mit leerem Träger.
+    const [flieger, presse] = kontaktSpalten("p3") as [number, number];
+    expect(presse - flieger, "Abstand in Spalten").toBe(24);
+    expect((presse - flieger) * TILE, "Abstand in px").toBeGreaterThan(needPx);
+    expect(guaranteed(kontaktSpalten("p3")), "zwei von zwei").toBe(2);
+    // …und derselbe Rechner sagt weiterhin EINS, sobald der Abstand NICHT reicht:
+    // er misst den Abstand, nicht die Anzahl der Wesen (der Fall, der vor der
+    // Reparatur galt — 21 Spalten sind 336 px und damit unter der Schranke).
+    expect(guaranteed([flieger, flieger + Math.floor(needPx / TILE)]), "zu nah: einer von zwei").toBe(1);
   });
 });
