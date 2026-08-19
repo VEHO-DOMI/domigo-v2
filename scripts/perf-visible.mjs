@@ -99,10 +99,21 @@ export const controlVerdict = (controlFps, floor = CONTROL_FLOOR_FPS) => {
   };
 };
 
-/** Welche Zahlen einer Phase fehlen (D-118: eine Lücke sieht aus wie eine Null). */
+/**
+ * Welche Zahlen einer Phase fehlen (D-118/D-327: eine Lücke sieht aus wie eine Null).
+ *
+ * Zwei Quellen, absichtlich beide: die Sonde selbst meldet seit E7 `gaps` MIT
+ * GRUND (`perf.ts#firstFrame`), und hier wird zusätzlich nachgesehen, ob eine
+ * der vier Spalten leer ist. Meldet die Sonde nichts, weil sie zu alt ist oder
+ * gar nicht antwortete, fällt das Tor trotzdem nicht aus.
+ */
 export const gapsIn = (row) => {
   const wanted = ["loadMs", "createMs", "firstGpuMs", "settledGpuMs"];
-  return wanted.filter((k) => row?.[k] === null || row?.[k] === undefined);
+  const own = wanted.filter((k) => row?.[k] === null || row?.[k] === undefined);
+  const reported = Array.isArray(row?.ffGaps) ? row.ffGaps : [];
+  // die Meldung der Sonde gewinnt, wo sie dasselbe Feld nennt — sie kennt den Grund
+  const named = new Set(reported.map((g) => String(g).split(":")[0].trim()));
+  return [...reported, ...own.filter((k) => !named.has(k))];
 };
 
 const num = (v, digits = 1) =>
@@ -140,17 +151,51 @@ export const mdTable = (rows, baseline = null) => {
 };
 
 /** Die Bauschritt-Tabelle je Phase — die Aufschlüsselung, um die es E6 geht. */
+/**
+ * R5-W6b · E7 · DIE AUFSCHLÜSSELUNG, UND WAS DARIN EIN KIND IST.
+ *
+ * Schritte mit `parent` sitzen INNERHALB ihres Elternschritts. Sie werden
+ * eingerückt gedruckt und in KEINE Summe genommen — sonst steht unter einer
+ * create()-Zahl eine Summe, die größer ist als sie (E6 hat genau diese Tabelle
+ * einmal ausgeliefert und reparieren müssen). Die Tabelle steht quer: Zeilen
+ * sind Schritte, Spalten sind Phasen — bei zwölf Schritten ist die andere
+ * Richtung nicht mehr lesbar.
+ */
 export const mdBuildSteps = (rows) => {
-  const steps = [...new Set(rows.flatMap((r) => (r.build ?? []).map((s) => s.step)))];
-  if (steps.length === 0) return "";
-  const head = `| Phase | ${steps.join(" | ")} | Summe |`;
-  const sep = `|---|${steps.map(() => "---").join("|")}|---|`;
-  const body = rows.map((r) => {
-    const by = new Map((r.build ?? []).map((s) => [s.step, s.ms]));
-    const sum = (r.build ?? []).reduce((a, s) => a + s.ms, 0);
-    return `| ${r.phase} | ${steps.map((s) => num(by.get(s))).join(" | ")} | ${num(sum)} |`;
+  // Der Schlüssel ist ELTERN + NAME, nicht der Name allein. `terrain` und
+  // `props` haben beide ein Kind namens »· gitter«; beim ersten Lauf dieser
+  // Tabelle hat das eine das andere geschluckt und die props-Zeile fehlte
+  // stillschweigend. Eine Aufschlüsselung, in der eine Zeile verschwinden kann,
+  // ohne dass es auffällt, ist genau die Sorte Werkzeug, die man nicht merkt.
+  const key = (s) => `${s.parent ?? ""}\u0000${s.step}`;
+  const seen = new Map(); // key -> {step, parent}
+  for (const r of rows) for (const s of r.build ?? []) if (!seen.has(key(s))) seen.set(key(s), { step: s.step, parent: s.parent ?? null });
+  if (seen.size === 0) return "";
+  // Reihenfolge: Eltern in Auftrittsreihenfolge, jedes Kind direkt unter seinem
+  const parents = [...seen.values()].filter((v) => v.parent === null).map((v) => v.step);
+  const ordered = [];
+  for (const par of parents) {
+    ordered.push({ step: par, parent: null });
+    for (const v of seen.values()) if (v.parent === par) ordered.push(v);
+  }
+  // Kinder, deren Eltern KEIN gemessener Schritt ist (Quersummen über mehrere
+  // Schritte), bekommen eine eigene Überschrift — sonst hängen sie optisch unter
+  // dem letzten Schritt der Tabelle und werden als dessen Kinder gelesen.
+  const waisen = [...seen.values()].filter((v) => v.parent !== null && !parents.includes(v.parent));
+  for (const gruppe of new Set(waisen.map((v) => v.parent))) {
+    ordered.push({ step: gruppe, parent: null, ueberschrift: true });
+    for (const v of waisen) if (v.parent === gruppe) ordered.push(v);
+  }
+  const head = `| Bauschritt (ms) | ${rows.map((r) => r.phase).join(" | ")} |`;
+  const sep = `|---|${rows.map(() => "---").join("|")}|`;
+  const cellOf = (r, v) => num((r.build ?? []).find((s) => s.step === v.step && (s.parent ?? null) === v.parent)?.ms);
+  const body = ordered.map((v) => {
+    if (v.ueberschrift === true) return `| _${v.step}_ | ${rows.map(() => "").join(" | ")} |`;
+    const child = v.parent !== null;
+    return `| ${child ? "&nbsp;&nbsp;" : "**"}${v.step}${child ? "" : "**"} | ${rows.map((r) => cellOf(r, v)).join(" | ")} |`;
   });
-  return [head, sep, ...body].join("\n");
+  const sums = rows.map((r) => num((r.build ?? []).filter((s) => (s.parent ?? null) === null).reduce((a, s) => a + s.ms, 0)));
+  return [head, sep, ...body, `| **Summe (nur Eltern)** | ${sums.join(" | ")} |`].join("\n");
 };
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -182,6 +227,24 @@ if (process.argv.includes("--selftest")) {
     "eine fehlende create()-Zahl wird als Lücke erkannt");
   say(gapsIn({ loadMs: 1, createMs: 2, firstGpuMs: 3, settledGpuMs: 4 }).length === 0,
     "eine vollständige Messung meldet keine Lücke");
+  // D-327: die Sonde meldet die Lücke jetzt MIT GRUND, und der Grund muss
+  // durchkommen — eine Lücke ohne Grund zwingt die nächste Sitzung zum Raten.
+  const mitGrund = gapsIn({
+    loadMs: 1, createMs: null, firstGpuMs: 3, settledGpuMs: 4,
+    ffGaps: ["createMs: create() has not run under this probe (D-327)"],
+  });
+  say(mitGrund.length === 1 && /D-327/.test(mitGrund[0]),
+    "die Lückenmeldung der Sonde kommt MIT Grund durch und wird nicht verdoppelt");
+  say(gapsIn({ loadMs: 1, createMs: null, firstGpuMs: 3, settledGpuMs: 4, ffGaps: [] }).length === 1,
+    "meldet die Sonde nichts, findet die eigene Prüfung die Lücke trotzdem (kein Ausfall des Tors)");
+  // TAMPER gegen den MESSWERT: eine vollständige Zeile wird um EINE Zahl
+  // beraubt; das rote Licht MUSS danach angehen. Dass der Tamper sass, wird
+  // erzwungen — eine Manipulation, die nichts verändert hat, beweist nichts.
+  const voll = { loadMs: 1, createMs: 2, firstGpuMs: 3, settledGpuMs: 4 };
+  const beraubt = { ...voll, settledGpuMs: null };
+  say(voll.settledGpuMs !== beraubt.settledGpuMs, "TAMPER sass: eine Zahl ist wirklich verschwunden");
+  say(gapsIn(voll).length === 0 && gapsIn(beraubt).length === 1,
+    "TAMPER: dieselbe Zeile minus EINE Zahl ⇒ Lücke erkannt (das rote Licht ist erreichbar)");
 
   // 3 · Die Tabelle muss das Tor `check-perf-table.mjs` bestehen — und eine
   //     LEERE Tabelle muss es NICHT bestehen (sonst ist die Pflicht zahnlos).
@@ -233,6 +296,10 @@ const PHASES = String(arg("phases", ALL_PHASES.join(","))).split(",").filter(Boo
 const WARM_OFF = arg("warm", null) === "0";
 const RUNS = Number(arg("runs", "1"));
 const SETTLE = Number(arg("settle", "900"));
+// Frist je CDP-Anfrage — siehe `client` weiter unten (Exit-13-Befund, S2).
+const CDP_TIMEOUT_DEFAULT_MS = 90_000;
+const CDP_TIMEOUT = Number(arg("cdp-timeout", String(CDP_TIMEOUT_DEFAULT_MS)));
+const SCENE_DUMP = arg("scene-dump", null);
 const JSON_OUT = arg("json", null);
 const BASELINE = arg("baseline", null);
 const FLOOR = Number(arg("floor", String(CONTROL_FLOOR_FPS)));
@@ -321,22 +388,50 @@ const endpoint = async () => {
   throw new Error(`Chrome hat in 20 s keinen DevToolsActivePort geschrieben (Profil ${profile})`);
 };
 
-const client = (ws) => {
+// ── R5-W6b · E7 · WARUM `--runs 3` MIT EXIT 13 STEHENBLIEB (S2-Befund) ───────
+// Jede CDP-Anfrage landete in einer Map und wartete OHNE FRIST; ein Tod der
+// Verbindung oder des Ziels weckte niemanden. Kommt eine Antwort nie, wird das
+// Versprechen nie eingelöst, Node leert die Ereignisschleife und beendet mit
+// **Exit 13** (»unerledigtes top-level await«) — ohne ein Wort. Genau das
+// passiert, wenn `--runs 3` fünfzehn statt fünf Seiten öffnet und eine davon
+// stirbt. Ein Werkzeug, das schweigend endet, ist schlimmer als eins, das
+// abbricht: sein Schweigen sieht aus wie Geduld.
+//
+// Drei Dinge stehen jetzt dagegen, und jedes nennt beim Abbruch die Methode:
+//   1. eine Frist je Anfrage (`--cdp-timeout`, Standard 90 s),
+//   2. alle offenen Anfragen werden abgewiesen, wenn die Verbindung schliesst,
+//   3. dasselbe, wenn der Browser aussteigt.
+const client = (ws, timeoutMs = CDP_TIMEOUT_DEFAULT_MS) => {
   let id = 0;
   const waiting = new Map();
+  const failAll = (why) => {
+    for (const [, w] of waiting) { clearTimeout(w.timer); w.reject(new Error(why)); }
+    waiting.clear();
+  };
   ws.addEventListener("message", (e) => {
     const m = JSON.parse(e.data);
     if (m.id !== undefined && waiting.has(m.id)) {
-      const { resolve, reject } = waiting.get(m.id);
+      const { resolve, reject, timer } = waiting.get(m.id);
+      clearTimeout(timer);
       waiting.delete(m.id);
       m.error ? reject(new Error(m.error.message)) : resolve(m.result);
     }
   });
-  return (method, params = {}, sessionId) => new Promise((resolve, reject) => {
+  ws.addEventListener("close", () => failAll("die CDP-Verbindung wurde geschlossen, während Anfragen offen waren"));
+  ws.addEventListener("error", () => failAll("die CDP-Verbindung meldete einen Fehler, während Anfragen offen waren"));
+  const send = (method, params = {}, sessionId) => new Promise((resolve, reject) => {
     id += 1;
-    waiting.set(id, { resolve, reject });
-    ws.send(JSON.stringify({ id, method, params, sessionId }));
+    const mine = id;
+    const timer = setTimeout(() => {
+      waiting.delete(mine);
+      reject(new Error(`CDP-Zeitüberschreitung nach ${timeoutMs} ms: ${method}${sessionId ? ` (Sitzung ${sessionId})` : ""}`));
+    }, timeoutMs);
+    timer.unref?.(); // eine Frist darf den Prozess nicht am Leben halten
+    waiting.set(mine, { resolve, reject, timer });
+    ws.send(JSON.stringify({ id: mine, method, params, sessionId }));
   });
+  send.failAll = failAll;
+  return send;
 };
 
 /** Echte Bilder über eine Wanduhr-Sekunde zählen. */
@@ -347,7 +442,10 @@ const FPS_PROBE = `new Promise((res) => { let n = 0; const t0 = performance.now(
 
 const ws = new WebSocket(await endpoint());
 await new Promise((r) => ws.addEventListener("open", r, { once: true }));
-const send = client(ws);
+const send = client(ws, CDP_TIMEOUT);
+// Stirbt der Browser mitten in einem Lauf, wecken wir die Wartenden selbst —
+// sonst wartet der Prozess auf eine Antwort, die niemand mehr geben kann.
+chrome.on("exit", () => send.failAll("Chrome ist ausgestiegen, während CDP-Anfragen offen waren"));
 
 const withPage = async (fn) => {
   const { targetId } = await send("Target.createTarget", { url: "about:blank" });
@@ -422,9 +520,40 @@ const measureOnce = async (phase) => withPage(async ({ page, evalIn }) => {
       loadMs: r.loadMs, createMs: r.createMs, filesQueued: r.filesQueued,
       firstGpuMs: r.firstGpuMs, settledGpuMs: r.settledGpuMs,
       firstCpuMs: r.firstCpuMs, firstDrawCalls: r.firstDrawCalls,
-      build: r.build, warmed: r.warmed,
+      build: r.build, warmed: r.warmed, gaps: r.gaps ?? null,
     };
   })()`, true);
+
+  // ── R5-W6b · E7 · DER ANZEIGELISTEN-ABZUG (Bild-Identität) ────────────────
+  // Ein Bildvergleich hängt an der Animationsuhr; diese Liste nicht. Sie nennt
+  // JEDES Objekt, das nach create() auf der Bühne steht, in der Reihenfolge, in
+  // der es angelegt wurde — und bei gleicher Tiefe IST diese Reihenfolge, was
+  // oben liegt. Sind zwei Abzüge gleich, ist das Bild per Konstruktion gleich.
+  const dump = SCENE_DUMP === null ? null : await evalIn(`(() => {
+    const g = window.__domigoPaintPerf.game;
+    const sc = g.scene.getScene("paint");
+    if (!sc) return null;
+    const r3 = (v) => (typeof v === "number" ? Math.round(v * 1000) / 1000 : v);
+    return JSON.stringify(sc.children.list.map((o, i) => ({
+      i, type: o.type,
+      x: r3(o.x), y: r3(o.y),
+      w: r3(o.displayWidth), h: r3(o.displayHeight),
+      ox: r3(o.originX), oy: r3(o.originY),
+      depth: r3(o.depth), alpha: r3(o.alpha), rot: r3(o.rotation),
+      visible: o.visible, blend: o.blendMode,
+      // \`texture.key\` einer TileSprite ist eine je Lauf NEU erfundene UUID (Phaser
+      // legt für das Füllmuster eine eigene Leinwand-Textur an) — als Identität
+      // also wertlos. \`displayTexture\` ist das Blatt, das wirklich gemeint ist.
+      tex: o.displayTexture?.key ?? o.texture?.key ?? null,
+      frame: o.displayFrame?.name ?? o.frame?.name ?? null,
+      texRaw: o.texture?.key ?? null,
+      tint: o.tintTopLeft ?? null,
+      tsx: r3(o.tileScaleX), tsy: r3(o.tileScaleY),
+      tpx: r3(o.tilePositionX), tpy: r3(o.tilePositionY),
+      cmds: o.commandBuffer ? o.commandBuffer.length : null,
+      sfx: r3(o.scrollFactorX), sfy: r3(o.scrollFactorY),
+    })));
+  })()`).catch(() => null);
 
   await sleep(SETTLE); // das Bildfenster füllen lassen
   const fpsProbe = await evalIn(FPS_PROBE, true);
@@ -437,6 +566,8 @@ const measureOnce = async (phase) => withPage(async ({ page, evalIn }) => {
     firstGpuMs: ff.firstGpuMs, settledGpuMs: ff.settledGpuMs,
     firstCpuMs: ff.firstCpuMs, firstDrawCalls: ff.firstDrawCalls,
     build: Array.isArray(ff.build) ? ff.build : null,
+    ffGaps: Array.isArray(ff.gaps) ? ff.gaps : null,
+    dump: typeof dump === "string" ? JSON.parse(dump) : null,
     fps: (fpsProbe.frames / fpsProbe.ms) * 1000,
     hidden: fpsProbe.hidden, visibility: fpsProbe.vis,
     cpuP50: rep?.frame?.cpu?.p50 ?? null,
@@ -475,12 +606,16 @@ for (const phase of PHASES) {
   // sie aufschlüsseln soll. (Beim ersten Lauf dieses Skripts war p1 genau so:
   // 425 ms Median über 749 ms Schritt-Summe.) Eine Aufschlüsselung, die eine
   // andere Messung aufschlüsselt als die daneben, ist keine.
-  const stepNames = [...new Set(takes.flatMap((t) => (t.build ?? []).map((s) => s.step)))];
-  const build = stepNames.map((step) => {
+  const stepKeys = new Map();
+  for (const t of takes) for (const s of t.build ?? []) {
+    const k = `${s.parent ?? ""}\u0000${s.step}`;
+    if (!stepKeys.has(k)) stepKeys.set(k, { step: s.step, parent: s.parent ?? null });
+  }
+  const build = [...stepKeys.values()].map(({ step, parent }) => {
     const xs = takes
-      .map((t) => (t.build ?? []).find((s) => s.step === step)?.ms)
+      .map((t) => (t.build ?? []).find((s) => s.step === step && (s.parent ?? null) === parent)?.ms)
       .filter((v) => typeof v === "number" && Number.isFinite(v));
-    return { step, ms: xs.length ? median(xs) : null };
+    return { step, parent, ms: xs.length ? median(xs) : null };
   });
   const row = {
     phase, bauMs, runs: takes.length, attempts,
@@ -492,8 +627,14 @@ for (const phase of PHASES) {
     build: build.length > 0 ? build : null,
     buildFirstRun: takes[0].build,
     hidden: takes[0].hidden, visibility: takes[0].visibility,
+    ffGaps: takes[0].ffGaps,
     gaps: gapsIn(takes[0]),
   };
+  if (SCENE_DUMP !== null && takes[0].dump !== null && takes[0].dump !== undefined) {
+    const out = SCENE_DUMP.replace(/(\.json)?$/, `.${phase}.json`);
+    writeFileSync(out, JSON.stringify(takes[0].dump, null, 1));
+    console.log(`  ${phase}: Anzeigeliste → ${out} (${takes[0].dump.length} Objekte)`);
+  }
   rows.push(row);
   console.log(`  ${phase}: bau ${num(row.bauMs)} + aufbau ${num(row.createMs)} ms · laden ${num(row.loadMs)} ms · ${num(row.fps)} fps${row.gaps.length ? `  ⚠ Lücken: ${row.gaps.join(", ")}` : ""}`);
 }
@@ -509,7 +650,7 @@ if (steps) {
 console.log(`\nGemessen mit: scripts/perf-visible.mjs · eigener Chrome --headless=new · `
   + `sichtbarer Tab (visibilityState=${control.vis}, hidden=${control.hidden}) · Kontrollseite ${verdict.fps.toFixed(1)} fps · Port ${PORT}`);
 for (const r of rows) {
-  if (r.gaps?.length) console.log(`⚠ ${r.phase}: ${r.gaps.join(", ")} blieb auch nach ${GAP_ATTEMPTS} Anläufen leer (D-118) — »—« ist die ehrliche Zelle.`);
+  if (r.gaps?.length) console.log(`⚠ ${r.phase}: blieb auch nach ${GAP_ATTEMPTS} Anläufen unvollständig (D-118/D-327) — »—« ist die ehrliche Zelle:\n    · ${r.gaps.join("\n    · ")}`);
   if (r.error) console.log(`⚠ ${r.phase}: ${r.error}`);
 }
 
@@ -539,4 +680,16 @@ if (JSON_OUT) {
 
 ws.close();
 chrome.kill();
-process.exit(rows.some((r) => r.error) ? 1 : 0);
+
+// ── R5-W6b · E7 · D-327 · EINE LÜCKE IST EIN ROTES LICHT, KEINE FUSSNOTE ─────
+// Bis hierher endete dieses Skript mit 0, solange nur keine Phase ganz gefehlt
+// hat — eine Tabelle mit drei »—« sah für jeden Aufrufer aus wie ein Erfolg.
+// Der Auftraggeber dieser Tabelle ist aber ein Budget-Vergleich: eine fehlende
+// Zahl ist dort kein kleineres Ergebnis, sondern gar keins.
+const unvollstaendig = rows.filter((r) => r.gaps?.length);
+if (unvollstaendig.length > 0) {
+  console.error(`\n✗ ${unvollstaendig.length} von ${rows.length} Phasen sind unvollständig `
+    + `(${unvollstaendig.map((r) => r.phase).join(", ")}). Die Tabelle oben steht, aber sie ist `
+    + `KEINE erfüllte Perf-Pflicht: Gründe je Phase stehen darüber.`);
+}
+process.exit(rows.some((r) => r.error) || unvollstaendig.length > 0 ? 1 : 0);

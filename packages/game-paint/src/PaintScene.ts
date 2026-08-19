@@ -22,6 +22,7 @@ import { WARM_MPX_PER_FRAME } from "./warm.ts";
 import { PatternLedger } from "./tilePatterns.ts";
 import { type LayerPiece, coverFit, planLayers } from "./layers.ts";
 import { AIR_DEPTH, LIFE_PARALLAX, type AirPiece, planBandShade, planHaze, planLife, planMotes, planShafts, planSources, shaftQuads, vignetteBands } from "./air.ts";
+import { type Cell, cellsOf, indexTerrain, mergeRowMajor, runsFrom } from "./terrain.ts";
 import { NEAR_PLANE_KINDS, CRUST_MARK_DEPTH, MASS_MARK_DEPTH, type MassPiece, type SurfaceMark, claimedPlatformCells, crustGrain, hash01, ledgeGrain, massGrain, planMass, planPlatformShadows, tileAnchorFor, tileScaleFor } from "./mass.ts";
 import { BACKING_REACH, BACKING_STEPS, LETTER_AMBER, LETTER_GOLD, LETTER_STYLE, letterBackingFor, letterGlowGain, letterGlyphs, letterRimFor } from "./letters.ts";
 import { type PhraseSlot, bonusPhrase } from "./cards/ceremony.ts";
@@ -1208,16 +1209,32 @@ export class PaintScene extends Phaser.Scene {
    * milliseconds — and the payoff is that the next session reads the answer
    * instead of hunting for it.
    */
-  private readonly buildMs: Array<{ step: string; ms: number }> = [];
-  private timed(step: string, run: () => void): void {
+  private readonly buildMs: Array<{ step: string; ms: number; parent: string | null }> = [];
+  /**
+   * R5-W6b · E7 · A BREAKDOWN MUST NEVER BE ADDED TO ITS OWN PARENT.
+   *
+   * `parent` names the step a measurement sits INSIDE. Without it a caller has
+   * no way to tell a top-level block from a slice of one, so it sums both and
+   * prints a total larger than create() ever was — E6 shipped exactly that
+   * table once (p1: 425 ms »aufbau« over 749 ms of steps) and had to repair it.
+   * Children are printed indented and are excluded from every sum.
+   */
+  private timed(step: string, run: () => void, parent: string | null = null): void {
     const t0 = performance.now();
     run();
-    this.buildMs.push({ step, ms: Math.round((performance.now() - t0) * 10) / 10 });
+    this.buildMs.push({ step, ms: Math.round((performance.now() - t0) * 10) / 10, parent });
+  }
+
+  /** Record the time since `t0` as a child line. Used where wrapping a block in
+   *  a closure would move a `const` out of the scope that reads it — a timer
+   *  must never be the reason code is restructured. */
+  private mark(step: string, t0: number, parent: string): void {
+    this.buildMs.push({ step, ms: performance.now() - t0, parent });
   }
 
   /** R5-W3 · E5: the per-step build cost, for the perf door. */
-  buildReport(): ReadonlyArray<{ step: string; ms: number }> {
-    return this.buildMs;
+  buildReport(): ReadonlyArray<{ step: string; ms: number; parent: string | null }> {
+    return this.buildMs.map((b) => ({ ...b, ms: Math.round(b.ms * 10) / 10 }));
   }
 
   create(): void {
@@ -1310,6 +1327,19 @@ export class PaintScene extends Phaser.Scene {
     this.cameras.main.centerOn(fromSubs(this.player.x), fromSubs(this.player.y) - LOGICAL_H / 4);
     this.scale.refresh(); // the P-48 lesson: assert geometry at scene entry
     this.timed("finishWarming", () => this.finishWarming());
+    // ── R5-W6b · E7 · DIE QUERSUMME, DIE KEINEM SCHRITT GEHÖRT ───────────────
+    // `tiled()` wird aus DREI Schritten gerufen — `backdrop`, `air` und
+    // `terrain` —, diese Zahlen sind also KEIN Kind eines einzelnen Schrittes,
+    // sondern eine Summe quer durch create(). Sie stehen unter einem eigenen
+    // Eltern-Namen, damit niemand sie unter `terrain` addiert; ihre Zeit steckt
+    // bereits in den drei Schritten oben. Sie beantworten genau eine Frage:
+    // wie viel davon ist Phasers TileSprite-Konstruktor (Leinwand in
+    // Zweierpotenz-Größe plus Fahrt zur Grafikkarte, je Sprite) und wie viel
+    // ist unser eigenes Muster-Tauschen aus E5s Ledger.
+    const quer = "quer durch create() (steckt schon oben drin)";
+    this.buildMs.push({ step: "· Phaser-TileSprite-Konstruktor", ms: this.ctorMs, parent: quer });
+    this.buildMs.push({ step: "· unser Muster-Tausch (E5-Ledger)", ms: this.swapMs, parent: quer });
+    this.buildMs.push({ step: "· Kachel-Sprites — STÜCK, nicht ms", ms: this.tileCount, parent: quer });
     // R5-W6 · S2 · DIE BANK KOMMT NACH create(), NIE IM preload.
     //
     // Bewusst hier und bewusst NICHT `timed`: der Aufruf gibt sofort zurück und
@@ -4525,7 +4555,11 @@ export class PaintScene extends Phaser.Scene {
    * would delete a texture its siblings are still drawing with.
    */
   private tiled(x: number, y: number, w: number, h: number, key: string): Phaser.GameObjects.TileSprite {
+    const tCtor = performance.now();
     const t = this.add.tileSprite(x, y, w, h, key);
+    this.ctorMs += performance.now() - tCtor;
+    this.tileCount += 1;
+    const tSwap = performance.now();
     const raw = t as unknown as { fillPattern: object | null; dirty: boolean; preDestroy: () => void };
     const own = raw.fillPattern;
     if (own !== null && own !== undefined) {
@@ -4542,8 +4576,14 @@ export class PaintScene extends Phaser.Scene {
       this.fillPattern = null; // the scene owns it; deleteTexture(null) is a no-op
       inherited.call(this);
     };
+    this.swapMs += performance.now() - tSwap;
     return t;
   }
+
+  /** R5-W6b · E7 · Messfelder: Phasers TileSprite-Konstruktor gegen unser Tauschen. */
+  private ctorMs = 0;
+  private swapMs = 0;
+  private tileCount = 0;
 
   /** Give back every pattern and baked texture the scene kept. Once, at SHUTDOWN. */
   private releaseTilePatterns(): void {
@@ -4555,10 +4595,15 @@ export class PaintScene extends Phaser.Scene {
   }
 
   /** Place one planned mass piece (doc 36 §2). */
+  /** R5-W6b · E7 · Messfelder: was `placeMassPiece` in Kacheln bzw. Bilder steckt. */
+  private tileMs = 0;
+  private imgMs = 0;
+
   private placeMassPiece(p: MassPiece): void {
     if (p.stem === null) return; // fallbackFill — the graphics pass drew it
     const key = `pb-${p.stem}`;
     if (!this.textures.exists(key)) return; // only-present law
+    const tPiece = performance.now();
     // PK-R6 · H2 (round-2 finding 7): the nearest standable plane is laid in its
     // own light — see composition.nearPlaneTint for the measurements and for why
     // the push is scaled by the room's key rather than fixed. Combined with
@@ -4598,12 +4643,14 @@ export class PaintScene extends Phaser.Scene {
       // …and lay this segment in its OWN light (the no-metronome law): a MULTIPLY
       // by a near-white, so the course changes value without changing material
       if (p.tint !== undefined && p.tint !== 0xffffff) t.setTint(p.tint);
+      this.tileMs += performance.now() - tPiece;
       return;
     }
     const img = this.add.image(p.x, p.y, key).setOrigin(p.originX ?? 0, p.originY ?? 0).setDepth(p.depth);
     img.setDisplaySize(p.w, p.h);
     if (p.tint !== undefined && p.tint !== 0xffffff) img.setTint(p.tint);
     if (p.rot !== undefined) img.setRotation(p.rot);
+    this.imgMs += performance.now() - tPiece;
   }
 
   private buildTerrain(): void {
@@ -4612,13 +4659,27 @@ export class PaintScene extends Phaser.Scene {
     const h = this.grid.length;
     const w = this.grid[0]?.length ?? 0;
     const CANOPY = 0x2e4d33;
-    for (let r = 0; r < h; r++) {
-      for (let c = 0; c < w; c++) {
+    // R5-W6b · E7 · the sub-step clocks. Children of "terrain" — see `timed`.
+    let tSub = performance.now();
+    // ── R5-W6b · E7 · D-323 · ONE PASS OVER THE GRID, NOT EIGHT ──────────────
+    // This loop used to visit every cell of the grid and throw almost all of
+    // them away, and the seven dressing passes below each did the same again.
+    // `indexTerrain` sorts every cell under its own glyph in ONE pass; each
+    // step then asks only for the cells it can act on. `mergeRowMajor` keeps
+    // them row by row, left to right — the order the old double loop had, and
+    // therefore the order in which equal-depth objects overlap. Change that
+    // order and you change the picture, which is why terrain.test.ts pins it.
+    const idx = indexTerrain(this.grid);
+    const acted: readonly Cell[] = kit !== null
+      ? mergeRowMajor(cellsOf(idx, "="), cellsOf(idx, "^"))
+      : mergeRowMajor(idx.solid, idx.slope, cellsOf(idx, "="), cellsOf(idx, "^"));
+    for (const { c, r } of acted) {
+      {
         const g = glyphAt(this.grid, c, r);
         // with a kit present the carved mass owns every solid and every slope;
         // the graphics pass keeps only the hazard/one-way fallbacks below
         const isCanopy = kit === null && isSolid(g) && r <= 1; // the closed top (W0-F7)
-        if (kit !== null && (isSolid(g) || isSlope(g))) continue;
+        if (kit !== null && (isSolid(g) || isSlope(g))) continue; // invariant: `acted` holds none
         if (isCanopy) {
           fill.fillStyle(CANOPY);
           fill.fillRect(c * TILE, r * TILE, TILE, TILE);
@@ -4668,7 +4729,9 @@ export class PaintScene extends Phaser.Scene {
         }
       }
     }
+    this.mark("· gitter", tSub, "terrain");
 
+    tSub = performance.now();
     // R5-N3 · A4 · THE INK BODY, POURED INSTEAD OF STAMPED (D-42).
     // One gradient per vertical run of ink, so the depth ramp works per PIXEL
     // instead of per 16-px row. The staircase the blind critic measured — four
@@ -4680,33 +4743,42 @@ export class PaintScene extends Phaser.Scene {
       fill.fillGradientStyle(top, top, bot, bot, 1, 1, 1, 1);
       fill.fillRect(col.c * TILE, col.r0 * TILE, TILE, (col.r1 - col.r0 + 1) * TILE);
     }
+    this.mark("· tinten-spalten", tSub, "terrain");
 
-    // AA2 run-based dressing: canopy fringe, planks, spikes, pool, pit soil
-    const runs = (pred: (c: number, r: number) => boolean, draw: (c0: number, c1: number, r: number) => void): void => {
-      for (let r = 0; r < h; r++) {
-        let c = 0;
-        while (c < w) {
-          if (!pred(c, r)) { c++; continue; }
-          let c1 = c;
-          while (c1 + 1 < w && pred(c1 + 1, r)) c1++;
-          draw(c, c1, r);
-          c = c1 + 1;
-        }
-      }
+    tSub = performance.now();
+    // AA2 run-based dressing: canopy fringe, planks, spikes, pool, pit soil.
+    // R5-W6b · E7: the candidates come from the index instead of from a fresh
+    // sweep of the whole grid. `runsFrom` builds the SAME maximal chains — a
+    // chain breaks the moment the next candidate is not the next column of the
+    // same row, which is exactly what the old sweep did when `pred` was false
+    // in the gap. Proven cell for cell against the old code in terrain.test.ts,
+    // over the five real rooms AND made-up grids for the glyphs ch01 lacks.
+    const runs = (
+      candidates: readonly Cell[],
+      pred: (c: number, r: number) => boolean,
+      draw: (c0: number, c1: number, r: number) => void,
+    ): void => {
+      for (const run of runsFrom(candidates, pred)) draw(run.c0, run.c1, run.r);
     };
+    const solidFromRow = (min: number): readonly Cell[] => idx.solid.filter((x) => x.r >= min);
     const srcH = (stem: string): number => (this.textures.get(`pb-${stem}`).getSourceImage() as HTMLImageElement).height;
+    let tDeco = performance.now();
+    const deco = (name: string): void => { this.buildMs.push({ step: `· · ${name}`, ms: performance.now() - tDeco, parent: "terrain" }); tDeco = performance.now(); };
     if (this.textures.exists("pb-canopy_fringe_loop")) {
       const dh = 26;
       const ts = dh / srcH("canopy_fringe_loop");
       runs(
+        idx.solid.filter((x) => x.r <= 1),
         (c, r) => r <= 1 && isSolid(glyphAt(this.grid, c, r)) && !isSolid(glyphAt(this.grid, c, r + 1)),
         (c0, c1, r) => { this.tiled(c0 * TILE, (r + 1) * TILE - 4, (c1 - c0 + 1) * TILE, dh, "pb-canopy_fringe_loop").setOrigin(0, 0).setDepth(2).setTileScale(ts); },
       );
     }
+    deco("krone");
     if (this.textures.exists("pb-plank_loop")) {
       const dh = 9;
       const ts = dh / srcH("plank_loop");
       runs(
+        cellsOf(idx, "="),
         (c, r) => glyphAt(this.grid, c, r) === "=",
         (c0, c1, r) => {
           this.tiled(c0 * TILE, r * TILE - 2, (c1 - c0 + 1) * TILE, dh, "pb-plank_loop").setOrigin(0, 0).setDepth(2).setTileScale(ts);
@@ -4715,14 +4787,17 @@ export class PaintScene extends Phaser.Scene {
         },
       );
     }
+    deco("planke");
     if (this.textures.exists("pb-spikes_nibs_loop")) {
       const dh = 15;
       const ts = dh / srcH("spikes_nibs_loop");
       runs(
+        cellsOf(idx, "^"),
         (c, r) => glyphAt(this.grid, c, r) === "^",
         (c0, c1, r) => { this.tiled(c0 * TILE, (r + 1) * TILE - dh, (c1 - c0 + 1) * TILE, dh, "pb-spikes_nibs_loop").setOrigin(0, 0).setDepth(3).setTileScale(ts); },
       );
     }
+    deco("stachel");
     // R5-W1 · A2 · THE INK MOVES, ALWAYS. The surface strip was a STATIC
     // tileSprite: B1's critic measured it moving „um kein einziges Pixel" over
     // 45 ticks, which is what made a lake read as a painted rectangle. Its
@@ -4733,6 +4808,7 @@ export class PaintScene extends Phaser.Scene {
       const dh = 16;
       const ts = dh / srcH("pool_ink_loop");
       runs(
+        cellsOf(idx, "w"),
         (c, r) => glyphAt(this.grid, c, r) === "w" && glyphAt(this.grid, c, r - 1) !== "w",
         (c0, c1, r) => {
           const t = this.tiled(c0 * TILE, r * TILE, (c1 - c0 + 1) * TILE, dh, "pb-pool_ink_loop")
@@ -4750,11 +4826,13 @@ export class PaintScene extends Phaser.Scene {
       this.inkCrownG = this.add.graphics().setDepth(3.1);
       this.drawInkCrown();
     }
+    deco("tinte");
     // the interior fill + the surface strips are the RETIRED model — with a
     // kit present the carved mass draws body/fade/sediment and crust instead
     if (kit === null && this.textures.exists("pb-pit_inner_tile")) {
       const scale = 0.055; // ~56px world pattern from the 1024 source
       runs(
+        solidFromRow(2),
         (c, r) => r > 1 && isSolid(glyphAt(this.grid, c, r)) && isSolid(glyphAt(this.grid, c, r - 1)) && glyphAt(this.grid, c, r) !== "~",
         (c0, c1, r) => {
           const t = this.tiled(c0 * TILE, r * TILE, (c1 - c0 + 1) * TILE, TILE, "pb-pit_inner_tile").setOrigin(0, 0).setDepth(1).setTileScale(scale);
@@ -4764,67 +4842,63 @@ export class PaintScene extends Phaser.Scene {
       );
     }
 
+    deco("grube");
     // painted strips along every exposed surface run (strips-over-tiles)
     if (kit === null && this.textures.exists("pb-strip_ground_loop")) {
       const src = this.textures.get("pb-strip_ground_loop").getSourceImage() as HTMLImageElement;
       const dispH = 30;
       const tileScale = dispH / src.height;
-      for (let r = 0; r < h; r++) {
-        let c = 0;
-        while (c < w) {
-          const surface = (cc: number): boolean => {
-            if (r <= 2) return false; // canopy rows carry fringe, never ground strips
-            const g = glyphAt(this.grid, cc, r);
-            if (!isSolid(g) || g === "~") return false;
-            // R6: a lip under a near ceiling reads as a double strip — suppress
-            for (let k = 1; k <= 3; k++) if (isSolid(glyphAt(this.grid, cc, r - k))) return false;
-            return !isSlope(glyphAt(this.grid, cc, r - 1));
-          };
-          if (!surface(c)) { c++; continue; }
-          let c1 = c;
-          while (c1 + 1 < w && surface(c1 + 1)) c1++;
-          const runW = (c1 - c + 1) * TILE;
-          this
-            .tiled(c * TILE, r * TILE - 7, runW, dispH, "pb-strip_ground_loop")
-            .setOrigin(0, 0)
-            .setDepth(2)
-            .setTileScale(tileScale);
-          if (this.textures.exists("pb-strip_cap_l") && c > 0) {
-            this.add.image(c * TILE + 2, r * TILE - 7, "pb-strip_cap_l").setOrigin(1, 0).setScale(tileScale).setDepth(2);
-          }
-          if (this.textures.exists("pb-strip_cap_r") && c1 < w - 1) {
-            this.add.image((c1 + 1) * TILE - 2, r * TILE - 7, "pb-strip_cap_r").setOrigin(0, 0).setScale(tileScale).setDepth(2);
-          }
-          c = c1 + 1;
+      const surface = (cc: number, r: number): boolean => {
+        if (r <= 2) return false; // canopy rows carry fringe, never ground strips
+        const g = glyphAt(this.grid, cc, r);
+        if (!isSolid(g) || g === "~") return false;
+        // R6: a lip under a near ceiling reads as a double strip — suppress
+        for (let k = 1; k <= 3; k++) if (isSolid(glyphAt(this.grid, cc, r - k))) return false;
+        return !isSlope(glyphAt(this.grid, cc, r - 1));
+      };
+      runs(solidFromRow(3), (c, r) => surface(c, r), (c, c1, r) => {
+        const runW = (c1 - c + 1) * TILE;
+        this
+          .tiled(c * TILE, r * TILE - 7, runW, dispH, "pb-strip_ground_loop")
+          .setOrigin(0, 0)
+          .setDepth(2)
+          .setTileScale(tileScale);
+        if (this.textures.exists("pb-strip_cap_l") && c > 0) {
+          this.add.image(c * TILE + 2, r * TILE - 7, "pb-strip_cap_l").setOrigin(1, 0).setScale(tileScale).setDepth(2);
         }
-      }
+        if (this.textures.exists("pb-strip_cap_r") && c1 < w - 1) {
+          this.add.image((c1 + 1) * TILE - 2, r * TILE - 7, "pb-strip_cap_r").setOrigin(0, 0).setScale(tileScale).setDepth(2);
+        }
+      });
     }
+    deco("bodenstreifen");
     if (this.textures.exists("pb-strip_ice_loop")) {
       const src = this.textures.get("pb-strip_ice_loop").getSourceImage() as HTMLImageElement;
       const dispH = 30;
       const ts = dispH / src.height;
-      for (let r = 3; r < h; r++) {
-        let c = 0;
-        // A-6 (pre-C1): the `z` slide wore the same blackboard art as a flat
-        // `~` run. With a kit the slide is its OWN object (mass.ts, doc 36 §2),
-        // so `z` leaves this path entirely.
-        const icy = (cc: number): boolean => {
-          const g = glyphAt(this.grid, cc, r);
-          return (g === "~" || (kit === null && g === "z")) && !isSolid(glyphAt(this.grid, cc, r - 1));
-        };
-        while (c < w) {
-          if (!icy(c)) { c++; continue; }
-          let c1 = c;
-          while (c1 + 1 < w && icy(c1 + 1)) c1++;
-          this.tiled(c * TILE, r * TILE - 7, (c1 - c + 1) * TILE, dispH, "pb-strip_ice_loop").setOrigin(0, 0).setDepth(2).setTileScale(ts);
-          c = c1 + 1;
-        }
-      }
+      // A-6 (pre-C1): the `z` slide wore the same blackboard art as a flat
+      // `~` run. With a kit the slide is its OWN object (mass.ts, doc 36 §2),
+      // so `z` leaves this path entirely.
+      const icy = (cc: number, r: number): boolean => {
+        if (r < 3) return false;
+        const g = glyphAt(this.grid, cc, r);
+        return (g === "~" || (kit === null && g === "z")) && !isSolid(glyphAt(this.grid, cc, r - 1));
+      };
+      const iceCells = kit === null
+        ? mergeRowMajor(cellsOf(idx, "~"), cellsOf(idx, "z"))
+        : cellsOf(idx, "~");
+      runs(iceCells, icy, (c, c1, r) => {
+        this.tiled(c * TILE, r * TILE - 7, (c1 - c + 1) * TILE, dispH, "pb-strip_ice_loop").setOrigin(0, 0).setDepth(2).setTileScale(ts);
+      });
     }
+
+    deco("eisstreifen");
+    this.mark("· verzierung", tSub, "terrain");
 
     // ── the carved mass (doc 36 §2) — crust + caps + trims + corners + body
     // + fade + sediment, ramps, the slide, and complete platform objects ─────
     if (kit !== null) {
+      tSub = performance.now();
       // R5-W1 · A1 — THE PLAN THE AUDITS SEE IS NOW THE PLAN THAT SHIPS.
       // This call omitted `srcSize`, so `planMass`'s `aspect()` answered 1 for
       // every stem in the browser while every audit and every test fed it the
@@ -4838,6 +4912,8 @@ export class PaintScene extends Phaser.Scene {
         const img = tex?.getSourceImage() as HTMLImageElement | undefined;
         return img === undefined ? null : { w: img.width, h: img.height };
       });
+      this.mark("· planMass", tSub, "terrain");
+      tSub = performance.now();
       // ── PK-R6 · H2 · WHAT THE FURNITURE THROWS (round-2 finding 9) ─────────
       // Read off the SAME plan the renderer is about to place, never re-planned:
       // a shadow computed from a second call would be a shadow of a different
@@ -4859,8 +4935,22 @@ export class PaintScene extends Phaser.Scene {
           }
         }
       }
+      this.mark("· schatten", tSub, "terrain");
+
+      tSub = performance.now();
+      this.tileMs = 0;
+      this.imgMs = 0;
       for (const piece of plan) this.placeMassPiece(piece);
+      // Der Name bleibt gleich, ganz gleich wie viele Stücke der Plan hat: eine
+      // Zeile, deren Beschriftung sich je Phase ändert, wird zu fünf Zeilen mit
+      // je vier Strichen und ist keine Tabelle mehr.
+      this.mark("· platzieren", tSub, "terrain");
+      this.buildMs.push({ step: "· · davon Kacheln", ms: this.tileMs, parent: "terrain" });
+      this.buildMs.push({ step: "· · davon Bilder", ms: this.imgMs, parent: "terrain" });
+
+      tSub = performance.now();
       this.buildGrain();
+      this.mark("· koernung", tSub, "terrain");
     }
   }
 
@@ -4878,6 +4968,37 @@ export class PaintScene extends Phaser.Scene {
    * the ceiling this returns the plain Graphics — slower, but correct and
    * visible — rather than silently dropping the layer. `keen-art` taught the
    * house rule: a missing picture must never be the quiet outcome.
+   */
+  /**
+   * ★ R5-W6b · E7 · DIESE STELLE BLEIBT WELTGROSS — und das ist ein MESSWERT,
+   * keine Bequemlichkeit.
+   *
+   * Gebacken wird IMMER eine weltgroße Leinwand (p1 1024×416, dreimal je Raum),
+   * obwohl die Marken darauf nur einen Teil bedecken. Der Zuschnitt auf den
+   * kleinsten umschließenden Kasten wurde gebaut und gemessen: **41–47 %
+   * weniger Backfläche** (5,22 → 3,07 MPx über die fünf Räume). Er ist trotzdem
+   * ZURÜCKGENOMMEN, weil er das Bild nicht unverändert lässt:
+   *
+   *   · Kein einziger Bildpunkt VERSCHIEBT sich — in Weltkoordinaten
+   *     nachgezählt: »nur alt 0 · nur neu 0« auf jedem geprüften Blech.
+   *   · Aber die Kantenglättung wackelt: 9–58 Punkte je Blech (von 284–1585)
+   *     bekommen andere Farbwerte, bis zu 64 von 255 — allerdings ausschließlich
+   *     auf Punkten mit Deckkraft 3–11, also unter 1/255 nach dem Zusammenrechnen.
+   *   · Ursache, in drei Versuchen mit je eigener Kontrollmessung eingekreist:
+   *     JEDE Änderung der Leinwand-MASSE rastert anders. Zuschnitt in beiden
+   *     Achsen: 14 von 15 Blechen anders. Nur in der Höhe, mit Saum: ebenfalls
+   *     14 von 15. Nur in der Höhe, Breite auf den Zähler gleich: die fünf
+   *     UNZUGESCHNITTENEN Bleche kamen identisch zurück, die neun
+   *     zugeschnittenen nicht. Es gibt also keinen maßändernden Zuschnitt, der
+   *     bildgleich ist.
+   *   · Die Kontrolle, ohne die keine dieser Zahlen zählt: derselbe Bau zweimal
+   *     gemessen ⇒ **15 von 15 Blechen auf den Zähler identisch**.
+   *
+   * Kokis Weisung lautet »gar kein Qualitätsverlust«, und E6 hat unter derselben
+   * Weisung einen 30-fach schnelleren Graustufen-Filter wegen 0–12 Punkten
+   * Abweichung verworfen (D-325). Dieselbe Elle, dieselbe Antwort. Die Zahlen
+   * stehen hier, damit die nächste Sitzung sie nicht noch einmal bezahlt — und
+   * damit Koki den Handel mit EINEM Wort umdrehen kann, wenn er ihn will.
    */
   private bakeStatic(
     name: string,
@@ -4941,6 +5062,8 @@ export class PaintScene extends Phaser.Scene {
           g.fillRoundedRect(m.x, m.y, m.w, m.h, Math.min(m.h / 2, round));
         }
       };
+      // Ein Zuschnitt auf den umschließenden Kasten spart 41–47 % Backfläche und
+      // ist trotzdem nicht bildgleich — die Messung dazu steht in bakeStatic.
       this.bakeStatic(`grain${depth}`, depth, paint);
     };
     draw(crustGrain(this.grid, claimed), CRUST_MARK_DEPTH, 1.2);
@@ -5549,12 +5672,26 @@ export class PaintScene extends Phaser.Scene {
     return (r + 1) * TILE;
   }
 
+  /** The seven glyphs `buildProps` can act on. Anything else was, and is, a
+   *  cell the loop looked at and did nothing with. */
+  private static readonly PROP_GLYPHS = ["o", "*", "X", "B", "s", "V", "C"] as const;
+
   private buildProps(): void {
-    const h = this.grid.length;
-    const w = this.grid[0]?.length ?? 0;
+    let tSub = performance.now();
     const glyphs = new Map(letterGlyphs(this.grid, this.comp?.words).map((g) => [`${g.c},${g.r}`, g.char]));
-    for (let r = 0; r < h; r++) {
-      for (let c = 0; c < w; c++) {
+    this.mark("· letterGlyphs", tSub, "props");
+    // The letter canvases are built INSIDE the loop below, so their cost is
+    // counted here and SUBTRACTED from the loop line — children that overlap
+    // sum to more than the parent they explain, which is not a breakdown.
+    let letterMs = 0;
+    tSub = performance.now();
+    // R5-W6b · E7 · D-323 (3): the third full sweep of the same grid is gone.
+    // Only the seven glyphs this method draws are visited, still row by row and
+    // left to right — the order equal-depth props overlap in.
+    const idx = indexTerrain(this.grid);
+    const props = mergeRowMajor(...PaintScene.PROP_GLYPHS.map((g) => cellsOf(idx, g)));
+    for (const { c, r } of props) {
+      {
         const g = glyphAt(this.grid, c, r);
         const cx = c * TILE + TILE / 2;
         const cy = r * TILE + TILE / 2;
@@ -5573,7 +5710,10 @@ export class PaintScene extends Phaser.Scene {
           // exactly the event a remount never replays.
           if (!this.sim.letterCells.has(`${c},${r}`)) continue;
           const char = glyphs.get(`${c},${r}`) ?? "A";
-          const img = this.add.image(cx, cy, this.letterTex(char)).setDepth(4);
+          const tLetter = performance.now();
+          const letterKey = this.letterTex(char);
+          letterMs += performance.now() - tLetter;
+          const img = this.add.image(cx, cy, letterKey).setDepth(4);
           img.setDisplaySize(PaintScene.LETTER_PX, PaintScene.LETTER_PX);
           img.setData("baseY", cy); // PB-F3: the rest line its bob returns to
           this.letterImgs.set(`${c},${r}`, img); // count lives in the Sim
@@ -5629,6 +5769,8 @@ export class PaintScene extends Phaser.Scene {
         }
       }
     }
+    this.buildMs.push({ step: "· gitter", ms: performance.now() - tSub - letterMs, parent: "props" });
+    this.buildMs.push({ step: "· letterTex", ms: letterMs, parent: "props" });
     // R5-A2: seed the HUD from the sim, not from zero — a ledger remount
     // starts with the purse the child left with (a fresh mount stays 0).
     this.cfg.callbacks.onLetters(this.sim.lettersGot, this.sim.lettersTotal);
