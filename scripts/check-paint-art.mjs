@@ -107,7 +107,12 @@ for (const { file, level } of levels) {
     console.warn(`⚠ ${dead.length} painted stems are loaded by nothing (${(bytes / 1048576).toFixed(1)} MB): ${dead.slice(0, 8).join(", ")}${dead.length > 8 ? ", …" : ""}`);
     // R5-W3 · E5 · THE RATCHET. The warning above ran on every build for three
     // sessions while the pile went 53 → 57 → 59 → 61 stems, because a warning
-    // costs nothing to ignore. The keen-art freedom stays — art may land before
+    // costs nothing to ignore. (R5-W6b · W5 · D-271 — the story continues past
+    // that line and this comment stopped telling it: the merge train of wave 4b
+    // wired and deleted enough art to bring the pile back to 53, which is where
+    // the ceiling was then set, with no headroom. So the row reads
+    // 53 → 57 → 59 → 61 → 53, and 53 is the number as of 2026-08-19. Whoever
+    // moves it next writes the next number here, with its date.) The keen-art freedom stays — art may land before
     // its wiring — but the pile may no longer grow in SILENCE: adding sheets
     // means raising the ceiling in the same PR, with a reason a reviewer reads.
     // The full annotated list, by group: docs/design/g1/paint/DEAD_ART_2026-08-14.md

@@ -44,8 +44,42 @@ const REGISTER_BANNED = [
   { wort: "tot", muster: /\btot\b/ },
 ];
 
+/**
+ * ── R5-W6b · W5 · D-424 · DIE BENANNTEN KANON-BEGRIFFE ──────────────────────
+ *
+ * Die Liste oben schützt Kinder vor Angst-Wörtern: Monster, Blut, böse,
+ * sterben. »Geist« steht mit gutem Grund dabei — und trifft dabei
+ * **Tinten-Geister**, den kanonischen Namen der harmlosen Ambiente-Wesen des
+ * Kapitels (doc 44 §1.6 und §2, dort fett). K5 ist in dieser Falle gestanden:
+ * ein Kapitel-Blatt konnte die eigenen Wesen des Kapitels nicht benennen und
+ * musste sie zu »Tinten-Wesen« umschreiben, damit das Tor grün wird.
+ *
+ * Ein Tor, das den eigenen Kanon verbietet, wird nicht respektiert, sondern
+ * umgangen — und das ist teurer als die Lücke. Also wird die REGEL geschärft
+ * statt das Wort gestrichen: der zusammengesetzte Kanon-Begriff ist erlaubt,
+ * das nackte Wort bleibt verboten. Dieselbe Bauform, mit der W4 »schreit« von
+ * »schreibt« getrennt hat (D-278) — dort war die Wortgrenze das Problem, hier
+ * ist es das Wort selbst.
+ *
+ * Jede Ausnahme ist BENANNT und trägt ihren Beleg. Eine Ausnahme ohne Fundort
+ * im Kanon ist eine Aufweichung.
+ */
+const KANON_AUSNAHMEN = [
+  { begriff: /Tinten-Geist(er|ern|es)?\b/g, warum: "Kanon-Name der harmlosen Ambiente-Wesen, doc 44 §1.6 + §2 (dort fett) — sie sind das Gegenteil einer Drohung: das Kind läuft an ihnen vorbei" },
+];
+
+/** Der Text, wie ihn die Verbotsliste zu lesen bekommt: die Kanon-Begriffe
+ *  ausgeschnitten, alles andere unverändert. Ausgeschnitten und nicht ersetzt,
+ *  damit die Regel für den REST der Zeile scharf bleibt — »die Tinten-Geister
+ *  und ein Geist im Flur« muss weiter rot werden. */
+export const ohneKanon = (text) =>
+  KANON_AUSNAHMEN.reduce((t, a) => t.replace(a.begriff, ""), text);
+
 /** Welche verbotenen Wörter stehen in diesem Text? */
-const registerHits = (text) => REGISTER_BANNED.filter((b) => b.muster.test(text)).map((b) => b.wort);
+const registerHits = (text) => {
+  const gelesen = ohneKanon(text);
+  return REGISTER_BANNED.filter((b) => b.muster.test(gelesen)).map((b) => b.wort);
+};
 
 // ── Selbsttest (W4/D-278) ───────────────────────────────────────────────────
 // Der Fall, an dem RICHTIG und PLAUSIBEL-FALSCH auseinandergehen: „schreibt"
@@ -63,6 +97,16 @@ if (process.argv.includes("--selftest")) {
     ["»tot« als eigenes Wort ist verboten", "Der Baum ist tot.", ["tot"]],
     ["NICHT-TAMPER: »total« ist kein »tot«", "Das ist total in Ordnung.", []],
     ["die Stämme bleiben Stämme", "ein böser Blick", ["böse"]],
+    // ── D-424 · der Kanon-Begriff gegen das nackte Wort ────────────────────
+    // Hier gehen richtig und plausibel-falsch auseinander: eine Teilketten-
+    // Suche beantwortet beide Zeilen gleich (rot), und eine zu grosszuegige
+    // Ausnahme beantwortet beide gleich (grün). Nur eine Ausnahme, die GENAU
+    // den zusammengesetzten Begriff ausschneidet, trennt sie.
+    ["NICHT-TAMPER: der Kanon-Begriff ist erlaubt", "Die Tinten-Geister ziehen durch den Flur.", []],
+    ["NICHT-TAMPER: auch im Singular", "Ein Tinten-Geist sitzt auf dem Pult.", []],
+    ["das nackte Wort bleibt verboten", "Ein Geist sitzt auf dem Pult.", ["Geist"]],
+    ["…und die Ausnahme schaltet die Regel nicht für den REST der Zeile ab",
+      "Die Tinten-Geister und ein Geist im Flur.", ["Geist"]],
   ];
   let bad = 0;
   for (const [name, text, erwartet] of faelle) {

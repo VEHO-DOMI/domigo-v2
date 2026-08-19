@@ -1,5 +1,8 @@
 #!/usr/bin/env node
 // R5-W4 · C2 · THE COLOUR TRUTH GATE — the card follows the sheet, by construction.
+//              …und seit R5-W6b · W5 (D-420/R132) in ZWEI Kapiteln: die Karte
+//              gegen ihr BILD (Kapitel 1) und die Karte gegen ihre eigene
+//              ANTWORT (Kapitel 2, vormals `scripts/check-colour-copy.mjs`).
 //
 // WHY THIS EXISTS. A `restore` card asks the child two questions: what is it, and
 // what colour was it. The second answer sits in `ch01.tasks.v2.json` as a typed
@@ -239,6 +242,79 @@ const readSheet = async (file) => {
   return PNG.sync.read(fs.readFileSync(file));
 };
 
+
+// ═══ KAPITEL 2 · DIE KOPIE (R5-W6b · W5 · D-420 · R132) ═════════════════════
+//
+// Bis heute stand das hier als eigene Datei `scripts/check-colour-copy.mjs`.
+// C4 hatte sie richtig angelegt — in derselben Welle gehoerten Regel- und
+// Selbsttestteil dieses Tors einer anderen Bahn, und zwei Sitzungen auf
+// derselben Datei kosten mehr, als die Trennung schadet. Der Zustand sollte
+// aber nicht bleiben (R132): zwei Tore, die dieselbe Frage aus zwei Richtungen
+// stellen — die Karte gegen ihr BILD und die Karte gegen ihre eigene ANTWORT —
+// altern getrennt, und dann faellt eines still hinter das andere zurueck.
+//
+// Reiner Umzug, keine Logikaenderung: dieselben zwei Gesetze, dieselben acht
+// Selbsttest-Faelle, dieselben Vakuitaets-Fragen. Beide Kapitel zaehlen ihre
+// Faelle weiter GETRENNT, damit man sieht, welches gerade misst.
+//
+// WHY THIS EXISTS, and it is a found defect, not a hypothetical. `check-colour-
+// truth` (C2, R41) closed the gap between the card's answer and the PNG: it
+// opens the sheet, measures it, and holds `colour` to the measurement. Nothing
+// held the GERMAN LINES to that same answer. C3 repainted the eraser blue → pink
+// and flipped `colour`, `colourAskDe` and the options in one change — and left
+// the hint behind:
+//
+//     colour: "pink" · colourAskDe: „Der Radiergummi war rosa."
+//     hints.deWord: „Auf Deutsch: der Radiergummi — und Blau."     ← shipped
+//
+// So the one child who opens the hint — the child who is stuck, i.e. the child
+// who most needs it — was told the wrong word by the help itself, while every
+// gate in the repo stayed green. This gate closes that class: whatever German a
+// restore card writes about colour must agree with the answer the same card
+// keys. The measurement half stays where it belongs; this is the copy half.
+//
+// TWO LAWS, and the second is the one that catches the real defect:
+//   A · the ASK names the answer. `colourAskDe` must contain the German word for
+//       the keyed colour — otherwise the question is about a different colour
+//       than the chips are.
+//   B · no OTHER colour word anywhere in the card's German help. A hint may name
+//       no colour at all (the glue stick's says „der Uhu-Stick", which is the
+//       better hint) — but if it names one, it is the answer's.
+//
+// WHAT IT DELIBERATELY DOES NOT READ: `stimulus.showsDe`. That line describes
+// the DRAINED world („Das Buch lehnt grau an der Wand."), where grey is the law
+// of the chapter rather than a claim about the object — a gate that read it
+// would redden on every card in the book for being right.
+
+/** The book's ten colour words in German, with the inflections a card line can
+ *  carry. Written as one table so the gate and any future card copy read the
+ *  same list — the D-123/D-251 lesson: a second spelling is a second law. */
+export const DE_COLOUR = {
+  red: ["rot", "rote", "roter", "rotes", "roten", "rotem"],
+  orange: ["orange", "orangen", "oranges", "orangem", "orangefarben", "orangefarbene"],
+  yellow: ["gelb", "gelbe", "gelber", "gelbes", "gelben", "gelbem"],
+  brown: ["braun", "braune", "brauner", "braunes", "braunen", "braunem"],
+  green: ["grün", "grüne", "grüner", "grünes", "grünen", "grünem"],
+  blue: ["blau", "blaue", "blauer", "blaues", "blauen", "blauem"],
+  pink: ["rosa", "rosafarben", "rosafarbene", "pink", "pinke", "pinker", "pinkes"],
+  white: ["weiß", "weiße", "weißer", "weißes", "weißen", "weißem"],
+  black: ["schwarz", "schwarze", "schwarzer", "schwarzes", "schwarzen", "schwarzem"],
+  grey: ["grau", "graue", "grauer", "graues", "grauen", "grauem"],
+};
+
+/** Which colour words a German line names. Word boundaries matter both ways:
+ *  „Blaubeere" is not blue and „rote" is red — so the longest inflection wins
+ *  and a match must stand alone as a word. */
+export function coloursIn(line) {
+  const found = new Set();
+  if (typeof line !== "string") return found;
+  const words = (line.toLowerCase().match(/[a-zäöüß]+/g) ?? []);
+  for (const [colour, forms] of Object.entries(DE_COLOUR)) {
+    if (words.some((w) => forms.includes(w))) found.add(colour);
+  }
+  return found;
+}
+
 /** Synthesise a flat RGBA raster of one colour — the selftest's specimen. */
 export function flat(r, g, b, n = 64) {
   const data = Buffer.alloc(n * n * 4);
@@ -346,14 +422,54 @@ if (selftest) {
   say("ein Blatt, das künstlich zu Pergament geflaut ist, nennt keine Farbe mehr",
     measure(flau.data, flau.dims), (m) => m.dominant === "MIXED");
 
+
+  // ── KAPITEL 2 · die Kopie · eigene Faelle, eigene Zaehlung (D-420) ────────
+  const kopieCases = [];
+  const sagK = (name, got, ok) => kopieCases.push([name, got, ok]);
+  // 1 · the shipped defect: a pink answer whose hint says „Blau"
+  sagK("a hint that names another colour than the answer is caught",
+    coloursIn("Auf Deutsch: der Radiergummi — und Blau."),
+    (f) => f.has("blue") && !f.has("pink"));
+  // 2 · NON-TAMPER · the same hint, repaired, must be clean
+  sagK("NON-TAMPER · the repaired hint names the answer and nothing else",
+    coloursIn("Auf Deutsch: der Radiergummi — und Rosa."),
+    (f) => f.size === 1 && f.has("pink"));
+  // 3 · a hint may name NO colour — the glue stick's shape
+  sagK("NON-TAMPER · a hint with no colour word at all is allowed",
+    coloursIn("Auf Deutsch: der Klebestift — der Uhu-Stick."), (f) => f.size === 0);
+  // 4 · the ask must be readable as naming its colour
+  sagK("NON-TAMPER · the ask line names its colour", coloursIn("Die Schultasche war braun."),
+    (f) => f.has("brown"));
+  // 5 · inflections are the point: „braune" is brown, and only brown
+  sagK("NON-TAMPER · an inflected form still counts", coloursIn("die braune Tasche"),
+    (f) => f.size === 1 && f.has("brown"));
+  // 6 · …and the boundary must hold in the direction that fails OPEN: a word
+  //     that merely CONTAINS a colour is not that colour. Without this the gate
+  //     would call „Blaubeere" blue and start reddening on true lines.
+  sagK("NON-TAMPER · a word that only contains a colour is not that colour",
+    coloursIn("Die Blaubeere und der Rotkohl."), (f) => f.size === 0);
+  // 7 · …and the same boundary must not swallow the real word beside it
+  sagK("a real colour word beside a compound is still found",
+    coloursIn("Die Blaubeere ist blau."), (f) => f.size === 1 && f.has("blue"));
+  // 8 · two different colour words in one line is exactly law B's target
+  sagK("two colours in one line are both seen", coloursIn("erst blau, jetzt rosa"),
+    (f) => f.size === 2 && f.has("blue") && f.has("pink"));
+
+  let kopieBad = 0;
+  for (const [name, got, ok] of kopieCases) {
+    const pass = ok(got);
+    if (!pass) kopieBad++;
+    console.log(`  ${pass ? "✓" : "✗"} [Kopie] ${name}${pass ? "" : ` → ${JSON.stringify([...got])}`}`);
+  }
+
   let bad = 0;
   for (const [name, got, ok] of cases) {
     const pass = ok(got);
     if (!pass) bad++;
     console.log(`  ${pass ? "✓" : "✗"} ${name}${pass ? "" : ` → ${JSON.stringify(got)}`}`);
   }
-  if (bad > 0) { console.error(`check-colour-truth --selftest: ${bad} case(s) did NOT bite — this gate cannot be trusted`); process.exit(1); }
-  console.log(`check-colour-truth --selftest: OK — ${cases.length} cases, every red light seen and every green case still green`);
+  if (bad + kopieBad > 0) { console.error(`check-colour-truth --selftest: ${bad + kopieBad} case(s) did NOT bite (Messung ${bad} · Kopie ${kopieBad}) — this gate cannot be trusted`); process.exit(1); }
+  console.log(`check-colour-truth --selftest: OK — ${cases.length} Faelle der MESSUNG + ${kopieCases.length} Faelle der KOPIE, every red light seen and every green case still green`);
   process.exit(0);
 }
 
@@ -449,6 +565,55 @@ for (const file of files) {
   }
 }
 
+
+// ═══ KAPITEL 2 · DER LAUF DER KOPIE (D-420) ═════════════════════════════════
+// Dieselbe Dateiliste, andere Frage: oben wurde die Karte gegen ihr BILD
+// gehalten, hier gegen ihre eigene ANTWORT.
+const taskFiles = files;
+let kopieGeprueft = 0;
+let kopieZeilen = 0;
+for (const file of taskFiles) {
+  const json = JSON.parse(fs.readFileSync(file, "utf8"));
+  const chapter = json.chapter;
+  for (const t of json.items ?? []) {
+    if (t.kind !== "restore") continue;
+    const where = `${file} ${t.id.replace(`g1.paint.${chapter}.`, "")}`;
+    const answer = t.colour;
+    if (typeof answer !== "string" || DE_COLOUR[answer] === undefined) {
+      fail(where, `the card keys »${answer}«, which is not one of this book's ten colour words — nothing to hold the German to`);
+      continue;
+    }
+    kopieGeprueft += 1;
+
+    // LAW A · the ask names the answer.
+    const ask = t.colourAskDe;
+    kopieZeilen += 1;
+    const inAsk = coloursIn(ask);
+    if (!inAsk.has(answer)) {
+      fail(where, `the ask »${ask}« does not name the keyed colour »${answer}« (${DE_COLOUR[answer][0]}) — the German question and the chips are about different colours`);
+    }
+
+    // LAW B · no other colour word in the ask or in the help.
+    const lines = [["colourAskDe", ask], ["hints.deDesc", t.hints?.deDesc], ["hints.deWord", t.hints?.deWord]];
+    for (const [field, line] of lines) {
+      if (typeof line !== "string") continue;
+      if (field !== "colourAskDe") kopieZeilen += 1;
+      for (const other of coloursIn(line)) {
+        if (other === answer) continue;
+        fail(where, `${field} names »${other}« while the card's answer is »${answer}«: „${line}" — the child who opens the help is the child who is stuck, and this line tells them the wrong word`);
+      }
+    }
+  }
+}
+
+// ── VACUITY — a copy gate that reads nothing reports a clean repo forever ─────
+if (kopieGeprueft === 0) fail("VACUITY", "no restore card was read — either the walk missed the task files or the kind was renamed; both laws above are asleep");
+if (kopieZeilen < kopieGeprueft) fail("VACUITY", `${kopieGeprueft} cards but only ${kopieZeilen} German lines read — a card whose lines are all missing passes both laws by having nothing to say`);
+// …and the reader itself must still be able to tell two colour words apart.
+if (coloursIn("blau").has("pink") || !coloursIn("rosa").has("pink")) {
+  fail("VACUITY", "the colour-word reader no longer distinguishes blue from pink — every verdict above is noise");
+}
+
 // ── VACUITY — the gate proves it still sees ──────────────────────────────────
 // Every law above runs on sheets this walk found. A walk that finds none reports
 // a clean repo forever, which is the worst way for a picture check to break.
@@ -462,4 +627,5 @@ if (measure(flat(214, 40, 30)).dominant === measure(flat(40, 90, 200)).dominant)
 console.log("\ncheck-colour-truth · die Ist-Palette:");
 for (const line of table) console.log(line);
 if (failures > 0) { console.error(`\ncheck-colour-truth: ${failures} violation(s) over ${measured} restore sheet(s)`); process.exit(1); }
-console.log(`\ncheck-colour-truth: OK — ${measured} restore sheet(s) measured; every card's colour word is the family its own sheet carries, every reading is ratified against a measured number`);
+console.log(`\ncheck-colour-truth: OK — Kapitel 1: ${measured} restore sheet(s) measured; every card's colour word is the family its own sheet carries, every reading is ratified against a measured number`);
+console.log(`check-colour-truth: OK — Kapitel 2 (Kopie): ${kopieGeprueft} restore card(s), ${kopieZeilen} German line(s); every colour word the card writes is the colour the card keys`);

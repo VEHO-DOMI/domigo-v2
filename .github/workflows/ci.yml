@@ -70,9 +70,7 @@ jobs:
       - run: node scripts/check-copy-register.mjs --selftest # C2: the register gate's own red light must be reachable
       - run: node scripts/check-copy-register.mjs # C2: every German line a child reads is Austrian (scripts/lexikon-at.json)
       - run: node scripts/check-colour-truth.mjs --selftest # C2: the colour measurement must be able to call a red sheet red
-      - run: node scripts/check-colour-truth.mjs # C2/R41: each restore card's colour word is the family its own PNG carries
-      - run: node scripts/check-colour-copy.mjs --selftest # C4: the colour-copy gate's own red light must be reachable
-      - run: node scripts/check-colour-copy.mjs # C4: the German a restore card writes names the colour the card keys (the eraser's hint said „Blau" under a pink answer)
+      - run: node scripts/check-colour-truth.mjs # C2/R41 + C4/D-280 (W5/D-420: eine Datei, zwei Kapitel): jede restore-Karte traegt die Farbfamilie ihres eigenen PNG — und die deutschen Zeilen der Karte nennen die Farbe, die die Karte kodiert
       - run: node docs/art/import-batch-aq12.mjs --selftest # C5: the import acceptance probe must still be able to call a flat fill a flat fill
       - run: node docs/art/import-batch-aq15.mjs --selftest # C6: die Fenster-Abnahme muss den abgeschnittenen Stabfuss sehen — der Fehler, den eine Pruefung mit der Oeffnungsmaske des Lieferanten per Bauart uebersieht
       - run: node docs/art/import-batch-aq13.mjs --selftest # H4: die Tafel- und Ring-Abnahme misst gegen den BESTAND, nicht gegen die Zahlen des Lieferscheins — der Zwilling, der unten buendige Sitz und die Gesichtsquote gegen ein selbst gerechnetes N muessen rot werden
