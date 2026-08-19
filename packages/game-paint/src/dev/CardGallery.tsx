@@ -37,6 +37,9 @@ export interface GalleryProps {
   Overlay: OverlayRenderer;
   /** which surface to show; "1" (or undefined) shows the index */
   which?: string;
+  /** R5-W6b · W5 · WELCHE Karte eine Karten-Flaeche zeigt (`?karte=<task-id>`).
+   *  Ohne sie nimmt die Bank die erste Karte ihrer Art. */
+  karte?: string;
 }
 
 /** the stage a card is judged on: the game's own viewport, with the chapter's
@@ -78,13 +81,58 @@ interface Surface {
   id: string;
   label: string;
   note?: string;
+  /** R5-W6b · W5: WELCHE Karte diese Flaeche wirklich zeigt (nur Karten-
+   *  Flaechen haben eine; Zeremonien-Panels nicht). Das Werkzeug liest sie
+   *  ueber `data-karte` — ohne sie wuerde ein Zeremonien-Panel eine
+   *  `--card`-Bestellung stumm bestaetigen und das Bild traege im Dateinamen
+   *  eine Karte, die darauf nicht zu sehen ist. */
+  taskId?: string;
   render: () => React.ReactElement;
 }
 
 const noop = (): void => {};
 
-export default function CardGallery({ level, art, tasks, Overlay, which }: GalleryProps): React.ReactElement {
-  const byKind = (kind: string): GameTaskV2 | undefined => tasks.find((t) => t.kind === kind);
+/**
+ * R5-W6b · W5 · WELCHE Karte eine Flaeche zeigt, wenn eine namentlich bestellt
+ * wurde. Die volle id oder ihr Ende: `obj-book.r1` genuegt,
+ * `g1.paint.ch01.enc.obj-book.r1` geht auch.
+ *
+ * Mehrdeutig und unbekannt sind FEHLER, nie ein Zufallstreffer und nie ein
+ * stiller Rueckfall auf die erste Karte der Art: D-206 hat einmal gekostet,
+ * dass ein Pruefer ein anderes Ding beurteilt hat, als er angefordert hatte,
+ * ohne es zu merken. Eigene Funktion, damit dieses Gesetz einen Test hat.
+ */
+export const waehleKarte = (
+  tasks: readonly GameTaskV2[],
+  karte: string | undefined,
+): { gewaehlt: GameTaskV2 | undefined; kartenFehler: string | null } => {
+  if (karte === undefined) return { gewaehlt: undefined, kartenFehler: null };
+  const treffer = tasks.filter((t) => t.id === karte || t.id.endsWith(`.${karte}`));
+  if (treffer.length === 1) return { gewaehlt: treffer[0], kartenFehler: null };
+  return {
+    gewaehlt: undefined,
+    kartenFehler: treffer.length === 0
+      ? `keine Karte mit der id »${karte}« im Kapitel (${tasks.length} Karten)`
+      : `»${karte}« trifft ${treffer.length} Karten: ${treffer.map((t) => t.id).join(" · ")}`,
+  };
+};
+
+export default function CardGallery({ level, art, tasks, Overlay, which, karte }: GalleryProps): React.ReactElement {
+  // R5-W6b · W5 · C5s Befund (D-386-Nachbar): `byKind` nimmt die ERSTE Karte
+  // ihrer Art. Bei `restore` ist das immer der Radiergummi — ein Schirmbild der
+  // BUCH-Karte war deshalb nicht herstellbar, und eine Farb-Lieferung liess
+  // sich nie in der Karte ansehen, in der das Kind sie sieht.
+  //
+  // `?karte=<task-id>` waehlt sie namentlich, und zwar OHNE Rueckfall: eine
+  // unbekannte id zeigt eine sichtbare Fehlzeile statt der ersten Karte. Eine
+  // stille Ersatzkarte waere genau der Bank-Fehler, den D-206 schon einmal
+  // gekostet hat — ein Pruefer beurteilt sonst ein anderes Ding, als er
+  // angefordert hat, und merkt es nicht.
+  const { gewaehlt, kartenFehler } = waehleKarte(tasks, karte);
+  const byKind = (kind: string): GameTaskV2 | undefined => {
+    if (gewaehlt !== undefined) return gewaehlt.kind === kind ? gewaehlt : undefined;
+    return tasks.find((t) => t.kind === kind);
+  };
 
   // the chapter's own rule page, so the tip panel shows a real Merksatz.
   // R5-W4 · I2: found by ROLE, not by „carries a merksatzDe" — the old predicate
@@ -165,10 +213,14 @@ export default function CardGallery({ level, art, tasks, Overlay, which }: Galle
   const DRAINED_WASH = 0.72;
 
   const card = (id: string, label: string, task: GameTaskV2 | undefined, extra?: Record<string, unknown>, note?: string): Surface => ({
-    id, label, note,
+    id, label, note, taskId: task?.id,
     render: () =>
       task === undefined ? (
-        <p style={{ padding: 24, fontSize: 15 }}>keine {label}-Karte im Kapitel</p>
+        <p style={{ padding: 24, fontSize: 15 }}>
+          {kartenFehler ?? (karte !== undefined
+            ? `die Karte »${karte}« ist keine ${label}-Karte (sie ist ${gewaehlt?.kind})`
+            : `keine ${label}-Karte im Kapitel`)}
+        </p>
       ) : (
         <CardHost
           key={id}
@@ -299,10 +351,19 @@ export default function CardGallery({ level, art, tasks, Overlay, which }: Galle
             <a href="?karten=1" style={{ color: "#b4884f" }}>← Bench</a>
             {"  ·  "}
             <b>{one.label}</b> <span style={{ color: "#6f6552" }}>({one.id})</span>
-            {one.note !== undefined && <>{"  ·  "}<i>{one.note}</i></>}
+            {/* R5-W6b · W5: die Randnotiz einer Flaeche gilt der Karte, die die
+                Flaeche VON SICH AUS zeigt. Wer eine andere waehlt, darf nicht
+                die Notiz der ersten mitbekommen — sie wuerde ueber das falsche
+                Bild reden, und ein Schirmbild traegt sie mit. */}
+            {one.note !== undefined && gewaehlt === undefined && <>{"  ·  "}<i>{one.note}</i></>}
+            {gewaehlt !== undefined && <>{"  ·  "}<i>Karte namentlich gewaehlt: {gewaehlt.id}</i></>}
           </p>
           <div
             data-testid="gallery-stage"
+            /* R5-W6b · W5: maschinenlesbar, damit `shoot-card-bench --card` nicht
+               eine Fehlzeile fotografiert und Exit 0 meldet. Steht hier die
+               gewuenschte id NICHT, bricht das Werkzeug ab. */
+            data-karte={gewaehlt !== undefined && one.taskId === gewaehlt.id ? gewaehlt.id : ""}
             style={{
               position: "relative", width: STAGE_W, height: STAGE_H, overflow: "hidden",
               borderRadius: 10, background: "#e9dcbc", flex: "0 0 auto",

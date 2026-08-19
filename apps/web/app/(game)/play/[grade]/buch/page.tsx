@@ -17,10 +17,10 @@ export default async function BuchPage({
   searchParams,
 }: {
   params: Promise<{ grade: string }>;
-  searchParams: Promise<{ phase?: string; grid?: string; perf?: string; karten?: string; warm?: string }>;
+  searchParams: Promise<{ phase?: string; grid?: string; perf?: string; karten?: string; karte?: string; warm?: string }>;
 }) {
   const { grade: gradeStr } = await params;
-  const { phase, grid, perf, karten, warm } = await searchParams;
+  const { phase, grid, perf, karten, karte, warm } = await searchParams;
   if (gradeStr !== "1") redirect("/home");
   // pre-release gate with the teacher door (the run/world posture)
   const teacher = await getTeacherForPage();
@@ -73,6 +73,14 @@ export default async function BuchPage({
   // renders cards out of their fiction is exactly the thing a child must never
   // be handed a link to.
   const cardBench = teacher !== null && process.env.NODE_ENV !== "production" && karten !== undefined ? karten : undefined;
+  // R5-W6b · W5 · C5s Befund: eine Farb-Flaeche der Bank zeigt die ERSTE Karte
+  // ihrer Art — beim Umfaerben also immer den Radiergummi. Ein Schirmbild der
+  // Buch-Karte war damit nicht herstellbar, und die C-Bahn hat ihre eigene
+  // Lieferung nie in der Karte sehen koennen, in der das Kind sie sieht.
+  // `?karte=<id>` waehlt sie namentlich. Es haengt an denselben zwei Schloessern
+  // wie die Bank selbst (Lehrer-Tuer UND Nicht-Produktionsbau) — ohne Bank
+  // bedeutet es nichts.
+  const cardBenchTask = cardBench !== undefined ? karte : undefined;
 
   return (
     <main style={{ padding: "12px 8px", background: "#f3ead6", minHeight: "100vh" }}>
@@ -87,6 +95,7 @@ export default async function BuchPage({
         debugPerf={debugPerf}
         noWarm={noWarm}
         cardBench={cardBench}
+        cardBenchTask={cardBenchTask}
       />
     </main>
   );

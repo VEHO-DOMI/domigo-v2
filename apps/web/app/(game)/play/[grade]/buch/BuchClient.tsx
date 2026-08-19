@@ -35,8 +35,12 @@ export default function BuchClient(props: {
   debugPerf?: boolean;
   /** R5-W1 · D1: which card bench surface to render (dev-only, `?karten=`). */
   cardBench?: string;
+  /** R5-W6b · W5 · C5/D-386-Nachbar: WELCHE Karte die Flaeche zeigt
+   *  (dev-only, `?karte=<task-id>`). Ohne sie nimmt die Bank die erste Karte
+   *  ihrer Art — beim Umfaerben also immer dieselbe. */
+  cardBenchTask?: string;
 }) {
-  const { cardBench, ...game } = props;
+  const { cardBench, cardBenchTask, ...game } = props;
   // R5-W2 · J1-B: resolved once, at first render — an effect would mount the
   // opening and tear it down a frame later, and a card that flashes is worse
   // than a card that stays. The SSR pass answers `false` (show it), which is
@@ -46,7 +50,7 @@ export default function BuchClient(props: {
   const [openingSeen] = useState(() => auftaktSeen(props.level.chapter));
 
   if (cardBench !== undefined) {
-    return <PaintDevGallery level={props.level} art={props.art} tasks={props.tasks} which={cardBench} />;
+    return <PaintDevGallery level={props.level} art={props.art} tasks={props.tasks} which={cardBench} karte={cardBenchTask} />;
   }
   // R5-W2 · I1 · THE SEAM. This file is the only place the painted book meets
   // the app, so it is where a found rule page becomes something that outlives

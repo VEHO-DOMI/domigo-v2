@@ -71,7 +71,7 @@ import { LETTER_GOLD, backedGround, letterBackingFor, letterGlyphs, letterRimFor
 // `hueGap` ist in dieser Datei schon vergeben (Kanten-Kohaerenz, A7-Revier,
 // eine eigene Umsetzung derselben Rechnung) — deshalb der Alias statt einer
 // Zusammenlegung, die eine fremde Region anfassen wuerde. Gefiled, nicht gebaut.
-import { hueGap as hueGapPresence, lum as lum255, hue as hueOf, separates } from "./measure-presence.mjs";
+import { hueGap as hueGapPresence, hueDeg, lum as lum255, hue as hueOf, separates } from "./measure-presence.mjs";
 import { TILE } from "../packages/game-paint/src/paint.ts";
 
 const R = process.cwd();
@@ -1214,10 +1214,20 @@ const seamStats = (px) => {
     const s = satOf(r, g, b);
     sat += s;
     if (s > HUE_MEANINGFUL_SAT / 100) {
-      const mx = Math.max(r, g, b), mn = Math.min(r, g, b), d = mx - mn;
-      let h = mx === r ? ((g - b) / d) % 6 : mx === g ? (b - r) / d + 2 : (r - g) / d + 4;
-      h = (h * 60 * Math.PI) / 180;
-      sx += Math.cos(h); sy += Math.sin(h); hueN++;
+      // R5-W6b · W5 · EINE Farbton-Rechnung (L1-Befund, D-45x): hier stand
+      // dieselbe Sektor-Formel ein zweites Mal, von Hand. Jetzt kommt der
+      // Winkel aus `hueDeg` (measure-presence.mjs) — derselbe Kern, den die
+      // Buchstaben-Praesenz benutzt. Die AGGREGATION bleibt, was sie war und
+      // sein muss: ein ZIRKULAERES Mittel ueber Einheitsvektoren, denn 350°
+      // und 10° liegen 20° auseinander und nicht 340 — ein arithmetisches
+      // Mittel wuerde daraus 180° machen.
+      // `null` ist unter dieser Sattigungs-Schwelle unerreichbar (s > 0 heisst
+      // max > min); die Klammer steht trotzdem, damit der Aufruf vollstaendig ist.
+      const deg = hueDeg(r, g, b);
+      if (deg !== null) {
+        const rad = (deg * Math.PI) / 180;
+        sx += Math.cos(rad); sy += Math.sin(rad); hueN++;
+      }
     }
   }
   const lums = px.map(([r, g, b]) => lumOf(r, g, b)).sort((a, b) => a - b);
@@ -1230,11 +1240,11 @@ const seamStats = (px) => {
   };
 };
 
-const hueGap = (a, b) => {
-  if (a === null || b === null) return null;
-  const d = Math.abs(a - b) % 360;
-  return d > 180 ? 360 - d : d;
-};
+/** R5-W6b · W5: derselbe Abstand wie in `measure-presence.mjs#hueGap`, Zeile
+ *  fuer Zeile — die zweite Kopie ist weg, die Null-Behandlung (ein Gelenk, an
+ *  dem eine Seite keinen Farbton hat, wird uebersprungen statt geraten) bleibt
+ *  hier, weil nur dieser Leser sie braucht. */
+const hueGap = (a, b) => (a === null || b === null ? null : hueGapPresence(a, b));
 
 /**
  * The joints a carved mass actually forms (`mass.ts#planMass` section 4), and —
@@ -1386,6 +1396,46 @@ if (process.argv.includes("--selftest")) {
     if (!ok) bad++;
     console.log(`${ok ? "✓" : "✗"} ${name}: ${rs.length === 0 ? "coherent" : why}${mustBreak && about !== null && !why.includes(about) ? `  ← expected a ${about} finding` : ""}`);
   }
+  // ── R5-W6b · W5 · EINE FARBTON-RECHNUNG, maschinell festgehalten ─────────
+  //
+  // L1s Befund war ein DOPPELPFAD: derselbe Winkel, zweimal ausgerechnet. Der
+  // Umbau legt beide auf `measure-presence.mjs#hueDeg`. Ein Kommentar haelt das
+  // nicht — der naechste Leser, der »nur schnell« eine eigene atan2-Zeile
+  // schreibt, macht denselben Fehler wieder. Also steht das Gesetz hier:
+  //
+  //   1 · Bekannte Winkel bleiben bekannt (die sechs Ecken des Farbkreises und
+  //       ein Punkt MITTEN im roten Sektor, wo der Rohwert NEGATIV herauskommt
+  //       — genau dort trennt sich richtig von plausibel-falsch: eine Formel
+  //       ohne die +360-Drehung sagt dort -30 statt 330, und im arithmetischen
+  //       Mittel ist das ein halber Farbkreis Unterschied).
+  //   2 · Wo der Praesenz-Leser einen Winkel meldet, ist es DERSELBE Winkel wie
+  //       der des Kerns. Weicht auch nur ein Bildpunkt ab, gibt es wieder zwei
+  //       Rechnungen, und dieses Tor sagt es.
+  const winkel = [
+    ["rot", [255, 0, 0], 0], ["gelb", [255, 255, 0], 60], ["gruen", [0, 255, 0], 120],
+    ["cyan", [0, 255, 255], 180], ["blau", [0, 0, 255], 240], ["magenta", [255, 0, 255], 300],
+    ["mitten im roten Sektor (Rohwert negativ)", [255, 0, 128], 329.8824],
+  ];
+  for (const [name, rgb, soll] of winkel) {
+    const ist = hueDeg(...rgb);
+    if (ist === null || Math.abs(ist - soll) > 0.01) {
+      bad++;
+      console.error(`✗ hueDeg(${rgb}) = ${ist}, erwartet ${soll} — der Farbton-Kern rechnet ${name} falsch`);
+    }
+  }
+  if (hueDeg(120, 120, 120) !== null) { bad++; console.error("✗ hueDeg meldet fuer reines Grau einen Winkel — dort gibt es keinen"); }
+  // …und die Schwelle ist die EINZIGE Zutat, die `hue` darueber legt:
+  if (hueOf(120, 122, 120) !== null) { bad++; console.error("✗ hue() meldet unter der Buntheits-Schwelle einen Winkel — die Schwelle ist wirkungslos"); }
+  let doppelpfad = 0, geprueft = 0;
+  for (let r = 0; r < 256; r += 7) for (let g = 0; g < 256; g += 11) for (let b = 0; b < 256; b += 13) {
+    const a = hueOf(r, g, b);
+    if (a === null) continue;
+    geprueft++;
+    if (a !== hueDeg(r, g, b)) doppelpfad++;
+  }
+  if (doppelpfad > 0) { bad++; console.error(`✗ ${doppelpfad} von ${geprueft} Bildpunkten bekommen von den zwei Lesern VERSCHIEDENE Winkel — der Doppelpfad ist zurueck`); }
+  else console.log(`✓ eine Farbton-Rechnung: sieben bekannte Winkel stimmen, Grau bekommt keinen, und ${geprueft} Bildpunkte bekommen von beiden Lesern bitgleich denselben Winkel`);
+
   // …and the waiver's expiry must be a DATE that can actually pass, which is the
   // whole reason this table is not `SEPARATION_WAIVERS`.
   if (!waiverExpired({ until: "2020-01-01" })) { bad++; console.error("✗ a waiver dated 2020 was still considered live — the expiry is decorative"); }

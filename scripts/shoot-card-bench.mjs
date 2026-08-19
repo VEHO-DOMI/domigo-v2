@@ -40,7 +40,18 @@
  * Usage:
  *   node scripts/shoot-card-bench.mjs <outDir> [--port 3007] [--only a,b]
  *                                     [--from N --to M] [--crop <name|selector>]
+ *                                     [--card <task-id>]
  *                                     [--cdp-port N]   (Standard: Chrome sucht sich einen freien)
+ *
+ * ── --card, und warum die Bank es brauchte (R5-W6b · W5 · C5) ───────────────
+ * Die Flaechen der Bank suchen ihre Karte per ART (`byKind`) und bekommen damit
+ * immer die ERSTE ihrer Art: bei `restore` den Radiergummi. Eine C-Bahn, die
+ * ein umgefaerbtes BUCH abnimmt, konnte es also in der Karte, in der das Kind
+ * es sieht, nie fotografieren — und genau dort entscheidet sich, ob die Farbe
+ * traegt. `--card obj-book.r1` waehlt sie namentlich (volle id oder ihr Ende);
+ * eine unbekannte oder mehrdeutige id malt eine sichtbare Fehlzeile statt
+ * stillschweigend die erste Karte. Der Dateiname traegt die id mit, damit ein
+ * Ausschnitt spaeter nicht der falschen Karte zugeschrieben wird.
  *   node scripts/shoot-card-bench.mjs --selftest      (ohne Dev-Server)
  * The dev server must already be running (the bench is dev-only by law), and its
  * teacher door needs `apps/web/.env.local` with `DEV_TEACHER_ID=<irgendwas>` —
@@ -313,6 +324,9 @@ const num = (name) => (args.indexOf(name) === -1 ? null : Number(args[args.index
 const port = args.indexOf("--port") === -1 ? 3007 : Number(args[args.indexOf("--port") + 1]);
 const only = args.indexOf("--only") === -1 ? null : new Set(args[args.indexOf("--only") + 1].split(","));
 const cropName = args.indexOf("--crop") === -1 ? null : args[args.indexOf("--crop") + 1];
+// R5-W6b · W5 · C5s Befund: eine Karten-Flaeche zeigt die ERSTE Karte ihrer
+// Art — bei `restore` immer den Radiergummi. `--card <id>` sagt, WELCHE.
+const cardId = args.indexOf("--card") === -1 ? null : args[args.indexOf("--card") + 1];
 // D-207: ohne Angabe holt sich der Lauf VOR dem Start einen freien Port.
 const cdpPort = num("--cdp-port") ?? CDP_PORT_DEFAULT ?? await freePort();
 const wanted = planOf(SURFACES, { only, from: num("--from"), to: num("--to") });
@@ -476,9 +490,12 @@ async function rectOf(id, sel) {
  *  fallback („Bench lädt …") photographed as the card is the one failure this
  *  whole instrument exists to prevent. */
 async function shoot(id) {
-  const suffix = cropName === null ? "" : `__${cropName}`;
+  const suffix = (cardId === null ? "" : `__${cardId.replace(/[^A-Za-z0-9._-]/g, "-")}`)
+    + (cropName === null ? "" : `__${cropName}`);
   const out = path.join(outDir, `${id}${suffix}.png`);
-  await page("Page.navigate", { url: `http://localhost:${port}/play/1/buch?karten=${id}` });
+  const adresse = `http://localhost:${port}/play/1/buch?karten=${id}`
+    + (cardId === null ? "" : `&karte=${encodeURIComponent(cardId)}`);
+  await page("Page.navigate", { url: adresse });
   let ready = false;
   for (let i = 0; i < 120; i++) {
     await sleep(250);
@@ -490,6 +507,23 @@ async function shoot(id) {
     if (result.value === true) { ready = true; break; }
   }
   if (!ready) throw new Error(`${id}: the stage never painted`);
+  // R5-W6b · W5: gemalt heisst nicht, dass die BESTELLTE Karte gemalt wurde.
+  // Ohne diese Frage haette ein Tippfehler in `--card` 27 Fehlzeilen
+  // fotografiert und Exit 0 gemeldet — genau die stille Sorte Fehler, die
+  // dieses Skript laut seinem eigenen Kopf nicht mehr macht.
+  if (cardId !== null) {
+    const { result } = await page("Runtime.evaluate", {
+      expression: `(document.querySelector('[data-testid="gallery-stage"]')?.dataset.karte ?? "")`,
+      returnByValue: true,
+    });
+    const gezeigt = String(result.value ?? "");
+    if (gezeigt === "" || !(gezeigt === cardId || gezeigt.endsWith(`.${cardId}`))) {
+      throw new Error(`${id}: --card »${cardId}« wurde NICHT gezeigt (die Buehne zeigt `
+        + `${gezeigt === "" ? "keine namentlich gewaehlte Karte" : `»${gezeigt}«`}). `
+        + "Unbekannte, mehrdeutige oder artfremde id — nichts fotografiert, damit kein Ausschnitt "
+        + "spaeter der falschen Karte zugeschrieben wird.");
+    }
+  }
   // one more beat so the card's own entrance animation has finished (420 ms
   // after a 260 ms delay) — a card photographed mid-spring is not the card
   await sleep(1100);

@@ -34,7 +34,25 @@
  *   node scripts/shoot-world.mjs <outDir> --phase p1 --port 3021 \
  *        [--visible] [--sink-port 3921] [--cdp-port 9341] \
  *        [--warp c,r] [--settle 240] [--shots 14] [--every 6] [--pure] \
- *        [--press left|right|jump] [--name uns_kaefig]
+ *        [--press left|right|jump] [--name uns_kaefig] [--tick 900]
+ *
+ * ── --tick, und warum ein Vorher/Nachher es braucht (R5-W6b · W5, L1) ──────
+ * Bis hierher konnte diese Reihe sagen, WANN sie entstanden ist (`state().tick`
+ * steht im Beipackzettel), aber nicht, WANN sie entstehen SOLL. An etwas
+ * Bewegtem — einem ruettelnden Kaefig, einer atmenden Figur — heisst das: zwei
+ * Laeufe derselben Kameralage zeigen verschiedene Phasen derselben Bewegung,
+ * und dieser Unterschied sieht in einem Seite-an-Seite genauso aus wie eine
+ * Aenderung am Bild. `--tick n` fixiert den Takt der ERSTEN Aufnahme; die Reihe
+ * laeuft danach wie gewohnt in `--every`-Schritten weiter.
+ *
+ * Gewartet wird auf den ZUSTAND, nicht auf die Uhr: gefahren wird mit
+ * `frameSink.drive()`, und danach wird `state().tick` GELESEN. Ein Zeitgeber
+ * waere hier besonders falsch — im verborgenen Tab drosselt Chrome ihn, und
+ * eine Reihe, die »ungefaehr bei 900« sagt, ist keine Fixierung.
+ *
+ * Liegt der Takt schon ueber `n`, bricht der Lauf ab. Zurueckspulen kann
+ * niemand, und ein Werkzeug, das dann still das naechstbeste Bild nimmt, macht
+ * aus einer Fixierung eine Behauptung.
  *
  * ⚠ EIGENER PORT, IMMER (P-65): am 14.08. sprach ein Live-Lauf mit einem fremden
  *   Dev-Server auf 3000 und hätte jede „live geprüft"-Aussage zur Lüge gemacht.
@@ -152,6 +170,11 @@ const settle = Number(flag("--settle", fight ? 20 : 240));
 const warp = flag("--warp", null);
 const press = flag("--press", null);
 const stem = flag("--name", "frame");
+// R5-W6b · W5 · L1s Befund: der Tick einer Aufnahme liess sich nicht vorgeben,
+// also war ein Vorher/Nachher an bewegten Dingen nur eingeschraenkt
+// vergleichbar (zwei Laeufe derselben Kameralage zeigen verschiedene Phasen
+// derselben Bewegung, und der Unterschied sieht aus wie eine Aenderung).
+const tickWunsch = flag("--tick", null) === null ? null : Number(flag("--tick", null));
 const pure = has("--pure");
 const visible = has("--visible");
 
@@ -363,8 +386,44 @@ try {
     const [c, r] = warp.split(",").map(Number);
     await evalIn(`window.__domigoPaint.warp(${c}, ${r})`);
   }
+  // ── DIE press()-WAND (R5-W6b · W5 · S2-Befund) ──────────────────────────
+  // `__domigoPaint.press()` bewegt das Kind NICHT, solange eine Karte oben
+  // liegt: S2 hat `vx: 0` gemessen, bei Boden unter den Fuessen, und echte
+  // Pfeiltasten erreichen Phaser in einem CDP-Ziel dort auch nicht. Das ist
+  // eine WAND, keine Messung — und bis heute war sie still: der Lauf schoss
+  // seine Reihe, das Kind stand, und wer sich auf `--press` verliess, mass die
+  // Stille seiner eigenen Umgehung.
+  // Also wird jetzt nachgesehen. Gelesen wird der ZUSTAND (x und vx), nicht die
+  // Absicht — und wenn nichts passiert ist, endet der Lauf mit einer Meldung,
+  // die die Karte beim Namen nennt, statt mit einer Bildreihe, die eine
+  // Bewegung behauptet.
+  // BEIDE Achsen, und das ist kein Detail: `--press jump` bewegt das Kind in y,
+  // nicht in x. Eine Wand-Pruefung, die nur x liest, wuerde jeden Sprung als
+  // »nicht bewegt« melden — eine Falschmeldung, die genau die Sorte Schaden
+  // anrichtet, gegen die diese Pruefung gebaut ist.
+  const lage = async () => evalIn("(() => { const s = window.__domigoPaint.state(); "
+    + "return { x: s.x, y: s.y, vx: s.vx, vy: s.vy }; })()");
+  const vorherLage = press === null ? null : await lage();
   if (press !== null) await evalIn(`window.__domigoPaint.press({ ${press}: true })`);
   await evalIn(`(() => { for (let i = 0; i < ${settle}; i++) window.__domigoPaint.step(); return true; })()`);
+  if (press !== null) {
+    const jetzt = await lage();
+    const bewegt = Math.abs(jetzt.x - vorherLage.x) > 0.5 || Math.abs(jetzt.y - vorherLage.y) > 0.5
+      || Math.abs(jetzt.vx) > 0.01 || Math.abs(jetzt.vy) > 0.01;
+    if (!bewegt) {
+      const wer = await karte();
+      const offen = await karteOffen();
+      await fail(`--press ${press} hat das Kind NICHT bewegt: x ${vorherLage.x.toFixed(1)} → ${jetzt.x.toFixed(1)}, `
+        + `y ${vorherLage.y.toFixed(1)} → ${jetzt.y.toFixed(1)}, vx ${jetzt.vx.toFixed(2)}, vy ${jetzt.vy.toFixed(2)} `
+        + `nach ${settle} Schritten. `
+        + (offen
+          ? `Die Karte »${wer}« liegt oben — das ist die bekannte Wand (S2, R5-W6): press() erreicht die `
+            + "Spielfigur bei offenem Overlay nicht, und echte Pfeiltasten in einem CDP-Ziel auch nicht. "
+            + "Erst die Karte schliessen (--fight loest sie), dann pressen."
+          : "Keine Karte liegt oben — das Kind steht aus einem anderen Grund (Wand, Kante, kein Boden "
+            + "unter den Fuessen nach --warp). Eine Reihe waere hier N-mal dasselbe Bild."));
+    }
+  }
   // …und noch einmal: das Beziehen der Stellung schlägt gern eine Karte auf
   // (Käfig-Hinweis!), und dann steht die Welt wieder.
   for (let i = 0; i < 8; i++) {
@@ -413,6 +472,30 @@ try {
   if (!sink.verdict().armed) await fail(`Handschlag nicht bestanden (Weg »snapshot«)`);
   console.log(`  Handschlag bestanden (Weg »snapshot«) — die Kamera lebt.`);
 
+  // ── 8b · DEN TAKT FIXIEREN (R5-W6b · W5 · L1) ────────────────────────────
+  // Ab hier steht die Uhr (`freeze`), und die Welt rueckt nur noch, wenn wir es
+  // sagen — genau deshalb ist DIES die Stelle, an der ein gewuenschter Takt
+  // erreichbar ist: die zwei Probeaufnahmen haben ihre Ticks schon gekostet,
+  // die erste ECHTE Aufnahme kommt gleich.
+  if (tickWunsch !== null) {
+    let ist = await evalIn(`window.__domigoPaint.state().tick`);
+    if (ist > tickWunsch) {
+      await fail(`--tick ${tickWunsch} liegt hinter dem Lauf: die Welt steht schon auf Tick ${ist}. `
+        + "Zurueckspulen kann niemand — mit kleinerem --settle noch einmal, oder einen Takt weiter vorne waehlen. "
+        + "(Still das naechstbeste Bild zu nehmen waere aus der Fixierung eine Behauptung gemacht.)");
+    }
+    for (let versuch = 0; versuch < 8 && ist < tickWunsch; versuch++) {
+      await evalIn(`window.__frameSink.drive(${tickWunsch - ist})`);
+      ist = await evalIn(`window.__domigoPaint.state().tick`);
+    }
+    if (ist !== tickWunsch) {
+      await fail(`--tick ${tickWunsch} nicht getroffen: nach acht Anlaeufen steht die Welt auf Tick ${ist}. `
+        + "Der Antrieb rueckt nicht so, wie dieser Lauf annimmt — bevor irgendein Bild geschrieben wird, "
+        + "ist das ein Werkzeug-Fehler und keine Reihe.");
+    }
+    console.log(`  Takt fixiert: die erste Aufnahme steht auf Tick ${ist} (gelesen, nicht gewartet).`);
+  }
+
   // ── 9 · die Reihe ────────────────────────────────────────────────────────
   // Im Kampf-Modus (D-259) kommen zwei Dinge dazu, und beide sind Ehrlichkeit,
   // nicht Bequemlichkeit: zwischen den Aufnahmen wird eine aufgehende Karte
@@ -435,7 +518,9 @@ try {
     });
     if (i < shots) await evalIn(`window.__frameSink.drive(${every})`);
   }
-  console.log(`  ${shots} Aufnahmen · alle ${every} Ticks · ${path.resolve(outDir)}`);
+  console.log(`  ${shots} Aufnahmen · alle ${every} Ticks`
+    + (tickWunsch === null ? "" : ` · erste Aufnahme auf Tick ${tickWunsch} fixiert`)
+    + ` · ${path.resolve(outDir)}`);
   if (fight) {
     const karten = [...new Set(geloest)];
     console.log(`  Kampf-Modus: Abtastrate ${every} Ticks (Wisch ${FIGHT_BEATS.WIPE_TICKS} · `
