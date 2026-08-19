@@ -99,9 +99,37 @@ Trotzdem bleibt zweierlei wahr:
 * **GPU-Zeit** über `EXT_disjoint_timer_query` ist zulässig und zählt echte
   GPU-Arbeit statt Wartezeit.
 
-## 3b · Wie man die Tabelle nimmt (R115) — R5-W5 · E6
+## 3b · Wie man die Tabelle nimmt (R115) — R5-W5 · E6, ergänzt R5-W6b · E7
 
-**Es gibt ab jetzt genau EIN Rezept, und es ist ein Skript:**
+### ★ Die drei Zeilen VOR jeder Zahl (D-421 · D-339 · D-349 · R164)
+
+**Ohne diese drei Lesungen ist jede Zahl unten wertlos. Sie stehen hier, weil
+die teuerste Lehre der Welle 6 bis heute nur im Schulden-Register stand — und
+niemand liest das Register, bevor er misst.**
+
+```
+pgrep -fl "headless=new"      # MUSS leer sein — ein fremder Test-Browser aus einer
+                              # FRÜHEREN Sitzung hält einen GPU-Prozess und
+                              # verdreifacht Bauzeiten (D-339: 8199 ms gegen 661 ms)
+sysctl -n vm.loadavg          # < 5, sonst warten
+pgrep -x oxipng               # 0 — ein `art-recompress` der Nachbar-Sitzung läuft
+                              # mit bis zu 500 % CPU (D-349)
+```
+
+Alle drei Werte gehören in den Beipackzettel und in den PR-Text, neben die
+Kontroll-fps. `pgrep -x`, nicht `pgrep -f`: ein `-f` findet die eigene
+Warteschleife und meldet ewig „läuft noch".
+
+**Und warum die Kontrollseite das NICHT ersetzt.** Sie beweist, dass das
+Instrument 60 Bilder je Sekunde sehen kann — mehr nicht. **Eine LEERE Seite
+schafft 60 fps auch unter voller Last**, also meldet sie grün, während das Spiel
+daneben das Dreifache braucht. Gemessen (A7, 18.08.): derselbe Bau, derselbe
+Port, beide Kontrollen grün (61,4 und 60,4 fps) — und `create()` für p2 einmal
+833 ms, einmal **1394 ms**. Der Unterschied war die Maschine, nicht der Code:
+sechs parallele Sitzungen, Lastmittel zwischen 36 und 350. **Eine Zahl über
+Budget wird IMMER nachgemessen**, nachdem diese drei Zeilen sauber sind.
+
+**Es gibt genau EIN Rezept, und es ist ein Skript:**
 
 ```
 pnpm build && (cd apps/web && npx next start -p <dein Port>)
@@ -128,9 +156,21 @@ deshalb selbst:
    Gitter, Kunst-Umfang) läuft VOR `create()`; wer Arbeit dorthin schiebt,
    verbessert `createMs` und die Wartezeit des Kindes um keine Millisekunde
    (P-77). Der Konstruktor wird in Node gemessen, weil kein Browser hineinsieht.
-3. **Eine Lücke wird nie zu einer Null.** Der Erstbild-Rekorder verpasst je Lauf
-   etwa eine von fünf Phasen (D-118); das Skript lädt eine unvollständige Phase
-   bis zu dreimal neu und schreibt sonst »—«.
+3. **Eine Lücke wird nie zu einer Null — und seit E7 ist sie ein ROTES LICHT.**
+   Der Erstbild-Rekorder verpasste je Lauf etwa eine von fünf Phasen (D-118);
+   das Skript lädt eine unvollständige Phase bis zu dreimal neu und schreibt
+   sonst »—«. Neu (D-327): die Sonde sammelt die Antworten der Grafikkarte in
+   Scheiben ein, statt genau einmal hinzusehen — eine Antwort, die im falschen
+   Augenblick noch unterwegs war, war vorher ununterscheidbar von „diese Karte
+   kann keine Zeitmessung". Was dann noch fehlt, meldet sie **namentlich und mit
+   Grund** (`gaps`), das Skript druckt diese Gründe unter der Tabelle, **und es
+   endet mit Exit 1**. Eine Tabelle mit drei Strichen sah für jeden Aufrufer wie
+   ein Erfolg aus; sie ist keiner.
+4. **Die Aufschlüsselung nennt Kinder als Kinder.** `terrain` und `props` zeigen
+   ihre Unterschritte (`· gitter`, `· planMass`, `· platzieren`, `· koernung`,
+   `· letterTex` …) eingerückt. Kinder werden in KEINE Summe genommen und sind
+   untereinander disjunkt — eine Aufschlüsselung, deren Summe größer ist als die
+   Zahl, die sie aufschlüsselt, ist keine (E6 hat genau die einmal gedruckt).
 
 `--port` ist **Pflicht** — ein Standard-Port misst in einem Haus mit sieben
 parallelen Sessions irgendwann den Server des Nachbarn (P-65).

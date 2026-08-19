@@ -22,6 +22,7 @@ import { WARM_MPX_PER_FRAME } from "./warm.ts";
 import { PatternLedger } from "./tilePatterns.ts";
 import { type LayerPiece, coverFit, planLayers } from "./layers.ts";
 import { AIR_DEPTH, LIFE_PARALLAX, type AirPiece, planBandShade, planHaze, planLife, planMotes, planShafts, planSources, shaftQuads, vignetteBands } from "./air.ts";
+import { type Cell, cellsOf, indexTerrain, mergeRowMajor, runsFrom } from "./terrain.ts";
 import { NEAR_PLANE_KINDS, CRUST_MARK_DEPTH, MASS_MARK_DEPTH, type MassPiece, type SurfaceMark, claimedPlatformCells, crustGrain, hash01, ledgeGrain, massGrain, planMass, planPlatformShadows, tileAnchorFor, tileScaleFor } from "./mass.ts";
 import { BACKING_REACH, BACKING_STEPS, LETTER_AMBER, LETTER_GOLD, LETTER_STYLE, letterBackingFor, letterGlowGain, letterGlyphs, letterRimFor } from "./letters.ts";
 import { type PhraseSlot, bonusPhrase } from "./cards/ceremony.ts";
@@ -229,6 +230,8 @@ const LETTER_GRAIN_SPECKS = 130;
  *  that eventually does, and it falls back to live Graphics rather than to a
  *  missing floor. */
 const BAKE_MAX_PX = 4096;
+/** Durchsichtiger Saum um eine zugeschnittene Backtextur (E7) — siehe bakeStatic. */
+const BAKE_PAD = 2;
 /** …and the shadow it drops on whatever it is floating over: how far down that
  *  surface may be before the letter is too high to cast anything readable. */
 const LETTER_SHADOW_REACH_PX = 26;
@@ -4615,13 +4618,25 @@ export class PaintScene extends Phaser.Scene {
     const CANOPY = 0x2e4d33;
     // R5-W6b · E7 · the sub-step clocks. Children of "terrain" — see `timed`.
     let tSub = performance.now();
-    for (let r = 0; r < h; r++) {
-      for (let c = 0; c < w; c++) {
+    // ── R5-W6b · E7 · D-323 · ONE PASS OVER THE GRID, NOT EIGHT ──────────────
+    // This loop used to visit every cell of the grid and throw almost all of
+    // them away, and the seven dressing passes below each did the same again.
+    // `indexTerrain` sorts every cell under its own glyph in ONE pass; each
+    // step then asks only for the cells it can act on. `mergeRowMajor` keeps
+    // them row by row, left to right — the order the old double loop had, and
+    // therefore the order in which equal-depth objects overlap. Change that
+    // order and you change the picture, which is why terrain.test.ts pins it.
+    const idx = indexTerrain(this.grid);
+    const acted: readonly Cell[] = kit !== null
+      ? mergeRowMajor(cellsOf(idx, "="), cellsOf(idx, "^"))
+      : mergeRowMajor(idx.solid, idx.slope, cellsOf(idx, "="), cellsOf(idx, "^"));
+    for (const { c, r } of acted) {
+      {
         const g = glyphAt(this.grid, c, r);
         // with a kit present the carved mass owns every solid and every slope;
         // the graphics pass keeps only the hazard/one-way fallbacks below
         const isCanopy = kit === null && isSolid(g) && r <= 1; // the closed top (W0-F7)
-        if (kit !== null && (isSolid(g) || isSlope(g))) continue;
+        if (kit !== null && (isSolid(g) || isSlope(g))) continue; // invariant: `acted` holds none
         if (isCanopy) {
           fill.fillStyle(CANOPY);
           fill.fillRect(c * TILE, r * TILE, TILE, TILE);
@@ -4688,24 +4703,27 @@ export class PaintScene extends Phaser.Scene {
     this.mark("· tinten-spalten", tSub, "terrain");
 
     tSub = performance.now();
-    // AA2 run-based dressing: canopy fringe, planks, spikes, pool, pit soil
-    const runs = (pred: (c: number, r: number) => boolean, draw: (c0: number, c1: number, r: number) => void): void => {
-      for (let r = 0; r < h; r++) {
-        let c = 0;
-        while (c < w) {
-          if (!pred(c, r)) { c++; continue; }
-          let c1 = c;
-          while (c1 + 1 < w && pred(c1 + 1, r)) c1++;
-          draw(c, c1, r);
-          c = c1 + 1;
-        }
-      }
+    // AA2 run-based dressing: canopy fringe, planks, spikes, pool, pit soil.
+    // R5-W6b · E7: the candidates come from the index instead of from a fresh
+    // sweep of the whole grid. `runsFrom` builds the SAME maximal chains — a
+    // chain breaks the moment the next candidate is not the next column of the
+    // same row, which is exactly what the old sweep did when `pred` was false
+    // in the gap. Proven cell for cell against the old code in terrain.test.ts,
+    // over the five real rooms AND made-up grids for the glyphs ch01 lacks.
+    const runs = (
+      candidates: readonly Cell[],
+      pred: (c: number, r: number) => boolean,
+      draw: (c0: number, c1: number, r: number) => void,
+    ): void => {
+      for (const run of runsFrom(candidates, pred)) draw(run.c0, run.c1, run.r);
     };
+    const solidFromRow = (min: number): readonly Cell[] => idx.solid.filter((x) => x.r >= min);
     const srcH = (stem: string): number => (this.textures.get(`pb-${stem}`).getSourceImage() as HTMLImageElement).height;
     if (this.textures.exists("pb-canopy_fringe_loop")) {
       const dh = 26;
       const ts = dh / srcH("canopy_fringe_loop");
       runs(
+        idx.solid.filter((x) => x.r <= 1),
         (c, r) => r <= 1 && isSolid(glyphAt(this.grid, c, r)) && !isSolid(glyphAt(this.grid, c, r + 1)),
         (c0, c1, r) => { this.tiled(c0 * TILE, (r + 1) * TILE - 4, (c1 - c0 + 1) * TILE, dh, "pb-canopy_fringe_loop").setOrigin(0, 0).setDepth(2).setTileScale(ts); },
       );
@@ -4714,6 +4732,7 @@ export class PaintScene extends Phaser.Scene {
       const dh = 9;
       const ts = dh / srcH("plank_loop");
       runs(
+        cellsOf(idx, "="),
         (c, r) => glyphAt(this.grid, c, r) === "=",
         (c0, c1, r) => {
           this.tiled(c0 * TILE, r * TILE - 2, (c1 - c0 + 1) * TILE, dh, "pb-plank_loop").setOrigin(0, 0).setDepth(2).setTileScale(ts);
@@ -4726,6 +4745,7 @@ export class PaintScene extends Phaser.Scene {
       const dh = 15;
       const ts = dh / srcH("spikes_nibs_loop");
       runs(
+        cellsOf(idx, "^"),
         (c, r) => glyphAt(this.grid, c, r) === "^",
         (c0, c1, r) => { this.tiled(c0 * TILE, (r + 1) * TILE - dh, (c1 - c0 + 1) * TILE, dh, "pb-spikes_nibs_loop").setOrigin(0, 0).setDepth(3).setTileScale(ts); },
       );
@@ -4740,6 +4760,7 @@ export class PaintScene extends Phaser.Scene {
       const dh = 16;
       const ts = dh / srcH("pool_ink_loop");
       runs(
+        cellsOf(idx, "w"),
         (c, r) => glyphAt(this.grid, c, r) === "w" && glyphAt(this.grid, c, r - 1) !== "w",
         (c0, c1, r) => {
           const t = this.tiled(c0 * TILE, r * TILE, (c1 - c0 + 1) * TILE, dh, "pb-pool_ink_loop")
@@ -4762,6 +4783,7 @@ export class PaintScene extends Phaser.Scene {
     if (kit === null && this.textures.exists("pb-pit_inner_tile")) {
       const scale = 0.055; // ~56px world pattern from the 1024 source
       runs(
+        solidFromRow(2),
         (c, r) => r > 1 && isSolid(glyphAt(this.grid, c, r)) && isSolid(glyphAt(this.grid, c, r - 1)) && glyphAt(this.grid, c, r) !== "~",
         (c0, c1, r) => {
           const t = this.tiled(c0 * TILE, r * TILE, (c1 - c0 + 1) * TILE, TILE, "pb-pit_inner_tile").setOrigin(0, 0).setDepth(1).setTileScale(scale);
@@ -4776,57 +4798,47 @@ export class PaintScene extends Phaser.Scene {
       const src = this.textures.get("pb-strip_ground_loop").getSourceImage() as HTMLImageElement;
       const dispH = 30;
       const tileScale = dispH / src.height;
-      for (let r = 0; r < h; r++) {
-        let c = 0;
-        while (c < w) {
-          const surface = (cc: number): boolean => {
-            if (r <= 2) return false; // canopy rows carry fringe, never ground strips
-            const g = glyphAt(this.grid, cc, r);
-            if (!isSolid(g) || g === "~") return false;
-            // R6: a lip under a near ceiling reads as a double strip — suppress
-            for (let k = 1; k <= 3; k++) if (isSolid(glyphAt(this.grid, cc, r - k))) return false;
-            return !isSlope(glyphAt(this.grid, cc, r - 1));
-          };
-          if (!surface(c)) { c++; continue; }
-          let c1 = c;
-          while (c1 + 1 < w && surface(c1 + 1)) c1++;
-          const runW = (c1 - c + 1) * TILE;
-          this
-            .tiled(c * TILE, r * TILE - 7, runW, dispH, "pb-strip_ground_loop")
-            .setOrigin(0, 0)
-            .setDepth(2)
-            .setTileScale(tileScale);
-          if (this.textures.exists("pb-strip_cap_l") && c > 0) {
-            this.add.image(c * TILE + 2, r * TILE - 7, "pb-strip_cap_l").setOrigin(1, 0).setScale(tileScale).setDepth(2);
-          }
-          if (this.textures.exists("pb-strip_cap_r") && c1 < w - 1) {
-            this.add.image((c1 + 1) * TILE - 2, r * TILE - 7, "pb-strip_cap_r").setOrigin(0, 0).setScale(tileScale).setDepth(2);
-          }
-          c = c1 + 1;
+      const surface = (cc: number, r: number): boolean => {
+        if (r <= 2) return false; // canopy rows carry fringe, never ground strips
+        const g = glyphAt(this.grid, cc, r);
+        if (!isSolid(g) || g === "~") return false;
+        // R6: a lip under a near ceiling reads as a double strip — suppress
+        for (let k = 1; k <= 3; k++) if (isSolid(glyphAt(this.grid, cc, r - k))) return false;
+        return !isSlope(glyphAt(this.grid, cc, r - 1));
+      };
+      runs(solidFromRow(3), (c, r) => surface(c, r), (c, c1, r) => {
+        const runW = (c1 - c + 1) * TILE;
+        this
+          .tiled(c * TILE, r * TILE - 7, runW, dispH, "pb-strip_ground_loop")
+          .setOrigin(0, 0)
+          .setDepth(2)
+          .setTileScale(tileScale);
+        if (this.textures.exists("pb-strip_cap_l") && c > 0) {
+          this.add.image(c * TILE + 2, r * TILE - 7, "pb-strip_cap_l").setOrigin(1, 0).setScale(tileScale).setDepth(2);
         }
-      }
+        if (this.textures.exists("pb-strip_cap_r") && c1 < w - 1) {
+          this.add.image((c1 + 1) * TILE - 2, r * TILE - 7, "pb-strip_cap_r").setOrigin(0, 0).setScale(tileScale).setDepth(2);
+        }
+      });
     }
     if (this.textures.exists("pb-strip_ice_loop")) {
       const src = this.textures.get("pb-strip_ice_loop").getSourceImage() as HTMLImageElement;
       const dispH = 30;
       const ts = dispH / src.height;
-      for (let r = 3; r < h; r++) {
-        let c = 0;
-        // A-6 (pre-C1): the `z` slide wore the same blackboard art as a flat
-        // `~` run. With a kit the slide is its OWN object (mass.ts, doc 36 §2),
-        // so `z` leaves this path entirely.
-        const icy = (cc: number): boolean => {
-          const g = glyphAt(this.grid, cc, r);
-          return (g === "~" || (kit === null && g === "z")) && !isSolid(glyphAt(this.grid, cc, r - 1));
-        };
-        while (c < w) {
-          if (!icy(c)) { c++; continue; }
-          let c1 = c;
-          while (c1 + 1 < w && icy(c1 + 1)) c1++;
-          this.tiled(c * TILE, r * TILE - 7, (c1 - c + 1) * TILE, dispH, "pb-strip_ice_loop").setOrigin(0, 0).setDepth(2).setTileScale(ts);
-          c = c1 + 1;
-        }
-      }
+      // A-6 (pre-C1): the `z` slide wore the same blackboard art as a flat
+      // `~` run. With a kit the slide is its OWN object (mass.ts, doc 36 §2),
+      // so `z` leaves this path entirely.
+      const icy = (cc: number, r: number): boolean => {
+        if (r < 3) return false;
+        const g = glyphAt(this.grid, cc, r);
+        return (g === "~" || (kit === null && g === "z")) && !isSolid(glyphAt(this.grid, cc, r - 1));
+      };
+      const iceCells = kit === null
+        ? mergeRowMajor(cellsOf(idx, "~"), cellsOf(idx, "z"))
+        : cellsOf(idx, "~");
+      runs(iceCells, icy, (c, c1, r) => {
+        this.tiled(c * TILE, r * TILE - 7, (c1 - c + 1) * TILE, dispH, "pb-strip_ice_loop").setOrigin(0, 0).setDepth(2).setTileScale(ts);
+      });
     }
 
     this.mark("· verzierung", tSub, "terrain");
@@ -4901,24 +4913,42 @@ export class PaintScene extends Phaser.Scene {
   private bakeStatic(
     name: string,
     depth: number,
-    paint: (g: Phaser.GameObjects.Graphics) => void,
+    paint: (g: Phaser.GameObjects.Graphics, ox: number, oy: number) => void,
+    box: { x: number; y: number; w: number; h: number } | null = null,
   ): void {
-    const w = Math.ceil(this.worldWpx);
-    const h = Math.ceil(this.worldHpx);
+    // ── R5-W6b · E7 · NUR SO GROSS WIE DAS, WAS DRAUFSTEHT ───────────────────
+    // Gebacken wurde bisher IMMER eine weltgroße Leinwand — auf p1 1024×416,
+    // dreimal je Raum —, obwohl die Marken darauf nur einen Teil bedecken. Eine
+    // Textur kostet beim Anlegen und beim Hochladen zur Grafikkarte nach ihrer
+    // FLÄCHE, nicht nach ihrem Inhalt: gemessen decken die drei Marken-Sätze
+    // 37 bis 72 % der Weltfläche ab, der Rest war durchsichtiger Ballast.
+    //
+    // Warum das Bild sich davon NICHT ändert: der Ausschnitt wird um GANZE
+    // Bildpunkte verschoben (`Math.floor`), also behält jede Marke ihren
+    // Nachkommaanteil und damit ihre Kantenglättung; das Bild wird an genau
+    // derselben Weltstelle wieder abgesetzt. Der Rand bekommt `BAKE_PAD`
+    // durchsichtige Bildpunkte, damit die bilineare Filterung am Texturrand
+    // dasselbe liest wie vorher (ohne Saum würde sie den Randpunkt wiederholen,
+    // statt ins Durchsichtige zu laufen) — die einzige Stelle, an der ein
+    // Zuschnitt überhaupt sichtbar werden könnte.
+    const ox = box === null ? 0 : Math.floor(box.x) - BAKE_PAD;
+    const oy = box === null ? 0 : Math.floor(box.y) - BAKE_PAD;
+    const w = box === null ? Math.ceil(this.worldWpx) : Math.ceil(box.x + box.w) - ox + BAKE_PAD;
+    const h = box === null ? Math.ceil(this.worldHpx) : Math.ceil(box.y + box.h) - oy + BAKE_PAD;
     if (w > BAKE_MAX_PX || h > BAKE_MAX_PX) {
       const live = this.add.graphics().setDepth(depth);
-      paint(live);
+      paint(live, 0, 0); // der Ausweichweg zeichnet in Weltkoordinaten
       return;
     }
     // built off the display list: it must never be drawn, only harvested
     const g = this.make.graphics({ x: 0, y: 0 }, false);
-    paint(g);
+    paint(g, ox, oy);
     const key = `bake-${this.cfg.phaseId}-${name}`;
     if (this.textures.exists(key)) this.textures.remove(key);
     g.generateTexture(key, w, h);
     g.destroy();
     this.bakedKeys.push(key);
-    this.add.image(0, 0, key).setOrigin(0, 0).setDepth(depth);
+    this.add.image(ox, oy, key).setOrigin(0, 0).setDepth(depth);
   }
 
   /**
@@ -4953,14 +4983,23 @@ export class PaintScene extends Phaser.Scene {
     const claimed = claimedPlatformCells(this.grid);
     const draw = (marks: readonly SurfaceMark[], depth: number, round: number): void => {
       if (marks.length === 0) return;
-      const paint = (g: Phaser.GameObjects.Graphics): void => {
+      // R5-W6b · E7: der kleinste Kasten, der alle Marken enthält — siehe
+      // bakeStatic für den Grund und für den Beweis, dass es dasselbe Bild ist.
+      let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+      for (const m of marks) {
+        if (m.x < x0) x0 = m.x;
+        if (m.y < y0) y0 = m.y;
+        if (m.x + m.w > x1) x1 = m.x + m.w;
+        if (m.y + m.h > y1) y1 = m.y + m.h;
+      }
+      const paint = (g: Phaser.GameObjects.Graphics, ox: number, oy: number): void => {
         for (const m of marks) {
           g.fillStyle(m.kind === "shine" ? GRAIN_SHINE : GRAIN_SCUFF, m.alpha);
           // rounded, because a hard rectangle on a painted floor reads as a sticker
-          g.fillRoundedRect(m.x, m.y, m.w, m.h, Math.min(m.h / 2, round));
+          g.fillRoundedRect(m.x - ox, m.y - oy, m.w, m.h, Math.min(m.h / 2, round));
         }
       };
-      this.bakeStatic(`grain${depth}`, depth, paint);
+      this.bakeStatic(`grain${depth}`, depth, paint, { x: x0, y: y0, w: x1 - x0, h: y1 - y0 });
     };
     draw(crustGrain(this.grid, claimed), CRUST_MARK_DEPTH, 1.2);
     // …and the patina on the mass below it, which is the surface the round-1
@@ -5568,9 +5607,11 @@ export class PaintScene extends Phaser.Scene {
     return (r + 1) * TILE;
   }
 
+  /** The seven glyphs `buildProps` can act on. Anything else was, and is, a
+   *  cell the loop looked at and did nothing with. */
+  private static readonly PROP_GLYPHS = ["o", "*", "X", "B", "s", "V", "C"] as const;
+
   private buildProps(): void {
-    const h = this.grid.length;
-    const w = this.grid[0]?.length ?? 0;
     let tSub = performance.now();
     const glyphs = new Map(letterGlyphs(this.grid, this.comp?.words).map((g) => [`${g.c},${g.r}`, g.char]));
     this.mark("· letterGlyphs", tSub, "props");
@@ -5579,8 +5620,13 @@ export class PaintScene extends Phaser.Scene {
     // sum to more than the parent they explain, which is not a breakdown.
     let letterMs = 0;
     tSub = performance.now();
-    for (let r = 0; r < h; r++) {
-      for (let c = 0; c < w; c++) {
+    // R5-W6b · E7 · D-323 (3): the third full sweep of the same grid is gone.
+    // Only the seven glyphs this method draws are visited, still row by row and
+    // left to right — the order equal-depth props overlap in.
+    const idx = indexTerrain(this.grid);
+    const props = mergeRowMajor(...PaintScene.PROP_GLYPHS.map((g) => cellsOf(idx, g)));
+    for (const { c, r } of props) {
+      {
         const g = glyphAt(this.grid, c, r);
         const cx = c * TILE + TILE / 2;
         const cy = r * TILE + TILE / 2;

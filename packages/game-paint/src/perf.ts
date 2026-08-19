@@ -146,6 +146,18 @@ export interface FirstFrameReport {
   /** R5-W3 · E5: what each build step inside create() cost, in order. One
    *  number for create() cannot be acted on; a list of named blocks can. */
   build: unknown;
+  /**
+   * R5-W6b · E7 · D-327 · WAS FEHLT, UND WARUM — je Eintrag `feld: Grund`.
+   *
+   * Eine leere Liste heisst: jede Zahl dieses Berichts ist wirklich gemessen.
+   * Ist die Liste nicht leer, DARF der Leser die betroffenen Felder nicht
+   * drucken — eine Lücke, die als Null oder als »0,0 ms« erscheint, ist die
+   * teuerste Sorte Fehlmessung, weil sie wie ein Ergebnis aussieht (D-118).
+   * Der Grund steht mit dabei, damit niemand raten muss, ob die Grafikkarte
+   * keine Zeitmessung kann, die Antwort nur zu spät kam oder create() unter
+   * dieser Sonde nie gelaufen ist.
+   */
+  gaps: string[];
   notes: string[];
 }
 
@@ -850,18 +862,61 @@ export class PerfProbe {
    */
   async firstFrame(settleMs = 1600): Promise<FirstFrameReport> {
     const notes: string[] = [];
-    await new Promise<void>((r) => setTimeout(r, settleMs));
-    this.gpu.collect();
-    const first = this.ff.firstLabel;
-    const firstGpuMs = first === null ? null : this.gpu.ms(first);
-    const settledGpuMs = first === null ? null : this.gpu.medianRange(first + 1, first + 31);
+    // ── R5-W6b · E7 · D-327 · NICHT EINMAL HINSEHEN, SONDERN WARTEN ──────────
+    // Bisher wurde nach `settleMs` GENAU EINMAL eingesammelt. Eine Abfrage, die
+    // in genau diesem Augenblick noch nicht fertig war, war damit für diesen
+    // Bericht verloren — und ununterscheidbar von »diese Grafikkarte kann keine
+    // Zeitmessung«. Genau daher kam die Lücke, die je Lauf etwa eine von fünf
+    // Phasen traf (D-118). Jetzt wird in Scheiben gesammelt, bis die Zahlen da
+    // sind ODER die Frist abläuft — und was dann noch fehlt, fehlt NAMENTLICH.
+    const deadline = performance.now() + settleMs;
+    let first: number | null = null;
+    let firstGpuMs: number | null = null;
+    let settledGpuMs: number | null = null;
+    let sweeps = 0;
+    for (;;) {
+      const left = deadline - performance.now();
+      await new Promise<void>((r) => setTimeout(r, Math.max(20, Math.min(120, left))));
+      this.gpu.collect();
+      sweeps += 1;
+      first = this.ff.firstLabel;
+      firstGpuMs = first === null ? null : this.gpu.ms(first);
+      settledGpuMs = first === null ? null : this.gpu.medianRange(first + 1, first + 31);
+      const complete = this.ff.createMs !== null && first !== null
+        && (!this.gpu.ready || (firstGpuMs !== null && settledGpuMs !== null));
+      if (complete || performance.now() >= deadline) break;
+    }
 
     if (!this.gpu.ready) notes.push("GPU columns are null: no timer-query extension on this context.");
     if (this.gpu.sawDisjoint) notes.push("A GPU disjoint occurred — treat GPU columns as indicative, and re-run.");
     if (first === null) notes.push("No frame was drawn after create(): in a hidden tab nothing renders on its own — drive frames first (rafStep/drive).");
     if (firstGpuMs === null && this.gpu.ready && first !== null) {
-      notes.push(`The first frame's GPU result had not arrived after ${settleMs} ms — raise settleMs and read again.`);
+      notes.push(`The first frame's GPU result had not arrived after ${settleMs} ms (${sweeps} sweeps) — raise settleMs and read again.`);
     }
+
+    // ── die Lückenliste: jedes fehlende Feld MIT seinem Grund ────────────────
+    const gaps: string[] = [];
+    const gap = (field: string, why: string): void => { gaps.push(`${field}: ${why}`); };
+    if (this.ff.loadMs === null) {
+      gap("loadMs", this.ff.filesQueued === 0
+        ? "nothing was queued in preload, so there is no load to time"
+        : "the loader never reported COMPLETE while this report was taken");
+    }
+    if (this.ff.createMs === null) {
+      gap("createMs", "create() has not run under this probe — it was installed after the scene started (D-327), or the phase never built");
+    }
+    if (first === null) gap("firstFrame", "no frame was drawn after create() — drive frames first (rafStep/drive)");
+    else {
+      if (this.ff.firstCpuMs === null) gap("firstCpuMs", "the first frame was labelled but its CPU time was never written");
+      if (!this.gpu.ready) {
+        gap("firstGpuMs", "no timer-query extension on this context");
+        gap("settledGpuMs", "no timer-query extension on this context");
+      } else {
+        if (firstGpuMs === null) gap("firstGpuMs", `the query result had not arrived within ${settleMs} ms (${sweeps} sweeps)`);
+        if (settledGpuMs === null) gap("settledGpuMs", "fewer than one of the 30 frames after the first returned a GPU result");
+      }
+    }
+    if (this.gpu.sawDisjoint) gap("gpu", "the driver reported a DISJOINT — the collected GPU numbers are not trustworthy");
     notes.push(
       "loadMs is wall-clock and therefore network-dependent: it is a record of THIS run's conditions, not a property of the build.",
     );
@@ -880,6 +935,7 @@ export class PerfProbe {
       glTexturesAfter: this.ff.glAfter,
       warmed: this.host.warmed?.() ?? null,
       build: this.host.build?.() ?? null,
+      gaps,
       notes,
     };
   }
