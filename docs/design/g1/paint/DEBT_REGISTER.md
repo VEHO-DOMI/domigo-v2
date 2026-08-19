@@ -813,3 +813,48 @@ Reserviert: D-500…D-509.
 
 | Nr. | Befund | Beleg | Fix | Wer/wann | Herkunft |
 |---|---|---|---|---|---|
+
+## R5-W7 · SECHS WEITERE ABSCHNITTE (Fable V5, 2026-08-19 abends) — vorab angelegt für die Welle-7-Bahnen ohne eigenen Block, damit niemand am Datei-Ende kollidiert; F8/S3/A8/K6 behalten D-470…509 (oben), C6 D-460…469
+Jede Session trägt ihre Schulden NUR in ihren eigenen Abschnitt ein und vergibt NUR Nummern aus ihrem Block. **PB-Nummern vergibt ausschließlich die K-Bahn** (K6: PB-116 ff.). Ein Abschnitt bleibt leer, bis seine Session bootet. H5 und L2 booten erst nach Codex (AQ13b3/c3) bzw. nach P6 — ihre Blöcke sind trotzdem reserviert, damit die Nummern-Adressen in Passovern und Kommissionen schon stehen.
+
+## R5-W7 · W6 — Werkzeug VI (vier Tore ohne Selbsttest D-454, perf-visible-Provenienz, Lastlesung D-438, Dev-Server-Cache D-443, check-png-identity RGBA, Kartenbank AnswerHome/Knopf) (2026-08-19)
+
+Reserviert: D-510…D-519.
+
+| Nr. | Befund | Beleg | Fix | Wer/wann | Herkunft |
+|---|---|---|---|---|---|
+
+## R5-W7 · D5 — Karten IV (Auftragsschirm R165/F2, AQ14c-Import, AQ17b/c-Kante + Plaketten, `--pb-edge-image`) (2026-08-19)
+
+Reserviert: D-520…D-529.
+
+| Nr. | Befund | Beleg | Fix | Wer/wann | Herkunft |
+|---|---|---|---|---|---|
+
+## R5-W7 · E8 — Perf V (D-431 TileSprite-Konstruktor, D-432 letterTex nur messen, CREATE_MS bleibt 100) (2026-08-19)
+
+Reserviert: D-530…D-539.
+
+| Nr. | Befund | Beleg | Fix | Wer/wann | Herkunft |
+|---|---|---|---|---|---|
+
+## R5-W7 · C7 — Farb-Import V (AQ12d3/f3, AQ12g2, AQ15d Z2 + Achsen-aus-dem-Bestand, AQ10c über den geliehenen aq10-Importer) (2026-08-19)
+
+Reserviert: D-540…D-549.
+
+| Nr. | Befund | Beleg | Fix | Wer/wann | Herkunft |
+|---|---|---|---|---|---|
+
+## R5-W7 · H5 — Tafel IV (nach AQ13b3/AQ13c3; Boss-Rahmen-Tor R173) (2026-08-19)
+
+Reserviert: D-550…D-559.
+
+| Nr. | Befund | Beleg | Fix | Wer/wann | Herkunft |
+|---|---|---|---|---|---|
+
+## R5-W7 · L2 — Kontrast II (3 : 1-Nachmessung aus P6, Pfeil-Panel) (2026-08-19)
+
+Reserviert: D-560…D-569.
+
+| Nr. | Befund | Beleg | Fix | Wer/wann | Herkunft |
+|---|---|---|---|---|---|
