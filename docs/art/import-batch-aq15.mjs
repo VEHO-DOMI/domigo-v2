@@ -46,6 +46,16 @@
  *     Bild bei beurteilbarer Größe hergibt. AQ15c ist mit beiden Zellen und mit
  *     einer Stab-Vollständigkeitsprüfung neu bestellt. D-224, D-225.
  *
+ * ★ AQ15c (R5-W6b · C6, 19.08.): der dritte Anlauf — BEIDE Zellen wieder zurück,
+ *   und diesmal nicht wegen der Farbe. Zelle 1 nimmt sauber nur weg (0 hinzugemalt,
+ *   0 umgefärbt, Maß und Schlüssel tadellos), schneidet den drei senkrechten Stäben
+ *   aber den FUSS ab (je 11–12 px, `y211–222` · `y217–227` · `y223–233`), sodass sie
+ *   frei über dem Stoffwulst enden; Zelle 2 verliert ~90 px beider Querstäbe. Ursache
+ *   in beiden Fällen: die Öffnung wurde als gerades Viereck über ein Fenster gelegt,
+ *   das gemalt und schief ist. Beide blinden Prüfer (Handwerk 3× und Spielgröße)
+ *   haben es unabhängig gesehen. D-460/D-461/D-462. Die Fenster-Abnahme unten ist
+ *   die Antwort darauf.
+ *
  * ── DER BLINDE BLATT-PRÜFER (R91) ────────────────────────────────────────────
  *   MERLE — ANGENOMMEN. »A und B zeigen dieselbe Person in derselben Pose, nur
  *   anders eingefärbt — JA.« Der Prüfer bekam die neue und die alte Zelle ohne zu
@@ -200,6 +210,268 @@ const meanSaturation = (png) => {
   }
   return n === 0 ? 0 : s / n;
 };
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+ * DIE FENSTER-ABNAHME (R5-W6b · C6)
+ *
+ * Eine Lieferung, die ein FENSTER LEERT, ist kein normaler Neuanstrich: sie darf
+ * ausschliesslich WEGNEHMEN, und sie darf dabei nur das wegnehmen, was hinter dem
+ * Gitter lag — nie das Gitter selbst. Zwei Anlaeufe sind daran gescheitert, dass
+ * nach FARBE geschluesselt wurde (die Staebe sind fast reines Schwarz, genau wie
+ * Teile der alten Gesichtskontur), ein dritter daran, dass die Oeffnung als
+ * gerades Viereck ueber ein Fenster gelegt wurde, das keins ist.
+ *
+ * ★ WARUM DIESE PRUEFUNG NICHT MIT DER OEFFNUNGSMASKE DES LIEFERANTEN MISST
+ *   (C5s Lehre aus den zwei Linealen, D-382): wer mit dem Werkzeug des
+ *   Lieferanten misst, misst dessen Annahme mit. Codex' Lieferschein meldet
+ *   "0 Fremdpixel im Fenster" und "Stabpixel Bestand → neu identisch" — beides
+ *   wahr, beides RELATIV zu seiner eigenen Oeffnung. Liegt diese Oeffnung falsch,
+ *   zaehlt jede abgeschnittene Stabspitze als "Fenster" und faellt aus der
+ *   Rechnung heraus. Diese Abnahme leitet die Oeffnung deshalb aus dem DIFF
+ *   gegen den Bestand ab (was verschwunden ist, war Fenster) und prueft die
+ *   Staebe an eigenen, aus dem Blatt selbst gefundenen Achsen.
+ *
+ * Die vier Regeln:
+ *   1 NUR WEGNEHMEN — kein hinzugemalter, kein umgefaerbter Bildpunkt. Damit ist
+ *     "Diff ausserhalb des Fensters = 0" in seiner schaerfsten Form geprueft,
+ *     ohne dass man wissen muss, wo das Fenster aufhoert.
+ *   2 KEIN STAB ENDET IN DER LUFT — jede der fuenf Achsen traegt Tinte am ERSTEN
+ *     und am LETZTEN Punkt der Oeffnung. Ein Gitterstab, der vor dem Rahmen
+ *     aufhoert, ist der Fehler, den ein Kind als "kaputt" liest.
+ *   3 KEINE LOECHER — hoechstens ein Bildpunkt Unterbrechung innerhalb einer
+ *     Achse (Kantenglaettung), nie mehr.
+ *   4 KEIN FREMDPIXEL — was im Fenster noch steht, haengt am Gitter. Ein Rest
+ *     der alten Figur haengt an nichts.
+ *
+ * Aufruf:
+ *   node docs/art/import-batch-aq15.mjs --abnahme <stem> <blatt.png> <zelle 0-3>
+ *   node docs/art/import-batch-aq15.mjs --selftest
+ */
+
+const OPEN_EDGE_TOL = 3;   // Kantenglaettung am Rahmen: die letzten 3 px zaehlen als "am Rand"
+const HOLE_TOL = 1;        // eine Achse darf einen einzelnen Punkt Aussetzer haben
+
+/** Konvexe Huelle (Andrew) — die Oeffnung, aus dem Diff abgeleitet. */
+function hullOf(pts) {
+  if (pts.length < 3) return pts;
+  const s = [...pts].sort((a, b) => a[0] - b[0] || a[1] - b[1]);
+  const cross = (o, a, b) => (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0]);
+  const lower = [], upper = [];
+  for (const p of s) { while (lower.length >= 2 && cross(lower[lower.length - 2], lower[lower.length - 1], p) <= 0) lower.pop(); lower.push(p); }
+  for (let i = s.length - 1; i >= 0; i--) { const p = s[i]; while (upper.length >= 2 && cross(upper[upper.length - 2], upper[upper.length - 1], p) <= 0) upper.pop(); upper.push(p); }
+  return lower.slice(0, -1).concat(upper.slice(0, -1));
+}
+
+export function windowAcceptance(incumbent, delivery) {
+  const lines = [];
+  const fail = [];
+  if (delivery.width !== incumbent.width || delivery.height !== incumbent.height) {
+    fail.push(`Mass ${delivery.width}x${delivery.height}, der Bestand ist ${incumbent.width}x${incumbent.height}`);
+    return { lines, fail };
+  }
+  const W = delivery.width, H = delivery.height;
+  const ink = (p, x, y) => p.data[(y * W + x) * 4 + 3] > 8;
+
+  // 1 · nur wegnehmen
+  const rem = new Uint8Array(W * H);
+  let removed = 0, added = 0, recoloured = 0;
+  const addedAt = [], recolAt = [];
+  const pts = [];
+  for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
+    const i = (y * W + x) * 4;
+    const a0 = incumbent.data[i + 3] > 8, a1 = delivery.data[i + 3] > 8;
+    if (a0 && !a1) { rem[y * W + x] = 1; removed++; pts.push([x, y]); }
+    else if (!a0 && a1) { added++; if (addedAt.length < 6) addedAt.push(`${x},${y}`); }
+    else if (a0 && a1) {
+      let same = true;
+      for (let k = 0; k < 4; k++) if (incumbent.data[i + k] !== delivery.data[i + k]) { same = false; break; }
+      if (!same) { recoloured++; if (recolAt.length < 6) recolAt.push(`${x},${y}`); }
+    }
+  }
+  lines.push(`  entfernt ${removed}  ·  hinzugemalt ${added}${addedAt.length ? " @ " + addedAt.join(" ") : ""}  ·  umgefaerbt ${recoloured}${recolAt.length ? " @ " + recolAt.join(" ") : ""}`);
+  if (added > 0) fail.push(`${added} hinzugemalte Bildpunkte — eine Fenster-Lieferung darf nur wegnehmen`);
+  if (recoloured > 0) fail.push(`${recoloured} umgefaerbte Bildpunkte — eine Fenster-Lieferung darf nur wegnehmen`);
+  if (removed === 0) { fail.push("nichts entfernt — das Fenster ist unveraendert"); return { lines, fail }; }
+
+  // Oeffnung aus dem Diff
+  const hull = hullOf(pts);
+  const crossH = (o, a, b) => (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0]);
+  const inHull = (x, y) => { for (let k = 0; k < hull.length; k++) if (crossH(hull[k], hull[(k + 1) % hull.length], [x, y]) < 0) return false; return true; };
+  let hx0 = W, hx1 = -1, hy0 = H, hy1 = -1;
+  for (const p of hull) { if (p[0] < hx0) hx0 = p[0]; if (p[0] > hx1) hx1 = p[0]; if (p[1] < hy0) hy0 = p[1]; if (p[1] > hy1) hy1 = p[1]; }
+  const inO = new Uint8Array(W * H);
+  let openPx = 0;
+  for (let y = hy0; y <= hy1; y++) for (let x = hx0; x <= hx1; x++) if (inHull(x, y)) { inO[y * W + x] = 1; openPx++; }
+  // Ausdehnung der Oeffnung je Achse: wo ueberhaupt geleert wurde
+  const colOpen = new Uint8Array(W), rowOpen = new Uint8Array(H);
+  for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) if (rem[y * W + x]) { colOpen[x] = 1; rowOpen[y] = 1; }
+  const extent = (arr, a, b) => { let f = -1, l = -1; for (let t = a; t <= b; t++) if (arr[t]) { if (f < 0) f = t; l = t; } return [f, l]; };
+  const [ox0, ox1] = extent(colOpen, 0, W - 1);
+  const [oy0, oy1] = extent(rowOpen, 0, H - 1);
+  lines.push(`  Oeffnung ${openPx} px  ·  x${ox0}..${ox1}  y${oy0}..${oy1}`);
+
+  // 2/3 · die fuenf Achsen, aus dem Blatt selbst gefunden
+  const rowSum = new Int32Array(H), colSum = new Int32Array(W);
+  let barPx = 0;
+  for (let y = hy0; y <= hy1; y++) for (let x = hx0; x <= hx1; x++) {
+    if (!inO[y * W + x] || !ink(delivery, x, y)) continue;
+    rowSum[y]++; colSum[x]++; barPx++;
+  }
+  const bands = (arr, a, b, thr) => {
+    const out = []; let s = -1;
+    for (let i = a; i <= b; i++) { const on = arr[i] >= thr; if (on && s < 0) s = i; if ((!on || i === b) && s >= 0) { out.push([s, on ? i : i - 1]); s = -1; } }
+    return out;
+  };
+  // Rahmenkanten liegen AUF der Oeffnungsgrenze — die ersten/letzten OPEN_EDGE_TOL
+  // Reihen zaehlen nicht als Stab, sonst zaehlt man den Rahmen als sechsten Stab mit.
+  const inner = (b, lo, hi) => b[0] > lo + OPEN_EDGE_TOL && b[1] < hi - OPEN_EDGE_TOL;
+  const hBands = bands(rowSum, oy0, oy1, (ox1 - ox0) * 0.25).filter((b) => inner(b, oy0, oy1));
+  const vBands = bands(colSum, ox0, ox1, (oy1 - oy0) * 0.25).filter((b) => inner(b, ox0, ox1));
+  lines.push(`  Achsen gefunden: ${hBands.length} waagrecht ${hBands.map((b) => `y${b[0]}..${b[1]}`).join(" ")}  ·  ${vBands.length} senkrecht ${vBands.map((b) => `x${b[0]}..${b[1]}`).join(" ")}  ·  Stabpixel ${barPx}`);
+  if (hBands.length + vBands.length !== 5) {
+    fail.push(`${hBands.length + vBands.length} Gitterachsen statt 5 — entweder fehlt ein Stab ganz, oder einer ist so zerrissen, dass er nicht mehr als Achse lesbar ist`);
+  }
+  const walk = (band, horizontal) => {
+    const [a, b] = band;
+    const lo = horizontal ? ox0 : oy0, hi = horizontal ? ox1 : oy1;
+    const open = horizontal ? colOpen : rowOpen;
+    const has = (t) => { for (let u = a; u <= b; u++) if (horizontal ? ink(delivery, t, u) : ink(delivery, u, t)) return true; return false; };
+    const holes = [];
+    for (let t = lo; t <= hi; t++) if (open[t] && !has(t)) holes.push(t);
+    const runs = [];
+    for (const t of holes) { const r = runs[runs.length - 1]; if (r && t === r[1] + 1) r[1] = t; else runs.push([t, t]); }
+    let head = 0, tail = 0;
+    for (let t = lo; t <= hi; t++) { if (!open[t]) continue; if (has(t)) break; head++; }
+    for (let t = hi; t >= lo; t--) { if (!open[t]) continue; if (has(t)) break; tail++; }
+    const interior = runs.filter((r) => r[0] > lo + head && r[1] < hi - tail);
+    const worst = interior.reduce((m, r) => Math.max(m, r[1] - r[0] + 1), 0);
+    const name = `${horizontal ? "waagrecht" : "senkrecht"} ${a}..${b}`;
+    lines.push(`    ${name.padEnd(22)} Rand vorne ${String(head).padStart(3)}  Rand hinten ${String(tail).padStart(3)}  innere Loecher ${interior.length} (laengstes ${worst})`);
+    if (head > OPEN_EDGE_TOL) fail.push(`${name}: der Stab beginnt erst ${head} px hinter der Oeffnungskante — er endet frei in der Luft`);
+    if (tail > OPEN_EDGE_TOL) fail.push(`${name}: der Stab hoert ${tail} px vor der Oeffnungskante auf — er endet frei in der Luft`);
+    if (worst > HOLE_TOL) fail.push(`${name}: Loch von ${worst} px im Stab`);
+  };
+  for (const b of hBands) walk(b, true);
+  for (const b of vBands) walk(b, false);
+
+  // 4 · Fremdpixel: was im Fenster steht und nicht am Gitter haengt
+  const lab = new Int32Array(W * H).fill(-1);
+  const sizes = [];
+  for (let y = hy0; y <= hy1; y++) for (let x = hx0; x <= hx1; x++) {
+    const p = y * W + x;
+    if (!inO[p] || !ink(delivery, x, y) || lab[p] >= 0) continue;
+    const id = sizes.length; const st = [p]; lab[p] = id; let n = 0;
+    while (st.length > 0) {
+      const q = st.pop(); n++;
+      const qx = q % W, qy = (q - qx) / W;
+      for (let dy = -1; dy <= 1; dy++) for (let dx = -1; dx <= 1; dx++) {
+        const nx = qx + dx, ny = qy + dy;
+        if (nx < hx0 || ny < hy0 || nx > hx1 || ny > hy1) continue;
+        const r = ny * W + nx;
+        if (inO[r] && ink(delivery, nx, ny) && lab[r] < 0) { lab[r] = id; st.push(r); }
+      }
+    }
+    sizes.push(n);
+  }
+  const main = sizes.indexOf(Math.max(...sizes));
+  let foreign = 0;
+  for (let y = hy0; y <= hy1; y++) for (let x = hx0; x <= hx1; x++) {
+    const p = y * W + x;
+    if (lab[p] >= 0 && lab[p] !== main) foreign++;
+  }
+  lines.push(`  Fremdpixel im Fenster (haengt nicht am Gitter): ${foreign} in ${sizes.length - 1} Inseln`);
+  if (foreign > 0) fail.push(`${foreign} Bildpunkte stehen im Fenster, ohne am Gitter zu haengen — Rest der alten Figur oder Sprenkel`);
+
+  return { lines, fail };
+}
+
+function cellOf(sheetPng, pos, cols = 4, rows = 1) {
+  const cw = sheetPng.width / cols, chh = sheetPng.height / rows;
+  const img = crop(sheetPng, (pos % cols) * cw, Math.floor(pos / cols) * chh, cw, chh);
+  chromaKey(img);
+  defringe(img);
+  const box = contentBox(img);
+  if (box === null) return null;
+  return crop(img, box.x0, box.y0, box.x1 - box.x0 + 1, box.y1 - box.y0 + 1);
+}
+
+/** Der Selbsttest baut den Fall, in dem RICHTIG und PLAUSIBEL-FALSCH auseinandergehen:
+ *  ein senkrechter Stab vor einer Figur. Die richtige Leerung nimmt die Figur und
+ *  laesst den Stab; die plausibel-falsche legt ein gerades Viereck ueber das Fenster
+ *  und schneidet dem Stab den Fuss ab. Beide sehen "sauber geleert" aus. */
+function selftest() {
+  const W = 100, H = 80;
+  const mk = (fn) => { const p = new PNG({ width: W, height: H }); for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) fn(p, x, y, (y * W + x) * 4); return p; };
+  const set = (p, i, r, g, b, a) => { p.data[i] = r; p.data[i + 1] = g; p.data[i + 2] = b; p.data[i + 3] = a; };
+  const frame = (x, y) => x < 8 || x > 91 || y < 8 || y > 71;
+  const vbar = (x) => (x >= 28 && x <= 32) || (x >= 48 && x <= 52) || (x >= 68 && x <= 72);
+  const hbar = (y) => (y >= 28 && y <= 32) || (y >= 50 && y <= 54);
+  const grid = (x, y) => vbar(x) || hbar(y);
+  const paint = (p, i, what) => {
+    if (what === "frame") set(p, i, 90, 95, 100, 255);
+    else if (what === "bar") set(p, i, 70, 78, 84, 255);
+    else if (what === "figure") set(p, i, 210, 170, 120, 255);
+    else set(p, i, 0, 0, 0, 0);
+  };
+  const build = (rule) => mk((p, x, y, i) => paint(p, i, rule(x, y)));
+  const stock = build((x, y) => frame(x, y) ? "frame" : grid(x, y) ? "bar" : "figure");
+  const right = build((x, y) => frame(x, y) ? "frame" : grid(x, y) ? "bar" : "nichts");
+  // plausibel-falsch: die Oeffnung wird als GERADES Viereck gedacht, dessen untere
+  // Kante 10 px zu hoch liegt — die drei Stabfuesse fallen mit heraus. Genau der
+  // Fehler, den eine Abnahme uebersieht, die mit der Oeffnungsmaske des
+  // Lieferanten misst: innerhalb SEINER Oeffnung ist alles korrekt.
+  const wrong = build((x, y) => frame(x, y) ? "frame" : (vbar(x) && y >= 62) ? "nichts" : grid(x, y) ? "bar" : "nichts");
+  // und: ein Rest der alten Figur bleibt in einer Ecke stehen
+  const leftover = build((x, y) => frame(x, y) ? "frame" : grid(x, y) ? "bar"
+    : (x >= 76 && x <= 88 && y >= 58 && y <= 68) ? "figure" : "nichts");
+  const cases = [
+    ["richtig geleert (Figur weg, alle fuenf Staebe ganz)", right, false],
+    ["drei Stabfuesse mit abgeschnitten (gerades Viereck)", wrong, true],
+    ["Rest der Figur in der Ecke", leftover, true],
+  ];
+  let bad = 0;
+  for (const [name, png, shouldFail] of cases) {
+    const { lines, fail } = windowAcceptance(stock, png);
+    const red = fail.length > 0;
+    console.log(`  ${red ? "ROT  " : "GRUEN"}  ${name}`);
+    for (const l of lines) console.log(`     ${l}`);
+    for (const f of fail) console.log(`     x ${f}`);
+    if (red !== shouldFail) { bad++; console.error(`  x erwartet war ${shouldFail ? "ROT" : "GRUEN"}`); }
+  }
+  if (bad > 0) {
+    console.error(`\nimport-batch-aq15 --selftest: ${bad} Fall/Faelle nicht wie erwartet`);
+    process.exit(1);
+  }
+  console.log("\nimport-batch-aq15 --selftest: OK — die Abnahme sieht ihr rotes Licht am abgeschnittenen Stabfuss UND am Figurenrest, und laesst die ehrliche Leerung durch");
+  process.exit(0);
+}
+
+if (process.argv.includes("--selftest")) selftest();
+
+if (process.argv.includes("--abnahme")) {
+  const at = process.argv.indexOf("--abnahme");
+  const stem = process.argv[at + 1], file = process.argv[at + 2], pos = Number(process.argv[at + 3] ?? 0);
+  if (!stem || !file) {
+    console.error("usage: node docs/art/import-batch-aq15.mjs --abnahme <stem> <blatt.png> <zelle 0-3>");
+    process.exit(2);
+  }
+  const dest = path.join(OUT, `${stem}.png`);
+  if (!fs.existsSync(dest)) { console.error(`kein Bestand: ${dest}`); process.exit(2); }
+  const cut = cellOf(read(file), pos);
+  if (cut === null) { console.error(`Zelle ${pos} ist leer`); process.exit(2); }
+  console.log(`\nFenster-Abnahme · ${stem} ← ${path.basename(file)} Zelle ${pos + 1}  (Schnitt ${cut.width}x${cut.height})`);
+  const { lines, fail } = windowAcceptance(read(dest), cut);
+  for (const l of lines) console.log(l);
+  if (fail.length > 0) {
+    console.log("");
+    for (const f of fail) console.error(`  ✗ ${f}`);
+    console.error(`\nAbnahme ${stem}: ${fail.length} Befund(e) — diese Zelle wird NICHT importiert`);
+    process.exit(1);
+  }
+  console.log(`\nAbnahme ${stem}: bestanden`);
+  process.exit(0);
+}
 
 const SHEETS = [
   {
