@@ -81,6 +81,12 @@ interface Surface {
   id: string;
   label: string;
   note?: string;
+  /** R5-W6b · W5: WELCHE Karte diese Flaeche wirklich zeigt (nur Karten-
+   *  Flaechen haben eine; Zeremonien-Panels nicht). Das Werkzeug liest sie
+   *  ueber `data-karte` — ohne sie wuerde ein Zeremonien-Panel eine
+   *  `--card`-Bestellung stumm bestaetigen und das Bild traege im Dateinamen
+   *  eine Karte, die darauf nicht zu sehen ist. */
+  taskId?: string;
   render: () => React.ReactElement;
 }
 
@@ -207,7 +213,7 @@ export default function CardGallery({ level, art, tasks, Overlay, which, karte }
   const DRAINED_WASH = 0.72;
 
   const card = (id: string, label: string, task: GameTaskV2 | undefined, extra?: Record<string, unknown>, note?: string): Surface => ({
-    id, label, note,
+    id, label, note, taskId: task?.id,
     render: () =>
       task === undefined ? (
         <p style={{ padding: 24, fontSize: 15 }}>
@@ -357,7 +363,7 @@ export default function CardGallery({ level, art, tasks, Overlay, which, karte }
             /* R5-W6b · W5: maschinenlesbar, damit `shoot-card-bench --card` nicht
                eine Fehlzeile fotografiert und Exit 0 meldet. Steht hier die
                gewuenschte id NICHT, bricht das Werkzeug ab. */
-            data-karte={gewaehlt?.id ?? ""}
+            data-karte={gewaehlt !== undefined && one.taskId === gewaehlt.id ? gewaehlt.id : ""}
             style={{
               position: "relative", width: STAGE_W, height: STAGE_H, overflow: "hidden",
               borderRadius: 10, background: "#e9dcbc", flex: "0 0 auto",
