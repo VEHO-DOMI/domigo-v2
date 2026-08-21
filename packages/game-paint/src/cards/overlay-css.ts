@@ -704,7 +704,37 @@ export const PAINT_OVERLAY_CSS = `
        body keeps the darker sheet the contrast is measured on. */
     radial-gradient(120% 100% at 28% 0%, rgba(255,255,255,0.22), rgba(255,255,255,0) 62%),
     radial-gradient(70% 60% at 84% 100%, rgba(176,142,88,0.16), rgba(176,142,88,0) 70%),
-    repeating-linear-gradient(97deg, rgba(146,114,64,0.035) 0 1px, rgba(146,114,64,0) 1px 19px);
+    /* ── R5-W7 · D5 · DIE GEMALTE PLAKETTE (AQ17C Z0/Z1, R132 zellweise) ────
+       Hier stand die dritte Lage: »repeating-linear-gradient(97deg, …)«, eine
+       gerechnete Faser aus lauter gleichen Strichen im Abstand von 19 px. Sie
+       geht denselben Weg wie der Faser-Streifen der Karte in D4 — das gemalte
+       Blatt ersetzt sie. Die zwei LICHT-Verläufe darüber bleiben, weil eine
+       Plakette flach ist und eine Karte im Buch in einem Licht liegt (dieselbe
+       Begründung, mit der das Kartenpapier importiert wurde).
+
+       DAS BLATT trägt zwei Kästen à 346×161 nebeneinander: in Ruhe, dann
+       gedrückt. Deshalb »200 % 100 %« und ein Sprung der Position von 0 auf
+       100 % im Druck — EIN Blatt, also ist der gedrückte Zustand schon geladen,
+       wenn der Finger kommt (die Rechnung ist dieselbe, die das Knopfblatt seit
+       D4 fährt, nur ohne dessen Kasten-Prozente: der Importeur schneidet die
+       Plakette auf ihren Kasten zu, also IST das Blatt die Plakette).
+
+       Die Tuschekante bleibt: die Plakette liegt UNTER ihr, nicht an ihrer
+       Stelle. Das ist kein Zögern, sondern ein Gesetz — overlay-css.test.ts
+       verlangt wörtlich »border: var(--pb-ink-w-chip) solid var(--pb-ink)«, und
+       der 1 px dünne Rand des Blattes wäre kein Ersatz für eine Kante, deren
+       Kontrast gemessen ist. Was das Blatt beisteuert, ist die FLÄCHE.
+
+       Warum die vier gemalten Eckradien trotzdem zählen, obwohl der CSS-Radius
+       sie überdeckt: sie sind der Beweis, dass der Maler diesen Chip gemalt hat
+       und nicht irgendein Rechteck — der Importeur weist eine Plakette mit
+       einem einheitlichen Radius zurück —, und sie sorgen dafür, dass die
+       durchsichtigen Ecken des Blattes genau dort liegen, wo der Radius
+       ohnehin schneidet. Kein Zipfel Farbe steht über. */
+    url("/art/g1/cards/card_plaques.png");
+  background-repeat: no-repeat;
+  background-size: auto, auto, 200% 100%;
+  background-position: 0 0, 0 0, 0 0;
   border: var(--pb-ink-w-chip) solid var(--pb-ink);
   border-radius: var(--pb-chip-r);
   /* R5-W2 · J1-A: one crayon lip, as judged. The ambient blur and the inset
@@ -722,6 +752,9 @@ export const PAINT_OVERLAY_CSS = `
      flat colour override never shows, because nobody photographs a held finger. */
   transform: translateY(4px) rotate(var(--pb-tilt, 0deg));
   box-shadow: 0 0 0 var(--pb-ink-cast), inset 0 1px 3px rgba(120,92,50,0.28);
+  /* R5-W7 · D5: und die zweite Plakette. Dieselbe Datei, andere Hälfte — der
+     dunklere Kasten (1,671 : 1 gegen das Papier statt 1,463 : 1). */
+  background-position: 0 0, 0 0, 100% 0;
 }
 .pb-card button:disabled { opacity: 0.55; box-shadow: inset 0 1px 4px rgba(120,92,50,0.24); }
 
@@ -1048,6 +1081,41 @@ export const PAINT_OVERLAY_CSS = `
   /* Zelle 1 (gedrückt), um ihre eigenen 4 px zurückgeholt — siehe die Rechnung oben */
   background-position: 34.671% 50.298%;
 }
+/* ── R5-W7 · D5 · DER STILLE AUSGANG, ALS REGEL STATT ALS DREI ZAHLEN ───────
+   »Später ↩« will laut seinem eigenen Kommentar in CardShell »dasselbe Papier
+   wie jeder andere Chip, flach gedrückt« sein — und war das bis heute mit einer
+   halbdurchsichtigen Hintergrund-FARBE. Das ging, solange hinter dem Chip nur
+   Verläufe lagen: das Kartenpapier schien durch, und der Knopf war von selbst
+   blass.
+
+   Seit die gemalte Plakette darunter liegt, geht es nicht mehr — und zwar aus
+   einem Grund, der sich nicht durch eine größere Zahl beheben lässt: eine
+   »background-color« ist in CSS die UNTERSTE Lage. Ein deckendes Bild darüber
+   verdeckt sie vollständig. Gemessen am Bank-Foto: mit Deckkraft 0,5 wie mit
+   0,83 blieb die Fläche bei exakt rgb(240, 197, 121) — die Wäsche malte
+   hinter einem Vorhang.
+
+   Also liegt die Wäsche jetzt OBEN, als Verlauf aus einer einzigen Farbe (die
+   einzige Bauform, die im Lagen-Stapel über ein Bild kommt), und der ganze
+   stille Zustand steht hier statt inline an der Aufrufstelle — dieselbe
+   Klassen-statt-Instanz-Bewegung, die D4 für das Knopf-Polster gemacht hat.
+   0,72 ist gemessen und nicht gewählt: die Fläche liegt damit rund 44
+   Helligkeitspunkte über der Antwort-Plakette, genau so weit wie vorher über
+   dem Verlauf (vorher 229 gegen 185). */
+.pb-card button.pb-btn-quiet {
+  background-image:
+    linear-gradient(rgba(252,247,232,0.72), rgba(252,247,232,0.72)),
+    url("/art/g1/cards/card_plaques.png");
+  background-size: auto, 200% 100%;
+  background-position: 0 0, 0 0;
+  border-color: var(--pb-ink-line);
+  color: #8a7a58;
+  box-shadow: none;
+}
+.pb-card button.pb-btn-quiet:active:not(:disabled) {
+  background-position: 0 0, 100% 0;
+}
+
 .pb-card .pb-btn-ghost {
   background-color: rgba(253,246,228,0.62);
   /* Zelle 2: dasselbe Blatt, der stille Zustand. Der Ghost ist der Weg HINAUS,

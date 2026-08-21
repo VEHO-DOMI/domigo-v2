@@ -459,31 +459,56 @@ if (failures.length > 0) {
   process.exit(1);
 }
 
-/** Eine Zelle als eigenes Blatt: auf ihren Kasten zugeschnitten, damit
- *  `border-image-slice` von den BILDRÄNDERN aus zählen kann — genau dort sitzt
- *  die gemalte Ecke, und nur so bleibt sie beim Strecken unangetastet. */
-const writeCell = (png, cx, cw, box, file) => {
-  const w = box.x1 - box.x0 + 1, h = box.y1 - box.y0 + 1;
-  const out = new PNG({ width: w, height: h });
-  for (let y = 0; y < h; y++) {
-    for (let x = 0; x < w; x++) {
-      const s = ((box.y0 + y) * png.width + (cx * cw + box.x0 + x)) * 4;
-      const d = (y * w + x) * 4;
-      out.data[d] = png.data[s]; out.data[d + 1] = png.data[s + 1];
-      out.data[d + 2] = png.data[s + 2]; out.data[d + 3] = png.data[s + 3];
+/**
+ * DIE ANGENOMMENEN ZELLEN ALS EIN BLATT — auf ihre Kästen zugeschnitten und in
+ * der Reihenfolge ihrer ROLLE nebeneinander gelegt (Ruhe, dann gedrückt).
+ *
+ * Warum EIN Blatt und nicht zwei Dateien: das Stylesheet schaltet den Zustand
+ * dann über `background-position` statt über eine zweite Adresse — das Blatt ist
+ * beim ersten Antippen längst geladen, und niemand sieht einen Bildwechsel, der
+ * erst beim Drücken angefragt wird. Genau so trägt D4 schon das Knopfblatt.
+ *
+ * Warum auf den KASTEN zugeschnitten und nicht die 512er Zelle: sonst müsste das
+ * Stylesheet den Kasten mit einer Prozentrechnung wiederfinden (die Rechnung, die
+ * beim Knopfblatt eine halbe Seite Kommentar kostet). Zugeschnitten ist die
+ * Plakette das Blatt, und »background-size 200 % 100 %« sagt alles.
+ */
+const writeSheet = (png, cw, cells, file) => {
+  const w = cells[0].size[0], h = cells[0].size[1];
+  const out = new PNG({ width: w * cells.length, height: h });
+  cells.forEach((cell, n) => {
+    for (let y = 0; y < h; y++) {
+      for (let x = 0; x < w; x++) {
+        const s = ((cell.box.y0 + y) * png.width + (cell.c * cw + cell.box.x0 + x)) * 4;
+        const d = (y * w * cells.length + n * w + x) * 4;
+        out.data[d] = png.data[s]; out.data[d + 1] = png.data[s + 1];
+        out.data[d + 2] = png.data[s + 2]; out.data[d + 3] = png.data[s + 3];
+      }
     }
-  }
+  });
   const dst = path.join(OUT, file);
   let zustand = "geschrieben";
   if (fs.existsSync(dst)) {
     const b = read(dst);
-    if (b.width === w && b.height === h && Buffer.compare(out.data, b.data) === 0) zustand = "unverändert";
+    if (b.width === out.width && b.height === h && Buffer.compare(out.data, b.data) === 0) zustand = "unverändert";
   }
   if (!DRY && zustand === "geschrieben") fs.writeFileSync(dst, PNG.sync.write(out));
-  return [w, h, zustand];
+  return [out.width, h, zustand];
 };
 
-const ROLLE = { 0: ["card_plaque_down.png", "gedrückt (die dunklere der beiden)"], 1: ["card_plaque_a.png", "in Ruhe (dieselbe Farbe wie das Knopfblatt)"] };
+/** Welche Zelle welche Rolle trägt — eine ENTSCHEIDUNG dieser Sitzung, und zwar
+ *  am Bild getroffen, weil der Bestelltext der Lieferung mit dem ersten Mac
+ *  verloren ist (R204) und der Lieferschein für Z0/Z1 keine Rollen nennt.
+ *  Z1 ist die HELLERE (1,463 : 1) und trägt exakt dieselbe Farbe wie das
+ *  Knopfblatt (gemessenes Innenmittel rgb(240, 196, 115) in beiden) — ein Chip
+ *  in Ruhe soll leise auf dem Papier liegen und mit den Knöpfen eine Familie
+ *  bilden. Z0 ist die dunklere (1,671 : 1) und wird der gedrückte Zustand:
+ *  Papier, auf das ein Finger drückt, wird dunkler, und das stützt die 4-px-Lippe,
+ *  die beim Drücken ohnehin einfällt. Ein blinder Kritiker darf das umdrehen. */
+const ROLLEN = [
+  { c: 1, rolle: "in Ruhe (dieselbe Farbe wie das Knopfblatt)" },
+  { c: 0, rolle: "gedrückt (die dunklere der beiden)" },
+];
 
 /** Ein Blatt wird nur geschrieben, wenn auf der Platte NICHT schon dasselbe BILD
  *  liegt.
@@ -510,9 +535,14 @@ const zPaper = writeIfNew(src("batch-aq17", "card_paper.png"), "card_paper.png")
 const zButtons = writeIfNew(src("batch-aq17", "card_buttons.png"), "card_buttons.png");
 console.log(`  ${DRY ? "[trocken] " : ""}batch-aq17/card_paper.png    →  art/g1/cards/card_paper.png     ${paper.width}×${paper.height}  (${zPaper})`);
 console.log(`  ${DRY ? "[trocken] " : ""}batch-aq17/card_buttons.png  →  art/g1/cards/card_buttons.png   ${buttons.width}×${buttons.height} (4 × 512²)  (${zButtons})`);
-for (const cell of rPlaques.cells) {
-  const [file, rolle] = ROLLE[cell.c];
-  const [w, h, zustand] = writeCell(plaques, cell.c, 512, cell.box, file);
-  console.log(`  ${DRY ? "[trocken] " : ""}batch-aq17c/card_plaques.png Z${cell.c}  →  art/g1/cards/${file}  ${w}×${h}  — ${rolle}, ${cell.contrast.toFixed(3)} : 1 gegen das Papier  (${zustand})`);
-}
-console.log(`import-batch-aq17: OK — Papier ${zPaper}, Knopfblatt ${zButtons}, ${rPlaques.cells.length} Plaketten-Zellen zugeschnitten, ${HELD.length + 1} Posten im Labor gehalten${DRY ? " (Trockenlauf, nichts geschrieben)" : ""}`);
+const geordnet = ROLLEN.map((r) => rPlaques.cells.find((c) => c.c === r.c)).filter((c) => c !== undefined);
+const [pw, ph, zPlaques] = geordnet.length === ROLLEN.length
+  ? writeSheet(plaques, 512, geordnet, "card_plaques.png")
+  : [0, 0, "nicht geschrieben"];
+ROLLEN.forEach((r, n) => {
+  const cell = rPlaques.cells.find((c) => c.c === r.c);
+  if (cell === undefined) return;
+  console.log(`  ${DRY ? "[trocken] " : ""}batch-aq17c/card_plaques.png Z${r.c}  →  card_plaques.png Zelle ${n}  ${cell.size[0]}×${cell.size[1]}  — ${r.rolle}, ${cell.contrast.toFixed(3)} : 1 gegen das Papier`);
+});
+console.log(`  ${DRY ? "[trocken] " : ""}                             →  art/g1/cards/card_plaques.png  ${pw}×${ph} (${ROLLEN.length} × ${ph}er Kasten)  (${zPlaques})`);
+console.log(`import-batch-aq17: OK — Papier ${zPaper}, Knopfblatt ${zButtons}, ${geordnet.length} Plaketten-Zellen zu einem Blatt zugeschnitten, ${HELD.length + 1} Posten im Labor gehalten${DRY ? " (Trockenlauf, nichts geschrieben)" : ""}`);

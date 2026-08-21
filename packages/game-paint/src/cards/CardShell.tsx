@@ -678,10 +678,15 @@ export function CardShell({
           // the quiet way out: the same paper as every other chip, pressed flat
           // — a secondary action should read as further back on the page, not
           // as a different material (round-1 critique, finding 3)
-          // R5-W2 · J1-A: the edge reads the card's own ink token. This button
-          // sets its border INLINE, which beats the stylesheet — left literal it
-          // would be the single pale hairline in a house of crayon edges.
-          style={{ ...cardBtn, marginTop: 16, fontSize: 13, backgroundColor: "rgba(247,237,213,0.5)", borderColor: "var(--pb-ink-line)", color: "#8a7a58", boxShadow: "none" }}
+          // R5-W7 · D5: die vier Zahlen, die diesen Zustand ausmachten (Wäsche,
+          // Randfarbe, Tinte, keine Lippe), stehen jetzt als »pb-btn-quiet« im
+          // Stylesheet. Nicht aus Ordnungsliebe: die Wäsche war eine
+          // Hintergrund-FARBE, und die ist in CSS die unterste Lage — seit die
+          // gemalte Plakette unter jedem Chip liegt und DECKT, malte sie hinter
+          // einem Vorhang (gemessen: rgb(240, 197, 121) mit 0,5 wie mit 0,83).
+          // Oben im Stapel steht die Begründung samt Messung.
+          className="pb-btn-quiet"
+          style={{ ...cardBtn, marginTop: 16, fontSize: 13 }}
           onClick={onDismiss}
         >
           Später ↩
