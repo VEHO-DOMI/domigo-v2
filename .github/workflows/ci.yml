@@ -113,6 +113,7 @@ jobs:
       - run: node docs/art/import-batch-aq15.mjs --selftest # C6: die Fenster-Abnahme muss den abgeschnittenen Stabfuss sehen — der Fehler, den eine Pruefung mit der Oeffnungsmaske des Lieferanten per Bauart uebersieht
       - run: node docs/art/import-batch-aq12.mjs --selftest # C5: die Abnahme-Probe muss eine flache Füllung weiterhin eine flache Füllung nennen können
       - run: node docs/art/import-batch-aq13.mjs --selftest # H4: die Tafel- und Ring-Abnahme misst gegen den BESTAND, nicht gegen die Zahlen des Lieferscheins — der Zwilling, der unten buendige Sitz und die Gesichtsquote gegen ein selbst gerechnetes N muessen rot werden
+      - run: node docs/art/import-batch-aq17.mjs --selftest # D5/R187c: die Karten-Abnahme liest die vier Eckradien aus dem Stylesheet und nicht aus sich selbst — eine Plakette mit EINEM Radius muss rot werden, und die Haltung des 9-Slice hat ihr eigenes rotes Licht, falls eine spaetere Lieferung die Bestellung doch erfuellt
       - run: node scripts/check-png-identity.mjs --selftest # E5: das rote Licht des Bildpunkt-Beweises muss erreichbar sein
       # W4/D-257 + D-98: der ECHTE Lauf. Nur auf einem PR, weil er gegen die
       # Basis vergleicht — auf einem Push nach main gibt es keine. Neu gemalte
