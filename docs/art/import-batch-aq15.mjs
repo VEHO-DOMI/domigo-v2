@@ -236,13 +236,17 @@ const meanSaturation = (png) => {
  *   1 NUR WEGNEHMEN — kein hinzugemalter, kein umgefaerbter Bildpunkt. Damit ist
  *     "Diff ausserhalb des Fensters = 0" in seiner schaerfsten Form geprueft,
  *     ohne dass man wissen muss, wo das Fenster aufhoert.
- *   2 KEIN STAB ENDET IN DER LUFT — jede der fuenf Achsen traegt Tinte am ERSTEN
- *     und am LETZTEN Punkt der Oeffnung. Ein Gitterstab, der vor dem Rahmen
- *     aufhoert, ist der Fehler, den ein Kind als "kaputt" liest.
+ *   2 KEIN STAB ENDET IN DER LUFT — jede Achse traegt Tinte am ERSTEN und am
+ *     LETZTEN Punkt der Oeffnung. Ein Gitterstab, der vor dem Rahmen aufhoert,
+ *     ist der Fehler, den ein Kind als "kaputt" liest.
  *   3 KEINE LOECHER — hoechstens ein Bildpunkt Unterbrechung innerhalb einer
  *     Achse (Kantenglaettung), nie mehr.
  *   4 KEIN FREMDPIXEL — was im Fenster noch steht, haengt am Gitter. Ein Rest
  *     der alten Figur haengt an nichts.
+ *   5 KEINE ACHSE FEHLT — es sind so viele, wie der Bestand in diesem Fenster
+ *     zeigt (R5-W7 · C7, R185; die Zahl steht gezaehlt in `GITTER_ACHSEN`).
+ *     Regel 2 und 3 sehen einen ZERRISSENEN Stab; einen ganz fehlenden sieht
+ *     nur diese Zaehlung, denn was fort ist, wirft keine Befunde.
  *
  * Aufruf:
  *   node docs/art/import-batch-aq15.mjs --abnahme <stem> <blatt.png> <zelle 0-3>
@@ -251,6 +255,27 @@ const meanSaturation = (png) => {
 
 const OPEN_EDGE_TOL = 3;   // Kantenglaettung am Rahmen: die letzten 3 px zaehlen als "am Rand"
 const HOLE_TOL = 1;        // eine Achse darf einen einzelnen Punkt Aussetzer haben
+
+/** WIEVIELE GITTERACHSEN ZEIGT DER BESTAND IM FENSTER DIESER ZELLE — gezählt, mit Beleg.
+ *
+ *  Die Zahl ist pro Fenster verschieden, und sie lässt sich an diesem Bildmaterial nicht
+ *  automatisch aus dem Bestandsblatt lesen (die Begründung mit Messwerten steht bei
+ *  `sollAchsen` in `windowAcceptance`). Also wird sie EINMAL gezählt und hier benannt —
+ *  mit der Quelle daneben, damit die nächste Sitzung nicht raten muss, wo sie herkommt.
+ *
+ *  Eine Zelle, die hier fehlt, bekommt kein Grün: die Abnahme verlangt die Zahl und sagt
+ *  das auch. Wer eine neue Zelle abnimmt, zählt die Achsen am Bestandsblatt (Quersteg
+ *  waagrecht + Stäbe senkrecht, nur was INNERHALB der Öffnung liegt) und trägt sie ein. */
+const GITTER_ACHSEN = {
+  // ein Quersteg (y136–163) + drei Senkrechte (x159–167 · 207–217 · 268–276), am Blatt
+  // `pencilcase_shake.png` gezählt: erst vom blinden Prüfer der C6-Sitzung (R185), dann
+  // von C7 an denselben Koordinaten nachgemessen — die Abnahme findet sie bei laufender
+  // Öffnung genau dort wieder.
+  pencilcase_shake: 4,
+  // fünf Achsen: zwei Querstege + drei Senkrechte. Das ist die Zahl, die bis Welle 7 als
+  // Konstante für ALLE Zellen galt — für diese eine stimmte sie (C3/C6).
+  pencilcase_a: 5,
+};
 
 /** Konvexe Huelle (Andrew) — die Oeffnung, aus dem Diff abgeleitet. */
 function hullOf(pts) {
@@ -263,7 +288,7 @@ function hullOf(pts) {
   return lower.slice(0, -1).concat(upper.slice(0, -1));
 }
 
-export function windowAcceptance(incumbent, delivery) {
+export function windowAcceptance(incumbent, delivery, sollAchsen) {
   const lines = [];
   const fail = [];
   if (delivery.width !== incumbent.width || delivery.height !== incumbent.height) {
@@ -311,27 +336,76 @@ export function windowAcceptance(incumbent, delivery) {
   const [oy0, oy1] = extent(rowOpen, 0, H - 1);
   lines.push(`  Oeffnung ${openPx} px  ·  x${ox0}..${ox1}  y${oy0}..${oy1}`);
 
-  // 2/3 · die fuenf Achsen, aus dem Blatt selbst gefunden
+  // 2/3 · die Achsen, aus dem Blatt selbst gefunden
+  //
+  // Gemessen wird je Zeile/Spalte gegen die EIGENE Fensterbreite an dieser Stelle, nicht
+  // gegen die groesste. Das Pennalfenster ist ein gerundetes Rechteck: oben und unten ist
+  // es schmaler, und ein Stab, der dort sitzt, ist trotzdem ein ganzer Stab. Am globalen
+  // Mass gerechnet fiele er unter jede Schwelle, die einen ganzen Stab verlangt.
   const rowSum = new Int32Array(H), colSum = new Int32Array(W);
+  const rowLen = new Int32Array(H), colLen = new Int32Array(W);
   let barPx = 0;
   for (let y = hy0; y <= hy1; y++) for (let x = hx0; x <= hx1; x++) {
-    if (!inO[y * W + x] || !ink(delivery, x, y)) continue;
+    if (!inO[y * W + x]) continue;
+    rowLen[y]++; colLen[x]++;
+    if (!ink(delivery, x, y)) continue;
     rowSum[y]++; colSum[x]++; barPx++;
   }
-  const bands = (arr, a, b, thr) => {
+  const bands = (arr, len, a, b, share) => {
     const out = []; let s = -1;
-    for (let i = a; i <= b; i++) { const on = arr[i] >= thr; if (on && s < 0) s = i; if ((!on || i === b) && s >= 0) { out.push([s, on ? i : i - 1]); s = -1; } }
+    for (let i = a; i <= b; i++) { const on = len[i] > 0 && arr[i] >= len[i] * share; if (on && s < 0) s = i; if ((!on || i === b) && s >= 0) { out.push([s, on ? i : i - 1]); s = -1; } }
     return out;
   };
   // Rahmenkanten liegen AUF der Oeffnungsgrenze — die ersten/letzten OPEN_EDGE_TOL
   // Reihen zaehlen nicht als Stab, sonst zaehlt man den Rahmen als sechsten Stab mit.
   const inner = (b, lo, hi) => b[0] > lo + OPEN_EDGE_TOL && b[1] < hi - OPEN_EDGE_TOL;
-  const hBands = bands(rowSum, oy0, oy1, (ox1 - ox0) * 0.25).filter((b) => inner(b, oy0, oy1));
-  const vBands = bands(colSum, ox0, ox1, (oy1 - oy0) * 0.25).filter((b) => inner(b, ox0, ox1));
-  lines.push(`  Achsen gefunden: ${hBands.length} waagrecht ${hBands.map((b) => `y${b[0]}..${b[1]}`).join(" ")}  ·  ${vBands.length} senkrecht ${vBands.map((b) => `x${b[0]}..${b[1]}`).join(" ")}  ·  Stabpixel ${barPx}`);
-  if (hBands.length + vBands.length !== 5) {
-    fail.push(`${hBands.length + vBands.length} Gitterachsen statt 5 — entweder fehlt ein Stab ganz, oder einer ist so zerrissen, dass er nicht mehr als Achse lesbar ist`);
+
+  // Wieviel einer Zeile/Spalte muss Stabmasse sein, damit sie als Achse zaehlt?
+  //
+  // ★ R5-W7 · C7: hier stand ein VIERTEL — und damit fand die Abnahme am echten
+  // `pencilcase_shake`-Blatt KEINEN EINZIGEN senkrechten Stab. Der Grund ist Arithmetik:
+  // der Quersteg laeuft ueber die volle Fensterbreite, also traegt JEDE Spalte schon
+  // seine 28 Zeilen mit; bei 91 Zeilen Fensterhoehe sind das 31 %, und ein Viertel ist
+  // damit ueberall erreicht. Alle Spalten werden »an«, verschmelzen zu einem einzigen
+  // randberuehrenden Band, und `inner` wirft es weg — Antwort: null Senkrechte.
+  //
+  // Am `pencilcase_a`-Fenster fiel es nicht auf, aber knapp: dort decken die zwei
+  // Querstege in einer leeren Zelle 27 von rund 137 bis 155 Fensterzeilen, also 17–20 %
+  // (drei Spalten gemessen, x58/x62/x70). Ein Viertel lag also nur wenige Prozentpunkte
+  // ueber dem, was diese Schwelle NICHT sehen darf — dieselbe Falle, eine Geometrie weiter.
+  //
+  // Ein Stab laeuft durch sein Fenster; eine Kreuzungsstelle tut das nicht. Drei Fuenftel
+  // trennen beides an beiden Geometrien mit Abstand: Stab ~100 % gegen Kreuzung 31 % bzw. 20 %.
+  const BAND_SHARE = 0.6;
+  const hBands = bands(rowSum, rowLen, oy0, oy1, BAND_SHARE).filter((b) => inner(b, oy0, oy1));
+  const vBands = bands(colSum, colLen, ox0, ox1, BAND_SHARE).filter((b) => inner(b, ox0, ox1));
+  lines.push(`  Achsen gefunden: ${hBands.length} waagrecht ${hBands.map((b) => `y${b[0]}..${b[1]}`).join(" ")}  ·  ${vBands.length} senkrecht ${vBands.map((b) => `x${b[0]}..${b[1]}`).join(" ")}  ·  Stabpixel ${barPx}  ·  Soll ${sollAchsen}`);
+
+  // …und die Zahl, die es sein muessen (Regel 5).
+  //
+  // ★ R5-W7 · C7 (R185): hier stand die Konstante 5. Sie stammt aus EINER Zelle
+  // (`pencilcase_a`) und ist per Bauart falsch fuer jede andere Oeffnung — das
+  // Schuettel-Fenster traegt VIER Achsen. Das C6-Tor wurde daran rot, ohne dass an der
+  // Lieferung etwas gefehlt haette, und ein rotes Licht aus dem falschen Grund ist so
+  // teuer wie ein fehlendes: es lehrt, dem Tor nicht zu glauben.
+  //
+  // ★ WARUM DIE ZAHL HEREINGEREICHT WIRD UND NICHT HIER GEMESSEN. Der Auftrag wollte
+  // sie »by construction« aus dem Bestandsblatt zaehlen. An DIESEM Bildmaterial geht
+  // das nachweislich nicht: hinter dem Gitter liegt gemalter Schatten, und Stabmasse
+  // und Schatten sind in der Helligkeit nicht trennbar — die beste geprüfte Familie
+  // fing 56 % der Stabmasse und 39 % dessen, was dahinter liegt, jede engere verlor die
+  // Staebe schneller als den Schatten (gemessen am echten Blatt, Belege im C7-Report).
+  // Drei Anlaeufe sind daran gescheitert, und der dritte hat das Urteil am echten Blatt
+  // sogar VERDREHT: eine Lieferung ohne mittleren Stab kam gruen durch. Eine Zahl, die
+  // man nicht messen kann, wird nicht geschaetzt — sie wird gezaehlt und benannt. Sie
+  // steht mit ihrer Herkunft in `GITTER_ACHSEN`; wer sie nicht mitgibt, bekommt kein
+  // Gruen, sondern die Aufforderung, sie zu zaehlen.
+  if (!Number.isInteger(sollAchsen) || sollAchsen < 2) {
+    fail.push(`kein gezaehlter Achsen-Sollwert fuer dieses Fenster (bekommen: ${JSON.stringify(sollAchsen)}) — ohne Soll wird hier nichts durchgewunken`);
+  } else if (hBands.length + vBands.length !== sollAchsen) {
+    fail.push(`${hBands.length + vBands.length} Gitterachsen statt ${sollAchsen} — so viele zeigt der Bestand in diesem Fenster; entweder fehlt ein Stab ganz, oder einer ist so zerrissen, dass er nicht mehr als Achse lesbar ist`);
   }
+
   const walk = (band, horizontal) => {
     const [a, b] = band;
     const lo = horizontal ? ox0 : oy0, hi = horizontal ? ox1 : oy1;
@@ -380,7 +454,7 @@ export function windowAcceptance(incumbent, delivery) {
     const p = y * W + x;
     if (lab[p] >= 0 && lab[p] !== main) foreign++;
   }
-  lines.push(`  Fremdpixel im Fenster (haengt nicht am Gitter): ${foreign} in ${sizes.length - 1} Inseln`);
+  lines.push(`  Fremdpixel im Fenster (haengt nicht am Gitter): ${foreign} in ${Math.max(0, sizes.length - 1)} Inseln`);
   if (foreign > 0) fail.push(`${foreign} Bildpunkte stehen im Fenster, ohne am Gitter zu haengen — Rest der alten Figur oder Sprenkel`);
 
   return { lines, fail };
@@ -396,10 +470,23 @@ function cellOf(sheetPng, pos, cols = 4, rows = 1) {
   return crop(img, box.x0, box.y0, box.x1 - box.x0 + 1, box.y1 - box.y0 + 1);
 }
 
-/** Der Selbsttest baut den Fall, in dem RICHTIG und PLAUSIBEL-FALSCH auseinandergehen:
- *  ein senkrechter Stab vor einer Figur. Die richtige Leerung nimmt die Figur und
- *  laesst den Stab; die plausibel-falsche legt ein gerades Viereck ueber das Fenster
- *  und schneidet dem Stab den Fuss ab. Beide sehen "sauber geleert" aus. */
+/** Der Selbsttest baut die Faelle, in denen RICHTIG und PLAUSIBEL-FALSCH auseinandergehen.
+ *
+ *  C6 · GEOMETRIE DER LEERUNG — ein senkrechter Stab vor einer Figur. Die richtige
+ *  Leerung nimmt die Figur und laesst den Stab; die plausibel-falsche legt ein gerades
+ *  Viereck ueber das gemalte, schiefe Fenster und schneidet dem Stab den Fuss ab.
+ *  Beide sehen "sauber geleert" aus.
+ *
+ *  C7 · ZAHL DER ACHSEN (R185) — dieselbe Zelle in der SCHUETTEL-Geometrie: ein
+ *  Quersteg, drei Senkrechte, also vier Achsen statt fuenf. Die ehrliche Leerung muss
+ *  GRUEN werden (die alte Konstante 5 machte sie rot, ohne dass etwas fehlte), und der
+ *  vorletzte Fall haelt genau dieses falsche Rot als Fall fest: mit der 5 auf dem
+ *  Vier-Achsen-Fenster MUSS es rot werden, sonst ist die Zaehlung stumpf geworden.
+ *  Ein GANZ fehlender Stab muss ROT werden, und den sieht nur die Zaehlung — kein
+ *  Stabfuss endet in der Luft, kein Fremdpixel steht herum. Ein zerrissener Quersteg
+ *  bleibt Sache der Stab-Wanderung. Und eine Zelle ohne gezaehltes Soll wird ROT, nie
+ *  still gruen.
+ */
 function selftest() {
   const W = 100, H = 80;
   const mk = (fn) => { const p = new PNG({ width: W, height: H }); for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) fn(p, x, y, (y * W + x) * 4); return p; };
@@ -425,14 +512,49 @@ function selftest() {
   // und: ein Rest der alten Figur bleibt in einer Ecke stehen
   const leftover = build((x, y) => frame(x, y) ? "frame" : grid(x, y) ? "bar"
     : (x >= 76 && x <= 88 && y >= 58 && y <= 68) ? "figure" : "nichts");
+  // ── C7 · die Schuettel-Geometrie: vier Achsen, nicht fuenf ───────────────────
+  // Dieselbe Zelle, dasselbe Handwerk, eine andere Oeffnung. Genau der Fall, den
+  // die Konstante 5 falsch rot machte.
+  const shakeH = (y) => y >= 36 && y <= 40;
+  const shakeGrid = (x, y) => vbar(x) || shakeH(y);
+  const shakeStock = build((x, y) => frame(x, y) ? "frame" : shakeGrid(x, y) ? "bar" : "figure");
+  const shakeRight = build((x, y) => frame(x, y) ? "frame" : shakeGrid(x, y) ? "bar" : "nichts");
+  // Ein GANZER Stab fehlt — der mittlere senkrechte. Kein Stabfuss endet in der Luft,
+  // kein Fremdpixel steht herum: die Stab-Wanderung und die Fremdpixel-Regel sehen
+  // beide NICHTS. Nur die Zaehlung sieht es, und nur, weil sie am Bestand misst.
+  //
+  // Warum der senkrechte und nicht der Quersteg: der Quersteg ist es, der die drei
+  // Senkrechten zu EINEM Gebilde verbindet. Nimmt man IHN weg, zerfaellt das Gitter
+  // in drei Inseln, und der Fall wird zusaetzlich an der Fremdpixel-Regel rot — er
+  // waere also auch ohne diese Zaehlung rot und wuerde ueber sie nichts beweisen.
+  const shakeNoBar = build((x, y) => frame(x, y) ? "frame"
+    : (x >= 48 && x <= 52 && !shakeH(y)) ? "nichts"
+    : shakeGrid(x, y) ? "bar" : "nichts");
+  // …und der gebrochene Quersteg: zwoelf Bildpunkte fehlen mittendrin. Die Achse ist
+  // noch als Achse LESBAR — die Zaehlung findet weiter vier —, also faengt sie hier
+  // die Wanderung. Dass zusaetzlich die Fremdpixel-Regel anschlaegt, ist kein
+  // Doppelbefund aus Versehen: ein durchgebrochener Steg LAESST ein Stueck Gitter
+  // frei stehen. Beide Saetze sind wahr, und beide beschreiben denselben Bruch.
+  const shakeTornCross = build((x, y) => frame(x, y) ? "frame"
+    : (shakeH(y) && x >= 55 && x <= 66) ? "nichts"
+    : shakeGrid(x, y) ? "bar" : "nichts");
   const cases = [
-    ["richtig geleert (Figur weg, alle fuenf Staebe ganz)", right, false],
-    ["drei Stabfuesse mit abgeschnitten (gerades Viereck)", wrong, true],
-    ["Rest der Figur in der Ecke", leftover, true],
+    ["richtig geleert (Figur weg, alle fuenf Staebe ganz)", stock, right, 5, false],
+    ["drei Stabfuesse mit abgeschnitten (gerades Viereck)", stock, wrong, 5, true],
+    ["Rest der Figur in der Ecke", stock, leftover, 5, true],
+    ["Shake-Geometrie: vier Achsen, ehrlich geleert", shakeStock, shakeRight, 4, false],
+    ["Shake-Geometrie: ein Stab fehlt GANZ (nur die Zaehlung sieht das)", shakeStock, shakeNoBar, 4, true],
+    ["Shake-Geometrie: der Quersteg ist zerrissen (12 px)", shakeStock, shakeTornCross, 4, true],
+    // …und die Zelle, fuer die niemand gezaehlt hat. Die gefaehrliche Antwort waere,
+    // sich still auf irgendeine Zahl zu einigen; die richtige ist, es zu sagen.
+    ["kein gezaehltes Soll fuer diese Zelle — kein stilles Gruen", shakeStock, shakeRight, undefined, true],
+    // …und die Zahl aus der alten Konstante auf der Shake-Geometrie: genau das falsche
+    // Rot, das C6 gesehen hat. Bleibt es aus, ist die Zaehlung nicht mehr scharf.
+    ["die alte Konstante 5 auf dem Vier-Achsen-Fenster (das falsche Rot von C6)", shakeStock, shakeRight, 5, true],
   ];
   let bad = 0;
-  for (const [name, png, shouldFail] of cases) {
-    const { lines, fail } = windowAcceptance(stock, png);
+  for (const [name, bestand, png, soll, shouldFail] of cases) {
+    const { lines, fail } = windowAcceptance(bestand, png, soll);
     const red = fail.length > 0;
     console.log(`  ${red ? "ROT  " : "GRUEN"}  ${name}`);
     for (const l of lines) console.log(`     ${l}`);
@@ -443,7 +565,7 @@ function selftest() {
     console.error(`\nimport-batch-aq15 --selftest: ${bad} Fall/Faelle nicht wie erwartet`);
     process.exit(1);
   }
-  console.log("\nimport-batch-aq15 --selftest: OK — die Abnahme sieht ihr rotes Licht am abgeschnittenen Stabfuss UND am Figurenrest, und laesst die ehrliche Leerung durch");
+  console.log("\nimport-batch-aq15 --selftest: OK — die Abnahme sieht ihr rotes Licht am abgeschnittenen Stabfuss, am Figurenrest und am GANZ fehlenden Stab; sie zaehlt gegen das Soll DIESER Zelle statt gegen eine Konstante, sie verlangt dieses Soll auch wirklich, und sie laesst die ehrliche Vier-Achsen-Leerung durch");
   process.exit(0);
 }
 
@@ -458,10 +580,17 @@ if (process.argv.includes("--abnahme")) {
   }
   const dest = path.join(OUT, `${stem}.png`);
   if (!fs.existsSync(dest)) { console.error(`kein Bestand: ${dest}`); process.exit(2); }
+  const soll = GITTER_ACHSEN[stem];
+  if (soll === undefined) {
+    console.error(`kein gezaehlter Achsen-Sollwert fuer »${stem}«. Zaehle die Gitterachsen im Fenster`);
+    console.error(`des Bestandsblattes ${dest} und trage sie in GITTER_ACHSEN ein — mit der Quelle daneben.`);
+    console.error(`Bekannt sind heute: ${Object.entries(GITTER_ACHSEN).map(([k, v]) => `${k}=${v}`).join(" · ")}`);
+    process.exit(2);
+  }
   const cut = cellOf(read(file), pos);
   if (cut === null) { console.error(`Zelle ${pos} ist leer`); process.exit(2); }
-  console.log(`\nFenster-Abnahme · ${stem} ← ${path.basename(file)} Zelle ${pos + 1}  (Schnitt ${cut.width}x${cut.height})`);
-  const { lines, fail } = windowAcceptance(read(dest), cut);
+  console.log(`\nFenster-Abnahme · ${stem} ← ${path.basename(file)} Zelle ${pos + 1}  (Schnitt ${cut.width}x${cut.height})  ·  Soll ${soll} Achsen`);
+  const { lines, fail } = windowAcceptance(read(dest), cut, soll);
   for (const l of lines) console.log(l);
   if (fail.length > 0) {
     console.log("");
