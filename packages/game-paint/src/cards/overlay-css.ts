@@ -1014,6 +1014,31 @@ export const PAINT_OVERLAY_CSS = `
      zugleich das, was ein Kind sieht, falls das gemalte Blatt einmal nicht
      ausgeliefert wird — ein Knopf ohne Bild ist dann blass, nie unsichtbar */
   background-color: #f0c473;
+  /* ── R5-W7 · D5 · P6/M2 · DIE LIPPE FOLGT JETZT DEM GEMALTEN KNOPF ────────
+     M2 hat »einen rechteckigen dunklen Rest unten rechts am Knopf, der die
+     Rundung nicht mitmacht« gemeldet; P6 nannte ihn sichtbar, aber nicht
+     beweisbar — die Messung konnte ihn nicht von der gemalten Knopfkante
+     trennen. Nachgemessen ist er beweisbar, und er ist NICHT die Kante: der
+     Keil misst rgb(119, 78, 40), und das ist auf den Punkt --pb-ink-cast
+     (rgba(107, 63, 24, 0.9)) über dem Kartenpapier rgb(255, 242, 205) —
+     also die LIPPE (»box-shadow 0 4px 0«) und nicht das Blatt.
+
+     Warum sie hervorschaut: die Lippe wird auf den CSS-Kasten gezeichnet, und
+     der trug --pb-chip-r — feste Pixel-Radien, gemacht für einen Chip, der
+     seine Ecke selbst zeichnet. Der gemalte Knopf zeichnet sie aber im Blatt,
+     mit anderen Rundungen, und die Lippe schaut überall dort hervor, wo die
+     beiden nicht übereinstimmen.
+
+     PROZENTE statt Pixel, weil der Knopf mitwächst: der gemalte Kasten ist
+     378×176, seine Ecken liegen bei 19–32 px, also 6–8,5 % der Breite und
+     11–13 % der Höhe. Ein Verhältnis trifft sie bei JEDER Knopfbreite, eine
+     Pixelzahl nur bei einer. Die Werte hier liegen bewusst darüber, damit die
+     Lippe hinter dem gemalten Knopf bleibt statt an seiner Ecke vorbeizuschauen
+     — und sie sind vier verschiedene, weil in diesem Haus nichts ganz gerade
+     ist. Der Radius ist hier ohnehin unsichtbar: die Kante ist gemalt, der
+     CSS-Rand steht auf durchsichtig, und beschnitten wird nur die Amber-Fläche,
+     die als Rückfall darunter liegt. */
+  border-radius: 15% 13% 16% 14% / 28% 25% 29% 26%;
   /* ── R5-W6b · D4 · DER GEMALTE KNOPF (AQ17, Zellen 0 · 1 · 2) ─────────────
      Das Blatt ist 2048×512 und trägt vier 512er Zellen: Ruhe · gedrückt · Ghost
      · Reserve. Die Reserve bleibt mit Absicht unbenutzt — ein Blatt darf mehr
