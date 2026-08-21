@@ -198,8 +198,16 @@ Berührung = eingesammelt. Ein kurzer Toast zeigt das **englische Wort**
 je Fund**, neun über das Kapitel verteilt. Es ist ausdrücklich **kein
 „Input-Flood"** — der Begriff meint wiederholte, reichhaltige Exposition in
 bedeutungsvollem Kontext, und das leistet ein Wort-Flash nicht. Und das Kind
-**hört** dabei nichts: `packages/game-paint` hat **kein Audio-System** — im Code
-dreimal ausdrücklich vermerkt („Es gibt in diesem Paket KEIN Audio-System"). Für
+**hört** dabei kein WORT — ~~`packages/game-paint` hat **kein Audio-System** — im Code
+dreimal ausdrücklich vermerkt („Es gibt in diesem Paket KEIN Audio-System")~~
+*(richtiggestellt 2026-08-21, K6, Schuld **D-357**: **das Paket hat seit der Audio-Bahn S1/S2 ein
+Audio-System** — `packages/game-paint/src/audio/` mit Direktor, Manifest und 20 Stems, im Spiel
+verdrahtet über `PaintGame.tsx#director`. Die drei Code-Kommentare, auf die sich dieser Satz
+berief, gibt es nicht mehr: die Zeichenfolge „KEIN Audio-System" kommt in `packages/` **null**
+Mal vor. **Der SCHLUSS unten bleibt trotzdem richtig**, nur aus einem anderen Grund: es gibt
+Klang, aber **keine gesprochenen Wörter** — der Kleidungs-Fund spielt heute `letter-take`, und
+das Manifest sagt es selbst: „bis ein eigener Stem bestellt ist, klingt der Fund wie ein
+Buchstabe". Die Nachbestellung `cloth-take` liegt bei der Audio-Bahn S3.)* Für
 `school tie` und `sunglasses`, deren Aussprache ein Erstlerner nicht aus dem
 Schriftbild ableitet, ist das eine echte Lücke. **Sie wird hier benannt, nicht
 behauptet weg** — Eintrag in den Fragen an den Architekten (§8, Frage 4).
@@ -605,7 +613,7 @@ gewirkt hat** (Kritiker liefern Spezifikationen, keine Messungen):
 | Karte am Ausgang kollidiert | LD 6 (UNSICHER) | `ch01.tasks.v2.json`: je Phase drei `use:"door"`-Karten am Ausgang | **BESTÄTIGT** → Karte feuert beim dritten Fund, nicht an der Tür |
 | „produzieren" versprochen, nur Auswahl geliefert | Did 1 | alle drei Formen waren geschlossene Auswahl | **BESTÄTIGT** → p3 wird `typed` (Präzedenz `fin.t1`), p1/p2 heißen jetzt ehrlich Wiedererkennung |
 | kein Netz für verpasste Teile | Did 2 | — | **BESTÄTIGT** → Teile bleiben liegen, p9 legt die fehlenden nach |
-| „Input-Flood", „hört und liest" ungedeckt | Did 3 (UNSICHER) | `PaintScene.ts:2903, 3466` — „Es gibt in diesem Paket KEIN Audio-System" | **BESTÄTIGT** → Formulierung korrigiert, Audio-Lücke als Frage 4 gefiled |
+| „Input-Flood", „hört und liest" ungedeckt | Did 3 (UNSICHER) | ~~`PaintScene.ts` (zwei Kommentarzeilen) — „Es gibt in diesem Paket KEIN Audio-System"~~ *(die Zeilennummern sind hier bewusst entfernt: eine Zeilennummer altert still — `check-registers` Gesetz 4)* · **Beleg überholt (2026-08-21, K6, D-357):** die Kommentare gibt es nicht mehr (null Treffer in `packages/`); heute gilt `packages/game-paint/src/audio/audioManifest.ts#ENTITY_REACTIONS` — der `cloth`-Eintrag spielt `letter-take` und notiert die offene Nachbestellung `cloth-take` | **BESTÄTIGT, Begründung ersetzt** → die Formulierung war richtig korrigiert; die Audio-Lücke ist nicht mehr „kein System", sondern „kein gesprochenes Wort" (Frage 4) |
 | Phasenlänge fehlt zum Schneiden | LD Klarheit | `ch01.level.json`: p1 64 · p2 72 · p3 64 Spalten (2,9 / 3,3 / 2,9 Bildschirme) | **BESTÄTIGT** → „nicht in den ersten zwei Bildschirmen" war unmöglich; jetzt „ab Spalte 12", ein Teil je Drittel |
 | die Neun erleben sich nie als EIN Satz | Did (weitere) | — | **BESTÄTIGT** → Merle trägt sie in der Zeremonie |
 | Singular/Plural nur Zeichen-Anweisung | Did (weitere) | — | **BESTÄTIGT** → die p3-Karte lehrt „one shoe" gegen „two socks" |
@@ -706,7 +714,9 @@ Fable und Koki, nicht einer vierten Runde.**
    eigene Bilanz-Zeile. Punkte waren das, was am Bonusbuch nicht erklärt war.
 3. **Braucht p4 (Arena) Kleider?** **Empfehlung: nein** — die Arena gehört dem
    Boss. p9 dagegen bekommt die Nachzügler (das Netz aus §1).
-4. **Die Audio-Lücke.** `packages/game-paint` hat kein Audio-System. Ein
+4. **Die Audio-Lücke.** *(Satz richtiggestellt 2026-08-21, K6, **D-357** — war: „`packages/game-paint`
+   hat kein Audio-System".)* Das Paket hat seit S1/S2 ein Audio-System, aber **kein gesprochenes
+   Wort**: der Kleidungs-Fund klingt wie ein Buchstabe, bis `cloth-take` bestellt ist (S3). Ein
    Erstlerner leitet die Aussprache von `school tie` oder `sunglasses` nicht aus
    dem Schriftbild ab. **Empfehlung: nicht in Welle 5 lösen** (ein Tonsystem ist
    ein eigenes Vorhaben), aber als Kapitel-übergreifende Schuld führen — sie

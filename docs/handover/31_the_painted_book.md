@@ -159,7 +159,7 @@ duel CANNOT be failed — a design law of this game (§6).
 | Verb / power | Granted | By | Stress-tested | Retro-opens |
 |---|---|---|---|---|
 | walk + jump | ch01 start | — | ch01 | — |
-| thrown fist | ch01 mid | the guide (cast pass, §6) | ch01 guardian deflect | — |
+| thrown fist | **ch02** *(war: „ch01 mid" — nachgezogen 2026-08-21, K6, Schuld **D-445**)* | the guide (cast pass, §6) | ch02 | ch01 guardian deflect entfällt |
 | ledge hang | ch02 door | the guide | zoo enclosure walls | ch01 high alcove |
 | ring swing | ch03 door | the guide | pirate rigging runs | ch01–02 ring gaps |
 | quill-rotor hover | ch04 door | the guide | weather updrafts | wide gaps everywhere — **backtrack beat 1** (map prompt after ch04) |

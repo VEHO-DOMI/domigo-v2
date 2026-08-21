@@ -1,5 +1,14 @@
 # 37 · REPLAY 1 — Koki's playthrough verdict (2026-07-27), decomposed
 
+> **★ HISTORISCHER STAND · die Faust in ch01** *(Kopfnotiz 2026-08-21, K6 — Schuld **D-445**)*.
+> Dieses Dokument ist ein datiertes Protokoll und wird **nicht umgeschrieben**: was hier über
+> „a cage the fist can open" steht, war am Tag der Aufzeichnung wahr. Der Stand von heute ist
+> ein anderer — **ch01 vergibt KEINE Faust** (`abilities: ["jump","run"]`, kein `powerup`-Entity
+> in keiner der fünf Flächen); der Wurf-Faust-Zuwachs liegt in **ch02**. Entschieden am
+> 2026-08-19 durch die Level-Bahn (**D-422**), Kanon-Ort: `docs/handover/44_full_game_master_plan.md`
+> §4 ch01 (Fußnote) und `docs/handover/31_the_painted_book.md` (Fähigkeits-Tabelle). Wer aus
+> diesem Protokoll ein Verb ableitet, prüft ihn dort gegen.
+
 **Source: Koki's verbal feedback + screenshots in `docs/Rayman X DomiGo Screenshots/
 July 27 Gameplay DomiGo/` (git-ignored, on disk; the folder is `July 27 …`, not
 `July 27th …` as this doc first said). Status: F-items routed; the screenshot review
