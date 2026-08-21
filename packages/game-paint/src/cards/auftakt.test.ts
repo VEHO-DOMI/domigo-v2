@@ -4,7 +4,10 @@
 // freeze law in particular is why this module exists as pure code at all: it
 // used to be a comment inside a 480-line switch, and a comment is not a check.
 import { describe, expect, it } from "vitest";
-import { AUFTAKT, auftaktChain, auftaktExit, auftaktPosition, auftaktStep, auftaktTasks } from "./auftakt.ts";
+import fs from "node:fs";
+import path from "node:path";
+import { domArtStems } from "../artScope.ts";
+import { AUFTAKT, auftaktChain, auftaktExit, auftaktPosition, auftaktStep, auftaktTasks, UNIFORM_DE, uniformLegend, uniformLegendLine } from "./auftakt.ts";
 
 describe("R5-W2 · J1-B · the opening's chain", () => {
   it("is FIVE beats, and beat 1 is still called `goal`", () => {
@@ -195,6 +198,109 @@ describe("R5-W3 · J2 · R29 · the task beat, split in two", () => {
       expect(chain.filter((b) => auftaktExit(b, chain).boot), `chain ${chain.join("→")}`).toEqual(["los"]);
       expect(chain[0]).toBe("goal");
       expect(chain[chain.length - 1]).toBe("los");
+    }
+  });
+});
+
+describe("R5-W7 · D5 · R165 · die Sammel-Legende der Uniform", () => {
+  const NEUN = [
+    { skin: "cloth_hairband", wordEn: "hairband" },
+    { skin: "cloth_hat", wordEn: "hat" },
+    { skin: "cloth_sunglasses", wordEn: "sunglasses" },
+    { skin: "cloth_shirt", wordEn: "shirt" },
+    { skin: "cloth_school_tie", wordEn: "school tie" },
+    { skin: "cloth_sweater", wordEn: "sweater" },
+    { skin: "cloth_skirt", wordEn: "skirt" },
+    { skin: "cloth_socks", wordEn: "socks" },
+    { skin: "cloth_shoe", wordEn: "shoe" },
+  ];
+
+  it("hält die Reihenfolge des LEVELS — drei je Stockwerk, und das Raster ist die Verteilung", () => {
+    // die Legende erfindet keine Ordnung: sie zeigt die Teile so, wie die Welt
+    // sie trägt (p1 · p1 · p1 · p2 · p2 · p2 · p3 · p3 · p3), damit eine Zeile
+    // des Rasters ein Stockwerk ist
+    expect(uniformLegend(NEUN).map((c) => c.wordEn)).toEqual(NEUN.map((p) => p.wordEn));
+  });
+
+  it("sagt für JEDES ausgelieferte Teil ein deutsches Wort — keine Zelle bleibt stumm", () => {
+    // die Falle, gegen die dieser Test steht: ein zehntes Teil wird ins Level
+    // gelegt, die Legende zeichnet seine Zelle, und darunter steht nichts
+    for (const cell of uniformLegend(NEUN)) {
+      expect(cell.de, `${cell.wordEn} hat kein deutsches Wort`).not.toBeNull();
+    }
+    expect(Object.keys(UNIFORM_DE).sort()).toEqual(NEUN.map((p) => p.wordEn).sort());
+  });
+
+  it("wechselt NICHT die Sprache, wenn ein Wort fehlt", () => {
+    // eine Legende, die ersatzweise das englische Wort zeigt, lehrt das Kind
+    // genau das Wort, das es erst finden soll
+    const [fremd] = uniformLegend([{ skin: "cloth_cape", wordEn: "cape" }]);
+    expect(fremd?.de).toBeNull();
+  });
+
+  it("liest »gefunden« aus dem Ledger der WÖRTER, nicht aus einer Zahl", () => {
+    const cells = uniformLegend(NEUN, ["hat", "shoe"]);
+    expect(cells.filter((c) => c.found).map((c) => c.wordEn)).toEqual(["hat", "shoe"]);
+    expect(cells.filter((c) => !c.found)).toHaveLength(7);
+  });
+
+  it("zählt seine Zeile und tippt keine Zahl — auch nicht bei eins", () => {
+    expect(uniformLegendLine(9, 0)).toBe("Deine 9 Kleider sind über das Schulhaus verstreut.");
+    expect(uniformLegendLine(9, 4)).toBe("Du hast 4 von 9 Kleidern.");
+    expect(uniformLegendLine(9, 9)).toBe("Du hast alle 9 Kleider.");
+    // der Singular ist nicht der Plural mit einer 1 davor
+    expect(uniformLegendLine(1, 0)).not.toMatch(/1 Kleider/);
+    expect(uniformLegendLine(1, 1)).toBe("Du hast es.");
+  });
+});
+
+// ── Die Kette vom Level bis zum Blatt (R5-W7 · D5) ──────────────────────────
+// Die Legende zeichnet neun Bilder. Damit sie das kann, müssen vier Dinge
+// zusammenpassen, und drei davon liegen in FREMDEN Dateien: die Welt trägt die
+// neun Teile, `artScope` reicht ihre Blätter auf die DOM-Seite, die Blätter
+// liegen wirklich auf der Platte, und für jedes gibt es ein deutsches Wort.
+// Der Auftrag dieser Runde verlangte ausdrücklich eine PRÜFUNG statt eines
+// Eingriffs in `artScope` — hier ist sie, als Gesetz statt als Absatz im
+// Bericht. Sie geht rot, sobald ein Teil dazukommt, umbenannt wird oder sein
+// Blatt verliert.
+describe("R5-W7 · D5 · die Legende und was sie zum Zeichnen braucht", () => {
+  const level = JSON.parse(
+    fs.readFileSync(path.resolve(__dirname, "../../../../content/corpus/stories/g1.st.lost-pages/paint/ch01.level.json"), "utf8"),
+  ) as Parameters<typeof domArtStems>[0] & { phases: { entities: { role?: string; skin: string; params?: Record<string, unknown> }[] }[]; arena?: { entities: { role?: string; skin: string; params?: Record<string, unknown> }[] } };
+  const gespielt = [...level.phases, ...(level.arena ? [level.arena] : [])];
+  const teile: { skin: string; wordEn: string }[] = [];
+  for (const p of gespielt) {
+    for (const e of p.entities) {
+      if (e.role !== "cloth") continue;
+      const w = typeof e.params?.wordEn === "string" ? e.params.wordEn : "";
+      if (w !== "" && !teile.some((t) => t.wordEn === w)) teile.push({ skin: e.skin, wordEn: w });
+    }
+  }
+
+  it("findet überhaupt Teile (Vakuität) — und es sind neun", () => {
+    // ohne diese Zeile wäre alles darunter über einer leeren Liste wahr
+    expect(teile).toHaveLength(9);
+  });
+
+  it("ALLE neun Blätter sind schon im DOM-Umfang — die Legende brauchte keine Zeile in artScope", () => {
+    // `domArtStems` legt für JEDE cloth-Entität `<skin>_a` dazu (R5-W5 · G4).
+    // Geprüft statt geglaubt: genau das war der Auftrag dieser Runde.
+    const scope = domArtStems(level);
+    for (const t of teile) {
+      expect(scope.has(`${t.skin}_a`), `${t.skin}_a fehlt im DOM-Umfang — die Legende bekäme kein Bild`).toBe(true);
+    }
+  });
+
+  it("…und alle neun liegen wirklich auf der Platte", () => {
+    const dir = path.resolve(__dirname, "../../../../apps/web/public/art/g1/paint/ch01");
+    for (const t of teile) {
+      expect(fs.existsSync(path.join(dir, `${t.skin}_a.png`)), `${t.skin}_a.png fehlt`).toBe(true);
+    }
+  });
+
+  it("…und jedes trägt ein deutsches Wort", () => {
+    for (const t of teile) {
+      expect(UNIFORM_DE[t.wordEn], `„${t.wordEn}" hat kein deutsches Wort`).toBeDefined();
     }
   });
 });

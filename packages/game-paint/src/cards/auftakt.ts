@@ -214,3 +214,89 @@ export const auftaktTasks = (c: AuftaktCounts, group?: "aufgaben" | "sammeln"): 
   // lines are authored in and a group is never silently reordered by its filter
   return group === undefined ? out : out.filter((t) => GROUP_OF[t.key] === group);
 };
+
+// ── DIE SAMMEL-LEGENDE (R5-W7 · D5 · R165 / ch01.md §9 Frage 2, D-275) ───────
+//
+// Der Spielkanon verspricht dem ersten Kapitel einen Auftragsschirm mit einer
+// SAMMEL-LEGENDE. Der Schirm steht seit J1-B; die Legende fehlte, und mit ihr
+// fehlten die neun Uniform-Teile, die seit Welle 5 im Kapitel liegen: die Seite,
+// die einem Kind sagt, was es sammelt, erwähnte sie mit keinem Wort. Kokis
+// Entscheid vom 18.08.: die Legende ja, die drei zusätzlichen Kartenposten nein.
+//
+// WARUM DIE ZEILEN HIER LIEGEN UND NICHT IM RENDERER — derselbe Grund wie bei
+// den Aufgaben-Zeilen darüber: was auf der Seite STEHT, soll ein Test ohne DOM
+// abgehen können. Der Renderer entscheidet nur, wie eine Zelle aussieht.
+
+/** Das deutsche Kinderwort zu jedem der neun englischen Uniform-Wörter.
+ *
+ *  KOKIS ENTSCHEID (21.08.): unter jedem Bild steht das DEUTSCHE Wort, nicht das
+ *  englische. Die Legende sagt dem Kind, WAS es suchen soll; das englische Wort
+ *  ist die Belohnung — es erscheint beim Aufheben als Wort-Flash und noch einmal
+ *  in der Schluss-Zeremonie (UNIFORM_SAMMELN_DESIGN §1: „erst begegnen, dann
+ *  abfragen"). Neun englische Vokabeln auf einer Seite, die das Kind sieht,
+ *  BEVOR es ein einziges Teil gefunden hat, nähmen dem Fund seinen Wert.
+ *
+ *  ⚠ Diese neun Wörter sind SICHTBARE deutsche Spielzeilen und gehören damit
+ *  unter LEXIKON_AT — dort steht heute nur Schulmaterial, keine Kleidung. Der
+ *  Nachtrag ist für die Kanon-Bahn abgelegt; geprüft sind sie hier gegen das
+ *  Maschinen-Tor (`check-copy-register`), das sie als österreichisches Deutsch
+ *  durchgelassen hat. */
+export const UNIFORM_DE: Readonly<Record<string, string>> = {
+  hairband: "Haarband",
+  hat: "Hut",
+  sunglasses: "Sonnenbrille",
+  shirt: "Hemd",
+  "school tie": "Krawatte",
+  sweater: "Pullover",
+  skirt: "Rock",
+  socks: "Socken",
+  shoe: "Schuh",
+};
+
+/** Ein Uniform-Teil, wie es im Level steht: sein Blatt und sein englisches Wort. */
+export interface UniformPiece {
+  /** der Skin, aus dem das gemalte Blatt `<skin>_a` wird */
+  skin: string;
+  /** das englische Wort, das dieses Teil lehrt — der Schlüssel des Ledgers */
+  wordEn: string;
+}
+
+/** Eine Zelle der Legende. */
+export interface LegendCell extends UniformPiece {
+  /** das deutsche Wort, oder null, wenn für dieses Teil keines geschrieben ist */
+  de: string | null;
+  /** hat das Kind es schon? */
+  found: boolean;
+}
+
+/**
+ * Die Legende aus dem LEVEL und dem Ledger — nichts davon ist getippt.
+ *
+ * `pieces` kommt aus der gebauten Welt (die Reihenfolge des Levels ist die
+ * Reihenfolge der Stockwerke, drei je Stockwerk — das Raster der Seite ist
+ * damit die Verteilung des Designs und keine Layout-Laune), `found` ist der
+ * Ledger der aufgehobenen WÖRTER. Ein Teil ohne deutsches Wort bekommt `null`
+ * und nicht etwa sein englisches: eine Legende, die stillschweigend die Sprache
+ * wechselt, lehrt das Kind das falsche Wort. Dass für die ausgelieferten neun
+ * kein `null` entsteht, hält ein Test fest.
+ */
+export const uniformLegend = (
+  pieces: readonly UniformPiece[],
+  found: readonly string[] = [],
+): LegendCell[] =>
+  pieces.map((p) => ({
+    ...p,
+    de: UNIFORM_DE[p.wordEn] ?? null,
+    found: found.includes(p.wordEn),
+  }));
+
+/** Die Zeile über der Legende — und wie jede Zahl auf dieser Seite ist sie
+ *  GEZÄHLT und nicht getippt (doc 41 §7). Deutsch hat einen Singular, also hat
+ *  diese Funktion einen Zweig dafür; ein Kapitel mit genau einem Fundstück wird
+ *  es geben, und `1 Kleider` wäre dann kompiliert und trotzdem falsch. */
+export const uniformLegendLine = (total: number, found: number): string => {
+  if (total === 1) return found === 0 ? "Ein Kleidungsstück liegt irgendwo im Schulhaus." : "Du hast es.";
+  if (found === 0) return `Deine ${total} Kleider sind über das Schulhaus verstreut.`;
+  if (found >= total) return `Du hast alle ${total} Kleider.`;
+  return `Du hast ${found} von ${total} Kleidern.`;
+};

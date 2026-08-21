@@ -12,7 +12,7 @@
 import { describe, expect, it } from "vitest";
 import fs from "node:fs";
 import path from "node:path";
-import { benchBilanz } from "./bench-counts.ts";
+import { benchBilanz, clothWordList } from "./bench-counts.ts";
 import type { PaintLevel } from "../level.ts";
 
 const root = path.resolve(__dirname, "../../../..");
@@ -56,11 +56,27 @@ describe("die Bilanz der Kartenbank stimmt mit dem Kapitel überein", () => {
     });
   });
 
+  it("R5-W7 · D5: leitet auch Uniform und entfärbte Dinge ab — und zeigt die Legende in BEIDEN Zuständen", () => {
+    const b = benchBilanz(raw);
+    const woerter = clothWordList(raw);
+    expect(b.clothTotal, "die Bank kennt die Uniform des Kapitels nicht").toBe(woerter.length);
+    expect(b.clothTotal, "Vakuität: ohne Teile prüft der Rest nichts").toBeGreaterThan(1);
+    expect(b.drainedTotal).toBe(count("drained"));
+    expect(b.drainedTotal, "Vakuität").toBeGreaterThan(0);
+    // die Attrappe muss GEFUNDENES und OFFENES gleichzeitig zeigen, sonst
+    // fotografiert die Bank nur einen der beiden Zustände der Legende
+    expect(b.clothWords.length).toBe(b.cloth);
+    expect(b.cloth).toBeGreaterThan(0);
+    expect(b.cloth).toBeLessThan(b.clothTotal);
+    expect(b.clothWords.every((w) => woerter.includes(w)), "die Bank erfindet ein Wort").toBe(true);
+  });
+
   it("hält jeden Fortschritt innerhalb seiner Summe", () => {
     const b = benchBilanz(raw);
     for (const [got, total] of [
       [b.kids, b.kidsTotal], [b.freed, b.freedTotal], [b.tips, b.tipsTotal],
       [b.letters, b.lettersTotal], [b.books, b.booksTotal],
+      [b.cloth, b.clothTotal], [b.drained, b.drainedTotal],
     ] as const) {
       expect(got).toBeGreaterThanOrEqual(0);
       expect(got).toBeLessThanOrEqual(total);

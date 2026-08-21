@@ -23,7 +23,7 @@ import type { PaintLevel, PhaseSpec } from "./level.ts";
 import type { GameTaskV2 } from "@domigo/content-schema";
 import { CardHost } from "./cards/CardHost.tsx";
 import { Key, KeyBit } from "./cards/Glance.tsx";
-import { type AuftaktCard, type AuftaktCounts, auftaktChain, auftaktExit, auftaktPosition, auftaktStep, auftaktTasks } from "./cards/auftakt.ts";
+import { type AuftaktCard, type AuftaktCounts, type UniformPiece, auftaktChain, auftaktExit, auftaktPosition, auftaktStep, auftaktTasks, uniformLegend, uniformLegendLine } from "./cards/auftakt.ts";
 import { type ArenaBeat, arenaExit, arenaLines, arenaPosition, arenaStep } from "./cards/arena.ts";
 import { answerTextOf } from "./cards/resolution.ts";
 import { tierOfAsker } from "./cards/serving.ts";
@@ -237,6 +237,20 @@ interface Bilanz {
    *  Kleckskammer's second copies are a second CHANCE at the same nine words,
    *  not nine more pieces, so folding them in would promise a child eighteen. */
   cloth: number; clothTotal: number;
+  /** R5-W7 · D5 · R165: …and WHICH of them, because the opening's Sammel-Legende
+   *  draws nine pieces and has to say for each one whether the child has it. A
+   *  count cannot answer that. The same ledger the count is derived from, so the
+   *  two can never disagree: the words, not the entity ids (the Kleckskammer
+   *  holds a second copy of each piece — counting ids would let one word count
+   *  twice). */
+  clothWords: readonly string[];
+  /** R5-W7 · D5 · P6/R196 (B15): the DRAINED things — the six school things whose
+   *  colour the chapter is about. The score page counted children, cages, rule
+   *  pages, letters, books and clothes and stayed silent about the one mechanic
+   *  the whole chapter runs on. Counted from the run's own ledger of resolved
+   *  beings (`onEntityResolved`, R5-W4 · B4 · D-4), filtered to that role — no
+   *  new sim field was invented for it. */
+  drained: number; drainedTotal: number;
 }
 
 /** The skin of the being a request is about (a shell ceremony is about none). */
@@ -302,6 +316,38 @@ const chapterLetterTotal = (level: PaintLevel): number =>
 const chapterRoleCount = (level: PaintLevel, role: string): number =>
   [...level.phases, ...(level.arena ? [level.arena] : [])]
     .reduce((n, p) => n + p.entities.filter((e) => e.role === role).length, 0);
+
+/** R5-W7 · D5 · R165 · the chapter's uniform pieces, IN THE ORDER THE WORLD
+ *  CARRIES THEM — three per floor in ch01, which is why the opening's legend is
+ *  a three-by-three grid and not a row: one line of the grid is one floor.
+ *  Read off the level like every other total on this page; a piece added or
+ *  renamed later cannot leave the legend behind. Deduplicated by WORD, because
+ *  the Kleckskammer holds a second copy of each piece and the legend is about
+ *  the nine words, not about eighteen pickups. */
+const chapterClothPieces = (level: PaintLevel): UniformPiece[] => {
+  const out: UniformPiece[] = [];
+  for (const p of [...level.phases, ...(level.arena ? [level.arena] : [])]) {
+    for (const e of p.entities) {
+      if (e.role !== "cloth") continue;
+      const wordEn = typeof e.params?.wordEn === "string" ? e.params.wordEn : "";
+      if (wordEn === "" || out.some((o) => o.wordEn === wordEn)) continue;
+      out.push({ skin: e.skin, wordEn });
+    }
+  }
+  return out;
+};
+
+/** R5-W7 · D5 · B15: WHICH beings are the drained ones. The run's ledger of
+ *  answered beings holds ids of every kind (moths, chasers, drained things), so
+ *  the score page needs the level to tell it which of them were the six school
+ *  things whose colour came back. */
+const chapterDrainedIds = (level: PaintLevel): Set<string> => {
+  const out = new Set<string>();
+  for (const p of [...level.phases, ...(level.arena ? [level.arena] : [])]) {
+    for (const e of p.entities) if (e.role === "drained" && e.id !== undefined) out.add(e.id);
+  }
+  return out;
+};
 
 /** PK-R6 · C · how many CLASSMATES the chapter holds — the cages that declare
  *  one (doc 44 §2.3's person-cage). The level law already guarantees exactly
@@ -462,6 +508,10 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
   const clothWordsRef = useRef<string[]>([]);
   const clothIdsRef = useRef<string[]>([]);
   const [clothCount, setClothCount] = useState(0);
+  /** R5-W7 · D5 · B15: die entfärbten Dinge, denen das Kind die Farbe
+   *  zurückgegeben hat. KEIN neues Sim-Feld: gezählt aus dem Hauptbuch, das
+   *  `onEntityResolved` seit B4 ohnehin führt, gefiltert auf die Rolle. */
+  const [drainedCount, setDrainedCount] = useState(0);
   const [tipsCount, setTipsCount] = useState(0);
   /** R5-W2 · I1: the same pages as a rendered value. The ref above is the one
    *  that survives a phase remount; this is what the Merkseite reads, because a
@@ -1009,6 +1059,12 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
             if (!resolvedEntitiesRef.current.includes(id)) {
               resolvedEntitiesRef.current = [...resolvedEntitiesRef.current, id];
             }
+            // R5-W7 · D5 · B15: dieselbe Liste, eine Zahl mehr. Als ZUSTAND und
+            // nicht als Lesung des Zeigers während des Zeichnens — die Bilanz
+            // wird bei jedem Bild neu gerechnet, und ein Zeiger, den niemand
+            // meldet, lässt sie stillstehen.
+            const entfaerbt = chapterDrainedIds(level);
+            setDrainedCount(resolvedEntitiesRef.current.filter((x) => entfaerbt.has(x)).length);
           },
           onLetters: (got, total) => {
             setLetters({ got, total });
@@ -1441,6 +1497,8 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
     lettersTotal: chapterLetterTotal(level),
     books: booksCount, booksTotal: chapterRoleCount(level, "book"),
     cloth: clothCount, clothTotal,
+    clothWords: clothWordsRef.current,
+    drained: drainedCount, drainedTotal: chapterRoleCount(level, "drained"),
   };
 
   return (
@@ -1888,6 +1946,56 @@ function Overlay({
           </div>
         );
       });
+      // ── R5-W7 · D5 · R165 · DIE SAMMEL-LEGENDE ──────────────────────────
+      // Der Spielkanon verspricht ch01 einen Auftragsschirm MIT Legende, und
+      // seit Welle 5 liegen neun Uniform-Teile im Kapitel, von denen diese
+      // Seite kein Wort sagte (ch01.md §9 Frage 2, D-275; Kokis Entscheid:
+      // Legende ja, die drei Kartenposten nein).
+      //
+      // Das Raster ist drei mal drei, weil die WELT drei Teile je Stockwerk
+      // trägt — eine Zeile des Rasters ist ein Stockwerk, und die Reihenfolge
+      // kommt aus dem Level statt aus einer Liste hier. Unter jedem Bild steht
+      // das DEUTSCHE Wort (Kokis Entscheid vom 21.08.): die Legende sagt, WAS zu
+      // suchen ist; das englische Wort ist die Belohnung beim Fund und in der
+      // Zeremonie. Neun Vokabeln vorab nähmen dem Fund seinen Wert.
+      const legende = o.card === "sammeln" ? uniformLegend(chapterClothPieces(level), bilanz.clothWords) : [];
+      //
+      // ⚠ UND SIE MUSS FLACH SEIN. Die erste Fassung stellte Bild und Wort
+      // übereinander — schön, und 198 px hoch: die Karte wuchs damit über den
+      // Schleier hinaus, der sie hält (gemessen: Inhalt 738 gegen 672 sichtbare
+      // Punkte, die untere Kante lag auf dem letzten Bildpunkt des Bank-Fotos).
+      // Wort NEBEN Bild kostet dieselbe Aussage in einer Zeilenhöhe statt zwei.
+      const legendeRaster = legende.length === 0 ? null : (
+        <div style={{ margin: "7px 0 0" }}>
+          <span className="pb-quiet" style={{ display: "block", marginBottom: 4 }}>
+            {uniformLegendLine(legende.length, legende.filter((c) => c.found).length)}
+          </span>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "4px 4px" }}>
+            {legende.map((c) => {
+              const url = art[`${c.skin}_a`];
+              return (
+                <span key={c.wordEn} style={{ display: "flex", alignItems: "center", gap: 5, opacity: c.found ? 1 : 0.46 }}>
+                  <span style={{ display: "flex", flex: "0 0 auto", width: 22, height: 22, alignItems: "center", justifyContent: "center" }}>
+                    {url !== undefined
+                      // ⚠ die neun Blätter sind schon im DOM-Umfang: artScope
+                      // legt für JEDE cloth-Entität `<skin>_a` dazu (G4). Diese
+                      // Legende brauchte deshalb keine Zeile dort — nur die
+                      // Prüfung, dass alle neun wirklich ankommen.
+                      ? <img src={url} alt="" aria-hidden style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "contain", display: "block" }} />
+                      // keen-art: ein Blatt, das noch nicht liegt, lässt die
+                      // Zelle nicht leer — sie zeigt das HUD-Zeichen derselben
+                      // Klasse, in derselben Größe wie die Nachbarn
+                      : <PaintedIcon name="uniform" size={19} art={art} />}
+                  </span>
+                  <span className={c.found ? "pb-key-bit" : "pb-quiet"} style={{ fontSize: 11.5, lineHeight: 1.1 }}>
+                    {c.de ?? ""}
+                  </span>
+                </span>
+              );
+            })}
+          </div>
+        </div>
+      );
       return staged(
         <div style={{ textAlign: "left" }}>
           {/* R5-W3 · J2 · R29: two beats, two headings. »Dein Auftrag« is what the
@@ -1907,6 +2015,7 @@ function Overlay({
           <div style={{ display: "grid", gap: 11, fontSize: 14.5, color: "#4a4030", margin: "2px 0 0", lineHeight: 1.3 }}>
             {rows}
           </div>
+          {legendeRaster}
           {auftaktFoot("Weiter")}
         </div>,
         "pb-page",
@@ -2467,6 +2576,15 @@ function ScorePage({
     // what the bonus room spells out in letters.
     rows.push({ icon: "cage", labelDe: "Schulsachen befreit", got: bilanz.freed - bilanz.kids, total: bilanz.freedTotal - bilanz.kidsTotal });
   }
+  // R5-W7 · D5 · P6/R196 (B15) · DIE ZEILE, DIE DER MECHANIK GEHÖRT.
+  // Die Bilanz zählte Kinder, Käfige, Regel-Seiten, Buchstaben, Bücher und
+  // Kleider — und schwieg über das eine, worum das ganze Kapitel geht: auf
+  // Englisch sagen, was ein entfärbtes Ding ist, und ihm damit die Farbe
+  // zurückgeben. Ein Kind, das sechsmal genau das getan hat, las am Ende keine
+  // Zeile darüber. Die Zahl kommt aus dem Hauptbuch der beantworteten Wesen
+  // (B4/D-4), nicht aus einem neu erfundenen Sim-Feld, und die Zeile wird —
+  // wie jede andere hier — nicht gezeichnet, wenn das Kapitel keine hat.
+  if (bilanz.drainedTotal > 0) rows.push({ icon: "palette", labelDe: "Farbe zurückgegeben", got: bilanz.drained, total: bilanz.drainedTotal });
   if (bilanz.tipsTotal > 0) rows.push({ icon: "rule", labelDe: "Regel-Seiten gefunden", got: bilanz.tips, total: bilanz.tipsTotal });
   rows.push({ icon: "spark", labelDe: `${level.collectNounDe} gesammelt`, got: bilanz.letters, total: bilanz.lettersTotal });
   if (bilanz.booksTotal > 0) rows.push({ icon: "book", labelDe: "Bonus-Bücher", got: bilanz.books, total: bilanz.booksTotal });
