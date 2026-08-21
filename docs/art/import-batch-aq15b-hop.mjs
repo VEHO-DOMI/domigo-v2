@@ -41,9 +41,27 @@
  * WHOLE FLIGHT SHEET"), dort über eine Referenzzelle statt über den Zuschnitt.
  *
  * ── DEAD_ART ────────────────────────────────────────────────────────────────
- * Fünf NEUE Stems, alle fünf im selben PR verdrahtet (anim.ts `HOP_CELLS`), also
- * kein totes Blatt: die Decke bleibt 53. Die Reserve-Zellen Z5–Z7 sind reiner
- * Schlüssel und werden nicht geschrieben — geprüft, nicht angenommen.
+ * Fünf NEUE Stems. Die Absicht WAR, sie im selben PR zu verdrahten (anim.ts
+ * `HOP_CELLS`), damit kein totes Blatt entsteht und die Decke 53 bleibt. Die
+ * Reserve-Zellen Z5–Z7 sind reiner Schlüssel und werden nicht geschrieben —
+ * geprüft, nicht angenommen.
+ *
+ * ── R5-W7 · F8 · DIESER KOPF HAT EINE ZEIT LANG ETWAS BEHAUPTET, DAS NIE WAR ─
+ * Bis heute stand hier »alle fünf im selben PR verdrahtet (anim.ts
+ * `HOP_CELLS`)« — im Indikativ, als wäre es geschehen. Es ist nie geschehen:
+ * `HOP_CELLS` und `merle_hop0…4` kommen in `packages/game-paint/src` nirgends
+ * vor (repo-weit gegriffen, 2026-08-21). Der Hüpfer trägt bis heute
+ * `anim.ts HOP_CELL = "joy"`, also ihre Freuden-Zelle. Eine Sitzung, die diesem
+ * Kopf glaubte, hätte nach Code gesucht, den es nicht gibt — und ihn beim
+ * Nichtfinden für einen eigenen Fehler gehalten.
+ *
+ * STAND (R204, Mac-Verlust 2026-08-21): die Lieferungen `batch-aq15b-hop` UND
+ * `batch-aq15b-hop2` sind mit dem ersten Mac verloren. `SHEET` unten zeigt
+ * deshalb weiter auf den ersten Pfad und wird NICHT umgestellt — beide Blätter
+ * sind gleich unerreichbar, und ein umgestellter Pfad auf eine ebenso fehlende
+ * Datei wäre nur eine neue Behauptung. Nachbestellung AQ15B-HOP3 läuft über den
+ * Architekten; Import UND Verdrahtung fahren in EINEM späteren PR (Bahn-Regel).
+ * Bis dahin schreibt dieser Importer nichts, und DEAD_ART bleibt trivial 53.
  */
 import fs from "node:fs";
 import path from "node:path";
@@ -141,7 +159,46 @@ const keyDistance = (png) => {
  *
  *  Ein blinder Prüfer hat es gefunden, diese Zahl hat es bewiesen — und damit
  *  gehört es hierher und nicht in einen Bericht: eine Zelle, deren Kontur beim
- *  Verkleinern verlorengeht, ist eine Fehlerklasse, kein Einzelfall. */
+ *  Verkleinern verlorengeht, ist eine Fehlerklasse, kein Einzelfall.
+ *
+ *  ── R5-W7 · F8 · D-451 · WAS DIESE ZAHL NICHT WEISS, UND WAS SIE TROTZDEM ───
+ *  ── RICHTIG GESEHEN HAT ─────────────────────────────────────────────────────
+ *  W5 hat diese Rechnung über ALLE 28 `merle_*.png` gefahren: zehn liegen unter
+ *  dem 50-%-Tor unten. Ich habe die zehn Zahlen nachgerechnet (Funktion aus
+ *  dieser Datei geschnitten, nicht abgeschrieben) — sie stimmen auf die
+ *  Nachkommastelle. Zwei Befunde, und sie zeigen in verschiedene Richtungen:
+ *
+ *  (1) DIESE ZAHL IST EINE BLATT-ZAHL, KEINE FIGUR-ZAHL. Sie mittelt über jeden
+ *      deckenden Bildpunkt, den das Blatt trägt — auch über eine REQUISITE. Vier
+ *      der zehn Zellen tragen eine grosse, blasse, konturlose Requisite, und die
+ *      frisst die Zahl auf (Teil-Fläche · eigener Dunkelanteil):
+ *        merle_act_window1  Fenster 63 824 px @ 17,7 %  (ihr Kleid: 64,1 %)
+ *        merle_act_window0  Fenster 45 728 px @ 19,1 %  (ihr Kleid: 62,4 %)
+ *        merle_act_scribble0  Tisch 40 494 px @  5,7 %  (ihr Kleid: 60,3 %)
+ *        merle_act_scribble1  Tisch 37 151 px @  6,6 %  (ihr Kleid: 65,4 %)
+ *      Für diese vier sagt die Blatt-Zahl über MERLE nichts. Wer sie als
+ *      Figur-Urteil liest, misst ein Fenster.
+ *
+ *  (2) UND DER MANGEL IST TROTZDEM ECHT — prop-blind gegengeprüft an dem einen
+ *      Ding, das in allen 28 Zellen dasselbe ist und nie eine Requisite sein
+ *      kann: ihre zwei SCHUHE (rein geometrisch gewählt, 2500–5500 px mit
+ *      Unterkante im untersten Blattviertel — nie über die Kontur, sonst suchte
+ *      das Lineal, was es beweisen soll):
+ *        act/settle-Familie   n=8   27,8 … 38,6 %   Median 31,6
+ *        klassische Familie   n=13  64,9 … 87,5 %   Median 70,3
+ *      Zwei Familien, NULL Überlappung, 26 Punkte Lücke. Sieben Zellen liefern
+ *      kein geometrisch eindeutiges Schuhpaar (sie steht auf Möbeln oder die
+ *      Schuhe hängen zusammen) — sie sind im Report vollständig aufgezählt und
+ *      NICHT stillschweigend weggelassen.
+ *
+ *  ENTSCHEID (R180, F8): die zehn Zellen bekommen KEINE Tor-Ausnahme. Die
+ *  Ausnahme war der bequeme Weg und die prop-blinde Messung nimmt ihn weg — es
+ *  sind nicht zehn Einzelfälle mit Requisiten-Pech, es ist EINE Familie
+ *  (`act_*` + `settle_*`), die beim Neu-Keyen ihre Kontur verloren hat: genau
+ *  die Fehlerklasse, die oben schon die Aufsetz-Zelle zurückgeschickt hat.
+ *  Route: Kommission »Merle-Kontur« beim Architekten, Abnahme-Bar = die
+ *  Schuh-Zahl der klassischen Familie (Boden 64,9 %), nicht die Blatt-Zahl.
+ *  KEIN Blatt wurde angefasst (Auftrag). */
 function konturAnteil(png) {
   const { width: W, height: H, data } = png;
   const deckend = (i) => data[i + 3] > 8;

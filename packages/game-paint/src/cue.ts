@@ -34,6 +34,12 @@
 // a screenshot.
 
 import { hash01 } from "./mass.ts";
+// R5-W7 · F8 · D-418: die Rampe »wie hell ist dieser Raum« steht EINMAL, in
+// letters.ts, und wird hier GELESEN statt abgeschrieben — zwei Umsetzungen
+// derselben Rechnung sind genau die Schuld, die W5 in check-composition
+// aufgeräumt hat (D-453). `letters.ts` importiert selbst nichts, es kann also
+// kein Import-Ring entstehen (nachgesehen, nicht angenommen).
+import { roomBrightness } from "./letters.ts";
 
 export interface CuePt { x: number; y: number }
 /** One fill pass of the arrow: a closed polygon at one colour and alpha. */
@@ -48,6 +54,11 @@ export interface ChalkArrow {
   halo: readonly CueRing[];
   bands: readonly CueBand[];
   dust: readonly CueFleck[];
+  /** R5-W7 · F8 · D-418: die Farbe des Hofes, die dieser Raum verlangt. Sie
+   *  gehört in die Rückgabe und nicht in den Renderer, weil `renderEngageCue`
+   *  „nur noch füllt, was sie bekommt" — eine Farbe, die der Renderer selbst
+   *  wählt, hätte keinen Test. */
+  haloColour: number;
 }
 
 /** The book's chalk white and its ink contour — the two colours the Tafel, the
@@ -151,6 +162,82 @@ export const CUE_LAG_TICKS = 5;
 /** Ringe im Halo, ihre Grundhelligkeit und ihr Atem. */
 export const CUE_HALO_RINGS = 4;
 export const CUE_HALO_GAIN = 1.6;
+
+// ── R5-W7 · F8 · D-418 · DER HOF FOLGT DEM RAUM ──────────────────────────────
+//
+// Der Kopf dieser Datei erklärt seit L1, warum hier Gold steht und warum ein
+// KÜHLER Hof nicht zu haben ist (R37: der Pfeil trägt warm, die Regel-Seite
+// kühl — daran hält der Kanal die zwei Handlungsmöglichkeiten auseinander).
+// L1 hat daraufhin einen warm-dunklen Hof gebaut, GEMESSEN und wieder
+// zurückgenommen: er half im hellen Raum (p1 +13,3 statt +4,3) und kostete im
+// dunklen (p2 fiel von +67,7/25° auf +32,3/1°). Der Fehler war nicht die Farbe,
+// sondern dass es nur EINE gab.
+//
+// Meine Vorher-Messung am ausgelieferten Spiel (`measure-presence --arrow`,
+// sichtbarer Chrome, jeder Kasten am Ausschnitt nachgesehen — eine Zahl, die
+// niemand angesehen hat, ist eine Behauptung) fällt exakt entlang des
+// Raum-Schlüssels:
+//
+//   Raum  Schlüssel        ΔL            ΔH      trennt?
+//   p1    88  (hell)   -0,7 / +3,2    25°/24°    NEIN
+//   p3    86  (hell)  +11,3 / +17,5   27°/25°    NEIN
+//   p2    30  (dunkel) +73,7 / +75,9  52°/32°    ja
+//   p4    28  (dunkel) +71,4 / +71,2  33°/29°    ja
+//   p9    14           — kein anspielbares Wesen im Raum, also nie ein Pfeil
+//
+// Das ist Wort für Wort der Befund, den `letters.ts` eine Datei weiter für die
+// Sammelbuchstaben gelöst hat: **das Zeichen trägt das Gegenteil seines Raumes.**
+//
+// UND HIER IST DER UNTERSCHIED ZU DEN BUCHSTABEN, weil R37 ihn erzwingt: die
+// Buchstaben dürfen die FAMILIE wechseln (Tinte im hellen Raum, Kreide im
+// dunklen). Der Pfeil darf das nicht — er muss warm bleiben. Also wechselt sein
+// Hof nur den WERT: es ist dasselbe vergoldete Licht, auf 36 % heruntergedreht.
+// Die Kanalverhältnisse bleiben damit unverändert (255:227:164), der Farbton
+// steht still, und „mehr Rot als Blau" gilt bei jedem Schlüssel per Bauart und
+// nicht per Aufsicht.
+export const CUE_HALO_LIT = 0x5c523b;
+// ── UND WARUM VIER RINGE IM HELLEN RAUM NICHT REICHEN ────────────────────────
+// Der Hof ist kein Verlauf, sondern VIER gefüllte Scheiben übereinander. Bei
+// Gold-Deckkraft (Verstärkung 1,6) sieht das niemand — die Stufen liegen bei
+// gut einem Prozent. Beim ersten Nachher-Bild dieser Runde lagen sie bei
+// zwanzig, und der Ausschnitt zeigte, was die Zahl NICHT zeigte: vier
+// hartkantige konzentrische Ringe um den Pfeil. Das ist genau das Artefakt,
+// gegen das `cue.test.ts` seit H2 die Zeile hält, der Hof dürfe „never a disc
+// with a hard rim" sein — und es hätte jedes Prüfer-Panel zu Recht gekippt.
+//
+// Die Reparatur ist nicht weniger Deckkraft (dann nimmt der Hof den Grund nicht
+// zurück und die ganze Runde ist umsonst), sondern MEHR RINGE: dieselbe
+// Gesamt-Rücknahme, über zwölf dünne Schichten statt vier dicke. Reichweite und
+// Verlaufsform bleiben Zeile für Zeile dieselben; im dunklen Raum fällt die
+// Rechnung auf die alte zurück, Bit für Bit (gemessen: p2 und p4 liefern
+// nachher exakt dieselben Zahlen wie vorher).
+export const CUE_HALO_RINGS_LIT = 12;
+// …und eine dunkle Farbe allein nimmt nichts zurück: die Rücknahme steckt im
+// PRODUKT aus Wert und Deckkraft. Der helle Raum bekommt deshalb auch mehr
+// Deckkraft. Die Zahl ist gemessen und nicht geraten — siehe den Report.
+export const CUE_HALO_GAIN_LIT = 5.5;
+
+/**
+ * Welchen Hof dieser Raum verlangt. `key` ist der Helligkeitsschlüssel der
+ * Phase (`composition.ts`: p1 88 · p3 86 · p2 30 · p4 28 · p9 14).
+ *
+ * OHNE Raum (`undefined`) bleibt alles, wie es war — Gold. Das ist kein
+ * Bequemlichkeits-Rückfall, sondern die ehrliche Antwort auf „ich weiss nicht,
+ * wo ich stehe": die alte Marke war in den DUNKLEN Räumen richtig, und wer den
+ * Raum nicht kennt, darf ihm nichts über ihn unterstellen.
+ */
+export const cueHaloFor = (key?: number): { colour: number; gain: number; rings: number } => {
+  if (key === undefined) return { colour: CUE_HALO, gain: CUE_HALO_GAIN, rings: CUE_HALO_RINGS };
+  const t = roomBrightness(key); // 0 = dunkel, 1 = hell
+  const kanal = (schiebe: number): number => Math.round(
+    ((CUE_HALO >> schiebe) & 255) * (1 - t) + ((CUE_HALO_LIT >> schiebe) & 255) * t,
+  );
+  return {
+    colour: (kanal(16) << 16) | (kanal(8) << 8) | kanal(0),
+    gain: CUE_HALO_GAIN * (1 - t) + CUE_HALO_GAIN_LIT * t,
+    rings: Math.round(CUE_HALO_RINGS * (1 - t) + CUE_HALO_RINGS_LIT * t),
+  };
+};
 export const CUE_HALO_PULSE = 0.55;
 export const CUE_HALO_SWELL_PX = 1.8;
 /** Die aufsteigenden Krümel. */
@@ -213,6 +300,12 @@ export const chalkArrow = (
   seed = 1,
   phase = 0,
   reducedMotion = false,
+  // R5-W7 · F8 · D-418: der Helligkeitsschlüssel des Raumes, in dem diese Marke
+  // steht. Er steht ganz hinten und darf fehlen, weil genau das die Bedingung
+  // war, unter der L1 die Reparatur zurücknehmen musste: „ihre Signatur gehört
+  // nicht dieser Bahn". Sie gehört jetzt dieser — und die Marke ohne Raum
+  // verhält sich unverändert.
+  key?: number,
 ): ChalkArrow => {
   // …und `phase` kommt hier NICHT vor: ein pro Bild neu gewürfelter Waver
   // würde kochen (siehe Kopf der Datei). Der Waver gehört dem Wesen, nicht der
@@ -244,13 +337,26 @@ export const chalkArrow = (
   // es ATMET gegenphasig zum Wippen — die Marke landet, das Licht antwortet
   const breath = reducedMotion ? 0 : -Math.sin(((phase - CUE_LAG_TICKS) / CUE_BOB_TICKS) * Math.PI * 2);
   const haloY = y + lagBob;
+  // …und WELCHES Licht das ist, sagt der Raum (D-418). Farbe und Deckkraft
+  // kommen aus einer Hand, weil eine dunkle Farbe mit heller Deckkraft nichts
+  // zurücknimmt und eine helle Farbe mit dunkler Deckkraft nur schmutzt.
+  const hof = cueHaloFor(key);
   const halo: CueRing[] = [];
-  for (let i = 0; i < CUE_HALO_RINGS; i++) {
+  // Die REICHWEITE des Hofes ist ein Vertrag der alten Runden (0,85 … 2,11 ×
+  // Größe) und bleibt unberührt, egal über wie viele Schichten sie läuft. Nur
+  // die Schrittweite wird feiner, und jede Schicht wird im selben Maß dünner —
+  // deshalb steht `CUE_HALO_RINGS / hof.rings` in der Deckkraft. Bei vier
+  // Ringen ist der Faktor 1 und jede Zahl unten fällt Zeichen für Zeichen auf
+  // die alte Fassung zurück.
+  const spanne = 0.42 * (CUE_HALO_RINGS - 1);
+  for (let i = 0; i < hof.rings; i++) {
+    const u = hof.rings === 1 ? 0 : i / (hof.rings - 1);
     halo.push({
       cx: x,
       cy: haloY,
-      r: size * (0.85 + i * 0.42) + CUE_HALO_SWELL_PX * breath * (i / CUE_HALO_RINGS),
-      alpha: (0.05 * (1 - i / CUE_HALO_RINGS) ** 1.2 + 0.012) * CUE_HALO_GAIN * (1 + CUE_HALO_PULSE * breath),
+      r: size * (0.85 + u * spanne) + CUE_HALO_SWELL_PX * breath * (i / hof.rings),
+      alpha: (0.05 * (1 - i / hof.rings) ** 1.2 + 0.012)
+        * hof.gain * (CUE_HALO_RINGS / hof.rings) * (1 + CUE_HALO_PULSE * breath),
     });
   }
   // …und die Krümel STEIGEN. Das ist die eigentliche Lockung: ein Kind liest
@@ -273,7 +379,7 @@ export const chalkArrow = (
       alpha: CUE_MOTE_ALPHA_PEAK * Math.sin(u * Math.PI) * (0.55 + 0.45 * hash01(seed * 97 + i * 41)),
     });
   }
-  return { halo, bands, dust };
+  return { halo, bands, dust, haloColour: hof.colour };
 };
 
 /** True when no two consecutive edges of a band are exactly axis-aligned or

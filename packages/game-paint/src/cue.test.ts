@@ -9,7 +9,7 @@
 // screenshot: no machine edge, an edge that ramps instead of stepping, and the
 // same mark every time the same being is asked about.
 import { describe, expect, it } from "vitest";
-import { CUE_BOB_PX, CUE_BOB_TICKS, CUE_CHALK, CUE_CORE, CUE_INK, CUE_JITTER_PX, CUE_MOTE_ALPHA_PEAK, CUE_MOTE_COUNT, CUE_GAP_PX, cueMarkY, TREASURE_BACK_ALPHA, TREASURE_BACK_COLOUR, TREASURE_BOB_PX, TREASURE_BOB_TICKS, TREASURE_MOTE_ALPHA_PEAK, TREASURE_MOTE_TICKS, TREASURE_SHAFT_ALPHA, TREASURE_SHAFT_H_MUL, chalkArrow, hasNoStraightMachineEdge, treasureBobPx, treasureCue } from "./cue.ts";
+import { CUE_BOB_PX, CUE_BOB_TICKS, CUE_CHALK, CUE_CORE, CUE_INK, CUE_JITTER_PX, CUE_MOTE_ALPHA_PEAK, CUE_MOTE_COUNT, CUE_GAP_PX, cueMarkY, TREASURE_BACK_ALPHA, TREASURE_BACK_COLOUR, TREASURE_BOB_PX, TREASURE_BOB_TICKS, TREASURE_MOTE_ALPHA_PEAK, TREASURE_MOTE_TICKS, TREASURE_SHAFT_ALPHA, TREASURE_SHAFT_H_MUL, CUE_HALO, CUE_HALO_LIT, CUE_HALO_RINGS, CUE_HALO_RINGS_LIT, cueHaloFor, chalkArrow, hasNoStraightMachineEdge, treasureBobPx, treasureCue } from "./cue.ts";
 import { SHAFT_EDGE_MAX, shaftQuads } from "./air.ts";
 
 describe("PK-R6 · H2 · the hand-drawn ↑ cue", () => {
@@ -375,5 +375,121 @@ describe("R5-F6 · cueMarkY — die Marke sitzt über dem höheren der zwei Köp
     const cue = chalkArrow(100, y, 11, 3, 0, true); // reduzierte Bewegung: kein Wippen
     const unten = Math.max(...cue.bands.flatMap((b) => b.pts.map((p) => p.y)));
     expect(unten, "kein Teil der Marke reicht in den Kopf des Kindes").toBeLessThan(65);
+  });
+});
+
+// ─────────────────────────────────────────────────────────────────────────────
+// R5-W7 · F8 · D-418 · DER HOF FOLGT DEM RAUM
+//
+// L1 hat den Befund gemessen und die Reparatur wieder ZURÜCKGENOMMEN, weil sie
+// ohne Raum-Kenntnis nicht zu haben war: ein warm-dunkler Hof half in p1
+// (+13,3 statt +4,3) und kostete in p2 (+67,7/25° auf +32,3/1°). Der Grund ist
+// derselbe wie bei den Buchstaben eine Datei weiter: ein dunkler Hof auf einer
+// dunklen Wand verdunkelt nur das Ding selbst.
+//
+// Meine eigene Vorher-Messung am ausgelieferten Spiel (measure-presence --arrow,
+// sichtbarer Chrome, Kasten je Raum am Ausschnitt nachgesehen) sagt dasselbe in
+// vier Zahlen — und sie fallen exakt entlang des Raum-Schlüssels:
+//     p1 (88, hell)   ΔL  -0,7 / +3,2   ΔH 25°/24°   trennt NICHT
+//     p3 (86, hell)   ΔL +11,3 / +17,5  ΔH 27°/25°   trennt NICHT
+//     p2 (30, dunkel) ΔL +73,7 / +75,9  ΔH 52°/32°   trennt
+//     p4 (28, dunkel) ΔL +71,4 / +71,2  ΔH 33°/29°   trennt
+//
+// DIE FESSEL, die die billige Reparatur verbietet, steht in `f5-feel.test.ts`
+// (R37): der Pfeil trägt WARM, die Regel-Seite KÜHL — daran hält der Kanal
+// die beiden Handlungsmöglichkeiten auseinander. Ein Tinten-Hof (`heroEdgeFor`
+// liefert im hellen Raum 0x2a2333, also mehr Blau als Rot) wäre die bequemste
+// Trennung und ist deshalb NICHT zu haben. Der Hof wechselt also seinen WERT,
+// nicht seine Familie: warm-hell im dunklen Raum, warm-DUNKEL im hellen.
+describe("R5-W7 · F8 · D-418 · der Hof des Pfeils folgt dem Raum", () => {
+  const L = (c: number): number =>
+    0.299 * ((c >> 16) & 255) + 0.587 * ((c >> 8) & 255) + 0.114 * (c & 255);
+  const rot = (c: number): number => (c >> 16) & 255;
+  const blau = (c: number): number => c & 255;
+
+  it("★ der Hof trägt das GEGENTEIL seines Raumes: hell ⇒ dunkler Hof, dunkel ⇒ heller Hof", () => {
+    const hell = cueHaloFor(88); // p1
+    const dunkel = cueHaloFor(14); // p9
+    expect(L(hell.colour), "im hellen Raum muss der Hof den Grund zurücknehmen")
+      .toBeLessThan(L(dunkel.colour));
+    // …und der Abstand muss ein Abstand sein, kein Rundungsfehler
+    expect(L(dunkel.colour) - L(hell.colour)).toBeGreaterThan(60);
+  });
+
+  it("★ R37 hält in JEDEM Raum: der Pfeil bleibt warm (mehr Rot als Blau)", () => {
+    // das ist die Zeile, die die billige Reparatur verbietet — ein kühler Hof
+    // macht Pfeil und Regel-Seite wieder zu Zwillingen (f5-feel.test.ts)
+    for (const key of [88, 86, 50, 49, 30, 28, 14]) {
+      const h = cueHaloFor(key);
+      expect(rot(h.colour), `Schlüssel ${key}: mehr Rot als Blau`).toBeGreaterThan(blau(h.colour));
+    }
+  });
+
+  it("★ der dunkle Raum bleibt UNBERÜHRT — p2 und p4 messen heute schon »trennt«", () => {
+    // eine Reparatur für p1, die p2 kostet, ist keine Reparatur (letters.ts)
+    for (const key of [30, 28, 14]) {
+      expect(cueHaloFor(key).colour).toBe(CUE_HALO);
+    }
+  });
+
+  it("die Rampe macht keinen Sprung: zwei benachbarte Schlüssel liegen dicht beieinander", () => {
+    let vorher = L(cueHaloFor(0).colour);
+    for (let key = 1; key <= 100; key++) {
+      const jetzt = L(cueHaloFor(key).colour);
+      expect(Math.abs(jetzt - vorher), `Sprung bei Schlüssel ${key}`).toBeLessThan(12);
+      vorher = jetzt;
+    }
+  });
+
+  it("chalkArrow reicht die Hof-Farbe mit heraus — der Renderer füllt nur, was er bekommt", () => {
+    expect(chalkArrow(0, 0, 11, 1, 0, false, 88).haloColour).toBe(cueHaloFor(88).colour);
+    expect(chalkArrow(0, 0, 11, 1, 0, false, 14).haloColour).toBe(CUE_HALO);
+    // ohne Raum verhält sich die Marke wie bisher (der Renderer reicht ihn, die
+    // Tests der alten Runden nicht) — und „wie bisher" heisst: Gold.
+    expect(chalkArrow(0, 0, 11, 1).haloColour).toBe(CUE_HALO);
+  });
+
+  it("★ der helle Raum bekommt MEHR Ringe — dieselbe Rücknahme, ohne Bänder", () => {
+    // gefunden am Ausschnitt, nicht an der Zahl: bei Gold-Deckkraft sind die
+    // vier Stufen unsichtbar, bei der Deckkraft, die einen hellen Grund
+    // zurücknimmt, sind es vier hartkantige Ringe um den Pfeil.
+    expect(cueHaloFor(88).rings).toBe(CUE_HALO_RINGS_LIT);
+    expect(cueHaloFor(14).rings).toBe(CUE_HALO_RINGS);
+    expect(chalkArrow(0, 0, 11, 1, 0, false, 88).halo.length).toBe(CUE_HALO_RINGS_LIT);
+  });
+
+  it("★ die REICHWEITE des Hofes bleibt dieselbe, über wie viele Schichten auch immer", () => {
+    // die äussere Kante ist ein Vertrag der alten Runden (F6-Kopf-Gesetz hängt
+    // mit dran) — feinere Stufen dürfen sie nicht verschieben
+    const aussen = (key?: number): number => {
+      const h = chalkArrow(0, 0, 11, 1, 0, true, key).halo;
+      return h[h.length - 1]!.r;
+    };
+    expect(aussen(88)).toBeCloseTo(aussen(14), 10);
+    expect(aussen(88)).toBeCloseTo(aussen(undefined), 10);
+  });
+
+  it("★★ im DUNKLEN Raum ist der Hof Zeichen für Zeichen der alte — kein Zahlen-Delta", () => {
+    // Die Reparatur für die hellen Räume darf die dunklen NICHT anfassen: p2 und
+    // p4 messen heute schon »trennt«, und L1s zurückgenommener Versuch ist genau
+    // daran gescheitert. Geprüft über den ganzen Atem, nicht an einem Takt.
+    for (const phase of [0, 7, 11, 23, 34, 45]) {
+      const ohne = chalkArrow(40, 20, 11, 7, phase).halo;
+      const dunkel = chalkArrow(40, 20, 11, 7, phase, false, 14).halo;
+      expect(dunkel.length).toBe(ohne.length);
+      for (let i = 0; i < ohne.length; i++) {
+        expect(dunkel[i]!.r, `Takt ${phase}, Ring ${i}: Radius`).toBe(ohne[i]!.r);
+        expect(dunkel[i]!.alpha, `Takt ${phase}, Ring ${i}: Deckkraft`).toBe(ohne[i]!.alpha);
+      }
+    }
+  });
+
+  it("im hellen Raum nimmt der Hof den Grund WEITER zurück — sonst ist er nur eine andere Farbe", () => {
+    const hell = cueHaloFor(88);
+    const dunkel = cueHaloFor(14);
+    // ein dunkler Hof mit der Deckkraft eines hellen bewegt nichts: die
+    // Rücknahme steckt im Produkt aus Wert und Deckkraft, nicht in der Farbe
+    expect(hell.gain).toBeGreaterThan(dunkel.gain);
+    expect(CUE_HALO_LIT).toBe(hell.colour);
   });
 });
