@@ -43,7 +43,7 @@ import {
   awakenRoomBloom, awakenRoomSweep, bouncerSquash, cageBreath, cageNearT, entDisplayH, entPoseCell, entSeed, floodBloomFor, greyLuma,
   guardianManoeuvre, guardianPitchRad, guardianRollScaleX, idleWiggle, poseStateOf, washAlphaFor,
 } from "./anim.ts";
-import { CUE_CHALK, TREASURE_BACK_COLOUR, TREASURE_HALO_COLOUR, chalkArrow, cueMarkY, treasureCue, treasureBobPx, treasureSpinSx } from "./cue.ts";
+import { CUE_CHALK, CUE_HALO, TREASURE_BACK_COLOUR, TREASURE_HALO_COLOUR, chalkArrow, cueMarkY, treasureCue, treasureBobPx, treasureSpinSx } from "./cue.ts";
 import { RIG, launchCoil, rigPose, withCheer, withFistAway, withBrace } from "./rig.ts";
 import {
   BURST_CORE, BURST_HOT, BURST_INK, BURST_SPIKES,
@@ -2003,24 +2003,12 @@ export class PaintScene extends Phaser.Scene {
     const heroTopPx = (this.heroFull.visible ? this.heroFull : this.rigRoot).getBounds().top;
     const y = cueMarkY(fromSubs(e.y) - this.entTargetH(e), heroTopPx);
     const seed = entSeed(e.id);
-    //
-    // R5-W7 · F8 · D-418 · …UND JETZT KENNT SIE IHREN RAUM.
-    // L1 hat den warm-dunklen Hof gebaut, gemessen und zurückgenommen, weil er
-    // ohne Raum-Kenntnis in p1 half und in p2 kostete — „`chalkArrow` kennt den
-    // Raum nicht, und ihre Signatur gehört nicht dieser Bahn". Sie gehört
-    // dieser. Gereicht wird derselbe Ausdruck, mit dem `letterTex` (:5579) den
-    // Rand der Sammelbuchstaben schon holt: EIN Schlüssel, zwei Leser.
-    // `undefined` heisst hier ehrlich »ich weiss nicht, wo ich stehe« und lässt
-    // die Marke, wie sie war (cue.ts `cueHaloFor`) — deshalb steht hier KEIN
-    // `?? 88`: eine erfundene Helligkeit wäre eine Behauptung über den Raum.
-    const cue = chalkArrow(x, y, 11, seed, this.tickCount, this.cfg.reducedMotion, this.comp?.key);
+    const cue = chalkArrow(x, y, 11, seed, this.tickCount, this.cfg.reducedMotion);
     const g = this.engageCueG;
     // the gilded light first, behind everything: the same glow the collectible
     // letters wear, so an affordance is an affordance wherever the child meets it
-    // — im hellen Raum dasselbe Licht, heruntergedreht, damit es den Grund
-    // zurücknimmt statt in ihm zu verschwinden.
     for (const ring of cue.halo) {
-      g.fillStyle(cue.haloColour, ring.alpha);
+      g.fillStyle(CUE_HALO, ring.alpha);
       g.fillCircle(ring.cx, ring.cy, ring.r); // …das Licht hängt der Marke nach
     }
     // …then the mark itself, widest and faintest first — the stack IS the edge
