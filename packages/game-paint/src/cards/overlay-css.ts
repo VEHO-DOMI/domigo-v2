@@ -1393,13 +1393,46 @@ export const PAINT_OVERLAY_CSS = `
   border-width: 1.6px 1.5px 2.4px 2.5px;
   box-shadow: inset 0 2px 10px rgba(120, 96, 52, 0.28);
   margin: 0 0 10px;
+  /* wie weit das Blatt über sein Fenster hinausragt — die Begründung steht bei
+     der Bild-Regel darunter, die den Wert benutzt */
+  --pb-rule-band-zoom: 118%;
 }
 .pb-rule-band img {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -46%);
-  width: 100%;
+  /* R5-W7 · D5 · P6/R196 · DAS FENSTER ZEIGT DIE SEITEN, NICHT DEN BUCHDECKEL.
+     Beide Material-Kritiker der P6-Runde nannten unabhängig dieselbe Stelle:
+     »zwei harte schwarze Streifen mit exakt senkrechten, pixelscharfen Kanten«
+     links und rechts im Buch-Fenster. Nachgemessen am Bank-Foto: je acht
+     Bildpunkte mit rgb(2, 6, 8), während die 660 Spalten dazwischen im Mittel
+     bei 131 liegen.
+
+     GEMESSEN, nicht vermutet — und die erste Vermutung war falsch. Ein Blatt,
+     das sein Fenster nicht ausfüllt, war es NICHT: eine Probe mit rot
+     eingefärbtem Bandhintergrund zeigt die Streifen unverändert schwarz, sie
+     sind also DECKEND. Es ist der gemalte BUCHDECKEL selbst. In dem Streifen,
+     den dieses Band zeigt (Quellzeilen 230–475 von 768), endet die fast
+     schwarze Deckelkante links bei Spalte 59 und beginnt rechts wieder bei
+     Spalte 969 — bei Breite 100 % liegen genau diese beiden Kanten bündig an
+     der Tuschekante und lesen sich als zwei Balken statt als ein Buch.
+
+     118 % schneidet 78 Quellspalten je Seite weg (sichtbar bleiben 78–946):
+     19 Spalten Luft links, 23 rechts, und beide Ränder liegen im DECKENDEN
+     Teil des Blattes, also entsteht auch kein Papierspalt. Das Fenster rahmt
+     damit die aufgeschlagenen SEITEN — was ein Bilderrahmen in diesem Buch
+     tun soll. Der Wert ist ein Messwert, kein Geschmack: cards/rule-band.test.ts
+     rechnet ihn gegen das Blatt nach und wird rot, sobald er wieder auf 100 %
+     steht oder ein neues Blatt seine dunkle Kante weiter innen trägt. */
+  width: var(--pb-rule-band-zoom, 118%);
+  /* ⚠ OHNE DIESE ZEILE PASSIERT GAR NICHTS. Die App setzt global »img
+     max-width 100 %«, und diese Schranke schlägt jede Breite über 100 % still
+     ab: mit 118 % rechnete der Browser weiter 100 % und das Bild blieb Pixel
+     für Pixel dasselbe (gemessen: 384,5 px statt 453,7 px, Bank-Foto vorher
+     und nachher bytegleich). Ein Bild, das absichtlich über sein Fenster
+     hinausragen soll, muss die Schranke ausdrücklich aufheben. */
+  max-width: none;
   height: auto;
 }
 
