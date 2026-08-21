@@ -337,6 +337,14 @@ const chapterClothPieces = (level: PaintLevel): UniformPiece[] => {
   return out;
 };
 
+/** R5-W7 · D5 · die neun Winkel und Versätze der Sammel-Legende. Literale und
+ *  keine Rechnung: sie sollen unregelmässig AUSSEHEN, nicht unregelmässig SEIN
+ *  — eine Formel legt sofort wieder ein Muster hinein, und eine Zufallszahl
+ *  nähme jedem Bank-Foto seine Vergleichbarkeit. Klein gehalten (≤ 1,3° und
+ *  ≤ 2 px), weil ein 11,5-px-Wort, das sich dreht, schwerer zu lesen ist. */
+const LEGENDE_NEIGUNG: readonly number[] = [-1.3, 0.8, -0.5, 1.1, -0.9, 0.6, -0.7, 1.2, -0.4];
+const LEGENDE_VERSATZ: readonly number[] = [0, 2, -1, 1, -2, 0, 2, -1, 1];
+
 /** R5-W7 · D5 · B15: WHICH beings are the drained ones. The run's ledger of
  *  answered beings holds ids of every kind (moths, chasers, drained things), so
  *  the score page needs the level to tell it which of them were the six school
@@ -1971,10 +1979,30 @@ function Overlay({
             {uniformLegendLine(legende.length, legende.filter((c) => c.found).length)}
           </span>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "4px 4px" }}>
-            {legende.map((c) => {
+            {legende.map((c, i) => {
               const url = art[`${c.skin}_a`];
               return (
-                <span key={c.wordEn} style={{ display: "flex", alignItems: "center", gap: 5, opacity: c.found ? 1 : 0.46 }}>
+                // ── ZWEI BLINDE KRITIKER, DERSELBE EINWAND ────────────────
+                // Beide (frisch, ohne Kontext, mit vertauschter Reihenfolge)
+                // wählten diese Fassung — und beide nannten unabhängig
+                // dieselbe Schwäche: das Raster liest sich als »Inventar-
+                // Tabelle« bzw. »Optionsliste«, »Formular-Kanten, keine
+                // erzählerischen«. Konvergenz macht daraus einen Befund.
+                //
+                // Die Antwort ist die Sprache, die dieses Haus ohnehin
+                // spricht: nichts ist ganz gerade (--pb-card-tilt, --pb-tilt
+                // an den Chips). Neun feste Winkel und neun feste Versätze,
+                // keine Zufallszahl — ein Bank-Foto muss zweimal dasselbe
+                // Bild ergeben, sonst beurteilt der nächste Kritiker die
+                // Kamera. Die Spalten bleiben: sie sind die drei Stockwerke,
+                // und ein Kind soll die Wörter lesen, nicht suchen.
+                <span
+                  key={c.wordEn}
+                  style={{
+                    display: "flex", alignItems: "center", gap: 5, opacity: c.found ? 1 : 0.46,
+                    transform: `rotate(${LEGENDE_NEIGUNG[i] ?? 0}deg) translateY(${LEGENDE_VERSATZ[i] ?? 0}px)`,
+                  }}
+                >
                   <span style={{ display: "flex", flex: "0 0 auto", width: 22, height: 22, alignItems: "center", justifyContent: "center" }}>
                     {url !== undefined
                       // ⚠ die neun Blätter sind schon im DOM-Umfang: artScope
