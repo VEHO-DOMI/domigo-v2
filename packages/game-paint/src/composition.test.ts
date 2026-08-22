@@ -1028,12 +1028,53 @@ describe("PK-R6 · H2 · the near plane's own light", () => {
     }
   });
 
-  it("cools it: red loses the most, blue the least", () => {
-    // „further forward in a warm room" is a cool shadow; an even darkening would
-    // only read as dirt on the paint
-    const t = nearPlaneTint(88);
-    expect(ch(t, 16)).toBeLessThan(ch(t, 8)); // r < g
-    expect(ch(t, 8)).toBeLessThan(ch(t, 0)); // g < b
+  // ── ★ R5-W7 · A8 · R194 · IT TAKES LIGHT, NOT COLOUR (D-270) ───────────────
+  // What stood here was the exact opposite law: „cools it: red loses the most,
+  // blue the least", asserting r < g < b. It was true of the code and wrong
+  // about the picture — a multiply that scales three channels differently does
+  // not cool a surface, it drains it (D-184: twelve of p1's 22.4 ΔS points came
+  // from here), and P6 measured that drain as the grey wedge in Koki's frame
+  // `07.29.42`. The replacement holds both halves of the ruling: the cast goes,
+  // the push stays.
+  it("takes LIGHT, not colour — one factor for all three channels", () => {
+    for (const key of [0, 1, 30, 44, 88, 100, 400]) {
+      const t = nearPlaneTint(key);
+      expect(ch(t, 16), `K=${key} r vs g`).toBe(ch(t, 8));
+      expect(ch(t, 8), `K=${key} g vs b`).toBe(ch(t, 0));
+    }
+  });
+
+  it("keeps the push it always had — the purpose survives the repair", () => {
+    // the separation was never carried by the cast: weighted as a luminance is
+    // weighted, the old triple (1 − 1.15d, 1 − d, 1 − 0.6d) came to 1 − 0.9968·d
+    // and the neutral one comes to 1 − d. At the law's full push that is 0.6412
+    // against 0.6400 — three tenths of one level out of 255.
+    const lum = (t: number): number =>
+      (ch(t, 16) * 0.2126 + ch(t, 8) * 0.7152 + ch(t, 0) * 0.0722) / 255;
+    const old = (key: number): number => {
+      const d = Math.min(0.36, Math.max(0.1, 0.36 * (key / 88)));
+      return (Math.round(255 * (1 - d * 1.15)) * 0.2126
+        + Math.round(255 * (1 - d)) * 0.7152
+        + Math.round(255 * (1 - d * 0.6)) * 0.0722) / 255;
+    };
+    for (const key of [30, 44, 88, 100]) {
+      expect(Math.abs(lum(nearPlaneTint(key)) - old(key)), `K=${key}`).toBeLessThan(0.005);
+    }
+  });
+
+  it("the tamper: the red-heavy factor is what this test would catch", () => {
+    // a check that cannot fail is decoration. Reinstating the 1.15 on red — the
+    // one number R194 removes — has to break the neutrality law above.
+    const tampered = (key: number): number => {
+      const d = Math.min(0.36, Math.max(0.1, 0.36 * (key / 88)));
+      const r = Math.round(255 * (1 - d * 1.15));
+      const g = Math.round(255 * (1 - d));
+      const b = Math.round(255 * (1 - d * 0.6));
+      return (r << 16) | (g << 8) | b;
+    };
+    const t = tampered(88);
+    expect(ch(t, 16)).not.toBe(ch(t, 8));
+    expect(ch(t, 8)).not.toBe(ch(t, 0));
   });
 
   it("backs off in a dark room, because the law is SEPARATION, not darkness", () => {

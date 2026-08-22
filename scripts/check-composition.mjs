@@ -256,7 +256,25 @@ const COHERENCE_WAIVERS = {
   // (SPEC_MASSEN_KIT §10.6, in diesem PR mit Zahlen je Zelle spezifiziert;
   // Kommissionsdatei schreibt Fable, Lieferschein-Prüfung ausstehend).
   "ch01/p2": { until: "2026-11-30", why: "Nachtklassenraum zieht den geteilten warmen Buchkörper unter einem violetten Laufkurs — AS5b lieferte dafür ein Blatt ohne Motiv (A7), AS5c §10.6 malt ihm seinen eigenen" },
-  "ch01/p3": { until: "2026-11-30", why: "Hof-Laufkurs ist 40,8 Punkte flacher gesättigt als das geteilte Papier darunter — AS5b nicht importierbar (A7), AS5c §10.6" },
+  // ── ★ p3 IST RAUS, WEIL DIE AUSNAHME SCHAL WURDE (R5-W7 · A8, R194) ───────
+  // Hier stand: »Hof-Laufkurs ist 40,8 Punkte flacher gesättigt als das
+  // geteilte Papier darunter«. Gemessen an derselben Kunst, nach dem
+  // farbneutralen `nearPlaneTint`: **24,3** — innerhalb des 25er-Fensters, also
+  // kohärent, und dieses Tor meldet einen ungenutzten Verzicht selbst als rot
+  // (»carries a coherence waiver it no longer needs«). Genau dafür ist die
+  // Zeile gebaut, also fällt sie.
+  //
+  // 16,5 der 40,8 Punkte waren nie die Malerei: der Ton der Standfläche
+  // multiplizierte drei Kanäle verschieden und hat den Laufkurs entsättigt
+  // gezeichnet (D-184 schätzte »rund zwölf«, gemessen sind es hier 16,5).
+  // ⚠ ZWEI EHRLICHE FUSSNOTEN, damit der nächste Leser nicht mehr hineinliest,
+  // als hier steht:
+  //   · Der Abstand ist DÜNN — 24,3 gegen 25,0. Ein neu geliefertes Körper-
+  //     Blatt kann p3 zurück über die Linie schieben; dann kommt die Zeile
+  //     zurück, mit neuer Messung und neuem Datum.
+  //   · Kohärent heißt NICHT fertig. p3 zieht weiterhin das geteilte warme
+  //     Buchpapier unter seinem eigenen Laufkurs; die Bestellung §10 bleibt
+  //     offen. Was hier fiel, ist der GEMESSENE Fugen-Befund, nicht das Motiv.
   "ch01/p4": { until: "2026-11-30", why: "Bühnen-Laufkurs steht 56° vom geteilten Körper ab — AS5b nicht importierbar (A7), AS5c §10.6" },
   "ch01/p9": { until: "2026-11-30", why: "Kleckskammer zieht denselben warmen Körper unter einem tintigen Laufkurs — AS5b nicht importierbar (A7), AS5c §10.6" },
 };

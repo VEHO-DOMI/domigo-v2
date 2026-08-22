@@ -309,15 +309,39 @@ export interface CompositionSpec {
 /** How far down the near plane is pushed at the brightest room the law allows. */
 export const NEAR_PLANE_PUSH = 0.36;
 
-/** The MULTIPLY tint the nearest standable plane wears in a room of this key.
- *  Cooler than it is dark: red loses the most, blue the least, which is what
- *  turns „darker" into „further forward in a warm room" instead of „dirtier". */
+/**
+ * The MULTIPLY tint the nearest standable plane wears in a room of this key.
+ *
+ * ── ★ R5-W7 · A8 · IT TAKES LIGHT, NOT COLOUR (Ruling R194, D-270 closed) ────
+ * This used to read „cooler than it is dark: red loses the most, blue the
+ * least", and the arithmetic said so — (1 − 1.15d, 1 − d, 1 − 0.6d). The
+ * sentence describes a shadow; what the formula actually does is DESATURATE,
+ * and two independent measurements caught it:
+ *
+ *  · `check-composition`'s own audit-11 note (D-184, R5-W4 · A6): of p1's 22.4
+ *    ΔS between walk course and body, „roughly twelve points are nearPlaneTint
+ *    rather than the paint" — the course is drawn greyer than it was painted.
+ *    Filed at the time as a property of a declared law rather than a fault.
+ *  · P6, 2026-08-20: the grey wedge in Koki's frame `07.29.42` IS this. The
+ *    crust — the surface the child stands on — measures 53.5 % colour strength
+ *    on the sheet and 14.2 % on screen. This formula predicts 12.2. Two points
+ *    from a photograph is not a coincidence; it is the cause.
+ *
+ * So all three channels now take the SAME factor. The purpose survives intact —
+ * the near plane still separates from the room behind it — because separation
+ * was always carried by VALUE, and value barely moves: weighted the way a
+ * luminance is weighted (0.2126 · 0.7152 · 0.0722), the old triple came to
+ * 1 − 0.9968·d against the new 1 − d. At d = 0.36 that is 0.6412 against 0.6400
+ * — three tenths of one level out of 255. What goes is the cast, not the push.
+ * `composition.test.ts` holds both halves of that sentence as law.
+ *
+ * (The push itself, and why it scales with the room's key, is unchanged — see
+ * NEAR_PLANE_PUSH above.)
+ */
 export const nearPlaneTint = (key: number): number => {
   const d = Math.min(NEAR_PLANE_PUSH, Math.max(0.1, NEAR_PLANE_PUSH * (key / 88)));
-  const r = Math.round(255 * (1 - d * 1.15));
-  const g = Math.round(255 * (1 - d));
-  const b = Math.round(255 * (1 - d * 0.6));
-  return (r << 16) | (g << 8) | b;
+  const v = Math.round(255 * (1 - d));
+  return (v << 16) | (v << 8) | v;
 };
 
 // ── PK-R6 · H2 · THE CHILD KEEPS HIS EDGE (round-2 finding 1, CRITICAL) ──────
