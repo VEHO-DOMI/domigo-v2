@@ -90,6 +90,14 @@ const IMPORTER_WITHOUT_CI_LINE = {
     // sich seine Fixture selbst« — genau den Weg ist `measure-residue` gegangen,
     // aus genau diesem Grund (siehe SELFTEST_ONLY dort). Das ist A8s Posten;
     // W6 fasst `import-batch-as.mjs` nicht an (Eigentums-Karte).
+    //
+    // ★ NACHTRAG, gleicher Tag: A8 hat denselben Befund UNABHAENGIG gemacht
+    //   und ihn in #342 bereits behoben — der Selbsttest baut sein Pruefblatt
+    //   jetzt aus acht angenommenen p1-Blaettern der Platte, die ci.yml-Zeile
+    //   steht, A8s CI ist gruen. Dieser Eintrag ist damit eine Ausnahme mit
+    //   bekanntem Verfallsdatum: beim Schluss-Rebase ueber A8 wird er SCHAL
+    //   und faerbt dieses Tor rot, bis W6 ihn entfernt. Genau dafuer ist die
+    //   Ratsche da — sie erinnert, statt dass jemand daran denken muss.
     reason: "der Selbsttest liest eine LIEFERUNG aus dem Codex-Labor (batch-as3/mass_edges_p1.png), die per CP-15 nie im Repo liegt und auf diesem Rechner seit R204 auch nicht mehr — eine ci.yml-Zeile waere in jedem Lauf rot. A8 baut die Fixture in den Selbsttest hinein (Muster: measure-residue), DANN kommt die Zeile. Gemessen von W6 am 22.08.: Exit 1, »selftest cannot run«",
     until: "2026-09-30",
   },
