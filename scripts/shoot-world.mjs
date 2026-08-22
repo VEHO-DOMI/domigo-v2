@@ -522,7 +522,7 @@ const bail = async (code) => {
   // R5-W7 · W6 · D-438: `kill()` schickt ein Signal und kehrt zurueck. Wer
   // unmittelbar danach die Last liest, zaehlt seinen eigenen, gerade sterbenden
   // Browser mit. Gewartet wird auf das PROZESS-ENDE.
-  const { gewartetMs, restend } = await wartenBisChromeWegIst(chrome, CHROME, PROFILE_PREFIX);
+  const { gewartetMs, restend } = await wartenBisChromeWegIst(chrome, CHROME, profile);
   if (restend > 0) {
     console.warn(`  ⚠ nach ${gewartetMs} ms stehen noch ${restend} eigene Chrome-Prozesse (Profil ${PROFILE_PREFIX}) `
       + "— eine Lastlesung JETZT misst diesen Lauf mit (D-438).");

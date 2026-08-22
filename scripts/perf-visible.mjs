@@ -36,6 +36,24 @@
  *            Aufschlüsselung je Bauschritt (`PaintScene#buildReport()`).
  *   Erstbild GPU · eingeschwungen · fps · Zeichenaufrufe · Texturen.
  *
+ * ── R5-W8 · W7 · P7 §12.9 · UND DIE MASCHINE? ──────────────────────────────
+ * Seit W6 sagt jeder Lauf, WELCHEN BAU er gemessen hat (`Bau: … · Quelle: …`).
+ * Was er bis heute nicht sagte: auf WELCHER MASCHINE. P7 hat zwei Läufe
+ * DESSELBEN Baus gemessen, die 32 % auseinanderlagen — das Rezept nagelt den
+ * Bau fest, aber nicht den Rechner. W6 hat die drei Zahlen (Mess-Browser,
+ * Lastmittel, fremde Server im Band 32xx/33xx) von Hand in seinen Report
+ * geschrieben; Hand-Arbeit, die niemand erzwingt, fällt in der ersten Sitzung
+ * aus, die es eilig hat.
+ *
+ * Sie werden jetzt VOR der Kontrollmessung und NACH dem Lauf gelesen und stehen
+ * im Beipackzettel. Ein Lauf unter Last trägt seinen Makel selbst.
+ *
+ * ★ WARUM DER MAKEL NICHT ABBRICHT. Abbrechen darf nur die Kontrollmessung: sie
+ *   weiß, ob das INSTRUMENT verzerrt (leere Seite unter 58 fps ⇒ jede Zahl
+ *   beschreibt das Werkzeug). Eine belastete Maschine liefert dagegen echte,
+ *   nur eben schlechtere Zahlen — die gehören gedruckt und gekennzeichnet, nicht
+ *   verworfen. Wer sie verwirft, misst nie wieder, wenn eine Nachbarbahn läuft.
+ *
  * LÜCKEN SIND KEINE NULLEN (D-118). Der Erstbild-Rekorder verpasst je Lauf etwa
  * eine von fünf Phasen — ein Wettlauf zwischen Sonde und `create()`. Eine Phase
  * mit fehlenden Zahlen wird deshalb bis zu dreimal neu geladen; bleibt die Lücke,
@@ -51,7 +69,7 @@
  * `apps/web/.env.local` gibt es kein Instrument zu lesen (D-117).
  */
 import { spawn } from "node:child_process";
-import { raeumeVerwaisteProfile, wartenBisChromeWegIst } from "./chrome-hygiene.mjs";
+import { raeumeVerwaisteProfile, wartenBisChromeWegIst, maschinenlesung } from "./chrome-hygiene.mjs";
 import { existsSync, mkdtempSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
@@ -327,6 +345,8 @@ const TAMPER_CONTROL = args.includes("--tamper-control");
 // zu behalten.
 const WORKTREE = arg("worktree", null);
 const BUILD_LABEL = arg("build-label", null);
+/** Nur fuer die Ausgabe — die Zahlen selbst stehen in chrome-hygiene.mjs. */
+const MESS_BAND = "3200–3399";
 
 if (!existsSync(CHROME)) {
   console.error(`perf-visible: kein Chrome unter ${CHROME}`);
@@ -366,6 +386,22 @@ const constructorMs = (phaseId, iterations = 7) => {
 // Falle 1). Fremde Browser bleiben unangetastet — sie sind Last und gehören
 // gemeldet, nicht getötet (D-339).
 const PROFILE_PREFIX = "perf-visible-chrome-";
+
+// ── 0 · DIE MASCHINE, BEVOR DIESER LAUF SELBST EINER WIRD (R5-W8 · W7) ──────
+// ⚠ DIE STELLE IST DER PUNKT. Beim ersten Anlauf stand diese Lesung nach dem
+// Chrome-Start — und meldete prompt »1 Mess-Browser laeuft, eine andere Sitzung
+// misst gerade«: den EIGENEN. Das ist D-438 in neuem Gewand (dort war es der
+// eigene, gerade sterbende Browser; hier der eigene, gerade geborene). Die
+// Antwort ist dieselbe wie damals: nicht filtern, sondern zum richtigen
+// Zeitpunkt lesen — VOR dem eigenen Start und NACH dem eigenen Ende.
+const maschineVorher = maschinenlesung(PORT, CHROME);
+console.log(`\nMaschine vor dem Lauf: Mess-Browser ${maschineVorher.messBrowser}`
+  + ` · Lastmittel ${maschineVorher.last?.roh ?? "—"}`
+  + ` · fremde Server im Band ${MESS_BAND}: ${maschineVorher.fremdeServer.length === 0
+    ? "keine" : maschineVorher.fremdeServer.map((s) => `${s.port} (${s.befehl})`).join(", ")}`);
+for (const z of maschineVorher.zeilen) console.log(z);
+console.log(`  ${maschineVorher.urteil.satz}`);
+
 raeumeVerwaisteProfile(CHROME, PROFILE_PREFIX);
 const profile = mkdtempSync(path.join(tmpdir(), PROFILE_PREFIX));
 const chrome = spawn(CHROME, [
@@ -674,6 +710,8 @@ if (steps) {
 }
 console.log(`\nGemessen mit: scripts/perf-visible.mjs · eigener Chrome --headless=new · `
   + `sichtbarer Tab (visibilityState=${control.vis}, hidden=${control.hidden}) · Kontrollseite ${verdict.fps.toFixed(1)} fps · Port ${PORT}`);
+console.log(`Maschine beim Start: Mess-Browser ${maschineVorher.messBrowser} · Lastmittel `
+  + `${maschineVorher.last?.m1 ?? "—"} · fremde Server ${maschineVorher.fremdeServer.length}`);
 for (const r of rows) {
   if (r.gaps?.length) console.log(`⚠ ${r.phase}: blieb auch nach ${GAP_ATTEMPTS} Anläufen unvollständig (D-118/D-327) — »—« ist die ehrliche Zelle:\n    · ${r.gaps.join("\n    · ")}`);
   if (r.error) console.log(`⚠ ${r.phase}: ${r.error}`);
@@ -738,15 +776,20 @@ const sidecar = {
   hidden: control.hidden,
   warm: WARM_OFF ? "0" : "1",
   runsPerPhase: RUNS,
+  // R5-W8 · W7: der Lauf traegt seinen Maschinen-Makel selbst (P7 §12.9). Die
+  // NACHHER-Lesung gibt es erst, wenn der eigene Chrome wirklich weg ist —
+  // deshalb wird `maschine` unten nachgetragen, kurz bevor die Datei entsteht.
+  maschine: null,
   rows,
 };
-if (JSON_OUT) {
-  writeFileSync(JSON_OUT, JSON.stringify(sidecar, null, 1));
-  console.log(`\n→ Beipackzettel: ${JSON_OUT}`);
-}
+
 
 ws.close();
 chrome.kill();
+/** Wie viele EIGENE Chrome-Prozesse nach dem Warten noch stehen. Steht einer,
+ *  misst die Nachher-Lesung diesen Lauf mit — dann wird sie als unbelastbar
+ *  gekennzeichnet statt still als Maschinen-Aussage verkauft (D-438). */
+let eigenerChromeRest = 0;
 // ── R5-W7 · W6 · D-438 · AUF DAS ENDE WARTEN, NICHT AUF EINE UHR ────────────
 // `kill()` schickt ein Signal und kehrt zurück. Wer unmittelbar danach die Last
 // liest, zählt seinen eigenen, gerade sterbenden Browser mit (E7 maß erst 2,
@@ -754,13 +797,50 @@ chrome.kill();
 // eigenen Kindes, dann die Prozesstabelle, bis kein Prozess mit unserem Profil
 // mehr steht.
 {
-  const { gewartetMs, restend } = await wartenBisChromeWegIst(chrome, CHROME, PROFILE_PREFIX);
+  const { gewartetMs, restend } = await wartenBisChromeWegIst(chrome, CHROME, profile);
   if (restend > 0) {
     console.warn(`⚠ nach ${gewartetMs} ms stehen noch ${restend} eigene Chrome-Prozesse `
       + `(Profil ${PROFILE_PREFIX}). Eine Lastlesung JETZT misst diesen Lauf mit (D-438).`);
   } else {
     console.log(`Eigener Chrome beendet nach ${gewartetMs} ms — eine Lastlesung ab hier misst die Maschine, nicht diesen Lauf (D-438).`);
   }
+  eigenerChromeRest = restend;
+}
+
+// ── R5-W8 · W7 · und NACH dem Lauf, wenn der eigene Chrome wirklich weg ist ──
+// Zwei Lesungen, nicht eine: eine Nachbarbahn, die MITTEN in diesem Lauf
+// angefangen hat, waere in einer Vorher-Lesung unsichtbar — und genau so
+// entstehen zwei Zahlen desselben Baus, die 32 % auseinanderliegen.
+const maschineNachher = maschinenlesung(PORT, CHROME);
+const nachherBelastbar = eigenerChromeRest === 0;
+const maschine = {
+  vorher: maschineVorher,
+  nachher: maschineNachher,
+  nachherBelastbar,
+  eigenerChromeRest,
+  makel: maschineVorher.urteil.makel || (nachherBelastbar && maschineNachher.urteil.makel),
+  gruende: [
+    ...maschineVorher.urteil.gruende.map((g) => `vorher: ${g}`),
+    ...(nachherBelastbar
+      ? maschineNachher.urteil.gruende.map((g) => `nachher: ${g}`)
+      : [`nachher: NICHT BELASTBAR — ${eigenerChromeRest} eigene(r) Chrome-Prozess(e) standen noch (D-438)`]),
+  ],
+};
+console.log(`\nMaschine nach dem Lauf: Mess-Browser ${maschineNachher.messBrowser}`
+  + ` · Lastmittel ${maschineNachher.last?.roh ?? "—"}`
+  + ` · fremde Server im Band ${MESS_BAND}: ${maschineNachher.fremdeServer.length === 0
+    ? "keine" : maschineNachher.fremdeServer.map((s) => `${s.port} (${s.befehl})`).join(", ")}`);
+console.log(maschine.makel
+  ? `⚠ MAKEL DIESES LAUFS — ${maschine.gruende.join(" · ")}.\n`
+    + "   Die Zahlen oben stehen, aber sie beschreiben zum Teil die MASCHINE und nicht den Code\n"
+    + "   (R115/D-339/A7; P7 §12.9 mass 32 % Streuung an DEMSELBEN Bau). Wer sie vergleicht,\n"
+    + "   vergleicht mit: dieser Zeile."
+  : "Kein Makel: die Maschine war vor und nach dem Lauf frei — diese Zahlen beschreiben den Code.");
+
+if (JSON_OUT) {
+  sidecar.maschine = maschine;
+  writeFileSync(JSON_OUT, JSON.stringify(sidecar, null, 1));
+  console.log(`\n→ Beipackzettel (mit Maschinen-Lesung): ${JSON_OUT}`);
 }
 
 // ── R5-W6b · E7 · D-327 · EINE LÜCKE IST EIN ROTES LICHT, KEINE FUSSNOTE ─────
