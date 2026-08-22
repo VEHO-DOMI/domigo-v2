@@ -347,6 +347,12 @@ const WORKTREE = arg("worktree", null);
 const BUILD_LABEL = arg("build-label", null);
 /** Nur fuer die Ausgabe — die Zahlen selbst stehen in chrome-hygiene.mjs. */
 const MESS_BAND = "3200–3399";
+/** ERKLAERTE weitere eigene Server im Mess-Band. Ein Vorher/Nachher braucht
+ *  zwei Bauten und damit zwei Server; ohne diese Angabe meldet die
+ *  Maschinen-Lesung den zweiten zu Recht als fremd. Was hier steht, steht auch
+ *  im Beipackzettel — eine stille Ausnahme waere keine. */
+const EIGENE_PORTS = String(arg("eigene-ports", "")).split(",").map((x) => x.trim())
+  .filter((x) => x !== "" && Number.isInteger(Number(x))).map(Number);
 
 if (!existsSync(CHROME)) {
   console.error(`perf-visible: kein Chrome unter ${CHROME}`);
@@ -394,12 +400,15 @@ const PROFILE_PREFIX = "perf-visible-chrome-";
 // eigene, gerade sterbende Browser; hier der eigene, gerade geborene). Die
 // Antwort ist dieselbe wie damals: nicht filtern, sondern zum richtigen
 // Zeitpunkt lesen — VOR dem eigenen Start und NACH dem eigenen Ende.
-const maschineVorher = maschinenlesung(PORT, CHROME);
+const maschineVorher = maschinenlesung(PORT, CHROME, EIGENE_PORTS);
 console.log(`\nMaschine vor dem Lauf: Mess-Browser ${maschineVorher.messBrowser}`
   + ` · Lastmittel ${maschineVorher.last?.roh ?? "—"}`
   + ` · fremde Server im Band ${MESS_BAND}: ${maschineVorher.fremdeServer.length === 0
     ? "keine" : maschineVorher.fremdeServer.map((s) => `${s.port} (${s.befehl})`).join(", ")}`);
 for (const z of maschineVorher.zeilen) console.log(z);
+if (EIGENE_PORTS.length > 0) {
+  console.log(`  Als EIGEN erklaert (stehen im Beipackzettel): ${[PORT, ...EIGENE_PORTS].join(", ")}`);
+}
 console.log(`  ${maschineVorher.urteil.satz}`);
 
 raeumeVerwaisteProfile(CHROME, PROFILE_PREFIX);
@@ -811,7 +820,7 @@ let eigenerChromeRest = 0;
 // Zwei Lesungen, nicht eine: eine Nachbarbahn, die MITTEN in diesem Lauf
 // angefangen hat, waere in einer Vorher-Lesung unsichtbar — und genau so
 // entstehen zwei Zahlen desselben Baus, die 32 % auseinanderliegen.
-const maschineNachher = maschinenlesung(PORT, CHROME);
+const maschineNachher = maschinenlesung(PORT, CHROME, EIGENE_PORTS);
 const nachherBelastbar = eigenerChromeRest === 0;
 const maschine = {
   vorher: maschineVorher,

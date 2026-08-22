@@ -234,10 +234,20 @@ export const MESS_PORT_BIS = 3399;
  * EINE Lesung der Lauschliste, nicht 200 Verbindungsversuche: ein Werkzeug, das
  * sich zum Messen erst 200-mal selbst verbindet, ist die Last, die es sucht.
  *
+ * ★ R5-W8 · W7 (Schluss-Pass) · WARUM ES `weitereEigene` GIBT. Ein Vorher/
+ * Nachher braucht ZWEI Server desselben Hauses — einen je Bau. Diese Lesung
+ * kann »mein zweiter Server« und »der Server des Nachbarn« nicht unterscheiden,
+ * und tut es deshalb nicht heimlich: der Aufrufer ERKLAERT seine weiteren
+ * Ports, sie stehen namentlich im Beipackzettel, und alles Uebrige bleibt
+ * fremd. Eine stille Ausnahme haette den Makel wertlos gemacht; eine erklaerte
+ * macht ihn erst brauchbar.
+ *
  * @param {string} lsofOut Zeilen von `lsof -iTCP -sTCP:LISTEN -P -n`
  * @param {number} eigenerPort der Port, den dieser Lauf selbst misst
+ * @param {ReadonlyArray<number>} weitereEigene ERKLAERTE weitere eigene Ports
  */
-export const fremdeMessServer = (lsofOut, eigenerPort) => {
+export const fremdeMessServer = (lsofOut, eigenerPort, weitereEigene = []) => {
+  const eigene = new Set([Number(eigenerPort), ...weitereEigene.map(Number)]);
   const gefunden = new Map();
   for (const line of String(lsofOut).split("\n")) {
     const m = line.match(/^(\S+)\s+(\d+)\s.*:(\d+)\s+\(LISTEN\)/);
@@ -245,7 +255,7 @@ export const fremdeMessServer = (lsofOut, eigenerPort) => {
     const [, befehl, pid, portRoh] = m;
     const port = Number(portRoh);
     if (port < MESS_PORT_VON || port > MESS_PORT_BIS) continue;
-    if (port === eigenerPort) continue;                 // der eigene ist kein fremder
+    if (eigene.has(port)) continue;                     // eigene Server sind keine fremden
     if (!gefunden.has(port)) gefunden.set(port, { port, befehl, pid: Number(pid) });
   }
   return [...gefunden.values()].sort((a, b) => a.port - b.port);
@@ -295,11 +305,21 @@ export const maschinenUrteil = ({ browser = [], last = null, fremdeServer = [] }
 
 /** Die volle Lesung: Browser, Last, fremde Server, Urteil. Das ist es, was in
  *  den Beipackzettel jeder Perf-Zahl gehoert. */
-export const maschinenlesung = (eigenerPort, chromeBin = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome") => {
+export const maschinenlesung = (
+  eigenerPort,
+  chromeBin = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+  weitereEigene = [],
+) => {
   const { gesamt, zeilen, browser } = lastlesung(chromeBin);
   const last = lastmittel();
-  const fremdeServer = fremdeMessServer(lsof(), eigenerPort);
-  return { messBrowser: gesamt, browser, zeilen, last, fremdeServer, urteil: maschinenUrteil({ browser, last, fremdeServer }) };
+  const fremdeServer = fremdeMessServer(lsof(), eigenerPort, weitereEigene);
+  return {
+    messBrowser: gesamt, browser, zeilen, last, fremdeServer,
+    // Was der Aufrufer als eigen ERKLAERT hat, steht mit im Zettel — sonst
+    // waere die Ausnahme unsichtbar und damit ungeprueft.
+    eigenePorts: [Number(eigenerPort), ...weitereEigene.map(Number)],
+    urteil: maschinenUrteil({ browser, last, fremdeServer }),
+  };
 };
 
 // ── SELBSTTEST ───────────────────────────────────────────────────────────────
@@ -407,6 +427,12 @@ if (istEinstieg && process.argv.includes("--selftest")) {
       "der Lauf haette sich selbst als Stoerung gemeldet");
     pruefe("3199 liegt unter dem Band und zaehlt nicht", !ports.includes(3199), `gefunden: ${ports.join(", ")}`);
     pruefe("3400 liegt ueber dem Band und zaehlt nicht", !ports.includes(3400), `gefunden: ${ports.join(", ")}`);
+    // ★ der ERKLAERTE zweite eigene Server (Vorher/Nachher braucht zwei)
+    const mitErklaerung = fremdeMessServer(tabelle, 3287, [3285]).map((g) => g.port);
+    pruefe("★ ein ERKLAERTER weiterer eigener Port ist kein fremder", !mitErklaerung.includes(3285),
+      `gefunden: ${mitErklaerung.join(", ")}`);
+    pruefe("TAMPER sass: OHNE die Erklaerung ist derselbe Port fremd", ports.includes(3285),
+      "der Port war schon vorher unsichtbar — die Ausnahme beweist nichts");
 
     // Das Urteil, BEIDE Richtungen — ein Makel, der nie angeht, ist Dekoration,
     // und einer, der nie ausgeht, ist Rauschen.
