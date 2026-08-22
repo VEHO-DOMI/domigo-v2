@@ -53,7 +53,11 @@ const looksLikeTheTable = (body) => {
 // gedruckte ANMERKUNG und kein rotes Licht: der Zwang gehört in denselben PR
 // wie das Rezept in jeder Bahn, sonst färbt dieses Tor die PRs fremder Bahnen
 // rot für etwas, das ihr Rezept noch gar nicht kennt (Register D-514).
-const BUILD_LINE = /^\s*Bau:\s*([^\n·]+?)\s*(?:·|$)/gim;
+// Der Anker ist bewusst ENG: die Zeile muss BEIDE Teile tragen, die
+// `perf-visible` druckt — »Bau: …« UND »· Quelle: …«. Ein blosses »Bau:«
+// am Zeilenanfang kaeme in einem deutschen PR-Text auch sonst vor, und
+// dieses Tor darf keinen fremden PR an einem zufaelligen Wort rot faerben.
+const BUILD_LINE = /^\s*Bau:\s*([^\n·]+?)\s*·\s*Quelle:/gim;
 
 /** Die Bau-Angaben aus einem PR-Text, in der Reihenfolge ihres Auftretens. */
 export const buildStamps = (body) => {
@@ -119,6 +123,8 @@ if (selftest) {
     ["nur eine Angabe — Anmerkung, kein rotes Licht", "Bau: abc · Quelle: --build-label", true],
     ["Gross-/Kleinschreibung trennt nicht zwei Bauten",
       "Bau: ABC123 · Quelle: q\nBau: abc123 · Quelle: q", false],
+    ["eine deutsche Zeile mit »Bau:« ohne »Quelle:« ist KEINE Bau-Angabe",
+      "Bau: dauerte diesmal laenger.\nBau: dauerte diesmal laenger.", true],
   ];
   for (const [name, body, wantOk] of P) {
     const v = provenanceVerdict(body);
