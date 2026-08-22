@@ -317,6 +317,50 @@ export const PictureMark = ({ size = 16 }: { size?: number }): React.ReactElemen
   </svg>
 );
 
+/** R5-W8 · D6 · P7 §2.3 · DIE FUND-MARKE — der Haken, den ein Kind selbst
+ *  gemacht hätte.
+ *
+ *  WOFÜR SIE DA IST. Bis heute sagte die Sammel-Legende »noch nicht gefunden«,
+ *  indem sie das Ungefundene auf 46 % Deckkraft dämpfte. Im Startzustand ist
+ *  aber ALLES ungefunden: die Abstufung trug dort keine Information und kostete
+ *  nur Kontrast (gemessen 1,96 : 1 bei 11,5 px), und drei unabhängige Prüfer
+ *  lasen sie prompt als Rauschen — jeder nannte ANDERE Wörter als »blasser«,
+ *  obwohl alle neun exakt gleich standen. Die Aussage wird deshalb umgedreht:
+ *  das Ungefundene steht bei vollem Kontrast, und der FUND wird markiert.
+ *
+ *  WARUM ZWEI SIGNALE UND NICHT EINS (Kokis Entscheid, 22.08.). Das gefundene
+ *  Wort wechselt zusätzlich in die dunkle Auszeichnungsschrift. Ein Kind, das
+ *  Farb- oder Helligkeitsunterschiede schlecht liest, sieht trotzdem den Haken;
+ *  ein Kind, das die kleine Marke übersieht, sieht trotzdem die Schrift. Genau
+ *  EIN Signal wäre wieder die Abstufung, die dieser Befund verurteilt hat.
+ *
+ *  WARUM KEIN ✓. Dasselbe Gesetz wie bei den dreizehn Emoji (PaintedIcons):
+ *  ein Zeichen aus der Schriftart des Lesers wird auf jedem Rechner anders
+ *  gezeichnet, und auf gemaltem Papier liest es sich als Formular-Häkchen. Das
+ *  hier ist EIN Strich, von Hand gelegt: er steigt schräg an, endet dünner als
+ *  er anfängt, und die beiden Schenkel treffen sich nicht im rechten Winkel —
+ *  dieselbe Sprache wie die vier ungleichen Kartenkanten.
+ *
+ *  Sie sitzt AUF dem Bild und nicht neben dem Wort: die Legende steht in drei
+ *  Spalten von je rund 130 px, und eine Marke, die sich eine eigene Spalte
+ *  nimmt, würde »Sonnenbrille« umbrechen. Auf dem Bild kostet sie null Breite
+ *  und liest sich als das, was sie ist — ein Stempel auf dem eingesammelten
+ *  Stück. */
+export const FoundMark = ({ size = 13 }: { size?: number }): React.ReactElement => (
+  <svg width={size} height={size} viewBox="0 0 24 24" aria-hidden focusable="false"
+    style={{ display: "block", flex: "0 0 auto" }}>
+    {/* der helle Grund unter dem Strich, damit der Haken auch auf einem dunklen
+        Kleidungsstück steht — ein Kreis, der nicht ganz rund ist */}
+    <path d="M12.2 1.6 C18.1 1.4 22.6 5.8 22.4 12.1 C22.2 18.3 18.0 22.5 11.8 22.4 C5.7 22.3 1.5 17.9 1.6 11.7 C1.7 5.6 6.1 1.8 12.2 1.6 Z"
+      fill="#f7edd5" stroke="#5e4a24" strokeWidth="1.5" strokeLinejoin="round" />
+    {/* der Strich selbst: kurzer Anlauf, langer Aufstrich, oben dünner */}
+    <path d="M6.4 12.1 L10.3 16.6 L17.8 6.9" fill="none" stroke="#3f6b2e"
+      strokeWidth="3.1" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M13.9 11.9 L17.9 6.8" fill="none" stroke="#4f7f39"
+      strokeWidth="1.5" strokeLinecap="round" opacity="0.9" />
+  </svg>
+);
+
 /** R5-W2 · J1-D · THE STRUCK-THROUGH WRONG FORM — the book's third sanctioned
  *  emphasis device, and the only one that means „NOT this".
  *

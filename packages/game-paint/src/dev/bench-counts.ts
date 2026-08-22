@@ -102,16 +102,30 @@ export const benchBilanz = (level: PaintLevel): BenchBilanz => {
   const drainedTotal = roleCount(level, "drained");
   /** einen offen lassen, aber nie unter null und nie unter den befreiten Kindern */
   const nearly = (total: number, floor = 0): number => Math.max(floor, total - 1);
+  /** die Hälfte — für Posten, die als EINZELNE Dinge in zwei Zuständen stehen
+   *  (siehe die Begründung an `clothWords`). Nie null und nie vollständig,
+   *  solange es mehr als ein Ding gibt: sonst zeigte die Bank wieder nur einen
+   *  der beiden Zustände. */
+  const haelfte = (total: number): number => (total < 2 ? Math.max(0, total - 1) : Math.floor(total / 2));
   return {
     kids: kidsTotal, kidsTotal,
     freed: nearly(freedTotal, Math.min(kidsTotal, freedTotal)), freedTotal,
     tips: nearly(tipsTotal), tipsTotal,
     letters: nearly(lettersTotal), lettersTotal,
     books: nearly(booksTotal), booksTotal,
-    // dieselbe „eines fehlt noch"-Regel wie oben, nur auf der Liste statt auf
-    // der Zahl: so zeigt die Bank die Legende in BEIDEN Zuständen nebeneinander
-    clothWords: clothAlle.slice(0, nearly(clothAlle.length)),
-    cloth: nearly(clothAlle.length), clothTotal: clothAlle.length,
+    // ── R5-W8 · D6 · DIE EINE ERKLÄRTE AUSNAHME VON DER »eines fehlt«-REGEL ──
+    // Für jeden anderen Zähler ist „alles bis auf eines" die richtige Attrappe:
+    // die Bank soll zeigen, dass eine Zeile „3 von 4" überhaupt entsteht.
+    // Die Sammel-Legende ist der einzige Posten, bei dem die Bank nicht eine
+    // ZAHL zeigt, sondern NEUN EINZELNE DINGE in zwei Zuständen — und bei acht
+    // gefundenen gegen ein offenes steht die eine Klasse achtmal und die andere
+    // einmal da. Wer daran prüft, ob ein Kind »was habe ich schon, was fehlt
+    // noch« ablesen kann, prüft in Wahrheit, ob es einen Ausreißer findet.
+    // Die HÄLFTE zeigt beide Klassen gleich stark (bei neun Teilen: vier
+    // gefunden, fünf offen) — abgeleitet und nicht getippt, damit ein Kapitel
+    // mit anderer Teilezahl dieselbe Aussage bekommt.
+    clothWords: clothAlle.slice(0, haelfte(clothAlle.length)),
+    cloth: haelfte(clothAlle.length), clothTotal: clothAlle.length,
     drained: nearly(drainedTotal), drainedTotal,
   };
 };

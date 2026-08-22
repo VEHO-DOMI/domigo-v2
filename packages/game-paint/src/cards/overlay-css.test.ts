@@ -507,15 +507,30 @@ describe("R5-W3 · J2 · R21 · the hand, and where it stops (Kokis D2-Kanon)", 
     }
     // the two literal-width surfaces, against their own documented base. An
     // exception that is not declared is not an exception.
-    const LITERAL_BASE: Record<string, number> = { "pb-card::before": 5.0, "pb-rule-band": 4.0 };
+    const LITERAL_BASE: Record<string, number> = { "pb-rule-band": 4.0 };
     for (const [cls, base] of Object.entries(LITERAL_BASE)) {
-      const n = widths(baseRule(PAINT_OVERLAY_CSS, cls.replace("::before", ""))).map((w) => Number.parseFloat(w));
-      const four = cls.endsWith("::before")
-        ? widths(all.find((r) => r.sel.includes(".pb-card::before"))?.decls ?? "").map((w) => Number.parseFloat(w))
-        : n;
+      const four = widths(baseRule(PAINT_OVERLAY_CSS, cls)).map((w) => Number.parseFloat(w));
       expect(four.length, `${cls} lost its hand`).toBe(4);
       expect(four[0]! + four[2]!, `${cls} grew taller`).toBeCloseTo(base, 5);
       expect(four[1]! + four[3]!, `${cls} grew wider`).toBeCloseTo(base, 5);
+    }
+
+    // ── R5-W8 · D6 · DIE HAND VON ».pb-card::before« IST UMGEZOGEN ───────────
+    // Sie stand bis heute in »border-width: 1.9px 3px 3.1px 2px«. Seit die zwei
+    // Karten-Linien EIN eingebetteter Strichzug sind (P7 §3), steht sie in den
+    // vier »stroke-width« desselben Elements — dieselben vier Zahlen, dieselbe
+    // Eigenschaft: gegenüberliegende Seiten summieren sich zu ihrer Grundzahl,
+    // die Hand VERTEILT Gewicht um und fügt keines hinzu. Der Nachzug auf der
+    // Außenkante ist die zweite Vierergruppe und hat seine eigene Grundzahl.
+    const striche = [...(all.find((r) => r.sel.includes(".pb-card::before"))?.decls ?? "")
+      .matchAll(/stroke-width='([0-9.]+)'/g)].map((m) => Number.parseFloat(m[1]!));
+    expect(striche.length, "pb-card::before lost its hand").toBe(8);
+    for (const [name, vier, base] of [
+      ["pb-card::before · Nachzug aussen", striche.slice(0, 4), 3.6],
+      ["pb-card::before · Innenlinie", striche.slice(4), 5.0],
+    ] as const) {
+      expect(vier[0]! + vier[2]!, `${name} grew taller`).toBeCloseTo(base, 5);
+      expect(vier[1]! + vier[3]!, `${name} grew wider`).toBeCloseTo(base, 5);
     }
   });
 
@@ -528,6 +543,37 @@ describe("R5-W3 · J2 · R21 · the hand, and where it stops (Kokis D2-Kanon)", 
     const sheet = baseRule(PAINT_OVERLAY_CSS, "pb-card-scroll");
     expect(sheet, "the sheet lost its vertical scroll").toMatch(/overflow-y:\s*auto/);
     expect(sheet, "overflow-y alone also enables a horizontal bar").toMatch(/overflow-x:\s*hidden/);
+  });
+
+  // ── R5-W8 · D6 · D-529 + P7 §2.4 · DAS BLATT HAT EINE GRENZE, UND MAN SIEHT SIE ──
+  it("the sheet carries its own height limit, not only the card's", () => {
+    // D-529: heute schrumpft das Blatt mit, weil es ein Flex-Kind der Karte ist.
+    // Das ist wahr und unsichtbar — nimmt eine künftige Karte das Blatt aus der
+    // Spalte, fällt die Grenze lautlos weg und der Inhalt wird beschnitten statt
+    // geblättert. Die Grenze steht deshalb am Element, das rollt.
+    const sheet = baseRule(PAINT_OVERLAY_CSS, "pb-card-scroll");
+    expect(sheet, "das Blatt hat keine eigene Höhen-Grenze mehr").toMatch(/max-height:\s*100%/);
+  });
+
+  it("the painted scrollbar is not switched off by the standard property", () => {
+    // GEMESSEN, nicht vermutet (D6, an der lebenden Karte bei 760 x 700, einem
+    // Fenster in dem das Blatt wirklich rollt): mit »scrollbar-width« in der
+    // Grundregel belegt die Leiste 0 px und ist auf dem Mac unsichtbar; ohne sie
+    // belegt der gemalte Balken 7 px und steht da. Sobald die STANDARD-
+    // Eigenschaft gesetzt ist, wirft der Browser den ganzen
+    // »::-webkit-scrollbar«-Block weg — die Karte trug also eine getuschte
+    // Rollleiste, die nie jemand gesehen hat, und ein Kind bekam bei kleinem
+    // Fenster keinen Hinweis, dass unter der Kante noch etwas steht.
+    const sheet = baseRule(PAINT_OVERLAY_CSS, "pb-card-scroll");
+    expect(sheet, "»scrollbar-width« in der Grundregel schaltet den gemalten Balken ab")
+      .not.toMatch(/scrollbar-width/);
+    // …und der gemalte Balken existiert überhaupt (sonst wäre das oben vakuum-grün)
+    expect(PAINT_OVERLAY_CSS).toMatch(/\.pb-card-scroll::-webkit-scrollbar\s*\{[^}]*width:\s*7px/);
+    // …und die Standard-Eigenschaft ist NICHT gestrichen, sondern steht dort, wo
+    // es keinen gemalten Balken gibt: sonst bekäme Firefox die Systemleiste
+    expect(PAINT_OVERLAY_CSS,
+      "die Standard-Eigenschaft fehlt auch dort, wo es keinen gemalten Balken gibt")
+      .toMatch(/@supports\s+not\s+selector\(::-webkit-scrollbar\)\s*\{[\s\S]*?scrollbar-width:\s*thin/);
   });
 
   it("--pb-ink-rgb has not drifted from --pb-ink", () => {
