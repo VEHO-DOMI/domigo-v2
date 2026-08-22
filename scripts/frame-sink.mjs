@@ -75,6 +75,43 @@ import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
 
+// ── R5-W8 · W7 · P7 §12.8 · DER STANDBILD-ZUSTAND ──────────────────────────
+//
+// P7 hat es an einer Stelle gemessen, an der es weh tat: die fuenf
+// Torschluss-Meldungen werden auf die SPIELFLAECHE gemalt, nicht ins DOM, und
+// es gab kein Instrument im Repo, das einen Augenblick fotografieren kann, in
+// dem die Welt absichtlich stillsteht. Der Grund ist das Gesetz dieser Datei
+// selbst: eine Reihe, die stillsteht, ist kein Beweis, also weist die Senke
+// jedes byte-gleiche Folgebild ab. Fuer eine REIHE ist das richtig. Fuer EINEN
+// Augenblick ist es die falsche Frage.
+//
+// Der Standbild-Zustand beantwortet deshalb eine andere: er nimmt GENAU EIN
+// Bild an und sagt in seinem eigenen Zettel, dass es eines ist. Was er dabei
+// NICHT tut, ist das Gesetz aufweichen — der normale Zustand bleibt Wort fuer
+// Wort, wie er war (ohne Handschlag 425, byte-gleiches Folgebild 409 und
+// vergiftet). Ein Standbild-Aufruf OHNE die Flagge bricht deshalb weiter ab.
+export const STANDBILD_ZETTEL =
+  "Standbild, keine Reihe: EIN Bild aus einem Augenblick, in dem die Welt absichtlich steht "
+  + "(stehender Toast, offene Karte). Eine Reihe waere hier N-mal dasselbe Bild — deshalb nimmt "
+  + "dieser Zustand genau EINES an und weist jedes weitere ab.";
+
+/** Der Handschlag KONNTE gefahren werden — die Kamera hat in diesem Lauf
+ *  bewiesen, dass sie lebt, und erst danach ist die Welt angehalten worden.
+ *  Das ist der bessere der beiden Faelle und wird deshalb benannt, nicht
+ *  stillschweigend genossen. */
+export const STANDBILD_MIT_HANDSCHLAG =
+  "Handschlag BESTANDEN, bevor die Welt angehalten wurde: die Kamera hat in diesem Lauf zwei "
+  + "verschiedene Bilder geliefert. Dieses Standbild hat damit denselben Kamerabeweis wie eine Reihe.";
+
+/** …und der andere, ehrlich benannt: stand die Welt schon, als der Lauf ankam,
+ *  ist der Handschlag per Bauart nicht zu haben — er verlangt zwei Aufnahmen
+ *  mit VERSCHIEDENEN Pruefsummen, und genau das kann ein Standbild nicht
+ *  liefern. Was dann fehlt, fehlt sichtbar. */
+export const STANDBILD_OHNE_HANDSCHLAG =
+  "Handschlag ENTFALLEN: er verlangt zwei Aufnahmen mit verschiedenen Pruefsummen, und die Welt "
+  + "stand schon, als dieser Lauf ankam. Dieses Bild traegt deshalb KEINEN Kamerabeweis (P-66) — "
+  + "es ist ungeprueft dasselbe, was die Kamera zuletzt gemalt hat.";
+
 export const PROBE_A = "__probe_a";
 export const PROBE_B = "__probe_b";
 
@@ -99,7 +136,9 @@ export const DEAD_CAMERA_MESSAGE = [
  * eine Prüfschicht, die die Ausgabe modelliert statt sie auszuführen, prüft
  * ihr Modell).
  */
-export const createSink = (outDir) => {
+export const createSink = (outDir, opts = {}) => {
+  /** R5-W8 · W7: EIN Bild statt einer Reihe, erklaert. Siehe STANDBILD_ZETTEL. */
+  const standbild = opts.standbild === true;
   const seen = new Map(); // md5 → name des zuerst angenommenen Bildes
   const rejected = [];
   const accepted = [];
@@ -150,12 +189,26 @@ export const createSink = (outDir) => {
     }
 
     // ── ab hier: echte Bilder ───────────────────────────────────────────────
-    if (!armed) {
+    // R5-W8 · W7: der Handschlag ist im Standbild-Zustand KEINE Vorbedingung —
+    // dort ist gerade die Bewegung das, was fehlt. Er wird trotzdem angenommen,
+    // wenn der Aufrufer ihn fahren konnte (siehe shoot-world: es geht, solange
+    // die Welt vor dem Anhalten noch lief), und sein Ausgang steht im Zettel.
+    if (!armed && !standbild) {
       return {
         code: 425,
         body: `${name} abgewiesen: der Handschlag fehlt.\n`
           + `Erst ${PROBE_A} / ${PROBE_B} mit einem step() dazwischen — die Senke schreibt`
           + " kein Bild, bevor die Kamera in DIESEM Lauf bewiesen hat, dass sie lebt.",
+      };
+    }
+    if (standbild && accepted.length >= 1) {
+      rejected.push({ name, reason: `Standbild, keine Reihe — angenommen ist schon ${accepted[0].name}` });
+      return {
+        code: 409,
+        body: `${name} abgewiesen: STANDBILD, KEINE REIHE.\n`
+          + `Angenommen ist bereits ${accepted[0].name}; dieser Zustand nimmt genau EIN Bild.\n`
+          + "Fuer eine Reihe ist der normale Zustand da (ohne --standbild) — er bringt seinen\n"
+          + "Handschlag mit und weist ein stillstehendes Folgebild ab, statt es zu schreiben.",
       };
     }
     if (seen.has(hash)) {
@@ -176,21 +229,61 @@ export const createSink = (outDir) => {
     fs.writeFileSync(file, bytes);
     fs.writeFileSync(
       path.join(outDir, `${name}.meta.json`),
-      `${JSON.stringify({ ...meta, frame: `${name}.png`, md5: hash, index: accepted.length }, null, 2)}\n`,
+      `${JSON.stringify({
+        ...meta,
+        frame: `${name}.png`,
+        md5: hash,
+        index: accepted.length,
+        // Der Zettel sagt, WAS dieses Bild ist. Ein Standbild, das aussieht wie
+        // das erste Bild einer Reihe, waere genau die stille Sorte Beweis, gegen
+        // die diese Datei gebaut ist.
+        ...(standbild ? { modus: "standbild", standbild: standbildZettel() } : {}),
+      }, null, 2)}\n`,
     );
     return { code: 200, body: `ok ${accepted.length}`, file };
   };
 
-  const verdict = () => ({
-    armed,
-    deadCamera,
-    accepted: accepted.length,
-    rejected,
-    tainted: rejected.length > 0,
-    frames: accepted,
+  /** Was im Zettel und im Verdikt ueber den Standbild-Zustand steht — EINE
+   *  Quelle, damit Bild und Verdikt nie zweierlei behaupten. */
+  const standbildZettel = () => ({
+    was: STANDBILD_ZETTEL,
+    handschlag: armed ? STANDBILD_MIT_HANDSCHLAG : STANDBILD_OHNE_HANDSCHLAG,
+    kamerabeweis: armed,
   });
 
+  const verdict = () => {
+    const v = {
+      modus: standbild ? "standbild" : "reihe",
+      armed,
+      deadCamera,
+      accepted: accepted.length,
+      rejected,
+      tainted: rejected.length > 0,
+      frames: accepted,
+    };
+    if (standbild) v.standbild = standbildZettel();
+    return { ...v, brauchbar: laufBrauchbar(v) };
+  };
+
   return { offer, verdict };
+};
+
+/**
+ * Ist dieser Lauf ein Beweis? EINE Funktion fuer beide Zustaende, weil es
+ * vorher zwei Kopien derselben Bedingung an zwei Stellen gab (hier im CLI und
+ * in shoot-world) — und zwei Kopien einer Bedingung driften.
+ *
+ *   Reihe     · der Handschlag MUSS bestanden sein (ohne ihn ist kein Bild ein
+ *               Beweis), und kein Bild darf abgewiesen worden sein.
+ *   Standbild · der Handschlag DARF fehlen (die Welt stand schon). Was nicht
+ *               fehlen darf: eine TOTE Kamera — wurde der Handschlag gefahren
+ *               und ist er an gleichen Bytes gescheitert, ist auch das Standbild
+ *               wertlos. Und genau EIN Bild muss angekommen sein.
+ */
+export const laufBrauchbar = (v) => {
+  if (v.tainted === true) return false;
+  if (v.modus === "standbild") return v.deadCamera !== true && v.accepted === 1;
+  return v.armed === true;
 };
 
 // ── der Seiten-Code, EINE Quelle ────────────────────────────────────────────
@@ -371,6 +464,82 @@ const selftest = () => {
     if (noMeta.code !== 400) fails.push(`ein Bild ohne tick kam mit ${noMeta.code} durch`);
   }
 
+  // ── R5-W8 · W7 · 8 · DER STANDBILD-ZUSTAND ────────────────────────────────
+  // Der Fall ist echt: EIN Bild aus einem Augenblick, in dem die Welt steht.
+  // Geprueft werden beide Richtungen und der Zettel — eine Ausnahme, die man
+  // dem Bild nicht ansieht, waere schlimmer als keine.
+  {
+    const s = createSink(dir, { standbild: true });
+    const eins = s.offer("standbild_001", C, { tick: 44, phase: "p1" });
+    if (eins.code !== 200) fails.push(`ein Standbild OHNE Handschlag wurde abgewiesen (${eins.code}: ${eins.body})`);
+    if (!fs.existsSync(path.join(dir, "standbild_001.png"))) fails.push("das Standbild liegt nicht auf der Platte");
+    const zettel = path.join(dir, "standbild_001.meta.json");
+    if (!fs.existsSync(zettel)) fails.push("das Standbild hat keinen Beipackzettel");
+    else {
+      const m = JSON.parse(fs.readFileSync(zettel, "utf8"));
+      if (m.modus !== "standbild") fails.push(`der Zettel nennt den Zustand »${m.modus}« statt »standbild«`);
+      if (m.standbild?.was !== STANDBILD_ZETTEL) fails.push("der Zettel sagt nicht »Standbild, keine Reihe«");
+      if (m.standbild?.handschlag !== STANDBILD_OHNE_HANDSCHLAG) fails.push("der Zettel verschweigt, dass der Kamerabeweis fehlt");
+      if (m.standbild?.kamerabeweis !== false) fails.push("der Zettel behauptet einen Kamerabeweis, den es nicht gibt");
+    }
+    // …und das ZWEITE Bild ist kein zweites Standbild, sondern eine Reihe.
+    const zwei = s.offer("standbild_002", A, { tick: 45 });
+    if (zwei.code !== 409) fails.push(`ein zweites Standbild kam mit ${zwei.code} durch (erwartet 409)`);
+    if (!zwei.body.includes("STANDBILD, KEINE REIHE")) fails.push("die Abweisung nennt den Grund nicht beim Namen");
+    if (fs.existsSync(path.join(dir, "standbild_002.png"))) fails.push("…und es lag trotzdem auf der Platte");
+    const v = s.verdict();
+    if (v.modus !== "standbild") fails.push(`das Verdikt nennt den Zustand »${v.modus}«`);
+    if (v.brauchbar !== false) fails.push("ein Standbild-Lauf, der eine Reihe versucht hat, gilt trotzdem als brauchbar");
+  }
+
+  // 8b · ein SAUBERES Standbild ist brauchbar — sonst prueft Fall 8 nur die rote
+  //      Richtung, und eine Bedingung, die nie gruen wird, ist so wertlos wie
+  //      eine, die nie rot wird.
+  {
+    const s = createSink(dir, { standbild: true });
+    s.offer("nur_eins", url(Buffer.from("MMMMNNNNOOOOPPPP", "utf8")), { tick: 7, phase: "p4" });
+    const v = s.verdict();
+    if (v.brauchbar !== true) fails.push("ein Standbild-Lauf mit genau EINEM Bild gilt nicht als brauchbar");
+    if (v.armed !== false) fails.push("ohne Handschlag darf die Senke nicht scharf heissen");
+  }
+
+  // 8c · der Handschlag ist im Standbild-Zustand NICHT verboten — konnte der
+  //      Aufrufer ihn fahren (die Welt lief, bevor sie angehalten wurde), traegt
+  //      das Bild denselben Kamerabeweis wie eine Reihe. Und eine TOTE Kamera
+  //      macht auch ein Standbild wertlos.
+  {
+    const s = createSink(dir, { standbild: true });
+    s.offer(PROBE_A, A, { tick: 1 });
+    s.offer(PROBE_B, B, { tick: 2 });
+    const ok = s.offer("mit_beweis", url(Buffer.from("RRRRSSSSTTTTUUUU", "utf8")), { tick: 3 });
+    if (ok.code !== 200) fails.push(`ein Standbild NACH bestandenem Handschlag wurde abgewiesen (${ok.code})`);
+    else {
+      const m = JSON.parse(fs.readFileSync(path.join(dir, "mit_beweis.meta.json"), "utf8"));
+      if (m.standbild?.kamerabeweis !== true) fails.push("der Zettel verschweigt den bestandenen Handschlag");
+      if (m.standbild?.handschlag !== STANDBILD_MIT_HANDSCHLAG) fails.push("der Zettel nennt den bestandenen Handschlag nicht beim Namen");
+    }
+
+    const tot = createSink(dir, { standbild: true });
+    tot.offer(PROBE_A, A, { tick: 10 });
+    tot.offer(PROBE_B, A, { tick: 11 });          // gleiche Bytes, andere Ticks = tote Kamera
+    tot.offer("aus_toter_kamera", url(Buffer.from("VVVVWWWWXXXXYYYY", "utf8")), { tick: 12 });
+    if (tot.verdict().brauchbar !== false) fails.push("ein Standbild aus einer TOTEN Kamera gilt als brauchbar");
+  }
+
+  // ── 9 · DER TAMPER, DER AUF DEM FALL SITZT (P-82) ─────────────────────────
+  // Dieselbe Aufruffolge wie Fall 8, nur OHNE die Flagge. Genau hier gehen
+  // richtig und plausibel-falsch auseinander: wer den Standbild-Zustand baut,
+  // indem er das Gesetz global aufweicht, bleibt hier gruen — und liefert
+  // danach jede stillstehende Reihe als Beweis aus.
+  {
+    const s = createSink(dir);   // KEINE Flagge
+    const r = s.offer("ohne_flagge_001", url(Buffer.from("1111222233334444", "utf8")), { tick: 44, phase: "p1" });
+    if (r.code !== 425) fails.push(`TAMPER: derselbe Aufruf OHNE --standbild kam mit ${r.code} durch (erwartet 425)`);
+    if (fs.existsSync(path.join(dir, "ohne_flagge_001.png"))) fails.push("TAMPER: …und das Bild lag trotzdem auf der Platte");
+    if (s.verdict().modus !== "reihe") fails.push("TAMPER: eine Senke ohne Flagge haelt sich fuer ein Standbild");
+    if (s.verdict().brauchbar !== false) fails.push("TAMPER: ein Lauf ohne Handschlag gilt als brauchbar");
+  }
+
   // 7 · der Seiten-Code ist TEXT — niemand kompiliert ihn, bis er in der Seite
   //     landet. Ein einziges Gravis-Zeichen darin beendet das Template-Literal
   //     und zerlegt dieses Modul (genau so passiert, 14.08.); ein Tippfehler
@@ -400,6 +569,8 @@ const selftest = () => {
   }
   console.log("frame-sink --selftest: OK");
   console.log("  Handschlag Pflicht · tote Kamera erkannt · Aufrufer-Fehler getrennt · Dubletten abgewiesen · Zettel mit Tick");
+  console.log("  Standbild: EIN Bild angenommen, das zweite abgewiesen, der Zettel nennt den fehlenden bzw. "
+    + "bestandenen Kamerabeweis — und dieselbe Folge OHNE die Flagge bricht weiter mit 425 ab (P-82).");
 };
 
 // ── CLI ─────────────────────────────────────────────────────────────────────
@@ -433,7 +604,9 @@ const finish = () => {
   console.log(`  Handschlag: ${v.armed ? "bestanden" : v.deadCamera ? "TOTE KAMERA" : "nie gefahren"}`);
   console.log(`  angenommen: ${v.accepted} · abgewiesen: ${v.rejected.length}`);
   for (const r of v.rejected) console.log(`    ✗ ${r.name} — ${r.reason}`);
-  const bad = !v.armed || v.tainted;
+  // R5-W8 · W7: EINE Quelle fuer beide Zustaende — zwei Kopien einer
+  // Bedingung driften, und diese hier entscheidet ueber »Beweis oder nicht«.
+  const bad = !laufBrauchbar(v);
   console.log(bad ? "  ⇒ DIESE REIHE IST KEIN BEWEIS." : "  ⇒ Reihe brauchbar.");
   process.exit(bad ? 1 : 0);
 };
