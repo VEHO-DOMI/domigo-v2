@@ -77,7 +77,20 @@ const PKG = path.join(R, "package.json");
  *  tolerieren; sie darf sie nie ueberleben. */
 const IMPORTER_WITHOUT_CI_LINE = {
   "import-batch-as.mjs": {
-    reason: "der Selbsttest steht seit A7 im Skript, die ci.yml-Zeile fehlt auf main — A8 traegt sie in ihrem eigenen PR nach (R187c/C10). W6 ordnet ci.yml zuletzt und entfernt diesen Eintrag beim Schluss-Rebase, sobald A8 gemergt ist",
+    // ⚠ W6 hat den Selbsttest GEFAHREN, bevor sie diese Ausnahme geschrieben
+    // hat — und dabei den eigentlichen Grund gefunden. Er liest ein
+    // GELIEFERTES Blatt aus dem Codex-Labor:
+    //     ✗ selftest cannot run: …/codex-art-lab/batch-as3/mass_edges_p1.png is missing
+    // Der Ordner liegt auf diesem Rechner nicht (R204: das Labor des ersten Macs
+    // ist verloren), und in CI liegt er per KONSTRUKTION nie (CP-15: Lieferungen
+    // gehoeren nicht ins Repo). Eine ci.yml-Zeile fuer diesen Selbsttest waere
+    // also nicht die Erfuellung von C10, sondern ein Schritt, der in JEDEM Lauf
+    // rot ist.
+    // Der Fix ist deshalb NICHT »Zeile anhaengen«, sondern »der Selbsttest baut
+    // sich seine Fixture selbst« — genau den Weg ist `measure-residue` gegangen,
+    // aus genau diesem Grund (siehe SELFTEST_ONLY dort). Das ist A8s Posten;
+    // W6 fasst `import-batch-as.mjs` nicht an (Eigentums-Karte).
+    reason: "der Selbsttest liest eine LIEFERUNG aus dem Codex-Labor (batch-as3/mass_edges_p1.png), die per CP-15 nie im Repo liegt und auf diesem Rechner seit R204 auch nicht mehr — eine ci.yml-Zeile waere in jedem Lauf rot. A8 baut die Fixture in den Selbsttest hinein (Muster: measure-residue), DANN kommt die Zeile. Gemessen von W6 am 22.08.: Exit 1, »selftest cannot run«",
     until: "2026-09-30",
   },
 };
