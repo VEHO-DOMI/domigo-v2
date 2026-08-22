@@ -730,6 +730,28 @@ ersten vier stehen im BOOT-SHEET im Wortlaut, die fünfte ist neu)*:
 *(Die Zeilennummern-Ausnahme desselben Datums ist **nicht** in dieser Liste: sie ist mit **R195**
 entschieden und in H6 schriftlich verlängert — du ratifizierst sie mit dem K6-Merge.)*
 
+> **★★ Stand dieser fünf Fragen am 2026-08-22 (K7, aus R208 und R209 nachgezogen) — VIER sind
+> beantwortet, die Tabelle darüber ist der Stand vom 21.08.:**
+>
+> * **Der pinke Boss-Rahmen** → **ZU (R208/6): die p4-Holzfamilie ist ratifiziert** und in H5s
+>   Auftrag verdrahtet; das gemessene Grad-Fenster ist 32–41° (R209e — die früher genannten
+>   »337–344°« waren ein Schreibfehler und sind tot).
+> * **Die Hörprobe** → **ZU (R208/6), aber anders als gedacht:** sie ist in Kokis eigenen
+>   Audio-Sitz übergegangen. Er baut die Klänge selbst in ElevenLabs; das SOUND-STUDIO in der
+>   iCloud ist ab jetzt die Fläche, die Import-Runde läuft auf sein Wort (R207a).
+> * **Das Heft an der neuen Stelle** → **ZU (R209b): »zu voll«, entschieden von Koki am 22.08.**
+>   ⚠ Die Empfehlung in der Zeile oben (»so lassen«) ist damit **überholt**. Zwei blinde Prüfer
+>   urteilten unabhängig 2 : 0; die Ausdünnung ist ein Level-Posten bei B6 und steht mit dem
+>   22-Spalten-Gesetz als eigene Zeile im Schulden-Register.
+> * **Die Regel-Seite auf dem Weg** → **ZU (R208/6): lassen, ratifiziert.**
+> * **Das 30.11.-Risiko** bleibt **offen**: die Frist steht, die Massen-Kit-Lieferung ist
+>   Schlangen-Platz 2 und darf erst nach einem Strategie-Review gefahren werden — die vierte
+>   Lieferung schickte die Bilder der dritten (R207b), was den bisherigen Weg unglaubwürdig macht.
+>
+> Und der **graue Keil**: die Zeile oben sagt »ZU (R159 → R194)« für die URSACHE. Die
+> SICHT-Frage ist seit dem 22.08. ebenfalls zu — Koki hat sie angesehen und entschieden
+> (R209a); im Schulden-Register sind dafür **beide** Adressen abgeräumt.
+
 **Neu aus Welle 4 (2026-08-15) — fünf Tore, Empfehlungen im BOOT-SHEET:** ~~R41 Farb-Palette
 (die Ziel-Palette für die Codex-Bestellung AQ12: Buch rot · Uhu-Stick orange · Füllfeder
 gelb · Heft grün · Spitzer blau · Radiergummi rosa · Schultasche+Tisch braun · Schere
