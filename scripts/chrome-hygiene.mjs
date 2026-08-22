@@ -42,7 +42,25 @@
 // mit dem Chrome-Pfad. Fremde Browser werden NIE angefasst — sie sind Last, die
 // gemeldet gehört (D-339), aber sie gehören jemand anderem.
 //
+// ── R5-W7 · W6 · UND DIE LASTLESUNG SELBST WAR BLIND ────────────────────────
+//
+// `PERF_WAECHTER.md` §3b schreibt vor jeder Zahl drei Zeilen vor, und die erste
+// ist `pgrep -fl "headless=new"`. Die kann einen SICHTBAREN Lauf nicht sehen:
+// `shoot-world --visible` laesst genau dieses Flag weg. Seit F8s Falle 2 wird
+// jeder gemeldete Stillstand mit `--visible` wiederholt — sichtbare Laeufe sind
+// also nicht die Ausnahme, sondern Alltag, und die vorgeschriebene Lastlesung
+// ist gegen sie blind.
+// GEMESSEN am 22.08.: `pgrep -f headless=new` meldete 2 (beides eigene
+// zsh-Warteschleifen, deren Kommandozeile das Wort enthielt — die pgrep-Falle
+// ein zweites Mal), waehrend eine FREMDE Sitzung einen sichtbaren
+// `shoot-world`-Chrome fuhr. Die Zahl war doppelt falsch: sie zaehlte, was
+// keiner war, und sah nicht, was einer war.
+//
+// `--lastlesung` druckt deshalb, was wirklich laeuft: jeder Mess-Browser, egal
+// ob sichtbar oder kopflos, mit Erzeuger und Urteil.
+//
 // Run: node scripts/chrome-hygiene.mjs --selftest
+//      node scripts/chrome-hygiene.mjs --lastlesung   (was misst gerade auf dieser Maschine?)
 
 import { execFileSync } from "node:child_process";
 import { pathToFileURL } from "node:url";
@@ -142,6 +160,26 @@ export const wartenBisChromeWegIst = async (child, chromeBin, profilePrefix, tim
   return { gewartetMs: Date.now() - t0, restend: eigeneChromesJetzt(chromeBin, profilePrefix).length };
 };
 
+/** Alle Profil-Praefixe, unter denen in diesem Repo gemessen wird. Eine Liste,
+ *  weil jedes Werkzeug seinen eigenen Browser startet — und weil ein Praefix,
+ *  der hier fehlt, eine Lastlesung still unvollstaendig macht. */
+export const MESS_PRAEFIXE = ["perf-visible-chrome-", "shoot-world-chrome-", "bench-chrome-"];
+
+/** Die ehrliche Lastlesung: was misst gerade auf dieser Maschine? */
+export const lastlesung = (chromeBin = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome") => {
+  const zeilen = [];
+  let gesamt = 0;
+  for (const praefix of MESS_PRAEFIXE) {
+    for (const p of eigeneChromesJetzt(chromeBin, praefix)) {
+      gesamt++;
+      const sichtbar = !p.cmd.includes("--headless=new");
+      zeilen.push(`  · ${praefix}  pid ${p.pid} ← ${p.ppid}  ${verwaist(p) ? "VERWAIST" : "laeuft"}`
+        + `  ${sichtbar ? "SICHTBAR (pgrep -f headless=new sieht ihn NICHT)" : "kopflos"}`);
+    }
+  }
+  return { gesamt, zeilen };
+};
+
 // ── SELBSTTEST ───────────────────────────────────────────────────────────────
 // R5-W7 · W6, sofort bezahlt: dies ist eine BIBLIOTHEK, kein Werkzeug. Ein
 // `process.argv.includes("--selftest")` auf oberster Ebene feuert auch dann,
@@ -150,6 +188,18 @@ export const wartenBisChromeWegIst = async (child, chromeBin, profilePrefix, tim
 // wird deshalb zusätzlich, ob diese Datei das EINSTIEGSMODUL ist.
 const istEinstieg = process.argv[1] !== undefined
   && import.meta.url === pathToFileURL(process.argv[1]).href;
+if (istEinstieg && process.argv.includes("--lastlesung")) {
+  const { gesamt, zeilen } = lastlesung();
+  const last = execFileSync("sysctl", ["-n", "vm.loadavg"], { encoding: "utf8" }).trim();
+  console.log(`Mess-Browser auf dieser Maschine: ${gesamt}`);
+  for (const z of zeilen) console.log(z);
+  console.log(`Lastmittel: ${last}`);
+  console.log(gesamt === 0
+    ? "⇒ frei. (Die Last kann trotzdem von etwas anderem kommen — die Zahl oben liest sie.)"
+    : "⇒ NICHT frei: eine Perf-Zahl von jetzt beschreibt die Maschine, nicht den Code (R115/D-339/A7).");
+  process.exit(0);
+}
+
 if (istEinstieg && process.argv.includes("--selftest")) {
   const BIN = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
   // Die Prozesstabelle ist ECHT (P-71: gemessen, nicht erfunden); die Zeilen,

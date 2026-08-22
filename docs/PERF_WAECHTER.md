@@ -108,9 +108,8 @@ die teuerste Lehre der Welle 6 bis heute nur im Schulden-Register stand — und
 niemand liest das Register, bevor er misst.**
 
 ```
-pgrep -fl "headless=new"      # MUSS leer sein — ein fremder Test-Browser aus einer
-                              # FRÜHEREN Sitzung hält einen GPU-Prozess und
-                              # verdreifacht Bauzeiten (D-339: 8199 ms gegen 661 ms)
+node scripts/chrome-hygiene.mjs --lastlesung   # ⇒ „frei" ODER die Liste dessen,
+                                               # was gerade misst — mit Erzeuger
 sysctl -n vm.loadavg          # < 5, sonst warten
 pgrep -x oxipng               # 0 — ein `art-recompress` der Nachbar-Sitzung läuft
                               # mit bis zu 500 % CPU (D-349)
@@ -119,6 +118,33 @@ pgrep -x oxipng               # 0 — ein `art-recompress` der Nachbar-Sitzung l
 Alle drei Werte gehören in den Beipackzettel und in den PR-Text, neben die
 Kontroll-fps. `pgrep -x`, nicht `pgrep -f`: ein `-f` findet die eigene
 Warteschleife und meldet ewig „läuft noch".
+
+### ⚠ R5-W7 · W6 · Warum die erste Zeile nicht mehr `pgrep -fl "headless=new"` ist
+
+Sie war **doppelt falsch**, und beides ist am 22.08. gemessen worden:
+
+1. **Sie sieht einen SICHTBAREN Lauf nicht.** `shoot-world --visible` lässt genau
+   dieses Flag weg. Seit F8s Falle 2 wird jeder gemeldete Stillstand mit
+   `--visible` wiederholt — sichtbare Läufe sind also Alltag, und die
+   vorgeschriebene Lesung ist gegen sie blind. Genau das war der Fall: eine
+   fremde Sitzung fuhr einen sichtbaren `shoot-world`-Chrome, und `pgrep -f
+   headless=new` meldete ihn nicht.
+2. **Sie findet dafür Dinge, die keine Browser sind.** Dieselbe Lesung meldete
+   „2" — beides eigene `zsh`-Warteschleifen, deren Kommandozeile das Wort
+   `headless=new` enthielt. Das ist die `pgrep -f`-Falle (W5-Falle 2) in der
+   Lastlesung selbst.
+
+`--lastlesung` liest stattdessen die **Prozesstabelle** und filtert auf zwei
+Dinge zugleich: die Zeile muss mit dem Chrome-Programm beginnen UND ein
+`--user-data-dir` mit einem der drei Mess-Präfixe tragen. Sie sagt zusätzlich,
+ob der Erzeuger noch lebt (`ppid`) — ein Browser mit lebendem Elternprozess ist
+eine LAUFENDE fremde Messung, auf die man wartet; einer mit `ppid 1` ist eine
+Leiche, die geräumt gehört (W5-Falle 1).
+
+**Und der Grund, warum das ein Gesetz und keine Politur ist:** ein fremder
+Browser fälscht die Zahl (D-339: 8199 ms gegen 661 ms). Eine Lastlesung, die ihn
+nicht sieht, ist schlimmer als keine — sie sagt „frei" und meint „ich habe nicht
+hingesehen".
 
 **Und warum die Kontrollseite das NICHT ersetzt.** Sie beweist, dass das
 Instrument 60 Bilder je Sekunde sehen kann — mehr nicht. **Eine LEERE Seite
