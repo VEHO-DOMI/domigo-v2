@@ -371,6 +371,12 @@ export const PAINT_OVERLAY_CSS = `
   --pb-accent-lit: #d66a2a;
   --pb-quiet-ink: #7a5c33;
   --pb-card-r: 26px 14px 30px 16px / 16px 30px 14px 26px;
+  /* R5-W8 · D6: dieses Token wird seit dem Umbau der Innenlinie nicht mehr von
+     einer CSS-Regel GELESEN — die vier Radien stecken jetzt in den Bogen des
+     eingebetteten Strichs (».pb-card::before«). Es bleibt trotzdem stehen, und
+     zwar als die eine lesbare Stelle, an der diese vier Zahlen benannt sind:
+     »legende.test.ts« vergleicht die Bogen des SVG maschinell dagegen, damit
+     dieselben vier Zahlen an zwei Stellen keine Drift-Klasse werden. */
   --pb-card-r-in: 22px 12px 26px 14px / 14px 26px 12px 22px;
   --pb-chip-r: 18px 9px 20px 11px / 11px 20px 9px 18px;
   /* NOTHING IS QUITE SQUARE — four angles, one block. Raising the card tilt
@@ -479,6 +485,36 @@ export const PAINT_OVERLAY_CSS = `
      Stylesheet. Die Datei liegt unter art/g1/cards/ und nicht im Kunstbaum:
      »check-paint-art« zählt dort jedes Blatt, das die Engine nicht lädt, als
      tote Kunst — und dieses hier lädt der BROWSER (siehe import-batch-aq17). */
+  /* ── R5-W8 · D6 · P7 §3 · DER NACHZUG AUF DER AUSSENKANTE ─────────────────
+     Beide Prüfer lasen auch die dunkle Außenkante als »vom Rechner«: eine
+     Strichstärke je Seite, EINE flache Farbe über den ganzen Lauf, und Ecken,
+     die eine Formel zeichnet.
+
+     Was hier NICHT passiert: die Kante wird nicht ersetzt. Das ist das
+     Ergebnis eines bezahlten Versuchs — D3b hat einem blinden Kritiker die
+     GEMALTE Kante (»card_edge_a.png«, über den border-image-Steckplatz) gegen
+     genau diese Tuschekante gestellt, und er wählte die TUSCHEKANTE. Die
+     Silhouette der Karte hat einen Blindvergleich gewonnen; sie wegzuwerfen,
+     um denselben Befund anders zu bedienen, wäre ein Rückschritt mit
+     Begründung.
+
+     Was stattdessen passiert, ist das, was eine Hand tut, wenn eine Linie ihr
+     zu dünn ist: sie fährt sie NOCH EINMAL nach — und trifft dabei nicht
+     überall. Der Nachzug liegt als oberste Hintergrund-Lage auf dem
+     Rahmenkasten, in vier Zügen mit vier Gewichten (dieselbe R21-Familie), mit
+     langen Strichen und wenigen Lücken, und in einem Ton, der etwas dunkler
+     ist als die Kante selbst. Er nimmt nichts weg; er macht die eine flache
+     Farbe zu zwei Farben, die einander nicht ganz decken.
+
+     Deterministisch wie die Innenlinie: alle Zahlen stehen als Literale hier.
+     Und ehrlich begrenzt: auch das ist Linderung. Die Kategorie schließt erst
+     mit dem gemalten Blatt (AQ17E und Folge) — so steht es im Register.
+
+     »background-origin: border-box« ist der Grund, warum das überhaupt geht:
+     ohne sie beginnt jede Lage am Polsterkasten, also INNERHALB der Kante, und
+     der Nachzug läge fünf Bildpunkte zu weit innen. Die Papierkachel verschiebt
+     sich dadurch um dieselben fünf Punkte — bei einer beidachsig kachelbaren
+     Textur ist das kein Unterschied, den ein Auge findet. */
   background-image:
     radial-gradient(120% 85% at 14% 4%, rgba(255,253,244,0.95), rgba(255,253,244,0) 58%),
     radial-gradient(85% 70% at 92% 98%, rgba(186,152,96,0.34), rgba(186,152,96,0) 62%),
@@ -628,7 +664,23 @@ export const PAINT_OVERLAY_CSS = `
 .pb-card::before {
   content: "";
   position: absolute;
-  inset: 6px;
+  /* ── R5-W8 · D6 · WARUM DIESER KASTEN JETZT NACH AUSSEN GREIFT ────────────
+     Hier stand »inset: 6px«, und das reichte, solange dieses Element nur die
+     Innenlinie trug. Der Nachzug auf der AUSSENKANTE muss aber ÜBER dem Rahmen
+     liegen: ein Hintergrund wird immer unter den Rahmen gemalt, und der Rahmen
+     dieser Karte deckt. Der erste Anlauf legte den Nachzug in den Hintergrund
+     der Karte — am Schirm nachgesehen war er unsichtbar, weil genau das
+     passierte.
+
+     Der Kasten eines absolut gesetzten Kindes ist der POLSTERkasten, also der
+     Bereich INNERHALB des Rahmens. Die vier negativen Werte holen ihn auf den
+     Rahmenkasten zurück, und sie sind genau die vier Rahmenbreiten, in
+     derselben R21-Familie geschrieben (1,25 · 0,80 · 0,75 · 1,20) — dieselbe
+     Zahl an zwei Stellen wäre eine Drift-Klasse. Das SVG darin rechnet in
+     Rahmenkasten-Koordinaten und legt die Innenlinie dort wieder 6 px innerhalb
+     des Polsterkastens ab, wo sie vorher lag. */
+  inset: calc(var(--pb-ink-w) * -1.25) calc(var(--pb-ink-w) * -0.8)
+         calc(var(--pb-ink-w) * -0.75) calc(var(--pb-ink-w) * -1.2);
   /* R5-W2 · J1-A: DASHED. In the judged picture this is the mark that reads as
      drawn-by-hand rather than printed — a ruled line a child could have made
      with a crayon along the inside of the page. */
@@ -639,10 +691,55 @@ export const PAINT_OVERLAY_CSS = `
      sits where it sat. A bonus the dashes give for free: dash length scales with
      border width, so four weights draw four rhythms on one closed line — which
      is what a hand does and a ruler cannot. */
-  border-style: dashed;
-  border-color: var(--pb-ink-line);
-  border-width: 1.9px 3px 3.1px 2px;
-  border-radius: var(--pb-card-r-in);
+  /* ── R5-W8 · D6 · P7 §3 · DIE INNENLINIE IST JETZT EIN STRICH, KEINE REGEL ──
+     Zwei frische Prüfer, Reihenfolgen getauscht, lasen die Kartenoberfläche
+     2 : 0 als »zerfällt in zwei«: Bild GEMALT, alles andere VOM RECHNER — und
+     die gestrichelte Innenlinie stand namentlich auf beiden Listen. Der Grund
+     ist mit CSS allein nicht zu beheben: »border-style: dashed« legt je Seite
+     EINE Strichlänge in EINEM Rhythmus, und vier Seiten mit vier Breiten sind
+     vier Regelmäßigkeiten, nicht eine Hand.
+
+     WAS HIER NICHT GEMACHT WIRD, UND WARUM NICHT (die teuerste Zeile dieses
+     Blocks): der naheliegende Weg wäre der Steckplatz »--pb-edge-image« oben.
+     Der ist verbrannt — D3b hat einen blinden Kritiker die gekachelte Kante
+     gegen die heutige Tuschekante stellen lassen, und er wählte die
+     TUSCHEKANTE, mit Fundstelle: ein gekachelter Streifen trägt seine Lücke an
+     einer FESTEN Stelle und wiederholt sie, »ein Stempel, kein Zufall«.
+     Dieselbe Mechanik mit einem gezeichneten statt einem gemalten Blatt zu
+     füttern, hieße dasselbe Experiment ein zweites Mal zu verlieren.
+
+     Deshalb: EIN Strich, EINMAL, über die ganze Karte gezogen und auf ihre
+     Größe GESTRECKT statt gekachelt — es gibt keine Naht, weil es keine
+     Wiederholung gibt. Der Rhythmus der Lücken ist unregelmäßig und läuft über
+     zehn Werte, bevor er sich wiederholt, die vier Ecken tragen die vier
+     ungleichen Radien der Karte, und die geraden Stücke laufen über Kurven
+     statt über Geraden: die Linie zittert um bis zu 1,3 px um ihre Bahn, so wie
+     eine Kreide es tut, die an einer Kante entlanggeführt wird.
+
+     DIE VIER SEITEN BLEIBEN UNGLEICH SCHWER. Das ist NICHT neu und darf nicht
+     verlorengehen: R21 hat den vier Rändern dieses Hauses das Zahlenpaar
+     1,25 · 0,80 · 0,75 · 1,20 gegeben, weil eine Kreide nie zweimal dasselbe
+     Gewicht ablegt. Der Strich ist deshalb in VIER Züge geteilt, einer je
+     Seite, jeder mit seinem Gewicht (1,9 · 3,0 · 3,1 · 2,0 px) und seinem
+     eigenen Lückenrhythmus. Der erste Anlauf war EIN Zug mit EINER Stärke — am
+     Schirm nachgesehen war das eine neue Regelmäßigkeit an der Stelle der
+     alten, also der Befund eine Ebene höher statt beantwortet.
+
+     DETERMINISTISCH (Kokis Auflage 1, 22.08.): der Pfad steht als Literal im
+     Quelltext. Keine Zufallszahl, keine Uhr — zwei Läufe müssen dasselbe Bild
+     ergeben, sonst beurteilt der nächste Prüfer die Kamera.
+
+     »vector-effect: non-scaling-stroke« ist das, was die Streckung erträglich
+     macht: Strichstärke UND Lückenrhythmus bleiben in Bildpunkten, egal wie
+     breit die Karte gerade ist. Gestreckt wird nur die BAHN.
+
+     EHRLICHE GRENZE: das ist Linderung, kein Beweis von Malerei. Die Kategorie,
+     die P7 gemessen hat, schließt erst mit dem gemalten Blatt (AQ17E und
+     Folge) — die Schuld bleibt mit diesem Wortlaut offen im Register stehen. */
+  border: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 450 542' preserveAspectRatio='none'%3E%3Cpath d='M28 2C92.96 0.8 172.13 3.1 231 1.4C289.87 2.9 369.04 0.8 434 2A14 30 0 0 1 448 32' fill='none' stroke='rgba(48,27,9,0.42)' stroke-width='2.2' stroke-linecap='round' stroke-dasharray='64 5 96 8 48 6' vector-effect='non-scaling-stroke'/%3E%3Cpath d='M448 32C449 111.04 446.7 207.37 448.7 279C447.2 350.63 449 446.96 448 526A30 14 0 0 1 418 540' fill='none' stroke='rgba(48,27,9,0.42)' stroke-width='1.5' stroke-linecap='round' stroke-dasharray='88 7 52 5 130 9' vector-effect='non-scaling-stroke'/%3E%3Cpath d='M418 540C354 540.8 276 538.9 218 541.2C160 539.3 82 540.8 18 540A16 26 0 0 1 2 514' fill='none' stroke='rgba(48,27,9,0.42)' stroke-width='1.4' stroke-linecap='round' stroke-dasharray='44 6 118 8 70 5' vector-effect='non-scaling-stroke'/%3E%3Cpath d='M2 514C1.1 434.64 3.2 337.92 1 266C2.6 194.08 1.1 97.36 2 18A26 16 0 0 1 28 2' fill='none' stroke='rgba(48,27,9,0.42)' stroke-width='2.1' stroke-linecap='round' stroke-dasharray='106 8 60 5 84 7' vector-effect='non-scaling-stroke'/%3E%3Cpath d='M32.8 11C96.16 11.9 173.38 9.7 230.8 11.5C288.22 10.2 365.44 11.9 428.8 11A12 26 0 0 1 440.8 37' fill='none' stroke='rgba(107,63,24,0.45)' stroke-width='1.9' stroke-linecap='round' stroke-dasharray='13 8 21 7 11 13 17 9 26 8' vector-effect='non-scaling-stroke'/%3E%3Cpath d='M440.8 37C439.7 114.44 441.8 208.82 440.1 279C442 349.18 439.7 443.56 440.8 521A26 12 0 0 1 414.8 533' fill='none' stroke='rgba(107,63,24,0.45)' stroke-width='3.0' stroke-linecap='round' stroke-dasharray='19 9 12 7 24 8 15 11 9 8' vector-effect='non-scaling-stroke'/%3E%3Cpath d='M414.8 533C352.4 532.4 276.35 534.3 219.8 532.1C163.25 533.8 87.2 532.4 24.8 533A14 22 0 0 1 10.8 511' fill='none' stroke='rgba(107,63,24,0.45)' stroke-width='3.1' stroke-linecap='round' stroke-dasharray='11 7 25 9 16 8 20 12 13 7' vector-effect='non-scaling-stroke'/%3E%3Cpath d='M10.8 511C12 433.24 9.9 338.47 11.9 268C10.3 197.53 12 102.76 10.8 25A22 14 0 0 1 32.8 11' fill='none' stroke='rgba(107,63,24,0.45)' stroke-width='2.0' stroke-linecap='round' stroke-dasharray='22 8 14 10 18 7 12 9 26 8' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
   pointer-events: none;
 }
 
@@ -664,6 +761,17 @@ export const PAINT_OVERLAY_CSS = `
    four opening beats fit. */
 .pb-card-scroll {
   min-height: 0;
+  /* ── R5-W8 · D6 · D-529 · DIE GRENZE STEHT JETZT AUCH AM BLATT ────────────
+     Die Kappe der KARTE (»max-height: calc(100% - 24px)«, oben) reicht heute,
+     weil das Blatt ein Flex-Kind in einer Spalte ist und dadurch mitschrumpft.
+     Das ist wahr und unsichtbar: nimmt eine künftige Karte das Blatt aus dieser
+     Spalte heraus, fällt die Grenze lautlos weg und der Inhalt wird wieder
+     beschnitten statt geblättert — genau die Klasse, die D-529 gemeldet hat.
+     Die Grenze steht deshalb ein zweites Mal HIER, an dem Element, das rollt,
+     und bemisst sich am Schleier (100 % = der Kasten der Karte, der selbst am
+     Schleier hängt). Sie ändert am heutigen Bild NICHTS — gemessen, nicht
+     angenommen: Karte 450 × 537 vor wie nach. */
+  max-height: 100%;
   overflow-y: auto;
   /* ⚠ NOT optional, and not tidiness. CSS says that if ONE axis is not
      »visible«, the other computes to »auto« — so »overflow-y: auto« alone hands
@@ -675,17 +783,63 @@ export const PAINT_OVERLAY_CSS = `
   overflow-x: hidden;
   /* a child dragging the last task line must not drag the page underneath */
   overscroll-behavior: contain;
-  /* the bar is drawn in the book's own ink at whisper strength, and its thumb
-     gets four disagreeing corners like everything else the hand touched —
-     the browser default is a grey UI part sitting on painted paper */
-  scrollbar-width: thin;
-  scrollbar-color: var(--pb-ink-line) transparent;
 }
+/* ── R5-W8 · D6 · DIE GEMALTE ROLLLEISTE WAR ABGESCHALTET ──────────────────
+   Hier stand »scrollbar-width: thin« zusammen mit dem gemalten Balken darunter,
+   und beides zusammen ergibt NICHTS: sobald die STANDARD-Eigenschaft gesetzt
+   ist, wirft der Browser den ganzen »::-webkit-scrollbar«-Block weg und
+   zeichnet seine eigene, auf dem Mac eine ÜBERLAGERNDE Leiste, die im Ruhezu-
+   stand unsichtbar ist. Gemessen an der lebenden Karte bei 760 × 700 (ein
+   Fenster, in dem das Blatt wirklich rollt): mit »scrollbar-width« belegt die
+   Leiste 0 px und ist nicht zu sehen, ohne sie 7 px und sie steht da. Die
+   Karte trug also eine von Hand getuschte Rollleiste, die nie jemand gesehen
+   hat — und ein Kind bekam bei kleinem Fenster keinen einzigen Hinweis, dass
+   unter der Kante noch etwas steht.
+
+   Die Standard-Eigenschaften bleiben trotzdem im Blatt, aber NUR für Browser
+   ohne den gemalten Balken (Firefox): dort ist »thin« das Beste, was zu haben
+   ist. Wo der Balken gezeichnet werden kann, wird er gezeichnet — sichtbar,
+   Platz belegend, in der Tinte des Buches, mit den vier uneinigen Ecken, die
+   hier alles trägt, was eine Hand angefasst hat. */
 .pb-card-scroll::-webkit-scrollbar { width: 7px; }
 .pb-card-scroll::-webkit-scrollbar-track { background: transparent; }
 .pb-card-scroll::-webkit-scrollbar-thumb {
   background: var(--pb-ink-line);
   border-radius: 6px 4px 7px 5px / 5px 7px 4px 6px;
+}
+@supports not selector(::-webkit-scrollbar) {
+  .pb-card-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: var(--pb-ink-line) transparent;
+  }
+}
+
+/* ── R5-W8 · D6 · P7 §2.4 · DER WEG NACH VORN GEHT NICHT UNTER DIE KANTE ────
+   Der eigentliche Schaden, den die Höhen-Messung gefunden hat, sind nicht die
+   drei Wörter: bei 760 × 700 lag auch der »Weiter«-Knopf unter der Kante
+   (gemessen: Blattinhalt 484 gegen 406 sichtbare Punkte, Knopf bei y 553 in
+   einem Blatt, das bei y 523 endet). Ein Kind sah eine Karte mit abge-
+   schnittener Liste und ohne einen einzigen sichtbaren Weg weiter.
+
+   WELCHE KARTEN DIESE ZEILE TRAGEN, UND WARUM NICHT ALLE. Sie gilt für die
+   Karten, deren EINZIGE Vorwärts-Bedienung ganz unten sitzt: die vier Auftakt-
+   Takte und die zwei Arena-Takte. Auf einer Aufgaben-Karte ist die Vorwärts-
+   Bedienung die Antwort in der Mitte; dort klebte eine Fußzeile nur den
+   Rückzieher »Später« fest und nähme dem Text Platz weg. Das ist eine
+   Unterscheidung nach BAUART, keine Ausnahme für eine einzelne Karte.
+
+   Der Streifen bekommt das Papier der Karte mit, sonst liefe die Schrift beim
+   Rollen sichtbar hinter ihm durch; und darüber steht ein weicher Auslauf statt
+   einer Kante, weil eine harte Linie quer über die Seite genau der Balken wäre,
+   den D-104 hier schon einmal entfernt hat. */
+.pb-card-foot {
+  /* Sie steht NEBEN dem Blatt in derselben Flex-Spalte: das Blatt nimmt, was
+     übrig bleibt, diese Zeile behält ihre Höhe. Kein eigener Papierton und
+     keine Kante — sie liegt auf dem Papier der Karte, wie sie es vorher tat.
+     (Der erste Anlauf war »position: sticky« INNERHALB des Blattes. Am Schirm
+     nachgesehen: der Streifen legte sich über die erste Legenden-Zeile. Alles
+     war erreichbar, aber es LAS sich als Fehler — deshalb dieser Weg.) */
+  flex: 0 0 auto;
 }
 
 /* ── every control on the card is a painted chip ───────────────────────────

@@ -22,7 +22,7 @@ import { LOGICAL_H, LOGICAL_W, LOOP_FPS, RENDER_SCALE, airModelByName } from "./
 import type { PaintLevel, PhaseSpec } from "./level.ts";
 import type { GameTaskV2 } from "@domigo/content-schema";
 import { CardHost } from "./cards/CardHost.tsx";
-import { Key, KeyBit } from "./cards/Glance.tsx";
+import { FoundMark, Key, KeyBit } from "./cards/Glance.tsx";
 import { type AuftaktCard, type AuftaktCounts, type UniformPiece, auftaktChain, auftaktExit, auftaktPosition, auftaktStep, auftaktTasks, uniformLegend, uniformLegendLine } from "./cards/auftakt.ts";
 import { type ArenaBeat, arenaExit, arenaLines, arenaPosition, arenaStep } from "./cards/arena.ts";
 import { answerTextOf } from "./cards/resolution.ts";
@@ -350,6 +350,13 @@ const chapterClothPieces = (level: PaintLevel): UniformPiece[] => {
  *  ≤ 2 px), weil ein 11,5-px-Wort, das sich dreht, schwerer zu lesen ist. */
 const LEGENDE_NEIGUNG: readonly number[] = [-1.3, 0.8, -0.5, 1.1, -0.9, 0.6, -0.7, 1.2, -0.4];
 const LEGENDE_VERSATZ: readonly number[] = [0, 2, -1, 1, -2, 0, 2, -1, 1];
+/** R5-W8 · D6: wie weit die Fund-Marke unter ihr Bild ragt (siehe `FoundMark`
+ *  in der Legende: `bottom: -3`). Sie zählt nicht zur Zeilenhöhe, aber sehr
+ *  wohl zur ROLLHÖHE — ohne diesen Betrag bekam die Karte bei sonst passendem
+ *  Fenster eine Rollleiste für drei Bildpunkte (gemessen: Inhalt 427 gegen 424
+ *  sichtbare). Zusammen mit dem größten Versatz nach unten ist das der Saum,
+ *  den das Raster unten braucht. */
+const LEGENDE_MARKEN_UEBERHANG = 3;
 
 /** R5-W7 · D5 · B15: WHICH beings are the drained ones. The run's ledger of
  *  answered beings holds ids of every kind (moths, chasers, drained things), so
@@ -1897,7 +1904,23 @@ function Overlay({
   // R5-W3 · J2 · R29: this chapter's counts and its beat chain, derived once.
   const auftaktCounts = auftaktCountsFor(level);
   const auftaktBeats = auftaktChain(auftaktCounts);
-  const staged = (children: React.ReactNode, extraClass = ""): React.ReactElement => (
+  /** R5-W8 · D6 · D-529/P7 §2.4 · WARUM ES EINEN DRITTEN PLATZ GIBT.
+   *  Die Fußzeile einer Auftakt- oder Arena-Karte ist die EINZIGE Bedienung,
+   *  die vorwärts führt. Lag sie im rollenden Blatt, verschwand sie bei kleinem
+   *  Fenster unter der Kante: gemessen bei 760 x 700 Inhalt 484 gegen 406
+   *  sichtbare Punkte, der Knopf bei y 553 in einem Blatt, das bei y 523 endet.
+   *  Ein Kind sah dann eine abgeschnittene Liste und keinen Weg weiter.
+   *
+   *  Sie sitzt deshalb NEBEN dem Blatt statt darin — die Karte ist eine
+   *  Flex-Spalte, das Blatt nimmt, was übrig bleibt, und die Fußzeile behält
+   *  ihre Zeilenhöhe. Das ist derselbe Satz, unter dem D-52 das Blatt gebaut
+   *  hat: der Rahmen, die getuschte Linie und die geknickte Ecke bleiben stehen,
+   *  während die SCHRIFT sich darunter bewegt. Ein Knopf ist keine Schrift.
+   *
+   *  (Der erste Anlauf ließ die Fußzeile im Blatt und machte sie »sticky«. Am
+   *  Schirm nachgesehen: sie legte sich dann über die erste Legenden-Zeile —
+   *  alles erreichbar, aber es LIEST sich als Fehler. Deshalb dieser Weg.) */
+  const staged = (children: React.ReactNode, extraClass = "", foot: React.ReactNode = null): React.ReactElement => (
     <div className="pb-veil pb-veil-deep" style={wrap}>
       <InkWipe />
       {/* R5-W2 · J1-B: KEYED BY THE BEAT. Every ceremony mounts the same element
@@ -1912,6 +1935,7 @@ function Overlay({
           top and bottom. The card keeps its frame, its lean and its seal. */}
       <div key={o.card} className={`pb-card ${extraClass}`.trim()} style={card}>
         <div className="pb-card-scroll">{children}</div>
+        {foot}
       </div>
     </div>
   );
@@ -1930,7 +1954,11 @@ function Overlay({
     const pos = auftaktPosition(o.card, auftaktBeats);
     if (pos === null) return null;
     return (
-      <div style={{ display: "flex", alignItems: "center", gap: 10, marginTop: 14, flexWrap: "wrap" }}>
+      // R5-W8 · D6 · P7 §2.4: Diese Zeile wird als FUSS an `staged` übergeben und
+      // steht damit neben dem rollenden Blatt statt darin. Bei 760 x 700 lag
+      // dieser Knopf gemessen UNTER der Kante — die Seite hatte dann keinen
+      // sichtbaren Weg nach vorn mehr. Die Begründung steht an `staged`.
+      <div className="pb-card-foot" style={{ display: "flex", alignItems: "center", gap: 10, marginTop: 14, flexWrap: "wrap" }}>
         <button className="pb-btn-primary" style={btn} onClick={() => onDismiss(o)}>{nextDe}</button>
         {auftaktStep(o.card, -1, auftaktBeats) !== null && (
           // „Zurück" alone already means »back to the map« on the door card, and
@@ -1975,16 +2003,19 @@ function Overlay({
           {lines.showsDe}
         </h2>
         <Key>{lines.storyDe}</Key>
-        <div style={{ display: "flex", alignItems: "center", gap: 10, marginTop: 14, flexWrap: "wrap" }}>
-          <button className="pb-btn-primary" style={btn} onClick={() => onDismiss(o)}>
-            {arenaStep(o.card, 1) === null ? "Los!" : "Weiter"}
-          </button>
-          <span style={{ marginLeft: "auto", fontSize: 12, color: "#a8926a", fontFamily: "var(--font-label, inherit)" }}>
-            {pos.at} / {pos.of}
-          </span>
-        </div>
       </div>,
       "pb-page",
+      /* dieselbe Bauart wie der Auftakt-Fuß: die einzige Vorwärts-Bedienung
+         dieser Karte sitzt ganz unten — sie steht deshalb NEBEN dem rollenden
+         Blatt und nicht darin (D6, P7 §2.4) */
+      <div className="pb-card-foot" style={{ display: "flex", alignItems: "center", gap: 10, marginTop: 14, flexWrap: "wrap" }}>
+        <button className="pb-btn-primary" style={btn} onClick={() => onDismiss(o)}>
+          {arenaStep(o.card, 1) === null ? "Los!" : "Weiter"}
+        </button>
+        <span style={{ marginLeft: "auto", fontSize: 12, color: "#a8926a", fontFamily: "var(--font-label, inherit)" }}>
+          {pos.at} / {pos.of}
+        </span>
+      </div>,
     );
   }
 
@@ -2052,9 +2083,9 @@ function Overlay({
           )}
           <SceneCut art={art} backdrop={roomStem} pose="stand" heroHeight={80} height={124} />
           <Key>{level.whyDe}</Key>
-          {auftaktFoot("Weiter")}
         </div>,
         "pb-page",
+        auftaktFoot("Weiter"),
       );
     }
 
@@ -2071,9 +2102,9 @@ function Overlay({
           {scene(painted("auftakt_ch01_b", "schulhaus_ch01_b", "schulhaus_ch01_a"), "4 / 3")
             ?? <SceneCut art={art} backdrop={roomStem} pose="stand" heroHeight={80} height={124} />}
           <Key>{level.goalDe}</Key>
-          {auftaktFoot("Weiter")}
         </div>,
         "pb-page",
+        auftaktFoot("Weiter"),
       );
     }
 
@@ -2134,7 +2165,12 @@ function Overlay({
           <span className="pb-quiet" style={{ display: "block", marginBottom: 4 }}>
             {uniformLegendLine(legende.length, legende.filter((c) => c.found).length)}
           </span>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "4px 4px" }}>
+          <div style={{
+            display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "4px 4px",
+            // der Saum unten: der größte Versatz nach unten plus der Überhang der
+            // Fund-Marke — abgeleitet aus den Zahlen darüber, nicht getippt
+            paddingBottom: Math.max(0, ...LEGENDE_VERSATZ) + LEGENDE_MARKEN_UEBERHANG,
+          }}>
             {legende.map((c, i) => {
               const url = art[`${c.skin}_a`];
               return (
@@ -2152,14 +2188,41 @@ function Overlay({
                 // Bild ergeben, sonst beurteilt der nächste Kritiker die
                 // Kamera. Die Spalten bleiben: sie sind die drei Stockwerke,
                 // und ein Kind soll die Wörter lesen, nicht suchen.
+                //
+                // ── R5-W8 · D6 · P7 §2.2/2.3 · DIE DECKKRAFT IST UMGEDREHT ──
+                // Hier stand »opacity: c.found ? 1 : 0.46«, und dieser eine
+                // Ausdruck war der schwerste Befund des End-Urteils III: im
+                // Startzustand ist ALLES ungefunden, also standen alle neun
+                // Wörter bei 1,96 : 1 gegen das Papier — bei 11,5 px, wo der
+                // Boden für Fließtext 4,5 : 1 liegt. Die Karte wurde erst
+                // lesbar, NACHDEM man gefunden hatte, was auf ihr steht; drei
+                // Zeilen weiter oben stand seit derselben Runde der Vorsatz
+                // »ein Kind soll die Wörter lesen, nicht suchen«.
+                //
+                // Die Dämpfung fällt ERSATZLOS (nicht auf einen milderen Wert):
+                // ein Wert zwischen 0,46 und 1 wäre genau die Abstufung, die
+                // drei unabhängige Leser als Rauschen gedeutet haben — jeder
+                // nannte andere Wörter als »blasser«, obwohl alle neun exakt
+                // gleich standen. Was bleibt, sagt etwas: der FUND wird
+                // markiert (Haken auf dem Bild + dunkle Auszeichnungsschrift,
+                // zwei Signale — Kokis Entscheid 22.08.), und die Abstufung
+                // trägt damit erst dann Information, wenn es welche gibt.
                 <span
                   key={c.wordEn}
                   style={{
-                    display: "flex", alignItems: "center", gap: 5, opacity: c.found ? 1 : 0.46,
+                    display: "flex", alignItems: "center", gap: 5,
                     transform: `rotate(${LEGENDE_NEIGUNG[i] ?? 0}deg) translateY(${LEGENDE_VERSATZ[i] ?? 0}px)`,
                   }}
                 >
-                  <span style={{ display: "flex", flex: "0 0 auto", width: 22, height: 22, alignItems: "center", justifyContent: "center" }}>
+                  {/* Die Marke sitzt AUF dem Bild, weil die drei Spalten je rund
+                      130 px breit sind: eine Marke mit eigener Spalte bricht
+                      »Sonnenbrille« um. Deshalb `position: relative` hier. */}
+                  <span style={{ position: "relative", display: "flex", flex: "0 0 auto", width: 22, height: 22, alignItems: "center", justifyContent: "center" }}>
+                    {c.found && (
+                      <span style={{ position: "absolute", right: -3, bottom: -3, display: "flex", pointerEvents: "none" }}>
+                        <FoundMark size={13} />
+                      </span>
+                    )}
                     {url !== undefined
                       // ⚠ die neun Blätter sind schon im DOM-Umfang: artScope
                       // legt für JEDE cloth-Entität `<skin>_a` dazu (G4). Diese
@@ -2200,9 +2263,9 @@ function Overlay({
             {rows}
           </div>
           {legendeRaster}
-          {auftaktFoot("Weiter")}
         </div>,
         "pb-page",
+        auftaktFoot("Weiter"),
       );
     }
 
@@ -2217,9 +2280,9 @@ function Overlay({
         {scene(painted("auftakt_ch01_d", level.doorPlate), "5 / 4")
           ?? <SceneCut art={art} backdrop={roomStem} pose="stand" heroHeight={80} height={124} />}
         <Key>Dein erster Raum: {level.phases[0]?.nameDe ?? level.name}.</Key>
-        {auftaktFoot("Los geht's!")}
       </div>,
       "pb-page",
+      auftaktFoot("Los geht's!"),
     );
   }
   if (o.card === "tip") {

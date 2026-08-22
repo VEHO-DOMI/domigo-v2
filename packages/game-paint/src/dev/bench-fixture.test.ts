@@ -71,6 +71,25 @@ describe("die Bilanz der Kartenbank stimmt mit dem Kapitel überein", () => {
     expect(b.clothWords.every((w) => woerter.includes(w)), "die Bank erfindet ein Wort").toBe(true);
   });
 
+  // ── R5-W8 · D6 · P7 §2.3 · DIE HÄLFTE, NICHT »alles bis auf eines« ─────────
+  // Die Bank zeigte die Legende bei acht gefundenen gegen ein offenes. Wer
+  // daran prüft, ob ein Kind »was habe ich, was fehlt« ablesen kann, prüft in
+  // Wahrheit, ob es EINEN AUSREISSER findet — die zweite Klasse steht nur
+  // einmal auf der Seite. Für die Legende gilt deshalb die Hälfte, und das ist
+  // eine Regel und keine Zahl: sie muss auch bei einem Kapitel mit anderer
+  // Teilezahl halten.
+  it("R5-W8 · D6: die Legende steht auf der Bank in der HÄLFTE, damit beide Zustände gleich stark stehen", () => {
+    const b = benchBilanz(raw);
+    expect(b.cloth, "die Legende zeigt nicht die Hälfte").toBe(Math.floor(b.clothTotal / 2));
+    // beide Klassen mindestens so oft wie die andere ± 1 — das ist der Zweck
+    const offen = b.clothTotal - b.cloth;
+    expect(Math.abs(offen - b.cloth), "die zwei Zustände stehen ungleich stark").toBeLessThanOrEqual(1);
+    // und die anderen Zähler behalten ihre eigene Regel: sie zeigen ZAHLEN,
+    // keine Dinge, und »3 von 4« braucht genau ein fehlendes Stück
+    expect(b.tips, "die Regel-Seiten-Zahl hat die Hälfte-Regel mitgenommen").toBe(b.tipsTotal - 1);
+    expect(b.letters).toBe(b.lettersTotal - 1);
+  });
+
   it("hält jeden Fortschritt innerhalb seiner Summe", () => {
     const b = benchBilanz(raw);
     for (const [got, total] of [
