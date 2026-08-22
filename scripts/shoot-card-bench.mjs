@@ -144,6 +144,10 @@ export const SURFACES = [
   "spell",
   "choice-hints",
   "kaefig",
+  // R5-W7 · W6 · D4s Befund 4: der dritte Takt der Aufloesung („Zurueck im
+  // Buch!") hatte keine Flaeche — das einzige bildgetragene Stueck jener Runde
+  // war nicht fotografierbar.
+  "answer-home",
   "goal",
   "auftakt-schatten",
   "auftakt-aufgaben",
@@ -182,6 +186,14 @@ export const CROP_TARGETS = {
   portrait: { sel: ".pb-portrait", pad: 40 },
   siegel: { sel: ".pb-verdict", pad: 48 },
   plakette: { sel: ".pb-plate", pad: 40 },
+  // R5-W7 · W6 · D4s Befund 5: `--crop .pb-btn-primary` war nicht fahrbar. Der
+  // Knopf ist etwa 150 x 40 CSS-px; mit dem Standard-`pad` von 40 waechst der
+  // Ausschnitt auf 230 x 120 und das Motiv fuellt davon 22 % — unter dem
+  // MIN_FILL von 40 %, also Abbruch. Das war kein falsches Gesetz, sondern ein
+  // falscher Rand: 40 px Kontext sind fuer eine ganze Karte richtig und fuer
+  // einen Knopf zu viel. 10 px lassen die gemalte Kante des Knopfes noch sehen
+  // und halten das Motiv bei ~70 %.
+  knopf: { sel: ".pb-btn-primary", pad: 10 },
 };
 
 /**
@@ -276,6 +288,24 @@ const selftest = () => {
   assert(schmal.fill >= MIN_FILL, `Kantenband + 40 px Rand füllt ${(schmal.fill * 100).toFixed(0)} %`);
   const zuViel = clipOf(roiOf(rect, { side: "left", px: 96 }), 90);
   assert(zuViel.fill < MIN_FILL, `Kantenband + 90 px Rand füllt nur ${(zuViel.fill * 100).toFixed(0)} % ⇒ ROT`);
+
+  // 4b · R5-W7 · W6 · DER KNOPF. D4s Befund 5 war eine Zahl, keine Meinung:
+  //      der Knopf ist ~150 x 40 CSS-px, und mit dem Standard-Rand von 40 px
+  //      fiel er unter MIN_FILL. Geprüft werden BEIDE Richtungen an genau
+  //      diesem Rechteck — sonst wäre der neue Rand geraten und nicht gemessen.
+  const knopfRect = { x: 500, y: 620, width: 150, height: 40 };
+  const knopfPad = cropSpec("choice", "knopf").pad;
+  const knopfAlt = clipOf(knopfRect, 40);
+  const knopfNeu = clipOf(knopfRect, knopfPad);
+  assert(knopfAlt.fill < MIN_FILL,
+    `mit dem alten Rand (40 px) füllt der Knopf nur ${(knopfAlt.fill * 100).toFixed(0)} % ⇒ das war der Abbruch`);
+  assert(knopfNeu.fill >= MIN_FILL,
+    `mit pad ${knopfPad} füllt er ${(knopfNeu.fill * 100).toFixed(0)} % (≥ ${MIN_FILL * 100} %)`);
+  assert(cropSpec("choice", "knopf").sel === ".pb-btn-primary", "»knopf« zielt auf den gemalten Hauptknopf");
+
+  // 4c · …und die neue Fläche ist wirklich in der Liste (eine Flächen-Bestellung,
+  //      die auf keine Fläche trifft, würde sonst still nichts fotografieren)
+  assert(SURFACES.includes("answer-home"), "»answer-home« steht in der Flächenliste (D4s Befund 4)");
 
   // 5 · das Vokabular trifft nur erklärte Namen
   assert(cropSpec("choice", "kante") !== null, "»kante« ist ein erklaerter Ausschnitt");
