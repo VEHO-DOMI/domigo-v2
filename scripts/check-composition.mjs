@@ -50,6 +50,7 @@ import {
   shortestPeriod,
   surfaceSignature,
   tileAnchorFor,
+  drawnScaleFor,
   tileScaleFor,
   uncoveredSolids,
 } from "../packages/game-paint/src/mass.ts";
@@ -1023,19 +1024,164 @@ if (markersSeen === 0) {
 // by its own anatomy (CRUST_H), and the one that never had the defect.
 console.log("10 · painted-scale audit (mass.ts paintScaleOf — R5-W1 · A1)");
 const SCALE_PARITY_TOL = 0.15;
+/**
+ * R5-W9 · M1 · WIE KRUMM EIN BILD SEIN DARF: GAR NICHT.
+ *
+ * Getrennt vom Massstabs-Fenster oben, weil es eine andere Frage ist. „Kleiner
+ * als die Welt" kann eine Entscheidung sein (ein Moebel, das als Miniatur
+ * gemalt wurde). „Quer anders als hoch" ist nie eine: es heisst, ein Kasten
+ * hat das Seitenverhaeltnis seines Blattes nicht getragen und das Bild
+ * gequetscht. 2 % faengt Rundung ab, nichts sonst.
+ */
+const SCALE_ANISO_TOL = 0.02;
+
+/**
+ * R5-W9 · M1 · DIE BENANNTEN AUSNAHMEN VOM WELT-MASSSTAB.
+ *
+ * Der `p.tile !== true`-Filter ist gefallen (siehe Audit 10), also misst dieses
+ * Tor ab jetzt auch jedes BILD-Stueck. Was dabei legitim aus dem Mass faellt,
+ * steht hier — mit Grund, gemessener Zahl und Datum. Zwei Gesetze halten die
+ * Liste ehrlich, beide oben verdrahtet:
+ *   · eine Zeile, die kein Raum mehr plant (oder deren Stueck inzwischen im
+ *     Mass liegt), wird ROT — eine schale Ausnahme ist eine Luege ueber den
+ *     Bestand;
+ *   · das Verzogen-Gesetz (`SCALE_ANISO_TOL`) steht VOR dem Verzicht: eine
+ *     Ausnahme darf „kleiner" sagen, nie „krumm".
+ *
+ * ── WARUM DIE MOEBEL NICHT EINFACH ANGEHOBEN WURDEN (gemessen, M1) ──────────
+ * Die Plattform-Objekte zeichnen bei 0,42x…1,17x. Sie „auf 1x zu heben" heisst,
+ * ihre Zellen-Spanne auf die GEMALTE Breite zu setzen (`srcW x paintScale /
+ * TILE`). Gemessen ergibt das je Raum:
+ *   p1  bench_2 4,74 → 5 Zellen · shelf_2 4,30 → 4 · coatbench 2,22 → 2 · bundle_1 1,91 → 2
+ *   p2  desk 2,07 → 2 · shelf_2 4,32 → 4 · bookpile_l 1,98 → 2 · bookpile_s 1,53 → 2
+ *   p3  plank_2 3,82 → 4 · windowsill 1,70 → 2 · column2_1 1,51 → 2
+ *   p9  desk 1,78 → 2 · bench_2 4,09 → 4 · bundle_1 1,65 → 2
+ * Kein einziges Objekt des Kapitels ist im Welt-Massstab EINE Zelle breit — das
+ * schmalste ist 1,51. Die Sims-Breiten der Raeume sind aber gemessen
+ * 1 · 2 · 3 · 4 Zellen (p2 hat zwei 1-Zellen-Sims, p3 einen), und `Audit 7`
+ * verlangt in jeder Palette ein 1-Zellen- UND ein 2-Zellen-Objekt. Eine
+ * durchgaengige Anhebung nimmt jeder Palette ihr 1-Zellen-Objekt und laesst die
+ * schmalen Sims unmoebliert; in p1 kaeme dazu, dass Bank (5) und Regal (4)
+ * ueber JEDEM Sims des Raumes liegen (2 und 3 Zellen) und damit nie mehr
+ * gezeichnet wuerden — die Eingangshalle verloere ihre Baenke.
+ *
+ * Angehoben wird deshalb, was OHNE diese Folgen geht (Posten 2, s. u.); der
+ * Rest steht hier. **Was die Zeilen wirklich sagen, ist eine Bestellung:**
+ * ch01 besitzt kein Moebel, das im Welt-Massstab eine Zelle breit ist. Das ist
+ * eine Kunst-Frage (ein schmales Blatt) oder eine Level-Frage (breitere Sims),
+ * und beide liegen ausserhalb dieser Bahn — geroutet, nicht still.
+ */
+const SCALE_WAIVERS = {
+  // ── DIE VIER ECKEN · ★ EINE NARBE, KEINE BEQUEMLICHKEIT (M1, 2026-08-22) ───
+  //
+  // Die Eckblaetter sind 512x504 / 512x503 / 512x494 / 510x432 und werden in
+  // einen 12-px-Kasten gezeichnet — 0,29x bis 0,36x des Massstabs, den der Trim
+  // EINEN Bildpunkt daneben traegt. Das ist gemessen der schaerfste Bruch, den
+  // diese Bahn gefunden hat, und er ist NICHT behoben.
+  //
+  // Er ist behoben WORDEN — und wieder zurueckgebaut. Der Kasten wuchs auf die
+  // gemalte Groesse (41,1 px, alle vier Ecken exakt 1,00 x 1,00), das Bild wurde
+  // schlechter, und ZWEI blinde Leser (Sonnet 5, dasselbe Paar in getauschter
+  // Reihenfolge, p3 Warp 16,17, Takt 276) nannten unabhaengig den ALTEN Stand
+  // das Bild, das sich eher wie EIN Material liest — 2:0. Woertlich aus einem
+  // der beiden Protokolle: die grossen Ecken lesen sich als »einzeln angesetzte
+  // Holzkloetze statt wie aus dem Buecherstapel herausgearbeitete Stufen«.
+  //
+  // Die Zeile sagt deshalb etwas Genaueres als »ausgenommen«: **die Blaetter
+  // sind fuer ihre Rolle zu gross gemalt.** Eine Ecke, die eine 16-px-Zelle
+  // abrundet, braucht rund 150 Quellpixel, nicht 512. Das ist eine Bestellung
+  // an AS6, kein Motor-Posten — und bis sie geliefert ist, gewinnt die Anatomie
+  // (`CORNER`) gegen den Massstab, wie bei `EDGE_W` und `CRUST_H` auch.
+  //
+  // ⚠ Was NICHT ausgenommen ist und auch nicht sein darf: die Verzerrung. Der
+  // Kasten war quadratisch und quetschte `mass_incorner_r` 18,1 % senkrecht.
+  // Der Kasten traegt jetzt das Seitenverhaeltnis seines Blattes (`mass.ts`
+  // §4 `cornerBox`), alle vier Ecken messen 0,0 % Verzug, und das
+  // Verzogen-Gesetz oben laesst diese Zeile das gar nicht decken.
+  //
+  // Ohne Raum-Praefix: die vier Blaetter sind in ALLEN fuenf Raeumen dieselben.
+  "cornerBL:mass_corner_bl": { until: "2026-11-30", why: "Blatt 512x504 in einem 12-px-Kasten (0,29x…0,34x je Raum). Anhebung auf gemalte Groesse gebaut und von 2 blinden Lesern 2:0 verworfen — die Ecke wird zum Holzklotz ueber dem Material, das sie abrunden soll. Bestellung: Eckblatt bei ~150 px statt 512 (AS6). Verzug 0,0 %" },
+  "cornerBR:mass_corner_br": { until: "2026-11-30", why: "Blatt 512x503, sonst wie cornerBL — dieselbe Messung, dasselbe Panel, dieselbe Bestellung" },
+  "inCornerL:mass_incorner_l": { until: "2026-11-30", why: "Blatt 512x494, sonst wie cornerBL. Der Kasten trug frueher 3,6 % Verzug; jetzt 0,0 %" },
+  "inCornerR:mass_incorner_r": { until: "2026-11-30", why: "Blatt 510x432 — DAS Blatt, das im quadratischen Kasten 18,1 % senkrecht gestaucht wurde. Die Stauchung ist WEG (0,0 % Verzug); die Untergroesse bleibt und faellt mit AS6" },
+  // ── ch01/p1 · DIE EINGANGSHALLE HAT NUR 2- UND 3-ZELLEN-SIMSE ──────────────
+  // Gemessene Sims-Breiten: 2 (sechsmal) und 3 (dreimal). Bank und Regal sind
+  // gemalt 4,74 bzw. 4,30 Zellen breit — auf ihre gemalte Breite gesetzt kaeme
+  // KEINES von beiden je auf einen Sims dieses Raumes, und die Halle verloere
+  // genau die Moebel, die sie zur Halle machen. Die Kleiderbank ist das
+  // 1-Zellen-Objekt des Raumes: ohne sie bleibt von jedem 3-Zellen-Sims eine
+  // Zelle unmoebliert. Das Buendel IST angehoben (1 → 2 Zellen, 1,045x).
+  "ch01/p1:platform:plat_bench_2": { until: "2026-11-30", why: "gemalt 4,74 Zellen, gezeichnet auf 2 (0,42x) — p1 hat keinen Sims ueber 3 Zellen; auf gemalter Breite waere die Bank in dieser Halle nie sichtbar. Faellt mit AS6-P1 (breiteres Sims oder schmaleres Blatt)" },
+  "ch01/p1:platform:plat_shelf_2": { until: "2026-11-30", why: "gemalt 4,30 Zellen, gezeichnet auf 2 (0,47x) — wie die Bank: p1s breitester Sims ist 3 Zellen. In p2, das einen 4-Zellen-Sims hat, IST dasselbe Blatt angehoben (0,93x). Faellt mit AS6-P1" },
+  "ch01/p1:platform:plat_coatbench": { until: "2026-11-30", why: "gemalt 2,22 Zellen, gezeichnet auf 1 (0,45x) — sie ist das einzige 1-Zellen-Objekt der Halle (Audit 7 verlangt eines, und die drei 3-Zellen-Simse brauchen es). ch01 besitzt kein Moebel, das im Welt-Massstab EINE Zelle breit ist — das schmalste misst 1,51. Das ist die Bestellung hinter dieser Zeile" },
+  // ── ch01/p2 · DAS 1-ZELLEN-OBJEKT DES KLASSENZIMMERS ──────────────────────
+  // Regal (2 → 4) und grosser Buchstapel (1 → 2) sind angehoben; der kleine
+  // Stapel bleibt, weil p2 zwei 1-Zellen-Simse hat und er das einzige Objekt
+  // ist, das sie tragen kann.
+  "ch01/p2:platform:plat_bookpile_s": { until: "2026-11-30", why: "gemalt 1,53 Zellen, gezeichnet auf 1 (0,65x) — das einzige 1-Zellen-Objekt des Raumes, und p2 hat zwei 1-Zellen-Simse. Auf 2 gehoben zeichnete er 1,31x und liesse beide Simse leer" },
+  // ── ch01/p3 · SIMS UND BLATT GEHEN NICHT AUF ──────────────────────────────
+  "ch01/p3:platform:ledge_windowsill": { until: "2026-11-30", why: "gemalt 1,70 Zellen, gezeichnet auf 2 (1,17x) — 2 ist die naechste ganze Zelle, 1 waere 0,59x und damit doppelt so falsch. Die Fensterbank ist ZU GROSS, nicht zu klein; ein Blatt von 1,5 Zellen Breite loest es. Faellt mit AS6-P3" },
+  "ch01/p3:platform:plat_column2_1": { until: "2026-11-30", why: "gemalt 1,51 Zellen, gezeichnet auf 1 (0,66x) — das einzige 1-Zellen-Objekt des Hofes, und p3 hat einen 1-Zellen-Sims. Genau auf der Rundungsgrenze: 1,51 rundet auf 2 und zeichnete dann 1,33x" },
+  // ── ch01/p3 · DIE RUTSCHE IST EINE GEZEICHNETE ZELLE, KEINE TEXTUR ────────
+  // Batch AF2 hat die Rutsche als ECHTE 45°-ZELLEN neu gemalt: jedes Modul ist
+  // von Ecke zu Ecke in eine 512er-Zelle gezeichnet, und die Strebe darunter
+  // ist der Keil derselben Zelle (`mass.ts` §6). Ein Blatt, das fuer „eine
+  // Gitterzelle" gemalt ist, MUSS in eine Gitterzelle — es im Welt-Massstab zu
+  // zeichnen (32 px statt 16) verschoebe die Rutsche gegen das Gitter, auf dem
+  // ein Kind steht. Das ist kein Versehen wie bei den Ecken, sondern der
+  // Vertrag, den die Kunst mitbringt.
+  "ch01/p3:slideTop:slide_top": { until: "2026-11-30", why: "gezeichnete 45°-ZELLE (Batch AF2): das Blatt ist von Ecke zu Ecke fuer EINE Gitterzelle gemalt, also ist 16 px die richtige Groesse und 0,48x die Folge davon, nicht ein Fehler. Im Welt-Massstab ruestete die Rutsche gegen das Gitter, auf dem gelaufen wird" },
+  "ch01/p3:slideUnder:slide_under": { until: "2026-11-30", why: "wie slide_top: die Strebe IST der Keil derselben 512er-Zelle (mass.ts §6)" },
+  "ch01/p3:slideFoot:slide_foot": { until: "2026-11-30", why: "wie slide_top: gezeichnete 45°-Zelle, eine Gitterzelle gross" },
+  // ── ch01/p9 · DIE KLECKSKAMMER HAT NUR 2- UND 3-ZELLEN-SIMSE ──────────────
+  "ch01/p9:platform:plat_bench_2": { until: "2026-11-30", why: "gemalt 4,09 Zellen, gezeichnet auf 2 (0,49x) — p9s breitester Sims ist 3 Zellen (gemessen: 2x2, 3x2). Dieselbe Bestellung wie in p1" },
+  "ch01/p9:platform:plat_bundle_1": { until: "2026-11-30", why: "gemalt 1,65 Zellen, gezeichnet auf 1 (0,61x) — das einzige 1-Zellen-Objekt der Kammer; auf 2 gehoben zeichnete es 1,21x und liesse von jedem 3-Zellen-Sims eine Zelle leer. In p1, dessen Massstab groesser ist, IST dasselbe Blatt auf 2 gehoben (1,045x)" },
+};
+
 /** Below this a declared window is a hairline, not an anatomy (R5-A5 · R3). */
 const MIN_WINDOW_SRC_PX = 24;
 const courseLocks = new Set();
 const windowsSeen = new Set();
-for (const { label, ph, spec } of withSpec) {
-  const plan = planMass(ph.rows, spec.mass, srcSize);
-  const want = paintScaleOf(spec.mass, srcSize);
+const waiverSeen = new Set();
+/**
+ * R5-W9 · M1 · DAS MASS-URTEIL ALS FUNKTION, damit der Selbsttest ES faehrt.
+ *
+ * Vorher stand diese Rechnung als Schleifenrumpf da und war fuer den Selbsttest
+ * unerreichbar — also konnte niemand zeigen, dass das Tor den Ecken-Bruch
+ * ueberhaupt SEHEN kann. Jetzt fahren Tor und Tamper dieselbe Funktion; was
+ * unten rot wird, wuerde oben genauso rot.
+ *
+ * Rein: gibt Meldungen zurueck, druckt nichts, und fasst `waiverSeen` nur an,
+ * wenn es tatsaechlich eine Ausnahme verbraucht hat.
+ */
+const judgeScale = ({ label, plan, want, srcSize, windowsSeen, courseLocks, waiverSeen }) => {
+  const bad = [];
+  const said = [];
+  // dieselbe Signatur wie die Datei-weiten `fail`/`note`, damit der gehobene
+  // Rumpf Wort fuer Wort derselbe bleibt (die Audit-Kennung faellt hier weg —
+  // der Aufrufer setzt sie wieder davor)
+  const fail = (_audit, m) => bad.push(m);
+  const note = (m) => said.push(m);
   const offScale = new Map(); // stem → the reading furthest from the course
   for (const p of plan) {
-    if (p.tile !== true || p.stem === null) continue;
+    // ── R5-W9 · M1 · DER FILTER IST GEFALLEN, UND ER WAR DER GRUND ──────────
+    //
+    // Hier stand `if (p.tile !== true || p.stem === null) continue;`. Der halbe
+    // Satz „p.tile !== true" hat dieses Tor ueber dem gesamten BILD-Weg blind
+    // gemacht — und dort sassen drei Befunde, die drei Wellen ueberlebt haben:
+    // die vier Ecken 3,42-mal feiner als der Trim einen Bildpunkt daneben,
+    // `mass_incorner_r` zusaetzlich 18,1 % senkrecht gestaucht, und die
+    // Plattform-Moebel zwischen 0,42x und 1,17x. Audit 10 war die ganze Zeit
+    // gruen, weil es die Frage fuer die Haelfte der Welt nie gestellt hat.
+    //
+    // Jetzt wird JEDES platzierte Stueck gemessen; welchen Weg es zeichnet,
+    // beantwortet `mass.ts#drawnScaleFor` fuer Renderer, Tor und Lineal
+    // gemeinsam. Was legitim aus dem Mass faellt, steht als BENANNTE Zeile in
+    // `SCALE_WAIVERS` — mit Grund, Zahl und Datum, nie still.
+    if (p.stem === null) continue;
     const src = srcSize(p.stem);
     if (!src) continue;
-    const s = tileScaleFor(p, src);
+    const s = drawnScaleFor(p, src);
     // 10a · SCALE PARITY — one painted world means one painted scale, on BOTH
     // axes.
     //
@@ -1050,14 +1196,38 @@ for (const { label, ph, spec } of withSpec) {
     // A declared width is not a licence to leave the scale; it is a licence to
     // show LESS of the painting. So both axes are held to the same number, and
     // the declaration itself is checked against the sheet below.
+    // Ein Verzicht darf RAUMWEISE gelten (`ch01/p1:platform:plat_bench_2` —
+    // dasselbe Blatt liegt in p2 im Mass) oder fuer ALLE Raeume (`cornerBL:
+    // mass_corner_bl` — die vier Eckblaetter sind ueberall zu gross gemalt).
+    // Der genauere Schluessel gewinnt; sonst waere dieselbe Wahrheit an fuenf
+    // Stellen gepflegt und veraltete an vieren davon.
+    const wKeyRoom = `${label}:${p.kind}:${p.stem}`;
+    const wKeyAll = `${p.kind}:${p.stem}`;
+    const waiverKey = SCALE_WAIVERS[wKeyRoom] !== undefined ? wKeyRoom : wKeyAll;
+    const waiver = SCALE_WAIVERS[waiverKey];
     for (const axis of ["y", "x"]) {
       if (Math.abs(s[axis] - want) > want * SCALE_PARITY_TOL) {
-        const key = `${p.stem}.${axis}`;
+        const key = `${waiverKey}.${axis}`;
         const cur = offScale.get(key);
         if (cur === undefined || Math.abs(s[axis] - want) > Math.abs(cur - want)) offScale.set(key, s[axis]);
       }
     }
+    // 10a″ · ANISOTROPIE — ein Blatt, das auf einer Achse anders gezeichnet
+    // wird als auf der anderen, ist VERZOGEN, und keine Ausnahme deckt das.
+    // `mass_incorner_r` lief hier 18,1 % senkrecht gestaucht, unter einem
+    // Kasten, der quadratisch war und ein Blatt von 510x432 bekam. Diese
+    // Pruefung steht ABSICHTLICH vor dem Verzicht: eine Ausnahme darf sagen
+    // „dieses Stueck ist kleiner als die Welt", nie „dieses Bild darf krumm
+    // sein".
+    if (s.x > 0 && s.y > 0) {
+      const aniso = Math.max(s.x, s.y) / Math.min(s.x, s.y) - 1;
+      if (aniso > SCALE_ANISO_TOL) {
+        fail("painted-scale", `${label}: ${p.kind} ${p.stem} zeichnet sein Blatt ${(aniso * 100).toFixed(1)} % verzogen (${s.x.toFixed(4)} quer gegen ${s.y.toFixed(4)} hoch, Blatt ${src.w}x${src.h}) — ein Kasten, der das Seitenverhaeltnis des Blattes nicht traegt, malt ein krummes Bild`);
+      }
+    }
+    if (waiver !== undefined) { waiverSeen.add(waiverKey); continue; }
     if (Math.abs(s.y - want) > want * SCALE_PARITY_TOL) continue;
+    if (p.tile !== true) continue; // Fenster + Gitter-Sperre gelten nur der Kachel
     // 10a′ · THE DECLARED WINDOW AGAINST THE SHEET'S REAL ANATOMY. You cannot
     // show more of a painting than exists, and a hairline of one is not a
     // material — both are red, and the share is REPORTED either way so a trim
@@ -1105,13 +1275,40 @@ for (const { label, ph, spec } of withSpec) {
       }
     }
   }
-  for (const [stem, got] of offScale) {
-    const [bare, axis] = stem.split(".");
+  let loud = 0;
+  for (const [key, got] of offScale) {
+    const i = key.lastIndexOf(".");
+    const bare = key.slice(0, i);
+    const axis = key.slice(i + 1);
+    const w = SCALE_WAIVERS[bare];
+    if (w !== undefined) {
+      note(`${label}: ${bare} zeichnet ${got.toFixed(4)} (${(got / want).toFixed(2)}x der Welt) auf ${axis} — BENANNTE AUSNAHME bis ${w.until}: ${w.why}`);
+      continue;
+    }
+    loud++;
     fail("painted-scale", `${label}: ${bare} draws ${got.toFixed(4)} world px per source px on ${axis}, the walk course draws ${want.toFixed(4)} — the same painting at two scales is two materials`);
   }
-  if (offScale.size === 0) {
-    note(`${label}: every tiled mass surface at ${want.toFixed(4)} world px/source px — a 512-wide painting every ${((512 * want) / TILE).toFixed(2)} cells`);
+  if (loud === 0) {
+    note(`${label}: every mass surface at ${want.toFixed(4)} world px/source px (tiled AND image) — a 512-wide painting every ${((512 * want) / TILE).toFixed(2)} cells`);
   }
+  return { bad, said };
+};
+
+for (const { label, ph, spec } of withSpec) {
+  const v = judgeScale({
+    label,
+    plan: planMass(ph.rows, spec.mass, srcSize),
+    want: paintScaleOf(spec.mass, srcSize),
+    srcSize, windowsSeen, courseLocks, waiverSeen,
+  });
+  for (const m of v.said) note(m);
+  for (const m of v.bad) fail("painted-scale", m);
+}
+// Eine Ausnahme, die niemand mehr braucht, ist eine Luege ueber den Bestand —
+// dieselbe Regel, die das Kanten-Tor schon fuer seine Verzichte faehrt.
+for (const [key, w] of Object.entries(SCALE_WAIVERS)) {
+  if (!waiverSeen.has(key)) fail("painted-scale", `SCALE_WAIVERS traegt "${key}", aber kein Raum plant so ein Stueck (oder es liegt inzwischen im Mass) — die Zeile loeschen (${w.why})`);
+  else if (waiverExpired(w)) fail("painted-scale", `SCALE_WAIVERS "${key}" ist am ${w.until} abgelaufen — nachmessen und neu begruenden oder die Ausnahme fallen lassen (${w.why})`);
 }
 
 // 10c · ANCHOR HONESTY — the renderer and this audit must ask the SAME function.
@@ -1364,6 +1561,74 @@ const judgeKit = (kit, key) => {
   }
   return rows;
 };
+
+// ── R5-W9 · M1 · DIE TAMPER DES MASS-GESETZES ────────────────────────────────
+//
+// Das Tor hat drei Wellen lang gruen geleuchtet, waehrend die Ecken 3,42-mal
+// feiner gezeichnet wurden als der Trim daneben — weil `p.tile !== true` den
+// halben Renderer ausgeblendet hat. Ein Gesetz, das man nie hat rot werden
+// sehen, ist kein Gesetz. Also: DREI Faelle plus ein Nicht-Tamper, alle ueber
+// `judgeScale` — dieselbe Funktion, die oben den Bestand beurteilt hat.
+//
+// Fall 1 ist der ECHTE Bruch von gestern, Zelle fuer Zelle nachgebaut: ein
+// Eckstueck in einem 12x12-Kasten. Er MUSS rot werden; der heutige Plan (Fall
+// 4) ist gruen. Das ist das rot→gruen, das Posten 1 beweist.
+if (process.argv.includes("--selftest")) {
+  const kitPhase = withSpec[0];
+  if (kitPhase === undefined) { console.error("✗ M1-Selbsttest: keine Phase mit Manifest"); process.exit(1); }
+  const echterPlan = planMass(kitPhase.ph.rows, kitPhase.spec.mass, srcSize);
+  const echtesWant = paintScaleOf(kitPhase.spec.mass, srcSize);
+  const label = kitPhase.label;
+  const fahre = (plan) => judgeScale({
+    label, plan, want: echtesWant, srcSize,
+    windowsSeen: new Set(), courseLocks: new Set(), waiverSeen: new Set(),
+  }).bad;
+
+  const ecken = new Set(["cornerBL", "cornerBR", "inCornerL", "inCornerR"]);
+  const faelle = [
+    // 1 · GENAU der Stand von gestern: der quadratische 12x12-Kasten. Er ist
+    // rot, und zwar mit dem Gesetz, das WIRKLICH gebrochen war — ein Blatt von
+    // 510x432 in einem Quadrat ist um 18,1 % verzogen. (Die Untergroesse selbst
+    // traegt eine benannte Ausnahme; sie zu decken ist der Zweck der Ausnahme,
+    // die Verzerrung zu decken war nie einer.) Das ist das rot -> gruen von
+    // Posten 1.
+    ["der Kasten von gestern: quadratisch, und das Blatt ist es nicht", () =>
+      fahre(echterPlan.map((p) => (ecken.has(p.kind) ? { ...p, w: 12, h: 12 } : p))),
+      "verzogen"],
+
+    // 2 · Eine Flaeche OHNE Ausnahme, aus dem Mass geschoben. Das ist der Fall,
+    // fuer den Audit 10 urspruenglich gebaut wurde — er muss weiter feuern.
+    ["eine Flaeche ohne Ausnahme faellt aus dem Mass", () =>
+      fahre(echterPlan.map((p) => (p.kind === "crust" ? { ...p, srcScale: (p.srcScale ?? 1) * 0.4 } : p))),
+      "world px per source px"],
+
+    // 3 · DER WICHTIGSTE FALL: die Ausnahmen duerfen keine KLASSE freigeben.
+    // `platform` traegt in mehreren Raeumen Verzichte — ein Moebel, das KEINEN
+    // hat, muss trotzdem rot werden, sonst waere die Tabelle ein Loch in der
+    // Form einer Liste.
+    ["ein Moebel ohne eigene Ausnahme wird NICHT von den Nachbarzeilen gedeckt", () =>
+      fahre(echterPlan.map((p) => (p.kind === "platform" && p.stem === "plat_coatbench" ? p : (p.kind === "platform" ? { ...p, w: p.w * 0.4, h: p.h * 0.4 } : p)))),
+      "world px per source px"],
+
+    ["NICHT-TAMPER: der heutige Plan ist im Mass", () => fahre(echterPlan), null],
+  ];
+
+  let schlecht = 0;
+  for (const [name, lauf, muss] of faelle) {
+    const bad = lauf();
+    const rot = bad.length > 0;
+    const sollRot = muss !== null;
+    const trifft = muss === null ? true : bad.some((m) => m.includes(muss));
+    if (rot !== sollRot || !trifft) {
+      schlecht++;
+      console.error(`  ✗ M1-Tamper „${name}": ${rot ? `rot (${bad.length})` : "gruen"}, erwartet ${sollRot ? `rot mit „${muss}"` : "gruen"}${rot && !trifft ? ` — erste Meldung: ${bad[0]}` : ""}`);
+    } else {
+      console.log(`  ✓ M1-Tamper „${name}": ${rot ? `rot, und zwar mit „${muss}"` : "gruen"}`);
+    }
+  }
+  if (schlecht > 0) { console.error("✗ check-composition selftest: das Mass-Gesetz unterscheidet die Faelle nicht"); process.exit(1); }
+  console.log("✓ selftest: das Mass-Gesetz sieht den Ecken-Bruch, das verzogene Blatt und ein falsch skaliertes Stueck — und laesst den heutigen Plan gruen.");
+}
 
 // ── the selftest: this law must be able to go red, and to tell cases apart ────
 // It runs the SHIPPING judge (`judgeKit`) over synthetic kits whose PNGs are

@@ -517,6 +517,26 @@ export const tileScaleFor = (p: MassPiece, src: { w: number; h: number }): { x: 
   return { x: p.srcW !== undefined && p.srcW > 0 ? p.w / p.srcW : y, y };
 };
 
+/**
+ * R5-W9 · M1 · DER GEZEICHNETE MASSSTAB EINES STUECKS — EGAL WELCHEN WEG ES GEHT.
+ *
+ * `tileScaleFor` beantwortet die Frage nur fuer den Kachel-Weg. Der Renderer
+ * hat aber zwei: gekachelt (`setTileScale`) und als Bild (`setDisplaySize`).
+ * Audit 10 hat den Bild-Weg bis heute UEBERSPRUNGEN (`if (p.tile !== true)
+ * continue`) — und genau dort sassen die drei Befunde, die drei Wellen
+ * ueberlebt haben: die Ecken 3,42-mal feiner als der Trim daneben,
+ * `mass_incorner_r` 18,1 % gestaucht, die Moebel bei 0,42…1,17.
+ *
+ * Ein Tor, das nur die Haelfte der Wege misst, ist gruen ueber der anderen
+ * Haelfte. Deshalb gibt es diese eine Funktion, und Renderer, Tor und das
+ * Massen-Lineal fragen SIE — nicht drei Kopien derselben Rechnung
+ * (das 10c-Gesetz „anchor honesty", eine Ebene weiter gedacht).
+ */
+export const drawnScaleFor = (p: MassPiece, src: { w: number; h: number }): { x: number; y: number } =>
+  p.tile === true
+    ? tileScaleFor(p, src)
+    : { x: src.w > 0 ? p.w / src.w : 1, y: src.h > 0 ? p.h / src.h : 1 };
+
 /** Where the pattern is pinned, in SOURCE px (Phaser's `tilePosition`).
  *  Each axis divides by ITS OWN scale — Phaser's offset is
  *  `tilePosition mod sourceSize` per axis, so one shared divisor would slide a
@@ -1104,17 +1124,38 @@ export const planMass = (
       for (const obj of coverWithObjects(width, kit.platObjects, run.c0 + run.r)) {
         // sized by the span it fills; the height follows the PAINTED aspect so
         // a bench stays a bench instead of being stretched to the cell box
-        const objW = obj.cells * TILE;
-        const objH = Math.min(objW / Math.max(aspect(obj.stem), 0.05), TILE * 2);
+        const span = obj.cells * TILE;
+        const wantH = span / Math.max(aspect(obj.stem), 0.05);
+        // ── R5-W9 · M1 · DER DECKEL QUETSCHT NICHT MEHR, ER VERKLEINERT ──────
+        //
+        // Hier stand `objH = Math.min(objW / aspect, TILE * 2)` — die Hoehe
+        // wurde bei zwei Zellen abgeschnitten und die BREITE blieb stehen. Das
+        // ist ein gequetschtes Bild, und bis zu dieser Runde war es latent:
+        // kein Objekt des Kapitels erreichte den Deckel. Mit der Anhebung von
+        // `plat_bookpile_l` (1 → 2 Zellen, Posten 2) erreicht es ihn — gemessen
+        // 33,2 px gewollt gegen 32 px erlaubt, also **3,8 % senkrecht
+        // gestaucht**, und das neue Verzogen-Gesetz in Audit 10 hat es beim
+        // ersten Lauf rot gemeldet. Genau dafuer ist es gebaut.
+        //
+        // WOFUER der Deckel da ist, bleibt richtig: ein hochformatiges Blatt
+        // auf einem breiten Sims wuerde sonst zu einem Turm, der den Raum
+        // verstellt. Was falsch war, ist der WEG dorthin. Jetzt schrumpfen
+        // beide Achsen mit demselben Faktor, und was an Breite fehlt, wird in
+        // der Spanne ZENTRIERT: die Spanne gehoert dem Gitter (`x` rueckt
+        // weiter um `span`, damit die Objekte eines Laufes auf dem Raster
+        // bleiben), das Bild gehoert der Malerei.
+        const shrink = wantH > TILE * 2 ? (TILE * 2) / wantH : 1;
+        const objW = span * shrink;
+        const objH = wantH * shrink;
         // anchored by its DECK, not its top edge: whatever the art draws above
         // the walk surface (the bench's backrest) rises above the standable
         // line instead of being buried in the floor
         out.push({
           kind: "platform", stem: obj.stem, c: Math.floor(x / TILE), r: run.r,
-          x, y: run.r * TILE - (obj.deck ?? 0) * objH, w: objW, h: objH,
+          x: x + (span - objW) / 2, y: run.r * TILE - (obj.deck ?? 0) * objH, w: objW, h: objH,
           depth: DEPTH.platform,
         });
-        x += objW;
+        x += span;
       }
     }
     for (const cell of claimedPlatformCells(grid)) claimed.add(cell);
@@ -1315,6 +1356,62 @@ export const planMass = (
         tint: mixMultiply(kit.trimShade ?? TRIM_SHADE, depthTintAt(depthBucketAt(depthAt(grid, c, r)))),
       });
       const cornerTint = mixMultiply(kit.trimShade ?? TRIM_SHADE, depthTintAt(depthBucketAt(depthAt(grid, c, r))));
+      // ── R5-W9 · M1 · DIE ECKEN GEHOEREN ZUR MASSE, DIE SIE ABRUNDEN ────────
+      //
+      // Bis hierher war eine Ecke ein Bild in einem Kasten von `CORNER` = 12 px,
+      // und der Kasten war eine gewaehlte Zahl. Gemessen heisst das: ein 512er
+      // Blatt zeichnet bei 12 px 0,0234 Welt-px je Quell-px, waehrend der Trim
+      // EINEN Bildpunkt daneben bei `paintScale` = 0,0802 zeichnet — dieselbe
+      // Malerei, **3,42-mal feiner**, an einer gemeinsamen Naht. Genau das
+      // meint Kokis „Lego, das nicht zusammenpasst": nicht die Farbe, die
+      // GROESSE der Buchruecken springt am Stoss.
+      //
+      // Und `mass_incorner_r` (510x432) war zusaetzlich **18,1 % senkrecht
+      // gestaucht**, weil ein quadratischer Kasten ein nicht-quadratisches
+      // Blatt quetscht. Das ist kein Geschmack, das ist ein verzogenes Bild.
+      //
+      // ── ★ NARBE: DIE ECKE AUF WELT-MASSSTAB ZU HEBEN IST GEBAUT, GEMESSEN
+      //    UND VON ZWEI BLINDEN LESERN VERWORFEN WORDEN (M1, 2026-08-22) ──────
+      //
+      // Der naheliegende Schluss aus den Zahlen oben war: der Kasten waechst auf
+      // das, was das Blatt im Welt-Massstab misst — also 512 x 0,0802 = **41,1
+      // px statt 12**, dieselbe Bauart, die die Kruste-Kappe schon hat. Das ist
+      // gebaut worden, die Zahlen wurden perfekt (alle vier Ecken 1,00 x 1,00),
+      // und das BILD wurde schlechter: eine Ecke von 41 px ist 2,6 Zellen breit
+      // und legt sich als heller Holzkeil ueber das Buchmaterial, das sie
+      // abrunden soll.
+      //
+      // Zwei blinde Leser (Sonnet 5, dasselbe Bildpaar in GETAUSCHTER
+      // Reihenfolge, p3 Warp 16,17, Takt 276, Kamera 179/164) haben beide und
+      // unabhaengig den ALTEN Stand als das Bild genannt, das sich eher wie EIN
+      // Material liest — 2:0. Einer beschrieb den neuen Stand woertlich als
+      // „zusaetzliche schmale, rechteckige Vorspruenge, die wie einzeln
+      // angesetzte Holzkloetze wirken statt wie aus dem Buecherstapel
+      // herausgearbeitete Stufen".
+      //
+      // Was daraus folgt, ist keine Meinung, sondern eine BESTELLUNG: die vier
+      // Eckblaetter sind fuer ihre Rolle zu gross gemalt. Eine Ecke, die eine
+      // 16-px-Zelle abrundet, braucht ein Blatt von rund 150 px, nicht 512. So
+      // lange sie 512 sind, ist „im Welt-Massstab" und „so gross wie die
+      // Anatomie" nicht dasselbe, und die Anatomie gewinnt — genau wie bei
+      // `EDGE_W` fuer den Trim und `CRUST_H` fuer den Kurs. Die verbleibende
+      // Untergroesse steht als benannte Ausnahme in
+      // `check-composition.mjs#SCALE_WAIVERS` und faellt mit AS6.
+      //
+      // ── WAS BLEIBT, UND WARUM ES KEINE GESCHMACKSFRAGE IST ─────────────────
+      // Der Kasten war QUADRATISCH (12 x 12) und bekam Blaetter von 512x504,
+      // 512x503, 512x494 und **510x432**. Das letzte wurde damit **18,1 %
+      // senkrecht gestaucht** — ein verzogenes Bild, kein kleineres. Der Kasten
+      // traegt ab jetzt das Seitenverhaeltnis seines eigenen Blattes: die
+      // laengere Seite ist `CORNER`, die kuerzere folgt. Beide Achsen zeichnen
+      // damit denselben Massstab, und das neue Verzogen-Gesetz in Audit 10
+      // (`SCALE_ANISO_TOL`) haelt das fest.
+      const cornerBox = (stem: string): { w: number; h: number } => {
+        const s = srcSize?.(stem) ?? null;
+        if (s === null || s.w <= 0 || s.h <= 0) return { w: CORNER, h: CORNER };
+        const k = CORNER / Math.max(s.w, s.h);
+        return { w: s.w * k, h: s.h * k };
+      };
       // THE ONE-CELL COLUMN (critic round 2, both final reviewers, independently:
       // "reads as a flat translucent placeholder box", "an ivory baluster inserted
       // NEXT TO a book stack, not grown from the same stuff").
@@ -1328,18 +1425,26 @@ export const planMass = (
       const trimW = airL && airR ? EDGE_W * 0.55 : EDGE_W;
       if (airL) out.push({ kind: "edgeL", stem: kit.edgeL, c, r, x: x - EDGE_OUT, y, w: trimW, h: TILE, ...trim(kit.edgeL, trimW), depth: DEPTH.trim });
       if (airR) out.push({ kind: "edgeR", stem: kit.edgeR, c, r, x: x + TILE + EDGE_OUT - trimW, y, w: trimW, h: TILE, ...trim(kit.edgeR, trimW), depth: DEPTH.trim });
-      if (airL && airD) out.push({ kind: "cornerBL", stem: kit.cornerBL, c, r, x: x - EDGE_OUT, y: y + TILE - CORNER + EDGE_OUT, w: CORNER, h: CORNER, tint: cornerTint, depth: DEPTH.trim });
-      if (airR && airD) out.push({ kind: "cornerBR", stem: kit.cornerBR, c, r, x: x + TILE + EDGE_OUT - CORNER, y: y + TILE - CORNER + EDGE_OUT, w: CORNER, h: CORNER, tint: cornerTint, depth: DEPTH.trim });
+      if (airL && airD) {
+        const b = cornerBox(kit.cornerBL);
+        out.push({ kind: "cornerBL", stem: kit.cornerBL, c, r, x: x - EDGE_OUT, y: y + TILE - b.h + EDGE_OUT, w: b.w, h: b.h, tint: cornerTint, depth: DEPTH.trim });
+      }
+      if (airR && airD) {
+        const b = cornerBox(kit.cornerBR);
+        out.push({ kind: "cornerBR", stem: kit.cornerBR, c, r, x: x + TILE + EDGE_OUT - b.w, y: y + TILE - b.h + EDGE_OUT, w: b.w, h: b.h, tint: cornerTint, depth: DEPTH.trim });
+      }
       // inner corners: where a wall rises out of the floor beside this cell.
       // glyphAt reports OUTSIDE the grid as solid, so the diagonal probe has to
       // be bounds-checked or every ground run grows a phantom corner against
       // the world edge (seen in the p1 browser proof before this guard).
       const inGrid = (cc: number, rr: number): boolean => cc >= 0 && cc < w && rr >= 0 && rr < h;
       if (airU && inGrid(c - 1, r - 1) && isMass(glyphAt(grid, c - 1, r - 1))) {
-        out.push({ kind: "inCornerL", stem: kit.inCornerL, c, r, x, y: y - CORNER + EDGE_OUT, w: CORNER, h: CORNER, tint: cornerTint, depth: DEPTH.trim });
+        const b = cornerBox(kit.inCornerL);
+        out.push({ kind: "inCornerL", stem: kit.inCornerL, c, r, x, y: y - b.h + EDGE_OUT, w: b.w, h: b.h, tint: cornerTint, depth: DEPTH.trim });
       }
       if (airU && inGrid(c + 1, r - 1) && isMass(glyphAt(grid, c + 1, r - 1))) {
-        out.push({ kind: "inCornerR", stem: kit.inCornerR, c, r, x: x + TILE - CORNER, y: y - CORNER + EDGE_OUT, w: CORNER, h: CORNER, tint: cornerTint, depth: DEPTH.trim });
+        const b = cornerBox(kit.inCornerR);
+        out.push({ kind: "inCornerR", stem: kit.inCornerR, c, r, x: x + TILE - b.w, y: y - b.h + EDGE_OUT, w: b.w, h: b.h, tint: cornerTint, depth: DEPTH.trim });
       }
     }
   }
