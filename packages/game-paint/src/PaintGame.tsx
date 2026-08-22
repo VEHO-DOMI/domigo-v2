@@ -464,6 +464,10 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
   const [booted, setBooted] = useState(openingSeen === true);
   const [bonusLeft, setBonusLeft] = useState(-1);
   const [knots, setKnots] = useState(-1);
+  // R5-W7 · H5 · R193b: der Nenner der Lebensanzeige und der Fortschritt des
+  // laufenden Wischens — beide neu aus `PaintScene#getState` (dort deklariert).
+  const [knotsTotal, setKnotsTotal] = useState(0);
+  const [wipeTeil, setWipeTeil] = useState(0);
 
   // ── chapter state that OUTLIVES phase mounts (refs: read by scene closures) ──
   const grantSet = new Set(
@@ -1374,6 +1378,8 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
       if (!st) return;
       setBonusLeft(st.bonusLeft);
       setKnots(st.knots);
+      setKnotsTotal(st.knotsTotal);
+      setWipeTeil(st.wipeTeil);
     }, 250);
 
     if (process.env.NODE_ENV !== "production") {
@@ -1626,8 +1632,33 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
               im Bild. `slate` (die Tafel) liegt schon in `PaintedIcons.tsx` und
               zeigt das Ding, dessen Schichten der Zähler zählt; ein neues Glyph
               zu bestellen wäre Kunst für einen Fehler gewesen, den ein
-              vorhandener Name behebt. */}
-          {knots > 0 && <Chip icon="slate" label="Kritzel" value={`${knots}`} art={art} />}
+              vorhandener Name behebt.
+              R5-W7 · H5 (R193b): und jetzt ist es eine LEBENSANZEIGE. Der
+              Zähler sagte »noch 2« — eine Zahl ohne ihren Nenner. Drei blinde
+              Kritiker haben im P6-Panel notiert: »Lebensanzeige: keine«,
+              während Raymans Gegner eine eigene Leiste mit Porträt trägt. Die
+              Skala war längst da (drei Kritzel-Schichten, R50), sie stand nur
+              nirgends, wo ein Kind sie liest. Jetzt steht sie hier: ein Kästchen
+              je Schicht, das oberste läuft leer, WÄHREND gewischt wird. Kein
+              neuer Chip daneben — ein Kind, das zweimal dasselbe zählt, zählt
+              nichts. */}
+          {knots > 0 && (
+            <Chip
+              icon="slate"
+              label="Tafel"
+              value={knotsTotal > 0 ? `${knots}/${knotsTotal}` : `${knots}`}
+              leiste={knotsTotal > 0 ? <SchichtenLeiste voll={Math.max(0, knots - wipeTeil)} gesamt={knotsTotal} /> : undefined}
+              art={art}
+              titleDe={knotsTotal > 0 ? `Die Tafel hat noch ${knots} von ${knotsTotal} Kritzel-Schichten` : undefined}
+              // R5-W7 · H5: der Chip heisst »Tafel« und nicht mehr »Kritzel« —
+              // so hat der Auftrag ihn bestellt, und ein blinder Leser hat den
+              // Grund geliefert: neben »Regel-Seiten 0/5« und »Kleider 0/9«
+              // liest sich ein Zaehler ohne Gegner-Namen als SAMMEL-Stand des
+              // Kindes, nicht als Zustand des Gegners. Das Wort nennt jetzt,
+              // wem die Kaestchen gehoeren. Das interne Symbol `knots` bleibt
+              // (R50), und der Toast sagt weiter »Kritzel-Schicht«.
+            />
+          )}
           {inBonus && bonusLeft >= 0 && <Chip icon="inkwell" label="Tinte" value={`${Math.ceil(bonusLeft / 60)}s`} art={art} />}
           {letters.total > 0 && <Chip icon="spark" label={level.collectNounDe} value={`${letters.got}/${letters.total}`} art={art} />}
         </span>
@@ -2748,9 +2779,49 @@ function SpeakerGlyph({ muted, music }: { muted: boolean; music: boolean }): Rea
   );
 }
 
-function Chip({ icon, glyph, label, value, art, onClick, titleDe }: {
+/** R5-W7 · H5 · R193b · DIE LEBENSANZEIGE DES BOSSES.
+ *
+ *  Ein Kästchen je Kritzel-Schicht, gefüllt, solange die Schicht steht. Warum
+ *  Kästchen und kein durchgehender Balken: das Kind zählt hier keine Prozente,
+ *  es zählt SCHICHTEN — dieselbe Zahl, die der Toast nennt („Noch 2
+ *  Kritzel-Schichten!"), und dieselbe, die auf der Tafel liegt. Ein Balken
+ *  würde eine feinere Auflösung behaupten, als der Kampf hat.
+ *
+ *  Das oberste Kästchen läuft LEER, während gewischt wird (`wipeTeil`) — sonst
+ *  passiert im Augenblick der einzigen Handlung, die das Kind gegen den Boss
+ *  hat, in der Anzeige nichts. Der Zustand wird alle 250 ms abgeholt und ein
+ *  Wischen dauert 36 Takte (rund 600 ms), das sind also zwei bis drei Schritte
+ *  statt eines Sprungs — ehrlich gesagt: keine flüssige Animation, aber der
+ *  Unterschied zwischen »etwas geschieht« und »nichts geschieht«.
+ *
+ *  Kein neues Bild und kein neuer CSS-Verlauf (D-218): gezeichnet wird in
+ *  `currentColor`, also in der geprüften Chip-Farbe (D-210), genau wie das
+ *  Lautsprecher-Zeichen daneben. */
+function SchichtenLeiste({ voll, gesamt }: { voll: number; gesamt: number }): React.ReactElement | null {
+  if (gesamt <= 0) return null;
+  const B = 8, H = 13, L = 3;
+  const w = gesamt * B + (gesamt - 1) * L;
+  return (
+    <svg width={w} height={H} viewBox={`0 0 ${w} ${H}`} aria-hidden focusable="false" style={{ display: "block", flex: "0 0 auto" }}>
+      {Array.from({ length: gesamt }, (_, i) => {
+        const anteil = Math.max(0, Math.min(1, voll - i));
+        const x = i * (B + L);
+        return (
+          <g key={i}>
+            <rect x={x + 0.6} y={0.6} width={B - 1.2} height={H - 1.2} rx={1.5} fill="none" stroke="currentColor" strokeWidth={1.2} opacity={0.55} />
+            {anteil > 0 && (
+              <rect x={x + 2} y={2 + (H - 4) * (1 - anteil)} width={B - 4} height={(H - 4) * anteil} fill="currentColor" />
+            )}
+          </g>
+        );
+      })}
+    </svg>
+  );
+}
+
+function Chip({ icon, glyph, label, value, art, onClick, titleDe, leiste }: {
   icon?: PaintedIconName; glyph?: React.ReactNode; label: string; value: string; art?: Record<string, string>;
-  onClick?: () => void; titleDe?: string;
+  onClick?: () => void; titleDe?: string; leiste?: React.ReactNode;
 }): React.ReactElement {
   // R5-W6 · S2: entweder ein gemaltes Bild aus dem Buch oder eine schlichte
   // Form — nie beides und nie keines.
@@ -2760,14 +2831,21 @@ function Chip({ icon, glyph, label, value, art, onClick, titleDe }: {
       <button type="button" className="pb-hud-chip pb-hud-chip-btn" onClick={onClick} title={titleDe} aria-label={`${label} ${value} — ${titleDe ?? ""}`}>
         {picture}
         <span className="pb-hud-chip-label">{label}</span>
+        {leiste}
         <span className="pb-hud-chip-value">{value}</span>
       </button>
     );
   }
   return (
-    <span className="pb-hud-chip" style={{ fontFamily: "var(--font-label, inherit)", fontSize: 13 }}>
+    <span
+      className="pb-hud-chip"
+      style={{ fontFamily: "var(--font-label, inherit)", fontSize: 13 }}
+      title={titleDe}
+      aria-label={titleDe === undefined ? undefined : `${label} ${value} — ${titleDe}`}
+    >
       {picture}
       {label}
+      {leiste}
       <span className="pb-key-bit" style={{ fontSize: 15 }}>{value}</span>
     </span>
   );
