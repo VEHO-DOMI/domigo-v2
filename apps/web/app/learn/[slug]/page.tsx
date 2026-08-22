@@ -3,6 +3,7 @@ import { notFound, redirect } from "next/navigation";
 import { itemsInPool, listApprovedUnits, loadJourney } from "@domigo/content-loader";
 import type { Journey, JourneyNode } from "@domigo/content-schema";
 import { loadUnitWithOverrides } from "@/lib/content-service";
+import { isSlugAllowed, resolveVisibleGrades } from "@/lib/grade-scope";
 import { getActingUserForPage } from "@/lib/identity";
 import { bestTierPerItem, buildUnitNodes, deriveJourneyProgress, getDb, getJourneyAttempts, getUnitPathProgress, listReservedForClass, withProgress } from "@domigo/db";
 import type { JourneyNodeView, NodeView } from "@domigo/db";
@@ -13,7 +14,11 @@ export default async function UnitPathPage({ params }: { params: Promise<{ slug:
   const { slug } = await params;
   const acting = await getActingUserForPage();
   if (!acting) redirect("/signin");
-  if (!listApprovedUnits().includes(slug)) notFound();
+  if (!listApprovedUnits().includes(slug)) notFound(); // unknown unit stays a 404, not a redirect
+
+  // P1 (P-R1.5): the deep-link half of the grade scope — a foreign year's unit
+  // sends the child back to its own Study Path list.
+  if (!isSlugAllowed(slug, await resolveVisibleGrades(acting.classId))) redirect("/learn");
 
   // J-1: an AUTHORED journey (J-2 ships them) re-renders /learn as the spine;
   // until a unit has one, the legacy derived Study Path below is the fallback (F10).

@@ -16,7 +16,7 @@ export default async function NewAssignmentPage() {
   const teacher = await getTeacherForPage();
   if (!teacher) redirect("/admin/signin");
 
-  const classes = await listClasses(getDb()).catch(() => []);
+  const classes = await listClasses(getDb(), teacher.userId).catch(() => []);
   // C-1: the §4 grade presets travel as plain DATA — the builder is a client
   // component and never imports @domigo/db or the server-only lib (P-29b).
   const checkupPresets: Record<number, CheckupPreset[]> = Object.fromEntries(

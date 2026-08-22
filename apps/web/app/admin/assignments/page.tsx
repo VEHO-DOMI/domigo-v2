@@ -16,7 +16,7 @@ export default async function AssignmentsPage() {
 
   const [rows, classes] = await Promise.all([
     listAssignmentsByCreator(getDb(), teacher.userId).catch(() => []),
-    listClasses(getDb()).catch(() => []),
+    listClasses(getDb(), teacher.userId).catch(() => []),
   ]);
   const className = new Map(classes.map((c) => [c.id, c.name]));
 

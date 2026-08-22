@@ -3,28 +3,75 @@
  * like every service here (review.ts/gamesave.ts): grading + rendering must
  * survive a DB hiccup, so callers wrap in try/catch. Pure score math lives in
  * assignments.ts; pure draft validation in assignment-draft.ts — this file is
- * only the CRUD + the read-only v1 class list.
+ * only the CRUD + the teacher's class list (v2-native + the read-only v1 mirror).
  */
 import { and, desc, eq, inArray, isNull } from "drizzle-orm";
 import type { Db } from "./index.ts";
 import { assignments, assignmentSections, reservedItems } from "./schema.ts";
 import { v1Classes } from "./v1.ts";
+import { listClassesForTeacher } from "./class-service.ts";
 import type { AssignmentDraft } from "./assignment-draft.ts";
 
 export interface ClassRow {
   id: string;
+  /** DISPLAY label — a v1 legacy class carries LEGACY_CLASS_LABEL_SUFFIX (see listClasses). */
   name: string;
   grade: number;
 }
 
-/** Non-archived v1 classes for the teacher's class picker (read-only SELECT on
- *  public — never a write). Koki is the sole teacher, so all classes are his. */
-export async function listClasses(db: Db): Promise<ClassRow[]> {
-  const rows = await db
+/**
+ * Display suffix that marks a class from the v1 legacy register. Class NAMES
+ * collide across the two registers — production carries "2A" twice (a v1 row and
+ * a v2 row, measured 2026-08-22) — and a picker showing "2A" twice with no way to
+ * tell them apart is a trap for a teacher. The suffix is presentation only: ids,
+ * grades and every write path stay untouched.
+ */
+export const LEGACY_CLASS_LABEL_SUFFIX = " · Altbestand";
+
+/**
+ * Non-archived classes for the teacher's class picker — a UNION, v2 first.
+ *
+ * P1 (split-brain fix): this list used to read v1's `public.classes` ONLY, on the
+ * assumption "Koki is the sole teacher, so all classes are his". From 2026/27 every
+ * NEW class is v2-native and belongs to a DIFFERENT teacher, so that assumption
+ * silently starved every new class of assignments and checkups. Now:
+ *
+ *   1. the teacher's OWN v2 classes (scoped by teacherId, non-archived) — reusing
+ *      listClassesForTeacher so the picker shows exactly what /admin/classes shows,
+ *      one definition of "this teacher's classes" rather than two;
+ *   2. then the v1 legacy classes (non-archived, UNSCOPED — the Koki era predates
+ *      per-teacher ownership), each labelled with LEGACY_CLASS_LABEL_SUFFIX. The id
+ *      spaces are disjoint (separate schemas, random UUIDs), so no de-duplication is
+ *      needed — and a NAME that exists in both registers stays distinguishable.
+ *
+ * `teacherId` is a REQUIRED parameter, never a default: a default would silently
+ * bind future call sites to one teacher — the very defect being repaired here.
+ * Reads only; `public` is never written.
+ */
+export async function listClasses(db: Db, teacherId: string): Promise<ClassRow[]> {
+  // v2 half degrades like auth.ts's v2Safe(): if the domigo_v2 tables are
+  // unreachable on this deployment, the picker keeps its v1 classes instead of
+  // falling empty. (v2Safe itself is module-private to auth.ts.)
+  let v2: ClassRow[] = [];
+  try {
+    const owned = await listClassesForTeacher(db, teacherId);
+    v2 = owned.map((c) => ({ id: c.id, name: c.name, grade: c.grade }));
+  } catch (err) {
+    console.error(
+      "[assignment-service] v2 class query failed — falling back to the v1 mirror only:",
+      err instanceof Error ? err.message.slice(0, 200) : String(err).slice(0, 200),
+    );
+  }
+
+  const v1 = await db
     .select({ id: v1Classes.id, name: v1Classes.name, grade: v1Classes.grade })
     .from(v1Classes)
     .where(isNull(v1Classes.archivedAt));
-  return rows.map((r) => ({ id: r.id, name: r.name, grade: r.grade }));
+
+  return [
+    ...v2,
+    ...v1.map((r) => ({ id: r.id, name: `${r.name}${LEGACY_CLASS_LABEL_SUFFIX}`, grade: r.grade })),
+  ];
 }
 
 export interface AssignmentRow {

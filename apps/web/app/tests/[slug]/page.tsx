@@ -2,6 +2,7 @@ import { notFound, redirect } from "next/navigation";
 import { auth } from "@/auth";
 import type { AudioRef, GrammarItem, ListeningItem, VocabItem } from "@domigo/content-schema";
 import { listTestUnits, loadListening, loadTest } from "@domigo/content-loader";
+import { isSlugAllowed, resolveVisibleGrades } from "@/lib/grade-scope";
 import { loadUnitWithOverrides } from "@/lib/content-service";
 import TestSession, { type ResolvedSection } from "./TestSession";
 
@@ -12,7 +13,11 @@ export default async function TestPage({ params }: { params: Promise<{ slug: str
   const session = await auth();
   if (!session) redirect("/signin");
   if (session.user.role === "teacher") redirect("/admin");
-  if (!listTestUnits().includes(slug)) notFound();
+  if (!listTestUnits().includes(slug)) notFound(); // unknown unit stays a 404, not a redirect
+
+  // P1 (P-R1.5): the deep-link half of the grade scope — a foreign year's unit
+  // sends the child back to its own list. (Teachers already went to /admin above.)
+  if (!isSlugAllowed(slug, await resolveVisibleGrades(session.user.classId))) redirect("/tests");
 
   const file = loadTest(slug);
   if (!file) notFound();
