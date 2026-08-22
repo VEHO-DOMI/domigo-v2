@@ -123,6 +123,17 @@ dabei — die R5-Session verifiziert am Code, nie blind übernehmen (Specs rotte
 - **C1 · „Zurückgeholt!" ist ein Lost-Pages-Carryover.** Die Auflösungs-Zeile passt
   nicht zur Befreiungs-Fiktion — ALLE Lösungs-Botschaften kontext-treu neu denken/
   schreiben. → COPY (Klasse, nicht Instanz).
+  **★ AS BUILT 2026-08-21 (K6, nachgetragen; gebaut hat es die Karten-Bahn D4 am 2026-08-19,
+  Ruling R160).** Im Malbuch heißt die Auflösung jetzt **„Zurück im Buch!"** —
+  `cards/CardShell.tsx#THE ANSWER COMES HOME`, vom Copy-Tor mitgeführt. Damit ist C1 für die
+  Fläche erledigt, die dieser Ledger meint.
+  **Und der Rest bleibt mit Absicht** *(Ruling R178)*: „Zurückgeholt!" steht weiter an **vier
+  Stellen außerhalb der Karten** — `apps/web/lib/world-copy.ts#victoryLabel` (zweimal, das sind
+  die einzigen gelieferten Texte) sowie je ein Kommentar in `packages/game-2d/src/dialogue.tsx#DialogueOverlay` und
+  `packages/game-2d/src/BattleStage.tsx#BattleStage`. Das ist die **Lost-Pages-Fläche**, ein anderes Spiel mit
+  einer anderen Fiktion; R160 galt der Karten-Auflösung im Malbuch. Wer dort etwas ändert, ändert
+  Lost Pages — das ist kein Malbuch-Auftrag. *(Selbst nachgezählt 2026-08-21: fünf Treffer im
+  Baum, davon einer der Kommentar in `CardShell.tsx`, der die alte Zeile beschreibt.)*
 - **C2 · Merles Kommandos müssen skalpell-genau scaffolden** [14:57:44–14:59:11].
   „Sit down" für Stehen-auf-dem-Tisch ist nicht die korrekteste Instruktion — „get
   down / get off the table" wäre es („I'm not being nitpicky — these are A1 learners,
@@ -414,6 +425,22 @@ dabei — die R5-Session verifiziert am Code, nie blind übernehmen (Specs rotte
   Krusten sind ungeprüft. Die vierte datierte Ausnahme desselben Tages ist seit dem Post-Zug
   die Zeilennummern-Liste des Register-Tors (`check-registers.mjs#LINE_REF_ALLOW`, Eigentümer
   »K4 / Kanon-Bahn«) — sie hat denselben Stichtag und denselben Mechanismus.
+  **★★ Amendment 2026-08-21 (K6; Ruling R195) — die vierte Ausnahme wäre am 1. Oktober von selbst
+  rot geworden, und das ist getampert bewiesen.** A7 meldete am 18.08., `main` werde am 01.10. nicht
+  rot; **für die drei Ausnahmen, die A7 meinte, stimmt das.** Die vierte meinte er nicht. P6 hat am
+  19.08. das Register-Tor kopiert, **nur das Datum getauscht** und beide Fassungen laufen lassen:
+  heute **Exit 0** (»49 Zeilennummern-Verweise, davon 49 geduldet bis 2026-09-30 (K4 / Kanon-Bahn),
+  0 neu«), mit der Uhr auf dem 01.10.2026 **Exit 1** (»Die Ausnahmeliste des Schulden-Registers ist
+  am 2026-09-30 abgelaufen«). Genau der Fall, den H6 verhindern soll.
+  **Beschluss:** die Liste ist **auf den 2026-11-30 verlängert** — dasselbe Datum wie `SEAM_ALLOW`
+  und `COHERENCE_WAIVERS` —, **Eigentümer ist ab jetzt die K-Bahn** (»K4« gibt es nicht mehr), und
+  der Grund steht im Ratschen-Text des Tors selbst, nicht nur hier. Die Verlängerung ist **kein
+  Freibrief:** die Ratsche bleibt scharf (ein neuer Verweis der alten Form ist rot; ein Eintrag,
+  dessen Verweis verschwunden ist, ist schal und ebenfalls rot), und die verbleibende Hebe-Arbeit
+  steht mit ihrer **ausgeschriebenen Zahl** als eigene Bahn im Schuld-Register (K6s Abschnitt).
+  Koki ratifiziert mit dem Merge. *(Was K6 beim Sweep selbst heben konnte: **keiner** der 49
+  Verweise liegt in einer Zeile, die dieser Bahn gehört — die Zahl steht im Report, statt als
+  Vorsatz behauptet zu werden.)*
 - **H7 · Die Pergament-Regel des Farb-Tors bleibt — und die zweite Unterscheidung baut das
   Tor, nicht die Bahn.** *(neu 2026-08-17, K4; Ruling R114.)* Das Farb-Tor verwirft Pixel
   unter einer Farbkraft-Schwelle als „Pergament" (Grundierung), damit die Papierfarbe nicht
@@ -475,7 +502,137 @@ dabei — die R5-Session verifiziert am Code, nie blind übernehmen (Specs rotte
   wer eine Zeile zuweist, nennt zusätzlich das Symbol. Zeilen wandern, Symbole nicht —
   deshalb verlangt das Register-Tor `datei#symbol` und verbietet `datei` + Doppelpunkt + Zahl.
 
+- **H12 · Mission Control ist AUS DER SCHLEIFE — keine Dashboard-Zeile in einer Definition of
+  Done.** *(neu 2026-08-21, K6; Ruling **R154**, Kokis Weisung vom 2026-08-17.)* Die Dashboard-Karte
+  war zur unendlichen Liste geworden, und jede Session bezahlte sie mit Zeit, die niemand las.
+  **Der Report IST die Rückmeldung.** Zustand lebt an zwei Orten: im Repo (Register, Roadmap, dieses
+  Blatt) und in der iCloud (Passover, Reports). Der Architekt darf eine Übersichtskarte pflegen —
+  aber sie bindet keine Executor-Session mehr. Und jeder Report **endet** mit den nächsten
+  Schritten und den Boot-Zeilen, damit der Faden im Text selbst weiterläuft. *(Kokis globale
+  CLAUDE.md-Zeile, die noch das Gegenteil sagt, ist seit dem 17.08. veraltet — sie zu ändern ist
+  seine Sache, nicht die einer Bahn.)*
+
+- **H13 · Eine Route an eine LAUFENDE Bahn ist keine Route — und ein Rebase zieht auch die
+  BEGRÜNDUNGEN nach.** *(neu 2026-08-21, K6; Rulings **R187a** und **R187b**, Befund des
+  Welle-6b-Kreuzprüfers; Fallen **PB-141** und **PB-142**.)* Zwei Prozess-Fehler derselben Welle,
+  beide unsichtbar für jedes Tor:
+  **(a)** Drei Befunde von D4 gingen an W5, **während W5 lief**; W5 mergte, ohne sie je zu sehen,
+  und die drei Posten liefen ins Leere. Ziel einer Route ist die **NÄCHSTE Nummer des Kürzels**
+  (hier W6) oder der Architekt — nie die Bahn, die gerade arbeitet. Eine Adresse, die niemand mehr
+  liest, sieht wie erledigte Arbeit aus, und genau das ist ihr Preis.
+  **(b)** W5s Waiver trug als Kollisionsfreigabe »H4 ist nicht gebootet« und »E7 nicht gebootet«.
+  Am Schlussstand war beides falsch. Das **Ergebnis** blieb richtig, die **Beweiskette** nicht: ein
+  Satz über den Stand der anderen Bahnen altert schneller als eine Codezeile. Nach jedem
+  `git rebase origin/main` wird deshalb jede Begründung, die auf fremde Bahnen zeigt, neu gelesen —
+  nicht nur der Code.
+
+- **H14 · Eine Kanon-Zeile wird am Artefakt geprüft, bevor sie zitiert wird — auch die eigene.**
+  *(neu 2026-08-21, K6; Rulings **R186** und **R187g**, Falle **PB-124**.)* Die Welle 6b hat drei
+  Klassen desselben Fehlers bezahlt. **(1)** Eine Zahl wurde der falschen Bahn zugeschrieben
+  (»p2 create() 907 → 448 ms« waren zwei Läufe auf verschiedenen Ständen ohne A/B) und wanderte in
+  die Zusammenfassung, aus der die nächste Welle geschnitten wurde. **(2)** Eine Register-Zeile
+  behauptete eine Änderung, die noch nicht gemacht war, und **kein** Tor konnte das sehen.
+  **(3)** Fünf Schuld-Zeilen wurden als geschlossen geführt, ohne dass jemand am Artefakt nachsah.
+  *Regel:* jede Zeile, die eine Änderung, eine Messung oder eine Erledigung BEHAUPTET, bekommt vor
+  dem PR eine Gegenprobe am Artefakt — `grep`, Zählung oder Torlauf —, und die Gegenprobe steht im
+  Report. Ein Register ohne diese Regel führt einen Stand, den es selbst widerlegt. *(Diese Runde
+  hat es an sich selbst angewandt: von fünf geprüften Status-Spalten waren vier am Artefakt richtig
+  und eine unvollständig — Zahlen im K6-Report.)*
+
+- **H15 · Ein Ruling ohne Repo-Heimat wird AUSGEWIESEN, nicht zweimal aufgeschrieben.**
+  *(bestätigt und fortgeschrieben 2026-08-21, K6; K5s Regel, Ruling **R165**.)* Eine Entscheidung
+  gehört an genau **einen** Ort — dorthin, wo die Sache steht, über die sie entscheidet. Ein Ruling,
+  dessen Sache im Code lebt (eine Konstante, ein Gesetz in einem Tor), oder das nur einen
+  Bahn-Zuschnitt vornimmt, oder das eine Regel des Kunst-Labors ist, hat im Repo **keine** Heimat —
+  und bekommt auch keine. Es in Prosa zu wiederholen erzeugt genau die zweite Wahrheit, gegen die
+  diese Register gebaut sind. *Regel:* das **Verzeichnis** (Anhang unten) führt jedes Ruling mit
+  Nummer, Satz und entweder `datei#anker` oder dem ausgeschriebenen Grund seiner Heimatlosigkeit
+  **plus der Bahn, bei der es wirkt**. Ein Verzeichnis, das nur die Heimatvollen nennt, verschweigt
+  die Hälfte.
+
 ---
+
+
+## Anhang · Rulings-Verzeichnis R154–R203 → Heimat (K6, 2026-08-21)
+
+_Fünfzig Entscheidungen aus vier Review-Runden (Welle 6, Welle 6b, P6-Review, drei Wareneingänge)
+standen bis heute **nur** in `PLATFORM MASTER/SESSION-PROMPTS/` in der iCloud. Eine Session, die
+morgen ein Kapitel anfasst, liest das Repo — sie hätte gegen den alten Stand gebaut. Hier steht je
+Ruling **eine** Zeile: die Nummer, der Satz, und der Ort, an dem die Sache selbst steht._
+
+**Wie die Spalte »Heimat« zu lesen ist.** `datei#anker` heißt: dort steht die Entscheidung, dort
+wird sie gelesen, dort wirkt sie. **»heimatlos«** ist kein Versäumnis, sondern ein Befund nach
+**H15**: die Sache lebt im Code, im Kunst-Labor oder im Zuschnitt einer Welle, und ein Ruling
+zweimal aufzuschreiben erzeugt genau die zweite Wahrheit, gegen die diese Register gebaut sind. Jede
+heimatlose Zeile nennt **warum** und **wo sie wirkt**.
+
+**Stand: 2026-08-21 spät. Nächste freie Ruling: R204.** Was nach diesem Stempel geprägt wird,
+gehört der nächsten Kanon-Runde — dieses Verzeichnis ist ein Schnitt, kein wanderndes Ziel.
+
+| Ruling | Worum es geht | Heimat |
+|---|---|---|
+| **R154** | Mission Control ist aus der Schleife — keine Dashboard-Zeile in einer DoD; der Report ist die Rückmeldung | `45_replay_r6_ledger.md#H12` |
+| **R155** | Tor T6: die Kartenkante bleibt, das Budget geht ins gemalte Karten-Material | `docs/art/import-batch-aq17.mjs#R155` · Tor-Tabelle **T6** |
+| **R156** | Tor T7 (Regel-Seiten-Reihenfolge) bleibt · S1s Hörbank-Vorwahl gilt, bis Koki hört · Dach-Schalter für allen Ton = ja (S2 gebaut) | Tor-Tabelle **T7 · T12 · T13** |
+| **R157** | Tor T9: das Buch bleibt blau, bis eine Lieferung die Quote besteht | Tor-Tabelle **T9** (erledigt: AQ12d3 besteht, Import bei C7) |
+| **R158** | Tor T10: den p3-Flieger versetzen · Tor T11: ElevenLabs weiter, Plan bei der nächsten Rechnung | `docs/design/g1/paint/ch01.md#R158` · Tor-Tabelle **T10 · T11** |
+| **R159** | Der graue Keil `07.29.42` ist kein Tor mehr, sondern ein Auftrag an P6 | Tor-Tabelle (Keil) — beantwortet durch **R194** |
+| **R160** | Kokis vier P5-Fragen: (1) eigene Buchstaben-Trennung · (2) Hintergrund anheben statt Kind neu zeichnen · (3) Unterseite ins Massen-Kit · (4) die Auflösung heißt »Zurück im Buch!« | (4) `45_replay_r6_ledger.md#C1` · (1) heimatlos — Code-Gesetz in `letters.ts` (L1) · (2)/(3) heimatlos — Kommissionen AQ18/AS5c |
+| **R161** | G5: der Rock bleibt importiert (Bedeutung vor Randpixeln) · AQ10c bestellt · `alienRim < 0,5 %` ist Importer-Gesetz für jede Kleidungs-Lieferung | heimatlos — Importer-Konstante (Code) + Kommission; wirkt bei **C7** |
+| **R162** | L1: der Buchstaben-Hof `BACKING_ALPHA_MAX 0,28` bleibt · der Pfeil-Hof geht an F8 | heimatlos — Code-Konstante in `letters.ts`; Route steht als **D-418** im Schuld-Register |
+| **R163** | Bestell-Sprache = **Quoten mit ausgeschriebenem Kern** (der Lieferant rechnet dieselbe Formel und weist sie selbst aus) — Standard für jede Nachbestellung | heimatlos — Labor-Regel (`KOMMISSIONS_RAHMEN.md`); wirkt bei jeder Kommission |
+| **R164** | A7 bestätigt: Lastmittel und die drei Lese-Zeilen gehören in **jeden** Perf-Beipackzettel | `docs/PERF_WAECHTER.md#R164` |
+| **R165** | Die acht heimatlosen Rulings bleiben heimatlos · D-274 korrigiert K6 · die drei §9-Entscheide F1/F2/F3 | `docs/design/g1/paint/ch01.md#R165` (§9, jetzt Entscheide) |
+| **R166** | S2-Routen: D-370 → H4 · D-371 → D4 · D-372 → B5/S3 · D-373 Lautsprecher später · `cloth-take` → S3 | heimatlos — reine Routen; die Ziele stehen als D-Nummern im Schuld-Register |
+| **R167** | F7: AQ15b-hop2 bestellt (nur Z3) · Geh/Stand-Proportion an F8 · `merle_settle0` trägt nur 37,7 % dunkle Randpunkte | heimatlos — Kommission + Register (F8/W5) |
+| **R168** | Wareneingang 18.08.: sechs Urteile, davon zwei teilweise (AQ15c Z1 → C6, AQ17 Papier + Knöpfe → D4) | `docs/art/import-batch-aq17.mjs#R168` |
+| **R169** | Das Nachbestell-Paket der Welle 6b: zwölf Kommissionen mit Formel, Behalten-Liste und Prüfsumme | heimatlos — Labor; jede Kommission ist ihre eigene Datei |
+| **R170** | Welle 6b = C6 · D4 · H4 · B5 · E7 · W5; Register-Blöcke; **PB-Nummern vergibt nur die K-Bahn** | `46_pitfall_register.md#R170/R191` (Abschnittskopf dieser Runde) |
+| **R171** | D-433 Backbleche: so lassen — der Zuschnitt ist gemessen und zurückgenommen | heimatlos — die Messung steht als **D-433** im Schuld-Register (E7/E8) |
+| **R172** | Knopf-9-Slice und die Papier-Faser bei ~460 px Kartenbreite werden in **AQ17C** mitbestellt | heimatlos — Kommission; Schulden **D-364/D-365** (D5) |
+| **R173** | Der pinke Boss-Rahmen ist ein **Koki-Tor**; Empfehlung: p4-Holzfamilie + Lesbarkeit aus Dunkel/Kontur | Tor-Tabelle (Boss-Rahmen) |
+| **R174** | Die Regel-Seite bleibt auf dem Weg · die Glas-Streifen im Blatt sind Kunst-Schuld → **AQ19** | Tor-Tabelle (Regel-Seite) · Schuld **D-444** |
+| **R175** | Pennal-Zelle 1 wird als **AQ15E »Fenster gemalt«** neu bestellt; die Abnahme ruft der Bauer selbst auf | heimatlos — Kommission (Architekten-Entscheid, kein Koki-Tor) |
+| **R176** | Die **Hörprobe** bleibt bei Koki: iPad, `/play/1/buch` — maschinell bewiesen, nicht gehört | Tor-Tabelle (Hörprobe) |
+| **R177** | E7-Routen: D-431 TileSprite-Konstruktor → E8 · D-432 `letterTex` nur messen · D-438 Lastlesung → W6 | heimatlos — reine Routen; die Ziele stehen als D-Nummern im Schuld-Register |
+| **R178** | D4-Routen: »Zurückgeholt!« an vier Stellen außerhalb der Karten ist **Lost-Pages-Legacy und BLEIBT** · RGBA/Kartenbank → W6 · Ghost-Zelle → P6 | `45_replay_r6_ledger.md#C1` |
+| **R179** | B5: T10 umgekehrt gebaut und akzeptiert · R135/T8 für p2 überschrieben · D-445 Faust → K6 (Docs) + S3 (Audio) | `docs/design/g1/paint/ch01.md#ENTSCHEID 2026-08-19` (Faust-Entscheid) · `44_full_game_master_plan.md#DECIDED 2026-08-19` · Rest: Register |
+| **R180** | W5: p4-Frost und Merle-Kontur → F8 · die vier Tore ohne Selbsttest → **W6, nicht K6** (ein Selbsttest ist Werkzeug) · die 80-%-Ratsche angenommen | heimatlos — Routen + Werkzeug-Gesetz; Ziele als D-450/D-451/D-454 im Schuld-Register |
+| **R181** | C6: der Wareneingang fährt das **Repo-Tor zuerst**, dann der Prüfer · D-464 erledigt · Abbruchkante am Bestand → P6 | heimatlos — Labor-Reihenfolge (`KOMMISSIONS_RAHMEN.md`) |
+| **R182** | H4: die Zell-Konvention (»der Importeur schneidet ZENTRIERT«) steht ab jetzt in **jeder** Zellen-Bestellung · Rauhheit ≤ 0,20 ist Abnahme-Zahl jeder Tafel-Lieferung · D-357 → K6 | heimatlos — Bestell-Sprache; die Lehre steht als **PB-126** im Fallen-Register, die Zahl als **D-354** |
+| **R183** | Werkzeug-Provenienz: das Perf-JSON nennt Bau-Commit, Port und URL — bis dahin ist `commit` als »Skript-Stand« zu lesen | heimatlos — Werkzeug-Gesetz (W6); Route im Schuld-Register |
+| **R184** | Welle 7 bekommt eine Werkzeug-Bahn **W6**; G6 ruht, der AQ10c-Import läuft über C7 | heimatlos — Wellen-Zuschnitt (`RAHMEN_WELLE7.md`) |
+| **R185** | AQ15d Zelle 2 ist importfähig; das rote Tor-Signal war ein **Kalibrierungsfehler** — die Soll-Achsenzahl kommt aus dem Bestand, nicht aus einer Konstanten | heimatlos — Tor-Reparatur bei **C7** (`import-batch-aq15.mjs`) |
+| **R186** | Die Kreuzprüfer-Korrekturen an der Chat-Fassung sind Kanon — allen voran: »p2 create() 907 → 448 ms« war **falsch zugeschrieben** und ist gestrichen | `45_replay_r6_ledger.md#H14` |
+| **R187** | Prozess-Befunde der Welle 6b: (a) Route an eine laufende Bahn · (b) Rebase zieht Begründungen nach · (c) Selbsttest braucht seine ci.yml-Zeile · (d–f) Tamper/Bilder/Messungen · (g) K6 prüft fünf Status-Spalten am Artefakt | (a)/(b) `45_replay_r6_ledger.md#H13` · (g) `45_replay_r6_ledger.md#H14` · (c)–(f) heimatlos — Werkzeug- und Bahn-Aufträge im Schuld-Register |
+| **R188** | Die 93-Posten-Liste des Kreuzprüfers ist die »Filed, not acted on«-Liste der Welle; **Adresse ≠ Erledigung** | `docs/design/g1/paint/FILED_WELLE6B_2026-08-19.md` |
+| **R189** | Wareneingang 19.08.: zwölf Urteile sind Kanon; Importe folgen **nur** den Urteilen | heimatlos — Labor (`WARENEINGANG_2026-08-19.md`); die Importe stehen in den Passovern von C7/F8/D5 |
+| **R190** | Neun Nachbestellungen sind bootbar; AQ20 folgt nach S3s Maßen | heimatlos — Labor; je eine Kommissions-Datei |
+| **R191** | Welle 7 = K6 · C7 · F8 · S3 · A8 · D5 · E8 · W6 (+ H5, P7); Merge-Reihenfolge; **PB-Nummern nur K6** | `46_pitfall_register.md#R170/R191` (Abschnittskopf dieser Runde) |
+| **R192** | Die **3 : 1 fällt als Zielzahl** — L1s Kriterium (\|ΔL\| ≥ 50 ∨ (\|ΔL\| ≥ 30 ∧ ΔH ≥ 30°)) ist das Maß; damit entfällt Bahn L2 ersatzlos | heimatlos — Code-Gesetz in `letters.ts` (L1); Stand in der Tor-Tabelle |
+| **R193** | Boss: Gesicht und Blickrichtung prüft der Wareneingang; die **Lebensanzeige** ist Code und gehört H5 (die drei Kritzel-Schichten SIND die Skala) | heimatlos — Bau-Auftrag H5 |
+| **R194** | `nearPlaneTint` nimmt künftig **Helligkeit statt Farbe** (alle Kanäle gleicher Faktor) — damit ist der graue Keil (**D-270**) beantwortet | heimatlos — Code-Gesetz in `composition.ts` (A8); Register-Zeile in A8s Block |
+| **R195** | Die 49 geduldeten Zeilennummern-Verweise werden **schriftlich auf den 2026-11-30 verlängert**, Eigentümer K-Bahn; K6 hebt, was es ohnehin anfasst | `45_replay_r6_ledger.md#H6` (Amendment) · `scripts/check-registers.mjs#LINE_REF_UNTIL` |
+| **R196** | P6-Routen: Streifen + B15-Bilanz → D5 · B9 Farbband → Umfärb-Kommission · B10 → B6 · B14 Silhouetten → Kunst-Kommission · Merle-Roam + Regelbuch-Hub → P7 | `docs/design/g1/paint/FILED_WELLE6B_2026-08-19.md` (Abschnitt **P6**) |
+| **R197** | Wareneingang 20.08.: Tor-Vorbefunde, Importe **aq13b3 + aq13c3 → H5**, alles andere in die Welle 8 — die geschnittene Welle 7 wird **nicht** nachbeladen | heimatlos — Labor + Wellen-Zuschnitt |
+| **R198** | Wareneingang 20.08. (Endurteile) + **Rahmen-Regel 17**: ein vorgefundener Lieferordner ist ein Abbruch-Rest — umbenennen, nie stillschweigend ersetzen | heimatlos — Labor (`KOMMISSIONS_RAHMEN.md`, Regel 17) |
+| **R199** | Wareneingang 21.08.: AQ13C4 teilweise (Band → H5, Bühne → AQ13C5) · AS5E zurück → AS5F · AQ14E zurück → AQ14F · AQ17D war keine Lieferung | heimatlos — Labor (`WARENEINGANG_2026-08-21.md`) |
+| **R200** | Das Ring-Tor wird verschärft: Flachheits-Prüfung auch für `b\|a` **plus** eine absolute Bedingung — **ein Verhältnis-Tor ist blind gegen »beide Seiten sind gleich flach«** | heimatlos — Code-Gesetz, gebaut von **H5** im selben PR |
+| **R201** | Die datierten Ausnahmen (30.11., `SEAM_ALLOW` + `COHERENCE_WAIVERS`) binden sich an **AS5F** statt AS5d; die Register-Zeile nennt Pfad, Frist **und** Rundenzahl | heimatlos — `scripts/`-Konstanten in A8s geliehenen Blöcken; Register-Zeile in A8s Block |
+| **R202** | **Rahmen-Regel 18:** die Selbstauskunft einer Lieferung wird VOR der ersten Messung gelesen — `pass:false` oder ein `status` mit »INCOMPLETE« ist Rückweisung ohne Prüfung | heimatlos — Labor (`KOMMISSIONS_RAHMEN.md`, Regel 18) |
+| **R203** | Wareneingang 21.08. spät: AQ13C5 zurück → AQ13C6; zwei **gemessene** neue Ring-Gesetze (Adjazenz-Konsistenz, Vorzeichen-Gesetz) statt der falsch geeichten Zählschwellen | heimatlos — Labor + Bau-Auftrag **H5** (dieselben Fixturen wie R200) |
+
+**Die Zahlen dieses Verzeichnisses** *(selbst gemessen am 2026-08-21, nicht aus dem Auftrag
+übernommen)*: von den fünfzig Rulings hatten **sechs** vor dieser Runde überhaupt eine Erwähnung im
+Repo — R155, R158, R164, R165, R168 und R173 —, **vierundvierzig** hatten keine. Nach dieser Runde
+haben **23** einen Ort im Repo: **14** an einem `datei#anker` oder einer benannten Datei, **6** in
+der Tor-Tabelle unten (bei einem Tor-Entscheid IST die Tabellenzeile die Antwort), **3** geteilt
+(ein Teil hat eine Heimat, ein Teil nicht). **27 sind als heimatlos ausgewiesen** — je mit Grund
+und mit der Bahn, bei der sie wirken. Das ist **H15** in Zahlen: mehr als die Hälfte dieser
+Entscheidungen lebt im Code, im Kunst-Labor oder im Zuschnitt einer Welle, und sie hier zu
+wiederholen wäre die zweite Wahrheit, nicht die Ordnung. *(Der Auftrag nannte vier statt sechs
+vorgefundene Orte; R165 und R173 kamen mit dem Register-Pre-Seed der Welle 7 dazu und wurden hier
+nachgemessen.)*
 
 ## Anhang · Asset-Bedarfs-Kandidaten (R5 schreibt die Prompts; nichts davon blockiert)
 
@@ -485,7 +642,16 @@ Motten-Schwarm-Zellen (B10) · Allianz-/Versammlungs-Visuals (D7) · Naive-Desig
 Kartenhaut (G2, nach Richtungs-Entscheid) · Boss-Drop-Miniaturen (F4) ·
 „Klappernder-Deckel"-Zustandszellen u. ä. Karten-Fiktion-in-Welt-Zellen (B12).
 
-## Anhang · Offene Kanon-Widersprüche (K5, 2026-08-18 — dokumentiert, nicht entschieden)
+## Anhang · Kanon-Widersprüche (K5, 2026-08-18 dokumentiert — 2026-08-21 entschieden und abgearbeitet)
+
+> **★ STAND 2026-08-21 (K6).** Der eine Widerspruch dieses Anhangs ist **entschieden** (B5,
+> 2026-08-19, Ruling R179, Schuld D-422: **ch01 bekommt die Faust nicht zurück**) und zu drei
+> Vierteln abgearbeitet. Von den vier zweiten Händen tragen **zwei** jetzt den heutigen Stand:
+> `docs/handover/31_the_painted_book.md` (die Tabellenzeile steht auf **ch02**) und die Replay-Docs
+> 35/37/38 (Wortlaut behalten — datierte Protokolle werden nicht umgeschrieben —, dafür je eine
+> Kopfnotiz, die hierher zeigt). **Zwei bleiben offen und gehören der Audio-Bahn S3:**
+> `AUDIO_SPINE_CH01.md` (sieben Zeilen) und `docs/audio/prompts.ch01.json` (vier `unlockedIn`).
+> Der Text unten bleibt als Fassung des Tages stehen, in der der Widerspruch noch offen war.
 
 - **Die Faust in ch01: das Gebaute und der Kanon sind einig, vier zweite Hände sind es nicht.**
   *(Ruling R141, Befund S1; entschieden wird in Lane **B5**, nicht hier.)* `ch01.level.json`
@@ -508,20 +674,37 @@ Engagement-Modus-Richtung~~ (entschieden 2026-08-15, R52) · (aus #249
 fortbestehend: F22/G10-Klammer · 3 zählbare Räder · Timeout-Kosten · E6/M5/S4-Uhren ·
 Boss-Memory-Uhr · Lehrerin-Kanon + Boss-Swap-Vetos).
 
-**★ Stand der nummerierten Tore am 2026-08-18 (K5, aus dem BOOT-SHEET nachgeführt — hier steht,
-was offen ist; die Frage im Wortlaut steht dort):**
+**★★ Stand der Tore am 2026-08-21 (K6, aus den Rulings R154–R203 nachgeführt — hier steht, WAS
+offen ist und welches Ruling ein Tor geschlossen hat; die Frage im Wortlaut steht im BOOT-SHEET).**
+Bei einem Tor-Entscheid ist diese Tabellenzeile die **Antwort** — deshalb ist sie die Heimat der
+Rulings R156 · R157 · R159 · R173 · R174 · R176 (siehe Verzeichnis oben). Alle Geschmacks-Tore
+bleiben **umkehrbar**: ein Satz genügt, und die betroffene Bahn zieht nach.
 
-| Tor | Worum es geht | Stand |
+| Tor | Worum es geht | Stand am 2026-08-21 |
 |---|---|---|
-| **T6** | Kartenkante: Tuschekante lassen · Wachskante einschalten · Budget ins Karten-Material (Empf. das Dritte) | **offen** — AQ17 startet erst danach (G3) |
-| **T7** | Reihenfolge der fünf Regel-Seiten | **offen** — Schweigen heißt: die heutige bleibt |
-| **T8** | wo die stillen Anker stehen | **✓ beantwortet und gebaut** (p1 near c43 · p2 far c58 · p3 near c29; doc 44 §4 ch01 (a)) |
-| **T9** | C4-Buch: rot-flach jetzt einbauen oder Bestand blau bis AQ12d2? | **offen**, Empf. Bestand — hinfällig, sobald AQ12d2 besteht |
-| **T10** | p3-Flieger (D-300): 80 px hinter der Presse gegen eine Schranke von 346 | **offen** (R136), Empf. versetzen in Lane B5; das p3-Band wird danach neu aufgenommen |
-| **T11** | ElevenLabs-Lizenz »For Individual Use Only« bei ~110 Kindern | **offen** (R141), Empf. weiter, Plan beim nächsten Abo-Wechsel; die echte Schranke ist die 62-Minuten-Monatsgrenze, nicht das Guthaben |
-| **T12** | Hörbank hören (~20 min) | **offen** — blockiert nichts; ohne Antwort gilt S1s Vorwahl |
-| **T13** | ein Dach-Schalter für allen Ton | **offen** (R141), Empf. ja, gebaut von Lane S2 — die zwei internen Schlüssel bleiben |
-| — | der graue Keil auf `07.29.42` (**D-270**) | **offen** — braucht Kokis Finger, keine weitere Analyse (dass er kein Rampen-Blatt ist, hat E6 bewiesen) |
+| **T6** | Kartenkante: Tuschekante lassen · Wachskante einschalten · Budget ins Karten-Material | **ZU (R155): das Dritte** — die Kante bleibt ganz, das Geld geht ins gemalte Karten-Material. AQ17 ist geliefert, Papier + Knöpfe sind importiert (D4); Kante und Plakette liefen über AQ17b/AQ17C |
+| **T7** | Reihenfolge der fünf Regel-Seiten | **ZU (R156): die heutige bleibt.** Schweigen war die Antwort — eine andere Reihenfolge ist jederzeit eine Zeile |
+| **T8** | wo die stillen Anker stehen | **ZU (R44/R83/R135), gebaut** — p1 `near` c43 · p2 `near` c23 · p3 `near` c29. *(R179: für p2 ist R135/T8 überschrieben — der Anker steht jetzt vor der Tinte, Rückweg 35,3 → 14,3 Spalten.)* |
+| **T9** | C4-Buch: rot-flach jetzt einbauen oder Bestand blau bis zur bestandenen Lieferung? | **ZU (R157): Bestand blau bis zur Quote — und die Quote ist bestanden.** AQ12d3 liefert das rote Buch (Struktur 90,4 %); der Import läuft in der Farb-Bahn **C7**, zusammen mit den vier Buch-Kartenzeilen |
+| **T10** | p3-Flieger (D-300): 80 px hinter der Presse gegen eine Schranke von 346 | **ZU (R158), gebaut (B5, 19.08.)** — `p3-heft` steht auf (23,19), 24 Spalten = 384 px vor der Presse. *(R179: umgekehrt zum Auftrag gebaut — hinter der Presse hat der Turnsaal die 22 Spalten nicht; akzeptiert.)* |
+| **T11** | ElevenLabs-Lizenz »For Individual Use Only« bei ~110 Kindern | **ZU (R158): weiter**, Plan-Wechsel bei der nächsten Rechnung. **Bleibt bei Koki:** der Plan-Wechsel selbst und die Schlüssel-Rotation |
+| **T12** | Hörbank hören (~20 min) | **ZU (R156): S1s Vorwahl gilt, bis Koki hört.** Seit #325 ist das Spiel selbst die Hörprobe — siehe Hörprobe unten |
+| **T13** | ein Dach-Schalter für allen Ton | **ZU (R156): ja**, gebaut von S2 — 1× still · 2× nur Musik weg · 3× alles an; er schaltet game-feel mit |
+| — | der graue Keil auf `07.29.42` (**D-270**) | **ZU (R159 → R194).** P6 hat die Ursache gefunden: `nearPlaneTint` nimmt **Farbe** statt Helligkeit (Rot verliert am meisten, die Kruste drei Viertel ihrer Farbkraft — Formel sagt 12,2 voraus, Kokis Bild misst 14,2). **A8** baut den Ton farbneutral |
+
+**★ Was WIRKLICH noch auf dich wartet — fünf Fragen, je eine Empfehlung** *(Stand 2026-08-21; die
+ersten vier stehen im BOOT-SHEET im Wortlaut, die fünfte ist neu)*:
+
+| Frage | Empfehlung | Woran es hängt |
+|---|---|---|
+| **Der pinke Boss-Rahmen** (R173): Rahmen in der p4-Holzfamilie und Lesbarkeit aus Dunkel/Kontur — oder Pink als bewusstes Fremdsignal des Bosses? | **p4-Familie + Dunkel/Kontur.** Die Bestellung war richtig, die Lieferung hatte es nicht geschafft; AQ13B3 hat inzwischen so geliefert und ist importfähig | Bild im H4-Report-Ordner; blockiert nichts |
+| **Die Hörprobe** (R176): iPad, `/play/1/buch` — falsche Antwort = EIN weicher, nicht absteigender Ton genau einmal; richtige = Fanfare ohne zweiten Klang | 30 Sekunden hören. Maschinell bewiesen ist es (`grade-audio.test.ts`), **gehört** hat es niemand | blockiert nichts |
+| **Das Heft an der neuen Stelle** (R186h): fühlt sich der Korridor zu voll an? | so lassen — die Zahl stimmt jetzt (24 Spalten), das Gefühl ist deins | Bild im B5-Report-Ordner |
+| **Die Regel-Seite auf dem Weg** (R174) | **lassen** — eine Lehrseite gehört auf den Weg; eine Zeile zurück, wenn du die Kletterei willst. Die Glas-Streifen IM Blatt sind Kunst-Schuld (**D-444** → AQ19) | blockiert nichts |
+| **★ NEU · Das 30.11.-Risiko** (R201): drei datierte Ausnahmen hängen an einer Massen-Kit-Lieferung, die nach c/d/e **drei Runden ohne Import** ist | zur Kenntnis — es ist ein Terminrisiko, kein Formfehler. Fällt AS5F auch, braucht es entweder eine vierte Runde oder einen neuen Beschluss | `SEAM_ALLOW` · `COHERENCE_WAIVERS` (A8) |
+
+*(Die Zeilennummern-Ausnahme desselben Datums ist **nicht** in dieser Liste: sie ist mit **R195**
+entschieden und in H6 schriftlich verlängert — du ratifizierst sie mit dem K6-Merge.)*
 
 **Neu aus Welle 4 (2026-08-15) — fünf Tore, Empfehlungen im BOOT-SHEET:** ~~R41 Farb-Palette
 (die Ziel-Palette für die Codex-Bestellung AQ12: Buch rot · Uhu-Stick orange · Füllfeder

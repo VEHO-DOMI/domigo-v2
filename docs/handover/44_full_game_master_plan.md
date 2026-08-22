@@ -286,7 +286,15 @@ changes from "exactly 6 cages" to: **≥1 cage; exactly one `captive:"classmate"
 declared freeable reachable; every HUD denominator counted from the world** (the R3b
 letter-honesty pattern, already live for the HUD). This resolves the /6-vs-7 drift: the law
 counted phases only while the world held an arena cage — under the new law the world's count
-IS the truth wherever it includes the arena. Ch01's 7 cages restage per its dossier.
+IS the truth wherever it includes the arena. ~~Ch01's 7 cages restage per its dossier.~~
+**Ch01 has FIVE cages** — four `satchel` and one `pencilcase`, the fifth standing INSIDE the
+arena (`p4-cage5`); plus one classmate and six drained things that carry no cage at all.
+*(Nachgezogen 2026-08-21, K6, Schuld **D-427**; am Level ausgezählt — `p1-cage1` · `p2-cage-tablet`
+· `p2-cage-merle` · `p3-cage4` · `p4-cage5`. Vorher standen in drei Dokumenten drei verschiedene
+Zahlen und keine traf: dieses Blatt sagte sieben, `ch01.md` erzählte sechs plus den Personen-Käfig,
+die Schuld-Zeile D-279 zählte vier. Die Level-Bahn hat `ch01.md` §4/§5/§8 am 2026-08-19 auf die
+Fünf gestellt (**D-279**); diese Zeile war der Rest. Wer vier zählt, hat den Arena-Käfig vergessen —
+er steht nicht in `phases`, sondern unter `arena`.)*
 
 ### 2.4 Palette variation inside STYLE_PAINT_V1 (amends doc 31 §2 register note)
 The register (gouache storybook, limbless mascots, three-value depth, RS-2 sizes) is
@@ -624,10 +632,18 @@ ch01–06 sheets are honored as pointers; where a dossier overrides them, it say
   > ("ch01-mid/ch02 (Faust)" ×3, "ch01-mid (erstes powerup-Entity)" ×1);
   > **(4)** docs 35/37/38, the replay records that describe "a cage the fist can open" — those
   > are history and may stay, but they are where the phrase comes from.
-  > **This footnote documents the split; it does not decide it.** The open question is whether
+  > **★ DECIDED 2026-08-19 (B5, level lane — debt D-422): ch01 does NOT get the fist back.**
+  > The built world, the engine and this plan already agreed; the four second-hand places were
+  > the only dissent, so the fist falls, not the canon. **Corrected 2026-08-21 (K6, debt D-445):**
+  > **(1)** doc 31's table row now reads `ch02` · **(4)** docs 35/37/38 keep their wording — they
+  > are dated build and replay records, and rewriting a record is not correcting a claim — but each
+  > now carries a header note that points here. Still open and owned by the audio lane **S3**:
+  > **(2)** `AUDIO_SPINE_CH01.md` and **(3)** `docs/audio/prompts.ch01.json`.
+  > *(The paragraph below is K5's original framing, kept because it names what the alternative
+  > would have cost.)* The question was whether
   > ch01 ever gets a mid-chapter grant back (then the level needs a `powerup` entity and the
   > cage hint needs its verb) or whether the four places above are corrected to ch02 — and
-  > that is a level decision, taken in **B5**, not a canon-round edit. *(S1 filed it; the
+  > that was a level decision, taken in **B5**, not a canon-round edit. *(S1 filed it; the
   > passover that ordered this round had it the other way round — "doc 44 says ch01-mid" —
   > which is why the location list above is measured rather than repeated.)*
 - **Interlude:** opening — the fall into the book, alone; closing — Merle freed, the first

@@ -193,6 +193,13 @@ Keine eigene Nummer — dieselbe Falle, und dass sie in ihrem eigenen Register-E
 der Beweis, dass Vorsatz hier nicht reicht: Ausgabe in eine Datei, Exit-Code direkt hinter dem
 Befehl.)
 
+**★ Siebter Vorfall (H4, 2026-08-19):** `npx vitest` gibt es in diesem Baum nicht (`pnpm exec
+vitest` bzw. `pnpm -r run test`) — und der Fehlschlag kam durch die Pipe wieder als `EXIT=0`
+zurück. Keine eigene Nummer. Bemerkenswert ist nur noch, wie gleichförmig die Vorfälle klingen:
+wer seinen Fall gegen diesen Eintrag hält, sucht das **Erkennungsmerkmal** — steht zwischen dem
+Befehl und dem gelesenen Exit-Code irgendetwas, das selbst gelingen kann? Dann ist es dieser
+Eintrag.
+
 **PB-22 · Frag die laufende Klasse, ob sie deinen Code kennt — glaub nicht der URL.**
 *(H1 Teil 3, 2026-08-14; früher P-65)* Der Live-Lauf sprach zuerst mit einem `next dev`
 aus dem HAUPT-Klon, der auf Port 3000 stehen geblieben war — fremder, alter Code. Jede
@@ -695,6 +702,12 @@ grün waren**, darunter fremde, die in CI laufen. Dreimal in einem Monat, und di
 gefährlichsten Richtung: eine rote Lampe, deren Ursache im Aufruf liegt, kostet Vertrauen in die
 Tore selbst. Keine eigene Nummer.)
 
+**★ Vierter Vorfall (B5, 2026-08-19):** dieselbe Tor-Schleife, dieselbe Richtung — `node
+scripts/"check-x.mjs --selftest"` als EIN Dateiname, **alle 15 Selbsttests meldeten Exit 1**, und
+die Liste hätte als »Tore rot« ins Protokoll gehen können. Keine eigene Nummer. Der Zusatz dieses
+Vorfalls ist ein Handgriff: **die erste Zeile jeder Schleife lesen, bevor man ihr glaubt** — eine
+Wortsplitting-Falle sieht in Zeile 1 schon anders aus als ein echter Befund.
+
 **PB-57 · Ein Kritiker-Urteil über ein Bild ist ein Urteil über die BILDAUSWAHL.**
 *(B4, 2026-08-15.)* Zwei unabhängige Kritiker sagten übereinstimmend »hier gibt es keinen
 Sprung« — und beide hatten recht, über die Kameraposition, nicht über das Level. Der
@@ -801,6 +814,11 @@ aufgeschriebene Hausregel hat es nicht verhindert. Deshalb hat die Datei jetzt e
 Wächter. Die eigentliche Lehre steckt im ersten Anlauf dieses Wächters und steht als
 eigener Eintrag **PB-86**: er lag in der Suite, die das Stylesheet IMPORTIERT, und war dort
 nutzlos.
+
+**★ Weiterer Vorfall (D4, 2026-08-19):** `` `check-paint-art` `` in einem Kommentar schnitt die
+Datei mitten durch, und der Fehler zeigte auf eine ganz andere Zeile (»Expected ; but found
+check«). Keine eigene Nummer. *Rezept unverändert:* in dieser Datei ausschließlich »…« zitieren,
+nie Backticks.
 
 **PB-69 · Ein verborgener Tab kann einen Fehler VERSTECKEN, nicht nur eine Messung
 verfälschen.** *(D3, 2026-08-15.)* Im fernsteuerbaren Tab stand die Karte in ihrer
@@ -1244,3 +1262,260 @@ Rechnung sollte im CI-Tor laufen. Eine FFT liefert dasselbe Ergebnis (nachgemess
 Abweichung) in einem Bruchteil. *Regel:* bei einem Tor ist Geschwindigkeit eine
 **Korrektheitsfrage** — was zu lange braucht, wird abgeschaltet, und ein abgeschaltetes Tor ist
 kein Tor. (Familie **PB-41**: Abdeckung ist die Zahl der Anschlüsse, die wirklich laufen.)
+
+## R5-Welle 6b · aus den sechs Reports der Welle (aufgenommen von K6, 2026-08-21)
+
+_**Ruling R170/R191** hat diese Vergabe an K6 gegeben. Dreißig Wortlaute kamen aus sechs Reports
+(C6 5 · D4 5 · H4 4 · B5 4 · E7 5 · W5 7). Ein **blinder Klassierer** — er sah die 115 bestehenden
+Einträge und die 30 Wortlaute, nicht meine Zuordnung — hat sie gegen den Bestand gehalten.
+**Drei sind Doppelungen** und haben eine Verweiszeile am alten Eintrag statt einer eigenen Adresse
+bekommen (R70/R111): sie stehen bei PB-8, PB-56 und PB-68. **Drei weitere tragen untereinander
+dasselbe Gesetz** und teilen sich hier eine Nummer (PB-121). **Sieben sind Verschärfungen** — die
+alte Falle bleibt, der Kandidat fügt eine Bedingung hinzu, die sie nicht abdeckte; sie bekommen
+eine eigene Nummer und nennen ihre Familie. Bleiben 25 Adressen aus den Reports, dazu **sechs
+Lehren aus der Kreuzprüfung und den zwei Wareneingängen** (PB-141 … PB-146), deren Wortlaut aus
+dem Architekten-Protokoll im `BOOT-SHEET.md` stammt — das Labor selbst lag auf dem Gerät dieser
+Sitzung in einem älteren Stand und war nicht lesbar (im Report ausgewiesen)._
+
+**PB-116 · Eine Abnahme, die die Maske des Lieferanten benutzt, kann den Fehler IN dieser Maske
+per Bauart nicht sehen.** *(C6, 2026-08-19.)* Codex' Lieferschein meldete für beide Pennal-Zellen
+»0 Fremdpixel im Fenster« und »Stabpixel Bestand → neu identisch« — beides wahr und beides relativ
+zu SEINER Öffnung. Lag die Öffnung zu weit, zählte jede abgeschnittene Stabspitze als Fenster und
+fiel aus der Rechnung heraus; drei Gitterstäbe endeten frei in der Luft, und die Zahlen blieben
+grün. *Regel:* eine Abnahme stellt ihre **Bezugsfläche selbst her** — hier aus dem Diff gegen den
+Bestand (was verschwunden ist, WAR Fenster). Wer mit dem Lineal des Geprüften misst, misst dessen
+Selbstbild. (Verwandt, aber nicht dasselbe: **PB-58** misst das falsche Instrument, hier ist der
+Prüfrahmen selbst die Fehlerquelle.)
+
+**PB-117 · »Alle Stäbe ununterbrochen« sind ZWEI verschiedene Fragen.** *(C6, 2026-08-19.)*
+»Innerhalb der Öffnung lückenlos« ist etwas anderes als »von Kante zu Kante durchlaufend«. Die
+Lieferung erfüllte die erste Frage vollständig und riss an der zweiten: die Stabfüße waren
+abgeschnitten, aber eben außerhalb des Fensters, das gemessen wurde. *Regel:* eine
+Anforderungs-Formel, die eine Ausdehnung nicht nennt, ist zwei Formeln — bei einer Bestellung
+gehört die Bezugsstrecke ausgeschrieben in den Text, nicht in die Vorstellung des Lesers.
+
+**PB-118 · Eine achsenparallele Projektion ist das falsche Instrument für ein perspektivisch
+gemaltes Gitter.** *(C6, 2026-08-19.)* Bei 50 % Schwelle zerfielen die geneigten Querstäbe in
+Scheinbänder; erst 25 % der Öffnungsausdehnung findet einen geneigten Stab als **eine** Achse.
+*Regel:* eine Schwelle wird am Material geeicht, bevor sie urteilt — sonst misst das Werkzeug
+Bänder, die es nicht gibt, und die Zahl sieht dabei präzise aus. (Familie **PB-116**: dort ist die
+Bezugsfläche geraten, hier die Auflösung.)
+
+**PB-119 · Ein Wareneingangs-Urteil ist ein Messwert, keine Erlaubnis.** *(C6, 2026-08-19.)* Die
+Freigabe »importfähig« war ehrlich gemessen und trotzdem falsch; der Auftrag verlangte zusätzlich
+einen eigenen Prüfer in zwei Größen. Wer die Freigabe als erledigt behandelt hätte, hätte ein
+sichtbar kaputtes Gitter ausgeliefert. *Regel:* eine Freigabe sagt, was jemand gemessen hat — sie
+sagt nicht, dass die eigene Abnahme entfällt. (Familie **PB-90**: eine Adresse ist keine
+Erledigung; hier: eine Messung ist keine Autorisierung.)
+
+**PB-120 · Zwei Prüfgrößen können sich auch EINIG sein — und dann ist die Sache entschieden.**
+*(C6, 2026-08-19; Verschärfung von **PB-91**.)* PB-91 sagt, ein Blatt braucht zwei Prüfgrößen,
+weil sie auseinandergehen können: beim Buch (C5/**D-380**) lehnte das Handwerk ab und die
+Kartengröße sah den Mangel nicht mehr. Hier stimmten beide überein — Handwerksgröße 3× und
+Spielgröße (Käfig 34 Welt-px × Zoom 3, danach 4× nachvergrößert) nannten unabhängig denselben frei
+endenden Stab. *Neu an dieser Zeile:* stimmen die zwei Größen überein, ist der Befund **über** der
+Wahrnehmungsschwelle und die Sache ist entschieden — es braucht keine Geschmacksfrage nach oben.
+Der Doppelbefund spart die Eskalation, er verdoppelt sie nicht.
+
+**PB-121 · Ein textscannender Wächter kann einen Kommentar nicht von echtem Code unterscheiden.**
+*(DREI Vorfälle in einer Welle: D4 · W5 · W5, 2026-08-19.)* **(1)** `overlay-css.test.ts` sucht
+nach einer zweiten Deklaration eines Look-Knopfes (`--pb-ink:`) außerhalb der Karte und fand dabei
+PROSA: zwei Kommentare (»--pb-chip-r: 18/9/20/11«, »statt --pb-ink: zwei Kanten«) machten den Test
+rot, obwohl im Code nichts deklariert war. **(2)** `art-recompress --selftest` prüft, dass das
+Skript nicht `pgrep -f` ruft — und wurde rot am **Kommentar**, der erklärt, warum `-f` falsch ist.
+**(3)** `check-ci-gates` liest `ci.yml` **zeilenweise** und hält jede Zeile mit `--selftest` für
+eine Selbsttest-Zeile; Ordnungs-Kommentare mit dem Text »KEIN `--selftest`« legten dadurch **vier
+Tore** still (sie galten als »läuft nie an einer echten Datei«). *Regel:* in allen drei Fällen
+hatte der Wächter recht und die PROSA wurde umgeschrieben, nie das Gesetz — aber wer ein Tor
+baut, das Quelltext liest, prüft den **Aufruf** (`/exec\w*Sync\(\s*"pgrep -f/`) statt der Datei
+als Text, und wer Kommentare schreibt, nennt einen verbotenen Token ohne seine Syntax
+(»--pb-chip-r, die 18/9/20/11«). (Verwandt, aber anders: **PB-89** verbietet ein WORT als nackte
+Teilkette, **PB-68** bricht die Quotierung; hier verwechselt der Wächter Kommentar und Code.)
+
+**PB-122 · Zwei Vergleichsbilder gehören auf denselben Maßstab, sonst beurteilt der Kritiker die
+Kamera.** *(D4, 2026-08-19.)* Zwei Bank-Ausschnitte hatten 3,17× und 3,00×; ein blinder Prüfer las
+daraus ein »überzeugenderes Eselsohr« in der einen Fassung, wo nur der Maßstab anders war. *Regel:*
+in einem blinden Seite-an-Seite ist jede Ungleichheit außer der geprüften ein Tell — Maßstab,
+Zuschnitt, Kompression und Reihenfolge werden gleichgezogen, bevor gefragt wird.
+
+**PB-123 · Ein Prop, das durch eine Zwischen-Komponente muss, ist ZWEI Prop-Deklarationen.**
+*(D4, 2026-08-19; Verschärfung von **PB-79**.)* `PaintGame` reicht die Wertung nicht direkt an
+`CardHost`, sondern über `Overlay` — und `Overlay` bekommt ein strukturell getipptes Bündel, in dem
+ein vergessenes PFLICHT-Prop **kein Typfehler** ist, sondern zur Laufzeit »ist keine Funktion«.
+PB-79 kennt das stille optionale Feld; *neu ist die Zwischenstation:* die Weiterreich-Zeile ist ein
+zweiter Ort, den der Typprüfer nicht zusammenführt, und der Preis ist ein Absturz statt eines
+`undefined`. *Regel:* Pflicht-Props durch eine Zwischenstation werden **optional mit Vorgabe**
+deklariert, wie `onBack` es seit J1-B vormacht.
+
+**PB-124 · Eine Register-Zeile ist keine Messung — sie ist eine Behauptung.** *(D4, 2026-08-19.)*
+D-362 (»`--pb-paper-lit` gestrichen«) stand zwanzig Minuten als Tatsache im Schulden-Register,
+bevor der Token wirklich gestrichen war; alle Tore waren grün, und **nichts** hätte es gemeldet.
+Aufgefallen ist es beim eigenen Nachlesen der Definition of Done. *Regel:* jede Register-Zeile, die
+eine Änderung BEHAUPTET, bekommt vor dem PR einen `grep` als Gegenprobe — dieselbe Regel, die für
+Fortschrittsmeldungen gilt, gilt für Registerzeilen. *(Der Architekt hat dieselbe Lehre am 19.08.
+als **P-68** in die Methode gehoben; hier steht sie, weil dieses Register die Bahn ist, die sie
+bezahlt hat, und weil eine Register-Regel dort stehen muss, wo Register geführt werden.)*
+
+**PB-125 · Eine Kennzahl, die ein Handwerk beweisen soll, wird von ihrem Zerrbild maximiert.**
+*(H4, 2026-08-19.)* `MIN_TEXTURE` sollte »gemalt« beweisen — und wird von **Rauschen**
+übererfüllt: die zurückgewiesene Tafel bestand die Textur-Zahl mit Salz-und-Pfeffer-Körnung, wo ein
+gemaltes Blatt 0,109–0,127 misst. *Regel:* wer eine Qualitätszahl einführt, baut im selben Zug den
+Selbsttest-Fall, **in dem die Zahl besteht und die Sache kaputt ist**. Eine Zahl ohne ihr Zerrbild
+ist eine Einladung. (Familie **PB-42**: ein Tamper trifft die Klasse, in der richtig und
+plausibel-falsch auseinandergehen.)
+
+**PB-126 · Ein Prüfer, der auf einer geratenen Maske steht, misst nichts.** *(H4, 2026-08-19.)*
+Das aus dem Bestand gerechnete Schiefer-Fenster lag **58 px** daneben, weil die Lieferung eine
+andere Zell-Konvention benutzt; ungeprüft hätte die Abnahme 20 Fehlbefunde erzeugt und eine
+brauchbare Lieferung zurückgewiesen. *Regel:* vor dem ersten Urteil das Prüfstück gegen das
+prüfen, was es zeigen soll — die Konvention der Lieferung ist eine **Messung**, keine Annahme.
+Seither steht die Zell-Konvention (»der Importeur schneidet ZENTRIERT«) in jeder Zellen-Bestellung
+(**D-354**, Ruling R182).
+
+**PB-127 · Zwei unabhängige Zahlen für dieselbe Größe sind billiger als eine.** *(H4, 2026-08-19.)*
+Alle drei eigenen Messfehler dieser Sitzung fielen auf, weil die eigene Zahl von Codex' Zahl
+abwich — nicht, weil jemand nachgerechnet hätte. *Regel:* **eine Abweichung ist eine Frage, kein
+Befund** — und sie ist der billigste Fehlerfang, den es gibt. Wer nur eine Zahl hat, hat keinen.
+(Anders als **PB-92**, das den A/B-Vergleich im selben Lauf verlangt: hier geht es um zwei
+unabhängige RECHENWEGE zur selben Größe.)
+
+**PB-128 · Der Dev-Server hält die Level-Datei fest.** *(B5, 2026-08-19.)* Zwei ganze Bildreihen
+zeigten die ALTE Zelle, obwohl die Datei die neue trug; erst ein Neustart des Servers zeigte die
+Änderung. *Regel:* nach jeder Level-Änderung den Dev-Server neu starten **und** die Zelle aus der
+Server-Antwort gegenlesen, bevor ein Bild als Beweis gilt. (**PB-65** in neuem Gewand: nie der
+Oberfläche glauben, auch nicht der eigenen.) Das Rezept dafür ist Werkzeug-Schuld **D-443**.
+
+**PB-129 · Eine Sonde kann am Ereignis vorbeimessen, das sie sucht.** *(B5, 2026-08-19;
+Verschärfung von **PB-82**.)* Die erste Begegnungs-Sonde lauschte auf `encounter` und meldete
+»keine Begegnung« — dabei wird `encounter` im Sim in eine Karten-Anfrage übersetzt und verlässt
+ihn nie. PB-82 kennt die Null aus einer selbst zusammengesteckten Prüfung; *neu ist die
+Übersetzung:* das Ereignis existiert, trägt aber unterwegs einen anderen Namen. Sichtbar wurde es
+an einem **Widerspruch** — das Wesen stand im selben Lauf auf »freut sich«, was es nur nach einer
+gelösten Karte tut. *Regel:* wenn eine Sonde »nichts« meldet, den Zustand suchen, den ein Treffer
+hinterlassen HÄTTE.
+
+**PB-130 · Eine Positionsänderung kann eine Karte still entfernen — das Beweisband ist der Ort, an
+dem man es sieht.** *(B5, 2026-08-19.)* Der Flieger auf der ersten Zielzelle bestand jedes Gesetz
+und jedes Tor; nur die Erwartungszeile des p3-Bandes fiel von zwei gelösten Karten auf eine. *Regel:*
+nach dem Versetzen eines Kontakt-Wesens nicht nur die Gesetze prüfen, sondern die **Karten-Bilanz
+des Bandes** — die Gesetze beschreiben die Welt, das Band beschreibt den Durchlauf.
+
+**PB-131 · Ein Vergleich, dessen eigener Rauschpegel nicht gemessen ist, produziert Befunde aus dem
+Nichts.** *(E7, 2026-08-19; Verschärfung von **PB-92**.)* Der Anzeigelisten-Vergleich meldete
+**806 von 1269** Objekten als abweichend; derselbe Bau gegen sich selbst gemessen zeigte, dass
+**791** davon eine je Lauf neu erfundene UUID waren. PB-92 verlangt A/B im selben Lauf für
+Perf-Zahlen; *neu ist die Reichweite:* die Regel gilt für **jedes** Diff-Werkzeug — vor jedem A/B
+eine Kontrolle **A gegen A**, sonst ist der Ausgabewert die Summe aus Befund und Eigenrauschen.
+
+**PB-132 · Eine Aufschlüsselung, die nach dem Schrittnamen allein schlüsselt, verliert Zeilen
+lautlos.** *(E7, 2026-08-19.)* `terrain` und `props` haben beide ein Kind `· gitter`; das eine
+schluckte das andere, und in der Tabelle fehlte nichts **Sichtbares** — die Summe stimmte weiter.
+*Regel:* Schlüssel = Eltern **plus** Name. Ein Verlust, den keine Zeile anzeigt, ist der teuerste,
+weil niemand nach ihm sucht.
+
+**PB-133 · Eine Konstante, die nach ihrer Benutzung deklariert wird, überlebt jeden Selbsttest.**
+*(E7, 2026-08-19.)* `CDP_TIMEOUT_DEFAULT_MS` stand 100 Zeilen unter seiner Verwendung; `node
+--check` ist dafür blind, und der Selbsttest beendet sich vorher. Nur ein **echter Lauf** hätte es
+gefunden. *Regel:* ein Selbsttest, der den Pfad nicht betritt, auf dem die Konstante gelesen wird,
+beweist über sie nichts — Syntaxprüfung ist keine Ausführung.
+
+**PB-134 · Ein behobener Befund ist nicht dieselbe Frage wie ein gemessener.** *(E7, 2026-08-19.)*
+Der teuerste Posten der ganzen Welle stand seit dem 2026-08-14 in einem Kommentar, den **zwei**
+Sitzungen gelesen haben — als **Speicher**-Befund. Dass derselbe Mechanismus (der
+TileSprite-Konstruktor) auch die **Bauzeit** dominiert, hat niemand gemessen, weil niemand
+`create()` fein genug aufgeschlüsselt hatte. *Regel:* »behoben« gilt für die Dimension, in der
+gemessen wurde. Wer einen Mechanismus repariert, notiert, **welche** Kosten er gemessen hat — und
+welche nicht.
+
+**PB-135 · Jede Änderung der Leinwand-Maße rastert die Kantenglättung anders.** *(E7, 2026-08-19.)*
+Weder ein Zuschnitt in beiden Achsen noch einer nur in der Höhe kam bildgleich zurück; nur ein
+Blech mit **unveränderten** Maßen ist auf dem Bildpunkt-Zähler identisch. *Regel:* Bildgleichheit
+ist gegenüber jeder Dimensionsänderung fragil — wer ein Blatt zuschneidet, kann keine
+Bildgleichheit versprechen, sondern muss den Unterschied beziffern (Deckkraft, Punktzahl, Fläche).
+
+**PB-136 · Der eigene abgewürgte Browser hängt den nächsten Lauf auf.** *(W5, 2026-08-19;
+Verschärfung von **PB-93**, dritte Gestalt von **D-339**.)* Ein `shoot-world`-Lauf lief in ein
+7-Minuten-Zeitlimit; sein Chrome (Profil `shoot-world-chrome-…`, Fernsteuer-Port 9380) lief weiter,
+und der Folgelauf kam nie zurück. Die Familie hat damit drei Gestalten: **(1)** ein fremder Browser
+vom Vortag · **(2)** der eigene nicht beendete `oxipng` · **(3)** der eigene abgewürgte Browser aus
+**derselben** Sitzung. *Regel:* nach jedem Abbruch `ps ax | grep "[s]hoot-world-chrome"` lesen,
+**melden**, dann töten — und erst danach neu messen. Was PB-93 als Mess-VERFÄLSCHUNG kennt, ist hier
+ein **Hänger**: die Last wird nicht falsch gemessen, sie blockiert.
+
+**PB-137 · Ein Tamper darf nur EINE Größe bewegen.** *(W5, 2026-08-19; Verschärfung von **PB-42**.)*
+Der Korridor-Fall von `check-sheet-colours` hellte ein Blatt **multiplikativ** auf — was die
+Farbzahl mitstaucht (6 349 → 1 590), also wurde der Fall am **falschen** Gesetz rot und hätte über
+den Korridor nichts bewiesen. Ein reiner **Versatz** bewegt die Helligkeit und lässt die Farbzahl
+weitgehend stehen. PB-42 kennt den Tamper, der am falschen Gesetz rot wird; *neu ist die Vorschrift:*
+ein Tamper-Fall bewegt genau **eine** Größe, sonst ist sein rotes Licht mehrdeutig. Gefunden hat es
+der Selbsttest, nicht ein Review.
+
+**PB-138 · Ein Bestätigungs-Signal muss an die Sache gebunden sein, nicht an die Bestellung.**
+*(W5, 2026-08-19.)* `data-karte` stand an der Bühne, sobald eine Karte namentlich **gewählt** war —
+auch auf den elf Zeremonien-Panels, die gar keine Karte zeigen. `--only goal --card obj-book.r1`
+hätte Exit 0 gemeldet und ein Bild geschrieben, dessen **Dateiname** eine Karte trägt, die darauf
+nicht zu sehen ist. *Regel:* ein Vertrag, der »ja« sagen kann, ohne die Frage verstanden zu haben,
+ist kein Vertrag — das Signal wird an das gebunden, was tatsächlich gezeichnet wurde.
+
+**PB-139 · Wer ein rotes Tor sieht, liest zuerst, WORAN es gescheitert ist — nicht, was es prüfen
+sollte.** *(W5, 2026-08-19; Verschärfung von **PB-38**.)* `perf-contract` meldete `fail`, und die
+PERF-Tabelle stand vollständig im PR-Text: der Schritt holt die Basis mit `--depth=1`, und ein flach
+geholter Ref hat keine Eltern — also gibt es für `origin/main...HEAD` keinen gemeinsamen Vorfahren
+(`fatal: no merge base`, Exit 128). Sichtbar wird das **erst in einem Merge-Zug, ab der zweiten
+Bahn**. PB-38 kennt das Rot durch Zeitlimit; *neu ist die Infrastruktur-Ursache:* ein Tor kann an
+seiner eigenen Beschaffung scheitern und dabei über seinen Gegenstand nichts sagen. Behoben
+(**D-455**).
+
+**PB-140 · Eine Materialklasse aus einem fremden Tor kann dort richtig und hier falsch sein.**
+*(W5, 2026-08-19.)* `PAPER_S` (Sättigung < 0,38 = »Papier«) ist für das Farb-Tor richtig, filet aber
+den entsättigten blauen **Glanz** eines blauen Buchdeckels unter »Papier« — weshalb der Rest-Zähler
+zuerst **0** meldete, wo eine Handzählung **124** fand. *Regel:* der Ausweg war keine neue Schwelle,
+sondern **nach Material getrennt berichten, statt eine Klasse zu wählen**. Eine Schwelle wandert nie
+allein — sie bringt die Frage mit, für die sie geeicht wurde.
+
+**PB-141 · Eine Route an eine LAUFENDE Bahn ist keine Route.** *(Kreuzprüfer der Welle 6b,
+2026-08-19; Ruling **R187a**.)* Drei Befunde von D4 wurden an W5 gefiled, **während W5 lief** —
+`check-png-identity` RGBA · Kartenbank `AnswerHome` · Knopf-Zuschnitt. W5 hat gemergt, ohne sie je
+zu sehen, und die drei Posten liefen ins Leere; gefunden hat sie erst die Kreuzprüfung nach der
+Welle. *Regel:* Ziel einer Route ist die **NÄCHSTE** Nummer des Kürzels (hier W6) oder der
+Architekt — nie die Bahn, die gerade arbeitet. Eine Adresse, die niemand mehr liest, ist eine
+verlorene Zeile, und sie sieht wie erledigte Arbeit aus.
+
+**PB-142 · Ein Rebase zieht auch die BEGRÜNDUNGEN nach, nicht nur den Code.** *(Kreuzprüfer der
+Welle 6b, 2026-08-19; Ruling **R187b**.)* W5s Waiver trug als Kollisionsfreigabe die Sätze »H4 ist
+nicht gebootet« und »E7 nicht gebootet«. Am Schlussstand war beides falsch — H4 war gebootet und
+hatte gemessen. Das **Ergebnis** blieb richtig (der Waiver bleibt, R182), die **Beweiskette** nicht.
+*Regel:* nach `git rebase origin/main` wird jede Begründung, die auf den Stand der anderen Bahnen
+zeigt, neu gelesen — ein Satz über die Welt altert schneller als eine Codezeile.
+
+**PB-143 · Ein Generator-Raster lässt eine LEERE Fläche gemalt aussehen.** *(Wareneingang
+2026-08-19, Lieferung AS5c; Protokoll im `BOOT-SHEET.md`.)* 92 von 100 Zellen bestanden das Tor —
+und dann maß der Prüfer eine **leere** Fläche mit einer Textur-Kennzahl von **5,455**: das feine
+Raster, das die Erzeuger-Funktion `finish()` über jede Zelle legt, erfüllt die Kennzahl von selbst.
+*Regel:* dieselbe Klasse wie **PB-125**, aber eine Ebene früher — nicht das gelieferte Motiv
+überlistet die Zahl, sondern ein **Verfahrensschritt des Erzeugers**. Wer eine Handwerks-Kennzahl
+bestellt, misst sie zuerst an einer leeren Fläche desselben Erzeugers.
+
+**PB-144 · Ein Prüffenster, das eine Lieferung kennt, kann sie umgehen.** *(Wareneingang
+2026-08-19, Lieferung AQ17b Kante/Innenlinie; Protokoll im `BOOT-SHEET.md`.)* Die Randspalten waren
+vom **Gegenrand gespiegelt** und um **+2 Rot** verschoben — genau so viel, dass der Fugen-Wächter
+keinen Sprung sah, und genau dort, wo er hinsah; die Strichdicke stand als **Array-Literal** im
+Bauskript statt aus dem Blatt gemessen zu werden. *Regel:* wo ein Prüffenster in der Bestellung
+steht, wird auch geprüft, **welche Fenster das Tor NICHT abdeckt** — und ein Wert, der im Bauskript
+als Konstante steht, ist keine Messung, sondern eine Behauptung mit Nachkommastellen.
+
+**PB-145 · Eine Materialklasse, die nur die Fläche beschreibt, verurteilt ihren eigenen Schatten.**
+*(Wareneingang 2026-08-19, Lieferung AQ12f3; Protokoll im `BOOT-SHEET.md`.)* Die Petrol-Naht galt an
+rund **230** Stellen als angefressen, weil der **Schattenanteil** mit 125–144° außerhalb des
+bestellten Farbfensters lag — die Klasse war am beleuchteten Stoff geeicht und kannte seinen eigenen
+Schatten nicht. *Regel:* ein Farbfenster in einer Bestellung nennt die Spanne, die das Material über
+seine **Beleuchtung** durchläuft, nicht den Farbton seiner hellsten Fläche. (Schwester von
+PB-140 — dort wandert eine Schwelle in ein fremdes Tor, hier ist sie im eigenen zu eng.)
+
+**PB-146 · Ein Zellenraster wird am Blatt GEMESSEN, nicht aus der Breite geteilt.** *(Eigener
+Architekten-Fehler, Wareneingang 2026-08-19; vom Prüfer widerlegt.)* `merle_hop.png` wurde in
+**fünf Spalten à 409 px** geteilt, weil die Bildbreite das nahelegte; das Blatt trägt in Wahrheit
+**vier mal zwei Zellen à 512 px**. Der blinde Prüfer hat die Teilung **widerlegt**, bevor sie ein
+Urteil trug. *Regel:* die Zellgeometrie kommt aus dem Lieferschein oder aus einer Messung am Blatt
+(Trennlinien, Leerspalten, Wiederholung) — eine Division der Bildbreite durch die erwartete
+Zellenzahl ist eine Vermutung, die jede folgende Zahl mitreißt.

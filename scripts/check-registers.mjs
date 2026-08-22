@@ -80,8 +80,40 @@ const WATCHED = [
  *  fremden Register-Abschnitten nicht schreiben. Läuft das Datum ab, ohne dass
  *  die Liste geschrumpft ist, braucht es einen ausdrücklichen Beschluss, keine
  *  stille Verlängerung (R106). */
-const LINE_REF_UNTIL = "2026-09-30";
-const LINE_REF_OWNER = "K4 / Kanon-Bahn";
+// ── R5-W7 · K6 · R195 · DIE VERLÄNGERUNG, SCHRIFTLICH ───────────────────────
+//
+// Diese Ausnahmeliste wäre am 1. Oktober 2026 von selbst rot geworden — nicht
+// als Vermutung: P6 hat am 2026-08-19 dieses Tor kopiert, NUR das Datum
+// getauscht und beide Fassungen laufen lassen. Heute Exit 0 ("49 Verweise,
+// davon 49 geduldet, 0 neu"), mit der Uhr auf dem 01.10.2026 Exit 1 ("Die
+// Ausnahmeliste des Schulden-Registers ist am 2026-09-30 abgelaufen"). Beide
+// Ausgaben liegen in `REPORTS/REPORT_P6_2026-08-19/messung/`.
+//
+// Ein `main`, das an einem Mittwoch von selbst rot wird, ist niemandes Arbeit
+// (H6/R147) — und die Liste ist nicht geschrumpft, weil die Zitate in FREMDEN
+// Register-Abschnitten stehen, in denen diese Bahn nicht schreiben darf.
+//
+// BESCHLUSS (Ruling R195, ratifiziert mit dem Merge dieses PRs):
+//   · neues Datum   2026-11-30 — dasselbe wie SEAM_ALLOW und COHERENCE_WAIVERS,
+//                   damit die datierten Ausnahmen dieses Projekts an EINEM Tag
+//                   zur Entscheidung kommen und nicht an dreien;
+//   · Eigentümer    "K-Bahn" statt "K4 / Kanon-Bahn" — die Bahn K4 gibt es nicht
+//                   mehr, und eine Ausnahme ohne lebenden Eigentümer ist eine
+//                   ohne Eigentümer (D-423, dieselbe Klasse);
+//   · Grund         das Heben auf `datei#symbol` ist echte Arbeit in fremden
+//                   Abschnitten und braucht eine eigene kleine Bahn. Ihre GRÖSSE
+//                   steht ausgeschrieben im Schulden-Register (K6s Abschnitt).
+//
+// Die Verlängerung ist kein Freibrief: die Ratsche bleibt scharf. Ein NEUER
+// Verweis der alten Form ist rot, ein gelisteter Verweis, der öfter dasteht als
+// geduldet, ist rot, und ein Eintrag, dessen Verweis verschwunden ist, ist schal
+// und ebenfalls rot. Verlängert wird die Frist, nicht die Erlaubnis.
+//
+// Diese Bahn hat beim Sweep gehoben, was sie ohnehin angefasst hat — gemessen
+// waren das NULL der 49 Verweise: keiner liegt in einer Zeile, die K6 anfassen
+// darf (die Zahl steht im Report, statt als Vorsatz behauptet zu werden).
+const LINE_REF_UNTIL = "2026-11-30";
+const LINE_REF_OWNER = "K-Bahn";
 const LINE_REF_ALLOW = [
   // Der einzige Eintrag, der niemals fällt: D-242 nennt die verbotene Form beim Namen.
   { ref: "datei.ts:123", n: 1, why: "D-242 zitiert die verbotene Form selbst — sie MUSS dort stehen" },
@@ -99,7 +131,14 @@ const LINE_REF_ALLOW = [
   { ref: "CardGallery.tsx:113", n: 1 },
   { ref: "CeremonyStage.tsx:53", n: 1 },
   { ref: "STATUS_AND_ROADMAP.md:5", n: 1 },
-  { ref: "UNIFORM_SAMMELN_DESIGN.md:542", n: 1 },
+  // ── 2026-08-21 · K6 · R195(a) · GEHOBEN, deshalb entfernt ───────────────────
+  // `UNIFORM_SAMMELN_DESIGN.md:542` stand hier als geduldeter Rest. Der Verweis
+  // war schon vorher TOT — er zeigte auf eine Tabellenzeile ueber die
+  // Punkte-Karte, nicht auf die Blaetter-Zahl, die D-254 meint (die steht 16
+  // Zeilen weiter) — und K6s eigene Aenderungen an derselben Datei haetten ihn
+  // ein zweites Mal verschoben. Genau die Klasse, fuer die Gesetz 4 existiert.
+  // D-254 zitiert jetzt `UNIFORM_SAMMELN_DESIGN.md#DEAD_ART_CEILING`.
+  // Damit sind es 48 geduldete Verweise statt 49 — die Ratsche dreht sich.
   { ref: "apps/web/app/fonts/LICENSE.md:19", n: 1 },
   { ref: "apps/web/app/layout.tsx:10", n: 1 },
   { ref: "apps/web/lib/paint-content.ts:203", n: 1 },
