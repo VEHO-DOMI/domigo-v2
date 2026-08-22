@@ -77,17 +77,24 @@ jobs:
       #       Tor, und wer das über vier Stellen verteilt liest, hält irgendwann
       #       eines für eines (D-257, genau dieser Vorfall).
       #
-      # Vier Tore tragen KEINE Selbsttest-Zeile, weil sie keinen Selbsttest
-      # haben: sie sind älter als das Gesetz »neues Tor = Skript mit Selbsttest«.
-      # Sie sind unten benannt und als D-454 aufgeschrieben — nicht stillgelegt.
-      # (Und die erste Fassung dieser Kommentare schrieb dort das Flag AUS —
+      # R5-W7 · W6 · D-454 GESCHLOSSEN: die vier Tore, die keinen Selbsttest
+      # hatten (check-story-grounding · check-paint-copy · check-paint-art ·
+      # check-story-art), haben jetzt einen. Jeder speist eine Defektklasse ein,
+      # die das Tor HEUTE schon fängt, und prüft, dass GENAU sie gemeldet wird —
+      # ein Selbsttest, der die Klasse nicht trifft, ist schlimmer als keiner.
+      # Jeder trägt zusätzlich den NICHT-TAMPER-Fall: der echte Stand muss grün
+      # sein, sonst kann ein Tor, das auf alles rot geht, nicht von einem
+      # arbeitenden unterschieden werden.
+      # (Die erste Fassung dieser Kommentare schrieb dort das Flag AUS —
       # worauf check-ci-gates die echte Zeile für eine Selbsttest-Zeile hielt
       # und vier Tore als »läuft nie an einer echten Datei« meldete. Der
       # Wächter liest ZEILEN, nicht Befehle; er hat damit recht behalten.)
 
       # ── Inhalt: Text, Karten, Level ──────────────────────────────────────────
-      - run: node --experimental-strip-types scripts/check-story-grounding.mjs # W3/D-123: jedes verbotene deutsche Wort kommt aus content-schema (.ts) — das Flag ist, was es erlaubt · ohne eigenen Selbsttest (D-454)
-      - run: node --experimental-strip-types scripts/check-paint-copy.mjs # C1: Umhang-, Register- und Zitat-Gesetz über der Schalen-Kopie · ohne eigenen Selbsttest (D-454)
+      - run: node --experimental-strip-types scripts/check-story-grounding.mjs --selftest # W6/D-454: vier echte Defekte müssen rot werden (ungegroundetes Wort · Register · Giveaway · Aufgabe in einer Zeremonie-Szene) und der echte Korpus grün bleiben
+      - run: node --experimental-strip-types scripts/check-story-grounding.mjs # W3/D-123: jedes verbotene deutsche Wort kommt aus content-schema (.ts) — das Flag ist, was es erlaubt
+      - run: node --experimental-strip-types scripts/check-paint-copy.mjs --selftest # W6/D-454: sechs echte Defekte müssen rot werden (Umhang · Zitat · Register · zurückgezogene Wendung · Grounding eines Beispiels · ein Streifer, der die Kopie frisst) und der echte Stand grün bleiben
+      - run: node --experimental-strip-types scripts/check-paint-copy.mjs # C1: Umhang-, Register- und Zitat-Gesetz über der Schalen-Kopie
       - run: node scripts/check-copy-register.mjs --selftest # C2: das rote Licht des Register-Tors muss erreichbar sein
       - run: node scripts/check-copy-register.mjs # C2: jede deutsche Zeile, die ein Kind liest, ist österreichisch (scripts/lexikon-at.json)
       - run: node scripts/check-design-sheets.mjs --selftest # W4/D-278 + W5/D-424: das Register-Gesetz trennt den Schrei vom Schreiben (Teilkette gegen Wortgrenze) und lässt den Kanon-Begriff »Tinten-Geister« durch, ohne »Geist« freizugeben
@@ -100,8 +107,10 @@ jobs:
       - run: node scripts/check-registers.mjs # K1: D-/PB-Nummern eindeutig, Code-Verweise lösen per SYMBOL auf, nie per Zeile
 
       # ── Bild: was auf den Blättern wirklich steht ────────────────────────────
-      - run: node --experimental-strip-types scripts/check-paint-art.mjs # PB-T2: keine stille Platzhalter-Kunst; und die Tot-Kunst-Ratsche (DEAD_ART_CEILING) · ohne eigenen Selbsttest (D-454)
-      - run: node scripts/check-story-art.mjs # das Story-Kunst-Manifest und die Prompt-Bibliothek stimmen überein, in beide Richtungen · ohne eigenen Selbsttest (D-454)
+      - run: node --experimental-strip-types scripts/check-paint-art.mjs --selftest # W6/D-454: vier echte Defekte müssen rot werden (fehlendes Blatt · schale Ausnahme · Ausnahme ohne Bedarf · die Tot-Kunst-Ratsche, ausgelöst über EIN Blatt mehr in der Welt statt über eine gedrehte Decke) und der echte Stand grün bleiben
+      - run: node --experimental-strip-types scripts/check-paint-art.mjs # PB-T2: keine stille Platzhalter-Kunst; und die Tot-Kunst-Ratsche (DEAD_ART_CEILING)
+      - run: node scripts/check-story-art.mjs --selftest # W6/D-454: beide Richtungen müssen rot werden können (art.json nennt einen Stem ohne Prompt · die Bibliothek definiert einen, den art.json nie nennt) und der _neutral-Rückfall darf keinen Fehlalarm auslösen
+      - run: node scripts/check-story-art.mjs # das Story-Kunst-Manifest und die Prompt-Bibliothek stimmen überein, in beide Richtungen
       - run: node scripts/check-composition.mjs --selftest # A6: das rote Licht des Kanten-Kohärenz-Gesetzes muss erreichbar sein · L1/R5-W6: die Buchstaben-Präsenz mit ihrem Tamper (goldene Wand OHNE Hof ⇒ rot) · W5/R5-W6b: EINE Farbton-Rechnung (beide Leser, derselbe Winkel)
       - run: node scripts/check-composition.mjs # PB-C1/doc 36: Ebenen-Abdeckung, geschnittene Masse, Wertbänder, keine nackte Füllung, Kanten-Kohärenz, Buchstaben-Präsenz (R37)
       - run: node --experimental-strip-types scripts/check-png-seams.mjs --selftest # W3/D-199: das rote Licht des Naht-Tors muss erreichbar sein — und echt violette Malerei muss grün bleiben
