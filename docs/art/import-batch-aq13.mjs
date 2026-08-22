@@ -1400,6 +1400,92 @@ if (process.argv.includes("--abnahme-ring")) {
   process.exit(0);
 }
 
+/* ── DER BAND-IMPORT (R5-W7 · H5 · R199) ─────────────────────────────────────
+ *
+ * `band_p4_audience` ist die Reihe leerer Schulbaenke HINTER dem Boss-Kampf.
+ * Sie ersetzt einen BESTEHENDEN Stem — die Tot-Kunst-Zahl bewegt sich also
+ * nicht (53 → 53).
+ *
+ * ★ WARUM DAS BAND ALLEIN FAEHRT. Die Lieferung AQ13c4 besteht aus zwei
+ *   Blaettern, und nur EINES ist angenommen: die Buehne `l1_p4_stage.png`
+ *   traegt eine Wrap-Spalte, die bytegenau die Spalte 0 ist (R199). Ein
+ *   Import, der beide nimmt, waere bequem und falsch; einer, der wegen der
+ *   Buehne auch das Band liegen laesst, waere ordentlich und teuer. Deshalb
+ *   prueft dieser Zweig die RING-ABNAHME und verlangt, dass die BAND-Haelfte
+ *   ohne Befund ist — die Buehnen-Befunde druckt er aus und benennt sie als
+ *   den Grund, warum die Buehne hier nicht mitfaehrt.
+ *
+ * ★ DIE RAUHHEITS-RESERVE IST 0,00076. Der Wareneingang misst das Band bei
+ *   0,29924 gegen die bestellte Obergrenze 0,30. Jede spaetere Aenderung an
+ *   diesem Blatt ist also nachzumessen — auch die verlustfreie Nachverdichtung,
+ *   von der man weiss, dass sie nichts aendert: eine Zahl, die man kennt, aber
+ *   nicht misst, ist eine Behauptung. `--band-rauhheit <datei>` misst sie an
+ *   jeder Datei, mit derselben Formel wie die Tafel-Abnahme.
+ */
+if (process.argv.includes("--band-rauhheit")) {
+  const f = process.argv[process.argv.indexOf("--band-rauhheit") + 1];
+  if (!f || !fs.existsSync(f)) { console.error("usage: node docs/art/import-batch-aq13.mjs --band-rauhheit <datei.png>"); process.exit(2); }
+  const png = read(f);
+  const box = { x0: 0, y0: 0, x1: png.width - 1, y1: png.height - 1 };
+  const rough = roughnessOf(png, box, () => true);
+  const tex = textureOf(png, box);
+  let n = 0;
+  for (let y = 0; y < png.height; y++) for (let x = 0; x < png.width; x++) if (onAt(png, x, y)) n++;
+  console.log(`${path.basename(f)}  ${png.width}×${png.height}  ${n} px gemalt`);
+  console.log(`  Rauhheit ${rough.toFixed(5)}   Nachbarschritt ${tex.toFixed(5)}`);
+  process.exit(0);
+}
+
+if (process.argv.includes("--import-band")) {
+  const dir = process.argv[process.argv.indexOf("--import-band") + 1];
+  if (!dir) { console.error("usage: node docs/art/import-batch-aq13.mjs --import-band <batch-verzeichnis> [--dry]"); process.exit(2); }
+  const sf = path.join(dir, "l1_p4_stage.png"), bf = path.join(dir, "band_p4_audience.png");
+  for (const f of [sf, bf]) if (!fs.existsSync(f)) { console.error(`fehlt: ${f}`); process.exit(2); }
+
+  console.log(`\nBand-Import · ${path.basename(dir)} — zuerst die Ring-Abnahme, dann erst ein Pixel`);
+  const { lines, fail } = abnahmeRing(read(sf), read(bf));
+  for (const l of lines) console.log(l);
+  const bandFail = fail.filter((f) => f.startsWith("Band"));
+  const buehneFail = fail.filter((f) => !f.startsWith("Band"));
+  console.log("");
+  if (bandFail.length > 0) {
+    for (const f of bandFail) console.error(`  ✗ ${f}`);
+    console.error(`\nBand-Import: ${bandFail.length} Befund(e) AM BAND — es wird nichts geschrieben`);
+    process.exit(1);
+  }
+  if (buehneFail.length > 0) {
+    console.log(`  ⚠ DEKLARIERT: die Buehne dieser Lieferung hat ${buehneFail.length} Befund(e) und faehrt NICHT mit (R199).`);
+    for (const f of buehneFail) console.log(`      · ${f}`);
+    console.log("");
+  }
+
+  // Das Blatt kommt UNGEKEYT (RGB, Magenta als Freistell-Farbe); der Bestand
+  // liegt gekeyt. Also derselbe Weg wie im Tafel-Zweig: Schluessel, Saum, und
+  // erst danach schreiben.
+  const stem = "band_p4_audience";
+  const dest = path.join(OUT, `${stem}.png`);
+  if (!fs.existsSync(dest)) { console.error(`${stem}: es gibt keinen Bestands-Stem dieses Namens — dieser Zweig ERSETZT, er legt nicht an`); process.exit(2); }
+  const alt = read(dest);
+  const out = chromaKey(read(bf));
+  if (out.width !== alt.width || out.height !== alt.height) {
+    console.error(`${stem}: ${out.width}×${out.height} gegen den Bestand ${alt.width}×${alt.height} — ein Ersatz hat die Masse seines Vorgaengers`);
+    process.exit(1);
+  }
+  const killed = defringe(out);
+  const dist = keyDistance(out);
+  if (dist < 150) { console.error(`${stem}: ein gemaltes Pixel sitzt ${dist.toFixed(2)} vom Schluessel — ein toleranter Schluessel frisst es`); process.exit(1); }
+
+  const zaehle = (p) => { let n = 0; for (let i = 3; i < p.data.length; i += 4) if (p.data[i] > 8) n++; return n; };
+  const box = { x0: 0, y0: 0, x1: out.width - 1, y1: out.height - 1 };
+  console.log(`  Bestand : ${zaehle(alt)} px gemalt · Rauhheit ${roughnessOf(alt, box, () => true).toFixed(5)}`);
+  console.log(`  Neu     : ${zaehle(out)} px gemalt · Rauhheit ${roughnessOf(out, box, () => true).toFixed(5)} · ${killed} px Saum entfernt · Schluessel-Abstand ${dist.toFixed(2)}`);
+  if (!DRY) fs.writeFileSync(dest, PNG.sync.write(out));
+  console.log(`\n${DRY ? "[dry] " : ""}Band-Import: OK — ${stem}.png (ein bestehender Stem ersetzt, DEAD_ART unveraendert)`);
+  console.log("Naechster Schritt (D-98): node scripts/art-recompress.mjs && node scripts/check-png-identity.mjs");
+  console.log("Danach die Rauhheit NEU messen: node docs/art/import-batch-aq13.mjs --band-rauhheit apps/web/public/art/g1/paint/ch01/band_p4_audience.png");
+  process.exit(0);
+}
+
 const failures = [];
 const written = [];
 const notes = [];
