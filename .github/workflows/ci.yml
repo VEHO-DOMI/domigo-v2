@@ -183,6 +183,26 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: 24 }
       - run: node scripts/check-perf-table.mjs --selftest # the detector must tell a filled table from a blank one
+      - name: "WEGWERF-DIAGNOSE W6 (R187d) - was der Runner wirklich sieht"
+        run: |
+          echo "== is-shallow =="
+          git rev-parse --is-shallow-repository
+          echo "== refs/remotes =="
+          git for-each-ref refs/remotes | head -40
+          echo "== rev-parse origin/${{ github.base_ref }} =="
+          git rev-parse "origin/${{ github.base_ref }}" || echo "ORIGIN-REF FEHLT"
+          echo "== fetch wie im echten Schritt =="
+          git fetch --no-tags origin "${{ github.base_ref }}" > /dev/null 2>&1 || echo "FETCH FEHLGESCHLAGEN"
+          git rev-parse "origin/${{ github.base_ref }}" || echo "ORIGIN-REF FEHLT AUCH NACH FETCH"
+          echo "== merge-base =="
+          git merge-base "origin/${{ github.base_ref }}" HEAD || echo "KEINE MERGE-BASE"
+          echo "== HEAD =="
+          git log --oneline -3
+          echo "== diff drei-punkt =="
+          git diff --name-only "origin/${{ github.base_ref }}"...HEAD > /tmp/changed.txt 2>/tmp/differr.txt || echo "DIFF-EXIT=$?"
+          echo "stderr:"; cat /tmp/differr.txt
+          echo "ANZAHL: $(wc -l < /tmp/changed.txt)"
+          head -20 /tmp/changed.txt
       - name: the PERF_WAECHTER table is present when it is owed
         env:
           PR_BODY: ${{ github.event.pull_request.body }}
