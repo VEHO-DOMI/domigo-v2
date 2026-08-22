@@ -7,7 +7,7 @@
 import { describe, expect, it } from "vitest";
 import fs from "node:fs";
 import path from "node:path";
-import { CH01_COMPOSITION, HERO_EDGE_KEY_SPLIT, MID_FAR_ALPHA, type MassKit, compositionFor, compositionStems, heroEdgeFor, nearPlaneTint } from "./composition.ts";
+import { CH01_COMPOSITION, HERO_EDGE_KEY_SPLIT, MID_FAR_ALPHA, type MassKit, compositionFor, compositionStems, heroEdgeFor, massStems, nearPlaneTint } from "./composition.ts";
 import { K_X, K_Y, PLANE_DEPTH, coverBox, coverFit, coversAxis, planLayers, planeCovers, travelBox, visibleWindow } from "./layers.ts";
 import {
   CRUST_H,
@@ -15,6 +15,7 @@ import {
   CRUST_TINTS,
   FADE_DEPTH,
   EDGE_W,
+  EDGE_OUT,
   MAX_PLATFORM_CELLS,
   MIN_GRID_LOCK_DISTANCE,
   MIN_PAINT_PERIOD_CELLS,
@@ -36,6 +37,7 @@ import {
   claimedPlatformCells,
   crustGrain,
   crustRuns,
+  undersideRuns,
   floatingPlatformRuns,
   ledgeGrain,
   ledgeLips,
@@ -537,6 +539,128 @@ describe("the carved mass (doc 36 §2)", () => {
     expect(p.some((q) => q.kind === "inCornerL" && q.c === 3 && q.r === 3)).toBe(true);
   });
 
+  // ── R5-W7 · A8 · THE UNDERSIDE BAND (D-27) ─────────────────────────────────
+  // The sixth face. Two halves, and the FIRST one is the load-bearing one: with
+  // no sheet declared — which is every kit on `main` — the hook must produce
+  // nothing at all, or it is the placeholder SPEC §9.4 forbids wearing a new name.
+  describe("the underside band (R5-W7 · A8 · D-27)", () => {
+    // 5 cells wide ⇒ an overhang, not a platform object (see the corner test)
+    const thinLedge = ["........", ".#####..", "........", "########"];
+    const thickLedge = ["........", ".#####..", ".#####..", "........", "########"];
+    const longLedge = [".................", ".###############.", ".................", "#################"];
+    const withSheet: MassKit = { ...kit, edgeD: ["ed_l", "ed_r"] };
+    const lumOfTint = (t: number): number =>
+      (((t >> 16) & 255) * 0.2126 + ((t >> 8) & 255) * 0.7152 + (t & 255) * 0.0722) / 255;
+
+    it("plans NOTHING without a sheet — and the geometry is there, so that is the sheet's absence and not a missing hook", () => {
+      // both directions in one test on purpose: if `undersideRuns` found nothing
+      // either, this test would pass on a planner that had simply been given a
+      // grid with no undersides, and would prove nothing about the guard.
+      for (const g of [thinLedge, thickLedge, longLedge]) {
+        expect(undersideRuns(g).length).toBeGreaterThan(0);
+        expect(planMass(g, kit, afSrc).filter((q) => q.kind === "edgeD")).toHaveLength(0);
+      }
+    });
+
+    it("leaves the rest of the plan untouched without a sheet — piece for piece", () => {
+      // the display-list proof in miniature: adding an UNDECLARED optional field
+      // may not move one number anywhere else in the plan.
+      const bare: MassKit = { ...kit };
+      for (const g of [thinLedge, thickLedge, longLedge, grid]) {
+        expect(JSON.stringify(planMass(g, kit, afSrc))).toBe(JSON.stringify(planMass(g, bare, afSrc)));
+      }
+    });
+
+    it("bands every exposed bottom once the sheet is declared", () => {
+      const p = planMass(thickLedge, withSheet, afSrc).filter((q) => q.kind === "edgeD");
+      expect(p.length).toBeGreaterThan(0);
+      // the run is row 2, columns 1…5 — covered exactly once, edge to edge
+      const covered = new Set<number>();
+      for (const q of p) {
+        expect(q.r).toBe(2);
+        for (let x = q.x; x < q.x + q.w; x += TILE) covered.add(x / TILE);
+      }
+      expect([...covered].sort((a, b) => a - b)).toEqual([1, 2, 3, 4, 5]);
+      expect(p.reduce((s, q) => s + q.w, 0)).toBe(5 * TILE);
+    });
+
+    it("sits 2 px proud of the mass and the rest inside it — the side trims, turned 90°", () => {
+      const q = planMass(thickLedge, withSheet, afSrc).find((x) => x.kind === "edgeD");
+      expect(q).toBeDefined();
+      expect(q?.h).toBe(EDGE_W);
+      expect(q?.y).toBeCloseTo(2 * TILE + TILE + EDGE_OUT - EDGE_W, 6);
+      // …and its bottom edge really is EDGE_OUT below the cell it hangs from
+      expect((q?.y ?? 0) + (q?.h ?? 0)).toBeCloseTo(3 * TILE + EDGE_OUT, 6);
+    });
+
+    it("narrows on a ledge one cell tall, for the reason the side trims narrow on a column one cell wide", () => {
+      // crust above, band below: at full depth no book would be left to see
+      // between them. Same arithmetic as `trimW`, same 0.55.
+      const thin = planMass(thinLedge, withSheet, afSrc).filter((q) => q.kind === "edgeD");
+      expect(thin.length).toBeGreaterThan(0);
+      for (const q of thin) expect(q.h).toBeCloseTo(EDGE_W * 0.55, 6);
+      // and the thick ledge does NOT narrow — otherwise the rule is a constant
+      for (const q of planMass(thickLedge, withSheet, afSrc).filter((q) => q.kind === "edgeD")) {
+        expect(q.h).toBe(EDGE_W);
+      }
+    });
+
+    it("never mixes the two heights inside one piece — one tileSprite carries one height", () => {
+      // a ledge whose left half is one cell tall and whose right half is two:
+      // the run has to SPLIT there, not average
+      const mixed = ["........", "..####..", "....##..", "........", "########"];
+      const runs = undersideRuns(mixed);
+      expect(runs.length).toBeGreaterThan(1);
+      for (const q of planMass(mixed, withSheet, afSrc).filter((x) => x.kind === "edgeD")) {
+        expect([EDGE_W, EDGE_W * 0.55]).toContain(q.h);
+      }
+    });
+
+    it("is a BAND, not wallpaper: a long run is segmented and alternates its variants", () => {
+      // measured on ch01 before this was built: 24 runs, 352 cells, longest 64
+      // (1024 world px). One tileSprite of one variant over that span is the
+      // wallpaper the round-1 critique named on the floor.
+      const p = planMass(longLedge, withSheet, afSrc).filter((q) => q.kind === "edgeD");
+      expect(p.length).toBeGreaterThan(1);
+      expect(new Set(p.map((q) => q.stem)).size).toBe(2);
+      for (const q of p) expect(["ed_l", "ed_r"]).toContain(q.stem);
+    });
+
+    it("is pinned horizontally and never vertically — its drawn height is not its source height", () => {
+      // the crust's lesson (`MassPiece.tileAnchor`): Phaser offsets by
+      // `tilePositionY mod sourceHeight`, so a band pinned in world space would
+      // be sliced by a different amount on every floor of the school.
+      const s = paintScaleOf(withSheet, afSrc);
+      for (const q of planMass(thickLedge, withSheet, afSrc).filter((x) => x.kind === "edgeD")) {
+        expect(q.tile).toBe(true);
+        expect(q.tileAnchor).toBe("x");
+        expect(q.srcW).toBeUndefined(); // a window is what a one-cell STRIP wants
+        expect(tileAnchorFor(q, { x: s, y: s }).y).toBe(0);
+      }
+    });
+
+    it("wears the lay-back and the depth ramp, like its five siblings", () => {
+      for (const q of planMass(thickLedge, withSheet, afSrc).filter((x) => x.kind === "edgeD")) {
+        expect(lumOfTint(q.tint ?? 0xffffff)).toBeLessThan(0.8);
+      }
+    });
+
+    it("never bands the world's own floor — outside the grid is solid", () => {
+      // the bottom row of every phase has no air under it, so it grows no band
+      const p = planMass(thickLedge, withSheet, afSrc).filter((q) => q.kind === "edgeD");
+      expect(p.some((q) => q.r === thickLedge.length - 1)).toBe(false);
+    });
+
+    it("adds its stems to the art gate's list only when it has them", () => {
+      const bare = massStems(kit);
+      const armed = massStems(withSheet);
+      expect(bare).not.toContain("ed_l");
+      expect(armed).toContain("ed_l");
+      expect(armed).toContain("ed_r");
+      expect(armed.length).toBe(bare.length + 2);
+    });
+  });
+
   it("never trims against the world edge — outside the grid is solid", () => {
     const p = planMass(grid, kit);
     expect(p.some((q) => q.kind === "cornerBR" && q.r === 6)).toBe(false);
@@ -885,7 +1009,10 @@ describe("R5-A3 · which plane is the NEAR plane (B1: no material separation in 
   });
 
   it("leaves the carved trims alone — they are the mass's edge, not its surface", () => {
-    for (const k of ["edgeL", "edgeR", "cornerBL", "cornerBR", "inCornerL", "inCornerR"]) {
+    // R5-W7 · A8: `edgeD` joins the list rather than the set. The law's question
+    // is „can I stand on this?", and the underside is the face over the child's
+    // head — the one trim where pushing it forward would be actively wrong.
+    for (const k of ["edgeL", "edgeR", "edgeD", "cornerBL", "cornerBR", "inCornerL", "inCornerR"]) {
       expect(NEAR_PLANE_KINDS.has(k)).toBe(false);
     }
   });

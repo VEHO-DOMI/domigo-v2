@@ -74,6 +74,25 @@ export interface MassKit {
   inCornerL: string;
   inCornerR: string;
   /**
+   * R5-W7 · A8 · THE UNDERSIDE — the one exposed face that had no anatomy (D-27).
+   *
+   * Variants of the band that runs along the bottom of an overhang, in the order
+   * the edge sheet delivers them (`_l`, `_r`). It is a BAND, not a pair of ends:
+   * `planMass` lays it along a whole run and alternates the variants, which is
+   * why this is an array and `edgeL`/`edgeR` are not — a side trim repeats DOWN
+   * one cell-wide column, an underside repeats SIDEWAYS across a whole ledge.
+   *
+   * OPTIONAL, and that is the entire design. `SPEC_MASSEN_KIT` §9.4 forbids a
+   * hook without art as firmly as art without a hook, and no delivery of this
+   * sheet has yet been accepted (AS3 rejected, AS5b/c/d/e rejected). Absent, the
+   * planner pushes no underside piece at all: no placeholder, no `massStems`
+   * entry, no claim on the dead-art ceiling, and the display list is identical
+   * object for object (measured, R5-W7 · A8 report §1). Present, the band
+   * appears with no other change anywhere — `PaintScene#placeMassPiece` is
+   * generic over `MassKind`.
+   */
+  edgeD?: readonly string[];
+  /**
    * Drawn ramp masses for the 45°/30° slope glyphs — OPTIONAL since R5-W6 · A7
    * (D-324).
    *
@@ -468,6 +487,13 @@ export const massStems = (m: MassKit): string[] => {
   // `composition.test.ts` fest: sobald irgendein Gitter einen Steigungs-Glyph
   // trägt, müssen die Rampen-Blätter seines Kits auf der Platte liegen.
   out.push(m.edgeL, m.edgeR, m.cornerBL, m.cornerBR, m.inCornerL, m.inCornerR);
+  // ★ R5-W7 · A8 · D-27. Conditional, like the ramps above are absent: this list
+  // decides what a phase LOADS (`compositionStems` → `phaseArtScope`) and it is
+  // the floor `check-paint-art` measures against, so an unconditional underside
+  // would demand a PNG that no accepted delivery has ever contained — the exact
+  // failure mode D-27's own register line names. A kit without the sheet lists
+  // nothing extra and the stem count does not move (53 before, 53 after).
+  if (m.edgeD !== undefined) out.push(...m.edgeD);
   out.push(...m.platObjects.map((p) => p.stem));
   if (m.slide) out.push(m.slide.top, m.slide.mid, m.slide.foot, m.slide.under);
   return [...new Set(out)];
@@ -676,9 +702,32 @@ const sharedInterior = (): Pick<MassKit, "body" | "fade" | "sediment"> => ({
  *
  * The other two things AS3 did not deliver, both re-ordered in §10: the UNDERSIDE
  * cells cannot tile left↔right (75.73 against a texture step of 5.58, and no
- * sub-window of any width at any offset tiles either), so there is no `edgeD`
- * field and no `MassKind` for one — SPEC §9.4 cuts both ways, and a hook without
- * art is the same mistake as art without a hook. RAMPS were never on the sheet.
+ * sub-window of any width at any offset tiles either). RAMPS were never on the
+ * sheet.
+ *
+ * ── ★ R5-W7 · A8: THE HOOK IS BUILT, AND §9.4 IS ANSWERED RATHER THAN BROKEN ─
+ * This paragraph used to end „so there is no `edgeD` field and no `MassKind` for
+ * one — SPEC §9.4 cuts both ways, and a hook without art is the same mistake as
+ * art without a hook". Both halves of that sentence were right about the DANGER
+ * and wrong about the remedy, and the difference is worth writing down, because
+ * it is the difference between an empty promise and an inert one.
+ *
+ * What §9.4 forbids is a hook that DRAWS something when the art is missing — a
+ * placeholder in the floor, a stretched neighbour, a silent hole. Every one of
+ * those is a picture the child sees and nobody ordered. What it cannot sensibly
+ * forbid is a hook that does NOTHING: `MassKit.edgeD` is optional, `massStems`
+ * skips it when it is absent, and `planMass` never enters its branch, so a kit
+ * without the sheet produces byte-for-byte the same plan and the same display
+ * list as before this change (measured across all five surfaces — 236 · 481 ·
+ * 331 · 103 · 118 objects, unchanged). The one thing that DID exist without art
+ * — a raw horizontal cut along the bottom of every overhang, five rooms wide —
+ * is the defect D-27 has been carrying since R5-W1.
+ *
+ * The order stays where it was: the sheet is still not delivered, `edgeD` is
+ * still declared by no kit on `main` (`PAINTED_TRIM_PHASES` is empty and
+ * `sharedTrims` has no underside), and the cells are still owed by §10.3. What
+ * has changed is that the delivery no longer needs an engine round behind it:
+ * the day the cells pass the gate, `paintedTrims` already names them.
  */
 const PAINTED_TRIM_PHASES = new Set<string>([]);
 
@@ -734,6 +783,30 @@ const paintedTrims = (phase: string): Pick<MassKit, "edgeL" | "edgeR" | "cornerB
 });
 
 /**
+ * R5-W7 · A8 · D-27 · WHICH ROOMS HAVE AN ACCEPTED UNDERSIDE BAND.
+ *
+ * Its own set rather than a field inside `paintedTrims`, and the reason is the
+ * history: the underside is the cell that keeps failing ALONE. AS3 delivered
+ * eight cells, six of which were good enough to import and two of which — 2 and
+ * 3, the undersides — did not tile sideways at any width or offset (75.73
+ * against a texture step of 5.58). Tying the band to `PAINTED_TRIM_PHASES` would
+ * mean a room could not take its side trims until its underside also passed,
+ * which is exactly the coupling that left D-27 open for three waves.
+ *
+ * Empty today, and every entry has to be earned the same way the others are: the
+ * cells on the plate, `check-paint-art` green, `--verify` green on the sheet.
+ */
+const PAINTED_UNDERSIDE_PHASES = new Set<string>([]);
+
+/** the underside band's two variants, in the order the edge sheet cuts them.
+ *  ⚠ the class name is `edgeD`, camel-cased, because that is what
+ *  `docs/art/import-batch-as.mjs#AS5_EDGE_CELLS` already writes to disk — the
+ *  two sides of this contract must spell it the same or the art is invisible. */
+const paintedUnderside = (phase: string): Pick<MassKit, "edgeD"> => ({
+  edgeD: [`mass_edgeD_${phase}_l`, `mass_edgeD_${phase}_r`],
+});
+
+/**
  * ── THE RAMPS ARE NOT DRAWN AT ALL, AND NEVER HAVE BEEN (R5-W4b · A6b) ──────
  * This round set out to give four rooms a painted ramp. Batch AS5 delivered
  * them, eight of its cells passed the import gate, and one — p3's — was even
@@ -769,6 +842,11 @@ const sharedTrims = (): Pick<MassKit, "edgeL" | "edgeR" | "cornerBL" | "cornerBR
 const sharedMass = (phase: string): Omit<MassKit, "crust" | "crustCapL" | "crustCapR" | "slide"> => ({
   ...(PAINTED_MASS_PHASES.has(phase) ? paintedInterior(phase) : sharedInterior()),
   ...(PAINTED_TRIM_PHASES.has(phase) ? paintedTrims(phase) : sharedTrims()),
+  // …and the underside separately (D-27). There is no shared fallback on
+  // purpose: the placeholder set has no underside strip, and inventing one out
+  // of a side trim would draw a book's cut face where the bottom of the stack
+  // belongs — §10.3's motif law, drawn by the engine instead of by a painter.
+  ...(PAINTED_UNDERSIDE_PHASES.has(phase) ? paintedUnderside(phase) : {}),
   trimShade: TRIM_SHADE_BY_PHASE[phase],
   // No ramp sheets: R109 withdrew them and E6 deleted the two placeholders. A
   // surface that grows a slope orders its own (D-324, and the field's own note).

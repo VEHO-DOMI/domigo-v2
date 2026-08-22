@@ -434,7 +434,11 @@ export const NEAR_PLANE_KINDS: ReadonlySet<string> = new Set([
 export type MassKind =
   | "body" | "fade" | "sediment"
   | "crust" | "capL" | "capR"
-  | "edgeL" | "edgeR" | "cornerBL" | "cornerBR" | "inCornerL" | "inCornerR"
+  // `edgeD` — the underside band (R5-W7 · A8, D-27). Deliberately NOT in
+  // NEAR_PLANE_KINDS above: that law answers „can I stand on this?", and the
+  // underside is the face over the child's head. Its five siblings are out for
+  // the same reason, and `composition.test.ts` states that as law.
+  | "edgeL" | "edgeR" | "edgeD" | "cornerBL" | "cornerBR" | "inCornerL" | "inCornerR"
   | "ramp" | "platform"
   | "slideUnder" | "slideTop" | "slideMid" | "slideFoot"
   | "fallbackFill";
@@ -703,6 +707,65 @@ export const crustRuns = (
       let c1 = c;
       while (c1 + 1 < w && wears(c1 + 1, r)) c1++;
       runs.push({ c, c1, r });
+      c = c1 + 1;
+    }
+  }
+  return runs;
+};
+
+/**
+ * R5-W7 · A8 · D-27 · THE UNDERSIDE RUNS — `crustRuns`' mirror image.
+ *
+ * A crust run is the contiguous stretch of an exposed TOP; this is the
+ * contiguous stretch of an exposed BOTTOM, and it is the geometry the chapter
+ * has been missing since R5-W1: wherever a mass forms a ceiling or an overhang
+ * it ends in a raw horizontal cut, because `planMass` knew five faces and not
+ * the sixth.
+ *
+ * Measured over ch01's five surfaces before this was written — the numbers are
+ * why it plans RUNS rather than one piece per cell:
+ *
+ *   p1  1 run   64 cells (the full-width ceiling row)
+ *   p2 18 runs 137 cells (longest 22 — the room with real overhangs)
+ *   p3  2 runs  66 cells
+ *   p4  1 run   36 cells
+ *   p9  2 runs  49 cells
+ *   ────────────────────────  24 runs, 352 cells, longest 64
+ *
+ * A 64-cell run is 1024 world px. Laid as ONE tileSprite of ONE variant that is
+ * wallpaper — the exact defect the round-1 critique named on the floor and that
+ * `CRUST_SEGMENT_CELLS` exists to answer — so an underside is segmented and
+ * value-jittered like the course above it.
+ *
+ * `thin` splits a run rather than being decided per piece: a cell with air ABOVE
+ * as well as below is a one-cell-tall ledge, where a full-width band top and
+ * bottom would leave no material visible between them. That is the same
+ * reasoning as the side trims' one-cell column (`EDGE_W * 0.55`), turned 90°,
+ * and a run may not mix the two because one tileSprite carries one height.
+ *
+ * `claimed` = cells a floating platform object owns outright; the object draws
+ * its own underside, so it never wears this band.
+ */
+export const undersideRuns = (
+  grid: readonly string[],
+  claimed: ReadonlySet<string> = new Set(),
+): Array<{ c: number; c1: number; r: number; thin: boolean }> => {
+  const { w, h } = gridSize(grid);
+  // `glyphAt` reports everything outside the grid as solid (the world edge is a
+  // wall), so the grid's own bottom row has no air under it and grows no band —
+  // the same guard the side trims get for free, and the reason this needs none.
+  const wears = (c: number, r: number): boolean =>
+    isMass(glyphAt(grid, c, r)) && !claimed.has(`${c},${r}`) && !isMass(glyphAt(grid, c, r + 1));
+  const thinAt = (c: number, r: number): boolean => !isMass(glyphAt(grid, c, r - 1));
+  const runs: Array<{ c: number; c1: number; r: number; thin: boolean }> = [];
+  for (let r = 0; r < h; r++) {
+    let c = 0;
+    while (c < w) {
+      if (!wears(c, r)) { c++; continue; }
+      const thin = thinAt(c, r);
+      let c1 = c;
+      while (c1 + 1 < w && wears(c1 + 1, r) && thinAt(c1 + 1, r) === thin) c1++;
+      runs.push({ c, c1, r, thin });
       c = c1 + 1;
     }
   }
@@ -1157,6 +1220,58 @@ export const planMass = (
     }
     if (capsFit && c1 < w - 1) {
       out.push({ kind: "capR", stem: kit.crustCapR, c: c1, r, x: x + runW - capW, y, w: capW, h: CRUST_H, depth: DEPTH.cap });
+    }
+  }
+
+  // ── 3b · THE UNDERSIDE BAND on every exposed bottom (R5-W7 · A8 · D-27) ────
+  //
+  // The sixth face. Until this round a mass that formed a ceiling or an overhang
+  // simply stopped at a raw horizontal cut — five faces had anatomy and one had
+  // none, in all five rooms.
+  //
+  // ★ THE WHOLE BLOCK IS BEHIND ONE `undefined` CHECK, AND THAT IS THE DESIGN.
+  // No accepted delivery has ever contained this cell (AS3 rejected on tiling,
+  // AS5b/c/d/e rejected), so no kit on `main` declares `edgeD` and not one piece
+  // is planned: the plan, the display list and the picture are identical to what
+  // they were before the hook existed (measured, five surfaces). SPEC §9.4's
+  // rule — no hook without art — is about hooks that DRAW; this one cannot.
+  // See `composition.ts#MassKit.edgeD` for the long form.
+  //
+  // Laid like the course above it rather than like the side trims beside it,
+  // because that is what it IS: a band that repeats sideways. So it takes the
+  // course treatment — segments from `CRUST_SEGMENT_CELLS`, alternating
+  // variants, `tileAnchor: "x"` (a band whose drawn height is not its source
+  // height must never be pinned vertically, or Phaser slices it by
+  // `y mod sourceHeight` — the defect `MassPiece.tileAnchor` documents on the
+  // crust) — and no `srcW`: a window is what a one-cell-wide STRIP wants; a
+  // 1024-px run would declare a window wider than its own painting.
+  //
+  // It does NOT take the crust's value jitter. Its five siblings (the two side
+  // trims, the four corners) wear the lay-back and the depth ramp and nothing
+  // else, and a trim that announces its own rhythm is the thing `TRIM_SHADE`'s
+  // note calls „a trim that has stopped being anatomy".
+  if (kit.edgeD !== undefined && kit.edgeD.length > 0) {
+    const variants = kit.edgeD;
+    for (const { c, c1, r, thin } of undersideRuns(grid, claimed)) {
+      // the same one-cell rule as the side trims (`trimW`), turned 90°: on a
+      // ledge one cell tall the crust already owns the top, so a full-depth band
+      // under it would leave none of the material it is cut from visible.
+      const bandH = thin ? EDGE_W * 0.55 : EDGE_W;
+      const y = r * TILE + TILE + EDGE_OUT - bandH; // 2 px proud, the rest inside
+      let seg = c;
+      for (let k = 0; seg <= c1; k++) {
+        const want = CRUST_SEGMENT_CELLS[(c + r + k) % CRUST_SEGMENT_CELLS.length] ?? 4;
+        const segEnd = Math.min(seg + want - 1, c1);
+        const stem = variants[(c + r + k) % variants.length] ?? variants[0] ?? "";
+        out.push({
+          kind: "edgeD", stem, c: seg, r,
+          x: seg * TILE, y, w: (segEnd - seg + 1) * TILE, h: bandH,
+          tile: true, srcScale: paintScale, tileAnchor: "x",
+          tint: mixMultiply(kit.trimShade ?? TRIM_SHADE, depthTintAt(depthBucketAt(depthAt(grid, seg, r)))),
+          depth: DEPTH.trim,
+        });
+        seg = segEnd + 1;
+      }
     }
   }
 
