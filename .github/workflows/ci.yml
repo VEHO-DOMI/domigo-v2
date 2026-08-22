@@ -112,6 +112,7 @@ jobs:
       - run: node scripts/check-sheet-colours.mjs # W5/D-403+D-404: jede Zelle einzeln gezählt (nie als Summe einer Sammeldatei) hält 80 % ihrer Farbzahl, und jede Abweichung vom Helligkeits-Korridor trägt eine benannte, datierte Ausnahme
       - run: node docs/art/import-batch-aq15.mjs --selftest # C6: die Fenster-Abnahme muss den abgeschnittenen Stabfuss sehen — der Fehler, den eine Pruefung mit der Oeffnungsmaske des Lieferanten per Bauart uebersieht
       - run: node docs/art/import-batch-aq12.mjs --selftest # C5: die Abnahme-Probe muss eine flache Füllung weiterhin eine flache Füllung nennen können
+      - run: node docs/art/import-batch-as.mjs --selftest # A8/C10: das Massen-Tor beweist sich an der PLATTE — acht angenommene p1-Blaetter bleiben gruen, waehrend versteckte Naht, flachgerechnete Malerei, kopierte Zelle, falsche Bandhoehe und falsche Achse rot werden; und ein Generator-Raster wie AS5c, das den Textur-Boden mit tex 5,45 ueberspringt, faellt an Stuetzstellen/Rauhheit/N1. Die AS3-Kastenstufe ist geparkt und meldet ihre vier fehlenden Behauptungen laut (R204)
       - run: node docs/art/import-batch-aq13.mjs --selftest # H4: die Tafel- und Ring-Abnahme misst gegen den BESTAND, nicht gegen die Zahlen des Lieferscheins — der Zwilling, der unten buendige Sitz und die Gesichtsquote gegen ein selbst gerechnetes N muessen rot werden
       - run: node scripts/check-png-identity.mjs --selftest # E5: das rote Licht des Bildpunkt-Beweises muss erreichbar sein
       # W4/D-257 + D-98: der ECHTE Lauf. Nur auf einem PR, weil er gegen die

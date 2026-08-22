@@ -431,6 +431,21 @@ Die Zellen-Belegung unten bleibt der Vertrag für jede künftige Lieferung:
   Einzelstücke mit einem fertigen Ende, gemalt wie eine Kappe statt wie ein Band.
   ⚠ **Ohne diese Zelle bleibt D-27 offen und die Unterseite jeder Masse ein roher
   waagrechter Schnitt.** Sie ist die einzige Kante ohne Anatomie.
+  **★ ALS GEBAUT (R5-W7 · A8, 2026-08-22): der Motor-Haken liegt, die Kunst fehlt
+  weiter.** `MassKit.edgeD` (optionales Feld, Varianten `_l`/`_r`), `MassKind
+  "edgeD"`, `mass.ts#undersideRuns` und der Planungs-Abschnitt 3b in `planMass`
+  sind gebaut; die Stems heißen `mass_edgeD_<phase>_l` / `_r`, genau wie
+  `import-batch-as.mjs` sie schon schreibt. Der ganze Zweig steht hinter
+  `kit.edgeD !== undefined`, und kein Kit auf `main` deklariert es
+  (`PAINTED_UNDERSIDE_PHASES` ist leer, `sharedTrims` hat keine Unterseite) —
+  ohne Blatt wird also **kein** Stück geplant: Anzeigeliste unverändert
+  (236 · 481 · 331 · 103 · 118 Objekte, gemessen), `check-paint-art` 53/53,
+  kein Platzhalter. §9.4 ist damit beantwortet, nicht gebrochen: verboten ist
+  ein Haken, der ohne Kunst **zeichnet**. Zahlen für die Bestellung, an ch01
+  gemessen: **24 Läufe, 352 Zellen, längster 64 Zellen = 1024 Weltpixel**
+  (p1 1/64 · p2 18/137 · p3 2/66 · p4 1/36 · p9 2/49) — die Zelle muss also
+  waagrecht **mit sich selbst** kacheln, und sie wird segmentiert und mit
+  wechselnden Varianten gelegt (wie die Kruste), nie als ein Streifen.
 - **Zelle 4/5 · Außenecken unten links / rechts.** Einzelstücke, werden gestreckt
   gezeichnet, **keine Kachel-Anforderung**. (AS3s Prüfzettel hat sie als
   Kachel-Fehler gemeldet — er hat eine Ecke gefragt, eine Tapete zu sein.)

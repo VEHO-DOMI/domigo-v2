@@ -252,13 +252,44 @@ const COHERENCE_WAIVERS = {
   // zwischen 1,74 und 6,90 liegt. Ein Körper-Blatt von AS5b zeigt weiche
   // Streifen, das angenommene p1-Blatt daneben einen gemalten Bücherstapel.
   // Der Körper bleibt also ungemalt, der Bruch bleibt, die Ausnahme bleibt —
-  // deklariert und datiert, nie still. Reparaturpfad neu: AS5c
-  // (SPEC_MASSEN_KIT §10.6, in diesem PR mit Zahlen je Zelle spezifiziert;
-  // Kommissionsdatei schreibt Fable, Lieferschein-Prüfung ausstehend).
-  "ch01/p2": { until: "2026-11-30", why: "Nachtklassenraum zieht den geteilten warmen Buchkörper unter einem violetten Laufkurs — AS5b lieferte dafür ein Blatt ohne Motiv (A7), AS5c §10.6 malt ihm seinen eigenen" },
-  "ch01/p3": { until: "2026-11-30", why: "Hof-Laufkurs ist 40,8 Punkte flacher gesättigt als das geteilte Papier darunter — AS5b nicht importierbar (A7), AS5c §10.6" },
-  "ch01/p4": { until: "2026-11-30", why: "Bühnen-Laufkurs steht 56° vom geteilten Körper ab — AS5b nicht importierbar (A7), AS5c §10.6" },
-  "ch01/p9": { until: "2026-11-30", why: "Kleckskammer zieht denselben warmen Körper unter einem tintigen Laufkurs — AS5b nicht importierbar (A7), AS5c §10.6" },
+  // deklariert und datiert, nie still.
+  //
+  // ── ★ REPARATURPFAD JETZT AS5F — UND DAS IST EINE RISIKOZEILE (R201, A8) ──
+  // Hier stand »AS5c«. Seither ist die Familie zweimal weitergerückt, und jede
+  // Runde hat den 30. November näher gebracht, ohne eine Kachel zu liefern:
+  //   AS5c (19.08.) ZURÜCK — Generator-Raster statt Malerei (auf leerer Fläche
+  //     misst das Raster tex 5,455; 64,6 % der Nachbarschritte in einem
+  //     3-Punkte-Band gegen 7,1 % beim Bestand).
+  //   AS5d (20.08.) ZURÜCK.
+  //   AS5e (21.08.) ZURÜCK — IoU 0 von 24, tex über dem Deckel auf 63 von 124
+  //     Zellen, Schlüsselabstand < 182 auf vier Blättern.
+  // AS5F ist die VIERTE Bestellung. ⚠ Stand 2026-08-22 liegt `batch-as5f/` im
+  // Labor und meldet sich im Lieferschein SELBST als `pass: false · status:
+  // INCOMPLETE` — nach Rahmen-Regel 18 (R202) Rückweisung ohne Prüfung. Das
+  // Urteil fällt der Architekt im Wareneingang, nicht diese Bahn; es steht hier,
+  // damit niemand die Frist für gedeckt hält. Import gehört A9.
+  "ch01/p2": { until: "2026-11-30", why: "Nachtklassenraum zieht den geteilten warmen Buchkörper unter einem violetten Laufkurs — AS5b lieferte dafür ein Blatt ohne Motiv (A7). Reparaturpfad AS5F §10.6 (R201, A8 2026-08-22) — vierte Bestellung der Familie, c/d/e zurückgewiesen, die vorliegende Lieferung meldet sich selbst als INCOMPLETE; Import A9. Gemessen nach R194 (farbneutraler nearPlaneTint): ΔH 138° -> 131°, die Fuge bleibt weit außerhalb der Familie" },
+  // ── ★ p3 IST RAUS, WEIL DIE AUSNAHME SCHAL WURDE (R5-W7 · A8, R194) ───────
+  // Hier stand: »Hof-Laufkurs ist 40,8 Punkte flacher gesättigt als das
+  // geteilte Papier darunter«. Gemessen an derselben Kunst, nach dem
+  // farbneutralen `nearPlaneTint`: **24,3** — innerhalb des 25er-Fensters, also
+  // kohärent, und dieses Tor meldet einen ungenutzten Verzicht selbst als rot
+  // (»carries a coherence waiver it no longer needs«). Genau dafür ist die
+  // Zeile gebaut, also fällt sie.
+  //
+  // 16,5 der 40,8 Punkte waren nie die Malerei: der Ton der Standfläche
+  // multiplizierte drei Kanäle verschieden und hat den Laufkurs entsättigt
+  // gezeichnet (D-184 schätzte »rund zwölf«, gemessen sind es hier 16,5).
+  // ⚠ ZWEI EHRLICHE FUSSNOTEN, damit der nächste Leser nicht mehr hineinliest,
+  // als hier steht:
+  //   · Der Abstand ist DÜNN — 24,3 gegen 25,0. Ein neu geliefertes Körper-
+  //     Blatt kann p3 zurück über die Linie schieben; dann kommt die Zeile
+  //     zurück, mit neuer Messung und neuem Datum.
+  //   · Kohärent heißt NICHT fertig. p3 zieht weiterhin das geteilte warme
+  //     Buchpapier unter seinem eigenen Laufkurs; die Bestellung §10 bleibt
+  //     offen. Was hier fiel, ist der GEMESSENE Fugen-Befund, nicht das Motiv.
+  "ch01/p4": { until: "2026-11-30", why: "Bühnen-Laufkurs steht 55° vom geteilten Körper ab — AS5b nicht importierbar (A7). Reparaturpfad AS5F §10.6 (R201, A8 2026-08-22) — vierte Bestellung, c/d/e zurückgewiesen, Lieferung meldet sich selbst als INCOMPLETE; Import A9. Gemessen nach R194: ΔH 56° -> 55°, ΔS 15,5 -> 15,8 — der Farbton-Bruch ist Malerei, nicht Motor" },
+  "ch01/p9": { until: "2026-11-30", why: "Kleckskammer zieht denselben warmen Körper unter einem tintigen Laufkurs — AS5b nicht importierbar (A7). Reparaturpfad AS5F §10.6 (R201, A8 2026-08-22) — vierte Bestellung, c/d/e zurückgewiesen, Lieferung meldet sich selbst als INCOMPLETE; Import A9. ⚠ Gemessen nach R194: ΔH 139° -> 132°, aber ΔS 24,3 -> 25,6 — dieser eine Wert wird SCHLECHTER und reißt jetzt auch die 25er-Linie. Genannt, nicht verschwiegen: p9 war und bleibt wegen ΔH ausgenommen, der Posten fällt mit derselben Bestellung" },
 };
 
 /** an expiry that is a DATE, not a sentence */
