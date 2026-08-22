@@ -169,6 +169,14 @@ dabei — die R5-Session verifiziert am Code, nie blind übernehmen (Specs rotte
   Befreite versammeln sich in den restaurierten Orten ihrer Kapitel. Die Copy
   (`PaintGame.tsx:1039/:1060/:1063/:1214`) verkauft das tote Konzept. Neu schreiben
   auf Allianz-in-restaurierten-Orten — UND SICHTBAR machen (D7). → COPY + LORE.
+  > **★ ERLEDIGT (K7, 2026-08-22).** Am Artefakt nachgemessen: die Spieler-Copy verkauft das tote
+  > Konzept **nicht mehr** — die Zeile der ersten Befreiung sagt heute »Alle, die du frei machst,
+  > bleiben hier auf der Seite.«, und die Konsolen-Karte nennt kein Lager. Was blieb, waren
+  > **Kommentare**, die die Streichung erklären und dabei die deutsche Formel zitieren; sie hatten
+  > keinen Kanon-Ort. Den haben sie jetzt: doc 44 §1.4 nennt »das Lager am Rand der Seite«
+  > ausdrücklich als **zurückgezogene Formel** (definiert, nicht gestrichen — eine Formel zu
+  > streichen macht die Kommentare, die sie zitieren, nur heimatlos). ⚠ Die Zeilennummern-Verweise
+  > oben sind Stand 2026-08-10 und heute verschoben; die Fundstellen wurden per Suche wiedergefunden.
 - **C10 · Bilanz-Zeilen erklären sich nicht** [15:06:02]. „Bonusbücher" gesammelt —
   wozu? (E/D8); „Regelseiten gefunden" — s. E-Programm. → COPY + Programm.
 - **C11 · Festgehalten, o. B.:** die klemmende Tür („Die Tür klemmt fest und wackelt,
@@ -553,7 +561,7 @@ dabei — die R5-Session verifiziert am Code, nie blind übernehmen (Specs rotte
 ---
 
 
-## Anhang · Rulings-Verzeichnis R154–R203 → Heimat (K6, 2026-08-21)
+## Anhang · Rulings-Verzeichnis R154–R210 → Heimat (K6, 2026-08-21 · fortgeschrieben von K7, 2026-08-22)
 
 _Fünfzig Entscheidungen aus vier Review-Runden (Welle 6, Welle 6b, P6-Review, drei Wareneingänge)
 standen bis heute **nur** in `PLATFORM MASTER/SESSION-PROMPTS/` in der iCloud. Eine Session, die
@@ -566,8 +574,10 @@ wird sie gelesen, dort wirkt sie. **»heimatlos«** ist kein Versäumnis, sonder
 zweimal aufzuschreiben erzeugt genau die zweite Wahrheit, gegen die diese Register gebaut sind. Jede
 heimatlose Zeile nennt **warum** und **wo sie wirkt**.
 
-**Stand: 2026-08-21 spät. Nächste freie Ruling: R204.** Was nach diesem Stempel geprägt wird,
-gehört der nächsten Kanon-Runde — dieses Verzeichnis ist ein Schnitt, kein wanderndes Ziel.
+**Stand: 2026-08-22 (K7). Nächste freie Ruling: R211.** Was nach diesem Stempel geprägt wird,
+gehört der nächsten Kanon-Runde (K8) — dieses Verzeichnis ist ein Schnitt, kein wanderndes Ziel.
+_(Voriger Schnitt: 2026-08-21 spät, K6, bis R203. Die sieben Zeilen R204–R210 hat K7 am 2026-08-22
+nachgezogen; ihr Wortlaut kommt aus dem Rulings-Abschnitt des Welle-7-Rahmenblattes, wo der Zähler lebt.)_
 
 | Ruling | Worum es geht | Heimat |
 |---|---|---|
@@ -621,6 +631,13 @@ gehört der nächsten Kanon-Runde — dieses Verzeichnis ist ein Schnitt, kein w
 | **R201** | Die datierten Ausnahmen (30.11., `SEAM_ALLOW` + `COHERENCE_WAIVERS`) binden sich an **AS5F** statt AS5d; die Register-Zeile nennt Pfad, Frist **und** Rundenzahl | heimatlos — `scripts/`-Konstanten in A8s geliehenen Blöcken; Register-Zeile in A8s Block |
 | **R202** | **Rahmen-Regel 18:** die Selbstauskunft einer Lieferung wird VOR der ersten Messung gelesen — `pass:false` oder ein `status` mit »INCOMPLETE« ist Rückweisung ohne Prüfung | heimatlos — Labor (`KOMMISSIONS_RAHMEN.md`, Regel 18) |
 | **R203** | Wareneingang 21.08. spät: AQ13C5 zurück → AQ13C6; zwei **gemessene** neue Ring-Gesetze (Adjazenz-Konsistenz, Vorzeichen-Gesetz) statt der falsch geeichten Zählschwellen | heimatlos — Labor + Bau-Auftrag **H5** (dieselben Fixturen wie R200) |
+| **R204** | **Mac-Verlust und Labor-Umbau** (21.08. nachts): der erste Mac ist nicht mehr zugänglich, mit ihm die Wareneingänge und Bestell-Texte der Welle 6b; dieser Rechner ist ab jetzt der Sitz. Folgen: C7 fährt NUR die Tor-Reparatur, F8 bootet ohne den Hüpfer-Import, D5 bootet sofort, die acht Farb-Importe wandern in eine C8 nach Re-Emission — und **jede Re-Emission ist eine NEUE Lieferung mit frischem Wareneingang**, nie ein rückwirkender Ersatz | heimatlos — Geräte- und Labor-Entscheid; die Folgen stehen im Schuld-Register als **D-538** (die Perf-Zahlen der ersten Maschine sind mit den heutigen nicht vergleichbar) und **D-543** (die acht nicht ausgeführten Importe) |
+| **R205** | Wareneingang 21.08. nachts: **AQ13C6 zurück** — die Naht bestand alle sechs bestehenden Gesetze und war trotzdem konstruiert (Kanal-Histogramme der Wrap-Differenz byte-identisch auf R=G=B, Nicht-Null-Werte nur ±6/±8/±10). Zwei neue **geeichte** Gesetze: (vii) mindestens 30 % kleine Differenzen, (viii) höchstens 60 % kanal-uniform | `docs/art/import-batch-aq13.mjs#abnahmeRing` — H5 hat (vii) und (viii) dort gebaut, mit c6 als sechster Sperr-Prüfsumme |
+| **R206** | **Vier Bahnen heim** (K6 · C7 · F8 · D5): K6s Prämissen-Korrektur angenommen (die Kreidestaub-Rutsche IST gebaut) · C7s automatische Achsen-Herleitung ist nach drei Strikes tot, gezählt und benannt wird ab jetzt JE ZELLE · F8: D-450 geschlossen, die Proportions-Runde D-476 ist eine CODE-Runde · D5: AQ17E ist bestell-fähig. ⚠ Für die C8-Bestellung bindend: die Buch-Kartenzeilen sind **229/232/235/244** | heimatlos — Merge- und Wareneingangs-Runde; die Ziele stehen als **D-450**, **D-476** und **D-542** im Schuld-Register |
+| **R207** | **Der Zug ist durch** (acht PRs in der bestellten Folge) — plus der **Audio-Pivot** (Koki übernimmt den kreativen Sitz selbst und baut die Klänge in ElevenLabs; das SOUND-STUDIO ersetzt die KI-Neuerzeugung) und die Wareneingangs-Warnung, dass **alle 54 Bilddateien der vierten AS5-Lieferung bytegleich mit der dritten sind** | heimatlos — Zug-Protokoll, Kokis eigener Audio-Sitz (SOUND-STUDIO, iCloud) und die Codex-Schlange; im Repo wirkt der Pivot über **D-483** (die gemessene Messbasis von Kokis Qualitätsurteil) |
+| **R208** | **Codex ist pausiert** (R208/0 — keine Bahn wartet mehr auf eine Lieferung) und sechs delegierte Entscheide: H5 entkoppelt · die c6-Rückweisung aufrechterhalten · **D-418 als »Schmutzfleck« geschlossen** (kein Schaden nachgewiesen, Präzedenz R192) · das Legenden-Raster bleibt · cloth-take [3, 4] bestätigt · K6s fünf Tore beantwortet | geteilt: die Schlange ist heimatlos (Labor, iCloud) — **die Schließung von D-418 ist im Schuld-Register bis heute NICHT gebucht**, dort wartet **D-470** weiter auf »Route: Architekt«. K7 hat sie nicht mitgebucht, weil sein Auftrag genau drei Schließungen nennt; gemeldet an den Architekten |
+| **R209** | **Die P7/H5-Nachlese:** (a) D-270 geschlossen, D-491 fällt mit — beide Adressen, sonst lebt die Schuld unter der zweiten weiter · (b) das Heft geschlossen mit »zu voll«, Ausdünnung an B6 unter dem 22-Spalten-Gesetz · (c) Band-Rückbau · (d) Lebensanzeige: erst der Treiber, dann die Form · (e) Grad-Fenster 32–41° gemessen statt getippt · (f) Pin-Wächter für das Blatt-Werkzeug · (g) der Referenzsatz ist 7 von 7 wiederhergestellt · (h) B12 geparkt · (i) P7s Werkzeug-Posten verteilt | `docs/design/g1/paint/DEBT_REGISTER.md#R209a` — (a) und (b) sind dort gebucht (D-270, D-491 und die neue Heft-Zeile). (c)–(i) heimatlos, je bei ihrer Bahn: F9 · S4 · W7 |
+| **R210** | **Welle 8 = »die Gestalt-Welle«** (P7-Tor 3): sechs Bahnen, von denen keine eine Code-Datei mit einer anderen teilt, Codex-frei — K7 → D6 → F9 → S4 → B6 → W7. K7 bootet sofort und trägt den Register-Pre-Seed; die fünf anderen booten nach seinem Merge | `docs/design/g1/paint/DEBT_REGISTER.md#R210` — der Pre-Seed-Abschnitt der Welle 8 nennt das Ruling und trägt die sechs Blöcke |
 
 **Die Zahlen dieses Verzeichnisses** *(selbst gemessen am 2026-08-21, nicht aus dem Auftrag
 übernommen)*: von den fünfzig Rulings hatten **sechs** vor dieser Runde überhaupt eine Erwähnung im
@@ -633,6 +650,13 @@ Entscheidungen lebt im Code, im Kunst-Labor oder im Zuschnitt einer Welle, und s
 wiederholen wäre die zweite Wahrheit, nicht die Ordnung. *(Der Auftrag nannte vier statt sechs
 vorgefundene Orte; R165 und R173 kamen mit dem Register-Pre-Seed der Welle 7 dazu und wurden hier
 nachgemessen.)*
+
+**Die sieben Zeilen der K7-Runde (R204–R210), selbst gezählt am 2026-08-22:** **drei** haben einen Ort
+im Repo — R205 (das Ring-Tor im aq13-Importeur), R209 und R210 (beide im Schulden-Register, gebucht mit
+diesem PR) —, **drei** sind ausgewiesen heimatlos (R204 Gerät/Labor · R206 Merge-Runde · R207
+Zug + Audio-Sitz), und **eine ist geteilt und zugleich unvollständig**: R208 hat D-418 geschlossen, aber
+die Buchung im Schulden-Register steht bis heute aus. Damit trägt dieses Verzeichnis **57** Rulings,
+**26** davon mit einem Ort im Repo. Die Zahl ist gezählt, nicht fortgeschrieben.
 
 ## Anhang · Asset-Bedarfs-Kandidaten (R5 schreibt die Prompts; nichts davon blockiert)
 
