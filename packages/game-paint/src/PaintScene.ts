@@ -19,7 +19,7 @@ import { type AudioDirector, surfaceOfPhase } from "./audio/index.ts";
 import { captiveStem, isCaptiveKey } from "./artManifest.ts";
 import { TextureWarmer, type WarmScene, type WarmStats } from "./warmer.ts";
 import { WARM_MPX_PER_FRAME } from "./warm.ts";
-import { PatternLedger } from "./tilePatterns.ts";
+import { buildOncePerKey, PatternLedger } from "./tilePatterns.ts";
 import { type LayerPiece, coverFit, planLayers } from "./layers.ts";
 import { AIR_DEPTH, LIFE_PARALLAX, type AirPiece, planBandShade, planHaze, planLife, planMotes, planShafts, planSources, shaftQuads, vignetteBands } from "./air.ts";
 import { type Cell, cellsOf, indexTerrain, mergeRowMajor, runsFrom } from "./terrain.ts";
@@ -1242,7 +1242,14 @@ export class PaintScene extends Phaser.Scene {
     // them back exactly once. Registered HERE and not beside the warmer's own
     // shutdown hook, because that one is skipped entirely under `?warm=0` —
     // and a teacher's diagnostic switch must never change what gets freed.
-    this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => this.releaseTilePatterns());
+    this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => {
+      this.unpatchTileBuild?.();
+      this.unpatchTileBuild = null;
+      this.releaseTilePatterns();
+    });
+    // R5-W7 · E8 · D-431: MUSS vor dem ersten `tiled()` stehen — der erste
+    // Aufruf kommt aus `backdrop`, zwei Zeilen weiter unten.
+    this.patchTileBuild();
     this.timed("fallbackTextures", () => this.buildFallbackTextures());
     this.timed("backdrop", () => this.buildBackdrop());
     this.timed("air", () => this.buildAir());
@@ -1338,8 +1345,13 @@ export class PaintScene extends Phaser.Scene {
     // ist unser eigenes Muster-Tauschen aus E5s Ledger.
     const quer = "quer durch create() (steckt schon oben drin)";
     this.buildMs.push({ step: "· Phaser-TileSprite-Konstruktor", ms: this.ctorMs, parent: quer });
-    this.buildMs.push({ step: "· unser Muster-Tausch (E5-Ledger)", ms: this.swapMs, parent: quer });
+    // R5-W7 · E8 · D-431: was davon WIRKLICH ein Muster baut. Ohne diese Zeile
+    // sieht ein Leser nicht, ob die Umhängung greift oder ob sie still fehlt.
+    this.buildMs.push({ step: "· davon echter Musterbau (erstes Sprite je Blatt)", ms: this.ctorBuildMs, parent: quer });
+    this.buildMs.push({ step: "· unsere Buchhaltung (preDestroy-Haken)", ms: this.swapMs, parent: quer });
     this.buildMs.push({ step: "· Kachel-Sprites — STÜCK, nicht ms", ms: this.tileCount, parent: quer });
+    this.buildMs.push({ step: "· Muster gebaut — STÜCK, nicht ms", ms: this.tilePatterns.kept, parent: quer });
+    this.buildMs.push({ step: "· Bauten gespart — STÜCK, nicht ms", ms: this.tilePatterns.served, parent: quer });
     // R5-W6 · S2 · DIE BANK KOMMT NACH create(), NIE IM preload.
     //
     // Bewusst hier und bewusst NICHT `timed`: der Aufruf gibt sofort zurück und
@@ -4544,15 +4556,15 @@ export class PaintScene extends Phaser.Scene {
    * existed: 933 GL textures / 452 MB resident for p2, against 527 texture keys
    * / 111 MB of actual source pixels.
    *
-   * The copies are identical whenever the source frame is, so the ledger keeps
-   * the first and hands every duplicate straight back. What stays per-object is
+   * The copies are identical whenever the source frame is, so exactly one is
+   * built per source frame (see `patchTileBuild`). What stays per-object is
    * everything that makes a piece look like itself — tile scale, tile offset,
    * tint, alpha, depth, scroll factor — because those are applied at draw time
    * and never touch the shared picture.
    *
-   * `dirty = false` stops the sprite regenerating over the shared pattern, and
-   * `preDestroy` is taught to let go of it: without that, destroying one piece
-   * would delete a texture its siblings are still drawing with.
+   * `preDestroy` is taught to let go of the shared pattern: without that,
+   * destroying one piece would delete a texture its siblings are still drawing
+   * with. The scene frees them once, at shutdown (`releaseTilePatterns`).
    */
   private tiled(x: number, y: number, w: number, h: number, key: string): Phaser.GameObjects.TileSprite {
     const tCtor = performance.now();
@@ -4560,17 +4572,7 @@ export class PaintScene extends Phaser.Scene {
     this.ctorMs += performance.now() - tCtor;
     this.tileCount += 1;
     const tSwap = performance.now();
-    const raw = t as unknown as { fillPattern: object | null; dirty: boolean; preDestroy: () => void };
-    const own = raw.fillPattern;
-    if (own !== null && own !== undefined) {
-      const { use, handBack } = this.tilePatterns.claim(key, own);
-      if (handBack !== null) {
-        const renderer = this.sys.renderer as unknown as { deleteTexture?: (tex: object) => void };
-        renderer.deleteTexture?.(handBack);
-      }
-      raw.fillPattern = use;
-      raw.dirty = false;
-    }
+    const raw = t as unknown as { fillPattern: object | null; preDestroy: () => void };
     const inherited = raw.preDestroy;
     raw.preDestroy = function (this: typeof raw): void {
       this.fillPattern = null; // the scene owns it; deleteTexture(null) is a no-op
@@ -4580,8 +4582,101 @@ export class PaintScene extends Phaser.Scene {
     return t;
   }
 
-  /** R5-W6b · E7 · Messfelder: Phasers TileSprite-Konstruktor gegen unser Tauschen. */
+  /**
+   * ★ R5-W7 · E8 · D-431 · DAS TEUERSTE STÜCK VON create() FINDET NICHT MEHR STATT.
+   *
+   * WAS PHASER TUT, aus seiner eigenen Quelle gelesen (3.90.0,
+   * `gameobjects/tilesprite/TileSprite.js`): der Konstruktor legt eine Leinwand
+   * in Zweierpotenz-Größe der QUELLE an (`:277 CanvasPool.create2D(potWidth,
+   * potHeight)`), ruft `:300 setFrame` → `:363 updateTileTexture`, und das
+   * zeichnet das ganze Blatt in diese Leinwand (`:460 drawImage`) und fährt sie
+   * zur Grafikkarte (`:470 canvasToTexture` → `WebGLRenderer:3090
+   * createTexture2D`). Bei einem 512²-Blatt sind das 512×512 Bildpunkte je
+   * Sprite — und ein Raum schneidet 145 bis 331 Sprites aus einer Handvoll
+   * Blättern. E5 hat das Duplikat danach zurückgegeben; gebaut und hochgeladen
+   * war es da schon. E7 hat gemessen, was das kostet: **der größte einzelne
+   * Block in `create()`**.
+   *
+   * WAS HIER PASSIERT. `updateTileTexture` wird für die Lebensdauer dieser
+   * Szene umgehängt: ist für dieses Blatt (Textur-Schlüssel + Bild-Name) schon
+   * ein Muster da, wird es ZUGEWIESEN statt gebaut — kein `drawImage`, keine
+   * Fahrt zur Grafikkarte. Nur das erste Sprite je Blatt läuft durch den
+   * Originalpfad, und sein Ergebnis wandert in den Ledger.
+   *
+   * `updateCanvas()` bleibt Pflicht und wird ausdrücklich mitgerufen: es setzt
+   * die Anzeige-Leinwand auf die Stückgröße, ruft `frame.setSize` und
+   * `updateDisplayOrigin` — im WebGL-Zweig kehrt es danach sofort zurück
+   * (`TileSprite.js:509`), tut aber genau die drei Dinge, ohne die das Stück
+   * seine Maße verlöre. Was das Bild ausmacht, hängt an anderen Feldern:
+   * `displayFrame` (die Kachel-UVs), `tileScale`, `tilePosition`, `tint`,
+   * `alpha` — alle unberührt, alle je Objekt (`TileSpriteWebGLRenderer.js`).
+   *
+   * WARUM PROTOTYP UND NICHT NACHTRÄGLICH. Nachträglich hieße: bauen, dann
+   * wegwerfen — das ist genau die Runde, die 30 bis 107 ms kostet. Und warum
+   * nicht global: der Zweig prüft `this.scene`, ein fremdes TileSprite läuft
+   * unverändert durch den Originalpfad, und bei SHUTDOWN wird zurückgehängt.
+   *
+   * OHNE GRAFIKKARTE (Leinwand-Renderer, kopflos) bleibt alles beim Alten: dort
+   * ist `fillPattern` ein `CanvasPattern` an der EIGENEN Leinwand des Sprites
+   * (`TileSprite.js:479`) — den kann kein zweites Sprite mitbenutzen, und der
+   * Speicher-Befund D-32 ist ein reiner Grafikkarten-Befund.
+   */
+  private unpatchTileBuild: (() => void) | null = null;
+
+  private patchTileBuild(): void {
+    if (this.unpatchTileBuild !== null) return; // create() läuft je Szene einmal
+    // Phasers Interna, so eng getippt wie dieser eine Zweig sie anfasst — der
+    // Typ steht hier und nicht im Modulkopf, damit kein anderer Code ihn erbt.
+    type TileSpriteBuild = {
+      scene: unknown;
+      dirty: boolean;
+      renderer: { gl?: unknown } | null;
+      displayTexture: { key: string } | null;
+      displayFrame: { name: string } | null;
+      fillPattern: object | null;
+      updateCanvas: () => void;
+      updateTileTexture: () => void;
+    };
+    const proto = Phaser.GameObjects.TileSprite.prototype as unknown as TileSpriteBuild;
+    const inherited = proto.updateTileTexture;
+    const scene = this;
+    const mine = function (this: TileSpriteBuild): void {
+      if (this.scene !== scene || this.dirty !== true || this.renderer?.gl == null) {
+        inherited.call(this);
+        return;
+      }
+      const key = `${this.displayTexture?.key ?? "?"}|${this.displayFrame?.name ?? "?"}`;
+      buildOncePerKey(
+        scene.tilePatterns,
+        key,
+        () => {
+          const t0 = performance.now();
+          inherited.call(this);
+          scene.ctorBuildMs += performance.now() - t0;
+          return this.fillPattern;
+        },
+        (pattern) => {
+          this.fillPattern = pattern;
+          this.updateCanvas(); // Anzeigemaß, frame.setSize, Ursprung — TileSprite.js:494
+          this.dirty = false;
+        },
+      );
+    };
+    proto.updateTileTexture = mine;
+    // R5-W7 · E8: NUR zurückhängen, wenn oben noch meins liegt. Beim Raumwechsel
+    // kann eine zweite Szene schon darüber gehängt haben (`handoff` baut die neue
+    // Szene, die alte meldet danach SHUTDOWN) — ein blindes Zurückhängen würde
+    // die jüngere Umhängung auslöschen, und der neue Raum baute wieder jedes
+    // Muster einzeln, ohne dass irgendetwas rot würde.
+    this.unpatchTileBuild = () => {
+      if (proto.updateTileTexture === mine) proto.updateTileTexture = inherited;
+    };
+  }
+
+  /** R5-W6b · E7 / R5-W7 · E8 · Messfelder: Phasers Konstruktor, davon der echte
+   *  Musterbau (erstes Sprite je Blatt), und unsere eigene Buchhaltung. */
   private ctorMs = 0;
+  private ctorBuildMs = 0;
   private swapMs = 0;
   private tileCount = 0;
 

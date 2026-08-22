@@ -33,35 +33,50 @@
  *
  * This file is deliberately free of Phaser: it is the bookkeeping, and the
  * bookkeeping is what a test can prove without a graphics card.
+ *
+ * ── R5-W7 · E8 · D-431 · GEFRAGT WIRD JETZT VORHER, NICHT NACHHER ───────────
+ *
+ * E5 hat das Duplikat ZURUECKGEGEBEN — gebaut und zur Grafikkarte gefahren war
+ * es da schon. E7 hat gemessen, was dieses Bauen kostet: Phasers TileSprite-
+ * Konstruktor 30–107 ms je Raum (145–331 Sprites), gegen 0,1–0,7 ms fuer das
+ * Zurueckgeben. Der Speicher war repariert, die BAUZEIT nicht.
+ *
+ * Deshalb heisst die Frage jetzt `serve(key)` und sie wird gestellt, BEVOR
+ * gebaut wird: kommt ein Muster zurueck, findet der Bau nicht statt; kommt
+ * `null`, baut der Aufrufer einmal und legt das Ergebnis mit `keep` hierher.
+ * Dieselbe Buchhaltung, dieselbe Eigentumsregel — nur eine Runde frueher.
  */
 
-export interface Claim<T> {
-  /** the pattern this sprite should draw with */
-  use: T;
-  /** the duplicate to hand back to the renderer, or null if this one is kept */
-  handBack: T | null;
-}
-
 /**
- * Keeps one pattern per texture key and reports what it handed back, so the
- * saving is a number a test can assert rather than a claim in a comment.
+ * Keeps one pattern per texture key and reports how many builds it spared, so
+ * the saving is a number a test can assert rather than a claim in a comment.
  */
 export class PatternLedger<T> {
   private readonly byKey = new Map<string, T>();
-  private handedBackCount = 0;
+  private servedCount = 0;
 
   /**
-   * Offer a freshly built sprite's own pattern. The first one for a key is
-   * kept and used; every later one is handed back and the kept one is used.
+   * Ask BEFORE building. `null` means: nothing is held for this key yet — build
+   * the pattern once and hand the result to `keep`. Anything else is the
+   * pattern to draw with, and **the build must not happen at all**.
    */
-  claim(key: string, own: T): Claim<T> {
+  serve(key: string): T | null {
     const held = this.byKey.get(key);
-    if (held === undefined) {
-      this.byKey.set(key, own);
-      return { use: own, handBack: null };
+    if (held === undefined) return null;
+    this.servedCount += 1;
+    return held;
+  }
+
+  /**
+   * Record the one pattern every later sprite of this key will share. The first
+   * one wins; a second `keep` for the same key would orphan a texture the scene
+   * still owes the renderer, so it is refused loudly rather than silently.
+   */
+  keep(key: string, own: T): void {
+    if (this.byKey.has(key)) {
+      throw new Error(`PatternLedger: ${key} is already kept — ask serve() before building`);
     }
-    this.handedBackCount += 1;
-    return { use: held, handBack: own };
+    this.byKey.set(key, own);
   }
 
   /** every pattern the scene owns and must delete at shutdown */
@@ -74,13 +89,39 @@ export class PatternLedger<T> {
     return this.byKey.size;
   }
 
-  /** how many duplicate GPU textures were never left to accumulate */
-  get handedBack(): number {
-    return this.handedBackCount;
+  /** how many power-of-two canvases + GPU uploads never happened */
+  get served(): number {
+    return this.servedCount;
   }
 
   clear(): void {
     this.byKey.clear();
-    this.handedBackCount = 0;
+    this.servedCount = 0;
   }
+}
+
+/**
+ * R5-W7 · E8 · D-431 · DIE GANZE ENTSCHEIDUNG, AN EINER STELLE.
+ *
+ * `build` läuft NUR, wenn für diesen Schlüssel noch nichts da ist; was es
+ * zurückgibt, wird behalten und geteilt. Für jedes spätere Stück desselben
+ * Blattes läuft `reuse` — und `build` findet nicht statt.
+ *
+ * Sie steht hier und nicht in der Szene, weil ein Test sie dann ohne
+ * Grafikkarte fahren kann: dieselbe Funktion, die im Browser läuft, nicht eine
+ * zweite Abschrift davon.
+ */
+export function buildOncePerKey<T>(
+  ledger: PatternLedger<T>,
+  key: string,
+  build: () => T | null,
+  reuse: (pattern: T) => void,
+): void {
+  const held = ledger.serve(key);
+  if (held !== null) {
+    reuse(held);
+    return;
+  }
+  const own = build();
+  if (own !== null) ledger.keep(key, own);
 }
