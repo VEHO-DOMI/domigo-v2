@@ -19,6 +19,20 @@
 //
 // Die Antwort auf beides steht hier, EINMAL, für beide Werkzeuge.
 //
+// ⚠ WAS BEIM ERSTEN ANLAUF FALSCH WAR, UND WIE ES AUFFLOG (W6, 22.08.).
+// Die erste Fassung hielt jeden Chrome mit UNSEREM Profil-Praefix fuer einen
+// eigenen verwaisten und haette ihn beendet. Waehrend dieser Sitzung mass eine
+// ZWEITE Sitzung (E8) auf demselben Rechner mit demselben Skript — also mit
+// demselben Praefix `perf-visible-chrome-`. Ein Start von `perf-visible` haette
+// ihr die laufende Messung abgeschossen. Der Praefix sagt, WELCHES WERKZEUG den
+// Browser gestartet hat, nie WER ihn gestartet hat; das ist ein Unterschied,
+// und er kostet eine fremde Messung.
+// Das Gesetz heisst deshalb woertlich, was es meint: VERWAIST ist ein Browser,
+// dessen ERZEUGER WEG IST. Ein Kindprozess, dessen Elternprozess stirbt, wird
+// von launchd/init adoptiert und traegt danach `ppid = 1` — das ist die
+// Definition, nicht ein Indiz. Ein fremder Lauf, der GERADE MISST, hat einen
+// lebenden Elternprozess und wird nie angefasst.
+//
 // WARUM NICHT `pgrep -f`. W5s Falle 2 (art-recompress) hat es teuer gemacht:
 // ein Muster über die ganze Kommandozeile trifft auch den, der gerade sucht.
 // Gelesen wird deshalb die PROZESSTABELLE (`ps -axo pid=,command=`) und
@@ -45,20 +59,25 @@ import { pathToFileURL } from "node:url";
 export const eigeneChromes = (psOut, chromeBin, profilePrefix) => {
   const treffer = [];
   for (const line of String(psOut).split("\n")) {
-    const m = line.match(/^\s*(\d+)\s+(.*)$/);
+    const m = line.match(/^\s*(\d+)\s+(\d+)\s+(.*)$/);
     if (m === null) continue;
-    const [, pid, cmd] = m;
+    const [, pid, ppid, cmd] = m;
     if (!cmd.startsWith(chromeBin)) continue;               // fremdes Programm
     if (!cmd.includes(`--user-data-dir=`)) continue;        // ohne Profil: nicht unserer
     if (!cmd.includes(profilePrefix)) continue;             // fremdes Profil
-    treffer.push({ pid: Number(pid), cmd });
+    treffer.push({ pid: Number(pid), ppid: Number(ppid), cmd });
   }
   return treffer;
 };
 
+/** VERWAIST heisst: der Erzeuger ist weg. Ein Kindprozess, dessen Elternprozess
+ *  stirbt, wird adoptiert und traegt danach `ppid = 1`. Ein fremder Lauf, der
+ *  gerade misst, hat einen lebenden Elternprozess — und wird nie angefasst. */
+export const verwaist = (p) => p.ppid === 1;
+
 const ps = () => {
   try {
-    return execFileSync("ps", ["-axo", "pid=,command="], { encoding: "utf8", maxBuffer: 16 * 1024 * 1024 });
+    return execFileSync("ps", ["-axo", "pid=,ppid=,command="], { encoding: "utf8", maxBuffer: 16 * 1024 * 1024 });
   } catch {
     return ""; // keine Prozesstabelle: dann gibt es auch nichts zu räumen
   }
@@ -76,15 +95,24 @@ export const eigeneChromesJetzt = (chromeBin, profilePrefix) =>
  * @returns {number} wie viele geräumt wurden
  */
 export const raeumeVerwaisteProfile = (chromeBin, profilePrefix, ausserPid = process.pid) => {
-  const offen = eigeneChromesJetzt(chromeBin, profilePrefix).filter((p) => p.pid !== ausserPid);
-  if (offen.length === 0) return 0;
-  console.warn(`⚠ ${offen.length} verwaiste(r) EIGENE(r) Chrome aus einem früheren Lauf gefunden `
-    + `(Profil-Präfix ${profilePrefix}) — das ist W5s Falle 1, und der nächste Lauf würde daran hängen. `
-    + `Wird beendet: PID ${offen.map((p) => p.pid).join(", ")}`);
-  for (const p of offen) {
+  const alle = eigeneChromesJetzt(chromeBin, profilePrefix).filter((p) => p.pid !== ausserPid);
+  const tot = alle.filter(verwaist);
+  const lebendig = alle.filter((p) => !verwaist(p));
+  // Ein fremder LAUFENDER Lauf ist keine Leiche, sondern LAST — und Last gehört
+  // gemeldet (D-339), damit die nächste Messung weiss, wogegen sie misst.
+  if (lebendig.length > 0) {
+    console.warn(`⚠ ${lebendig.length} Chrome mit dem Profil-Präfix ${profilePrefix} laufen mit LEBENDEM `
+      + `Elternprozess — das ist eine ANDERE Sitzung, die gerade misst (PID ${lebendig.map((p) => `${p.pid}←${p.ppid}`).join(", ")}). `
+      + "Sie werden NICHT angefasst. Für eine belastbare Perf-Zahl erst warten, bis sie fertig ist (R115/D-339).");
+  }
+  if (tot.length === 0) return 0;
+  console.warn(`⚠ ${tot.length} VERWAISTE(R) Chrome aus einem abgebrochenen Lauf gefunden `
+    + `(Profil-Präfix ${profilePrefix}, Elternprozess weg) — das ist W5s Falle 1, und der nächste Lauf `
+    + `würde daran hängen. Wird beendet: PID ${tot.map((p) => p.pid).join(", ")}`);
+  for (const p of tot) {
     try { process.kill(p.pid, "SIGTERM"); } catch { /* schon weg */ }
   }
-  return offen.length;
+  return tot.length;
 };
 
 /**
@@ -133,20 +161,30 @@ if (istEinstieg && process.argv.includes("--selftest")) {
   const PRAEFIX = "perf-visible-chrome-";
   const tabelle = [
     echt.trimEnd(),
-    `  90001 ${BIN} --headless=new --user-data-dir=/var/folders/x/${PRAEFIX}abc123 --remote-debugging-port=0`,
-    `  90002 ${BIN} --user-data-dir=/Users/jemand/Library/Application Support/Google/Chrome`,
-    `  90003 ${BIN}`,
-    `  90004 /opt/homebrew/bin/node scripts/perf-visible.mjs --profil ${PRAEFIX}abc123`,
+    // verwaist: der Erzeuger ist weg (ppid 1) — das ist W5s Falle 1
+    `  90001     1 ${BIN} --headless=new --user-data-dir=/var/folders/x/${PRAEFIX}abc123 --remote-debugging-port=0`,
+    // ⚠ DER FALL, DER DIESES GESETZ GEKOSTET HAT: dasselbe Werkzeug, dasselbe
+    //   Praefix, ABER ein lebender Elternprozess — eine ANDERE Sitzung misst
+    //   gerade (am 22.08. wirklich passiert: E8 auf demselben Rechner).
+    `  90005 90004 ${BIN} --headless=new --user-data-dir=/var/folders/x/${PRAEFIX}xyz789 --remote-debugging-port=0`,
+    `  90002     1 ${BIN} --user-data-dir=/Users/jemand/Library/Application Support/Google/Chrome`,
+    `  90003     1 ${BIN}`,
+    `  90004     1 /opt/homebrew/bin/node scripts/perf-visible.mjs --profil ${PRAEFIX}abc123`,
   ].join("\n");
 
   const gefunden = eigeneChromes(tabelle, BIN, PRAEFIX);
   const pids = gefunden.map((g) => g.pid).sort();
+  const zuToeten = gefunden.filter(verwaist).map((g) => g.pid).sort();
   let bad = 0;
   const pruefe = (name, ok, was) => {
     if (ok) console.log(`  ✓ ${name}`);
     else { bad++; console.error(`  ✗ ${name} — ${was}`); }
   };
-  pruefe("der eigene Chrome wird gefunden", pids.includes(90001), `gefunden: ${pids.join(", ")}`);
+  pruefe("ein Chrome mit unserem Praefix wird gefunden", pids.includes(90001), `gefunden: ${pids.join(", ")}`);
+  pruefe("VERWAIST (Elternprozess weg) wird beendet", zuToeten.includes(90001), `zu beenden: ${zuToeten.join(", ")}`);
+  pruefe("★ ein FREMDER Lauf mit demselben Praefix und LEBENDEM Elternprozess wird NICHT beendet",
+    pids.includes(90005) && !zuToeten.includes(90005),
+    "eine laufende Messung einer anderen Sitzung waere abgeschossen worden — genau der Fall vom 22.08.");
   pruefe("ein fremder Chrome mit fremdem Profil bleibt unangetastet", !pids.includes(90002), "er wurde als eigener gezählt");
   pruefe("ein fremder Chrome ohne Profil bleibt unangetastet", !pids.includes(90003), "er wurde als eigener gezählt");
   pruefe("ein NODE-Prozess, der das Präfix nur ERWÄHNT, zählt nicht (die pgrep -f-Falle)",
@@ -156,7 +194,8 @@ if (istEinstieg && process.argv.includes("--selftest")) {
     "eine Zeile ohne unser Präfix wurde als eigene gezählt");
 
   if (bad > 0) { console.error("chrome-hygiene --selftest: FEHLGESCHLAGEN"); process.exit(1); }
-  console.log("chrome-hygiene --selftest: OK — 5 Fälle; eigene Profile werden erkannt, "
-    + "fremde Browser nie, und die pgrep -f-Selbstfindung ist ausgeschlossen");
+  console.log("chrome-hygiene --selftest: OK — 7 Fälle; VERWAISTE eigene Profile werden beendet, "
+    + "eine LAUFENDE fremde Messung mit demselben Präfix nie, fremde Browser nie, "
+    + "und die pgrep -f-Selbstfindung ist ausgeschlossen");
   process.exit(0);
 }

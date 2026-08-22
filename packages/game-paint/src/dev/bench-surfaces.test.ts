@@ -15,9 +15,33 @@ const root = path.resolve(__dirname, "../../../..");
 const gallery = fs.readFileSync(path.join(root, "packages/game-paint/src/dev/CardGallery.tsx"), "utf8");
 const bench = fs.readFileSync(path.join(root, "scripts/shoot-card-bench.mjs"), "utf8");
 
-/** every id the gallery registers, from its two registrar calls. */
+// ── R5-W7 · W6 · DIE LISTE DER MELDER WAR SELBST EINE DRIFT-KLASSE ──────────
+//
+// Die Suche oben kannte GENAU ZWEI Melder (`card` und `ceremony`) und war damit
+// gegen einen DRITTEN blind: W6 hat `answerHome` fuer den Verdikt-Takt gebaut,
+// und dieser Wächter meldete daraufhin nicht »eine Fläche fehlt«, sondern
+// »der Schütze nennt eine Fläche, die es in der Galerie nicht gibt« — die
+// richtige Beobachtung mit der falschen Ursache. Genau das Muster, gegen das
+// dieser Test gebaut wurde, eine Ebene höher.
+//
+// Gelesen wird deshalb der ARRAY-KÖRPER und nicht die Datei: jeder Aufruf auf
+// der obersten Ebene von `const surfaces: Surface[] = [ … ]` ist ein Melder,
+// wie immer er heisst. Trägt einer keine id als erstes Argument, ist DAS der
+// Befund — statt dass er stillschweigend aus der Menge fällt.
+const surfacesBlock = (): string => {
+  const m = /const surfaces: Surface\[\] = \[([\s\S]*?)\n  \];/.exec(gallery);
+  if (m === null) throw new Error("das surfaces-Array nicht gefunden — die Suche ist blind, nicht grün");
+  return m[1]!;
+};
+
+/** jeder Melder-Aufruf auf der obersten Ebene des Arrays: [name, id|null] */
+const gallerySurfaceCalls = (): { name: string; id: string | null }[] =>
+  [...surfacesBlock().matchAll(/^ {4}([A-Za-z][A-Za-z0-9_]*)\(\s*(?:"([a-z0-9-]+)")?/gm)]
+    .map((m) => ({ name: m[1]!, id: m[2] ?? null }));
+
+/** every id the gallery registers, whatever the registrar is called. */
 const gallerySurfaces = (): string[] =>
-  [...gallery.matchAll(/\b(?:card|ceremony)\(\s*"([a-z0-9-]+)"/g)].map((m) => m[1]!);
+  gallerySurfaceCalls().map((c) => c.id).filter((id): id is string => id !== null);
 
 /** the exported list the shooter walks. */
 const benchSurfaces = (): string[] => {
@@ -41,5 +65,12 @@ describe("the card bench and the shooter agree", () => {
   it("the shooter names no surface the gallery does not have", () => {
     const have = new Set(gallerySurfaces());
     expect(benchSurfaces().filter((s) => !have.has(s))).toEqual([]);
+  });
+
+  // R5-W7 · W6: …und kein Melder faellt still aus der Menge. Ein Aufruf im
+  // Array ohne id als erstes Argument waere eine Flaeche, die dieser Waechter
+  // nicht sieht — und damit die Luecke, die er schliessen soll.
+  it("every registrar in the array yields an id (no silent third registrar)", () => {
+    expect(gallerySurfaceCalls().filter((c) => c.id === null)).toEqual([]);
   });
 });
