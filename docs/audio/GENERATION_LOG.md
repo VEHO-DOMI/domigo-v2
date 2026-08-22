@@ -300,3 +300,49 @@ Takes: 219 erzeugt/vorhanden, 0 Fehler · Musik-Sekunden: 708
 | `music-win` | 2 | music | 3 | 0 | 48946 | `1eb54f0483a5` | 5926 ms | erzeugt |
 | `music-win` | 1 | music | 3 | 0 | 48946 | `4793a9caebf0` | 6840 ms | erzeugt |
 | `music-win` | 3 | music | 3 | 0 | 48946 | `dbd3ea3121f8` | 5867 ms | erzeugt |
+
+## Lauf 2026-08-22 05:58 — nur cloth-take
+
+Konto vorher: creator/active, 20273/300000 ·
+nachher: 20273/300000 ·
+**Kontodifferenz: 0** ·
+**Summe `character-cost`: 0**
+
+> Die beiden Zahlen messen NICHT dasselbe (gemessen 17.08.2026): fuer **Musik** meldet der
+> Header `character-cost` **0**, waehrend das Konto sich bewegt (45 s ≙ 1198 Credits); fuer
+> **Effekte** meldet der Header einen Wert (0,5 s ≙ 5), waehrend das Konto **stehen bleibt**.
+> Massgeblich ist deshalb die **Kontodifferenz**; der Header ist ein Signal je Anfrage, keine
+> Summe. Weichen beide auf eine dritte Weise ab, koennte jemand anderes dasselbe Konto benutzen —
+> dann gehoeren beide Zahlen mit diesem Vermerk in den Report.
+Takes: 0 erzeugt/vorhanden, 5 Fehler · Musik-Sekunden: 0
+
+| Stem | Take | Art | Sek. | Credits | Bytes | sha1 | Dauer | Verdikt |
+|---|---|---|---|---|---|---|---|---|
+| `cloth-take` | 1 | sfx | 0.5 | 0 | 0 | `—` | 0 ms | FEHLER: cloth-take: HTTP 400 — {"detail":{"type":"validation_error","code":"text_too_long","message":"Invalid text length receiv |
+| `cloth-take` | 2 | sfx | 0.5 | 0 | 0 | `—` | 0 ms | FEHLER: cloth-take: HTTP 400 — {"detail":{"type":"validation_error","code":"text_too_long","message":"Invalid text length receiv |
+| `cloth-take` | 3 | sfx | 0.5 | 0 | 0 | `—` | 0 ms | FEHLER: cloth-take: HTTP 400 — {"detail":{"type":"validation_error","code":"text_too_long","message":"Invalid text length receiv |
+| `cloth-take` | 4 | sfx | 0.5 | 0 | 0 | `—` | 0 ms | FEHLER: cloth-take: HTTP 400 — {"detail":{"type":"validation_error","code":"text_too_long","message":"Invalid text length receiv |
+| `cloth-take` | 5 | sfx | 0.5 | 0 | 0 | `—` | 0 ms | FEHLER: cloth-take: HTTP 400 — {"detail":{"type":"validation_error","code":"text_too_long","message":"Invalid text length receiv |
+
+## Lauf 2026-08-22 05:59 — nur cloth-take
+
+Konto vorher: creator/active, 20273/300000 ·
+nachher: 20273/300000 ·
+**Kontodifferenz: 0** ·
+**Summe `character-cost`: 25**
+
+> Die beiden Zahlen messen NICHT dasselbe (gemessen 17.08.2026): fuer **Musik** meldet der
+> Header `character-cost` **0**, waehrend das Konto sich bewegt (45 s ≙ 1198 Credits); fuer
+> **Effekte** meldet der Header einen Wert (0,5 s ≙ 5), waehrend das Konto **stehen bleibt**.
+> Massgeblich ist deshalb die **Kontodifferenz**; der Header ist ein Signal je Anfrage, keine
+> Summe. Weichen beide auf eine dritte Weise ab, koennte jemand anderes dasselbe Konto benutzen —
+> dann gehoeren beide Zahlen mit diesem Vermerk in den Report.
+Takes: 5 erzeugt/vorhanden, 0 Fehler · Musik-Sekunden: 0
+
+| Stem | Take | Art | Sek. | Credits | Bytes | sha1 | Dauer | Verdikt |
+|---|---|---|---|---|---|---|---|---|
+| `cloth-take` | 1 | sfx | 0.5 | 5 | 8821 | `b5a7f7bd1a44` | 1827 ms | erzeugt |
+| `cloth-take` | 3 | sfx | 0.5 | 5 | 8821 | `b9ef9f84e65e` | 1923 ms | erzeugt |
+| `cloth-take` | 2 | sfx | 0.5 | 5 | 8821 | `f4002f5b4779` | 2108 ms | erzeugt |
+| `cloth-take` | 5 | sfx | 0.5 | 5 | 8821 | `ec476539650b` | 1803 ms | erzeugt |
+| `cloth-take` | 4 | sfx | 0.5 | 5 | 8821 | `0e04bc31ab36` | 1970 ms | erzeugt |

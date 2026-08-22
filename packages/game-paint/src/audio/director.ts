@@ -149,9 +149,15 @@ export const mapEvent = (
   const rs = TABLES[union]?.[event];
   if (rs === undefined) return { stem: null, why: `unbekanntes Ereignis ${union}/${event}` };
 
-  // Der Torschluss und die Tinte melden sich als Toast mit einem bestimmten
-  // Text — die einzige Stelle, an der die Spiel-Logik sie nach oben gibt.
-  if (union === "sim" && event === "toast" && typeof payload.msg === "string") {
+  // Die Tinte meldet sich als Toast mit einem bestimmten Text — die einzige
+  // Stelle, an der die Spiel-Logik sie nach oben gibt. Der Torschluss tat das
+  // bis R5-W7 auch; er hat seit D-372 sein eigenes Ereignis.
+  //
+  // `echoes` schliesst hier ab: ein Toast, der nur den TEXT zu einem eigenen
+  // Ereignis trägt, wird gar nicht erst gegen Muster gehalten — sein Beat
+  // klingt dort, und ein Muster, das versehentlich zusätzlich griffe, wäre ein
+  // Doppelklang, den niemand mehr im Diff sähe.
+  if (union === "sim" && event === "toast" && payload.echoes === undefined && typeof payload.msg === "string") {
     const hit = TOAST_MATCHES.find((m) => m.pattern.test(payload.msg as string));
     if (hit !== undefined) return { stem: hit.stem, why: `Toast-Klasse ${hit.stem}` };
   }
@@ -165,6 +171,16 @@ export const mapEvent = (
     }
     if (union === "sim" && event === "puff") {
       return rs[payload.kind === "hit" ? 1 : 0];
+    }
+    // R5-W7 · S3 · D-372: der Käfig-Torschluss ist ein Torschluss wie die vier
+    // anderen und feuert dasselbe Ereignis — aber er hat seinen Klang schon
+    // (`cage-locked` am EntityEvent `cageGated`).
+    if (union === "sim" && event === "gate") {
+      return rs[payload.reason === "cageGated" ? 1 : 0];
+    }
+    // Ein Toast, der nur ein eigenes Ereignis wiederholt, schweigt (Eintrag 2).
+    if (union === "sim" && event === "toast") {
+      return rs[payload.echoes === undefined ? 0 : 1];
     }
     if (union === "player" && event === "encounter") {
       return rs[payload.hazard === "^" ? 1 : 0];

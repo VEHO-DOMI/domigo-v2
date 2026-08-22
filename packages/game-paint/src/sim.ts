@@ -141,8 +141,19 @@ export interface TipPayload {
   belegDe: string;
 }
 
+/** Warum der Ausgang zu ist — die fünf Tore des Kapitels, in der Reihenfolge,
+ *  in der `checkExit` sie prüft, plus der Käfig, der schon am Käfig selbst
+ *  hängt (`onEntityEvent#cageGated`). */
+export type GateReason = "powerup" | "tuerwort" | "tafel" | "klassenfoto" | "cageGated";
+
 export type SimEvent =
-  | { type: "toast"; msg: string }
+  /** `echoes` sagt: dieser Toast trägt nur den TEXT eines Beats, der im selben
+   *  Takt sein eigenes Ereignis hat (R5-W7 · S3 · D-372). Wer am Text hängt —
+   *  die Anzeige — nimmt ihn wie jeden anderen; wer am BEAT hängt — der Klang —
+   *  hört auf das eigene Ereignis und schweigt hier, sonst klänge derselbe
+   *  Augenblick zweimal. Heute gibt es genau einen solchen Beat; kommt ein
+   *  zweiter dazu, wird aus dem Literal eine Vereinigung. */
+  | { type: "toast"; msg: string; echoes?: "gate" }
   | { type: "task"; req: TaskRequest }
   | { type: "powerup"; grants: string }
   | { type: "cageFreed"; id: string; skin: string; classmate: string | undefined; count: number }
@@ -189,6 +200,24 @@ export type SimEvent =
    *  the child: a word that appears mid-jump over a moving hero is a word nobody
    *  reads. Coordinates are subs, like every other position in this union. */
   | { type: "cloth"; id: string; wordEn: string; x: number; y: number }
+  /** R5-W7 · S3 · D-372 · DER TORSCHLUSS ALS EREIGNIS.
+   *
+   *  Das Kind steht am Ausgang und darf noch nicht. Bis heute meldete die
+   *  Spiel-Logik diesen Augenblick NUR als Toast, und der Klang hing am
+   *  Wortlaut der Meldung (`audioManifest.ts#TOAST_MATCHES`): formulierte die
+   *  Text-Bahn einen der Sätze um, wäre der Klang still verschwunden. Ein Tor
+   *  hielt das zusammen — eine Krücke, die S1 und S2 selbst als solche gemeldet
+   *  haben.
+   *
+   *  `reason` ist der Grund, aus dem das Tor zu ist, und trägt die Entscheidung,
+   *  ob dieser Anlauf überhaupt klingt: der Käfig-Torschluss klingt bereits als
+   *  EntityEvent `cageGated` (→ `cage-locked`), und zwei Klänge auf einem
+   *  Augenblick sind einer zu viel. Der Toast daneben bleibt stehen — er ist
+   *  der Text, den das Kind LIEST — und trägt `echoes: "gate"`.
+   *
+   *  Feuert unter derselben Sperre wie der Toast (`gateToastCooldown`, 120
+   *  Takte): einmal je Anlauf, nicht einmal je Bild. */
+  | { type: "gate"; reason: GateReason }
   | { type: "exit"; to: string };
 
 export interface SimCfg {
@@ -1097,7 +1126,12 @@ export class Sim {
         // R5-W4 · H2 (R50): dieselbe Reihenfolge, aber sie nennt jetzt die
         // Handlung, die den ersten Schritt abschliesst — Koki wollte die Copy
         // „viel direkter".
-        if (this.gateToastCooldown === 0) { events.push({ type: "toast", msg: "Erst die Tafel sauber — dann der Käfig." }); this.gateToastCooldown = 120; }
+        // R5-W7 · S3 · D-372: auch das hier ist ein Torschluss, also feuert das
+        // Ereignis. Es KLINGT aber nicht (Manifest: `reason === "cageGated"` ist
+        // bewusst still) — dieser Augenblick hat mit `cage-locked` am
+        // EntityEvent schon seinen Klang, und bis heute kam der Toast-Klang
+        // obendrauf. Ein Beat, ein Klang.
+        if (this.gateToastCooldown === 0) { events.push({ type: "gate", reason: "cageGated" }, { type: "toast", msg: "Erst die Tafel sauber — dann der Käfig.", echoes: "gate" }); this.gateToastCooldown = 120; }
         break;
       }
       case "cageBurst": {
@@ -1398,20 +1432,20 @@ export class Sim {
       // one blocker whose answer lies back in the level rather than underfoot.
       const missing = this.world.entities.find((e) => e.role === "powerup" && e.params.essential === true && !e.redeemed);
       if (missing) {
-        if (this.gateToastCooldown === 0) { events.push({ type: "toast", msg: "Du hast noch etwas Wichtiges vergessen!" }); this.gateToastCooldown = 120; }
+        if (this.gateToastCooldown === 0) { events.push({ type: "gate", reason: "powerup" }, { type: "toast", msg: "Du hast noch etwas Wichtiges vergessen!", echoes: "gate" }); this.gateToastCooldown = 120; }
         return;
       }
       // exit doors gate the X until their word is said (ch01 imperative law)
       const gate = this.phase.entities.find((e) => e.role === "door.trigger" && e.params?.kind === "exit");
       if (gate && !this.doorSolved.has(gate.id)) {
-        if (this.gateToastCooldown === 0) { events.push({ type: "toast", msg: "Die Tür wartet auf ihr Wort!" }); this.gateToastCooldown = 120; }
+        if (this.gateToastCooldown === 0) { events.push({ type: "gate", reason: "tuerwort" }, { type: "toast", msg: "Die Tür wartet auf ihr Wort!", echoes: "gate" }); this.gateToastCooldown = 120; }
         return;
       }
       if (this.phase.entities.some((e) => e.role === "guardian") && !this.guardianDefeated) {
         // R5-W4 · H2 (R50): der Grund, warum das Tor zu ist, steht jetzt in der
         // Zeile selbst. „Sie möchte noch reden" war unter der alten Lore wahr
         // und ist unter der neuen eine Ausrede — das Kind sieht die Kritzelei.
-        if (this.gateToastCooldown === 0) { events.push({ type: "toast", msg: "Die Tafel ist noch voller Kritzel!" }); this.gateToastCooldown = 120; }
+        if (this.gateToastCooldown === 0) { events.push({ type: "gate", reason: "tafel" }, { type: "toast", msg: "Die Tafel ist noch voller Kritzel!", echoes: "gate" }); this.gateToastCooldown = 120; }
         return;
       }
       // ── R5-W2 · H1 · DER AUSGANG WARTET AUFS KLASSENFOTO (Koki, 14.08.2026)
@@ -1441,7 +1475,10 @@ export class Sim {
           // Klasse, die dieser Auftrag anderswo als Schuld gemeldet hat.
           const who = String(caged.params.captiveDe ?? "der Insasse");
           const Who = who.charAt(0).toUpperCase() + who.slice(1);
-          events.push({ type: "toast", msg: `${Who} hängt noch im Käfig!` });
+          // R5-W7 · S3 · D-372: dieses Tor war das einzige der vier, das GAR
+          // NICHT klang — sein Satz wird aus dem Level gebaut und passte
+          // deshalb auf kein Textmuster. Am Ereignis klingt es wie die anderen.
+          events.push({ type: "gate", reason: "klassenfoto" }, { type: "toast", msg: `${Who} hängt noch im Käfig!`, echoes: "gate" });
           this.gateToastCooldown = 120;
         }
         return;

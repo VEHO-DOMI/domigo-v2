@@ -451,6 +451,56 @@
       "pedagogy": "info",
       "take": 6
     },
+    "cloth-take-1": {
+      "sha1": "f576b96f387f0acf24cd1eef6b90370341748d85",
+      "bytes": 5060,
+      "durationSec": 0.35,
+      "method": "rms",
+      "loudnessDb": -20.39,
+      "truePeakDb": -8.1,
+      "rmsDb": -20.39,
+      "peakDb": -8.1,
+      "flatFactor": 0,
+      "centroidsHz": [
+        6973,
+        6420,
+        6872
+      ],
+      "tailSilenceMs": 1,
+      "seamDb": null,
+      "seamRatio": null,
+      "loopStartSec": null,
+      "loopEndSec": null,
+      "family": "positive",
+      "kind": "sfx",
+      "pedagogy": "positive",
+      "take": 3
+    },
+    "cloth-take-2": {
+      "sha1": "5224e1b7fcaa9ae6c0b83ec0e5e28cf66ef074b3",
+      "bytes": 5060,
+      "durationSec": 0.35,
+      "method": "rms",
+      "loudnessDb": -20.44,
+      "truePeakDb": -7.13,
+      "rmsDb": -20.44,
+      "peakDb": -7.13,
+      "flatFactor": 0,
+      "centroidsHz": [
+        7869,
+        8015,
+        8670
+      ],
+      "tailSilenceMs": 0,
+      "seamDb": null,
+      "seamRatio": null,
+      "loopStartSec": null,
+      "loopEndSec": null,
+      "family": "positive",
+      "kind": "sfx",
+      "pedagogy": "positive",
+      "take": 4
+    },
     "door-open-1": {
       "sha1": "bc37a5e7591f0f0a5018ba56974cd4c7efaaa15b",
       "bytes": 7881,

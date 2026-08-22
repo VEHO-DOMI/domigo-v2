@@ -364,6 +364,48 @@
     "considered": 5,
     "of": 6
   },
+  "cloth-take": {
+    "picked": [
+      {
+        "take": 3,
+        "why": "Variante mit Klangfarbe ⌀ 6755 Hz — die 2 Varianten sollen sich unterscheiden",
+        "measured": {
+          "durationSec": 0.35,
+          "loudnessDb": -20.39,
+          "truePeakDb": -8.1,
+          "centroidsHz": [
+            6973,
+            6420,
+            6872
+          ],
+          "tailSilenceMs": 1
+        }
+      },
+      {
+        "take": 4,
+        "why": "Variante mit Klangfarbe ⌀ 8185 Hz — die 2 Varianten sollen sich unterscheiden",
+        "measured": {
+          "durationSec": 0.35,
+          "loudnessDb": -20.44,
+          "truePeakDb": -7.13,
+          "centroidsHz": [
+            7869,
+            8015,
+            8670
+          ],
+          "tailSilenceMs": 0
+        }
+      }
+    ],
+    "rejected": [
+      [
+        5,
+        "Klangfarbe faellt 7733 → 5664 Hz — ein positiver Klang, der abfällt, klingt wie eine Enttäuschung"
+      ]
+    ],
+    "considered": 4,
+    "of": 5
+  },
   "door-open": {
     "picked": [
       {

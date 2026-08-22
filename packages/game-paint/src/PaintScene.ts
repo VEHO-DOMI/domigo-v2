@@ -1541,7 +1541,7 @@ export class PaintScene extends Phaser.Scene {
   private handleSimEvents(evs: SimEvent[]): void {
     const cb = this.cfg.callbacks;
     for (const ev of evs) {
-      // R5-W6 · S2: EINE Zeile für alle 16 SimEvents. Der Direktor entscheidet
+      // R5-W6 · S2: EINE Zeile für alle 17 SimEvents. Der Direktor entscheidet
       // aus dem Manifest, was klingt, was bewusst schweigt und was in ch01 gar
       // nicht feuern kann — die Szene bleibt der dumme Verteiler, der sie ist.
       this.cfg.audio?.on("sim", ev.type, ev as unknown as Record<string, unknown>);

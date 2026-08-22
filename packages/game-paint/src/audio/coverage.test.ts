@@ -46,7 +46,7 @@ const unionMembers = (file: string, name: string): readonly string[] => {
 
 describe("Abdeckung: jede Ereignis-Art des Spiels hat genau einen Zustand", () => {
   const cases = [
-    { file: "sim.ts", name: "SimEvent", table: SIM_REACTIONS as Readonly<Record<string, unknown>>, expected: 16 /* 15 + `cloth` (R5-W5 · G4, 18.08.) — Entscheidung: spielt letter-take */ },
+    { file: "sim.ts", name: "SimEvent", table: SIM_REACTIONS as Readonly<Record<string, unknown>>, expected: 17 /* 15 + `cloth` (R5-W5 · G4, 18.08.) + `gate` (R5-W7 · S3, D-372) */ },
     { file: "player.ts", name: "PlayerEvent", table: PLAYER_REACTIONS as Readonly<Record<string, unknown>>, expected: 8 },
     { file: "entities.ts", name: "EntityEvent", table: ENTITY_REACTIONS as Readonly<Record<string, unknown>>, expected: 16 },
   ];
@@ -64,11 +64,11 @@ describe("Abdeckung: jede Ereignis-Art des Spiels hat genau einen Zustand", () =
     });
   }
 
-  it("zusammen sind es 40 (39 + cloth) — und jede Reaktion ist genau eines von drei Dingen", () => {
+  it("zusammen sind es 41 (39 + cloth + gate) — und jede Reaktion ist genau eines von drei Dingen", () => {
     const total = ["sim.ts", "player.ts", "entities.ts"]
       .map((f, i) => unionMembers(f, ["SimEvent", "PlayerEvent", "EntityEvent"][i] as string).length)
       .reduce((a, b) => a + b, 0);
-    expect(total).toBe(40);
+    expect(total).toBe(41);
 
     for (const { union, event, reaction } of allReactions()) {
       const kinds = [isPlay(reaction), isSilent(reaction), isReserved(reaction)].filter(Boolean).length;
@@ -136,10 +136,25 @@ describe("Abdeckung: jede Ereignis-Art des Spiels hat genau einen Zustand", () =
     // deshalb zählt nur, was einen Stem trägt.
     const viaCard = new Set<string>(Object.values(CARD_GRADE_STEMS).filter((v) => v !== null));
 
+    /**
+     * R5-W7 · S3 · D-372 — DIE TOAST-KLASSE STEHT JETZT VORN, UND ZWAR AUS EINEM
+     * GEMESSENEN GRUND.
+     *
+     * Bis Welle 7 war `gate-waits` der einzige Stem, der diesen Weg benutzte;
+     * seit der Torschluss sein eigenes Ereignis hat, ist er es nicht mehr — und
+     * das Gesetz unten (»jeder Weg wird von mindestens einem Stem benutzt«)
+     * wurde rot. Die naheliegende Antwort wäre gewesen, den Weg aus der Liste zu
+     * streichen. Sie ist falsch: `ink-splash` benutzt ihn, und zwar als
+     * EINZIGEN. Er steht zwar auch in `PLAYER_REACTIONS`, aber diese Zeile ist
+     * eine BESCHREIBUNG — `onPlayerEvent` gibt den Tinten-Kontakt ausschliesslich
+     * als Toast nach oben (die Zeile sagt es selbst: »erreicht die Szene als
+     * toast »Platsch!««). Die alte Reihenfolge liess ihn deshalb über den
+     * Ereignis-Weg laufen und verdeckte, dass der Textweg der wirkliche ist.
+     */
     const route = (s: (typeof STEMS)[number]): string | null => {
+      if (viaToast.has(s.stem)) return "Toast-Klasse";
       if (viaEvent.has(s.stem)) return "Ereignis";
       if (viaCard.has(s.stem)) return "Karten-Wertung";
-      if (viaToast.has(s.stem)) return "Toast-Klasse";
       if (s.bus === "music") return "Phasenwechsel";
       if (viaSurface.has(s.stem)) return "Schritt-Takt";
       if (viaCue.has(s.stem)) return "Cue aus Szene oder Hülle";

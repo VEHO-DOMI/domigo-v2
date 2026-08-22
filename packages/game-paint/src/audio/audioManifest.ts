@@ -109,10 +109,11 @@ export const STEMS: readonly StemSpec[] = [
   { stem: "cage-locked", family: "neutral", pedagogy: "neutral", bus: "sfx", durationSec: 0.35, variants: 1, tap: "entity" },
   { stem: "cage-free", family: "positive", pedagogy: "positive", bus: "sfx", durationSec: 1.5, variants: 2, tap: "sim", rule: "duckt die Musik" },
   { stem: "door-open", family: "world", pedagogy: "info", bus: "sfx", durationSec: 0.6, variants: 2, tap: "sim", rule: "R48: die Tür freut sich nicht, sie geht auf" },
-  { stem: "gate-waits", family: "neutral", pedagogy: "neutral", bus: "sfx", durationSec: 0.3, variants: 1, tap: "sim", rule: "Torschluss-Toasts, siehe TOAST_MATCHES" },
+  { stem: "gate-waits", family: "neutral", pedagogy: "neutral", bus: "sfx", durationSec: 0.3, variants: 1, tap: "sim", rule: "SimEvent `gate` — vier der fünf Gründe klingen, `cageGated` schweigt (der Käfig klingt schon selbst)" },
   { stem: "letter-take", family: "positive", pedagogy: "positive", bus: "sfx", durationSec: 0.3, variants: 3, tap: "sim", rule: "drei Stufen, die Stufe steigt mit `got` (1–3, dann zyklisch die höchste)" },
   { stem: "letters-all", family: "positive", pedagogy: "positive", bus: "sfx", durationSec: 1.5, variants: 1, tap: "sim", rule: "duckt die Musik" },
   { stem: "page-take", family: "ui", pedagogy: "info", bus: "sfx", durationSec: 0.4, variants: 2, tap: "sim" },
+  { stem: "cloth-take", family: "positive", pedagogy: "positive", bus: "sfx", durationSec: 0.35, variants: 2, tap: "sim", rule: "R5-W7 · S3: klein halten. Das Kapitel legt NEUN Uniformteile aus, und zwei Funde kurz hintereinander stapeln sich (G4-Design §1) — eine Fanfare wäre hier neunmal zu viel. Zwei Varianten im Wechsel, damit die Wiederholung nicht wie ein Sample klingt" },
   { stem: "wipe", family: "world", pedagogy: "info", bus: "sfx", durationSec: 0.5, variants: 3, tap: "sim", rule: "drei Schichten, drei Varianten in Folge" },
   { stem: "board-bloom", family: "positive", pedagogy: "positive", bus: "sfx", durationSec: 1.5, variants: 1, tap: "sim", rule: "duckt die Musik. Der Ereignis-Name ist ein Code-Relikt — sie wird sauber, nicht besiegt (R50)" },
   { stem: "arena-brief", family: "world", pedagogy: "info", bus: "sfx", durationSec: 1.5, variants: 1, tap: "sim", rule: "duckt die Musik" },
@@ -185,21 +186,24 @@ export const CUE_STEMS = ["slide", "card-close", "page-turn", "solve-ok", "merle
 export type CueStem = (typeof CUE_STEMS)[number];
 
 /**
- * Zwei Klänge hängen an einem SimEvent `toast` mit einem BESTIMMTEN Text — der
- * einzigen Stelle, an der die Spiel-Logik diese Beats nach oben meldet
- * (`sim.ts#checkExit` und der Tinten-Kontakt in `onPlayerEvent`).
+ * EIN Klang hängt noch an einem SimEvent `toast` mit einem BESTIMMTEN Text: die
+ * Tinte. `onPlayerEvent` gibt den Tinten-Kontakt ausschliesslich als Meldung
+ * nach oben, und `player.ts` gehört dieser Bahn nicht.
  *
- * Ein Text-Vergleich ist brüchig: die Copy-Bahn darf jeden dieser Sätze
- * jederzeit umformulieren, und der Klang verschwände still. Deshalb prüft
- * `scripts/check-audio.mjs`, dass jedes Muster hier noch auf ein Literal in
- * `sim.ts` passt — wird eine Zeile umgeschrieben, geht das TOR rot, statt dass
- * der Klang aufhört.
+ * Ein Text-Vergleich ist brüchig: die Copy-Bahn darf den Satz jederzeit
+ * umformulieren, und der Klang verschwände still. Deshalb prüft
+ * `scripts/check-audio.mjs` (Gesetz 9b), dass jedes Muster hier noch auf ein
+ * Literal in `sim.ts` passt — wird die Zeile umgeschrieben, geht das TOR rot,
+ * statt dass der Klang aufhört.
  *
- * *(Filed für Fable: sauberer wäre ein eigenes SimEvent für den Torschluss.
- * `sim.ts` gehört dieser Session nicht.)*
+ * **R5-W7 · S3 · D-372 — der Torschluss ist hier RAUS.** Er hing an vier
+ * Satz-Anfängen und war damit die brüchigste Stelle des ganzen Manifests; jetzt
+ * hat er sein eigenes SimEvent (`sim.ts` → `gate`, fünf Gründe). Wichtig für
+ * jeden, der später aufräumt: Gesetz 9b prüft nur Muster, die HIER stehen — ein
+ * gelöschtes Muster fällt ihm nicht auf. Der Beweis, dass der Torschluss noch
+ * klingt, steht deshalb als Verhalten in `audio/gate.test.ts`, nicht als Text.
  */
 export const TOAST_MATCHES: readonly { readonly stem: string; readonly pattern: RegExp }[] = [
-  { stem: "gate-waits", pattern: /wartet auf ihr Wort|noch voller Kritzel|noch etwas Wichtiges|Erst die Tafel sauber/ },
   { stem: "ink-splash", pattern: /Platsch/ },
 ] as const;
 
@@ -209,9 +213,12 @@ type SimKind = SimEvent["type"];
 type PlayerKind = PlayerEvent["type"];
 type EntityKind = EntityEvent["type"];
 
-/** Alle 15 SimEvent-Arten. Fehlt eine, geht der Typecheck rot. */
+/** Alle 17 SimEvent-Arten. Fehlt eine, geht der Typecheck rot. */
 export const SIM_REACTIONS = {
-  toast: [{ play: "toast", note: "die per TOAST_MATCHES erkannten Zeilen gehen an gate-waits bzw. ink-splash" }],
+  toast: [
+    { play: "toast", note: "die per TOAST_MATCHES erkannte Tinten-Zeile geht an ink-splash" },
+    { silent: "nur das Echo eines Beats, der sein eigenes Ereignis hat (`gate`) — dort klingt er; hier wäre es ein zweiter Klang auf demselben Augenblick", when: "echoes ist gesetzt" },
+  ],
   task: [{ play: "card-open", note: "jede Karte kommt hier heraus — auch die von cageHint, engaged, cageAsk, awakenAsk" }],
   powerup: [{ reserved: "ch01 hat kein powerup-Entity; der Prompt liegt als `powerup-take` bereit" }],
   cageFreed: [{ play: "cage-free" }],
@@ -227,13 +234,17 @@ export const SIM_REACTIONS = {
     { silent: "letter-take hat denselben Augenblick schon beklungen", when: "got < total" },
   ],
   letterTaken: [{ play: "letter-take" }],
-  cloth: [{ play: "letter-take", note: "R5-W5 · G4 (nach S1 gemergt): ein Kleidungsstueck ist gefunden, das Wort steht 2 s am Fundort — bis ein eigener Stem bestellt ist, klingt der Fund wie ein Buchstabe (positiv, 0,3 s); Nachbestellung `cloth-take` = S2/AUDIO_SPINE §2b" }],
+  cloth: [{ play: "cloth-take", note: "R5-W7 · S3: ein Kleidungsstueck ist gefunden, das Wort steht 2 s am Fundort. Bis hierher lieh sich der Fund `letter-take` — er klang also wie ein eingesammelter Buchstabe. Jetzt hat er seinen eigenen Klang: Stoff, der sich von der bemalten Papierfläche löst, mit einem leisen Holz-Tupfer" }],
   entityResolved: [{ play: "being-answered" }],
   tip: [{ play: "page-take" }],
   book: [{ reserved: "ch01 hat kein book-Entity (nur fünf tip); der Prompt liegt als `book-take` bereit" }],
   puff: [
     { play: "puff-chalk", when: 'kind === "chalk"' },
     { reserved: 'entsteht nur an der Faust; der Prompt liegt als `fist-hit` bereit', when: 'kind === "hit"' },
+  ],
+  gate: [
+    { play: "gate-waits", note: "R5-W7 · S3 · D-372: der Torschluss klingt jetzt am EREIGNIS statt am Wortlaut der Meldung. Vier der fünf Gründe kommen aus `checkExit` — darunter das Klassenfoto, das bis heute als einziges Tor GAR NICHT klang, weil sein Satz aus dem Level gebaut wird und auf kein Muster passte" },
+    { silent: "der Käfig-Torschluss klingt bereits als EntityEvent `cageGated` → `cage-locked`, und zwei Klänge auf einem Augenblick sind einer zu viel. Bis heute kam hier beides — der Käfig-Klang UND der Toast-Klang", when: 'reason === "cageGated"' },
   ],
   exit: [{ play: "door-open" }],
 } as const satisfies Record<SimKind, readonly Reaction[]>;

@@ -162,19 +162,38 @@ describe("was die aufgezeichneten Piloten wirklich auslösen", () => {
    * heisst also nicht, dass er tot ist (dafür gibt es `coverage.test.ts`), und
    * eine erfundene Mindestzahl wäre eine Wunschzahl gewesen.
    *
-   * Gemessen am 18.08.2026 lösen die fünf Bänder GENAU diese sieben aus. Die
+   * Gemessen am 22.08.2026 lösen die fünf Bänder GENAU diese acht aus. Die
    * Menge steht hier als Wächter: schrumpft sie, ist eine Verdrahtung
    * herausgefallen; wächst sie, hat jemand die Welt geändert und muss die Zeile
    * mit der neuen Messung nachziehen. Beides soll auffallen.
+   *
+   * **Der Wächter hat bei dieser Runde gearbeitet.** Am 18.08. waren es sieben;
+   * `cloth-take` ist der achte, weil der Uniform-Fund seit R5-W7 · S3 nicht mehr
+   * `letter-take` mitbenutzt. Im Bonusraum p9 sieht man den Umbau direkt: von
+   * den dort gemessenen 16 `letter-take` sind vier zu `cloth-take` geworden.
+   *
+   * Ehrlich zur Reichweite dieses Wächters (gemessen in derselben Runde): er
+   * bewacht die MENGE, nicht die Anzahl. Zwischen dem 18. und dem 22.08. hat
+   * sich die Welt geändert — p1 löst heute 6 statt 11 Ereignisse aus, p3 acht
+   * statt 29 —, und diese Zeile blieb dabei grün, weil dieselben Stems
+   * vorkamen. Das ist kein Fehler dieser Zeile (die Bänder selbst haben ihre
+   * eigenen Erwartungen in `ch01.proof.json`), aber wer hier »unverändert«
+   * liest, hat nur »dieselben Klänge« gelesen.
    */
-  const GEMESSEN_18_08 = ["bump", "card-open", "door-open", "letter-take", "letters-all", "page-take", "puff-chalk"];
+  const GEMESSEN_22_08 = ["bump", "card-open", "cloth-take", "door-open", "letter-take", "letters-all", "page-take", "puff-chalk"];
 
   const fired = [...new Set(
     [...runs.values()].flatMap((r) => r.hits).map((h) => h.stem).filter((s): s is string => s !== null),
   )].sort();
 
-  it("die Bänder lösen genau die gemessenen sieben Klänge aus", () => {
-    expect(fired, "die Bänder klingen anders als am 18.08. gemessen — Verdrahtung raus, oder die Welt hat sich geändert").toEqual(GEMESSEN_18_08);
+  it("die Bänder lösen genau die gemessenen acht Klänge aus", () => {
+    expect(fired, "die Bänder klingen anders als am 22.08. gemessen — Verdrahtung raus, oder die Welt hat sich geändert").toEqual(GEMESSEN_22_08);
+  });
+
+  it("darunter `cloth-take` — der Beweis, dass der Uniform-Fund seinen eigenen Klang hat", () => {
+    // Ohne die Umverdrahtung im Manifest stünde hier `letter-take`, und ein
+    // Kleidungsstück klänge weiter wie ein eingesammelter Buchstabe.
+    expect(fired).toContain("cloth-take");
   });
 
   it("darunter `bump` — der Beweis, dass die eine Zeile in sim.ts trägt", () => {
