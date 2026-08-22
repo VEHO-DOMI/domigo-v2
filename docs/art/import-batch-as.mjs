@@ -72,6 +72,7 @@
  */
 import fs from "node:fs";
 import path from "node:path";
+import os from "node:os";
 import { PNG } from "pngjs";
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
@@ -283,6 +284,215 @@ const SEAM_OVER_TEXTURE = 1.5;
  * flatness stays visible where it was never load-bearing.
  */
 const MIN_TEXTURE = 1.5;
+
+/**
+ * ── R5-W7 · A8 · WHAT `tex` CANNOT SEE: A COMPUTED FIELD (D-340's next form) ──
+ *
+ * `MIN_TEXTURE` asks „does this paint carry a neighbour-to-neighbour step?" and
+ * AS5b failed it flat (0.05–0.82 against a shipping 1.74–6.90). AS5c answered
+ * the question and not the request: it put a DETERMINISTIC DOT GRID over the
+ * cell. Measured in the Wareneingang of 19.08., that grid — `((x·17 + y·31) mod
+ * 11) − 5` — laid over an EMPTY surface measures `tex = 5.455`, i.e. mid-range
+ * for shipping art, on a picture that contains nothing at all. A floor a
+ * generator can clear by generating is not a floor; it is a target.
+ *
+ * So two more quantities, and they are deliberately not one: a cheat that beats
+ * either alone is easy, a cheat that beats both while still looking like paint
+ * is the thing we actually want.
+ *
+ *  · BAND3 — how much of the step distribution sits in its densest three
+ *    consecutive integer bins. A generator draws from a tiny set of values, so
+ *    its steps pile up; a brush spreads them. (Wareneingang: 64.6 % of the AS5c
+ *    grid's steps sit in the 3-point band 8–10, against 7.1 % for the accepted
+ *    `mass_body_p1_a`.)
+ *  · ROUGH — each pixel's distance from the mean of its own 3×3 neighbourhood,
+ *    divided by the sheet's own spread. This is LOCAL SMOOTHNESS, normalised, so
+ *    it cannot be gamed by scaling contrast: paint is locally smooth against its
+ *    own range, noise and grids are not. (Wareneingang: shipping p1 0.083 ·
+ *    AS5c 0.110 · pure noise 0.94 · the grid 1.11.)
+ *  · N1 — the share of horizontally adjacent pairs that are EXACTLY equal. Zero
+ *    is as suspicious as a lot: real paint has flat passages (R201d asked for
+ *    this line by name, because the mass gate measures neither IoU, N1 nor Z and
+ *    those are the three quantities AS5e actually failed on).
+ *
+ * ⚠ EVERY THRESHOLD BELOW IS MEASURED, NOT CHOSEN, and re-measurable at any
+ * time with `--calibrate` — which reads the ACCEPTED sheets on the plate
+ * (`apps/web/public/art/g1/paint/ch01`), not a remembered table. The numbers
+ * that seeded this round came from batches that no longer exist (R204, the lost
+ * lab), so a gate that could only quote them would be a gate standing on
+ * hearsay.
+ */
+const paintStats = (png) => {
+  const { width: W, height: H, data } = png;
+  const at = (x, y, o) => data[(y * W + x) * 4 + o];
+  const on = (x, y) => data[(y * W + x) * 4 + 3] >= OPAQUE_ENOUGH;
+  /** the pixel's own value: the mean of its three channels, so one number per px */
+  const val = (x, y) => (at(x, y, 0) + at(x, y, 1) + at(x, y, 2)) / 3;
+
+  // ── N1 + the step histogram, both over horizontally adjacent OPAQUE pairs ──
+  const bins = new Array(256).fill(0);
+  let pairs = 0, same = 0;
+  for (let y = 0; y < H; y++) {
+    for (let x = 1; x < W; x++) {
+      if (!on(x, y) || !on(x - 1, y)) continue;
+      pairs++;
+      let step = 0, eq = true;
+      for (let o = 0; o < 3; o++) {
+        const d = Math.abs(at(x, y, o) - at(x - 1, y, o));
+        if (d !== 0) eq = false;
+        step += d;
+      }
+      if (eq) same++;
+      bins[Math.min(255, Math.round(step / 3))]++;
+    }
+  }
+  let band3 = 0, band3At = 0;
+  if (pairs > 0) {
+    for (let i = 0; i + 2 < bins.length; i++) {
+      const share = (bins[i] + bins[i + 1] + bins[i + 2]) / pairs;
+      if (share > band3) { band3 = share; band3At = i; }
+    }
+  }
+
+  // ── ROUGH: |px − mean(3×3)| ÷ the sheet's own standard deviation ───────────
+  let sum = 0, sum2 = 0, n = 0;
+  for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
+    if (!on(x, y)) continue;
+    const v = val(x, y);
+    sum += v; sum2 += v * v; n++;
+  }
+  const spread = n === 0 ? 0 : Math.sqrt(Math.max(0, sum2 / n - (sum / n) ** 2));
+  let dev = 0, devN = 0;
+  for (let y = 1; y < H - 1; y++) {
+    for (let x = 1; x < W - 1; x++) {
+      if (!on(x, y)) continue;
+      let m = 0, k = 0, whole = true;
+      for (let dy = -1; dy <= 1; dy++) for (let dx = -1; dx <= 1; dx++) {
+        if (!on(x + dx, y + dy)) { whole = false; break; }
+        m += val(x + dx, y + dy); k++;
+      }
+      // only pixels whose whole 3×3 window carries paint — a window that runs
+      // off the key would report the key's own edge as texture
+      if (!whole || k !== 9) continue;
+      dev += Math.abs(val(x, y) - m / 9);
+      devN++;
+    }
+  }
+  // ── HOW MANY DISTINCT STEPS THE PICTURE ACTUALLY USES ─────────────────────
+  // The share in the densest band turns out NOT to separate a brush from a
+  // generator, and that is worth writing down rather than quietly dropping:
+  // measured over the plate, accepted paint puts 47–86 % of its steps in its own
+  // densest three bins too — because paint peaks at ZERO (most neighbours are
+  // nearly equal) and decays. The grid's 64.6 % sat at bins 8–10 instead, but a
+  // grid can be tuned to peak anywhere. What a generator cannot fake cheaply is
+  // the SUPPORT: `((x·17 + y·31) mod 11) − 5` can only ever produce a handful of
+  // distinct steps, while a painted surface produces a continuum.
+  let acc = 0, bins90 = 0, support = 0;
+  const order = bins.map((v, i) => [v, i]).sort((a, b) => b[0] - a[0]);
+  for (const [v] of order) {
+    if (pairs === 0) break;
+    if (acc < 0.9 * pairs) { acc += v; bins90++; }
+  }
+  for (const v of bins) if (pairs > 0 && v / pairs >= 0.001) support++;
+
+  return {
+    band3, band3At, bins90, support,
+    n1: pairs === 0 ? 0 : same / pairs,
+    rough: devN === 0 || spread === 0 ? 0 : (dev / devN) / spread,
+    pairs, spread,
+  };
+};
+
+/**
+ * The windows the three quantities are held to.
+ *
+ * MEASURED on 2026-08-22 over the 24 accepted, opaque, TILING mass sheets on the
+ * plate (`--calibrate`, output in REPORT_A8 §3) — the same set `MIN_TEXTURE` was
+ * derived from. Each window is the measured range widened to the nearest round
+ * step, so accepted art sits inside it with air on both sides and the rejected
+ * deliveries sit outside; the exact figures and the margins are printed by
+ * `--calibrate` so the next round re-derives instead of quoting.
+ */
+const PAINT_WINDOWS = {
+  /** distinct step bins carrying ≥ 0.1 % of the pairs — a generator's support is tiny */
+  supportMin: 12,
+  /** local smoothness against the sheet's own spread */
+  rough: [0.06, 0.45],
+  /** exactly-equal horizontal neighbours */
+  n1: [0.015, 0.095],
+};
+
+/**
+ * ── ★ THE ORDERED THRESHOLD »band3 ≤ 20 %« IS REFUTED, AND HERE IS THE PROOF ─
+ *
+ * The A8 brief ordered a histogram law: „share in the densest 3-point band
+ * ≤ 20 %", citing the Wareneingang's pair of numbers — 64.6 % for the AS5c grid
+ * against 7.1 % for `mass_body_p1_a`. Measured at the plate with `--calibrate`
+ * before anything was wired, that threshold fails EVERY accepted sheet the game
+ * draws: the range is 47.4 % (`mass_body_p1_c`) to 86.1 % (`mass_sediment`).
+ *
+ * The reason is structural, not a mis-measurement. Painted art peaks at ZERO —
+ * most neighbours are nearly equal — and decays; so its densest three bins are
+ * bins 0–2 and they hold half the distribution. The 7.1 % in the passover is
+ * the share of THAT ONE BAND (8–10), where the grid happened to pile up. As a
+ * law it would only ever catch a generator that chose those particular values.
+ *
+ * So the INTENT is built and the number is not. What a generator cannot cheaply
+ * fake is how MANY distinct steps its picture contains, and how smooth it is
+ * locally against its own spread. Measured, with both controls manufactured in
+ * the same run (`--calibrate`, full table in REPORT_A8 §3):
+ *
+ *                       21 accepted sheets   AS5c grid   pure noise   AS5e (100)
+ *   tex  (today's law)        1.74 … 6.35        5.45        3.39      ← catches NEITHER
+ *   band3                    47.4 … 86.1 %      100.0 %     48.2 %     ← printed, not judged
+ *   support                     16 … 47             2          11        15 … 43
+ *   rough                    0.104 … 0.232       0.984       0.797     0.226 … 0.399
+ *   N1                       1.89 … 8.32 %        0.00 %      9.44 %    1.00 … 10.18 %
+ *
+ * Read that last column before moving any of these numbers: on `support` and
+ * `rough` the AS5e delivery OVERLAPS accepted art, so neither window may be
+ * placed to separate them — both are placed against the controls, and they
+ * catch the delivery only at its tails. Only `N1` has its window derived from
+ * accepted art on both sides, and it is the one that catches this delivery on
+ * its own merits.
+ *
+ * `band3` is still PRINTED on every row, because the shape of the distribution
+ * is a fact about the paint and the next round may want it. It is not judged,
+ * because no threshold on it separates the two sets.
+ *
+ * ── ★ WHERE THE ROUGHNESS CEILING SITS, AND THE MISTAKE IT NEARLY WAS ───────
+ * First placement: 0.35, then 0.30 — „the middle of the gap" between accepted
+ * art (max 0.232) and AS5e's eight walk-course cells (0.360–0.399). Then the
+ * whole delivery was measured instead of its worst eight cells, and the gap is
+ * not there:
+ *
+ *   21 accepted sheets   0.104 … 0.232
+ *   AS5e, all 100 cells  0.226 … 0.399   (median 0.284)
+ *
+ * The delivery's BEST cell (0.226) is smoother than our own worst (0.232). The
+ * two sets OVERLAP, so on this quantity there is no line between them — and a
+ * ceiling at 0.30 would have rejected 86 of 100 cells on a number where the
+ * delivery is, at its best, indistinguishable from the art we ship. That is a
+ * threshold fitted to a delivery, which is a preference wearing a measurement.
+ *
+ * So the ceiling is placed where a real gap exists: against the CONTROLS. From
+ * 0.232 (highest accepted) to 0.797 (pure noise) is a factor of 3.4, and 0.45
+ * sits inside it with 0.218 of room above our own art and a factor of 1.8 below
+ * the nearest control. AS5e's crust cells at 0.360–0.399 therefore PASS this
+ * law, and that is the correct outcome: they are caught, where they are caught,
+ * by support and N1 — and by the seam and luminance laws that already existed.
+ *
+ * ⚠ The FLOOR (0.06) has no rejected specimen behind it. AS5b — the delivery
+ * that was flat rather than noisy — is gone with the first Mac (R204), so the
+ * lower half of this window rests on accepted art and the synthetic controls
+ * alone. Stated, not implied.
+ *
+ * Which control each law catches is stated deliberately: N1's ceiling does NOT
+ * catch pure noise (9.44 % against a 9.5 % ceiling — it passes by six
+ * hundredths). The trio catches it; N1 alone does not. A gate whose owner
+ * cannot say which of its lines is load-bearing for which defect is a gate
+ * nobody can maintain.
+ */
 
 /**
  * ── WHY THE SEAM CHECK NEEDED AN AXIS (R5-W4 · A6) ───────────────────────────
@@ -841,8 +1051,23 @@ const cutPiece = (png, sheet, pos, stem, opt = {}) => {
   // Measured for every piece — the table prints a texture step even where no
   // seam is owed, because flatness is a fact about the paint, not about tiling.
   const seam = selfTile(img);
+  // …and the three quantities `tex` cannot see. Measured for every piece so the
+  // table can print them, judged only where a seam is owed — the same scope
+  // `MIN_TEXTURE` states for itself: a corner or a cap is stretched once, not
+  // repeated, so a computed field in one is a different (smaller) problem.
+  const paint = paintStats(img);
   const axes = seamAxes(opt.tiles);
   if (axes.length > 0) {
+    // ── R5-W7 · A8 · IS THIS PAINT, OR A TEXTURE FUNCTION? ──────────────────
+    if (paint.support < PAINT_WINDOWS.supportMin) {
+      faults.push(`${stem}: the paint uses only ${paint.support} distinct neighbour-step values (floor ${PAINT_WINDOWS.supportMin}; the 21 accepted sheets on the plate use 16–47, the AS5c generator grid uses 2). A picture drawn from a handful of values is a texture FUNCTION, not a painting — and it can clear the texture floor while doing it (that grid measures tex 5.455 on an empty surface).`);
+    }
+    if (paint.rough < PAINT_WINDOWS.rough[0] || paint.rough > PAINT_WINDOWS.rough[1]) {
+      faults.push(`${stem}: local roughness ${paint.rough.toFixed(3)} is outside ${PAINT_WINDOWS.rough[0]}–${PAINT_WINDOWS.rough[1]} (accepted art measures 0.104–0.232; the AS5c grid 0.984, pure noise 0.797). This is each pixel's distance from its own 3×3 mean divided by the sheet's spread, so it cannot be fixed by scaling contrast: too high is noise, too low is a gradient with nothing painted on it.`);
+    }
+    if (paint.n1 < PAINT_WINDOWS.n1[0] || paint.n1 > PAINT_WINDOWS.n1[1]) {
+      faults.push(`${stem}: ${(paint.n1 * 100).toFixed(2)} % of horizontally adjacent pixels are EXACTLY equal, outside ${(PAINT_WINDOWS.n1[0] * 100).toFixed(1)}–${(PAINT_WINDOWS.n1[1] * 100).toFixed(1)} % (accepted art 1.89–8.32 %; the AS5c grid 0.00 %). Real paint has flat passages and a generator that dithers every pixel has none — R201 asked for this line by name, because this gate measures neither IoU, N1 nor Z, and those are the three quantities AS5e actually failed on.`);
+    }
     if (seam.inner < MIN_TEXTURE) {
       faults.push(`${stem}: the paint carries almost no texture — mean neighbour step ${seam.inner.toFixed(2)}, floor ${MIN_TEXTURE.toFixed(1)} (every tile the game draws today measures 1.74–6.90). A tiling sheet without texture is a colour field, and the seam ratio below divides by this number.`);
     }
@@ -865,7 +1090,7 @@ const cutPiece = (png, sheet, pos, stem, opt = {}) => {
       faults.push(`${stem}: saturation ${S.toFixed(2)} %, spec needs ≥${opt.sat} % — a floor without hue is an absence, not a shadow`);
     }
   }
-  return { img, faults, L, S, seam, key, tone };
+  return { img, faults, L, S, seam, key, tone, paint };
 };
 
 /**
@@ -1087,6 +1312,125 @@ const seedBodyFromDisk = (phase) => {
   return bodyRef.lumas.length;
 };
 
+/**
+ * ── `--calibrate`: DERIVE THE WINDOWS FROM THE PLATE, NEVER FROM A TABLE ─────
+ *
+ *   node docs/art/import-batch-as.mjs --calibrate
+ *
+ * Reads the ACCEPTED sheets the game draws today and prints, per sheet, the
+ * three quantities `PAINT_WINDOWS` holds a delivery to — plus the min/max the
+ * windows would have to contain and the margin each window actually has.
+ *
+ * It exists because of R204: the numbers that seeded these thresholds were
+ * measured on `batch-as5c` and `batch-as5b`, and both batches are gone with the
+ * first Mac. A threshold whose only evidence is a sentence in a passover is a
+ * preference wearing a number. This one can be re-derived on any machine, from
+ * files that are in the repository.
+ *
+ * SCOPE — the sheets that must REPEAT, which is the same rule `MIN_TEXTURE`
+ * already states for itself: bodies, deep bodies, fades, sediment and the walk
+ * courses. Deliberately NOT the corners and caps (they are stretched once, not
+ * repeated) and NOT `mass_edge_l/r` — those two are the SHARED PLACEHOLDER
+ * strips every unpainted room still draws, and calibrating an art gate against
+ * a placeholder is how a placeholder becomes the standard.
+ */
+// A sheet is in scope iff it is one the engine REPEATS. Written as one pattern
+// so the rule is readable and cannot drift into a hand-kept list:
+//   crust_<phase>_a|b        the walk course's loop cells — NOT `_cap_l/_cap_r`,
+//                            which are drawn once at the end of a run
+//   mass_body|bodydeep|fade_<phase>_<v>   the interior continuum
+//   mass_sediment            the one shared sheet that genuinely tiles
+// Excluded on purpose: `mass_body_a`, `mass_body_b`, `mass_fade`, `mass_edge_l`,
+// `mass_edge_r` — the SHARED PLACEHOLDERS every unpainted room still draws.
+// Calibrating an art gate against a placeholder is how a placeholder quietly
+// becomes the standard.
+const CALIBRATION_RE = /^(crust_p\d+_[ab]|mass_(?:body|bodydeep|fade)_p\d+_[a-z]|mass_sediment)$/;
+const calibrationSheets = () => {
+  if (!fs.existsSync(OUT)) return [];
+  return fs.readdirSync(OUT)
+    .filter((f) => f.endsWith(".png"))
+    .map((f) => ({ stem: f.replace(/\.png$/, ""), file: path.join(OUT, f) }))
+    .filter((x) => CALIBRATION_RE.test(x.stem))
+    .sort((a, b) => a.stem.localeCompare(b.stem));
+};
+
+/**
+ * The two CONTROLS, manufactured in the same run so the gap is shown and not
+ * asserted (the Wareneingang of 19.08. measured both on an empty surface):
+ *  · the AS5c generator grid, verbatim — `((x·17 + y·31) mod 11) − 5`
+ *  · pure per-pixel noise, the other way to have „texture" without a picture
+ */
+const controlSheet = (kind, size = 512) => {
+  const png = new PNG({ width: size, height: size });
+  let seed = 20260822;
+  const rnd = () => { seed = (seed * 1103515245 + 12345) & 0x7fffffff; return seed / 0x7fffffff; };
+  for (let y = 0; y < size; y++) for (let x = 0; x < size; x++) {
+    const i = (y * size + x) * 4;
+    const d = kind === "grid" ? ((x * 17 + y * 31) % 11) - 5 : Math.round((rnd() - 0.5) * 10);
+    const v = Math.max(0, Math.min(255, 128 + d));
+    png.data[i] = v; png.data[i + 1] = v; png.data[i + 2] = v; png.data[i + 3] = 255;
+  }
+  return png;
+};
+
+if (process.argv.includes("--calibrate")) {
+  const sheets = calibrationSheets();
+  if (sheets.length === 0) {
+    console.error(`✗ calibrate: no accepted mass sheets under ${OUT} — there is nothing to derive a window from.`);
+    process.exit(1);
+  }
+  console.log(`\nCALIBRATE — the windows in PAINT_WINDOWS, re-derived from ${sheets.length} accepted sheets on the plate.`);
+  console.log(`  source: ${OUT}`);
+  console.log(`  band3 = share of the neighbour-step distribution in its densest 3 integer bins (a generator piles up, a brush spreads)`);
+  console.log(`  rough = |px − mean(3×3)| ÷ the sheet's own spread (local smoothness, normalised)`);
+  console.log(`  N1    = share of horizontally adjacent pairs that are EXACTLY equal\n`);
+  const line = (label, png) => {
+    const st = paintStats(png);
+    const seam = selfTile(png);
+    console.log(
+      `  ${label.padEnd(24)} ${`${png.width}×${png.height}`.padStart(10)}  ${seam.inner.toFixed(2).padStart(6)}`
+      + `  ${(st.band3 * 100).toFixed(1).padStart(6)}% ${String(st.band3At).padStart(4)}`
+      + `  ${String(st.bins90).padStart(6)}  ${String(st.support).padStart(7)}  ${st.rough.toFixed(3).padStart(6)}  ${(st.n1 * 100).toFixed(2).padStart(5)}%`,
+    );
+    return { stem: label, ...st, tex: seam.inner };
+  };
+  console.log(`  ${"stem".padEnd(24)} ${"px".padStart(10)}  ${"tex".padStart(6)}  ${"band3".padStart(7)} @bin  ${"bins90".padStart(6)}  ${"support".padStart(7)}  ${"rough".padStart(6)}  ${"N1".padStart(6)}`);
+  const rows = [];
+  for (const { stem, file } of sheets) rows.push(line(stem, read(file)));
+  console.log(`\n  ── CONTROLS, built in this run (an empty surface + a texture) ──`);
+  const ctrlGrid = line("[control] AS5c grid", controlSheet("grid"));
+  const ctrlNoise = line("[control] pure noise", controlSheet("noise"));
+  const span = (k) => {
+    const xs = rows.map((r) => r[k]).sort((a, b) => a - b);
+    return { lo: xs[0], hi: xs[xs.length - 1] };
+  };
+  const b = span("band3"), r = span("rough"), n = span("n1"), sp = span("support");
+  console.log(`\n  ${"─".repeat(78)}`);
+  console.log(`  measured over ${rows.length} accepted sheets — window · margin to the nearest accepted sheet:`);
+  console.log(`    support  ${sp.lo} … ${sp.hi}          · ≥ ${PAINT_WINDOWS.supportMin}        → ${sp.lo - PAINT_WINDOWS.supportMin} bins of room  (grid ${ctrlGrid.support}, noise ${ctrlNoise.support})`);
+  console.log(`    rough    ${r.lo.toFixed(3)} … ${r.hi.toFixed(3)}  · ${PAINT_WINDOWS.rough[0]}–${PAINT_WINDOWS.rough[1]}  → ${(r.lo - PAINT_WINDOWS.rough[0]).toFixed(3)} below, ${(PAINT_WINDOWS.rough[1] - r.hi).toFixed(3)} above  (grid ${ctrlGrid.rough.toFixed(3)}, noise ${ctrlNoise.rough.toFixed(3)})`);
+  console.log(`    N1       ${(n.lo * 100).toFixed(2)} … ${(n.hi * 100).toFixed(2)} %  · ${(PAINT_WINDOWS.n1[0] * 100).toFixed(1)}–${(PAINT_WINDOWS.n1[1] * 100).toFixed(1)} % → ${((n.lo - PAINT_WINDOWS.n1[0]) * 100).toFixed(2)} below, ${((PAINT_WINDOWS.n1[1] - n.hi) * 100).toFixed(2)} above  (grid ${(ctrlGrid.n1 * 100).toFixed(2)} %, noise ${(ctrlNoise.n1 * 100).toFixed(2)} %)`);
+  console.log(`    band3    ${(b.lo * 100).toFixed(1)} … ${(b.hi * 100).toFixed(1)} %  · NOT JUDGED — the ordered ≤ 20 % would fail all ${rows.length} (see the note on PAINT_WINDOWS)`);
+  const breaks = (x) => x.support < PAINT_WINDOWS.supportMin
+    || x.rough < PAINT_WINDOWS.rough[0] || x.rough > PAINT_WINDOWS.rough[1]
+    || x.n1 < PAINT_WINDOWS.n1[0] || x.n1 > PAINT_WINDOWS.n1[1];
+  const outside = rows.filter(breaks);
+  if (outside.length > 0) {
+    console.error(`\n✗ ${outside.length} ACCEPTED sheet(s) fall outside the declared windows — then the windows are wrong, not the art:`);
+    for (const x of outside) console.error(`    ${x.stem}: support ${x.support} · rough ${x.rough.toFixed(3)} · N1 ${(x.n1 * 100).toFixed(2)} %`);
+    process.exit(1);
+  }
+  // …and the controls must be OUTSIDE, or the windows are decoration.
+  for (const c of [ctrlGrid, ctrlNoise]) {
+    if (!breaks(c)) {
+      console.error(`\n✗ the control "${c.stem}" PASSES these windows — an empty surface with a texture function would be accepted as paint.`);
+      process.exit(1);
+    }
+  }
+  console.log(`\n  ✓ all ${rows.length} accepted sheets sit INSIDE the windows, and BOTH controls sit outside.\n`);
+  process.exit(0);
+}
+
 if (process.argv.includes("--verify")) {
   const arg = (name, dflt) => (process.argv.find((a) => a.startsWith(`--${name}=`)) ?? `--${name}=${dflt}`).split("=")[1];
   const batch = arg("batch", "batch-as5");
@@ -1097,7 +1441,9 @@ if (process.argv.includes("--verify")) {
   console.log(`\nVERIFY — ${batch} against the gate an import would apply. Nothing is written.`);
   console.log(`  L = luminance of the PAINTED pixels (— = the cell failed before it could be measured, which is not the same as 0)`);
   console.log(`  tex = mean neighbour-to-neighbour step, the painting's own texture — floor ${MIN_TEXTURE.toFixed(1)}, shipping art measures 1.74–6.90`);
-  console.log(`  seam = join ÷ tex, and the largest jump within ${PROFILE_DEPTH} px behind it ÷ tex — both must stay under ${SEAM_OVER_TEXTURE}×\n`);
+  console.log(`  seam = join ÷ tex, and the largest jump within ${PROFILE_DEPTH} px behind it ÷ tex — both must stay under ${SEAM_OVER_TEXTURE}×`);
+  console.log(`  sup/rgh/N1 = distinct step values · local roughness · exactly-equal neighbours — is this PAINT or a texture function?`);
+  console.log(`               windows ≥${PAINT_WINDOWS.supportMin} · ${PAINT_WINDOWS.rough[0]}–${PAINT_WINDOWS.rough[1]} · ${(PAINT_WINDOWS.n1[0] * 100).toFixed(1)}–${(PAINT_WINDOWS.n1[1] * 100).toFixed(1)} %, all three measured at the plate (--calibrate); judged only where a seam is owed\n`);
   for (const phase of only) {
     const seeded = phase === "p1" ? seedBodyFromDisk("p1") : (resetBody(), 0);
     console.log(`\n── ${phase} ${"─".repeat(72)}`);
@@ -1125,10 +1471,12 @@ if (process.argv.includes("--verify")) {
         const win = opt.luma ?? (opt.aboveBody === undefined ? null : bodyWindow(opt.aboveBody));
         const ok = faults.length === 0;
         if (ok) tally.pass++; else { tally.fail++; orders.push(`${stem}: ${faults[0]}`); }
+        const pp = cut.paint ?? null;
         console.log(
           `     Z${pos} ${stem.padEnd(24)} L ${cut.L === null ? "     —" : `${cut.L.toFixed(2).padStart(6)}%`}` +
           `  ${(win === null ? "—" : `${win[0].toFixed(1)}–${win[1].toFixed(1)}`).padStart(13)}` +
           `  tex ${(cut.seam === null ? "—" : cut.seam.inner.toFixed(2)).padStart(5)}` +
+          `  ${pp === null ? "sup   — rgh     — N1     —" : `sup ${String(pp.support).padStart(3)} rgh ${pp.rough.toFixed(3).padStart(5)} N1 ${(pp.n1 * 100).toFixed(2).padStart(5)}%`}` +
           `  ${seam.padEnd(38)} ${ok ? "✓" : "✗"}`,
         );
         for (const f of faults) console.log(`          ↳ ${f}`);
@@ -1148,41 +1496,99 @@ if (process.argv.includes("--verify")) {
 // with the re-measured one, and it passes only if the first is rejected and the
 // second is accepted. A tamper that changes nothing has proven nothing; this one
 // changes four numbers and flips the verdict.
+// ── selftest ─────────────────────────────────────────────────────────────────
+//
+// ── ★ R5-W7 · A8: THIS SELFTEST NOW RUNS ANYWHERE, AND HERE IS WHY IT HAD TO ─
+//
+// It used to cut ONE file — `LAB/batch-as3/mass_edges_p1.png` — and every one of
+// its eight assertions hung off it. That file died with the first Mac (R204) and
+// was never in the repository, so on this machine, and on any CI runner, the
+// whole check exited 1 before its first assertion. The C10 line this round owes
+// `ci.yml` would have been red from its first minute.
+//
+// So the fixture comes from the PLATE instead: the eight accepted p1 interior
+// sheets the game draws today, 512² each, assembled here into the 4 × 2 sheet
+// this importer expects. That is real, accepted, painted material under every
+// „must stay green" half, and every „must go red" half is manufactured out of
+// it in this file — which is the only way a tamper proves anything.
+//
+// TWO STAGES, and the second one is CONDITIONAL rather than deleted (Koki's
+// ruling of 2026-08-22):
+//   1 · the plate stage — always, including CI.
+//   2 · the AS3 box stage — the two assertions that need the lost sheet's own
+//       geometry. They stay in the file and run BY THEMSELVES the moment that
+//       sheet is at the expected path again. When it is not, the run says so out
+//       loud, names the file and the reason, and prints the reduced count — a
+//       smaller number of checks must never look like the same number.
+//       And the skip is itself under test: a corrupt sheet at that path has to
+//       go RED, not SKIPPED. A stage that skips in every state checks nothing.
 if (process.argv.includes("--selftest")) {
-  const src = path.join(LAB, "batch-as3/mass_edges_p1.png");
-  if (!fs.existsSync(src)) {
-    console.error(`✗ selftest cannot run: ${src} is missing`);
+  let bad = 0;
+  let ran = 0, skipped = 0;
+  const claim = (ok, good, why) => { ran++; if (ok) console.log(`✓ ${good}`); else { bad++; console.error(`✗ ${why}`); } };
+
+  // ── the fixture: eight ACCEPTED paintings, laid out as one 4 × 2 sheet ─────
+  const PLATE_CELLS = [
+    "mass_body_p1_a", "mass_body_p1_b", "mass_body_p1_c", "mass_body_p1_d",
+    "mass_bodydeep_p1_a", "mass_bodydeep_p1_b", "mass_bodydeep_p1_c", "mass_bodydeep_p1_d",
+  ];
+  const missing = PLATE_CELLS.filter((s) => !fs.existsSync(path.join(OUT, `${s}.png`)));
+  if (missing.length > 0) {
+    console.error(`✗ selftest cannot run: ${missing.length} of the plate's own sheets are missing under ${OUT} — ${missing.join(", ")}.`);
+    console.error("  These are tracked files; if they are gone the repository is broken, not this check.");
     process.exit(1);
   }
-  const png = read(src);
-  const sheet = { file: "selftest", cols: 4, rows: 2, mode: "keyed" };
-  let bad = 0;
-  for (const [name, pos] of [["edgeL", 0], ["edgeR", 1]]) {
-    const stale = cutPiece(png, sheet, pos, `stale_${name}`, { box: STALE_SIDE_BOXES[name], tiles: "v" });
-    const fresh = cutPiece(png, sheet, pos, `fresh_${name}`, { box: EDGE_BOXES[name], tiles: "v" });
-    const staleRed = stale.faults.some((f) => f.includes("does not tile"));
-    const freshGreen = fresh.faults.length === 0;
-    if (!staleRed) { bad++; console.error(`✗ ${name}: the STALE AS2 box was accepted — this check cannot see a 74 px gutter, so it proves nothing`); }
-    else console.log(`✓ ${name}: the stale AS2 box y ${STALE_SIDE_BOXES[name][1]}..${STALE_SIDE_BOXES[name][3]} is REJECTED — join ${stale.seam.tb.toFixed(2)} against a texture step of ${stale.seam.inner.toFixed(2)}`);
-    if (!freshGreen) { bad++; console.error(`✗ ${name}: the re-measured box was rejected: ${fresh.faults.join(" · ")}`); }
-    else console.log(`✓ ${name}: the re-measured box y ${EDGE_BOXES[name][1]}..${EDGE_BOXES[name][3]} is ACCEPTED — join ${fresh.seam.tb.toFixed(2)} against a texture step of ${fresh.seam.inner.toFixed(2)}`);
+  const CELL = 512;
+  const plate = new PNG({ width: CELL * 4, height: CELL * 2 });
+  for (let pos = 0; pos < PLATE_CELLS.length; pos++) {
+    const cell = read(path.join(OUT, `${PLATE_CELLS[pos]}.png`));
+    const ox = (pos % 4) * CELL, oy = Math.floor(pos / 4) * CELL;
+    for (let y = 0; y < CELL; y++) for (let x = 0; x < CELL; x++) {
+      const si = ((y % cell.height) * cell.width + (x % cell.width)) * 4;
+      const di = ((oy + y) * plate.width + (ox + x)) * 4;
+      for (let o = 0; o < 4; o++) plate.data[di + o] = cell.data[si + o];
+    }
   }
-  // …and the axis must actually discriminate: a side edge does NOT tile
-  // left↔right, so asking for the wrong axis has to fail. If it passed, the
-  // axis option would be decoration.
-  // ── AND THE CHEAT ITSELF HAS TO GO RED (R5-W4b · A6b) ──────────────────────
-  // Everything above proves the check can see an OPEN seam. It does not prove it
-  // can see a HIDDEN one — and a hidden seam is what batch AS5 actually shipped:
-  // every one of its 24 tiling cells reports a join of exactly 0.00 and jumps
-  // 5–57× its own texture step one row further in. A naive "last row against
-  // first" check scores all of them perfect.
-  //
-  // So the cheat is MANUFACTURED here, from art already in this file's
-  // dependency set, on the case where right and plausibly-wrong diverge: take
-  // the stale box, which is known not to tile (join 65.09), and copy its top
-  // boundary row onto its bottom one. The naive number becomes 0.00 — flawless —
-  // and the picture is unchanged one row in. If the profile check were deleted,
-  // this case would PASS. That is the whole point of it.
+  const sheet = { file: "selftest-plate", cols: 4, rows: 2, mode: "opaque" };
+  const cut = (png, pos, name, opt) => cutPiece(png, sheet, pos, name, opt);
+
+  // ── 0 · THE DIRECTION EVERYONE FORGETS: accepted art must stay GREEN ───────
+  // A check that fires on good art is worse than none. This is also the guard
+  // that keeps the three new windows honest: they were derived from these very
+  // sheets, so if a later round moves a threshold past them, this goes red here
+  // rather than silently in a delivery.
+  {
+    const bads = [];
+    for (let pos = 0; pos < 8; pos++) {
+      const r = cut(plate, pos, PLATE_CELLS[pos], { tiles: true });
+      if (r.faults.length > 0) bads.push(`${PLATE_CELLS[pos]}: ${r.faults[0]}`);
+    }
+    claim(bads.length === 0,
+      `the plate: all eight accepted p1 sheets pass every law this gate applies (texture, seam, support, roughness, N1)`,
+      `the plate: ${bads.length} ACCEPTED sheet(s) were rejected by our own gate — ${bads[0]}`);
+  }
+
+  // A cell with a REAL vertical seam, built from accepted paint plus one declared
+  // distortion: a 90-level ramp down the cell. It leaves the left↔right join
+  // untouched and destroys the top↔bottom one — which is what both the hidden-
+  // seam case and the axis case need, and neither could get from the plate
+  // itself. The plate's own sheets are seamless on BOTH axes (they are the
+  // interior continuum), so „duplicate the boundary row" has nothing to hide
+  // there; the first draft of this selftest asserted otherwise and said so.
+  const ramped = crop(plate, 0, 0, plate.width, plate.height);
+  for (let y = 0; y < CELL; y++) {
+    const d = Math.round((y / CELL) * 90) - 45;
+    for (let x = 0; x < CELL; x++) {
+      const i = (y * ramped.width + x) * 4;
+      for (let o = 0; o < 3; o++) ramped.data[i + o] = Math.max(0, Math.min(255, ramped.data[i + o] + d));
+    }
+  }
+  const CELL_BOX = [0, 0, CELL - 1, CELL - 1];
+
+  // ── 1 · A HIDDEN SEAM (the AS5 cheat) ─────────────────────────────────────
+  // Duplicating the boundary row makes the naive „last row against first" score
+  // a perfect 0.00 while the picture still steps hard one row in. Without the
+  // profile check this case passes; that is the whole reason it exists.
   const dupBoundaryRow = (src, box) => {
     const [bx0, by0, bx1, by1] = box;
     const copy = crop(src, 0, 0, src.width, src.height);
@@ -1192,119 +1598,234 @@ if (process.argv.includes("--selftest")) {
     }
     return copy;
   };
-  const honest = cutPiece(png, sheet, 0, "cheat_before", { box: STALE_SIDE_BOXES.edgeL, tiles: "v" });
-  const cheat = cutPiece(dupBoundaryRow(png, STALE_SIDE_BOXES.edgeL), sheet, 0, "cheat_after", { box: STALE_SIDE_BOXES.edgeL, tiles: "v" });
-  // A tamper that changed nothing proves nothing — so prove it changed.
-  assert(honest.seam.tb > 50, `tamper fixture is wrong: the stale box was expected to join badly, it joins at ${honest.seam.tb.toFixed(2)}`);
-  assert(cheat.seam.tb < 0.01, `the tamper did not take: the duplicated row still joins at ${cheat.seam.tb.toFixed(2)}, so this case tests nothing`);
-  if (!cheat.faults.some((f) => f.includes("HIDDEN"))) {
-    bad++;
-    console.error(`✗ hidden seam: a join of ${cheat.seam.tb.toFixed(2)} with a ${cheat.seam.tbJump.toFixed(2)} jump behind it was ACCEPTED — the profile check is decoration`);
-  } else {
-    console.log(`✓ hidden seam: duplicating the boundary row turns a ${honest.seam.tb.toFixed(2)} join into ${cheat.seam.tb.toFixed(2)} — and it is still REJECTED, because the picture jumps ${cheat.seam.tbJump.toFixed(2)} behind the duplicate`);
+  {
+    const box = CELL_BOX;
+    const honest = cut(ramped, 0, "cheat_before", { box, tiles: "v" });
+    const cheat = cut(dupBoundaryRow(ramped, box), 0, "cheat_after", { box, tiles: "v" });
+    assert(honest.seam.tb > 10, `tamper fixture is wrong: the ramped cell was expected to join badly, it joins at ${honest.seam.tb.toFixed(2)}`);
+    assert(cheat.seam.tb < 0.01, `the tamper did not take: the duplicated row still joins at ${cheat.seam.tb.toFixed(2)}, so this case tests nothing`);
+    claim(cheat.faults.some((f) => f.includes("HIDDEN")),
+      `hidden seam: duplicating the boundary row turns a ${honest.seam.tb.toFixed(2)} join into ${cheat.seam.tb.toFixed(2)} — and it is still REJECTED, because the picture jumps ${cheat.seam.tbJump.toFixed(2)} behind the duplicate`,
+      `hidden seam: a join of ${cheat.seam.tb.toFixed(2)} with a ${cheat.seam.tbJump.toFixed(2)} jump behind it was ACCEPTED — the profile check is decoration`);
   }
 
-  // ── FLATNESS HAS TO GO RED WHERE THE SEAM RATIO PROVABLY CANNOT (A7) ───────
-  // The seam law is a RATIO — join ÷ texture — so it survives anything that
-  // scales both. Pull every painted pixel toward the sheet's own mean and the
-  // picture keeps its mean luminance, its alpha, its key and its seam ratios;
-  // the only thing that changes is how much paint is left. That is batch AS5b's
-  // defect exactly, manufactured here out of art this file already accepts, on
-  // the one case where MIN_TEXTURE and SEAM_OVER_TEXTURE diverge. Without the
-  // texture floor this case passes — which is the whole reason it exists.
+  // ── 2 · A FLATTENED PAINTING, where the seam RATIO provably cannot see it ──
   const flatten = (src, k) => {
     const copy = crop(src, 0, 0, src.width, src.height);
     let n = 0, m = [0, 0, 0];
     for (let i = 0; i < copy.data.length; i += 4) {
-      if (isMagenta(copy.data[i], copy.data[i + 1], copy.data[i + 2])) continue;
       for (let o = 0; o < 3; o++) m[o] += copy.data[i + o];
       n++;
     }
-    if (n === 0) return copy;
     m = m.map((v) => v / n);
     for (let i = 0; i < copy.data.length; i += 4) {
-      if (isMagenta(copy.data[i], copy.data[i + 1], copy.data[i + 2])) continue;
-      for (let o = 0; o < 3; o++) {
-        copy.data[i + o] = Math.max(0, Math.min(255, Math.round(m[o] + (copy.data[i + o] - m[o]) * k)));
-      }
+      for (let o = 0; o < 3; o++) copy.data[i + o] = Math.max(0, Math.min(255, Math.round(m[o] + (copy.data[i + o] - m[o]) * k)));
     }
     return copy;
   };
-  const sharp = cutPiece(png, sheet, 0, "texture_before", { box: EDGE_BOXES.edgeL, tiles: "v" });
-  const flat = cutPiece(flatten(png, 0.05), sheet, 0, "texture_after", { box: EDGE_BOXES.edgeL, tiles: "v" });
-  // A tamper that changed nothing proves nothing — so prove both halves moved.
-  assert(sharp.seam.inner > MIN_TEXTURE, `texture fixture is wrong: the accepted sheet was expected to carry texture, it measures ${sharp.seam.inner.toFixed(2)}`);
-  assert(flat.seam.inner < MIN_TEXTURE, `the flattening did not take: texture is still ${flat.seam.inner.toFixed(2)}`);
-  assert(sharp.faults.length === 0, `texture fixture is wrong: the untouched piece already fails — ${sharp.faults.join(" · ")}`);
-  const flatSeamFaults = flat.faults.filter((f) => f.includes("tile with itself") || f.includes("HIDDEN"));
-  if (flatSeamFaults.length > 0) {
-    bad++;
-    console.error(`✗ texture: the flattened piece was caught by the SEAM law (${flatSeamFaults[0]}) — this case no longer isolates flatness, so it proves nothing about MIN_TEXTURE`);
-  } else if (!flat.faults.some((f) => f.includes("almost no texture"))) {
-    bad++;
-    console.error(`✗ texture: a piece whose paint was flattened from ${sharp.seam.inner.toFixed(2)} to ${flat.seam.inner.toFixed(2)} was ACCEPTED — the texture floor is decoration`);
-  } else {
-    console.log(`✓ texture: flattening the same painting from a ${sharp.seam.inner.toFixed(2)} step to ${flat.seam.inner.toFixed(2)} is REJECTED — and the seam law does not fire on it (join ratio ${(sharp.seam.tb / sharp.seam.inner).toFixed(2)}× before, ${(flat.seam.tb / flat.seam.inner).toFixed(2)}× after), so the floor is catching what the ratio cannot`);
+  {
+    const box = CELL_BOX;
+    const sharp = cut(plate, 0, "texture_before", { box, tiles: "h" });
+    const flat = cut(flatten(plate, 0.05), 0, "texture_after", { box, tiles: "h" });
+    assert(sharp.seam.inner > MIN_TEXTURE, `texture fixture is wrong: the accepted sheet was expected to carry texture, it measures ${sharp.seam.inner.toFixed(2)}`);
+    assert(flat.seam.inner < MIN_TEXTURE, `the flattening did not take: texture is still ${flat.seam.inner.toFixed(2)}`);
+    assert(sharp.faults.length === 0, `texture fixture is wrong: the untouched piece already fails — ${sharp.faults.join(" · ")}`);
+    const seamFired = flat.faults.filter((f) => f.includes("tile with itself") || f.includes("HIDDEN"));
+    claim(seamFired.length === 0 && flat.faults.some((f) => f.includes("almost no texture")),
+      `texture: flattening the same painting from a ${sharp.seam.inner.toFixed(2)} step to ${flat.seam.inner.toFixed(2)} is REJECTED, and the SEAM law does not fire on it — so the floor catches what the ratio cannot`,
+      seamFired.length > 0
+        ? `texture: the flattened piece was caught by the SEAM law (${seamFired[0]}) — this case no longer isolates flatness`
+        : `texture: a piece flattened from ${sharp.seam.inner.toFixed(2)} to ${flat.seam.inner.toFixed(2)} was ACCEPTED — the texture floor is decoration`);
   }
 
-  // ── ONE CELL TWICE HAS TO GO RED, AND A CLEAN SHEET MUST NOT ───────────────
-  // Both directions, because a duplicate check that fires on everything is worse
-  // than none: the accepted AS3 sheet carries eight distinct cells and must stay
-  // silent, and the same sheet with cell 2 pasted over cell 3 must not.
+  // ── 3 · ONE CELL TWICE, and a clean sheet that must stay silent ───────────
   const pasteCell = (src, from, to, cols, rows) => {
     const copy = crop(src, 0, 0, src.width, src.height);
     const cw = src.width / cols, ch = src.height / rows;
     const fx = (from % cols) * cw, fy = Math.floor(from / cols) * ch;
     const tx = (to % cols) * cw, ty = Math.floor(to / cols) * ch;
-    for (let y = 0; y < ch; y++) {
-      for (let x = 0; x < cw; x++) {
-        const si = ((fy + y) * src.width + (fx + x)) * 4, di = ((ty + y) * src.width + (tx + x)) * 4;
-        for (let o = 0; o < 4; o++) copy.data[di + o] = copy.data[si + o];
-      }
+    for (let y = 0; y < ch; y++) for (let x = 0; x < cw; x++) {
+      const si = ((fy + y) * src.width + (fx + x)) * 4, di = ((ty + y) * src.width + (tx + x)) * 4;
+      for (let o = 0; o < 4; o++) copy.data[di + o] = copy.data[si + o];
     }
     return copy;
   };
-  const cleanDup = duplicateCells(png, { cols: 4, rows: 2 });
-  const pastedDup = duplicateCells(pasteCell(png, 2, 3, 4, 2), { cols: 4, rows: 2 });
-  assert(pastedDup.get(3) === 2, `the paste did not take: cell 3 is not reported as a copy of cell 2 (${[...pastedDup].join(", ") || "no duplicates at all"})`);
-  if (cleanDup.size > 0) {
-    bad++;
-    console.error(`✗ distinctness: the ACCEPTED AS3 sheet was reported as carrying copies (${[...cleanDup].map(([a, b]) => `Z${a}=Z${b}`).join(", ")}) — a check that fires on good art is worse than none`);
-  } else {
-    console.log(`✓ distinctness: the accepted AS3 sheet reads as eight distinct cells, and the same sheet with cell 2 pasted over cell 3 is caught`);
+  {
+    const clean = duplicateCells(plate, { cols: 4, rows: 2 });
+    const pasted = duplicateCells(pasteCell(plate, 2, 3, 4, 2), { cols: 4, rows: 2 });
+    assert(pasted.get(3) === 2, `the paste did not take: cell 3 is not reported as a copy of cell 2 (${[...pasted].join(", ") || "no duplicates at all"})`);
+    claim(clean.size === 0,
+      "distinctness: eight accepted sheets read as eight distinct cells, and the same sheet with cell 2 pasted over cell 3 is caught",
+      `distinctness: the ACCEPTED plate was reported as carrying copies (${[...clean].map(([a, b]) => `Z${a}=Z${b}`).join(", ")}) — a check that fires on good art is worse than none`);
   }
 
-  // ── A BAND OF THE WRONG HEIGHT HAS TO GO RED ───────────────────────────────
-  // The renderer scales a crust tile from its SOURCE HEIGHT, so the declared band
-  // height is load-bearing geometry. Exercised in both directions on the same
-  // real sheet: the height it actually measures must pass, one pixel off must not.
-  const bandSheet = (h) => ({ file: "selftest-band", cols: 4, rows: 2, mode: "keyed", band: h });
-  const measuredBand = sheetBand(png, bandSheet(0));
-  const trueH = measuredBand[1] - measuredBand[0] + 1;
-  const right = prepSheet(png, bandSheet(trueH));
-  const wrong = prepSheet(png, bandSheet(trueH - 1));
-  assert(right.bandRows !== null, "band fixture is wrong: the sheet keys to nothing");
-  if (right.faults.length > 0) {
-    bad++;
-    console.error(`✗ band: the sheet's OWN measured height ${trueH} was rejected — ${right.faults[0]}`);
-  } else if (!wrong.faults.some((f) => f.includes("shared band"))) {
-    bad++;
-    console.error(`✗ band: a declared height of ${trueH - 1} against a measured ${trueH} was ACCEPTED — the band check is decoration`);
-  } else {
-    console.log(`✓ band: the sheet's own measured band height ${trueH} px passes and ${trueH - 1} px is rejected — the crust cannot be cut to a height the renderer does not scale from`);
+  // ── 4 · A BAND OF THE WRONG HEIGHT ────────────────────────────────────────
+  // The renderer scales a crust tile from its SOURCE HEIGHT, so the declared
+  // band height is load-bearing geometry. Built here by keying the top and
+  // bottom of the plate, which is what a band sheet physically is.
+  {
+    const keyed = crop(plate, 0, 0, plate.width, plate.height);
+    const pad = 90;
+    for (let y = 0; y < keyed.height; y++) {
+      const inBand = (y % CELL) >= pad && (y % CELL) < CELL - pad;
+      if (inBand) continue;
+      for (let x = 0; x < keyed.width; x++) {
+        const i = (y * keyed.width + x) * 4;
+        keyed.data[i] = 255; keyed.data[i + 1] = 0; keyed.data[i + 2] = 255; keyed.data[i + 3] = 255;
+      }
+    }
+    const bandSheet = (h) => ({ file: "selftest-band", cols: 4, rows: 2, mode: "keyed", band: h });
+    const measured = sheetBand(keyed, bandSheet(0));
+    assert(measured !== null, "band fixture is wrong: the keyed sheet keys to nothing");
+    const trueH = measured[1] - measured[0] + 1;
+    assert(trueH === CELL - 2 * pad, `band fixture is wrong: expected a ${CELL - 2 * pad} px band, measured ${trueH}`);
+    const right = prepSheet(keyed, bandSheet(trueH));
+    const wrong = prepSheet(keyed, bandSheet(trueH - 1));
+    claim(right.faults.length === 0 && wrong.faults.some((f) => f.includes("shared band")),
+      `band: the sheet's own measured height ${trueH} px passes and ${trueH - 1} px is refused — a crust cannot be cut to a height the renderer does not scale from`,
+      right.faults.length > 0
+        ? `band: the sheet's OWN measured height ${trueH} was rejected — ${right.faults[0]}`
+        : `band: a declared height of ${trueH - 1} against a measured ${trueH} was ACCEPTED — the band check is decoration`);
   }
 
-  const wrongAxis = cutPiece(png, sheet, 0, "axis_edgeL", { box: EDGE_BOXES.edgeL, tiles: "h" });
-  if (!wrongAxis.faults.some((f) => f.includes("left↔right"))) {
-    bad++;
-    console.error("✗ axis: a side edge passed a LEFT↔RIGHT tiling demand — the axis option is not doing anything");
-  } else {
-    console.log(`✓ axis: the same strip fails left↔right (${wrongAxis.seam.lr.toFixed(2)}) and passes top↔bottom (${wrongAxis.seam.tb.toFixed(2)}) — the axes are told apart`);
+  // ── 5 · THE AXES MUST BE TOLD APART ───────────────────────────────────────
+  // A strip that tiles one way and not the other, built from accepted paint: a
+  // strong vertical ramp laid over one cell leaves its left↔right join intact
+  // and destroys its top↔bottom one. If asking for the wrong axis passed, the
+  // `tiles` option would be decoration.
+  {
+    const alongX = cut(ramped, 0, "axis_h", { box: CELL_BOX, tiles: "h" });
+    const alongY = cut(ramped, 0, "axis_v", { box: CELL_BOX, tiles: "v" });
+    claim(alongX.faults.length === 0 && alongY.faults.some((f) => f.includes("top↔bottom")),
+      `axis: a vertically ramped strip passes left↔right (join ${alongX.seam.lr.toFixed(2)}) and fails top↔bottom (join ${alongY.seam.tb.toFixed(2)}) — the axes are told apart`,
+      alongX.faults.length > 0
+        ? `axis: the ramped strip failed the axis it DOES tile on — ${alongX.faults[0]}`
+        : `axis: a strip with a 90-level vertical ramp passed a TOP↔BOTTOM tiling demand — the axis option is not doing anything`);
   }
+
+  // ── 6 · IS IT PAINT, OR A TEXTURE FUNCTION? (the three new laws) ──────────
+  // The controls are built here, from nothing, exactly as `--calibrate` builds
+  // them — and the point of the first assertion is that the OLD gate lets both
+  // of them through. A floor a generator can clear by generating is a target.
+  {
+    const wrap = (png) => {
+      const s = new PNG({ width: CELL * 4, height: CELL * 2 });
+      for (let y = 0; y < s.height; y++) for (let x = 0; x < s.width; x++) {
+        const si = ((y % png.height) * png.width + (x % png.width)) * 4;
+        const di = (y * s.width + x) * 4;
+        for (let o = 0; o < 4; o++) s.data[di + o] = png.data[si + o];
+      }
+      return s;
+    };
+    const box = CELL_BOX;
+    const grid = cut(wrap(controlSheet("grid")), 0, "control_grid", { box, tiles: true });
+    const noise = cut(wrap(controlSheet("noise")), 0, "control_noise", { box, tiles: true });
+    const real = cut(plate, 0, "control_real", { box, tiles: true });
+
+    claim(grid.seam.inner > MIN_TEXTURE && noise.seam.inner > MIN_TEXTURE,
+      `the gap this round exists for: an EMPTY surface with the AS5c grid on it measures tex ${grid.seam.inner.toFixed(2)} and pure noise ${noise.seam.inner.toFixed(2)} — both clear the ${MIN_TEXTURE.toFixed(1)} floor, so the texture law alone cannot see either of them`,
+      `the controls no longer clear MIN_TEXTURE (grid ${grid.seam.inner.toFixed(2)}, noise ${noise.seam.inner.toFixed(2)}) — this case no longer shows why the new laws are needed`);
+
+    claim(grid.faults.some((f) => f.includes("distinct neighbour-step")),
+      `support: the generator grid uses ${grid.paint.support} distinct step values against a floor of ${PAINT_WINDOWS.supportMin} (accepted art: ${real.paint.support} on this cell) — REJECTED`,
+      `support: the AS5c generator grid (support ${grid.paint.support}) was ACCEPTED — the support floor is decoration`);
+
+    claim(grid.faults.some((f) => f.includes("roughness")) && noise.faults.some((f) => f.includes("roughness")),
+      `roughness: the grid measures ${grid.paint.rough.toFixed(3)} and pure noise ${noise.paint.rough.toFixed(3)} against a window of ${PAINT_WINDOWS.rough[0]}–${PAINT_WINDOWS.rough[1]} (this accepted cell: ${real.paint.rough.toFixed(3)}) — both REJECTED`,
+      `roughness: grid ${grid.paint.rough.toFixed(3)} / noise ${noise.paint.rough.toFixed(3)} — at least one was ACCEPTED, so the roughness window is decoration`);
+
+    claim(grid.faults.some((f) => f.includes("EXACTLY equal")),
+      `N1: the grid dithers every single pixel (${(grid.paint.n1 * 100).toFixed(2)} % exactly-equal neighbours against a floor of ${(PAINT_WINDOWS.n1[0] * 100).toFixed(1)} %; this accepted cell: ${(real.paint.n1 * 100).toFixed(2)} %) — REJECTED`,
+      `N1: a picture with ${(grid.paint.n1 * 100).toFixed(2)} % exactly-equal neighbours was ACCEPTED — the N1 floor is decoration`);
+
+    // …and the honest half: N1's CEILING does not catch the noise control. Said
+    // out loud, because a gate whose owner cannot name which line carries which
+    // defect is a gate nobody can maintain.
+    claim(noise.paint.n1 <= PAINT_WINDOWS.n1[1] || noise.faults.some((f) => f.includes("EXACTLY equal")),
+      `…and stated rather than implied: pure noise measures ${(noise.paint.n1 * 100).toFixed(2)} % on N1 against a ${(PAINT_WINDOWS.n1[1] * 100).toFixed(1)} % ceiling — N1 alone does NOT catch it; roughness does`,
+      "the N1 note is stale — re-derive it");
+
+    // the tamper: widen each window and the same control walks straight through
+    const wouldPass = grid.paint.support >= 2 && grid.paint.rough <= 1.5 && grid.paint.n1 >= 0;
+    claim(wouldPass,
+      "the tamper: with the support floor at 2, the roughness ceiling at 1.5 and the N1 floor at 0, this same grid PASSES every one of the three — the windows, not the metrics, are what reject it",
+      "the tamper is broken: the grid fails even with the windows opened, so these three assertions are not testing the thresholds");
+  }
+
+  // ── STAGE 2 · the AS3 box assertions — conditional, loud, and under test ───
+  //
+  // These two need `mass_edges_p1.png` from batch AS3: the sheet whose STALE
+  // AS2 y-range hides a 74 px gutter. Nothing on the plate can stand in for it,
+  // because what is under test is a BOX measured against the wrong sheet.
+  //
+  // UNPARKING (the architect decides, not this lane): the next mass-kit delivery
+  // that PASSES its Wareneingang can be anchored here as the stage-2 fixture —
+  // AS5F is the open candidate, and as of 2026-08-22 it is not accepted (its own
+  // Lieferschein reports `pass: false · status: INCOMPLETE`, R202). Until then
+  // this stage stays parked, and the same condition is written in A8's register
+  // block so it is not only in a comment.
+  const AS3_FIXTURE = path.join(LAB, "batch-as3/mass_edges_p1.png");
+  const stageTwo = (file, label, quiet = false) => {
+    const src = read(file);
+    if (src.width < 1024 || src.height < 1024) {
+      bad++; ran++;
+      const msg = `stage 2 (${label}): ${file} is ${src.width}×${src.height} — the AS3 edge sheet is 2048×1024. A file at this path that is not that sheet is a BROKEN fixture, not an absent one.`;
+      // `quiet` is ONLY for the tamper below, where this red light is the
+      // expected outcome. A run that prints ✗ while ending green teaches its
+      // reader to ignore ✗, which is how a real one gets past.
+      if (quiet) console.log(`  · (tamper, expected) ${msg}`);
+      else console.error(`✗ ${msg}`);
+      return;
+    }
+    const s2 = { file: "selftest-as3", cols: 4, rows: 2, mode: "keyed" };
+    for (const [name, pos] of [["edgeL", 0], ["edgeR", 1]]) {
+      const stale = cutPiece(src, s2, pos, `stale_${name}`, { box: STALE_SIDE_BOXES[name], tiles: "v" });
+      const fresh = cutPiece(src, s2, pos, `fresh_${name}`, { box: EDGE_BOXES[name], tiles: "v" });
+      claim(stale.faults.some((f) => f.includes("does not tile")),
+        `stage 2 ${name}: the stale AS2 box y ${STALE_SIDE_BOXES[name][1]}..${STALE_SIDE_BOXES[name][3]} is REJECTED — join ${stale.seam?.tb.toFixed(2)} against a texture step of ${stale.seam?.inner.toFixed(2)}`,
+        `stage 2 ${name}: the STALE AS2 box was accepted — this check cannot see a 74 px gutter, so it proves nothing`);
+      claim(fresh.faults.length === 0,
+        `stage 2 ${name}: the re-measured box y ${EDGE_BOXES[name][1]}..${EDGE_BOXES[name][3]} is ACCEPTED`,
+        `stage 2 ${name}: the re-measured box was rejected: ${fresh.faults.join(" · ")}`);
+    }
+  };
+
+  if (fs.existsSync(AS3_FIXTURE)) {
+    console.log(`  · stage 2 fixture found at ${AS3_FIXTURE} — running the AS3 box assertions.`);
+    stageTwo(AS3_FIXTURE, "AS3");
+  } else {
+    skipped += 4;
+    console.log(`  ⚠ STAGE 2 SKIPPED — 4 assertions not run.`);
+    console.log(`    missing file : ${AS3_FIXTURE}`);
+    console.log(`    reason       : the R5 lab of the first Mac is not reachable (Ruling R204, 2026-08-21); batch AS3 was never in the repository.`);
+    console.log(`    what is lost : the two box assertions (a box measured against the WRONG sheet must go red, the re-measured one green).`);
+    console.log(`    unparking    : the architect anchors the next mass-kit delivery that passes its Wareneingang as the fixture here (A8 register block).`);
+  }
+
+  // …and the skip logic is itself under test (Koki, 2026-08-22): a stage that
+  // skips in every state checks nothing. A file that EXISTS at that path but is
+  // not the sheet must go RED, never SKIPPED — the failure mode of a
+  // conditional fixture is not absence, it is a wrong file quietly accepted.
+  {
+    const tmp = path.join(os.tmpdir(), `as-selftest-corrupt-${process.pid}.png`);
+    const junk = new PNG({ width: 64, height: 64 });
+    for (let i = 0; i < junk.data.length; i += 4) { junk.data[i + 3] = 255; }
+    fs.writeFileSync(tmp, PNG.sync.write(junk));
+    const before = bad, ranBefore = ran;
+    stageTwo(tmp, "corrupt", true);
+    fs.rmSync(tmp, { force: true });
+    const caught = bad > before;
+    bad = before; ran = ranBefore; // this red light is the EXPECTED outcome, not a failure
+    claim(caught,
+      "skip logic: a wrong file at the stage-2 path goes RED, not SKIPPED — the stage cannot be neutralised by putting something, anything, where the fixture belongs",
+      "skip logic: a 64×64 junk PNG at the stage-2 path was treated as a fixture — this stage would skip or pass in every state, which is the same as not existing");
+  }
+
+  console.log(`\n  ${ran} assertion(s) run · ${skipped} skipped · ${bad} failed`);
   if (bad > 0) { console.error("✗ import-batch-as selftest: FAILED"); process.exit(1); }
-  console.log("✓ selftest: a box measured at the wrong sheet is caught, the re-measured one passes, the seam axes are\n"
-    + "  distinguished, a hidden seam and a flattened painting both go red, a copied cell is named, and a band of\n"
-    + "  the wrong height is refused — each on a case where the right answer and the plausible wrong one diverge.");
+  console.log("✓ selftest: accepted art stays green; a hidden seam, a flattened painting, a copied cell, a band of the\n"
+    + "  wrong height and the wrong tiling axis all go red; a generator grid and pure noise both clear the texture\n"
+    + "  floor and are caught by support, roughness and N1 instead; and the parked stage cannot be neutralised.");
   process.exit(0);
 }
 
