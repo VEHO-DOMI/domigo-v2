@@ -164,13 +164,23 @@ function audio(): { ctx: AudioContext; master: GainNode } | null {
     master.gain.value = 0.25; // the classroom-soft ceiling
     master.connect(ctx.destination);
   }
-  if (ctx.state === "suspended") void ctx.resume();
+  if (ctx.state === "suspended") void ctx.resume().catch(() => { /* schon wach oder schon zu */ });
   return { ctx, master: master! };
 }
 
-/** Suspend the shared AudioContext (game pause veils + tab-hide call this). */
+/**
+ * Suspend the shared AudioContext (game pause veils + tab-hide call this).
+ *
+ * R5-W8 · S4: the `state === "running"` read is SYNCHRONOUS and `suspend()` is
+ * not — between the two the context can be closed by a teardown, and the
+ * rejection then lands in the console as an uncaught promise. That is the same
+ * failure class as the one this round fixed in PaintGame's teardown order (see
+ * there); here the guard already narrows it to a race, so the `catch` is the
+ * whole fix. Swallowing is right: a context that closed while we were asking it
+ * to nap has done what we wanted.
+ */
 export function suspendAudio(): void {
-  if (ctx && ctx.state === "running") void ctx.suspend();
+  if (ctx && ctx.state === "running") void ctx.suspend().catch(() => { /* schon zu */ });
 }
 
 let noiseBuffer: AudioBuffer | null = null;

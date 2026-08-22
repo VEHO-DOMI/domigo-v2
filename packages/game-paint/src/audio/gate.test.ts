@@ -129,6 +129,42 @@ describe("D-372 · die fünf Tore feuern ihr Ereignis", () => {
     expect(countOf(evs, "gate-waits")).toBe(1);
   });
 
+  /**
+   * R5-W8 · S4 · P7 §12.7 — UND ES NENNT SEINE SACHE.
+   *
+   * Der Befund von End-Urteil III: vier der fünf Torschluss-Sätze sagen, WAS
+   * hakt; Tor 1 sagte nur, dass etwas fehlt. Der Name kommt jetzt vom DING
+   * (`params.gabeDe`, dasselbe Muster wie `captiveDe` am Käfig).
+   *
+   * Zwei Fälle, weil es zwei gibt — und der zweite ist der, an dem ein Shell
+   * sonst still »undefined« ausliefert.
+   */
+  it("Tor 1 · nennt die Sache, sobald das Level sie benennt", () => {
+    const sim = mkSim("p1");
+    sim.world.entities.push({
+      ...sim.world.entities[0]!,
+      id: "pruef-pflichtstueck",
+      role: "powerup",
+      params: { essential: true, gabeDe: "die Faust" },
+      redeemed: false,
+    });
+    const toast = stepAtExit(sim).find((e): e is Extract<SimEvent, { type: "toast" }> => e.type === "toast");
+    expect(toast?.msg).toBe("Du hast noch etwas Wichtiges vergessen — die Faust liegt noch in diesem Raum!");
+  });
+
+  it("Tor 1 · und fällt DEKLARIERT auf den alten Satz zurück, wenn es keinen Namen gibt", () => {
+    const sim = mkSim("p1");
+    sim.world.entities.push({
+      ...sim.world.entities[0]!,
+      id: "pruef-pflichtstueck",
+      role: "powerup",
+      params: { essential: true },
+      redeemed: false,
+    });
+    const toast = stepAtExit(sim).find((e): e is Extract<SimEvent, { type: "toast" }> => e.type === "toast");
+    expect(toast?.msg).toBe("Du hast noch etwas Wichtiges vergessen!");
+  });
+
   it("Tor 2 · die Tür wartet auf ihr Wort", () => {
     const sim = mkSim("p1");
     const evs = stepAtExit(sim);

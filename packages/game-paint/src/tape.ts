@@ -163,6 +163,25 @@ export interface ReplayResult {
    * cannot turn one failure message into a wall of text.
    */
   poseViolations: { tick: number; errors: string[] }[];
+  /**
+   * R5-W8 · S4 · R209d · DIE LEBENSANZEIGE, ALS ZAHLENREIHE.
+   *
+   * Jede Schicht, die in diesem Lauf WIRKLICH weggewischt wurde, in der
+   * Reihenfolge ihres Verschwindens — der Wert ist die Zahl der Schichten, die
+   * DANACH noch stehen (`guardianWipe.layersLeft`). Ein Arena-Band liefert also
+   * `[2, 1, 0]`.
+   *
+   * WARUM DAS FELD EXISTIERT. `guardianDown` sagt nur, dass der Kampf am Ende
+   * gewonnen war — ein einziger Sprung von 3 auf 0 wäre davon ununterscheidbar.
+   * Die Lebensanzeige (H5, R193b) zeigt aber den WEG, und über den hatte bis
+   * hierher keine Maschine eine Meinung: kein Prüfer hat die Leiste je fallen
+   * sehen (D-551/D-558). Diese Reihe ist die Zusicherung, dass sie fällt, und
+   * sie wird rot in dem Augenblick, in dem der Kampf wieder unerreichbar wird.
+   *
+   * Gesammelt, nie geworfen — wie `poseViolations`: der Rekorder teilt diesen
+   * Pfad und muss fertig laufen und BERICHTEN können.
+   */
+  wipes: number[];
 }
 
 /** How many offending ticks a replay keeps before it stops collecting. */
@@ -224,6 +243,8 @@ export const replayPhaseTape = (
   // below writes to it — the counter-window is an EVENT, not a sampled state)
   let telegraphs = 0;
   let windows = 0;
+  /** R5-W8 · S4 · R209d: jede wirklich weggewischte Schicht, in ihrer Reihenfolge. */
+  const wipes: number[] = [];
   let wroteLow = false;
   let consoled = false;
   let pathTicks = 0;
@@ -236,6 +257,12 @@ export const replayPhaseTape = (
 
   const handle = (evs: SimEvent[]): void => {
     for (const ev of evs) {
+      // R5-W8 · S4 · R209d: die fallende Lebensanzeige, mitgeschrieben. Bewusst
+      // VOR der if/else-Kette und als eigene Anweisung — der Wisch ist eine
+      // Beobachtung, keine Shell-Pflicht, und darf keinen der Zweige verdrängen,
+      // die dem Sim etwas schulden (`guardianDown` hält gleich darunter die
+      // Landung auf).
+      if (ev.type === "guardianWipe") wipes.push(ev.layersLeft);
       if (ev.type === "task") {
         tasksSolved++;
         // PK-R6 · E · THE COUNTER-WINDOW, caught where it actually happens. It
@@ -389,7 +416,7 @@ export const replayPhaseTape = (
     guardianConsoled: consoled,
     guardianLanded,
   };
-  return { exited, exitTo, ticksUsed: t, tasksSolved, grantsPicked, world, poseViolations };
+  return { exited, exitTo, ticksUsed: t, tasksSolved, grantsPicked, world, poseViolations, wipes };
 };
 
 /**

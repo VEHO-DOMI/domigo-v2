@@ -82,6 +82,24 @@ export interface EntityParams {
    *  phase exit LOCKS until it has been collected; there is no backtracking
    *  between phases, so a missed essential is a dead run. */
   essential?: boolean;
+  /** powerup: WHAT is lying there, as the German noun phrase WITH its article —
+   *  „die Faust", „das Buch". R5-W8 · S4 (P7 §12.7): the essential-pickup gate
+   *  was the one of five that did not name its cause („Du hast noch etwas
+   *  Wichtiges vergessen!"), so a child stuck at it learned only that something
+   *  was missing. The line is built from THIS field for the same reason the
+   *  cage ceremony is built from `captiveDe`: a shell that writes one noun for
+   *  all fifteen chapters is the defect, not the fix.
+   *
+   *  RENDERED MID-SENTENCE, always — the article stays lower-case, exactly like
+   *  `captiveDe`. Absent, the toast falls back to its old wording (declared in
+   *  sim.ts): a gate that says „undefined liegt noch in diesem Raum" would be
+   *  worse than the gate it replaces.
+   *
+   *  ⚠ ch01 carries NO `powerup` entity at all (D-487, measured again by S4 on
+   *  2026-08-22 over all four surfaces), so nothing in the shipped chapter can
+   *  reach this field today. The law is chapter-spanning; ch02 is where it
+   *  first pays. */
+  gabeDe?: string;
   /** cage: WHO is inside — the classmate's name. Its presence is what makes a
    *  cage the chapter's one person-cage (doc 44 §2.3's `captive:"classmate"` is
    *  this field; the shipped data has carried the name itself since ch01, and a

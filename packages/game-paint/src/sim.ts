@@ -1432,7 +1432,29 @@ export class Sim {
       // one blocker whose answer lies back in the level rather than underfoot.
       const missing = this.world.entities.find((e) => e.role === "powerup" && e.params.essential === true && !e.redeemed);
       if (missing) {
-        if (this.gateToastCooldown === 0) { events.push({ type: "gate", reason: "powerup" }, { type: "toast", msg: "Du hast noch etwas Wichtiges vergessen!", echoes: "gate" }); this.gateToastCooldown = 120; }
+        // ── R5-W8 · S4 · P7 §12.7 · DIESES TOR NENNT JETZT SEINE SACHE ───────
+        // Vier der fünf Torschluss-Sätze sagen, WAS hakt (Tür-Wort · Tafel ·
+        // Klassenfoto · Käfig); dieser sagte nur, dass etwas fehlt. Ein Kind,
+        // das hier hängt, erfuhr damit genau nichts.
+        //
+        // Der Name kommt vom DING, nicht aus dem Shell — dasselbe Muster, das
+        // der Käfig zwei Zweige weiter unten mit `captiveDe` benutzt: ein Shell,
+        // der ein Substantiv für alle fünfzehn Kapitel hineinschreibt, ist die
+        // Klasse, die dieses Kapitel anderswo als Schuld gemeldet hat.
+        //
+        // Fehlt der Name, bleibt der alte Satz stehen — DEKLARIERT, nicht aus
+        // Versehen: »undefined liegt noch in diesem Raum« wäre schlechter als
+        // das Tor von gestern.
+        //
+        // ⚠ ch01 trägt gar kein `powerup`-Entity (D-487), dieser Zweig ist im
+        // ausgelieferten Kapitel also unerreichbar. Das Gesetz gilt trotzdem
+        // kapitelübergreifend, und `sim-gates.test.ts` fährt beide Fälle an
+        // einer Attrappe.
+        const gabe = String(missing.params.gabeDe ?? "").trim();
+        const msg = gabe === ""
+          ? "Du hast noch etwas Wichtiges vergessen!"
+          : `Du hast noch etwas Wichtiges vergessen — ${gabe} liegt noch in diesem Raum!`;
+        if (this.gateToastCooldown === 0) { events.push({ type: "gate", reason: "powerup" }, { type: "toast", msg, echoes: "gate" }); this.gateToastCooldown = 120; }
         return;
       }
       // exit doors gate the X until their word is said (ch01 imperative law)
