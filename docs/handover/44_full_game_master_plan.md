@@ -144,6 +144,12 @@ grounds of the chapters they were freed in** — the world map shows them; inter
 them; late-year beats (doc 31's "appears once more late in the year") draw on them. "Alliance"
 is the fiction word for: the game visibly remembers everyone you freed, where you freed them.
 
+**»Das Lager am Rand der Seite« — the retired German formula (canon note, 2026-08-22 · closes doc 45 C9).**
+The phrase is the OLD wording of this law, never a place: it was written before this section abolished the
+abstract camp, no level ever contained it, and the chapter copy now carries the law itself instead —
+»Alle, die du frei machst, bleiben hier auf der Seite.« Any comment or document that still quotes the
+formula quotes history, and resolves here.
+
 > **★ Amendment 2026-08-15 (ruling R49) — "gather" means PRESENT, never MOTIONLESS.**
 > Koki, on Merle after her rescue: she „soll sich durchs Level bewegen". This does not
 > overturn the law, it **restores** it: doc 40 §3 already says *"redemption changes STATE,

@@ -280,6 +280,11 @@ bytegleich; der Eindruck ist Simultankontrast (dasselbe Gold wirkt neben Rot bla
 Blau). Ein zweiter Befund derselben Runde (»ein roter Pixel mitten auf dem goldenen Beschlag«)
 existierte, saß aber auf einem weißen Glanzlicht. Beides steht in den Protokollen, damit die
 Nachbestellung keine Arbeit an einem Phantom verlangt. Keine zweite Nummer — dieselbe Falle.
+**★ Dritter Vorfall, diesmal mit dem umgekehrten Ausgang (P7, 2026-08-22):** zwei Kritiker-Zahlen sahen
+aus wie ein Widerspruch (»maximal 43 von 765« gegen eine gegenteilige Lesart). Nachgerechnet hatten
+**beide recht** — und die Rechnung erklärte die Spaltung des blinden Panels besser als jedes der beiden
+Urteile für sich. *Zusatz zur Regel:* eine widersprüchliche Zahl ist erst dann ein Widerspruch, wenn man
+beide Rechenwege kennt; sonst ist sie eine Frage.
 
 ## Karten, Pools und Inhalt
 
@@ -398,6 +403,12 @@ Vergleichsrunde war ungültig. F3 fand die Ursache: es war der Space-Mama-Kampf,
 Rayman am Boden liegt. *Regel:* Der Ausschnitt wird vor der Runde daraufhin angesehen, ob
 er das Ereignis überhaupt enthält; der verifizierte Absprung-Ausschnitt steht seither im
 AAA-Mandat namentlich (03-jump-tap, Bild 60, Fenster 57–108).
+**★ Zweiter Vorfall — und der erste, bei dem die Regel GEHALTEN hat (P7, 2026-08-22):** vor der
+Panel-Runde wurde der Referenzsatz selbst angesehen und seine Prüfsummen gegen die Beschreibung
+gehalten — **7 von 7 exakt** —, bevor ein Prüfer ein Bild bekam. Zugleich wurde eine kursierende
+Verlust-Meldung dadurch widerlegt: der Satz war nicht weg, er war nur nicht nachgesehen worden.
+*Zusatz zur Regel:* die Prüfung des Referenzmaterials ist auch die billigste Art, eine Behauptung
+über SEINE Existenz zu prüfen.
 
 **PB-29 · Ein Aufnahme-Werkzeug muss uhr-neutral sein — und das ist zu MESSEN.** *(F3,
 2026-08-12)* F2 hatte berichtet, seine Bildstreifen seien „1 Bild = 1 Tick".
@@ -701,6 +712,10 @@ suchte eine Datei namens »check-x.mjs --selftest«; **sieben Tore meldeten rot,
 grün waren**, darunter fremde, die in CI laufen. Dreimal in einem Monat, und diesmal in der
 gefährlichsten Richtung: eine rote Lampe, deren Ursache im Aufruf liegt, kostet Vertrauen in die
 Tore selbst. Keine eigene Nummer.)
+(**Vierter Vorfall: W6, 2026-08-22** — `node scripts/$c` mit `c="datei.mjs --flag"` suchte wieder eine
+Datei mit einem Leerzeichen im Namen; **vier Tore sahen dadurch aus, als wären sie kaputt**. Die Regel
+stand in der Definition of Done DIESER Bahn — und ist trotzdem passiert. Viermal in acht Tagen; keine
+eigene Nummer, aber die Lehre daraus ist eine Bauform, keine Aufmerksamkeit: `${=VAR}` oder literale Liste.)
 
 **★ Vierter Vorfall (B5, 2026-08-19):** dieselbe Tor-Schleife, dieselbe Richtung — `node
 scripts/"check-x.mjs --selftest"` als EIN Dateiname, **alle 15 Selbsttests meldeten Exit 1**, und
@@ -742,6 +757,10 @@ Dateien mit; `apps/web/.env.local` mit `DEV_TEACHER_ID` ist gitignored. Ohne sie
 gemalt« ab — und die Ursache steht in keiner Fehlermeldung. *Regel:* Erste Handlung jeder
 Bahn nach `pnpm install`: die Datei aus dem Haupt-Clone kopieren (nie committen) und
 `curl` gegen die Tür — **HTTP 200, nicht 307**, bevor irgendetwas gemessen wird.
+(**Dritter Vorfall: F8, 2026-08-21** — diesmal zeigte die Fehlermeldung in die falsche Richtung: das
+Weltbild-Werkzeug meldete »kein `__domigoPaint` — läuft der Dev-Server?«, und der Server lief. Die
+Meldung nennt die Wirkung, nie die Ursache; die Kopier-Zeile oben ist deshalb der billigste Reflex der
+ganzen Bahn.)
 
 **PB-61 · Ein Anker, der sich mitbewegt, ist keine Zone.** *(F5, 2026-08-15.)* Merles
 Gang-Zone wurde bei jedem Gang neu an ihrer **aktuellen** Position aufgehängt; ein
@@ -794,6 +813,12 @@ lieferten dadurch Zeilennummern 60–90 Zeilen daneben und eine Tot-Kunst-Decke 
 dort liest, liest die vorige Welle. *Zusatz:* das gilt für **jede** Arbeitskopie, die man nicht
 selbst gerade angelegt hat — vor der ersten Aussage `git log --oneline -1` im Verzeichnis, aus dem
 man liest. Keine eigene Nummer.)
+(**Dritter Vorfall: P7, 2026-08-22, selbst gefangen und selbst entkräftet** — ein Teil der Skript-Läufe
+lief aus dem Haupt-Clone statt aus dem eigenen Worktree. P7 hat die Folgen nicht behauptet, sondern
+gemessen: der Unterschied zwischen beiden Ständen waren **drei** Dateien, und keine davon lag auf einem
+Messpfad — Skripte, Spielcode und Inhalte waren zwischen beiden bytegleich. *Zusatz zur Regel:* wer den
+Fehler bemerkt, rechnet den Abstand der beiden Stände AUS, statt die Messungen pauschal zu verwerfen
+oder pauschal zu behalten.)
 
 **PB-67 · Ein Backup ist nur so aktuell wie sein Zeitpunkt.** *(D3, 2026-08-15.)* Acht
 geänderte Dateien lagen im Scratchpad; beim **zweiten** Durchlauf hat dieselbe, inzwischen
@@ -1519,3 +1544,156 @@ Architekten-Fehler, Wareneingang 2026-08-19; vom Prüfer widerlegt.)* `merle_hop
 Urteil trug. *Regel:* die Zellgeometrie kommt aus dem Lieferschein oder aus einer Messung am Blatt
 (Trennlinien, Leerspalten, Wiederholung) — eine Division der Bildbreite durch die erwartete
 Zellenzahl ist eine Vermutung, die jede folgende Zahl mitreißt.
+
+## R5-Welle 7 · aus den fünf Reports der Welle (aufgenommen von K7, 2026-08-22)
+
+_**Ruling R210** hat diese Vergabe an K7 gegeben. **Dreiunddreißig** rohe Wortlaute kamen aus fünf
+Reports (F8 · D5 · W6 samt Schluss-Pass · H5 · P7). Ein **blinder Klassierer** (frischer Sonnet-5-Prüfer,
+er sah nur das vollständige Register und die rohen Wortlaute, nie meine Zuordnung) hat sie gegen jeden
+bestehenden Eintrag gehalten. Sein Befund, von mir Zeile für Zeile am Register nachgelesen, bevor er
+hier gilt: **fünf Doppelungen nach außen** (sie bekommen ihren Vorfall an der bestehenden Nummer, keine
+neue) · **null Doppelungen nach innen** · **fünf Routen und Einzelfälle** (sie stehen im Report, nicht
+hier — eine Aufgabe ist keine Falle). Bei einem sechsten Kandidaten habe ich ihn **überstimmt**: die
+veraltete PR-Vorlage hielt er für eine erledigte Aufgabe; sie steht unten als PB-169, weil ihre Lehre
+bei jeder Werkzeug-Umbenennung wieder greift. Bleiben **dreiundzwanzig** neue Nummern._
+
+**PB-147 · `beat()` ist innerhalb einer synchronen JS-Runde blind.** *(F8, 2026-08-21.)* Das Werkzeug
+liest React-Refs; ohne Atempause rendert React nie. Zwölf Aufgaben-Runden später meldete es weiter
+dieselbe alte Karte — und eine Sitzung hat damit einen Befund als »ausgeschlossen« geführt, der nicht
+ausgeschlossen war. *Regel:* wer einen Zustand über Refs abfragt, gibt der Runde vorher eine Atempause;
+ein Ausschluss aus einer synchronen Schleife ist kein Ausschluss.
+
+**PB-148 · Headless-Chrome drosselt die ZEITGEBER — auch wenn es zeichnet.** *(F8, 2026-08-21.)*
+Derselbe Befehl liefert headless »die Welt steht« und sichtbar »34 von 34 grün«. Betroffen ist jede
+Karte, die über einen Zeitgeber aufgeht. *Regel:* wer einen Stillstand meldet, wiederholt ihn zuerst
+sichtbar. Das **schärft PB-44**: dort steht, dass ein selbst gestarteter headless-Chrome *zeichnet* —
+das heißt nicht, dass seine *Uhren* laufen.
+
+**PB-149 · Ein Messgerät kann sich an seiner eigenen Näherung verschlucken.** *(F8, 2026-08-21.)* Das
+Präsenz-Werkzeug warnt »Kind höher?«, weil es die Kindhöhe mit 35 px annimmt: bei einem Käfig (34 px)
+ist die Warnung ein Fehlalarm, bei einem Buch (24 px) misst der Kasten wirklich Haare. In der Tabelle
+sehen beide Fälle gleich aus. *Regel:* eine Warnung, die aus einer angenommenen Konstanten entsteht,
+wird am Ausschnitt entschieden, nie an der Tabelle.
+
+**PB-150 · Ein Auswahlkriterium aus Größe, Bereich und Rang findet das größere fremde Ding.** *(F8,
+2026-08-21, selbst gefangen.)* Der Schuh-Sucher nahm »2500–5500 px, unteres Viertel, die zwei größten«
+— Merles Perlenkette (5372 px) erfüllt alle drei Bedingungen und ist größer als jeder Schuh. Gefunden
+beim Nachrechnen (66,1 statt 59,4 px²), korrigiert auf »die zwei tiefsten in einem engen Band«, **beide
+Messungen danach neu gefahren**. *Regel:* ein solches Kriterium wird gegen das größte NICHT gemeinte
+Objekt geprüft, bevor es eine Zahl liefert.
+
+**PB-151 · Wer seine eigene Reparatur ansieht, sieht sie freundlich an.** *(F8, 2026-08-21.)* Das
+Ring-Banding galt nach zwölf Schichten als behoben; der blinde Prüfer sah weiter »fast wie eine
+Zielscheibe«, Störwert 4 von 5. *Regel:* der Ausschnitt schlägt die Zahl — und der fremde Blick schlägt
+den eigenen Ausschnitt.
+
+**PB-152 · Eine Hintergrund-FARBE kann kein Bild überdecken, sie liegt darunter.** *(D5, 2026-08-21.)*
+Ein deckendes `background-image` macht jede `background-color` am selben Element wirkungslos, auch die
+halbdurchsichtige »Wäsche«, mit der ein Aufrufer den Knopf leiser stellen wollte. Der Fehler sieht wie
+ein Deckkraft-Problem aus und ist mit keiner Zahl zu beheben (0,5 wie 0,83 ergaben denselben Bildpunkt).
+*Regel:* eine Wäsche, die ÜBER einem Blatt liegen soll, ist ein Verlauf aus einer einzigen Farbe als
+oberste Lage. Wenn keine Zahl hilft, ist es kein Zahlen-, sondern ein Reihenfolge-Fehler.
+
+**PB-153 · `img { max-width: 100% }` klemmt jede Vergrößerung still ab.** *(D5, 2026-08-21.)* Ein Bild,
+das absichtlich über sein Fenster hinausragen soll, braucht `max-width: none` — sonst ist die
+Breitenangabe eine Behauptung, das Vorher/Nachher-Foto ist bytegleich, und **nichts wird rot**.
+*Regel:* eine Größenangabe, die eine Umgebungsregel überstimmen muss, wird zusammen mit der Regel
+geschrieben, die sie aushebelt.
+
+**PB-154 · Ein Import-Skript, das jedes Mal ALLES neu kopiert, macht den Bildpunkt-Beweis blind.**
+*(D5, 2026-08-21.)* Zwischen zwei Läufen liegt die Nachverdichtung; die Kopie bringt die größeren
+Labor-Bytes zurück, und zwei Blätter, die diese Runde gar nicht importiert wurden, stehen als angefasst
+im Diff. *Regel:* das BILD vergleichen, nicht die Datei.
+
+**PB-155 · Die Kartenbank kann keinen Takt fotografieren, den ihre Flächenliste nicht kennt — und ihre
+Attrappe zeigt stumm einen von zwei Zuständen.** *(D5, 2026-08-21.)* Ein fehlendes Feld in der Attrappe
+wird zu `undefined` und damit zu »nichts gefunden«; der Prüfer beurteilt dann die halbe Wahrheit, ohne
+dass ihm etwas fehlt. *Regel:* wer eine Karte um einen Zustand erweitert, prüft die Attrappe der Bank im
+selben Zug.
+
+**PB-156 · Ein Verhältnis schlägt eine Pixelzahl, sobald das Element mitwächst.** *(D5, 2026-08-21.)*
+Der Knopf ist zwischen 94 und 380 px breit; ein fester Eckradius trifft die gemalte Ecke bei genau
+einer Breite, Prozente treffen sie bei allen. *Regel:* Maße an einer mitwachsenden Fläche werden
+relativ geschrieben.
+
+**PB-157 · Ein Profil-Präfix identifiziert das WERKZEUG, nicht den BESITZER.** *(W6, 2026-08-22, am
+lebenden Fall gegen eine fremde Bahn geprüft — nichts passiert, weil die Lastlesung vor der Messung
+stand.)* Zwei Sitzungen auf demselben Rechner, die dasselbe Skript fahren, teilen das Präfix; eine
+»räume verwaiste Profile«-Routine schießt dann eine fremde, LAUFENDE Messung ab. *Regel:* verwaist
+heißt `ppid = 1` — der Erzeuger ist weg. Aufräum-Routinen erkennen ihre eigenen Kinder am Erzeuger, nie
+am Namen. (Familie **PB-136**, Browser-Prozess-Hygiene.)
+
+**PB-158 · Ein Drift-Wächter, der eine LISTE von Meldern kennt, ist gegen den nächsten Melder blind.**
+*(W6, 2026-08-22.)* Er meldet dann die richtige Beobachtung mit der falschen Ursache — das Teuerste,
+was ein Wächter tun kann, weil die Suche in die falsche Richtung läuft. *Regel:* gelesen wird der
+Aufzählungs-KÖRPER, nicht eine Namensliste. (Familie **PB-18** — eine Namensliste ist ein handgebautes
+Modell der echten Aufrufer. Eigene Nummer, weil die Bedingung neu ist: nicht der Prüfling ist hier ein
+Modell, sondern der MELDER-KREIS. Der blinde Klassierer hat genau diese Grenze benannt und offen
+gelassen; die Entscheidung ist meine.)
+
+**PB-159 · Eine Bibliothek, die auf oberster Ebene die Aufrufzeile liest, kapert den Selbsttest ihres
+Importeurs.** *(W6, 2026-08-22.)* `process.argv.includes("--selftest")` im Modulrumpf feuert auch dann,
+wenn ein ganz anderes Werkzeug die Bibliothek nur einbindet. *Regel:* zusätzlich prüfen, ob die eigene
+Datei das Einstiegsmodul ist.
+
+**PB-160 · Ein Selbsttest, der einen WORTLAUT zitiert, wird von der nächsten Umbenennung entwertet.**
+*(W6, 2026-08-22 — im selben Commit passiert, in dem die Umbenennung stand.)* Er meldet dann »das
+Gesetz ist blind«, obwohl nur sein Anker verrottet ist. *Regel:* Anker als MUSTER schreiben, und laut
+abbrechen, wenn die Verfälschung nichts verändert hat — ein Tamper, der nichts bewegt, ist kein Beweis,
+sondern eine offene Frage. (Familie **PB-25** und **PB-15**.)
+
+**PB-161 · Backticks in einer doppelt gequoteten Commit-Meldung sind Kommando-Ersetzung.** *(W6,
+2026-08-22; die Meldung war schon geschrieben, als es auffiel.)* `zsh` versucht den Inhalt auszuführen
+(»permission denied«) und setzt eine LEERE Zeichenfolge ein — die Meldung verliert stillschweigend
+ihren Inhalt, und der Commit sieht danach aus wie ein Flüchtigkeitsfehler des Autors. *Regel:*
+Commit-Meldungen über eine Datei (`-F`) oder in einfachen Anführungszeichen. (Verwandt **PB-68** und
+**PB-17** — dort sprengt das Sonderzeichen ein Stylesheet, hier eine Meldung.)
+
+**PB-162 · `pngjs` liefert IMMER vier Kanäle.** *(D4 fand die Instanz; W6 hat am 2026-08-22 die Klasse
+gemessen: **193 von 624** Blättern wären falsch gemeldet worden.)* Wer aus dem dekodierten Puffer auf
+das Dateiformat schließt, urteilt über den Decoder, nicht über die Datei. *Regel:* der Farbtyp steht in
+Byte 25 der IHDR-Kopfdaten und wird dort gelesen.
+
+**PB-163 · `timeout` gibt es auf macOS nicht.** *(W6, 2026-08-22 — ⚠ der Quell-Report nennt diese Regel
+unter den Fallen der Runde, ohne einen Vorfall auszuschreiben; K7 hat keinen erfunden, sondern die
+Tatsache am Sitz-Rechner selbst nachgemessen: weder `timeout` noch `gtimeout` sind vorhanden, Darwin
+26.5.2, 2026-08-22.)* Es kommt aus den GNU-Coreutils; in CI (ubuntu) ist es da, auf dem Arbeitsgerät
+nicht. *Regel:* Sitzungs-Skripte bauen nicht darauf — ein Befehl, der in CI existiert, existiert damit
+nicht hier.
+
+**PB-164 · Eine Ratsche, deren Auslöser ein FREMDER Merge ist, wird auf `main` rot statt im PR.**
+*(W6-Schluss-Pass, 2026-08-22, an der eigenen Ratsche bezahlt.)* »Verschmilzt sauber« (`MERGEABLE` /
+`CLEAN`) heißt: die Dateien vertragen sich. Es heißt **nicht**: das Ergebnis ist noch richtig. *Regel:*
+die letzte Bahn eines Zuges rebased **vor** dem Merge — und wer eine Ratsche baut, deren Auslöser
+außerhalb seines eigenen Diffs liegt, schreibt diese Pflicht in die Merge-Tabelle.
+
+**PB-165 · Ein Prüfskript über Merge-Commits findet bei SQUASH-Merges null Bahnen — und meldet »nichts
+verloren«.** *(W6-Schluss-Pass, 2026-08-22.)* Die Historie enthält die gesuchten Mitglieder gar nicht
+mehr; die Null ist dann keine Antwort, sondern eine Abwesenheit der Frage. *Regel:* jeder
+Mengen-Vergleich braucht eine Vakuum-Sperre gegen die **erwartete Mitgliedschaft**, nicht gegen eine
+geratene Zahl. (Familie **PB-82**; eigene Nummer, weil die Null hier nicht aus einer falsch
+verdrahteten Prüfung kommt, sondern aus der Form der Daten selbst.)
+
+**PB-166 · Ein frisch gestarteter Server misst seinen ersten Lauf falsch.** *(W6-Schluss-Pass,
+2026-08-22.)* Kaltstart gemessen: die erste Fläche 187,3 → 124,2 ms, das Laden 964 → 516 ms. *Regel:*
+die erste Zahl nach dem Serverstart ist kein Messwert; ein Aufwärmlauf gehört ins Rezept und in den
+Beipackzettel.
+
+**PB-167 · Ein Anker, der eine Tabellenzelle sucht, findet sie nicht, wenn sie fett gesetzt ist.**
+*(H5, 2026-08-22; kostete zwei rote Läufe an einer Tabelle, die vollständig ausgefüllt war.)* Der
+Wächter suchte die Phasen-Zelle als Wortanfang hinter einem Strich; die fett gesetzte Fassung mit
+Sternchen schlägt fehl. *Regel:* wer Text prüft, den Menschen schreiben, prüft ihn gegen die
+Auszeichnungen, die Menschen benutzen — sonst ist das rote Licht eine Aussage über die Formatierung,
+nicht über den Inhalt.
+
+**PB-168 · Ein Wiederholungslauf liest den ALTEN PR-Text.** *(H5, 2026-08-22.)* Der PR-Text steckt in
+der Auslöse-Nutzlast des Laufs; wer ihn repariert und dann »rerun« drückt, misst dieselbe Fassung noch
+einmal und hält das Tor für kaputt. *Regel:* nur ein neuer Push färbt ein Tor grün, das den PR-Text
+liest.
+
+**PB-169 · Eine Vorlage ist Anleitung ohne Tor — sie veraltet mit dem Werkzeug, das sie nennt.** *(H5,
+2026-08-22.)* Die PR-Vorlage schickte zum Mess-Werkzeug der vorigen Welle; gemessen wird seit W6 mit
+einem anderen, und ohne die Bau-Angabe beim Serverstart kann der Bau sich nicht selbst nennen.
+*Regel:* wer ein Werkzeug ersetzt, sucht seinen Namen in den Vorlagen — kein Tor tut das für ihn.
+(⚠ Der blinde Klassierer hielt diesen Kandidaten für eine erledigte Aufgabe statt für eine Falle. K7
+hat überstimmt: die Aufgabe ist erledigt, die Lehre greift bei jeder Umbenennung wieder.)
