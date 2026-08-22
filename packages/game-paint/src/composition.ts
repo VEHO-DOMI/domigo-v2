@@ -583,13 +583,23 @@ const PLAT_OBJECTS: Record<string, MassKit["platObjects"]> = {
     { stem: "plat_bench_2", cells: 2, deck: 0.10 },
     { stem: "plat_shelf_2", cells: 2, deck: 0 },
     { stem: "plat_coatbench", cells: 1, deck: 0.58 }, // the seat plank, backboard + coats above it
-    { stem: "plat_bundle_1", cells: 1, deck: 0.02 },
+    // R5-W9 · M1: 1 → 2 Zellen. Gemalt ist das Buendel 1,91 Zellen breit
+    // (382 px x paintScale 0,080189 / 16), gezeichnet wurde es auf einer —
+    // also bei 0,52x des Massstabs, den jede Flaeche daneben traegt. Bei
+    // zwei Zellen sind es 1,045x. Die Halle behaelt ihr 1-Zellen-Objekt
+    // (`plat_coatbench`), also bleiben ihre 3-Zellen-Simse moebliert.
+    { stem: "plat_bundle_1", cells: 2, deck: 0.02 },
   ],
   // p2 Klassenzimmer — desks, a wall shelf, and the book stacks off them.
   p2: [
     { stem: "plat_desk", cells: 2, deck: 0.03 },
-    { stem: "plat_shelf_2", cells: 2, deck: 0 },
-    { stem: "plat_bookpile_l", cells: 1, deck: 0.06 },
+    // R5-W9 · M1: 2 → 4 Zellen. Das Regalblatt ist 857 px breit, im
+    // Massstab dieses Raumes 4,32 Zellen; auf zwei gezwungen zeichnete es
+    // bei 0,46x — halb so gross wie das Papier, auf dem es steht. Der Raum
+    // hat genau einen 4-Zellen-Sims, und der gehoert ab jetzt ihm.
+    { stem: "plat_shelf_2", cells: 4, deck: 0 },
+    // R5-W9 · M1: 1 → 2 Zellen (gemalt 1,98 — die Rundung kostet 0,8 %).
+    { stem: "plat_bookpile_l", cells: 2, deck: 0.06 },
     { stem: "plat_bookpile_s", cells: 1, deck: 0.08 },
   ],
   // p3 Schulhof-Garten — PK-R6 · H2 (round-2 finding 12): the yard shared its
@@ -605,7 +615,8 @@ const PLAT_OBJECTS: Record<string, MassKit["platObjects"]> = {
   // room already implies. Measured off its opaque profile: the top plank IS the
   // walk surface (deck 0.02 — a hair, so the lip does not float).
   p3: [
-    { stem: "plat_plank_2", cells: 2, deck: 0 },
+    // R5-W9 · M1: 2 → 4 Zellen (gemalt 3,82 in diesem Raum; 0,52x → 1,05x).
+    { stem: "plat_plank_2", cells: 4, deck: 0 },
     { stem: "ledge_windowsill", cells: 2, deck: 0.02 },
     { stem: "plat_column2_1", cells: 1, deck: 0.01 },
   ],
@@ -646,6 +657,33 @@ const PLAT_OBJECTS: Record<string, MassKit["platObjects"]> = {
  * picture climbs out of it at 0.26–0.62× the painting's own texture instead of
  * jumping. The import gate tells the two apart and holds both cases as fixtures.
  */
+/**
+ * R5-W9 · M1 · WELCHE RAEUME EINE ECHTE AUSSENKANTE HABEN (Posten 4, R212a).
+ *
+ * `canopy_fringe_loop` ist eine HECKE: gemalte Blattbueschel, die von der
+ * obersten Reihe herabhaengen, damit eine Welt unter freiem Himmel nicht an
+ * einer geraden Kante aufhoert. `PaintScene#buildTerrain` hat sie bis heute
+ * KIT-UNABHAENGIG gezeichnet — auf jeder Solid-Zelle in Reihe ≤ 1, deren
+ * Unternachbar Luft ist, in allen fuenf Raeumen. Gemessen in der laufenden p3:
+ * EIN TileSprite ueber die volle Weltbreite (1024 x 26 px, Tiefe 2).
+ *
+ * In ch01 spielt jeder Raum INNERHALB des Buches: Eingangshalle, Nacht-
+ * Klassenzimmer, der gemalte Schulhof (eine Wand mit Rundbogenfenstern und
+ * einer Laterne — sein Himmel ist Malerei, keine Kante), die Tafel-Buehne, die
+ * Kleckskammer. Eine Hecke an der Decke eines Klassenzimmers ist genau die
+ * Art von unverwandter Kunst-Familie, die R212 den „Block-Mess" nennt.
+ *
+ * Die Menge ist deshalb LEER — und das ist eine Deklaration, keine Loeschung.
+ * Das Blatt bleibt auf der Platte und in der Bibliothek; der erste Raum mit
+ * einer echten Aussenkante (ch02+) traegt sich hier ein und bekommt seine
+ * Hecke zurueck, ohne dass jemand Code sucht.
+ *
+ * ⚠ FOLGE, im selben PR gebucht: ohne Eintrag laedt kein Raum das Blatt mehr,
+ * also zaehlt `check-paint-art` es als tote Kunst — die Decke steigt um eins.
+ * Genau so soll eine Ratsche sich anfuehlen: sichtbar, begruendet, datiert.
+ */
+export const CANOPY_PHASES = new Set<string>([]);
+
 const PAINTED_MASS_PHASES = new Set(["p1"]);
 
 const paintedInterior = (phase: string): Pick<MassKit, "body" | "bodyDeep" | "fade" | "sediment"> => ({
@@ -795,7 +833,57 @@ const PAINTED_TRIM_PHASES = new Set<string>([]);
  * catches exactly that, which is the point of deriving the number instead of
  * choosing it. It comes back with the re-cut, not before.
  */
-const TRIM_SHADE_BY_PHASE: Record<string, number | undefined> = {};
+const TRIM_SHADE_BY_PHASE: Record<string, number | undefined> = {
+  // ── R5-W9 · M1 · p1 IST DER EINE RAUM, DEN DER SCHUL-STANDARD FALSCH KLEIDET
+  //
+  // ★ ERKLAERTES INTERIM. Der Schluss ist die MALEREI (AS6): sobald p1 sein
+  // eigenes Kit bekommt, wird diese Zahl an der neuen Lieferung nachgemessen
+  // und faellt oder aendert sich. Sie kauft keine Ruhe, sie kauft die Zeit bis
+  // dahin — und Audit 11 leitet sie bei jedem CI-Lauf aus den Blaettern selbst
+  // ab, kann also nicht als schale Konstante zurueckbleiben.
+  //
+  // ── DIE ABLEITUNG, MIT DEN GEMESSENEN ZAHLEN ────────────────────────────────
+  // Dieselbe Methode wie `mass.ts#TRIM_SHADE` (dort in Langform): Ziel = die
+  // FARBRICHTUNG der Flaeche, aus der die Kante geschnitten ist, getragen auf
+  // Koerperwert + 8; Tint = Ziel / Trim.
+  //
+  //   p1-Koerper (mass_body_p1_a…d)  rgb 164,0 · 110,7 · 46,9   Wert 46,05 %  Saettigung 71,2 %
+  //   Trim       (mass_edge_l/r)     rgb 212,9 · 177,8 · 135,8  Wert 71,45 %  Saettigung 37,5 %
+  //   Ziel = p1-Koerper-Richtung auf 54,05 %                 ⇒  Tint 0xe7ba67
+  //   Gezeichnet: Wert 54,05 % (Kerbe +8,0, Fenster +2…+14) · Saettigung 71,4 %
+  //   gegen einen Koerper von 71,2 % — **0,2 Punkte auseinander.**
+  //
+  // Heute traegt p1 den Schul-Standard 0xdabe90. Der ist aus dem GETEILTEN
+  // Koerper (mass_body_a/b, Saettigung 59,5 %) abgeleitet und deshalb fuer die
+  // vier ungemalten Raeume richtig — aber p1 hat seit AS3 sein EIGENES Papier,
+  // und das ist waermer und um 11,7 Punkte satter. Gemessen zieht der Standard
+  // p1s Kante auf 57,8 % Saettigung gegen einen 71,2-%-Koerper: **13,4 Punkte**,
+  // wo die Ableitung 0,2 erreicht. Das ist genau der Bruch, den `TRIM_SHADE`s
+  // eigener Kommentar mit „eine Zahl, weil es EIN Kit gibt" fuer den Tag
+  // angekuendigt hat, an dem ein Raum sein eigenes bekommt.
+  //
+  // ── UND WARUM NICHT „Richtung Kurs-Familie", wie der Auftrag vorschlug ──────
+  // Beide Richtungen sind gerechnet worden, je Raum. Die Kurs-Richtung ist
+  // gemessen SCHLECHTER, und in zwei Raeumen bricht sie das Kohaerenz-Gesetz:
+  //   p9  Tint 0xb2c0ff → Trim-Saettigung  9,6 % gegen Koerper 59,5 % (49,9 auseinander)
+  //   p3  Tint 0xc3c2cc → 33,6 % gegen 59,5 % (25,9 — ueber der 25er-Linie)
+  //   p4  Tint 0xff9ae1 → rosa, Kerbe faellt auf +4,6
+  //   p2  Tint 0xbdaeff → 22,8 % gegen 59,5 %, Kerbe +4,4
+  //   p1  Tint 0xe2ba85 → 62,4 % gegen 71,2 % (8,8) — auch hier schlechter als 0,2
+  // Der Grund ist kein Geschmack: eine Kante ist der SCHNITT durch den Koerper,
+  // nicht durch den Laufkurs, der obendrauf liegt. Ein Trim in Kurs-Farbe faerbt
+  // die Schnittflaeche nach der Farbe der Oberseite — bei p2/p4/p9 heisst das
+  // violett/rosa/blau geschnittenes Buchpapier. Gemeldet, nicht still umgesetzt.
+  //
+  // ── DIE VIER GETEILTEN RAEUME BEKOMMEN KEINE ZEILE, UND DAS IST DAS ERGEBNIS
+  // p2, p3, p4 und p9 teilen `mass_body_a/b` UND `mass_edge_l/r`. Dieselbe
+  // Ableitung ergibt fuer alle vier **0xdabf90** — eine Rundungsstelle vom
+  // Schul-Standard 0xdabe90 entfernt. Vier Zeilen mit derselben Zahl waeren
+  // vier Stellen, an denen dieselbe Wahrheit veralten kann. Sie stehen deshalb
+  // NICHT hier; was ihre Kanten wirklich braucht, ist ein eigenes Koerper-Blatt
+  // (AS6), und genau das sagen ihre Kohaerenz-Ausnahmen schon.
+  p1: 0xe7ba67,
+};
 
 const paintedTrims = (phase: string): Pick<MassKit, "edgeL" | "edgeR" | "cornerBL" | "cornerBR" | "inCornerL" | "inCornerR"> => ({
   edgeL: `mass_edge_${phase}_l`,

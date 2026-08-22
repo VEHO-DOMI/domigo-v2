@@ -29,7 +29,7 @@ schreibt die `?perf=1`-Zahlen für ALLE fünf Phasen **vorher/nachher** in ihren
 | Phase-Assets (artScope) | ≤ 35 MB | `artScope.test.ts` — **CI** |
 | Bundle (je Nicht-Phaser-Brocken, gzip) | ≤ 150 KB | `check-game-bundle.mjs` — **CI** |
 | Phaser in EINEM faulen Brocken (gzip) | ≤ 400 KB | `check-game-bundle.mjs` — **CI** |
-| Kunst, die niemand lädt | ≤ 53 Blätter | `check-paint-art.mjs` — **CI** |
+| Kunst, die niemand lädt | ≤ 54 Blätter | `check-paint-art.mjs` — **CI** |
 | Audio (Platte) | ≤ 6 MB | `check-audio.mjs` — **CI** |
 | Audio (decodiert, JS-Heap) | ≤ 16 MB | `check-audio.mjs` — **CI**, zur Laufzeit in `?perf=1` |
 
@@ -37,6 +37,8 @@ schreibt die `?perf=1`-Zahlen für ALLE fünf Phasen **vorher/nachher** in ihren
 hat seit dieser Runde **einen** Eigentümer. Vier Berichte der Welle 4 nannten drei
 verschiedene Zahlen (61 / 60 / 58), weil jede Bahn, die Kunst verdrahtet oder löscht, den
 Stapel senkt, ohne die Decke zu berühren — am Ende wusste niemand mehr, was sie IST.
+**★ 2026-08-22 (R5-W9 · M1): 53 → 54.** Das eine Blatt ist `canopy_fringe_loop`, und es ist NICHT neu geliefert — es war verdrahtet und ist es nicht mehr. Die Hecke hing am Glyph `#` und wurde damit in allen fünf Räumen von ch01 gezeichnet, auch an der Decke des Nacht-Klassenzimmers (gemessen an der laufenden p3: EIN TileSprite über die volle Weltbreite, 1024 × 26 px). Sie hängt jetzt an einer Deklaration (`composition.ts#CANOPY_PHASES`), die für ch01 leer ist; das Blatt bleibt auf der Platte, weil der erste Raum mit echter Außenkante (ch02+) sich dort einträgt. Bis dahin ist es ehrlich tote Kunst. Siehe D-635.
+
 **Gemessen 2026-08-16 NACH dem letzten Merge der Welle 4b: 53 Blätter / 36,2 MB**
 (`check-perf-budget.mjs`, Stand `ae0dd42`). W3 hatte auf seiner eigenen Basis `3daaf47`
 57 Blätter / 37,2 MB gemessen; die fünf davor gemergten PRs senkten den Stapel um vier

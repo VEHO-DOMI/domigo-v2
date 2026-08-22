@@ -13,8 +13,8 @@
 
 import Phaser from "phaser";
 import { glyphAt, isSlope, isSolid } from "./collide.ts";
-import { type CompositionSpec, MARKER_H, type MassKit, ROOM_SHADOW_INK, compositionFor, heroEdgeFor, markerPlacementFor, nearPlaneTint } from "./composition.ts";
-import { phaseArtScope } from "./artScope.ts";
+import { CANOPY_PHASES, type CompositionSpec, MARKER_H, type MassKit, ROOM_SHADOW_INK, compositionFor, heroEdgeFor, markerPlacementFor, nearPlaneTint } from "./composition.ts";
+import { CANOPY_STEM, phaseArtScope } from "./artScope.ts";
 import { type AudioDirector, surfaceOfPhase } from "./audio/index.ts";
 import { captiveStem, isCaptiveKey } from "./artManifest.ts";
 import { TextureWarmer, type WarmScene, type WarmStats } from "./warmer.ts";
@@ -23,7 +23,7 @@ import { buildOncePerKey, PatternLedger } from "./tilePatterns.ts";
 import { type LayerPiece, coverFit, planLayers } from "./layers.ts";
 import { AIR_DEPTH, LIFE_PARALLAX, type AirPiece, planBandShade, planHaze, planLife, planMotes, planShafts, planSources, shaftQuads, vignetteBands } from "./air.ts";
 import { type Cell, cellsOf, indexTerrain, mergeRowMajor, runsFrom } from "./terrain.ts";
-import { NEAR_PLANE_KINDS, CRUST_MARK_DEPTH, MASS_MARK_DEPTH, type MassPiece, type SurfaceMark, claimedPlatformCells, crustGrain, hash01, ledgeGrain, massGrain, planMass, planPlatformShadows, tileAnchorFor, tileScaleFor } from "./mass.ts";
+import { NEAR_PLANE_KINDS, CRUST_MARK_DEPTH, MASS_MARK_DEPTH, type MassPiece, type SurfaceMark, claimedPlatformCells, crustGrain, hash01, ledgeGrain, massGrain, drawnScaleFor, paintScaleOf, planMass, planPlatformShadows, tileAnchorFor, tileScaleFor } from "./mass.ts";
 import { BACKING_REACH, BACKING_STEPS, LETTER_AMBER, LETTER_GOLD, LETTER_STYLE, letterBackingFor, letterGlowGain, letterGlyphs, letterRimFor } from "./letters.ts";
 import { type PhraseSlot, bonusPhrase } from "./cards/ceremony.ts";
 import { PICKUP_ROLES, type PaintLevel, type PhaseSpec } from "./level.ts";
@@ -317,6 +317,35 @@ export interface PaintSceneCfg {
   /** PB-F2 jump-feel candidate (dev only; undefined = the shipped model). */
   airModel?: AirModel;
 }
+
+// ── R5-W9 · M1 · DER SCHALTER DES MASSEN-LINEALS (Posten 6) ──────────────────
+//
+// Wie weit ein Stueck vom Welt-Massstab abweichen darf, bevor das Lineal es rot
+// faerbt. DIESELBE Zahl wie `SCALE_PARITY_TOL` in `scripts/check-composition.mjs`
+// Audit 10 — absichtlich, denn ein Instrument, das grosszuegiger ist als sein
+// Tor, zeigt gruen, wo die Maschine rot sagt, und dann glaubt man dem Bild.
+const MASS_RULER_TOL = 0.15;
+
+/**
+ * Steht das Massen-Lineal? Nur in der ENTWICKLUNG, und dort nur auf Ansage.
+ *
+ * Zwei Wege, weil zwei verschiedene Leser den Schalter brauchen und nur einer
+ * von ihnen eine Adresse tippen kann:
+ *   · `?masse=1` — der Mensch im Browser (neben dem `?grid=1` der Lehrer-Tür);
+ *   · `NEXT_PUBLIC_MASSE_LINEAL=1` — `scripts/shoot-world.mjs`, dessen Adresse
+ *     mit `?phase=` gebaut wird und dieser Bahn nicht gehoert. Ohne diesen
+ *     zweiten Weg waere das Instrument fuer das einzige Werkzeug unerreichbar,
+ *     das die Welt ueberhaupt fotografieren kann (P-66).
+ *
+ * In der Produktion ist BEIDES tot: der Zweig prueft `NODE_ENV` zuerst, also
+ * kann keine Adresse und keine Umgebung einem Kind das Lineal zeigen.
+ */
+const massRulerOn = (): boolean => {
+  if (process.env.NODE_ENV === "production") return false;
+  if (process.env.NEXT_PUBLIC_MASSE_LINEAL === "1") return true;
+  if (typeof window === "undefined") return false;
+  return new URLSearchParams(window.location.search).get("masse") === "1";
+};
 
 // ── R3-12 · THE GUARDIAN'S WRITING SURFACE (doc 41 §4) ───────────────────────
 // Each guardian SKIN declares where on its body chalk appears. A skin with no
@@ -4844,6 +4873,54 @@ export class PaintScene extends Phaser.Scene {
     this.imgMs += performance.now() - tPiece;
   }
 
+  /**
+   * R5-W9 · M1 · DAS MASSEN-LINEAL — der Plan, ueber sein eigenes Bild gelegt.
+   *
+   * Je Stueck: sein Rechteck, sein Blattname und die gezeichnete Groesse als
+   * VIELFACHES des Welt-Massstabs (`paintScaleOf` — die Zahl, die der Lauf-
+   * Kurs setzt und an der `check-composition` Audit 10 alles misst). Rot heisst
+   * »dieses Stueck zeichnet sein Blatt in einer anderen Groesse als die Welt«,
+   * gruen heisst »im Mass«; die Schwelle ist dieselbe wie im Tor, damit Bild
+   * und Tor nicht zwei Wahrheiten erzaehlen koennen.
+   *
+   * Depth 95: ueber der Masse (1…3) und ueber dem Gitter-Instrument (90), aber
+   * das Lineal zeichnet NUR, wenn sein Flag steht — es ist kein Bild, das je
+   * ein Kind sieht.
+   */
+  private drawMassRuler(plan: readonly MassPiece[], kit: MassKit): void {
+    const want = paintScaleOf(kit, (stem) => this.srcSize(stem));
+    const g = this.add.graphics().setDepth(95);
+    for (const p of plan) {
+      const src = p.stem === null ? null : this.srcSize(p.stem);
+      // gezeichneter Massstab: gekachelt fragt dieselbe Funktion wie Renderer
+      // und Tor; ein BILD zeichnet sein ganzes Blatt in seine Box, also ist
+      // sein Massstab schlicht Box durch Blatt.
+      const sc = src === null ? null : drawnScaleFor(p, src);
+      const sx = sc === null ? null : sc.x;
+      const sy = sc === null ? null : sc.y;
+      const off = sx === null || sy === null
+        ? true
+        : Math.abs(sx - want) > want * MASS_RULER_TOL || Math.abs(sy - want) > want * MASS_RULER_TOL;
+      g.lineStyle(1, off ? 0xff2d2d : 0x28c840, 0.95).strokeRect(p.x, p.y, p.w, p.h);
+      // BESCHRIFTET wird nur, was aus dem Mass faellt. Ein Raum plant bis zu
+      // 380 Stuecke; jedes mit Namen zu beschriften macht aus dem Instrument
+      // eine schwarze Wand aus Text, in der genau die eine rote Zeile
+      // untergeht, deretwegen man hinsieht (in der ersten Fassung passiert,
+      // am Bild gesehen). Das gruene Rechteck sagt schon alles, was ein
+      // Stueck im Mass zu sagen hat.
+      if (!off) continue;
+      const rel = sx === null || sy === null ? "?" : `${(sx / want).toFixed(2)}x${(sy / want).toFixed(2)}`;
+      this.add
+        .text(p.x, p.y - 7, `${p.kind}:${p.stem ?? "-"} ${rel}`, {
+          fontFamily: "monospace",
+          fontSize: "6px",
+          color: "#ffffff",
+          backgroundColor: "#cc0000",
+        })
+        .setDepth(96);
+    }
+  }
+
   private buildTerrain(): void {
     const kit = this.massKit();
     const fill = this.add.graphics().setDepth(1);
@@ -4955,13 +5032,18 @@ export class PaintScene extends Phaser.Scene {
     const srcH = (stem: string): number => (this.textures.get(`pb-${stem}`).getSourceImage() as HTMLImageElement).height;
     let tDeco = performance.now();
     const deco = (name: string): void => { this.buildMs.push({ step: `· · ${name}`, ms: performance.now() - tDeco, parent: "terrain" }); tDeco = performance.now(); };
-    if (this.textures.exists("pb-canopy_fringe_loop")) {
+    // R5-W9 · M1 · Posten 4: die Hecke zeichnet nur, wo eine echte Aussenkante
+    // deklariert ist (`composition.ts#CANOPY_PHASES`). Der Scope laedt das Blatt
+    // in ch01 ohnehin nicht mehr, also ist dieser Wächter heute die zweite
+    // Sperre — und morgen die erste, wenn ein Raum mit Aussenkante das Blatt
+    // wieder in den Scope holt und nur DORT eine Hecke will.
+    if (CANOPY_PHASES.has(this.cfg.phaseId) && this.textures.exists(`pb-${CANOPY_STEM}`)) {
       const dh = 26;
-      const ts = dh / srcH("canopy_fringe_loop");
+      const ts = dh / srcH(CANOPY_STEM);
       runs(
         idx.solid.filter((x) => x.r <= 1),
         (c, r) => r <= 1 && isSolid(glyphAt(this.grid, c, r)) && !isSolid(glyphAt(this.grid, c, r + 1)),
-        (c0, c1, r) => { this.tiled(c0 * TILE, (r + 1) * TILE - 4, (c1 - c0 + 1) * TILE, dh, "pb-canopy_fringe_loop").setOrigin(0, 0).setDepth(2).setTileScale(ts); },
+        (c0, c1, r) => { this.tiled(c0 * TILE, (r + 1) * TILE - 4, (c1 - c0 + 1) * TILE, dh, `pb-${CANOPY_STEM}`).setOrigin(0, 0).setDepth(2).setTileScale(ts); },
       );
     }
     deco("krone");
@@ -5132,6 +5214,63 @@ export class PaintScene extends Phaser.Scene {
       this.tileMs = 0;
       this.imgMs = 0;
       for (const piece of plan) this.placeMassPiece(piece);
+      // ── R5-W9 · M1 · DAS MASSEN-LINEAL (Posten 6, hinter einem Flag) ────────
+      //
+      // K3/K4 aus Kokis Playtest (»Glasbox-Flecken«, ein verwaister L-Winkel)
+      // sind am Standbild NICHT zu benennen: am fertigen Bild sieht ein Stück,
+      // das falsch skaliert ist, genauso aus wie eines, das am falschen Platz
+      // liegt, wie eines, das gar nicht dazugehört. Der Plan weiss es, das Bild
+      // nicht — also legt dieses Lineal den Plan ÜBER das Bild: je Stück sein
+      // Rechteck und sein Blattname, dazu die gezeichnete Groesse gegen den
+      // Welt-Massstab. Damit ist die Ursache ABLESBAR statt erschlossen.
+      //
+      // Es ist ein WERKZEUG, kein Bild: nur in der Entwicklung erreichbar, und
+      // die Farbe sagt, worauf zu achten ist — rot = das Stueck zeichnet sein
+      // Blatt in einer anderen Groesse als der Rest der Welt (`paintScale`),
+      // gruen = im Mass. Ein Kind kann das nie sehen: in der Produktion ist der
+      // ganze Zweig weg (`NODE_ENV`), und ohne Flag laeuft er auch dort nicht,
+      // wo er da waere.
+      //
+      // Zwei Wege, denselben Schalter zu stellen, weil zwei verschiedene Leser
+      // ihn brauchen: `?masse=1` fuer den Menschen im Browser, die Umgebungs-
+      // variable fuer `shoot-world`, dessen Adresse dieser Bahn nicht gehoert
+      // (`scripts/shoot-world.mjs` baut sie mit `?phase=` und sonst nichts).
+      // ── ★ NARBE · POSTEN 7 · DIE TUSCHE-SILHOUETTE IST GEBAUT, GEMESSEN UND
+      //    BLIND VERWORFEN WORDEN (M1, 2026-08-22) ────────────────────────────
+      //
+      // Ein gemaltes Buch fasst seine Formen ein; unsere Masse tut das an drei
+      // Seiten mit Anatomie (Kurs oben, Trims links und rechts) und an der
+      // vierten mit gar nichts. Der Kandidat war eine duenne Tusche in der
+      // Tinte des Raumes am ganzen Umriss (Tiefe 2,25, Deckung 0,42, 1 px).
+      //
+      // Er WURDE gebaut und ist messbar auf dem Schirm angekommen: gegen das
+      // identische Bild ohne ihn (p3, Warp 16/17, Kamera 179/164, Takt 276,
+      // beide `--pure`) sind **9 910 von 709 632 Bildpunkten verschieden =
+      // 1,40 % der Flaeche, im Mittel um 56 von 765, im Spitzenwert um 265**.
+      // Er ist also weder vergessen noch unsichtbar gerechnet.
+      //
+      // Zwei blinde Leser (Sonnet 5, VIER Bilder — voll und nah, in getauschter
+      // Reihenfolge) haben ihn trotzdem beide nicht gefunden: „ich sehe
+      // ausdrueckich keinen Unterschied … weder in der Gesamt- noch in der
+      // Nahansicht". Der Auftrag verlangte, dass das Panel GEGEN den
+      // Ist-Zustand entscheidet; 0 von 2 taten das.
+      //
+      // Also faellt er — und die Zahl sagt genauer als ein Geschmack, warum:
+      // eine Kontur, die 1,4 % der Flaeche bewegt und die niemand bemerkt, ist
+      // eine Schleife ueber jede Zelle der Welt und ein Graphics-Objekt fuer
+      // nichts, was ein Kind sieht. Zum Vergleich, aus derselben Sitzung: die
+      // Aenderung, die beide Leser SOFORT fanden, bewegte 5,29 % der Flaeche im
+      // Mittel um 143,8 — das ist die Groessenordnung, ab der eine Kontur
+      // ueberhaupt eine Kontur ist.
+      //
+      // Wo er hingehoert, ist damit auch klar: eine Einfassung, die man sehen
+      // soll, ist GEMALT — auf dem Blatt, mit der Hand, in der Staerke, die das
+      // Motiv braucht. Das ist eine Kit-Frage an AS6, kein Motor-Posten.
+      // Der gebaute Code ist RAUS, nicht stillgelegt: ein Haken, den nichts
+      // ruft, ist die Attrappe, gegen die SPEC §9.4 geschrieben ist. Was
+      // bleibt, sind diese Zahlen — damit die naechste Runde den Kandidaten
+      // nicht ein zweites Mal als naheliegend erfindet.
+      if (massRulerOn()) this.drawMassRuler(plan, kit);
       // Der Name bleibt gleich, ganz gleich wie viele Stücke der Plan hat: eine
       // Zeile, deren Beschriftung sich je Phase ändert, wird zu fünf Zeilen mit
       // je vier Strichen und ist keine Tabelle mehr.

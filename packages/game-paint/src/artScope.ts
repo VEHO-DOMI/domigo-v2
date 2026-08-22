@@ -27,7 +27,7 @@
 // stem the gate insists on that the loader would skip fails the build.
 
 import { AUFTAKT_STEMS, GLYPH_STEMS, HERO2_STEMS, HERO_STEMS, PAINTED_ICON_NAMES, captiveStem, entitySkinStems, guardianSkinStems, isCaptiveKey } from "./artManifest.ts";
-import { COMPOSITION, compositionStems } from "./composition.ts";
+import { CANOPY_PHASES, COMPOSITION, compositionStems } from "./composition.ts";
 import { CHALK_PROJECTILE_STEMS } from "./entities.ts";
 
 /** The shape this module needs. Structural on purpose: the CI gate hands it
@@ -78,9 +78,19 @@ export const SLOPE_STEMS: Readonly<Record<string, string>> = {
  * painted, and only one of those is intended.
  */
 export const TERRAIN_PROBE_STEMS: Readonly<Record<string, readonly string[]>> = {
-  "#": ["canopy_fringe_loop"],
+  // ── R5-W9 · M1 · DIE HECKE IST KEIN GLYPH-RECHT MEHR (Posten 4, R212a) ─────
+  // Hier stand `"#": ["canopy_fringe_loop"]` — also: JEDE Solid-Zelle bringt die
+  // Hecke in den Scope, in jedem Raum. `#` ist der Glyph fuer feste Masse, nicht
+  // fuer „hier hoert die Welt unter freiem Himmel auf", und deshalb hing die
+  // Hecke an der Decke des Nacht-Klassenzimmers. Wer sie bekommt, sagt jetzt
+  // `composition.ts#CANOPY_PHASES` — unten im Scope-Bau abgefragt, wo die Phase
+  // bekannt ist. Der Glyph-Eintrag faellt; das Blatt bleibt auf der Platte.
   C: ["checkpoint_easel"],
 };
+
+/** Der Stem der Hecke — eine Zeile, zwei Leser (`artScope` und `PaintScene`),
+ *  damit ein Umbenennen nicht die Haelfte des Gates stehen laesst. */
+export const CANOPY_STEM = "canopy_fringe_loop";
 
 /** What buildBackdropLegacy() reaches for — needed ONLY when a phase has no
  *  composition spec. Kept as data so the branch below can mirror the scene's. */
@@ -257,6 +267,8 @@ export const phaseArtScope = (level: ScopeLevel, phaseId: string, present: Itera
   // 4.4 MB against 111 MB saved and closes the class: an unconditional probe
   // added later cannot silently fall out of scope.
   for (const stems of Object.values(GLYPH_STEMS)) for (const s of stems) add(s);
+  // R5-W9 · M1 · Posten 4: die Hecke haengt an der PHASE, nicht am Glyph `#`.
+  if (CANOPY_PHASES.has(phaseId)) add(CANOPY_STEM);
   for (const g of new Set(ph.rows.join(""))) {
     for (const s of TERRAIN_PROBE_STEMS[g] ?? []) add(s);
     const slope = SLOPE_STEMS[g];
