@@ -76,32 +76,25 @@ const PKG = path.join(R, "package.json");
  *  Tor rot, bis ihn jemand entfernt. Eine Ausnahme darf eine bekannte Luecke
  *  tolerieren; sie darf sie nie ueberleben. */
 const IMPORTER_WITHOUT_CI_LINE = {
-  "import-batch-as.mjs": {
-    // ⚠ W6 hat den Selbsttest GEFAHREN, bevor sie diese Ausnahme geschrieben
-    // hat — und dabei den eigentlichen Grund gefunden. Er liest ein
-    // GELIEFERTES Blatt aus dem Codex-Labor:
-    //     ✗ selftest cannot run: …/codex-art-lab/batch-as3/mass_edges_p1.png is missing
-    // Der Ordner liegt auf diesem Rechner nicht (R204: das Labor des ersten Macs
-    // ist verloren), und in CI liegt er per KONSTRUKTION nie (CP-15: Lieferungen
-    // gehoeren nicht ins Repo). Eine ci.yml-Zeile fuer diesen Selbsttest waere
-    // also nicht die Erfuellung von C10, sondern ein Schritt, der in JEDEM Lauf
-    // rot ist.
-    // Der Fix ist deshalb NICHT »Zeile anhaengen«, sondern »der Selbsttest baut
-    // sich seine Fixture selbst« — genau den Weg ist `measure-residue` gegangen,
-    // aus genau diesem Grund (siehe SELFTEST_ONLY dort). Das ist A8s Posten;
-    // W6 fasst `import-batch-as.mjs` nicht an (Eigentums-Karte).
-    //
-    // ★ NACHTRAG, gleicher Tag: A8 hat denselben Befund UNABHAENGIG gemacht
-    //   und ihn in #342 bereits behoben — der Selbsttest baut sein Pruefblatt
-    //   jetzt aus acht angenommenen p1-Blaettern der Platte, die ci.yml-Zeile
-    //   steht, A8s CI ist gruen. Dieser Eintrag ist damit eine Ausnahme mit
-    //   bekanntem Verfallsdatum: beim Schluss-Rebase ueber A8 wird er SCHAL
-    //   und faerbt dieses Tor rot, bis W6 ihn entfernt. Genau dafuer ist die
-    //   Ratsche da — sie erinnert, statt dass jemand daran denken muss.
-    reason: "der Selbsttest liest eine LIEFERUNG aus dem Codex-Labor (batch-as3/mass_edges_p1.png), die per CP-15 nie im Repo liegt und auf diesem Rechner seit R204 auch nicht mehr — eine ci.yml-Zeile waere in jedem Lauf rot. A8 baut die Fixture in den Selbsttest hinein (Muster: measure-residue), DANN kommt die Zeile. Gemessen von W6 am 22.08.: Exit 1, »selftest cannot run«",
-    until: "2026-09-30",
-  },
+  // R5-W7 · W6-Schlusspass, 22.08.: LEER, und das ist der ganze Punkt.
+  //
+  // Hier stand genau ein Eintrag — `import-batch-as.mjs`, dessen Selbsttest an
+  // einer Lieferung aus dem Codex-Labor hing, die per CP-15 nie im Repo liegt.
+  // A8 hat den Selbsttest in #342 auf ein Pruefblatt von der PLATTE umgebaut und
+  // die ci.yml-Zeile angehaengt; damit war die Ausnahme SCHAL, und das Tor hat
+  // es gesagt. Der Eintrag ist deshalb weg und nicht verlaengert worden — eine
+  // Ausnahme darf eine bekannte Luecke dulden, sie darf sie nie ueberleben.
+  //
+  // ⚠ WAS DIESE RATSCHE GEKOSTET HAT, damit die naechste es besser macht:
+  // sie ist auf `main` rot geworden, nicht im PR. W6s PR war gruen, weil A8s
+  // Zeile in W6s BRANCH noch nicht lag; sie kam erst durch den Merge-Zug dazu.
+  // Eine Ratsche, deren Ausloeser ein FREMDER Merge ist, faellt genau dort auf,
+  // wo sie am teuersten ist. Die Lehre steht als Falle im Report: die letzte
+  // Bahn eines Zuges REBASED vor dem Merge, auch wenn GitHub sie als
+  // »MERGEABLE/CLEAN« ausweist — sauber verschmelzen und noch richtig sein sind
+  // zwei verschiedene Aussagen.
 };
+
 
 /** Ein Importeur HAT einen Selbsttest, wenn er das Flag WIRKLICH LIEST.
  *  Geprueft wird der AUFRUF, nie die Datei als Text: W5s Falle 2 — ein
