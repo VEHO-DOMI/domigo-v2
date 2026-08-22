@@ -76,7 +76,41 @@ export const CUE_INK = 0x243048;
  *  Das kann die Marke heute nicht: `chalkArrow` kennt den Raum nicht, und ihre
  *  Signatur gehoert nicht dieser Bahn. Also bleibt der Hof Gold, die KONTUR
  *  (Band-Tabelle unten) traegt die Trennung allein, und der Vorschlag „Hof je
- *  Raum" liegt als D-418 bei Fable. */
+ *  Raum" liegt als D-418 bei Fable.
+ *
+ *  ── R5-W7 · F8 · DER »HOF JE RAUM« IST GEBAUT WORDEN. ER STEHT NICHT HIER. ──
+ *  Diese Bahn hatte den Auftrag und die Signatur. Gebaut wurde genau das, was
+ *  oben fehlt: `chalkArrow` bekam den Raum-Schluessel, der Hof las die Rampe aus
+ *  `letters.ts#roomBrightness`, und weil R37 keinen kuehlen Hof erlaubt,
+ *  wechselte er nur den WERT — dasselbe vergoldete Licht, auf 36 %
+ *  heruntergedreht. Es hat GEMESSEN funktioniert: p3 ging von ΔL +11,3/+17,5
+ *  (trennt nicht) auf +38,4/+31,9 bei ΔH 32/31 (trennt), p1 von -0,7 auf +29,9,
+ *  und p2/p4 lieferten nachher auf die Nachkommastelle dieselben Zahlen wie
+ *  vorher — kein Preis im dunklen Raum.
+ *
+ *  ZWEI BLINDE PRUEFER HABEN ES TROTZDEM ABGELEHNT, unabhaengig voneinander und
+ *  mit vertauschter Reihenfolge, und beide haben die AUSGELIEFERTE Fassung
+ *  gewaehlt: der Hof liest sich als kreisfoermiger UI-Aufkleber, den keine
+ *  Lichtquelle der Szene erklaert (»Taschenlampenkegel-Sticker«, »Rauch- oder
+ *  Schmutzfleck auf der Tapete«), und in p1 bandet er sichtbar — vier bzw.
+ *  zwoelf gefuellte Scheiben lesen sich bei dieser Deckkraft als konzentrische
+ *  Ringe (Stoerwert 4 von 5), also genau als das Artefakt, gegen das
+ *  `cue.test.ts` seit H2 steht.
+ *
+ *  UND SIE HABEN UNGEFRAGT DIE PRAEMISSE BESTRITTEN: der Pfeil werde in den
+ *  hellen Raeumen auch heute ohne Suchen gefunden, »Weiss/Dunkelblau auf Gelb
+ *  ist ohnehin ein sehr harter Kontrast«. Das ist L1s eigener Verdacht, jetzt
+ *  von zwei blinden Augen bestaetigt: die Box-Mittelung des Messgeraets
+ *  bestraft eine zweifarbige Marke, und die gemessene Luecke ist am Auge nicht
+ *  die Luecke, die sie behauptet.
+ *
+ *  Also steht hier weiter Gold — nicht, weil es niemand versucht hat, sondern
+ *  weil es versucht, gemessen und von blinden Augen zurueckgewiesen wurde. Was
+ *  offen ist, ist keine Einstellung mehr, sondern eine Entscheidung: gilt das
+ *  Kriterium oder das Auge (Praezedenz R192, wo die 3 : 1 aus demselben Grund
+ *  gefallen ist). Zahlen, Protokolle und Bilder liegen im F8-Report;
+ *  D-470/D-471/D-479 im Schulden-Register. NICHT ein drittes Mal bauen, ohne
+ *  dass diese Entscheidung gefallen ist. */
 export const CUE_HALO = 0xffe3a4;
 
 /** The arrow at unit size, tip at the top — seven points, the classic
