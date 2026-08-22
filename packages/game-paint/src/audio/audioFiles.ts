@@ -38,6 +38,8 @@ export const AUDIO_FILES: Readonly<Record<string, AudioFileInfo>> = {
   "card-open-1": { v: "e7785b48", bytes: 4433, durationSec: 0.3, kind: "sfx" },
   "card-open-2": { v: "b74e993a", bytes: 4433, durationSec: 0.296, kind: "sfx" },
   "card-open-3": { v: "29004a37", bytes: 3179, durationSec: 0.184, kind: "sfx" },
+  "cloth-take-1": { v: "f576b96f", bytes: 5060, durationSec: 0.35, kind: "sfx" },
+  "cloth-take-2": { v: "5224e1b7", bytes: 5060, durationSec: 0.35, kind: "sfx" },
   "door-open-1": { v: "bc37a5e7", bytes: 7881, durationSec: 0.6, kind: "sfx" },
   "door-open-2": { v: "c09004a6", bytes: 7881, durationSec: 0.6, kind: "sfx" },
   "gate-waits": { v: "ce58afd2", bytes: 2552, durationSec: 0.15, kind: "sfx" },

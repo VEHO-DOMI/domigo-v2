@@ -134,6 +134,33 @@ const subscription = async (key) => {
 // Riss, durch den ein Klang aus einem anderen Raum ins Kapitel kommt.
 const assemble = (spec, item) => [spec.material, item.text, spec.negatives].filter(Boolean).join(" ");
 
+/**
+ * R5-W7 · S3 — DIE 450-ZEICHEN-DECKE DER EFFEKT-API, VORHER STATT NACHHER.
+ *
+ * Gemessen am 22.08.2026: `/v1/sound-generation` weist einen zusammengesetzten
+ * Prompt über 450 Zeichen mit HTTP 400 ab (`text_too_long`). Der erste Lauf für
+ * `cloth-take` schickte 483 Zeichen und bekam fünfmal denselben Fehler — er
+ * hat nichts gekostet, aber er hat auch nichts gebracht, und beim nächsten Mal
+ * wäre es eine ganze Serie.
+ *
+ * Der Deckel gilt NUR für Effekte: die fünf Musikstücke des Kapitels liegen
+ * zwischen 527 und 685 Zeichen und wurden von `/v1/music` anstandslos erzeugt
+ * (S1, 17.08.) — deshalb prüft diese Schranke `sfx` und schweigt zu `music`.
+ *
+ * Sie läuft VOR dem ersten HTTP-Aufruf über den ganzen Plan: ein Lauf, der an
+ * Take 40 von 60 auf eine zu lange Zeile trifft, hat 39 Takes umsonst bezahlt.
+ */
+const SFX_PROMPT_MAX = 450;
+const overlongSfx = (spec, jobs) => {
+  const seen = new Map();
+  for (const { item, kind } of jobs) {
+    if (kind !== "sfx" || seen.has(item.stem)) continue;
+    const n = assemble(spec, item).length;
+    if (n > SFX_PROMPT_MAX) seen.set(item.stem, n);
+  }
+  return [...seen];
+};
+
 // ── Die zwei Endpunkte ───────────────────────────────────────────────────────
 // Die Effekt-API kann minimal 0,5 s: `requestSeconds` ist, was bestellt wird,
 // `targetSeconds` das Fenster, auf das master.mjs danach kappt.
@@ -204,6 +231,15 @@ const main = async () => {
     + `(Plan-Grenze: 62 min/Monat, AUDIO_SPINE §5)`);
   if (musicSeconds > MUSIC_BUDGET_SECONDS) {
     console.error("✗ dieser Lauf wuerde das Musik-Sicherheitsbudget reissen. Weniger Takes, oder --only.");
+    process.exit(2);
+  }
+  const zuLang = overlongSfx(spec, jobs);
+  if (zuLang.length > 0) {
+    for (const [stem, n] of zuLang) {
+      console.error(`✗ \`${stem}\`: der zusammengesetzte Prompt ist ${n} Zeichen lang, die Effekt-API nimmt ${SFX_PROMPT_MAX}. `
+        + `Kürze \`text\` in prompts.ch01.json um mindestens ${n - SFX_PROMPT_MAX} Zeichen `
+        + `(Material-Satz und Negativliste zaehlen mit: ${assemble(spec, { text: "" }).length} Zeichen Rahmen).`);
+    }
     process.exit(2);
   }
   if (PLAN_ONLY) {

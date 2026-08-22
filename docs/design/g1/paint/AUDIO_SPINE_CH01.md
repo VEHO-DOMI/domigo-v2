@@ -88,7 +88,7 @@ Deshalb trägt **jeder Stem seine Anschlussstelle**:
 | `scene` | eine Flanke im Spieler-Zustand, pro Takt gelesen — genau das, was `PaintScene#footwork` (`:2942`) für Staub schon tut |
 | `shell` | die React-Hülle (`PaintGame.tsx`) — Karte auf/zu, Lösung richtig/falsch |
 
-**Drei Zustände, kein vierter.** Jede der 39 Ereignis-Arten (15 + 8 + 16) ist genau eines:
+**Drei Zustände, kein vierter.** Jede der 41 Ereignis-Arten (17 + 8 + 16) ist genau eines:
 
 - **`mapped`** — sie hat einen Stem, und der liegt als Datei auf der Platte;
 - **`silent`** — sie bekommt bewusst keinen Klang, **mit Grund**;
@@ -100,16 +100,16 @@ Deshalb trägt **jeder Stem seine Anschlussstelle**:
 `content/…/paint/ch01.level.json` gibt `abilities: ["jump", "run"]` und enthält **kein einziges
 `powerup`-Entity**; die Glyphen im ganzen Kapitel sind `# * C S X w z` — keine Feder (`s`), kein
 Schwungring (`o`), kein Eis (`~`), kein Einweg-Brett (`=`), keine Tintenspitze (`^`).
-`entities.ts:1409` sagt es selbst: „↑ opens a cage in a chapter with **no fist**."
+`entities.ts:1585` sagt es selbst: „↑ opens a cage in a chapter with **no fist**."
 
 | Ereignis | Warum es in ch01 stumm bleibt | Frei ab |
 |---|---|---|
-| `fistThrown` · `projectileDeflected` · `cageHit` · `puff{kind:"hit"}` | die Faust wird nie vergeben (`canPunch` = false) | ch01-mid / ch02, sobald ein `powerup`-Entity sie gibt |
+| `fistThrown` · `projectileDeflected` · `cageHit` · `puff{kind:"hit"}` | die Faust wird nie vergeben (`canPunch` = false) | **ch02** — ch01 bekommt sie nicht zurück (Entscheid B5, 19.08.2026, `ch01.md` §5; D-422/D-445) |
 | `hoverStart` | `canHover` = false | ch04 (Federkiel-Rotor) |
 | `grabbedLedge` | `canHang` = false, kein `=`-Glyph | ch02 |
 | `swingStart` | kein `o`-Glyph im Kapitel | später |
 | `sprung` | kein `s`-Glyph im Kapitel | später |
-| `powerupTaken` · SimEvent `powerup` | kein `powerup`-Entity in ch01 | ch01-mid |
+| `powerupTaken` · SimEvent `powerup` | kein `powerup`-Entity in ch01 | das erste Kapitel mit einem `powerup`-Entity — ch01 hat in keiner der fünf Flächen eines (K6 am Artefakt nachgemessen, 21.08.2026) |
 | SimEvent `book` | kein `book`-Entity in ch01 (nur 5 × `tip`) | später |
 | PlayerEvent `encounter` mit `^` | kein `^`-Glyph; nur `w` (Tinte) kommt vor | später |
 
@@ -147,6 +147,7 @@ und die Negativliste aus §2c hinten.
 | `letter-take` | positive | positive | `sim` · `letterTaken` | 0,30 s | 3 | **aufsteigend gestuft** (drei Stufen, wie game-feels Tier-Chimes); die Stufe steigt mit `got` |
 | `letters-all` | positive | positive | `sim` · `letters` mit `got === total` | 1,50 s | 1 | die einzige Fanfare der Buchstaben |
 | `page-take` | ui | info | `sim` · `tip` | 0,40 s | 2 | ein Blatt wird aufgehoben; die Welt friert dazu ein |
+| `cloth-take` | positive | positive | `sim` · `cloth` | 0,35 s | 2 | **das gefundene Uniformteil** (R5-W7 · S3). Stoff, der sich von der bemalten Papierfläche löst, mit einem leisen Holz-Tupfer am Ende. KLEIN halten: das Kapitel legt neun Teile aus, und zwei Funde kurz hintereinander stapeln sich (G4-Design §1) — eine Fanfare wäre hier neunmal zu viel. Zwei Varianten im Wechsel, damit die Wiederholung nicht wie ein Sample klingt. Bis S3 lieh sich der Fund `letter-take` |
 | `wipe` | world | info | `sim` · `guardianWipe` mit `layersLeft > 0` | 0,50 s | 3 | Kreide-Wisch; drei Schichten, drei Varianten in Folge |
 | `board-bloom` | positive | positive | `sim` · `guardianDown` | 1,50 s | 1 | **sie blüht sonnengelb auf** — der größte Klang des Kapitels; duckt die Musik. ⚠ der Ereignis-NAME ist ein Code-Relikt: die Tafel wird nicht besiegt, sie wird sauber (R50). Hier gehört ein Aufblühen hin, kein Niederschlag |
 | `arena-brief` | world | info | `sim` · `arenaBrief` | 1,50 s | 1 | Braam-lite, **kindgerecht**: warm, tief, kein Horn-Kino, kein Schreck |
@@ -169,23 +170,25 @@ und die Negativliste aus §2c hinten.
 | `solve-ok` | positive | positive | `shell` · Lösung angenommen | 0,50 s | 3 | **aufsteigend gestuft** (nah · teilweise · richtig), Xylophon, eine Note je Stufe |
 | `solve-thud` | neutral | **neutral** | `shell` · Lösung nicht angenommen | 0,30 s | 2 | **der weiche neutrale Thud von `:371`.** Kein Summer, kein Alarm, kein Fallen |
 
-**Zahl der Dateien:** 31 Stems, 69 Varianten. Alle `neutral`-Stems: `cage-locked` · `gate-waits` ·
-`ink-splash` · `bump` · `solve-thud` — fünf, und §4 misst jeden einzelnen.
+**Zahl der Dateien:** 32 Stems, 71 Varianten (dazu 7 Musikstücke = 78 Dateien; die Zahlen sind aus
+`audioManifest.ts#STEMS` nachgezählt, nicht fortgeschrieben). Alle `neutral`-Stems: `cage-locked` ·
+`gate-waits` · `ink-splash` · `bump` · `solve-thud` — fünf, und §4 misst jeden einzelnen.
 
 **Fünf Stems hängen an der Hülle, nicht an einem der 39 Ereignisse:** `card-close` · `page-turn` ·
 `solve-ok` · `solve-thud` · `merle-round`. Sie entstehen dort, wo React eine Karte schließt oder eine
 Antwort bewertet — die Spiel-Logik erfährt davon nichts, und das ist richtig so.
 
-### §2d · Der Abdeckungs-Vertrag — alle 39 Ereignis-Arten, jede mit genau einem Zustand
+### §2d · Der Abdeckungs-Vertrag — alle 41 Ereignis-Arten, jede mit genau einem Zustand
 
 Diese Tabelle ist die Prüfvorschrift: `audioManifest.ts` bildet sie 1 : 1 ab, und
-`audio/coverage.test.ts` leitet die 39 Arten **aus den Union-Typen** ab (nicht aus dieser Tabelle) und
+`audio/coverage.test.ts` leitet die 41 Arten **aus den Union-Typen** ab (nicht aus dieser Tabelle) und
 verlangt für jede einen Eintrag. Eine neue Ereignis-Art im Code lässt den Test rot werden — genau dann,
 wenn jemand entscheiden muss, wie sie klingt.
 
 | # | Union | Ereignis | Zustand | Stem bzw. Grund |
 |---|---|---|---|---|
-| 1 | Sim | `toast` | mapped | `toast` (leiser Tick) — außer den per `toastMatch` erkannten Torschluss- und Tinten-Zeilen |
+| 1a | Sim | `toast` | mapped | `toast` (leiser Tick) — außer der per `toastMatch` erkannten Tinten-Zeile |
+| 1b | Sim | `toast` mit `echoes` | **silent** | er trägt nur den TEXT zu einem Beat, der sein eigenes Ereignis hat (heute: `gate`) — dort klingt er |
 | 2 | Sim | `task` | mapped | `card-open` — **jede** Karte kommt hier heraus |
 | 3 | Sim | `powerup` | **reserved** | ch01 hat kein `powerup`-Entity |
 | 4 | Sim | `cageFreed` | mapped | `cage-free` |
@@ -202,32 +205,35 @@ wenn jemand entscheiden muss, wie sie klingt.
 | 13 | Sim | `book` | **reserved** | ch01 hat kein `book`-Entity (nur 5 × `tip`) |
 | 14a | Sim | `puff`, `kind === "chalk"` | mapped | `puff-chalk` |
 | 14b | Sim | `puff`, `kind === "hit"` | **reserved** | entsteht nur an der Faust |
-| 15 | Sim | `exit` | mapped | `door-open` |
-| 16 | Player | `jumped` | mapped | `jump` (`scene`: `jumpedAgo === 0`) |
-| 17 | Player | `landed` | mapped | `land-soft` / `land-hard` (`scene`: `landedAgo === 0`, Schwelle wie beim Staub) |
-| 18 | Player | `hoverStart` | **reserved** | `canHover` = false in ch01 (ch04) |
-| 19 | Player | `sprung` | **reserved** | kein `s`-Glyph im Kapitel |
-| 20 | Player | `fistThrown` | **reserved** | keine Faust in ch01 |
-| 21a | Player | `encounter`, `hazard === "w"` | mapped | `ink-splash` |
-| 21b | Player | `encounter`, `hazard === "^"` | **reserved** | kein `^`-Glyph im Kapitel |
-| 22 | Player | `grabbedLedge` | **reserved** | `canHang` = false (ch02) |
-| 23 | Player | `swingStart` | **reserved** | kein `o`-Glyph im Kapitel |
-| 24 | Entity | `encounter` | mapped | `bump` |
-| 25 | Entity | `engaged` | **silent** | hebt nur die Wiederherstellungs-Karte → `card-open` |
-| 26 | Entity | `cageHit` | **reserved** | die Zwei-Schlag-Grammatik gehört der Faust (`entities.ts:1409`) |
-| 27 | Entity | `cageBurst` | mapped | `cage-open` |
-| 28 | Entity | `cageAsk` | **silent** | hebt nur die Karte erneut; das Bersten hat schon gespielt |
-| 29 | Entity | `cageGated` | mapped | `cage-locked` |
-| 30 | Entity | `awakenAsk` | **silent** | hebt nur Merles Runde erneut → `card-open` |
-| 31 | Entity | `doorTouched` | **silent** | hebt die Tür-Karte → `card-open`; das Aufgehen klingt am SimEvent `exit` |
-| 32 | Entity | `powerupTaken` | **reserved** | wie #3 |
-| 33 | Entity | `pickupTaken` | **silent** | gefaltet — die SimEvents `tip` / `book` tragen den Klang |
-| 34 | Entity | `guardianStagger` | mapped | `boss-window` |
-| 35 | Entity | `guardianKnot` | **silent** | gefaltet — das SimEvent `guardianWipe` trägt den Klang |
-| 36 | Entity | `guardianDown` | **silent** | gefaltet — das gleichnamige SimEvent trägt den Klang (**zwei verschiedene Ereignisse mit einem Namen**, siehe unten) |
-| 37 | Entity | `projectileDeflected` | **reserved** | braucht die Faust (`entities.ts:1908`) |
-| 38 | Entity | `puff` | **silent** | gefaltet — das gleichnamige SimEvent trägt den Klang |
-| 39 | Entity | `shooed` | mapped | `shoo` |
+| 15 | Sim | `cloth` | mapped | `cloth-take` — **stand seit R5-W5 · G4 nicht in dieser Tabelle**, obwohl der Typ ihn führte; von S3 nachgetragen |
+| 16a | Sim | `gate`, Grund ≠ `cageGated` | mapped | `gate-waits` — der Torschluss, seit R5-W7 · S3 (D-372) an einem eigenen Ereignis statt am Wortlaut der Meldung |
+| 16b | Sim | `gate`, Grund `cageGated` | **silent** | der Käfig-Torschluss klingt schon als EntityEvent `cageGated` → `cage-locked`; zwei Klänge auf einem Augenblick sind einer zu viel |
+| 17 | Sim | `exit` | mapped | `door-open` |
+| 18 | Player | `jumped` | mapped | `jump` (`scene`: `jumpedAgo === 0`) |
+| 19 | Player | `landed` | mapped | `land-soft` / `land-hard` (`scene`: `landedAgo === 0`, Schwelle wie beim Staub) |
+| 20 | Player | `hoverStart` | **reserved** | `canHover` = false in ch01 (ch04) |
+| 21 | Player | `sprung` | **reserved** | kein `s`-Glyph im Kapitel |
+| 22 | Player | `fistThrown` | **reserved** | keine Faust in ch01 |
+| 23a | Player | `encounter`, `hazard === "w"` | mapped | `ink-splash` |
+| 23b | Player | `encounter`, `hazard === "^"` | **reserved** | kein `^`-Glyph im Kapitel |
+| 24 | Player | `grabbedLedge` | **reserved** | `canHang` = false (ch02) |
+| 25 | Player | `swingStart` | **reserved** | kein `o`-Glyph im Kapitel |
+| 26 | Entity | `encounter` | mapped | `bump` |
+| 27 | Entity | `engaged` | **silent** | hebt nur die Wiederherstellungs-Karte → `card-open` |
+| 28 | Entity | `cageHit` | **reserved** | die Zwei-Schlag-Grammatik gehört der Faust (`entities.ts:1585`) |
+| 29 | Entity | `cageBurst` | mapped | `cage-open` |
+| 30 | Entity | `cageAsk` | **silent** | hebt nur die Karte erneut; das Bersten hat schon gespielt |
+| 31 | Entity | `cageGated` | mapped | `cage-locked` |
+| 32 | Entity | `awakenAsk` | **silent** | hebt nur Merles Runde erneut → `card-open` |
+| 33 | Entity | `doorTouched` | **silent** | hebt die Tür-Karte → `card-open`; das Aufgehen klingt am SimEvent `exit` |
+| 34 | Entity | `powerupTaken` | **reserved** | wie #3 |
+| 35 | Entity | `pickupTaken` | **silent** | gefaltet — die SimEvents `tip` / `book` tragen den Klang |
+| 36 | Entity | `guardianStagger` | mapped | `boss-window` |
+| 37 | Entity | `guardianKnot` | **silent** | gefaltet — das SimEvent `guardianWipe` trägt den Klang |
+| 38 | Entity | `guardianDown` | **silent** | gefaltet — das gleichnamige SimEvent trägt den Klang (**zwei verschiedene Ereignisse mit einem Namen**, siehe unten) |
+| 39 | Entity | `projectileDeflected` | **reserved** | braucht die Faust (`entities.ts:2145`) |
+| 40 | Entity | `puff` | **silent** | gefaltet — das gleichnamige SimEvent trägt den Klang |
+| 41 | Entity | `shooed` | mapped | `shoo` |
 
 **Drei Namen kommen zweimal vor, in verschiedenen Unionen mit verschiedener Bedeutung:**
 `encounter` (Player = Berührung mit Tinte/Spitzen · Entity = Berührung mit einem Wesen),
@@ -235,13 +241,21 @@ wenn jemand entscheiden muss, wie sie klingt.
 1 : 1 weitergereicht). Das Manifest nennt deshalb bei **jedem** Eintrag die Union, nie nur den Namen —
 ein Klang am falschen `encounter` wäre lautlos und niemandem aufgefallen.
 
-**Toast-gebundene Klänge sind maschinell gebunden.** `gate-waits` und `ink-splash` hängen an einem
-SimEvent `toast` mit einem bestimmten Text — die einzige Stelle, an der die Spiel-Logik diese Beats
-nach oben meldet. Ein Text-Vergleich ist brüchig: die Copy-Bahn darf jeden dieser Sätze jederzeit
-umformulieren. Deshalb trägt das Manifest je Stem einen `toastMatch`, und **`check-audio.mjs` prüft,
-dass jedes `toastMatch` noch auf ein Literal in `sim.ts` passt.** Wird eine Zeile umformuliert, geht
-das Tor rot, statt dass der Klang still verschwindet. *(Filed für Fable: sauberer wäre ein eigenes
-SimEvent für den Torschluss — `sim.ts` gehört dieser Session nicht.)*
+**Nur noch EIN Klang ist an einen Text gebunden.** `ink-splash` hängt an einem SimEvent `toast` mit
+einem bestimmten Wortlaut, weil `onPlayerEvent` den Tinten-Kontakt ausschliesslich so nach oben gibt.
+Ein Text-Vergleich ist brüchig: die Copy-Bahn darf den Satz jederzeit umformulieren. Deshalb trägt
+das Manifest dafür einen `toastMatch`, und **`check-audio.mjs` (Gesetz 9b) prüft, dass er noch auf ein
+Literal in `sim.ts` passt.** Wird die Zeile umformuliert, geht das Tor rot, statt dass der Klang still
+verschwindet.
+
+**Der Torschluss ist seit R5-W7 · S3 KEIN Textfall mehr (D-372).** Er hing an vier Satz-Anfängen und
+war damit die brüchigste Stelle des Manifests; eines seiner vier Tore — das Klassenfoto — klang sogar
+GAR NICHT, weil sein Satz aus dem Level gebaut wird und deshalb auf kein Muster passte. Er hat jetzt
+ein eigenes SimEvent (`gate`) mit fünf Gründen; der Toast daneben bleibt der Text, den das Kind liest,
+und trägt `echoes: "gate"`, damit er nicht zusätzlich klingt. Wichtig für jeden, der später aufräumt:
+Gesetz 9b prüft nur Muster, die im Manifest STEHEN — ein gelöschtes Muster fällt ihm nicht auf. Der
+Beweis, dass der Torschluss noch klingt, ist deshalb ein Verhaltens-Test (`audio/gate.test.ts`, fährt
+den Simulator durch alle fünf Sperren), kein Textvergleich.
 
 **Geprüft von zwei blinden Lesern (17.08.2026), die einander nicht kannten.** Der Kanon-Prüfer las
 gegen `BLUEPRINT.md:365-400` und `STORY_SPINE_CH01.md §3`: Tür (R48), Fliegende Tafel (R50), Merle
@@ -395,6 +409,76 @@ Toleranz** verglichen (LUFS ± 0,5 LU · TP ± 0,2 dB · Zentroid ± 5 % · Daue
 letzten Nachkommastelle abweicht. Ein Tor, das daran flackert, wird abgeschaltet und schützt dann gar
 nichts. Die Forderung „`--measure` schreibt neu, der Diff ist leer" gilt für den **lokalen**
 Wiederholungslauf — gleiche Maschine, gleiches ffmpeg.
+
+---
+
+## §4b · Die Hörprobe — wie das Kapitel gehört wird, und wer die Takes gewählt hat
+
+**Die Anleitung (R176 · R156).** Messwerte sind die Vorbedingung, nie der Ersatz: das Ohr entscheidet.
+
+- **Wo:** das Malbuch im Browser, `/play/1/buch` — am besten auf dem iPad.
+- **Ton wecken:** Ton startet erst, wenn man das Spiel einmal berührt hat. Das ist eine Regel des
+  Browsers, keine Einstellung von uns. Beim ersten Mal ist es der Auftakt-Knopf; wer den Auftakt schon
+  gelesen hat, sieht keinen Knopf und weckt den Ton mit der ersten Berührung im Spiel.
+- **Der Lautsprecher** steht links in der Zähler-Leiste: einmal tippen = still · zweimal = nur die
+  Musik weg, Effekte bleiben · dreimal = wieder alles an.
+- **Drei Fragen:** Zu laut oder zu leise? Passt die Musik zu jedem Raum? Nervt ein Effekt?
+- **Die Gegenprobe an einer Karte:** eine falsche Antwort gibt EINEN weichen Ton, genau einmal, und er
+  sinkt nie ab; eine richtige gibt die kleine Fanfare — und sonst nichts.
+- **Nicht geprüft, weil kein Gerät da war:** der Hardware-Schalter am iPad und was nach einer
+  Unterbrechung (Anruf) passiert. Bleibt es danach still, ist das die Stelle.
+
+**Die Vorwahl der Takes.** `docs/audio/choose.mjs` wählt nach einer aufgeschriebenen Regel
+(Ausschluss → Familien-Filter → Rang → Vielfalt) und schreibt jeden Grund mit; die Tabelle unten ist
+aus `choices.json` + `choices.reasons.json` erzeugt, nicht abgeschrieben. »Alternativen« sagt, wie
+viele Takes überhaupt in der Auswahl standen und wie viele vorher ausgeschieden sind.
+
+⚠ **Nachhören geht nur noch bei `cloth-take`.** Die Roh-Takes lagen im gitignorierten Airlock
+(`docs/audio/takes/`) und sind mit dem ersten Mac verloren (R204). Für die 38 älteren Stems sind die
+Alternativen ab jetzt Messwerte auf dem Papier; wer sie wirklich neu hören will, muss die Serie neu
+erzeugen. Die GEWÄHLTEN Klänge selbst liegen unverändert im Repo.
+
+| Stem | gewählt (Take) | Alternativen | Grund der Vorwahl |
+|---|---|---|---|
+| `arena-brief` | 6 | 5 von 5 in der Auswahl | 1.053 s, -16.4 LUFS, Klangfarbe gleichbleibend (420 → 347 → 403 Hz) |
+| `being-answered` | 6 · 2 | 6 von 6 in der Auswahl | Variante mit Klangfarbe ⌀ 5721 Hz — die 2 Varianten sollen sich unterscheiden · Variante mit Klangfarbe ⌀ 6884 Hz — die 2 Varianten sollen sich unterscheiden |
+| `board-bloom` | 2 | 8 von 8 in der Auswahl | 1.5 s, -16.3 LUFS, Klangfarbe gleichbleibend (8166 → 7082 → 8241 Hz) |
+| `boss-window` | 4 | 6 von 6 in der Auswahl | 0.5 s, -20.42 dB, Klangfarbe gleichbleibend (5863 → 5774 → 5852 Hz) |
+| `bump` | 5 · 6 | 5 von 6 in der Auswahl, 1 zurück | Variante mit Klangfarbe ⌀ 5290 Hz — die 2 Varianten sollen sich unterscheiden · Variante mit Klangfarbe ⌀ 9200 Hz — die 2 Varianten sollen sich unterscheiden |
+| `cage-free` | 2 · 6 | 5 von 6 in der Auswahl, 1 zurück | Variante mit Klangfarbe ⌀ 2711 Hz — die 2 Varianten sollen sich unterscheiden · Variante mit Klangfarbe ⌀ 8253 Hz — die 2 Varianten sollen sich unterscheiden |
+| `cage-locked` | 4 | 4 von 5 in der Auswahl, 1 zurück | 0.35 s, -20.43 dB, Klangfarbe gleichbleibend (6405 → 4173 → 6808 Hz) |
+| `cage-open` | 6 · 1 | 5 von 6 in der Auswahl, 1 zurück | Variante mit Klangfarbe ⌀ 5190 Hz — die 2 Varianten sollen sich unterscheiden · Variante mit Klangfarbe ⌀ 6950 Hz — die 2 Varianten sollen sich unterscheiden |
+| `card-close` | 1 · 4 · 3 | 6 von 6 in der Auswahl | Variante mit Klangfarbe ⌀ 5506 Hz — die 3 Varianten sollen sich unterscheiden · Variante mit Klangfarbe ⌀ 5766 Hz — die 3 Varianten sollen sich unterscheiden · Variante mit Klangfarbe ⌀ 6… |
+| `card-open` | 1 · 4 · 6 | 5 von 6 in der Auswahl, 1 zurück | Variante mit Klangfarbe ⌀ 5846 Hz — die 3 Varianten sollen sich unterscheiden · Variante mit Klangfarbe ⌀ 6335 Hz — die 3 Varianten sollen sich unterscheiden · Variante mit Klangfarbe ⌀ 7… |
+| `cloth-take` | 3 · 4 | 4 von 5 in der Auswahl, 1 zurück | Variante mit Klangfarbe ⌀ 6755 Hz — die 2 Varianten sollen sich unterscheiden · Variante mit Klangfarbe ⌀ 8185 Hz — die 2 Varianten sollen sich unterscheiden |
+| `door-open` | 1 · 3 | 5 von 5 in der Auswahl | Variante mit Klangfarbe ⌀ 5938 Hz — die 2 Varianten sollen sich unterscheiden · Variante mit Klangfarbe ⌀ 7448 Hz — die 2 Varianten sollen sich unterscheiden |
+| `gate-waits` | 1 | 3 von 6 in der Auswahl, 3 zurück | 0.15 s, -20.46 dB, Klangfarbe steigend (772 → 590 → 1137 Hz) |
+| `ink-splash` | 2 · 3 | 4 von 7 in der Auswahl, 3 zurück | Variante mit Klangfarbe ⌀ 4892 Hz — die 2 Varianten sollen sich unterscheiden · Variante mit Klangfarbe ⌀ 7480 Hz — die 2 Varianten sollen sich unterscheiden |
+| `jump` | 1 · 6 · 2 | 6 von 6 in der Auswahl | Variante mit Klangfarbe ⌀ 5549 Hz — die 3 Varianten sollen sich unterscheiden · Variante mit Klangfarbe ⌀ 6243 Hz — die 3 Varianten sollen sich unterscheiden · Variante mit Klangfarbe ⌀ 6… |
+| `land-hard` | 3 · 5 | 6 von 6 in der Auswahl | Variante mit Klangfarbe ⌀ 5660 Hz — die 2 Varianten sollen sich unterscheiden · Variante mit Klangfarbe ⌀ 6694 Hz — die 2 Varianten sollen sich unterscheiden |
+| `land-soft` | 2 · 5 | 5 von 5 in der Auswahl | Variante mit Klangfarbe ⌀ 5919 Hz — die 2 Varianten sollen sich unterscheiden · Variante mit Klangfarbe ⌀ 6488 Hz — die 2 Varianten sollen sich unterscheiden |
+| `letter-take` | 3 · 7 · 6 | 8 von 8 in der Auswahl | Stufe 1 von 3: Klangfarbe ⌀ 6712 Hz — die Stufen steigen · Stufe 2 von 3: Klangfarbe ⌀ 7568 Hz — die Stufen steigen · Stufe 3 von 3: Klangfarbe ⌀ 8127 Hz — die Stufen steigen |
+| `letters-all` | 2 | 5 von 6 in der Auswahl, 1 zurück | 1.424 s, -16.3 LUFS, Klangfarbe gleichbleibend (7379 → 7456 → 7798 Hz) |
+| `merle-round` | 6 · 5 · 2 | 8 von 8 in der Auswahl | Stufe 1 von 3: Klangfarbe ⌀ 1433 Hz — die Stufen steigen · Stufe 2 von 3: Klangfarbe ⌀ 5849 Hz — die Stufen steigen · Stufe 3 von 3: Klangfarbe ⌀ 7537 Hz — die Stufen steigen |
+| `music-p1` | 3 | 3 von 3 in der Auswahl | 26.093 s, -18.6 LUFS, Klangfarbe fallend (1425 → 896 → 564 Hz) |
+| `music-p2` | 2 | 2 von 3 in der Auswahl, 1 zurück | 37.495 s, -17.9 LUFS, Klangfarbe gleichbleibend (1831 → 2304 → 1699 Hz) |
+| `music-p3` | 2 | 2 von 3 in der Auswahl, 1 zurück | 34.287 s, -18.5 LUFS, Klangfarbe fallend (7855 → 1564 → 638 Hz) |
+| `music-p4` | 3 | 3 von 3 in der Auswahl | 32.006 s, -18.6 LUFS, Klangfarbe steigend (624 → 4568 → 1401 Hz) |
+| `music-p9` | 1 | 3 von 3 in der Auswahl | 28.797 s, -18.5 LUFS, Klangfarbe gleichbleibend (618 → 503 → 580 Hz) |
+| `music-title` | 2 | 3 von 3 in der Auswahl | 6.816 s, -18.5 LUFS, Klangfarbe gleichbleibend (800 → 787 → 742 Hz) |
+| `music-win` | 1 | 3 von 3 in der Auswahl | 2.6 s, -18.2 LUFS, Klangfarbe fallend (579 → 380 → 438 Hz) |
+| `page-take` | 3 · 6 | 6 von 6 in der Auswahl | Variante mit Klangfarbe ⌀ 4711 Hz — die 2 Varianten sollen sich unterscheiden · Variante mit Klangfarbe ⌀ 7688 Hz — die 2 Varianten sollen sich unterscheiden |
+| `page-turn` | 6 · 3 | 5 von 5 in der Auswahl | Variante mit Klangfarbe ⌀ 6847 Hz — die 2 Varianten sollen sich unterscheiden · Variante mit Klangfarbe ⌀ 8206 Hz — die 2 Varianten sollen sich unterscheiden |
+| `puff-chalk` | 3 · 4 | 3 von 3 in der Auswahl | Variante mit Klangfarbe ⌀ 6012 Hz — die 2 Varianten sollen sich unterscheiden · Variante mit Klangfarbe ⌀ 6862 Hz — die 2 Varianten sollen sich unterscheiden |
+| `shoo` | 1 · 6 | 3 von 4 in der Auswahl, 1 zurück | Variante mit Klangfarbe ⌀ 5191 Hz — die 2 Varianten sollen sich unterscheiden · Variante mit Klangfarbe ⌀ 6098 Hz — die 2 Varianten sollen sich unterscheiden |
+| `slide` | 3 · 6 | 6 von 6 in der Auswahl | Variante mit Klangfarbe ⌀ 6217 Hz — die 2 Varianten sollen sich unterscheiden · Variante mit Klangfarbe ⌀ 7749 Hz — die 2 Varianten sollen sich unterscheiden |
+| `solve-ok` | 4 · 3 · 1 | 8 von 8 in der Auswahl | Stufe 1 von 3: Klangfarbe ⌀ 1922 Hz — die Stufen steigen · Stufe 2 von 3: Klangfarbe ⌀ 4379 Hz — die Stufen steigen · Stufe 3 von 3: Klangfarbe ⌀ 7088 Hz — die Stufen steigen |
+| `solve-thud` | 8 · 5 | 6 von 8 in der Auswahl, 2 zurück | Variante mit Klangfarbe ⌀ 5561 Hz — die 2 Varianten sollen sich unterscheiden · Variante mit Klangfarbe ⌀ 6692 Hz — die 2 Varianten sollen sich unterscheiden |
+| `step-board` | 6 · 1 · 2 · 3 | 6 von 6 in der Auswahl | Variante mit Klangfarbe ⌀ 1503 Hz — die 4 Varianten sollen sich unterscheiden · Variante mit Klangfarbe ⌀ 1580 Hz — die 4 Varianten sollen sich unterscheiden · Variante mit Klangfarbe ⌀ 1… |
+| `step-garden` | 5 · 1 · 3 · 6 | 6 von 6 in der Auswahl | Variante mit Klangfarbe ⌀ 6339 Hz — die 4 Varianten sollen sich unterscheiden · Variante mit Klangfarbe ⌀ 6345 Hz — die 4 Varianten sollen sich unterscheiden · Variante mit Klangfarbe ⌀ 6… |
+| `step-paper` | 2 · 1 · 4 · 5 | 6 von 6 in der Auswahl | Variante mit Klangfarbe ⌀ 6285 Hz — die 4 Varianten sollen sich unterscheiden · Variante mit Klangfarbe ⌀ 6377 Hz — die 4 Varianten sollen sich unterscheiden · Variante mit Klangfarbe ⌀ 6… |
+| `toast` | 1 · 6 | 6 von 6 in der Auswahl | Variante mit Klangfarbe ⌀ 5631 Hz — die 2 Varianten sollen sich unterscheiden · Variante mit Klangfarbe ⌀ 8667 Hz — die 2 Varianten sollen sich unterscheiden |
+| `wipe` | 1 · 3 · 4 | 6 von 6 in der Auswahl | Variante mit Klangfarbe ⌀ 6772 Hz — die 3 Varianten sollen sich unterscheiden · Variante mit Klangfarbe ⌀ 7077 Hz — die 3 Varianten sollen sich unterscheiden · Variante mit Klangfarbe ⌀ 7… |
 
 ---
 

@@ -23,12 +23,16 @@ const SURVEY = path.join(ROOT, "docs/audio/survey/survey.json");
 const PROMPTS = path.join(ROOT, "docs/audio/prompts.ch01.json");
 const REASONS = path.join(ROOT, "docs/audio/choices.reasons.json");
 const CHOICES = path.join(ROOT, "docs/audio/choices.json");
+const MEASURED = path.join(ROOT, "docs/audio/audio.measured.json");
+/** Relativ von `docs/audio/` aus — die Seite wird dort geöffnet. */
+const PUBLISHED_REL = "../../apps/web/public/audio/g1/paint/ch01";
 const OUT = path.join(ROOT, "docs/audio/hoerbank.html");
 
 const survey = JSON.parse(fs.readFileSync(SURVEY, "utf8"));
 const prompts = JSON.parse(fs.readFileSync(PROMPTS, "utf8"));
 const reasons = fs.existsSync(REASONS) ? JSON.parse(fs.readFileSync(REASONS, "utf8")) : {};
 const choices = fs.existsSync(CHOICES) ? JSON.parse(fs.readFileSync(CHOICES, "utf8")) : {};
+const measured = fs.existsSync(MEASURED) ? (JSON.parse(fs.readFileSync(MEASURED, "utf8")).files ?? {}) : {};
 
 const items = [...(prompts.sfx ?? []), ...(prompts.music ?? [])].filter((i) => i.reserved !== true);
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
@@ -41,6 +45,42 @@ const takesOf = (stem) => Object.entries(survey)
 const chosenTakes = (stem) => {
   const c = choices[stem];
   return c === undefined ? [] : (Array.isArray(c) ? c : [c]);
+};
+
+/** Die Dateinamen, unter denen ein Stem wirklich ausgeliefert wird. */
+const filesOf = (stem, variants) =>
+  (variants ?? 1) <= 1 ? [stem] : Array.from({ length: variants }, (_, i) => `${stem}-${i + 1}`);
+
+/**
+ * R5-W7 · S3 — WAS ÜBRIG BLEIBT, WENN DER AIRLOCK WEG IST.
+ *
+ * Diese Seite spielte bis heute ausschliesslich die gemusterten Roh-Takes aus
+ * `docs/audio/survey/` — gitignored, und mit dem ersten Mac verloren (R204).
+ * Damit war die ganze Hörbank tot: 38 Stems ohne einen einzigen Abspielknopf,
+ * und man sah es der Seite nicht an, weil ein fehlender Take einfach keine
+ * Karte erzeugt hat. Eine Hörbank ohne Ton ist schlimmer als keine — sie sieht
+ * aus, als hätte man gehört.
+ *
+ * Also: gibt es keine Takes mehr, zeigt die Seite den AUSGELIEFERTEN Klang.
+ * Der liegt im Repo, er ist genau das, was das Kind hört, und die Messwerte
+ * dazu stehen in `audio.measured.json`. Was NICHT wiederkommt, sind die
+ * Alternativen — und das sagt die Karte dann auch, statt es zu verschweigen.
+ */
+const publishedCards = (item) => {
+  const kind = item.kind ?? "sfx";
+  return filesOf(item.stem, item.variants).map((file, i) => {
+    const m = measured[file];
+    const c = m?.centroidsHz ?? [0, 0, 0];
+    const dir = c[2] > c[0] * 1.1 ? "wird heller" : c[2] < c[0] * 0.9 ? "wird dunkler" : "bleibt gleich";
+    return `
+      <div class="take chosen">
+        <div class="take-head">
+          <span class="tn">★ ausgeliefert${(item.variants ?? 1) > 1 ? ` (${i + 1} von ${item.variants})` : ""}</span>
+        </div>
+        <audio controls preload="none" src="${PUBLISHED_REL}/${esc(kind)}/${esc(file)}.mp3"></audio>
+        ${m ? `<div class="m">${m.durationSec} s · ${m.loudnessDb} ${m.method === "rms" ? "dB" : "LUFS"} · Spitze ${m.truePeakDb} dB<br>Klangfarbe ${dir}</div>` : ""}
+      </div>`;
+  }).join("");
 };
 
 const GROUPS = [
@@ -67,7 +107,7 @@ const rowFor = (item) => {
     ? `${item.stem}.mp3`
     : chosen.map((_, i) => `${item.stem}-${i + 1}.mp3`).join(", ");
 
-  const cards = takes.map((t) => {
+  const cards = takes.length === 0 ? publishedCards(item) : takes.map((t) => {
     const rank = chosen.indexOf(t.take);
     const star = rank >= 0;
     const why = star ? (r?.picked?.find((p) => p.take === t.take)?.why ?? "") : "";
@@ -96,6 +136,7 @@ const rowFor = (item) => {
       <p class="hangs">Klingt bei: <b>${esc(item.tap?.event ?? "—")}</b> <span class="dim">(${esc(item.tap?.union ?? "—")}${item.tap?.note ? ` · ${esc(item.tap.note)}` : ""})</span></p>
       <p class="prompt">${esc(item.text)}</p>
       <div class="takes">${cards}</div>
+      ${takes.length === 0 ? `<p class="gone">Die Roh-Takes dieses Klangs lagen im Airlock (<code>docs/audio/takes/</code>, gitignored) und sind mit dem ersten Mac verloren (R204) — zu hören ist deshalb nur der ausgelieferte Klang, nicht mehr seine Alternativen. Die Gründe der damaligen Wahl stehen unten und in <code>choices.reasons.json</code>; wer wirklich neu vergleichen will, muss die Serie neu erzeugen.</p>` : ""}
       <p class="pub">Veröffentlicht als <code>${esc(published)}</code> in <code>public/audio/g1/paint/ch01/${esc(kind)}/</code>${takes.length ? ` · ${takes.length} Takes gehört, ${r?.considered ?? "?"} in der engeren Wahl` : ""}</p>
     </article>`;
 };
@@ -137,6 +178,7 @@ const html = `<!doctype html>
   audio { width:100%; height:32px; }
   .m { font-size:.74rem; color:var(--dim); margin-top:.35rem; font-variant-numeric:tabular-nums; }
   .why { font-size:.76rem; color:var(--ok); margin-top:.3rem; }
+  .gone { font-size:.78rem; color:var(--out); margin:.5rem 0 0; }
   .rej { font-size:.76rem; color:var(--out); margin-top:.3rem; }
   .pub { font-size:.76rem; color:var(--dim); margin:.7rem 0 0; }
   #bar { position:fixed; left:0; right:0; bottom:0; background:#fffaf0; border-top:1px solid var(--line);

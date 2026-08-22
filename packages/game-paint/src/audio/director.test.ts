@@ -70,11 +70,42 @@ describe("mapEvent — die Tabelle trifft die richtige Zeile", () => {
     expect(mapEvent("sim", "puff", { kind: "hit" }).why).toContain("Faust");
   });
 
-  it("Torschluss-Toasts werden am TEXT erkannt, gewöhnliche Toasts nicht", () => {
-    expect(mapEvent("sim", "toast", { msg: "Die Tür wartet auf ihr Wort!" }).stem).toBe("gate-waits");
-    expect(mapEvent("sim", "toast", { msg: "Die Tafel ist noch voller Kritzel!" }).stem).toBe("gate-waits");
+  /**
+   * R5-W7 · S3 · D-372 — DIESER TEST STAND FRÜHER ANDERSHERUM.
+   *
+   * Bis Welle 7 hiess er »Torschluss-Toasts werden am TEXT erkannt« und war
+   * genau deshalb richtig UND das gemeldete Problem: der Klang hing an vier
+   * Satz-Anfängen. Der Torschluss hat jetzt sein eigenes Ereignis, und was
+   * hier geprüft wird, ist die Gegenrichtung — dass am Text NICHTS mehr hängt,
+   * was ein Ereignis hat. Die Tinte bleibt die eine Ausnahme, weil
+   * `onPlayerEvent` sie ausschliesslich als Meldung nach oben gibt.
+   */
+  it("am Text hängt nur noch die Tinte — der Torschluss hat sein Ereignis", () => {
     expect(mapEvent("sim", "toast", { msg: "Platsch!" }).stem).toBe("ink-splash");
     expect(mapEvent("sim", "toast", { msg: "Husch!" }).stem).toBe("toast");
+    // die vier Torschluss-Sätze, wörtlich aus `sim.ts` — sie klingen als Toast
+    // nicht mehr, weil sie ihr Echo-Feld tragen …
+    for (const msg of [
+      "Du hast noch etwas Wichtiges vergessen!",
+      "Die Tür wartet auf ihr Wort!",
+      "Die Tafel ist noch voller Kritzel!",
+      "Erst die Tafel sauber — dann der Käfig.",
+    ]) {
+      const r = mapEvent("sim", "toast", { msg, echoes: "gate" });
+      expect(r.stem, `»${msg}« klingt als Toast — das wäre ein zweiter Klang auf dem Beat`).toBeNull();
+      expect(r.why.length, `»${msg}« schweigt ohne lesbaren Grund`).toBeGreaterThan(20);
+    }
+  });
+
+  it("der Torschluss klingt am Ereignis — vier Gründe klingen, der Käfig schweigt", () => {
+    for (const reason of ["powerup", "tuerwort", "tafel", "klassenfoto"]) {
+      expect(mapEvent("sim", "gate", { reason }).stem, `Grund »${reason}« klingt nicht`).toBe("gate-waits");
+    }
+    // Der Käfig hat seinen Klang schon am EntityEvent — sonst wären es zwei.
+    expect(mapEvent("entity", "cageGated", {}).stem).toBe("cage-locked");
+    const caged = mapEvent("sim", "gate", { reason: "cageGated" });
+    expect(caged.stem).toBeNull();
+    expect(caged.why).toContain("cage-locked");
   });
 
   it("ein Ereignis, das es nicht gibt, ist still und sagt warum", () => {

@@ -94,14 +94,34 @@ for (const [stem, all] of [...takes.entries()].sort()) {
   });
 
   // ── 2 · Familien-Filter ───────────────────────────────────────────────────
-  if (item.pedagogy === "neutral") {
+  //
+  // R5-W7 · S3 — HIER STAND DIE REGEL NUR ZUR HÄLFTE.
+  //
+  // Der Kopf dieser Datei sagt seit S1: »`neutral` darf nicht fallen (BLUEPRINT
+  // `:371`); `positive` soll steigen. Wer das reisst, fliegt RAUS, nicht ans
+  // Ende.« Der Code prüfte davon nur `neutral`; für `positive` wurde ein
+  // fallender Take lediglich im Rang nach hinten geschoben (§3) — und §5 holt
+  // ihn von dort wieder hervor, weil Vielfalt nach Klangfarbe wählt, nicht nach
+  // Rang. Genau so ist es beim ersten Stem nach dieser Datei passiert:
+  // `cloth-take` take-5 (7733 → 6212 → 5664 Hz, durchgehend fallend) wurde als
+  // Variante VORGEWÄHLT, weil er der dunkelste war.
+  //
+  // Das Tor fängt es nicht: `check-audio` Gesetz 8 prüft das Absinken
+  // ausschliesslich bei `pedagogy === "neutral"`. Für eine positive Familie ist
+  // diese Zeile die einzige Stelle, an der die Regel überhaupt existiert.
+  // (Gefiled für die Werkzeug-Bahn: dieselbe Messung gehört als eigenes Gesetz
+  // ins Tor — ein fallender Fund-Klang ist eine Enttäuschung, kein Lob.)
+  if (item.pedagogy === "neutral" || item.pedagogy === "positive") {
+    const warum = item.pedagogy === "neutral"
+      ? "BLUEPRINT :371 verbietet genau das"
+      : "ein positiver Klang, der abfällt, klingt wie eine Enttäuschung";
     const before = pool.length;
     pool = pool.filter((t) => {
-      if (falls(t)) { rejected.push([t.take, `Klangfarbe faellt ${t.centroidsHz[0]} → ${t.centroidsHz[2]} Hz — BLUEPRINT :371 verbietet genau das`]); return false; }
+      if (falls(t)) { rejected.push([t.take, `Klangfarbe faellt ${t.centroidsHz[0]} → ${t.centroidsHz[2]} Hz — ${warum}`]); return false; }
       return true;
     });
     if (pool.length === 0 && before > 0) {
-      reasons[stem] = { note: "KEIN Take erfuellt die :371-Regel — neu wuerfeln", rejected };
+      reasons[stem] = { note: `KEIN Take steigt bzw. haelt die Klangfarbe (${item.pedagogy}) — neu wuerfeln`, rejected };
       continue;
     }
   }

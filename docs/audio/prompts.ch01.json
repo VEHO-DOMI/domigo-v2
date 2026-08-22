@@ -111,6 +111,13 @@
       "text": "A single sheet of paper being lifted from a wooden desk: a light crisp pick-up with a small wooden tap. Quiet and clean."
     },
     {
+      "stem": "cloth-take",
+      "family": "positive", "pedagogy": "positive",
+      "tap": { "union": "sim", "event": "cloth", "via": "sim" },
+      "targetSeconds": 0.35, "requestSeconds": 0.5, "promptInfluence": 0.7, "variants": 2, "takes": 5,
+      "text": "A small piece of school clothing lifted off a painted paper floor: soft felt sliding free with one light fabric rustle, closing on a quiet wooden tap. Small and warm, a thing found on the way rather than a prize. No ring, no chime, no fanfare."
+    },
+    {
       "stem": "wipe",
       "family": "world", "pedagogy": "info",
       "tap": { "union": "sim", "event": "guardianWipe", "via": "sim", "note": "nur wenn layersLeft > 0" },
@@ -224,11 +231,11 @@
       "text": "One soft muted thud on a wooden desk, wrapped in felt. Warm, level in tone, completely neutral — the sound of a page waiting, not of a mistake. Never falling in pitch, never a buzz."
     },
 
-    { "stem": "cage-hit", "reserved": true, "unlockedIn": "ch01-mid/ch02 (Faust)", "family": "world", "pedagogy": "info", "tap": { "union": "entity", "event": "cageHit", "via": "entity" }, "targetSeconds": 0.5, "requestSeconds": 0.6, "variants": 2, "takes": 6, "text": "A light paper-and-wood cage rattling from a blow that did not open it: a short wooden shudder." },
-    { "stem": "fist-throw", "reserved": true, "unlockedIn": "ch01-mid/ch02 (Faust)", "family": "body", "pedagogy": "info", "tap": { "union": "player", "event": "fistThrown", "via": "scene" }, "targetSeconds": 0.4, "requestSeconds": 0.5, "variants": 3, "takes": 6, "text": "A rolled paper fist thrown through the air: one short cloth and paper whoosh leaving the hand." },
-    { "stem": "fist-hit", "reserved": true, "unlockedIn": "ch01-mid/ch02 (Faust)", "family": "world", "pedagogy": "info", "tap": { "union": "sim", "event": "puff", "via": "sim", "note": "kind === \"hit\"" }, "targetSeconds": 0.35, "requestSeconds": 0.5, "variants": 2, "takes": 6, "text": "A rolled paper fist landing on something solid and painted: one dry padded contact with a small chalk burst." },
-    { "stem": "deflect", "reserved": true, "unlockedIn": "ch02 (Faust)", "family": "world", "pedagogy": "info", "tap": { "union": "entity", "event": "projectileDeflected", "via": "entity" }, "targetSeconds": 0.35, "requestSeconds": 0.5, "variants": 2, "takes": 6, "text": "A flying piece of chalk batted back: one crisp dry wooden tick reversing direction." },
-    { "stem": "powerup-take", "reserved": true, "unlockedIn": "ch01-mid (erstes powerup-Entity)", "family": "positive", "pedagogy": "positive", "tap": { "union": "entity", "event": "powerupTaken", "via": "entity" }, "targetSeconds": 1.5, "requestSeconds": 1.8, "variants": 1, "takes": 6, "text": "A new ability arriving: four rising wooden xylophone notes opening into a warm shimmer. Bright, generous, rising only." },
+    { "stem": "cage-hit", "reserved": true, "unlockedIn": "ch02", "family": "world", "pedagogy": "info", "tap": { "union": "entity", "event": "cageHit", "via": "entity" }, "targetSeconds": 0.5, "requestSeconds": 0.6, "variants": 2, "takes": 6, "text": "A light paper-and-wood cage rattling from a blow that did not open it: a short wooden shudder." },
+    { "stem": "fist-throw", "reserved": true, "unlockedIn": "ch02", "family": "body", "pedagogy": "info", "tap": { "union": "player", "event": "fistThrown", "via": "scene" }, "targetSeconds": 0.4, "requestSeconds": 0.5, "variants": 3, "takes": 6, "text": "A rolled paper fist thrown through the air: one short cloth and paper whoosh leaving the hand." },
+    { "stem": "fist-hit", "reserved": true, "unlockedIn": "ch02", "family": "world", "pedagogy": "info", "tap": { "union": "sim", "event": "puff", "via": "sim", "note": "kind === \"hit\"" }, "targetSeconds": 0.35, "requestSeconds": 0.5, "variants": 2, "takes": 6, "text": "A rolled paper fist landing on something solid and painted: one dry padded contact with a small chalk burst." },
+    { "stem": "deflect", "reserved": true, "unlockedIn": "ch02", "family": "world", "pedagogy": "info", "tap": { "union": "entity", "event": "projectileDeflected", "via": "entity" }, "targetSeconds": 0.35, "requestSeconds": 0.5, "variants": 2, "takes": 6, "text": "A flying piece of chalk batted back: one crisp dry wooden tick reversing direction." },
+    { "stem": "powerup-take", "reserved": true, "unlockedIn": "das erste Kapitel mit einem powerup-Entity", "family": "positive", "pedagogy": "positive", "tap": { "union": "entity", "event": "powerupTaken", "via": "entity" }, "targetSeconds": 1.5, "requestSeconds": 1.8, "variants": 1, "takes": 6, "text": "A new ability arriving: four rising wooden xylophone notes opening into a warm shimmer. Bright, generous, rising only." },
     { "stem": "book-take", "reserved": true, "unlockedIn": "das erste Kapitel mit einem book-Entity", "family": "positive", "pedagogy": "positive", "tap": { "union": "sim", "event": "book", "via": "sim" }, "targetSeconds": 0.5, "requestSeconds": 0.6, "variants": 2, "takes": 6, "text": "A small bonus book picked up: one warm wooden note and a short paper flip. Pleased, modest." },
     { "stem": "hover", "reserved": true, "unlockedIn": "ch04 (Federkiel-Rotor)", "family": "body", "pedagogy": "info", "tap": { "union": "player", "event": "hoverStart", "via": "scene" }, "targetSeconds": 0.5, "requestSeconds": 0.7, "variants": 2, "takes": 6, "text": "A quill starting to spin like a rotor: a light airy paper flutter settling into a steady soft whir." },
     { "stem": "ledge-grab", "reserved": true, "unlockedIn": "ch02", "family": "body", "pedagogy": "info", "tap": { "union": "player", "event": "grabbedLedge", "via": "scene" }, "targetSeconds": 0.35, "requestSeconds": 0.5, "variants": 2, "takes": 6, "text": "Two hands catching a paper ledge: one short cloth grip with a small paper crease." },

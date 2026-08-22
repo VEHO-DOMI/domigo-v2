@@ -307,6 +307,19 @@ export const replayPhaseTape = (
         // PaintGame) and never opens in a headless replay.
         clothGot++;
         if (!shell.pickedUp.includes(ev.id)) shell.pickedUp.push(ev.id);
+      } else if (ev.type === "gate") {
+        // R5-W7 · S3 · D-372: der Torschluss. Er steht hier AUSDRÜCKLICH und tut
+        // nichts — diese Kette hat kein `default`, also sähe man einer fehlenden
+        // Zeile nicht an, ob sie vergessen wurde oder ob nichts zu tun war.
+        //
+        // Zu tun ist wirklich nichts: das Ereignis friert die Welt nicht ein
+        // (der Toast daneben ist eine Anzeige, keine Karte), also schuldet der
+        // Shell ihm keine Ablage — anders als Regel-Seite, Käfig-Hinweis und
+        // Arena-Anleitung darüber. Und gezählt wird es hier nicht: die
+        // aufgezeichneten Piloten laufen den kürzesten Weg und stossen an kein
+        // Tor, eine Zahl wäre also auf allen fünf Bändern 0 und bewiese nichts.
+        // Der Beweis, dass der Torschluss genau einmal je Anlauf klingt, fährt
+        // den Simulator selbst durch alle fünf Tore: `audio/gate.test.ts`.
       } else if (ev.type === "exit" && !exited) {
         exited = true;
         exitTo = ev.to;
