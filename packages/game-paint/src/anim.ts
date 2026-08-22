@@ -707,6 +707,52 @@ export const entDisplayArea = (e: EntSizeInput, src: { w: number; h: number }): 
   return h * h * (src.h > 0 ? src.w / src.h : 1);
 };
 
+/**
+ * R5-W8 · F9 · G4 · EINE AUFLAGE WIRD AUF DIE ANZEIGEHÖHE IHRES KÖRPERS
+ * GEZOGEN, NICHT AUF SEINEN VERGRÖSSERUNGSFAKTOR.
+ *
+ * `PaintScene#syncOverlay` hat den Faktor kopiert. Solange Körper und Auflage
+ * dasselbe Blattmaß haben, ist das dasselbe Ergebnis — und genau das war die
+ * ANNAHME, die niemand aufgeschrieben hatte. Sie hält für den Grauschleier und
+ * das Flut-Leuchten (beide setzen unmittelbar vorher die Textur des Körpers
+ * bzw. deren graue Kopie: gleiches Maß per Konstruktion) und für die vier
+ * Ding-Käfige (`import-batch-aq6` hat jedes `captive_*`-Blatt auf die Leinwand
+ * seiner Hülle geschnitten). Sie bricht am PERSONEN-Käfig, dem einen Fall, für
+ * den die Schicht eigentlich gebaut wurde: `pencilcase_a` ist 480×275 (breit,
+ * liegend), `merle_caged0` ist 268×383 (hoch). Bei CAGE_DISPLAY_H = 34 ist der
+ * Faktor 34/275 = 0,1236 — Merle käme 383 × 0,1236 = 47,3 px hoch heraus, 39 %
+ * höher als ihr eigener Käfig (der Fall steht seit C3 in `PaintScene`
+ * ausgerechnet, ohne dass ihn etwas verhindert hätte).
+ *
+ * Das Gesetz, das ihn verhindert, in einer Zeile: die Auflage wird so hoch
+ * gezeichnet wie ihr Körper, in IHREN eigenen Proportionen — und sie erbt die
+ * waagrechte Stauchung des Körpers (die Rolle des Bosses), weil ein Schleier,
+ * der die Verkürzung seines Körpers nicht mitmacht, als Doppelbild lesen würde.
+ *
+ * Bei gleichem Blattmaß fällt das arithmetisch EXAKT auf das alte Verhalten
+ * zurück (`sy = h·srcSy/h = srcSy`, `sx = sy · srcSx/srcSy = srcSx`) — der Fix
+ * bewegt heute kein Pixel und nimmt nur die Annahme heraus. `overlay-fit.test`
+ * hält beide Hälften fest.
+ *
+ * Die Spiegelung bleibt bewusst DRAUSSEN: Phaser trägt sie als Vorzeichen des
+ * waagrechten Faktors, und `syncOverlay` setzt sie eine Zeile später mit
+ * `setFlipX` ohnehin selbst — sie hier noch einmal zu übertragen hieße, sie
+ * doppelt anzuwenden.
+ */
+export const overlayFit = (
+  src: { frameW: number; frameH: number; scaleX: number; scaleY: number },
+  copy: { frameW: number; frameH: number },
+): { scaleX: number; scaleY: number } => {
+  const sy = Math.abs(src.scaleY);
+  const sx = Math.abs(src.scaleX);
+  // Ohne brauchbare Maße gibt es nichts zu rechnen: dann bleibt der Faktor der
+  // Faktor. Ein Rückfall auf 0 wäre ein unsichtbares Wesen — die Klasse Fehler,
+  // die `refFrameHOf` mit dem Nur-was-da-ist-Gesetz schon einmal bezahlt hat.
+  if (copy.frameH <= 0 || src.frameH <= 0 || sy <= 0) return { scaleX: sx, scaleY: sy };
+  const outY = (src.frameH * sy) / copy.frameH;
+  return { scaleX: outY * (sx / sy), scaleY: outY };
+};
+
 /** Her banked pairs, left and right. These cells carry their OWN direction, so
  *  the renderer must not also mirror them — see `CELL_IS_DIRECTIONAL`. (`roll`
  *  is the sheet's `bank_l0`; stage G mapped it to the name the turn state was

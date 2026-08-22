@@ -41,7 +41,7 @@ import {
   type EntSizeInput, GUARDIAN_DISPLAY_H, GUARDIAN_KEEPIN_MAX, GUARDIAN_SLATE, REST_SQUASH, RESTORE_SPARKLE_MS, WASHED_ROLES,
   WIGGLE_AT_REST,
   awakenRoomBloom, awakenRoomSweep, bouncerSquash, cageBreath, cageNearT, entDisplayH, entPoseCell, entSeed, floodBloomFor, greyLuma,
-  guardianManoeuvre, guardianPitchRad, guardianRollScaleX, idleWiggle, poseStateOf, washAlphaFor,
+  guardianManoeuvre, guardianPitchRad, guardianRollScaleX, idleWiggle, overlayFit, poseStateOf, washAlphaFor,
 } from "./anim.ts";
 import { CUE_CHALK, CUE_HALO, TREASURE_BACK_COLOUR, TREASURE_HALO_COLOUR, chalkArrow, cueMarkY, treasureCue, treasureBobPx, treasureSpinSx } from "./cue.ts";
 import { RIG, launchCoil, rigPose, withCheer, withFistAway, withBrace } from "./rig.ts";
@@ -2086,10 +2086,24 @@ export class PaintScene extends Phaser.Scene {
    * wird — dieselbe Regel, die diese Datei oben schon aufschreibt: zwei
    * Methoden, die ein Objekt schreiben, sind der Grund, warum ein Rand seinem
    * Körper hinterherhinkt.
+   *
+   * R5-W8 · F9 · G4 · …UND SIE FOLGT IHM IN DER ANZEIGEGRÖSSE, NICHT IM FAKTOR.
+   * Die Zeile hieß `copy.setScale(img.scaleX, img.scaleY)`. Das ist dieselbe
+   * Zahl, solange Körper und Auflage dasselbe Blattmaß haben — eine Annahme, die
+   * für alle drei Aufrufer hier zutrifft und für den EINEN Fall bricht, für den
+   * die Insassen-Schicht gebaut wurde (`pencilcase_a` 480×275 gegen
+   * `merle_caged0` 268×383 ⇒ 47,3 statt 34 px, der Vorfall steht `:1743-1752`
+   * ausgerechnet). Die Rechnung ist jetzt eine reine, geprüfte Funktion
+   * (`anim.overlayFit`), und sie fällt bei gleichem Blattmaß arithmetisch exakt
+   * auf das alte Verhalten zurück — der Wechsel bewegt heute kein Pixel.
    */
   private syncOverlay(copy: Phaser.GameObjects.Image, img: Phaser.GameObjects.Image): void {
     copy.setPosition(img.x, img.y);
-    copy.setScale(img.scaleX, img.scaleY);
+    const fit = overlayFit(
+      { frameW: img.frame.width, frameH: img.frame.height, scaleX: img.scaleX, scaleY: img.scaleY },
+      { frameW: copy.frame.width, frameH: copy.frame.height },
+    );
+    copy.setScale(fit.scaleX, fit.scaleY);
     copy.setRotation(img.rotation);
     copy.setFlipX(img.flipX);
   }
