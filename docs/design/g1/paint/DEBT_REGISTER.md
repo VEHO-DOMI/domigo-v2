@@ -939,3 +939,52 @@ Reserviert: D-560…D-569.
 
 | Nr. | Befund | Beleg | Fix | Wer/wann | Herkunft |
 |---|---|---|---|---|---|
+
+## R5-W8 · SECHS ABSCHNITTE (K7, 2026-08-22) — vorab angelegt für die Bahnen der Welle 8, damit keine Session am Datei-Ende kollidiert
+Jede Session trägt ihre Schulden NUR in ihren eigenen Abschnitt ein und vergibt NUR Nummern aus ihrem Block. **PB-Nummern vergibt ausschließlich die K-Bahn** (K7: PB-147 ff.). Ein Abschnitt bleibt leer, bis seine Session bootet; K7 selbst bootet sofort, die fünf anderen nach dem Merge dieses PRs (R210).
+
+**Die Blöcke sind am Register SELBST ermittelt, nicht aus einem Dokument übernommen.** Gemessen am 2026-08-22 über alle vergebenen Nummern: höchste belegte Zeile D-559 (H5), höchster reservierter Block D-560…D-569. Die kursierenden »nächste freie Nummer«-Angaben widersprechen sich (»D-520« bezeichnet in Wahrheit D5s Welle-7-Block) — wer aus einem Dokument nummeriert, das älter ist als das Register, vergibt eine Adresse zweimal.
+
+⚠ **D-560…D-569 bleibt TOT reserviert und wird NICHT recycelt.** Der Block gehörte der Bahn L2 (Kontrast II); L2 ist mit R192 ersatzlos entfallen, der Block wurde nie benutzt. Er bleibt trotzdem stehen: die Nummern stehen in Passovern und Rahmen-Blättern der Welle 7 als Adresse, und eine wiederverwendete Adresse ist keine. Die Welle 8 beginnt deshalb mit dem Block D-570…D-579.
+
+## R5-W8 · K7 — Kanon V (Register-Pre-Seed, D-270/D-491/Heft-Buchungen, doc-45-Rulings R204–R210, C9 »Lager«, PB-147 ff.) (2026-08-22)
+
+Reserviert: D-570…D-579.
+
+| Nr. | Befund | Beleg | Fix | Wer/wann | Herkunft |
+|---|---|---|---|---|---|
+
+## R5-W8 · D6 — Karten V (Legenden-Deckkraft umdrehen + Haken, Höhen-Grenze/Blättern D-529, Karten-Interface-Code-Seite ohne AQ17E, card_plaques nachverdichten D-556) (2026-08-22)
+
+Reserviert: D-580…D-589.
+
+| Nr. | Befund | Beleg | Fix | Wer/wann | Herkunft |
+|---|---|---|---|---|---|
+
+## R5-W8 · F9 — Motor/Boss (Band-Rückbau R209c, G4 Anzeigegröße statt Faktor + A8 am Schirm, Proportions-Runde D-476 mit eigenem Prüfer-Gate) (2026-08-22)
+
+Reserviert: D-590…D-599.
+
+| Nr. | Befund | Beleg | Fix | Wer/wann | Herkunft |
+|---|---|---|---|---|---|
+
+## R5-W8 · S4 — Sim/Audio (Lebensanzeige-Treiber R209d zu D-551, Tor-1-Halbsatz, AudioContext-Fehler beim Seitenwechsel, SOUND-STUDIO-Import auf Zuruf) (2026-08-22)
+
+Reserviert: D-600…D-609.
+
+| Nr. | Befund | Beleg | Fix | Wer/wann | Herkunft |
+|---|---|---|---|---|---|
+
+## R5-W8 · B6 — Level (Heft-Korridor ausdünnen unter dem 22-Spalten-Gesetz R209b, die zwei angeschnittenen Randobjekte zuerst) (2026-08-22)
+
+Reserviert: D-610…D-619.
+
+| Nr. | Befund | Beleg | Fix | Wer/wann | Herkunft |
+|---|---|---|---|---|---|
+
+## R5-W8 · W7 — Werkzeug VII (Standbild-Modus, Perf-Sidecar Lastmittel + fremde Server, Pin-Wächter R209f zu D-554, kaefig-Crop + Weiterlauf, Kampf-Modus, Wellen-Nachmessung zuletzt) (2026-08-22)
+
+Reserviert: D-620…D-629.
+
+| Nr. | Befund | Beleg | Fix | Wer/wann | Herkunft |
+|---|---|---|---|---|---|
