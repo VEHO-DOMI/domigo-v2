@@ -203,7 +203,32 @@ export const CROP_TARGETS = {
  * nie dieselbe Textstelle berühren. Leer heißt: das Vokabular oben gilt.
  * Form: `"<flaeche>": { "<ausschnitt>": { sel?, band?, pad? } }`.
  */
-export const CROPS = {};
+export const CROPS = {
+  // ── R5-W8 · W7 · P7 §13 · DER KAEFIG-PLAKETTE IST KLEINER ALS DAS VOKABULAR
+  //
+  // GEMESSEN am 22.08. an Port 3287: `.pb-plate` ist auf dieser Flaeche
+  // **104 × 139 px** — mit den 40 px Kontext, die fuer jede andere Plakette
+  // richtig sind, fuellt das Motiv (104·139)/(184·219) = **35,9 %** und faellt
+  // unter MIN_FILL. Das ist kein falscher Rand (der Fall `knopf`, den W6 mit
+  // pad 10 geloest hat) und kein falsches Gesetz: die Plakette DIESER Karte ist
+  // schlicht kleiner als die der anderen.
+  //
+  // Deshalb wird die Schwelle HIER erklaert und nicht global gesenkt — MIN_FILL
+  // bleibt fuer alle anderen Flaechen bei 40 %. Eine global gesenkte Schwelle
+  // haette jede kuenftige Briefmarke mit durchgelassen; diese Ausnahme laesst
+  // genau eine Flaeche durch und sagt, warum.
+  //
+  // 0,34 statt 0,359: knapp unter dem gemessenen Wert, damit ein Layout-Zittern
+  // von einem Pixel nicht rot wird — und weit genug ueber einer Briefmarke,
+  // dass die Ausnahme nicht zum zweiten Gesetz wird.
+  kaefig: {
+    plakette: {
+      minFill: 0.34,
+      warum: "gemessen 104 × 139 px (22.08., Port 3287) ⇒ 35,9 % bei pad 40; "
+        + "die Plakette dieser Karte ist kleiner als die der uebrigen (P7 §13)",
+    },
+  },
+};
 
 /** Was für Fläche + Ausschnitt wirklich gilt (Fläche schlägt Vokabular). */
 export const cropSpec = (surface, name) => {
@@ -218,6 +243,11 @@ export const cropSpec = (surface, name) => {
 /** Der Anteil, den ein Ausschnitt mindestens füllen muss. Darunter ist er
  *  wieder das, was er ersetzen sollte: ein Motiv auf einer Briefmarke. */
 export const MIN_FILL = 0.40;
+
+/** Was für DIESE Fläche + DIESEN Ausschnitt wirklich gilt. Eine erklärte
+ *  Ausnahme in `CROPS` schlägt das Gesetz — aber nur dort, wo sie steht. */
+export const minFillFor = (spec) =>
+  (typeof spec?.minFill === "number" ? spec.minFill : MIN_FILL);
 
 /**
  * Aus dem Rechteck des Treffers wird das MOTIV (ggf. nur ein Kantenband) …
@@ -250,6 +280,31 @@ export const clipOf = (roi, pad = 0, win = WINDOW, dsf = DSF) => {
     clip: { x, y, width, height, scale },
     fill: (roi.width * roi.height) / (width * height),
   };
+};
+
+/**
+ * R5-W8 · W7 · P7 §13 · WEITERLAUF STATT ABBRUCH.
+ *
+ * Bis hierher fuhr die Schleife die Flaechen in Listenreihenfolge und brach beim
+ * ERSTEN Fehlschlag ab — auch dann, wenn die uebrigen 26 problemlos gefahren
+ * waeren. Wer eine Bank fuer einen blinden Prueferblick baut, bekam so ein
+ * halbes Blatt und musste den Rest von Hand nachziehen (`--from/--to`).
+ *
+ * Ab jetzt faehrt jede Flaeche, und die Fehlschlaege werden GESAMMELT gemeldet:
+ * ein Fehlschlag ist eine Zeile im Bericht, kein Ende des Laufs. Der Exit-Code
+ * bleibt 1, sobald einer dabei ist — Weiterlaufen heisst nicht Wegsehen.
+ *
+ * Rein, damit CI den Bericht ohne Chrome pruefen kann.
+ */
+export const laufBericht = (geplant, fehlschlaege) => {
+  const gefahren = geplant.length - fehlschlaege.length;
+  const zeilen = [`shoot-card-bench: ${gefahren} von ${geplant.length} Flaeche(n) fotografiert`];
+  if (fehlschlaege.length > 0) {
+    zeilen.push(`✗ ${fehlschlaege.length} Fehlschlag/Fehlschlaege — jede Flaeche mit ihrem eigenen Grund:`);
+    for (const f of fehlschlaege) zeilen.push(`    · ${f.id}: ${f.grund}`);
+    zeilen.push("  Der Lauf ist trotzdem bis ans Ende gefahren; was oben fehlt, fehlt aus dem genannten Grund.");
+  }
+  return { zeilen, exit: fehlschlaege.length > 0 ? 1 : 0, gefahren };
 };
 
 /** Der Lauf-Plan bei `--from/--to` — als eigene Funktion, damit der Selbsttest
@@ -303,6 +358,41 @@ const selftest = () => {
   assert(knopfNeu.fill >= MIN_FILL,
     `mit pad ${knopfPad} füllt er ${(knopfNeu.fill * 100).toFixed(0)} % (≥ ${MIN_FILL * 100} %)`);
   assert(cropSpec("choice", "knopf").sel === ".pb-btn-primary", "»knopf« zielt auf den gemalten Hauptknopf");
+
+  // 4d · R5-W8 · W7 · DIE ERKLAERTE SCHWELLE JE FLAECHE (P7 §13).
+  //      Die Zahlen sind GEMESSEN (22.08., Port 3287): `.pb-plate` ist auf
+  //      `kaefig` 104 × 139 px. Geprüft werden beide Richtungen an genau diesem
+  //      Rechteck — sonst wäre die Ausnahme geraten und nicht gemessen.
+  const kaefigPlate = { x: 586, y: 193, width: 104, height: 139 };
+  const kaefigFill = clipOf(kaefigPlate, cropSpec("kaefig", "plakette").pad ?? 0).fill;
+  assert(kaefigFill < MIN_FILL,
+    `die kaefig-Plakette füllt ${(kaefigFill * 100).toFixed(0)} % — unter dem Gesetz von ${MIN_FILL * 100} % (der Abbruch aus P7 §13)`);
+  assert(kaefigFill >= minFillFor(cropSpec("kaefig", "plakette")),
+    `…und über der für sie erklärten Schwelle von ${(minFillFor(cropSpec("kaefig", "plakette")) * 100).toFixed(0)} %`);
+  assert(typeof cropSpec("kaefig", "plakette").warum === "string",
+    "die erklärte Schwelle trägt ihren Grund im Text (eine Ausnahme ohne Grund ist eine Absenkung)");
+  // ★ DER TAMPER, DER AUF DEM FALL SITZT (P-82): die Ausnahme gilt NUR dieser
+  //   Fläche. Wer sie global gesenkt hätte, bliebe hier grün — und ließe jede
+  //   künftige Briefmarke mit durch.
+  assert(minFillFor(cropSpec("choice", "plakette")) === MIN_FILL,
+    "eine FREMDE Fläche bekommt die Ausnahme nicht (sonst wäre sie eine globale Senkung)");
+  assert(minFillFor(cropSpec("choice", "karte")) === MIN_FILL, "…und das Vokabular selbst trägt keine Ausnahme");
+  const alsChoice = clipOf(kaefigPlate, cropSpec("choice", "plakette").pad ?? 0).fill;
+  assert(alsChoice < minFillFor(cropSpec("choice", "plakette")),
+    "TAMPER: dasselbe Rechteck auf einer fremden Fläche fällt weiterhin durch");
+
+  // 4e · der Weiterlauf: der Bericht muss BEIDES können — schweigen, wenn alles
+  //      lief, und jeden Fehlschlag mit seinem eigenen Grund nennen.
+  const alleGut = laufBericht(["a", "b", "c"], []);
+  assert(alleGut.exit === 0, "ein Lauf ohne Fehlschlag endet mit 0");
+  assert(alleGut.gefahren === 3, `…und meldet 3 gefahrene Flächen (${alleGut.gefahren})`);
+  const teils = laufBericht(["a", "b", "c"], [{ id: "b", grund: "füllt nur 36 %" }]);
+  assert(teils.exit === 1, "ein Lauf MIT Fehlschlag endet mit 1 — Weiterlaufen ist nicht Wegsehen");
+  assert(teils.gefahren === 2, `…und meldet 2 gefahrene Flächen (${teils.gefahren})`);
+  assert(teils.zeilen.some((z) => z.includes("b:") && z.includes("36 %")),
+    "…und nennt die gescheiterte Fläche mit ihrem eigenen Grund");
+  assert(teils.zeilen.some((z) => z.includes("bis ans Ende gefahren")),
+    "…und sagt, dass der Rest trotzdem gefahren ist");
 
   // 4c · …und die neue Fläche ist wirklich in der Liste (eine Flächen-Bestellung,
   //      die auf keine Fläche trifft, würde sonst still nichts fotografieren)
@@ -569,29 +659,54 @@ async function shoot(id) {
       throw new Error(`unbekannter Ausschnitt »${cropName}« — erklaert sind: ${Object.keys(CROP_TARGETS).join(", ")}`);
     }
     const { clip, fill } = clipOf(roiOf(await rectOf(id, spec.sel), spec.band), spec.pad ?? 0);
-    if (fill < MIN_FILL) {
-      throw new Error(`${id}: der Ausschnitt »${cropName}« fuellt nur ${(fill * 100).toFixed(0)} % des Bildes `
-        + `(gefordert ≥ ${MIN_FILL * 100} %) — so ist die Stelle nicht beurteilbar`);
+    const schwelle = minFillFor(spec);
+    if (fill < schwelle) {
+      // Eine Stelle nach dem Komma, und das ist kein Schoenheitsfehler: mit
+      // `toFixed(0)` stand hier »fuellt nur 40 % (gefordert ≥ 40 %)« — eine
+      // Meldung, die aussieht, als sei die Bedingung erfuellt (gemessen an
+      // `choice`, 22.08.).
+      throw new Error(`der Ausschnitt »${cropName}« fuellt nur ${(fill * 100).toFixed(1)} % des Bildes `
+        + `(gefordert ≥ ${(schwelle * 100).toFixed(1)} %) — so ist die Stelle nicht beurteilbar`);
     }
     params = { format: "png", clip, captureBeyondViewport: true };
     note = `  Ausschnitt »${cropName}«: ${Math.round(clip.width)}×${Math.round(clip.height)} px `
-      + `× ${clip.scale.toFixed(2)}, Motiv füllt ${(fill * 100).toFixed(0)} %`;
+      + `× ${clip.scale.toFixed(2)}, Motiv füllt ${(fill * 100).toFixed(1)} %`
+      + (schwelle === MIN_FILL ? "" : ` (erklärte Schwelle ${(schwelle * 100).toFixed(1)} % — ${spec.warum})`);
   }
   const { data } = await page("Page.captureScreenshot", params);
   writeFileSync(out, Buffer.from(data, "base64"));
   console.log(`  ✓ ${id}${note}`);
 }
 
+const fehlschlaege = [];
 try {
-  for (const id of wanted) await shoot(id);
+  // R5-W8 · W7 · P7 §13: jede Flaeche faehrt. Ein Fehlschlag ist eine Zeile im
+  // Bericht, kein Ende des Laufs — 26 gute Aufnahmen wegen einer schlechten
+  // nicht zu machen, war der teure Teil.
+  for (const id of wanted) {
+    try {
+      await shoot(id);
+    } catch (err) {
+      fehlschlaege.push({ id, grund: err.message });
+      console.error(`  ✗ ${id}: ${err.message}`);
+    }
+  }
   const wie = cropName === null ? "Vollbild" : `Ausschnitt »${cropName}«`;
-  console.log(`shoot-card-bench: ${wanted.length} surface(s), ${wie} → ${outDir}`);
+  const bericht = laufBericht(wanted, fehlschlaege);
+  console.log("");
+  for (const z of bericht.zeilen) console.log(z);
+  console.log(`  ${wie} → ${outDir}`);
+  if (bericht.exit !== 0) {
+    console.error("  Einzelne Flaechen nachziehen: --only <id> (oder --from/--to fuer einen Abschnitt).");
+  }
+  process.exitCode = bericht.exit;
 } catch (err) {
-  // Ein Abbruch nennt ab jetzt seinen Grund UND wie weit der Lauf kam — W1
-  // hatte beides nicht und musste raten.
+  // Was hier noch landet, ist KEIN Flaechen-Fehlschlag, sondern ein Abbruch des
+  // Laufs selbst (Browser weg, Verbindung tot). Der nennt seinen Grund und wie
+  // weit der Lauf kam — W1 hatte beides nicht und musste raten.
   console.error(`\n✗ shoot-card-bench abgebrochen: ${err.message}`);
   console.error(`  geplant waren ${wanted.length} Flächen: ${wanted.join(", ")}`);
-  console.error(`  Weitermachen ab der abgebrochenen Stelle: --from <n> --to <m> (erklärter Modus, vom Selbsttest gedeckt).`);
+  console.error(`  ${wanted.length - fehlschlaege.length} davon waren zu diesem Zeitpunkt noch offen.`);
   process.exitCode = 1;
 } finally {
   ws.close();

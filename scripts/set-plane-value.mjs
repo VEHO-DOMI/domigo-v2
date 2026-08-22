@@ -30,8 +30,40 @@
 // pass in the painter's sense: the same painting, at a different key. Hue and
 // chroma stay the artist's.
 //
+// ── R5-W8 · W7 · R209f/D-554 · DER PIN-WAECHTER ──────────────────────────────
+//
+// H5 hat es GEMESSEN, nicht vermutet: wer dieses Skript heute fuer
+// `band_p4_audience` faehrt, skaliert die Kanaele um 0,9629 — und die 8-Bit-
+// Rundung hebt die Rauhheit von 0,29924 auf 0,30027, ueber die BESTELLTE
+// Obergrenze 0,30. Die erklaerte Reparatur wuerde also eine Decke reissen, die
+// der Wareneingang genau an diesen Pixeln gemessen und angenommen hat.
+//
+// Das Muster hier drueber („der Zielwert ist DEKLARIERT, also ist das Blatt
+// nachrechenbar") ist richtig — solange das Blatt aus dem Repo stammt. Fuer ein
+// ANGENOMMENES Blatt ist es falsch herum: dort ist die Lieferung die Wahrheit
+// und das Ziel eine aeltere Absicht. Ein Skript, das eine angenommene Lieferung
+// stillschweigend ueberschreibt, ist eine Falle — und zwar eine, die erst beim
+// naechsten Tor-Lauf auffaellt, wenn niemand mehr weiss, wer die Pixel bewegt hat.
+//
+// ★ DER PIN SITZT AUF DEN BYTES, NIE AUF DEM NAMEN. Genau wie `SPERR_BUEHNEN`
+//   und `OVERLAY_MASSE_FREI` in `docs/art/import-batch-aq13.mjs`: eine Ausnahme
+//   auf einem NAMEN wuerde jedes spaetere, falsche Blatt gleichen Namens
+//   mitdecken. Gemessen wird sha256 ueber die rohen RGB-Bytes — dieselbe
+//   Groesse, mit der die Bestellungen ihre Pins fuehren.
+//
+// ★ …UND WARUM RGB UND NICHT DIE DATEI. Der Wareneingang misst die BILDPUNKTE.
+//   Zwischen Labor und Repo liegen Chroma-Key, Saum und verlustfreie
+//   Nachverdichtung: die Datei-Pruefsumme aendert sich dabei, der Alphakanal
+//   auch — die RGB-Bytes nicht. GEMESSEN am 22.08.: die Labor-Datei
+//   `~/Code/codex-art-lab/batch-aq13c4/band_p4_audience.png` und das
+//   ausgelieferte `apps/web/public/art/g1/paint/ch01/band_p4_audience.png`
+//   haben verschiedene Datei-SHAs (ca60cf45… / 7257fafc…) und DENSELBEN
+//   RGB-Hash ce96a06c…. Deshalb traegt der Pin durch den Import hindurch — und
+//   deshalb ueberlebt der Selbsttest-Fall unten auch F9s Band-Rueckbau.
+//
 // Run: node scripts/set-plane-value.mjs [--dry]
 //      node scripts/set-plane-value.mjs --selftest
+import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { PNG } from "pngjs";
@@ -56,6 +88,62 @@ const TARGETS = {
       + "Hitting it is what lets SEPARATION_WAIVERS drop ch01/p4 and the "
       + "readability law guard this room again.",
   },
+};
+
+/** sha256 ueber die rohen RGB-Bytes eines ganzen Blattes — die Groesse, mit der
+ *  der Wareneingang seine Pins fuehrt (`import-batch-aq13.mjs#blattHash`).
+ *
+ *  ⚠ Das ist eine KOPIE jener Funktion, und eine Kopie driftet. Sie wird
+ *  deshalb nicht geglaubt, sondern GEPRUEFT: der Selbsttest rechnet sie ueber
+ *  ein echtes Blatt und vergleicht das Ergebnis mit dem gemessenen Pin unten.
+ *  Weicht die Formel ab, faellt der Selbsttest — nicht der naechste Import.
+ *  (Direkt importieren geht nicht: `import-batch-aq13.mjs` fuehrt beim Laden
+ *  seine eigenen CLI-Zweige aus und wuerde bei `--selftest` den falschen fahren
+ *  — dieselbe Falle, die chrome-hygiene.mjs im Kopf traegt.) */
+const blattHash = (png) => {
+  const buf = Buffer.allocUnsafe(png.width * png.height * 3);
+  let k = 0;
+  for (let i = 0; i < png.data.length; i += 4) {
+    buf[k++] = png.data[i];
+    buf[k++] = png.data[i + 1];
+    buf[k++] = png.data[i + 2];
+  }
+  return crypto.createHash("sha256").update(buf).digest("hex");
+};
+
+/**
+ * Blaetter, die der Wareneingang ANGENOMMEN hat. Form: RGB-sha256 → Herkunft.
+ * Wer hier steht, wird von diesem Skript nicht angefasst — auch dann nicht,
+ * wenn sein deklarierter Zielwert etwas anderes sagt.
+ */
+export const WARENEINGANGS_PINS = new Map([
+  ["ce96a06c7b7275f2231ec3cc09243186f253fe06a05cec50ee4529435168945f",
+    "band_p4_audience aus AQ13c4 — Wareneingang H5, 22.08.2026 (Ring-Abnahme bestanden, "
+    + "Rauhheit 0,29924 gegen die bestellte Decke 0,30, Reserve 0,00076)"],
+]);
+
+/** Der Satz, mit dem verweigert wird. Als Konstante, damit der Selbsttest auf
+ *  DEN Wortlaut prueft und nicht auf ein Stueck davon. */
+export const PIN_VERWEIGERUNG =
+  "angenommene Lieferung — das Wareneingangs-Mass ersetzt das R15-Ziel; "
+  + "Aenderung nur ueber neue Lieferung + Wareneingang";
+
+/**
+ * Das Urteil ueber ein Blatt, bevor ein Byte bewegt wird. Rein, damit der
+ * Selbsttest beide Richtungen sehen kann — eine Sperre, die nie greift, ist
+ * Dekoration; eine, die immer greift, macht das Skript nutzlos.
+ */
+export const pinUrteil = (hash, pins = WARENEINGANGS_PINS) => {
+  const herkunft = pins.get(hash);
+  if (herkunft === undefined) return { gesperrt: false, hash, herkunft: null };
+  return {
+    gesperrt: true,
+    hash,
+    herkunft,
+    meldung: `${PIN_VERWEIGERUNG}. Pin ${hash.slice(0, 16)}… — ${herkunft}. `
+      + "Der Wareneingang hat GENAU DIESE Bildpunkte gemessen und angenommen; ein Wertepass "
+      + "darueber wuerde eine bestellte Decke reissen (D-554: Rauhheit 0,29924 → 0,30027 bei Ziel 14,8 %).",
+  };
 };
 
 /** Tolerance in luminance points. Tight enough to pin the sheet, loose enough
@@ -136,6 +224,68 @@ if (process.argv.includes("--selftest")) {
   const s1 = satOf(fitted.png.data[0], fitted.png.data[1], fitted.png.data[2]);
   console.log(`selftest: saturation ${(s0 * 100).toFixed(2)} % → ${(s1 * 100).toFixed(2)} %`);
   if (Math.abs(s0 - s1) > 0.01) { console.error("✗ selftest: the pass moved saturation — it is not a value pass"); process.exit(1); }
+  // ── R5-W8 · W7 · R209f/D-554 · DER PIN-WAECHTER, AM GEMESSENEN FALL ──────
+  // Nicht an einem synthetischen Blatt: das c4-Band ist die Lieferung, an der
+  // H5 die Decke reissen sah, und die Fixture ist eine Kopie GENAU dieser Datei
+  // aus `~/Code/codex-art-lab/batch-aq13c4/`. Sie liegt im Repo, weil eine
+  // Pruefung, die ihre Datei nur benutzt, wenn das Labor zufaellig auf der
+  // Maschine liegt, keine Pruefung ist.
+  {
+    const fixture = path.join(path.dirname(new URL(import.meta.url).pathname), "fixtures/band_p4_audience_aq13c4.png");
+    if (!fs.existsSync(fixture)) {
+      console.error(`✗ selftest: die Fixture fehlt (${fixture}) — ohne sie prueft dieser Fall nichts`);
+      process.exit(1);
+    }
+    const blatt = PNG.sync.read(fs.readFileSync(fixture));
+    const hash = blattHash(blatt);
+
+    // 1 · die KOPIE der Hash-Formel wird gegen den gemessenen Pin gehalten.
+    //     Driftet sie, faellt es hier auf und nicht beim naechsten Import.
+    const PIN = "ce96a06c7b7275f2231ec3cc09243186f253fe06a05cec50ee4529435168945f";
+    if (hash !== PIN) {
+      console.error(`✗ selftest: die RGB-Hash-Formel liefert ${hash.slice(0, 16)}… statt des gemessenen `
+        + `Wareneingangs-Pins ${PIN.slice(0, 16)}… — die Kopie aus import-batch-aq13.mjs ist gedriftet`);
+      process.exit(1);
+    }
+    console.log(`selftest: die Fixture traegt den Wareneingangs-Pin ${PIN.slice(0, 16)}… (${blatt.width}×${blatt.height})`);
+
+    // 2 · …und das Blatt wird VERWEIGERT, mit dem bestellten Wortlaut.
+    const gesperrt = pinUrteil(hash);
+    if (!gesperrt.gesperrt) { console.error("✗ selftest: das angenommene c4-Band wird NICHT blockiert"); process.exit(1); }
+    if (!gesperrt.meldung.includes(PIN_VERWEIGERUNG)) {
+      console.error("✗ selftest: die Verweigerung sagt nicht, was sie sagen soll");
+      process.exit(1);
+    }
+    if (!/0,30027|0\.30027/.test(gesperrt.meldung)) {
+      console.error("✗ selftest: die Verweigerung nennt die gemessene Folge nicht (D-554)");
+      process.exit(1);
+    }
+    console.log("selftest: das angenommene Band wird verweigert — «" + PIN_VERWEIGERUNG + "»");
+
+    // 3 · TAMPER, AUF DEM FALL SITZEND (P-82). Dasselbe Blatt, aber der Pin
+    //     zeigt auf ANDERE Bytes. Die Sperre darf dann NICHT greifen — sonst
+    //     sperrt sie in Wahrheit den Namen oder alles, und beides waere eine
+    //     andere Regel als die geschriebene.
+    const fremd = new Map([["0".repeat(64), "Selbsttest-Pin auf fremde Bytes"]]);
+    if (pinUrteil(hash, fremd).gesperrt) {
+      console.error("✗ TAMPER: die Sperre greift auch bei einem Pin auf fremde Bytes — sie sitzt nicht auf den Bytes");
+      process.exit(1);
+    }
+    // …und der Gegen-Tamper: EIN Byte des Blattes geaendert ⇒ der echte Pin
+    //   trifft nicht mehr. Ein Pin, der ein veraendertes Blatt noch deckt,
+    //   waere ein Pin auf gar nichts.
+    const kopie = PNG.sync.read(fs.readFileSync(fixture));
+    kopie.data[0] = kopie.data[0] === 0 ? 1 : kopie.data[0] - 1;
+    const hashKopie = blattHash(kopie);
+    if (hashKopie === hash) { console.error("✗ TAMPER sass nicht: ein geaendertes Byte aenderte den Hash nicht"); process.exit(1); }
+    if (pinUrteil(hashKopie).gesperrt) {
+      console.error("✗ TAMPER: ein Blatt mit EINEM anderen Byte wird noch immer gedeckt");
+      process.exit(1);
+    }
+    console.log("selftest: TAMPER — ein Pin auf fremde Bytes sperrt nicht, und EIN geaendertes Byte "
+      + "faellt aus dem Pin heraus (die Sperre sitzt auf den Bytes, nicht auf dem Namen)");
+  }
+
   console.log("✓ selftest passed");
   process.exit(0);
 }
@@ -148,6 +298,19 @@ for (const [stem, spec] of Object.entries(TARGETS)) {
   const file = findStem(stem);
   if (!file) { console.error(`✗ ${stem}: not on disk`); failures++; continue; }
   const png = PNG.sync.read(fs.readFileSync(file));
+
+  // ── R5-W8 · W7 · R209f/D-554 · ZUERST: gehoert dieses Blatt dem Wareneingang?
+  // Vor dem Messen, nicht danach — und auch im `--dry`, weil ein Trockenlauf,
+  // der eine Zahl druckt, die niemand fahren darf, dieselbe Falle stellt.
+  const urteil = pinUrteil(blattHash(png));
+  if (urteil.gesperrt) {
+    console.error(`✗ ${stem}: ${urteil.meldung}`);
+    console.error("   Es wird kein Byte geschrieben. Wenn das Ziel fuer diesen Stem wirklich fallen soll, "
+      + "gehoert es HIER zurueckgezogen (mit Grund) — nicht ueber das Blatt hinweg.");
+    failures++;
+    continue;
+  }
+
   const got = meanLum(png);
   if (got === null) { console.error(`✗ ${stem}: no visible pixels to measure`); failures++; continue; }
 

@@ -35,6 +35,7 @@
  *        [--visible] [--sink-port 3921] [--cdp-port 9341] \
  *        [--warp c,r] [--settle 240] [--shots 14] [--every 6] [--pure] \
  *        [--press left|right|jump] [--name uns_kaefig] [--tick 900]
+ *        [--standbild] [--toast]
  *
  * ── --tick, und warum ein Vorher/Nachher es braucht (R5-W6b · W5, L1) ──────
  * Bis hierher konnte diese Reihe sagen, WANN sie entstanden ist (`state().tick`
@@ -54,6 +55,36 @@
  * niemand, und ein Werkzeug, das dann still das naechstbeste Bild nimmt, macht
  * aus einer Fixierung eine Behauptung.
  *
+ * ── --standbild, und warum es das GEGENTEIL einer Reihe ist (R5-W8 · W7) ───
+ * P7 §7 blieb unfotografiert: die fuenf Torschluss-Meldungen werden auf die
+ * SPIELFLAECHE gemalt, ein gewoehnlicher Screenshot bekommt WebGL nicht, und
+ * dieses Skript weist eine stillstehende Reihe per Gesetz ab. Es gab kein
+ * Instrument im Repo, das einen Augenblick fotografieren kann, in dem die Welt
+ * absichtlich steht.
+ *
+ * `--standbild` nimmt deshalb GENAU EIN Bild und sagt das in seinem Zettel. Was
+ * es NICHT tut, ist das Gesetz aufweichen: der normale Modus bleibt Wort fuer
+ * Wort, wie er war (`frame-sink.mjs` prueft genau das mit einem Tamper).
+ *
+ * ★ DER HANDSCHLAG ENTFAELLT NUR, WENN ER MUSS — und dann steht es im Zettel.
+ *   Der Auftrag sagte »der Handschlag entfaellt begruendet«. Am Code gemessen
+ *   ist die Voraussetzung fuer den Torschluss-Fall aber gar nicht gegeben: die
+ *   Meldung haelt die Welt NICHT an (`sim.ts#checkExit` kehrt nur zurueck, die
+ *   Blase lebt ~900 ms auf Phasers Uhr). Die Welt laeuft dort also, und der
+ *   Handschlag ist zu haben. Ihn pauschal fallen zu lassen, riss ein neues Loch
+ *   auf: ein Standbild aus einer TOTEN Kamera (P-66) waere ein schwarzes Bild,
+ *   das wie ein Beweis aussieht. Also: laeuft die Welt, wird der Handschlag
+ *   gefahren und das Standbild traegt denselben Kamerabeweis wie eine Reihe;
+ *   steht sie schon (offene Karte), entfaellt er MIT GRUND im Zettel.
+ *
+ * ── --toast: gewartet wird auf den ZUSTAND, nicht auf die Uhr ──────────────
+ * Ein Standbild »vom Toast« ist nur dann eins, wenn die Blase beim Ausloesen
+ * wirklich auf der Buehne stand. `--toast` faehrt deshalb in EINZELSCHRITTEN
+ * weiter und liest nach jedem, ob eine Sprechblase mit Text und voller Deckung
+ * in der Anzeigeliste steht; erst dann faellt der Schuss, und der GELESENE Text
+ * steht im Beipackzettel. Findet er keine, bricht der Lauf ab, statt ein
+ * beliebiges Bild »Toast« zu nennen.
+ *
  * ⚠ EIGENER PORT, IMMER (P-65): am 14.08. sprach ein Live-Lauf mit einem fremden
  *   Dev-Server auf 3000 und hätte jede „live geprüft"-Aussage zur Lüge gemacht.
  *   Deshalb prüft dieses Skript zuerst, ob die laufende Klasse den NEUEN Code
@@ -64,7 +95,7 @@ import { existsSync, mkdirSync, mkdtempSync, writeFileSync } from "node:fs";
 import http from "node:http";
 import { tmpdir } from "node:os";
 import path from "node:path";
-import { CLIENT_SRC, createSink } from "./frame-sink.mjs";
+import { CLIENT_SRC, createSink, laufBrauchbar } from "./frame-sink.mjs";
 
 import { raeumeVerwaisteProfile, wartenBisChromeWegIst } from "./chrome-hygiene.mjs";
 
@@ -79,13 +110,35 @@ const flag = (name, fallback) => {
 };
 const has = (name) => argv.includes(name);
 
-// ── R5-W5 · W4 · D-259 · `--fight`: DIE TAKTE DES KAMPFS ALS BILDREIHE ──────
+// ── R5-W8 · W7 · `--fight` STEHT AB JETZT AUF S4s TREIBER (R209d/D-558) ─────
+//
+// Was hier vorher stand, ist dreimal gescheitert, und H5 §5 hat es mit Zahlen
+// aufgeschrieben: der Lauf fror bei Takt 251 und 478 ein, sein Kartenlöser
+// feuerte nie, und 600 getriebene Takte ließen `knots` unbewegt bei 3. Der
+// Grund war keine Kleinigkeit an diesem Skript, sondern eine fehlende Fähigkeit
+// im Spiel: die Boss-Karte kommt hinter einem ECHTEN Zeitgeber, und eine
+// synchrone Takt-Schleife lässt ihn nie feuern.
+//
+// S4 hat die Fähigkeit gebaut (PR #351) und EINE Schnittstelle dafür erklärt:
+//   window.__domigoPaint.fight = { load(pads) · advance(maxTicks?) · read() · release() }
+// `advance()` ist AWAIT-BAR (das ist der ganze Punkt) und hält BEI jedem Wisch
+// an — genau der stehende Augenblick, den P7 §12.8 fotografierbar haben wollte.
+//
+// Dieses Skript erfindet daran nichts. Es reicht das aufgezeichnete Band der
+// Phase herein (`ch01.proof.json` → `phases[<phase>].pads`; der Aufrufer reicht
+// es, damit Prüf-Inhalt nicht ins Bündel des Kindes wandert), fährt von Halt zu
+// Halt und fotografiert jeden. Mit `--every n` wird ZUSÄTZLICH alle n Takte ein
+// Bild genommen — dafür, und nur dafür, gilt die Abtast-Regel unten weiter.
+//
+// ── R5-W5 · W4 · D-259 · DIE ABTASTRATE UND DER BEIPACKZETTEL ───────────────
 //
 // Zwei Gesetze, die dieser Modus braucht und die OHNE Browser prüfbar sind —
 // deshalb stehen sie hier oben, vor allem, was Chrome anfasst, und deshalb kann
 // `--selftest` sie in CI fahren.
 //
-// GESETZ 1 · DIE ABTASTRATE. Der Kampf hat zwei Takte: der Wisch dauert
+// GESETZ 1 · DIE ABTASTRATE — sie gilt für das ZUSÄTZLICHE Abtasten (--every).
+// Von Halt zu Halt braucht es sie nicht: dort bestimmt das Ereignis den
+// Auslöser, nicht eine Rate. Der Kampf hat zwei Takte: der Wisch dauert
 // WIPE_TICKS, der Knoten-Schlag KNOT_BEAT_TICKS. Wer seltener abtastet als
 // halb so oft (Nyquist), fotografiert eine Bewegung, die es nicht gibt — die
 // Alias-Falle, die D-171 gemeldet hat. Die Zahlen sind hier KOPIERT, und weil
@@ -104,9 +157,16 @@ export const maxEveryForFight = (beats = FIGHT_BEATS) =>
 // Vermerk, nicht nur das eine, an dem es passierte.
 export const BEIPACKZETTEL = "Werkzeug hat die Karte gelöst (solveTask ⇒ resolveCorrect) — "
   + "diese Reihe zeigt den Kampf, NICHT das Spiel eines Kindes";
-export const fightSidecar = (geloest) => (geloest.length === 0
-  ? { fight: true, karten: [] }
-  : { fight: true, karten: geloest, beipackzettel: BEIPACKZETTEL });
+// R5-W8 · W7: der Treiber des Spiels beantwortet die Karten selbst und meldet
+// nur ihre ZAHL zurueck (er kennt ihre Namen nicht mehr, als das Kind sie
+// kennt). Der Zettel nimmt deshalb beides — eine Namensliste wie bisher oder
+// eine Zahl. Was er NICHT tut, ist schweigen, sobald das Werkzeug mitgespielt
+// hat: genau dafuer gibt es ihn.
+export const fightSidecar = (geloest) => {
+  const anzahl = Array.isArray(geloest) ? geloest.length : Number(geloest ?? 0);
+  if (anzahl === 0) return { fight: true, karten: Array.isArray(geloest) ? [] : 0 };
+  return { fight: true, karten: geloest, beipackzettel: BEIPACKZETTEL };
+};
 
 // ── R5-W7 · W6 · D-443 · DER SERVER LIEFERT DAS ALTE LEVEL ──────────────────
 //
@@ -136,6 +196,75 @@ export const levelDrift = ({ level, html, phase }) => {
     + "genau D-443, und eine Bildreihe von hier zeigt eine Welt, die es auf der Platte nicht gibt. "
     + "Rezept: Dev-Server beenden und neu starten, dann diesen Lauf wiederholen.";
 };
+
+// ── R5-W8 · W7 · DER STANDBILD-PLAN, als reine Funktion ────────────────────
+// Drei Entscheidungen haengen an einer Flagge, und alle drei sind ohne Browser
+// pruefbar — deshalb stehen sie hier und nicht verstreut im Lauf. Genau hier
+// gehen »richtig« und »plausibel-falsch« auseinander (P-82): wer den Modus
+// baut, indem er den Handschlag GLOBAL abschaltet, faellt an `abbruchWennWeltSteht`.
+export const standbildPlan = ({ standbild, weltLaeuft, shotsWunsch, toast = false }) => ({
+  // Ein Standbild ist EIN Bild. Eine Reihe von Standbildern gibt es nicht.
+  shots: standbild ? 1 : shotsWunsch,
+  // ★ WAS IST DAS MOTIV? Daran haengt, ob eine offene Karte weggeloest wird.
+  //   Gemessen am 22.08. an p1: das Kapitel oeffnet die Auftakt-Karte »goal« und
+  //   friert die Welt bei Takt 0 ein. Fuer ein Standbild DIESER Karte ist das
+  //   der Auftrag — sie wegzuloesen hiesse, das Motiv zu zerstoeren. Fuer ein
+  //   Standbild eines TOASTS ist es der Weg: der Torschluss feuert in
+  //   `checkExit`, also muss die Welt erst laufen und das Kind erst am Ausgang
+  //   stehen. Eine Flagge, die beides gleich behandelt, kann nur eines davon.
+  karteIstMotiv: standbild === true && toast !== true,
+  // …und AUFGERAEUMT wird in keinem Standbild-Modus. Das Nachraeumen nach dem
+  // Stellungbeziehen (offene Karten wegloesen, »laeuft die Welt noch?«) ist fuer
+  // eine Reihe richtig und fuer JEDES Standbild falsch: gemessen in p1 oeffnet
+  // das Stellungbeziehen die Tuer-Karte EINEN Takt nach dem Torschluss-Toast —
+  // wer sie wegloest, loescht den Augenblick, den er fotografieren wollte.
+  nachraeumen: standbild !== true,
+  // Der Handschlag wird gefahren, wann immer er zu haben ist — auch im
+  // Standbild-Modus. Er entfaellt NUR, wenn die Welt schon stand.
+  handschlag: standbild ? weltLaeuft === true : true,
+  // …und der normale Modus bricht weiter ab, wenn die Welt steht. Das ist der
+  // Satz, den der Auftrag als Tamper bestellt hat.
+  abbruchWennWeltSteht: standbild !== true,
+});
+
+// ── R5-W8 · W7 · WELCHE TASTE BEWEGT, UND WELCHE HANDELT ───────────────────
+//
+// Die press()-Wand (W5/S2) liest die LAGE des Kindes und meldet »nicht bewegt«,
+// wenn sich x, y, vx und vy nicht ruehren. Fuer links/rechts/Sprung ist das die
+// richtige Frage. Fuer ↑ ist es die falsche: ↑ ist die HANDLUNGS-Taste (Kaefig
+// oeffnen, Wesen ansprechen) — das Kind steht dabei still, und genau das ist der
+// Erfolgsfall. Gemessen am 22.08. an p4s Kaefig: `--press up` schloss den
+// `cagehint` weg, loeste den Torschluss `cageGated` aus — und der Lauf brach mit
+// »hat das Kind NICHT bewegt« ab. Eine Falschmeldung derselben Klasse, gegen die
+// diese Pruefung selbst gebaut wurde (sie las erst nur x und meldete jeden
+// Sprung als Stillstand).
+export const BEWEGUNGSTASTEN = new Set(["left", "right", "down", "jump"]);
+
+/**
+ * Hat der Druck gewirkt? Fuer eine Bewegungstaste heisst das: die Lage hat sich
+ * geruehrt. Fuer eine Handlungstaste: die WELT hat geantwortet — eine Karte,
+ * ein Halt, ein Wesen in einem anderen Zustand. Rein, damit beide Zweige ohne
+ * Browser pruefbar sind.
+ */
+export const druckWirkte = (taste, vorher, nachher) => {
+  const geruehrt = Math.abs(nachher.x - vorher.x) > 0.5 || Math.abs(nachher.y - vorher.y) > 0.5
+    || Math.abs(nachher.vx) > 0.01 || Math.abs(nachher.vy) > 0.01;
+  if (BEWEGUNGSTASTEN.has(taste)) return { wirkte: geruehrt, woran: "Lage" };
+  const geantwortet = vorher.karte !== nachher.karte || vorher.overlay !== nachher.overlay
+    || vorher.hold !== nachher.hold || vorher.wesen !== nachher.wesen;
+  return { wirkte: geruehrt || geantwortet, woran: geruehrt ? "Lage" : "Weltantwort" };
+};
+
+/** Wie viele Einzelschritte `--toast` hoechstens faehrt, bevor er aufgibt.
+ *  Gemessen: die Blase geht in ~170 ms Tween-Zeit auf (rund 10 getriebene
+ *  Takte) und faengt nach 640 ms an zu verblassen; der Torschluss-Abstand
+ *  (`gateToastCooldown`) ist 120 Takte. 300 deckt zwei volle Zyklen ab und
+ *  bleibt eine Zahl, keine Geduld. */
+export const TOAST_MAX_TAKTE = 300;
+
+/** Voll gedeckt heisst: die Auftakt-Bewegung ist durch. Eine Blase bei alpha
+ *  0,3 ist auf dem Bild ein Schleier, kein Satz. */
+export const TOAST_MIN_ALPHA = 0.9;
 
 const outDir = argv.find((a) => !a.startsWith("--") && argv[argv.indexOf(a) - 1]?.startsWith("--") !== true);
 
@@ -170,6 +299,9 @@ if (has("--selftest")) {
   // 3 · der Beipackzettel erscheint GENAU DANN, wenn eine Karte gelöst wurde —
   //     beide Richtungen, sonst prüft der Fall nur eine.
   ok("ohne gelöste Karte kein Beipackzettel", fightSidecar([]).beipackzettel, undefined);
+  ok("…auch dann nicht, wenn die Zahl 0 gemeldet wird", fightSidecar(0).beipackzettel, undefined);
+  ok("eine gemeldete ZAHL beantworteter Karten traegt ihn", fightSidecar(3).beipackzettel, BEIPACKZETTEL);
+  ok("…und die Zahl steht mit dabei", fightSidecar(3).karten, 3);
   ok("mit gelöster Karte steht er drauf", fightSidecar(["wer"]).beipackzettel, BEIPACKZETTEL);
   ok("…und er nennt den Grund beim Namen", fightSidecar(["wer"]).beipackzettel.includes("resolveCorrect"), true);
   ok("…und die Karten stehen mit dabei", fightSidecar(["wer", "wie"]).karten.join(","), "wer,wie");
@@ -197,11 +329,68 @@ if (has("--selftest")) {
       levelDrift({ level: lvl, html: treu, phase: "gibt-es-nicht" }), null);
   }
 
+  // 5 · R5-W8 · W7 · DER STANDBILD-PLAN, beide Richtungen und der Tamper.
+  {
+    const reihe = standbildPlan({ standbild: false, weltLaeuft: true, shotsWunsch: 8 });
+    ok("ohne die Flagge bleiben es 8 Aufnahmen", reihe.shots, 8);
+    ok("…und der Handschlag ist Pflicht", reihe.handschlag, true);
+    ok("…und eine stehende Welt bricht weiter ab", reihe.abbruchWennWeltSteht, true);
+
+    const laeuft = standbildPlan({ standbild: true, weltLaeuft: true, shotsWunsch: 8 });
+    ok("mit der Flagge ist es GENAU EIN Bild", laeuft.shots, 1);
+    ok("…und weil die Welt noch lief, wird der Handschlag gefahren", laeuft.handschlag, true);
+
+    ok("ohne die Flagge ist eine offene Karte NIE das Motiv",
+      standbildPlan({ standbild: false, weltLaeuft: true, shotsWunsch: 8 }).karteIstMotiv, false);
+    ok("mit --standbild allein IST die offene Karte das Motiv", laeuft.karteIstMotiv, true);
+    ok("mit --standbild --toast ist sie es NICHT (der Torschluss feuert in einer laufenden Welt)",
+      standbildPlan({ standbild: true, weltLaeuft: true, shotsWunsch: 8, toast: true }).karteIstMotiv, false);
+    ok("…aber NACHGERAEUMT wird auch dann nicht (das Wegloesen loescht den Augenblick)",
+      standbildPlan({ standbild: true, weltLaeuft: true, shotsWunsch: 8, toast: true }).nachraeumen, false);
+    ok("ohne die Flagge wird weiter nachgeraeumt", reihe.nachraeumen, true);
+
+    const steht = standbildPlan({ standbild: true, weltLaeuft: false, shotsWunsch: 8 });
+    ok("stand die Welt schon, entfaellt der Handschlag", steht.handschlag, false);
+    ok("…und der Lauf bricht deswegen NICHT ab", steht.abbruchWennWeltSteht, false);
+    ok("…und es bleibt bei EINEM Bild", steht.shots, 1);
+
+    // TAMPER, auf dem Fall sitzend: der Modus wird gebaut, indem der Handschlag
+    // GLOBAL faellt. Die Zahl der Aufnahmen sieht danach richtig aus — und der
+    // normale Modus haette sein rotes Licht verloren.
+    const globalAbgeschaltet = () => ({ shots: 1, handschlag: false, abbruchWennWeltSteht: false });
+    const gefaelscht = globalAbgeschaltet();
+    ok("TAMPER sass: die gefaelschte Fassung sagt etwas anderes",
+      gefaelscht.abbruchWennWeltSteht !== reihe.abbruchWennWeltSteht, true);
+    ok("TAMPER: ein global abgeschalteter Handschlag wuerde AUCH die Reihe treffen — genau das trennt der Plan",
+      standbildPlan({ standbild: false, weltLaeuft: false, shotsWunsch: 8 }).abbruchWennWeltSteht, true);
+
+    // 5b · die press()-Wand: Bewegungstaste gegen Handlungstaste (der Fall vom
+    //      22.08. an p4s Kaefig). Die Lagen sind ECHTE Zahlen aus jenem Lauf.
+    const stand = { x: 504, y: 288, vx: 0, vy: 0, overlay: false, karte: null, hold: false, wesen: "cage1::" };
+    const gelaufen = { ...stand, x: 512 };
+    const geantwortet = { ...stand, overlay: true, karte: "cagehint" };
+    ok("rechts + das Kind laeuft ⇒ gewirkt", druckWirkte("right", stand, gelaufen).wirkte, true);
+    ok("rechts + nichts ruehrt sich ⇒ die Wand (unveraendert)", druckWirkte("right", stand, stand).wirkte, false);
+    ok("★ ↑ + das Kind steht, aber die Welt antwortet ⇒ GEWIRKT (der Fehlalarm vom 22.08.)",
+      druckWirkte("up", stand, geantwortet).wirkte, true);
+    ok("…und die Meldung sagt, WORAN es gelesen wurde", druckWirkte("up", stand, geantwortet).woran, "Weltantwort");
+    ok("↑ + weder Lage noch Welt ⇒ weiterhin die Wand", druckWirkte("up", stand, stand).wirkte, false);
+    // TAMPER, auf dem Fall sitzend: wer die Wand »repariert«, indem er sie fuer
+    // ALLE Tasten aufweicht, verliert das rote Licht fuer links/rechts — genau
+    // die Wand, gegen die S2 sie gebaut hat.
+    ok("TAMPER: rechts darf sich NICHT auf eine Weltantwort berufen",
+      druckWirkte("right", stand, geantwortet).wirkte, false);
+    ok("die Toast-Suche hat eine Zahl, keine Geduld", Number.isInteger(TOAST_MAX_TAKTE) && TOAST_MAX_TAKTE > 0, true);
+    ok("…und eine halb aufgegangene Blase zaehlt nicht", TOAST_MIN_ALPHA > 0.5, true);
+  }
+
   if (bad > 0) { console.error("shoot-world --selftest: FEHLGESCHLAGEN"); process.exit(1); }
   console.log("shoot-world --selftest: OK — die Takt-Kopien stimmen mit entities.ts überein, "
     + "die Abtastrate liegt unter beiden Kampf-Takten, der Beipackzettel erscheint genau dann, "
     + "wenn das Werkzeug mitgespielt hat, und eine EINZIGE geänderte Zelle im Level wird an der "
-    + "ausgelieferten Seite gefunden (D-443).");
+    + "ausgelieferten Seite gefunden (D-443). Dazu der Standbild-Plan: mit der Flagge EIN Bild, "
+    + "der Handschlag nur wenn die Welt noch lief — und OHNE die Flagge bricht eine stehende Welt "
+    + "weiter ab (P-82).");
   process.exit(0);
 }
 
@@ -215,13 +404,28 @@ const port = Number(flag("--port", 3021));
 const sinkPort = Number(flag("--sink-port", 3921));
 const cdpPort = Number(flag("--cdp-port", 9341));
 const fight = has("--fight");
-const shots = Number(flag("--shots", fight ? 24 : 8));
+// R5-W8 · W7 · P7 §12.8: EIN Bild aus einem stehenden Augenblick.
+const standbild = has("--standbild");
+const toastWunsch = has("--toast");
+if (standbild && fight === false && argv.includes("--shots")) {
+  console.warn("  ⚠ --shots wird im Standbild-Modus nicht gelesen: ein Standbild ist EIN Bild.");
+}
+const shotsWunsch = Number(flag("--shots", fight ? 24 : 8));
+const plan = standbildPlan({ standbild, weltLaeuft: true, shotsWunsch, toast: toastWunsch });
+const shots = plan.shots;
 // D-171: im Kampf wird die Rate ERZWUNGEN, nicht dem Aufrufer überlassen.
 const everyWunsch = Number(flag("--every", fight ? 8 : 6));
 const every = fight ? Math.min(everyWunsch, maxEveryForFight()) : everyWunsch;
+// Im Kampf wird NUR abgetastet, wenn der Aufrufer es verlangt. Ohne --every
+// faehrt der Treiber von Wisch zu Wisch — das Ereignis ist der Ausloeser.
+const kampfTastetAb = fight && argv.includes("--every");
+/** Wo das aufgezeichnete Band liegt (S4 reicht es herein, es steht nicht im Bündel). */
+const bandDatei = flag("--band", "content/corpus/stories/g1.st.lost-pages/paint/ch01.proof.json");
 // …und p4 läuft mit 240 Setz-Schritten über sein Ende hinaus (gemessen 17.08.:
 // bei 240 steht der Tick hinterher, bei 20 und 60 läuft die Welt).
-const settle = Number(flag("--settle", fight ? 20 : 240));
+// …und ein Standbild will nicht 240 Schritte weit weg von dem Augenblick sein,
+// den es fotografieren soll: die Torschluss-Blase lebt rund 54 getriebene Takte.
+const settle = Number(flag("--settle", fight || standbild ? 20 : 240));
 const warp = flag("--warp", null);
 const press = flag("--press", null);
 const stem = flag("--name", "frame");
@@ -230,14 +434,21 @@ const stem = flag("--name", "frame");
 // vergleichbar (zwei Laeufe derselben Kameralage zeigen verschiedene Phasen
 // derselben Bewegung, und der Unterschied sieht aus wie eine Aenderung).
 const tickWunsch = flag("--tick", null) === null ? null : Number(flag("--tick", null));
-const pure = has("--pure");
+// Der Schuss darf den Augenblick nicht selbst wegschieben: `rafStep()` treibt die
+// Uhr mit und damit auch die Tweens, an denen die Blase haengt. Im Standbild-Modus
+// ist `--pure` deshalb der Standard und nicht eine Bitte (gesagt wird es unten).
+// …und im Kampf ist es keine Bitte, sondern Pflicht: `rafStep()` würde die Uhr
+// NEBEN dem Band mittreiben, und ein aufgezeichnetes Band setzt genau ein Bild
+// je Takt voraus (S4 hat denselben Fehler gemessen: 627 Bandtakte gegen 782
+// Szenen-Takte, derselbe Lauf zweimal verschieden).
+const pure = has("--pure") || standbild || fight;
 const visible = has("--visible");
 
 if (!existsSync(CHROME)) { console.error(`kein Chrome unter ${CHROME}`); process.exit(1); }
 mkdirSync(outDir, { recursive: true });
 
 // ── die Senke, im selben Prozess: EIN Verdikt, EIN Exit-Code ────────────────
-const sink = createSink(outDir);
+const sink = createSink(outDir, { standbild });
 const server = http.createServer((req, res) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Headers", "*");
@@ -334,19 +545,25 @@ const bail = async (code) => {
   const v = sink.verdict();
   writeFileSync(path.join(outDir, "_verdict.json"), `${JSON.stringify(v, null, 2)}\n`);
   console.log(`\nshoot-world · Verdikt für ${path.resolve(outDir)}`);
+  console.log(`  Modus: ${v.modus === "standbild" ? "STANDBILD (ein Bild, keine Reihe)" : "Reihe"}`);
   console.log(`  Weg: snapshot${pure ? " (pure)" : ""} · Tab: ${visible ? "sichtbar" : "headless"}`);
   console.log(`  Handschlag: ${v.armed ? "bestanden" : v.deadCamera ? "TOTE KAMERA" : "nie gefahren"}`);
+  if (v.standbild !== undefined) console.log(`  ${v.standbild.handschlag}`);
   console.log(`  angenommen: ${v.accepted} · abgewiesen: ${v.rejected.length}`);
   for (const r of v.rejected) console.log(`    ✗ ${r.name} — ${r.reason}`);
-  const bad = code !== 0 || !v.armed || v.tainted;
-  console.log(bad ? "  ⇒ DIESE REIHE IST KEIN BEWEIS." : "  ⇒ Reihe brauchbar.");
+  // R5-W8 · W7: EINE Quelle fuer beide Zustaende (frame-sink#laufBrauchbar) —
+  // vorher stand dieselbe Bedingung hier und im CLI der Senke, zweimal.
+  const bad = code !== 0 || !laufBrauchbar(v);
+  console.log(bad
+    ? `  ⇒ ${v.modus === "standbild" ? "DIESES STANDBILD" : "DIESE REIHE"} IST KEIN BEWEIS.`
+    : `  ⇒ ${v.modus === "standbild" ? "Standbild" : "Reihe"} brauchbar.`);
   try { ws.close(); } catch { /* egal */ }
   chrome.kill();
   server.close();
   // R5-W7 · W6 · D-438: `kill()` schickt ein Signal und kehrt zurueck. Wer
   // unmittelbar danach die Last liest, zaehlt seinen eigenen, gerade sterbenden
   // Browser mit. Gewartet wird auf das PROZESS-ENDE.
-  const { gewartetMs, restend } = await wartenBisChromeWegIst(chrome, CHROME, PROFILE_PREFIX);
+  const { gewartetMs, restend } = await wartenBisChromeWegIst(chrome, CHROME, profile);
   if (restend > 0) {
     console.warn(`  ⚠ nach ${gewartetMs} ms stehen noch ${restend} eigene Chrome-Prozesse (Profil ${PROFILE_PREFIX}) `
       + "— eine Lastlesung JETZT misst diesen Lauf mit (D-438).");
@@ -463,6 +680,10 @@ try {
     if (await karteOffen()) {
       kartenRunden += 1;
       letzteKarte = await karte();
+      // R5-W8 · W7: ist die KARTE das Motiv (--standbild ohne --toast), wird sie
+      // nicht weggelöst — das hieße, den Augenblick zu zerstören, den dieser Lauf
+      // fotografieren soll. Ist der TOAST das Motiv, ist sie der Weg dorthin.
+      if (plan.karteIstMotiv) break;
       await evalIn(`window.__domigoPaint.solveTask()`);
       await sleep(180);
       continue;
@@ -470,87 +691,32 @@ try {
     if (await runs()) { alive = true; break; }
     await sleep(180);
   }
+  // R5-W8 · W7 · DIE STEHENDE WELT: fuer eine Reihe ist sie ein Abbruch, fuer
+  // ein Standbild ist sie der Auftrag. Der Grund wird in BEIDEN Faellen in
+  // Worten festgehalten — im einen als Fehlermeldung, im anderen als Zettel.
+  let weltStehtGrund = null;
   if (!alive) {
     const nochOffen = await karteOffen();
-    await fail(nochOffen
-      ? `die Welt steht still, weil eine KARTE sie festhält: »${letzteKarte ?? await karte()}« — `
-        + `${kartenRunden} von ${runden} Runden hingen daran, und solveTask() bekam sie nicht zu. `
-        + "Das ist D-198: ein Kartenfenster friert die Welt ein, und diese Reihe wäre N-mal dasselbe Bild."
-      : `die Welt läuft nicht: der Tick bewegt sich in ${runden} Runden nicht, und offen ist keine Karte `
-        + "— jede Reihe wäre N-mal dasselbe Bild (Falle 2)");
+    const wer = letzteKarte ?? await karte();
+    weltStehtGrund = nochOffen
+      ? `eine KARTE haelt die Welt fest: »${wer}« (${kartenRunden} von ${runden} Runden)`
+      : `der Tick bewegt sich in ${runden} Runden nicht, und offen ist KEINE Karte`;
+    if (!plan.karteIstMotiv) {
+      await fail(nochOffen
+        ? `die Welt steht still, weil eine KARTE sie festhält: »${wer}« — `
+          + `${kartenRunden} von ${runden} Runden hingen daran, und solveTask() bekam sie nicht zu. `
+          + "Das ist D-198: ein Kartenfenster friert die Welt ein, und diese Reihe wäre N-mal dasselbe Bild. "
+          + "(Ist genau DAS das Motiv, ist --standbild der Modus dafür.)"
+        : `die Welt läuft nicht: der Tick bewegt sich in ${runden} Runden nicht, und offen ist keine Karte `
+          + "— jede Reihe wäre N-mal dasselbe Bild (Falle 2)");
+    }
+    console.log(`  --standbild: die Welt steht bereits — ${weltStehtGrund}. `
+      + "Der Handschlag entfällt deshalb BEGRÜNDET, und der Zettel des Bildes sagt es.");
   }
 
   // ── 5 · reduzierte Bewegung ──────────────────────────────────────────────
   if (await evalIn(`window.matchMedia("(prefers-reduced-motion: reduce)").matches`)) {
     await fail("prefers-reduced-motion ist AN — gemessen würde das Standbild, nicht die Bewegung (Falle 3)");
-  }
-
-  // ── 6 · Stellung beziehen ────────────────────────────────────────────────
-  if (warp !== null) {
-    const [c, r] = warp.split(",").map(Number);
-    await evalIn(`window.__domigoPaint.warp(${c}, ${r})`);
-  }
-  // ── DIE press()-WAND (R5-W6b · W5 · S2-Befund) ──────────────────────────
-  // `__domigoPaint.press()` bewegt das Kind NICHT, solange eine Karte oben
-  // liegt: S2 hat `vx: 0` gemessen, bei Boden unter den Fuessen, und echte
-  // Pfeiltasten erreichen Phaser in einem CDP-Ziel dort auch nicht. Das ist
-  // eine WAND, keine Messung — und bis heute war sie still: der Lauf schoss
-  // seine Reihe, das Kind stand, und wer sich auf `--press` verliess, mass die
-  // Stille seiner eigenen Umgehung.
-  // Also wird jetzt nachgesehen. Gelesen wird der ZUSTAND (x und vx), nicht die
-  // Absicht — und wenn nichts passiert ist, endet der Lauf mit einer Meldung,
-  // die die Karte beim Namen nennt, statt mit einer Bildreihe, die eine
-  // Bewegung behauptet.
-  // BEIDE Achsen, und das ist kein Detail: `--press jump` bewegt das Kind in y,
-  // nicht in x. Eine Wand-Pruefung, die nur x liest, wuerde jeden Sprung als
-  // »nicht bewegt« melden — eine Falschmeldung, die genau die Sorte Schaden
-  // anrichtet, gegen die diese Pruefung gebaut ist.
-  const lage = async () => evalIn("(() => { const s = window.__domigoPaint.state(); "
-    + "return { x: s.x, y: s.y, vx: s.vx, vy: s.vy }; })()");
-  const vorherLage = press === null ? null : await lage();
-  if (press !== null) await evalIn(`window.__domigoPaint.press({ ${press}: true })`);
-  await evalIn(`(() => { for (let i = 0; i < ${settle}; i++) window.__domigoPaint.step(); return true; })()`);
-  if (press !== null) {
-    const jetzt = await lage();
-    const bewegt = Math.abs(jetzt.x - vorherLage.x) > 0.5 || Math.abs(jetzt.y - vorherLage.y) > 0.5
-      || Math.abs(jetzt.vx) > 0.01 || Math.abs(jetzt.vy) > 0.01;
-    if (!bewegt) {
-      const wer = await karte();
-      const offen = await karteOffen();
-      await fail(`--press ${press} hat das Kind NICHT bewegt: x ${vorherLage.x.toFixed(1)} → ${jetzt.x.toFixed(1)}, `
-        + `y ${vorherLage.y.toFixed(1)} → ${jetzt.y.toFixed(1)}, vx ${jetzt.vx.toFixed(2)}, vy ${jetzt.vy.toFixed(2)} `
-        + `nach ${settle} Schritten. `
-        + (offen
-          ? `Die Karte »${wer}« liegt oben — das ist die bekannte Wand (S2, R5-W6): press() erreicht die `
-            + "Spielfigur bei offenem Overlay nicht, und echte Pfeiltasten in einem CDP-Ziel auch nicht. "
-            + "Erst die Karte schliessen (--fight loest sie), dann pressen."
-          : "Keine Karte liegt oben — das Kind steht aus einem anderen Grund (Wand, Kante, kein Boden "
-            + "unter den Fuessen nach --warp). Eine Reihe waere hier N-mal dasselbe Bild."));
-    }
-  }
-  // …und noch einmal: das Beziehen der Stellung schlägt gern eine Karte auf
-  // (Käfig-Hinweis!), und dann steht die Welt wieder.
-  for (let i = 0; i < 8; i++) {
-    if (!(await karteOffen())) break;
-    await evalIn(`window.__domigoPaint.solveTask()`);
-    await sleep(180);
-  }
-  if (!(await runs())) {
-    // W4: „(Karte offen?)" war eine Vermutung in einer Fehlermeldung — dieselbe
-    // Klasse, die W3 eine Zeile weiter oben ausgeräumt hat. Jetzt wird gefragt,
-    // und zwar vollständig: eine Karte ist nur EINER von zwei Gründen, aus denen
-    // die Welt steht. Der andere ist der HALT (`beat().hold`), mit dem die Arena
-    // den Kampf-Takt festhält — genau die Stelle, an der D-198/D-259 sitzt. Eine
-    // Meldung, die nur nach der Karte fragt, schickt den Leser in die Irre.
-    const zettel = await evalIn(`(() => JSON.stringify(window.__domigoPaint.beat?.() ?? null))()`);
-    const wer = await karte();
-    await fail(await karteOffen()
-      ? `nach dem Stellungsbeziehen hält die Karte »${wer}« die Welt fest, und solveTask() `
-        + `bekam sie in acht Runden nicht zu — Reihe abgebrochen (D-198/D-259: der Kampf braucht --fight). `
-        + `Takt: ${zettel}`
-      : "nach dem Stellungsbeziehen läuft die Welt nicht mehr, und es liegt KEINE Karte oben "
-        + `— der Tick steht aus einem anderen Grund. Takt: ${zettel} `
-        + "(steht dort `hold: true`, hält die Arena den Kampf fest — D-198/D-259, nicht dein Code)");
   }
 
   // ── 7 · der Aufnahmeweg ──────────────────────────────────────────────────
@@ -561,21 +727,183 @@ try {
     return evalIn(`window.__frameSink.shoot(${JSON.stringify(name)}, ${opts})`, true);
   };
 
-  // ── 8 · DER HANDSCHLAG, bevor irgendein Bild geschrieben wird ────────────
-  // Zuerst die Uhr übernehmen: ab hier rückt die Welt nur noch, wenn WIR es
-  // sagen (siehe `freeze` im Client — sonst läuft Phasers Schleife zwischen den
-  // Fernsteuer-Aufrufen weiter und die Kadenz der Reihe ist erfunden).
-  await evalIn(`window.__frameSink.freeze()`);
-  await shoot("__probe_a", { probe: "a" });
-  await evalIn(`window.__frameSink.drive(1)`);
-  try {
-    await shoot("__probe_b", { probe: "b" });
-  } catch (e) {
-    await fail(`Handschlag nicht bestanden (Weg »snapshot«):\n${e.message}`);
-  }
-  if (!sink.verdict().armed) await fail(`Handschlag nicht bestanden (Weg »snapshot«)`);
-  console.log(`  Handschlag bestanden (Weg »snapshot«) — die Kamera lebt.`);
 
+  // Was das Werkzeug beim Stellungbeziehen SELBST geschlossen hat — gehoert in
+  // den Zettel jedes Bildes, nicht nur in die Konsole (D-259-Regel).
+  const pressKarten = [];
+
+  // ── 6 · Stellung beziehen ────────────────────────────────────────────────
+  // R5-W8 · W7: als eigener Schritt, weil die REIHENFOLGE modusabhängig ist.
+  // Gemessen am 22.08. in p1: das Stellungbeziehen auf die Ausgangszelle ist
+  // genau das, was die Welt anhält — der Torschluss feuert, und einen Takt
+  // später liegt die Tür-Karte oben. Ein Handschlag DANACH wäre nicht mehr zu
+  // haben; einer davor schon. Für eine Reihe bleibt die alte Reihenfolge.
+  const stellungBeziehen = async () => {
+    if (warp !== null) {
+      const [c, r] = warp.split(",").map(Number);
+      await evalIn(`window.__domigoPaint.warp(${c}, ${r})`);
+    }
+    // ── DIE press()-WAND (R5-W6b · W5 · S2-Befund) ──────────────────────────
+    // `__domigoPaint.press()` bewegt das Kind NICHT, solange eine Karte oben
+    // liegt: S2 hat `vx: 0` gemessen, bei Boden unter den Fuessen, und echte
+    // Pfeiltasten erreichen Phaser in einem CDP-Ziel dort auch nicht. Das ist
+    // eine WAND, keine Messung — und bis heute war sie still: der Lauf schoss
+    // seine Reihe, das Kind stand, und wer sich auf `--press` verliess, mass die
+    // Stille seiner eigenen Umgehung.
+    // Also wird jetzt nachgesehen. Gelesen wird der ZUSTAND (x und vx), nicht die
+    // Absicht — und wenn nichts passiert ist, endet der Lauf mit einer Meldung,
+    // die die Karte beim Namen nennt, statt mit einer Bildreihe, die eine
+    // Bewegung behauptet.
+    // BEIDE Achsen, und das ist kein Detail: `--press jump` bewegt das Kind in y,
+    // nicht in x. Eine Wand-Pruefung, die nur x liest, wuerde jeden Sprung als
+    // »nicht bewegt« melden — eine Falschmeldung, die genau die Sorte Schaden
+    // anrichtet, gegen die diese Pruefung gebaut ist.
+    // Gelesen wird mehr als die Lage: fuer eine Handlungstaste ist die Antwort
+    // der WELT das Erfolgssignal, nicht die Verschiebung des Kindes.
+    const lage = async () => evalIn("(() => { const h = window.__domigoPaint; const s = h.state(); "
+      + "const b = h.beat ? h.beat() : null; "
+      + "return { x: s.x, y: s.y, vx: s.vx, vy: s.vy, overlay: s.overlay === true, "
+      + "karte: b ? b.overlay : null, hold: b ? b.hold : null, "
+      + "wesen: (s.entities || []).map((e) => e.id + \":\" + (e.state || \"\") + \":\" + (e.redeemed || \"\")).join(\"|\") }; })()");
+    const vorherLage = press === null ? null : await lage();
+    const druecken = async () => {
+      if (press !== null) await evalIn(`window.__domigoPaint.press({ ${press}: true })`);
+      await evalIn(`(() => { for (let i = 0; i < ${settle}; i++) window.__domigoPaint.step(); return true; })()`);
+    };
+    await druecken();
+    if (press !== null) {
+      const bewegtSich = async () => {
+        const jetzt = await lage();
+        const u = druckWirkte(press, vorherLage, jetzt);
+        return { jetzt, bewegt: u.wirkte, woran: u.woran };
+      };
+      let { jetzt, bewegt, woran } = await bewegtSich();
+      if (bewegt && woran === "Weltantwort") {
+        console.log(`  --press ${press}: das Kind steht (das ist bei einer Handlungstaste der Normalfall) — `
+          + "gewirkt hat der Druck trotzdem: die WELT hat geantwortet (Karte, Halt oder ein Wesen in einem "
+          + "anderen Zustand). Gelesen, nicht angenommen.");
+      }
+      // ── R5-W8 · W7 · EIN NACHFASSEN, DEKLARIERT ─────────────────────────
+      // Die Meldung unten sagte bis heute »Erst die Karte schliessen, dann
+      // pressen« — und liess den Aufrufer damit allein. Gemessen am 22.08.: an
+      // p4s Kaefig geht bei der Annaeherung die Karte `cagehint` auf, und danach
+      // ist ↑ per Bauart wirkungslos; der Torschluss `cageGated` haengt aber
+      // genau an diesem ↑. Das Werkzeug faengt das jetzt EINMAL selbst ab.
+      //
+      // Was es dabei getan hat, steht im Zettel — dieselbe Ehrlichkeit, die
+      // `--fight` seit D-259 traegt: eine Aufnahme, die verschweigt, dass das
+      // Werkzeug mitgespielt hat, luegt ueber ihre eigene Herkunft.
+      if (!bewegt && (await karteOffen())) {
+        pressKarten.push(await karte());
+        await evalIn(`window.__domigoPaint.solveTask()`);
+        await sleep(180);
+        await druecken();
+        ({ jetzt, bewegt, woran } = await bewegtSich());
+        console.log(`  --press ${press}: die Karte »${pressKarten.at(-1)}« lag oben und ist vom Werkzeug `
+          + `geschlossen worden; danach ${bewegt ? "hat das Kind sich bewegt" : "steht das Kind weiter"}. `
+          + BEIPACKZETTEL);
+      }
+      if (!bewegt) {
+        const wer = await karte();
+        const offen = await karteOffen();
+        await fail(`--press ${press} hat das Kind NICHT bewegt: x ${vorherLage.x.toFixed(1)} → ${jetzt.x.toFixed(1)}, `
+          + `y ${vorherLage.y.toFixed(1)} → ${jetzt.y.toFixed(1)}, vx ${jetzt.vx.toFixed(2)}, vy ${jetzt.vy.toFixed(2)} `
+          + `nach ${settle} Schritten${BEWEGUNGSTASTEN.has(press) ? "" : " (Handlungstaste: auch die WELT hat nicht geantwortet)"}`
+          + (pressKarten.length === 0 ? ". " : ` und einem Nachfassen (geschlossen: ${pressKarten.join(", ")}). `)
+          + (offen
+            ? `Die Karte »${wer}« liegt oben — das ist die bekannte Wand (S2, R5-W6): press() erreicht die `
+              + "Spielfigur bei offenem Overlay nicht, und echte Pfeiltasten in einem CDP-Ziel auch nicht."
+            : "Keine Karte liegt oben — das Kind steht aus einem anderen Grund (Wand, Kante, kein Boden "
+              + "unter den Fuessen nach --warp). Eine Reihe waere hier N-mal dasselbe Bild."));
+      }
+    }
+    // …und noch einmal: das Beziehen der Stellung schlägt gern eine Karte auf
+    // (Käfig-Hinweis!), und dann steht die Welt wieder.
+    //
+    // R5-W8 · W7: dieses Nachräumen gehört der REIHE. Ein Standbild will genau
+    // den Augenblick, den es hier wegräumen würde — also läuft der ganze Block
+    // dort nicht, und der Grund steht im Zettel statt in einer Fehlermeldung.
+    if (plan.nachraeumen) {
+      for (let i = 0; i < 8; i++) {
+        if (!(await karteOffen())) break;
+        await evalIn(`window.__domigoPaint.solveTask()`);
+        await sleep(180);
+      }
+      if (!(await runs())) {
+        // W4: „(Karte offen?)" war eine Vermutung in einer Fehlermeldung — dieselbe
+        // Klasse, die W3 eine Zeile weiter oben ausgeräumt hat. Jetzt wird gefragt,
+        // und zwar vollständig: eine Karte ist nur EINER von zwei Gründen, aus denen
+        // die Welt steht. Der andere ist der HALT (`beat().hold`), mit dem die Arena
+        // den Kampf-Takt festhält — genau die Stelle, an der D-198/D-259 sitzt. Eine
+        // Meldung, die nur nach der Karte fragt, schickt den Leser in die Irre.
+        const zettel = await evalIn(`(() => JSON.stringify(window.__domigoPaint.beat?.() ?? null))()`);
+        // R5-W8 · W7: die ZWEITE Quelle dazu. `beat().overlay` ist die Karte auf dem
+        // SCHIRM, `state().overlay` ist `sim.overlayOpen` — die Sicht der Spielschleife
+        // darauf, ob sie angehalten ist. Die beiden laufen auseinander, und zwar in
+        // BEIDE Richtungen: H5 §5 hat drei Anläufe an genau dem Fall verloren, in dem
+        // `state().overlay === true` bei `beat().overlay === null` steht. Eine Meldung,
+        // die dann »es liegt KEINE Karte oben« sagt, schickt den Leser in die Irre.
+        const simHaelt = await evalIn(`window.__domigoPaint.state().overlay === true`);
+        const wer = await karte();
+        await fail(await karteOffen()
+          ? `nach dem Stellungsbeziehen hält die Karte »${wer}« die Welt fest, und solveTask() `
+            + `bekam sie in acht Runden nicht zu — Reihe abgebrochen (D-198/D-259: der Kampf braucht --fight). `
+            + `Takt: ${zettel}`
+          : "nach dem Stellungsbeziehen läuft die Welt nicht mehr, und auf dem SCHIRM liegt keine Karte "
+            + `(beat().overlay === null). Takt: ${zettel} · state().overlay = ${simHaelt}. `
+            + (simHaelt
+              ? "⇒ Die SPIELSCHLEIFE hält sich trotzdem für angehalten (sim.overlayOpen === true). Das ist "
+                + "der Zeremonien-Halt ohne Karte auf dem Schirm — `Sim.step` kehrt sofort zurück, der Tick "
+                + "steht, und keine Karte ist zu schließen. Häufigster Auslöser: das Kind steht in einem "
+                + "Auslöser (Tür, Käfig), dessen Zeremonie gerade läuft. Rezept: eine Zelle daneben warpen."
+              : "⇒ Auch die Spielschleife hält sich für laufend (sim.overlayOpen === false) — der Tick steht "
+                + "aus einem dritten Grund. Steht im Takt `hold: true`, hält die Arena den Kampf fest "
+                + "(D-198/D-259, nicht dein Code)."));
+      }
+    }
+
+  };
+
+  const handschlag = async () => {
+    // ── 8 · DER HANDSCHLAG, bevor irgendein Bild geschrieben wird ────────────
+    // Zuerst die Uhr übernehmen: ab hier rückt die Welt nur noch, wenn WIR es
+    // sagen (siehe `freeze` im Client — sonst läuft Phasers Schleife zwischen den
+    // Fernsteuer-Aufrufen weiter und die Kadenz der Reihe ist erfunden).
+    await evalIn(`window.__frameSink.freeze()`);
+    // R5-W8 · W7: der Handschlag wird gefahren, WANN IMMER er zu haben ist —
+    // auch im Standbild-Modus. Er verlangt zwei Aufnahmen mit verschiedenen
+    // Prüfsummen; steht die Welt schon, kann eine stehende Welt das per Bauart
+    // nicht liefern, und nur DANN entfällt er (mit Grund, siehe oben).
+    const handschlagFaehrt = standbildPlan({ standbild, weltLaeuft: weltStehtGrund === null, shotsWunsch }).handschlag;
+    if (handschlagFaehrt) {
+      await shoot("__probe_a", { probe: "a" });
+      await evalIn(`window.__frameSink.drive(1)`);
+      try {
+        await shoot("__probe_b", { probe: "b" });
+      } catch (e) {
+        await fail(`Handschlag nicht bestanden (Weg »snapshot«):\n${e.message}`);
+      }
+      if (!sink.verdict().armed) await fail(`Handschlag nicht bestanden (Weg »snapshot«)`);
+      console.log(`  Handschlag bestanden (Weg »snapshot«) — die Kamera lebt.`);
+    } else {
+      console.log("  Handschlag ENTFÄLLT (deklariert, --standbild): " + weltStehtGrund
+        + ". Das Bild trägt den Vermerk und KEINEN Kamerabeweis (P-66) — es ist ungeprüft dasselbe, "
+        + "was die Kamera zuletzt gemalt hat.");
+    }
+
+  };
+
+  // ── die Reihenfolge, und warum sie sich unterscheidet ────────────────────
+  if (standbild) {
+    // Erst die Kamera beweisen, SOLANGE die Welt noch läuft; dann Stellung
+    // beziehen (das hält sie an); dann die Uhr wieder übernehmen.
+    await handschlag();
+    await stellungBeziehen();
+    await evalIn(`window.__frameSink.freeze()`);
+  } else {
+    await stellungBeziehen();
+    await handschlag();
+  }
   // ── 8b · DEN TAKT FIXIEREN (R5-W6b · W5 · L1) ────────────────────────────
   // Ab hier steht die Uhr (`freeze`), und die Welt rueckt nur noch, wenn wir es
   // sagen — genau deshalb ist DIES die Stelle, an der ein gewuenschter Takt
@@ -600,38 +928,196 @@ try {
     console.log(`  Takt fixiert: die erste Aufnahme steht auf Tick ${ist} (gelesen, nicht gewartet).`);
   }
 
-  // ── 9 · die Reihe ────────────────────────────────────────────────────────
-  // Im Kampf-Modus (D-259) kommen zwei Dinge dazu, und beide sind Ehrlichkeit,
-  // nicht Bequemlichkeit: zwischen den Aufnahmen wird eine aufgehende Karte
-  // weggeräumt (sonst friert sie die Welt ein und die halbe Reihe ist N-mal
-  // dasselbe Bild), und JEDES Bild trägt den Vermerk, dass das Werkzeug dabei
-  // mitgespielt hat.
-  const geloest = [];
-  for (let i = 1; i <= shots; i++) {
-    if (fight) {
-      for (let k = 0; k < 6 && (await karteOffen()); k++) {
-        geloest.push(await karte());
-        await evalIn(`window.__domigoPaint.solveTask()`);
-        await sleep(140);
+  // ── 8c · R5-W8 · W7 · AUF DEN TOAST WARTEN, INDEM MAN IHN LIEST ─────────
+  // Ein Standbild »vom Torschluss« ist nur dann eins, wenn die Sprechblase beim
+  // Ausloesen wirklich auf der Buehne stand. Gewartet wird deshalb auf den
+  // ZUSTAND, nicht auf die Uhr (dieselbe Regel wie bei --tick): nach jedem
+  // Einzelschritt wird die Anzeigeliste GELESEN. Eine Blase ist ein Container
+  // mit einem Text darin (PaintScene#toast); halb aufgegangen zaehlt sie nicht,
+  // sonst steht auf dem Bild ein Schleier statt eines Satzes.
+  let toastGelesen = null;
+  if (toastWunsch) {
+    const blasen = async () => evalIn(`(() => {
+      const g = window.__domigoPaint?.game;
+      const sc = g?.scene?.getScene?.("paint") ?? g?.scene?.scenes?.[0] ?? null;
+      if (sc === null) return [];
+      const out = [];
+      const sicht = sc.cameras?.main?.worldView ?? null;
+      for (const o of sc.children.list) {
+        if (o.type !== "Container") continue;
+        for (const k of (o.list ?? [])) {
+          if (k.type === "Text" && typeof k.text === "string" && k.text.trim() !== "") {
+            // Die Blase ist auf das Kind zentriert; ihre Breite ist die des Textes
+            // plus des Randes, den PaintScene#toast zeichnet (13 px). Gemessen
+            // statt geschaetzt, damit ein abgeschnittener Satz eine ZAHL hat.
+            const halb = (k.width + 13) / 2;
+            out.push({
+              text: k.text, alpha: o.alpha, depth: o.depth, x: o.x, y: o.y,
+              links: o.x - halb, rechts: o.x + halb,
+              sicht: sicht === null ? null : { links: sicht.x, rechts: sicht.x + sicht.width },
+            });
+          }
+        }
+      }
+      return out;
+    })()`);
+    let getrieben = 0;
+    for (let i = 0; i < TOAST_MAX_TAKTE; i++) {
+      const gefunden = (await blasen()).filter((b) => b.alpha >= TOAST_MIN_ALPHA);
+      if (gefunden.length > 0) { toastGelesen = gefunden; break; }
+      await evalIn(`window.__frameSink.drive(1)`);
+      getrieben = i + 1;
+    }
+    if (toastGelesen === null) {
+      await fail(`--toast: in ${TOAST_MAX_TAKTE} Einzelschritten stand keine Sprechblase mit voller `
+        + `Deckung auf der Bühne (getrieben: ${getrieben} Takte, Takt jetzt `
+        + `${await evalIn(`window.__domigoPaint.state().tick`)}). Ein beliebiges Bild »Toast« zu nennen `
+        + "wäre die Lüge, gegen die dieser Modus gebaut ist. Rezept: mit --warp auf die Ausgangszelle "
+        + "der Phase stellen (der Torschluss feuert in `checkExit`), --settle klein halten.");
+    }
+    console.log(`  Toast gelesen (${toastGelesen.length}): `
+      + toastGelesen.map((t) => `»${t.text}«`).join(" · ")
+      + ` — nach ${getrieben} Einzelschritten, Takt ${await evalIn(`window.__domigoPaint.state().tick`)}`);
+    // ── R5-W8 · W7 · PASST DER SATZ INS BILD? ────────────────────────────
+    // Beim ersten Einsatz dieses Modus (22.08.) stand auf allen drei Bildern
+    // ein HALBER Satz: die Blase ist auf das Kind zentriert, und der Torschluss
+    // feuert per Bauart dort, wo das Kind am Ausgang steht — also am Rand der
+    // Kamerasicht. Ein Instrument, das das nicht mitmisst, liefert Bilder, auf
+    // denen ein abgeschnittener Satz wie eine Bildwahl aussieht.
+    for (const t of toastGelesen) {
+      if (t.sicht === null) continue;
+      const ueber = Math.max(0, t.rechts - t.sicht.rechts);
+      const unter = Math.max(0, t.sicht.links - t.links);
+      if (ueber > 0 || unter > 0) {
+        console.log(`  ⚠ die Blase »${t.text}« ragt aus der Kamerasicht: `
+          + `${ueber > 0 ? `rechts ${ueber.toFixed(0)} px` : ""}${ueber > 0 && unter > 0 ? " · " : ""}`
+          + `${unter > 0 ? `links ${unter.toFixed(0)} px` : ""} `
+          + `(Blase ${t.links.toFixed(0)}…${t.rechts.toFixed(0)}, Sicht ${t.sicht.links.toFixed(0)}…${t.sicht.rechts.toFixed(0)}). `
+          + "Auf dem Bild steht dann ein halber Satz — und ein Kind sieht denselben.");
       }
     }
-    const tick = await evalIn(`window.__domigoPaint.state().tick`);
-    await shoot(`${stem}_${String(i).padStart(3, "0")}`, {
-      serie: stem, nr: i, tickBefore: tick,
-      ...(fight ? fightSidecar([...new Set(geloest)]) : {}),
-    });
-    if (i < shots) await evalIn(`window.__frameSink.drive(${every})`);
   }
-  console.log(`  ${shots} Aufnahmen · alle ${every} Ticks`
-    + (tickWunsch === null ? "" : ` · erste Aufnahme auf Tick ${tickWunsch} fixiert`)
-    + ` · ${path.resolve(outDir)}`);
+
+  // ── 9 · die Reihe ────────────────────────────────────────────────────────
+  const zettelGemeinsam = () => ({
+    // R5-W8 · W7: was der Lauf GELESEN hat, nicht was er vermutet.
+    ...(standbild ? { standbild: true, weltStand: weltStehtGrund } : {}),
+    ...(pressKarten.length === 0
+      ? {}
+      : { pressKarten: [...new Set(pressKarten)], beipackzettel: BEIPACKZETTEL }),
+    ...(toastGelesen === null ? {} : { toast: toastGelesen }),
+  });
+
   if (fight) {
-    const karten = [...new Set(geloest)];
-    console.log(`  Kampf-Modus: Abtastrate ${every} Ticks (Wisch ${FIGHT_BEATS.WIPE_TICKS} · `
-      + `Knoten-Schlag ${FIGHT_BEATS.KNOT_BEAT_TICKS} — D-171)`);
-    console.log(karten.length === 0
-      ? "  Keine Karte ging auf — die Reihe zeigt den Kampf ohne Zutun des Werkzeugs."
-      : `  ⚠ BEIPACKZETTEL: ${BEIPACKZETTEL}. Gelöste Karten: ${karten.join(", ")}`);
+    // ── 9a · DER KAMPF, AUF S4s TREIBER (R209d, zu D-558) ──────────────────
+    // Kein eigener Kartenlöser mehr und keine eigene Takt-Schleife: beides ist
+    // dreimal gescheitert (H5 §5). Der Treiber gehört dem Spiel, dieses Skript
+    // reicht ihm das Band und fotografiert seine Halte.
+    const fightDa = await evalIn(`typeof window.__domigoPaint.fight?.advance === "function"`);
+    if (!fightDa) {
+      await fail("--fight braucht den Kampf-Treiber des Spiels (`__domigoPaint.fight`, S4/R209d, PR #351), "
+        + "und dieser Server hat ihn nicht. Er ist DEV-ONLY und liegt bewusst nicht im Produktionsbündel — "
+        + "gegen einen Produktionsbau ist --fight also per Bauart nicht zu haben. "
+        + "Der alte Weg (eigene Takt-Schleife + eigener Kartenlöser) ist WEG und kommt nicht zurück: "
+        + "er ist an der Boss-Karte hinter ihrem echten Zeitgeber dreimal gescheitert (D-558).");
+    }
+
+    const fsMod = await import("node:fs");
+    let pads = null;
+    try {
+      const band = JSON.parse(fsMod.readFileSync(bandDatei, "utf8"));
+      pads = band?.phases?.[phase]?.pads ?? null;
+    } catch (e) {
+      await fail(`--fight: das aufgezeichnete Band ${bandDatei} war nicht lesbar (${e.message}).`);
+    }
+    if (!Array.isArray(pads) || pads.length === 0) {
+      await fail(`--fight: ${bandDatei} führt für die Phase »${phase}« kein Band (\`phases.${phase}.pads\`). `
+        + "Ein Kampf ohne Band wäre eine erfundene Eingabe — genau das, was S4s Treiber ausschließt.");
+    }
+    const takte = await evalIn(`window.__domigoPaint.fight.load(${JSON.stringify(pads)})`);
+    console.log(`  Kampf-Treiber: Band ${bandDatei} · Phase ${phase} · ${pads.length} Abschnitte = ${takte} Takte`);
+    console.log(kampfTastetAb
+      ? `  …und zusätzlich abgetastet, höchstens alle ${every} Takte (Wisch ${FIGHT_BEATS.WIPE_TICKS} · `
+        + `Knoten-Schlag ${FIGHT_BEATS.KNOT_BEAT_TICKS} — D-171)`
+      : "  …von Wisch zu Wisch: der Auslöser ist das Ereignis, nicht eine Rate (--every tastet zusätzlich ab).");
+
+    const halte = [];
+    let bild = 0;
+    let halt = null;
+    // ── DER ANFANGSZUSTAND, bevor die erste Schicht faellt ─────────────────
+    // Ohne ihn zeigt die Reihe nur die Halte NACH einem Wisch — und ein
+    // Vorher/Nachher ohne Vorher ist keins. Der Lesestand kommt aus `read()`,
+    // ohne einen Takt zu fahren.
+    {
+      const anfang = await evalIn(`window.__domigoPaint.fight.read()`);
+      bild = 1;
+      await shoot(`${stem}_${String(1).padStart(3, "0")}`, {
+        serie: stem, nr: 1, tickBefore: anfang?.tick ?? -1,
+        ...zettelGemeinsam(),
+        ...fightSidecar(0),
+        kampf: {
+          grund: "anfang", gespielt: 0, takt: anfang?.tick ?? -1,
+          schichten: anfang?.knots ?? null, schichtenGesamt: anfang?.knotsTotal ?? null,
+          wische: [], karten: 0, fertig: false,
+        },
+      });
+      console.log(`  Halt 0: anfang · Takt ${anfang?.tick ?? "—"} · Schichten `
+        + `${anfang?.knots ?? "—"}/${anfang?.knotsTotal ?? "—"} (der Zustand VOR dem ersten Wisch)`);
+    }
+    for (let i = 2; i <= shots; i++) {
+      // `advance` ist AWAIT-BAR, und das ist der ganze Unterschied zu den drei
+      // gescheiterten Anläufen: die Boss-Karte kommt hinter einem echten
+      // Zeitgeber, und eine synchrone Schleife lässt ihn nie feuern.
+      halt = await evalIn(
+        `window.__domigoPaint.fight.advance(${kampfTastetAb ? every : ""})`, true,
+      );
+      halte.push(halt);
+      bild = i;
+      await shoot(`${stem}_${String(i).padStart(3, "0")}`, {
+        serie: stem, nr: i, tickBefore: halt.tick,
+        ...zettelGemeinsam(),
+        // Was der TREIBER beantwortet hat, steht in seinem eigenen Halt — nicht
+        // in einer Liste, die dieses Skript fuehrt. Es fuehrt keine mehr.
+        ...fightSidecar(halte.reduce((a, h) => a + h.cards, 0)),
+        // …und der Halt selbst, gelesen: der Grund, die Schichtzahl, die Wische.
+        kampf: {
+          grund: halt.reason, gespielt: halt.played, takt: halt.tick,
+          schichten: halt.knots, schichtenGesamt: halt.knotsTotal,
+          wische: halt.wipes, karten: halt.cards, fertig: halt.done,
+        },
+      });
+      console.log(`  Halt ${i}: ${halt.reason} · Takt ${halt.tick} · Schichten ${halt.knots}/${halt.knotsTotal}`
+        + `${halt.wipes.length === 0 ? "" : ` · gewischt auf ${halt.wipes.join(", ")}`}`
+        + `${halt.cards === 0 ? "" : ` · ${halt.cards} Karte(n) beantwortet`}`);
+      if (halt.done) break;
+      if (halt.reason === "stillstand") break;
+    }
+    await evalIn(`window.__domigoPaint.fight.release()`);
+
+    // ── die Bilanz, aus dem GELESENEN, nicht aus der Absicht ───────────────
+    const wische = halte.flatMap((h) => h.wipes);
+    const karten = halte.reduce((a, h) => a + h.cards, 0);
+    console.log(`  ${bild} Aufnahme(n) · ${path.resolve(outDir)}`);
+    console.log(wische.length === 0
+      ? "  ⚠ KEINE Schicht ist in diesem Lauf gefallen — die Lebensanzeige ist hier NICHT fallen gesehen worden."
+      : `  Schichten gefallen auf: ${wische.join(" → ")} (das ist die Lebensanzeige, fallend gesehen)`);
+    if (karten > 0) console.log(`  ⚠ BEIPACKZETTEL: ${BEIPACKZETTEL}. Beantwortete Karten: ${karten}`);
+    if (halt !== null && halt.reason === "stillstand") {
+      console.log("  ⚠ Der Treiber meldet einen benannten STILLSTAND — er hängt nicht, er sagt es. "
+        + "Das ist die Lage aus D-558, diesmal mit Namen statt mit Schweigen.");
+    }
+  } else {
+    for (let i = 1; i <= shots; i++) {
+      const tick = await evalIn(`window.__domigoPaint.state().tick`);
+      await shoot(`${stem}_${String(i).padStart(3, "0")}`, {
+        serie: stem, nr: i, tickBefore: tick,
+        ...zettelGemeinsam(),
+      });
+      if (i < shots) await evalIn(`window.__frameSink.drive(${every})`);
+    }
+    console.log(`  ${shots} Aufnahmen · alle ${every} Ticks`
+      + (tickWunsch === null ? "" : ` · erste Aufnahme auf Tick ${tickWunsch} fixiert`)
+      + ` · ${path.resolve(outDir)}`);
   }
   await bail(0);
 } catch (err) {

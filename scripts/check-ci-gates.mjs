@@ -133,7 +133,15 @@ const SELFTEST_ONLY = {
   "perf-visible.mjs":
     "misst die Perf-Tabelle aus SICHTBAREM Chrome gegen einen laufenden Server — in CI laeuft kein Chrome; der Selbsttest prueft nur, dass die Kontrollschwelle (Kontrollseite unter 58 fps ⇒ Abbruch) ihr rotes Licht erreichen kann",
   "shoot-world.mjs":
-    "schießt Bildreihen aus einem eigenen Chrome gegen einen laufenden Dev-Server; der Selbsttest prüft ohne Browser, was ohne Browser prüfbar ist — die Kampf-Abtastrate gegen die Takt-Konstanten aus entities.ts und den Beipackzettel (D-259)",
+    "schießt Bildreihen aus einem eigenen Chrome gegen einen laufenden Dev-Server; der Selbsttest prüft ohne Browser, was ohne Browser prüfbar ist — die Kampf-Abtastrate gegen die Takt-Konstanten aus entities.ts, den Beipackzettel (D-259) und den Standbild-Plan (P7 §12.8)",
+  // R5-W8 · W7 · R209f/D-554: das erste WERKZEUG in dieser Liste, das nicht an
+  // einem fehlenden Browser hängt, sondern am Gegenteil — es SCHREIBT.
+  "set-plane-value.mjs":
+    "SCHREIBT Blätter (ein Wertepass auf die Kunst-PNGs); ein echter Lauf in CI würde die Arbeitskopie "
+    + "verändern und denselben Beweis aushebeln, den art-recompress.mjs eine Zeile weiter oben schützt. "
+    + "Der Selbsttest fährt die volle Arithmetik (Zielwert getroffen, Sättigung unbewegt) UND den "
+    + "Pin-Wächter an der Fixture des angenommenen c4-Bandes, mit Tamper auf den Bytes — er fasst dabei "
+    + "kein ausgeliefertes Blatt an",
   // R5-W6b · W5 · zwei neue Werkzeuge, und beide aus demselben Grund: was sie
   // messen, liegt nicht im Repo.
   "measure-residue.mjs":
