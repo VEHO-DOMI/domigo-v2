@@ -66,6 +66,8 @@ import { tmpdir } from "node:os";
 import path from "node:path";
 import { CLIENT_SRC, createSink } from "./frame-sink.mjs";
 
+import { raeumeVerwaisteProfile, wartenBisChromeWegIst } from "./chrome-hygiene.mjs";
+
 const CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -106,6 +108,35 @@ export const fightSidecar = (geloest) => (geloest.length === 0
   ? { fight: true, karten: [] }
   : { fight: true, karten: geloest, beipackzettel: BEIPACKZETTEL });
 
+// ── R5-W7 · W6 · D-443 · DER SERVER LIEFERT DAS ALTE LEVEL ──────────────────
+//
+// B5 hat es teuer bezahlt: nach einer Level-Änderung zeigten ZWEI Bildreihen
+// still die alte Zelle — der Dev-Server lieferte `ch01.level.json` aus seinem
+// Zwischenspeicher. Nichts war rot, nichts war auffällig, die Bilder waren
+// einfach falsch.
+//
+// Es gibt keine Adresse zum Curlen: das Level wird SERVERSEITIG gelesen
+// (`apps/web/lib/paint-content.ts`) und als Prop in die Seite gereicht. Der
+// ehrliche Kanal ist deshalb die AUSGELIEFERTE SEITE selbst. Gemessen (W6, an
+// Port 3283): die Zeilen-Landkarte jeder Phase steht dort als JSON-Array,
+// escaped — ein exakter Fingerabdruck, der sich bei jeder geänderten Zelle
+// ändert.
+//
+// Rein und exportiert, damit der Selbsttest beide Richtungen sehen kann: eine
+// Prüfung, die nie rot wird, ist Dekoration.
+export const levelDrift = ({ level, html, phase }) => {
+  const ph = (level.phases ?? []).find((x) => x.id === phase)
+    ?? (level.arena?.id === phase ? level.arena : null);
+  if (ph === null || ph === undefined) return null;      // kein Urteil über eine Phase, die es nicht gibt
+  if (!Array.isArray(ph.rows) || ph.rows.length === 0) return null;
+  const alsPayload = JSON.stringify(ph.rows).replaceAll('"', '\\"');
+  if (html.includes(alsPayload)) return null;
+  return `die Zeilen-Landkarte der Phase ${phase} steht NICHT in der ausgelieferten Seite. `
+    + "Der Server liefert eine ANDERE (fast immer: eine ältere) Fassung des Levels als die Platte — "
+    + "genau D-443, und eine Bildreihe von hier zeigt eine Welt, die es auf der Platte nicht gibt. "
+    + "Rezept: Dev-Server beenden und neu starten, dann diesen Lauf wiederholen.";
+};
+
 const outDir = argv.find((a) => !a.startsWith("--") && argv[argv.indexOf(a) - 1]?.startsWith("--") !== true);
 
 if (has("--selftest")) {
@@ -143,10 +174,34 @@ if (has("--selftest")) {
   ok("…und er nennt den Grund beim Namen", fightSidecar(["wer"]).beipackzettel.includes("resolveCorrect"), true);
   ok("…und die Karten stehen mit dabei", fightSidecar(["wer", "wie"]).karten.join(","), "wer,wie");
 
+  // 4 · D-443 · die Level-Frische, beide Richtungen. Das Level ist das ECHTE
+  //     von der Platte (P-71); die »ausgelieferte Seite« wird daraus gebaut —
+  //     einmal treu, einmal mit genau EINER geänderten Zelle.
+  {
+    const lvl = JSON.parse(fs.readFileSync(
+      path.join(hier, "../content/corpus/stories/g1.st.lost-pages/paint/ch01.level.json"), "utf8"));
+    const ph = lvl.phases[0];
+    const treu = `…irgendwas davor…${JSON.stringify(ph.rows).replaceAll('"', '\\"')}…irgendwas danach…`;
+    ok("eine Seite mit DIESER Zeilen-Landkarte ist frisch", levelDrift({ level: lvl, html: treu, phase: ph.id }), null);
+
+    const alt = JSON.parse(JSON.stringify(lvl));
+    const zeile = alt.phases[0].rows.findIndex((r) => /[^.\s]/.test(String(r)));
+    const r = String(alt.phases[0].rows[zeile]);
+    const spalte = r.split("").findIndex((c) => c !== "." && c !== " ");
+    // EINE Zelle, mehr nicht (W5-Falle 4: ein Tamper darf nur eine Größe bewegen)
+    alt.phases[0].rows[zeile] = `${r.slice(0, spalte)}.${r.slice(spalte + 1)}`;
+    const drift = levelDrift({ level: alt, html: treu, phase: ph.id });
+    ok("EINE geänderte Zelle wird gefunden", typeof drift === "string" && drift.includes("D-443"), true);
+    ok("…und die Meldung nennt die Phase", typeof drift === "string" && drift.includes(ph.id), true);
+    ok("über eine Phase, die es nicht gibt, wird nicht geurteilt",
+      levelDrift({ level: lvl, html: treu, phase: "gibt-es-nicht" }), null);
+  }
+
   if (bad > 0) { console.error("shoot-world --selftest: FEHLGESCHLAGEN"); process.exit(1); }
   console.log("shoot-world --selftest: OK — die Takt-Kopien stimmen mit entities.ts überein, "
-    + "die Abtastrate liegt unter beiden Kampf-Takten, und der Beipackzettel erscheint genau dann, "
-    + "wenn das Werkzeug mitgespielt hat.");
+    + "die Abtastrate liegt unter beiden Kampf-Takten, der Beipackzettel erscheint genau dann, "
+    + "wenn das Werkzeug mitgespielt hat, und eine EINZIGE geänderte Zelle im Level wird an der "
+    + "ausgelieferten Seite gefunden (D-443).");
   process.exit(0);
 }
 
@@ -202,7 +257,15 @@ const server = http.createServer((req, res) => {
 await new Promise((r) => server.listen(sinkPort, r));
 
 // ── Chrome ──────────────────────────────────────────────────────────────────
-const profile = mkdtempSync(path.join(tmpdir(), "shoot-world-chrome-"));
+// R5-W7 · W6 · W5s Falle 1, bezahlt: ein abgebrochener Vordergrund-Lauf laesst
+// seinen eigenen Chrome AM LEBEN (Profil `shoot-world-chrome-…`, Fernsteuer-Port
+// 9380), und der FOLGELAUF haengt daran. Verwaiste EIGENE Profile werden
+// deshalb beim Start geraeumt — und gemeldet, denn wer nicht erfaehrt, dass ein
+// Vorlauf abgestuerzt ist, misst weiter gegen eine Umgebung, die er nicht kennt.
+// Fremde Browser bleiben unangetastet (D-339: sie sind Last, kein Muell).
+const PROFILE_PREFIX = "shoot-world-chrome-";
+raeumeVerwaisteProfile(CHROME, PROFILE_PREFIX);
+const profile = mkdtempSync(path.join(tmpdir(), PROFILE_PREFIX));
 const chrome = spawn(CHROME, [
   ...(visible ? [] : ["--headless=new"]),
   "--hide-scrollbars",
@@ -280,12 +343,53 @@ const bail = async (code) => {
   try { ws.close(); } catch { /* egal */ }
   chrome.kill();
   server.close();
+  // R5-W7 · W6 · D-438: `kill()` schickt ein Signal und kehrt zurueck. Wer
+  // unmittelbar danach die Last liest, zaehlt seinen eigenen, gerade sterbenden
+  // Browser mit. Gewartet wird auf das PROZESS-ENDE.
+  const { gewartetMs, restend } = await wartenBisChromeWegIst(chrome, CHROME, PROFILE_PREFIX);
+  if (restend > 0) {
+    console.warn(`  ⚠ nach ${gewartetMs} ms stehen noch ${restend} eigene Chrome-Prozesse (Profil ${PROFILE_PREFIX}) `
+      + "— eine Lastlesung JETZT misst diesen Lauf mit (D-438).");
+  } else {
+    console.log(`  Eigener Chrome beendet nach ${gewartetMs} ms (D-438).`);
+  }
   process.exit(bad ? 1 : 0);
 };
 
 try {
   // ── 1 · die Lehrer-Tür ────────────────────────────────────────────────────
   const url = `http://localhost:${port}/play/1/buch?phase=${phase}`;
+
+  // ── 1a · R5-W7 · W6 · D-443 · liefert der Server ueberhaupt DIESES Level? ──
+  // Vor dem ersten Bild, nicht danach: eine Bildreihe gegen eine alte Fassung
+  // ist keine kleinere Messung, sondern gar keine. Gelesen wird der SERVER
+  // (fetch, no-store) — was Chrome danach im eigenen Cache haelt, ist eine
+  // andere Frage und die stellt sich erst, wenn diese hier beantwortet ist.
+  {
+    const fsMod = await import("node:fs");
+    const levelAufDerPlatte = JSON.parse(
+      fsMod.readFileSync("content/corpus/stories/g1.st.lost-pages/paint/ch01.level.json", "utf8"));
+    let html = null;
+    try {
+      const r = await fetch(url, { cache: "no-store", signal: AbortSignal.timeout(30_000) });
+      html = r.ok ? await r.text() : null;
+      if (!r.ok) console.warn(`  ⚠ D-443-Probe: der Server antwortete mit ${r.status} — Frische nicht geprueft`);
+    } catch (e) {
+      console.warn(`  ⚠ D-443-Probe: die Seite war nicht abrufbar (${e.message}) — Frische nicht geprueft`);
+    }
+    if (html !== null) {
+      const drift = levelDrift({ level: levelAufDerPlatte, html, phase });
+      if (drift !== null) {
+        console.error(`\n✗ ${drift}\n`);
+        try { ws.close(); } catch { /* egal */ }
+        chrome.kill();
+        server.close();
+        process.exit(1);
+      }
+      console.log("  D-443: der Server liefert die Zeilen-Landkarte, die auf der Platte liegt.");
+    }
+  }
+
   await page("Page.navigate", { url });
 
   // ── 2 · warten, bis das SPIEL da ist (der Loader hängt gern bei ~96 %) ────

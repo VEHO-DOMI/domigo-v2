@@ -51,6 +51,7 @@
  * `apps/web/.env.local` gibt es kein Instrument zu lesen (D-117).
  */
 import { spawn } from "node:child_process";
+import { raeumeVerwaisteProfile, wartenBisChromeWegIst } from "./chrome-hygiene.mjs";
 import { existsSync, mkdtempSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
@@ -307,6 +308,25 @@ const LABEL = arg("label", WARM_OFF ? "warm=0" : "warm=1");
 // Nur für den Tamper-Beweis im Report: biegt die GEMESSENE Kontrollzahl nach
 // unten, nachdem sie gemessen wurde. Das Skript muss danach abbrechen.
 const TAMPER_CONTROL = args.includes("--tamper-control");
+// ── R5-W7 · W6 · R183 · WELCHEN BAU HAT DIESER LAUF GEMESSEN? ───────────────
+// Bis heute schrieb der Beipackzettel `commit: git rev-parse HEAD` — und zwar
+// im Verzeichnis DES SKRIPTS. Das ist nicht der Bau, der gemessen wurde: B5s
+// und D4s Vorher/Nachher-JSON trugen denselben Hash, obwohl zwischen den beiden
+// Messungen gemergt worden war, und niemand konnte es an der Datei sehen.
+// Drei Quellen, in dieser Reihenfolge, und jede sagt im Beipackzettel, WELCHE
+// sie war:
+//   1. der SERVER selbst (`/api/version` → `sha`) — die einzige GEPRÜFTE
+//      Quelle: sie kommt aus dem Prozess, der gerade gemessen wird. Dafür wird
+//      der Dev-Server mit `VERCEL_GIT_COMMIT_SHA=$(git rev-parse HEAD)`
+//      gestartet (Rezept in docs/PERF_WAECHTER.md).
+//   2. `--worktree <pfad>` → `git -C <pfad> rev-parse HEAD` — ERKLÄRT, nicht
+//      geprüft: der Aufrufer behauptet, dass dort der gemessene Server läuft.
+//   3. `--build-label <text>` — wenn es keinen Commit gibt (fremder Build).
+// Gibt es keine davon, bricht der Lauf AB. Der stille Rückfall auf das eigene
+// Verzeichnis war der Fehler; ihn zu behalten und nur umzubenennen hieße, ihn
+// zu behalten.
+const WORKTREE = arg("worktree", null);
+const BUILD_LABEL = arg("build-label", null);
 
 if (!existsSync(CHROME)) {
   console.error(`perf-visible: kein Chrome unter ${CHROME}`);
@@ -342,7 +362,12 @@ const constructorMs = (phaseId, iterations = 7) => {
 };
 
 // ── der eigene Browser ───────────────────────────────────────────────────────
-const profile = mkdtempSync(path.join(tmpdir(), "perf-visible-chrome-"));
+// Zuerst: verwaiste EIGENE Profile aus abgebrochenen Läufen wegräumen (W5s
+// Falle 1). Fremde Browser bleiben unangetastet — sie sind Last und gehören
+// gemeldet, nicht getötet (D-339).
+const PROFILE_PREFIX = "perf-visible-chrome-";
+raeumeVerwaisteProfile(CHROME, PROFILE_PREFIX);
+const profile = mkdtempSync(path.join(tmpdir(), PROFILE_PREFIX));
 const chrome = spawn(CHROME, [
   "--headless=new",
   "--hide-scrollbars",
@@ -654,17 +679,59 @@ for (const r of rows) {
   if (r.error) console.log(`⚠ ${r.phase}: ${r.error}`);
 }
 
-let commit = null;
-try {
-  const { execFileSync } = await import("node:child_process");
-  commit = execFileSync("git", ["rev-parse", "HEAD"], { encoding: "utf8" }).trim();
-} catch { /* kein git — dann steht null da, und das ist die Wahrheit */ }
+// ── R5-W7 · W6 · R183 · DIE PROVENIENZ ───────────────────────────────────────
+const { execFileSync } = await import("node:child_process");
+const revParse = (cwd) => {
+  try {
+    return execFileSync("git", ["rev-parse", "HEAD"], { encoding: "utf8", cwd }).trim();
+  } catch { return null; }
+};
+/** Was HEAD im Verzeichnis DIESES SKRIPTS ist. Steht im Beipackzettel unter
+ *  seinem richtigen Namen, damit es nie wieder als »der gemessene Bau« gelesen
+ *  wird. */
+const scriptCommit = revParse(undefined);
+
+/** Quelle 1: der gemessene Server sagt es selbst. */
+const serverSha = await (async () => {
+  try {
+    const r = await fetch(`http://localhost:${PORT}/api/version`, { signal: AbortSignal.timeout(4000) });
+    if (!r.ok) return null;
+    const j = await r.json();
+    return /^[0-9a-f]{40}$/i.test(String(j?.sha ?? "")) ? String(j.sha) : null;
+  } catch { return null; }
+})();
+
+let buildCommit = null;
+let buildCommitSource = null;
+if (serverSha !== null) {
+  buildCommit = serverSha;
+  buildCommitSource = "/api/version — der gemessene Server hat es selbst gesagt (GEPRÜFT)";
+} else if (WORKTREE !== null) {
+  buildCommit = revParse(path.resolve(WORKTREE));
+  if (buildCommit === null) await die(1, `\n✗ perf-visible: --worktree ${WORKTREE} ist kein git-Verzeichnis.`);
+  buildCommitSource = `--worktree ${WORKTREE} (ERKLÄRT, nicht geprüft — dass dort der gemessene Server läuft, ist die Behauptung des Aufrufers)`;
+} else if (BUILD_LABEL !== null) {
+  buildCommitSource = `--build-label (ERKLÄRT, kein Commit): ${BUILD_LABEL}`;
+} else {
+  await die(1, "\n✗ perf-visible: dieser Lauf kann nicht sagen, WELCHEN Bau er gemessen hat (R183).\n"
+    + `   Drei Wege, der erste ist der beste:\n`
+    + `   1. den Dev-Server mit VERCEL_GIT_COMMIT_SHA=$(git rev-parse HEAD) starten — dann sagt /api/version es selbst\n`
+    + "   2. --worktree <pfad zum worktree, aus dem der Server läuft>\n"
+    + "   3. --build-label \"<was gemessen wurde>\" (wenn es keinen Commit gibt)\n"
+    + "   Der frühere stille Rückfall auf HEAD des Skript-Verzeichnisses hat zwei Sitzungen\n"
+    + "   identische Vorher/Nachher-Hashes geschrieben (R183) — er ist deshalb weg, nicht umbenannt.");
+}
+console.log(`Gemessener Bau: ${buildCommit ?? BUILD_LABEL} · Quelle: ${buildCommitSource}`);
 
 const sidecar = {
   script: "scripts/perf-visible.mjs",
   label: LABEL,
   port: PORT,
-  commit,
+  url: `http://localhost:${PORT}/play/1/buch?phase=<phase>&perf=1${WARM_OFF ? "&warm=0" : ""}`,
+  buildCommit,
+  buildCommitSource,
+  buildLabel: BUILD_LABEL,
+  scriptCommit,
   controlFps: verdict.fps,
   controlFloor: FLOOR,
   visibilityState: control.vis,
@@ -680,6 +747,21 @@ if (JSON_OUT) {
 
 ws.close();
 chrome.kill();
+// ── R5-W7 · W6 · D-438 · AUF DAS ENDE WARTEN, NICHT AUF EINE UHR ────────────
+// `kill()` schickt ein Signal und kehrt zurück. Wer unmittelbar danach die Last
+// liest, zählt seinen eigenen, gerade sterbenden Browser mit (E7 maß erst 2,
+// dann 0). Gewartet wird auf das PROZESS-ENDE — erst das exit-Ereignis des
+// eigenen Kindes, dann die Prozesstabelle, bis kein Prozess mit unserem Profil
+// mehr steht.
+{
+  const { gewartetMs, restend } = await wartenBisChromeWegIst(chrome, CHROME, PROFILE_PREFIX);
+  if (restend > 0) {
+    console.warn(`⚠ nach ${gewartetMs} ms stehen noch ${restend} eigene Chrome-Prozesse `
+      + `(Profil ${PROFILE_PREFIX}). Eine Lastlesung JETZT misst diesen Lauf mit (D-438).`);
+  } else {
+    console.log(`Eigener Chrome beendet nach ${gewartetMs} ms — eine Lastlesung ab hier misst die Maschine, nicht diesen Lauf (D-438).`);
+  }
+}
 
 // ── R5-W6b · E7 · D-327 · EINE LÜCKE IST EIN ROTES LICHT, KEINE FUSSNOTE ─────
 // Bis hierher endete dieses Skript mit 0, solange nur keine Phase ganz gefehlt

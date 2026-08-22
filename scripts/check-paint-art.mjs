@@ -6,7 +6,21 @@
 // procedural placeholders shipping to students was the playtest's F13 class.
 // Allowlist hygiene is enforced both ways: an entry whose art now exists
 // fails (stale), and an entry past its `until` date fails (expired).
-// Run: node scripts/check-paint-art.mjs   (exit 1 on any failure)
+// Run: node scripts/check-paint-art.mjs            (exit 1 on any failure)
+//      node scripts/check-paint-art.mjs --selftest (proves the red light works)
+//
+// ── R5-W7 · W6 · D-454: DAS TEUERSTE TOR KANN JETZT ROT ZEIGEN ──────────────
+// An diesem Tor haengt die Tot-Kunst-Ratsche, und bis heute konnte es nur
+// gruen. Die MENGENLOGIK (jeder benoetigte Stem liegt oder steht mit Grund auf
+// der Allowlist · keine schale und keine abgelaufene Ausnahme · die
+// Scope-Loecher · die DEAD_ART-Ratsche) ist deshalb eine REINE FUNKTION ueber
+// die geladene Welt geworden. Der Selbsttest reicht ihr die ECHTE Welt mit
+// genau EINER Verfaelschung herein (P-71) und prueft, dass GENAU der
+// eingespeiste Fehler gemeldet wird (E5-Lehre); der letzte Fall ist der
+// wichtigste — der ECHTE Stand muss gruen sein.
+// EHRLICHE GRENZE: die BILDPUNKT-Gesetze (Farbschluessel-Fransen, Insassen-
+// Lesbarkeit) bleiben ausserhalb der reinen Funktion — sie lesen PNGs von der
+// Platte und haben ihre eigenen Messungen. Gedeckt ist die Mengenlogik.
 
 import fs from "node:fs";
 import path from "node:path";
@@ -41,15 +55,10 @@ const walk = (dir) => {
 walk(ART_ROOT);
 
 const allow = fs.existsSync(ALLOW_PATH) ? JSON.parse(fs.readFileSync(ALLOW_PATH, "utf8")) : [];
-const allowByStem = new Map(allow.map((a) => [a.stem, a]));
 const today = new Date().toISOString().slice(0, 10);
 
-let failures = 0;
-const fail = (msg) => { failures++; console.error(`✗ ${msg}`); };
-
-// collect required stems from every non-draft level (derivation: artScope.ts)
-const required = new Map(); // stem → where it's needed
-const levels = []; // the parsed non-draft levels, kept for the scope audits
+// the parsed non-draft levels, kept for the scope audits
+const levels = [];
 for (const story of fs.existsSync(CONTENT) ? fs.readdirSync(CONTENT) : []) {
   const paintDir = path.join(CONTENT, story, "paint");
   if (!fs.existsSync(paintDir)) continue;
@@ -57,88 +66,197 @@ for (const story of fs.existsSync(CONTENT) ? fs.readdirSync(CONTENT) : []) {
     const level = JSON.parse(fs.readFileSync(path.join(paintDir, f), "utf8"));
     if (level.draft === true) continue;
     levels.push({ file: f, level });
-    for (const [stem, where] of levelRequiredStems(level, f)) if (!required.has(stem)) required.set(stem, where);
   }
 }
 
-for (const [stem, where] of required) {
-  const listed = allowByStem.get(stem);
-  if (present.has(stem)) {
-    if (listed) fail(`allowlist STALE: ${stem} exists now — remove its entry`);
-    continue;
-  }
-  if (!listed) { fail(`missing stem "${stem}" (needed by ${where}) — paint it or allowlist it with a reason+until`); continue; }
-  if (!listed.reason || !listed.until) { fail(`allowlist entry for ${stem} needs reason AND until`); continue; }
-  if (listed.until < today) fail(`allowlist EXPIRED for ${stem} (until ${listed.until}) — paint it or extend with a new reason`);
-}
-for (const a of allow) {
-  if (!required.has(a.stem) && !present.has(a.stem)) fail(`allowlist entry ${a.stem} is needed by nothing — remove it`);
-}
+/** die MB-Summe der toten Blaetter — Platte, deshalb ausserhalb der reinen Funktion */
+const bytesOfDead = (dead) => {
+  let bytes = 0;
+  for (const s of dead) { const f = fileOf.get(s); if (f) bytes += fs.statSync(f).size; }
+  return `${(bytes / 1048576).toFixed(1)} MB`;
+};
 
-// ── R5-W1 · E1 · AUDIT A · THE GATE AND THE LOADER MUST AGREE ───────────────
-// Per-phase loading can fail in a way NO existing check can see: PaintScene.tex()
-// answers a missing stem with a procedural blob, so an under-scoped phase ships
-// grey shapes with every gate green. This audit is the structural answer — every
-// stem this gate demands must be a stem the phase's loader would actually fetch.
-// Floor ⊆ ceiling, asserted per phase, by machine.
-for (const { file, level } of levels) {
-  for (const ph of allScopePhases(level)) {
-    const scope = phaseArtScope(level, ph.id, present);
-    for (const [stem, where] of phaseRequiredStems(level, ph.id, file)) {
-      if (!scope.has(stem)) fail(`SCOPE HOLE: "${stem}" is required (${where}) but phase ${ph.id} would never load it — it would render as a procedural fallback with every gate green`);
+/**
+ * Die MENGENLOGIK als reine Funktion der geladenen Welt. Rein, damit der
+ * Selbsttest ihr die echte Welt mit genau EINER Verfaelschung reichen kann
+ * (P-71: Tamper gegen den Messwert, nie gegen die Konstante — die Ratsche wird
+ * deshalb ueber ein zusaetzliches Blatt in `present` ausgeloest, nicht ueber
+ * eine heruntergedrehte Decke).
+ *
+ * @param {{levels:{file:string,level:object}[], present:Set<string>,
+ *          allow:{stem:string,reason?:string,until?:string}[], today:string,
+ *          deadCeiling:number, bytesOfDead?:(dead:string[])=>string}} welt
+ */
+export const analyse = ({ levels, present, allow, today, deadCeiling, bytesOfDead = () => "? MB" }) => {
+    const allowByStem = new Map(allow.map((a) => [a.stem, a]));
+    const failures = [];
+    const warnings = [];
+    const fail = (msg) => { failures.push(msg); };
+    // collect required stems from every non-draft level (derivation: artScope.ts)
+    const required = new Map(); // stem → where it's needed
+    for (const { file, level } of levels) {
+      for (const [stem, where] of levelRequiredStems(level, file)) if (!required.has(stem)) required.set(stem, where);
+    }
+
+  for (const [stem, where] of required) {
+    const listed = allowByStem.get(stem);
+    if (present.has(stem)) {
+      if (listed) fail(`allowlist STALE: ${stem} exists now — remove its entry`);
+      continue;
+    }
+    if (!listed) { fail(`missing stem "${stem}" (needed by ${where}) — paint it or allowlist it with a reason+until`); continue; }
+    if (!listed.reason || !listed.until) { fail(`allowlist entry for ${stem} needs reason AND until`); continue; }
+    if (listed.until < today) fail(`allowlist EXPIRED for ${stem} (until ${listed.until}) — paint it or extend with a new reason`);
+  }
+  for (const a of allow) {
+    if (!required.has(a.stem) && !present.has(a.stem)) fail(`allowlist entry ${a.stem} is needed by nothing — remove it`);
+  }
+
+  // ── R5-W1 · E1 · AUDIT A · THE GATE AND THE LOADER MUST AGREE ───────────────
+  // Per-phase loading can fail in a way NO existing check can see: PaintScene.tex()
+  // answers a missing stem with a procedural blob, so an under-scoped phase ships
+  // grey shapes with every gate green. This audit is the structural answer — every
+  // stem this gate demands must be a stem the phase's loader would actually fetch.
+  // Floor ⊆ ceiling, asserted per phase, by machine.
+  for (const { file, level } of levels) {
+    for (const ph of allScopePhases(level)) {
+      const scope = phaseArtScope(level, ph.id, present);
+      for (const [stem, where] of phaseRequiredStems(level, ph.id, file)) {
+        if (!scope.has(stem)) fail(`SCOPE HOLE: "${stem}" is required (${where}) but phase ${ph.id} would never load it — it would render as a procedural fallback with every gate green`);
+      }
     }
   }
-}
 
-// ── R5-W1 · E1 · AUDIT B · ART NOTHING LOADS ────────────────────────────────
-// A warning, never a failure: the keen-art law lets a batch land before its
-// wiring does. But silence let 45.9 MB accumulate that no phase and no card
-// ever asks for, so the number is now said out loud on every run.
-{
-  const claimed = new Set();
-  for (const { level } of levels) {
-    for (const ph of allScopePhases(level)) for (const s of phaseArtScope(level, ph.id, present)) claimed.add(s);
-    for (const s of domArtStems(level)) claimed.add(s);
-  }
-  const dead = [...present].filter((s) => !claimed.has(s));
-  if (dead.length > 0) {
-    let bytes = 0;
-    for (const s of dead) { const f = fileOf.get(s); if (f) bytes += fs.statSync(f).size; }
-    console.warn(`⚠ ${dead.length} painted stems are loaded by nothing (${(bytes / 1048576).toFixed(1)} MB): ${dead.slice(0, 8).join(", ")}${dead.length > 8 ? ", …" : ""}`);
-    // R5-W3 · E5 · THE RATCHET. The warning above ran on every build for three
-    // sessions while the pile went 53 → 57 → 59 → 61 stems, because a warning
-    // costs nothing to ignore. (R5-W6b · W5 · D-271 — the story continues past
-    // that line and this comment stopped telling it: the merge train of wave 4b
-    // wired and deleted enough art to bring the pile back to 53, which is where
-    // the ceiling was then set, with no headroom. So the row reads
-    // 53 → 57 → 59 → 61 → 53, and 53 is the number as of 2026-08-19. Whoever
-    // moves it next writes the next number here, with its date.) The keen-art freedom stays — art may land before
-    // its wiring — but the pile may no longer grow in SILENCE: adding sheets
-    // means raising the ceiling in the same PR, with a reason a reviewer reads.
-    // The full annotated list, by group: docs/design/g1/paint/DEAD_ART_2026-08-14.md
-    if (dead.length > DEAD_ART_CEILING) {
-      fail(
-        `${dead.length} painted stems are loaded by nothing — the ceiling is ${DEAD_ART_CEILING} (perfBudget.ts). ` +
-          `Wire them, delete them, or raise DEAD_ART_CEILING in this same PR with a reason. New since the ceiling: ` +
-          dead.slice(DEAD_ART_CEILING).join(", "),
-      );
+  // ── R5-W1 · E1 · AUDIT B · ART NOTHING LOADS ────────────────────────────────
+  // A warning, never a failure: the keen-art law lets a batch land before its
+  // wiring does. But silence let 45.9 MB accumulate that no phase and no card
+  // ever asks for, so the number is now said out loud on every run.
+  let dead = [];
+  {
+    const claimed = new Set();
+    for (const { level } of levels) {
+      for (const ph of allScopePhases(level)) for (const s of phaseArtScope(level, ph.id, present)) claimed.add(s);
+      for (const s of domArtStems(level)) claimed.add(s);
+    }
+    dead = [...present].filter((s) => !claimed.has(s));
+    if (dead.length > 0) {
+      warnings.push(`⚠ ${dead.length} painted stems are loaded by nothing (${bytesOfDead(dead)}): ${dead.slice(0, 8).join(", ")}${dead.length > 8 ? ", …" : ""}`);
+      // R5-W3 · E5 · THE RATCHET. The warning above ran on every build for three
+      // sessions while the pile went 53 → 57 → 59 → 61 stems, because a warning
+      // costs nothing to ignore. (R5-W6b · W5 · D-271 — the story continues past
+      // that line and this comment stopped telling it: the merge train of wave 4b
+      // wired and deleted enough art to bring the pile back to 53, which is where
+      // the ceiling was then set, with no headroom. So the row reads
+      // 53 → 57 → 59 → 61 → 53, and 53 is the number as of 2026-08-19. Whoever
+      // moves it next writes the next number here, with its date.) The keen-art freedom stays — art may land before
+      // its wiring — but the pile may no longer grow in SILENCE: adding sheets
+      // means raising the ceiling in the same PR, with a reason a reviewer reads.
+      // The full annotated list, by group: docs/design/g1/paint/DEAD_ART_2026-08-14.md
+      if (dead.length > deadCeiling) {
+        fail(
+          `${dead.length} painted stems are loaded by nothing — the ceiling is ${deadCeiling} (perfBudget.ts). ` +
+            `Wire them, delete them, or raise deadCeiling in this same PR with a reason. New since the ceiling: ` +
+            dead.slice(deadCeiling).join(", "),
+        );
+      }
     }
   }
+
+  // PB-C1 · THE PLACEHOLDER GUARD. The composition kit currently points at
+  // generated flat-tone stand-ins so the geometry laws could be proven before
+  // Batch AF exists. They are stamped PLACEHOLDER on the piece and they must not
+  // outlive the art: past the deadline this HARD-FAILS, so "we'll swap it later"
+  // cannot quietly become "we shipped it".
+  const placeholders = [...required.keys()].filter(isPlaceholderStem);
+  if (placeholders.length > 0) {
+    if (today > PLACEHOLDER_UNTIL) {
+      fail(`${placeholders.length} PLACEHOLDER stems are still wired (deadline ${PLACEHOLDER_UNTIL} passed) — land Batch AF and re-point the composition manifest`);
+    } else {
+      warnings.push(`check-paint-art: ⚠ ${placeholders.length} placeholder stems wired (PK-C2 replaces them; hard deadline ${PLACEHOLDER_UNTIL})`);
+    }
+  }
+
+
+  return { failures, warnings, required, dead };
+};
+
+// ── SELBSTTEST ───────────────────────────────────────────────────────────────
+// Vier Verfaelschungen an der ECHTEN Welt, jede an genau einer Groesse
+// (W5-Falle 4: ein Tamper, der zwei Groessen bewegt, wird am falschen Gesetz
+// rot und beweist ueber das gemeinte nichts). Der fuenfte Fall ist der
+// wichtigste: unverfaelscht muss der Stand gruen sein.
+if (process.argv.includes("--selftest")) {
+  const welt = { levels, present, allow, today, deadCeiling: DEAD_ART_CEILING, bytesOfDead };
+  // ein Stem, den ein Level WIRKLICH verlangt und der WIRKLICH liegt — nicht geraten
+  const { required: echtGefordert } = analyse(welt);
+  const echterStem = [...echtGefordert.keys()].find((s) => present.has(s));
+  if (echterStem === undefined) throw new Error("kein geforderter Stem liegt — der Selbsttest kann nicht bauen");
+
+  const faelle = [
+    ["ein gefordertes Blatt fehlt auf der Platte", () => {
+      const ohne = new Set(present); ohne.delete(echterStem);
+      return analyse({ ...welt, present: ohne });
+    }, `missing stem "${echterStem}"`],
+
+    ["eine Ausnahme ist schal: das Blatt liegt inzwischen doch", () =>
+      analyse({ ...welt, allow: [...allow, { stem: echterStem, reason: "erfunden, damit dieser Fall rot wird", until: "2099-01-01" }] }),
+      `allowlist STALE: ${echterStem}`],
+
+    ["eine Ausnahme wird von niemandem gebraucht", () =>
+      analyse({ ...welt, allow: [...allow, { stem: "gibt-es-nicht-und-braucht-niemand", reason: "erfunden, damit dieser Fall rot wird", until: "2099-01-01" }] }),
+      "is needed by nothing"],
+
+    ["die Tot-Kunst-Ratsche: ein Blatt mehr, als die Decke traegt", () => {
+      // die WELT waechst, nicht die Decke — sonst misst der Fall die Konstante
+      const mehr = new Set(present);
+      for (let i = 0; i <= 0; i++) mehr.add(`w6_selftest_totes_blatt_${i}`);
+      return analyse({ ...welt, present: mehr });
+    }, `the ceiling is ${DEAD_ART_CEILING}`],
+
+    ["NICHT-TAMPER: der echte Stand ist gruen", () => analyse(welt), null],
+  ];
+
+  let schlecht = 0;
+  for (const [name, lauf, muss] of faelle) {
+    const { failures } = lauf();
+    const rot = failures.length > 0;
+    const sollRot = muss !== null;
+    if (rot !== sollRot) {
+      schlecht++;
+      console.error(sollRot
+        ? `  ✗ ${name} — KEIN rotes Licht, das Gesetz ist blind`
+        : `  ✗ ${name} — der echte Stand ist rot: ${failures.slice(0, 3).join(" | ")}`);
+      continue;
+    }
+    if (sollRot) {
+      // E5-Lehre: GENAU der eingespeiste Fehler, und NUR er.
+      const treffer = failures.filter((f) => f.includes(muss));
+      if (treffer.length !== 1 || failures.length !== 1) {
+        schlecht++;
+        console.error(`  ✗ ${name} — rot, aber nicht sauber an der eingespeisten Stelle `
+          + `(${treffer.length} passende von ${failures.length}); erwartet: ${muss}`
+          + `\n      ${failures.slice(0, 3).join("\n      ")}`);
+        continue;
+      }
+      console.log(`  ✓ ${name} — rot, genau eine Meldung, und es ist die eingespeiste`);
+    } else {
+      console.log(`  ✓ ${name} — gruen`);
+    }
+  }
+  if (schlecht > 0) { console.error("check-paint-art --selftest: FEHLGESCHLAGEN"); process.exit(1); }
+  console.log(`check-paint-art --selftest: OK — ${faelle.length} Faelle, vier rote Lichter an der `
+    + `eingespeisten Stelle, der echte Stand gruen (Decke ${DEAD_ART_CEILING})`);
+  process.exit(0);
 }
 
-// PB-C1 · THE PLACEHOLDER GUARD. The composition kit currently points at
-// generated flat-tone stand-ins so the geometry laws could be proven before
-// Batch AF exists. They are stamped PLACEHOLDER on the piece and they must not
-// outlive the art: past the deadline this HARD-FAILS, so "we'll swap it later"
-// cannot quietly become "we shipped it".
-const placeholders = [...required.keys()].filter(isPlaceholderStem);
-if (placeholders.length > 0) {
-  if (today > PLACEHOLDER_UNTIL) {
-    fail(`${placeholders.length} PLACEHOLDER stems are still wired (deadline ${PLACEHOLDER_UNTIL} passed) — land Batch AF and re-point the composition manifest`);
-  } else {
-    console.warn(`check-paint-art: ⚠ ${placeholders.length} placeholder stems wired (PK-C2 replaces them; hard deadline ${PLACEHOLDER_UNTIL})`);
-  }
-}
+// ── ECHTER LAUF ──────────────────────────────────────────────────────────────
+const { failures: mengenFehler, warnings, required } = analyse({
+  levels, present, allow, today, deadCeiling: DEAD_ART_CEILING, bytesOfDead,
+});
+for (const w of warnings) console.warn(w);
+let failures = 0;
+const fail = (msg) => { failures++; console.error(`✗ ${msg}`); };
+for (const m of mengenFehler) fail(m);
 
 // PK-R6 · H1 · THE TILED-SURFACE FRINGE GATE. Batch AF was delivered over a
 // magenta colour key and cut out against it, leaving a one-pixel skin of the key

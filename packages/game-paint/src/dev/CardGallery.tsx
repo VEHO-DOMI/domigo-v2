@@ -22,6 +22,8 @@ import React from "react";
 import type { GameTaskV2 } from "@domigo/content-schema";
 import type { PaintLevel } from "../level.ts";
 import { CardHost } from "../cards/CardHost.tsx";
+import { CardShell } from "../cards/CardShell.tsx";
+import { answerTextOf } from "../cards/resolution.ts";
 import { PAINT_OVERLAY_CSS } from "../cards/overlay-css.ts";
 import { LOGICAL_H, LOGICAL_W, RENDER_SCALE } from "../paint.ts";
 import { benchBilanz } from "./bench-counts.ts";
@@ -235,6 +237,54 @@ export default function CardGallery({ level, art, tasks, Overlay, which, karte }
       ),
   });
 
+  /**
+   * R5-W7 · W6 · DER VERDIKT-TAKT — »Zurück im Buch!«
+   *
+   * D4 hat die Fläche vermisst und den Grund genannt: die Bank kannte den
+   * dritten Takt der Auflösung nicht, also war das einzige bildgetragene Stück
+   * dieser Runde nicht fotografierbar.
+   *
+   * WAS AN DIESEM BILD ECHT IST, und was nicht — offen gesagt, weil ein
+   * Bankbild, dessen Herkunft niemand kennt, die Bank selbst entwertet:
+   *  · ECHT ist die ausgelieferte `CardShell` mit der ausgelieferten
+   *    `AnswerHome`-Tafel darin, mit der ECHTEN Antwort der ECHTEN Karte des
+   *    Kapitels (`answerTextOf`) — also genau das, was das Kind sieht.
+   *  · NICHT gerendert ist der Karten-Rumpf dahinter. Er wäre auch unsichtbar:
+   *    `AnswerHome` liegt mit `inset: 0` und deckendem Grund darüber. Statt
+   *    einen Rumpf zu ERFINDEN, zeichnet diese Fläche gar keinen — eine leere
+   *    Stelle ist ehrlich, eine nachgebaute wäre eine zweite Wirklichkeit.
+   *
+   * DIE NAHT, DIE HIER FEHLT (Route: die nächste Karten-Bahn). Der Weg über den
+   * ausgelieferten `CardHost` wäre der bessere, und er ist HEUTE nicht möglich:
+   * `CardHost` setzt seinen Takt ausschließlich selbst (`setBeat("letters")`
+   * nach einer richtigen Antwort) und hat keine Naht, an der eine Bank ihn
+   * setzen könnte — und `cards/**` gehört in dieser Welle einer anderen Bahn
+   * (Eigentums-Karte). Ein `benchBeat`-Prop an `CardHost`, dev-only, würde diese
+   * Fläche durch den echten Wirt führen; dann fällt der Absatz oben weg.
+   */
+  const answerHome = (id: string, label: string, task: GameTaskV2 | undefined, note?: string): Surface => ({
+    id, label, note, taskId: task?.id,
+    render: () =>
+      task === undefined ? (
+        <p style={{ padding: 24, fontSize: 15 }}>
+          {kartenFehler ?? `keine Karte für den Verdikt-Takt im Kapitel`}
+        </p>
+      ) : (
+        <CardShell
+          key={id}
+          task={task}
+          attempts={0}
+          onDismiss={noop}
+          align="right"
+          art={art}
+          flight={answerTextOf(task)}
+        >
+          {/* bewusst leer — siehe den Block darüber */}
+          <div aria-hidden />
+        </CardShell>
+      ),
+  });
+
   const surfaces: Surface[] = [
     // ── the nine card kinds ────────────────────────────────────────────────
     card("choice", "choice", byKind("choice")),
@@ -260,6 +310,10 @@ export default function CardGallery({ level, art, tasks, Overlay, which, karte }
     // falsch tippen) — findet sich kein Paar, sagt die Fläche das laut.
     card("kaefig", "Käfig · Insasse im Portrait", cageTask, { captive: cageCaptive },
       "das Portrait zeigt die Käfig-Hülle mit dem Insassen dahinter (R54)"),
+    // R5-W7 · W6 · D4s Befund 4: der dritte Takt der Auflösung hatte keine
+    // Fläche. Die Karte ist die des Kapitels, die Antwort ihre eigene.
+    answerHome("answer-home", "Verdikt · »Zurück im Buch!«", byKind("choice"),
+      "der Takt, in dem die Antwort ins Buch zurückfliegt — der Rumpf dahinter ist bewusst nicht gezeichnet"),
     // ── the eleven ceremony panels ─────────────────────────────────────────
     // R5-W2 · J1-B · the opening's four beats, each photographable on its own.
     // `goal` keeps its id: it is the address the bench has always used for beat 1.
