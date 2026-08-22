@@ -143,16 +143,34 @@ const MEASURED_ON = "2026-08-16 @ 3daaf47 (unveraendert auf ae0dd42 und auf 4a0d
 // Grund, eine gemalte Flaeche gegen eine gerechnete zu tauschen.
 //
 // Also bleibt der Defekt stehen, und die Ausnahme bleibt mit ihm — deklariert,
-// datiert, mit Eigentuemer, nie still. Der neue Reparaturpfad ist AS5c
-// (SPEC_MASSEN_KIT §10.6, in diesem PR mit Zahlen spezifiziert).
+// datiert, mit Eigentuemer, nie still. A7 hat damals AS5c als Reparaturpfad
+// eingetragen (SPEC_MASSEN_KIT §10.6, mit Zahlen spezifiziert); wo der Pfad
+// heute steht, sagt der Block direkt darunter — dieser Absatz ist ab hier
+// Geschichte, kein Stand.
 const UNTIL = "2026-11-30";
+// ── ★ DER REPARATURPFAD HEISST AS5F, UND ER IST EIN TERMINRISIKO (R201, A8) ──
+// Hier stand »AS5c«. Der Pfad ist seither zweimal weitergerueckt, und das
+// gehoert in die Akte, weil eine Ausnahme ohne Bestellung nur der Defekt mit
+// Papier ist: AS5c (19.08.) zurueck — Generator-Raster statt Malerei; AS5d
+// (20.08.) zurueck; AS5e (21.08.) zurueck — IoU 0 von 24, tex ueber dem Deckel
+// auf 63 von 124 Zellen, Schluesselabstand < 182 auf vier Blaettern. AS5F ist
+// die VIERTE Bestellung dieser Familie.
+//
+// ⚠ Stand 2026-08-22: `batch-as5f/` liegt im Labor und meldet sich im
+// Lieferschein-Kopf SELBST als `pass: false · status: INCOMPLETE`. Nach
+// Rahmen-Regel 18 (R202) ist das Rueckweisung ohne Pruefung — das Urteil faellt
+// der Architekt im Wareneingang, nicht diese Bahn. Es steht hier, damit der
+// naechste Leser die Frist nicht fuer gedeckt haelt: vier Runden ohne
+// importierbare Kruste gegen einen 30.11., das ist ein Terminrisiko und kein
+// Formfehler.
 const AS5B = "D-199: Innen-Naht der Kruste, gemessen am selben Stand. Ursache sitzt in Codex' "
   + "Quelle (A6b, PR #306). AS5b (18.08.) hat den Schluessel repariert (0 Treffer statt 6938), "
   + "aber die Krusten ohne Motiv geliefert (zwei blinde Kritiker, getauschte Reihenfolge, beide "
-  + "fuer den Bestand) — nicht importierbar. Verlaengert auf 2026-11-30 durch A7 (R147); "
-  + "AS5c-Bestellung spezifiziert in SPEC_MASSEN_KIT §10.6 (A7, 2026-08-18), Kommissionsdatei "
-  + "schreibt Fable, Lieferschein-Pruefung ausstehend. Faellt von selbst, sobald die neue Kachel "
-  + "liegt (das Tor meldet den Eintrag dann als schal).";
+  + "fuer den Bestand) — nicht importierbar. Verlaengert auf 2026-11-30 durch A7 (R147). "
+  + "Reparaturpfad jetzt AS5F (R201, A8 2026-08-22) — VIERTE Bestellung der Familie: AS5c, "
+  + "AS5d und AS5e sind alle zurueckgewiesen, und die vorliegende AS5F-Lieferung meldet sich "
+  + "selbst als INCOMPLETE (Wareneingang beim Architekten offen, R202). Import gehoert A9. "
+  + "Faellt von selbst, sobald die neue Kachel liegt (das Tor meldet den Eintrag dann als schal).";
 export const SEAM_ALLOW = [
   { stem: "crust_p4_a", seen: 2348, until: UNTIL, reason: AS5B },
   { stem: "crust_p4_b", seen: 2670, until: UNTIL, reason: AS5B },
