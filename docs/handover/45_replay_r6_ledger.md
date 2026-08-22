@@ -582,7 +582,7 @@ nachgezogen; ihr Wortlaut kommt aus dem Rulings-Abschnitt des Welle-7-Rahmenblat
 | Ruling | Worum es geht | Heimat |
 |---|---|---|
 | **R154** | Mission Control ist aus der Schleife — keine Dashboard-Zeile in einer DoD; der Report ist die Rückmeldung | `45_replay_r6_ledger.md#H12` |
-| **R155** | Tor T6: die Kartenkante bleibt, das Budget geht ins gemalte Karten-Material | `docs/art/import-batch-aq17.mjs#R155` · Tor-Tabelle **T6** |
+| **R155** | Tor T6: die Kartenkante bleibt, das Budget geht ins gemalte Karten-Material | `packages/game-paint/src/cards/overlay-css.ts#R155` · Tor-Tabelle **T6** *(K7, 2026-08-22: der Verweis zeigte auf den aq17-Importeur, der »R155« nirgends trägt — die Entscheidung steht im Karten-Stylesheet. Genau der Defekt, den D-505 vorhergesagt hat: kein Tor sieht dieses Blatt.)* |
 | **R156** | Tor T7 (Regel-Seiten-Reihenfolge) bleibt · S1s Hörbank-Vorwahl gilt, bis Koki hört · Dach-Schalter für allen Ton = ja (S2 gebaut) | Tor-Tabelle **T7 · T12 · T13** |
 | **R157** | Tor T9: das Buch bleibt blau, bis eine Lieferung die Quote besteht | Tor-Tabelle **T9** (erledigt: AQ12d3 besteht, Import bei C7) |
 | **R158** | Tor T10: den p3-Flieger versetzen · Tor T11: ElevenLabs weiter, Plan bei der nächsten Rechnung | `docs/design/g1/paint/ch01.md#R158` · Tor-Tabelle **T10 · T11** |
