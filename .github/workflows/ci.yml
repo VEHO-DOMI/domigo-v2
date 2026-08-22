@@ -192,22 +192,28 @@ jobs:
       - run: node scripts/check-audio.mjs # S1/R124: Manifest ↔ Platte ↔ Messdatei, Budgets, und BLUEPRINT :371 als Messung
 
       # ── WERKZEUG, KEIN TOR (W4/D-257) ───────────────────────────────────────
-      # Diese sieben Zeilen fahren in CI ABSICHTLICH nur ihren Selbsttest: der
-      # sichert das Messgerät, der echte Lauf braucht Chrome und einen laufenden
-      # Dev-Server und gehört deshalb in die Sitzung, neben die Bilder, die er
-      # erzeugt. Jede ist in scripts/check-ci-gates.mjs#SELFTEST_ONLY mit Grund
-      # deklariert; fällt die Deklaration weg oder wird ein echter Lauf
-      # verdrahtet, geht check-ci-gates rot. (W5: vorher standen sie an vier
-      # Stellen verteilt — die Zahl im Kommentar stimmte seit E6 nicht mehr.)
+      # Die Zeilen dieses Blocks fahren in CI ABSICHTLICH nur ihren Selbsttest:
+      # der sichert das Messgerät, der echte Lauf braucht Chrome, einen laufenden
+      # Dev-Server oder schreibt Blätter — und gehört deshalb in die Sitzung,
+      # neben die Bilder, die er erzeugt. Jedes `scripts/check-*.mjs` darin ist
+      # in scripts/check-ci-gates.mjs#SELFTEST_ONLY mit Grund deklariert; fällt
+      # die Deklaration weg oder wird ein echter Lauf verdrahtet, geht
+      # check-ci-gates rot.
+      #
+      # ⚠ HIER STAND EINE ZAHL. »Diese sieben Zeilen« — es waren neun, seit E6
+      # niemand mehr nachgezählt hat (W5 hatte denselben Satz schon einmal
+      # repariert). Eine Zahl in einem Kommentar ist eine Behauptung, die kein
+      # Tor prüft; sie ist deshalb weg und nicht korrigiert worden (R5-W8 · W7).
       - run: node scripts/measure-presence.mjs --selftest # J1-E: das Kontrast-Messgerät beweist sich selbst, sonst bedeuten seine Zahlen nichts — misst am Schirm
-      - run: node scripts/frame-sink.mjs --selftest # W1/P-66: die Kamera beweist, dass sie lebt, sonst geht ein Standbild als Beweis durch — nimmt Bilder aus einem laufenden Browser entgegen
+      - run: node scripts/frame-sink.mjs --selftest # W1/P-66 + W7/P7 §12.8: die Kamera beweist, dass sie lebt, sonst geht ein Standbild als Beweis durch; und der erklärte Standbild-Zustand nimmt GENAU EIN Bild an, während dieselbe Folge OHNE die Flagge weiter mit 425 abbricht (der Tamper sitzt darauf) — nimmt Bilder aus einem laufenden Browser entgegen
       - run: node scripts/measure-motion.mjs --selftest # W1: gezeichnete gegen gesehene Bewegung — eine Scherung darf nicht als Null gelesen werden — misst eine geschossene Bildreihe
       - run: node scripts/measure-veil.mjs --selftest # D3: wie dunkel die Welt hinter der Karte ist — die Trennung muss eine große helle Karte überleben — braucht die offene Karte im laufenden Spiel
       - run: node scripts/measure-residue.mjs --selftest # W5/D-386: Gold und Kontur bleiben in ihren eigenen Zeilen, der stehengebliebene Flicken wird gefunden und verortet — braucht zwei Blätter (Bestand + Lieferung), die im Repo nicht beide liegen
-      - run: node scripts/shoot-card-bench.mjs --selftest # W2/D-102 + W5: die Ausschnitt-Rechnung der Kartenbank (ein Motiv unter 40 % der Bildfläche muss rot werden) — startet einen eigenen Chrome
-      - run: node scripts/shoot-world.mjs --selftest # W4/D-259: die Kampf-Abtastrate liegt unter beiden Kampf-Takten (entities.ts) und der Beipackzettel erscheint, wenn das Werkzeug mitgespielt hat — der Lauf braucht Chrome + Dev-Server
-      - run: node scripts/perf-visible.mjs --selftest # E6/R115: hier läuft kein Chrome; geprüft wird nur, dass die Kontrollschwelle (Kontrollseite unter 58 fps ⇒ Abbruch) ihr rotes Licht erreichen kann
-      - run: node scripts/chrome-hygiene.mjs --selftest # W6/D-438 + W5-Falle 1: eigene Chrome-Profile werden erkannt, FREMDE Browser nie angefasst, und die pgrep -f-Selbstfindung ist ausgeschlossen — der echte Lauf braucht laufende Browser
+      - run: node scripts/shoot-card-bench.mjs --selftest # W2/D-102 + W5 + W7/P7 §13: die Ausschnitt-Rechnung der Kartenbank (ein Motiv unter 40 % der Bildfläche muss rot werden), die je Fläche ERKLÄRTE Schwelle greift nur dort, wo sie erklärt ist (sonst wäre sie eine globale Senkung), und der Bericht des Weiterlaufs nennt jeden Fehlschlag mit eigenem Grund und endet trotzdem mit 1 — startet einen eigenen Chrome
+      - run: node scripts/shoot-world.mjs --selftest # W4/D-259 + W6/D-443 + W7/P7 §12.8: die Kampf-Abtastrate liegt unter beiden Kampf-Takten (entities.ts), der Beipackzettel erscheint, wenn das Werkzeug mitgespielt hat, EINE geänderte Level-Zelle wird an der ausgelieferten Seite gefunden — und der Standbild-Plan trennt »EIN Bild« von »Handschlag entfällt« (er entfällt nur bei stehender Welt) sowie Bewegungs- von Handlungstasten (↑ bewegt nicht, es HANDELT) — der Lauf braucht Chrome + Dev-Server
+      - run: node scripts/perf-visible.mjs --selftest # E6/R115: hier läuft kein Chrome; geprüft wird nur, dass die Kontrollschwelle (Kontrollseite unter 58 fps ⇒ Abbruch) ihr rotes Licht erreichen kann. Die Maschinen-Lesung des Laufs (W7/P7 §12.9) hat ihren eigenen Selbsttest in chrome-hygiene
+      - run: node scripts/chrome-hygiene.mjs --selftest # W6/D-438 + W5-Falle 1 + W7/P7 §12.9: eigene Chrome-Profile werden erkannt, FREMDE Browser nie angefasst, die pgrep -f-Selbstfindung ist ausgeschlossen, das eigene PROFIL trennt den eigenen vom fremden Lauf desselben Werkzeugs (der Präfix kann das nicht), und der Maschinen-Makel (Last · fremder Mess-Browser · fremder Server im Band 3200–3399) geht an und aus — der echte Lauf braucht laufende Browser
+      - run: node scripts/set-plane-value.mjs --selftest # W7/R209f-D-554 (C10, neu in dieser Bahn): der Wertepass trifft seinen deklarierten Zielwert ohne die Sättigung zu bewegen — UND ein Blatt, dessen RGB-sha256 einem Wareneingangs-Pin entspricht, wird verweigert statt still überschrieben; der Tamper sitzt auf den Bytes (ein Pin auf fremde Bytes sperrt nicht, ein geändertes Byte fällt heraus). Der echte Lauf SCHREIBT Blätter und gehört in die Sitzung
       - run: node scripts/art-recompress.mjs --selftest # W5/D-339: die Doppellauf-Sperre — eine TOTE Sperre wird übernommen, eine lebende hält, ein laufendes oxipng schlägt beides; der echte Lauf schreibt PNGs und gehört in die Sitzung
 
       # ── zuletzt: das Tor, das diese Datei bewacht ────────────────────────────
@@ -227,7 +233,7 @@ jobs:
         with: { fetch-depth: 0 }
       - uses: actions/setup-node@v4
         with: { node-version: 24 }
-      - run: node scripts/check-perf-table.mjs --selftest # the detector must tell a filled table from a blank one
+      - run: node scripts/check-perf-table.mjs --selftest # the detector must tell a filled table from a blank one — und seit W7 ist eine ausgefüllte Tabelle OHNE Bau-Angabe rot (D-514s Aufschub ist abgelaufen); der Anker »Bau: … · Quelle: …« wird direkt geprüft, damit ein deutsches »Bau:« im Fließtext keinen fremden PR rot färbt
       - name: the PERF_WAECHTER table is present when it is owed
         env:
           PR_BODY: ${{ github.event.pull_request.body }}
