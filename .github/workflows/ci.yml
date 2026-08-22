@@ -150,9 +150,36 @@ jobs:
       # 19.08.: dieser Schritt hing 56 Minuten an einem Paket-Spiegel und blockierte das
       # Boot-Tor der ganzen Welle 7. Er kostet normal Sekunden; eine Zeitgrenze macht aus
       # einem Haenger einen roten Schritt, den ein Neustart behebt (die Klasse, nicht der Fall).
-      - name: "ffmpeg fuer das Klang-Tor — Zeitgrenze statt Haenger"
-        timeout-minutes: 4
-        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+      #
+      # ── R5-W7 · W6 · D-510, die Verfeinerung ──────────────────────────────
+      # Die Frage aus dem Register war: Wiederholversuch, gecachtes ffmpeg oder
+      # harter Abbruch? Die gemessene Fehlerklasse ist ein HAENGENDER Spiegel,
+      # kein schnelles Fehlschlagen — deshalb bringt ein blosser Wiederholversuch
+      # nichts: der erste Anlauf kaeme nie zurueck, und die Job-Frist faellt
+      # trotzdem. Was hilft, ist eine eigene Frist JE ANLAUF. Zwei Anlaeufe mit
+      # je 100/120 s bleiben zusammen unter der Schritt-Frist und machen aus dem
+      # 56-Minuten-Vorfall einen Aussetzer von zwei Minuten, den niemand von Hand
+      # neu starten muss.
+      # GEGEN das Zwischenlager (Cache): ffmpeg ist ein SYSTEM-Paket mit
+      # Abhaengigkeiten; ein Cache muesste Pfade und Schluessel pflegen, braucht
+      # fuer die Abhaengigkeiten weiterhin apt, und er kauft Sekunden gegen eine
+      # Fehlerklasse, die die Frist oben schon begrenzt. Mehr bewegliche Teile
+      # fuer weniger Gewinn.
+      # UND: der Schritt beweist am Ende, dass ffmpeg wirklich da ist — ein
+      # `apt-get`, das still nichts installiert, waere sonst ein gruener Schritt
+      # vor einem Klang-Tor, das nichts messen kann.
+      - name: "ffmpeg fuer das Klang-Tor — zwei Anlaeufe, jeder mit eigener Frist (D-510)"
+        timeout-minutes: 6
+        run: |
+          hol() {
+            sudo timeout 100 apt-get update -qq && sudo timeout 120 apt-get install -y -qq ffmpeg
+          }
+          hol || {
+            echo "::warning::erster ffmpeg-Anlauf fehlgeschlagen oder haengend (D-510) — zweiter in 10 s"
+            sleep 10
+            hol
+          }
+          ffmpeg -version | head -1
       - run: node scripts/check-audio.mjs --selftest # S1: fünf echte Defekte müssen rot werden — und ein AUFSTEIGENDER Klang muss grün bleiben
       - run: node scripts/check-audio.mjs # S1/R124: Manifest ↔ Platte ↔ Messdatei, Budgets, und BLUEPRINT :371 als Messung
 
@@ -172,6 +199,7 @@ jobs:
       - run: node scripts/shoot-card-bench.mjs --selftest # W2/D-102 + W5: die Ausschnitt-Rechnung der Kartenbank (ein Motiv unter 40 % der Bildfläche muss rot werden) — startet einen eigenen Chrome
       - run: node scripts/shoot-world.mjs --selftest # W4/D-259: die Kampf-Abtastrate liegt unter beiden Kampf-Takten (entities.ts) und der Beipackzettel erscheint, wenn das Werkzeug mitgespielt hat — der Lauf braucht Chrome + Dev-Server
       - run: node scripts/perf-visible.mjs --selftest # E6/R115: hier läuft kein Chrome; geprüft wird nur, dass die Kontrollschwelle (Kontrollseite unter 58 fps ⇒ Abbruch) ihr rotes Licht erreichen kann
+      - run: node scripts/chrome-hygiene.mjs --selftest # W6/D-438 + W5-Falle 1: eigene Chrome-Profile werden erkannt, FREMDE Browser nie angefasst, und die pgrep -f-Selbstfindung ist ausgeschlossen — der echte Lauf braucht laufende Browser
       - run: node scripts/art-recompress.mjs --selftest # W5/D-339: die Doppellauf-Sperre — eine TOTE Sperre wird übernommen, eine lebende hält, ein laufendes oxipng schlägt beides; der echte Lauf schreibt PNGs und gehört in die Sitzung
 
       # ── zuletzt: das Tor, das diese Datei bewacht ────────────────────────────

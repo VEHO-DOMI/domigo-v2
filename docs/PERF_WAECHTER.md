@@ -132,11 +132,79 @@ Budget wird IMMER nachgemessen**, nachdem diese drei Zeilen sauber sind.
 **Es gibt genau EIN Rezept, und es ist ein Skript:**
 
 ```
-pnpm build && (cd apps/web && npx next start -p <dein Port>)
+pnpm build && (cd apps/web && VERCEL_GIT_COMMIT_SHA=$(git rev-parse HEAD) npx next start -p <dein Port>)
 node --experimental-strip-types scripts/perf-visible.mjs --port <dein Port> --runs 3 --json vorher.json
-# … deine Arbeit …
+# … deine Arbeit … (Server NEU BAUEN und NEU STARTEN, siehe D-443 unten)
 node --experimental-strip-types scripts/perf-visible.mjs --port <dein Port> --runs 3 --baseline vorher.json
 ```
+
+### ★ R183 · Die Zeile, die sagt, WELCHEN Bau du gemessen hast (R5-W7 · W6)
+
+Das `VERCEL_GIT_COMMIT_SHA=` im Startbefehl ist kein Zierat. Bis zur Welle 7
+schrieb `perf-visible` als `commit` den HEAD **seines eigenen Verzeichnisses** —
+B5s und D4s Vorher/Nachher-JSON trugen deshalb denselben Hash, obwohl zwischen
+den beiden Messungen gemergt worden war, und an der Datei war es nicht zu sehen.
+Eine Vorher/Nachher-Tabelle, deren beide Hälften nachweislich am selben Bau
+entstanden sind, sagt über die Änderung nichts.
+
+Mit der Umgebungsvariable meldet `/api/version` den Commit des Prozesses, der
+gerade gemessen wird — die einzige **geprüfte** Quelle, weil sie aus dem
+gemessenen Server selbst kommt. `perf-visible` liest sie und druckt:
+
+```
+Gemessener Bau: <commit> · Quelle: /api/version — der gemessene Server hat es selbst gesagt (GEPRÜFT)
+```
+
+**Diese Zeile gehört in den PR-Text, einmal für vorher und einmal für nachher.**
+`check-perf-table.mjs` liest sie: zwei identische Angaben sind ROT.
+Zwei Ausweichwege, beide ERKLÄRT statt geprüft, beide im Beipackzettel benannt:
+`--worktree <pfad>` (der Aufrufer behauptet, dass dort der gemessene Server
+läuft) und `--build-label "<text>"` (wenn es keinen Commit gibt). Ohne eine
+dieser drei Angaben **bricht der Lauf ab** — der stille Rückfall auf das eigene
+Verzeichnis ist entfernt, nicht umbenannt.
+
+### ★ D-443 · Der Server liefert das ALTE Level (R5-W7 · W6)
+
+B5 hat es bezahlt: nach einer Level-Änderung zeigten **zwei** Bildreihen still
+die alte Zelle. Der Dev-Server hielt `ch01.level.json` in seinem
+Zwischenspeicher; nichts war rot, die Bilder waren einfach falsch.
+
+**Nach JEDER Level-Änderung: Server beenden und neu starten.** Und danach
+nachsehen, statt zu hoffen — `shoot-world` tut es ab sofort selbst, VOR dem
+ersten Bild:
+
+```
+node scripts/shoot-world.mjs <out> --phase p1 --port <port> …
+#   → "D-443: der Server liefert die Zeilen-Landkarte, die auf der Platte liegt."
+#   → oder Exit 1 mit Grund, und KEIN Bild wird geschrieben
+```
+
+Es gibt keine `…/level.json`-Adresse zum Curlen: das Level wird serverseitig
+gelesen (`apps/web/lib/paint-content.ts`) und als Prop in die Seite gereicht.
+Geprüft wird deshalb die **ausgelieferte Seite** — die Zeilen-Landkarte jeder
+Phase steht dort als JSON-Array, und eine einzige geänderte Zelle ändert sie.
+(Am 22.08. am lebenden Fall nachgemessen: eine Zelle geändert, Server nicht neu
+gestartet ⇒ Exit 1.)
+
+### ★ D-438 · Die Lastlesung darf nicht den eigenen Browser mitzählen (R5-W7 · W6)
+
+`chrome.kill()` schickt ein Signal und kehrt zurück; das Ende des Prozesses
+passiert danach. E7s Lastlesung sah deshalb den eigenen, gerade beendeten
+Browser (`pgrep -f headless=new` meldete erst **2**, dann **0**).
+
+`perf-visible` und `shoot-world` warten jetzt selbst auf das PROZESS-ENDE — erst
+das `exit`-Ereignis des eigenen Kindes, dann die Prozesstabelle, bis kein
+Prozess mit dem eigenen Profil mehr steht — und drucken die Wartezeit:
+
+```
+Eigener Chrome beendet nach 184 ms (D-438).
+```
+
+**Erst ab dieser Zeile misst `pgrep -x`/`sysctl -n vm.loadavg` die Maschine und
+nicht diesen Lauf.** Beide Werkzeuge räumen ausserdem beim START verwaiste
+EIGENE Profile weg und sagen es (W5s Falle 1: ein abgebrochener Lauf lässt seinen
+Chrome am Leben, und der Folgelauf hängt daran). Fremde Browser werden nie
+angefasst — sie sind Last, die gemeldet gehört, nicht Müll (D-339).
 
 Der zweite Lauf druckt die fertige Wächter-Tabelle mit »vorher / nachher« in
 jeder Zelle — genau in der Form, die `check-perf-table.mjs` im PR-Text verlangt —

@@ -124,6 +124,17 @@ const SELFTEST_ONLY = {
   // messen, liegt nicht im Repo.
   "measure-residue.mjs":
     "vergleicht ein Bestands-Blatt mit einer LIEFERUNG aus dem Codex-Labor; die Lieferung liegt per Konstruktion nicht im Repo (CP-15), also gibt es in CI kein Paar zu messen. Der Selbsttest baut sich seines und prüft beide Richtungen: Gold und Kontur bleiben stumm, der Flicken wird gefunden",
+  // R5-W7 · W6: die Chrome-Hygiene ist eine BIBLIOTHEK mit eigenem Selbsttest
+  // (D-438 + W5-Falle 1). Ein »echter Lauf« hiesse: die Prozesstabelle lesen und
+  // verwaiste EIGENE Chrome-Profile beenden — in CI laeuft kein Chrome, es gaebe
+  // also nichts zu finden und nichts zu beenden, und ein Lauf, der per
+  // Konstruktion nichts sieht, ist kein Beweis. Der Selbsttest dagegen prueft
+  // genau das, was schiefgehen kann: dass fremde Browser NICHT als eigene
+  // gezaehlt werden und dass die Suche sich nicht selbst findet (die
+  // pgrep -f-Falle). Damit steigt diese Liste von 9 auf 10 — das ist ein NEUES
+  // Werkzeug, kein umdeklariertes Tor.
+  "chrome-hygiene.mjs":
+    "liest die Prozesstabelle und raeumt verwaiste EIGENE Chrome-Profile weg; in CI laeuft kein Chrome, ein echter Lauf faende per Konstruktion nichts. Der Selbsttest prueft die Unterscheidung eigen/fremd an einer ECHTEN Prozesstabelle mit angehaengten Fremd-Zeilen",
   "art-recompress.mjs":
     "SCHREIBT PNGs (verlustfreie Nachverdichtung) — ein echter Lauf in CI würde die Arbeitskopie verändern und den Beweis von check-png-identity aushebeln. Der Selbsttest prüft die Doppellauf-Sperre (D-339) ohne eine Datei anzufassen",
 };
@@ -397,6 +408,21 @@ if (selftest) {
   const ohneZeile = (teil, nurEchte = false) => ciOnDisk.split("\n")
     .filter((l) => !(l.includes(teil) && (!nurEchte || !l.includes("--selftest")))).join("\n");
 
+  /** D-511s Vorfall, nachgebaut: der ERSTE zitierte Schritt-Name wird entzitiert
+   *  und bekommt ein »: « — genau die Form, die GitHub am 19.08. null Jobs
+   *  starten liess. Der Anker ist ein MUSTER, kein abgeschriebener Wortlaut:
+   *  eine Verfaelschung, die ins Leere greift, faerbt nichts und beweist nichts,
+   *  also bricht sie hier laut ab (Fixture-Verrottung, in dieser Sitzung einmal
+   *  passiert und vom Selbsttest selbst gefunden). */
+  const unzitierterName = (text) => {
+    const m = /^(\s*- name: )"([^"\n]+)"\s*$/m.exec(text);
+    if (m === null) throw new Error("kein zitierter Schritt-Name in ci.yml — der D-511-Fall kann nicht gebaut werden");
+    const kaputt = `${m[1]}${m[2].replace(/\s*—\s*/, " (Zeitgrenze: ")}`;
+    const neu = text.replace(m[0], kaputt);
+    if (neu === text) throw new Error("die D-511-Verfaelschung hat nichts veraendert");
+    return neu;
+  };
+
   const cases = [
     ["ein Tor verschwindet aus CI", () => analyse({
       ...WELT, ciText: ciOnDisk.replace(/scripts\/check-paint-art\.mjs/g, "scripts/__weg.mjs"),
@@ -417,10 +443,7 @@ if (selftest) {
     // war rot ohne Log — und dieses Tor blieb grün, weil es die Datei nur
     // zeilenweise las. Der Wortlaut ist der echte Vorfall vom 19.08.
     ["D-511: ein unzitierter Schritt-Name mit »: « macht die Datei unlesbar", () => analyse({
-      ...WELT,
-      ciText: ciOnDisk.replace(
-        '      - name: "ffmpeg fuer das Klang-Tor — Zeitgrenze statt Haenger"',
-        "      - name: ffmpeg (Zeitgrenze: haengender Spiegel statt Sekunden)"),
+      ...WELT, ciText: unzitierterName(ciOnDisk),
     }), true],
     ["gültiges YAML, aber kein einziger Job", () => analyse({
       ...WELT, ciText: "name: ci\non:\n  push:\n    branches: [main]\njobs: {}\n",
