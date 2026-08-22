@@ -181,6 +181,52 @@ prüft, dass die Kontrollschwelle in beide Richtungen funktioniert — der Tampe
 biegt die Schwelle über den GEMESSENEN Wert, nie gegen die Konfiguration (P-71).
 Das Skript ist damit ausdrücklich **Werkzeug, kein Tor**.
 
+## 3c · Woraus `create()` heute besteht (R5-W7 · E8, 2026-08-22, as built)
+
+Gemessen auf dem ZWEITEN Mac (der erste ist mit R204 weg; die Zahlen der Wellen 5/6
+stammen von der alten Maschine und sind mit diesen **nicht** vergleichbar). Fünf
+abwechselnde Paare Basis/Zweig, Median, sichtbarer Chrome, Kontrollseite 61,0–61,8 fps:
+
+| `create()` (ms) | p1 | p2 | p3 | p4 | p9 |
+|---|---|---|---|---|---|
+| vor E8 | 139,2 | 282,2 | 120,3 | 72,4 | 71,8 |
+| nach E8 | **124,9** | **124,1** | **108,8** | **70,5** | **70,8** |
+
+**Der größte Posten ist jetzt der Musterbau je BLATT, und er ist nicht wegzurechnen.**
+Jede `TileSprite` zeichnet ihr Blatt in eine Leinwand in Zweierpotenz-Größe und lädt
+sie zur Grafikkarte. Seit E8 passiert das **einmal je Blatt** statt einmal je Stück
+(p1: 17 statt 145 · p2: 11 statt 331). Was bleibt, sind 23–56 ms je Raum für diese
+17/11/10/9/7 Bauten — und das Muster ist eine auf Zweierpotenz UMGERECHNETE Fassung
+des Blattes (`canopy_fringe_loop` 2048×384 → 2048×512), nicht das Blatt selbst. Auf
+die schon hochgeladene Quelltextur zu zeigen wäre also ein anderes Bild. Kosten je
+Blatt, gemessen: **rund 1 ms fest plus 2 ms je Zweierpotenz-Megabyte** (0,5 MB → 1,3–2,6 ms ·
+1 MB → 4,0–4,7 · 4 MB → 8,8–12,4).
+
+**Die zwei nächsten Posten, beide beziffert, keiner ohne Bildfrage:** `letterTex`
+14,9/13,3/16,8/0/15,9 ms (7–9 Leinwände je Raum, ~1,9 ms je Zeichen — der Rand hängt
+am Raum, also kann kein Raum die Leinwände des anderen erben, D-432) und die
+Graustufen-Kopien in `entityImgs` 15,0/23,4/15,0/5,0/0 ms (5/8/5/1/0 gerechnete Kopien;
+was zweimal gebraucht wird, liegt beim zweiten Mal im spielweiten Texturspeicher).
+
+**Zwei Zeilen in der Bauschritt-Tabelle sagen, ob die Teilung überhaupt greift:**
+»Muster gebaut« und »Bauten gespart«. Steht dort 0 gespart, hängt die Umhängung nicht
+(`PaintScene#patchTileBuild`) — die Zahl ist der Wächter, kein Schmuck.
+
+### Wie man unter Fremdlast überhaupt noch etwas messen kann
+
+Am 22.08. liefen sechs Sitzungen auf derselben Maschine (Lastmittel 4,7–34). **Absolute
+Millisekunden sind dann nicht entscheidbar**: derselbe Bau, zweimal gemessen, ergab für
+p2 216 und 386 ms. Was trägt:
+
+1. **Paare, abwechselnd**, im selben Fenster (Basis, Zweig, Basis, Zweig …) — fünf Paare,
+   Median je Seite. Nie zwei Zweige gegen ein altes Protokoll.
+2. **Die Kontrolle derselben Fassung gegen sich selbst** vor jedem Urteil: sie ist der
+   Rauschpegel, und ohne sie ist jedes Delta eine Erzählung.
+3. **Zwischen zwei Läufen warten, bis der eigene Browser wirklich weg ist** (D-438) — sonst
+   zahlt der zweite Lauf die Abbau-Rechnung des ersten.
+4. **Was innerhalb EINES Laufs gezählt wird** (Stück-Zeilen, Blattzahlen), ist von der
+   Maschine unabhängig und überlebt jede Last.
+
 ## 4 · Das Messritual (so misst Koki)
 
 1. Kapitel mit **`?perf=1`** aufrufen (Lehrer-Tür, wie `?grid=1`). Unten links

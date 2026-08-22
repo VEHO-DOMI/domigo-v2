@@ -1683,6 +1683,11 @@ export class PaintScene extends Phaser.Scene {
   }
 
   private buildEntityImgs(): void {
+    // R5-W7 · E8 · R186a: dieser Block schwankte zwischen 0,8 und 465 ms, und
+    // niemand konnte sagen, WOVON. Er hat jetzt zwei Kinder — die Bilder selbst
+    // und die Graustufen-Kopien —, disjunkt und beide unter `entityImgs`.
+    let greyMs = 0;
+    const tImgs = performance.now();
     for (const e of this.world.entities) {
       // PK-R6 · H1: a being that is ALREADY free when this phase builds was
       // freed in an earlier visit (freedCageIds carries that across mounts), so
@@ -1774,7 +1779,9 @@ export class PaintScene extends Phaser.Scene {
       // SAME texture every frame — so it drains whatever cell the being is
       // showing, including cells and skins that do not exist yet.
       if (WASHED_ROLES.has(e.role)) {
+        const tGrey = performance.now();
         const greyKey = this.greyTexOf(img.texture.key);
+        greyMs += performance.now() - tGrey;
         const wash = this.add.image(fromSubs(e.x), fromSubs(e.y), greyKey).setDepth(7.01).setOrigin(0.5, 1);
         // PK-R6 · H1: only a copy the canvas could NOT grey still wears the old
         // multiply — see greyTexOf. A real grey copy is drawn as it is, because
@@ -1793,7 +1800,19 @@ export class PaintScene extends Phaser.Scene {
         this.bloomImgs.set(e.id, bloom);
       }
     }
+    // die Graustufen-Zeit wird aus der Bilder-Zeile HERAUSGERECHNET: zwei Kinder,
+    // die einander überlappen, summieren sich über ihren Elternteil (E7s Lehre)
+    this.buildMs.push({ step: "· bilder", ms: performance.now() - tImgs - greyMs, parent: "entityImgs" });
+    this.buildMs.push({ step: "· graustufen-kopien", ms: greyMs, parent: "entityImgs" });
+    this.buildMs.push({ step: "· davon schon im Speicher — STÜCK, nicht ms", ms: this.greyHits, parent: "entityImgs" });
+    this.buildMs.push({ step: "· neu gerechnet — STÜCK, nicht ms", ms: this.greyBuilds, parent: "entityImgs" });
   }
+
+  /** R5-W7 · E8 · R186a: wie oft die Graustufen-Kopie schon dalag (der
+   *  Texturspeicher lebt im SPIEL, nicht in der Szene) und wie oft sie wirklich
+   *  gerechnet wurde — die Streuung 465/218/334 ms hängt an genau dieser Frage. */
+  private greyHits = 0;
+  private greyBuilds = 0;
 
   /**
    * PK-R6 · H1 · THE DRAINED COPY (round-1 critique, findings 1 and 2) — the
@@ -1840,8 +1859,12 @@ export class PaintScene extends Phaser.Scene {
    */
   private greyTexOf(key: string): string {
     const greyKey = `${key}__grey`;
-    if (this.textures.exists(greyKey)) return greyKey;
+    if (this.textures.exists(greyKey)) {
+      this.greyHits += 1;
+      return greyKey;
+    }
     if (!this.textures.exists(key)) return key;
+    this.greyBuilds += 1;
     const src = this.textures.get(key).getSourceImage() as HTMLImageElement | HTMLCanvasElement;
     const w = Math.round(src?.width ?? 0);
     const h = Math.round(src?.height ?? 0);
@@ -5673,7 +5696,11 @@ export class PaintScene extends Phaser.Scene {
     // Schluessel truege die zweite Phase die Kontur der ersten.
     const rim = letterRimFor(this.comp?.key ?? 88);
     const key = `pb-glyph-${char}-k${Math.round(this.comp?.key ?? 88)}`;
-    if (this.textures.exists(key)) return key;
+    if (this.textures.exists(key)) {
+      this.letterHits += 1;
+      return key;
+    }
+    this.letterBuilds += 1;
     const S = 128;
     // ★ R5-W5 · E6 · DIESE STELLE BLEIBT, WIE SIE IST — und das ist ein MESSWERT,
     // keine Bequemlichkeit. Die Ein-Upload-Reparatur aus `greyTexOf` (dort 580 →
@@ -5771,6 +5798,10 @@ export class PaintScene extends Phaser.Scene {
    *  cell the loop looked at and did nothing with. */
   private static readonly PROP_GLYPHS = ["o", "*", "X", "B", "s", "V", "C"] as const;
 
+  /** R5-W7 · E8 · D-432: gebaute gegen wiederverwendete Buchstaben-Leinwände. */
+  private letterHits = 0;
+  private letterBuilds = 0;
+
   private buildProps(): void {
     let tSub = performance.now();
     const glyphs = new Map(letterGlyphs(this.grid, this.comp?.words).map((g) => [`${g.c},${g.r}`, g.char]));
@@ -5866,6 +5897,10 @@ export class PaintScene extends Phaser.Scene {
     }
     this.buildMs.push({ step: "· gitter", ms: performance.now() - tSub - letterMs, parent: "props" });
     this.buildMs.push({ step: "· letterTex", ms: letterMs, parent: "props" });
+    // R5-W7 · E8 · D-432: der Zwischenspeicher je Zeichen ist gebaut — diese zwei
+    // Zeilen sagen, ob er überhaupt greift oder ob jede Zelle neu setzt.
+    this.buildMs.push({ step: "· · Leinwände gebaut — STÜCK, nicht ms", ms: this.letterBuilds, parent: "props" });
+    this.buildMs.push({ step: "· · aus dem Speicher — STÜCK, nicht ms", ms: this.letterHits, parent: "props" });
     // R5-A2: seed the HUD from the sim, not from zero — a ledger remount
     // starts with the purse the child left with (a fresh mount stays 0).
     this.cfg.callbacks.onLetters(this.sim.lettersGot, this.sim.lettersTotal);
