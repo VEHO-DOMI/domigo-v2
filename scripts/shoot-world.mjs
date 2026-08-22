@@ -110,13 +110,35 @@ const flag = (name, fallback) => {
 };
 const has = (name) => argv.includes(name);
 
-// ── R5-W5 · W4 · D-259 · `--fight`: DIE TAKTE DES KAMPFS ALS BILDREIHE ──────
+// ── R5-W8 · W7 · `--fight` STEHT AB JETZT AUF S4s TREIBER (R209d/D-558) ─────
+//
+// Was hier vorher stand, ist dreimal gescheitert, und H5 §5 hat es mit Zahlen
+// aufgeschrieben: der Lauf fror bei Takt 251 und 478 ein, sein Kartenlöser
+// feuerte nie, und 600 getriebene Takte ließen `knots` unbewegt bei 3. Der
+// Grund war keine Kleinigkeit an diesem Skript, sondern eine fehlende Fähigkeit
+// im Spiel: die Boss-Karte kommt hinter einem ECHTEN Zeitgeber, und eine
+// synchrone Takt-Schleife lässt ihn nie feuern.
+//
+// S4 hat die Fähigkeit gebaut (PR #351) und EINE Schnittstelle dafür erklärt:
+//   window.__domigoPaint.fight = { load(pads) · advance(maxTicks?) · read() · release() }
+// `advance()` ist AWAIT-BAR (das ist der ganze Punkt) und hält BEI jedem Wisch
+// an — genau der stehende Augenblick, den P7 §12.8 fotografierbar haben wollte.
+//
+// Dieses Skript erfindet daran nichts. Es reicht das aufgezeichnete Band der
+// Phase herein (`ch01.proof.json` → `phases[<phase>].pads`; der Aufrufer reicht
+// es, damit Prüf-Inhalt nicht ins Bündel des Kindes wandert), fährt von Halt zu
+// Halt und fotografiert jeden. Mit `--every n` wird ZUSÄTZLICH alle n Takte ein
+// Bild genommen — dafür, und nur dafür, gilt die Abtast-Regel unten weiter.
+//
+// ── R5-W5 · W4 · D-259 · DIE ABTASTRATE UND DER BEIPACKZETTEL ───────────────
 //
 // Zwei Gesetze, die dieser Modus braucht und die OHNE Browser prüfbar sind —
 // deshalb stehen sie hier oben, vor allem, was Chrome anfasst, und deshalb kann
 // `--selftest` sie in CI fahren.
 //
-// GESETZ 1 · DIE ABTASTRATE. Der Kampf hat zwei Takte: der Wisch dauert
+// GESETZ 1 · DIE ABTASTRATE — sie gilt für das ZUSÄTZLICHE Abtasten (--every).
+// Von Halt zu Halt braucht es sie nicht: dort bestimmt das Ereignis den
+// Auslöser, nicht eine Rate. Der Kampf hat zwei Takte: der Wisch dauert
 // WIPE_TICKS, der Knoten-Schlag KNOT_BEAT_TICKS. Wer seltener abtastet als
 // halb so oft (Nyquist), fotografiert eine Bewegung, die es nicht gibt — die
 // Alias-Falle, die D-171 gemeldet hat. Die Zahlen sind hier KOPIERT, und weil
@@ -135,9 +157,16 @@ export const maxEveryForFight = (beats = FIGHT_BEATS) =>
 // Vermerk, nicht nur das eine, an dem es passierte.
 export const BEIPACKZETTEL = "Werkzeug hat die Karte gelöst (solveTask ⇒ resolveCorrect) — "
   + "diese Reihe zeigt den Kampf, NICHT das Spiel eines Kindes";
-export const fightSidecar = (geloest) => (geloest.length === 0
-  ? { fight: true, karten: [] }
-  : { fight: true, karten: geloest, beipackzettel: BEIPACKZETTEL });
+// R5-W8 · W7: der Treiber des Spiels beantwortet die Karten selbst und meldet
+// nur ihre ZAHL zurueck (er kennt ihre Namen nicht mehr, als das Kind sie
+// kennt). Der Zettel nimmt deshalb beides — eine Namensliste wie bisher oder
+// eine Zahl. Was er NICHT tut, ist schweigen, sobald das Werkzeug mitgespielt
+// hat: genau dafuer gibt es ihn.
+export const fightSidecar = (geloest) => {
+  const anzahl = Array.isArray(geloest) ? geloest.length : Number(geloest ?? 0);
+  if (anzahl === 0) return { fight: true, karten: Array.isArray(geloest) ? [] : 0 };
+  return { fight: true, karten: geloest, beipackzettel: BEIPACKZETTEL };
+};
 
 // ── R5-W7 · W6 · D-443 · DER SERVER LIEFERT DAS ALTE LEVEL ──────────────────
 //
@@ -270,6 +299,9 @@ if (has("--selftest")) {
   // 3 · der Beipackzettel erscheint GENAU DANN, wenn eine Karte gelöst wurde —
   //     beide Richtungen, sonst prüft der Fall nur eine.
   ok("ohne gelöste Karte kein Beipackzettel", fightSidecar([]).beipackzettel, undefined);
+  ok("…auch dann nicht, wenn die Zahl 0 gemeldet wird", fightSidecar(0).beipackzettel, undefined);
+  ok("eine gemeldete ZAHL beantworteter Karten traegt ihn", fightSidecar(3).beipackzettel, BEIPACKZETTEL);
+  ok("…und die Zahl steht mit dabei", fightSidecar(3).karten, 3);
   ok("mit gelöster Karte steht er drauf", fightSidecar(["wer"]).beipackzettel, BEIPACKZETTEL);
   ok("…und er nennt den Grund beim Namen", fightSidecar(["wer"]).beipackzettel.includes("resolveCorrect"), true);
   ok("…und die Karten stehen mit dabei", fightSidecar(["wer", "wie"]).karten.join(","), "wer,wie");
@@ -384,6 +416,11 @@ const shots = plan.shots;
 // D-171: im Kampf wird die Rate ERZWUNGEN, nicht dem Aufrufer überlassen.
 const everyWunsch = Number(flag("--every", fight ? 8 : 6));
 const every = fight ? Math.min(everyWunsch, maxEveryForFight()) : everyWunsch;
+// Im Kampf wird NUR abgetastet, wenn der Aufrufer es verlangt. Ohne --every
+// faehrt der Treiber von Wisch zu Wisch — das Ereignis ist der Ausloeser.
+const kampfTastetAb = fight && argv.includes("--every");
+/** Wo das aufgezeichnete Band liegt (S4 reicht es herein, es steht nicht im Bündel). */
+const bandDatei = flag("--band", "content/corpus/stories/g1.st.lost-pages/paint/ch01.proof.json");
 // …und p4 läuft mit 240 Setz-Schritten über sein Ende hinaus (gemessen 17.08.:
 // bei 240 steht der Tick hinterher, bei 20 und 60 läuft die Welt).
 // …und ein Standbild will nicht 240 Schritte weit weg von dem Augenblick sein,
@@ -400,7 +437,11 @@ const tickWunsch = flag("--tick", null) === null ? null : Number(flag("--tick", 
 // Der Schuss darf den Augenblick nicht selbst wegschieben: `rafStep()` treibt die
 // Uhr mit und damit auch die Tweens, an denen die Blase haengt. Im Standbild-Modus
 // ist `--pure` deshalb der Standard und nicht eine Bitte (gesagt wird es unten).
-const pure = has("--pure") || standbild;
+// …und im Kampf ist es keine Bitte, sondern Pflicht: `rafStep()` würde die Uhr
+// NEBEN dem Band mittreiben, und ein aufgezeichnetes Band setzt genau ein Bild
+// je Takt voraus (S4 hat denselben Fehler gemessen: 627 Bandtakte gegen 782
+// Szenen-Takte, derselbe Lauf zweimal verschieden).
+const pure = has("--pure") || standbild || fight;
 const visible = has("--visible");
 
 if (!existsSync(CHROME)) { console.error(`kein Chrome unter ${CHROME}`); process.exit(1); }
@@ -958,43 +999,125 @@ try {
   }
 
   // ── 9 · die Reihe ────────────────────────────────────────────────────────
-  // Im Kampf-Modus (D-259) kommen zwei Dinge dazu, und beide sind Ehrlichkeit,
-  // nicht Bequemlichkeit: zwischen den Aufnahmen wird eine aufgehende Karte
-  // weggeräumt (sonst friert sie die Welt ein und die halbe Reihe ist N-mal
-  // dasselbe Bild), und JEDES Bild trägt den Vermerk, dass das Werkzeug dabei
-  // mitgespielt hat.
-  const geloest = [];
-  for (let i = 1; i <= shots; i++) {
-    if (fight) {
-      for (let k = 0; k < 6 && (await karteOffen()); k++) {
-        geloest.push(await karte());
-        await evalIn(`window.__domigoPaint.solveTask()`);
-        await sleep(140);
-      }
-    }
-    const tick = await evalIn(`window.__domigoPaint.state().tick`);
-    await shoot(`${stem}_${String(i).padStart(3, "0")}`, {
-      serie: stem, nr: i, tickBefore: tick,
-      ...(fight ? fightSidecar([...new Set(geloest)]) : {}),
-      // R5-W8 · W7: was der Lauf GELESEN hat, nicht was er vermutet.
-      ...(standbild ? { standbild: true, weltStand: weltStehtGrund } : {}),
-      ...(pressKarten.length === 0
-        ? {}
-        : { pressKarten: [...new Set(pressKarten)], beipackzettel: BEIPACKZETTEL }),
-      ...(toastGelesen === null ? {} : { toast: toastGelesen }),
-    });
-    if (i < shots) await evalIn(`window.__frameSink.drive(${every})`);
-  }
-  console.log(`  ${shots} Aufnahmen · alle ${every} Ticks`
-    + (tickWunsch === null ? "" : ` · erste Aufnahme auf Tick ${tickWunsch} fixiert`)
-    + ` · ${path.resolve(outDir)}`);
+  const zettelGemeinsam = () => ({
+    // R5-W8 · W7: was der Lauf GELESEN hat, nicht was er vermutet.
+    ...(standbild ? { standbild: true, weltStand: weltStehtGrund } : {}),
+    ...(pressKarten.length === 0
+      ? {}
+      : { pressKarten: [...new Set(pressKarten)], beipackzettel: BEIPACKZETTEL }),
+    ...(toastGelesen === null ? {} : { toast: toastGelesen }),
+  });
+
   if (fight) {
-    const karten = [...new Set(geloest)];
-    console.log(`  Kampf-Modus: Abtastrate ${every} Ticks (Wisch ${FIGHT_BEATS.WIPE_TICKS} · `
-      + `Knoten-Schlag ${FIGHT_BEATS.KNOT_BEAT_TICKS} — D-171)`);
-    console.log(karten.length === 0
-      ? "  Keine Karte ging auf — die Reihe zeigt den Kampf ohne Zutun des Werkzeugs."
-      : `  ⚠ BEIPACKZETTEL: ${BEIPACKZETTEL}. Gelöste Karten: ${karten.join(", ")}`);
+    // ── 9a · DER KAMPF, AUF S4s TREIBER (R209d, zu D-558) ──────────────────
+    // Kein eigener Kartenlöser mehr und keine eigene Takt-Schleife: beides ist
+    // dreimal gescheitert (H5 §5). Der Treiber gehört dem Spiel, dieses Skript
+    // reicht ihm das Band und fotografiert seine Halte.
+    const fightDa = await evalIn(`typeof window.__domigoPaint.fight?.advance === "function"`);
+    if (!fightDa) {
+      await fail("--fight braucht den Kampf-Treiber des Spiels (`__domigoPaint.fight`, S4/R209d, PR #351), "
+        + "und dieser Server hat ihn nicht. Er ist DEV-ONLY und liegt bewusst nicht im Produktionsbündel — "
+        + "gegen einen Produktionsbau ist --fight also per Bauart nicht zu haben. "
+        + "Der alte Weg (eigene Takt-Schleife + eigener Kartenlöser) ist WEG und kommt nicht zurück: "
+        + "er ist an der Boss-Karte hinter ihrem echten Zeitgeber dreimal gescheitert (D-558).");
+    }
+
+    const fsMod = await import("node:fs");
+    let pads = null;
+    try {
+      const band = JSON.parse(fsMod.readFileSync(bandDatei, "utf8"));
+      pads = band?.phases?.[phase]?.pads ?? null;
+    } catch (e) {
+      await fail(`--fight: das aufgezeichnete Band ${bandDatei} war nicht lesbar (${e.message}).`);
+    }
+    if (!Array.isArray(pads) || pads.length === 0) {
+      await fail(`--fight: ${bandDatei} führt für die Phase »${phase}« kein Band (\`phases.${phase}.pads\`). `
+        + "Ein Kampf ohne Band wäre eine erfundene Eingabe — genau das, was S4s Treiber ausschließt.");
+    }
+    const takte = await evalIn(`window.__domigoPaint.fight.load(${JSON.stringify(pads)})`);
+    console.log(`  Kampf-Treiber: Band ${bandDatei} · Phase ${phase} · ${pads.length} Abschnitte = ${takte} Takte`);
+    console.log(kampfTastetAb
+      ? `  …und zusätzlich abgetastet, höchstens alle ${every} Takte (Wisch ${FIGHT_BEATS.WIPE_TICKS} · `
+        + `Knoten-Schlag ${FIGHT_BEATS.KNOT_BEAT_TICKS} — D-171)`
+      : "  …von Wisch zu Wisch: der Auslöser ist das Ereignis, nicht eine Rate (--every tastet zusätzlich ab).");
+
+    const halte = [];
+    let bild = 0;
+    let halt = null;
+    // ── DER ANFANGSZUSTAND, bevor die erste Schicht faellt ─────────────────
+    // Ohne ihn zeigt die Reihe nur die Halte NACH einem Wisch — und ein
+    // Vorher/Nachher ohne Vorher ist keins. Der Lesestand kommt aus `read()`,
+    // ohne einen Takt zu fahren.
+    {
+      const anfang = await evalIn(`window.__domigoPaint.fight.read()`);
+      bild = 1;
+      await shoot(`${stem}_${String(1).padStart(3, "0")}`, {
+        serie: stem, nr: 1, tickBefore: anfang?.tick ?? -1,
+        ...zettelGemeinsam(),
+        ...fightSidecar(0),
+        kampf: {
+          grund: "anfang", gespielt: 0, takt: anfang?.tick ?? -1,
+          schichten: anfang?.knots ?? null, schichtenGesamt: anfang?.knotsTotal ?? null,
+          wische: [], karten: 0, fertig: false,
+        },
+      });
+      console.log(`  Halt 0: anfang · Takt ${anfang?.tick ?? "—"} · Schichten `
+        + `${anfang?.knots ?? "—"}/${anfang?.knotsTotal ?? "—"} (der Zustand VOR dem ersten Wisch)`);
+    }
+    for (let i = 2; i <= shots; i++) {
+      // `advance` ist AWAIT-BAR, und das ist der ganze Unterschied zu den drei
+      // gescheiterten Anläufen: die Boss-Karte kommt hinter einem echten
+      // Zeitgeber, und eine synchrone Schleife lässt ihn nie feuern.
+      halt = await evalIn(
+        `window.__domigoPaint.fight.advance(${kampfTastetAb ? every : ""})`, true,
+      );
+      halte.push(halt);
+      bild = i;
+      await shoot(`${stem}_${String(i).padStart(3, "0")}`, {
+        serie: stem, nr: i, tickBefore: halt.tick,
+        ...zettelGemeinsam(),
+        // Was der TREIBER beantwortet hat, steht in seinem eigenen Halt — nicht
+        // in einer Liste, die dieses Skript fuehrt. Es fuehrt keine mehr.
+        ...fightSidecar(halte.reduce((a, h) => a + h.cards, 0)),
+        // …und der Halt selbst, gelesen: der Grund, die Schichtzahl, die Wische.
+        kampf: {
+          grund: halt.reason, gespielt: halt.played, takt: halt.tick,
+          schichten: halt.knots, schichtenGesamt: halt.knotsTotal,
+          wische: halt.wipes, karten: halt.cards, fertig: halt.done,
+        },
+      });
+      console.log(`  Halt ${i}: ${halt.reason} · Takt ${halt.tick} · Schichten ${halt.knots}/${halt.knotsTotal}`
+        + `${halt.wipes.length === 0 ? "" : ` · gewischt auf ${halt.wipes.join(", ")}`}`
+        + `${halt.cards === 0 ? "" : ` · ${halt.cards} Karte(n) beantwortet`}`);
+      if (halt.done) break;
+      if (halt.reason === "stillstand") break;
+    }
+    await evalIn(`window.__domigoPaint.fight.release()`);
+
+    // ── die Bilanz, aus dem GELESENEN, nicht aus der Absicht ───────────────
+    const wische = halte.flatMap((h) => h.wipes);
+    const karten = halte.reduce((a, h) => a + h.cards, 0);
+    console.log(`  ${bild} Aufnahme(n) · ${path.resolve(outDir)}`);
+    console.log(wische.length === 0
+      ? "  ⚠ KEINE Schicht ist in diesem Lauf gefallen — die Lebensanzeige ist hier NICHT fallen gesehen worden."
+      : `  Schichten gefallen auf: ${wische.join(" → ")} (das ist die Lebensanzeige, fallend gesehen)`);
+    if (karten > 0) console.log(`  ⚠ BEIPACKZETTEL: ${BEIPACKZETTEL}. Beantwortete Karten: ${karten}`);
+    if (halt !== null && halt.reason === "stillstand") {
+      console.log("  ⚠ Der Treiber meldet einen benannten STILLSTAND — er hängt nicht, er sagt es. "
+        + "Das ist die Lage aus D-558, diesmal mit Namen statt mit Schweigen.");
+    }
+  } else {
+    for (let i = 1; i <= shots; i++) {
+      const tick = await evalIn(`window.__domigoPaint.state().tick`);
+      await shoot(`${stem}_${String(i).padStart(3, "0")}`, {
+        serie: stem, nr: i, tickBefore: tick,
+        ...zettelGemeinsam(),
+      });
+      if (i < shots) await evalIn(`window.__frameSink.drive(${every})`);
+    }
+    console.log(`  ${shots} Aufnahmen · alle ${every} Ticks`
+      + (tickWunsch === null ? "" : ` · erste Aufnahme auf Tick ${tickWunsch} fixiert`)
+      + ` · ${path.resolve(outDir)}`);
   }
   await bail(0);
 } catch (err) {
