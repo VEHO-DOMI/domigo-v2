@@ -1,17 +1,25 @@
 import Link from "next/link";
 import { listApprovedUnits } from "@domigo/content-loader";
+import { isSlugAllowed, resolveVisibleGrades } from "@/lib/grade-scope";
+import { getActingUserForPage } from "@/lib/identity";
 
 // Reads the corpus via fs at request time — never statically pre-rendered.
 export const dynamic = "force-dynamic";
 
-export default function PracticeIndex() {
+export default async function PracticeIndex() {
   const units = listApprovedUnits();
-  const grades = [1, 2, 3, 4] as const;
+  // P1 (P-R1.5): a child sees only its own class's school year. Unlike the other
+  // three list pages this one carries no session gate of its own — the middleware
+  // owns that — so a missing identity must NOT redirect here; it degrades to all
+  // four years (as does a teacher, who has no classId). Never an empty page.
+  const acting = await getActingUserForPage();
+  const grades = await resolveVisibleGrades(acting?.classId);
+  const inScope = units.filter((s) => isSlugAllowed(s, grades));
   return (
     <main style={{ maxWidth: 760, margin: "0 auto", padding: "28px 20px 48px", fontFamily: "var(--font-body)", color: "var(--text)" }}>
       <h1 style={{ fontSize: 28, margin: "0 0 4px", fontFamily: "var(--font-display)", color: "var(--ink)" }}>Practice</h1>
       <p style={{ color: "var(--text-secondary)", marginTop: 0 }}>
-        {units.length} approved units — load any to render and grade its real items.
+        {inScope.length} approved units — load any to render and grade its real items.
       </p>
       {grades.map((g) => {
         const inGrade = units.filter((s) => s.startsWith(`g${g}-`));

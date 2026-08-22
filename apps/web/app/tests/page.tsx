@@ -2,6 +2,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { auth } from "@/auth";
 import { listTestUnits } from "@domigo/content-loader";
+import { isSlugAllowed, resolveVisibleGrades } from "@/lib/grade-scope";
 
 export const dynamic = "force-dynamic";
 
@@ -11,7 +12,13 @@ export default async function TestsIndex() {
   if (session.user.role === "teacher") redirect("/admin");
 
   const units = listTestUnits();
-  const grades = [1, 2, 3, 4] as const;
+  // P1 (P-R1.5): a child sees only its own class's school year. The viewer here
+  // is always a student (no session → /signin, teacher → /admin, both above), so
+  // the class's grade decides; an unresolvable grade degrades to all four years.
+  const grades = await resolveVisibleGrades(session.user.classId);
+  // Both corpora are still g2-only (2/57 units), so a child of another year now
+  // has nothing here — a grade-aware empty state, not a bare page.
+  const inScope = units.filter((s) => isSlugAllowed(s, grades));
   return (
     <main style={{ maxWidth: 760, margin: "0 auto", padding: "28px 20px 48px", fontFamily: "var(--font-body)", color: "var(--text)" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
@@ -19,8 +26,8 @@ export default async function TestsIndex() {
         <Link href="/home" style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← Home</Link>
       </div>
       <p style={{ color: "var(--text-secondary)", marginTop: 0 }}>Sit a practice test like a real Schularbeit.</p>
-      {units.length === 0 ? (
-        <p style={{ color: "var(--muted)" }}>No mock tests yet.</p>
+      {inScope.length === 0 ? (
+        <p style={{ color: "var(--muted)" }}>No mock tests for your school year yet.</p>
       ) : (
         grades.map((g) => {
           const inGrade = units.filter((s) => s.startsWith(`g${g}-`));

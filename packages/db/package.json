@@ -10,6 +10,7 @@
   "scripts": {
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
+    "seed:dev": "node scripts/seed-dev.mjs",
     "db:generate": "drizzle-kit generate",
     "db:push": "drizzle-kit push",
     "db:push:dry": "drizzle-kit push --strict --verbose"
