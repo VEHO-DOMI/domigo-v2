@@ -1419,6 +1419,21 @@ export class PaintScene extends Phaser.Scene {
     /** R3-16/M-B: what the Bilanz reads from — found, not held (see Sim). */
     lettersCollected: number; tips: number; books: number;
     knots: number; guardianDown: boolean; bonusLeft: number;
+    /** ── R5-W7 · H5 · R193b · DIE LEBENSANZEIGE LIEST HIER ──────────────────
+     *  Der Kampf hat seit R50 eine Lebensskala — die Kritzel-Schichten der
+     *  Tafel. Nach aussen ging bisher nur `knots`, also der ZAEHLERSTAND ohne
+     *  seinen Nenner: das HUD konnte »noch 2« sagen, aber nicht »2 von 3«, und
+     *  ein Balken ohne Nenner ist kein Balken. Drei blinde Kritiker haben im
+     *  P6-Panel genau das vermisst (»Lebensanzeige: keine«).
+     *
+     *  `knotsTotal` ist die Zahl der Schichten, mit denen dieser Boss angetreten
+     *  ist (`GUARDIAN_SCRIPT[tier].knots`, 3/4/5 — sie stand nur szenenintern).
+     *  `wipeTeil` ist der Fortschritt des LAUFENDEN Wischens, 0…1; ohne ihn
+     *  springt die Anzeige in ganzen Schichten, waehrend das Kind wischt.
+     *  Beides ist LESEN, nichts weiter: die Szene rechnet die zwei Zahlen
+     *  ohnehin schon fuer `renderKnotCord`, hier werden sie nur herausgereicht.
+     *  Muster: die deklarierte Zeile, mit der S2 den Klang herausgereicht hat. */
+    knotsTotal: number; wipeTeil: number;
     /** R5-W3 · W1: beide Kamera-Achsen, damit aus einer Weltlage eine
      *  BILDSCHIRM-Lage wird — ohne camY kann keine Aufnahme sagen, wo im Bild
      *  das Ding steht, das sie zeigt. */
@@ -1455,6 +1470,7 @@ export class PaintScene extends Phaser.Scene {
       hovering: this.player.hovering,
       overlay: this.overlayOpen,
       knots: this.world?.guardianKnots ?? -1,
+      ...this.bossLeiste(),
       guardianDown: this.guardianDefeated,
       bonusLeft: this.bonusLeftTicks,
       camX: fromSubs(this.camX),
@@ -3558,6 +3574,18 @@ export class PaintScene extends Phaser.Scene {
    * Schrift. Was hier gebraucht wird, sind viele kleine, verschiedene Striche,
    * und die sind gezeichnet billiger und ehrlicher als gestempelt.
    */
+  /** R5-W7 · H5 · R193b — die zwei Zahlen der Lebensanzeige, aus DERSELBEN
+   *  Quelle wie das gezeichnete Bild (`renderKnotCord`), damit HUD und Tafel
+   *  nicht zwei Wahrheiten fuehren koennen. Kein Guardian ⇒ 0/0. */
+  private bossLeiste(): { knotsTotal: number; wipeTeil: number } {
+    const g = this.world?.entities.find((e) => e.role === "guardian" && !e.redeemed);
+    if (!g) return { knotsTotal: 0, wipeTeil: 0 };
+    return {
+      knotsTotal: GUARDIAN_SCRIPT[g.tier].knots,
+      wipeTeil: g.state === "wipe" ? Math.max(0, Math.min(1, g.timer / WIPE_TICKS)) : 0,
+    };
+  }
+
   private renderKnotCord(): void {
     // Der Sieg-Trakt hängt HIER, und das ist eine bewusste Entscheidung mit
     // einem Preis: diese Methode ist der einzige Pro-Bild-Haken, den die Arena
