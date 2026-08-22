@@ -10,8 +10,16 @@
 
 <!-- PFLICHT, sobald packages/game-paint/**, packages/game-2d/**,
      apps/web/public/art/** oder cards/** berührt sind.
-     So gemessen:  pnpm build && (cd apps/web && npx next start -p <dein Port>)
-                   node --experimental-strip-types scripts/measure-create.mjs --port <dein Port>
+     So gemessen (R5-W7 · W6 · R183 — der Server sagt selbst, welchen Bau er zeigt):
+       pnpm build && (cd apps/web && VERCEL_GIT_COMMIT_SHA=$(git rev-parse HEAD) npx next start -p <dein Port>)
+       node --experimental-strip-types scripts/perf-visible.mjs --port <dein Port> --runs 3 --json vorher.json
+       … umbauen, neu bauen, neu starten …
+       node --experimental-strip-types scripts/perf-visible.mjs --port <dein Port> --runs 3 --baseline vorher.json
+     Die Zeilen »Bau: … · Quelle: …«, die das Werkzeug druckt, GEHÖREN MIT IN DIESEN TEXT:
+     ohne sie kann niemand sagen, welche zwei Bauten die Tabelle vergleicht, und zwei
+     GLEICHE Bau-Angaben färbt `check-perf-table` rot.
+     ⚠ Die Phasen-Zeilen müssen mit »| p1« … »| p9« beginnen — kein Fettdruck vor der
+     Phase, sonst findet das Tor die Zeile nicht (H5 ist genau darüber gestolpert).
      Budgets: docs/PERF_WAECHTER.md -->
 
 | Phase | laden (ms) | bau+aufbau (ms) | Erstbild GPU (ms) | eingeschwungen (ms) | fps |
