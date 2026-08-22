@@ -86,13 +86,47 @@ export const recompressionVerdict = ({ pixelsIdentical, bytesBefore, bytesAfter 
   return bytesAfter > bytesBefore ? "grown" : "proven";
 };
 
-/** Ist der Alphakanal überall undurchsichtig? Dann liegt ein Viertel der Datei
- *  ungenutzt auf der Platte (E5s gemessener Hebel: die zehn größten Blätter,
- *  36,4 MB, sind vollständig undurchsichtig und trotzdem RGBA). Kein rotes
- *  Licht in dieser Runde — eine Meldung, damit die Zahl sichtbar ist. */
+/** Ist der Alphakanal überall undurchsichtig? (Auf der DEKODIERTEN Fassung —
+ *  siehe die Warnung an `wastedAlpha` direkt darunter.) */
 const fullyOpaque = (img) => {
   for (let i = 3; i < img.data.length; i += 4) if (img.data[i] !== 255) return false;
   return true;
+};
+
+// ── R5-W7 · W6 · D4s Befund 3: PNGJS LIEFERT IMMER VIER KANÄLE ──────────────
+//
+// Die Meldung darunter sagt „vollständig undurchsichtig und trotzdem RGBA" und
+// las dafür `img.data` — den DEKODIERTEN Puffer. Der hat bei pngjs IMMER vier
+// Kanäle, ganz gleich, was in der Datei steht: ein Palettenblatt wird beim
+// Dekodieren zu RGBA aufgeblasen und dann als RGBA gemeldet, obwohl auf der
+// Platte kein einziges Alpha-Byte liegt. D4 hat es an `card_paper.png`
+// gefunden; gemessen über die ganze ausgelieferte Kunst waren es 129
+// Palettenblätter und 64 reine RGB-Blätter, die diese Meldung hätte treffen
+// können — für jedes davon wäre der empfohlene Fix (`art-recompress`) ein
+// Vorschlag ohne Gegenstand gewesen.
+//
+// Gelesen wird deshalb der FARBTYP AUS DEM DATEIKOPF: Byte 25, das neunte Byte
+// des IHDR-Blocks. Das ist die Wahrheit über die Datei, nicht über den Decoder.
+/** Der PNG-Farbtyp aus dem IHDR-Kopf, oder null, wenn die Datei gar kein PNG
+ *  ist (die gibt es: `apps/web/public/art/g2/lena_ref.png` ist ein JPEG). */
+export const pngColourType = (buf) => {
+  const SIG = Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]);
+  if (buf.length < 26 || !buf.subarray(0, 8).equals(SIG)) return null;
+  if (buf.toString("latin1", 12, 16) !== "IHDR") return null;
+  return buf.readUInt8(25);
+};
+
+export const COLOUR_TYPE_NAME = { 0: "Grau", 2: "RGB", 3: "Palette", 4: "Grau+Alpha", 6: "RGBA" };
+
+/** Der Hebel, den E5 gemessen hat, und nur er: ein Blatt, das auf der PLATTE
+ *  einen Alphakanal trägt (Farbtyp 6 = RGBA oder 4 = Grau+Alpha) und ihn
+ *  überall auf 255 stehen hat. Palette (3) und reines RGB (2) haben gar keinen
+ *  Kanal zum Wegnehmen und werden nicht gemeldet.
+ *  @returns den Farbtyp, wenn die Meldung zutrifft, sonst null. */
+export const wastedAlpha = ({ buf, img }) => {
+  const ct = pngColourType(buf);
+  if (ct !== 4 && ct !== 6) return null;
+  return fullyOpaque(img) ? ct : null;
 };
 
 if (selftest) {
@@ -139,9 +173,73 @@ if (selftest) {
   if (!fullyOpaque(opaque)) { bad++; console.error("✗ ein vollständig undurchsichtiges Bild wurde nicht als solches gelesen"); }
   if (fullyOpaque(clear)) { bad++; console.error("✗ ein durchsichtiges Bild wurde als undurchsichtig gelesen"); }
 
+  // ── R5-W7 · W6 · DER FARBTYP KOMMT AUS DEM KOPF, NICHT AUS DEM DECODER ────
+  // Fixtures sind ECHTE Blätter aus der ausgelieferten Kunst (P-71: gemessen,
+  // nicht erfunden) — genau das Palettenblatt, an dem D4 die Falschmeldung
+  // gefunden hat, und ein echtes RGBA-Blatt daneben. Fehlt eines, sagt der
+  // Selbsttest das laut, statt den Fall stillschweigend zu überspringen: ein
+  // übersprungener Fall ist ein Fall, der nichts beweist.
+  const FIXTURES = [
+    ["apps/web/public/art/g1/cards/card_paper.png", 3, false, "Palette — hat gar keinen Alphakanal zum Wegnehmen (D4s Fall)"],
+    ["apps/web/public/art/g1/keen/_style_key_cutscene.png", 2, false, "reines RGB — dasselbe Argument"],
+    ["apps/web/public/art/g1/cards/card_buttons.png", 6, false, "echtes RGBA mit echter Durchsichtigkeit — keine Meldung, und das ist richtig"],
+  ];
+  for (const [file, wantCt, wantMeldung, warum] of FIXTURES) {
+    if (!fs.existsSync(file)) {
+      bad++; console.error(`  ✗ Fixture fehlt: ${file} — der Farbtyp-Fall beweist ohne echtes Blatt nichts`);
+      continue;
+    }
+    const buf = fs.readFileSync(file);
+    const ct = pngColourType(buf);
+    if (ct !== wantCt) {
+      bad++; console.error(`  ✗ ${file}: Farbtyp aus dem Kopf ist ${ct}, erwartet ${wantCt} — Fixture verrottet`);
+      continue;
+    }
+    const gemeldet = wastedAlpha({ buf, img: decode(buf) }) !== null;
+    // Die ALTE Rechnung liest den dekodierten Puffer und hätte hier
+    // fälschlich gemeldet — genau das ist der Beweis, dass sich etwas
+    // geändert hat.
+    const alteRechnung = fullyOpaque(decode(buf));
+    if (wantMeldung !== null && gemeldet !== wantMeldung) {
+      bad++;
+      console.error(`  ✗ ${file} (${COLOUR_TYPE_NAME[ct]}): Meldung=${gemeldet}, erwartet ${wantMeldung}`);
+      continue;
+    }
+    const alt = ct !== 4 && ct !== 6 && alteRechnung ? " — die alte Rechnung hätte hier FÄLSCHLICH »RGBA« gemeldet" : "";
+    console.log(`  ✓ ${file}: Farbtyp ${ct} = ${COLOUR_TYPE_NAME[ct]}, Meldung=${gemeldet} (${warum})${alt}`);
+  }
+  // DER JA-FALL. Gemessen: von 624 ausgelieferten Blättern ist HEUTE kein
+  // einziges »RGBA und überall undurchsichtig« — E5s Hebel ist abgeräumt
+  // (129 Palette · 64 RGB · 431 RGBA, alle mit echter Durchsichtigkeit). Ein
+  // Selbsttest, der deshalb nur Nein-Fälle prüft, könnte eine Meldung nicht von
+  // einer stummgeschalteten unterscheiden — also wird ein Blatt der Klasse
+  // GEBAUT: pngjs schreibt Farbtyp 6, und dieses hier hat Alpha 255 überall.
+  {
+    const rgbaOpakBuf = (() => {
+      const q = new PNG({ width: 4, height: 4 });
+      for (let i = 0; i < q.data.length; i += 4) { q.data[i] = 10; q.data[i + 1] = 20; q.data[i + 2] = 30; q.data[i + 3] = 255; }
+      return PNG.sync.write(q);
+    })();
+    const ct = pngColourType(rgbaOpakBuf);
+    const gemeldet = wastedAlpha({ buf: rgbaOpakBuf, img: decode(rgbaOpakBuf) }) !== null;
+    if (ct !== 6 || !gemeldet) {
+      bad++;
+      console.error(`  ✗ ein RGBA-Blatt mit Alpha 255 überall wurde NICHT gemeldet (Farbtyp ${ct}, Meldung ${gemeldet}) `
+        + "— die Meldung wäre damit stumm, nicht genauer");
+    } else {
+      console.log("  ✓ gebautes RGBA-Blatt, Alpha überall 255: Farbtyp 6, Meldung=true — das rote Licht ist erreichbar");
+    }
+  }
+
+  // …und ein Nicht-PNG darf keinen Farbtyp erfinden
+  if (pngColourType(Buffer.from([0xff, 0xd8, 0xff, 0xe0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24])) !== null) {
+    bad++; console.error("✗ ein JPEG-Kopf hat einen PNG-Farbtyp geliefert");
+  }
+
   if (bad > 0) { console.error("check-png-identity selftest: FAILED"); process.exit(1); }
   console.log("✓ selftest: one changed channel in one pixel is found and named; a size change is found; "
-    + "identical images pass; die drei Nachverdichtungs-Urteile stimmen (D-98).");
+    + "identical images pass; die drei Nachverdichtungs-Urteile stimmen (D-98); "
+    + "der Farbtyp kommt aus dem IHDR-Kopf, also meldet ein Palettenblatt sich nicht mehr als RGBA.");
   process.exit(0);
 }
 
@@ -215,13 +313,15 @@ for (const file of changed) {
   }
   if (verdict === "repaint") { repaints.push({ file, before: before.length, after: after.length, d }); continue; }
   proven++;
-  if (fullyOpaque(imgAfter)) opaqueRgba.push(file);
+  const ct = wastedAlpha({ buf: after, img: imgAfter });
+  if (ct !== null) opaqueRgba.push({ file, ct });
 }
 
 for (const file of added) {
   const buf = fs.readFileSync(path.resolve(file));
   bytesAfter += buf.length;
-  if (fullyOpaque(decode(buf))) opaqueRgba.push(file);
+  const ct = wastedAlpha({ buf, img: decode(buf) });
+  if (ct !== null) opaqueRgba.push({ file, ct });
 }
 
 const MB = 1048576;
@@ -239,7 +339,7 @@ if (opaqueRgba.length > 0) {
   console.log(`  ⚠ ${opaqueRgba.length} Blatt/Blätter sind vollständig UNDURCHSICHTIG und liegen trotzdem als RGBA `
     + "auf der Platte — ein Viertel jeder Datei ist ein Alphakanal, der überall 255 ist (E5s Hebel). "
     + "`node scripts/art-recompress.mjs` holt das verlustfrei heraus. Kein rotes Licht in dieser Runde:");
-  for (const f of opaqueRgba.slice(0, 8)) console.log(`    · ${f}`);
+  for (const o of opaqueRgba.slice(0, 8)) console.log(`    · ${o.file} (Farbtyp ${o.ct} = ${COLOUR_TYPE_NAME[o.ct]})`);
   if (opaqueRgba.length > 8) console.log(`    · … (+${opaqueRgba.length - 8} weitere)`);
 }
 
