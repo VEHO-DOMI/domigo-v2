@@ -1645,11 +1645,18 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
           {knots > 0 && (
             <Chip
               icon="slate"
-              label="Kritzel"
+              label="Tafel"
               value={knotsTotal > 0 ? `${knots}/${knotsTotal}` : `${knots}`}
               leiste={knotsTotal > 0 ? <SchichtenLeiste voll={Math.max(0, knots - wipeTeil)} gesamt={knotsTotal} /> : undefined}
               art={art}
               titleDe={knotsTotal > 0 ? `Die Tafel hat noch ${knots} von ${knotsTotal} Kritzel-Schichten` : undefined}
+              // R5-W7 · H5: der Chip heisst »Tafel« und nicht mehr »Kritzel« —
+              // so hat der Auftrag ihn bestellt, und ein blinder Leser hat den
+              // Grund geliefert: neben »Regel-Seiten 0/5« und »Kleider 0/9«
+              // liest sich ein Zaehler ohne Gegner-Namen als SAMMEL-Stand des
+              // Kindes, nicht als Zustand des Gegners. Das Wort nennt jetzt,
+              // wem die Kaestchen gehoeren. Das interne Symbol `knots` bleibt
+              // (R50), und der Toast sagt weiter »Kritzel-Schicht«.
             />
           )}
           {inBonus && bonusLeft >= 0 && <Chip icon="inkwell" label="Tinte" value={`${Math.ceil(bonusLeft / 60)}s`} art={art} />}
