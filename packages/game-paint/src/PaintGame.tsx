@@ -30,6 +30,9 @@ import { tierOfAsker } from "./cards/serving.ts";
 import { windowMsFor } from "./cards/timer.ts";
 import { prefersReducedMotion } from "./cards/motion.ts";
 import { askerIdOf } from "./sim.ts";
+// R5-W8 · S4 · R209d — der Kampf-Treiber (dev-only; das ganze Prüf-Handle steht
+// hinter `NODE_ENV !== "production"` und fällt im Produktionsbau weg).
+import { createFightDriver, type FightDriver } from "./fight-drive.ts";
 import { InkWipe, PaintedCage, type CardAlign, alignedWrap, cageCellFor, cardBtn, freeCellsFor } from "./cards/CardShell.tsx";
 import { PAINT_OVERLAY_CSS } from "./cards/overlay-css.ts";
 import { PaintedIcon, type PaintedIconName } from "./cards/PaintedIcons.tsx";
@@ -140,6 +143,9 @@ interface HarnessApi {
     locked: () => boolean;
     log: () => ReadonlyArray<{ t: number; call: string; arg: string }>;
   };
+  /** R5-W8 · S4 · R209d: der Kampf-Treiber — siehe die Erklärung an seiner
+   *  Einbaustelle weiter unten (dev-only, wie der Rest dieses Handles). */
+  fight: FightDriver;
 }
 
 /** R5-W1 · E1: the instrument's read seam. Present only behind the teacher
@@ -1383,6 +1389,35 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
     }, 250);
 
     if (process.env.NODE_ENV !== "production") {
+      // ── R5-W8 · S4 · R209d · DIE EINE DEKLARIERTE SCHNITTSTELLE DIESER BAHN ──
+      // Drei Griffe, die es hier schon gab, bekommen einen Namen — damit der
+      // Kampf-Treiber BEWEISBAR dieselben benutzt wie jedes Werkzeug und jedes
+      // Kind. Ein Treiber mit einem eigenen, zweiten Weg in die Maschine wäre
+      // genau der Cheat, den diese Bahn ausschliessen soll (fight-drive.ts).
+      const hPress = (p: Partial<Pad>): void => {
+        const pad = padRef.current;
+        pad.left = p.left === true;
+        pad.right = p.right === true;
+        pad.up = p.up === true;
+        pad.down = p.down === true;
+        pad.jump = p.jump === true;
+        pad.punch = p.punch === true;
+      };
+      const hStep = (ms = 1000 / 60): void => {
+        game.loop.wake();
+        sceneRef.current?.sys.step(performance.now(), ms);
+      };
+      /** die eigene Uhr des Treibers — siehe die Begründung an `fight.step`. */
+      let uhr = performance.now();
+      const hSolveTask = (): boolean => {
+        const o = overlayRef.current;
+        if (!o) return false;
+        if ((o.card === "task" || o.card === "finale") && o.item) { resolveCorrect(o); return true; }
+        if (o.card === "bonuspay") { sceneRef.current?.setOverlay(false); setOverlay(null); return true; }
+        sceneRef.current?.setOverlay(false);
+        setOverlay(null);
+        return true;
+      };
       window.__domigoPaint = {
         game, // dev-only: typing-guard probes
         perf: window.__domigoPaintPerf ?? null,
@@ -1395,19 +1430,8 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
           locked: () => game.sound.locked,
           log: () => audioLogRef.current,
         },
-        press: (p) => {
-          const pad = padRef.current;
-          pad.left = p.left === true;
-          pad.right = p.right === true;
-          pad.up = p.up === true;
-          pad.down = p.down === true;
-          pad.jump = p.jump === true;
-          pad.punch = p.punch === true;
-        },
-        step: (ms = 1000 / 60) => {
-          game.loop.wake();
-          sceneRef.current?.sys.step(performance.now(), ms);
-        },
+        press: hPress,
+        step: hStep,
         rafStep: () => {
           game.loop.step(performance.now());
         },
@@ -1422,15 +1446,62 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
           const o = overlayRef.current;
           return o?.item ? { id: o.item.id, kind: o.item.kind } : null;
         },
-        solveTask: () => {
-          const o = overlayRef.current;
-          if (!o) return false;
-          if ((o.card === "task" || o.card === "finale") && o.item) { resolveCorrect(o); return true; }
-          if (o.card === "bonuspay") { sceneRef.current?.setOverlay(false); setOverlay(null); return true; }
-          sceneRef.current?.setOverlay(false);
-          setOverlay(null);
-          return true;
-        },
+        solveTask: hSolveTask,
+        /**
+         * R5-W8 · S4 · R209d · DER KAMPF-TREIBER (dev-only).
+         *
+         * Er spielt ein AUFGEZEICHNETES Band (die `pads` einer Phase aus
+         * `chNN.proof.json`) in das laufende Spiel und hält bei jeder Schicht
+         * an, die weggewischt wird — damit ein stehender Augenblick
+         * fotografiert werden kann. Das Band reicht der Aufrufer herein; so
+         * bleibt Prüf-Inhalt aus dem Bündel des Kindes.
+         *
+         * Für `shoot-world --fight` (W7):
+         *   const n = __domigoPaint.fight.load(pads)   // Takte im Band
+         *   let h = await __domigoPaint.fight.advance()
+         *   while (!h.done) { …Aufnahme…; h = await __domigoPaint.fight.advance() }
+         *
+         * `advance()` ist AWAIT-BAR, und das ist kein Stilmittel: die Boss-Karte
+         * kommt hinter einem echten Zeitgeber (`writeEvidence` → `later`), und
+         * eine synchrone Takt-Schleife lässt ihn nie feuern. Genau daran hing
+         * H5s dritter Anlauf (D-558). Bleibt die Karte trotzdem aus, meldet der
+         * Treiber `reason: "stillstand"` statt zu hängen.
+         */
+        fight: createFightDriver({
+          press: hPress,
+          // ⚠ NICHT `hStep`: der weckt die Bildschirm-Schleife bei jedem Takt
+          // (`game.loop.wake()`), und dann taktet die Welt NEBEN dem Band mit.
+          // Gemessen: 627 Bandtakte, Szenen-Takt 782 — und derselbe Lauf endet
+          // zweimal verschieden. Für eine Aufzeichnung muss das Band die einzige
+          // Taktquelle sein; deshalb hier derselbe Szenen-Takt OHNE das Wecken,
+          // dazu `freeze`/`thaw` unten.
+          //
+          // …und die Uhr, die dabei läuft, ist eine EIGENE, die je Takt um genau
+          // einen Bildschritt weiterrückt. `hStep` reicht `performance.now()`
+          // hinein — die WANDUHR. Beim Treiber vergeht zwischen zwei Takten
+          // echte Zeit (eine Karte geht auf, wird beantwortet, der Schreib-Beat
+          // läuft ab), und die Szene bekäme dann Sprünge von Hunderten von
+          // Millisekunden bei einer gemeldeten Schrittweite von 16 ms. Das
+          // aufgezeichnete Band setzt aber genau ein Bild je Takt voraus — so
+          // ist es entstanden, und so fährt es der kopflose Simulator.
+          step: () => { uhr += 1000 / 60; sceneRef.current?.sys.step(uhr, 1000 / 60); },
+          freeze: () => { game.loop.sleep(); },
+          thaw: () => { game.loop.wake(); },
+          // die Buchhaltung des SHELLS, nicht die Anhaltefahne des Sims — die
+          // Verwechslung der beiden ist ein bezahlter Fehler (D-558)
+          cardOpen: () => overlayRef.current !== null,
+          solveCard: hSolveTask,
+          read: () => {
+            const st = sceneRef.current?.getState();
+            if (!st) return null;
+            const g = st.entities.find((e) => e.role === "guardian");
+            return {
+              tick: st.tick, knots: st.knots, knotsTotal: st.knotsTotal, wipeTeil: st.wipeTeil, overlay: st.overlay,
+              guardian: g ? { state: g.state, x: g.x, y: g.y } : null,
+              hero: { x: st.x, y: st.y },
+            };
+          },
+        }),
       };
     }
 
@@ -1449,9 +1520,63 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
       // R5-W6 · S2: der Direktor stirbt mit dem SPIEL, nicht mit der Szene.
       director.dispose();
       directorRef.current = null;
-      void audioCtx?.close().catch(() => { /* ein Kontext, der schon zu ist */ });
-      audioCtxRef.current = null;
+      // ── R5-W8 · S4 · DER KONTEXT WIRD ERST ZUGEMACHT, WENN DAS SPIEL FERTIG IST
+      //
+      // DER DEFEKT (H5 gefunden): beim Seitenwechsel stand »Cannot suspend a
+      // closed AudioContext« in der Konsole. Die Ursache steht in Phasers
+      // eigener Quelle (`WebAudioSoundManager.destroy`, phaser@3.90.0):
+      //
+      //     if (this.game.config.audio.context) { this.context.suspend(); }
+      //     else { this.context.close().then(…); }
+      //
+      // Weil wir Phaser UNSEREN Kontext reichen (R130, „DER EINE AudioContext"),
+      // nimmt es beim Abbau den ERSTEN Zweig: es legt den fremden Kontext
+      // höflich schlafen, statt ihn zuzumachen. Hier stand `close()` aber VOR
+      // `game.destroy(true)` — also brach `suspend()` auf einem geschlossenen
+      // Kontext ab, und die Zusage hängt in PHASERS Code, wo wir kein `catch`
+      // unterbringen können. Die Meldung war nicht abfangbar, nur vermeidbar.
+      //
+      // ⚠ UND DER GRUND, WARUM EIN BLOSSES UMSTELLEN NICHT REICHT:
+      // `game.destroy()` baut nichts ab. Es setzt `pendingDestroy = true` und
+      // überlässt den Abbau dem nächsten Takt der Spielschleife
+      // (`Game#destroy` → `Game#step` → `runDestroy`). Wer die zwei Zeilen nur
+      // tauscht, hat das Rennen VERSCHOBEN, nicht beendet — messbar daran, dass
+      // die Konsole beim Laden unverändert »Construction of GainNode is not
+      // useful when context is closed« meldet: das noch laufende Spiel baut
+      // weiter Klangknoten auf einem Kontext, den wir schon zugemacht haben.
+      //
+      // ⚠ UND WARUM WIR DEN ABBAU NICHT SELBST ERZWINGEN: ein hier eingefügtes
+      // `game.step(…)` führt `runDestroy` zwar sofort aus — an einem Spiel, das
+      // im Doppel-Aufbau der Entwicklungsfassung noch gar nicht fertig gestartet
+      // ist, wirft es dabei »Cannot read properties of undefined (reading
+      // 'sys')«. Gemessen, verworfen, hier notiert, damit es niemand ein zweites
+      // Mal versucht.
+      //
+      // WAS STATTDESSEN GESCHIEHT: wir WARTEN, bis Phaser fertig ist —
+      // `pendingDestroy` fällt am Ende von `runDestroy` zurück auf `false` —
+      // und schliessen erst dann. Bleibt die Schleife stehen (ein Spiel, das nie
+      // lief), räumt die Frist nach rund einer Sekunde trotzdem ab: ein Kontext,
+      // der nie geschlossen wird, ist der schlimmere Fehler (Browser deckeln bei
+      // rund sechs pro Seite). In diesem Fall hat Phaser auch nie abgebaut, also
+      // gibt es kein `suspend()`, das abbrechen könnte.
       game.destroy(true);
+      if (audioCtx !== null) {
+        const zu = audioCtx;
+        // `pendingDestroy` ist in Phasers Quelle eine dokumentierte Eigenschaft
+        // von `Game` (`@name Phaser.Game#pendingDestroy`), fehlt aber in seiner
+        // Typdatei — deshalb der Umweg. `audio/teardown.test.ts` liest sie AN
+        // DER QUELLE nach, damit ein Versionswechsel nicht still an uns
+        // vorbeigeht.
+        const abbauLaeuft = (): boolean => (game as unknown as { pendingDestroy?: boolean }).pendingDestroy === true;
+        let versuche = 0;
+        const wache = window.setInterval(() => {
+          versuche += 1;
+          if (abbauLaeuft() && versuche <= 60) return;
+          window.clearInterval(wache);
+          void zu.close().catch(() => { /* ein Kontext, der schon zu ist */ });
+        }, 16);
+      }
+      audioCtxRef.current = null;
       gameRef.current = null;
       sceneRef.current = null;
     };
