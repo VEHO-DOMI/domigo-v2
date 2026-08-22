@@ -9,7 +9,8 @@
  * broken v2 side degrades to the v1 list instead of an empty picker.
  */
 import { describe, expect, it } from "vitest";
-import { LEGACY_CLASS_LABEL_SUFFIX, listClasses } from "./assignment-service.ts";
+import { LEGACY_CLASS_LABEL_SUFFIX, listClasses, listClassesForGrandmaster } from "./assignment-service.ts";
+import { UNKNOWN_TEACHER_LABEL } from "./class-service.ts";
 import type { Db } from "./index.ts";
 
 /**
@@ -118,6 +119,92 @@ describe("listClasses — v2 classes of the teacher, then the v1 legacy classes"
   it("returns the v1 classes alone for a teacher who owns no v2 class yet", async () => {
     const { db } = seqDb([[], [v1Class]]); // no v2 rows ⇒ the count query never runs
     const rows = await listClasses(db, "T-new");
+    expect(rows).toEqual([{ id: "v1-a", name: `2B (alt)${LEGACY_CLASS_LABEL_SUFFIX}`, grade: 2 }]);
+  });
+});
+
+/**
+ * P3 · listClassesForGrandmaster — the operator's picker.
+ *
+ * listClasses answers "which classes may THIS teacher assign work to". This one
+ * answers "which classes exist at all", and each v2 label has to say whose class
+ * it is — the operator is now composing work for rosters that are not his, and a
+ * bare "2A" would not tell him whose children he is about to hand a test to.
+ *
+ * Call order behind it (listAllClassesForGrandmaster): v2 classes · their roster
+ * counts · the owners' names · the legacy classes · their counts.
+ */
+const gmV2A = { id: "v2-a", name: "TEST-K1", grade: 1, inviteCode: "TSTK1A", teacherId: "T-2", createdAt: new Date(0) };
+const gmV2B = { id: "v2-b", name: "TEST-2A", grade: 2, inviteCode: "TST2ER", teacherId: "T-1", createdAt: new Date(1) };
+
+describe("listClassesForGrandmaster — every class on the platform, each labelled with its owner", () => {
+  it("lists classes of DIFFERENT teachers, each suffixed with its owner, legacy behind", async () => {
+    const { db } = seqDb([
+      [gmV2A, gmV2B],
+      [{ classId: "v2-a", total: 2, claimed: 1 }, { classId: "v2-b", total: 3, claimed: 3 }],
+      [{ id: "T-2", displayName: "TEST-Kollegin" }, { id: "T-1", displayName: "TEST-Lehrkraft" }],
+      [v1Class],
+      [{ classId: "v1-a", total: 21 }],
+    ]);
+    const rows = await listClassesForGrandmaster(db);
+    expect(rows).toEqual([
+      { id: "v2-a", name: "TEST-K1 · TEST-Kollegin", grade: 1 },
+      { id: "v2-b", name: "TEST-2A · TEST-Lehrkraft", grade: 2 },
+      { id: "v1-a", name: `2B (alt)${LEGACY_CLASS_LABEL_SUFFIX}`, grade: 2 },
+    ]);
+  });
+
+  it("is not scoped to one teacher — a class owned by SOMEBODY ELSE is in the list", async () => {
+    // The single class belongs to T-2; nothing in the call carries a caller id at all.
+    const { db, conditions } = seqDb([
+      [gmV2A],
+      [{ classId: "v2-a", total: 2, claimed: 1 }],
+      [{ id: "T-2", displayName: "TEST-Kollegin" }],
+      [],
+      [],
+    ]);
+    const rows = await listClassesForGrandmaster(db);
+    expect(rows.map((r) => r.id)).toEqual(["v2-a"]);
+    expect(conditionAtoms(conditions[0])).not.toContain("T-1");
+    // …and the signature itself takes no teacher id: listClassesForGrandmaster(db).
+    expect(listClassesForGrandmaster.length).toBe(1);
+  });
+
+  it("keeps the two registers apart: v2 carries the owner, v1 carries the legacy marker", async () => {
+    const { db } = seqDb([
+      [gmV2A],
+      [{ classId: "v2-a", total: 2, claimed: 1 }],
+      [{ id: "T-2", displayName: "TEST-Kollegin" }],
+      [v1Class],
+      [{ classId: "v1-a", total: 21 }],
+    ]);
+    const rows = await listClassesForGrandmaster(db);
+    expect(rows[0]!.name.endsWith(LEGACY_CLASS_LABEL_SUFFIX)).toBe(false);
+    expect(rows[0]!.name).toContain("TEST-Kollegin");
+    expect(rows[1]!.name.endsWith(LEGACY_CLASS_LABEL_SUFFIX)).toBe(true);
+    expect(rows[1]!.name).not.toContain("TEST-Kollegin");
+  });
+
+  it("still names a class whose owner cannot be resolved, instead of dropping it", async () => {
+    const { db } = seqDb([
+      [gmV2A],
+      [{ classId: "v2-a", total: 2, claimed: 1 }],
+      [], // not in domigo_v2.users …
+      [], // … and not in public.users either
+      [],
+      [],
+    ]);
+    const rows = await listClassesForGrandmaster(db);
+    expect(rows).toEqual([{ id: "v2-a", name: `TEST-K1 · ${UNKNOWN_TEACHER_LABEL}`, grade: 1 }]);
+  });
+
+  it("falls back to the legacy list alone when the v2 register is unreachable", async () => {
+    const { db } = seqDb([
+      new Error('relation "domigo_v2.classes" does not exist'),
+      [v1Class],
+      [{ classId: "v1-a", total: 21 }],
+    ]);
+    const rows = await listClassesForGrandmaster(db);
     expect(rows).toEqual([{ id: "v1-a", name: `2B (alt)${LEGACY_CLASS_LABEL_SUFFIX}`, grade: 2 }]);
   });
 });

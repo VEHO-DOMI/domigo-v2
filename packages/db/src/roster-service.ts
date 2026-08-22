@@ -24,6 +24,16 @@
  *
  * Pure helpers (`parseRoster`, `claimLabel`) are DB-free and unit-tested in
  * roster-service.test.ts, so the endpoint and the service share one gate.
+ *
+ * P3 · `actorId` — WHO acted, as opposed to WHOSE authorization was used. Every
+ * mutation below takes an OPTIONAL `actorId` that defaults to `teacherId`, so the
+ * ordinary case is unchanged. It exists for the grandmaster (the platform
+ * operator, apps/web/lib/grandmaster.ts): when he manages a class he does not own,
+ * the services run with the OWNER's id — the WHERE clause stays the single
+ * authorization truth — while the journal records HIM. The parameter flows into
+ * `roster_events.actor_id` and NOWHERE else: it can never widen an authorization,
+ * only name the hand that pulled the lever. The journal must not be able to lie
+ * about who acted.
  */
 import { and, eq, isNull, ne, sql } from "drizzle-orm";
 import type { Db } from "./index.ts";
@@ -158,12 +168,14 @@ async function ownedStudent(
  * any name already present by givenName (case-insensitive) so a re-paste is
  * idempotent. journal-then-flip: writes the 'import' event FIRST, then bulk-inserts
  * one provisional row per new name. Returns the number actually inserted.
+ * `actorId` (optional, defaults to teacherId) only names the actor in the journal.
  */
 export async function importRoster(
   db: Db,
-  input: { classId: string; teacherId: string; names: string[] },
+  input: { classId: string; teacherId: string; names: string[]; actorId?: string },
 ): Promise<number> {
   const { classId, teacherId } = input;
+  const actorId = input.actorId ?? teacherId;
 
   // Authz: the class must belong to this teacher.
   const owned = await db
@@ -189,7 +201,7 @@ export async function importRoster(
   await db.insert(v2RosterEvents).values({
     classId,
     kind: "import",
-    actorId: teacherId,
+    actorId,
     payload: { names: toInsert },
   });
   // … then the provisional rows (pinHash='' ⇒ cannot log in until claimed).
@@ -346,15 +358,16 @@ export async function claimStudent(
  * Reset a student's PIN back to provisional (they must re-claim): pinHash='' +
  * claimedAt=null. Authz'd — the student's class must be the teacher's, else a
  * silent no-op. journal-then-flip: 'reset_pin' event FIRST, then the flip.
+ * `actorId` (optional, defaults to teacherId) only names the actor in the journal.
  */
-export async function resetStudentPin(db: Db, studentId: string, teacherId: string): Promise<void> {
+export async function resetStudentPin(db: Db, studentId: string, teacherId: string, actorId?: string): Promise<void> {
   const owned = await ownedStudent(db, studentId, teacherId);
   if (!owned) return;
 
   await db.insert(v2RosterEvents).values({
     classId: owned.classId,
     kind: "reset_pin",
-    actorId: teacherId,
+    actorId: actorId ?? teacherId,
     payload: { studentId },
   });
   await db
@@ -368,12 +381,14 @@ export async function resetStudentPin(db: Db, studentId: string, teacherId: stri
  * journal-then-flip: 'rename' event FIRST, then the flip. If the student is still
  * provisional (unclaimed), the placeholder displayName is kept in sync with the
  * given name; a CLAIMED student's chosen nickname is never overwritten.
+ * `actorId` (optional, defaults to teacherId) only names the actor in the journal.
  */
 export async function renameStudentGiven(
   db: Db,
   studentId: string,
   teacherId: string,
   givenName: string,
+  actorId?: string,
 ): Promise<void> {
   const owned = await ownedStudent(db, studentId, teacherId);
   if (!owned) return;
@@ -383,7 +398,7 @@ export async function renameStudentGiven(
   await db.insert(v2RosterEvents).values({
     classId: owned.classId,
     kind: "rename",
-    actorId: teacherId,
+    actorId: actorId ?? teacherId,
     payload: { studentId, givenName: trimmed },
   });
   const patch =
@@ -396,15 +411,16 @@ export async function renameStudentGiven(
  * one place a mistaken entry should truly vanish; the journal preserves the audit
  * trail). Authz'd (owner-scoped, else a no-op). journal-then-flip: 'remove' event
  * FIRST, then the delete.
+ * `actorId` (optional, defaults to teacherId) only names the actor in the journal.
  */
-export async function removeStudent(db: Db, studentId: string, teacherId: string): Promise<void> {
+export async function removeStudent(db: Db, studentId: string, teacherId: string, actorId?: string): Promise<void> {
   const owned = await ownedStudent(db, studentId, teacherId);
   if (!owned) return;
 
   await db.insert(v2RosterEvents).values({
     classId: owned.classId,
     kind: "remove",
-    actorId: teacherId,
+    actorId: actorId ?? teacherId,
     payload: { studentId },
   });
   await db.delete(v2IdentityUsers).where(eq(v2IdentityUsers.id, studentId));

@@ -9,7 +9,7 @@ import { and, desc, eq, inArray, isNull } from "drizzle-orm";
 import type { Db } from "./index.ts";
 import { assignments, assignmentSections, reservedItems } from "./schema.ts";
 import { v1Classes } from "./v1.ts";
-import { listClassesForTeacher } from "./class-service.ts";
+import { listAllClassesForGrandmaster, listClassesForTeacher } from "./class-service.ts";
 import type { AssignmentDraft } from "./assignment-draft.ts";
 
 export interface ClassRow {
@@ -71,6 +71,31 @@ export async function listClasses(db: Db, teacherId: string): Promise<ClassRow[]
   return [
     ...v2,
     ...v1.map((r) => ({ id: r.id, name: `${r.name}${LEGACY_CLASS_LABEL_SUFFIX}`, grade: r.grade })),
+  ];
+}
+
+/**
+ * P3 · the GRANDMASTER's class picker — EVERY active class on the platform, not
+ * just one teacher's. Same shape and same order as listClasses (v2 first, the v1
+ * legacy register behind it), with one addition: each v2 label carries its owner,
+ * "2A · Frau Beispiel", because the operator is now looking at classes that are
+ * not his and a bare "2A" would say nothing about whose roster he is about to
+ * assign work to.
+ *
+ * Deliberately a SEPARATE export rather than a flag on listClasses: the two are
+ * different authorizations, and a call site must say WHICH one it means (the two
+ * builder pages branch explicitly on isGrandmaster). A default parameter is what
+ * P1 had to repair — it silently bound every future caller to one reading.
+ *
+ * Built on listAllClassesForGrandmaster so "every class on the platform" has ONE
+ * definition: the picker and the all-classes view can never disagree about which
+ * classes exist or who owns them.
+ */
+export async function listClassesForGrandmaster(db: Db): Promise<ClassRow[]> {
+  const overview = await listAllClassesForGrandmaster(db);
+  return [
+    ...overview.v2.map((c) => ({ id: c.id, name: `${c.name} · ${c.ownerName}`, grade: c.grade })),
+    ...overview.legacy.map((c) => ({ id: c.id, name: `${c.name}${LEGACY_CLASS_LABEL_SUFFIX}`, grade: c.grade })),
   ];
 }
 
