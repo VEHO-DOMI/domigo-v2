@@ -147,6 +147,7 @@ export const SURFACES = [
   "goal",
   "auftakt-schatten",
   "auftakt-aufgaben",
+  "auftakt-sammeln",
   "auftakt-los",
   "tip",
   "tip-regel",

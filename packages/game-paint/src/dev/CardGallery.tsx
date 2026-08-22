@@ -266,7 +266,13 @@ export default function CardGallery({ level, art, tasks, Overlay, which, karte }
     ceremony("goal", "Auftakt · 1 · Das Buch schlägt auf", { card: "goal" }),
     ceremony("auftakt-schatten", "Auftakt · 2 · Was geschehen ist", { card: "schatten" }),
     ceremony("auftakt-aufgaben", "Auftakt · 3 · Dein Auftrag", { card: "aufgaben" }),
-    ceremony("auftakt-los", "Auftakt · 4 · Los geht's", { card: "los" }),
+    // R5-W7 · D5: die VIERTE Fläche, die seit J2/R29 fehlte. Der Auftakt-Takt hat
+    // sich damals in »Dein Auftrag« und »Was du sammelst« geteilt; die Bank hat
+    // die zweite Hälfte nie bekommen, also war der Takt, der die Sammel-Legende
+    // trägt, schlicht nicht fotografierbar. (Eine angehängte Zeile, wie es die
+    // Flächenliste ausdrücklich vorsieht — an W6 gemeldet.)
+    ceremony("auftakt-sammeln", "Auftakt · 4 · Was du sammelst", { card: "sammeln" }),
+    ceremony("auftakt-los", "Auftakt · 5 · Los geht's", { card: "los" }),
     // R5-W2 · I1: the reading card has TWO beats, so the bench has two surfaces.
     // Both read the chapter's OWN page — a bench fixture that invents its copy
     // photographs a card nobody ships.

@@ -33,7 +33,31 @@ export interface BenchBilanz {
   tips: number; tipsTotal: number;
   letters: number; lettersTotal: number;
   books: number; booksTotal: number;
+  /** R5-W7 · D5: die Uniform. Die Bank hatte sie nie, obwohl die Punkte-Seite
+   *  ihre Zeile seit Welle 5 zeichnet — und seit dem Auftragsschirm eine
+   *  Sammel-Legende daran hängt, war das nicht mehr nur eine fehlende Zeile:
+   *  die Legende bekam `undefined` und zeigte alle neun Teile als offen. Eine
+   *  Attrappe, die stillschweigend »nichts gefunden« sagt, fotografiert genau
+   *  einen der beiden Zustände, die zu beurteilen wären. */
+  cloth: number; clothTotal: number; clothWords: readonly string[];
+  /** R5-W7 · D5 · B15: die entfärbten Dinge, die jetzt ihre eigene
+   *  Bilanz-Zeile haben. */
+  drained: number; drainedTotal: number;
 }
+
+/** Die englischen Wörter der Uniform-Teile, aus dem Level gelesen und nach
+ *  Wort entdoppelt — die Kleckskammer hält von jedem Teil eine zweite Kopie. */
+export const clothWordList = (level: PaintLevel): string[] => {
+  const out: string[] = [];
+  for (const p of chapterPhases(level)) {
+    for (const e of p.entities) {
+      if (e.role !== "cloth") continue;
+      const w = typeof e.params?.wordEn === "string" ? e.params.wordEn : "";
+      if (w !== "" && !out.includes(w)) out.push(w);
+    }
+  }
+  return out;
+};
 
 /** Die Räume, die das Kind im Kapitel spielt: die Phasen plus die Arena.
  *  Die Bonusräume bleiben draußen — genau wie im Spiel. */
@@ -74,6 +98,8 @@ export const benchBilanz = (level: PaintLevel): BenchBilanz => {
   const tipsTotal = tipCount(level);
   const lettersTotal = letterCount(level);
   const booksTotal = roleCount(level, "book");
+  const clothAlle = clothWordList(level);
+  const drainedTotal = roleCount(level, "drained");
   /** einen offen lassen, aber nie unter null und nie unter den befreiten Kindern */
   const nearly = (total: number, floor = 0): number => Math.max(floor, total - 1);
   return {
@@ -82,5 +108,10 @@ export const benchBilanz = (level: PaintLevel): BenchBilanz => {
     tips: nearly(tipsTotal), tipsTotal,
     letters: nearly(lettersTotal), lettersTotal,
     books: nearly(booksTotal), booksTotal,
+    // dieselbe „eines fehlt noch"-Regel wie oben, nur auf der Liste statt auf
+    // der Zahl: so zeigt die Bank die Legende in BEIDEN Zuständen nebeneinander
+    clothWords: clothAlle.slice(0, nearly(clothAlle.length)),
+    cloth: nearly(clothAlle.length), clothTotal: clothAlle.length,
+    drained: nearly(drainedTotal), drainedTotal,
   };
 };

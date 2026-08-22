@@ -704,7 +704,37 @@ export const PAINT_OVERLAY_CSS = `
        body keeps the darker sheet the contrast is measured on. */
     radial-gradient(120% 100% at 28% 0%, rgba(255,255,255,0.22), rgba(255,255,255,0) 62%),
     radial-gradient(70% 60% at 84% 100%, rgba(176,142,88,0.16), rgba(176,142,88,0) 70%),
-    repeating-linear-gradient(97deg, rgba(146,114,64,0.035) 0 1px, rgba(146,114,64,0) 1px 19px);
+    /* ── R5-W7 · D5 · DIE GEMALTE PLAKETTE (AQ17C Z0/Z1, R132 zellweise) ────
+       Hier stand die dritte Lage: »repeating-linear-gradient(97deg, …)«, eine
+       gerechnete Faser aus lauter gleichen Strichen im Abstand von 19 px. Sie
+       geht denselben Weg wie der Faser-Streifen der Karte in D4 — das gemalte
+       Blatt ersetzt sie. Die zwei LICHT-Verläufe darüber bleiben, weil eine
+       Plakette flach ist und eine Karte im Buch in einem Licht liegt (dieselbe
+       Begründung, mit der das Kartenpapier importiert wurde).
+
+       DAS BLATT trägt zwei Kästen à 346×161 nebeneinander: in Ruhe, dann
+       gedrückt. Deshalb »200 % 100 %« und ein Sprung der Position von 0 auf
+       100 % im Druck — EIN Blatt, also ist der gedrückte Zustand schon geladen,
+       wenn der Finger kommt (die Rechnung ist dieselbe, die das Knopfblatt seit
+       D4 fährt, nur ohne dessen Kasten-Prozente: der Importeur schneidet die
+       Plakette auf ihren Kasten zu, also IST das Blatt die Plakette).
+
+       Die Tuschekante bleibt: die Plakette liegt UNTER ihr, nicht an ihrer
+       Stelle. Das ist kein Zögern, sondern ein Gesetz — overlay-css.test.ts
+       verlangt wörtlich »border: var(--pb-ink-w-chip) solid var(--pb-ink)«, und
+       der 1 px dünne Rand des Blattes wäre kein Ersatz für eine Kante, deren
+       Kontrast gemessen ist. Was das Blatt beisteuert, ist die FLÄCHE.
+
+       Warum die vier gemalten Eckradien trotzdem zählen, obwohl der CSS-Radius
+       sie überdeckt: sie sind der Beweis, dass der Maler diesen Chip gemalt hat
+       und nicht irgendein Rechteck — der Importeur weist eine Plakette mit
+       einem einheitlichen Radius zurück —, und sie sorgen dafür, dass die
+       durchsichtigen Ecken des Blattes genau dort liegen, wo der Radius
+       ohnehin schneidet. Kein Zipfel Farbe steht über. */
+    url("/art/g1/cards/card_plaques.png");
+  background-repeat: no-repeat;
+  background-size: auto, auto, 200% 100%;
+  background-position: 0 0, 0 0, 0 0;
   border: var(--pb-ink-w-chip) solid var(--pb-ink);
   border-radius: var(--pb-chip-r);
   /* R5-W2 · J1-A: one crayon lip, as judged. The ambient blur and the inset
@@ -722,6 +752,9 @@ export const PAINT_OVERLAY_CSS = `
      flat colour override never shows, because nobody photographs a held finger. */
   transform: translateY(4px) rotate(var(--pb-tilt, 0deg));
   box-shadow: 0 0 0 var(--pb-ink-cast), inset 0 1px 3px rgba(120,92,50,0.28);
+  /* R5-W7 · D5: und die zweite Plakette. Dieselbe Datei, andere Hälfte — der
+     dunklere Kasten (1,671 : 1 gegen das Papier statt 1,463 : 1). */
+  background-position: 0 0, 0 0, 100% 0;
 }
 .pb-card button:disabled { opacity: 0.55; box-shadow: inset 0 1px 4px rgba(120,92,50,0.24); }
 
@@ -981,6 +1014,31 @@ export const PAINT_OVERLAY_CSS = `
      zugleich das, was ein Kind sieht, falls das gemalte Blatt einmal nicht
      ausgeliefert wird — ein Knopf ohne Bild ist dann blass, nie unsichtbar */
   background-color: #f0c473;
+  /* ── R5-W7 · D5 · P6/M2 · DIE LIPPE FOLGT JETZT DEM GEMALTEN KNOPF ────────
+     M2 hat »einen rechteckigen dunklen Rest unten rechts am Knopf, der die
+     Rundung nicht mitmacht« gemeldet; P6 nannte ihn sichtbar, aber nicht
+     beweisbar — die Messung konnte ihn nicht von der gemalten Knopfkante
+     trennen. Nachgemessen ist er beweisbar, und er ist NICHT die Kante: der
+     Keil misst rgb(119, 78, 40), und das ist auf den Punkt --pb-ink-cast
+     (rgba(107, 63, 24, 0.9)) über dem Kartenpapier rgb(255, 242, 205) —
+     also die LIPPE (»box-shadow 0 4px 0«) und nicht das Blatt.
+
+     Warum sie hervorschaut: die Lippe wird auf den CSS-Kasten gezeichnet, und
+     der trug --pb-chip-r — feste Pixel-Radien, gemacht für einen Chip, der
+     seine Ecke selbst zeichnet. Der gemalte Knopf zeichnet sie aber im Blatt,
+     mit anderen Rundungen, und die Lippe schaut überall dort hervor, wo die
+     beiden nicht übereinstimmen.
+
+     PROZENTE statt Pixel, weil der Knopf mitwächst: der gemalte Kasten ist
+     378×176, seine Ecken liegen bei 19–32 px, also 6–8,5 % der Breite und
+     11–13 % der Höhe. Ein Verhältnis trifft sie bei JEDER Knopfbreite, eine
+     Pixelzahl nur bei einer. Die Werte hier liegen bewusst darüber, damit die
+     Lippe hinter dem gemalten Knopf bleibt statt an seiner Ecke vorbeizuschauen
+     — und sie sind vier verschiedene, weil in diesem Haus nichts ganz gerade
+     ist. Der Radius ist hier ohnehin unsichtbar: die Kante ist gemalt, der
+     CSS-Rand steht auf durchsichtig, und beschnitten wird nur die Amber-Fläche,
+     die als Rückfall darunter liegt. */
+  border-radius: 15% 13% 16% 14% / 28% 25% 29% 26%;
   /* ── R5-W6b · D4 · DER GEMALTE KNOPF (AQ17, Zellen 0 · 1 · 2) ─────────────
      Das Blatt ist 2048×512 und trägt vier 512er Zellen: Ruhe · gedrückt · Ghost
      · Reserve. Die Reserve bleibt mit Absicht unbenutzt — ein Blatt darf mehr
@@ -1048,6 +1106,41 @@ export const PAINT_OVERLAY_CSS = `
   /* Zelle 1 (gedrückt), um ihre eigenen 4 px zurückgeholt — siehe die Rechnung oben */
   background-position: 34.671% 50.298%;
 }
+/* ── R5-W7 · D5 · DER STILLE AUSGANG, ALS REGEL STATT ALS DREI ZAHLEN ───────
+   »Später ↩« will laut seinem eigenen Kommentar in CardShell »dasselbe Papier
+   wie jeder andere Chip, flach gedrückt« sein — und war das bis heute mit einer
+   halbdurchsichtigen Hintergrund-FARBE. Das ging, solange hinter dem Chip nur
+   Verläufe lagen: das Kartenpapier schien durch, und der Knopf war von selbst
+   blass.
+
+   Seit die gemalte Plakette darunter liegt, geht es nicht mehr — und zwar aus
+   einem Grund, der sich nicht durch eine größere Zahl beheben lässt: eine
+   »background-color« ist in CSS die UNTERSTE Lage. Ein deckendes Bild darüber
+   verdeckt sie vollständig. Gemessen am Bank-Foto: mit Deckkraft 0,5 wie mit
+   0,83 blieb die Fläche bei exakt rgb(240, 197, 121) — die Wäsche malte
+   hinter einem Vorhang.
+
+   Also liegt die Wäsche jetzt OBEN, als Verlauf aus einer einzigen Farbe (die
+   einzige Bauform, die im Lagen-Stapel über ein Bild kommt), und der ganze
+   stille Zustand steht hier statt inline an der Aufrufstelle — dieselbe
+   Klassen-statt-Instanz-Bewegung, die D4 für das Knopf-Polster gemacht hat.
+   0,72 ist gemessen und nicht gewählt: die Fläche liegt damit rund 44
+   Helligkeitspunkte über der Antwort-Plakette, genau so weit wie vorher über
+   dem Verlauf (vorher 229 gegen 185). */
+.pb-card button.pb-btn-quiet {
+  background-image:
+    linear-gradient(rgba(252,247,232,0.72), rgba(252,247,232,0.72)),
+    url("/art/g1/cards/card_plaques.png");
+  background-size: auto, 200% 100%;
+  background-position: 0 0, 0 0;
+  border-color: var(--pb-ink-line);
+  color: #8a7a58;
+  box-shadow: none;
+}
+.pb-card button.pb-btn-quiet:active:not(:disabled) {
+  background-position: 0 0, 100% 0;
+}
+
 .pb-card .pb-btn-ghost {
   background-color: rgba(253,246,228,0.62);
   /* Zelle 2: dasselbe Blatt, der stille Zustand. Der Ghost ist der Weg HINAUS,
@@ -1393,13 +1486,46 @@ export const PAINT_OVERLAY_CSS = `
   border-width: 1.6px 1.5px 2.4px 2.5px;
   box-shadow: inset 0 2px 10px rgba(120, 96, 52, 0.28);
   margin: 0 0 10px;
+  /* wie weit das Blatt über sein Fenster hinausragt — die Begründung steht bei
+     der Bild-Regel darunter, die den Wert benutzt */
+  --pb-rule-band-zoom: 118%;
 }
 .pb-rule-band img {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -46%);
-  width: 100%;
+  /* R5-W7 · D5 · P6/R196 · DAS FENSTER ZEIGT DIE SEITEN, NICHT DEN BUCHDECKEL.
+     Beide Material-Kritiker der P6-Runde nannten unabhängig dieselbe Stelle:
+     »zwei harte schwarze Streifen mit exakt senkrechten, pixelscharfen Kanten«
+     links und rechts im Buch-Fenster. Nachgemessen am Bank-Foto: je acht
+     Bildpunkte mit rgb(2, 6, 8), während die 660 Spalten dazwischen im Mittel
+     bei 131 liegen.
+
+     GEMESSEN, nicht vermutet — und die erste Vermutung war falsch. Ein Blatt,
+     das sein Fenster nicht ausfüllt, war es NICHT: eine Probe mit rot
+     eingefärbtem Bandhintergrund zeigt die Streifen unverändert schwarz, sie
+     sind also DECKEND. Es ist der gemalte BUCHDECKEL selbst. In dem Streifen,
+     den dieses Band zeigt (Quellzeilen 230–475 von 768), endet die fast
+     schwarze Deckelkante links bei Spalte 59 und beginnt rechts wieder bei
+     Spalte 969 — bei Breite 100 % liegen genau diese beiden Kanten bündig an
+     der Tuschekante und lesen sich als zwei Balken statt als ein Buch.
+
+     118 % schneidet 78 Quellspalten je Seite weg (sichtbar bleiben 78–946):
+     19 Spalten Luft links, 23 rechts, und beide Ränder liegen im DECKENDEN
+     Teil des Blattes, also entsteht auch kein Papierspalt. Das Fenster rahmt
+     damit die aufgeschlagenen SEITEN — was ein Bilderrahmen in diesem Buch
+     tun soll. Der Wert ist ein Messwert, kein Geschmack: cards/rule-band.test.ts
+     rechnet ihn gegen das Blatt nach und wird rot, sobald er wieder auf 100 %
+     steht oder ein neues Blatt seine dunkle Kante weiter innen trägt. */
+  width: var(--pb-rule-band-zoom, 118%);
+  /* ⚠ OHNE DIESE ZEILE PASSIERT GAR NICHTS. Die App setzt global »img
+     max-width 100 %«, und diese Schranke schlägt jede Breite über 100 % still
+     ab: mit 118 % rechnete der Browser weiter 100 % und das Bild blieb Pixel
+     für Pixel dasselbe (gemessen: 384,5 px statt 453,7 px, Bank-Foto vorher
+     und nachher bytegleich). Ein Bild, das absichtlich über sein Fenster
+     hinausragen soll, muss die Schranke ausdrücklich aufheben. */
+  max-width: none;
   height: auto;
 }
 
