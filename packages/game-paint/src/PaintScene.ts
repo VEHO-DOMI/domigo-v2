@@ -2207,7 +2207,34 @@ export class PaintScene extends Phaser.Scene {
         // swapped between two frames. Folded into the scale the renderer sets
         // anyway — see cagePopT for why a tween cannot live here.
         const pop = this.cagePopT(e);
-        const k = targetH / frameH;
+        // R5-W8 · F9 · D-476 · EIN FAKTOR FÜR MERLES GANZES BLATT — dasselbe
+        // Gesetz, das der Boss oben schon fährt, und aus demselben Grund.
+        //
+        // `targetH / frameH` passt JEDE Zelle einzeln auf dieselbe Anzeigehöhe.
+        // Für ein Wesen, dessen Zellen alle dasselbe Ding im selben Aufbau
+        // zeigen, ist das richtig. Für eine PERSON, die ihre Zellen in Posen
+        // malt, ist es falsch: ihre Steh-Blätter sind ~456 px hoch, ihre
+        // Geh-Blätter ~365 — nicht weil sie beim Gehen kleiner wäre, sondern
+        // weil eine gehende Figur in einen niedrigeren Kasten passt. Wer jede
+        // Zelle einzeln auf 30 px zieht, vergrößert die Geh-Zellen um den
+        // Unterschied der KÄSTEN und bläst damit alles auf, was darauf gemalt
+        // ist.
+        //
+        // Gemessen an ihren Schuhen — dem einen Ding, das in jeder Zelle
+        // dasselbe reale Objekt ist, rein geometrisch gefunden (die zwei
+        // tiefsten Teile in einem Band FESTER Bildpunktzahl, nie über die
+        // Kontur): die Quellfläche ist in Steh- und Geh-Zellen dieselbe
+        // (~4000 px, Streuung 3 %), obwohl die Kästen um 23 % auseinanderliegen.
+        // Die Blätter sind also in EINEM Maßstab gemalt, und ihre Proportionen
+        // gehören auf den Schirm. Der Sprung Stand↔Gang fällt damit von
+        // +49,8 % auf −2,9 % (F9-Report §3).
+        //
+        // `refFrameHOf` fällt auf die gezeichnete Zelle zurück, wenn die
+        // Ruhezelle nicht auf der Platte liegt — das Nur-was-da-ist-Gesetz:
+        // eine fehlende Referenz darf kein Wesen auf null zeichnen.
+        const k = e.role === "classmate"
+          ? targetH / (this.refFrameHOf(e.skin) || frameH)
+          : targetH / frameH;
         // R5-W1 · F1 · DIE QUETSCHUNG DES HÜPFERS, in dieselbe Zeile gefaltet,
         // aus demselben Grund wie der Käfig-Pop: renderEntities setzt die
         // Skalierung JEDE Frame neu, ein Tween daneben wäre überschrieben.
@@ -2270,7 +2297,11 @@ export class PaintScene extends Phaser.Scene {
         // R5-W4 · F5: die entfärbten Dinge stehen jetzt mit im Beipackzettel —
         // sonst wäre „das Buch wippt 4,8 px" wieder ein Eindruck statt einer
         // Zahl, die `measure-motion.mjs` gegen das Bild halten kann.
-        if (DRAW_PROBE && (e.role === "cage" || e.role === "tip" || e.role === "drained")) {
+        // R5-W8 · F9: …und die KLASSENKAMERADIN steht mit im Beipackzettel.
+        // Ohne sie wäre "Merle wird jetzt mit einem Faktor gezeichnet" eine
+        // Rechnung gewesen; mit ihr ist es eine Lesung am Zeichenort — genau
+        // der Grund, aus dem F5 die entfärbten Dinge hier eingetragen hat.
+        if (DRAW_PROBE && (e.role === "cage" || e.role === "tip" || e.role === "drained" || e.role === "classmate")) {
           const cam = this.cameras.main;
           const b = img.getBounds();
           const view = cam.worldView;
