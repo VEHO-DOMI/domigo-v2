@@ -42,8 +42,17 @@ export interface AudioSettings {
   readonly sfx: boolean;
 }
 
-/** R124: an, leise. Die Lautstärke selbst steht in `BUSES` im Manifest. */
-export const AUDIO_DEFAULTS: AudioSettings = { muted: false, music: true, sfx: true };
+/** R124: an, leise. Die Lautstärke selbst steht in `BUSES` im Manifest.
+ *  R214 (Koki, 2026-08-24): im DEV-Lauf startet das Malbuch STUMM — jede
+ *  Arbeits-Session auf localhost spielte sonst Musik ohne Aus-Weg. Nur der
+ *  Default kippt: eine gespeicherte Geräte-Wahl gewinnt weiter, der sichtbare
+ *  Lautsprecher-Knopf schaltet jederzeit an, und Produktion (die Kinder)
+ *  behält R124 unverändert. */
+export const defaultsFor = (env: string | undefined): AudioSettings =>
+  env === "development"
+    ? { muted: true, music: true, sfx: true }
+    : { muted: false, music: true, sfx: true };
+export const AUDIO_DEFAULTS: AudioSettings = defaultsFor(process.env.NODE_ENV);
 
 const isSettings = (v: unknown): v is AudioSettings =>
   typeof v === "object" && v !== null
