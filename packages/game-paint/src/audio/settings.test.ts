@@ -69,15 +69,18 @@ describe("der Dach-Schalter schreibt vollständig", () => {
     expect(JSON.parse(store.get(FEEL_SETTINGS_KEY) as string)).toMatchObject({ sound: true });
   });
 
-  it("die Malbuch-Vorgabe bleibt R124: an, mit Musik und Effekten — und der DEV-Lauf startet stumm (R214)", () => {
-    expect(defaultsFor("production")).toEqual({ muted: false, music: true, sfx: true });
-    expect(defaultsFor("test")).toEqual({ muted: false, music: true, sfx: true });
-    expect(defaultsFor(undefined)).toEqual({ muted: false, music: true, sfx: true });
+  it("die Malbuch-Vorgabe ist R221: ÜBERALL stumm, bis die Schüler kommen — ein Tipp auf den Knopf bringt den vollen R124-Klang", () => {
+    // Jede Umgebung startet stumm — auch Produktion (R214 deckte nur dev;
+    // Perf-Messungen fahren Produktions-Bauten und spielten weiter Musik).
+    expect(defaultsFor("production")).toEqual({ muted: true, music: true, sfx: true });
+    expect(defaultsFor("test")).toEqual({ muted: true, music: true, sfx: true });
+    expect(defaultsFor(undefined)).toEqual({ muted: true, music: true, sfx: true });
     expect(defaultsFor("development")).toEqual({ muted: true, music: true, sfx: true });
     expect(AUDIO_DEFAULTS).toEqual(defaultsFor(process.env.NODE_ENV));
-    expect(AUDIO_DEFAULTS).toEqual({ muted: false, music: true, sfx: true });
+    expect(AUDIO_DEFAULTS).toEqual({ muted: true, music: true, sfx: true });
     expect(readAudioSettings()).toEqual(AUDIO_DEFAULTS);
-    writeAudioSettings({ muted: true, music: false, sfx: true });
-    expect(readAudioSettings()).toEqual({ muted: true, music: false, sfx: true });
+    // Die gespeicherte Geräte-Wahl gewinnt weiter über jeden Default.
+    writeAudioSettings({ muted: false, music: true, sfx: true });
+    expect(readAudioSettings()).toEqual({ muted: false, music: true, sfx: true });
   });
 });

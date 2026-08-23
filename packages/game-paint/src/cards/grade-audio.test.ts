@@ -45,7 +45,9 @@ const fakeHost = (): { host: SoundHost; played: string[] } => {
 
 const director = async () => {
   const { host, played } = fakeHost();
-  const d = createAudioDirector({ sound: host, hasFile: () => true, fetchAudio: async () => new ArrayBuffer(8) });
+  // Wertungs-Klänge werden bei TON AN gemessen — explizit, damit dieser Test
+  // nicht am Umgebungs-Default hängt (R221 stellt ihn überall auf stumm).
+  const d = createAudioDirector({ sound: host, hasFile: () => true, fetchAudio: async () => new ArrayBuffer(8), settings: { muted: false, music: true, sfx: true } });
   await d.decodeAfterCreate("p1");
   return { d, played };
 };
