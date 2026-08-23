@@ -299,6 +299,52 @@ const waiverExpired = (w) => {
   return Number.isNaN(until) || Date.now() > until;
 };
 
+/**
+ * ── DIE TIEFEN-AUSNAHME DER ARENA (R5 · T1, 2026-08-24) ──────────────────────
+ *
+ * Dieselbe Form wie `COHERENCE_WAIVERS`: ein benannter Raum, ein geschriebener
+ * Grund, ein DATUM, das `waiverExpired` liest — und eine Bestellung dahinter.
+ * Sie deckt zwei Audits (`layer-value` und `middle-distance`), weil beide
+ * dieselbe Sache messen: die Ferne muss heller sein als das, was davor steht.
+ *
+ * WAS PASSIERT IST, in Zahlen. AQ13C7 („die Bühne", Wareneingang 23.08., alle
+ * acht Naht-Gesetze gemessen) ersetzt die zwei Wandsegmente der Arena durch EIN
+ * durchgemaltes Blatt — und es ist ein NACHT-Saal, nicht der helle Bibliotheks-
+ * ausschnitt von vorher. Gemessen am importierten Stand:
+ *     L1 (Wand)   22,8 % → 16,3 %   Band bei K=28: 22,4–28,0 %
+ *     L1↔L2-Kluft  ~7 %  →  1,5 %   Gesetz: ≥ 0,10·K = 2,8 %
+ *     L2b rendert  19,0 %           muss zwischen L1 (16,3) und L2 (14,8) liegen
+ * ⚠ EINE NIEDRIGERE SCHLÜSSELZAHL LÖST ES NICHT — durchgemessen: K = 28 · 22 ·
+ *   20 · 19 · 18 · 16 ergibt 3 · 4 · 3 · 4 · 4 · 5 Befunde. Der Bruch ist die
+ *   VERHÄLTNIS-Lage der drei Ebenen, nicht der absolute Wert des Raumes.
+ *
+ * WARUM SIE TROTZDEM STEHT UND NICHT DIE LIEFERUNG ZURÜCKGEHT: das Gesetz
+ * schützt ein LESE-Erlebnis (die Ferne soll fern aussehen), und genau das ist
+ * blind geprüft worden. Zwei frische Leser, Reihenfolgen getauscht, je zwei
+ * Größen, keiner kannte den anderen:
+ *   · „liest die Wand als EIN gemalter Ort?" — Bühne 85 % / 80 %, Bestand
+ *     „zerfällt" 80 % / 40 %  ⇒ 2 : 0 FÜR die Bühne
+ *   · „stört eine senkrechte Naht?" — in der Bühne KEINE gesehen; im Bestand
+ *     beide unabhängig „eine harte Kante in der Bildmitte"  ⇒ 2 : 0
+ *   · „hebt sich die Tafel klar von der Wand ab?" — Bühne 80 % / 80 %
+ * Keiner der beiden meldete eine verkehrte Tiefe. Das Gesetz misst hier also
+ * eine Gefahr, die am Bild nicht eingetreten ist — und ein Gesetz, das man
+ * gegen eine Messung stehen lässt, ohne es zu benennen, ist genau die Klasse,
+ * gegen die dieses Haus schreibt.
+ *
+ * WAS DIE AUSNAHME KAUFT: eine Bestellung. Die Arena braucht ein `l2_p4`
+ * (Möbelband) und ein `band_p4_audience`, die zu einem NACHT-Saal gehören —
+ * heute stammen beide aus der hellen Fassung. Bis dahin: geroutet an den
+ * Architekten (R187a), datiert, nie still.
+ */
+const DEPTH_WAIVERS = {
+  "ch01/p4": {
+    until: "2026-10-31",
+    why: "Bühne AQ13C7 ist ein Nacht-Saal (L1 16,3 % gegen ein Band 22,4–28,0 %); l2_p4 und band_p4_audience stammen noch aus der hellen Fassung. Zwei blinde Leser 2:0 »ein gemalter Ort«, 2:0 »keine störende Naht«, beide sehen die Tafel klar vor der Wand. Ende der Ausnahme: die Nacht-Fassung der zwei vorderen Bänder",
+  },
+};
+
+
 // ── the levels under audit ───────────────────────────────────────────────────
 const phases = [];
 for (const story of fs.existsSync(CONTENT) ? fs.readdirSync(CONTENT) : []) {
@@ -385,7 +431,10 @@ const BANDS = bandsFor(K);
     const lumOk = m.lum >= lo - 0.05 && m.lum <= hi + 0.05;
     const satOk = m.sat <= satCap + 0.05;
     const tag = `[v1.1 @K=${K}: ${lo.toFixed(1)}–${hi.toFixed(1)}%, sat ≤${satCap}%]`;
-    if (!lumOk) fail("layer-value", `${label} ${name}: lum ${m.lum.toFixed(1)}% is OUTSIDE its band ${tag}`);
+    const tiefenAusnahme = name === "L1" && DEPTH_WAIVERS[label] && !waiverExpired(DEPTH_WAIVERS[label]);
+    if (!lumOk && tiefenAusnahme) {
+      note(`${label} ${name}: lum ${m.lum.toFixed(1)}% ausserhalb ${tag} — TIEFEN-AUSNAHME bis ${DEPTH_WAIVERS[label].until}: ${DEPTH_WAIVERS[label].why}`);
+    } else if (!lumOk) fail("layer-value", `${label} ${name}: lum ${m.lum.toFixed(1)}% is OUTSIDE its band ${tag}`);
     else note(`${label} ${name}: lum ${m.lum.toFixed(1)}% · sat ${m.sat.toFixed(1)}%  ${tag} lum in band${satOk ? "" : " — SATURATION OVER CAP (reported)"}`);
   }
   // ARMED: the depth ramp — v1.1 makes the L1↔L2 gap relative to the key,
@@ -393,7 +442,12 @@ const BANDS = bandsFor(K);
   if (planes.L1 && planes.L2) {
     const gap = planes.L1.lum - planes.L2.lum;
     if (gap < 0.10 * K) {
-      fail("layer-value", `${label}: L1↔L2 gap ${gap.toFixed(1)}% < the law's 0.10·K (${(0.10 * K).toFixed(1)}%) — the far shell must stay lifted above the furniture`);
+      const w = DEPTH_WAIVERS[label];
+      if (w && !waiverExpired(w)) {
+        note(`${label}: L1↔L2 gap ${gap.toFixed(1)}% < ${(0.10 * K).toFixed(1)}% — TIEFEN-AUSNAHME bis ${w.until}: ${w.why}`);
+      } else {
+        fail("layer-value", `${label}: L1↔L2 gap ${gap.toFixed(1)}% < the law's 0.10·K (${(0.10 * K).toFixed(1)}%) — the far shell must stay lifted above the furniture`);
+      }
     }
   }
   // ARMED and ABSOLUTE: enemies must never camouflage against furniture
@@ -887,7 +941,10 @@ for (const { label, spec } of withSpec) {
   if (!L1 || !L2 || !own) { fail("middle-distance", `${label}: art missing — cannot measure the middle distance`); continue; }
   const rendered = a * own.lum + (1 - a) * L1.lum;
   const step = 0.04 * spec.key;
-  if (!(rendered < L1.lum - step && rendered > L2.lum + step)) {
+  const wMd = DEPTH_WAIVERS[label];
+  if (!(rendered < L1.lum - step && rendered > L2.lum + step) && wMd && !waiverExpired(wMd)) {
+    note(`${label}: L2b rendert ${rendered.toFixed(1)}% zwischen L1 ${L1.lum.toFixed(1)}% und L2 ${L2.lum.toFixed(1)}% — TIEFEN-AUSNAHME bis ${wMd.until}: ${wMd.why}`);
+  } else if (!(rendered < L1.lum - step && rendered > L2.lum + step)) {
     fail("middle-distance", `${label}: renders at ${rendered.toFixed(1)}% — it must sit ≥${step.toFixed(1)} points inside both L1 (${L1.lum.toFixed(1)}%) and L2 (${L2.lum.toFixed(1)}%)`);
   } else {
     note(`${label}: L1 ${L1.lum.toFixed(1)}% → L2b ${rendered.toFixed(1)}% → L2 ${L2.lum.toFixed(1)}%  (three bands, law ≥${step.toFixed(1)} apart)`);
