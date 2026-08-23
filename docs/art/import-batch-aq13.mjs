@@ -1819,6 +1819,158 @@ if (process.argv.includes("--band-rauhheit")) {
   process.exit(0);
 }
 
+/* ── `--reserve` (R5 · T1) ───────────────────────────────────────────────────
+ *
+ * D-657 hat einen Befund gemeldet, den nie jemand gemessen hatte: die alten
+ * Kreide-Overlays halten die Schluessel-Reserve nicht. Ein Befund, dessen Zahl
+ * nur in einem Report steht, ist beim naechsten Mal wieder ungemessen — also
+ * bekommt er einen BEFEHL. Er urteilt nicht (die Blaetter liegen laengst im
+ * Bestand und werden von nichts mehr gekeyt), er druckt die Zahl.
+ *
+ * Regel 6 der Tafel-Abnahme, woertlich: kein gemaltes Pixel naeher als 180 am
+ * Schluessel (euklidisch gegen 255,0,255). Der Grund ist keine Aesthetik: ein
+ * toleranter Schluessel frisst genau diese Pixel weg.
+ */
+if (process.argv.includes("--reserve")) {
+  const i0 = process.argv.indexOf("--reserve");
+  const stems = process.argv.slice(i0 + 1).filter((a) => !a.startsWith("--"));
+  if (stems.length === 0) {
+    console.error("usage: node docs/art/import-batch-aq13.mjs --reserve <stem> [<stem> …]");
+    process.exit(2);
+  }
+  console.log(`\nSchluessel-Reserve (Regel 6: kein gemaltes Pixel unter ${KEY_MIN} vom Schluessel)`);
+  console.log("Stem                 gemalt   kleinster   unter 180   unter 150   haeufigster Abstand");
+  let unterhalb = 0;
+  for (const s of stems) {
+    const f = path.join(OUT, `${s}.png`);
+    if (!fs.existsSync(f)) { console.error(`  fehlt: ${s}.png`); process.exit(2); }
+    const p = read(f);
+    let min = Infinity, u180 = 0, u150 = 0, gemalt = 0;
+    const hist = new Map();
+    for (let i = 0; i < p.data.length; i += 4) {
+      if (p.data[i + 3] <= 8) continue;
+      gemalt++;
+      const d = Math.hypot(p.data[i] - 255, p.data[i + 1], p.data[i + 2] - 255);
+      if (d < min) min = d;
+      if (d < KEY_MIN) u180++;
+      if (d < 150) u150++;
+      const b = Math.round(d);
+      hist.set(b, (hist.get(b) ?? 0) + 1);
+    }
+    let topD = null, topN = 0;
+    for (const [d, n] of hist) if (n > topN) { topN = n; topD = d; }
+    if (u180 > 0) unterhalb++;
+    console.log(
+      `${s.padEnd(20)} ${String(gemalt).padStart(7)}   ${min.toFixed(2).padStart(9)}   `
+      + `${String(u180).padStart(9)}   ${String(u150).padStart(9)}   ${topD} (${topN} px)`
+      + (u180 > 0 ? "   ← unter der Reserve" : ""),
+    );
+  }
+  console.log(`\n${unterhalb} von ${stems.length} Blatt/Blaettern tragen Malerei unter der Reserve.`);
+  console.log("Kein Urteil: diese Blaetter liegen im Bestand und werden von nichts mehr gekeyt.");
+  console.log("Die Zahl gehoert an die naechste Bestellung fuer eben diese Blaetter (D-657).");
+  process.exit(0);
+}
+
+/* ── `--import-buehne` (R5 · T1) ─────────────────────────────────────────────
+ *
+ * DAS ACHTE BLATT. Die Ring-Familie hat sieben Runden gebraucht (R203); der
+ * Wareneingang vom 23.08. nimmt AQ13C7 an: alle acht Naht-Gesetze gemessen,
+ * Streuung 5,0–5,6 »erstmals in der Liga der ehrlichen a|b-Naht«. Bis heute las
+ * der Ring-Zweig die Buehne nur fuer die ABNAHME und schrieb sie nie — ein
+ * Buehnen-Befund wurde als »faehrt NICHT mit (R199)« deklariert. Diese Klausel
+ * wird jetzt eingeloest.
+ *
+ * ★ WAS DIE BUEHNE IST, nachgemessen und nicht angenommen: `l1_p4_stage.png`
+ *   misst 2048×1260, die zwei Bestands-Segmente `l1_p4_a`/`l1_p4_b` je
+ *   1024×1260. Die Buehne ist also das WANDPAAR DER ARENA als EIN
+ *   durchgemaltes Blatt — genau darum misst die Lieferung ihre Naht zweimal,
+ *   »Buehne a|b« (die Fuge in der Mitte) und »Buehne b|a« (die Schleife ueber
+ *   die Aussenkanten). `composition.ts#shell` verdrahtet die zwei Segmente
+ *   bereits (`segments: [l1_<phase>_a, l1_<phase>_b]`).
+ *
+ * ⇒ Dieser Zweig ERSETZT zwei bestehende Stems und legt keinen an: kein
+ *   `artScope`-Eintrag, keine Zeile in `composition.ts`, DEAD_ART unveraendert.
+ *
+ * ★ UND ER FASST DAS BAND NICHT AN. Die Lehre steht als D-658 im Register:
+ *   ein Zweig, der ein Blatt neu baut, das nur bestaetigt werden sollte,
+ *   verwirft dessen Nachbehandlung stillschweigend. Der Bestands-Band traegt
+ *   heute den RGB-Hash `45eae41f…`, die Lieferung `ce96a06c…` — sie sind NICHT
+ *   dasselbe Blatt, und welches recht hat, ist keine Frage dieser Bahn. Das
+ *   Band wird deshalb nur GEMESSEN (die Abnahme braucht es fuer die
+ *   Schleifen-Naht) und nie geschrieben.
+ */
+if (process.argv.includes("--import-buehne")) {
+  const dir = process.argv[process.argv.indexOf("--import-buehne") + 1];
+  if (!dir) { console.error("usage: node docs/art/import-batch-aq13.mjs --import-buehne <batch-verzeichnis> [--dry]"); process.exit(2); }
+  const sf = path.join(dir, "l1_p4_stage.png"), bf = path.join(dir, "band_p4_audience.png");
+  for (const f of [sf, bf]) if (!fs.existsSync(f)) { console.error(`fehlt: ${f}`); process.exit(2); }
+
+  console.log(`\nBuehnen-Import · ${path.basename(dir)} — zuerst die Ring-Abnahme, dann erst ein Pixel`);
+  const { lines, fail } = abnahmeRing(read(sf), read(bf));
+  for (const l of lines) console.log(l);
+  const buehneFail = fail.filter((f) => !f.startsWith("Band"));
+  console.log("");
+  if (buehneFail.length > 0) {
+    for (const f of buehneFail) console.error(`  ✗ ${f}`);
+    console.error(`\nBuehnen-Import: ${buehneFail.length} Befund(e) AN DER BUEHNE — es wird nichts geschrieben`);
+    process.exit(1);
+  }
+  const bandFail = fail.filter((f) => f.startsWith("Band"));
+  if (bandFail.length > 0) {
+    console.log(`  ⚠ DEKLARIERT: das Band dieser Lieferung hat ${bandFail.length} Befund(e). Es wird ohnehin NICHT`);
+    console.log(`      geschrieben (D-658); die Zahlen stehen hier, damit sie nicht verschwiegen sind:`);
+    for (const f of bandFail) console.log(`      · ${f}`);
+    console.log("");
+  }
+
+  // ── die zwei Haelften ────────────────────────────────────────────────────
+  const stage = read(sf);
+  const haelften = [
+    { stem: "l1_p4_a", x: 0 },
+    { stem: "l1_p4_b", x: stage.width / 2 },
+  ];
+  if (!Number.isInteger(stage.width / 2)) {
+    console.error(`l1_p4_stage: ${stage.width} px Breite laesst sich nicht halbieren`);
+    process.exit(1);
+  }
+  const geschrieben = [];
+  for (const h of haelften) {
+    const dest = path.join(OUT, `${h.stem}.png`);
+    if (!fs.existsSync(dest)) {
+      console.error(`${h.stem}: es gibt keinen Bestands-Stem dieses Namens — dieser Zweig ERSETZT, er legt nicht an`);
+      process.exit(2);
+    }
+    const alt = read(dest);
+    const out = chromaKey(crop(stage, h.x, 0, stage.width / 2, stage.height));
+    if (out.width !== alt.width || out.height !== alt.height) {
+      console.error(`${h.stem}: ${out.width}×${out.height} gegen den Bestand ${alt.width}×${alt.height} — ein Ersatz hat die Masse seines Vorgaengers`);
+      process.exit(1);
+    }
+    const killed = defringe(out);
+    const dist = keyDistance(out);
+    if (dist < 150) {
+      console.error(`${h.stem}: ein gemaltes Pixel sitzt ${dist.toFixed(2)} vom Schluessel — ein toleranter Schluessel frisst es`);
+      process.exit(1);
+    }
+    const zaehle = (p) => { let n = 0; for (let i = 3; i < p.data.length; i += 4) if (p.data[i] > 8) n++; return n; };
+    const box = { x0: 0, y0: 0, x1: out.width - 1, y1: out.height - 1 };
+    geschrieben.push(
+      `${h.stem}.png`.padEnd(16)
+      + `${out.width}×${out.height}`.padEnd(12)
+      + `Bestand ${zaehle(alt)} px / Rauhheit ${roughnessOf(alt, box, () => true).toFixed(5)}`.padEnd(44)
+      + `Neu ${zaehle(out)} px / Rauhheit ${roughnessOf(out, box, () => true).toFixed(5)}`.padEnd(40)
+      + `${killed} px Saum · Schluessel-Abstand ${dist.toFixed(2)}`,
+    );
+    if (!DRY) fs.writeFileSync(dest, PNG.sync.write(out));
+  }
+  for (const g of geschrieben) console.log(`  ${DRY ? "[dry] " : ""}${g}`);
+  console.log(`\n${DRY ? "[dry] " : ""}Buehnen-Import: OK — zwei bestehende Stems ersetzt (l1_p4_a, l1_p4_b), DEAD_ART unveraendert`);
+  console.log("  Das Band ist NICHT angefasst worden (D-658).");
+  console.log("Naechster Schritt (D-98): node scripts/art-recompress.mjs && node scripts/check-png-identity.mjs");
+  process.exit(0);
+}
+
 if (process.argv.includes("--import-band")) {
   const dir = process.argv[process.argv.indexOf("--import-band") + 1];
   if (!dir) { console.error("usage: node docs/art/import-batch-aq13.mjs --import-band <batch-verzeichnis> [--dry]"); process.exit(2); }
