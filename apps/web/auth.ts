@@ -8,7 +8,9 @@ import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import {
   bumpAndCheck,
+  claimOpsLinkUse,
   clearThrottle,
+  findOpsClassStudent,
   getDb,
   lookupStudentForAuth,
   lookupTeacherForAuth,
@@ -17,6 +19,7 @@ import {
   teacherThrottleKey,
 } from "@domigo/db";
 import { normalizeInviteCode } from "@/lib/invite-code";
+import { opsClassCode, opsLinkUseRow, parseOpsSessionLinkToken } from "@/lib/ops";
 import { verifyPin } from "@/lib/pin";
 
 export type Role = "student" | "teacher";
@@ -71,6 +74,57 @@ async function verifyTeacher(nickname: string, pin: string) {
   return { id: row.id, name: row.displayName, role: "teacher" as const, classId: null };
 }
 
+/**
+ * K2b · Consume a one-time OPS sign-in link.
+ *
+ * This is deliberately NOT a general magic-link provider. It exists for exactly
+ * one job: letting an agent session reach a signed-in STUDENT surface of the ops
+ * test class without anyone typing a PIN into a form (Masterblatt rule 3). Every
+ * property that keeps it narrow is a gate below, and all four must pass:
+ *
+ *   1. SECRET + SIGNATURE + CLOCK — parseOpsSessionLinkToken (lib/ops.ts), which
+ *      fails closed when DOMIGO_OPS_TOKEN is unset or below the 24-character
+ *      floor. No token, no surface. The clock has a ceiling as well as a floor.
+ *   2. CLASS SCOPE — the student is resolved INSIDE the ops class by a WHERE
+ *      clause. A real student's id in a validly signed token resolves to nothing;
+ *      there is no code path here that can reach one.
+ *   3. SINGLE USE — the register (domigo_v2.ops_link_uses, migration 0017). The
+ *      claim is a write, not a read-then-write, so it IS the enforcement and not
+ *      its bookkeeping: the primary key decides the race.
+ *   4. FAIL CLOSED — a lost claim, a missing register table and a database hiccup
+ *      all refuse. A link that cannot be RETIRED is a link that must not be honoured.
+ *
+ * Every failure returns plain `null`, which Auth.js turns into one
+ * indistinguishable CredentialsSignin — a caller learns that the link did not
+ * work, never which gate refused it.
+ *
+ * ⚠ lib/ops.ts uses Web-Crypto, not node:crypto, and that is load-bearing: this
+ * file is imported by middleware.ts, which runs on the Edge. See the header there
+ * and the K2a note at the bottom of packages/db/src/index.ts.
+ */
+async function verifyOpsLink(token: string) {
+  const parsed = await parseOpsSessionLinkToken(token);
+  if (!parsed.ok) return null;
+
+  try {
+    const student = await findOpsClassStudent(getDb(), opsClassCode(), parsed.payload.userId);
+    if (!student) return null;
+
+    const claim = await claimOpsLinkUse(getDb(), await opsLinkUseRow(parsed.payload));
+    if (claim !== "claimed") return null;
+
+    return {
+      id: student.id,
+      name: student.displayName,
+      role: "student" as const,
+      classId: student.classId,
+    };
+  } catch {
+    // A database hiccup must not become an unretirable link (gate 4).
+    return null;
+  }
+}
+
 export const { auth, handlers, signIn, signOut } = NextAuth({
   session: { strategy: "jwt", maxAge: 60 * 60 * 24 * 30 },
   pages: { signIn: "/signin" },
@@ -88,6 +142,14 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
       name: "Teacher",
       credentials: { nickname: {}, pin: {} },
       authorize: (raw) => verifyTeacher(String(raw?.nickname ?? ""), String(raw?.pin ?? "")),
+    }),
+    Credentials({
+      // K2b · the ops sign-in link. ONE credential, because the signed token IS
+      // the credential — see verifyOpsLink above for the four gates it passes.
+      id: "ops-link",
+      name: "Ops link",
+      credentials: { token: {} },
+      authorize: (raw) => verifyOpsLink(String(raw?.token ?? "")),
     }),
   ],
   callbacks: {

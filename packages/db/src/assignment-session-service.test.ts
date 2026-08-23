@@ -1,6 +1,8 @@
 import { describe, expect, it } from "vitest";
 import { listStudentsForClass } from "./assignment-session-service.ts";
 import type { Db } from "./index.ts";
+import { eq, sql } from "drizzle-orm";
+import { v2Classes } from "./schema.ts";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // K1a · listStudentsForClass — the read behind the assignment RESULT roster.
@@ -50,6 +52,14 @@ function atomsOf(node: unknown): string[] {
   const walk = (o: unknown, depth = 0): void => {
     if (o == null || depth > 16) return;
     if (typeof o === "string") { out.push(o); return; }
+    // K2b (Rider D) · THE NUMBER BRANCH. drizzle puts a number interpolated into an
+    // sql`` template into queryChunks as a RAW number — only `eq()` and friends wrap
+    // one in a Param, which the `value` branch below already catches. Without this
+    // line the walker cannot SEE such an atom, and a walker that cannot see an atom
+    // reports its absence as proof: every negative assertion about a numeric bound
+    // ("the cap is sixteen", "the grant is fifty") passes vacuously. Paid for once
+    // in K1b; unified across all three walkers here so it cannot come back per file.
+    if (typeof o === "number") { out.push(String(o)); return; }
     if (Array.isArray(o)) { for (const x of o) walk(x, depth + 1); return; }
     if (typeof o !== "object") return;
     const rec = o as Record<string, unknown>;
@@ -139,5 +149,20 @@ describe("listStudentsForClass", () => {
     for (const sel of selections) {
       expect(projectionAtoms(sel)).not.toContain("col:pin_hash");
     }
+  });
+});
+
+describe("Rider D · the atom walker can SEE a raw number", () => {
+  it("finds a number interpolated into an sql`` template — the branch this asserts is not decoration", () => {
+    // Measured against drizzle itself: sql`… ${2}` lands in queryChunks as a bare
+    // `2`, while eq(col, 2) wraps it in a Param. A walker without the number branch
+    // returns the column and drops the bound value — so a test that asserts a bound
+    // is ABSENT would pass no matter what the code does. This is the tamper: remove
+    // the number branch from atomsOf above and this case goes red.
+    const atoms = atomsOf(sql`${v2Classes.grade} >= ${2}`);
+    expect(atoms).toContain("2");
+    expect(atoms).toContain("col:grade");
+    // And the Param form keeps working, so the branch ADDS reach, never replaces it.
+    expect(atomsOf(eq(v2Classes.grade, 3))).toContain("3");
   });
 });

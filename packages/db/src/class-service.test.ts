@@ -7,6 +7,8 @@ import {
   validateGrade,
 } from "./class-service.ts";
 import type { Db } from "./index.ts";
+import { eq, sql } from "drizzle-orm";
+import { v2Classes } from "./schema.ts";
 
 describe("validateClassName", () => {
   it("accepts a normal name and returns null", () => {
@@ -130,6 +132,14 @@ function atomsOf(node: unknown): string[] {
   const walk = (o: unknown, depth = 0): void => {
     if (o == null || depth > 16) return;
     if (typeof o === "string") { out.push(o); return; }
+    // K2b (Rider D) · THE NUMBER BRANCH. drizzle puts a number interpolated into an
+    // sql`` template into queryChunks as a RAW number — only `eq()` and friends wrap
+    // one in a Param, which the `value` branch below already catches. Without this
+    // line the walker cannot SEE such an atom, and a walker that cannot see an atom
+    // reports its absence as proof: every negative assertion about a numeric bound
+    // ("the cap is sixteen", "the grant is fifty") passes vacuously. Paid for once
+    // in K1b; unified across all three walkers here so it cannot come back per file.
+    if (typeof o === "number") { out.push(String(o)); return; }
     if (Array.isArray(o)) { for (const x of o) walk(x, depth + 1); return; }
     if (typeof o !== "object") return;
     const rec = o as Record<string, unknown>;
@@ -239,6 +249,40 @@ describe("listAllClassesForGrandmaster — every class on the platform, both reg
     expect(view.legacy).toHaveLength(1); // the register that COULD be read still is
   });
 
+  it("K2b · reports a broken LEGACY register as BROKEN too, instead of taking the page down", async () => {
+    // Before K2b this half had no try/catch at all: it threw, the server component
+    // 500'd, and the grandmaster lost the v2 list as well — a probe whose whole job
+    // is to report on both registers could be killed by one of them.
+    const { db } = seqDb([
+      [v2Row],
+      [{ classId: "v2-a", total: 5, claimed: 2 }],
+      [{ id: "T-2", displayName: "TEST-Kollegin" }],
+      new Error('relation "public.classes" does not exist'),
+    ]);
+    const view = await listAllClassesForGrandmaster(db);
+    expect(view.legacyFailed).toBe(true); // the honest third state, now on both sides
+    expect(view.legacy).toEqual([]);
+    expect(view.v2).toHaveLength(1); // the register that COULD be read still is
+    expect(view.v2Failed).toBe(false); // and it is NOT tarred with the other's failure
+  });
+
+  it("K2b · both flags are false on a healthy read — the symmetry is the point", async () => {
+    const { db } = happyDb();
+    const view = await listAllClassesForGrandmaster(db);
+    expect(view.v2Failed).toBe(false);
+    expect(view.legacyFailed).toBe(false);
+  });
+
+  it("K2b · a legacy register that is merely EMPTY is not a failure", async () => {
+    // TAMPER on the meaning: were legacyFailed derived from `legacy.length === 0`
+    // instead of from a caught throw, this case would report a broken register on a
+    // platform that simply has no old classes left.
+    const { db } = happyDb({ legacy: [], legacyCounts: [] });
+    const view = await listAllClassesForGrandmaster(db);
+    expect(view.legacy).toEqual([]);
+    expect(view.legacyFailed).toBe(false);
+  });
+
   it("labels an owner it cannot resolve in EITHER register, instead of blanking it", async () => {
     // v2 names empty ⇒ the v1 fallback runs and is empty too.
     const { db } = seqDb([
@@ -273,5 +317,20 @@ describe("listAllClassesForGrandmaster — every class on the platform, both reg
     expect(view.v2).toHaveLength(1);
     expect(view.v2[0]!.studentCount).toBe(0);
     expect(view.v2[0]!.claimedCount).toBe(0);
+  });
+});
+
+describe("Rider D · the atom walker can SEE a raw number", () => {
+  it("finds a number interpolated into an sql`` template — the branch this asserts is not decoration", () => {
+    // Measured against drizzle itself: sql`… ${2}` lands in queryChunks as a bare
+    // `2`, while eq(col, 2) wraps it in a Param. A walker without the number branch
+    // returns the column and drops the bound value — so a test that asserts a bound
+    // is ABSENT would pass no matter what the code does. This is the tamper: remove
+    // the number branch from atomsOf above and this case goes red.
+    const atoms = atomsOf(sql`${v2Classes.grade} >= ${2}`);
+    expect(atoms).toContain("2");
+    expect(atoms).toContain("col:grade");
+    // And the Param form keeps working, so the branch ADDS reach, never replaces it.
+    expect(atomsOf(eq(v2Classes.grade, 3))).toContain("3");
   });
 });

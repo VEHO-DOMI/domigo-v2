@@ -15,29 +15,45 @@
  * degradation is kept WORD FOR WORD: an unresolvable grade opens all four years,
  * because showing too much is a cosmetic miss and showing nothing would be a dead
  * page for a child who did nothing wrong.
+ *
+ * K2b · TEACHERS GET IN (Rider C, a K1b finding). This page resolved only a
+ * STUDENT, so a signed-in teacher was bounced to /signin from the one surface the
+ * whole game hangs off — while the hub one level down, /play/[grade], has let her
+ * in since 2026-07-17 under the preview law. The fix is that hub's own pattern,
+ * not a new one: the student is resolved FIRST (only a student is grade-bound),
+ * and the teacher falls out of `getPlayerForPage`, which deliberately answers for
+ * both. Student behaviour is byte-identical — the grade scope still hangs on the
+ * student, so a second-year still lands straight on year two.
  */
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { listReleasedStories } from "@domigo/content-loader";
-import { getActingUserForPage } from "@/lib/identity";
+import { getActingUserForPage, getPlayerForPage } from "@/lib/identity";
 import { resolveVisibleGrades } from "@/lib/grade-scope";
 import { DEFAULT_STORY_UI, STORY_UI } from "@/lib/stories";
 
 export const dynamic = "force-dynamic";
 
 export default async function PlayIndexPage() {
-  const acting = await getActingUserForPage();
+  const student = await getActingUserForPage();
+  const acting = student ?? (await getPlayerForPage());
   if (!acting) redirect("/signin");
 
   // The years this child may see. resolveVisibleGrades swallows a DB hiccup itself
   // and lands on all four — so this never 500s and never renders an empty page for
   // a reason the child has nothing to do with. (redirect() throws by design in
   // Next, so it stays outside anything that catches.)
-  const grades = await resolveVisibleGrades(acting.classId);
+  //
+  // A TEACHER is not grade-bound: she passes null and sees every released year,
+  // which is the same preview she already gets on /play/[grade].
+  const grades = await resolveVisibleGrades(student ? student.classId : null);
   const stories = listReleasedStories().filter((s) => grades.includes(s.grade));
 
-  // Fast path: exactly one year in scope and a story released for it.
-  if (grades.length === 1 && stories.some((s) => s.grade === grades[0])) redirect(`/play/${grades[0]}`);
+  // Fast path: exactly one year in scope and a story released for it. Only a
+  // STUDENT is sent straight through — a teacher who lands here wants the list.
+  if (student && grades.length === 1 && stories.some((s) => s.grade === grades[0])) {
+    redirect(`/play/${grades[0]}`);
+  }
 
   return (
     <main style={{ maxWidth: 560, margin: "0 auto", padding: "28px 20px 48px", fontFamily: "var(--font-body)", color: "var(--text)" }}>

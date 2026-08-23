@@ -100,7 +100,14 @@ export default async function JoinPage({
           </p>
         </div>
       ) : (
-        <form action={claim} className="dg-card" style={{ display: "flex", flexDirection: "column", gap: 16, marginTop: 16 }}>
+        // K2b · Rider E — DER PASSWORTMANAGER GEHOERT HIER NICHT HIN. Auf genau
+        // dieser Kinder-Seite bot Chrome dem Lehrer-Konto seine eigenen
+        // Zugangsdaten an; ohne Eingriff waere ein Test-Kind mit der LEHRER-PIN
+        // entstanden (real passiert, 2026-08-23). `autoComplete="off"` stand auf
+        // den Feldern schon und half nicht: Chrome IGNORIERT `off` auf
+        // Passwortfeldern und hoert nur auf `new-password`. Also beides — `off`
+        // auf dem Formular als Ganzem, `new-password` auf dem PIN-Feld.
+        <form autoComplete="off" action={claim} className="dg-card" style={{ display: "flex", flexDirection: "column", gap: 16, marginTop: 16 }}>
           <fieldset style={{ border: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 8 }}>
             <legend style={{ ...labelStyle, marginBottom: 4, padding: 0 }}>1 · Which one is you?</legend>
             {candidates.map((c) => (
@@ -118,7 +125,7 @@ export default async function JoinPage({
 
           <label style={labelStyle}>
             3 · Choose a 6-digit PIN
-            <input name="pin" required inputMode="numeric" pattern="[0-9]{6}" maxLength={6} type="password" autoComplete="off" placeholder="6 digits" className="dg-input" />
+            <input name="pin" required inputMode="numeric" pattern="[0-9]{6}" maxLength={6} type="password" autoComplete="new-password" placeholder="6 digits" className="dg-input" />
           </label>
 
           <button type="submit" className="dg-btn" style={{ marginTop: 4, padding: "12px 16px" }}>Join and start</button>
