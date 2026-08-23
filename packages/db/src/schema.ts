@@ -564,3 +564,62 @@ export const v2ContentSolveRuns = v2.table(
     byItem: index("content_solve_runs_item_idx").on(t.itemId, t.createdAt.desc()),
   }),
 );
+
+/**
+ * Zustands-Schnappschuss der Bestandsschüler VOR dem Jahres-Rollover 2026/27
+ * (Kokis Ruling P-R1.1, „Tabula rasa + Schnappschuss in der Hinterhand").
+ *
+ * WOZU: das Schuljahr beginnt mit frisch angelegten Klassen und frisch
+ * angelegten Konten — niemand nimmt sein altes Konto mit. Damit der erarbeitete
+ * Lernstand trotzdem nicht verloren ist, wird er hier EINMAL je Schüler und
+ * Etikett eingefroren: die v1-Konto-Zähler, der v2-Fortschritt, der
+ * Karteikasten (Leitner) und eine SUMMEN-Sicht auf das Versuchs-Ledger.
+ *
+ * WAS HIER BEWUSST FEHLT: der Import. Die Lehrkraft soll diesen Stand später
+ * auf ihre neu angelegten Schüler übertragen können — das ist ein SPÄTERES,
+ * eigenes Feature. Diese Tabelle ist reine Sicherung; es gibt (noch) keinen
+ * Lese-Pfad in der App, und es soll hier auch keiner entstehen.
+ *
+ * Befüllt wird sie NICHT von Laufzeit-Code, sondern von genau einem
+ * `INSERT … SELECT` aus dem Runbook `docs/runbooks/rollover-snapshot.md`
+ * — datenbank-intern, ohne dass je eine Personendaten-Zeile angezeigt wird.
+ *
+ * `v1UserId` ist eine wiederverwendete v1-uuid aus `public.users` — schlichte
+ * Spalte, KEIN schema-übergreifender Fremdschlüssel (Haus-Regel).
+ * Der Unique-Index auf (label, v1_user_id) macht einen zweiten Lauf desselben
+ * Etiketts KONSTRUKTIV unmöglich statt bloss verboten.
+ */
+export const rolloverSnapshots = v2.table(
+  "rollover_snapshots",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    /** Jahrgangs-Etikett des Schnappschusses, z. B. '2025-26'. */
+    label: text("label").notNull(),
+    /** `public.users.id` des Schülers — kein FK (siehe oben). */
+    v1UserId: uuid("v1_user_id").notNull(),
+    realName: text("real_name"),
+    displayName: text("display_name").notNull(),
+    className: text("class_name"),
+    grade: smallint("grade"),
+    /** v1-Konto-Zähler: xp, grammar_xp, level, grammar_level, streak,
+     *  last_session_date, total_sprints, total_flashcards, avatar_key,
+     *  created_at, last_seen_at. */
+    v1Stats: jsonb("v1_stats").notNull(),
+    /** Zeile aus `domigo_v2.user_progress`; NULL, wenn es dort keine gibt. */
+    v2Progress: jsonb("v2_progress"),
+    /** Karteikasten: Array der `review_queue`-Zeilen (ref, box/Fach, due).
+     *  Leerer Kasten = `[]`, nie NULL (`jsonb_agg` liefert sonst NULL). */
+    leitner: jsonb("leitner"),
+    /** SUMMEN über `practice_attempts` (Anzahl, correct, distinct Items,
+     *  erster/letzter Zeitstempel) — nie die Einzelversuche: die bleiben
+     *  im Ledger stehen. */
+    attemptsSummary: jsonb("attempts_summary"),
+    /** Anzahl abgeschlossener Lernpfad-Knoten (`study_path_progress`). */
+    studyPathDone: integer("study_path_done"),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => ({
+    labelUserUnique: uniqueIndex("rollover_snapshots_label_user_unique").on(t.label, t.v1UserId),
+    byLabel: index("rollover_snapshots_label_idx").on(t.label),
+  }),
+);
