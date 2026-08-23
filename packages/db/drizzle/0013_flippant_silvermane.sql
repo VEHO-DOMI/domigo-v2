@@ -1,0 +1,1 @@
+CREATE UNIQUE INDEX "users_teacher_nickname_unique" ON "domigo_v2"."users" USING btree (lower("display_name")) WHERE "domigo_v2"."users"."role" = 'teacher';

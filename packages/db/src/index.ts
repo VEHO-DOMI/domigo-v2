@@ -42,6 +42,7 @@ export * from "./v1.ts"; // read-only mirrors of v1's public.users/classes (auth
 export * from "./auth.ts"; // v2→v1 dual-read identity lookups (lookupStudentForAuth/lookupTeacherForAuth) + allocateClassCode
 export * from "./class-service.ts"; // P-1b: teacher class CRUD (v2-native, authz by teacherId) + pure name/grade validation
 export * from "./roster-service.ts"; // P-2: roster import + student self-claim (journal-then-flip, authz by teacherId)
+export * from "./teacher-claim.ts"; // P2: teacher self-join — claimable pre-created classes + the guarded handover
 export * from "./overrides.ts"; // S-1: Studio content overlay (journal-then-flip publish/revert/fold)
 export * from "./drafts.ts"; // S-2: Studio full-CRUD drafts (blind-solve gate; journal-then-flip)
 export * from "./solve-runs.ts"; // S-2b: async blind-solve runs (Vercel Sandbox orchestration)

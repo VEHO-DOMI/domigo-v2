@@ -92,6 +92,13 @@
       "when": 1784201261811,
       "tag": "0012_hint_sparks",
       "breakpoints": true
+    },
+    {
+      "idx": 13,
+      "version": "7",
+      "when": 1787464629940,
+      "tag": "0013_flippant_silvermane",
+      "breakpoints": true
     }
   ]
 }
