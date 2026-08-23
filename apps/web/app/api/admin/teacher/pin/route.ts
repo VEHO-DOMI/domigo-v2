@@ -31,7 +31,8 @@ export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 const Schema = z.object({
-  currentPin: z.string(),
+  // Bcrypt-Eingabe-Hygiene: die Rate-Bremse sitzt davor, das hier ist der Riegel dahinter.
+  currentPin: z.string().max(64),
   newPin: z.string(),
 });
 
