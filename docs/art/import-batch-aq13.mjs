@@ -160,19 +160,59 @@ const keyDistance = (png) => {
   return euclid;
 };
 
-/** Die grüne Schreibfläche eines Bestands-Sprites — dieselbe Regel, mit der
- *  die Lieferung ihre eigene Registrierung geprüft hat, damit unsere und ihre
- *  Zahl vergleichbar sind (g deutlich über r und b, nicht dunkel, nicht warm). */
+/** ── DIE GRUENE SCHREIBFLAECHE EINES BESTANDS-SPRITES ───────────────────────
+ *  Dieselbe Regel, mit der die Lieferung ihre eigene Registrierung geprueft hat,
+ *  damit unsere und ihre Zahl vergleichbar sind (g deutlich ueber r und b,
+ *  nicht dunkel, nicht warm).
+ *
+ *  ⚠⚠ BEFUND H6 (23.08.) — DIESE REGEL IST GEGEN DEN NEUEN BESTAND BLIND, UND
+ *     SIE WIRD HIER BEWUSST NICHT REPARIERT. Gemessen an `tafel_a`:
+ *         Bestand VOR dem H6-Import : Maske 25 681 px, H-Median 133,3° (gruen)
+ *         Bestand NACH dem H6-Import: Maske      0 px  ← findet nichts mehr
+ *     Der Grund ist kein Defekt der Lieferung, sondern eine BESTELLUNG: AQ13B4
+ *     traegt nachtblauen Schiefer (H 239–240°, Wareneingang Gesetz 11/12), weil
+ *     R212d verlangt, dass der Boss sich ueber den FARBTON trennt und nicht
+ *     ueber die Helligkeit. Eine gruen formulierte Regel kann das nicht sehen.
+ *
+ *     Betroffen sind zwei Stellen, BEIDE erst NACH diesem Import: Regel 4 der
+ *     Tafel-Abnahme (Schiefer-L/Maserung) und der OVERLAY-Zweig des Importeurs,
+ *     der sein Schnittfenster hieraus rechnet. Der Import dieser Bahn ist davon
+ *     nicht beruehrt — das Tor lief GRUEN gegen den damaligen Bestand, vor dem
+ *     ersten geschriebenen Byte, und der Koerper-Zweig braucht diese Maske gar
+ *     nicht.
+ *
+ *  ★ WARUM H6 NICHT SELBST UMBAUT (gemessen, nicht vermutet). Der naechstliegende
+ *    Ersatz — »der Schiefer ist das groesste zusammenhaengende nicht-warme Stueck«,
+ *    also farbblind statt gruen — ist gebaut und durchgemessen worden. Er findet
+ *    den Ort korrekt und farbunabhaengig (`tafel_a` ALT wie NEU (123,66)-(305,280);
+ *    `tafel_rest` ALT wie NEU (51,74)-(261,280)). ABER er verschiebt die MESSUNG:
+ *    am selben alten Bestand und derselben Lieferung meldet die Abnahme dann
+ *        Schiefer-L 10,65–11,20 statt 9,53–9,93   ·   Maserung 2,35–2,42 statt 1,79–1,81
+ *    und kippt damit das Urteil von »OK« auf 20 Befunde. Maske, Schwelle (≤ 10)
+ *    und Malerei sind EIN geeichtes System; wer die Maske tauscht, eicht die
+ *    Schwelle neu — und ein Lineal zu tauschen, das das Urteil dreht, ist genau
+ *    die Klasse, gegen die der Kopf dieser Datei geschrieben ist (»zwei Lineale«,
+ *    C6/D-382). Die Neu-Eichung gehoert an eine Tafel-BESTELLUNG (R212c: die
+ *    Zahlen-Tore sind die Eintrittskarte), nicht in eine Import-Bahn.
+ *    **Route: Architekt** — Zahlen, Kandidat und Kosten stehen im H6-Report.
+ *
+ *    Was H6 stattdessen gebaut hat, ist billig und ohne Nebenwirkung: findet die
+ *    Maske nichts, beschuldigt die Abnahme jetzt den BEZUG statt die Lieferung
+ *    (siehe Regel 4 weiter unten) — vorher las sich derselbe Fall als
+ *    »Schiefer L NaN ueber 10«, also als Befund gegen ein Blatt, das in Ordnung
+ *    ist. Selbsttest-Fall + Tamper liegen bei.
+ */
 const slateMaskOf = (png) => {
   const { width: W, height: H, data } = png;
   const m = new Uint8Array(W * H);
-  let x0 = W, y0 = H, x1 = -1, y1 = -1;
+  let n = 0, x0 = W, y0 = H, x1 = -1, y1 = -1;
   for (let y = 0; y < H; y++) {
     for (let x = 0; x < W; x++) {
       const i = (y * W + x) * 4;
       const r = data[i], g = data[i + 1], b = data[i + 2], a = data[i + 3];
       if (a > 200 && g > r * 1.10 && g > b * 1.05 && g > 30 && r < 130) {
         m[y * W + x] = 1;
+        n++;
         if (x < x0) x0 = x;
         if (x > x1) x1 = x;
         if (y < y0) y0 = y;
@@ -180,7 +220,7 @@ const slateMaskOf = (png) => {
       }
     }
   }
-  return { m, W, H, box: { x0, y0, x1, y1 } };
+  return { m, W, H, box: { x0, y0, x1, y1 }, n };
 };
 
 /** Liegt (x,y) höchstens `tol` px neben der Maske? (Der Weichzeichner-Saum
@@ -703,18 +743,50 @@ function nahtGesetze(png, label, xL, xR, adj) {
  *  und die Zelle wird wieder gemessen. Ausgenommen ist ausserdem NUR Regel 5:
  *  Zwilling, Sitz, Gesicht, Schiefer und Schluessel-Reserve gelten weiter.
  *
- *  ⚠ EHRLICHE GRENZE (H5, 22.08.): die Liste ist LEER, und das ist kein
- *  Versehen. Die Zell-SHAs der Kreide-Overlays stammen aus der Lieferung
- *  AQ13b3 — sie ist mit dem ersten Mac verloren (R204), und die Neulieferung
- *  AQ13B4 ist wegen der Codex-Pause nicht gefahren (R208). Gebaut ist deshalb
- *  die MECHANIK, bewiesen an einem synthetischen Paar; die Pins traegt der
- *  B4-Wareneingang nach (H6). Eine leere Liste aendert am Verhalten des Tores
- *  heute nichts — genau das ist die sichere Voreinstellung.
+ *  ── H6 (23.08.): DIE LISTE IST GEFUELLT, und zwar mit gemessenen Zahlen ────
+ *  H5 baute die Mechanik und liess die Liste LEER, weil ihre Zahlen an der
+ *  verlorenen Lieferung AQ13b3 hingen (R204). H6 fuellt sie — aber NICHT aus
+ *  AQ13B4: die Kreide-Overlays sind in B4 gar nicht enthalten. Sie sind der
+ *  bytegleiche Durchreich aus `batch-aq13/` (R212-Bestand), Datei-sha256
+ *  `105a9462…` / `6f7f55ff…`, im B4-Wareneingang ausdruecklich bestaetigt.
+ *  Die acht Zell-SHAs unten sind an genau diesen zwei Blaettern gemessen
+ *  (`--overlay-pins`, siehe unten) und nicht abgeschrieben.
+ *
+ *  ★ WARUM ALLE ACHT ZELLEN UND NICHT NUR DIE FUENF IMPORTIERTEN. Die
+ *  Massenfarb-Zaehlung laeuft ueber das GANZE Blatt, nicht ueber die Auswahl,
+ *  die der Importeur daraus nimmt. Die drei zurueckgehaltenen Wisch-Zellen
+ *  (`tafel_wipe` 0–2) liegen aus einem DESIGN-Grund still — sie zeigen die
+ *  volle Schicht mit einem wachsenden Loch und stimmen nur bei hp = 3 (siehe
+ *  `SHEETS`) —, nicht aus einem Qualitaetsgrund. Gemessen ist jede der acht
+ *  Zellen ein Strich-Overlay: die Kreidefarbe (252,240,213) stellt 47,89 bis
+ *  75,34 % der gemalten Pixel je Zelle. Eine Zelle auszunehmen, die dieselbe
+ *  Art hat, waere eine Ausnahme nach Auswahl statt nach Art.
+ *
+ *  ⚠ EHRLICHE GRENZE, DIE DIESE PINS NICHT AUFHEBEN (H6, gemessen): die zwei
+ *  Overlay-Blaetter fallen an DIESEM Tor auch mit gesetzten Pins noch durch —
+ *  an Regel 6, der Schluessel-Reserve: ihr knappstes gemaltes Pixel liegt
+ *  150,08 bzw. 150,28 vom Schluessel, die Regel verlangt 180. Das ist kein
+ *  Versehen dieser Bahn: die Ausnahme deckt laut Kopf NUR Regel 5, und die
+ *  Reserve laeuft bewusst ueber ALLE Pixel. Die Blaetter sind trotzdem im
+ *  Spiel — sie sind der angenommene Durchreich aus AQ13b und laufen nie durch
+ *  `--abnahme-tafel`, dessen Bestellung die drei Koerper-Blaetter sind. Die
+ *  Zahl steht hier, damit niemand sie fuer geprueft haelt: **Befund an den
+ *  Architekten** (H6-Report), kein Eigenfix — eine Grenze zu senken, damit
+ *  Bestand sie besteht, ist die Klasse, gegen die dieses ganze Tor gebaut ist.
  *
  *  Form je Eintrag:  ["<sha256 ueber die rohen RGB-Bytes der ZELLE>", "Herkunft"]
  */
 const OVERLAY_MASSE_FREI = new Map([
-  // (leer bis zum AQ13B4-Wareneingang — siehe Kopf)
+  // batch-aq13/tafel_scribble.png (Datei-sha256 105a9462…) — 4×1 à 512²
+  ["0eb95e3f5fbde433e9039f321ad9eeb4530beacd1a70ef9c2ee783e10e86b2f4", "batch-aq13/tafel_scribble.png Zelle 0 → tafel_scribble1 (Kreide 73,67 %)"],
+  ["fec842964fe7caf9fc2e6a46231c35cea3f7d8b470dfcd686fb9a1019b0d98ce", "batch-aq13/tafel_scribble.png Zelle 1 → tafel_scribble2 (Kreide 70,14 %)"],
+  ["1619841ca73ee0e2c234de2954de19e225f8fcfd894da26985d6a304745f47e8", "batch-aq13/tafel_scribble.png Zelle 2 → tafel_scribble3 (Kreide 65,39 %)"],
+  ["89db4cb02f371bb34c3f5c60fc2bf93fc73cb22fb31aafd22d6bfab3763ea188", "batch-aq13/tafel_scribble.png Zelle 3 → tafel_scribble3b (Kreide 63,84 %)"],
+  // batch-aq13/tafel_wipe.png (Datei-sha256 6f7f55ff…) — 4×1 à 512²
+  ["5ed55a3f120fdf75afe88dea84851c47304246e7cdca8d9d59f2c60301643c0d", "batch-aq13/tafel_wipe.png Zelle 0 — zurueckgehalten (Design), Kreide 58,98 %"],
+  ["2387672951b430e4239860d05af89b25e3bb01732d0223f01ba97bc6066f460f", "batch-aq13/tafel_wipe.png Zelle 1 — zurueckgehalten (Design), Kreide 57,78 %"],
+  ["a2d1bd4af4c27c51978a2cbe559e7febb79624dc72d51d0de33735083cd8af84", "batch-aq13/tafel_wipe.png Zelle 2 — zurueckgehalten (Design), Kreide 47,89 %"],
+  ["90134694bd1b24afba0c8f28db950984c5df2deb679461ac04e98ce46a2a6d62", "batch-aq13/tafel_wipe.png Zelle 3 → tafel_clean (Kreide 75,34 %)"],
 ]);
 
 /** Die Zellordnung der drei Koerper-Blaetter — Raster 4×2 à 512², wie bestellt. */
@@ -723,6 +795,61 @@ const RECOLOUR_CELLS = {
   tafel_recolour_b: ["land0", "land1", "rest", "win", "windup", "windup0", "windup1", "throw"],
   tafel_recolour_c: ["spiral0", "spiral1", "spiral2", "spiral3"],
 };
+
+/** ── DIE ZWEI BLATT-ARTEN, UND WARUM SIE VERSCHIEDEN GESCHNITTEN WERDEN ─────
+ *
+ *  `SHEETS` oben traegt die OVERLAYS: Strichbilder, die auf die Schreibflaeche
+ *  gelegt werden. Ihr Schnittfenster ist die SCHIEFERTAFEL des Bezugs-Sprites
+ *  (`slateMaskOf`) — ein Overlay, das ueber den Rahmen liefe, waere Kreide auf
+ *  Holz.
+ *
+ *  Die drei B4-Blaetter sind das Gegenteil: VOLLE KOERPER, je 4×2 Zellen à 512².
+ *  Sie ERSETZEN zwanzig bestehende Stems, und ein Ersatz hat die Masse seines
+ *  Vorgaengers (dieselbe Regel wie im Band-Zweig). Ihr Fenster ist deshalb der
+ *  BESTANDSKOERPER, zentriert in die Zelle gesetzt — genau die Geometrie, die
+ *  die Abnahme in Regel 2 prueft (»die Zelle sitzt, wo der Bestand sitzt«) und
+ *  die der B4-Wareneingang mit dx/dy = 0/0 in 20/20 gemessen hat.
+ *
+ *  ★ JE ZELLE EIN EIGENES BEZUGS-SPRITE. Beim Overlay reicht EIN Bezug fuers
+ *  ganze Blatt (die Schreibflaeche sitzt bei allen Posen gleich). Beim Koerper
+ *  nicht: `tafel_throw` und `tafel_windup` sind verschieden gross. Ein Fenster
+ *  je Blatt waere hier der Fehler, den Regel 2 an der Lieferung sucht — nur
+ *  eine Ebene weiter oben.
+ */
+const KOERPER_COLS = 4, KOERPER_ZELLE = 512;
+const KOERPER_SHEETS = Object.entries(RECOLOUR_CELLS).map(([blatt, namen]) => ({
+  art: "koerper",
+  file: `batch-aq13b4/${blatt}.png`,
+  cols: KOERPER_COLS,
+  // ★ DIE ZEILENZAHL WIRD GEZAEHLT, NICHT GETIPPT. Erster Anlauf dieser Bahn
+  //   schrieb `rows: 2` fuer alle drei Blaetter — `tafel_recolour_c` traegt aber
+  //   nur VIER Zellen (die vier Kreisel) und ist 4×1. Das Blatt teilt sich
+  //   trotzdem sauber in 4×2, die Zellen waeren nur 512×256 gewesen: ein
+  //   stiller halber Schnitt, den erst der Bestandsmass-Vergleich rot gemeldet
+  //   hat. Das ist dieselbe Klasse wie C7s Achsenzahl (R206b) — eine Zahl, die
+  //   man aus der Sache herleiten kann, wird hergeleitet.
+  rows: Math.ceil(namen.length / KOERPER_COLS),
+  // [Zellindex, Stem] — dieselbe Form wie bei den Overlays, aus der
+  // Zellordnung GERECHNET statt ein zweites Mal getippt (zwei Listen
+  // derselben Wahrheit sind die Klasse, an der C7 drei Anlaeufe verlor).
+  pieces: namen.map((n, i) => [i, `tafel_${n}`]),
+}));
+
+/** Schnittmenge durch Vereinigung der beiden Silhouetten — die Zahl, die der
+ *  Wareneingang je Zelle mit 0,9999 meldet. Sie steht hier, damit der Import
+ *  sie SELBST misst statt sie aus einem Lieferschein zu uebernehmen: beide
+ *  Blaetter sind gleich gross (der Ersatz haelt die Masse seines Vorgaengers),
+ *  also ist es ein Vergleich Pixel gegen Pixel. */
+function iouOf(a, b) {
+  if (a.width !== b.width || a.height !== b.height) return NaN;
+  let schnitt = 0, vereinigung = 0;
+  for (let i = 3; i < a.data.length; i += 4) {
+    const A = a.data[i] > 8, B = b.data[i] > 8;
+    if (A && B) schnitt++;
+    if (A || B) vereinigung++;
+  }
+  return vereinigung === 0 ? NaN : schnitt / vereinigung;
+}
 
 /** ── DIE TAFEL-ABNAHME ──────────────────────────────────────────────────────
  *  `bestandOf(name)` liefert das Bestands-Sprite; in der Selbstpruefung ist es
@@ -850,6 +977,18 @@ function abnahmeTafel(entries, bestandOf, pins = OVERLAY_MASSE_FREI) {
       // misst die Abnahme den Rahmen mit und meldet einen zu hellen Schiefer,
       // den es nicht gibt.
       const sl = slateMaskOf(ref);
+      // ★ EIN LINEAL, DAS NICHTS FINDET, BESCHULDIGT SONST DIE LIEFERUNG.
+      //   Ohne diese Zeile meldete das Tor `Schiefer L NaN ueber 10` — also
+      //   einen Befund GEGEN das gelieferte Blatt, obwohl der Fehler beim
+      //   Bezugs-Sprite liegt. Genau so las sich der 23.08. eine Stunde lang:
+      //   der Farbwechsel gruen → nachtblau hatte die alte Maske blind gemacht,
+      //   und 40 Befunde zeigten auf eine Lieferung, die in Ordnung war.
+      //   (Dieselbe Klasse wie D-625: die Ausgabe behauptet etwas anderes als
+      //   die Messung.) Der Befund gehoert dem BEZUG, und er sagt das.
+      if (sl.box.x1 < sl.box.x0 || sl.box.y1 < sl.box.y0) {
+        fail.push(`${nm}: im BESTANDS-Sprite ist keine Schreibflaeche messbar (die gruene Maske findet ${sl.n ?? 0} px) — nicht die Lieferung ist hier auffaellig, sondern das Lineal: pruefe \`slateMaskOf\` gegen die Farbe des heutigen Bestandes`);
+        continue;
+      }
       const sx = bx + offX + dx, sy = by + offY + dy;
       const inSlate = (x, y) => {
         const lx = x - sx, ly = y - sy;
@@ -1127,6 +1266,46 @@ function selftest() {
   const runTafel = (png, names, cols, cw, ch) =>
     abnahmeTafel([{ name: "probe", png, names, cols, cw, ch }], bestandOf);
 
+  // ── Fall 0 · DAS LINEAL SELBST (R5 · H6) ──────────────────────────────────
+  //
+  // `slateMaskOf` sagt, WO auf dem Blatt der Schiefer gemessen wird. Bis zum
+  // 23.08. sagte sie es ueber die FARBE gruen — und wurde an dem Tag blind, als
+  // die bestellte Lieferung nachtblauen Schiefer brachte (R212d: der Boss
+  // trennt ueber den Farbton). Diese drei Faelle halten die neue Regel fest:
+  // sie darf die Farbe NICHT kennen, sie muss den Ort finden, und wenn sie
+  // nichts findet, muss sie den BEZUG beschuldigen und nicht die Lieferung.
+  const mkRefFarbe = (schiefer) => {
+    let hell = 0;
+    return mkPng(REFW, REFH, (x, y) => {
+      const drin = x >= SLX0 && x < SLX0 + SLW && y >= SLY0 && y < SLY0 + SLH;
+      if (!drin) return frameCol(x, y);
+      if (hell < 1000) { hell++; return [250, 250, 250]; }
+      return schiefer;
+    });
+  };
+  const nVon = (png) => slateMaskOf(png).n;
+  const nGruen = nVon(mkRefFarbe([40, 110, 60]));   // die alte Schulwandtafel
+  const nBlau = nVon(mkRefFarbe([6, 1, 41]));       // AQ13B4-Schiefer, H ≈ 239°
+  // ★ DIESER FALL PINNT EINE BEKANNTE GRENZE, ER FEIERT SIE NICHT. Gruen wird
+  //   gefunden, nachtblau NICHT — das ist der H6-Befund oben, als Zahl
+  //   festgehalten. Wer die Maske eines Tages farbblind macht (und die
+  //   Schiefer-L-Schwelle mit ihr neu eicht), sieht hier zuerst, dass er es
+  //   getan hat: dieser Fall wird dann rot und will neu geschrieben werden.
+  add(`Lineal: die Maske ist FARBGEBUNDEN — gruen ${nGruen} px gefunden, nachtblau ${nBlau} px (H6-Befund, Route Architekt)`,
+    nGruen > 1000 && nBlau === 0 ? null : "MASKE HAT SICH GEAENDERT",
+    () => (nGruen > 1000 && nBlau === 0
+      ? { lines: [], fail: [] }
+      : { lines: [], fail: [`MASKE HAT SICH GEAENDERT: gruen ${nGruen} px, blau ${nBlau} px — der H6-Befund im Kopf von slateMaskOf ist ueberholt, bitte dort nachziehen`] }));
+  // TAMPER: ein Bezug ganz OHNE Schreibflaeche. Er muss den Bezug benennen —
+  // eine Meldung `Schiefer L NaN ueber 10` waere ein Befund gegen ein Blatt,
+  // das nichts falsch gemacht hat.
+  add("Lineal · TAMPER: Bezug ohne Schreibflaeche beschuldigt den BEZUG, nicht die Lieferung",
+    "keine Schreibflaeche messbar",
+    () => abnahmeTafel(
+      [{ name: "probe", png: mkCell(W, H, {}), names: ["a"], cols: 1, cw: W, ch: H }],
+      () => mkPng(REFW, REFH, (x, y) => frameCol(x, y)),   // nur Holz, kein Schiefer
+    ));
+
   // ── Fall 1 · ZWILLING ─────────────────────────────────────────────────────
   // Zwei Kritzel-Zustaende, die dieselbe Datei sind. Beide Blaetter sind voll
   // und gesund; NUR die Byte-Gleichheit unterscheidet sie.
@@ -1204,6 +1383,21 @@ function selftest() {
     () => runOverlay(new Map([[ovSha, "Selbsttest-Pin"]])));
   add("Overlay · TAMPER: dieselben 20 %, aber der Pin nennt andere Bytes", "einzelner RGB-Wert",
     () => runOverlay(new Map([["0".repeat(64), "Selbsttest-Pin auf fremde Bytes"]])));
+  // TAMPER 2 (R5 · H6) — DER FALL, WO RICHTIG UND PLAUSIBEL-FALSCH AUSEINANDER
+  // GEHEN. Der Tamper darueber nennt einen offensichtlich fremden SHA; er
+  // beweist, dass die Ausnahme ueberhaupt an einer Zahl haengt, aber er ist
+  // leicht. Der teure Fall ist die NEULIEFERUNG gleichen Namens, die sich um
+  // EINEN Bildpunkt unterscheidet: sie sieht aus wie das gepruefte Blatt, und
+  // eine Ausnahme, die sie durchlaesst, sitzt in Wahrheit am Namen. Genau das
+  // ist der Grund, warum der Pin auf den Bytes sitzt (Kopf bei
+  // OVERLAY_MASSE_FREI) — also muss dieser Fall rot werden.
+  const ovFast = mkOverlay();
+  ovFast.data[0] = ovFast.data[0] === 0 ? 1 : ovFast.data[0] - 1;   // ein Kanal, ein Punkt
+  add("Overlay · TAMPER: EIN geaenderter Bildpunkt, Pin auf den SHA des Originals", "einzelner RGB-Wert",
+    () => abnahmeTafel(
+      [{ name: "overlay", png: ovFast, names: null, cols: 1, cw: W, ch: H }], bestandOf,
+      new Map([[ovSha, "Selbsttest-Pin auf das unveraenderte Original"]]),
+    ));
 
   // ── Fall 6 · DIE RESERVE ──────────────────────────────────────────────────
   add("Reserve: ein Pixel auf 179", "vom Schluessel", () => runTafel(mkCell(W, H, { face: 450, keyAt: 179 }), ["a"], 1, W, H));
@@ -1422,6 +1616,56 @@ if (process.argv.includes("--abnahme-ring")) {
  *   nicht misst, ist eine Behauptung. `--band-rauhheit <datei>` misst sie an
  *   jeder Datei, mit derselben Formel wie die Tafel-Abnahme.
  */
+/* ── `--overlay-pins` (R5 · H6) ───────────────────────────────────────────────
+ *
+ * Die Maschine, die `OVERLAY_MASSE_FREI` erzeugt hat. Sie druckt je Zelle den
+ * SHA-256 ueber die rohen RGB-Bytes UND den Anteil der haeufigsten Farbe — also
+ * genau die zwei Zahlen, auf denen die Ausnahme steht.
+ *
+ * ★ WARUM DAS EIN MODUS IST UND KEIN EINMAL-SKRIPT: die Pins oben sind
+ *   abgeschriebene Zahlen, sobald niemand sie mehr nachrechnen kann. Mit diesem
+ *   Modus ist die Liste jederzeit gegen die Blaetter pruefbar — und die naechste
+ *   Overlay-Lieferung braucht kein Werkzeug, das erst wieder erfunden wird.
+ */
+if (process.argv.includes("--overlay-pins")) {
+  const dir = process.argv[process.argv.indexOf("--overlay-pins") + 1];
+  if (!dir) { console.error("usage: node docs/art/import-batch-aq13.mjs --overlay-pins <batch-verzeichnis>"); process.exit(2); }
+  let gefunden = 0;
+  for (const nm of ["tafel_scribble", "tafel_wipe"]) {
+    const f = path.join(dir, `${nm}.png`);
+    if (!fs.existsSync(f)) continue;
+    gefunden++;
+    const png = read(f);
+    const cw = 512, ch = 512;
+    const cols = Math.round(png.width / cw), rows = Math.round(png.height / ch);
+    const datei = crypto.createHash("sha256").update(fs.readFileSync(f)).digest("hex");
+    console.log(`\n${nm}.png  ${png.width}×${png.height} → ${cols}×${rows} Zellen à ${cw}²  ·  Datei-sha256 ${datei.slice(0, 16)}…`);
+    for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) {
+      const i = r * cols + c;
+      const t = new Map();
+      let p = 0;
+      for (let y = r * ch; y < (r + 1) * ch; y++) for (let x = c * cw; x < (c + 1) * cw; x++) {
+        if (!onAt(png, x, y)) continue;
+        const j = (y * png.width + x) * 4;
+        const k = (png.data[j] << 16) | (png.data[j + 1] << 8) | png.data[j + 2];
+        t.set(k, (t.get(k) ?? 0) + 1);
+        p++;
+      }
+      let top = 0, n = 0;
+      for (const [k, v] of t) if (v > n) { n = v; top = k; }
+      const sha = cellHash(png, c * cw, r * ch, cw, ch);
+      const anteil = p === 0 ? 0 : n / p;
+      const gepinnt = OVERLAY_MASSE_FREI.has(sha);
+      console.log(
+        `  Zelle ${i}: ${String(p).padStart(7)} px gemalt · haeufigster RGB (${top >> 16},${(top >> 8) & 255},${top & 255}) `
+        + `${(anteil * 100).toFixed(2)} % · ${gepinnt ? "GEPINNT " : "frei    "} ${sha}`,
+      );
+    }
+  }
+  if (gefunden === 0) { console.error(`keine Overlay-Blaetter in ${dir}`); process.exit(2); }
+  process.exit(0);
+}
+
 if (process.argv.includes("--band-rauhheit")) {
   const f = process.argv[process.argv.indexOf("--band-rauhheit") + 1];
   if (!f || !fs.existsSync(f)) { console.error("usage: node docs/art/import-batch-aq13.mjs --band-rauhheit <datei.png>"); process.exit(2); }
@@ -1492,7 +1736,50 @@ const notes = [];
 
 notes.push("· Blatt 3 (`tafel_faces_scribbled`) ist NICHT Teil dieses Imports — blinder Prüfer: ZURÜCKGEWIESEN, 0 von 4 Porträts auf dem Körper des Kartenmoments (Kopf dieser Datei).");
 
-for (const sheet of SHEETS) {
+/* ── `--nur-koerper` (R5 · H6) ────────────────────────────────────────────────
+ *
+ * Der H6-Auftrag sagt fuer die zwei Kreide-Overlays woertlich: »bestaetigen,
+ * nicht neu bauen«. Sie sind der bytegleiche Durchreich aus `batch-aq13/`, seit
+ * AQ13b angenommen und im Spiel. Dieser Schalter laesst sie deshalb in Ruhe und
+ * importiert NUR die zwanzig Koerper-Stems aus AQ13B4.
+ *
+ * ★ ER IST NICHT BEQUEMLICHKEIT, ER SCHLIESST ZWEI LOECHER, beide gemessen:
+ *   1 · OHNE ihn laufen die Overlays durch `defringe` und kommen mit Saum
+ *       wieder heraus: `check-paint-art` meldete danach 424 Schluesselpixel auf
+ *       `tafel_clean`, 180 auf `tafel_scribble2`, 50 auf `tafel_scribble1` —
+ *       die Blaetter im Bestand sind die NACHTRAEGLICH mit
+ *       `strip-key-fringe.mjs` geheilten Fassungen, und ein Neubau verwirft
+ *       diese Heilung stillschweigend. (`tafel_scribble3`/`3b` kamen bytegleich
+ *       heraus: sie hatten nie Saum. Der Unterschied war also unsichtbar, bis
+ *       ihn ein Tor gezaehlt hat.)
+ *   2 · Der Overlay-Zweig rechnet sein Fenster aus `slateMaskOf(tafel_a)`. Nach
+ *       dem Koerper-Import ist `tafel_a` nachtblau, die gruene Maske findet
+ *       nichts — ein zweiter Lauf desselben Befehls faellt also mit fuenf
+ *       Befunden, die wie ein Lieferfehler aussehen und keiner sind (siehe den
+ *       Befund im Kopf von `slateMaskOf`). Mit `--nur-koerper` ist der Lauf
+ *       wiederholbar.
+ *
+ * Was er NICHT tut, ist die Bestaetigung ueberspringen: die zwei Quell-sha256
+ * werden gegen die Wareneingangs-Pins geprueft und gedruckt.
+ */
+const NUR_KOERPER = process.argv.includes("--nur-koerper");
+
+/** Die Pins des B4-Wareneingangs fuer den Durchreich (R212-Bestand). */
+const DURCHREICH_PINS = [
+  ["batch-aq13/tafel_scribble.png", "105a9462c57f81e5"],
+  ["batch-aq13/tafel_wipe.png", "6f7f55ff1c622478"],
+];
+if (NUR_KOERPER) {
+  for (const [rel, pin] of DURCHREICH_PINS) {
+    const f = path.join(LAB, rel);
+    if (!fs.existsSync(f)) { failures.push(`Durchreich: ${rel} fehlt — der Pin ${pin}… ist nicht bestaetigbar`); continue; }
+    const ist = crypto.createHash("sha256").update(fs.readFileSync(f)).digest("hex");
+    if (ist.slice(0, 16) !== pin) failures.push(`Durchreich: ${rel} traegt sha256 ${ist.slice(0, 16)}…, der Wareneingang pinnt ${pin}… — das ist eine andere Datei`);
+    else notes.push(`· DURCHREICH BESTAETIGT (nicht neu gebaut): ${rel} sha256 ${pin}… — die daraus geschnittenen Stems bleiben unberuehrt`);
+  }
+}
+
+for (const sheet of (NUR_KOERPER ? KOERPER_SHEETS : [...SHEETS, ...KOERPER_SHEETS])) {
   const src = path.join(LAB, sheet.file);
   if (!fs.existsSync(src)) { failures.push(`source sheet MISSING: ${sheet.file}`); continue; }
   const png = read(src);
@@ -1500,6 +1787,94 @@ for (const sheet of SHEETS) {
   const chh = png.height / sheet.rows;
   if (!Number.isInteger(cw) || !Number.isInteger(chh)) {
     failures.push(`${sheet.file}: ${png.width}×${png.height} does not divide into ${sheet.cols}×${sheet.rows}`);
+    continue;
+  }
+
+  // ── DER KOERPER-ZWEIG (R5 · H6 — AQ13B4) ───────────────────────────────────
+  // Fenster je ZELLE aus dem Bestandskoerper, zentriert. Kein Schiefer-Fenster,
+  // keine Masken-Zaehlung: hier wird der ganze Koerper ersetzt, nicht eine
+  // Schicht auf seine Schreibflaeche gelegt.
+  if (sheet.art === "koerper") {
+    // Die Abnahme rechnet mit 512² je Zelle (`abnahmeTafel`, Voreinstellung).
+    // Rechnete der Import mit einer anderen Zelle, fuehrten Tor und Werkzeug
+    // zwei Lineale — die Klasse, gegen die der Kopf dieser Datei geschrieben
+    // ist. Also wird es geprueft und nicht angenommen.
+    if (cw !== KOERPER_ZELLE || chh !== KOERPER_ZELLE) {
+      failures.push(`${sheet.file}: Zelle ${cw}×${chh} statt ${KOERPER_ZELLE}² — Tor und Importeur wuerden zwei verschiedene Raster lesen`);
+      continue;
+    }
+    notes.push(`· ${sheet.file}: Koerper-Blatt, ${sheet.cols}×${sheet.rows} Zellen à ${cw}×${chh} — Fenster je Zelle aus dem Bestand, zentriert`);
+    for (const [pos, stem] of sheet.pieces) {
+      const dest = path.join(OUT, `${stem}.png`);
+      if (!fs.existsSync(dest)) {
+        failures.push(`${stem}: es gibt keinen Bestands-Stem dieses Namens — dieser Zweig ERSETZT, er legt nicht an`);
+        continue;
+      }
+      const alt = read(dest);
+      if (alt.width > cw || alt.height > chh) {
+        failures.push(`${stem}: der Bestand ist ${alt.width}×${alt.height} und passt nicht in eine Zelle von ${cw}×${chh}`);
+        continue;
+      }
+
+      const cellX = (pos % sheet.cols) * cw;
+      const cellY = Math.floor(pos / sheet.cols) * chh;
+      const cell = chromaKey(crop(png, cellX, cellY, cw, chh));
+
+      // Das Fenster: der Bestandskoerper, ZENTRIERT in die Zelle gesetzt —
+      // Wort fuer Wort die Rechnung aus Abnahme-Regel 2.
+      const win = {
+        x: Math.floor((cw - alt.width) / 2),
+        y: Math.floor((chh - alt.height) / 2),
+        w: alt.width,
+        h: alt.height,
+      };
+
+      // 1 · Nichts Gemaltes darf ausserhalb des Fensters liegen. Laege es
+      //     dort, waere der Koerper gegen ein anderes Mass gezeichnet und der
+      //     Schnitt schnitte ihn an — still, und erst im Spiel sichtbar.
+      const cb = contentBox(cell);
+      if (cb === null) { failures.push(`${stem}: keyed to nothing`); continue; }
+      if (cb.x0 < win.x || cb.y0 < win.y || cb.x1 >= win.x + win.w || cb.y1 >= win.y + win.h) {
+        failures.push(
+          `${stem}: Malerei ausserhalb des Bestandsmasses — Inhalt (${cb.x0},${cb.y0})-(${cb.x1},${cb.y1}), `
+          + `Fenster (${win.x},${win.y})-(${win.x + win.w - 1},${win.y + win.h - 1}) = ${win.w}×${win.h}`,
+        );
+        continue;
+      }
+      // …und WO genau sitzt die Silhouette? Die Zahl, nicht das Vertrauen.
+      const dx = cb.x0 - win.x, dy = cb.y0 - win.y;
+
+      const out = crop(cell, win.x, win.y, win.w, win.h);
+      const killed = defringe(out);
+
+      const dist = keyDistance(out);
+      if (dist < 150) {
+        failures.push(`${stem}: a painted pixel sits ${dist.toFixed(2)} (Euclidean) from the import colour — needs ≥150, or a tolerant key eats it`);
+        continue;
+      }
+
+      // 2 · DECKT DER NEUE KOERPER DEN ALTEN? Der Wareneingang misst hier
+      //     0,9999 je Zelle gegen die Bestell-Bar 0,98. Diese Zeile misst sie
+      //     am geschnittenen Ergebnis noch einmal selbst — eine uebernommene
+      //     Zahl ist eine Behauptung (Kopf dieser Datei).
+      const iou = iouOf(out, alt);
+      if (!(iou >= 0.98)) {
+        failures.push(`${stem}: Silhouetten-Deckung IoU ${Number.isNaN(iou) ? "nicht messbar" : iou.toFixed(4)} gegen den Bestand (Bestell-Bar 0,98) — der Ersatz zeigt eine andere Gestalt als sein Vorgaenger`);
+        continue;
+      }
+
+      const painted = (() => { let n = 0; for (let i = 3; i < out.data.length; i += 4) if (out.data[i] > 8) n++; return n; })();
+      if (!DRY) fs.writeFileSync(dest, PNG.sync.write(out));
+      written.push(
+        `overwrote ${stem}.png`.padEnd(34)
+        + `${out.width}×${out.height}`.padEnd(10)
+        + `${painted} px gemalt`.padEnd(18)
+        + `Sitz (${dx >= 0 ? "+" : ""}${dx},${dy >= 0 ? "+" : ""}${dy})`.padEnd(26)
+        + `IoU ${iou.toFixed(4)}`.padEnd(13)
+        + `${killed} px Saum entfernt`.padEnd(24)
+        + `Schlüssel-Abstand ${dist.toFixed(2)}`,
+      );
+    }
     continue;
   }
 
