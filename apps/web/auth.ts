@@ -6,7 +6,16 @@
 // callbacks are pure.
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
-import { getDb, lookupStudentForAuth, lookupTeacherForAuth } from "@domigo/db";
+import {
+  bumpAndCheck,
+  clearThrottle,
+  getDb,
+  lookupStudentForAuth,
+  lookupTeacherForAuth,
+  SIGNIN_POLICY,
+  studentThrottleKey,
+  teacherThrottleKey,
+} from "@domigo/db";
 import { normalizeInviteCode } from "@/lib/invite-code";
 import { verifyPin } from "@/lib/pin";
 
@@ -26,20 +35,39 @@ declare module "next-auth" {
     };
   }
 }
+
+// K2a · THE BRAKE SITS HERE, and not on the sign-in pages, because these two
+// functions are the floor BOTH doors stand on: the server actions on /signin and
+// /admin/signin, and the raw POST to /api/auth/callback/{student,teacher} that
+// NextAuth exposes and that no page code can guard. Counting an attempt before
+// bcrypt runs is also the point — a refusal must be cheap, and it must not tell
+// the caller by its timing whether the account exists.
+//
+// Both functions still return plain `null` on refusal, exactly like a wrong PIN, so
+// the sign-in page's message stays generic and a guesser learns nothing from being
+// stopped. And the brake is fail-open (auth-throttle.ts): if it cannot count, the
+// attempt proceeds.
+
 async function verifyStudent(classCode: string, nickname: string, pin: string) {
   const code = normalizeInviteCode(classCode);
   const nick = nickname.trim();
   if (!code || !nick || !pin) return null;
+  const key = studentThrottleKey(code, nick);
+  if (!(await bumpAndCheck(getDb(), key, SIGNIN_POLICY))) return null;
   const row = await lookupStudentForAuth(getDb(), code, nick);
   if (!row || !(await verifyPin(pin, row.pinHash))) return null;
+  await clearThrottle(getDb(), key); // she got in — the slate is wiped
   return { id: row.id, name: row.displayName, role: "student" as const, classId: row.classId };
 }
 
 async function verifyTeacher(nickname: string, pin: string) {
   const nick = nickname.trim();
   if (!nick || !pin) return null;
+  const key = teacherThrottleKey(nick);
+  if (!(await bumpAndCheck(getDb(), key, SIGNIN_POLICY))) return null;
   const row = await lookupTeacherForAuth(getDb(), nick);
   if (!row || !(await verifyPin(pin, row.pinHash))) return null;
+  await clearThrottle(getDb(), key);
   return { id: row.id, name: row.displayName, role: "teacher" as const, classId: null };
 }
 

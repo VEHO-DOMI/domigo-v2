@@ -39,8 +39,8 @@ const warnungen: { titel: string; text: string }[] = [
     text: "Die rote Schaltfläche »Archive« in der Klassenliste sperrt alle Kinder dieser Klasse aus ihrem Zugang aus, und einen Weg zurück gibt es zurzeit nicht. Wenn eine Klasse wirklich weg soll, sag Koki Bescheid.",
   },
   {
-    titel: "PIN vergessen? Im Roster zurücksetzen",
-    text: "Bei jedem Kind im Roster steht »Reset PIN«. Danach steht das Kind wieder auf der Beitritts-Seite und wählt Spitzname und PIN neu. Du siehst nie eine PIN und musst dir auch keine ausdenken.",
+    titel: "PIN vergessen? Für Kinder im Roster, für dich per E-Mail",
+    text: "Bei jedem Kind im Roster steht »Reset PIN«. Danach steht das Kind wieder auf der Beitritts-Seite und wählt Spitzname und PIN neu. Du siehst nie eine PIN und musst dir auch keine ausdenken. Für deine EIGENE PIN lohnt es sich, unter »Account settings« einmal eine E-Mail-Adresse zu hinterlegen: dann kommst du mit »PIN vergessen?« auf der Anmeldeseite selbst wieder hinein, per Link. Ohne hinterlegte Adresse geht es weiterhin — dann setzt dir Koki eine Übergangs-PIN.",
   },
 ];
 

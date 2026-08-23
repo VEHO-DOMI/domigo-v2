@@ -50,3 +50,12 @@ export * from "./bootstrap-teacher.ts"; // one-time v2-native teacher bootstrap 
 export * from "./teacher-identity.ts"; // WS-AUTH Phase A: teacher self-service PIN — promote v1→v2 (reuse id) + change PIN
 export * from "./class-progress.ts"; // K1a: class-scoped teacher progress readers (all modes) + tolerant trap labelling
 export * from "./progress-adjust.ts"; // K1b: the grandmaster's hand — additive XP grant + study-path unit unlock (journal-then-apply)
+export * from "./teacher-events.ts"; // K2a: the teacher-scoped audit journal roster_events could never be (class_id is NOT NULL)
+// K2a · reset-tokens is DELIBERATELY NOT re-exported here, and this is load-bearing.
+// `apps/web/middleware.ts` imports auth.ts, auth.ts imports THIS file, and middleware
+// runs on the Edge runtime — where `node:crypto` does not exist. Re-exporting a module
+// that imports it makes the middleware fail to compile, which 404s every matched route
+// (the entire /admin area). Import it as "@domigo/db/reset-tokens" from Node-runtime
+// code only. Caught by running the app; typecheck, lint and the unit tests were all
+// green while /admin/signin was dead.
+export * from "./auth-throttle.ts"; // K2a: the sign-in brake, one statement per attempt, fail-open by design

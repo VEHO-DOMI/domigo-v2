@@ -14,7 +14,16 @@
  */
 import { NextResponse } from "next/server";
 import { z } from "zod";
-import { getDb, lookupTeacherAuthById, upsertTeacherIdentity } from "@domigo/db";
+import {
+  bumpAndCheck,
+  clearThrottle,
+  getDb,
+  lookupTeacherAuthById,
+  SIGNIN_POLICY,
+  teacherThrottleKey,
+  upsertTeacherIdentity,
+  writeTeacherEvent,
+} from "@domigo/db";
 import { getTeacher } from "@/lib/teacher";
 import { hashPin, TEACHER_PIN_PATTERN, verifyPin } from "@/lib/pin";
 
@@ -42,11 +51,35 @@ export async function POST(req: Request): Promise<Response> {
   try {
     // Who is the teacher today, and what's their current hash? (v2 or v1 mirror.)
     const current = await lookupTeacherAuthById(getDb(), teacher.userId);
-    if (!current || !(await verifyPin(currentPin, current.pinHash))) {
+    if (!current) return NextResponse.json({ ok: false, error: "wrong_current_pin" }, { status: 400 });
+
+    // K2a · THE BRAKE. This endpoint answers "is this her PIN — yes or no" as fast as
+    // bcrypt can run, which makes it the most convenient guessing oracle in the product.
+    // It shares its counter with the sign-in door on purpose: both ask about the same
+    // secret, so eight failures anywhere are eight failures. She IS signed in, so unlike
+    // the sign-in page this surface may say plainly what happened.
+    const key = teacherThrottleKey(current.displayName);
+    if (!(await bumpAndCheck(getDb(), key, SIGNIN_POLICY))) {
+      return NextResponse.json({ ok: false, error: "too_many_attempts" }, { status: 429 });
+    }
+    if (!(await verifyPin(currentPin, current.pinHash))) {
       return NextResponse.json({ ok: false, error: "wrong_current_pin" }, { status: 400 });
     }
-    // Write the new hash to the writable v2 identity (promote-or-update, id reused).
+    await clearThrottle(getDb(), key); // she proved it — the slate is wiped
+
+    // Journal-then-apply (the house order): the intent lands BEFORE the change, so a
+    // crash between the two leaves a harmless orphan entry, never an unrecorded PIN.
+    // Her own hand, hence actor = herself. K2a closes the gap this route sat in.
     const pinHash = await hashPin(newPin);
+    await writeTeacherEvent(getDb(), {
+      teacherId: teacher.userId,
+      kind: "pin_change",
+      actorId: teacher.userId,
+      payload: { via: "settings" },
+    });
+    // Write the new hash to the writable v2 identity (promote-or-update, id reused).
+    // `email` is deliberately NOT passed — omitting the key leaves a stored address
+    // untouched (teacher-identity.ts), and a PIN change has no business erasing one.
     await upsertTeacherIdentity(getDb(), { id: teacher.userId, displayName: current.displayName, pinHash });
     return NextResponse.json({ ok: true });
   } catch (e) {

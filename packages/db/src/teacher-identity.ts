@@ -18,10 +18,11 @@
  * `pinHash` is ALREADY hashed by the caller with the app's own hashPin (bcrypt
  * cost 12) — @domigo/db never sees a raw PIN (same contract as roster-service.ts
  * and bootstrap-teacher.ts). A single INSERT … ON CONFLICT DO UPDATE is atomic
- * (no partial state), so unlike the roster mutations it needs no journal-then-flip;
- * the teacher-audit journal is a Phase-C item (roster_events is class-scoped and a
- * teacher has no class). Writes land ONLY in `domigo_v2`; v1's `public` is never
- * touched.
+ * (no partial state), so unlike the roster mutations it needs no journal-then-flip.
+ * This primitive stays journal-FREE on purpose: since K2a the teacher journal exists
+ * (teacher-events.ts), but it is written by the ROUTES, which know whose hand pulled
+ * the lever — a fact this function is not told and must not guess. Writes land ONLY
+ * in `domigo_v2`; v1's `public` is never touched.
  */
 import { and, eq } from "drizzle-orm";
 import type { Db } from "./index.ts";
@@ -34,6 +35,13 @@ export interface TeacherIdentityInput {
   displayName: string;
   /** Already hashed by the caller (bcrypt cost 12) — this module never sees a raw PIN. */
   pinHash: string;
+  /**
+   * K2a · her recovery address. OMIT the key to leave whatever is stored untouched;
+   * pass null to clear it. The distinction is the whole point: most callers (every
+   * PIN change) know nothing about the address and must not be able to erase it by
+   * simply not mentioning it. See the conditional spread below.
+   */
+  email?: string | null;
 }
 
 /**
@@ -52,11 +60,22 @@ export async function upsertTeacherIdentity(db: Db, input: TeacherIdentityInput)
       givenName: null,
       classId: null,
       pinHash: input.pinHash,
+      // Conditional on BOTH sides of the upsert, and for the same hard reason: until
+      // migration 0016 is applied by hand, naming this column at all makes the whole
+      // statement fail. A PIN change knows nothing about addresses and must keep
+      // working through that window, so it never mentions the column.
+      ...("email" in input ? { email: input.email ?? null } : {}),
       claimedAt: new Date(),
     })
     .onConflictDoUpdate({
       target: v2IdentityUsers.id,
-      set: { pinHash: input.pinHash },
+      // `email` joins the SET clause only when the caller actually passed the key.
+      // Spreading `{ email: input.email }` unconditionally would write NULL on every
+      // PIN change — "undefined overwrites" is the exact bug this shape prevents, and
+      // it is also what keeps the statement legal before 0016 is applied (see above).
+      // `displayName` is absent for the older sibling reason: it is her sign-in handle,
+      // and a rename hidden inside a PIN change would lock her out (the K1b trap).
+      set: { pinHash: input.pinHash, ...("email" in input ? { email: input.email ?? null } : {}) },
     });
 }
 
@@ -73,4 +92,34 @@ export async function deleteTeacherIdentity(db: Db, id: string): Promise<boolean
     .where(and(eq(v2IdentityUsers.id, id), eq(v2IdentityUsers.role, "teacher")))
     .returning({ id: v2IdentityUsers.id });
   return rows.length > 0;
+}
+
+/**
+ * K2a · Her recovery address, read on its own.
+ *
+ * WHY THIS IS NOT PART OF THE AUTH PROJECTION (auth.ts says the same thing from the
+ * other end): a sign-in read that names `users.email` fails outright until migration
+ * 0016 is applied by hand, and the dual-read would then quietly serve the v1 mirror —
+ * meaning a teacher who ever changed her PIN would be authenticated against her old
+ * hash. So the column is read HERE, by a query nothing security-critical depends on,
+ * and every failure returns null: "no address stored" is both the honest answer and
+ * the safe one, because it sends the surface down the human fallback path.
+ *
+ * Scoped to `role='teacher'`: no student row has, or will ever have, an address.
+ */
+export async function getTeacherEmail(db: Db, id: string): Promise<string | null> {
+  try {
+    const rows = await db
+      .select({ email: v2IdentityUsers.email })
+      .from(v2IdentityUsers)
+      .where(and(eq(v2IdentityUsers.id, id), eq(v2IdentityUsers.role, "teacher")))
+      .limit(1);
+    return rows[0]?.email ?? null;
+  } catch (err) {
+    console.error(
+      "[teacher-identity] could not read the recovery address (migration 0016 not applied?):",
+      err instanceof Error ? err.message.slice(0, 200) : String(err).slice(0, 200),
+    );
+    return null;
+  }
 }
