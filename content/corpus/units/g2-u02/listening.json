@@ -1,0 +1,256 @@
+{
+  "schema": "listening@1",
+  "grade": 2,
+  "unit": 2,
+  "slug": "g2-u02",
+  "level": "A2",
+  "tasks": [
+    {
+      "id": "g2u02.lt.museum",
+      "key": "museum",
+      "titleDe": "Hör zu: Leonies Ausflug ins Museum",
+      "audio": {
+        "script": "Hi! I am Leonie. Last Tuesday my class visited the new exhibition at the museum. We were there at nine o'clock. Our teacher, Mrs Smith, had the tickets. The admission fee was three pounds for children. I bought a picture book for five pounds. The rooms were big and the art was very modern. My favourite was a black sculpture of a horse, because it was so big. Then I looked at a chair near the door. There was a brown jacket on the chair. I called my best friend David and asked him about the funny sculpture. David laughed and laughed. It wasn't a sculpture. It was the jacket of the cleaner. I was so embarrassed! We were back at school at two o'clock. I didn't tell my mum about the jacket. It is my secret.",
+        "voice": null,
+        "file": null
+      },
+      "transcript": "Hi! I am Leonie. Last Tuesday my class visited the new exhibition at the museum. We were there at nine o'clock. Our teacher, Mrs Smith, had the tickets. The admission fee was three pounds for children. I bought a picture book for five pounds. The rooms were big and the art was very modern. My favourite was a black sculpture of a horse, because it was so big. Then I looked at a chair near the door. There was a brown jacket on the chair. I called my best friend David and asked him about the funny sculpture. David laughed and laughed. It wasn't a sculpture. It was the jacket of the cleaner. I was so embarrassed! We were back at school at two o'clock. I didn't tell my mum about the jacket. It is my secret.",
+      "predictChips": [
+        "Jemand erzählt von einem Ausflug ins Museum",
+        "Jemand erzählt von einem Geburtstagsfest",
+        "Jemand erzählt von einem Streit mit einer Freundin"
+      ],
+      "items": [
+        {
+          "id": "g2u02.li.museum.mc.001",
+          "rev": 1,
+          "difficulty": 1,
+          "format": "multiple-choice",
+          "prompt": {
+            "text": "What does Leonie talk about?",
+            "lang": "en",
+            "blanks": 0
+          },
+          "answers": [
+            {
+              "text": "A visit to the museum",
+              "tier": "full"
+            }
+          ],
+          "direction": null,
+          "distractors": [
+            "A day at school",
+            "A big black horse",
+            "Her best friend David"
+          ],
+          "pairs": [],
+          "groups": [],
+          "gloss": [],
+          "hintDe": "Worum geht es im GANZEN Text — nicht nur in einem Satz?",
+          "hintEn": null,
+          "explainDe": "Leonie sagt gleich am Anfang: „Last Tuesday my class visited the new exhibition at the museum.“",
+          "explainEn": null,
+          "strict": false,
+          "phase": "gist",
+          "cue": {
+            "type": "gist",
+            "quote": "Last Tuesday my class visited the new exhibition at the museum."
+          },
+          "trickDe": "Höre den ersten Satz — er nennt fast immer das Thema.",
+          "distractorMeta": [
+            {
+              "whyDe": "Du hörst school — aber nur am Ende, auf dem Rückweg.",
+              "lure": "echo"
+            },
+            {
+              "whyDe": "Das schwarze Pferd kommt vor — es ist nur eine Skulptur von vielen.",
+              "lure": "echo"
+            },
+            {
+              "whyDe": "David wird genannt, aber er ist nicht das Thema.",
+              "lure": "echo"
+            }
+          ]
+        },
+        {
+          "id": "g2u02.li.museum.gf.001",
+          "rev": 1,
+          "difficulty": 2,
+          "format": "gap-fill",
+          "prompt": {
+            "text": "Leonie's class was at the museum at ___ o'clock.",
+            "lang": "en",
+            "blanks": 1
+          },
+          "answers": [
+            {
+              "text": "nine",
+              "tier": "full"
+            },
+            {
+              "text": "9",
+              "tier": "full"
+            }
+          ],
+          "direction": null,
+          "distractors": [],
+          "pairs": [],
+          "groups": [],
+          "gloss": [],
+          "hintDe": "Im Text stehen mehrere Zahlen. Welche gehört zum Museum?",
+          "hintEn": null,
+          "explainDe": "„We were there at nine o'clock.“ — die Zwei gehört zur Rückkehr in die Schule.",
+          "explainEn": null,
+          "strict": false,
+          "phase": "detail",
+          "cue": {
+            "type": "number-time",
+            "quote": "We were there at nine o'clock."
+          },
+          "trickDe": "Zwei Uhrzeiten im Text — höre, welche zum Museum gehört."
+        },
+        {
+          "id": "g2u02.li.museum.mc.002",
+          "rev": 1,
+          "difficulty": 2,
+          "format": "multiple-choice",
+          "prompt": {
+            "text": "Why was the black sculpture Leonie's favourite?",
+            "lang": "en",
+            "blanks": 0
+          },
+          "answers": [
+            {
+              "text": "Because it was very big.",
+              "tier": "full"
+            }
+          ],
+          "direction": null,
+          "distractors": [
+            "Because it was very modern.",
+            "Because it was funny.",
+            "Because it was a black horse."
+          ],
+          "pairs": [],
+          "groups": [],
+          "gloss": [],
+          "hintDe": "Achte auf das Wort because — der Grund kommt direkt danach.",
+          "hintEn": null,
+          "explainDe": "„My favourite was a black sculpture of a horse, because it was so big.“",
+          "explainEn": null,
+          "strict": false,
+          "phase": "detail",
+          "cue": {
+            "type": "signal-word",
+            "quote": "because it was so big"
+          },
+          "trickDe": "Nach because kommt der Grund — höre genau dorthin.",
+          "distractorMeta": [
+            {
+              "whyDe": "Du hörst modern — aber das gilt für die ganze Kunst.",
+              "lure": "echo"
+            },
+            {
+              "whyDe": "Funny hörst du bei der Jacke, nicht bei der Skulptur.",
+              "lure": "echo"
+            },
+            {
+              "whyDe": "Du hörst black horse — das sagt, WAS es ist, nicht warum.",
+              "lure": "echo"
+            }
+          ]
+        },
+        {
+          "id": "g2u02.li.museum.mt.001",
+          "rev": 1,
+          "difficulty": 3,
+          "format": "matching",
+          "prompt": {
+            "text": "Match the number to the thing.",
+            "lang": "en",
+            "blanks": 0
+          },
+          "answers": [],
+          "direction": null,
+          "distractors": [],
+          "pairs": [
+            {
+              "left": "nine o'clock",
+              "right": "the class is at the museum"
+            },
+            {
+              "left": "two o'clock",
+              "right": "the class is back at school"
+            },
+            {
+              "left": "three pounds",
+              "right": "the admission fee for children"
+            },
+            {
+              "left": "five pounds",
+              "right": "the picture book"
+            }
+          ],
+          "groups": [],
+          "gloss": [],
+          "hintDe": "Vier Zahlen, vier Dinge — zwei Uhrzeiten und zwei Preise.",
+          "hintEn": null,
+          "explainDe": "Neun Uhr: im Museum. Zwei Uhr: zurück in der Schule. Drei Pfund: der Eintritt für Kinder. Fünf Pfund: das Bilderbuch.",
+          "explainEn": null,
+          "strict": false,
+          "phase": "detail",
+          "cue": {
+            "type": "number-time",
+            "quote": "The admission fee was three pounds for children."
+          },
+          "trickDe": "Merke dir zuerst die Uhrzeiten, dann das Geld."
+        },
+        {
+          "id": "g2u02.li.museum.ff.001",
+          "rev": 1,
+          "difficulty": 2,
+          "format": "free-form",
+          "prompt": {
+            "text": "What was on the chair near the door?",
+            "lang": "en",
+            "blanks": 0
+          },
+          "answers": [
+            {
+              "text": "a brown jacket",
+              "tier": "full"
+            },
+            {
+              "text": "brown jacket",
+              "tier": "full"
+            },
+            {
+              "text": "a jacket",
+              "tier": "full"
+            },
+            {
+              "text": "jacket",
+              "tier": "full"
+            }
+          ],
+          "direction": null,
+          "distractors": [],
+          "pairs": [],
+          "groups": [],
+          "gloss": [],
+          "hintDe": "Etwas zum Anziehen — direkt nach dem Wort chair.",
+          "hintEn": null,
+          "explainDe": "„There was a brown jacket on the chair.“ Sie gehörte der Reinigungskraft.",
+          "explainEn": null,
+          "strict": false,
+          "phase": "detail",
+          "cue": {
+            "type": "detail-fact",
+            "quote": "There was a brown jacket on the chair."
+          },
+          "trickDe": "Höre den Satz nach chair — dort steht das Ding."
+        }
+      ]
+    }
+  ]
+}
