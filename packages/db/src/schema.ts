@@ -351,6 +351,15 @@ export const v2IdentityUsers = v2.table(
     claimedNicknameUnique: uniqueIndex("users_class_claimed_nickname_unique")
       .on(t.classId, sql`lower(${t.displayName})`)
       .where(sql`${t.role} = 'student' and ${t.claimedAt} is not null`),
+    // P2 (migration 0013): at most one TEACHER per case-insensitive handle, platform-wide.
+    // lookupTeacherForAuth (auth.ts) matches lower(display_name) with `limit 1`, so a second
+    // teacher of the same name would SILENTLY SHADOW the first at sign-in. The teacher-claim
+    // service checks this in app code against BOTH registers; this index is the DB-level
+    // backstop for the race that check cannot close (Neon HTTP has no transactions). PARTIAL,
+    // like its student sibling: students are scoped per class and guarded by that index.
+    teacherNicknameUnique: uniqueIndex("users_teacher_nickname_unique")
+      .on(sql`lower(${t.displayName})`)
+      .where(sql`${t.role} = 'teacher'`),
   }),
 );
 
@@ -390,7 +399,7 @@ export const v2RosterEvents = v2.table(
   {
     id: uuid("id").primaryKey().defaultRandom(),
     classId: uuid("class_id").notNull(),
-    kind: text("kind").notNull(), // 'import'|'claim'|'rename'|'remove'|'reset_pin' (app-validated)
+    kind: text("kind").notNull(), // 'import'|'claim'|'rename'|'remove'|'reset_pin'|'teacher_claim' (app-validated)
     payload: jsonb("payload").notNull(),
     actorId: uuid("actor_id"), // teacher/actor uuid — nullable, NO cross-schema FK
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),

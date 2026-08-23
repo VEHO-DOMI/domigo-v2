@@ -140,6 +140,21 @@ if (nK1 === 0) {
 }
 console.log(`  Kollegin: Klasse TEST-K1 (Code ${klasseK1.invite_code}) mit 2 Schuelern, 1 beansprucht`);
 
+// -- P2: eine LEERE, beanspruchbare Klasse -----------------------------------
+// Grund: der gemeinsame Lehrer-Einladungs-Link zeigt genau die Klassen, die dem
+// Grossmeister gehoeren UND noch keinen einzigen Schueler haben. Ohne so eine
+// Klasse waere die Liste immer leer und der Beitritt nicht pruefbar. Bewusst OHNE
+// Schueler und ohne Journal-Zeile - sie ist ja noch unbenutzt.
+let [neuKlasse] = await sql`select id, invite_code from domigo_v2.classes where name = 'TEST-NEU-3B' limit 1`;
+if (!neuKlasse) {
+  [neuKlasse] = await sql`
+    insert into domigo_v2.classes (name, invite_code, grade, teacher_id)
+    values ('TEST-NEU-3B', 'TSTN3B', 3, ${teacher.id})
+    returning id, invite_code`;
+}
+const [{ nNeu }] = await sql`select count(*)::int "nNeu" from domigo_v2.users where class_id = ${neuKlasse.id}`;
+console.log(`  Beanspruchbar: Klasse TEST-NEU-3B (Code ${neuKlasse.invite_code}), Schueler: ${nNeu}`);
+
 // -- .env.local auf die neuen Test-Identitäten zeigen lassen -----------------
 const g2 = out.find((o) => o.grade === 2);
 const setze = { DEV_USER_ID: g2.studentId, DEV_CLASS_ID: g2.classId, DEV_TEACHER_ID: teacher.id, DEV_TEACHER_NAME: "TEST-Lehrkraft" };
