@@ -42,16 +42,18 @@ export interface AudioSettings {
   readonly sfx: boolean;
 }
 
-/** R124: an, leise. Die Lautstärke selbst steht in `BUSES` im Manifest.
- *  R214 (Koki, 2026-08-24): im DEV-Lauf startet das Malbuch STUMM — jede
- *  Arbeits-Session auf localhost spielte sonst Musik ohne Aus-Weg. Nur der
- *  Default kippt: eine gespeicherte Geräte-Wahl gewinnt weiter, der sichtbare
- *  Lautsprecher-Knopf schaltet jederzeit an, und Produktion (die Kinder)
- *  behält R124 unverändert. */
-export const defaultsFor = (env: string | undefined): AudioSettings =>
-  env === "development"
-    ? { muted: true, music: true, sfx: true }
-    : { muted: false, music: true, sfx: true };
+/** Die Lautstärke selbst steht in `BUSES` im Manifest.
+ *  R221 (Koki, 2026-08-24): das Malbuch startet ÜBERALL stumm — dev wie
+ *  Produktion. R214 hatte nur den DEV-Lauf gedeckt; Perf-Messungen und jeder
+ *  Prod-Besuch spielten weiter Musik (Perf fährt Produktions-Bauten). Der
+ *  Bogen: R124 »an, leise« → R214 »dev stumm« → R221 »überall stumm«. Eine
+ *  gespeicherte Geräte-Wahl gewinnt weiter, der sichtbare Lautsprecher-Knopf
+ *  schaltet jederzeit an; `music`/`sfx` bleiben true, damit EIN Tipp auf den
+ *  Knopf den vollen R124-Klang bringt. Wenn das Malbuch für die Schüler
+ *  freigeschaltet wird, kippt der Default hier BEWUSST zurück auf R124 —
+ *  das ist ein Koki-Tor, keine stille Codezeile. */
+export const defaultsFor = (_env: string | undefined): AudioSettings =>
+  ({ muted: true, music: true, sfx: true });
 export const AUDIO_DEFAULTS: AudioSettings = defaultsFor(process.env.NODE_ENV);
 
 const isSettings = (v: unknown): v is AudioSettings =>

@@ -181,7 +181,9 @@ describe("No-op — ein fehlender Ton macht kein Spiel kaputt", () => {
 describe("Abspiel-Regeln", () => {
   const withHost = (opts: Partial<Parameters<typeof createAudioDirector>[0]> = {}) => {
     const { host, played } = fakeHost();
-    const d = createAudioDirector({ sound: host, hasFile: () => true, fetchAudio: async () => new ArrayBuffer(8), ...opts });
+    // Abspiel-Regeln werden bei TON AN gemessen — explizit, damit diese Tests
+    // nicht am Umgebungs-Default hängen (R221 stellt ihn überall auf stumm).
+    const d = createAudioDirector({ sound: host, hasFile: () => true, fetchAudio: async () => new ArrayBuffer(8), settings: { muted: false, music: true, sfx: true }, ...opts });
     return { d, played };
   };
 
