@@ -411,7 +411,15 @@ export const TREASURE_SHAFT_ALPHA = 0.13;
 export const TREASURE_BACK_COLOUR = 0x3a3260;
 export const TREASURE_BACK_ALPHA = 0.46;
 export const TREASURE_BACK_RINGS = 4;
-export const TREASURE_BACK_R_MUL = 1.30;
+/** R5-W9 · F10 · D-611: der Hof war so gross wie eine Aula. Vier Ringe ab
+ *  1,30 x Blatthoehe, jeder um 30 % weiter — der aeusserste Ring mass 2,47 x
+ *  die Hoehe der Seite, also einen violetten Teller von rund 133 px Durchmesser
+ *  um ein 41 px breites Blatt. Das ist der »Hof«, in dem der Strich stand.
+ *  Die Aufgabe des Backings bleibt unveraendert erfuellt (es soll HINTER der
+ *  Seite abdunkeln, damit die Seite ihren Grund schlaegt — die Kritiker-Messung
+ *  war Blatt 204 gegen Grund 207); dafuer genuegt ein Teller, der die Seite
+ *  deckt, statt eines, der den halben Korridor faerbt. */
+export const TREASURE_BACK_R_MUL = 0.95;
 
 /** The contact shadow under the page.
  *
@@ -480,8 +488,23 @@ export const treasureBobPx = (phase: number, seed: number, reducedMotion: boolea
 //    und das Auge gleichermassen bestrafen.
 /** Ein voller Umlauf in Ticks (2,8 s bei 60 Hz). */
 export const TREASURE_SPIN_TICKS = 168;
-/** Schmalste Breite im Profil, als Anteil der vollen Breite. */
-export const TREASURE_SPIN_MIN = 0.22;
+/** Schmalste Breite im Profil, als Anteil der vollen Breite.
+ *
+ *  ── R5-W9 · F10 · D-611: 0,22 WAR DER »LICHTSTRAHL« ────────────────────────
+ *  Der Boden stand auf 22 %, damit die Seite »nie ganz verschwindet«. Gemessen
+ *  ist das zu wenig: B6 und P8 haben unabhaengig dieselbe Formel ueber dieselbe
+ *  Stelle gelegt (blaue Familie b>150, b−r>60, b−g>25) und die Seite zwischen
+ *  **12 und 39 Bildpunkten Breite bei voellig unbewegten 54 Hoehe** gefunden —
+ *  bei 41 px Ruhebreite also zwischen 29 % und 95 %. Bei 12 px ist sie ein
+ *  senkrechter Strich in einem blauen Hof, und genau so hat P7 sie gelesen:
+ *  nicht als Blatt, sondern als Lichtstrahl. Kokis Wort dafuer war »das blaue
+ *  Rechteck«.
+ *
+ *  Der Boden liegt jetzt bei 70 %: die Drehung BLEIBT (Vorder- und Rueckseite
+ *  wechseln weiter, das Vorzeichen traegt sie), nur das Hochkant-Fenster faellt
+ *  weg. In der schmalsten Stellung ist das Blatt damit rund 29 px breit bei 54
+ *  hoch — ein Blatt in Schraeglage, kein Strich. */
+export const TREASURE_SPIN_MIN = 0.70;
 /** Der Wirbel: alle 6 s, über 40 Ticks, zwei zusätzliche Umdrehungen. */
 export const TREASURE_WHIRL_EVERY = 360;
 export const TREASURE_WHIRL_TICKS = 40;
