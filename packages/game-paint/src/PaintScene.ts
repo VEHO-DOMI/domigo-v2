@@ -4930,7 +4930,8 @@ export class PaintScene extends Phaser.Scene {
 
   private placeMassPiece(p: MassPiece): void {
     if (p.stem === null) return; // fallbackFill — the graphics pass drew it
-    const key = `pb-${p.stem}`;
+    const stem = p.stem;
+    const key = `pb-${stem}`;
     if (!this.textures.exists(key)) return; // only-present law
     const tPiece = performance.now();
     // PK-R6 · H2 (round-2 finding 7): the nearest standable plane is laid in its
@@ -4977,6 +4978,18 @@ export class PaintScene extends Phaser.Scene {
     }
     const img = this.add.image(p.x, p.y, key).setOrigin(p.originX ?? 0, p.originY ?? 0).setDepth(p.depth);
     img.setDisplaySize(p.w, p.h);
+    // R5-W9 · F10 · D-639: das Quellfenster des BILD-Zweigs. `setCrop` schneidet
+    // in QUELL-Bildpunkten und aendert den Massstab nicht — das Stueck zeichnet
+    // sein Blatt weiterhin in derselben Groesse, es zeigt nur weniger davon.
+    // Genau deshalb bleibt es unter dem Verzogen-Gesetz (D-632) gruen: eine
+    // halbe Kappe im richtigen Massstab statt einer ganzen im falschen.
+    if (p.crop !== undefined) {
+      const src = this.srcSize(stem);
+      if (src !== null) {
+        const cw = Math.max(1, Math.round(src.w * Math.max(0, Math.min(1, p.crop.fw))));
+        img.setCrop(p.crop.from === "left" ? 0 : src.w - cw, 0, cw, src.h);
+      }
+    }
     if (p.tint !== undefined && p.tint !== 0xffffff) img.setTint(p.tint);
     if (p.rot !== undefined) img.setRotation(p.rot);
     this.imgMs += performance.now() - tPiece;
