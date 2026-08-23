@@ -89,3 +89,49 @@ export const focusView = (
     zoom,
   };
 };
+
+// ── R5-W9 · F10 · D-621 — WO EINE SPRECHBLASE STEHEN DARF ────────────────────
+// Der Torschluss ist die einzige Stelle, an der das Spiel einem feststeckenden
+// Kind sagt, was hakt — und genau dort ging der Satz verloren: zwei blinde Leser
+// schrieben an drei Toren unabhaengig »Die Tuer wartet auf ihr«, »Die Tafel ist
+// noch«, »Erst die Tafel sauber — d« ab (P8 §3, R1).
+//
+// Die Ursache ist eine Kamera-Frage und keine Text-Frage, und deshalb steht die
+// Rechnung HIER: die Blase sitzt mittig ueber dem Kind, das Kind kann bis an den
+// Bildrand laufen, WEIL die Kamera dort an ihrem Anschlag steht — die Welt geht
+// weiter, die SICHT nicht. Gegen die Weltbreite gepruefte Raender haetten das nie
+// gefunden.
+//
+// Rein, und darum pruefbar: die Szene reicht nur `worldView` herein und legt das
+// Ergebnis auf den Container. `tailDx` ist der Betrag, um den der Schwanz
+// ZURUECK muss, damit er weiter auf den Sprecher zeigt, waehrend der Koerper im
+// Bild bleibt — sonst tauscht die Klemmung einen Lesefehler gegen einen
+// Zuordnungsfehler.
+/**
+ * @param anker    die Stelle, auf die die Blase zeigt (Kind oder Fundort)
+ * @param blase    halbe Breite und Ausdehnung ueber/unter dem eigenen Ursprung
+ * @param view     die KAMERASICHT in Weltpixeln (`camera.worldView`)
+ * @param margin   Luft zwischen Blasenrand und Rand der Sicht
+ * @param tailInset wie weit der Schwanz vom Blasenrand wegbleibt (Rundung)
+ */
+export const bubbleSpot = (
+  anker: { x: number; y: number },
+  blase: { halfW: number; oben: number; unten: number },
+  view: { x: number; y: number; right: number; bottom: number },
+  margin: number,
+  tailInset: number,
+): { x: number; y: number; tailDx: number } => {
+  const halb = blase.halfW + margin;
+  const links = view.x + halb;
+  const rechts = view.right - halb;
+  // Passt die Blase ueberhaupt nicht in die Sicht, steht sie mittig: auf beiden
+  // Seiten angeschnitten ist lesbarer als auf einer Seite abgeschnitten.
+  const x = rechts < links ? (view.x + view.right) / 2 : Math.min(rechts, Math.max(links, anker.x));
+  const obenGrenze = view.y + blase.oben + margin;
+  const untenGrenze = view.bottom - blase.unten - margin;
+  const y = untenGrenze < obenGrenze
+    ? (view.y + view.bottom) / 2
+    : Math.min(untenGrenze, Math.max(obenGrenze, anker.y));
+  const grenze = Math.max(0, blase.halfW - tailInset);
+  return { x, y, tailDx: Math.min(grenze, Math.max(-grenze, anker.x - x)) };
+};

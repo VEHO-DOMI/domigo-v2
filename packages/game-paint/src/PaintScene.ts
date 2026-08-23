@@ -35,7 +35,7 @@ import { type FistState } from "./fist.ts";
 import { type Pad, type PlayerState } from "./player.ts";
 import { CHALK_COLOURS, CHALK_FLIGHT_TICKS, CHALK_GRAVITY, type EntityState, type EntityWorld, GUARDIAN_SCRIPT, JOY_ROLES, KNOT_BEAT_TICKS, SHARD_TICKS, WIPE_TICKS, engageTargetId, telegraphTicksFor } from "./entities.ts";
 import { COLLECT_ANCHOR_PX, MAGNET_FIELD_PX, Sim, type SimEvent, type TaskRequest, type TipPayload } from "./sim.ts";
-import { FOCUS_MS, focusView } from "./camera.ts";
+import { bubbleSpot, FOCUS_MS, focusView } from "./camera.ts";
 import {
   AWAKEN_ROOM_MS, BOSS_BEAT_SWELL, CAGE_AT_REST, CAGE_OPEN_TICKS, CELL_IS_DIRECTIONAL, type EntPoseInput,
   type EntSizeInput, GUARDIAN_DISPLAY_H, GUARDIAN_KEEPIN_MAX, GUARDIAN_SLATE, REST_SQUASH, RESTORE_SPARKLE_MS, WASHED_ROLES,
@@ -1646,7 +1646,11 @@ export class PaintScene extends Phaser.Scene {
         case "cloth": {
           const cx = fromSubs(ev.x);
           const cy = fromSubs(ev.y);
-          const stacked = this.wordBubbles.filter((b) => Math.abs(b.c.x - cx) < 44 && Math.abs(b.c.y - cy) < 34).length;
+          // R5-W9 · F10 · D-621: gegen den ANKER gezaehlt, nicht gegen den
+          // Koerper — seit die Blase geklemmt wird, sind das zwei Zahlen, und
+          // zwei geklemmte Woerter am selben Bildrand waeren sonst „gestapelt",
+          // obwohl sie an ganz verschiedenen Stellen gefunden wurden.
+          const stacked = this.liveBubbles.filter((b) => Math.abs(b.ankerX - cx) < 44 && Math.abs(b.ankerY - cy) < 34).length;
           this.toast(ev.wordEn, { x: cx, y: cy - stacked * 15, holdTicks: PaintScene.CLOTH_WORD_TICKS });
           if (cb.onCloth(ev.id, ev.wordEn)) this.clothCardDue = true;
           break;
@@ -2643,8 +2647,42 @@ export class PaintScene extends Phaser.Scene {
   private static readonly CLOTH_WORD_TICKS = 120;
 
   /** The found words currently standing in the world, with the tick each dies
-   *  on. They stack rather than displace, so this is a list and not a slot. */
-  private wordBubbles: { c: Phaser.GameObjects.Container; dieTick: number }[] = [];
+   *  on. They stack rather than displace, so this is a list and not a slot.
+   *
+   *  ── R5-W9 · F10 · D-621: JETZT STEHT HIER JEDE LEBENDE BLASE ──────────────
+   *  Bis zu dieser Runde trug die Liste nur die Blasen mit TAKT-Leben (die
+   *  Kleider-Woerter); die Torschluss-Blasen lebten allein in ihrem Tween und
+   *  waren fuer die Szene unsichtbar. Das ging, solange niemand sie nach ihrer
+   *  Geburt noch einmal anfassen musste — und genau das muss die Klemmung
+   *  (`clampBubbles`), Bild fuer Bild, weil die Kamera waehrend eines
+   *  Torschlusses noch FAEHRT (P8: Zoom 3,095 → 3,0 auf p4).
+   *
+   *  `dieTick === null` heisst: eine Wall-Clock-Blase, deren Tween sie selbst
+   *  abraeumt — sie traegt sich beim Abraeumen hier aus.
+   *  `ankerX/ankerY` ist die Stelle, auf die die Blase ZEIGT (Kind oder Fundort);
+   *  `c.x/c.y` ist die Stelle, an der ihr Koerper nach der Klemmung steht. Die
+   *  zwei sind ab jetzt zwei verschiedene Zahlen, und jeder Leser braucht die
+   *  richtige: das Stapeln fragt den ANKER, das Zeichnen den Koerper. */
+  private liveBubbles: {
+    c: Phaser.GameObjects.Container;
+    /** Der Schwanz in EIGENER Grafik, damit er beim Klemmen am Sprecher bleibt. */
+    tail: Phaser.GameObjects.Graphics;
+    halfW: number;
+    /** Ausdehnung ueber und unter dem eigenen Ursprung, in Weltpixeln. */
+    oben: number;
+    unten: number;
+    ankerX: number;
+    ankerY: number;
+    /** Hub des Abgangs in Weltpixeln (der Tween schreibt hierher, nicht auf y). */
+    lift: number;
+    dieTick: number | null;
+  }[] = [];
+
+  /** Luft zwischen Blasenrand und Rand der KAMERASICHT, in Weltpixeln. */
+  private static readonly BUBBLE_VIEW_MARGIN = 3;
+  /** Wie weit der Schwanz vom Blasenrand wegbleibt, damit er auf der Rundung
+   *  sitzt und nicht an ihrer Ecke. */
+  private static readonly BUBBLE_TAIL_INSET = 7;
 
   /** Does the child owe a naming card, and is the world not yet safe to open it
    *  in? Set at the third/sixth/ninth find, cleared when the card goes up. */
@@ -2670,15 +2708,70 @@ export class PaintScene extends Phaser.Scene {
    *      „when it is safe".
    */
   private renderCloth(): void {
-    for (let i = this.wordBubbles.length - 1; i >= 0; i--) {
-      const b = this.wordBubbles[i]!;
-      if (this.tickCount < b.dieTick) continue;
+    for (let i = this.liveBubbles.length - 1; i >= 0; i--) {
+      const b = this.liveBubbles[i]!;
+      if (b.dieTick === null || this.tickCount < b.dieTick) continue;
       b.c.destroy();
-      this.wordBubbles.splice(i, 1);
+      this.liveBubbles.splice(i, 1);
     }
+    // R5-W9 · F10 · D-621: und danach steht jede lebende Blase wieder im Bild.
+    this.clampBubbles();
     if (this.clothCardDue && this.player.grounded && !this.sim.overlayOpen) {
       this.clothCardDue = false;
       this.cfg.callbacks.onClothCard();
+    }
+  }
+
+  /**
+   * ── R5-W9 · F10 · D-621 · DIE BLASE BLEIBT IM BILD ──────────────────────────
+   *
+   * Der Befund war kein Mess-Befund, sondern ein KIND-Befund: zwei blinde Leser
+   * haben an drei Toren unabhaengig dasselbe abgeschrieben — »Die Tuer wartet auf
+   * ihr«, »Die Tafel ist noch«, »Erst die Tafel sauber — d«. Der Torschluss ist
+   * die einzige Stelle, an der das Spiel einem feststeckenden Kind sagt, was
+   * hakt, und genau dort ging das inhaltstragende Wort verloren.
+   *
+   * Die Ursache lag NICHT im Text und nicht in der Blasenbreite: `toast()` setzt
+   * die Blase mittig ueber das Kind, und das Kind kann bis an den Bildrand
+   * laufen, WEIL DIE KAMERA DORT AN IHREM ANSCHLAG STEHT (p1: Sicht 672…1024,
+   * beide Messungen von W7 und P8 identisch). Ein Rand-Test gegen die Weltbreite
+   * haette das nie gefunden — die Welt geht weiter, die SICHT nicht.
+   *
+   * Deshalb wird gegen `worldView` geklemmt, also gegen das, was das Kind
+   * wirklich sieht, samt Zoom. Und deshalb Bild fuer Bild statt einmal bei der
+   * Geburt: auf p4 faehrt die Kamera waehrend des Torschlusses noch (Zoom
+   * 3,095 → 3,0; P8 mass die Sicht dort 298–313 px statt der ruhigen 341–352).
+   * Eine Blase, die nur bei ihrer Geburt geklemmt wird, rutscht dort wieder
+   * heraus, waehrend das Kind sie liest.
+   *
+   * DER SCHWANZ BLEIBT BEIM SPRECHER. Ein geklemmter Koerper, dessen Schwanz
+   * mitwandert, zeigt auf niemanden — der Fix haette einen Lesefehler gegen
+   * einen Zuordnungsfehler getauscht. Der Schwanz sitzt darum in EIGENER Grafik
+   * und wird um genau den Betrag zurueckgeschoben, um den der Koerper geklemmt
+   * wurde; nur so weit, dass er auf der Rundung bleibt (`BUBBLE_TAIL_INSET`).
+   * Reicht die Sicht fuer die Blase ueberhaupt nicht (schmaler als sie selbst),
+   * steht sie mittig — abgeschnitten auf beiden Seiten ist immer noch lesbarer
+   * als abgeschnitten auf einer.
+   *
+   * Ehrlich zur Genauigkeit: `worldView` wird von Phaser im preRender gerechnet,
+   * diese Methode liest also den Stand VOR den `centerOn`-Aufrufen am Ende
+   * desselben Bildes. Bei der schnellsten hier vorkommenden Kamerafahrt sind das
+   * unter zwei Weltpixel Versatz fuer ein Bild — und die naechste Runde des
+   * Klemmens holt sie ohnehin ein.
+   */
+  private clampBubbles(): void {
+    const view = this.cameras.main?.worldView;
+    if (!view || view.width <= 0 || view.height <= 0) return;
+    for (const b of this.liveBubbles) {
+      const spot = bubbleSpot(
+        { x: b.ankerX, y: b.ankerY },
+        { halfW: b.halfW, oben: b.oben, unten: b.unten },
+        view,
+        PaintScene.BUBBLE_VIEW_MARGIN,
+        PaintScene.BUBBLE_TAIL_INSET,
+      );
+      b.c.setPosition(spot.x, spot.y - b.lift);
+      b.tail.x = spot.tailDx;
     }
   }
 
@@ -6254,19 +6347,29 @@ export class PaintScene extends Phaser.Scene {
     g.fillEllipse(-w * 0.24, top + h * 0.38, w * 0.3, h * 0.34);
     g.fillStyle(0xfffdf3, 0.55);
     g.fillEllipse(-w * 0.2, top + h * 0.26, w * 0.44, h * 0.36);
-    // the tail, pointing at whoever is speaking
-    g.fillStyle(PARCHMENT, 0.97);
-    g.fillTriangle(-3.6, bottom - 1, 3.4, bottom - 1, 0.6, bottom + 6);
     // ── the ink line: drawn TWICE, a soft wide pass under a fine one, which is
     // what a brushed edge is and what a single even stroke can never be
     g.lineStyle(2.1, INK_LINE, 0.22);
     g.strokePoints(rim, true, true);
     g.lineStyle(1.1, INK_LINE, 0.9);
     g.strokePoints(rim, true, true);
-    g.lineBetween(-3.6, bottom - 0.5, 0.6, bottom + 6);
-    g.lineBetween(0.6, bottom + 6, 3.4, bottom - 0.5);
-    g.fillStyle(PARCHMENT, 1);
-    g.fillRect(-3.1, bottom - 1.4, 6.2, 2);
+    // ── the tail, pointing at whoever is speaking ─────────────────────────────
+    // R5-W9 · F10 · D-621: es ist ab jetzt eine EIGENE Grafik, und das ist der
+    // ganze Trick der Klemmung. Wird der Koerper an die Kamerasicht geschoben,
+    // wandert alles mit, was in derselben Grafik liegt — der Schwanz zeigte dann
+    // auf den Bildrand statt auf das Kind. Getrennt gezeichnet, kann er um genau
+    // den Betrag zurueckgeschoben werden, um den der Koerper wandert.
+    // Gezeichnet wird er UEBER dem Koerper (Reihenfolge im Container), damit der
+    // Parchment-Flicken die Randlinie an der Schwanzmuendung weiterhin deckt —
+    // dieselben drei Zuege wie vorher, nur in ihrer eigenen Ebene.
+    const gt = this.add.graphics();
+    gt.fillStyle(PARCHMENT, 0.97);
+    gt.fillTriangle(-3.6, bottom - 1, 3.4, bottom - 1, 0.6, bottom + 6);
+    gt.lineStyle(1.1, INK_LINE, 0.9);
+    gt.lineBetween(-3.6, bottom - 0.5, 0.6, bottom + 6);
+    gt.lineBetween(0.6, bottom + 6, 3.4, bottom - 0.5);
+    gt.fillStyle(PARCHMENT, 1);
+    gt.fillRect(-3.1, bottom - 1.4, 6.2, 2);
     // …and the sheen: a brushed run along the rim's OWN top-left curve, pulled
     // a hair inside it. The straight bar this replaces was the single most
     // app-like mark in the game — light does not lie in a rectangle.
@@ -6277,7 +6380,28 @@ export class PaintScene extends Phaser.Scene {
     g.lineStyle(1.3, 0xfffdf3, 0.6);
     g.strokePoints(lit, false, false);
 
-    const bubble = this.add.container(x, y, [g, label]).setDepth(20);
+    const bubble = this.add.container(x, y, [g, gt, label]).setDepth(20);
+    // R5-W9 · F10 · D-621: die Blase traegt ihren ANKER bei sich — die Stelle,
+    // auf die sie zeigt — und ihre eigene Ausdehnung, damit `clampBubbles` sie
+    // ohne eine zweite Rechnung ins Bild schieben kann. `lift` ist der Hub des
+    // Abgangs; er lief frueher als Tween auf `bubble.y` und waere jetzt gegen
+    // die Klemmung gelaufen (zwei Besitzer fuer eine Zahl — genau die Klasse
+    // Fehler, gegen die die „ein Besitzer fuer die Transformation"-Regel dieser
+    // Datei geschrieben ist). Jetzt tweent der Abgang den HUB, und die Klemmung
+    // rechnet ihn ab: ein Besitzer, zwei Beitraege.
+    const eintrag = {
+      c: bubble,
+      tail: gt,
+      halfW: w / 2,
+      oben: h + 5,
+      unten: 1,
+      ankerX: x,
+      ankerY: y,
+      lift: 0,
+      dieTick: at?.holdTicks !== undefined ? this.tickCount + at.holdTicks : null,
+    };
+    this.liveBubbles.push(eintrag);
+    this.clampBubbles();
     // R5-W5 · G4 · a word with a TICK life. It is handed to `renderCloth`, which
     // ages it against the sim's own clock and destroys it; nothing here parks a
     // wall-clock timer, because the point of the tick life is that a slow frame
@@ -6288,19 +6412,27 @@ export class PaintScene extends Phaser.Scene {
         bubble.setScale(0.7).setAlpha(0);
         this.tweens.add({ targets: bubble, scale: 1, alpha: 1, duration: 170, ease: "Back.easeOut" });
       }
-      this.wordBubbles.push({ c: bubble, dieTick: this.tickCount + at.holdTicks });
       return;
     }
     if (this.cfg.reducedMotion) {
-      this.time.delayedCall(900, () => bubble.destroy());
+      this.time.delayedCall(900, () => this.dropBubble(eintrag));
       return;
     }
     bubble.setScale(0.7);
     bubble.setAlpha(0);
     this.tweens.add({ targets: bubble, scale: 1, alpha: 1, duration: 170, ease: "Back.easeOut" });
+    this.tweens.add({ targets: eintrag, lift: 5, delay: 640, duration: 260, ease: "Quad.easeIn" });
     this.tweens.add({
-      targets: bubble, y: y - 5, alpha: 0, delay: 640, duration: 260, ease: "Quad.easeIn",
-      onComplete: () => bubble.destroy(),
+      targets: bubble, alpha: 0, delay: 640, duration: 260, ease: "Quad.easeIn",
+      onComplete: () => this.dropBubble(eintrag),
     });
+  }
+
+  /** R5-W9 · F10: eine Wall-Clock-Blase geht — und traegt sich aus der Liste
+   *  aus, sonst klemmte `clampBubbles` weiter an einem zerstoerten Container. */
+  private dropBubble(b: { c: Phaser.GameObjects.Container }): void {
+    const i = this.liveBubbles.indexOf(b as (typeof this.liveBubbles)[number]);
+    if (i >= 0) this.liveBubbles.splice(i, 1);
+    b.c.destroy();
   }
 }
