@@ -66,7 +66,9 @@
 //          node docs/art/import-batch-aq13.mjs --abnahme-tafel <batch-verzeichnis>
 //          node docs/art/import-batch-aq13.mjs --abnahme-ring  <batch-verzeichnis>
 //          node docs/art/import-batch-aq13.mjs --import-band  <batch-verzeichnis> [--dry]
+//          node docs/art/import-batch-aq13.mjs --nur-overlay [--dry]
 //          node docs/art/import-batch-aq13.mjs --overlay-passung <batch-verzeichnis>
+//          node docs/art/import-batch-aq13.mjs --overlay-fundstellen <batch-verzeichnis>
 //          node docs/art/import-batch-aq13.mjs --overlay-pins    <batch-verzeichnis>
 //          node docs/art/import-batch-aq13.mjs --reserve <stem> […]
 //          node docs/art/import-batch-aq13.mjs --selftest
@@ -302,6 +304,76 @@ const nearMask = (mask, x, y, tol, feld = "m") => {
   return false;
 };
 
+/** ── DIE REGISTRIERUNGS-MESSUNG DES OVERLAY-ZWEIGS (R5 · T3, D-683) ─────────
+ *
+ *  ★ WAS HIER REPARIERT IST, UND WARUM ES DAS MASS IST UND NICHT DIE GRENZE.
+ *  Bis T3 zaehlte der Overlay-Zweig jedes gemalte Pixel, das weiter als 3 px
+ *  neben der FARBMASKE der Schreibflaeche lag, und brach ab 40 ab. Die Meldung
+ *  dazu sagt seit jeher, was gemeint ist: »Die Schicht laege auf Rahmen oder
+ *  Luft.« Gemessen wurde aber etwas anderes — naemlich auch jedes Pixel, das
+ *  auf dem SCHIEFER liegt und nur von `slateMaskOf` nicht als Schiefer erkannt
+ *  wird. Diese Maske verlangt einen kuehlen Farbton UND r < 130; der dunkle
+ *  Saum der Schreibflaeche faellt dabei heraus. Solange die Kreide als dichter
+ *  Mittelblock lag, fiel das nicht auf. Ein KRANZ, der per Bestellung am Rand
+ *  liegt, faellt genau dort hinein.
+ *
+ *  ⚠ DASS DAS MASS UND NICHT DIE LIEFERUNG SCHULD IST, IST GEMESSEN, NICHT
+ *    GERATEN (`--overlay-fundstellen`, beide Blattpaare, ein Lineal):
+ *
+ *      AQ13L (Kranz)          auf dem Rahmen   0 px   ·  auf Luft  0–37 px
+ *                             Abstand zur Maske <= 14 px, Gewicht bei 4–6
+ *      Bestand, heute im Spiel  auf dem Rahmen 0 px   ·  auf Luft  0 px
+ *      die drei ECHT verschobenen Wisch-Zellen (25–26 px nach rechts):
+ *                             auf dem Rahmen 1264/1200/1634 px, alle auf EINER
+ *                             Seite, Abstand bis 27 px mit langem Schwanz
+ *
+ *    Rand-Malerei liegt RINGSUM und dicht; eine Fehlregistrierung liegt auf
+ *    EINER Seite, weit weg und zum groessten Teil auf dem Rahmen. Die zwei
+ *    Klassen trennen um den Faktor ~30 — nicht um ein Haar.
+ *
+ *  Gezaehlt wird deshalb ab jetzt das, was die Meldung immer schon behauptet:
+ *  Malerei auf RAHMEN oder LUFT. Malerei auf dem Koerper innerhalb der
+ *  Schiefer-Schachtel ist RAND-MALEREI: sie wird als eigene Zahl gemeldet und
+ *  ist kein Abbruchgrund. **Die Grenze bleibt bei 40** — sie ist nicht
+ *  angefasst worden, damit irgendetwas besteht.
+ *
+ *  ⚠ EHRLICHE GRENZE DIESER REPARATUR, gemessen und gefiled (D-684): unter dem
+ *    neuen Mass liegt die schlimmste ehrliche Zelle bei 37 gegen eine Grenze
+ *    von 40 — das sind 8 % Luft, also eine Schwelle nahe der Bandkante
+ *    (die Klasse, die T1 in D-666 aufgeschrieben hat). Zwischen 37 und 1208
+ *    liegt nichts; die Grenze koennte weit in dieser Luecke stehen. Sie zu
+ *    verschieben ist eine Eichung und gehoert dem Architekten — hier steht die
+ *    Zahl, damit niemand sie fuer geprueft haelt.
+ *
+ *  ⚠ ZWEITE EHRLICHE GRENZE: die Schiefer-Schachtel ist achsenparallel, die
+ *    Tafel in den meisten Zellen gekippt. In den Ecken der Schachtel liegt
+ *    darum Rahmen, den diese Messung als »auf dem Koerper« fuehrt. Der Deckel
+ *    dagegen ist die Grenze selbst (40 px) und der Kasten-Test eine Zeile
+ *    weiter oben, der den Inhalt ueberhaupt erst in die Schachtel zwingt.
+ *    Ein Helligkeits-Kriterium waere hier FALSCH: das gemalte Gesicht des
+ *    Bezugs ist heller als der Holzrahmen (D-664).
+ */
+const OFF_MAX = 40;
+
+function overlayNeben(cell, cw, ch, slate, offX, offY, ref) {
+  const B = slate.box;
+  let gemalt = 0, daneben = 0, rand = 0, erste = null;
+  for (let y = 0; y < ch; y++) for (let x = 0; x < cw; x++) {
+    if (cell.data[(y * cw + x) * 4 + 3] <= 8) continue;
+    gemalt++;
+    const rx = x - offX, ry = y - offY;
+    const drin = rx >= 0 && ry >= 0 && rx < slate.W && ry < slate.H;
+    if (drin && nearMask(slate, rx, ry, 3, "voll")) continue;
+    const a = drin ? ref.data[(ry * ref.width + rx) * 4 + 3] : 0;
+    // Auf dem KOERPER und innerhalb der Schiefer-Schachtel ⇒ Rand-Malerei auf
+    // der eigenen Schreibflaeche. Alles andere ⇒ Rahmen oder Luft.
+    if (drin && a > 8 && rx >= B.x0 && rx <= B.x1 && ry >= B.y0 && ry <= B.y1) { rand++; continue; }
+    daneben++;
+    if (erste === null) erste = `${x},${y}`;
+  }
+  return { gemalt, daneben, rand, erste };
+}
+
 // ── die Blätter ──────────────────────────────────────────────────────────────
 //
 // `ref` ist das Bestands-Sprite, gegen das die Zelle registriert ist; das
@@ -309,7 +381,7 @@ const nearMask = (mask, x, y, tol, feld = "m") => {
 // getippt. `pieces` ist [Zellindex, Stem].
 const SHEETS = [
   {
-    file: "batch-aq13/tafel_scribble.png",
+    file: "batch-aq13l/tafel_scribble.png",
     cols: 4, rows: 1,
     ref: "tafel_a",
     pieces: [
@@ -320,7 +392,7 @@ const SHEETS = [
     ],
   },
   {
-    file: "batch-aq13/tafel_wipe.png",
+    file: "batch-aq13l/tafel_wipe.png",
     cols: 4, rows: 1,
     ref: "tafel_rest",
     // Zellen 0–2 (die drei Wisch-Zwischenbilder) werden NICHT importiert: sie
@@ -863,19 +935,42 @@ function nahtGesetze(png, label, xL, xR, adj) {
  *  Architekten** (H6-Report), kein Eigenfix — eine Grenze zu senken, damit
  *  Bestand sie besteht, ist die Klasse, gegen die dieses ganze Tor gebaut ist.
  *
+ *  ── T3 (24.08.): DIE LISTE IST WIEDER LEER — und zwar GEMESSEN ────────────
+ *  Der H6-Absatz darueber bleibt als Geschichte stehen; er beschreibt die
+ *  Blaetter von `batch-aq13/`. Seit AQ13L stammen die Kreide-Stems aus einem
+ *  anderen Blattpaar, das Regel 5 und Regel 6 AUS EIGENER KRAFT besteht
+ *  (0,8423 % / 0,3324 % gegen 1 % · Reserve 202,203 / 192,057 gegen 180). Die
+ *  Begruendung im Rumpf der Liste nennt die Zahlen; die ehrliche Grenze des
+ *  H6-Absatzes (»die zwei Blaetter fallen an Regel 6 durch«) ist damit
+ *  erledigt und nicht mehr gueltig.
+ *
  *  Form je Eintrag:  ["<sha256 ueber die rohen RGB-Bytes der ZELLE>", "Herkunft"]
  */
 const OVERLAY_MASSE_FREI = new Map([
-  // batch-aq13/tafel_scribble.png (Datei-sha256 105a9462…) — 4×1 à 512²
-  ["0eb95e3f5fbde433e9039f321ad9eeb4530beacd1a70ef9c2ee783e10e86b2f4", "batch-aq13/tafel_scribble.png Zelle 0 → tafel_scribble1 (Kreide 73,67 %)"],
-  ["fec842964fe7caf9fc2e6a46231c35cea3f7d8b470dfcd686fb9a1019b0d98ce", "batch-aq13/tafel_scribble.png Zelle 1 → tafel_scribble2 (Kreide 70,14 %)"],
-  ["1619841ca73ee0e2c234de2954de19e225f8fcfd894da26985d6a304745f47e8", "batch-aq13/tafel_scribble.png Zelle 2 → tafel_scribble3 (Kreide 65,39 %)"],
-  ["89db4cb02f371bb34c3f5c60fc2bf93fc73cb22fb31aafd22d6bfab3763ea188", "batch-aq13/tafel_scribble.png Zelle 3 → tafel_scribble3b (Kreide 63,84 %)"],
-  // batch-aq13/tafel_wipe.png (Datei-sha256 6f7f55ff…) — 4×1 à 512²
-  ["5ed55a3f120fdf75afe88dea84851c47304246e7cdca8d9d59f2c60301643c0d", "batch-aq13/tafel_wipe.png Zelle 0 — zurueckgehalten (Design), Kreide 58,98 %"],
-  ["2387672951b430e4239860d05af89b25e3bb01732d0223f01ba97bc6066f460f", "batch-aq13/tafel_wipe.png Zelle 1 — zurueckgehalten (Design), Kreide 57,78 %"],
-  ["a2d1bd4af4c27c51978a2cbe559e7febb79624dc72d51d0de33735083cd8af84", "batch-aq13/tafel_wipe.png Zelle 2 — zurueckgehalten (Design), Kreide 47,89 %"],
-  ["90134694bd1b24afba0c8f28db950984c5df2deb679461ac04e98ce46a2a6d62", "batch-aq13/tafel_wipe.png Zelle 3 → tafel_clean (Kreide 75,34 %)"],
+  // ── T3 (24.08.): DIE LISTE IST LEER, UND DAS IST DAS ERGEBNIS EINER MESSUNG.
+  //
+  // Bis T3 standen hier acht Pins auf die Zellen von `batch-aq13/`. Sie waren
+  // noetig, weil auf jenen Blaettern EINE Farbe 47,89–75,34 % der gemalten
+  // Pixel stellte — ein Farbfeld nach dem Buchstaben von Regel 5, gemalte
+  // Kreide nach der Sache. AQ13L ist anders gemalt, und die Zahl sagt es
+  // (`--overlay-pins`, je Blatt gerechnet wie Regel 5 es tut):
+  //
+  //     tafel_scribble  haeufigster RGB (255,255,255)  0,8423 %   Grenze 1,0000 %
+  //     tafel_wipe      haeufigster RGB (198,198,226)  0,3324 %   Grenze 1,0000 %
+  //
+  // Beide Blaetter bestehen Regel 5 AUS EIGENER KRAFT. Ein Pin darauf waere
+  // eine Ausnahme ohne Bedarf — eine offene Tuer, die niemand braucht und die
+  // beim naechsten Blatt gleichen Namens jemand findet (D-681, T2s Begruendung
+  // dafuer, die Zahlen NICHT einzutragen). Die Liste bleibt deshalb leer, die
+  // Mechanik bleibt stehen: sie kostet nichts und ihre Selbsttest-Faelle
+  // bewachen sie weiter.
+  //
+  // Und Regel 6 faellt gleich mit: die Schluessel-Reserve der zwei Blaetter
+  // misst 202,203 / 192,057 gegen eine Grenze von 180. Die vier alten
+  // Kreide-Stems lagen bei 150,08–175,86 (T1, D-657) — mit dem Import ist
+  // dieser Befund gegenstandslos.
+  //
+  // Die acht alten SHAs sind nicht verloren: sie stehen im Register (D-682).
 ]);
 
 /** Die Zellordnung der drei Koerper-Blaetter — Raster 4×2 à 512², wie bestellt. */
@@ -1331,27 +1426,32 @@ function overlayPassung(entries) {
       const un = Math.max(0, cb.y1 - (win.y + win.h - 1));
       const draussen = li + re + ob + un > 0;
 
-      // …und wie viel liegt NEBEN der Schreibflaeche? Gemessen gegen die
-      // GEFUELLTE Maske, aus dem Grund, den D-664 aufgeschrieben hat: das
-      // gemalte Gesicht schneidet ein Loch in jede Farbregel, und eine
-      // Kreidelinie ueber dem Gesicht liegt auf der Tafel und nicht daneben.
-      let neben = 0, gemalt = 0;
-      for (let y = 0; y < ch; y++) for (let x = 0; x < cw; x++) {
-        if (cell.data[(y * cw + x) * 4 + 3] <= 8) continue;
-        gemalt++;
-        const rx = x - offX, ry = y - offY;
-        if (rx < 0 || ry < 0 || rx >= slate.W || ry >= slate.H || !nearMask(slate, rx, ry, 3, "voll")) neben++;
-      }
+      // …und wie viel liegt auf RAHMEN oder LUFT? DASSELBE Lineal, das der
+      // Import benutzt (`overlayNeben`) — das Tor misst ab R5-T3 genau die
+      // Zahl, an der der Import scheitert. Vorher mass es den Inhalts-KASTEN
+      // und schwieg ueber die Pixel: ein Blatt konnte mit Exit 0 durch das Tor
+      // gehen und am Import trotzdem sterben (dieselbe Klasse wie D-673, eine
+      // Ebene tiefer).
+      const nb = overlayNeben(cell, cw, ch, slate, offX, offY, ref);
+      const gemalt = nb.gemalt, neben = nb.daneben;
 
       const bw = cb.x1 - cb.x0 + 1, bh = cb.y1 - cb.y0 + 1;
       const zurueck = held.has(i);
       lines.push(
         `  Zelle ${i}: ${String(gemalt).padStart(6)} px gemalt · Inhalt (${cb.x0},${cb.y0})–(${cb.x1},${cb.y1}) = ${bw}×${bh}`
         + ` · Übermaß ${(bw / win.w).toFixed(2)}× / ${(bh / win.h).toFixed(2)}×`
-        + ` · neben der Fläche ${neben} px (${gemalt === 0 ? "—" : (100 * neben / gemalt).toFixed(2)} %)`
+        + ` · Rahmen/Luft ${neben} px (${gemalt === 0 ? "—" : (100 * neben / gemalt).toFixed(2)} %)`
+        + ` · Rand-Malerei ${nb.rand} px`
         + ` · ${draussen ? `ÜBER DEM RAND (links ${li} · rechts ${re} · oben ${ob} · unten ${un} px)` : "SITZT"}`
         + `${zurueck ? "  [ZURÜCKGEHALTEN — wird nicht geschnitten, zählt nicht]" : ""}`,
       );
+      if (neben > OFF_MAX && !zurueck) {
+        fail.push(
+          `${name} Zelle ${i}: ${neben} von ${gemalt} gemalten Pixeln (${(100 * neben / gemalt).toFixed(2)} %) liegen auf `
+          + `RAHMEN oder LUFT statt auf der Schreibfläche von ${refName} (Grenze ${OFF_MAX}) — `
+          + `der Importeur bricht an genau dieser Zahl ab. Rand-Malerei auf der Fläche: ${nb.rand} px, die zählt nicht.`,
+        );
+      }
       if (draussen && !zurueck) {
         fail.push(
           `${name} Zelle ${i}: die Malerei ragt über die Schreibfläche hinaus — links ${li}, rechts ${re}, `
@@ -1706,6 +1806,51 @@ function selftest() {
   add("Passung · TAMPER: Bezug ohne Schreibflaeche beschuldigt den BEZUG", "keine Schreibflaeche messbar",
     () => runPassung(mkPassungCell(56, 68, 137, 168), mkPng(REFW, REFH, frameCol)));
 
+  // ── Fall 5f · RAHMEN/LUFT gegen RAND-MALEREI (R5 · T3, D-683) ─────────────
+  //
+  // Die Registrierungs-Messung zaehlt ab T3 nur noch, was auf RAHMEN oder LUFT
+  // liegt. Malerei auf dem Koerper innerhalb der Schiefer-Schachtel, die bloss
+  // die FARBMASKE nicht als Schiefer erkennt, ist Rand-Malerei — gemeldet, aber
+  // kein Abbruchgrund. Diese Faelle fahren die Trennung von beiden Seiten an,
+  // und zwar mit DERSELBEN Kreide und Bezuegen, die sich in genau einer Sache
+  // unterscheiden. Ein Paar, das nur den gruenen Fall zeigt, beweist nichts.
+  //
+  // ★ WARUM DER DUNKLE FLECK AM RAND DER FLAECHE LIEGEN MUSS UND NICHT MITTEN
+  //   DRIN: `voll` fuellt zwischen den eigenen Raendern (D-664, das gemalte
+  //   Gesicht). Ein Loch MITTEN in der Flaeche wird also gefuellt und zaehlt
+  //   als Schiefer — die Attrappe waere leer gelaufen und der gruene Fall
+  //   vacuously gruen. Am RAND greift die Fuellung nicht: die Zeilen-Spanne
+  //   beginnt erst rechts vom Fleck. Genau so sitzt der dunkle Saum am echten
+  //   Bestand, und genau dort liegt der Kranz.
+  const FLX0 = 12, FLY0 = 40, FLX1 = 40, FLY1 = 120;        // im Bezug, am linken Rand der Flaeche
+  const mkRefFleck = (loch) => {
+    const p = mkRef();
+    for (let y = FLY0; y <= FLY1; y++) for (let x = FLX0; x <= FLX1; x++) {
+      const i = (y * REFW + x) * 4;
+      if (loch) { p.data[i + 3] = 0; continue; }             // LUFT statt Schiefer
+      p.data[i] = 30; p.data[i + 1] = 30; p.data[i + 2] = 35; // dunkel, faellt aus der Farbregel
+    }
+    return p;
+  };
+  const VX = Math.floor((W - REFW) / 2), VY = Math.floor((H - REFH) / 2);
+  // Kreide NUR im Fleck, 6 px von dessen Rand eingerueckt ⇒ jedes Pixel liegt
+  // mehr als die 3 px Toleranz von der Maske weg.
+  const kreideImFleck = mkPassungCell(FLX0 + VX + 6, FLY0 + VY + 6, FLX1 + VX - 6, FLY1 + VY - 6);
+  const kreideAufRahmen = mkPassungCell(105 + VX, FLY0 + VY, 118 + VX, FLY1 + VY);
+
+  add("Rand-Malerei: Kreide auf dem Koerper, die die Farbmaske nicht als Schiefer erkennt", null,
+    () => runPassung(kreideImFleck, mkRefFleck(false)));
+  add("…und die Attrappe traegt die Eigenschaft wirklich (sonst ist der gruene Fall leer)", null,
+    () => {
+      const ref = mkRefFleck(false);
+      const nb = overlayNeben(chromaKey(crop(kreideImFleck, 0, 0, W, H)), W, H, slateMaskOf(ref), VX, VY, ref);
+      return { fail: nb.rand > OFF_MAX && nb.daneben === 0 ? [] : [`die Attrappe erzeugt ${nb.rand} px Rand-Malerei und ${nb.daneben} px Rahmen/Luft — noetig ist Rand > ${OFF_MAX} bei Rahmen/Luft = 0, sonst beweist der gruene Fall nichts`] };
+    });
+  add("TAMPER · dieselbe Kreide, aber unter ihr ist LUFT statt Schiefer", "RAHMEN oder LUFT",
+    () => runPassung(kreideImFleck, mkRefFleck(true)));
+  add("Kreide auf dem RAHMEN — die Klasse der drei echt verschobenen Wisch-Zellen", "RAHMEN oder LUFT",
+    () => runPassung(kreideAufRahmen, mkRefFleck(false)));
+
   // ── Fall 6 · DIE RESERVE ──────────────────────────────────────────────────
   add("Reserve: ein Pixel auf 179", "vom Schluessel", () => runTafel(mkCell(W, H, { face: 450, keyAt: 179 }), ["a"], 1, W, H));
   add("Reserve: knappstes Pixel auf 182", null, () => runTafel(mkCell(W, H, { face: 450, keyAt: 182 }), ["a"], 1, W, H));
@@ -2012,6 +2157,117 @@ if (process.argv.includes("--overlay-passung")) {
   process.exit(0);
 }
 
+/* ── `--overlay-fundstellen` (R5 · T3) ───────────────────────────────────────
+ *
+ * ★ WARUM ES DIESEN MODUS GIBT. `--overlay-passung` (T2) misst den Inhalts-
+ *   KASTEN gegen das Fenster und sagt SITZT/ÜBER DEM RAND. Der Importeur misst
+ *   zusaetzlich etwas anderes: wie viele gemalte Pixel weiter als 3 px neben
+ *   der Schreibflaechen-MASKE liegen (`offMask > 40` ⇒ Abbruch). Das Tor druckt
+ *   diese Zahl zwar mit, urteilt aber nicht darueber — ein Blatt kann also das
+ *   Eintrittstor mit Exit 0 nehmen und am Import trotzdem scheitern. Genau das
+ *   ist AQ13L passiert (5 von 5 Zellen, 5,4–15,2 %).
+ *
+ *   Eine ZAHL sagt aber nicht, WAS sie bedeutet. Zwei voellig verschiedene
+ *   Sachen erzeugen dieselbe Zahl:
+ *     · Kreide, die am RAND ihrer eigenen Tafel liegt, waehrend die Farbmaske
+ *       den helleren Rand des Schiefers nicht mehr als Schiefer erkennt
+ *       (`slateMaskOf` verlangt r < 130) — ein Befund am LINEAL;
+ *     · ein Blatt, das gegen ein ANDERES Sprite registriert ist — ein Befund an
+ *       der LIEFERUNG.
+ *   Der Unterschied ist messbar und wird hier gemessen, nicht geraten: fuer
+ *   jedes Pixel neben der Maske sagt dieser Modus, WAS an dieser Stelle im
+ *   Bezugs-Sprite steht (Schiefer-Schachtel? Rahmen? Luft?), wie weit es
+ *   wirklich von der Maske weg ist, und wie sich die Fundstellen auf die vier
+ *   Seiten verteilen. Rand-Malerei liegt ringsum; eine Fehlregistrierung liegt
+ *   auf EINER Seite.
+ *
+ *   Er urteilt NICHT und faellt nie rot — er ist ein Messgeraet, kein Tor.
+ */
+if (process.argv.includes("--overlay-fundstellen")) {
+  const dir = process.argv[process.argv.indexOf("--overlay-fundstellen") + 1];
+  if (!dir) { console.error("usage: node docs/art/import-batch-aq13.mjs --overlay-fundstellen <batch-verzeichnis>"); process.exit(2); }
+  let blaetter = 0;
+  for (const sheet of SHEETS) {
+    const f = path.join(dir, path.basename(sheet.file));
+    if (!fs.existsSync(f)) continue;
+    blaetter++;
+    const png = read(f);
+    const ref = read(path.join(OUT, `${sheet.ref}.png`));
+    const slate = slateMaskOf(ref);
+    const cols = sheet.cols, rows = sheet.rows;
+    const cw = Math.round(png.width / cols), ch = Math.round(png.height / rows);
+    const offX = Math.floor((cw - ref.width) / 2), offY = Math.floor((ch - ref.height) / 2);
+    const held = new Set(sheet.held ?? []);
+    const B = slate.box;
+
+    console.log(`\n${path.basename(sheet.file)}  ${png.width}×${png.height} → ${cols}×${rows} à ${cw}×${ch}  ·  Bezug ${sheet.ref}`);
+    console.log(`  Schiefer-Maske: ${slate.n} px roh → ${slate.nVoll} px gefuellt · Schachtel (${B.x0},${B.y0})–(${B.x1},${B.y1}) · Leitfarbton ${slate.peak}°`);
+
+    for (let i = 0; i < cols * rows; i++) {
+      const cell = chromaKey(crop(png, (i % cols) * cw, Math.floor(i / cols) * ch, cw, ch));
+      let gemalt = 0;
+      // Klassen: A = in der Schiefer-Schachtel (Rand-Malerei), B = auf dem
+      // Koerper ausserhalb der Schachtel (Rahmen), C = auf Luft.
+      let inBox = 0, aufRahmen = 0, aufLuft = 0;
+      const seite = { links: 0, rechts: 0, oben: 0, unten: 0, innen: 0 };
+      const distHist = new Map();
+      let refHell = 0, refN = 0;
+      const hellHist = new Map();
+      for (let y = 0; y < ch; y++) for (let x = 0; x < cw; x++) {
+        if (cell.data[(y * cw + x) * 4 + 3] <= 8) continue;
+        gemalt++;
+        const rx = x - offX, ry = y - offY;
+        const drin = rx >= 0 && ry >= 0 && rx < slate.W && ry < slate.H;
+        if (drin && nearMask(slate, rx, ry, 3, "voll")) continue;
+
+        // WAS steht an dieser Stelle im Bezugs-Sprite?
+        const a = drin ? ref.data[(ry * ref.width + rx) * 4 + 3] : 0;
+        if (!drin || a <= 8) aufLuft++;
+        else if (rx >= B.x0 && rx <= B.x1 && ry >= B.y0 && ry <= B.y1) {
+          inBox++;
+          const j = (ry * ref.width + rx) * 4;
+          const L = lum(ref.data[j], ref.data[j + 1], ref.data[j + 2]);
+          refHell += L; refN++;
+          const b = Math.min(240, Math.floor(L / 40) * 40);
+          hellHist.set(b, (hellHist.get(b) ?? 0) + 1);
+        } else aufRahmen++;
+
+        // Wie weit WIRKLICH von der gefuellten Maske weg? (Deckel 32 px.)
+        let d = -1;
+        for (let t = 4; t <= 32 && d < 0; t++) if (drin && nearMask(slate, rx, ry, t, "voll")) d = t;
+        const k = d < 0 ? ">32" : String(d);
+        distHist.set(k, (distHist.get(k) ?? 0) + 1);
+
+        // Auf welcher Seite der Schachtel? (»innen« = innerhalb, also Loch.)
+        if (rx < B.x0) seite.links++;
+        else if (rx > B.x1) seite.rechts++;
+        else if (ry < B.y0) seite.oben++;
+        else if (ry > B.y1) seite.unten++;
+        else seite.innen++;
+      }
+      const neben = inBox + aufRahmen + aufLuft;
+      const dh = [...distHist.entries()].sort((a, b) => (a[0] === ">32" ? 99 : +a[0]) - (b[0] === ">32" ? 99 : +b[0]));
+      console.log(
+        `  Zelle ${i}${held.has(i) ? " [ZURÜCKGEHALTEN]" : "               "}: ${String(gemalt).padStart(6)} px gemalt · `
+        + `${String(neben).padStart(5)} px neben der Maske (${gemalt === 0 ? "—" : (100 * neben / gemalt).toFixed(2)} %)`,
+      );
+      if (neben === 0) continue;
+      console.log(`      wo: in der Schiefer-Schachtel ${inBox} · auf dem Rahmen ${aufRahmen} · auf Luft ${aufLuft}`
+        + (refN > 0 ? ` · mittlere Helligkeit des Bezugs dort ${(refHell / refN).toFixed(1)} (Maske verlangt r < 130)` : ""));
+      console.log(`      Seite der Schachtel: links ${seite.links} · rechts ${seite.rechts} · oben ${seite.oben} · unten ${seite.unten} · innen ${seite.innen}`);
+      console.log(`      echter Abstand zur Maske: ${dh.map(([d, n]) => `${d}px×${n}`).join(" · ")}`);
+      if (hellHist.size > 0) {
+        const hh = [...hellHist.entries()].sort((a, b) => a[0] - b[0]);
+        console.log(`      Helligkeit des Bezugs an den Fundstellen IN der Schachtel: ${hh.map(([b, n]) => `${b}–${b + 39}×${n}`).join(" · ")}`);
+      }
+    }
+  }
+  if (blaetter === 0) { console.error(`keine Overlay-Blaetter in ${dir}`); process.exit(2); }
+  console.log("\n--overlay-fundstellen: Messung, kein Urteil. Rand-Malerei liegt RINGSUM und dicht an der Maske;");
+  console.log("eine Fehlregistrierung liegt auf EINER Seite und weit weg.");
+  process.exit(0);
+}
+
 if (process.argv.includes("--band-rauhheit")) {
   const f = process.argv[process.argv.indexOf("--band-rauhheit") + 1];
   if (!f || !fs.existsSync(f)) { console.error("usage: node docs/art/import-batch-aq13.mjs --band-rauhheit <datei.png>"); process.exit(2); }
@@ -2262,10 +2518,36 @@ notes.push("· Blatt 3 (`tafel_faces_scribbled`) ist NICHT Teil dieses Imports �
  */
 const NUR_KOERPER = process.argv.includes("--nur-koerper");
 
-/** Die Pins des B4-Wareneingangs fuer den Durchreich (R212-Bestand). */
+/* ── `--nur-overlay` (R5 · T3) ────────────────────────────────────────────────
+ *
+ * Der Spiegel von `--nur-koerper`, und er schliesst dasselbe Loch von der
+ * anderen Seite. GEMESSEN in dieser Bahn: ein voller Lauf schreibt auch die
+ * zwanzig Koerper-Stems neu, und sie kommen NICHT bildpunktgleich wieder
+ * heraus — 3 bis 6 Byte je Blatt, also ein bis zwei Pixel, bei IoU 1,0000 und
+ * »0 px Saum entfernt«. Woher die Punkte kommen, ist hier nicht entschieden
+ * (Befund an den Architekten); entschieden ist, dass eine Overlay-Bahn sie
+ * nicht anfassen darf. Ohne diesen Schalter muss jeder Import danach zwanzig
+ * Dateien von Hand zuruecksetzen — und wer das einmal vergisst, schiebt eine
+ * stille Aenderung an fremdem Eigentum in einen PR.
+ */
+const NUR_OVERLAY = process.argv.includes("--nur-overlay");
+if (NUR_KOERPER && NUR_OVERLAY) {
+  console.error("--nur-koerper und --nur-overlay schliessen einander aus.");
+  process.exit(2);
+}
+
+/** Die Quell-Pins der zwei Overlay-Blaetter, aus denen die fuenf Kreide-Stems
+ *  geschnitten sind.
+ *
+ *  ⚠ SIE ZIEHEN MIT DEM IMPORT UM (R5 · T3). Bis T3 nannten sie
+ *  `batch-aq13/…` (`105a9462…` / `6f7f55ff…`, R212-Bestand). Seit AQ13L sind
+ *  die Stems aus einem ANDEREN Blattpaar geschnitten; die alten Pins stehen
+ *  gelassen haetten `--nur-koerper` eine Datei bestaetigen lassen, aus der im
+ *  Spiel nichts mehr stammt — eine Zusicherung, die stillschweigend falsch
+ *  geworden waere. Die alten Werte stehen im Register (D-682), nicht hier. */
 const DURCHREICH_PINS = [
-  ["batch-aq13/tafel_scribble.png", "105a9462c57f81e5"],
-  ["batch-aq13/tafel_wipe.png", "6f7f55ff1c622478"],
+  ["batch-aq13l/tafel_scribble.png", "dc70c45577fc98a0"],
+  ["batch-aq13l/tafel_wipe.png", "60f0e9aefca8a78d"],
 ];
 if (NUR_KOERPER) {
   for (const [rel, pin] of DURCHREICH_PINS) {
@@ -2277,7 +2559,7 @@ if (NUR_KOERPER) {
   }
 }
 
-for (const sheet of (NUR_KOERPER ? KOERPER_SHEETS : [...SHEETS, ...KOERPER_SHEETS])) {
+for (const sheet of (NUR_KOERPER ? KOERPER_SHEETS : NUR_OVERLAY ? SHEETS : [...SHEETS, ...KOERPER_SHEETS])) {
   const src = path.join(LAB, sheet.file);
   if (!fs.existsSync(src)) { failures.push(`source sheet MISSING: ${sheet.file}`); continue; }
   const png = read(src);
@@ -2411,27 +2693,18 @@ for (const sheet of (NUR_KOERPER ? KOERPER_SHEETS : [...SHEETS, ...KOERPER_SHEET
       continue;
     }
 
-    // 2 · …und wie viel davon liegt neben der SCHREIBFLÄCHE? Zahl, kein Vertrauen.
-    //     Gemessen wird gegen die GEFÜLLTE Fläche: das Kreidegesicht schneidet ein
-    //     Loch in jede Farbmaske, und eine Kreidelinie über dem Gesicht liegt auf
-    //     der Tafel, nicht daneben (R5-T1).
-    let offMask = 0, firstOff = null;
-    for (let y = 0; y < chh; y++) {
-      for (let x = 0; x < cw; x++) {
-        if (cell.data[(y * cw + x) * 4 + 3] <= 8) continue;
-        const rx = x - offX, ry = y - offY;
-        if (rx < 0 || ry < 0 || rx >= slate.W || ry >= slate.H || !nearMask(slate, rx, ry, 3, "voll")) {
-          offMask++;
-          if (firstOff === null) firstOff = `${x},${y}`;
-        }
-      }
-    }
-    const painted = (() => { let n = 0; for (let i = 3; i < cell.data.length; i += 4) if (cell.data[i] > 8) n++; return n; })();
-    if (offMask > 40) {
+    // 2 · …und wie viel davon liegt auf RAHMEN oder LUFT? Zahl, kein Vertrauen.
+    //     Ein Lineal für Tor und Import (`overlayNeben`, R5-T3): Malerei auf dem
+    //     Körper innerhalb der Schiefer-Schachtel ist RAND-Malerei und wird nur
+    //     gemeldet; Malerei daneben ist der Abbruchgrund.
+    const nb = overlayNeben(cell, cw, chh, slate, offX, offY, refPng);
+    const painted = nb.gemalt;
+    if (nb.daneben > OFF_MAX) {
       failures.push(
-        `${stem}: ${offMask} von ${painted} gemalten Pixeln (${(100 * offMask / painted).toFixed(2)} %) liegen mehr als 3 px `
-        + `neben der Schreibfläche von ${sheet.ref} (zuerst bei ${firstOff}) — `
-        + (offMask > painted * 0.05
+        `${stem}: ${nb.daneben} von ${painted} gemalten Pixeln (${(100 * nb.daneben / painted).toFixed(2)} %) liegen auf `
+        + `RAHMEN oder LUFT statt auf der Schreibfläche von ${sheet.ref} (zuerst bei ${nb.erste}; `
+        + `dazu ${nb.rand} px Rand-Malerei auf der Fläche, die nicht zählt) — `
+        + (nb.daneben > painted * 0.05
           ? `das Blatt ist gegen ein anderes Sprite registriert als ${sheet.ref}`
           : `kein Registrierungsfehler in dieser Größenordnung, sondern Malerei, die über den Rand hinausragt: `
             + `entweder trägt das Blatt einen losen Strich, oder die Schreibfläche des Bezugs ist kleiner geworden. `
@@ -2456,7 +2729,8 @@ for (const sheet of (NUR_KOERPER ? KOERPER_SHEETS : [...SHEETS, ...KOERPER_SHEET
       `${existed ? "overwrote" : "wrote    "} ${stem}.png`.padEnd(34)
       + `${out.width}×${out.height}`.padEnd(10)
       + `${painted} px gemalt`.padEnd(18)
-      + `${offMask} px neben der Fläche`.padEnd(26)
+      + `${nb.daneben} px Rahmen/Luft`.padEnd(24)
+      + `${nb.rand} px Rand-Malerei`.padEnd(24)
       + `${killed} px Saum entfernt`.padEnd(24)
       + `Schlüssel-Abstand ${dist.toFixed(2)}`,
     );
