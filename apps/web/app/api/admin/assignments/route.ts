@@ -2,18 +2,32 @@
  * POST /api/admin/assignments — create a teacher assignment from a draft.
  * Teacher-only. The draft is re-validated server-side (never trust the client's
  * validation) against the class's reserved items before it persists.
+ *
+ * K1b · OWNERSHIP. Until P2 "every class is Koki's" was true, so any teacher
+ * posting any classId was harmless. Since the invite link there are real other
+ * teachers, and this endpoint would happily create work in a stranger's class for
+ * anyone who posted its id directly. The gate reuses the SAME function that fills
+ * the builder's class picker — `listClasses` for a teacher, `listClassesForGrandmaster`
+ * for the operator — so the picker and the door can never disagree about which
+ * classes this caller may write to. That single definition also preserves the
+ * documented status quo for the v1 legacy register: those classes predate ownership,
+ * belong to nobody, and stay open to every teacher until they retire with the
+ * school year.
  */
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import {
   createAssignment,
   getDb,
+  listClasses,
+  listClassesForGrandmaster,
   listReservedForClass,
   validateAssignmentDraft,
   type AssignmentDraft,
   type SectionKind,
 } from "@domigo/db";
 import { getTeacher } from "@/lib/teacher";
+import { isGrandmaster } from "@/lib/grandmaster";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -72,6 +86,16 @@ export async function POST(req: Request): Promise<Response> {
   const parsed = DraftSchema.safeParse(await req.json().catch(() => null));
   if (!parsed.success) return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
   const draft = parsed.data as AssignmentDraft & { sections: Array<{ kind: SectionKind }> };
+
+  // May this caller create work in that class at all? Fail CLOSED: a class list we
+  // could not read is not permission, it is an unanswered question.
+  const allowed = isGrandmaster(teacher.userId)
+    ? await listClassesForGrandmaster(getDb()).catch(() => null)
+    : await listClasses(getDb(), teacher.userId).catch(() => null);
+  if (!allowed) return NextResponse.json({ ok: false, error: "class_check_failed" }, { status: 503 });
+  if (!allowed.some((c) => c.id === draft.classId)) {
+    return NextResponse.json({ ok: false, error: "not_your_class" }, { status: 403 });
+  }
 
   // Server-authoritative validation, including the class's reserved items.
   const reserved = await listReservedForClass(getDb(), draft.classId).catch(() => new Set<string>());

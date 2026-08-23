@@ -262,3 +262,53 @@ describe("trapLabel", () => {
     expect(trapLabel(new Map(), "wilde-verben").known).toBe(false);
   });
 });
+
+// ─────────────────────────────────────────────────────────────────────────────
+// K1b · Rider A — THE READERS MUST NOT SWALLOW.
+//
+// The class page now shows an honest third state: a section whose reader failed
+// says UNVOLLSTÄNDIG instead of rendering the empty-list copy ("Noch niemand auf
+// der Liste") over a full class. That state is only reachable if a broken read
+// arrives as a REJECTION. If any reader below ever grew its own `.catch(() => [])`,
+// the page would silently go back to telling the plausible lie — and no test would
+// notice, because the return type is identical.
+//
+// So this is a negative property about the SHAPE of failure, and it is pinned per
+// reader rather than once: they are five separate functions, and the next one added
+// is the one that will forget.
+// ─────────────────────────────────────────────────────────────────────────────
+describe("Rider A · a broken read is a rejection, never an empty result", () => {
+  const boom = () => new Error('relation "domigo_v2.practice_attempts" does not exist');
+
+  it("listStudentProgress rejects", async () => {
+    const { db } = seqDb([boom()]);
+    await expect(listStudentProgress(db, CLASS)).rejects.toThrow(/does not exist/);
+  });
+
+  it("listStudentPathSummary rejects", async () => {
+    const { db } = seqDb([boom()]);
+    await expect(listStudentPathSummary(db, CLASS)).rejects.toThrow(/does not exist/);
+  });
+
+  it("listClassUnitProgress rejects", async () => {
+    const { db } = seqDb([boom()]);
+    await expect(listClassUnitProgress(db, CLASS)).rejects.toThrow(/does not exist/);
+  });
+
+  it("listClassTraps rejects", async () => {
+    const { db } = seqDb([boom()]);
+    await expect(listClassTraps(db, CLASS)).rejects.toThrow(/does not exist/);
+  });
+
+  it("listStudentMeta rejects on the progress half AND on the due-count half", async () => {
+    await expect(listStudentMeta(seqDb([boom()]).db, ["u1"])).rejects.toThrow(/does not exist/);
+    // The second query is the one a partial repair would leave unguarded.
+    await expect(listStudentMeta(seqDb([[], boom()]).db, ["u1"])).rejects.toThrow(/does not exist/);
+  });
+
+  it("still answers an EMPTY roster without a query — an empty class is not a failure", async () => {
+    const { db, calls } = seqDb([]);
+    expect(await listStudentMeta(db, [])).toEqual(new Map());
+    expect(calls()).toBe(0); // and the page's two states stay distinguishable
+  });
+});

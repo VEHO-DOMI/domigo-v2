@@ -65,3 +65,68 @@ describe("isSlugAllowed — the deep-link gate", () => {
     assert.equal(isSlugAllowed("intro", visibleGradesFor(2)), true);
   });
 });
+
+/**
+ * K1b · THE /play DECISION.
+ *
+ * /play was the last child-facing surface outside this scope: the chooser listed
+ * every released story and /play/<year> opened any of the four. Both now ask the
+ * SAME function — `visibleGradesFor`, via its DB wrapper `resolveVisibleGrades` —
+ * and not a second one written for the game.
+ *
+ * What these cases pin is the DECISION, in the vocabulary the two pages use: which
+ * stories survive the filter, and whether a deep link is in scope. What they cannot
+ * pin is the wiring (a server component reading a session), so that half is proved
+ * at the running system instead — the two together, not either alone.
+ */
+describe("die /play-Entscheidung — welche Geschichten ein Kind sieht", () => {
+  // The released corpus as the chooser sees it: one story per school year.
+  const stories = [
+    { storyId: "g1.lost-pages", grade: 1 },
+    { storyId: "g2.the-spill", grade: 2 },
+    { storyId: "g3.fourteen", grade: 3 },
+    { storyId: "g4.lost-for-words", grade: 4 },
+  ];
+  const sichtbar = (classGrade: number | null) => {
+    const grades = visibleGradesFor(classGrade);
+    return stories.filter((s) => grades.includes(s.grade)).map((s) => s.storyId);
+  };
+
+  it("das Stufe-2-Kind sieht GENAU seine Geschichte, keine der anderen drei", () => {
+    assert.deepEqual(sichtbar(2), ["g2.the-spill"]);
+  });
+
+  it("jede Stufe bekommt ihre eigene, und nur ihre eigene", () => {
+    for (const g of ALL_GRADES) assert.deepEqual(sichtbar(g), [stories[g - 1]!.storyId]);
+  });
+
+  it("die Lehrkraft (Stufe null) behält alle vier — die Vorschau ist ihr Arbeitsmittel", () => {
+    assert.equal(sichtbar(null).length, 4);
+  });
+
+  it("null zeigt weiter ALLES: zu viel zeigen ist kosmetisch, nichts zeigen wäre eine tote Seite", () => {
+    assert.deepEqual(visibleGradesFor(null), [1, 2, 3, 4]);
+    assert.ok(sichtbar(null).length > 0);
+  });
+
+  it("der Tiefen-Link: /play/1 ist für das Stufe-2-Kind AUSSER Reichweite, /play/2 nicht", () => {
+    const grades = visibleGradesFor(2);
+    assert.equal(grades.includes(1), false);
+    assert.equal(grades.includes(2), true);
+  });
+
+  it("das Ziel der Umleitung existiert immer — der Bereich ist nie leer", () => {
+    for (const g of [null, 1, 2, 3, 4]) {
+      const grades = visibleGradesFor(g);
+      assert.equal(typeof grades[0], "number");
+    }
+  });
+
+  it("eine Stufe ohne veröffentlichte Geschichte ergibt eine LEERE Liste, nie eine fremde", () => {
+    // Nur g2 ist veröffentlicht; das Stufe-4-Kind bekommt nichts zu sehen — und
+    // ganz sicher nicht die Geschichte der Zweiten.
+    const nurG2 = stories.filter((s) => s.grade === 2);
+    const grades = visibleGradesFor(4);
+    assert.deepEqual(nurG2.filter((s) => grades.includes(s.grade)), []);
+  });
+});

@@ -208,3 +208,65 @@ describe("listClassesForGrandmaster — every class on the platform, each labell
     expect(rows).toEqual([{ id: "v1-a", name: `2B (alt)${LEGACY_CLASS_LABEL_SUFFIX}`, grade: 2 }]);
   });
 });
+
+// ─────────────────────────────────────────────────────────────────────────────
+// K1b · THE CLASS LIST IS THE DOOR.
+//
+// POST /api/admin/assignments and its compose-checkup sibling now refuse a draft
+// whose classId is not in exactly this list (`allowed.some(c => c.id === …)`).
+// Until P2 that gate was unnecessary — "every class is Koki's" was true — and
+// since the invite link it is the difference between a colleague's class being
+// hers and being anyone's who can post its id.
+//
+// Building the gate out of the PICKER's own function is the point: a separate
+// ownership query could drift away from what the picker offers, and then the UI
+// and the door would disagree — the worst kind of authorization bug, because it
+// looks like a UI glitch. These cases pin the four readings the routes depend on.
+// ─────────────────────────────────────────────────────────────────────────────
+describe("K1b · which classes a caller may create work in", () => {
+  const ownIds = async (teacherId: string, results: (unknown[] | Error)[]) =>
+    (await listClasses(seqDb(results).db, teacherId)).map((c) => c.id);
+
+  it("ADMITS the teacher's own v2 class", async () => {
+    expect(await ownIds("T-1", [[v2Class], [{ classId: "v2-a", n: 3 }], []])).toContain("v2-a");
+  });
+
+  it("REFUSES a colleague's v2 class — and the refusal comes from the WHERE clause, not from a filter afterwards", async () => {
+    // The class exists and belongs to T-2. T-1 asks: the teacher-scoped query
+    // returns nothing, so its id is simply not in the list the door checks.
+    const { db, conditions } = seqDb([[], []]); // v2 half empty for T-1 · v1 half empty
+    const rows = await listClasses(db, "T-1");
+    expect(rows.map((c) => c.id)).not.toContain("v2-fremd");
+    // …and the emptiness is caused by the scope, not by the mock: the teacher id
+    // is bound INTO the query, so no foreign row could have come back.
+    expect(conditionAtoms(conditions[0])).toContain("T-1");
+  });
+
+  it("ADMITS a v1 legacy class for any teacher — the documented status quo, pinned so nobody tightens it silently", async () => {
+    // The Koki-era register predates ownership: those classes belong to nobody and
+    // retire with the school year. Narrowing this would break live assignments for
+    // ~110 children, so it is asserted, not assumed.
+    const ids = await ownIds("T-new", [[], [v1Class]]);
+    expect(ids).toEqual(["v1-a"]);
+  });
+
+  it("keeps the legacy DISPLAY suffix out of the id the door compares", async () => {
+    const { db } = seqDb([[], [v1Class]]);
+    const [row] = await listClasses(db, "T-new");
+    expect(row!.name).toContain(LEGACY_CLASS_LABEL_SUFFIX); // decoration…
+    expect(row!.id).toBe("v1-a"); // …never reaches the identity the gate matches on
+  });
+
+  it("ADMITS a class the GRANDMASTER does not own (his list is every class there is)", async () => {
+    const { db } = seqDb([
+      [gmV2A], // owned by T-2
+      [{ classId: "v2-a", total: 2, claimed: 1 }],
+      [{ id: "T-2", displayName: "TEST-Kollegin" }],
+      [v1Class],
+      [{ classId: "v1-a", total: 21 }],
+    ]);
+    const ids = (await listClassesForGrandmaster(db)).map((c) => c.id);
+    expect(ids).toContain("v2-a"); // not his, and open to him anyway
+    expect(ids).toContain("v1-a");
+  });
+});

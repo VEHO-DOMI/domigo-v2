@@ -49,3 +49,4 @@ export * from "./solve-runs.ts"; // S-2b: async blind-solve runs (Vercel Sandbox
 export * from "./bootstrap-teacher.ts"; // one-time v2-native teacher bootstrap (lock-out recovery; token + one-shot gated at /bootstrap)
 export * from "./teacher-identity.ts"; // WS-AUTH Phase A: teacher self-service PIN — promote v1→v2 (reuse id) + change PIN
 export * from "./class-progress.ts"; // K1a: class-scoped teacher progress readers (all modes) + tolerant trap labelling
+export * from "./progress-adjust.ts"; // K1b: the grandmaster's hand — additive XP grant + study-path unit unlock (journal-then-apply)
