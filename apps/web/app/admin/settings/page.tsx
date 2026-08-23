@@ -33,6 +33,25 @@ export default async function TeacherSettingsPage() {
         </p>
         <ChangePinForm />
       </section>
+
+      {/* P3 · self-service for the grandmaster rank. The rank is granted by an env
+          allowlist of account ids (GRANDMASTER_TEACHER_IDS) — and without this line
+          there is no way to read one's OWN id on production short of opening the
+          database. Shown to every teacher: an account id is not a secret (it is the
+          session's own id), and it is useless without access to the deployment's
+          environment variables. */}
+      <section className="dg-card" style={{ marginTop: 16 }}>
+        <h2 style={{ fontSize: 17, margin: "0 0 6px", fontFamily: "var(--font-display)", color: "var(--ink)" }}>Deine Konto-Kennung</h2>
+        <p style={{ color: "var(--text-secondary)", fontSize: 14, margin: "0 0 10px" }}>
+          Für die Großmeister-Freischaltung (Umgebungsvariable <code>GRANDMASTER_TEACHER_IDS</code>).
+        </p>
+        <code
+          data-testid="account-id"
+          style={{ display: "inline-block", userSelect: "all", background: "var(--bg-sunken)", border: "1px solid var(--card-border)", borderRadius: 8, padding: "7px 10px", fontSize: 14, wordBreak: "break-all" }}
+        >
+          {teacher.userId}
+        </code>
+      </section>
     </main>
   );
 }

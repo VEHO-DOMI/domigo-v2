@@ -5,8 +5,9 @@
  */
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { getDb, listAssignmentsByCreator, listClasses } from "@domigo/db";
+import { getDb, listAssignmentsByCreator, listClasses, listClassesForGrandmaster } from "@domigo/db";
 import { getTeacherForPage } from "@/lib/identity";
+import { isGrandmaster } from "@/lib/grandmaster";
 
 export const dynamic = "force-dynamic";
 
@@ -14,9 +15,17 @@ export default async function AssignmentsPage() {
   const teacher = await getTeacherForPage();
   if (!teacher) redirect("/admin/signin");
 
+  // P3: WHICH class list this page shows is an explicit branch, never a default
+  // parameter — the grandmaster (platform operator) picks from every active class
+  // on the platform, each labelled with its owner; every other teacher picks from
+  // her own. A default would silently rebind future callers, which is exactly the
+  // defect P1 had to repair in listClasses.
   const [rows, classes] = await Promise.all([
     listAssignmentsByCreator(getDb(), teacher.userId).catch(() => []),
-    listClasses(getDb(), teacher.userId).catch(() => []),
+    (isGrandmaster(teacher.userId)
+      ? listClassesForGrandmaster(getDb())
+      : listClasses(getDb(), teacher.userId)
+    ).catch(() => []),
   ]);
   const className = new Map(classes.map((c) => [c.id, c.name]));
 

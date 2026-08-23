@@ -1,5 +1,15 @@
 import { describe, expect, it } from "vitest";
-import { claimLabel, claimStudent, isUniqueViolation, parseRoster } from "./roster-service.ts";
+import {
+  claimLabel,
+  claimStudent,
+  importRoster,
+  isUniqueViolation,
+  parseRoster,
+  removeStudent,
+  renameStudentGiven,
+  resetStudentPin,
+} from "./roster-service.ts";
+import type { Db } from "./index.ts";
 
 // Minimal stateful mock of the drizzle Db chain used by claimStudent:
 //   select().from().where().limit() → 1st call = the student lookup, 2nd = the clash check;
@@ -115,5 +125,154 @@ describe("claimLabel — privacy: first name + last initial", () => {
   it("returns an empty string for an empty or whitespace-only name (never throws)", () => {
     expect(claimLabel("")).toBe("");
     expect(claimLabel("   ")).toBe("");
+  });
+});
+
+// ─────────────────────────────────────────────────────────────────────────────
+// P3 · actorId — WHO acted vs WHOSE authorization was used.
+//
+// When the platform operator (grandmaster) manages a class he does not own, the
+// services run with the OWNER's id, so the WHERE clause stays the one and only
+// authorization; the journal, however, has to record HIM. Two properties matter,
+// and they pull in opposite directions:
+//   1. roster_events.actor_id carries the ACTOR (the journal must not be able to
+//      lie about whose hand pulled the lever), and
+//   2. actorId reaches NO WHERE clause — it may name an actor, never widen an
+//      authorization. A leak in that direction would be the whole rank escaping
+//      into every teacher call.
+// ─────────────────────────────────────────────────────────────────────────────
+
+const OWNER = "owner-teacher-id";
+const GRANDMASTER = "grandmaster-id";
+
+/**
+ * Records what the service WROTE and what it FILTERED on. select() serves the
+ * owner lookups (first the ownedStudent/class check, then any follow-up read);
+ * insert().values() banks each written row, so `events[0]` is the journal row that
+ * journal-then-flip demands be written first.
+ */
+function journalDb(selectResults: unknown[][] = [[{ classId: "c1", claimedAt: null }]]) {
+  let n = 0;
+  const conditions: unknown[][] = [];
+  const written: unknown[] = [];
+  const db = {
+    select: () => {
+      const rows = selectResults[n++] ?? [];
+      const here: unknown[] = [];
+      conditions.push(here);
+      const node: Record<string, unknown> = {
+        from: () => node,
+        innerJoin: () => node,
+        where: (c: unknown) => { here.push(c); return node; },
+        orderBy: () => node,
+        groupBy: () => node,
+        limit: () => node,
+        then: (a: never, b: never) => Promise.resolve(rows).then(a, b),
+      };
+      return node;
+    },
+    insert: () => ({ values: (v: unknown) => { written.push(v); return Promise.resolve(undefined); } }),
+    update: () => ({ set: () => ({ where: () => Promise.resolve(undefined) }) }),
+    delete: () => ({ where: () => Promise.resolve(undefined) }),
+  };
+  return { db: db as unknown as Db, conditions, written };
+}
+
+/**
+ * The atoms of one drizzle condition tree — bound values, SQL fragments and column
+ * names — walked with a hard STOP AT COLUMN rule (a column back-references its
+ * table, and walking that would surface every sibling column, making the negative
+ * assertions below vacuous). Cf. class-service.test.ts.
+ */
+function atomsOf(node: unknown): string[] {
+  const out: string[] = [];
+  const walk = (o: unknown, depth = 0): void => {
+    if (o == null || depth > 8) return;
+    if (typeof o === "string") { out.push(o); return; }
+    if (Array.isArray(o)) { for (const x of o) walk(x, depth + 1); return; }
+    if (typeof o !== "object") return;
+    const rec = o as Record<string, unknown>;
+    if (typeof rec.name === "string" && "table" in rec) { out.push(`col:${rec.name}`); return; }
+    if (Array.isArray(rec.queryChunks)) { walk(rec.queryChunks, depth + 1); return; }
+    if (Array.isArray(rec.value)) { walk(rec.value, depth + 1); return; }
+    if ("value" in rec && (typeof rec.value === "string" || typeof rec.value === "number")) out.push(String(rec.value));
+  };
+  walk(node);
+  return [...new Set(out)];
+}
+
+/** Every value the service filtered on, across all its queries. */
+function allFilteredValues(conditions: unknown[][]): string[] {
+  return [...new Set(conditions.flat().flatMap((c) => atomsOf(c)))];
+}
+
+const journalRow = (written: unknown[]) => written[0] as { actorId?: string | null; kind?: string };
+
+describe("actorId — the journal names the actor, the WHERE clause keeps the owner", () => {
+  it("renameStudentGiven: journal = grandmaster, authorization = owner", async () => {
+    const { db, conditions, written } = journalDb();
+    await renameStudentGiven(db, "s1", OWNER, "Piet Wacholder", GRANDMASTER);
+    expect(journalRow(written).kind).toBe("rename");
+    expect(journalRow(written).actorId).toBe(GRANDMASTER);
+    expect(allFilteredValues(conditions)).toContain(OWNER);
+    expect(allFilteredValues(conditions)).not.toContain(GRANDMASTER);
+  });
+
+  it("resetStudentPin: journal = grandmaster, authorization = owner", async () => {
+    const { db, conditions, written } = journalDb();
+    await resetStudentPin(db, "s1", OWNER, GRANDMASTER);
+    expect(journalRow(written).kind).toBe("reset_pin");
+    expect(journalRow(written).actorId).toBe(GRANDMASTER);
+    expect(allFilteredValues(conditions)).toContain(OWNER);
+    expect(allFilteredValues(conditions)).not.toContain(GRANDMASTER);
+  });
+
+  it("removeStudent: journal = grandmaster, authorization = owner", async () => {
+    const { db, conditions, written } = journalDb();
+    await removeStudent(db, "s1", OWNER, GRANDMASTER);
+    expect(journalRow(written).kind).toBe("remove");
+    expect(journalRow(written).actorId).toBe(GRANDMASTER);
+    expect(allFilteredValues(conditions)).toContain(OWNER);
+    expect(allFilteredValues(conditions)).not.toContain(GRANDMASTER);
+  });
+
+  it("importRoster: journal = grandmaster, authorization = owner", async () => {
+    // 1st select = the class-ownership check, 2nd = the already-present names.
+    const { db, conditions, written } = journalDb([[{ id: "c1" }], []]);
+    const imported = await importRoster(db, { classId: "c1", teacherId: OWNER, names: ["Piet Wacholder"], actorId: GRANDMASTER });
+    expect(imported).toBe(1);
+    expect(journalRow(written).kind).toBe("import");
+    expect(journalRow(written).actorId).toBe(GRANDMASTER);
+    expect(allFilteredValues(conditions)).toContain(OWNER);
+    expect(allFilteredValues(conditions)).not.toContain(GRANDMASTER);
+  });
+
+  it("leaves the ordinary teacher case untouched: no actorId ⇒ the teacher IS the actor", async () => {
+    for (const run of [
+      async () => { const m = journalDb(); await renameStudentGiven(m.db, "s1", OWNER, "Piet Wacholder"); return m; },
+      async () => { const m = journalDb(); await resetStudentPin(m.db, "s1", OWNER); return m; },
+      async () => { const m = journalDb(); await removeStudent(m.db, "s1", OWNER); return m; },
+      async () => { const m = journalDb([[{ id: "c1" }], []]); await importRoster(m.db, { classId: "c1", teacherId: OWNER, names: ["Piet Wacholder"] }); return m; },
+    ]) {
+      const { written } = await run();
+      expect(journalRow(written).actorId).toBe(OWNER);
+    }
+  });
+
+  it("writes the journal row BEFORE the live change, actor and all (journal-then-flip)", async () => {
+    const { db, written } = journalDb([[{ id: "c1" }], []]);
+    await importRoster(db, { classId: "c1", teacherId: OWNER, names: ["Piet Wacholder"], actorId: GRANDMASTER });
+    expect(written).toHaveLength(2); // [0] the event, [1] the student rows
+    expect(journalRow(written).actorId).toBe(GRANDMASTER);
+    expect(Array.isArray(written[1])).toBe(true); // the flip came second
+  });
+
+  it("never lets the actor stand in for the owner: a foreign class still updates nothing", async () => {
+    // ownedStudent finds no row (the class is not the owner's) ⇒ silent no-op,
+    // and crucially NO journal row — an unauthorized action leaves no trace of
+    // having been authorized.
+    const { db, written } = journalDb([[]]);
+    await renameStudentGiven(db, "s1", "some-other-teacher", "Piet Wacholder", GRANDMASTER);
+    expect(written).toHaveLength(0);
   });
 });

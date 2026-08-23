@@ -5,6 +5,7 @@ import { loadKeenBoss, loadKeenLevel } from "@/lib/keen-content";
 import { listPaintChapters } from "@/lib/paint-content";
 import { getDb, getUnitMastery } from "@domigo/db";
 import { auth, signOut } from "@/auth";
+import { isGrandmaster } from "@/lib/grandmaster";
 
 export const dynamic = "force-dynamic";
 
@@ -113,6 +114,20 @@ export default async function AdminPage() {
           </div>
         )}
       </section>
+
+      {/* P3 · the operator's entry. Rendered ONLY for a grandmaster — every
+          surface ships its own door, so nobody has to be told a URL. The page
+          behind it re-checks the rank server-side; this is presentation only. */}
+      {isGrandmaster(session.user.id) && (
+        <section className="dg-card" style={{ marginTop: 16, border: "2px solid var(--accent)" }}>
+          <h2 style={{ fontSize: 17, margin: "0 0 10px", fontFamily: "var(--font-display)", color: "var(--ink)" }}>👑 Großmeister — alle Klassen</h2>
+          <p style={{ color: "var(--text-secondary)", fontSize: 14, margin: "0 0 12px" }}>
+            Jede aktive Klasse der Plattform: wer sie eingerichtet hat, wie viele Kinder auf der Liste
+            stehen und wie viele sich schon angemeldet haben. Von dort in jeden Roster.
+          </p>
+          <Link href="/admin/grandmaster" className="dg-btn" style={{ display: "inline-block" }}>Alle Klassen ansehen →</Link>
+        </section>
+      )}
 
       <section className="dg-card" style={{ marginTop: 16 }}>
         <h2 style={{ fontSize: 17, margin: "0 0 10px", fontFamily: "var(--font-display)", color: "var(--ink)" }}>Your classes</h2>
