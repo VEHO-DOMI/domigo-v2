@@ -66,6 +66,9 @@
 //          node docs/art/import-batch-aq13.mjs --abnahme-tafel <batch-verzeichnis>
 //          node docs/art/import-batch-aq13.mjs --abnahme-ring  <batch-verzeichnis>
 //          node docs/art/import-batch-aq13.mjs --import-band  <batch-verzeichnis> [--dry]
+//          node docs/art/import-batch-aq13.mjs --overlay-passung <batch-verzeichnis>
+//          node docs/art/import-batch-aq13.mjs --overlay-pins    <batch-verzeichnis>
+//          node docs/art/import-batch-aq13.mjs --reserve <stem> […]
 //          node docs/art/import-batch-aq13.mjs --selftest
 
 import fs from "node:fs";
@@ -1247,6 +1250,123 @@ function abnahmeRing(stage, band) {
   return { lines, fail };
 }
 
+/** ── DIE PASSUNG EINER OVERLAY-LIEFERUNG (R5 · T2 · D-673) ──────────────────
+ *
+ *  WARUM ES DIESEN MODUS GIBT. Die Overlay-Bestellung AQ13K hat ihr Blatt-Mass
+ *  getroffen (2048×512, 4×1 — genau das, was sie verlangt hat) und trotzdem
+ *  nicht ins Spiel gepasst: die Kreide ist auf die ZELLENMITTE gemalt und rund
+ *  2,3× zu gross fuer die Schreibflaeche, auf die der Importeur sie legt. Das
+ *  Blatt-Mass und die PASSUNG sind zwei verschiedene Zahlen, und bis heute war
+ *  nur die erste bestellt und nur die erste gemessen.
+ *
+ *  ★ WARUM DAS EIN MODUS IST UND KEIN ABSATZ IN EINEM REPORT — dieselbe
+ *    Begruendung wie ueber `--overlay-pins` (H6) und `--reserve` (T1): ein
+ *    Befund, dessen Zahl nur in einem Report steht, ist beim naechsten Mal
+ *    wieder ungemessen. Eine Overlay-Lieferung kann sich damit SELBST messen,
+ *    bevor irgendjemand einen Import versucht — und die Bestellung kann die
+ *    Zahl als Abnahmezeile fuehren, statt sie stillschweigend vorauszusetzen.
+ *
+ *  ★★ WAS ER MISST UND WAS NICHT. Er misst die PASSUNG, nicht die Kunst: passt
+ *     die gemalte Flaeche in das Fenster, das der Importeur aus dem
+ *     Bezugs-Sprite RECHNET, und wie viel liegt neben der Schreibflaeche. Ueber
+ *     Kreide-Charakter, Motiv oder Lesbarkeit sagt er nichts — das ist Sache
+ *     des blinden Panels. Exit 1 heisst deshalb genau eines: mindestens eine
+ *     Zelle, DIE DER IMPORTEUR NIMMT, passt nicht in ihr Fenster.
+ *
+ *  ★★★ WARUM DIE ZURUECKGEHALTENEN ZELLEN GEMESSEN, ABER NICHT BEURTEILT
+ *      WERDEN. `SHEETS` haelt drei Wisch-Zellen aus einem DESIGN-Grund
+ *      zurueck (sie stimmen nur bei hp = 3, siehe dort). Sie liegen im Blatt,
+ *      also stehen ihre Zahlen hier — aber ein Fenster, in das nie etwas
+ *      geschnitten wird, kann auch nicht verfehlt werden. Gemessen am
+ *      Bestand: genau diese drei sitzen 25–26 px zu weit rechts, und genau die
+ *      fuenf, die der Importeur nimmt, sitzen. Wer sie mitzaehlte, bekaeme ein
+ *      rotes Licht auf einer Lieferung, die seit AQ13b angenommen ist — und
+ *      das Lineal waere beim ersten Gebrauch unglaubwuerdig.
+ *
+ *  Das Fenster wird Zeile fuer Zeile so gerechnet wie im Overlay-Zweig des
+ *  Importeurs (zentriertes Bezugs-Sprite + `slateMaskOf`) — ein zweites Lineal
+ *  waere genau die Klasse, gegen die der Kopf dieser Datei geschrieben ist.
+ */
+function overlayPassung(entries) {
+  const lines = [], fail = [];
+
+  for (const e of entries) {
+    const { name, png, ref, refName } = e;
+    const held = new Set(e.held ?? []);
+    const cols = e.cols ?? 4, rows = e.rows ?? Math.max(1, Math.round(png.height / (e.ch ?? 512)));
+    const cw = e.cw ?? Math.round(png.width / cols), ch = e.ch ?? Math.round(png.height / rows);
+
+    const slate = slateMaskOf(ref);
+    if (slate.n === 0) {
+      fail.push(`${name}: im BEZUGS-Sprite ${refName} ist keine Schreibflaeche messbar (Leitfarbton ${slate.peak < 0 ? "—" : slate.peak + "°"}) — nicht die Lieferung ist hier auffaellig, sondern das Lineal`);
+      continue;
+    }
+    const offX = Math.floor((cw - ref.width) / 2);
+    const offY = Math.floor((ch - ref.height) / 2);
+    const win = {
+      x: offX + slate.box.x0,
+      y: offY + slate.box.y0,
+      w: slate.box.x1 - slate.box.x0 + 1,
+      h: slate.box.y1 - slate.box.y0 + 1,
+    };
+
+    lines.push("");
+    lines.push(`${name}  ${png.width}×${png.height} → ${cols}×${rows} Zellen à ${cw}×${ch}`);
+    lines.push(`  Fenster aus ${refName} (${ref.width}×${ref.height}, zentriert bei ${offX},${offY}) `
+      + `→ Schreibfläche (${win.x},${win.y})–(${win.x + win.w - 1},${win.y + win.h - 1}) = ${win.w}×${win.h}`);
+
+    for (let i = 0; i < cols * rows; i++) {
+      const cellX = (i % cols) * cw, cellY = Math.floor(i / cols) * ch;
+      const cell = chromaKey(crop(png, cellX, cellY, cw, ch));
+      const cb = contentBox(cell);
+      if (cb === null) {
+        fail.push(`${name} Zelle ${i}: nach dem Schlüssel bleibt nichts übrig`);
+        continue;
+      }
+      // Wie weit ragt der Inhalt je Seite über das Fenster hinaus? Vier Zahlen,
+      // keine Ja/Nein-Auskunft: eine Retusche-Bestellung braucht die Richtung.
+      const li = Math.max(0, win.x - cb.x0);
+      const re = Math.max(0, cb.x1 - (win.x + win.w - 1));
+      const ob = Math.max(0, win.y - cb.y0);
+      const un = Math.max(0, cb.y1 - (win.y + win.h - 1));
+      const draussen = li + re + ob + un > 0;
+
+      // …und wie viel liegt NEBEN der Schreibflaeche? Gemessen gegen die
+      // GEFUELLTE Maske, aus dem Grund, den D-664 aufgeschrieben hat: das
+      // gemalte Gesicht schneidet ein Loch in jede Farbregel, und eine
+      // Kreidelinie ueber dem Gesicht liegt auf der Tafel und nicht daneben.
+      let neben = 0, gemalt = 0;
+      for (let y = 0; y < ch; y++) for (let x = 0; x < cw; x++) {
+        if (cell.data[(y * cw + x) * 4 + 3] <= 8) continue;
+        gemalt++;
+        const rx = x - offX, ry = y - offY;
+        if (rx < 0 || ry < 0 || rx >= slate.W || ry >= slate.H || !nearMask(slate, rx, ry, 3, "voll")) neben++;
+      }
+
+      const bw = cb.x1 - cb.x0 + 1, bh = cb.y1 - cb.y0 + 1;
+      const zurueck = held.has(i);
+      lines.push(
+        `  Zelle ${i}: ${String(gemalt).padStart(6)} px gemalt · Inhalt (${cb.x0},${cb.y0})–(${cb.x1},${cb.y1}) = ${bw}×${bh}`
+        + ` · Übermaß ${(bw / win.w).toFixed(2)}× / ${(bh / win.h).toFixed(2)}×`
+        + ` · neben der Fläche ${neben} px (${gemalt === 0 ? "—" : (100 * neben / gemalt).toFixed(2)} %)`
+        + ` · ${draussen ? `ÜBER DEM RAND (links ${li} · rechts ${re} · oben ${ob} · unten ${un} px)` : "SITZT"}`
+        + `${zurueck ? "  [ZURÜCKGEHALTEN — wird nicht geschnitten, zählt nicht]" : ""}`,
+      );
+      if (draussen && !zurueck) {
+        fail.push(
+          `${name} Zelle ${i}: die Malerei ragt über die Schreibfläche hinaus — links ${li}, rechts ${re}, `
+          + `oben ${ob}, unten ${un} px; Inhalt ${bw}×${bh} gegen ein Fenster von ${win.w}×${win.h} `
+          + `(${(bw / win.w).toFixed(2)}× / ${(bh / win.h).toFixed(2)}×). `
+          + (bw > win.w * 1.5 || bh > win.h * 1.5
+            ? "Das ist kein Rand-Überstand, sondern ein MASSSTABS-Bruch: das Blatt ist gegen ein anderes Brett gemalt als das, auf dem es liegen soll."
+            : "Ein Überstand in dieser Größenordnung ist Malerei über den Rand, kein anderer Maßstab."),
+        );
+      }
+    }
+  }
+  return { lines, fail };
+}
+
 /** ── DER SELBSTTEST ─────────────────────────────────────────────────────────
  *  Jeder Fall ist ein PAAR: richtig und PLAUSIBEL-FALSCH, die sich in genau
  *  einer Eigenschaft unterscheiden und einem oberflaechlichen Blick gleich
@@ -1538,6 +1658,54 @@ function selftest() {
       new Map([[ovSha, "Selbsttest-Pin auf das unveraenderte Original"]]),
     ));
 
+  // ── Fall 5e · DIE PASSUNG (R5 · T2) ───────────────────────────────────────
+  //
+  // Vier Faelle, und die zwei roten sind ABSICHTLICH verschieden: ein Blatt
+  // kann sein Fenster auf zwei Arten verfehlen, und eine Bestellung, die beide
+  // gleich benennt, bestellt die falsche Reparatur. »Zu gross gemalt« verlangt
+  // ein neues Blatt in anderem Massstab; »sitzt verschoben« verlangt eine
+  // Verschiebung. Der Modus muss sie deshalb mit VERSCHIEDENEN Worten trennen,
+  // und genau darauf pruefen diese Faelle — nicht bloss auf rot.
+  //
+  // Das Fenster der Attrappe wird GEMESSEN und nicht gerechnet, und der
+  // Unterschied ist genau der Grund: Bezug 120×180 zentriert in 200×250 ⇒
+  // Versatz (40,35), Schreibflaeche (12,18) 90×120 ⇒ auf dem Papier
+  // (52,53)–(141,172). Das Lineal findet aber (52,64)–(141,172) = 90×109,
+  // weil `mkRef` die oberen elf Zeilen der Flaeche als GESICHT weiss malt und
+  // Weiss aus jeder Farbregel herausfaellt (D-664). Die Attrappe traegt damit
+  // dieselbe Eigenschaft wie der echte Bestand — und die Faelle stehen auf der
+  // gemessenen Zahl, nicht auf der getippten.
+  const mkPassungCell = (x0, y0, x1, y1) => mkPng(W, H, (x, y) => {
+    if (x < x0 || x > x1 || y < y0 || y > y1) return [255, 0, 255];
+    if ((x * 3 + y * 5) % 7 !== 0) return [255, 0, 255];      // Luft zwischen den Zuegen
+    return [235 + ((x + y) % 12), 232 + ((x * 3) % 12), 210 + ((y * 5) % 12)];
+  });
+  const runPassung = (png, ref = mkRef(), held = []) => overlayPassung([{
+    name: "probe", png, ref, refName: "attrappe", cols: 1, rows: 1, cw: W, ch: H, held,
+  }]);
+
+  add("Passung: die Kreide sitzt im Fenster", null,
+    () => runPassung(mkPassungCell(56, 68, 137, 168)));
+  add("Passung · zu gross gemalt: das Blatt fuellt die ganze Zelle", "MASSSTABS-Bruch",
+    () => runPassung(mkPassungCell(0, 0, W - 1, H - 1)));
+  // Der Zwilling, der einem oberflaechlichen Blick gleich aussieht: KLEINER als
+  // das Fenster und trotzdem draussen. Ein Lineal, das nur »Inhalt > Fenster«
+  // fragt, laesst ihn durch — und genau dieser Fall ist am Bestand echt (die
+  // drei zurueckgehaltenen Wisch-Zellen sitzen 25–26 px zu weit rechts).
+  add("Passung · verschoben statt zu gross: 60×80 in einem Fenster von 90×109, 20 px draussen",
+    "kein anderer Maßstab",
+    () => runPassung(mkPassungCell(102, 70, 161, 149)));
+  // Und die Ausnahme fuer zurueckgehaltene Zellen ist keine offene Tuer: DASSELBE
+  // Blatt bleibt gruen, sobald `SHEETS` die Zelle als zurueckgehalten fuehrt —
+  // und nur dann. Die Ausnahme haengt am Design-Flag, nicht am Zufall.
+  add("Passung: dieselbe verschobene Zelle, aber als ZURUECKGEHALTEN gefuehrt", null,
+    () => runPassung(mkPassungCell(102, 70, 161, 149), mkRef(), [0]));
+  // TAMPER · das Lineal statt der Lieferung: ein Bezug ganz OHNE Schreibflaeche.
+  // Er muss den BEZUG beschuldigen (D-654), sonst liest sich ein blindes Lineal
+  // wie ein Lieferfehler.
+  add("Passung · TAMPER: Bezug ohne Schreibflaeche beschuldigt den BEZUG", "keine Schreibflaeche messbar",
+    () => runPassung(mkPassungCell(56, 68, 137, 168), mkPng(REFW, REFH, frameCol)));
+
   // ── Fall 6 · DIE RESERVE ──────────────────────────────────────────────────
   add("Reserve: ein Pixel auf 179", "vom Schluessel", () => runTafel(mkCell(W, H, { face: 450, keyAt: 179 }), ["a"], 1, W, H));
   add("Reserve: knappstes Pixel auf 182", null, () => runTafel(mkCell(W, H, { face: 450, keyAt: 182 }), ["a"], 1, W, H));
@@ -1802,6 +1970,45 @@ if (process.argv.includes("--overlay-pins")) {
     }
   }
   if (gefunden === 0) { console.error(`keine Overlay-Blaetter in ${dir}`); process.exit(2); }
+  process.exit(0);
+}
+
+/* ── `--overlay-passung` (R5 · T2) ───────────────────────────────────────────
+ *
+ * Die Frage, die vor jedem Overlay-Import steht und bis heute niemand gestellt
+ * hat: passt die gemalte Flaeche in das Fenster, auf das der Importeur sie
+ * legt? Er nimmt ein Lieferverzeichnis, sucht darin die Overlay-Blaetter nach
+ * ihrem Namen und misst sie gegen dasselbe Bezugs-Sprite wie der Import.
+ *
+ * Exit 0 = jede Zelle sitzt in ihrem Fenster. Exit 1 = mindestens eine nicht.
+ */
+if (process.argv.includes("--overlay-passung")) {
+  const dir = process.argv[process.argv.indexOf("--overlay-passung") + 1];
+  if (!dir) { console.error("usage: node docs/art/import-batch-aq13.mjs --overlay-passung <batch-verzeichnis>"); process.exit(2); }
+  const entries = [];
+  for (const sheet of SHEETS) {
+    const f = path.join(dir, path.basename(sheet.file));
+    if (!fs.existsSync(f)) continue;
+    const refFile = path.join(OUT, `${sheet.ref}.png`);
+    if (!fs.existsSync(refFile)) { console.error(`Bezugs-Sprite fehlt: ${refFile}`); process.exit(2); }
+    entries.push({
+      name: path.basename(sheet.file), png: read(f),
+      ref: read(refFile), refName: sheet.ref,
+      cols: sheet.cols, rows: sheet.rows, held: sheet.held ?? [],
+    });
+  }
+  if (entries.length === 0) { console.error(`keine Overlay-Blaetter in ${dir}`); process.exit(2); }
+  const { lines, fail } = overlayPassung(entries);
+  for (const l of lines) console.log(l);
+  console.log("");
+  if (fail.length > 0) {
+    for (const f of fail) console.error(`✗ ${f}`);
+    console.error(`\n--overlay-passung: ${fail.length} Zelle(n) passen nicht in ihr Fenster.`);
+    console.error("Der Modus urteilt NICHT ueber die Kunst — er misst die Passung. Was daraus folgt");
+    console.error("(Beschnitt, Retusche-Bestellung oder Rueckweisung), entscheidet die Bahn mit dieser Zahl.");
+    process.exit(1);
+  }
+  console.log("--overlay-passung: OK — jede Zelle sitzt in ihrem Fenster.");
   process.exit(0);
 }
 
