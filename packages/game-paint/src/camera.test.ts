@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { FOCUS_ZOOM, cameraTargetX, cameraTargetY, clampScroll, focusView, stepCameraAxis, stepCameraY } from "./camera.ts";
+import { FOCUS_ZOOM, bubbleSpot, cameraTargetX, cameraTargetY, clampScroll, focusView, stepCameraAxis, stepCameraY } from "./camera.ts";
 import { LOGICAL_H, LOGICAL_W, PAINT, SUBS, TILE } from "./paint.ts";
 
 describe("the look-ahead camera", () => {
@@ -96,5 +96,59 @@ describe("focusView (the lean-in on the asker)", () => {
   it("clamps a t outside 0…1 rather than overshooting", () => {
     expect(focusView(0, 0, 900, 0, 5, W, H).zoom).toBeCloseTo(FOCUS_ZOOM, 6);
     expect(focusView(0, 0, 900, 0, -3, W, H).zoom).toBe(1);
+  });
+});
+
+// ── R5-W9 · F10 · D-621 ──────────────────────────────────────────────────────
+// Die Zahlen sind gemessen, nicht erfunden: die Kamerasicht 672…1024 ist die,
+// die W7 und P8 unabhaengig voneinander am p1-Tor gelesen haben — dort steht die
+// Kamera an ihrem Anschlag, waehrend das Kind weiterlaeuft. Genau in dieser Lage
+// ragte die Blase 33 px aus dem Bild und schnitt »Die Tuer wartet auf ihr Wort!«
+// hinter »ihr« ab.
+describe("die Sprechblase am Kamera-Anschlag (D-621)", () => {
+  const SICHT = { x: 672, y: 0, right: 1024, bottom: 224 };
+  const BLASE = { halfW: 40, oben: 26, unten: 1 };
+  const LUFT = 3;
+  const SCHWANZ_EINZUG = 7;
+
+  it("holt eine Blase, die rechts aus dem Bild ragte, vollstaendig herein", () => {
+    const kind = { x: 1010, y: 120 }; // das Kind steht fast am rechten Rand
+    const s = bubbleSpot(kind, BLASE, SICHT, LUFT, SCHWANZ_EINZUG);
+    expect(s.x + BLASE.halfW).toBeLessThanOrEqual(SICHT.right - LUFT);
+    expect(s.x).toBeLessThan(kind.x); // sie ist wirklich gewandert
+  });
+
+  it("holt sie links genauso herein", () => {
+    const s = bubbleSpot({ x: 680, y: 120 }, BLASE, SICHT, LUFT, SCHWANZ_EINZUG);
+    expect(s.x - BLASE.halfW).toBeGreaterThanOrEqual(SICHT.x + LUFT);
+  });
+
+  it("laesst den Schwanz beim Sprecher stehen, waehrend der Koerper wandert", () => {
+    const kind = { x: 1010, y: 120 };
+    const s = bubbleSpot(kind, BLASE, SICHT, LUFT, SCHWANZ_EINZUG);
+    expect(s.x + s.tailDx).toBe(kind.x);
+  });
+
+  it("schiebt den Schwanz nie ueber die Rundung hinaus", () => {
+    // ein Kind weit ausserhalb der Sicht: der Koerper klemmt, der Schwanz nicht mit
+    const s = bubbleSpot({ x: 1400, y: 120 }, BLASE, SICHT, LUFT, SCHWANZ_EINZUG);
+    expect(Math.abs(s.tailDx)).toBeLessThanOrEqual(BLASE.halfW - SCHWANZ_EINZUG);
+  });
+
+  it("ruehrt eine Blase mitten im Bild nicht an", () => {
+    const mitte = { x: 850, y: 120 };
+    const s = bubbleSpot(mitte, BLASE, SICHT, LUFT, SCHWANZ_EINZUG);
+    expect(s).toEqual({ x: mitte.x, y: mitte.y, tailDx: 0 });
+  });
+
+  it("stellt eine Blase, die breiter ist als die Sicht, mittig statt an einen Rand", () => {
+    const breit = { halfW: 400, oben: 26, unten: 1 };
+    const s = bubbleSpot({ x: 1010, y: 120 }, breit, SICHT, LUFT, SCHWANZ_EINZUG);
+    expect(s.x).toBe((SICHT.x + SICHT.right) / 2);
+  });
+
+  it("klemmt auch nach oben — dieselbe Rechnung, die andere Achse", () => {
+    const s = bubbleSpot({ x: 850, y: 10 }, BLASE, SICHT, LUFT, SCHWANZ_EINZUG);
+    expect(s.y - BLASE.oben).toBeGreaterThanOrEqual(SICHT.y + LUFT);
   });
 });

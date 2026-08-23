@@ -272,12 +272,45 @@ describe("the carved mass (doc 36 §2)", () => {
     expect(p.some((q) => q.kind === "capR" && q.c === 19)).toBe(false);
   });
 
-  it("omits caps entirely on a run too short to hold two of them", () => {
-    // a 3-cell ledge (48 px) cannot carry two 41 px caps — it gets edge trims
-    const stub = ["..........", "..........", "..###.....", "..###....."];
+  // ── R5-W9 · F10 · D-639 · HIER STAND DAS GEGENTEIL ─────────────────────────
+  // »omits caps entirely on a run too short to hold two of them« — das Verhalten
+  // war als Gesetz gepinnt, und es IST der Befund: M1 hat nachgezaehlt, dass
+  // 25 von 42 Kruste-Laeufen in ch01 unter der alten Schwelle liegen und
+  // roh-quadratisch enden; ein blinder Leser nannte den Bestand unabhaengig
+  // »wie eine Roehre, die mitten in der Laenge abgeschnitten wurde«. Das Tor
+  // pinnt ab jetzt das reparierte Gesetz.
+  it("gibt auch einem zu kurzen Lauf ZWEI Enden — gefenstert, nicht gequetscht (D-639)", () => {
+    // Kokis Geometrie: drei Zellen (48 px), zu wenig fuer zwei volle 41-px-Kappen
+    const stub = ["..........", "..........", "..###.....", "....#....."];
     const p = planMass(stub, kit, afSrc);
+    const caps = p.filter((q) => q.kind === "capL" || q.kind === "capR");
     expect(p.some((q) => q.kind === "crust")).toBe(true);
-    expect(p.some((q) => q.kind === "capL" || q.kind === "capR")).toBe(false);
+    expect(caps.length, "beide Enden, nicht eines und nicht keines").toBe(2);
+    // …und KEINE davon ist gequetscht: `w` bleibt die volle Kappenbreite, das
+    // Verzogen-Gesetz (D-632) misst also weiter denselben Massstab
+    for (const cap of caps) expect(cap.w).toBeCloseTo(CRUST_H * (512 / 212), 3);
+    // gefenstert wird auf die Haelfte des Laufs, von aussen nach innen
+    const links = caps.find((q) => q.kind === "capL")!;
+    const rechts = caps.find((q) => q.kind === "capR")!;
+    expect(links.crop?.from).toBe("left");
+    expect(rechts.crop?.from).toBe("right");
+    expect(links.crop!.fw * links.w).toBeCloseTo(48 / 2, 5);
+  });
+
+  it("laesst ein volles Kappenblatt ungefenstert, wenn der Lauf es traegt", () => {
+    // ein 8-Zellen-Lauf (128 px) traegt zwei ganze Kappen — kein Fenster noetig,
+    // und ein Fenster, das nichts abschneidet, waere eine Behauptung ohne Wirkung
+    const lang = ["..........", "..........", ".########.", ".########."];
+    const caps = planMass(lang, kit, afSrc).filter((q) => q.kind === "capL" || q.kind === "capR");
+    expect(caps.length).toBe(2);
+    for (const cap of caps) expect(cap.crop).toBeUndefined();
+  });
+
+  it("bleibt unter dem Splitter-Boden ohne Kappe (CAP_MIN_PX)", () => {
+    // ein Lauf von 8 px zeigte je Seite 4 px Kappe — das ist kein Ende mehr
+    const winzig = ["..........", "..........", "..#.......", "..#......."];
+    const caps = planMass(winzig, kit, afSrc).filter((q) => q.kind === "capL" || q.kind === "capR");
+    expect(caps.length, "16 px Lauf ⇒ 8 px je Seite, das traegt gerade noch").toBe(2);
   });
 
   it("ramps the interior body → fade → sediment with depth", () => {

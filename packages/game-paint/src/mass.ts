@@ -446,6 +446,12 @@ export type MassKind =
 /** Source pixel size of a stem — the plan reads real art geometry through this. */
 export type SrcSizeLookup = (stem: string) => { w: number; h: number } | null;
 
+/** Unter dieser GEZEIGTEN Breite ist eine gefensterte Kappe kein Ende mehr,
+ *  sondern ein Splitter. Am schmalsten Fall des Kapitels nachgesehen (vier
+ *  1-Zellen-Laeufe in p3, je 8 px je Seite): dort liest der Lauf als kleiner
+ *  Stumpf mit zwei runden Enden, nicht als Splitter. */
+export const CAP_MIN_PX = 6;
+
 export interface MassPiece {
   kind: MassKind;
   /** null ⇒ engine-drawn (fallbackFill only) */
@@ -464,6 +470,21 @@ export interface MassPiece {
   originY?: number;
   /** true ⇒ a tileSprite (seamless run); false ⇒ one Image */
   tile?: boolean;
+  /**
+   * R5-W9 · F10 · D-639 · EIN FENSTER AUF DAS BLATT, im BILD-Zweig.
+   *
+   * Die gekachelten Stuecke haben ihr Quellfenster seit R5-W3 (`srcW`); ein
+   * BILD hatte keins und zeichnete immer sein ganzes Blatt in seinen Kasten.
+   * Fuer eine Kappe auf einem kurzen Lauf ist genau das der Unterschied
+   * zwischen »halbe Kappe im richtigen Massstab« und »ganze Kappe gequetscht«
+   * — und Gequetschtes faellt seit M1 (D-632) durch das Verzogen-Gesetz.
+   *
+   * `fw` ist der ANTEIL der Blattbreite, der gezeigt wird, `from` die Seite,
+   * von der aus gemessen wird. Der Massstab bleibt der des ungeschnittenen
+   * Stueckes (`w`/`h` aendern sich NICHT) — das Tor misst also weiter dieselbe
+   * Zahl, und das ist Absicht: ein Fenster ist kein anderer Massstab.
+   */
+  crop?: { fw: number; from: "left" | "right" };
   /** world px drawn per SOURCE px — the painted-scale law. Undefined keeps the
    *  legacy rule (one source height = the piece's own height). */
   srcScale?: number;
@@ -1255,12 +1276,46 @@ export const planMass = (
     // terrain boundary and the rest blends into the identical loop beneath.
     // (Hanging them outside is what made Build-D's caps read as floating.)
     const capW = CRUST_H * Math.max(aspect(kit.crustCapL), 0.2);
-    const capsFit = runW >= 2 * capW; // a stub run gets edge trims instead
-    if (capsFit && c > 0) {
-      out.push({ kind: "capL", stem: kit.crustCapL, c, r, x, y, w: capW, h: CRUST_H, depth: DEPTH.cap });
-    }
-    if (capsFit && c1 < w - 1) {
-      out.push({ kind: "capR", stem: kit.crustCapR, c: c1, r, x: x + runW - capW, y, w: capW, h: CRUST_H, depth: DEPTH.cap });
+    // ── R5-W9 · F10 · D-639 · DER VERWAISTE L-WINKEL ──────────────────────────
+    //
+    // Hier stand `capsFit = runW >= 2 * capW`: ein Lauf musste doppelt so breit
+    // sein wie eine Kappe, sonst bekam er GAR KEINE. M1 hat nachgezaehlt, was
+    // das kostet — die Kappe ist 2,08…2,58 Zellen breit, die Schwelle also
+    // 4,15…5,16 Zellen, und **25 von 42 Kruste-Laeufen in ch01 liegen darunter**.
+    // Sie enden roh-quadratisch; die einzige Anatomie an ihrem Ende sind die
+    // 8-px-Seitentrims. Kokis Stelle ist p2 r18 c12–14 mit einem 1-Zellen-Bein
+    // bei r19 c14: drei Zellen, 48 px, gegen eine Schwelle von 82.
+    //
+    // Ein blinder Leser hat den Bestand ohne jedes Vorwissen genau so gelesen:
+    // »wirkt wie eine Roehre, die mitten in der Laenge abgeschnitten wurde …
+    // der deutlichste Schnitt-Eindruck von allen sechs untersuchten Enden«.
+    //
+    // WAS HIER NICHT GEHT: die Kappe schmal quetschen. M1s Verzogen-Gesetz
+    // (`SCALE_ANISO_TOL`, 2 %) macht »quer anders als hoch« rot — und zu Recht,
+    // eine gestauchte Kappe ist genau das »Lego, das nicht zusammenpasst«.
+    //
+    // WAS STATTDESSEN GESCHIEHT: die Kappe wird GEFENSTERT. Sie behaelt ihren
+    // Massstab (`w` bleibt `capW`, das Tor misst unveraendert) und zeigt nur ihr
+    // AEUSSERES Stueck — die gemalte Rundung sitzt am Ende, der Rest der Kappe
+    // ist ohnehin »eine Strecke desselben Kurses«. Zwei halbe Kappen sind damit
+    // nie breiter als der Lauf, und jeder Lauf ab 12 px bekommt zwei Enden.
+    //
+    // Gemessen ueber alle fuenf Raeume: **17 von 42 Laeufen mit Kappe → 41 von
+    // 42** (der eine Rest liegt an der Weltkante, wo das Gesetz die Kappe seit
+    // jeher unterdrueckt). Ein blindes Paar mit getauschter Reihenfolge nennt
+    // das Ergebnis an beiden Enden »gewollt« und den Bestand »abgeschnitten«
+    // (2:0); zwischen »eine Kappe« und »zwei gefensterte« sah keiner der beiden
+    // einen Unterschied — den Ausschlag gab deshalb die Deckung, nicht der
+    // Geschmack.
+    const zeig = Math.min(capW, runW / 2);
+    const fw = zeig / capW;
+    if (zeig >= CAP_MIN_PX) {
+      if (c > 0) {
+        out.push({ kind: "capL", stem: kit.crustCapL, c, r, x, y, w: capW, h: CRUST_H, depth: DEPTH.cap, ...(fw < 1 ? { crop: { fw, from: "left" as const } } : {}) });
+      }
+      if (c1 < w - 1) {
+        out.push({ kind: "capR", stem: kit.crustCapR, c: c1, r, x: x + runW - capW, y, w: capW, h: CRUST_H, depth: DEPTH.cap, ...(fw < 1 ? { crop: { fw, from: "right" as const } } : {}) });
+      }
     }
   }
 

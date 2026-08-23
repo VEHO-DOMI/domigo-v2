@@ -684,7 +684,15 @@ export const entDisplayH = (e: EntSizeInput): number => {
   // scale her idle does; the number is her standing height.
   if (e.role === "classmate") return 30;
   if (e.role === "powerup") return 26;
-  if (e.role === "tip") return 18; // R3-16: a torn page, smaller than a being
+  // R3-16: a torn page, smaller than a being.
+  // R5-W9 · F10 · D-611: 18 auf 22. Bei 18 px Hoehe ist das Blatt in Ruhe 14 px
+  // BREIT (321 x 419 ⇒ Verhaeltnis 0,766) — auf dieser Flaeche gehen die
+  // Linierung, die gerissene Kante und die umgeschlagene Ecke des gemalten
+  // Blattes verloren, und was uebrig bleibt, ist ein blauer Klotz. 22 px bleibt
+  // deutlich unter der Klassenkameradin (30) und unter dem Kaefig (34) — die
+  // Regel »kleiner als ein Wesen« steht, das Blatt bekommt aber wieder ein
+  // Gesicht. Am Bild entschieden, nicht am Wunsch.
+  if (e.role === "tip") return 22;
   if (e.role === "book") return 15;
   // R5-W5 · G4: a uniform piece. The commission ordered a RANGE (16-20) and left
   // the number to a test, because these nine must be told APART from one another

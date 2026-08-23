@@ -424,7 +424,30 @@ describe("R5-F5 · die Pirouette der Regel-Seite (F-16, R37)", () => {
     }));
     const schmalste = breit.reduce((m, v) => (v.sx < m.sx ? v : m));
     const breiteste = breit.reduce((m, v) => (v.sx > m.sx ? v : m));
-    expect(schmalste.rx).toBeLessThan(breiteste.rx * 0.5);
+    // ── R5-W9 · F10 · D-611: DIE REGEL IST DAS VERHAELTNIS, NICHT DIE ZAHL ────
+    // Hier stand `< breiteste.rx * 0,5`. Die 0,5 war nie das Gesetz, sondern die
+    // EICHUNG dieses Gesetzes auf einen Flatter-Boden von 0,22: mehr als halb so
+    // schmal konnte der Schatten damals gar nicht anders. Mit dem Boden bei 0,70
+    // (die Seite las als Lichtstrahl, D-611) waere dieselbe Zahl unerfuellbar —
+    // und ein Tor, das man beim Aendern einer Konstanten weglegen muss, hat sein
+    // Gesetz nie geprueft.
+    // Geprueft wird jetzt das Gesetz selbst: der Schatten folgt der BREITE der
+    // Seite. Das Band von 25 % ist der Hub (`TREASURE_SHADOW_LIFT_GAIN` zieht den
+    // Schatten je nach Schwebehoehe um bis zu 16 % zusammen, und die zwei
+    // Extremtakte liegen an verschiedenen Stellen dieses Hubs).
+    const verhaeltnisSchatten = schmalste.rx / breiteste.rx;
+    const verhaeltnisSeite = schmalste.sx / breiteste.sx;
+    expect(verhaeltnisSchatten, "der Schatten folgt der Seite ueberhaupt nicht").toBeLessThan(1);
+    expect(verhaeltnisSchatten).toBeGreaterThan(verhaeltnisSeite * 0.75);
+    expect(verhaeltnisSchatten).toBeLessThan(verhaeltnisSeite * 1.25);
+    // …und der Boden selbst ist ab jetzt gepinnt: er ist die Zahl, die
+    // entscheidet, ob ein Kind ein BLATT oder einen Strich sieht.
+    // (abgetastet wird in GANZEN Takten, der Kosinus trifft seinen Tiefpunkt
+    // also nur ungefaehr — geprueft wird deshalb: nie unter dem Boden, und der
+    // Boden wird im Umlauf auch wirklich erreicht.)
+    expect(schmalste.sx).toBeGreaterThanOrEqual(TREASURE_SPIN_MIN);
+    expect(schmalste.sx).toBeLessThan(TREASURE_SPIN_MIN + 0.02);
+    expect(TREASURE_SPIN_MIN, "unter 0,7 liest die Seite wieder als Lichtstrahl (D-611)").toBeGreaterThanOrEqual(0.7);
   });
 
   it("das Licht der Seite ist KÜHL und das Kreide-Gold bleibt dem Pfeil", () => {

@@ -480,6 +480,11 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
   // R5-W7 · H5 · R193b: der Nenner der Lebensanzeige und der Fortschritt des
   // laufenden Wischens — beide neu aus `PaintScene#getState` (dort deklariert).
   const [knotsTotal, setKnotsTotal] = useState(0);
+  /** R5-W9 · F10: WELCHES Wesen die Lebensanzeige zeigt. Aus dem Zustand
+   *  gelesen, nicht als Literal geschrieben — ch02 hat einen anderen Boss, und
+   *  ein hart notierter Blattname waere die Klasse Fehler, die dieses Kapitel
+   *  anderswo schon als Schuld gemeldet hat. */
+  const [bossSkin, setBossSkin] = useState<string | null>(null);
   const [wipeTeil, setWipeTeil] = useState(0);
 
   // ── chapter state that OUTLIVES phase mounts (refs: read by scene closures) ──
@@ -1393,6 +1398,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
       setKnots(st.knots);
       setKnotsTotal(st.knotsTotal);
       setWipeTeil(st.wipeTeil);
+      setBossSkin(st.entities.find((e) => e.role === "guardian")?.skin ?? null);
     }, 250);
 
     if (process.env.NODE_ENV !== "production") {
@@ -1755,42 +1761,20 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
           )}
           {booksCount > 0 && <Chip icon="book" label="Bonus-Bücher" value={`${booksCount}`} art={art} />}
           {clothTotal > 0 && <Chip icon="uniform" label="Kleider" value={`${clothCount}/${clothTotal}`} art={art} />}
-          {/* R5-W4 · H2 (R50): der Zähler zählt dasselbe wie vorher — was die
-              Tafel noch zwischen sich und ihrem sauberen Zustand hat. Nur heisst
-              das jetzt eine KRITZEL-Schicht statt eines Knotens. Das interne
-              Symbol `knots` bleibt (R50).
-              R5-W4b · H3 (D-192): und das Glyph heisst jetzt auch so. Es zeichnete
-              eine SCHLEIFE neben dem Wort „Kritzel" — das letzte Stück alte Lore
-              im Bild. `slate` (die Tafel) liegt schon in `PaintedIcons.tsx` und
-              zeigt das Ding, dessen Schichten der Zähler zählt; ein neues Glyph
-              zu bestellen wäre Kunst für einen Fehler gewesen, den ein
-              vorhandener Name behebt.
-              R5-W7 · H5 (R193b): und jetzt ist es eine LEBENSANZEIGE. Der
-              Zähler sagte »noch 2« — eine Zahl ohne ihren Nenner. Drei blinde
-              Kritiker haben im P6-Panel notiert: »Lebensanzeige: keine«,
-              während Raymans Gegner eine eigene Leiste mit Porträt trägt. Die
-              Skala war längst da (drei Kritzel-Schichten, R50), sie stand nur
-              nirgends, wo ein Kind sie liest. Jetzt steht sie hier: ein Kästchen
-              je Schicht, das oberste läuft leer, WÄHREND gewischt wird. Kein
-              neuer Chip daneben — ein Kind, das zweimal dasselbe zählt, zählt
-              nichts. */}
-          {knots > 0 && (
-            <Chip
-              icon="slate"
-              label="Tafel"
-              value={knotsTotal > 0 ? `${knots}/${knotsTotal}` : `${knots}`}
-              leiste={knotsTotal > 0 ? <SchichtenLeiste voll={Math.max(0, knots - wipeTeil)} gesamt={knotsTotal} /> : undefined}
-              art={art}
-              titleDe={knotsTotal > 0 ? `Die Tafel hat noch ${knots} von ${knotsTotal} Kritzel-Schichten` : undefined}
-              // R5-W7 · H5: der Chip heisst »Tafel« und nicht mehr »Kritzel« —
-              // so hat der Auftrag ihn bestellt, und ein blinder Leser hat den
-              // Grund geliefert: neben »Regel-Seiten 0/5« und »Kleider 0/9«
-              // liest sich ein Zaehler ohne Gegner-Namen als SAMMEL-Stand des
-              // Kindes, nicht als Zustand des Gegners. Das Wort nennt jetzt,
-              // wem die Kaestchen gehoeren. Das interne Symbol `knots` bleibt
-              // (R50), und der Toast sagt weiter »Kritzel-Schicht«.
-            />
-          )}
+          {/* ── R5-W9 · F10 · HIER STAND DIE LEBENSANZEIGE — UND DAS WAR DER
+              FEHLER (R212e, P8 §2). Die Reihe zaehlt, was das KIND gesammelt
+              hat; die Tafel-Leiste zaehlt, was dem GEGNER noch bleibt. Beides
+              trug denselben Chip: am DOM gemessen identischer Hintergrund,
+              identischer Rahmen, identische Eckradien, identische Hoehe, nur ein
+              anderes Wort. Zwei frische Leser haben die fallende Leiste gesehen
+              und trotzdem NULL von zwei sie dem Gegner zugeordnet — beide
+              nannten unabhaengig die Nachbarschaft als Grund, nicht die Zahl.
+              Der Treiber (S4) hat damit auch die offene Haelfte von D-551
+              beantwortet: es lag nicht daran, dass niemand sie fallen sah.
+              Sie steht jetzt IM BILD, an einem Portraet — `GegnerLeiste`, unten
+              in der Spielflaeche. Ein Wort sagt nicht, wem etwas gehoert; ein
+              Gesicht tut es. Das interne Symbol `knots` bleibt (R50), und der
+              Toast sagt weiter »Kritzel-Schicht«. */}
           {inBonus && bonusLeft >= 0 && <Chip icon="inkwell" label="Tinte" value={`${Math.ceil(bonusLeft / 60)}s`} art={art} />}
           {letters.total > 0 && <Chip icon="spark" label={level.collectNounDe} value={`${letters.got}/${letters.total}`} art={art} />}
         </span>
@@ -1820,6 +1804,31 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
             letters={letters.got} bonusTotal={bonusLetterTotal(level)}
             bilanz={bilanz} hubHref={hubHref} onRestart={restart}
             collectedTips={collectedTips}
+          />
+        )}
+        {/* ── R5-W9 · F10 · DIE LEBENSANZEIGE DES GEGNERS (R212e) ──────────────
+            Sie steht NACH dem Overlay im Baum, und das ist kein Zufall: ohne
+            eigenen z-index stapelt der Browser nach Reihenfolge, also liegt sie
+            ueber dem Karten-Schleier. Genau das loest D-608 — beim Betreten der
+            Arena haelt die Anleitungs-Karte die Welt an, und drei Treiber-
+            Schritte lang (90 Bandtakte, gemessen) stand die Reihe ohne
+            Tafel-Chip da: das Kind las fuenf Seiten, bevor die Anzeige
+            ueberhaupt existierte. Der Ladeschirm (`pb-building`, z-index 40)
+            bleibt bewusst DARUEBER: solange die Blaetter nicht liegen, gibt es
+            auch keinen Kampf zu zeigen (P8, Filed #2 — das Spiel meldet
+            `knotsTotal > 0`, bevor die Welt steht).
+
+            Die Bedingung ist `knotsTotal > 0` und nicht mehr `knots > 0`:
+            `guardianKnots` ist −1, bis der erste WELT-Takt eines Guardians
+            laeuft, waehrend die Schichtzahl schon im Zustand steht. So sieht das
+            Kind den VOLLSTAND, bevor er faellt — eine Leiste, deren Vollstand
+            niemand gesehen hat, kann nicht fallen. */}
+        {knotsTotal > 0 && (
+          <GegnerLeiste
+            voll={Math.max(0, (knots < 0 ? knotsTotal : knots) - wipeTeil)}
+            gesamt={knotsTotal}
+            art={art}
+            skin={bossSkin}
           />
         )}
       </div>
@@ -2985,9 +2994,139 @@ function SpeakerGlyph({ muted, music }: { muted: boolean; music: boolean }): Rea
  *  Kein neues Bild und kein neuer CSS-Verlauf (D-218): gezeichnet wird in
  *  `currentColor`, also in der geprüften Chip-Farbe (D-210), genau wie das
  *  Lautsprecher-Zeichen daneben. */
-function SchichtenLeiste({ voll, gesamt }: { voll: number; gesamt: number }): React.ReactElement | null {
+/**
+ * ── R5-W9 · F10 · DIE LEBENSANZEIGE DES GEGNERS (R212e, P8 §2.3) ────────────
+ *
+ * WAS DAS PANEL GESAGT HAT. Die Leiste faellt seit S4s Treiber sichtbar, und
+ * trotzdem hat KEINER von zwei frischen Lesern sie dem Gegner zugeordnet: einer
+ * sah einen abnehmenden Vorrat und konnte ihn niemandem zuschreiben, der andere
+ * schrieb ihn dem KIND zu — »ich mache das daran fest, dass das Element in Form
+ * und Position exakt zu den beiden benachbarten Kaestchen passt«. Am DOM
+ * nachgemessen hatte er recht: Hintergrund, Rahmen, Eckradien, Hoehe und Schrift
+ * des Tafel-Chips waren von »Regel-Seiten 0/5« und »Kleider 0/9« nicht zu
+ * unterscheiden. Ein Wort sagt nicht, wem etwas gehoert.
+ *
+ * WAS DER REFERENZRAHMEN DAGEGEN TUT. Ein unabhaengig gefahrenes Panel hat an
+ * Raymans Bosskampf von selbst formuliert, warum dessen Balken lesbar ist: »an
+ * dessen linkem Ende sitzt ein kleines goldenes Symbol, das IN DER FORM an die
+ * Kreatur rechts erinnert … das spricht dafuer, dass dieser Balken die Kraft des
+ * GEGNERS anzeigt«. Nicht ein Gesicht traegt die Zugehoerigkeit, sondern die
+ * WIEDERERKENNBARE GESTALT dessen, was gerade auf der Buehne steht.
+ *
+ * ⚠ DAS IST DIE ZWEITE FASSUNG, und die erste steht als Narbe im Register
+ * (D-644). Sie zeigte einen GESICHTS-Ausschnitt aus `tafel_win` — dem Blatt der
+ * BESIEGTEN Tafel. Zwei frische Leser haben sie 0:2 wieder nicht dem Gegner
+ * zugeordnet, und beide nannten unabhaengig denselben Grund: »Gesichter an
+ * dieser Stelle stehen in Spielen fast immer fuer ›wie geht es der Figur‹«. Der
+ * Grund dahinter ist am Bild nachweisbar: die Tafel traegt im KAMPF gar kein
+ * sichtbares Gesicht (die Kritzel-Schichten decken es zu, P8 §R6) — die Marke
+ * zeigte also ein Gesicht, das das Kind an dieser Stelle noch nie gesehen hat.
+ * Eine Marke, die nichts auf der Buehne wiedererkennt, kann nichts zuordnen.
+ *
+ * DREI ENTSCHEIDUNGEN, JEDE MIT IHREM BELEG:
+ *  · SIE STEHT IM BILD, nicht in der Zaehlerreihe — unten links in der
+ *    Spielflaeche, dort, wo das Kind waehrend des Kampfes hinsieht.
+ *  · IHRE MARKE IST DAS GANZE WESEN, wie es JETZT auf der Buehne steht
+ *    (`<skin>_land1`, die gesetzte Kampf-Zelle), nicht ein Ausschnitt daraus:
+ *    Tafel auf ihrer Staffelei, geneigt, in ihrem Holz. Der Blattname kommt aus
+ *    dem Zustand (`state().entities`), nicht aus einem Literal — ch02 hat einen
+ *    anderen Boss. Kette, falls ein Kapitel die Zelle nicht hat:
+ *    `<skin>_land1` → `<skin>_a` → `<skin>_win` → das gezeichnete Zeichen
+ *    (Keen-Art-Gesetz, wie ueberall in diesem Haus).
+ *  · SIE TRAEGT KEINE ZAHL. Beide Leser der ersten Fassung sagen unabhaengig,
+ *    dass ein 6- bis 8-jaehriges Kind die Kaestchen liest und die
+ *    Bruchschreibweise nicht; einer nennt Zahl und Kaestchen ausdruecklich
+ *    redundant. Der Satz lebt im `aria-label` weiter.
+ *  · SIE BLEIBT BEI 0 STEHEN, leer (D-609). Bisher fiel der Chip im Augenblick
+ *    des Sieges aus der Reihe: die einzige Zahl, die den Sieg beweist, war genau
+ *    dann weg. »Der Sieg ist der Augenblick, in dem eine leere Leiste am meisten
+ *    sagt.«
+ *
+ * ⚠ B4 liefert spaeter das bessere Kampf-Gesicht (R212d): dann wechselt hier
+ * EIN Blattname, nicht die Gestalt.
+ */
+function GegnerLeiste({ voll, gesamt, art, skin }: {
+  voll: number; gesamt: number; art: Record<string, string>; skin: string | null;
+}): React.ReactElement | null {
   if (gesamt <= 0) return null;
-  const B = 8, H = 13, L = 3;
+  const blatt = skin === null
+    ? undefined
+    : art[`${skin}_land1`] ?? art[`${skin}_a`] ?? art[`${skin}_win`];
+  const uebrig = Math.ceil(Math.max(0, voll - 0.0001));
+  return (
+    <div
+      role="status"
+      aria-live="polite"
+      aria-label={uebrig === 0
+        ? "Die Tafel ist sauber — keine Kritzel-Schicht mehr"
+        : `Die Tafel hat noch ${uebrig} von ${gesamt} Kritzel-Schichten`}
+      style={{
+        position: "absolute", left: 14, bottom: 14,
+        display: "flex", alignItems: "center", gap: 8,
+        pointerEvents: "none",
+        // ── R5-W9 · F10 · DIE ZWEI ZAHLEN DES STAPELS, gemessen statt geraten:
+        // der Karten-Schleier traegt `zIndex: 10` (`CardShell#alignedWrap`), der
+        // Ladeschirm `40` (`.pb-building`). 12 liegt zwischen beiden, und genau
+        // das ist bestellt: SICHTBAR, waehrend die Anleitungs-Karte die Welt
+        // anhaelt (D-608), und UNSICHTBAR, solange die Blaetter noch geladen
+        // werden — waehrend des Ladens gibt es keinen Kampf zu zeigen.
+        // (Der erste Anlauf verliess sich auf die Baum-Reihenfolge und war
+        // falsch: ein z-index von 10 schlaegt jede Reihenfolge. Am Bild
+        // gesehen — die Leiste lag unter dem Schleier.)
+        zIndex: 12,
+      }}
+    >
+      <span style={MARKE}>
+        {blatt === undefined
+          ? <PaintedIcon name="slate" size={34} art={art} />
+          : <img src={blatt} alt="" aria-hidden style={{ width: "100%", height: "100%", objectFit: "contain", display: "block" }} />}
+      </span>
+      <span
+        style={{
+          display: "flex", alignItems: "center",
+          padding: "7px 10px",
+          color: KREIDE,
+          background: "rgba(18, 44, 28, 0.82)",
+          border: `1.5px solid ${HOLZ}`,
+          // vier verschiedene Radien: eine gemalte Kante ist kein abgerundetes
+          // Rechteck (dieselbe Regel, die die Sprechblase und die Karte tragen)
+          borderRadius: "11px 7px 12px 8px / 8px 12px 7px 11px",
+          boxShadow: "0 2px 7px rgba(20, 14, 6, 0.35)",
+        }}
+      >
+        <SchichtenLeiste voll={voll} gesamt={gesamt} breite={17} hoehe={29} luft={6} />
+      </span>
+    </div>
+  );
+}
+
+/** Die Farben stammen aus dem Blatt selbst, nicht aus einer Palette: gemessen an
+ *  `tafel_win.png` — Tafelgruen rgb(24,71,40), Holz rgb(203,124,27), Kreide
+ *  rgb(241,225,184). So traegt die Anzeige die Materialien des Dings, dessen
+ *  Zustand sie zeigt. */
+const KREIDE = "#f1e1b8";
+const HOLZ = "#cb7c1b";
+/** Die Marke: ein Feld, in dem das WESEN GANZ steht (`contain`), nicht ein
+ *  Ausschnitt daraus. Kein Kreis mehr — ein Kreis schnitt der Tafel die Beine
+ *  ihrer Staffelei ab, und genau die Silhouette ist das, was ein Leser auf der
+ *  Buehne wiedererkennt. */
+const MARKE: React.CSSProperties = {
+  width: 64, height: 64, flex: "0 0 auto",
+  display: "grid", placeItems: "center",
+  color: KREIDE,
+  filter: "drop-shadow(0 2px 5px rgba(20, 14, 6, 0.5))",
+};
+
+function SchichtenLeiste({ voll, gesamt, breite = 8, hoehe = 13, luft = 3 }: {
+  voll: number; gesamt: number;
+  /** R5-W9 · F10: die Kaestchen sind aus der Chip-Reihe ins BILD gezogen und
+   *  dort groesser — dieselbe Zeichnung, drei Zahlen von aussen. Die Vorgaben
+   *  sind die alten Chip-Masse, damit ein zweiter Aufrufer nicht heimlich eine
+   *  zweite Gestalt bekommt. */
+  breite?: number; hoehe?: number; luft?: number;
+}): React.ReactElement | null {
+  if (gesamt <= 0) return null;
+  const B = breite, H = hoehe, L = luft;
   const w = gesamt * B + (gesamt - 1) * L;
   return (
     <svg width={w} height={H} viewBox={`0 0 ${w} ${H}`} aria-hidden focusable="false" style={{ display: "block", flex: "0 0 auto" }}>
