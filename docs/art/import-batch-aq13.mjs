@@ -402,18 +402,18 @@ function overlayNeben(cell, cw, ch, slate, offX, offY, ref) {
 // getippt. `pieces` ist [Zellindex, Stem].
 const SHEETS = [
   {
-    file: "batch-aq13l/tafel_scribble.png",
+    file: "batch-aq13m/tafel_scribble.png",
     cols: 4, rows: 1,
     ref: "tafel_a",
     pieces: [
-      [0, "tafel_scribble1"], // die leichte Schicht — ein paar Striche und 2+2
-      [1, "tafel_scribble2"], // ABC, NO mit Durchstreichung, Kreisel
-      [2, "tafel_scribble3"], // die volle, lange nicht gewischte Tafel
+      [0, "tafel_scribble1"], // die leichte Schicht — ABC, Sonne, Strichmaennchen
+      [1, "tafel_scribble2"], // dazu 2+2=4, die Sonne oben rechts
+      [2, "tafel_scribble3"], // die volle, lange nicht gewischte Tafel: dazu der Stern
       [3, "tafel_scribble3b"], // dieselbe, um (3,−2) versetzt: das Zittern im Ausholen
     ],
   },
   {
-    file: "batch-aq13l/tafel_wipe.png",
+    file: "batch-aq13m/tafel_wipe.png",
     cols: 4, rows: 1,
     ref: "tafel_rest",
     // Zellen 0–2 (die drei Wisch-Zwischenbilder) werden NICHT importiert: sie
@@ -958,12 +958,37 @@ function nahtGesetze(png, label, xL, xR, adj) {
  *
  *  ── T3 (24.08.): DIE LISTE IST WIEDER LEER — und zwar GEMESSEN ────────────
  *  Der H6-Absatz darueber bleibt als Geschichte stehen; er beschreibt die
- *  Blaetter von `batch-aq13/`. Seit AQ13L stammen die Kreide-Stems aus einem
- *  anderen Blattpaar, das Regel 5 und Regel 6 AUS EIGENER KRAFT besteht
- *  (0,8423 % / 0,3324 % gegen 1 % · Reserve 202,203 / 192,057 gegen 180). Die
- *  Begruendung im Rumpf der Liste nennt die Zahlen; die ehrliche Grenze des
- *  H6-Absatzes (»die zwei Blaetter fallen an Regel 6 durch«) ist damit
- *  erledigt und nicht mehr gueltig.
+ *  Blaetter von `batch-aq13/`. Mit AQ13L stammten die Kreide-Stems aus einem
+ *  anderen Blattpaar, das Regel 5 und Regel 6 AUS EIGENER KRAFT bestand
+ *  (0,8423 % / 0,3324 % gegen 1 % · Reserve 202,203 / 192,057 gegen 180).
+ *
+ *  ── T4 (24.08.): DIE LISTE BLEIBT LEER — obwohl AQ13M Regel 5 NICHT MEHR AUS
+ *     EIGENER KRAFT BESTEHT. Und das ist ein Entscheid, kein Versehen (D-695).
+ *
+ *  An der importierten Lieferung gemessen, je Blatt gerechnet wie Regel 5 es
+ *  tut (haeufigster RGB ueber alle gemalten Pixel des Blattes):
+ *
+ *      tafel_scribble  21096 px gemalt  (252,252,252)  2,1710 %   Grenze 1,0000 %
+ *      tafel_wipe      18461 px gemalt  (252,252,252)  2,0855 %   Grenze 1,0000 %
+ *      Schluessel-Reserve 204,685 / 200,534 gegen 180 — Regel 6 haelt weiter.
+ *
+ *  Die Zahl ist gestiegen, weil AQ13M genau das ist, was bestellt war: WENIGE,
+ *  GROSSE Zeichen mit breitem Strich statt vieler feiner Schnoerkel. Ein
+ *  breiter Strich in einer Kreidefarbe stellt einen groesseren Anteil derselben
+ *  Farbe — nach dem Buchstaben von Regel 5 ein Farbfeld, nach der Sache gemalte
+ *  Kreide. Es ist dieselbe Klasse, die der H6-Absatz oben beschreibt, nur eine
+ *  Lieferung spaeter.
+ *
+ *  ★ WARUM TROTZDEM KEIN PIN GESETZT WIRD. Ein Pin ist eine Ausnahme von einem
+ *    TOR. Dieses Tor (`--abnahme-tafel`) laeuft auf diesem Blattpaar
+ *    strukturell nicht: es verlangt die drei Koerper-Blaetter und bricht ohne
+ *    sie mit Exit 2 ab — `batch-aq13m/` enthaelt keine. Ein Pin waere also eine
+ *    Ausnahme fuer eine Pruefung, die hier gar nicht stattfindet: eine offene
+ *    Tuer ohne Bedarf, und damit genau das, was T2 in D-681 begruendet und T3
+ *    in D-682 vollzogen hat. **Die Zahl steht deshalb hier, damit niemand sie
+ *    fuer geprueft haelt — Befund an den Architekten (D-695), kein Eigenfix.**
+ *    Wer die Overlays je in einer Lieferung MIT Koerper-Blaettern abnimmt,
+ *    findet dort ein rotes Licht ohne Defekt und braucht dann diesen Absatz.
  *
  *  Form je Eintrag:  ["<sha256 ueber die rohen RGB-Bytes der ZELLE>", "Herkunft"]
  */
@@ -973,23 +998,15 @@ const OVERLAY_MASSE_FREI = new Map([
   // Bis T3 standen hier acht Pins auf die Zellen von `batch-aq13/`. Sie waren
   // noetig, weil auf jenen Blaettern EINE Farbe 47,89–75,34 % der gemalten
   // Pixel stellte — ein Farbfeld nach dem Buchstaben von Regel 5, gemalte
-  // Kreide nach der Sache. AQ13L ist anders gemalt, und die Zahl sagt es
-  // (`--overlay-pins`, je Blatt gerechnet wie Regel 5 es tut):
+  // Kreide nach der Sache. Sie sind mit AQ13L gefallen (D-682) und kehren mit
+  // AQ13M NICHT zurueck: die Begruendung steht vollstaendig im Kopf darueber
+  // (T4-Absatz, D-695) — das Tor, von dem ein Pin befreien wuerde, laeuft auf
+  // diesem Blattpaar strukturell nicht.
   //
-  //     tafel_scribble  haeufigster RGB (255,255,255)  0,8423 %   Grenze 1,0000 %
-  //     tafel_wipe      haeufigster RGB (198,198,226)  0,3324 %   Grenze 1,0000 %
-  //
-  // Beide Blaetter bestehen Regel 5 AUS EIGENER KRAFT. Ein Pin darauf waere
-  // eine Ausnahme ohne Bedarf — eine offene Tuer, die niemand braucht und die
-  // beim naechsten Blatt gleichen Namens jemand findet (D-681, T2s Begruendung
-  // dafuer, die Zahlen NICHT einzutragen). Die Liste bleibt deshalb leer, die
-  // Mechanik bleibt stehen: sie kostet nichts und ihre Selbsttest-Faelle
-  // bewachen sie weiter.
-  //
-  // Und Regel 6 faellt gleich mit: die Schluessel-Reserve der zwei Blaetter
-  // misst 202,203 / 192,057 gegen eine Grenze von 180. Die vier alten
-  // Kreide-Stems lagen bei 150,08–175,86 (T1, D-657) — mit dem Import ist
-  // dieser Befund gegenstandslos.
+  // Regel 6 haelt an AQ13M weiter aus eigener Kraft: Schluessel-Reserve
+  // 204,685 / 200,534 gegen eine Grenze von 180. Die vier alten Kreide-Stems
+  // lagen bei 150,08–175,86 (T1, D-657) — seit T3 ist dieser Befund
+  // gegenstandslos.
   //
   // Die acht alten SHAs sind nicht verloren: sie stehen im Register (D-682).
 ]);
@@ -2639,15 +2656,22 @@ if (NUR_KOERPER && NUR_OVERLAY) {
 /** Die Quell-Pins der zwei Overlay-Blaetter, aus denen die fuenf Kreide-Stems
  *  geschnitten sind.
  *
- *  ⚠ SIE ZIEHEN MIT DEM IMPORT UM (R5 · T3). Bis T3 nannten sie
- *  `batch-aq13/…` (`105a9462…` / `6f7f55ff…`, R212-Bestand). Seit AQ13L sind
- *  die Stems aus einem ANDEREN Blattpaar geschnitten; die alten Pins stehen
- *  gelassen haetten `--nur-koerper` eine Datei bestaetigen lassen, aus der im
+ *  ⚠ SIE ZIEHEN MIT JEDEM IMPORT UM — zum ZWEITEN Mal (R5 · T3, dann T4). Bis
+ *  T3 nannten sie `batch-aq13/…` (`105a9462…` / `6f7f55ff…`, R212-Bestand), bis
+ *  T4 `batch-aq13l/…` (`dc70c45577fc98a0…` / `60f0e9aefca8a78d…`). Ein Pin, der
+ *  stehen bleibt, laesst `--nur-koerper` eine Datei bestaetigen, aus der im
  *  Spiel nichts mehr stammt — eine Zusicherung, die stillschweigend falsch
- *  geworden waere. Die alten Werte stehen im Register (D-682), nicht hier. */
+ *  geworden waere. Die gefallenen Werte stehen im Register (D-682 fuer die
+ *  R212-Bestandspins, D-694 fuer die L-Pins), nicht hier.
+ *
+ *  Die Werte unten sind an der Lieferung GEMESSEN (`shasum -a 256`), nicht vom
+ *  Lieferschein abgeschrieben, und die Lab-Kopie ist gegen die iCloud-ABLAGE
+ *  md5-geprueft (`46987c2b768a7996aeb15e3bbc51cfe9` /
+ *  `34758fa72f211ff915f2572fc1ba3e44`) — eine Lab-Kopie kann still VERALTET
+ *  sein, das ist an batch-as6p2 einmal bezahlt worden. */
 const DURCHREICH_PINS = [
-  ["batch-aq13l/tafel_scribble.png", "dc70c45577fc98a0"],
-  ["batch-aq13l/tafel_wipe.png", "60f0e9aefca8a78d"],
+  ["batch-aq13m/tafel_scribble.png", "c629cec206d68f60"],
+  ["batch-aq13m/tafel_wipe.png", "c307640d713adede"],
 ];
 if (NUR_KOERPER) {
   for (const [rel, pin] of DURCHREICH_PINS) {
