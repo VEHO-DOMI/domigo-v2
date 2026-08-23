@@ -514,6 +514,16 @@ describe("her whole body stays in the visible band (readable = seeable)", () => 
   // und dann ist der Skip darüber gegenstandslos und gehört entfernt (Bahn T1).
   // Er kann also nicht still veralten: entweder er stimmt, oder er meldet sich.
   it("R5 · H6 · der Grund für den Skip darüber gilt noch: die grüne Maske findet auf tafel_a nichts", () => {
+    // ★ DIESE ZEILE IST DER GRUND, WARUM DER SKIP NICHT STILL IST. Der
+    //   Standard-Melder von vitest druckt den NAMEN eines uebersprungenen
+    //   Falls nicht — er zaehlt ihn nur (»59 tests | 1 skipped«). Wer nur das
+    //   CI-Protokoll liest, saehe also eine Luecke ohne Begruendung. Dieser
+    //   Fall LAEUFT und sagt sie deshalb selbst, mit Datum und Route.
+    console.log(
+      "[SKIP 2026-08-23 · guardian-flight › GUARDIAN_SLATE ist aus den Blättern gerechnet] "
+      + "Lineal sucht grünen Schiefer, Tafel ist nachtblau per R212-Bestellung — "
+      + "Neu-Eichung = Bahn T1, dort fällt der Skip. (Register D-653 / D-655)",
+    );
     const ART = path.resolve(__dirname, "../../../apps/web/public/art/g1/paint/ch01");
     const buf = fs.readFileSync(path.join(ART, "tafel_a.png"));
     const w = buf.readUInt32BE(16), h = buf.readUInt32BE(20);
