@@ -402,7 +402,33 @@ describe("her whole body stays in the visible band (readable = seeable)", () => 
     }
   });
 
-  it("R5-W4b · H3 · GUARDIAN_SLATE ist aus den Blättern gerechnet, Zelle für Zelle", () => {
+  // ── ⚠ ÜBERSPRUNGEN SEIT 2026-08-23 (H6) · ROUTE: BAHN T1 ──────────────────
+  //
+  // GRUND, wörtlich: »Lineal sucht grünen Schiefer, Tafel ist nachtblau per
+  // R212-Bestellung — Neu-Eichung = Bahn T1, dort fällt der Skip«.
+  //
+  // Lang: der Sucher unten prüft die Schreibfläche über `g > r·1,10 &&
+  // g > b·1,05 && g > 30 && r < 130` — eine GRÜNE Formel. Die Lieferung AQ13B4
+  // trägt nachtblauen Schiefer, und zwar BESTELLT (R212d: der Boss trennt sich
+  // über den FARBTON vom Raum, nicht über die Helligkeit). An `tafel_a`
+  // gemessen: grüne Maske 25 681 px → 0 px, H-Median 133,3° → 239,3°.
+  //
+  // ★ WAS HIER NICHT KAPUTT IST: die Tabelle `GUARDIAN_SLATE`. Dasselbe
+  //   farbblinde Lineal auf ALTE und NEUE Blätter liefert in allen zwanzig
+  //   Zellen bitgleich denselben Kasten — die Abweichung ist der Unterschied
+  //   der Lineale, keine Bewegung der Kunst (H6-Report §4, D-655).
+  //
+  // ★ WARUM H6 DEN SUCHER NICHT EINFACH TAUSCHT: drei Kandidaten sind gebaut
+  //   und je einmal durchgemessen worden, alle drei verfehlen ihre
+  //   Ausstiegsbedingung — der farbblinde verschiebt die geeichte Schiefer-L-
+  //   Messung (9,53–9,93 → 10,65–11,20), »grün ODER blau« reißt 14 von 20
+  //   Zellen und zusätzlich `throw` auf den ALTEN Blättern, und die
+  //   Farbton-Drehung ist nicht verlustfrei. Zahlen: D-653.
+  //
+  // ★ DIESER SKIP KANN NICHT STILL VERALTEN: der Wächter direkt darunter läuft
+  //   WEITER und wird rot, sobald die grüne Maske wieder etwas findet — dann
+  //   ist der Grund weg und der Skip gehört entfernt.
+  it.skip("R5-W4b · H3 · GUARDIAN_SLATE ist aus den Blättern gerechnet, Zelle für Zelle [ÜBERSPRUNGEN seit 2026-08-23 · Lineal sucht grünen Schiefer, Tafel ist nachtblau per R212-Bestellung — Neu-Eichung = Bahn T1, dort fällt der Skip]", () => {
     // Die Kritzel-Schichten (AQ13) liegen auf der SCHIEFERTAFEL, und die wandert
     // zwischen ihren Zellen um über 30 % der Blattbreite. `anim.ts#GUARDIAN_SLATE`
     // hält, wo sie in jeder Zelle liegt — eine Tabelle mit 80 Zahlen, also genau
@@ -478,6 +504,62 @@ describe("her whole body stays in the visible band (readable = seeable)", () => 
       near((y1 - y0 + 1) / h, s.h, "h");
     }
   });
+
+  // ── DER WÄCHTER ÜBER DEM SKIP DARÜBER (R5 · H6, 2026-08-23) ────────────────
+  //
+  // Ein übersprungener Test, den niemand mehr ansieht, ist eine Lücke mit einer
+  // Ausrede davor. Dieser Fall LÄUFT und hält den Grund des Skips als Zahl fest:
+  // die grüne Maske findet auf dem heutigen `tafel_a` NICHTS. Malt jemand die
+  // Tafel wieder grün — oder wird der Sucher farbfrei —, wird dieser Fall ROT,
+  // und dann ist der Skip darüber gegenstandslos und gehört entfernt (Bahn T1).
+  // Er kann also nicht still veralten: entweder er stimmt, oder er meldet sich.
+  it("R5 · H6 · der Grund für den Skip darüber gilt noch: die grüne Maske findet auf tafel_a nichts", () => {
+    const ART = path.resolve(__dirname, "../../../apps/web/public/art/g1/paint/ch01");
+    const buf = fs.readFileSync(path.join(ART, "tafel_a.png"));
+    const w = buf.readUInt32BE(16), h = buf.readUInt32BE(20);
+    expect(buf[24]).toBe(8);
+    expect(buf[25]).toBe(6);
+    const chunks: Buffer[] = [];
+    for (let off = 8; off + 8 <= buf.length;) {
+      const len = buf.readUInt32BE(off);
+      const type = buf.toString("ascii", off + 4, off + 8);
+      if (type === "IDAT") chunks.push(buf.subarray(off + 8, off + 8 + len));
+      off += 12 + len;
+    }
+    const raw = zlib.inflateSync(Buffer.concat(chunks));
+    const px = Buffer.alloc(w * h * 4);
+    const bpp = 4, stride = w * bpp;
+    for (let y = 0; y < h; y++) {
+      const ft = raw[y * (stride + 1)]!;
+      const line = raw.subarray(y * (stride + 1) + 1, y * (stride + 1) + 1 + stride);
+      for (let i = 0; i < stride; i++) {
+        const a = i >= bpp ? px[y * stride + i - bpp]! : 0;
+        const b = y > 0 ? px[(y - 1) * stride + i]! : 0;
+        const c = i >= bpp && y > 0 ? px[(y - 1) * stride + i - bpp]! : 0;
+        let v = line[i]!;
+        if (ft === 1) v += a;
+        else if (ft === 2) v += b;
+        else if (ft === 3) v += (a + b) >> 1;
+        else if (ft === 4) {
+          const pp = a + b - c, pa = Math.abs(pp - a), pb = Math.abs(pp - b), pc = Math.abs(pp - c);
+          v += pa <= pb && pa <= pc ? a : pb <= pc ? b : c;
+        }
+        px[y * stride + i] = v & 0xff;
+      }
+    }
+    let gruen = 0;
+    for (let i = 0; i < w * h; i++) {
+      const o = i * 4;
+      const r = px[o]!, g = px[o + 1]!, b = px[o + 2]!, al = px[o + 3]!;
+      if (al > 200 && g > r * 1.10 && g > b * 1.05 && g > 30 && r < 130) gruen++;
+    }
+    expect(
+      gruen,
+      "Die grüne Schiefer-Maske findet auf tafel_a wieder Pixel (vor dem H6-Import: 25 681). "
+      + "Damit ist der Grund für den übersprungenen Test darüber weg — Skip entfernen (Bahn T1, D-653/D-655).",
+    ).toBe(0);
+  });
+
 
   it("R5-W4b · H3 · Standoff und Wisch-Reichweite sind aus IHRER Breite gerechnet, nicht getippt", () => {
     // Die Zeile „Re-derive this the day either body is re-scaled" stand seit
