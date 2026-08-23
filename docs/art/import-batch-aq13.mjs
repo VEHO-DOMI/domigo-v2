@@ -160,57 +160,92 @@ const keyDistance = (png) => {
   return euclid;
 };
 
-/** ── DIE GRUENE SCHREIBFLAECHE EINES BESTANDS-SPRITES ───────────────────────
- *  Dieselbe Regel, mit der die Lieferung ihre eigene Registrierung geprueft hat,
- *  damit unsere und ihre Zahl vergleichbar sind (g deutlich ueber r und b,
- *  nicht dunkel, nicht warm).
+/** ── DER LEITFARBTON DER SCHREIBFLAECHE, AUS DEM BLATT GELESEN ──────────────
+ *  Stufe A von zwei. Sie beantwortet EINE Frage: welchen Farbton traegt die
+ *  Schreibflaeche dieses Blattes? Nicht »ist sie gruen«, sondern »welcher
+ *  KUEHLE Farbton stellt hier die meisten Pixel«.
  *
- *  ⚠⚠ BEFUND H6 (23.08.) — DIESE REGEL IST GEGEN DEN NEUEN BESTAND BLIND, UND
- *     SIE WIRD HIER BEWUSST NICHT REPARIERT. Gemessen an `tafel_a`:
- *         Bestand VOR dem H6-Import : Maske 25 681 px, H-Median 133,3° (gruen)
- *         Bestand NACH dem H6-Import: Maske      0 px  ← findet nichts mehr
- *     Der Grund ist kein Defekt der Lieferung, sondern eine BESTELLUNG: AQ13B4
- *     traegt nachtblauen Schiefer (H 239–240°, Wareneingang Gesetz 11/12), weil
- *     R212d verlangt, dass der Boss sich ueber den FARBTON trennt und nicht
- *     ueber die Helligkeit. Eine gruen formulierte Regel kann das nicht sehen.
+ *  Warum kuehl (90°…330°) und nicht farbfrei: der Rahmen ist Holz und misst auf
+ *  JEDEM Blatt dieses Kapitels 35–36° — er faellt damit heraus, ohne dass
+ *  irgendwo »Holz« oder eine Zahl aus dem Wareneingang steht. Gemessen ueber
+ *  alle zwanzig Zellen, alter wie neuer Bestand:
+ *      alter Bestand (gruen)   Gipfel 132–138°   Rahmen 30–45° (44,8 % der Pixel)
+ *      neuer Bestand (nachtblau) Gipfel 233°     Rahmen 30–45° (53,6 % der Pixel)
+ *  Der Gipfel wird ueber ±7° zirkular geglaettet, damit ein Cluster nicht an
+ *  einer Faechergrenze zerfaellt.
+ */
+const leitFarbtonOf = (png) => {
+  const bins = new Float64Array(360);
+  for (let i = 0; i < png.data.length; i += 4) {
+    const r = png.data[i], g = png.data[i + 1], b = png.data[i + 2], a = png.data[i + 3];
+    if (a <= 200) continue;
+    const mx = Math.max(r, g, b), mn = Math.min(r, g, b), d = mx - mn;
+    if (mx <= 20 || d / mx < 0.25) continue;         // zu dunkel oder zu grau: kein Farbton
+    let h = 0;
+    if (mx === r) h = 60 * (((g - b) / d) % 6);
+    else if (mx === g) h = 60 * ((b - r) / d + 2);
+    else h = 60 * ((r - g) / d + 4);
+    if (h < 0) h += 360;
+    if (h < 90 || h >= 330) continue;                // warm (Holz, Kreide-Gold) faellt raus
+    bins[Math.round(h) % 360]++;
+  }
+  let best = -1, bestN = 0;
+  for (let i = 90; i < 330; i++) {
+    let s = 0;
+    for (let d = -7; d <= 7; d++) s += bins[(i + d + 360) % 360];
+    if (s > bestN) { bestN = s; best = i; }
+  }
+  return { peak: best, n: bestN };
+};
+
+/** ── DIE SCHREIBFLAECHE EINES BESTANDS-SPRITES ──────────────────────────────
+ *  Stufe B von zwei: die ORIGINALGEOMETRIE, nur mit dem Leitkanal aus Stufe A.
  *
- *     Betroffen sind zwei Stellen, BEIDE erst NACH diesem Import: Regel 4 der
- *     Tafel-Abnahme (Schiefer-L/Maserung) und der OVERLAY-Zweig des Importeurs,
- *     der sein Schnittfenster hieraus rechnet. Der Import dieser Bahn ist davon
- *     nicht beruehrt — das Tor lief GRUEN gegen den damaligen Bestand, vor dem
- *     ersten geschriebenen Byte, und der Koerper-Zweig braucht diese Maske gar
- *     nicht.
+ *  ★ R5-T1 (24.08.) — DAS LINEAL HAT NACHTBLAU GELERNT (D-653 geschlossen).
+ *    Bis hierher stand hier woertlich »gruen«: `g > r·1,10 && g > b·1,05 &&
+ *    g > 30 && r < 130`. AQ13B4 traegt nachtblauen Schiefer (H 239–240°, so
+ *    BESTELLT — R212d trennt den Boss ueber den Farbton, nicht die Helligkeit),
+ *    und damit fand dieselbe Regel auf allen zwanzig Zellen NULL Pixel.
  *
- *  ★ WARUM H6 NICHT SELBST UMBAUT (gemessen, nicht vermutet). Der naechstliegende
- *    Ersatz — »der Schiefer ist das groesste zusammenhaengende nicht-warme Stueck«,
- *    also farbblind statt gruen — ist gebaut und durchgemessen worden. Er findet
- *    den Ort korrekt und farbunabhaengig (`tafel_a` ALT wie NEU (123,66)-(305,280);
- *    `tafel_rest` ALT wie NEU (51,74)-(261,280)). ABER er verschiebt die MESSUNG:
- *    am selben alten Bestand und derselben Lieferung meldet die Abnahme dann
- *        Schiefer-L 10,65–11,20 statt 9,53–9,93   ·   Maserung 2,35–2,42 statt 1,79–1,81
- *    und kippt damit das Urteil von »OK« auf 20 Befunde. Maske, Schwelle (≤ 10)
- *    und Malerei sind EIN geeichtes System; wer die Maske tauscht, eicht die
- *    Schwelle neu — und ein Lineal zu tauschen, das das Urteil dreht, ist genau
- *    die Klasse, gegen die der Kopf dieser Datei geschrieben ist (»zwei Lineale«,
- *    C6/D-382). Die Neu-Eichung gehoert an eine Tafel-BESTELLUNG (R212c: die
- *    Zahlen-Tore sind die Eintrittskarte), nicht in eine Import-Bahn.
- *    **Route: Architekt** — Zahlen, Kandidat und Kosten stehen im H6-Report.
+ *    Was sich geaendert hat, ist EINE Zeile: welcher Kanal der Leitkanal ist.
+ *    Die Margen (1,10 / 1,05), der Boden (30), der r-Deckel (130) und die
+ *    Alpha-Schwelle sind unveraendert — und das ist der ganze Trick. Auf einem
+ *    GRUENEN Blatt waehlt Stufe A den gruenen Kanal, und dann IST diese Funktion
+ *    Zeichen fuer Zeichen die alte Regel. Nachgemessen an allen zwanzig alten
+ *    Blaettern gegen `anim.ts#GUARDIAN_SLATE`: schlimmste Abweichung 0,0005 bei
+ *    einer Toleranz von 0,002 — 0 von 20 ueber der Linie.
  *
- *    Was H6 stattdessen gebaut hat, ist billig und ohne Nebenwirkung: findet die
- *    Maske nichts, beschuldigt die Abnahme jetzt den BEZUG statt die Lieferung
- *    (siehe Regel 4 weiter unten) — vorher las sich derselbe Fall als
- *    »Schiefer L NaN ueber 10«, also als Befund gegen ein Blatt, das in Ordnung
- *    ist. Selbsttest-Fall + Tamper liegen bei.
+ *  ★★ WARUM NICHT DIE DREI WEGE, DIE H6 GEMESSEN HAT (D-653, alle drei rot):
+ *     · farbblind (»groesstes zusammenhaengendes nicht-warmes Stueck«) findet
+ *       den KOERPER, nicht die Schreibflaeche — die Messung wandert auf
+ *       Schiefer-L 10,65–11,20 statt 9,53–9,93 und kippt das Urteil.
+ *     · »gruen ODER blau« ist eine VEREINIGUNG: sie fuegt auf den alten
+ *       Blaettern blaue Pixel hinzu, weitet den Kasten und bricht dort.
+ *       Diese Funktion waehlt EINEN Kanal, sie vereinigt nichts.
+ *     · den Farbton auf 133° zu drehen ist nicht verlustfrei und verfehlt
+ *       sogar die alten Blaetter.
+ *
+ *  ⚠ Zwei Familien, eine Grenze: unter 180° fuehrt Gruen, ab 180° Blau. Eine
+ *    tuerkise Schreibflaeche genau auf der Grenze waere damit eine Entscheidung
+ *    per Rundung — deshalb steht die Grenze hier als Zahl und hat im Selbsttest
+ *    einen eigenen Fall auf jeder Seite.
  */
 const slateMaskOf = (png) => {
   const { width: W, height: H, data } = png;
+  const { peak } = leitFarbtonOf(png);
+  // Kein kuehler Farbton im Blatt ⇒ keine Schreibflaeche. Die Abnahme
+  // beschuldigt dann den BEZUG und nicht die Lieferung (D-654).
+  const leit = peak < 0 ? 1 : (peak < 180 ? 1 : 2);   // 1 = gruen, 2 = blau
+  const neben = leit === 1 ? 2 : 1;
   const m = new Uint8Array(W * H);
   let n = 0, x0 = W, y0 = H, x1 = -1, y1 = -1;
   for (let y = 0; y < H; y++) {
     for (let x = 0; x < W; x++) {
       const i = (y * W + x) * 4;
-      const r = data[i], g = data[i + 1], b = data[i + 2], a = data[i + 3];
-      if (a > 200 && g > r * 1.10 && g > b * 1.05 && g > 30 && r < 130) {
+      const r = data[i], a = data[i + 3];
+      if (a <= 200 || r >= 130) continue;
+      const c = data[i + leit], o = data[i + neben];
+      if (c > r * 1.10 && c > o * 1.05 && c > 30) {
         m[y * W + x] = 1;
         n++;
         if (x < x0) x0 = x;
@@ -220,17 +255,45 @@ const slateMaskOf = (png) => {
       }
     }
   }
-  return { m, W, H, box: { x0, y0, x1, y1 }, n };
+  // ── DIE GEFUELLTE FLAECHE ──────────────────────────────────────────────
+  // Die Farbmaske hat LOECHER, und sie sind gemalt: das Kreidegesicht ist weiss,
+  // also weder gruen noch blau, und faellt aus jeder Farbregel heraus. Fuer die
+  // HELLIGKEIT (Regel 4) ist das richtig — dort soll der Schiefer gemessen
+  // werden und nicht das Gesicht. Fuer die REGISTRIERUNG des Overlay-Zweigs ist
+  // es falsch: eine Kreidelinie, die ueber dem Gesicht liegt, liegt auf der
+  // Schreibflaeche und nicht daneben.
+  //
+  // Gefuellt wird zwischen den EIGENEN Raendern, waagrecht UND senkrecht, und
+  // nur wo beides zutrifft. Die Schnittmenge ist noetig, weil die Tafel in den
+  // meisten Zellen gekippt ist: eine reine Zeilenfuellung nimmt die Rahmenecken
+  // mit. Gemessen an `tafel_a`: roh 17 188 px → gefuellt 26 659 (+55 %) auf dem
+  // nachtblauen Bestand, roh 25 681 → 28 504 (+11 %) auf dem alten gruenen —
+  // der Unterschied IST das gemalte Gesicht, das AQ13B4 gebracht hat.
+  const zeile = new Uint8Array(W * H), spalte = new Uint8Array(W * H);
+  for (let y = 0; y < H; y++) {
+    let a = -1, b = -1;
+    for (let x = 0; x < W; x++) if (m[y * W + x]) { if (a < 0) a = x; b = x; }
+    if (a >= 0) for (let x = a; x <= b; x++) zeile[y * W + x] = 1;
+  }
+  for (let x = 0; x < W; x++) {
+    let a = -1, b = -1;
+    for (let y = 0; y < H; y++) if (m[y * W + x]) { if (a < 0) a = y; b = y; }
+    if (a >= 0) for (let y = a; y <= b; y++) spalte[y * W + x] = 1;
+  }
+  const voll = new Uint8Array(W * H);
+  let nVoll = 0;
+  for (let p = 0; p < W * H; p++) if (zeile[p] && spalte[p]) { voll[p] = 1; nVoll++; }
+  return { m, voll, W, H, box: { x0, y0, x1, y1 }, n, nVoll, peak, leit };
 };
 
 /** Liegt (x,y) höchstens `tol` px neben der Maske? (Der Weichzeichner-Saum
  *  eines gemalten Strichs kappt sonst eine völlig gesunde Lieferung.) */
-const nearMask = (mask, x, y, tol) => {
+const nearMask = (mask, x, y, tol, feld = "m") => {
   for (let dy = -tol; dy <= tol; dy++) {
     for (let dx = -tol; dx <= tol; dx++) {
       const nx = x + dx, ny = y + dy;
       if (nx < 0 || ny < 0 || nx >= mask.W || ny >= mask.H) continue;
-      if (mask.m[ny * mask.W + nx] === 1) return true;
+      if (mask[feld][ny * mask.W + nx] === 1) return true;
     }
   }
   return false;
@@ -331,7 +394,30 @@ const SHEETS = [
  */
 
 const FACE_L = 240, FACE_S = 0.10, REF_L = 200, FACE_QUOTA = 0.40, FACE_MIN = 40;
-const SLATE_L_MAX = 10, MIN_TEXTURE = 1.5, MASS_MAX = 0.01, KEY_MIN = 180;
+/** ── SLATE_L_MAX · NEU GEEICHT AN DER GEMESSENEN LUECKE (R5-T1, D-6xx) ──────
+ *  Die Schwelle stand auf **10** und war an der GRUENEN Palette geeicht — mit
+ *  0,7 % Luft: gesund mass 9,45–9,93, die Schwelle lag bei 10. Ein Blatt, das
+ *  seine Farbe wechselt, kippt eine so knappe Schwelle per Bauart, und genau
+ *  das ist am 23.08. passiert (D-653).
+ *
+ *  Die Eichleiter, in EINEM Lauf ueber alle zwanzig Zellen gemessen:
+ *      gesund · nachtblauer Bestand (AQ13B4, heute)      10,50 … 10,88
+ *      dieselben Blaetter, +2 Helligkeit                 12,50 … 12,88
+ *      dieselben Blaetter, +8 Helligkeit                 18,50 … 18,88
+ *      dieselben Blaetter, +12 Helligkeit                22,50 … 22,88   ← beisst
+ *      dieselben Blaetter, +40 Helligkeit                50,50 … 50,88
+ *      krank · AQ13b2, echt zurueckgewiesen, volle Maske 47    … 49
+ *      krank · Selbsttest »helle Streifen in der Maske«        61,35
+ *  Zwischen 10,9 und 47 liegt nichts. Die Schwelle liegt jetzt in dieser
+ *  Luecke statt auf der Kante des gesunden Bandes: **22** — doppelte Luft nach
+ *  unten, mehr als doppelte nach oben, und beide historisch KRANKEN Werte
+ *  bleiben rot. Ein nachtblauer Schiefer, den jemand um 12 von 255 aufhellt,
+ *  wird rot; das ist die Groessenordnung, in der sich die Flaeche verdoppelt.
+ *  (Die alte Zahl steht hier bewusst mit: sie war nicht falsch, sie war an
+ *  einer anderen Palette geeicht. Wer die Palette wieder wechselt, faehrt
+ *  diese Leiter erneut — das Werkzeug dafuer ist der Selbsttest weiter unten.)
+ */
+const SLATE_L_MAX = 22, MIN_TEXTURE = 1.5, MASS_MAX = 0.01, KEY_MIN = 180;
 /** Rauhheit: wie weit ein Pixel von seinen vier Nachbarn abweicht, in Einheiten
  *  der Streuung der Flaeche selbst. Gemessen mit Kontrollen im selben Lauf:
  *  weisses Rauschen 0,889 · glatte Malerei 0,003 · die zwanzig BESTANDS-Tafeln
@@ -986,7 +1072,7 @@ function abnahmeTafel(entries, bestandOf, pins = OVERLAY_MASSE_FREI) {
       //   (Dieselbe Klasse wie D-625: die Ausgabe behauptet etwas anderes als
       //   die Messung.) Der Befund gehoert dem BEZUG, und er sagt das.
       if (sl.box.x1 < sl.box.x0 || sl.box.y1 < sl.box.y0) {
-        fail.push(`${nm}: im BESTANDS-Sprite ist keine Schreibflaeche messbar (die gruene Maske findet ${sl.n ?? 0} px) — nicht die Lieferung ist hier auffaellig, sondern das Lineal: pruefe \`slateMaskOf\` gegen die Farbe des heutigen Bestandes`);
+        fail.push(`${nm}: im BESTANDS-Sprite ist keine Schreibflaeche messbar (das Lineal findet bei Leitfarbton ${sl.peak < 0 ? "—" : sl.peak + "°"} ${sl.n ?? 0} px) — nicht die Lieferung ist hier auffaellig, sondern das Lineal: pruefe \`slateMaskOf\` gegen die Farbe des heutigen Bestandes`);
         continue;
       }
       const sx = bx + offX + dx, sy = by + offY + dy;
@@ -1266,14 +1352,16 @@ function selftest() {
   const runTafel = (png, names, cols, cw, ch) =>
     abnahmeTafel([{ name: "probe", png, names, cols, cw, ch }], bestandOf);
 
-  // ── Fall 0 · DAS LINEAL SELBST (R5 · H6) ──────────────────────────────────
+  // ── Fall 0 · DAS LINEAL SELBST (R5 · H6, neu gefasst in R5 · T1) ──────────
   //
   // `slateMaskOf` sagt, WO auf dem Blatt der Schiefer gemessen wird. Bis zum
   // 23.08. sagte sie es ueber die FARBE gruen — und wurde an dem Tag blind, als
   // die bestellte Lieferung nachtblauen Schiefer brachte (R212d: der Boss
-  // trennt ueber den Farbton). Diese drei Faelle halten die neue Regel fest:
-  // sie darf die Farbe NICHT kennen, sie muss den Ort finden, und wenn sie
-  // nichts findet, muss sie den BEZUG beschuldigen und nicht die Lieferung.
+  // trennt ueber den Farbton). H6 hat diese Grenze hier als Zahl festgehalten
+  // und geroutet; T1 hat sie aufgehoben. Die Faelle halten jetzt die NEUE
+  // Regel fest: sie darf keine Farbe kennen, sie muss BEIDE Familien gleich
+  // gut finden, und wenn sie nichts findet, muss sie den BEZUG beschuldigen
+  // und nicht die Lieferung.
   const mkRefFarbe = (schiefer) => {
     let hell = 0;
     return mkPng(REFW, REFH, (x, y) => {
@@ -1283,21 +1371,59 @@ function selftest() {
       return schiefer;
     });
   };
-  const nVon = (png) => slateMaskOf(png).n;
-  const nGruen = nVon(mkRefFarbe([40, 110, 60]));   // die alte Schulwandtafel
-  const nBlau = nVon(mkRefFarbe([6, 1, 41]));       // AQ13B4-Schiefer, H ≈ 239°
-  // ★ DIESER FALL PINNT EINE BEKANNTE GRENZE, ER FEIERT SIE NICHT. Gruen wird
-  //   gefunden, nachtblau NICHT — das ist der H6-Befund oben, als Zahl
-  //   festgehalten. Wer die Maske eines Tages farbblind macht (und die
-  //   Schiefer-L-Schwelle mit ihr neu eicht), sieht hier zuerst, dass er es
-  //   getan hat: dieser Fall wird dann rot und will neu geschrieben werden.
-  add(`Lineal: die Maske ist FARBGEBUNDEN — gruen ${nGruen} px gefunden, nachtblau ${nBlau} px (H6-Befund, Route Architekt)`,
-    nGruen > 1000 && nBlau === 0 ? null : "MASKE HAT SICH GEAENDERT",
-    () => (nGruen > 1000 && nBlau === 0
+  const mVon = (png) => slateMaskOf(png);
+  const mGruen = mVon(mkRefFarbe([40, 110, 60]));   // die alte Schulwandtafel, H ≈ 140°
+  const mBlau = mVon(mkRefFarbe([6, 1, 41]));       // AQ13B4-Schiefer,        H ≈ 248°
+  // ★ ZWEI FAMILIEN, EIN LINEAL — und zwar auf DIESELBE Flaeche. Der Kasten
+  //   muss bitgleich sein: die zwei Attrappen unterscheiden sich nur in der
+  //   Farbe ihres Schiefers, nicht in seiner Lage. Wer den Sucher wieder auf
+  //   eine Farbe verdrahtet, verliert genau hier eine der beiden Zahlen.
+  const gleicherKasten = (a, b) =>
+    a.box.x0 === b.box.x0 && a.box.y0 === b.box.y0 && a.box.x1 === b.box.x1 && a.box.y1 === b.box.y1;
+  const beideGefunden = mGruen.n > 1000 && mBlau.n > 1000 && gleicherKasten(mGruen, mBlau);
+  add(`Lineal: BEIDE Familien gefunden — gruen ${mGruen.n} px bei ${mGruen.peak}°, nachtblau ${mBlau.n} px bei ${mBlau.peak}°, gleicher Kasten`,
+    beideGefunden ? null : "LINEAL IST WIEDER FARBGEBUNDEN",
+    () => (beideGefunden
       ? { lines: [], fail: [] }
-      : { lines: [], fail: [`MASKE HAT SICH GEAENDERT: gruen ${nGruen} px, blau ${nBlau} px — der H6-Befund im Kopf von slateMaskOf ist ueberholt, bitte dort nachziehen`] }));
+      : { lines: [], fail: [`LINEAL IST WIEDER FARBGEBUNDEN: gruen ${mGruen.n} px (${mGruen.peak}°), blau ${mBlau.n} px (${mBlau.peak}°), Kasten gleich: ${gleicherKasten(mGruen, mBlau)}`] }));
+  // TAMPER auf genau der Zeile, die den Kanal waehlt: fest auf BLAU verdrahtet.
+  // Das ist der teuerste denkbare Fehler dieser Bahn — er sieht heute richtig
+  // aus und wird an der naechsten Bestellung blind, genau wie am 23.08.
+  const blauFest = (png) => {
+    const { width: W2, height: H2, data } = png;
+    let n = 0;
+    for (let y = 0; y < H2; y++) for (let x = 0; x < W2; x++) {
+      const i = (y * W2 + x) * 4;
+      const r = data[i], g = data[i + 1], b = data[i + 2], a = data[i + 3];
+      if (a > 200 && r < 130 && b > r * 1.10 && b > g * 1.05 && b > 30) n++;
+    }
+    return n;
+  };
+  const festAufGruenerTafel = blauFest(mkRefFarbe([40, 110, 60]));
+  add(`Lineal · TAMPER: fest auf BLAU verdrahtet findet auf der gruenen Tafel ${festAufGruenerTafel} px`,
+    festAufGruenerTafel === 0 ? "FEST VERDRAHTET WAERE BLIND" : null,
+    () => (festAufGruenerTafel === 0
+      ? { lines: [], fail: ["FEST VERDRAHTET WAERE BLIND: eine auf Blau festgelegte Regel findet auf einem gruenen Blatt 0 px — das ist der Fehler, gegen den die Stufe A gebaut ist"] }
+      : { lines: [], fail: [] }));
+  // Die GRENZE zwischen den zwei Familien liegt bei 180°, und sie steht als
+  // Zahl im Kopf von `slateMaskOf`. Diese zwei Faelle fahren sie beidseitig an,
+  // damit sie nicht eines Tages still verrutscht.
+  const peakVon = (h) => {
+    // ein Schiefer im gewuenschten Farbton, Helligkeit und Saettigung fest
+    const rad = (h * Math.PI) / 180;
+    const c = 40, r = 6;
+    const g = h < 180 ? c : Math.round(r + (c - r) * Math.max(0, Math.cos(rad - Math.PI * 2 / 3)));
+    const b = h < 180 ? Math.round(r + (c - r) * Math.max(0, Math.cos(rad - Math.PI * 4 / 3))) : c;
+    return slateMaskOf(mkRefFarbe([r, g, b]));
+  };
+  const tuerkisGruen = peakVon(160), tuerkisBlau = peakVon(200);
+  add(`Lineal: 160° fuehrt GRUEN (Kanal ${tuerkisGruen.leit}), 200° fuehrt BLAU (Kanal ${tuerkisBlau.leit}) — die Grenze steht bei 180°`,
+    tuerkisGruen.leit === 1 && tuerkisBlau.leit === 2 ? null : "GRENZE VERRUTSCHT",
+    () => (tuerkisGruen.leit === 1 && tuerkisBlau.leit === 2
+      ? { lines: [], fail: [] }
+      : { lines: [], fail: [`GRENZE VERRUTSCHT: 160° waehlt Kanal ${tuerkisGruen.leit}, 200° waehlt Kanal ${tuerkisBlau.leit}`] }));
   // TAMPER: ein Bezug ganz OHNE Schreibflaeche. Er muss den Bezug benennen —
-  // eine Meldung `Schiefer L NaN ueber 10` waere ein Befund gegen ein Blatt,
+  // eine Meldung `Schiefer L NaN ueber 22` waere ein Befund gegen ein Blatt,
   // das nichts falsch gemacht hat.
   add("Lineal · TAMPER: Bezug ohne Schreibflaeche beschuldigt den BEZUG, nicht die Lieferung",
     "keine Schreibflaeche messbar",
@@ -1359,6 +1485,19 @@ function selftest() {
   // einer Eigenschaft: ob die Streifen da sind.
   add("Schiefer: helle Streifen in der Maske (gefiltert waeren es ~9)", "Schiefer L", () => runTafel(mkCell(W, H, { face: 450, streifen: 0.16 }), ["a"], 1, W, H));
   add("Schiefer: dieselbe Flaeche ohne die Streifen", null, () => runTafel(mkCell(W, H, { face: 450, streifen: 0 }), ["a"], 1, W, H));
+
+  // ── Fall 4b · DIE NEU GEEICHTE SCHWELLE, BEIDSEITIG ANGEFAHREN (R5 · T1) ──
+  //
+  // `SLATE_L_MAX` stand auf 10 und lag damit 0,7 % ueber dem gesunden Band der
+  // GRUENEN Palette — eine Schwelle auf der Bandkante kippt, sobald die Palette
+  // wechselt, und genau das ist am 23.08. passiert. Sie liegt jetzt bei 22, in
+  // der Mitte der gemessenen Luecke (gesund 10,5–10,9 · krank 47–61). Diese
+  // zwei Faelle fahren sie beidseitig an: derselbe Schiefer, einmal so hell wie
+  // ausgeliefert und einmal um 14 Punkte aufgehellt.
+  add(`Schiefer: nachtblau wie ausgeliefert (Schwelle ${SLATE_L_MAX})`, null,
+    () => runTafel(mkCell(W, H, { face: 450, slateBase: 9, slateAmp: 8 }), ["a"], 1, W, H));
+  add(`Schiefer: derselbe Schiefer um 14 Punkte aufgehellt (Schwelle ${SLATE_L_MAX})`, "Schiefer L",
+    () => runTafel(mkCell(W, H, { face: 450, slateBase: 23, slateAmp: 8 }), ["a"], 1, W, H));
 
   // ── Fall 5d · DIE OVERLAY-AUSNAHME, UND DASS SIE AUF BYTES SITZT ───────────
   // Ein Strich-Overlay besteht fast nur aus Kreide: 20 % der gemalten Pixel auf
@@ -1913,13 +2052,16 @@ for (const sheet of (NUR_KOERPER ? KOERPER_SHEETS : [...SHEETS, ...KOERPER_SHEET
       continue;
     }
 
-    // 2 · …und wie viel davon liegt neben der grünen MASKE? Zahl, kein Vertrauen.
+    // 2 · …und wie viel davon liegt neben der SCHREIBFLÄCHE? Zahl, kein Vertrauen.
+    //     Gemessen wird gegen die GEFÜLLTE Fläche: das Kreidegesicht schneidet ein
+    //     Loch in jede Farbmaske, und eine Kreidelinie über dem Gesicht liegt auf
+    //     der Tafel, nicht daneben (R5-T1).
     let offMask = 0, firstOff = null;
     for (let y = 0; y < chh; y++) {
       for (let x = 0; x < cw; x++) {
         if (cell.data[(y * cw + x) * 4 + 3] <= 8) continue;
         const rx = x - offX, ry = y - offY;
-        if (rx < 0 || ry < 0 || rx >= slate.W || ry >= slate.H || !nearMask(slate, rx, ry, 3)) {
+        if (rx < 0 || ry < 0 || rx >= slate.W || ry >= slate.H || !nearMask(slate, rx, ry, 3, "voll")) {
           offMask++;
           if (firstOff === null) firstOff = `${x},${y}`;
         }
@@ -1928,8 +2070,13 @@ for (const sheet of (NUR_KOERPER ? KOERPER_SHEETS : [...SHEETS, ...KOERPER_SHEET
     const painted = (() => { let n = 0; for (let i = 3; i < cell.data.length; i += 4) if (cell.data[i] > 8) n++; return n; })();
     if (offMask > 40) {
       failures.push(
-        `${stem}: ${offMask} gemalte Pixel liegen mehr als 3 px neben der grünen Fläche (zuerst bei ${firstOff}) — `
-        + `das Blatt ist gegen ein anderes Sprite registriert als ${sheet.ref}`,
+        `${stem}: ${offMask} von ${painted} gemalten Pixeln (${(100 * offMask / painted).toFixed(2)} %) liegen mehr als 3 px `
+        + `neben der Schreibfläche von ${sheet.ref} (zuerst bei ${firstOff}) — `
+        + (offMask > painted * 0.05
+          ? `das Blatt ist gegen ein anderes Sprite registriert als ${sheet.ref}`
+          : `kein Registrierungsfehler in dieser Größenordnung, sondern Malerei, die über den Rand hinausragt: `
+            + `entweder trägt das Blatt einen losen Strich, oder die Schreibfläche des Bezugs ist kleiner geworden. `
+            + `Beides ist ein Befund am BLATT-PAAR und keiner am Importeur`),
       );
       continue;
     }
