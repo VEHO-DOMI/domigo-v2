@@ -18,7 +18,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { beforeEach, describe, expect, it } from "vitest";
-import { AUDIO_DEFAULTS, AUDIO_SETTINGS_KEY, FEEL_SETTINGS_KEY, readAudioSettings, setFeelSound, writeAudioSettings } from "./settings.ts";
+import { AUDIO_DEFAULTS, AUDIO_SETTINGS_KEY, defaultsFor, FEEL_SETTINGS_KEY, readAudioSettings, setFeelSound, writeAudioSettings } from "./settings.ts";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const FEEL_SRC = path.resolve(HERE, "../../../game-feel/src/index.tsx");
@@ -69,7 +69,12 @@ describe("der Dach-Schalter schreibt vollständig", () => {
     expect(JSON.parse(store.get(FEEL_SETTINGS_KEY) as string)).toMatchObject({ sound: true });
   });
 
-  it("die Malbuch-Vorgabe bleibt R124: an, mit Musik und Effekten", () => {
+  it("die Malbuch-Vorgabe bleibt R124: an, mit Musik und Effekten — und der DEV-Lauf startet stumm (R214)", () => {
+    expect(defaultsFor("production")).toEqual({ muted: false, music: true, sfx: true });
+    expect(defaultsFor("test")).toEqual({ muted: false, music: true, sfx: true });
+    expect(defaultsFor(undefined)).toEqual({ muted: false, music: true, sfx: true });
+    expect(defaultsFor("development")).toEqual({ muted: true, music: true, sfx: true });
+    expect(AUDIO_DEFAULTS).toEqual(defaultsFor(process.env.NODE_ENV));
     expect(AUDIO_DEFAULTS).toEqual({ muted: false, music: true, sfx: true });
     expect(readAudioSettings()).toEqual(AUDIO_DEFAULTS);
     writeAudioSettings({ muted: true, music: false, sfx: true });
