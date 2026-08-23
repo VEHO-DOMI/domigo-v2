@@ -518,34 +518,60 @@ export const GUARDIAN_LANDED_CELLS: ReadonlySet<string> = new Set(["rest", "win"
  * Luft — was H2s prozedurale Kleckse verziehen haben, weil sie keine Form
  * hatten, und was gemalte Buchstaben sofort verraten.
  *
- * GEMESSEN, nicht getastet: die grüne Fläche jeder Zelle ist mit derselben
+ * GEMESSEN, nicht getastet: die Schreibfläche jeder Zelle ist mit derselben
  * Regel ausgezählt worden, mit der `docs/art/import-batch-aq13.mjs` das
- * Schnittfenster bestimmt (`a > 200 && g > r·1,10 && g > b·1,05 && g > 30 &&
- * r < 130`), und `guardian-flight.test.ts` rechnet die ganze Tabelle bei jedem
- * Lauf aus den PNGs nach (mit einem kleinen eigenen Decoder, damit dieses Paket
- * dafür keine neue Abhängigkeit bekommt). Wer die Blätter neu malt, sieht dort
- * rot, statt es am Schirm zu suchen.
+ * Schnittfenster bestimmt, und `guardian-flight.test.ts` rechnet die ganze
+ * Tabelle bei jedem Lauf aus den PNGs nach (mit einem kleinen eigenen Decoder,
+ * damit dieses Paket dafür keine neue Abhängigkeit bekommt). Wer die Blätter neu
+ * malt, sieht dort rot, statt es am Schirm zu suchen.
+ *
+ * ★★ R5-T1 (24.08.) — GENAU DAS IST EINGETRETEN, UND DIE TABELLE IST NEU
+ *    ABGELEITET. AQ13B4 hat alle zwanzig Körper neu gemalt; die Schreibfläche
+ *    ist seither nachtblau statt grün (so BESTELLT, R212d). Die alte Zeile
+ *    hier — »`a > 200 && g > r·1,10 && g > b·1,05 && g > 30 && r < 130`« —
+ *    fand auf den neuen Blättern NULL Pixel, und der Wächter stand einen Tag
+ *    lang als deklarierter Skip (D-653/D-655). Er läuft wieder scharf.
+ *
+ *    ZWEI Dinge haben sich an der Ableitung geändert, beide gemessen:
+ *    1 · Der Kanal wird AUS DEM BLATT gelesen statt getippt: der stärkste
+ *        KÜHLE Farbton (90°…330°, damit der Holzrahmen bei 35–36° herausfällt)
+ *        entscheidet, ob Grün oder Blau führt. Auf einem grünen Blatt ist das
+ *        Zeichen für Zeichen die alte Regel — an allen zwanzig ALTEN Blättern
+ *        gegen die ALTE Tabelle nachgemessen: schlimmste Abweichung 0,0005 bei
+ *        einer Toleranz von 0,002.
+ *    2 · Inseln unter 12 Maskenpixeln zählen nicht mehr mit. Die alte Tabelle
+ *        hatte sie mitgezählt, und in zwei Zellen war das sichtbar falsch:
+ *        `bank_r0` bekam sein linkes Ende von DREI fast schwarzen Pixeln bei
+ *        (21…23, 301) — rgba 27,31,0 —, 51 px von der Fläche entfernt; die
+ *        Kritzel-Schicht lag dort 6,8 Welt-px zu breit, also auf dem Rahmen.
+ *        `spiral3` ebenso, 5,2 px zu hoch. Die 12 liegt in der Mitte eines
+ *        gemessenen Plateaus (bei 8, 12 und 16 Pixeln kommt in allen zwanzig
+ *        Zellen derselbe Kasten heraus — alter wie neuer Bestand).
+ *
+ *    Bewegung gegen die alte Tabelle, in Welt-Pixeln bei 52 px Anzeigehöhe:
+ *    achtzehn Zellen unter 1,9 px, `bank_r0` 6,8 px und `spiral3` 5,2 px —
+ *    und diese zwei sind die REPARATUR, nicht der Preis.
  */
 export const GUARDIAN_SLATE: Readonly<Record<string, { cx: number; cy: number; w: number; h: number }>> = {
-  a: { cx: 0.651, cy: 0.438, w: 0.547, h: 0.534 },
-  b: { cx: 0.525, cy: 0.440, w: 0.629, h: 0.539 },
-  c: { cx: 0.613, cy: 0.439, w: 0.606, h: 0.561 },
-  d: { cx: 0.572, cy: 0.451, w: 0.675, h: 0.555 },
-  roll: { cx: 0.580, cy: 0.413, w: 0.664, h: 0.618 },
-  bank_l1: { cx: 0.463, cy: 0.425, w: 0.684, h: 0.616 },
-  bank_r0: { cx: 0.470, cy: 0.440, w: 0.822, h: 0.652 },
-  bank_r1: { cx: 0.419, cy: 0.450, w: 0.647, h: 0.702 },
-  spiral0: { cx: 0.544, cy: 0.351, w: 0.680, h: 0.514 },
-  spiral1: { cx: 0.350, cy: 0.561, w: 0.531, h: 0.615 },
-  spiral2: { cx: 0.456, cy: 0.583, w: 0.638, h: 0.634 },
-  spiral3: { cx: 0.548, cy: 0.497, w: 0.672, h: 0.720 },
-  windup0: { cx: 0.564, cy: 0.430, w: 0.614, h: 0.624 },
-  windup1: { cx: 0.534, cy: 0.472, w: 0.556, h: 0.507 },
-  windup: { cx: 0.602, cy: 0.503, w: 0.622, h: 0.498 },
-  throw: { cx: 0.589, cy: 0.450, w: 0.668, h: 0.565 },
-  land0: { cx: 0.612, cy: 0.471, w: 0.636, h: 0.642 },
-  land1: { cx: 0.521, cy: 0.477, w: 0.644, h: 0.639 },
-  rest: { cx: 0.516, cy: 0.466, w: 0.691, h: 0.543 },
+  a: { cx: 0.648, cy: 0.441, w: 0.541, h: 0.529 },
+  b: { cx: 0.523, cy: 0.440, w: 0.625, h: 0.539 },
+  c: { cx: 0.610, cy: 0.443, w: 0.600, h: 0.554 },
+  d: { cx: 0.575, cy: 0.452, w: 0.668, h: 0.553 },
+  roll: { cx: 0.589, cy: 0.413, w: 0.645, h: 0.618 },
+  bank_l1: { cx: 0.450, cy: 0.425, w: 0.658, h: 0.616 },
+  bank_r0: { cx: 0.542, cy: 0.435, w: 0.677, h: 0.642 },
+  bank_r1: { cx: 0.419, cy: 0.453, w: 0.647, h: 0.697 },
+  spiral0: { cx: 0.542, cy: 0.351, w: 0.657, h: 0.508 },
+  spiral1: { cx: 0.349, cy: 0.561, w: 0.529, h: 0.615 },
+  spiral2: { cx: 0.461, cy: 0.586, w: 0.630, h: 0.628 },
+  spiral3: { cx: 0.556, cy: 0.456, w: 0.656, h: 0.620 },
+  windup0: { cx: 0.564, cy: 0.434, w: 0.609, h: 0.605 },
+  windup1: { cx: 0.536, cy: 0.467, w: 0.553, h: 0.498 },
+  windup: { cx: 0.597, cy: 0.505, w: 0.613, h: 0.491 },
+  throw: { cx: 0.580, cy: 0.448, w: 0.644, h: 0.559 },
+  land0: { cx: 0.604, cy: 0.471, w: 0.602, h: 0.625 },
+  land1: { cx: 0.525, cy: 0.477, w: 0.638, h: 0.639 },
+  rest: { cx: 0.516, cy: 0.472, w: 0.691, h: 0.530 },
   win: { cx: 0.516, cy: 0.470, w: 0.697, h: 0.525 },
 };
 

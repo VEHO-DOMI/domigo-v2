@@ -545,6 +545,72 @@ const SCRIBBLE_ALPHA = 0.72;
 /** Die Schicht, die als Nächstes drankommt, liegt heller — das ist der ganze
  *  Hinweis, den das Kind braucht, worauf sein Wischen zielt. */
 const SCRIBBLE_TOP_ALPHA = 0.95;
+
+/* ── R5-T1 · DER AUGEN-BODEN: DAS GESICHT KÄMPFT SICHTBAR ────────────────────
+ *
+ * BEFUND, den zwei Bahnen unabhängig gemessen haben: der Boss liest in
+ * Spielgröße nicht als Gegner, weil man sein Gesicht nicht sieht. Es IST gemalt
+ * — AQ13B4 liefert eine Gesichtsquote von 0,58–0,92 je Zelle, und in
+ * Handwerksgröße erkennen blinde Leser 2:0 zwei Augen, zwei Brauen, einen Mund
+ * (H6 §6 / D-662). Was fehlt, ist die INSZENIERUNG: die Kritzel-Schichten
+ * liegen mit 0,72 bzw. 0,95 Deckung darüber. F10s Panel hat denselben Grund von
+ * der anderen Seite getroffen (D-644: ein Gesichts-Ausschnitt als Marke wurde
+ * 0:2 abgelehnt, weil das Kind dieses Gesicht auf der Bühne nie gesehen hat).
+ *
+ * KOKIS ENTSCHEID (23.08., wörtlich bindend): das Gesicht WÄCHST mit dem
+ * Wischen — Schicht für Schicht freier, im Sieg ganz frei —, aber **Augen und
+ * Brauen sind ab dem Betreten der Arena IMMER lesbar**: die Kritzel liegen UM
+ * die Augenpartie, nie darüber. R193: der Blick ist das Gegner-Signal.
+ *
+ * DIE ZAHLEN SIND GEMESSEN, NICHT GESETZT. Über alle zwanzig Kampf-Zellen ist
+ * die Kreide (L > 240, S < 0,10) innerhalb der Schreibfläche ausgezählt und auf
+ * die Fläche normiert worden. Das Spaltenprofil ist deutlich ZWEIGIPFLIG — die
+ * zwei Augen — mit Gipfeln bei 0,35–0,45 und 0,60–0,70 und Rändern bei 0,25 und
+ * 0,80; das Zeilenprofil trägt 95 % seiner Kreide zwischen 0,20 und 0,80, mit
+ * dem Augen-Gipfel bei 0,40–0,55 und einem zweiten (dem Mund) bei 0,65–0,75.
+ * Der Boden deckt deshalb die Spalten 0,24–0,80 und die Zeilen 0,28–0,62.
+ *
+ * WARUM EINE ELLIPSE UND KEIN RECHTECK: ein Rechteck hat Ecken, und Ecken lesen
+ * sich als Aufkleber — dieselbe Klasse, an der F10s erste Marke gescheitert ist.
+ * Eine Ellipse liest sich als das, was sie erzählt: hier ist gewischt worden.
+ */
+/** Mitte des Augen-Bodens, als Anteil der Schreibfläche (0,0 = links oben). */
+const FACE_FLOOR_CX = 0.52, FACE_FLOOR_CY = 0.45;
+/** Halbachsen des Bodens. Sie decken Spalten 0,00–1,00 und Zeilen 0,07–0,83 der
+ *  Schreibfläche — also beide Augen-Gipfel (Spalten 0,35–0,45 und 0,60–0,70),
+ *  den Zeilen-Gipfel der Augen (0,40–0,55) und den zweiten, tieferen Gipfel, an
+ *  dem in den Wirbel-Posen `spiral1`/`spiral2` die Kreide sitzt (0,60–0,65).
+ *
+ *  ★ DIE ZAHL IST AM SCHIRM ENTSCHIEDEN UND BLIND GEPRÜFT, nicht am Profil.
+ *    Fünf Böden sind im laufenden Kampf fotografiert worden, alle am Halt
+ *    »anfang« (3/3 Schichten), dazu ein Kontrollbild ganz ohne Boden:
+ *      ohne Boden    die zwei Augen liegen unter der Kritzelei — der Befund aus
+ *                    H6 §6 und F10 §3, an diesem Stand reproduziert
+ *      0,28 × 0,17   beide Augen sichtbar, aber klein im dunklen Feld
+ *      0,36 × 0,24   Augen mit Pupille und Mund, Kritzelei als Ring darum —
+ *                    ★ BLIND GEPRÜFT UND DURCHGEFALLEN: zwei frische Leser
+ *                    sagen in SPIELGRÖSSE unabhängig »kein Gesicht« (20 % und
+ *                    10 % Sicherheit), Blickrichtung 0:2 nicht bestimmbar
+ *      0,52 × 0,38   die Kritzelei steht am unteren Rand, zwei Augen, eine
+ *                    Braue und ein Mund lesen sich in Spielgröße — GEWÄHLT
+ *      0,62 × 0,46   am deutlichsten von allen, aber die Tafel liest bei 3/3
+ *                    schon fast sauber: sie verliert ihren eigenen Satz »sie
+ *                    ist über und über vollgekritzelt«, und das Wischen hat
+ *                    danach sichtbar nichts mehr wegzunehmen
+ *
+ *  ⚠ WAS DIESER BODEN NICHT LEISTEN KANN, und das ist gemessen: die Kreide der
+ *    Blätter `tafel_scribble1/2/3` sitzt selbst als DICHTER MITTELBLOCK (Zeilen
+ *    0,20–0,80 tragen 95 % von ihr). »Über und über gekritzelt« und »Gesicht
+ *    lesbar« schließen sich mit DIESEN Blättern also aus — je größer der Boden,
+ *    desto sauberer die Tafel. Beide blinden Leser der ersten Fassung haben
+ *    ungefragt dasselbe gemeldet: der Kranz aus Kreide liest sich als
+ *    »Bildfehler«, »Kompressionsartefakte«, »zerrissenes Papier«, »separater
+ *    Layer«. Das ist ein Befund an der KUNST der Kritzel-Blätter und an den
+ *    Architekten geroutet, kein Kompositions-Posten.
+ */
+const FACE_FLOOR_RX = 0.42, FACE_FLOOR_RY = 0.34;
+/** Halbachsen, wenn die letzte Schicht gefallen ist: die ganze Fläche frei. */
+const FACE_FULL_RX = 0.75, FACE_FULL_RY = 0.75;
 /** Die feuchte Spur hinter dem Wischer und ihre Kante. */
 const WIPE_DAMP = 0x2f4a3a;
 const WIPE_EDGE = 0xfff6d8;
@@ -963,6 +1029,12 @@ export class PaintScene extends Phaser.Scene {
   /** R5-W4 · H2 (R50): die drei gebackenen Kritzel-Schichten auf ihrer Fläche.
    *  Leer, bis die erste Tafel gezeichnet wird — `ensureScribbles`. */
   private scribbleImgs: Phaser.GameObjects.Image[] = [];
+  /** Die freie Augenpartie (R5-T1). Eine Graphics-Ellipse, die als UMGEKEHRTE
+   *  Geometrie-Maske auf den Kritzel-Schichten und dem Wischer liegt: gezeichnet
+   *  wird überall AUSSER in ihr. Sie liegt in Welt-Koordinaten und trägt die
+   *  Drehung der Tafel mit, sonst wandert sie, sobald das Wesen kippt. */
+  private faceHoleG?: Phaser.GameObjects.Graphics;
+  private faceMask?: Phaser.Display.Masks.GeometryMask;
   /** R5-W4 · H2 (D-39): die ✕-Schilder dieser Phase. In der Arena bleiben sie
    *  verborgen, bis die Tafel sauber ist; überall sonst hängen sie von Anfang an. */
   private exitImgs: Phaser.GameObjects.Image[] = [];
@@ -3800,11 +3872,19 @@ export class PaintScene extends Phaser.Scene {
       return;
     }
     this.ensureScribbles();
-
     // Die oberste noch stehende Schicht ist die, die als NÄCHSTES weggeht —
     // sie liegt heller, damit das Kind sieht, worauf sein Wischen zielt.
     const wiping = g.state === "wipe";
     const t = wiping ? Math.max(0, Math.min(1, g.timer / WIPE_TICKS)) : 0;
+
+    // ── DER AUGEN-BODEN (R5-T1) ───────────────────────────────────────────
+    // Er wächst mit dem Wischen: bei voller Anzeige deckt er Augen und Brauen,
+    // mit jeder gefallenen Schicht gibt er mehr frei, und wenn die letzte fällt,
+    // steht die Tafel ohnehin ohne Kritzelei da. `frei` ist der Anteil der
+    // Schichten, die schon weg sind — beim Wischen läuft er stufenlos weiter,
+    // damit der Boden mit der Bewegung wächst statt zu springen.
+    const frei = Math.max(0, Math.min(1, (total - left + (wiping ? t : 0)) / total));
+    this.renderFaceFloor(slate, img.rotation, img.flipX, frei);
 
     for (let i = 0; i < this.scribbleImgs.length; i++) {
       const s = this.scribbleImgs[i]!;
@@ -3824,6 +3904,9 @@ export class PaintScene extends Phaser.Scene {
       s.setFlipX(img.flipX);
       s.setRotation(img.rotation);
       s.setAlpha((top ? SCRIBBLE_TOP_ALPHA : SCRIBBLE_ALPHA) * img.alpha);
+      // Die Kritzel liegen UM die Augenpartie, nie darüber (Kokis Entscheid).
+      // Die Maske ist umgekehrt: gezeichnet wird alles AUSSER der Ellipse.
+      if (this.faceMask && s.mask !== this.faceMask) s.setMask(this.faceMask);
       // Der Wischer nimmt NUR die oberste Schicht, und er nimmt sie von links
       // nach rechts — dieselbe Richtung, in der ein Kind eine Tafel wischt.
       // Der Schnitt läuft in TEXTUR-Koordinaten, also in der Auflösung des
@@ -3837,6 +3920,70 @@ export class PaintScene extends Phaser.Scene {
     }
 
     this.renderWipe(wiping, t, slate);
+  }
+
+  /**
+   * ── DER AUGEN-BODEN, GEZEICHNET (R5-T1) ────────────────────────────────────
+   *
+   * Eine Ellipse über der Augenpartie der Schreibfläche, als UMGEKEHRTE
+   * Geometrie-Maske auf den Kritzel-Schichten und dem Wischer: gezeichnet wird
+   * überall AUSSER in ihr. Damit liegen die Kritzel um die Augen herum statt
+   * darüber, und das Kind sieht ab dem ersten Bild der Arena, wer ihm da
+   * gegenübersteht.
+   *
+   * Sie wächst mit `frei` (Anteil der schon gefallenen Schichten) von den
+   * gemessenen Augen-Halbachsen auf die ganze Fläche — das ist Kokis
+   * »das Gesicht wächst mit dem Wischen« als eine Zeile Interpolation.
+   *
+   * ⚠ SIE MUSS SICH MITDREHEN. Die Tafel kippt in ihren Flugposen; eine
+   *   achsenparallele Ellipse liefe dann über den Rahmen. Gezeichnet wird
+   *   deshalb im EIGENEN Koordinatensystem der Graphics (Ellipse um 0,0), und
+   *   Lage und Drehung sitzen am Objekt.
+   *
+   * ⚠ UND SIE DARF DEN WISCHER NICHT AUSSPAREN, SONDERN MUSS IHN MITNEHMEN:
+   *   die feuchte Spur ist Kritzel-Material, kein Gesicht. Sie trägt dieselbe
+   *   Maske.
+   */
+  private renderFaceFloor(
+    slate: { x: number; y: number; w: number; h: number },
+    rotation: number,
+    flipX: boolean,
+    frei: number,
+  ): void {
+    if (!this.faceHoleG) {
+      // Die Graphics wird NIE gezeichnet — sie ist nur die Form der Maske.
+      // `setVisible(false)` würde die Maske mit abschalten, also bleibt sie
+      // sichtbar und wird über die Tiefe aus dem Bild gehalten.
+      this.faceHoleG = this.add.graphics();
+      this.faceHoleG.setDepth(-1000);
+      this.faceMask = this.faceHoleG.createGeometryMask();
+      this.faceMask.invertAlpha = true;
+    }
+    const rx = (FACE_FLOOR_RX + (FACE_FULL_RX - FACE_FLOOR_RX) * frei) * slate.w;
+    const ry = (FACE_FLOOR_RY + (FACE_FULL_RY - FACE_FLOOR_RY) * frei) * slate.h;
+    // Die Mitte des Bodens sitzt als ANTEIL der Fläche, gerechnet von deren
+    // linker oberer Ecke — dieselbe Rechnung wie `slateRect`, nur eine Ebene
+    // tiefer. Bei gespiegeltem Wesen spiegelt sie mit.
+    const fx = (flipX ? 1 - FACE_FLOOR_CX : FACE_FLOOR_CX) - 0.5;
+    const ox = fx * slate.w;
+    const oy = (FACE_FLOOR_CY - 0.5) * slate.h;
+    const cos = Math.cos(rotation), sin = Math.sin(rotation);
+    const G = this.faceHoleG;
+    G.clear();
+    G.fillStyle(0xffffff, 1);
+    G.setPosition(slate.x + ox * cos - oy * sin, slate.y + ox * sin + oy * cos);
+    G.setRotation(rotation);
+    // ⚠ KEINE ELLIPSE, UND DAS IST GEMESSEN. Die erste Fassung war eine, und
+    //   VIER von vier blinden Lesern haben ungefragt dasselbe gemeldet: die
+    //   Kreide, die dann in den vier ECKEN der Tafel stehen bleibt, liest sich
+    //   als »Bildfehler«, »Aufkleber«, »unfertige Grafikreste« (Sicherheiten
+    //   70–80 %). Eine Ellipse in einem Rechteck LÄSST Ecken übrig, und ein
+    //   Klecks in einer Ecke hat keine Geschichte. Ein eingerücktes Rechteck
+    //   mit runden Ecken lässt statt dessen ein umlaufendes BAND stehen — und
+    //   ein Band am Rand liest sich als das, was es erzählt: hier ist in der
+    //   Mitte gewischt worden.
+    const eck = Math.min(rx, ry) * 0.55;
+    G.fillRoundedRect(-rx, -ry, rx * 2, ry * 2, eck);
   }
 
   /**
@@ -3856,6 +4003,9 @@ export class PaintScene extends Phaser.Scene {
     this.knotG.clear();
     if (!wiping || this.cfg.reducedMotion) return;
     this.knotG.setDepth(SCRIBBLE_DEPTH + 0.01);
+    // Die feuchte Spur ist Kritzel-Material, kein Gesicht: sie trägt dieselbe
+    // umgekehrte Maske wie die Schichten (R5-T1).
+    if (this.faceMask && this.knotG.mask !== this.faceMask) this.knotG.setMask(this.faceMask);
     const G = this.knotG;
     const x0 = slate.x - slate.w / 2;
     const yTop = slate.y - slate.h / 2;

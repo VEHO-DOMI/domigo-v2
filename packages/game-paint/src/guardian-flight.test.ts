@@ -402,133 +402,51 @@ describe("her whole body stays in the visible band (readable = seeable)", () => 
     }
   });
 
-  // ── ⚠ ÜBERSPRUNGEN SEIT 2026-08-23 (H6) · ROUTE: BAHN T1 ──────────────────
+  // ── DER WÄCHTER ÜBER `GUARDIAN_SLATE` — WIEDER SCHARF (R5 · T1, 24.08.) ────
   //
-  // GRUND, wörtlich: »Lineal sucht grünen Schiefer, Tafel ist nachtblau per
-  // R212-Bestellung — Neu-Eichung = Bahn T1, dort fällt der Skip«.
+  // Er stand einen Tag lang als deklarierter, datierter Skip (H6, D-653/D-655):
+  // sein Sucher war wörtlich grün formuliert, und AQ13B4 hat die Schreibfläche
+  // nachtblau gemalt — so BESTELLT (R212d: der Boss trennt sich über den
+  // FARBTON vom Raum, nicht über die Helligkeit). An `tafel_a` gemessen fiel die
+  // grüne Maske von 25 681 px auf 0.
   //
-  // Lang: der Sucher unten prüft die Schreibfläche über `g > r·1,10 &&
-  // g > b·1,05 && g > 30 && r < 130` — eine GRÜNE Formel. Die Lieferung AQ13B4
-  // trägt nachtblauen Schiefer, und zwar BESTELLT (R212d: der Boss trennt sich
-  // über den FARBTON vom Raum, nicht über die Helligkeit). An `tafel_a`
-  // gemessen: grüne Maske 25 681 px → 0 px, H-Median 133,3° → 239,3°.
+  // ★ WAS SICH GEÄNDERT HAT — der Sucher liest seinen Kanal AUS DEM BLATT.
+  //   Nicht »ist sie grün«, sondern »welcher KÜHLE Farbton (90°…330°) stellt
+  //   hier die meisten Pixel«. Der Holzrahmen misst auf jedem Blatt dieses
+  //   Kapitels 35–36° und fällt damit heraus, ohne dass irgendwo »Holz« steht.
+  //   Auf einem grünen Blatt wählt derselbe Code den grünen Kanal und IST dann
+  //   Zeichen für Zeichen die alte Regel — der Fall »zwei Familien« unten fährt
+  //   genau das an einem selbst gebauten grünen Blatt nach.
   //
-  // ★ WAS HIER NICHT KAPUTT IST: die Tabelle `GUARDIAN_SLATE`. Dasselbe
-  //   farbblinde Lineal auf ALTE und NEUE Blätter liefert in allen zwanzig
-  //   Zellen bitgleich denselben Kasten — die Abweichung ist der Unterschied
-  //   der Lineale, keine Bewegung der Kunst (H6-Report §4, D-655).
+  // ★ UND ER VERWIRFT SPRENKEL. Inseln unter `MIN_INSEL` Maskenpixeln zählen
+  //   nicht mit. Die alte Tabelle hatte sie mitgezählt: `bank_r0` bekam sein
+  //   linkes Ende von DREI fast schwarzen Pixeln bei (21…23, 301), 51 px von
+  //   der Fläche entfernt — die Kritzel-Schicht lag dort 6,8 Welt-px zu breit,
+  //   also auf dem Rahmen. Die 12 liegt in der Mitte eines gemessenen Plateaus:
+  //   bei 8, 12 und 16 Pixeln kommt in allen zwanzig Zellen derselbe Kasten
+  //   heraus, auf altem wie neuem Bestand.
   //
-  // ★ WARUM H6 DEN SUCHER NICHT EINFACH TAUSCHT: drei Kandidaten sind gebaut
-  //   und je einmal durchgemessen worden, alle drei verfehlen ihre
-  //   Ausstiegsbedingung — der farbblinde verschiebt die geeichte Schiefer-L-
-  //   Messung (9,53–9,93 → 10,65–11,20), »grün ODER blau« reißt 14 von 20
-  //   Zellen und zusätzlich `throw` auf den ALTEN Blättern, und die
-  //   Farbton-Drehung ist nicht verlustfrei. Zahlen: D-653.
-  //
-  // ★ DIESER SKIP KANN NICHT STILL VERALTEN: der Wächter direkt darunter läuft
-  //   WEITER und wird rot, sobald die grüne Maske wieder etwas findet — dann
-  //   ist der Grund weg und der Skip gehört entfernt.
-  it.skip("R5-W4b · H3 · GUARDIAN_SLATE ist aus den Blättern gerechnet, Zelle für Zelle [ÜBERSPRUNGEN seit 2026-08-23 · Lineal sucht grünen Schiefer, Tafel ist nachtblau per R212-Bestellung — Neu-Eichung = Bahn T1, dort fällt der Skip]", () => {
-    // Die Kritzel-Schichten (AQ13) liegen auf der SCHIEFERTAFEL, und die wandert
-    // zwischen ihren Zellen um über 30 % der Blattbreite. `anim.ts#GUARDIAN_SLATE`
-    // hält, wo sie in jeder Zelle liegt — eine Tabelle mit 80 Zahlen, also genau
-    // die Sorte Kopie, die still veraltet, sobald jemand ein Blatt neu malt.
-    // Deshalb wird sie hier neu ausgezählt, aus den ausgelieferten PNGs, mit
-    // derselben Regel, die `docs/art/import-batch-aq13.mjs` benutzt.
-    //
-    // Der Decoder unten ist absichtlich klein und gehört dieser Datei: `pngjs`
-    // ist im Repo-Wurzel-`package.json` deklariert, nicht in diesem Paket, und
-    // eine Abhängigkeit in ein Paket zu schreiben, an dem drei Spuren
-    // gleichzeitig arbeiten, ist teurer als 30 Zeilen Auspacken.
-    const ART = path.resolve(__dirname, "../../../apps/web/public/art/g1/paint/ch01");
-    /** RGBA8, nicht interlaced — genau das, was dieses Kapitel ausliefert. */
-    const decode = (file: string): { w: number; h: number; px: Buffer } => {
-      const buf = fs.readFileSync(file);
-      const w = buf.readUInt32BE(16), h = buf.readUInt32BE(20);
-      expect(buf[24], `${file}: 8 bit je Kanal erwartet`).toBe(8);
-      expect(buf[25], `${file}: RGBA erwartet`).toBe(6);
-      const chunks: Buffer[] = [];
-      for (let off = 8; off + 8 <= buf.length;) {
-        const len = buf.readUInt32BE(off);
-        const type = buf.toString("ascii", off + 4, off + 8);
-        if (type === "IDAT") chunks.push(buf.subarray(off + 8, off + 8 + len));
-        off += 12 + len;
-      }
-      const raw = zlib.inflateSync(Buffer.concat(chunks));
-      const px = Buffer.alloc(w * h * 4);
-      const bpp = 4, stride = w * bpp;
-      for (let y = 0; y < h; y++) {
-        const ft = raw[y * (stride + 1)]!;
-        const line = raw.subarray(y * (stride + 1) + 1, y * (stride + 1) + 1 + stride);
-        for (let i = 0; i < stride; i++) {
-          const a = i >= bpp ? px[y * stride + i - bpp]! : 0;
-          const b = y > 0 ? px[(y - 1) * stride + i]! : 0;
-          const c = i >= bpp && y > 0 ? px[(y - 1) * stride + i - bpp]! : 0;
-          let v = line[i]!;
-          if (ft === 1) v += a;
-          else if (ft === 2) v += b;
-          else if (ft === 3) v += (a + b) >> 1;
-          else if (ft === 4) {
-            const p = a + b - c, pa = Math.abs(p - a), pb = Math.abs(p - b), pc = Math.abs(p - c);
-            v += pa <= pb && pa <= pc ? a : pb <= pc ? b : c;
-          }
-          px[y * stride + i] = v & 0xff;
-        }
-      }
-      return { w, h, px };
-    };
+  // ★ WARUM DIE TABELLE MITGEZOGEN IST statt der Toleranz: der Kopf von
+  //   `anim.ts#GUARDIAN_SLATE` sagt seit ihrer Geburt »wer die Blätter neu malt,
+  //   sieht hier rot«. Genau das ist eingetreten. Eine stehende Tabelle über neu
+  //   gemalten Blättern ist die Kopie, die still veraltet — und eine zweite,
+  //   gepinnte Tabelle in den Einheiten eines zweiten Lineals wären zwei Listen
+  //   derselben Wahrheit. Also EINE Liste, neu abgeleitet, mit dem Tamper unten
+  //   als Beweis, dass sie noch beißt.
 
-    for (const [cell, s] of Object.entries(GUARDIAN_SLATE)) {
-      const { w, h, px } = decode(path.join(ART, `tafel_${cell}.png`));
-      let x0 = w, y0 = h, x1 = -1, y1 = -1;
-      for (let y = 0; y < h; y++) {
-        for (let x = 0; x < w; x++) {
-          const i = (y * w + x) * 4;
-          const r = px[i]!, g = px[i + 1]!, b = px[i + 2]!, a = px[i + 3]!;
-          if (a > 200 && g > r * 1.10 && g > b * 1.05 && g > 30 && r < 130) {
-            if (x < x0) x0 = x;
-            if (x > x1) x1 = x;
-            if (y < y0) y0 = y;
-            if (y > y1) y1 = y;
-          }
-        }
-      }
-      expect(x1, `tafel_${cell}: keine grüne Schreibfläche gefunden`).toBeGreaterThan(-1);
-      const near = (got: number, want: number, what: string): void => {
-        expect(Math.abs(got - want), `tafel_${cell} ${what}: gemessen ${got.toFixed(3)}, Tabelle ${want}`)
-          .toBeLessThanOrEqual(0.002);
-      };
-      near((x0 + x1 + 1) / 2 / w, s.cx, "cx");
-      near((y0 + y1 + 1) / 2 / h, s.cy, "cy");
-      near((x1 - x0 + 1) / w, s.w, "w");
-      near((y1 - y0 + 1) / h, s.h, "h");
-    }
-  });
+  /** Inseln unter dieser Größe sind Sprenkel, keine Schreibfläche (Plateau 8…16). */
+  const MIN_INSEL = 12;
 
-  // ── DER WÄCHTER ÜBER DEM SKIP DARÜBER (R5 · H6, 2026-08-23) ────────────────
-  //
-  // Ein übersprungener Test, den niemand mehr ansieht, ist eine Lücke mit einer
-  // Ausrede davor. Dieser Fall LÄUFT und hält den Grund des Skips als Zahl fest:
-  // die grüne Maske findet auf dem heutigen `tafel_a` NICHTS. Malt jemand die
-  // Tafel wieder grün — oder wird der Sucher farbfrei —, wird dieser Fall ROT,
-  // und dann ist der Skip darüber gegenstandslos und gehört entfernt (Bahn T1).
-  // Er kann also nicht still veralten: entweder er stimmt, oder er meldet sich.
-  it("R5 · H6 · der Grund für den Skip darüber gilt noch: die grüne Maske findet auf tafel_a nichts", () => {
-    // ★ DIESE ZEILE IST DER GRUND, WARUM DER SKIP NICHT STILL IST. Der
-    //   Standard-Melder von vitest druckt den NAMEN eines uebersprungenen
-    //   Falls nicht — er zaehlt ihn nur (»59 tests | 1 skipped«). Wer nur das
-    //   CI-Protokoll liest, saehe also eine Luecke ohne Begruendung. Dieser
-    //   Fall LAEUFT und sagt sie deshalb selbst, mit Datum und Route.
-    console.log(
-      "[SKIP 2026-08-23 · guardian-flight › GUARDIAN_SLATE ist aus den Blättern gerechnet] "
-      + "Lineal sucht grünen Schiefer, Tafel ist nachtblau per R212-Bestellung — "
-      + "Neu-Eichung = Bahn T1, dort fällt der Skip. (Register D-653 / D-655)",
-    );
-    const ART = path.resolve(__dirname, "../../../apps/web/public/art/g1/paint/ch01");
-    const buf = fs.readFileSync(path.join(ART, "tafel_a.png"));
+  /** RGBA8, nicht interlaced — genau das, was dieses Kapitel ausliefert.
+   *  Der Decoder gehört absichtlich dieser Datei: `pngjs` ist im Repo-Wurzel-
+   *  `package.json` deklariert, nicht in diesem Paket, und eine Abhängigkeit in
+   *  ein Paket zu schreiben, an dem mehrere Spuren gleichzeitig arbeiten, ist
+   *  teurer als 30 Zeilen Auspacken. */
+  const decodePng = (file: string): { w: number; h: number; px: Buffer } => {
+    const buf = fs.readFileSync(file);
     const w = buf.readUInt32BE(16), h = buf.readUInt32BE(20);
-    expect(buf[24]).toBe(8);
-    expect(buf[25]).toBe(6);
+    expect(buf[24], `${file}: 8 bit je Kanal erwartet`).toBe(8);
+    expect(buf[25], `${file}: RGBA erwartet`).toBe(6);
     const chunks: Buffer[] = [];
     for (let off = 8; off + 8 <= buf.length;) {
       const len = buf.readUInt32BE(off);
@@ -551,23 +469,158 @@ describe("her whole body stays in the visible band (readable = seeable)", () => 
         else if (ft === 2) v += b;
         else if (ft === 3) v += (a + b) >> 1;
         else if (ft === 4) {
-          const pp = a + b - c, pa = Math.abs(pp - a), pb = Math.abs(pp - b), pc = Math.abs(pp - c);
+          const p = a + b - c, pa = Math.abs(p - a), pb = Math.abs(p - b), pc = Math.abs(p - c);
           v += pa <= pb && pa <= pc ? a : pb <= pc ? b : c;
         }
         px[y * stride + i] = v & 0xff;
       }
     }
-    let gruen = 0;
+    return { w, h, px };
+  };
+
+  /** Stufe A: der stärkste KÜHLE Farbton des Blattes, in Grad. −1 = keiner. */
+  const leitFarbton = (px: Buffer, w: number, h: number): number => {
+    const bins = new Float64Array(360);
+    for (let i = 0; i < w * h * 4; i += 4) {
+      const r = px[i]!, g = px[i + 1]!, b = px[i + 2]!, a = px[i + 3]!;
+      if (a <= 200) continue;
+      const mx = Math.max(r, g, b), mn = Math.min(r, g, b), d = mx - mn;
+      if (mx <= 20 || d / mx < 0.25) continue;
+      let deg = 0;
+      if (mx === r) deg = 60 * (((g - b) / d) % 6);
+      else if (mx === g) deg = 60 * ((b - r) / d + 2);
+      else deg = 60 * ((r - g) / d + 4);
+      if (deg < 0) deg += 360;
+      if (deg < 90 || deg >= 330) continue;   // warm (Holz 35–36°) fällt heraus
+      bins[Math.round(deg) % 360]! += 1;
+    }
+    let best = -1, bestN = 0;
+    for (let i = 90; i < 330; i++) {
+      let s = 0;
+      for (let d = -7; d <= 7; d++) s += bins[(i + d + 360) % 360]!;
+      if (s > bestN) { bestN = s; best = i; }
+    }
+    return best;
+  };
+
+  /** Stufe B: der Kasten der Schreibfläche — Originalgeometrie mit dem Leitkanal
+   *  aus Stufe A, Sprenkel unter `MIN_INSEL` verworfen. */
+  const schreibflaeche = (px: Buffer, w: number, h: number): {
+    x0: number; y0: number; x1: number; y1: number; n: number; peak: number; leit: 1 | 2;
+  } => {
+    const peak = leitFarbton(px, w, h);
+    const leit: 1 | 2 = peak < 0 || peak < 180 ? 1 : 2;   // 1 = grün, 2 = blau
+    const neben = leit === 1 ? 2 : 1;
+    const m = new Uint8Array(w * h);
+    let n = 0;
+    for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) {
+      const i = (y * w + x) * 4, r = px[i]!;
+      if (px[i + 3]! <= 200 || r >= 130) continue;
+      const c = px[i + leit]!, o = px[i + neben]!;
+      if (c > r * 1.10 && c > o * 1.05 && c > 30) { m[y * w + x] = 1; n++; }
+    }
+    // Inseln zählen, kleine verwerfen, aus dem Rest den Kasten nehmen.
+    const seen = new Uint8Array(w * h), stack = new Int32Array(w * h);
+    let x0 = w, y0 = h, x1 = -1, y1 = -1;
+    for (let p0 = 0; p0 < w * h; p0++) {
+      if (!m[p0] || seen[p0]) continue;
+      let top = 0; stack[top++] = p0; seen[p0] = 1;
+      const insel: number[] = [];
+      while (top > 0) {
+        const q = stack[--top]!; insel.push(q);
+        const qx = q % w, qy = (q / w) | 0;
+        for (let dy = -1; dy <= 1; dy++) for (let dx = -1; dx <= 1; dx++) {
+          const nx = qx + dx, ny = qy + dy;
+          if (nx < 0 || ny < 0 || nx >= w || ny >= h) continue;
+          const r2 = ny * w + nx;
+          if (m[r2] && !seen[r2]) { seen[r2] = 1; stack[top++] = r2; }
+        }
+      }
+      if (insel.length < MIN_INSEL) continue;
+      for (const q of insel) {
+        const qx = q % w, qy = (q / w) | 0;
+        if (qx < x0) x0 = qx; if (qx > x1) x1 = qx;
+        if (qy < y0) y0 = qy; if (qy > y1) y1 = qy;
+      }
+    }
+    return { x0, y0, x1, y1, n, peak, leit };
+  };
+
+  it("R5-W4b · H3 · GUARDIAN_SLATE ist aus den Blättern gerechnet, Zelle für Zelle", () => {
+    // Die Kritzel-Schichten (AQ13) liegen auf der SCHIEFERTAFEL, und die wandert
+    // zwischen ihren Zellen um über 30 % der Blattbreite. `anim.ts#GUARDIAN_SLATE`
+    // hält, wo sie in jeder Zelle liegt — eine Tabelle mit 80 Zahlen, also genau
+    // die Sorte Kopie, die still veraltet, sobald jemand ein Blatt neu malt.
+    // Deshalb wird sie hier neu ausgezählt, aus den ausgelieferten PNGs, mit
+    // derselben Regel, die `docs/art/import-batch-aq13.mjs` benutzt.
+    const ART = path.resolve(__dirname, "../../../apps/web/public/art/g1/paint/ch01");
+    for (const [cell, s] of Object.entries(GUARDIAN_SLATE)) {
+      const { w, h, px } = decodePng(path.join(ART, `tafel_${cell}.png`));
+      const b = schreibflaeche(px, w, h);
+      expect(b.x1, `tafel_${cell}: keine Schreibfläche gefunden (Leitfarbton ${b.peak}°, ${b.n} Maskenpixel)`)
+        .toBeGreaterThan(-1);
+      const near = (got: number, want: number, what: string): void => {
+        expect(Math.abs(got - want), `tafel_${cell} ${what}: gemessen ${got.toFixed(3)}, Tabelle ${want}`)
+          .toBeLessThanOrEqual(0.002);
+      };
+      near((b.x0 + b.x1 + 1) / 2 / w, s.cx, "cx");
+      near((b.y0 + b.y1 + 1) / 2 / h, s.cy, "cy");
+      near((b.x1 - b.x0 + 1) / w, s.w, "w");
+      near((b.y1 - b.y0 + 1) / h, s.h, "h");
+    }
+  });
+
+  // ── DER WÄCHTER ÜBER DEM SUCHER SELBST (R5 · T1) ───────────────────────────
+  //
+  // Der Fall darüber prüft die TABELLE gegen die Blätter. Dieser hier prüft das
+  // LINEAL gegen sich selbst — denn der teuerste Fehler dieser Bahn wäre, den
+  // Sucher still wieder auf EINE Farbe zu verdrahten. Er würde heute grün
+  // bleiben und morgen an der nächsten Bestellung blind werden, genau wie am
+  // 23.08. Zwei Behauptungen, beide am Bild:
+  //   1 · das heutige `tafel_a` führt BLAU, und eine rein grün formulierte
+  //       Regel findet darauf nichts (die Zahl, die den Skip begründet hat).
+  //   2 · ein selbst gebautes GRÜNES Blatt führt GRÜN — und der Kasten, den der
+  //       Sucher darauf findet, ist derselbe, den die alte grüne Regel gefunden
+  //       hätte. Das ist der Beweis, dass hier verallgemeinert und nicht
+  //       ersetzt wurde.
+  it("R5 · T1 · der Sucher liest seinen Kanal aus dem Blatt — beide Familien, am Bild", () => {
+    const ART = path.resolve(__dirname, "../../../apps/web/public/art/g1/paint/ch01");
+    const { w, h, px } = decodePng(path.join(ART, "tafel_a.png"));
+
+    // 1 · heute nachtblau
+    const b = schreibflaeche(px, w, h);
+    expect(b.peak, "tafel_a führt keinen kühlen Farbton mehr").toBeGreaterThanOrEqual(180);
+    expect(b.peak, "tafel_a führt keinen kühlen Farbton mehr").toBeLessThan(330);
+    expect(b.leit, "der Sucher hat auf tafel_a den grünen Kanal gewählt").toBe(2);
+    let gruenNurRegel = 0;
     for (let i = 0; i < w * h; i++) {
       const o = i * 4;
-      const r = px[o]!, g = px[o + 1]!, b = px[o + 2]!, al = px[o + 3]!;
-      if (al > 200 && g > r * 1.10 && g > b * 1.05 && g > 30 && r < 130) gruen++;
+      const r = px[o]!, g = px[o + 1]!, bb = px[o + 2]!, al = px[o + 3]!;
+      if (al > 200 && g > r * 1.10 && g > bb * 1.05 && g > 30 && r < 130) gruenNurRegel++;
     }
     expect(
-      gruen,
-      "Die grüne Schiefer-Maske findet auf tafel_a wieder Pixel (vor dem H6-Import: 25 681). "
-      + "Damit ist der Grund für den übersprungenen Test darüber weg — Skip entfernen (Bahn T1, D-653/D-655).",
+      gruenNurRegel,
+      "Die rein grüne Regel findet auf tafel_a wieder Pixel (vor dem H6-Import: 25 681). "
+      + "Wenn die Tafel wieder grün gemalt wurde, gehört GUARDIAN_SLATE neu abgeleitet.",
     ).toBe(0);
+
+    // 2 · ein grünes Blatt führt grün, und zwar auf denselben Kasten
+    const gw = 60, gh = 40;
+    const gruen = Buffer.alloc(gw * gh * 4);
+    for (let y = 0; y < gh; y++) for (let x = 0; x < gw; x++) {
+      const i = (y * gw + x) * 4;
+      const drin = x >= 10 && x <= 49 && y >= 6 && y <= 29;
+      // drinnen: gemalter grüner Schiefer · draußen: Holzrahmen (warm, 35°)
+      if (drin) { gruen[i] = 20; gruen[i + 1] = 70 + ((x * 7 + y * 3) % 9); gruen[i + 2] = 30; }
+      else { gruen[i] = 190; gruen[i + 1] = 140; gruen[i + 2] = 60; }
+      gruen[i + 3] = 255;
+    }
+    const gb = schreibflaeche(gruen, gw, gh);
+    expect(gb.leit, "auf einem grünen Blatt wählt der Sucher nicht mehr Grün — er ist auf Blau verdrahtet").toBe(1);
+    expect(gb.peak, "der gefundene Farbton liegt nicht in der grünen Familie").toBeGreaterThanOrEqual(90);
+    expect(gb.peak, "der gefundene Farbton liegt nicht in der grünen Familie").toBeLessThan(180);
+    expect([gb.x0, gb.y0, gb.x1, gb.y1], "der Kasten auf dem grünen Blatt ist nicht die gemalte Fläche")
+      .toEqual([10, 6, 49, 29]);
   });
 
 
