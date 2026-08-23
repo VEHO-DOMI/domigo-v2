@@ -5,9 +5,9 @@
  * endpoint (it needs the content loaders + engine, which the db package must
  * not import).
  */
-import { and, asc, desc, eq, isNull, lte, or } from "drizzle-orm";
+import { and, asc, desc, eq, isNotNull, isNull, lte, or } from "drizzle-orm";
 import type { Db } from "./index.ts";
-import { assignments, assignmentSections, assignmentSessions, practiceAttempts } from "./schema.ts";
+import { assignments, assignmentSections, assignmentSessions, practiceAttempts, v2IdentityUsers } from "./schema.ts";
 import { v1Users } from "./v1.ts";
 import { sessionExpiry } from "./assignment-session.ts";
 import type { ScorableAttempt } from "./assignments.ts";
@@ -106,13 +106,44 @@ export interface StudentRow {
   name: string;
 }
 
-/** The students of a class (read-only SELECT on v1 public.users) — the roster's names. */
+/**
+ * The students of a class — an ORDERED DUAL-READ over both registers, the same
+ * precedence listAllClassesForGrandmaster and resolveTeacherNames use.
+ *
+ * K1a FIX. This read used to touch v1 `public.users` ALONE, which made the
+ * assignment result roster come back EMPTY for every v2 class: classes created
+ * since P1 live in `domigo_v2.users`, so a teacher who set homework for a new
+ * class saw "no students" no matter who had sat it. v2 is read first and wins on
+ * a shared id; the v1 half is unchanged, so a legacy class still yields exactly
+ * the rows (and the order) it yielded before.
+ *
+ * Only CLAIMED v2 students are listed: a provisional row is a name on an import
+ * list with nobody behind it yet — it can hold no session, and printing it as a
+ * pupil who scored nothing would be a lie about a child who never sat down.
+ */
 export async function listStudentsForClass(db: Db, classId: string): Promise<StudentRow[]> {
-  const rows = await db
+  const byId = new Map<string, StudentRow>();
+
+  const v2Rows = await db
+    .select({ id: v2IdentityUsers.id, name: v2IdentityUsers.displayName })
+    .from(v2IdentityUsers)
+    .where(
+      and(
+        eq(v2IdentityUsers.classId, classId),
+        eq(v2IdentityUsers.role, "student"),
+        isNotNull(v2IdentityUsers.claimedAt),
+      ),
+    )
+    .orderBy(asc(v2IdentityUsers.displayName));
+  for (const r of v2Rows) byId.set(r.id, { id: r.id, name: r.name });
+
+  const v1Rows = await db
     .select({ id: v1Users.id, name: v1Users.displayName })
     .from(v1Users)
     .where(and(eq(v1Users.classId, classId), eq(v1Users.role, "student")));
-  return rows.map((r) => ({ id: r.id, name: r.name }));
+  for (const r of v1Rows) if (!byId.has(r.id)) byId.set(r.id, { id: r.id, name: r.name });
+
+  return [...byId.values()];
 }
 
 /** Finalize a submitted sitting with its exact score (from the pure scorer).

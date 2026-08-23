@@ -98,6 +98,8 @@ export default async function GrandmasterPage() {
                     </td>
                     <td style={{ ...td, color: "var(--text-secondary)" }}>{new Date(c.createdAt).toLocaleDateString("de-AT")}</td>
                     <td style={td}>
+                      <Link href={`/admin/classes/${c.id}`} style={{ color: "var(--accent)", fontWeight: 700, fontSize: 13 }}>Fortschritt →</Link>
+                      {" · "}
                       <Link href={`/admin/classes/${c.id}/roster`} style={{ color: "var(--accent)", fontWeight: 700, fontSize: 13 }}>Roster →</Link>
                     </td>
                   </tr>

@@ -185,7 +185,10 @@ export default function RosterManager({
         <h1 style={{ fontSize: 26, margin: 0, fontFamily: "var(--font-display)", color: "var(--ink)" }}>
           {className} <span style={{ fontWeight: 400, fontSize: 15, color: "var(--muted)" }}>· Grade {grade} · roster</span>
         </h1>
-        <Link href="/admin/classes" style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← Classes</Link>
+        <span style={{ display: "flex", gap: 12, flexShrink: 0 }}>
+          <Link href={`/admin/classes/${classId}`} style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>Fortschritt</Link>
+          <Link href="/admin/classes" style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← Classes</Link>
+        </span>
       </div>
       <p style={{ color: "var(--text-secondary)", marginTop: 0 }}>
         {initialRoster.length === 0

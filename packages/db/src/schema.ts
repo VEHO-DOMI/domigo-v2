@@ -54,6 +54,11 @@ export const practiceAttempts = v2.table(
   (t) => ({
     byUserTime: index("practice_attempts_user_time_idx").on(t.userId, t.createdAt.desc()),
     byUserItem: index("practice_attempts_user_item_idx").on(t.userId, t.itemId),
+    // K1a (migration 0015): the teacher's class view groups this whole ledger by
+    // class. Until now classId carried no index of its own, so every class-scoped
+    // read was a full scan; createdAt rides along because the same view asks
+    // "when was this class last active?".
+    byClassTime: index("practice_attempts_class_time_idx").on(t.classId, t.createdAt.desc()),
     // Idempotency: one logical attempt = one row per (user, clientAttemptId).
     // Full (non-partial) unique index so ON CONFLICT can infer it cleanly; Postgres
     // treats NULLs as distinct, so a future keyless insert path stays allowed.
@@ -135,6 +140,9 @@ export const studyPathProgress = v2.table(
     userNodeUnique: uniqueIndex("study_path_progress_user_node_unique").on(t.userId, t.unitSlug, t.nodeId),
     byUserUnit: index("study_path_progress_user_unit_idx").on(t.userId, t.unitSlug),
     byUser: index("study_path_progress_user_idx").on(t.userId),
+    // K1a (migration 0015): the class view's study-path half groups by class —
+    // same reason as the sibling index on practice_attempts.
+    byClass: index("study_path_progress_class_idx").on(t.classId),
   }),
 );
 

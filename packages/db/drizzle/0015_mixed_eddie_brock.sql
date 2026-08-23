@@ -1,0 +1,2 @@
+CREATE INDEX "practice_attempts_class_time_idx" ON "domigo_v2"."practice_attempts" USING btree ("class_id","created_at" DESC NULLS LAST);--> statement-breakpoint
+CREATE INDEX "study_path_progress_class_idx" ON "domigo_v2"."study_path_progress" USING btree ("class_id");
