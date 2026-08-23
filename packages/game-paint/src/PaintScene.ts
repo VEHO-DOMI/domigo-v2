@@ -3743,13 +3743,29 @@ export class PaintScene extends Phaser.Scene {
    */
   /** R5-W7 · H5 · R193b — die zwei Zahlen der Lebensanzeige, aus DERSELBEN
    *  Quelle wie das gezeichnete Bild (`renderKnotCord`), damit HUD und Tafel
-   *  nicht zwei Wahrheiten fuehren koennen. Kein Guardian ⇒ 0/0. */
+   *  nicht zwei Wahrheiten fuehren koennen. Kein Guardian ⇒ 0/0.
+   *
+   *  ── R5-W9 · F10 · D-609: DER BESIEGTE GUARDIAN ZAEHLT WEITER ──────────────
+   *  Bis hierher suchte diese Zeile `!e.redeemed`, und das hatte eine Folge, die
+   *  niemand bestellt hat: im Augenblick des Sieges fiel `knotsTotal` auf 0, die
+   *  Anzeige verschwand, und die einzige Zahl, die den Sieg BEWEIST, war genau
+   *  dann weg. Beide Abwesenheits-Leser des P8-Panels bekamen im Siegmoment
+   *  keine Antwort aus der Leiste — die Zeremonie-Karte trug die Nachricht
+   *  allein.
+   *
+   *  Der Guardian bleibt in der Phase stehen, also bleibt auch seine
+   *  Schichtzahl lesbar; `guardianKnots` steht dann auf 0, und die Leiste bleibt
+   *  LEER STEHEN, bis der Raum wechselt. Gewischt wird nach der Erloesung
+   *  nichts mehr, darum ist `wipeTeil` dort per Konstruktion 0.
+   *  ⚠ Der unerloeste Guardian hat Vorrang: haette ein Raum je zwei, waere der
+   *  KAEMPFENDE der, dessen Zustand angezeigt gehoert. */
   private bossLeiste(): { knotsTotal: number; wipeTeil: number } {
-    const g = this.world?.entities.find((e) => e.role === "guardian" && !e.redeemed);
+    const ents = this.world?.entities ?? [];
+    const g = ents.find((e) => e.role === "guardian" && !e.redeemed) ?? ents.find((e) => e.role === "guardian");
     if (!g) return { knotsTotal: 0, wipeTeil: 0 };
     return {
       knotsTotal: GUARDIAN_SCRIPT[g.tier].knots,
-      wipeTeil: g.state === "wipe" ? Math.max(0, Math.min(1, g.timer / WIPE_TICKS)) : 0,
+      wipeTeil: !g.redeemed && g.state === "wipe" ? Math.max(0, Math.min(1, g.timer / WIPE_TICKS)) : 0,
     };
   }
 
