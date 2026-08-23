@@ -6,6 +6,15 @@
  * once its chapter is released (chapter N requires units ≤ N). Locked stops
  * show "coming soon" — except the ink skin, where they render half-erased
  * (the Blank took them; the board itself tells the story).
+ *
+ * K1b · GRADE SCOPE (the deep-link half of the /play binding). A CHILD is sent
+ * back to its own school year; a TEACHER keeps every year, because the pre-release
+ * preview is what this page has been for teachers since 2026-07-17 and the Keen
+ * card below is its only entrance. The two are told apart at the source rather than
+ * by a flag: `getActingUserForPage` resolves ONLY a student, while `getPlayerForPage`
+ * deliberately answers for both (identity.ts) — which is why the scope check hangs
+ * on the former. The decision itself stays `visibleGradesFor` (lib/grade-scope.ts);
+ * an unresolvable class year opens all four, unchanged.
  */
 /* eslint-disable @next/next/no-img-element -- decorative ligne-claire banners served from synced public/art assets; next/image adds no value for these */
 import Link from "next/link";
@@ -18,7 +27,8 @@ import { SeasonBoard, type EpisodeProgress } from "@domigo/game-novel";
 import { JournalBoard, tripCopyFor, type DayProgress } from "@domigo/game-trip";
 import { ZoneBoard, type ZoneProgress } from "@domigo/game-2d/board";
 import { FLOOR_PLANS } from "@/lib/floor-plan";
-import { getPlayerForPage, getTeacherForPage } from "@/lib/identity";
+import { getActingUserForPage, getPlayerForPage, getTeacherForPage } from "@/lib/identity";
+import { resolveVisibleGrades } from "@/lib/grade-scope";
 import { DEFAULT_STORY_UI, HUB_SKIN, STORY_UI } from "@/lib/stories";
 import { resolveHubArt, resolveEvidenceArt } from "@/lib/story-art";
 import { devReleasedChapters, devStoryOverride } from "@/lib/story-dev";
@@ -32,8 +42,16 @@ export default async function HubPage({ params }: { params: Promise<{ grade: str
 
   // W0: student OR teacher (preview law) — the hub was the LAST student-only
   // game surface, bouncing teachers to /signin from every "Alle Räume" link.
-  const acting = await getPlayerForPage();
+  // K1b: the student is resolved FIRST, because only a student is grade-bound.
+  const student = await getActingUserForPage();
+  const acting = student ?? (await getPlayerForPage());
   if (!acting) redirect("/signin");
+  if (student) {
+    const grades = await resolveVisibleGrades(student.classId);
+    // Not in scope ⇒ back to the child's own year (never to a blank page: the
+    // scope is never empty, so grades[0] always exists).
+    if (!grades.includes(grade)) redirect(`/play/${grades[0]}`);
+  }
   // the Keen story-mode preview is teacher-only until the year-1 release —
   // this card is its ONLY navigation entry (students never see it)
   const teacher = grade === 1 ? await getTeacherForPage() : null;

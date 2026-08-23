@@ -4,6 +4,16 @@
  * pure scorer the runner + M-1 use (so the roster reconciles by construction),
  * plus a class summary (average, Note distribution, hardest section). Teacher-
  * only; a teacher sees only their own assignments.
+ *
+ * K1b · GRANDMASTER READ. Koki's P-R1.3 is "test everywhere", and this was the one
+ * teacher surface the operator could not open at all: the guard compared `createdBy`
+ * and nothing else, so an assignment a colleague created was invisible to him even
+ * though he can already see her class, her roster and her progress. The rank is
+ * resolved BEFORE the expensive reads (it is an env allowlist — no query), it only
+ * widens the door, and it changes nothing behind it: the services below still run on
+ * the assignment's OWN ids, so what he sees is exactly what she sees. The header
+ * says so, because a page that quietly shows you someone else's class is worse than
+ * one that refuses.
  */
 import Link from "next/link";
 import { redirect } from "next/navigation";
@@ -25,6 +35,7 @@ import {
   type SectionSpec,
 } from "@domigo/db";
 import { getTeacherForPage } from "@/lib/identity";
+import { isGrandmaster } from "@/lib/grandmaster";
 
 export const dynamic = "force-dynamic";
 
@@ -38,10 +49,16 @@ export default async function AssignmentResultsPage({ params }: { params: Promis
   const teacher = await getTeacherForPage();
   if (!teacher) redirect("/admin/signin");
 
+  // The rank first — a pure env read, before anything expensive is fetched.
+  const grandmaster = isGrandmaster(teacher.userId);
   const view = await getAssignmentWithSections(getDb(), id).catch(() => null);
-  if (!view || view.assignment.createdBy !== teacher.userId) redirect("/admin/assignments");
+  const mine = view !== null && view.assignment.createdBy === teacher.userId;
+  if (!view || !(mine || grandmaster)) redirect("/admin/assignments");
   const { assignment, sections } = view;
   const mode = assignment.mode as AssignmentMode;
+  // Foreign only when it is really someone else's — the operator's OWN assignments
+  // must not wear a "grandmaster access" badge.
+  const fremd = !mine;
 
   const [students, allSessions] = await Promise.all([
     listStudentsForClass(getDb(), assignment.classId).catch(() => []),
@@ -89,7 +106,10 @@ export default async function AssignmentResultsPage({ params }: { params: Promis
   return (
     <main style={{ maxWidth: 780, margin: "0 auto", padding: "28px 20px 48px", fontFamily: "var(--font-body)", color: "var(--text)" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 4 }}>
-        <h1 style={{ fontSize: 25, margin: 0, fontFamily: "var(--font-display)", color: "var(--ink)" }}>{assignment.title}</h1>
+        <h1 style={{ fontSize: 25, margin: 0, fontFamily: "var(--font-display)", color: "var(--ink)" }}>
+          {assignment.title}
+          {fremd ? <span style={{ fontWeight: 400, fontSize: 15, color: "var(--muted)" }}> · Großmeister-Zugriff</span> : null}
+        </h1>
         <Link href="/admin/assignments" style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← Assignments</Link>
       </div>
       <p style={{ color: "var(--text-secondary)", marginTop: 0 }}>

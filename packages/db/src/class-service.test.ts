@@ -116,11 +116,19 @@ function seqDb(results: (unknown[] | Error)[]) {
  * table. Walking only the node's own chunks keeps those assertions real: an
  * `and(...)` shows both its halves, an `sql`count(x)`` shows "count(" and its
  * column, and nothing shows a sibling it never touched.
+ *
+ * K1b · THE DEPTH CAP IS A CYCLE GUARD, NOT A FILTER — and at 8 it was acting as
+ * one. K1a measured this in the sister file (class-progress.test.ts): a WHERE that
+ * nests one level further — an `and(...)` around an `inArray(...)` around its
+ * chunks — had its innermost text (" <= now()", "->>'trap'") silently cut off, so
+ * three NEGATIVE assertions passed because the walker never reached the atom, not
+ * because the atom was absent. A green test that cannot see what it denies has no
+ * evidential value. 16 is past the deepest real nesting here, with room to spare.
  */
 function atomsOf(node: unknown): string[] {
   const out: string[] = [];
   const walk = (o: unknown, depth = 0): void => {
-    if (o == null || depth > 8) return;
+    if (o == null || depth > 16) return;
     if (typeof o === "string") { out.push(o); return; }
     if (Array.isArray(o)) { for (const x of o) walk(x, depth + 1); return; }
     if (typeof o !== "object") return;

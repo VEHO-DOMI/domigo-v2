@@ -5,12 +5,22 @@
  * The list is DERIVED from the corpus (listReleasedStories), so a new grade's
  * game appears here the moment its release.json ships and an unreleased grade
  * never renders a dead tile (Law 9: no dead toggles).
+ *
+ * K1b · GRADE SCOPE. This chooser was the LAST child-facing surface where a
+ * second-year could open all four school years: P1 bound the four practice lists
+ * and stopped at the game (drift D10, ruling P-R1.5 "a registered child only has
+ * access to the class it was created in"). The decision is not re-invented here —
+ * `visibleGradesFor` (lib/grade-scope.ts) is THE one, and `resolveVisibleGrades`
+ * is its DB wrapper, the same pair /practice and /learn already use. Its `null`
+ * degradation is kept WORD FOR WORD: an unresolvable grade opens all four years,
+ * because showing too much is a cosmetic miss and showing nothing would be a dead
+ * page for a child who did nothing wrong.
  */
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { listReleasedStories } from "@domigo/content-loader";
-import { getClassGrade, getDb } from "@domigo/db";
 import { getActingUserForPage } from "@/lib/identity";
+import { resolveVisibleGrades } from "@/lib/grade-scope";
 import { DEFAULT_STORY_UI, STORY_UI } from "@/lib/stories";
 
 export const dynamic = "force-dynamic";
@@ -19,18 +29,15 @@ export default async function PlayIndexPage() {
   const acting = await getActingUserForPage();
   if (!acting) redirect("/signin");
 
-  const stories = listReleasedStories();
+  // The years this child may see. resolveVisibleGrades swallows a DB hiccup itself
+  // and lands on all four — so this never 500s and never renders an empty page for
+  // a reason the child has nothing to do with. (redirect() throws by design in
+  // Next, so it stays outside anything that catches.)
+  const grades = await resolveVisibleGrades(acting.classId);
+  const stories = listReleasedStories().filter((s) => grades.includes(s.grade));
 
-  // Fast path: the student's own grade. Wrapped — a DB hiccup must never 500
-  // the index; it just falls through to the chooser. (redirect() throws by
-  // design in Next, so it stays OUTSIDE the try.)
-  let grade: number | null = null;
-  try {
-    grade = await getClassGrade(getDb(), acting.classId);
-  } catch {
-    /* chooser below */
-  }
-  if (grade !== null && stories.some((s) => s.grade === grade)) redirect(`/play/${grade}`);
+  // Fast path: exactly one year in scope and a story released for it.
+  if (grades.length === 1 && stories.some((s) => s.grade === grades[0])) redirect(`/play/${grades[0]}`);
 
   return (
     <main style={{ maxWidth: 560, margin: "0 auto", padding: "28px 20px 48px", fontFamily: "var(--font-body)", color: "var(--text)" }}>
@@ -39,6 +46,15 @@ export default async function PlayIndexPage() {
         <Link href="/home" style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← Home</Link>
       </div>
       <p style={{ color: "var(--text-secondary)", marginTop: 0 }}>Pick a story world — every chapter runs on the words you learn.</p>
+
+      {stories.length === 0 && (
+        // The honest empty state. Before K1b this branch could not happen — the
+        // list was every released story — and an empty <div> would read as a
+        // broken page rather than as "not yet".
+        <p style={{ color: "var(--muted)", marginTop: 20 }}>
+          Nothing here yet for your school year — it appears as soon as your story is released.
+        </p>
+      )}
 
       <div style={{ display: "flex", flexDirection: "column", gap: 12, marginTop: 20 }}>
         {stories.map((s) => {
