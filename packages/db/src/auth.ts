@@ -19,6 +19,15 @@ export interface AuthUserRow {
   pinHash: string;
 }
 
+// K2a · NO `email` HERE, DELIBERATELY. It would have been the tidy place for it, and
+// it is the one place it must never go: migration 0016 is applied BY HAND after the
+// merge, so for the whole of that window a v2 SELECT naming `email` fails, `v2Safe`
+// below degrades to the v1 mirror exactly as designed — and a teacher who has ever
+// changed her PIN would silently authenticate against her OLD v1 hash instead. Her
+// current PIN would stop working and her old one would start again. The recovery
+// address is therefore read by its own tolerant query (getTeacherEmail,
+// teacher-identity.ts), which no sign-in path ever touches.
+
 // Identical projection (AuthUserRow) from each identity source, so a v2-native or
 // v1-mirror hit is interchangeable to the caller.
 const cols = {

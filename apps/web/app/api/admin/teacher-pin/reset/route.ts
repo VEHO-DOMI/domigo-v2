@@ -21,15 +21,15 @@
  * so a student id resolves to nothing here and this endpoint cannot touch a child's
  * PIN however it is called.
  *
- * NO JOURNAL, and that is declared rather than forgotten: `roster_events.class_id`
- * is NOT NULL and a teacher belongs to no class. The teacher-side audit journal is
- * the known Phase-C gap (teacher-identity.ts:20-24) — the same gap the existing
- * self-service PIN change sits in. It closes in K2, not by widening a class-scoped
- * table here.
+ * THE JOURNAL (K2a, the gap this header used to declare). `roster_events.class_id`
+ * is NOT NULL and a teacher belongs to no class, so this route shipped unjournalled
+ * and said so. `domigo_v2.teacher_events` is the teacher-scoped sibling that closes
+ * it — written here BEFORE the PIN is applied, and carrying BOTH ids, because the
+ * one fact this entry exists to preserve is that the operator did this, not she.
  */
 import { NextResponse } from "next/server";
 import { z } from "zod";
-import { getDb, lookupTeacherAuthById, upsertTeacherIdentity } from "@domigo/db";
+import { getDb, lookupTeacherAuthById, upsertTeacherIdentity, writeTeacherEvent } from "@domigo/db";
 import { getTeacher } from "@/lib/teacher";
 import { isGrandmaster } from "@/lib/grandmaster";
 import { hashPin, TEACHER_PIN_PATTERN } from "@/lib/pin";
@@ -61,6 +61,16 @@ export async function POST(req: Request): Promise<Response> {
     if (!target) return NextResponse.json({ ok: false, error: "teacher_not_found" }, { status: 404 });
 
     const pinHash = await hashPin(newPin);
+    // Journal-then-apply. `teacherId` is whose account; `actorId` is the operator's
+    // own session id — the two differ here and nowhere else, which is the entire
+    // reason the journal carries both. No name, no PIN, no hash in the payload.
+    await writeTeacherEvent(getDb(), {
+      teacherId,
+      kind: "pin_reset_by_grandmaster",
+      actorId: caller.userId,
+      payload: { transitional: true },
+    });
+    // `email` is not passed: a rescue must never quietly drop her recovery address.
     await upsertTeacherIdentity(getDb(), { id: teacherId, displayName: target.displayName, pinHash });
     return NextResponse.json({ ok: true, displayName: target.displayName });
   } catch (e) {

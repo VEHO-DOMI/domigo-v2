@@ -347,6 +347,11 @@ export const v2IdentityUsers = v2.table(
     givenName: text("given_name"), // real given name for the roster (nullable)
     classId: uuid("class_id"), // student's class — plain, nullable; teachers null. NO cross-schema FK
     pinHash: text("pin_hash").notNull(),
+    // K2a: the teacher's own recovery address — nullable, v2-ONLY. The v1 mirror has no
+    // such column and is never written, so a v1-mirror teacher reads back null here until
+    // she is promoted into domigo_v2 by setting one (upsertTeacherIdentity). Students never
+    // get one: a child's way back in is her teacher, not her inbox.
+    email: text("email"),
     claimedAt: timestamp("claimed_at", { withTimezone: true }), // null = provisional/unclaimed
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
   },
@@ -631,3 +636,95 @@ export const rolloverSnapshots = v2.table(
     byLabel: index("rollover_snapshots_label_idx").on(t.label),
   }),
 );
+
+// ---------------------------------------------------------------------------
+// K2a · THE TEACHER'S OWN ACCOUNT — journal, recovery, and a brake on guessing
+// ---------------------------------------------------------------------------
+// Three tables that close the "Phase C" gap the identity work has carried since
+// P3. All additive, all inside domigo_v2, none reachable by a student path.
+
+/**
+ * The TEACHER journal — the sibling `roster_events` could never be.
+ *
+ * `roster_events.class_id` is NOT NULL and a teacher belongs to no class, so every
+ * action on a teacher's own account (her PIN change, the grandmaster's transitional
+ * PIN, her recovery mail) has until now happened unrecorded. The K1b reset route
+ * says so in its own header and defers here. Widening the class-scoped table would
+ * have meant a nullable class_id on the roster's audit trail — a permanent hole in
+ * a guarantee that is currently airtight. A second, teacher-scoped journal keeps
+ * both promises intact.
+ *
+ * `teacherId` is WHOSE ACCOUNT changed; `actorId` is WHOSE HAND did it. They differ
+ * exactly when the grandmaster acts for a locked-out colleague, and that difference
+ * is the only reason the second column exists — a journal that cannot tell "she
+ * changed her PIN" from "the operator changed her PIN" is not an audit trail.
+ *
+ * `payload` carries ids, numbers and flags ONLY: never a name, never a PIN or hash,
+ * never the address itself (`emailSet: true` says everything the journal needs to
+ * say). Same frugality law as progress-adjust.ts.
+ */
+export const v2TeacherEvents = v2.table(
+  "teacher_events",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    teacherId: uuid("teacher_id").notNull(), // whose ACCOUNT — plain uuid, NO cross-schema FK
+    // 'pin_change'|'pin_reset_by_grandmaster'|'email_set'|'reset_requested'|'reset_consumed'
+    // (app-validated, like every other `kind` in this schema)
+    kind: text("kind").notNull(),
+    actorId: uuid("actor_id"), // whose HAND — nullable; equals teacherId on self-service
+    payload: jsonb("payload").notNull(),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => ({
+    byTeacher: index("teacher_events_teacher_idx").on(t.teacherId),
+  }),
+);
+
+/**
+ * One-shot recovery tokens for "PIN vergessen".
+ *
+ * THE PRIMARY KEY IS THE HASH, NOT THE TOKEN. A stolen copy of this table must not
+ * read as a list of live tokens, so only sha256("domigo-reset:" + token) is stored
+ * (the prefix is domain separation: the same random string hashed for another
+ * purpose elsewhere can never collide with an entry here). It follows that the
+ * plaintext link exists exactly once, in the mail — it cannot be recovered from the
+ * database by anyone, us included.
+ *
+ * Lookup happens BY that hash, so no code path ever compares two token strings, and
+ * the comparison is constant-time by construction rather than by discipline.
+ *
+ * Consumption is ONE guarded UPDATE (see reset-tokens.ts): the number of returned
+ * rows decides the race between two clicks on the same link. Neon HTTP has no
+ * multi-statement transactions, so a read-then-write would be exactly the race the
+ * table exists to prevent.
+ */
+export const v2TeacherResetTokens = v2.table("teacher_reset_tokens", {
+  tokenHash: text("token_hash").primaryKey(), // sha256 of "domigo-reset:<token>" — never the token
+  teacherId: uuid("teacher_id").notNull(), // plain uuid, NO cross-schema FK
+  expiresAt: timestamp("expires_at", { withTimezone: true }).notNull(),
+  consumedAt: timestamp("consumed_at", { withTimezone: true }), // null = still usable
+  createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+});
+
+/**
+ * The sign-in brake — a counter per key, per rolling window.
+ *
+ * Until now nothing in this product slowed a PIN guesser down: not the teacher
+ * sign-in, not the children's, not the `currentPin` check under Einstellungen. One
+ * shared table serves all of them because the shape is identical everywhere, and
+ * because a second table per surface would be three chances to forget one.
+ *
+ * `key` names the surface AND the identity it protects (`teacher:<name>`,
+ * `student:<code>:<nick>`, `reset:<name>`), always lower-cased by its builder — a
+ * brake that a different capitalisation walks around is not a brake. It carries no
+ * personal data beyond the handle the visitor typed, and no row outlives its window
+ * in any meaningful sense (the next attempt after the window resets it to 1).
+ *
+ * Window and counter turn in ONE statement (auth-throttle.ts). Reading the window,
+ * deciding, then writing would let two parallel attempts each see a stale count.
+ */
+export const v2AuthThrottle = v2.table("auth_throttle", {
+  key: text("key").primaryKey(),
+  windowStart: timestamp("window_start", { withTimezone: true }).notNull(),
+  count: integer("count").notNull(),
+});

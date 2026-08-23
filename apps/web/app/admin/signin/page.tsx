@@ -48,7 +48,10 @@ export default async function AdminSignInPage({
         </label>
         <button type="submit" className="dg-btn" style={{ marginTop: 4, padding: "12px 16px" }}>Sign in</button>
       </form>
-      <p style={{ marginTop: 20, fontSize: 13, color: "var(--muted)" }}>
+      <p style={{ marginTop: 16, fontSize: 13, color: "var(--muted)" }}>
+        <Link href="/lehrkraft/pin-vergessen" style={{ color: "var(--accent)", fontWeight: 600 }}>PIN vergessen?</Link>
+      </p>
+      <p style={{ marginTop: 8, fontSize: 13, color: "var(--muted)" }}>
         Student? <Link href="/signin" style={{ color: "var(--accent)", fontWeight: 600 }}>Sign in here</Link>.
       </p>
     </main>
