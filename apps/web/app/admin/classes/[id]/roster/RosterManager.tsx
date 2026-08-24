@@ -197,7 +197,7 @@ export default function RosterManager({
       </p>
       {archived && (
         <p style={{ background: "var(--bg-sunken)", border: "1px solid var(--card-border)", color: "var(--muted)", padding: "9px 13px", borderRadius: 12, fontSize: 13 }}>
-          This class is archived — students can no longer join. Un-archive it from Classes to reopen joining.
+          This class is archived — students can no longer join, and it cannot be reopened: the platform has no un-archive path yet. Create a new class if you need one.
         </p>
       )}
 

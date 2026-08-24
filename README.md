@@ -2,7 +2,7 @@
 
 EFL practice app for Austrian AHS Klasse 1–4 (MORE! 1–4, A1→A2) at the Gymnasium der
 Dominikanerinnen. From-scratch rebuild of [domigo](https://github.com/VEHO-DOMI/domigo) (v1, the
-reference implementation, live until cutover). **Go-live: school year 2026/27.**
+reference implementation, live until cutover). **Live seit 2026-07-12 auf [domigo-v2.vercel.app](https://domigo-v2.vercel.app) — Termine gibt es keine: fertig ist fertig (Koki-Ruling).**
 
 **Start here: [`docs/handover/00_START_HERE.md`](docs/handover/00_START_HERE.md).**
 The guardrails in [`docs/handover/08_design_principles.md`](docs/handover/08_design_principles.md)

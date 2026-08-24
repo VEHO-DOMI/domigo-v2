@@ -1,5 +1,7 @@
 # DomiGo v2 — Ultimate Vision Blueprint (the completion program)
 
+> **⚠ Migrationszählung historisch.** Die in diesem Dokument genannten Migrations-Nummern beschreiben den Planungsstand seiner Entstehung und sind seither mehrfach verschoben worden — dieses Dokument ist eingefrorene Historie und wird nicht nachgezogen. **Die aktuelle Wahrheit ist `packages/db/drizzle/meta/_journal.json`** (Stand 2026-08-24: 0000–0016). _(Hinweis ergänzt 2026-08-24, PLATT-K9a.)_
+
 _Written 2026-07-06 by Claude Fable 5. Status: **FINAL — approved by Koki 2026-07-06.** The all-encompassing program that takes DomiGo v2 from its 80-PR foundation to the full vision and the September-1 go-live, executable by any future session/model. Built from 4 exploration agents (docs corpus · code reality-check · srdp-practice feature catalog · v1 UX survey) + 3 design agents (game/G4 · platform/milestones · didactics), all findings verified against the repo; decision-gated with Koki mid-session. Format follows the SRDP-Practice Blueprint v2 (2026-07-05). Durable copies: this file (canonical), iCloud `Domi Gym/DOMIGO_BLUEPRINT_2026-07-06.md`, `~/.claude/plans/`. Companion: `docs/VISION.md` (north star + binding principles + decision ledger). `docs/STATUS_AND_ROADMAP.md` remains the live status ledger and now points here for the W1–W9 window._
 
 ## Context

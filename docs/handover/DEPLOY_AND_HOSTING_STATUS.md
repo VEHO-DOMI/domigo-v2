@@ -1,5 +1,15 @@
 # DomiGo v2 — Deployment & Hosting Status (verified 2026-07-11)
 
+> ## ⚠ HISTORISCH — dieses Blatt beschreibt den Stand VOR dem Go-live
+>
+> **DomiGo v2 ist seit 2026-07-12 live auf `domigo-v2.vercel.app`.** Der erste Absatz
+> unten („nothing is hosted yet") war am 2026-07-11 wahr und ist es seit dem Tag darauf
+> nicht mehr; er wird hier nur als Historie aufbewahrt, zusammen mit den beiden
+> Prüfungen, für die dieses Blatt geschrieben wurde. **Die aktuelle Wahrheit über
+> Betrieb, Umgebungs-Variablen und Migrationen steht in
+> [`../runbooks/deploy.md`](../runbooks/deploy.md)** — dort wird sie gepflegt, hier nicht.
+> _(Kopf-Banner ergänzt 2026-08-24, PLATT-K9a.)_
+
 > **Two sanity checks, eyes-on, with evidence.** This records the true hosting/DB
 > state of DomiGo v2 and the plan to actually take it live. Written after logging
 > into Vercel + Neon directly (Koki's accounts) and reading the repo. TL;DR:
