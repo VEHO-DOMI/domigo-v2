@@ -1,48 +1,95 @@
 /**
- * K9b · The CLIENT half of the roster parser — the twin of
- * packages/db/src/roster-service.ts (`firstCell`, `cleanCell`, `parseRoster`).
+ * K9b · Die CLIENT-Hälfte des Roster-Parsers — der Zwilling von
+ * `packages/db/src/roster-service.ts`.
  *
- * Why a twin at all: `@domigo/db` is server-only (its index opens a Neon client), so
- * it must never enter the browser bundle — but the review list the teacher confirms,
- * and the count on the import button, have to be EXACTLY what the server will insert.
- * The rule therefore exists twice, byte-for-byte, and both copies are pinned by the
- * SAME fixture list: `roster-parse.test.ts` here and `roster-service.test.ts` there.
- * Change one side and the other's test goes red.
+ * Warum überhaupt zweimal: `@domigo/db` ist server-only (sein Index öffnet einen
+ * Neon-Client) und darf nie ins Browser-Bündel — aber die Prüfliste, die die
+ * Lehrkraft bestätigt, und die Zahl auf dem Knopf müssen EXAKT das sein, was der
+ * Server anlegt. Also lebt die Regel zweimal, byte-gleich, und zwei Dinge halten
+ * sie zusammen: `pnpm check:roster-twins` (vergleicht den Block maschinell, läuft
+ * in CI) und eine gemeinsame Fixture-Liste in beiden Testdateien.
  *
- * No React, no "use client" — a plain module so `node --test` can run it.
- *
- * ── the rule ────────────────────────────────────────────────────────────────
- * FIRST CELL WINS. A real export carries more than the name — `Anna;5B`,
- * `Anna\tAnna.Mueller@…`, `"Mueller, Anna";5B`. Each line is reduced to its first
- * cell so the rest of the pipeline sees what it always saw: one name per line.
- *
- * Deliberately narrow, because the ONE thing it must not break is a name containing
- * a comma:
- *   • a leading double-quote OPENS a protected cell — everything up to the closing
- *     quote is the name, internal comma and all, and whatever follows is dropped;
- *   • otherwise a `;` or a TAB (never a bare comma) ends the first cell;
- *   • a line with neither stays WHOLE — `Mueller, Anna` is one name, not two cells.
- * That last case is the declared boundary: an unquoted comma cannot be told apart
- * from a European surname-first spelling, so the forgiving reading wins.
+ * Kein React, kein "use client" — ein schlichtes Modul, damit `node --test` es fährt.
  */
 
-/** Reduce one raw line to its first cell (see the rule above). */
-export function firstCell(raw: string): string {
-  const s = raw.trim();
-  if (s.startsWith('"')) {
-    const close = s.indexOf('"', 1);
-    if (close > 0) return s.slice(0, close + 1); // keep the pair; cleanCell strips it
-  }
-  const sep = s.search(/[;\t]/);
-  return sep === -1 ? s : s.slice(0, sep);
+/**
+ * Obergrenze für eine hochgeladene Datei. Eine Klassenliste ist ein paar Kilobyte;
+ * zwei Megabyte sind bereits absurd weit jenseits davon. Der Deckel greift VOR dem
+ * Lesen (`file.size`), damit ein versehentlich gewähltes Video nicht erst
+ * vollständig in den Speicher wandert. Rein clientseitig — der Server bekommt nie
+ * eine Datei zu sehen, nur die geprüfte Namensliste.
+ */
+export const MAX_ROSTER_FILE_BYTES = 2 * 1024 * 1024;
+
+// ─── TWIN BLOCK START · geprüft von scripts/check-roster-twins.mjs ───────────
+// Alles zwischen den beiden Markern ist BYTE-GLEICH in:
+//   • packages/db/src/roster-service.ts   (Server, autoritativ)
+//   • apps/web/lib/roster-parse.ts        (Client, Prüfliste + Zähler)
+// Der Zwilling existiert, weil @domigo/db server-only ist und nicht ins
+// Browser-Bündel darf — die Zahl auf dem Knopf muss aber exakt die sein, die der
+// Server anlegt. `pnpm check:roster-twins` hält beide Hälften zusammen.
+
+/** Längster erlaubter Schülername (ein Listen-Eintrag, keine Prosa). */
+export const MAX_STUDENT_NAME_LENGTH = 80;
+
+/** Obergrenze für einen Import-Vorgang — eine Klassenliste, kein Datensatz-Dump. */
+export const MAX_ROSTER_NAMES = 500;
+
+/**
+ * Zerlegt einen Text in Zeilen. Deckt ALLE drei Zeilenenden ab: \r\n (Windows),
+ * \n (Unix) und \r ALLEIN — letzteres liefern alte Mac-Exporte und einzelne
+ * Tabellenprogramme, und ein reiner \r\n?-Ausdruck macht daraus EINE Zeile, also
+ * einen einzigen Riesen-"Namen".
+ */
+function splitLines(text: string): string[] {
+  return text.split(/\r\n|\r|\n/);
 }
 
 /**
- * Normalize one line into a clean name: first cell, then strip a one-column-CSV
- * trailing comma, then strip a surrounding pair of double quotes (a spreadsheet
- * paste often yields `"Anna",`). Returns "" for a blank line so the caller drops it.
+ * ERSTE ZELLE GEWINNT. Ein echter Export trägt mehr als den Namen — `Anna;5B`,
+ * `Anna\tanna@example.at`, `"Mueller, Anna";5B`. Jede Zeile wird auf ihre erste
+ * Zelle reduziert, damit der Rest der Kette sieht, was er immer sah: einen Namen.
+ *
+ * Bewusst eng, denn das eine, was die Regel nicht brechen darf, ist ein Name MIT
+ * Komma:
+ *   • ein führendes Anführungszeichen ÖFFNET eine geschützte Zelle — alles bis
+ *     zum schließenden Zeichen ist der Name, internes Komma inklusive, der Rest
+ *     der Zeile fällt weg;
+ *   • sonst beendet ein `;` oder ein TABULATOR die erste Zelle (nie ein blankes
+ *     Komma);
+ *   • eine Zeile ohne beides bleibt GANZ — `Mueller, Anna` ist ein Name, nicht
+ *     zwei Zellen. Das ist die deklarierte Grenze: ein nacktes Komma lässt sich
+ *     nicht von der Nachname-zuerst-Schreibweise unterscheiden, also gewinnt die
+ *     nachsichtige Lesart.
+ *
+ * ⚠ Das `.trim()` auf dem Schnitt ist NICHT Kosmetik (K9b-Review, Blocker): ohne
+ * es überlebt `Anna ;5B` als `"Anna "`, und die beiden Hälften normalisieren
+ * danach VERSCHIEDEN — der Client trimmt beim Senden, der Server lässt
+ * zusätzlich `cleanCell` darüberlaufen. Gemessen: die Prüfliste zeigte
+ * »Add 2 students« OHNE Duplikat-Abzeichen, angelegt wurde 1. Genau die Zahl,
+ * für die der Prüfschritt gebaut ist.
  */
-export function cleanCell(raw: string): string {
+function firstCell(raw: string): string {
+  const s = raw.trim();
+  if (s.startsWith('"')) {
+    const close = s.indexOf('"', 1);
+    if (close > 0) return s.slice(0, close + 1); // Paar bleibt; cleanCell streift es
+  }
+  const sep = s.search(/[;\t]/);
+  return sep === -1 ? s : s.slice(0, sep).trim();
+}
+
+/**
+ * Eine Zeile zu einem sauberen Namen normalisieren: erste Zelle, dann ein
+ * einspaltiges CSV-Schlusskomma weg, dann ein umschließendes
+ * Anführungszeichen-Paar weg (eine Tabellen-Einfügung liefert oft `"Anna",`).
+ * Leere Zeile ⇒ "" , der Aufrufer wirft sie weg.
+ *
+ * INVARIANTE: die Ausgabe trägt nie äußeren Leerraum — jeder Zweig hier trimmt,
+ * und `firstCell` tut es ebenfalls. Ein Test hält das über alle Fixtures fest,
+ * damit ein künftiger Zweig die Invariante nicht unbemerkt aufreißt.
+ */
+function cleanCell(raw: string): string {
   let s = firstCell(raw);
   if (s.endsWith(",")) s = s.slice(0, -1).trim();
   if (s.length >= 2 && s.startsWith('"') && s.endsWith('"')) s = s.slice(1, -1).trim();
@@ -50,14 +97,15 @@ export function cleanCell(raw: string): string {
 }
 
 /**
- * Parse a pasted or uploaded roster — one student per LINE. Drops blanks and dedupes
- * case-insensitively, PRESERVING the first casing seen ("Anna" then "anna" ⇒ "Anna").
+ * Eine Liste von Zellen säubern: Leere fallen weg, Duplikate fallen weg
+ * (schreibungs-unabhängig), und die ZUERST gesehene Schreibung bleibt stehen
+ * ("Anna" dann "anna" ⇒ nur "Anna").
  */
-export function previewRoster(text: string): string[] {
+function dedupeClean(cells: readonly string[]): string[] {
   const seen = new Set<string>();
   const out: string[] = [];
-  for (const raw of text.split(/\r?\n/)) {
-    const name = cleanCell(raw);
+  for (const cell of cells) {
+    const name = cleanCell(cell);
     if (name === "") continue;
     const key = name.toLowerCase();
     if (seen.has(key)) continue;
@@ -65,4 +113,19 @@ export function previewRoster(text: string): string[] {
     out.push(name);
   }
   return out;
+}
+
+/** Ein Name, den der Server annehmen wird: nicht leer und nicht zu lang. */
+export function isImportableName(name: string): boolean {
+  const trimmed = name.trim();
+  return trimmed !== "" && trimmed.length <= MAX_STUDENT_NAME_LENGTH;
+}
+// ─── TWIN BLOCK END ─────────────────────────────────────────────────────────
+
+/**
+ * Vorschau auf das, was der Server anlegen wird — der Zwilling von `parseRoster`.
+ * Ein Kind je ZEILE, erste Zelle, entdoppelt.
+ */
+export function previewRoster(text: string): string[] {
+  return dedupeClean(splitLines(text));
 }

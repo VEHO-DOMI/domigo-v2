@@ -12,16 +12,37 @@
  */
 import { NextResponse } from "next/server";
 import { z } from "zod";
-import { getClassForGrandmaster, getDb, importRoster, parseRoster } from "@domigo/db";
+import {
+  MAX_ROSTER_NAMES,
+  MAX_STUDENT_NAME_LENGTH,
+  getClassForGrandmaster,
+  getDb,
+  importRoster,
+  isImportableName,
+  parseRoster,
+} from "@domigo/db";
 import { getTeacher } from "@/lib/teacher";
 import { isGrandmaster } from "@/lib/grandmaster";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
+/**
+ * K9b · THE LIMITS ARE PART OF THE CONTRACT, not decoration. A roster is a class
+ * list: a few hundred short names. Without ceilings this endpoint would happily
+ * accept a pasted database dump and insert it row by row.
+ *
+ * `text` gets a byte-ish ceiling generous enough for 500 long lines and nothing
+ * like a file dump; `names` is capped per ENTRY (the name length the column and
+ * the UI both promise) and in LENGTH (one class, not a school). Zod rejects with
+ * 400 before a single row is touched — and the client caps the same numbers, so a
+ * teacher sees the limit in the review list instead of a bare error.
+ */
+const MAX_IMPORT_TEXT_LENGTH = MAX_ROSTER_NAMES * 400; // 200k chars ≈ 500 generous lines
+
 const ImportSchema = z.object({
-  text: z.string().optional(),
-  names: z.array(z.string()).optional(),
+  text: z.string().max(MAX_IMPORT_TEXT_LENGTH).optional(),
+  names: z.array(z.string().max(MAX_STUDENT_NAME_LENGTH)).max(MAX_ROSTER_NAMES).optional(),
 });
 
 export async function POST(req: Request, { params }: { params: Promise<{ id: string }> }): Promise<Response> {
@@ -35,6 +56,16 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
   // Prefer the pasted text (cleaned by the shared parser); fall back to a names array.
   const names = parsed.data.text != null ? parseRoster(parsed.data.text) : parsed.data.names ?? [];
   if (names.length === 0) return NextResponse.json({ ok: false, error: "no_names" }, { status: 400 });
+  // The `text` path parses HERE, so Zod could not have counted or measured its names
+  // yet — the same two ceilings are applied to the parsed result. `names[]` has
+  // already passed them in the schema; re-checking costs nothing and means no path
+  // into importRoster can carry an over-long or over-large list.
+  if (names.length > MAX_ROSTER_NAMES) {
+    return NextResponse.json({ ok: false, error: "too_many_names", limit: MAX_ROSTER_NAMES, found: names.length }, { status: 400 });
+  }
+  if (!names.every(isImportableName)) {
+    return NextResponse.json({ ok: false, error: "name_too_long", limit: MAX_STUDENT_NAME_LENGTH }, { status: 400 });
+  }
 
   try {
     // Whose authorization the import runs under: the caller's own, unless he is the

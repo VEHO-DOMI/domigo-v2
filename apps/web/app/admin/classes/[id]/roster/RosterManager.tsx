@@ -9,7 +9,13 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useMemo, useRef, useState, type CSSProperties } from "react";
-import { previewRoster } from "@/lib/roster-parse";
+import {
+  MAX_ROSTER_FILE_BYTES,
+  MAX_ROSTER_NAMES,
+  MAX_STUDENT_NAME_LENGTH,
+  isImportableName,
+  previewRoster,
+} from "@/lib/roster-parse";
 
 interface RosterEntry {
   id: string;
@@ -75,12 +81,16 @@ export default function RosterManager({
       const name = r.name.trim();
       if (!r.keep) return { empty: false, dupe: false };
       if (name === "") return { empty: true, dupe: false };
+      if (!isImportableName(name)) return { empty: false, dupe: false, tooLong: true };
       const key = name.toLowerCase();
       const dupe = seen.has(key);
       seen.add(key);
-      return { empty: false, dupe };
+      return { empty: false, dupe, tooLong: false };
     });
-    const willCreate = rows.filter((r, i) => r.keep && !flags[i]!.empty && !flags[i]!.dupe).length;
+    // A row the SERVER would refuse is a row the button must not count. The endpoint
+    // answers 400 for an over-long name; showing it here instead means the teacher
+    // shortens one line rather than meeting a bare error after pressing the button.
+    const willCreate = rows.filter((r, i) => r.keep && !flags[i]!.empty && !flags[i]!.dupe && !flags[i]!.tooLong).length;
     return { flags, willCreate };
   }, [review]);
 
@@ -91,6 +101,13 @@ export default function RosterManager({
     setImportErr(null);
     if (names.length === 0) {
       setImportErr(label ? `No names found in ${label}.` : "Paste at least one name.");
+      return;
+    }
+    // The endpoint refuses more than MAX_ROSTER_NAMES in one go. Saying so HERE, with
+    // the number actually found, beats a 400 after the press — and a list this long is
+    // almost always the wrong file rather than a very large class.
+    if (names.length > MAX_ROSTER_NAMES) {
+      setImportErr(`That is ${names.length} names — more than one class list (limit ${MAX_ROSTER_NAMES}). Check whether this is the right file, or import it in parts.`);
       return;
     }
     setSourceLabel(label);
@@ -106,6 +123,14 @@ export default function RosterManager({
     if (!file) return;
     setImportMsg(null);
     setImportErr(null);
+    // The size gate comes BEFORE the read, on purpose: File.text() pulls the whole
+    // file into memory, and a wrongly picked video would be read in full before
+    // anyone noticed it holds no names.
+    if (file.size > MAX_ROSTER_FILE_BYTES) {
+      setImportErr(`That file is ${(file.size / 1024 / 1024).toFixed(1)} MB — a class list is a few kilobytes. Pick the exported CSV, not the whole workbook.`);
+      if (fileInputRef.current) fileInputRef.current.value = "";
+      return;
+    }
     try {
       const text = await file.text();
       startReview(text, file.name);
@@ -284,7 +309,7 @@ export default function RosterManager({
             </div>
             <p style={{ margin: "0 0 12px", fontSize: 12.5, color: "var(--muted)", lineHeight: 1.5 }}>
               CSV or plain text, one student per line — extra columns are ignored. Excel: File → Save As → CSV.
-              Word: select the list, copy, and paste it below instead.
+              Word: select the list, copy, and paste it below instead. Up to {MAX_ROSTER_NAMES} names per import.
             </p>
             <textarea
               value={paste}
@@ -322,12 +347,13 @@ export default function RosterManager({
                     />
                     <input
                       value={row.name}
-                      maxLength={80}
+                      maxLength={MAX_STUDENT_NAME_LENGTH}
                       onChange={(e) => setReview((rs) => (rs ?? []).map((r, k) => (k === i ? { ...r, name: e.target.value } : r)))}
                       style={{ ...input, flex: 1, opacity: row.keep ? 1 : 0.45, textDecoration: row.keep ? "none" : "line-through" }}
                     />
                     {flag.dupe && <span style={{ fontSize: 12, fontWeight: 700, color: "var(--partial)", whiteSpace: "nowrap" }}>duplicate</span>}
                     {flag.empty && <span style={{ fontSize: 12, fontWeight: 700, color: "var(--incorrect)", whiteSpace: "nowrap" }}>empty</span>}
+                    {flag.tooLong && <span style={{ fontSize: 12, fontWeight: 700, color: "var(--incorrect)", whiteSpace: "nowrap" }}>too long</span>}
                   </div>
                 );
               })}

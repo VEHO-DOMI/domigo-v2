@@ -112,6 +112,8 @@ jobs:
       - run: node scripts/check-level-design.mjs # R5-P1/B1: Stem-Dedup, Vokabel-Abdeckung, Dossier↔Level-Anker, benannte Schwellen
       - run: node scripts/check-registers.mjs --selftest # K1: das rote Licht des Register-Tors muss erreichbar sein
       - run: node scripts/check-registers.mjs # K1: D-/PB-Nummern eindeutig, Code-Verweise lösen per SYMBOL auf, nie per Zeile
+      - run: node scripts/check-roster-twins.mjs --selftest # K9b-Review: das rote Licht muss erreichbar sein — je eine im Speicher verbogene Kopie (Regel-Block · Fixture-Liste) muss gemeldet werden, die echten Dateien grün bleiben
+      - run: node scripts/check-roster-twins.mjs # K9b-Review: die Parse-Regel lebt zweimal (@domigo/db ist server-only) — driftet eine Hälfte, zeigt die Prüfliste eine andere Zahl, als der Server anlegt
 
       # ── Bild: was auf den Blättern wirklich steht ────────────────────────────
       - run: node --experimental-strip-types scripts/check-paint-art.mjs --selftest # W6/D-454: vier echte Defekte müssen rot werden (fehlendes Blatt · schale Ausnahme · Ausnahme ohne Bedarf · die Tot-Kunst-Ratsche, ausgelöst über EIN Blatt mehr in der Welt statt über eine gedrehte Decke) und der echte Stand grün bleiben

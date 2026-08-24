@@ -9,7 +9,7 @@
  */
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { previewRoster } from "./roster-parse.ts";
+import { MAX_STUDENT_NAME_LENGTH, isImportableName, previewRoster } from "./roster-parse.ts";
 
 /**
  * ── THE SHARED FIXTURE LIST (K9b) ────────────────────────────────────────────
@@ -39,6 +39,11 @@ const TWIN_FIXTURES: { label: string; input: string; expect: string[] }[] = [
   { label: "DECLARED BOUNDARY: an UNQUOTED comma keeps the whole line (surname-first is one name)", input: "Mueller, Anna\nOstrowski, Ben", expect: ["Mueller, Anna", "Ostrowski, Ben"] },
   { label: "a header row is just another name — the teacher removes it in the review list", input: "Name;Klasse\nAnna Mueller;5B", expect: ["Name", "Anna Mueller"] },
   { label: "everything at once, the way a real export arrives", input: "\"Mueller, Anna\";5B\nBen Ostrowski\t5B\n\n  Clara Nowak  ,\nben ostrowski\t5B\n", expect: ["Mueller, Anna", "Ben Ostrowski", "Clara Nowak"] },
+  { label: "K9b-BLOCKER: a SPACE before the separator is not part of the name", input: "Anna Muster ;5B\nBen Beispiel \t5B", expect: ["Anna Muster", "Ben Beispiel"] },
+  { label: "K9b-BLOCKER: the padded line collapses into its twin instead of becoming a second student", input: "Anna Muster;5B\nAnna Muster ;5C", expect: ["Anna Muster"] },
+  { label: "K9b-BLOCKER: a comma cell padded with spaces normalizes the SAME on both halves", input: "Anna Muster\nAnna Muster , ;5B", expect: ["Anna Muster"] },
+  { label: "a CARRIAGE RETURN alone ends a line (old-Mac exports) — not one giant name", input: "Anna Muster\rBen Beispiel\rClara Probe", expect: ["Anna Muster", "Ben Beispiel", "Clara Probe"] },
+  { label: "all three line endings mixed in one paste", input: "Anna Muster\r\nBen Beispiel\nClara Probe\rDoro Tal", expect: ["Anna Muster", "Ben Beispiel", "Clara Probe", "Doro Tal"] },
 ];
 
 for (const f of TWIN_FIXTURES) {
@@ -64,4 +69,26 @@ test("an unclosed quote is left alone rather than swallowing the line", () => {
 
 test("dedupes AFTER the columns are cut", () => {
   assert.deepEqual(previewRoster("Anna;5B\nanna;5C"), ["Anna"]);
+});
+
+test("K9b-BLOCKER · never returns a name carrying outer whitespace — the INVARIANT, over every fixture", () => {
+  // The class, not the instance: one branch let a trailing space through, and the two
+  // halves then normalized differently, so the review list promised a number the
+  // database did not deliver. Asserting the invariant covers every future branch too.
+  for (const f of TWIN_FIXTURES) {
+    for (const name of previewRoster(f.input)) {
+      assert.equal(name, name.trim());
+    }
+  }
+  assert.deepEqual(previewRoster("Anna Muster ;5B"), ["Anna Muster"]);
+  assert.deepEqual(previewRoster("Anna Muster\t;5B"), ["Anna Muster"]);
+});
+
+test("isImportableName pins exactly what the server will accept", () => {
+  assert.equal(isImportableName("Anna Muster"), true);
+  assert.equal(isImportableName("   "), false);
+  assert.equal(isImportableName("x".repeat(MAX_STUDENT_NAME_LENGTH)), true);
+  assert.equal(isImportableName("x".repeat(MAX_STUDENT_NAME_LENGTH + 1)), false);
+  // trims first, so a padded name at the cap is still fine
+  assert.equal(isImportableName("  " + "x".repeat(MAX_STUDENT_NAME_LENGTH) + "  "), true);
 });
