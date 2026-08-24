@@ -3,7 +3,9 @@ import { redirect } from "next/navigation";
 import { auth, signOut } from "@/auth";
 import { listReleasedStories } from "@domigo/content-loader";
 import { getClassGrade, getDb, getDueCounts, getUserProgress, isStreakActive } from "@domigo/db";
+import { registerFor } from "@/lib/levels";
 import { DEFAULT_STORY_UI, STORY_UI } from "@/lib/stories";
+import ProfileCard from "./ProfileCard";
 
 export const dynamic = "force-dynamic";
 
@@ -22,22 +24,36 @@ export default async function HomePage() {
     /* keep default */
   }
 
-  // Daily-streak badge. Wrapped like the due count so a DB hiccup never 500s the landing.
-  let streakLabel: string | null = null;
+  // K7a · The profile card's numbers: the two XP pools plus the daily streak,
+  // which used to be a badge of its own and is now a cell in the card's stats
+  // row (the OG composition, design-study-og-trainers.md:503-518). Wrapped like
+  // the due count: a DB hiccup costs the CARD, never the landing page.
+  let progress: { xp: number; grammarXp: number; streak: number | null } | null = null;
   try {
     const p = await getUserProgress(getDb(), session.user.id);
-    if (p && p.streak > 0 && isStreakActive(p.lastSessionDate)) streakLabel = `🔥 ${p.streak}-day streak`;
+    if (p) {
+      progress = {
+        xp: p.xp,
+        grammarXp: p.grammarXp,
+        streak: p.streak > 0 && isStreakActive(p.lastSessionDate) ? p.streak : null,
+      };
+    }
   } catch {
-    /* no streak badge on failure */
+    /* no card on failure */
   }
 
   // Story tile — the grade's game, first on the landing (the story modes are the
   // app's engagement heart and must be one tap from sign-in). The grade→story map
   // is derived from the corpus; the lookup is wrapped like the badges: a DB hiccup
   // degrades to the /play chooser, never a dead link and never a 500.
+  // The grade is read ONCE and serves two readers: the story tile below and the
+  // profile card's title register (1st grade reads the gentle ladder, 2nd-4th
+  // the gamer one). A failed read leaves it null — the chooser fallback here,
+  // the gamer register there. Both are cosmetic misses, never a dead page.
+  let grade: number | null = null;
   let storyTile = { href: "/play", icon: DEFAULT_STORY_UI.icon, title: "Story", sub: "Story adventures by grade" };
   try {
-    const grade = session.user.classId ? await getClassGrade(getDb(), session.user.classId) : null;
+    grade = session.user.classId ? await getClassGrade(getDb(), session.user.classId) : null;
     const story = grade === null ? undefined : listReleasedStories().find((s) => s.grade === grade);
     if (story) {
       const ui = STORY_UI[story.grade] ?? DEFAULT_STORY_UI;
@@ -65,10 +81,10 @@ export default async function HomePage() {
   return (
     <main style={{ maxWidth: 560, margin: "0 auto", padding: "28px 20px 48px", fontFamily: "var(--font-body)", color: "var(--text)" }}>
       <h1 style={{ fontSize: 30, margin: "0 0 6px", fontFamily: "var(--font-display)", color: "var(--ink)" }}>Hi, {session.user.name} 👋</h1>
-      {streakLabel && (
-        <span style={{ display: "inline-flex", alignItems: "center", background: "rgba(234,88,12,0.12)", color: "#c2410c", fontWeight: 700, fontSize: 13, padding: "4px 12px", borderRadius: 999, fontFamily: "var(--font-label)" }}>{streakLabel}</span>
+      {progress && (
+        <ProfileCard xp={progress.xp} grammarXp={progress.grammarXp} streak={progress.streak} register={registerFor(grade)} />
       )}
-      <p style={{ color: "var(--text-secondary)", margin: streakLabel ? "10px 0 0" : "0" }}>What would you like to do?</p>
+      <p style={{ color: "var(--text-secondary)", margin: progress ? "18px 0 0" : "0" }}>What would you like to do?</p>
 
       <div style={{ display: "flex", flexDirection: "column", gap: 12, marginTop: 20 }}>
         {items.map((it) => (
