@@ -21,7 +21,7 @@ const schritte: { titel: string; text: string }[] = [
   },
   {
     titel: "2 · Schülerliste einfügen",
-    text: "Bei deiner Klasse auf »Roster« gehen und die Namen ins große Feld einfügen: ein Name je Zeile, Vor- und Zuname. Eine Spalte aus einer Tabelle kannst du direkt hineinkopieren; doppelte Namen sortiert die Seite selbst aus. Dann auf die Schaltfläche »Import«, auf der schon steht, wie viele Namen es sind.",
+    text: "Bei deiner Klasse auf »Roster« gehen. Zwei Wege: entweder eine Datei auswählen (»Choose File«) oder die Namen ins große Feld einfügen — ein Name je Zeile. Aus Excel: Datei → Speichern unter → CSV; aus Word: die Liste markieren, kopieren und unten einfügen. Zusätzliche Spalten wie Klasse oder E-Mail stören nicht, es zählt die erste. Danach zeigt dir die Seite JEDE Zeile einzeln zum Prüfen: Namen ausbessern, jemanden abwählen — erst der letzte Klick legt die Kinder wirklich an.",
   },
   {
     titel: "3 · Beitritts-Link austeilen",
@@ -35,8 +35,8 @@ const schritte: { titel: string; text: string }[] = [
 
 const warnungen: { titel: string; text: string }[] = [
   {
-    titel: "Eine Klasse nie archivieren",
-    text: "Die rote Schaltfläche »Archive« in der Klassenliste sperrt alle Kinder dieser Klasse aus ihrem Zugang aus, und einen Weg zurück gibt es zurzeit nicht. Wenn eine Klasse wirklich weg soll, sag Koki Bescheid.",
+    titel: "Archivieren legt eine Klasse still — und lässt sich rückgängig machen",
+    text: "Die rote Schaltfläche »Archive« in der Klassenliste sperrt alle Kinder dieser Klasse aus: sie können sich nicht mehr anmelden, und der Beitritts-Link ist tot. Gelöscht wird nichts. Unten auf derselben Seite steht »Archivierte Klassen«, und dahinter bringt »Wieder aktivieren« die Klasse samt Roster und aller bisherigen Arbeit zurück. Für ein Schuljahr, das zu Ende ist, ist Archivieren genau richtig.",
   },
   {
     titel: "PIN vergessen? Für Kinder im Roster, für dich per E-Mail",

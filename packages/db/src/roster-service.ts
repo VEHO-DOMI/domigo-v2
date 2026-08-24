@@ -55,12 +55,37 @@ export function isUniqueViolation(err: unknown): boolean {
 }
 
 /**
- * Normalize one pasted cell into a clean name: trim, strip a one-column-CSV
- * trailing comma, then strip a surrounding pair of double quotes (a spreadsheet
- * paste often yields `"Anna",`). Returns "" for a blank cell so the caller drops it.
+ * K9b · FIRST CELL WINS. A real export carries more than the name — `Anna;5B`,
+ * `Anna\tAnna.Mueller@…`, `"Mueller, Anna";5B`. This reduces such a line to its
+ * first cell so the rest of the pipeline sees exactly what it always saw: a name.
+ *
+ * The rule is deliberately narrow, because the ONE thing it must not break is a name
+ * that contains a comma. So:
+ *   • a leading double-quote OPENS a protected cell — everything up to the closing
+ *     quote is the name, internal comma and all, and whatever follows is dropped;
+ *   • otherwise a `;` or a TAB (never a bare comma) ends the first cell;
+ *   • a line with neither stays WHOLE — `Mueller, Anna` is one name, not two cells.
+ * That last case is the declared boundary: an unquoted comma cannot be told apart
+ * from a European surname-first spelling, so the forgiving reading wins.
+ */
+function firstCell(raw: string): string {
+  const s = raw.trim();
+  if (s.startsWith('"')) {
+    const close = s.indexOf('"', 1);
+    if (close > 0) return s.slice(0, close + 1); // keep the pair; cleanCell strips it
+  }
+  const sep = s.search(/[;\t]/);
+  return sep === -1 ? s : s.slice(0, sep);
+}
+
+/**
+ * Normalize one pasted cell into a clean name: take the first cell (see firstCell),
+ * trim, strip a one-column-CSV trailing comma, then strip a surrounding pair of
+ * double quotes (a spreadsheet paste often yields `"Anna",`). Returns "" for a blank
+ * cell so the caller drops it.
  */
 function cleanCell(raw: string): string {
-  let s = raw.trim();
+  let s = firstCell(raw);
   if (s.endsWith(",")) s = s.slice(0, -1).trim();
   if (s.length >= 2 && s.startsWith('"') && s.endsWith('"')) s = s.slice(1, -1).trim();
   return s;
@@ -87,9 +112,14 @@ function dedupeClean(cells: readonly string[]): string[] {
 }
 
 /**
- * Parse a pasted roster — one student name per line (a single CSV column pastes
- * the same way). Splits on newlines only (a name may contain spaces or an internal
- * comma), trims each, drops blanks, and dedupes case-insensitively. PURE.
+ * Parse a pasted or uploaded roster — one student per LINE. Splits on newlines only,
+ * reduces each line to its first cell (so a multi-column export works), trims, drops
+ * blanks, and dedupes case-insensitively. PURE.
+ *
+ * ⚠ TWIN: apps/web/app/admin/classes/[id]/roster/RosterManager.tsx holds a
+ * byte-for-byte copy of this rule (previewRoster) because @domigo/db is server-only
+ * and must not enter the client bundle. Change one, change the other, and prove the
+ * two agree on the shared fixture list in roster-service.test.ts.
  */
 export function parseRoster(text: string): string[] {
   return dedupeClean(text.split(/\r?\n/));
