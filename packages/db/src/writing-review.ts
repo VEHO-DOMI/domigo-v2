@@ -35,11 +35,29 @@
  * safe to re-export through `index.ts` — which reaches the Edge middleware chain via
  * auth.ts. K2a paid full price for the opposite (see the note in index.ts).
  *
- * DEGRADATION IS DELIBERATE AND NARROW. Migration 0018 is applied to production BY
- * HAND after the merge, so there is always a window where this code is deployed and
- * the four grading columns are not. In that window the page must still SHOW the
+ * ⚠⚠ MIGRATION 0018 IS APPLIED **BEFORE** THE MERGE, NEVER AFTER — AND THIS IS THE
+ * MOST IMPORTANT SENTENCE IN THIS FILE. The house habit is merge-then-migrate. Here
+ * that habit LOSES CHILDREN'S WRITING, and it does so invisibly:
+ *
+ *   drizzle names EVERY column of the declared table in an INSERT (dialect.cjs
+ *   builds `insertOrder` from the table, not from the supplied fields — seven given
+ *   fields, fifteen named columns). So the moment `schema.ts` knows about the four
+ *   grading columns, the UNCHANGED writer in persist.ts speaks of them too, and
+ *   against a database without 0018 it dies on 42703. `/api/writing-submission`
+ *   turns that into HTTP 200 with `ok:false` (a bare `catch {}`), and TestSession
+ *   sets "saved" BEFORE the fetch and locks the textarea after it. The child sees
+ *   "gespeichert" and cannot resend, the teacher sees an empty list, and the server
+ *   keeps no row. Nobody finds out. With ~110 real pupils, a lost essay is gone.
+ *
+ * Applying 0018 first is provably harmless in the other direction: four bare ADD
+ * COLUMNs, all nullable, no default/constraint/index, and no deployed code names
+ * those columns (every read is an explicit projection, never `select *`).
+ *
+ * DEGRADATION IS STILL DELIBERATE AND NARROW — for previews, rollbacks and the
+ * migration nobody remembered. In that window the page must still SHOW the
  * children's texts — it simply cannot mark them, and it says so. Anything other than
- * a missing column or table is a real outage and is re-thrown.
+ * a missing column or table is a real outage and is re-thrown. ⚠ The degradation
+ * protects READERS ONLY; it cannot protect the writer above. Ordering does.
  */
 import { and, desc, eq, sql } from "drizzle-orm";
 import type { Db } from "./index.ts";
@@ -116,31 +134,44 @@ const GRADED_COLUMNS = {
 /**
  * Every submission of ONE class, newest first.
  *
- * CLASS-SCOPED BY CONSTRUCTION. The WHERE clause is the only scope there is; the
- * caller has already established that this class belongs to (or is adopted by) the
- * acting teacher, exactly as the K1a readers are called. The index this rides —
- * `writing_submissions_class_unit_idx` on (class_id, unit_slug) — has been in place
- * and unused since migration 0003.
+ * OWNER-SCOPED BY CONSTRUCTION, NOT BY CALLER DISCIPLINE. The reader carries the
+ * SAME ownership subquery as the write below, so a class that does not belong to
+ * `teacherId` yields an empty list rather than a page full of other people's
+ * children. The first draft of this function scoped by class alone and relied on
+ * the page having checked — which was true, and was still wrong: this module is
+ * exported through `@domigo/db`, so the guarantee lasted exactly until the next
+ * caller. An unguarded reader for children's free text is not a risk worth leaving
+ * lying around for a future lane to pick up by accident (review finding, K6a).
+ *
+ * `teacherId` is WHOSE CLASSES may be read: the teacher herself on the ordinary
+ * path, and the OWNER's id when the grandmaster works in a colleague's class (the
+ * adoption pattern the K1a page established, resolved server-side).
+ *
+ * The index this rides — `writing_submissions_class_unit_idx` on
+ * (class_id, unit_slug) — has been in place and unused since migration 0003.
  *
  * Newest first because a teacher's question is "what came in?", not "what is oldest?".
  */
-export async function listSubmissionsForClass(db: Db, classId: string): Promise<ClassSubmissions> {
+export async function listSubmissionsForClass(db: Db, classId: string, teacherId: string): Promise<ClassSubmissions> {
+  const wem = and(eq(writingSubmissions.classId, classId), gehoertZuLehrkraft(teacherId));
   try {
     const rows = await db
       .select(GRADED_COLUMNS)
       .from(writingSubmissions)
-      .where(eq(writingSubmissions.classId, classId))
+      .where(wem)
       .orderBy(desc(writingSubmissions.submittedAt));
     return { gradingAvailable: true, rows: rows.map(normalise) };
   } catch (err) {
     // A missing COLUMN (42703) means 0018 is not here yet; a missing TABLE (42P01)
     // would mean 0003 is not, which cannot happen in any live deployment but costs
     // nothing to survive. Everything else is a genuine outage and belongs upstairs.
+    // The narrow retry keeps the ownership condition — it drops the four columns,
+    // never the guard (both tables it names predate 0018, so it can still run).
     if (!isMissingDbObject(err)) throw err;
     const rows = await db
       .select(BASE_COLUMNS)
       .from(writingSubmissions)
-      .where(eq(writingSubmissions.classId, classId))
+      .where(wem)
       .orderBy(desc(writingSubmissions.submittedAt));
     return { gradingAvailable: false, rows: rows.map(normalise) };
   }
@@ -221,10 +252,20 @@ export async function gradeSubmission(db: Db, input: GradeSubmissionInput): Prom
   // WHICH CLASS — resolved under the very same ownership condition the write will
   // apply, so a foreign submission is already gone here and no journal row is ever
   // written for a change that cannot happen. A courtesy, not the gate (see header).
+  //
+  // ⚠ `score` IS IN THIS PROJECTION ON PURPOSE, AND IT IS NOT DECORATION. The value
+  // is never used. It is here so that this read FAILS FIRST when migration 0018 is
+  // missing. Selecting `class_id` alone (which has existed since 0003) succeeds in
+  // that window, the journal row is appended — and only then does the UPDATE hit
+  // 42703 and bail. The result is an ORPHAN HISTORY ROW: the journal says a mark was
+  // set, and no mark was ever set. Journal-then-apply tolerates a crash between the
+  // two steps; it must not tolerate a step that is GUARANTEED to fail. Reaching for
+  // a 0018 column here moves the failure to before the journal, where it belongs.
+  // (Review finding, K6a: the test for this path was green on an impossible case.)
   let gehoert: { classId: string }[];
   try {
     gehoert = await db
-      .select({ classId: writingSubmissions.classId })
+      .select({ classId: writingSubmissions.classId, probe0018: writingSubmissions.score })
       .from(writingSubmissions)
       .where(and(eq(writingSubmissions.id, submissionId), gehoertZuLehrkraft(teacherId)))
       .limit(1);

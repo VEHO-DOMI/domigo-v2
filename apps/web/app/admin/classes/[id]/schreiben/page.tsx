@@ -15,6 +15,13 @@
  * Der Rang wird geprüft, bevor irgendetwas gelesen wird — eine Prüfung nach dem
  * Lesen ist keine Tür, sondern eine Offenlegung mit einer Weiterleitung am Ende.
  *
+ * Diese Id (`authorizingTeacherId`) wird auch WIRKLICH weitergereicht: der
+ * Abgaben-Leser trägt dieselbe Eigentums-Unterabfrage wie das Benoten. Im ersten
+ * Entwurf stand dieser Satz hier, während die Variable eine Zeile später
+ * weggeworfen wurde — die Wand-Beschriftung stimmte, der Anschluss dahinter nicht
+ * (im Zug-Review gefunden). Ein Kommentar, der eine Absicherung behauptet, ist
+ * gefährlicher als gar keiner: die nächste Hand prüft sie dann nicht nach.
+ *
  * DREI ZUSTÄNDE, DIE MAN NICHT VERWECHSELN DARF, und die Seite sagt jeden einzeln:
  *   1. »noch keine Abgabe« — normal, und die Seite sagt, WO es überhaupt welche
  *      geben kann (an dieser Stufe, zur Laufzeit aus dem Korpus gezählt);
@@ -115,14 +122,14 @@ export default async function SchreibAbgabenPage({ params }: { params: Promise<{
   }
 
   if (!cls) redirect("/admin/classes"); // nicht die Klasse dieser Lehrkraft (oder es gibt sie nicht)
-  // Ab hier ist `authorizingTeacherId` gesetzt und wird von der Route noch einmal
-  // selbst hergeleitet — diese Seite entscheidet nichts, was die Route glaubt.
-  void authorizingTeacherId;
 
   // Der Leser mit ehrlichem dritten Zustand: »gescheitert« ist etwas anderes als »leer«.
+  // Er läuft unter `authorizingTeacherId` — der Lehrkraft selbst, oder der EIGENTÜMERIN,
+  // wenn der Großmeister hier arbeitet. Der Besitz-Check oben ist damit nicht die einzige
+  // Tür: der Dienst trägt die Bedingung selbst.
   let abgaben: Awaited<ReturnType<typeof listSubmissionsForClass>> | null = null;
   try {
-    abgaben = await listSubmissionsForClass(getDb(), id);
+    abgaben = await listSubmissionsForClass(getDb(), id, authorizingTeacherId);
   } catch (err) {
     console.error(
       "[admin/classes/[id]/schreiben] Leser gescheitert:",

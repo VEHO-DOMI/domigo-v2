@@ -318,7 +318,7 @@ describe("gradeSubmission — die Geschichte steht vor der Änderung", () => {
 describe("listSubmissionsForClass — die Liste holt keine Personen-Spalte", () => {
   it("liest ausschließlich writing_submissions, ohne jeden Join", async () => {
     const m = recDb({ selectResults: [[]] });
-    await listSubmissionsForClass(m.db, CLASS);
+    await listSubmissionsForClass(m.db, CLASS, EIGEN);
     const st = m.statements.find((s) => s.art === "select")!;
     expect(st.table).toBe(writingSubmissions);
     expect(st.joined).toBe(false); // ein Join auf ein Namensregister ist die Art, wie Namen leaken
@@ -326,7 +326,7 @@ describe("listSubmissionsForClass — die Liste holt keine Personen-Spalte", () 
 
   it("wählt exakt die Spalten der Abgabe — keine, die es woanders gibt", async () => {
     const m = recDb({ selectResults: [[]] });
-    await listSubmissionsForClass(m.db, CLASS);
+    await listSubmissionsForClass(m.db, CLASS, EIGEN);
     const felder = Object.keys(m.statements.find((s) => s.art === "select")!.selection as object);
     expect(felder.sort()).toEqual(
       ["feedback", "gradedAt", "gradedBy", "id", "promptId", "score", "submittedAt", "testId", "text", "unitSlug", "userId", "wordCount"],
@@ -337,12 +337,31 @@ describe("listSubmissionsForClass — die Liste holt keine Personen-Spalte", () 
     }
   });
 
-  it("ist auf EINE Klasse verengt", async () => {
+  it("ist auf EINE Klasse verengt — UND auf die Klassen EINER Lehrkraft", async () => {
+    // Die zweite Hälfte ist die, die im Review gefehlt hat: der Dienst wird über
+    // @domigo/db exportiert, also darf seine Absicherung nicht davon abhängen, dass
+    // der Aufrufer vorher nachgesehen hat. Wer als Nächstes hier hereingreift, erbt
+    // die Bedingung, ob er sie kennt oder nicht.
     const m = recDb({ selectResults: [[]] });
-    await listSubmissionsForClass(m.db, CLASS);
+    await listSubmissionsForClass(m.db, CLASS, EIGEN);
     const atome = atomsOf(m.statements.find((s) => s.art === "select")!.where);
     expect(atome).toContain("col:class_id");
     expect(atome).toContain(CLASS);
+    expect(atome).toContain("col:teacher_id");
+    expect(atome).toContain(EIGEN);
+    expect(atome.join(" ")).toMatch(/in \(select/);
+  });
+
+  it("behält die Eigentums-Bedingung AUCH im schmalen Rückfall ohne 0018", async () => {
+    // Der Rückfall lässt die vier Noten-Spalten weg. Er darf dabei nicht die
+    // Absicherung mit weglassen — sonst wäre ausgerechnet das Fenster, in dem
+    // niemand hinschaut, das offene.
+    const m = recDb({ selectResults: [fehlendeSpalte, []] });
+    await listSubmissionsForClass(m.db, CLASS, EIGEN);
+    const schmal = m.statements.filter((s) => s.art === "select")[1]!;
+    const atome = atomsOf(schmal.where);
+    expect(atome).toContain("col:teacher_id");
+    expect(atome).toContain(EIGEN);
   });
 
   it("gibt die neueste Abgabe zuerst", async () => {
@@ -353,7 +372,7 @@ describe("listSubmissionsForClass — die Liste holt keine Personen-Spalte", () 
       submittedAt: at, score: null, feedback: null, gradedAt: null, gradedBy: null,
     });
     const m = recDb({ selectResults: [[zeile("neu", jung), zeile("alt", alt)]] });
-    const res = await listSubmissionsForClass(m.db, CLASS);
+    const res = await listSubmissionsForClass(m.db, CLASS, EIGEN);
     expect(res.rows.map((r) => r.id)).toEqual(["neu", "alt"]);
   });
 });
@@ -367,7 +386,7 @@ describe("das Fenster zwischen Merge und Migration", () => {
       text: "Mein Schultag", wordCount: 2, submittedAt: new Date("2026-08-24T10:00:00Z"),
     };
     const m = recDb({ selectResults: [fehlendeSpalte, [schmal]] });
-    const res = await listSubmissionsForClass(m.db, CLASS);
+    const res = await listSubmissionsForClass(m.db, CLASS, EIGEN);
     expect(res.gradingAvailable).toBe(false);
     expect(res.rows).toHaveLength(1);
     expect(res.rows[0]!.text).toBe("Mein Schultag"); // die Arbeit des Kindes ist weiter da …
@@ -380,22 +399,41 @@ describe("das Fenster zwischen Merge und Migration", () => {
 
   it("überlebt sogar eine fehlende TABELLE (42P01) auf demselben Weg", async () => {
     const m = recDb({ selectResults: [fehlendeTabelle, []] });
-    await expect(listSubmissionsForClass(m.db, CLASS)).resolves.toEqual({ gradingAvailable: false, rows: [] });
+    await expect(listSubmissionsForClass(m.db, CLASS, EIGEN)).resolves.toEqual({ gradingAvailable: false, rows: [] });
   });
 
-  it("meldet beim Benoten den Zustand statt eines 500", async () => {
+  it("meldet beim Benoten den Zustand statt eines 500 — und schreibt KEINE Waisen-Zeile", async () => {
+    // Der Punkt ist die zweite Hälfte. Journal-vor-Anwendung verträgt einen Absturz
+    // zwischen den zwei Schritten; es verträgt keinen zweiten Schritt, der GARANTIERT
+    // scheitert. Sonst behauptet die Geschichte eine Note, die es nie gab.
     const m = recDb({ selectResults: [fehlendeSpalte] });
     await expect(
       gradeSubmission(m.db, { submissionId: SUB, score: 78, feedback: null, teacherId: EIGEN, actorId: EIGEN }),
     ).resolves.toEqual({ ok: false, reason: "no_grading_columns" });
     expect(m.statements.filter((s) => s.art === "insert")).toHaveLength(0);
+    expect(m.statements.filter((s) => s.art === "update")).toHaveLength(0);
+  });
+
+  it("fragt in der auflösenden Lese eine 0018-Spalte ab — sonst wäre der Fall oben unmöglich", async () => {
+    // DIESER Test ist der eigentliche Wächter. Der Test darüber war einmal grün auf
+    // einem Fall, den es gar nicht geben konnte: die auflösende Lese wählte nur
+    // `class_id` (gibt es seit 0003) und konnte deshalb nie 42703 werfen — das traf
+    // erst das UPDATE, also NACH dem Journal. Ein Test, der einen unmöglichen Fall
+    // prüft, ist grün und wertlos. Was den Fall möglich macht, ist die Projektion —
+    // also wird die Projektion geprüft, nicht das Verhalten. (Zug-Review, K6a.)
+    const m = gefunden();
+    await gradeSubmission(m.db, { submissionId: SUB, score: 78, feedback: null, teacherId: EIGEN, actorId: EIGEN });
+    const aufloesend = m.statements.find((s) => s.art === "select")!;
+    const felder = Object.values(aufloesend.selection as Record<string, unknown>);
+    const NACH_0018 = [writingSubmissions.score, writingSubmissions.feedback, writingSubmissions.gradedAt, writingSubmissions.gradedBy];
+    expect(felder.some((f) => NACH_0018.includes(f as never))).toBe(true);
   });
 
   it("verschluckt aber KEINEN echten Ausfall — der fliegt weiter", async () => {
     // Das ist die Hälfte, die zählt: ein Rettungsnetz, das jeden Fehler auffängt,
     // verwandelt einen Datenbank-Ausfall in eine leere, plausible Seite.
     const echt = Object.assign(new Error("connection terminated"), { code: "08006" });
-    await expect(listSubmissionsForClass(recDb({ selectResults: [echt] }).db, CLASS)).rejects.toThrow(/connection terminated/);
+    await expect(listSubmissionsForClass(recDb({ selectResults: [echt] }).db, CLASS, EIGEN)).rejects.toThrow(/connection terminated/);
     await expect(
       gradeSubmission(recDb({ selectResults: [echt] }).db, { submissionId: SUB, score: 78, feedback: null, teacherId: EIGEN, actorId: EIGEN }),
     ).rejects.toThrow(/connection terminated/);
