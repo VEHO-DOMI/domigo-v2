@@ -551,28 +551,41 @@ export const GUARDIAN_LANDED_CELLS: ReadonlySet<string> = new Set(["rest", "win"
  *    Bewegung gegen die alte Tabelle, in Welt-Pixeln bei 52 px Anzeigehöhe:
  *    achtzehn Zellen unter 1,9 px, `bank_r0` 6,8 px und `spiral3` 5,2 px —
  *    und diese zwei sind die REPARATUR, nicht der Preis.
+ *
+ * ★★ R5-T7 (24.08.) — UND WIEDER, AUS DEMSELBEN GRUND: AQ13B4 **v3** hat alle
+ *    zwanzig Körper erneut gemalt, und der Wächter hat es beim ersten Testlauf
+ *    gemeldet (`tafel_a cy: gemessen 0,438, Tabelle 0,441` — 0,0027 gegen eine
+ *    Toleranz von 0,002). Die Tabelle ist wieder neu abgeleitet, mit
+ *    unveränderter Regel und unveränderter Toleranz; die Regel selbst ist nicht
+ *    angefasst worden (der Leitfarbton bleibt auf allen zwanzig Zellen blau,
+ *    233–236°). Bewegung diesmal: **Maximum 1,01 px** (`throw`, Breite), neun
+ *    von zwanzig Zellen über 0,5 px, `bank_r0` exakt 0,00 px.
+ *
+ *    Der Wächter ist damit zum ZWEITEN Mal das Frühwarnsystem gewesen, für das
+ *    er gebaut wurde — und der Preis dieser Ableitung ist ein Testlauf, nicht
+ *    eine Suche am Schirm.
  */
 export const GUARDIAN_SLATE: Readonly<Record<string, { cx: number; cy: number; w: number; h: number }>> = {
-  a: { cx: 0.648, cy: 0.441, w: 0.541, h: 0.529 },
-  b: { cx: 0.523, cy: 0.440, w: 0.625, h: 0.539 },
-  c: { cx: 0.610, cy: 0.443, w: 0.600, h: 0.554 },
-  d: { cx: 0.575, cy: 0.452, w: 0.668, h: 0.553 },
-  roll: { cx: 0.589, cy: 0.413, w: 0.645, h: 0.618 },
-  bank_l1: { cx: 0.450, cy: 0.425, w: 0.658, h: 0.616 },
+  a: { cx: 0.650, cy: 0.438, w: 0.544, h: 0.529 },
+  b: { cx: 0.523, cy: 0.440, w: 0.625, h: 0.529 },
+  c: { cx: 0.610, cy: 0.446, w: 0.600, h: 0.546 },
+  d: { cx: 0.570, cy: 0.455, w: 0.672, h: 0.548 },
+  roll: { cx: 0.579, cy: 0.414, w: 0.661, h: 0.616 },
+  bank_l1: { cx: 0.460, cy: 0.430, w: 0.673, h: 0.606 },
   bank_r0: { cx: 0.542, cy: 0.435, w: 0.677, h: 0.642 },
-  bank_r1: { cx: 0.419, cy: 0.453, w: 0.647, h: 0.697 },
-  spiral0: { cx: 0.542, cy: 0.351, w: 0.657, h: 0.508 },
-  spiral1: { cx: 0.349, cy: 0.561, w: 0.529, h: 0.615 },
-  spiral2: { cx: 0.461, cy: 0.586, w: 0.630, h: 0.628 },
-  spiral3: { cx: 0.556, cy: 0.456, w: 0.656, h: 0.620 },
-  windup0: { cx: 0.564, cy: 0.434, w: 0.609, h: 0.605 },
-  windup1: { cx: 0.536, cy: 0.467, w: 0.553, h: 0.498 },
-  windup: { cx: 0.597, cy: 0.505, w: 0.613, h: 0.491 },
-  throw: { cx: 0.580, cy: 0.448, w: 0.644, h: 0.559 },
-  land0: { cx: 0.604, cy: 0.471, w: 0.602, h: 0.625 },
-  land1: { cx: 0.525, cy: 0.477, w: 0.638, h: 0.639 },
-  rest: { cx: 0.516, cy: 0.472, w: 0.691, h: 0.530 },
-  win: { cx: 0.516, cy: 0.470, w: 0.697, h: 0.525 },
+  bank_r1: { cx: 0.419, cy: 0.454, w: 0.647, h: 0.684 },
+  spiral0: { cx: 0.539, cy: 0.351, w: 0.650, h: 0.508 },
+  spiral1: { cx: 0.350, cy: 0.567, w: 0.531, h: 0.601 },
+  spiral2: { cx: 0.459, cy: 0.583, w: 0.615, h: 0.634 },
+  spiral3: { cx: 0.545, cy: 0.453, w: 0.666, h: 0.620 },
+  windup0: { cx: 0.564, cy: 0.434, w: 0.614, h: 0.605 },
+  windup1: { cx: 0.533, cy: 0.475, w: 0.553, h: 0.500 },
+  windup: { cx: 0.595, cy: 0.505, w: 0.609, h: 0.491 },
+  throw: { cx: 0.591, cy: 0.450, w: 0.665, h: 0.565 },
+  land0: { cx: 0.602, cy: 0.472, w: 0.616, h: 0.639 },
+  land1: { cx: 0.521, cy: 0.475, w: 0.644, h: 0.634 },
+  rest: { cx: 0.516, cy: 0.471, w: 0.691, h: 0.528 },
+  win: { cx: 0.516, cy: 0.471, w: 0.697, h: 0.522 },
 };
 
 // ── R5-W2 · H1 · HOW BIG SHE IS — one owner, because two owners drifted ──────
