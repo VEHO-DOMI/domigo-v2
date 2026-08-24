@@ -331,19 +331,40 @@ const nearMask = (mask, x, y, tol, feld = "m") => {
  *    EINER Seite, weit weg und zum groessten Teil auf dem Rahmen. Die zwei
  *    Klassen trennen um den Faktor ~30 — nicht um ein Haar.
  *
- *  Gezaehlt wird deshalb ab jetzt das, was die Meldung immer schon behauptet:
- *  Malerei auf RAHMEN oder LUFT. Malerei auf dem Koerper innerhalb der
- *  Schiefer-Schachtel ist RAND-MALEREI: sie wird als eigene Zahl gemeldet und
- *  ist kein Abbruchgrund. **Die Grenze bleibt bei 40** — sie ist nicht
- *  angefasst worden, damit irgendetwas besteht.
+ *  Gezaehlt wird deshalb das, was die Meldung immer schon behauptet: Malerei auf
+ *  RAHMEN oder LUFT. Malerei auf dem Koerper innerhalb der Schiefer-Schachtel
+ *  ist RAND-MALEREI: sie wird als eigene Zahl gemeldet und ist kein
+ *  Abbruchgrund.
  *
- *  ⚠ EHRLICHE GRENZE DIESER REPARATUR, gemessen und gefiled (D-684): unter dem
- *    neuen Mass liegt die schlimmste ehrliche Zelle bei 37 gegen eine Grenze
- *    von 40 — das sind 8 % Luft, also eine Schwelle nahe der Bandkante
- *    (die Klasse, die T1 in D-666 aufgeschrieben hat). Zwischen 37 und 1208
- *    liegt nichts; die Grenze koennte weit in dieser Luecke stehen. Sie zu
- *    verschieben ist eine Eichung und gehoert dem Architekten — hier steht die
- *    Zahl, damit niemand sie fuer geprueft haelt.
+ *  ★★★ DIE EICHUNG DER GRENZE (R5 · T4 — Architekten-Ruling R218, D-692) ─────
+ *
+ *      37   |   200   |   1208
+ *      ↑        ↑         ↑
+ *      |        |         die MILDESTE der drei echt verschobenen Wisch-Zellen
+ *      |        |         (`batch-aq13/` Wisch 0–2: 1272 / 1208 / 1652 px, alle
+ *      |        |         25–26 px zu weit rechts — die kranke Klasse)
+ *      |        die Grenze: das geometrische Mittel der beiden Bandkanten
+ *      |        (√(37·1208) = 211,4 → auf 200 gerundet). Sie liegt 5,4× ueber
+ *      |        dem schlimmsten ehrlichen Blatt und 6,0× unter dem mildesten
+ *      |        kranken — in der Mitte einer Luecke, in der NICHTS liegt.
+ *      die SCHLIMMSTE ehrliche Zelle des Bestandes (T3, `--overlay-fundstellen`:
+ *      die zehn Zellen, die der Importeur wirklich schneidet, messen sechsmal 0
+ *      sowie 6 / 34 / 37 / 37)
+ *
+ *  ★ WARUM DAS KEINE EICHUNG IN EIGENER SACHE IST. T3 hat die Zahl gemessen und
+ *    den Entscheid ausdruecklich NICHT selbst gefaellt (D-684: »eine Grenze zu
+ *    verschieben ist eine Eichung und gehoert dem Architekten«). Der Architekt
+ *    hat sie gefaellt — R218, und zwar VOR der Lieferung AQ13M, deren Zellen sie
+ *    danach passieren. Die Reihenfolge ist der ganze Punkt: eine Grenze, die
+ *    erst weicht, nachdem eine Lieferung an ihr gescheitert ist, ist keine
+ *    Eichung, sondern eine Ausrede. Wer sie erneut bewegen will, braucht neue
+ *    ZAHLEN an den Bandkanten, nicht ein neues Blatt.
+ *
+ *  ⚠ WAS DIE 200 NICHT TUT: sie macht aus einer Fehlregistrierung keine
+ *    Rand-Malerei. Die zwei Klassen trennen um den Faktor ~30, und der
+ *    Selbsttest faehrt beide Bandkanten mit gezaehlten Attrappen an (Fall-Block
+ *    5f): 37 und 52 bleiben gruen, 1208 wird rot, und ein Paar auf 200/201
+ *    zeigt, dass die Grenze wirklich dort steht, wo sie steht.
  *
  *  ⚠ ZWEITE EHRLICHE GRENZE: die Schiefer-Schachtel ist achsenparallel, die
  *    Tafel in den meisten Zellen gekippt. In den Ecken der Schachtel liegt
@@ -353,7 +374,7 @@ const nearMask = (mask, x, y, tol, feld = "m") => {
  *    Ein Helligkeits-Kriterium waere hier FALSCH: das gemalte Gesicht des
  *    Bezugs ist heller als der Holzrahmen (D-664).
  */
-const OFF_MAX = 40;
+const OFF_MAX = 200;   // R218 · D-692 — Herleitung 37 | 200 | 1208 im Kopf darueber
 
 function overlayNeben(cell, cw, ch, slate, offX, offY, ref) {
   const B = slate.box;
@@ -381,18 +402,18 @@ function overlayNeben(cell, cw, ch, slate, offX, offY, ref) {
 // getippt. `pieces` ist [Zellindex, Stem].
 const SHEETS = [
   {
-    file: "batch-aq13l/tafel_scribble.png",
+    file: "batch-aq13m/tafel_scribble.png",
     cols: 4, rows: 1,
     ref: "tafel_a",
     pieces: [
-      [0, "tafel_scribble1"], // die leichte Schicht — ein paar Striche und 2+2
-      [1, "tafel_scribble2"], // ABC, NO mit Durchstreichung, Kreisel
-      [2, "tafel_scribble3"], // die volle, lange nicht gewischte Tafel
+      [0, "tafel_scribble1"], // die leichte Schicht — ABC, Sonne, Strichmaennchen
+      [1, "tafel_scribble2"], // dazu 2+2=4, die Sonne oben rechts
+      [2, "tafel_scribble3"], // die volle, lange nicht gewischte Tafel: dazu der Stern
       [3, "tafel_scribble3b"], // dieselbe, um (3,−2) versetzt: das Zittern im Ausholen
     ],
   },
   {
-    file: "batch-aq13l/tafel_wipe.png",
+    file: "batch-aq13m/tafel_wipe.png",
     cols: 4, rows: 1,
     ref: "tafel_rest",
     // Zellen 0–2 (die drei Wisch-Zwischenbilder) werden NICHT importiert: sie
@@ -937,12 +958,37 @@ function nahtGesetze(png, label, xL, xR, adj) {
  *
  *  ── T3 (24.08.): DIE LISTE IST WIEDER LEER — und zwar GEMESSEN ────────────
  *  Der H6-Absatz darueber bleibt als Geschichte stehen; er beschreibt die
- *  Blaetter von `batch-aq13/`. Seit AQ13L stammen die Kreide-Stems aus einem
- *  anderen Blattpaar, das Regel 5 und Regel 6 AUS EIGENER KRAFT besteht
- *  (0,8423 % / 0,3324 % gegen 1 % · Reserve 202,203 / 192,057 gegen 180). Die
- *  Begruendung im Rumpf der Liste nennt die Zahlen; die ehrliche Grenze des
- *  H6-Absatzes (»die zwei Blaetter fallen an Regel 6 durch«) ist damit
- *  erledigt und nicht mehr gueltig.
+ *  Blaetter von `batch-aq13/`. Mit AQ13L stammten die Kreide-Stems aus einem
+ *  anderen Blattpaar, das Regel 5 und Regel 6 AUS EIGENER KRAFT bestand
+ *  (0,8423 % / 0,3324 % gegen 1 % · Reserve 202,203 / 192,057 gegen 180).
+ *
+ *  ── T4 (24.08.): DIE LISTE BLEIBT LEER — obwohl AQ13M Regel 5 NICHT MEHR AUS
+ *     EIGENER KRAFT BESTEHT. Und das ist ein Entscheid, kein Versehen (D-695).
+ *
+ *  An der importierten Lieferung gemessen, je Blatt gerechnet wie Regel 5 es
+ *  tut (haeufigster RGB ueber alle gemalten Pixel des Blattes):
+ *
+ *      tafel_scribble  21096 px gemalt  (252,252,252)  2,1710 %   Grenze 1,0000 %
+ *      tafel_wipe      18461 px gemalt  (252,252,252)  2,0855 %   Grenze 1,0000 %
+ *      Schluessel-Reserve 204,685 / 200,534 gegen 180 — Regel 6 haelt weiter.
+ *
+ *  Die Zahl ist gestiegen, weil AQ13M genau das ist, was bestellt war: WENIGE,
+ *  GROSSE Zeichen mit breitem Strich statt vieler feiner Schnoerkel. Ein
+ *  breiter Strich in einer Kreidefarbe stellt einen groesseren Anteil derselben
+ *  Farbe — nach dem Buchstaben von Regel 5 ein Farbfeld, nach der Sache gemalte
+ *  Kreide. Es ist dieselbe Klasse, die der H6-Absatz oben beschreibt, nur eine
+ *  Lieferung spaeter.
+ *
+ *  ★ WARUM TROTZDEM KEIN PIN GESETZT WIRD. Ein Pin ist eine Ausnahme von einem
+ *    TOR. Dieses Tor (`--abnahme-tafel`) laeuft auf diesem Blattpaar
+ *    strukturell nicht: es verlangt die drei Koerper-Blaetter und bricht ohne
+ *    sie mit Exit 2 ab — `batch-aq13m/` enthaelt keine. Ein Pin waere also eine
+ *    Ausnahme fuer eine Pruefung, die hier gar nicht stattfindet: eine offene
+ *    Tuer ohne Bedarf, und damit genau das, was T2 in D-681 begruendet und T3
+ *    in D-682 vollzogen hat. **Die Zahl steht deshalb hier, damit niemand sie
+ *    fuer geprueft haelt — Befund an den Architekten (D-695), kein Eigenfix.**
+ *    Wer die Overlays je in einer Lieferung MIT Koerper-Blaettern abnimmt,
+ *    findet dort ein rotes Licht ohne Defekt und braucht dann diesen Absatz.
  *
  *  Form je Eintrag:  ["<sha256 ueber die rohen RGB-Bytes der ZELLE>", "Herkunft"]
  */
@@ -952,23 +998,15 @@ const OVERLAY_MASSE_FREI = new Map([
   // Bis T3 standen hier acht Pins auf die Zellen von `batch-aq13/`. Sie waren
   // noetig, weil auf jenen Blaettern EINE Farbe 47,89–75,34 % der gemalten
   // Pixel stellte — ein Farbfeld nach dem Buchstaben von Regel 5, gemalte
-  // Kreide nach der Sache. AQ13L ist anders gemalt, und die Zahl sagt es
-  // (`--overlay-pins`, je Blatt gerechnet wie Regel 5 es tut):
+  // Kreide nach der Sache. Sie sind mit AQ13L gefallen (D-682) und kehren mit
+  // AQ13M NICHT zurueck: die Begruendung steht vollstaendig im Kopf darueber
+  // (T4-Absatz, D-695) — das Tor, von dem ein Pin befreien wuerde, laeuft auf
+  // diesem Blattpaar strukturell nicht.
   //
-  //     tafel_scribble  haeufigster RGB (255,255,255)  0,8423 %   Grenze 1,0000 %
-  //     tafel_wipe      haeufigster RGB (198,198,226)  0,3324 %   Grenze 1,0000 %
-  //
-  // Beide Blaetter bestehen Regel 5 AUS EIGENER KRAFT. Ein Pin darauf waere
-  // eine Ausnahme ohne Bedarf — eine offene Tuer, die niemand braucht und die
-  // beim naechsten Blatt gleichen Namens jemand findet (D-681, T2s Begruendung
-  // dafuer, die Zahlen NICHT einzutragen). Die Liste bleibt deshalb leer, die
-  // Mechanik bleibt stehen: sie kostet nichts und ihre Selbsttest-Faelle
-  // bewachen sie weiter.
-  //
-  // Und Regel 6 faellt gleich mit: die Schluessel-Reserve der zwei Blaetter
-  // misst 202,203 / 192,057 gegen eine Grenze von 180. Die vier alten
-  // Kreide-Stems lagen bei 150,08–175,86 (T1, D-657) — mit dem Import ist
-  // dieser Befund gegenstandslos.
+  // Regel 6 haelt an AQ13M weiter aus eigener Kraft: Schluessel-Reserve
+  // 204,685 / 200,534 gegen eine Grenze von 180. Die vier alten Kreide-Stems
+  // lagen bei 150,08–175,86 (T1, D-657) — seit T3 ist dieser Befund
+  // gegenstandslos.
   //
   // Die acht alten SHAs sind nicht verloren: sie stehen im Register (D-682).
 ]);
@@ -1775,9 +1813,15 @@ function selftest() {
   // Weiss aus jeder Farbregel herausfaellt (D-664). Die Attrappe traegt damit
   // dieselbe Eigenschaft wie der echte Bestand — und die Faelle stehen auf der
   // gemessenen Zahl, nicht auf der getippten.
-  const mkPassungCell = (x0, y0, x1, y1) => mkPng(W, H, (x, y) => {
+  //  `dichte` ist der Modul des Zug-Rasters: 7 = jeder siebte Punkt (die
+  //  Voreinstellung, mit der alle aelteren Faelle gebaut sind), 2 = jeder
+  //  zweite. Seit R218 (Grenze 200) braucht die KRANKE Attrappe ein Vielfaches
+  //  der alten Pixelzahl, sonst prueft ihr rotes Licht eine Grenze, die es
+  //  nicht mehr gibt — das war der Fall: die zwei T3-Attrappen erzeugten 167
+  //  und 162 px und waeren unter 200 stillschweigend gruen geworden.
+  const mkPassungCell = (x0, y0, x1, y1, dichte = 7) => mkPng(W, H, (x, y) => {
     if (x < x0 || x > x1 || y < y0 || y > y1) return [255, 0, 255];
-    if ((x * 3 + y * 5) % 7 !== 0) return [255, 0, 255];      // Luft zwischen den Zuegen
+    if ((x * 3 + y * 5) % dichte !== 0) return [255, 0, 255];  // Luft zwischen den Zuegen
     return [235 + ((x + y) % 12), 232 + ((x * 3) % 12), 210 + ((y * 5) % 12)];
   });
   const runPassung = (png, ref = mkRef(), held = []) => overlayPassung([{
@@ -1822,7 +1866,15 @@ function selftest() {
   //   vacuously gruen. Am RAND greift die Fuellung nicht: die Zeilen-Spanne
   //   beginnt erst rechts vom Fleck. Genau so sitzt der dunkle Saum am echten
   //   Bestand, und genau dort liegt der Kranz.
-  const FLX0 = 12, FLY0 = 40, FLX1 = 40, FLY1 = 120;        // im Bezug, am linken Rand der Flaeche
+  //
+  // ★★ R5 · T4 · WARUM DER FLECK GEWACHSEN IST (D-693). Diese Attrappen waren
+  //    fuer eine Grenze von 40 gebaut und erzeugten 167 bzw. 162 px auf
+  //    Rahmen/Luft. Mit R218 (Grenze 200) waeren beide roten Faelle
+  //    STILLSCHWEIGEND GRUEN geworden — der Selbsttest haette weiter »42 Faelle
+  //    OK« gemeldet und dabei ein Gesetz geprueft, das es nicht mehr gibt. Eine
+  //    Grenze zu bewegen heisst deshalb IMMER, ihre Attrappen mitzubewegen: sie
+  //    stehen auf der ZAHL, nicht auf dem Wort.
+  const FLX0 = 12, FLY0 = 40, FLX1 = 70, FLY1 = 130;        // im Bezug, am linken Rand der Flaeche
   const mkRefFleck = (loch) => {
     const p = mkRef();
     for (let y = FLY0; y <= FLY1; y++) for (let x = FLX0; x <= FLX1; x++) {
@@ -1835,8 +1887,8 @@ function selftest() {
   const VX = Math.floor((W - REFW) / 2), VY = Math.floor((H - REFH) / 2);
   // Kreide NUR im Fleck, 6 px von dessen Rand eingerueckt ⇒ jedes Pixel liegt
   // mehr als die 3 px Toleranz von der Maske weg.
-  const kreideImFleck = mkPassungCell(FLX0 + VX + 6, FLY0 + VY + 6, FLX1 + VX - 6, FLY1 + VY - 6);
-  const kreideAufRahmen = mkPassungCell(105 + VX, FLY0 + VY, 118 + VX, FLY1 + VY);
+  const kreideImFleck = mkPassungCell(FLX0 + VX + 6, FLY0 + VY + 6, FLX1 + VX - 6, FLY1 + VY - 6, 2);
+  const kreideAufRahmen = mkPassungCell(105 + VX, 20 + VY, 119 + VX, 160 + VY, 2);
 
   add("Rand-Malerei: Kreide auf dem Koerper, die die Farbmaske nicht als Schiefer erkennt", null,
     () => runPassung(kreideImFleck, mkRefFleck(false)));
@@ -1850,6 +1902,71 @@ function selftest() {
     () => runPassung(kreideImFleck, mkRefFleck(true)));
   add("Kreide auf dem RAHMEN — die Klasse der drei echt verschobenen Wisch-Zellen", "RAHMEN oder LUFT",
     () => runPassung(kreideAufRahmen, mkRefFleck(false)));
+
+  // ── Fall 5g · DIE BANDKANTEN DER GEEICHTEN GRENZE (R5 · T4, R218/D-692) ──
+  //
+  // Die Faelle darueber pruefen, WAS gezaehlt wird (Rahmen/Luft gegen
+  // Rand-Malerei). Diese hier pruefen, WO die Grenze steht — und zwar von
+  // beiden Seiten, mit GEZAEHLTEN Pixeln statt mit geschaetzten:
+  //
+  //     37 · 52   die zwei ehrlichen Bandkanten: 37 ist die schlimmste Zelle,
+  //               die der Importeur heute schneidet (T3), 52 die schlimmste der
+  //               Lieferung AQ13M. BEIDE lagen ueber der alten Grenze 40 —
+  //               dieser Fall haelt fest, dass die Eichung genau das aufloest.
+  //     200/201   die Grenze selbst. Ohne dieses Paar behauptet die Konstante
+  //               nur, dass sie irgendwo steht.
+  //     1208      die MILDESTE der drei echt verschobenen Wisch-Zellen. Waere
+  //               die Grenze je wieder nach oben gewandert, faellt hier zuerst
+  //               das Licht aus.
+  //
+  // ★ DIE ATTRAPPE IST GEBAUT WIE EINE ECHTE ZELLE, nicht wie eine Zahl: der
+  //   grosse Teil ihrer Kreide liegt AUF der Schreibflaeche (und zaehlt deshalb
+  //   gar nicht), und nur die genannte Zahl liegt im LUFT-Saum am linken Rand.
+  //   Genau so sitzen die echten Zellen — AQ13M Zelle 0: 49 von 4146.
+  const LKX0 = FLX0, LKX1 = FLX1 - 3, LKY0 = FLY0 + 3, LKY1 = FLY1 - 3;
+  /** Genau `n` Kreidepunkte im Luft-Saum, dazu ein Rumpf AUF der Flaeche. Die
+   *  Zahl wird GEZAEHLT und zurueckgegeben — eine Attrappe, deren Zahl man
+   *  glauben muss, misst nichts. */
+  const mkBandkante = (n) => {
+    const luft = new Set();
+    let k = 0;
+    for (let y = LKY0; y <= LKY1 && k < n; y++) {
+      for (let x = LKX0; x <= LKX1 && k < n; x++) {
+        if ((x + y) % 2 !== 0) continue;
+        luft.add((y + VY) * W + (x + VX)); k++;
+      }
+    }
+    const rumpf = (x, y) => x >= 74 + VX && x <= 99 + VX && y >= 45 + VY && y <= 127 + VY && (x * 3 + y * 5) % 7 === 0;
+    const png = mkPng(W, H, (x, y) => (luft.has(y * W + x) || rumpf(x, y))
+      ? [235 + ((x + y) % 12), 232 + ((x * 3) % 12), 210 + ((y * 5) % 12)]
+      : [255, 0, 255]);
+    return { png, n: k };
+  };
+  const bandkante = (n) => runPassung(mkBandkante(n).png, mkRefFleck(true));
+
+  add("Bandkante ehrlich: 37 px auf Luft — die schlimmste Zelle des BESTANDES", null,
+    () => bandkante(37));
+  add("Bandkante ehrlich: 52 px auf Luft — die schlimmste Zelle der Lieferung AQ13M", null,
+    () => bandkante(52));
+  add("Die Grenze selbst: GENAU 200 px auf Luft bleiben gruen", null,
+    () => bandkante(200));
+  add("Die Grenze selbst · ein Pixel darueber: 201 px auf Luft werden rot", "RAHMEN oder LUFT",
+    () => bandkante(201));
+  add("Bandkante krank: 1208 px auf Luft — die mildeste der drei verschobenen Wisch-Zellen", "RAHMEN oder LUFT",
+    () => bandkante(1208));
+  add("…und die vier Attrappen tragen ihre Zahlen wirklich (sonst misst das Paar nichts)", null,
+    () => {
+      const ref = mkRefFleck(true), slate = slateMaskOf(ref);
+      const fail = [];
+      for (const n of [37, 52, 200, 201, 1208]) {
+        const b = mkBandkante(n);
+        const nb = overlayNeben(chromaKey(crop(b.png, 0, 0, W, H)), W, H, slate, VX, VY, ref);
+        if (b.n !== n) fail.push(`die Attrappe fuer ${n} px konnte nur ${b.n} px im Luft-Saum unterbringen — der Saum ist zu klein`);
+        else if (nb.daneben !== n) fail.push(`die Attrappe fuer ${n} px misst ${nb.daneben} px auf Rahmen/Luft — die Bandkante steht dann woanders, als der Fall behauptet`);
+        else if (nb.gemalt <= n) fail.push(`die Attrappe fuer ${n} px traegt nur ${nb.gemalt} px Kreide insgesamt — ohne Rumpf auf der Flaeche ist sie keine Zelle, sondern eine Zahl`);
+      }
+      return { fail };
+    });
 
   // ── Fall 6 · DIE RESERVE ──────────────────────────────────────────────────
   add("Reserve: ein Pixel auf 179", "vom Schluessel", () => runTafel(mkCell(W, H, { face: 450, keyAt: 179 }), ["a"], 1, W, H));
@@ -2539,15 +2656,22 @@ if (NUR_KOERPER && NUR_OVERLAY) {
 /** Die Quell-Pins der zwei Overlay-Blaetter, aus denen die fuenf Kreide-Stems
  *  geschnitten sind.
  *
- *  ⚠ SIE ZIEHEN MIT DEM IMPORT UM (R5 · T3). Bis T3 nannten sie
- *  `batch-aq13/…` (`105a9462…` / `6f7f55ff…`, R212-Bestand). Seit AQ13L sind
- *  die Stems aus einem ANDEREN Blattpaar geschnitten; die alten Pins stehen
- *  gelassen haetten `--nur-koerper` eine Datei bestaetigen lassen, aus der im
+ *  ⚠ SIE ZIEHEN MIT JEDEM IMPORT UM — zum ZWEITEN Mal (R5 · T3, dann T4). Bis
+ *  T3 nannten sie `batch-aq13/…` (`105a9462…` / `6f7f55ff…`, R212-Bestand), bis
+ *  T4 `batch-aq13l/…` (`dc70c45577fc98a0…` / `60f0e9aefca8a78d…`). Ein Pin, der
+ *  stehen bleibt, laesst `--nur-koerper` eine Datei bestaetigen, aus der im
  *  Spiel nichts mehr stammt — eine Zusicherung, die stillschweigend falsch
- *  geworden waere. Die alten Werte stehen im Register (D-682), nicht hier. */
+ *  geworden waere. Die gefallenen Werte stehen im Register (D-682 fuer die
+ *  R212-Bestandspins, D-694 fuer die L-Pins), nicht hier.
+ *
+ *  Die Werte unten sind an der Lieferung GEMESSEN (`shasum -a 256`), nicht vom
+ *  Lieferschein abgeschrieben, und die Lab-Kopie ist gegen die iCloud-ABLAGE
+ *  md5-geprueft (`46987c2b768a7996aeb15e3bbc51cfe9` /
+ *  `34758fa72f211ff915f2572fc1ba3e44`) — eine Lab-Kopie kann still VERALTET
+ *  sein, das ist an batch-as6p2 einmal bezahlt worden. */
 const DURCHREICH_PINS = [
-  ["batch-aq13l/tafel_scribble.png", "dc70c45577fc98a0"],
-  ["batch-aq13l/tafel_wipe.png", "60f0e9aefca8a78d"],
+  ["batch-aq13m/tafel_scribble.png", "c629cec206d68f60"],
+  ["batch-aq13m/tafel_wipe.png", "c307640d713adede"],
 ];
 if (NUR_KOERPER) {
   for (const [rel, pin] of DURCHREICH_PINS) {
