@@ -124,6 +124,29 @@ export interface FightStop {
   cards: number;
   /** ist nichts mehr zu fahren? */
   done: boolean;
+  /**
+   * ★ T5 · D-702 · WIE LANGE DIESER ABSCHNITT AM STÜCK AUF EINE GESCHULDETE
+   * KARTE GEWARTET HAT — die LÄNGSTE einzelne Wartezeit in Wanduhr-
+   * Millisekunden, nicht ihre Summe.
+   *
+   * WARUM DIESE ZAHL AM BERICHT HÄNGT. `stillstand` ist die einzige Antwort
+   * dieses Treibers, die von der WANDUHR abhängt und nicht vom Band: er wartet
+   * `CARD_PATIENCE_MS` und gibt dann auf. Auf einer belasteten Maschine (oder
+   * in einem verborgenen Tab, wo Chrome die Zeitgeber drosselt) kann dieselbe
+   * gesunde Welt deshalb einen Stillstand melden — und ein Bericht liest das
+   * als Aussage über das SPIEL. Genau so ist D-700 entstanden: zwei
+   * Kontrollläufe meldeten Stillstand, und daraus wurde die Prämisse »der
+   * Stand selbst ist kaputt«. Sie war falsch (T5 fährt denselben Befehl auf
+   * demselben main 2/2 bis 0/3 durch).
+   *
+   * Also trägt jeder Halt ab jetzt seine eigene Wartezahl. Ein Stillstand
+   * ohne `waitedMs`/`patienceMs` ist eine Behauptung; mit ihnen ist er eine
+   * Messung, die man gegen die Maschine halten kann.
+   */
+  waitedMs: number;
+  /** das Budget, gegen das gewartet wurde (`CARD_PATIENCE_MS`) — damit ein
+   *  Bericht die Zahl nicht aus dem Quelltext abschreiben muss. */
+  patienceMs: number;
 }
 
 export interface FightDriver {
@@ -172,6 +195,8 @@ export const createFightDriver = (s: FightSurfaces): FightDriver => {
   let masks: number[] = [];
   let cursor = 0;
   let played = 0;
+  /** die längste Wartezeit dieses Abschnitts — siehe `FightStop.waitedMs`. */
+  let laengsteWarteMs = 0;
 
   const stop = (reason: FightStopReason, wipes: number[], cards: number, done: boolean): FightStop => {
     // Am Ende bekommt die Welt ihre eigene Uhr zurück; zwischen zwei
@@ -181,6 +206,8 @@ export const createFightDriver = (s: FightSurfaces): FightDriver => {
     const r = s.read();
     return {
       reason, played, wipes, cards, done,
+      waitedMs: laengsteWarteMs,
+      patienceMs: CARD_PATIENCE_MS,
       tick: r?.tick ?? -1,
       knots: r?.knots ?? -1,
       knotsTotal: r?.knotsTotal ?? -1,
@@ -199,6 +226,7 @@ export const createFightDriver = (s: FightSurfaces): FightDriver => {
     advance: async (maxTicks = Number.POSITIVE_INFINITY) => {
       // Ab hier ist DAS BAND die einzige Taktquelle — siehe `freeze`.
       s.freeze?.();
+      laengsteWarteMs = 0;
       const wipes: number[] = [];
       let cards = 0;
       let spent = 0;
@@ -220,8 +248,10 @@ export const createFightDriver = (s: FightSurfaces): FightDriver => {
         //     Schreib-Beat läuft. WARTEN, nicht takten — und nach der Geduld
         //     den Stillstand beim Namen nennen.
         if (r !== null && r.overlay) {
-          const bis = Date.now() + CARD_PATIENCE_MS;
+          const seit = Date.now();
+          const bis = seit + CARD_PATIENCE_MS;
           while (Date.now() < bis && !s.cardOpen()) await yieldToTimers();
+          laengsteWarteMs = Math.max(laengsteWarteMs, Date.now() - seit);
           if (!s.cardOpen()) return stop("stillstand", wipes, cards, false);
           continue;
         }
