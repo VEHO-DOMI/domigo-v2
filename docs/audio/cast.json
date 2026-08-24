@@ -1,0 +1,32 @@
+{
+  "schema": "cast@1",
+  "note": "DAS ENSEMBLE (P-R13 Punkt 8). Wiederkehrende Figuren mit fest gepinnter Stimme — statt Zufalls-Stimmen je Aufnahme. Der Erzeuger (gen-listening-voice.mjs) liest diese Datei: ein Stück nennt `cast: \"leonie\"` oder `castByTurn: [\"leonie\", \"david\", …]` und bekommt die Stimme daraus. Eine Figur, die hier fehlt, bricht den Lauf HART ab — eine still eingesetzte Ersatzstimme wäre die schlimmste Variante. Das Leseblatt CAST.md wird AUS dieser Datei erzeugt (docs/audio/cast-sheet.mjs); zwei handgepflegte Fassungen wären genau die Drift, gegen die V-LC7 gebaut wurde.",
+  "decidedBy": "PROVISORISCH — wartet auf Kokis Ohr-Tor 1 (Bahn K4c). Bis dahin stehen hier die Amtsinhaber aus K5a/K4b.",
+  "auditionPage": "/hoerprobe-cast.html",
+  "figures": [
+    {
+      "key": "leonie",
+      "name": "Leonie",
+      "role": "Schülerin, 13 — Erzählerin der Museums-Einheit",
+      "gender": "weiblich",
+      "voiceSlug": "amelia",
+      "voiceName": "Amelia — young and enthusiastic",
+      "voiceId": "ZF6FPAbjXT4488VcRRnw",
+      "speed": 0.9,
+      "unitsSoFar": ["g2-u02"],
+      "note": "Amtsinhaberin: Kokis Wahl aus dem K5a-Rauchtest (P-R10), britisch, jung, lebhaft."
+    },
+    {
+      "key": "david",
+      "name": "David",
+      "role": "Schüler, 13 — Leonies bester Freund",
+      "gender": "männlich",
+      "voiceSlug": "archie",
+      "voiceName": "Archie — English teen youth",
+      "voiceId": "kmSVBPu7loj4ayNinwWM",
+      "speed": 0.9,
+      "unitsSoFar": ["g2-u02"],
+      "note": "PROVISORISCH bis Tor 1. Punkt 4 des Rulings: Junge → männliche Stimme."
+    }
+  ]
+}

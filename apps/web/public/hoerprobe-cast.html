@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DomiGo · Vorsprechen für das Figuren-Ensemble (K4c)</title>
+<style>
+  :root { --bg:#faf9f7; --fg:#1c1b19; --mut:#6b6864; --line:#e3e0db; --acc:#2f6f4e; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#16151a; --fg:#f2f0ec; --mut:#a09d98; --line:#2f2d33; --acc:#68c39a; } }
+  * { box-sizing: border-box; }
+  body { margin:0; padding:2rem 1.25rem 5rem; background:var(--bg); color:var(--fg);
+         font:16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+  main { max-width: 54rem; margin: 0 auto; }
+  h1 { font-size:1.5rem; margin:0 0 .25rem; }
+  .lead { color:var(--mut); margin:0 0 1.5rem; }
+  .satz { border-left:3px solid var(--acc); padding:.6rem 0 .6rem 1rem; margin:0 0 1.5rem; font-style:italic; }
+  .bar { display:flex; gap:.75rem; align-items:center; margin-bottom:1.25rem; flex-wrap:wrap; }
+  button { font:inherit; cursor:pointer; border:1px solid var(--line); background:transparent;
+           color:var(--fg); border-radius:.5rem; padding:.4rem .9rem; }
+  .grid { display:grid; gap:.9rem; grid-template-columns:repeat(auto-fill, minmax(15rem, 1fr)); }
+  .card { border:1px solid var(--line); border-radius:.75rem; padding:.9rem; background:color-mix(in srgb, var(--fg) 3%, transparent); }
+  .card.playing { border-color:var(--acc); }
+  .head { display:flex; gap:.75rem; align-items:center; }
+  .play { width:2.6rem; height:2.6rem; border-radius:50%; flex:0 0 auto; font-size:1rem; }
+  .slug { font-weight:600; letter-spacing:.02em; }
+  .rolle { color:var(--mut); font-size:.85rem; }
+  details { margin-top:.75rem; }
+  summary { cursor:pointer; color:var(--mut); font-size:.85rem; }
+  .name { margin:.5rem 0 .25rem; font-weight:600; font-size:.9rem; }
+  .wette { margin:0; color:var(--mut); font-size:.9rem; }
+  footer { margin-top:2.5rem; color:var(--mut); font-size:.9rem; border-top:1px solid var(--line); padding-top:1rem; }
+</style></head>
+<body><main>
+  <h1>Vorsprechen: wer spricht ab jetzt in DomiGo?</h1>
+  <p class="lead">Neun britische Stimmen, <strong>derselbe Satz</strong>, <strong>dasselbe Tempo</strong>,
+  <strong>dieselbe Lautstärke</strong> (alle auf −16 LUFS angeglichen, Spanne 0,5 dB) — du hörst also
+  wirklich den Unterschied der Stimme und nicht den der Lautstaerke.</p>
+  <p class="satz">On Saturday we had a big surprise party for my sister. There were twelve people in the garden, and everybody was happy. Did you ever organise a party for a friend?</p>
+  <div class="bar">
+    <button id="shuffle">Reihenfolge neu mischen</button>
+    <span class="rolle">Die Karten stehen absichtlich in zufälliger Ordnung — die erste Karte gewinnt sonst zu leicht.</span>
+  </div>
+  <div class="grid" id="grid">
+    <article class="card" data-slug="amelia">
+      <div class="head">
+        <button class="play" data-src="audio/audition/amelia--33da89f5.mp3" aria-label="Abspielen">▶</button>
+        <div>
+          <div class="slug">amelia</div>
+          <div class="rolle">jung, weiblich</div>
+        </div>
+      </div>
+      <details><summary>Wette + Stimmname anzeigen</summary>
+        <p class="name">Amelia — young and enthusiastic</p>
+        <p class="wette">Die Gleichaltrigen-Wette und der Amtsinhaber: Kokis Wahl aus dem K5a-Rauchtest, britisch, jung, lebhaft.</p>
+      </details>
+    </article>
+    <article class="card" data-slug="blondie">
+      <div class="head">
+        <button class="play" data-src="audio/audition/blondie--a89b24cc.mp3" aria-label="Abspielen">▶</button>
+        <div>
+          <div class="slug">blondie</div>
+          <div class="rolle">jung, weiblich</div>
+        </div>
+      </div>
+      <details><summary>Wette + Stimmname anzeigen</summary>
+        <p class="name">Blondie — Children's Storyteller</p>
+        <p class="wette">Die Vorlese-Wette: wärmer und langsamer als Amelia. Risiko: kann bei Zwoelfjaehrigen kindisch wirken.</p>
+      </details>
+    </article>
+    <article class="card" data-slug="connor">
+      <div class="head">
+        <button class="play" data-src="audio/audition/connor--98b53c62.mp3" aria-label="Abspielen">▶</button>
+        <div>
+          <div class="slug">connor</div>
+          <div class="rolle">jung, männlich</div>
+        </div>
+      </div>
+      <details><summary>Wette + Stimmname anzeigen</summary>
+        <p class="name">Connor</p>
+        <p class="wette">Die Schuljungen-Wette mit Erklaeren-Zungenschlag — auf Verständlichkeit trainiert.</p>
+      </details>
+    </article>
+    <article class="card" data-slug="archie">
+      <div class="head">
+        <button class="play" data-src="audio/audition/archie--3cc17e87.mp3" aria-label="Abspielen">▶</button>
+        <div>
+          <div class="slug">archie</div>
+          <div class="rolle">jung, männlich</div>
+        </div>
+      </div>
+      <details><summary>Wette + Stimmname anzeigen</summary>
+        <p class="name">Archie — English teen youth</p>
+        <p class="wette">Die Teenager-Wette: am nächsten an einem echten 13-Jaehrigen. Risiko: Social-Media-Ton.</p>
+      </details>
+    </article>
+    <article class="card" data-slug="toby">
+      <div class="head">
+        <button class="play" data-src="audio/audition/toby--9dce35cb.mp3" aria-label="Abspielen">▶</button>
+        <div>
+          <div class="slug">toby</div>
+          <div class="rolle">jung, männlich</div>
+        </div>
+      </div>
+      <details><summary>Wette + Stimmname anzeigen</summary>
+        <p class="name">Toby — British Male</p>
+        <p class="wette">Die Erzaehler-Wette unter den jungen Männern: ruhiger als Archie, älter als Connor.</p>
+      </details>
+    </article>
+    <article class="card" data-slug="alice">
+      <div class="head">
+        <button class="play" data-src="audio/audition/alice--4b89df91.mp3" aria-label="Abspielen">▶</button>
+        <div>
+          <div class="slug">alice</div>
+          <div class="rolle">erwachsen, weiblich</div>
+        </div>
+      </div>
+      <details><summary>Wette + Stimmname anzeigen</summary>
+        <p class="name">Alice — Clear, Engaging Educator</p>
+        <p class="wette">Die Lehrerinnen-Wette und die Amtsinhaberin fuer Erwachsenen-Rollen (spricht heute die Passantin in g2-u05).</p>
+      </details>
+    </article>
+    <article class="card" data-slug="lily">
+      <div class="head">
+        <button class="play" data-src="audio/audition/lily--93f7fe0f.mp3" aria-label="Abspielen">▶</button>
+        <div>
+          <div class="slug">lily</div>
+          <div class="rolle">erwachsen, weiblich</div>
+        </div>
+      </div>
+      <details><summary>Wette + Stimmname anzeigen</summary>
+        <p class="name">Lily — Velvety Actress</p>
+        <p class="wette">Die Schauspielerinnen-Wette: mehr Farbe als Alice, weniger Klassenzimmer.</p>
+      </details>
+    </article>
+    <article class="card" data-slug="george">
+      <div class="head">
+        <button class="play" data-src="audio/audition/george--6e5ce319.mp3" aria-label="Abspielen">▶</button>
+        <div>
+          <div class="slug">george</div>
+          <div class="rolle">erwachsen, männlich</div>
+        </div>
+      </div>
+      <details><summary>Wette + Stimmname anzeigen</summary>
+        <p class="name">George — Warm, Captivating Storyteller</p>
+        <p class="wette">Die Vorleser-Wette fuer erwachsene Maennerrollen und fuer eine mögliche Erzählstimme.</p>
+      </details>
+    </article>
+    <article class="card" data-slug="daniel">
+      <div class="head">
+        <button class="play" data-src="audio/audition/daniel--0dc9588a.mp3" aria-label="Abspielen">▶</button>
+        <div>
+          <div class="slug">daniel</div>
+          <div class="rolle">erwachsen, männlich</div>
+        </div>
+      </div>
+      <details><summary>Wette + Stimmname anzeigen</summary>
+        <p class="name">Daniel — Steady Broadcaster</p>
+        <p class="wette">Die Nachrichtensprecher-Wette: maximale Deutlichkeit, minimale Farbe — der Gegenpol zu George.</p>
+      </details>
+    </article>
+  </div>
+  <footer>
+    <p><strong>Was ich von dir brauche:</strong> je Rolle eine Stimme —
+    ein Mädchen (Leonie, Emma, Mia), ein Junge (Ben, David, Tom),
+    eine erwachsene Frau (Mrs Smith), ein erwachsener Mann (Lehrer, Führung).
+    Gern auch zwei je Rolle, damit nicht alle Kinder gleich klingen.
+    Sag mir einfach die Namen in Kleinschrift (z. B. „amelia, archie, alice, george“).</p>
+  </footer>
+</main>
+<script>
+  const grid = document.getElementById("grid");
+  let current = null;
+  const shuffle = () => {
+    const cards = [...grid.children];
+    for (let i = cards.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      grid.insertBefore(cards[j], cards[i].nextSibling);
+      cards.splice(i, 0, ...cards.splice(j, 1));
+    }
+  };
+  document.getElementById("shuffle").addEventListener("click", shuffle);
+  grid.addEventListener("click", (e) => {
+    const b = e.target.closest(".play");
+    if (!b) return;
+    if (current) { current.audio.pause(); current.card.classList.remove("playing"); current.btn.textContent = "▶"; }
+    if (current && current.btn === b) { current = null; return; }
+    const audio = new Audio(b.dataset.src);
+    const card = b.closest(".card");
+    card.classList.add("playing"); b.textContent = "■";
+    audio.addEventListener("ended", () => { card.classList.remove("playing"); b.textContent = "▶"; current = null; });
+    audio.play();
+    current = { audio, card, btn: b };
+  });
+  shuffle();
+</script>
+</body></html>

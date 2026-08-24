@@ -34,11 +34,28 @@
 // (apps/web/next.config.ts). Ohne Fingerabdruck im Namen bliebe eine neu
 // aufgenommene Datei bei jedem Kind ein Jahr lang die alte.
 //
-// ── Ein Stueck mit ZWEI Rollen (K4b) ────────────────────────────────────────
+// ── Die ATEMPAUSEN (K4c, P-R13 Punkt 2+3) ───────────────────────────────────
+// An vier echten Verlags-Hoeruebungen (MORE! 2 Extra LC practice) gemessen:
+// die Sprecher sind NICHT langsam (187 Woerter/Minute Artikulation, schneller
+// als unsere 152) — aber **35 % der Spielzeit ist Stille**. Eine Pause etwa
+// alle fuenf Woerter, fast alle im Band 250–1200 ms. Genau das ist die "Zeit
+// zum Verdauen", die Kokis Ohr vermisst hat.
+// Nachgebaut wird sie mit `<break time="…"/>`-Marken, die `speakify()` aus der
+// INTERPUNKTION ableitet — nicht von Hand gesetzt. Der Bestand traegt also
+// weiter genau EINEN sauberen Text (V-LC7: `audio.script` === `transcript`),
+// und `stripBreaks(speakify(t))` muss wortgleich `t` ergeben, sonst bricht der
+// Lauf ab. Eine zweite, handgepflegte "Sprech-Fassung" waere genau die Drift,
+// gegen die V-LC7 existiert.
+//
+// ── Ein Stueck mit ZWEI Rollen (K4b) → jetzt mit CAST (K4c) ─────────────────
 // Ein Auftragszettel-Stueck darf `voicesByTurn` tragen: je ZEILE des Skripts
 // eine Stimme. Das Skript bleibt die einzige Textquelle — der Zettel nennt nur
 // Stimmen, nie Text. Stimmen die Zahlen nicht ueberein (Zeilen vs. Angaben),
 // bricht der Lauf HART ab; ein stiller Versatz waere die schlimmste Variante.
+// K4c: statt roher Stimm-Slugs darf ein Stueck `castByTurn` tragen — FIGUREN
+// (leonie, david, …), aufgeloest ueber `docs/audio/cast.json`. Damit spricht
+// dieselbe Figur im ganzen Bau dieselbe Stimme (P-R13 Punkt 8), und eine Figur,
+// die der Cast nicht kennt, bricht den Lauf ab statt still ersetzt zu werden.
 // Die Teil-Takes werden mit einer kurzen Pause zusammengefuegt und danach EIN
 // Mal durch dieselbe Master-Kette geschickt — eine zweite Kette waere genau die
 // Drift, gegen die das Klang-Tor existiert.
@@ -60,6 +77,7 @@ import { SR, decodeMono, loudnormMeasure, measureFile, rms } from "./measure.mjs
 
 const ROOT = process.cwd();
 const ORDER = path.join(ROOT, "docs/audio/listening-voices.json");
+const CAST = path.join(ROOT, "docs/audio/cast.json");
 const MEASURED = path.join(ROOT, "docs/audio/listening-measured.json");
 const UNITS = path.join(ROOT, "content/corpus/units");
 const PUBLIC = path.join(ROOT, "apps/web/public/audio/listening");
@@ -71,7 +89,16 @@ const OUTPUT_FORMAT = "mp3_44100_128"; // Rohformat; gemastert wird danach auf m
 const TARGET_I = -16;                  // LUFS — Sprache im selben Fenster wie die Spiel-Bank
 const TARGET_TP = -1.5;                // dBFS True-Peak-Decke
 const MAX_EDGE_SILENCE_MS = 150;
-const TURN_GAP_MS = 350;               // Pause zwischen zwei Sprech-Rollen
+// Pausen-Vorgaben. Alle drei an den vier Verlags-Hoeruebungen geeicht (K4c):
+// Median der Pause zwischen zwei Sprecher-Zuegen 600–720 ms, Gros aller Pausen
+// im Band 250–1200 ms, keine ueber 2 s ausser an Aufgaben-Grenzen.
+// ⚠ Die Sprachmaschine legt auf eine angeforderte Marke noch etwas drauf
+// (gemessen: 0,35 s → 0,66 s · 0,70 s → 0,94 s) — die Werte hier sind darum
+// BESTELLWERTE, nicht Zielwerte. Gemessen wird am fertigen Ton.
+const TURN_GAP_MS = 500;               // Stille zwischen zwei Sprech-Rollen (Stitching)
+const CLAUSE_GAP_MS = 300;             // nach , ; :  — die Atempause im Satz
+const SENTENCE_GAP_MS = 550;           // nach . ! ?  — die Zaesur zwischen Saetzen
+const PARA_GAP_MS = 700;               // an einem Zeilenumbruch innerhalb eines Stuecks
 
 // ── Argumente ────────────────────────────────────────────────────────────────
 const argv = process.argv.slice(2);
@@ -87,7 +114,7 @@ const ONLY = value("only", "").split(",").map((s) => s.trim()).filter(Boolean);
 const UNIT = value("unit", "").split(",").map((s) => s.trim()).filter(Boolean);
 
 // ── Der Schlüssel ────────────────────────────────────────────────────────────
-const readKey = () => {
+export const readKey = () => {
   let raw;
   try { raw = fs.readFileSync(KEYFILE, "utf8"); }
   catch { console.error(`✗ ${KEYFILE} ist nicht lesbar. Der Schluessel steht NUR dort (R125).`); process.exit(2); }
@@ -142,6 +169,42 @@ const subscription = async (key) => {
   return d ? { tier: d.tier, status: d.status, used: d.character_count, limit: d.character_limit } : null;
 };
 
+// ── Die Atempausen: aus der INTERPUNKTION abgeleitet, nie von Hand ───────────
+/** Alle `<break …/>`-Marken wieder entfernen. Gegenstueck zu `speakify`. */
+export const stripBreaks = (t) => t.replace(/<break\s+time="[^"]*"\s*\/>/g, " ");
+
+const words = (t) => t.replace(/\s+/g, " ").trim();
+
+/**
+ * Setzt Pausen-Marken hinter die Satzzeichen. Der EINE saubere Text aus dem
+ * Bestand bleibt die Quelle — hier entsteht nur seine Sprech-Fassung.
+ * Die Umkehrprobe laeuft bei JEDEM Aufruf: entfernt man die Marken wieder,
+ * muss wortgleich der Eingabetext dastehen. Sonst bricht der Lauf ab —
+ * eine Sprech-Fassung, die vom Bestand abweicht, waere genau die Drift,
+ * gegen die V-LC7 gebaut wurde.
+ */
+export const speakify = (text, { clauseMs = CLAUSE_GAP_MS, sentenceMs = SENTENCE_GAP_MS, paraMs = PARA_GAP_MS } = {}) => {
+  const mark = (ms) => (ms > 0 ? ` <break time="${(ms / 1000).toFixed(2)}s" />` : "");
+  const out = text
+    // Zeilenumbruch = Absatz-Zaesur (bei mehrstimmigen Stuecken kommt hier
+    // ohnehin der Schnitt, dann sieht speakify die Zeile schon einzeln).
+    .replace(/\n+/g, (m) => `${mark(paraMs)}\n`)
+    // Satzende — auch mit schliessendem Anfuehrungszeichen dahinter.
+    .replace(/([.!?]["\u201d]?)(\s+)(?=\S)/g, (m, punct, ws) => `${punct}${mark(sentenceMs)}${ws}`)
+    // Teilsatz.
+    .replace(/([,;:])(\s+)(?=\S)/g, (m, punct, ws) => `${punct}${mark(clauseMs)}${ws}`)
+    // Zwei Marken direkt hintereinander (Satzende UND Absatzende) waeren eine
+    // doppelte Pause — es gilt die laengere.
+    .replace(/(?:<break\s+time="([\d.]+)s"\s*\/>\s*){2,}/g, (m) => {
+      const all = [...m.matchAll(/time="([\d.]+)s"/g)].map((x) => Number(x[1]));
+      return `<break time="${Math.max(...all).toFixed(2)}s" /> `;
+    });
+  if (words(stripBreaks(out)) !== words(text)) {
+    throw new Error("speakify: die Umkehrprobe schlaegt fehl — die Sprech-Fassung ist nicht mehr wortgleich mit dem Bestand");
+  }
+  return out;
+};
+
 // ── Der Bestand ist die Quelle des Textes ────────────────────────────────────
 /** Liest `tasks[].audio.script` aus der Einheit — die EINZIGE Textquelle. */
 const scriptOf = (unit, taskKey) => {
@@ -172,7 +235,7 @@ const headSilenceMs = (s) => {
  * zweite normalisiert mit den gemessenen Werten. Ein einzelner Durchgang waere
  * eine Schaetzung ueber ein gleitendes Fenster und traefe das Ziel nicht.
  */
-const master = (src, dst) => {
+export const master = (src, dst) => {
   const trimmed = `${dst}.trim.wav`;
   ff(["-i", src, "-af",
     `highpass=f=70,silenceremove=start_periods=1:start_silence=${MAX_EDGE_SILENCE_MS / 1000}:start_threshold=-50dB:detection=peak,areverse,` +
@@ -195,15 +258,21 @@ const master = (src, dst) => {
  * Mehrere Teil-Takes zu EINER Datei fuegen, mit TURN_GAP_MS Pause dazwischen.
  * Ueber wav und den concat-Demuxer, damit nichts zweimal durch mp3 laeuft.
  */
-const concatTurns = (parts, dst) => {
-  const dir = path.dirname(dst);
-  const wavs = parts.map((src, i) => {
+export const concatTurns = (parts, dst, gapMs = TURN_GAP_MS) => {
+  // ABSOLUT, nicht relativ (K4c, einmal bezahlt): der concat-Demuxer von ffmpeg
+  // loest die Pfade IN der Liste relativ zum Verzeichnis DER LISTE auf. Mit
+  // relativen Pfaden verdoppelt sich der Pfad ("a/b/a/b/.turn-0.wav") und der
+  // Lauf stirbt mit "Impossible to open". Hier lief es nur deshalb nie auf,
+  // weil die Rohtakes im absoluten os.tmpdir() liegen.
+  const dir = path.resolve(path.dirname(dst));
+  const wavs = parts.map((src0, i) => {
+    const src = path.resolve(src0);
     const w = path.join(dir, `.turn-${i}.wav`);
     ff(["-i", src, "-ac", "1", "-ar", String(SR), w]);
     return w;
   });
   const gap = path.join(dir, ".gap.wav");
-  ff(["-f", "lavfi", "-i", `anullsrc=r=${SR}:cl=mono`, "-t", String(TURN_GAP_MS / 1000), gap]);
+  ff(["-f", "lavfi", "-i", `anullsrc=r=${SR}:cl=mono`, "-t", String(gapMs / 1000), gap]);
   const list = path.join(dir, ".concat.txt");
   const lines = [];
   wavs.forEach((w, i) => {
@@ -215,7 +284,7 @@ const concatTurns = (parts, dst) => {
   for (const f of [...wavs, gap, list]) fs.rmSync(f, { force: true });
 };
 
-const sha8 = (file) => crypto.createHash("sha256").update(fs.readFileSync(file)).digest("hex").slice(0, 8);
+export const sha8 = (file) => crypto.createHash("sha256").update(fs.readFileSync(file)).digest("hex").slice(0, 8);
 
 // ── Lauf ─────────────────────────────────────────────────────────────────────
 const main = async () => {
@@ -241,22 +310,56 @@ const main = async () => {
     return v;
   };
 
+  // ── DER CAST (K4c, P-R13 Punkt 8) ────────────────────────────────────────
+  // Wiederkehrende FIGUREN mit fest gepinnter Stimme. Der Cast ist optional —
+  // Stuecke aus Staffel 1 nennen weiter rohe Stimm-Slugs und laufen unveraendert.
+  const cast = fs.existsSync(CAST) ? JSON.parse(fs.readFileSync(CAST, "utf8")) : { figures: [] };
+  const figureByKey = new Map((cast.figures ?? []).map((f) => [f.key, f]));
+  /** Eine Figur → ihre Stimme. Unbekannte Figur = HARTER Abbruch: eine still
+   *  eingesetzte Ersatzstimme waere die schlimmste Variante (K4b-Gesetz). */
+  const needFigure = (key, where) => {
+    const f = figureByKey.get(key);
+    if (!f) {
+      throw new Error(`${where}: der Cast kennt keine Figur "${key}" (vorhanden: ${[...figureByKey.keys()].join(", ") || "keine"}) — docs/audio/cast.json`);
+    }
+    return f;
+  };
+
   const jobs = [];
   for (const piece of order.pieces) {
     if (UNIT.length > 0 && !UNIT.includes(piece.unit)) continue;
     const script = scriptOf(piece.unit, piece.taskKey);
     const where = `${piece.unit}/${piece.taskKey}`;
 
-    // (a) ZWEI ROLLEN: je Zeile des Skripts eine Stimme.
-    if (Array.isArray(piece.voicesByTurn)) {
+    // (a) MEHRERE ROLLEN: je Zeile des Skripts eine Stimme.
+    //     `castByTurn` nennt FIGUREN (K4c), `voicesByTurn` rohe Stimm-Slugs
+    //     (Staffel 1, unveraendert lauffaehig). Beides zugleich waere zweideutig.
+    if (Array.isArray(piece.castByTurn) && Array.isArray(piece.voicesByTurn)) {
+      throw new Error(`${where}: castByTurn UND voicesByTurn gesetzt — genau eines von beiden`);
+    }
+    const byTurn = piece.castByTurn ?? piece.voicesByTurn;
+    if (Array.isArray(byTurn)) {
+      const fromCast = Array.isArray(piece.castByTurn);
       const turns = script.split(/\r\n|\r|\n/).map((t) => t.trim()).filter(Boolean);
-      if (turns.length !== piece.voicesByTurn.length) {
-        throw new Error(`${where}: ${turns.length} Sprech-Zeile(n) im Bestand, aber ${piece.voicesByTurn.length} Stimm-Angabe(n) im Auftragszettel — der Zettel schreibt den Text nicht ab, also muss die ZAHL stimmen`);
+      if (turns.length !== byTurn.length) {
+        throw new Error(`${where}: ${turns.length} Sprech-Zeile(n) im Bestand, aber ${byTurn.length} ${fromCast ? "Figuren" : "Stimm"}-Angabe(n) im Auftragszettel — der Zettel schreibt den Text nicht ab, also muss die ZAHL stimmen`);
       }
-      const segments = turns.map((text, i) => ({ text, voice: needVoice(piece.voicesByTurn[i], where) }));
-      const slug = piece.voiceSlug ?? [...new Set(piece.voicesByTurn)].join("-");
-      if (ONLY.length > 0 && !piece.voicesByTurn.some((v) => ONLY.includes(v))) continue;
+      const segments = turns.map((text, i) => {
+        if (!fromCast) return { text, figure: null, voice: needVoice(byTurn[i], where) };
+        const fig = needFigure(byTurn[i], where);
+        return { text, figure: fig, voice: { slug: fig.key, name: fig.voiceName, voiceId: fig.voiceId, speed: fig.speed } };
+      });
+      const slug = piece.voiceSlug ?? [...new Set(byTurn)].join("-");
+      if (ONLY.length > 0 && !byTurn.some((v) => ONLY.includes(v))) continue;
       jobs.push({ piece, voice: { slug, name: segments.map((g) => g.voice.name).filter((n, i, a) => a.indexOf(n) === i).join(" + "), voiceId: null }, script, segments });
+      continue;
+    }
+
+    // (a2) EINE Figur aus dem Cast — der Normalfall fuer Erzaehl-Stuecke ab K4c.
+    if (piece.cast) {
+      const fig = needFigure(piece.cast, where);
+      const v = { slug: fig.key, name: fig.voiceName, voiceId: fig.voiceId, speed: fig.speed };
+      if (ONLY.length === 0 || ONLY.includes(fig.key)) jobs.push({ piece, voice: v, script });
       continue;
     }
 
@@ -276,6 +379,15 @@ const main = async () => {
   const measured = fs.existsSync(MEASURED) ? JSON.parse(fs.readFileSync(MEASURED, "utf8")) : { schema: "listening-measured@1", files: {} };
 
   if (MEASURE_ONLY) {
+    // K4c: auch der Nur-Messen-Weg raeumt verwaiste Eintraege ab. Vorher tat das
+    // nur der Erzeugungsweg — eine geloeschte Datei blieb im Messblatt stehen
+    // und das naechste Werkzeug stolperte darueber.
+    for (const rel of Object.keys(measured.files)) {
+      if (!fs.existsSync(path.join(ROOT, "apps/web/public", rel.replace(/^\//, "")))) {
+        delete measured.files[rel];
+        console.log(`− ${rel} — Datei gibt es nicht mehr, Eintrag entfernt.`);
+      }
+    }
     for (const [rel, rec] of Object.entries(measured.files)) {
       const abs = path.join(ROOT, "apps/web/public", rel.replace(/^\//, ""));
       const s = decodeMono(abs);
@@ -295,35 +407,47 @@ const main = async () => {
   fs.mkdirSync(RAW, { recursive: true });
   let credits = 0;
 
-  const bodyFor = (v, text) => ({
-    text,
+  /**
+   * Der Auftrag an die Sprachmaschine.
+   * TEMPO-Vorrang (K4c, P-R13 Punkt 2): Figur/Stimme → Stueck → Auftragszettel.
+   *   Die Figur gewinnt, weil das Tempo eine Eigenschaft der SPRECHENDEN ist
+   *   (ein Kind haspelt, eine Lehrerin nicht); das Stueck darf sie ueberstimmen,
+   *   wenn ein einzelner Text ruhiger laufen soll.
+   * PAUSEN: `speakify` leitet sie aus der Interpunktion ab, mit Umkehrprobe.
+   */
+  const bodyFor = (v, text, piece) => ({
+    text: speakify(text, {
+      clauseMs: piece?.clauseGapMs ?? order.clauseGapMs ?? CLAUSE_GAP_MS,
+      sentenceMs: piece?.sentenceGapMs ?? order.sentenceGapMs ?? SENTENCE_GAP_MS,
+      paraMs: piece?.paraGapMs ?? order.paraGapMs ?? PARA_GAP_MS,
+    }),
     model_id: v.modelId ?? order.modelId ?? "eleven_multilingual_v2",
     voice_settings: {
       stability: v.stability ?? order.stability ?? 0.5,
       similarity_boost: v.similarityBoost ?? order.similarityBoost ?? 0.75,
       style: v.style ?? order.style ?? 0,
       use_speaker_boost: true,
-      ...(v.speed ?? order.speed ? { speed: v.speed ?? order.speed } : {}),
+      ...(v.speed ?? piece?.speed ?? order.speed ? { speed: v.speed ?? piece?.speed ?? order.speed } : {}),
     },
   });
 
   for (const { piece, voice, script, segments } of jobs) {
     const label = `${piece.unit}/${piece.taskKey}·${voice.slug}`;
     const take = path.join(RAW, `${piece.unit}--${piece.taskKey}--${voice.slug}.mp3`);
-    const body = bodyFor(segments ? segments[0].voice : voice, script);
+    const body = bodyFor(segments ? segments[0].voice : voice, script, piece);
     let c = 0;
     let ms = 0;
 
     if (segments) {
       const parts = [];
       for (const [i, seg] of segments.entries()) {
-        const r = await post(key, `${API}/text-to-speech/${seg.voice.voiceId}?output_format=${OUTPUT_FORMAT}`, bodyFor(seg.voice, seg.text), `${label}#${i + 1}`);
+        const r = await post(key, `${API}/text-to-speech/${seg.voice.voiceId}?output_format=${OUTPUT_FORMAT}`, bodyFor(seg.voice, seg.text, piece), `${label}#${i + 1}`);
         c += r.credits; ms += r.ms;
         const f = path.join(RAW, `${piece.unit}--${piece.taskKey}--turn-${String(i).padStart(2, "0")}.mp3`);
         fs.writeFileSync(f, r.buf);
         parts.push(f);
       }
-      concatTurns(parts, take);
+      concatTurns(parts, take, piece.turnGapMs ?? order.turnGapMs ?? TURN_GAP_MS);
     } else {
       const r = await post(key, `${API}/text-to-speech/${voice.voiceId}?output_format=${OUTPUT_FORMAT}`, body, label);
       c = r.credits; ms = r.ms;
@@ -351,14 +475,30 @@ const main = async () => {
       unit: piece.unit, taskKey: piece.taskKey,
       voiceSlug: voice.slug, voiceName: voice.name, voiceId: voice.voiceId,
       // Die DISTINKTEN Stimmen des Stuecks — bei einem Dialog eine je Rolle.
+      // Die DISTINKTEN Stimmen kommen aus den SEGMENTEN selbst — bei Cast-Stuecken
+      // kennt der Auftragszettel die Figur gar nicht (K4c).
       voices: segments
-        ? [...new Set(segments.map((g) => g.voice.slug))].map((slug) => {
-            const v = voiceBySlug.get(slug);
-            return { role: piece.roles?.[slug] ?? null, slug, name: v.name, voiceId: v.voiceId };
-          })
-        : [{ role: null, slug: voice.slug, name: voice.name, voiceId: voice.voiceId }],
+        ? [...new Map(segments.map((g) => [g.voice.slug, g])).values()].map((g) => ({
+            role: g.figure ? `${g.figure.name} — ${g.figure.role}` : (piece.roles?.[g.voice.slug] ?? null),
+            slug: g.voice.slug, name: g.voice.name, voiceId: g.voice.voiceId,
+          }))
+        : [{ role: piece.cast ? `${figureByKey.get(piece.cast)?.name} — ${figureByKey.get(piece.cast)?.role}` : null, slug: voice.slug, name: voice.name, voiceId: voice.voiceId }],
       modelId: body.model_id, voiceSettings: body.voice_settings,
-      scriptChars: script.length, creditsCharged: c, generatedMs: ms,
+      // Die Pausen-Bestellung dieses Stuecks — damit im Nachhinein nachvollziehbar
+      // bleibt, WOMIT diese Aufnahme ihren Rhythmus bekommen hat.
+      gaps: {
+        clauseMs: piece.clauseGapMs ?? order.clauseGapMs ?? CLAUSE_GAP_MS,
+        sentenceMs: piece.sentenceGapMs ?? order.sentenceGapMs ?? SENTENCE_GAP_MS,
+        paraMs: piece.paraGapMs ?? order.paraGapMs ?? PARA_GAP_MS,
+        turnMs: segments ? (piece.turnGapMs ?? order.turnGapMs ?? TURN_GAP_MS) : null,
+      },
+      scriptChars: script.length, spokenChars: body.text.length, creditsCharged: c, generatedMs: ms,
+      // Der Fingerabdruck des GESPROCHENEN Textes. V-LC6 prueft, ob die DATEI zu
+      // ihrem Namen passt — nicht, ob sie zum heutigen Skript passt. Ein Text, der
+      // nach der Aufnahme geaendert wird, laesst jedes Struktur-Tor gruen und das
+      // Kind hoert etwas anderes, als die Aufgaben zitieren. Mit dieser Zahl ist
+      // dieser Vergleich eine Zeile weit entfernt (abgelegt fuer die naechste Bahn).
+      scriptSha8: crypto.createHash("sha256").update(script).digest("hex").slice(0, 8),
       sha256Prefix: stamp,
       ...measureFile(dst, "speech"),
       headSilenceMs: headSilenceMs(s),
@@ -382,4 +522,12 @@ const main = async () => {
   console.log(`Messungen: ${path.relative(ROOT, MEASURED)}`);
 };
 
-main().catch((e) => { console.error(`✗ ${e.message}`); process.exit(1); });
+// ── Die Wache (K4c) ──────────────────────────────────────────────────────────
+// Ein `import` dieser Datei darf den Hauptlauf NICHT starten. Die Hoerprobe
+// importiert `master`/`speakify`, damit sie DIESELBE Kette benutzt statt einer
+// zweiten Abschrift — ohne diese Wache wuerde jeder solche Import einen echten
+// Erzeugungslauf ausloesen (die Falle ist auf der Spielbahn schon einmal
+// zugeschnappt: `import-batch-aq17.mjs` fuhr beim blossen Import ihren Import).
+const runDirectly = process.argv[1] !== undefined
+  && path.resolve(process.argv[1]) === path.resolve(new URL(import.meta.url).pathname);
+if (runDirectly) main().catch((e) => { console.error(`✗ ${e.message}`); process.exit(1); });
