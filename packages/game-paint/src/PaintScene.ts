@@ -546,6 +546,64 @@ const SCRIBBLE_ALPHA = 0.72;
  *  Hinweis, den das Kind braucht, worauf sein Wischen zielt. */
 const SCRIBBLE_TOP_ALPHA = 0.95;
 
+/** ── R5-T5 · R227 · DIE KREIDE BEKOMMT FARBE — INTERIM, KEIN ZUSTAND ───────
+ *
+ * ★ WAS ES REPARIERT (D-699, an Zahlen). T4s grosse Zeichen haben gewonnen,
+ *   was sie gewinnen sollten: die Kreide liest als SCHRIFT (2:0 »Schrift«,
+ *   0:2 »Ornament«). Sie hat dabei aber das GESICHT gefressen — beide blinden
+ *   Leser beschrieben »zwei grosse weisse ovale Formen« und ordneten sie der
+ *   KREIDE zu. Das koennen die Kritzel nicht sein: das mittlere Drittel aller
+ *   fuenf Blaetter traegt 0 Pixel; was dort steht, sind die gemalten AUGEN.
+ *   Der Mechanismus ist eine Farbton-Kollision, und sie ist gemessen: der
+ *   Anteil Kreide, der exakt so weiss ist wie das Gesicht (lum > 240 UND
+ *   satS < 0,10 — die Formeln des Importeurs), stieg 4,3–9,1 % → 17,2–24,7 %.
+ *   Weisse Kreide um weisse Augen.
+ *
+ * ★ DIE ZAHLEN DIESER DREI TOENE, an den echten Blaettern gemessen (T5):
+ *
+ *      Blatt              ohne Tint            mit diesem Ton
+ *      tafel_scribble1      43 px =  1,0 %      0 px = 0,0 %   (Ton 0xfff2b0)
+ *      tafel_scribble2    1099 px = 24,7 %      0 px = 0,0 %   (Ton 0xaffaf5)
+ *      tafel_scribble3    1076 px = 17,2 %      0 px = 0,0 %   (Ton 0xffb8d9)
+ *      tafel_scribble3b   1076 px = 17,2 %      0 px = 0,0 %   (Ton 0xffb8d9)
+ *
+ * ⚠ …UND WARUM DIESE ZAHL NICHT DIE STAERKE GEWAEHLT HAT. Gemessen: schon ein
+ *   fast unsichtbarer Ton (0xfffaf0, Verschiebung 5,6 Stufen je Kanal) drueckt
+ *   den Anteil auf 0 %. Die Kennzahl ist also eine KLIPPE, keine Rampe — wer
+ *   die Staerke an ihr optimiert, optimiert gegen das Messgeraet und nicht
+ *   gegen das Problem (Kokis stehendes Ruling). Gewaehlt sind deshalb drei
+ *   SICHTBARE Pastelltoene gleicher Staerke (Verschiebung 25,3 / 27,0 / 30,0
+ *   Stufen je Kanal); ueber die Staerke urteilt das blinde Panel, nicht diese
+ *   Tabelle. Die Kennzahl belegt den Mechanismus — mehr behauptet sie nicht.
+ *
+ * ★ JE SCHICHT EIN EIGENER TON, und das ist Kokis Entscheid mit einem zweiten
+ *   Zweck: die oberste stehende Schicht liegt heller (SCRIBBLE_TOP_ALPHA),
+ *   also traegt die Tafel bei 3/3 Rosa, bei 2/3 Tuerkis, bei 1/3 Gelb. Damit
+ *   AENDERT JEDER WISCH SICHTBAR DIE FARBE DER TAFEL — ein zweiter,
+ *   unabhaengiger Weg, die fallende Lebensanzeige zu sehen, und genau das ist
+ *   der aelteste offene Befund dieser Bahn (D-551: kein Pruefer hat die Leiste
+ *   je fallen sehen).
+ *
+ * ⚠ DIE SPANNUNG ZU R194, ausdruecklich aufgeloest, damit sie spaeter nicht
+ *   wie ein Bruch liest: dort wurde nearPlaneTint farb-NEUTRAL gemacht, weil
+ *   eine Farbverschiebung, die TIEFE vortaeuscht, die Malerei beluegt — sie
+ *   behauptet einen Raum, den das Blatt nicht hat. Hier ist die
+ *   Farbverschiebung der ZWECK und die Ansage: Kinderkreide IST bunt, und sie
+ *   muss sich vom Gesicht unterscheiden. Verschiedene Sache, verschiedene
+ *   Antwort — kein Bruch.
+ *
+ * ⚠ …UND DIE SPANNUNG ZU G-F (»malen, nicht rechnen«): ein Tint IST gerechnet.
+ *   Deshalb steht hier INTERIM und nicht Loesung. Die gemalte Antwort waere
+ *   **AQ13N** — dieselben grossen Zeichen, farbig geliefert. Sobald sie liegt,
+ *   FAELLT dieser Block ersatzlos. Er ist eine Bruecke mit Verfallsdatum, kein
+ *   Zustand, in dem die Bahn endet.
+ *
+ * setTint multipliziert (anim.ts Z. 48): weiss × Ton = Ton. Genau deshalb
+ * traegt er die weissen Stellen aus dem Gesichts-Fenster und laesst die schon
+ * farbige Kreide vergleichsweise stehen.
+ */
+const SCRIBBLE_TINTS: readonly number[] = [0xfff2b0, 0xaffaf5, 0xffb8d9];
+
 /* ── R5-T1 · DER AUGEN-BODEN: DAS GESICHT KÄMPFT SICHTBAR ────────────────────
  *
  * BEFUND, den zwei Bahnen unabhängig gemessen haben: der Boss liest in
@@ -3904,6 +3962,10 @@ export class PaintScene extends Phaser.Scene {
       s.setFlipX(img.flipX);
       s.setRotation(img.rotation);
       s.setAlpha((top ? SCRIBBLE_TOP_ALPHA : SCRIBBLE_ALPHA) * img.alpha);
+      // R5-T5 · R227 · der Farbton-Interim (Herleitung an SCRIBBLE_TINTS).
+      // Das Zitter-Blatt scribble3b ist dieselbe Schicht wie scribble3 und
+      // bekommt darum denselben Ton — der Index entscheidet, nicht der Name.
+      s.setTint(SCRIBBLE_TINTS[i] ?? 0xffffff);
       // Die Kritzel liegen UM die Augenpartie, nie darüber (Kokis Entscheid).
       // Die Maske ist umgekehrt: gezeichnet wird alles AUSSER der Ellipse.
       if (this.faceMask && s.mask !== this.faceMask) s.setMask(this.faceMask);

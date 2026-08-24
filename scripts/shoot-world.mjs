@@ -93,7 +93,7 @@
 import { spawn } from "node:child_process";
 import { existsSync, mkdirSync, mkdtempSync, writeFileSync } from "node:fs";
 import http from "node:http";
-import { tmpdir } from "node:os";
+import os, { tmpdir } from "node:os";
 import path from "node:path";
 import { CLIENT_SRC, createSink, laufBrauchbar } from "./frame-sink.mjs";
 
@@ -1044,6 +1044,8 @@ try {
     const halte = [];
     let bild = 0;
     let halt = null;
+    /** die Lage AM Stillstand, vor dem Auftauen genommen (D-702). */
+    let stillDiag = null;
     // ── DER ANFANGSZUSTAND, bevor die erste Schicht faellt ─────────────────
     // Ohne ihn zeigt die Reihe nur die Halte NACH einem Wisch — und ein
     // Vorher/Nachher ohne Vorher ist keins. Der Lesestand kommt aus `read()`,
@@ -1084,13 +1086,30 @@ try {
           grund: halt.reason, gespielt: halt.played, takt: halt.tick,
           schichten: halt.knots, schichtenGesamt: halt.knotsTotal,
           wische: halt.wipes, karten: halt.cards, fertig: halt.done,
+          // ★ T5 · D-702: die Wanduhr-Zahlen des Treibers. Ein Halt, der von
+          //   der Uhr abhaengt, muss seine Uhr mitliefern.
+          wartete: halt.waitedMs ?? null, geduld: halt.patienceMs ?? null,
+          last: os.loadavg()[0],
         },
       });
       console.log(`  Halt ${i}: ${halt.reason} · Takt ${halt.tick} · Schichten ${halt.knots}/${halt.knotsTotal}`
         + `${halt.wipes.length === 0 ? "" : ` · gewischt auf ${halt.wipes.join(", ")}`}`
-        + `${halt.cards === 0 ? "" : ` · ${halt.cards} Karte(n) beantwortet`}`);
+        + `${halt.cards === 0 ? "" : ` · ${halt.cards} Karte(n) beantwortet`}`
+        + `${!halt.waitedMs ? "" : ` · laengste Wartezeit auf eine Karte ${halt.waitedMs} ms von ${halt.patienceMs} ms`}`);
       if (halt.done) break;
-      if (halt.reason === "stillstand") break;
+      if (halt.reason === "stillstand") {
+        // ★ R5-T5 · D-702: die Diagnose wird HIER genommen, vor `release()` —
+        //   danach läuft die Welt wieder an und die Lage ist weg. Dieselben zwei
+        //   Quellen wie im Reihen-Modus: `beat()` ist die Karte auf dem SCHIRM,
+        //   `state().overlay` ist die Sicht der Spielschleife auf sich selbst.
+        //   Sie laufen auseinander, und genau dort sitzt der Zeremonien-Halt.
+        stillDiag = {
+          zettel: await evalIn(`(() => JSON.stringify(window.__domigoPaint.beat?.() ?? null))()`),
+          simHaelt: await evalIn(`window.__domigoPaint.state().overlay === true`),
+          karte: await karte(),
+        };
+        break;
+      }
     }
     await evalIn(`window.__domigoPaint.fight.release()`);
 
@@ -1103,8 +1122,45 @@ try {
       : `  Schichten gefallen auf: ${wische.join(" → ")} (das ist die Lebensanzeige, fallend gesehen)`);
     if (karten > 0) console.log(`  ⚠ BEIPACKZETTEL: ${BEIPACKZETTEL}. Beantwortete Karten: ${karten}`);
     if (halt !== null && halt.reason === "stillstand") {
+      // ── R5-T5 · D-702 · EIN STILLSTAND MUSS SAGEN, WORAN ER LIEGT ─────────
+      //
+      // WAS ES GEKOSTET HAT. T4s zwei Kontrollläufe auf dem unveränderten
+      // Basis-Commit bekamen hier NUR den Satz darüber — keine Zahl, keine
+      // Unterscheidung. Daraus wurde die Prämisse einer ganzen Bahn: »der
+      // Kampf-Treiber kommt auf main nicht mehr durch, der Stand selbst ist
+      // kaputt« (D-700). T5 hat denselben Befehl auf demselben Commit gefahren:
+      // 2/2 sauber bis 0/3, und auf origin/main noch einmal 4/4.
+      //
+      // ★ UND DAS BITTERSTE: DIESES SKRIPT KONNTE DIE DIAGNOSE SCHON — nur auf
+      //   dem anderen Weg. Der Reihen-Modus liest bei genau derselben Lage
+      //   `beat()` und `state().overlay` und nennt den Zeremonien-Halt beim
+      //   Namen (siehe `nachraeumen` oben, W4/W7). Der Kampf-Modus tat es nicht.
+      //   Ein Werkzeug, das seine eigene Diagnose auf dem einen Pfad kennt und
+      //   auf dem anderen schweigt, produziert Befunde über das SPIEL, die in
+      //   Wahrheit Befunde über die MESSUNG sind.
+      const last = os.loadavg()[0];
       console.log("  ⚠ Der Treiber meldet einen benannten STILLSTAND — er hängt nicht, er sagt es. "
         + "Das ist die Lage aus D-558, diesmal mit Namen statt mit Schweigen.");
+      console.log(`  ⚠ Gewartet ${halt.waitedMs} ms von ${halt.patienceMs} ms Geduld (WANDUHR!) · `
+        + `Maschinen-Last ${last.toFixed(2)}.`);
+      if (stillDiag !== null) {
+        console.log(`     Takt: ${stillDiag.zettel} · state().overlay = ${stillDiag.simHaelt} · `
+          + `Karte auf dem Schirm: ${stillDiag.karte ?? "keine"}`);
+        console.log(stillDiag.simHaelt
+          ? "     ⇒ ZEREMONIEN-HALT: die Spielschleife hält sich für angehalten (sim.overlayOpen === true), "
+            + "aber es liegt keine Karte auf dem Schirm. `Sim.step` kehrt sofort zurück, der Tick steht, "
+            + "und es ist nichts zu schließen. Häufigster Auslöser: das Kind steht in einem Auslöser "
+            + "(Tür, Käfig, Arena-Ansage), dessen Zeremonie läuft. Rezept: eine Zelle daneben warpen (--warp)."
+          : "     ⇒ Die Spielschleife hält sich für LAUFEND (sim.overlayOpen === false) — dann steht der "
+            + "Tick aus einem dritten Grund. Steht im Takt `hold: true`, hält die Arena den Kampf fest "
+            + "(D-198/D-259, nicht dein Code).");
+      }
+      console.log("     ⚠ Was dieser Lauf NICHT entscheiden kann: ob die Welt wirklich eine Karte schuldet, "
+        + "die nie kommt (Befund über das SPIEL), oder ob der Schreib-Beat nur langsamer war als die Geduld");
+      console.log(`     (belastete Maschine, gedrosselter Zeitgeber im verborgenen Tab) — ein Befund über die MESSUNG.`);
+      console.log(`     Zur Einordnung: ein gesunder Lauf dieser Phase wartet 605–639 ms je Karte (T5, gemessen).`);
+      console.log("     Ein Bericht, der das eine behauptet, ohne das andere ausgeschlossen zu haben, ist "
+        + "eine Behauptung — genau so ist D-700 entstanden.");
     }
   } else {
     for (let i = 1; i <= shots; i++) {
