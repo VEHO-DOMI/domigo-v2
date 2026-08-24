@@ -61,6 +61,13 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm content validate
       - run: pnpm content validate-story
+      # PLATT-K4a · W-0-Welle: die beiden Autoren-Tore der Hoer-/Schularbeits-Inhalte
+      #   liefen bisher nur von Hand — Merge war Release, und nichts ausser
+      #   Autoren-Disziplin hielt einen kaputten Schluessel von Kindern fern.
+      #   (Opt-in per Bauart: `pnpm content validate` liest listening.json/test.json
+      #   nicht, deshalb zwei eigene Zeilen und kein neues check-*.mjs.)
+      - run: pnpm content validate-listening # K4a: V-LC1 Zitat-Treue · V-LC2 Gist-Disziplin · V-LC3 Echo-Koeder · V-LC4 Trick-Budget
+      - run: pnpm content validate-test # K4a: V-LC1r/V-LC4r Lesen · V-EX1 Callout-Zitate · V-EX2 Mustertext ganz im Wortbestand · V-CK1 Checkliste in Du-Form
       # ══ DIE TORE, GEORDNET (R5-W6b · W5, letzte Merge-Position) ═══════════════
       #
       # Fünf Bahnen dieser Welle durften hier anhängen; W5 ordnet zuletzt. Die

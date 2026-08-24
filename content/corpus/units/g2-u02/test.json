@@ -1,0 +1,206 @@
+{
+  "schema": "test@1",
+  "grade": 2,
+  "unit": 2,
+  "slug": "g2-u02",
+  "level": "A2",
+  "test": {
+    "id": "g2u02.tt.museum",
+    "titleDe": "Schularbeit (Übung) — Unit 2",
+    "sections": [
+      {
+        "kind": "grammar",
+        "titleDe": "Teil 1: Grammatik (past simple)",
+        "itemIds": [
+          "g2u02.gi.irregular-verbs.gf.001",
+          "g2u02.gi.past-simple-questions.cp.001",
+          "g2u02.gi.why-because.ec.001"
+        ]
+      },
+      {
+        "kind": "vocab",
+        "titleDe": "Teil 2: Wortschatz",
+        "itemIds": [
+          "g2u02.w.museum",
+          "g2u02.w.exhibition",
+          "g2u02.w.embarrassed"
+        ]
+      },
+      {
+        "kind": "listening",
+        "titleDe": "Teil 3: Hörverstehen",
+        "itemIds": [
+          "g2u02.li.museum.mc.001",
+          "g2u02.li.museum.gf.001"
+        ]
+      },
+      {
+        "kind": "reading",
+        "titleDe": "Teil 4: Leseverständnis",
+        "passage": "Hi, I am Oliver. Last week I had a bad day with my mobile phone. My class wanted a surprise party for our teacher, Mrs Wu. It was a big secret. I asked all my friends about the cake and the music. Then I looked at my mobile phone again. My posting was for all my friends — and for Mrs Wu, too! I was so embarrassed. My best friend Clare laughed and laughed. But Mrs Wu was very nice. She didn't tell the class about my mistake. Now I always look twice before I post a picture. That is my tip for you.",
+        "passageGloss": [
+          {
+            "word": "mistake",
+            "de": "Fehler",
+            "scope": null
+          }
+        ],
+        "items": [
+          {
+            "id": "g2u02.ri.posting.mc.001",
+            "rev": 1,
+            "difficulty": 1,
+            "format": "multiple-choice",
+            "prompt": {
+              "text": "What is Oliver's story about?",
+              "lang": "en",
+              "blanks": 0
+            },
+            "answers": [
+              {
+                "text": "A secret that was not a secret",
+                "tier": "full"
+              }
+            ],
+            "direction": null,
+            "distractors": [
+              "A new mobile phone",
+              "A funny picture of Mrs Wu",
+              "A cake for his best friend"
+            ],
+            "pairs": [],
+            "groups": [],
+            "gloss": [],
+            "hintDe": "Lies zuerst den ganzen Text. Worum geht es im GANZEN Text?",
+            "hintEn": null,
+            "explainDe": "Die Feier sollte ein Geheimnis sein — aber Mrs Wu hat den Beitrag mitgelesen.",
+            "explainEn": null,
+            "strict": false,
+            "phase": "gist",
+            "cue": {
+              "type": "gist",
+              "quote": "My posting was for all my friends — and for Mrs Wu, too!"
+            },
+            "trickDe": "Lies den ganzen Text — das Thema steht nie in einem Wort."
+          },
+          {
+            "id": "g2u02.ri.posting.gf.001",
+            "rev": 1,
+            "difficulty": 2,
+            "format": "gap-fill",
+            "prompt": {
+              "text": "Mrs Wu didn't tell the class about Oliver's ___.",
+              "lang": "en",
+              "blanks": 1
+            },
+            "answers": [
+              {
+                "text": "mistake",
+                "tier": "full"
+              }
+            ],
+            "direction": null,
+            "distractors": [],
+            "pairs": [],
+            "groups": [],
+            "gloss": [],
+            "hintDe": "Suche Mrs Wu im Text — die Antwort steht im selben Satz.",
+            "hintEn": null,
+            "explainDe": "„She didn't tell the class about my mistake.“ Aus my wird hier Oliver's.",
+            "explainEn": null,
+            "strict": false,
+            "phase": "detail",
+            "cue": {
+              "type": "detail-fact",
+              "quote": "She didn't tell the class about my mistake."
+            },
+            "trickDe": "Mrs Wu ist dein Anker — lies genau diesen Satz."
+          },
+          {
+            "id": "g2u02.ri.posting.mc.002",
+            "rev": 1,
+            "difficulty": 2,
+            "format": "multiple-choice",
+            "prompt": {
+              "text": "Why was Oliver embarrassed?",
+              "lang": "en",
+              "blanks": 0
+            },
+            "answers": [
+              {
+                "text": "Because his teacher read the posting, too.",
+                "tier": "full"
+              }
+            ],
+            "direction": null,
+            "distractors": [
+              "Because Clare laughed at him.",
+              "Because he didn't have a cake.",
+              "Because the music was very bad."
+            ],
+            "pairs": [],
+            "groups": [],
+            "gloss": [],
+            "hintDe": "Suche das Wort embarrassed — der Grund steht im Satz davor.",
+            "hintEn": null,
+            "explainDe": "„My posting was for all my friends — and for Mrs Wu, too! I was so embarrassed.“ Mrs Wu ist die Lehrerin.",
+            "explainEn": null,
+            "strict": false,
+            "phase": "detail",
+            "cue": {
+              "type": "signal-word",
+              "quote": "My posting was for all my friends — and for Mrs Wu, too!"
+            },
+            "trickDe": "Der Grund steht oft im Satz VOR dem Gefühl.",
+            "distractorMeta": [
+              {
+                "whyDe": "Clare lacht im Text — aber das ist nicht der Grund.",
+                "lure": "echo"
+              },
+              {
+                "whyDe": "Der Kuchen kommt vor — Oliver fragt nur danach.",
+                "lure": "echo"
+              },
+              {
+                "whyDe": "Musik steht im Text, aber nichts davon ist schlecht.",
+                "lure": "echo"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "writing",
+        "titleDe": "Teil 5: Schreiben",
+        "promptId": "g2u02.ti.wr.001",
+        "promptDe": "Schreib eine kurze Geschichte über einen peinlichen Moment (40–70 Wörter): Wo warst du? Was ist passiert? Warum war es peinlich?",
+        "taskEn": "Write a short story about an embarrassing moment (40-70 words): where you were, what happened, and why it was embarrassing.",
+        "minWords": 40,
+        "maxWords": 70,
+        "rubric": null,
+        "checklistDe": [
+          "Steht in deiner Geschichte, WO du warst und WARUM es peinlich war?",
+          "Steht jedes Verb in der Vergangenheit (was, were, didn't, -ed)?",
+          "Hast du 40 bis 70 Wörter geschrieben?"
+        ],
+        "exemplar": {
+          "textEn": "Last Friday I visited my grandma. She had a big cake for my birthday. All my friends were there. I opened a present and I was very happy. Then my grandma looked at me. The present was not for me. It was for my big sister! Everybody laughed and laughed. I was so embarrassed, because I didn't ask first.",
+          "calloutsDe": [
+            {
+              "quote": "Last Friday I visited my grandma.",
+              "whyDe": "Zeit und Ort gleich im ersten Satz — so beginnt jede gute Geschichte."
+            },
+            {
+              "quote": "It was for my big sister!",
+              "whyDe": "Ein kurzer Satz mit Ausrufezeichen macht die Pointe stark."
+            },
+            {
+              "quote": "I was so embarrassed, because I didn't ask first.",
+              "whyDe": "Nach because kommt der Grund — genau das fragt die Aufgabe."
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
