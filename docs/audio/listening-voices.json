@@ -1,0 +1,37 @@
+{
+  "schema": "listening-voices@1",
+  "note": "Der Auftragszettel des Hörverstehens. Er nennt AUSSCHLIESSLICH Stimmen und Einstellungen — der Sprechtext steht nirgends hier, sondern wird von docs/audio/gen-listening-voice.mjs zur Laufzeit aus content/corpus/units/<unit>/listening.json gelesen. Eine zweite Abschrift des Textes wäre der Riss, durch den Bestand und Ton auseinanderlaufen.",
+  "modelId": "eleven_multilingual_v2",
+  "stability": 0.6,
+  "similarityBoost": 0.75,
+  "style": 0,
+  "speed": 0.9,
+  "speedNote": "0,9 statt 1,0 — hörbar ruhiger, ohne die Sprachmelodie zu zerdehnen. Der A1–A2-Grund ist derselbe wie beim Roboter-Zweig des Abspielers (rate 0.85): Kinder im zweiten Lernjahr brauchen Zeit zwischen den Inhaltswörtern. ALLE drei Kandidaten fahren denselben Wert, damit der Vergleich die STIMME misst und nicht das Tempo.",
+  "pieces": [
+    {
+      "unit": "g2-u02",
+      "taskKey": "museum",
+      "note": "Leonie erzählt in der Ich-Form vom Klassenausflug ins Museum (Simple Past, ~840 Zeichen). Kein Dialog — g2-u02 trägt genau dieses eine Hör-Stück."
+    }
+  ],
+  "voices": [
+    {
+      "slug": "alice",
+      "name": "Alice — Clear, Engaging Educator",
+      "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+      "wette": "Die Lehrerinnen-Wette: britisch, erwachsen, auf Erklären trainiert. Maximale Verständlichkeit, aber die Erzählerin ist ein Schulkind — die Stimme passt zur Aufgabe, nicht zur Figur."
+    },
+    {
+      "slug": "blondie",
+      "name": "Blondie — Children's Storyteller",
+      "voiceId": "XXphLKNRxvJ1Qa95KBhX",
+      "wette": "Die Vorlese-Wette: britisch, jung, weich, auf Kindergeschichten trainiert. Wärme und Zuwendung — das Risiko ist, dass Vorlese-Ton bei Zwölfjährigen kindisch wirkt."
+    },
+    {
+      "slug": "amelia",
+      "name": "Amelia — young and enthusiastic",
+      "voiceId": "ZF6FPAbjXT4488VcRRnw",
+      "wette": "Die Gleichaltrigen-Wette: britisch, jung, lebhaft. Am nächsten an Leonies eigener Stimme — das Risiko ist, dass Lebhaftigkeit auf Kosten der Deutlichkeit geht."
+    }
+  ]
+}
