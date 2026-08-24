@@ -4,6 +4,7 @@ import type { AudioRef, GrammarItem, ListeningItem, VocabItem } from "@domigo/co
 import { listTestUnits, loadListening, loadTest } from "@domigo/content-loader";
 import { isSlugAllowed, resolveVisibleGrades } from "@/lib/grade-scope";
 import { loadUnitWithOverrides } from "@/lib/content-service";
+import { ohneSprechtextFuersKind } from "@/lib/hoeren";
 import TestSession, { type ResolvedSection } from "./TestSession";
 
 export const dynamic = "force-dynamic";
@@ -53,7 +54,9 @@ export default async function TestPage({ params }: { params: Promise<{ slug: str
       return {
         kind: "listening",
         titleDe: sec.titleDe,
-        audio: r[0]?.audio ?? { script: "", voice: null, file: null },
+        // K12: derselbe Loesungstext-Fund wie auf der Uebungsseite — hier in
+        // einer PRUEFUNG. Ohne Abschnitts-Tonspur bleibt der leere Platzhalter.
+        audio: r[0] ? ohneSprechtextFuersKind(r[0].audio) : { script: null, voice: null, file: null },
         items: r.map((x) => x.item),
       };
     }

@@ -1,16 +1,16 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
-import type { AudioRef, Gloss, GrammarItem, ListeningItem, ReadingItem, VocabItem } from "@domigo/content-schema";
+import type { Gloss, GrammarItem, ListeningItem, ReadingItem, VocabItem } from "@domigo/content-schema";
 import type { Tier } from "@domigo/engine";
-import { AudioClip, GrammarItemView, VocabItemView, type ResultDetail } from "@domigo/task-ui";
+import { AudioClip, GrammarItemView, VocabItemView, type ClientAudioRef, type ResultDetail } from "@domigo/task-ui";
 import { sendAttempt } from "@/lib/attempt-outbox";
 import { useOutboxFlush } from "@/lib/useOutboxFlush";
 
 export type ResolvedSection =
   | { kind: "vocab"; titleDe: string; items: VocabItem[] }
   | { kind: "grammar"; titleDe: string; items: GrammarItem[] }
-  | { kind: "listening"; titleDe: string; audio: AudioRef; items: ListeningItem[] }
+  | { kind: "listening"; titleDe: string; audio: ClientAudioRef; items: ListeningItem[] }
   | { kind: "reading"; titleDe: string; passage: string; passageGloss: Gloss[]; items: ReadingItem[] }
   | { kind: "writing"; titleDe: string; promptId: string; promptDe: string; taskEn: string; minWords: number; maxWords: number };
 
