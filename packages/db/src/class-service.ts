@@ -12,7 +12,8 @@
  */
 import { and, desc, eq, inArray, isNotNull, isNull, sql } from "drizzle-orm";
 import type { Db } from "./index.ts";
-import { v2Classes, v2IdentityUsers, v2RosterEvents } from "./schema.ts";
+import { writeRosterEvent } from "./roster-events.ts";
+import { v2Classes, v2IdentityUsers } from "./schema.ts";
 import { v1Classes, v1Users } from "./v1.ts";
 import { allocateClassCode } from "./auth.ts";
 
@@ -230,7 +231,7 @@ export async function archiveClass(db: Db, id: string, teacherId: string): Promi
     .limit(1);
   if (!owned[0]) return false;
 
-  await db.insert(v2RosterEvents).values({
+  await writeRosterEvent(db, {
     classId: id,
     kind: ARCHIVE_KIND,
     actorId: teacherId,
@@ -269,7 +270,7 @@ export async function unarchiveClass(db: Db, id: string, teacherId: string, acto
     .limit(1);
   if (!owned[0]) return false;
 
-  await db.insert(v2RosterEvents).values({
+  await writeRosterEvent(db, {
     classId: id,
     kind: UNARCHIVE_KIND,
     actorId: actorId ?? teacherId,

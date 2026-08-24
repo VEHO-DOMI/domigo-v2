@@ -61,7 +61,8 @@
  */
 import { and, desc, eq, sql } from "drizzle-orm";
 import type { Db } from "./index.ts";
-import { v2Classes, v2RosterEvents, writingSubmissions } from "./schema.ts";
+import { writeRosterEvent } from "./roster-events.ts";
+import { v2Classes, writingSubmissions } from "./schema.ts";
 import { isMissingDbObject } from "./teacher-events.ts";
 
 /** The `roster_events.kind` this module writes. Named once so a typo is one place. */
@@ -279,7 +280,7 @@ export async function gradeSubmission(db: Db, input: GradeSubmissionInput): Prom
   // journal-then-apply: the intent lands FIRST, naming the class and the hand.
   // Ids, numbers and lengths only — the child's text and the teacher's words both
   // stay out (see the header; `textLength` is the history, the text is not).
-  await db.insert(v2RosterEvents).values({
+  await writeRosterEvent(db, {
     classId: treffer.classId,
     kind: WRITING_GRADED_KIND,
     actorId,

@@ -23,7 +23,8 @@ import { and, eq, inArray, isNull, sql } from "drizzle-orm";
 import type { Db } from "./index.ts";
 import { isUniqueViolation } from "./roster-service.ts";
 import { v1Users } from "./v1.ts";
-import { v2Classes, v2IdentityUsers, v2RosterEvents } from "./schema.ts";
+import { writeRosterEvent } from "./roster-events.ts";
+import { v2Classes, v2IdentityUsers } from "./schema.ts";
 
 // ── Pure ──────────────────────────────────────────────────────────────────────
 
@@ -219,11 +220,17 @@ export async function claimClassAsTeacher(
   }
 
   // journal-then-flip: the intent lands FIRST, with HER as the actor …
-  await db.insert(v2RosterEvents).values({
+  //
+  // P-R8 · IDS ONLY, INCLUDING HERS. The payload used to carry her displayName,
+  // and a name in a journal is a name in a file whichever side of the desk it
+  // belongs to. `toTeacherId` points at the row that holds it, so a reader who
+  // needs the name resolves it at read time — nothing is lost, and nothing is
+  // duplicated into a table that outlives every rename.
+  await writeRosterEvent(db, {
     classId,
     kind: "teacher_claim",
     actorId: teacherId,
-    payload: { classId, fromTeacherId: cls.teacherId, toTeacherId: teacherId, displayName },
+    payload: { classId, fromTeacherId: cls.teacherId, toTeacherId: teacherId },
   });
 
   // … then the guarded flip. Measured by returned rows (createClass reads its write

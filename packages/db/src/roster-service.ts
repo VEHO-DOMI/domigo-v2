@@ -17,8 +17,9 @@
  * into `displayName`, a real `pinHash`, and `claimedAt=now`.
  *
  * journal-then-flip (Neon HTTP has NO multi-statement transactions — see the
- * roster_events schema note): EVERY mutation appends a `v2RosterEvents` row FIRST,
- * then performs the users insert/update/delete. A crash between the two leaves a
+ * roster_events schema note): EVERY mutation appends a journal row FIRST — through
+ * `writeRosterEvent`, the one door (roster-events.ts) — then performs the users
+ * insert/update/delete. A crash between the two leaves a
  * harmless orphan journal row, never an unhistoried live change. Writes land ONLY
  * in `domigo_v2`; v1's `public` is never touched.
  *
@@ -37,7 +38,8 @@
  */
 import { and, eq, isNull, ne, sql } from "drizzle-orm";
 import type { Db } from "./index.ts";
-import { v2Classes, v2IdentityUsers, v2RosterEvents } from "./schema.ts";
+import { writeRosterEvent } from "./roster-events.ts";
+import { v2Classes, v2IdentityUsers } from "./schema.ts";
 
 // ── Pure helpers (DB-free, unit-tested) ───────────────────────────────────────
 
@@ -276,12 +278,16 @@ export async function importRoster(
   const toInsert = cleaned.filter((name) => !taken.has(name.toLowerCase()));
   if (toInsert.length === 0) return 0;
 
-  // journal-then-flip: the intent lands FIRST …
-  await db.insert(v2RosterEvents).values({
+  // journal-then-flip: the intent lands FIRST — as a COUNT, never the names.
+  // P-R8: the names are written one line below, into the roster rows that ARE the
+  // roster. A journal that repeats them holds a second copy of a real child's name
+  // in a file, which the house rule forbids — and `count` is the whole history a
+  // reader of this line ever needed.
+  await writeRosterEvent(db, {
     classId,
     kind: "import",
     actorId,
-    payload: { names: toInsert },
+    payload: { count: toInsert.length },
   });
   // … then the provisional rows (pinHash='' ⇒ cannot log in until claimed).
   await db.insert(v2IdentityUsers).values(
@@ -408,12 +414,15 @@ export async function claimStudent(
     .limit(1);
   if (clash[0]) return "taken";
 
-  // journal-then-flip: the 'claim' intent (no secret in the payload) lands FIRST …
-  await db.insert(v2RosterEvents).values({
+  // journal-then-flip: the 'claim' intent (no secret, no name in the payload) lands
+  // FIRST. P-R8: the chosen nickname is a name a child picked for itself — the
+  // LENGTH records that a nickname was chosen without storing what it says; the
+  // nickname itself lives one statement below, in the row it belongs to.
+  await writeRosterEvent(db, {
     classId,
     kind: "claim",
     actorId: null, // self-serve student action — no teacher actor
-    payload: { studentId, displayName },
+    payload: { studentId, displayNameLength: displayName.length },
   });
   // … then the live flip to an active, loggable student. The partial unique index
   // `users_class_claimed_nickname_unique` (class_id, lower(display_name) WHERE claimed)
@@ -443,7 +452,7 @@ export async function resetStudentPin(db: Db, studentId: string, teacherId: stri
   const owned = await ownedStudent(db, studentId, teacherId);
   if (!owned) return;
 
-  await db.insert(v2RosterEvents).values({
+  await writeRosterEvent(db, {
     classId: owned.classId,
     kind: "reset_pin",
     actorId: actorId ?? teacherId,
@@ -474,11 +483,15 @@ export async function renameStudentGiven(
   const trimmed = givenName.trim();
   if (trimmed === "") return;
 
-  await db.insert(v2RosterEvents).values({
+  // P-R8: the corrected given name is the most personal string this file handles.
+  // The journal keeps the ACT (this child's name was corrected, to something 14
+  // characters long) and drops the name — the corrected value lands in the row
+  // itself, one statement below.
+  await writeRosterEvent(db, {
     classId: owned.classId,
     kind: "rename",
     actorId: actorId ?? teacherId,
-    payload: { studentId, givenName: trimmed },
+    payload: { studentId, givenNameLength: trimmed.length },
   });
   const patch =
     owned.claimedAt == null ? { givenName: trimmed, displayName: trimmed } : { givenName: trimmed };
@@ -496,7 +509,7 @@ export async function removeStudent(db: Db, studentId: string, teacherId: string
   const owned = await ownedStudent(db, studentId, teacherId);
   if (!owned) return;
 
-  await db.insert(v2RosterEvents).values({
+  await writeRosterEvent(db, {
     classId: owned.classId,
     kind: "remove",
     actorId: actorId ?? teacherId,

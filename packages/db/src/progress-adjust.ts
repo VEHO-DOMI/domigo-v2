@@ -30,7 +30,8 @@
  */
 import { sql } from "drizzle-orm";
 import type { Db } from "./index.ts";
-import { userProgress, v2RosterEvents } from "./schema.ts";
+import { writeRosterEvent } from "./roster-events.ts";
+import { userProgress } from "./schema.ts";
 import { recordNodeCompletion } from "./studypath.ts";
 import type { NodeKind } from "./studypath.ts";
 
@@ -76,7 +77,7 @@ export async function grantXp(db: Db, input: GrantXpInput): Promise<void> {
 
   const now = new Date();
   // journal-then-apply: the intent lands FIRST, naming the hand …
-  await db.insert(v2RosterEvents).values({
+  await writeRosterEvent(db, {
     classId,
     kind: PROGRESS_ADJUST_KIND,
     actorId,
@@ -147,7 +148,7 @@ export async function markUnitDone(db: Db, input: MarkUnitDoneInput): Promise<{ 
   const grade = Number(m[1]);
 
   // journal-then-apply: the intent (ids + numbers, no names) lands FIRST …
-  await db.insert(v2RosterEvents).values({
+  await writeRosterEvent(db, {
     classId,
     kind: PROGRESS_ADJUST_KIND,
     actorId,
