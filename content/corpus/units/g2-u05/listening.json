@@ -1,0 +1,277 @@
+{
+  "schema": "listening@1",
+  "grade": 2,
+  "unit": 5,
+  "slug": "g2-u05",
+  "level": "A2",
+  "tasks": [
+    {
+      "id": "g2u05.lt.postoffice",
+      "key": "postoffice",
+      "titleDe": "Hör zu: Emma sucht die Post",
+      "audio": {
+        "script": "Excuse me. I am new here. I am looking for the post office.\nThe post office? Go straight ahead as far as the traffic lights.\nOK. And then? Is it near?\nThen cross the street. The supermarket is after the traffic lights. Go past it.\nIs the post office near the bank?\nYes, dear. Take the second right. It is next to the bank.\nThank you! I have five letters for my grandmother.\nFive letters, Emma! Is it her grandmother's birthday today?\nYes, and I am slow today, because my mobile phone is at school.\nThen look at this map. The chemist's is in the third street.\nI do not need the chemist's. Is the church near the post office?\nRound the corner, opposite the market square. Go and post your letters!",
+        "voice": null,
+        "file": "/audio/listening/g2-u05/postoffice--emma-frau--f3d7a974.mp3",
+        "source": {
+          "provider": "elevenlabs",
+          "modelId": "eleven_multilingual_v2",
+          "voices": [
+            {
+              "role": "Emma, das Kind, das nach dem Weg fragt",
+              "slug": "amelia",
+              "name": "Amelia — young and enthusiastic",
+              "voiceId": "ZF6FPAbjXT4488VcRRnw"
+            },
+            {
+              "role": "die erwachsene Passantin, die den Weg erklärt",
+              "slug": "alice",
+              "name": "Alice — Clear, Engaging Educator",
+              "voiceId": "Xb7hH8MSUJpSbSDYk0k2"
+            }
+          ]
+        }
+      },
+      "transcript": "Excuse me. I am new here. I am looking for the post office.\nThe post office? Go straight ahead as far as the traffic lights.\nOK. And then? Is it near?\nThen cross the street. The supermarket is after the traffic lights. Go past it.\nIs the post office near the bank?\nYes, dear. Take the second right. It is next to the bank.\nThank you! I have five letters for my grandmother.\nFive letters, Emma! Is it her grandmother's birthday today?\nYes, and I am slow today, because my mobile phone is at school.\nThen look at this map. The chemist's is in the third street.\nI do not need the chemist's. Is the church near the post office?\nRound the corner, opposite the market square. Go and post your letters!",
+      "predictChips": [
+        "Jemand fragt nach dem Weg in einer fremden Stadt",
+        "Jemand kauft in einem Musikgeschäft ein",
+        "Jemand erzählt von einer Zugfahrt zum Flughafen"
+      ],
+      "items": [
+        {
+          "id": "g2u05.li.postoffice.mc.001",
+          "rev": 1,
+          "difficulty": 1,
+          "format": "multiple-choice",
+          "prompt": {
+            "text": "What does Emma want to find?",
+            "lang": "en",
+            "blanks": 0
+          },
+          "answers": [
+            {
+              "text": "The post office",
+              "tier": "full"
+            }
+          ],
+          "direction": null,
+          "distractors": [
+            "The chemist's",
+            "The traffic lights",
+            "Her mobile phone"
+          ],
+          "pairs": [],
+          "groups": [],
+          "gloss": [],
+          "hintDe": "Worum geht es im GANZEN Gespräch — was sucht Emma von Anfang an?",
+          "hintEn": null,
+          "explainDe": "Emma fragt im ersten Satz: „I am looking for the post office.“",
+          "explainEn": null,
+          "strict": false,
+          "phase": "gist",
+          "cue": {
+            "type": "gist",
+            "quote": "I am looking for the post office."
+          },
+          "trickDe": "Höre den ersten Satz — dort steht die Frage.",
+          "distractorMeta": [
+            {
+              "whyDe": "Die Apotheke kommt vor — Emma sagt sogar, dass sie sie NICHT braucht.",
+              "lure": "echo"
+            },
+            {
+              "whyDe": "Die Ampel hörst du — sie ist nur ein Punkt auf dem Weg.",
+              "lure": "echo"
+            },
+            {
+              "whyDe": "Das Handy kommt vor — es liegt in der Schule.",
+              "lure": "echo"
+            }
+          ]
+        },
+        {
+          "id": "g2u05.li.postoffice.gf.001",
+          "rev": 1,
+          "difficulty": 2,
+          "format": "gap-fill",
+          "prompt": {
+            "text": "Emma has ___ letters for her grandmother.",
+            "lang": "en",
+            "blanks": 1
+          },
+          "answers": [
+            {
+              "text": "five",
+              "tier": "full"
+            },
+            {
+              "text": "5",
+              "tier": "full"
+            }
+          ],
+          "direction": null,
+          "distractors": [],
+          "pairs": [],
+          "groups": [],
+          "gloss": [],
+          "hintDe": "Im Gespräch stehen mehrere Zahlen. Welche gehört zu den Briefen?",
+          "hintEn": null,
+          "explainDe": "„I have five letters for my grandmother.“ — die zweite und die dritte gehören zum Weg.",
+          "explainEn": null,
+          "strict": false,
+          "phase": "detail",
+          "cue": {
+            "type": "number-time",
+            "quote": "I have five letters for my grandmother."
+          },
+          "trickDe": "Mehrere Zahlen — höre, welche zu den Briefen gehört."
+        },
+        {
+          "id": "g2u05.li.postoffice.mc.002",
+          "rev": 1,
+          "difficulty": 2,
+          "format": "multiple-choice",
+          "prompt": {
+            "text": "Why is Emma slow today?",
+            "lang": "en",
+            "blanks": 0
+          },
+          "answers": [
+            {
+              "text": "Because her mobile phone is at school.",
+              "tier": "full"
+            }
+          ],
+          "direction": null,
+          "distractors": [
+            "Because she has five letters.",
+            "Because the church is closed.",
+            "Because she is new in the street."
+          ],
+          "pairs": [],
+          "groups": [],
+          "gloss": [],
+          "hintDe": "Achte auf das Wort because — der Grund kommt direkt danach.",
+          "hintEn": null,
+          "explainDe": "„Yes, and I am slow today, because my mobile phone is at school.“",
+          "explainEn": null,
+          "strict": false,
+          "phase": "detail",
+          "cue": {
+            "type": "signal-word",
+            "quote": "because my mobile phone is at school"
+          },
+          "trickDe": "Nach because kommt der Grund — höre genau dorthin.",
+          "distractorMeta": [
+            {
+              "whyDe": "Die fünf Briefe hörst du — sie machen Emma nicht langsam.",
+              "lure": "echo"
+            },
+            {
+              "whyDe": "Die Kirche kommt vor — von geschlossen ist nie die Rede."
+            },
+            {
+              "whyDe": "Emma sagt „I am new here“ — das ist kein Grund für langsam.",
+              "lure": "echo"
+            }
+          ]
+        },
+        {
+          "id": "g2u05.li.postoffice.mt.001",
+          "rev": 1,
+          "difficulty": 3,
+          "format": "matching",
+          "prompt": {
+            "text": "Match the place to the map.",
+            "lang": "en",
+            "blanks": 0
+          },
+          "answers": [],
+          "direction": null,
+          "distractors": [],
+          "pairs": [
+            {
+              "left": "the post office",
+              "right": "next to the bank"
+            },
+            {
+              "left": "the chemist's",
+              "right": "in the third street"
+            },
+            {
+              "left": "the church",
+              "right": "opposite the market square"
+            },
+            {
+              "left": "the supermarket",
+              "right": "after the traffic lights"
+            }
+          ],
+          "groups": [],
+          "gloss": [],
+          "hintDe": "Vier Orte, vier Beschreibungen. Jeder Ort wird genau einmal genannt.",
+          "hintEn": null,
+          "explainDe": "Post: neben der Bank. Apotheke: in der dritten Straße. Kirche: gegenüber dem Marktplatz. Supermarkt: nach der Ampel.",
+          "explainEn": null,
+          "strict": false,
+          "phase": "detail",
+          "cue": {
+            "type": "detail-fact",
+            "quote": "It is next to the bank."
+          },
+          "trickDe": "Merke dir zu jedem Ort sofort seinen Nachbarn."
+        },
+        {
+          "id": "g2u05.li.postoffice.ff.001",
+          "rev": 1,
+          "difficulty": 2,
+          "format": "free-form",
+          "prompt": {
+            "text": "What does the woman tell Emma to look at?",
+            "lang": "en",
+            "blanks": 0
+          },
+          "answers": [
+            {
+              "text": "a map",
+              "tier": "full"
+            },
+            {
+              "text": "the map",
+              "tier": "full"
+            },
+            {
+              "text": "map",
+              "tier": "full"
+            },
+            {
+              "text": "her map",
+              "tier": "full"
+            },
+            {
+              "text": "this map",
+              "tier": "full"
+            }
+          ],
+          "direction": null,
+          "distractors": [],
+          "pairs": [],
+          "groups": [],
+          "gloss": [],
+          "hintDe": "Etwas zum Anschauen — direkt nach dem Wort look.",
+          "hintEn": null,
+          "explainDe": "„Then look at this map. The chemist's is in the third street.“",
+          "explainEn": null,
+          "strict": false,
+          "phase": "detail",
+          "cue": {
+            "type": "detail-fact",
+            "quote": "Then look at this map."
+          },
+          "trickDe": "Höre den Satz nach look — dort steht das Ding."
+        }
+      ]
+    }
+  ]
+}

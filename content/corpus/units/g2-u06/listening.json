@@ -1,0 +1,262 @@
+{
+  "schema": "listening@1",
+  "grade": 2,
+  "unit": 6,
+  "slug": "g2-u06",
+  "level": "A2",
+  "tasks": [
+    {
+      "id": "g2u06.lt.camp",
+      "key": "camp",
+      "titleDe": "Hör zu: Bens Woche im Abenteuercamp",
+      "audio": {
+        "script": "Hi! I am Ben. Last week our class was at an adventure camp in the mountains. Our guide was Lisa. She was really nice, but she had a lot of rules. On Monday we were rock climbing on a big hill. On this day I was scared, but now I trust Lisa. On Tuesday we were canoeing on the lake. In a canoe you have to wear a life jacket. You do not have to be good at canoeing. Lisa was always near. On Thursday we were at the waterfall. There you have to wear an anorak, because it is very cold. On Friday we cleaned the camp in the forest. At nine o'clock we were all tired. At ten o'clock we were at the campfire. Lisa showed us the moon and the stars. Actually, it was the best week of the year.",
+        "voice": null,
+        "file": "/audio/listening/g2-u06/camp--amelia--956e81a8.mp3",
+        "source": {
+          "provider": "elevenlabs",
+          "modelId": "eleven_multilingual_v2",
+          "voices": [
+            {
+              "role": null,
+              "slug": "amelia",
+              "name": "Amelia — young and enthusiastic",
+              "voiceId": "ZF6FPAbjXT4488VcRRnw"
+            }
+          ]
+        }
+      },
+      "transcript": "Hi! I am Ben. Last week our class was at an adventure camp in the mountains. Our guide was Lisa. She was really nice, but she had a lot of rules. On Monday we were rock climbing on a big hill. On this day I was scared, but now I trust Lisa. On Tuesday we were canoeing on the lake. In a canoe you have to wear a life jacket. You do not have to be good at canoeing. Lisa was always near. On Thursday we were at the waterfall. There you have to wear an anorak, because it is very cold. On Friday we cleaned the camp in the forest. At nine o'clock we were all tired. At ten o'clock we were at the campfire. Lisa showed us the moon and the stars. Actually, it was the best week of the year.",
+      "predictChips": [
+        "Jemand erzählt von einer Woche in einem Abenteuercamp",
+        "Jemand erzählt von einem Ausflug ans Meer",
+        "Jemand erzählt von einem Streit mit seiner Gruppe"
+      ],
+      "items": [
+        {
+          "id": "g2u06.li.camp.mc.001",
+          "rev": 1,
+          "difficulty": 1,
+          "format": "multiple-choice",
+          "prompt": {
+            "text": "What does Ben talk about?",
+            "lang": "en",
+            "blanks": 0
+          },
+          "answers": [
+            {
+              "text": "A week at an adventure camp",
+              "tier": "full"
+            }
+          ],
+          "direction": null,
+          "distractors": [
+            "A week at the beach with his class",
+            "A canoe on the lake",
+            "His guide Lisa"
+          ],
+          "pairs": [],
+          "groups": [],
+          "gloss": [],
+          "hintDe": "Worum geht es im GANZEN Text — nicht nur an einem Tag?",
+          "hintEn": null,
+          "explainDe": "Ben sagt gleich am Anfang: „Last week our class was at an adventure camp in the mountains.“",
+          "explainEn": null,
+          "strict": false,
+          "phase": "gist",
+          "cue": {
+            "type": "gist",
+            "quote": "Last week our class was at an adventure camp in the mountains."
+          },
+          "trickDe": "Höre den ersten Satz — er nennt fast immer das Thema.",
+          "distractorMeta": [
+            {
+              "whyDe": "Klingt wie eine ganze Woche irgendwo — der Strand kommt aber nie vor."
+            },
+            {
+              "whyDe": "Das Kanu hörst du — es gehört nur zum Dienstag.",
+              "lure": "echo"
+            },
+            {
+              "whyDe": "Lisa kommt oft vor — sie ist die Betreuerin, nicht das Thema.",
+              "lure": "echo"
+            }
+          ]
+        },
+        {
+          "id": "g2u06.li.camp.gf.001",
+          "rev": 1,
+          "difficulty": 2,
+          "format": "gap-fill",
+          "prompt": {
+            "text": "At ___ o'clock the children were at the campfire.",
+            "lang": "en",
+            "blanks": 1
+          },
+          "answers": [
+            {
+              "text": "ten",
+              "tier": "full"
+            },
+            {
+              "text": "10",
+              "tier": "full"
+            }
+          ],
+          "direction": null,
+          "distractors": [],
+          "pairs": [],
+          "groups": [],
+          "gloss": [],
+          "hintDe": "Im Text stehen zwei Uhrzeiten. Welche gehört zum Lagerfeuer?",
+          "hintEn": null,
+          "explainDe": "„At ten o'clock we were at the campfire.“ — um neun Uhr waren alle nur müde.",
+          "explainEn": null,
+          "strict": false,
+          "phase": "detail",
+          "cue": {
+            "type": "number-time",
+            "quote": "At ten o'clock we were at the campfire."
+          },
+          "trickDe": "Zwei Uhrzeiten im Text — höre, welche zum Lagerfeuer gehört."
+        },
+        {
+          "id": "g2u06.li.camp.mc.002",
+          "rev": 1,
+          "difficulty": 2,
+          "format": "multiple-choice",
+          "prompt": {
+            "text": "Why do you have to wear an anorak at the waterfall?",
+            "lang": "en",
+            "blanks": 0
+          },
+          "answers": [
+            {
+              "text": "Because it is very cold.",
+              "tier": "full"
+            }
+          ],
+          "direction": null,
+          "distractors": [
+            "Because it is very windy there.",
+            "Because Lisa has a lot of rules.",
+            "Because the camp is in the mountains."
+          ],
+          "pairs": [],
+          "groups": [],
+          "gloss": [],
+          "hintDe": "Achte auf das Wort because — der Grund kommt direkt danach.",
+          "hintEn": null,
+          "explainDe": "„There you have to wear an anorak, because it is very cold.“",
+          "explainEn": null,
+          "strict": false,
+          "phase": "detail",
+          "cue": {
+            "type": "signal-word",
+            "quote": "you have to wear an anorak, because it is very cold"
+          },
+          "trickDe": "Nach because kommt der Grund — höre genau dorthin.",
+          "distractorMeta": [
+            {
+              "whyDe": "Klingt genauso vernünftig wie kalt — im Text steht aber nur kalt."
+            },
+            {
+              "whyDe": "Die vielen Regeln hörst du — sie erklären nicht diese eine Regel.",
+              "lure": "echo"
+            },
+            {
+              "whyDe": "Die Berge hörst du im ersten Satz — sie sind kein Grund für den Anorak.",
+              "lure": "echo"
+            }
+          ]
+        },
+        {
+          "id": "g2u06.li.camp.mt.001",
+          "rev": 1,
+          "difficulty": 3,
+          "format": "matching",
+          "prompt": {
+            "text": "Match the day to the place.",
+            "lang": "en",
+            "blanks": 0
+          },
+          "answers": [],
+          "direction": null,
+          "distractors": [],
+          "pairs": [
+            {
+              "left": "Monday",
+              "right": "a big hill"
+            },
+            {
+              "left": "Tuesday",
+              "right": "the lake"
+            },
+            {
+              "left": "Thursday",
+              "right": "the waterfall"
+            },
+            {
+              "left": "Friday",
+              "right": "the forest"
+            }
+          ],
+          "groups": [],
+          "gloss": [],
+          "hintDe": "Vier Tage, vier Orte. Jeder Tag wird genau einmal genannt.",
+          "hintEn": null,
+          "explainDe": "Montag: der Hügel. Dienstag: der See. Donnerstag: der Wasserfall. Freitag: der Wald.",
+          "explainEn": null,
+          "strict": false,
+          "phase": "detail",
+          "cue": {
+            "type": "detail-fact",
+            "quote": "On Tuesday we were canoeing on the lake."
+          },
+          "trickDe": "Merke dir zu jedem Tag sofort seinen Ort."
+        },
+        {
+          "id": "g2u06.li.camp.ff.001",
+          "rev": 1,
+          "difficulty": 2,
+          "format": "free-form",
+          "prompt": {
+            "text": "What did the children clean on Friday?",
+            "lang": "en",
+            "blanks": 0
+          },
+          "answers": [
+            {
+              "text": "the camp",
+              "tier": "full"
+            },
+            {
+              "text": "camp",
+              "tier": "full"
+            },
+            {
+              "text": "their camp",
+              "tier": "full"
+            }
+          ],
+          "direction": null,
+          "distractors": [],
+          "pairs": [],
+          "groups": [],
+          "gloss": [],
+          "hintDe": "Etwas am Freitag — höre den Satz mit Friday.",
+          "hintEn": null,
+          "explainDe": "„On Friday we cleaned the camp in the forest.“ Am Donnerstag waren sie am Wasserfall.",
+          "explainEn": null,
+          "strict": false,
+          "phase": "detail",
+          "cue": {
+            "type": "detail-fact",
+            "quote": "On Friday we cleaned the camp in the forest."
+          },
+          "trickDe": "Höre den Satz nach Friday — dort steht die Sache."
+        }
+      ]
+    }
+  ]
+}

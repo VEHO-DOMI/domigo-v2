@@ -1,12 +1,20 @@
 {
   "schema": "listening-measured@1",
   "files": {
-    "/audio/listening/g2-u02/museum--alice--0cea06e0.mp3": {
-      "unit": "g2-u02",
-      "taskKey": "museum",
-      "voiceSlug": "alice",
-      "voiceName": "Alice — Clear, Engaging Educator",
-      "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+    "/audio/listening/g2-u01/school-day--amelia--1f6586ea.mp3": {
+      "unit": "g2-u01",
+      "taskKey": "school-day",
+      "voiceSlug": "amelia",
+      "voiceName": "Amelia — young and enthusiastic",
+      "voiceId": "ZF6FPAbjXT4488VcRRnw",
+      "voices": [
+        {
+          "role": null,
+          "slug": "amelia",
+          "name": "Amelia — young and enthusiastic",
+          "voiceId": "ZF6FPAbjXT4488VcRRnw"
+        }
+      ],
       "modelId": "eleven_multilingual_v2",
       "voiceSettings": {
         "stability": 0.6,
@@ -15,37 +23,45 @@
         "use_speaker_boost": true,
         "speed": 0.9
       },
-      "scriptChars": 711,
-      "creditsCharged": 711,
-      "generatedMs": 8437,
-      "sha256Prefix": "0cea06e0",
-      "sha1": "ff5908dd98cc97083cdc8dfcea3d9937bfa4a756",
-      "bytes": 627297,
-      "durationSec": 52.203,
+      "scriptChars": 480,
+      "creditsCharged": 480,
+      "generatedMs": 5213,
+      "sha256Prefix": "1f6586ea",
+      "sha1": "144e7d3ca6ad3b4389d7d702301a04bd5cf9f216",
+      "bytes": 434200,
+      "durationSec": 36.105,
       "method": "lufs-i",
-      "loudnessDb": -16.5,
-      "truePeakDb": -1.6,
-      "rmsDb": -16.94,
-      "peakDb": -1.65,
+      "loudnessDb": -16.7,
+      "truePeakDb": -1.7,
+      "rmsDb": -17.54,
+      "peakDb": -1.8,
       "flatFactor": 0,
       "centroidsHz": [
-        4481,
-        10482,
-        1639
+        5492,
+        2591,
+        752
       ],
       "tailSilenceMs": 149,
       "seamDb": null,
       "seamRatio": null,
       "loopStartSec": null,
       "loopEndSec": null,
-      "headSilenceMs": 74
+      "headSilenceMs": 64
     },
-    "/audio/listening/g2-u02/museum--blondie--7c19352d.mp3": {
-      "unit": "g2-u02",
-      "taskKey": "museum",
-      "voiceSlug": "blondie",
-      "voiceName": "Blondie — Children's Storyteller",
-      "voiceId": "XXphLKNRxvJ1Qa95KBhX",
+    "/audio/listening/g2-u03/market--amelia--68f1568a.mp3": {
+      "unit": "g2-u03",
+      "taskKey": "market",
+      "voiceSlug": "amelia",
+      "voiceName": "Amelia — young and enthusiastic",
+      "voiceId": "ZF6FPAbjXT4488VcRRnw",
+      "voices": [
+        {
+          "role": null,
+          "slug": "amelia",
+          "name": "Amelia — young and enthusiastic",
+          "voiceId": "ZF6FPAbjXT4488VcRRnw"
+        }
+      ],
       "modelId": "eleven_multilingual_v2",
       "voiceSettings": {
         "stability": 0.6,
@@ -54,30 +70,130 @@
         "use_speaker_boost": true,
         "speed": 0.9
       },
-      "scriptChars": 711,
-      "creditsCharged": 711,
-      "generatedMs": 9855,
-      "sha256Prefix": "7c19352d",
-      "sha1": "644f6c7e5418f84fc76d1e7f6281bdc97603c63d",
-      "bytes": 590934,
-      "durationSec": 49.18,
+      "scriptChars": 469,
+      "creditsCharged": 469,
+      "generatedMs": 5166,
+      "sha256Prefix": "68f1568a",
+      "sha1": "876e603cace137de8df8a06911d4941cf345522c",
+      "bytes": 415391,
+      "durationSec": 34.556,
       "method": "lufs-i",
-      "loudnessDb": -16.8,
-      "truePeakDb": -1.7,
-      "rmsDb": -17.47,
-      "peakDb": -1.66,
+      "loudnessDb": -16.6,
+      "truePeakDb": -1.8,
+      "rmsDb": -17.14,
+      "peakDb": -1.81,
       "flatFactor": 0,
       "centroidsHz": [
-        7312,
-        8108,
-        7135
+        4838,
+        2643,
+        6093
       ],
-      "tailSilenceMs": 354,
+      "tailSilenceMs": 148,
       "seamDb": null,
       "seamRatio": null,
       "loopStartSec": null,
       "loopEndSec": null,
-      "headSilenceMs": 14
+      "headSilenceMs": 73
+    },
+    "/audio/listening/g2-u05/postoffice--emma-frau--f3d7a974.mp3": {
+      "unit": "g2-u05",
+      "taskKey": "postoffice",
+      "voiceSlug": "emma-frau",
+      "voiceName": "Amelia — young and enthusiastic + Alice — Clear, Engaging Educator",
+      "voiceId": null,
+      "voices": [
+        {
+          "role": "Emma, das Kind, das nach dem Weg fragt",
+          "slug": "amelia",
+          "name": "Amelia — young and enthusiastic",
+          "voiceId": "ZF6FPAbjXT4488VcRRnw"
+        },
+        {
+          "role": "die erwachsene Passantin, die den Weg erklärt",
+          "slug": "alice",
+          "name": "Alice — Clear, Engaging Educator",
+          "voiceId": "Xb7hH8MSUJpSbSDYk0k2"
+        }
+      ],
+      "modelId": "eleven_multilingual_v2",
+      "voiceSettings": {
+        "stability": 0.6,
+        "similarity_boost": 0.75,
+        "style": 0,
+        "use_speaker_boost": true,
+        "speed": 0.9
+      },
+      "scriptChars": 695,
+      "creditsCharged": 684,
+      "generatedMs": 13261,
+      "sha256Prefix": "f3d7a974",
+      "sha1": "304c98c1fbde26ddec62a0aba819e13382aafbac",
+      "bytes": 585919,
+      "durationSec": 48.761,
+      "method": "lufs-i",
+      "loudnessDb": -16.6,
+      "truePeakDb": -1.7,
+      "rmsDb": -17.42,
+      "peakDb": -1.77,
+      "flatFactor": 0,
+      "centroidsHz": [
+        6208,
+        5645,
+        871
+      ],
+      "tailSilenceMs": 108,
+      "seamDb": null,
+      "seamRatio": null,
+      "loopStartSec": null,
+      "loopEndSec": null,
+      "headSilenceMs": 23
+    },
+    "/audio/listening/g2-u06/camp--amelia--956e81a8.mp3": {
+      "unit": "g2-u06",
+      "taskKey": "camp",
+      "voiceSlug": "amelia",
+      "voiceName": "Amelia — young and enthusiastic",
+      "voiceId": "ZF6FPAbjXT4488VcRRnw",
+      "voices": [
+        {
+          "role": null,
+          "slug": "amelia",
+          "name": "Amelia — young and enthusiastic",
+          "voiceId": "ZF6FPAbjXT4488VcRRnw"
+        }
+      ],
+      "modelId": "eleven_multilingual_v2",
+      "voiceSettings": {
+        "stability": 0.6,
+        "similarity_boost": 0.75,
+        "style": 0,
+        "use_speaker_boost": true,
+        "speed": 0.9
+      },
+      "scriptChars": 686,
+      "creditsCharged": 686,
+      "generatedMs": 7774,
+      "sha256Prefix": "956e81a8",
+      "sha1": "b9f3e673c62c06fa35756baf8cfda57d3f83382d",
+      "bytes": 640463,
+      "durationSec": 53.309,
+      "method": "lufs-i",
+      "loudnessDb": -16.6,
+      "truePeakDb": -1.8,
+      "rmsDb": -17.2,
+      "peakDb": -1.8,
+      "flatFactor": 0,
+      "centroidsHz": [
+        2097,
+        1288,
+        4637
+      ],
+      "tailSilenceMs": 148,
+      "seamDb": null,
+      "seamRatio": null,
+      "loopStartSec": null,
+      "loopEndSec": null,
+      "headSilenceMs": 43
     },
     "/audio/listening/g2-u02/museum--amelia--a3017913.mp3": {
       "unit": "g2-u02",
@@ -112,6 +228,109 @@
         1462
       ],
       "tailSilenceMs": 150,
+      "seamDb": null,
+      "seamRatio": null,
+      "loopStartSec": null,
+      "loopEndSec": null,
+      "headSilenceMs": 63,
+      "voices": [
+        {
+          "role": null,
+          "slug": "amelia",
+          "name": "Amelia — young and enthusiastic",
+          "voiceId": "ZF6FPAbjXT4488VcRRnw"
+        }
+      ],
+      "noteK4b": "K5a-Aufnahme, unverändert übernommen — genau die Datei, die Koki im Rauchtest gehört und gewählt hat. Neu einsprechen hätte eine ANDERE Aufnahme derselben Stimme ergeben (TTS ist nicht bit-genau wiederholbar)."
+    },
+    "/audio/listening/g2-u04/vote--amelia--598e1842.mp3": {
+      "unit": "g2-u04",
+      "taskKey": "vote",
+      "voiceSlug": "amelia",
+      "voiceName": "Amelia — young and enthusiastic",
+      "voiceId": "ZF6FPAbjXT4488VcRRnw",
+      "voices": [
+        {
+          "role": null,
+          "slug": "amelia",
+          "name": "Amelia — young and enthusiastic",
+          "voiceId": "ZF6FPAbjXT4488VcRRnw"
+        }
+      ],
+      "modelId": "eleven_multilingual_v2",
+      "voiceSettings": {
+        "stability": 0.6,
+        "similarity_boost": 0.75,
+        "style": 0,
+        "use_speaker_boost": true,
+        "speed": 0.9
+      },
+      "scriptChars": 712,
+      "creditsCharged": 712,
+      "generatedMs": 8312,
+      "sha256Prefix": "598e1842",
+      "sha1": "9004244b57dcb88bd2bde76501ace49f18bc1b15",
+      "bytes": 716009,
+      "durationSec": 59.599,
+      "method": "lufs-i",
+      "loudnessDb": -16.7,
+      "truePeakDb": -1.7,
+      "rmsDb": -17.55,
+      "peakDb": -1.66,
+      "flatFactor": 0,
+      "centroidsHz": [
+        1091,
+        1498,
+        5559
+      ],
+      "tailSilenceMs": 148,
+      "seamDb": null,
+      "seamRatio": null,
+      "loopStartSec": null,
+      "loopEndSec": null,
+      "headSilenceMs": 53
+    },
+    "/audio/listening/g2-u07/weekend--amelia--3128e8b9.mp3": {
+      "unit": "g2-u07",
+      "taskKey": "weekend",
+      "voiceSlug": "amelia",
+      "voiceName": "Amelia — young and enthusiastic",
+      "voiceId": "ZF6FPAbjXT4488VcRRnw",
+      "voices": [
+        {
+          "role": null,
+          "slug": "amelia",
+          "name": "Amelia — young and enthusiastic",
+          "voiceId": "ZF6FPAbjXT4488VcRRnw"
+        }
+      ],
+      "modelId": "eleven_multilingual_v2",
+      "voiceSettings": {
+        "stability": 0.6,
+        "similarity_boost": 0.75,
+        "style": 0,
+        "use_speaker_boost": true,
+        "speed": 0.9
+      },
+      "scriptChars": 616,
+      "creditsCharged": 616,
+      "generatedMs": 7265,
+      "sha256Prefix": "3128e8b9",
+      "sha1": "4ca0b536262912b55502206514ebdfa1d07b865b",
+      "bytes": 586232,
+      "durationSec": 48.775,
+      "method": "lufs-i",
+      "loudnessDb": -16.6,
+      "truePeakDb": -1.8,
+      "rmsDb": -17.55,
+      "peakDb": -1.77,
+      "flatFactor": 0,
+      "centroidsHz": [
+        1060,
+        1082,
+        1736
+      ],
+      "tailSilenceMs": 148,
       "seamDb": null,
       "seamRatio": null,
       "loopStartSec": null,

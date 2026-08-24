@@ -1,0 +1,218 @@
+{
+  "schema": "test@1",
+  "grade": 2,
+  "unit": 4,
+  "slug": "g2-u04",
+  "level": "A2",
+  "test": {
+    "id": "g2u04.tt.vote",
+    "titleDe": "Schularbeit (Übung) — Unit 4",
+    "sections": [
+      {
+        "kind": "grammar",
+        "titleDe": "Teil 1: Grammatik (Vergleiche)",
+        "itemIds": [
+          "g2u04.gi.comparatives.gf.001",
+          "g2u04.gi.as-as.cp.001",
+          "g2u04.gi.superlatives.ec.001"
+        ]
+      },
+      {
+        "kind": "vocab",
+        "titleDe": "Teil 2: Wortschatz",
+        "itemIds": [
+          "g2u04.w.giraffe",
+          "g2u04.w.dangerous",
+          "g2u04.w.to-weigh"
+        ]
+      },
+      {
+        "kind": "listening",
+        "titleDe": "Teil 3: Hörverstehen",
+        "itemIds": [
+          "g2u04.li.vote.mc.001",
+          "g2u04.li.vote.gf.001"
+        ]
+      },
+      {
+        "kind": "reading",
+        "titleDe": "Teil 4: Leseverständnis",
+        "passage": "Hi, I am Jack. Last week our class studied a parrot from Australia. It was much more colourful than the pigeons in our park. Our teacher showed us a picture from 1910. In 1927 the last one died. After that day the parrot was extinct. Today nobody can tell us the reason. Some scientists talked about big fires. Some talked about climate change. Both are very dangerous for a small parrot. I was really sad, because a picture on a screen is not a live parrot. We must protect the parrots and the pigeons that are still here.",
+        "passageGloss": [
+          {
+            "word": "extinct",
+            "de": "ausgestorben",
+            "scope": null
+          }
+        ],
+        "items": [
+          {
+            "id": "g2u04.ri.parrot.mc.001",
+            "rev": 1,
+            "difficulty": 1,
+            "format": "multiple-choice",
+            "prompt": {
+              "text": "What is Jack's text about?",
+              "lang": "en",
+              "blanks": 0
+            },
+            "answers": [
+              {
+                "text": "A parrot that died out",
+                "tier": "full"
+              }
+            ],
+            "direction": null,
+            "distractors": [
+              "A day in the park with his class",
+              "A picture on a big screen",
+              "A parrot in his classroom"
+            ],
+            "pairs": [],
+            "groups": [],
+            "gloss": [],
+            "hintDe": "Lies zuerst den ganzen Text. Worum geht es im GANZEN Text?",
+            "hintEn": null,
+            "explainDe": "Der Papagei aus Australien ist seit 1927 ausgestorben — darum geht der ganze Text.",
+            "explainEn": null,
+            "strict": false,
+            "phase": "gist",
+            "cue": {
+              "type": "gist",
+              "quote": "After that day the parrot was extinct."
+            },
+            "trickDe": "Lies den ganzen Text — das Thema steht nie in einem Wort.",
+            "distractorMeta": [
+              {
+                "whyDe": "Der Park kommt vor — aber nur als Vergleich mit den Tauben.",
+                "lure": "echo"
+              },
+              {
+                "whyDe": "Der Bildschirm kommt vor — er ist nur Jacks Beispiel am Schluss.",
+                "lure": "echo"
+              },
+              {
+                "whyDe": "Ein Papagei im Klassenzimmer steht nirgends im Text."
+              }
+            ]
+          },
+          {
+            "id": "g2u04.ri.parrot.gf.001",
+            "rev": 1,
+            "difficulty": 2,
+            "format": "gap-fill",
+            "prompt": {
+              "text": "The last parrot died in ___.",
+              "lang": "en",
+              "blanks": 1
+            },
+            "answers": [
+              {
+                "text": "1927",
+                "tier": "full"
+              }
+            ],
+            "direction": null,
+            "distractors": [],
+            "pairs": [],
+            "groups": [],
+            "gloss": [],
+            "hintDe": "Im Text stehen zwei Jahreszahlen. Welche gehört zum letzten Papagei?",
+            "hintEn": null,
+            "explainDe": "„In 1927 the last one died.“ — die 1910 gehört zum Bild der Lehrerin.",
+            "explainEn": null,
+            "strict": false,
+            "phase": "detail",
+            "cue": {
+              "type": "number-time",
+              "quote": "In 1927 the last one died."
+            },
+            "trickDe": "Zwei Jahreszahlen im Text — lies, welche zum Sterben gehört."
+          },
+          {
+            "id": "g2u04.ri.parrot.mc.002",
+            "rev": 1,
+            "difficulty": 2,
+            "format": "multiple-choice",
+            "prompt": {
+              "text": "Why was Jack really sad?",
+              "lang": "en",
+              "blanks": 0
+            },
+            "answers": [
+              {
+                "text": "Because a picture is not a live parrot.",
+                "tier": "full"
+              }
+            ],
+            "direction": null,
+            "distractors": [
+              "Because the pigeons in the park are grey.",
+              "Because his class studied climate change.",
+              "Because the parrot was not colourful."
+            ],
+            "pairs": [],
+            "groups": [],
+            "gloss": [],
+            "hintDe": "Suche das Wort because — der Grund steht direkt danach.",
+            "hintEn": null,
+            "explainDe": "„I was really sad, because a picture on a screen is not a live parrot.“",
+            "explainEn": null,
+            "strict": false,
+            "phase": "detail",
+            "cue": {
+              "type": "signal-word",
+              "quote": "I was really sad, because a picture on a screen is not a live parrot."
+            },
+            "trickDe": "Nach because kommt der Grund — lies genau dorthin.",
+            "distractorMeta": [
+              {
+                "whyDe": "Die Tauben kommen vor — ihre Farbe steht nirgends.",
+                "lure": "echo"
+              },
+              {
+                "whyDe": "Klimawandel kommt vor — als Vermutung der Wissenschaftler, nicht als Grund für Trauer.",
+                "lure": "echo"
+              },
+              {
+                "whyDe": "Der Papagei WAR bunt — der Text sagt das Gegenteil."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "writing",
+        "titleDe": "Teil 5: Schreiben",
+        "promptId": "g2u04.ti.wr.001",
+        "promptDe": "Schreib einen kurzen Artikel über ein Tier, das ausgestorben ist (40–70 Wörter): Wo hat es gelebt? Wie war es? Warum gibt es das Tier nicht mehr? Verwende mindestens einen Vergleich mit -er … than und einen Superlativ mit the …est.",
+        "taskEn": "Write a short article about an animal that died out (40-70 words): where it lived, what it was like, and why it is not here any more. Use at least one comparative and one superlative.",
+        "minWords": 40,
+        "maxWords": 70,
+        "rubric": null,
+        "checklistDe": [
+          "Steht in deinem Text, WO das Tier gelebt hat und WARUM es nicht mehr da ist?",
+          "Hast du einen Vergleich mit -er … than UND einen Superlativ mit the …est?",
+          "Hast du 40 bis 70 Wörter geschrieben?"
+        ],
+        "exemplar": {
+          "textEn": "Last week I studied the black rhino. It lived in a very big desert area. It could run faster than a car. It was also one of the heaviest mammals. In 2011 the last one died. Nobody protected it, and now it is not here any more. I was really sad about this. We must protect the rhinos that are still here.",
+          "calloutsDe": [
+            {
+              "quote": "Last week I studied the black rhino.",
+              "whyDe": "Zeit und Thema gleich im ersten Satz — so beginnt ein guter Artikel."
+            },
+            {
+              "quote": "It could run faster than a car.",
+              "whyDe": "Ein Vergleich mit -er und than — genau das verlangt die Aufgabe."
+            },
+            {
+              "quote": "It was also one of the heaviest mammals.",
+              "whyDe": "Ein Superlativ mit the …est — der zweite Pflicht-Baustein."
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

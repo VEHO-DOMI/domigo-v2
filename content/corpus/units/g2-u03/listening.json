@@ -12,7 +12,19 @@
       "audio": {
         "script": "Hello! My name is Mia. On Saturday morning, I go to the market with my mum. The market is in the town centre, next to the old church. We always buy fresh fruit and vegetables there. My mum buys apples, bananas and tomatoes. I love the apples because they are very sweet. The market opens at eight o'clock and closes at one o'clock. My favourite shop sells cheese and fresh bread. After shopping, we have a hot chocolate in a small café. I really like Saturday mornings!",
         "voice": null,
-        "file": null
+        "file": "/audio/listening/g2-u03/market--amelia--68f1568a.mp3",
+        "source": {
+          "provider": "elevenlabs",
+          "modelId": "eleven_multilingual_v2",
+          "voices": [
+            {
+              "role": null,
+              "slug": "amelia",
+              "name": "Amelia — young and enthusiastic",
+              "voiceId": "ZF6FPAbjXT4488VcRRnw"
+            }
+          ]
+        }
       },
       "transcript": "Hello! My name is Mia. On Saturday morning, I go to the market with my mum. The market is in the town centre, next to the old church. We always buy fresh fruit and vegetables there. My mum buys apples, bananas and tomatoes. I love the apples because they are very sweet. The market opens at eight o'clock and closes at one o'clock. My favourite shop sells cheese and fresh bread. After shopping, we have a hot chocolate in a small café. I really like Saturday mornings!",
       "items": [

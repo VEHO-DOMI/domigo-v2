@@ -1,0 +1,218 @@
+{
+  "schema": "test@1",
+  "grade": 2,
+  "unit": 5,
+  "slug": "g2-u05",
+  "level": "A2",
+  "test": {
+    "id": "g2u05.tt.postoffice",
+    "titleDe": "Schularbeit (Übung) — Unit 5",
+    "sections": [
+      {
+        "kind": "grammar",
+        "titleDe": "Teil 1: Grammatik (Präpositionen & Wegbeschreibung)",
+        "itemIds": [
+          "g2u05.gi.prepositions-directions.gf.001",
+          "g2u05.gi.prepositions-directions.cp.001",
+          "g2u05.gi.prepositions-directions.ec.001"
+        ]
+      },
+      {
+        "kind": "vocab",
+        "titleDe": "Teil 2: Wortschatz",
+        "itemIds": [
+          "g2u05.w.post-office",
+          "g2u05.w.opposite",
+          "g2u05.w.to-turn-left"
+        ]
+      },
+      {
+        "kind": "listening",
+        "titleDe": "Teil 3: Hörverstehen",
+        "itemIds": [
+          "g2u05.li.postoffice.mc.001",
+          "g2u05.li.postoffice.gf.001"
+        ]
+      },
+      {
+        "kind": "reading",
+        "titleDe": "Teil 4: Leseverständnis",
+        "passage": "Hi, I am Sarah. Last summer my grandmother visited us in London. From the airport we travelled with the underground. At Green Station we changed trains. I jumped on the second train. My grandmother was too slow, and the doors closed in front of her. I was really scared, because she had no mobile phone. She had ten pounds in her pocket. She waited at a bus stop most of the time. In the evening a nice woman looked at the map with her. Then they travelled to the police station. At nine o'clock we were all at the station again. Now my grandmother always has my picture in her pocket.",
+        "passageGloss": [],
+        "items": [
+          {
+            "id": "g2u05.ri.london.mc.001",
+            "rev": 1,
+            "difficulty": 1,
+            "format": "multiple-choice",
+            "prompt": {
+              "text": "What is Sarah's text about?",
+              "lang": "en",
+              "blanks": 0
+            },
+            "answers": [
+              {
+                "text": "A difficult day for her grandmother",
+                "tier": "full"
+              }
+            ],
+            "direction": null,
+            "distractors": [
+              "A holiday at the airport",
+              "A picture in her grandmother's pocket",
+              "A woman with a map"
+            ],
+            "pairs": [],
+            "groups": [],
+            "gloss": [],
+            "hintDe": "Lies zuerst den ganzen Text. Worum geht es im GANZEN Text?",
+            "hintEn": null,
+            "explainDe": "Die Großmutter bleibt allein in der U-Bahn-Station zurück — darum geht der ganze Text.",
+            "explainEn": null,
+            "strict": false,
+            "phase": "gist",
+            "cue": {
+              "type": "gist",
+              "quote": "My grandmother was too slow, and the doors closed in front of her."
+            },
+            "trickDe": "Lies den ganzen Text — das Thema steht nie in einem Wort.",
+            "distractorMeta": [
+              {
+                "whyDe": "Der Flughafen kommt vor — er ist nur der Anfang der Fahrt.",
+                "lure": "echo"
+              },
+              {
+                "whyDe": "Das Bild in der Tasche kommt vor — ganz am Schluss, als Folge.",
+                "lure": "echo"
+              },
+              {
+                "whyDe": "Die Frau mit der Karte kommt vor — sie hilft, ist aber nicht das Thema.",
+                "lure": "echo"
+              }
+            ]
+          },
+          {
+            "id": "g2u05.ri.london.gf.001",
+            "rev": 1,
+            "difficulty": 2,
+            "format": "gap-fill",
+            "prompt": {
+              "text": "Sarah's grandmother had ___ pounds in her pocket.",
+              "lang": "en",
+              "blanks": 1
+            },
+            "answers": [
+              {
+                "text": "ten",
+                "tier": "full"
+              },
+              {
+                "text": "10",
+                "tier": "full"
+              }
+            ],
+            "direction": null,
+            "distractors": [],
+            "pairs": [],
+            "groups": [],
+            "gloss": [],
+            "hintDe": "Im Text stehen zwei Zahlen. Welche gehört zum Geld?",
+            "hintEn": null,
+            "explainDe": "„She had ten pounds in her pocket.“ — die Neun ist die Uhrzeit am Ende.",
+            "explainEn": null,
+            "strict": false,
+            "phase": "detail",
+            "cue": {
+              "type": "number-time",
+              "quote": "She had ten pounds in her pocket."
+            },
+            "trickDe": "Zwei Zahlen im Text — lies, welche zum Geld gehört."
+          },
+          {
+            "id": "g2u05.ri.london.mc.002",
+            "rev": 1,
+            "difficulty": 2,
+            "format": "multiple-choice",
+            "prompt": {
+              "text": "Why was Sarah scared?",
+              "lang": "en",
+              "blanks": 0
+            },
+            "answers": [
+              {
+                "text": "Because her grandmother had no mobile phone.",
+                "tier": "full"
+              }
+            ],
+            "direction": null,
+            "distractors": [
+              "Because she had ten pounds in her pocket.",
+              "Because the police station was closed.",
+              "Because the woman had no map."
+            ],
+            "pairs": [],
+            "groups": [],
+            "gloss": [],
+            "hintDe": "Suche das Wort because — der Grund steht direkt danach.",
+            "hintEn": null,
+            "explainDe": "„I was really scared, because she had no mobile phone.“",
+            "explainEn": null,
+            "strict": false,
+            "phase": "detail",
+            "cue": {
+              "type": "signal-word",
+              "quote": "I was really scared, because she had no mobile phone."
+            },
+            "trickDe": "Nach because kommt der Grund — lies genau dorthin.",
+            "distractorMeta": [
+              {
+                "whyDe": "Die zehn Pfund stehen im nächsten Satz — sie sind kein Grund für Angst.",
+                "lure": "near-number"
+              },
+              {
+                "whyDe": "Die Polizeistation kommt vor — von geschlossen steht nichts da.",
+                "lure": "echo"
+              },
+              {
+                "whyDe": "Die Frau HATTE eine Karte — der Text sagt das Gegenteil.",
+                "lure": "echo"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "writing",
+        "titleDe": "Teil 5: Schreiben",
+        "promptId": "g2u05.ti.wr.001",
+        "promptDe": "Schreib eine Nachricht an eine Freundin oder einen Freund mit dem Weg von deinem Bahnhof zu deiner Schule (40–70 Wörter): Wo geht sie oder er los? Welche Straßen? Woran erkennt man das Ziel? Verwende mindestens drei Wegbeschreibungen (z. B. go straight ahead, turn left, go past, next to, opposite).",
+        "taskEn": "Write a message to a friend with the directions from the railway station to your school (40-70 words): where to start, which streets to take, and how to find the building. Use at least three direction phrases.",
+        "minWords": 40,
+        "maxWords": 70,
+        "rubric": null,
+        "checklistDe": [
+          "Steht in deiner Nachricht, WO man losgeht und WORAN man die Schule erkennt?",
+          "Hast du mindestens drei Wegbeschreibungen benutzt (go straight ahead, turn left, go past, next to, opposite)?",
+          "Hast du 40 bis 70 Wörter geschrieben?"
+        ],
+        "exemplar": {
+          "textEn": "Hi Tom! Here are the directions to my school. Come out of the railway station and cross the street. Then go straight ahead as far as the traffic lights. Take the second right and go past the supermarket. My school is opposite the market square, next to the church. It is not near the hospital! I am waiting in front of the big door.",
+          "calloutsDe": [
+            {
+              "quote": "Come out of the railway station and cross the street.",
+              "whyDe": "Der Startpunkt steht gleich am Anfang — sonst hilft die beste Beschreibung nichts."
+            },
+            {
+              "quote": "Then go straight ahead as far as the traffic lights.",
+              "whyDe": "Eine Wegbeschreibung mit einem Zielpunkt — nicht nur »geh weiter«."
+            },
+            {
+              "quote": "My school is opposite the market square, next to the church.",
+              "whyDe": "Zwei Nachbarn nennen das Ziel sicher — eine Angabe allein ist oft zu wenig."
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

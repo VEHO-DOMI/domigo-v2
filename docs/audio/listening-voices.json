@@ -1,37 +1,80 @@
 {
   "schema": "listening-voices@1",
   "note": "Der Auftragszettel des Hörverstehens. Er nennt AUSSCHLIESSLICH Stimmen und Einstellungen — der Sprechtext steht nirgends hier, sondern wird von docs/audio/gen-listening-voice.mjs zur Laufzeit aus content/corpus/units/<unit>/listening.json gelesen. Eine zweite Abschrift des Textes wäre der Riss, durch den Bestand und Ton auseinanderlaufen.",
+  "noteK4b": "K4b · Staffel 1. Ein Stück nennt seine Stimme selbst (`voice`) — P-R10: keine Ein-Stimmen-Bindung, die Stimm-Wahl ist eine Eigenschaft des Stücks. Amelia ist die Erzähl-Vorgabe für Stufe 1–2. Das Stück g2-u05 ist ein DIALOG: `voicesByTurn` nennt je ZEILE des Skripts eine Stimme (12 Zeilen, 12 Angaben — stimmt die Zahl nicht, bricht der Lauf ab), `roles` benennt, wer wer ist.",
   "modelId": "eleven_multilingual_v2",
   "stability": 0.6,
   "similarityBoost": 0.75,
   "style": 0,
   "speed": 0.9,
-  "speedNote": "0,9 statt 1,0 — hörbar ruhiger, ohne die Sprachmelodie zu zerdehnen. Der A1–A2-Grund ist derselbe wie beim Roboter-Zweig des Abspielers (rate 0.85): Kinder im zweiten Lernjahr brauchen Zeit zwischen den Inhaltswörtern. ALLE drei Kandidaten fahren denselben Wert, damit der Vergleich die STIMME misst und nicht das Tempo.",
+  "speedNote": "0,9 statt 1,0 — hörbar ruhiger, ohne die Sprachmelodie zu zerdehnen. Der A1–A2-Grund ist derselbe wie beim Roboter-Zweig des Abspielers (rate 0.85): Kinder im zweiten Lernjahr brauchen Zeit zwischen den Inhaltswörtern.",
   "pieces": [
+    {
+      "unit": "g2-u01",
+      "taskKey": "school-day",
+      "voice": "amelia",
+      "note": "Ein Schulkind erzählt seinen Tagesablauf (Ich-Form). Bestand aus der Vor-Welle, bekommt in K4b seine Stimme nachgereicht."
+    },
     {
       "unit": "g2-u02",
       "taskKey": "museum",
-      "note": "Leonie erzählt in der Ich-Form vom Klassenausflug ins Museum (Simple Past, ~840 Zeichen). Kein Dialog — g2-u02 trägt genau dieses eine Hör-Stück."
+      "voice": "amelia",
+      "note": "Leonies Museumsausflug — die Kalibrier-Unit. K5a lieferte drei Kandidaten; Kokis Entscheid (P-R10) ist Amelia, also spricht auch das Exemplar ab jetzt Amelia."
+    },
+    {
+      "unit": "g2-u03",
+      "taskKey": "market",
+      "voice": "amelia",
+      "note": "Ein Schulkind erzählt vom Markt. Bestand aus der Vor-Welle, bekommt in K4b seine Stimme nachgereicht."
+    },
+    {
+      "unit": "g2-u04",
+      "taskKey": "vote",
+      "voice": "amelia",
+      "note": "Emma erzählt von der Abstimmung über das unglaublichste Tier (as … as, Superlative)."
+    },
+    {
+      "unit": "g2-u05",
+      "taskKey": "postoffice",
+      "voicesByTurn": ["amelia", "alice", "amelia", "alice", "amelia", "alice", "amelia", "alice", "amelia", "alice", "amelia", "alice"],
+      "voiceSlug": "emma-frau",
+      "roles": {
+        "amelia": "Emma, das Kind, das nach dem Weg fragt",
+        "alice": "die erwachsene Passantin, die den Weg erklärt"
+      },
+      "note": "Der einzige DIALOG der Staffel — eine Wegbeschreibung ist als Zwiegespräch echt und als Monolog künstlich. Zwölf Zeilen, abwechselnd Kind und Erwachsene."
+    },
+    {
+      "unit": "g2-u06",
+      "taskKey": "camp",
+      "voice": "amelia",
+      "note": "Ben erzählt von der Woche im Abenteuercamp (have to / don't have to)."
+    },
+    {
+      "unit": "g2-u07",
+      "taskKey": "weekend",
+      "voice": "amelia",
+      "note": "Lisa erzählt, wie die Kinopläne platzen und ein neuer Plan entsteht (going to verneint, might)."
     }
   ],
   "voices": [
     {
+      "slug": "amelia",
+      "name": "Amelia — young and enthusiastic",
+      "voiceId": "ZF6FPAbjXT4488VcRRnw",
+      "wette": "Die Gleichaltrigen-Wette: britisch, jung, lebhaft — am nächsten an der Stimme der erzählenden Kinder. Kokis Wahl aus dem K5a-Rauchtest und damit die Erzähl-Vorgabe für Stufe 1–2."
+    },
+    {
       "slug": "alice",
       "name": "Alice — Clear, Engaging Educator",
       "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
-      "wette": "Die Lehrerinnen-Wette: britisch, erwachsen, auf Erklären trainiert. Maximale Verständlichkeit, aber die Erzählerin ist ein Schulkind — die Stimme passt zur Aufgabe, nicht zur Figur."
+      "wette": "Britisch, erwachsen, auf Erklären trainiert. Im K5a-Rauchtest die Lehrerinnen-Wette; in K4b besetzt sie genau die Rolle, für die sie gebaut ist — die erwachsene Passantin in g2-u05."
     },
     {
       "slug": "blondie",
       "name": "Blondie — Children's Storyteller",
       "voiceId": "XXphLKNRxvJ1Qa95KBhX",
-      "wette": "Die Vorlese-Wette: britisch, jung, weich, auf Kindergeschichten trainiert. Wärme und Zuwendung — das Risiko ist, dass Vorlese-Ton bei Zwölfjährigen kindisch wirkt."
-    },
-    {
-      "slug": "amelia",
-      "name": "Amelia — young and enthusiastic",
-      "voiceId": "ZF6FPAbjXT4488VcRRnw",
-      "wette": "Die Gleichaltrigen-Wette: britisch, jung, lebhaft. Am nächsten an Leonies eigener Stimme — das Risiko ist, dass Lebhaftigkeit auf Kosten der Deutlichkeit geht."
+      "wette": "Die Vorlese-Wette aus dem K5a-Rauchtest. Bleibt im Zettel als Kandidatin für künftige Stücke stehen, spricht in Staffel 1 aber kein Stück."
     }
   ]
 }

@@ -34,11 +34,21 @@
 // (apps/web/next.config.ts). Ohne Fingerabdruck im Namen bliebe eine neu
 // aufgenommene Datei bei jedem Kind ein Jahr lang die alte.
 //
+// ── Ein Stueck mit ZWEI Rollen (K4b) ────────────────────────────────────────
+// Ein Auftragszettel-Stueck darf `voicesByTurn` tragen: je ZEILE des Skripts
+// eine Stimme. Das Skript bleibt die einzige Textquelle — der Zettel nennt nur
+// Stimmen, nie Text. Stimmen die Zahlen nicht ueberein (Zeilen vs. Angaben),
+// bricht der Lauf HART ab; ein stiller Versatz waere die schlimmste Variante.
+// Die Teil-Takes werden mit einer kurzen Pause zusammengefuegt und danach EIN
+// Mal durch dieselbe Master-Kette geschickt — eine zweite Kette waere genau die
+// Drift, gegen die das Klang-Tor existiert.
+//
 // Aufruf:
 //   node docs/audio/gen-listening-voice.mjs --list-voices
 //   node docs/audio/gen-listening-voice.mjs --plan
 //   node docs/audio/gen-listening-voice.mjs --all
 //   node docs/audio/gen-listening-voice.mjs --only alice
+//   node docs/audio/gen-listening-voice.mjs --unit g2-u04,g2-u07   (nur diese Einheiten)
 //   node docs/audio/gen-listening-voice.mjs --measure     (nichts erzeugen, nur neu messen)
 
 import fs from "node:fs";
@@ -61,6 +71,7 @@ const OUTPUT_FORMAT = "mp3_44100_128"; // Rohformat; gemastert wird danach auf m
 const TARGET_I = -16;                  // LUFS — Sprache im selben Fenster wie die Spiel-Bank
 const TARGET_TP = -1.5;                // dBFS True-Peak-Decke
 const MAX_EDGE_SILENCE_MS = 150;
+const TURN_GAP_MS = 350;               // Pause zwischen zwei Sprech-Rollen
 
 // ── Argumente ────────────────────────────────────────────────────────────────
 const argv = process.argv.slice(2);
@@ -71,6 +82,9 @@ const PLAN_ONLY = flag("plan");
 const MEASURE_ONLY = flag("measure");
 const ALL = flag("all");
 const ONLY = value("only", "").split(",").map((s) => s.trim()).filter(Boolean);
+// K4b: eine Einheit gezielt neu einsprechen, ohne die anderen anzufassen —
+// eine geaenderte Zeile im Skript soll nicht sechs fremde Aufnahmen ersetzen.
+const UNIT = value("unit", "").split(",").map((s) => s.trim()).filter(Boolean);
 
 // ── Der Schlüssel ────────────────────────────────────────────────────────────
 const readKey = () => {
@@ -177,6 +191,30 @@ const master = (src, dst) => {
   fs.rmSync(trimmed, { force: true });
 };
 
+/**
+ * Mehrere Teil-Takes zu EINER Datei fuegen, mit TURN_GAP_MS Pause dazwischen.
+ * Ueber wav und den concat-Demuxer, damit nichts zweimal durch mp3 laeuft.
+ */
+const concatTurns = (parts, dst) => {
+  const dir = path.dirname(dst);
+  const wavs = parts.map((src, i) => {
+    const w = path.join(dir, `.turn-${i}.wav`);
+    ff(["-i", src, "-ac", "1", "-ar", String(SR), w]);
+    return w;
+  });
+  const gap = path.join(dir, ".gap.wav");
+  ff(["-f", "lavfi", "-i", `anullsrc=r=${SR}:cl=mono`, "-t", String(TURN_GAP_MS / 1000), gap]);
+  const list = path.join(dir, ".concat.txt");
+  const lines = [];
+  wavs.forEach((w, i) => {
+    if (i > 0) lines.push(`file '${gap}'`);
+    lines.push(`file '${w}'`);
+  });
+  fs.writeFileSync(list, `${lines.join("\n")}\n`);
+  ff(["-f", "concat", "-safe", "0", "-i", list, "-ac", "1", "-ar", String(SR), dst]);
+  for (const f of [...wavs, gap, list]) fs.rmSync(f, { force: true });
+};
+
 const sha8 = (file) => crypto.createHash("sha256").update(fs.readFileSync(file)).digest("hex").slice(0, 8);
 
 // ── Lauf ─────────────────────────────────────────────────────────────────────
@@ -196,10 +234,35 @@ const main = async () => {
   if (!fs.existsSync(ORDER)) { console.error(`✗ ${ORDER} fehlt — erst der Auftragszettel, dann erzeugen.`); process.exit(2); }
   const order = JSON.parse(fs.readFileSync(ORDER, "utf8"));
 
+  const voiceBySlug = new Map(order.voices.map((v) => [v.slug, v]));
+  const needVoice = (slug, where) => {
+    const v = voiceBySlug.get(slug);
+    if (!v) throw new Error(`${where}: der Auftragszettel kennt keine Stimme "${slug}"`);
+    return v;
+  };
+
   const jobs = [];
   for (const piece of order.pieces) {
+    if (UNIT.length > 0 && !UNIT.includes(piece.unit)) continue;
     const script = scriptOf(piece.unit, piece.taskKey);
-    for (const v of order.voices) {
+    const where = `${piece.unit}/${piece.taskKey}`;
+
+    // (a) ZWEI ROLLEN: je Zeile des Skripts eine Stimme.
+    if (Array.isArray(piece.voicesByTurn)) {
+      const turns = script.split(/\r\n|\r|\n/).map((t) => t.trim()).filter(Boolean);
+      if (turns.length !== piece.voicesByTurn.length) {
+        throw new Error(`${where}: ${turns.length} Sprech-Zeile(n) im Bestand, aber ${piece.voicesByTurn.length} Stimm-Angabe(n) im Auftragszettel — der Zettel schreibt den Text nicht ab, also muss die ZAHL stimmen`);
+      }
+      const segments = turns.map((text, i) => ({ text, voice: needVoice(piece.voicesByTurn[i], where) }));
+      const slug = piece.voiceSlug ?? [...new Set(piece.voicesByTurn)].join("-");
+      if (ONLY.length > 0 && !piece.voicesByTurn.some((v) => ONLY.includes(v))) continue;
+      jobs.push({ piece, voice: { slug, name: segments.map((g) => g.voice.name).filter((n, i, a) => a.indexOf(n) === i).join(" + "), voiceId: null }, script, segments });
+      continue;
+    }
+
+    // (b) EINE Stimme, wenn das Stueck eine nennt — sonst alle (Rauchtest-Weg).
+    const wanted = piece.voice ? [needVoice(piece.voice, where)] : order.voices;
+    for (const v of wanted) {
       if (ONLY.length > 0 && !ONLY.includes(v.slug)) continue;
       jobs.push({ piece, voice: v, script });
     }
@@ -232,24 +295,41 @@ const main = async () => {
   fs.mkdirSync(RAW, { recursive: true });
   let credits = 0;
 
-  for (const { piece, voice, script } of jobs) {
-    const label = `${piece.unit}/${piece.taskKey}·${voice.slug}`;
-    const body = {
-      text: script,
-      model_id: voice.modelId ?? order.modelId ?? "eleven_multilingual_v2",
-      voice_settings: {
-        stability: voice.stability ?? order.stability ?? 0.5,
-        similarity_boost: voice.similarityBoost ?? order.similarityBoost ?? 0.75,
-        style: voice.style ?? order.style ?? 0,
-        use_speaker_boost: true,
-        ...(voice.speed ?? order.speed ? { speed: voice.speed ?? order.speed } : {}),
-      },
-    };
-    const { buf, credits: c, ms } = await post(key, `${API}/text-to-speech/${voice.voiceId}?output_format=${OUTPUT_FORMAT}`, body, label);
-    credits += c;
+  const bodyFor = (v, text) => ({
+    text,
+    model_id: v.modelId ?? order.modelId ?? "eleven_multilingual_v2",
+    voice_settings: {
+      stability: v.stability ?? order.stability ?? 0.5,
+      similarity_boost: v.similarityBoost ?? order.similarityBoost ?? 0.75,
+      style: v.style ?? order.style ?? 0,
+      use_speaker_boost: true,
+      ...(v.speed ?? order.speed ? { speed: v.speed ?? order.speed } : {}),
+    },
+  });
 
+  for (const { piece, voice, script, segments } of jobs) {
+    const label = `${piece.unit}/${piece.taskKey}·${voice.slug}`;
     const take = path.join(RAW, `${piece.unit}--${piece.taskKey}--${voice.slug}.mp3`);
-    fs.writeFileSync(take, buf);
+    const body = bodyFor(segments ? segments[0].voice : voice, script);
+    let c = 0;
+    let ms = 0;
+
+    if (segments) {
+      const parts = [];
+      for (const [i, seg] of segments.entries()) {
+        const r = await post(key, `${API}/text-to-speech/${seg.voice.voiceId}?output_format=${OUTPUT_FORMAT}`, bodyFor(seg.voice, seg.text), `${label}#${i + 1}`);
+        c += r.credits; ms += r.ms;
+        const f = path.join(RAW, `${piece.unit}--${piece.taskKey}--turn-${String(i).padStart(2, "0")}.mp3`);
+        fs.writeFileSync(f, r.buf);
+        parts.push(f);
+      }
+      concatTurns(parts, take);
+    } else {
+      const r = await post(key, `${API}/text-to-speech/${voice.voiceId}?output_format=${OUTPUT_FORMAT}`, body, label);
+      c = r.credits; ms = r.ms;
+      fs.writeFileSync(take, r.buf);
+    }
+    credits += c;
 
     const dir = path.join(PUBLIC, piece.unit);
     fs.mkdirSync(dir, { recursive: true });
@@ -270,6 +350,13 @@ const main = async () => {
     measured.files[rel] = {
       unit: piece.unit, taskKey: piece.taskKey,
       voiceSlug: voice.slug, voiceName: voice.name, voiceId: voice.voiceId,
+      // Die DISTINKTEN Stimmen des Stuecks — bei einem Dialog eine je Rolle.
+      voices: segments
+        ? [...new Set(segments.map((g) => g.voice.slug))].map((slug) => {
+            const v = voiceBySlug.get(slug);
+            return { role: piece.roles?.[slug] ?? null, slug, name: v.name, voiceId: v.voiceId };
+          })
+        : [{ role: null, slug: voice.slug, name: voice.name, voiceId: voice.voiceId }],
       modelId: body.model_id, voiceSettings: body.voice_settings,
       scriptChars: script.length, creditsCharged: c, generatedMs: ms,
       sha256Prefix: stamp,

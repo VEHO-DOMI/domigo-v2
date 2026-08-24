@@ -1,0 +1,270 @@
+{
+  "schema": "listening@1",
+  "grade": 2,
+  "unit": 4,
+  "slug": "g2-u04",
+  "level": "A2",
+  "tasks": [
+    {
+      "id": "g2u04.lt.vote",
+      "key": "vote",
+      "titleDe": "Hör zu: Emmas Stunde über die unglaublichsten Tiere",
+      "audio": {
+        "script": "Hi! I am Emma. Last Tuesday our class had a science lesson. Our teacher showed us four pictures on the big screen. First we looked at a whale. A whale weighs 150 tons. Then we looked at a very small bat. This bat is 3 centimetres long. Which one is more incredible? Tom liked the cheetah best. For him speed is the best thing. A cheetah is as fast as a car! Clare liked the whale, because it is the heaviest. Ben liked the small bat. He wanted to protect the smallest one. I liked the dolphin, because dolphins are very intelligent. At the end we voted. Nine children voted for the dolphin. Six children voted for the cheetah. So the dolphin is our class picture now. Tom was not very happy, but then he laughed.",
+        "voice": null,
+        "file": "/audio/listening/g2-u04/vote--amelia--598e1842.mp3",
+        "source": {
+          "provider": "elevenlabs",
+          "modelId": "eleven_multilingual_v2",
+          "voices": [
+            {
+              "role": null,
+              "slug": "amelia",
+              "name": "Amelia — young and enthusiastic",
+              "voiceId": "ZF6FPAbjXT4488VcRRnw"
+            }
+          ]
+        }
+      },
+      "transcript": "Hi! I am Emma. Last Tuesday our class had a science lesson. Our teacher showed us four pictures on the big screen. First we looked at a whale. A whale weighs 150 tons. Then we looked at a very small bat. This bat is 3 centimetres long. Which one is more incredible? Tom liked the cheetah best. For him speed is the best thing. A cheetah is as fast as a car! Clare liked the whale, because it is the heaviest. Ben liked the small bat. He wanted to protect the smallest one. I liked the dolphin, because dolphins are very intelligent. At the end we voted. Nine children voted for the dolphin. Six children voted for the cheetah. So the dolphin is our class picture now. Tom was not very happy, but then he laughed.",
+      "predictChips": [
+        "Jemand erzählt von einer Schulstunde über Tiere",
+        "Jemand erzählt von einem Ausflug in den Zoo",
+        "Jemand erzählt von einem Streit mit der Lehrerin"
+      ],
+      "items": [
+        {
+          "id": "g2u04.li.vote.mc.001",
+          "rev": 1,
+          "difficulty": 1,
+          "format": "multiple-choice",
+          "prompt": {
+            "text": "What does Emma talk about?",
+            "lang": "en",
+            "blanks": 0
+          },
+          "answers": [
+            {
+              "text": "A science lesson at school",
+              "tier": "full"
+            }
+          ],
+          "direction": null,
+          "distractors": [
+            "A day at the zoo with her class",
+            "The pictures on the big screen",
+            "Her friend Tom and the cheetah"
+          ],
+          "pairs": [],
+          "groups": [],
+          "gloss": [],
+          "hintDe": "Worum geht es im GANZEN Text — nicht nur in einem Satz?",
+          "hintEn": null,
+          "explainDe": "Emma sagt gleich am Anfang: „Last Tuesday our class had a science lesson.“",
+          "explainEn": null,
+          "strict": false,
+          "phase": "gist",
+          "cue": {
+            "type": "gist",
+            "quote": "Last Tuesday our class had a science lesson."
+          },
+          "trickDe": "Höre den ersten Satz — er nennt fast immer das Thema.",
+          "distractorMeta": [
+            {
+              "whyDe": "Klingt nach einem ganzen Tag mit Tieren — die Klasse bleibt aber im Klassenzimmer."
+            },
+            {
+              "whyDe": "Die Bilder hörst du — aber sie sind nur ein Teil der Stunde.",
+              "lure": "echo"
+            },
+            {
+              "whyDe": "Tom und der Gepard kommen vor — Tom ist nicht das Thema.",
+              "lure": "echo"
+            }
+          ]
+        },
+        {
+          "id": "g2u04.li.vote.gf.001",
+          "rev": 1,
+          "difficulty": 2,
+          "format": "gap-fill",
+          "prompt": {
+            "text": "___ children voted for the dolphin.",
+            "lang": "en",
+            "blanks": 1
+          },
+          "answers": [
+            {
+              "text": "Nine",
+              "tier": "full"
+            },
+            {
+              "text": "nine",
+              "tier": "full"
+            },
+            {
+              "text": "9",
+              "tier": "full"
+            }
+          ],
+          "direction": null,
+          "distractors": [],
+          "pairs": [],
+          "groups": [],
+          "gloss": [],
+          "hintDe": "Im Text stehen zwei Zahlen für die Abstimmung. Welche gehört zum Delfin?",
+          "hintEn": null,
+          "explainDe": "„Nine children voted for the dolphin.“ — die Sechs gehört zum Geparden.",
+          "explainEn": null,
+          "strict": false,
+          "phase": "detail",
+          "cue": {
+            "type": "number-time",
+            "quote": "Nine children voted for the dolphin."
+          },
+          "trickDe": "Zwei Zahlen bei der Abstimmung — höre, welche zum Delfin gehört."
+        },
+        {
+          "id": "g2u04.li.vote.mc.002",
+          "rev": 1,
+          "difficulty": 2,
+          "format": "multiple-choice",
+          "prompt": {
+            "text": "Why did Clare like the whale?",
+            "lang": "en",
+            "blanks": 0
+          },
+          "answers": [
+            {
+              "text": "Because it is the heaviest.",
+              "tier": "full"
+            }
+          ],
+          "direction": null,
+          "distractors": [
+            "Because it is the longest.",
+            "Because it is very fast.",
+            "Because it is intelligent."
+          ],
+          "pairs": [],
+          "groups": [],
+          "gloss": [],
+          "hintDe": "Achte auf das Wort because — der Grund kommt direkt danach.",
+          "hintEn": null,
+          "explainDe": "„Clare liked the whale, because it is the heaviest.“",
+          "explainEn": null,
+          "strict": false,
+          "phase": "detail",
+          "cue": {
+            "type": "signal-word",
+            "quote": "Clare liked the whale, because it is the heaviest."
+          },
+          "trickDe": "Nach because kommt der Grund — höre genau dorthin.",
+          "distractorMeta": [
+            {
+              "whyDe": "Ein Wal ist auch lang — im Text steht aber nur schwer."
+            },
+            {
+              "whyDe": "Schnell hörst du beim Geparden, nicht beim Wal.",
+              "lure": "echo"
+            },
+            {
+              "whyDe": "Intelligent hörst du bei den Delfinen, nicht beim Wal.",
+              "lure": "echo"
+            }
+          ]
+        },
+        {
+          "id": "g2u04.li.vote.mt.001",
+          "rev": 1,
+          "difficulty": 3,
+          "format": "matching",
+          "prompt": {
+            "text": "Match the child to the picture.",
+            "lang": "en",
+            "blanks": 0
+          },
+          "answers": [],
+          "direction": null,
+          "distractors": [],
+          "pairs": [
+            {
+              "left": "Tom",
+              "right": "the cheetah"
+            },
+            {
+              "left": "Clare",
+              "right": "the whale"
+            },
+            {
+              "left": "Ben",
+              "right": "the bat"
+            },
+            {
+              "left": "Emma",
+              "right": "the dolphin"
+            }
+          ],
+          "groups": [],
+          "gloss": [],
+          "hintDe": "Vier Kinder, vier Tiere. Jedes Kind wird einmal genannt.",
+          "hintEn": null,
+          "explainDe": "Tom: der Gepard. Clare: der Wal. Ben: die kleine Fledermaus. Emma: der Delfin.",
+          "explainEn": null,
+          "strict": false,
+          "phase": "detail",
+          "cue": {
+            "type": "detail-fact",
+            "quote": "Tom liked the cheetah best."
+          },
+          "trickDe": "Merke dir zu jedem Namen sofort sein Tier."
+        },
+        {
+          "id": "g2u04.li.vote.ff.001",
+          "rev": 1,
+          "difficulty": 2,
+          "format": "free-form",
+          "prompt": {
+            "text": "How long is the small bat?",
+            "lang": "en",
+            "blanks": 0
+          },
+          "answers": [
+            {
+              "text": "3 centimetres",
+              "tier": "full"
+            },
+            {
+              "text": "three centimetres",
+              "tier": "full"
+            },
+            {
+              "text": "3 cm",
+              "tier": "full"
+            },
+            {
+              "text": "3",
+              "tier": "full"
+            }
+          ],
+          "direction": null,
+          "distractors": [],
+          "pairs": [],
+          "groups": [],
+          "gloss": [],
+          "hintDe": "Eine Zahl mit einer Maßeinheit — direkt nach dem Wort bat.",
+          "hintEn": null,
+          "explainDe": "„This bat is 3 centimetres long.“ Die 150 gehört zum Wal, nicht zur Fledermaus.",
+          "explainEn": null,
+          "strict": false,
+          "phase": "detail",
+          "cue": {
+            "type": "detail-fact",
+            "quote": "This bat is 3 centimetres long."
+          },
+          "trickDe": "Höre den Satz nach bat — dort steht die Länge."
+        }
+      ]
+    }
+  ]
+}

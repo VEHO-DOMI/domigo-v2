@@ -12,7 +12,19 @@
       "audio": {
         "script": "Hi! I am Leonie. Last Tuesday my class visited the new exhibition at the museum. We were there at nine o'clock. Our teacher, Mrs Smith, had the tickets. The admission fee was three pounds for children. I bought a picture book for five pounds. The rooms were big and the art was very modern. My favourite was a black sculpture of a horse, because it was so big. Then I looked at a chair near the door. There was a brown jacket on the chair. I called my best friend David and asked him about the funny sculpture. David laughed and laughed. It wasn't a sculpture. It was the jacket of the cleaner. I was so embarrassed! We were back at school at two o'clock. I didn't tell my mum about the jacket. It is my secret.",
         "voice": null,
-        "file": "/audio/listening/g2-u02/museum--alice--0cea06e0.mp3"
+        "file": "/audio/listening/g2-u02/museum--amelia--a3017913.mp3",
+        "source": {
+          "provider": "elevenlabs",
+          "modelId": "eleven_multilingual_v2",
+          "voices": [
+            {
+              "role": null,
+              "slug": "amelia",
+              "name": "Amelia — young and enthusiastic",
+              "voiceId": "ZF6FPAbjXT4488VcRRnw"
+            }
+          ]
+        }
       },
       "transcript": "Hi! I am Leonie. Last Tuesday my class visited the new exhibition at the museum. We were there at nine o'clock. Our teacher, Mrs Smith, had the tickets. The admission fee was three pounds for children. I bought a picture book for five pounds. The rooms were big and the art was very modern. My favourite was a black sculpture of a horse, because it was so big. Then I looked at a chair near the door. There was a brown jacket on the chair. I called my best friend David and asked him about the funny sculpture. David laughed and laughed. It wasn't a sculpture. It was the jacket of the cleaner. I was so embarrassed! We were back at school at two o'clock. I didn't tell my mum about the jacket. It is my secret.",
       "predictChips": [
