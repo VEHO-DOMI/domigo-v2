@@ -514,6 +514,57 @@ const FACE_L = 240, FACE_S = 0.10, REF_L = 200, FACE_QUOTA = 0.40, FACE_MIN = 40
  *  diese Leiter erneut — das Werkzeug dafuer ist der Selbsttest weiter unten.)
  */
 const SLATE_L_MAX = 22, MIN_TEXTURE = 1.5, MASS_MAX = 0.01, KEY_MIN = 180;
+
+/** ── R5-T5 · D-695 · DIE MASSENFARBE DER STRICH-OVERLAYS ───────────────────
+ *
+ * ★ WARUM ES DIESE ZWEITE GRENZE GIBT. `MASS_MAX` (1 %) ist fuer VOLLFLAECHIGE
+ *   Koerper-Blaetter geschrieben und dort richtig. Ein STRICH-OVERLAY ist das
+ *   Gegenteil: fast nur Kreide auf Durchsicht, und ein breiter Strich stellt
+ *   naturgemaess viel von einer Farbe. T4 hat gemessen, dass AQ13M die 1 %
+ *   reissst (2,17 % / 2,09 % je Blatt) — und hat KEINEN Freibrief gesetzt,
+ *   weil das Tor `--abnahme-tafel` auf diesem Blattpaar STRUKTURELL nicht
+ *   laeuft: es verlangt die drei Koerper-Blaetter und bricht ohne sie mit
+ *   Exit 2 ab (`RECOLOUR_CELLS`). Ein Tor, das nicht laeuft, meldet nicht
+ *   »rot« — es meldet GAR NICHTS. Das ist die stille-Durchfahrt-Klasse, und
+ *   sie ist teurer als jedes rote Licht.
+ *
+ * ★ DIE EICHUNG, an drei Ecken selbst gemessen (T5, `--overlay-pins` je Zelle):
+ *
+ *      8,72 %   |   13 %   |   20 %
+ *
+ *   • 8,72 % — die schlimmste Zelle des BESTANDS-Overlays, das heute in der
+ *     Welt liegt (batch-aq13m, `tafel_scribble` Zelle 1; die acht Zellen der
+ *     beiden Blaetter messen 0,32 · 0,35 · 0,41 · 1,41 · 1,41 · 1,48 · 7,33 ·
+ *     8,72 %). Die Vorgeneration AQ13L lag bei 0,51–1,66 %.
+ *   • 20 %   — das BETRUGS-FIXTURE des Selbsttests (`mkOverlay`, seit H5):
+ *     jede fuenfte Kreide auf exakt einem RGB-Wert.
+ *   • 13 %   — die Grenze. Geometrisches Mittel der beiden Kanten
+ *     (√(8,72·20) = 13,21), auf 13 gerundet.
+ *
+ * ⚠ UND JETZT DIE EHRLICHE HAELFTE, DIE MAN NICHT WEGLASSEN DARF. Dieses Band
+ *   ist DUENN: 1,49× ueber der ehrlichen Kante, 1,54× unter der kranken. Zum
+ *   Vergleich traegt R218 (Rahmen/Luft) 5,4× und 6,0×. Der Grund ist kein
+ *   Schlamperei-Fehler, sondern eine Eigenschaft der Kennzahl: die
+ *   UR-Generation `batch-aq13` misst **47,89–75,34 %** je Zelle und wurde
+ *   ausdruecklich als ehrliche Kreide erklaert (H6, acht gepinnte Zell-SHAs).
+ *   Damit ueberlappen die Baender — 20 % Betrug liegt UNTER 47 % Ehrlichkeit.
+ *   **Der Anteil der haeufigsten Farbe trennt Farbfeld und Strich-Malerei
+ *   also nicht ueber den ganzen Bereich.** Genau deshalb gab es die acht Pins
+ *   ueberhaupt, und genau deshalb bleibt der Ausnahmeweg der gepinnte
+ *   ZELL-SHA (nie der Name): die Grenze faengt die heutige Schule des
+ *   Zeichnens, und alles darueber ist eine ERKLAERTE Entscheidung, keine
+ *   stille Durchfahrt.
+ *
+ * ★ WAS DIESER MODUS DESHALB TUT — und was nicht: er MISST und urteilt gegen
+ *   diese Grenze. Ueber die KUNST urteilt er nicht; was aus einem roten Licht
+ *   folgt (Pin, Rueckweisung oder eine neue Bestellung), entscheidet die Bahn
+ *   mit dieser Zahl in der Hand. Dasselbe Verhaeltnis wie bei
+ *   `--overlay-passung` (T2), und aus demselben Grund.
+ */
+const OVERLAY_MASSE_MAX = 0.13;
+/** Die zwei Kanten, aus denen die Grenze kommt — sie stehen als ZAHL hier,
+ *  damit der Selbsttest sie anfahren kann und nicht abschreiben muss. */
+const OVERLAY_MASSE_EHRLICH = 0.0872, OVERLAY_MASSE_KRANK = 0.20;
 /** Rauhheit: wie weit ein Pixel von seinen vier Nachbarn abweicht, in Einheiten
  *  der Streuung der Flaeche selbst. Gemessen mit Kontrollen im selben Lauf:
  *  weisses Rauschen 0,889 · glatte Malerei 0,003 · die zwanzig BESTANDS-Tafeln
@@ -1505,6 +1556,58 @@ function overlayPassung(entries) {
   return { lines, fail };
 }
 
+/** ── R5-T5 · D-695 · `overlayMasse` — DIE REGEL, DIE AUF STRICH-OVERLAYS AUCH
+ *  WIRKLICH LAEUFT (Herleitung an `OVERLAY_MASSE_MAX`).
+ *
+ *  Gemessen wird je ZELLE, nicht je Blatt, und das ist Absicht: der Importeur
+ *  schneidet Zellen, und eine Zelle ist die Einheit, die in die Welt geht. Je
+ *  Blatt gerechnet verschwindet eine schlimme Zelle im Mittel der guten — genau
+ *  so las AQ13Ms 8,72-%-Zelle als 2,17 % (T4s Kopfzeile).
+ *
+ *  Der Ausnahmeweg ist derselbe wie bei Regel 5: ein Pin auf die BYTES der
+ *  Zelle (`OVERLAY_MASSE_FREI`), nie auf den Namen — ein neues, falsches Blatt
+ *  gleichen Namens ginge sonst stillschweigend durch.
+ */
+function overlayMasse(entries, pins = OVERLAY_MASSE_FREI) {
+  const lines = [], fail = [];
+  for (const e of entries) {
+    const { name, png } = e;
+    const cw = e.cw ?? 512, ch = e.ch ?? 512;
+    const cols = e.cols ?? Math.round(png.width / cw);
+    const rows = e.rows ?? Math.max(1, Math.round(png.height / ch));
+    lines.push(`${name}  ${png.width}×${png.height} → ${cols}×${rows} Zellen à ${cw}×${ch}`);
+    for (let i = 0; i < cols * rows; i++) {
+      const r0 = Math.floor(i / cols), c0 = i % cols;
+      if ((c0 + 1) * cw > png.width || (r0 + 1) * ch > png.height) continue;
+      const sha = cellHash(png, c0 * cw, r0 * ch, cw, ch);
+      const grund = pins.get(sha);
+      const tally = new Map();
+      let painted = 0;
+      for (let y = r0 * ch; y < (r0 + 1) * ch; y++) for (let x = c0 * cw; x < (c0 + 1) * cw; x++) {
+        if (!onAt(png, x, y)) continue;
+        const idx = (y * png.width + x) * 4;
+        const k = (png.data[idx] << 16) | (png.data[idx + 1] << 8) | png.data[idx + 2];
+        tally.set(k, (tally.get(k) ?? 0) + 1);
+        painted++;
+      }
+      let topK = 0, topN = 0;
+      for (const [k, n] of tally) if (n > topN) { topN = n; topK = k; }
+      const share = painted === 0 ? 0 : topN / painted;
+      const rgb = `(${topK >> 16},${(topK >> 8) & 255},${topK & 255})`;
+      lines.push(`  Zelle ${i}: ${String(painted).padStart(7)} px gemalt · haeufigster RGB ${rgb.padEnd(16)}`
+        + `${(share * 100).toFixed(2).padStart(6)} % · Grenze ${(OVERLAY_MASSE_MAX * 100).toFixed(0)} %`
+        + (grund === undefined ? "" : ` · GEPINNT (${grund})`));
+      if (share > OVERLAY_MASSE_MAX && grund === undefined) {
+        fail.push(`${name} Zelle ${i}: ein einzelner RGB-Wert ${rgb} stellt ${(share * 100).toFixed(2)} % der `
+          + `gemalten Pixel dieser Zelle (Grenze ${(OVERLAY_MASSE_MAX * 100).toFixed(0)} %, geeicht an `
+          + `${(OVERLAY_MASSE_EHRLICH * 100).toFixed(2)} % ehrlich | ${(OVERLAY_MASSE_KRANK * 100).toFixed(0)} % krank). `
+          + `Zell-SHA ${sha}`);
+      }
+    }
+  }
+  return { lines, fail };
+}
+
 /** ── DER SELBSTTEST ─────────────────────────────────────────────────────────
  *  Jeder Fall ist ein PAAR: richtig und PLAUSIBEL-FALSCH, die sich in genau
  *  einer Eigenschaft unterscheiden und einem oberflaechlichen Blick gleich
@@ -1795,6 +1898,77 @@ function selftest() {
       [{ name: "overlay", png: ovFast, names: null, cols: 1, cw: W, ch: H }], bestandOf,
       new Map([[ovSha, "Selbsttest-Pin auf das unveraenderte Original"]]),
     ));
+
+  // ── Fall 5d² · R5-T5 · D-695 · DIE OVERLAY-MASSENFARBE HAT JETZT EIN TOR ──
+  //
+  // Die Grenze `OVERLAY_MASSE_MAX` (13 %) ist eine EICHUNG, und eine Eichung
+  // ohne beidseitige Attrappen ist eine Behauptung (D-693: wer eine Grenze
+  // bewegt oder einfuehrt, bewegt ihre Attrappen im SELBEN Commit — T4 hat
+  // genau daran fast eine stille Blindstelle gebaut). Also faehrt der
+  // Selbsttest das Band von BEIDEN Seiten an, mit den Zahlen der Herleitung:
+  //
+  //      8,72 %  (ehrliche Kante: schlimmste Zelle des Bestands)   gruen
+  //     12,90 %  (knapp drunter)                                   gruen
+  //     13,10 %  (knapp drueber)                                   ROT
+  //     20,00 %  (kranke Kante: das Betrugs-Fixture)               ROT
+  //     20,00 %  + Pin auf IHRE Bytes                              gruen
+  //
+  /** Eine Overlay-Zelle mit EXAKT dem verlangten Massenfarb-Anteil. Der Rest
+   *  der Kreide bekommt viele verschiedene Werte, damit keine zweite Farbe die
+   *  Massenfarbe ueberholt — sonst misst der Fall etwas anderes als er sagt. */
+  const mkMasse = (anteil) => {
+    const treffer = [];
+    for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) if ((x + y * 3) % 5 === 0) treffer.push([x, y]);
+    const wieviele = Math.round(treffer.length * anteil);
+    const masse = new Set(treffer.slice(0, wieviele).map(([x, y]) => `${x},${y}`));
+    let n = 0;
+    return mkPng(W, H, (x, y) => {
+      if ((x + y * 3) % 5 !== 0) return [255, 0, 255];          // Durchsicht: es ist ein Overlay
+      if (masse.has(`${x},${y}`)) return [235, 235, 235];       // die eine Massenfarbe
+      const v = 180 + (n++ % 40);                                // …und viele verschiedene Werte
+      return [v, v - (x % 7), v - (y % 5)];
+    });
+  };
+  const runMasse = (png, pins = new Map()) => overlayMasse(
+    [{ name: "overlay", png, cols: 1, rows: 1, cw: W, ch: H }], pins,
+  );
+  /** ★ VAKUITAET: die Attrappe muss den Anteil, den sie behauptet, wirklich
+   *  tragen — sonst prueft das Paar nichts (dieselbe Klasse wie T4s sechster
+   *  Fall). Gemessen wird mit demselben Lineal, das auch das Tor benutzt. */
+  const anteilVon = (png) => {
+    const { lines } = runMasse(png);
+    const m = /(\d+\.\d+) % · Grenze/.exec(lines.join("\n"));
+    return m === null ? NaN : Number(m[1]) / 100;
+  };
+  add("Overlay-Masse: die Attrappen tragen ihre Zahlen wirklich (Vakuitaet)", null,
+    () => {
+      const schlecht = [];
+      for (const soll of [OVERLAY_MASSE_EHRLICH, 0.129, 0.131, OVERLAY_MASSE_KRANK]) {
+        const ist = anteilVon(mkMasse(soll));
+        if (!(Math.abs(ist - soll) < 0.005)) schlecht.push(`Attrappe ${(soll * 100).toFixed(2)} % misst ${(ist * 100).toFixed(2)} %`);
+      }
+      // Dieser Fall ist ABSICHTLICH rot, wenn eine Attrappe ihre Zahl verfehlt.
+      return { lines: [], fail: schlecht };
+    });
+  add("Overlay-Masse: 8,72 % — die schlimmste Zelle des Bestands bleibt gruen", null,
+    () => runMasse(mkMasse(OVERLAY_MASSE_EHRLICH)));
+  add("Overlay-Masse: 12,90 % — knapp unter der Grenze, gruen", null,
+    () => runMasse(mkMasse(0.129)));
+  add("Overlay-Masse: 13,10 % — knapp DRUEBER, rot", "ein einzelner RGB-Wert",
+    () => runMasse(mkMasse(0.131)));
+  add("Overlay-Masse: 20 % — die kranke Kante, rot", "ein einzelner RGB-Wert",
+    () => runMasse(mkMasse(OVERLAY_MASSE_KRANK)));
+  {
+    const krank = mkMasse(OVERLAY_MASSE_KRANK);
+    const sha = cellHash(krank, 0, 0, W, H);
+    add("Overlay-Masse: dieselben 20 %, aber die Zelle ist mit IHREN Bytes gepinnt", null,
+      () => runMasse(krank, new Map([[sha, "Selbsttest-Pin"]])));
+    const fast = mkMasse(OVERLAY_MASSE_KRANK);
+    fast.data[0] = fast.data[0] === 0 ? 1 : fast.data[0] - 1;   // ein Kanal, ein Punkt
+    add("Overlay-Masse · TAMPER: EIN geaenderter Bildpunkt, Pin auf den SHA des Originals",
+      "ein einzelner RGB-Wert",
+      () => runMasse(fast, new Map([[sha, "Selbsttest-Pin auf das unveraenderte Original"]])));
+  }
 
   // ── Fall 5e · DIE PASSUNG (R5 · T2) ───────────────────────────────────────
   //
@@ -2271,6 +2445,46 @@ if (process.argv.includes("--overlay-passung")) {
     process.exit(1);
   }
   console.log("--overlay-passung: OK — jede Zelle sitzt in ihrem Fenster.");
+  process.exit(0);
+}
+
+/* ── `--overlay-masse` (R5 · T5 · D-695) ─────────────────────────────────────
+ *
+ * Das Tor, das auf Strich-Overlays bisher STRUKTURELL nicht lief. Es nimmt ein
+ * Lieferverzeichnis, sucht darin die Overlay-Blaetter nach ihrem Namen (genau
+ * wie `--overlay-passung`) und misst je ZELLE die Massenfarbe.
+ *
+ * Exit 0 = jede Zelle unter der Grenze (oder mit ihren Bytes gepinnt).
+ * Exit 1 = mindestens eine darueber. Exit 2 = nichts zu messen.
+ */
+if (process.argv.includes("--overlay-masse")) {
+  const dir = process.argv[process.argv.indexOf("--overlay-masse") + 1];
+  if (!dir) { console.error("usage: node docs/art/import-batch-aq13.mjs --overlay-masse <batch-verzeichnis>"); process.exit(2); }
+  const entries = [];
+  for (const sheet of SHEETS) {
+    const f = path.join(dir, path.basename(sheet.file));
+    if (!fs.existsSync(f)) continue;
+    entries.push({ name: path.basename(sheet.file), png: read(f), cols: sheet.cols, rows: sheet.rows });
+  }
+  if (entries.length === 0) { console.error(`keine Overlay-Blaetter in ${dir}`); process.exit(2); }
+  console.log(`\nOverlay-Massenfarbe · ${path.basename(dir)}  (je Zelle gemessen, Grenze `
+    + `${(OVERLAY_MASSE_MAX * 100).toFixed(0)} % — geeicht ${(OVERLAY_MASSE_EHRLICH * 100).toFixed(2)} % ehrlich `
+    + `| ${(OVERLAY_MASSE_MAX * 100).toFixed(0)} % | ${(OVERLAY_MASSE_KRANK * 100).toFixed(0)} % krank)`);
+  const { lines, fail } = overlayMasse(entries);
+  for (const l of lines) console.log(l);
+  console.log("");
+  if (fail.length > 0) {
+    for (const f of fail) console.error(`✗ ${f}`);
+    console.error(`\n--overlay-masse: ${fail.length} Zelle(n) ueber der Grenze.`);
+    console.error("Der Modus urteilt NICHT ueber die Kunst — er misst die Massenfarbe. Was daraus folgt");
+    console.error("(ein gepinnter Zell-SHA in OVERLAY_MASSE_FREI, eine Rueckweisung oder eine neue");
+    console.error("Bestellung), entscheidet die Bahn mit dieser Zahl. ⚠ Und sie entscheidet es im Wissen,");
+    console.error("dass der Anteil der haeufigsten Farbe Farbfeld und Strich-Malerei NICHT ueber den ganzen");
+    console.error("Bereich trennt: die Ur-Generation batch-aq13 misst 47,89–75,34 % und ist erklaerte,");
+    console.error("ehrliche Kreide (H6). Siehe die Herleitung an OVERLAY_MASSE_MAX.");
+    process.exit(1);
+  }
+  console.log("--overlay-masse: OK — keine Zelle stellt zu viel von einer Farbe.");
   process.exit(0);
 }
 
