@@ -75,7 +75,13 @@ export async function DELETE(req: Request, { params }: { params: Promise<{ id: s
 
   const { id } = await params;
   try {
-    await archiveClass(getDb(), id, teacher.userId);
+    const archived = await archiveClass(getDb(), id, teacher.userId);
+    // K9b review · the same shape as the un-archive branch above. archiveClass
+    // returns false for exactly one situation — the class is not this teacher's, is
+    // gone, or is already archived — and answering {ok:true} there would report a
+    // retirement that never happened. A boolean nobody reads is a boolean nobody
+    // can trust; the two directions now answer alike.
+    if (!archived) return NextResponse.json({ ok: false, error: "not_active" }, { status: 404 });
     return NextResponse.json({ ok: true });
   } catch {
     return NextResponse.json({ ok: false, error: "persist_failed" }, { status: 500 });

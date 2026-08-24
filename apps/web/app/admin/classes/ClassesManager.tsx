@@ -95,7 +95,7 @@ export default function ClassesManager({
       const res = await fetch(`/api/admin/classes/${c.id}`, { method: "DELETE" });
       const d = await res.json().catch(() => ({}));
       if (res.ok && d.ok) { router.refresh(); return; }
-      setRowError("Could not archive the class — try again.");
+      setRowError(d.error === "not_active" ? "Diese Klasse ist bereits archiviert (oder nicht mehr da) — lade die Seite neu." : "Could not archive the class — try again.");
     } catch {
       setRowError("Network error — try again.");
     } finally {

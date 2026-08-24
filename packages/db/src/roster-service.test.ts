@@ -2,7 +2,10 @@ import { describe, expect, it } from "vitest";
 import {
   claimLabel,
   claimStudent,
+  MAX_ROSTER_NAMES,
+  MAX_STUDENT_NAME_LENGTH,
   importRoster,
+  isImportableName,
   isUniqueViolation,
   parseRoster,
   removeStudent,
@@ -126,6 +129,11 @@ const TWIN_FIXTURES: { label: string; input: string; expect: string[] }[] = [
   { label: "DECLARED BOUNDARY: an UNQUOTED comma keeps the whole line (surname-first is one name)", input: "Mueller, Anna\nOstrowski, Ben", expect: ["Mueller, Anna", "Ostrowski, Ben"] },
   { label: "a header row is just another name — the teacher removes it in the review list", input: "Name;Klasse\nAnna Mueller;5B", expect: ["Name", "Anna Mueller"] },
   { label: "everything at once, the way a real export arrives", input: "\"Mueller, Anna\";5B\nBen Ostrowski\t5B\n\n  Clara Nowak  ,\nben ostrowski\t5B\n", expect: ["Mueller, Anna", "Ben Ostrowski", "Clara Nowak"] },
+  { label: "K9b-BLOCKER: a SPACE before the separator is not part of the name", input: "Anna Muster ;5B\nBen Beispiel \t5B", expect: ["Anna Muster", "Ben Beispiel"] },
+  { label: "K9b-BLOCKER: the padded line collapses into its twin instead of becoming a second student", input: "Anna Muster;5B\nAnna Muster ;5C", expect: ["Anna Muster"] },
+  { label: "K9b-BLOCKER: a comma cell padded with spaces normalizes the SAME on both halves", input: "Anna Muster\nAnna Muster , ;5B", expect: ["Anna Muster"] },
+  { label: "a CARRIAGE RETURN alone ends a line (old-Mac exports) — not one giant name", input: "Anna Muster\rBen Beispiel\rClara Probe", expect: ["Anna Muster", "Ben Beispiel", "Clara Probe"] },
+  { label: "all three line endings mixed in one paste", input: "Anna Muster\r\nBen Beispiel\nClara Probe\rDoro Tal", expect: ["Anna Muster", "Ben Beispiel", "Clara Probe", "Doro Tal"] },
 ];
 
 describe("parseRoster — the shared twin fixtures (server half)", () => {
@@ -156,6 +164,24 @@ describe("parseRoster — first cell wins, but never at a name's expense", () =>
 
   it("dedupes AFTER the columns are cut, so two rows of the same child collapse", () => {
     expect(parseRoster("Anna;5B\nanna;5C")).toEqual(["Anna"]);
+  });
+
+  it("K9b-BLOCKER · never returns a name carrying outer whitespace — the INVARIANT, over every fixture", () => {
+    // This is the class, not the instance. The reported defect was one branch
+    // (`slice(0, sep)`) letting a trailing space through; downstream the two halves
+    // then normalized DIFFERENTLY — the client trims before sending, the server runs
+    // cleanCell over it as well — so the review list promised one number and the
+    // database got another, with no duplicate badge to warn anyone. Measured before
+    // the fix on "Anna Muster\nAnna Muster , ;5B": review said 2, one row was created.
+    // Asserting the invariant over EVERY fixture closes every future branch too.
+    for (const f of TWIN_FIXTURES) {
+      for (const name of parseRoster(f.input)) {
+        expect(name).toBe(name.trim());
+      }
+    }
+    // and directly at the branch that leaked
+    expect(parseRoster("Anna Muster ;5B")).toEqual(["Anna Muster"]);
+    expect(parseRoster("Anna Muster\t;5B")).toEqual(["Anna Muster"]);
   });
 });
 
@@ -335,5 +361,57 @@ describe("actorId — the journal names the actor, the WHERE clause keeps the ow
     const { db, written } = journalDb([[]]);
     await renameStudentGiven(db, "s1", "some-other-teacher", "Piet Wacholder", GRANDMASTER);
     expect(written).toHaveLength(0);
+  });
+});
+
+
+// ─────────────────────────────────────────────────────────────────────────────
+// K9b review · THE CEILINGS. The route validates and answers 400; these assert the
+// service's own floor, because a filter that only exists in one caller is not a
+// rule. Both would otherwise fail silently in the worst possible place: an
+// over-long name lands in a child's row, and an unbounded list turns one paste
+// into an unbounded write.
+// ─────────────────────────────────────────────────────────────────────────────
+describe("importRoster — the ceilings hold even when a caller skips validation", () => {
+  it("drops a name longer than the cap and keeps the rest", async () => {
+    const { db, written } = journalDb([[{ id: "c1" }], []]);
+    const zuLang = "x".repeat(MAX_STUDENT_NAME_LENGTH + 1);
+    const n = await importRoster(db, { classId: "c1", teacherId: OWNER, names: [zuLang, "Piet Wacholder"] });
+    expect(n).toBe(1);
+    const rows = written[1] as { givenName: string }[];
+    expect(rows.map((r) => r.givenName)).toEqual(["Piet Wacholder"]);
+  });
+
+  it("accepts a name EXACTLY at the cap — the boundary is inclusive", async () => {
+    const { db } = journalDb([[{ id: "c1" }], []]);
+    const genau = "x".repeat(MAX_STUDENT_NAME_LENGTH);
+    expect(await importRoster(db, { classId: "c1", teacherId: OWNER, names: [genau] })).toBe(1);
+  });
+
+  it("never inserts more than MAX_ROSTER_NAMES in one call", async () => {
+    const { db, written } = journalDb([[{ id: "c1" }], []]);
+    const viele = Array.from({ length: MAX_ROSTER_NAMES + 25 }, (_, i) => `Kind ${i}`);
+    expect(await importRoster(db, { classId: "c1", teacherId: OWNER, names: viele })).toBe(MAX_ROSTER_NAMES);
+    expect((written[1] as unknown[]).length).toBe(MAX_ROSTER_NAMES);
+  });
+
+  it("journals only what it actually writes — the record must not overstate the act", async () => {
+    const { db, written } = journalDb([[{ id: "c1" }], []]);
+    const zuLang = "x".repeat(MAX_STUDENT_NAME_LENGTH + 1);
+    await importRoster(db, { classId: "c1", teacherId: OWNER, names: [zuLang, "Piet Wacholder"] });
+    expect((written[0] as { payload: { names: string[] } }).payload.names).toEqual(["Piet Wacholder"]);
+  });
+});
+
+describe("isImportableName — the one rule both halves and the route agree on", () => {
+  it("accepts a normal name and rejects blank or over-long ones", () => {
+    expect(isImportableName("Piet Wacholder")).toBe(true);
+    expect(isImportableName("   ")).toBe(false);
+    expect(isImportableName("x".repeat(MAX_STUDENT_NAME_LENGTH))).toBe(true);
+    expect(isImportableName("x".repeat(MAX_STUDENT_NAME_LENGTH + 1))).toBe(false);
+  });
+
+  it("measures AFTER trimming, so padding never pushes a valid name over", () => {
+    expect(isImportableName(`  ${"x".repeat(MAX_STUDENT_NAME_LENGTH)}  `)).toBe(true);
   });
 });
