@@ -147,9 +147,18 @@ export const studyPathProgress = v2.table(
 );
 
 /**
- * B2 Mock-test writing submissions (teacher-graded). Append-only capture now; the
- * teacher review + rubric scoring (gradedAt/score/feedback/gradedBy) is a deferred
- * follow-up (B2b) — additive columns then. domigo_v2 only; no FK to public.
+ * B2 Mock-test writing submissions (teacher-graded). domigo_v2 only; no FK to public.
+ *
+ * K6a (migration 0018) is the "additive columns then" this comment promised in July:
+ * the four grading columns below. Capture stays append-only — grading is an UPDATE on
+ * the captured row, never a second row, because a submission has exactly one current
+ * mark and its history belongs in `roster_events` (kind `writing_graded`), which is
+ * where every other hand-made change in v2 already lives.
+ *
+ * ALL FOUR ARE NULLABLE, AND THAT IS THE DESIGN. An ungraded submission is the normal,
+ * majority state — not a defect and not a zero. `score IS NULL` means "nobody has
+ * looked at this yet"; `score = 0` would mean "a teacher read it and awarded nothing",
+ * and a schema that cannot tell those apart forces every reader to guess.
  */
 export const writingSubmissions = v2.table(
   "writing_submissions",
@@ -168,6 +177,17 @@ export const writingSubmissions = v2.table(
     // legacy auto-assembled /tests writing path leaves them null). Additive.
     assignmentId: uuid("assignment_id"),
     sessionId: uuid("session_id"),
+    // K6a (migration 0018) · the teacher's mark. `gradedBy` is WHOSE HAND set it —
+    // the same two-ids doctrine the teacher journal spells out (teacher-events.ts):
+    // a mark without a hand is a number, not a record. `score` is 0-100 and is
+    // validated in the app (a CHECK constraint would need a migration to change its
+    // mind; Koki's scale question is still open, so the range lives where it is cheap
+    // to move). `feedback` is the teacher's words to herself and to a colleague — it
+    // is NOT shown to the child anywhere (the D-6 boundary, declared in writing-review.ts).
+    gradedAt: timestamp("graded_at", { withTimezone: true }),
+    gradedBy: uuid("graded_by"), // plain uuid, NO cross-schema FK (house rule)
+    score: integer("score"),
+    feedback: text("feedback"),
   },
   (t) => ({
     byUser: index("writing_submissions_user_idx").on(t.userId),
@@ -412,7 +432,7 @@ export const v2RosterEvents = v2.table(
   {
     id: uuid("id").primaryKey().defaultRandom(),
     classId: uuid("class_id").notNull(),
-    kind: text("kind").notNull(), // 'import'|'claim'|'rename'|'remove'|'reset_pin'|'teacher_claim'|'progress_adjust' (app-validated)
+    kind: text("kind").notNull(), // 'import'|'claim'|'rename'|'remove'|'reset_pin'|'teacher_claim'|'progress_adjust'|'writing_graded' (app-validated)
     payload: jsonb("payload").notNull(),
     actorId: uuid("actor_id"), // teacher/actor uuid — nullable, NO cross-schema FK
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
