@@ -157,11 +157,22 @@ describe("claimClassAsTeacher — the handover", () => {
       classId: CLS,
       kind: "teacher_claim",
       actorId: NEU, // the new teacher, not the operator whose stock it was
-      payload: { classId: CLS, fromTeacherId: GM, toTeacherId: NEU, displayName: "TEST-Direktorin" },
+      payload: { classId: CLS, fromTeacherId: GM, toTeacherId: NEU },
     });
     // The journal must be written BEFORE the class flips (journal-then-flip).
     expect(rec.writes.map((w) => w.table)).toEqual([v2IdentityUsers, v2RosterEvents]);
     expect(rec.updates).toEqual([{ table: v2Classes, values: { teacherId: NEU } }]);
+  });
+
+  it("P-R8 · never lets HER NAME reach the journal — the id points at the row that holds it", async () => {
+    const rec: Rec = { writes: [], updates: [] };
+    await claimClassAsTeacher(mockDb(happyOps(), rec), claimInput);
+    const journal = rec.writes.find((w) => w.table === v2RosterEvents);
+    // Die Nutzlast wird als GANZES geprueft, nicht Feld fuer Feld: eine
+    // Feld-fuer-Feld-Pruefung uebersieht genau das Feld, das jemand spaeter ergaenzt.
+    const nutzlast = (journal?.values as { payload: Record<string, unknown> }).payload;
+    expect(JSON.stringify(nutzlast)).not.toContain("TEST-Direktorin");
+    expect(Object.keys(nutzlast).sort()).toEqual(["classId", "fromTeacherId", "toTeacherId"]);
   });
 
   it("never lets the PIN hash reach the journal", async () => {

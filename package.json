@@ -22,6 +22,8 @@
     "check:level-design": "node scripts/check-level-design.mjs",
     "check:roster-twins": "node scripts/check-roster-twins.mjs",
     "check:roster-twins:selftest": "node scripts/check-roster-twins.mjs --selftest",
+    "check:journal-door": "node scripts/check-journal-door.mjs",
+    "check:journal-door:selftest": "node scripts/check-journal-door.mjs --selftest",
     "check:level-design:selftest": "node scripts/check-level-design.mjs --selftest"
   },
   "devDependencies": {

@@ -399,7 +399,43 @@ describe("importRoster — the ceilings hold even when a caller skips validation
     const { db, written } = journalDb([[{ id: "c1" }], []]);
     const zuLang = "x".repeat(MAX_STUDENT_NAME_LENGTH + 1);
     await importRoster(db, { classId: "c1", teacherId: OWNER, names: [zuLang, "Piet Wacholder"] });
-    expect((written[0] as { payload: { names: string[] } }).payload.names).toEqual(["Piet Wacholder"]);
+    // Der Zaehler zaehlt die ANGELEGTEN Zeilen, nicht die eingereichten Namen:
+    // zwei kamen an, einer war zu lang, EINE Zeile entstand.
+    expect((written[0] as { payload: { count: number } }).payload.count).toBe(1);
+    expect((written[1] as unknown[]).length).toBe(1);
+  });
+
+  // ── P-R8 · Klarnamen raus aus dem Journal ────────────────────────────────
+  // Die drei Nutzlasten, die bis zu dieser Bahn Namen echter Kinder trugen. Jede
+  // wird als GANZES gegen den Namen geprueft (JSON.stringify), nicht Feld fuer
+  // Feld: eine Feld-fuer-Feld-Pruefung uebersieht genau das Feld, das jemand
+  // spaeter ergaenzt — die Lehre aus writing-review.test.ts.
+  it("P-R8 · import journals the COUNT and never a single name", async () => {
+    const { db, written } = journalDb([[{ id: "c1" }], []]);
+    await importRoster(db, { classId: "c1", teacherId: OWNER, names: ["Piet Wacholder", "Marisa Dohlenfeld"] });
+    const nutzlast = JSON.stringify((written[0] as { payload: unknown }).payload);
+    expect(nutzlast).not.toContain("Piet");
+    expect(nutzlast).not.toContain("Wacholder");
+    expect(nutzlast).not.toContain("Marisa");
+    expect(JSON.parse(nutzlast)).toEqual({ count: 2 });
+  });
+
+  it("P-R8 · claim journals the nickname's LENGTH, never the nickname", async () => {
+    const { db, written } = journalDb([[{ classId: "c1", claimedAt: null }], []]);
+    await claimStudent(db, { studentId: "s1", displayName: "Wackerstein", pinHash: "h" });
+    const nutzlast = JSON.stringify((written[0] as { payload: unknown }).payload);
+    expect(nutzlast).not.toContain("Wackerstein");
+    expect(JSON.parse(nutzlast)).toEqual({ studentId: "s1", displayNameLength: 11 });
+  });
+
+  it("P-R8 · rename journals the new name's LENGTH, never the new name", async () => {
+    const { db, written } = journalDb();
+    await renameStudentGiven(db, "s1", OWNER, "  Piet Wacholder  ");
+    const nutzlast = JSON.stringify((written[0] as { payload: unknown }).payload);
+    expect(nutzlast).not.toContain("Piet");
+    expect(nutzlast).not.toContain("Wacholder");
+    // Gemessen wird der GETRIMMTE Name — genau der, der in die Zeile geschrieben wird.
+    expect(JSON.parse(nutzlast)).toEqual({ studentId: "s1", givenNameLength: 14 });
   });
 });
 
