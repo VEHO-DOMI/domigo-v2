@@ -56,6 +56,28 @@ export const defaultsFor = (_env: string | undefined): AudioSettings =>
   ({ muted: true, music: true, sfx: true });
 export const AUDIO_DEFAULTS: AudioSettings = defaultsFor(process.env.NODE_ENV);
 
+/**
+ * R5 · T8 · DIE EINMALIGE NORMALISIERUNG AUF R221.
+ *
+ * R221 sagt: »Ton-Default ÜBERALL stumm, bis die Schüler kommen.« Ein Gerät,
+ * das VOR R221 einmal auf »Ton an« getippt hat, trug diese Wahl weiter — der
+ * Default greift ja nur, wo nichts gespeichert ist. Für ein Klassenzimmer ist
+ * das richtig; für die Arbeits-Rechner, auf denen jede Sitzung Seiten öffnet,
+ * war es genau das, was R221 abschaffen wollte.
+ *
+ * Deshalb trägt ein geschriebener Wert ab jetzt eine MARKE. Fehlt sie, stammt
+ * er aus der Zeit vor R221 und wird EINMAL auf den Default gezogen; danach
+ * gewinnt die gespeicherte Gerätewahl wieder über jeden Default, genau wie
+ * vorher. Kein neuer Entscheid — R221 wörtlich, nur eben auch für die Geräte,
+ * die schon eine Meinung hatten.
+ *
+ * Die Marke steht IM selben Schlüssel und NICHT im Typ: `AudioSettings` bleibt
+ * die drei Wahrheiten, die das Spiel liest. Ein zweiter Speicher-Schlüssel
+ * wäre eine zweite Abschrift, die auseinanderlaufen kann (siehe den
+ * game-feel-Schlüssel unten, der genau dafür einen Test hat).
+ */
+const R221_MARKE = "r221";
+
 const isSettings = (v: unknown): v is AudioSettings =>
   typeof v === "object" && v !== null
   && typeof (v as AudioSettings).muted === "boolean"
@@ -73,7 +95,24 @@ export const readAudioSettings = (): AudioSettings => {
     const raw = globalThis.localStorage?.getItem(AUDIO_SETTINGS_KEY);
     if (raw === null || raw === undefined) return AUDIO_DEFAULTS;
     const parsed: unknown = JSON.parse(raw);
-    return isSettings(parsed) ? parsed : AUDIO_DEFAULTS;
+    // Die Marke wird am ROHEN Wert gelesen, bevor der Typ-Wächter ihn auf die
+    // drei Wahrheiten verengt — danach weiss der Übersetzer nichts mehr von
+    // einem Zusatzfeld, und ein Cast zurück wäre eine Behauptung.
+    const markiert = typeof parsed === "object" && parsed !== null
+      && (parsed as Record<string, unknown>)[R221_MARKE] === true;
+    if (!isSettings(parsed)) return AUDIO_DEFAULTS;
+    // R5 · T8: der Wert aus der Zeit vor R221 wird einmal — und nur einmal —
+    // auf den Default gezogen. Das Zurückschreiben passiert HIER, im Lesen:
+    // sonst käme die Normalisierung erst beim nächsten Tippen, also nie.
+    if (!markiert) {
+      writeAudioSettings(AUDIO_DEFAULTS);
+      return AUDIO_DEFAULTS;
+    }
+    // Die Marke ist eine Sache des SPEICHERS, nicht des Werts: was das Spiel
+    // bekommt, sind genau die drei Wahrheiten von `AudioSettings`. Ein
+    // durchgereichtes Zusatzfeld wäre sonst über `{ ...settings, muted }` durch
+    // den ganzen Direktor gewandert.
+    return { muted: parsed.muted, music: parsed.music, sfx: parsed.sfx };
   } catch {
     return AUDIO_DEFAULTS;
   }
@@ -82,7 +121,9 @@ export const readAudioSettings = (): AudioSettings => {
 /** Schreiben. Stillschweigend wirkungslos, wo es kein `localStorage` gibt. */
 export const writeAudioSettings = (next: AudioSettings): void => {
   try {
-    globalThis.localStorage?.setItem(AUDIO_SETTINGS_KEY, JSON.stringify(next));
+    // Die Marke reitet auf JEDEM Schreiben mit — ein Wert ohne sie ist per
+    // Bauart ein Wert von vor R221.
+    globalThis.localStorage?.setItem(AUDIO_SETTINGS_KEY, JSON.stringify({ ...next, [R221_MARKE]: true }));
   } catch {
     /* privater Modus, volle Quote — der Ton bleibt für diese Sitzung richtig */
   }

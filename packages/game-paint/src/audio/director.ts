@@ -44,7 +44,13 @@ import { AUDIO_DEFAULTS, readAudioSettings, writeAudioSettings, type AudioSettin
 // ── Die Schnittstelle zur Tonmaschine ────────────────────────────────────────
 
 export interface HostSound {
-  addMarker(marker: { name: string; start: number; duration: number; config?: { loop?: boolean } }): boolean;
+  addMarker(marker: {
+    name: string; start: number; duration: number;
+    /** ⚠ `volume` ist PFLICHT, sobald über einen Marker gespielt wird — siehe
+     *  `music()`: Phasers `play(marker)` ERSETZT die Klang-Konfiguration durch
+     *  die des Markers, und deren Vorgabe ist `volume: 1`. */
+    config?: { loop?: boolean; volume?: number };
+  }): boolean;
   play(marker?: string, config?: { volume?: number; detune?: number }): boolean;
   stop(): boolean;
   destroy(): void;
@@ -308,6 +314,45 @@ export const createAudioDirector = (deps: DirectorDeps = {}): AudioDirector => {
 
   let settings: AudioSettings = deps.settings ?? readAudioSettings() ?? AUDIO_DEFAULTS;
 
+  /**
+   * R5 · T8 · DIE HAUPT-STUMMSCHALTUNG WIRD BEIM BAU GESETZT, NICHT ERST BEIM
+   * ERSTEN TIPP.
+   *
+   * Bis heute schrieb NUR `setMuted()` in `host.mute`. Ein Direktor, der stumm
+   * startet (R221: überall), ließ Phasers Haupt-Schalter also offen — und damit
+   * hing die ganze Stille an EINEM Mechanismus: der Lautstärke-Zahl in der
+   * Klang-Konfiguration. Genau die hat der Marker verworfen (siehe `music()`).
+   * Zwei unabhängige Riegel für dieselbe Zusage sind der Punkt: der eine hier
+   * ist der, den kein späterer Abspielweg umgehen kann, weil er über dem
+   * ganzen Bus sitzt.
+   */
+  if (host !== null) host.mute = settings.muted;
+
+  /**
+   * R5 · T8 · WER ABGEBAUT IST, SPIELT NICHT MEHR.
+   *
+   * `dispose()` hielt bisher nur an, was in `currentMusic` STAND. Ein
+   * `music()`, das beim Abbau noch am Decodieren hing, spielte danach los —
+   * auf einem Spiel, das gerade stirbt, und für niemanden mehr erreichbar:
+   * `setMuted` und `dispose` fassen ausschliesslich `currentMusic` an.
+   * Gemessen in T8 (`__t8_messung`, H4b): ein Stück, das keinem Direktor mehr
+   * gehört und das kein Knopf der Welt wieder ausmacht.
+   */
+  let disposed = false;
+
+  /**
+   * R5 · T8 · WELCHER MUSIK-AUFRUF IST DER JÜNGSTE?
+   *
+   * `music()` gibt das laufende Stück frei und wartet DANN auf das Decodieren.
+   * Zwei Aufrufe in diesem Fenster (Entsperren + Phasenwechsel, oder zwei
+   * schnelle Unter-Level) sahen beide `currentMusic === null` und spielten
+   * beide — gehalten wurde nur das zweite. Das erste war ab dann ein
+   * Geisterstück (T8-Messung H4a/H4c: nach `setMuted(true)` stand es weiter
+   * auf voller Musik-Lautstärke). Der Zähler entscheidet: wer überholt wurde,
+   * spielt nicht mehr.
+   */
+  let musicRun = 0;
+
   const playable = STEMS.filter((s) => filesOf(s).some((f) => hasFile(f)));
   const enabled = host !== null && playable.length > 0;
 
@@ -374,7 +419,7 @@ export const createAudioDirector = (deps: DirectorDeps = {}): AudioDirector => {
   };
 
   const playStem = (stem: string, gain = 1): void => {
-    if (!enabled || host === null) return;
+    if (disposed || !enabled || host === null) return;
     if (settings.muted || !settings.sfx) return;
     const spec = stemSpec(stem);
     if (spec === undefined) return;
@@ -432,7 +477,7 @@ export const createAudioDirector = (deps: DirectorDeps = {}): AudioDirector => {
    * statt wieder von vorn anzufangen).
    */
   const playStage = (stem: string, stage: number): void => {
-    if (!enabled || host === null) return;
+    if (disposed || !enabled || host === null) return;
     if (settings.muted || !settings.sfx) return;
     const spec = stemSpec(stem);
     if (spec === undefined) return;
@@ -446,7 +491,7 @@ export const createAudioDirector = (deps: DirectorDeps = {}): AudioDirector => {
     enabled,
 
     async decodeAfterCreate(phaseId: string): Promise<void> {
-      if (!enabled) return;
+      if (disposed || !enabled) return;
       // Die Effekt-Bank als Ganzes — sie ist klein und wird überall gebraucht.
       //
       // Aber NICHT alle auf einmal: 69 gleichzeitige Anfragen sind auf einer
@@ -501,7 +546,7 @@ export const createAudioDirector = (deps: DirectorDeps = {}): AudioDirector => {
     },
 
     async music(which: string | null): Promise<void> {
-      if (!enabled || host === null) return;
+      if (disposed || !enabled || host === null) return;
       const key = which === null ? null : (MUSIC_BY_PHASE[which] ?? (which.startsWith("music-") ? which : null));
       if (key === currentMusic?.key) return;
 
@@ -516,21 +561,55 @@ export const createAudioDirector = (deps: DirectorDeps = {}): AudioDirector => {
       }
       if (key === null) return;
 
+      // ── R5 · T8 · DIE TÜR (Kokis Befund, 24.08.) ───────────────────────────
+      // Bis heute prüfte dieser Weg die Einstellungen ÜBERHAUPT NICHT: er
+      // decodierte und startete jedes Stück, und »stumm« hiess nur »Lautstärke
+      // 0« in der Konfiguration. Der Effekt-Weg (`playStem`) hatte die Prüfung
+      // seit S1; der Musik-Weg hat sie nie bekommen. Ab hier gilt für BEIDE
+      // dasselbe Wort: stumm heisst, es fängt gar nicht erst an.
+      if (settings.muted || !settings.music) return;
+
+      const lauf = ++musicRun;
       await decode(key);
+      // Drei Dinge können sich in diesem Fenster geändert haben — und jedes
+      // einzelne hat in der Messung ein Stück erzeugt, das niemand mehr
+      // erreicht: der Abbau der Seite, ein jüngerer Phasenwechsel, ein Tipp
+      // auf den Lautsprecher.
+      if (disposed || lauf !== musicRun) return;
+      if (settings.muted || !settings.music) return;
       if (!loaded.has(key)) return;
       const info = AUDIO_FILES[key];
       try {
-        const s = host.add(key, { volume: musicVolume() });
+        const vol = musicVolume();
+        const s = host.add(key, { volume: vol });
         const loop = !key.startsWith("music-title") && !key.startsWith("music-win");
         if (loop && info !== undefined) {
           // Die DATEI ist die Schleife (master.mjs schneidet sie so), also
           // deckt der Marker sie ganz ab — keine Innengrenzen, die driften
           // könnten, und MP3-Encoder-Lücken sind gegenstandslos.
-          s.addMarker({ name: "loop", start: 0, duration: info.durationSec, config: { loop: true } });
+          //
+          // ⚠⚠ R5 · T8 · UND DER MARKER TRÄGT SEINE EIGENE LAUTSTÄRKE.
+          // Das war das Loch, das Koki gehört hat. Am Quelltext von
+          // phaser@3.90.0 gemessen (`src/sound/BaseSound.js`): `addMarker`
+          // füllt eine fehlende Konfiguration mit `{ …, volume: 1, … }` auf,
+          // und `play(markerName)` setzt `this.currentConfig =
+          // this.currentMarker.config` — die Zahl aus `add(key, { volume })`
+          // ist damit VERWORFEN. Jedes Raum-Stück (alle laufen als Schleife)
+          // spielte deshalb mit voller Lautstärke, gleichgültig ob stumm
+          // gestellt oder auf die leisen 12 % von R124 gesetzt. Gemessen am
+          // laufenden Spiel: `addVolume: 0` neben `markerVolume: 1`.
+          // `music-title` und `music-win` laufen ohne Marker — die waren als
+          // Einzige immer richtig leise, und genau deshalb fiel es nie auf.
+          s.addMarker({ name: "loop", start: 0, duration: info.durationSec, config: { loop: true, volume: vol } });
           s.play("loop");
         } else {
           s.play();
         }
+        // Der dritte Riegel, unabhängig von jeder Konfigurations-Semantik:
+        // dieselbe Zahl noch einmal auf den fertigen Klang gelegt. Ein
+        // Phaser-Wechsel, der die Marker-Regel wieder ändert, kann hier nichts
+        // mehr kaputt machen.
+        s.setVolume?.(vol);
         currentMusic = { key, sound: s };
         played(key, key, "music");
       } catch {
@@ -540,12 +619,14 @@ export const createAudioDirector = (deps: DirectorDeps = {}): AudioDirector => {
 
     setMuted(v: boolean): void {
       settings = { ...settings, muted: v };
+      musicRun += 1; // ein Stück, das gerade decodiert, startet nicht mehr hinter dem Knopf her
       writeAudioSettings(settings);
       if (host !== null) host.mute = v;
       applyMusicVolume();
     },
     setMusic(v: boolean): void {
       settings = { ...settings, music: v };
+      musicRun += 1;
       writeAudioSettings(settings);
       applyMusicVolume();
     },
@@ -574,6 +655,8 @@ export const createAudioDirector = (deps: DirectorDeps = {}): AudioDirector => {
     },
 
     dispose(): void {
+      disposed = true;
+      musicRun += 1; // ein noch laufendes `music()` ist damit überholt
       if (currentMusic !== null) {
         try { currentMusic.sound.stop(); currentMusic.sound.destroy(); } catch { /* egal */ }
         currentMusic = null;
