@@ -19,6 +19,11 @@ interface ClassSummary {
   createdAt: string | Date;
 }
 
+/** An archived class — the same summary plus WHEN it was retired. */
+interface ArchivedClassSummary extends ClassSummary {
+  archivedAt: string | Date;
+}
+
 const card: CSSProperties = { border: "1px solid var(--card-border)", borderRadius: 16, padding: 16, background: "var(--card)", boxShadow: "var(--shadow-card)", marginTop: 14 };
 const label: CSSProperties = { fontFamily: "var(--font-label)", fontSize: 12, fontWeight: 700, letterSpacing: "0.04em", textTransform: "uppercase", color: "var(--muted)", display: "block", marginBottom: 4 };
 const input: CSSProperties = { fontFamily: "var(--font-body)", fontSize: 15, padding: "8px 11px", borderRadius: 10, border: "1px solid var(--card-border)", background: "var(--bg-sunken)", color: "var(--text)", width: "100%" };
@@ -26,7 +31,13 @@ const codeStyle: CSSProperties = { fontFamily: "ui-monospace, SFMono-Regular, Me
 
 const GRADES = [1, 2, 3, 4] as const;
 
-export default function ClassesManager({ initialClasses }: { initialClasses: ClassSummary[] }) {
+export default function ClassesManager({
+  initialClasses,
+  initialArchived,
+}: {
+  initialClasses: ClassSummary[];
+  initialArchived: ArchivedClassSummary[];
+}) {
   const router = useRouter();
 
   // Create form
@@ -41,6 +52,7 @@ export default function ClassesManager({ initialClasses }: { initialClasses: Cla
   const [savingId, setSavingId] = useState<string | null>(null);
   const [rowError, setRowError] = useState<string | null>(null);
   const [copiedId, setCopiedId] = useState<string | null>(null);
+  const [showArchived, setShowArchived] = useState(false);
 
   const create = async () => {
     setCreating(true);
@@ -76,14 +88,39 @@ export default function ClassesManager({ initialClasses }: { initialClasses: Cla
   };
 
   const archive = async (c: ClassSummary) => {
-    if (!window.confirm(`Archive “${c.name}”? Students can no longer join with code ${c.inviteCode}. Existing work is kept.`)) return;
+    if (!window.confirm(`Archive »${c.name}«? Students can no longer join or sign in with code ${c.inviteCode}. Existing work is kept, and you can reactivate the class later under »Archivierte Klassen«.`)) return;
     setSavingId(c.id);
     setRowError(null);
     try {
       const res = await fetch(`/api/admin/classes/${c.id}`, { method: "DELETE" });
       const d = await res.json().catch(() => ({}));
       if (res.ok && d.ok) { router.refresh(); return; }
-      setRowError("Could not archive the class — try again.");
+      setRowError(d.error === "not_active" ? "Diese Klasse ist bereits archiviert (oder nicht mehr da) — lade die Seite neu." : "Could not archive the class — try again.");
+    } catch {
+      setRowError("Network error — try again.");
+    } finally {
+      setSavingId(null);
+    }
+  };
+
+  /**
+   * Bring an archived class back. The confirmation says what actually changes, because
+   * "un-archive" tells a teacher nothing: the children can sign in again and the join
+   * link works again — the class returns exactly as she left it.
+   */
+  const unarchive = async (c: ArchivedClassSummary) => {
+    if (!window.confirm(`»${c.name}« wieder aktivieren? Die Kinder dieser Klasse können sich wieder anmelden, und der Beitritts-Link mit dem Code ${c.inviteCode} lebt wieder. Der Roster ist unverändert.`)) return;
+    setSavingId(c.id);
+    setRowError(null);
+    try {
+      const res = await fetch(`/api/admin/classes/${c.id}`, {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ action: "unarchive" }),
+      });
+      const d = await res.json().catch(() => ({}));
+      if (res.ok && d.ok) { router.refresh(); return; }
+      setRowError(d.error === "not_archived" ? "Diese Klasse ist nicht (mehr) archiviert — lade die Seite neu." : "Could not reactivate the class — try again.");
     } catch {
       setRowError("Network error — try again.");
     } finally {
@@ -196,6 +233,47 @@ export default function ClassesManager({ initialClasses }: { initialClasses: Cla
 
       {rowError && (
         <p style={{ marginTop: 12, color: "var(--incorrect)", fontSize: 13 }}>{rowError}</p>
+      )}
+
+      {/* archived classes — collapsed, because this is a repair drawer, not daily work */}
+      {initialArchived.length > 0 && (
+        <section style={{ marginTop: 32 }}>
+          <button
+            type="button"
+            onClick={() => setShowArchived((v) => !v)}
+            aria-expanded={showArchived}
+            style={{ background: "none", border: "none", padding: 0, cursor: "pointer", color: "var(--text-secondary)", fontFamily: "var(--font-label)", fontSize: 13, fontWeight: 700, letterSpacing: "0.03em", textTransform: "uppercase" }}
+          >
+            {showArchived ? "▾" : "▸"} Archivierte Klassen ({initialArchived.length})
+          </button>
+          {showArchived && (
+            <div style={{ marginTop: 12, display: "flex", flexDirection: "column", gap: 10 }}>
+              <p style={{ margin: 0, fontSize: 13, color: "var(--muted)", lineHeight: 1.5 }}>
+                Eine archivierte Klasse ist stillgelegt, nicht gelöscht: die Kinder können sich nicht anmelden und
+                der Beitritts-Link ist tot. »Wieder aktivieren« macht das rückgängig — der Roster und die ganze
+                bisherige Arbeit sind unverändert da.
+              </p>
+              {initialArchived.map((c) => (
+                <div key={c.id} className="dg-card" style={{ opacity: 0.85 }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 12, flexWrap: "wrap" }}>
+                    <div style={{ flex: 1, minWidth: 0 }}>
+                      <div style={{ fontWeight: 700, fontSize: 16, color: "var(--ink)", fontFamily: "var(--font-display)" }}>
+                        {c.name} <span style={{ fontWeight: 400, fontSize: 13, color: "var(--muted)" }}>· Grade {c.grade} · Code {c.inviteCode}</span>
+                      </div>
+                      <div style={{ fontSize: 13, color: "var(--text-secondary)", marginTop: 4 }}>
+                        {c.studentCount === 0 ? "No students" : `${c.studentCount} ${c.studentCount === 1 ? "student" : "students"}`}
+                        {" · archiviert am "}{new Date(c.archivedAt).toLocaleDateString("de-AT")}
+                      </div>
+                    </div>
+                    <button type="button" className="dg-btn" disabled={savingId === c.id} onClick={() => unarchive(c)} style={{ padding: "0.5rem 1rem", flexShrink: 0 }}>
+                      {savingId === c.id ? "…" : "Wieder aktivieren"}
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </section>
       )}
     </main>
   );

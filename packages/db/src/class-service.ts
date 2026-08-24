@@ -10,14 +10,22 @@
  * service share one gate. Mirrors assignment-service.ts's shape: functions take
  * `(db, …args)`, return small row summaries, and the caller wraps in try/catch.
  */
-import { and, eq, inArray, isNull, sql } from "drizzle-orm";
+import { and, desc, eq, inArray, isNotNull, isNull, sql } from "drizzle-orm";
 import type { Db } from "./index.ts";
-import { v2Classes, v2IdentityUsers } from "./schema.ts";
+import { v2Classes, v2IdentityUsers, v2RosterEvents } from "./schema.ts";
 import { v1Classes, v1Users } from "./v1.ts";
 import { allocateClassCode } from "./auth.ts";
 
 /** Longest allowed class name (a roster label, not prose). */
 export const MAX_CLASS_NAME_LENGTH = 80;
+
+/**
+ * K9b · the two `roster_events.kind` values this module writes. Named once each so a
+ * typo is one place, following progress-adjust.ts's PROGRESS_ADJUST_KIND. `kind` is
+ * app-validated free text (see the schema note), so adding these needs NO migration.
+ */
+export const ARCHIVE_KIND = "archive";
+export const UNARCHIVE_KIND = "unarchive";
 
 /**
  * Pure name check — trims, requires non-empty, caps the length. Returns a
@@ -138,6 +146,48 @@ export async function listClassesForTeacher(db: Db, teacherId: string): Promise<
   return classes.map((c) => ({ ...c, studentCount: byClass.get(c.id) ?? 0 }));
 }
 
+/** An archived class the teacher owns — a ClassSummary plus WHEN it was retired. */
+export interface ArchivedClassSummary extends ClassSummary {
+  archivedAt: Date;
+}
+
+/**
+ * The teacher's own ARCHIVED classes, most recently retired first (K9b). The sibling
+ * listClassesForTeacher filters archived rows OUT, which is correct for the working
+ * list and is also why the platform had nothing to click: an archived class was
+ * invisible everywhere, so no un-archive button could exist. This reader is the other
+ * half of that filter, nothing more — same owner scope, same head count, same shape.
+ *
+ * The count is taken exactly as the active list takes it, so the two sections of the
+ * Classes page can never print different numbers for the same roster.
+ */
+export async function listArchivedClassesForTeacher(db: Db, teacherId: string): Promise<ArchivedClassSummary[]> {
+  const classes = await db
+    .select({
+      id: v2Classes.id,
+      name: v2Classes.name,
+      inviteCode: v2Classes.inviteCode,
+      grade: v2Classes.grade,
+      archivedAt: v2Classes.archivedAt,
+      createdAt: v2Classes.createdAt,
+    })
+    .from(v2Classes)
+    .where(and(eq(v2Classes.teacherId, teacherId), isNotNull(v2Classes.archivedAt)))
+    .orderBy(desc(v2Classes.archivedAt));
+  if (classes.length === 0) return [];
+
+  const ids = classes.map((c) => c.id);
+  const counts = await db
+    .select({ classId: v2IdentityUsers.classId, n: sql<number>`count(*)::int` })
+    .from(v2IdentityUsers)
+    .where(inArray(v2IdentityUsers.classId, ids))
+    .groupBy(v2IdentityUsers.classId);
+  const byClass = new Map(counts.map((r) => [r.classId, r.n]));
+
+  // archivedAt is non-null by the WHERE clause; the column type stays nullable.
+  return classes.map((c) => ({ ...c, archivedAt: c.archivedAt!, studentCount: byClass.get(c.id) ?? 0 }));
+}
+
 /**
  * Rename a class — only when `id` AND `teacherId` match AND it isn't archived, so
  * a teacher can't touch another's (or a retired) class. A non-matching id updates
@@ -156,21 +206,82 @@ export async function renameClass(db: Db, id: string, teacherId: string, name: s
 /**
  * Soft-archive a class (never a hard delete — a class anchors rosters, attempts
  * and assignments that must resolve). Scoped to the owning teacher; archiving a
- * class the teacher doesn't own updates zero rows.
+ * class the teacher doesn't own touches nothing and returns false.
  *
- * ⚠ P3 OPERATING RULE — this function gets NO grandmaster branch, on purpose.
- * Every other roster action the operator performs in a foreign class is
- * correctable; archiving is not. It locks the children of that class out of their
- * logins, and there is no un-archive path in the platform today (RAHMEN_P1 blocker
- * 2). The widest rank on the platform therefore stops exactly here: only the
- * OWNING teacher may retire her own class. If un-archiving ever ships, this
- * paragraph is the place to reconsider — not before.
+ * K9b · NO GRANDMASTER BRANCH, and the reason has CHANGED. The old reason was
+ * "archiving cannot be corrected" — that premise died with unarchiveClass below,
+ * which restores a class completely (one column back to NULL; nothing cascades).
+ * What remains is narrower and still holds: retiring a colleague's class is a
+ * decision about HER teaching year, not an operational repair, so the rank does not
+ * reach here. The operator's power sits on the correcting side — he may bring a
+ * class BACK for her, never take one away.
+ *
+ * journal-then-flip (Neon HTTP has no transactions): ownership is read first, the
+ * `archive` event lands second, the guarded flip third. Reading first is what keeps
+ * the journal honest — journaling before the ownership check would let any teacher
+ * write "class X was archived" into a class they cannot touch. The flip repeats the
+ * full WHERE, so nothing can slip through between the two statements.
  */
-export async function archiveClass(db: Db, id: string, teacherId: string): Promise<void> {
-  await db
+export async function archiveClass(db: Db, id: string, teacherId: string): Promise<boolean> {
+  const owned = await db
+    .select({ id: v2Classes.id })
+    .from(v2Classes)
+    .where(and(eq(v2Classes.id, id), eq(v2Classes.teacherId, teacherId), isNull(v2Classes.archivedAt)))
+    .limit(1);
+  if (!owned[0]) return false;
+
+  await db.insert(v2RosterEvents).values({
+    classId: id,
+    kind: ARCHIVE_KIND,
+    actorId: teacherId,
+    payload: { classId: id },
+  });
+
+  const flipped = await db
     .update(v2Classes)
     .set({ archivedAt: new Date() })
-    .where(and(eq(v2Classes.id, id), eq(v2Classes.teacherId, teacherId)));
+    .where(and(eq(v2Classes.id, id), eq(v2Classes.teacherId, teacherId), isNull(v2Classes.archivedAt)))
+    .returning({ id: v2Classes.id });
+  return flipped.length > 0;
+}
+
+/**
+ * Bring an archived class back to life (K9b) — the correction archiveClass never had.
+ * Setting `archived_at` back to NULL is COMPLETE by construction: archiving writes
+ * exactly that one column and nothing cascades, every read in the codebase filters on
+ * `archived_at IS NULL`, and the invite code cannot have been re-issued in the meantime
+ * (the unique index spans archived rows too). So the children can sign in again, the
+ * join link works again, and the roster is exactly as they left it.
+ *
+ * The condition `archived_at IS NOT NULL` makes this idempotent AND informative: a
+ * class that is foreign, missing, or simply not archived returns zero rows, and the
+ * caller learns "nothing to do here" instead of reporting a success that never was.
+ *
+ * `actorId` (optional, defaults to teacherId) names the HAND in the journal without
+ * widening any authorization — the grandmaster pattern from roster-service.ts. He IS
+ * allowed here: this is the correcting direction (see archiveClass above).
+ */
+export async function unarchiveClass(db: Db, id: string, teacherId: string, actorId?: string): Promise<boolean> {
+  const owned = await db
+    .select({ id: v2Classes.id })
+    .from(v2Classes)
+    .where(and(eq(v2Classes.id, id), eq(v2Classes.teacherId, teacherId), isNotNull(v2Classes.archivedAt)))
+    .limit(1);
+  if (!owned[0]) return false;
+
+  await db.insert(v2RosterEvents).values({
+    classId: id,
+    kind: UNARCHIVE_KIND,
+    actorId: actorId ?? teacherId,
+    payload: { classId: id },
+  });
+
+  const flipped = await db
+    .update(v2Classes)
+    .set({ archivedAt: null })
+    .where(and(eq(v2Classes.id, id), eq(v2Classes.teacherId, teacherId), isNotNull(v2Classes.archivedAt)))
+    .returning({ id: v2Classes.id });
+  return flipped.length > 0;
 }
 
 // ─────────────────────────────────────────────────────────────────────────────

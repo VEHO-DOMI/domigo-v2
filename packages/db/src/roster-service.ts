@@ -54,23 +54,85 @@ export function isUniqueViolation(err: unknown): boolean {
   return typeof e.message === "string" && (/\b23505\b/.test(e.message) || /duplicate key value|unique constraint/i.test(e.message));
 }
 
+// ─── TWIN BLOCK START · geprüft von scripts/check-roster-twins.mjs ───────────
+// Alles zwischen den beiden Markern ist BYTE-GLEICH in:
+//   • packages/db/src/roster-service.ts   (Server, autoritativ)
+//   • apps/web/lib/roster-parse.ts        (Client, Prüfliste + Zähler)
+// Der Zwilling existiert, weil @domigo/db server-only ist und nicht ins
+// Browser-Bündel darf — die Zahl auf dem Knopf muss aber exakt die sein, die der
+// Server anlegt. `pnpm check:roster-twins` hält beide Hälften zusammen.
+
+/** Längster erlaubter Schülername (ein Listen-Eintrag, keine Prosa). */
+export const MAX_STUDENT_NAME_LENGTH = 80;
+
+/** Obergrenze für einen Import-Vorgang — eine Klassenliste, kein Datensatz-Dump. */
+export const MAX_ROSTER_NAMES = 500;
+
 /**
- * Normalize one pasted cell into a clean name: trim, strip a one-column-CSV
- * trailing comma, then strip a surrounding pair of double quotes (a spreadsheet
- * paste often yields `"Anna",`). Returns "" for a blank cell so the caller drops it.
+ * Zerlegt einen Text in Zeilen. Deckt ALLE drei Zeilenenden ab: \r\n (Windows),
+ * \n (Unix) und \r ALLEIN — letzteres liefern alte Mac-Exporte und einzelne
+ * Tabellenprogramme, und ein reiner \r\n?-Ausdruck macht daraus EINE Zeile, also
+ * einen einzigen Riesen-"Namen".
+ */
+function splitLines(text: string): string[] {
+  return text.split(/\r\n|\r|\n/);
+}
+
+/**
+ * ERSTE ZELLE GEWINNT. Ein echter Export trägt mehr als den Namen — `Anna;5B`,
+ * `Anna\tanna@example.at`, `"Mueller, Anna";5B`. Jede Zeile wird auf ihre erste
+ * Zelle reduziert, damit der Rest der Kette sieht, was er immer sah: einen Namen.
+ *
+ * Bewusst eng, denn das eine, was die Regel nicht brechen darf, ist ein Name MIT
+ * Komma:
+ *   • ein führendes Anführungszeichen ÖFFNET eine geschützte Zelle — alles bis
+ *     zum schließenden Zeichen ist der Name, internes Komma inklusive, der Rest
+ *     der Zeile fällt weg;
+ *   • sonst beendet ein `;` oder ein TABULATOR die erste Zelle (nie ein blankes
+ *     Komma);
+ *   • eine Zeile ohne beides bleibt GANZ — `Mueller, Anna` ist ein Name, nicht
+ *     zwei Zellen. Das ist die deklarierte Grenze: ein nacktes Komma lässt sich
+ *     nicht von der Nachname-zuerst-Schreibweise unterscheiden, also gewinnt die
+ *     nachsichtige Lesart.
+ *
+ * ⚠ Das `.trim()` auf dem Schnitt ist NICHT Kosmetik (K9b-Review, Blocker): ohne
+ * es überlebt `Anna ;5B` als `"Anna "`, und die beiden Hälften normalisieren
+ * danach VERSCHIEDEN — der Client trimmt beim Senden, der Server lässt
+ * zusätzlich `cleanCell` darüberlaufen. Gemessen: die Prüfliste zeigte
+ * »Add 2 students« OHNE Duplikat-Abzeichen, angelegt wurde 1. Genau die Zahl,
+ * für die der Prüfschritt gebaut ist.
+ */
+function firstCell(raw: string): string {
+  const s = raw.trim();
+  if (s.startsWith('"')) {
+    const close = s.indexOf('"', 1);
+    if (close > 0) return s.slice(0, close + 1); // Paar bleibt; cleanCell streift es
+  }
+  const sep = s.search(/[;\t]/);
+  return sep === -1 ? s : s.slice(0, sep).trim();
+}
+
+/**
+ * Eine Zeile zu einem sauberen Namen normalisieren: erste Zelle, dann ein
+ * einspaltiges CSV-Schlusskomma weg, dann ein umschließendes
+ * Anführungszeichen-Paar weg (eine Tabellen-Einfügung liefert oft `"Anna",`).
+ * Leere Zeile ⇒ "" , der Aufrufer wirft sie weg.
+ *
+ * INVARIANTE: die Ausgabe trägt nie äußeren Leerraum — jeder Zweig hier trimmt,
+ * und `firstCell` tut es ebenfalls. Ein Test hält das über alle Fixtures fest,
+ * damit ein künftiger Zweig die Invariante nicht unbemerkt aufreißt.
  */
 function cleanCell(raw: string): string {
-  let s = raw.trim();
+  let s = firstCell(raw);
   if (s.endsWith(",")) s = s.slice(0, -1).trim();
   if (s.length >= 2 && s.startsWith('"') && s.endsWith('"')) s = s.slice(1, -1).trim();
   return s;
 }
 
 /**
- * Clean a list of cells: drop blanks and dedupe case-insensitively while
- * PRESERVING the first casing seen ("Anna" then "anna" ⇒ just "Anna"). Shared by
- * `parseRoster` (after a newline split) and `importRoster` (already-separate
- * strings) so both apply the identical rule.
+ * Eine Liste von Zellen säubern: Leere fallen weg, Duplikate fallen weg
+ * (schreibungs-unabhängig), und die ZUERST gesehene Schreibung bleibt stehen
+ * ("Anna" dann "anna" ⇒ nur "Anna").
  */
 function dedupeClean(cells: readonly string[]): string[] {
   const seen = new Set<string>();
@@ -86,13 +148,25 @@ function dedupeClean(cells: readonly string[]): string[] {
   return out;
 }
 
+/** Ein Name, den der Server annehmen wird: nicht leer und nicht zu lang. */
+export function isImportableName(name: string): boolean {
+  const trimmed = name.trim();
+  return trimmed !== "" && trimmed.length <= MAX_STUDENT_NAME_LENGTH;
+}
+// ─── TWIN BLOCK END ─────────────────────────────────────────────────────────
+
 /**
- * Parse a pasted roster — one student name per line (a single CSV column pastes
- * the same way). Splits on newlines only (a name may contain spaces or an internal
- * comma), trims each, drops blanks, and dedupes case-insensitively. PURE.
+ * Einen eingefügten oder hochgeladenen Roster parsen — ein Kind je ZEILE.
+ * Zerlegt in Zeilen, reduziert jede auf ihre erste Zelle, wirft Leere weg und
+ * entdoppelt schreibungs-unabhängig. PUR.
+ *
+ * ⚠ ZWILLING: `apps/web/lib/roster-parse.ts` hält denselben Block als
+ * `previewRoster` (@domigo/db ist server-only und darf nicht ins Browser-Bündel).
+ * `pnpm check:roster-twins` hält beide Hälften byte-gleich; dieselbe Fixture-Liste
+ * pinnt sie in roster-service.test.ts ↔ roster-parse.test.ts.
  */
 export function parseRoster(text: string): string[] {
-  return dedupeClean(text.split(/\r?\n/));
+  return dedupeClean(splitLines(text));
 }
 
 /**
@@ -185,7 +259,12 @@ export async function importRoster(
     .limit(1);
   if (!owned[0]) return 0;
 
-  const cleaned = dedupeClean(input.names);
+  // K9b · DEFENSE IN DEPTH. The route validates both ceilings and answers 400, so
+  // this filter can only ever fire for a caller that bypassed it — and then it is
+  // the difference between dropping a malformed name and writing it into a child's
+  // row. Kept as a filter rather than a throw because the route is the place that
+  // can explain itself to a teacher; the service simply refuses to persist junk.
+  const cleaned = dedupeClean(input.names).filter(isImportableName).slice(0, MAX_ROSTER_NAMES);
   if (cleaned.length === 0) return 0;
 
   // Skip names already on the roster (by givenName, case-insensitive).

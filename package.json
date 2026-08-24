@@ -20,6 +20,8 @@
     "content": "node packages/content-pipeline/src/content.ts",
     "audit:blind-solve": "node scripts/audit/blind-solve.ts",
     "check:level-design": "node scripts/check-level-design.mjs",
+    "check:roster-twins": "node scripts/check-roster-twins.mjs",
+    "check:roster-twins:selftest": "node scripts/check-roster-twins.mjs --selftest",
     "check:level-design:selftest": "node scripts/check-level-design.mjs --selftest"
   },
   "devDependencies": {
