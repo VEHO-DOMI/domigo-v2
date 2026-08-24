@@ -191,6 +191,9 @@ export default async function ClassProgressPage({ params }: { params: Promise<{ 
           {ueberschrift} <span style={{ fontWeight: 400, fontSize: 15, color: "var(--muted)" }}>· Stufe {cls.grade} · Fortschritt</span>
         </h1>
         <div style={{ display: "flex", gap: 12, flexShrink: 0 }}>
+          {/* K6a · der Einstieg in die Schreib-Abgaben. Nur ein Link: eine eigene
+              Zugangs-Karte gehört auf die Klassen-Übersicht, nicht in diesen Kopf. */}
+          <Link href={`/admin/classes/${cls.id}/schreiben`} style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>Schreib-Abgaben</Link>
           <Link href={`/admin/classes/${cls.id}/roster`} style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>Namensliste</Link>
           <Link href="/admin/classes" style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← Klassen</Link>
         </div>

@@ -63,3 +63,7 @@ export * from "./ops-links.ts"; // K2b: the one-time register behind an ops sign
 // code only. Caught by running the app; typecheck, lint and the unit tests were all
 // green while /admin/signin was dead.
 export * from "./auth-throttle.ts"; // K2a: the sign-in brake, one statement per attempt, fail-open by design
+// K6a · writing-review is SAFE to re-export: like ops-links it holds no crypto at all
+// (its only non-drizzle import is teacher-events.ts, which imports nothing). Contrast
+// the reset-tokens note above — that one stays out because of node:crypto.
+export * from "./writing-review.ts"; // K6a: the teacher's view of what the children wrote, and her mark on it
