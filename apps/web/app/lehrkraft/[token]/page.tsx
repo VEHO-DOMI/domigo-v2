@@ -120,7 +120,12 @@ export default async function LehrkraftBeitrittSeite({
           </p>
         </div>
       ) : (
-        <form action={beitreten} className="dg-card" style={{ display: "flex", flexDirection: "column", gap: 16, marginTop: 16 }}>
+        // K2b · Rider E — siehe join/[code]/page.tsx: `autoComplete="off"` allein
+        // haelt Chromes Passwortmanager NICHT von einem Passwortfeld fern, nur
+        // `new-password` tut das. Hier zaehlt es doppelt: wer diesen Link oeffnet,
+        // legt ein Konto mit LEHRER-Rechten an, und eine vom Manager eingesetzte
+        // fremde PIN faellt niemandem auf, weil beide Felder gleich gefuellt werden.
+        <form autoComplete="off" action={beitreten} className="dg-card" style={{ display: "flex", flexDirection: "column", gap: 16, marginTop: 16 }}>
           <fieldset style={{ border: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 8 }}>
             <legend style={{ ...labelStyle, marginBottom: 4, padding: 0 }}>1 · Welche Klasse ist deine?</legend>
             {klassen.map((k) => (
@@ -139,12 +144,12 @@ export default async function LehrkraftBeitrittSeite({
 
           <label style={labelStyle}>
             3 · Deine PIN (6 Ziffern)
-            <input name="pin" required inputMode="numeric" pattern="[0-9]{6}" maxLength={6} type="password" autoComplete="off" placeholder="6 Ziffern" className="dg-input" />
+            <input name="pin" required inputMode="numeric" pattern="[0-9]{6}" maxLength={6} type="password" autoComplete="new-password" placeholder="6 Ziffern" className="dg-input" />
           </label>
 
           <label style={labelStyle}>
             4 · PIN noch einmal
-            <input name="pin2" required inputMode="numeric" pattern="[0-9]{6}" maxLength={6} type="password" autoComplete="off" placeholder="6 Ziffern" className="dg-input" />
+            <input name="pin2" required inputMode="numeric" pattern="[0-9]{6}" maxLength={6} type="password" autoComplete="new-password" placeholder="6 Ziffern" className="dg-input" />
           </label>
 
           <button type="submit" className="dg-btn" style={{ marginTop: 4, padding: "12px 16px" }}>

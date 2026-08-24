@@ -218,6 +218,14 @@ export interface GrandmasterOverview {
   v2: GrandmasterClassRow[];
   legacy: GrandmasterLegacyClassRow[];
   v2Failed: boolean;
+  /**
+   * K2b · the SAME honest third state for the legacy half. Until now only the v2
+   * read could say "I could not look"; the legacy read threw, which took the whole
+   * page down with a 500 — an asymmetry in a probe whose entire job is to report
+   * on both registers. An empty legacy list must never be able to mean "the old
+   * register is gone" when the truth is "it did not answer".
+   */
+  legacyFailed: boolean;
 }
 
 /**
@@ -329,25 +337,31 @@ export async function listAllClassesForGrandmaster(db: Db): Promise<GrandmasterO
     console.error("[class-service] v2 class overview failed:", errText(err));
   }
 
-  const legacyClasses = await db
-    .select({ id: v1Classes.id, name: v1Classes.name, grade: v1Classes.grade })
-    .from(v1Classes)
-    .where(isNull(v1Classes.archivedAt))
-    .orderBy(v1Classes.name);
-
   let legacy: GrandmasterLegacyClassRow[] = [];
-  if (legacyClasses.length > 0) {
-    const legacyIds = legacyClasses.map((c) => c.id);
-    const legacyCounts = await db
-      .select({ classId: v1Users.classId, total: sql<number>`count(*)::int` })
-      .from(v1Users)
-      .where(inArray(v1Users.classId, legacyIds))
-      .groupBy(v1Users.classId);
-    const byLegacyClass = new Map(legacyCounts.map((r) => [r.classId, r.total]));
-    legacy = legacyClasses.map((c) => ({ ...c, studentCount: byLegacyClass.get(c.id) ?? 0 }));
+  let legacyFailed = false;
+  try {
+    const legacyClasses = await db
+      .select({ id: v1Classes.id, name: v1Classes.name, grade: v1Classes.grade })
+      .from(v1Classes)
+      .where(isNull(v1Classes.archivedAt))
+      .orderBy(v1Classes.name);
+
+    if (legacyClasses.length > 0) {
+      const legacyIds = legacyClasses.map((c) => c.id);
+      const legacyCounts = await db
+        .select({ classId: v1Users.classId, total: sql<number>`count(*)::int` })
+        .from(v1Users)
+        .where(inArray(v1Users.classId, legacyIds))
+        .groupBy(v1Users.classId);
+      const byLegacyClass = new Map(legacyCounts.map((r) => [r.classId, r.total]));
+      legacy = legacyClasses.map((c) => ({ ...c, studentCount: byLegacyClass.get(c.id) ?? 0 }));
+    }
+  } catch (err) {
+    legacyFailed = true; // NOT an empty list — see GrandmasterOverview
+    console.error("[class-service] legacy class overview failed:", errText(err));
   }
 
-  return { v2, legacy, v2Failed };
+  return { v2, legacy, v2Failed, legacyFailed };
 }
 
 /** A v2 class the grandmaster is reaching into — the owning teacherId comes WITH it. */

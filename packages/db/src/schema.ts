@@ -728,3 +728,25 @@ export const v2AuthThrottle = v2.table("auth_throttle", {
   windowStart: timestamp("window_start", { withTimezone: true }).notNull(),
   count: integer("count").notNull(),
 });
+
+/**
+ * K2b · THE ONE-TIME REGISTER for ops sign-in links (migration 0017).
+ *
+ * A table of SPENT tokens, and the primary key is the whole mechanism: redeeming
+ * a link INSERTs the hash of its nonce with ON CONFLICT DO NOTHING, so two
+ * presentations of one link race against the INDEX rather than against a
+ * read-then-write in application code. The loser of that race gets zero returned
+ * rows and is refused. Neon HTTP has no multi-statement transactions, which is
+ * why this shape and not a check-then-write.
+ *
+ * THE NONCE IS HASHED, NEVER STORED (same law as teacher_reset_tokens): a
+ * spent-token table that read back as a list of live token material would be a
+ * downgrade dressed as a hardening. `expires_at` is the token's own `exp`, which
+ * is what makes pruning safe — a row is useless once the clock refuses the token.
+ */
+export const v2OpsLinkUses = v2.table("ops_link_uses", {
+  nonceHash: text("nonce_hash").primaryKey(), // sha256 of "domigo-ops-link-nonce:<nonce>"
+  userId: uuid("user_id").notNull(), // plain uuid, NO cross-schema FK
+  usedAt: timestamp("used_at", { withTimezone: true }).notNull().defaultNow(),
+  expiresAt: timestamp("expires_at", { withTimezone: true }).notNull(),
+});

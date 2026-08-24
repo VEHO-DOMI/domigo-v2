@@ -41,9 +41,14 @@ export default async function GrandmasterPage() {
   // happened is not a gate, it is a disclosure with a redirect on the end.
   if (!isGrandmaster(teacher.userId)) redirect("/admin");
 
-  const { v2, legacy, v2Failed } = await listAllClassesForGrandmaster(getDb());
+  const { v2, legacy, v2Failed, legacyFailed } = await listAllClassesForGrandmaster(getDb());
   const students = v2.reduce((n, c) => n + c.studentCount, 0);
   const claimed = v2.reduce((n, c) => n + c.claimedCount, 0);
+
+  // K2b · Betriebs-Blick. Derselbe Wert, den /api/version ohne Anmeldung ausgibt —
+  // hier nur an der Stelle, an der der Betreiber ohnehin steht.
+  const deployedSha = process.env.VERCEL_GIT_COMMIT_SHA ?? "lokal (kein Vercel-Bau)";
+  const dbEndpoint = dbEndpointLabel(process.env.DATABASE_URL ?? process.env.POSTGRES_URL);
 
   // Die Lehrkräfte des neuen Registers — aus den Eigentümerinnen der Klassenliste,
   // je Id einmal. Wer (noch) keine v2-Klasse besitzt, steht hier nicht: diese Seite
@@ -132,6 +137,14 @@ export default async function GrandmasterPage() {
           Das alte Register aus der Zeit vor der Eigentümerschaft — reine Kopfzahlen, keine Namen. Diese
           Klassen haben keinen Großmeister-Roster.
         </p>
+        {legacyFailed && (
+          // K2b: bis hierher konnte nur die v2-Hälfte »ich konnte nicht nachsehen« sagen —
+          // die Altbestand-Hälfte warf und riss die ganze Seite mit sich (500).
+          <p style={{ background: "var(--bg-sunken)", border: "1px solid var(--incorrect)", color: "var(--incorrect)", padding: "9px 13px", borderRadius: 12, fontSize: 13, fontWeight: 700, margin: "0 0 12px" }}>
+            Das Altbestand-Register war gerade nicht lesbar — diese Liste ist deshalb UNVOLLSTÄNDIG,
+            nicht leer.
+          </p>
+        )}
         {legacy.length > 0 && (
           <div style={{ overflowX: "auto" }}>
             <table style={{ borderCollapse: "collapse", width: "100%", fontSize: 14 }}>
@@ -155,6 +168,68 @@ export default async function GrandmasterPage() {
           </div>
         )}
       </section>
+
+      <section className="dg-card" style={{ marginTop: 16 }}>
+        <h2 style={{ fontSize: 17, margin: "0 0 4px", fontFamily: "var(--font-display)", color: "var(--ink)" }}>
+          Betrieb · sieht die Plattform ihre eigene Datenbank?
+        </h2>
+        <p style={{ color: "var(--text-secondary)", fontSize: 14, margin: "0 0 12px" }}>
+          Nur Anzeige, keine Knöpfe. Diese Karte beantwortet die eine Frage, die man sonst nur durch
+          Ausprobieren beantwortet: welcher Code-Stand läuft gerade, und antworten die beiden
+          Klassen-Register? Die beiden Lampen sind DIESELBEN Sonden, aus denen die Listen oben
+          entstehen — kein zweiter, eigener Test, der auch dann grün leuchten könnte, wenn die Liste
+          es nicht ist.
+        </p>
+        <dl style={{ display: "grid", gridTemplateColumns: "minmax(150px, auto) 1fr", gap: "8px 16px", margin: 0, fontSize: 14 }}>
+          <dt style={dt}>Code-Stand</dt>
+          <dd style={dd}><code>{deployedSha}</code></dd>
+          <dt style={dt}>Neues Register</dt>
+          <dd style={dd}><Lampe ok={!v2Failed} ja="antwortet" nein="antwortet nicht" /></dd>
+          <dt style={dt}>Altbestand-Register</dt>
+          <dd style={dd}><Lampe ok={!legacyFailed} ja="antwortet" nein="antwortet nicht" /></dd>
+          <dt style={dt}>Datenbank-Endpunkt</dt>
+          <dd style={dd}><code>{dbEndpoint}</code></dd>
+          <dt style={dt}>Zähler</dt>
+          <dd style={dd}>
+            {v2.length} {v2.length === 1 ? "Klasse" : "Klassen"} im neuen Register · {students}{" "}
+            {students === 1 ? "Kind" : "Kinder"} auf den Listen · {claimed} davon selbst angemeldet ·{" "}
+            {legacy.length} {legacy.length === 1 ? "Klasse" : "Klassen"} im Altbestand
+          </dd>
+        </dl>
+      </section>
     </main>
   );
+}
+
+const dt = { fontFamily: "var(--font-label)", fontWeight: 700, color: "var(--muted)" } as const;
+const dd = { margin: 0, color: "var(--text)" } as const;
+
+/** Eine Lampe, die ihren Zustand AUSSCHREIBT. Ein farbiger Punkt allein sagt
+ *  nichts, wenn man die Farbe nicht sieht oder nicht kennt. */
+function Lampe({ ok, ja, nein }: { ok: boolean; ja: string; nein: string }) {
+  return (
+    <span style={{ color: ok ? "var(--correct)" : "var(--incorrect)", fontWeight: 700 }}>
+      {ok ? "✓ " : "✗ "}{ok ? ja : nein}
+    </span>
+  );
+}
+
+/**
+ * Das Etikett des Datenbank-Endpunkts — `ep-…`, mehr nicht.
+ *
+ * Es beantwortet die Frage, die im Fehlerfall wirklich zählt (hängt die Seite an
+ * der Produktions-Datenbank oder am Übungszweig?), und es kann keine Zugangsdaten
+ * verraten: aus der Adresse wird NUR das erste Namensstück des Rechnernamens
+ * gelesen, nie Benutzer, Passwort, Datenbank oder Abfrage-Teil. Das Muster stammt
+ * von der /bootstrap-Seite, die es aus demselben Grund so macht.
+ */
+function dbEndpointLabel(url: string | undefined): string {
+  if (!url) return "nicht gesetzt";
+  try {
+    const host = new URL(url.replace(/^postgres(ql)?:\/\//, "https://")).hostname;
+    const first = host.split(".")[0] ?? "";
+    return first.startsWith("ep-") ? first.replace(/-pooler$/, "") : "unbekannt";
+  } catch {
+    return "unlesbar";
+  }
 }

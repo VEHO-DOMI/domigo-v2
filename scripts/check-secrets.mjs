@@ -10,7 +10,7 @@
 //
 // Also wird die Regel eine Maschine. Das Skript liest JEDE getrackte Datei
 // (`git ls-files` — was nicht getrackt ist, kann auch nicht gepusht werden) und
-// sucht nach vier Formen, die ein echter Schlüssel hat.
+// sucht nach fünf Formen, die ein echter Schlüssel hat.
 //
 // ── Warum die Muster einen WERT verlangen und nicht nur einen Namen ──────────
 // Der naive Wächter sucht nach „xi-api-key" und wird damit sofort zur Plage:
@@ -25,9 +25,10 @@
 // Ein Tamper, der durchgeht, beweist, dass die Prüfung blind ist. Ein Tor, das
 // bei allem anschlägt, beweist gar nichts. Der Selbsttest prüft deshalb BEIDE
 // Seiten an derselben echten Lesestrecke: vier vergiftete Dateien müssen je ihr
-// eigenes rotes Licht auslösen, und sechs Beinahe-Treffer (Prosa, Umgebungs-
+// eigenes rotes Licht auslösen, und die Beinahe-Treffer (Prosa, Umgebungs-
 // variable, Git-sha1, Platzhalter) müssen still bleiben. Erst wenn beides
-// stimmt, endet er mit 0.
+// stimmt, endet er mit 0. (Die Zahlen in der Meldung werden GEZÄHLT, nicht
+// getippt — eine ausgeschriebene Zahl im Text ist die erste, die veraltet.)
 //
 // Run: node scripts/check-secrets.mjs            (exit 1 bei jedem Fund)
 //      node scripts/check-secrets.mjs --selftest (beweist rotes UND grünes Licht)
@@ -68,6 +69,22 @@ const PATTERNS = [
     name: "elevenlabs-env-assignment",
     re: new RegExp(`ELEVENLABS_API_KEY\\s*=\\s*["']?(${VALUE})`, "g"),
     says: "`ELEVENLABS_API_KEY=` mit einem ausgeschriebenen Wert",
+  },
+  {
+    // K2b · Das Ops-Token ist ein CREDENTIAL, kein Schalter: es oeffnet die
+    // Test-Bahn UND signiert jeden Einmal-Anmelde-Link (apps/web/lib/ops.ts).
+    // Wer es hat, kann sich als jedes Kind der Ops-Klasse anmelden. Die
+    // Vermessung dieser Bahn fand die Luecke: ein geleaktes Ops-Token in einer
+    // getrackten Datei waere hier bisher durchgelaufen.
+    //
+    // Die Untergrenze ist bewusst 24 und nicht kuerzer: genau ab dort akzeptiert
+    // die Fluege selbst ein Token (OPS_TOKEN_MIN_LENGTH). Ein kuerzerer Wert im
+    // Repo ist per Bauart wirkungslos — und `DOMIGO_OPS_TOKEN=` LEER, wie es in
+    // .env.example steht, muss still bleiben, sonst faerbt das Tor die richtige
+    // Arbeit rot.
+    name: "domigo-ops-token-assignment",
+    re: new RegExp(`DOMIGO_OPS_TOKEN\\s*=\\s*["']?(${VALUE})`, "g"),
+    says: "`DOMIGO_OPS_TOKEN=` mit einem ausgeschriebenen Wert",
   },
 ];
 
@@ -133,6 +150,7 @@ if (selftest) {
     ["bait-2.md", `Beispiel: sk-${b64.slice(0, 24)} steht hier im Klartext.\n`, "openai-style-key"],
     ["bait-3.mjs", `headers: { "xi-api-key": "${b64}" },\n`, "xi-api-key-header"],
     ["bait-4.env.txt", `ELEVENLABS_API_KEY=sk_${hex}\n`, "elevenlabs-env-assignment"],
+    ["bait-5.env.txt", `DOMIGO_OPS_TOKEN=${b64}\n`, "domigo-ops-token-assignment"],
   ];
 
   /** Sechs Beinahe-Treffer, die STILL bleiben müssen — das ist die andere
@@ -144,6 +162,10 @@ if (selftest) {
     ["ok-4.md", "Stand ae0dd42, Hotfix 918d189, Register ee23ce3 — lauter Git-Kuerzel.\n"],
     ["ok-5.ts", `const key = process.env.ELEVENLABS_API_KEY ?? "";\n`],
     ["ok-6.json", `{ "sha1": "${hex}", "note": "Inhalts-Fingerabdruck einer MP3, kein Schluessel" }\n`],
+    // K2b: genau die zwei Zeilen, die bei richtiger Arbeit entstehen — der leere
+    // Platzhalter in .env.example und der Verweis auf die Umgebungsvariable.
+    ["ok-7.env.txt", "DOMIGO_OPS_TOKEN=\n"],
+    ["ok-8.ts", `const t = process.env.DOMIGO_OPS_TOKEN ?? "";\n`],
   ];
 
   const files = [];
@@ -181,8 +203,8 @@ if (selftest) {
     ok = false;
   }
   if (ok) {
-    console.log(`check-secrets SELBSTTEST: OK — vier rote Lichter brennen (${bait.map((b) => b[2]).join(", ")}), `
-      + `sechs Beinahe-Treffer bleiben still, und die ${tracked().length} getrackten Dateien sind sauber.`);
+    console.log(`check-secrets SELBSTTEST: OK — ${bait.length} rote Lichter brennen (${bait.map((b) => b[2]).join(", ")}), `
+      + `${innocent.length} Beinahe-Treffer bleiben still, und die ${tracked().length} getrackten Dateien sind sauber.`);
     process.exit(0);
   }
   process.exit(1);

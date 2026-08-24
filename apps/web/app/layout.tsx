@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import { loadTrapRegistry } from "@domigo/content-loader";
 import { TrapProvider, type TrapMap } from "@domigo/task-ui";
@@ -43,6 +43,23 @@ const quicksand = localFont({
 export const metadata: Metadata = {
   title: "DomiGo",
   description: "English vocabulary & grammar trainer for AHS Klasse 1–4.",
+  // K2b · installierbar. Das Blatt selbst steht in app/manifest.ts; hier haengt
+  // nur der Verweis darauf plus das, was iOS NICHT aus dem Manifest liest
+  // (Safari kennt es bis heute nicht — die appleWebApp-Angaben sind die einzige
+  // Art, dort ein App-Fenster statt eines Browser-Tabs zu bekommen).
+  manifest: "/manifest.webmanifest",
+  applicationName: "DomiGo",
+  appleWebApp: { capable: true, title: "DomiGo", statusBarStyle: "default" },
+  icons: {
+    icon: [{ url: "/icons/icon-192.png", sizes: "192x192", type: "image/png" }],
+    apple: [{ url: "/icons/icon-192.png", sizes: "192x192", type: "image/png" }],
+  },
+};
+
+// Eigener Export, kein metadata-Feld: Next hat themeColor 2024 aus `metadata`
+// heraus in `viewport` verschoben und warnt beim Bau, wenn es am alten Platz steht.
+export const viewport: Viewport = {
+  themeColor: "#2563eb", // = --accent aus globals.css
 };
 
 export default function RootLayout({

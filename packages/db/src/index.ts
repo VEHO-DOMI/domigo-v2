@@ -51,6 +51,10 @@ export * from "./teacher-identity.ts"; // WS-AUTH Phase A: teacher self-service 
 export * from "./class-progress.ts"; // K1a: class-scoped teacher progress readers (all modes) + tolerant trap labelling
 export * from "./progress-adjust.ts"; // K1b: the grandmaster's hand — additive XP grant + study-path unit unlock (journal-then-apply)
 export * from "./teacher-events.ts"; // K2a: the teacher-scoped audit journal roster_events could never be (class_id is NOT NULL)
+// K2b · ops-links is SAFE to re-export: it holds no crypto at all (the nonce hash
+// arrives ready-made from apps/web/lib/ops.ts, which uses Web-Crypto). Contrast the
+// reset-tokens note below — that one is kept out because it imports node:crypto.
+export * from "./ops-links.ts"; // K2b: the one-time register behind an ops sign-in link
 // K2a · reset-tokens is DELIBERATELY NOT re-exported here, and this is load-bearing.
 // `apps/web/middleware.ts` imports auth.ts, auth.ts imports THIS file, and middleware
 // runs on the Edge runtime — where `node:crypto` does not exist. Re-exporting a module
