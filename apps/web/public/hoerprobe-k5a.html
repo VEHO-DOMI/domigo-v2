@@ -31,7 +31,10 @@
   details { margin:.4rem 0; } summary { cursor:pointer; font-size:.88rem; color:var(--dim); }
   details.script p { background:#fffdf7; border:1px solid var(--line); border-radius:8px; padding:.7rem .9rem; font-size:.92rem; }
   code { background:#efe6cf; padding:.08em .35em; border-radius:4px; font-size:.9em; }
-  #verdict { position:sticky; bottom:0; margin-top:2.5rem; background:#fffaf0; border:1px solid var(--line);
+  /* NICHT sticky: am eigenen Bau gesehen — ein am Fensterboden klebender Kasten
+     verdeckt auf einem flachen Fenster genau die Kandidaten, die er einsammeln
+     soll. Er steht am Ende, wo man nach dem Hören ohnehin ankommt. */
+  #verdict { margin-top:2.5rem; background:#fffaf0; border:1px solid var(--line);
              border-radius:10px; padding:1rem 1.15rem; }
   textarea { width:100%; min-height:5.5rem; font:14px/1.45 ui-monospace, Menlo, monospace;
              border:1px solid var(--line); border-radius:8px; padding:.6rem; background:#fff; }
@@ -71,7 +74,7 @@
     <div class="takes">
     <div class="take" data-slug="alice" style="order:0">
       <div class="badge">Kandidat <span class="letter">?</span></div>
-      <audio controls preload="none" src="../../apps/web/public/audio/listening/g2-u02/museum--alice--0cea06e0.mp3"></audio>
+      <audio controls preload="none" src="./audio/listening/g2-u02/museum--alice--0cea06e0.mp3"></audio>
       <div class="nums">52.203s · -16.5 LUFS · True Peak -1.6 dBFS · Stille 74/149 ms</div>
       <button class="pick" data-slug="alice">Diese nehmen</button>
       <details><summary>Wer das ist und warum ich sie bestellt habe</summary>
@@ -81,7 +84,7 @@
     </div>
     <div class="take" data-slug="blondie" style="order:1">
       <div class="badge">Kandidat <span class="letter">?</span></div>
-      <audio controls preload="none" src="../../apps/web/public/audio/listening/g2-u02/museum--blondie--7c19352d.mp3"></audio>
+      <audio controls preload="none" src="./audio/listening/g2-u02/museum--blondie--7c19352d.mp3"></audio>
       <div class="nums">49.18s · -16.8 LUFS · True Peak -1.7 dBFS · Stille 14/354 ms</div>
       <button class="pick" data-slug="blondie">Diese nehmen</button>
       <details><summary>Wer das ist und warum ich sie bestellt habe</summary>
@@ -91,7 +94,7 @@
     </div>
     <div class="take" data-slug="amelia" style="order:2">
       <div class="badge">Kandidat <span class="letter">?</span></div>
-      <audio controls preload="none" src="../../apps/web/public/audio/listening/g2-u02/museum--amelia--a3017913.mp3"></audio>
+      <audio controls preload="none" src="./audio/listening/g2-u02/museum--amelia--a3017913.mp3"></audio>
       <div class="nums">56.292s · -16.6 LUFS · True Peak -1.7 dBFS · Stille 63/150 ms</div>
       <button class="pick" data-slug="amelia">Diese nehmen</button>
       <details><summary>Wer das ist und warum ich sie bestellt habe</summary>
@@ -100,6 +103,9 @@
       </details>
     </div></div>
     <p><button id="shuffle" class="ghost">↻ Kandidaten neu mischen</button></p>
+    <p class="dim">Und so klingt es im echten Produkt, mit der zurzeit eingehängten Datei:
+       <a href="/listening/g2-u02">/listening/g2-u02</a> → auf „Play audio“ drücken.
+       Kommt dort eine <em>Stimme</em> statt des Roboters, zieht der Datei-Zweig.</p>
   </section>
 
 <div id="verdict">

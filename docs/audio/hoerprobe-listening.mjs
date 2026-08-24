@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // K5a · DIE HÖRPROBE — Kokis Ohr ist das Tor (R128, wie bei der Klang-Hörbank).
 //
-// Erzeugt `docs/audio/hoerprobe-listening.html`: die heutige Browser-Roboter-
+// Erzeugt `apps/web/public/hoerprobe-k5a.html`: die heutige Browser-Roboter-
 // stimme und die ElevenLabs-Kandidaten nebeneinander, am GLEICHEN Text, mit
 // den Messwerten daneben — und einem Wahl-Knopf, der Kokis Urteil als fertigen
 // Block einsammelt. Damit die Antwort nicht „das dritte klingt besser" heisst,
@@ -19,7 +19,7 @@
 // (packages/task-ui/src/index.tsx#AudioClip: `en-GB`, rate 0.85) — sonst
 // verglichen wir unsere Roboter-Nachstellung und nicht das Produkt.
 //
-// Aufruf: node docs/audio/hoerprobe-listening.mjs   →   open docs/audio/hoerprobe-listening.html
+// Aufruf: node docs/audio/hoerprobe-listening.mjs   →   open apps/web/public/hoerprobe-k5a.html
 
 import fs from "node:fs";
 import path from "node:path";
@@ -28,9 +28,18 @@ const ROOT = process.cwd();
 const ORDER = path.join(ROOT, "docs/audio/listening-voices.json");
 const MEASURED = path.join(ROOT, "docs/audio/listening-measured.json");
 const UNITS = path.join(ROOT, "content/corpus/units");
-const OUT = path.join(ROOT, "docs/audio/hoerprobe-listening.html");
-/** Relativ von `docs/audio/` aus — die Seite wird dort geöffnet. */
-const PUBLIC_REL = "../../apps/web/public";
+/**
+ * Die Seite liegt in `apps/web/public/` und NICHT in `docs/` — aus einem Grund,
+ * der erst am fertigen Zweig sichtbar wurde: der Vercel-Preview steht hinter
+ * Vercels eigener Anmeldung, und genau diesen Preview öffnet Koki ohnehin, um
+ * die Stimme im ECHTEN Abspieler zu hören. Von dort aus ist die Hörprobe ein
+ * Klick entfernt (`<preview>/hoerprobe-k5a.html`) statt einer Repo-Auscheckung.
+ * Lokal tut es dieselbe Datei per `open apps/web/public/hoerprobe-k5a.html`.
+ * ⚠ Rauchtest-Artefakt: fällt weg, sobald die Route entschieden ist.
+ */
+const OUT = path.join(ROOT, "apps/web/public/hoerprobe-k5a.html");
+/** Relativ von `apps/web/public/` aus — Geschwisterpfad, lokal wie ausgeliefert. */
+const PUBLIC_REL = ".";
 
 const order = JSON.parse(fs.readFileSync(ORDER, "utf8"));
 const measured = JSON.parse(fs.readFileSync(MEASURED, "utf8"));
@@ -83,6 +92,9 @@ const body = cards.map((c) => `
 
     <div class="takes">${c.takes.map((t, i) => takeHtml(t, i)).join("")}</div>
     <p><button id="shuffle" class="ghost">↻ Kandidaten neu mischen</button></p>
+    <p class="dim">Und so klingt es im echten Produkt, mit der zurzeit eingehängten Datei:
+       <a href="/listening/${esc(c.piece.unit)}">/listening/${esc(c.piece.unit)}</a> → auf „Play audio“ drücken.
+       Kommt dort eine <em>Stimme</em> statt des Roboters, zieht der Datei-Zweig${c.live ? "" : " — zurzeit ist keine Datei eingehängt"}.</p>
   </section>`).join("");
 
 const html = `<!doctype html>
@@ -118,7 +130,10 @@ const html = `<!doctype html>
   details { margin:.4rem 0; } summary { cursor:pointer; font-size:.88rem; color:var(--dim); }
   details.script p { background:#fffdf7; border:1px solid var(--line); border-radius:8px; padding:.7rem .9rem; font-size:.92rem; }
   code { background:#efe6cf; padding:.08em .35em; border-radius:4px; font-size:.9em; }
-  #verdict { position:sticky; bottom:0; margin-top:2.5rem; background:#fffaf0; border:1px solid var(--line);
+  /* NICHT sticky: am eigenen Bau gesehen — ein am Fensterboden klebender Kasten
+     verdeckt auf einem flachen Fenster genau die Kandidaten, die er einsammeln
+     soll. Er steht am Ende, wo man nach dem Hören ohnehin ankommt. */
+  #verdict { margin-top:2.5rem; background:#fffaf0; border:1px solid var(--line);
              border-radius:10px; padding:1rem 1.15rem; }
   textarea { width:100%; min-height:5.5rem; font:14px/1.45 ui-monospace, Menlo, monospace;
              border:1px solid var(--line); border-radius:8px; padding:.6rem; background:#fff; }
