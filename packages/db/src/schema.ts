@@ -432,7 +432,7 @@ export const v2RosterEvents = v2.table(
   {
     id: uuid("id").primaryKey().defaultRandom(),
     classId: uuid("class_id").notNull(),
-    kind: text("kind").notNull(), // 'import'|'claim'|'rename'|'remove'|'reset_pin'|'teacher_claim'|'progress_adjust'|'writing_graded' (app-validated)
+    kind: text("kind").notNull(), // 'import'|'claim'|'rename'|'remove'|'reset_pin'|'teacher_claim'|'progress_adjust'|'writing_graded'|'archive'|'unarchive' (app-validated)
     payload: jsonb("payload").notNull(),
     actorId: uuid("actor_id"), // teacher/actor uuid — nullable, NO cross-schema FK
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),

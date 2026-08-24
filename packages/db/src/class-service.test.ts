@@ -1,8 +1,13 @@
 import { describe, expect, it } from "vitest";
 import {
+  ARCHIVE_KIND,
   MAX_CLASS_NAME_LENGTH,
+  UNARCHIVE_KIND,
   UNKNOWN_TEACHER_LABEL,
+  archiveClass,
   listAllClassesForGrandmaster,
+  listArchivedClassesForTeacher,
+  unarchiveClass,
   validateClassName,
   validateGrade,
 } from "./class-service.ts";
@@ -332,5 +337,197 @@ describe("Rider D · the atom walker can SEE a raw number", () => {
     expect(atoms).toContain("col:grade");
     // And the Param form keeps working, so the branch ADDS reach, never replaces it.
     expect(atomsOf(eq(v2Classes.grade, 3))).toContain("3");
+  });
+});
+
+
+// ─────────────────────────────────────────────────────────────────────────────
+// K9b · ARCHIVE ↔ UNARCHIVE — the correction that turns a one-way door around.
+//
+// Three properties decide whether this is safe, and each of them fails silently if
+// it is wrong: (1) the WHERE clause is the authorization, so an un-archive must be
+// unable to reach a class the teacher does not own OR one that is not archived;
+// (2) journal-then-flip means the event is written BEFORE the live change and never
+// for an attempt that was refused; (3) `actorId` may NAME the grandmaster's hand and
+// must never reach a WHERE clause — a leak there is the whole rank escaping into
+// every ordinary teacher call.
+// ─────────────────────────────────────────────────────────────────────────────
+
+interface Step {
+  rows?: unknown[];
+  error?: unknown;
+}
+
+/** One statement the service issued, in order — what it was, what it wrote, what it filtered on. */
+interface Call {
+  op: "select" | "insert" | "update";
+  table?: unknown;
+  values?: unknown;
+  set?: unknown;
+  where: unknown[];
+}
+
+/**
+ * Full chain-mock (house style, cf. teacher-claim.test.ts:mockDb) that also RECORDS
+ * every call in order, because half of what matters here is sequence: the journal row
+ * must exist before the flip, and must not exist at all when the guard refused.
+ */
+function opsDb(steps: Step[]) {
+  const queue = [...steps];
+  const calls: Call[] = [];
+  const chain = (call: Call) => {
+    calls.push(call);
+    const node: Record<string, unknown> = {
+      from: () => node,
+      innerJoin: () => node,
+      orderBy: () => node,
+      groupBy: () => node,
+      limit: () => node,
+      returning: () => node,
+      where: (c: unknown) => { call.where.push(c); return node; },
+      values: (v: unknown) => { call.values = v; return node; },
+      set: (v: unknown) => { call.set = v; return node; },
+      then: (res: (v: unknown) => unknown, rej: (e: unknown) => unknown) => {
+        const step = queue.shift();
+        if (!step) return Promise.reject(new Error("mock: one DB call more than the script allows")).then(res, rej);
+        if (step.error) return Promise.reject(step.error).then(res, rej);
+        return Promise.resolve(step.rows ?? []).then(res, rej);
+      },
+    };
+    return node;
+  };
+  const db = {
+    select: (selection?: unknown) => chain({ op: "select", values: selection, where: [] }),
+    insert: (table: unknown) => chain({ op: "insert", table, where: [] }),
+    update: (table: unknown) => chain({ op: "update", table, where: [] }),
+  };
+  return { db: db as unknown as Db, calls };
+}
+
+const OWNER = "11111111-1111-1111-1111-111111111111";
+const FOREIGN = "22222222-2222-2222-2222-222222222222";
+const GRANDMASTER = "33333333-3333-3333-3333-333333333333";
+const CLS = "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee";
+
+describe("unarchiveClass — one column back to NULL, and only where it may be", () => {
+  it("writes the journal row BEFORE the flip, and reports the restore", async () => {
+    const { db, calls } = opsDb([{ rows: [{ id: CLS }] }, { rows: [] }, { rows: [{ id: CLS }] }]);
+    expect(await unarchiveClass(db, CLS, OWNER)).toBe(true);
+
+    expect(calls.map((c) => c.op)).toEqual(["select", "insert", "update"]); // the order IS the law
+    expect(calls[1]!.values).toMatchObject({ classId: CLS, kind: UNARCHIVE_KIND, actorId: OWNER });
+    expect(calls[2]!.set).toEqual({ archivedAt: null }); // exactly one column, back to null
+  });
+
+  it("refuses a class that is foreign, gone, or not archived — WITHOUT journalling it", async () => {
+    // The guard read comes back empty. Journalling before this point would let any
+    // teacher write "class X was restored" into a class they cannot touch.
+    const { db, calls } = opsDb([{ rows: [] }]);
+    expect(await unarchiveClass(db, CLS, FOREIGN)).toBe(false);
+    expect(calls).toHaveLength(1);
+    expect(calls.map((c) => c.op)).toEqual(["select"]);
+  });
+
+  it("filters on owner AND on 'already archived' — in BOTH statements, not just the first", async () => {
+    const { db, calls } = opsDb([{ rows: [{ id: CLS }] }, { rows: [] }, { rows: [{ id: CLS }] }]);
+    await unarchiveClass(db, CLS, OWNER);
+    for (const call of [calls[0]!, calls[2]!]) { // the guard read AND the flip
+      const where = atomsOf(call.where);
+      expect(where).toContain("col:teacher_id"); // owner scope
+      expect(where).toContain("col:id");
+      expect(where).toContain("col:archived_at");
+      expect(where).toContain(" is not null"); // an inverted filter would read " is null"
+      expect(where).toContain(OWNER); // the id actually bound, not just a column named
+    }
+  });
+
+  it("lets RETURNING have the last word: zero flipped rows is NOT a success", async () => {
+    // The guard passed, then someone else restored the class first. Reporting "ok"
+    // here would tell a teacher her click worked when the row it aimed at was gone.
+    const { db } = opsDb([{ rows: [{ id: CLS }] }, { rows: [] }, { rows: [] }]);
+    expect(await unarchiveClass(db, CLS, OWNER)).toBe(false);
+  });
+
+  it("names the grandmaster's HAND in the journal while running on the OWNER's authorization", async () => {
+    const { db, calls } = opsDb([{ rows: [{ id: CLS }] }, { rows: [] }, { rows: [{ id: CLS }] }]);
+    await unarchiveClass(db, CLS, OWNER, GRANDMASTER);
+
+    expect(calls[1]!.values).toMatchObject({ actorId: GRANDMASTER }); // the journal cannot lie about the hand
+    for (const call of [calls[0]!, calls[2]!]) {
+      // …and the actor reaches NO where clause. This is the assertion that keeps the
+      // rank from leaking: actorId may name an actor, never widen an authorization.
+      expect(atomsOf(call.where)).not.toContain(GRANDMASTER);
+      expect(atomsOf(call.where)).toContain(OWNER);
+    }
+  });
+});
+
+describe("archiveClass — same door, now journalled, still owner-only", () => {
+  it("journals 'archive' before the flip (it was the last unhistoried class mutation)", async () => {
+    const { db, calls } = opsDb([{ rows: [{ id: CLS }] }, { rows: [] }, { rows: [{ id: CLS }] }]);
+    expect(await archiveClass(db, CLS, OWNER)).toBe(true);
+
+    expect(calls.map((c) => c.op)).toEqual(["select", "insert", "update"]);
+    expect(calls[1]!.values).toMatchObject({ classId: CLS, kind: ARCHIVE_KIND, actorId: OWNER });
+    expect((calls[2]!.set as { archivedAt: Date }).archivedAt).toBeInstanceOf(Date);
+  });
+
+  it("refuses a foreign or already-archived class without journalling it", async () => {
+    const { db, calls } = opsDb([{ rows: [] }]);
+    expect(await archiveClass(db, CLS, FOREIGN)).toBe(false);
+    expect(calls).toHaveLength(1);
+  });
+
+  it("filters on 'still live' — the MIRROR of unarchive, and the proof the two differ", async () => {
+    const { db, calls } = opsDb([{ rows: [{ id: CLS }] }, { rows: [] }, { rows: [{ id: CLS }] }]);
+    await archiveClass(db, CLS, OWNER);
+    for (const call of [calls[0]!, calls[2]!]) {
+      const where = atomsOf(call.where);
+      expect(where).toContain("col:archived_at");
+      expect(where).toContain(" is null");
+      expect(where).not.toContain(" is not null"); // if these two ever agreed, one of them is wrong
+      expect(where).toContain("col:teacher_id");
+    }
+  });
+
+  it("takes no actor parameter at all — the rank has no way in here", () => {
+    // A structural assertion, not a stylistic one: archiveClass(db, id, teacherId).
+    // The day someone adds a fourth argument, this line is the conversation.
+    expect(archiveClass.length).toBe(3);
+    expect(unarchiveClass.length).toBe(4); // …whereas unarchive DOES take the hand
+  });
+});
+
+describe("listArchivedClassesForTeacher — the other half of the active list's filter", () => {
+  const row = { id: CLS, name: "TEST-K9B", inviteCode: "TSTK9B", grade: 2, archivedAt: new Date(1), createdAt: new Date(0) };
+
+  it("returns each archived class with its head count and its archive date", async () => {
+    const { db } = opsDb([{ rows: [row] }, { rows: [{ classId: CLS, n: 3 }] }]);
+    expect(await listArchivedClassesForTeacher(db, OWNER)).toEqual([
+      { ...row, studentCount: 3 },
+    ]);
+  });
+
+  it("is scoped to the owner and reads ONLY archived rows", async () => {
+    const { db, calls } = opsDb([{ rows: [row] }, { rows: [{ classId: CLS, n: 3 }] }]);
+    await listArchivedClassesForTeacher(db, OWNER);
+    const where = atomsOf(calls[0]!.where);
+    expect(where).toContain("col:teacher_id");
+    expect(where).toContain(OWNER);
+    expect(where).toContain("col:archived_at");
+    expect(where).toContain(" is not null"); // the active list uses " is null"; this is its complement
+  });
+
+  it("shows an archived class with an empty roster as 0 rather than dropping it", async () => {
+    const { db } = opsDb([{ rows: [row] }, { rows: [] }]);
+    const list = await listArchivedClassesForTeacher(db, OWNER);
+    expect(list).toHaveLength(1);
+    expect(list[0]!.studentCount).toBe(0);
+  });
+
+  it("asks NO second question when there is nothing archived", async () => {
+    const { db, calls } = opsDb([{ rows: [] }]);
+    expect(await listArchivedClassesForTeacher(db, OWNER)).toEqual([]);
+    expect(calls).toHaveLength(1); // the head count would be a query over an empty id list
   });
 });

@@ -98,6 +98,67 @@ describe("parseRoster — one name per line, forgiving of a pasted list", () => 
   });
 });
 
+/**
+ * ── THE SHARED FIXTURE LIST (K9b) ────────────────────────────────────────────
+ * This block is BYTE-IDENTICAL in two files, on purpose:
+ *   • packages/db/src/roster-service.test.ts        (server: parseRoster)
+ *   • apps/web/lib/roster-parse.test.ts             (client: previewRoster)
+ * The two parsers are deliberate twins — @domigo/db is server-only and cannot enter
+ * the browser bundle — so the only thing that can keep them honest is one list of
+ * cases run against both. Add a case here and it must be added there, unchanged.
+ *
+ * To prove the pinning works, break ONE side's rule and this list goes red on that
+ * side alone; a change made to both stays green. A twin nobody compares is just a
+ * copy waiting to drift.
+ */
+const TWIN_FIXTURES: { label: string; input: string; expect: string[] }[] = [
+  { label: "plain list, one name per line", input: "Anna Mueller\nBen Ostrowski\nClara Nowak", expect: ["Anna Mueller", "Ben Ostrowski", "Clara Nowak"] },
+  { label: "Windows CRLF line endings", input: "Anna\r\nBen\r\nClara", expect: ["Anna", "Ben", "Clara"] },
+  { label: "blank and whitespace-only lines are dropped", input: "Anna\n\n   \nBen\n\t\n", expect: ["Anna", "Ben"] },
+  { label: "nothing at all", input: "", expect: [] },
+  { label: "dedupe is case-insensitive and keeps the FIRST casing", input: "Anna\nanna\nANNA\nBen", expect: ["Anna", "Ben"] },
+  { label: "one-column CSV: trailing comma stripped", input: "Anna,\nBen,", expect: ["Anna", "Ben"] },
+  { label: "one-column CSV: surrounding quotes stripped", input: "\"Anna\"\n\"Ben\"\n\"Clara\",", expect: ["Anna", "Ben", "Clara"] },
+  { label: "multi-column, semicolon separated: first cell wins", input: "Anna Mueller;5B;anna@example.at\nBen Ostrowski;5B;ben@example.at", expect: ["Anna Mueller", "Ben Ostrowski"] },
+  { label: "multi-column, TAB separated: first cell wins", input: "Anna Mueller\t5B\nBen Ostrowski\t5B", expect: ["Anna Mueller", "Ben Ostrowski"] },
+  { label: "quoted cell keeps its internal comma, the semicolon tail is dropped", input: "\"Mueller, Anna\";5B\n\"Ostrowski, Ben\";5B", expect: ["Mueller, Anna", "Ostrowski, Ben"] },
+  { label: "quoted cell followed by a COMMA separator", input: "\"Mueller, Anna\",5B,anna@example.at", expect: ["Mueller, Anna"] },
+  { label: "DECLARED BOUNDARY: an UNQUOTED comma keeps the whole line (surname-first is one name)", input: "Mueller, Anna\nOstrowski, Ben", expect: ["Mueller, Anna", "Ostrowski, Ben"] },
+  { label: "a header row is just another name — the teacher removes it in the review list", input: "Name;Klasse\nAnna Mueller;5B", expect: ["Name", "Anna Mueller"] },
+  { label: "everything at once, the way a real export arrives", input: "\"Mueller, Anna\";5B\nBen Ostrowski\t5B\n\n  Clara Nowak  ,\nben ostrowski\t5B\n", expect: ["Mueller, Anna", "Ben Ostrowski", "Clara Nowak"] },
+];
+
+describe("parseRoster — the shared twin fixtures (server half)", () => {
+  for (const f of TWIN_FIXTURES) {
+    it(f.label, () => {
+      expect(parseRoster(f.input)).toEqual(f.expect);
+    });
+  }
+});
+
+describe("parseRoster — first cell wins, but never at a name's expense", () => {
+  it("drops every column after the first, whatever the separator", () => {
+    expect(parseRoster("Anna;5B")).toEqual(["Anna"]);
+    expect(parseRoster("Anna\t5B")).toEqual(["Anna"]);
+    expect(parseRoster('"Anna";5B')).toEqual(["Anna"]);
+  });
+
+  it("a BARE comma is NOT a separator — that is the declared boundary", () => {
+    // The one case the rule refuses to guess: "Mueller, Anna" is surname-first, and a
+    // parser that split there would silently import half of every Austrian roster.
+    expect(parseRoster("Mueller, Anna")).toEqual(["Mueller, Anna"]);
+    expect(parseRoster("Mueller, Anna;5B")).toEqual(["Mueller, Anna"]);
+  });
+
+  it("an unclosed quote is left alone rather than swallowing the line", () => {
+    expect(parseRoster('"Anna')).toEqual(['"Anna']);
+  });
+
+  it("dedupes AFTER the columns are cut, so two rows of the same child collapse", () => {
+    expect(parseRoster("Anna;5B\nanna;5C")).toEqual(["Anna"]);
+  });
+});
+
 describe("claimLabel — privacy: first name + last initial", () => {
   it("reduces a two-part name to first name + last initial", () => {
     expect(claimLabel("Anna Müller")).toBe("Anna M.");
