@@ -65,7 +65,7 @@ export const FACE_FLOOR_CX = 0.52, FACE_FLOOR_CY = 0.45;
  *    beschrieb zwei Stände, von denen keiner im Code stand.
  */
 
-export const FACE_FLOOR_RX = 0.52, FACE_FLOOR_RY = 0.38;
+export const FACE_FLOOR_RX = 0.42, FACE_FLOOR_RY = 0.34;
 /** Halbachsen, wenn die letzte Schicht gefallen ist: die ganze Fläche frei. */
 export const FACE_FULL_RX = 0.75, FACE_FULL_RY = 0.75;
 
@@ -105,6 +105,13 @@ export const FACE_FULL_RX = 0.75, FACE_FULL_RY = 0.75;
  * WANN ES FÄLLT: sobald die gemalte Band-Antwort liegt ODER das Auflösungs-
  * Panel auch mit diesem Stand nicht kippt. Im zweiten Fall ist bewiesen, dass
  * das Stellrad tot ist, und der Block gehört ersatzlos zurückgebaut.
+ *
+ * ★ GENAU DAS IST EINGETRETEN — ZURÜCKGEBAUT (Koki, 24.08., D-719): das Panel
+ *   las 2:0 »kein Unterschied«, und die Obergrenze (D-714: ohne Boden lägen nur
+ *   4,52 % des Gesichts unter Kreide) beendet die Boden-Spur — die Gesichts-
+ *   Frage gehört der KUNST (Band-Order), nicht der Inszenierung. Maß und Kurve
+ *   stehen wieder auf dem Auslieferungs-Stand (0,42 × 0,34 · linear); die
+ *   Messtabellen oben bleiben als Dokumentation, WARUM das Stellrad tot ist.
  */
 /** Ab wann die Öffnung wächst — das ist die ZWEITE Stellgröße (»früher«).
  *
@@ -115,7 +122,7 @@ export const FACE_FULL_RX = 0.75, FACE_FULL_RY = 0.75;
  *    linear gab der erste Wisch ein Drittel der Öffnung frei, `√frei` gibt 58 %.
  *    Das Gesicht gewinnt seine Fläche also am ersten Wisch statt am letzten. */
 export const faceFloorOeffnung = (frei: number): number =>
-  Math.sqrt(Math.max(0, Math.min(1, frei)));
+  Math.max(0, Math.min(1, frei));
 
 /** Die Halbachsen des Bodens für einen Öffnungsgrad, als Anteil der
  *  Schreibfläche. Eigene Funktion, damit die Geometrie EINE Quelle hat und

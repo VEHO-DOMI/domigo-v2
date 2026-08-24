@@ -21,12 +21,10 @@ describe("R5-T6 · die Öffnung des Augen-Bodens", () => {
     expect(faceFloorOeffnung(1)).toBe(1);
   });
 
-  it("ist VORDERLASTIG: der erste Wisch gibt mehr frei als sein Drittel", () => {
-    // das ist die zweite Stellgröße des T6-Interims (»früher öffnen«).
-    // Linear wären es 1/3 = 0,333; √(1/3) = 0,577.
-    expect(faceFloorOeffnung(1 / 3)).toBeGreaterThan(1 / 3);
-    expect(faceFloorOeffnung(1 / 3)).toBeCloseTo(0.5774, 4);
-    expect(faceFloorOeffnung(2 / 3)).toBeCloseTo(0.8165, 4);
+  it("ist LINEAR (die vorderlastige \u221a-Kurve des Interims ist zur\u00fcckgebaut, D-719)", () => {
+    // Linear: 1/3 = 0,333 (die \u221a-Kurve des Interims ist zur\u00fcckgebaut, D-719).
+    expect(faceFloorOeffnung(1 / 3)).toBeCloseTo(1 / 3, 10);
+    expect(faceFloorOeffnung(2 / 3)).toBeCloseTo(2 / 3, 10);
   });
 
   it("wächst überall, springt nirgends", () => {
@@ -46,11 +44,11 @@ describe("R5-T6 · die Öffnung des Augen-Bodens", () => {
 });
 
 describe("R5-T6 · die Halbachsen des Augen-Bodens", () => {
-  it("stehen bei voller Lebensanzeige auf dem T6-Maß 0,52 × 0,38", () => {
+  it("stehen bei voller Lebensanzeige auf dem Auslieferungs-Maß 0,42 × 0,34 (Interim zurückgebaut, D-719)", () => {
     // Das ist der Arena-Moment: er hängt am MASS, nicht an der Kurve.
     const { rx, ry } = faceFloorHalbachsen(0);
-    expect(rx).toBeCloseTo(0.52, 10);
-    expect(ry).toBeCloseTo(0.38, 10);
+    expect(rx).toBeCloseTo(0.42, 10);
+    expect(ry).toBeCloseTo(0.34, 10);
   });
 
   it("stehen bei sauberer Tafel auf der ganzen Fläche", () => {
