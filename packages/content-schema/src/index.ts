@@ -332,12 +332,42 @@ export const GameMeta = z.object({
 });
 export type GameMeta = z.infer<typeof GameMeta>;
 
+/**
+ * WHO actually spoke one take (K4b). `voice` above is the BROWSER voice name of
+ * the fallback speech-synthesis branch — it says nothing about a rendered file.
+ * Once a real recording exists, its provenance lives here: which provider, which
+ * model, which voice(s). A dialogue carries one entry per role; a narrated piece
+ * carries a single entry with `role: null`.
+ */
+export const AudioVoiceSource = z.object({
+  /** null on a single-narrator piece; the speaking role in a dialogue. */
+  role: z.string().min(1).nullable(),
+  /** Order-sheet slug (docs/audio/listening-voices.json). */
+  slug: z.string().min(1),
+  name: z.string().min(1),
+  voiceId: z.string().min(1),
+});
+export type AudioVoiceSource = z.infer<typeof AudioVoiceSource>;
+
+export const AudioSource = z.object({
+  provider: z.literal("elevenlabs"),
+  modelId: z.string().min(1),
+  voices: z.array(AudioVoiceSource).min(1),
+});
+export type AudioSource = z.infer<typeof AudioSource>;
+
 /** RESERVED — schema only; nothing emits audio yet (TTS rides the Blob plan). */
 export const AudioRef = z.object({
   script: z.string().min(1),
   voice: z.string().nullable(),
   /** Content-addressed asset path once rendered (audio/<sha256>.mp3). */
   file: z.string().nullable(),
+  /**
+   * Voice provenance of the rendered file. OPTIONAL by design: `AudioRef` is
+   * reused by items, stories and journeys, and a required field would turn the
+   * whole existing corpus red for a property only listening pieces have.
+   */
+  source: AudioSource.nullable().optional(),
 });
 export type AudioRef = z.infer<typeof AudioRef>;
 

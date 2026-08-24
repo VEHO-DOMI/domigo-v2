@@ -12,7 +12,19 @@
       "audio": {
         "script": "Hello! My name is Ben. I want to tell you about Monday — my favourite school day. School starts at eight o'clock. First we have maths. I don't love maths, but our teacher is funny. Then we have English and art. Art is my favourite subject because we paint pictures. At ten o'clock we have a break. I eat an apple and play football with my friends. After the break we have geography and music. School finishes at one o'clock. Then I go home, I eat, and I go for a walk with my dog.",
         "voice": null,
-        "file": null
+        "file": "/audio/listening/g2-u01/school-day--amelia--1f6586ea.mp3",
+        "source": {
+          "provider": "elevenlabs",
+          "modelId": "eleven_multilingual_v2",
+          "voices": [
+            {
+              "role": null,
+              "slug": "amelia",
+              "name": "Amelia — young and enthusiastic",
+              "voiceId": "ZF6FPAbjXT4488VcRRnw"
+            }
+          ]
+        }
       },
       "transcript": "Hello! My name is Ben. I want to tell you about Monday — my favourite school day. School starts at eight o'clock. First we have maths. I don't love maths, but our teacher is funny. Then we have English and art. Art is my favourite subject because we paint pictures. At ten o'clock we have a break. I eat an apple and play football with my friends. After the break we have geography and music. School finishes at one o'clock. Then I go home, I eat, and I go for a walk with my dog.",
       "predictChips": [

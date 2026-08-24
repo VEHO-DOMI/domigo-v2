@@ -1,0 +1,223 @@
+{
+  "schema": "test@1",
+  "grade": 2,
+  "unit": 7,
+  "slug": "g2-u07",
+  "level": "A2",
+  "test": {
+    "id": "g2u07.tt.weekend",
+    "titleDe": "Schularbeit (Übung) — Unit 7",
+    "sections": [
+      {
+        "kind": "grammar",
+        "titleDe": "Teil 1: Grammatik (going to verneint & might)",
+        "itemIds": [
+          "g2u07.gi.going-to-negative.gf.004",
+          "g2u07.gi.going-to-negative.cp.001",
+          "g2u07.gi.might.ec.001"
+        ]
+      },
+      {
+        "kind": "vocab",
+        "titleDe": "Teil 2: Wortschatz",
+        "itemIds": [
+          "g2u07.w.excuse",
+          "g2u07.w.truth",
+          "g2u07.w.to-get-into-trouble"
+        ]
+      },
+      {
+        "kind": "listening",
+        "titleDe": "Teil 3: Hörverstehen",
+        "itemIds": [
+          "g2u07.li.weekend.mc.001",
+          "g2u07.li.weekend.gf.001"
+        ]
+      },
+      {
+        "kind": "reading",
+        "titleDe": "Teil 4: Leseverständnis",
+        "passage": "Hi, I am Oliver. Last Sunday I did not tell the truth, and I am not proud of it. My friend Ben asked me to come over at three o'clock. But I wanted to take it easy and do nothing. So I posted an excuse in our group chat: \"Sorry, I have to do my homework.\" In the evening Clare posted a picture of me at the cinema. Everybody was really angry, because I posted a lie. Ben did not reply for two days. Now I am really sad about my excuse. Honestly, I am never going to do this again.",
+        "passageGloss": [
+          {
+            "word": "lie",
+            "de": "Lüge",
+            "scope": null
+          }
+        ],
+        "items": [
+          {
+            "id": "g2u07.ri.excuse.mc.001",
+            "rev": 1,
+            "difficulty": 1,
+            "format": "multiple-choice",
+            "prompt": {
+              "text": "What is Oliver's text about?",
+              "lang": "en",
+              "blanks": 0
+            },
+            "answers": [
+              {
+                "text": "An excuse that did not work",
+                "tier": "full"
+              }
+            ],
+            "direction": null,
+            "distractors": [
+              "A day at the cinema with Ben",
+              "A picture of the cinema",
+              "His homework for Monday"
+            ],
+            "pairs": [],
+            "groups": [],
+            "gloss": [],
+            "hintDe": "Lies zuerst den ganzen Text. Worum geht es im GANZEN Text?",
+            "hintEn": null,
+            "explainDe": "Oliver erfindet eine Ausrede, das Foto verrät ihn — darum geht der ganze Text.",
+            "explainEn": null,
+            "strict": false,
+            "phase": "gist",
+            "cue": {
+              "type": "gist",
+              "quote": "So I posted an excuse in our group chat"
+            },
+            "trickDe": "Lies den ganzen Text — das Thema steht nie in einem Wort.",
+            "distractorMeta": [
+              {
+                "whyDe": "Klingt nach einem gemeinsamen Kinotag — genau der findet nie statt."
+              },
+              {
+                "whyDe": "Das Foto kommt vor — es ist der Moment, nicht das Thema.",
+                "lure": "echo"
+              },
+              {
+                "whyDe": "Die Hausübung kommt vor — sie ist Teil der Ausrede.",
+                "lure": "echo"
+              }
+            ]
+          },
+          {
+            "id": "g2u07.ri.excuse.gf.001",
+            "rev": 1,
+            "difficulty": 2,
+            "format": "gap-fill",
+            "prompt": {
+              "text": "Ben asked Oliver to come over at ___ o'clock.",
+              "lang": "en",
+              "blanks": 1
+            },
+            "answers": [
+              {
+                "text": "three",
+                "tier": "full"
+              },
+              {
+                "text": "3",
+                "tier": "full"
+              }
+            ],
+            "direction": null,
+            "distractors": [],
+            "pairs": [],
+            "groups": [],
+            "gloss": [],
+            "hintDe": "Im Text stehen zwei Zahlen. Welche gehört zu Bens Einladung?",
+            "hintEn": null,
+            "explainDe": "„My friend Ben asked me to come over at three o'clock.“ — die zwei gehört zu den Tagen ohne Antwort.",
+            "explainEn": null,
+            "strict": false,
+            "phase": "detail",
+            "cue": {
+              "type": "number-time",
+              "quote": "My friend Ben asked me to come over at three o'clock."
+            },
+            "trickDe": "Zwei Zahlen im Text — lies, welche zur Einladung gehört."
+          },
+          {
+            "id": "g2u07.ri.excuse.mc.002",
+            "rev": 1,
+            "difficulty": 2,
+            "format": "multiple-choice",
+            "prompt": {
+              "text": "Why was everybody really angry?",
+              "lang": "en",
+              "blanks": 0
+            },
+            "answers": [
+              {
+                "text": "Because Oliver posted a lie.",
+                "tier": "full"
+              }
+            ],
+            "direction": null,
+            "distractors": [
+              "Because Oliver did not do his homework.",
+              "Because Clare posted a picture.",
+              "Because Ben did not reply for two days."
+            ],
+            "pairs": [],
+            "groups": [],
+            "gloss": [],
+            "hintDe": "Suche das Wort because — der Grund steht direkt danach.",
+            "hintEn": null,
+            "explainDe": "„Everybody was really angry, because I posted a lie.“",
+            "explainEn": null,
+            "strict": false,
+            "phase": "detail",
+            "cue": {
+              "type": "signal-word",
+              "quote": "Everybody was really angry, because I posted a lie."
+            },
+            "trickDe": "Nach because kommt der Grund — lies genau dorthin.",
+            "distractorMeta": [
+              {
+                "whyDe": "Die Hausübung kommt vor — sie war ja die Ausrede.",
+                "lure": "echo"
+              },
+              {
+                "whyDe": "Clares Foto kommt davor — es zeigt die Lüge, ist aber nicht der Grund.",
+                "lure": "echo"
+              },
+              {
+                "whyDe": "Bens Schweigen kommt DANACH — es ist die Folge, nicht der Grund.",
+                "lure": "echo"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "writing",
+        "titleDe": "Teil 5: Schreiben",
+        "promptId": "g2u07.ti.wr.001",
+        "promptDe": "Schreib eine Einladung an eine Freundin oder einen Freund (40–70 Wörter): Wann und wo? Was macht ihr? Was muss man NICHT mitbringen? Verwende mindestens einmal going to und einmal die verneinte Form (I am not going to … / You do not have to …).",
+        "taskEn": "Write an invitation to a friend (40-70 words): when and where, what you are going to do, and what nobody has to bring. Use going to at least once and a negative form at least once.",
+        "minWords": 40,
+        "maxWords": 70,
+        "rubric": null,
+        "checklistDe": [
+          "Steht in deiner Einladung, WANN und WO man kommen soll?",
+          "Hast du einmal going to UND einmal eine verneinte Form benutzt?",
+          "Hast du 40 bis 70 Wörter geschrieben?"
+        ],
+        "exemplar": {
+          "textEn": "Hi Emma! I am going to have a party on Saturday, because it is my birthday. Come over to me at six o'clock. We are going to watch a film and do nothing all evening. You do not have to bring a present. Ben is going to do the shopping for a big cake. Please reply in our group chat!",
+          "calloutsDe": [
+            {
+              "quote": "Come over to me at six o'clock.",
+              "whyDe": "Ohne Uhrzeit und Ort ist eine Einladung keine Einladung."
+            },
+            {
+              "quote": "We are going to watch a film and do nothing all evening.",
+              "whyDe": "Ein going to sagt, was wirklich geplant ist — nicht, was man vielleicht macht."
+            },
+            {
+              "quote": "You do not have to bring a present.",
+              "whyDe": "Eine verneinte Form nimmt Druck weg — genau das macht eine Einladung freundlich."
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

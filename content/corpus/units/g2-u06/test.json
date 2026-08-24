@@ -1,0 +1,222 @@
+{
+  "schema": "test@1",
+  "grade": 2,
+  "unit": 6,
+  "slug": "g2-u06",
+  "level": "A2",
+  "test": {
+    "id": "g2u06.tt.camp",
+    "titleDe": "Schularbeit (Übung) — Unit 6",
+    "sections": [
+      {
+        "kind": "grammar",
+        "titleDe": "Teil 1: Grammatik (have to / don't have to)",
+        "itemIds": [
+          "g2u06.gi.have-to.gf.001",
+          "g2u06.gi.have-to.cp.001",
+          "g2u06.gi.have-to.ec.001"
+        ]
+      },
+      {
+        "kind": "vocab",
+        "titleDe": "Teil 2: Wortschatz",
+        "itemIds": [
+          "g2u06.w.valley",
+          "g2u06.w.life-jacket",
+          "g2u06.w.waterfall"
+        ]
+      },
+      {
+        "kind": "listening",
+        "titleDe": "Teil 3: Hörverstehen",
+        "itemIds": [
+          "g2u06.li.camp.mc.001",
+          "g2u06.li.camp.gf.001"
+        ]
+      },
+      {
+        "kind": "reading",
+        "titleDe": "Teil 4: Leseverständnis",
+        "passage": "Hi, I am Clare. Last summer I was at an adventure camp near a big river. On Wednesday we had to build a tree house in the forest near the river. Everybody had to wear a hard hat. I climbed up the tree at ten o'clock. Then I looked down: my hard hat was in the river! My friends laughed and laughed. Our guide was not happy, because a hard hat is a camp rule. So I had to climb down again. At two o'clock we were all in our tree house. In the evening we were at the campfire under the stars.",
+        "passageGloss": [
+          {
+            "word": "tree house",
+            "de": "Baumhaus",
+            "scope": null
+          }
+        ],
+        "items": [
+          {
+            "id": "g2u06.ri.treehouse.mc.001",
+            "rev": 1,
+            "difficulty": 1,
+            "format": "multiple-choice",
+            "prompt": {
+              "text": "What is Clare's text about?",
+              "lang": "en",
+              "blanks": 0
+            },
+            "answers": [
+              {
+                "text": "A day with a tree house at the camp",
+                "tier": "full"
+              }
+            ],
+            "direction": null,
+            "distractors": [
+              "A summer holiday at the sea",
+              "A hard hat in the river",
+              "The stars over the campfire"
+            ],
+            "pairs": [],
+            "groups": [],
+            "gloss": [],
+            "hintDe": "Lies zuerst den ganzen Text. Worum geht es im GANZEN Text?",
+            "hintEn": null,
+            "explainDe": "Der ganze Mittwoch dreht sich um das Baumhaus im Wald — alles andere sind Einzelheiten.",
+            "explainEn": null,
+            "strict": false,
+            "phase": "gist",
+            "cue": {
+              "type": "gist",
+              "quote": "On Wednesday we had to build a tree house in the forest near the river."
+            },
+            "trickDe": "Lies den ganzen Text — das Thema steht nie in einem Wort.",
+            "distractorMeta": [
+              {
+                "whyDe": "Klingt nach einem ganzen Sommer am Meer — das Camp liegt am Fluss."
+              },
+              {
+                "whyDe": "Der Helm im Fluss kommt vor — er ist eine Einzelheit, nicht das Thema.",
+                "lure": "echo"
+              },
+              {
+                "whyDe": "Die Sterne kommen vor — ganz am Schluss, in einem Satz.",
+                "lure": "echo"
+              }
+            ]
+          },
+          {
+            "id": "g2u06.ri.treehouse.gf.001",
+            "rev": 1,
+            "difficulty": 2,
+            "format": "gap-fill",
+            "prompt": {
+              "text": "The children were all in the tree house at ___ o'clock.",
+              "lang": "en",
+              "blanks": 1
+            },
+            "answers": [
+              {
+                "text": "two",
+                "tier": "full"
+              },
+              {
+                "text": "2",
+                "tier": "full"
+              }
+            ],
+            "direction": null,
+            "distractors": [],
+            "pairs": [],
+            "groups": [],
+            "gloss": [],
+            "hintDe": "Im Text stehen zwei Uhrzeiten. Welche gehört zum fertigen Baumhaus?",
+            "hintEn": null,
+            "explainDe": "„At two o'clock we were all in our tree house.“ — um zehn Uhr klettert Clare erst hinauf.",
+            "explainEn": null,
+            "strict": false,
+            "phase": "detail",
+            "cue": {
+              "type": "number-time",
+              "quote": "At two o'clock we were all in our tree house."
+            },
+            "trickDe": "Zwei Uhrzeiten im Text — lies, welche zum Baumhaus gehört."
+          },
+          {
+            "id": "g2u06.ri.treehouse.mc.002",
+            "rev": 1,
+            "difficulty": 2,
+            "format": "multiple-choice",
+            "prompt": {
+              "text": "Why was the guide not happy?",
+              "lang": "en",
+              "blanks": 0
+            },
+            "answers": [
+              {
+                "text": "Because a hard hat is a camp rule.",
+                "tier": "full"
+              }
+            ],
+            "direction": null,
+            "distractors": [
+              "Because Clare was slow in the forest.",
+              "Because the tree house was in the river.",
+              "Because Clare's friends laughed."
+            ],
+            "pairs": [],
+            "groups": [],
+            "gloss": [],
+            "hintDe": "Suche das Wort because — der Grund steht direkt danach.",
+            "hintEn": null,
+            "explainDe": "„Our guide was not happy, because a hard hat is a camp rule.“",
+            "explainEn": null,
+            "strict": false,
+            "phase": "detail",
+            "cue": {
+              "type": "signal-word",
+              "quote": "Our guide was not happy, because a hard hat is a camp rule."
+            },
+            "trickDe": "Nach because kommt der Grund — lies genau dorthin.",
+            "distractorMeta": [
+              {
+                "whyDe": "Von langsam steht nichts im Text."
+              },
+              {
+                "whyDe": "Im Fluss lag der HELM, nicht das Baumhaus.",
+                "lure": "echo"
+              },
+              {
+                "whyDe": "Die Freunde lachen im Satz davor — das ärgert die Betreuerin nicht.",
+                "lure": "echo"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "writing",
+        "titleDe": "Teil 5: Schreiben",
+        "promptId": "g2u06.ti.wr.001",
+        "promptDe": "Schreib eine E-Mail an eine Freundin oder einen Freund über einen Abenteuertag (40–70 Wörter): Was macht ihr? Was muss man mitbringen oder anziehen? Was muss man NICHT können? Verwende mindestens einmal have to und einmal don't have to.",
+        "taskEn": "Write an email to a friend about an adventure day (40-70 words): what you are doing, what everybody has to bring or wear, and what nobody has to be good at. Use have to and don't have to at least once each.",
+        "minWords": 40,
+        "maxWords": 70,
+        "rubric": null,
+        "checklistDe": [
+          "Steht in deiner E-Mail, WAS ihr macht und WAS man mitbringen muss?",
+          "Hast du einmal have to UND einmal do not have to benutzt?",
+          "Hast du 40 bis 70 Wörter geschrieben?"
+        ],
+        "exemplar": {
+          "textEn": "Hi Emma! I am at the adventure camp in the mountains. Tomorrow we are canoeing on the big lake. You do not have to be good at canoeing. But you have to wear a life jacket all the time. Bring an anorak, because it is very cold near the waterfall. In the evening we are at the campfire. Come and join us!",
+          "calloutsDe": [
+            {
+              "quote": "You do not have to be good at canoeing.",
+              "whyDe": "Ein do not have to nimmt der Leserin die Angst — genau dafür gibt es die Form."
+            },
+            {
+              "quote": "But you have to wear a life jacket all the time.",
+              "whyDe": "Ein have to ist eine echte Regel, keine Bitte."
+            },
+            {
+              "quote": "Bring an anorak, because it is very cold near the waterfall.",
+              "whyDe": "Nach because kommt der Grund — eine Regel ohne Grund überzeugt niemanden."
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
