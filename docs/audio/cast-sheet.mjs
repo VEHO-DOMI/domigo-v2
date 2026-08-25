@@ -34,6 +34,15 @@ zu lassen.
 |---|---|---|---|---|---|---|---|
 ${rows.join("\n")}
 
+${(cast.freieStimmen ?? []).length === 0 ? "" : `## Abgenommen, aber noch frei
+
+Diese Stimmen hat Koki am selben Vorsprechen abgenommen; sie gehören noch keiner Figur.
+Eine neue Figur nimmt eine davon — **ohne** dass er noch einmal hören muss.
+
+| Stimme | Rolle | Stimm-Id | wofür |
+|---|---|---|---|
+${cast.freieStimmen.map((v) => `| ${v.voiceName} | ${v.rolle} | \`${v.voiceId}\` | ${v.note} |`).join("\n")}
+`}
 **Tempo** ist der Regler der Sprachmaschine: 1,0 ist die Normalgeschwindigkeit der Stimme,
 0,9 ist spürbar ruhiger. Er ist eine Eigenschaft der *sprechenden Figur* — ein Stück darf
 ihn überstimmen, wenn ein einzelner Text ruhiger laufen soll.
@@ -46,7 +55,8 @@ ihn überstimmen, wenn ein einzelner Text ruhiger laufen soll.
 \`\`\`
 
 ${cast.note}
-`;
+
+${cast.offen ? `## Offen\n\n${cast.offen}\n` : ""}`;
 };
 
 const cast = JSON.parse(fs.readFileSync(CAST, "utf8"));

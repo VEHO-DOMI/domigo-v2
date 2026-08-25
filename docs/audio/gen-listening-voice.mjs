@@ -184,8 +184,13 @@ const words = (t) => t.replace(/\s+/g, " ").trim();
  * gegen die V-LC7 gebaut wurde.
  */
 export const speakify = (text, { clauseMs = CLAUSE_GAP_MS, sentenceMs = SENTENCE_GAP_MS, paraMs = PARA_GAP_MS } = {}) => {
+  // Der Eingabetext wird HIER festgehalten. Die Umkehrprobe unten vergleicht
+  // gegen DIESE Kopie und nicht gegen `text` — sonst koennte eine Zuweisung an
+  // `text` die Probe gegen sich selbst laufen lassen und alles waere immer
+  // gruen (beim Tamper-Versuch dieser Bahn genau so passiert).
+  const source = text;
   const mark = (ms) => (ms > 0 ? ` <break time="${(ms / 1000).toFixed(2)}s" />` : "");
-  const out = text
+  const out = source
     // Zeilenumbruch = Absatz-Zaesur (bei mehrstimmigen Stuecken kommt hier
     // ohnehin der Schnitt, dann sieht speakify die Zeile schon einzeln).
     .replace(/\n+/g, (m) => `${mark(paraMs)}\n`)
@@ -199,7 +204,7 @@ export const speakify = (text, { clauseMs = CLAUSE_GAP_MS, sentenceMs = SENTENCE
       const all = [...m.matchAll(/time="([\d.]+)s"/g)].map((x) => Number(x[1]));
       return `<break time="${Math.max(...all).toFixed(2)}s" /> `;
     });
-  if (words(stripBreaks(out)) !== words(text)) {
+  if (words(stripBreaks(out)) !== words(source)) {
     throw new Error("speakify: die Umkehrprobe schlaegt fehl — die Sprech-Fassung ist nicht mehr wortgleich mit dem Bestand");
   }
   return out;
