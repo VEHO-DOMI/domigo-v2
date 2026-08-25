@@ -853,11 +853,20 @@ export function GrammarIntroView({ structures }: { structures: GrammarStructure[
 
 // ---- listening (B3): audio player + task view ----------------------------
 
+/**
+ * Die Tonspur, wie sie ein Kind bekommt (K12). `script: null` heisst NICHT
+ * GESENDET — der Sprechtext ist der Loesungstext und faehrt nur mit, solange es
+ * keine Aufnahme gibt (dann spricht der Browser ihn selbst vor). Der Server
+ * entscheidet das in apps/web/lib/hoeren.ts#ohneSprechtextFuersKind; hier steht
+ * nur, was der Abspieler damit anfangen darf.
+ */
+export type ClientAudioRef = Omit<AudioRef, "script"> & { script: string | null };
+
 /** A listening task as sent to the client — transcript stripped server-side. */
-export type ClientListeningTask = Omit<ListeningTask, "transcript">;
+export type ClientListeningTask = Omit<ListeningTask, "transcript" | "audio"> & { audio: ClientAudioRef };
 
 /** Plays a clip: prefers a pre-generated file, else speaks the script via Web Speech (A1–A2 pace). */
-export function AudioClip({ audio }: { audio: AudioRef }) {
+export function AudioClip({ audio }: { audio: ClientAudioRef }) {
   const [ready, setReady] = useState(false);
   const [playing, setPlaying] = useState(false);
   useEffect(() => setReady(true), []);
@@ -870,6 +879,10 @@ export function AudioClip({ audio }: { audio: AudioRef }) {
       void el.play().catch(() => setPlaying(false));
       return;
     }
+    // K12: ohne Aufnahme UND ohne Sprechtext gibt es nichts vorzulesen. Der
+    // Text fehlt genau dann, wenn eine Aufnahme existiert — dann ist der Zweig
+    // oben schon gefahren.
+    if (!audio.script) return;
     if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
     window.speechSynthesis.cancel();
     const u = new SpeechSynthesisUtterance(audio.script);
@@ -888,7 +901,7 @@ export function AudioClip({ audio }: { audio: AudioRef }) {
     setPlaying(false);
   };
 
-  const supported = ready && (!!audio.file || (typeof window !== "undefined" && "speechSynthesis" in window));
+  const supported = ready && (!!audio.file || (!!audio.script && typeof window !== "undefined" && "speechSynthesis" in window));
   return (
     <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
       <button className="dg-btn" onClick={play} disabled={!supported || playing}>

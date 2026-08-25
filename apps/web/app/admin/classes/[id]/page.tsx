@@ -194,6 +194,10 @@ export default async function ClassProgressPage({ params }: { params: Promise<{ 
           {/* K6a · der Einstieg in die Schreib-Abgaben. Nur ein Link: eine eigene
               Zugangs-Karte gehört auf die Klassen-Übersicht, nicht in diesen Kopf. */}
           <Link href={`/admin/classes/${cls.id}/schreiben`} style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>Schreib-Abgaben</Link>
+          {/* K12 · die Tuer zu den Hoer-Transkripten. Gleiche Bauart wie oben:
+              jede Flaeche bringt ihre eigene Tuer mit, damit niemandem eine
+              Adresse gesagt werden muss. */}
+          <Link href={`/admin/classes/${cls.id}/hoeren`} style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>Hör-Aufgaben</Link>
           <Link href={`/admin/classes/${cls.id}/roster`} style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>Namensliste</Link>
           <Link href="/admin/classes" style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← Klassen</Link>
         </div>
