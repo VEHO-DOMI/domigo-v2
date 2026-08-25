@@ -225,12 +225,21 @@ describe("Abspiel-Regeln", () => {
     expect(played).toEqual(["letter-take-1", "letter-take-2", "letter-take-3", "letter-take-3"]);
   });
 
+  // R5 · T8: die zwei Musik-Tests hier standen OHNE `settings` — sie hingen
+  // also am Umgebungs-Default, und der ist seit R221 stumm. Grün waren sie
+  // trotzdem, weil `music()` bis T8 auch stumm noch startete (die Stille war
+  // nur eine Lautstärke-Zahl). Mit der Tür fangen sie gar nichts mehr an, und
+  // ein Test, der eine Freigabe prüft, die es nie gab, ist grün ohne Beweiswert.
+  // Sie bekommen deshalb dieselbe explizite Angabe, die `withHost` oben schon
+  // trägt: Abspiel-Regeln werden bei TON AN gemessen.
+  const TON_AN = { muted: false, music: true, sfx: true } as const;
+
   it("die Musik einer Phase wird geholt, die vorige freigegeben", async () => {
     const { host } = fakeHost();
     const remove = vi.fn();
     const d = createAudioDirector({
       sound: { ...host, removeByKey: remove }, hasFile: () => true,
-      fetchAudio: async () => new ArrayBuffer(8),
+      fetchAudio: async () => new ArrayBuffer(8), settings: { ...TON_AN },
     });
     await d.music("p1");
     await d.music("p2");
@@ -238,15 +247,18 @@ describe("Abspiel-Regeln", () => {
   });
 
   it("dieselbe Phase zweimal wechselt die Musik nicht", async () => {
-    const { host } = fakeHost();
+    const { host, played } = fakeHost();
     const remove = vi.fn();
     const d = createAudioDirector({
       sound: { ...host, removeByKey: remove }, hasFile: () => true,
-      fetchAudio: async () => new ArrayBuffer(8),
+      fetchAudio: async () => new ArrayBuffer(8), settings: { ...TON_AN },
     });
     await d.music("p1");
     await d.music("p1");
     expect(remove).not.toHaveBeenCalled();
+    // …und der Beweis, dass hier überhaupt etwas lief: ohne diese Zeile wäre
+    // der Test auch dann grün, wenn nie ein Ton entstanden ist (T8).
+    expect(played.filter((k) => k.startsWith("music-")).length).toBe(1);
   });
 });
 

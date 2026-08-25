@@ -79,8 +79,36 @@ describe("der Dach-Schalter schreibt vollständig", () => {
     expect(AUDIO_DEFAULTS).toEqual(defaultsFor(process.env.NODE_ENV));
     expect(AUDIO_DEFAULTS).toEqual({ muted: true, music: true, sfx: true });
     expect(readAudioSettings()).toEqual(AUDIO_DEFAULTS);
-    // Die gespeicherte Geräte-Wahl gewinnt weiter über jeden Default.
+    // Die gespeicherte Geräte-Wahl gewinnt weiter über jeden Default —
+    // vorausgesetzt, sie ist NACH R221 getroffen worden (siehe unten).
     writeAudioSettings({ muted: false, music: true, sfx: true });
     expect(readAudioSettings()).toEqual({ muted: false, music: true, sfx: true });
+  });
+
+  /**
+   * R5 · T8 · DIE EINMALIGE NORMALISIERUNG.
+   *
+   * R221 sagt »überall stumm, bis die Schüler kommen«, aber ein Gerät, das VOR
+   * R221 auf Ton getippt hatte, trug seine Wahl weiter — der Default greift ja
+   * nur, wo nichts steht. Auf einem Arbeits-Rechner, auf dem Sitzungen Seiten
+   * öffnen, war genau das der Zustand, den R221 abschaffen wollte.
+   *
+   * Ein Wert ohne Marke stammt aus dieser Zeit und wird EINMAL gezogen; danach
+   * gewinnt die Gerätewahl wieder. Der Test misst beide Hälften — eine
+   * Normalisierung, die jedes Mal zuschlägt, wäre ein anderer (und falscher)
+   * Entscheid, und ohne die zweite Hälfte fiele das niemandem auf.
+   */
+  it("ein Wert von VOR R221 wird einmal auf stumm gezogen — und die Wahl danach bleibt stehen", () => {
+    // ein Alt-Wert, wie ihn jede Fassung vor T8 geschrieben hat: ohne Marke
+    store.set(AUDIO_SETTINGS_KEY, JSON.stringify({ muted: false, music: true, sfx: true }));
+    expect(readAudioSettings(), "der Alt-Wert hat den R221-Default überstimmt").toEqual(AUDIO_DEFAULTS);
+    const danach = JSON.parse(store.get(AUDIO_SETTINGS_KEY) as string) as Record<string, unknown>;
+    expect(danach.muted, "die Normalisierung wurde nicht zurückgeschrieben — sie liefe bei jedem Lesen erneut").toBe(true);
+    expect(danach.r221, "ohne Marke ist der Wert beim nächsten Lesen wieder ein Alt-Wert").toBe(true);
+
+    // …und jetzt tippt jemand bewusst auf den Lautsprecher: das bleibt.
+    writeAudioSettings({ muted: false, music: true, sfx: true });
+    expect(readAudioSettings(), "die Normalisierung hat eine bewusste Wahl gefressen").toEqual({ muted: false, music: true, sfx: true });
+    expect(readAudioSettings(), "sie frisst sie beim zweiten Lesen").toEqual({ muted: false, music: true, sfx: true });
   });
 });
