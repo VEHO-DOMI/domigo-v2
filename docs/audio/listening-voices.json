@@ -18,8 +18,8 @@
     {
       "unit": "g2-u02",
       "taskKey": "museum",
-      "voice": "amelia",
-      "note": "Leonies Museumsausflug — die Kalibrier-Unit. K5a lieferte drei Kandidaten; Kokis Entscheid (P-R10) ist Amelia, also spricht auch das Exemplar ab jetzt Amelia."
+      "note": "Leonies Museumsausflug — die Kalibrier-Unit, in K4c auf 2–3 Minuten gehoben. Sie spricht ab jetzt über den CAST (Figur leonie), nicht über einen Stimm-Slug.",
+      "cast": "leonie"
     },
     {
       "unit": "g2-u03",
@@ -36,7 +36,20 @@
     {
       "unit": "g2-u05",
       "taskKey": "postoffice",
-      "voicesByTurn": ["amelia", "alice", "amelia", "alice", "amelia", "alice", "amelia", "alice", "amelia", "alice", "amelia", "alice"],
+      "voicesByTurn": [
+        "amelia",
+        "alice",
+        "amelia",
+        "alice",
+        "amelia",
+        "alice",
+        "amelia",
+        "alice",
+        "amelia",
+        "alice",
+        "amelia",
+        "alice"
+      ],
       "voiceSlug": "emma-frau",
       "roles": {
         "amelia": "Emma, das Kind, das nach dem Weg fragt",
@@ -76,5 +89,6 @@
       "voiceId": "XXphLKNRxvJ1Qa95KBhX",
       "wette": "Die Vorlese-Wette aus dem K5a-Rauchtest. Bleibt im Zettel als Kandidatin für künftige Stücke stehen, spricht in Staffel 1 aber kein Stück."
     }
-  ]
+  ],
+  "noteK4c": "K4c · Kalibrierung 2.0. Zwei Neuerungen: (1) Ein Stück darf statt eines rohen Stimm-Slugs eine FIGUR aus docs/audio/cast.json nennen (`cast` bzw. `castByTurn`) — dieselbe Figur spricht dann im ganzen Bau dieselbe Stimme (P-R13 Punkt 8). (2) Die ATEMPAUSEN: der Erzeuger leitet <break>-Marken aus der Interpunktion ab (clauseGapMs/sentenceGapMs/paraGapMs, je Stück überschreibbar), die Stille zwischen zwei Sprech-Rollen steuert turnGapMs. Alle vier Vorgaben sind an vier echten Verlags-Hörübungen geeicht (MORE! 2 Extra LC practice): dort sind 35 % der Spielzeit Stille, mit einer Pause etwa alle fünf Wörter, Median zwischen zwei Sprecher-Zügen 600–720 ms. Der Verlag spricht NICHT langsam — er lässt Luft."
 }

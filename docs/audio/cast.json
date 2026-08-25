@@ -1,0 +1,150 @@
+{
+  "schema": "cast@1",
+  "note": "DAS ENSEMBLE (P-R13 Punkt 8). Wiederkehrende Figuren mit fest gepinnter Stimme — statt Zufalls-Stimmen je Aufnahme. Der Erzeuger (gen-listening-voice.mjs) liest diese Datei: ein Stück nennt `cast: \"leonie\"` oder `castByTurn: [\"leonie\", \"david\", …]` und bekommt die Stimme daraus. Eine Figur, die hier fehlt, bricht den Lauf HART ab — eine still eingesetzte Ersatzstimme wäre die schlimmste Variante. Das Leseblatt CAST.md wird AUS dieser Datei erzeugt (docs/audio/cast-sheet.mjs); zwei handgepflegte Fassungen wären genau die Drift, gegen die V-LC7 gebaut wurde. Die Liste `freieStimmen` sind die am Vorsprechen abgenommenen Stimmen, die noch keiner Figur gehören: eine neue Figur nimmt eine davon, ohne dass Koki noch einmal hören muss.",
+  "decidedBy": "Koki, Ohr-Tor 1 der Bahn K4c, 2026-08-25 — »alle passen exakt auf ihre Rolle«. Neun britische Kandidat:innen aus dem eigenen Konto, ein identischer Satz, gleiches Tempo, gleiche Lautheit; Reihenfolge zufällig, Wetten eingeklappt. Das Ensemble ist damit FEST: eine Figur behält ihre Stimme, bis Koki sie ändert.",
+  "auditionPage": "/hoerprobe-cast.html",
+  "figures": [
+    {
+      "key": "leonie",
+      "name": "Leonie",
+      "role": "Schülerin, 13 — Erzählerin der Museums-Einheit",
+      "gender": "weiblich",
+      "voiceSlug": "amelia",
+      "voiceName": "Amelia — young and enthusiastic",
+      "voiceId": "ZF6FPAbjXT4488VcRRnw",
+      "speed": 0.9,
+      "unitsSoFar": [
+        "g2-u02"
+      ],
+      "note": "Kokis Wahl aus dem K5a-Rauchtest (P-R10) und am Vorsprechen K4c bestätigt: britisch, jung, lebhaft — am nächsten an der Stimme eines erzählenden Schulkinds."
+    },
+    {
+      "key": "david",
+      "name": "David",
+      "role": "Schüler, 13 — Leonies bester Freund",
+      "gender": "männlich",
+      "voiceSlug": "archie",
+      "voiceName": "Archie — English teen youth",
+      "voiceId": "kmSVBPu7loj4ayNinwWM",
+      "speed": 0.9,
+      "unitsSoFar": [
+        "g2-u02"
+      ],
+      "note": "Am Vorsprechen K4c gewählt: britische Teenager-Stimme, männlich — Punkt 4 des Rulings (Stimm-Geschlecht = Figuren-Geschlecht). Spricht Davids Rolle im Dialog-Teil."
+    },
+    {
+      "key": "ben",
+      "name": "Ben",
+      "role": "Schüler, 13 — Erzähler der Schultags- und der Camp-Einheit",
+      "gender": "männlich",
+      "voiceSlug": "toby",
+      "voiceName": "Toby — British Male",
+      "voiceId": "pYDLV125o4CgqP8i49Lg",
+      "speed": 0.9,
+      "unitsSoFar": [
+        "g2-u01",
+        "g2-u06"
+      ],
+      "note": "Ruhigste der drei jungen Männerstimmen — Ben erzählt, er plaudert nicht. Gilt ab Staffel 2; die Aufnahmen von Staffel 1 sprechen noch die alte Stimme."
+    },
+    {
+      "key": "mia",
+      "name": "Mia",
+      "role": "Schülerin, 12 — Erzählerin der Markt-Einheit",
+      "gender": "weiblich",
+      "voiceSlug": "blondie",
+      "voiceName": "Blondie — Children's Storyteller",
+      "voiceId": "XXphLKNRxvJ1Qa95KBhX",
+      "speed": 0.9,
+      "unitsSoFar": [
+        "g2-u03"
+      ],
+      "note": "Wärmer und langsamer als Amelia — Mia ist die jüngste der Erzählerinnen. Gilt ab Staffel 2."
+    },
+    {
+      "key": "emma",
+      "name": "Emma",
+      "role": "Schülerin, 13 — Erzählerin der Abstimmungs-Einheit",
+      "gender": "weiblich",
+      "voiceSlug": "amelia",
+      "voiceName": "Amelia — young and enthusiastic",
+      "voiceId": "ZF6FPAbjXT4488VcRRnw",
+      "speed": 0.9,
+      "unitsSoFar": [
+        "g2-u04"
+      ],
+      "note": "TEILT ihre Stimme mit Leonie: das Konto trägt nur zwei junge weibliche britische Stimmen. Emma und Leonie treten nie zusammen auf, darum ist die Doppelung heute unschädlich — sie ist trotzdem der erste Grund, die Bibliothek zu erweitern. Gilt ab Staffel 2."
+    },
+    {
+      "key": "lisa",
+      "name": "Lisa",
+      "role": "Schülerin, 13 — Erzählerin der Wochenend-Einheit",
+      "gender": "weiblich",
+      "voiceSlug": "blondie",
+      "voiceName": "Blondie — Children's Storyteller",
+      "voiceId": "XXphLKNRxvJ1Qa95KBhX",
+      "speed": 0.9,
+      "unitsSoFar": [
+        "g2-u07"
+      ],
+      "note": "TEILT ihre Stimme mit Mia (siehe Emma). ⚠ In g2-u06 heißt AUCH die erwachsene Camp-Leiterin Lisa — derselbe Name für zwei Menschen. Der Cast entscheidet: Lisa ist das Kind; die Camp-Leiterin bekommt in Staffel 2 einen anderen Namen. Gilt ab Staffel 2."
+    },
+    {
+      "key": "tom",
+      "name": "Tom",
+      "role": "Schüler, 13 — Nebenfigur (Kinopläne, g2-u07)",
+      "gender": "männlich",
+      "voiceSlug": "connor",
+      "voiceName": "Connor",
+      "voiceId": "qJXPML3QGhCJ3NLe2sEw",
+      "speed": 0.9,
+      "unitsSoFar": [],
+      "note": "Hat noch keine Sprechzeile; die Stimme ist gepinnt, damit er beim ersten Dialog nicht wieder ausgewürfelt wird."
+    },
+    {
+      "key": "mrs-smith",
+      "name": "Mrs Smith",
+      "role": "Lehrerin — begleitet die Klasse ins Museum",
+      "gender": "weiblich",
+      "voiceSlug": "alice",
+      "voiceName": "Alice — Clear, Engaging Educator",
+      "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+      "speed": 0.9,
+      "unitsSoFar": [
+        "g2-u02"
+      ],
+      "note": "Die Erwachsenen-Amtsinhaberin (spricht heute schon die Passantin in g2-u05). In g2-u02 zitiert Leonie sie nur — eine eigene Sprechzeile bekommt sie, sobald ein Stück sie braucht."
+    }
+  ],
+  "offen": "Das Konto trägt nur ZWEI junge weibliche britische Stimmen (amelia, blondie). Solange der Cast mehr Mädchen braucht als zwei, ist die ElevenLabs-Bibliothek die Quelle — ein Klick je Stimme in Kokis Konto, bewusst NICHT von dieser Bahn gemacht (Konto-Änderung gehört Koki).",
+  "freieStimmen": [
+    {
+      "slug": "lily",
+      "voiceName": "Lily — Velvety Actress",
+      "voiceId": "pFZP5JQG7iQjIQuC4Bku",
+      "rolle": "erwachsen, weiblich",
+      "note": "Am Vorsprechen von Koki abgenommen, noch keiner Figur zugeteilt — für die nächste erwachsene Frauenrolle, ohne neues Ohr-Tor."
+    },
+    {
+      "slug": "george",
+      "voiceName": "George — Warm, Captivating Storyteller",
+      "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+      "rolle": "erwachsen, männlich",
+      "note": "Abgenommen, frei — Vorlese-Ton, Kandidat für eine Erzählstimme."
+    },
+    {
+      "slug": "daniel",
+      "voiceName": "Daniel — Steady Broadcaster",
+      "voiceId": "onwK4e9ZLuTAKqWW03F9",
+      "rolle": "erwachsen, männlich",
+      "note": "Abgenommen, frei — maximale Deutlichkeit, Gegenpol zu George (Ansagen, Durchsagen, Führungen)."
+    },
+    {
+      "slug": "archie",
+      "voiceName": "Archie — English teen youth",
+      "voiceId": "kmSVBPu7loj4ayNinwWM",
+      "rolle": "jung, männlich",
+      "note": "An David gebunden; hier nur zur Vollständigkeit der abgenommenen Neun."
+    }
+  ]
+}

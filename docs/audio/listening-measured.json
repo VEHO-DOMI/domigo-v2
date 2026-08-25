@@ -195,54 +195,6 @@
       "loopEndSec": null,
       "headSilenceMs": 43
     },
-    "/audio/listening/g2-u02/museum--amelia--a3017913.mp3": {
-      "unit": "g2-u02",
-      "taskKey": "museum",
-      "voiceSlug": "amelia",
-      "voiceName": "Amelia — young and enthusiastic",
-      "voiceId": "ZF6FPAbjXT4488VcRRnw",
-      "modelId": "eleven_multilingual_v2",
-      "voiceSettings": {
-        "stability": 0.6,
-        "similarity_boost": 0.75,
-        "style": 0,
-        "use_speaker_boost": true,
-        "speed": 0.9
-      },
-      "scriptChars": 711,
-      "creditsCharged": 711,
-      "generatedMs": 8225,
-      "sha256Prefix": "a3017913",
-      "sha1": "8283a726b73d3515c4df25db9fe198f6376fa131",
-      "bytes": 676198,
-      "durationSec": 56.292,
-      "method": "lufs-i",
-      "loudnessDb": -16.6,
-      "truePeakDb": -1.7,
-      "rmsDb": -17.49,
-      "peakDb": -1.71,
-      "flatFactor": 0,
-      "centroidsHz": [
-        1349,
-        1822,
-        1462
-      ],
-      "tailSilenceMs": 150,
-      "seamDb": null,
-      "seamRatio": null,
-      "loopStartSec": null,
-      "loopEndSec": null,
-      "headSilenceMs": 63,
-      "voices": [
-        {
-          "role": null,
-          "slug": "amelia",
-          "name": "Amelia — young and enthusiastic",
-          "voiceId": "ZF6FPAbjXT4488VcRRnw"
-        }
-      ],
-      "noteK4b": "K5a-Aufnahme, unverändert übernommen — genau die Datei, die Koki im Rauchtest gehört und gewählt hat. Neu einsprechen hätte eine ANDERE Aufnahme derselben Stimme ergeben (TTS ist nicht bit-genau wiederholbar)."
-    },
     "/audio/listening/g2-u04/vote--amelia--598e1842.mp3": {
       "unit": "g2-u04",
       "taskKey": "vote",
@@ -336,6 +288,61 @@
       "loopStartSec": null,
       "loopEndSec": null,
       "headSilenceMs": 63
+    },
+    "/audio/listening/g2-u02/museum--leonie--898158b5.mp3": {
+      "unit": "g2-u02",
+      "taskKey": "museum",
+      "voiceSlug": "leonie",
+      "voiceName": "Amelia — young and enthusiastic",
+      "voiceId": "ZF6FPAbjXT4488VcRRnw",
+      "voices": [
+        {
+          "role": "Leonie — Schülerin, 13 — Erzählerin der Museums-Einheit",
+          "slug": "leonie",
+          "name": "Amelia — young and enthusiastic",
+          "voiceId": "ZF6FPAbjXT4488VcRRnw"
+        }
+      ],
+      "modelId": "eleven_multilingual_v2",
+      "voiceSettings": {
+        "stability": 0.6,
+        "similarity_boost": 0.75,
+        "style": 0,
+        "use_speaker_boost": true,
+        "speed": 0.9
+      },
+      "gaps": {
+        "clauseMs": 300,
+        "sentenceMs": 550,
+        "paraMs": 700,
+        "turnMs": null
+      },
+      "scriptChars": 1718,
+      "spokenChars": 2983,
+      "creditsCharged": 2323,
+      "generatedMs": 20446,
+      "scriptSha8": "0cf15e4f",
+      "sha256Prefix": "898158b5",
+      "sha1": "92c29cc14bf8fc1a756c4703d0ef1404544b23fc",
+      "bytes": 1722872,
+      "durationSec": 143.498,
+      "method": "lufs-i",
+      "loudnessDb": -16.6,
+      "truePeakDb": -1.7,
+      "rmsDb": -17.96,
+      "peakDb": -1.69,
+      "flatFactor": 0,
+      "centroidsHz": [
+        1939,
+        4826,
+        4196
+      ],
+      "tailSilenceMs": 149,
+      "seamDb": null,
+      "seamRatio": null,
+      "loopStartSec": null,
+      "loopEndSec": null,
+      "headSilenceMs": 52
     }
   },
   "targetLufs": -16,
