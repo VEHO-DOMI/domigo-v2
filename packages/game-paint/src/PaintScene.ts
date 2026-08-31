@@ -5109,6 +5109,7 @@ export class PaintScene extends Phaser.Scene {
     }
     const img = this.add.image(p.x, p.y, key).setOrigin(p.originX ?? 0, p.originY ?? 0).setDepth(p.depth);
     img.setDisplaySize(p.w, p.h);
+    if (p.flipX !== undefined) img.setFlipX(p.flipX);
     // R5-W9 · F10 · D-639: das Quellfenster des BILD-Zweigs. `setCrop` schneidet
     // in QUELL-Bildpunkten und aendert den Massstab nicht — das Stueck zeichnet
     // sein Blatt weiterhin in derselben Groesse, es zeigt nur weniger davon.

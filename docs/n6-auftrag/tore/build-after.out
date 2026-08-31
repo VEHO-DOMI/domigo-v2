@@ -1,0 +1,115 @@
+[WARN] Unsupported engine: wanted: {"node":">=24"} (current: {"node":"v22.23.1","pnpm":"11.5.3"})
+$ pnpm --filter web run build
+.                                        | [WARN] Unsupported engine: wanted: {"node":">=24"} (current: {"node":"v22.23.1","pnpm":"11.5.3"})
+$ next build
+▲ Next.js 16.2.7 (Turbopack)
+
+⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+  Creating an optimized production build ...
+Turbopack build encountered 1 warnings:
+./apps/web/next.config.ts
+Encountered unexpected file in NFT list
+A file was traced that indicates that the whole project was traced unintentionally. Somewhere in the import trace below, there are:
+- filesystem operations (like path.join, path.resolve or fs.readFile), or
+- very dynamic requires (like require('./' + foo)).
+To resolve this, you can
+- remove them if possible, or
+- only use them in development, or
+- make sure they are statically scoped to some subfolder: path.join(process.cwd(), 'data', bar), or
+- add ignore comments: path.join(/*turbopackIgnore: true*/ process.cwd(), bar)
+
+Import trace:
+  Server Component:
+    ./apps/web/next.config.ts
+    ./apps/web/lib/story-art.ts
+    ./apps/web/app/(game)/play/[grade]/[zone]/page.tsx
+
+
+✓ Compiled successfully in 15.6s
+  Running TypeScript ...
+  Finished TypeScript in 18.5s ...
+  Collecting page data using 9 workers ...
+  Generating static pages using 9 workers (0/5) ...
+  Generating static pages using 9 workers (1/5)
+  Generating static pages using 9 workers (2/5)
+  Generating static pages using 9 workers (3/5)
+✓ Generating static pages using 9 workers (5/5) in 135ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ƒ /admin
+├ ƒ /admin/assignments
+├ ƒ /admin/assignments/[id]
+├ ƒ /admin/assignments/new
+├ ƒ /admin/classes
+├ ƒ /admin/classes/[id]
+├ ƒ /admin/classes/[id]/hoeren
+├ ƒ /admin/classes/[id]/roster
+├ ƒ /admin/classes/[id]/schreiben
+├ ƒ /admin/grandmaster
+├ ƒ /admin/hilfe
+├ ƒ /admin/settings
+├ ƒ /admin/signin
+├ ƒ /admin/studio
+├ ƒ /admin/studio/[slug]
+├ ƒ /admin/studio/new
+├ ƒ /api/admin/assignments
+├ ƒ /api/admin/assignments/compose-checkup
+├ ƒ /api/admin/catalog
+├ ƒ /api/admin/classes
+├ ƒ /api/admin/classes/[id]
+├ ƒ /api/admin/classes/[id]/roster
+├ ƒ /api/admin/progress-adjust
+├ ƒ /api/admin/roster/[studentId]
+├ ƒ /api/admin/studio
+├ ƒ /api/admin/studio/drafts
+├ ƒ /api/admin/teacher-pin/reset
+├ ƒ /api/admin/teacher/email
+├ ƒ /api/admin/teacher/pin
+├ ƒ /api/admin/writing-review
+├ ƒ /api/assignments/attempt
+├ ƒ /api/assignments/submit
+├ ƒ /api/attempts
+├ ƒ /api/auth/[...nextauth]
+├ ƒ /api/funken
+├ ƒ /api/game-save
+├ ƒ /api/ops/session-link
+├ ƒ /api/ops/test-students
+├ ƒ /api/study-path
+├ ƒ /api/version
+├ ƒ /api/writing-submission
+├ ƒ /assignments
+├ ƒ /assignments/[id]
+├ ƒ /bootstrap
+├ ƒ /home
+├ ƒ /join/[code]
+├ ƒ /learn
+├ ƒ /learn/[slug]
+├ ƒ /learn/[slug]/[node]
+├ ƒ /lehrkraft/[token]
+├ ƒ /lehrkraft/pin-reset/[token]
+├ ƒ /lehrkraft/pin-vergessen
+├ ƒ /listening
+├ ƒ /listening/[slug]
+├ ○ /manifest.webmanifest
+├ ƒ /play
+├ ƒ /play/[grade]
+├ ƒ /play/[grade]/[zone]
+├ ƒ /play/[grade]/buch
+├ ƒ /play/[grade]/run
+├ ƒ /play/[grade]/world
+├ ƒ /practice
+├ ƒ /practice/[slug]
+├ ƒ /review
+├ ƒ /review/session
+├ ƒ /signin
+├ ƒ /tests
+└ ƒ /tests/[slug]
+
+
+ƒ Proxy (Middleware)
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand

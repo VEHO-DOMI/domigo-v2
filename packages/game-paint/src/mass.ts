@@ -439,7 +439,7 @@ export type MassKind =
   // underside is the face over the child's head. Its five siblings are out for
   // the same reason, and `composition.test.ts` states that as law.
   | "edgeL" | "edgeR" | "edgeD" | "cornerBL" | "cornerBR" | "inCornerL" | "inCornerR"
-  | "ramp" | "platform"
+  | "ramp" | "platform" | "joint"
   | "slideUnder" | "slideTop" | "slideMid" | "slideFoot"
   | "fallbackFill";
 
@@ -468,6 +468,8 @@ export interface MassPiece {
    *  Rotated pieces anchor ON the diagonal, so they need an explicit origin. */
   originX?: number;
   originY?: number;
+  /** mirrored connector at the left end of a platform group */
+  flipX?: boolean;
   /** true ⇒ a tileSprite (seamless run); false ⇒ one Image */
   tile?: boolean;
   /**
@@ -567,8 +569,63 @@ export const tileAnchorFor = (p: MassPiece, scale: { x: number; y: number }): { 
   y: p.tileAnchor === "x" || scale.y <= 0 ? 0 : p.y / scale.y,
 });
 
+/**
+ * N6 · THE OUTSIDE JOINS. A platform run may be covered by two complete
+ * painted objects, but the child should read one built ledge. This planner
+ * emits one bookbinder at each outside end of a contiguous object group;
+ * internal object boundaries stay clean and do not grow a third seam.
+ *
+ * The connector is painted at the course's scale. Its collar sits at 43 % of
+ * the source width (measured on the delivered sheet), so the saddle overlaps
+ * the platform edge while the page fold tucks into the object.
+ */
+export const platformJoinPieces = (
+  platforms: readonly MassPiece[],
+  stem: string,
+  paintScale: number,
+  source: { w: number; h: number } = { w: 320, h: 220 },
+): MassPiece[] => {
+  if (platforms.length === 0 || source.w <= 0 || source.h <= 0 || paintScale <= 0) return [];
+  const groups = new Map<number, MassPiece[]>();
+  for (const p of platforms.filter((q) => q.kind === "platform")) {
+    const row = groups.get(p.r) ?? [];
+    row.push(p);
+    groups.set(p.r, row);
+  }
+  const out: MassPiece[] = [];
+  const collar = 0.43;
+  const w = source.w * paintScale;
+  const h = source.h * paintScale;
+  for (const row of groups.values()) {
+    row.sort((a, b) => a.x - b.x);
+    let first: MassPiece | undefined;
+    let last: MassPiece | undefined;
+    const emit = (): void => {
+      if (first === undefined || last === undefined) return;
+      const leftX = first.x - w * (1 - collar);
+      const rightX = last.x + last.w - w * collar;
+      const y = first.y + (first.h - h) / 2;
+      out.push(
+        { kind: "joint", stem, c: first.c, r: first.r, x: leftX, y, w, h, depth: DEPTH.joint, flipX: true },
+        { kind: "joint", stem, c: last.c, r: last.r, x: rightX, y, w, h, depth: DEPTH.joint, flipX: false },
+      );
+    };
+    for (const p of row) {
+      if (first === undefined || last === undefined) { first = p; last = p; continue; }
+      // A shrunken image still owns its original grid span; the half-cell
+      // allowance bridges only that deliberate painted inset.
+      if (p.x <= last.x + last.w + TILE * 0.6) { last = p; continue; }
+      emit();
+      first = p;
+      last = p;
+    }
+    emit();
+  }
+  return out;
+};
+
 const DEPTH = {
-  body: 1, ramp: 1.5, crust: 2, trim: 2.2, cap: 2.3, platform: 2.5, slide: 2.6,
+  body: 1, ramp: 1.5, crust: 2, trim: 2.2, cap: 2.3, platform: 2.5, joint: 2.65, slide: 2.6,
 } as const;
 
 const gridSize = (grid: readonly string[]): { w: number; h: number } => ({
@@ -1180,6 +1237,11 @@ export const planMass = (
       }
     }
     for (const cell of claimedPlatformCells(grid)) claimed.add(cell);
+    if (kit.joint !== undefined) {
+      const platformPieces = out.filter((p) => p.kind === "platform");
+      const source = srcSize?.(kit.joint) ?? undefined;
+      out.push(...platformJoinPieces(platformPieces, kit.joint, crustScale, source));
+    }
   }
 
   // ── 2 · interior mass: body → fade → sediment, as seamless per-row runs ────

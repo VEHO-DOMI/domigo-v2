@@ -1,0 +1,6 @@
+headless plan check: PASS
+p1: joints=18 total=182 stem=terrain_join_bookbinder
+p2: joints=14 total=409 stem=terrain_join_bookbinder
+p3: joints=14 total=288 stem=terrain_join_bookbinder
+p4: joints=0 total=54 stem=none
+p9: joints=8 total=68 stem=terrain_join_bookbinder

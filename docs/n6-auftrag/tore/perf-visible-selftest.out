@@ -1,0 +1,16 @@
+✓ eine Kontrolle mit 60.2 fps wird angenommen
+✓ dieselbe Messung, Schwelle über den Messwert gebogen ⇒ ABBRUCH (der rote Zweig ist erreichbar)
+✓ die Abbruch-Meldung nennt den Grund (Werkzeug statt Spiel)
+✓ eine fehlende Kontrollmessung ist kein Freibrief
+✓ eine gedrosselte Kontrolle (30 fps) bricht ab
+✓ eine fehlende create()-Zahl wird als Lücke erkannt
+✓ eine vollständige Messung meldet keine Lücke
+✓ die Lückenmeldung der Sonde kommt MIT Grund durch und wird nicht verdoppelt
+✓ meldet die Sonde nichts, findet die eigene Prüfung die Lücke trotzdem (kein Ausfall des Tors)
+✓ TAMPER sass: eine Zahl ist wirklich verschwunden
+✓ TAMPER: dieselbe Zeile minus EINE Zahl ⇒ Lücke erkannt (das rote Licht ist erreichbar)
+✓ die erzeugte Tabelle erfüllt check-perf-table (alle fünf Phasen mit Ziffern)
+✓ eine Tabelle ganz ohne Messwerte fällt durch dasselbe Tor
+✓ bau+aufbau wird addiert, nicht nur aufbau berichtet (P-77)
+
+perf-visible SELBSTTEST: OK — die Kontrollschwelle hat ihr rotes Licht gesehen.

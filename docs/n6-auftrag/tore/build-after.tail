@@ -1,0 +1,59 @@
+├ ƒ /admin/studio/new
+├ ƒ /api/admin/assignments
+├ ƒ /api/admin/assignments/compose-checkup
+├ ƒ /api/admin/catalog
+├ ƒ /api/admin/classes
+├ ƒ /api/admin/classes/[id]
+├ ƒ /api/admin/classes/[id]/roster
+├ ƒ /api/admin/progress-adjust
+├ ƒ /api/admin/roster/[studentId]
+├ ƒ /api/admin/studio
+├ ƒ /api/admin/studio/drafts
+├ ƒ /api/admin/teacher-pin/reset
+├ ƒ /api/admin/teacher/email
+├ ƒ /api/admin/teacher/pin
+├ ƒ /api/admin/writing-review
+├ ƒ /api/assignments/attempt
+├ ƒ /api/assignments/submit
+├ ƒ /api/attempts
+├ ƒ /api/auth/[...nextauth]
+├ ƒ /api/funken
+├ ƒ /api/game-save
+├ ƒ /api/ops/session-link
+├ ƒ /api/ops/test-students
+├ ƒ /api/study-path
+├ ƒ /api/version
+├ ƒ /api/writing-submission
+├ ƒ /assignments
+├ ƒ /assignments/[id]
+├ ƒ /bootstrap
+├ ƒ /home
+├ ƒ /join/[code]
+├ ƒ /learn
+├ ƒ /learn/[slug]
+├ ƒ /learn/[slug]/[node]
+├ ƒ /lehrkraft/[token]
+├ ƒ /lehrkraft/pin-reset/[token]
+├ ƒ /lehrkraft/pin-vergessen
+├ ƒ /listening
+├ ƒ /listening/[slug]
+├ ○ /manifest.webmanifest
+├ ƒ /play
+├ ƒ /play/[grade]
+├ ƒ /play/[grade]/[zone]
+├ ƒ /play/[grade]/buch
+├ ƒ /play/[grade]/run
+├ ƒ /play/[grade]/world
+├ ƒ /practice
+├ ƒ /practice/[slug]
+├ ƒ /review
+├ ƒ /review/session
+├ ƒ /signin
+├ ƒ /tests
+└ ƒ /tests/[slug]
+
+
+ƒ Proxy (Middleware)
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand

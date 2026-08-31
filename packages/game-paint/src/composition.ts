@@ -14,6 +14,8 @@
 // A phase with NO entry here renders exactly as it did before PB-C1 (the
 // fallback law) — nothing may break while art is pending.
 
+import { TERRAIN_JOIN_STEM } from "./artManifest.ts";
+
 /** A length that may be stated absolutely or bound to the phase's world box. */
 export type Measure = number | "world" | "floor";
 
@@ -136,6 +138,8 @@ export interface MassKit {
   platObjects: readonly { stem: string; cells: number; deck?: number }[];
   /** the chalk slide (`z` runs): top / repeatable mid / run-out foot + strut. */
   slide?: { top: string; mid: string; foot: string; under: string };
+  /** Painted bindery at the outside ends of platform-object groups. */
+  joint?: string;
 }
 
 /**
@@ -511,6 +515,7 @@ export const massStems = (m: MassKit): string[] => {
   // `composition.test.ts` fest: sobald irgendein Gitter einen Steigungs-Glyph
   // trägt, müssen die Rampen-Blätter seines Kits auf der Platte liegen.
   out.push(m.edgeL, m.edgeR, m.cornerBL, m.cornerBR, m.inCornerL, m.inCornerR);
+  if (m.joint !== undefined) out.push(m.joint);
   // ★ R5-W7 · A8 · D-27. Conditional, like the ramps above are absent: this list
   // decides what a phase LOADS (`compositionStems` → `phaseArtScope`) and it is
   // the floor `check-paint-art` measures against, so an unconditional underside
@@ -960,6 +965,7 @@ const sharedMass = (phase: string): Omit<MassKit, "crust" | "crustCapL" | "crust
   // belongs — §10.3's motif law, drawn by the engine instead of by a painter.
   ...(PAINTED_UNDERSIDE_PHASES.has(phase) ? paintedUnderside(phase) : {}),
   trimShade: TRIM_SHADE_BY_PHASE[phase],
+  joint: TERRAIN_JOIN_STEM,
   // No ramp sheets: R109 withdrew them and E6 deleted the two placeholders. A
   // surface that grows a slope orders its own (D-324, and the field's own note).
   platObjects: PLAT_OBJECTS[phase] ?? PLAT_OBJECTS.p1 ?? [],

@@ -45,6 +45,7 @@ import {
   nakedFills,
   PLAT_SHADOW,
   planMass,
+  platformJoinPieces,
   planPlatformShadows,
   shortestPeriod,
   surfaceSignature,
@@ -724,6 +725,17 @@ describe("the carved mass (doc 36 §2)", () => {
     const plats = planMass(g3, kit).filter((q) => q.kind === "platform");
     expect(plats.map((q) => q.stem)).toEqual(["plat_2", "plat_1"]);
     expect(plats.reduce((s, q) => s + q.w, 0)).toBe(3 * TILE);
+  });
+
+  it("binds a multi-object ledge only at its two outside ends", () => {
+    const g3 = ["........", "..###...", "........", "########"];
+    const platforms = planMass(g3, kit).filter((q) => q.kind === "platform");
+    const joins = platformJoinPieces(platforms, "terrain_join_bookbinder", CRUST_H / 212, { w: 320, h: 220 });
+    expect(joins).toHaveLength(2);
+    expect(joins.map((q) => q.flipX)).toEqual([true, false]);
+    expect(joins[0]?.x).toBeLessThan(platforms[0]!.x);
+    expect(joins[1]?.x).toBeGreaterThan(platforms[1]!.x);
+    for (const q of joins) expect(q.w / 320).toBeCloseTo(CRUST_H / 212);
   });
 
   it("treats an anchored ledge as terrain, not as a platform object", () => {
