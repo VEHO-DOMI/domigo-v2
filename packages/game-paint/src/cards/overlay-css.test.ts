@@ -587,6 +587,17 @@ describe("R5-W3 · J2 · R21 · the hand, and where it stops (Kokis D2-Kanon)", 
     expect(rgb, "--pb-ink-rgb has drifted from --pb-ink").toEqual([0, 2, 4].map((i) => parseInt(hex.slice(i, i + 2), 16)));
   });
 
+  it("--pb-seal-rgb has not drifted from --pb-seal (R5-W9 · N1)", () => {
+    // der zweite Zwilling des Hauses, angelegt für den Pinselwisch unter dem
+    // Schlüssel-Englisch. Er bekommt dieselbe Fessel wie der erste am selben
+    // Tag, an dem er entsteht — eine dauerhafte Absicht ohne Wächter ist keine.
+    const card = baseRule(PAINT_OVERLAY_CSS, "pb-card");
+    const hex = /--pb-seal:\s*#([0-9a-f]{6})/i.exec(card)?.[1] ?? "";
+    const rgb = /--pb-seal-rgb:\s*(\d+),\s*(\d+),\s*(\d+)/.exec(card)?.slice(1).map(Number) ?? [];
+    expect(hex, "--pb-seal is not a 6-digit hex any more").toHaveLength(6);
+    expect(rgb, "--pb-seal-rgb has drifted from --pb-seal").toEqual([0, 2, 4].map((i) => parseInt(hex.slice(i, i + 2), 16)));
+  });
+
   it("the four open surfaces read the family's ink — no pre-family contour is left inside the veil", () => {
     // R21: the open surfaces join. »#b78d51« was the amber contour of the era
     // before this look; after this round the ONE copy left is .pb-hud-chip, which
@@ -599,11 +610,51 @@ describe("R5-W3 · J2 · R21 · the hand, and where it stops (Kokis D2-Kanon)", 
     const hits = [...declsOnly.matchAll(/#b78d51/g)].length;
     expect(hits, "a pre-family contour came back inside the card").toBe(1);
     expect(baseRule(PAINT_OVERLAY_CSS, "pb-hud-chip")).toContain("#b78d51");
-    for (const cls of ["pb-rule-band", "pb-merk-slot", "pb-eyebrow", "pb-merk-topic"]) {
-      expect(baseRule(PAINT_OVERLAY_CSS, cls), `${cls} still carries a hard-coded ink`).toMatch(/var\(--pb-(ink|quiet-ink)/);
+    // ★ R5-W9 · N1 · DAS GESETZ SAGT JETZT, WAS ES MEINT.
+    //
+    // Es stand als »jede dieser Klassen MUSS ein var(--pb-…) tragen« da, und das
+    // ist eine Stellvertreter-Formulierung: gemeint war »keine trägt eine
+    // festgetippte Tinte«. Der Unterschied wurde in dieser Runde bezahlt —
+    // .pb-merk-slot hat seinen Zitat-Balken verloren (Kokis »KI-Optik«, Befund
+    // D-770 Punkt 4) und trägt seitdem GAR KEINE Tinte mehr. Nach dem
+    // Wortlaut war das ein Verstoss, nach dem Sinn die stärkste Erfüllung, die
+    // es gibt. Ein Balken, den man nur wieder einbaut, damit ein Prüfer grün
+    // wird, wäre der Fehler gewesen.
+    //
+    // Also: keine festgetippte Tinte, und jede Farb-Deklaration, die es gibt,
+    // kommt aus der Familie. Die Liste wächst dabei um die vier Flächen, die N1
+    // neu gebaut hat — eine Fläche, die nicht in der Liste steht, ist eine, die
+    // niemand prüft.
+    const OFFENE_FLAECHEN = [
+      "pb-rule-band", "pb-merk-slot", "pb-eyebrow",
+      "pb-rule-titel", "pb-en-mark", "pb-rule-zettel", "pb-bsp",
+    ];
+    // ⚠ KOMMENTARE ZUERST WEG. Der Vorgänger dieser Prüfung zählte ausdrücklich
+    // über DEKLARATIONEN und nicht über Rohtext, und zwar weil .pb-rule-band in
+    // seinem eigenen Kommentar den abgelösten Hex »#b78d51« NENNT. Ein Wächter,
+    // der Prosa mitliest, meldet die Dokumentation des Fixes als den Fehler —
+    // dieselbe Klasse hat im Register schon sechs Tage Fehlalarm gekostet.
+    const declsOf = (cls: string): string =>
+      baseRule(PAINT_OVERLAY_CSS, cls).replace(/\/\*[\s\S]*?\*\//g, "");
+    for (const cls of OFFENE_FLAECHEN) {
+      const rule = declsOf(cls);
+      expect(baseRule(PAINT_OVERLAY_CSS, cls), `${cls} wurde nicht gefunden — die Suche ist blind, nicht grün`).not.toBe("");
+      expect(rule, `${cls} trägt eine festgetippte Tinte`).not.toMatch(/#[0-9a-fA-F]{3,8}\b/);
+      // TINTE, nicht Schatten: `color`, Ränder und Gründe sind der Stift des
+      // Buchs und gehören der Familie. `box-shadow` ist Schattierung — die
+      // weichen Wolken der Karten sind seit jeher freie rgba-Werte, und sie
+      // hier einzufangen hiesse, eine Regel zu erfinden, die das Haus nie
+      // getroffen hat. Ausgenommen und gesagt, statt still nicht geprüft.
+      for (const decl of rule.match(/(?:color|border[a-z-]*|background[a-z-]*|outline[a-z-]*)\s*:[^;]*/g) ?? []) {
+        if (/\b(rgb|hsl)a?\(/.test(decl)) {
+          expect(decl, `${cls}: eine Farbe ausserhalb der Familie`).toMatch(/var\(--pb-/);
+        }
+      }
     }
-    // and the two dead rules stay dead — dressing them would have been theatre
-    for (const dead of [".pb-portrait", ".pb-treasure-plate"]) {
+    // and the dead rules stay dead — dressing them would have been theatre.
+    // `.pb-merk-topic` joined them in N1: es war der Versalien-Titel, den Koki
+    // als unauffälligste Zeile der Karte gelesen hat.
+    for (const dead of [".pb-portrait", ".pb-treasure-plate", ".pb-merk-topic"]) {
       expect(PAINT_OVERLAY_CSS, `${dead} came back`).not.toContain(`${dead} {`);
     }
   });

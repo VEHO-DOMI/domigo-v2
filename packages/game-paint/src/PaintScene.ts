@@ -1702,7 +1702,11 @@ export class PaintScene extends Phaser.Scene {
           this.letterImgs.delete(`${ev.c},${ev.r}`);
           break;
         }
-        case "tip": cb.onTip({ id: ev.id, skin: ev.skin, topicDe: ev.topicDe, erklaerungDe: ev.erklaerungDe, merksatzDe: ev.merksatzDe, schluesselDe: ev.schluesselDe, beispieleEn: ev.beispieleEn, belegDe: ev.belegDe }); break;
+        // ⚠ R5-W9 · N1: diese Zeile listet JEDES Feld der Nutzlast von Hand auf.
+        // Ein neues Feld muss hier nachgetragen werden, sonst kommt es an der
+        // Karte nie an — der Compiler fängt es (TipPayload ist geschlossen),
+        // aber die Klasse „zwei Kopien einer Nutzlast" bleibt. Gemeldet.
+        case "tip": cb.onTip({ id: ev.id, skin: ev.skin, topicDe: ev.topicDe, erklaerungDe: ev.erklaerungDe, merksatzDe: ev.merksatzDe, schluesselDe: ev.schluesselDe, beispieleEn: ev.beispieleEn, lehrtEn: ev.lehrtEn, beispielMuster: ev.beispielMuster, belegDe: ev.belegDe }); break;
         case "book": cb.onBook(ev.id, ev.got); break;
         // R5-W5 · G4 · the found uniform piece: its English word, standing at the
         // spot it was lying on. Two finds in quick succession STACK (design §1) —

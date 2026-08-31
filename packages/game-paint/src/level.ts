@@ -7,6 +7,7 @@
 // reach is a defect, not a secret).
 
 import { MAX_LINE_DE, cloakErrorsDe, registerErrorsDe } from "@domigo/content-schema";
+import { BEISPIEL_MUSTER, BEISPIEL_PAAR_TRENNER } from "./rule-text.ts";
 import { type Grid, glyphAt, isOneWay, isSlope, isSolid } from "./collide.ts";
 import { PAINT, SUBS, TILE } from "./paint.ts";
 import { platformPathAt } from "./entities.ts";
@@ -167,6 +168,31 @@ export interface EntityParams {
    *  An ARRAY rather than one string because a rule with one example is a rule
    *  demonstrated once, and the shipped pages proved that reads as an alibi. */
   beispieleEn?: string[];
+  /** tip: WIE die Beispiele dieser Seite gelesen werden — die didaktische Form,
+   *  nicht die Dekoration.
+   *
+   *  ★ R5-W9 · N1 · KOKIS BEFUND D-770 (31.08.): auf der Befehls-Seite standen
+   *  „Sit down!" und „Don't sit down!" in derselben Farbe, derselben Größe,
+   *  untereinander — zwei Zeilen, die das Gegenteil voneinander sagen, sahen
+   *  identisch aus. Dieselbe Liste trug auf der Plural-Seite Paare („one book –
+   *  two books") und auf der Zahlen-Seite Einzelsätze. Eine Karte kann das nur
+   *  unterscheiden, wenn die SEITE sagt, welche Form ihre Beispiele haben.
+   *
+   *  Vier Formen, weil das Kapitel vier Arten von Regel hat:
+   *    · `wandel`    — links die Ausgangsform, rechts die gelehrte Form
+   *                    („I am here. – I'm here."); die Karte zeigt den Weg.
+   *    · `gegensatz` — zwei Handlungen nebeneinander, BEIDE richtig, eine davon
+   *                    verneint. ⚠ Nie als richtig/falsch gezeichnet: Koki hat
+   *                    die durchgestrichene Falschform am 15.08. abgeschafft
+   *                    („Wir wollen KEINE Fehler zeigen").
+   *    · `dialog`    — Frage und Antwort („What's your name? – I'm Merle.").
+   *    · `einzeln`   — ein vollständiger Satz je Zeile, ohne Gegenüber.
+   *
+   *  Es ist eine DEKLARATION, die das Gesetz unten gegen die Daten prüft: eine
+   *  Seite, die `wandel` sagt und Einzelsätze liefert, wird rot, statt still
+   *  als Liste zu rendern. Ohne diese Prüfung wäre das Feld eine Notiz statt
+   *  eines Vertrags — und die Karte zeichnete eine Form, die es nicht gibt. */
+  beispielMuster?: string;
   /** tip: THE FORMS THIS PAGE TEACHES — declared, so the examples can be judged
    *  against something other than their author's intention.
    *
@@ -852,11 +878,24 @@ export const MAX_ERKLAERUNG = 120;
 export const MIN_BEISPIELE = 2;
 export const MAX_BEISPIELE = 4;
 
+/** Die vier Lese-Formen und die Paar-Trennmarke wohnen in `rule-text.ts` —
+ *  EIN Eigentümer, drei Leser (dieses Gesetz, die Karte, das Hub-Brett). Sie
+ *  hier zu wiederholen wäre die Zwillings-Drift, die diese Runde gerade an
+ *  `splitKey` abgeschafft hat; re-exportiert, damit die Gesetz-Leser sie
+ *  weiterhin aus `level.ts` beziehen können. */
+export { BEISPIEL_MUSTER, BEISPIEL_PAAR_TRENNER } from "./rule-text.ts";
+
+/** Woran eine verneinte englische Zeile zu erkennen ist. Bewusst klein und
+ *  benannt: das Gesetz sagt damit laut, WAS es für eine Verneinung hält,
+ *  statt es zu erraten. */
+const VERNEINUNG_EN = /(n't\b|\bnot\b|\bnever\b)/i;
+
 /** Every params field a `role: "tip"` entity may carry. Stated as a closed set
  *  because this is the one payload rendered straight to a child: an open record
  *  turns a mistyped field name into a missing card line that nothing reports. */
 export const TIP_PARAM_KEYS: ReadonlySet<string> = new Set([
-  "topicDe", "erklaerungDe", "merksatzDe", "schluesselDe", "beispieleEn", "lehrtEn", "belegDe", "hidden",
+  "topicDe", "erklaerungDe", "merksatzDe", "schluesselDe", "beispieleEn", "beispielMuster",
+  "lehrtEn", "belegDe", "hidden",
 ]);
 
 /** How long a Regel-Seite's bold key may be — bound to `cards/Glance.tsx`'s
@@ -1148,6 +1187,53 @@ export const checkLevelLaws = (level: PaintLevel): LawFailure[] => {
         for (const [i, ex] of low.entries()) {
           if (!lehrt.some((f) => typeof f === "string" && f.trim() !== "" && ex.includes(f.toLowerCase()))) {
             failures.push({ phase: "*", law: "tip-honesty", detail: `Regel-Seite ${t.id}: beispieleEn[${i}] „${examples[i]}" zeigt keine der Formen, die diese Seite lehrt — ein Beispiel, das die Regel nicht vorführt, füllt nur die Liste` });
+          }
+        }
+      }
+
+      // ★ R5-W9 · N1 · DIE LESE-FORM IST EINE DEKLARATION, KEINE NOTIZ.
+      //
+      // Kokis Befund D-770: die vier Zeilen der Befehls-Seite sahen identisch
+      // aus, obwohl zwei von ihnen das Gegenteil der anderen zwei sagen. Die
+      // Karte kann sie nur trennen, wenn die Seite ihre Form NENNT — und dann
+      // muss die Nennung stimmen, sonst zeichnet die Karte eine Form, die die
+      // Daten nicht hergeben. Deshalb wird jede der vier Formen gegen die
+      // Beispiele nachgerechnet, nicht geglaubt.
+      const muster = t.params?.beispielMuster;
+      const zeilen = Array.isArray(bsp) ? bsp.filter((x): x is string => typeof x === "string") : [];
+      if (muster === undefined || muster.trim() === "") {
+        failures.push({ phase: "*", law: "tip-honesty", detail: `Regel-Seite ${t.id} nennt kein beispielMuster — die Karte wüsste nicht, ob ihre Beispiele ein Wandel, ein Gegensatz, ein Wortwechsel oder Einzelsätze sind` });
+      } else if (!BEISPIEL_MUSTER.has(muster)) {
+        failures.push({ phase: "*", law: "tip-honesty", detail: `Regel-Seite ${t.id}: beispielMuster „${muster}" ist keine der vier Lese-Formen (${[...BEISPIEL_MUSTER].join(" · ")})` });
+      } else if (muster === "wandel" || muster === "dialog") {
+        // ein Paar heisst: links steht etwas, rechts steht etwas, und dazwischen
+        // GENAU eine Trennmarke — zwei Marken wären zwei Paare in einer Zeile.
+        for (const [i, ex] of zeilen.entries()) {
+          const teile = ex.split(BEISPIEL_PAAR_TRENNER);
+          if (teile.length !== 2 || teile.some((s) => s.trim() === "")) {
+            failures.push({ phase: "*", law: "tip-honesty", detail: `Regel-Seite ${t.id}: beispieleEn[${i}] ist als „${muster}" erklärt, trägt aber kein Paar »links – rechts« — „${ex}"` });
+          }
+        }
+      } else if (muster === "einzeln") {
+        for (const [i, ex] of zeilen.entries()) {
+          if (ex.includes(BEISPIEL_PAAR_TRENNER)) {
+            failures.push({ phase: "*", law: "tip-honesty", detail: `Regel-Seite ${t.id}: beispieleEn[${i}] trägt eine Paar-Trennmarke, ist aber als „einzeln" erklärt — „${ex}"` });
+          }
+        }
+      } else {
+        // `gegensatz`: je zwei Zeilen sind EIN Paar — erst das Tun, dann sein
+        // Nicht-Tun. Beide sind richtiges Englisch; was sie unterscheidet, ist
+        // die Verneinung, und genau die muss in der zweiten Zeile stehen und in
+        // der ersten fehlen. Sonst zeichnete die Karte ihre zwei Spalten über
+        // Zeilen, die gar kein Gegensatzpaar sind.
+        if (zeilen.length % 2 !== 0) {
+          failures.push({ phase: "*", law: "tip-honesty", detail: `Regel-Seite ${t.id}: „gegensatz" braucht eine gerade Zahl von Beispielen — je ein Tun und sein Nicht-Tun; die Seite hat ${zeilen.length}` });
+        }
+        for (let i = 0; i + 1 < zeilen.length; i += 2) {
+          const tun = zeilen[i]!;
+          const nicht = zeilen[i + 1]!;
+          if (VERNEINUNG_EN.test(tun) || !VERNEINUNG_EN.test(nicht)) {
+            failures.push({ phase: "*", law: "tip-honesty", detail: `Regel-Seite ${t.id}: „${tun}" / „${nicht}" ist kein Tun-dann-Nicht-Tun-Paar — die erste Zeile eines Paares steht ohne Verneinung, die zweite mit` });
           }
         }
       }

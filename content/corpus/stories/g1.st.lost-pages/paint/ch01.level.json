@@ -108,16 +108,17 @@
      "r": 12,
      "tier": "E",
      "params": {
-      "topicDe": "Kurzformen — I'm · it's · isn't · don't",
-      "erklaerungDe": "Beide Formen sind richtig. Die kurze nimmst du fast immer, wenn du sprichst.",
-      "merksatzDe": "Der Apostroph steht da, wo ein Buchstabe fehlt: is not wird isn't.",
-      "schluesselDe": "wo ein Buchstabe fehlt",
+      "topicDe": "Kurzformen: I'm · it's · isn't · don't",
+      "erklaerungDe": "Im Englischen rutschen beim Sprechen zwei Wörter zusammen und werden zu einem einzigen.",
+      "merksatzDe": "Der Apostroph steht genau dort, wo ein Buchstabe verschwunden ist.",
+      "schluesselDe": "wo ein Buchstabe verschwunden ist",
       "beispieleEn": [
        "I am here. – I'm here.",
        "It is my school bag. – It's my school bag.",
        "It is not dark here. – It isn't dark here.",
        "I do not understand. – I don't understand."
       ],
+      "beispielMuster": "wandel",
       "lehrtEn": [
        "I'm",
        "It's",
@@ -135,9 +136,9 @@
      "r": 15,
      "tier": "E",
      "params": {
-      "topicDe": "Befehle — tun und nicht tun",
-      "erklaerungDe": "Ein Befehl braucht kein du — das Verb allein meint schon dich.",
-      "merksatzDe": "Willst du das Gegenteil, stellst du Don't vor das Verb.",
+      "topicDe": "Befehle — das Verb allein genügt",
+      "erklaerungDe": "Im Englischen übernimmt das Verb allein schon die Aufgabe des Du — du musst es gar nicht dazusagen.",
+      "merksatzDe": "Soll jemand etwas nicht tun, stellst du Don't vor das Verb.",
       "schluesselDe": "stellst du Don't vor das Verb",
       "beispieleEn": [
        "Sit down!",
@@ -145,6 +146,7 @@
        "Close the door!",
        "Don't close the door!"
       ],
+      "beispielMuster": "gegensatz",
       "lehrtEn": [
        "Sit down",
        "Close",
@@ -362,19 +364,21 @@
      "r": 17,
      "tier": "E",
      "params": {
-      "topicDe": "Fragen und Begrüßen",
-      "erklaerungDe": "What's ist kurz für What is. Und how fragt danach, WIE etwas ist.",
-      "merksatzDe": "Sprichst du über dich: I'm. Über ein Ding: It's.",
-      "schluesselDe": "Über ein Ding: It's",
+      "topicDe": "Fragen und antworten",
+      "erklaerungDe": "Eine Frage und ihre Antwort gehören zusammen: die eine will wissen, wer oder was da ist, die andere sagt es.",
+      "merksatzDe": "Über dich selbst sagst du I'm, über ein Ding It's.",
+      "schluesselDe": "über ein Ding It's",
       "beispieleEn": [
        "Hello! What's your name? – I'm Merle.",
        "How are you? – I'm great, thanks.",
        "What's your email address? – It's merle@school.com."
       ],
+      "beispielMuster": "dialog",
       "lehrtEn": [
-       "Hello",
+       "What's",
        "How are you",
-       "What's"
+       "I'm",
+       "It's"
       ],
       "belegDe": "MORE! 1 · Unit 1 · Seite 15"
      }
@@ -388,7 +392,7 @@
      "tier": "E",
      "params": {
       "topicDe": "Zahlen bis twenty-five",
-      "erklaerungDe": "Im Deutschen sagst du dreiundzwanzig — die Drei zuerst. Englisch dreht das um.",
+      "erklaerungDe": "Im Deutschen sagst du dreiundzwanzig und fängst mit der Drei an — im Englischen kommt der Zehner zuerst.",
       "merksatzDe": "Erst twenty, dann three — zusammen twenty-three.",
       "schluesselDe": "twenty-three",
       "beispieleEn": [
@@ -396,6 +400,7 @@
        "There are twenty-three books.",
        "I want twenty-four pencils."
       ],
+      "beispielMuster": "einzeln",
       "lehrtEn": [
        "twenty-three",
        "twenty-four",
@@ -548,16 +553,17 @@
      "r": 13,
      "tier": "E",
      "params": {
-      "topicDe": "Plural — die Mehrzahl",
-      "erklaerungDe": "Steht vor dem y ein Mitlaut, wird es zu -ies. Steht dort a, e, i, o oder u, bleibt das y.",
-      "merksatzDe": "Meist ein -s, nach Konsonant + y ein -ies — ein paar Wörter gehen eigene Wege.",
-      "schluesselDe": "nach Konsonant + y ein -ies",
+      "topicDe": "Plural: aus einem werden viele",
+      "erklaerungDe": "Sind es mehrere, hängt das Englische fast immer ein -s an das Wort — man hört die Mehrzahl also am Ende.",
+      "merksatzDe": "Meist ein -s, nach Mitlaut + y ein -ies — manche gehen eigene Wege.",
+      "schluesselDe": "nach Mitlaut + y ein -ies",
       "beispieleEn": [
        "one book – two books",
        "one baby – three babies",
        "one boy – two boys",
        "one child – five children"
       ],
+      "beispielMuster": "wandel",
       "lehrtEn": [
        "books",
        "babies",

@@ -105,6 +105,52 @@ export const KeyBit = ({ children }: { children: React.ReactNode }): React.React
   <span className="pb-key-bit">{children}</span>
 );
 
+/** R5-W9 · N1 · DIE MARKE FÜR SCHLÜSSEL-ENGLISCH — das dritte Auszeichnungs-
+ *  Gerät des Buchs, und das erste, das eine SPRACHE meint statt eines Rangs.
+ *
+ *  WOFÜR. Kokis Befund D-770 (31.08.): auf den Regel-Seiten war das
+ *  Schlüssel-Englisch (don't · What's · I'm) durch nichts hervorgehoben. Der
+ *  Grund war paradox — JEDE englische Zeile trug den Akzent (`pb-key-en`), und
+ *  wenn alles der wärmste Ton ist, ist nichts hervorgehoben. Die Zeilen stehen
+ *  jetzt in der dunklen Buch-Tinte, und diese Marke trägt allein den Akzent.
+ *
+ *  WAS SIE MARKIERT, entscheidet nicht die Karte: es sind die Formen aus
+ *  `lehrtEn`, also das, was die Seite zu lehren VERSPRICHT — dasselbe Feld, das
+ *  `tip-honesty` schon in beide Richtungen gegen die Beispiele prüft. Eine
+ *  Marke, die eine Fläche sich selbst aussucht, wäre eine zweite Meinung
+ *  darüber, was die Lektion ist.
+ *
+ *  WARUM KEIN TEXTMARKER-BALKEN. Dasselbe Argument, mit dem `Key` seinen
+ *  Kreidestrich statt eines Bandes bekam: ein Balken ist Anwendungs-Oberfläche,
+ *  ein Buch markiert mit dem Pinsel. Der Wisch läuft an beiden Enden aus (die
+ *  Farbe wird dort dünner) und sitzt auf vier ungleichen Ecken. */
+export const EnMark = ({ children }: { children: React.ReactNode }): React.ReactElement => (
+  <span className="pb-en-mark">{children}</span>
+);
+
+/** R5-W9 · N1 · DAS WIRD-ZU-ZEICHEN, für die Seiten mit `beispielMuster:
+ *  "wandel"` (Kurzformen, Mehrzahl): links steht, was war, rechts, was daraus
+ *  wird, und dazwischen muss etwas stehen, das »wird zu« heisst.
+ *
+ *  Von Hand gelegt wie die Akt-Marken: zwei Striche, der nasse breite zuerst
+ *  und einen Hauch daneben. Ein Font-Pfeil (→) wäre die Schriftart des Lesers
+ *  auf gemaltem Papier — dasselbe Gesetz, das die dreizehn Emoji verboten hat.
+ *  Die Spitze ist absichtlich nicht symmetrisch. */
+export const BecomesMark = ({ size = 18 }: { size?: number }): React.ReactElement => (
+  <svg width={size} height={size} viewBox="0 0 24 24" aria-hidden focusable="false"
+    fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"
+    style={{ display: "inline-block", flex: "0 0 auto" }}>
+    <g strokeWidth={3.4} opacity={0.26} transform="translate(0.4 0.55) rotate(-1.2 12 12)">
+      <path d="M4.2 12.2h14.4" />
+      <path d="M13.8 7.4l4.9 4.8-4.6 4.6" />
+    </g>
+    <g strokeWidth={2.1}>
+      <path d="M4.2 12.2h14.4" />
+      <path d="M13.8 7.4l4.9 4.8-4.6 4.6" />
+    </g>
+  </svg>
+);
+
 /** everything that is not the ask */
 export const Quiet = ({ children, italic = false }: { children: React.ReactNode; italic?: boolean }): React.ReactElement => (
   <p className={italic ? "pb-quiet pb-quiet-i" : "pb-quiet"}>{children}</p>

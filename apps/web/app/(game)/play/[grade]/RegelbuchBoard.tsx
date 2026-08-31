@@ -33,6 +33,7 @@
  * on one screen without teaching a child that they are one collection.
  */
 import { useSyncExternalStore } from "react";
+import { markEn, paarTeile, splitKey } from "@domigo/game-paint/rule-text";
 import {
   regelbuchServerSnapshot,
   regelbuchSnapshot,
@@ -44,26 +45,30 @@ const CHAPTER_NAMES: Record<string, string> = {
   ch01: "Kapitel 1 — Zeit für die Schule",
 };
 
-/** The ink family of the painted cards, written once. These are the same values
- *  the game's overlay sheet resolves its `--pb-*` tokens to; the hub sits
- *  outside that sheet's scope and cannot read them, so they are restated here
- *  rather than approximated — J2 measured `--pb-quiet-ink` at 5,53 : 1 on this
- *  paper and an eyeballed near-miss would quietly fail AA. */
-const INK = "#2a2114";
-const QUIET = "#6b5f47";
-const LINE = "#c9ac74";
-const ACCENT = "#a8541a";
-
-/** The Merksatz with its one bold key — the same split the card makes, so the
- *  emphasis lands on the same phrase in both places. A key that is not in the
- *  sentence leaves the sentence whole rather than mangling it; `tip-honesty`
- *  is what stops that case ever shipping. */
-const splitKey = (satz: string, key: string): readonly [string, string, string] => {
-  if (key === "") return [satz, "", ""];
-  const at = satz.indexOf(key);
-  if (at < 0) return [satz, "", ""];
-  return [satz.slice(0, at), key, satz.slice(at + key.length)];
-};
+/** The ink family of the painted cards, written once. The hub sits outside the
+ *  overlay sheet's scope and cannot read its `--pb-*` tokens, so they are
+ *  restated here.
+ *
+ *  ★ R5-W9 · N1 · KORREKTUR EINER BEHAUPTUNG, DIE HIER STAND. Der Satz lautete
+ *  „these are the same values the game's overlay sheet resolves its --pb-*
+ *  tokens to" — nachgemessen stimmte das für keinen der vier: die Karte fährt
+ *  --pb-text #3a2410 (hier stand #2a2114), --pb-quiet-ink #7a5c33 (#6b5f47),
+ *  --pb-ink-line rgba(107,63,24,0.45) (#c9ac74) und --pb-accent #b0461a
+ *  (#a8541a). Vier Näherungen, als Gleichheit beschrieben. Sie stehen jetzt auf
+ *  den echten Werten, denn genau diese Runde bringt Karte und Brett auf DIESELBE
+ *  Seite — zwei Rotbrauns, die fast gleich sind, sind zwei Produkte.
+ *
+ *  Gemessen auf dem Papier DIESES Bretts (#f7edd6, das dunklere Ende seines
+ *  Verlaufs), nicht auf dem Kartenpapier: Titel 12,53 : 1 · Erklärung 5,30 : 1 ·
+ *  Merkzettel 11,80 : 1 · Marke auf ihrem Wisch 4,51 : 1. */
+const INK = "#3a2410";
+const QUIET = "#7a5c33";
+const LINE = "rgba(107,63,24,0.45)";
+const ACCENT = "#b0461a";
+/** das Papier der Blätter UNTER dem obersten — der Grund des Merkzettels
+ *  (--pb-sheet-face), und der Pinselwisch der Marke (--pb-seal). */
+const ZETTEL = "#f6e6bf";
+const WISCH = "255, 217, 138";
 
 const PAGE_URL = "/art/g1/paint/ch01/merkseite_page.png";
 const STUB_URL = "/art/g1/paint/ch01/merkseite_stub.png";
@@ -95,6 +100,116 @@ const Buchbild = (): React.ReactElement => (
  *  entries are leaves OF that book, and a torn-out one (see `Stummel`) is the
  *  same strip with the same rings. That is what ties the three shapes together
  *  without stretching a painting behind text. */
+/** DIE MARKE FÜR SCHLÜSSEL-ENGLISCH, hier von Hand nachgebaut.
+ *
+ *  Dieselbe Aussage wie `.pb-en-mark` im Spiel — ein Pinselwisch, der an beiden
+ *  Enden ausläuft, kein Textmarker-Balken. Sie steht hier als Inline-Stil, weil
+ *  das Brett ausserhalb des Karten-Stylesheets sitzt; die LOGIK, WAS markiert
+ *  wird, ist dagegen dieselbe Funktion (`markEn`) und keine zweite Meinung. */
+const EnZeile = ({ text, lehrt }: { text: string; lehrt: readonly string[] }): React.ReactElement => (
+  <>
+    {markEn(text, lehrt).map((st, i) => (st.markiert ? (
+      <span
+        key={i}
+        style={{
+          color: ACCENT, fontWeight: 800,
+          padding: "0.04em 0.2em 0.1em",
+          margin: "0 -0.12em",
+          borderRadius: "8px 4px 9px 5px / 5px 9px 4px 8px",
+          backgroundImage: `linear-gradient(96deg, rgba(${WISCH},0) 0%, rgba(${WISCH},0.40) 7%, rgba(${WISCH},0.44) 52%, rgba(${WISCH},0.37) 92%, rgba(${WISCH},0) 100%)`,
+          boxDecorationBreak: "clone",
+          WebkitBoxDecorationBreak: "clone",
+        }}
+      >{st.text}</span>
+    ) : <span key={i}>{st.text}</span>))}
+  </>
+);
+
+/** DAS WIRD-ZU-ZEICHEN der Wandel-Seiten, gezeichnet wie im Spiel: zwei
+ *  Striche, der nasse breite zuerst und einen Hauch daneben. Ein Font-Pfeil
+ *  wäre die Schriftart des Lesers mitten auf gemaltem Papier. */
+const BecomesMark = (): React.ReactElement => (
+  <svg width={16} height={16} viewBox="0 0 24 24" aria-hidden focusable="false"
+    fill="none" stroke={LINE} strokeLinecap="round" strokeLinejoin="round"
+    style={{ display: "inline-block", flex: "0 0 auto" }}>
+    <g strokeWidth={3.4} opacity={0.26} transform="translate(0.4 0.55) rotate(-1.2 12 12)">
+      <path d="M4.2 12.2h14.4" /><path d="M13.8 7.4l4.9 4.8-4.6 4.6" />
+    </g>
+    <g strokeWidth={2.1}><path d="M4.2 12.2h14.4" /><path d="M13.8 7.4l4.9 4.8-4.6 4.6" /></g>
+  </svg>
+);
+
+/** DIE BEISPIELE, je nach Lese-Form — dieselben vier Formen wie die Karte.
+ *  Bis R5-W9 war das hier eine Liste gleich gesetzter Zeilen, während die Karte
+ *  im Spiel schon Paare und Gegensätze zeigte; genau diese Drift („der Hub und
+ *  die Karte lesen sich wie zwei Produkte") ist der Grund, warum das Brett in
+ *  dieser Runde mitzieht. */
+const Beispiele = ({ e }: { e: RegelbuchEntry }): React.ReactElement => {
+  const zeile: React.CSSProperties = { fontSize: 16, fontWeight: 600, fontFamily: "var(--font-display)", color: INK, lineHeight: 1.3 };
+  const liste: React.CSSProperties = { listStyle: "none", margin: 0, padding: 0, display: "grid", gap: 7 };
+  if (e.beispielMuster === "wandel") {
+    return (
+      <ul style={liste}>
+        {e.beispieleEn.map((line) => {
+          const paar = paarTeile(line);
+          if (paar === null) return <li key={line} style={zeile}><EnZeile text={line} lehrt={e.lehrtEn} /></li>;
+          return (
+            <li key={line} style={{ ...zeile, display: "grid", gridTemplateColumns: "1fr auto 1fr", alignItems: "center", gap: 6 }}>
+              <span style={{ color: QUIET }}>{paar[0]}</span>
+              <BecomesMark />
+              <span><EnZeile text={paar[1]} lehrt={e.lehrtEn} /></span>
+            </li>
+          );
+        })}
+      </ul>
+    );
+  }
+  if (e.beispielMuster === "dialog") {
+    return (
+      <ul style={liste}>
+        {e.beispieleEn.map((line) => {
+          const paar = paarTeile(line);
+          if (paar === null) return <li key={line} style={zeile}><EnZeile text={line} lehrt={e.lehrtEn} /></li>;
+          return (
+            <li key={line} style={{ ...zeile, display: "grid", gap: 1 }}>
+              <span><EnZeile text={paar[0]} lehrt={e.lehrtEn} /></span>
+              <span style={{ marginLeft: 18, color: QUIET }}><EnZeile text={paar[1]} lehrt={e.lehrtEn} /></span>
+            </li>
+          );
+        })}
+      </ul>
+    );
+  }
+  if (e.beispielMuster === "gegensatz") {
+    // ⚠ zwei Spalten, BEIDE richtiges Englisch. Kein Kreuz, kein Durchstrich,
+    // kein Rot/Grün — Koki hat die durchgestrichene Falschform am 15.08.
+    // abgeschafft, und ein Verbot ist kein Fehler.
+    const etikett: React.CSSProperties = { fontSize: 11, letterSpacing: "0.12em", textTransform: "uppercase", color: QUIET, margin: 0 };
+    return (
+      <>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", columnGap: 14, marginBottom: 3 }}>
+          <p style={etikett}>Tun</p>
+          <p style={{ ...etikett, paddingLeft: 13 }}>Nicht tun</p>
+        </div>
+        <ul style={{ ...liste, gridTemplateColumns: "1fr 1fr", columnGap: 14 }}>
+          {e.beispieleEn.map((line, i) => (
+            <li key={line} style={{ ...zeile, ...(i % 2 === 1 ? { borderLeft: `1px solid ${LINE}`, paddingLeft: 13 } : {}) }}>
+              <EnZeile text={line} lehrt={e.lehrtEn} />
+            </li>
+          ))}
+        </ul>
+      </>
+    );
+  }
+  return (
+    <ul style={liste}>
+      {e.beispieleEn.map((line) => (
+        <li key={line} style={zeile}><EnZeile text={line} lehrt={e.lehrtEn} /></li>
+      ))}
+    </ul>
+  );
+};
+
 const Seite = ({ e }: { e: RegelbuchEntry }): React.ReactElement => {
   const [before, key, after] = splitKey(e.merksatzDe, e.schluesselDe);
   return (
@@ -107,26 +222,29 @@ const Seite = ({ e }: { e: RegelbuchEntry }): React.ReactElement => {
         padding: "13px 17px 15px",
       }}
     >
-      <div style={{ fontSize: 11.5, letterSpacing: "0.1em", textTransform: "uppercase", color: QUIET, marginBottom: 4 }}>
+      {/* R5-W9 · N1: DER TITEL FÜHRT. Er stand hier — wie auf der Karte — als
+          11,5-px-Versalien-Zeile in stiller Tinte, also als die unauffälligste
+          Zeile des Eintrags. Kokis Befund D-770, Punkt 1. */}
+      <div style={{ fontSize: 17, fontWeight: 800, fontFamily: "var(--font-display)", color: INK, lineHeight: 1.16, marginBottom: 5 }}>
         {e.topicDe}
       </div>
-      <div style={{ fontSize: 14, color: QUIET, lineHeight: 1.45, marginBottom: 5 }}>{e.erklaerungDe}</div>
+      <div style={{ fontSize: 14, color: QUIET, lineHeight: 1.45, marginBottom: 7 }}>{e.erklaerungDe}</div>
+      {/* R5-W9 · N1: DER MERKZETTEL statt des Zitat-Balkens. Hier sass derselbe
+          3-px-Balken links wie auf der Karte, und Kokis Urteil „KI-Optik" gilt
+          der Klasse, nicht der Stelle: ein Buch zitiert sich nicht, es klebt
+          einen Zettel hinein. */}
       <div
         style={{
           fontSize: 14.5, color: INK, lineHeight: 1.45,
-          borderLeft: `3px solid ${LINE}`, borderRadius: "3px 0 0 4px / 4px 0 0 3px",
-          padding: "1px 0 1px 10px", marginBottom: 7,
+          background: ZETTEL,
+          borderRadius: "13px 7px 15px 8px / 8px 15px 7px 13px",
+          padding: "8px 12px 9px", marginBottom: 9,
+          boxShadow: "inset 0 1px 0 rgba(255,255,255,0.5)",
         }}
       >
         {before}<strong style={{ fontWeight: 800 }}>{key}</strong>{after}
       </div>
-      <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "grid", gap: 1 }}>
-        {e.beispieleEn.map((line) => (
-          <li key={line} style={{ fontSize: 16, fontWeight: 700, fontFamily: "var(--font-display)", color: ACCENT }}>
-            {line}
-          </li>
-        ))}
-      </ul>
+      <Beispiele e={e} />
     </div>
   );
 };

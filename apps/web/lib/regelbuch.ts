@@ -34,6 +34,14 @@ export interface RegelbuchEntry {
   schluesselDe: string;
   /** R5-W4 · I2 — 2–4 English lines, ours, grounded in the unit's vocabulary. */
   beispieleEn: string[];
+  /** R5-W9 · N1 — die englischen Formen, die die Seite lehrt, und damit die
+   *  Stellen, die im Beispiel markiert werden. */
+  lehrtEn: string[];
+  /** R5-W9 · N1 — die Lese-Form der Beispiele (wandel · gegensatz · dialog ·
+   *  einzeln). Ohne sie zeichnete das Brett eine Liste, wo die Karte eine
+   *  Verwandlung zeigt — genau die Drift zwischen Hub und Spiel, die Kokis
+   *  Review am 15.08. schon einmal gefunden hat. */
+  beispielMuster: string;
   /** ★ HOW MANY PAGES THE CHAPTER HOLDS, banked with the page rather than looked
    *  up by the board (R5-W4 · I2).
    *
@@ -56,8 +64,16 @@ export interface RegelbuchFile {
    *  v2 (R5-W4 · I2): `beispielEn` → `beispieleEn`, `erklaerungDe` and `total`
    *  arrive, the three J1-D fields leave. A v1 book is dropped rather than
    *  upgraded, and nothing is lost by that: the painted book is teacher-preview
-   *  only in production, so no child has a collection today. */
-  v: 2;
+   *  only in production, so no child has a collection today.
+   *
+   *  v3 (R5-W9 · N1): `lehrtEn` und `beispielMuster` kommen dazu — ohne sie
+   *  könnte das Hub-Brett die Seite nicht so zeichnen, wie das Spiel sie zeigt.
+   *  Eine v2-Sammlung wird verworfen statt ergänzt, aus demselben Grund wie
+   *  damals: das gemalte Buch ist in Produktion Lehrer-Vorschau, es gibt keine
+   *  Kindersammlung, die etwas verlöre. Ein ergänztes v2 hiesse raten, welche
+   *  Formen eine alte Seite lehrt — und eine geratene Marke ist schlechter als
+   *  eine Seite, die man noch einmal findet. */
+  v: 3;
   entries: RegelbuchEntry[];
 }
 
@@ -72,11 +88,12 @@ export const readRegelbuch = (): RegelbuchEntry[] => {
     const raw = window.localStorage.getItem(KEY);
     if (raw === null) return [];
     const parsed = JSON.parse(raw) as Partial<RegelbuchFile>;
-    if (parsed?.v !== 2 || !Array.isArray(parsed.entries)) return [];
+    if (parsed?.v !== 3 || !Array.isArray(parsed.entries)) return [];
     return parsed.entries.filter(
       (e): e is RegelbuchEntry =>
         typeof e?.topicDe === "string" && e.topicDe !== "" && typeof e?.merksatzDe === "string"
-        && Array.isArray(e?.beispieleEn),
+        && Array.isArray(e?.beispieleEn) && Array.isArray(e?.lehrtEn)
+        && typeof e?.beispielMuster === "string",
     );
   } catch {
     return [];
@@ -129,7 +146,7 @@ export const rememberRegelSeite = (entry: RegelbuchEntry): RegelbuchEntry[] => {
     : [...have, entry];
   if (typeof window !== "undefined" && next !== have) {
     try {
-      window.localStorage.setItem(KEY, JSON.stringify({ v: 2, entries: next } satisfies RegelbuchFile));
+      window.localStorage.setItem(KEY, JSON.stringify({ v: 3, entries: next } satisfies RegelbuchFile));
       snapRaw = null; // this tab wrote it, so its own cache is stale
     } catch {
       /* quota or private mode: the run keeps working, the library just does not grow */

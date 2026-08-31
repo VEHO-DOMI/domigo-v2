@@ -74,6 +74,10 @@ export default function BuchClient(props: {
           merksatzDe: tip.merksatzDe,
           schluesselDe: tip.schluesselDe,
           beispieleEn: [...tip.beispieleEn],
+          // R5-W9 · N1: die Marken-Formen und die Lese-Form reisen mit, damit
+          // das Hub-Brett dieselbe Seite zeichnen kann wie die Karte im Spiel.
+          lehrtEn: [...tip.lehrtEn],
+          beispielMuster: tip.beispielMuster,
           // R5-W4 · I2: the chapter's own count rides along, so the hub can draw
           // a torn stub for every page still missing without knowing the level.
           // Read from the level here rather than from the payload — this is the

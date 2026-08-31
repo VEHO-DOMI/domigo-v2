@@ -136,6 +136,18 @@ export interface TipPayload {
   /** R5-W4 · I2: 2–4 English lines that show the rule at work. OURS, not the
    *  book's (Koki's ruling K-1), grounded against the unit lexicon. */
   beispieleEn: readonly string[];
+  /** R5-W9 · N1: die englischen Formen, die diese Seite zu lehren verspricht —
+   *  und damit genau die Stellen, die die Karte im Beispiel markiert. Das Feld
+   *  lag seit R5-W4 im Level und wurde von `tip-honesty` in BEIDE Richtungen
+   *  geprüft (jede Form kommt vor, jedes Beispiel zeigt eine), aber von keiner
+   *  Fläche gezeichnet. Kokis Befund D-770 Punkt 2 brauchte deshalb kein neues
+   *  Feld, nur einen Leser. */
+  lehrtEn: readonly string[];
+  /** R5-W9 · N1: WIE die Beispiele dieser Seite gelesen werden — wandel ·
+   *  gegensatz · dialog · einzeln. Reist mit der Seite statt in der Karte zu
+   *  wohnen, weil es eine Eigenschaft der REGEL ist und nicht der Oberfläche:
+   *  fünf Seiten mit einer Form waren Kokis Punkt 6. */
+  beispielMuster: string;
   /** which page of the child's book this rule lives on. Carried so the archive
    *  and the library keep it; NO surface renders it (Koki, 2026-08-15). */
   belegDe: string;
@@ -1232,6 +1244,15 @@ export class Sim {
           beispieleEn: Array.isArray(e?.params.beispieleEn)
             ? e.params.beispieleEn.filter((x): x is string => typeof x === "string")
             : [],
+          // dieselbe Filterung aus demselben Grund: eine kaputte Form soll als
+          // FEHLENDE Marke sichtbar werden, nicht als markierter Unsinn.
+          lehrtEn: Array.isArray(e?.params.lehrtEn)
+            ? e.params.lehrtEn.filter((x): x is string => typeof x === "string")
+            : [],
+          // ohne Deklaration die schlichteste Form: eine Seite, die ihr Muster
+          // nicht nennt, ist bereits ein Tor-Befund — die Karte erfindet hier
+          // keine Verwandlung, die die Daten nicht hergeben.
+          beispielMuster: typeof e?.params.beispielMuster === "string" ? e.params.beispielMuster : "einzeln",
           belegDe: String(e?.params.belegDe ?? ""),
           got: this.tipsGot,
         });

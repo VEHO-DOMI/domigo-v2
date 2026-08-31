@@ -8,7 +8,8 @@
     "./paint": "./src/paint.ts",
     "./collide": "./src/collide.ts",
     "./level": "./src/level.ts",
-    "./game": "./src/PaintGame.tsx"
+    "./game": "./src/PaintGame.tsx",
+    "./rule-text": "./src/rule-text.ts"
   },
   "scripts": {
     "typecheck": "tsc --noEmit",
