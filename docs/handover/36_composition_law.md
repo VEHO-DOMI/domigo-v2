@@ -43,7 +43,7 @@ world-scaled architecture separated by a value ramp, never one backdrop image.
 > **L0 ∈ [0.93·K, min(1.08·K, 96 %)] · L1 ∈ [0.80·K, 1.00·K] · L2 ∈ [0.50·K, 0.75·K] ·
 > L4 ≤ 0.45·K · L3 exempt from K (always full range — lit figures against a dark room
 > are the point).** Check at K=88 %: L0 82–95, L1 70–88, L2 44–66, L4 ≤40 — v1.0's
-> numbers exactly. **ch01 keys: p1 K=88 · p3 K=86 · p2 K=30 · p4 K=28 · p9 K=14 (lowered from 16 at the PK-C2b review — the delivered ink-dream measures ~15 air / 11.6 wall; the declaration follows the truth).**
+> numbers exactly. **ch01 keys: p1 K=88 · p3 K=86 · p2 K=30 · p4 K=19 · p9 K=14.** Two of these have moved, and both moved the same way — the declaration follows the delivered art: **p9** 16 → 14 at the PK-C2b review (the delivered ink-dream measures ~15 air / 11.6 wall); **p4** 28 → 19 at R5-T10 (R231, 2026-08-31), once the night versions of the two furniture bands landed (AQ22, Wareneingang 30.08.). Measured against `bandsFor(19)` on the importing commit: L0 19.1 · L1 16.3 · L2 11.6, L1↔L2 gap 4.7 against a law of 1.9, L2b rendering 14.5 between them. That retired `DEPTH_WAIVERS["ch01/p4"]` (D-672) before its 31.10.2026 expiry. ⚠ A lower key ALONE never did this — measured on the *bright* art, K = 28 · 22 · 20 · 19 · 18 · 16 gave 3 · 4 · 3 · 4 · 4 · 5 findings; what carries it is new art + new wash + new key in one commit.
 > Saturation caps stay absolute as tabled. Separation laws: **L2↔L3 stays ABSOLUTE**
 > (≥12 % luminance or ≥25 % saturation — readability never scales down); L1↔L2 gap
 > becomes relative (≥0.10·K — atmospheric dark phases may separate by silhouette).

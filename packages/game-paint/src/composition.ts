@@ -1108,8 +1108,47 @@ export const CH01_COMPOSITION: Record<string, CompositionSpec> = {
   },
   // p4 Tafel-Bühne — stage-dusk: dark wood shell, audience in dusk blue.
   p4: {
-    key: 28,
-    wash: { colors: [0x3a3348, 0x4a3f4e, 0x5d4f52] },
+    // ── R5-T10 · DIE SCHLUESSELZAHL FOLGT DER NACHT (R231, 2026-08-31) ───────
+    //
+    // K ist die Helligkeit der Raumluft, und aus ihr leitet `bandsFor(K)` JEDES
+    // Ebenen-Fenster ab. 28 war der Wert des HELLEN Saals. Seit AQ13C7 ist die
+    // Buehne ein Nacht-Saal, und seit heute sind es auch die zwei Moebelbaender
+    // davor (AQ22, Wareneingang 30.08., beide Blaetter Panel-abgenommen und
+    // byte-eingefroren). Die Deklaration folgt der Wahrheit — genau wie bei p9,
+    // das aus demselben Grund von 16 auf 14 ging.
+    //
+    // Gemessen am Stand DIESES Commits, gegen `bandsFor(19)`:
+    //   L0 Waesche   19,07 %  Fenster 17,67–20,52  (Rand 1,40 / 1,45)
+    //   L1 Wand      16,3  %  Fenster 15,20–19,00
+    //   L2 Band      11,6  %  Fenster  9,50–14,25
+    //   L1↔L2-Kluft   4,7 Punkte      Gesetz >= 0,10·K = 1,9
+    //   L2b rendert  ~14,5 %          Gesetz >= 0,04·K = 0,76 von beiden
+    // Damit faellt `DEPTH_WAIVERS["ch01/p4"]` (D-672) ersatzlos — die Ausnahme
+    // hatte GENAU DIESE Lieferung gekauft, und sie ist da.
+    //
+    // ⚠ EINE NIEDRIGERE SCHLUESSELZAHL ALLEIN LOEST ES NICHT, und der alte
+    //   Kommentar in check-composition.mjs sagt das zu Recht: durchgemessen an
+    //   der HELLEN Kunst ergab K = 19 sogar VIER Befunde statt drei. Was hier
+    //   traegt, ist der Zug aus K + neuer Kunst + neuer Waesche zusammen.
+    //
+    // ⚠ K IST KEIN REINES MESS-STELLRAD. `nearPlaneTint(key)` multipliziert die
+    //   begehbare Nahebene zur LAUFZEIT (PaintScene): 28 ergibt 0xe2e2e2, 19
+    //   ergibt 0xe6e6e6 — die Formel laeuft bei K=19 in ihren eigenen Boden
+    //   (d = 0,1), der Laufkurs wird also um 4 von 255 heller GEZEICHNET.
+    //   `heroEdgeFor` dagegen ist eine Stufe bei K = 50; 28 und 19 liegen beide
+    //   darunter, die Kontur des Kindes bleibt unveraendert. Beides gemessen,
+    //   nicht angenommen.
+    key: 19,
+    // Die Waesche zieht mit, als WERT-Pass im Sinn des Malers: EIN
+    // multiplikativer Faktor k = 0,72094 auf R, G und B (26,486 % → 19,073 %,
+    // die Mitte des neuen Fensters). Leuchtdichte ist linear in den Kanaelen,
+    // also bewegt k den Mittelwert um exakt k; Farbton und Saettigung bleiben
+    // die des Malers, weil (max − min) / max massstabsinvariant ist — gemessen
+    // 21,150 % → 21,138 %.
+    // ⚠ Die Saettigung lag schon VOR diesem Zug ueber der 20er-Kappe und liegt
+    //   danach genauso darueber. Das Tor MELDET sie (audit 1 laesst nur die
+    //   Leuchtdichte durchfallen); dieser Zug hat sie nicht bewegt.
+    wash: { colors: [0x2a2534, 0x352d38, 0x43393b] },
     far: shell("p4", 0.25),
     // R5-W2 · H1 · THE CLASS IS MISSING, AND NOW YOU CAN SEE IT.
     //

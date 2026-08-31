@@ -300,49 +300,37 @@ const waiverExpired = (w) => {
 };
 
 /**
- * ── DIE TIEFEN-AUSNAHME DER ARENA (R5 · T1, 2026-08-24) ──────────────────────
+ * ── R5-T10 · DIE TIEFEN-AUSNAHME DER ARENA IST BEZAHLT — die Tabelle ist mit
+ *    Absicht leer (2026-08-31) ────────────────────────────────────────────────
  *
- * Dieselbe Form wie `COHERENCE_WAIVERS`: ein benannter Raum, ein geschriebener
- * Grund, ein DATUM, das `waiverExpired` liest — und eine Bestellung dahinter.
- * Sie deckt zwei Audits (`layer-value` und `middle-distance`), weil beide
- * dieselbe Sache messen: die Ferne muss heller sein als das, was davor steht.
+ * T1 hatte sie am 24.08. eingetragen, datiert auf den 31.10.2026, und sie hat
+ * genau gesagt, was sie kauft: die Arena braucht ein `l2_p4` und ein
+ * `band_p4_audience`, die zu einem NACHT-Saal gehoeren — beide stammten noch
+ * aus der hellen Fassung. Sie deckte drei gemessene Befunde:
  *
- * WAS PASSIERT IST, in Zahlen. AQ13C7 („die Bühne", Wareneingang 23.08., alle
- * acht Naht-Gesetze gemessen) ersetzt die zwei Wandsegmente der Arena durch EIN
- * durchgemaltes Blatt — und es ist ein NACHT-Saal, nicht der helle Bibliotheks-
- * ausschnitt von vorher. Gemessen am importierten Stand:
- *     L1 (Wand)   22,8 % → 16,3 %   Band bei K=28: 22,4–28,0 %
- *     L1↔L2-Kluft  ~7 %  →  1,5 %   Gesetz: ≥ 0,10·K = 2,8 %
- *     L2b rendert  19,0 %           muss zwischen L1 (16,3) und L2 (14,8) liegen
- * ⚠ EINE NIEDRIGERE SCHLÜSSELZAHL LÖST ES NICHT — durchgemessen: K = 28 · 22 ·
- *   20 · 19 · 18 · 16 ergibt 3 · 4 · 3 · 4 · 4 · 5 Befunde. Der Bruch ist die
- *   VERHÄLTNIS-Lage der drei Ebenen, nicht der absolute Wert des Raumes.
+ *     L1 (Wand)   16,3 %  gegen ein Band 22,4–28,0 % bei K = 28
+ *     L1↔L2-Kluft  1,5 %  gegen 0,10·K = 2,8 %
+ *     L2b rendert 19,0 %  statt zwischen L1 (16,3) und L2 (14,8)
  *
- * WARUM SIE TROTZDEM STEHT UND NICHT DIE LIEFERUNG ZURÜCKGEHT: das Gesetz
- * schützt ein LESE-Erlebnis (die Ferne soll fern aussehen), und genau das ist
- * blind geprüft worden. Zwei frische Leser, Reihenfolgen getauscht, je zwei
- * Größen, keiner kannte den anderen:
- *   · „liest die Wand als EIN gemalter Ort?" — Bühne 85 % / 80 %, Bestand
- *     „zerfällt" 80 % / 40 %  ⇒ 2 : 0 FÜR die Bühne
- *   · „stört eine senkrechte Naht?" — in der Bühne KEINE gesehen; im Bestand
- *     beide unabhängig „eine harte Kante in der Bildmitte"  ⇒ 2 : 0
- *   · „hebt sich die Tafel klar von der Wand ab?" — Bühne 80 % / 80 %
- * Keiner der beiden meldete eine verkehrte Tiefe. Das Gesetz misst hier also
- * eine Gefahr, die am Bild nicht eingetreten ist — und ein Gesetz, das man
- * gegen eine Messung stehen lässt, ohne es zu benennen, ist genau die Klasse,
- * gegen die dieses Haus schreibt.
+ * Die Bestellung ist geliefert (AQ22, Wareneingang 30.08.2026: beide Blaetter
+ * Panel-abgenommen, 2:0 mit gehaltenem Reihenfolgen-Tausch, byte-eingefroren),
+ * importiert, und der Raum traegt die Schluesselzahl seiner eigenen Nacht:
+ * K = 19 (`composition.ts`, R231). Gegen `bandsFor(19)` misst dieser Raum jetzt
+ * L0 19,07 · L1 16,3 · L2 11,6, mit einer L1↔L2-Kluft von 4,7 gegen ein Gesetz
+ * von 1,9 — alle drei Befunde stehen nicht mehr, ohne dass irgendein Lineal
+ * bewegt worden waere. Der Eintrag faellt deshalb ersatzlos, vor seinem Datum.
  *
- * WAS DIE AUSNAHME KAUFT: eine Bestellung. Die Arena braucht ein `l2_p4`
- * (Möbelband) und ein `band_p4_audience`, die zu einem NACHT-Saal gehören —
- * heute stammen beide aus der hellen Fassung. Bis dahin: geroutet an den
- * Architekten (R187a), datiert, nie still.
+ * ⚠ Der alte Vermerk »EINE NIEDRIGERE SCHLUESSELZAHL LOEST ES NICHT — K = 28 ·
+ *   22 · 20 · 19 · 18 · 16 ergibt 3 · 4 · 3 · 4 · 4 · 5 Befunde« war und bleibt
+ *   RICHTIG: er ist an der HELLEN Kunst gemessen. Was ihn aufloest, ist nicht
+ *   die Schluesselzahl allein, sondern der Zug aus neuer Kunst + neuer Waesche
+ *   + neuer Schluesselzahl in einem Commit.
+ *
+ * Sie bleibt eine Tabelle statt eines `if`, weil die FORM der Punkt ist: eine
+ * Ausnahme ist ein benannter Raum mit geschriebenem Grund und Ablaufdatum. Die
+ * naechste, die gebraucht wird, wird hier sichtbar sein.
  */
-const DEPTH_WAIVERS = {
-  "ch01/p4": {
-    until: "2026-10-31",
-    why: "Bühne AQ13C7 ist ein Nacht-Saal (L1 16,3 % gegen ein Band 22,4–28,0 %); l2_p4 und band_p4_audience stammen noch aus der hellen Fassung. Zwei blinde Leser 2:0 »ein gemalter Ort«, 2:0 »keine störende Naht«, beide sehen die Tafel klar vor der Wand. Ende der Ausnahme: die Nacht-Fassung der zwei vorderen Bänder",
-  },
-};
+const DEPTH_WAIVERS = {};
 
 
 // ── the levels under audit ───────────────────────────────────────────────────

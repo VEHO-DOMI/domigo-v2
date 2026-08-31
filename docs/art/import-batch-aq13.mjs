@@ -66,6 +66,9 @@
 //          node docs/art/import-batch-aq13.mjs --abnahme-tafel <batch-verzeichnis>
 //          node docs/art/import-batch-aq13.mjs --abnahme-ring  <batch-verzeichnis>
 //          node docs/art/import-batch-aq13.mjs --import-band  <batch-verzeichnis> [--dry]
+//          node docs/art/import-batch-aq13.mjs --import-l2    <batch-verzeichnis> [--dry]
+//          node docs/art/import-batch-aq13.mjs --overlay-masse <batch-verzeichnis>
+//          node docs/art/import-batch-aq13.mjs --import-buehne <batch-verzeichnis> [--dry]
 //          node docs/art/import-batch-aq13.mjs --nur-overlay [--dry]
 //          node docs/art/import-batch-aq13.mjs --overlay-passung <batch-verzeichnis>
 //          node docs/art/import-batch-aq13.mjs --overlay-fundstellen <batch-verzeichnis>
@@ -773,7 +776,91 @@ const SPERR_BUEHNEN = new Map([
   ["4bc3da2e8aa7233e38b6024f146e2c154e2fae66e7b0e07e8c48baaa06406d32", "AQ13c4 — Wrap-Spalte bytegenau gleich Spalte 0 (R199)"],
   ["70ed442e18308dbd2c17d258bbd7674becbd68d799acb7ef02951a903ab2517a", "AQ13c5 — einseitige Zwei-Stufen-Lasur (R203)"],
   ["931f8b974cd546f2e5680ff7ec686c0084f9dfd6d93d5ca51a33f15acba02809", "AQ13c6 — vorzeichen-balancierter Jitter (R205)"],
+  ["1545893ca7b13f4e3b871e5f30c75bc45df18dff6ef1f6ccd43f76b3cb8da7d2", "AQ22 Runde 1 (Band) — flache Silhouetten-Masse ohne Binnenzeichnung, Panel 2:0 zurueckgewiesen (Wareneingang 30.08.); ersetzt durch Amendment A2"],
 ]);
+
+/**
+ * ── DIE RING-AUSNAHME DES NACHT-BANDES (R5 · T10, 2026-08-31) ───────────────
+ *
+ * Dieselbe Form wie `SPERR_BUEHNEN`: der Pin sitzt auf den BYTES, nie auf dem
+ * Namen — eine Ausnahme auf »band_p4_audience« wuerde jedes spaetere, falsche
+ * Blatt gleichen Namens mitdecken.
+ *
+ * WAS GEMESSEN WURDE. Die AQ22-A2-Lieferung ist am Wareneingang angenommen und
+ * byte-eingefroren (30.08., Panel 2:0 mit gehaltenem Reihenfolgen-Tausch). Die
+ * Ring-Abnahme faerbt sie trotzdem rot. Ein Kontroll-Lauf DESSELBEN Tores gegen
+ * den BESTAND — das Blatt, das heute im Spiel liegt und laengst angenommen ist
+ * — faerbt AUCH rot, an zwei Regeln mit schlechteren Werten:
+ *
+ *                                   Bestand (angenommen)   A2 (neu)
+ *   unbemalte Spalten = 0                  342 ✗             246 ✗
+ *   Band-Schleifen-Naht messbar         0 Pixel ✗          0 Pixel ✗
+ *   Helligkeit [14,0–15,5] %              14,837 ✓          11,609 ✗
+ *   Holzton H-Median [38–41]°             40,800 ✓         180,000 ✗
+ *   Schluesselabstand >= 180             2 px drunter ✗    0 px drunter ✓
+ *
+ * Daraus folgt dreierlei, und keines davon ist ein Fehler der Lieferung:
+ *
+ *  1 · DIE ZWEI STRUKTUR-REGELN REDEN NICHT UEBER DIESES STEM. Der angenommene
+ *      Bestand faellt an ihnen mit SCHLECHTEREN Werten durch (342 gegen 246).
+ *      Ein Stuhl-Band hat Luecken zwischen den Stuehlen und durchsichtige
+ *      Ringkanten; die Regeln stammen aus der AQ13c4-RING-Runde (ein
+ *      DURCHGEHENDES Band) und waren fuer `band_p4_audience` nie wahr.
+ *  2 · `BAND_L` IST DAS K=28-FENSTER. [14,0–15,5] ist genau das Ziel-Fenster,
+ *      das `set-plane-value.mjs` aus `bandsFor(28)` ableitet (14,8 ± 0,7).
+ *      T10 zieht den Raum auf K=19; dort lautet das L2-Fenster [9,5–14,25], und
+ *      die Order hat [10,0–12,5] bestellt. Regel und Bestellung widersprechen
+ *      sich per Konstruktion — die Regel ist die AELTERE Absicht.
+ *  3 · `BAND_H` MISST EIN TAL, KEINEN TON. Verteilung mit der Stichprobe des
+ *      Werkzeugs selbst ((x+y)%7), Saettigung >= 0,30: der Bestand ist UNIMODAL
+ *      warm (47,3 % in 30–59°, Median ueber alle Schwellen stabil 40,0–40,9°);
+ *      die A2 ist ZWEIGIPFLIG — 40,0 % in 0–29° (warmes Holz im Restlicht) und
+ *      48,3 % in 180–239° (kalter Glanzrand). Der Median 180,0° liegt im TAL
+ *      zwischen den Gipfeln und beschreibt keinen der beiden. Die
+ *      Zweigipfligkeit ist die BESTELLTE Eigenschaft: Amendment A2 verlangt
+ *      woertlich »warm-dunkles Holz im Restlicht, je Lehne ein eigener schmaler
+ *      Glanzrand, lesbare Holz↔Metall-Trennung«.
+ *
+ * WAS DIE AUSNAHME KAUFT: die Neu-Eichung der drei Band-Lineale — Helligkeit an
+ * die Schluesselzahl des Raumes koppeln statt an feste Zahlen; Holzton so
+ * messen, dass ein zweitoeniges Nachtblatt bestehen kann und ein falsches
+ * weiter faellt; die zwei Struktur-Regeln auf das Stem zuschneiden, fuer das sie
+ * gelten. Route: Architekt. Bis dahin: datiert, benannt, nie still.
+ *
+ * ⚠ Die Ausnahme deckt NUR die aufgezaehlten Regeln. Jeder ANDERE Befund am
+ *   Band blockiert weiter, auch an genau diesem Blatt.
+ */
+const RING_BAND_AUSNAHMEN = new Map([
+  ["7694c48b11b4f5aea2d524e386bbc522ca4dafce7e73224cd283dfe6de8c9748", {
+    until: "2026-11-30",
+    herkunft: "band_p4_audience aus AQ22 Amendment A2 — Wareneingang 30.08.2026 "
+      + "(Panel 2:0 mit gehaltenem Tausch, lum 11,64 im bestellten Fenster [10,0–12,5], "
+      + "sat 24,17, Magenta 0, frisch gemalt r=0,08 gegen den Bestand)",
+    regeln: [
+      /^Band: \d+ Spalte\(n\) ohne ein einziges bemaltes Pixel/,
+      /^Band-Schleife: null gemeinsame bemalte Pixel/,
+      /^Band: Helligkeit /,
+      /^Band: Holzton H-Median /,
+    ],
+  }],
+]);
+
+/**
+ * Das Urteil ueber die Band-Befunde, bevor ein Byte bewegt wird. REIN, damit der
+ * Selbsttest beide Richtungen sehen kann: eine Ausnahme, die nie greift, ist
+ * Dekoration; eine, die alles deckt, macht das Tor nutzlos.
+ */
+function ringBandUrteil(hash, fails, pins = RING_BAND_AUSNAHMEN, heute = new Date()) {
+  const a = pins.get(hash);
+  if (a === undefined) return { gedeckt: [], offen: [...fails], ausnahme: null };
+  const bis = Date.parse(`${a.until}T23:59:59Z`);
+  if (Number.isNaN(bis) || heute.getTime() > bis) {
+    return { gedeckt: [], offen: [...fails], ausnahme: a, abgelaufen: true };
+  }
+  const gedeckt = [], offen = [];
+  for (const f of fails) (a.regeln.some((re) => re.test(f)) ? gedeckt : offen).push(f);
+  return { gedeckt, offen, ausnahme: a };
+}
 
 /** sha256 ueber die rohen RGB-Bytes eines ganzen Blattes. */
 function blattHash(png) {
@@ -2261,6 +2348,33 @@ function selftest() {
   add("c6-Masche · TAMPER: vorzeichen-balancierter, quantisierter Jitter — besteht auch Adjazenz und Vorzeichen",
     "kanal-uniform", () => abnahmeRing(mkStage("jitter"), mkBand(false, true)));
 
+  // ── DIE RING-AUSNAHME DES NACHT-BANDES (T10) ──────────────────────────────
+  // Die Attrappen sind die ECHTEN Befund-Zeilen beider Laeufe vom 31.08. —
+  // abgeschrieben waeren sie wertlos, gemessen sind sie das Lineal.
+  const PIN_A2 = "7694c48b11b4f5aea2d524e386bbc522ca4dafce7e73224cd283dfe6de8c9748";
+  const A2_BEFUNDE = [
+    "Band: 246 Spalte(n) ohne ein einziges bemaltes Pixel (erste x=0) — die Ringkante hat ein Loch",
+    "Band-Schleife: null gemeinsame bemalte Pixel — UNGEMESSEN, nicht bestanden",
+    "Band-Schleife: null gemeinsame bemalte Pixel — die Naht ist nicht bestanden, sondern UNGEMESSEN",
+    "Band: Helligkeit 11.61 % ausserhalb 14–15.5 % — es tritt vor den Kampf statt hinter ihn",
+    "Band: Holzton H-Median 180.00° ausserhalb 38–41° — nicht die Holzfarbe des Bestandes",
+  ];
+  // Ein Befund, den die Ausnahme NICHT nennt — er stammt aus dem Kontroll-Lauf
+  // gegen den Bestand und muss an genau diesem Blatt trotzdem blockieren.
+  const FREMD = "Band: 2 gemalte Pixel unter 180 Schluesselabstand (kleinster 177.37) — ein toleranter Schluessel frisst sie";
+  const HEUTE = new Date("2026-08-31T12:00:00Z");
+  add("Ring-Ausnahme: die fuenf gemessenen A2-Befunde sind gedeckt",
+    null, () => ({ fail: ringBandUrteil(PIN_A2, A2_BEFUNDE, RING_BAND_AUSNAHMEN, HEUTE).offen }));
+  // TAMPER 1 — der Pin sitzt auf den BYTES: ein anderes Blatt erbt nichts.
+  add("Ring-Ausnahme · TAMPER: fremdes Blatt (Bestands-SHA) erbt die Ausnahme nicht",
+    "Holzton H-Median", () => ({ fail: ringBandUrteil("45eae41f58e5fb5bbde0e0b34820ab56c3a5c2c45b31b52c62feace9a8851e4d", A2_BEFUNDE, RING_BAND_AUSNAHMEN, HEUTE).offen }));
+  // TAMPER 2 — sie ist BENANNT, nicht pauschal: ein ungenannter Befund bleibt offen.
+  add("Ring-Ausnahme · TAMPER: ein NICHT genannter Band-Befund blockiert weiter",
+    "Schluesselabstand", () => ({ fail: ringBandUrteil(PIN_A2, [...A2_BEFUNDE, FREMD], RING_BAND_AUSNAHMEN, HEUTE).offen }));
+  // TAMPER 3 — das Datum ist echt: nach Ablauf deckt sie nichts mehr.
+  add("Ring-Ausnahme · TAMPER: abgelaufen (01.12.) deckt keinen einzigen Befund",
+    "Helligkeit", () => ({ fail: ringBandUrteil(PIN_A2, A2_BEFUNDE, RING_BAND_AUSNAHMEN, new Date("2026-12-01T12:00:00Z")).offen }));
+
   let bad = 0;
   for (const c of cases) {
     let fails = [], err = null;
@@ -2772,11 +2886,26 @@ if (process.argv.includes("--import-band")) {
   for (const f of [sf, bf]) if (!fs.existsSync(f)) { console.error(`fehlt: ${f}`); process.exit(2); }
 
   console.log(`\nBand-Import · ${path.basename(dir)} — zuerst die Ring-Abnahme, dann erst ein Pixel`);
-  const { lines, fail } = abnahmeRing(read(sf), read(bf));
+  const bandRoh = read(bf);
+  const bandPin = blattHash(bandRoh);
+  const { lines, fail } = abnahmeRing(read(sf), bandRoh);
   for (const l of lines) console.log(l);
-  const bandFail = fail.filter((f) => f.startsWith("Band"));
+  const bandRohFail = fail.filter((f) => f.startsWith("Band"));
   const buehneFail = fail.filter((f) => !f.startsWith("Band"));
+  const urteil = ringBandUrteil(bandPin, bandRohFail);
+  const bandFail = urteil.offen;
   console.log("");
+  if (urteil.abgelaufen === true) {
+    console.error(`  ✗ Die Ring-Ausnahme dieses Blattes ist am ${urteil.ausnahme.until} abgelaufen — nachmessen und neu begruenden oder fallen lassen.`);
+  }
+  if (urteil.gedeckt.length > 0) {
+    console.log(`  ⚠ DEKLARIERT: ${urteil.gedeckt.length} Band-Befund(e) deckt die benannte Ring-Ausnahme (bis ${urteil.ausnahme.until}).`);
+    console.log(`      Pin ${bandPin.slice(0, 16)}… — ${urteil.ausnahme.herkunft}`);
+    console.log("      Grund: die drei Band-Lineale haengen an der ERSETZTEN Lieferung; der angenommene");
+    console.log("      Bestand faellt an denselben Struktur-Regeln mit schlechteren Werten durch (342 gegen 246).");
+    for (const f of urteil.gedeckt) console.log(`      · ${f}`);
+    console.log("");
+  }
   if (bandFail.length > 0) {
     for (const f of bandFail) console.error(`  ✗ ${f}`);
     console.error(`\nBand-Import: ${bandFail.length} Befund(e) AM BAND — es wird nichts geschrieben`);
@@ -2812,6 +2941,64 @@ if (process.argv.includes("--import-band")) {
   console.log(`\n${DRY ? "[dry] " : ""}Band-Import: OK — ${stem}.png (ein bestehender Stem ersetzt, DEAD_ART unveraendert)`);
   console.log("Naechster Schritt (D-98): node scripts/art-recompress.mjs && node scripts/check-png-identity.mjs");
   console.log("Danach die Rauhheit NEU messen: node docs/art/import-batch-aq13.mjs --band-rauhheit apps/web/public/art/g1/paint/ch01/band_p4_audience.png");
+  process.exit(0);
+}
+
+/* ── `--import-l2` · DIE HINTERE MOEBELREIHE (R5 · T10, 2026-08-31) ──────────
+ *
+ * WARUM ES DIESEN ZWEIG GIBT. `l2_p4` hatte bis heute keinen schmalen Weg ins
+ * Spiel: der einzige Importeur, der das Stem kennt, ist `import-batch-ap.mjs`,
+ * und der schreibt die halbe AP-Charge neu UND traegt ein `darken: 0.97`, das
+ * fuer die HELLE Fassung bei K=28 gerechnet wurde (»MEASURED at first import:
+ * 21.3 % gegen das Fenster [14.0–21.0]«). Auf eine angenommene Nacht-Lieferung
+ * angewandt waere das ein stiller Wertepass ueber gemessene Malerei — genau die
+ * Falle, gegen die `WARENEINGANGS_PINS` in `set-plane-value.mjs` geschrieben ist.
+ *
+ * WARUM HIER KEINE RING-ABNAHME LAEUFT, und das keine Auslassung ist. Die
+ * Ring-Gesetze messen ein PAAR: die Buehne gegen das Band, das davor steht.
+ * `l2_p4` hat keinen Buehnen-Partner — es ist die GEISTERHAFTE Reihe HINTER der
+ * vorderen (`midFar`, Alpha 0,62), und ihr Wert wird von dem Gesetz gerichtet,
+ * das wirklich fuer sie zustaendig ist: der Mitteldistanz-Audit in
+ * `check-composition.mjs` (§8) verlangt, dass sie GERENDERT zwischen der fernen
+ * Wand und der vorderen Reihe sitzt, mindestens 0,04·K von beiden entfernt.
+ * Dieser Zweig faehrt darum die stem-unabhaengigen Byte-Gesetze, und das Urteil
+ * ueber den WERT faellt das Kompositions-Tor — nicht ein zweites, hier
+ * nachgebautes Lineal.
+ */
+if (process.argv.includes("--import-l2")) {
+  const dir = process.argv[process.argv.indexOf("--import-l2") + 1];
+  if (!dir) { console.error("usage: node docs/art/import-batch-aq13.mjs --import-l2 <batch-verzeichnis> [--dry]"); process.exit(2); }
+  const stem = "l2_p4";
+  const qf = path.join(dir, `${stem}.png`);
+  if (!fs.existsSync(qf)) { console.error(`fehlt: ${qf}`); process.exit(2); }
+  const dest = path.join(OUT, `${stem}.png`);
+  if (!fs.existsSync(dest)) { console.error(`${stem}: es gibt keinen Bestands-Stem dieses Namens — dieser Zweig ERSETZT, er legt nicht an`); process.exit(2); }
+
+  console.log(`\nL2-Import · ${path.basename(dir)} — die hintere Moebelreihe (${stem})`);
+  const roh = read(qf);
+  const pin = blattHash(roh);
+  console.log(`  Lieferung: sha256 (RGB-Rohbytes) ${pin.slice(0, 16)}…`);
+  const gesperrt = SPERR_BUEHNEN.get(pin);
+  if (gesperrt !== undefined) { console.error(`  ✗ dieses Blatt ist schon zurueckgewiesen — ${gesperrt}`); process.exit(1); }
+
+  const alt = read(dest);
+  const out = chromaKey(read(qf));
+  if (out.width !== alt.width || out.height !== alt.height) {
+    console.error(`${stem}: ${out.width}×${out.height} gegen den Bestand ${alt.width}×${alt.height} — ein Ersatz hat die Masse seines Vorgaengers`);
+    process.exit(1);
+  }
+  const killed = defringe(out);
+  const dist = keyDistance(out);
+  if (dist < KEY_MIN) { console.error(`${stem}: ein gemaltes Pixel sitzt ${dist.toFixed(2)} vom Schluessel — ein toleranter Schluessel frisst es`); process.exit(1); }
+
+  const zaehle = (p) => { let n = 0; for (let i = 3; i < p.data.length; i += 4) if (p.data[i] > 8) n++; return n; };
+  const box = { x0: 0, y0: 0, x1: out.width - 1, y1: out.height - 1 };
+  console.log(`  Bestand : ${zaehle(alt)} px gemalt · Rauhheit ${roughnessOf(alt, box, () => true).toFixed(5)}`);
+  console.log(`  Neu     : ${zaehle(out)} px gemalt · Rauhheit ${roughnessOf(out, box, () => true).toFixed(5)} · ${killed} px Saum entfernt · Schluessel-Abstand ${dist.toFixed(2)}`);
+  if (!DRY) fs.writeFileSync(dest, PNG.sync.write(out));
+  console.log(`\n${DRY ? "[dry] " : ""}L2-Import: OK — ${stem}.png (ein bestehender Stem ersetzt, DEAD_ART unveraendert)`);
+  console.log("Naechster Schritt (D-98): node scripts/art-recompress.mjs && node scripts/check-png-identity.mjs");
+  console.log("Das WERT-Urteil faellt danach das Kompositions-Tor: node scripts/check-composition.mjs (Audit 8)");
   process.exit(0);
 }
 
