@@ -56,6 +56,8 @@ export interface ColumnObject {
   stem: string;
   cellsW: number;
   cellsH: number;
+  /** true when the object is attached to the ceiling and terminates downward. */
+  hanging?: boolean;
 }
 
 /** L3 — the carved terrain mass (doc 36 §2). One kit per phase. */
@@ -146,6 +148,10 @@ export interface MassKit {
   platObjects: readonly { stem: string; cells: number; deck?: number }[];
   /** Complete vertical book objects, matched to `columnRuns` by cell size. */
   columnObjects?: readonly ColumnObject[];
+  /** p1/p2 crust ends are painted into the one-piece/phase family. */
+  integratedCrustEnds?: boolean;
+  /** false disables the legacy procedural rectangle grain for this phase. */
+  proceduralGrain?: boolean;
   /** the chalk slide (`z` runs): top / repeatable mid / run-out foot + strut. */
   slide?: { top: string; mid: string; foot: string; under: string };
   /** Painted bindery at the outside ends of platform-object groups. */
@@ -657,6 +663,8 @@ const PLAT_OBJECTS: Record<string, MassKit["platObjects"]> = {
 const COLUMN_OBJECTS: Record<string, NonNullable<MassKit["columnObjects"]>> = {
   p1: [{ stem: "terrain_atlas_podest_p1", cellsW: 2, cellsH: 2 }],
   p2: [
+    { stem: "terrain_hanging_pillar_p2_short", cellsW: 2, cellsH: 4, hanging: true },
+    { stem: "terrain_hanging_pillar_p2", cellsW: 2, cellsH: 7, hanging: true },
     { stem: "terrain_tower_p2", cellsW: 2, cellsH: 11 },
     { stem: "terrain_pillar_p2_8", cellsW: 2, cellsH: 8 },
     { stem: "terrain_pillar_p2_5", cellsW: 2, cellsH: 5 },
@@ -711,30 +719,21 @@ const COLUMN_OBJECTS: Record<string, NonNullable<MassKit["columnObjects"]>> = {
  */
 export const CANOPY_PHASES = new Set<string>([]);
 
-const PAINTED_MASS_PHASES = new Set(["p1"]);
+const PAINTED_MASS_PHASES = new Set(["p1", "p2"]);
 
 const paintedInterior = (phase: string): Pick<MassKit, "body" | "bodyDeep" | "fade" | "sediment"> => ({
   // Four variants where the shared body has two — and Audit 6 counts variety.
-  body: [`mass_body_${phase}_a`, `mass_body_${phase}_b`, `mass_body_${phase}_c`, `mass_body_${phase}_d`],
-  bodyDeep: [`mass_bodydeep_${phase}_a`, `mass_bodydeep_${phase}_b`, `mass_bodydeep_${phase}_c`, `mass_bodydeep_${phase}_d`],
-  fade: [`mass_fade_${phase}_a`, `mass_fade_${phase}_b`],
-  // THE SEDIMENT STAYS SHARED, and the reason is measured rather than cautious.
-  // Koki's AUFHELLEN ruling raised the commissioned sediment from today's 4.8 %
-  // to 7–10 %, and AS2 painted it at 8.78 %. But BAND_HANDOVER.fade = 0.55 was
-  // tuned to walk the fade band down to MEET a near-black sediment: against a
-  // lightened one the chain steps back UP (14.62 × 0.55 = 8.04, then 8.78), and
-  // "never brightens as it deepens" is a law, not a tolerance. The depth-law
-  // test says so out loud.
-  //
-  // The honest resolution is that the handover constants are ART-SPECIFIC, so
-  // the moment a second painted kit exists they have to be derived from the
-  // kit's own measured values instead of being global. That is a real change and
-  // it belongs to whoever paints the phase that NEEDS it: measured over the
-  // shipped grids, p1 draws 60 body and 47 fade pieces and **zero** sediment —
-  // only p2 reaches sediment at all (15 pieces). So wiring a painted sediment
-  // here would change nothing a child can see while breaking a law that
-  // protects what they can. It waits for p2's kit.
-  sediment: "mass_sediment",
+  body: phase === "p2"
+    ? ["mass_body_p2_a", "mass_body_p2_b"]
+    : [`mass_body_${phase}_a`, `mass_body_${phase}_b`, `mass_body_${phase}_c`, `mass_body_${phase}_d`],
+  ...(phase === "p2"
+    ? {}
+    : { bodyDeep: [`mass_bodydeep_${phase}_a`, `mass_bodydeep_${phase}_b`, `mass_bodydeep_${phase}_c`, `mass_bodydeep_${phase}_d`] }),
+  fade: phase === "p2" ? ["mass_fade_p2_a", "mass_fade_p2_b"] : [`mass_fade_${phase}_a`, `mass_fade_${phase}_b`],
+  // R5b: p1/p2 use phase-owned readable depth sheets. The shared near-black
+  // `mass_sediment` remains only for p3/p4/p9, where that depth family has not
+  // landed yet; the healing is therefore scoped to the two commissioned rooms.
+  sediment: phase === "p1" ? "mass_depth_p1" : "mass_depth_p2",
 });
 
 /** The shared interior + trims — one body for the whole school (AF group 3),
@@ -818,7 +817,7 @@ const sharedInterior = (): Pick<MassKit, "body" | "fade" | "sediment"> => ({
  * has changed is that the delivery no longer needs an engine round behind it:
  * the day the cells pass the gate, `paintedTrims` already names them.
  */
-const PAINTED_TRIM_PHASES = new Set<string>([]);
+const PAINTED_TRIM_PHASES = new Set<string>(["p1", "p2"]);
 
 /**
  * R5-W4 · A6 · THE LAY-BACK, PER ROOM (Koki's ruling of 2026-08-15).
@@ -902,14 +901,12 @@ const TRIM_SHADE_BY_PHASE: Record<string, number | undefined> = {
   // die Schnittflaeche nach der Farbe der Oberseite — bei p2/p4/p9 heisst das
   // violett/rosa/blau geschnittenes Buchpapier. Gemeldet, nicht still umgesetzt.
   //
-  // ── DIE VIER GETEILTEN RAEUME BEKOMMEN KEINE ZEILE, UND DAS IST DAS ERGEBNIS
-  // p2, p3, p4 und p9 teilen `mass_body_a/b` UND `mass_edge_l/r`. Dieselbe
-  // Ableitung ergibt fuer alle vier **0xdabf90** — eine Rundungsstelle vom
-  // Schul-Standard 0xdabe90 entfernt. Vier Zeilen mit derselben Zahl waeren
-  // vier Stellen, an denen dieselbe Wahrheit veralten kann. Sie stehen deshalb
-  // NICHT hier; was ihre Kanten wirklich braucht, ist ein eigenes Koerper-Blatt
-  // (AS6), und genau das sagen ihre Kohaerenz-Ausnahmen schon.
+  // R5b: p2 now has phase-owned blue-violet edge sheets. They already carry
+  // the p2 material direction, so the correct pass is neutral: do not lay the
+  // global grey multiply over them. This places the cut edge about eight
+  // luminance points above the p2 body and removes the former waiver.
   p1: 0xe7ba67,
+  p2: 0xffffff,
 };
 
 const paintedTrims = (phase: string): Pick<MassKit, "edgeL" | "edgeR" | "cornerBL" | "cornerBR" | "inCornerL" | "inCornerR"> => ({
@@ -932,10 +929,10 @@ const paintedTrims = (phase: string): Pick<MassKit, "edgeL" | "edgeR" | "cornerB
  * mean a room could not take its side trims until its underside also passed,
  * which is exactly the coupling that left D-27 open for three waves.
  *
- * Empty today, and every entry has to be earned the same way the others are: the
- * cells on the plate, `check-paint-art` green, `--verify` green on the sheet.
+ * R5b: p1 and p2 are now admitted. Each entry is earned by a phase-owned
+ * sheet, the art gate, and the seam audit; unpainted rooms remain outside it.
  */
-const PAINTED_UNDERSIDE_PHASES = new Set<string>([]);
+const PAINTED_UNDERSIDE_PHASES = new Set<string>(["p1", "p2"]);
 
 /** the underside band's two variants, in the order the edge sheet cuts them.
  *  ⚠ the class name is `edgeD`, camel-cased, because that is what
@@ -987,6 +984,8 @@ const sharedMass = (phase: string): Omit<MassKit, "crust" | "crustCapL" | "crust
   // belongs — §10.3's motif law, drawn by the engine instead of by a painter.
   ...(PAINTED_UNDERSIDE_PHASES.has(phase) ? paintedUnderside(phase) : {}),
   trimShade: TRIM_SHADE_BY_PHASE[phase],
+  integratedCrustEnds: phase === "p1" || phase === "p2",
+  proceduralGrain: phase !== "p1" && phase !== "p2",
   // R4: p1/p2 now use complete one-piece art; joins remain available for the
   // untouched phases until their own one-piece commission arrives.
   ...(phase === "p1" || phase === "p2" ? {} : { joint: TERRAIN_JOIN_STEM, postJoin: TERRAIN_POST_JOIN_STEM }),

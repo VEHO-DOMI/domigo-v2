@@ -52,6 +52,8 @@ export const TERRAIN_ONE_PIECE_STEMS = [
   "terrain_pillar_p2_5",
   "terrain_pillar_p2_2",
   "terrain_post_p2",
+  "terrain_hanging_pillar_p2_short",
+  "terrain_hanging_pillar_p2",
   "terrain_atlas_podest_p1",
 ] as const;
 

@@ -77,6 +77,15 @@ const ART = path.join(R, "apps/web/public/art/g1/paint");
  * it is no longer true. Git holds the original.
  */
 const TARGETS = {
+  l2_p2: {
+    lum: 17.5,
+    was: 19.1,
+    why:
+      "R5b adds p2's phase-owned mass and the resulting L3 includes readable depth plus "
+      + "interactive objects. The p2 furniture row therefore takes the declared 17.5 % "
+      + "value inside its L2 band [15.0, 22.5], restoring the absolute L2↔L3 contrast "
+      + "without a separation waiver.",
+  },
   band_p4_audience: {
     // ── R5-T10 · DAS ZIEL FOLGT DER NACHT (2026-08-31) ─────────────────────
     // R15 rechnete 14,8 aus `bandsFor(28)`. Der Raum traegt seit T10 die
