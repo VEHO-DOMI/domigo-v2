@@ -78,15 +78,23 @@ const ART = path.join(R, "apps/web/public/art/g1/paint");
  */
 const TARGETS = {
   band_p4_audience: {
-    lum: 14.8,
-    was: 22.26,
+    // ── R5-T10 · DAS ZIEL FOLGT DER NACHT (2026-08-31) ─────────────────────
+    // R15 rechnete 14,8 aus `bandsFor(28)`. Der Raum traegt seit T10 die
+    // Schluesselzahl seiner eigenen Nacht (K = 19, R231), und das Blatt ist
+    // nicht mehr das, das R15 gedunkelt hat: es ist die angenommene
+    // AQ22-A2-Lieferung, die ihren Wert MITBRINGT.
+    lum: 11.64,
+    was: 14.8,
     why:
-      "the arena's NEAR furniture row (R15). Two laws pin it: audit 1's L2 band "
-      + "[14.0, 21.0] at K=28, and the ABSOLUTE L2↔L3 separation of 12 points "
-      + "against an L3 of 27.5 % — which needs L2 ≤ 15.5. The window is therefore "
-      + "[14.0, 15.5] and 14.8 sits in the middle of it, 0.8 from either wall. "
-      + "Hitting it is what lets SEPARATION_WAIVERS drop ch01/p4 and the "
-      + "readability law guard this room again.",
+      "the arena's NEAR furniture row, re-derived for the night key (T10). "
+      + "At K=19 audit 1's L2 band is [9.5, 14.25], and the ABSOLUTE L2↔L3 "
+      + "separation of 12 points against a measured L3 of 27.2 % caps L2 at "
+      + "15.2 — so the binding window is [9.5, 14.25]. The AQ22-A2 delivery "
+      + "MEASURES 11.639 % (this file's own meanLum, 19 434 samples), 2.1 "
+      + "points from the lower wall and 2.6 from the upper. The target is "
+      + "therefore documentation of where the accepted sheet already sits, "
+      + "not an instruction to move it — and the Wareneingangs-Pin below "
+      + "refuses the move in any case.",
   },
 };
 
@@ -120,6 +128,29 @@ export const WARENEINGANGS_PINS = new Map([
   ["ce96a06c7b7275f2231ec3cc09243186f253fe06a05cec50ee4529435168945f",
     "band_p4_audience aus AQ13c4 — Wareneingang H5, 22.08.2026 (Ring-Abnahme bestanden, "
     + "Rauhheit 0,29924 gegen die bestellte Decke 0,30, Reserve 0,00076)"],
+  // ── R5-T10 · DAS BLATT, DAS HEUTE IM SPIEL LIEGT (2026-08-31) ────────────
+  // Der Eintrag darueber schuetzt die c4-Lieferung — und die liegt seit T10
+  // NICHT MEHR im Spiel; sie lebt nur noch als Fixture, an der der Selbsttest
+  // die Hash-Formel misst. Ohne diese zweite Zeile waere die ausgelieferte
+  // Nacht-Malerei ungeschuetzt: ein Lauf dieses Skripts wuerde sie auf ein
+  // Ziel skalieren, das der Wareneingang nie bestellt hat.
+  //
+  // ⚠ DER PIN IST DER DER AUSLIEFERUNG, NICHT DER DER LIEFERUNG — und der
+  //   Unterschied ist an dieser Bahn bezahlt worden. Chroma-Key, Saum und
+  //   Nachverdichtung lassen die RGB-Bytes tatsaechlich unberuehrt (gemessen:
+  //   Lieferung und erste Auslieferung trugen beide 7694c48b…). Was sie BEWEGT,
+  //   ist `strip-key-fringe.mjs`: der Importeur hinterliess 30 magenta Pixel auf
+  //   der Schnittkante, `check-paint-art` faerbte rot, und die Reparatur heilte
+  //   sie — womit der eben gesetzte Pin ins Leere zeigte und die Sperre STILL
+  //   aufhoerte zu sperren (das Skript lief danach nur noch deshalb nicht, weil
+  //   es den Zielwert zufaellig schon getroffen sah). Gesetz: ein Pin auf
+  //   ausgeliefertem Blatt wird NACH der letzten Byte-Bewegung gemessen, und die
+  //   Saum-Reparatur ist eine.
+  ["4971df7c54d13d51fd6b50f4b978651f57fe6d0e6a6f8092d6488dab166a8593",
+    "band_p4_audience aus AQ22 Amendment A2 — Wareneingang 30.08.2026 (Panel 2:0 mit "
+    + "gehaltenem Reihenfolgen-Tausch, lum 11,639 % im bestellten Fenster [10,0–12,5], "
+    + "sat 24,17, Magenta 0, frisch gemalt r=0,08 gegen den Bestand); ausgeliefert nach "
+    + "Import + strip-key-fringe + Nachverdichtung. Lieferungs-RGB-sha war 7694c48b…"],
 ]);
 
 /** Der Satz, mit dem verweigert wird. Als Konstante, damit der Selbsttest auf
