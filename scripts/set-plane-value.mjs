@@ -133,14 +133,24 @@ export const WARENEINGANGS_PINS = new Map([
   // NICHT MEHR im Spiel; sie lebt nur noch als Fixture, an der der Selbsttest
   // die Hash-Formel misst. Ohne diese zweite Zeile waere die ausgelieferte
   // Nacht-Malerei ungeschuetzt: ein Lauf dieses Skripts wuerde sie auf ein
-  // Ziel skalieren, das der Wareneingang nie bestellt hat. GEMESSEN am
-  // ausgelieferten Blatt nach Import + Nachverdichtung — der Pin sitzt auf den
-  // RGB-Bytes, und die bewegen sich beim Keyen und Verdichten nicht (an genau
-  // diesem Paar nachgeprueft: Lieferung und Auslieferung tragen denselben Wert).
-  ["7694c48b11b4f5aea2d524e386bbc522ca4dafce7e73224cd283dfe6de8c9748",
+  // Ziel skalieren, das der Wareneingang nie bestellt hat.
+  //
+  // ⚠ DER PIN IST DER DER AUSLIEFERUNG, NICHT DER DER LIEFERUNG — und der
+  //   Unterschied ist an dieser Bahn bezahlt worden. Chroma-Key, Saum und
+  //   Nachverdichtung lassen die RGB-Bytes tatsaechlich unberuehrt (gemessen:
+  //   Lieferung und erste Auslieferung trugen beide 7694c48b…). Was sie BEWEGT,
+  //   ist `strip-key-fringe.mjs`: der Importeur hinterliess 30 magenta Pixel auf
+  //   der Schnittkante, `check-paint-art` faerbte rot, und die Reparatur heilte
+  //   sie — womit der eben gesetzte Pin ins Leere zeigte und die Sperre STILL
+  //   aufhoerte zu sperren (das Skript lief danach nur noch deshalb nicht, weil
+  //   es den Zielwert zufaellig schon getroffen sah). Gesetz: ein Pin auf
+  //   ausgeliefertem Blatt wird NACH der letzten Byte-Bewegung gemessen, und die
+  //   Saum-Reparatur ist eine.
+  ["4971df7c54d13d51fd6b50f4b978651f57fe6d0e6a6f8092d6488dab166a8593",
     "band_p4_audience aus AQ22 Amendment A2 — Wareneingang 30.08.2026 (Panel 2:0 mit "
     + "gehaltenem Reihenfolgen-Tausch, lum 11,639 % im bestellten Fenster [10,0–12,5], "
-    + "sat 24,17, Magenta 0, frisch gemalt r=0,08 gegen den Bestand)"],
+    + "sat 24,17, Magenta 0, frisch gemalt r=0,08 gegen den Bestand); ausgeliefert nach "
+    + "Import + strip-key-fringe + Nachverdichtung. Lieferungs-RGB-sha war 7694c48b…"],
 ]);
 
 /** Der Satz, mit dem verweigert wird. Als Konstante, damit der Selbsttest auf
