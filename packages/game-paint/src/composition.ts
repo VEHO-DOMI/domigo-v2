@@ -757,41 +757,10 @@ const sharedInterior = (): Pick<MassKit, "body" | "fade" | "sediment"> => ({
  * which hard-fails on a stem with no PNG. **A phase joins this list on the same
  * commit that adds its art, never before.**
  *
- * ── AND WHY IT IS EMPTY, AFTER p1'S TRIMS WERE IMPORTED AND MEASURED ────────
- * The AS3 edge sheet cut clean, tiled eightfold, and landed inside every value
- * window this file can express. It is still not wired, and the reason is a thing
- * no colour statistic can see: **the sheet paints the wrong FACE.**
- *
- * A mass's flank is the CUT through the material — for a stack of books, the
- * fore-edge: cream, horizontally striated, which is exactly what the shared
- * placeholder `mass_edge_l.png` has always drawn. AS3's side cells paint book
- * COVERS seen face-on — spines, gold tooling, a bright glare down one side. A
- * single solid cannot show its front on its side face and its edge in its
- * interior.
- *
- * Two blind critics, fresh, with the four frames in OPPOSITE orders and no idea
- * which was new, ranked the p1 flank LAST of four — below the placeholder it was
- * meant to replace. Independently:
- *   · "the side of the mass shows the FRONT face of the material … so the
- *      terrain has no sides at all, only a decorative gilt trim"
- *   · "the flank shows books facing the camera while the interior four pixels
- *      away shows books lying edge-on … visible as orange racing stripes at
- *      100 % without magnification"
- * One called it "broken"; both measured the flank as the most saturated and
- * (before the peak fix) the brightest surface in the mass.
- *
- * So the sheet is HELD, the way AS2's was, and for a better-documented reason:
- * this time the geometry is proven good and only the motif is wrong, which makes
- * the re-order small. `SPEC_MASSEN_KIT` §10.3 now states the motif requirement
- * that was never written down — and that is why it was never delivered.
- *
- * What p1 keeps from today: the derived trim COLOUR, which fixes the groove and
- * the grey in all five rooms and is measured in `check-composition` audit 11.
- *
- * The other two things AS3 did not deliver, both re-ordered in §10: the UNDERSIDE
- * cells cannot tile left↔right (75.73 against a texture step of 5.58, and no
- * sub-window of any width at any offset tiles either). RAMPS were never on the
- * sheet.
+ * R5b status: p1 and p2 now use phase-owned side and corner sheets. The
+ * original AS3 side motif was held because it showed book covers face-on rather
+ * than the cut edge of the mass; the R5b sheets below are the scoped replacement.
+ * Their colour and scale are checked by `check-composition` audit 10/11.
  *
  * ── ★ R5-W7 · A8: THE HOOK IS BUILT, AND §9.4 IS ANSWERED RATHER THAN BROKEN ─
  * This paragraph used to end „so there is no `edgeD` field and no `MassKind` for
@@ -811,11 +780,9 @@ const sharedInterior = (): Pick<MassKit, "body" | "fade" | "sediment"> => ({
  * — a raw horizontal cut along the bottom of every overhang, five rooms wide —
  * is the defect D-27 has been carrying since R5-W1.
  *
- * The order stays where it was: the sheet is still not delivered, `edgeD` is
- * still declared by no kit on `main` (`PAINTED_TRIM_PHASES` is empty and
- * `sharedTrims` has no underside), and the cells are still owed by §10.3. What
- * has changed is that the delivery no longer needs an engine round behind it:
- * the day the cells pass the gate, `paintedTrims` already names them.
+ * R5b closes that order for p1/p2: `edgeD` is phase-owned, listed by
+ * `massStems`, and emitted by `planMass`; p3/p4/p9 remain on the shared kit
+ * until their own underside deliveries land.
  */
 const PAINTED_TRIM_PHASES = new Set<string>(["p1", "p2"]);
 
