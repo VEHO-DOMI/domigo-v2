@@ -439,7 +439,7 @@ export type MassKind =
   // underside is the face over the child's head. Its five siblings are out for
   // the same reason, and `composition.test.ts` states that as law.
   | "edgeL" | "edgeR" | "edgeD" | "cornerBL" | "cornerBR" | "inCornerL" | "inCornerR"
-  | "ramp" | "platform" | "joint"
+  | "ramp" | "platform" | "joint" | "postJoin"
   | "slideUnder" | "slideTop" | "slideMid" | "slideFoot"
   | "fallbackFill";
 
@@ -525,6 +525,8 @@ export interface MassPiece {
   tileAnchor?: "xy" | "x";
   /** a MULTIPLY tint (near-white) — the value jitter of the no-metronome law */
   tint?: number;
+  /** source-pixel phase for a run-local tile origin; does not alter the sheet */
+  tileOffsetX?: number;
   depth: number;
 }
 
@@ -565,7 +567,7 @@ export const drawnScaleFor = (p: MassPiece, src: { w: number; h: number }): { x:
  *  `tilePosition mod sourceSize` per axis, so one shared divisor would slide a
  *  non-uniform piece off its own anchor. */
 export const tileAnchorFor = (p: MassPiece, scale: { x: number; y: number }): { x: number; y: number } => ({
-  x: scale.x > 0 ? p.x / scale.x : 0,
+  x: scale.x > 0 ? p.x / scale.x + (p.tileOffsetX ?? 0) : 0,
   y: p.tileAnchor === "x" || scale.y <= 0 ? 0 : p.y / scale.y,
 });
 
@@ -624,8 +626,80 @@ export const platformJoinPieces = (
   return out;
 };
 
+/**
+ * R233 · THE POST CONNECTIONS. The bookbinder join closes a platform's
+ * horizontal edge; this painted saddle closes the other missing relationship:
+ * a timber post entering a stack top or sitting beneath a platform lip.
+ *
+ * The same outside-group rule is used for platforms, so an object run gets two
+ * supports rather than a support at every internal object boundary. Elevated
+ * mass tops get one at each exposed side. Both are visual-only pieces: they do
+ * not claim grid cells and therefore cannot change walkability.
+ */
+export const postJoinPieces = (
+  grid: readonly string[],
+  platforms: readonly MassPiece[],
+  stem: string,
+  paintScale: number,
+  source: { w: number; h: number } = { w: 320, h: 265 },
+): MassPiece[] => {
+  if (source.w <= 0 || source.h <= 0 || paintScale <= 0) return [];
+  const w = source.w * paintScale;
+  const h = source.h * paintScale;
+  const collar = 0.43;
+  const out: MassPiece[] = [];
+  const emit = (p: MassPiece, x: number, y: number, flipX: boolean): void => {
+    out.push({ kind: "postJoin", stem, c: p.c, r: p.r, x, y, w, h, depth: DEPTH.postJoin, flipX });
+  };
+
+  // Platform groups: place the saddle under each outside lip, with the post
+  // descending below the object instead of leaving the edge unsupported.
+  const groups = new Map<number, MassPiece[]>();
+  for (const p of platforms.filter((q) => q.kind === "platform")) {
+    const row = groups.get(p.r) ?? [];
+    row.push(p);
+    groups.set(p.r, row);
+  }
+  for (const row of groups.values()) {
+    row.sort((a, b) => a.x - b.x);
+    let first: MassPiece | undefined;
+    let last: MassPiece | undefined;
+    const emitGroup = (): void => {
+      if (first === undefined || last === undefined) return;
+      const y = first.y + first.h - h * 0.45;
+      emit(first, first.x - w * (1 - collar), y, true);
+      emit(last, last.x + last.w - w * collar, y, false);
+    };
+    for (const p of row) {
+      if (first === undefined || last === undefined) { first = p; last = p; continue; }
+      if (p.x <= last.x + last.w + TILE * 0.6) { last = p; continue; }
+      emitGroup();
+      first = p;
+      last = p;
+    }
+    emitGroup();
+  }
+
+  // Elevated mass corners: a post that meets the stack from the side receives
+  // the same fitting. The outside-grid convention deliberately suppresses
+  // world-edge fittings, just as the existing trims do.
+  for (let r = 0; r < grid.length; r++) {
+    for (let c = 0; c < (grid[0]?.length ?? 0); c++) {
+      if (!isMass(glyphAt(grid, c, r))) continue;
+      const airU = !isMass(glyphAt(grid, c, r - 1));
+      const airD = !isMass(glyphAt(grid, c, r + 1));
+      if (!airU || airD) continue;
+      const p = { c, r } as MassPiece;
+      const y = r * TILE - h * 0.45;
+      if (!isMass(glyphAt(grid, c - 1, r))) emit(p, c * TILE - w * (1 - collar), y, true);
+      if (!isMass(glyphAt(grid, c + 1, r))) emit(p, (c + 1) * TILE - w * collar, y, false);
+    }
+  }
+  return out;
+};
+
 const DEPTH = {
-  body: 1, ramp: 1.5, crust: 2, trim: 2.2, cap: 2.3, platform: 2.5, joint: 2.65, slide: 2.6,
+  body: 1, ramp: 1.5, crust: 2, trim: 2.2, cap: 2.3, platform: 2.5, joint: 2.65, postJoin: 2.66, slide: 2.6,
 } as const;
 
 const gridSize = (grid: readonly string[]): { w: number; h: number } => ({
@@ -1237,10 +1311,14 @@ export const planMass = (
       }
     }
     for (const cell of claimedPlatformCells(grid)) claimed.add(cell);
+    const platformPieces = out.filter((p) => p.kind === "platform");
     if (kit.joint !== undefined) {
-      const platformPieces = out.filter((p) => p.kind === "platform");
       const source = srcSize?.(kit.joint) ?? undefined;
       out.push(...platformJoinPieces(platformPieces, kit.joint, crustScale, source));
+    }
+    if (kit.postJoin !== undefined) {
+      const postSource = srcSize?.(kit.postJoin) ?? undefined;
+      out.push(...postJoinPieces(grid, platformPieces, kit.postJoin, crustScale, postSource));
     }
   }
 
@@ -1275,6 +1353,12 @@ export const planMass = (
       const variants = band === "body"
         ? (deepBody ?? kit.body)
         : (band === "fade" ? kit.fade : [kit.sediment]);
+      // A new phase begins at every contiguous run, not at every segment. The
+      // phase is a source-pixel offset, so the frozen p1 sheets remain intact;
+      // only which part of the same painted tile is at the run's left edge
+      // changes. Different runs therefore do not expose one shared hard column.
+      const runSourceW = srcW(variants[0] ?? kit.body[0] ?? kit.fade[0] ?? "") || 512;
+      const runTileOffsetX = hash2(c, r, 73) * runSourceW;
       // …laid in SEGMENTS, like the course above it and on its own table, so the
       // mass under the hall stops being one 656-px tileSprite of one variant
       // (measured in the running p1 — the wallpaper the critique was reading)
@@ -1288,7 +1372,7 @@ export const planMass = (
           w: (segEnd - seg + 1) * TILE, h: TILE,
           // the interior is a CONTINUUM: anchored on both axes, so the row below
           // draws the next slice of the same painting instead of restamping it
-          tile: true, srcScale: paintScale, tileAnchor: "xy",
+          tile: true, srcScale: paintScale, tileAnchor: "xy", tileOffsetX: runTileOffsetX,
           // ① the no-metronome value jitter, then ② the depth ramp on top of it.
           // The order is a multiply either way; what matters is that ① SURVIVES
           // — the five lights are what audit 6 counts as variety, and a ramp

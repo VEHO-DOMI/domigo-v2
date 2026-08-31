@@ -1,0 +1,12 @@
+packages/game-detective typecheck$ tsc --noEmit
+packages/game-novel typecheck$ tsc --noEmit
+packages/game-2d typecheck$ tsc --noEmit
+packages/game-paint typecheck$ tsc --noEmit
+packages/game-detective typecheck: Done
+packages/game-trip typecheck$ tsc --noEmit
+packages/game-novel typecheck: Done
+packages/game-2d typecheck: Done
+packages/game-paint typecheck: Done
+packages/game-trip typecheck: Done
+apps/web typecheck$ tsc --noEmit
+apps/web typecheck: Done

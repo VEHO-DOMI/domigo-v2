@@ -46,6 +46,7 @@ import {
   PLAT_SHADOW,
   planMass,
   platformJoinPieces,
+  postJoinPieces,
   planPlatformShadows,
   shortestPeriod,
   surfaceSignature,
@@ -736,6 +737,31 @@ describe("the carved mass (doc 36 §2)", () => {
     expect(joins[0]?.x).toBeLessThan(platforms[0]!.x);
     expect(joins[1]?.x).toBeGreaterThan(platforms[1]!.x);
     for (const q of joins) expect(q.w / 320).toBeCloseTo(CRUST_H / 212);
+  });
+
+  it("adds painted saddles below platform lips and at exposed mass tops", () => {
+    const g3 = ["........", "..###...", "........", "########"];
+    const platforms = planMass(g3, kit).filter((q) => q.kind === "platform");
+    const saddles = postJoinPieces(g3, platforms, "terrain_post_saddle", CRUST_H / 212, { w: 320, h: 265 });
+    expect(saddles.filter((q) => q.r === 1)).toHaveLength(2);
+    expect(saddles.filter((q) => q.r === 1).map((q) => q.flipX)).toEqual([true, false]);
+
+    const top = ["........", "##..##..", "##..##..", "########"];
+    const topSaddles = postJoinPieces(top, [], "terrain_post_saddle", CRUST_H / 212, { w: 320, h: 265 });
+    expect(topSaddles).toHaveLength(3);
+    expect(topSaddles.map((q) => q.flipX)).toEqual([false, true, false]);
+  });
+
+  it("staggeres the interior tile phase per contiguous run, not per segment", () => {
+    const separated = ["########", "........", "##..##..", "########"];
+    const body = planMass(separated, kit, afSrc).filter((q) => q.kind === "body");
+    const left = body.filter((q) => q.r === 2 && q.c < 2);
+    const right = body.filter((q) => q.r === 2 && q.c >= 4);
+    expect(left.length).toBeGreaterThan(0);
+    expect(right.length).toBeGreaterThan(0);
+    expect(new Set(left.map((q) => q.tileOffsetX)).size).toBe(1);
+    expect(new Set(right.map((q) => q.tileOffsetX)).size).toBe(1);
+    expect(left[0]?.tileOffsetX).not.toBe(right[0]?.tileOffsetX);
   });
 
   it("treats an anchored ledge as terrain, not as a platform object", () => {

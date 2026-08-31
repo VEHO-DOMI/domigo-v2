@@ -1,0 +1,9 @@
+file:///Users/veho/Code/domigo-v2-n6/scripts/shoot-world.mjs:500
+  throw new Error("Chrome hat seinen Debug-Port nie geöffnet");
+        ^
+
+Error: Chrome hat seinen Debug-Port nie geöffnet
+    at endpoint (file:///Users/veho/Code/domigo-v2-n6/scripts/shoot-world.mjs:500:9)
+    at async file:///Users/veho/Code/domigo-v2-n6/scripts/shoot-world.mjs:521:26
+
+Node.js v22.23.1

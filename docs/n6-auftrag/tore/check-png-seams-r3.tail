@@ -1,0 +1,11 @@
+Geduldete Innen-Naehte (D-199, Reparatur = Krusten-Neulieferung AS5b/A7) — 9 Kachel(n):
+  ⚠ crust_p2_a           838 Importer-Pixel ·  3843 M>45 · erste Fundstelle 3,1 RGB(134,0,132) · geduldet bis 2026-11-30
+  ⚠ crust_p2_b           782 Importer-Pixel ·  4252 M>45 · erste Fundstelle 3,1 RGB(134,0,132) · geduldet bis 2026-11-30
+  ⚠ crust_p2_cap_l       717 Importer-Pixel ·  2944 M>45 · erste Fundstelle 477,72 RGB(128,62,121) · geduldet bis 2026-11-30
+  ⚠ crust_p3_a           162 Importer-Pixel ·  1340 M>45 · erste Fundstelle 500,9 RGB(121,41,122) · geduldet bis 2026-11-30
+  ⚠ crust_p3_b             4 Importer-Pixel ·    34 M>45 · erste Fundstelle 502,4 RGB(138,7,129) · geduldet bis 2026-11-30
+  ⚠ crust_p4_a          2348 Importer-Pixel ·  7406 M>45 · erste Fundstelle 8,2 RGB(123,6,128) · geduldet bis 2026-11-30
+  ⚠ crust_p4_b          2670 Importer-Pixel ·  7607 M>45 · erste Fundstelle 485,2 RGB(132,4,152) · geduldet bis 2026-11-30
+  ⚠ crust_p4_cap_l         3 Importer-Pixel ·   349 M>45 · erste Fundstelle 504,92 RGB(132,4,136) · geduldet bis 2026-11-30
+  ⚠ crust_p9_b           305 Importer-Pixel ·  3174 M>45 · erste Fundstelle 495,3 RGB(136,10,131) · geduldet bis 2026-11-30
+check-png-seams: OK — 34 deklarierte deckende Kacheln geprueft, 9 davon bluten und sind namentlich mit Datum geduldet, 25 sind sauber.

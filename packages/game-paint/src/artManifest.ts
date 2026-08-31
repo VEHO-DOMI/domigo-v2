@@ -30,6 +30,10 @@ export const GLYPH_STEMS: Record<string, string[]> = {
 export const TERRAIN_JOIN_STEMS = ["terrain_join_bookbinder"] as const;
 export const TERRAIN_JOIN_STEM = TERRAIN_JOIN_STEMS[0];
 
+/** R233 · painted saddles where a timber post meets a stack or platform lip. */
+export const TERRAIN_POST_JOIN_STEMS = ["terrain_post_saddle"] as const;
+export const TERRAIN_POST_JOIN_STEM = TERRAIN_POST_JOIN_STEMS[0];
+
 /** Every entity skin needs at least its `_a` state cell (per-state renderer:
  *  pb-<skin>_<state> → pb-<skin>_a → procedural blob). */
 export const entitySkinStems = (skin: string): string[] => [`${skin}_a`];

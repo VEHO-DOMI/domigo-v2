@@ -93,3 +93,46 @@ Die Performance-Läufe wurden gegen Dev- und Produktionsserver versucht und jewe
 Die vollständigen Roh-Ausgaben, Exit-Codes und Tails liegen unter `docs/n6-auftrag/tore/`, einschließlich `shoot-world-p1.*`, `shoot-world-p2.*`, `perf-visible-after.*`, `perf-visible-after-build.*` und `build-after.*`.
 
 **CONTINUE AT D/E bleibt offen:** Chrome/Browserlaufzeit muss verfügbar werden; danach Nachher-Beweise an denselben markierten Stellen, Detail-Crops und echte Zwei-Build-Perf-Zahlen erzeugen. Erst dann ist der visuelle Auftrag abgeschlossen.
+
+## UPDATE-2 R233-Runde 3 · Pfosten-Anschlüsse und Innenmasse
+
+**STAND: V1 · 2026-08-31.**
+
+Die zwei vom Architekten offen gelassenen Klassen sind statisch umgesetzt:
+
+- Neues gemaltes Blatt `terrain_post_saddle.png`, 320 × 265 px, RGBA: ein ochre-/cremefarbener Buchbinder-Sattel mit tintenblauer Klammer und Holzpfosten. Es wird unter Plattform-Lippen und an freiliegenden oberen Seiten erhöhter Stapelmassen eingesetzt. Der Alpha-Farbrand wurde mit dem Repo-Werkzeug bereinigt; `check-paint-art` bestätigt den Stem ohne Magenta-/Grünsaum.
+- `artManifest.ts` registriert `terrain_post_saddle`; `composition.ts` führt `MassKit.postJoin` und `massStems`; `mass.ts` führt den visuellen `postJoin`-Typ und `postJoinPieces` ein. Plattformgruppen erhalten nur Außenstützen; Innenobjektgrenzen bekommen keine Doppelstütze. Die Anschlüsse beanspruchen keine Rasterzelle.
+- Die Innenmasse erhält pro zusammenhängendem Lauf einen deterministischen Quellpixel-Versatz (`tileOffsetX`). Alle Segmente desselben Laufs bleiben kontinuierlich; getrennte Läufe beginnen an unterschiedlichen Stellen desselben unveränderten Blatts. Kein p1-Familienblatt wurde transformiert oder übermalt.
+- `composition.test.ts` prüft Plattform-/Massen-Sättel und den Lauf-Versatz; fokussiert 107/107 Tests bestanden. Der headless Plan weist aus: p1 `joints=18, posts=23`, p2 `joints=14, posts=21`, p3 `joints=14, posts=29`.
+
+Keine Levelzeile, Simulations-, Kollisions- oder Gameplay-Logik wurde geändert.
+
+### Tore Runde 3
+
+Alle statischen Pflichtgates bestanden mit Exit 0; die vollständigen Roh-Ausgaben liegen unter `docs/n6-auftrag/tore/`:
+
+| Gate | Exit | Beleg |
+| --- | ---: | --- |
+| `pnpm typecheck` | 0 | `typecheck-r3.out` / `.exit` |
+| `pnpm lint` | 0 | `lint-r3.out` / `.exit` |
+| `pnpm test` | 0 | `test-r3.out` / `.exit` |
+| `pnpm check:paint-art` | 0 | `check-paint-art-r3.out` / `.exit` |
+| `node scripts/check-png-seams.mjs` | 0 | `check-png-seams-r3.out` / `.exit` |
+| `node scripts/check-composition.mjs` | 0 | `check-composition-r3.out` / `.exit` |
+| `pnpm build` | 0 | `build-r3.out` / `.exit` |
+| headless Planprüfung | 0 | `headless-plan-r3.out` / `.exit` |
+
+`pnpm install` war zuvor erfolgreich; die Engine-Warnung Node `>=24` bei lokalem Node `v22.23.1` wurde wie beauftragt toleriert.
+
+### Sicht- und Performance-Belege Runde 3
+
+Die Repo-Standbildläufe wurden erneut ausgeführt:
+
+- p1: `shoot-world-r3-p1.out` / `.exit`, Exit 1
+- p2: `shoot-world-r3-p2.out` / `.exit`, Exit 1
+
+Beide Läufe scheitern vor dem ersten Bild mit `Chrome hat seinen Debug-Port nie geöffnet`; die Ursache ist im Tail als Chrome-`SIGABRT` dokumentiert. Deshalb liegen weiterhin keine `nachher_p1.png`, `nachher_p2.png` oder Nachher-Detail-Crops vor. Der Host-Sichtbeweis bleibt beim Architekten.
+
+Der aktuelle Produktions-Perf-Lauf liegt in `perf-visible-r3.out` / `.exit` und endet ebenfalls mit Chrome-`SIGABRT` vor der Messung. `perf_vorher.json` und `perf_nachher.json` bleiben deshalb ehrlich `NOT_MEASURED` ohne Zahlen.
+
+Der Commit folgt nach diesem UPDATE-2-Block auf `pb-w9-n6-terrain-guss`; es erfolgt kein Push.
