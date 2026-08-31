@@ -405,7 +405,10 @@ function overlayNeben(cell, cw, ch, slate, offX, offY, ref) {
 // getippt. `pieces` ist [Zellindex, Stem].
 const SHEETS = [
   {
-    file: "batch-aq13m/tafel_scribble.png",
+    // R5-T10 · AQ13N: dieselben vier Zellen, FARBIG geliefert. AQ13M war die
+    // weisse Kreide, die R227 zur Laufzeit einfaerben musste; dieser Wechsel
+    // loest den Interim ab (SCRIBBLE_TINTS faellt im selben Commit).
+    file: "batch-aq13n/tafel_scribble.png",
     cols: 4, rows: 1,
     ref: "tafel_a",
     pieces: [
@@ -416,7 +419,7 @@ const SHEETS = [
     ],
   },
   {
-    file: "batch-aq13m/tafel_wipe.png",
+    file: "batch-aq13n/tafel_wipe.png",
     cols: 4, rows: 1,
     ref: "tafel_rest",
     // Zellen 0–2 (die drei Wisch-Zwischenbilder) werden NICHT importiert: sie
@@ -517,6 +520,47 @@ const FACE_L = 240, FACE_S = 0.10, REF_L = 200, FACE_QUOTA = 0.40, FACE_MIN = 40
  *  diese Leiter erneut — das Werkzeug dafuer ist der Selbsttest weiter unten.)
  */
 const SLATE_L_MAX = 22, MIN_TEXTURE = 1.5, MASS_MAX = 0.01, KEY_MIN = 180;
+
+/** ── R5-T10 · DIE KREIDE BLEIBT AUS DEM GESICHTS-FENSTER (2026-08-31) ───────
+ *
+ * ★ WARUM DIESE GRENZE JETZT HIER STEHT. R227 hat eine Farbton-Verschiebung zur
+ *   LAUFZEIT eingebaut, weil T4s weisse Kreide das gemalte Gesicht gefressen hat
+ *   (beide blinden Leser lasen die Kreide als zwei grosse weisse Ovale). Der
+ *   Block hat sich selbst als INTERIM deklariert und seine Ablöse benannt: die
+ *   farbig gelieferte AQ13N. Sie liegt jetzt — und mit ihr faellt der Tint.
+ *
+ *   Damit faellt aber auch die einzige Stelle, die die EIGENSCHAFT bewachte.
+ *   Ein Interim, der ohne Nachfolger verschwindet, nimmt die Absicherung mit;
+ *   deshalb wandert die Eigenschaft an die TUER, wo die Formeln ohnehin
+ *   wohnen und wo Kunst nur hindurch ins Spiel kommt.
+ *
+ * ★ DIE EICHLEITER, in einem Lauf ueber alle Blaetter gemessen (Anteil der
+ *   gemalten Pixel im Gesichts-Fenster L > 240 UND S < 0,10):
+ *
+ *      AQ13N (bunt, angenommen)   scribble1 0,04 % · 2 0,14 % · 3 0,04 %
+ *                                 · 3b 0,04 % · clean 0,00 %
+ *      AQ13M (weiss, ersetzt)     clean 0,61 % · scribble1 1,04 %
+ *                                 · 3/3b 17,21 % · 2 24,71 %
+ *
+ *   Zwischen 0,14 und 0,61 liegt nichts. Die Grenze liegt in dieser Luecke:
+ *   **0,35 %** — zweieinhalbfache Luft ueber dem schlechtesten ehrlichen Wert,
+ *   und der mildeste historische Wert bleibt rot. Das ist Absicht und keine
+ *   Haerte gegen alte Kunst: die Grenze trennt genau »braucht einen Tint« von
+ *   »braucht keinen«, und die alten Blaetter sind die, fuer die R227 erfunden
+ *   wurde. Wer die Palette wieder wechselt, faehrt diese Leiter erneut.
+ */
+const KREIDE_WEISS_MAX = 0.0035;
+/** Rein, damit der Selbsttest beide Richtungen an Attrappen fahren kann. */
+const kreideWeissAnteil = (png) => {
+  let gemalt = 0, weiss = 0;
+  for (let i = 0; i < png.data.length; i += 4) {
+    if (png.data[i + 3] <= 8) continue;
+    gemalt++;
+    const r = png.data[i], g = png.data[i + 1], b = png.data[i + 2];
+    if (lum(r, g, b) > FACE_L && satS(r, g, b) < FACE_S) weiss++;
+  }
+  return { gemalt, weiss, anteil: gemalt === 0 ? 0 : weiss / gemalt };
+};
 
 /** ── R5-T5 · D-695 · DIE MASSENFARBE DER STRICH-OVERLAYS ───────────────────
  *
@@ -2375,6 +2419,40 @@ function selftest() {
   add("Ring-Ausnahme · TAMPER: abgelaufen (01.12.) deckt keinen einzigen Befund",
     "Helligkeit", () => ({ fail: ringBandUrteil(PIN_A2, A2_BEFUNDE, RING_BAND_AUSNAHMEN, new Date("2026-12-01T12:00:00Z")).offen }));
 
+  // ── DIE KREIDE GEGEN DAS GESICHTS-FENSTER (T10, loest R227 ab) ────────────
+  // Attrappen aus ECHTEN Werten: die bunte AQ13N liegt bei 0,04–0,14 %, die
+  // weisse AQ13M bei 0,61–24,71 %. Beide Ecken werden angefahren.
+  const mkKreide = (weissAnteil) => {
+    const p = new PNG({ width: 100, height: 100 });
+    for (let i = 0; i < p.data.length; i += 4) {
+      const k = i / 4;
+      const istWeiss = k % 1000 < Math.round(weissAnteil * 1000);
+      // weiss = im Gesichts-Fenster; bunt = klar ausserhalb (satte Kreide)
+      p.data[i] = istWeiss ? 252 : 255;
+      p.data[i + 1] = istWeiss ? 252 : 184;
+      p.data[i + 2] = istWeiss ? 252 : 217;
+      p.data[i + 3] = 255;
+    }
+    return p;
+  };
+  add("Kreide-Fenster: bunte Lieferung (0,1 % gesichts-weiss) geht durch",
+    null, () => {
+      const kw = kreideWeissAnteil(mkKreide(0.001));
+      return { fail: kw.anteil > KREIDE_WEISS_MAX ? [`${(100 * kw.anteil).toFixed(2)} % ueber der Grenze`] : [] };
+    });
+  // TAMPER — der Fall, den R227 reparieren musste: weisse Kreide um weisse Augen.
+  add("Kreide-Fenster · TAMPER: weisse Kreide (17 % wie AQ13M scribble3) faellt durch",
+    "ueber der Grenze", () => {
+      const kw = kreideWeissAnteil(mkKreide(0.172));
+      return { fail: kw.anteil > KREIDE_WEISS_MAX ? [`${(100 * kw.anteil).toFixed(2)} % ueber der Grenze`] : [] };
+    });
+  // TAMPER 2 — die Grenze sitzt wirklich in der gemessenen Luecke, nicht darueber.
+  add("Kreide-Fenster · TAMPER: der mildeste historische Wert (0,61 %) faellt ebenfalls",
+    "ueber der Grenze", () => {
+      const kw = kreideWeissAnteil(mkKreide(0.0061));
+      return { fail: kw.anteil > KREIDE_WEISS_MAX ? [`${(100 * kw.anteil).toFixed(2)} % ueber der Grenze`] : [] };
+    });
+
   let bad = 0;
   for (const c of cases) {
     let fails = [], err = null;
@@ -3071,8 +3149,15 @@ if (NUR_KOERPER && NUR_OVERLAY) {
  *  `34758fa72f211ff915f2572fc1ba3e44`) — eine Lab-Kopie kann still VERALTET
  *  sein, das ist an batch-as6p2 einmal bezahlt worden. */
 const DURCHREICH_PINS = [
-  ["batch-aq13m/tafel_scribble.png", "c629cec206d68f60"],
-  ["batch-aq13m/tafel_wipe.png", "c307640d713adede"],
+  // R5-T10 · nachgezogen von aq13m auf aq13n (2026-08-31). Ein Pin, der auf das
+  // alte Blatt zeigt, laesst `--nur-koerper` eine Datei bestaetigen, aus der im
+  // Spiel nichts mehr stammt — genau die stille Falschzusicherung, gegen die der
+  // Absatz darueber geschrieben ist. Werte an der Lieferung GEMESSEN
+  // (`shasum -a 256`), nicht vom Lieferschein abgeschrieben; die Lab-Kopie ist
+  // gegen die iCloud-ABLAGE md5-geprueft (bd22c1a0b2362ce002c6531f06a0446c /
+  // 6d02ce4456a74da78308ef66710958a8).
+  ["batch-aq13n/tafel_scribble.png", "e4fbe378105f4c5e"],
+  ["batch-aq13n/tafel_wipe.png", "9e11a2fee7d40097"],
 ];
 if (NUR_KOERPER) {
   for (const [rel, pin] of DURCHREICH_PINS) {
@@ -3247,6 +3332,19 @@ for (const sheet of (NUR_KOERPER ? KOERPER_SHEETS : NUR_OVERLAY ? SHEETS : [...S
       continue;
     }
 
+    // R5-T10 · die Kreide muss sich vom gemalten Gesicht unterscheiden — seit
+    // dem Fall von R227 ist das eine Eigenschaft der MALEREI, nicht des Motors.
+    const kw = kreideWeissAnteil(out);
+    if (kw.anteil > KREIDE_WEISS_MAX) {
+      failures.push(
+        `${stem}: ${kw.weiss} von ${kw.gemalt} gemalten Pixeln (${(100 * kw.anteil).toFixed(2)} %) liegen im `
+        + `GESICHTS-Fenster (L > ${FACE_L}, S < ${FACE_S}) — Grenze ${(100 * KREIDE_WEISS_MAX).toFixed(2)} %. `
+        + "Weisse Kreide um weisse Augen: genau der Befund D-699, fuer den R227 den Farbton-Interim gebaut hat. "
+        + "Der Interim ist mit AQ13N gefallen, also traegt die Lieferung diese Eigenschaft jetzt selbst.",
+      );
+      continue;
+    }
+
     const dest = path.join(OUT, `${stem}.png`);
     const existed = fs.existsSync(dest);
     if (!DRY) fs.writeFileSync(dest, PNG.sync.write(out));
@@ -3256,6 +3354,7 @@ for (const sheet of (NUR_KOERPER ? KOERPER_SHEETS : NUR_OVERLAY ? SHEETS : [...S
       + `${painted} px gemalt`.padEnd(18)
       + `${nb.daneben} px Rahmen/Luft`.padEnd(24)
       + `${nb.rand} px Rand-Malerei`.padEnd(24)
+      + `Gesichts-Weiss ${(100 * kw.anteil).toFixed(2)} %`.padEnd(24)
       + `${killed} px Saum entfernt`.padEnd(24)
       + `Schlüssel-Abstand ${dist.toFixed(2)}`,
     );
