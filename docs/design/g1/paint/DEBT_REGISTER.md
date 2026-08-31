@@ -1231,21 +1231,34 @@ Reserviert: D-721…D-737.
      noch ihren eigenen Zustand nach.
      ⚠ Gemeldet, nicht gefüllt: D-750…D-769 (Wellen T9 und K8) stehen in diesem
      Register nicht; es endete vor diesem Nachtrag bei D-749. Diese Lücke
-     gehört den Eigentümer-Bahnen, nicht dieser hier. -->
+     gehört den Eigentümer-Bahnen, nicht dieser hier.
+
+     ⚠ EINE EINZIGE ABWEICHUNG VOM WORTLAUT, und zwar eine erzwungene: das
+     Rahmen-Blatt adressiert sieben Ursachen mit ZEILENNUMMERN
+     (PaintGame.tsx Zeile 1129 und 2635, sim.ts 822, PaintScene.ts 4250,
+     CardShell.tsx 272, anim.ts 711, entities.ts 475 — Stand 08469bb6; hier
+     bewusst OHNE die Zurück-Anführung geschrieben, weil das Gesetz genau diese
+     Form sucht und ein Beispiel im Erklärtext sonst selbst der Verstoss wäre —
+     beim ersten Wurf genau so passiert). `scripts/check-registers.mjs`
+     verbietet diese Form im Register, weil sie still altert: die Zeile wandert,
+     der Verweis zeigt weiter irgendwohin, und niemand merkt es. Die Adressen
+     stehen unten deshalb als `Datei#Symbol`, mit der Zeilennummer daneben und
+     ihrem DATUM — die Information ist vollständig erhalten, nur die alternde
+     Form ist weg. Der BEFUND-Text selbst ist Wort für Wort der von Koki. -->
 
 | D-770 | `cards/RulePage.tsx` + `.pb-rule-*` (overlay-css.ts); Inhalte in `ch01.level.json` tip-params | Regel-Seiten didaktisch flach: Titel unscheinbar, Schlüssel-Englisch (don't, What's) nicht hervorgehoben, Kontrast-Paare einfarbig, KI-Zitat-Balken, Erklärungen unintuitiv („braucht kein du") (07.14.47, 07.22.42) | Welle 9 · Bahn N1 | **GEBAUT (N1, dieser PR)** — Titel, Schlüssel-Englisch-Marke, Kontrast-Paare, Zitat-Balken und die fünf Erklärungen; Belege im Sitzungs-Report | Kokis Durchspiel-Review 31.08. (85 Screenshots) · RAHMEN_WELLE9 §2 |
-| D-771 | `storyDe` der `uni.*`-Karten (`ch01.tasks.v2.json`), Karte alle 3 Stücke (`PaintGame.tsx:1129`) | Cloth-Pickup trägt Erzähl-Sätze („lag unten am Rand der Tinte") statt NUR Name | Welle 9 · Bahn N2 | offen | Kokis Durchspiel-Review 31.08. (85 Screenshots) · RAHMEN_WELLE9 §2 |
-| D-772 | `sim.ts:822` Toast ohne Anker → `PaintScene.toast()` ankert am Helden | „Danke!"-Blase erscheint ÜBER DEM SPIELER — liest, als bedanke sich das Kind (07.21.23, 07.23.38) | Welle 9 · Bahn N2 | offen | Kokis Durchspiel-Review 31.08. (85 Screenshots) · RAHMEN_WELLE9 §2 |
-| D-773 | KEIN Jubel-Rest: Unverwundbarkeits-Blinker der Berührung läuft weiter (`iframeTicks=120`, `PaintScene.ts:4250`) | Nach gelöster Karte flackert die Figur weiter („Stunning-Animation") | Welle 9 · Bahn N2 | offen | Kokis Durchspiel-Review 31.08. (85 Screenshots) · RAHMEN_WELLE9 §2 |
+| D-771 | `storyDe` der `uni.*`-Karten (`ch01.tasks.v2.json`), Karte alle 3 Stücke (`PaintGame.tsx#onCloth` (Zeile 1129 am 31.08.)) | Cloth-Pickup trägt Erzähl-Sätze („lag unten am Rand der Tinte") statt NUR Name | Welle 9 · Bahn N2 | offen | Kokis Durchspiel-Review 31.08. (85 Screenshots) · RAHMEN_WELLE9 §2 |
+| D-772 | `sim.ts#solveTask` (Zeile 822 am 31.08.) Toast ohne Anker → `PaintScene.toast()` ankert am Helden | „Danke!"-Blase erscheint ÜBER DEM SPIELER — liest, als bedanke sich das Kind (07.21.23, 07.23.38) | Welle 9 · Bahn N2 | offen | Kokis Durchspiel-Review 31.08. (85 Screenshots) · RAHMEN_WELLE9 §2 |
+| D-773 | KEIN Jubel-Rest: Unverwundbarkeits-Blinker der Berührung läuft weiter (`iframeTicks=120`, `PaintScene.ts#render` (Zeile 4250 am 31.08.)) | Nach gelöster Karte flackert die Figur weiter („Stunning-Animation") | Welle 9 · Bahn N2 | offen | Kokis Durchspiel-Review 31.08. (85 Screenshots) · RAHMEN_WELLE9 §2 |
 | D-774 | `ENGAGE_REACH_PX=22/Y=34` + `onCageHint` ohne Boden-/Überlapp-Bedingung | Käfig-Ansprache feuert beim Drüberspringen des Nachbar-Dings, nicht erst VOR dem Käfig (07.27.x) | Welle 9 · Bahn N2 | offen | Kokis Durchspiel-Review 31.08. (85 Screenshots) · RAHMEN_WELLE9 §2 |
-| D-775 | Verdikt-Zeile `CardShell.tsx:272` (R160) · `qf.moths.*`-Copy | „Zurück im Buch n" + Falter-Karten ohne verständlichen Kontext (07.25.47) | Welle 9 · Bahn N2 | offen | Kokis Durchspiel-Review 31.08. (85 Screenshots) · RAHMEN_WELLE9 §2 |
+| D-775 | Verdikt-Zeile `CardShell.tsx#AnswerHome` (Zeile 272 am 31.08.) (R160) · `qf.moths.*`-Copy | „Zurück im Buch n" + Falter-Karten ohne verständlichen Kontext (07.25.47) | Welle 9 · Bahn N2 | offen | Kokis Durchspiel-Review 31.08. (85 Screenshots) · RAHMEN_WELLE9 §2 |
 | D-776 | `cage_satchel`-Sheets | Käfig-Kunst liest als verschnürtes PAKET (Rest-Optik), Insasse nicht erkennbar — Benennen-Aufgabe braucht lesbares Bild (07.20.32, 07.25.47-Umfeld) | Welle 9 · Bahn N3 | offen | Kokis Durchspiel-Review 31.08. (85 Screenshots) · RAHMEN_WELLE9 §2 |
 | D-777 | `ch01.level.json` cage-captives | Insassen-Wahl fraglich (Musikanlage im Käfig unmotiviert) — Kurations-Vorschlag an Koki | Welle 9 · Bahn N3 | offen | Kokis Durchspiel-Review 31.08. (85 Screenshots) · RAHMEN_WELLE9 §2 |
 | D-778 | redeem-Placement | Befreites Ding steht danach „schwammig" im Level (Platzierung/Pose) (07.27.50) | Welle 9 · Bahn N3 | offen | Kokis Durchspiel-Review 31.08. (85 Screenshots) · RAHMEN_WELLE9 §2 |
-| D-779 | `anim.ts:711` vs `merle_*`-Zellen | Merle rendert sichtbar KLEINER als der Held (07.28.41) — obwohl `entDisplayH` classmate=30 = BODY_H: Ursache in den Kunst-Zellen/Posen messen | Welle 9 · Bahn N4 | offen | Kokis Durchspiel-Review 31.08. (85 Screenshots) · RAHMEN_WELLE9 §2 |
+| D-779 | `anim.ts#entDisplayH` (Zeile 711 am 31.08.) vs `merle_*`-Zellen | Merle rendert sichtbar KLEINER als der Held (07.28.41) — obwohl `entDisplayH` classmate=30 = BODY_H: Ursache in den Kunst-Zellen/Posen messen | Welle 9 · Bahn N4 | offen | Kokis Durchspiel-Review 31.08. (85 Screenshots) · RAHMEN_WELLE9 §2 |
 | D-780 | `awk.merle.r1` showsDe + fehlendes Kontext-Popup | „verwunschen"-Wortfamilie unnatürlich; Kontext fehlt (Merle im Federpennal zeigen, kindgerecht erklären) (07.26.33) | Welle 9 · Bahn N4 | offen | Kokis Durchspiel-Review 31.08. (85 Screenshots) · RAHMEN_WELLE9 §2 |
-| D-781 | Roam nutzt Minimal-Posen (`entities.ts:475`) | Befreite Merle zu statisch (Grundpose) — lebendigere Posen/Interaktion (07.28.19) | Welle 9 · Bahn N4 | offen | Kokis Durchspiel-Review 31.08. (85 Screenshots) · RAHMEN_WELLE9 §2 |
-| D-782 | `PaintGame.tsx:2635` + Kapitel-Copy gesamt | „Das Buch flüstert: … bleiben hier auf der Seite" = nichtssagend/Meta; generell: Buch-Zeilen klingen nach KI, nicht nach Mensch | Welle 9 · Bahn N5 | offen | Kokis Durchspiel-Review 31.08. (85 Screenshots) · RAHMEN_WELLE9 §2 |
+| D-781 | Roam nutzt Minimal-Posen (`entities.ts#ROAM_MAX_CELLS` (Zeile 475 am 31.08.)) | Befreite Merle zu statisch (Grundpose) — lebendigere Posen/Interaktion (07.28.19) | Welle 9 · Bahn N4 | offen | Kokis Durchspiel-Review 31.08. (85 Screenshots) · RAHMEN_WELLE9 §2 |
+| D-782 | `PaintGame.tsx#Overlay` (Zeile 2635 am 31.08.) + Kapitel-Copy gesamt | „Das Buch flüstert: … bleiben hier auf der Seite" = nichtssagend/Meta; generell: Buch-Zeilen klingen nach KI, nicht nach Mensch | Welle 9 · Bahn N5 | offen | Kokis Durchspiel-Review 31.08. (85 Screenshots) · RAHMEN_WELLE9 §2 |
 | D-783 | `BuchClient.tsx` ohne `CutscenePlayer`; `story.json` ch00 | Es fehlt die IN-Spiel-Erklärung, warum Dinge grau sind/in Käfigen stecken → der R234-Prolog; CutscenePlayer existiert, ist im Buch NICHT montiert | Welle 9 · Bahn N5 | offen | Kokis Durchspiel-Review 31.08. (85 Screenshots) · RAHMEN_WELLE9 §2 |
 | D-784 | `cards/routing.ts` per-Pool-Cursor, bewusst ohne Lauf-Seed — Seed-Frage = benannte PR-Frage an Koki | Boss-Kampf: erste Karten je Pool immer dieselben; Aufgabentypen zu gleichförmig — lange kuratierte Task-Typen-Vorlage nötig (D-195-Klasse, verschärft) | Welle 9 · Bahn N7 | offen | Kokis Durchspiel-Review 31.08. (85 Screenshots) · RAHMEN_WELLE9 §2 |
 | D-785 | `uni.shoe` singular; Plural-tip = p3 | Schuh-Aufgabe: zwei Schuhe liegen da → Aufgabe soll PLURAL verlangen („two shoes"), und erst NACH der Plural-Regelseite (07.30.07) — heute existiert kein Plural-Task | Welle 9 · Bahn N7 | offen | Kokis Durchspiel-Review 31.08. (85 Screenshots) · RAHMEN_WELLE9 §2 |
