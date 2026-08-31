@@ -55,7 +55,13 @@ const PaintParams = z.record(z.string(), z.unknown()).check((ctx) => {
   // are kept out by `tip-honesty`'s typo gate, which is role-aware and can say
   // „a rule page does not carry this" — something this record cannot, because
   // here every role's params look alike.
-  for (const k of ["topicDe", "erklaerungDe", "merksatzDe", "schluesselDe", "belegDe"] as const) {
+  // R5-W9 · N1: `beispielMuster` reiht sich ein. Es ist zwar kein Satz, den ein
+  // Kind liest, aber es ENTSCHEIDET, wie die Beispiele gezeichnet werden — eine
+  // Zahl oder ein null an dieser Stelle liesse die Karte still auf die
+  // schlichteste Form zurückfallen, also genau auf die Liste, gegen die diese
+  // Runde gebaut ist. Welche vier Werte erlaubt sind, prüft `tip-honesty`
+  // (rollen-bewusst); dass es überhaupt Text ist, gehört hierher.
+  for (const k of ["topicDe", "erklaerungDe", "merksatzDe", "schluesselDe", "beispielMuster", "belegDe"] as const) {
     if (k in p && (typeof p[k] !== "string" || p[k].trim() === "")) {
       ctx.issues.push({ code: "custom", input: p, path: [k], message: `params.${k} must be a non-empty string` });
     }

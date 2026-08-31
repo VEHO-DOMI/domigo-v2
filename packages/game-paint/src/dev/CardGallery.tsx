@@ -136,26 +136,52 @@ export default function CardGallery({ level, art, tasks, Overlay, which, karte }
     return tasks.find((t) => t.kind === kind);
   };
 
-  // the chapter's own rule page, so the tip panel shows a real Merksatz.
+  // the chapter's own rule pages, so the tip panels show real Merksätze.
   // R5-W4 · I2: found by ROLE, not by „carries a merksatzDe" — the old predicate
   // would have handed the bench any future entity that happened to grow that
   // param, and a bench fixture picked by accident is a bench that reviews the
   // wrong thing.
-  const tipEntity = [...level.phases, ...(level.arena ? [level.arena] : [])]
-    .flatMap((p) => p.entities)
-    .find((e) => e.role === "tip");
-  const tipFixture = {
-    id: String(tipEntity?.id ?? "tip"),
-    skin: String(tipEntity?.skin ?? "regelseite"),
-    topicDe: String(tipEntity?.params?.topicDe ?? "Regel"),
-    erklaerungDe: String(tipEntity?.params?.erklaerungDe ?? ""),
-    merksatzDe: String(tipEntity?.params?.merksatzDe ?? "—"),
-    schluesselDe: String(tipEntity?.params?.schluesselDe ?? ""),
-    beispieleEn: Array.isArray(tipEntity?.params?.beispieleEn)
-      ? tipEntity.params.beispieleEn.filter((x): x is string => typeof x === "string")
-      : [],
-    belegDe: String(tipEntity?.params?.belegDe ?? ""),
+  //
+  // ★ R5-W9 · N1 · ALLE Regel-Seiten, nicht nur die erste. Die Bank suchte
+  // `.find(e => e.role === "tip")` und hat damit VIER VON FÜNF Seiten nie
+  // gesehen: Kokis Befund D-770 („die Regel-Seiten sind didaktisch flach") war
+  // an genau EINER Seite fotografierbar und an vier nicht. Dieselbe Klasse wie
+  // D-518 und D-525 — eine Fläche, die es nicht gibt, wird nie geprüft.
+  //
+  // Die PHASE reist mit dem Eintrag, weil der Schnitt durch die Karte auf die
+  // Platte ihres Raums schaut (D2): fünf Regel-Seiten im selben Flur wären
+  // wieder die eine Kulisse, gegen die ein blinder Kritiker schon einmal
+  // geurteilt hat („the identical hallway reused across five ceremonies").
+  const tipEntries = [...level.phases, ...(level.arena ? [level.arena] : [])]
+    .flatMap((p) => p.entities.filter((e) => e.role === "tip").map((e) => ({ e, phaseId: p.id })));
+  /** Die Attrappe der n-ten Regel-Seite. Fehlt sie im Kapitel, sagt die Bank das
+   *  LAUT (sichtbarer Fehl-Titel) statt still die erste zu zeigen — D-206s
+   *  Gesetz, hier auf die Seiten angewandt. */
+  const tipFixtureAt = (i: number): Record<string, unknown> => {
+    const e = tipEntries[i]?.e;
+    return {
+      id: String(e?.id ?? `tip-${i + 1}`),
+      skin: String(e?.skin ?? "regelseite"),
+      topicDe: String(e?.params?.topicDe ?? `⚠ keine ${i + 1}. Regel-Seite im Kapitel`),
+      erklaerungDe: String(e?.params?.erklaerungDe ?? ""),
+      merksatzDe: String(e?.params?.merksatzDe ?? "—"),
+      schluesselDe: String(e?.params?.schluesselDe ?? ""),
+      beispieleEn: Array.isArray(e?.params?.beispieleEn)
+        ? e.params.beispieleEn.filter((x): x is string => typeof x === "string")
+        : [],
+      // R5-W9 · N1: die zwei Felder, die die neue Seite zeichnen — ohne sie
+      // fotografierte die Bank eine Karte ohne Marken und ohne Lese-Form, also
+      // nicht die ausgelieferte.
+      lehrtEn: Array.isArray(e?.params?.lehrtEn)
+        ? e.params.lehrtEn.filter((x): x is string => typeof x === "string")
+        : [],
+      beispielMuster: String(e?.params?.beispielMuster ?? "einzeln"),
+      belegDe: String(e?.params?.belegDe ?? ""),
+    };
   };
+  /** der Raum, in dem die n-te Regel-Seite liegt (Vorgabe p1, wie bei jeder Fläche) */
+  const tipPhaseAt = (i: number): string => String(tipEntries[i]?.phaseId ?? "p1");
+  const tipFixture = tipFixtureAt(0);
   const doorEntity = [...level.phases, ...(level.arena ? [level.arena] : [])]
     .flatMap((p) => p.entities)
     .find((e) => e.params?.price !== undefined);
@@ -330,8 +356,18 @@ export default function CardGallery({ level, art, tasks, Overlay, which, karte }
     // R5-W2 · I1: the reading card has TWO beats, so the bench has two surfaces.
     // Both read the chapter's OWN page — a bench fixture that invents its copy
     // photographs a card nobody ships.
-    ceremony("tip", "Regel-Seite · gefunden", { card: "tip", tip: tipFixture }),
-    ceremony("tip-regel", "Regel-Seite · die Regel", { card: "regel", tip: tipFixture }, undefined, "p2"),
+    ceremony("tip", "Regel-Seite · gefunden", { card: "tip", tip: tipFixture }, undefined, tipPhaseAt(0)),
+    // ★ R5-W9 · N1: fünf Regel-Seiten, fünf Flächen. Bis hierher trug die Liste
+    // EINE Lese-Fläche, und die zeigte immer die erste Seite des Kapitels —
+    // vier Seiten waren nicht fotografierbar und damit nicht überprüfbar.
+    // Angehängt, wie es die Flächenliste ausdrücklich vorsieht; die id
+    // `tip-regel` bleibt die Adresse der ERSTEN Seite, damit ältere Aufrufe
+    // weiter dasselbe Bild bekommen.
+    ceremony("tip-regel", "Regel-Seite 1 · die Regel", { card: "regel", tip: tipFixtureAt(0) }, undefined, tipPhaseAt(0)),
+    ceremony("tip-regel-2", "Regel-Seite 2 · die Regel", { card: "regel", tip: tipFixtureAt(1) }, undefined, tipPhaseAt(1)),
+    ceremony("tip-regel-3", "Regel-Seite 3 · die Regel", { card: "regel", tip: tipFixtureAt(2) }, undefined, tipPhaseAt(2)),
+    ceremony("tip-regel-4", "Regel-Seite 4 · die Regel", { card: "regel", tip: tipFixtureAt(3) }, undefined, tipPhaseAt(3)),
+    ceremony("tip-regel-5", "Regel-Seite 5 · die Regel", { card: "regel", tip: tipFixtureAt(4) }, undefined, tipPhaseAt(4)),
     ceremony("score", "Bilanz-Seite", { card: "score" }),
     ceremony("out", "Tür hinaus", { card: "out" }),
     ceremony("grant", "Die Gabe", { card: "grant" }, undefined, "p2"),

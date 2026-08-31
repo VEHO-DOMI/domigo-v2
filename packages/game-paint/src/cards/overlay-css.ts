@@ -356,6 +356,12 @@ export const PAINT_OVERLAY_CSS = `
      argumentierte, ist in R5-W6b gestrichen worden — er wurde nie gelesen.) */
   --pb-btn-face: #e9ca80;
   --pb-seal: #ffd98a;
+  /* R5-W9 · N1: dieselbe Farbe ein zweites Mal geschrieben, für die eine
+     Fläche, die sie in einem Verlauf mit Deckkraft braucht (.pb-en-mark, der
+     Pinselwisch unter dem Schlüssel-Englisch). Genau das Muster, das
+     --pb-ink-rgb schon fährt, samt seines Preises: ein zweiter Name ist ein
+     Drift-Risiko, deshalb hält overlay-css.test.ts die beiden aneinander. */
+  --pb-seal-rgb: 255, 217, 138;
   --pb-ink: #6b3f18;
   /* the same pen as channels, for the two surfaces that need it at a strength
      of their own. A second name for one colour is a drift risk, and it is paid
@@ -1608,6 +1614,163 @@ export const PAINT_OVERLAY_CSS = `
   margin: 0 0 8px;
 }
 
+/* ══ R5-W9 · N1 · DIE REGEL-SEITE, NEU GESETZT ═══════════════════════════════
+   Kokis Durchspiel-Review vom 31.08. (Befund D-770) an zwei Belegen: der TITEL
+   war die unauffälligste Zeile der Karte, das Schlüssel-Englisch gar nicht
+   hervorgehoben, die Beispiele alle im selben Rotbraun (»Sit down!« und »Don't
+   sit down!« sahen identisch aus, obwohl sie das Gegenteil sagen), und am
+   Merksatz sass ein Zitat-Balken — »KI-Optik«, nicht die eines bemalten Buchs.
+
+   Alle Farbwerte hier sind Token dieser Datei, kein neuer Hex. Jede
+   Vordergrund/Hintergrund-Paarung ist gegen --pb-paper (#fff2cd) GEMESSEN und
+   steht mit ihrer Zahl an ihrer Klasse — Doku §2: der Abstand zum Papier darf
+   sich nur vergrössern.
+
+   Alles hier ist STATISCH: keine @keyframes, kein transition. Die
+   Reduced-Motion-Abschussliste spiegelt genau die animierte Menge, und eine
+   Regel-Seite, die unter einem lesenden Kind pulsiert, ist eine Seite, die
+   niemand liest (dasselbe Argument wie beim Fund-Takt). */
+
+/* 1 · DER TITEL FÜHRT.
+   Er lief bis heute auf .pb-merk-topic — 11,5 px, gesperrte VERSALIEN, stille
+   Tinte: die Überschrift war die kleinste Type auf der Karte. Jetzt die
+   Auszeichnungsschrift des Hauses in voller Tinte. Die Versalien fallen
+   ausdrücklich weg, und zwar nicht nur aus Rang-Gründen: text-transform macht
+   aus »Begrüssen« ein SS (auf Kokis Beleg 07.22.42 zu sehen) — eine
+   Rechtschreibänderung durch ein Stilmittel.
+   Gemessen: --pb-text auf --pb-paper = 13,08 : 1. */
+.pb-rule-titel {
+  font-family: var(--font-display, inherit);
+  font-weight: 800;
+  font-size: 21px;
+  line-height: 1.16;
+  color: var(--pb-text);
+  margin: 2px 0 7px;
+  text-wrap: balance;
+}
+/* im Archiv-Fach und am Hub-Brett steht derselbe Titel eine Stufe kleiner: es
+   ist eine LISTE von Seiten, nicht die eine aufgeschlagene */
+.pb-merk-slot .pb-rule-titel { font-size: 17px; margin: 0 0 5px; }
+
+/* 2 · DIE MARKE FÜR SCHLÜSSEL-ENGLISCH — ein Mittel, überall dasselbe.
+   Markiert werden genau die Formen aus »lehrtEn«, also das, was die Seite zu
+   lehren VERSPRICHT und was »tip-honesty« ohnehin gegen die Beispiele prüft.
+
+   UMKEHRUNG GEGENÜBER HEUTE, und sie ist der eigentliche Fix: bisher trug JEDE
+   englische Zeile den Akzent (.pb-key-en) — wenn alles der wärmste Ton ist, ist
+   nichts hervorgehoben. Die Zeilen stehen jetzt in der dunklen Buch-Tinte, und
+   nur die gelehrte Form trägt Akzent plus Wisch.
+
+   KEIN TEXTMARKER-BALKEN: die Marke ist ein Pinselstrich, der an beiden Enden
+   ausläuft — dasselbe Argument, mit dem .pb-key seinen Kreidestrich statt eines
+   Bandes bekam (»a highlighter band would be app UI«). Als eigener Hintergrund
+   des Wortes gezeichnet, nicht als ::before mit negativem z-index: ein
+   Pseudo-Element hinter der eigenen Zeile rutscht auf gefiltertem Grund hinter
+   das Kartenpapier.
+   Gemessen an der STÄRKSTEN Stelle des Wischs (--pb-seal bei 0,44): auf dem
+   Kartenpapier #fff2cd ergibt das #ffe7b0 und --pb-accent darauf 4,63 : 1; auf
+   dem helleren Papier des Hub-Bretts (#f7edd6, wo dieselbe Marke von Hand
+   nachgebaut ist) 4,51 : 1. Die Spitze steht auf dem WENIGER günstigen der
+   beiden Gründe — eine Marke, die nur auf einer der zwei Flächen AA hält, ist
+   keine gemeinsame Marke. */
+/* R233 · F6 · DER LEERRAUM ZWISCHEN ZWEI MARKEN.
+   Der Wisch ragt über seine Buchstaben hinaus (Polsterung) und zieht den
+   Vorschub mit einem negativen Rand wieder heraus, damit ein Satzzeichen
+   dahinter nicht weggeschoben wird. Stehen ZWEI Marken nebeneinander — auf der
+   Befehls-Seite »Don't« und »sit down« —, frisst genau das den Wortzwischenraum
+   auf und die beiden Wische berühren sich.
+   Die erste Antwort darauf war, die beiden zu EINER Marke zu verschmelzen; die
+   Codex-Runde hat gezeigt, dass damit die Lektion verschwindet (»Don't vor das
+   Verb« war nicht mehr einzeln ablesbar). Also wird stattdessen dem Leerraum
+   zurückgegeben, was die Polsterung ihm genommen hat — die Marken bleiben zwei,
+   und man sieht es. */
+.pb-en-luecke { padding: 0 0.14em; }
+
+.pb-en-mark {
+  font-family: var(--font-display, inherit);
+  font-weight: 800;
+  color: var(--pb-accent);
+  /* ⚠ AM EIGENEN BILD GEFUNDEN: die Polsterung schob das Satzzeichen weg, und
+     die Karte las »Sit down !« und »twenty-five .«. Ein Wisch ist Farbe, kein
+     Kasten — er darf breiter sein als die Buchstaben, ohne die Zeile
+     auseinanderzuziehen. Der negative Rand nimmt den Vorschub wieder heraus;
+     was bleibt, sind die 0,08em, die den Pinselrand über die Glyphen hinaus
+     stehen lassen. */
+  padding: 0.04em 0.2em 0.1em;
+  margin: 0 -0.12em;
+  border-radius: 8px 4px 9px 5px / 5px 9px 4px 8px;
+  background-image: linear-gradient(96deg,
+    rgba(var(--pb-seal-rgb),0) 0%, rgba(var(--pb-seal-rgb),0.40) 7%, rgba(var(--pb-seal-rgb),0.44) 52%,
+    rgba(var(--pb-seal-rgb),0.37) 92%, rgba(var(--pb-seal-rgb),0) 100%);
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+/* 3 · DER MERKZETTEL — und warum der Balken geht.
+   Der Merksatz hing an einem 3px-Balken links (border-left), also an der Optik
+   eines Blockzitats: Koki las genau das als »KI-Optik«. Ein Buch zitiert sich
+   nicht selbst — es klebt einen Zettel hinein. Also das Papier der Blätter
+   UNTER dem obersten (--pb-sheet-face, schon Token) mit vier ungleichen Ecken.
+   Gemessen: --pb-text auf --pb-sheet-face = 11,80 : 1. */
+.pb-rule-zettel {
+  background: var(--pb-sheet-face);
+  border-radius: 13px 7px 15px 8px / 8px 15px 7px 13px;
+  padding: 8px 12px 9px;
+  margin: 0 0 11px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), 0 1px 0 rgba(var(--pb-ink-rgb),0.13);
+}
+.pb-rule-zettel .pb-rule-line { margin: 0; color: var(--pb-text); }
+
+/* 4 · DIE BEISPIELE, JE NACH LESE-FORM (»beispielMuster« im Level).
+   Eine Liste gleich gesetzter Zeilen kann einen Wandel nicht von einem
+   Gegensatz unterscheiden — das war Kokis dritter Punkt. Die Grundzeile ist
+   überall dieselbe; was sich ändert, ist die Anordnung. */
+.pb-bsp {
+  list-style: none;
+  margin: 0 0 2px;
+  padding: 0;
+  display: grid;
+  gap: 7px;
+  font-family: var(--font-display, inherit);
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 1.3;
+  color: var(--pb-text);
+}
+
+/* WANDEL — links die Ausgangsform, rechts die gelehrte. Der Pfeil steht in der
+   Mitte und trägt die Aussage »wird zu«; links geht die Tinte einen Schritt
+   zurück, damit das Auge rechts landet. */
+.pb-bsp-wandel > li { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 6px; }
+.pb-bsp-von { color: var(--pb-quiet-ink); }
+.pb-bsp-pfeil { display: flex; color: var(--pb-ink-line); }
+
+/* DIALOG — die Frage steht, die Antwort rückt ein und antwortet ihr. Kein
+   Sprechblasen-Kasten: das ist Anwendungs-Oberfläche, nicht Buch. */
+.pb-bsp-dialog > li { display: grid; gap: 1px; }
+.pb-bsp-frage { color: var(--pb-text); }
+.pb-bsp-antwort { margin-left: 18px; color: var(--pb-quiet-ink); }
+
+/* GEGENSATZ — zwei Spalten, beide richtiges Englisch.
+   ⚠ NIE als richtig/falsch: Koki hat die durchgestrichene Falschform am
+   15.08. abgeschafft (»Wir wollen KEINE Fehler zeigen«). Es gibt deshalb kein
+   Kreuz, keinen Strich und kein Rot/Grün — die Spalten tragen zwei Etiketten
+   und die Buch-eigenen Tinten, und die Trennung ist ein Papierfalz. */
+.pb-bsp-gegensatz { grid-template-columns: 1fr 1fr; column-gap: 14px; row-gap: 7px; }
+.pb-bsp-etikett {
+  font-family: var(--font-label, inherit);
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--pb-quiet-ink);
+  margin: 0 0 -2px;
+}
+.pb-bsp-gegensatz > li:nth-child(2n) { border-left: 1px solid var(--pb-ink-line); padding-left: 13px; }
+
+/* EINZELN — ein vollständiger Satz je Zeile; die Marke tut die ganze Arbeit. */
+.pb-bsp-einzeln > li { display: block; }
+
 /* beat 1: the found page leans, the way a loose sheet does — a page laid out
    perfectly square reads as a UI asset rather than as something picked up */
 .pb-treasure-tilt {
@@ -1715,25 +1878,21 @@ export const PAINT_OVERLAY_CSS = `
 /* DIE MERKSEITE — the collected rules, and the gaps where the rest still are */
 .pb-merk-list { display: grid; gap: 9px; margin: 8px 0 4px; }
 .pb-merk-slot {
-  /* R5-W3 · J2 · R21: joins the family. One edge cannot disagree with itself, so
-     this stub's hand is its RADIUS instead — the two ends round differently, which
-     is what makes it a torn stub rather than a table rule. */
-  border-left: 3px solid var(--pb-ink-line);
-  border-radius: 3px 0 0 4px / 4px 0 0 3px;
-  padding: 4px 0 4px 10px;
+  /* R5-W9 · N1: HIER STAND DERSELBE ZITAT-BALKEN wie am Merksatz (border-left,
+     3 px) — und Kokis Urteil „KI-Optik" gilt einer KLASSE, nicht einer Stelle.
+     Ein Archiv-Fach ist auch kein Zitat; es ist ein Blatt, das im Buch klebt.
+     Getrennt wird jetzt durch Abstand und den Zettel im Fach, nicht durch eine
+     Linie am Rand. (Die Fächer der noch fehlenden Seiten behalten ihre eigene
+     Sprache über .pb-merk-gap.) */
+  padding: 2px 0 6px;
 }
-.pb-merk-topic {
-  font-family: var(--font-label, inherit);
-  font-size: 11.5px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  /* R5-W3 · J2 · R21: joins the family — and it is a legibility fix, not only a
-     rename. Measured against --pb-paper (#fff2cd): #a8926a is 2,70 : 1, which
-     fails AA at this size; --pb-quiet-ink is 5,53 : 1. Doc §2 lets the look widen
-     the gap to the paper and never narrow it. */
-  color: var(--pb-quiet-ink);
-  margin: 0 0 2px;
-}
+/* ».pb-merk-topic« (die gesperrte Versalien-Zeile, die bis heute der TITEL einer
+   Regel-Seite war) ENTFERNT in R5-W9 · N1 — dieselbe Behandlung wie
+   ».pb-portrait« und ».pb-treasure-plate« vor ihr: keine TSX wendet sie mehr an.
+   Sie WAR Kokis Befund D-770 Punkt 1: 11,5 px stille Tinte in Versalien für die
+   wichtigste Zeile der Karte. Ihre Nachfolgerin ist .pb-rule-titel weiter oben.
+   Das laut hinzuschreiben ist der Punkt — eine stillgelegte Regel, die stehen
+   bleibt, wird beim nächsten Umbau versehentlich wieder angeschlossen. */
 /* a slot that is still missing: the torn stub, greyed, and no text — what is on
    a page you have not found is not something you know */
 .pb-merk-gap {

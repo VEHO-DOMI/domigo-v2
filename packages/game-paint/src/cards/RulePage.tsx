@@ -16,31 +16,32 @@
 // and the two beats are two `OverlayState.card` values — the same device the
 // score → door hand-off has used since M-B.
 //
-// THE EMPHASIS. One phrase is set in the book's accent ink, and it is a phrase
-// OF the rule (`schluesselDe`, which `tip-honesty` proves is a substring of the
-// Merksatz). That is deliberate repair work: every shipped Merksatz is 60–72
-// characters and `Key` drops its stroke over 56, so until this card the rule
-// pages rendered with NO emphasis at all. The rule now leads as a long Key and
-// carries one KeyBit inside it — the house device, used as designed.
+// ★★ R5-W9 · N1 · VON GRUND AUF NEU GESETZT — Kokis Durchspiel-Review vom
+// 31.08. (Befund D-770, zwei Belege). Was er an der ausgelieferten Karte las:
+//   1 · der Regel-TITEL war die unauffälligste Zeile — eine graue, gesperrte
+//       Mini-Zeile in Versalien, kleiner als alles andere auf der Karte;
+//   2 · das Schlüssel-Englisch (don't · What's · I'm) war nicht hervorgehoben —
+//       paradoxerweise WEIL jede englische Zeile den Akzent trug;
+//   3 · „Sit down!" und „Don't sit down!" sahen identisch aus, obwohl sie das
+//       Gegenteil voneinander sagen — eine Liste kann keinen Gegensatz zeigen;
+//   4 · am Merksatz sass ein Zitat-Balken: „KI-Optik", nicht die eines Buchs;
+//   5 · die Erklärungen waren Grammatik-Sprech („Ein Befehl braucht kein du");
+//   6 · und alle fünf Seiten trugen dasselbe Template, obwohl fünf verschiedene
+//       Regeln darauf stehen.
+// Punkt 5 ist im Level gelöst (die fünf Seiten sind einzeln neu geschnitten),
+// Punkt 6 hier UND dort: die Seite deklariert ihre Lese-Form
+// (»beispielMuster«), und diese Datei zeichnet vier verschiedene Formen.
 import React from "react";
 // `Struck` left with the trap it drew (R5-W4 · I2, Koki: „Wir wollen KEINE
 // Fehler zeigen"). It stays exported from Glance for other cards; filed for D3
 // as a dead export if none of them take it up.
-import { KeyBit, Quiet } from "./Glance.tsx";
+import { BecomesMark, EnMark, KeyBit, Quiet } from "./Glance.tsx";
 import { PaintedIcon } from "./PaintedIcons.tsx";
-
-/** The Merksatz split around its key phrase: [before, key, after].
- *
- *  Pure and exported because it is the one piece of this card with an opinion,
- *  and an opinion belongs in a test rather than in JSX. A key that is not in the
- *  sentence returns the sentence whole and unmarked — the card never mangles a
- *  line to satisfy a marker, and `tip-honesty` is what stops that case shipping. */
-export const splitKey = (satz: string, key: string): readonly [string, string, string] => {
-  if (key === "") return [satz, "", ""];
-  const at = satz.indexOf(key);
-  if (at < 0) return [satz, "", ""];
-  return [satz.slice(0, at), key, satz.slice(at + key.length)];
-};
+// R5-W9 · N1: die drei Textentscheidungen wohnen jetzt in EINER Datei, die auch
+// das Hub-Brett liest — `splitKey` stand bis heute zweimal im Repo, Wort für
+// Wort abgeschrieben, und genau diese Drift hat Kokis Review schon einmal
+// gekostet („der Hub und die Karte lesen sich wie zwei Produkte").
+import { markEn, paarTeile, splitKey } from "../rule-text.ts";
 
 /** The painted page, with the keen-art fallback chain stated once:
  *  the asked-for cell → the page as it lay in the world → the drawn icon.
@@ -83,54 +84,164 @@ export const RuleFound = ({ art, skin, topicDe, got, total, onNext }: {
         <PageArt art={art} skin={skin} state="a" size={132} />
       </span>
     </div>
-    <Quiet>{topicDe}</Quiet>
+    {/* R5-W9 · N1: der Name der Seite steht auch HIER schon gross. Es ist das,
+        was das Kind gefunden hat — auf dem Fund-Takt trug er bis heute die
+        Flüster-Zeile, also die kleinste Type des Takts. */}
+    <p className="pb-rule-titel">{topicDe}</p>
     <button className="pb-btn-primary" onClick={onNext}>Seite aufschlagen</button>
   </div>
 );
 
-/** The examples, as a quiet list. Shared by the pickup card and the archive so
- *  the two can never drift into two different ideas of what an example looks
- *  like — that drift is exactly what made the hub board and the in-game card
- *  read as two products in Koki's replay.
+/** Eine englische Beispielzeile mit ihren markierten Formen.
  *
- *  ⚠ STYLED INLINE, ON PURPOSE. `cards/overlay-css.ts` belongs to another lane
- *  this wave (Rahmen §5), so this round adds no class names to it: everything
- *  new here is either an existing class or an inline rule that reads the same
- *  `--pb-*` tokens the sheet defines. Not a shortcut — a boundary. */
-const Beispiele = ({ lines }: { lines: readonly string[] }): React.ReactElement => (
-  <ul style={{ listStyle: "none", margin: "0 0 2px", padding: 0, display: "grid", gap: 5 }}>
-    {lines.map((line) => (
-      // `pb-key pb-key-long pb-key-en` — the house's own long-Key look: display
-      // face, accent ink, and NO stroke. MEASURED, not chosen blind: a plain
-      // `<Key en>` per line stroked all four of them, and four crayon strokes
-      // stacked is the device saying „this is THE one thing" four times. The
-      // stroke marks the single ask on a card; a list of examples is not that.
-      // (The class pair is what `Key` itself switches to past 56 characters —
-      // reused rather than re-invented, because `cards/overlay-css.ts` belongs
-      // to another lane this wave and this round adds no class names to it.)
-      <li key={line} className="pb-key pb-key-long pb-key-en" style={{ margin: 0 }}>{line}</li>
-    ))}
-  </ul>
-);
-
-/** The rule proper, set apart from the Notion above it by a ruled edge rather
- *  than by a second colour. The two lines do different jobs (what happens · the
- *  rule to keep) and the old card gave them identical weight, which is how a
- *  page with two prose lines starts reading as one line said twice. The ink
- *  stays QUIET because that is what makes the KeyBit inside it visible at all —
- *  I1 measured the alternative and found 800-on-600 in one ink, i.e. no
- *  emphasis. */
-const Merksatz = ({ satz, schluessel }: { satz: string; schluessel: string }): React.ReactElement => {
-  const [before, key, after] = splitKey(satz, schluessel);
+ *  Die Entscheidung, WAS markiert wird, liegt in `rule-text.ts#markEn` und
+ *  damit in einem Test — hier wird sie nur gezeichnet. */
+const EnZeile = ({ text, lehrt }: { text: string; lehrt: readonly string[] }): React.ReactElement => {
+  const stuecke = markEn(text, lehrt);
   return (
-    <p
-      className="pb-quiet pb-rule-line"
-      style={{ borderLeft: "3px solid var(--pb-ink-line)", borderRadius: "3px 0 0 4px / 4px 0 0 3px", padding: "1px 0 1px 10px" }}
-    >
-      {before}<KeyBit>{key}</KeyBit>{after}
-    </p>
+    <>
+      {stuecke.map((s, i) => {
+        if (s.markiert) return <EnMark key={i}>{s.text}</EnMark>;
+        // R233 · F6: der Leerraum ZWISCHEN zwei Marken bekommt seine Breite
+        // zurück. Der Wisch ragt über seine Buchstaben hinaus und holt sich den
+        // Platz mit einem negativen Rand wieder — nebeneinander berühren sich
+        // zwei Wische dadurch. Hier steht die Antwort darauf, und nicht mehr im
+        // Markierer: der darf nicht entscheiden, WAS eine Marke ist.
+        const zwischenMarken = s.text.trim() === ""
+          && stuecke[i - 1]?.markiert === true && stuecke[i + 1]?.markiert === true;
+        return zwischenMarken
+          ? <span key={i} className="pb-en-luecke">{s.text}</span>
+          : <React.Fragment key={i}>{s.text}</React.Fragment>;
+      })}
+    </>
   );
 };
+
+/** DIE BEISPIELE — vier Lese-Formen, eine je Art von Regel.
+ *
+ *  ★ R5-W9 · N1, Kokis Punkt 3 und 6. Bis heute war das eine Liste: vier Zeilen,
+ *  gleiche Farbe, gleiche Grösse, untereinander. Auf der Befehls-Seite standen
+ *  darin zwei Handlungen und ihre zwei Verbote, ununterscheidbar; auf der
+ *  Plural-Seite vier Verwandlungen, deren rechte Hälfte die Lektion ist und
+ *  nicht hervorstach; auf der Gruss-Seite ein Wortwechsel, der nicht wie einer
+ *  aussah. Die Form der Beispiele IST hier die Didaktik.
+ *
+ *  ⚠ DER GEGENSATZ IST KEIN RICHTIG/FALSCH. „Don't sit down!" ist fehlerfreies
+ *  Englisch. Es gibt deshalb kein Kreuz, keinen Durchstrich und kein Rot/Grün —
+ *  Koki hat die durchgestrichene Falschform am 15.08. ausdrücklich abgeschafft
+ *  („Wir wollen KEINE Fehler zeigen, nur die richtigen Notions und Beispiele").
+ *  Die zwei Spalten tragen zwei Etiketten und einen Papierfalz, sonst nichts.
+ *
+ *  Geteilt von der Fundkarte und der Merkseite, damit die zwei Flächen nie in
+ *  zwei Vorstellungen davon auseinanderlaufen, was ein Beispiel ist — genau die
+ *  Drift, die Kokis Review am Hub-Brett schon einmal gefunden hat. */
+const Beispiele = ({ lines, lehrt, muster }: {
+  lines: readonly string[]; lehrt: readonly string[]; muster: string;
+}): React.ReactElement => {
+  if (muster === "wandel") {
+    return (
+      <ul className="pb-bsp pb-bsp-wandel">
+        {lines.map((line) => {
+          const paar = paarTeile(line);
+          // keine Hälften? Dann die Zeile ganz — eine halb gezeichnete
+          // Verwandlung wäre schlechter als gar keine. Dass es vorkommt, ist
+          // bereits ein Befund von `tip-honesty`, kein Fall für einen Notbehelf.
+          if (paar === null) return <li key={line}><EnZeile text={line} lehrt={lehrt} /></li>;
+          return (
+            <li key={line}>
+              <span className="pb-bsp-von">{paar[0]}</span>
+              <span className="pb-bsp-pfeil" aria-hidden><BecomesMark size={17} /></span>
+              <span><EnZeile text={paar[1]} lehrt={lehrt} /></span>
+            </li>
+          );
+        })}
+      </ul>
+    );
+  }
+  if (muster === "dialog") {
+    return (
+      <ul className="pb-bsp pb-bsp-dialog">
+        {lines.map((line) => {
+          const paar = paarTeile(line);
+          if (paar === null) return <li key={line}><EnZeile text={line} lehrt={lehrt} /></li>;
+          return (
+            <li key={line}>
+              <span className="pb-bsp-frage"><EnZeile text={paar[0]} lehrt={lehrt} /></span>
+              <span className="pb-bsp-antwort"><EnZeile text={paar[1]} lehrt={lehrt} /></span>
+            </li>
+          );
+        })}
+      </ul>
+    );
+  }
+  if (muster === "gegensatz") {
+    // zeilenweise gefüllt: EIN Verb je Zeile, links seine Aufforderung, rechts
+    // ihr Verbot. So liest ein Kind den Unterschied waagrecht (dasselbe Verb,
+    // ein Wort davor) und die Sorte senkrecht (alles links ist ein Auftrag).
+    return (
+      <>
+        <div className="pb-bsp pb-bsp-gegensatz" style={{ gap: 0, marginBottom: 2 }}>
+          <p className="pb-bsp-etikett">Tun</p>
+          <p className="pb-bsp-etikett" style={{ paddingLeft: 13 }}>Nicht tun</p>
+        </div>
+        <ul className="pb-bsp pb-bsp-gegensatz">
+          {lines.map((line) => (
+            <li key={line}><EnZeile text={line} lehrt={lehrt} /></li>
+          ))}
+        </ul>
+      </>
+    );
+  }
+  return (
+    <ul className="pb-bsp pb-bsp-einzeln">
+      {lines.map((line) => (
+        <li key={line}><EnZeile text={line} lehrt={lehrt} /></li>
+      ))}
+    </ul>
+  );
+};
+
+/** DER MERKZETTEL — die Regel selbst, auf einem eingeklebten Zettel.
+ *
+ *  ★ R5-W9 · N1, Kokis Punkt 4. Hier stand ein 3px-Balken links am Absatz, also
+ *  die Optik eines Blockzitats — Koki las genau das als „KI-Optik". Und er hat
+ *  recht: ein Buch zitiert sich nicht selbst. Es klebt einen Zettel hinein, auf
+ *  dem Papier der Blätter darunter, mit vier ungleichen Ecken.
+ *
+ *  Die Tinte bleibt ruhig, denn genau das macht den KeyBit darin überhaupt
+ *  sichtbar — I1 hatte die Gegenprobe gemessen und 800-auf-600 in einer Tinte
+ *  gefunden, also gar keine Hervorhebung. */
+const Merkzettel = ({ satz, schluessel }: { satz: string; schluessel: string }): React.ReactElement => {
+  const [before, key, after] = splitKey(satz, schluessel);
+  return (
+    <div className="pb-rule-zettel">
+      <p className="pb-quiet pb-rule-line">{before}<KeyBit>{key}</KeyBit>{after}</p>
+    </div>
+  );
+};
+
+/** Was auf JEDER Regel-Seite steht, in der Reihenfolge, in der es gelesen wird:
+ *  der NAME der Seite, dann was passiert, dann die Regel, dann die Beispiele.
+ *  Eine Funktion, weil die Fundkarte und das Archiv-Fach dieselbe Seite zeigen
+ *  müssen — zwei Fassungen wären zwei Bilder derselben Regel. */
+const Seiteninhalt = ({ topicDe, erklaerungDe, merksatzDe, schluesselDe, beispieleEn, lehrtEn, beispielMuster }: {
+  topicDe: string; erklaerungDe: string; merksatzDe: string; schluesselDe: string;
+  beispieleEn: readonly string[]; lehrtEn: readonly string[]; beispielMuster: string;
+}): React.ReactElement => (
+  <>
+    {/* DER NAME DER SEITE — jetzt die Überschrift, die er immer war. */}
+    <p className="pb-rule-titel">{topicDe}</p>
+    {/* …WAS PASSIERT, in Kindersprache. Der Schritt, den die alte Karte nicht
+        hatte, und den Koki beim Namen bestellt hat („mehr Notions"). */}
+    <p className="pb-quiet pb-rule-line">{erklaerungDe}</p>
+    {/* …DIE REGEL, mit der einen Wendung, die sie trägt. */}
+    <Merkzettel satz={merksatzDe} schluessel={schluesselDe} />
+    {/* …und das Englische, zwei- bis viermal, in der Form, die zu DIESER Regel
+        gehört. Eine Regel, die einmal gezeigt wird, ist eine Regel, die
+        behauptet wird (Kokis Ruling K-1: die Sätze sind unsere eigenen). */}
+    <Beispiele lines={beispieleEn} lehrt={lehrtEn} muster={beispielMuster} />
+  </>
+);
 
 /** BEAT 2 — the rule. The page is open; the lesson is the only thing moving.
  *
@@ -138,23 +249,25 @@ const Merksatz = ({ satz, schluessel }: { satz: string; schluessel: string }): R
  *  the book reference („Die Regel soll NICHT aufs Buch verweisen — wir
  *  restaurieren unser eigenes Buch"), the pronunciation line („das ‚how to
  *  pronounce' ist unnötig") and the struck-through wrong form („Wir wollen KEINE
- *  Fehler zeigen, nur die richtigen Notions und Beispiele"). What arrived:
- *  „mehr Notions, Erklärungen, Beispiele — didaktisch reicher, besser
- *  organisiert."
+ *  Fehler zeigen, nur die richtigen Notions und Beispiele").
  *
- *  THE ORDER IS THE TEACHING, and it is four steps down, not five things beside
- *  each other: the page is NAMED, then what happens is EXPLAINED, then the rule
- *  is STATED with its one bold key, then it is SHOWN two to four times. The old
- *  card put the topic in the same quiet ink as the rule and hung three helper
- *  lines under the example; a child had to work out which line was the lesson. */
-export const RuleRead = ({ art, plateUrl, skin, topicDe, erklaerungDe, merksatzDe, schluesselDe, beispieleEn, onDone }: {
+ *  THE ORDER IS THE TEACHING, and it is four steps down: the page is NAMED,
+ *  then what happens is EXPLAINED, then the rule is STATED with its one bold
+ *  key, then it is SHOWN two to four times.
+ *
+ *  R5-W9 · N1: die Genre-Zeile „Die Regel" über dem Band ist WEG. Sie stand als
+ *  graue Versalien-Zeile direkt über einer zweiten grauen Versalien-Zeile (dem
+ *  Titel) — zwei Etiketten übereinander, von denen das wichtigere das kleinere
+ *  war. Das gemalte aufgeschlagene Buch darüber sagt ohnehin, welche Karte das
+ *  ist; jetzt sagt es das allein, und der Titel führt. */
+export const RuleRead = ({ art, plateUrl, skin, topicDe, erklaerungDe, merksatzDe, schluesselDe, beispieleEn, lehrtEn, beispielMuster, onDone }: {
   art: Record<string, string>; plateUrl?: string | undefined; skin: string; topicDe: string;
   erklaerungDe: string; merksatzDe: string; schluesselDe: string; beispieleEn: readonly string[];
+  lehrtEn: readonly string[]; beispielMuster: string;
   onDone: () => void;
 }): React.ReactElement => {
   return (
     <div style={{ textAlign: "left" }}>
-      <p className="pb-eyebrow">Die Regel</p>
       {/* the chapter's painted open book, as a band: the page is back where it
           belongs, and the rule is written on it. Cropped rather than shown
           whole — a 4:3 picture over four lines of text would BE the card. */}
@@ -172,18 +285,15 @@ export const RuleRead = ({ art, plateUrl, skin, topicDe, erklaerungDe, merksatzD
           <PageArt art={art} skin={skin} state="open" size={46} />
         </div>
       )}
-      {/* THE PAGE'S NAME. It reuses the archive's own topic style, which is what
-          makes the pickup card and the Merkseite behind the HUD chip read as one
-          book — the label face, quiet ink, AA-measured at 5,53 : 1 (J2). */}
-      <p className="pb-merk-topic">{topicDe}</p>
-      {/* …WHAT HAPPENS, in kid words. The step the old card never had, and the
-          one Koki asked for by name („mehr Notions"). */}
-      <p className="pb-quiet pb-rule-line">{erklaerungDe}</p>
-      {/* …THE RULE, with the one phrase that carries the lesson. */}
-      <Merksatz satz={merksatzDe} schluessel={schluesselDe} />
-      {/* …and the English, two to four times, because a rule shown once is a
-          rule asserted. Ours, not the book's (Koki's ruling K-1). */}
-      <Beispiele lines={beispieleEn} />
+      <Seiteninhalt
+        topicDe={topicDe}
+        erklaerungDe={erklaerungDe}
+        merksatzDe={merksatzDe}
+        schluesselDe={schluesselDe}
+        beispieleEn={beispieleEn}
+        lehrtEn={lehrtEn}
+        beispielMuster={beispielMuster}
+      />
       <div style={{ height: 10 }} />
       <button className="pb-btn-primary" onClick={onDone}>Ins Buch kleben</button>
     </div>
@@ -207,7 +317,10 @@ export const RuleRead = ({ art, plateUrl, skin, topicDe, erklaerungDe, merksatzD
 export const Merkseite = ({ art, plateUrl, found, total, onClose }: {
   art: Record<string, string>;
   plateUrl?: string | undefined;
-  found: readonly { topicDe: string; erklaerungDe: string; merksatzDe: string; schluesselDe: string; beispieleEn: readonly string[] }[];
+  found: readonly {
+    topicDe: string; erklaerungDe: string; merksatzDe: string; schluesselDe: string;
+    beispieleEn: readonly string[]; lehrtEn: readonly string[]; beispielMuster: string;
+  }[];
   total: number;
   onClose: () => void;
 }): React.ReactElement => {
@@ -225,16 +338,23 @@ export const Merkseite = ({ art, plateUrl, found, total, onClose }: {
         ? "Alle Regel-Seiten sind wieder im Buch."
         : `${found.length} von ${total} Regel-Seiten sind wieder im Buch.`}</Quiet>
       <div className="pb-merk-list">
-        {/* R5-W4 · I2: the archive slot now carries the SAME four steps as the
-            pickup card — name, Notion, rule, examples — and no book reference.
-            Two renderings of one page taught a child two shapes of the same
-            rule; that was Koki's „besser organisiert" in its smallest form. */}
+        {/* R5-W4 · I2: the archive slot carries the SAME steps as the pickup
+            card — name, Notion, rule, examples — and no book reference. Two
+            renderings of one page taught a child two shapes of the same rule;
+            that was Koki's „besser organisiert" in its smallest form. Seit
+            R5-W9 · N1 ist es buchstäblich derselbe Baustein (`Seiteninhalt`),
+            also kann es gar nicht mehr auseinanderlaufen. */}
         {found.map((t) => (
           <div className="pb-merk-slot" key={t.topicDe}>
-            <p className="pb-merk-topic">{t.topicDe}</p>
-            <p className="pb-quiet pb-rule-line">{t.erklaerungDe}</p>
-            <Merksatz satz={t.merksatzDe} schluessel={t.schluesselDe} />
-            <Beispiele lines={t.beispieleEn} />
+            <Seiteninhalt
+              topicDe={t.topicDe}
+              erklaerungDe={t.erklaerungDe}
+              merksatzDe={t.merksatzDe}
+              schluesselDe={t.schluesselDe}
+              beispieleEn={t.beispieleEn}
+              lehrtEn={t.lehrtEn}
+              beispielMuster={t.beispielMuster}
+            />
           </div>
         ))}
         {/* R5-W4 · I2: the missing slot finally shows the sheet PAINTED for it.

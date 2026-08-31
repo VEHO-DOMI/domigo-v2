@@ -2325,6 +2325,8 @@ function Overlay({
         merksatzDe={o.tip?.merksatzDe ?? ""}
         schluesselDe={o.tip?.schluesselDe ?? ""}
         beispieleEn={o.tip?.beispieleEn ?? []}
+        lehrtEn={o.tip?.lehrtEn ?? []}
+        beispielMuster={o.tip?.beispielMuster ?? "einzeln"}
         onDone={() => onDismiss(o)}
       />,
       "pb-page",
