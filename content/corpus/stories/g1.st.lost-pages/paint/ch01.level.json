@@ -108,10 +108,10 @@
      "r": 12,
      "tier": "E",
      "params": {
-      "topicDe": "Kurzformen: I'm · it's · isn't · don't",
-      "erklaerungDe": "Im Englischen rutschen beim Sprechen zwei Wörter zusammen und werden zu einem einzigen.",
-      "merksatzDe": "Der Apostroph steht genau dort, wo ein Buchstabe verschwunden ist.",
-      "schluesselDe": "wo ein Buchstabe verschwunden ist",
+      "topicDe": "Kurzformen",
+      "erklaerungDe": "Im Englischen werden zwei Wörter oft zu einer Kurzform. Aus „I am“ wird „I'm“.",
+      "merksatzDe": "Der Apostroph zeigt: Hier fehlt ein Buchstabe.",
+      "schluesselDe": "Hier fehlt ein Buchstabe",
       "beispieleEn": [
        "I am here. – I'm here.",
        "It is my school bag. – It's my school bag.",
@@ -136,8 +136,8 @@
      "r": 15,
      "tier": "E",
      "params": {
-      "topicDe": "Befehle — das Verb allein genügt",
-      "erklaerungDe": "Im Englischen übernimmt das Verb allein schon die Aufgabe des Du — du musst es gar nicht dazusagen.",
+      "topicDe": "Befehle — ohne you vor dem Verb",
+      "erklaerungDe": "Bei einem englischen Befehl musst du „du“ nicht dazusagen. Das Verb zeigt schon, dass du gemeint bist.",
       "merksatzDe": "Soll jemand etwas nicht tun, stellst du Don't vor das Verb.",
       "schluesselDe": "stellst du Don't vor das Verb",
       "beispieleEn": [
@@ -364,10 +364,10 @@
      "r": 17,
      "tier": "E",
      "params": {
-      "topicDe": "Fragen und antworten",
-      "erklaerungDe": "Eine Frage und ihre Antwort gehören zusammen: die eine will wissen, wer oder was da ist, die andere sagt es.",
-      "merksatzDe": "Über dich selbst sagst du I'm, über ein Ding It's.",
-      "schluesselDe": "über ein Ding It's",
+      "topicDe": "Fragen und passende Antworten",
+      "erklaerungDe": "Die Frage möchte etwas wissen. Die Antwort gibt diese Information.",
+      "merksatzDe": "Über dich: I'm + Name oder Gefühl. Über eine Sache: It's + Antwort.",
+      "schluesselDe": "Über eine Sache: It's + Antwort",
       "beispieleEn": [
        "Hello! What's your name? – I'm Merle.",
        "How are you? – I'm great, thanks.",
@@ -375,8 +375,6 @@
       ],
       "beispielMuster": "dialog",
       "lehrtEn": [
-       "What's",
-       "How are you",
        "I'm",
        "It's"
       ],
@@ -391,9 +389,9 @@
      "r": 15,
      "tier": "E",
      "params": {
-      "topicDe": "Zahlen bis twenty-five",
-      "erklaerungDe": "Im Deutschen sagst du dreiundzwanzig und fängst mit der Drei an — im Englischen kommt der Zehner zuerst.",
-      "merksatzDe": "Erst twenty, dann three — zusammen twenty-three.",
+      "topicDe": "Englische Zahlen bis 25",
+      "erklaerungDe": "Bei Zahlen wie 23, 24 und 25 kommt im Englischen zuerst twenty und danach three, four oder five.",
+      "merksatzDe": "Erst twenty, dann three: twenty-three.",
       "schluesselDe": "twenty-three",
       "beispieleEn": [
        "I can count to twenty-five.",
@@ -554,9 +552,9 @@
      "tier": "E",
      "params": {
       "topicDe": "Plural: aus einem werden viele",
-      "erklaerungDe": "Sind es mehrere, hängt das Englische fast immer ein -s an das Wort — man hört die Mehrzahl also am Ende.",
-      "merksatzDe": "Meist ein -s, nach Mitlaut + y ein -ies — manche gehen eigene Wege.",
-      "schluesselDe": "nach Mitlaut + y ein -ies",
+      "erklaerungDe": "Bei vielen englischen Wörtern hörst du die Mehrzahl am Ende: book wird zu books.",
+      "merksatzDe": "Steht vor dem y ein Mitlaut, wird y zu -ies. Ausnahme: child wird children.",
+      "schluesselDe": "wird y zu -ies",
       "beispieleEn": [
        "one book – two books",
        "one baby – three babies",

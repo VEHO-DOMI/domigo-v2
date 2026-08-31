@@ -106,9 +106,11 @@ const Buchbild = (): React.ReactElement => (
  *  Enden ausläuft, kein Textmarker-Balken. Sie steht hier als Inline-Stil, weil
  *  das Brett ausserhalb des Karten-Stylesheets sitzt; die LOGIK, WAS markiert
  *  wird, ist dagegen dieselbe Funktion (`markEn`) und keine zweite Meinung. */
-const EnZeile = ({ text, lehrt }: { text: string; lehrt: readonly string[] }): React.ReactElement => (
+const EnZeile = ({ text, lehrt }: { text: string; lehrt: readonly string[] }): React.ReactElement => {
+  const stuecke = markEn(text, lehrt);
+  return (
   <>
-    {markEn(text, lehrt).map((st, i) => (st.markiert ? (
+    {stuecke.map((st, i) => (st.markiert ? (
       <span
         key={i}
         style={{
@@ -121,9 +123,19 @@ const EnZeile = ({ text, lehrt }: { text: string; lehrt: readonly string[] }): R
           WebkitBoxDecorationBreak: "clone",
         }}
       >{st.text}</span>
-    ) : <span key={i}>{st.text}</span>))}
+    // R233 · F6: der Leerraum zwischen zwei Marken bekommt seine Breite zurück
+    // (dieselbe Antwort wie auf der Karte, hier als Inline-Stil).
+    ) : (
+      <span
+        key={i}
+        style={st.text.trim() === "" && stuecke[i - 1]?.markiert === true && stuecke[i + 1]?.markiert === true
+          ? { padding: "0 0.14em" }
+          : undefined}
+      >{st.text}</span>
+    )))}
   </>
-);
+  );
+};
 
 /** DAS WIRD-ZU-ZEICHEN der Wandel-Seiten, gezeichnet wie im Spiel: zwei
  *  Striche, der nasse breite zuerst und einen Hauch daneben. Ein Font-Pfeil

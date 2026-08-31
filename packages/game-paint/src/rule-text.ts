@@ -80,23 +80,25 @@ export const markEn = (zeile: string, formen: readonly string[]): readonly EnStu
     genommen.push(t);
   }
   if (genommen.length === 0) return [{ text: zeile, markiert: false }];
-  // ★ BENACHBARTE MARKEN VERSCHMELZEN — am eigenen Bild gefunden.
-  // Die Befehls-Seite lehrt »Sit down« UND »Don't«, also traf die Zeile
-  // »Don't sit down!« zweimal und bekam ZWEI Wische mit einer Lücke dazwischen:
-  // ein Fleck, keine Auszeichnung. Liegt zwischen zwei Treffern nur Leerraum,
-  // sind sie EINE Wendung — genau das, was ein Kind hier lernt. Und es ist die
-  // richtige Ebene für den Fix: die Karte darf nicht selbst entscheiden, WAS
-  // markiert wird (das sagt `lehrtEn`), aber ob zwei Nachbarn eine Marke sind,
-  // ist eine Frage der Marke.
-  const verschmolzen: { von: number; bis: number }[] = [];
-  for (const t of genommen) {
-    const letzte = verschmolzen[verschmolzen.length - 1];
-    if (letzte !== undefined && zeile.slice(letzte.bis, t.von).trim() === "") letzte.bis = t.bis;
-    else verschmolzen.push({ ...t });
-  }
+  // ★★ R233 · F6 · BENACHBARTE MARKEN BLEIBEN GETRENNT — und die vorige Runde
+  // hatte hier das Gegenteil stehen.
+  //
+  // Die erste Fassung verschmolz zwei Treffer, zwischen denen nur Leerraum lag:
+  // »Don't sit down!« bekam EINEN durchgehenden Wisch. Das löste ein optisches
+  // Problem (zwei Wische mit einer Lücke lasen sich wie ein Fleck) und zerstörte
+  // dabei die Lektion — die Codex-Runde hat es am Bild gefangen: die Regel
+  // dieser Seite ist »Don't vor das Verb«, und wenn »Don't sit down« EIN Wisch
+  // ist, ist genau das nicht mehr einzeln ablesbar. Auf der Nachbarzeile wurde
+  // aus »Don't close« ein Wisch, also verschmolz die Marke sogar quer über die
+  // Grenze zweier verschiedener gelehrter Formen.
+  //
+  // Das optische Problem bleibt echt und wird dort gelöst, wo es entsteht: die
+  // Fläche gibt dem Leerraum ZWISCHEN zwei Marken seine Breite zurück
+  // (`.pb-en-luecke`), statt zwei Lektionen zu einer zu machen. Eine Marke, die
+  // eine Regel unlesbar macht, ist keine Auszeichnung mehr.
   const stuecke: EnStueck[] = [];
   let hier = 0;
-  for (const t of verschmolzen) {
+  for (const t of genommen) {
     if (t.von > hier) stuecke.push({ text: zeile.slice(hier, t.von), markiert: false });
     stuecke.push({ text: zeile.slice(t.von, t.bis), markiert: true });
     hier = t.bis;

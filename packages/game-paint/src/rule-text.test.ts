@@ -62,16 +62,39 @@ describe("markEn — die Marke für Schlüssel-Englisch", () => {
     expect(markiert("one book – two books", ["book"])).toEqual(["book", "book"]);
   });
 
-  it("verschmilzt zwei Treffer, zwischen denen nur Leerraum steht", () => {
-    // die Befehls-Seite lehrt »Sit down« UND »Don't«; ohne das Verschmelzen
-    // bekam »Don't sit down!« zwei Wische mit einer Lücke dazwischen — am
-    // Standbild gefunden, und es sah aus wie ein Fleck, nicht wie eine Marke
-    expect(markiert("Don't sit down!", ["Sit down", "Don't"])).toEqual(["Don't sit down"]);
+  // ★★ R233 · F6 · ZWEI NACHBARN BLEIBEN ZWEI MARKEN.
+  //
+  // Die vorige Runde zog benachbarte Treffer zu EINEM Wisch zusammen, weil zwei
+  // Wische mit einer Lücke dazwischen wie ein Fleck aussahen. Die Codex-Runde
+  // hat gezeigt, was das kostet: die Regel dieser Seite IST »Don't vor das
+  // Verb«, und als ein Wisch war genau sie nicht mehr einzeln ablesbar; auf der
+  // Nachbarzeile verschmolz die Marke sogar quer über zwei verschiedene
+  // gelehrte Formen (»Don't close«). Das optische Problem gehört der Fläche
+  // (`.pb-en-luecke`), nicht dem Markierer.
+  //
+  // Dieser Test ist die Umkehr des alten: er wird rot, sobald jemand das
+  // Verschmelzen zurückholt. Manipulationsprobe gefahren, rot gesehen.
+  it("markiert zwei benachbarte Formen EINZELN, statt sie zu einem Wisch zu ziehen", () => {
+    expect(markiert("Don't sit down!", ["Sit down", "Don't"])).toEqual(["Don't", "sit down"]);
   });
 
-  it("verschmilzt NICHT über Text hinweg, der dazwischen steht", () => {
-    // sonst schluckte eine Marke die halbe Zeile mit
+  it("…auch quer über zwei verschiedene gelehrte Formen", () => {
+    expect(markiert("Don't close the door!", ["Close", "Don't"])).toEqual(["Don't", "close"]);
+  });
+
+  it("markiert getrennte Formen getrennt, auch mit Text dazwischen", () => {
     expect(markiert("I'm here and it's late.", ["I'm", "it's"])).toEqual(["I'm", "it's"]);
+  });
+
+  it("lässt den Leerraum zwischen zwei Marken als eigenes, unmarkiertes Stück stehen", () => {
+    // die Fläche erkennt ihn genau daran (`.pb-en-luecke`): ein Leerraum-Stück
+    // mit einer Marke davor UND dahinter. Fiele er weg oder käme er markiert
+    // zurück, hätte die Karte nichts, woran sie die Lücke aufweiten kann.
+    const st = markEn("Don't sit down!", ["Sit down", "Don't"]);
+    const i = st.findIndex((x) => !x.markiert && x.text.trim() === "");
+    expect(i, "kein Leerraum-Stück zwischen den Marken").toBeGreaterThan(0);
+    expect(st[i - 1]?.markiert).toBe(true);
+    expect(st[i + 1]?.markiert).toBe(true);
   });
 
   it("gibt die Zeile als EIN unmarkiertes Stück zurück, wenn nichts passt", () => {

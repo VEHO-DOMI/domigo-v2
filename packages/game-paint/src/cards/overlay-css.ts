@@ -1673,6 +1673,19 @@ export const PAINT_OVERLAY_CSS = `
    nachgebaut ist) 4,51 : 1. Die Spitze steht auf dem WENIGER günstigen der
    beiden Gründe — eine Marke, die nur auf einer der zwei Flächen AA hält, ist
    keine gemeinsame Marke. */
+/* R233 · F6 · DER LEERRAUM ZWISCHEN ZWEI MARKEN.
+   Der Wisch ragt über seine Buchstaben hinaus (Polsterung) und zieht den
+   Vorschub mit einem negativen Rand wieder heraus, damit ein Satzzeichen
+   dahinter nicht weggeschoben wird. Stehen ZWEI Marken nebeneinander — auf der
+   Befehls-Seite »Don't« und »sit down« —, frisst genau das den Wortzwischenraum
+   auf und die beiden Wische berühren sich.
+   Die erste Antwort darauf war, die beiden zu EINER Marke zu verschmelzen; die
+   Codex-Runde hat gezeigt, dass damit die Lektion verschwindet (»Don't vor das
+   Verb« war nicht mehr einzeln ablesbar). Also wird stattdessen dem Leerraum
+   zurückgegeben, was die Polsterung ihm genommen hat — die Marken bleiben zwei,
+   und man sieht es. */
+.pb-en-luecke { padding: 0 0.14em; }
+
 .pb-en-mark {
   font-family: var(--font-display, inherit);
   font-weight: 800;

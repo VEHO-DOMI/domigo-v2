@@ -96,13 +96,26 @@ export const RuleFound = ({ art, skin, topicDe, got, total, onNext }: {
  *
  *  Die Entscheidung, WAS markiert wird, liegt in `rule-text.ts#markEn` und
  *  damit in einem Test — hier wird sie nur gezeichnet. */
-const EnZeile = ({ text, lehrt }: { text: string; lehrt: readonly string[] }): React.ReactElement => (
-  <>
-    {markEn(text, lehrt).map((s, i) => (
-      s.markiert ? <EnMark key={i}>{s.text}</EnMark> : <React.Fragment key={i}>{s.text}</React.Fragment>
-    ))}
-  </>
-);
+const EnZeile = ({ text, lehrt }: { text: string; lehrt: readonly string[] }): React.ReactElement => {
+  const stuecke = markEn(text, lehrt);
+  return (
+    <>
+      {stuecke.map((s, i) => {
+        if (s.markiert) return <EnMark key={i}>{s.text}</EnMark>;
+        // R233 · F6: der Leerraum ZWISCHEN zwei Marken bekommt seine Breite
+        // zurück. Der Wisch ragt über seine Buchstaben hinaus und holt sich den
+        // Platz mit einem negativen Rand wieder — nebeneinander berühren sich
+        // zwei Wische dadurch. Hier steht die Antwort darauf, und nicht mehr im
+        // Markierer: der darf nicht entscheiden, WAS eine Marke ist.
+        const zwischenMarken = s.text.trim() === ""
+          && stuecke[i - 1]?.markiert === true && stuecke[i + 1]?.markiert === true;
+        return zwischenMarken
+          ? <span key={i} className="pb-en-luecke">{s.text}</span>
+          : <React.Fragment key={i}>{s.text}</React.Fragment>;
+      })}
+    </>
+  );
+};
 
 /** DIE BEISPIELE — vier Lese-Formen, eine je Art von Regel.
  *
