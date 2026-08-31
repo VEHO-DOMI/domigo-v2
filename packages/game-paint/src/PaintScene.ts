@@ -5533,7 +5533,7 @@ export class PaintScene extends Phaser.Scene {
       this.buildMs.push({ step: "· · davon Bilder", ms: this.imgMs, parent: "terrain" });
 
       tSub = performance.now();
-      this.buildGrain();
+      this.buildGrain(kit);
       this.mark("· koernung", tSub, "terrain");
     }
   }
@@ -5635,8 +5635,8 @@ export class PaintScene extends Phaser.Scene {
    * calls, the same order, the same rounding — it is simply drawn once instead
    * of sixty times a second.
    */
-  private buildGrain(): void {
-    const claimed = claimedPlatformCells(this.grid);
+  private buildGrain(kit: MassKit): void {
+    const claimed = claimedPlatformCells(this.grid, kit.columnObjects ?? []);
     const draw = (marks: readonly SurfaceMark[], depth: number, round: number): void => {
       if (marks.length === 0) return;
       const paint = (g: Phaser.GameObjects.Graphics): void => {

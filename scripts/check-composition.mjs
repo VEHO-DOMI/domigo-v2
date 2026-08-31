@@ -820,7 +820,7 @@ for (const { label, ph, spec } of withSpec) {
 // that only looked where the fix had been applied would have called that green.
 console.log("6 · no-metronome audit (mass.ts NO_METRONOME_MIN_PERIOD)");
 for (const { label, ph, spec } of withSpec) {
-  const claimed = claimedPlatformCells(ph.rows);
+  const claimed = claimedPlatformCells(ph.rows, spec.mass.columnObjects ?? []);
   const plan = planMass(ph.rows, spec.mass, srcSize);
   const surfaces = [
     ["course", surfaceSignature(plan, ["crust"], crustGrain(ph.rows, claimed))],
@@ -1149,21 +1149,9 @@ const SCALE_WAIVERS = {
   "cornerBR:mass_corner_br": { until: "2026-11-30", why: "Blatt 512x503, sonst wie cornerBL — dieselbe Messung, dasselbe Panel, dieselbe Bestellung" },
   "inCornerL:mass_incorner_l": { until: "2026-11-30", why: "Blatt 512x494, sonst wie cornerBL. Der Kasten trug frueher 3,6 % Verzug; jetzt 0,0 %" },
   "inCornerR:mass_incorner_r": { until: "2026-11-30", why: "Blatt 510x432 — DAS Blatt, das im quadratischen Kasten 18,1 % senkrecht gestaucht wurde. Die Stauchung ist WEG (0,0 % Verzug); die Untergroesse bleibt und faellt mit AS6" },
-  // ── ch01/p1 · DIE EINGANGSHALLE HAT NUR 2- UND 3-ZELLEN-SIMSE ──────────────
-  // Gemessene Sims-Breiten: 2 (sechsmal) und 3 (dreimal). Bank und Regal sind
-  // gemalt 4,74 bzw. 4,30 Zellen breit — auf ihre gemalte Breite gesetzt kaeme
-  // KEINES von beiden je auf einen Sims dieses Raumes, und die Halle verloere
-  // genau die Moebel, die sie zur Halle machen. Die Kleiderbank ist das
-  // 1-Zellen-Objekt des Raumes: ohne sie bleibt von jedem 3-Zellen-Sims eine
-  // Zelle unmoebliert. Das Buendel IST angehoben (1 → 2 Zellen, 1,045x).
-  "ch01/p1:platform:plat_bench_2": { until: "2026-11-30", why: "gemalt 4,74 Zellen, gezeichnet auf 2 (0,42x) — p1 hat keinen Sims ueber 3 Zellen; auf gemalter Breite waere die Bank in dieser Halle nie sichtbar. Faellt mit AS6-P1 (breiteres Sims oder schmaleres Blatt)" },
-  "ch01/p1:platform:plat_shelf_2": { until: "2026-11-30", why: "gemalt 4,30 Zellen, gezeichnet auf 2 (0,47x) — wie die Bank: p1s breitester Sims ist 3 Zellen. In p2, das einen 4-Zellen-Sims hat, IST dasselbe Blatt angehoben (0,93x). Faellt mit AS6-P1" },
-  "ch01/p1:platform:plat_coatbench": { until: "2026-11-30", why: "gemalt 2,22 Zellen, gezeichnet auf 1 (0,45x) — sie ist das einzige 1-Zellen-Objekt der Halle (Audit 7 verlangt eines, und die drei 3-Zellen-Simse brauchen es). ch01 besitzt kein Moebel, das im Welt-Massstab EINE Zelle breit ist — das schmalste misst 1,51. Das ist die Bestellung hinter dieser Zeile" },
-  // ── ch01/p2 · DAS 1-ZELLEN-OBJEKT DES KLASSENZIMMERS ──────────────────────
-  // Regal (2 → 4) und grosser Buchstapel (1 → 2) sind angehoben; der kleine
-  // Stapel bleibt, weil p2 zwei 1-Zellen-Simse hat und er das einzige Objekt
-  // ist, das sie tragen kann.
-  "ch01/p2:platform:plat_bookpile_s": { until: "2026-11-30", why: "gemalt 1,53 Zellen, gezeichnet auf 1 (0,65x) — das einzige 1-Zellen-Objekt des Raumes, und p2 hat zwei 1-Zellen-Simse. Auf 2 gehoben zeichnete er 1,31x und liesse beide Simse leer" },
+  // R4 · the p1/p2 furniture is now painted at its measured world scale; the
+  // retired pre-R4 furniture no longer appears in these rooms and therefore
+  // has no live scale waiver to carry.
   // ── ch01/p3 · SIMS UND BLATT GEHEN NICHT AUF ──────────────────────────────
   "ch01/p3:platform:ledge_windowsill": { until: "2026-11-30", why: "gemalt 1,70 Zellen, gezeichnet auf 2 (1,17x) — 2 ist die naechste ganze Zelle, 1 waere 0,59x und damit doppelt so falsch. Die Fensterbank ist ZU GROSS, nicht zu klein; ein Blatt von 1,5 Zellen Breite loest es. Faellt mit AS6-P3" },
   "ch01/p3:platform:plat_column2_1": { until: "2026-11-30", why: "gemalt 1,51 Zellen, gezeichnet auf 1 (0,66x) — das einzige 1-Zellen-Objekt des Hofes, und p3 hat einen 1-Zellen-Sims. Genau auf der Rundungsgrenze: 1,51 rundet auf 2 und zeichnete dann 1,33x" },

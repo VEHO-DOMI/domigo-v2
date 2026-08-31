@@ -35,6 +35,7 @@ import {
   tileAnchorFor,
   tileScaleFor,
   claimedPlatformCells,
+  columnRuns,
   crustGrain,
   crustRuns,
   undersideRuns,
@@ -719,6 +720,46 @@ describe("the carved mass (doc 36 §2)", () => {
     for (const kind of ["crust", "body", "edgeL", "edgeR", "capL", "capR"]) {
       expect(p.some((q) => q.kind === kind && q.r === 1), kind).toBe(false);
     }
+  });
+
+  it("detects the commissioned vertical rectangles as separate one-piece runs", () => {
+    const p2 = [
+      "........................",
+      "......................##",
+      "......................##",
+      "......................##",
+      "......................##",
+      "......................##",
+      "......................##",
+      "......................##",
+      "......................##",
+      "......................##",
+      "......................##",
+      "########################",
+      "########################",
+    ];
+    expect(columnRuns(p2)).toEqual([{ c0: 22, c1: 23, r0: 1, r1: 10 }]);
+    const columns = [{ stem: "tower", cellsW: 2, cellsH: 10 }];
+    const claimed = claimedPlatformCells(p2, columns);
+    expect(claimed).toContain("22,1");
+    expect(claimed).toContain("23,10");
+    expect(claimed).not.toContain("21,1");
+  });
+
+  it("mounts a column as one platform image and suppresses all mass anatomy inside it", () => {
+    const p2 = [
+      "........................",
+      "......................##",
+      "......................##",
+      "......................##",
+      "########################",
+      "########################",
+    ];
+    const columnKit: MassKit = { ...kit, columnObjects: [{ stem: "tower", cellsW: 2, cellsH: 3 }] };
+    const plan = planMass(p2, columnKit);
+    expect(plan.filter((q) => q.kind === "platform").map((q) => q.stem)).toEqual(["tower"]);
+    expect(plan.filter((q) => q.kind === "platform")[0]).toMatchObject({ c: 22, r: 1, w: 2 * TILE, h: 3 * TILE });
+    expect(plan.some((q) => ["body", "crust", "edgeL", "edgeR"].includes(q.kind) && q.c >= 22 && q.c <= 23 && q.r <= 3)).toBe(false);
   });
 
   it("covers a 3-cell platform with complete objects, never one stretched", () => {

@@ -12,7 +12,7 @@
 // kind that means "no kit — the scene draws a flat rectangle here"; the
 // no-naked-fill audit asserts a kit-present plan contains ZERO of them.
 
-import { type MassKit } from "./composition.ts";
+import { type ColumnObject, type MassKit } from "./composition.ts";
 import { glyphAt, isSlope, isSolid } from "./collide.ts";
 import { TILE, mixMultiply } from "./paint.ts";
 
@@ -764,6 +764,58 @@ export const floatingPlatformRuns = (grid: readonly string[]): Array<{ c0: numbe
 };
 
 /**
+ * R4 · one-piece vertical book objects. A column starts where a narrow solid
+ * run meets air above, then owns its uninterrupted vertical rectangle until
+ * the first wide floor-support row. The support threshold deliberately ignores
+ * neighbouring 2–6-cell book fragments, so the p2 stepped pillars remain three
+ * separate objects instead of becoming one accidental wall.
+ */
+export const columnRuns = (grid: readonly string[]): Array<{ c0: number; c1: number; r0: number; r1: number }> => {
+  const { w, h } = gridSize(grid);
+  const MIN_SUPPORT_WIDTH = 8;
+  const candidates: Array<{ c0: number; c1: number; r0: number; r1: number }> = [];
+  for (let r = 0; r < h; r++) {
+    for (let c = 0; c < w; c++) {
+      if (!isMass(glyphAt(grid, c, r)) || isMass(glyphAt(grid, c, r - 1))) continue;
+      for (const width of [2, 1]) {
+        const c1 = c + width - 1;
+        if (c1 >= w || !Array.from({ length: width }, (_, i) => isMass(glyphAt(grid, c + i, r))).every(Boolean)) continue;
+        if (Array.from({ length: width }, (_, i) => isMass(glyphAt(grid, c + i, r - 1))).some(Boolean)) continue;
+        let end = r;
+        while (end + 1 < h && Array.from({ length: width }, (_, i) => isMass(glyphAt(grid, c + i, end + 1))).every(Boolean)) end++;
+        const support = Array.from({ length: h - r - 1 }, (_, i) => r + i + 1)
+          .find((rr) => {
+            let left = c;
+            while (left > 0 && isMass(glyphAt(grid, left - 1, rr))) left--;
+            let right = c1;
+            while (right + 1 < w && isMass(glyphAt(grid, right + 1, rr))) right++;
+            return right - left + 1 >= MIN_SUPPORT_WIDTH;
+          });
+        const r1 = support === undefined ? end : Math.min(end, support - 1);
+        if (r1 - r + 1 >= 2) candidates.push({ c0: c, c1, r0: r, r1 });
+      }
+    }
+  }
+  // Longest first resolves the overlapping 1-wide sub-candidates inside a
+  // 2-wide tower; the remaining cells then select the stepped pillars cleanly.
+  candidates.sort((a, b) => (b.r1 - b.r0) - (a.r1 - a.r0) || a.r0 - b.r0 || a.c0 - b.c0 || (b.c1 - b.c0) - (a.c1 - a.c0));
+  const claimed = new Set<string>();
+  const out: Array<{ c0: number; c1: number; r0: number; r1: number }> = [];
+  for (const candidate of candidates) {
+    let overlaps = false;
+    for (let rr = candidate.r0; rr <= candidate.r1 && !overlaps; rr++) {
+      for (let cc = candidate.c0; cc <= candidate.c1; cc++) if (claimed.has(`${cc},${rr}`)) overlaps = true;
+    }
+    if (overlaps) continue;
+    out.push(candidate);
+    for (let rr = candidate.r0; rr <= candidate.r1; rr++) {
+      for (let cc = candidate.c0; cc <= candidate.c1; cc++) claimed.add(`${cc},${rr}`);
+    }
+  }
+  return out.sort((a, b) => a.r0 - b.r0 || a.c0 - b.c0);
+};
+
+/**
  * PK-R6 · H2 · WHAT THE FURNITURE THROWS (round-2 finding 9, major).
  *
  * „Almost no dark anchor shapes to organise the eye … push the darkest darks in
@@ -843,10 +895,20 @@ export const slideRuns = (grid: readonly string[]): Array<{ c: number; r: number
  * the SAME question the planner does instead of re-deriving it — a second copy
  * of a rule is a second rule.
  */
-export const claimedPlatformCells = (grid: readonly string[]): Set<string> => {
+export const claimedPlatformCells = (
+  grid: readonly string[],
+  columnObjects: readonly ColumnObject[] = [],
+): Set<string> => {
   const out = new Set<string>();
   for (const run of floatingPlatformRuns(grid)) {
     for (let k = run.c0; k <= run.c1; k++) out.add(`${k},${run.r}`);
+  }
+  const sizes = new Set(columnObjects.map((o) => `${o.cellsW}x${o.cellsH}`));
+  for (const run of columnRuns(grid)) {
+    if (!sizes.has(`${run.c1 - run.c0 + 1}x${run.r1 - run.r0 + 1}`)) continue;
+    for (let r = run.r0; r <= run.r1; r++) {
+      for (let c = run.c0; c <= run.c1; c++) out.add(`${c},${r}`);
+    }
   }
   return out;
 };
@@ -1268,8 +1330,19 @@ export const planMass = (
   /** source width of a stem's art, 0 when the art is not (yet) resolvable */
   const srcW = (stem: string): number => srcSize?.(stem)?.w ?? 0;
 
-  // ── 1 · floating platforms (they own their cells outright) ─────────────────
+  // ── 1 · complete platforms and vertical book objects ──────────────────────
   if (kit !== null) {
+    const columnObjects = kit.columnObjects ?? [];
+    for (const run of columnRuns(grid)) {
+      const obj = columnObjects.find((candidate) =>
+        candidate.cellsW === run.c1 - run.c0 + 1 && candidate.cellsH === run.r1 - run.r0 + 1);
+      if (obj === undefined) continue;
+      out.push({
+        kind: "platform", stem: obj.stem, c: run.c0, r: run.r0,
+        x: run.c0 * TILE, y: run.r0 * TILE, w: obj.cellsW * TILE, h: obj.cellsH * TILE,
+        depth: DEPTH.platform,
+      });
+    }
     for (const run of floatingPlatformRuns(grid)) {
       const width = run.c1 - run.c0 + 1;
       let x = run.c0 * TILE;
@@ -1310,7 +1383,7 @@ export const planMass = (
         x += span;
       }
     }
-    for (const cell of claimedPlatformCells(grid)) claimed.add(cell);
+    for (const cell of claimedPlatformCells(grid, columnObjects)) claimed.add(cell);
     const platformPieces = out.filter((p) => p.kind === "platform");
     if (kit.joint !== undefined) {
       const source = srcSize?.(kit.joint) ?? undefined;
@@ -1728,8 +1801,11 @@ export const uncoveredSolids = (
   const covered = new Set<string>();
   for (const p of pieces) {
     if (!covers.includes(p.kind)) continue;
-    const cells = Math.max(1, Math.round(p.w / TILE));
-    for (let k = 0; k < cells; k++) covered.add(`${p.c + k},${p.r}`);
+    const cellsW = Math.max(1, Math.round(p.w / TILE));
+    const cellsH = p.kind === "platform" ? Math.max(1, Math.round(p.h / TILE)) : 1;
+    for (let y = 0; y < cellsH; y++) {
+      for (let x = 0; x < cellsW; x++) covered.add(`${p.c + x},${p.r + y}`);
+    }
   }
   const out: Array<{ c: number; r: number }> = [];
   const { w, h } = gridSize(grid);

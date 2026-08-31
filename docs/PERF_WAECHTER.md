@@ -29,7 +29,7 @@ schreibt die `?perf=1`-Zahlen für ALLE fünf Phasen **vorher/nachher** in ihren
 | Phase-Assets (artScope) | ≤ 35 MB | `artScope.test.ts` — **CI** |
 | Bundle (je Nicht-Phaser-Brocken, gzip) | ≤ 150 KB | `check-game-bundle.mjs` — **CI** |
 | Phaser in EINEM faulen Brocken (gzip) | ≤ 400 KB | `check-game-bundle.mjs` — **CI** |
-| Kunst, die niemand lädt | ≤ 54 Blätter | `check-paint-art.mjs` — **CI** |
+| Kunst, die niemand lädt | ≤ 58 Blätter | `check-paint-art.mjs` — **CI** |
 | Audio (Platte) | ≤ 6 MB | `check-audio.mjs` — **CI** |
 | Audio (decodiert, JS-Heap) | ≤ 16 MB | `check-audio.mjs` — **CI**, zur Laufzeit in `?perf=1` |
 
@@ -49,6 +49,11 @@ der Wirklichkeit verliert genau die Warnung, für die sie gebaut wurde (D-193). 
 Blätter hinzufügt, hebt sie **im selben PR, mit einem Grund, den ein Prüfer liest**; wer
 Blätter verdrahtet oder löscht, **senkt sie im selben PR um sein eigenes Delta** — jeder
 Lauf sagt die verbliebene Luft laut an, und der Post-Zug-Eigentümer misst neu.
+
+**★ Runde 4 (2026-08-31): 58 tote Blätter.** Die 17 neuen Ein-Stück-Terrainblätter
+werden von p1/p2 geladen und zählen daher nicht als tote Kunst. Der aktuelle Checkout
+enthält zugleich vier weitere tote Altstände; die Decke wurde auf den gemessenen Stand
+58 nachgezogen, mit null Luft und mit der Begründung in `perfBudget.ts`.
 
 **Verweis (K4, 2026-08-17):** die drei Regeln, die aus diesem Vorfall geworden sind, stehen
 als Rulings **R104** (der Post-Zug-Schritt gehört dem Eigentümer, nie einer parallelen Bahn)

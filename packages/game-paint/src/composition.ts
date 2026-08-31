@@ -50,6 +50,14 @@ export interface ShellSpec {
   cover?: boolean;
 }
 
+/** One complete multi-cell vertical book object. The image owns every cell in
+ * its rectangle, so the planner must not add a crust, trim, or join there. */
+export interface ColumnObject {
+  stem: string;
+  cellsW: number;
+  cellsH: number;
+}
+
 /** L3 — the carved terrain mass (doc 36 §2). One kit per phase. */
 export interface MassKit {
   /** walk-surface loop variants (≥1) + caps that connect FLUSH to them. */
@@ -136,6 +144,8 @@ export interface MassKit {
    * and bury the backrest in the floor. 0 = the art's top edge IS the deck.
    */
   platObjects: readonly { stem: string; cells: number; deck?: number }[];
+  /** Complete vertical book objects, matched to `columnRuns` by cell size. */
+  columnObjects?: readonly ColumnObject[];
   /** the chalk slide (`z` runs): top / repeatable mid / run-out foot + strut. */
   slide?: { top: string; mid: string; foot: string; under: string };
   /** Painted bindery at the outside ends of platform-object groups. */
@@ -527,6 +537,7 @@ export const massStems = (m: MassKit): string[] => {
   // nothing extra and the stem count does not move (53 before, 53 after).
   if (m.edgeD !== undefined) out.push(...m.edgeD);
   out.push(...m.platObjects.map((p) => p.stem));
+  out.push(...(m.columnObjects ?? []).map((p) => p.stem));
   if (m.slide) out.push(m.slide.top, m.slide.mid, m.slide.foot, m.slide.under);
   return [...new Set(out)];
 };
@@ -583,32 +594,26 @@ export const compositionStems = (spec: CompositionSpec): string[] => {
  * surface reaches its full span), never guessed.
  */
 const PLAT_OBJECTS: Record<string, MassKit["platObjects"]> = {
-  // p1 Eingangshalle — the hall's own furniture: coat benches, a hall shelf,
-  // tied bundles. TWO 2-cell objects, because the hall's ledges are 3 and 4
-  // cells wide and a 4-cell ledge built from one object is two identical benches
-  // side by side — which is what the round-1 browser proof showed.
+  // R4 deck measurement: each RGBA sheet was scanned from the top; the deck
+  // is the first row reaching 90% of the maximum opaque span. The source rows
+  // are recorded in the R4 delivery note, so these fractions are reproducible
+  // measurements rather than visual guesses.
+  // p1 Eingangshalle — folio, tied bundle, reading bench, and two carved shelves.
   p1: [
-    { stem: "plat_bench_2", cells: 2, deck: 0.10 },
-    { stem: "plat_shelf_2", cells: 2, deck: 0 },
-    { stem: "plat_coatbench", cells: 1, deck: 0.58 }, // the seat plank, backboard + coats above it
-    // R5-W9 · M1: 1 → 2 Zellen. Gemalt ist das Buendel 1,91 Zellen breit
-    // (382 px x paintScale 0,080189 / 16), gezeichnet wurde es auf einer —
-    // also bei 0,52x des Massstabs, den jede Flaeche daneben traegt. Bei
-    // zwei Zellen sind es 1,045x. Die Halle behaelt ihr 1-Zellen-Objekt
-    // (`plat_coatbench`), also bleiben ihre 3-Zellen-Simse moebliert.
-    { stem: "plat_bundle_1", cells: 2, deck: 0.02 },
+    { stem: "terrain_reading_bench_p1", cells: 2, deck: 62 / 194 },
+    { stem: "terrain_book_bundle_p1", cells: 2, deck: 33 / 185 },
+    { stem: "terrain_book_shelf_p1", cells: 3, deck: 104 / 210 },
+    { stem: "terrain_book_shelf_p1_alt", cells: 3, deck: 36 / 232 },
+    { stem: "terrain_book_folio_p1", cells: 1, deck: 22 / 79 },
   ],
-  // p2 Klassenzimmer — desks, a wall shelf, and the book stacks off them.
+  // p2 Klassenzimmer — night folios, bundles, lecterns, and continuous shelves.
   p2: [
-    { stem: "plat_desk", cells: 2, deck: 0.03 },
-    // R5-W9 · M1: 2 → 4 Zellen. Das Regalblatt ist 857 px breit, im
-    // Massstab dieses Raumes 4,32 Zellen; auf zwei gezwungen zeichnete es
-    // bei 0,46x — halb so gross wie das Papier, auf dem es steht. Der Raum
-    // hat genau einen 4-Zellen-Sims, und der gehoert ab jetzt ihm.
-    { stem: "plat_shelf_2", cells: 4, deck: 0 },
-    // R5-W9 · M1: 1 → 2 Zellen (gemalt 1,98 — die Rundung kostet 0,8 %).
-    { stem: "plat_bookpile_l", cells: 2, deck: 0.06 },
-    { stem: "plat_bookpile_s", cells: 1, deck: 0.08 },
+    { stem: "terrain_night_lectern_shelf_p2", cells: 4, deck: 43 / 266 },
+    { stem: "terrain_night_shelf_p2", cells: 3, deck: 43 / 233 },
+    { stem: "terrain_night_bundle_p2", cells: 2, deck: 27 / 216 },
+    { stem: "terrain_night_lectern_p2", cells: 2, deck: 22 / 215 },
+    { stem: "terrain_night_folio_p2", cells: 1, deck: 32 / 97 },
+    { stem: "terrain_night_dictionary_p2", cells: 1, deck: 35 / 107 },
   ],
   // p3 Schulhof-Garten — PK-R6 · H2 (round-2 finding 12): the yard shared its
   // bench AND its bundles with the entrance hall, which is most of why „the same
@@ -643,6 +648,20 @@ const PLAT_OBJECTS: Record<string, MassKit["platObjects"]> = {
     { stem: "plat_desk", cells: 2, deck: 0.03 },
     { stem: "plat_bench_2", cells: 2, deck: 0.10 },
     { stem: "plat_bundle_1", cells: 1, deck: 0.02 },
+  ],
+};
+
+/** R4 · one-piece columns. These are deliberately phase-owned: p1/p2 are the
+ * commissioned replacement for the old join/saddle construction; other phases
+ * keep their existing scenery until a matching sheet is ordered. */
+const COLUMN_OBJECTS: Record<string, NonNullable<MassKit["columnObjects"]>> = {
+  p1: [{ stem: "terrain_atlas_podest_p1", cellsW: 2, cellsH: 2 }],
+  p2: [
+    { stem: "terrain_tower_p2", cellsW: 2, cellsH: 11 },
+    { stem: "terrain_pillar_p2_8", cellsW: 2, cellsH: 8 },
+    { stem: "terrain_pillar_p2_5", cellsW: 2, cellsH: 5 },
+    { stem: "terrain_pillar_p2_2", cellsW: 2, cellsH: 2 },
+    { stem: "terrain_post_p2", cellsW: 1, cellsH: 2 },
   ],
 };
 
@@ -968,11 +987,13 @@ const sharedMass = (phase: string): Omit<MassKit, "crust" | "crustCapL" | "crust
   // belongs — §10.3's motif law, drawn by the engine instead of by a painter.
   ...(PAINTED_UNDERSIDE_PHASES.has(phase) ? paintedUnderside(phase) : {}),
   trimShade: TRIM_SHADE_BY_PHASE[phase],
-  joint: TERRAIN_JOIN_STEM,
-  postJoin: TERRAIN_POST_JOIN_STEM,
+  // R4: p1/p2 now use complete one-piece art; joins remain available for the
+  // untouched phases until their own one-piece commission arrives.
+  ...(phase === "p1" || phase === "p2" ? {} : { joint: TERRAIN_JOIN_STEM, postJoin: TERRAIN_POST_JOIN_STEM }),
   // No ramp sheets: R109 withdrew them and E6 deleted the two placeholders. A
   // surface that grows a slope orders its own (D-324, and the field's own note).
   platObjects: PLAT_OBJECTS[phase] ?? PLAT_OBJECTS.p1 ?? [],
+  columnObjects: COLUMN_OBJECTS[phase] ?? [],
 });
 
 const crustOf = (phase: string): Pick<MassKit, "crust" | "crustCapL" | "crustCapR"> => ({
