@@ -764,16 +764,20 @@ export const floatingPlatformRuns = (grid: readonly string[]): Array<{ c0: numbe
 };
 
 /**
- * R4 · one-piece vertical book objects. A column starts where a narrow solid
- * run meets air above, then owns its uninterrupted vertical rectangle until
- * the first wide floor-support row. The support threshold deliberately ignores
- * neighbouring 2–6-cell book fragments, so the p2 stepped pillars remain three
+ * R4/R5b · one-piece vertical book objects. A standing column starts where a
+ * narrow solid run meets air above; an optional hanging column starts directly
+ * beneath a broad ceiling run. Both own their uninterrupted vertical rectangle
+ * until the first break/support. The support threshold deliberately ignores
+ * neighbouring 2–6-cell book fragments, so the p2 stepped pillars remain
  * separate objects instead of becoming one accidental wall.
  */
-export const columnRuns = (grid: readonly string[]): Array<{ c0: number; c1: number; r0: number; r1: number }> => {
+export const columnRuns = (
+  grid: readonly string[],
+  options: { includeHanging?: boolean } = {},
+): Array<{ c0: number; c1: number; r0: number; r1: number; hanging?: boolean }> => {
   const { w, h } = gridSize(grid);
   const MIN_SUPPORT_WIDTH = 8;
-  const candidates: Array<{ c0: number; c1: number; r0: number; r1: number }> = [];
+  const candidates: Array<{ c0: number; c1: number; r0: number; r1: number; hanging?: boolean }> = [];
   for (let r = 0; r < h; r++) {
     for (let c = 0; c < w; c++) {
       if (!isMass(glyphAt(grid, c, r)) || isMass(glyphAt(grid, c, r - 1))) continue;
@@ -796,11 +800,36 @@ export const columnRuns = (grid: readonly string[]): Array<{ c0: number; c1: num
       }
     }
   }
+  if (options.includeHanging === true) {
+    // A hanging column is attached to a broad ceiling row, then continues down
+    // as a narrow uninterrupted run until its first break. Requiring both side
+    // neighbours to be air prevents the full ceiling and ordinary floor walls
+    // from becoming hundreds of false one-cell candidates.
+    for (let r = 1; r < h; r++) {
+      for (const width of [2, 1]) {
+        for (let c = 0; c < w; c++) {
+          const c1 = c + width - 1;
+          if (c1 >= w) continue;
+          if (!Array.from({ length: width }, (_, i) => isMass(glyphAt(grid, c + i, r))).every(Boolean)) continue;
+          if (!Array.from({ length: width }, (_, i) => isMass(glyphAt(grid, c + i, r - 1))).every(Boolean)) continue;
+          if (isMass(glyphAt(grid, c - 1, r)) || isMass(glyphAt(grid, c1 + 1, r))) continue;
+          let aboveLeft = c;
+          while (aboveLeft > 0 && isMass(glyphAt(grid, aboveLeft - 1, r - 1))) aboveLeft--;
+          let aboveRight = c1;
+          while (aboveRight + 1 < w && isMass(glyphAt(grid, aboveRight + 1, r - 1))) aboveRight++;
+          if (aboveRight - aboveLeft + 1 < MIN_SUPPORT_WIDTH) continue;
+          let end = r;
+          while (end + 1 < h && Array.from({ length: width }, (_, i) => isMass(glyphAt(grid, c + i, end + 1))).every(Boolean)) end++;
+          if (end - r + 1 >= 2) candidates.push({ c0: c, c1, r0: r, r1: end, hanging: true });
+        }
+      }
+    }
+  }
   // Longest first resolves the overlapping 1-wide sub-candidates inside a
   // 2-wide tower; the remaining cells then select the stepped pillars cleanly.
   candidates.sort((a, b) => (b.r1 - b.r0) - (a.r1 - a.r0) || a.r0 - b.r0 || a.c0 - b.c0 || (b.c1 - b.c0) - (a.c1 - a.c0));
   const claimed = new Set<string>();
-  const out: Array<{ c0: number; c1: number; r0: number; r1: number }> = [];
+  const out: Array<{ c0: number; c1: number; r0: number; r1: number; hanging?: boolean }> = [];
   for (const candidate of candidates) {
     let overlaps = false;
     for (let rr = candidate.r0; rr <= candidate.r1 && !overlaps; rr++) {
@@ -812,7 +841,7 @@ export const columnRuns = (grid: readonly string[]): Array<{ c0: number; c1: num
       for (let cc = candidate.c0; cc <= candidate.c1; cc++) claimed.add(`${cc},${rr}`);
     }
   }
-  return out.sort((a, b) => a.r0 - b.r0 || a.c0 - b.c0);
+  return out.sort((a, b) => a.r0 - b.r0 || a.c0 - b.c0 || Number(a.hanging ?? false) - Number(b.hanging ?? false));
 };
 
 /**
@@ -903,11 +932,54 @@ export const claimedPlatformCells = (
   for (const run of floatingPlatformRuns(grid)) {
     for (let k = run.c0; k <= run.c1; k++) out.add(`${k},${run.r}`);
   }
-  const sizes = new Set(columnObjects.map((o) => `${o.cellsW}x${o.cellsH}`));
-  for (const run of columnRuns(grid)) {
-    if (!sizes.has(`${run.c1 - run.c0 + 1}x${run.r1 - run.r0 + 1}`)) continue;
+  const sizes = new Set(columnObjects.map((o) => `${o.cellsW}x${o.cellsH}:${Boolean(o.hanging)}`));
+  for (const run of columnRuns(grid, { includeHanging: true })) {
+    if (!sizes.has(`${run.c1 - run.c0 + 1}x${run.r1 - run.r0 + 1}:${Boolean(run.hanging)}`)) continue;
     for (let r = run.r0; r <= run.r1; r++) {
       for (let c = run.c0; c <= run.c1; c++) out.add(`${c},${r}`);
+    }
+  }
+  return out;
+};
+
+/** A connected mass's shared material anchor and its stable origin cell. */
+export interface MassComponent {
+  minC: number;
+  minR: number;
+}
+
+/**
+ * Returns the four-neighbour connected components of unclaimed solid cells.
+ * `minC/minR` is deliberately the only origin: every piece in that component
+ * receives the same source phase, while separate masses may start their own
+ * painted material field.
+ */
+export const massComponents = (
+  grid: readonly string[],
+  claimed: ReadonlySet<string> = new Set(),
+): Map<string, MassComponent> => {
+  const { w, h } = gridSize(grid);
+  const seen = new Set<string>();
+  const out = new Map<string, MassComponent>();
+  for (let r = 0; r < h; r++) {
+    for (let c = 0; c < w; c++) {
+      const start = `${c},${r}`;
+      if (seen.has(start) || claimed.has(start) || !isMass(glyphAt(grid, c, r))) continue;
+      const cells: Array<[number, number]> = [[c, r]];
+      seen.add(start);
+      let minC = c, minR = r;
+      for (let i = 0; i < cells.length; i++) {
+        const [cc, rr] = cells[i] ?? [c, r];
+        minC = Math.min(minC, cc); minR = Math.min(minR, rr);
+        for (const [dc, dr] of [[1, 0], [-1, 0], [0, 1], [0, -1]] as const) {
+          const nc = cc + dc, nr = rr + dr, key = `${nc},${nr}`;
+          if (nc < 0 || nc >= w || nr < 0 || nr >= h) continue;
+          if (seen.has(key) || claimed.has(key) || !isMass(glyphAt(grid, nc, nr))) continue;
+          seen.add(key); cells.push([nc, nr]);
+        }
+      }
+      const component = { minC, minR };
+      for (const [cc, rr] of cells) out.set(`${cc},${rr}`, component);
     }
   }
   return out;
@@ -1318,6 +1390,7 @@ export const planMass = (
   const { w, h } = gridSize(grid);
   const out: MassPiece[] = [];
   const claimed = new Set<string>(); // cells owned by a platform object
+  let massByCell = new Map<string, MassComponent>();
   /** width ÷ height of a stem's art, 1 when the art is not (yet) resolvable */
   const aspect = (stem: string): number => {
     const s = srcSize?.(stem) ?? null;
@@ -1327,15 +1400,15 @@ export const planMass = (
    *  which is the same number stepped off the cell grid where it would land on it */
   const crustScale = kit !== null ? paintScaleOf(kit, srcSize) : FALLBACK_PAINT_SCALE;
   const paintScale = kit !== null ? bodyScaleOf(kit, srcSize) : FALLBACK_PAINT_SCALE;
-  /** source width of a stem's art, 0 when the art is not (yet) resolvable */
-  const srcW = (stem: string): number => srcSize?.(stem)?.w ?? 0;
 
   // ── 1 · complete platforms and vertical book objects ──────────────────────
   if (kit !== null) {
     const columnObjects = kit.columnObjects ?? [];
-    for (const run of columnRuns(grid)) {
+    for (const run of columnRuns(grid, { includeHanging: true })) {
       const obj = columnObjects.find((candidate) =>
-        candidate.cellsW === run.c1 - run.c0 + 1 && candidate.cellsH === run.r1 - run.r0 + 1);
+        candidate.cellsW === run.c1 - run.c0 + 1
+          && candidate.cellsH === run.r1 - run.r0 + 1
+          && Boolean(candidate.hanging) === Boolean(run.hanging));
       if (obj === undefined) continue;
       out.push({
         kind: "platform", stem: obj.stem, c: run.c0, r: run.r0,
@@ -1384,6 +1457,7 @@ export const planMass = (
       }
     }
     for (const cell of claimedPlatformCells(grid, columnObjects)) claimed.add(cell);
+    massByCell = massComponents(grid, claimed);
     const platformPieces = out.filter((p) => p.kind === "platform");
     if (kit.joint !== undefined) {
       const source = srcSize?.(kit.joint) ?? undefined;
@@ -1426,12 +1500,11 @@ export const planMass = (
       const variants = band === "body"
         ? (deepBody ?? kit.body)
         : (band === "fade" ? kit.fade : [kit.sediment]);
-      // A new phase begins at every contiguous run, not at every segment. The
-      // phase is a source-pixel offset, so the frozen p1 sheets remain intact;
-      // only which part of the same painted tile is at the run's left edge
-      // changes. Different runs therefore do not expose one shared hard column.
-      const runSourceW = srcW(variants[0] ?? kit.body[0] ?? kit.fade[0] ?? "") || 512;
-      const runTileOffsetX = hash2(c, r, 73) * runSourceW;
+      // A connected mass owns one source phase. The old run-local hash made each
+      // row restart the painting and exposed the assembler as a vertical seam.
+      // Separate masses may still own separate material fields.
+      const component = massByCell.get(`${c},${r}`);
+      const componentTileOffsetX = component === undefined ? 0 : (component.minC * TILE) / paintScale;
       // …laid in SEGMENTS, like the course above it and on its own table, so the
       // mass under the hall stops being one 656-px tileSprite of one variant
       // (measured in the running p1 — the wallpaper the critique was reading)
@@ -1439,20 +1512,20 @@ export const planMass = (
       for (let k = 0; seg <= c1; k++) {
         const want = BODY_SEGMENT_CELLS[(c + r + k) % BODY_SEGMENT_CELLS.length] ?? 5;
         const segEnd = Math.min(seg + want - 1, c1);
-        const stem = variants[(c + r + k) % variants.length] ?? variants[0] ?? kit.fade[0] ?? "";
+        const componentStep = component === undefined
+          ? c + r + k
+          : Math.floor((c - component.minC) + (r - component.minR) * 0.5 + k);
+        const stem = variants[Math.abs(componentStep) % variants.length] ?? variants[0] ?? kit.fade[0] ?? "";
         out.push({
           kind: band, stem, c: seg, r, x: seg * TILE, y: r * TILE,
           w: (segEnd - seg + 1) * TILE, h: TILE,
           // the interior is a CONTINUUM: anchored on both axes, so the row below
           // draws the next slice of the same painting instead of restamping it
-          tile: true, srcScale: paintScale, tileAnchor: "xy", tileOffsetX: runTileOffsetX,
-          // ① the no-metronome value jitter, then ② the depth ramp on top of it.
-          // The order is a multiply either way; what matters is that ① SURVIVES
-          // — the five lights are what audit 6 counts as variety, and a ramp
-          // that replaced them instead of scaling them would turn a long floor
-          // back into wallpaper while looking, to the eye, like a fix.
+          tile: true, srcScale: paintScale, tileAnchor: "xy", tileOffsetX: componentTileOffsetX,
+          // Restrained value variation follows the component's material walk,
+          // rather than restarting from a different random seed at each run.
           tint: mixMultiply(
-            courseTintAt(c, r, k, 11),
+            CRUST_TINTS[Math.abs(componentStep + Math.floor((r - (component?.minR ?? r)) / 4)) % CRUST_TINTS.length] ?? 0xffffff,
             kit.bodyDeep === undefined
               ? depthTintAt(bucket)
               : depthTintAt(bucket, deepBody === undefined ? 1 : BODY_DEEP_SHADE, BODY_HANDOVER_PAINTED),
@@ -1488,6 +1561,7 @@ export const planMass = (
       });
       seg = segEnd + 1;
     }
+    if (kit.integratedCrustEnds) continue;
     // CAPS OVERLAP INWARD. The AF caps are painted as SEGMENT ENDS — a
     // rounded end followed by a stretch of the same course — not as outboard
     // bookends. So a cap is laid ON the run's last stretch with its outer

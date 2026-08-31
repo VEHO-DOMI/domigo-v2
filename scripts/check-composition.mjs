@@ -226,17 +226,17 @@ const COHERENCE_MAX = { ds: 25, dh: 25, dlSameLight: 10, carve: [2, 14] };
  * order behind it is just the defect with paperwork.
  */
 const COHERENCE_WAIVERS = {
-  // ── THE FOUR UNPAINTED ROOMS ───────────────────────────────────────────────
+  // ── THE THREE REMAINING UNPAINTED ROOMS ───────────────────────────────────
   // After Koki's ruling of 2026-08-15 the shared trims wear a derived colour
   // (`mass.ts#TRIM_SHADE`) instead of a grey multiply, and it moved every number
   // a tint can move: p2's worst saturation gap fell 22.9 → 3.5, p4's 36.7 → 15.5,
   // and the carve went from −1.9 (a groove) to +8.3 in all four rooms.
   //
   // What is left is identical in all four and is the reason each waiver exists:
-  // the walk course is painted for its room and THE BODY UNDER IT IS NOT. p2 and
-  // p9 draw a violet course over the shared warm book paper — 138° and 139° of
-  // hue — p4 a stage-red one at 56°, and p3 a course 40.8 points flatter than
-  // the paper it lies on. No trim tint reaches a body sheet. Only AS5 does.
+  // the walk course is painted for its room and THE BODY UNDER IT IS NOT. p9
+  // draws a violet course over the shared warm book paper (139° of hue), and p4
+  // a stage-red one (56°). No trim tint reaches a body sheet. Only a phase-owned
+  // mass family does.
   //
   // The order that ends these is SPEC_MASSEN_KIT §10, written this session with
   // the measurements below in it. That is what the exception buys: not silence,
@@ -269,7 +269,8 @@ const COHERENCE_WAIVERS = {
   // INCOMPLETE` — nach Rahmen-Regel 18 (R202) Rückweisung ohne Prüfung. Das
   // Urteil fällt der Architekt im Wareneingang, nicht diese Bahn; es steht hier,
   // damit niemand die Frist für gedeckt hält. Import gehört A9.
-  "ch01/p2": { until: "2026-11-30", why: "Nachtklassenraum zieht den geteilten warmen Buchkörper unter einem violetten Laufkurs — AS5b lieferte dafür ein Blatt ohne Motiv (A7). Reparaturpfad AS5F §10.6 (R201, A8 2026-08-22) — vierte Bestellung der Familie, c/d/e zurückgewiesen, die vorliegende Lieferung meldet sich selbst als INCOMPLETE; Import A9. Gemessen nach R194 (farbneutraler nearPlaneTint): ΔH 138° -> 131°, die Fuge bleibt weit außerhalb der Familie" },
+  // R5b retires p2's waiver: its phase-owned body, trim and crust family now
+  // measures ΔS 8.9, ΔH 21° and carve +5.7/+5.7, all inside the live law.
   // ── ★ p3 IST RAUS, WEIL DIE AUSNAHME SCHAL WURDE (R5-W7 · A8, R194) ───────
   // Hier stand: »Hof-Laufkurs ist 40,8 Punkte flacher gesättigt als das
   // geteilte Papier darunter«. Gemessen an derselben Kunst, nach dem

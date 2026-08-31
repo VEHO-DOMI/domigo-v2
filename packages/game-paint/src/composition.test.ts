@@ -46,6 +46,7 @@ import {
   nakedFills,
   PLAT_SHADOW,
   planMass,
+  massComponents,
   platformJoinPieces,
   postJoinPieces,
   planPlatformShadows,
@@ -746,6 +747,27 @@ describe("the carved mass (doc 36 §2)", () => {
     expect(claimed).not.toContain("21,1");
   });
 
+  it("detects ceiling-attached p2 pillars only when the hanging option is enabled", () => {
+    const ceiling = [
+      "########################",
+      "..........##............",
+      "..........##............",
+      "..........##............",
+      "..........##............",
+      "........................",
+    ];
+    expect(columnRuns(ceiling)).toEqual([]);
+    expect(columnRuns(ceiling, { includeHanging: true })).toEqual([
+      { c0: 10, c1: 11, r0: 1, r1: 4, hanging: true },
+    ]);
+    const claimed = claimedPlatformCells(ceiling, [
+      { stem: "hanging", cellsW: 2, cellsH: 4, hanging: true },
+      { stem: "standing", cellsW: 2, cellsH: 4 },
+    ]);
+    expect(claimed).toContain("10,1");
+    expect(claimed).toContain("11,4");
+  });
+
   it("mounts a column as one platform image and suppresses all mass anatomy inside it", () => {
     const p2 = [
       "........................",
@@ -793,7 +815,7 @@ describe("the carved mass (doc 36 §2)", () => {
     expect(topSaddles.map((q) => q.flipX)).toEqual([false, true, false]);
   });
 
-  it("staggeres the interior tile phase per contiguous run, not per segment", () => {
+  it("shares the interior tile phase across runs in one connected mass", () => {
     const separated = ["########", "........", "##..##..", "########"];
     const body = planMass(separated, kit, afSrc).filter((q) => q.kind === "body");
     const left = body.filter((q) => q.r === 2 && q.c < 2);
@@ -802,7 +824,20 @@ describe("the carved mass (doc 36 §2)", () => {
     expect(right.length).toBeGreaterThan(0);
     expect(new Set(left.map((q) => q.tileOffsetX)).size).toBe(1);
     expect(new Set(right.map((q) => q.tileOffsetX)).size).toBe(1);
-    expect(left[0]?.tileOffsetX).not.toBe(right[0]?.tileOffsetX);
+    expect(left[0]?.tileOffsetX).toBe(right[0]?.tileOffsetX);
+  });
+
+  it("gives one connected mass one material origin, even when rows break into runs", () => {
+    const g = ["###...", "##....", "##...."];
+    const components = massComponents(g);
+    expect(components.get("0,0")).toEqual({ minC: 0, minR: 0 });
+    expect(components.get("1,2")).toEqual({ minC: 0, minR: 0 });
+    expect(components.get("4,0")).toBeUndefined();
+  });
+
+  it("lets a phase-owned family replace isolated crust caps", () => {
+    const p = planMass(["....", "####", "####"], { ...kit, integratedCrustEnds: true });
+    expect(p.filter((q) => q.kind === "capL" || q.kind === "capR")).toHaveLength(0);
   });
 
   it("treats an anchored ledge as terrain, not as a platform object", () => {

@@ -5636,6 +5636,7 @@ export class PaintScene extends Phaser.Scene {
    * of sixty times a second.
    */
   private buildGrain(kit: MassKit): void {
+    if (kit.proceduralGrain === false) return;
     const claimed = claimedPlatformCells(this.grid, kit.columnObjects ?? []);
     const draw = (marks: readonly SurfaceMark[], depth: number, round: number): void => {
       if (marks.length === 0) return;
