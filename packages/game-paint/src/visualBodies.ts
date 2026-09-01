@@ -152,5 +152,5 @@ export const P2_EXEMPLAR_BODY: VisualBody = {
 
 /** Die live montierten Körper je Phase. Ein Eintrag kommt erst MIT seinem PNG. */
 export const CH01_BODIES: Record<string, readonly VisualBody[]> = {
-  p2: [],
+  p2: [P2_EXEMPLAR_BODY],
 };

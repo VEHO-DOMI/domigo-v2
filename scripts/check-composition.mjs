@@ -1216,6 +1216,22 @@ const judgeScale = ({ label, plan, want, srcSize, windowsSeen, courseLocks, waiv
     const src = srcSize(p.stem);
     if (!src) continue;
     const s = drawnScaleFor(p, src);
+    // ── 10-KÖRPER (R6 · Ein-Block-Welt) ─────────────────────────────────────
+    // Ein `bodyMount` trägt seine Auflösungs-Stufe DEKLARIERT (`srcScale` =
+    // TILE/pxPerCell, visualBodies.ts). Sein Gesetz ist EXAKTHEIT gegen die
+    // eigene Deklaration auf beiden Achsen — nicht Gleichheit mit dem Kurs:
+    // die Stufe ist der gemessene Hebel, der die Ein-Block-Welt unter GPU-
+    // und Speicher-Deckel hält (Anzeige-Decke 56,6 Canvas-px/Zelle; R6-Plan).
+    // Ein Körper, der seine Stufe verlässt, ist verzogen — keine Ausnahme.
+    if (p.kind === "bodyMount") {
+      const declared = p.srcScale ?? NaN;
+      for (const axis of ["x", "y"]) {
+        if (!(Math.abs(s[axis] - declared) <= declared * 1e-6)) {
+          fail("painted-scale", `${label}: bodyMount ${p.stem} zeichnet ${s[axis].toFixed(4)} auf ${axis}, deklariert ${Number.isFinite(declared) ? declared.toFixed(4) : "NICHTS"} (TILE/pxPerCell) — ein Körper, der seine Stufe verlässt, ist verzogen`);
+        }
+      }
+      continue;
+    }
     // 10a · SCALE PARITY — one painted world means one painted scale, on BOTH
     // axes.
     //
