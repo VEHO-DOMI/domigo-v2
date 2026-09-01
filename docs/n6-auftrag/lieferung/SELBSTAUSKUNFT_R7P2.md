@@ -244,6 +244,39 @@ Urteile sind eine Codex-Selbstprüfung, keine unabhängige Blindabnahme.
 - 12 Raum-Kohärenz: ✓ dieselbe Nacht-Bücherfamilie.
 - 13 Bodenebene: **GP ✓ Reichweite 100 %, Kippung 0,3°**.
 
+## Runde 2 — Körper-Neuwürfe im Zell-Vertrag
+
+Die sechs Körperblätter wurden für Runde 2 neu als je ein eigener Built-in-ImageGen-Wurf
+mit der jeweils angesehenen `.MASKE.png` erzeugt. Die Nachbereitung war rein technisch:
+Chroma-Key-Entfernung, Zielmaß, Alpha-Freistellung und harter Maskenclip. Der Clip setzt
+Pflichtzellen vollständig opak; er malt keine neuen Motive und lässt transparente Zellen
+leer. Die sechs unten genannten MD5-Prüfsummen (MD5 = kurzer Fingerabdruck der Datei)
+gehören zu den tatsächlich abgegebenen Runde-2-Dateien.
+
+| Blatt | Maß | Pflichtfläche | Magenta | Grünband | verboten sichtbar | Guidefarbe | MD5 |
+|---|---:|---:|---:|---:|---:|---:|---|
+| `body_p2_ostwand_treppe_boden.png` | 1088×1628 | 100,00 % | 100,00 % | 100,00 % | 0 | 0 | `a2f96ebc8cfe8decfb01e92c8a62fa9c` |
+| `body_p2_deckenbahn_west.png` | 1536×348 | 100,00 % | 100,00 % | 100,00 % | 0 | 0 | `7ee9d5c73ba87bd3f03694848190c555` |
+| `body_p2_deckenbahn_mitte.png` | 1984×92 | 100,00 % | 100,00 % | 100,00 % | 0 | 0 | `9d90b0c41244f982d6dc7ddda59ee5aa` |
+| `body_p2_tafelgeruest.png` | 1984×348 | 100,00 % | 100,00 % | 100,00 % | 0 | 0 | `3f2199fc2da5624002f87df50f7e0485` |
+| `body_p2_deckenbahn_ost.png` | 1088×540 | 100,00 % | 100,00 % | 100,00 % | 0 | 0 | `6260fc85ac6b2eaa4ccd608d656a284c` |
+| `body_p2_pultreihe_r9.png` | 1280×92 | 100,00 % | 100,00 % | 100,00 % | 0 | 0 | `dc065b4ce9ea441b73931c94c9335a04` |
+
+### Runde-2-Gegenprüfung
+
+- Zellvertrag: **PASS** — alle sechs Masken auf exakte Zielgröße geprüft; Magenta ist
+  vollständig gefüllt, Grünband vollständig opak, Transparenz außerhalb und in den
+  verbotenen Innenräumen erhalten.
+- Orthografische Bodenebene / Punkt 13: **PASS** für
+  `body_p2_ostwand_treppe_boden.png` — Reichweite 100 %, Kippung 0,0°.
+  Die fünf übrigen Körper sind ausdrücklich Hänge- bzw. Schwebegeometrien ohne
+  Boden-Aufstand; dort ist das Boden-Tor nicht anwendbar.
+- Runde-1-Malereiklasse: **visuell selbst geprüft** — dieselbe dunkle Navy-/Indigo-,
+  Plum- und Amber-Buch-/Holzpalette, sichtbare Pinselmodulation und orthografische
+  Frontansicht wie beim abgenommenen Exemplar.
+- Möbel-Schutz: **PASS** — alle sechs angenommenen `terrain_night_*_p2.png` sind
+  gegenüber den Runde-1-Prüfsummen bytegleich; kein Möbelblatt wurde angefasst.
+
 ## Durchgeführte Prüfungen
 
 - Zwölf R7-P2-Dateien vorhanden: 6 Körperblätter + 6 Möbelblätter.

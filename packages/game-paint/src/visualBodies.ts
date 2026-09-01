@@ -257,5 +257,6 @@ export const P2_WAVE_BODIES: readonly VisualBody[] = [
 
 /** Die live montierten Körper je Phase. Ein Eintrag kommt erst MIT seinem PNG. */
 export const CH01_BODIES: Record<string, readonly VisualBody[]> = {
-  p2: [P2_EXEMPLAR_BODY],
+  // R7: das Nacht-Klassenzimmer ist VOLLSTÄNDIG gemalt — Exemplar + Welle.
+  p2: [P2_EXEMPLAR_BODY, ...P2_WAVE_BODIES],
 };

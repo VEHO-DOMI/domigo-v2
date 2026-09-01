@@ -678,15 +678,10 @@ const PLAT_OBJECTS: Record<string, MassKit["platObjects"]> = {
  * keep their existing scenery until a matching sheet is ordered. */
 const COLUMN_OBJECTS: Record<string, NonNullable<MassKit["columnObjects"]>> = {
   p1: [{ stem: "terrain_atlas_podest_p1", cellsW: 2, cellsH: 2 }],
-  p2: [
-    { stem: "terrain_hanging_pillar_p2_short", cellsW: 2, cellsH: 4, hanging: true },
-    { stem: "terrain_hanging_pillar_p2", cellsW: 2, cellsH: 7, hanging: true },
-    { stem: "terrain_tower_p2", cellsW: 2, cellsH: 11 },
-    { stem: "terrain_pillar_p2_8", cellsW: 2, cellsH: 8 },
-    { stem: "terrain_pillar_p2_5", cellsW: 2, cellsH: 5 },
-    { stem: "terrain_pillar_p2_2", cellsW: 2, cellsH: 2 },
-    { stem: "terrain_post_p2", cellsW: 1, cellsH: 2 },
-  ],
+  // R7: p2 ist Ein-Block-Welt — alle Säulen/Pfeiler sind von den Körpern
+  // ABSORBIERT (Treppe in der Ostwand, Hänger in den Deckenbahnen); die sieben
+  // Blätter sind gelöscht. Kokis "tilted"-Befund stirbt per Löschung.
+  p2: [],
 };
 
 /**
