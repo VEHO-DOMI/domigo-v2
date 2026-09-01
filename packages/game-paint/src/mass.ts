@@ -1510,7 +1510,13 @@ export const planMass = (
         // der Spanne ZENTRIERT: die Spanne gehoert dem Gitter (`x` rueckt
         // weiter um `span`, damit die Objekte eines Laufes auf dem Raster
         // bleiben), das Bild gehoert der Malerei.
-        const shrink = wantH > TILE * 2 ? (TILE * 2) / wantH : 1;
+        // R7: der Deckel begrenzt die UNTER-DECK-Tiefe, nicht die Gesamthöhe —
+        // sein Warum ist »kein Turm, der den Raum verstellt«, und was über der
+        // Steh-Linie aufragt (Lehne, Pult-Aufsatz), ist deck-verankertes Motiv,
+        // kein Raumverbau. Das Stand-Pult-Regal (170 px, deck 0,39) fiel sonst
+        // auf 75 % und ließ seine vierte Zelle nackt (gemessen, no-naked-fill).
+        const belowWant = wantH * (1 - (obj.deck ?? 0));
+        const shrink = belowWant > TILE * 2 ? (TILE * 2) / belowWant : 1;
         const objW = span * shrink;
         const objH = wantH * shrink;
         // anchored by its DECK, not its top edge: whatever the art draws above

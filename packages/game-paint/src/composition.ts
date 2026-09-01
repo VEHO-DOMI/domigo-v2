@@ -146,7 +146,11 @@ export interface MassKit {
    * anchoring it by its top edge would sink the seat below the standable line
    * and bury the backrest in the floor. 0 = the art's top edge IS the deck.
    */
-  platObjects: readonly { stem: string; cells: number; deck?: number }[];
+  platObjects: readonly { stem: string; cells: number; deck?: number;
+    /** R7 · Auflösungs-Stufe eines NEU gemalten Blatts (Quell-px je Zelle).
+     *  Deklariert nimmt Audit 10 das Blatt aus der Kurs-Paritäts-Messung —
+     *  seine Stufe ist Absicht (Ein-Block-Welt), nicht Drift. */
+    pxPerCell?: number }[];
   /** Complete vertical book objects, matched to `columnRuns` by cell size. */
   columnObjects?: readonly ColumnObject[];
   /**
@@ -626,12 +630,12 @@ const PLAT_OBJECTS: Record<string, MassKit["platObjects"]> = {
   ],
   // p2 Klassenzimmer — night folios, bundles, lecterns, and continuous shelves.
   p2: [
-    { stem: "terrain_night_lectern_shelf_p2", cells: 4, deck: 43 / 266 },
-    { stem: "terrain_night_shelf_p2", cells: 3, deck: 43 / 233 },
-    { stem: "terrain_night_bundle_p2", cells: 2, deck: 27 / 216 },
+    { stem: "terrain_night_lectern_shelf_p2", pxPerCell: 64, cells: 4, deck: 66 / 170 },
+    { stem: "terrain_night_shelf_p2", pxPerCell: 64, cells: 3, deck: 4 / 96 },
+    { stem: "terrain_night_bundle_p2", pxPerCell: 64, cells: 2, deck: 8 / 138 },
     { stem: "terrain_night_lectern_p2", cells: 2, deck: 22 / 215 },
-    { stem: "terrain_night_folio_p2", cells: 1, deck: 32 / 97 },
-    { stem: "terrain_night_dictionary_p2", cells: 1, deck: 35 / 107 },
+    { stem: "terrain_night_folio_p2", pxPerCell: 64, cells: 1, deck: 6 / 33 },
+    { stem: "terrain_night_dictionary_p2", pxPerCell: 64, cells: 1, deck: 4 / 33 },
   ],
   // p3 Schulhof-Garten — PK-R6 · H2 (round-2 finding 12): the yard shared its
   // bench AND its bundles with the entrance hall, which is most of why „the same

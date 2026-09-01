@@ -1189,7 +1189,7 @@ const waiverSeen = new Set();
  * Rein: gibt Meldungen zurueck, druckt nichts, und fasst `waiverSeen` nur an,
  * wenn es tatsaechlich eine Ausnahme verbraucht hat.
  */
-const judgeScale = ({ label, plan, want, srcSize, windowsSeen, courseLocks, waiverSeen }) => {
+const judgeScale = ({ label, plan, want, srcSize, windowsSeen, courseLocks, waiverSeen, tieredStems = new Set() }) => {
   const bad = [];
   const said = [];
   // dieselbe Signatur wie die Datei-weiten `fail`/`note`, damit der gehobene
@@ -1252,6 +1252,12 @@ const judgeScale = ({ label, plan, want, srcSize, windowsSeen, courseLocks, waiv
     // mass_corner_bl` — die vier Eckblaetter sind ueberall zu gross gemalt).
     // Der genauere Schluessel gewinnt; sonst waere dieselbe Wahrheit an fuenf
     // Stellen gepflegt und veraltete an vieren davon.
+    // R7 · gestufte Möbel (platObjects mit pxPerCell): ihre Stufe ist
+    // deklarierte Absicht — Anisotropie- und Fenster-Gesetze gelten weiter,
+    // die Kurs-Parität nicht (der Kurs selbst stirbt mit dem Raum-Cutover).
+    if (p.kind === "platform" && tieredStems.has(p.stem)) {
+      continue;
+    }
     const wKeyRoom = `${label}:${p.kind}:${p.stem}`;
     const wKeyAll = `${p.kind}:${p.stem}`;
     const waiverKey = SCALE_WAIVERS[wKeyRoom] !== undefined ? wKeyRoom : wKeyAll;
@@ -1351,6 +1357,7 @@ for (const { label, ph, spec } of withSpec) {
     plan: planMass(ph.rows, spec.mass, srcSize),
     want: paintScaleOf(spec.mass, srcSize),
     srcSize, windowsSeen, courseLocks, waiverSeen,
+    tieredStems: new Set((spec.mass.platObjects ?? []).filter((o) => o.pxPerCell !== undefined).map((o) => o.stem)),
   });
   for (const m of v.said) note(m);
   for (const m of v.bad) fail("painted-scale", m);
