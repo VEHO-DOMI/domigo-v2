@@ -15,6 +15,8 @@
     "check:bundle": "node scripts/check-game-bundle.mjs",
     "check:paint-art": "node --experimental-strip-types scripts/check-paint-art.mjs",
     "check:body-silhouette": "node --experimental-strip-types scripts/check-body-silhouette.mjs",
+    "check:ground-plane": "node --experimental-strip-types scripts/check-ground-plane.mjs",
+    "check:ground-plane:selftest": "node --experimental-strip-types scripts/check-ground-plane.mjs --selftest",
     "check:body-silhouette:selftest": "node --experimental-strip-types scripts/check-body-silhouette.mjs --selftest",
     "check:game-tasks": "node --experimental-strip-types scripts/check-game-tasks.mjs",
     "check:paint-copy": "node --experimental-strip-types scripts/check-paint-copy.mjs",

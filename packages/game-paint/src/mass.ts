@@ -945,17 +945,35 @@ export const slideRuns = (grid: readonly string[]): Array<{ c: number; r: number
 export const claimedPlatformCells = (
   grid: readonly string[],
   columnObjects: readonly ColumnObject[] = [],
+  // R7 · Zellen, die ein Sicht-Körper VOR den Läufen besitzt (planMass §0).
+  // Ohne diesen Parameter beantwortete diese Funktion die Frage ANDERS als
+  // planMass (dessen §1 geclaimte Ursprünge überspringt, mass.ts) — im
+  // heutigen Grid zufällig folgenlos, aber zwei Antworten auf eine Frage sind
+  // zwei Regeln. Läufe, deren Ursprung einem Körper gehört, zählen nicht.
+  blocked: ReadonlySet<string> = new Set(),
 ): Set<string> => {
   const out = new Set<string>();
   for (const run of floatingPlatformRuns(grid)) {
+    if (blocked.has(`${run.c0},${run.r}`)) continue;
     for (let k = run.c0; k <= run.c1; k++) out.add(`${k},${run.r}`);
   }
   const sizes = new Set(columnObjects.map((o) => `${o.cellsW}x${o.cellsH}:${Boolean(o.hanging)}`));
   for (const run of columnRuns(grid, { includeHanging: true })) {
+    if (blocked.has(`${run.c0},${run.r0}`)) continue;
     if (!sizes.has(`${run.c1 - run.c0 + 1}x${run.r1 - run.r0 + 1}:${Boolean(run.hanging)}`)) continue;
     for (let r = run.r0; r <= run.r1; r++) {
       for (let c = run.c0; c <= run.c1; c++) out.add(`${c},${r}`);
     }
+  }
+  return out;
+};
+
+/** Die Körper-Zellen eines Kits als Set — der `blocked`-Parameter oben, aus der
+ *  einen Quelle abgeleitet, damit Szene, Audits und Planer dieselbe Antwort geben. */
+export const claimedBodyCells = (kit: Pick<MassKit, "bodies"> | null): Set<string> => {
+  const out = new Set<string>();
+  for (const body of kit?.bodies ?? []) {
+    for (const { c, r } of bodyCells(body)) out.add(`${c},${r}`);
   }
   return out;
 };
@@ -1506,7 +1524,7 @@ export const planMass = (
         x += span;
       }
     }
-    for (const cell of claimedPlatformCells(grid, columnObjects)) claimed.add(cell);
+    for (const cell of claimedPlatformCells(grid, columnObjects, claimedBodyCells(kit))) claimed.add(cell);
     massByCell = massComponents(grid, claimed);
     const platformPieces = out.filter((p) => p.kind === "platform");
     if (kit.joint !== undefined) {

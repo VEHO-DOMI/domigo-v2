@@ -40,6 +40,7 @@ import {
   MIN_PAINT_PERIOD_CELLS,
   NO_METRONOME_MIN_PERIOD,
   TRIM_SHADE,
+  claimedBodyCells,
   claimedPlatformCells,
   crustGrain,
   floatingPlatformRuns,
@@ -821,7 +822,7 @@ for (const { label, ph, spec } of withSpec) {
 // that only looked where the fix had been applied would have called that green.
 console.log("6 · no-metronome audit (mass.ts NO_METRONOME_MIN_PERIOD)");
 for (const { label, ph, spec } of withSpec) {
-  const claimed = claimedPlatformCells(ph.rows, spec.mass.columnObjects ?? []);
+  const claimed = claimedPlatformCells(ph.rows, spec.mass.columnObjects ?? [], claimedBodyCells(spec.mass));
   const plan = planMass(ph.rows, spec.mass, srcSize);
   const surfaces = [
     ["course", surfaceSignature(plan, ["crust"], crustGrain(ph.rows, claimed))],

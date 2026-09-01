@@ -34,6 +34,14 @@ Vereinigung ist das Urteils-Blatt jeder Körper-Abnahme. Klammern = Herkunft._
 12. **RAUM-KOHÄRENZ** — dieselben Grundkörper durchs Kapitel; Fortschritt ändert
     Licht/Zustand, nie die Grammatik. (C-K13)
 
+13. **EINE ORTHOGRAFISCHE BODENEBENE** *(Nachtrag 01.09., aus Kokis „tilted"-Befund
+    an den R4-Säulen — gemessene Ursache: 3/4-Perspektive mit V-förmiger Aufstands-
+    kante und je Blatt anderem Fluchtwinkel, 11°–49°, bei lotrechter Mittelachse
+    und 0,0 % Montage-Verzug)*: Das ganze Kapitel teilt EINEN Kamerastandpunkt —
+    frontal-orthografisch. Alles, was auf etwas steht, hat eine **gerade, waag-
+    rechte Aufstandskante** (kein V, kein sichtbarer Perspektiv-Sockel); Seiten-
+    flächen an Kontaktkanten kippen ≤3°. Maschinell geprüft (`check-ground-plane`).
+
 **Anti-Kriterien (sofortiges Durchfallen):** Plattform-Textur ohne Objekt-Identität ·
 sichtbare Wiederholungs-Periode · nackter Schnitt · angesetztes Verbindungsstück ·
 Dekor, das Begehbarkeit vortäuscht (Alpha-Gesetz des Silhouetten-Tors).
