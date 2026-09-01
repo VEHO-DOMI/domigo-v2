@@ -17,7 +17,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { PNG } from "pngjs";
-import { CH01_BODIES, P2_EXEMPLAR_BODY, bodyCells } from "../packages/game-paint/src/visualBodies.ts";
+import { CH01_BODIES, P2_EXEMPLAR_BODY, P2_WAVE_BODIES, bodyCells } from "../packages/game-paint/src/visualBodies.ts";
 import { glyphAt, isSolid } from "../packages/game-paint/src/collide.ts";
 
 const ART_DIR = path.join(process.cwd(), "apps/web/public/art/g1/paint/ch01");
@@ -149,11 +149,14 @@ const main = () => {
   const args = process.argv.slice(2);
   if (args.includes("--selftest")) return selftest();
   const jobs = [];
-  if (args.includes("--exemplar")) {
+  if (args.includes("--exemplar") || args.includes("--body")) {
     const sheetIdx = args.indexOf("--sheet");
     const sheet = sheetIdx >= 0 ? args[sheetIdx + 1] : null;
-    if (sheet === null) { console.error("--exemplar braucht --sheet <png>"); return 1; }
-    jobs.push({ body: P2_EXEMPLAR_BODY, file: sheet, phase: "p2" });
+    if (sheet === null) { console.error("Wareneingang braucht --sheet <png>"); return 1; }
+    const wanted = args.includes("--body") ? args[args.indexOf("--body") + 1] : P2_EXEMPLAR_BODY.id;
+    const body = [P2_EXEMPLAR_BODY, ...P2_WAVE_BODIES].find((b) => b.id === wanted);
+    if (body === undefined) { console.error(`unbekannter Körper: ${wanted}`); return 1; }
+    jobs.push({ body, file: sheet, phase: "p2" });
   } else {
     for (const [phase, bodies] of Object.entries(CH01_BODIES)) {
       for (const body of bodies) {

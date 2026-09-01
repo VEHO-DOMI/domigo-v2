@@ -150,6 +150,111 @@ export const P2_EXEMPLAR_BODY: VisualBody = {
   overpaint: { l: 0, r: 0, t: 12, b: 16 },
 };
 
+
+/**
+ * DIE P2-WELLE (R7): die sechs übrigen Körper des Nacht-Klassenzimmers, Masken
+ * maschinell aus dem Grid erzeugt (0 Partitions-Fehler, fullyPainted grün mit
+ * Exemplar + Kleinst-Läufen). Absorption eingebaut: die Bücherstapel-Treppe der
+ * Ostwand ersetzt die drei gekippten Säulen, die zwei Decken-Körper ersetzen die
+ * hängenden Pfeiler. Ein Eintrag wandert erst MIT seinem angenommenen PNG in
+ * CH01_BODIES.
+ */
+export const P2_WAVE_BODIES: readonly VisualBody[] = [
+  {
+    id: "p2_deckenbahn_west",
+    stem: "body_p2_deckenbahn_west",
+    c0: 0, r0: 0,
+    rows: [
+      "########################",
+      "......................##",
+      "......................##",
+      "......................##",
+      "......................##",
+    ],
+    pxPerCell: 64, overpaint: { l: 0, r: 0, t: 12, b: 16 },
+  },
+  {
+    id: "p2_deckenbahn_mitte",
+    stem: "body_p2_deckenbahn_mitte",
+    c0: 24, r0: 0,
+    rows: [
+      "###############################",
+    ],
+    pxPerCell: 64, overpaint: { l: 0, r: 0, t: 12, b: 16 },
+  },
+  {
+    id: "p2_tafelgeruest",
+    stem: "body_p2_tafelgeruest",
+    c0: 24, r0: 1,
+    rows: [
+      "......#....#...................",
+      "......######...................",
+      "......#....#...................",
+      "......#....#...................",
+      "#######....####################",
+    ],
+    pxPerCell: 64, overpaint: { l: 0, r: 0, t: 12, b: 16 },
+  },
+  {
+    id: "p2_deckenbahn_ost",
+    stem: "body_p2_deckenbahn_ost",
+    c0: 55, r0: 0,
+    rows: [
+      "#################",
+      "##...............",
+      "##...............",
+      "##...............",
+      "##...............",
+      "##...............",
+      "##...............",
+      "##...............",
+    ],
+    pxPerCell: 64, overpaint: { l: 0, r: 0, t: 12, b: 16 },
+  },
+  {
+    id: "p2_pultreihe_r9",
+    stem: "body_p2_pultreihe_r9",
+    c0: 34, r0: 9,
+    rows: [
+      "####################",
+    ],
+    pxPerCell: 64, overpaint: { l: 0, r: 0, t: 12, b: 16 },
+  },
+  {
+    id: "p2_ostwand_treppe_boden",
+    stem: "body_p2_ostwand_treppe_boden",
+    c0: 55, r0: 1,
+    rows: [
+      "................#",
+      "................#",
+      "................#",
+      "................#",
+      "................#",
+      "................#",
+      "................#",
+      "................#",
+      "................#",
+      "................#",
+      "................#",
+      "##..............#",
+      "##..............#",
+      "##..............#",
+      "####............#",
+      "####............#",
+      "####............#",
+      "######........###",
+      "######..........#",
+      "#################",
+      "#################",
+      "#################",
+      "#################",
+      "#################",
+      "#################",
+    ],
+    pxPerCell: 64, overpaint: { l: 0, r: 0, t: 12, b: 16 },
+  },
+];
+
 /** Die live montierten Körper je Phase. Ein Eintrag kommt erst MIT seinem PNG. */
 export const CH01_BODIES: Record<string, readonly VisualBody[]> = {
   p2: [P2_EXEMPLAR_BODY],
