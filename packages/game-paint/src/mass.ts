@@ -13,6 +13,7 @@
 // no-naked-fill audit asserts a kit-present plan contains ZERO of them.
 
 import { type ColumnObject, type MassKit } from "./composition.ts";
+import { bodyCells } from "./visualBodies.ts";
 import { glyphAt, isSlope, isSolid } from "./collide.ts";
 import { TILE, mixMultiply } from "./paint.ts";
 
@@ -440,6 +441,12 @@ export type MassKind =
   // the same reason, and `composition.test.ts` states that as law.
   | "edgeL" | "edgeR" | "edgeD" | "cornerBL" | "cornerBR" | "inCornerL" | "inCornerR"
   | "ramp" | "platform" | "joint" | "postJoin"
+  // `bodyMount` — ein deklarierter Sicht-Körper als EIN Gemälde (R6 Ein-Block-
+  // Welt, visualBodies.ts). Nicht in NEAR_PLANE_KINDS: seine Kruste, Tiefe und
+  // Verschattung sind BESTELLTE Malerei; ein Engine-Tint würde genau die
+  // Pigment-Tiefe wieder in einen Multiply verwandeln, den das Massen-Kit
+  // abgeschafft hat.
+  | "bodyMount"
   | "slideUnder" | "slideTop" | "slideMid" | "slideFoot"
   | "fallbackFill";
 
@@ -527,6 +534,13 @@ export interface MassPiece {
   tint?: number;
   /** source-pixel phase for a run-local tile origin; does not alter the sheet */
   tileOffsetX?: number;
+  /**
+   * R6 · die Zellen, die ein `bodyMount` wirklich besitzt. Ein Körper-Blatt ist
+   * fast nie ein volles Rechteck (das Exemplar füllt 34 % seiner Box) — eine
+   * rechteckige Ableitung aus w/h würde Luftzellen als »gedeckt« melden und
+   * das Deckungs-Audit falsch-grün färben. Nur bodyMount trägt das Feld.
+   */
+  cells?: ReadonlyArray<{ c: number; r: number }>;
   depth: number;
 }
 
@@ -700,6 +714,10 @@ export const postJoinPieces = (
 
 const DEPTH = {
   body: 1, ramp: 1.5, crust: 2, trim: 2.2, cap: 2.3, platform: 2.5, joint: 2.65, postJoin: 2.66, slide: 2.6,
+  // Körper liegen über Kit-Kruste (2): in der Teilmigration darf keine
+  // Nachbar-Kruste in das Gemälde hineinzeichnen. Anbau-Kragen stapeln per
+  // Deklarations-Reihenfolge ein Epsilon darüber (planMass).
+  bodyMount: 2.05,
 } as const;
 
 const gridSize = (grid: readonly string[]): { w: number; h: number } => ({
@@ -1401,10 +1419,41 @@ export const planMass = (
   const crustScale = kit !== null ? paintScaleOf(kit, srcSize) : FALLBACK_PAINT_SCALE;
   const paintScale = kit !== null ? bodyScaleOf(kit, srcSize) : FALLBACK_PAINT_SCALE;
 
+  // ── 0 · deklarierte Sicht-Körper (R6 Ein-Block-Welt) ──────────────────────
+  // VOR allem anderen, denn der Claim ist der Generalschlüssel: jeder spätere
+  // Erzeuger (Kurs, Trims, Innenmasse, Grain, Säulen) respektiert `claimed`
+  // und lässt die Körper-Zellen aus — die Migration läuft körperweise.
+  if (kit !== null) {
+    (kit.bodies ?? []).forEach((body, bodyIdx) => {
+      const cells = bodyCells(body);
+      for (const cell of cells) claimed.add(`${cell.c},${cell.r}`);
+      const s = TILE / body.pxPerCell;
+      const maskW = Math.max(...body.rows.map((row) => row.length), 1);
+      const sheetW = maskW * body.pxPerCell + body.overpaint.l + body.overpaint.r;
+      const sheetH = body.rows.length * body.pxPerCell + body.overpaint.t + body.overpaint.b;
+      const x0 = body.c0 * TILE - body.overpaint.l * s;
+      const y0 = body.r0 * TILE - body.overpaint.t * s;
+      // Anbau-Kragen (attachTo) liegen per Deklarations-Reihenfolge ein
+      // Epsilon über ihrem Wirt — gewachsen, nie gestoßen (K9).
+      const depth = DEPTH.bodyMount + bodyIdx * 0.001;
+      const slices = body.slices ?? [{ stem: body.stem, srcX: 0, srcW: sheetW }];
+      for (const slice of slices) {
+        out.push({
+          kind: "bodyMount", stem: slice.stem, c: body.c0, r: body.r0,
+          x: x0 + slice.srcX * s, y: y0, w: slice.srcW * s, h: sheetH * s,
+          srcScale: s, cells, depth,
+        });
+      }
+    });
+  }
+
   // ── 1 · complete platforms and vertical book objects ──────────────────────
   if (kit !== null) {
     const columnObjects = kit.columnObjects ?? [];
     for (const run of columnRuns(grid, { includeHanging: true })) {
+      // Zellen, die ein Sicht-Körper besitzt, stehen keiner Säule mehr zu —
+      // sonst zeichnete ein registriertes Maß doppelt in das Gemälde.
+      if (claimed.has(`${run.c0},${run.r0}`)) continue;
       const obj = columnObjects.find((candidate) =>
         candidate.cellsW === run.c1 - run.c0 + 1
           && candidate.cellsH === run.r1 - run.r0 + 1
@@ -1417,6 +1466,7 @@ export const planMass = (
       });
     }
     for (const run of floatingPlatformRuns(grid)) {
+      if (claimed.has(`${run.c0},${run.r}`)) continue; // Körper-Zellen (§0)
       const width = run.c1 - run.c0 + 1;
       let x = run.c0 * TILE;
       for (const obj of coverWithObjects(width, kit.platObjects, run.c0 + run.r)) {
@@ -1871,10 +1921,16 @@ export const uncoveredSolids = (
   grid: readonly string[],
   pieces: readonly MassPiece[],
 ): Array<{ c: number; r: number }> => {
-  const covers: MassKind[] = ["body", "fade", "sediment", "platform", "fallbackFill"];
+  const covers: MassKind[] = ["body", "fade", "sediment", "platform", "fallbackFill", "bodyMount"];
   const covered = new Set<string>();
   for (const p of pieces) {
     if (!covers.includes(p.kind)) continue;
+    // R6: ein Körper deckt genau SEINE Zellen — die Rechteck-Ableitung darunter
+    // würde bei 34 % Füllgrad Luft als gedeckt melden (falsch-grünes Audit 3).
+    if (p.cells !== undefined) {
+      for (const cell of p.cells) covered.add(`${cell.c},${cell.r}`);
+      continue;
+    }
     const cellsW = Math.max(1, Math.round(p.w / TILE));
     const cellsH = p.kind === "platform" ? Math.max(1, Math.round(p.h / TILE)) : 1;
     for (let y = 0; y < cellsH; y++) {

@@ -15,6 +15,7 @@
 // fallback law) — nothing may break while art is pending.
 
 import { TERRAIN_JOIN_STEM, TERRAIN_POST_JOIN_STEM } from "./artManifest.ts";
+import { CH01_BODIES, type VisualBody } from "./visualBodies.ts";
 
 /** A length that may be stated absolutely or bound to the phase's world box. */
 export type Measure = number | "world" | "floor";
@@ -148,6 +149,12 @@ export interface MassKit {
   platObjects: readonly { stem: string; cells: number; deck?: number }[];
   /** Complete vertical book objects, matched to `columnRuns` by cell size. */
   columnObjects?: readonly ColumnObject[];
+  /**
+   * R6 · deklarierte Sicht-Körper (visualBodies.ts): je Körper EIN Gemälde in
+   * exakter Zellmaske. `planMass` claimt ihre Zellen VOR allem anderen; alles
+   * Nachgelagerte (Kurs, Trims, Innenmasse, Grain, Säulen) lässt sie aus.
+   */
+  bodies?: readonly VisualBody[];
   /** p1/p2 crust ends are painted into the one-piece/phase family. */
   integratedCrustEnds?: boolean;
   /** false disables the legacy procedural rectangle grain for this phase. */
@@ -544,6 +551,11 @@ export const massStems = (m: MassKit): string[] => {
   if (m.edgeD !== undefined) out.push(...m.edgeD);
   out.push(...m.platObjects.map((p) => p.stem));
   out.push(...(m.columnObjects ?? []).map((p) => p.stem));
+  // Körper-Blätter: gemountet werden die Slices (falls geschnitten), sonst das
+  // eine Blatt — exakt enumeriert, kein Laufzeit-Raten (check-paint-art bleibt hart).
+  out.push(...(m.bodies ?? []).flatMap((b) => (b.slices ?? []).length > 0
+    ? (b.slices ?? []).map((s) => s.stem)
+    : [b.stem]));
   if (m.slide) out.push(m.slide.top, m.slide.mid, m.slide.foot, m.slide.under);
   return [...new Set(out)];
 };
@@ -960,6 +972,9 @@ const sharedMass = (phase: string): Omit<MassKit, "crust" | "crustCapL" | "crust
   // surface that grows a slope orders its own (D-324, and the field's own note).
   platObjects: PLAT_OBJECTS[phase] ?? PLAT_OBJECTS.p1 ?? [],
   columnObjects: COLUMN_OBJECTS[phase] ?? [],
+  // R6 · Ein-Block-Welt: deklarierte Sicht-Körper. Ein Eintrag in CH01_BODIES
+  // kommt erst MIT seinem angenommenen PNG (check-paint-art bleibt hart).
+  bodies: CH01_BODIES[phase] ?? [],
 });
 
 const crustOf = (phase: string): Pick<MassKit, "crust" | "crustCapL" | "crustCapR"> => ({
