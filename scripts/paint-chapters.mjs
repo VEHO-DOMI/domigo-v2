@@ -104,6 +104,34 @@ export const paintChapters = () => {
  * ein Gesetz, das grün ist. `check-body-silhouette` hat p4 und p9 auf genau
  * diese Weise nie gelesen.
  */
+/**
+ * L0 · N6 · KARTEN-DATEIEN OHNE SCHWESTER-LEVEL.
+ *
+ * `paintChapters()` nimmt die Kapitel-Liste aus den `chNN.level.json` — die
+ * Level-Datei ist der Ausweis eines Kapitels. Das hat eine Kehrseite, die ein
+ * Tor kennen muss: eine `chNN.tasks.v2.json` OHNE Level wäre damit unsichtbar.
+ * Genau so verschwindet Arbeit still: die T-Bahn schreibt ihre Karten, die
+ * G-Bahn ist mit den Räumen noch nicht so weit, und das Karten-Tor sagt »OK«,
+ * weil es die Datei nie gesehen hat.
+ *
+ * Diese Funktion zählt sie auf, damit ein Tor sie NAMENTLICH melden kann.
+ */
+export const orphanTaskFiles = () => {
+  const out = [];
+  if (!fs.existsSync(STORIES)) return out;
+  for (const storyId of fs.readdirSync(STORIES).sort()) {
+    const dir = path.join(STORIES, storyId, "paint");
+    if (!fs.existsSync(dir)) continue;
+    for (const f of fs.readdirSync(dir).filter((x) => /^ch\d{2}\.tasks\.v2\.json$/.test(x)).sort()) {
+      const chapter = f.slice(0, 4);
+      if (!fs.existsSync(path.join(dir, `${chapter}.level.json`))) {
+        out.push({ storyId, chapter, file: path.join(dir, f) });
+      }
+    }
+  }
+  return out;
+};
+
 export const skipLedger = () => {
   const rows = [];
   return {
