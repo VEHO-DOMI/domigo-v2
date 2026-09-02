@@ -343,7 +343,14 @@ for (const story of fs.existsSync(CONTENT) ? fs.readdirSync(CONTENT) : []) {
   if (!fs.existsSync(dir)) continue;
   for (const f of fs.readdirSync(dir).filter((x) => x.endsWith(".level.json"))) {
     const level = JSON.parse(fs.readFileSync(path.join(dir, f), "utf8"));
-    if (level.draft === true) continue;
+    if (level.draft === true) {
+    // L0: NAMENTLICH, nicht still. Ein Entwurf hat per Platzhalter-Doktrin
+    // keinen COMPOSITION-Eintrag, also ist das Ueberspringen richtig — aber ein
+    // Tor, das schweigend ueberspringt, ist von einem kaputten Tor nicht zu
+    // unterscheiden. (Vom blinden Leser dieser Bahn gefunden.)
+    console.log(`check-composition: ${level.chapter ?? "?"} uebersprungen (draft) — ein Kapitel im Bau traegt keine Komposition`);
+    continue;
+  }
     const all = [...level.phases, ...(level.arena ? [level.arena] : []), ...(level.bonus ? [level.bonus] : [])];
     for (const ph of all) {
       const spec = COMPOSITION[level.chapter]?.[ph.id] ?? null;

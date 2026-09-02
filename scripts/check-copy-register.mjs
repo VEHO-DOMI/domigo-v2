@@ -304,7 +304,12 @@ if (registerFailures("Der Füller steht grau da", "showsDe").length === 0) {
 console.log(`  ${proseState}`);
 if (failures > 0) {
   console.error(`\ncheck-copy-register: ${failures} violation(s) over ${cardLines} card lines · ${levelLines} level lines · ${shellLines} shell lines`);
-  process.exit(1);
 }
-console.log(`check-copy-register: OK — ${CHAPTERS.length} Kapitel: ${cardLines} card lines, ${levelLines} level lines and ${shellLines} shell lines are all in the Austrian register (${entries.length} Begriffe, ${patterns.length} Muster)`);
+// ★ L0 · DER SKIP-BERICHT STEHT VOR DEM URTEIL, NICHT DANACH.
+// Ein blinder Leser fand ihn hinter `process.exit(1)`: im ROTEN Lauf wurde er
+// nie gedruckt — ausgerechnet dann, wenn jemand wissen muss, welche Gesetze
+// mangels Eingaben gar nicht liefen. Der Mechanismus gegen stille Auslassung
+// war selbst still, sobald es darauf ankam.
 ledger.print();
+if (failures > 0) process.exit(1);
+console.log(`check-copy-register: OK — ${CHAPTERS.length} Kapitel: ${cardLines} card lines, ${levelLines} level lines and ${shellLines} shell lines are all in the Austrian register (${entries.length} Begriffe, ${patterns.length} Muster)`);

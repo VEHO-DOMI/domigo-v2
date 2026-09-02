@@ -32,8 +32,10 @@ const LEGAL_GLYPHS = new Set([".", "#", "=", "/", "\\", "1", "2", "3", "4", "~",
  *  Narben: `drained`, `classmate` und `cloth` fehlten dort je einmal, und jede
  *  Lücke war ein 500 auf dem ausgelieferten Kapitel, kein Typfehler. Als
  *  `as const`-Liste ist sie IMPORTIERBAR — `paint-content.ts` baut sein Enum
- *  jetzt aus genau diesen Bytes (`z.enum(ENTITY_ROLES)`), und
- *  `entity-roles.test.ts` beweist die Gleichheit in beide Richtungen. */
+ *  jetzt aus genau diesen Bytes (`z.enum(ENTITY_ROLES)`) — die Gleichheit ist
+ *  damit STRUKTURELL und braucht keinen Test; was ein Test noch beitragen kann,
+ *  ist die Gegenprobe, dass jede WIRKLICH gespielte Rolle hier steht, und die
+ *  steht in `apps/web/lib/paint-content.test.ts`. */
 export const ENTITY_ROLES = [
   "chaser", "gunner", "flyer", "bouncer", "crusher", "swarm",
   "platform.move", "platform.fall", "platform.swing",

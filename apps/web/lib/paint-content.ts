@@ -107,7 +107,9 @@ const PaintEntity = z.object({
    *  die der Motor schon kannte (`drained`, `classmate`, `cloth`), und jedes Mal
    *  war das ein 500 auf dem ausgelieferten Kapitel statt eines Typfehlers, weil
    *  DIESE Datei parst, was der Motor spielt. Jetzt gibt es nur noch eine Liste,
-   *  und `entity-roles.test.ts` beweist, dass keine dritte entsteht. */
+   *  und keine dritte kann entstehen, weil das Enum die Liste IST. Die
+   *  Gegenprobe — jede Rolle, die das ausgelieferte Kapitel wirklich spielt,
+   *  steht darin — fährt `paint-content.test.ts`. */
   role: z.enum(ENTITY_ROLES),
   skin: z.string().min(1),
   c: z.number().int().nonnegative(),

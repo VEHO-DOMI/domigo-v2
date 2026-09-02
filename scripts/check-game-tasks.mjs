@@ -83,7 +83,7 @@ const STORIES = "content/corpus/stories";
 // UND: eine Karten-Datei OHNE Lexikon ihrer Unit ist ROT. Das Lexikon ist die
 // einzige Autorität dafür, ob ein englisches Wort in diesem Kapitel überhaupt
 // vorkommen darf; ohne es liefe die Erdung leer und meldete nichts.
-import { orphanTaskFiles, paintChapters, skipLedger, unitSlug as unitSlugOf } from "./paint-chapters.mjs";
+import { orphanTaskFiles, paintChapters, skipLedger } from "./paint-chapters.mjs";
 const CHAPTERS = paintChapters();
 const ledger = skipLedger();
 // layers 13-17 read the unit the chapter teaches, plus the declared exemptions
@@ -1381,6 +1381,11 @@ if (coverageReports.length > 0) {
   console.log(`check-game-tasks: ${coverageReports.length} Abdeckungs-Posten in ENTWURFS-Kapiteln (berichtet, nicht rot):`);
   for (const r of coverageReports) console.log(`  · ${r}`);
 }
+// ★ L0 · DER SKIP-BERICHT STEHT VOR DEM URTEIL, NICHT DANACH.
+// Ein blinder Leser fand ihn hinter `process.exit(1)`: im ROTEN Lauf wurde er
+// nie gedruckt — ausgerechnet dann, wenn jemand wissen muss, welche Gesetze
+// mangels Eingaben gar nicht liefen. Der Mechanismus gegen stille Auslassung
+// war selbst still, sobald es darauf ankam.
+ledger.print();
 if (failures === 0) console.log(`check-game-tasks: OK — ${itemCount} tasks across ${withTasks.length} file(s): schema, grounding, giveaway, register, binding, coverage, length, twins, portraits, timer-policy, form, voice, rhythm, distinctness, coverage-ledger, giveaway-class (all nine kinds, both languages, the board) all green`);
 else { console.error(`check-game-tasks: ${failures} failure(s)`); process.exit(1); }
-ledger.print();

@@ -132,11 +132,20 @@ export const orphanTaskFiles = () => {
   return out;
 };
 
-export const skipLedger = () => {
+export const skipLedger = (chapters = paintChapters()) => {
   const rows = [];
+  // Das Etikett sagt die WAHRHEIT über den Grund. Es stand fest auf »(draft)«,
+  // und für ein FERTIGES Kapitel, dem eine Datei fehlt (Tippfehler, verpasster
+  // Commit), hätte es damit einen harmlosen Zustand behauptet, den es nicht
+  // gibt — vom blinden Leser dieser Bahn gefunden, bevor es jemanden kosten
+  // konnte.
+  const draftOf = new Map(chapters.map((c) => [c.chapter, c.draft === true]));
   return {
     /** @param {string} chapter @param {string} law @param {string} why */
-    skip: (chapter, law, why) => { rows.push(`${chapter}/${law}: übersprungen (draft) — ${why}`); },
+    skip: (chapter, law, why) => {
+      const etikett = draftOf.get(chapter) === true ? "übersprungen (draft)" : "übersprungen (KEIN Entwurf — das ist eine Lücke, kein Zustand)";
+      rows.push(`${chapter}/${law}: ${etikett} — ${why}`);
+    },
     rows: () => rows,
     print: () => { for (const r of rows) console.log(`  · ${r}`); },
   };

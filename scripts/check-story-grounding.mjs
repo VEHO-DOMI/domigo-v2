@@ -236,6 +236,37 @@ const laden = () => {
 
 const weltAufDerPlatte = laden();
 
+// ★ L0 · WAS DIESES TOR NICHT PRUEFT, SAGT ES.
+//
+// Vom blinden Leser dieser Bahn gefunden: das Tor bekam `--chapter`, aber keine
+// SCHLEIFE — und CI ruft es ohne Flagge auf. Ein zweites Kapitel wurde damit
+// nie geprueft UND nie erwaehnt, also von aussen nicht von einem gruenen
+// Kapitel zu unterscheiden. Genau die Klasse, gegen die diese Bahn angetreten
+// ist.
+//
+// Eine echte Schleife waere hier eine Luege in die andere Richtung: dieses Tor
+// prueft die KEEN-Welt (Textkampagne) samt ihrer paint-v1-Beilage, und die gibt
+// es nur fuer ch01 — ein Lauf ueber ch02 fiele ueber eine fehlende
+// `keen/ch02.level.json`. Also: geprueft wird, was da ist, und was nicht
+// geprueft wurde, wird NAMENTLICH gedruckt.
+{
+  const keenDir = `${BASE}/keen`;
+  const keenKapitel = new Set(
+    (fs.existsSync(keenDir) ? fs.readdirSync(keenDir) : [])
+      .map((f) => /^(ch\d{2})\.level\.json$/.exec(f)?.[1])
+      .filter((x) => x !== undefined),
+  );
+  const paintDir = `${BASE}/paint`;
+  const paintKapitel = (fs.existsSync(paintDir) ? fs.readdirSync(paintDir) : [])
+    .map((f) => /^(ch\d{2})\.level\.json$/.exec(f)?.[1])
+    .filter((x) => x !== undefined);
+  const ungeprueft = paintKapitel.filter((c) => c !== CHAPTER);
+  for (const c of ungeprueft) {
+    const grund = keenKapitel.has(c) ? "nicht angefragt (--chapter)" : `keine keen/${c}.level.json — dieses Tor prueft die Textkampagne`;
+    console.log(`check-story-grounding: ${c} NICHT geprueft — ${grund}`);
+  }
+}
+
 // ── SELBSTTEST ───────────────────────────────────────────────────────────────
 if (process.argv.includes("--selftest")) {
   const klon = () => JSON.parse(JSON.stringify(weltAufDerPlatte));

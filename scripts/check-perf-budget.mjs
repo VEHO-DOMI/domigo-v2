@@ -140,7 +140,11 @@ for (const story of fs.existsSync(CONTENT) ? fs.readdirSync(CONTENT) : []) {
   if (!fs.existsSync(paintDir)) continue;
   for (const f of fs.readdirSync(paintDir).filter((x) => x.endsWith(".level.json"))) {
     const level = JSON.parse(fs.readFileSync(path.join(paintDir, f), "utf8"));
+    // L0: NAMENTLICH, nicht still. Ein Kapitel im Bau hat keine Kunst, also
+    // auch kein Kunst-Budget — aber das Ueberspringen wird GESAGT. (Vom blinden
+    // Leser dieser Bahn gefunden: dieselbe Zeile stand hier stumm.)
     if (level.draft !== true) levels.push({ file: f, level });
+    else console.log(`check-perf-budget: ${level.chapter ?? f} uebersprungen (draft) — ein Kapitel im Bau traegt kein Kunst-Budget`);
   }
 }
 

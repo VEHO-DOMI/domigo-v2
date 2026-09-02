@@ -664,10 +664,15 @@ if (CHAPTERS.length === 0) {
   console.error("check-level-design: KEIN Kapitel gefunden — content/corpus/stories/*/paint/chNN.level.json ist leer");
   process.exit(1);
 }
+// ★ L0 · DER SKIP-BERICHT STEHT VOR DEM URTEIL, NICHT DANACH.
+// Ein blinder Leser fand ihn hinter `process.exit(1)`: im ROTEN Lauf wurde er
+// nie gedruckt — ausgerechnet dann, wenn jemand wissen muss, welche Gesetze
+// mangels Eingaben gar nicht liefen. Der Mechanismus gegen stille Auslassung
+// war selbst still, sobald es darauf ankam.
+ledger.print();
 if (fails.length) {
   console.error(`check-level-design: ${fails.length} Verstöße`);
   for (const f of fails) console.error("  ✗ " + f);
   process.exit(1);
 }
 console.log(`check-level-design: OK — ${CHAPTERS.length} Kapitel (${CHAPTERS.map((c) => c.chapter + (c.draft ? " [Entwurf]" : "")).join(", ")}): Dedup (${stemCount} Wesen-Stems einmalig), Abdeckung (${vocabCount} Vokabeln klassifiziert), Manifest-Anker deckungsgleich über ${phaseCount} Phasen, Schwellen benannt, Buchstaben-Anker deckungsgleich, jede Entity mit Zweck`);
-ledger.print();
