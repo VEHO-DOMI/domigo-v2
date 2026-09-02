@@ -31,7 +31,7 @@
     "p1"
    ],
    "hints": {
-    "deDesc": "Hör hin: der Ton geht jedes Mal schief.",
+    "deDesc": "Sie hüpft auf die Tasten — und nichts klingt.",
     "deWord": "Auf Deutsch: Sie kann nicht spielen."
    },
    "grounding": "u05 can/can't — SB S. 39 (Lesetext »The perfect job«: »Yes, I can.« / »No, he can't.«). Die Welt widerlegt die Behauptung: der Ton geht hörbar daneben."
@@ -210,7 +210,7 @@
    ],
    "stimulus": {
     "type": "entity",
-    "showsDe": "Die Tür zeigt die Gitarristin und ihre Gitarre.",
+    "showsDe": "Die Tür zeigt die Gitarristin mit der Gitarre.",
     "art": "door_a"
    },
    "storyDe": "Wem gehört sie? Sag es auf Englisch!",
@@ -245,7 +245,7 @@
     "type": "entity",
     "showsDe": "Sie dreht sich im Kreis und wippt mit den Hüften."
    },
-   "storyDe": "Schnell — frag sie, was sie hier macht!",
+   "storyDe": "Schnell — frag sie, ob sie DAS kann!",
    "options": [
     "Can you dance?",
     "Can you sing?",
@@ -303,7 +303,7 @@
    ],
    "stimulus": {
     "type": "entity",
-    "showsDe": "Die Gitarristin steht neben dem Songblatt."
+    "showsDe": "Das Songblatt schreibt über die Gitarristin."
    },
    "storyDe": "Ein Wort stimmt nicht — tipp es an!",
    "sentence": [
