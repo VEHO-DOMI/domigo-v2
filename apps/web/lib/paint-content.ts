@@ -19,7 +19,10 @@ import { REPO_ROOT } from "@domigo/content-loader";
 import { ENTITY_ROLES } from "@domigo/game-paint/level";
 
 const STORY_ID = /^g[1-4]\.st\.[a-z0-9-]+$/;
-const CHAPTER_ID = /^ch\d{2}$/;
+/** L0 · D1: die FORM einer Kapitel-Id. Exportiert, weil die Route sie prüft,
+ *  bevor sie eine Datei öffnet — eine verirrte Adresse soll ein 404 sein und
+ *  kein Serverfehler. */
+export const CHAPTER_ID = /^ch\d{2}$/;
 
 // Entity params stay OPEN — every role brings its own knobs — but the fields the
 // level laws read are shape-checked here, mirroring game-paint's EntityParams.
@@ -282,6 +285,13 @@ export const loadPaintTasksV2 = (storyId: string, chapter: string): GameTaskV2[]
   tasksV2Cache.set(cacheKey, parsed.items);
   return parsed.items;
 };
+
+/** L0 · D1: hat dieses Kapitel schon einen Kartensatz? Ein Kapitel im Bau hat
+ *  Gitter, aber noch keine Karten — das ist der Normalzustand zwischen der
+ *  Gitter-Bahn und der Aufgaben-Bahn und darf die Seite nicht fällen. Gefragt
+ *  wird die PLATTE, nicht eine Liste von Kapitelnamen im Code. */
+export const chapterHasTasks = (storyId: string, chapter: string): boolean =>
+  fs.existsSync(path.join(paintDir(storyId), `${chapter}.tasks.v2.json`));
 
 /** Which chapters have an authored paint level (the admin auto-list probe). */
 export const listPaintChapters = (storyId: string): string[] => {

@@ -107,7 +107,10 @@ export default async function AdminPage() {
           <div style={{ marginTop: 10, display: "flex", gap: 8, flexWrap: "wrap", alignItems: "center" }}>
             <span style={{ fontSize: 13, fontWeight: 700 }}>🖌 Das gemalte Buch (Vorschau):</span>
             {paintChapters.map((ch) => (
-              <Link key={ch} href="/play/1/buch" className="dg-btn" style={{ display: "inline-block", fontSize: 13, padding: "6px 12px" }}>
+              // L0 · D11: die Karte führt in IHR Kapitel. Bis zur Level-Welle
+              // zeigten alle Karten dieser Zeile auf dieselbe Adresse, weil es
+              // nur eine gab — mit fünf Kapiteln wären es fünf Knöpfe zu ch01.
+              <Link key={ch} href={`/play/1/buch/${ch}`} className="dg-btn" style={{ display: "inline-block", fontSize: 13, padding: "6px 12px" }}>
                 Kap. {Number(ch.slice(2))} →
               </Link>
             ))}

@@ -75,6 +75,25 @@ export default async function HubPage({ params }: { params: Promise<{ grade: str
   // disk, else null → procedural fallback). g1 keys its cards by ZONE id (= the stop id).
   const hubArt = storyId ? resolveHubArt(storyId, grade) : null;
 
+  // L0 · D11 · DIE KAPITELNAMEN DES REGELBUCHS.
+  //
+  // Standen bis zur Level-Welle als Ein-Zeilen-Tabelle im Brett selbst — ein
+  // zweites Kapitel wäre dort als »ch02« erschienen, und fünf Kapitel-Bahnen
+  // hätten sich um dieselbe Zeile gestritten. Die Namen kommen aus `story.json`
+  // (`titleDe`), also aus derselben Quelle wie überall sonst im Hub; die
+  // Nummer aus der Kapitel-Id, damit »Kapitel 3« auch dann stimmt, wenn ein
+  // Kapitel noch nicht freigegeben ist. Das Brett läuft im Browser und kann
+  // keine Datei lesen — deshalb wird die Karte hier gebaut und hineingereicht.
+  const paintChapterNames: Record<string, string> = Object.fromEntries(
+    (story?.chapters ?? [])
+      .map((c) => c.id.split(".").pop() ?? "")
+      .filter((ch) => /^ch\d{2}$/.test(ch))
+      .map((ch) => [
+        ch,
+        `Kapitel ${Number(ch.slice(2))} — ${story?.chapters.find((c) => c.id.endsWith(`.${ch}`))?.titleDe ?? ch}`,
+      ]),
+  );
+
   // Persistent progress surfaces (g2 Evidence Board + g3 Season board): a chapter's
   // piece/episode completes once every one of its taskSlot items is solved (tier <>
   // 'wrong') — derived from the authoritative attempts ledger, never the wipeable
@@ -285,7 +304,7 @@ export default async function HubPage({ params }: { params: Promise<{ grade: str
           the year-1 release, so a library card on their hub would be a promise
           of an empty shelf. It renders nothing at all until something is in it,
           the same law the HUD chips obey (F2-33). ACCESS-MAP row: doc 28 §8b. */}
-      {teacher !== null && <RegelbuchBoard />}
+      {teacher !== null && <RegelbuchBoard chapterNames={paintChapterNames} />}
 
       {teacher !== null && (
         <section style={{ marginTop: 20 }}>
