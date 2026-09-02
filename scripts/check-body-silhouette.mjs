@@ -113,10 +113,23 @@ export const measureBody = (body, png, grid) => {
   //
   // Gemalte Dunkelheit hat Struktur: die dunkelste Zelle der ANGENOMMENEN
   // p2-Welle misst L = 10,8 (Exemplar 13,2; Ostwand 14,1), die schwächste
-  // Struktur SD = 3,72. Ein Loch hat beides nicht. Die Schwelle liegt deshalb
-  // bei „flach UND schwarz" (SD < 2 und L < 8) und lässt jedem ruhigen dunklen
-  // Feld seinen Platz — sie trennt nicht dunkel von hell, sondern gemalt von
-  // gefüllt.
+  // Struktur SD = 3,72. Ein Loch hat beides nicht.
+  //
+  // ★ N7A2 (2026-09-02): DIE ZWEITE HÄLFTE DER SCHWELLE WAR DIE LÜCKE.
+  // Sie lautete „flach UND schwarz" (SD < 2 UND L < 8) — und die p3-Lieferung
+  // kam mit 100 % Deckung durch alle vier Gesetze, während **136 ihrer 493
+  // Pflicht-Zellen** ein völlig gleichförmiges Braun waren: rgb 83,60,36,
+  // SD 0,00, Luminanz 24,8. Flach genug für die erste Bedingung, hell genug für
+  // die zweite — also grün. Das ist derselbe Trick, den N7A1 in Schwarz bezahlt
+  // hat, eine Sprosse höher.
+  //
+  // Der Kommentar unter dieser Zeile sagte schon immer, worum es geht: „sie
+  // trennt nicht dunkel von hell, sondern gemalt von gefüllt". Genau das tut sie
+  // jetzt — die Luminanz-Bedingung fällt, die Zahl bleibt in der Meldung.
+  // GEMESSEN, bevor sie fiel: von den **1039 Pflicht-Zellen der abgenommenen
+  // p1/p2-Wellen liegt KEINE unter SD 2**, die schwächste bei 3,72 (86 %
+  // Luft über der Schwelle). Eine reine SD-Schwelle bricht also nichts, was
+  // Koki angenommen hat — sie schließt nur das Schlupfloch.
   for (const key of inMask) {
     const [dc, dr] = key.split(",").map(Number);
     const x0 = body.overpaint.l + dc * px, y0 = body.overpaint.t + dr * px;
@@ -133,8 +146,8 @@ export const measureBody = (body, png, grid) => {
     if (values.length === 0) continue; // Gesetz 1 hat das schon gemeldet
     const mean = values.reduce((a, b) => a + b, 0) / values.length;
     const sd = Math.sqrt(values.reduce((a, b) => a + (b - mean) ** 2, 0) / values.length);
-    if (sd < VOID_SD && mean < VOID_L) {
-      errors.push(`Loch statt Malerei (${body.c0 + dc},${body.r0 + dr}): Wert-SD ${sd.toFixed(2)} < ${VOID_SD} bei Luminanz ${mean.toFixed(1)} < ${VOID_L}`);
+    if (sd < VOID_SD) {
+      errors.push(`Fuellung statt Malerei (${body.c0 + dc},${body.r0 + dr}): Wert-SD ${sd.toFixed(2)} < ${VOID_SD} bei Luminanz ${mean.toFixed(1)} — eine Zelle ohne Struktur ist gefuellt, nicht gemalt (schwaechste angenommene Zelle: SD 3,72)`);
     }
   }
   return errors;
@@ -151,7 +164,16 @@ const synthSheet = (body, mutate) => {
       for (let y = body.overpaint.t + dr * px; y < body.overpaint.t + (dr + 1) * px; y++) {
         for (let x = body.overpaint.l + dc * px; x < body.overpaint.l + (dc + 1) * px; x++) {
           const i = (y * w + x) * 4;
-          png.data[i] = 90; png.data[i + 1] = 70; png.data[i + 2] = 120; png.data[i + 3] = 255;
+          // ★ N7A2 · DAS PRUEFBLATT MUSS GEMALTE MATERIE SEIN, NICHT FARBE.
+          // Hier stand ein flacher Ton (90,70,120, SD 0,00) — sauber genug fuer
+          // die alte Fassung von Gesetz 4, die zusaetzlich Dunkelheit verlangte.
+          // Mit der reinen Struktur-Schwelle faellt die eigene Vorrichtung durch,
+          // und das ist die richtige Antwort: eine Fixture, die das Gesetz bricht,
+          // kann es nicht pruefen. Die Stoerung ist DETERMINISTISCH (kein Zufall,
+          // sonst flackert der Test) und ergibt SD ~ 14 je Zelle — im Feld der
+          // angenommenen Kunst (3,72 bis 33,85).
+          const n = ((x * 7 + y * 13) % 17) * 3;
+          png.data[i] = 90 + n; png.data[i + 1] = 70 + n; png.data[i + 2] = 120 + n; png.data[i + 3] = 255;
         }
       }
     }
@@ -175,6 +197,12 @@ const selftest = () => {
     // Gesetz 4: die Zelle bleibt voll deckend — nur schwarz. Genau die Lieferung,
     // die N7A1 mit 100 % Deckung durch die ersten drei Gesetze brachte.
     ["Loch statt Malerei", (png, w) => { for (let y = 8 + 64; y < 8 + 128; y++) for (let x = 0; x < 64; x++) { const i = (y * w + x) * 4; png.data[i] = 0; png.data[i + 1] = 0; png.data[i + 2] = 0; png.data[i + 3] = 255; } }],
+    // ★ N7A2 · DERSELBE TRICK IN MITTLERER HELLIGKEIT — der Fall, der die alte
+    // Fassung passiert hat. rgb 83,60,36 ist woertlich die Fuellung, mit der die
+    // erste p3-Lieferung 136 ihrer 493 Pflicht-Zellen gedeckt hat: SD 0,00 bei
+    // Luminanz 24,8. Flach genug fuer die erste Bedingung, hell genug fuer die
+    // zweite — also gruen. Ohne diesen Fall waere die Verschaerfung unbewiesen.
+    ["Fuellung statt Malerei (mittelhell, nicht schwarz)", (png, w) => { for (let y = 8 + 64; y < 8 + 128; y++) for (let x = 0; x < 64; x++) { const i = (y * w + x) * 4; png.data[i] = 83; png.data[i + 1] = 60; png.data[i + 2] = 36; png.data[i + 3] = 255; } }],
   ];
   for (const [name, mutate] of tampers) {
     const errors = measureBody(body, synthSheet(body, mutate), grid);
@@ -199,7 +227,7 @@ const selftest = () => {
   try { gridOf(level, "p7"); } catch { gemeldet = true; }
   if (!gemeldet) { console.error("Selbsttest: gridOf hat eine unbekannte Phase NICHT gemeldet"); return 1; }
   console.log(`check-body-silhouette: p4 aus dem Arena-Raster gelesen (Dummy auf (${seat.c},${seat.r}), kein Absturz), unbekannte Phase meldet sich`);
-  console.log("check-body-silhouette: Selbsttest OK — 1 sauber + 4 Tamper rot + p4/p9-Raster");
+  console.log("check-body-silhouette: Selbsttest OK — 1 sauber + 5 Tamper rot + p4/p9-Raster");
   return 0;
 };
 
