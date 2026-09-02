@@ -153,7 +153,7 @@
     "lion"
    ],
    "name": "dog",
-   "colourAskDe": "Der Hund war schwarz am Rücken.",
+   "colourAskDe": "Der Hund war schwarz.",
    "colourOptions": [
     "black",
     "white",
@@ -193,7 +193,7 @@
     "monkey"
    ],
    "name": "penguin",
-   "colourAskDe": "Der Pinguin war weiß am Bauch.",
+   "colourAskDe": "Der Pinguin war weiß.",
    "colourOptions": [
     "white",
     "green",
@@ -258,7 +258,7 @@
    },
    "storyDe": "Buchstabiere, was dich durch das Drehkreuz lässt!",
    "answer": "ticket",
-   "extraLetters": "bz",
+   "extraLetters": "xz",
    "skins": [
     "zookaefig"
    ],
@@ -283,11 +283,11 @@
     "type": "entity",
     "showsDe": "Das Drehkreuz klappert und lässt niemanden durch."
    },
-   "storyDe": "Es hat die erste Frage verloren: die nach der Karte.",
+   "storyDe": "Das Drehkreuz sucht dein Ticket. Stell die Frage!",
    "options": [
-    "How old are you?",
+    "How old is the ticket?",
     "Where's the ticket?",
-    "Where's the train?"
+    "What's the ticket?"
    ],
    "answer": "Where's the ticket?",
    "skins": [
@@ -297,7 +297,7 @@
     "p1"
    ],
    "hints": {
-    "deDesc": "Das Drehkreuz will sehen, womit du hereinkommst.",
+    "deDesc": "Du willst den Platz wissen, nicht das Alter.",
     "deWord": "Auf Deutsch: Wo ist das Ticket?"
    },
    "grounding": "u02 Where's …? + g1u02.w.ticket — erste Frage der Türserie"
@@ -537,20 +537,20 @@
    "form": "state-it",
    "exercises": [
     "g1u02.w.in",
-    "g1u02.w.train"
+    "g1u02.s.prepositions-place"
    ],
    "stimulus": {
     "type": "entity",
-    "showsDe": "Fenn sitzt im Zug."
+    "showsDe": "Fenn steht mitten im Wasser."
    },
-   "storyDe": "Sag, wo er sitzt!",
+   "storyDe": "Sag, wo er planscht!",
    "promptEn": "Where is he?",
    "options": [
-    "He's in the train.",
-    "He's next to the train.",
-    "He's on the train."
+    "He's in the water.",
+    "He's next to the water.",
+    "He's under the water."
    ],
-   "answer": "He's in the train.",
+   "answer": "He's in the water.",
    "skins": [
     "fenn"
    ],
@@ -558,10 +558,10 @@
     "p2"
    ],
    "hints": {
-    "deDesc": "Er sitzt drinnen, zwischen den Fenstern.",
-    "deWord": "Auf Deutsch: Er ist im Zug."
+    "deDesc": "Bis zu den Knien im Teich der Flamingos.",
+    "deWord": "Auf Deutsch: Er ist im Wasser."
    },
-   "grounding": "u02 g1u02.w.in (WB p. 14–15 ex. 2) · train: g1u02.w.train (MORE Words: „Let's go on a train.\")"
+   "grounding": "u02 g1u02.w.in · „It's in the water.\" steht wörtlich in WB p. 14–15 ex. 3 · das Buch fährt „on a train\", nie „in the train\" (SB p. 17 Poster, MORE Words)"
   }
  ]
 }
