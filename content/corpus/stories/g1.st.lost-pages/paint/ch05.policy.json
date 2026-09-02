@@ -1,0 +1,32 @@
+{
+ "schema": "paintChapterPolicy@1",
+ "chapter": "ch05",
+ "unit": "g1-u05",
+ "note": "ENTWURF der Bahn L5-T1 (2026-09-03), Form 1:1 nach ch01.policy.json (L0 · D10). fieldKinds = die Feld-Palette aus doc 41 §1 fuer ch05 (choice · mistake · order · memory; mistake ist das Feld-Debuet des Kapitels). fieldForms = die vier Formen, die dieses Kapitel heute stellen KANN: state-it (can/can't und Possessiv-Aussagen), ask-it (Fragen mit can; die einzige Form, die `order` traegt), pick-correct-form (drei Formen desselben Satzes), name-it (die Notenstaender-Kaefige). fix-it/pair-it kommen mit R247 (L0-Nachtrag) dazu — erst dann sind mistake- und memory-Karten im FELD baubar (D-902), bis dahin liegen ihre Exemplare als Daten in docs/design/g1/paint/ch05-dossiers-v2/pending-tasks.md. families/vocabLedger fuellt die Welle T2 (dort entsteht auch die Ausnahme, die Veits sechs Wiedererweckungs-Runden brauchen — vgl. ch01s Familie merle-ceremony). nounDe fehlt mit Absicht: ch05 hat kein `drained`-Wesen (D-901), also kauft keine Ausnahme diese Pflicht.",
+ "fieldKinds": [
+  "choice",
+  "mistake",
+  "order",
+  "memory"
+ ],
+ "fieldForms": [
+  "state-it",
+  "ask-it",
+  "pick-correct-form",
+  "name-it"
+ ],
+ "arenaPromiseClass": "g1u05.x.instruments",
+ "lexiconClasses": {
+  "g1u05.x.instruments": {
+   "reason": "Die Unit lehrt vier Instrumente (MORE! 1 Unit 5, SB S. 38 »Musicians and instruments«), und die Regel-Seiten des Kapitels versprechen sie — aber keines ist eine eigene Klasse im Sinne des Korpus, sondern vier getrennte Wortbank-Eintraege. Als Klasse deklariert, damit das Arena-Versprechen (arenaPromiseClass) pruefbar wird: der Wachter-Kampf muss in seinen vier Fenstern mindestens einmal ein Instrument verlangen. Jedes Wort hier wird von Gesetz 0j gegen docs/design/g1/grounding/u05-lexicon.json geprueft.",
+   "words": [
+    "keyboard",
+    "drums",
+    "saxophone",
+    "guitar"
+   ]
+  }
+ },
+ "families": [],
+ "vocabLedger": {}
+}
