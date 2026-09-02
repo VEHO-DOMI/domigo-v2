@@ -1697,3 +1697,48 @@ einem anderen, und ohne die Bau-Angabe beim Serverstart kann der Bau sich nicht 
 *Regel:* wer ein Werkzeug ersetzt, sucht seinen Namen in den Vorlagen — kein Tor tut das für ihn.
 (⚠ Der blinde Klassierer hielt diesen Kandidaten für eine erledigte Aufgabe statt für eine Falle. K7
 hat überstimmt: die Aufgabe ist erledigt, die Lehre greift bei jeder Umbenennung wieder.)
+
+## Level-Welle · L0 · Mehrkapitel-Fundament (2026-09-02)
+
+**PB-170 · EIN SCHEMA, DAS STRIPPT, LÖSCHT NEUE FELDER STILL — die Datei besteht jedes Tor
+und verliert ihre Aussage im Browser.** *(L0, 2026-09-02; die Klasse ist alt, die Instanz ist
+neu, und sie steht als Warnung schon zweimal im Lader selbst.)* `apps/web/lib/paint-content.ts`
+parst jede Level-Datei mit zod, und ein `z.object` **entfernt**, was es nicht aufzählt — es
+wirft nicht. Ein neues Level-Feld, das nur im TypeScript-Interface steht, überlebt also den
+Weg von der Platte in die Szene nicht: `checkLevelLaws` sieht es beim Autorieren (die Gesetze
+lesen die rohe Datei), jedes Tor bleibt grün, und im laufenden Spiel ist es `undefined`.
+
+*Die Instanz, an der L0 es festgehalten hat:* das Feld `words` (die Wörter, die ein
+Buchstaben-Trail buchstabiert, D5). Ohne die zod-Zeile hätte ein Kapitel sein Wort deklariert,
+jedes Tor hätte es geprüft — und der Raum hätte im Spiel A → Z durchgezählt. Dasselbe gilt für
+`auftaktPlates` (D6). Beide stehen jetzt in Interface UND zod.
+
+*Regel:* ein neues Feld auf `PhaseSpec` oder `PaintLevel` ist erst fertig, wenn es an DREI
+Stellen steht — Interface (`level.ts`), zod (`paint-content.ts`) und einem Test, der es nach
+dem LADEN liest, nicht vor dem Laden. Der Lader trägt diese Warnung im Klartext bei
+`inkReturns` und `goalPlate`; sie wurde zweimal geschrieben, weil sie zweimal bezahlt wurde.
+
+**PB-171 · Zwei Häuser, die dasselbe Feld prüfen, können sich widersprechen — und das
+strengere gewinnt erst beim Kind.** *(L0, 2026-09-02, beim Bau des ch02-Exemplars selbst
+getroffen; D-790.)* `tipsTotal: 0` ist für die Motor-Gesetze in Ordnung (`tip-honesty` prüft
+nur, dass Zahl und gesetzte Regel-Seiten übereinstimmen — 0 und 0 stimmen überein), für das
+zod des Laders aber nicht (`z.number().int().positive()`). Ergebnis: ein Kapitel, das jedes
+Tor besteht und die Seite mit einem 500 fällt, sobald jemand sie öffnet.
+
+*Regel:* wo ein Feld ZWEI Prüfer hat (Gesetz und Schema), wird die Aussage beider einmal
+nebeneinander gelesen, bevor man sich auf eine verlässt. Und ein Test, der den echten LADER
+fährt (nicht nur die Gesetze), ist die einzige Stelle, an der so ein Widerspruch vor dem Kind
+auffällt — `apps/web/lib/paint-content.test.ts` existiert genau dafür und hat diesen Fall im
+ersten Lauf gefunden.
+
+**PB-172 · Eine geschlossene Liste kann heimlich ein UNTERSCHEIDER sein — wer sie öffnet,
+nimmt jemand anderem das Messgerät weg.** *(L0, 2026-09-02.)* `isCaptiveKey` prüfte die
+Mitgliedschaft in einer Vierer-Liste aus Kapitel 1. Zwei Kartenstellen benutzten genau das,
+um Ding-Käfig von Personen-Käfig zu unterscheiden: »merle« stand nicht in der Liste, also war
+merle eine Person. Mit offener Liste hätte Merles Käfigbild auf ein Blatt gezeigt, das es
+nicht gibt — kein Absturz, nur ein leeres Bild.
+
+*Regel:* vor dem Öffnen einer geschlossenen Liste wird JEDE Aufrufstelle gelesen und gefragt,
+ob sie die Mitgliedschaft prüft oder die GESCHLOSSENHEIT ausnutzt. Die zweite Sorte braucht
+einen echten Unterscheider aus den DATEN (hier: aus welchem Feld der Name kam), bevor die
+Liste aufgeht.

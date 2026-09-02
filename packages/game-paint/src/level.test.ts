@@ -1125,3 +1125,69 @@ describe("R5-W5 · G4 · cloth laws (die verstreute Uniform)", () => {
     expect(lawsOn(world(high), "cloth-spacing").join(" ")).toMatch(/lies ON the run line/);
   });
 });
+
+// ── L0 · DIE ZWEI NEUEN GESETZE DER LEVEL-WELLE ──────────────────────────────
+//
+// Beide sind Gesetze, die es erst gibt, seit ein Kapitel Dinge DEKLARIEREN darf,
+// die vorher aus einer ch01-Tabelle im Code kamen. Eine Deklaration ohne Prüfung
+// wäre der schlechteste der drei Zustände: nicht mehr hart verdrahtet, aber auch
+// nicht nachgerechnet.
+describe("L0 · D5 · trail-words — ein deklariertes Wort ist eine Zusage", () => {
+  // acht Buchstaben für neun Sterne: das Wort finge auf dem neunten Stern von
+  // vorne an. Im Spiel sieht das aus wie ein Wort und ist keines.
+  const NINE_STARS = [
+    "############",
+    ...Array.from({ length: 16 }, () => "............"),
+    "..S*******X.",
+    "############",
+    "############",
+  ];
+  const withStars = (rows: string[], words?: readonly string[]) =>
+    level(rows, { phases: [{ ...phase(rows), words } as PaintLevel["phases"][number]] });
+
+  it("acht Buchstaben für neun Sterne werden rot", () => {
+    const rows = [...NINE_STARS];
+    rows[17] = "..S*******X."; // sieben Sterne
+    const nine = [...NINE_STARS];
+    nine[17] = ".S*********X"; // neun Sterne
+    const f = checkLevelLaws(withStars(nine, ["notebook"])); // NOTEBOOK = 8
+    expect(f.some((x) => x.law === "trail-words" && /8 letter\(s\) but the grid carries 9/.test(x.detail))).toBe(true);
+  });
+
+  it("die passende Zahl schweigt — und der Tamper beweist, dass die Zeile lebt", () => {
+    const nine = [...NINE_STARS];
+    nine[17] = ".S*********X";
+    // NOTEBOOKS = 9 · exakt so viele Buchstaben wie Sterne
+    expect(checkLevelLaws(withStars(nine, ["notebooks"])).some((x) => x.law === "trail-words")).toBe(false);
+    // …und ohne Deklaration schweigt das Gesetz ganz: ch01 holt seine Wörter
+    // aus dem Kunst-Manifest und darf davon nicht berührt werden.
+    expect(checkLevelLaws(withStars(nine)).some((x) => x.law === "trail-words")).toBe(false);
+  });
+
+  it("eine Deklaration, die gar keinen Buchstaben buchstabiert, wird rot", () => {
+    const nine = [...NINE_STARS];
+    nine[17] = ".S*********X";
+    const f = checkLevelLaws(withStars(nine, ["123", "-"]));
+    expect(f.some((x) => x.law === "trail-words" && /spells no letter at all/.test(x.detail))).toBe(true);
+  });
+});
+
+describe("L0 · D7 · cage-captive-key — die Form des Insassen-Schlüssels", () => {
+  const cage = (captive: unknown) => {
+    const rows = [...OK_ROWS];
+    const lvl = level(rows);
+    lvl.phases[0]!.entities = [
+      { id: "c1", role: "cage", skin: "satchel", c: 3, r: 16, tier: "E", params: { captive, captiveDe: "die Musikanlage" } },
+    ];
+    return checkLevelLaws(lvl);
+  };
+
+  it("»Sound System« wird rot — Grossbuchstabe und Leerzeichen ergeben keinen Blattnamen", () => {
+    expect(cage("Sound System").some((x) => x.law === "cage-captive-key")).toBe(true);
+  });
+
+  it("»soundsystem« schweigt, und »zoo2« auch — die Liste ist offen, die Form nicht", () => {
+    expect(cage("soundsystem").some((x) => x.law === "cage-captive-key")).toBe(false);
+    expect(cage("zoo2").some((x) => x.law === "cage-captive-key")).toBe(false);
+  });
+});

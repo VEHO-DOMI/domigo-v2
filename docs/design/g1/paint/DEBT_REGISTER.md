@@ -1275,3 +1275,65 @@ Die Bahnen N7A/N7B des Level-1-Sitzes (2026-09-01/02). Der Block ist in
 | D-950 | `CardShell.tsx#Cheer` · `CardShell.tsx#AnswerHome` · `overlay-css.ts#pb-doff` | Seit R241 (der Karten-Schwanz ist gefallen, PR #388) hat die Beat-Maschinerie der gelösten Karte keinen Rufer mehr: die Jubel-Ansicht, der Antwort-Flug, die `doff`-Neigung und ihre CSS liegen verdrahtet, aber tot. | Architekten-Entscheid: abreissen oder als Rückweg behalten. **Nicht** in N7B2 angefasst — ein Abriss ist eigene Arbeit und macht den Rückweg teuer. | eigene kleine Bahn | R241 · PR #388 |
 | D-958 | `check-audio.mjs#Toast-Bindung` | Das Klang-Tor prüft die Toast-Bindungen, indem es ALLE Zeichenketten aus `sim.ts` liest — und dafür ASCII-Anführungszeichen **paarweise** abzählt. Drei Kommentare, die mit `"` statt dem deutschen Schlusszeichen enden, machen die Zahl ungerade, verschieben jedes Paar dahinter und lassen `"Platsch!"` verschwinden: ein Kommentar kippt ein Klang-Tor (zweimal bezahlt in #388). | Entweder das Tor auf einen echten Parser heben, oder die Hausregel »in `sim.ts` nur Guillemets« maschinell prüfen. Bis dahin: Guillemets, und `check-audio.mjs` gehört in JEDE Batterie, die `sim.ts` anfasst. | Motor-Bahn | PR #388 (zweimal rot) |
 | D-960 | `sim.ts#resumeAfterCard` | Die Resume-Naht läuft bei jeder richtigen Nicht-Zeremonie-Antwort **zweimal**: einmal aus `solveTask`, einmal aus dem `setOverlay(false)` der Hülle. | **VERTRAGLICH GEREGELT in N7B2:** die Naht darf nur löschen und klemmen (zweimal null ist null); der Vertrag steht als Kommentar an der Naht, ein Test hält ihn fest (»zweimal rufen = einmal rufen«, mit Tamper). Wer dort je etwas einbaut, das zählt oder feuert, wird rot und muss zuerst den Doppelruf abschaffen. | gebaut (N7B2) | PR #388 · Architekten-Nachlese |
+
+## LEVEL-WELLE · L0 — Mehrkapitel-Fundament (2026-09-02)
+
+Reserviert: D-787…D-799. D-787 wird hier NACHGETRAGEN: er wurde am 31.08. im
+Wellen-9-Rahmen (`RAHMEN_WELLE9_KOKI_REVIEW_2026-08-31.md` §3a) vergeben und stand
+bis heute nur dort — ein Befund, der nur in einem iCloud-Blatt lebt, ist für jede
+Repo-Session unsichtbar.
+
+| Nr. | Befund | Beleg | Fix | Wer/wann | Herkunft |
+|---|---|---|---|---|---|
+| D-787 | **Baugruppen sind EIN gemaltes Element, kein Lego.** Kokis Markierungen vom 23.08. meinten die zusammengesetzten Baugruppen selbst, nicht die Fugen zwischen ihren Teilen: (a) Doppel-Bücherstapel mit Halterungen „a mess, made worse" · (b) 2× violette Platte + Holzhalter „two blocks attached incoherently → one continuous dedicated element" · (c) hohe Säule rechts „whole block a mess with overlaps and disjointed bits". Der Verbinder-Ansatz (joint/saddle) der N6-Runden 1–3 ist an diesen Stellen VERWORFEN | Screenshot 2026-08-31 16.07.35 auf dem R3-Stand + Ordner `docs/Rayman X DomiGo Screenshots/Messy Blocks and platforms and level design/` | Ein-Stück-Elemente malen + montieren; die Konsolen/Sättel dort zurückbauen, wo das Ein-Stück-Element sie ersetzt (R236) | offen · Kunst-Zeit (N6/N7A-Bahnen) | Koki 31.08. · `RAHMEN_WELLE9_KOKI_REVIEW_2026-08-31.md` §3a, hier nachgetragen von L0 |
+| D-788 | **Der Tasten-Fang ist ein KANDIDAT, keine Messung.** Phaser fängt A/D/W/S/SPACE/X/J und die Pfeiltasten ab, nicht nur das Leerzeichen — welche davon eine offene Karte schlucken darf und welche der Seite gehören muss, ist nicht entschieden | N7B-Report 02.09. (Antwort auf D-788 als Frage); die Tasten-Stellen liegen in `PaintScene.ts` (Tastatur-Bindung) und `PaintGame.tsx` (Overlay-Effekt) | Bahn **N7B2** (Tasten-Fang) misst und entscheidet; L0 fasst die Stellen NICHT an | offen · N7B2 | Level-1-Sitz, von L0 als Adresse reserviert |
+| D-789 | **Es gibt kein Klang-Kit je Kapitel.** `audioManifest.ts` kennt genau einen Satz Schritte, Musik und Stimmungen — den von Kapitel 1. Jedes weitere Kapitel fällt still auf »paper«/das ch01-Kit zurück: kein Fehler, kein rotes Tor, nur ein Zoo, der klingt wie ein Klassenzimmer | `packages/game-paint/src/audioManifest.ts`; L0 hat den Bereich nach Scope-Wand NICHT angefasst (Motor-Gebiet der M-Bahnen) | `phase.footstep` / `phase.music` je Phase deklarierbar machen, plus Prompts + Klang-Rückgrat je Kapitel. Gehört einer **M-Bahn**, weil `audioManifest.ts` + `check-audio.mjs` Motor-Gebiet sind | offen · erste M-Bahn, die Audio anfasst | L0, 2026-09-02 |
+| D-790 | **`tipsTotal: 0` ist gesetzestreu und trotzdem ein 500.** Die Motor-Gesetze lassen eine 0 durch (`tip-honesty` prüft nur, dass Zahl und gesetzte Regel-Seiten übereinstimmen), das zod des Laders verlangt eine POSITIVE Zahl (`paint-content.ts` `tipsTotal: z.number().int().positive().optional()`). Ein Kapitel mit `tipsTotal: 0` besteht also jedes Tor und fällt die Seite, sobald ein Kind sie öffnet | Beim Bau des ch02-Exemplars selbst getroffen: `checkLevelLaws` 0 Verstöße, `loadPaintLevel` warf `too_small: expected number to be >0` (gefangen von `apps/web/lib/paint-content.test.ts`, der genau dafür gebaut wurde) | Kurzfristig: ein Kapitel ohne entschiedene Regel-Seiten lässt das Feld WEG (beide Häuser lesen »noch nicht entschieden«). Dauerhaft: die zwei Häuser auf dieselbe Aussage bringen — entweder `nonnegative()` im zod oder ein Level-Gesetz, das die 0 verbietet. Entscheid gehört dem Programm-Architekten | offen · Architekt | L0, 2026-09-02 |
+| D-791 | **Das committete Arena-Band von ch01 stammt nicht von seinem eigenen Rekorder.** `record-paint-tape.mjs` erzeugt für p4 zwei Pad-Läufe anders als die Datei im Repo (`[28,2]→[34,2]`, `[5,0]→[4,0]`); die WELT bleibt identisch (`expect` Wort für Wort gleich), und `proof-tapes.test.ts` bleibt grün, weil das committete Band sauber nachspielt | **Auf unberührtem `origin/main` gemessen** (eigener Basis-Worktree, keine L0-Änderung im Baum): der Rekorder erzeugt dort denselben Diff, Blob `d063434c` — L0s Lauf erzeugt bitgleich dasselbe. Der Drift ist vorbestehend und L0-neutral | Ursache suchen (Rekorder-Nichtdeterminismus im Kampf ODER ein Band, das seit einer Motor-Änderung nicht neu aufgenommen wurde) und das Band einmal ehrlich neu aufnehmen. **Nicht in L0 gemacht**: eine Inhalts-Änderung an ch01 wäre genau die Paritäts-Bewegung, die diese Bahn ausschliesst | offen · Architekt vergibt | L0, 2026-09-02 |
+
+## LEVEL-WELLE · VORAB ANGELEGTE KAPITEL-ABSCHNITTE (L0, 2026-09-02)
+
+Nach der Konvention R5-W4: die Abschnitte stehen VOR ihren Bahnen da, damit fünf
+Kapitel gleichzeitig arbeiten können, ohne dass zwei Sessions am selben Dateiende
+anhängen. **Jede Bahn schreibt NUR unter ihre eigene Unterüberschrift** und vergibt
+NUR Nummern aus dem Block ihres Kapitels (`RAHMEN_LEVELWELLE_2026-09-02.md` §2).
+Ein Abschnitt bleibt leer, bis seine Bahn etwas gefunden hat — eine leere Tabelle
+ist eine Adresse, kein Versäumnis.
+
+Blöcke: **ch02 D-800…829 · ch03 D-830…859 · ch04 D-860…889 · ch05 D-890…919 ·
+ch06 D-920…949.** Der Level-1-Sitz hält D-950…979 (nicht hier).
+
+### LW · ch02 (D-800…829)
+#### L2-G
+#### L2-T
+#### L2-S
+#### L2-M
+#### L2-A
+
+### LW · ch03 (D-830…859)
+#### L3-G
+#### L3-T
+#### L3-S
+#### L3-M
+#### L3-A
+
+### LW · ch04 (D-860…889)
+#### L4-G
+#### L4-T
+#### L4-S
+#### L4-M
+#### L4-A
+
+### LW · ch05 (D-890…919)
+#### L5-G
+#### L5-T
+#### L5-S
+#### L5-M
+#### L5-A
+
+### LW · ch06 (D-920…949)
+#### L6-G
+#### L6-T
+#### L6-S
+#### L6-M
+#### L6-A
