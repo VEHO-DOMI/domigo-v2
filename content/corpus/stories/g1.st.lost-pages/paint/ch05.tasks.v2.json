@@ -15,9 +15,9 @@
    ],
    "stimulus": {
     "type": "entity",
-    "showsDe": "Die schiefe Note hüpft und klingt daneben."
+    "showsDe": "Die Note hüpft auf die Tasten — kein Ton kommt."
    },
-   "storyDe": "Sie behauptet, sie kann spielen. Stimmt das?",
+   "storyDe": "Sie sagt, sie kann spielen. Stimmt das?",
    "options": [
     "It can't play.",
     "It can play.",
@@ -243,9 +243,9 @@
    ],
    "stimulus": {
     "type": "entity",
-    "showsDe": "Die Sängerin dreht sich im Funkenkreis."
+    "showsDe": "Sie dreht sich im Kreis und wippt mit den Hüften."
    },
-   "storyDe": "Schnell — frag sie, was sie da kann!",
+   "storyDe": "Schnell — frag sie, was sie hier macht!",
    "options": [
     "Can you dance?",
     "Can you sing?",
@@ -259,7 +259,7 @@
     "p1"
    ],
    "hints": {
-    "deDesc": "Sie dreht sich zur Musik im Kreis.",
+    "deDesc": "Sie dreht sich und wippt zur Musik.",
     "deWord": "Auf Deutsch: Kannst du tanzen?"
    },
    "grounding": "u05 can-Frage + to dance — SB S. 39 (»Can you sing?«) und die Unit-Vokabel to dance. Die Frage muss zu dem passen, was die Funken zeigen."
@@ -273,9 +273,9 @@
    ],
    "stimulus": {
     "type": "entity",
-    "showsDe": "Der Ton-Schlucker bläst eine runde Note zu dir."
+    "showsDe": "Eine runde Note fliegt her — die spielst du zurück."
    },
-   "storyDe": "Er fragt dich. Antworte ihm!",
+   "storyDe": "Er fragt dich. Antworte ihm auf Englisch!",
    "promptEn": "Can you play it back?",
    "options": [
     "Yes, I can.",
