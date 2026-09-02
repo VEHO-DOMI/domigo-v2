@@ -13,7 +13,7 @@
 // no-naked-fill audit asserts a kit-present plan contains ZERO of them.
 
 import { type ColumnObject, type MassKit } from "./composition.ts";
-import { bodyCells } from "./visualBodies.ts";
+import { type VisualBody, bodyCells, bodyPartitionErrors } from "./visualBodies.ts";
 import { glyphAt, isSlope, isSolid } from "./collide.ts";
 import { TILE, mixMultiply } from "./paint.ts";
 
@@ -976,6 +976,66 @@ export const claimedBodyCells = (kit: Pick<MassKit, "bodies"> | null): Set<strin
     for (const { c, r } of bodyCells(body)) out.add(`${c},${r}`);
   }
   return out;
+};
+
+/**
+ * R7/N7 · IST DIESE PHASE EINE EIN-BLOCK-WELT? — die berechnete Eigenschaft,
+ * an der der Kit-Cutover hängt.
+ *
+ * Eine Phase ist fertig gemalt, wenn ihre deklarierten Sicht-Körper JEDE solide
+ * Zelle besitzen, die nicht ohnehin einem Möbel-Objekt gehört. Dann plant
+ * `planMass` kein einziges Kit-Stück mehr (§0 claimt die Körper-Zellen VOR
+ * allem anderen), und Kruste, Masse, Trims und Unterseite dieses Raums werden
+ * von niemandem mehr geladen.
+ *
+ * Warum gerechnet und nicht aufgeschrieben: eine Handliste „diese Räume sind
+ * fertig" wäre genau die Sorte Wahrheit, die an einer Grid-Änderung still
+ * veraltet — und das Ergebnis wäre ein Raum mit Löchern oder ein Raum, der
+ * 26 Blätter lädt, die er nie zeichnet. Diese Funktion fragt stattdessen das
+ * Raster.
+ */
+export const phaseIsOneBlock = (grid: readonly string[], kit: MassKit | null): boolean => {
+  const bodies = kit?.bodies ?? [];
+  if (bodies.length === 0) return false;
+  const byBodies = claimedBodyCells(kit);
+  const otherClaimed = claimedPlatformCells(grid, kit?.columnObjects ?? [], byBodies);
+  return bodyPartitionErrors(grid, bodies, { fullyPainted: true, otherClaimed }).length === 0;
+};
+
+/**
+ * DARF DIE SZENE DIESES KIT BENUTZEN? — die Wache, die N7A1 fast ein kaputtes
+ * Spiel mit grünen Toren hat ausliefern lassen.
+ *
+ * Die alte Fassung stand in `PaintScene#massKit` und fragte nach den KERN-
+ * Blättern des Kits (Kruste, Masse, Fade, Sediment): fehlt eines, würde die
+ * Szene leere Texturen setzen, also fällt sie auf den Streifen-Pfad von vor C1
+ * zurück. Das war richtig, solange jede Phase ein Kit hatte.
+ *
+ * Nach dem Ein-Block-Cutover ist das Kit GELÖSCHT — sein Fehlen ist der Entwurf,
+ * kein Defekt. Die Wache hätte p1 UND p2 auf den Platzhalter-Pfad geworfen und
+ * damit AUCH die Körper nicht mehr gezeichnet (die Wache entscheidet über den
+ * ganzen Massen-Block, nicht über einzelne Stücke). Kein Tor hätte es gesagt:
+ * sie alle messen den PLAN, und der Plan war korrekt — gesehen hat es erst ein
+ * Standbild aus dem laufenden Spiel.
+ *
+ * Sie fragt deshalb jetzt nach der Kunst, die die Phase WIRKLICH benutzt: in
+ * einer Ein-Block-Welt sind das die Körper-Blätter, sonst die Kern-Blätter.
+ * Als reine Funktion, damit ein Test sie ohne Browser stellen kann.
+ */
+export const massKitUsable = (
+  grid: readonly string[],
+  kit: MassKit,
+  hasTexture: (stem: string) => boolean,
+): boolean => {
+  const stemsOf = (b: VisualBody): string[] => ((b.slices ?? []).length > 0
+    ? (b.slices ?? []).map((s) => s.stem)
+    : [b.stem]);
+  if (phaseIsOneBlock(grid, kit)) {
+    const bodies = kit.bodies ?? [];
+    return bodies.length > 0 && bodies.every((b) => stemsOf(b).every(hasTexture));
+  }
+  const core = [kit.crust[0], kit.body[0], kit.fade[0], kit.sediment];
+  return core.every((stem) => stem !== undefined && hasTexture(stem));
 };
 
 /** A connected mass's shared material anchor and its stable origin cell. */

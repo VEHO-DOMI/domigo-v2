@@ -48,6 +48,41 @@ export interface VisualBody {
   slices?: readonly BodySlice[];
 }
 
+/**
+ * Ein Raum, wie das Level ihn traegt: die drei Phasen, die Arena (p4) und die
+ * Bonus-Kammer (p9) — getrennte Container mit derselben Form.
+ */
+export interface PhaseGrid {
+  id: string;
+  rows: readonly string[];
+}
+
+export interface LevelGrids {
+  phases: readonly PhaseGrid[];
+  arena?: PhaseGrid;
+  bonus?: PhaseGrid;
+}
+
+/**
+ * DAS RASTER EINER PHASE — die EINE Auflösung, aus der jedes Werkzeug liest.
+ *
+ * Warum geteilt: `check-body-silhouette` las das Raster als `level.phases[idx]`
+ * und wäre an jedem p4-/p9-Körper abgestürzt, weil diese beiden Räume gar nicht
+ * in `phases` wohnen (p4 = `arena`, p9 = `bonus`). Ein Tor, das nur die Räume
+ * kennt, für die es je gelaufen ist, ist ein Wunsch. Diese Funktion wirft lieber,
+ * als still ein Nebengitter zu liefern — ein leises falsches Raster wäre der
+ * teurere Fehler.
+ */
+export const gridOf = (level: LevelGrids, phaseId: string): readonly string[] => {
+  const all = [...level.phases, ...(level.arena ? [level.arena] : []), ...(level.bonus ? [level.bonus] : [])];
+  const phase = all.find((p) => p.id === phaseId);
+  if (phase === undefined) {
+    const known = all.map((p) => p.id).join(", ");
+    throw new Error(`gridOf: Phase "${phaseId}" gibt es in diesem Level nicht (vorhanden: ${known})`);
+  }
+  return phase.rows;
+};
+
 export const bodyCells = (b: VisualBody): Array<{ c: number; r: number }> => {
   const out: Array<{ c: number; r: number }> = [];
   b.rows.forEach((row, dr) => {
@@ -255,8 +290,99 @@ export const P2_WAVE_BODIES: readonly VisualBody[] = [
   },
 ];
 
+/**
+ * DIE P1-WELLE (N7A1): die fünf Körper der Eingangshalle, Masken maschinell aus
+ * dem Raster erzeugt (`scripts/make-body-stencils.mjs` liest dieselben Fenster).
+ * 548 Zellen, 0 Partitions-Fehler, fullyPainted grün — die 21 übrigen soliden
+ * Zellen gehören den Möbel-Läufen (`floatingPlatformRuns`), nicht einer Handliste.
+ *
+ * Der Boden ist EIN Blatt: Kokis „ein Guss" vom 01.09. hält, weil seine 336
+ * Zellen 4-zusammenhängend sind (gemessen, nicht angenommen). Das Ostpodest hat
+ * das alte `terrain_atlas_podest_p1` ABSORBIERT — die 2×2-Zellen auf r16/r17
+ * sind jetzt Teil des Körpers, und das Blatt wächst dafür von 540 auf 668 px.
+ */
+export const P1_WAVE_BODIES: readonly VisualBody[] = [
+  {
+    id: "p1_deckenbahn_west",
+    stem: "body_p1_deckenbahn_west",
+    c0: 0, r0: 0,
+    rows: [
+      "######################",
+    ],
+    pxPerCell: 64, overpaint: { l: 0, r: 0, t: 12, b: 16 },
+  },
+  {
+    id: "p1_deckenbahn_mitte",
+    stem: "body_p1_deckenbahn_mitte",
+    c0: 22, r0: 0,
+    rows: [
+      "######################",
+    ],
+    pxPerCell: 64, overpaint: { l: 0, r: 0, t: 12, b: 16 },
+  },
+  {
+    id: "p1_deckenbahn_ost",
+    stem: "body_p1_deckenbahn_ost",
+    c0: 44, r0: 0,
+    rows: [
+      "####################",
+    ],
+    pxPerCell: 64, overpaint: { l: 0, r: 0, t: 12, b: 16 },
+  },
+  {
+    id: "p1_hallenboden",
+    stem: "body_p1_hallenboden",
+    c0: 0, r0: 18,
+    rows: [
+      "########################################....",
+      "########################################....",
+      "########################################....",
+      "########################################....",
+      "############################################",
+      "############################################",
+      "############################################",
+      "############################################",
+    ],
+    pxPerCell: 64, overpaint: { l: 0, r: 0, t: 12, b: 16 },
+  },
+  {
+    id: "p1_ostpodest",
+    stem: "body_p1_ostpodest",
+    c0: 46, r0: 16,
+    rows: [
+      ".....##...........",
+      ".....##...........",
+      "##################",
+      "##################",
+      "##################",
+      "##################",
+      "##################",
+      "##################",
+      "##################",
+      "##################",
+    ],
+    pxPerCell: 64, overpaint: { l: 0, r: 0, t: 12, b: 16 },
+  },
+];
+
+/**
+ * JEDER DEKLARIERTE KÖRPER MIT SEINEM RAUM — auch die, die noch nicht montiert
+ * sind. Der Wareneingang misst ein geliefertes Blatt, BEVOR es in `CH01_BODIES`
+ * wandert (dort landet ein Eintrag erst mit seinem angenommenen PNG), und er
+ * braucht dabei das Raster des richtigen Raums. Vorher kannte der Wareneingang
+ * nur die p2-Welle und stempelte die Phase hart auf "p2" — ein p1-Körper war
+ * damit gar nicht messbar.
+ */
+export const DECLARED_BODIES: ReadonlyArray<{ phase: string; body: VisualBody }> = [
+  { phase: "p2", body: P2_EXEMPLAR_BODY },
+  ...P2_WAVE_BODIES.map((body) => ({ phase: "p2", body })),
+  ...P1_WAVE_BODIES.map((body) => ({ phase: "p1", body })),
+];
+
 /** Die live montierten Körper je Phase. Ein Eintrag kommt erst MIT seinem PNG. */
 export const CH01_BODIES: Record<string, readonly VisualBody[]> = {
+  // N7A1: die Eingangshalle ist VOLLSTÄNDIG gemalt — fünf Körper, 548 Zellen.
+  p1: P1_WAVE_BODIES,
   // R7: das Nacht-Klassenzimmer ist VOLLSTÄNDIG gemalt — Exemplar + Welle.
   p2: [P2_EXEMPLAR_BODY, ...P2_WAVE_BODIES],
 };

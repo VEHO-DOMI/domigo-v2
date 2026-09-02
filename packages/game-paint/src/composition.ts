@@ -529,8 +529,18 @@ export const isPlaceholderStem = (stem: string): boolean => stem.startsWith(PLAC
  * (scripts/strip-key-fringe.mjs) and the gate that keeps it repaired
  * (scripts/check-paint-art.mjs).
  */
-export const massStems = (m: MassKit): string[] => {
-  const out = [...m.crust, m.crustCapL, m.crustCapR, ...m.body, ...(m.bodyDeep ?? []), ...m.fade, m.sediment];
+export const massStems = (m: MassKit, oneBlock = false): string[] => {
+  // R7/N7 · DER BERECHNETE CUTOVER. `oneBlock` kommt aus `mass.ts#phaseIsOneBlock`
+  // und ist keine Meinung: es sagt, dass die Sicht-Koerper dieser Phase JEDE
+  // solide Zelle besitzen, die nicht einem Moebel gehoert. Dann plant planMass
+  // kein Kit-Stueck mehr, und diese Liste — die entscheidet, was ein Raum
+  // LAEDT — darf die Kruste, die Masse, die Trims und die Unterseite nicht
+  // laenger nennen. Was sie weiter nennt: die Moebel, die Saeulen, die Koerper
+  // selbst und die Rutsche. Ein Raum, der sein Kit noch listet, obwohl er es
+  // nie zeichnet, ist genau der stille Speicherfresser, gegen den die
+  // Tot-Kunst-Ratsche gebaut wurde.
+  const out: string[] = [];
+  if (!oneBlock) out.push(...m.crust, m.crustCapL, m.crustCapR, ...m.body, ...(m.bodyDeep ?? []), ...m.fade, m.sediment);
   // ★ R5-W5 · E6 · D-267 · `m.rampUp` und `m.rampDown` stehen hier NICHT MEHR.
   // Diese Liste ist es, die entscheidet, was eine Phase lädt (über
   // `compositionStems` → `phaseArtScope`), und ch01 hat null Steigungs-Glyphen
@@ -543,16 +553,16 @@ export const massStems = (m: MassKit): string[] => {
   // dass beides zusammenpassen MUSS, hält jetzt ein Gesetz in
   // `composition.test.ts` fest: sobald irgendein Gitter einen Steigungs-Glyph
   // trägt, müssen die Rampen-Blätter seines Kits auf der Platte liegen.
-  out.push(m.edgeL, m.edgeR, m.cornerBL, m.cornerBR, m.inCornerL, m.inCornerR);
-  if (m.joint !== undefined) out.push(m.joint);
-  if (m.postJoin !== undefined) out.push(m.postJoin);
+  if (!oneBlock) out.push(m.edgeL, m.edgeR, m.cornerBL, m.cornerBR, m.inCornerL, m.inCornerR);
+  if (!oneBlock && m.joint !== undefined) out.push(m.joint);
+  if (!oneBlock && m.postJoin !== undefined) out.push(m.postJoin);
   // ★ R5-W7 · A8 · D-27. Conditional, like the ramps above are absent: this list
   // decides what a phase LOADS (`compositionStems` → `phaseArtScope`) and it is
   // the floor `check-paint-art` measures against, so an unconditional underside
   // would demand a PNG that no accepted delivery has ever contained — the exact
   // failure mode D-27's own register line names. A kit without the sheet lists
   // nothing extra and the stem count does not move (53 before, 53 after).
-  if (m.edgeD !== undefined) out.push(...m.edgeD);
+  if (!oneBlock && m.edgeD !== undefined) out.push(...m.edgeD);
   out.push(...m.platObjects.map((p) => p.stem));
   out.push(...(m.columnObjects ?? []).map((p) => p.stem));
   // Körper-Blätter: gemountet werden die Slices (falls geschnitten), sonst das
@@ -565,14 +575,14 @@ export const massStems = (m: MassKit): string[] => {
 };
 
 /** Every stem a spec references — the art gate's requirement list. */
-export const compositionStems = (spec: CompositionSpec): string[] => {
+export const compositionStems = (spec: CompositionSpec, oneBlock = false): string[] => {
   const out: string[] = [];
   for (const plane of [spec.far, spec.midFar, spec.mid, spec.fg]) {
     if (!plane) continue;
     out.push(...plane.segments);
     if (plane.anchor) out.push(plane.anchor.stem);
   }
-  out.push(...massStems(spec.mass));
+  out.push(...massStems(spec.mass, oneBlock));
   return [...new Set(out)];
 };
 
@@ -621,19 +631,27 @@ const PLAT_OBJECTS: Record<string, MassKit["platObjects"]> = {
   // are recorded in the R4 delivery note, so these fractions are reproducible
   // measurements rather than visual guesses.
   // p1 Eingangshalle — folio, tied bundle, reading bench, and two carved shelves.
+  // N7A1 · orthografisch neu gemalt (Punkt 13): gerade waagrechte Aufstandskante
+  // über ≥80 % der Breite, frontal, Seitenflächen ≤3° — an jedem Blatt gemessen
+  // (Reichweite 100 %, Kipp 0,0°). Die deck-Werte sind neu am Blatt gemessen,
+  // nach dem Verfahren dieses Kommentars: erste Zeile, die 90 % der maximalen
+  // opaken Spannweite erreicht, geteilt durch die Blatthöhe.
   p1: [
-    { stem: "terrain_reading_bench_p1", cells: 2, deck: 62 / 194 },
-    { stem: "terrain_book_bundle_p1", cells: 2, deck: 33 / 185 },
-    { stem: "terrain_book_shelf_p1", cells: 3, deck: 104 / 210 },
-    { stem: "terrain_book_shelf_p1_alt", cells: 3, deck: 36 / 232 },
-    { stem: "terrain_book_folio_p1", cells: 1, deck: 22 / 79 },
+    { stem: "terrain_reading_bench_p1", pxPerCell: 64, cells: 2, deck: 8 / 96 },
+    { stem: "terrain_book_bundle_p1", pxPerCell: 64, cells: 2, deck: 8 / 120 },
+    { stem: "terrain_book_shelf_p1", pxPerCell: 64, cells: 3, deck: 8 / 96 },
+    { stem: "terrain_book_shelf_p1_alt", pxPerCell: 64, cells: 3, deck: 8 / 112 },
+    { stem: "terrain_book_folio_p1", pxPerCell: 64, cells: 1, deck: 4 / 33 },
   ],
   // p2 Klassenzimmer — night folios, bundles, lecterns, and continuous shelves.
   p2: [
     { stem: "terrain_night_lectern_shelf_p2", pxPerCell: 64, cells: 4, deck: 66 / 170 },
     { stem: "terrain_night_shelf_p2", pxPerCell: 64, cells: 3, deck: 4 / 96 },
     { stem: "terrain_night_bundle_p2", pxPerCell: 64, cells: 2, deck: 8 / 138 },
-    { stem: "terrain_night_lectern_p2", cells: 2, deck: 22 / 215 },
+    // N7A1 · Neuwurf: das gelieferte R7-Blatt war 2,75 Zellen hoch und hinge als
+    // Stalaktit unter der Schwebe-Linie (REVIEW_R7P2_RUNDE1 NACHTRAG). Jetzt
+    // 128×110 px, deck am Blatt gemessen.
+    { stem: "terrain_night_lectern_p2", pxPerCell: 64, cells: 2, deck: 10 / 110 },
     { stem: "terrain_night_folio_p2", pxPerCell: 64, cells: 1, deck: 6 / 33 },
     { stem: "terrain_night_dictionary_p2", pxPerCell: 64, cells: 1, deck: 4 / 33 },
   ],
@@ -677,7 +695,10 @@ const PLAT_OBJECTS: Record<string, MassKit["platObjects"]> = {
  * commissioned replacement for the old join/saddle construction; other phases
  * keep their existing scenery until a matching sheet is ordered. */
 const COLUMN_OBJECTS: Record<string, NonNullable<MassKit["columnObjects"]>> = {
-  p1: [{ stem: "terrain_atlas_podest_p1", cellsW: 2, cellsH: 2 }],
+  // N7A1: p1 ist Ein-Block-Welt — das Atlas-Podest ist vom Ostpodest-Körper
+  // ABSORBIERT (seine 2×2 Zellen auf r16/r17 sind jetzt Maske dieses Körpers).
+  // Sein V-Sockel von 24,9° stirbt damit per Löschung, nicht per Duldung.
+  p1: [],
   // R7: p2 ist Ein-Block-Welt — alle Säulen/Pfeiler sind von den Körpern
   // ABSORBIERT (Treppe in der Ostwand, Hänger in den Deckenbahnen); die sieben
   // Blätter sind gelöscht. Kokis "tilted"-Befund stirbt per Löschung.

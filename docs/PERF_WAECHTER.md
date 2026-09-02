@@ -29,7 +29,7 @@ schreibt die `?perf=1`-Zahlen für ALLE fünf Phasen **vorher/nachher** in ihren
 | Phase-Assets (artScope) | ≤ 35 MB | `artScope.test.ts` — **CI** |
 | Bundle (je Nicht-Phaser-Brocken, gzip) | ≤ 150 KB | `check-game-bundle.mjs` — **CI** |
 | Phaser in EINEM faulen Brocken (gzip) | ≤ 400 KB | `check-game-bundle.mjs` — **CI** |
-| Kunst, die niemand lädt | ≤ 58 Blätter | `check-paint-art.mjs` — **CI** |
+| Kunst, die niemand lädt | ≤ 57 Blätter | `check-paint-art.mjs` — **CI** |
 | Audio (Platte) | ≤ 6 MB | `check-audio.mjs` — **CI** |
 | Audio (decodiert, JS-Heap) | ≤ 16 MB | `check-audio.mjs` — **CI**, zur Laufzeit in `?perf=1` |
 
@@ -49,6 +49,20 @@ der Wirklichkeit verliert genau die Warnung, für die sie gebaut wurde (D-193). 
 Blätter hinzufügt, hebt sie **im selben PR, mit einem Grund, den ein Prüfer liest**; wer
 Blätter verdrahtet oder löscht, **senkt sie im selben PR um sein eigenes Delta** — jeder
 Lauf sagt die verbliebene Luft laut an, und der Post-Zug-Eigentümer misst neu.
+
+**★ N7A1 (2026-09-02): 57 tote Blätter — die erste Runde, in der die Zahl SINKT.**
+Der Cutover der Ein-Block-Welt hat 42 Blätter gelöscht (9,3 MB): das komplette Kit
+von p1 und p2, das absorbierte `terrain_atlas_podest_p1` und das längst tote
+`band_p1_hallway`. Freigegeben hat sie keine Aufräumaktion, sondern eine
+Rechnung: `mass.ts#phaseIsOneBlock` fragt das Raster, ob die Sicht-Körper einer
+Phase jede solide Zelle besitzen, die nicht einem Möbel gehört. Trifft das zu,
+listet `massStems` das Kit nicht mehr. Gemessene Phasen-Gewichte danach, mit dem Lineal, das
+`check-perf-budget` selbst benutzt (der ganze Baum unter `apps/web/public/art/g1/paint`,
+nicht nur der ch01-Ordner — die Helden-Figur und die geteilten Blätter zählen mit):
+**p1 21,5 → 19,4 MB · p2 28,3 → 25,3 MB · p3 20,9 · p4 18,0 · p9 15,1 MB**
+(Grenze bleibt 35 MB) — p3/p4/p9 unverändert, kein Blatt dieser Räume war in der
+Differenz. ⚠ Ein zweites, engeres Lineal (nur der ch01-Ordner) misst dieselben Räume
+1,4–2,1 MB leichter; wer eine Zahl vergleicht, nennt das Verfahren dazu.
 
 **★ Runde 4 (2026-08-31): 58 tote Blätter.** Die 17 neuen Ein-Stück-Terrainblätter
 werden von p1/p2 geladen und zählen daher nicht als tote Kunst. Der aktuelle Checkout

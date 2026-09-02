@@ -39,7 +39,6 @@ const TILT_MAX_DEG = 3;
  *  mit dem Cutover des genannten Raums — die Zeile stirbt MIT dem Blatt. */
 const GROUND_PLANE_PENDING = {
   // p1/p2-Säulen + Podest (V-Sockel 11°–49°): Absorption in die Körper, p1/p2-Cutover
-  "terrain_atlas_podest_p1": { until: "2026-10-15", why: "V-Sockel 24,9° — wird von p1_ostpodest absorbiert" },
   "terrain_pillar_p2_8": { until: "2026-10-15", why: "V-Sockel 36,0° — Absorption p2-Ostwand" },
   "terrain_pillar_p2_5": { until: "2026-10-15", why: "V-Sockel 19,6° — Absorption p2-Ostwand" },
   "terrain_pillar_p2_2": { until: "2026-10-15", why: "V-Sockel ~44° — Absorption p2-Ostwand" },
@@ -55,15 +54,9 @@ const GROUND_PLANE_PENDING = {
   "plat_bundle_1": { until: "2026-10-15", why: "Perspektiv-Altbestand, Möbel-Neuwelle" },
   "plat_plank_2": { until: "2026-10-15", why: "Perspektiv-Altbestand, Möbel-Neuwelle" },
   "ledge_windowsill": { until: "2026-10-15", why: "Perspektiv-Altbestand, Möbel-Neuwelle" },
-  "terrain_book_folio_p1": { until: "2026-10-15", why: "R4-Bestand, Möbel-Neuwelle p1" },
-  "terrain_book_bundle_p1": { until: "2026-10-15", why: "R4-Bestand, Möbel-Neuwelle p1" },
-  "terrain_reading_bench_p1": { until: "2026-10-15", why: "R4-Bestand, Möbel-Neuwelle p1" },
-  "terrain_book_shelf_p1": { until: "2026-10-15", why: "R4-Bestand, Möbel-Neuwelle p1" },
-  "terrain_book_shelf_p1_alt": { until: "2026-10-15", why: "R4-Bestand, Möbel-Neuwelle p1" },
   "terrain_night_folio_p2": { until: "2026-10-15", why: "R4-Bestand, Möbel-Neuwelle p2" },
   "terrain_night_dictionary_p2": { until: "2026-10-15", why: "R4-Bestand, Möbel-Neuwelle p2" },
   "terrain_night_bundle_p2": { until: "2026-10-15", why: "R4-Bestand, Möbel-Neuwelle p2" },
-  "terrain_night_lectern_p2": { until: "2026-10-15", why: "R4-Bestand, Möbel-Neuwelle p2" },
   "terrain_night_shelf_p2": { until: "2026-10-15", why: "R4-Bestand, Möbel-Neuwelle p2" },
   "terrain_night_lectern_shelf_p2": { until: "2026-10-15", why: "R4-Bestand, Möbel-Neuwelle p2" },
   "terrain_column_p3_standing_2x5": { until: "2026-10-15", why: "R5b2-Rest, fällt mit p3-Neubau" },

@@ -47,6 +47,7 @@ import {
   massGrain,
   nakedFills,
   paintScaleOf,
+  phaseIsOneBlock,
   planMass,
   shortestPeriod,
   surfaceSignature,
@@ -376,9 +377,19 @@ for (const { label, ph, spec } of withSpec) {
     (nearPlaneTint(spec.key) >> 8) & 255,
     nearPlaneTint(spec.key) & 255,
   );
+  // R7/N7 · In einer EIN-BLOCK-WELT gibt es kein Kit mehr: die Terrain-Ebene IST
+  // das Körper-Gemälde. Diese Audits fragten bis hierher nach Blättern, die der
+  // Cutover gelöscht hat, und meldeten „art missing" — eine wahre Aussage über
+  // eine falsche Frage. Sie fragen jetzt die Körper.
+  const einBlock = phaseIsOneBlock(ph.rows, spec.mass);
+  const koerperStems = (spec.mass.bodies ?? []).flatMap((b) => (b.slices ?? []).length > 0
+    ? b.slices.map((x) => x.stem)
+    : [b.stem]);
   const course = measureStems([...spec.mass.crust]);
   const rest = measureStems([...spec.mass.body, ...(spec.mass.bodyDeep ?? []), ...spec.mass.fade, spec.mass.sediment, ...entityStems]);
-  const L3 = course && rest
+  const L3 = einBlock
+    ? measureStems([...koerperStems, ...entityStems])
+    : course && rest
     ? {
       lum: (course.lum * nearPush * course.samples + rest.lum * rest.samples) / (course.samples + rest.samples),
       sat: (course.sat * course.samples + rest.sat * rest.samples) / (course.samples + rest.samples),
@@ -406,7 +417,31 @@ for (const { label, ph, spec } of withSpec) {
 // It stays a table rather than becoming a boolean because the shape is the
 // point: a waiver is a named room with a written reason and an expiry, never a
 // quiet `if`. The next one that is needed will be visible here.
-const SEPARATION_WAIVERS = {};
+/**
+ * ── N7A1 (2026-09-02): DIESE TABELLE IST NICHT MEHR LEER — UND IHR ABLAUF IST
+ *    JETZT EIN DATUM ─────────────────────────────────────────────────────────
+ *
+ * A5 ließ sie leer und der Kommentar an COHERENCE_WAIVERS nennt auch den Grund:
+ * die alte Fassung trug ihren Ablauf in PROSA ("bis zum F2-Retusche-Pass"), und
+ * niemand konnte ihn prüfen. Diese Fassung trägt `until` als Datum, das
+ * `waiverExpired` liest, und sie ratscht in beide Richtungen: eine Duldung, die
+ * der Raum nicht mehr braucht, macht das Audit ihrerseits rot.
+ */
+const SEPARATION_WAIVERS = {
+  "ch01/p2": {
+    until: "2026-10-15",
+    why: "gemessen 9,7 % lum / 10,0 % sat gegen verlangte 12 % / 25 % (L2 lum 17,5 · L3 lum 27,2). "
+      + "Der Bruch ist weder neu noch von dieser Bahn gemacht: p2 zeichnet seit #387 seine "
+      + "Sicht-Koerper und nicht mehr sein Kit — L3 wurde aber weiter AM KIT gemessen und meldete "
+      + "12,5 %, eine Zahl, die der Bau nicht mehr zeichnet. Das ist exakt die Drift, vor der der "
+      + "Kommentar an mass.ts#NEAR_PLANE_KINDS warnt. Der N7A1-Cutover hat das Kit geloescht und "
+      + "die Frage damit zum ersten Mal ehrlich gestellt. Was die Duldung beendet, ist eine "
+      + "Entscheidung ueber die abgenommene p2-Kunst und gehoert Koki: ein Wertepass auf l2_p2 "
+      + "(17,5 -> hoechstens 15,2 % Luminanz, bleibt in seinem eigenen Band 15,0-22,5 %) oder eine "
+      + "hellere Laufkante in der p2-Koerper-Welle. Diese Bahn fasst p2-Kunst nicht an. "
+      + "p1 misst mit derselben Rechnung 24,9 % / 33,1 % und besteht deutlich.",
+  },
+};
 
 const BANDS = bandsFor(K);
   for (const [name, m] of Object.entries(planes)) {
@@ -444,10 +479,16 @@ const BANDS = bandsFor(K);
   if (planes.L2 && planes.L3) {
     const dLum = Math.abs(planes.L2.lum - planes.L3.lum);
     const dSat = Math.abs(planes.L2.sat - planes.L3.sat);
+    const sepWaiver = SEPARATION_WAIVERS[label];
     if (dLum < 12 && dSat < 25) {
-      if (SEPARATION_WAIVERS[label]) { note(`${label}: L2-L3 separation WAIVED: ${SEPARATION_WAIVERS[label]}`); } else fail("layer-value", `${label}: L2↔L3 separation ${dLum.toFixed(1)}% lum / ${dSat.toFixed(1)}% sat — the law needs ≥12% or ≥25% (ABSOLUTE; readability never scales down)`);
+      if (sepWaiver !== undefined && !waiverExpired(sepWaiver)) {
+        note(`${label}: L2↔L3 separation ${dLum.toFixed(1)}% lum / ${dSat.toFixed(1)}% sat — GEDULDET bis ${sepWaiver.until}: ${sepWaiver.why}`);
+      } else {
+        fail("layer-value", `${label}: L2↔L3 separation ${dLum.toFixed(1)}% lum / ${dSat.toFixed(1)}% sat — the law needs ≥12% or ≥25% (ABSOLUTE; readability never scales down)${sepWaiver !== undefined ? ` — und die Duldung ist am ${sepWaiver.until} abgelaufen` : ""}`);
+      }
     } else {
       note(`${label} L2↔L3 separation: ${dLum.toFixed(1)}% lum · ${dSat.toFixed(1)}% sat — PASS`);
+      if (sepWaiver !== undefined) fail("layer-value", `${label}: traegt eine Trennungs-Duldung, die es nicht mehr braucht — loeschen (${sepWaiver.why})`);
     }
   }
   // R5-N3 · A4 · THE DEEP ROW IS A MEASUREMENT, NOT A PREFERENCE.
@@ -503,8 +544,14 @@ for (const { label, ph, spec } of withSpec) {
 // ── 3 · NO-NAKED-FILL ────────────────────────────────────────────────────────
 console.log("3 · no-naked-fill audit (doc 36 §4.3)");
 for (const { label, ph, spec } of withSpec) {
-  const missing = [...spec.mass.crust.slice(0, 1), spec.mass.body[0], spec.mass.fade[0], spec.mass.sediment].filter((s) => !artFiles.has(s));
-  if (missing.length > 0) { fail("no-naked-fill", `${label}: mass kit art missing (${missing.join(", ")}) — the phase would fall back to flat fills`); continue; }
+  // R7/N7 · Eine Ein-Block-Welt HAT kein Kit — sie kann auch nicht darauf
+  // zurückfallen. Die Frage bleibt aber dieselbe und wird unten an planMass
+  // gestellt: 0 nackte Füllungen, 0 unbedeckte Solid-Zellen. Nur das Kit-Blatt
+  // als Vorbedingung wäre hier eine Frage nach einer Datei, die per Entwurf weg ist.
+  if (!phaseIsOneBlock(ph.rows, spec.mass)) {
+    const missing = [...spec.mass.crust.slice(0, 1), spec.mass.body[0], spec.mass.fade[0], spec.mass.sediment].filter((s) => !artFiles.has(s));
+    if (missing.length > 0) { fail("no-naked-fill", `${label}: mass kit art missing (${missing.join(", ")}) — the phase would fall back to flat fills`); continue; }
+  }
   const plan = planMass(ph.rows, spec.mass, srcSize);
   const naked = nakedFills(plan);
   const holes = uncoveredSolids(ph.rows, plan);
@@ -1632,13 +1679,23 @@ const judgeKit = (kit, key) => {
 // Eckstueck in einem 12x12-Kasten. Er MUSS rot werden; der heutige Plan (Fall
 // 4) ist gruen. Das ist das rot→gruen, das Posten 1 beweist.
 if (process.argv.includes("--selftest")) {
-  const kitPhase = withSpec[0];
+  // R7/N7 · Die Phase heisst hier nicht umsonst `kitPhase`: die drei Tamper
+  // unten biegen Ecken, Flaechen und Moebel eines KITS. Eine Ein-Block-Welt hat
+  // nichts davon — ihr Plan besteht aus Koerper-Blaettern —, und seit p1 eine
+  // ist, lief der Selbsttest auf einer Phase, an der sein Fall 1 gar nicht
+  // greifen kann. Er sucht deshalb die erste Phase, die ihr Kit noch traegt.
+  const kitPhase = withSpec.find(({ ph, spec }) => !phaseIsOneBlock(ph.rows, spec.mass)) ?? withSpec[0];
   if (kitPhase === undefined) { console.error("✗ M1-Selbsttest: keine Phase mit Manifest"); process.exit(1); }
   const echterPlan = planMass(kitPhase.ph.rows, kitPhase.spec.mass, srcSize);
   const echtesWant = paintScaleOf(kitPhase.spec.mass, srcSize);
   const label = kitPhase.label;
+  // …und dieselbe Moebel-Stufen-Liste wie der echte Lauf: ohne sie beurteilt der
+  // Selbsttest ein gestuftes Blatt nach einer Regel, von der der Bestand es
+  // ausdruecklich ausnimmt — zwei Lineale an derselben Frage.
+  const selbsttestTiered = new Set((kitPhase.spec.mass.platObjects ?? [])
+    .filter((o) => o.pxPerCell !== undefined).map((o) => o.stem));
   const fahre = (plan) => judgeScale({
-    label, plan, want: echtesWant, srcSize,
+    label, plan, want: echtesWant, srcSize, tieredStems: selbsttestTiered,
     windowsSeen: new Set(), courseLocks: new Set(), waiverSeen: new Set(),
   }).bad;
 
@@ -1800,7 +1857,16 @@ if (process.argv.includes("--selftest")) {
   process.exit(0);
 }
 
-for (const { label, spec } of withSpec) {
+for (const { label, ph, spec } of withSpec) {
+  // R7/N7 · Dieses Audit misst die NAHT zwischen Kruste, Masse und Trims. Eine
+  // Ein-Block-Welt hat keine: der Körper ist EIN Gemälde, und genau das ist der
+  // Punkt der Umstellung. Vakuum wäre hier also die richtige Antwort — aber ein
+  // stilles Überspringen wäre der Anfang eines blinden Tors, deshalb sagt es die
+  // Bedingung laut an. Was den Körper prüft, ist check-body-silhouette (vier Gesetze).
+  if (phaseIsOneBlock(ph.rows, spec.mass)) {
+    note(`${label}: Ein-Block-Welt — keine Kit-Naht vorhanden; die Kanten prüft check-body-silhouette`);
+    continue;
+  }
   const rows = judgeKit(spec.mass, spec.key);
   if (rows.length === 0) { fail("edge-coherence", `${label}: no mass joint could be measured — the audit would pass vacuously`); continue; }
 

@@ -28,6 +28,7 @@
 
 import { AUFTAKT_STEMS, GLYPH_STEMS, HERO2_STEMS, HERO_STEMS, PAINTED_ICON_NAMES, captiveStem, entitySkinStems, guardianSkinStems, isCaptiveKey } from "./artManifest.ts";
 import { CANOPY_PHASES, COMPOSITION, compositionStems } from "./composition.ts";
+import { phaseIsOneBlock } from "./mass.ts";
 import { CHALK_PROJECTILE_STEMS } from "./entities.ts";
 
 /** The shape this module needs. Structural on purpose: the CI gate hands it
@@ -206,7 +207,15 @@ export const phaseRequiredStems = (level: ScopeLevel, phaseId: string, label = "
     }
   }
   const spec = COMPOSITION[level.chapter]?.[ph.id];
-  if (spec) for (const stem of compositionStems(spec)) need(stem, `${label} ${ph.id} composition`);
+  // R7/N7 · Die Kit-Frage wird hier GERECHNET, nicht gelesen: dieselbe
+  // Verzweigung auf die Bedingung der Szene wie beim Platten-Zweig oben. Eine
+  // Phase, deren Koerper das Raster vollstaendig besitzen, verlangt ihr Kit
+  // nicht mehr — und wenn ein Koerper wegfaellt, verlangt sie es im selben
+  // Zug wieder. Ohne diese Zeile waere der Cutover eine Handliste.
+  if (spec) {
+    const oneBlock = phaseIsOneBlock(ph.rows, spec.mass);
+    for (const stem of compositionStems(spec, oneBlock)) need(stem, `${label} ${ph.id} composition`);
+  }
   return out;
 };
 
@@ -303,7 +312,12 @@ export const phaseArtScope = (level: ScopeLevel, phaseId: string, present: Itera
   // 5 · the backdrop — branching on the SCENE'S OWN condition
   if (hasComposition(level, ph.id)) {
     const spec = COMPOSITION[level.chapter]?.[ph.id];
-    if (spec) for (const s of compositionStems(spec)) add(s);
+    // R7/N7 · Dieselbe gerechnete Kit-Frage wie in phaseRequiredStems — und DIES
+    // ist die Stelle, die zaehlt: sie sagt, was das Spiel LAEDT und was
+    // check-paint-art als beansprucht sieht. Ohne sie waere der Cutover eine
+    // Attrappe: das Manifest verlangte die Kit-Blaetter nicht mehr, geladen
+    // wuerden sie weiter (gemessen: 59 statt 82 tote Blaetter).
+    if (spec) for (const s of compositionStems(spec, phaseIsOneBlock(ph.rows, spec.mass))) add(s);
   } else {
     for (const s of Object.values(ph.plates ?? {})) if (s !== undefined) add(String(s));
     for (const s of LEGACY_BACKDROP_STEMS) add(s);
