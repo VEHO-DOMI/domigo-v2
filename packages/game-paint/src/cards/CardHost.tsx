@@ -69,7 +69,7 @@ export function writtenTextOf(state: unknown, task: GameTaskV2): string {
 }
 
 export function CardHost({
-  task, onResolve, onWorldChange, onDismiss, onGrade, align = "center", art, portraitWash, captive, servedUse, clockMs: clockMsProp, round,
+  task, onResolve, onWorldChange, onDismiss, onGrade, align = "center", art, portraitWash, captive, captiveIsPerson, servedUse, clockMs: clockMsProp, round,
 }: {
   task: GameTaskV2;
   /** the card is finished: close it (and hand on any beat it opened) */
@@ -104,6 +104,8 @@ export function CardHost({
    *  about, so the picture shows what is in there (R54). Undefined for every
    *  card that is not about a cage. */
   captive?: string;
+  /** L0 · D7 — siehe CardShell: Ding-Schlüssel oder Kindername. */
+  captiveIsPerson?: boolean;
   /** the pool the WORLD asked for, which is not always the card's authored
    *  `use` (the unbound-quickfire fallback). The fallback when no shell decided
    *  a length — a bench, a story card, a test. */
@@ -216,6 +218,7 @@ export function CardHost({
       art={art}
       portraitWash={portraitWash}
       captive={captive}
+      captiveIsPerson={captiveIsPerson}
       round={round}
       colourAskDe={colourAskDe}
       actStep={step}

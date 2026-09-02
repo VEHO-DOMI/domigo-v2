@@ -17,7 +17,7 @@ import { describe, expect, it } from "vitest";
 import fs from "node:fs";
 import path from "node:path";
 import { KLASSENFOTO_STEM, cageCellFor, freeCellsFor } from "./CardShell.tsx";
-import { CAPTIVE_KEYS, classmateFreeStem, classmateStem } from "../artManifest.ts";
+import { classmateFreeStem, classmateStem } from "../artManifest.ts";
 import { domArtStems } from "../artScope.ts";
 
 const ROOT = path.resolve(__dirname, "../../../..");
@@ -59,11 +59,21 @@ describe("R5-W4 · D3 · the cage portrait names its occupant", () => {
 
   it("the person-cage resolves to her caged pose, not to a captive sheet", () => {
     const person = cages.find((c) => c.params?.classmate !== undefined)!;
-    const stem = cageCellFor(person.params?.classmate as string);
+    const stem = cageCellFor(person.params?.classmate as string, true);
     expect(stem).toBe("merle_caged0");
     expect(onDisk.has(stem!)).toBe(true);
-    // she must NOT be routed through the thing-path: `merle` is not a captive key
-    expect(CAPTIVE_KEYS as readonly string[]).not.toContain("merle");
+    // L0 · D7 · WAS DIESEN FALL FRÜHER TRUG UND JETZT NICHT MEHR: bis zur
+    // Level-Welle stand hier `expect(CAPTIVE_KEYS).not.toContain("merle")` —
+    // die Person war eine Person, WEIL ihr Name nicht in einer geschlossenen
+    // Vierer-Liste stand. Diese Liste ist jetzt offen (jedes Kapitel bringt
+    // eigene Insassen mit), also trägt den Fall das, was ihn immer getragen
+    // hat: das FELD, in dem der Name steht. Der Käfig, der `classmate` führt,
+    // führt kein `captive` — und genau das prüft die Zeile hier.
+    expect(person.params?.captive).toBeUndefined();
+    // …und die Gegenprobe: ohne das Flag ginge sie durch den Ding-Pfad, was
+    // die Karte auf ein Blatt schicken würde, das es nicht gibt.
+    expect(cageCellFor(person.params?.classmate as string)).toBe("captive_merle");
+    expect(onDisk.has("captive_merle")).toBe(false);
   });
 
   it("names nothing when there is nothing to name", () => {
@@ -82,8 +92,8 @@ describe("R5-W4 · D3 · the cage portrait names its occupant", () => {
   // these two cases keep it there — the second one reads this file's SOURCE,
   // because a literal that comes back is not something a value test can see.
   it("the person-cage cell comes from artManifest, not from a second spelling", () => {
-    expect(cageCellFor("merle")).toBe(classmateStem("merle"));
-    expect(cageCellFor("aardvark")).toBe(classmateStem("aardvark"));
+    expect(cageCellFor("merle", true)).toBe(classmateStem("merle"));
+    expect(cageCellFor("aardvark", true)).toBe(classmateStem("aardvark"));
   });
 
   it("CardShell spells no cage-cell convention of its own", () => {
@@ -112,7 +122,7 @@ describe("R5-W4 · D3 · the cage portrait names its occupant", () => {
     // dieser Wächter gebaut ist, ist genau diese Schablone zurück im Code.
     expect(code, "eine `${name}_a`-Schablone ist zurück in CardShell — die Konvention lebt in artManifest.classmateFreeStem")
       .not.toMatch(/\$\{name\}_a/);
-    expect(freeCellsFor("merle")).toEqual([classmateFreeStem("merle")]);
+    expect(freeCellsFor("merle", true)).toEqual([classmateFreeStem("merle")]);
     // …und der Wächter kann so eine Schablone auch SEHEN: die Zeile hier drüber
     // steht als Text in dieser Datei, ein stiller Leerlauf käme nicht durch.
     expect(fs.readFileSync(__filename, "utf8")).toMatch(/\$\{name\}_a/);
@@ -122,7 +132,7 @@ describe("R5-W4 · D3 · the cage portrait names its occupant", () => {
     // the keen-art law: this helper answers WHICH cell, never WHETHER it exists,
     // so a chapter whose art is still in the oven degrades at the art map and
     // not here (the card falls back to the bare shell).
-    expect(cageCellFor("aardvark")).toBe("aardvark_caged0");
+    expect(cageCellFor("aardvark", true)).toBe("aardvark_caged0");
     expect(onDisk.has("aardvark_caged0")).toBe(false);
   });
 });
@@ -152,11 +162,11 @@ describe("R5-W4b · D3b · the ceremony shows the occupant WITHOUT its cage", ()
 
   it("the classmate is celebrated FREE — merle_a, never merle_caged0", () => {
     const person = cages.find((c) => c.params?.classmate !== undefined)!;
-    const free = freeCellsFor(person.params?.classmate as string);
+    const free = freeCellsFor(person.params?.classmate as string, true);
     expect(free).toEqual(["merle_a"]);
     expect(onDisk.has("merle_a")).toBe(true);
     // the exact confusion this law exists to prevent
-    expect(free).not.toContain(cageCellFor(person.params?.classmate as string));
+    expect(free).not.toContain(cageCellFor(person.params?.classmate as string, true));
   });
 
   it("the class photo asks for its own sheet first and falls back to the world's", () => {
@@ -180,7 +190,8 @@ describe("R5-W4b · D3b · the ceremony shows the occupant WITHOUT its cage", ()
     // direction, which is still a lie.
     const claimed = domArtStems(level as never);
     const drawn = cages.flatMap((c) =>
-      freeCellsFor((c.params?.classmate ?? c.params?.captive) as string | undefined));
+      freeCellsFor((c.params?.classmate ?? c.params?.captive) as string | undefined,
+        c.params?.classmate !== undefined));
     for (const s of drawn) {
       if (!onDisk.has(s)) continue; // not landed yet — nothing to claim
       expect(claimed.has(s), `${s} is drawn on a card but not claimed in domArtStems`).toBe(true);

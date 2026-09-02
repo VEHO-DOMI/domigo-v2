@@ -28,7 +28,7 @@ import { type Cell, cellsOf, indexTerrain, mergeRowMajor, runsFrom } from "./ter
 import { NEAR_PLANE_KINDS, CRUST_MARK_DEPTH, MASS_MARK_DEPTH, type MassPiece, type SurfaceMark, claimedBodyCells, claimedPlatformCells, crustGrain, hash01, ledgeGrain, massGrain, drawnScaleFor, massKitUsable, paintScaleOf, planMass, planPlatformShadows, tileAnchorFor, tileScaleFor } from "./mass.ts";
 import { BACKING_REACH, BACKING_STEPS, LETTER_AMBER, LETTER_GOLD, LETTER_STYLE, letterBackingFor, letterGlowGain, letterGlyphs, letterRimFor } from "./letters.ts";
 import { type PhraseSlot, bonusPhrase } from "./cards/ceremony.ts";
-import { PICKUP_ROLES, type PaintLevel, type PhaseSpec } from "./level.ts";
+import { PICKUP_ROLES, type PaintLevel, type PhaseSpec, trailWordsFor } from "./level.ts";
 import { type AirModel, DELTA_CAP_MS, LOGICAL_H, LOGICAL_W, MAX_TICKS_PER_FRAME, PAINT, RENDER_SCALE, SUBS, TICK_MS, TILE, fromSubs, mixMultiply } from "./paint.ts";
 // `INK_DEPTH_ROWS` and `inkDepthAt` were imported here and referenced nowhere —
 // dropped with the crown rewrite (R5-W4 · A6).
@@ -1114,6 +1114,14 @@ export class PaintScene extends Phaser.Scene {
   private keys!: Record<string, Phaser.Input.Keyboard.Key>;
   /** PB-C1: this phase's art direction, or null ⇒ the pre-C1 render path. */
   private comp: CompositionSpec | null;
+  /** L0 · D5 · die Wörter, die der Buchstaben-Trail dieses Raums buchstabiert.
+   *  Bis zur Level-Welle las die Szene sie direkt aus `this.comp`, dem
+   *  Kunst-Manifest — ein Register, das für ch02–ch06 bewusst leer bleibt, wo
+   *  der Trail dann stumm A→Z durchgezählt hätte. `trailWordsFor` gibt der
+   *  Deklaration der Phase den Vorrang und fällt für ch01 auf genau dieselbe
+   *  Manifest-Zeile zurück wie bisher. Einmal im Konstruktor gelesen, weil sich
+   *  weder Level noch Phase während einer Szene ändern. */
+  private trailWords: readonly string[] | undefined;
   /** R5-W1 · E1: the stems this phase may ask for (artScope.ts). */
   private readonly scope: ReadonlySet<string>;
   /** R5-N3 · E4: hands this phase's textures to the graphics card during the
@@ -1134,6 +1142,7 @@ export class PaintScene extends Phaser.Scene {
     super({ key: "paint" });
     this.cfg = cfg;
     this.comp = compositionFor(cfg.level.chapter, cfg.phaseId);
+    this.trailWords = trailWordsFor(cfg.level, cfg.phaseId);
     this.scope = phaseArtScope(cfg.level, cfg.phaseId, Object.keys(cfg.art));
     this.sim = new Sim({
       level: cfg.level,
@@ -1781,13 +1790,13 @@ export class PaintScene extends Phaser.Scene {
 
   /** R5-C1: `phrase` is added here rather than in the shell because THIS is the
    *  only place that holds both halves of it — the phase's grid and the phase's
-   *  declared trail words (`this.comp`). The shell has neither. */
+   *  declared trail words (`this.trailWords`). The shell has neither. */
   bonusState(): { leftTicks: number; got: number; total: number; phrase: PhraseSlot[][] } {
     return {
       leftTicks: this.sim.bonusLeftTicks,
       got: this.sim.lettersGot,
       total: this.sim.lettersTotal,
-      phrase: bonusPhrase(this.grid, this.comp?.words, this.sim.runTakenCells),
+      phrase: bonusPhrase(this.grid, this.trailWords, this.sim.runTakenCells),
     };
   }
 
@@ -6307,7 +6316,7 @@ export class PaintScene extends Phaser.Scene {
 
   private buildProps(): void {
     let tSub = performance.now();
-    const glyphs = new Map(letterGlyphs(this.grid, this.comp?.words).map((g) => [`${g.c},${g.r}`, g.char]));
+    const glyphs = new Map(letterGlyphs(this.grid, this.trailWords).map((g) => [`${g.c},${g.r}`, g.char]));
     this.mark("· letterGlyphs", tSub, "props");
     // The letter canvases are built INSIDE the loop below, so their cost is
     // counted here and SUBTRACTED from the loop line — children that overlap

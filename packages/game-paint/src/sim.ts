@@ -554,7 +554,13 @@ export class Sim {
         if (dx < 12 && vOverlap) { e.state = "cooling"; e.timer = 0; }
       }
     }
-    if (cfg.phaseId === "p9") this.bonusLeftTicks = 35 * 60 + 120; // G1: budget + 2s grace
+    // L0 · D3 · DIE UHR HÄNGT AM RAUM, NICHT AM NAMEN. Bis zur Level-Welle stand
+    // hier ein Vergleich der Phasen-Id gegen den Text »p9« — und der Kommentar oben
+    // (»THE KEY IS THE LEVEL'S OWN BONUS PHASE«) nannte diese Zeile schon als
+    // die verbliebene Ausnahme. Ein Kapitel, dessen Kleckskammer anders heißt,
+    // hätte einen Bonusraum ganz ohne Uhr bekommen — kein Fehler, nur eine
+    // stumme Zeitlosigkeit. Dieselbe Konstante wie oben, gleiche Identität.
+    if (isBonusRoom) this.bonusLeftTicks = 35 * 60 + 120; // G1: budget + 2s grace
 
     this.camX = clampScroll(cameraTargetX(this.player.x, this.player.facing), this.worldWpx, LOGICAL_W);
     this.camY = clampScroll(this.player.y - Math.round(LOGICAL_H * 0.57) * SUBS, this.worldHpx, LOGICAL_H);

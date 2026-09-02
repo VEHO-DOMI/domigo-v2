@@ -16,6 +16,7 @@ import path from "node:path";
 import { z } from "zod";
 import { GameTasksFileV2, type GameTaskV2 } from "@domigo/content-schema";
 import { REPO_ROOT } from "@domigo/content-loader";
+import { ENTITY_ROLES } from "@domigo/game-paint/level";
 
 const STORY_ID = /^g[1-4]\.st\.[a-z0-9-]+$/;
 const CHAPTER_ID = /^ch\d{2}$/;
@@ -98,30 +99,13 @@ const PaintParams = z.record(z.string(), z.unknown()).check((ctx) => {
 
 const PaintEntity = z.object({
   id: z.string().min(1),
-  role: z.enum([
-    "chaser", "gunner", "flyer", "bouncer", "crusher", "swarm",
-    "platform.move", "platform.fall", "platform.swing",
-    "cage", "powerup", "door.trigger", "guardian",
-    "tip", "book", // PK-R3b · R3-16: the two static-state collectibles
-    // PK-R6 · C: `drained` — the grey classroom object stage B spread across
-    // the field. It was added to game-paint's own level contract but not to
-    // THIS one, and the two are separate copies: the level parsed by the engine
-    // and failed at the door, so /play/1/buch answered 500 on the shipped
-    // chapter. (Filed: the two copies should become one — the loader ought to
-    // import the role list rather than restate it.)
-    "drained",
-    // PK-R6 · D: `classmate` — the bewitched person who steps out of the
-    // person-cage and is restored over six reawakening rounds (doc 44 §3.3).
-    // Added HERE in the same edit as game-paint's role list, on the standing
-    // lesson above: a role the engine knows and this copy does not is a 500 on
-    // the shipped chapter, not a type error.
-    "classmate",
-    // R5-W5 · G4: `cloth` — a scattered piece of the school uniform. Added HERE
-    // in the same edit as game-paint's role list, on the standing lesson two
-    // comments up: this copy is what the loader parses, and a role the engine
-    // knows and this list does not is a 500 on the shipped chapter.
-    "cloth",
-  ]),
+  /** L0 · D4: DIESE LISTE WAR DIE ZWEITE KOPIE. Sie stand hier als Literal und
+   *  in `@domigo/game-paint/level` als Union — dreimal fehlte hier eine Rolle,
+   *  die der Motor schon kannte (`drained`, `classmate`, `cloth`), und jedes Mal
+   *  war das ein 500 auf dem ausgelieferten Kapitel statt eines Typfehlers, weil
+   *  DIESE Datei parst, was der Motor spielt. Jetzt gibt es nur noch eine Liste,
+   *  und `entity-roles.test.ts` beweist, dass keine dritte entsteht. */
+  role: z.enum(ENTITY_ROLES),
   skin: z.string().min(1),
   c: z.number().int().nonnegative(),
   r: z.number().int().nonnegative(),
@@ -167,6 +151,11 @@ const PaintPhase = z.object({
   inkReturns: z
     .array(z.object({ c: z.number().int().nonnegative(), r: z.number().int().nonnegative(), whyDe: z.string().min(1) }))
     .optional(),
+  // L0 · D5 · die Trail-Wörter der Phase (level.ts PhaseSpec.words). Aus genau
+  // dem Grund, den der Absatz über `inkReturns` nennt: was hier nicht steht,
+  // wird STILL entfernt — die Deklaration bestünde jedes Tor auf der Platte und
+  // wäre im Browser weg, und der Trail buchstabierte A→Z statt seines Wortes.
+  words: z.array(z.string().min(1)).min(1).optional(),
 });
 
 const PaintLevelFile = z.object({
@@ -183,6 +172,15 @@ const PaintLevelFile = z.object({
   scorePlate: z.string().min(1).optional(),
   doorPlate: z.string().min(1).optional(),
   rulePlate: z.string().min(1).optional(),
+  /** L0 · D6 · die Auftakt-Platten des Kapitels (level.ts PaintLevel). Auch sie
+   *  MÜSSEN hier stehen — dieselbe Strip-Regel wie bei `goalPlate` darüber. */
+  auftaktPlates: z
+    .object({
+      schatten: z.array(z.string().min(1)).min(1).optional(),
+      auftrag: z.string().min(1).optional(),
+      los: z.string().min(1).optional(),
+    })
+    .optional(),
   goalDe: z.string().min(1),
   whyDe: z.string().min(1),
   hintsDe: z.array(z.string().min(1)),

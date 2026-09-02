@@ -24,10 +24,20 @@ export const LEVEL_SCHEMA = "paintLevel@1";
 // Geometry + marker glyphs (doc 31 §5). Anything with params is an ENTITY.
 const LEGAL_GLYPHS = new Set([".", "#", "=", "/", "\\", "1", "2", "3", "4", "~", "^", "w", "V", "s", "U", "o", "*", "S", "C", "X", "B", "z"]);
 
-export type EntityRole =
-  | "chaser" | "gunner" | "flyer" | "bouncer" | "crusher" | "swarm"
-  | "platform.move" | "platform.fall" | "platform.swing"
-  | "cage" | "powerup" | "door.trigger" | "guardian"
+/** L0 · D4 · DIE EINE ROLLENLISTE.
+ *
+ *  Diese Liste stand bis zur Level-Welle ZWEIMAL: hier als Union-Typ und in
+ *  `apps/web/lib/paint-content.ts` als zod-Enum, das der Loader parst. Beide
+ *  Kopien mussten von Hand nachgezogen werden, und die zod-Seite trug die
+ *  Narben: `drained`, `classmate` und `cloth` fehlten dort je einmal, und jede
+ *  Lücke war ein 500 auf dem ausgelieferten Kapitel, kein Typfehler. Als
+ *  `as const`-Liste ist sie IMPORTIERBAR — `paint-content.ts` baut sein Enum
+ *  jetzt aus genau diesen Bytes (`z.enum(ENTITY_ROLES)`), und
+ *  `entity-roles.test.ts` beweist die Gleichheit in beide Richtungen. */
+export const ENTITY_ROLES = [
+  "chaser", "gunner", "flyer", "bouncer", "crusher", "swarm",
+  "platform.move", "platform.fall", "platform.swing",
+  "cage", "powerup", "door.trigger", "guardian",
   // PK-R6 · C1 (doc 44 §4 ch01): a DRAINED classroom object — one of the things
   // OSWIN rained the colour out of, standing grey where it fell. It has no
   // brain and no menace: it waits, wearing an ↑ cue, until the child steps up
@@ -35,7 +45,7 @@ export type EntityRole =
   // name and its colour and the world keeps that colour. This is the ch01
   // rebuild's field identity — restoration spread across the whole level
   // instead of six anonymous cages in one room.
-  | "drained"
+  "drained",
   // PK-R6 · D (doc 44 §3.3): THE BEWITCHED CLASSMATE. The person inside the
   // chapter's one person-cage, standing in the world as a being of her own the
   // moment the cage opens. Opening the cage does not free her: she is ghost-pale
@@ -43,13 +53,13 @@ export type EntityRole =
   // child answers each with the command that stops or guides it (six rounds,
   // §3.3). She is the only role whose redemption is EARNED IN STAGES — every
   // other being is drained-or-restored, she is restored by degrees.
-  | "classmate"
+  "classmate",
   // PK-R3b · R3-16 (doc 41 §5): the two static-state collectibles. `tip` is a
   // Regel-Seite — a rule page OSWIN tore out of the book, which shows its
   // Merksatz when picked up; `book` is a Bonus-Buch, the no-death adaptation of
   // an extra life, worth points and nothing else. Both are doc 40 §3
   // static-state: no rig, no orbit, no brain — they sit and wait.
-  | "tip" | "book"
+  "tip", "book",
   // R5-W5 · G4 (UNIFORM_SAMMELN_DESIGN §1): a piece of the school UNIFORM. The
   // nine words of the unit's „Cool clothes" page lie scattered through the
   // school house — flung apart in the fall into the book, not drained of their
@@ -59,7 +69,10 @@ export type EntityRole =
   // appears at the find, and every third piece in the ledger opens a naming
   // card. It is NOT the chapter's collectible: it feeds no trail, pays no door,
   // and carries its own counter (doc 44 §2.7 amendment).
-  | "cloth";
+  "cloth",
+] as const;
+
+export type EntityRole = (typeof ENTITY_ROLES)[number];
 
 /** The pickups that are simply TAKEN on contact (no card, no fight). */
 export const PICKUP_ROLES = new Set<EntityRole>(["tip", "book", "cloth"]);
@@ -118,6 +131,12 @@ export interface EntityParams {
    *  carries a lower-case one, so a frame that opens with it reads wrong. The
    *  frames own the sentence; this field only ever names the thing. */
   captiveDe?: string;
+  /** cage: WELCHES Blatt der Insasse trägt — der Stamm ist `captive_<key>`
+   *  (L0 · D7). Getippt, weil das Gesetz `cage-captive-key` ihn liest: die
+   *  Datei-Konvention dieser Schnittstelle ist, dass jedes Feld, das ein Gesetz
+   *  liest, hier steht, damit ein Tippfehler ein Compilerfehler wird und kein
+   *  stumm fehlendes Bild. */
+  captive?: string;
   /** classmate: WHICH cage this person was locked in (PK-R6 · D). The pointer
    *  runs from the person to the cage rather than the other way round because
    *  the sim asks it in that direction — a cage bursts and has to find who
@@ -318,6 +337,19 @@ export interface PhaseSpec {
    *  undeclared pocket whose only way out is a hazard is a softlock, not a
    *  design (Kokis Replay 2026-08-11, p1-Keller). */
   inkReturns?: InkReturnSpec[];
+  /** L0 · D5 · DIE TRAIL-WÖRTER DER PHASE.
+   *
+   *  Die `*`-Kacheln eines Raums buchstabieren ein Wort, und bis zur Level-Welle
+   *  stand dieses Wort AUSSCHLIESSLICH im Kunst-Manifest `composition.ts` —
+   *  einem Kapitel-1-Register, das für ch02–ch06 bewusst leer bleibt
+   *  (Platzhalter-Doktrin E4). Ohne Eintrag dort buchstabiert ein Trail stumm
+   *  A→Z durch, also gerade nicht das Wort, das der Raum meint. Deshalb darf die
+   *  Phase ihre Wörter selbst deklarieren; `trailWordsFor` gibt der Deklaration
+   *  Vorrang und fällt für ch01 unverändert auf `composition.ts` zurück.
+   *
+   *  Ein deklariertes Wort ist eine PRÜFBARE Zusage: das Gesetz `trail-words`
+   *  rechnet die Buchstaben gegen die Zahl der `*` im Gitter nach. */
+  words?: readonly string[];
 }
 
 export interface PaintLevel {
@@ -355,6 +387,24 @@ export interface PaintLevel {
    *  with the other two in batch-ap and then referenced by nothing for three
    *  waves — the third sheet of a set of three, paid for and never hung. */
   rulePlate?: string;
+  /** L0 · D6 · DIE AUFTAKT-PLATTEN DES KAPITELS.
+   *
+   *  Der Auftakt — die vier Karten VOR dem ersten Raum — zeigte seine Bilder aus
+   *  drei JSX-Literalen in `PaintGame.tsx`: `auftakt_ch01_b`, `schulhaus_ch01_b`,
+   *  `schulhaus_ch01_a`, `auftakt_ch01_c`, `auftakt_ch01_d`. Ein zweites Kapitel
+   *  hätte damit sein Buch mit dem SCHULHAUS aus Kapitel 1 aufgeschlagen, ohne
+   *  dass irgendein Tor etwas zu bemängeln gehabt hätte. Dasselbe Muster wie
+   *  `goalPlate` oben: die Platte ist ein bestelltes Bild mit eigenem Namen,
+   *  also DEKLARIERT das Kapitel sie, statt sie aus der Kapitel-Id abzuleiten.
+   *  `check-paint-art` verlangt danach genau die hier genannten Blätter, und
+   *  `artScope.domArtStems` zählt sie zum beanspruchten Bestand — die Decke der
+   *  toten Kunst bleibt dadurch unverändert.
+   *
+   *  `schatten` ist eine FALLBACK-KETTE (erstes vorhandenes Blatt gewinnt), weil
+   *  die Auftakt-Karte 1 seit jeher drei Kandidaten in dieser Reihenfolge
+   *  probiert. Ein Kapitel ohne Platten fällt auf die gezeichnete Szene zurück,
+   *  wie es der Auftakt vor jeder Kunst tat. */
+  auftaktPlates?: { schatten?: readonly string[]; auftrag?: string; los?: string };
   /** PK-R3b · R3-16 (doc 41 §5): how many Regel-Seiten this chapter hides — one
    *  per grammar topic of its unit. DECLARED here and PLACED in the phases, and
    *  the `tip-honesty` law proves the two agree; the HUD and the score page then
@@ -392,6 +442,22 @@ export const allPhases = (level: PaintLevel): PhaseSpec[] => [
   ...(level.arena ? [level.arena] : []),
   ...(level.bonus ? [level.bonus] : []),
 ];
+
+/** L0 · D5 · WELCHE WÖRTER EIN BUCHSTABEN-TRAIL BUCHSTABIERT.
+ *
+ *  EINE Quelle für alle vier Verbraucher (dieses Gesetz, `PaintScene`s
+ *  Buchstaben-Bau, die Bonus-Zeremonie und die Tore). Vorrang hat die
+ *  Deklaration der Phase; fehlt sie, gilt das Kunst-Manifest wie bisher — so
+ *  bleibt Kapitel 1, dessen Wörter in `composition.ts` stehen, unverändert,
+ *  während ein Kapitel ohne Kunst-Eintrag trotzdem sein Wort buchstabiert
+ *  statt stumm A→Z durchzuzählen.
+ *
+ *  Der Aufruf braucht die Phase, nicht nur ihre Id: `allPhases` schließt Arena
+ *  und Bonusraum ein, und beide tragen Trails. */
+export const trailWordsFor = (level: PaintLevel, phaseId: string): readonly string[] | undefined => {
+  const phase = allPhases(level).find((p) => p.id === phaseId);
+  return phase?.words ?? compositionFor(level.chapter, phaseId)?.words;
+};
 
 export const parsePaintLevel = (level: PaintLevel): PaintLevel => {
   if (level.schema !== LEVEL_SCHEMA) fail(`schema must be ${LEVEL_SCHEMA}`);
@@ -1446,7 +1512,7 @@ export const checkLevelLaws = (level: PaintLevel): LawFailure[] => {
     // Note it deliberately does NOT fire on same-character pairs at a distance
     // (p9 spells SCHOOLTHINGS and carries three): a word is allowed to use a
     // letter twice. What it forbids is using it twice IN ONE BREATH.
-    const trail = letterGlyphs(ph.rows, compositionFor(level.chapter, ph.id)?.words);
+    const trail = letterGlyphs(ph.rows, trailWordsFor(level, ph.id));
     for (let i = 0; i < trail.length; i++) {
       for (let j = i + 1; j < trail.length; j++) {
         const a = trail[i]!;
@@ -1741,6 +1807,46 @@ export const checkLevelLaws = (level: PaintLevel): LawFailure[] => {
       }
     }
   }
+
+  // ── L0 · D5 · trail-words · EIN DEKLARIERTES WORT IST EINE ZUSAGE ──────────
+  //
+  // Nur für Phasen, die ihre Wörter SELBST deklarieren. `letterGlyphs` verteilt
+  // die Buchstaben zyklisch über die `*`-Zellen: sind es zu wenige Buchstaben,
+  // fängt das Wort mittendrin von vorne an, sind es zu viele, bricht es ab.
+  // Beides sieht im Spiel nach einem Wort aus und ist keines — genau die Klasse
+  // Fehler, die niemand beim Durchlaufen bemerkt. Kapitel 1, dessen Wörter im
+  // Kunst-Manifest stehen, ist bewusst NICHT betroffen: dort ist der Trail
+  // gegen die gemalte Komposition geprüft (`check-composition`), und der
+  // Bonusraum darf seine Nachlese-Phrase absichtlich wiederholen.
+  for (const ph of allPhases(level)) {
+    if (ph.words === undefined) continue;
+    const stars = ph.rows.reduce((n, row) => n + [...row].filter((g) => g === "*").length, 0);
+    const letters = ph.words.join("").toUpperCase().replace(/[^A-Z]/g, "").length;
+    if (letters === 0) {
+      failures.push({ phase: ph.id, law: "trail-words", detail: `words ${JSON.stringify(ph.words)} spells no letter at all — a declaration that spells nothing leaves the trail counting A→Z, which is what the declaration was for` });
+    } else if (letters !== stars) {
+      failures.push({ phase: ph.id, law: "trail-words", detail: `words ${JSON.stringify(ph.words)} spells ${letters} letter(s) but the grid carries ${stars} „*" — the trail would ${letters < stars ? "restart the word mid-trail" : "break off before the word ends"}` });
+    }
+  }
+
+  // ── L0 · D7 · cage-captive-key · DIE FORM DES INSASSEN-SCHLÜSSELS ──────────
+  //
+  // `params.captive` wird zum Blatt-Namen `captive_<key>`. Bis zur Level-Welle
+  // stand dahinter eine feste ch01-Liste von vier Schlüsseln; jedes weitere
+  // Kapitel hätte seine eigenen gebraucht, also prüft der Motor jetzt die FORM
+  // statt der Mitgliedschaft. Ein Großbuchstabe oder ein Leerzeichen ergäbe
+  // einen Dateinamen, den keine Kunst-Bestellung je trifft — und weil fehlende
+  // Kunst hier legal zurückfällt, wäre der Tippfehler unsichtbar.
+  for (const ph of allPhases(level)) {
+    for (const e of ph.entities) {
+      const key = e.params?.captive;
+      if (key === undefined) continue;
+      if (typeof key !== "string" || !/^[a-z0-9]+$/.test(key)) {
+        failures.push({ phase: ph.id, law: "cage-captive-key", detail: `cage ${e.id}: params.captive „${String(key)}" is no stem name — a captive key is lower-case letters and digits only, because it becomes the sheet captive_<key>` });
+      }
+    }
+  }
+
   failures.push(...clothLawFailures(level));
   return failures;
 };
