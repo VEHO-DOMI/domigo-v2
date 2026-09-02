@@ -669,6 +669,15 @@ if (CHAPTERS.length === 0) {
 // nie gedruckt — ausgerechnet dann, wenn jemand wissen muss, welche Gesetze
 // mangels Eingaben gar nicht liefen. Der Mechanismus gegen stille Auslassung
 // war selbst still, sobald es darauf ankam.
+// L0b · D-792 · EINE LÜCKE IN EINEM FERTIGEN KAPITEL IST ROT, NICHT NUR NOTIERT.
+// L0 hat sie GESAGT und nicht GEURTEILT — beide Tore blieben grün. Ein
+// Abschluss-PR, der `draft` entfernt und die Dossiers oder die Kartendatei
+// vergisst, wäre hier still durchgegangen. `draft:true` bleibt der namentliche
+// Skip; ohne die Flagge ist dasselbe Fehlen ein Loch.
+for (const g of ledger.gaps()) {
+  fails.push(`${g} — das Kapitel trägt KEINE draft-Flagge, ist also fertig: eine fehlende Eingabe ist hier ein Loch, keine Bauphase (D-792)`);
+}
+
 ledger.print();
 if (fails.length) {
   console.error(`check-level-design: ${fails.length} Verstöße`);

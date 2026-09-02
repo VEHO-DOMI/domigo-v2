@@ -134,6 +134,7 @@ export const orphanTaskFiles = () => {
 
 export const skipLedger = (chapters = paintChapters()) => {
   const rows = [];
+  const gaps = [];
   // Das Etikett sagt die WAHRHEIT über den Grund. Es stand fest auf »(draft)«,
   // und für ein FERTIGES Kapitel, dem eine Datei fehlt (Tippfehler, verpasster
   // Commit), hätte es damit einen harmlosen Zustand behauptet, den es nicht
@@ -143,10 +144,26 @@ export const skipLedger = (chapters = paintChapters()) => {
   return {
     /** @param {string} chapter @param {string} law @param {string} why */
     skip: (chapter, law, why) => {
-      const etikett = draftOf.get(chapter) === true ? "übersprungen (draft)" : "übersprungen (KEIN Entwurf — das ist eine Lücke, kein Zustand)";
+      const entwurf = draftOf.get(chapter) === true;
+      const etikett = entwurf ? "übersprungen (draft)" : "übersprungen (KEIN Entwurf — das ist eine Lücke, kein Zustand)";
       rows.push(`${chapter}/${law}: ${etikett} — ${why}`);
+      if (!entwurf) gaps.push(`${chapter}/${law}: ${why}`);
     },
     rows: () => rows,
+    /**
+     * L0b · D-792 · DIE LÜCKEN, DIE EIN URTEIL BRAUCHEN.
+     *
+     * Ein Kapitel OHNE `draft`-Flagge ist fertig — es steht Kindern offen. Fehlt
+     * ihm dann eine Eingabe (Dossiers, Kartendatei, Politik), ist das keine
+     * Bauphase, sondern ein Loch. L0 hat das GESAGT und nicht GEURTEILT: beide
+     * Tore blieben grün und druckten nur »KEIN Entwurf — das ist eine Lücke«.
+     * Gemessen von einem unabhängigen Prüfer am Branch, und er hat recht: ein
+     * Abschluss-PR, der `draft` entfernt und die Dossiers vergisst, wäre in zwei
+     * Toren still durchgegangen.
+     *
+     * Ein Etikett ohne Exit-Code ist eine Notiz, kein Tor.
+     */
+    gaps: () => gaps,
     print: () => { for (const r of rows) console.log(`  · ${r}`); },
   };
 };

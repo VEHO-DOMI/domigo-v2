@@ -27,7 +27,7 @@ import { ENTITY_ROLES } from "@domigo/game-paint/level";
 // Der Haken gibt ihm ein leeres Modul, damit HIER die echte Datei geprueft wird
 // und nicht eine Kopie ohne diese Zeile (siehe lib/testing/server-only-shim.mjs).
 register(new URL("./testing/server-only-shim.mjs", import.meta.url));
-const { CHAPTER_ID, chapterHasTasks, listPaintChapters, loadPaintLevel } = await import("./paint-content.ts");
+const { CHAPTER_ID, chapterHasTasks, listPaintChapters, loadPaintLevel, parsePaintLevelFile } = await import("./paint-content.ts");
 
 const STORY = "g1.st.lost-pages";
 
@@ -156,5 +156,35 @@ describe("L0 · D1 · der Weiterleitungs-Stumpf", () => {
     // …und der Wächter kann sehen, was er sucht: ein Literal-Ziel ohne Abfrage
     // wäre genau die alte Zeile, und die ist hier nicht mehr.
     assert.doesNotMatch(src, /redirect\(`\/play\/\$\{grade\}\/buch\/ch01`\)/, "das Ziel ist wieder ein Literal ohne Abfrage");
+  });
+});
+
+describe("L0b · D-790 · tipsTotal darf 0 sein (Ruling 2026-09-02)", () => {
+  // Geprüft wird der PARSER, den auch der Lader fährt — mit den ECHTEN Bytes
+  // von ch02 auf der Platte, an denen genau eine Zahl gedreht ist. Kein
+  // erfundenes Level (das würde die anderen Regeln mitprüfen, die hier nicht
+  // zur Debatte stehen) und keine Datei im Korpus (dort lesen die Tore).
+  const roh = () => JSON.parse(JSON.stringify(loadPaintLevel(STORY, "ch02")));
+
+  it("ch02 setzt wirklich null tip-Zellen — die 0 ist die WAHRE Zahl", () => {
+    // die Prämisse des Rulings: `tip-honesty` verlangt nur »deklariert =
+    // platziert«, und 0 = 0 ist gesetzestreu. Ohne diese Zeile prüfte der Fall
+    // darunter eine Erlaubnis, die niemand braucht.
+    const ch02 = loadPaintLevel(STORY, "ch02");
+    const tips = ch02.phases.flatMap((p) => p.entities.filter((e) => e.role === "tip"));
+    assert.equal(tips.length, 0);
+  });
+
+  it("ein Kapitel mit `tipsTotal: 0` lädt", () => {
+    const level = parsePaintLevelFile({ ...roh(), tipsTotal: 0 });
+    assert.equal(level.tipsTotal, 0);
+  });
+
+  it("…und `-1` wird weiterhin abgewiesen — die 0 ist erlaubt, Unsinn nicht", () => {
+    assert.throws(() => parsePaintLevelFile({ ...roh(), tipsTotal: -1 }));
+  });
+
+  it("das ausgelieferte ch01 bleibt unberührt", () => {
+    assert.equal(loadPaintLevel(STORY, "ch01").tipsTotal, 5);
   });
 });

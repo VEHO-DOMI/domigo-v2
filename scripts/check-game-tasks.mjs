@@ -1386,6 +1386,15 @@ if (coverageReports.length > 0) {
 // nie gedruckt — ausgerechnet dann, wenn jemand wissen muss, welche Gesetze
 // mangels Eingaben gar nicht liefen. Der Mechanismus gegen stille Auslassung
 // war selbst still, sobald es darauf ankam.
+// L0b · D-792 · EINE LÜCKE IN EINEM FERTIGEN KAPITEL IST ROT, NICHT NUR NOTIERT.
+// L0 hat sie GESAGT und nicht GEURTEILT — beide Tore blieben grün. Ein
+// Abschluss-PR, der `draft` entfernt und die Dossiers oder die Kartendatei
+// vergisst, wäre hier still durchgegangen. `draft:true` bleibt der namentliche
+// Skip; ohne die Flagge ist dasselbe Fehlen ein Loch.
+for (const g of ledger.gaps()) {
+  fail(g.split("/")[0], `${g.slice(g.indexOf("/") + 1)} — das Kapitel trägt KEINE draft-Flagge, ist also fertig: eine fehlende Eingabe ist hier ein Loch, keine Bauphase (D-792)`);
+}
+
 ledger.print();
 if (failures === 0) console.log(`check-game-tasks: OK — ${itemCount} tasks across ${withTasks.length} file(s): schema, grounding, giveaway, register, binding, coverage, length, twins, portraits, timer-policy, form, voice, rhythm, distinctness, coverage-ledger, giveaway-class (all nine kinds, both languages, the board) all green`);
 else { console.error(`check-game-tasks: ${failures} failure(s)`); process.exit(1); }

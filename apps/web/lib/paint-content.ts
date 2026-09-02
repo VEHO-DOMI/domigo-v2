@@ -209,7 +209,18 @@ const PaintLevelFile = z.object({
   clothPlaceDe: z.string().min(1).optional(),
   /** PK-R3b · R3-16: how many Regel-Seiten the chapter hides (doc 41 §5). The
    *  `tip-honesty` law proves this against what the phases actually place. */
-  tipsTotal: z.number().int().positive().optional(),
+  /** L0b · D-790 GESCHLOSSEN (Ruling Programm-Architekt, 2026-09-02): die 0 ist
+   *  erlaubt. Hier stand `positive()`, und das VERSCHÄRFTE das Motor-Gesetz
+   *  still: `tip-honesty` (`level.ts:1220-1224`) verlangt nur Gleichheit
+   *  „deklariert = platziert", und ein Kapitel ohne Regel-Seite (0 = 0) ist
+   *  gesetzestreu. Ein solches Kapitel bestand also jedes Tor und fiel die
+   *  Seite mit einem 500, sobald jemand sie öffnete — genau die Klasse »zwei
+   *  Wahrheiten für dieselbe Regel«, die L0 abgebaut hat.
+   *
+   *  `nonnegative()` und nicht weg: eine NEGATIVE Zahl bleibt Unsinn, und das
+   *  HUD blendet die Zeile bei 0 ohnehin aus (`PaintGame.tsx:1752` Chip,
+   *  `:2858` Bilanz — beides gemessen, nicht angenommen). */
+  tipsTotal: z.number().int().nonnegative().optional(),
   /** R5-W4 · B4 · R44: how the chapter's checkpoints show themselves —
    *  `"silent"` draws nothing, `"krakel"` plays the easel ceremony. It has to be
    *  named HERE as well as in the level model: this schema strips what it does
@@ -226,6 +237,15 @@ const PaintLevelFile = z.object({
 
 export type PaintLevelFileT = z.infer<typeof PaintLevelFile>;
 
+/** L0b · DER PARSER, DEN AUCH DER LADER FÄHRT.
+ *
+ *  Exportiert, damit ein Test die SCHEMA-Regeln an genau dem Code prüfen kann,
+ *  der im Spiel läuft — statt an einer nachgebauten Kopie oder an einer Datei,
+ *  die er zuerst in den Korpus schreiben müsste. Ein Test, der ins
+ *  `content/`-Verzeichnis schreibt, wäre selbst ein Risiko: die Tore lesen
+ *  genau dort. */
+export const parsePaintLevelFile = (raw: unknown): PaintLevelFileT => PaintLevelFile.parse(raw);
+
 const paintDir = (storyId: string): string => {
   if (!STORY_ID.test(storyId)) throw new Error(`paint-content: bad story id ${storyId}`);
   return path.join(REPO_ROOT, "content", "corpus", "stories", storyId, "paint");
@@ -240,7 +260,7 @@ export const loadPaintLevel = (storyId: string, chapter: string): PaintLevelFile
   const hit = levelCache.get(cacheKey);
   if (hit) return hit;
   const file = path.join(paintDir(storyId), `${chapter}.level.json`);
-  const parsed = PaintLevelFile.parse(JSON.parse(fs.readFileSync(file, "utf8")));
+  const parsed = parsePaintLevelFile(JSON.parse(fs.readFileSync(file, "utf8")));
   levelCache.set(cacheKey, parsed);
   return parsed;
 };
