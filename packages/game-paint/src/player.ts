@@ -449,7 +449,7 @@ export const stepPlayer = (
     s.hovering = false;
     s.iframes = Math.min(s.iframes, 90); // R3-M9: landing clamps hit-flicker to 90
     // …und die Klemme gilt dem BILD genauso: sie war immer eine Blinker-Regel
-    // („hit-flicker"), also folgt ihr die eigene Uhr, statt sie zu überleben.
+    // (»hit-flicker«), also folgt ihr die eigene Uhr, statt sie zu überleben.
     s.blinkTicks = Math.min(s.blinkTicks, 90);
     events.push({ type: "landed", impact: fallSpeedPx });
   }
