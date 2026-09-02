@@ -1177,7 +1177,11 @@ describe("L0 · D7 · cage-captive-key — die Form des Insassen-Schlüssels", (
     const rows = [...OK_ROWS];
     const lvl = level(rows);
     lvl.phases[0]!.entities = [
-      { id: "c1", role: "cage", skin: "satchel", c: 3, r: 16, tier: "E", params: { captive, captiveDe: "die Musikanlage" } },
+      // `as string` mit Absicht: der Fall füttert das Gesetz mit dem, was ein
+      // Tippfehler in einer JSON-Datei WIRKLICH liefert — eine Zeichenkette in
+      // falscher Form. Ohne die Zusicherung könnte der Typ die Prüfung
+      // beweisen, die hier zur Laufzeit bewiesen werden soll.
+      { id: "c1", role: "cage", skin: "satchel", c: 3, r: 16, tier: "E", params: { captive: captive as string, captiveDe: "die Musikanlage" } },
     ];
     return checkLevelLaws(lvl);
   };
