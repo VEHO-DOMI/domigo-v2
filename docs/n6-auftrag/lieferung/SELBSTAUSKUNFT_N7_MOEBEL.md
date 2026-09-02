@@ -2,36 +2,37 @@ Stand: 2026-09-02 - N7A1 - Moebel - Runde 1
 
 # CODEX DRAFT — NOT CANON
 
-Status: DOCUMENT (`docs/n6-auftrag/lieferung/`). Runde 2: sechs vollständige Neuwürfe mit Malerei-Nachbesserung. Die Stand-Zeile bleibt absichtlich die der Order.
+Status: DOCUMENT (`docs/n6-auftrag/lieferung/`). Runde 3: zwei vollständige Neuwürfe; vier angenommene Blätter wurden nicht angefasst. Die Stand-Zeile bleibt absichtlich die der Order.
 
 ## Prüfumfang
 
-- Alle sechs Blattmaße wurden auf die neuen Vorgaben geändert; die Breiten bleiben 64 px je Zelle.
-- Alle sechs PNGs sind 8-Bit-RGBA-Dateien mit Alpha-Silhouette.
+- Die beiden Zielblätter wurden als geschlossene, gefüllte Buchmassen neu geworfen; die vier angenommenen PNGs blieben unverändert.
+- Die beiden Zielblätter bleiben 8-Bit-RGBA-Dateien mit Alpha-Silhouette und den bestehenden Blattbreiten.
 - Die drei abgenommenen p2-Möbel wurden erneut als Machart-Referenz geöffnet.
 - Normalgröße und verkleinerte Gesamtansicht wurden visuell geprüft.
-- Die neuen Bilder enthalten modellierte Wertverläufe, farbige Materialkörnung, Seitenlagen, Bänder/Falze und farbige Kontaktschatten; es wurden keine schwarzen Umrisslinien gezeichnet.
+- Die beiden neuen Bilder enthalten modellierte Wertverläufe, farbige Materialkörnung, Seitenlagen, Bänder/Falze und farbige Kontaktschatten; es wurden keine schwarzen Umrisslinien gezeichnet.
 - `check-ground-plane --selftest` war grün: ein sauberes Blatt und drei absichtlich veränderte Fehlerfälle wurden korrekt erkannt.
-- Der Einzelblatt-Check meldet für alle sechs neuen Lieferbilder: Reichweite 100 %, Kippung 0,0°.
+- Der Einzelblatt-Check meldet für beide neuen Lieferbilder: Reichweite 100 %, Kippung 0,0°.
+- Spielgrößen-Simulation: Der Bench wurde auf 32 × 24 px, das Regal auf 48 × 24 px verkleinert und anschließend mit `0xa3a3a3` multipliziert. Bench: 86,1 % Deckung, Wert-SD 19,7. Regal: 87,3 % Deckung, Wert-SD 20,2.
 - Die Dateidichte wurde als grober technischer Indikator mitgeprüft; sie ersetzt keine menschliche Malerei-Abnahme.
 
 ## 1. `terrain_reading_bench_p1.png`
 
-- MD5: `848828e9f05fb4ed00ee6c9b76ca2df1`
-- Blattmaß: 128 × 96 px; RGBA; 10 621 Byte; Alpha-Bounding-Box `(3, 8)–(125, 95)`.
-- Texturdichte: 3 171 unterschiedliche opake RGB-Werte; häufigster Wert 0,2 % der opaken Pixel.
+- MD5: `f7f956c10d9cddc5b9e006c27ce67e8e`
+- Blattmaß: 128 × 96 px; RGBA; 16 237 Byte; Alpha-Bounding-Box `(4, 6)–(124, 95)`.
+- Spielgröße 32 × 24 px plus Multiply `0xa3a3a3`: 86,1 % Deckung der verkleinerten Bounding-Box; Wert-SD 19,7.
 - Unterkante: Reichweite 100 %, Kippung 0,0°.
 
-1. Benennbarkeit / Geologie — Lesebank aus warmem Buchleder, Sitzdeckel, Papierlagen und zwei geraden Buchwangen; als Bank sofort lesbar.
-2. Silhouette — geschlossener gefertiger Umriss mit zwei geraden Wangen; keine schwarze Kontur, der Umriss entsteht aus farbigem Wertkontrast.
+1. Benennbarkeit / Geologie — Lesebank aus warmem Buchleder, Sitzdeckel, Papierlagen und einer vollständig mit Bänden gefüllten Untermasse; als Bank sofort lesbar.
+2. Silhouette — geschlossene Masse unter dem Sitz, ohne durchsichtigen Rahmen; der Umriss entsteht aus farbigem Wertkontrast statt schwarzer Kontur.
 3. Laufkante — breite, ruhige, waagrechte Sitzfläche mit heller oberer Lederkante.
-4. Unterseite / Flanke gemalt — Wangen und Sitzschürze tragen weiche Schatten, Körnung und sichtbare Buch-/Papierstruktur.
-5. Innen-Modulation — diagonales Licht oben links, Abschattung unten rechts, feine Lederflecken und unregelmäßige Ereignisse ohne Wiederholungs-Tile.
-6. Verbindungs-Logik — Sitzplatte, Schürze und Wangen sind über Auflager- und Falzschatten verbunden; die Wangen wirken tragend.
-7. Material = Spielrolle — das feste Sitzbrett und die kompakten Buchwangen erklären die begehbare Bankfunktion.
+4. Unterseite / Flanke gemalt — die Unterseite ist mit gestapelten Bänden, geschlossener Wange, Seitenlagen und weichen Kontakt-/Fugenschatten gefüllt.
+5. Innen-Modulation — diagonales Licht oben links, Abschattung unten rechts, Lederflecken, Papierkörnung und unregelmäßige Ereignisse ohne Wiederholungs-Tile.
+6. Verbindungs-Logik — Sitzplatte, Schürze, Seitenwangen und das mittlere Fach liegen sichtbar aufeinander; dunkle Auflager erklären die Tragwirkung.
+7. Material = Spielrolle — feste Sitzplatte und kompakte Bücherfüllung machen die Bank auch in der kleinen Spielansicht als tragendes Möbel lesbar.
 8. Tiefen-Palette — warme Leder-, Ziegel-, Ocker-, Olive- und Papierwerte; die tragenden Kanten sind die kontraststärksten Flächen.
 9. Raum schließt materialgerecht — transparenter Alpha-Rand ohne künstliche Bodenfläche; der farbige Kontaktschatten bleibt oberhalb der geraden Basis.
-10. Detail an Flanke und Unterseite — Rückenbänder, Lederkörnung, Seitenlinien und Schürzenschatten sitzen an den Vertikalen; Oberseite bleibt funktional.
+10. Detail an Flanke und Unterseite — Rückenbänder, Lederkörnung, Seitenlinien und Fachschatten sitzen in der gefüllten Masse; die Oberseite bleibt funktional.
 11. Gefahren-Deckung — keine Gefahrform und kein Dekor, das zusätzliche Begehbarkeit vortäuscht.
 12. Raum-Kohärenz — warmes p1-Material, dieselbe frontal-orthografische Körpergrammatik und dieselbe Bodenebene wie im Möbel-Set.
 13. Eine orthografische Bodenebene — erfüllt: gerade waagrechte Aufstandskante, 100 % Reichweite, 0,0° Kippung.
@@ -59,21 +60,21 @@ Status: DOCUMENT (`docs/n6-auftrag/lieferung/`). Runde 2: sechs vollständige Ne
 
 ## 3. `terrain_book_shelf_p1.png`
 
-- MD5: `f2f126d40ce87c47af65e49d03544233`
-- Blattmaß: 192 × 96 px; RGBA; 19 550 Byte; Alpha-Bounding-Box `(6, 6)–(185, 95)`.
-- Texturdichte: 5 098 unterschiedliche opake RGB-Werte; häufigster Wert 0,3 % der opaken Pixel.
+- MD5: `06e2b2519971f33a6ad8d6244caff910`
+- Blattmaß: 192 × 96 px; RGBA; 23 719 Byte; Alpha-Bounding-Box `(6, 6)–(185, 95)`.
+- Spielgröße 48 × 24 px plus Multiply `0xa3a3a3`: 87,3 % Deckung der verkleinerten Bounding-Box; Wert-SD 20,2.
 - Unterkante: Reichweite 100 %, Kippung 0,0°.
 
-1. Benennbarkeit / Geologie — niedriges Regalbrett aus einem Bücherstapel im Verband, mit langem tragendem oberen Brett.
-2. Silhouette — offener, niedriger Regalumriss; der gerade obere Abschluss ist ein gemaltes Brett, keine nackte Kontur.
+1. Benennbarkeit / Geologie — niedriges Regalbrett aus einer durchgehend gefüllten, unregelmäßigen Büchermaurerung mit langem tragendem oberen Brett.
+2. Silhouette — geschlossene niedrige Masse ohne durchsichtige Fächer; der gerade obere Abschluss ist ein gemaltes Brett, keine nackte Kontur.
 3. Laufkante — lange, helle und waagrechte Oberkante; Materialwechsel liegen innerhalb der Buchkörper.
-4. Unterseite / Flanke gemalt — mehrere Reihen aus Leder, Papierkanten, Rücken und farbigen Fugen modellieren die Tiefe.
-5. Innen-Modulation — weiche diagonale Lichtverläufe plus lokale Kratzer, Flecken und Seitenvariationen; keine erkennbare Wiederholungsperiode.
-6. Verbindungs-Logik — das obere Brett liegt auf dem Bücherverband; die vertikalen Buchkörper und Fugen zeigen den Verband.
-7. Material = Spielrolle — der breite Bücherverband trägt das Brett und liest sich als festes niedriges Terrain.
+4. Unterseite / Flanke gemalt — mehrere vollständig gefüllte Reihen aus stehenden und liegenden Bänden, Papierkanten, Rücken und farbigen Fugen modellieren die Tiefe.
+5. Innen-Modulation — weiche diagonale Lichtverläufe plus lokale Kratzer, Flecken und Seitenvariationen; keine leeren Zwischenbretter und keine erkennbare Wiederholungsperiode.
+6. Verbindungs-Logik — das obere Brett liegt auf der dicht verzahnten Büchermaurerung; stehende und liegende Bücher fassen sich gegenseitig.
+7. Material = Spielrolle — die breite, geschlossene Büchermaurerung trägt das Brett und bleibt auch in der 48 × 24 px-Ansicht als Regalmasse lesbar.
 8. Tiefen-Palette — warme Ocker-, Rot-, Olive-, Blau- und Braunwerte; farbige Schatten statt schwarzer Konturen.
-9. Raum schließt materialgerecht — Alpha-Rand ohne künstliche Plattform; der farbige Kontaktschatten bleibt vor der geraden Basis.
-10. Detail an Flanke und Unterseite — Buchrücken, Seitenlagen, Falze und Auflagerfugen liegen an der Front; Oberseite bleibt ruhig.
+9. Raum schließt materialgerecht — Alpha-Rand ohne künstliche Plattform; die gefüllte Masse und der farbige Kontaktschatten schließen den Raum vor der geraden Basis.
+10. Detail an Flanke und Unterseite — Buchrücken, Seitenlagen, Falze und Auflagerfugen liegen in der dichten Front; die Oberseite bleibt ruhig.
 11. Gefahren-Deckung — keine Gefahrform und kein irreführendes Zusatzdekor.
 12. Raum-Kohärenz — p1-Wärme und gemeinsame Buch-/Papiergrammatik; die Anordnung bleibt eigenständig gegenüber der Alt-Schwester.
 13. Eine orthografische Bodenebene — erfüllt: gerade waagrechte Aufstandskante, 100 % Reichweite, 0,0° Kippung.
