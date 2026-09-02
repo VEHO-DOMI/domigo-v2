@@ -1,0 +1,511 @@
+{
+ "schema": "gameTasks@2",
+ "chapter": "ch03",
+ "unit": "g1-u03",
+ "note": "gameTasks@2 · ch03 EXEMPLAR (L3-T1, Kalibrier-Bahn der Level-Welle). VERTEILUNGSKARTE (doc 41 §1 + R252): das Feld dieses Kapitels serviert choice · order · spell · restore; order debuetiert hier im Feld und deklariert deshalb die einzige Form, die das Schema ihm laesst (ask-it) — die Chips bilden eine FRAGE, keine Aussage. KORPUS-GESETZ: MORE! 1 Unit 3 lehrt KEIN there-is/are; keine Karte fragt es, keine bietet es als Ablenker. Und keine Karte bietet eine FALSCHSCHREIBUNG an: die Fehlerformen des Korpus (foots · feets · tooths · teeths) sind Distraktoren von grammar.json, nie Optionen — die pick-correct-form-Regel des Schemas verlangt, dass jede Option ein echter Lexikon-Eintrag ist. Die Plural-Lektion tragen deshalb die order-Chips, die Zähl-Karten der Bugkanone und das Boss-Fenster mit have/has. STATUS: 16 Exemplare, nicht die Welle — je Maschine mindestens eines, je Wesen des p1-Raums so viele, dass das Deckungs-Gesetz gruen ist (2 encounter je Feind · 1 rescue je Käfig · 1 restore je entfaerbtem Ding · door-Serie · 2 boss + 1 finale). Die ~60 Karten der Welle schneidet L3-T2 nach Kokis p1-Walk. Der Insasse des Netzkäfigs ist Arbeitsstand (D-777, Kokis Wahl steht aus): ein Insassen-Tausch ändert NUR showsDe und die Optionen der beiden rsc-Karten sowie nounDe.captives in ch03.policy.json.",
+ "items": [
+  {
+   "id": "g1.paint.ch03.enc.papagei.e1",
+   "use": "encounter",
+   "kind": "choice",
+   "form": "pick-correct-form",
+   "exercises": [
+    "g1u03.s.have-got",
+    "g1u03.w.beard"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Der Papagei kreischt einen Satz über den Kapitän."
+   },
+   "storyDe": "Ein Wort stimmt nicht. Sag den Satz richtig!",
+   "options": [
+    "He has got a beard.",
+    "He have got a beard.",
+    "He is got a beard."
+   ],
+   "answer": "He has got a beard.",
+   "skins": [
+    "streitpapagei"
+   ],
+   "phases": [
+    "p1"
+   ],
+   "hints": {
+    "deDesc": "Bei er, sie, es heißt es nicht have.",
+    "deWord": "Auf Deutsch: Er hat einen Bart."
+   }
+  },
+  {
+   "id": "g1.paint.ch03.enc.papagei.e2",
+   "use": "encounter",
+   "kind": "choice",
+   "form": "pick-correct-form",
+   "exercises": [
+    "g1u03.s.have-got",
+    "g1u03.w.feet"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Der Papagei kreischt jetzt über die Mannschaft."
+   },
+   "storyDe": "Sag den Satz über die Piraten richtig!",
+   "options": [
+    "They have got two feet.",
+    "They has got two feet.",
+    "They is got two feet."
+   ],
+   "answer": "They have got two feet.",
+   "skins": [
+    "streitpapagei"
+   ],
+   "phases": [
+    "p1"
+   ],
+   "hints": {
+    "deDesc": "Bei sie in der Mehrzahl heißt es nicht has.",
+    "deWord": "Auf Deutsch: Sie haben zwei Füße."
+   }
+  },
+  {
+   "id": "g1.paint.ch03.enc.deckschrubber.e1",
+   "use": "encounter",
+   "kind": "choice",
+   "form": "ask-it",
+   "exercises": [
+    "g1u03.s.have-got",
+    "g1u03.w.feet"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Der Deckschrubber zeigt stolz auf seine Füße."
+   },
+   "storyDe": "Frag ihn, ob er zwei davon hat!",
+   "options": [
+    "Has he got two feet?",
+    "Have he got two feet?",
+    "Is he got two feet?"
+   ],
+   "answer": "Has he got two feet?",
+   "skins": [
+    "deckschrubber"
+   ],
+   "phases": [
+    "p1"
+   ],
+   "hints": {
+    "deDesc": "Die Frage beginnt bei er anders als bei ich.",
+    "deWord": "Auf Deutsch: Hat er zwei Füße?"
+   }
+  },
+  {
+   "id": "g1.paint.ch03.enc.deckschrubber.e2",
+   "use": "encounter",
+   "kind": "order",
+   "form": "ask-it",
+   "exercises": [
+    "g1u03.s.have-got",
+    "g1u03.s.irregular-plurals-2"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Dem Deckschrubber fällt die Frage auseinander."
+   },
+   "storyDe": "Ordne die Wörter zu einer Frage!",
+   "orderedChips": [
+    "Has",
+    "he",
+    "got",
+    "two",
+    "feet",
+    "?"
+   ],
+   "skins": [
+    "deckschrubber"
+   ],
+   "phases": [
+    "p1"
+   ],
+   "hints": {
+    "deDesc": "Das Fragewort steht vorne, das Zeichen hinten."
+   }
+  },
+  {
+   "id": "g1.paint.ch03.enc.kanone.e1",
+   "use": "encounter",
+   "kind": "choice",
+   "form": "count-it",
+   "exercises": [
+    "g1u03.x.numbers-small"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Die Bugkanone malt einen Fuß und noch einen Fuß."
+   },
+   "storyDe": "Wie viele sind das? Sag es auf Englisch!",
+   "options": [
+    "two",
+    "one",
+    "five"
+   ],
+   "answer": "two",
+   "skins": [
+    "bugkanone"
+   ],
+   "phases": [
+    "p1"
+   ],
+   "hints": {
+    "deDesc": "Zähl die Füße im Bild nach.",
+    "deWord": "Auf Deutsch: zwei."
+   }
+  },
+  {
+   "id": "g1.paint.ch03.enc.kanone.e2",
+   "use": "encounter",
+   "kind": "choice",
+   "form": "count-it",
+   "exercises": [
+    "g1u03.x.numbers-small"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Jetzt malt sie eine Hand mit allen Fingern."
+   },
+   "storyDe": "Wie viele Finger sind das? Sag es englisch!",
+   "options": [
+    "five",
+    "eight",
+    "two"
+   ],
+   "answer": "five",
+   "skins": [
+    "bugkanone"
+   ],
+   "phases": [
+    "p1"
+   ],
+   "hints": {
+    "deDesc": "So viele Finger hat eine ganze Hand.",
+    "deWord": "Auf Deutsch: fünf."
+   }
+  },
+  {
+   "id": "g1.paint.ch03.rsc.polly.r1",
+   "use": "rescue",
+   "kind": "choice",
+   "form": "state-it",
+   "exercises": [
+    "g1u03.w.hair",
+    "g1u03.w.purple"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Polly sitzt im Netzkäfig. Ihre Haare sind lila."
+   },
+   "storyDe": "Sag, was sie hat — dann geht das Netz auf!",
+   "options": [
+    "She has got purple hair.",
+    "She has got purple feet.",
+    "She has got purple teeth."
+   ],
+   "answer": "She has got purple hair.",
+   "skins": [
+    "netzkaefig"
+   ],
+   "phases": [
+    "p1"
+   ],
+   "hints": {
+    "deDesc": "Es wächst ihr auf dem Kopf.",
+    "deWord": "Auf Deutsch: die Haare — und Lila."
+   }
+  },
+  {
+   "id": "g1.paint.ch03.rsc.polly.r2",
+   "use": "rescue",
+   "kind": "choice",
+   "form": "pick-correct-form",
+   "exercises": [
+    "g1u03.s.have-got"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Polly zeigt auf ihren Papagei am Gitter."
+   },
+   "storyDe": "Ein Wort ist falsch. Wähl den richtigen Satz!",
+   "options": [
+    "She has got a parrot.",
+    "She have got a parrot.",
+    "She is got a parrot."
+   ],
+   "answer": "She has got a parrot.",
+   "skins": [
+    "netzkaefig"
+   ],
+   "phases": [
+    "p1"
+   ],
+   "hints": {
+    "deDesc": "Bei sie in der Einzahl heißt es nicht have.",
+    "deWord": "Auf Deutsch: Sie hat einen Papagei."
+   }
+  },
+  {
+   "id": "g1.paint.ch03.rst.holzbein.r1",
+   "use": "encounter",
+   "kind": "restore",
+   "form": "name-it",
+   "exercises": [
+    "g1u03.w.leg",
+    "g1u03.x.colours"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Ein graues Holzbein lehnt am Pier."
+   },
+   "storyDe": "Sag, was es ist — dann gib die Farbe zurück!",
+   "nameOptions": [
+    "a wooden leg",
+    "a beard",
+    "a nose",
+    "an ear"
+   ],
+   "name": "a wooden leg",
+   "colourAskDe": "Das Holzbein war braun.",
+   "colourOptions": [
+    "brown",
+    "red",
+    "blue"
+   ],
+   "colour": "brown",
+   "skins": [
+    "obj_holzbein"
+   ],
+   "phases": [
+    "p1"
+   ],
+   "hints": {
+    "deDesc": "Ein Pirat stapft damit über das Deck.",
+    "deWord": "Auf Deutsch: das Holzbein — und Braun."
+   }
+  },
+  {
+   "id": "g1.paint.ch03.door.p1.d1",
+   "use": "door",
+   "kind": "choice",
+   "form": "ask-it",
+   "exercises": [
+    "g1u03.s.have-got",
+    "g1u03.w.ship"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Die Tür will eine Frage hören, keine Antwort.",
+    "art": "door_a"
+   },
+   "storyDe": "Frag sie, ob die Kapitänin ein Schiff hat!",
+   "options": [
+    "Has she got a ship?",
+    "Have she got a ship?",
+    "Is she got a ship?"
+   ],
+   "answer": "Has she got a ship?",
+   "skins": [
+    "door"
+   ],
+   "phases": [
+    "p1"
+   ],
+   "hints": {
+    "deDesc": "Die Frage beginnt bei sie anders als bei wir.",
+    "deWord": "Auf Deutsch: Hat sie ein Schiff?"
+   }
+  },
+  {
+   "id": "g1.paint.ch03.door.p1.d2",
+   "use": "door",
+   "kind": "choice",
+   "form": "state-it",
+   "exercises": [
+    "g1u03.s.have-got"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Die Tür zeigt einen Piraten mit einem Bein.",
+    "art": "door_a"
+   },
+   "storyDe": "Nenn das Fehlende — dann geht die Tür auf!",
+   "options": [
+    "He hasn't got two legs.",
+    "He hasn't got two eyes.",
+    "He hasn't got two arms."
+   ],
+   "answer": "He hasn't got two legs.",
+   "skins": [
+    "door"
+   ],
+   "phases": [
+    "p1"
+   ],
+   "hints": {
+    "deDesc": "Schau nach unten: davon fehlt ihm eines.",
+    "deWord": "Auf Deutsch: Er hat nicht zwei Beine."
+   }
+  },
+  {
+   "id": "g1.paint.ch03.door.p1.d3",
+   "use": "door",
+   "kind": "spell",
+   "form": "name-it",
+   "exercises": [
+    "g1u03.w.teeth"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Die Tür zeigt einen Mund, weit offen.",
+    "art": "door_a"
+   },
+   "storyDe": "Was sieht man da? Leg das Wort mit Buchstaben!",
+   "answer": "teeth",
+   "extraLetters": "or",
+   "skins": [
+    "door"
+   ],
+   "phases": [
+    "p1"
+   ],
+   "hints": {
+    "deDesc": "Damit beißt du in einen Apfel.",
+    "deWord": "Auf Deutsch: die Zähne."
+   }
+  },
+  {
+   "id": "g1.paint.ch03.boss.c1",
+   "use": "boss",
+   "kind": "choice",
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Sie hat Haare, eine Nase — und eine leere Schulter."
+   },
+   "storyDe": "Was hat sie NICHT? Wähl den Satz!",
+   "options": [
+    "She hasn't got a parrot.",
+    "She hasn't got a nose.",
+    "She hasn't got hair."
+   ],
+   "answer": "She hasn't got a parrot.",
+   "skins": [
+    "galionsfigur"
+   ],
+   "phases": [
+    "p4"
+   ],
+   "hints": {
+    "deDesc": "Auf einer Piratenschulter sitzt sonst ein Vogel."
+   },
+   "grounding": "u03 have got / hasn't got; die Waechterin nennt ihr eigenes Inventar — die zwei Ablenker widerlegt die Zeile selbst"
+  },
+  {
+   "id": "g1.paint.ch03.boss.o1",
+   "use": "boss",
+   "kind": "order",
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Die Galionsfigur kritzelt fünf Wörter auf sich."
+   },
+   "storyDe": "Bring ihre Wörter in die richtige Reihenfolge!",
+   "orderedChips": [
+    "She",
+    "has",
+    "got",
+    "long",
+    "hair"
+   ],
+   "skins": [
+    "galionsfigur"
+   ],
+   "phases": [
+    "p4"
+   ],
+   "hints": {
+    "deDesc": "Wer zuerst? Dann, was sie tut."
+   },
+   "grounding": "u03 have got; evidence = die Auslage, die seededShuffle fuer diese id baut (Gesetz 18e)",
+   "evidence": [
+    "long",
+    "got",
+    "has",
+    "hair",
+    "She"
+   ]
+  },
+  {
+   "id": "g1.paint.ch03.boss.m1",
+   "use": "boss",
+   "kind": "mistake",
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Sie schreibt einen Satz über sich selbst."
+   },
+   "storyDe": "Ein Wort stimmt nicht — tipp es an!",
+   "sentence": [
+    "She",
+    "have",
+    "got",
+    "two",
+    "feet",
+    "."
+   ],
+   "errorIndex": 1,
+   "fix": {
+    "mode": "replace",
+    "correction": "has"
+   },
+   "correctionOptions": [
+    "has",
+    "is",
+    "have"
+   ],
+   "skins": [
+    "galionsfigur"
+   ],
+   "phases": [
+    "p4"
+   ],
+   "hints": {
+    "deDesc": "Bei sie in der Einzahl klingt es anders."
+   },
+   "grounding": "u03 have got, dritte Person Einzahl; die Waechterin schreibt den Satz falsch auf sich",
+   "evidence": [
+    "She have got two feet."
+   ]
+  },
+  {
+   "id": "g1.paint.ch03.fin.t1",
+   "use": "finale",
+   "kind": "typed",
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Die Galionsfigur schaut dich an. Ihr Lack blättert."
+   },
+   "storyDe": "Schreib ihr ein Wort: Freund auf Englisch!",
+   "answer": "friend",
+   "accept": [
+    "a friend",
+    "friends",
+    "friend!"
+   ],
+   "skins": [
+    "galionsfigur"
+   ],
+   "phases": [
+    "p4"
+   ],
+   "hints": {
+    "deDesc": "Jemand, der zu dir gehört und bleibt.",
+    "deWord": "Auf Deutsch: Freund."
+   },
+   "grounding": "u03 WB S. 27 (Schreib über einen Freund) — der Schluss wird gespielt, nicht erzaehlt"
+  }
+ ]
+}
