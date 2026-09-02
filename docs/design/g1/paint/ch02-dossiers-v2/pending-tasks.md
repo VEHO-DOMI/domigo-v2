@@ -258,6 +258,28 @@ ist mit der echten Funktion für genau diese Id gerechnet (2026-09-03). **Änder
 
 ---
 
+## 3b · Was die Welle L2-T2 noch schuldet (Befund der blinden Prüfung, 2026-09-03)
+
+Ein blinder Löser hat über den ganzen Stapel hinweg gezählt und einen echten Deckungs-Befund
+gemeldet, den keine einzelne Karte zeigt: **in den 17 Karten von L2-T1 kommt als Personal-
+pronomen ausschliesslich `he` vor.** `she`, `it` und `they` und die Kurzformen `she's`,
+`we're`, `they're` stehen auf keiner Feld-Karte — obwohl die Unit sie ausdrücklich lehrt
+(SB p. 18 Note: „I'm = I am · you're = you are · he's / she's = he is / she is · we're = we
+are · they're = they are", und die Struktur `g1u02.s.subject-pronouns`).
+
+Das ist kein Fehler dieser Karten: Fenn ist EIN Junge, seine sechs Runden können gar nichts
+anderes sagen, und die Struktur-Id wird korrekt geübt. Es ist eine **Rechnung für die Welle**:
+L2-T2 muss `she` (die Giraffe / die Führerin), `it` (die Dinge im Käfig — die Exemplare in
+§4 dieser Datei tun das bereits) und `they` (die Erdmännchen, die drei Affen) auf Feld-Karten
+bringen, sonst lehrt ch02 ein Viertel seiner eigenen Grammatik nur im Vorbeigehen.
+
+Zweiter Befund derselben Zählung, kleiner: alle sechs Fenn-Runden fragen wortgleich
+„Where is he?". Das ist die Zeremonie-Form (dieselbe wie Merles „What do you say?" in ch01,
+darum die erklärte Familie `fenn-ceremony` mit ihrer 16c-Ausnahme) — beim Lesen des Stapels
+am Stück fällt es aber auf. Wenn L2-T2 die Zeremonie anfasst, ist das die Stelle.
+
+---
+
 ## 4 · Je ein Exemplar für die Wesen, die L2-G2 ins Level stellt
 
 Diese fünf zeigen der Welle L2-T2, welche Form je Wesen gemeint ist. Die Skin-Namen sind

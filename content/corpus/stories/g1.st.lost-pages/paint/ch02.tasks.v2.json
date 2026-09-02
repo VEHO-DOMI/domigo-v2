@@ -111,7 +111,7 @@
    ],
    "stimulus": {
     "type": "entity",
-    "showsDe": "Der Rutscher bremst vor einer grauen Pfütze."
+    "showsDe": "Der Rutscher bremst vor einer grauen Lacke."
    },
    "storyDe": "Auch der Hund fehlt. Frag noch einmal nach!",
    "options": [
@@ -143,7 +143,7 @@
    ],
    "stimulus": {
     "type": "entity",
-    "showsDe": "Der Hund steht grau am Kassenhäuschen."
+    "showsDe": "Der Hund steht grau bei der Kassa."
    },
    "storyDe": "Sag, wer er ist — dann gib ihm die Farbe!",
    "nameOptions": [
