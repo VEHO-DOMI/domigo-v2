@@ -381,6 +381,8 @@ export const DECLARED_BODIES: ReadonlyArray<{ phase: string; body: VisualBody }>
 
 /** Die live montierten Körper je Phase. Ein Eintrag kommt erst MIT seinem PNG. */
 export const CH01_BODIES: Record<string, readonly VisualBody[]> = {
+  // N7A1: die Eingangshalle ist VOLLSTÄNDIG gemalt — fünf Körper, 548 Zellen.
+  p1: P1_WAVE_BODIES,
   // R7: das Nacht-Klassenzimmer ist VOLLSTÄNDIG gemalt — Exemplar + Welle.
   p2: [P2_EXEMPLAR_BODY, ...P2_WAVE_BODIES],
 };

@@ -687,7 +687,10 @@ const PLAT_OBJECTS: Record<string, MassKit["platObjects"]> = {
  * commissioned replacement for the old join/saddle construction; other phases
  * keep their existing scenery until a matching sheet is ordered. */
 const COLUMN_OBJECTS: Record<string, NonNullable<MassKit["columnObjects"]>> = {
-  p1: [{ stem: "terrain_atlas_podest_p1", cellsW: 2, cellsH: 2 }],
+  // N7A1: p1 ist Ein-Block-Welt — das Atlas-Podest ist vom Ostpodest-Körper
+  // ABSORBIERT (seine 2×2 Zellen auf r16/r17 sind jetzt Maske dieses Körpers).
+  // Sein V-Sockel von 24,9° stirbt damit per Löschung, nicht per Duldung.
+  p1: [],
   // R7: p2 ist Ein-Block-Welt — alle Säulen/Pfeiler sind von den Körpern
   // ABSORBIERT (Treppe in der Ostwand, Hänger in den Deckenbahnen); die sieben
   // Blätter sind gelöscht. Kokis "tilted"-Befund stirbt per Löschung.
