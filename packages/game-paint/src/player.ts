@@ -66,6 +66,14 @@ export interface PlayerState {
   swing: SwingState | null;
   // recovery
   iframes: number;
+  /** N7B · DER BLINKER HAT SEINE EIGENE UHR. Bis hierher zeichnete das Bild
+   *  direkt an `iframes`, und weil eine offene Karte den Takt anhält, stand das
+   *  Kind in rund der Hälfte der Fälle die ganze Kartendauer bei Alpha 0,45 und
+   *  blinkte danach die vollen zwei Sekunden erst ab. Die Unverwundbarkeit ist
+   *  Spielregel (das Abstandsmodell der Schwärme hängt an ihrer Länge,
+   *  `swarm-gauntlet.test.ts`), das Blinken ist nur ihr Bild — getrennt darf das
+   *  Bild beim Kartenschluss enden, ohne dass die Regel sich bewegt. */
+  blinkTicks: number;
   stun: number; // hit-stun ticks (controls locked)
   // bookkeeping for the rig
   walkTime: number;
@@ -132,6 +140,7 @@ export const spawnPlayer = (xPx: number, feetYPx: number): PlayerState => ({
   vineCooldown: 0,
   swing: null,
   iframes: 0,
+  blinkTicks: 0,
   stun: 0,
   walkTime: 0,
   landedAgo: 99,
@@ -151,6 +160,7 @@ export const applyKnockback = (st: PlayerState, fromDir: 1 | -1, fast: boolean):
   charge: -1,
   stun: 14, // T: control-lock ticks while recoiling
   iframes: PAINT.iframeTicks,
+  blinkTicks: PAINT.iframeTicks,
   poseGrace: 0, // he is off the floor and must be drawn that way
   pose: "hit",
 });
@@ -178,6 +188,7 @@ export const stepPlayer = (
   s.landedAgo = Math.min(s.landedAgo + 1, 99);
   s.jumpedAgo = Math.min(s.jumpedAgo + 1, 99);
   if (s.iframes > 0) s.iframes--;
+  if (s.blinkTicks > 0) s.blinkTicks--;
 
   // ── the swing (a world of its own while attached) ──
   if (s.swing) {
@@ -437,6 +448,9 @@ export const stepPlayer = (
     s.holdLeft = 0;
     s.hovering = false;
     s.iframes = Math.min(s.iframes, 90); // R3-M9: landing clamps hit-flicker to 90
+    // …und die Klemme gilt dem BILD genauso: sie war immer eine Blinker-Regel
+    // („hit-flicker"), also folgt ihr die eigene Uhr, statt sie zu überleben.
+    s.blinkTicks = Math.min(s.blinkTicks, 90);
     events.push({ type: "landed", impact: fallSpeedPx });
   }
   if (!s.grounded && wasGrounded && s.jumpTicks === -1) {
@@ -460,6 +474,7 @@ export const stepPlayer = (
   // ── hazards open encounters (the scene freezes the world) ──
   if (moved.hazard !== null && s.iframes === 0) {
     s.iframes = PAINT.iframeTicks;
+    s.blinkTicks = PAINT.iframeTicks;
     events.push({ type: "encounter", hazard: moved.hazard });
   }
 

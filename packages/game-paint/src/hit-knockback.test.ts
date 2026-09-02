@@ -120,12 +120,19 @@ const tafel = (c: number): EntitySpec => ({
  *  Choreografie an, nicht durch bloße Berührung). */
 const untilStun = (sim: Sim, ticks = 900): boolean => {
   for (let t = 0; t < ticks; t++) {
-    for (const ev of sim.step(IDLE_PAD)) {
-      // die Arena stellt unterwegs Fragen; wir lösen sie weg, damit die Welt
-      // weiterläuft und die Choreografie überhaupt bis zum Wurf kommt
-      if (ev.type === "task") sim.solveTask(ev.req.ctx);
-    }
+    const evs = sim.step(IDLE_PAD);
+    // N7B · ERST MESSEN, DANN WEGLÖSEN. Der Kreide-Treffer setzt den Rückstoß
+    // und öffnet seine Boss-Karte im SELBEN Tick (sim.ts `onEntityEvent`:
+    // `applyKnockback`, dann `ask`). Seit die Resume-Naht beim Kartenschluss die
+    // Treffer-Sperre löscht, wäre `stun` nach einem `solveTask` in derselben
+    // Schleife schon wieder 0 — der Helfer hätte den Wurf nie gesehen und die
+    // Prüfungen unten hätten eine ungetroffene Welt beschrieben. Gemessen wird
+    // deshalb am Treffer-Tick, während die Karte noch steht: genau der Zustand,
+    // von dem die drei Fälle unten reden.
     if (sim.player.stun > 0) return true;
+    // die Arena stellt unterwegs Fragen; wir lösen sie weg, damit die Welt
+    // weiterläuft und die Choreografie überhaupt bis zum Wurf kommt
+    for (const ev of evs) if (ev.type === "task") sim.solveTask(ev.req.ctx);
   }
   return false;
 };
@@ -189,12 +196,22 @@ describe("R5-F2 · die Kreide der Tafel stößt zurück (Ruling)", () => {
     }
   });
 
-  it("die eingefrorene Karte zeigt den Treffer, nicht die alte Pose", () => {
+  it("die eingefrorene Karte zeigt den Treffer — und beim Schließen ist er frei", () => {
     const sim = new Sim({ level: level([tafel(30)]), phaseId: "p1", grantedAbilities: () => [], freedCageIds: () => [] });
     expect(untilStun(sim)).toBe(true);
     sim.setOverlay(true);
     for (let t = 0; t < 30; t++) sim.step(IDLE_PAD);
     expect(sim.player.pose, "solange die Karte steht, steht auch das Bild").toBe("hit");
+    // N7B · DIE ZWEITE HÄLFTE DESSELBEN GESETZES. Das Bild gehört der Karte,
+    // die Sperre nicht: was hier stillstand, hat der Treffer erzählt — und in
+    // dem Moment, in dem die Karte weggeht, gehört der Körper wieder dem Kind.
+    // Vorher lief genau hier die volle Restsperre ab (14 Ticks) plus zwei
+    // Sekunden Blinken; das war Kokis „he remains in this stunned animation".
+    sim.setOverlay(false);
+    expect(sim.player.stun, "die Sperre endet mit der Karte").toBe(0);
+    expect(sim.player.blinkTicks, "…und der Blinker auch").toBe(0);
+    expect(sim.player.pose, "…und das Bild ist kein Treffer mehr").not.toBe("hit");
+    expect(sim.player.iframes, "die Unverwundbarkeit selbst bleibt (sie ist Spielregel)").toBeGreaterThan(0);
   });
 });
 
