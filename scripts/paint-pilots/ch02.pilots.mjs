@@ -24,8 +24,7 @@ export const PILOTS = {
       ["jump", { dir: "right", hold: 26, steer: 14 }], ["settle"], // HALTE-Sprung auf die Baumkrone (Δr4, Absprung c18: unter der Krone prallt man ab) → (22,12)
       ["walkTo", 26], ["settle"], // Krone entlang → (24,12) (26,12)
       ["hold", { right: true }, 30], ["settle"], // von der Krone runter
-      ["walkTo", 38], ["settle"], // Läufer-Band c28–34 → (30,16) (33,16); dann (39,16)? nein: erst die Karte
-      ["walkTo", 37], ["settle"],
+      ["walkTo", 37], ["settle"], // Läufer-Band c28–34 → (30,16) (33,16); Absprung c37 (unter der Podest-Kante prallt man ab)
       ["jump", { dir: "right", hold: 26, steer: 16 }], ["settle"], // HALTE-Sprung aufs Käfig-Podest r13 (Absprung c37: unter der Platte prallt man ab)
       ["walkTo", 41], ["settle"],
       ["hold", { up: true }, 8], ["wait", 30], // ↑ am Käfig (41,13) → Rettungs-Karte (auto-gelöst)
