@@ -444,6 +444,18 @@ overlay CSS) is the base — this closes the gaps against the Keen/v0 evidence:
    flood / texture swap / joy loop — restore-hold: celebration waits until the world visibly
    finishes changing, doc 42 §3) → XP chip. Wrong → scaffold-down (typed→chips, Keen law) or
    re-init per machine; timeout → the being escapes with a collectible.
+   > **★ Amendment 2026-09-02 (R241, PR #388) — DIE DREI RESOLUTIONS-BEATS SIND GEFALLEN.**
+   > Kokis Walk am Fluss-Fix: „nach den Aufgaben ist noch immer ein delay mit dem Danke-Screen
+   > und danach ist man in der freeze pose für einen kurzen Augenblick … es sollte genauso
+   > seamless und instant sein wie bei den Regel-Seiten." Gemessen war der Schwanz einer
+   > gelösten Karte rund zwei Sekunden angehaltene Welt (Flug der Antwort 0,6–1,0 s +
+   > `RESTORE_HOLD_MS` 600 ms + `VERDICT_MS` 720 ms). Seit #388 gibt die Hülle die Welt in
+   > DERSELBEN Runde zurück: Weltänderung und Kartenschluss ohne Uhr dazwischen; Jubel,
+   > Farbflut und Toast laufen in der LEBENDEN Welt weiter, während das Kind schon losläuft.
+   > Der Reduced-Motion-Weg (Punkt 8) war ohnehin schon so — jetzt ist er der einzige.
+   > `RESTORE_HOLD_MS`/`VERDICT_MS` leben nur noch in Szenen-Animationen, nicht mehr als
+   > Wartezeit der Karte. Punkt 7 oben beschreibt damit den Stand VOR dem 02.09.2026.
+
 8. **The reduced-motion end-states law** (v0): every animation's base style is the finished
    state — a motionless battle is complete, never stuck. Binding for all overlay CSS.
 9. **Typography (B19):** every card renders in the three-face system Koki liked in the

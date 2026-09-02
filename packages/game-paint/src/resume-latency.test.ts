@@ -324,3 +324,38 @@ describe("N7B · was die Naht NICHT anfasst", () => {
     expect(sim.player.x / SUBS, "…von derselben Stelle aus").toBeGreaterThan(0);
   });
 });
+
+describe("N7B2 · D-960 · die Naht darf zweimal laufen, ohne dass es auffällt", () => {
+  // Gemessen: bei jeder richtigen Nicht-Zeremonie-Antwort läuft die Naht ZWEIMAL
+  // — einmal aus `solveTask` heraus, und gleich danach noch einmal, weil die
+  // Hülle ihrerseits `setOverlay(false)` ruft. Das ist heute folgenlos, weil die
+  // Naht nur löscht und klemmt. Dieser Test macht daraus einen Vertrag: wer ihr
+  // je etwas gibt, das ZÄHLT oder FEUERT, wird hier rot und muss den Doppelruf
+  // zuerst abschaffen.
+  it("zweimal schliessen ergibt denselben Körper wie einmal schliessen", () => {
+    const sim = make([tafel(30)]);
+    const ctx = untilChalkHit(sim);
+    expect(ctx, "die Tafel muss das Kind treffen — sonst prüft der Test nichts").not.toBeNull();
+    sim.solveTask(ctx!);
+
+    const nachEinmal = { ...sim.player };
+    sim.setOverlay(false); // …und jetzt der zweite Ruf, wie ihn die Hülle tut
+    expect(sim.player, "der zweite Ruf darf am Körper nichts mehr bewegen").toEqual(nachEinmal);
+
+    // …und die Welt läuft danach genauso weiter wie nach einem einzigen Ruf.
+    const x0 = sim.player.x;
+    run(sim, RIGHT);
+    expect(sim.player.x, "die gehaltene Taste wirkt weiterhin").toBeGreaterThan(x0 - 1);
+    expect(sim.player.stun).toBe(0);
+    expect(sim.player.blinkTicks).toBe(0);
+  });
+
+  it("…auch bei einer Karte ohne Treffer (der häufige Fall)", () => {
+    const sim = make([regelseite(24)]);
+    expect(untilRulePage(sim)).toBe(true);
+    sim.setOverlay(false);
+    const nachEinmal = { ...sim.player };
+    sim.setOverlay(false);
+    expect(sim.player, "kein Schwung geht beim zweiten Ruf verloren").toEqual(nachEinmal);
+  });
+});

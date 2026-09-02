@@ -858,6 +858,17 @@ export class Sim {
    *  steckt trotzdem NIE fest« wird rot. Der Bogen NACH OBEN dagegen ist reine
    *  Restanimation (Flug + zweite echte Landung), und genau der fällt hier weg.
    *  Der Stoß bleibt also, die Sperre geht — das Kind fliegt steuerbar. */
+  /* N7B2 · D-960 · DER IDEMPOTENZ-VERTRAG (gemessen, nicht vermutet).
+   *
+   *  Diese Naht läuft bei JEDER richtigen Nicht-Zeremonie-Antwort ZWEIMAL: einmal
+   *  aus `solveTask` heraus, das die Welt selbst zurückgibt, und gleich danach
+   *  noch einmal, weil die Hülle ihrerseits `setOverlay(false)` ruft
+   *  (»PaintGame.tsx#resolveCorrect«). Heute ist das folgenlos, und genau das ist
+   *  hier der Vertrag, nicht ein Zufall: was in dieser Naht steht, LÖSCHT oder
+   *  KLEMMT nur — zweimal null ist null. Wer hier je etwas hinzufügt, das ZÄHLT,
+   *  FEUERT oder ADDIERT (ein Klang, ein Punkt, ein Ereignis), bricht den Vertrag
+   *  und muss den Doppelruf vorher abschaffen. `resume-latency.test.ts` hält den
+   *  Vertrag fest: zweimal rufen ergibt denselben Zustand wie einmal rufen. */
   private resumeAfterCard(): void {
     const thrown = this.player.stun > 0;
     this.player.blinkTicks = 0;
