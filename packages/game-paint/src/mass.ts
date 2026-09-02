@@ -13,7 +13,7 @@
 // no-naked-fill audit asserts a kit-present plan contains ZERO of them.
 
 import { type ColumnObject, type MassKit } from "./composition.ts";
-import { bodyCells, bodyPartitionErrors } from "./visualBodies.ts";
+import { type VisualBody, bodyCells, bodyPartitionErrors } from "./visualBodies.ts";
 import { glyphAt, isSlope, isSolid } from "./collide.ts";
 import { TILE, mixMultiply } from "./paint.ts";
 
@@ -1000,6 +1000,42 @@ export const phaseIsOneBlock = (grid: readonly string[], kit: MassKit | null): b
   const byBodies = claimedBodyCells(kit);
   const otherClaimed = claimedPlatformCells(grid, kit?.columnObjects ?? [], byBodies);
   return bodyPartitionErrors(grid, bodies, { fullyPainted: true, otherClaimed }).length === 0;
+};
+
+/**
+ * DARF DIE SZENE DIESES KIT BENUTZEN? — die Wache, die N7A1 fast ein kaputtes
+ * Spiel mit grünen Toren hat ausliefern lassen.
+ *
+ * Die alte Fassung stand in `PaintScene#massKit` und fragte nach den KERN-
+ * Blättern des Kits (Kruste, Masse, Fade, Sediment): fehlt eines, würde die
+ * Szene leere Texturen setzen, also fällt sie auf den Streifen-Pfad von vor C1
+ * zurück. Das war richtig, solange jede Phase ein Kit hatte.
+ *
+ * Nach dem Ein-Block-Cutover ist das Kit GELÖSCHT — sein Fehlen ist der Entwurf,
+ * kein Defekt. Die Wache hätte p1 UND p2 auf den Platzhalter-Pfad geworfen und
+ * damit AUCH die Körper nicht mehr gezeichnet (die Wache entscheidet über den
+ * ganzen Massen-Block, nicht über einzelne Stücke). Kein Tor hätte es gesagt:
+ * sie alle messen den PLAN, und der Plan war korrekt — gesehen hat es erst ein
+ * Standbild aus dem laufenden Spiel.
+ *
+ * Sie fragt deshalb jetzt nach der Kunst, die die Phase WIRKLICH benutzt: in
+ * einer Ein-Block-Welt sind das die Körper-Blätter, sonst die Kern-Blätter.
+ * Als reine Funktion, damit ein Test sie ohne Browser stellen kann.
+ */
+export const massKitUsable = (
+  grid: readonly string[],
+  kit: MassKit,
+  hasTexture: (stem: string) => boolean,
+): boolean => {
+  const stemsOf = (b: VisualBody): string[] => ((b.slices ?? []).length > 0
+    ? (b.slices ?? []).map((s) => s.stem)
+    : [b.stem]);
+  if (phaseIsOneBlock(grid, kit)) {
+    const bodies = kit.bodies ?? [];
+    return bodies.length > 0 && bodies.every((b) => stemsOf(b).every(hasTexture));
+  }
+  const core = [kit.crust[0], kit.body[0], kit.fade[0], kit.sediment];
+  return core.every((stem) => stem !== undefined && hasTexture(stem));
 };
 
 /** A connected mass's shared material anchor and its stable origin cell. */

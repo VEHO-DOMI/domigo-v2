@@ -24,7 +24,7 @@ import { buildOncePerKey, PatternLedger } from "./tilePatterns.ts";
 import { type LayerPiece, coverFit, planLayers } from "./layers.ts";
 import { AIR_DEPTH, LIFE_PARALLAX, type AirPiece, planBandShade, planHaze, planLife, planMotes, planShafts, planSources, shaftQuads, vignetteBands } from "./air.ts";
 import { type Cell, cellsOf, indexTerrain, mergeRowMajor, runsFrom } from "./terrain.ts";
-import { NEAR_PLANE_KINDS, CRUST_MARK_DEPTH, MASS_MARK_DEPTH, type MassPiece, type SurfaceMark, claimedBodyCells, claimedPlatformCells, crustGrain, hash01, ledgeGrain, massGrain, drawnScaleFor, paintScaleOf, planMass, planPlatformShadows, tileAnchorFor, tileScaleFor } from "./mass.ts";
+import { NEAR_PLANE_KINDS, CRUST_MARK_DEPTH, MASS_MARK_DEPTH, type MassPiece, type SurfaceMark, claimedBodyCells, claimedPlatformCells, crustGrain, hash01, ledgeGrain, massGrain, drawnScaleFor, massKitUsable, paintScaleOf, planMass, planPlatformShadows, tileAnchorFor, tileScaleFor } from "./mass.ts";
 import { BACKING_REACH, BACKING_STEPS, LETTER_AMBER, LETTER_GOLD, LETTER_STYLE, letterBackingFor, letterGlowGain, letterGlyphs, letterRimFor } from "./letters.ts";
 import { type PhraseSlot, bonusPhrase } from "./cards/ceremony.ts";
 import { PICKUP_ROLES, type PaintLevel, type PhaseSpec } from "./level.ts";
@@ -4825,11 +4825,11 @@ export class PaintScene extends Phaser.Scene {
   private massKit(): MassKit | null {
     const kit = this.comp?.mass;
     if (kit === undefined) return null;
-    const core = [kit.crust[0], kit.body[0], kit.fade[0], kit.sediment];
-    for (const stem of core) {
-      if (stem === undefined || !this.textures.exists(`pb-${stem}`)) return null;
-    }
-    return kit;
+    // R7/N7 · Die Entscheidung liegt in mass.ts#massKitUsable, weil sie dort
+    // ohne Browser prüfbar ist — und weil sie in einer Ein-Block-Welt eine
+    // ANDERE Frage stellen muss: dort ist das Kit gelöscht, und die Kunst, die
+    // fehlen könnte, sind die Körper-Blätter.
+    return massKitUsable(this.grid, kit, (stem) => this.textures.exists(`pb-${stem}`)) ? kit : null;
   }
 
   /**
