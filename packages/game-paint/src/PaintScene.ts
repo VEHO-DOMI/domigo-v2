@@ -18,6 +18,7 @@ import { CANOPY_STEM, phaseArtScope } from "./artScope.ts";
 import { FACE_FLOOR_CX, FACE_FLOOR_CY, faceFloorHalbachsen } from "./face-floor.ts";
 import { type AudioDirector, surfaceOfPhase } from "./audio/index.ts";
 import { captiveStem, isCaptiveKey } from "./artManifest.ts";
+import { PAD_KEYS, applyKeyCapture } from "./keyCapture.ts";
 import { TextureWarmer, type WarmScene, type WarmStats } from "./warmer.ts";
 import { WARM_MPX_PER_FRAME } from "./warm.ts";
 import { buildOncePerKey, PatternLedger } from "./tilePatterns.ts";
@@ -1401,10 +1402,20 @@ export class PaintScene extends Phaser.Scene {
     // convention the vignette follows (see renderAwakenRoom).
     this.awakenRoomG = this.add.graphics().setDepth(12).setBlendMode(Phaser.BlendModes.ADD);
 
+    // N7B2 · D-788: die Liste steht in `keyCapture.ts` und wird von BEIDEN
+    // Stellen gelesen — hier beim Anmelden, und beim Wiederherstellen, wenn
+    // eine Karte weggeht. Zwei Listen wären ein stiller Drift.
     const kb = this.input.keyboard;
     this.keys = kb
-      ? (kb.addKeys("LEFT,RIGHT,UP,DOWN,A,D,W,S,SPACE,X,J") as Record<string, Phaser.Input.Keyboard.Key>)
+      ? (kb.addKeys(PAD_KEYS) as Record<string, Phaser.Input.Keyboard.Key>)
       : {};
+    // …und eine Szene, die UNTER einer offenen Karte geboren wird, fängt gar
+    // nicht erst an abzufangen. `addKeys` meldet das Abfangen mit an, und die
+    // Hülle friert eine frisch gebaute Szene ein, bevor der erste Tick läuft
+    // (`PaintGame.tsx`: »a scene born UNDER an open card starts frozen«) — ohne
+    // diese Zeile hätte die Boot-Karte des Kapitels ihr Antwortfeld wieder
+    // verloren, obwohl `setOverlay` alles richtig macht.
+    applyKeyCapture(kb, this.sim.overlayOpen);
 
     this.cameras.main.setZoom(RENDER_SCALE);
     this.cameras.main.centerOn(fromSubs(this.player.x), fromSubs(this.player.y) - LOGICAL_H / 4);
@@ -1717,6 +1728,18 @@ export class PaintScene extends Phaser.Scene {
 
   setOverlay(open: boolean): void {
     this.sim.setOverlay(open);
+    // N7B2 · D-788 · und hier hört das Spiel auf, der Tastatur ins Wort zu
+    // fallen. Der Schalter sitzt an DIESER Stelle und nicht im Overlay-Effekt
+    // der Hülle, weil hier alle Wege durchkommen: der Effekt, der Freeze beim
+    // Szenen-Mount, das Lösen, das Weglegen und der Entwickler-Griff. Ein
+    // Schalter in nur einem der fünf Wege wäre eine halbe Wand.
+    // ⚠ `this.input` ist erst da, wenn Phaser die Szene gestartet hat — die
+    // Hülle ruft `setOverlay(true)` aber schon in dem Moment, in dem die Szene
+    // ERZEUGT wird (Mount-Freeze). Ohne das Fragezeichen stirbt genau dort der
+    // Boot mit »Cannot read properties of undefined (reading 'keyboard')«, und
+    // zwar unsichtbar für jeden Unit-Test: gemessen hat es erst der Perf-Lauf
+    // im echten Browser. Die Liste wird ohnehin in `create()` gesetzt.
+    applyKeyCapture(this.input?.keyboard, open);
   }
 
   /** PK-R6 · H1 · the restore-hold (doc 44 §3.1.7): the child stays frozen, the

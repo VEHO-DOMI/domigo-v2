@@ -74,7 +74,15 @@ export function TypedCard({ state, dispatch }: { state: TypedState; dispatch: Di
         autoFocus
         value={state.value}
         onChange={(e) => dispatch({ input: e.target.value })}
-        onKeyDown={(e) => { if (e.key === "Enter") dispatch({ submit: true }); }}
+        // N7B2 · D-788 · DIE ZWEITE WAND. Phasers Horcher sitzt am Fenster und
+        // schaltet die Standardaktion jeder erfassten Taste ab, ohne das Ziel zu
+        // prüfen — w, a, s und das Leerzeichen kämen in diesem Feld nie an.
+        // `PaintScene.setOverlay` nimmt das Abfangen zwar weg, solange eine
+        // Karte steht (erste Wand); diese Zeile hält das Ereignis zusätzlich
+        // hier auf, damit ein Weg, der die Szene nicht durchläuft, das Tippen
+        // nicht wieder kaputtmachen kann. React hängt am Wurzel-Container: was
+        // hier gestoppt wird, erreicht `window` nicht mehr.
+        onKeyDown={(e) => { e.stopPropagation(); if (e.key === "Enter") dispatch({ submit: true }); }}
         style={{
           fontSize: 22, fontFamily: "var(--font-display, inherit)", fontWeight: 800,
           textAlign: "center", color: "#33291a", padding: "8px 12px", minHeight: 46, width: 200,
