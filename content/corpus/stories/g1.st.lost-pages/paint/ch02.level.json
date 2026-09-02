@@ -3,16 +3,16 @@
  "id": "g1.ch02",
  "chapter": "ch02",
  "draft": true,
- "note": "L0 · D12 · ENTWURFS-EXEMPLAR, KEIN KAPITEL. Diese Datei existiert, damit die Kapitel-Schleife der Tore an einem ZWEITEN Kapitel bewiesen ist und die Route `/play/1/buch/ch02` etwas zu laden hat. Ids, Namen und Maße stammen aus docs/design/g1/paint/ch02.md §1/§5; alles andere ist das Minimum, das die Gesetze erfüllt. Die L2-Bahn ersetzt die Gitter vollständig. REGEL-SEITEN-SLOTS (drei, aus der Grammatik der Unit g1-u02): (1) there-is/are · (2) prepositions-place · (3) to-be. Sie stehen hier als Notiz und NICHT als `tip`-Entities, weil ein Slot ohne Merksatz eine leere Seite im Regelbuch wäre; `tipsTotal` fehlt GANZ, bis die Texte da sind: der Lader verlangt eine POSITIVE Zahl (`z.number().int().positive()`), waehrend die Motor-Gesetze eine 0 durchlassen — eine 0 haette die Seite mit einem 500 gefaellt, obwohl jedes Gesetz gruen war (L0-Befund D-790). »Weggelassen« heisst in beiden Haeusern »noch nicht entschieden«. WÄCHTER: R237 setzt den Käfig-König (Löwe); die Besetzung gehört der L2-Bahn, hier steht nur ein tier-M-Platzhalter, damit die Arena eine Arena ist.",
+ "note": "L0 · D12 · ENTWURFS-EXEMPLAR, KEIN KAPITEL. Diese Datei existiert, damit die Kapitel-Schleife der Tore an einem ZWEITEN Kapitel bewiesen ist und die Route `/play/1/buch/ch02` etwas zu laden hat. Ids, Namen und Maße stammen aus docs/design/g1/paint/ch02.md §1/§5; Der Sammel-Skin ist `feather` (L0 · N1): die `*`-Zellen sind Federn, keine Buchstaben — deshalb tragen die Phasen KEINE `words` (ein Federn-Kapitel buchstabiert nichts, und das Gesetz `trail-words` sagt das jetzt auch). Alles andere ist das Minimum, das die Gesetze erfüllt. Die L2-Bahn ersetzt die Gitter vollständig. REGEL-SEITEN-SLOTS (drei, aus der Grammatik der Unit g1-u02): (1) there-is/are · (2) prepositions-place · (3) to-be. Sie stehen hier als Notiz und NICHT als `tip`-Entities, weil ein Slot ohne Merksatz eine leere Seite im Regelbuch wäre; `tipsTotal` fehlt GANZ, bis die Texte da sind: der Lader verlangt eine POSITIVE Zahl (`z.number().int().positive()`), waehrend die Motor-Gesetze eine 0 durchlassen — eine 0 haette die Seite mit einem 500 gefaellt, obwohl jedes Gesetz gruen war (L0-Befund D-790). »Weggelassen« heisst in beiden Haeusern »noch nicht entschieden«. WÄCHTER: R237 setzt den Käfig-König (Löwe); die Besetzung gehört der L2-Bahn, hier steht nur ein tier-M-Platzhalter, damit die Arena eine Arena ist.",
  "name": "Der Zoo im Buch",
- "goalDe": "Finde die Buchstaben und öffne das Zoo-Tor.",
+ "goalDe": "Finde die Federn und öffne das Zoo-Tor.",
  "whyDe": "Der Zoo im Buch ist grau geworden — die Tiere warten auf ihre Farben.",
  "hintsDe": [
-  "Sammle die Buchstaben auf deinem Weg.",
+  "Sammle die Federn auf deinem Weg.",
   "Schau nach, wer in den Gehegen sitzt.",
   "Das Tor am Ende führt weiter."
  ],
- "collectNounDe": "Buchstaben",
+ "collectNounDe": "Federn",
  "abilities": [
   "jump"
  ],
@@ -45,9 +45,6 @@
     "################################################################",
     "################################################################",
     "################################################################"
-   ],
-   "words": [
-    "zoo"
    ],
    "entities": [],
    "links": [],
@@ -85,9 +82,6 @@
     "########################################################################",
     "########################################################################",
     "########################################################################"
-   ],
-   "words": [
-    "lion"
    ],
    "entities": [
     {
@@ -161,9 +155,6 @@
     "################################################################",
     "################################################################",
     "################################################################"
-   ],
-   "words": [
-    "tree"
    ],
    "entities": [],
    "links": [],
@@ -242,13 +233,11 @@
    "############################################",
    "############################################"
   ],
-  "words": [
-   "bonus"
-  ],
   "entities": [],
   "links": [],
   "exit": {
    "to": "p2"
   }
- }
+ },
+ "collectSkin": "feather"
 }

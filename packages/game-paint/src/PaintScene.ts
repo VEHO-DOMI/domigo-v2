@@ -6201,6 +6201,56 @@ export class PaintScene extends Phaser.Scene {
     }
   }
 
+  /** L0 · N1 · R246 · DIE TEXTUR EINER `*`-ZELLE.
+   *
+   *  Kapitel 1 sammelt Buchstaben, und dafür gibt es `letterTex`. Jedes andere
+   *  Kapitel sammelt etwas anderes (Federn, Münzen, Farbtropfen, Noten,
+   *  Lupen-Funken) — die Zelle bleibt `*`, das Bild nicht.
+   *
+   *  Drei Stufen, in dieser Reihenfolge, und die Reihenfolge IST das
+   *  Keen-Kunst-Gesetz: (1) Buchstaben ⇒ der gebaute Glyph wie immer;
+   *  (2) ein gemaltes Blatt `collect_<skin>`, sobald es auf der Platte liegt —
+   *  ohne Code-Änderung, weil `tex()` nur fragt, was da ist; (3) sonst ein
+   *  gezeichneter Platzhalter, damit ein Kapitel im Bau SPIELBAR ist und man
+   *  sieht, WO die Dinger liegen, auch wenn man noch nicht sieht, was sie sind. */
+  private collectTex(char: string): string {
+    const skin = this.cfg.level.collectSkin ?? "letters";
+    if (skin === "letters") return this.letterTex(char);
+    if (this.textures.exists(`pb-collect_${skin}`)) return `pb-collect_${skin}`;
+    return this.placeholderCollectTex(skin);
+  }
+
+  /** Der graue Platzhalter eines Sammelobjekts: eine Scheibe mit den ersten
+   *  Buchstaben des Skin-Namens. Bewusst hässlich und bewusst LESBAR — er soll
+   *  niemanden glauben machen, hier sei schon Kunst, und er soll trotzdem im
+   *  Spiel unterscheidbar sein. Einmal je Skin gebaut und gecacht; kein
+   *  `Math.random` (Repo-Gesetz), keine Abhängigkeit vom Raum. */
+  private placeholderCollectTex(skin: string): string {
+    const key = `pb-collect-ph-${skin}`;
+    if (this.textures.exists(key)) { this.letterHits += 1; return key; }
+    this.letterBuilds += 1;
+    const S = 128;
+    const tex = this.textures.createCanvas(key, S, S);
+    if (!tex) return this.tex("prop_letter"); // headless/canvas-less safety, wie letterTex
+    const ctx = tex.getContext();
+    if (ctx === null) return this.tex("prop_letter");
+    ctx.clearRect(0, 0, S, S);
+    ctx.beginPath();
+    ctx.arc(S / 2, S / 2, S * 0.36, 0, Math.PI * 2);
+    ctx.fillStyle = "#b9b2a4";
+    ctx.fill();
+    ctx.lineWidth = 6;
+    ctx.strokeStyle = "#6b6250";
+    ctx.stroke();
+    ctx.fillStyle = "#3a3428";
+    ctx.font = "bold 40px system-ui, sans-serif";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText(skin.slice(0, 3).toUpperCase(), S / 2, S / 2 + 2);
+    tex.refresh();
+    return key;
+  }
+
   private letterTex(char: string): string {
     // R5-W6 · L1: der Rand folgt dem Raum (letters.ts `letterRimFor`), also
     // gehoert der Raum in den Cache-Schluessel. Eine Phase ist zu einer Zeit
@@ -6349,7 +6399,10 @@ export class PaintScene extends Phaser.Scene {
           if (!this.sim.letterCells.has(`${c},${r}`)) continue;
           const char = glyphs.get(`${c},${r}`) ?? "A";
           const tLetter = performance.now();
-          const letterKey = this.letterTex(char);
+          // L0 · N1 · R246: was auf einer `*`-Zelle steht, entscheidet das
+          // KAPITEL. Ohne Deklaration ist es der Buchstabe wie bisher (ch01
+          // unverändert); sonst das Sammelobjekt des Kapitels.
+          const letterKey = this.collectTex(char);
           letterMs += performance.now() - tLetter;
           const img = this.add.image(cx, cy, letterKey).setDepth(4);
           img.setDisplaySize(PaintScene.LETTER_PX, PaintScene.LETTER_PX);

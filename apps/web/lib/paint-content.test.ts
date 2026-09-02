@@ -82,3 +82,26 @@ describe("L0 · D4 · eine Rollenliste, nicht zwei", () => {
     assert.ok(ENTITY_ROLES.every((r) => typeof r === "string" && r.length > 0));
   });
 });
+
+describe("L0 · N1 · R246 · der Sammel-Skin ist ein Level-Feld", () => {
+  it("ch01 deklariert keinen — also Buchstaben, byte-gleich wie vorher", () => {
+    assert.equal(loadPaintLevel(STORY, "ch01").collectSkin, undefined);
+  });
+
+  it("ch02 deklariert `feather`, und das Feld ÜBERLEBT das Parsen", () => {
+    // Der ganze Sinn dieses Falls: das Schema strippt, was es nicht kennt.
+    // Ohne die zod-Zeile stünde `feather` in der Datei, jedes Tor bliebe grün,
+    // und im Browser sammelte ch02 wieder Buchstaben.
+    assert.equal(loadPaintLevel(STORY, "ch02").collectSkin, "feather");
+  });
+
+  it("und ein Federn-Kapitel deklariert keine Trail-Wörter", () => {
+    // Buchstaben buchstabieren, Federn nicht — das Gesetz `trail-words` sagt
+    // das seit N1 auch, und der Inhalt hält sich daran.
+    const ch02 = loadPaintLevel(STORY, "ch02");
+    for (const ph of [...ch02.phases, ch02.arena, ch02.bonus]) {
+      if (ph === undefined) continue;
+      assert.equal(ph.words, undefined, `${ph.id} trägt Wörter, obwohl das Kapitel Federn sammelt`);
+    }
+  });
+});

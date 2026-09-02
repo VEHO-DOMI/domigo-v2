@@ -368,6 +368,24 @@ export interface PaintLevel {
   whyDe: string;
   hintsDe: string[];
   collectNounDe: string;
+  /** L0 · N1 · R246 · WAS DIE `*`-ZELLEN EIGENTLICH SIND.
+   *
+   *  Der Motor zeichnet auf jeder `*`-Zelle einen BUCHSTABEN — immer, und ohne
+   *  deklarierte Wörter zählt er stur A→Z durch. Für Kapitel 1 ist das die
+   *  Fiktion selbst (die Buchstaben, die aus dem Buch gefallen sind), für jedes
+   *  andere Kapitel ist es falsch: ch02 sammelt Federn, ch03 Goldmünzen, ch04
+   *  Farbtropfen, ch05 Noten, ch06 Lupen-Funken. Die ZELLE bleibt `*` — alle
+   *  Erreichbarkeits- und Abstands-Gesetze rechnen unverändert weiter —, nur
+   *  ihr Aussehen und ihre Bedeutung hängen an diesem Feld.
+   *
+   *  Fehlt es, gilt `"letters"`: Kapitel 1 ist damit byte-gleich. Ein anderer
+   *  Wert ist ein SKIN-Name; solange kein Blatt `collect_<skin>` auf der Platte
+   *  liegt, zeichnet die Szene einen grauen Platzhalter mit dem Namen darauf
+   *  (Keen-Kunst-Gesetz: fehlende Kunst bricht nie das Spiel).
+   *
+   *  Das HUD zählt weiter über `collectNounDe` — das Wort, das das Kind liest,
+   *  war schon immer eine Deklaration. */
+  collectSkin?: string;
   /** PK-R6 · C · THE OBJECTIVE SCREEN'S TITLE PLATE (doc 44 §2.6 / §3.4). The
    *  painted stem the goal card wears as its header — the chapter's own picture,
    *  with the chapter name set into the plate's lower band. DECLARED in the
@@ -1818,8 +1836,16 @@ export const checkLevelLaws = (level: PaintLevel): LawFailure[] => {
   // Kunst-Manifest stehen, ist bewusst NICHT betroffen: dort ist der Trail
   // gegen die gemalte Komposition geprüft (`check-composition`), und der
   // Bonusraum darf seine Nachlese-Phrase absichtlich wiederholen.
+  // L0 · N1: nur ein BUCHSTABEN-Trail buchstabiert etwas. Ein Kapitel, das
+  // Federn sammelt, hat kein Wort — und ein Gesetz, das dort trotzdem Buchstaben
+  // gegen Sterne rechnet, wäre ein rotes Licht ohne Aussage.
+  const zaehltBuchstaben = (level.collectSkin ?? "letters") === "letters";
   for (const ph of allPhases(level)) {
     if (ph.words === undefined) continue;
+    if (!zaehltBuchstaben) {
+      failures.push({ phase: ph.id, law: "trail-words", detail: `declares words ${JSON.stringify(ph.words)} but the chapter collects „${level.collectSkin}", not letters — the words would spell nothing anyone sees` });
+      continue;
+    }
     const stars = ph.rows.reduce((n, row) => n + [...row].filter((g) => g === "*").length, 0);
     const letters = ph.words.join("").toUpperCase().replace(/[^A-Z]/g, "").length;
     if (letters === 0) {
