@@ -52,9 +52,10 @@ const TILT_MAX_DEG = 3;
  *      82–100 % Reichweite bei 0,0–0,3° Kipp).
  *  Übrig bleibt, was wirklich noch etwas duldet. */
 const GROUND_PLANE_PENDING = {
-  // Der Hof: die Fensterbank ist das EINE p3-Möbel, das Punkt 13 heute bricht
-  // (Reichweite 21 % statt 80 % — ein V). Stirbt mit dem Neuwurf dieser Bahn.
-  "ledge_windowsill": { until: "2026-10-15", why: "Reichweite 21 % — V-Sockel; Neuwurf in der p3-Möbel-Welle N7A2" },
+  // Der Hof ist FERTIG: die Fensterbank war das eine p3-Möbel, das Punkt 13 brach
+  // (Reichweite 21 % — ein V). Ihr Neuwurf misst 87 % bei 0,0°, also hat die
+  // Hygiene-Regel oben ihre eigene Zeile als schal gemeldet und sie ist gefallen.
+  // Genau so soll eine Duldung sterben: die Reparatur beendet sie, nicht ein Datum.
   // Die Kleckskammer: nicht diese Bahn (p9-Kunst gehört N7A4).
   "plat_desk": { until: "2026-10-15", why: "Reichweite 8 % — V-Sockel, Perspektiv-Altbestand; fällt mit der p9-Möbel-Welle" },
 };
