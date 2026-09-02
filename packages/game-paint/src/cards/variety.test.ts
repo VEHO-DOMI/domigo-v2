@@ -16,7 +16,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
-import type { GameTaskV2 } from "@domigo/content-schema";
+import { taskInvariantErrors, type GameTaskV2 } from "@domigo/content-schema";
 import { parsePaintLevel } from "../level.ts";
 import { type VarietyPolicy, varietyErrors } from "./variety.ts";
 
@@ -379,5 +379,57 @@ describe("0 · POLICY HYGIENE — an exemption buys a stricter obligation", () =
       } } },
     };
     expect(laws([choice("a")], p)).toContain("0j");
+  });
+});
+
+// ── L0 · N3 · R247 · ZWEI DEBÜTS, DIE SCHEMA-UNMÖGLICH WAREN (D-902) ─────────
+//
+// Gesetz 13a verlangt für JEDE Feld-Karte eine Form. `FORM_KINDS` trug für
+// `mistake` und `memory` keine — also konnte keine Karte dieser beiden Arten je
+// ins Feld, egal wie gut sie geschrieben war. Das ist kein Autoren-Problem und
+// keine Design-Frage: es war eine Lücke zwischen zwei Tabellen, und sie stand
+// genau den zwei Debüts im Weg, die doc 41 §1 für ch04 (memory) und ch05
+// (mistake) vorsieht.
+//
+// Beide Richtungen, wie überall: die Karte MIT Form ist still, die Karte OHNE
+// Form ist rot. Der zweite Fall ist der Tamper des ersten — ohne ihn wäre »13a
+// feuert nicht« auch dann wahr, wenn 13a gar nicht mehr liefe.
+describe("L0 · N3 · fix-it und pair-it", () => {
+  const mistakeCard = (over: Partial<Record<string, unknown>> = {}): GameTaskV2 => ({
+    id: "fix.pencil.1", use: "encounter", kind: "mistake",
+    stimulus: { type: "entity", showsDe: "steht da" }, skins: ["pencil"], phases: ["p1"],
+    storyDe: "Ein Wort stimmt nicht.", exercises: ["g1u01.w.pencil"],
+    sentence: ["It", "is", "a", "pencils"], errorIndex: 3,
+    fix: { mode: "replace", correction: "pencil" },
+    ...over,
+  } as GameTaskV2);
+
+  const memoryCard = (over: Partial<Record<string, unknown>> = {}): GameTaskV2 => ({
+    id: "pair.pencil.1", use: "encounter", kind: "memory",
+    stimulus: { type: "entity", showsDe: "steht da" }, skins: ["pencil"], phases: ["p1"],
+    storyDe: "Was gehört zusammen?", exercises: ["g1u01.w.pencil"],
+    pairs: [{ a: "pencil", b: "Bleistift" }, { a: "book", b: "Buch" }, { a: "rubber", b: "Radiergummi" }],
+    ...over,
+  } as GameTaskV2);
+
+  it("eine Feld-Karte `mistake` mit `fix-it` fällt nicht mehr durch 13a", () => {
+    expect(laws([mistakeCard({ form: "fix-it" })])).not.toContain("13a");
+  });
+
+  it("…und OHNE Form ist sie rot — der Tamper, der beweist, dass 13a noch lebt", () => {
+    expect(laws([mistakeCard()])).toContain("13a");
+  });
+
+  it("dasselbe für `memory` mit `pair-it`", () => {
+    expect(laws([memoryCard({ form: "pair-it" })])).not.toContain("13a");
+    expect(laws([memoryCard()])).toContain("13a");
+  });
+
+  it("die Form ist an ihre Art gebunden — ein `choice` kann kein `fix-it` sein", () => {
+    // FORM_KINDS in der Gegenrichtung: die Zuordnung ist keine Etikette, die
+    // jede Karte tragen darf. Geprüft über den Schema-Invarianten, weil dort
+    // das Gesetz wohnt.
+    expect(taskInvariantErrors(choice("c1", { form: "fix-it" })).join(" "))
+      .toMatch(/fix-it/);
   });
 });
