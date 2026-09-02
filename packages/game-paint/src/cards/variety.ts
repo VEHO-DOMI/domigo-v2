@@ -53,24 +53,17 @@ import { HOSTILE_ROLES, allPhasesOf, serveContextsOf } from "./serving.ts";
 // what finally discharges the nine dated exceptions.
 export const FIELD_USES: ReadonlySet<string> = new Set(["encounter", "quickfire", "door", "rescue", "pickupset"]);
 
-/** chapter → the asks its FIELD may make. The sibling of the gate's
- *  CHAPTER_FIELD_KINDS: a chapter with no entry is not ruled on yet and is left
- *  alone, so the table grows one chapter at a time. `use-it` (what does it DO)
- *  is deliberately NOT in ch01 — its roster has no asker whose function question
- *  has more than one true answer. */
-export const CHAPTER_FIELD_FORMS: Readonly<Record<string, readonly TaskForm[]>> = {
-  ch01: [
-    "name-it",
-    "state-it",
-    "pick-correct-form",
-    "command",
-    "social-formula",
-    "ask-it",
-    "count-it",
-    "number-transcode",
-    "belongs-or-not",
-  ],
-};
+/** L0 · D10 · DIE FELD-FORMEN EINES KAPITELS KOMMEN JETZT MIT DEM KAPITEL.
+ *
+ *  Hier stand eine Tabelle mit einem Eintrag (`ch01`) und dem Satz »so wächst
+ *  sie Kapitel für Kapitel«. Genau daran hätten sich fünf gleichzeitig laufende
+ *  Kapitel-Bahnen gestossen: eine gemeinsame Zeile im Motor-Code, in die alle
+ *  hineinschreiben. Die Liste steht jetzt in `chNN.policy.json` neben den
+ *  Karten und reist als `fieldForms` in dieser Eingabe mit.
+ *
+ *  Ein Kapitel ohne Liste ist wie bisher »noch nicht entschieden« und wird in
+ *  Ruhe gelassen. `use-it` (was TUT es) fehlte ch01 mit Absicht — sein Ensemble
+ *  hat keinen Frager, dessen Funktions-Frage mehr als eine wahre Antwort hat. */
 
 export interface VarietyFailure {
   /** the numbered layer + sub-letter, e.g. "15a" — the id an exemption names */
@@ -131,6 +124,11 @@ export interface VarietyInput {
    *  tests cannot rot with the calendar (and the repo forbids Date.now in the
    *  game tree at all) */
   today: string;
+  /** L0 · D10 · die Feld-Formen dieses Kapitels (`chNN.policy.json#fieldForms`).
+   *  `undefined` heisst »für dieses Kapitel noch nicht entschieden« — dann
+   *  schweigt Gesetz 13a, wie es das für ein Kapitel ohne Tabelleneintrag
+   *  immer getan hat. */
+  fieldForms?: readonly TaskForm[];
 }
 
 // ── small shared helpers ─────────────────────────────────────────────────────
@@ -239,7 +237,7 @@ function lawsOf(input: VarietyInput, honourExemptions: boolean): VarietyFailure[
     positionBiasMinPool: policy.dials.positionBiasMinPool.value,
     serveProbeCycles: policy.dials.serveProbeCycles.value,
   };
-  const fieldForms = CHAPTER_FIELD_FORMS[chapter];
+  const { fieldForms } = input;
   const field = items.filter((t) => FIELD_USES.has(t.use));
   const phases = allPhasesOf(level);
   const contexts = serveContextsOf(level);

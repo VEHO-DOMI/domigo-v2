@@ -1,6 +1,10 @@
 // Dev harness (Build-D2): swap a candidate phase into ch01 and run the REAL
 // level laws + a reachability map, so grids are authored green, not guessed.
-//   node --experimental-strip-types scripts/check-level-candidate.mjs <candidate.json>
+//   node --experimental-strip-types scripts/check-level-candidate.mjs <candidate.json> [--chapter chNN]
+// L0 · D10: `--chapter` sagt, in WELCHES Kapitel der Kandidat eingesetzt wird
+// (Vorgabe ch01). Ohne die Flagge wäre jeder ch02-Raum gegen die Nachbarn von
+// Kapitel 1 geprüft worden — eine Reichweiten-Karte, die nichts über den Raum
+// aussagt, den sie zu prüfen glaubt.
 // candidate.json = a full PhaseSpec ({id,nameDe,surface,plates,rows,entities,links,exit}).
 // It replaces the matching phase (or arena/bonus by id) in the live level.
 import fs from "node:fs";
@@ -9,9 +13,13 @@ import { fileURLToPath } from "node:url";
 import { parsePaintLevel, checkLevelLaws, reachableCells, findGlyph, standable } from "../packages/game-paint/src/level.ts";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
-const LEVEL = path.join(HERE, "..", "content/corpus/stories/g1.st.lost-pages/paint/ch01.level.json");
-const candPath = process.argv[2];
-if (!candPath) { console.error("usage: check-level-candidate <candidate.json>"); process.exit(2); }
+const chArg = process.argv.indexOf("--chapter");
+const CHAPTER = chArg !== -1 ? process.argv[chArg + 1] : "ch01";
+if (!/^ch\d{2}$/.test(CHAPTER ?? "")) { console.error(`check-level-candidate: --chapter braucht eine Kapitel-Id (chNN), bekam "${CHAPTER}"`); process.exit(2); }
+const LEVEL = path.join(HERE, "..", `content/corpus/stories/g1.st.lost-pages/paint/${CHAPTER}.level.json`);
+if (!fs.existsSync(LEVEL)) { console.error(`check-level-candidate: ${CHAPTER}.level.json gibt es nicht`); process.exit(2); }
+const candPath = process.argv.slice(2).find((a, i, all) => !a.startsWith("--") && all[i - 1] !== "--chapter");
+if (!candPath) { console.error("usage: check-level-candidate <candidate.json> [--chapter chNN]"); process.exit(2); }
 
 const level = JSON.parse(fs.readFileSync(LEVEL, "utf8"));
 const cand = JSON.parse(fs.readFileSync(candPath, "utf8"));

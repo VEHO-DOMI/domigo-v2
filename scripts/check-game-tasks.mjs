@@ -71,12 +71,41 @@ import { HOSTILE_ROLES, allPhasesOf, askerUsesOf, raisedUsesOf } from "../packag
 import { varietyErrors } from "../packages/game-paint/src/cards/variety.ts";
 
 const STORIES = "content/corpus/stories";
-const lex = JSON.parse(fs.readFileSync("docs/design/g1/grounding/u01-lexicon.json", "utf8"));
+// L0 · D10 · DIE UNIT KOMMT VOM KAPITEL, NICHT AUS DIESER ZEILE.
+//
+// Hier standen drei feste `g1-u01`-Pfade plus ein festes `u01-lexicon.json`.
+// Ein Kapitel, das eine andere Unit lehrt, wäre gegen die Vokabeln von Unit 1
+// geerdet worden — und das ist SCHLIMMER als gar keine Erdung, weil das Tor
+// dabei grün bleibt und behauptet, es habe geprüft. Die Unit steht jetzt in der
+// Karten-Datei (`unit`), wird gegen `story.json` gegengelesen, und jedes
+// Kapitel bringt seine drei Registerien selbst mit.
+//
+// UND: eine Karten-Datei OHNE Lexikon ihrer Unit ist ROT. Das Lexikon ist die
+// einzige Autorität dafür, ob ein englisches Wort in diesem Kapitel überhaupt
+// vorkommen darf; ohne es liefe die Erdung leer und meldete nichts.
+import { paintChapters, skipLedger, unitSlug as unitSlugOf } from "./paint-chapters.mjs";
+const CHAPTERS = paintChapters();
+const ledger = skipLedger();
 // layers 13-17 read the unit the chapter teaches, plus the declared exemptions
 const POLICY_FILE = "scripts/game-tasks-variety-policy.json";
 const policy = JSON.parse(fs.readFileSync(POLICY_FILE, "utf8"));
-const wordbank = JSON.parse(fs.readFileSync("content/corpus/units/g1-u01/wordbank.json", "utf8")).entries;
-const structureIds = [...new Set(JSON.parse(fs.readFileSync("content/corpus/units/g1-u01/grammar.json", "utf8")).items.map((i) => i.structureId))];
+/** L0 · D10: die Kapitel-Tabellen liegen neben dem Inhalt (chNN.policy.json);
+ *  im Politik-JSON bleiben nur die DIALS, die über allen Kapiteln stehen. */
+const chapterPolicy = (cx) => (cx?.hasPolicy ? JSON.parse(fs.readFileSync(cx.policyPath, "utf8")) : null);
+/** Die Sicht, die `varietyErrors` erwartet: dieselbe Form wie früher das
+ *  Politik-JSON, nur je Kapitel aus dessen eigener Datei zusammengesetzt. */
+const policyFor = (cx) => {
+  const cp = chapterPolicy(cx);
+  return {
+    ...policy,
+    chapters: cp === null ? {} : { [cx.chapter]: { families: cp.families ?? [], lexiconClasses: cp.lexiconClasses ?? {}, vocabLedger: cp.vocabLedger ?? {} } },
+  };
+};
+// die Register des GERADE geprüften Kapitels — vom Treiber je Datei gesetzt
+let lex = null;
+let wordbank = [];
+let structureIds = [];
+let CHAPTER_NOW = null;
 // the ledger's expiry dates are compared against a date the CHECKER supplies —
 // variety.ts stays pure so its tests cannot rot with the calendar.
 const TODAY = new Date().toISOString().slice(0, 10);
@@ -108,9 +137,22 @@ const fail = (where, msg) => {
 };
 
 // ── grounding vocabulary (mirrors check-story-grounding.mjs) ──
-const words = new Set(lex.words.map((w) => w.toLowerCase()));
-const phrases = lex.phrases.map((p) => p.toLowerCase());
-const proper = new Set(lex.properNouns.map((w) => w.toLowerCase()));
+// L0 · D10: die Erdungs-Mengen gehören dem Kapitel, das gerade geprüft wird —
+// `loadUnitRegisters` unten setzt sie, bevor eine Karte gelesen wird.
+let words = new Set();
+let phrases = [];
+let proper = new Set();
+const loadUnitRegisters = (cx) => {
+  lex = JSON.parse(fs.readFileSync(cx.lexiconPath, "utf8"));
+  words = new Set(lex.words.map((w) => w.toLowerCase()));
+  phrases = lex.phrases.map((x) => x.toLowerCase());
+  proper = new Set(lex.properNouns.map((w) => w.toLowerCase()));
+  wordbank = cx.wordbankPath && fs.existsSync(cx.wordbankPath)
+    ? JSON.parse(fs.readFileSync(cx.wordbankPath, "utf8")).entries : [];
+  structureIds = cx.grammarPath && fs.existsSync(cx.grammarPath)
+    ? [...new Set(JSON.parse(fs.readFileSync(cx.grammarPath, "utf8")).items.map((i) => i.structureId))] : [];
+  DE_GLOSS = buildDeGloss();
+};
 const FREE = new Set(["oh", "ssh", "psst", "wow", "hey", "but", "now", "do", "too", "yes", "no"]);
 const tokens = (en) => (String(en).toLowerCase().match(/[a-zäöüß'-]+/gi) ?? []).filter((t) => t.length > 0);
 function grounded(tokRaw, extra) {
@@ -349,7 +391,8 @@ function giveawayFailures(t, deGloss, declaredFields) {
   return out;
 }
 
-const DE_GLOSS = buildDeGloss();
+// L0 · D10: je Kapitel neu gebaut (die Glossare hängen an der Unit).
+let DE_GLOSS = new Map();
 
 // ── 18c/18d · THE DECLARED EXCEPTION ─────────────────────────────────────────
 // Where the reveal cannot be derived from a form (above), it is DECLARED — the
@@ -486,7 +529,7 @@ function checkItem(chId, t) {
   if (t.stimulus?.type === "image") checkDe(w, t.stimulus.altDe);
   if (t.stimulus?.type === "entity") checkDe(w, t.stimulus.showsDe);
   // 9 · the distribution map: is this kind allowed out in this chapter's field?
-  const palette = CHAPTER_FIELD_KINDS[chId];
+  const palette = CHAPTER_NOW ? fieldKindsOf(CHAPTER_NOW) : null;
   if (palette && FIELD_USES.has(t.use) && !palette.has(t.kind)) {
     fail(w, `palette: ${chId}'s field is [${[...palette].join(" · ")}] — a "${t.kind}" card cannot be served as "${t.use}" here (doc 41 §1)`);
   }
@@ -544,10 +587,18 @@ const MAX_LINE = MAX_LINE_DE; // the kurzweilig law (F2-2), shared with the leve
 // R3-12 fixed what was actually wrong with it (unanswerable, not too complex).
 /** The uses a being raises OUT IN THE WORLD — where the palette applies. */
 const FIELD_USES = new Set(["encounter", "quickfire", "door", "rescue"]);
-/** chapter → the kinds its FIELD may serve. A chapter with no entry is not yet
- *  ruled on and is left alone, so this table can grow one chapter at a time. */
-const CHAPTER_FIELD_KINDS = {
-  ch01: new Set(["choice", "wheel", "restore", "oddone"]),
+/** L0 · D10 · WELCHE KARTENARTEN DAS FELD EINES KAPITELS SERVIEREN DARF.
+ *
+ *  Stand als Tabelle hier — mit genau einem Eintrag, und mit dem Satz »so kann
+ *  diese Tabelle Kapitel für Kapitel wachsen«. Genau das war das Problem: fünf
+ *  Kapitel-Bahnen hätten in DIESE Zeile schreiben müssen. Die Liste liegt jetzt
+ *  in `chNN.policy.json` neben den Karten des Kapitels, das sie beschreibt.
+ *  Ein Kapitel ohne Politik-Datei ist wie bisher »noch nicht entschieden« und
+ *  wird in Ruhe gelassen — die Auslassung wird aber NAMENTLICH gemeldet. */
+const fieldKindsOf = (cx) => {
+  const cp = chapterPolicy(cx);
+  if (cp === null || !Array.isArray(cp.fieldKinds)) return null;
+  return new Set(cp.fieldKinds);
 };
 
 
@@ -669,7 +720,13 @@ function checkAgainstLevel(file, level, items) {
         // any of those cards.
         const knots = GUARDIAN_SCRIPT[e.tier]?.knots ?? 0;
         const numbers = new Set(
-          (policy.chapters?.[level.chapter]?.lexiconClasses?.["g1u01.x.numbers"]?.words ?? [])
+          // L0 · D10: die Klasse stand als Literal `g1u01.x.numbers` im Code —
+          // ein Kapitel mit einer anderen Zahlen-Klasse hätte hier eine leere
+          // Menge bekommen und wäre unten mit »die Klasse ist leer« rot
+          // geworden, obwohl seine Zahlen dastanden. Sie steht jetzt in der
+          // Politik-Datei des Kapitels; fehlt sie DORT, wird das Gesetz
+          // namentlich übersprungen statt still falsch.
+          (chapterPolicy(CHAPTER_NOW)?.lexiconClasses?.[chapterPolicy(CHAPTER_NOW)?.arenaPromiseClass ?? ""]?.words ?? [])
             .map((w) => String(w).toLowerCase()),
         );
         if (knots > 0 && numbers.size === 0) {
@@ -926,7 +983,8 @@ function exerciseRegistry(unitSlug, chapter) {
     corpusClasses.set(id, new Set((c.words ?? []).map((x) => x.toLowerCase())));
   }
   const policyClasses = new Map();
-  for (const [id, c] of Object.entries(policy.chapters?.[chapter]?.lexiconClasses ?? {})) {
+  const cx = CHAPTERS.find((c) => c.chapter === chapter);
+  for (const [id, c] of Object.entries(chapterPolicy(cx)?.lexiconClasses ?? {})) {
     policyClasses.set(id, c.words ?? []);
   }
   return {
@@ -944,6 +1002,19 @@ function exerciseRegistry(unitSlug, chapter) {
 // proves nothing, a NON-TAMPER that runs the REAL corpus of this repo through
 // the REAL function and must stay silent.
 if (process.argv.includes("--selftest")) {
+  // L0 · D10 · DER SELBSTTEST BRAUCHT EIN ECHTES KAPITEL. Seine Fälle fahren
+  // gegen den WIRKLICHEN Wortschatz dieses Repos (das ist ihr Wert), und der
+  // hing bis zur Level-Welle an modulweiten `g1-u01`-Konstanten. Jetzt werden
+  // die Register des ersten FERTIGEN Kapitels geladen, bevor ein Fall läuft —
+  // ohne das liefen alle Erdungs-Fälle gegen leere Mengen und wären grün
+  // geworden, weil sie nichts mehr zu sagen hatten.
+  const REAL_SELFTEST = CHAPTERS.find((c) => !c.draft && c.hasTasks && c.lexiconPath && fs.existsSync(c.lexiconPath));
+  if (!REAL_SELFTEST) {
+    console.error("check-game-tasks --selftest: kein fertiges Kapitel mit Karten und Lexikon — die Echt-Daten-Fälle können nicht laufen");
+    process.exit(1);
+  }
+  CHAPTER_NOW = REAL_SELFTEST;
+  loadUnitRegisters(REAL_SELFTEST);
   const reg = (over = {}) => ({
     unitSlug: "g1-u01",
     wordbankIds: new Set(["g1u01.w.pen"]),
@@ -1133,19 +1204,39 @@ if (process.argv.includes("--selftest")) {
   process.exit(0);
 }
 
-// ── walk every *.tasks.v2.json ──
-const files = [];
-if (fs.existsSync(STORIES)) {
-  for (const story of fs.readdirSync(STORIES)) {
-    const dir = path.join(STORIES, story, "paint");
-    if (!fs.existsSync(dir)) continue;
-    for (const f of fs.readdirSync(dir).filter((x) => x.endsWith(".tasks.v2.json"))) files.push(path.join(dir, f));
-  }
-}
-if (files.length === 0) { console.log("check-game-tasks: no gameTasks@2 files yet — nothing to check"); process.exit(0); }
+// ── walk every chapter that HAS a card set ───────────────────────────────────
+// L0 · D10: die Datei-Liste kommt aus der geteilten Kapitel-Auflösung, nicht
+// aus einem eigenen Verzeichnis-Lauf. Ein Kapitel ohne Karten ist kein Fehler
+// (Entwurf), wird aber genannt.
+const withTasks = CHAPTERS.filter((c) => c.hasTasks);
+for (const c of CHAPTERS) if (!c.hasTasks) ledger.skip(c.chapter, "karten", `kein ${c.chapter}.tasks.v2.json`);
+if (withTasks.length === 0) { console.log("check-game-tasks: no gameTasks@2 files yet — nothing to check"); ledger.print(); process.exit(0); }
 
 let itemCount = 0;
-for (const file of files) {
+for (const cx of withTasks) {
+  const file = cx.tasksPath;
+  CHAPTER_NOW = cx;
+  // ── L0 · D10 · DIE UNIT DIESES KAPITELS, und der Abgleich mit der Geschichte.
+  // Zwei Quellen nennen sie: die Karten-Datei (`unit`) und `story.json`
+  // (`chapter.unit` als Zahl). Sie MÜSSEN übereinstimmen — eine Karten-Datei,
+  // die eine andere Unit behauptet als die Geschichte, wird gegen den falschen
+  // Wortschatz geerdet und bleibt dabei grün.
+  if (cx.tasksUnit === null) {
+    fail(file, "unit: die Karten-Datei nennt keine `unit` — ohne sie kann kein Wort dieses Kapitels geerdet werden");
+    continue;
+  }
+  if (cx.storyUnit !== null && cx.tasksUnit !== cx.storyUnit) {
+    fail(file, `unit: die Karten sagen "${cx.tasksUnit}", story.json sagt "${cx.storyUnit}" — eine der beiden Quellen erdet dieses Kapitel gegen den falschen Wortschatz`);
+    continue;
+  }
+  // Das Lexikon der Unit ist die Erdungs-Autorität. Fehlt es, liefe jede
+  // Erdungs-Prüfung leer und meldete nichts — deshalb ROT, nicht übersprungen.
+  if (!cx.lexiconPath || !fs.existsSync(cx.lexiconPath)) {
+    fail(file, `grounding: ${cx.chapter} hat Karten, aber kein docs/design/g1/grounding/${(cx.unit ?? "uNN").replace(/^g\d-/, "")}-lexicon.json — ohne Lexikon prüft die Erdung nichts und bleibt trotzdem grün`);
+    continue;
+  }
+  if (!cx.hasPolicy) ledger.skip(cx.chapter, "feld-palette+varietaet", `kein ${cx.chapter}.policy.json`);
+  loadUnitRegisters(cx);
   const raw = JSON.parse(fs.readFileSync(file, "utf8"));
   const parsed = GameTasksFileV2.safeParse(raw);
   if (!parsed.success) {
@@ -1154,19 +1245,15 @@ for (const file of files) {
   }
   for (const t of parsed.data.items) { checkItem(parsed.data.chapter, t); itemCount++; }
   // the level this set is played in — bindings and coverage are cross-file laws
-  const levelFile = file.replace(".tasks.v2.json", ".level.json");
-  if (!fs.existsSync(levelFile)) {
-    fail(file, `no sibling ${path.basename(levelFile)} — bindings cannot be checked against a world`);
-    continue;
-  }
-  const level = JSON.parse(fs.readFileSync(levelFile, "utf8"));
+  const level = cx.level;
   checkAgainstLevel(file, level, parsed.data.items);
   checkGiveawayFamilies(file, parsed.data.items);
   checkNoTwins(file, parsed.data.items);
   checkPortraits(file, parsed.data.items);
   // 19 · every `exercises` name resolves in the unit this chapter teaches (R59,
   // D-89). Unit per chapter as everywhere else in this file: ch01 teaches g1-u01.
-  checkExercisesExist(file, parsed.data.items, exerciseRegistry("g1-u01", parsed.data.chapter));
+  // L0 · D10: die Unit kommt aus dem Kapitel, nicht aus einem Literal.
+  checkExercisesExist(file, parsed.data.items, exerciseRegistry(cx.unit, parsed.data.chapter));
   checkTimerPolicy(file, parsed.data.items);
   // 13-17 · THE VARIETY LAWS — one imported pass, so the gate, the audit doc and
   // the unit tests all compute the same numbers from the same code.
@@ -1174,7 +1261,9 @@ for (const file of files) {
     chapter: parsed.data.chapter,
     items: parsed.data.items,
     level,
-    policy,
+    policy: policyFor(cx),
+    // L0 · D10: die Feld-Formen des Kapitels aus seiner eigenen Politik-Datei
+    fieldForms: chapterPolicy(cx)?.fieldForms,
     wordbank,
     structureIds,
     lexicon: words,
@@ -1184,5 +1273,6 @@ for (const file of files) {
   }
 }
 
-if (failures === 0) console.log(`check-game-tasks: OK — ${itemCount} tasks across ${files.length} file(s): schema, grounding, giveaway, register, binding, coverage, length, twins, portraits, timer-policy, form, voice, rhythm, distinctness, coverage-ledger, giveaway-class (all nine kinds, both languages, the board) all green`);
+if (failures === 0) console.log(`check-game-tasks: OK — ${itemCount} tasks across ${withTasks.length} file(s): schema, grounding, giveaway, register, binding, coverage, length, twins, portraits, timer-policy, form, voice, rhythm, distinctness, coverage-ledger, giveaway-class (all nine kinds, both languages, the board) all green`);
 else { console.error(`check-game-tasks: ${failures} failure(s)`); process.exit(1); }
+ledger.print();
