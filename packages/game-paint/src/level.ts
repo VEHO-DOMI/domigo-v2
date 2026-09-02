@@ -350,6 +350,18 @@ export interface PhaseSpec {
    *  Ein deklariertes Wort ist eine PRÜFBARE Zusage: das Gesetz `trail-words`
    *  rechnet die Buchstaben gegen die Zahl der `*` im Gitter nach. */
   words?: readonly string[];
+  /** L0 · N7 · WIE LANGE DIE KLECKSKAMMER LÄUFT (D-831 = D-927, zweimal
+   *  unabhängig gemessen).
+   *
+   *  Nur auf der BONUS-Phase gelesen. Die Uhr war eine Konstante im Motor —
+   *  35 Sekunden, plus zwei Sekunden Gnade —, und ch02 wie ch06 brauchen 30.
+   *  Ohne dieses Feld hätte die erste Kapitel-Bahn, die eine andere Zahl will,
+   *  eine Motor-Änderung bestellen müssen, also auf die Merge-Schlange warten.
+   *
+   *  Die zwei Sekunden Gnade bleiben im Motor: sie sind kein Design-Wert,
+   *  sondern die Antwort auf die Reaktionszeit eines Sechsjährigen — dieselbe
+   *  in jedem Kapitel. Ohne Angabe gilt 35 ⇒ ch01 byte-gleich. */
+  budgetSec?: number;
 }
 
 export interface PaintLevel {

@@ -560,7 +560,9 @@ export class Sim {
     // die verbliebene Ausnahme. Ein Kapitel, dessen Kleckskammer anders heißt,
     // hätte einen Bonusraum ganz ohne Uhr bekommen — kein Fehler, nur eine
     // stumme Zeitlosigkeit. Dieselbe Konstante wie oben, gleiche Identität.
-    if (isBonusRoom) this.bonusLeftTicks = 35 * 60 + 120; // G1: budget + 2s grace
+    // L0 · N7: das Budget deklariert die Bonus-Phase (Vorgabe 35 s); die zwei
+    // Sekunden Gnade bleiben hier — sie sind Reaktionszeit, kein Design-Wert.
+    if (isBonusRoom) this.bonusLeftTicks = (phase.budgetSec ?? 35) * 60 + 120; // G1: budget + 2s grace
 
     this.camX = clampScroll(cameraTargetX(this.player.x, this.player.facing), this.worldWpx, LOGICAL_W);
     this.camY = clampScroll(this.player.y - Math.round(LOGICAL_H * 0.57) * SUBS, this.worldHpx, LOGICAL_H);

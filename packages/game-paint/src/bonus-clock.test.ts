@@ -57,6 +57,12 @@ const levelWith = (bonusId: string, fieldId: string): PaintLevel => ({
 const ticksIn = (level: PaintLevel, phaseId: string): number =>
   new Sim({ level, phaseId, grantedAbilities: () => [...level.abilities], freedCageIds: () => [] }).bonusLeftTicks;
 
+/** Ein Level, dessen Kammer ein eigenes Budget deklariert (L0 · N7). */
+const levelBudget = (sec: number): PaintLevel => {
+  const l = levelWith("p9", "p1");
+  return { ...l, bonus: { ...l.bonus!, budgetSec: sec } };
+};
+
 describe("L0 · D3 · die Bonus-Uhr", () => {
   it("läuft im Bonusraum, auch wenn er NICHT p9 heisst", () => {
     // Kleckskammer = p7, Feldraum = p1. Vor der Level-Welle wäre das eine
@@ -73,6 +79,20 @@ describe("L0 · D3 · die Bonus-Uhr", () => {
     // Kleckskammer«) — bewusst KEINE 0, denn 0 heisst »abgelaufen«.
     expect(ticksIn(level, "p9")).toBe(-1);
     expect(ticksIn(level, "p7")).toBe(35 * 60 + 120);
+  });
+
+  it("L0 · N7: die Kammer deklariert ihr eigenes Budget", () => {
+    // ch02 und ch06 wollen 30 Sekunden. Ohne dieses Feld haette die erste
+    // Kapitel-Bahn mit einer anderen Zahl eine Motor-Aenderung bestellen und
+    // auf die Merge-Schlange warten muessen.
+    expect(ticksIn(levelBudget(30), "p9")).toBe(30 * 60 + 120);
+    expect(ticksIn(levelBudget(45), "p9")).toBe(45 * 60 + 120);
+  });
+
+  it("L0 · N7: die zwei Sekunden Gnade bleiben im Motor", () => {
+    // Sie sind die Reaktionszeit eines Sechsjaehrigen, nicht der Design-Wert —
+    // ein Kapitel, das 30 bestellt, bekommt 30 + 2 und nicht 30.
+    expect(ticksIn(levelBudget(30), "p9") - 30 * 60).toBe(120);
   });
 
   it("und in Kapitel 1, wo die Kammer wirklich p9 heisst, ändert sich nichts", () => {

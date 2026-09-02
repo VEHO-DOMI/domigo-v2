@@ -121,3 +121,15 @@ describe("L0 · N2 · die Fundstück-Wörter überleben das Parsen (D-921)", () 
     assert.equal(ch02.clothPlaceDe, "Zoo-Gelände");
   });
 });
+
+describe("L0 · N7 · das Bonus-Budget überlebt das Parsen (D-831 = D-927)", () => {
+  it("ch01 deklariert keines — die Kammer läuft weiter 35 Sekunden", () => {
+    assert.equal(loadPaintLevel(STORY, "ch01").bonus?.budgetSec, undefined);
+  });
+
+  it("ch02 deklariert 30, und die 30 kommt an", () => {
+    // Ohne die zod-Zeile stünde die 30 in der Datei und die Kammer liefe
+    // trotzdem 35 — der stille Strip, gegen den diese ganze Test-Datei steht.
+    assert.equal(loadPaintLevel(STORY, "ch02").bonus?.budgetSec, 30);
+  });
+});

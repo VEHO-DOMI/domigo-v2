@@ -159,6 +159,10 @@ const PaintPhase = z.object({
   // wird STILL entfernt — die Deklaration bestünde jedes Tor auf der Platte und
   // wäre im Browser weg, und der Trail buchstabierte A→Z statt seines Wortes.
   words: z.array(z.string().min(1)).min(1).optional(),
+  // L0 · N7: das Sekunden-Budget der Kleckskammer (nur auf der Bonus-Phase
+  // gelesen, Vorgabe 35). Dieselbe Strip-Regel wie oben: ohne diese Zeile
+  // liefe jede Kammer wieder 35 Sekunden, egal was das Level sagt.
+  budgetSec: z.number().int().positive().max(600).optional(),
 });
 
 const PaintLevelFile = z.object({

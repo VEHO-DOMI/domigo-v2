@@ -237,7 +237,8 @@
   "links": [],
   "exit": {
    "to": "p2"
-  }
+  },
+  "budgetSec": 30
  },
  "collectSkin": "feather",
  "clothNounDe": "Tierspuren",
