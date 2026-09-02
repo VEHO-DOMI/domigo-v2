@@ -1,98 +1,162 @@
 {
-  "schema": "taskGiveawayPolicy@1",
-  "note": "R5-W3 · G2 · Die Daten der Verrats-Schicht (Schicht 18 in scripts/check-game-tasks.mjs). Zwei Abschnitte: deGloss = die deutschen Entsprechungen, die der Korpus NICHT selbst mitbringt; declared = die Karten, bei denen der deutsche Rahmen die Aufgabe IST. Die Wordbank (content/corpus/units/g1-u01/wordbank.json) traegt zu jedem ihrer Eintraege ein de[] und ist die erste Quelle — hier steht nur, was dort fehlt. Kein Eintrag ohne Grund (Hausregel: eine Stellschraube ist nie nackt).",
-  "deGloss": {
-    "g1u01.x.numbers": {
-      "reason": "Die Zahlen sind bewusst KEINE Wordbank-Eintraege, sondern eine lexiconClass (variety.ts §lexiconClasses) — deshalb bringen sie keine deutsche Seite mit. Ohne diese Tabelle waere >Dreh das Rad auf die dreizehn< neben der Antwort >thirteen< unsichtbar.",
-      "excluded": "ein / eine stehen absichtlich NICHT hier: als unbestimmter Artikel stehen sie in fast jedem deutschen Satz und wuerden gegen die Antwort >one< dauernd falschen Alarm schlagen. Das Zahlwort >eins< ist aufgenommen.",
-      "pairs": {
-        "eins": ["one"],
-        "zwei": ["two"],
-        "drei": ["three"],
-        "vier": ["four"],
-        "fünf": ["five"],
-        "sechs": ["six"],
-        "sieben": ["seven"],
-        "acht": ["eight"],
-        "neun": ["nine"],
-        "zehn": ["ten"],
-        "elf": ["eleven"],
-        "zwölf": ["twelve"],
-        "dreizehn": ["thirteen"],
-        "vierzehn": ["fourteen"],
-        "fünfzehn": ["fifteen"],
-        "sechzehn": ["sixteen"],
-        "siebzehn": ["seventeen"],
-        "achtzehn": ["eighteen"],
-        "neunzehn": ["nineteen"],
-        "zwanzig": ["twenty"],
-        "einundzwanzig": ["twenty-one"],
-        "zweiundzwanzig": ["twenty-two"],
-        "dreiundzwanzig": ["twenty-three"],
-        "vierundzwanzig": ["twenty-four"],
-        "fünfundzwanzig": ["twenty-five"]
-      }
-    },
-    "g1u01.x.colours": {
-      "reason": "Gleicher Grund wie bei den Zahlen: die Farben sind eine lexiconClass ohne deutsche Seite. Genau hier sitzt die Rettungs-Karte (>Ich war blau wie das Meer!< neben der Antwort >blue<) — sichtbar machen, dann deklarieren.",
-      "pairs": {
-        "rot": ["red"],
-        "gelb": ["yellow"],
-        "blau": ["blue"],
-        "grün": ["green"],
-        "orange": ["orange"],
-        "braun": ["brown"],
-        "rosa": ["pink"],
-        "weiß": ["white"],
-        "weiss": ["white"],
-        "schwarz": ["black"]
-      }
-    }
+ "schema": "taskGiveawayPolicy@1",
+ "note": "R5-W3 · G2 · Die Daten der Verrats-Schicht (Schicht 18 in scripts/check-game-tasks.mjs). Zwei Abschnitte: deGloss = die deutschen Entsprechungen, die der Korpus NICHT selbst mitbringt; declared = die Karten, bei denen der deutsche Rahmen die Aufgabe IST. Die Wordbank (content/corpus/units/g1-u01/wordbank.json) traegt zu jedem ihrer Eintraege ein de[] und ist die erste Quelle — hier steht nur, was dort fehlt. Kein Eintrag ohne Grund (Hausregel: eine Stellschraube ist nie nackt).  L0 · N5 (Level-Welle 2026-09-02): der Block `nounDe` ist hier AUSGEZOGEN. Er trug das deutsche Nomen jedes entfaerbten Wesens — also die Wesen EINES Kapitels — und lag trotzdem in einer scripts/-Datei, in die fuenf gleichzeitig laufende T-Bahnen haetten schreiben muessen. Er steht jetzt verbatim in content/corpus/stories/<story>/paint/chNN.policy.json unter `nounDe`, und das Tor liest NUR dort: ein Rueckfall haette dasselbe Datum an zwei Stellen gelassen, wo es still auseinanderlaufen kann. Was HIER bleibt, ist die Glossen-Tabelle `deGloss` und die Familien — beides gilt ueber allen Kapiteln.",
+ "deGloss": {
+  "g1u01.x.numbers": {
+   "reason": "Die Zahlen sind bewusst KEINE Wordbank-Eintraege, sondern eine lexiconClass (variety.ts §lexiconClasses) — deshalb bringen sie keine deutsche Seite mit. Ohne diese Tabelle waere >Dreh das Rad auf die dreizehn< neben der Antwort >thirteen< unsichtbar.",
+   "excluded": "ein / eine stehen absichtlich NICHT hier: als unbestimmter Artikel stehen sie in fast jedem deutschen Satz und wuerden gegen die Antwort >one< dauernd falschen Alarm schlagen. Das Zahlwort >eins< ist aufgenommen.",
+   "pairs": {
+    "eins": [
+     "one"
+    ],
+    "zwei": [
+     "two"
+    ],
+    "drei": [
+     "three"
+    ],
+    "vier": [
+     "four"
+    ],
+    "fünf": [
+     "five"
+    ],
+    "sechs": [
+     "six"
+    ],
+    "sieben": [
+     "seven"
+    ],
+    "acht": [
+     "eight"
+    ],
+    "neun": [
+     "nine"
+    ],
+    "zehn": [
+     "ten"
+    ],
+    "elf": [
+     "eleven"
+    ],
+    "zwölf": [
+     "twelve"
+    ],
+    "dreizehn": [
+     "thirteen"
+    ],
+    "vierzehn": [
+     "fourteen"
+    ],
+    "fünfzehn": [
+     "fifteen"
+    ],
+    "sechzehn": [
+     "sixteen"
+    ],
+    "siebzehn": [
+     "seventeen"
+    ],
+    "achtzehn": [
+     "eighteen"
+    ],
+    "neunzehn": [
+     "nineteen"
+    ],
+    "zwanzig": [
+     "twenty"
+    ],
+    "einundzwanzig": [
+     "twenty-one"
+    ],
+    "zweiundzwanzig": [
+     "twenty-two"
+    ],
+    "dreiundzwanzig": [
+     "twenty-three"
+    ],
+    "vierundzwanzig": [
+     "twenty-four"
+    ],
+    "fünfundzwanzig": [
+     "twenty-five"
+    ]
+   }
   },
-  "nounDe": {
-    "reason": "R5-W4 · C2 · Das deutsche Nomen jedes entfaerbten Wesens — die Pflicht, die die Ausnahme unten kauft. Es steht HIER und nicht in der Wortbank, weil die Wortbank die KORPUS-Glosse fuehrt (pen -> Kugelschreiber, glue stick -> Klebestift) und diese Tabelle die ERZAEHLSTIMME regelt: Koki spricht oesterreichisch (die Fuellfeder, der Spitzer, der Radiergummi). Zwei Listen, zwei Zustaendigkeiten — G3 besitzt die Glossen, C2 die Spielzeilen (LEXIKON_AT.md).",
-    "gluestick": "obj_gluestick sagt >Klebestift< und NICHT Kokis >Uhu-Stick<, und zwar aus einem gemessenen Grund: die englische Antwort ist >glue stick<, und >Uhu-Stick< traegt das Antwortwort >stick< im eigenen Namen (Schicht 18a hat es angeschlagen, als die Zeile zum ersten Mal stand). Ein Kind liest >Stick< und tippt >glue stick<, ohne ein Wort gelernt zu haben. Kokis Wort bleibt im Hinweis (>Auf Deutsch: der Klebestift — der Uhu-Stick.<), wo die Leiter absichtlich frei ist, und ueberall sonst im Kapitel.",
-    "pairs": {
-      "obj_book": "Buch",
-      "eraser": "Radiergummi",
-      "obj_schoolbag": "Schultasche",
-      "pen": "Füllfeder",
-      "heft": "Heft",
-      "obj_desk": "Tisch",
-      "obj_scissors": "Schere",
-      "obj_gluestick": "Klebestift",
-      "obj_sharpener": "Spitzer"
-    },
-    "captivesReason": "Die Kaefig-Karten teilen sich ALLE denselben Skin (satchel — das Portrait ist der Kaefig, nie der Insasse), also kann ihr Nomen nicht am Skin haengen; es haengt an der Karte. Die Namen sind die ratifizierte Insassen-Tabelle aus STORY_SPINE_CH01 §2 — EIN Ding, EIN Wort quer ueber Lehr-, Rettungs- und Befreiungs-Karte. Genau dort sass der schaerfste Fund einer frueheren Runde: die Lehr-Karte sagte >die Musikanlage<, die Rettungs-Karte zehn Sekunden spaeter >ein Lautsprecher<, und verbrannte damit die Vokabel-Bruecke, die sie eben gebaut hatte.",
-    "captives": {
-      "rsc.soundsystem.r1": "Musikanlage",
-      "rsc.tablet.r1": "Tablet",
-      "rsc.chair.r1": "Stuhl",
-      "rsc.picture.r1": "Klassenfoto"
-    }
+  "g1u01.x.colours": {
+   "reason": "Gleicher Grund wie bei den Zahlen: die Farben sind eine lexiconClass ohne deutsche Seite. Genau hier sitzt die Rettungs-Karte (>Ich war blau wie das Meer!< neben der Antwort >blue<) — sichtbar machen, dann deklarieren.",
+   "pairs": {
+    "rot": [
+     "red"
+    ],
+    "gelb": [
+     "yellow"
+    ],
+    "blau": [
+     "blue"
+    ],
+    "grün": [
+     "green"
+    ],
+    "orange": [
+     "orange"
+    ],
+    "braun": [
+     "brown"
+    ],
+    "rosa": [
+     "pink"
+    ],
+    "weiß": [
+     "white"
+    ],
+    "weiss": [
+     "white"
+    ],
+    "schwarz": [
+     "black"
+    ]
+   }
+  }
+ },
+ "families": [
+  {
+   "id": "restore-nennt-das-wesen",
+   "match": {
+    "kind": "restore"
+   },
+   "fields": [
+    "showsDe",
+    "colourAskDe"
+   ],
+   "exempts": [
+    "18a",
+    "18b"
+   ],
+   "reason": "Das Wesen steht GRAU auf dem Schirm (Entsaettigungs-Gesetz, doc 41 §2): weder sein Name noch seine Farbe sind zu sehen, also muss die deutsche Zeile beides sagen, sonst ist die Karte unloesbar. Genau darauf beruht das Kapitel — Deutsch rahmt, Englisch antwortet (STORY_SPINE_CH01 §5, Koki bestaetigt: >wir sollen auf Deutsch genau beschreiben, was es ist<). Vorher umschrieben drei dieser Karten das Wesen (>der kleine Huepfer<, >ein kleiner Stift<, >ein kleiner Kasten<), weil das Nennen an Schicht 18b anschlug; Kokis Replay vom 15.08. hat das Umschreiben verworfen, also faellt die Umschreibung und die Ausnahme wird DEKLARIERT statt umgangen.",
+   "doc": "packages/content-schema/src/game-tasks.ts (restore: >This is why the German ask is a REQUIRED field rather than flavour<) · D-34 · STORY_SPINE_CH01 §5 · R47 (Rahmen Welle 4 §9)",
+   "obliges": {
+    "nounDe": "Die Ausnahme kauft eine STRENGERE Pflicht, und sie ist strenger als die Gleichnis-Pflicht, die sie ersetzt (R47: >kein Gleichnis, kein Vergleich<). Drei Dinge auf einmal: (1) das Feld MUSS das deutsche Nomen seines Skins tragen — Umschreiben ist ab jetzt der Verstoss, nicht das Nennen; (2) das Feld darf KEIN englisches Antwortwort tragen — die Ausnahme gibt das Deutsche frei, nie das Englische, sonst waere sie ein Freibrief statt einer Pflicht; (3) colourAskDe darf kein Gleichnis mehr sein (>Ich war rot wie ein Apfel< — Koki: >aufgesetzt, forced, sparen wir uns<)."
+   }
   },
-  "families": [
-    {
-      "id": "restore-nennt-das-wesen",
-      "match": { "kind": "restore" },
-      "fields": ["showsDe", "colourAskDe"],
-      "exempts": ["18a", "18b"],
-      "reason": "Das Wesen steht GRAU auf dem Schirm (Entsaettigungs-Gesetz, doc 41 §2): weder sein Name noch seine Farbe sind zu sehen, also muss die deutsche Zeile beides sagen, sonst ist die Karte unloesbar. Genau darauf beruht das Kapitel — Deutsch rahmt, Englisch antwortet (STORY_SPINE_CH01 §5, Koki bestaetigt: >wir sollen auf Deutsch genau beschreiben, was es ist<). Vorher umschrieben drei dieser Karten das Wesen (>der kleine Huepfer<, >ein kleiner Stift<, >ein kleiner Kasten<), weil das Nennen an Schicht 18b anschlug; Kokis Replay vom 15.08. hat das Umschreiben verworfen, also faellt die Umschreibung und die Ausnahme wird DEKLARIERT statt umgangen.",
-      "doc": "packages/content-schema/src/game-tasks.ts (restore: >This is why the German ask is a REQUIRED field rather than flavour<) · D-34 · STORY_SPINE_CH01 §5 · R47 (Rahmen Welle 4 §9)",
-      "obliges": {
-        "nounDe": "Die Ausnahme kauft eine STRENGERE Pflicht, und sie ist strenger als die Gleichnis-Pflicht, die sie ersetzt (R47: >kein Gleichnis, kein Vergleich<). Drei Dinge auf einmal: (1) das Feld MUSS das deutsche Nomen seines Skins tragen — Umschreiben ist ab jetzt der Verstoss, nicht das Nennen; (2) das Feld darf KEIN englisches Antwortwort tragen — die Ausnahme gibt das Deutsche frei, nie das Englische, sonst waere sie ein Freibrief statt einer Pflicht; (3) colourAskDe darf kein Gleichnis mehr sein (>Ich war rot wie ein Apfel< — Koki: >aufgesetzt, forced, sparen wir uns<)."
-      }
-    },
-    {
-      "id": "kaefig-nennt-den-insassen",
-      "match": { "use": "rescue", "form": "state-it" },
-      "fields": ["showsDe"],
-      "exempts": ["18a", "18b"],
-      "reason": "Gemessen an der FORM, nicht an use+kind: Merles sechs Runden sind ebenfalls >rescue<, brauchen aber keine Ausnahme — sie heisst Merle, und ein Eigenname ist keine Vokabel, die man verraten koennte. Die vier Kaefig-Karten fragen >state-it<, und nur sie. — Das Portrait einer Kaefig-Karte ist der KAEFIG (satchel_*), nie der Insasse — das Wesen hinter den Gittern hat keine gemalte Zelle. Die deutsche Zeile ist also das Einzige, was sagt, wer da drinsteckt (D-34, woertlich: >Die Rettungs-Karten NENNEN ihn deshalb<; STORY_SPINE_CH01 §4b, Koki bestaetigt: >dann kann man den ja auch so nennen<). Fuer 18b stand das schon als abgeleitete Geruest-Ausnahme (scaffoldFieldsOf, use=rescue) — DEKLARIERT wird es hier, weil 18a von der Ableitung nicht erfasst war und beim ersten Nennen des Tablets zuschlug: >Tablet< ist im Deutschen dasselbe Wort. Ein Kognat ist kein Verrat, und die Ableitung konnte das nicht wissen.",
-      "doc": "STORY_SPINE_CH01 §2 (Insassen-Namenstabelle) + §4b · D-34 · scripts/check-game-tasks.mjs scaffoldFieldsOf",
-      "obliges": {
-        "nounDe": "Dieselbe strengere Pflicht wie oben, an der Karte statt am Skin gemessen: die Zeile MUSS den Insassen mit dem ratifizierten Namen nennen (nounDe.captives), und sie darf kein englisches Antwortwort tragen, das KEIN Kognat ist. Damit ist das Nennen erzwungen statt nur erlaubt — und die Umschreibung, die frueher hier stand (>ein flacher Bildschirm< fuer das Tablet), ist ab jetzt der Verstoss."
-      }
-    }
-  ]
+  {
+   "id": "kaefig-nennt-den-insassen",
+   "match": {
+    "use": "rescue",
+    "form": "state-it"
+   },
+   "fields": [
+    "showsDe"
+   ],
+   "exempts": [
+    "18a",
+    "18b"
+   ],
+   "reason": "Gemessen an der FORM, nicht an use+kind: Merles sechs Runden sind ebenfalls >rescue<, brauchen aber keine Ausnahme — sie heisst Merle, und ein Eigenname ist keine Vokabel, die man verraten koennte. Die vier Kaefig-Karten fragen >state-it<, und nur sie. — Das Portrait einer Kaefig-Karte ist der KAEFIG (satchel_*), nie der Insasse — das Wesen hinter den Gittern hat keine gemalte Zelle. Die deutsche Zeile ist also das Einzige, was sagt, wer da drinsteckt (D-34, woertlich: >Die Rettungs-Karten NENNEN ihn deshalb<; STORY_SPINE_CH01 §4b, Koki bestaetigt: >dann kann man den ja auch so nennen<). Fuer 18b stand das schon als abgeleitete Geruest-Ausnahme (scaffoldFieldsOf, use=rescue) — DEKLARIERT wird es hier, weil 18a von der Ableitung nicht erfasst war und beim ersten Nennen des Tablets zuschlug: >Tablet< ist im Deutschen dasselbe Wort. Ein Kognat ist kein Verrat, und die Ableitung konnte das nicht wissen.",
+   "doc": "STORY_SPINE_CH01 §2 (Insassen-Namenstabelle) + §4b · D-34 · scripts/check-game-tasks.mjs scaffoldFieldsOf",
+   "obliges": {
+    "nounDe": "Dieselbe strengere Pflicht wie oben, an der Karte statt am Skin gemessen: die Zeile MUSS den Insassen mit dem ratifizierten Namen nennen (nounDe.captives), und sie darf kein englisches Antwortwort tragen, das KEIN Kognat ist. Damit ist das Nennen erzwungen statt nur erlaubt — und die Umschreibung, die frueher hier stand (>ein flacher Bildschirm< fuer das Tablet), ist ab jetzt der Verstoss."
+   }
+  }
+ ]
 }

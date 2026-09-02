@@ -114,6 +114,6 @@ describe("R45 · die Schwelle ist gemessen, nicht gewählt", () => {
   it("liest die Zeichen aus derselben Quelle wie der Renderer", () => {
     // A law that re-derived the characters would police a trail nobody plays.
     const src = fs.readFileSync(path.resolve(__dirname, "level.ts"), "utf8");
-    expect(src).toContain("const trail = letterGlyphs(ph.rows, compositionFor(level.chapter, ph.id)?.words);");
+    expect(src).toContain("const trail = letterGlyphs(ph.rows, trailWordsFor(level, ph.id));");
   });
 });

@@ -837,5 +837,10 @@
  "tipsTotal": 5,
  "doorPlate": "plate_ch01_door",
  "scorePlate": "plate_ch01_score",
- "rulePlate": "plate_ch01_rule"
+ "rulePlate": "plate_ch01_rule",
+ "auftaktPlates": {
+  "schatten": ["auftakt_ch01_b", "schulhaus_ch01_b", "schulhaus_ch01_a"],
+  "auftrag": "auftakt_ch01_c",
+  "los": "auftakt_ch01_d"
+ }
 }

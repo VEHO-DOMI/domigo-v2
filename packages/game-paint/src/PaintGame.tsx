@@ -23,7 +23,7 @@ import type { PaintLevel, PhaseSpec } from "./level.ts";
 import type { GameTaskV2 } from "@domigo/content-schema";
 import { CardHost } from "./cards/CardHost.tsx";
 import { FoundMark, Key, KeyBit } from "./cards/Glance.tsx";
-import { type AuftaktCard, type AuftaktCounts, type UniformPiece, auftaktChain, auftaktExit, auftaktPosition, auftaktStep, auftaktTasks, uniformLegend, uniformLegendLine } from "./cards/auftakt.ts";
+import { type AuftaktCard, type AuftaktCounts, type UniformPiece, auftaktChain, auftaktExit, auftaktPosition, auftaktStep, auftaktTasks, clothWordsDe, uniformLegend, uniformLegendLine } from "./cards/auftakt.ts";
 import { type ArenaBeat, arenaExit, arenaLines, arenaPosition, arenaStep } from "./cards/arena.ts";
 import { answerTextOf } from "./cards/resolution.ts";
 import { tierOfAsker } from "./cards/serving.ts";
@@ -1760,7 +1760,8 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
             />
           )}
           {booksCount > 0 && <Chip icon="book" label="Bonus-Bücher" value={`${booksCount}`} art={art} />}
-          {clothTotal > 0 && <Chip icon="uniform" label="Kleider" value={`${clothCount}/${clothTotal}`} art={art} />}
+          {/* L0 · N2: das Wort gehört dem Kapitel — ch06 sammelt mit derselben Maschine Schnipsel. */}
+          {clothTotal > 0 && <Chip icon="uniform" label={clothWordsDe(level).pl} value={`${clothCount}/${clothTotal}`} art={art} />}
           {/* ── R5-W9 · F10 · HIER STAND DIE LEBENSANZEIGE — UND DAS WAR DER
               FEHLER (R212e, P8 §2). Die Reihe zaehlt, was das KIND gesammelt
               hat; die Tafel-Leiste zaehlt, was dem GEGNER noch bleibt. Beides
@@ -2047,6 +2048,14 @@ function Overlay({
     /** The first painted stem that actually landed wins; if none did, the beat
      *  draws no picture rather than breaking. Art arrives batch by batch and a
      *  card may never depend on a file existing (the keen-art law). */
+    /** L0 · D6 · DIE PLATTEN DES AUFTAKTS KOMMEN AUS DEM LEVEL.
+     *  Die drei Beats standen bis zur Level-Welle mit ch01-Blattnamen als
+     *  Literale im Code — ein zweites Kapitel hätte sein Buch mit dem Schulhaus
+     *  aus Kapitel 1 aufgeschlagen, ohne dass ein Tor etwas gemerkt hätte
+     *  (Kunst darf legal fehlen, aber sie darf nicht die FALSCHE sein). Fehlt
+     *  die Deklaration, greift wie immer die Keen-Kunst-Regel: keine Platte,
+     *  die gezeichnete Szene. */
+    const plates = level.auftaktPlates;
     const painted = (...stems: Array<string | undefined>): string | undefined => {
       for (const st of stems) if (st !== undefined && art[st] !== undefined) return art[st];
       return undefined;
@@ -2108,7 +2117,7 @@ function Overlay({
       return staged(
         <div style={{ textAlign: "left" }}>
           {eyebrow("Was geschehen ist")}
-          {scene(painted("auftakt_ch01_b", "schulhaus_ch01_b", "schulhaus_ch01_a"), "4 / 3")
+          {scene(painted(...(plates?.schatten ?? [])), "4 / 3")
             ?? <SceneCut art={art} backdrop={roomStem} pose="stand" heroHeight={80} height={124} />}
           <Key>{level.goalDe}</Key>
         </div>,
@@ -2172,7 +2181,7 @@ function Overlay({
       const legendeRaster = legende.length === 0 ? null : (
         <div style={{ margin: "7px 0 0" }}>
           <span className="pb-quiet" style={{ display: "block", marginBottom: 4 }}>
-            {uniformLegendLine(legende.length, legende.filter((c) => c.found).length)}
+            {uniformLegendLine(legende.length, legende.filter((c) => c.found).length, clothWordsDe(level))}
           </span>
           <div style={{
             display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "4px 4px",
@@ -2267,7 +2276,7 @@ function Overlay({
               lines. They do not have to — it is the PAPER the tasks are written
               on, not a form to fill in, and the beat needs a picture more than it
               needs that correspondence. */}
-          {scene(painted("auftakt_ch01_c"), "16 / 9")}
+          {scene(painted(plates?.auftrag), "16 / 9")}
           <div style={{ display: "grid", gap: 11, fontSize: 14.5, color: "#4a4030", margin: "2px 0 0", lineHeight: 1.3 }}>
             {rows}
           </div>
@@ -2286,7 +2295,7 @@ function Overlay({
     return staged(
       <div style={{ textAlign: "left" }}>
         {eyebrow("Los geht's")}
-        {scene(painted("auftakt_ch01_d", level.doorPlate), "5 / 4")
+        {scene(painted(plates?.los, level.doorPlate), "5 / 4")
           ?? <SceneCut art={art} backdrop={roomStem} pose="stand" heroHeight={80} height={124} />}
         <Key>Dein erster Raum: {level.phases[0]?.nameDe ?? level.name}.</Key>
       </div>,
@@ -2552,7 +2561,7 @@ function Overlay({
     // back on the one card whose whole subject is that the cage is gone.
     const ceremonyMotif = o.ceremony === undefined
       ? undefined
-      : [...freeCellsFor(o.ceremony.captive), cageCellFor(o.ceremony.captive) ?? ""]
+      : [...freeCellsFor(o.ceremony.captive, o.ceremony.person), cageCellFor(o.ceremony.captive, o.ceremony.person) ?? ""]
         .map((s) => art[s])
         .find((url) => url !== undefined);
     return staged(
@@ -2774,6 +2783,9 @@ function Overlay({
           ?? (allPhasesOf(level).flatMap((p) => p.entities)
             .find((x) => x.id === askerIdOf(o.req.ctx))?.params?.captive as string | undefined)
         : undefined}
+      // L0 · D7: welches der beiden Felder den Namen geliefert hat — der Name
+      // selbst verrät es nicht mehr, seit jedes Kapitel eigene Insassen hat.
+      captiveIsPerson={o.req.ctx.type === "cage" && o.req.ctx.classmate !== undefined}
       round={o.round}
       // doc 44 §2.9: the timer class comes from the pool the WORLD asked for
       servedUse={o.req.use}
@@ -2846,7 +2858,8 @@ function ScorePage({
   if (bilanz.tipsTotal > 0) rows.push({ icon: "rule", labelDe: "Regel-Seiten gefunden", got: bilanz.tips, total: bilanz.tipsTotal });
   rows.push({ icon: "spark", labelDe: `${level.collectNounDe} gesammelt`, got: bilanz.letters, total: bilanz.lettersTotal });
   if (bilanz.booksTotal > 0) rows.push({ icon: "book", labelDe: "Bonus-Bücher", got: bilanz.books, total: bilanz.booksTotal });
-  if (bilanz.clothTotal > 0) rows.push({ icon: "uniform", labelDe: "Kleider", got: bilanz.cloth, total: bilanz.clothTotal });
+  // L0 · N2: siehe HUD-Chip — dasselbe Wort, dieselbe Quelle.
+  if (bilanz.clothTotal > 0) rows.push({ icon: "uniform", labelDe: clothWordsDe(level).pl, got: bilanz.cloth, total: bilanz.clothTotal });
 
   const ms = useCeremonyClock(countUpTotalMs(rows.length));
   const completion = runCompletion(rows);

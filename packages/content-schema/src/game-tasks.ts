@@ -101,6 +101,21 @@ export const TASK_FORMS = [
   "number-transcode",
   /** set-membership judgement against a named category (a place, or a word class) */
   "belongs-or-not",
+  // ── L0 · N3 · R247 · DIE ZWEI FORMEN, DIE IM SCHEMA FEHLTEN (D-902) ────────
+  // Gemessen an doc 41 §1: `memory` debütiert im FELD von ch04, `mistake` im
+  // Feld von ch05. Gesetz 13a (`variety.ts`) verlangt für JEDE Feld-Karte eine
+  // Form — und `FORM_KINDS` trug für keine der beiden Arten eine. Die zwei
+  // Debüts waren damit nicht schwierig, sondern schema-UNMÖGLICH: eine Karte,
+  // die ihre Form nicht nennen kann, kann nie ins Feld.
+  //
+  // ch01 bleibt unberührt: seine `mistake`- und `memory`-Karten liegen im
+  // Boss-Pool, und für den gilt 13a nicht.
+  /** repariere den Satz: das Kind sieht eine falsche Zeile und gibt die richtige
+   *  — die Fehlersuche als Ask, nicht die Fehlerursache */
+  "fix-it",
+  /** ordne Paare zu: was gehört zu was (die Gedächtnis-Karte fragt eine
+   *  Zuordnung, keine Benennung) */
+  "pair-it",
 ] as const;
 export type TaskForm = (typeof TASK_FORMS)[number];
 
@@ -261,6 +276,11 @@ export const FORM_KINDS: Readonly<Record<TaskForm, readonly TaskKind[]>> = {
   "count-it": ["choice", "typed"],
   "number-transcode": ["wheel"],
   "belongs-or-not": ["oddone"],
+  // L0 · N3 · R247: je genau EINE Art — damit fällt die feste Form der beiden
+  // aus `fixedFormOf` heraus, ohne dass eine zweite Tabelle entsteht (dieselbe
+  // Ableitung, die für restore/wheel/oddone schon gilt).
+  "fix-it": ["mistake"],
+  "pair-it": ["memory"],
 };
 
 /**

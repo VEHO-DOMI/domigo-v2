@@ -1275,3 +1275,72 @@ Die Bahnen N7A/N7B des Level-1-Sitzes (2026-09-01/02). Der Block ist in
 | D-950 | `CardShell.tsx#Cheer` · `CardShell.tsx#AnswerHome` · `overlay-css.ts#pb-doff` | Seit R241 (der Karten-Schwanz ist gefallen, PR #388) hat die Beat-Maschinerie der gelösten Karte keinen Rufer mehr: die Jubel-Ansicht, der Antwort-Flug, die `doff`-Neigung und ihre CSS liegen verdrahtet, aber tot. | Architekten-Entscheid: abreissen oder als Rückweg behalten. **Nicht** in N7B2 angefasst — ein Abriss ist eigene Arbeit und macht den Rückweg teuer. | eigene kleine Bahn | R241 · PR #388 |
 | D-958 | `check-audio.mjs#Toast-Bindung` | Das Klang-Tor prüft die Toast-Bindungen, indem es ALLE Zeichenketten aus `sim.ts` liest — und dafür ASCII-Anführungszeichen **paarweise** abzählt. Drei Kommentare, die mit `"` statt dem deutschen Schlusszeichen enden, machen die Zahl ungerade, verschieben jedes Paar dahinter und lassen `"Platsch!"` verschwinden: ein Kommentar kippt ein Klang-Tor (zweimal bezahlt in #388). | Entweder das Tor auf einen echten Parser heben, oder die Hausregel »in `sim.ts` nur Guillemets« maschinell prüfen. Bis dahin: Guillemets, und `check-audio.mjs` gehört in JEDE Batterie, die `sim.ts` anfasst. | Motor-Bahn | PR #388 (zweimal rot) |
 | D-960 | `sim.ts#resumeAfterCard` | Die Resume-Naht läuft bei jeder richtigen Nicht-Zeremonie-Antwort **zweimal**: einmal aus `solveTask`, einmal aus dem `setOverlay(false)` der Hülle. | **VERTRAGLICH GEREGELT in N7B2:** die Naht darf nur löschen und klemmen (zweimal null ist null); der Vertrag steht als Kommentar an der Naht, ein Test hält ihn fest (»zweimal rufen = einmal rufen«, mit Tamper). Wer dort je etwas einbaut, das zählt oder feuert, wird rot und muss zuerst den Doppelruf abschaffen. | gebaut (N7B2) | PR #388 · Architekten-Nachlese |
+
+## LEVEL-WELLE · L0 — Mehrkapitel-Fundament (2026-09-02)
+
+Reserviert: D-787…D-799. D-787 wird hier NACHGETRAGEN: er wurde am 31.08. im
+Wellen-9-Rahmen (`RAHMEN_WELLE9_KOKI_REVIEW_2026-08-31.md` §3a) vergeben und stand
+bis heute nur dort — ein Befund, der nur in einem iCloud-Blatt lebt, ist für jede
+Repo-Session unsichtbar.
+
+⚠ **D-788 gehört NICHT dieser Bahn.** Das L0-Boot-Blatt hatte die Nummer für die
+Tasten-Fang-Frage reserviert; PR #390 (N7B2) hat sie inzwischen vergeben UND
+beantwortet — die Zeile steht im Abschnitt »N7 · Level-1-Sitz« darüber. L0 hatte
+eine zweite Zeile mit derselben Adresse angelegt; `check-registers` fand die
+Kollision im ersten Lauf nach dem Rebase auf `b6e002de` und die L0-Zeile ist
+zurückgezogen. Zwei Zeilen mit derselben Adresse sind keine Adresse.
+
+| Nr. | Befund | Beleg | Fix | Wer/wann | Herkunft |
+|---|---|---|---|---|---|
+| D-787 | **Baugruppen sind EIN gemaltes Element, kein Lego.** Kokis Markierungen vom 23.08. meinten die zusammengesetzten Baugruppen selbst, nicht die Fugen zwischen ihren Teilen: (a) Doppel-Bücherstapel mit Halterungen „a mess, made worse" · (b) 2× violette Platte + Holzhalter „two blocks attached incoherently → one continuous dedicated element" · (c) hohe Säule rechts „whole block a mess with overlaps and disjointed bits". Der Verbinder-Ansatz (joint/saddle) der N6-Runden 1–3 ist an diesen Stellen VERWORFEN | Screenshot 2026-08-31 16.07.35 auf dem R3-Stand + Ordner `docs/Rayman X DomiGo Screenshots/Messy Blocks and platforms and level design/` | Ein-Stück-Elemente malen + montieren; die Konsolen/Sättel dort zurückbauen, wo das Ein-Stück-Element sie ersetzt (R236) | offen · Kunst-Zeit (N6/N7A-Bahnen) | Koki 31.08. · `RAHMEN_WELLE9_KOKI_REVIEW_2026-08-31.md` §3a, hier nachgetragen von L0 |
+| D-789 | **Es gibt kein Klang-Kit je Kapitel.** `audioManifest.ts` kennt genau einen Satz Schritte, Musik und Stimmungen — den von Kapitel 1. Jedes weitere Kapitel fällt still auf »paper«/das ch01-Kit zurück: kein Fehler, kein rotes Tor, nur ein Zoo, der klingt wie ein Klassenzimmer | `packages/game-paint/src/audioManifest.ts`; L0 hat den Bereich nach Scope-Wand NICHT angefasst (Motor-Gebiet der M-Bahnen) | `phase.footstep` / `phase.music` je Phase deklarierbar machen, plus Prompts + Klang-Rückgrat je Kapitel. Gehört einer **M-Bahn**, weil `audioManifest.ts` + `check-audio.mjs` Motor-Gebiet sind | offen · erste M-Bahn, die Audio anfasst | L0, 2026-09-02 |
+| D-790 | **`tipsTotal: 0` ist gesetzestreu und trotzdem ein 500.** Die Motor-Gesetze lassen eine 0 durch (`tip-honesty` prüft nur, dass Zahl und gesetzte Regel-Seiten übereinstimmen), das zod des Laders verlangt eine POSITIVE Zahl (`paint-content.ts` `tipsTotal: z.number().int().positive().optional()`). Ein Kapitel mit `tipsTotal: 0` besteht also jedes Tor und fällt die Seite, sobald ein Kind sie öffnet | Beim Bau des ch02-Exemplars selbst getroffen: `checkLevelLaws` 0 Verstöße, `loadPaintLevel` warf `too_small: expected number to be >0` (gefangen von `apps/web/lib/paint-content.test.ts`, der genau dafür gebaut wurde) | **GESCHLOSSEN (L0b, 2026-09-02): der Programm-Architekt hat die 0 ERLAUBT.** Grund: `tip-honesty` verlangt nur Gleichheit »deklariert = platziert«, und 0 = 0 ist gesetzestreu — der Lader verschärfte das Gesetz still, also zwei Wahrheiten für dieselbe Regel. `paint-content.ts` steht jetzt auf `nonnegative()`; eine negative Zahl bleibt abgewiesen. Das HUD blendet die Zeile bei 0 ohnehin aus (der HUD-Chip haengt an `PaintGame.tsx#tipTotal`, die Bilanz-Zeile an `PaintGame.tsx#Bilanz` — beide zeigen die Zeile nur bei >0, nachgemessen, keine Aenderung noetig). Tamper: `positive()` zurückgedreht ⇒ der 0-Test rot | geschlossen · L0b, 2026-09-02 | L0, 2026-09-02 · Ruling Programm-Architekt |
+| D-792 | **Ein FERTIGES Kapitel ohne Dossiers oder Kartendatei war in zwei Toren still grün.** L0 gab jeder mangels Eingaben ausgelassenen Prüfung ein Etikett — für ein Kapitel ohne `draft`-Flagge sogar »KEIN Entwurf — das ist eine Lücke, kein Zustand«. Es blieb aber ein ETIKETT: `check-level-design` und `check-game-tasks` endeten trotzdem mit exit 0. Ein Abschluss-PR, der `draft` entfernt und die Dossiers vergisst, wäre durchgegangen; das Entwurfs-Ende fingen allein `check-paint-art` und `proof-tapes.test.ts` | Unabhängiger Prüfer am Branch (Tamper A), am Stand `1607b7a1` nachgemessen: ch02 auf `draft:false` ⇒ beide Tore exit **0** | **GESCHLOSSEN (L0b):** `skipLedger` führt die Auslassungen eines NICHT-Entwurfs als `gaps()`; beide Tore machen daraus ein ✗ mit exit 1, das Kapitel und fehlende Eingabe nennt. `draft:true` bleibt der namentliche Skip. Tamper: ch02 auf `draft:false` ⇒ beide Tore rot (vorher grün — das ist der Beweis) | geschlossen · L0b, 2026-09-02 | Prüfer-Befund am PR #391 |
+| D-791 | **Das committete Arena-Band von ch01 stammt nicht von seinem eigenen Rekorder.** `record-paint-tape.mjs` erzeugt für p4 zwei Pad-Läufe anders als die Datei im Repo (`[28,2]→[34,2]`, `[5,0]→[4,0]`); die WELT bleibt identisch (`expect` Wort für Wort gleich), und `proof-tapes.test.ts` bleibt grün, weil das committete Band sauber nachspielt | **Auf unberührtem `origin/main` gemessen** (eigener Basis-Worktree, keine L0-Änderung im Baum): der Rekorder erzeugt dort denselben Diff, Blob `d063434c` — L0s Lauf erzeugt bitgleich dasselbe. Der Drift ist vorbestehend und L0-neutral | Ursache suchen (Rekorder-Nichtdeterminismus im Kampf ODER ein Band, das seit einer Motor-Änderung nicht neu aufgenommen wurde) und das Band einmal ehrlich neu aufnehmen. **Nicht in L0 gemacht**: eine Inhalts-Änderung an ch01 wäre genau die Paritäts-Bewegung, die diese Bahn ausschliesst | offen · Architekt vergibt | L0, 2026-09-02 |
+
+## LEVEL-WELLE · VORAB ANGELEGTE KAPITEL-ABSCHNITTE (L0, 2026-09-02)
+
+Nach der Konvention R5-W4: die Abschnitte stehen VOR ihren Bahnen da, damit fünf
+Kapitel gleichzeitig arbeiten können, ohne dass zwei Sessions am selben Dateiende
+anhängen. **Jede Bahn schreibt NUR unter ihre eigene Unterüberschrift** und vergibt
+NUR Nummern aus dem Block ihres Kapitels (`RAHMEN_LEVELWELLE_2026-09-02.md` §2).
+Ein Abschnitt bleibt leer, bis seine Bahn etwas gefunden hat — eine leere Tabelle
+ist eine Adresse, kein Versäumnis.
+
+Blöcke: **ch02 D-800…829 · ch03 D-830…859 · ch04 D-860…889 · ch05 D-890…919 ·
+ch06 D-920…949.** Der Level-1-Sitz hält D-950…979 (nicht hier).
+
+### LW · ch02 (D-800…829)
+#### L2-G
+#### L2-T
+#### L2-S
+#### L2-M
+#### L2-A
+
+### LW · ch03 (D-830…859)
+#### L3-G
+#### L3-T
+#### L3-S
+#### L3-M
+#### L3-A
+
+### LW · ch04 (D-860…889)
+#### L4-G
+#### L4-T
+#### L4-S
+#### L4-M
+#### L4-A
+
+### LW · ch05 (D-890…919)
+#### L5-G
+#### L5-T
+#### L5-S
+#### L5-M
+#### L5-A
+
+### LW · ch06 (D-920…949)
+#### L6-G
+#### L6-T
+#### L6-S
+#### L6-M
+#### L6-A

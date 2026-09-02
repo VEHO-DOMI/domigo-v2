@@ -28,7 +28,7 @@ import { type Cell, cellsOf, indexTerrain, mergeRowMajor, runsFrom } from "./ter
 import { NEAR_PLANE_KINDS, CRUST_MARK_DEPTH, MASS_MARK_DEPTH, type MassPiece, type SurfaceMark, claimedBodyCells, claimedPlatformCells, crustGrain, hash01, ledgeGrain, massGrain, drawnScaleFor, massKitUsable, paintScaleOf, planMass, planPlatformShadows, tileAnchorFor, tileScaleFor } from "./mass.ts";
 import { BACKING_REACH, BACKING_STEPS, LETTER_AMBER, LETTER_GOLD, LETTER_STYLE, letterBackingFor, letterGlowGain, letterGlyphs, letterRimFor } from "./letters.ts";
 import { type PhraseSlot, bonusPhrase } from "./cards/ceremony.ts";
-import { PICKUP_ROLES, type PaintLevel, type PhaseSpec } from "./level.ts";
+import { PICKUP_ROLES, type PaintLevel, type PhaseSpec, trailWordsFor } from "./level.ts";
 import { type AirModel, DELTA_CAP_MS, LOGICAL_H, LOGICAL_W, MAX_TICKS_PER_FRAME, PAINT, RENDER_SCALE, SUBS, TICK_MS, TILE, fromSubs, mixMultiply } from "./paint.ts";
 // `INK_DEPTH_ROWS` and `inkDepthAt` were imported here and referenced nowhere —
 // dropped with the crown rewrite (R5-W4 · A6).
@@ -1114,6 +1114,14 @@ export class PaintScene extends Phaser.Scene {
   private keys!: Record<string, Phaser.Input.Keyboard.Key>;
   /** PB-C1: this phase's art direction, or null ⇒ the pre-C1 render path. */
   private comp: CompositionSpec | null;
+  /** L0 · D5 · die Wörter, die der Buchstaben-Trail dieses Raums buchstabiert.
+   *  Bis zur Level-Welle las die Szene sie direkt aus `this.comp`, dem
+   *  Kunst-Manifest — ein Register, das für ch02–ch06 bewusst leer bleibt, wo
+   *  der Trail dann stumm A→Z durchgezählt hätte. `trailWordsFor` gibt der
+   *  Deklaration der Phase den Vorrang und fällt für ch01 auf genau dieselbe
+   *  Manifest-Zeile zurück wie bisher. Einmal im Konstruktor gelesen, weil sich
+   *  weder Level noch Phase während einer Szene ändern. */
+  private trailWords: readonly string[] | undefined;
   /** R5-W1 · E1: the stems this phase may ask for (artScope.ts). */
   private readonly scope: ReadonlySet<string>;
   /** R5-N3 · E4: hands this phase's textures to the graphics card during the
@@ -1134,6 +1142,7 @@ export class PaintScene extends Phaser.Scene {
     super({ key: "paint" });
     this.cfg = cfg;
     this.comp = compositionFor(cfg.level.chapter, cfg.phaseId);
+    this.trailWords = trailWordsFor(cfg.level, cfg.phaseId);
     this.scope = phaseArtScope(cfg.level, cfg.phaseId, Object.keys(cfg.art));
     this.sim = new Sim({
       level: cfg.level,
@@ -1781,13 +1790,13 @@ export class PaintScene extends Phaser.Scene {
 
   /** R5-C1: `phrase` is added here rather than in the shell because THIS is the
    *  only place that holds both halves of it — the phase's grid and the phase's
-   *  declared trail words (`this.comp`). The shell has neither. */
+   *  declared trail words (`this.trailWords`). The shell has neither. */
   bonusState(): { leftTicks: number; got: number; total: number; phrase: PhraseSlot[][] } {
     return {
       leftTicks: this.sim.bonusLeftTicks,
       got: this.sim.lettersGot,
       total: this.sim.lettersTotal,
-      phrase: bonusPhrase(this.grid, this.comp?.words, this.sim.runTakenCells),
+      phrase: bonusPhrase(this.grid, this.trailWords, this.sim.runTakenCells),
     };
   }
 
@@ -6192,6 +6201,56 @@ export class PaintScene extends Phaser.Scene {
     }
   }
 
+  /** L0 · N1 · R246 · DIE TEXTUR EINER `*`-ZELLE.
+   *
+   *  Kapitel 1 sammelt Buchstaben, und dafür gibt es `letterTex`. Jedes andere
+   *  Kapitel sammelt etwas anderes (Federn, Münzen, Farbtropfen, Noten,
+   *  Lupen-Funken) — die Zelle bleibt `*`, das Bild nicht.
+   *
+   *  Drei Stufen, in dieser Reihenfolge, und die Reihenfolge IST das
+   *  Keen-Kunst-Gesetz: (1) Buchstaben ⇒ der gebaute Glyph wie immer;
+   *  (2) ein gemaltes Blatt `collect_<skin>`, sobald es auf der Platte liegt —
+   *  ohne Code-Änderung, weil `tex()` nur fragt, was da ist; (3) sonst ein
+   *  gezeichneter Platzhalter, damit ein Kapitel im Bau SPIELBAR ist und man
+   *  sieht, WO die Dinger liegen, auch wenn man noch nicht sieht, was sie sind. */
+  private collectTex(char: string): string {
+    const skin = this.cfg.level.collectSkin ?? "letters";
+    if (skin === "letters") return this.letterTex(char);
+    if (this.textures.exists(`pb-collect_${skin}`)) return `pb-collect_${skin}`;
+    return this.placeholderCollectTex(skin);
+  }
+
+  /** Der graue Platzhalter eines Sammelobjekts: eine Scheibe mit den ersten
+   *  Buchstaben des Skin-Namens. Bewusst hässlich und bewusst LESBAR — er soll
+   *  niemanden glauben machen, hier sei schon Kunst, und er soll trotzdem im
+   *  Spiel unterscheidbar sein. Einmal je Skin gebaut und gecacht; kein
+   *  `Math.random` (Repo-Gesetz), keine Abhängigkeit vom Raum. */
+  private placeholderCollectTex(skin: string): string {
+    const key = `pb-collect-ph-${skin}`;
+    if (this.textures.exists(key)) { this.letterHits += 1; return key; }
+    this.letterBuilds += 1;
+    const S = 128;
+    const tex = this.textures.createCanvas(key, S, S);
+    if (!tex) return this.tex("prop_letter"); // headless/canvas-less safety, wie letterTex
+    const ctx = tex.getContext();
+    if (ctx === null) return this.tex("prop_letter");
+    ctx.clearRect(0, 0, S, S);
+    ctx.beginPath();
+    ctx.arc(S / 2, S / 2, S * 0.36, 0, Math.PI * 2);
+    ctx.fillStyle = "#b9b2a4";
+    ctx.fill();
+    ctx.lineWidth = 6;
+    ctx.strokeStyle = "#6b6250";
+    ctx.stroke();
+    ctx.fillStyle = "#3a3428";
+    ctx.font = "bold 40px system-ui, sans-serif";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText(skin.slice(0, 3).toUpperCase(), S / 2, S / 2 + 2);
+    tex.refresh();
+    return key;
+  }
+
   private letterTex(char: string): string {
     // R5-W6 · L1: der Rand folgt dem Raum (letters.ts `letterRimFor`), also
     // gehoert der Raum in den Cache-Schluessel. Eine Phase ist zu einer Zeit
@@ -6307,7 +6366,7 @@ export class PaintScene extends Phaser.Scene {
 
   private buildProps(): void {
     let tSub = performance.now();
-    const glyphs = new Map(letterGlyphs(this.grid, this.comp?.words).map((g) => [`${g.c},${g.r}`, g.char]));
+    const glyphs = new Map(letterGlyphs(this.grid, this.trailWords).map((g) => [`${g.c},${g.r}`, g.char]));
     this.mark("· letterGlyphs", tSub, "props");
     // The letter canvases are built INSIDE the loop below, so their cost is
     // counted here and SUBTRACTED from the loop line — children that overlap
@@ -6340,7 +6399,10 @@ export class PaintScene extends Phaser.Scene {
           if (!this.sim.letterCells.has(`${c},${r}`)) continue;
           const char = glyphs.get(`${c},${r}`) ?? "A";
           const tLetter = performance.now();
-          const letterKey = this.letterTex(char);
+          // L0 · N1 · R246: was auf einer `*`-Zelle steht, entscheidet das
+          // KAPITEL. Ohne Deklaration ist es der Buchstabe wie bisher (ch01
+          // unverändert); sonst das Sammelobjekt des Kapitels.
+          const letterKey = this.collectTex(char);
           letterMs += performance.now() - tLetter;
           const img = this.add.image(cx, cy, letterKey).setDepth(4);
           img.setDisplaySize(PaintScene.LETTER_PX, PaintScene.LETTER_PX);

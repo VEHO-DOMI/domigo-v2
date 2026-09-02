@@ -10,7 +10,19 @@ import fs from "node:fs";
 import path from "node:path";
 import { stamped } from "./art-fingerprint";
 
-const ART_DIRS = ["hero", "ch01"] as const;
+/** L0 · D2 · DER AUFLÖSER BEKOMMT DAS KAPITEL.
+ *
+ *  Die Ordner standen fest als `["hero", "ch01"]`: `hero` sind die Blätter der
+ *  Figur (in jedem Kapitel dieselben), `ch01` war der Raum-Ordner. Ein zweites
+ *  Kapitel hätte damit die BILDER VON KAPITEL 1 bekommen — nicht keine, was der
+ *  Keen-Kunst-Regel entspräche und grau ausginge, sondern die falschen, was auf
+ *  dem Schirm wie ein fertiges Spiel aussieht und keines ist.
+ *
+ *  Die Reihenfolge bleibt hero → Kapitel (ein Kapitel-Blatt gleichen Namens
+ *  gewinnt), und für ch01 ist die Karte damit Byte für Byte dieselbe wie zuvor.
+ *  Ein Kapitel ohne Ordner bekommt die Hero-Karte allein: die graue Welt, die
+ *  die Platzhalter-Doktrin will. */
+const artDirsFor = (chapter: string): readonly string[] => ["hero", chapter];
 
 /**
  * R5-N3 · E4 · THE CACHE KEY IS THE FILE, NOT THE COMMIT.
@@ -36,19 +48,25 @@ const ART_DIRS = ["hero", "ch01"] as const;
 // R5-W3 · E5: the helper moved to art-fingerprint.ts, because keen/tile/story
 // art was serving 66 MB under the same immutable header with NO cache key.
 
-let cache: Record<string, string> | null = null;
+// Der Cache liegt JE KAPITEL. Vorher war es eine einzige Modul-Variable, die
+// dem ersten Kapitel gehörte, das den Server erreicht — mit zwei Kapiteln hätte
+// das zweite die Karte des ersten serviert bekommen, und zwar bis zum nächsten
+// Neustart. (Die 228 ms Fingerabdruck-Kosten fallen damit einmal je Kapitel an
+// statt einmal je Server, nicht einmal je Anfrage.)
+const cache = new Map<string, Record<string, string>>();
 
-export const resolvePaintArt = (): Record<string, string> => {
-  if (cache) return cache;
+export const resolvePaintArt = (chapter: string): Record<string, string> => {
+  const hit = cache.get(chapter);
+  if (hit) return hit;
   const out: Record<string, string> = {};
   const root = path.join(process.cwd(), "public", "art", "g1", "paint");
-  for (const dir of ART_DIRS) {
+  for (const dir of artDirsFor(chapter)) {
     const abs = path.join(root, dir);
     if (!fs.existsSync(abs)) continue;
     for (const f of fs.readdirSync(abs).filter((x) => x.endsWith(".png"))) {
       out[f.replace(/\.png$/, "")] = stamped(`/art/g1/paint/${dir}/${f}`, path.join(abs, f));
     }
   }
-  cache = out;
+  cache.set(chapter, out);
   return out;
 };

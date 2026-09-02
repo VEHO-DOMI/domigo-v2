@@ -71,12 +71,61 @@ import { HOSTILE_ROLES, allPhasesOf, askerUsesOf, raisedUsesOf } from "../packag
 import { varietyErrors } from "../packages/game-paint/src/cards/variety.ts";
 
 const STORIES = "content/corpus/stories";
-const lex = JSON.parse(fs.readFileSync("docs/design/g1/grounding/u01-lexicon.json", "utf8"));
+// L0 · D10 · DIE UNIT KOMMT VOM KAPITEL, NICHT AUS DIESER ZEILE.
+//
+// Hier standen drei feste `g1-u01`-Pfade plus ein festes `u01-lexicon.json`.
+// Ein Kapitel, das eine andere Unit lehrt, wäre gegen die Vokabeln von Unit 1
+// geerdet worden — und das ist SCHLIMMER als gar keine Erdung, weil das Tor
+// dabei grün bleibt und behauptet, es habe geprüft. Die Unit steht jetzt in der
+// Karten-Datei (`unit`), wird gegen `story.json` gegengelesen, und jedes
+// Kapitel bringt seine drei Registerien selbst mit.
+//
+// UND: eine Karten-Datei OHNE Lexikon ihrer Unit ist ROT. Das Lexikon ist die
+// einzige Autorität dafür, ob ein englisches Wort in diesem Kapitel überhaupt
+// vorkommen darf; ohne es liefe die Erdung leer und meldete nichts.
+import { orphanTaskFiles, paintChapters, skipLedger } from "./paint-chapters.mjs";
+const CHAPTERS = paintChapters();
+const ledger = skipLedger();
 // layers 13-17 read the unit the chapter teaches, plus the declared exemptions
 const POLICY_FILE = "scripts/game-tasks-variety-policy.json";
 const policy = JSON.parse(fs.readFileSync(POLICY_FILE, "utf8"));
-const wordbank = JSON.parse(fs.readFileSync("content/corpus/units/g1-u01/wordbank.json", "utf8")).entries;
-const structureIds = [...new Set(JSON.parse(fs.readFileSync("content/corpus/units/g1-u01/grammar.json", "utf8")).items.map((i) => i.structureId))];
+/** L0 · D10: die Kapitel-Tabellen liegen neben dem Inhalt (chNN.policy.json);
+ *  im Politik-JSON bleiben nur die DIALS, die über allen Kapiteln stehen. */
+const chapterPolicy = (cx) => (cx?.hasPolicy ? JSON.parse(fs.readFileSync(cx.policyPath, "utf8")) : null);
+/** Die Sicht, die `varietyErrors` erwartet: dieselbe Form wie früher das
+ *  Politik-JSON, nur je Kapitel aus dessen eigener Datei zusammengesetzt. */
+const policyFor = (cx) => {
+  const cp = chapterPolicy(cx);
+  return {
+    ...policy,
+    chapters: cp === null ? {} : { [cx.chapter]: { families: cp.families ?? [], lexiconClasses: cp.lexiconClasses ?? {}, vocabLedger: cp.vocabLedger ?? {} } },
+  };
+};
+// die Register des GERADE geprüften Kapitels — vom Treiber je Datei gesetzt
+let lex = null;
+let wordbank = [];
+let structureIds = [];
+let CHAPTER_NOW = null;
+// L0 · N6: die Abdeckungs-Befunde der ENTWURFS-Kapitel — berichtet, nicht rot.
+// Steht hier oben bei den anderen Modul-Zustaenden und nicht beim Treiber, weil
+// `checkAgainstLevel` weiter unten darauf schreibt: eine Deklaration NACH ihrem
+// Leser haelt nur so lange, wie die Aufruf-Reihenfolge stimmt.
+const coverageReports = [];
+/** L0 · N6: die Summe ALLER Unit-Lexika des Korpus. Nur Gesetz 18f liest sie —
+ *  es prueft eine GLOBALE Glossen-Tabelle und darf deshalb nicht am Wortschatz
+ *  eines einzelnen Kapitels haengen. Die Karten-Erdung selbst bleibt streng je
+ *  Kapitel (kumulativ bis zu SEINER Unit), das ist ein anderes Gesetz. */
+const ALLE_LEXIKON_WOERTER = (() => {
+  const dir = "docs/design/g1/grounding";
+  const out = new Set();
+  for (const f of fs.existsSync(dir) ? fs.readdirSync(dir) : []) {
+    if (!/^u\d{2}-lexicon\.json$/.test(f)) continue;
+    const l = JSON.parse(fs.readFileSync(`${dir}/${f}`, "utf8"));
+    for (const w of l.words ?? []) out.add(String(w).toLowerCase());
+    for (const w of l.properNouns ?? []) out.add(String(w).toLowerCase());
+  }
+  return out;
+})();
 // the ledger's expiry dates are compared against a date the CHECKER supplies —
 // variety.ts stays pure so its tests cannot rot with the calendar.
 const TODAY = new Date().toISOString().slice(0, 10);
@@ -108,9 +157,22 @@ const fail = (where, msg) => {
 };
 
 // ── grounding vocabulary (mirrors check-story-grounding.mjs) ──
-const words = new Set(lex.words.map((w) => w.toLowerCase()));
-const phrases = lex.phrases.map((p) => p.toLowerCase());
-const proper = new Set(lex.properNouns.map((w) => w.toLowerCase()));
+// L0 · D10: die Erdungs-Mengen gehören dem Kapitel, das gerade geprüft wird —
+// `loadUnitRegisters` unten setzt sie, bevor eine Karte gelesen wird.
+let words = new Set();
+let phrases = [];
+let proper = new Set();
+const loadUnitRegisters = (cx) => {
+  lex = JSON.parse(fs.readFileSync(cx.lexiconPath, "utf8"));
+  words = new Set(lex.words.map((w) => w.toLowerCase()));
+  phrases = lex.phrases.map((x) => x.toLowerCase());
+  proper = new Set(lex.properNouns.map((w) => w.toLowerCase()));
+  wordbank = cx.wordbankPath && fs.existsSync(cx.wordbankPath)
+    ? JSON.parse(fs.readFileSync(cx.wordbankPath, "utf8")).entries : [];
+  structureIds = cx.grammarPath && fs.existsSync(cx.grammarPath)
+    ? [...new Set(JSON.parse(fs.readFileSync(cx.grammarPath, "utf8")).items.map((i) => i.structureId))] : [];
+  DE_GLOSS = buildDeGloss();
+};
 const FREE = new Set(["oh", "ssh", "psst", "wow", "hey", "but", "now", "do", "too", "yes", "no"]);
 const tokens = (en) => (String(en).toLowerCase().match(/[a-zäöüß'-]+/gi) ?? []).filter((t) => t.length > 0);
 function grounded(tokRaw, extra) {
@@ -186,10 +248,19 @@ function buildDeGloss() {
     for (const [de, ens] of Object.entries(block.pairs ?? {})) {
       for (const en of ens) {
         add(de, en);
-        // 18f · the English side is a claim about the unit. A gloss pointing at a
-        // word this unit never teaches would quietly widen the law past the corpus.
+        // 18f · the English side is a claim about the CORPUS. A gloss pointing at
+        // a word no unit teaches would quietly widen the law past it.
+        //
+        // ★ L0 · N6 (gemessen an einer Probe mit zwei Kapiteln): dieses Gesetz
+        // las den Wortschatz des GERADE geprueften Kapitels. Solange es ein
+        // Kapitel gab, war das dasselbe; mit zwei Kapiteln wurden alle 25
+        // Zahlen-Glossen von ch01 rot, sobald ch02 an der Reihe war — die
+        // Tabelle ist GLOBAL, ihr Pruefmass war es nicht. Geprueft wird jetzt
+        // gegen die Summe aller Unit-Lexika (dieselbe kumulative Lehre wie N4:
+        // `purple` ist ab u03 legal, und ein u03-Wort ist keine Erfindung, nur
+        // weil das gerade geladene Kapitel Unit 1 lehrt).
         for (const tok of tokens(en)) {
-          if (!grounded(tok, new Set())) fail(`giveaway-policy:${cls}`, `18f · glosses "${de}" as "${en}", but "${tok}" is not in MORE! 1 Unit 1`);
+          if (!ALLE_LEXIKON_WOERTER.has(tok)) fail(`giveaway-policy:${cls}`, `18f · glosses "${de}" as "${en}", but "${tok}" is in no unit lexicon of this corpus`);
         }
       }
     }
@@ -349,7 +420,8 @@ function giveawayFailures(t, deGloss, declaredFields) {
   return out;
 }
 
-const DE_GLOSS = buildDeGloss();
+// L0 · D10: je Kapitel neu gebaut (die Glossare hängen an der Unit).
+let DE_GLOSS = new Map();
 
 // ── 18c/18d · THE DECLARED EXCEPTION ─────────────────────────────────────────
 // Where the reveal cannot be derived from a form (above), it is DECLARED — the
@@ -413,9 +485,21 @@ const OBLIGATIONS = {
     // so theirs hangs off the card instead, out of the ratified inmate table.
     const skin = (t.skins ?? [])[0];
     const shortId = String(t.id).replace(/^g1\.paint\.ch\d+\./, "");
-    const noun = givePolicy.nounDe?.pairs?.[skin] ?? givePolicy.nounDe?.captives?.[shortId];
+    // L0 · N5: die Nomen dieses KAPITELS zuerst (chNN.policy.json), die alte
+    // Tor-Datei nur noch als Rueckfall. Sie beschreiben die Wesen eines
+    // Kapitels — Kapitel-Inhalt also — und lagen trotzdem in einer
+    // scripts/-Datei, in die fuenf T-Bahnen gleichzeitig haetten schreiben
+    // muessen. Der Rueckfall bleibt, damit ein Kapitel ohne eigene Politik-
+    // Datei nicht schlagartig rot wird; er ist ausdruecklich uebergangsweise.
+    // EINE Quelle, kein Rueckfall. Ein Rueckfall auf die alte Tor-Datei haette
+    // die Verlagerung wertlos gemacht: das Datum staende an zwei Stellen, die
+    // Kapitel-Politik koennte still leer sein, und niemand saehe es — die
+    // Zwillings-Drift, gegen die dieselbe Datei anderswo eine Byte-Gleichheits-
+    // Zusicherung traegt.
+    const chNoun = chapterPolicy(CHAPTER_NOW)?.nounDe;
+    const noun = chNoun?.pairs?.[skin] ?? chNoun?.captives?.[shortId];
     if (noun === undefined) {
-      return `obliges "nounDe", but no German noun is declared for "${shortId}" (skin "${skin}") — add it to ${GIVEAWAY_POLICY_FILE} under nounDe.pairs (by skin) or nounDe.captives (by card), or the obligation exempts this card for free`;
+      return `obliges "nounDe", but no German noun is declared for "${shortId}" (skin "${skin}") — add it to ${CHAPTER_NOW?.chapter ?? "chNN"}.policy.json under nounDe.pairs (by skin) or nounDe.captives (by card), or the obligation exempts this card for free`;
     }
     if (!hasWord(text, noun)) {
       return `obliges "nounDe", but ${field} never names the being — it must say „${noun}" and instead says "${text}"`;
@@ -441,20 +525,37 @@ const OBLIGATIONS = {
   },
 };
 
+/**
+ * ★ L0 · N6 · DIE VERALTUNGS-GESETZE SIND KORPUS-WEIT, NICHT DATEI-WEIT.
+ *
+ * Gemessen an einer Zwei-Kapitel-Probe: `FAMILIES` ist eine GLOBALE Tabelle in
+ * `game-tasks-giveaway-policy.json`, und die zwei Gesetze »passt zu keiner
+ * Karte mehr« (18d) und »unterdrueckt nichts« (18c) sind Aussagen ueber den
+ * ganzen Bestand. Datei-weit gefragt melden sie, sobald es ein ZWEITES Kapitel
+ * gibt, jede ch01-Familie als veraltet — obwohl sie in ch01 taeglich greift.
+ * Dieselbe Klasse wie 18f eine Funktion weiter oben, am selben Nachmittag
+ * gefunden, an derselben Probe.
+ *
+ * Aufgeteilt nach dem, worueber ein Gesetz WIRKLICH etwas sagt:
+ *   · ueber die KARTE (jede Pflicht, die eine Familie kauft) — je Datei, weil
+ *     die Nomen-Tabelle und die Glossen am Kapitel haengen;
+ *   · ueber die TABELLE (»passt zu nichts«, »unterdrueckt nichts«, und die
+ *     Form-Gesetze der Familie selbst) — EINMAL, ueber alles.
+ * Gezaehlt wird waehrend der Datei-Laeufe, geurteilt am Ende.
+ */
+const familyTally = new Map();
+
 function checkGiveawayFamilies(file, items) {
   for (const f of FAMILIES) {
     const where = `${file} giveaway-policy:${f.id}`;
     const covered = items.filter((t) => familyMatches(f, t));
-    if (covered.length === 0) { fail(where, "18d · family matches no card any more — a stale exemption hides the next gap"); continue; }
-    if (!f.reason || f.reason.trim().length === 0) fail(where, "18d · a family must say WHY (the reason is the review surface)");
-    if ((f.fields ?? []).length === 0) fail(where, "18d · a family that names no field exempts nothing");
-    if (Object.keys(f.obliges ?? {}).length === 0) fail(where, `18d · exempts [${(f.exempts ?? []).join(" · ")}] and obliges nothing — an exemption buys a stricter obligation, never a pass`);
-    // 18c · honoured against bare: does this family suppress anything real?
-    let suppressed = 0;
+    const tally = familyTally.get(f.id) ?? { covered: 0, suppressed: 0 };
+    tally.covered += covered.length;
+    familyTally.set(f.id, tally);
     for (const t of covered) {
       const bare = giveawayFailures(t, DE_GLOSS, new Set());
-      suppressed += bare.filter((e) => (f.fields ?? []).includes(e.field)).length;
-      // and the obligation it bought, on every card it covers
+      tally.suppressed += bare.filter((e) => (f.fields ?? []).includes(e.field)).length;
+      // und die Pflicht, die die Ausnahme gekauft hat, auf jeder gedeckten Karte
       const shown = new Map(firstSightOf(t).map((x) => [x.field, x.text]));
       for (const field of f.fields ?? []) {
         if (!shown.has(field)) { fail(`${where} ${t.id}`, `18d · exempts "${field}", which this card never shows the child`); continue; }
@@ -464,11 +565,23 @@ function checkGiveawayFamilies(file, items) {
           if (msg !== null) fail(`${file} ${t.id}`, `18d · ${msg}`);
         }
       }
-      for (const name of Object.keys(f.obliges ?? {})) {
-        if (OBLIGATIONS[name] === undefined) fail(where, `18d · obliges "${name}", which nothing enforces — an obligation nobody checks is a sentence, not a duty`);
-      }
     }
-    if (suppressed === 0) fail(where, `18c · exempts ${(f.fields ?? []).join(" · ")}, but nothing on those fields is flagged with or without the family — an exemption nobody needs is dead text. Delete it`);
+  }
+}
+
+/** Die Gesetze ueber die TABELLE selbst — einmal, nach allen Dateien. */
+function checkGiveawayFamilyTable(label) {
+  for (const f of FAMILIES) {
+    const where = `${label} giveaway-policy:${f.id}`;
+    const tally = familyTally.get(f.id) ?? { covered: 0, suppressed: 0 };
+    if (tally.covered === 0) { fail(where, "18d · family matches no card any more — a stale exemption hides the next gap"); continue; }
+    if (!f.reason || f.reason.trim().length === 0) fail(where, "18d · a family must say WHY (the reason is the review surface)");
+    if ((f.fields ?? []).length === 0) fail(where, "18d · a family that names no field exempts nothing");
+    if (Object.keys(f.obliges ?? {}).length === 0) fail(where, `18d · exempts [${(f.exempts ?? []).join(" · ")}] and obliges nothing — an exemption buys a stricter obligation, never a pass`);
+    for (const name of Object.keys(f.obliges ?? {})) {
+      if (OBLIGATIONS[name] === undefined) fail(where, `18d · obliges "${name}", which nothing enforces — an obligation nobody checks is a sentence, not a duty`);
+    }
+    if (tally.suppressed === 0) fail(where, `18c · exempts ${(f.fields ?? []).join(" · ")}, but nothing on those fields is flagged with or without the family — an exemption nobody needs is dead text. Delete it`);
   }
 }
 
@@ -486,7 +599,7 @@ function checkItem(chId, t) {
   if (t.stimulus?.type === "image") checkDe(w, t.stimulus.altDe);
   if (t.stimulus?.type === "entity") checkDe(w, t.stimulus.showsDe);
   // 9 · the distribution map: is this kind allowed out in this chapter's field?
-  const palette = CHAPTER_FIELD_KINDS[chId];
+  const palette = CHAPTER_NOW ? fieldKindsOf(CHAPTER_NOW) : null;
   if (palette && FIELD_USES.has(t.use) && !palette.has(t.kind)) {
     fail(w, `palette: ${chId}'s field is [${[...palette].join(" · ")}] — a "${t.kind}" card cannot be served as "${t.use}" here (doc 41 §1)`);
   }
@@ -544,10 +657,18 @@ const MAX_LINE = MAX_LINE_DE; // the kurzweilig law (F2-2), shared with the leve
 // R3-12 fixed what was actually wrong with it (unanswerable, not too complex).
 /** The uses a being raises OUT IN THE WORLD — where the palette applies. */
 const FIELD_USES = new Set(["encounter", "quickfire", "door", "rescue"]);
-/** chapter → the kinds its FIELD may serve. A chapter with no entry is not yet
- *  ruled on and is left alone, so this table can grow one chapter at a time. */
-const CHAPTER_FIELD_KINDS = {
-  ch01: new Set(["choice", "wheel", "restore", "oddone"]),
+/** L0 · D10 · WELCHE KARTENARTEN DAS FELD EINES KAPITELS SERVIEREN DARF.
+ *
+ *  Stand als Tabelle hier — mit genau einem Eintrag, und mit dem Satz »so kann
+ *  diese Tabelle Kapitel für Kapitel wachsen«. Genau das war das Problem: fünf
+ *  Kapitel-Bahnen hätten in DIESE Zeile schreiben müssen. Die Liste liegt jetzt
+ *  in `chNN.policy.json` neben den Karten des Kapitels, das sie beschreibt.
+ *  Ein Kapitel ohne Politik-Datei ist wie bisher »noch nicht entschieden« und
+ *  wird in Ruhe gelassen — die Auslassung wird aber NAMENTLICH gemeldet. */
+const fieldKindsOf = (cx) => {
+  const cp = chapterPolicy(cx);
+  if (cp === null || !Array.isArray(cp.fieldKinds)) return null;
+  return new Set(cp.fieldKinds);
 };
 
 
@@ -584,6 +705,26 @@ function checkDesaturation(w, items, washedSkins) {
 }
 
 function checkAgainstLevel(file, level, items) {
+  // ── L0 · N6 · WAS EIN ENTWURF SCHULDIG BLEIBEN DARF ────────────────────────
+  //
+  // Die Abdeckungs-Gesetze unten fragen die WELT ab: ≥2 encounter je Feind-Skin,
+  // ≥3 quickfire je Schwarm, eine restore-Karte je entfaerbtem Ding, eine
+  // rescue je Kaefig, eine door je Tuer. Fuer ein fertiges Kapitel ist jedes
+  // davon richtig und hart. Fuer ein Kapitel IM BAU ist es eine Unmoeglichkeit:
+  // die T-Bahn schreibt ihre Karten, waehrend die G-Bahn noch Raeume schneidet —
+  // die erste Haelfte kann per Bauart nicht vollstaendig sein.
+  //
+  // Also: bei `draft:true` werden diese Gesetze BERICHTET, nicht rot. Nicht
+  // uebersprungen — berichtet, mit Zahl, unter der OK-Zeile. Eine stille
+  // Auslassung waere von einem toten Gesetz nicht zu unterscheiden, und genau
+  // an dieser Verwechslung ist `check-body-silhouette` an p4/p9 gescheitert.
+  // Alles andere (Schema, Erdung, Verrat, Register, Formen) laeuft im Entwurf
+  // unveraendert: das sind Aussagen ueber die KARTE, nicht ueber die Welt.
+  const draftLevel = level.draft === true;
+  const covFail = (at, msg) => {
+    if (draftLevel) { coverageReports.push(`${path.basename(file)} ${at}: ${msg}`); return; }
+    fail(at, msg);
+  };
   const w = path.basename(file);
   const phases = allPhasesOf(level);
   const phaseIds = new Set(phases.map((p) => p.id));
@@ -635,7 +776,7 @@ function checkAgainstLevel(file, level, items) {
         const use = encounterUseFor(e.role);
         const need = Math.max(2, simultaneous.get(e.skin) ?? 1);
         const n = boundCards(items, use, e.skin, ph.id).length;
-        if (n < need) fail(at, `coverage: hostile skin "${e.skin}" has ${n} ${use} card(s) here — needs ≥${need} (${simultaneous.get(e.skin)} of them stand in ${ph.id} at once)`);
+        if (n < need) covFail(at, `coverage: hostile skin "${e.skin}" has ${n} ${use} card(s) here — needs ≥${need} (${simultaneous.get(e.skin)} of them stand in ${ph.id} at once)`);
       } else if (e.role === "guardian") {
         // PK-R6 · F · A GUARDIAN RAISES TWO POOLS, NOT THREE. This row used to
         // demand ≥2 `encounter` cards as well, from the era when a chalk hit
@@ -650,7 +791,7 @@ function checkAgainstLevel(file, level, items) {
         // the chapter's last act (finale) are the two real pools.
         for (const [use, min] of [["boss", 2], ["finale", 1]]) {
           const n = boundCards(items, use, e.skin, ph.id).length;
-          if (n < min) fail(at, `coverage: guardian skin "${e.skin}" has ${n} ${use} card(s) here — needs ≥${min}`);
+          if (n < min) covFail(at, `coverage: guardian skin "${e.skin}" has ${n} ${use} card(s) here — needs ≥${min}`);
         }
         // ── R5-W2 · H1 · THE ARENA'S NUMBER PROMISE, KEPT BY MACHINE ─────────
         //
@@ -669,11 +810,17 @@ function checkAgainstLevel(file, level, items) {
         // any of those cards.
         const knots = GUARDIAN_SCRIPT[e.tier]?.knots ?? 0;
         const numbers = new Set(
-          (policy.chapters?.[level.chapter]?.lexiconClasses?.["g1u01.x.numbers"]?.words ?? [])
+          // L0 · D10: die Klasse stand als Literal `g1u01.x.numbers` im Code —
+          // ein Kapitel mit einer anderen Zahlen-Klasse hätte hier eine leere
+          // Menge bekommen und wäre unten mit »die Klasse ist leer« rot
+          // geworden, obwohl seine Zahlen dastanden. Sie steht jetzt in der
+          // Politik-Datei des Kapitels; fehlt sie DORT, wird das Gesetz
+          // namentlich übersprungen statt still falsch.
+          (chapterPolicy(CHAPTER_NOW)?.lexiconClasses?.[chapterPolicy(CHAPTER_NOW)?.arenaPromiseClass ?? ""]?.words ?? [])
             .map((w) => String(w).toLowerCase()),
         );
         if (knots > 0 && numbers.size === 0) {
-          fail(at, "coverage: the numbers lexicon class is empty — the arena's promise cannot be checked");
+          covFail(at, "coverage: the numbers lexicon class is empty — the arena's promise cannot be checked");
         } else if (knots > 0) {
           let st = initRoute();
           const served = [];
@@ -689,7 +836,7 @@ function checkAgainstLevel(file, level, items) {
           const hit = served.some((t) =>
             answerSurfaceOf(t).some((s) => [...numbers].some((n) => hasWord(s, n))));
           if (!hit) {
-            fail(at, `coverage: the arena promised p3's numbers 1–25, but the ${knots} window(s) a clean fight opens serve `
+            covFail(at, `coverage: the arena promised p3's numbers 1–25, but the ${knots} window(s) a clean fight opens serve `
               + `${served.map((t) => t.id).join(", ")} — not one asks for a number`);
           }
         }
@@ -706,7 +853,7 @@ function checkAgainstLevel(file, level, items) {
           if (!mate) continue; // the level's own `classmate-pair` law owns this
           const n = boundCards(items, "rescue", mate.skin, ph.id).length;
           if (n !== AWAKEN_ROUNDS) {
-            fail(at, `coverage: the reawakening of "${mate.skin}" has ${n} rescue card(s) in ${ph.id} — doc 44 §3.3 runs exactly ${AWAKEN_ROUNDS} rounds`);
+            covFail(at, `coverage: the reawakening of "${mate.skin}" has ${n} rescue card(s) in ${ph.id} — doc 44 §3.3 runs exactly ${AWAKEN_ROUNDS} rounds`);
           }
           // the pose IS the prompt, so two rounds may not show the same pose:
           // the child would be asked to read one picture twice and the second
@@ -721,7 +868,7 @@ function checkAgainstLevel(file, level, items) {
           continue;
         }
         const n = boundCards(items, "rescue", e.skin, ph.id).length;
-        if (n < 1) fail(at, `coverage: cage skin "${e.skin}" has no rescue card here`);
+        if (n < 1) covFail(at, `coverage: cage skin "${e.skin}" has no rescue card here`);
       } else if (e.role === "drained") {
         // PK-R6 · C1 · THE RESTORE-PAIR LAW. A drained object is a promise
         // rendered in grey: the child walks up, presses ↑, and the world owes
@@ -732,10 +879,10 @@ function checkAgainstLevel(file, level, items) {
         // stop, and it would ship silently because nothing else looks here.
         const n = boundCards(items, "encounter", e.skin, ph.id)
           .filter((t) => t.kind === "restore").length;
-        if (n < 1) fail(at, `coverage: drained object "${e.skin}" has no restore card in ${ph.id} — a grey thing with no way to give its colour back`);
+        if (n < 1) covFail(at, `coverage: drained object "${e.skin}" has no restore card in ${ph.id} — a grey thing with no way to give its colour back`);
       } else if (e.role === "door.trigger" && String(e.params?.kind ?? "exit") !== "bonus") {
         const n = boundCards(items, "door", e.skin, ph.id).length;
-        if (n < 1) fail(at, `coverage: door skin "${e.skin}" has no door card here`);
+        if (n < 1) covFail(at, `coverage: door skin "${e.skin}" has no door card here`);
       }
     }
   }
@@ -926,7 +1073,8 @@ function exerciseRegistry(unitSlug, chapter) {
     corpusClasses.set(id, new Set((c.words ?? []).map((x) => x.toLowerCase())));
   }
   const policyClasses = new Map();
-  for (const [id, c] of Object.entries(policy.chapters?.[chapter]?.lexiconClasses ?? {})) {
+  const cx = CHAPTERS.find((c) => c.chapter === chapter);
+  for (const [id, c] of Object.entries(chapterPolicy(cx)?.lexiconClasses ?? {})) {
     policyClasses.set(id, c.words ?? []);
   }
   return {
@@ -944,6 +1092,19 @@ function exerciseRegistry(unitSlug, chapter) {
 // proves nothing, a NON-TAMPER that runs the REAL corpus of this repo through
 // the REAL function and must stay silent.
 if (process.argv.includes("--selftest")) {
+  // L0 · D10 · DER SELBSTTEST BRAUCHT EIN ECHTES KAPITEL. Seine Fälle fahren
+  // gegen den WIRKLICHEN Wortschatz dieses Repos (das ist ihr Wert), und der
+  // hing bis zur Level-Welle an modulweiten `g1-u01`-Konstanten. Jetzt werden
+  // die Register des ersten FERTIGEN Kapitels geladen, bevor ein Fall läuft —
+  // ohne das liefen alle Erdungs-Fälle gegen leere Mengen und wären grün
+  // geworden, weil sie nichts mehr zu sagen hatten.
+  const REAL_SELFTEST = CHAPTERS.find((c) => !c.draft && c.hasTasks && c.lexiconPath && fs.existsSync(c.lexiconPath));
+  if (!REAL_SELFTEST) {
+    console.error("check-game-tasks --selftest: kein fertiges Kapitel mit Karten und Lexikon — die Echt-Daten-Fälle können nicht laufen");
+    process.exit(1);
+  }
+  CHAPTER_NOW = REAL_SELFTEST;
+  loadUnitRegisters(REAL_SELFTEST);
   const reg = (over = {}) => ({
     unitSlug: "g1-u01",
     wordbankIds: new Set(["g1u01.w.pen"]),
@@ -1045,7 +1206,9 @@ if (process.argv.includes("--selftest")) {
     // the one each case below is about. So the family under test gets only `t`,
     // and the other one gets a single honest card to match.
     const companion = t.use === "rescue" ? restoreCard() : cageCard();
+    familyTally.clear();
     checkGiveawayFamilies("selftest", [t, companion]);
+    checkGiveawayFamilyTable("selftest");
     const out = captured;
     captured = null;
     return out;
@@ -1133,19 +1296,46 @@ if (process.argv.includes("--selftest")) {
   process.exit(0);
 }
 
-// ── walk every *.tasks.v2.json ──
-const files = [];
-if (fs.existsSync(STORIES)) {
-  for (const story of fs.readdirSync(STORIES)) {
-    const dir = path.join(STORIES, story, "paint");
-    if (!fs.existsSync(dir)) continue;
-    for (const f of fs.readdirSync(dir).filter((x) => x.endsWith(".tasks.v2.json"))) files.push(path.join(dir, f));
-  }
+// ── walk every chapter that HAS a card set ───────────────────────────────────
+// L0 · D10: die Datei-Liste kommt aus der geteilten Kapitel-Auflösung, nicht
+// aus einem eigenen Verzeichnis-Lauf. Ein Kapitel ohne Karten ist kein Fehler
+// (Entwurf), wird aber genannt.
+const withTasks = CHAPTERS.filter((c) => c.hasTasks);
+for (const c of CHAPTERS) if (!c.hasTasks) ledger.skip(c.chapter, "karten", `kein ${c.chapter}.tasks.v2.json`);
+// L0 · N6: eine Karten-Datei ohne Schwester-Level ist fuer die Kapitel-Liste
+// unsichtbar — und genau darin liegt die Gefahr. Sie wird NAMENTLICH gemeldet,
+// nie still uebergangen: eine Datei, die niemand prueft, sieht von aussen aus
+// wie eine Datei, die durchgekommen ist.
+for (const o of orphanTaskFiles()) {
+  ledger.skip(o.chapter, "karten (WAISE)", `${path.relative(process.cwd(), o.file)} hat kein ${o.chapter}.level.json — Bindungen und Abdeckung koennen gegen keine Welt geprueft werden`);
 }
-if (files.length === 0) { console.log("check-game-tasks: no gameTasks@2 files yet — nothing to check"); process.exit(0); }
+if (withTasks.length === 0) { console.log("check-game-tasks: no gameTasks@2 files yet — nothing to check"); ledger.print(); process.exit(0); }
 
 let itemCount = 0;
-for (const file of files) {
+for (const cx of withTasks) {
+  const file = cx.tasksPath;
+  CHAPTER_NOW = cx;
+  // ── L0 · D10 · DIE UNIT DIESES KAPITELS, und der Abgleich mit der Geschichte.
+  // Zwei Quellen nennen sie: die Karten-Datei (`unit`) und `story.json`
+  // (`chapter.unit` als Zahl). Sie MÜSSEN übereinstimmen — eine Karten-Datei,
+  // die eine andere Unit behauptet als die Geschichte, wird gegen den falschen
+  // Wortschatz geerdet und bleibt dabei grün.
+  if (cx.tasksUnit === null) {
+    fail(file, "unit: die Karten-Datei nennt keine `unit` — ohne sie kann kein Wort dieses Kapitels geerdet werden");
+    continue;
+  }
+  if (cx.storyUnit !== null && cx.tasksUnit !== cx.storyUnit) {
+    fail(file, `unit: die Karten sagen "${cx.tasksUnit}", story.json sagt "${cx.storyUnit}" — eine der beiden Quellen erdet dieses Kapitel gegen den falschen Wortschatz`);
+    continue;
+  }
+  // Das Lexikon der Unit ist die Erdungs-Autorität. Fehlt es, liefe jede
+  // Erdungs-Prüfung leer und meldete nichts — deshalb ROT, nicht übersprungen.
+  if (!cx.lexiconPath || !fs.existsSync(cx.lexiconPath)) {
+    fail(file, `grounding: ${cx.chapter} hat Karten, aber kein docs/design/g1/grounding/${(cx.unit ?? "uNN").replace(/^g\d-/, "")}-lexicon.json — ohne Lexikon prüft die Erdung nichts und bleibt trotzdem grün`);
+    continue;
+  }
+  if (!cx.hasPolicy) ledger.skip(cx.chapter, "feld-palette+varietaet", `kein ${cx.chapter}.policy.json`);
+  loadUnitRegisters(cx);
   const raw = JSON.parse(fs.readFileSync(file, "utf8"));
   const parsed = GameTasksFileV2.safeParse(raw);
   if (!parsed.success) {
@@ -1154,19 +1344,15 @@ for (const file of files) {
   }
   for (const t of parsed.data.items) { checkItem(parsed.data.chapter, t); itemCount++; }
   // the level this set is played in — bindings and coverage are cross-file laws
-  const levelFile = file.replace(".tasks.v2.json", ".level.json");
-  if (!fs.existsSync(levelFile)) {
-    fail(file, `no sibling ${path.basename(levelFile)} — bindings cannot be checked against a world`);
-    continue;
-  }
-  const level = JSON.parse(fs.readFileSync(levelFile, "utf8"));
+  const level = cx.level;
   checkAgainstLevel(file, level, parsed.data.items);
   checkGiveawayFamilies(file, parsed.data.items);
   checkNoTwins(file, parsed.data.items);
   checkPortraits(file, parsed.data.items);
   // 19 · every `exercises` name resolves in the unit this chapter teaches (R59,
   // D-89). Unit per chapter as everywhere else in this file: ch01 teaches g1-u01.
-  checkExercisesExist(file, parsed.data.items, exerciseRegistry("g1-u01", parsed.data.chapter));
+  // L0 · D10: die Unit kommt aus dem Kapitel, nicht aus einem Literal.
+  checkExercisesExist(file, parsed.data.items, exerciseRegistry(cx.unit, parsed.data.chapter));
   checkTimerPolicy(file, parsed.data.items);
   // 13-17 · THE VARIETY LAWS — one imported pass, so the gate, the audit doc and
   // the unit tests all compute the same numbers from the same code.
@@ -1174,7 +1360,9 @@ for (const file of files) {
     chapter: parsed.data.chapter,
     items: parsed.data.items,
     level,
-    policy,
+    policy: policyFor(cx),
+    // L0 · D10: die Feld-Formen des Kapitels aus seiner eigenen Politik-Datei
+    fieldForms: chapterPolicy(cx)?.fieldForms,
     wordbank,
     structureIds,
     lexicon: words,
@@ -1184,5 +1372,29 @@ for (const file of files) {
   }
 }
 
-if (failures === 0) console.log(`check-game-tasks: OK — ${itemCount} tasks across ${files.length} file(s): schema, grounding, giveaway, register, binding, coverage, length, twins, portraits, timer-policy, form, voice, rhythm, distinctness, coverage-ledger, giveaway-class (all nine kinds, both languages, the board) all green`);
+// L0 · N6: die Gesetze ueber die Verrats-TABELLE, EINMAL ueber alles.
+if (withTasks.length > 0) checkGiveawayFamilyTable("giveaway-policy (Korpus)");
+
+if (coverageReports.length > 0) {
+  // L0 · N6: BERICHTET, nicht rot — mit Zahl, damit »ein Entwurf schuldet noch
+  // etwas« nicht dasselbe aussieht wie »hier prueft nichts mehr«.
+  console.log(`check-game-tasks: ${coverageReports.length} Abdeckungs-Posten in ENTWURFS-Kapiteln (berichtet, nicht rot):`);
+  for (const r of coverageReports) console.log(`  · ${r}`);
+}
+// ★ L0 · DER SKIP-BERICHT STEHT VOR DEM URTEIL, NICHT DANACH.
+// Ein blinder Leser fand ihn hinter `process.exit(1)`: im ROTEN Lauf wurde er
+// nie gedruckt — ausgerechnet dann, wenn jemand wissen muss, welche Gesetze
+// mangels Eingaben gar nicht liefen. Der Mechanismus gegen stille Auslassung
+// war selbst still, sobald es darauf ankam.
+// L0b · D-792 · EINE LÜCKE IN EINEM FERTIGEN KAPITEL IST ROT, NICHT NUR NOTIERT.
+// L0 hat sie GESAGT und nicht GEURTEILT — beide Tore blieben grün. Ein
+// Abschluss-PR, der `draft` entfernt und die Dossiers oder die Kartendatei
+// vergisst, wäre hier still durchgegangen. `draft:true` bleibt der namentliche
+// Skip; ohne die Flagge ist dasselbe Fehlen ein Loch.
+for (const g of ledger.gaps()) {
+  fail(g.split("/")[0], `${g.slice(g.indexOf("/") + 1)} — das Kapitel trägt KEINE draft-Flagge, ist also fertig: eine fehlende Eingabe ist hier ein Loch, keine Bauphase (D-792)`);
+}
+
+ledger.print();
+if (failures === 0) console.log(`check-game-tasks: OK — ${itemCount} tasks across ${withTasks.length} file(s): schema, grounding, giveaway, register, binding, coverage, length, twins, portraits, timer-policy, form, voice, rhythm, distinctness, coverage-ledger, giveaway-class (all nine kinds, both languages, the board) all green`);
 else { console.error(`check-game-tasks: ${failures} failure(s)`); process.exit(1); }

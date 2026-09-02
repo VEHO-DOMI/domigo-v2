@@ -73,12 +73,32 @@ export const entitySkinStems = (skin: string): string[] => [`${skin}_a`];
 // captives into all four phases, which is four times the texture for three
 // pictures nobody can see. `captive_*` is invisible to that closure and is
 // added per cage, by key.
+//
+// L0 · D7 · DIE LISTE WAR EINE KAPITEL-1-LISTE. `CAPTIVE_KEYS` zählte die vier
+// Insassen von ch01 auf, und `isCaptiveKey` prüfte die MITGLIEDSCHAFT darin —
+// jeder Insasse eines zweiten Kapitels wäre also »kein Insasse« gewesen: kein
+// beanspruchtes Blatt, keine Zelle hinter den Gittern, und weil fehlende Kunst
+// hier legal zurückfällt, ohne ein einziges rotes Tor. Geprüft wird jetzt die
+// FORM des Schlüssels; die vier ch01-Namen bleiben als das stehen, was sie sind
+// — die heute bestellten Blätter, die `CAPTIVE_STEMS` an die Tore meldet.
 export const CAPTIVE_KEYS = ["soundsystem", "tablet", "chair", "picture"] as const;
-export type CaptiveKey = (typeof CAPTIVE_KEYS)[number];
+export type CaptiveKey = string;
 export const captiveStem = (key: string): string => `captive_${key}`;
 export const CAPTIVE_STEMS: readonly string[] = CAPTIVE_KEYS.map(captiveStem);
+/** Die FORM eines Insassen-Schlüssels: Kleinbuchstaben und Ziffern, weil daraus
+ *  der Blattname `captive_<key>` wird. Das Level-Gesetz `cage-captive-key`
+ *  prüft dieselbe Form beim Autorieren, damit ein Tippfehler nicht erst als
+ *  fehlendes Bild auffällt.
+ *
+ *  ⚠ DIES IST KEIN UNTERSCHEIDER MEHR zwischen Ding-Käfig und Personen-Käfig.
+ *  Solange die Liste geschlossen war, konnte man aus dem blossen Namen lesen,
+ *  ob ein Ding oder ein Kind im Käfig sitzt; die Karten-Schicht hat das genutzt.
+ *  Ein offener Schlüsselraum kann das nicht — »merle« hat dieselbe Form wie
+ *  »tablet«. Wer die beiden trennen muss, fragt die DATEN (`params.classmate`
+ *  gegen `params.captive`, im Karten-Pfad das Flag `person` der Zeremonie),
+ *  nicht den String. */
 export const isCaptiveKey = (v: unknown): v is CaptiveKey =>
-  typeof v === "string" && (CAPTIVE_KEYS as readonly string[]).includes(v);
+  typeof v === "string" && /^[a-z0-9]+$/.test(v);
 
 /**
  * R5-W5 · C4 · D-228 · …AND WHO IS IN THE ONE CAGE THAT HOLDS A PERSON.
@@ -188,10 +208,21 @@ export const HERO_STEMS = [
  *  called beat 3 »the one beat that reads as a plain checklist/settings dialog,
  *  not a story page« (90 %), and the note is the PAPER the tasks are written on
  *  rather than a form whose three rows must match five lines. */
+/** L0 · D6 · WAS HIER BLIEB UND WAS INS LEVEL ZOG.
+ *
+ *  Diese Liste trug bis zur Level-Welle FÜNF Blätter aus Kapitel 1
+ *  (`auftakt_ch01_b/c/d`, `schulhaus_ch01_a/b`), weil `PaintGame` sie als
+ *  JSX-Literale zeichnete. Jedes zweite Kapitel hätte sein Buch also mit dem
+ *  Schulhaus aus Kapitel 1 aufgeschlagen. Die fünf stehen jetzt in
+ *  `ch01.level.json` unter `auftaktPlates`, und `domArtStems` nimmt sie von
+ *  dort — dieselbe beanspruchte Menge, nur aus der Quelle, die je Kapitel
+ *  verschieden ist.
+ *
+ *  Was BLEIBT, sind die drei neutralen Marken der Sammel-Legende: sie zeigen
+ *  Buchstabe, Käfig und Regel-Seite als Sache, nicht als Ort, und gelten in
+ *  jedem Kapitel unverändert. */
 export const AUFTAKT_STEMS: readonly string[] = [
-  "auftakt_ch01_b", "auftakt_ch01_c", "auftakt_ch01_d",
   "auftakt_mark_letters", "auftakt_mark_cages", "auftakt_mark_tips",
-  "schulhaus_ch01_a", "schulhaus_ch01_b",
 ];
 
 /** R5-W2 · J1-C · THE PAINTED ICON STEMS.

@@ -49,6 +49,9 @@ export interface ScopeLevel {
   scorePlate?: string | undefined;
   doorPlate?: string | undefined;
   rulePlate?: string | undefined;
+  /** L0 · D6: die Auftakt-Platten des Kapitels — bis zur Level-Welle standen sie
+   *  als ch01-Literale im Manifest. */
+  auftaktPlates?: { schatten?: readonly string[]; auftrag?: string; los?: string } | undefined;
 }
 
 /** Every phase of a level, in one list (phases + arena + bonus room). */
@@ -136,7 +139,15 @@ export const domArtStems = (level: ScopeLevel): Set<string> => {
   // icon cannot be forgotten here.
   for (const n of PAINTED_ICON_NAMES) out.add(`hud_${n}`);
   // R5-W2 · J1-B: the opening's four beats read these straight out of the map.
+  // L0 · D6: die drei NEUTRALEN Marken kommen aus dem Manifest (sie gelten in
+  // jedem Kapitel), die kapitel-eigenen Platten aus dem Level — bis zur
+  // Level-Welle standen auch sie im Manifest, und jedes Kapitel hätte damit die
+  // Blätter von Kapitel 1 beansprucht. Die beanspruchte MENGE bleibt für ch01
+  // dieselbe; sie kommt nur aus zwei Quellen statt aus einer.
   for (const s of AUFTAKT_STEMS) out.add(s);
+  for (const s of level.auftaktPlates?.schatten ?? []) out.add(s);
+  if (level.auftaktPlates?.auftrag !== undefined) out.add(level.auftaktPlates.auftrag);
+  if (level.auftaktPlates?.los !== undefined) out.add(level.auftaktPlates.los);
   // R5-W4 · I2: the Merkseite's own three cells. Same argument as the icons
   // above, one wave later: `merkseite_page`/`_stub`/`_seal` landed with AQ7,
   // were listed as DEAD_ART group A („bezahlt, unverdrahtet"), and are now

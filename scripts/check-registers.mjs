@@ -62,10 +62,19 @@ const PITFALLS = "docs/handover/46_pitfall_register.md";
 /** Dokumente, deren Code-Verweise geprüft werden (Gesetze 3 und 4).
  *  Bewusst eng: hier wurde die Klasse gefunden und aufgeräumt. Wer ein weiteres
  *  Dokument sauber hat, trägt es hier ein — dann hält das Tor es sauber. */
+// L0 · D10: JEDER Dossier-Ordner, nicht nur der von Kapitel 1. Ein Kapitel, das
+// hier nicht steht, darf tote D-Nummern und erfundene Symbol-Verweise tragen —
+// und niemand sieht es. Ordner, die es (noch) nicht gibt, fallen still weg;
+// die Liste der wirklich gelesenen Ordner steht unten in der OK-Zeile, damit
+// »geprüft« eine Zahl hat und keine Annahme ist.
+const DOSSIER_ROOT = path.join(R, "docs/design/g1/paint");
+const DOSSIER_DIRS = (fs.existsSync(DOSSIER_ROOT) ? fs.readdirSync(DOSSIER_ROOT) : [])
+  .filter((d) => /^ch\d{2}-dossiers-v2$/.test(d) && fs.statSync(path.join(DOSSIER_ROOT, d)).isDirectory())
+  .sort();
 const WATCHED = [
-  ...fs.readdirSync(path.join(R, "docs/design/g1/paint/ch01-dossiers-v2"))
+  ...DOSSIER_DIRS.flatMap((d) => fs.readdirSync(path.join(DOSSIER_ROOT, d))
     .filter((f) => f.endsWith(".md"))
-    .map((f) => `docs/design/g1/paint/ch01-dossiers-v2/${f}`),
+    .map((f) => `docs/design/g1/paint/${d}/${f}`)),
   "docs/design/g1/paint/SPEC_MASSEN_KIT.md",
   DEBT, // W4/D-242(a) — mit der Ausnahmeliste unten
 ];
@@ -478,7 +487,7 @@ if (failures > 0) {
   process.exit(1);
 }
 console.log(
-  `check-registers: OK — ${debt.count} D-Nummern eindeutig (Prosa mitgezählt: keine tote Adresse, `
+  `check-registers: OK — Dossiers [${DOSSIER_DIRS.join(", ") || "keine"}] · ${debt.count} D-Nummern eindeutig (Prosa mitgezählt: keine tote Adresse, `
   + `keine zweite Beschreibung) · ${pit.count} PB-Nummern eindeutig und lückenlos · `
   + `${anchors} Symbol-Verweise aufgelöst über ${WATCHED.length} Dokumente · `
   + `${lineRefs} Zeilennummern-Verweise, davon ${geduldet} im Schulden-Register geduldet bis ${LINE_REF_UNTIL} `

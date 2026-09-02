@@ -16,9 +16,13 @@ import path from "node:path";
 import { z } from "zod";
 import { GameTasksFileV2, type GameTaskV2 } from "@domigo/content-schema";
 import { REPO_ROOT } from "@domigo/content-loader";
+import { ENTITY_ROLES } from "@domigo/game-paint/level";
 
 const STORY_ID = /^g[1-4]\.st\.[a-z0-9-]+$/;
-const CHAPTER_ID = /^ch\d{2}$/;
+/** L0 · D1: die FORM einer Kapitel-Id. Exportiert, weil die Route sie prüft,
+ *  bevor sie eine Datei öffnet — eine verirrte Adresse soll ein 404 sein und
+ *  kein Serverfehler. */
+export const CHAPTER_ID = /^ch\d{2}$/;
 
 // Entity params stay OPEN — every role brings its own knobs — but the fields the
 // level laws read are shape-checked here, mirroring game-paint's EntityParams.
@@ -98,30 +102,15 @@ const PaintParams = z.record(z.string(), z.unknown()).check((ctx) => {
 
 const PaintEntity = z.object({
   id: z.string().min(1),
-  role: z.enum([
-    "chaser", "gunner", "flyer", "bouncer", "crusher", "swarm",
-    "platform.move", "platform.fall", "platform.swing",
-    "cage", "powerup", "door.trigger", "guardian",
-    "tip", "book", // PK-R3b · R3-16: the two static-state collectibles
-    // PK-R6 · C: `drained` — the grey classroom object stage B spread across
-    // the field. It was added to game-paint's own level contract but not to
-    // THIS one, and the two are separate copies: the level parsed by the engine
-    // and failed at the door, so /play/1/buch answered 500 on the shipped
-    // chapter. (Filed: the two copies should become one — the loader ought to
-    // import the role list rather than restate it.)
-    "drained",
-    // PK-R6 · D: `classmate` — the bewitched person who steps out of the
-    // person-cage and is restored over six reawakening rounds (doc 44 §3.3).
-    // Added HERE in the same edit as game-paint's role list, on the standing
-    // lesson above: a role the engine knows and this copy does not is a 500 on
-    // the shipped chapter, not a type error.
-    "classmate",
-    // R5-W5 · G4: `cloth` — a scattered piece of the school uniform. Added HERE
-    // in the same edit as game-paint's role list, on the standing lesson two
-    // comments up: this copy is what the loader parses, and a role the engine
-    // knows and this list does not is a 500 on the shipped chapter.
-    "cloth",
-  ]),
+  /** L0 · D4: DIESE LISTE WAR DIE ZWEITE KOPIE. Sie stand hier als Literal und
+   *  in `@domigo/game-paint/level` als Union — dreimal fehlte hier eine Rolle,
+   *  die der Motor schon kannte (`drained`, `classmate`, `cloth`), und jedes Mal
+   *  war das ein 500 auf dem ausgelieferten Kapitel statt eines Typfehlers, weil
+   *  DIESE Datei parst, was der Motor spielt. Jetzt gibt es nur noch eine Liste,
+   *  und keine dritte kann entstehen, weil das Enum die Liste IST. Die
+   *  Gegenprobe — jede Rolle, die das ausgelieferte Kapitel wirklich spielt,
+   *  steht darin — fährt `paint-content.test.ts`. */
+  role: z.enum(ENTITY_ROLES),
   skin: z.string().min(1),
   c: z.number().int().nonnegative(),
   r: z.number().int().nonnegative(),
@@ -167,6 +156,15 @@ const PaintPhase = z.object({
   inkReturns: z
     .array(z.object({ c: z.number().int().nonnegative(), r: z.number().int().nonnegative(), whyDe: z.string().min(1) }))
     .optional(),
+  // L0 · D5 · die Trail-Wörter der Phase (level.ts PhaseSpec.words). Aus genau
+  // dem Grund, den der Absatz über `inkReturns` nennt: was hier nicht steht,
+  // wird STILL entfernt — die Deklaration bestünde jedes Tor auf der Platte und
+  // wäre im Browser weg, und der Trail buchstabierte A→Z statt seines Wortes.
+  words: z.array(z.string().min(1)).min(1).optional(),
+  // L0 · N7: das Sekunden-Budget der Kleckskammer (nur auf der Bonus-Phase
+  // gelesen, Vorgabe 35). Dieselbe Strip-Regel wie oben: ohne diese Zeile
+  // liefe jede Kammer wieder 35 Sekunden, egal was das Level sagt.
+  budgetSec: z.number().int().positive().max(600).optional(),
 });
 
 const PaintLevelFile = z.object({
@@ -183,13 +181,46 @@ const PaintLevelFile = z.object({
   scorePlate: z.string().min(1).optional(),
   doorPlate: z.string().min(1).optional(),
   rulePlate: z.string().min(1).optional(),
+  /** L0 · D6 · die Auftakt-Platten des Kapitels (level.ts PaintLevel). Auch sie
+   *  MÜSSEN hier stehen — dieselbe Strip-Regel wie bei `goalPlate` darüber. */
+  auftaktPlates: z
+    .object({
+      schatten: z.array(z.string().min(1)).min(1).optional(),
+      auftrag: z.string().min(1).optional(),
+      los: z.string().min(1).optional(),
+    })
+    .optional(),
   goalDe: z.string().min(1),
   whyDe: z.string().min(1),
   hintsDe: z.array(z.string().min(1)),
   collectNounDe: z.string().min(1),
+  /** L0 · N1 · R246: was die `*`-Zellen dieses Kapitels sind (Standard
+   *  „letters"). MUSS hier stehen — dieses Schema strippt still, und ein
+   *  Kapitel, dessen Sammel-Skin verschwindet, sammelt im Browser wieder
+   *  Buchstaben, während jedes Tor grün bleibt. */
+  collectSkin: z.string().min(1).optional(),
+  /** L0 · N2 · wie die `cloth`-Fundstücke dieses Kapitels heissen (D-921).
+   *  Vier Felder, weil die vier Lesestellen drei deutsche Formen brauchen —
+   *  siehe `level.ts`. Auch sie MÜSSEN hier stehen: was das Schema nicht kennt,
+   *  entfernt es still, und das HUD sagte wieder „Kleider". */
+  clothNounDe: z.string().min(1).optional(),
+  clothNounDatDe: z.string().min(1).optional(),
+  clothNounSgDe: z.string().min(1).optional(),
+  clothPlaceDe: z.string().min(1).optional(),
   /** PK-R3b · R3-16: how many Regel-Seiten the chapter hides (doc 41 §5). The
    *  `tip-honesty` law proves this against what the phases actually place. */
-  tipsTotal: z.number().int().positive().optional(),
+  /** L0b · D-790 GESCHLOSSEN (Ruling Programm-Architekt, 2026-09-02): die 0 ist
+   *  erlaubt. Hier stand `positive()`, und das VERSCHÄRFTE das Motor-Gesetz
+   *  still: `tip-honesty` (`level.ts:1220-1224`) verlangt nur Gleichheit
+   *  „deklariert = platziert", und ein Kapitel ohne Regel-Seite (0 = 0) ist
+   *  gesetzestreu. Ein solches Kapitel bestand also jedes Tor und fiel die
+   *  Seite mit einem 500, sobald jemand sie öffnete — genau die Klasse »zwei
+   *  Wahrheiten für dieselbe Regel«, die L0 abgebaut hat.
+   *
+   *  `nonnegative()` und nicht weg: eine NEGATIVE Zahl bleibt Unsinn, und das
+   *  HUD blendet die Zeile bei 0 ohnehin aus (`PaintGame.tsx:1752` Chip,
+   *  `:2858` Bilanz — beides gemessen, nicht angenommen). */
+  tipsTotal: z.number().int().nonnegative().optional(),
   /** R5-W4 · B4 · R44: how the chapter's checkpoints show themselves —
    *  `"silent"` draws nothing, `"krakel"` plays the easel ceremony. It has to be
    *  named HERE as well as in the level model: this schema strips what it does
@@ -206,6 +237,15 @@ const PaintLevelFile = z.object({
 
 export type PaintLevelFileT = z.infer<typeof PaintLevelFile>;
 
+/** L0b · DER PARSER, DEN AUCH DER LADER FÄHRT.
+ *
+ *  Exportiert, damit ein Test die SCHEMA-Regeln an genau dem Code prüfen kann,
+ *  der im Spiel läuft — statt an einer nachgebauten Kopie oder an einer Datei,
+ *  die er zuerst in den Korpus schreiben müsste. Ein Test, der ins
+ *  `content/`-Verzeichnis schreibt, wäre selbst ein Risiko: die Tore lesen
+ *  genau dort. */
+export const parsePaintLevelFile = (raw: unknown): PaintLevelFileT => PaintLevelFile.parse(raw);
+
 const paintDir = (storyId: string): string => {
   if (!STORY_ID.test(storyId)) throw new Error(`paint-content: bad story id ${storyId}`);
   return path.join(REPO_ROOT, "content", "corpus", "stories", storyId, "paint");
@@ -220,7 +260,7 @@ export const loadPaintLevel = (storyId: string, chapter: string): PaintLevelFile
   const hit = levelCache.get(cacheKey);
   if (hit) return hit;
   const file = path.join(paintDir(storyId), `${chapter}.level.json`);
-  const parsed = PaintLevelFile.parse(JSON.parse(fs.readFileSync(file, "utf8")));
+  const parsed = parsePaintLevelFile(JSON.parse(fs.readFileSync(file, "utf8")));
   levelCache.set(cacheKey, parsed);
   return parsed;
 };
@@ -284,6 +324,13 @@ export const loadPaintTasksV2 = (storyId: string, chapter: string): GameTaskV2[]
   tasksV2Cache.set(cacheKey, parsed.items);
   return parsed.items;
 };
+
+/** L0 · D1: hat dieses Kapitel schon einen Kartensatz? Ein Kapitel im Bau hat
+ *  Gitter, aber noch keine Karten — das ist der Normalzustand zwischen der
+ *  Gitter-Bahn und der Aufgaben-Bahn und darf die Seite nicht fällen. Gefragt
+ *  wird die PLATTE, nicht eine Liste von Kapitelnamen im Code. */
+export const chapterHasTasks = (storyId: string, chapter: string): boolean =>
+  fs.existsSync(path.join(paintDir(storyId), `${chapter}.tasks.v2.json`));
 
 /** Which chapters have an authored paint level (the admin auto-list probe). */
 export const listPaintChapters = (storyId: string): string[] => {

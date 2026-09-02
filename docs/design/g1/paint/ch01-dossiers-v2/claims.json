@@ -1,0 +1,154 @@
+{
+ "schema": "paintClaims@1",
+ "chapter": "ch01",
+ "note": "L0 · D10 · DIE VOKABEL-ANSPRUECHE DIESES KAPITELS. Verbatim aus der CLAIMS-Tabelle von scripts/check-level-design.mjs uebernommen (Level-Welle, 2026-09-02) — dieselben Schluessel, dieselben Werte, dieselbe Reihenfolge. Sie standen im Tor, weil es nur ein Kapitel gab; ein zweites haette entweder die Tabelle des ersten geerbt oder eine zweite Tabelle im selben Code gebraucht, in die fuenf Kapitel-Bahnen gleichzeitig haetten schreiben muessen. Die Bedeutung der Klassen steht unveraendert im Tor (being/thing/architecture/cards/pickup/debt).",
+ "claims": {
+  "pencil": {
+   "kind": "being",
+   "stems": [
+    "pencil"
+   ]
+  },
+  "rubber": {
+   "kind": "being",
+   "stems": [
+    "eraser"
+   ]
+  },
+  "school bag": {
+   "kind": "being",
+   "stems": [
+    "obj_schoolbag",
+    "ranzen",
+    "satchelswing"
+   ]
+  },
+  "book": {
+   "kind": "thing",
+   "stems": [
+    "obj_book"
+   ]
+  },
+  "pen": {
+   "kind": "being",
+   "stems": [
+    "pen"
+   ]
+  },
+  "board": {
+   "kind": "being",
+   "stems": [
+    "paintbox",
+    "tafel"
+   ]
+  },
+  "desk": {
+   "kind": "thing",
+   "stems": [
+    "obj_desk"
+   ]
+  },
+  "pencil case": {
+   "kind": "architecture",
+   "stems": [
+    "pencilcase"
+   ]
+  },
+  "ruler": {
+   "kind": "architecture",
+   "stems": [
+    "ruler"
+   ]
+  },
+  "exercise book": {
+   "kind": "being",
+   "stems": [
+    "heft"
+   ]
+  },
+  "scissors": {
+   "kind": "debt"
+  },
+  "chair": {
+   "kind": "debt"
+  },
+  "door": {
+   "kind": "architecture"
+  },
+  "window": {
+   "kind": "architecture"
+  },
+  "tablet": {
+   "kind": "cards"
+  },
+  "sound system": {
+   "kind": "cards"
+  },
+  "hairband": {
+   "kind": "pickup",
+   "stems": [
+    "cloth_hairband"
+   ],
+   "card": "g1.paint.ch01.uni.hairband"
+  },
+  "sunglasses": {
+   "kind": "pickup",
+   "stems": [
+    "cloth_sunglasses"
+   ],
+   "card": "g1.paint.ch01.uni.sunglasses"
+  },
+  "hat": {
+   "kind": "pickup",
+   "stems": [
+    "cloth_hat"
+   ],
+   "card": "g1.paint.ch01.uni.hat"
+  },
+  "school tie": {
+   "kind": "pickup",
+   "stems": [
+    "cloth_school_tie"
+   ],
+   "card": "g1.paint.ch01.uni.school-tie"
+  },
+  "shirt": {
+   "kind": "pickup",
+   "stems": [
+    "cloth_shirt"
+   ],
+   "card": "g1.paint.ch01.uni.shirt"
+  },
+  "sweater": {
+   "kind": "pickup",
+   "stems": [
+    "cloth_sweater"
+   ],
+   "card": "g1.paint.ch01.uni.sweater"
+  },
+  "skirt": {
+   "kind": "pickup",
+   "stems": [
+    "cloth_skirt"
+   ],
+   "card": "g1.paint.ch01.uni.skirt"
+  },
+  "socks": {
+   "kind": "pickup",
+   "stems": [
+    "cloth_socks"
+   ],
+   "card": "g1.paint.ch01.uni.socks"
+  },
+  "shoe": {
+   "kind": "pickup",
+   "stems": [
+    "cloth_shoe"
+   ],
+   "card": "g1.paint.ch01.uni.shoe"
+  },
+  "projector": {
+   "kind": "architecture"
+  }
+ }
+}

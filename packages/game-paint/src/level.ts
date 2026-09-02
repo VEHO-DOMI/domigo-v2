@@ -24,10 +24,22 @@ export const LEVEL_SCHEMA = "paintLevel@1";
 // Geometry + marker glyphs (doc 31 §5). Anything with params is an ENTITY.
 const LEGAL_GLYPHS = new Set([".", "#", "=", "/", "\\", "1", "2", "3", "4", "~", "^", "w", "V", "s", "U", "o", "*", "S", "C", "X", "B", "z"]);
 
-export type EntityRole =
-  | "chaser" | "gunner" | "flyer" | "bouncer" | "crusher" | "swarm"
-  | "platform.move" | "platform.fall" | "platform.swing"
-  | "cage" | "powerup" | "door.trigger" | "guardian"
+/** L0 · D4 · DIE EINE ROLLENLISTE.
+ *
+ *  Diese Liste stand bis zur Level-Welle ZWEIMAL: hier als Union-Typ und in
+ *  `apps/web/lib/paint-content.ts` als zod-Enum, das der Loader parst. Beide
+ *  Kopien mussten von Hand nachgezogen werden, und die zod-Seite trug die
+ *  Narben: `drained`, `classmate` und `cloth` fehlten dort je einmal, und jede
+ *  Lücke war ein 500 auf dem ausgelieferten Kapitel, kein Typfehler. Als
+ *  `as const`-Liste ist sie IMPORTIERBAR — `paint-content.ts` baut sein Enum
+ *  jetzt aus genau diesen Bytes (`z.enum(ENTITY_ROLES)`) — die Gleichheit ist
+ *  damit STRUKTURELL und braucht keinen Test; was ein Test noch beitragen kann,
+ *  ist die Gegenprobe, dass jede WIRKLICH gespielte Rolle hier steht, und die
+ *  steht in `apps/web/lib/paint-content.test.ts`. */
+export const ENTITY_ROLES = [
+  "chaser", "gunner", "flyer", "bouncer", "crusher", "swarm",
+  "platform.move", "platform.fall", "platform.swing",
+  "cage", "powerup", "door.trigger", "guardian",
   // PK-R6 · C1 (doc 44 §4 ch01): a DRAINED classroom object — one of the things
   // OSWIN rained the colour out of, standing grey where it fell. It has no
   // brain and no menace: it waits, wearing an ↑ cue, until the child steps up
@@ -35,7 +47,7 @@ export type EntityRole =
   // name and its colour and the world keeps that colour. This is the ch01
   // rebuild's field identity — restoration spread across the whole level
   // instead of six anonymous cages in one room.
-  | "drained"
+  "drained",
   // PK-R6 · D (doc 44 §3.3): THE BEWITCHED CLASSMATE. The person inside the
   // chapter's one person-cage, standing in the world as a being of her own the
   // moment the cage opens. Opening the cage does not free her: she is ghost-pale
@@ -43,13 +55,13 @@ export type EntityRole =
   // child answers each with the command that stops or guides it (six rounds,
   // §3.3). She is the only role whose redemption is EARNED IN STAGES — every
   // other being is drained-or-restored, she is restored by degrees.
-  | "classmate"
+  "classmate",
   // PK-R3b · R3-16 (doc 41 §5): the two static-state collectibles. `tip` is a
   // Regel-Seite — a rule page OSWIN tore out of the book, which shows its
   // Merksatz when picked up; `book` is a Bonus-Buch, the no-death adaptation of
   // an extra life, worth points and nothing else. Both are doc 40 §3
   // static-state: no rig, no orbit, no brain — they sit and wait.
-  | "tip" | "book"
+  "tip", "book",
   // R5-W5 · G4 (UNIFORM_SAMMELN_DESIGN §1): a piece of the school UNIFORM. The
   // nine words of the unit's „Cool clothes" page lie scattered through the
   // school house — flung apart in the fall into the book, not drained of their
@@ -59,7 +71,10 @@ export type EntityRole =
   // appears at the find, and every third piece in the ledger opens a naming
   // card. It is NOT the chapter's collectible: it feeds no trail, pays no door,
   // and carries its own counter (doc 44 §2.7 amendment).
-  | "cloth";
+  "cloth",
+] as const;
+
+export type EntityRole = (typeof ENTITY_ROLES)[number];
 
 /** The pickups that are simply TAKEN on contact (no card, no fight). */
 export const PICKUP_ROLES = new Set<EntityRole>(["tip", "book", "cloth"]);
@@ -118,6 +133,12 @@ export interface EntityParams {
    *  carries a lower-case one, so a frame that opens with it reads wrong. The
    *  frames own the sentence; this field only ever names the thing. */
   captiveDe?: string;
+  /** cage: WELCHES Blatt der Insasse trägt — der Stamm ist `captive_<key>`
+   *  (L0 · D7). Getippt, weil das Gesetz `cage-captive-key` ihn liest: die
+   *  Datei-Konvention dieser Schnittstelle ist, dass jedes Feld, das ein Gesetz
+   *  liest, hier steht, damit ein Tippfehler ein Compilerfehler wird und kein
+   *  stumm fehlendes Bild. */
+  captive?: string;
   /** classmate: WHICH cage this person was locked in (PK-R6 · D). The pointer
    *  runs from the person to the cage rather than the other way round because
    *  the sim asks it in that direction — a cage bursts and has to find who
@@ -318,6 +339,31 @@ export interface PhaseSpec {
    *  undeclared pocket whose only way out is a hazard is a softlock, not a
    *  design (Kokis Replay 2026-08-11, p1-Keller). */
   inkReturns?: InkReturnSpec[];
+  /** L0 · D5 · DIE TRAIL-WÖRTER DER PHASE.
+   *
+   *  Die `*`-Kacheln eines Raums buchstabieren ein Wort, und bis zur Level-Welle
+   *  stand dieses Wort AUSSCHLIESSLICH im Kunst-Manifest `composition.ts` —
+   *  einem Kapitel-1-Register, das für ch02–ch06 bewusst leer bleibt
+   *  (Platzhalter-Doktrin E4). Ohne Eintrag dort buchstabiert ein Trail stumm
+   *  A→Z durch, also gerade nicht das Wort, das der Raum meint. Deshalb darf die
+   *  Phase ihre Wörter selbst deklarieren; `trailWordsFor` gibt der Deklaration
+   *  Vorrang und fällt für ch01 unverändert auf `composition.ts` zurück.
+   *
+   *  Ein deklariertes Wort ist eine PRÜFBARE Zusage: das Gesetz `trail-words`
+   *  rechnet die Buchstaben gegen die Zahl der `*` im Gitter nach. */
+  words?: readonly string[];
+  /** L0 · N7 · WIE LANGE DIE KLECKSKAMMER LÄUFT (D-831 = D-927, zweimal
+   *  unabhängig gemessen).
+   *
+   *  Nur auf der BONUS-Phase gelesen. Die Uhr war eine Konstante im Motor —
+   *  35 Sekunden, plus zwei Sekunden Gnade —, und ch02 wie ch06 brauchen 30.
+   *  Ohne dieses Feld hätte die erste Kapitel-Bahn, die eine andere Zahl will,
+   *  eine Motor-Änderung bestellen müssen, also auf die Merge-Schlange warten.
+   *
+   *  Die zwei Sekunden Gnade bleiben im Motor: sie sind kein Design-Wert,
+   *  sondern die Antwort auf die Reaktionszeit eines Sechsjährigen — dieselbe
+   *  in jedem Kapitel. Ohne Angabe gilt 35 ⇒ ch01 byte-gleich. */
+  budgetSec?: number;
 }
 
 export interface PaintLevel {
@@ -336,6 +382,59 @@ export interface PaintLevel {
   whyDe: string;
   hintsDe: string[];
   collectNounDe: string;
+  /** L0 · N1 · R246 · WAS DIE `*`-ZELLEN EIGENTLICH SIND.
+   *
+   *  Der Motor zeichnet auf jeder `*`-Zelle einen BUCHSTABEN — immer, und ohne
+   *  deklarierte Wörter zählt er stur A→Z durch. Für Kapitel 1 ist das die
+   *  Fiktion selbst (die Buchstaben, die aus dem Buch gefallen sind), für jedes
+   *  andere Kapitel ist es falsch: ch02 sammelt Federn, ch03 Goldmünzen, ch04
+   *  Farbtropfen, ch05 Noten, ch06 Lupen-Funken. Die ZELLE bleibt `*` — alle
+   *  Erreichbarkeits- und Abstands-Gesetze rechnen unverändert weiter —, nur
+   *  ihr Aussehen und ihre Bedeutung hängen an diesem Feld.
+   *
+   *  Fehlt es, gilt `"letters"`: Kapitel 1 ist damit byte-gleich. Ein anderer
+   *  Wert ist ein SKIN-Name; solange kein Blatt `collect_<skin>` auf der Platte
+   *  liegt, zeichnet die Szene einen grauen Platzhalter mit dem Namen darauf
+   *  (Keen-Kunst-Gesetz: fehlende Kunst bricht nie das Spiel).
+   *
+   *  Das HUD zählt weiter über `collectNounDe` — das Wort, das das Kind liest,
+   *  war schon immer eine Deklaration. */
+  collectSkin?: string;
+  /** L0 · N2 · WIE DIE FUNDSTÜCKE DIESES KAPITELS HEISSEN (D-921).
+   *
+   *  Die `cloth`-Maschine — drei Fundstücke je Raum, Karte beim dritten Fund —
+   *  ist kapitel-neutral gebaut, ihr WORT war es nicht: „Kleider" stand an vier
+   *  Stellen hart im Code (HUD-Chip, Bilanz-Zeile, Legenden-Satz des Auftakts,
+   *  und der Ort „Schulhaus" gleich mit). ch06 benutzt dieselbe Maschine für
+   *  Hinweis-Schnipsel — „Kleider 3/9" wäre dort schlicht falsch.
+   *
+   *  VIER Felder und nicht zwei, und der Grund ist gemessen: die vier Stellen
+   *  brauchen DREI deutsche Formen. „Deine 9 Kleider sind …" (Nominativ),
+   *  „Du hast 4 von 9 Kleidern." (Dativ Plural), „Ein Kleidungsstück liegt …"
+   *  (Singular). Ein Kapitel, das nur den Nominativ deklariert, bekäme „von 9
+   *  Schnipsel" — genau die Sorte Deutsch, die das Register-Tor sonst rot färbt.
+   *  Deshalb ist jede Form DEKLARIERBAR und keine wird aus einer Regel geraten.
+   *
+   *  Die Vorgaben sind die heutigen Wörter von Kapitel 1, Zeichen für Zeichen —
+   *  ein Level ohne Deklaration liest sich unverändert. Wer nur `clothNounDe`
+   *  setzt, bekommt dieses Wort auch in den anderen beiden Rollen (für „Federn"
+   *  ist das richtig, für „Schnipsel" nicht — dann kommt `clothNounDatDe` dazu). */
+  clothNounDe?: string;
+  /** Dativ Plural („Du hast 4 von 9 …"). Ohne Angabe: `clothNounDe`, und ohne
+   *  auch das die heutige Form „Kleidern". */
+  clothNounDatDe?: string;
+  /** Singular („Ein … liegt irgendwo im …"). Ohne Angabe: `clothNounDe`, und
+   *  ohne auch das die heutige Form „Kleidungsstück". */
+  clothNounSgDe?: string;
+  /** Der ORT, über den die Fundstücke verstreut sind („das Schulhaus"). Steht
+   *  im selben Satz und war genauso hart wie das Nomen.
+   *
+   *  ⚠ Der ARTIKEL steht im Satz und nicht im Feld: „… über das ${ort}
+   *  verstreut". Ein Kapitel deklariert also ein Wort, das hinter „das" passt
+   *  („Zoo-Gelände", nicht „Zoo"). Das ist Absicht — die Alternative wäre eine
+   *  Genus-Regel im Motor, und die wäre für genau ein Wort je Kapitel teurer
+   *  Aberglaube. `check-copy-register` liest diese Felder mit. */
+  clothPlaceDe?: string;
   /** PK-R6 · C · THE OBJECTIVE SCREEN'S TITLE PLATE (doc 44 §2.6 / §3.4). The
    *  painted stem the goal card wears as its header — the chapter's own picture,
    *  with the chapter name set into the plate's lower band. DECLARED in the
@@ -355,6 +454,24 @@ export interface PaintLevel {
    *  with the other two in batch-ap and then referenced by nothing for three
    *  waves — the third sheet of a set of three, paid for and never hung. */
   rulePlate?: string;
+  /** L0 · D6 · DIE AUFTAKT-PLATTEN DES KAPITELS.
+   *
+   *  Der Auftakt — die vier Karten VOR dem ersten Raum — zeigte seine Bilder aus
+   *  drei JSX-Literalen in `PaintGame.tsx`: `auftakt_ch01_b`, `schulhaus_ch01_b`,
+   *  `schulhaus_ch01_a`, `auftakt_ch01_c`, `auftakt_ch01_d`. Ein zweites Kapitel
+   *  hätte damit sein Buch mit dem SCHULHAUS aus Kapitel 1 aufgeschlagen, ohne
+   *  dass irgendein Tor etwas zu bemängeln gehabt hätte. Dasselbe Muster wie
+   *  `goalPlate` oben: die Platte ist ein bestelltes Bild mit eigenem Namen,
+   *  also DEKLARIERT das Kapitel sie, statt sie aus der Kapitel-Id abzuleiten.
+   *  `check-paint-art` verlangt danach genau die hier genannten Blätter, und
+   *  `artScope.domArtStems` zählt sie zum beanspruchten Bestand — die Decke der
+   *  toten Kunst bleibt dadurch unverändert.
+   *
+   *  `schatten` ist eine FALLBACK-KETTE (erstes vorhandenes Blatt gewinnt), weil
+   *  die Auftakt-Karte 1 seit jeher drei Kandidaten in dieser Reihenfolge
+   *  probiert. Ein Kapitel ohne Platten fällt auf die gezeichnete Szene zurück,
+   *  wie es der Auftakt vor jeder Kunst tat. */
+  auftaktPlates?: { schatten?: readonly string[]; auftrag?: string; los?: string };
   /** PK-R3b · R3-16 (doc 41 §5): how many Regel-Seiten this chapter hides — one
    *  per grammar topic of its unit. DECLARED here and PLACED in the phases, and
    *  the `tip-honesty` law proves the two agree; the HUD and the score page then
@@ -392,6 +509,22 @@ export const allPhases = (level: PaintLevel): PhaseSpec[] => [
   ...(level.arena ? [level.arena] : []),
   ...(level.bonus ? [level.bonus] : []),
 ];
+
+/** L0 · D5 · WELCHE WÖRTER EIN BUCHSTABEN-TRAIL BUCHSTABIERT.
+ *
+ *  EINE Quelle für alle vier Verbraucher (dieses Gesetz, `PaintScene`s
+ *  Buchstaben-Bau, die Bonus-Zeremonie und die Tore). Vorrang hat die
+ *  Deklaration der Phase; fehlt sie, gilt das Kunst-Manifest wie bisher — so
+ *  bleibt Kapitel 1, dessen Wörter in `composition.ts` stehen, unverändert,
+ *  während ein Kapitel ohne Kunst-Eintrag trotzdem sein Wort buchstabiert
+ *  statt stumm A→Z durchzuzählen.
+ *
+ *  Der Aufruf braucht die Phase, nicht nur ihre Id: `allPhases` schließt Arena
+ *  und Bonusraum ein, und beide tragen Trails. */
+export const trailWordsFor = (level: PaintLevel, phaseId: string): readonly string[] | undefined => {
+  const phase = allPhases(level).find((p) => p.id === phaseId);
+  return phase?.words ?? compositionFor(level.chapter, phaseId)?.words;
+};
 
 export const parsePaintLevel = (level: PaintLevel): PaintLevel => {
   if (level.schema !== LEVEL_SCHEMA) fail(`schema must be ${LEVEL_SCHEMA}`);
@@ -1446,7 +1579,7 @@ export const checkLevelLaws = (level: PaintLevel): LawFailure[] => {
     // Note it deliberately does NOT fire on same-character pairs at a distance
     // (p9 spells SCHOOLTHINGS and carries three): a word is allowed to use a
     // letter twice. What it forbids is using it twice IN ONE BREATH.
-    const trail = letterGlyphs(ph.rows, compositionFor(level.chapter, ph.id)?.words);
+    const trail = letterGlyphs(ph.rows, trailWordsFor(level, ph.id));
     for (let i = 0; i < trail.length; i++) {
       for (let j = i + 1; j < trail.length; j++) {
         const a = trail[i]!;
@@ -1741,6 +1874,54 @@ export const checkLevelLaws = (level: PaintLevel): LawFailure[] => {
       }
     }
   }
+
+  // ── L0 · D5 · trail-words · EIN DEKLARIERTES WORT IST EINE ZUSAGE ──────────
+  //
+  // Nur für Phasen, die ihre Wörter SELBST deklarieren. `letterGlyphs` verteilt
+  // die Buchstaben zyklisch über die `*`-Zellen: sind es zu wenige Buchstaben,
+  // fängt das Wort mittendrin von vorne an, sind es zu viele, bricht es ab.
+  // Beides sieht im Spiel nach einem Wort aus und ist keines — genau die Klasse
+  // Fehler, die niemand beim Durchlaufen bemerkt. Kapitel 1, dessen Wörter im
+  // Kunst-Manifest stehen, ist bewusst NICHT betroffen: dort ist der Trail
+  // gegen die gemalte Komposition geprüft (`check-composition`), und der
+  // Bonusraum darf seine Nachlese-Phrase absichtlich wiederholen.
+  // L0 · N1: nur ein BUCHSTABEN-Trail buchstabiert etwas. Ein Kapitel, das
+  // Federn sammelt, hat kein Wort — und ein Gesetz, das dort trotzdem Buchstaben
+  // gegen Sterne rechnet, wäre ein rotes Licht ohne Aussage.
+  const zaehltBuchstaben = (level.collectSkin ?? "letters") === "letters";
+  for (const ph of allPhases(level)) {
+    if (ph.words === undefined) continue;
+    if (!zaehltBuchstaben) {
+      failures.push({ phase: ph.id, law: "trail-words", detail: `declares words ${JSON.stringify(ph.words)} but the chapter collects „${level.collectSkin}", not letters — the words would spell nothing anyone sees` });
+      continue;
+    }
+    const stars = ph.rows.reduce((n, row) => n + [...row].filter((g) => g === "*").length, 0);
+    const letters = ph.words.join("").toUpperCase().replace(/[^A-Z]/g, "").length;
+    if (letters === 0) {
+      failures.push({ phase: ph.id, law: "trail-words", detail: `words ${JSON.stringify(ph.words)} spells no letter at all — a declaration that spells nothing leaves the trail counting A→Z, which is what the declaration was for` });
+    } else if (letters !== stars) {
+      failures.push({ phase: ph.id, law: "trail-words", detail: `words ${JSON.stringify(ph.words)} spells ${letters} letter(s) but the grid carries ${stars} „*" — the trail would ${letters < stars ? "restart the word mid-trail" : "break off before the word ends"}` });
+    }
+  }
+
+  // ── L0 · D7 · cage-captive-key · DIE FORM DES INSASSEN-SCHLÜSSELS ──────────
+  //
+  // `params.captive` wird zum Blatt-Namen `captive_<key>`. Bis zur Level-Welle
+  // stand dahinter eine feste ch01-Liste von vier Schlüsseln; jedes weitere
+  // Kapitel hätte seine eigenen gebraucht, also prüft der Motor jetzt die FORM
+  // statt der Mitgliedschaft. Ein Großbuchstabe oder ein Leerzeichen ergäbe
+  // einen Dateinamen, den keine Kunst-Bestellung je trifft — und weil fehlende
+  // Kunst hier legal zurückfällt, wäre der Tippfehler unsichtbar.
+  for (const ph of allPhases(level)) {
+    for (const e of ph.entities) {
+      const key = e.params?.captive;
+      if (key === undefined) continue;
+      if (typeof key !== "string" || !/^[a-z0-9]+$/.test(key)) {
+        failures.push({ phase: ph.id, law: "cage-captive-key", detail: `cage ${e.id}: params.captive „${String(key)}" is no stem name — a captive key is lower-case letters and digits only, because it becomes the sheet captive_<key>` });
+      }
+    }
+  }
+
   failures.push(...clothLawFailures(level));
   return failures;
 };

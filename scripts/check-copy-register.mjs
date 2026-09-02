@@ -47,10 +47,16 @@
 import fs from "node:fs";
 import path from "node:path";
 
+import { paintChapters, skipLedger } from "./paint-chapters.mjs";
+
 const R = process.cwd();
+const CHAPTERS = paintChapters();
+const ledger = skipLedger();
 const LEXICON = "scripts/lexikon-at.json";
-const TASKS = "content/corpus/stories/g1.st.lost-pages/paint/ch01.tasks.v2.json";
-const LEVEL = "content/corpus/stories/g1.st.lost-pages/paint/ch01.level.json";
+// L0 · D10: die zwei ch01-Pfade sind einer Kapitel-Schleife gewichen. Das
+// Register-Gesetz gilt jeder deutschen Zeile, die ein Kind liest — und ein
+// Kapitel im Entwurf schreibt seine Zeilen JETZT, nicht erst zur Freigabe.
+// Deshalb laufen Entwürfe hier voll mit; ausgelassen wird nur, was fehlt.
 const SHELL_ROOT = "packages/game-paint/src";
 const selftest = process.argv.includes("--selftest");
 
@@ -220,20 +226,29 @@ if (selftest) {
 // ── 1 · the cards ────────────────────────────────────────────────────────────
 const CARD_FIELDS = ["showsDe", "storyDe", "colourAskDe"];
 let cardLines = 0;
-const tasks = JSON.parse(fs.readFileSync(TASKS, "utf8"));
-for (const t of tasks.items ?? []) {
-  const lines = [];
-  if (t.stimulus?.type === "entity" && t.stimulus.showsDe) lines.push(["showsDe", t.stimulus.showsDe]);
-  for (const f of CARD_FIELDS) if (typeof t[f] === "string") lines.push([f, t[f]]);
-  for (const [k, v] of Object.entries(t.hints ?? {})) if (typeof v === "string") lines.push([`hints.${k}`, v]);
-  for (const [field, text] of lines) {
-    cardLines++;
-    for (const e of registerFailures(text, field)) fail(`${TASKS} ${t.id} ${field}`, `${e.detail} — „${text}"`);
+for (const cx of CHAPTERS) {
+  if (!cx.hasTasks) { ledger.skip(cx.chapter, "karten-register", `kein ${cx.chapter}.tasks.v2.json`); continue; }
+  const rel = path.relative(R, cx.tasksPath);
+  const tasks = JSON.parse(fs.readFileSync(cx.tasksPath, "utf8"));
+  for (const t of tasks.items ?? []) {
+    const lines = [];
+    if (t.stimulus?.type === "entity" && t.stimulus.showsDe) lines.push(["showsDe", t.stimulus.showsDe]);
+    for (const f of CARD_FIELDS) if (typeof t[f] === "string") lines.push([f, t[f]]);
+    for (const [k, v] of Object.entries(t.hints ?? {})) if (typeof v === "string") lines.push([`hints.${k}`, v]);
+    for (const [field, text] of lines) {
+      cardLines++;
+      for (const e of registerFailures(text, field)) fail(`${rel} ${t.id} ${field}`, `${e.detail} — „${text}"`);
+    }
   }
 }
 
 // ── 2 · the level ────────────────────────────────────────────────────────────
-const LEVEL_FIELDS = /(^|\.)(name|goalDe|whyDe|hintsDe|captiveDe|topicDe|merksatzDe|erklaerungDe)(\[\d+\])?$/;
+// L0 · N2: die vier Fundstück-Wörter kommen dazu. Sie sind seit der Level-Welle
+// DEKLARIERT statt hart im Code (`clothNounDe` & Co.) — also stehen sie in einer
+// Inhalts-Datei und müssen wie jede andere deutsche Zeile durchs Register. Ohne
+// diese Zeile wäre die Verlagerung aus dem Code eine LOCKERUNG gewesen: hart
+// codiert las `check-paint-copy` sie mit, deklariert läse sie niemand.
+const LEVEL_FIELDS = /(^|\.)(name|goalDe|whyDe|hintsDe|captiveDe|topicDe|merksatzDe|erklaerungDe|collectNounDe|clothNounDe|clothNounDatDe|clothNounSgDe|clothPlaceDe)(\[\d+\])?$/;
 const strings = function* (node, at = "") {
   if (typeof node === "string") { yield [at, node]; return; }
   if (Array.isArray(node)) { for (const [i, v] of node.entries()) yield* strings(v, `${at}[${i}]`); return; }
@@ -242,11 +257,13 @@ const strings = function* (node, at = "") {
   }
 };
 let levelLines = 0;
-const level = JSON.parse(fs.readFileSync(LEVEL, "utf8"));
-for (const [at, text] of strings(level)) {
-  if (!LEVEL_FIELDS.test(at)) continue;
-  levelLines++;
-  for (const e of registerFailures(text, at.split(".").pop().replace(/\[\d+\]$/, ""))) fail(`${LEVEL} ${at}`, `${e.detail} — „${text}"`);
+for (const cx of CHAPTERS) {
+  const rel = path.relative(R, cx.levelPath);
+  for (const [at, text] of strings(cx.level)) {
+    if (!LEVEL_FIELDS.test(at)) continue;
+    levelLines++;
+    for (const e of registerFailures(text, at.split(".").pop().replace(/\[\d+\]$/, ""))) fail(`${rel} ${at}`, `${e.detail} — „${text}"`);
+  }
 }
 
 // ── 3 · the shell ────────────────────────────────────────────────────────────
@@ -287,6 +304,12 @@ if (registerFailures("Der Füller steht grau da", "showsDe").length === 0) {
 console.log(`  ${proseState}`);
 if (failures > 0) {
   console.error(`\ncheck-copy-register: ${failures} violation(s) over ${cardLines} card lines · ${levelLines} level lines · ${shellLines} shell lines`);
-  process.exit(1);
 }
-console.log(`check-copy-register: OK — ${cardLines} card lines, ${levelLines} level lines and ${shellLines} shell lines are all in the Austrian register (${entries.length} Begriffe, ${patterns.length} Muster)`);
+// ★ L0 · DER SKIP-BERICHT STEHT VOR DEM URTEIL, NICHT DANACH.
+// Ein blinder Leser fand ihn hinter `process.exit(1)`: im ROTEN Lauf wurde er
+// nie gedruckt — ausgerechnet dann, wenn jemand wissen muss, welche Gesetze
+// mangels Eingaben gar nicht liefen. Der Mechanismus gegen stille Auslassung
+// war selbst still, sobald es darauf ankam.
+ledger.print();
+if (failures > 0) process.exit(1);
+console.log(`check-copy-register: OK — ${CHAPTERS.length} Kapitel: ${cardLines} card lines, ${levelLines} level lines and ${shellLines} shell lines are all in the Austrian register (${entries.length} Begriffe, ${patterns.length} Muster)`);

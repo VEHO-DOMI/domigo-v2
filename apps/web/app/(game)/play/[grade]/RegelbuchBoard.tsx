@@ -41,9 +41,14 @@ import {
   type RegelbuchEntry,
 } from "@/lib/regelbuch";
 
-const CHAPTER_NAMES: Record<string, string> = {
-  ch01: "Kapitel 1 — Zeit für die Schule",
-};
+/** L0 · D11 · DIE KAPITELNAMEN KOMMEN AUS DEN KAPITELN.
+ *
+ *  Hier stand eine Tabelle mit genau einem Eintrag (`ch01`). Jedes weitere
+ *  Kapitel wäre auf dem Brett als »ch02« erschienen — der Dateiname, den ein
+ *  Kind nie sehen sollte — und dieselbe Tabelle wäre für fünf Kapitel-Bahnen
+ *  eine heisse Datei geworden, in die alle gleichzeitig hineinwollen. Die
+ *  Namen kommen jetzt aus den Level-Dateien selbst; die Nabe reicht sie
+ *  herein, weil DIESE Komponente im Browser läuft und keine Platte sieht. */
 
 /** The ink family of the painted cards, written once. The hub sits outside the
  *  overlay sheet's scope and cannot read its `--pb-*` tokens, so they are
@@ -278,7 +283,7 @@ const Stummel = (): React.ReactElement => (
   </div>
 );
 
-export default function RegelbuchBoard(): React.ReactElement | null {
+export default function RegelbuchBoard({ chapterNames = {} }: { chapterNames?: Record<string, string> }): React.ReactElement | null {
   // localStorage read through React's own external-store API: the server (and
   // the first paint) sees an empty book, the client swaps in the real one, and
   // the snapshot is reference-stable so this cannot loop.
@@ -315,7 +320,7 @@ export default function RegelbuchBoard(): React.ReactElement | null {
         return (
           <div key={chapter} style={{ marginBottom: 14 }}>
             <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "#a8926a", margin: "0 0 6px" }}>
-              {CHAPTER_NAMES[chapter] ?? chapter}
+              {chapterNames[chapter] ?? chapter}
             </div>
             <Buchbild />
             <div style={{ display: "grid", gap: 8 }}>

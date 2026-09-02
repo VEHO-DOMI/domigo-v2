@@ -7,7 +7,7 @@ import { describe, expect, it } from "vitest";
 import fs from "node:fs";
 import path from "node:path";
 import { domArtStems } from "../artScope.ts";
-import { AUFTAKT, auftaktChain, auftaktExit, auftaktPosition, auftaktStep, auftaktTasks, UNIFORM_DE, uniformLegend, uniformLegendLine } from "./auftakt.ts";
+import { AUFTAKT, auftaktChain, auftaktExit, auftaktPosition, auftaktStep, auftaktTasks, UNIFORM_DE, clothWordsDe, uniformLegend, uniformLegendLine } from "./auftakt.ts";
 
 describe("R5-W2 · J1-B · the opening's chain", () => {
   it("is FIVE beats, and beat 1 is still called `goal`", () => {
@@ -302,5 +302,48 @@ describe("R5-W7 · D5 · die Legende und was sie zum Zeichnen braucht", () => {
     for (const t of teile) {
       expect(UNIFORM_DE[t.wordEn], `„${t.wordEn}" hat kein deutsches Wort`).toBeDefined();
     }
+  });
+});
+
+// ── L0 · N2 · DAS WORT DER FUNDSTÜCKE GEHÖRT DEM KAPITEL (D-921) ─────────────
+//
+// „Kleider" stand an vier Stellen hart im Code. Die `cloth`-Maschine selbst ist
+// kapitel-neutral — ch06 sammelt mit ihr Hinweis-Schnipsel, und „Kleider 3/9"
+// wäre dort einfach falsch. Beide Richtungen stehen hier: dass Kapitel 1 sich
+// UNVERÄNDERT liest, und dass ein anderes Wort wirklich durchkommt.
+describe("L0 · N2 · clothWordsDe", () => {
+  it("ohne Deklaration sind es Kapitel 1s eigene Wörter — Zeichen für Zeichen", () => {
+    expect(clothWordsDe({})).toEqual({
+      pl: "Kleider", plDat: "Kleidern", sg: "Kleidungsstück", ort: "Schulhaus",
+    });
+  });
+
+  it("und die fünf Sätze lesen sich unverändert", () => {
+    const w = clothWordsDe({});
+    expect(uniformLegendLine(1, 0, w)).toBe("Ein Kleidungsstück liegt irgendwo im Schulhaus.");
+    expect(uniformLegendLine(1, 1, w)).toBe("Du hast es.");
+    expect(uniformLegendLine(9, 0, w)).toBe("Deine 9 Kleider sind über das Schulhaus verstreut.");
+    expect(uniformLegendLine(9, 4, w)).toBe("Du hast 4 von 9 Kleidern.");
+    expect(uniformLegendLine(9, 9, w)).toBe("Du hast alle 9 Kleider.");
+  });
+
+  it("ein Kapitel deklariert alle vier Wörter und bekommt sie", () => {
+    const w = clothWordsDe({
+      clothNounDe: "Schnipsel", clothNounDatDe: "Schnipseln",
+      clothNounSgDe: "Schnipsel", clothPlaceDe: "Büro",
+    });
+    expect(uniformLegendLine(9, 4, w)).toBe("Du hast 4 von 9 Schnipseln.");
+    expect(uniformLegendLine(9, 0, w)).toBe("Deine 9 Schnipsel sind über das Büro verstreut.");
+    expect(uniformLegendLine(1, 0, w)).toBe("Ein Schnipsel liegt irgendwo im Büro.");
+  });
+
+  it("★ DER GRUND FÜR DIE VIER FELDER: der Dativ ist nicht der Nominativ", () => {
+    // Wer nur das eine Wort deklariert, bekommt es überall — für „Federn" ist
+    // das richtig, für „Schnipsel" nicht. Genau deshalb ist jede Form
+    // deklarierbar und keine wird aus einer Endungs-Regel geraten.
+    expect(uniformLegendLine(9, 4, clothWordsDe({ clothNounDe: "Federn" })))
+      .toBe("Du hast 4 von 9 Federn.");
+    expect(uniformLegendLine(9, 4, clothWordsDe({ clothNounDe: "Schnipsel" })))
+      .toBe("Du hast 4 von 9 Schnipsel."); // grammatisch zu wenig ⇒ clothNounDatDe
   });
 });

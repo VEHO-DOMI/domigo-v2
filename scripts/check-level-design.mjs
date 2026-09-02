@@ -28,28 +28,38 @@
 import fs from "node:fs";
 import path from "node:path";
 
-const ROOT = path.resolve(import.meta.dirname, "..");
-const LEVEL = path.join(ROOT, "content/corpus/stories/g1.st.lost-pages/paint/ch01.level.json");
-const DOSSIERS = path.join(ROOT, "docs/design/g1/paint/ch01-dossiers-v2");
-const WORDBANK = path.join(ROOT, "content/corpus/units/g1-u01/wordbank.json");
-// R5-W4 · G3: block 2 stopped believing `kind:"cards"` and started measuring it.
-const TASKS = path.join(ROOT, "content/corpus/stories/g1.st.lost-pages/paint/ch01.tasks.v2.json");
+// L0 · D10 · DIESES TOR LAEUFT JETZT JEDES KAPITEL.
+//
+// Hier standen vier fest verdrahtete ch01-Pfade. Sie waren nicht falsch —
+// es gab genau ein Kapitel — aber sie waren die Sorte Richtigkeit, die
+// beim zweiten Kapitel still zur Luege wird: ein `ch02.level.json` haette
+// neben diesem Tor gelegen und waere von ihm NIE gelesen worden, und das
+// Tor haette weiter »OK« gedruckt. Die Kapitel-Liste kommt jetzt aus
+// `paint-chapters.mjs` (die eine geteilte Aufloesung), und jedes Kapitel
+// bringt seine eigenen Eingaben mit.
+import { paintChapters, skipLedger } from "./paint-chapters.mjs";
 
-const level = JSON.parse(fs.readFileSync(LEVEL, "utf8"));
-const phases = [...level.phases, ...(level.bonus ? [level.bonus] : []), ...(level.arena ? [level.arena] : [])];
+const ROOT = path.resolve(import.meta.dirname, "..");
+
 const fails = [];
+const ledger = skipLedger();
 
 // ── 1 · STEM-DEDUP ───────────────────────────────────────────────────────────
 const BEING_ROLES = new Set(["chaser", "gunner", "flyer", "bouncer", "crusher", "guardian", "drained"]);
-const seenStems = new Map();
-for (const ph of phases) {
-  for (const e of ph.entities) {
-    if (!BEING_ROLES.has(e.role)) continue;
-    const prev = seenStems.get(e.skin);
-    if (prev) fails.push(`dedup: Stem "${e.skin}" doppelt — ${prev} UND ${ph.id}/${e.id} (B8)`);
-    else seenStems.set(e.skin, `${ph.id}/${e.id}`);
+/** @returns {{fails: string[], stems: Map<string,string>}} */
+const dedupFails = (phases, ch) => {
+  const out = [];
+  const seenStems = new Map();
+  for (const ph of phases) {
+    for (const e of ph.entities) {
+      if (!BEING_ROLES.has(e.role)) continue;
+      const prev = seenStems.get(e.skin);
+      if (prev) out.push(`${ch} dedup: Stem "${e.skin}" doppelt — ${prev} UND ${ph.id}/${e.id} (B8)`);
+      else seenStems.set(e.skin, `${ph.id}/${e.id}`);
+    }
   }
-}
+  return { fails: out, stems: seenStems };
+};
 
 // ── 2 · VOKABEL-ABDECKUNG ────────────────────────────────────────────────────
 // Spiegel von README §Abdeckung (Vokabel → Klasse [+ erwartete Stems]).
@@ -78,62 +88,22 @@ for (const ph of phases) {
 // eine Karte, die kein Kind je erreichen kann, zum harten Fehler. Solange dieses
 // Tor grün ist, ist jede Karte der Datei servierbar — Prüfung durch Konstruktion
 // statt durch eine zweite, driftende Kopie des Routers.
-// Exportiert, damit ein Tamper die Tabelle per SCHLÜSSEL verfälschen kann statt
-// per Textsuche — ein Tamper, der die falsche Stelle trifft, beweist nichts.
-export const CLAIMS = {
-  "pencil": { kind: "being", stems: ["pencil"] },
-  "rubber": { kind: "being", stems: ["eraser"] },
-  "school bag": { kind: "being", stems: ["obj_schoolbag", "ranzen", "satchelswing"] },
-  "book": { kind: "thing", stems: ["obj_book"] },
-  "pen": { kind: "being", stems: ["pen"] },
-  "board": { kind: "being", stems: ["paintbox", "tafel"] },
-  "desk": { kind: "thing", stems: ["obj_desk"] },
-  "pencil case": { kind: "architecture", stems: ["pencilcase"] }, // Merles Person-Käfig
-  "ruler": { kind: "architecture", stems: ["ruler"] }, // Fähre (Plattform)
-  "exercise book": { kind: "being", stems: ["heft"] },
-  "scissors": { kind: "debt" }, // D-13 (Platzhalter obj_pencil bis Codex)
-  "chair": { kind: "debt" }, // D-13 (Käfig-Insasse, B20-Karte)
-  "door": { kind: "architecture" },
-  "window": { kind: "architecture" },
-  "tablet": { kind: "cards" },
-  "sound system": { kind: "cards" },
-  // ── R5-W5 · G4 · DIE UNIFORM IST JETZT IM LEVEL ────────────────────────────
-  // Bis heute trugen diese neun eine datierte Ausnahme („Welle 5 / Uniform").
-  // Welle 5 hat die Teile gebaut, also wird die Brücke eingelöst und durch den
-  // Anspruchstyp ersetzt, den das Design dafür vorgesehen hat (§3): `pickup`
-  // prüft BEIDE Hälften, weil jede einzeln wertlos ist — ein Sammelobjekt ohne
-  // Karte ist Dekoration, eine Karte ohne Sammelobjekt fragt nach etwas, das das
-  // Kind nie gesehen hat. Der Stem muss als Rolle `cloth` im Level liegen UND das
-  // Wort muss auf der GENANNTEN Karte antwortbar sein (nicht irgendwo).
-  ...Object.fromEntries(
-    ["hairband", "sunglasses", "hat", "school tie", "shirt", "sweater", "skirt", "socks", "shoe"]
-      .map((en) => [en, {
-        kind: "pickup",
-        stems: [`cloth_${en.replace(/ /g, "_")}`],
-        card: `g1.paint.ch01.uni.${en.replace(/ /g, "-")}`,
-      }]),
-  ),
-  // ── R5-W6 · G5 · DER PROJEKTOR IST KEIN KLEIDUNGSSTÜCK (R148) ──────────────
-  // Er stand nur deshalb in derselben datierten Ausnahme wie die neun
-  // Kleidungswörter, weil er dieselbe Lücke teilte — G4 hat die neun eingelöst
-  // und den Projektor als offenes Routing an den Architekten zurückgegeben.
-  // Aufgelöst, ohne Ausnahme und ohne neue Karte: der Projektor IST im Raum, als
-  // gebautes Gelände. `ch01.level.json` p2 trägt den Turm als solide Kacheln in
-  // den Spalten 55–56 über die Reihen 1–7 (selbst nachgezählt, nicht aus dem
-  // Dossier übernommen; p2.md nennt ihn „PROJEKTOR-TURM + KAVERNE — Turm Voll
-  // r1–7 c55–56"), und sein Kegel stiftet den Zahlen-Grund des Spießrutenlaufs.
-  // Damit ist er dasselbe wie `door` und `window`: Welt-Architektur, die ein Kind
-  // sieht und benennt, ohne dass eine Karte sie abfragt oder ein Sammelobjekt
-  // dafür liegt. Kein `pickup` (es gibt nichts aufzuheben), kein `cards` (keine
-  // der 70 Karten lässt das Wort ANTWORTEN, nachgemessen) — und deshalb auch
-  // keine Ausnahme mehr, die 2026-12-31 als rotes Tor zurückkäme.
-  // Die Ehrlichkeits-Grenze dieser Klasse steht im Register (D-25, `ruler`):
-  // `architecture` prüft NICHTS, also darf sie nur tragen, was wirklich im Raum
-  // steht. Für den Projektor ist genau das nachgeschlagen worden.
-  "projector": { kind: "architecture" }, // Projektor-Turm p2 c55–56 / r1–7
-};
-const wordbank = JSON.parse(fs.readFileSync(WORDBANK, "utf8"));
-const allSkins = new Set(phases.flatMap((ph) => ph.entities.map((e) => e.skin)));
+// L0 · D10 · DIE ANSPRUCHS-TABELLE LEBT JETZT NEBEN DEM KAPITEL.
+//
+// Hier stand die Tabelle »Vokabel → Klasse« von ch01, 26 Zeilen lang, mitten im
+// Tor. Für ein Kapitel war das die kürzeste ehrliche Form; für fünf wäre es ein
+// Zusammenstoss gewesen, denn jede Kapitel-Bahn hätte in DIESELBE Datei
+// schreiben müssen — und wer als Letzter merged, hätte die Ansprüche der
+// anderen im Konflikt gehabt. Die Tabelle liegt jetzt als
+// `docs/design/g1/paint/chNN-dossiers-v2/claims.json` neben den Dossiers, aus
+// denen sie ohnehin abgeschrieben ist (README §Abdeckung). Die BEDEUTUNG der
+// Klassen bleibt hier, in `claimFails` — sie ist Gesetz und kein Inhalt.
+//
+// Geladen statt importiert, damit ein Tamper die Tabelle per SCHLÜSSEL
+// verfälschen kann statt per Textsuche: ein Tamper, der die falsche Stelle
+// trifft, beweist nichts.
+export const claimsOf = (cx) =>
+  cx.hasClaims ? (JSON.parse(fs.readFileSync(cx.claimsPath, "utf8")).claims ?? {}) : null;
 
 /** Was ein Kind auf dieser Karte PRODUZIEREN muss. Bewusst schärfer als
  *  variety.ts `answerSurfaceOf`: dort zählt eine oddone-Karte ALLE ihre Items
@@ -228,71 +198,89 @@ export const claimFails = (claims, entries, skins, items, today, clothStems = ne
 // `claimFails` bleibt rein, damit sein Selbsttest nicht mit dem Kalender rottet
 // (dieselbe Trennung wie variety.ts / check-game-tasks TODAY).
 const TODAY = new Date().toISOString().slice(0, 10);
-fails.push(
-  ...claimFails(
-    CLAIMS,
+
+/** Block 2 für EIN Kapitel. Braucht drei Eingaben (Ansprüche, Wortbank, Karten);
+ *  fehlt eine, wird das Gesetz NAMENTLICH übersprungen statt still. */
+const coverageFails = (cx) => {
+  const claims = claimsOf(cx);
+  if (claims === null) { ledger.skip(cx.chapter, "abdeckung", `keine ${path.relative(ROOT, cx.claimsPath)}`); return []; }
+  if (!cx.wordbankPath || !fs.existsSync(cx.wordbankPath)) { ledger.skip(cx.chapter, "abdeckung", `keine Wortbank für Unit ${cx.unit ?? "?"}`); return []; }
+  if (!cx.hasTasks) { ledger.skip(cx.chapter, "abdeckung", `kein ${cx.chapter}.tasks.v2.json`); return []; }
+  const wordbank = JSON.parse(fs.readFileSync(cx.wordbankPath, "utf8"));
+  const allSkins = new Set(cx.phases.flatMap((ph) => ph.entities.map((e) => e.skin)));
+  return claimFails(
+    claims,
     wordbank.entries,
     allSkins,
-    JSON.parse(fs.readFileSync(TASKS, "utf8")).items,
+    JSON.parse(fs.readFileSync(cx.tasksPath, "utf8")).items,
     TODAY,
     // nur die Stems, die wirklich als Rolle `cloth` liegen — `pickup` fragt nach
     // dem Sammelobjekt, nicht nach irgendeinem Stem gleichen Namens
-    new Set(phases.flatMap((ph) => ph.entities.filter((e) => e.role === "cloth").map((e) => e.skin))),
-  ),
-);
+    new Set(cx.phases.flatMap((ph) => ph.entities.filter((e) => e.role === "cloth").map((e) => e.skin))),
+  ).map((f) => `${cx.chapter} ${f}`);
+};
 
 // ── 3 · MANIFEST-ANKER ───────────────────────────────────────────────────────
 const DOSSIER_OF = { p1: "p1.md", p2: "p2.md", p3: "p3.md", p9: "p9.md", p4: "arena.md" };
-for (const ph of phases) {
-  const df = DOSSIER_OF[ph.id];
-  if (!df) { fails.push(`manifest: Phase ${ph.id} hat keine Dossier-Zuordnung`); continue; }
-  const dp = path.join(DOSSIERS, df);
-  if (!fs.existsSync(dp)) { fails.push(`manifest: ${df} fehlt für Phase ${ph.id}`); continue; }
-  const text = fs.readFileSync(dp, "utf8");
-  // Manifest-Zeilen: | <id> | <Was> | <Anker> | … — id aus Spalte 1, die
-  // (c,r)-Anker aus der ANKER-Spalte (Spalte 3; die Was-Spalte nennt oft
-  // fremde Zellen wie den Exit-Glyph). Sammelzeilen "name-1/2/3" tragen ihre
-  // Anker in Reihenfolge in derselben Zelle.
-  const anchors = new Map();
-  for (const line of text.split("\n")) {
-    const cells = line.split("|");
-    if (cells.length < 4) continue;
-    const idm = (cells[1] ?? "").trim().match(/^([a-z0-9-]+(?:\/\d+)*)/i);
-    if (!idm || !idm[1].includes("-")) continue;
-    const pairs = [...(cells[3] ?? "").matchAll(/\(\s*(\d+)\s*,\s*(\d+)\s*\)/g)]
-      .map((m) => ({ c: Number(m[1]), r: Number(m[2]) }));
-    if (pairs.length === 0) continue;
-    const multi = idm[1].match(/^([a-z0-9-]+-)(\d+)((?:\/\d+)+)$/i);
-    if (multi) {
-      const nums = [multi[2], ...multi[3].split("/").filter(Boolean)];
-      nums.forEach((n, i) => { if (pairs[i]) anchors.set(`${multi[1]}${n}`, pairs[i]); });
-    } else {
-      anchors.set(idm[1], pairs[0]);
+/** Block 3 für EIN Kapitel: jede Entity hat eine Manifest-Zeile MIT Anker, und
+ *  jede Manifest-Zeile trifft etwas, das es im Level gibt. Ein Kapitel ohne
+ *  Dossier-Ordner wird namentlich übersprungen — ein Entwurf hat die Räume oft
+ *  eher als ihre Beschreibung. */
+const manifestFails = (cx) => {
+  const out = [];
+  if (!cx.hasDossiers) { ledger.skip(cx.chapter, "manifest", `kein ${path.relative(ROOT, cx.dossiers)}/`); return out; }
+  for (const ph of cx.phases) {
+    const df = DOSSIER_OF[ph.id];
+    if (!df) { out.push(`${cx.chapter} manifest: Phase ${ph.id} hat keine Dossier-Zuordnung`); continue; }
+    const dp = path.join(cx.dossiers, df);
+    if (!fs.existsSync(dp)) { out.push(`${cx.chapter} manifest: ${df} fehlt für Phase ${ph.id}`); continue; }
+    const text = fs.readFileSync(dp, "utf8");
+    // Manifest-Zeilen: | <id> | <Was> | <Anker> | … — id aus Spalte 1, die
+    // (c,r)-Anker aus der ANKER-Spalte (Spalte 3; die Was-Spalte nennt oft
+    // fremde Zellen wie den Exit-Glyph). Sammelzeilen "name-1/2/3" tragen ihre
+    // Anker in Reihenfolge in derselben Zelle.
+    const anchors = new Map();
+    for (const line of text.split("\n")) {
+      const cells = line.split("|");
+      if (cells.length < 4) continue;
+      const idm = (cells[1] ?? "").trim().match(/^([a-z0-9-]+(?:\/\d+)*)/i);
+      if (!idm || !idm[1].includes("-")) continue;
+      const pairs = [...(cells[3] ?? "").matchAll(/\(\s*(\d+)\s*,\s*(\d+)\s*\)/g)]
+        .map((m) => ({ c: Number(m[1]), r: Number(m[2]) }));
+      if (pairs.length === 0) continue;
+      const multi = idm[1].match(/^([a-z0-9-]+-)(\d+)((?:\/\d+)+)$/i);
+      if (multi) {
+        const nums = [multi[2], ...multi[3].split("/").filter(Boolean)];
+        nums.forEach((n, i) => { if (pairs[i]) anchors.set(`${multi[1]}${n}`, pairs[i]); });
+      } else {
+        anchors.set(idm[1], pairs[0]);
+      }
+    }
+    for (const e of ph.entities) {
+      const a = anchors.get(e.id);
+      if (!a) {
+        // Zweit-Träger einer fremden Zeile (z. B. »merle hidden (65,13)« in der
+        // Käfig-Zeile) oder ein §10-Eintrag außerhalb der Tabelle (tafel):
+        // genügt, wenn IRGENDEINE Dossier-Zeile id UND exakten Anker trägt.
+        const carried = text.split("\n").some((l) => l.includes(e.id) && l.includes(`(${e.c},${e.r})`));
+        if (!carried) out.push(`${cx.chapter} manifest: ${ph.id}/${e.id} hat keine Manifest-Zeile mit Anker in ${df} (B11)`);
+        continue;
+      }
+      if (a.c !== e.c || a.r !== e.r) {
+        out.push(`${cx.chapter} manifest: ${ph.id}/${e.id} Anker (${a.c},${a.r}) ≠ Level (${e.c},${e.r}) (B11)`);
+      }
+    }
+    for (const [id, a] of anchors) {
+      if (ph.entities.some((e) => e.id === id)) continue;
+      // Glyph-Zeilen (Krakel-Checkpoint, Exit): der Anker muss im Grid als
+      // Marker-Glyph stehen — verifiziert, nicht verziehen.
+      const glyph = ph.rows[a.r]?.[a.c] ?? ".";
+      if ("SCXB*".includes(glyph)) continue;
+      out.push(`${cx.chapter} manifest: ${df}-Zeile "${id}" existiert nicht im Level (B11)`);
     }
   }
-  for (const e of ph.entities) {
-    const a = anchors.get(e.id);
-    if (!a) {
-      // Zweit-Träger einer fremden Zeile (z. B. »merle hidden (65,13)« in der
-      // Käfig-Zeile) oder ein §10-Eintrag außerhalb der Tabelle (tafel):
-      // genügt, wenn IRGENDEINE Dossier-Zeile id UND exakten Anker trägt.
-      const carried = text.split("\n").some((l) => l.includes(e.id) && l.includes(`(${e.c},${e.r})`));
-      if (!carried) fails.push(`manifest: ${ph.id}/${e.id} hat keine Manifest-Zeile mit Anker in ${df} (B11)`);
-      continue;
-    }
-    if (a.c !== e.c || a.r !== e.r) {
-      fails.push(`manifest: ${ph.id}/${e.id} Anker (${a.c},${a.r}) ≠ Level (${e.c},${e.r}) (B11)`);
-    }
-  }
-  for (const [id, a] of anchors) {
-    if (ph.entities.some((e) => e.id === id)) continue;
-    // Glyph-Zeilen (Krakel-Checkpoint, Exit): der Anker muss im Grid als
-    // Marker-Glyph stehen — verifiziert, nicht verziehen.
-    const glyph = ph.rows[a.r]?.[a.c] ?? ".";
-    if ("SCXB*".includes(glyph)) continue;
-    fails.push(`manifest: ${df}-Zeile "${id}" existiert nicht im Level (B11)`);
-  }
-}
+  return out;
+};
 
 // ── 4 · SCHWELLEN-ANKER (B1 · Checkpoint-Doktrin, Koki 2026-08-11) ───────────
 // level.ts hält die PHYSIK (Checkpoint steht hinter der Tinten-Passage, dicht,
@@ -443,6 +431,22 @@ export const letterAnchorFails = (lvl, dossierDir, spellOf = () => "") => {
 // Regex-über-Markdown stirbt ein Gate lautlos.
 if (process.argv.includes("--selftest")) {
   const os = await import("node:os");
+  // L0 · D10 · DIE ECHT-DATEN-FÄLLE BRAUCHEN EIN ECHTES KAPITEL. Sie hingen an
+  // den modulweiten ch01-Bindungen, die es nicht mehr gibt. Genommen wird das
+  // erste FERTIGE Kapitel (nie ein Entwurf): ein Entwurf hat per Definition
+  // keine vollständigen Eingaben, und ein Selbsttest, der auf halben Daten
+  // grün wird, hat nichts bewiesen. Fehlt ein fertiges Kapitel, sagt der
+  // Selbsttest das laut, statt seine Fälle stumm zu überspringen.
+  const REAL = paintChapters().find((c) => !c.draft && c.hasClaims && c.hasTasks && c.wordbankPath && fs.existsSync(c.wordbankPath));
+  if (!REAL) {
+    console.error("check-level-design --selftest: kein fertiges Kapitel mit Ansprüchen, Karten und Wortbank — die Echt-Daten-Fälle können nicht laufen");
+    process.exit(1);
+  }
+  const CLAIMS = claimsOf(REAL);
+  const wordbank = JSON.parse(fs.readFileSync(REAL.wordbankPath, "utf8"));
+  const allSkins = new Set(REAL.phases.flatMap((ph) => ph.entities.map((e) => e.skin)));
+  const phases = REAL.phases;
+  const TASKS = REAL.tasksPath;
   const tmp = fs.mkdtempSync(path.join(os.tmpdir(), "cld-selftest-"));
   const rows = ["####################", ...Array.from({ length: 17 }, () => "....................")];
   rows.push("..S.........C.X.....", `${"#".repeat(8)}www${"#".repeat(9)}`, `${"#".repeat(8)}www${"#".repeat(9)}`);
@@ -591,37 +595,93 @@ if (process.argv.includes("--selftest")) {
 // B11 verbietet, und sie kam bisher durch jedes Gate.
 // Spalten des Begründungs-Manifests: | id | Was | Anker | Fiktion | Mechanik | Gesetz | Kunst |
 const EMPTY_CELL = /^(|—|-|–|\?+|tbd|TBD|n\/a)$/;
-for (const ph of phases) {
-  const df = DOSSIER_OF[ph.id];
-  if (!df) continue;
-  const dp = path.join(DOSSIERS, df);
-  if (!fs.existsSync(dp)) continue;
-  const rowOf = new Map();
-  for (const line of fs.readFileSync(dp, "utf8").split("\n")) {
-    const cells = line.split("|");
-    if (cells.length < 7) continue;
-    const idm = (cells[1] ?? "").trim().match(/^([a-z0-9-]+)/i);
-    if (!idm || !idm[1].includes("-")) continue;
-    rowOf.set(idm[1], { fiktion: (cells[4] ?? "").trim(), mechanik: (cells[5] ?? "").trim() });
+/** Block 5 für EIN Kapitel. */
+const purposeFails = (cx) => {
+  const out = [];
+  if (!cx.hasDossiers) { ledger.skip(cx.chapter, "zweck", `kein ${path.relative(ROOT, cx.dossiers)}/`); return out; }
+  for (const ph of cx.phases) {
+    const df = DOSSIER_OF[ph.id];
+    if (!df) continue;
+    const dp = path.join(cx.dossiers, df);
+    if (!fs.existsSync(dp)) continue;
+    const rowOf = new Map();
+    for (const line of fs.readFileSync(dp, "utf8").split("\n")) {
+      const cells = line.split("|");
+      if (cells.length < 7) continue;
+      const idm = (cells[1] ?? "").trim().match(/^([a-z0-9-]+)/i);
+      if (!idm || !idm[1].includes("-")) continue;
+      rowOf.set(idm[1], { fiktion: (cells[4] ?? "").trim(), mechanik: (cells[5] ?? "").trim() });
+    }
+    for (const e of ph.entities) {
+      const row = rowOf.get(e.id);
+      if (!row) continue; // Block 3 meldet fehlende Zeilen bereits
+      if (EMPTY_CELL.test(row.mechanik)) {
+        out.push(`${cx.chapter} zweck: ${ph.id}/${e.id} nennt keinen MECHANISCHEN Zweck in ${df} §3 — jedes Element braucht seinen Zweck (B11)`);
+      }
+      if (EMPTY_CELL.test(row.fiktion)) {
+        out.push(`${cx.chapter} zweck: ${ph.id}/${e.id} nennt keine FIKTION in ${df} §3 — warum steht es da, in der Welt? (B11)`);
+      }
+    }
   }
-  for (const e of ph.entities) {
-    const row = rowOf.get(e.id);
-    if (!row) continue; // Block 3 meldet fehlende Zeilen bereits
-    if (EMPTY_CELL.test(row.mechanik)) {
-      fails.push(`zweck: ${ph.id}/${e.id} nennt keinen MECHANISCHEN Zweck in ${df} §3 — jedes Element braucht seinen Zweck (B11)`);
-    }
-    if (EMPTY_CELL.test(row.fiktion)) {
-      fails.push(`zweck: ${ph.id}/${e.id} nennt keine FIKTION in ${df} §3 — warum steht es da, in der Welt? (B11)`);
-    }
+  return out;
+};
+
+// ── DER TREIBER · JEDES KAPITEL, IN DERSELBEN REIHENFOLGE ────────────────────
+//
+// Was für ein ENTWURF gilt (L0 · D10): die Gesetze, deren Eingaben dastehen,
+// laufen. Was fehlt, wird über `ledger` NAMENTLICH gemeldet und unten neben der
+// OK-Zeile gedruckt. Eine stille Auslassung ist von einem defekten Tor nicht
+// zu unterscheiden — und ein Tor, das nur die Kapitel kennt, für die es je
+// gelaufen ist, ist genau die Klasse, die diese Bahn schliesst.
+const CHAPTERS = paintChapters();
+let stemCount = 0;
+let vocabCount = 0;
+let phaseCount = 0;
+for (const cx of CHAPTERS) {
+  const dedup = dedupFails(cx.phases, cx.chapter);
+  stemCount += dedup.stems.size;
+  phaseCount += cx.phases.length;
+  fails.push(...dedup.fails);
+  fails.push(...coverageFails(cx));
+  const claims = claimsOf(cx);
+  if (claims !== null && cx.wordbankPath && fs.existsSync(cx.wordbankPath)) {
+    vocabCount += JSON.parse(fs.readFileSync(cx.wordbankPath, "utf8")).entries.filter((e) => e.kind === "wordfile").length;
+  }
+  fails.push(...manifestFails(cx));
+  fails.push(...purposeFails(cx));
+  if (cx.hasDossiers) {
+    fails.push(...thresholdFails(cx.level, cx.dossiers).map((f) => `${cx.chapter} ${f}`));
+    fails.push(...letterAnchorFails(cx.level, cx.dossiers).map((f) => `${cx.chapter} ${f}`));
+  } else {
+    ledger.skip(cx.chapter, "schwellen+buchstaben-anker", `kein ${path.relative(ROOT, cx.dossiers)}/`);
   }
 }
 
-fails.push(...thresholdFails(level, DOSSIERS));
-fails.push(...letterAnchorFails(level, DOSSIERS));
+if (CHAPTERS.length === 0) {
+  // Anti-Leerlauf: ein Tor, das nichts findet, muss das SAGEN. Sonst liest sich
+  // ein kaputter Pfad wie ein grünes Tor (die Klasse, die der Wortfenster-Sweep
+  // an seinem eigenen leeren Heuhaufen gefangen hat).
+  console.error("check-level-design: KEIN Kapitel gefunden — content/corpus/stories/*/paint/chNN.level.json ist leer");
+  process.exit(1);
+}
+// ★ L0 · DER SKIP-BERICHT STEHT VOR DEM URTEIL, NICHT DANACH.
+// Ein blinder Leser fand ihn hinter `process.exit(1)`: im ROTEN Lauf wurde er
+// nie gedruckt — ausgerechnet dann, wenn jemand wissen muss, welche Gesetze
+// mangels Eingaben gar nicht liefen. Der Mechanismus gegen stille Auslassung
+// war selbst still, sobald es darauf ankam.
+// L0b · D-792 · EINE LÜCKE IN EINEM FERTIGEN KAPITEL IST ROT, NICHT NUR NOTIERT.
+// L0 hat sie GESAGT und nicht GEURTEILT — beide Tore blieben grün. Ein
+// Abschluss-PR, der `draft` entfernt und die Dossiers oder die Kartendatei
+// vergisst, wäre hier still durchgegangen. `draft:true` bleibt der namentliche
+// Skip; ohne die Flagge ist dasselbe Fehlen ein Loch.
+for (const g of ledger.gaps()) {
+  fails.push(`${g} — das Kapitel trägt KEINE draft-Flagge, ist also fertig: eine fehlende Eingabe ist hier ein Loch, keine Bauphase (D-792)`);
+}
 
+ledger.print();
 if (fails.length) {
   console.error(`check-level-design: ${fails.length} Verstöße`);
   for (const f of fails) console.error("  ✗ " + f);
   process.exit(1);
 }
-console.log(`check-level-design: OK — Dedup (${seenStems.size} Wesen-Stems einmalig), Abdeckung (${wordbank.entries.filter((e) => e.kind === "wordfile").length} Vokabeln klassifiziert), Manifest-Anker deckungsgleich über ${phases.length} Phasen, Schwellen benannt, Buchstaben-Anker deckungsgleich, jede Entity mit Zweck`);
+console.log(`check-level-design: OK — ${CHAPTERS.length} Kapitel (${CHAPTERS.map((c) => c.chapter + (c.draft ? " [Entwurf]" : "")).join(", ")}): Dedup (${stemCount} Wesen-Stems einmalig), Abdeckung (${vocabCount} Vokabeln klassifiziert), Manifest-Anker deckungsgleich über ${phaseCount} Phasen, Schwellen benannt, Buchstaben-Anker deckungsgleich, jede Entity mit Zweck`);

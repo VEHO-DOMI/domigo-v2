@@ -20,7 +20,7 @@
 //    then the card DOFFS so the world's change can be watched (the restore-hold).
 import React from "react";
 import type { GameTaskV2 } from "@domigo/content-schema";
-import { captiveStem, classmateFreeStem, classmateStem, isCaptiveKey } from "../artManifest.ts";
+import { captiveStem, classmateFreeStem, classmateStem } from "../artManifest.ts";
 import { gapLevelFor, renderGapHint } from "./hint.ts";
 import { QUICKFIRE_MS, focusPctFor } from "./overlay-css.ts";
 import { LETTER_LEAD_MS, LETTER_STAGGER_MS, lettersFor } from "./resolution.ts";
@@ -133,12 +133,17 @@ const ROUND_OF_DE = "von";
 /**
  * R5-W4 · D3 · F-14 · R54 · A CAGE NAMES EITHER A THING OR A PERSON.
  *
- * The world already makes this distinction (`isCaptiveKey(e.params.captive)` in
- * PaintScene): a thing-cage carries one of the four captive keys and its
- * occupant is painted on its own `captive_*` sheet, while the chapter's one
- * person-cage carries the classmate's name and her occupant cell is the caged
- * pose of her own skin. The naming law itself is imported rather than retyped —
+ * The world already makes this distinction, and it makes it in the DATA: a
+ * thing-cage declares `params.captive`, the chapter's one person-cage declares
+ * `params.classmate`. The naming law itself is imported rather than retyped —
  * two copies of a stem convention are two conventions waiting to disagree.
+ *
+ * L0 · D7 · WARUM EIN FLAG UND KEIN NAMENSTEST. Bis zur Level-Welle stand hier
+ * `isCaptiveKey(name)`, und das ging gut, solange die Insassen-Schlüssel eine
+ * geschlossene Vierer-Liste aus Kapitel 1 waren: »merle« stand nicht darin,
+ * also war »merle« eine Person. Seit die Liste jedem Kapitel offensteht, ist der
+ * Name kein Unterscheider mehr — »merle« und »tablet« haben dieselbe Form. Der
+ * Aufrufer weiss ohnehin, aus welchem Feld sein Name kam, und sagt es jetzt.
  *
  * R5-W5 · C4 · D-228: …and the person half is imported now too. It stood here as
  * a bare `${name}_caged0` template, which made this file the ONLY written source
@@ -149,9 +154,9 @@ const ROUND_OF_DE = "von";
  * Returns a STEM, never a url: whether the sheet has actually landed is the
  * art map's question, and the keen-art law wants that asked at the last moment.
  */
-export const cageCellFor = (name: string | undefined): string | undefined => {
+export const cageCellFor = (name: string | undefined, person = false): string | undefined => {
   if (name === undefined || name === "") return undefined;
-  return isCaptiveKey(name) ? captiveStem(name) : classmateStem(name);
+  return person ? classmateStem(name) : captiveStem(name);
 };
 
 /**
@@ -184,9 +189,9 @@ export const cageCellFor = (name: string | undefined): string | undefined => {
  */
 export const KLASSENFOTO_STEM = "klassenfoto_a";
 
-export const freeCellsFor = (name: string | undefined): readonly string[] => {
+export const freeCellsFor = (name: string | undefined, person = false): readonly string[] => {
   if (name === undefined || name === "") return [];
-  if (!isCaptiveKey(name)) return [classmateFreeStem(name)];
+  if (person) return [classmateFreeStem(name)];
   return name === "picture" ? [KLASSENFOTO_STEM, "obj_picture"] : [`obj_${name}`];
 };
 
@@ -498,7 +503,7 @@ const hasAnswer = (t: GameTaskV2): t is Extract<GameTaskV2, { kind: "typed" | "s
   t.kind === "typed" || t.kind === "spell";
 
 export function CardShell({
-  task, attempts, onDismiss, align = "center", clockMs, armCount = 0, onActivity, art, portraitWash, captive, round, flight, doff = false,
+  task, attempts, onDismiss, align = "center", clockMs, armCount = 0, onActivity, art, portraitWash, captive, captiveIsPerson, round, flight, doff = false,
   colourAskDe, actStep, children,
 }: {
   task: GameTaskV2;
@@ -528,6 +533,11 @@ export function CardShell({
    *  the occupant's own cell BEHIND the shell, exactly as `PaintScene` does at
    *  depth 6.99 behind 7. A person-cage names her caged cell instead. */
   captive?: string;
+  /** L0 · D7: ob `captive` den Namen eines KINDES trägt (Personen-Käfig) statt
+   *  eines Ding-Schlüssels. Bis zur Level-Welle liess sich das am Namen ablesen,
+   *  weil die Ding-Schlüssel eine geschlossene ch01-Liste waren; seit jedes
+   *  Kapitel eigene Insassen hat, sagt es der Aufrufer, der es ohnehin weiss. */
+  captiveIsPerson?: boolean;
   /** PK-R6 · D: the reawakening's own counter („Runde 3/6", doc 44 §3.3) */
   round?: { n: number; of: number };
   /** the answer flying home, or null while the card is still being played */
@@ -564,7 +574,7 @@ export function CardShell({
   // R5-W4 · D3 · F-14 · the occupant's cell, when this card is about a cage and
   // the sheet has landed. Keen-art law: a missing cell leaves the shell exactly
   // as it was, so no card hangs on a file.
-  const occupant = art?.[cageCellFor(captive) ?? ""];
+  const occupant = art?.[cageCellFor(captive, captiveIsPerson) ?? ""];
 
   // ── R5-W1 · D1 · THE GLANCE GRAMMAR ────────────────────────────────────────
   // plate → key → quiet → act → help. Which line is the KEY is decided in
