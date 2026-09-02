@@ -50,8 +50,8 @@
    },
    "storyDe": "Sag den Satz über die Piraten richtig!",
    "options": [
-    "They have got two feet.",
     "They has got two feet.",
+    "They have got two feet.",
     "They is got two feet."
    ],
    "answer": "They have got two feet.",
@@ -81,8 +81,8 @@
    },
    "storyDe": "Frag ihn, ob er zwei davon hat!",
    "options": [
-    "Has he got two feet?",
     "Have he got two feet?",
+    "Has he got two feet?",
     "Is he got two feet?"
    ],
    "answer": "Has he got two feet?",
@@ -126,7 +126,7 @@
     "p1"
    ],
    "hints": {
-    "deDesc": "Das Fragewort steht vorne, das Zeichen hinten."
+    "deDesc": "In der Frage steht Has ganz vorne."
    }
   },
   {
@@ -143,9 +143,9 @@
    },
    "storyDe": "Wie viele sind das? Sag es auf Englisch!",
    "options": [
-    "two",
+    "five",
     "one",
-    "five"
+    "two"
    ],
    "answer": "two",
    "skins": [
@@ -171,10 +171,10 @@
     "type": "entity",
     "showsDe": "Jetzt malt sie eine Hand mit allen Fingern."
    },
-   "storyDe": "Wie viele Finger sind das? Sag es englisch!",
+   "storyDe": "Wie viele Finger sind das? Sag es auf Englisch!",
    "options": [
-    "five",
     "eight",
+    "five",
     "two"
    ],
    "answer": "five",
@@ -200,7 +200,7 @@
    ],
    "stimulus": {
     "type": "entity",
-    "showsDe": "Polly sitzt im Netzkäfig. Ihre Haare sind lila."
+    "showsDe": "Polly sitzt im Netzkäfig und schaut dich an."
    },
    "storyDe": "Sag, was sie hat — dann geht das Netz auf!",
    "options": [
@@ -216,7 +216,7 @@
     "p1"
    ],
    "hints": {
-    "deDesc": "Es wächst ihr auf dem Kopf.",
+    "deDesc": "Es wächst ihr auf dem Kopf — und ist lila.",
     "deWord": "Auf Deutsch: die Haare — und Lila."
    }
   },
@@ -265,17 +265,17 @@
    },
    "storyDe": "Sag, was es ist — dann gib die Farbe zurück!",
    "nameOptions": [
-    "a wooden leg",
     "a beard",
     "a nose",
+    "a wooden leg",
     "an ear"
    ],
    "name": "a wooden leg",
    "colourAskDe": "Das Holzbein war braun.",
    "colourOptions": [
+    "blue",
     "brown",
-    "red",
-    "blue"
+    "red"
    ],
    "colour": "brown",
    "skins": [
@@ -305,8 +305,8 @@
    },
    "storyDe": "Frag sie, ob die Kapitänin ein Schiff hat!",
    "options": [
-    "Has she got a ship?",
     "Have she got a ship?",
+    "Has she got a ship?",
     "Is she got a ship?"
    ],
    "answer": "Has she got a ship?",
@@ -336,9 +336,9 @@
    },
    "storyDe": "Nenn das Fehlende — dann geht die Tür auf!",
    "options": [
-    "He hasn't got two legs.",
+    "He hasn't got two arms.",
     "He hasn't got two eyes.",
-    "He hasn't got two arms."
+    "He hasn't got two legs."
    ],
    "answer": "He hasn't got two legs.",
    "skins": [
@@ -365,7 +365,7 @@
     "showsDe": "Die Tür zeigt einen Mund, weit offen.",
     "art": "door_a"
    },
-   "storyDe": "Was sieht man da? Leg das Wort mit Buchstaben!",
+   "storyDe": "Was sieht man da? Leg das Wort aus Buchstaben!",
    "answer": "teeth",
    "extraLetters": "or",
    "skins": [
@@ -385,13 +385,13 @@
    "kind": "choice",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Sie hat Haare, eine Nase — und eine leere Schulter."
+    "showsDe": "Sie schreibt über ihre leere Schulter."
    },
-   "storyDe": "Was hat sie NICHT? Wähl den Satz!",
+   "storyDe": "Ein Wort stimmt nicht. Wähl den Satz!",
    "options": [
     "She hasn't got a parrot.",
-    "She hasn't got a nose.",
-    "She hasn't got hair."
+    "She haven't got a parrot.",
+    "She isn't got a parrot."
    ],
    "answer": "She hasn't got a parrot.",
    "skins": [
@@ -401,9 +401,9 @@
     "p4"
    ],
    "hints": {
-    "deDesc": "Auf einer Piratenschulter sitzt sonst ein Vogel."
+    "deDesc": "Bei sie in der Einzahl heißt es nicht haven't."
    },
-   "grounding": "u03 have got / hasn't got; die Waechterin nennt ihr eigenes Inventar — die zwei Ablenker widerlegt die Zeile selbst"
+   "grounding": "u03 hasn't got, dritte Person Einzahl — die Waechterin schreibt ihren eigenen Mangel falsch auf sich"
   },
   {
    "id": "g1.paint.ch03.boss.o1",
@@ -428,7 +428,7 @@
     "p4"
    ],
    "hints": {
-    "deDesc": "Wer zuerst? Dann, was sie tut."
+    "deDesc": "Fang bei der Person an."
    },
    "grounding": "u03 have got; evidence = die Auslage, die seededShuffle fuer diese id baut (Gesetz 18e)",
    "evidence": [
@@ -462,9 +462,9 @@
     "correction": "has"
    },
    "correctionOptions": [
+    "have",
     "has",
-    "is",
-    "have"
+    "is"
    ],
    "skins": [
     "galionsfigur"
