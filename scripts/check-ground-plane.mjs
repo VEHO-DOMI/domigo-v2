@@ -36,38 +36,37 @@ const REACH_MIN = 0.8;
 const TILT_MAX_DEG = 3;
 
 /** Altbestand: gemessen am 01.09. (Fluchtwinkel je Blatt in Klammern). Fällt
- *  mit dem Cutover des genannten Raums — die Zeile stirbt MIT dem Blatt. */
+ *  mit dem Cutover des genannten Raums — die Zeile stirbt MIT dem Blatt.
+ *
+ *  ★ N7A2 (2026-09-02): von 26 Zeilen waren beim ersten scharfen Lauf der
+ *  Hygiene-Regel **24 schal**. Drei Sterbe-Arten, alle unbemerkt, weil nichts sie
+ *  je gefragt hat — die Namen sind AUSGEZÄHLT, nicht erinnert:
+ *    · 12 Zeilen nannten PNGs, die es im ganzen Repo nicht gibt: die fünf
+ *      p2-Pfeiler (`terrain_pillar_p2_2/5/8`, `terrain_tower_p2`,
+ *      `terrain_post_p2`), die zwei Hänger (`terrain_hanging_pillar_p2`,
+ *      `…_short`), zwei `terrain_column_p3_*` und drei `terrain_column_p4_*`
+ *      — R5b2-Reste, gelöscht oder nie geliefert;
+ *    ·  4 Zeilen nannten Blätter, die auf der Platte liegen, aber kein Raum
+ *      referenziert (`plat_bookpile_l`, `plat_bookpile_s`, `plat_shelf_2`,
+ *      `plat_coatbench` — tote Kunst);
+ *    ·  8 Zeilen nannten Blätter, deren Befund die Möbel-Neuwelle von #389
+ *      BEHOBEN hat: `plat_bench_2`, `plat_bundle_1`, `plat_plank_2` und die
+ *      fünf Nacht-Möbel (`terrain_night_folio_p2`, `…_dictionary_p2`,
+ *      `…_bundle_p2`, `…_shelf_p2`, `…_lectern_shelf_p2`) — sie messen heute
+ *      82–100 % Reichweite bei 0,0–0,3° Kipp.
+ *  Eine 25. Zeile hat diese Bahn selbst beendet (`ledge_windowsill`, 21 → 87 %
+ *  Reichweite durch den Neuwurf). Übrig bleibt EINE, die wirklich noch etwas
+ *  duldet.
+ *  ⚠ Was hier NIE stand: die fünf p1-Möbel (`terrain_reading_bench_p1` &c.) und
+ *  `plat_column2_1` — sie halten Gesetz 13 ohne Duldung, und ein Kommentar, der
+ *  sie aufzählt, beschreibt Zeilen, die es nicht gab. */
 const GROUND_PLANE_PENDING = {
-  // p1/p2-Säulen + Podest (V-Sockel 11°–49°): Absorption in die Körper, p1/p2-Cutover
-  "terrain_pillar_p2_8": { until: "2026-10-15", why: "V-Sockel 36,0° — Absorption p2-Ostwand" },
-  "terrain_pillar_p2_5": { until: "2026-10-15", why: "V-Sockel 19,6° — Absorption p2-Ostwand" },
-  "terrain_pillar_p2_2": { until: "2026-10-15", why: "V-Sockel ~44° — Absorption p2-Ostwand" },
-  "terrain_tower_p2": { until: "2026-10-15", why: "48,7°; matcht ohnehin kein Grid mehr — fällt mit p2-Cutover" },
-  "terrain_post_p2": { until: "2026-10-15", why: "11,1°; matcht kein Grid mehr — fällt mit p2-Cutover" },
-  // Möbel-Altbestand (Seitenflächen 0,4°–45,8°): Neu-Malung je Raum (Kokis Entscheid 01.09.)
-  "plat_bookpile_l": { until: "2026-10-15", why: "Perspektiv-Altbestand, Möbel-Neuwelle" },
-  "plat_bookpile_s": { until: "2026-10-15", why: "Perspektiv-Altbestand, Möbel-Neuwelle" },
-  "plat_bench_2": { until: "2026-10-15", why: "Perspektiv-Altbestand, Möbel-Neuwelle" },
-  "plat_shelf_2": { until: "2026-10-15", why: "Perspektiv-Altbestand, Möbel-Neuwelle" },
-  "plat_coatbench": { until: "2026-10-15", why: "Perspektiv-Altbestand, Möbel-Neuwelle" },
-  "plat_desk": { until: "2026-10-15", why: "Perspektiv-Altbestand, Möbel-Neuwelle" },
-  "plat_bundle_1": { until: "2026-10-15", why: "Perspektiv-Altbestand, Möbel-Neuwelle" },
-  "plat_plank_2": { until: "2026-10-15", why: "Perspektiv-Altbestand, Möbel-Neuwelle" },
-  "ledge_windowsill": { until: "2026-10-15", why: "Perspektiv-Altbestand, Möbel-Neuwelle" },
-  "terrain_night_folio_p2": { until: "2026-10-15", why: "R4-Bestand, Möbel-Neuwelle p2" },
-  "terrain_night_dictionary_p2": { until: "2026-10-15", why: "R4-Bestand, Möbel-Neuwelle p2" },
-  "terrain_night_bundle_p2": { until: "2026-10-15", why: "R4-Bestand, Möbel-Neuwelle p2" },
-  "terrain_night_shelf_p2": { until: "2026-10-15", why: "R4-Bestand, Möbel-Neuwelle p2" },
-  "terrain_night_lectern_shelf_p2": { until: "2026-10-15", why: "R4-Bestand, Möbel-Neuwelle p2" },
-  "terrain_column_p3_standing_2x5": { until: "2026-10-15", why: "R5b2-Rest, fällt mit p3-Neubau" },
-  "terrain_column_p3_hanging_2x4": { until: "2026-10-15", why: "hängend (Fuß frei), aber Perspektiv-Familie — p3-Neubau" },
-  "terrain_column_p4_standing_2x2": { until: "2026-10-15", why: "R5b2-Rest, fällt mit p4-Neubau" },
-  "terrain_column_p4_standing_1x2": { until: "2026-10-15", why: "R5b2-Rest, fällt mit p4-Neubau" },
-  "terrain_column_p4_hanging_2x3": { until: "2026-10-15", why: "hängend, Perspektiv-Familie — p4-Neubau" },
-  // hängende Pfeiler: Fuß hängt frei (Spitze läuft absichtlich aus) — Gesetz 1
-  // gilt für sie nicht; sie stehen hier, damit ihr Ersatz sie explizit löscht.
-  "terrain_hanging_pillar_p2": { until: "2026-10-15", why: "hängt (kein Aufstand) — fällt mit p2-Deckenkörpern" },
-  "terrain_hanging_pillar_p2_short": { until: "2026-10-15", why: "hängt — fällt mit p2-Deckenkörpern" },
+  // Der Hof ist FERTIG: die Fensterbank war das eine p3-Möbel, das Punkt 13 brach
+  // (Reichweite 21 % — ein V). Ihr Neuwurf misst 87 % bei 0,0°, also hat die
+  // Hygiene-Regel oben ihre eigene Zeile als schal gemeldet und sie ist gefallen.
+  // Genau so soll eine Duldung sterben: die Reparatur beendet sie, nicht ein Datum.
+  // Die Kleckskammer: nicht diese Bahn (p9-Kunst gehört N7A4).
+  "plat_desk": { until: "2026-10-15", why: "Reichweite 8 % — V-Sockel, Perspektiv-Altbestand; fällt mit der p9-Möbel-Welle" },
 };
 
 /** Misst Reichweite + Kipp der Kontaktkante eines Blatts. */
@@ -115,6 +114,46 @@ const synth = (mutate) => {
   return png;
 };
 
+/**
+ * ★ DULDUNGS-HYGIENE — eine Duldung, die nichts mehr duldet, ist eine Behauptung.
+ *
+ * Der Kopf dieser Datei verspricht das Gesetz seit R7 („Eine Pending-Zeile ohne
+ * Blatt ist selbst ein Fehler, sie überlebt ihre Löschung nicht still") — der Code
+ * hat es NIE gefahren: es gab keine einzige Schleife über GROUND_PLANE_PENDING.
+ * Gemessen am 2026-09-02: **24 der 26 Zeilen waren schal** — zwölf nannten PNGs,
+ * die es im ganzen Repo nicht gibt; vier nannten Blätter, die zwar auf der Platte
+ * liegen, aber von keinem Raum referenziert werden; acht nannten Blätter, deren
+ * Befund die Möbel-Neuwelle von #389 längst behoben hatte. Die Aufteilung steht
+ * namentlich am Kopf von `GROUND_PLANE_PENDING`. Keine davon hat je einen Befund
+ * geduldet, und keine wäre je aufgefallen.
+ * (Eine frühere Fassung dieses Absatzes nannte „16 der 26" — das war die Zahl,
+ * bevor die dritte Sterbe-Art gemessen war, und sie hat den Kopf dieser Datei
+ * widersprochen. Zwei Zahlen für eine Messung sind eine zu viel.)
+ *
+ * Die Regel ist deshalb dieselbe, die `SCALE_WAIVERS` in `check-composition.mjs`
+ * schon trägt, und sie ist bewusst als EINE Frage formuliert: **wurde diese Zeile
+ * in diesem Lauf gebraucht?** Das deckt alle drei Sterbe-Arten mit einer Prüfung ab
+ *   · das PNG ist gelöscht        → nie konsultiert
+ *   · kein Raum referenziert es   → nie konsultiert
+ *   · das Blatt ist REPARIERT     → nie konsultiert (und genau so soll eine
+ *                                    Neu-Malung ihre eigene Duldung beenden)
+ * Dazu die zweite Hälfte: ein `until`, das niemand liest, ist ein Datum ohne
+ * Wirkung — eine abgelaufene Zeile wird rot, statt lautlos weiterzugelten.
+ */
+export const waiverHygiene = (pending, seen, today = new Date()) => {
+  const errors = [];
+  for (const [stem, w] of Object.entries(pending)) {
+    if (!seen.has(stem)) {
+      errors.push(`GROUND_PLANE_PENDING trägt "${stem}", aber dieser Lauf hat die Zeile nicht gebraucht (Blatt gelöscht, von keinem Raum referenziert, oder der Befund ist behoben) — die Zeile löschen (${w.why})`);
+      continue;
+    }
+    if (Date.parse(`${w.until}T23:59:59Z`) < today.getTime()) {
+      errors.push(`GROUND_PLANE_PENDING "${stem}" ist am ${w.until} abgelaufen — nachmessen und neu begründen oder die Ausnahme fallen lassen (${w.why})`);
+    }
+  }
+  return errors;
+};
+
 const selftest = () => {
   const clean = judge("st", synth());
   if (clean.errors.length !== 0) { console.error("Selbsttest: sauberes Blatt fällt:", clean.errors); return 1; }
@@ -126,7 +165,19 @@ const selftest = () => {
   for (const [name, mutate] of tampers) {
     if (judge("st", synth(mutate)).errors.length === 0) { console.error(`Selbsttest-TAMPER "${name}" blieb GRÜN`); return 1; }
   }
-  console.log("check-ground-plane: Selbsttest OK — 1 sauber + 3 Tamper rot");
+  // ── Duldungs-Hygiene: 1 sauber + 2 Tamper ────────────────────────────────
+  const heute = new Date("2026-09-02T12:00:00Z");
+  const reg = { a: { until: "2026-10-15", why: "Grund A" }, b: { until: "2026-10-15", why: "Grund B" } };
+  if (waiverHygiene(reg, new Set(["a", "b"]), heute).length !== 0) {
+    console.error("Selbsttest: zwei gebrauchte, unverfallene Duldungen fallen"); return 1;
+  }
+  if (waiverHygiene(reg, new Set(["a"]), heute).length !== 1) {
+    console.error('Selbsttest-TAMPER "schale Zeile" blieb GRÜN'); return 1;
+  }
+  if (waiverHygiene({ a: { until: "2026-08-01", why: "Grund A" } }, new Set(["a"]), heute).length !== 1) {
+    console.error('Selbsttest-TAMPER "abgelaufene Zeile" blieb GRÜN'); return 1;
+  }
+  console.log("check-ground-plane: Selbsttest OK — 1 sauber + 3 Tamper rot · Duldungs-Hygiene 1 sauber + 2 Tamper rot");
   return 0;
 };
 
@@ -150,6 +201,7 @@ const main = () => {
   // Pending-Zeilen ohne lebendes Blatt sind selbst ein Befund — außer das PNG
   // ist schon gelöscht (dann ist die Zeile nur noch Doku und darf mitfallen).
   let failed = 0;
+  const waiverSeen = new Set();
   for (const stem of [...stems].sort()) {
     const file = path.join(ART_DIR, `${stem}.png`);
     if (!fs.existsSync(file)) { console.error(`✗ ${stem}: PNG fehlt`); failed++; continue; }
@@ -158,6 +210,7 @@ const main = () => {
     if (errors.length === 0) {
       console.log(`✓ ${stem}: Reichweite ${(100 * m.reach).toFixed(0)} % · Kipp ${m.tiltDeg.toFixed(1)}°`);
     } else if (pending !== undefined) {
+      waiverSeen.add(stem);
       console.log(`⚠ ${stem}: BEFUND GEDULDET bis ${pending.until} (${pending.why}) — ${errors.join(" · ")}`);
     } else {
       failed++;
@@ -165,7 +218,8 @@ const main = () => {
       for (const e of errors) console.error(`    ${e}`);
     }
   }
-  if (failed === 0) console.log(`check-ground-plane: OK — ${stems.size} Steh-Blätter gemessen`);
+  for (const e of waiverHygiene(GROUND_PLANE_PENDING, waiverSeen)) { console.error(`✗ ${e}`); failed++; }
+  if (failed === 0) console.log(`check-ground-plane: OK — ${stems.size} Steh-Blätter gemessen, ${waiverSeen.size} Duldung(en) gebraucht und keine schal`);
   return failed === 0 ? 0 : 1;
 };
 

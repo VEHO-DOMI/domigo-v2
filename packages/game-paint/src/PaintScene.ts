@@ -5682,7 +5682,28 @@ export class PaintScene extends Phaser.Scene {
    */
   private buildGrain(kit: MassKit): void {
     if (kit.proceduralGrain === false) return;
-    const claimed = claimedPlatformCells(this.grid, kit.columnObjects ?? [], claimedBodyCells(kit));
+    // ★ N7A2 · DIE KOERNUNG MUSS DIE GEMALTEN KOERPER AUSLASSEN — und der Vertrag
+    // dafuer stand schon geschrieben. `composition.ts` sagt ueber `bodies`:
+    // »planMass claimt ihre Zellen VOR allem anderen; alles Nachgelagerte (Kurs,
+    // Trims, Innenmasse, GRAIN, Saeulen) laesst sie aus.« Der Code hier hat die
+    // Koerper-Zellen aber nur als `blocked` an `claimedPlatformCells` gereicht —
+    // das unterdrueckt Moebel-Laeufe auf Koerper-Zellen und gibt sie NICHT als
+    // beansprucht zurueck. Die Koernung lief also ueber die Malerei.
+    //
+    // p1 und p2 haben es nie gezeigt: beide tragen `proceduralGrain: false`. p3
+    // ist die erste Ein-Block-Welt MIT Koernung, und im laufenden Spiel gemessen
+    // (Szene auf :3426, `bake-p3-grain*`) lagen drei Rechteck-Ebenen ueber den
+    // sechs gemalten Blaettern. Kein Tor konnte das sagen — sie messen den Plan,
+    // und im Plan steht die Koernung gar nicht; sie entsteht erst in der Szene.
+    //
+    // Die Vereinigung ist die Reparatur: die Koernung ueberspringt Moebel UND
+    // Koerper. Ein Raum, dessen Kit noch die halbe Flaeche zeichnet, behaelt sie
+    // dort; ein fertig gemalter Raum bekommt keine Marke mehr (p3: 0 Marken,
+    // gemessen). p4/p9 haben keine Koerper und sind unveraendert.
+    const claimed = new Set([
+      ...claimedPlatformCells(this.grid, kit.columnObjects ?? [], claimedBodyCells(kit)),
+      ...claimedBodyCells(kit),
+    ]);
     const draw = (marks: readonly SurfaceMark[], depth: number, round: number): void => {
       if (marks.length === 0) return;
       const paint = (g: Phaser.GameObjects.Graphics): void => {

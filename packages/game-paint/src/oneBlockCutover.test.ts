@@ -13,7 +13,9 @@
 import fs from "node:fs";
 import { describe, expect, it } from "vitest";
 import { COMPOSITION, compositionStems } from "./composition.ts";
-import { massKitUsable, phaseIsOneBlock, planMass } from "./mass.ts";
+import { claimedPlatformCells, massKitUsable, phaseIsOneBlock, planMass } from "./mass.ts";
+import { isSolid } from "./collide.ts";
+import { P3_WAVE_BODIES, bodyCells, bodyPartitionErrors } from "./visualBodies.ts";
 
 const level = JSON.parse(fs.readFileSync(
   new URL("../../../content/corpus/stories/g1.st.lost-pages/paint/ch01.level.json", import.meta.url),
@@ -145,5 +147,87 @@ describe("massKitUsable — die Wache vor der Masse (N7A1)", () => {
       .filter((s): s is string => s !== undefined);
     expect(massKitUsable(ph.rows, spec.mass, (s) => kern.includes(s))).toBe(true);
     expect(massKitUsable(ph.rows, spec.mass, (s) => kern.slice(1).includes(s))).toBe(false);
+  });
+});
+
+/**
+ * ★ N7A2 · DIE KREIDE-RUTSCHE IST KEIN LOCH IM SCHULHOF.
+ *
+ * Das Boot-Blatt dieser Bahn vermutete, die Cutover-Rechnung koennte die fuenf
+ * `z`-Zellen der Rutsche als koerper-pflichtig ansehen, und bestellte dafuer eine
+ * `exemptGlyphs`-Erweiterung. Gemessen ist das nicht noetig: `z` steht in SLOPES,
+ * nicht in SOLID (`collide.ts`), also fragt `fullyPainted` gar nicht nach ihm.
+ *
+ * Das ist aber eine Eigenschaft, auf die sich sechs gemalte Blaetter STILL
+ * verlassen: haette `z` je Masse, waeren in der Westterrasse fuenf Zellen ohne
+ * Besitzer, und der Cutover wuerde still nicht mehr greifen — p3 laedt dann wieder
+ * ein Kit, das die Bahn geloescht hat. Genau diese Sorte stiller Kopplung haelt
+ * dieser Block fest, in beide Richtungen.
+ */
+describe("die Kreide-Rutsche und der p3-Cutover (N7A2)", () => {
+  const p3 = phases.find((p) => p.id === "p3");
+  const zZellen = (rows: readonly string[]): string[] => {
+    const out: string[] = [];
+    rows.forEach((row, r) => { for (let c = 0; c < row.length; c++) if (row[c] === "z") out.push(`${c},${r}`); });
+    return out;
+  };
+
+  it("`z` ist keine solide Zelle — die Rutsche wird nie vom Cutover verlangt", () => {
+    expect(isSolid("z")).toBe(false);
+  });
+
+  it("die sechs Koerper partitionieren p3 vollstaendig: 493 + 17 Moebel = 510", () => {
+    expect(p3).toBeDefined();
+    if (p3 === undefined) return;
+    const moebel = claimedPlatformCells(p3.rows, [], new Set());
+    const koerper = P3_WAVE_BODIES.reduce((n, b) => n + bodyCells(b).length, 0);
+    const solide = p3.rows.join("").split("").filter((g) => isSolid(g)).length;
+    expect({ solide, koerper, moebel: moebel.size }).toEqual({ solide: 510, koerper: 493, moebel: 17 });
+    expect(bodyPartitionErrors(p3.rows, P3_WAVE_BODIES, { fullyPainted: true, otherClaimed: moebel })).toEqual([]);
+  });
+
+  it("die fuenf z-Zellen gehoeren KEINEM Koerper", () => {
+    expect(p3).toBeDefined();
+    if (p3 === undefined) return;
+    const besitz = new Set(P3_WAVE_BODIES.flatMap((b) => bodyCells(b).map(({ c, r }) => `${c},${r}`)));
+    const zs = zZellen(p3.rows);
+    expect(zs).toHaveLength(5);
+    expect(zs.filter((k) => besitz.has(k))).toEqual([]);
+  });
+
+  it("TAMPER: waere `z` solide, faende der Cutover fuenf Zellen ohne Besitzer", () => {
+    expect(p3).toBeDefined();
+    if (p3 === undefined) return;
+    const alsSolide = p3.rows.map((row) => row.split("z").join("#"));
+    const moebel = claimedPlatformCells(alsSolide, [], new Set());
+    const fehler = bodyPartitionErrors(alsSolide, P3_WAVE_BODIES, { fullyPainted: true, otherClaimed: moebel });
+    // jede der fuenf Rutschen-Zellen muss namentlich als unbeansprucht auftauchen
+    for (const k of zZellen(p3.rows)) {
+      expect(fehler.some((e) => e.includes(`(${k})`)), `z-Zelle ${k} fehlt im Tamper-Befund`).toBe(true);
+    }
+  });
+
+  it("das Rutschen-Kit ueberlebt den Cutover — massStems fuehrt es unabhaengig", () => {
+    const spec = COMPOSITION.ch01?.p3;
+    expect(spec).toBeDefined();
+    if (spec === undefined) return;
+    const nachCutover = compositionStems(spec, true);
+    for (const stem of ["slide_top", "slide_mid", "slide_foot", "slide_under"]) {
+      expect(nachCutover, stem).toContain(stem);
+    }
+    // …und die Kruste, an der der Malmassstab haengt, ist dann weg
+    expect(nachCutover).not.toContain("crust_p3_a");
+  });
+
+  it("die Rutschen-Module haengen NICHT am Malmassstab: eine Zelle bleibt eine Zelle", () => {
+    const spec = COMPOSITION.ch01?.p3;
+    expect(p3).toBeDefined();
+    expect(spec).toBeDefined();
+    if (p3 === undefined || spec === undefined) return;
+    const module = planMass(p3.rows, spec.mass)
+      .filter((p) => p.kind === "slideTop" || p.kind === "slideMid" || p.kind === "slideFoot");
+    expect(module.length).toBe(5);
+    // 16 world px = genau eine Gitterzelle, in beiden Achsen (mass.ts, Abschnitt 6)
+    for (const m of module) expect({ w: m.w, h: m.h }).toEqual({ w: 16, h: 16 });
   });
 });

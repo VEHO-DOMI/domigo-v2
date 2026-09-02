@@ -50,6 +50,28 @@ Blätter hinzufügt, hebt sie **im selben PR, mit einem Grund, den ein Prüfer l
 Blätter verdrahtet oder löscht, **senkt sie im selben PR um sein eigenes Delta** — jeder
 Lauf sagt die verbliebene Luft laut an, und der Post-Zug-Eigentümer misst neu.
 
+**★ N7A2 (2026-09-02): 57 tote Blätter — unverändert, und das ist die Aussage.**
+Der p3-Cutover hat vier Blätter freigegeben (`crust_p3_a/b/cap_l/cap_r`, 0,84 MB)
+und alle vier sind im selben PR gelöscht: die Tot-Liste nach dieser Bahn ist
+**Zeile für Zeile identisch** mit der von `origin/main`, also bleibt die Decke bei
+57 und braucht keine Anhebung. Freigegeben hat sie ein Werkzeug, kein Urteil:
+`scripts/retire-phase-art.mjs` prüft je Blatt zwei Bedingungen (der Stem trägt den
+Raum im Namen · kein Raum und keine Karte lädt ihn noch) und verweigert im
+Selbsttest ein geteiltes Blatt, ein fremdes und ein lebendes Körper-Blatt.
+Die zwölf p3-Kit-Blätter, die der Cutover ebenfalls zurückzieht (`mass_body_a/b`,
+`mass_fade`, `mass_sediment`, die Kanten, Ecken und die zwei Binder), sind mit
+p4/p9 GETEILT und bleiben auf der Platte.
+
+Gemessene Phasen-Gewichte, mit dem Lineal von `check-perf-budget` (ganzer Baum
+unter `apps/web/public/art/g1/paint`):
+**p1 19,4 · p2 25,3 · p3 20,9 → 22,6 MB · p4 18,0 → 17,8 · p9 15,1 MB** (Grenze
+35 MB). p3 wächst um 1,7 MB und verliert dabei zehn Blätter (101 → 91): sechs
+durchgehend gemalte Körper wiegen mehr als das Kachel-Kit, das sie ersetzen.
+p4 wird um 0,2 MB LEICHTER, ohne dass diese Bahn p4-Kunst angefasst hätte — es
+deklariert zwei der drei Hof-Möbel mit (zeichnet sie nie, gemessen null
+Plattform-Läufe), und die neuen Blätter sind auf der Auflösungs-Stufe des
+Kapitels kleiner (943→256 px und 372→64 px).
+
 **★ N7A1 (2026-09-02): 57 tote Blätter — die erste Runde, in der die Zahl SINKT.**
 Der Cutover der Ein-Block-Welt hat 42 Blätter gelöscht (9,3 MB): das komplette Kit
 von p1 und p2, das absorbierte `terrain_atlas_podest_p1` und das längst tote

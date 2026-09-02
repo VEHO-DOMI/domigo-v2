@@ -2,7 +2,7 @@
 /**
  * R6 · DAS SILHOUETTEN-TOR — hält ein Körper-Gemälde seinen Zell-Vertrag?
  *
- * Drei Gesetze, alle am PNG selbst gemessen (nie an einer Selbstauskunft):
+ * Fuenf Gesetze, alle am PNG selbst gemessen (nie an einer Selbstauskunft):
  *   1 · KERN-DECKUNG   — das innere 80 %-Fenster jeder Masken-Zelle ist ≥98 % opak.
  *   2 · ALPHA-EHRLICHKEIT — außerhalb von Maske+Overpaint(+Fransen-Gürtel 16 px)
  *       ist ≤0,5 % opak: nichts darf begehbar AUSSEHEN, was es nicht ist.
@@ -29,6 +29,8 @@ const FAINT = 16;     // Alpha-Schwelle „überhaupt vorhanden" (Gesetz 2)
 const FRINGE_PX = 16; // Fransen-Gürtel um Masken-Zellen (K6 erlaubt Überhänge)
 const VOID_SD = 2;    // Struktur-Schwelle „flach" (Gesetz 4)
 const VOID_L = 8;     // Luminanz-Schwelle „schwarz" (Gesetz 4)
+const EDGE_G = 12;    // Gradient, ab dem ein Pixel als Kante zaehlt (Gesetz 5)
+const EDGE_MEDIAN_MAX = 80; // Median-Kantendichte eines Blattes in Prozent (Gesetz 5)
 
 const levelGrids = () => JSON.parse(fs.readFileSync(LEVEL, "utf8"));
 
@@ -113,10 +115,23 @@ export const measureBody = (body, png, grid) => {
   //
   // Gemalte Dunkelheit hat Struktur: die dunkelste Zelle der ANGENOMMENEN
   // p2-Welle misst L = 10,8 (Exemplar 13,2; Ostwand 14,1), die schwächste
-  // Struktur SD = 3,72. Ein Loch hat beides nicht. Die Schwelle liegt deshalb
-  // bei „flach UND schwarz" (SD < 2 und L < 8) und lässt jedem ruhigen dunklen
-  // Feld seinen Platz — sie trennt nicht dunkel von hell, sondern gemalt von
-  // gefüllt.
+  // Struktur SD = 3,72. Ein Loch hat beides nicht.
+  //
+  // ★ N7A2 (2026-09-02): DIE ZWEITE HÄLFTE DER SCHWELLE WAR DIE LÜCKE.
+  // Sie lautete „flach UND schwarz" (SD < 2 UND L < 8) — und die p3-Lieferung
+  // kam mit 100 % Deckung durch alle vier Gesetze, während **136 ihrer 493
+  // Pflicht-Zellen** ein völlig gleichförmiges Braun waren: rgb 83,60,36,
+  // SD 0,00, Luminanz 24,8. Flach genug für die erste Bedingung, hell genug für
+  // die zweite — also grün. Das ist derselbe Trick, den N7A1 in Schwarz bezahlt
+  // hat, eine Sprosse höher.
+  //
+  // Der Kommentar unter dieser Zeile sagte schon immer, worum es geht: „sie
+  // trennt nicht dunkel von hell, sondern gemalt von gefüllt". Genau das tut sie
+  // jetzt — die Luminanz-Bedingung fällt, die Zahl bleibt in der Meldung.
+  // GEMESSEN, bevor sie fiel: von den **1039 Pflicht-Zellen der abgenommenen
+  // p1/p2-Wellen liegt KEINE unter SD 2**, die schwächste bei 3,72 (86 %
+  // Luft über der Schwelle). Eine reine SD-Schwelle bricht also nichts, was
+  // Koki angenommen hat — sie schließt nur das Schlupfloch.
   for (const key of inMask) {
     const [dc, dr] = key.split(",").map(Number);
     const x0 = body.overpaint.l + dc * px, y0 = body.overpaint.t + dr * px;
@@ -133,8 +148,57 @@ export const measureBody = (body, png, grid) => {
     if (values.length === 0) continue; // Gesetz 1 hat das schon gemeldet
     const mean = values.reduce((a, b) => a + b, 0) / values.length;
     const sd = Math.sqrt(values.reduce((a, b) => a + (b - mean) ** 2, 0) / values.length);
-    if (sd < VOID_SD && mean < VOID_L) {
-      errors.push(`Loch statt Malerei (${body.c0 + dc},${body.r0 + dr}): Wert-SD ${sd.toFixed(2)} < ${VOID_SD} bei Luminanz ${mean.toFixed(1)} < ${VOID_L}`);
+    if (sd < VOID_SD) {
+      errors.push(`Fuellung statt Malerei (${body.c0 + dc},${body.r0 + dr}): Wert-SD ${sd.toFixed(2)} < ${VOID_SD} bei Luminanz ${mean.toFixed(1)} — eine Zelle ohne Struktur ist gefuellt, nicht gemalt (schwaechste angenommene Zelle: SD 3,72)`);
+    }
+  }
+  // ── Gesetz 5 · MALEREI, NICHT RAUSCHEN ────────────────────────────────────
+  //
+  // Die dritte Sprosse derselben Leiter. Gesetz 4 verlangte erst „flach und
+  // schwarz", dann nur noch „flach" — und die naechste Lieferung erfuellte es
+  // mit RAUSCHEN: pro Pixel gestreute Koernung hat eine hohe Wert-SD und
+  // ueberlebt sogar das Verkleinern auf 8x8 (gemessen: schwaechste Zelle 6,99
+  // gegen 3,09 im abgenommenen Bestand — die Lieferung sah dort BESSER aus).
+  // Im Spiel mittelt sich das zu einer dunklen, sprenkeligen Masse, in der kein
+  // Buch mehr zu erkennen ist.
+  //
+  // Was gemalte Materie von Rauschen trennt, ist WO die Kanten sitzen: ein
+  // Buchruecken hat wenige lange Naehte, Rauschen hat ueberall eine Kante.
+  // Gemessen als Anteil der Pixel mit lokalem Gradienten > 12 Luminanzpunkten,
+  // ueber die inneren 80 % jeder Pflicht-Zelle, MEDIAN je Blatt:
+  //   abgenommen (1039 Zellen, 12 Blaetter): Median 40,2 · 95. Perzentil 71,7 ·
+  //     hoechster BLATT-Median 76 (`body_p1_deckenbahn_west`)
+  //   die beanstandete p3-Lieferung (493 Zellen): Blatt-Mediane 85 · 87 · 91
+  // Die Schwelle steht bei 80 — vier Punkte ueber dem hoechsten angenommenen
+  // Blatt und fuenf unter dem niedrigsten beanstandeten. Der MEDIAN und nicht
+  // die einzelne Zelle, weil eine Zelle legitim ganz aus Kante bestehen darf
+  // (eine Buchschnitt-Kante); ein ganzes Blatt darf es nicht.
+  {
+    const dichten = [];
+    for (const key of inMask) {
+      const [dc, dr] = key.split(",").map(Number);
+      const x0 = body.overpaint.l + dc * px, y0 = body.overpaint.t + dr * px;
+      const m = Math.round(px * 0.1);
+      const lum = (x, y) => {
+        const i = (y * png.width + x) * 4;
+        return 0.299 * (png.data[i] ?? 0) + 0.587 * (png.data[i + 1] ?? 0) + 0.114 * (png.data[i + 2] ?? 0);
+      };
+      let kanten = 0, n = 0;
+      for (let y = y0 + m; y < y0 + px - m; y++) {
+        for (let x = x0 + m; x < x0 + px - m; x++) {
+          if (alphaAt(x, y) < OPAQUE || alphaAt(x + 1, y) < OPAQUE || alphaAt(x, y + 1) < OPAQUE) continue;
+          n += 1;
+          if (Math.hypot(lum(x + 1, y) - lum(x, y), lum(x, y + 1) - lum(x, y)) > EDGE_G) kanten += 1;
+        }
+      }
+      if (n > 0) dichten.push(kanten / n * 100);
+    }
+    if (dichten.length > 0) {
+      dichten.sort((a, b) => a - b);
+      const median = dichten[Math.floor(dichten.length / 2)];
+      if (median > EDGE_MEDIAN_MAX) {
+        errors.push(`Rauschen statt Malerei: Kanten-Dichte im Median ${median.toFixed(1)} % > ${EDGE_MEDIAN_MAX} % (angenommene Blaetter: 20-76 %) — fast jedes Pixel ist eine Kante, das mittelt sich im Spiel zu einer sprenkeligen Masse`);
+      }
     }
   }
   return errors;
@@ -151,7 +215,20 @@ const synthSheet = (body, mutate) => {
       for (let y = body.overpaint.t + dr * px; y < body.overpaint.t + (dr + 1) * px; y++) {
         for (let x = body.overpaint.l + dc * px; x < body.overpaint.l + (dc + 1) * px; x++) {
           const i = (y * w + x) * 4;
-          png.data[i] = 90; png.data[i + 1] = 70; png.data[i + 2] = 120; png.data[i + 3] = 255;
+          // ★ N7A2 · DAS PRUEFBLATT MUSS GEMALTE MATERIE SEIN, NICHT FARBE —
+          // und auch nicht Rauschen. Hier stand erst ein flacher Ton (90,70,120,
+          // SD 0,00), der nur durchkam, weil Gesetz 4 damals zusaetzlich
+          // Dunkelheit verlangte. Der erste Ersatz war eine PIXELWEISE Stoerung —
+          // die gab dem Blatt SD, machte es aber zu 100 % Kante und fiel damit
+          // durch Gesetz 5. Beide Male hat die Vorrichtung ihr eigenes Gesetz
+          // gebrochen, und beide Male war das die richtige Antwort.
+          // Jetzt: BLOECKE von 8x8 px mit je eigenem Wert — deterministisch (kein
+          // Zufall, sonst flackert der Test), SD ~ 14 je Zelle und Kanten nur an
+          // den Block-Grenzen (~23 %). Beides liegt im Feld der angenommenen
+          // Kunst (SD 3,72-33,85 · Kanten-Median 20-76 %). So sieht gemalte
+          // Materie aus: wenige lange Naehte, grosse ruhige Flaechen.
+          const n = (((x >> 3) * 7 + (y >> 3) * 13) % 17) * 3;
+          png.data[i] = 90 + n; png.data[i + 1] = 70 + n; png.data[i + 2] = 120 + n; png.data[i + 3] = 255;
         }
       }
     }
@@ -175,6 +252,15 @@ const selftest = () => {
     // Gesetz 4: die Zelle bleibt voll deckend — nur schwarz. Genau die Lieferung,
     // die N7A1 mit 100 % Deckung durch die ersten drei Gesetze brachte.
     ["Loch statt Malerei", (png, w) => { for (let y = 8 + 64; y < 8 + 128; y++) for (let x = 0; x < 64; x++) { const i = (y * w + x) * 4; png.data[i] = 0; png.data[i + 1] = 0; png.data[i + 2] = 0; png.data[i + 3] = 255; } }],
+    // ★ N7A2 · DERSELBE TRICK IN MITTLERER HELLIGKEIT — der Fall, der die alte
+    // Fassung passiert hat. rgb 83,60,36 ist woertlich die Fuellung, mit der die
+    // erste p3-Lieferung 136 ihrer 493 Pflicht-Zellen gedeckt hat: SD 0,00 bei
+    // Luminanz 24,8. Flach genug fuer die erste Bedingung, hell genug fuer die
+    // zweite — also gruen. Ohne diesen Fall waere die Verschaerfung unbewiesen.
+    // ★ N7A2 · Gesetz 5: pro Pixel gestreutes Rauschen. Es besteht Gesetz 1-4
+    // muehelos (volle Deckung, hohe SD) und ist trotzdem keine Malerei.
+    ["Rauschen statt Malerei", (png, w, h) => { for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) { const i = (y * w + x) * 4; if ((png.data[i + 3] ?? 0) < 128) continue; const n = ((x * 2654435761 + y * 40503) % 251) - 125; png.data[i] = Math.max(0, Math.min(255, 120 + n)); png.data[i + 1] = Math.max(0, Math.min(255, 90 + n)); png.data[i + 2] = Math.max(0, Math.min(255, 60 + n)); } }],
+    ["Fuellung statt Malerei (mittelhell, nicht schwarz)", (png, w) => { for (let y = 8 + 64; y < 8 + 128; y++) for (let x = 0; x < 64; x++) { const i = (y * w + x) * 4; png.data[i] = 83; png.data[i + 1] = 60; png.data[i + 2] = 36; png.data[i + 3] = 255; } }],
   ];
   for (const [name, mutate] of tampers) {
     const errors = measureBody(body, synthSheet(body, mutate), grid);
@@ -199,7 +285,7 @@ const selftest = () => {
   try { gridOf(level, "p7"); } catch { gemeldet = true; }
   if (!gemeldet) { console.error("Selbsttest: gridOf hat eine unbekannte Phase NICHT gemeldet"); return 1; }
   console.log(`check-body-silhouette: p4 aus dem Arena-Raster gelesen (Dummy auf (${seat.c},${seat.r}), kein Absturz), unbekannte Phase meldet sich`);
-  console.log("check-body-silhouette: Selbsttest OK — 1 sauber + 4 Tamper rot + p4/p9-Raster");
+  console.log("check-body-silhouette: Selbsttest OK — 1 sauber + 6 Tamper rot + p4/p9-Raster");
   return 0;
 };
 
@@ -234,7 +320,7 @@ const main = () => {
     const grid = gridOf(level, phase);
     const errors = measureBody(body, png, grid);
     if (errors.length === 0) {
-      console.log(`✓ ${body.id} (${bodyCells(body).length} Zellen): alle vier Gesetze halten`);
+      console.log(`✓ ${body.id} (${bodyCells(body).length} Zellen): alle fuenf Gesetze halten`);
     } else {
       failed++;
       console.error(`✗ ${body.id}:`);

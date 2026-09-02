@@ -366,6 +366,112 @@ export const P1_WAVE_BODIES: readonly VisualBody[] = [
 ];
 
 /**
+ * DIE P3-WELLE (N7A2): die sechs Koerper des Schulhof-Gartens, Masken maschinell
+ * aus dem Raster erzeugt (dieselben Fenster liest `scripts/make-body-stencils.mjs`).
+ * 493 Zellen, 0 Partitions-Fehler, fullyPainted gruen — die 17 uebrigen soliden
+ * Zellen gehoeren den sieben Moebel-Laeufen (`floatingPlatformRuns`: Breiten
+ * 3,2,4,2,2,3,1), nicht einer Handliste. Probe: 510 solide = 493 + 17.
+ *
+ * ⚠ DIE RUTSCHE IST KEIN LOCH. Die fuenf `z`-Zellen (10,15)…(19,19) sind die
+ * Kreidestaub-Rutsche und stehen in KEINER Maske: `z` gehoert zu SLOPES, nicht
+ * zu SOLID (`collide.ts`), also verlangt `fullyPainted` sie gar nicht erst —
+ * das Rutschen-Kit (`slide_top/mid/foot/under`) zeichnet sie weiter, und
+ * `massStems` fuehrt es unabhaengig vom Cutover. Wer `z` je solide macht,
+ * bricht diese Welle; `visualBodies.test.ts` haelt das mit einem Tamper fest.
+ */
+export const P3_WAVE_BODIES: readonly VisualBody[] = [
+  {
+    // 22 Zellen · Laubdach-Band ueber der Westterrasse
+    id: "p3_deckenbahn_west",
+    stem: "body_p3_deckenbahn_west",
+    c0: 0, r0: 0,
+    rows: [
+      "######################",
+    ],
+    pxPerCell: 64, overpaint: { l: 0, r: 0, t: 12, b: 16 },
+  },
+  {
+    // 22 Zellen · Laubdach-Band ueber dem Hofmittelstueck
+    id: "p3_deckenbahn_mitte",
+    stem: "body_p3_deckenbahn_mitte",
+    c0: 22, r0: 0,
+    rows: [
+      "######################",
+    ],
+    pxPerCell: 64, overpaint: { l: 0, r: 0, t: 12, b: 16 },
+  },
+  {
+    // 20 Zellen · Laubdach-Band ueber der Ostmauer bis zur Tuer
+    id: "p3_deckenbahn_ost",
+    stem: "body_p3_deckenbahn_ost",
+    c0: 44, r0: 0,
+    rows: [
+      "####################",
+    ],
+    pxPerCell: 64, overpaint: { l: 0, r: 0, t: 12, b: 16 },
+  },
+  {
+    // 194 Zellen · die abgetreppte Buecherboeschung; die z-Diagonale der Kreide-Rutsche bleibt FREI
+    id: "p3_westterrasse_rutsche",
+    stem: "body_p3_westterrasse_rutsche",
+    c0: 0, r0: 15,
+    rows: [
+      "##########............",
+      "#############.........",
+      "##############........",
+      "################......",
+      "###################...",
+      "######################",
+      "####################..",
+      "####################..",
+      "####################..",
+      "####################..",
+      "####################..",
+    ],
+    pxPerCell: 64, overpaint: { l: 0, r: 0, t: 12, b: 16 },
+  },
+  {
+    // 48 Zellen · der freistehende Pultsockel in der Hofmitte
+    id: "p3_mittelpfeiler",
+    stem: "body_p3_mittelpfeiler",
+    c0: 22, r0: 17,
+    rows: [
+      "......##",
+      "......##",
+      "......##",
+      ".....###",
+      "####.###",
+      "########",
+      "########",
+      "########",
+      "########",
+    ],
+    pxPerCell: 64, overpaint: { l: 0, r: 0, t: 12, b: 16 },
+  },
+  {
+    // 187 Zellen · Ostmauer mit Ausgangssims (60,14) und Boden bis zur Tuer
+    id: "p3_ostmauer_sims",
+    stem: "body_p3_ostmauer_sims",
+    c0: 40, r0: 14,
+    rows: [
+      "....................#...",
+      "................########",
+      "................########",
+      "................########",
+      "..........##############",
+      "..........##############",
+      "..........##############",
+      "########################",
+      "########################",
+      "########################",
+      "########################",
+      "########################",
+    ],
+    pxPerCell: 64, overpaint: { l: 0, r: 0, t: 12, b: 16 },
+  },
+];
+
+/**
  * JEDER DEKLARIERTE KÖRPER MIT SEINEM RAUM — auch die, die noch nicht montiert
  * sind. Der Wareneingang misst ein geliefertes Blatt, BEVOR es in `CH01_BODIES`
  * wandert (dort landet ein Eintrag erst mit seinem angenommenen PNG), und er
@@ -377,6 +483,7 @@ export const DECLARED_BODIES: ReadonlyArray<{ phase: string; body: VisualBody }>
   { phase: "p2", body: P2_EXEMPLAR_BODY },
   ...P2_WAVE_BODIES.map((body) => ({ phase: "p2", body })),
   ...P1_WAVE_BODIES.map((body) => ({ phase: "p1", body })),
+  ...P3_WAVE_BODIES.map((body) => ({ phase: "p3", body })),
 ];
 
 /** Die live montierten Körper je Phase. Ein Eintrag kommt erst MIT seinem PNG. */
@@ -385,4 +492,6 @@ export const CH01_BODIES: Record<string, readonly VisualBody[]> = {
   p1: P1_WAVE_BODIES,
   // R7: das Nacht-Klassenzimmer ist VOLLSTÄNDIG gemalt — Exemplar + Welle.
   p2: [P2_EXEMPLAR_BODY, ...P2_WAVE_BODIES],
+  // N7A2: der Schulhof-Garten ist VOLLSTÄNDIG gemalt — sechs Körper, 493 Zellen.
+  p3: P3_WAVE_BODIES,
 };

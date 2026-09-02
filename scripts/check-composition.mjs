@@ -1173,6 +1173,11 @@ const SCALE_ANISO_TOL = 0.02;
  * und beide liegen ausserhalb dieser Bahn — geroutet, nicht still.
  */
 const SCALE_WAIVERS = {
+  // N7A2: die zwei p3-Moebel-Zeilen (`ledge_windowsill` 1,17x, `plat_column2_1`
+  // 0,66x) sind gefallen. Beide Blaetter sind neu gemalt und tragen jetzt eine
+  // GEPRUEFTE Stufe (`pxPerCell: 64`, Blattbreite = Zellen x 64 exakt) — damit
+  // gilt fuer sie die Kurs-Paritaet nicht mehr, ihre Zeilen wurden nie wieder
+  // konsultiert, und die Schal-Pruefung unten hat sie selbst genannt.
   // ── DIE VIER ECKEN · ★ EINE NARBE, KEINE BEQUEMLICHKEIT (M1, 2026-08-22) ───
   //
   // Die Eckblaetter sind 512x504 / 512x503 / 512x494 / 510x432 und werden in
@@ -1209,8 +1214,6 @@ const SCALE_WAIVERS = {
   // retired pre-R4 furniture no longer appears in these rooms and therefore
   // has no live scale waiver to carry.
   // ── ch01/p3 · SIMS UND BLATT GEHEN NICHT AUF ──────────────────────────────
-  "ch01/p3:platform:ledge_windowsill": { until: "2026-11-30", why: "gemalt 1,70 Zellen, gezeichnet auf 2 (1,17x) — 2 ist die naechste ganze Zelle, 1 waere 0,59x und damit doppelt so falsch. Die Fensterbank ist ZU GROSS, nicht zu klein; ein Blatt von 1,5 Zellen Breite loest es. Faellt mit AS6-P3" },
-  "ch01/p3:platform:plat_column2_1": { until: "2026-11-30", why: "gemalt 1,51 Zellen, gezeichnet auf 1 (0,66x) — das einzige 1-Zellen-Objekt des Hofes, und p3 hat einen 1-Zellen-Sims. Genau auf der Rundungsgrenze: 1,51 rundet auf 2 und zeichnete dann 1,33x" },
   // ── ch01/p3 · DIE RUTSCHE IST EINE GEZEICHNETE ZELLE, KEINE TEXTUR ────────
   // Batch AF2 hat die Rutsche als ECHTE 45°-ZELLEN neu gemalt: jedes Modul ist
   // von Ecke zu Ecke in eine 512er-Zelle gezeichnet, und die Strebe darunter
@@ -1219,7 +1222,7 @@ const SCALE_WAIVERS = {
   // zeichnen (32 px statt 16) verschoebe die Rutsche gegen das Gitter, auf dem
   // ein Kind steht. Das ist kein Versehen wie bei den Ecken, sondern der
   // Vertrag, den die Kunst mitbringt.
-  "ch01/p3:slideTop:slide_top": { until: "2026-11-30", why: "gezeichnete 45°-ZELLE (Batch AF2): das Blatt ist von Ecke zu Ecke fuer EINE Gitterzelle gemalt, also ist 16 px die richtige Groesse und 0,48x die Folge davon, nicht ein Fehler. Im Welt-Massstab ruestete die Rutsche gegen das Gitter, auf dem gelaufen wird" },
+  "ch01/p3:slideTop:slide_top": { until: "2026-11-30", why: "gezeichnete 45°-ZELLE (Batch AF2): das Blatt ist von Ecke zu Ecke fuer EINE Gitterzelle gemalt, also ist 16 px die richtige Groesse und der Bruchteil die Folge davon, nicht ein Fehler. Im Welt-Massstab ruestete die Rutsche gegen das Gitter, auf dem gelaufen wird. ★ N7A2: die Zahl ist von 0,48x auf 0,39x gewandert, OHNE dass jemand die Rutsche angefasst hat — `paintScaleOf` liest die HOEHE von `crust_p3_a`, und der p3-Cutover hat das Blatt geloescht, also faellt der Welt-Massstab des Hofes auf FALLBACK_PAINT_SCALE (0,0649 -> 0,0802, +23,6 %). Die Rutschen-Module selbst sind unveraendert 16x16 (mass.ts Abschnitt 6, per Test festgehalten); gewandert ist das Lineal, nicht das Bild" },
   "ch01/p3:slideUnder:slide_under": { until: "2026-11-30", why: "wie slide_top: die Strebe IST der Keil derselben 512er-Zelle (mass.ts §6)" },
   "ch01/p3:slideFoot:slide_foot": { until: "2026-11-30", why: "wie slide_top: gezeichnete 45°-Zelle, eine Gitterzelle gross" },
   // ── ch01/p9 · DIE KLECKSKAMMER HAT NUR 2- UND 3-ZELLEN-SIMSE ──────────────
@@ -1243,7 +1246,7 @@ const waiverSeen = new Set();
  * Rein: gibt Meldungen zurueck, druckt nichts, und fasst `waiverSeen` nur an,
  * wenn es tatsaechlich eine Ausnahme verbraucht hat.
  */
-const judgeScale = ({ label, plan, want, srcSize, windowsSeen, courseLocks, waiverSeen, tieredStems = new Set() }) => {
+const judgeScale = ({ label, plan, want, srcSize, windowsSeen, courseLocks, waiverSeen, tieredStems = new Map() }) => {
   const bad = [];
   const said = [];
   // dieselbe Signatur wie die Datei-weiten `fail`/`note`, damit der gehobene
@@ -1310,6 +1313,28 @@ const judgeScale = ({ label, plan, want, srcSize, windowsSeen, courseLocks, waiv
     // deklarierte Absicht — Anisotropie- und Fenster-Gesetze gelten weiter,
     // die Kurs-Parität nicht (der Kurs selbst stirbt mit dem Raum-Cutover).
     if (p.kind === "platform" && tieredStems.has(p.stem)) {
+      // ★ N7A2 · EINE DEKLARATION, DIE NIEMAND NACHMISST, IST EIN FREIBRIEF.
+      //
+      // `pxPerCell` kauft hier die Ausnahme von der Kurs-Paritaet — und wurde
+      // selbst NIE geprueft. Ein Moebelblatt durfte 943 px breit sein und dabei
+      // „4 Zellen a 64 px" behaupten; dieses Tor sah weg, weil die Behauptung
+      // die Pruefung war. Genau davor warnt der Kommentar 60 Zeilen weiter oben
+      // fuer den Kachel-Weg („A declared width is not a licence to leave the
+      // scale ... the declaration itself is checked against the sheet below") —
+      // fuer die gestuften Moebel gab es diese zweite Haelfte nicht.
+      //
+      // Gemessen am 2026-09-02: alle elf gestuften Moebel des Bestands halten
+      // Blattbreite = Zellen x pxPerCell auf den Pixel genau. Das Tor ist also
+      // grun und trotzdem noetig: es haelt die Stufe, an der die Ein-Block-Welt
+      // ihren GPU- und Speicher-Deckel haengt (dieselbe Stufe, die ein Koerper
+      // 30 Zeilen weiter oben exakt einhalten muss).
+      const tier = tieredStems.get(p.stem);
+      if (tier !== undefined) {
+        const soll = tier.cells * tier.pxPerCell;
+        if (src.w !== soll) {
+          fail("painted-scale", `${label}: gestuftes Moebel ${p.stem} deklariert ${tier.cells} Zellen a ${tier.pxPerCell} px = ${soll} px, das Blatt ist aber ${src.w}x${src.h} — die Stufe ist behauptet, nicht gemalt`);
+        }
+      }
       continue;
     }
     const wKeyRoom = `${label}:${p.kind}:${p.stem}`;
@@ -1411,7 +1436,7 @@ for (const { label, ph, spec } of withSpec) {
     plan: planMass(ph.rows, spec.mass, srcSize),
     want: paintScaleOf(spec.mass, srcSize),
     srcSize, windowsSeen, courseLocks, waiverSeen,
-    tieredStems: new Set((spec.mass.platObjects ?? []).filter((o) => o.pxPerCell !== undefined).map((o) => o.stem)),
+    tieredStems: new Map((spec.mass.platObjects ?? []).filter((o) => o.pxPerCell !== undefined).map((o) => [o.stem, o])),
   });
   for (const m of v.said) note(m);
   for (const m of v.bad) fail("painted-scale", m);
@@ -1691,20 +1716,61 @@ if (process.argv.includes("--selftest")) {
   // nichts davon — ihr Plan besteht aus Koerper-Blaettern —, und seit p1 eine
   // ist, lief der Selbsttest auf einer Phase, an der sein Fall 1 gar nicht
   // greifen kann. Er sucht deshalb die erste Phase, die ihr Kit noch traegt.
-  const kitPhase = withSpec.find(({ ph, spec }) => !phaseIsOneBlock(ph.rows, spec.mass)) ?? withSpec[0];
-  if (kitPhase === undefined) { console.error("✗ M1-Selbsttest: keine Phase mit Manifest"); process.exit(1); }
+  // ★ N7A2 · …UND SIE MUSS AUCH MOEBEL TRAGEN. Zweite Zahlung derselben Klasse,
+  // einen Raum spaeter: seit p3 eine Ein-Block-Welt ist, faellt die Wahl auf p4 —
+  // und p4 hat NULL freistehende Plattform-Laeufe, zeichnet also kein einziges
+  // Moebel. Fall 3 („ein Moebel ohne eigene Ausnahme wird nicht von den
+  // Nachbarzeilen gedeckt") schrumpft dann eine leere Menge und bleibt gruen:
+  // ein Tamper, der nichts rot machen kann, hat nichts bewiesen. Die Wahl
+  // verlangt deshalb BEIDES — ein lebendes Kit UND geplante Moebel — und bricht
+  // laut ab, statt still auf eine Phase auszuweichen, an der ihre Faelle nicht
+  // greifen. Heute erfuellt p9 das (drei Moebel, Kit lebt).
+  const kitPhase = withSpec.find(({ ph, spec }) => !phaseIsOneBlock(ph.rows, spec.mass)
+    && planMass(ph.rows, spec.mass, srcSize).some((p) => p.kind === "platform"));
+  if (kitPhase === undefined) {
+    console.error("✗ M1-Selbsttest: keine Phase traegt zugleich ihr Kit UND gezeichnete Moebel — "
+      + "die drei Faelle unten koennten gar nicht feuern. Das ist ein Befund, keine Ausrede: "
+      + "entweder eine Fixture-Phase einchecken oder die Faelle neu schneiden.");
+    process.exit(1);
+  }
   const echterPlan = planMass(kitPhase.ph.rows, kitPhase.spec.mass, srcSize);
   const echtesWant = paintScaleOf(kitPhase.spec.mass, srcSize);
   const label = kitPhase.label;
   // …und dieselbe Moebel-Stufen-Liste wie der echte Lauf: ohne sie beurteilt der
   // Selbsttest ein gestuftes Blatt nach einer Regel, von der der Bestand es
   // ausdruecklich ausnimmt — zwei Lineale an derselben Frage.
-  const selbsttestTiered = new Set((kitPhase.spec.mass.platObjects ?? [])
-    .filter((o) => o.pxPerCell !== undefined).map((o) => o.stem));
+  const selbsttestTiered = new Map((kitPhase.spec.mass.platObjects ?? [])
+    .filter((o) => o.pxPerCell !== undefined).map((o) => [o.stem, o]));
   const fahre = (plan) => judgeScale({
     label, plan, want: echtesWant, srcSize, tieredStems: selbsttestTiered,
     windowsSeen: new Set(), courseLocks: new Set(), waiverSeen: new Set(),
   }).bad;
+
+  // ── ★ N7A2 · TAMPER FUER DIE GESTUFTE DEKLARATION ─────────────────────────
+  // Dieser Fall kann NICHT am echten Plan haengen: `kitPhase` ist per Definition
+  // die erste Phase, die ihr Kit noch traegt, und genau die hat heute keine
+  // gestuften Moebel (die gestuften liegen in den Ein-Block-Raeumen). Ein Tamper,
+  // der am Bestand nichts findet, beweist nichts — also bekommt dieses Gesetz
+  // synthetische Eingaben und wird an ihnen in beide Richtungen gezeigt.
+  const stufeStem = "__n7a2_stufe__";
+  const stufePlan = [{ kind: "platform", stem: stufeStem, x: 0, y: 0, w: 64, h: 64 }];
+  const stufeSrc = (stem) => (stem === stufeStem ? { w: 256, h: 100 } : srcSize(stem));
+  const stufeLauf = (cells, pxPerCell) => judgeScale({
+    label: "selbsttest/stufe", plan: stufePlan, want: echtesWant, srcSize: stufeSrc,
+    tieredStems: new Map([[stufeStem, { stem: stufeStem, cells, pxPerCell }]]),
+    windowsSeen: new Set(), courseLocks: new Set(), waiverSeen: new Set(),
+  }).bad;
+  if (stufeLauf(4, 64).length !== 0) {
+    console.error("✗ M1-Selbsttest: eine WAHRE Stufen-Deklaration (4 x 64 = 256 px) faellt:", stufeLauf(4, 64));
+    process.exit(1);
+  }
+  for (const [cells, px, wie] of [[3, 64, "zu schmal deklariert"], [4, 96, "falsche Stufe"]]) {
+    if (stufeLauf(cells, px).length !== 1) {
+      console.error(`✗ M1-Selbsttest-TAMPER "gestufte Deklaration ${wie}" blieb GRUEN`);
+      process.exit(1);
+    }
+  }
+  console.log("  ✓ gestufte Deklaration: 1 wahre gruen, 2 falsche rot (synthetisch)");
 
   const ecken = new Set(["cornerBL", "cornerBR", "inCornerL", "inCornerR"]);
   const faelle = [
@@ -1714,9 +1780,25 @@ if (process.argv.includes("--selftest")) {
     // traegt eine benannte Ausnahme; sie zu decken ist der Zweck der Ausnahme,
     // die Verzerrung zu decken war nie einer.) Das ist das rot -> gruen von
     // Posten 1.
-    ["der Kasten von gestern: quadratisch, und das Blatt ist es nicht", () =>
-      fahre(echterPlan.map((p) => (ecken.has(p.kind) ? { ...p, w: 12, h: 12 } : p))),
-      "verzogen"],
+    // ★ N7A2 · SYNTHETISCH, und aus einem gemessenen Grund. Dieser Fall haengt
+    // nicht am Raum, sondern an einer Geometrie: ein NICHT-quadratisches Blatt in
+    // einem quadratischen Kasten. Am echten Plan war er zweimal blind — erst,
+    // weil `kitPhase` auf eine Ein-Block-Welt fiel (N7A1), dann, weil die
+    // uebrigen Kit-Raeume zufaellig nur Ecken mit fast quadratischen Blaettern
+    // planen (512x504 in einem 12x12-Kasten sind 1,7 % Verzug, unter der
+    // Toleranz — gruen, ohne dass irgendetwas repariert waere). Mit dem echten
+    // Blattmass von `mass_incorner_r` (510x432, DAS Blatt des urspruenglichen
+    // Befunds) sind es 18,1 %, und der Fall prueft wieder, was er pruefen soll.
+    ["der Kasten von gestern: quadratisch, und das Blatt ist es nicht", () => {
+      const blatt = srcSize("mass_incorner_r") ?? { w: 510, h: 432 };
+      return judgeScale({
+        label: "selbsttest/ecke",
+        plan: [{ kind: "inCornerR", stem: "mass_incorner_r", x: 0, y: 0, w: 12, h: 12 }],
+        want: echtesWant,
+        srcSize: (stem) => (stem === "mass_incorner_r" ? blatt : srcSize(stem)),
+        windowsSeen: new Set(), courseLocks: new Set(), waiverSeen: new Set(), tieredStems: new Map(),
+      }).bad;
+    }, "verzogen"],
 
     // 2 · Eine Flaeche OHNE Ausnahme, aus dem Mass geschoben. Das ist der Fall,
     // fuer den Audit 10 urspruenglich gebaut wurde — er muss weiter feuern.
