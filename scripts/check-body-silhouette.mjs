@@ -320,7 +320,7 @@ const main = () => {
     const grid = gridOf(level, phase);
     const errors = measureBody(body, png, grid);
     if (errors.length === 0) {
-      console.log(`✓ ${body.id} (${bodyCells(body).length} Zellen): alle vier Gesetze halten`);
+      console.log(`✓ ${body.id} (${bodyCells(body).length} Zellen): alle fuenf Gesetze halten`);
     } else {
       failed++;
       console.error(`✗ ${body.id}:`);
