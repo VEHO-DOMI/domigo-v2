@@ -572,6 +572,15 @@ export class Sim {
         if (this.holdTicks > 0) this.holdTicks--;
         stepRedeemedOnly(this.world, this.grid);
       }
+      // N7B · EINE GEHALTENE TASTE BLEIBT GEHALTEN. `prevPad` stand bis hierher
+      // hinter diesem `return` und fror auf dem Tick ein, an dem die Karte
+      // aufging. Wer den Sprung über die Karte gedrückt hielt, bekam danach eine
+      // frische steigende Flanke serviert (`player.ts` liest `pad.jump &&
+      // !prevPad.jump`) — ein Absprung, den niemand ausgelöst hat. Fortgeschrieben
+      // zählt der gehaltene Knopf als das, was er ist: gehalten. Die
+      // `engagePressed`-Sperre unten bleibt davon unberührt und gewollt — ↑
+      // öffnet die eben geschlossene Karte nicht sofort wieder.
+      this.prevPad = { ...pad };
       return events; // the world holds its breath during a task
     }
     if (this.hitPauseTicks > 0) { this.hitPauseTicks--; return events; } // R3-6: impact freeze
@@ -813,7 +822,52 @@ export class Sim {
     // a world handed back is never mid-cinematic: closing the overlay closes
     // BOTH holds with it, so neither can survive the beat that set it (the
     // freeze-pairing law, PB-R1 · R3-1, applied to the holds' own flags).
-    if (!open) { this.holdOpen = false; this.holdTicks = 0; }
+    if (!open) { this.holdOpen = false; this.holdTicks = 0; this.resumeAfterCard(); }
+  }
+
+  /** N7B · DIE NAHT, AN DER DAS KIND ZURÜCKKOMMT.
+   *
+   *  `step` kehrt bei offener Karte vor dem Spieler zurück — die Welt hält den
+   *  Atem an. Was dabei niemand bemerkt hatte: sie hält auch seine ZÄHLER an.
+   *  Blinker, Treffer-Sperre und der Landetakt froren auf dem Tick ein, an dem
+   *  die Karte aufging, und liefen nach dem Schließen in voller Länge ab. Aus
+   *  »Karte weg« wurden so bis zu zwei Sekunden Flackern, ein Rest-Rückstoß und
+   *  eine zweite Lande-Animation — Koki: »he remains in this stunned animation«.
+   *
+   *  Die Karte hat den Beat erzählt; danach ist das Kind frei. Deshalb werden
+   *  die Zähler hier GELÖSCHT und nicht unter der Karte gealtert: wie lange eine
+   *  Karte stand, darf keine Spielvariable sein — sonst hinge das Spielgefühl an
+   *  der Lesegeschwindigkeit des Kindes.
+   *
+   *  Die Geschwindigkeit fasst die Naht nur an, wenn er GEWORFEN wurde (`stun`
+   *  ist die Marke des Rückstoßes): ein Tipp, den er im Lauf einsammelt, darf
+   *  ihm den Lauf nicht nehmen, und ein Sprung, in dem eine Karte aufgeht, darf
+   *  danach nicht wie ein Stein fallen (Kokis Entscheid, 02.09.). `grounded`
+   *  bleibt unangetastet — die Physik setzt ihn im nächsten Tick selbst ab.
+   *
+   *  ── WARUM NUR `vy` UND NICHT AUCH `vx` (N7B, gemessen) ──────────────────
+   *  Das Blatt verlangte beides auf null. Der Rückstoß der Tafel wird aber im
+   *  SELBEN Tick gesetzt, in dem ihre Karte aufgeht (`onEntityEvent`: erst
+   *  `applyKnockback`, dann `ask`) — er hat also nie einen Tick, in dem er
+   *  wirkt, und beide Nullen zusammen hätten den seitlichen Stoß vollständig
+   *  gestrichen. Das ist keine Politur, das ist eine Spielregel: `wenn sie unten
+   *  ist und man zu ihr geht, wird gelöscht` (Kokis Entscheid 15.08.) setzt
+   *  voraus, dass ein Treffer das Kind von der gefallenen Schicht WEGTRÄGT.
+   *  Gemessen: mit `vx = 0` gewinnt ein Kind, das die Tastatur nie anfasst, den
+   *  Tafel-Kampf — `dismiss-resumes.test.ts` »ein Kind, das stehen bleibt,
+   *  steckt trotzdem NIE fest« wird rot. Der Bogen NACH OBEN dagegen ist reine
+   *  Restanimation (Flug + zweite echte Landung), und genau der fällt hier weg.
+   *  Der Stoß bleibt also, die Sperre geht — das Kind fliegt steuerbar. */
+  private resumeAfterCard(): void {
+    const thrown = this.player.stun > 0;
+    this.player.blinkTicks = 0;
+    this.player.stun = 0;
+    this.player.landedAgo = 99; // ≥ LAND_SKIN_TICKS (11) und ≥ landStanceTicks (16)
+    if (thrown) this.player.vy = 0;
+    // die Pose wird NIE direkt gesetzt, sondern durch die eine Ableitung — sonst
+    // meldet `posePairErrors` ein Bild, das der Körper nicht deckt.
+    this.poseLocked = false;
+    this.finalizePose();
   }
 
   /** PK-R6 · H1: enter/leave the restore-hold — the world stays frozen for the
@@ -855,7 +909,14 @@ export class Sim {
       // (as the shared tail below does) would drop the ceremony's own card on
       // the floor and resume a world with an open round in it. Hence the early
       // return — the one branch that owns its own overlay bookkeeping.
+      //
+      // N7B: genau deshalb steht hier `resumeAfterCard()` und NICHT
+      // `setOverlay(false)` — die Naht gehört dem Kind, die Halte-Flaggen
+      // gehören der Zeremonie, und dieser Zweig zieht ggf. im selben Zug die
+      // nächste Runde auf. Er darf den Körper freigeben, ohne sich seine eigene
+      // Choreografie abzuräumen.
       this.overlayOpen = false;
+      this.resumeAfterCard();
       const mate = this.world.entities.find((x) => x.id === ctx.id);
       const done = awakenClassmate(this.world, ctx.id);
       if (!done) {
@@ -906,8 +967,9 @@ export class Sim {
       guardianKnotSolved(this.world, ctx.id);
     }
     // `console` and `ceremony` carry no world change — the beat IS the payoff,
-    // and answering it simply gives the world back.
-    this.overlayOpen = false;
+    // and answering it simply gives the world back. N7B: durch `setOverlay`,
+    // damit die Rückgabe an EINEM Ort steht — hier wird das Kind freigegeben.
+    this.setOverlay(false);
     return events;
   }
 
@@ -936,7 +998,7 @@ export class Sim {
    *  while she is mid-flight, and yanking her out of a telegraph the child has
    *  started reading would be the same class of defect pointing the other way. */
   dismissTask(ctx: TaskRequest["ctx"], events: SimEvent[] = []): SimEvent[] {
-    this.overlayOpen = false;
+    this.setOverlay(false); // N7B: derselbe Rückgabe-Ort wie beim Lösen
     const id = askerIdOf(ctx);
     const asker = id === null ? undefined : this.world.entities.find((e) => e.id === id);
     if (asker?.role === "guardian" && asker.state === "window") {
@@ -1108,6 +1170,7 @@ export class Sim {
           this.player = applyKnockback(this.player, fromDir, false);
         } else {
           this.player.iframes = PAINT.iframeTicks;
+          this.player.blinkTicks = PAINT.iframeTicks;
         }
         // PK-R6 · E · HIT = TASK, NEVER DEATH (doc 44 §4 ch01 C4: „a chalk hit =
         // knockback + a boss-window task"). Chalk that catches the child — in

@@ -18,19 +18,26 @@
 //    that actually ASKED (`servedUse`) so a rescue answered out of the unbound
 //    quickfire pool does not sprout a 45-second clock over a cage ceremony.
 //
-//  · THE RESOLUTION is now three beats in the order doc 44 §3.1.7 sets, which
-//    is the REVERSE of what shipped: the answer flies home → the world's change
-//    plays and is watched (the restore-hold, doc 42 §3) → only then the card
-//    celebrates. Before, the ✓ played first and the world changed after the
-//    card had already vanished, so a child never saw their own answer land.
+//  · THE RESOLUTION was three beats in the order doc 44 §3.1.7 sets (answer
+//    flies home → the world's change is watched under a held world → the card
+//    celebrates). N7B · KOKIS WALK, 02.09.: die drei Beats zusammen sind rund
+//    zwei Sekunden, in denen die Welt steht — »nach den Aufgaben ist noch immer
+//    ein delay mit dem Danke-Screen und danach ist man kurz in der freeze pose;
+//    es sollte genauso seamless und instant sein wie bei den Regel-Seiten«.
+//    Die richtige Antwort gibt die Welt deshalb SOFORT zurück. Der Jubel ist
+//    nicht gestrichen, er ist umgezogen: Farbflut, der Jubel der Figur
+//    (`cheerMs`, Wanduhr) und der Toast laufen in der LEBENDEN Welt weiter,
+//    während das Kind schon losläuft. Was wegfällt, ist ausschliesslich das
+//    Warten. ⚠ Das ändert doc 44 §3.1.7 — die Dokument-Seite zieht der
+//    Architekt nach.
 import React, { useState } from "react";
 import type { GameTaskV2 } from "@domigo/content-schema";
 import { MACHINES, type Grade } from "./machines.ts";
-import { CardShell, Cheer, type CardAlign } from "./CardShell.tsx";
-import { QUICKFIRE_MS, VERDICT_MS } from "./overlay-css.ts";
+import { CardShell, type CardAlign } from "./CardShell.tsx";
+import { QUICKFIRE_MS } from "./overlay-css.ts";
 import { prefersReducedMotion } from "./motion.ts";
 import { armedClockMs, clockMsFor } from "./timer.ts";
-import { RESTORE_HOLD_MS, type ResolutionBeat, answerTextOf, flightMs } from "./resolution.ts";
+import { answerTextOf } from "./resolution.ts";
 import {
   ChoiceCard, TypedCard, SpellCard, OrderCard, OddCard, WheelCard, MistakeCard, MemoryCard,
   RestoreCard, type Dispatch,
@@ -113,25 +120,11 @@ export function CardHost({
   const m = MACHINES[task.kind];
   const [state, setState] = useState<unknown>(() => m.init(task));
   const [attempts, setAttempts] = useState(0);
-  const [beat, setBeat] = useState<ResolutionBeat>("ask");
   /** the card may only end ONCE — a late timer must not fire after an answer,
    *  and a second tap during the resolution must not resolve twice */
   const endedRef = React.useRef(false);
   const cbRef = React.useRef({ onResolve, onDismiss, onWorldChange, onGrade });
   cbRef.current = { onResolve, onDismiss, onWorldChange, onGrade };
-  /** the resolution's timers, cleared on unmount. PK-R1's whole root cause was
-   *  a rule with two clocks and a timer nobody owned; this packet does not add
-   *  another one that can fire into a torn-down tree — so every beat's handle
-   *  lands in ONE list and the unmount empties it. */
-  const beatsRef = React.useRef<number[]>([]);
-  const after = (ms: number, fn: () => void): void => {
-    beatsRef.current.push(window.setTimeout(fn, ms));
-  };
-  React.useEffect(() => () => {
-    for (const t of beatsRef.current) window.clearTimeout(t);
-    beatsRef.current = [];
-  }, []);
-
   // doc 44 §2.9 · the timer policy, from the one map every reader shares. The
   // shell decides the LENGTH (it knows which being is asking, and the tier lives
   // on the being); the fallback keeps a bench or a test honest.
@@ -176,27 +169,15 @@ export function CardHost({
     const g = m.grade(next);
     if (g === "correct") {
       endedRef.current = true;
-      // reduced motion: every beat is already in its finished state, so the
-      // world changes and the card closes at once (the end-states law applied
-      // to time rather than to CSS — a beat you cannot see may not be waited on)
+      // ── N7B · DIE RICHTIGE ANTWORT GIBT DIE WELT SOFORT ZURÜCK ─────────────
+      // Die Welt ändert sich und die Karte geht — in DERSELBEN Runde, ohne eine
+      // einzige Uhr dazwischen. Das war bisher nur der Weg für »reduzierte
+      // Bewegung« („a beat you cannot see may not be waited on"); seit Kokis
+      // Walk ist es der Weg für alle: ein Beat, den man nicht spielen kann, ist
+      // dasselbe Warten, ob man ihn sieht oder nicht.
       const written = writtenTextOf(next, task);
-      if (prefersReducedMotion()) {
-        cbRef.current.onWorldChange?.(written);
-        cbRef.current.onResolve();
-        return;
-      }
-      // ── the three beats, in doc 44 §3.1.7's order ──
-      const answer = answerTextOf(task);
-      const fly = flightMs(answer);
-      setBeat("letters");
-      after(fly, () => {
-        setBeat("hold");                    // the card doffs …
-        cbRef.current.onWorldChange?.(written); // … and the world changes, watched
-        after(RESTORE_HOLD_MS, () => {
-          setBeat("cheer");                 // only now does the card celebrate
-          after(VERDICT_MS, () => cbRef.current.onResolve());
-        });
-      });
+      cbRef.current.onWorldChange?.(written);
+      cbRef.current.onResolve();
       return;
     }
     if (g === "wrong") {
@@ -214,8 +195,6 @@ export function CardHost({
     endedRef.current = true;
     cbRef.current.onDismiss();
   };
-
-  if (beat === "cheer") return <Cheer align={align} />;
 
   // R5-W1 · D1: the shell ranks the card's lines (glance.ts), and on a two-step
   // card WHICH line is the ask changes with the step — so the step and its own
@@ -238,8 +217,6 @@ export function CardHost({
       portraitWash={portraitWash}
       captive={captive}
       round={round}
-      flight={beat === "letters" ? answerTextOf(task) : null}
-      doff={beat === "hold"}
       colourAskDe={colourAskDe}
       actStep={step}
     >

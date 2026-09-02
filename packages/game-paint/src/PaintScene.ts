@@ -53,6 +53,7 @@ import {
 import {
   HERO2_SRC_SCALE,
   heroFullCell,
+  LAND_SKIN_TICKS,
   RIG_CELL,
   RIG_PART_ORDER,
   RIG_SRC_SCALE,
@@ -2766,7 +2767,13 @@ export class PaintScene extends Phaser.Scene {
     }
     // R5-W9 · F10 · D-621: und danach steht jede lebende Blase wieder im Bild.
     this.clampBubbles();
-    if (this.clothCardDue && this.player.grounded && !this.sim.overlayOpen) {
+    // N7B: …und sie wartet, bis die Landung DURCH ist. Sie ging bisher im
+    // Landetick selbst auf (`grounded` wird in genau dem Tick wahr); der Takt
+    // fror dann mitten in der Lande-Animation ein, und nach dem Kartenschluss
+    // lief deren Rest ab — die „kurz in der Landung klebende" Figur aus Kokis
+    // Befund. `LAND_SKIN_TICKS` ist dieselbe Grenze, an der die Rig-Schicht die
+    // Landung für gezeichnet hält.
+    if (this.clothCardDue && this.player.grounded && this.player.landedAgo >= LAND_SKIN_TICKS && !this.sim.overlayOpen) {
       this.clothCardDue = false;
       this.cfg.callbacks.onClothCard();
     }
@@ -4228,7 +4235,13 @@ export class PaintScene extends Phaser.Scene {
       this.player.facing * (full !== null ? 1 : pose.scaleX) * coil.sx,
       (full !== null ? 1 : pose.scaleY) * coil.sy,
     );
-    const flicker = this.player.iframes > 0 && this.player.iframes % 8 < 4;
+    // N7B · zwei Änderungen an einer Zeile: der Blinker liest jetzt seine EIGENE
+    // Uhr (`blinkTicks`, nicht die Unverwundbarkeit `iframes` — die bleibt
+    // Spielregel und 120 Ticks lang), und solange eine Karte steht, blinkt gar
+    // nichts. Beides zusammen beendet das „Kleben bei Alpha 0,45": der Takt hält
+    // unter der Karte an, also stand die halbdurchsichtige Phase vorher die ganze
+    // Kartendauer still.
+    const flicker = !this.sim.overlayOpen && this.player.blinkTicks > 0 && this.player.blinkTicks % 8 < 4;
     this.rigRoot.setAlpha(flicker ? 0.45 : 1);
     // ── PK-R6 · H2 · THE CONTACT RIM (round-2 findings 2 and 8) ───────────────
     // „Separate the two characters' silhouettes with a rim-light so the collision
