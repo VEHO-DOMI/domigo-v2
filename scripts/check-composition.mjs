@@ -1679,13 +1679,23 @@ const judgeKit = (kit, key) => {
 // Eckstueck in einem 12x12-Kasten. Er MUSS rot werden; der heutige Plan (Fall
 // 4) ist gruen. Das ist das rot→gruen, das Posten 1 beweist.
 if (process.argv.includes("--selftest")) {
-  const kitPhase = withSpec[0];
+  // R7/N7 · Die Phase heisst hier nicht umsonst `kitPhase`: die drei Tamper
+  // unten biegen Ecken, Flaechen und Moebel eines KITS. Eine Ein-Block-Welt hat
+  // nichts davon — ihr Plan besteht aus Koerper-Blaettern —, und seit p1 eine
+  // ist, lief der Selbsttest auf einer Phase, an der sein Fall 1 gar nicht
+  // greifen kann. Er sucht deshalb die erste Phase, die ihr Kit noch traegt.
+  const kitPhase = withSpec.find(({ ph, spec }) => !phaseIsOneBlock(ph.rows, spec.mass)) ?? withSpec[0];
   if (kitPhase === undefined) { console.error("✗ M1-Selbsttest: keine Phase mit Manifest"); process.exit(1); }
   const echterPlan = planMass(kitPhase.ph.rows, kitPhase.spec.mass, srcSize);
   const echtesWant = paintScaleOf(kitPhase.spec.mass, srcSize);
   const label = kitPhase.label;
+  // …und dieselbe Moebel-Stufen-Liste wie der echte Lauf: ohne sie beurteilt der
+  // Selbsttest ein gestuftes Blatt nach einer Regel, von der der Bestand es
+  // ausdruecklich ausnimmt — zwei Lineale an derselben Frage.
+  const selbsttestTiered = new Set((kitPhase.spec.mass.platObjects ?? [])
+    .filter((o) => o.pxPerCell !== undefined).map((o) => o.stem));
   const fahre = (plan) => judgeScale({
-    label, plan, want: echtesWant, srcSize,
+    label, plan, want: echtesWant, srcSize, tieredStems: selbsttestTiered,
     windowsSeen: new Set(), courseLocks: new Set(), waiverSeen: new Set(),
   }).bad;
 
