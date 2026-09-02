@@ -667,11 +667,20 @@ const PLAT_OBJECTS: Record<string, MassKit["platObjects"]> = {
   // back wall carries four arched windows, so a sill under them is furniture the
   // room already implies. Measured off its opaque profile: the top plank IS the
   // walk surface (deck 0.02 — a hair, so the lip does not float).
+  // N7A2 · orthografisch neu gemalt, auf der Auflösungs-Stufe des Kapitels
+  // (64 px/Zelle — die Blätter waren 943, 420 und 372 px breit, eine ältere
+  // Konvention). `deck` an jedem neuen Blatt gemessen, Verfahren wie oben:
+  // erste Zeile, die 90 % der maximalen opaken Spannweite erreicht, ÷ Blatthöhe.
+  // Nur die Fensterbank brach Gesetz 13 wirklich (Reichweite 21 % — ein V);
+  // Bohle und Poller standen schon gerade und wurden wegen der Stufe und der
+  // fehlenden Hof-Identität neu geworfen. Der Poller kam in Runde 1 mit
+  // verbreitertem FUSS zurück: als SCHWEBENDE Plattform verletzt das Punkt 2
+  // („Schwebendes verjüngt nach unten") und schob die deck-Messung auf y=60
+  // von 72 — das Objekt hätte über seiner eigenen Linie geschwebt.
   p3: [
-    // R5-W9 · M1: 2 → 4 Zellen (gemalt 3,82 in diesem Raum; 0,52x → 1,05x).
-    { stem: "plat_plank_2", cells: 4, deck: 0 },
-    { stem: "ledge_windowsill", cells: 2, deck: 0.02 },
-    { stem: "plat_column2_1", cells: 1, deck: 0.01 },
+    { stem: "plat_plank_2", pxPerCell: 64, cells: 4, deck: 6 / 80 },
+    { stem: "ledge_windowsill", pxPerCell: 64, cells: 2, deck: 11 / 72 },
+    { stem: "plat_column2_1", pxPerCell: 64, cells: 1, deck: 6 / 72 },
   ],
   // p4 Tafel-Bühne — stage boards on crates, nothing soft.
   p4: [
@@ -974,6 +983,18 @@ const sharedTrims = (): Pick<MassKit, "edgeL" | "edgeR" | "cornerBL" | "cornerBR
   inCornerR: "mass_incorner_r",
 });
 
+/**
+ * WELCHE RÄUME IHRE MÖBEL ALS EIN STÜCK GEMALT HABEN.
+ *
+ * Ein Raum in dieser Menge bekommt keine `joint`/`postJoin`-Blätter: seine Möbel
+ * tragen ihre eigene Silhouette und brauchen keinen angesetzten Binder (Kanon,
+ * Anti-Kriterium »angesetztes Verbindungsstück«). Ein Raum, der noch das alte
+ * Kit-Mobiliar zeichnet, braucht sie weiter — deshalb ist das eine DEKLARATION
+ * und keine Ableitung aus `pxPerCell`: die beiden Fragen fallen heute zufällig
+ * zusammen, und zwei Wahrheiten an einer Stelle sind eine zu viel.
+ */
+const ONE_PIECE_FURNITURE_PHASES = new Set(["p1", "p2", "p3"]);
+
 const sharedMass = (phase: string): Omit<MassKit, "crust" | "crustCapL" | "crustCapR" | "slide"> => ({
   ...(PAINTED_MASS_PHASES.has(phase) ? paintedInterior(phase) : sharedInterior()),
   ...(PAINTED_TRIM_PHASES.has(phase) ? paintedTrims(phase) : sharedTrims()),
@@ -987,7 +1008,25 @@ const sharedMass = (phase: string): Omit<MassKit, "crust" | "crustCapL" | "crust
   proceduralGrain: phase !== "p1" && phase !== "p2",
   // R4: p1/p2 now use complete one-piece art; joins remain available for the
   // untouched phases until their own one-piece commission arrives.
-  ...(phase === "p1" || phase === "p2" ? {} : { joint: TERRAIN_JOIN_STEM, postJoin: TERRAIN_POST_JOIN_STEM }),
+  //
+  // ★ N7A2 (2026-09-02): p3 KOMMT DAZU — und der Weg dorthin ist der Grund, warum
+  // diese Zeile jetzt eine Liste ist. Der Hof war die erste Ein-Block-Welt MIT
+  // Verbindungsstücken: `massStems` zieht Kruste, Masse, Trims UND `joint`/
+  // `postJoin` zurück, sobald eine Phase ihr Kit nicht mehr zeichnet — aber
+  // `planMass` plante sie weiter, weil die Binder an den MÖBELN hängen
+  // (`platformJoinPieces`), nicht an der Masse. Gemessen: 43 geplante Stücke
+  // (14 Binder + 29 Sättel) gegen 0 geladene Blätter. Im laufenden Spiel wären
+  // das 43 leere Texturen — genau die Strecke zwischen Plan und Bild, an der
+  // N7A1 fast ein kaputtes Spiel mit grünen Toren ausgeliefert hätte. p1/p2
+  // haben es nie gezeigt, weil sie gar keine Binder hatten.
+  //
+  // Der Fix ist nicht, die Blätter zurückzuholen, sondern die Regel dieses
+  // Kommentars beim Wort zu nehmen: die Binder gehören den Räumen, deren Möbel
+  // noch NICHT als ein Stück gemalt sind. p3s drei Möbel sind es seit dieser
+  // Bahn (orthografisch, 64 px/Zelle, geprüfte Stufe) — ein angesetztes
+  // Verbindungsstück ist dort ohnehin ein Anti-Kriterium des Kanons. p4/p9
+  // behalten beide Blätter, sie sind geteilt und werden dort weiter gezeichnet.
+  ...(ONE_PIECE_FURNITURE_PHASES.has(phase) ? {} : { joint: TERRAIN_JOIN_STEM, postJoin: TERRAIN_POST_JOIN_STEM }),
   // No ramp sheets: R109 withdrew them and E6 deleted the two placeholders. A
   // surface that grows a slope orders its own (D-324, and the field's own note).
   platObjects: PLAT_OBJECTS[phase] ?? PLAT_OBJECTS.p1 ?? [],

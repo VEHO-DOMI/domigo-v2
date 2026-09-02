@@ -492,4 +492,6 @@ export const CH01_BODIES: Record<string, readonly VisualBody[]> = {
   p1: P1_WAVE_BODIES,
   // R7: das Nacht-Klassenzimmer ist VOLLSTÄNDIG gemalt — Exemplar + Welle.
   p2: [P2_EXEMPLAR_BODY, ...P2_WAVE_BODIES],
+  // N7A2: der Schulhof-Garten ist VOLLSTÄNDIG gemalt — sechs Körper, 493 Zellen.
+  p3: P3_WAVE_BODIES,
 };

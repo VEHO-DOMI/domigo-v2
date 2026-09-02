@@ -32,6 +32,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { PNG } from "pngjs";
 import { COMPOSITION } from "../packages/game-paint/src/composition.ts";
+import { phaseIsOneBlock } from "../packages/game-paint/src/mass.ts";
 import { CUT_ALPHA, importerWouldDelete, magentaness, readPng } from "./key-fringe.mjs";
 
 const R = process.cwd();
@@ -87,12 +88,29 @@ export const seamHits = (img) => {
 // Ein Praefix-Filter wuerde sie mit hereinziehen und das Tor unbrauchbar machen.
 // `crustOf` ist in composition.ts NICHT exportiert; die Kacheln kommen deshalb aus
 // dem fertigen Bauplan-Objekt.
-export const opaqueTileStems = (composition = COMPOSITION) => {
+/**
+ * ★ N7A2 · DER GELTUNGSBEREICH MUSS DEM CUTOVER FOLGEN.
+ *
+ * Diese Menge kam aus der DEKLARATION des Kits — und eine Ein-Block-Welt
+ * deklariert ihr Kit weiter (`crustOf(phase)` erzeugt die Namen), obwohl sie es
+ * nicht mehr laedt und die PNGs geloescht sind. Gemessen am 2026-09-02, nach dem
+ * p3-Cutover: **28 der 48 Kachel-Nennungen hatten gar keine Datei mehr** — 24
+ * Reste des p1/p2-Cutovers aus #389, vier aus dieser Bahn. Das Tor uebersprang
+ * sie still und nannte trotzdem eine Zahl.
+ *
+ * Zwei Folgen, beide schlecht: die Schal-Pruefung unten (»Ausnahme steht in
+ * keinem Bauplan«) konnte fuer geloeschte Kacheln nie feuern, also ueberlebten
+ * ihre Duldungszeilen die Loeschung; und die gemeldete Stueckzahl beschrieb
+ * einen Bestand, den es nicht mehr gibt. `oneBlockOf` reicht deshalb die
+ * berechnete Cutover-Antwort herein: ein Raum ohne Kit liefert keine Kacheln.
+ */
+export const opaqueTileStems = (composition = COMPOSITION, oneBlockOf = () => false) => {
   const out = new Map(); // stem → wo er deklariert ist (fuer die Fehlermeldung)
   for (const [chapter, phases] of Object.entries(composition)) {
     for (const [phaseId, spec] of Object.entries(phases)) {
       const m = spec?.mass;
       if (!m) continue;
+      if (oneBlockOf(chapter, phaseId, m)) continue; // Ein-Block-Welt: kein Kit, keine Kacheln
       const tiles = [
         ...m.crust,
         m.crustCapL,
@@ -171,12 +189,14 @@ const AS5B = "D-199: Innen-Naht der Kruste, gemessen am selben Stand. Ursache si
   + "AS5d und AS5e sind alle zurueckgewiesen, und die vorliegende AS5F-Lieferung meldet sich "
   + "selbst als INCOMPLETE (Wareneingang beim Architekten offen, R202). Import gehoert A9. "
   + "Faellt von selbst, sobald die neue Kachel liegt (das Tor meldet den Eintrag dann als schal).";
+// N7A2: die zwei `crust_p3_*`-Zeilen sind mit ihren Blaettern gefallen — der
+// p3-Cutover hat das Kit zurueckgezogen, der Loesch-Waechter die PNGs freigegeben.
+// Die Schal-Pruefung unten hat sie selbst genannt, sobald der Geltungsbereich dem
+// Cutover folgte; vorher haetten sie die Loeschung still ueberlebt.
 export const SEAM_ALLOW = [
   { stem: "crust_p4_a", seen: 2348, until: UNTIL, reason: AS5B },
   { stem: "crust_p4_b", seen: 2670, until: UNTIL, reason: AS5B },
   { stem: "crust_p9_b", seen: 305, until: UNTIL, reason: AS5B },
-  { stem: "crust_p3_a", seen: 162, until: UNTIL, reason: AS5B },
-  { stem: "crust_p3_b", seen: 4, until: UNTIL, reason: AS5B },
   { stem: "crust_p4_cap_l", seen: 3, until: UNTIL, reason: AS5B },
 ];
 
@@ -259,7 +279,27 @@ if (selftest) {
 }
 
 // ── Der Lauf ────────────────────────────────────────────────────────────────
-const scope = opaqueTileStems();
+/** Die Gitter des Kapitels — nur dafuer da, dem Geltungsbereich den Cutover zu sagen. */
+const gridsByChapter = new Map();
+{
+  const CONTENT = path.join(process.cwd(), "content/corpus/stories");
+  for (const story of fs.existsSync(CONTENT) ? fs.readdirSync(CONTENT) : []) {
+    const dir = path.join(CONTENT, story, "paint");
+    if (!fs.existsSync(dir)) continue;
+    for (const f of fs.readdirSync(dir).filter((x) => x.endsWith(".level.json"))) {
+      const level = JSON.parse(fs.readFileSync(path.join(dir, f), "utf8"));
+      const byPhase = new Map();
+      for (const ph of [...level.phases, ...(level.arena ? [level.arena] : []), ...(level.bonus ? [level.bonus] : [])]) byPhase.set(ph.id, ph.rows);
+      gridsByChapter.set(level.chapter, byPhase);
+    }
+  }
+}
+const oneBlockOf = (chapter, phaseId, mass) => {
+  const rows = gridsByChapter.get(chapter)?.get(phaseId);
+  return rows !== undefined && phaseIsOneBlock(rows, mass);
+};
+
+const scope = opaqueTileStems(COMPOSITION, oneBlockOf);
 if (scope.size === 0) {
   fail("kein Bauplan liefert deckende Kacheln — dieses Tor haette nichts mehr zu pruefen; "
     + "lies es neu, bevor du es loeschst");

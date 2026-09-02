@@ -1173,6 +1173,11 @@ const SCALE_ANISO_TOL = 0.02;
  * und beide liegen ausserhalb dieser Bahn — geroutet, nicht still.
  */
 const SCALE_WAIVERS = {
+  // N7A2: die zwei p3-Moebel-Zeilen (`ledge_windowsill` 1,17x, `plat_column2_1`
+  // 0,66x) sind gefallen. Beide Blaetter sind neu gemalt und tragen jetzt eine
+  // GEPRUEFTE Stufe (`pxPerCell: 64`, Blattbreite = Zellen x 64 exakt) — damit
+  // gilt fuer sie die Kurs-Paritaet nicht mehr, ihre Zeilen wurden nie wieder
+  // konsultiert, und die Schal-Pruefung unten hat sie selbst genannt.
   // ── DIE VIER ECKEN · ★ EINE NARBE, KEINE BEQUEMLICHKEIT (M1, 2026-08-22) ───
   //
   // Die Eckblaetter sind 512x504 / 512x503 / 512x494 / 510x432 und werden in
@@ -1209,8 +1214,6 @@ const SCALE_WAIVERS = {
   // retired pre-R4 furniture no longer appears in these rooms and therefore
   // has no live scale waiver to carry.
   // ── ch01/p3 · SIMS UND BLATT GEHEN NICHT AUF ──────────────────────────────
-  "ch01/p3:platform:ledge_windowsill": { until: "2026-11-30", why: "gemalt 1,70 Zellen, gezeichnet auf 2 (1,17x) — 2 ist die naechste ganze Zelle, 1 waere 0,59x und damit doppelt so falsch. Die Fensterbank ist ZU GROSS, nicht zu klein; ein Blatt von 1,5 Zellen Breite loest es. Faellt mit AS6-P3" },
-  "ch01/p3:platform:plat_column2_1": { until: "2026-11-30", why: "gemalt 1,51 Zellen, gezeichnet auf 1 (0,66x) — das einzige 1-Zellen-Objekt des Hofes, und p3 hat einen 1-Zellen-Sims. Genau auf der Rundungsgrenze: 1,51 rundet auf 2 und zeichnete dann 1,33x" },
   // ── ch01/p3 · DIE RUTSCHE IST EINE GEZEICHNETE ZELLE, KEINE TEXTUR ────────
   // Batch AF2 hat die Rutsche als ECHTE 45°-ZELLEN neu gemalt: jedes Modul ist
   // von Ecke zu Ecke in eine 512er-Zelle gezeichnet, und die Strebe darunter
@@ -1219,7 +1222,7 @@ const SCALE_WAIVERS = {
   // zeichnen (32 px statt 16) verschoebe die Rutsche gegen das Gitter, auf dem
   // ein Kind steht. Das ist kein Versehen wie bei den Ecken, sondern der
   // Vertrag, den die Kunst mitbringt.
-  "ch01/p3:slideTop:slide_top": { until: "2026-11-30", why: "gezeichnete 45°-ZELLE (Batch AF2): das Blatt ist von Ecke zu Ecke fuer EINE Gitterzelle gemalt, also ist 16 px die richtige Groesse und 0,48x die Folge davon, nicht ein Fehler. Im Welt-Massstab ruestete die Rutsche gegen das Gitter, auf dem gelaufen wird" },
+  "ch01/p3:slideTop:slide_top": { until: "2026-11-30", why: "gezeichnete 45°-ZELLE (Batch AF2): das Blatt ist von Ecke zu Ecke fuer EINE Gitterzelle gemalt, also ist 16 px die richtige Groesse und der Bruchteil die Folge davon, nicht ein Fehler. Im Welt-Massstab ruestete die Rutsche gegen das Gitter, auf dem gelaufen wird. ★ N7A2: die Zahl ist von 0,48x auf 0,39x gewandert, OHNE dass jemand die Rutsche angefasst hat — `paintScaleOf` liest die HOEHE von `crust_p3_a`, und der p3-Cutover hat das Blatt geloescht, also faellt der Welt-Massstab des Hofes auf FALLBACK_PAINT_SCALE (0,0649 -> 0,0802, +23,6 %). Die Rutschen-Module selbst sind unveraendert 16x16 (mass.ts Abschnitt 6, per Test festgehalten); gewandert ist das Lineal, nicht das Bild" },
   "ch01/p3:slideUnder:slide_under": { until: "2026-11-30", why: "wie slide_top: die Strebe IST der Keil derselben 512er-Zelle (mass.ts §6)" },
   "ch01/p3:slideFoot:slide_foot": { until: "2026-11-30", why: "wie slide_top: gezeichnete 45°-Zelle, eine Gitterzelle gross" },
   // ── ch01/p9 · DIE KLECKSKAMMER HAT NUR 2- UND 3-ZELLEN-SIMSE ──────────────
