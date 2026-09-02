@@ -123,6 +123,52 @@ const run = (sim: Sim, pad: Pad, ticks = RESUME_TICKS): void => {
   for (let t = 0; t < ticks; t++) sim.step(pad);
 };
 
+/** Der Zeremonie-Raum: Boden in Zeile 12, die Truhe und die Kameradin nebeneinander
+ *  auf Zeile 11 — dieselbe Aufstellung, an der `awakening.test.ts` die sechs
+ *  Runden prüft. */
+const CEREMONY_ROWS: readonly string[] = [
+  ...Array.from({ length: 11 }, () => ".".repeat(24)),
+  "..S.....................",
+  "#".repeat(24),
+  "#".repeat(24),
+];
+
+const ceremonySim = (): Sim => new Sim({
+  level: {
+    schema: "paintLevel@1",
+    id: "g1-ch99", chapter: "ch99", draft: true, name: "Test",
+    goalDe: "x", whyDe: "x", hintsDe: [], collectNounDe: "x", abilities: ["jump", "run"],
+    phases: [{
+      id: "p1", nameDe: "Test", surface: "normal", plates: {},
+      rows: [...CEREMONY_ROWS],
+      entities: [
+        { id: "cage-merle", role: "cage", skin: "pencilcase", c: 13, r: 11, tier: "E", params: { classmate: "merle" } },
+        { id: "merle", role: "classmate", skin: "merle", c: 15, r: 11, tier: "E", params: { cage: "cage-merle", hidden: true } },
+      ],
+      links: [], exit: { to: "done" },
+    }],
+  },
+  phaseId: "p1",
+  grantedAbilities: () => ["jump", "run"],
+  freedCageIds: () => [],
+});
+
+/** Auf die Truhe stellen und ↑ drücken — das Verb dieses Kapitels. Der
+ *  einmalige ↑-Hinweis friert die Welt selbst ein und wird weggelegt, genau wie
+ *  die Hülle es tut (`awakening.test.ts`). */
+const openTheCage = (sim: Sim): TaskRequest["ctx"] | null => {
+  sim.warp(13, 10);
+  const settle = (p: Pad): ReturnType<Sim["step"]> => {
+    const evs = sim.step(p);
+    if (evs.some((e) => e.type === "cageHint")) sim.setOverlay(false);
+    return evs;
+  };
+  settle(IDLE_PAD);
+  settle(IDLE_PAD); // ein Leertick, damit ↑ unten eine steigende Flanke ist
+  for (const ev of settle({ ...IDLE_PAD, up: true })) if (ev.type === "task") return ev.req.ctx;
+  return null;
+};
+
 describe("N7B · die Karte geht weg, das Kind läuft (< 100 ms)", () => {
   it("a · nach einer Regel-Seite läuft er im selben Atemzug weiter", () => {
     const sim = make([regelseite(24)]);
@@ -225,6 +271,29 @@ describe("N7B · die Karte geht weg, das Kind läuft (< 100 ms)", () => {
     }
     expect(sim.player.x, "…er läuft trotzdem sofort los").toBeGreaterThan(x0);
     expect(sim.player.grounded, "…und bleibt auf den Brettern").toBe(true);
+  });
+
+  it("e · auch die Zeremonie der Klassenkameradin gibt den Körper zurück", () => {
+    // Der dritte Schliess-Weg. `solveTask` hat für die Zeremonie einen eigenen
+    // frühen Ausgang (sie zieht im selben Zug die nächste Runde auf und führt
+    // deshalb ihre Karten-Buchhaltung selbst) — er läuft NICHT über
+    // `setOverlay(false)`. Ohne diesen Fall wäre die Naht an einem von drei
+    // Wegen ungeprüft, und genau dort steht die längste Kartenfolge des
+    // Kapitels: sechs Runden hintereinander, jede eine eigene Karte.
+    const sim = ceremonySim();
+    const first = openTheCage(sim);
+    expect(first, "die Truhe muss die erste Runde aufziehen").not.toBeNull();
+
+    // Er ist unterwegs gestreift worden und blinkt, als die Runde gelöst wird.
+    sim.player = { ...sim.player, iframes: 120, blinkTicks: 120 };
+    const evs = sim.solveTask(first!);
+    expect(sim.player.blinkTicks, "die Runde gibt den Körper zurück wie jede Karte").toBe(0);
+    expect(sim.player.stun).toBe(0);
+    // …und die Zeremonie behält ihre eigene Choreografie: die nächste Runde
+    // steht sofort, die Welt ist also weiterhin angehalten.
+    const next = evs.find((e) => e.type === "task");
+    expect(next, "Runde 2 folgt unmittelbar").toBeDefined();
+    expect(sim.overlayOpen, "…und hält die Welt weiter an").toBe(true);
   });
 });
 
