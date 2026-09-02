@@ -1,6 +1,6 @@
 # N7A2b · NACHMALUNG — das Möbelband des Nacht-Klassenzimmers und zwei Hof-Böden
 
-**Stand: 2026-09-02 · N7A2b · Runde 1** — diese Zeile zitierst du in Zeile 1 deiner
+**Stand: 2026-09-03 · N7A2b · Runde 1b** — diese Zeile zitierst du in Zeile 1 deiner
 Selbstauskunft. Kommt eine Order-Änderung, ändert sich diese Zeile; was du nicht
 zitieren kannst, hast du nicht gelesen.
 
@@ -16,6 +16,40 @@ Diese Order hat **zwei Posten mit zwei verschiedenen Verträgen**:
 bindend.** Punkt 13 ist der jüngste und darum eigens genannt: EINE orthografische
 Bodenebene fürs ganze Kapitel — gerade, waagrechte Aufstandskanten, keine
 3/4-Sockel, Seitenflächen ≤3°.
+
+## ★ Das Medium: gemalt, nicht gezeichnet (Nachtrag 03.09., an einem Fehlversuch bezahlt)
+
+Ein erster Anlauf dieser Order hat die zwei Körper-Blätter **mit Python/PIL
+gezeichnet** — `ImageDraw.rectangle`, `ImageDraw.line`, acht fest verdrahtete
+Farben, Bücher als Rechtecke in strengen waagrechten Reihen. Ergebnis: **alle fünf
+Gesetze grün, `check-ground-plane` grün, Reichweite 91 %, Kipp 0,0°** — und ein
+Bild, das wie ein Schaubild eines Bücherregals aussieht, mit genau der sichtbaren
+Wiederholungs-Periode, die in den Anti-Kriterien als Sofort-Durchfaller steht. Das
+Blatt war 37 kB groß statt 1,3 MB; flache Füllungen komprimieren sich eben gut.
+
+**Das ist die vierte Sprosse derselben Ausweich-Leiter** (Füllung → Rauschen →
+Wasch-Ton → **Vektor-Diagramm**), und sie ist die gefährlichste: sie maximiert
+genau die Größen, die die Tore messen, und zerstört dabei die Sache. Deshalb steht
+das Medium jetzt in der Order:
+
+- **Jedes Blatt entsteht mit dem Bildmodell** (`image_gen` / die `imagegen`-Kette
+  mit Chroma-Key und anschließendem lokalen Freistellen). Danach wird die Schablone
+  als Alphakanal aufgelegt, damit die Silhouette pixelgenau sitzt.
+- **Nicht erlaubt:** ein Blatt, das von Code gezeichnet wird — PIL/`ImageDraw`,
+  SVG, Kachel-Generatoren, prozedurale Muster. Auch nicht teilweise, auch nicht
+  „nur der Boden".
+- Bildbearbeitung **am gemalten Bild** (freistellen, maskieren, Wert korrigieren,
+  Saum säubern, verlustfrei nachverdichten) ist selbstverständlich erlaubt — das
+  ist Handwerk am Gemälde, kein Ersatz dafür.
+- **Ein prozedural gezeichnetes Blatt wird zurückgewiesen, auch wenn es jedes Tor
+  besteht.** Die Tore sind die Untergrenze, nicht das Ziel.
+
+**Und für Posten A dieselbe Linie:** derselbe Anlauf lieferte ein `l2_p2.png`, dessen
+Silhouette zu **100,0 %** deckungsgleich mit dem alten Blatt war und das 66 kB statt
+674 kB wog — also das alte Bild, umgefärbt. Das ist der Wertepass, den Koki
+ausdrücklich verworfen hat. **Umfärben ist kein Neu-Malen.** (Es traf die Ziele auch
+gar nicht: Luminanz 17,0 statt 15–16, Sättigung 37,5 statt ≤27, größter Naht-Sprung
+41,2 gegen heute 11,3.)
 
 ## Wie gemessen wird (damit deine Zahlen und meine dieselben sind)
 
