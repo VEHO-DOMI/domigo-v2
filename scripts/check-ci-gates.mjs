@@ -93,6 +93,32 @@ const IMPORTER_WITHOUT_CI_LINE = {
   // Bahn eines Zuges REBASED vor dem Merge, auch wenn GitHub sie als
   // »MERGEABLE/CLEAN« ausweist — sauber verschmelzen und noch richtig sein sind
   // zwei verschiedene Aussagen.
+
+  // ── N7A1 (2026-09-02) · WIEDER EIN EINTRAG, UND DIESMAL MIT MESSUNG (D-961) ──
+  //
+  // Die Prueflatte dieses Importeurs waren die acht p1-Innen-Blaetter. Der
+  // Ein-Block-Cutover hat sie zurueckgezogen — absichtlich, p1 laedt sein
+  // Massen-Kit nicht mehr. Der Selbsttest lief daraufhin mit NULL Pruefungen
+  // durch und meldete gruen; ein Tor ohne Pruefungen ist kein Tor, also ist die
+  // ci.yml-Zeile gestrichen und der Rueckzug im Skript selbst ein rotes Licht.
+  //
+  // WARUM NICHT EINFACH UMZIEHEN: gemessen an den Blaettern, die p3/p4/p9 noch
+  // zeichnen (das geteilte Innen-Kit mass_body_a/b, mass_fade, mass_sediment),
+  // faellt aus dem eigenen Fenster dieses Tors: DREI der vier Blaetter wurden
+  // zurueckgewiesen, mass_body_a mit n1 = 1,00 % gegen 1,5-9,5 % (das Fenster ist
+  // aus den alten acht Blaettern abgeleitet, angenommene Kunst 1,89-8,32 %). Eine andere
+  // Platte hiesse also eine Schwelle verschieben, und der Kopf der Importeur-
+  // Datei verbietet genau das.
+  //
+  // WAS DEN EINTRAG BEENDET: eine EINGECHECKTE Fixture-Platte. Diese Vorrichtung
+  // hat ihre Platte jetzt zweimal an eine Aussenwelt verloren — erst an einen
+  // Mac (R204), jetzt an einen Cutover. Eine Platte, die im Repo liegt, kann das
+  // nicht noch einmal passieren. Das ist ein Architekten-Entscheid, kein
+  // Nebenbei-Bau, deshalb steht hier eine Frist und keine Loesung.
+  "import-batch-as.mjs": {
+    until: "2026-10-15",
+    reason: "Pruefplatte war das p1-Innen-Kit, vom Ein-Block-Cutover zurueckgezogen; vom geteilten Kit wurden 3 von 4 Blaettern von der eigenen Vorrichtung zurueckgewiesen (mass_body_a n1 1,00 % gegen 1,5-9,5 %), eine andere Platte waere ein Schwellen-Verschieben. Endet mit einer eingecheckten Fixture-Platte (Architekten-Entscheid).",
+  },
 };
 
 
@@ -157,6 +183,18 @@ const SELFTEST_ONLY = {
   // Werkzeug, kein umdeklariertes Tor.
   "chrome-hygiene.mjs":
     "liest die Prozesstabelle und raeumt verwaiste EIGENE Chrome-Profile weg; in CI laeuft kein Chrome, ein echter Lauf faende per Konstruktion nichts. Der Selbsttest prueft die Unterscheidung eigen/fremd an einer ECHTEN Prozesstabelle mit angehaengten Fremd-Zeilen",
+  // N7A1 · derselbe Grund wie die zwei Werkzeuge daueber: der Schablonen-Erzeuger
+  // SCHREIBT Blaetter. Ein echter Lauf in CI wuerde die sechs committeten Masken
+  // ueberschreiben und damit genau den Vergleich aushebeln, den sein Selbsttest
+  // fuehrt. Er gehoert trotzdem in CI: die sechs Masken lagen ein halbes Jahr im
+  // Repo, ohne dass ein Skript sie erzeugen konnte, und ein Werkzeug ohne
+  // Selbsttest in der CI ist wieder nur eine Behauptung (das Artefakt + sein
+  // Erzeuger + sein Selbsttest gehoeren zusammen).
+  "make-body-stencils.mjs":
+    "SCHREIBT Blätter (die Magenta-Schablonen unter docs/n6-auftrag/lieferung/masken/); ein echter Lauf in CI "
+    + "würde genau die sechs committeten Masken überschreiben, gegen die sein Selbsttest vergleicht. Der "
+    + "Selbsttest baut alle sechs nach und misst Pixel-Gleichheit (heute 6× 100,000 %), mit Tamper auf einer "
+    + "gekippten Masken-Zelle — er schreibt dabei keine Datei",
   "art-recompress.mjs":
     "SCHREIBT PNGs (verlustfreie Nachverdichtung) — ein echter Lauf in CI würde die Arbeitskopie verändern und den Beweis von check-png-identity aushebeln. Der Selbsttest prüft die Doppellauf-Sperre (D-339) ohne eine Datei anzufassen",
 };

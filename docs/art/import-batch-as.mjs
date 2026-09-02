@@ -1553,10 +1553,23 @@ if (process.argv.includes("--selftest")) {
     process.exit(1);
   }
   if (missing.length === PLATE_CELLS.length) {
-    console.log(`⚠ import-batch-as --selftest ÜBERSPRUNGEN: alle ${PLATE_CELLS.length} Blätter der Prüf-Platte sind zurückgezogen`);
-    console.log(`  (${PLATE_CELLS.join(", ")})`);
-    console.log("  p1 ist seit N7A1 eine Ein-Block-Welt und lädt sein Massen-Kit nicht mehr. 0 von sonst ~20 Prüfungen gefahren.");
-    process.exit(0);
+    // ── N7A1 · D-961 · EIN ÜBERSPRUNGENES TOR MELDET KEIN GRÜN ───────────────
+    // Der erste Anlauf dieser Bahn liess hier exit 0 zu, und damit lief dieses
+    // Skript in CI mit NULL Prüfungen durch — gruen, und nichts gemessen. Ein
+    // Tor ohne Pruefungen ist kein Tor. Der Rueckzug der Platte ist ab jetzt ein
+    // ROTES Licht, und die CI-Zeile ist stattdessen gestrichen und in
+    // scripts/check-ci-gates.mjs (IMPORTER_WITHOUT_CI_LINE) mit Frist erklaert.
+    console.error(`✗ import-batch-as --selftest: alle ${PLATE_CELLS.length} Blätter der Prüf-Platte sind zurückgezogen`);
+    console.error(`  (${PLATE_CELLS.join(", ")})`);
+    console.error("  p1 ist seit N7A1 eine Ein-Block-Welt und lädt sein Massen-Kit nicht mehr — die Platte ist Geschichte.");
+    console.error("  GEMESSEN, warum sie sich nicht einfach umziehen laesst: das geteilte Innen-Kit, das p3/p4/p9 noch");
+    console.error("  zeichnen (mass_body_a/b, mass_fade, mass_sediment), faellt aus dem eigenen Fenster: DREI der vier");
+    console.error("  Blaetter wurden zurueckgewiesen, mass_body_a mit n1 = 1,00 % gegen 1,5-9,5 % (das Fenster stammt aus");
+  console.error("  den ALTEN acht Blaettern, angenommene Kunst 1,89-8,32 %).");
+    console.error("  Eine andere Platte hiesse also, eine Schwelle zu verschieben, und genau davor warnt der Kopf dieser Datei.");
+    console.error("  Der haltbare Ausweg waere eine EINGECHECKTE Fixture-Platte (diese Vorrichtung hat ihre Platte jetzt");
+    console.error("  zweimal an eine Aussenwelt verloren: erst an einen Mac, dann an einen Cutover) — Architekten-Entscheid.");
+    process.exit(1);
   }
   const CELL = 512;
   const plate = new PNG({ width: CELL * 4, height: CELL * 2 });
@@ -1842,6 +1855,13 @@ if (process.argv.includes("--selftest")) {
   }
 
   console.log(`\n  ${ran} assertion(s) run · ${skipped} skipped · ${bad} failed`);
+  // N7A1 · D-961 · Die Zahl der gefahrenen Pruefungen ist selbst eine Bedingung.
+  // Sie kann nicht auf 0 fallen, ohne rot zu werden — die Klasse "gruenes Tor,
+  // das nichts misst" ist damit an dieser Stelle geschlossen.
+  if (ran === 0) {
+    console.error("✗ import-batch-as selftest: 0 Prüfungen gefahren — ein Tor, das nichts misst, meldet kein Grün (D-961)");
+    process.exit(1);
+  }
   if (bad > 0) { console.error("✗ import-batch-as selftest: FAILED"); process.exit(1); }
   console.log("✓ selftest: accepted art stays green; a hidden seam, a flattened painting, a copied cell, a band of the\n"
     + "  wrong height and the wrong tiling axis all go red; a generator grid and pure noise both clear the texture\n"

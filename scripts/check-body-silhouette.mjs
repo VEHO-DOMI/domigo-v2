@@ -106,7 +106,7 @@ export const measureBody = (body, png, grid) => {
   }
   // Gesetz 4 · KEIN LOCH. Die drei Gesetze oben messen ALPHA — und deckendes
   // Schwarz ist deckend. N7A1 hat die Lücke bezahlt: zwei p1-Blätter kamen mit
-  // 100 % Deckung durch alle drei Gesetze, während 19 bzw. 16 Pflicht-Zellen
+  // 100 % Deckung durch alle drei Gesetze, während 17 bzw. 15 Pflicht-Zellen
   // reines Schwarz waren (L = 0,0 · SD = 0,00) — der Maler hatte den Boden zu
   // früh abreißen lassen und den Rest gefüllt. Ein Kind wäre über ein schwarzes
   // Rechteck gelaufen, und kein Tor hätte es gesagt.

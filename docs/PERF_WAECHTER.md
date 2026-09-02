@@ -56,10 +56,13 @@ von p1 und p2, das absorbierte `terrain_atlas_podest_p1` und das längst tote
 `band_p1_hallway`. Freigegeben hat sie keine Aufräumaktion, sondern eine
 Rechnung: `mass.ts#phaseIsOneBlock` fragt das Raster, ob die Sicht-Körper einer
 Phase jede solide Zelle besitzen, die nicht einem Möbel gehört. Trifft das zu,
-listet `massStems` das Kit nicht mehr. Gemessene Phasen-Gewichte danach
-(Grenze bleibt 35 MB): **p1 20,2 → 18,0 MB · p2 27,0 → 23,9 MB · p3 19,6 ·
-p4 16,6 · p9 13,7 MB** — p3/p4/p9 unverändert, kein Blatt dieser Räume war
-in der Differenz.
+listet `massStems` das Kit nicht mehr. Gemessene Phasen-Gewichte danach, mit dem Lineal, das
+`check-perf-budget` selbst benutzt (der ganze Baum unter `apps/web/public/art/g1/paint`,
+nicht nur der ch01-Ordner — die Helden-Figur und die geteilten Blätter zählen mit):
+**p1 21,5 → 19,4 MB · p2 28,3 → 25,3 MB · p3 20,9 · p4 18,0 · p9 15,1 MB**
+(Grenze bleibt 35 MB) — p3/p4/p9 unverändert, kein Blatt dieser Räume war in der
+Differenz. ⚠ Ein zweites, engeres Lineal (nur der ch01-Ordner) misst dieselben Räume
+1,4–2,1 MB leichter; wer eine Zahl vergleicht, nennt das Verfahren dazu.
 
 **★ Runde 4 (2026-08-31): 58 tote Blätter.** Die 17 neuen Ein-Stück-Terrainblätter
 werden von p1/p2 geladen und zählen daher nicht als tote Kunst. Der aktuelle Checkout
