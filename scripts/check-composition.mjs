@@ -1716,8 +1716,23 @@ if (process.argv.includes("--selftest")) {
   // nichts davon — ihr Plan besteht aus Koerper-Blaettern —, und seit p1 eine
   // ist, lief der Selbsttest auf einer Phase, an der sein Fall 1 gar nicht
   // greifen kann. Er sucht deshalb die erste Phase, die ihr Kit noch traegt.
-  const kitPhase = withSpec.find(({ ph, spec }) => !phaseIsOneBlock(ph.rows, spec.mass)) ?? withSpec[0];
-  if (kitPhase === undefined) { console.error("✗ M1-Selbsttest: keine Phase mit Manifest"); process.exit(1); }
+  // ★ N7A2 · …UND SIE MUSS AUCH MOEBEL TRAGEN. Zweite Zahlung derselben Klasse,
+  // einen Raum spaeter: seit p3 eine Ein-Block-Welt ist, faellt die Wahl auf p4 —
+  // und p4 hat NULL freistehende Plattform-Laeufe, zeichnet also kein einziges
+  // Moebel. Fall 3 („ein Moebel ohne eigene Ausnahme wird nicht von den
+  // Nachbarzeilen gedeckt") schrumpft dann eine leere Menge und bleibt gruen:
+  // ein Tamper, der nichts rot machen kann, hat nichts bewiesen. Die Wahl
+  // verlangt deshalb BEIDES — ein lebendes Kit UND geplante Moebel — und bricht
+  // laut ab, statt still auf eine Phase auszuweichen, an der ihre Faelle nicht
+  // greifen. Heute erfuellt p9 das (drei Moebel, Kit lebt).
+  const kitPhase = withSpec.find(({ ph, spec }) => !phaseIsOneBlock(ph.rows, spec.mass)
+    && planMass(ph.rows, spec.mass, srcSize).some((p) => p.kind === "platform"));
+  if (kitPhase === undefined) {
+    console.error("✗ M1-Selbsttest: keine Phase traegt zugleich ihr Kit UND gezeichnete Moebel — "
+      + "die drei Faelle unten koennten gar nicht feuern. Das ist ein Befund, keine Ausrede: "
+      + "entweder eine Fixture-Phase einchecken oder die Faelle neu schneiden.");
+    process.exit(1);
+  }
   const echterPlan = planMass(kitPhase.ph.rows, kitPhase.spec.mass, srcSize);
   const echtesWant = paintScaleOf(kitPhase.spec.mass, srcSize);
   const label = kitPhase.label;
@@ -1765,9 +1780,25 @@ if (process.argv.includes("--selftest")) {
     // traegt eine benannte Ausnahme; sie zu decken ist der Zweck der Ausnahme,
     // die Verzerrung zu decken war nie einer.) Das ist das rot -> gruen von
     // Posten 1.
-    ["der Kasten von gestern: quadratisch, und das Blatt ist es nicht", () =>
-      fahre(echterPlan.map((p) => (ecken.has(p.kind) ? { ...p, w: 12, h: 12 } : p))),
-      "verzogen"],
+    // ★ N7A2 · SYNTHETISCH, und aus einem gemessenen Grund. Dieser Fall haengt
+    // nicht am Raum, sondern an einer Geometrie: ein NICHT-quadratisches Blatt in
+    // einem quadratischen Kasten. Am echten Plan war er zweimal blind — erst,
+    // weil `kitPhase` auf eine Ein-Block-Welt fiel (N7A1), dann, weil die
+    // uebrigen Kit-Raeume zufaellig nur Ecken mit fast quadratischen Blaettern
+    // planen (512x504 in einem 12x12-Kasten sind 1,7 % Verzug, unter der
+    // Toleranz — gruen, ohne dass irgendetwas repariert waere). Mit dem echten
+    // Blattmass von `mass_incorner_r` (510x432, DAS Blatt des urspruenglichen
+    // Befunds) sind es 18,1 %, und der Fall prueft wieder, was er pruefen soll.
+    ["der Kasten von gestern: quadratisch, und das Blatt ist es nicht", () => {
+      const blatt = srcSize("mass_incorner_r") ?? { w: 510, h: 432 };
+      return judgeScale({
+        label: "selbsttest/ecke",
+        plan: [{ kind: "inCornerR", stem: "mass_incorner_r", x: 0, y: 0, w: 12, h: 12 }],
+        want: echtesWant,
+        srcSize: (stem) => (stem === "mass_incorner_r" ? blatt : srcSize(stem)),
+        windowsSeen: new Set(), courseLocks: new Set(), waiverSeen: new Set(), tieredStems: new Map(),
+      }).bad;
+    }, "verzogen"],
 
     // 2 · Eine Flaeche OHNE Ausnahme, aus dem Mass geschoben. Das ist der Fall,
     // fuer den Audit 10 urspruenglich gebaut wurde — er muss weiter feuern.

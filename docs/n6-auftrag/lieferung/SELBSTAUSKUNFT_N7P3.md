@@ -1,123 +1,81 @@
-Stand: 2026-09-02 · N7A2 · Runde 2
+Stand: 2026-09-02 · N7A2 · Runde 3
 
-# SELBSTAUSKUNFT N7P3 · RUNDE 2
+# SELBSTAUSKUNFT N7P3 · RUNDE 3 · LETZTE
 
-Die drei Bodenblätter wurden jeweils als neuer Ganzblatt-Bildwurf über die
-gesamte Maske erzeugt. Die Deckenbahnen wurden nicht angefasst. Es gab keine
-Zellretusche und kein Collage-Pixel aus einem anderen Blatt; technische Schritte
-waren nur Maßkonformierung, Masken-Alpha, globale Wertmessung und der zulässige
-untere Übermalrand.
+Die drei Bodenblätter wurden je als ein neuer Ganzblatt-Bildwurf über die
+gesamte jeweilige Maske erzeugt. Die Komposition, Silhouette, Palette und der
+Wertvertrag von Runde 2 bleiben erhalten. Die Korn-/Noise-Ebene wurde nicht
+verwendet; die Struktur kommt aus gezeichneten Buchrücken, Bindungen,
+Seitenblöcken und wenigen langen Nähten mit ruhigen Flächen dazwischen.
+Die drei Deckenbahnen wurden nicht angefasst.
 
 ## Gemessene Lieferung
 
-Luminanz je sichtbarem Pixel: `0,299R + 0,587G + 0,114B`. Zell-SD: dieselbe
-Luminanz über die mittleren 80 % jeder Pflichtzelle. Band/Körper: mittlere
+Luminanz je sichtbarem Pixel: `0,2126R + 0,7152G + 0,0722B`, relativ zu 255.
+Sättigung: HSV-Sättigung über sichtbare Pixel. Zell-SD und Kanten-Dichte werden
+über die inneren 80 % jeder Pflichtzelle gemessen. Kanten-Dichte bedeutet hier:
+Anteil der Pixel, deren lokaler zweidimensionaler Luminanzsprung größer als 12
+Punkte ist; gemeldet wird der Median je Blatt. Band/Körper ist die mittlere
 Luminanz der obersten 10 px aller Steh-Zellen geteilt durch die mittlere
-Blattluminanz. Sättigung: HSV-Sättigung über sichtbare Pixel.
+Blattluminanz.
 
-| Blatt | Maß | MD5 | mittlere Luminanz | Sättigung | kleinste Wert-SD | Band/Körper | kleinste Band/Körper-Zelle |
+| Blatt | Maß | MD5 | mittlere Luminanz | Sättigung | kleinste Wert-SD | Band/Körper | Kanten-Dichte Median |
 |---|---:|---|---:|---:|---:|---:|---:|
-| `body_p3_westterrasse_rutsche.png` | 1408×732 | `c4a8cdfef5c0c7028c17bec32b4ba314` | 33,56 % | 62,11 % | 19,28 | 1,54 | 1,43 |
-| `body_p3_ostmauer_sims.png` | 1536×796 | `00480fd202a67ac51febe30317b28a41` | 33,52 % | 63,46 % | 21,50 | 1,46 | 1,41 |
-| `body_p3_mittelpfeiler.png` | 512×604 | `0d61a39504712adc2040ae9df7fe81b4` | 33,28 % | 59,92 % | 30,87 | 1,71 | 1,46 |
+| `body_p3_westterrasse_rutsche.png` | 1408×732 | `f315e4de454c1de9507f78d215f0e750` | 34,91 % | 64,17 % | 3,76 | 1,44 | 26,0 % |
+| `body_p3_mittelpfeiler.png` | 512×604 | `e1d533a0ee7197d34a5d5ee2324e6703` | 34,59 % | 57,69 % | 23,86 | 1,42 | 60,0 % |
+| `body_p3_ostmauer_sims.png` | 1536×796 | `c6e3b7e04f2ddbd31f8fc8508e94cefe` | 34,92 % | 67,64 % | 9,94 | 1,41 | 36,3 % |
 
-Alle drei Bodenblätter liegen im Wertkorridor 30–38 %, übertreffen 45 %
-Sättigung, liegen über dem Richtwert SD ≥ 4 und übertreffen Band/Körper ≥ 1,3.
+Alle drei Blätter liegen im Wertkorridor 30–38 %, nahe am Zielwert 34 %,
+überschreiten 45 % Sättigung, haben strukturierte Pflichtzellen und liegen beim
+Band/Körper-Vertrag über 1,3. Die Kanten-Dichte liegt bei allen drei Blättern
+unter dem verbindlichen Grenzwert von 80 %.
 
-Die angenommenen, unveränderten Deckenbahnen behalten ihre MD5-Prüfsummen:
+## Kanoncheck · 13 Punkte
 
-- `body_p3_deckenbahn_west.png` — `760c4d4a0f4d0b9e6befa9d9b5fcc215`
-- `body_p3_deckenbahn_mitte.png` — `1fef1c42a429448efe0d82a015903f0a`
-- `body_p3_deckenbahn_ost.png` — `47b01bd83ffa282d037b853c596510a2`
+Für alle drei Bodenblätter: **1 Benennbarkeit — Ja**, Buchterrasse bzw.
+Buchmauer klar lesbar; **2 Silhouette — Ja**, Pflichtzellen und freie Gebiete
+maskengerecht; **3 Laufkante — Ja**, gerade und hell; **4 Unterseite/Flanke —
+Ja**, Rücken, Schnitte und Seitenlagen tragen die Masse; **5 Innen-Modulation —
+Ja**, keine flache Pflichtzelle; **6 Verbindungslogik — Ja**, die Buchlagen
+wachsen im Verband; **7 Material = Spielrolle — Ja**, tragende Hofmaterie und
+Laufflächen bleiben unterscheidbar; **8 Tiefen-Palette — Ja**, warme Papierkanten
+gegen dunklere Rücken; **9 Raumabschluss — Ja**, Alpha nur in Körper und
+zulässigem Übermalrand; **10 Flanke/Unterseite — Ja**, Detail sitzt an den
+gezeichneten Formen, nicht als Overlay; **11 Gefahren-Deckung — Ja**, keine
+Gefahrentinte; **12 Raum-Kohärenz — Ja**, gleiche Buch-/Papiergrammatik; **13
+orthografische Bodenebene — Ja**, gerade Aufstandskanten, 91 % / 100 % / 100 %
+Reichweite und jeweils 0,0° Kippung.
 
-## Kanonantworten je Bodenblatt
+## Verifikation
 
-### A · `body_p3_westterrasse_rutsche.png`
+- `check-body-silhouette.mjs`: alle drei p3-Bodenblätter bestanden, einschließlich
+  Maskenkern, Alpha-Ehrlichkeit, Lauf-Linie, Kein-Loch-Gesetz und
+  Kanten-Dichte-Gesetz.
+- `check-ground-plane.mjs --sheet`: alle drei bestanden — 91 % / 100 % / 100 %
+  Reichweite, jeweils 0,0° Kippung.
+- Kanten-Dichte direkt am finalen PNG nach dem verbindlichen Verfahren gemessen:
+  26,0 % / 60,0 % / 36,3 %.
+- Alpha-Kontrolle: außerhalb der sichtbaren Körper `alpha=0` und RGB ebenfalls
+  null; keine versteckte Farbe im verbotenen Gebiet.
+- Deckenbahnen unverändert; angenommene MD5-Prüfsummen:
+  `body_p3_deckenbahn_west.png` `760c4d4a0f4d0b9e6befa9d9b5fcc215`,
+  `body_p3_deckenbahn_mitte.png` `1fef1c42a429448efe0d82a015903f0a`,
+  `body_p3_deckenbahn_ost.png` `47b01bd83ffa282d037b853c596510a2`.
+- Kein Commit und keine Codeänderung. Die automatische Bildwerkzeug-Ablage
+  außerhalb des Worktrees blieb wegen verwalteter Dateisystemrechte bestehen;
+  sie wurde nicht in die Lieferung übernommen. Ein Löschversuch endete mit
+  `Operation not permitted`.
 
-1. **Benennbarkeit / Geologie:** Ja — verbundene Buchböschung aus Büchern,
-   Seitenblöcken und Bindungen.
-2. **Silhouette:** Ja — die 194 Pflichtzellen und die freie Rutschenfläche folgen
-   der Maske.
-3. **Laufkante:** Ja — Diagonale und waagrechte Stehkanten sind hell, ruhig und
-   durchgehend; Band/Körper 1,54, kleinste Band/Körper-Zelle 1,43.
-4. **Unterseite / Flanke:** Ja — Rücken, Schnitte und Seitenlagen zeigen Gewicht.
-5. **Innen-Modulation:** Ja — jede Pflichtzelle hat eigene Buch-/Papierstruktur;
-   kleinste SD 19,28, kein Einfarb-Füllfeld.
-6. **Verbindungs-Logik:** Ja — die Lagen wachsen im Verband; keine angesetzten
-   Klotzstücke.
-7. **Material = Spielrolle:** Ja — die helle Kreideschulter markiert die
-   Rutschrichtung, Bücher tragen die Terrasse.
-8. **Tiefen-Palette:** Ja — warme Papierkanten stehen gegen dunkle Flanken.
-9. **Raum schließt materialgerecht:** Ja — geschlossene Buchmasse, Alpha nur in
-   Maske und zulässigem Übermalrand.
-10. **Detail an Flanke / Unterseite:** Ja — Details sitzen an Rücken, Seiten und
-    Unterkante; die Laufbahn bleibt ruhig.
-11. **Gefahren-Deckung:** Ja — keine Gefahrentinte und keine falsche Begehbarkeit
-    im freien Rutschenbereich.
-12. **Raum-Kohärenz:** Ja — gleiche warme Buch-/Papiergrammatik wie Ostmauer und
-    Mittelpfeiler.
-13. **Orthografische Bodenebene:** Ja — 91 % Reichweite, 0,0° Kippung.
+## Nicht geprüft
 
-### B · `body_p3_ostmauer_sims.png`
-
-1. **Benennbarkeit / Geologie:** Ja — eine dreistufige Buchmauer mit Ausgangssims.
-2. **Silhouette:** Ja — alle 187 Pflichtzellen und die einzelne Schwelle sind
-   maskengerecht gefüllt.
-3. **Laufkante:** Ja — ruhige helle Stehkanten; Band/Körper 1,46, kleinste
-   Band/Körper-Zelle 1,41.
-4. **Unterseite / Flanke:** Ja — Seitenblöcke, Rücken und Lagen beweisen Gewicht.
-5. **Innen-Modulation:** Ja — kleinste SD 21,50; kein einfarbig zugedeckter Bereich.
-6. **Verbindungs-Logik:** Ja — die drei Stufen wachsen als Kragen aus einer Mauer.
-7. **Material = Spielrolle:** Ja — die Buchmauer trägt, der breite Sims markiert
-   die betretbare Ausgangsschwelle.
-8. **Tiefen-Palette:** Ja — warme Oberseiten und dunklere Flanken staffeln die Tiefe.
-9. **Raum schließt materialgerecht:** Ja — durchgehende Buchwelt-Masse ohne
-   dekorative Luftkörper.
-10. **Detail an Flanke / Unterseite:** Ja — Seitenlagen und Bindungen tragen die
-    Geschichte, der Sims bleibt funktional ruhig.
-11. **Gefahren-Deckung:** Ja — keine Gefahrentinte oder vorgetäuschte Fläche.
-12. **Raum-Kohärenz:** Ja — Licht, Material und Wertvertrag bleiben im Hofraum.
-13. **Orthografische Bodenebene:** Ja — 100 % Reichweite, 0,0° Kippung.
-
-### C · `body_p3_mittelpfeiler.png`
-
-1. **Benennbarkeit / Geologie:** Ja — freistehender, buchgebauter Pultsockel.
-2. **Silhouette:** Ja — der Schaft verjüngt sich nach oben; die Aussparung bleibt frei.
-3. **Laufkante:** Ja — helle Stehkanten; Band/Körper 1,71, kleinste
-   Band/Körper-Zelle 1,46.
-4. **Unterseite / Flanke:** Ja — Buchseiten, Rücken und Fuß machen das Gewicht lesbar.
-5. **Innen-Modulation:** Ja — kleinste SD 30,87; alle 48 Pflichtzellen sind gemalt.
-6. **Verbindungs-Logik:** Ja — der linke Auflagerkragen wächst aus dem Schaft.
-7. **Material = Spielrolle:** Ja — der Pfeiler trägt das Lesepult und fußt breit.
-8. **Tiefen-Palette:** Ja — warme Kanten und dunkle Rücken trennen die Ebenen.
-9. **Raum schließt materialgerecht:** Ja — keine Fremddekoration und keine
-   schwarze Pflichtfläche.
-10. **Detail an Flanke / Unterseite:** Ja — Seiten und Fuß tragen die Detaildichte.
-11. **Gefahren-Deckung:** Ja — keine Gefahrentinte vorgesehen.
-12. **Raum-Kohärenz:** Ja — dieselbe Buch-/Papiergrammatik wie die beiden Mauern.
-13. **Orthografische Bodenebene:** Ja — 100 % Reichweite, 0,0° Kippung.
-
-## Verifikation und offene Grenzen
-
-- `check-body-silhouette.mjs`: 6/6 bestanden, einschließlich Maß, Kern-Deckung,
-  Alphawahrheit, Lauf-Linie und Kein-Loch-Gesetz.
-- `check-ground-plane.mjs --selftest`: bestanden; die drei stehenden Bodenblätter
-  bestehen mit 91 % / 100 % / 100 % Reichweite und jeweils 0,0° Kippung.
-- Die drei Deckenbahnen wurden per MD5 gegen den angenommenen Runde‑1‑Stand
-  geprüft und nicht verändert.
-- Nicht geprüft: die finale Nahtfreiheit von D1→D2→D3 in der laufenden Phaser-
-  Szene, die tatsächliche Montage im Spiel und Koki’s abschließende
-  Geschmacksfreigabe in Normal- und Gesamtansicht.
-- Kein Commit und keine Codeänderung. Die sechs bzw. neun automatisch erzeugten
-  ImageGen-Quellbilder außerhalb des Repos konnten wegen verwalteter
-  Dateisystemrechte nicht gelöscht werden; dieser Löschversuch endete mit
-  `Operation not permitted`. Keine weitere Repo-Datei außerhalb der
-  Lieferungsmappe wurde beschrieben.
+Die finale Nahtfreiheit in der laufenden Phaser-Szene, die tatsächliche
+25-%-Montage im Spiel und Koki’s abschließende Geschmacksfreigabe in Normal- und
+Gesamtansicht.
 
 ## How I verified
 
-Die drei neuen PNGs wurden direkt aus der Lieferungsmappe gelesen, visuell
-geprüft und mit den sechs benannten Silhouettenläufen, drei Bodenebenenläufen,
-den Zell-SD-Berechnungen, Band/Körper-Berechnungen, Luminanz-/Sättigungs-
-Berechnungen, Maßen und MD5-Prüfungen abgenommen. Szenenmontage und menschliche
-Endabnahme bleiben offen.
+Die drei gelieferten Boden-PNGs wurden direkt aus `docs/n6-auftrag/lieferung/`
+gelesen, visuell geprüft und mit den genannten Silhouetten-, Bodenebenen-,
+Luminanz-, Sättigungs-, Zell-SD-, Band/Körper-, Alpha- und Kanten-Dichte-
+Berechnungen verifiziert. Die drei Deckenbahnen wurden per MD5 gegen den
+angenommenen Stand geprüft.
