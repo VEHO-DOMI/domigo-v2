@@ -637,7 +637,7 @@ const PLAT_OBJECTS: Record<string, MassKit["platObjects"]> = {
   // nach dem Verfahren dieses Kommentars: erste Zeile, die 90 % der maximalen
   // opaken Spannweite erreicht, geteilt durch die Blatthöhe.
   p1: [
-    { stem: "terrain_reading_bench_p1", pxPerCell: 64, cells: 2, deck: 10 / 96 },
+    { stem: "terrain_reading_bench_p1", pxPerCell: 64, cells: 2, deck: 8 / 96 },
     { stem: "terrain_book_bundle_p1", pxPerCell: 64, cells: 2, deck: 8 / 120 },
     { stem: "terrain_book_shelf_p1", pxPerCell: 64, cells: 3, deck: 8 / 96 },
     { stem: "terrain_book_shelf_p1_alt", pxPerCell: 64, cells: 3, deck: 8 / 112 },
