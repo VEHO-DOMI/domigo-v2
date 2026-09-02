@@ -171,18 +171,62 @@ export const analyse = (welt) => {
 };
 
 // ── DIE WELT VON DER PLATTE ──────────────────────────────────────────────────
+// L0 · N4 (D-806): DAS LEXIKON FOLGT DEM KAPITEL.
+//
+// Hier stand ein fester `u01-lexicon.json`-Pfad — dieselbe Klasse wie in
+// `check-game-tasks.mjs` und `check-paint-copy.mjs`. Dieses Tor prueft heute
+// die Welt von ch01 (keen + paint v1), also ist u01 auch die richtige Antwort;
+// falsch war nur, dass die Antwort GESETZT statt HERGELEITET war. Wer das Tor
+// eines Tages auf ein anderes Kapitel richtet, bekommt jetzt dessen Wortschatz
+// statt still den von Unit 1.
+//
+// KUMULATIV (die L4-Lehre): ein Kapitel darf jedes Wort seiner Unit und jeder
+// frueheren benutzen. Fuer ch01 ist die Summe genau u01, also unveraendert.
+const CHAPTER = (() => {
+  const i = process.argv.indexOf("--chapter");
+  const v = i === -1 ? "ch01" : process.argv[i + 1];
+  if (!/^ch\d{2}$/.test(v ?? "")) { console.error(`check-story-grounding: --chapter braucht chNN, bekam "${v}"`); process.exit(2); }
+  return v;
+})();
+
+/** Die Summe aller Unit-Lexika bis zu der Unit, die dieses Kapitel lehrt. */
+const lexikonFuer = (storyJson, chapter) => {
+  const dir = "docs/design/g1/grounding";
+  const eintrag = (storyJson.chapters ?? []).find((c) => String(c.id).endsWith(`.${chapter}`));
+  const bis = typeof eintrag?.unit === "number" ? eintrag.unit : Number(chapter.slice(2));
+  const summe = { words: [], phrases: [], properNouns: [] };
+  let gefunden = 0;
+  for (const f of fs.existsSync(dir) ? fs.readdirSync(dir).sort() : []) {
+    const m = /^u(\d{2})-lexicon\.json$/.exec(f);
+    if (!m || Number(m[1]) > bis) continue;
+    const l = JSON.parse(fs.readFileSync(`${dir}/${f}`, "utf8"));
+    summe.words.push(...(l.words ?? []));
+    summe.phrases.push(...(l.phrases ?? []));
+    summe.properNouns.push(...(l.properNouns ?? []));
+    gefunden++;
+  }
+  if (gefunden === 0) {
+    // Anti-Leerlauf: ein Erdungs-Tor ohne Wortschatz laesst ALLES durch und
+    // sieht dabei gruen aus. Das ist die eine Lage, in der es lauter sein muss
+    // als sein eigener Befund.
+    console.error(`check-story-grounding: kein Lexikon fuer ${chapter} (Unit ${bis}) unter ${dir} — die Erdung haette nichts zu pruefen`);
+    process.exit(1);
+  }
+  return summe;
+};
+
 const laden = () => {
-  const lex = JSON.parse(fs.readFileSync("docs/design/g1/grounding/u01-lexicon.json", "utf8"));
   const story = JSON.parse(fs.readFileSync(`${BASE}/story.json`, "utf8"));
-  const level = JSON.parse(fs.readFileSync(`${BASE}/keen/ch01.level.json`, "utf8"));
-  const boss = JSON.parse(fs.readFileSync(`${BASE}/keen/ch01.boss.json`, "utf8"));
+  const lex = lexikonFuer(story, CHAPTER);
+  const level = JSON.parse(fs.readFileSync(`${BASE}/keen/${CHAPTER}.level.json`, "utf8"));
+  const boss = JSON.parse(fs.readFileSync(`${BASE}/keen/${CHAPTER}.boss.json`, "utf8"));
   const keenPacks = fs.readdirSync(`${BASE}/keen`).filter((x) => x.endsWith(".tasks.json"))
     .map((file) => ({ file, pack: JSON.parse(fs.readFileSync(`${BASE}/keen/${file}`, "utf8")) }));
   let paint;
   try {
     paint = {
-      tasks: JSON.parse(fs.readFileSync(`${BASE}/paint/ch01.tasks.json`, "utf8")),
-      level: JSON.parse(fs.readFileSync(`${BASE}/paint/ch01.level.json`, "utf8")),
+      tasks: JSON.parse(fs.readFileSync(`${BASE}/paint/${CHAPTER}.tasks.json`, "utf8")),
+      level: JSON.parse(fs.readFileSync(`${BASE}/paint/${CHAPTER}.level.json`, "utf8")),
     };
   } catch (e) {
     paint = { error: e.message };

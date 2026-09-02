@@ -74,7 +74,18 @@ export function codeOnly(src) {
 const SHELL_ROOT = "packages/game-paint/src";
 const STORIES = "content/corpus/stories";
 const TRANSCRIPTS = "content/build/transcripts/g1";
-const LEXICON = "docs/design/g1/grounding/u01-lexicon.json";
+// L0 · N4 (D-900): DAS LEXIKON GEHOERT DEM KAPITEL, NICHT DIESER ZEILE.
+//
+// Hier stand ein fester u01-Pfad. Fuer ein Buch mit einem Kapitel war das
+// richtig; fuer ch02 waere jedes englische Beispielwort gegen den Wortschatz
+// von Unit 1 geerdet worden — und das ist schlimmer als gar keine Erdung, weil
+// das Tor dabei gruen bleibt und behauptet, es habe geprueft.
+//
+// Und KUMULATIV, nicht ersetzend (die L4-Lehre): ein Kapitel darf jedes Wort
+// benutzen, das seine Unit ODER eine frueher gelehrte Unit bringt. `purple`
+// steht in keinem u01-Blatt und ist ab u03 legal — waere das Lexikon ein
+// Austausch statt einer Summe, verloere ch03 den ganzen Wortschatz von ch01.
+const GROUNDING = "docs/design/g1/grounding";
 const PROBE_FILE = "packages/game-paint/src/PaintGame.tsx";
 
 // The German quote law: a „ closed by an ASCII " with no proper “ in between.
@@ -117,9 +128,9 @@ const strings = function* (node, at = "") {
  * Selbsttest ihr echte Quellen mit genau einer Verfälschung reichen kann.
  *
  * @param {{shell:{file:string,src:string}[], content:{file:string,json:object}[],
- *          corpus:{file:string,text:string}[], lex:object, probeSrc:string}} welt
+ *          corpus:{file:string,text:string}[], lexika:Record<number,object>, probeSrc:string}} welt
  */
-export const analyse = ({ shell, content, corpus, lex, probeSrc }) => {
+export const analyse = ({ shell, content, corpus, lexika, probeSrc }) => {
   const failures = [];
   const notes = [];
   const fail = (where, msg) => { failures.push(`${where}: ${msg}`); };
@@ -193,18 +204,39 @@ export const analyse = ({ shell, content, corpus, lex, probeSrc }) => {
   // means an author reached for the nearest line instead of writing one), but it
   // is no longer a failure — the question form „What's your email address?" cannot
   // be paraphrased without ceasing to be the rule.
-  const lexWords = new Set(lex.words.map((w) => w.toLowerCase()));
-  const lexProper = new Set(lex.properNouns.map((w) => w.toLowerCase()));
-  const lexPhrases = lex.phrases.map((p) => p.toLowerCase());
+  // L0 · N4: die KUMULATIVE Summe bis zur Unit eines Kapitels, einmal je Unit
+  // gebaut und gemerkt. Ohne Kapitel-Angabe (oder wenn ein Kapitel seine Unit
+  // nicht nennt) ist es die Summe ALLER vorhandenen Lexika — der weiteste
+  // Zustand, in dem das Tor noch etwas sagt, statt stumm alles durchzulassen.
+  const lexCache = new Map();
+  const lexBis = (bisUnit) => {
+    const key = bisUnit ?? "alle";
+    const hit = lexCache.get(key);
+    if (hit) return hit;
+    const words = new Set(); const proper = new Set(); const phrases = [];
+    for (const [n, l] of Object.entries(lexika ?? {})) {
+      if (bisUnit !== undefined && Number(n) > bisUnit) continue;
+      for (const w of l.words ?? []) words.add(String(w).toLowerCase());
+      for (const w of l.properNouns ?? []) proper.add(String(w).toLowerCase());
+      for (const p of l.phrases ?? []) phrases.push(String(p).toLowerCase());
+    }
+    const out = { words, proper, phrases };
+    lexCache.set(key, out);
+    return out;
+  };
+  // die Menge, die die Leerlauf-Probe unten misst: der Bestand insgesamt
+  const alle = lexBis(undefined);
+  const lexWords = alle.words;
+  const lexProper = alle.proper;
   // The tokenizer and the crude lemmatizer are check-story-grounding's, verbatim —
   // one grounding law with one implementation, or the two gates drift apart.
   const enTokens = (en) => (en.toLowerCase().match(/[a-zäöüß'-]+/gi) ?? []).filter((t) => t.length > 0);
   const EN_FREE = new Set(["oh", "ssh", "psst", "brrr", "puh", "miaow", "wow", "hey", "but", "now", "do", "too"]);
-  const enGrounded = (tok, extra) =>
-    lexWords.has(tok) || lexProper.has(tok) || extra.has(tok)
-    || (tok.endsWith("ies") && lexWords.has(`${tok.slice(0, -3)}y`))
-    || (tok.endsWith("es") && lexWords.has(tok.slice(0, -2)))
-    || (tok.endsWith("s") && (lexWords.has(tok.slice(0, -1)) || lexProper.has(tok.slice(0, -1))));
+  const enGrounded = (tok, extra, L) =>
+    L.words.has(tok) || L.proper.has(tok) || extra.has(tok)
+    || (tok.endsWith("ies") && L.words.has(`${tok.slice(0, -3)}y`))
+    || (tok.endsWith("es") && L.words.has(tok.slice(0, -2)))
+    || (tok.endsWith("s") && (L.words.has(tok.slice(0, -1)) || L.proper.has(tok.slice(0, -1))));
 
   let examplesSeen = 0;
   let erklaerungenSeen = 0;
@@ -212,6 +244,16 @@ export const analyse = ({ shell, content, corpus, lex, probeSrc }) => {
   let liftedSeen = 0;
   for (const { file, json } of content) {
     if (!file.endsWith(".level.json")) continue;
+    // L0 · N4: die Unit dieses Kapitels — aus der Datei selbst (`unit`), sonst
+    // aus der Kapitel-Nummer, die im Korpus eins zu eins auf die Unit zeigt.
+    // Faellt beides aus, gilt die Summe aller Lexika: weiter als noetig, aber
+    // niemals stumm.
+    const chNum = /ch(\d{2})\.level\.json$/.exec(file)?.[1];
+    const unitNum = typeof json.unit === "string"
+      ? Number(/u(\d{2})$/.exec(json.unit)?.[1])
+      : (chNum === undefined ? undefined : Number(chNum));
+    const L = lexBis(Number.isFinite(unitNum) ? unitNum : undefined);
+    const lexPhrases = L.phrases;
     for (const [at, text] of strings(json)) {
       if (/(^|\.)erklaerungDe$/.test(at)) erklaerungenSeen += 1;
       if (/(^|\.)lehrtEn\[\d+\]$/.test(at)) lehrtSeen += 1;
@@ -226,7 +268,7 @@ export const analyse = ({ shell, content, corpus, lex, probeSrc }) => {
       for (const p of lexPhrases) if (low.includes(p)) for (const t of enTokens(p)) extra.add(t);
       let clean = true;
       for (const t of enTokens(text)) {
-        if (!EN_FREE.has(t) && !enGrounded(t, extra)) {
+        if (!EN_FREE.has(t) && !enGrounded(t, extra, L)) {
           clean = false;
           fail(`${file} ${at}`, `grounding: EN token not in the unit lexicon: "${t}" (line: "${text}")`);
         }
@@ -273,7 +315,7 @@ export const analyse = ({ shell, content, corpus, lex, probeSrc }) => {
     fail("VACUITY", `only ${corpus.length} MORE! 1 transcript files loaded from ${TRANSCRIPTS} — the example law cannot attest anything`);
   }
   if (lexWords.size < 100) {
-    fail("VACUITY", `the unit lexicon holds ${lexWords.size} words — ${LEXICON} did not load, so grounding passes everything`);
+    fail("VACUITY", `the unit lexicons hold ${lexWords.size} words in total — nothing under ${GROUNDING} loaded, so grounding passes everything`);
   }
   if (examplesSeen === 0) {
     fail("VACUITY", "no `beispieleEn[n]` was scanned in any paint level — either the field was renamed or the walk missed it; the grounding law is asleep");
@@ -340,11 +382,16 @@ const laden = () => {
     }
   }
 
-  const lex = fs.existsSync(LEXICON)
-    ? JSON.parse(fs.readFileSync(LEXICON, "utf8"))
-    : { words: [], phrases: [], properNouns: [] };
-
-  return { shell, content, corpus, lex, probeSrc: fs.readFileSync(PROBE_FILE, "utf8") };
+  // Alle Unit-Lexika, die auf der Platte liegen — die Summe je Kapitel baut
+  // `analyse` daraus (sie kennt die Kapitel der Inhalts-Dateien).
+  const lexika = {};
+  if (fs.existsSync(GROUNDING)) {
+    for (const f of fs.readdirSync(GROUNDING)) {
+      const m = /^u(\d{2})-lexicon\.json$/.exec(f);
+      if (m) lexika[Number(m[1])] = JSON.parse(fs.readFileSync(path.join(GROUNDING, f), "utf8"));
+    }
+  }
+  return { shell, content, corpus, lexika, probeSrc: fs.readFileSync(PROBE_FILE, "utf8") };
 };
 
 const weltAufDerPlatte = laden();
