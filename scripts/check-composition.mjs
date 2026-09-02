@@ -1243,7 +1243,7 @@ const waiverSeen = new Set();
  * Rein: gibt Meldungen zurueck, druckt nichts, und fasst `waiverSeen` nur an,
  * wenn es tatsaechlich eine Ausnahme verbraucht hat.
  */
-const judgeScale = ({ label, plan, want, srcSize, windowsSeen, courseLocks, waiverSeen, tieredStems = new Set() }) => {
+const judgeScale = ({ label, plan, want, srcSize, windowsSeen, courseLocks, waiverSeen, tieredStems = new Map() }) => {
   const bad = [];
   const said = [];
   // dieselbe Signatur wie die Datei-weiten `fail`/`note`, damit der gehobene
@@ -1310,6 +1310,28 @@ const judgeScale = ({ label, plan, want, srcSize, windowsSeen, courseLocks, waiv
     // deklarierte Absicht — Anisotropie- und Fenster-Gesetze gelten weiter,
     // die Kurs-Parität nicht (der Kurs selbst stirbt mit dem Raum-Cutover).
     if (p.kind === "platform" && tieredStems.has(p.stem)) {
+      // ★ N7A2 · EINE DEKLARATION, DIE NIEMAND NACHMISST, IST EIN FREIBRIEF.
+      //
+      // `pxPerCell` kauft hier die Ausnahme von der Kurs-Paritaet — und wurde
+      // selbst NIE geprueft. Ein Moebelblatt durfte 943 px breit sein und dabei
+      // „4 Zellen a 64 px" behaupten; dieses Tor sah weg, weil die Behauptung
+      // die Pruefung war. Genau davor warnt der Kommentar 60 Zeilen weiter oben
+      // fuer den Kachel-Weg („A declared width is not a licence to leave the
+      // scale ... the declaration itself is checked against the sheet below") —
+      // fuer die gestuften Moebel gab es diese zweite Haelfte nicht.
+      //
+      // Gemessen am 2026-09-02: alle elf gestuften Moebel des Bestands halten
+      // Blattbreite = Zellen x pxPerCell auf den Pixel genau. Das Tor ist also
+      // grun und trotzdem noetig: es haelt die Stufe, an der die Ein-Block-Welt
+      // ihren GPU- und Speicher-Deckel haengt (dieselbe Stufe, die ein Koerper
+      // 30 Zeilen weiter oben exakt einhalten muss).
+      const tier = tieredStems.get(p.stem);
+      if (tier !== undefined) {
+        const soll = tier.cells * tier.pxPerCell;
+        if (src.w !== soll) {
+          fail("painted-scale", `${label}: gestuftes Moebel ${p.stem} deklariert ${tier.cells} Zellen a ${tier.pxPerCell} px = ${soll} px, das Blatt ist aber ${src.w}x${src.h} — die Stufe ist behauptet, nicht gemalt`);
+        }
+      }
       continue;
     }
     const wKeyRoom = `${label}:${p.kind}:${p.stem}`;
@@ -1411,7 +1433,7 @@ for (const { label, ph, spec } of withSpec) {
     plan: planMass(ph.rows, spec.mass, srcSize),
     want: paintScaleOf(spec.mass, srcSize),
     srcSize, windowsSeen, courseLocks, waiverSeen,
-    tieredStems: new Set((spec.mass.platObjects ?? []).filter((o) => o.pxPerCell !== undefined).map((o) => o.stem)),
+    tieredStems: new Map((spec.mass.platObjects ?? []).filter((o) => o.pxPerCell !== undefined).map((o) => [o.stem, o])),
   });
   for (const m of v.said) note(m);
   for (const m of v.bad) fail("painted-scale", m);
@@ -1699,12 +1721,38 @@ if (process.argv.includes("--selftest")) {
   // …und dieselbe Moebel-Stufen-Liste wie der echte Lauf: ohne sie beurteilt der
   // Selbsttest ein gestuftes Blatt nach einer Regel, von der der Bestand es
   // ausdruecklich ausnimmt — zwei Lineale an derselben Frage.
-  const selbsttestTiered = new Set((kitPhase.spec.mass.platObjects ?? [])
-    .filter((o) => o.pxPerCell !== undefined).map((o) => o.stem));
+  const selbsttestTiered = new Map((kitPhase.spec.mass.platObjects ?? [])
+    .filter((o) => o.pxPerCell !== undefined).map((o) => [o.stem, o]));
   const fahre = (plan) => judgeScale({
     label, plan, want: echtesWant, srcSize, tieredStems: selbsttestTiered,
     windowsSeen: new Set(), courseLocks: new Set(), waiverSeen: new Set(),
   }).bad;
+
+  // ── ★ N7A2 · TAMPER FUER DIE GESTUFTE DEKLARATION ─────────────────────────
+  // Dieser Fall kann NICHT am echten Plan haengen: `kitPhase` ist per Definition
+  // die erste Phase, die ihr Kit noch traegt, und genau die hat heute keine
+  // gestuften Moebel (die gestuften liegen in den Ein-Block-Raeumen). Ein Tamper,
+  // der am Bestand nichts findet, beweist nichts — also bekommt dieses Gesetz
+  // synthetische Eingaben und wird an ihnen in beide Richtungen gezeigt.
+  const stufeStem = "__n7a2_stufe__";
+  const stufePlan = [{ kind: "platform", stem: stufeStem, x: 0, y: 0, w: 64, h: 64 }];
+  const stufeSrc = (stem) => (stem === stufeStem ? { w: 256, h: 100 } : srcSize(stem));
+  const stufeLauf = (cells, pxPerCell) => judgeScale({
+    label: "selbsttest/stufe", plan: stufePlan, want: echtesWant, srcSize: stufeSrc,
+    tieredStems: new Map([[stufeStem, { stem: stufeStem, cells, pxPerCell }]]),
+    windowsSeen: new Set(), courseLocks: new Set(), waiverSeen: new Set(),
+  }).bad;
+  if (stufeLauf(4, 64).length !== 0) {
+    console.error("✗ M1-Selbsttest: eine WAHRE Stufen-Deklaration (4 x 64 = 256 px) faellt:", stufeLauf(4, 64));
+    process.exit(1);
+  }
+  for (const [cells, px, wie] of [[3, 64, "zu schmal deklariert"], [4, 96, "falsche Stufe"]]) {
+    if (stufeLauf(cells, px).length !== 1) {
+      console.error(`✗ M1-Selbsttest-TAMPER "gestufte Deklaration ${wie}" blieb GRUEN`);
+      process.exit(1);
+    }
+  }
+  console.log("  ✓ gestufte Deklaration: 1 wahre gruen, 2 falsche rot (synthetisch)");
 
   const ecken = new Set(["cornerBL", "cornerBR", "inCornerL", "inCornerR"]);
   const faelle = [

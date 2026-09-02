@@ -7,9 +7,17 @@ deiner Selbstauskunft.
 gemessene Ursache: 3/4-Perspektive mit V-förmiger Aufstandskante und je Blatt anderem
 Fluchtwinkel. Daraus wurde **Punkt 13** des Kanons — EINE orthografische Bodenebene
 fürs ganze Kapitel. Die Eingangshalle und das Nacht-Klassenzimmer sind repariert;
-diese drei Blätter sind der Schulhof. Zwei von ihnen stehen heute mit Namen in der
-Duldungsliste des Aufstands-Tors (`plat_plank_2`, `ledge_windowsill`) — diese
-Lieferung ist das, was die Zeilen beendet.
+diese drei Blätter sind der Schulhof.
+
+**Was heute gemessen falsch ist — genau, nicht pauschal.** `ledge_windowsill` bricht
+Punkt 13 wirklich: seine Aufstandskante erreicht die Grundlinie über **21 %** der
+Breite statt über 80 % — ein V, keine Gerade. Es steht dafür in der Duldungsliste
+des Aufstands-Tors, und diese Lieferung ist das, was die Zeile beendet.
+`plat_plank_2` (94 %) und `plat_column2_1` (82 %) **stehen dagegen schon gerade**.
+Ihr Grund ist ein anderer und genauso bindend: sie sind 943 bzw. 372 px breit,
+also in einer alten Auflösungs-Stufe gemalt (Punkt 4 unten), und sie sind
+Allerwelts-Requisiten ohne eigene Hof-Identität. Male sie nicht schlechter, als sie
+stehen — die gerade Unterkante ist das, was du BEHÄLTST.
 
 **Lies zuerst** `docs/n6-auftrag/CHECKLISTE_R6_KANON.md` — alle 13 Punkte, Punkt 13
 wörtlich. **Machart-Maßstab:** `apps/web/public/art/g1/paint/ch01/body_p2_regal_turm_boden.png`
