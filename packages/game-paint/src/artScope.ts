@@ -312,7 +312,12 @@ export const phaseArtScope = (level: ScopeLevel, phaseId: string, present: Itera
   // 5 · the backdrop — branching on the SCENE'S OWN condition
   if (hasComposition(level, ph.id)) {
     const spec = COMPOSITION[level.chapter]?.[ph.id];
-    if (spec) for (const s of compositionStems(spec)) add(s);
+    // R7/N7 · Dieselbe gerechnete Kit-Frage wie in phaseRequiredStems — und DIES
+    // ist die Stelle, die zaehlt: sie sagt, was das Spiel LAEDT und was
+    // check-paint-art als beansprucht sieht. Ohne sie waere der Cutover eine
+    // Attrappe: das Manifest verlangte die Kit-Blaetter nicht mehr, geladen
+    // wuerden sie weiter (gemessen: 59 statt 82 tote Blaetter).
+    if (spec) for (const s of compositionStems(spec, phaseIsOneBlock(ph.rows, spec.mass))) add(s);
   } else {
     for (const s of Object.values(ph.plates ?? {})) if (s !== undefined) add(String(s));
     for (const s of LEGACY_BACKDROP_STEMS) add(s);

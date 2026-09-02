@@ -631,19 +631,27 @@ const PLAT_OBJECTS: Record<string, MassKit["platObjects"]> = {
   // are recorded in the R4 delivery note, so these fractions are reproducible
   // measurements rather than visual guesses.
   // p1 Eingangshalle — folio, tied bundle, reading bench, and two carved shelves.
+  // N7A1 · orthografisch neu gemalt (Punkt 13): gerade waagrechte Aufstandskante
+  // über ≥80 % der Breite, frontal, Seitenflächen ≤3° — an jedem Blatt gemessen
+  // (Reichweite 100 %, Kipp 0,0°). Die deck-Werte sind neu am Blatt gemessen,
+  // nach dem Verfahren dieses Kommentars: erste Zeile, die 90 % der maximalen
+  // opaken Spannweite erreicht, geteilt durch die Blatthöhe.
   p1: [
-    { stem: "terrain_reading_bench_p1", cells: 2, deck: 62 / 194 },
-    { stem: "terrain_book_bundle_p1", cells: 2, deck: 33 / 185 },
-    { stem: "terrain_book_shelf_p1", cells: 3, deck: 104 / 210 },
-    { stem: "terrain_book_shelf_p1_alt", cells: 3, deck: 36 / 232 },
-    { stem: "terrain_book_folio_p1", cells: 1, deck: 22 / 79 },
+    { stem: "terrain_reading_bench_p1", pxPerCell: 64, cells: 2, deck: 10 / 96 },
+    { stem: "terrain_book_bundle_p1", pxPerCell: 64, cells: 2, deck: 8 / 120 },
+    { stem: "terrain_book_shelf_p1", pxPerCell: 64, cells: 3, deck: 8 / 96 },
+    { stem: "terrain_book_shelf_p1_alt", pxPerCell: 64, cells: 3, deck: 8 / 112 },
+    { stem: "terrain_book_folio_p1", pxPerCell: 64, cells: 1, deck: 4 / 33 },
   ],
   // p2 Klassenzimmer — night folios, bundles, lecterns, and continuous shelves.
   p2: [
     { stem: "terrain_night_lectern_shelf_p2", pxPerCell: 64, cells: 4, deck: 66 / 170 },
     { stem: "terrain_night_shelf_p2", pxPerCell: 64, cells: 3, deck: 4 / 96 },
     { stem: "terrain_night_bundle_p2", pxPerCell: 64, cells: 2, deck: 8 / 138 },
-    { stem: "terrain_night_lectern_p2", cells: 2, deck: 22 / 215 },
+    // N7A1 · Neuwurf: das gelieferte R7-Blatt war 2,75 Zellen hoch und hinge als
+    // Stalaktit unter der Schwebe-Linie (REVIEW_R7P2_RUNDE1 NACHTRAG). Jetzt
+    // 128×110 px, deck am Blatt gemessen.
+    { stem: "terrain_night_lectern_p2", pxPerCell: 64, cells: 2, deck: 10 / 110 },
     { stem: "terrain_night_folio_p2", pxPerCell: 64, cells: 1, deck: 6 / 33 },
     { stem: "terrain_night_dictionary_p2", pxPerCell: 64, cells: 1, deck: 4 / 33 },
   ],

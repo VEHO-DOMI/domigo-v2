@@ -174,9 +174,6 @@ const AS5B = "D-199: Innen-Naht der Kruste, gemessen am selben Stand. Ursache si
 export const SEAM_ALLOW = [
   { stem: "crust_p4_a", seen: 2348, until: UNTIL, reason: AS5B },
   { stem: "crust_p4_b", seen: 2670, until: UNTIL, reason: AS5B },
-  { stem: "crust_p2_a", seen: 838, until: UNTIL, reason: AS5B },
-  { stem: "crust_p2_b", seen: 782, until: UNTIL, reason: AS5B },
-  { stem: "crust_p2_cap_l", seen: 717, until: UNTIL, reason: AS5B },
   { stem: "crust_p9_b", seen: 305, until: UNTIL, reason: AS5B },
   { stem: "crust_p3_a", seen: 162, until: UNTIL, reason: AS5B },
   { stem: "crust_p3_b", seen: 4, until: UNTIL, reason: AS5B },
