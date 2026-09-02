@@ -338,9 +338,17 @@ describe("N7B2 · D-960 · die Naht darf zweimal laufen, ohne dass es auffällt"
     expect(ctx, "die Tafel muss das Kind treffen — sonst prüft der Test nichts").not.toBeNull();
     sim.solveTask(ctx!);
 
+    // Der Vertrag redet von »zählt, feuert, addiert« — also darf der zweite Ruf
+    // AN DER GANZEN WELT nichts mehr bewegen, nicht nur am Körper. Deshalb wird
+    // hier die volle beobachtbare Lage verglichen (Blindprüfung F7).
     const nachEinmal = { ...sim.player };
+    const weltNachEinmal = JSON.stringify(sim.world.entities);
+    const hudNachEinmal = { overlay: sim.overlayOpen, holdTicks: sim.holdTicks, tick: sim.tickCount };
     sim.setOverlay(false); // …und jetzt der zweite Ruf, wie ihn die Hülle tut
     expect(sim.player, "der zweite Ruf darf am Körper nichts mehr bewegen").toEqual(nachEinmal);
+    expect(JSON.stringify(sim.world.entities), "…und an der Welt auch nicht").toBe(weltNachEinmal);
+    expect({ overlay: sim.overlayOpen, holdTicks: sim.holdTicks, tick: sim.tickCount },
+      "…und keine Uhr, kein Zähler rückt vor").toEqual(hudNachEinmal);
 
     // …und die Welt läuft danach genauso weiter wie nach einem einzigen Ruf.
     const x0 = sim.player.x;
