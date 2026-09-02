@@ -1,0 +1,387 @@
+{
+ "schema": "gameTasks@2",
+ "chapter": "ch04",
+ "unit": "g1-u04",
+ "note": "ENTWURF · elf Exemplare · Welle T2 folgt. gameTasks@2 · ch04 „Die graue Woche“ (MORE! 1 Unit 4 Emotions). Kalibrierstück der Bahn L4-T1: eine Karte je Maschine und je Pool des Kapitels, damit die Welle T2 (~60 Karten) eine gemessene Messlatte hat statt einer Beschreibung. Feld-Palette laut ch04.policy.json; restore ist die Wirbelsäule des Kapitels (Gefühl zurückgeben = Farbe zurückgeben, Blaupause §6, R252). Die memory-Karte ist das Feld-Debüt der Maschine mit der Form pair-it (L0 · N3 / R247) — im eingefrorenen Blatt stand sie noch als Prosa, weil die Form damals fehlte; Koki hat sie am 2026-09-03 als elftes Exemplar freigegeben. Reihenfolge = Serve-Reihenfolge (cards/routing.ts): die Restore-Karte der Nachbarin steht VOR ihrer zweiten Karte, weil die Hülle ein entfärbtes Wesen auf JEDER gelösten encounter-Karte erlöst. stimulus.art fehlt bewusst: es gibt noch kein Blatt für diese Wesen, und Schicht 11 färbt eine Karte rot, die ein ungemaltes Blatt nennt — die A-Bahn trägt die Portraits nach, sobald die Kunst steht.",
+ "items": [
+  {
+   "id": "g1.paint.ch04.enc.marktfrau.r1",
+   "use": "encounter",
+   "kind": "restore",
+   "form": "name-it",
+   "exercises": [
+    "g1u04.w.happy",
+    "g1u04.x.colours"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Die Marktfrau tanzt, ihr Gesicht ist noch leer."
+   },
+   "storyDe": "Sag, wie es ihr geht — dann gib ihr die Farbe zurück!",
+   "nameOptions": [
+    "happy",
+    "sad",
+    "tired",
+    "angry"
+   ],
+   "name": "happy",
+   "colourAskDe": "Der Marktfrau fehlt ihr Sonnengelb.",
+   "colourOptions": [
+    "yellow",
+    "blue",
+    "red"
+   ],
+   "colour": "yellow",
+   "skins": [
+    "marktfrau"
+   ],
+   "phases": [
+    "p1"
+   ],
+   "hints": {
+    "deDesc": "Sie dreht sich im Kreis und wirbelt die Blumen herum.",
+    "deWord": "Auf Deutsch: fröhlich — und Sonnengelb."
+   },
+   "grounding": "SB S. 31 The school play: Mike is happy. He's very happy. · Farbe aus der Kumulativ-Bank (u01)."
+  },
+  {
+   "id": "g1.paint.ch04.enc.regenkind.r1",
+   "use": "encounter",
+   "kind": "restore",
+   "form": "name-it",
+   "exercises": [
+    "g1u04.w.sad",
+    "g1u04.x.colours"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Das Regenkind weint, sein Schirm ist kaputt."
+   },
+   "storyDe": "Sag, wie es ihm geht — dann gib ihm die Farbe zurück!",
+   "nameOptions": [
+    "sad",
+    "hot",
+    "proud",
+    "excited"
+   ],
+   "name": "sad",
+   "colourAskDe": "Dem Regenkind fehlt sein Tintenblau.",
+   "colourOptions": [
+    "blue",
+    "green",
+    "orange"
+   ],
+   "colour": "blue",
+   "skins": [
+    "regenkind"
+   ],
+   "phases": [
+    "p1"
+   ],
+   "hints": {
+    "deDesc": "Die Tränen laufen ihm über das graue Gesicht.",
+    "deWord": "Auf Deutsch: traurig — und Tintenblau."
+   },
+   "grounding": "SB S. 31: In this scene Harry isn't happy. He's sad! · Kontrastpaar zu happy (Wirbelsäule p1)."
+  },
+  {
+   "id": "g1.paint.ch04.rsc.flasche.morning",
+   "use": "rescue",
+   "kind": "choice",
+   "form": "state-it",
+   "exercises": [
+    "g1u04.w.morning"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "In der grauen Flasche steckt der Morgen fest."
+   },
+   "storyDe": "Die Flasche hält etwas fest. Sag es auf Englisch!",
+   "promptEn": "What's in the bottle?",
+   "options": [
+    "It's morning.",
+    "It's night.",
+    "It's a bottle."
+   ],
+   "answer": "It's morning.",
+   "skins": [
+    "flasche"
+   ],
+   "phases": [
+    "p1"
+   ],
+   "hints": {
+    "deDesc": "Die Zeit, zu der die Sonne aufgeht.",
+    "deWord": "Auf Deutsch: der Morgen."
+   },
+   "grounding": "SB S. 32 A day in the life of Richard: It's early morning. · WB S. 38 Word file, Times of the day."
+  },
+  {
+   "id": "g1.paint.ch04.enc.regenwolke.k1",
+   "use": "encounter",
+   "kind": "choice",
+   "form": "command",
+   "exercises": [
+    "g1u04.w.go-away"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Eine graue Regenwolke drängt sich dir in den Weg."
+   },
+   "storyDe": "Sag ihr auf Englisch, sie soll verschwinden!",
+   "options": [
+    "Go away!",
+    "Let go!",
+    "Don't be late."
+   ],
+   "answer": "Go away!",
+   "skins": [
+    "regenwolke"
+   ],
+   "phases": [
+    "p1"
+   ],
+   "hints": {
+    "deDesc": "Zwei Wörter, mit denen man jemanden fortschickt.",
+    "deWord": "Auf Deutsch: Geh weg!"
+   },
+   "grounding": "SB S. 31: Please, go away! · WB S. 39 MORE Words and Phrases: Go away! – Geh weg!"
+  },
+  {
+   "id": "g1.paint.ch04.enc.fensterladen.me1",
+   "use": "encounter",
+   "kind": "memory",
+   "form": "pair-it",
+   "exercises": [
+    "g1u04.w.sad",
+    "g1u04.w.cold",
+    "g1u04.w.excited"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "An dem grauen Haus klappern die Fensterläden paarweise."
+   },
+   "storyDe": "Auf jedem Flügel steht ein Gefühl. Finde die Gegenteile!",
+   "pairs": [
+    {
+     "a": "happy",
+     "b": "sad"
+    },
+    {
+     "a": "hot",
+     "b": "cold"
+    },
+    {
+     "a": "bored",
+     "b": "excited"
+    }
+   ],
+   "skins": [
+    "fensterladen"
+   ],
+   "phases": [
+    "p1"
+   ],
+   "hints": {
+    "deDesc": "Zwei Flügel gehören zusammen — und zwei Gefühle auch."
+   },
+   "grounding": "SB S. 34 Song Just be you: I am happy. I'm not sad. · SB S. 32: Richard isn't cold now. He's hot. · SB S. 32: It's evening. Is Richard tired? No, he's just bored. · Feld-Debüt der memory-Maschine (doc 41 §1), Form pair-it aus L0 · N3 / R247."
+  },
+  {
+   "id": "g1.paint.ch04.enc.nachbarin.r1",
+   "use": "encounter",
+   "kind": "restore",
+   "form": "name-it",
+   "exercises": [
+    "g1u04.w.tired",
+    "g1u04.x.colours"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Die Nachbarin gähnt grau, das Kissen im Arm."
+   },
+   "storyDe": "Sag, wie es ihr geht — dann gib ihr die Farbe zurück!",
+   "nameOptions": [
+    "tired",
+    "excited",
+    "hungry",
+    "bored"
+   ],
+   "name": "tired",
+   "colourAskDe": "Der Nachbarin fehlt ihr Moosgrün.",
+   "colourOptions": [
+    "green",
+    "orange",
+    "yellow"
+   ],
+   "colour": "green",
+   "skins": [
+    "nachbarin"
+   ],
+   "phases": [
+    "p2"
+   ],
+   "hints": {
+    "deDesc": "Sie hat ein Kissen unter dem Arm und kann die Augen kaum offen halten.",
+    "deWord": "Auf Deutsch: müde — und Moosgrün."
+   },
+   "grounding": "SB S. 32: It's evening. Is Richard tired? · WB S. 37: I'm tired. Then go to bed."
+  },
+  {
+   "id": "g1.paint.ch04.enc.nachbarin.k1",
+   "use": "encounter",
+   "kind": "choice",
+   "form": "social-formula",
+   "exercises": [
+    "g1u04.w.are-you-ok"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Die Nachbarin hält einen zerrissenen Zettel fest."
+   },
+   "storyDe": "Sie schaut dich an. Was sagst du zu ihr?",
+   "options": [
+    "Are you OK?",
+    "Go away!",
+    "Don't be late."
+   ],
+   "answer": "Are you OK?",
+   "skins": [
+    "nachbarin"
+   ],
+   "phases": [
+    "p2"
+   ],
+   "hints": {
+    "deDesc": "Man fragt es, wenn es jemandem nicht gut geht.",
+    "deWord": "Auf Deutsch: Geht es dir gut?"
+   },
+   "grounding": "SB S. 33 Dialogue 2: Are you OK? · WB S. 37 Übung 18, dieselbe Wendung im Dialog."
+  },
+  {
+   "id": "g1.paint.ch04.awk.piet.r1",
+   "use": "rescue",
+   "kind": "choice",
+   "form": "state-it",
+   "exercises": [
+    "g1u04.w.cold",
+    "g1u04.s.to-be-negative"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Piet steht in der grauen Telefonzelle und zittert."
+   },
+   "storyDe": "Frage 1 von 6. Sag, wie es ihm geht!",
+   "promptEn": "How is he?",
+   "options": [
+    "He isn't hot. He's cold.",
+    "He isn't cold. He's hot.",
+    "He isn't sad. He's happy."
+   ],
+   "answer": "He isn't hot. He's cold.",
+   "skins": [
+    "piet"
+   ],
+   "phases": [
+    "p2"
+   ],
+   "hints": {
+    "deDesc": "Seine Zähne klappern.",
+    "deWord": "Auf Deutsch: kalt."
+   },
+   "grounding": "SB S. 32: It's early morning. It's wet. Richard's cold. · Grammatik SB S. 36 to be (negative): He isn't cold."
+  },
+  {
+   "id": "g1.paint.ch04.door.p2.monday",
+   "use": "door",
+   "kind": "choice",
+   "form": "state-it",
+   "exercises": [
+    "g1u04.w.tuesday",
+    "g1u04.s.to-be-questions"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Das Montag-Zimmer ist fertig, die Tür klemmt."
+   },
+   "storyDe": "Welcher Tag kommt nach Montag? Antworte der Tür!",
+   "promptEn": "Is it Monday?",
+   "options": [
+    "No, it isn't. It's Tuesday.",
+    "Yes, it is. It's Monday.",
+    "No, it isn't. It's Wednesday."
+   ],
+   "answer": "No, it isn't. It's Tuesday.",
+   "skins": [
+    "tagestuer"
+   ],
+   "phases": [
+    "p2"
+   ],
+   "hints": {
+    "deDesc": "Der Montag hängt schon — welcher Tag kommt danach?",
+    "deWord": "Auf Deutsch: Nein, es ist Dienstag."
+   },
+   "grounding": "SB S. 33 Chant: Monday, Tuesday, Wednesday – cool. · Grammatik SB S. 36 Questions with to be: Is it ...? No, it isn't."
+  },
+  {
+   "id": "g1.paint.ch04.qf.wecker.t1",
+   "use": "quickfire",
+   "kind": "choice",
+   "form": "pick-correct-form",
+   "exercises": [
+    "g1u04.w.morning",
+    "g1u04.s.to-be-negative"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Der Wecker-Trupp klingelt am stockdunklen Fenster."
+   },
+   "storyDe": "Nur EIN Satz stimmt — schnell, welcher?",
+   "options": [
+    "It isn't morning.",
+    "It aren't morning.",
+    "It not morning."
+   ],
+   "answer": "It isn't morning.",
+   "skins": [
+    "wecker"
+   ],
+   "phases": [
+    "p2"
+   ],
+   "hints": {
+    "deDesc": "Bei es heißt die Verneinung isn't.",
+    "deWord": "Auf Deutsch: Es ist nicht Morgen."
+   },
+   "grounding": "Grammatik SB S. 36 to be (negative): He/She/It isn't. · WB S. 33 Übung 7, dieselbe Wahl zwischen isn't und aren't."
+  },
+  {
+   "id": "g1.paint.ch04.boss.k1",
+   "use": "boss",
+   "kind": "choice",
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Die rote Maske zeigt Zorn, doch die Brauen hängen."
+   },
+   "storyDe": "Die Maske lügt. Sag, wie es ihm wirklich geht!",
+   "promptEn": "How is he?",
+   "options": [
+    "He isn't angry. He's sad.",
+    "He isn't sad. He's angry.",
+    "He isn't tired. He's excited."
+   ],
+   "answer": "He isn't angry. He's sad.",
+   "skins": [
+    "gesichtsloser"
+   ],
+   "phases": [
+    "p4"
+   ],
+   "hints": {
+    "deDesc": "Schau nicht auf die Maske, schau auf die Brauen."
+   },
+   "grounding": "SB S. 31: In this scene Harry isn't happy. He's sad! · Boss-Fenster 1 der Blaupause §5; choice-Fenster tragen KEIN evidence (R250)."
+  }
+ ]
+}
