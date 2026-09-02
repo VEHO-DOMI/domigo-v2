@@ -94,9 +94,12 @@ export const seamHits = (img) => {
  * Diese Menge kam aus der DEKLARATION des Kits — und eine Ein-Block-Welt
  * deklariert ihr Kit weiter (`crustOf(phase)` erzeugt die Namen), obwohl sie es
  * nicht mehr laedt und die PNGs geloescht sind. Gemessen am 2026-09-02, nach dem
- * p3-Cutover: **28 der 48 Kachel-Nennungen hatten gar keine Datei mehr** — 24
+ * p3-Cutover: **28 der 40 deklarierten Kacheln hatten gar keine Datei mehr** — 24
  * Reste des p1/p2-Cutovers aus #389, vier aus dieser Bahn. Das Tor uebersprang
- * sie still und nannte trotzdem eine Zahl.
+ * sie still und nannte trotzdem eine Zahl ("40 geprueft", tatsaechlich 12).
+ * ⚠ Zwei Lineale, die man nicht mischen darf: der Bauplan enthaelt 48 NENNUNGEN,
+ * aber nur 40 verschiedene Stems — diese Menge ist eine Map, sie dedupliziert.
+ * Die 28 sind verschiedene Stems, also gehoeren sie zur 40, nie zur 48.
  *
  * Zwei Folgen, beide schlecht: die Schal-Pruefung unten (»Ausnahme steht in
  * keinem Bauplan«) konnte fuer geloeschte Kacheln nie feuern, also ueberlebten

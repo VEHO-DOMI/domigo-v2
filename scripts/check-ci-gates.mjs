@@ -195,6 +195,19 @@ const SELFTEST_ONLY = {
     + "würde genau die sechs committeten Masken überschreiben, gegen die sein Selbsttest vergleicht. Der "
     + "Selbsttest baut alle sechs nach und misst Pixel-Gleichheit (heute 6× 100,000 %), mit Tamper auf einer "
     + "gekippten Masken-Zelle — er schreibt dabei keine Datei",
+  // N7A2 · derselbe Grund, dritte Auflage: der Loesch-Waechter SCHREIBT — genauer,
+  // er LOESCHT. Ein echter Lauf in CI wuerde die Arbeitskopie um genau die Blaetter
+  // erleichtern, die der Cutover gerade freigegeben hat, und damit den Bestand
+  // veraendern, ueber den `check-paint-art` im selben Job urteilt. Er gehoert
+  // trotzdem in CI: N7A1 hat seine zwei Bedingungen von Hand gefahren und das
+  // Werkzeug nie eingecheckt — woertlich die Falle, die dieselbe Bahn ins Register
+  // geschrieben hat (Artefakt + Erzeuger + Selbsttest gehoeren zusammen).
+  "retire-phase-art.mjs":
+    "LÖSCHT Blätter (die vom Cutover freigegebenen PNGs eines Raums); ein echter Lauf in CI würde den "
+    + "Bestand verändern, über den check-paint-art im selben Job urteilt. Der Selbsttest fällt sieben "
+    + "Urteile gegen eine synthetische Ladeliste — zwei Freigaben, fünf Verweigerungen (geteiltes Blatt, "
+    + "fremder Raum, lebendes Körper-Blatt) — und einen Tamper darauf, dass ohne die Eigentums-Bedingung "
+    + "ein geteiltes Blatt durchginge; er fasst dabei keine Datei an",
   "art-recompress.mjs":
     "SCHREIBT PNGs (verlustfreie Nachverdichtung) — ein echter Lauf in CI würde die Arbeitskopie verändern und den Beweis von check-png-identity aushebeln. Der Selbsttest prüft die Doppellauf-Sperre (D-339) ohne eine Datei anzufassen",
 };

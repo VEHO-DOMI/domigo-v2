@@ -38,19 +38,28 @@ const TILT_MAX_DEG = 3;
 /** Altbestand: gemessen am 01.09. (Fluchtwinkel je Blatt in Klammern). Fällt
  *  mit dem Cutover des genannten Raums — die Zeile stirbt MIT dem Blatt.
  *
- *  ★ N7A2 (2026-09-02): von 26 Zeilen waren **24 schal** — die Hygiene-Regel
- *  unten hat sie beim ersten scharfen Lauf alle genannt. Drei Sterbe-Arten, alle
- *  unbemerkt, weil nichts sie je gefragt hat:
- *    · 12 Zeilen nannten PNGs, die es im ganzen Repo nicht gibt (die fünf
- *      p2-Pfeiler, die zwei Hänger, zwei `terrain_column_p3_*`, drei
- *      `terrain_column_p4_*` — R5b2-Reste, gelöscht oder nie geliefert);
- *    ·  4 Zeilen nannten Blätter auf der Platte, die kein Raum referenziert
- *      (`plat_bookpile_l/s`, `plat_shelf_2`, `plat_coatbench` — tote Kunst);
+ *  ★ N7A2 (2026-09-02): von 26 Zeilen waren beim ersten scharfen Lauf der
+ *  Hygiene-Regel **24 schal**. Drei Sterbe-Arten, alle unbemerkt, weil nichts sie
+ *  je gefragt hat — die Namen sind AUSGEZÄHLT, nicht erinnert:
+ *    · 12 Zeilen nannten PNGs, die es im ganzen Repo nicht gibt: die fünf
+ *      p2-Pfeiler (`terrain_pillar_p2_2/5/8`, `terrain_tower_p2`,
+ *      `terrain_post_p2`), die zwei Hänger (`terrain_hanging_pillar_p2`,
+ *      `…_short`), zwei `terrain_column_p3_*` und drei `terrain_column_p4_*`
+ *      — R5b2-Reste, gelöscht oder nie geliefert;
+ *    ·  4 Zeilen nannten Blätter, die auf der Platte liegen, aber kein Raum
+ *      referenziert (`plat_bookpile_l`, `plat_bookpile_s`, `plat_shelf_2`,
+ *      `plat_coatbench` — tote Kunst);
  *    ·  8 Zeilen nannten Blätter, deren Befund die Möbel-Neuwelle von #389
- *      BEHOBEN hat (alle fünf p1-Möbel, vier p2-Möbel, dazu `plat_bench_2`,
- *      `plat_bundle_1`, `plat_plank_2`, `plat_column2_1` — sie messen heute
- *      82–100 % Reichweite bei 0,0–0,3° Kipp).
- *  Übrig bleibt, was wirklich noch etwas duldet. */
+ *      BEHOBEN hat: `plat_bench_2`, `plat_bundle_1`, `plat_plank_2` und die
+ *      fünf Nacht-Möbel (`terrain_night_folio_p2`, `…_dictionary_p2`,
+ *      `…_bundle_p2`, `…_shelf_p2`, `…_lectern_shelf_p2`) — sie messen heute
+ *      82–100 % Reichweite bei 0,0–0,3° Kipp.
+ *  Eine 25. Zeile hat diese Bahn selbst beendet (`ledge_windowsill`, 21 → 87 %
+ *  Reichweite durch den Neuwurf). Übrig bleibt EINE, die wirklich noch etwas
+ *  duldet.
+ *  ⚠ Was hier NIE stand: die fünf p1-Möbel (`terrain_reading_bench_p1` &c.) und
+ *  `plat_column2_1` — sie halten Gesetz 13 ohne Duldung, und ein Kommentar, der
+ *  sie aufzählt, beschreibt Zeilen, die es nicht gab. */
 const GROUND_PLANE_PENDING = {
   // Der Hof ist FERTIG: die Fensterbank war das eine p3-Möbel, das Punkt 13 brach
   // (Reichweite 21 % — ein V). Ihr Neuwurf misst 87 % bei 0,0°, also hat die
@@ -111,11 +120,15 @@ const synth = (mutate) => {
  * Der Kopf dieser Datei verspricht das Gesetz seit R7 („Eine Pending-Zeile ohne
  * Blatt ist selbst ein Fehler, sie überlebt ihre Löschung nicht still") — der Code
  * hat es NIE gefahren: es gab keine einzige Schleife über GROUND_PLANE_PENDING.
- * Gemessen am 2026-09-02: **16 der 26 Zeilen waren schal.** Zwölf nannten PNGs,
- * die es im ganzen Repo nicht gibt (`terrain_column_p3_*`, `terrain_column_p4_*`,
- * die fünf p2-Pfeiler, die zwei Hänger); vier nannten Blätter, die zwar auf der
- * Platte liegen, aber von keinem Raum mehr referenziert werden. Keine davon hat je
- * einen Befund geduldet, und keine wäre je aufgefallen.
+ * Gemessen am 2026-09-02: **24 der 26 Zeilen waren schal** — zwölf nannten PNGs,
+ * die es im ganzen Repo nicht gibt; vier nannten Blätter, die zwar auf der Platte
+ * liegen, aber von keinem Raum referenziert werden; acht nannten Blätter, deren
+ * Befund die Möbel-Neuwelle von #389 längst behoben hatte. Die Aufteilung steht
+ * namentlich am Kopf von `GROUND_PLANE_PENDING`. Keine davon hat je einen Befund
+ * geduldet, und keine wäre je aufgefallen.
+ * (Eine frühere Fassung dieses Absatzes nannte „16 der 26" — das war die Zahl,
+ * bevor die dritte Sterbe-Art gemessen war, und sie hat den Kopf dieser Datei
+ * widersprochen. Zwei Zahlen für eine Messung sind eine zu viel.)
  *
  * Die Regel ist deshalb dieselbe, die `SCALE_WAIVERS` in `check-composition.mjs`
  * schon trägt, und sie ist bewusst als EINE Frage formuliert: **wurde diese Zeile
