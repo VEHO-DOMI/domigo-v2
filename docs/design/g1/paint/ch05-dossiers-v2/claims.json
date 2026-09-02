@@ -1,0 +1,38 @@
+{
+ "keyboard": {
+  "kind": "cards",
+  "stems": [
+   "notenstaender"
+  ]
+ },
+ "saxophone": {
+  "kind": "cards",
+  "stems": [
+   "notenstaender"
+  ]
+ },
+ "guitar": {
+  "kind": "cards",
+  "stems": [
+   "notenstaender"
+  ]
+ },
+ "singer": {
+  "kind": "cards",
+  "stems": [
+   "notenstaender"
+  ]
+ },
+ "drums": {
+  "kind": "architecture",
+  "stems": [
+   "pauke"
+  ]
+ },
+ "Veit": {
+  "kind": "architecture",
+  "stems": [
+   "kontrabasskoffer"
+  ]
+ }
+}
