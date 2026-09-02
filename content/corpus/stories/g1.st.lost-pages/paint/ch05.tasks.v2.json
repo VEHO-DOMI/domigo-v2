@@ -78,7 +78,7 @@
    ],
    "stimulus": {
     "type": "entity",
-    "showsDe": "Im Käfig steht ein Pult voller schwarzer Tasten."
+    "showsDe": "Im Käfig steht ein Pult voller Tasten."
    },
    "storyDe": "Was steckt im Käfig? Sag es auf Englisch!",
    "promptEn": "What is it?",
