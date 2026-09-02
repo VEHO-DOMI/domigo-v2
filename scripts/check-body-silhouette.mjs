@@ -8,6 +8,8 @@
  *       ist ≤0,5 % opak: nichts darf begehbar AUSSEHEN, was es nicht ist.
  *   3 · LAUF-LINIE     — über jeder Steh-Zelle beginnt die Malerei im Fenster
  *       [Zellkante−8 px, Zellkante+2 px]: die gemalte Kante IST die Kollision.
+ *   4 · KEIN LOCH      — keine Pflicht-Zelle ist flach UND schwarz (SD < 2 bei
+ *       Luminanz < 8). Deckendes Schwarz erfüllt Gesetz 1 und ist doch nichts.
  *
  * Aufrufe:
  *   node scripts/check-body-silhouette.mjs                      # alle CH01_BODIES
@@ -25,6 +27,8 @@ const LEVEL = path.join(process.cwd(), "content/corpus/stories/g1.st.lost-pages/
 const OPAQUE = 128;   // Alpha-Schwelle „sichtbar deckend"
 const FAINT = 16;     // Alpha-Schwelle „überhaupt vorhanden" (Gesetz 2)
 const FRINGE_PX = 16; // Fransen-Gürtel um Masken-Zellen (K6 erlaubt Überhänge)
+const VOID_SD = 2;    // Struktur-Schwelle „flach" (Gesetz 4)
+const VOID_L = 8;     // Luminanz-Schwelle „schwarz" (Gesetz 4)
 
 const levelGrids = () => JSON.parse(fs.readFileSync(LEVEL, "utf8"));
 
@@ -100,6 +104,39 @@ export const measureBody = (body, png, grid) => {
       errors.push(`Lauf-Linie (${c},${r}): erste opake Zeile ${first ?? "—"}, Fenster [${cellTop - 8}, ${cellTop + 2}]`);
     }
   }
+  // Gesetz 4 · KEIN LOCH. Die drei Gesetze oben messen ALPHA — und deckendes
+  // Schwarz ist deckend. N7A1 hat die Lücke bezahlt: zwei p1-Blätter kamen mit
+  // 100 % Deckung durch alle drei Gesetze, während 19 bzw. 16 Pflicht-Zellen
+  // reines Schwarz waren (L = 0,0 · SD = 0,00) — der Maler hatte den Boden zu
+  // früh abreißen lassen und den Rest gefüllt. Ein Kind wäre über ein schwarzes
+  // Rechteck gelaufen, und kein Tor hätte es gesagt.
+  //
+  // Gemalte Dunkelheit hat Struktur: die dunkelste Zelle der ANGENOMMENEN
+  // p2-Welle misst L = 10,8 (Exemplar 13,2; Ostwand 14,1), die schwächste
+  // Struktur SD = 3,72. Ein Loch hat beides nicht. Die Schwelle liegt deshalb
+  // bei „flach UND schwarz" (SD < 2 und L < 8) und lässt jedem ruhigen dunklen
+  // Feld seinen Platz — sie trennt nicht dunkel von hell, sondern gemalt von
+  // gefüllt.
+  for (const key of inMask) {
+    const [dc, dr] = key.split(",").map(Number);
+    const x0 = body.overpaint.l + dc * px, y0 = body.overpaint.t + dr * px;
+    const m = Math.round(px * 0.1);
+    const values = [];
+    for (let y = y0 + m; y < y0 + px - m; y++) {
+      for (let x = x0 + m; x < x0 + px - m; x++) {
+        const i = (y * png.width + x) * 4;
+        if (alphaAt(x, y) >= OPAQUE) {
+          values.push(0.299 * (png.data[i] ?? 0) + 0.587 * (png.data[i + 1] ?? 0) + 0.114 * (png.data[i + 2] ?? 0));
+        }
+      }
+    }
+    if (values.length === 0) continue; // Gesetz 1 hat das schon gemeldet
+    const mean = values.reduce((a, b) => a + b, 0) / values.length;
+    const sd = Math.sqrt(values.reduce((a, b) => a + (b - mean) ** 2, 0) / values.length);
+    if (sd < VOID_SD && mean < VOID_L) {
+      errors.push(`Loch statt Malerei (${body.c0 + dc},${body.r0 + dr}): Wert-SD ${sd.toFixed(2)} < ${VOID_SD} bei Luminanz ${mean.toFixed(1)} < ${VOID_L}`);
+    }
+  }
   return errors;
 };
 
@@ -135,6 +172,9 @@ const selftest = () => {
     // Geister-Blob mitten im leeren Quadranten (Zelle dc1/dr0), >16 px von jeder Masken-Zelle
     ["Geister-Fläche", (png, w) => { for (let d = 0; d < 28; d++) for (let e = 0; e < 28; e++) { const i = (((8 + 18 + d) * w + 64 + 18 + e) * 4); png.data[i + 3] = 255; png.data[i] = 200; } }],
     ["Lauf-Linie versackt", (png, w) => { for (let x = 0; x < 64; x++) for (let y = 8; y < 8 + 14; y++) png.data[(y * w + x) * 4 + 3] = 0; }],
+    // Gesetz 4: die Zelle bleibt voll deckend — nur schwarz. Genau die Lieferung,
+    // die N7A1 mit 100 % Deckung durch die ersten drei Gesetze brachte.
+    ["Loch statt Malerei", (png, w) => { for (let y = 8 + 64; y < 8 + 128; y++) for (let x = 0; x < 64; x++) { const i = (y * w + x) * 4; png.data[i] = 0; png.data[i + 1] = 0; png.data[i + 2] = 0; png.data[i + 3] = 255; } }],
   ];
   for (const [name, mutate] of tampers) {
     const errors = measureBody(body, synthSheet(body, mutate), grid);
@@ -159,7 +199,7 @@ const selftest = () => {
   try { gridOf(level, "p7"); } catch { gemeldet = true; }
   if (!gemeldet) { console.error("Selbsttest: gridOf hat eine unbekannte Phase NICHT gemeldet"); return 1; }
   console.log(`check-body-silhouette: p4 aus dem Arena-Raster gelesen (Dummy auf (${seat.c},${seat.r}), kein Absturz), unbekannte Phase meldet sich`);
-  console.log("check-body-silhouette: Selbsttest OK — 1 sauber + 3 Tamper rot + p4/p9-Raster");
+  console.log("check-body-silhouette: Selbsttest OK — 1 sauber + 4 Tamper rot + p4/p9-Raster");
   return 0;
 };
 
@@ -194,7 +234,7 @@ const main = () => {
     const grid = gridOf(level, phase);
     const errors = measureBody(body, png, grid);
     if (errors.length === 0) {
-      console.log(`✓ ${body.id} (${bodyCells(body).length} Zellen): alle drei Gesetze halten`);
+      console.log(`✓ ${body.id} (${bodyCells(body).length} Zellen): alle vier Gesetze halten`);
     } else {
       failed++;
       console.error(`✗ ${body.id}:`);

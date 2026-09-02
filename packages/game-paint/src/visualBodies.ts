@@ -291,6 +291,81 @@ export const P2_WAVE_BODIES: readonly VisualBody[] = [
 ];
 
 /**
+ * DIE P1-WELLE (N7A1): die fünf Körper der Eingangshalle, Masken maschinell aus
+ * dem Raster erzeugt (`scripts/make-body-stencils.mjs` liest dieselben Fenster).
+ * 548 Zellen, 0 Partitions-Fehler, fullyPainted grün — die 21 übrigen soliden
+ * Zellen gehören den Möbel-Läufen (`floatingPlatformRuns`), nicht einer Handliste.
+ *
+ * Der Boden ist EIN Blatt: Kokis „ein Guss" vom 01.09. hält, weil seine 336
+ * Zellen 4-zusammenhängend sind (gemessen, nicht angenommen). Das Ostpodest hat
+ * das alte `terrain_atlas_podest_p1` ABSORBIERT — die 2×2-Zellen auf r16/r17
+ * sind jetzt Teil des Körpers, und das Blatt wächst dafür von 540 auf 668 px.
+ */
+export const P1_WAVE_BODIES: readonly VisualBody[] = [
+  {
+    id: "p1_deckenbahn_west",
+    stem: "body_p1_deckenbahn_west",
+    c0: 0, r0: 0,
+    rows: [
+      "######################",
+    ],
+    pxPerCell: 64, overpaint: { l: 0, r: 0, t: 12, b: 16 },
+  },
+  {
+    id: "p1_deckenbahn_mitte",
+    stem: "body_p1_deckenbahn_mitte",
+    c0: 22, r0: 0,
+    rows: [
+      "######################",
+    ],
+    pxPerCell: 64, overpaint: { l: 0, r: 0, t: 12, b: 16 },
+  },
+  {
+    id: "p1_deckenbahn_ost",
+    stem: "body_p1_deckenbahn_ost",
+    c0: 44, r0: 0,
+    rows: [
+      "####################",
+    ],
+    pxPerCell: 64, overpaint: { l: 0, r: 0, t: 12, b: 16 },
+  },
+  {
+    id: "p1_hallenboden",
+    stem: "body_p1_hallenboden",
+    c0: 0, r0: 18,
+    rows: [
+      "########################################....",
+      "########################################....",
+      "########################################....",
+      "########################################....",
+      "############################################",
+      "############################################",
+      "############################################",
+      "############################################",
+    ],
+    pxPerCell: 64, overpaint: { l: 0, r: 0, t: 12, b: 16 },
+  },
+  {
+    id: "p1_ostpodest",
+    stem: "body_p1_ostpodest",
+    c0: 46, r0: 16,
+    rows: [
+      ".....##...........",
+      ".....##...........",
+      "##################",
+      "##################",
+      "##################",
+      "##################",
+      "##################",
+      "##################",
+      "##################",
+      "##################",
+    ],
+    pxPerCell: 64, overpaint: { l: 0, r: 0, t: 12, b: 16 },
+  },
+];
+
+/**
  * JEDER DEKLARIERTE KÖRPER MIT SEINEM RAUM — auch die, die noch nicht montiert
  * sind. Der Wareneingang misst ein geliefertes Blatt, BEVOR es in `CH01_BODIES`
  * wandert (dort landet ein Eintrag erst mit seinem angenommenen PNG), und er
@@ -301,6 +376,7 @@ export const P2_WAVE_BODIES: readonly VisualBody[] = [
 export const DECLARED_BODIES: ReadonlyArray<{ phase: string; body: VisualBody }> = [
   { phase: "p2", body: P2_EXEMPLAR_BODY },
   ...P2_WAVE_BODIES.map((body) => ({ phase: "p2", body })),
+  ...P1_WAVE_BODIES.map((body) => ({ phase: "p1", body })),
 ];
 
 /** Die live montierten Körper je Phase. Ein Eintrag kommt erst MIT seinem PNG. */

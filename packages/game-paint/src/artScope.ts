@@ -28,6 +28,7 @@
 
 import { AUFTAKT_STEMS, GLYPH_STEMS, HERO2_STEMS, HERO_STEMS, PAINTED_ICON_NAMES, captiveStem, entitySkinStems, guardianSkinStems, isCaptiveKey } from "./artManifest.ts";
 import { CANOPY_PHASES, COMPOSITION, compositionStems } from "./composition.ts";
+import { phaseIsOneBlock } from "./mass.ts";
 import { CHALK_PROJECTILE_STEMS } from "./entities.ts";
 
 /** The shape this module needs. Structural on purpose: the CI gate hands it
@@ -206,7 +207,15 @@ export const phaseRequiredStems = (level: ScopeLevel, phaseId: string, label = "
     }
   }
   const spec = COMPOSITION[level.chapter]?.[ph.id];
-  if (spec) for (const stem of compositionStems(spec)) need(stem, `${label} ${ph.id} composition`);
+  // R7/N7 · Die Kit-Frage wird hier GERECHNET, nicht gelesen: dieselbe
+  // Verzweigung auf die Bedingung der Szene wie beim Platten-Zweig oben. Eine
+  // Phase, deren Koerper das Raster vollstaendig besitzen, verlangt ihr Kit
+  // nicht mehr — und wenn ein Koerper wegfaellt, verlangt sie es im selben
+  // Zug wieder. Ohne diese Zeile waere der Cutover eine Handliste.
+  if (spec) {
+    const oneBlock = phaseIsOneBlock(ph.rows, spec.mass);
+    for (const stem of compositionStems(spec, oneBlock)) need(stem, `${label} ${ph.id} composition`);
+  }
   return out;
 };
 

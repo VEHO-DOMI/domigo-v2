@@ -13,7 +13,7 @@
 // no-naked-fill audit asserts a kit-present plan contains ZERO of them.
 
 import { type ColumnObject, type MassKit } from "./composition.ts";
-import { bodyCells } from "./visualBodies.ts";
+import { bodyCells, bodyPartitionErrors } from "./visualBodies.ts";
 import { glyphAt, isSlope, isSolid } from "./collide.ts";
 import { TILE, mixMultiply } from "./paint.ts";
 
@@ -976,6 +976,30 @@ export const claimedBodyCells = (kit: Pick<MassKit, "bodies"> | null): Set<strin
     for (const { c, r } of bodyCells(body)) out.add(`${c},${r}`);
   }
   return out;
+};
+
+/**
+ * R7/N7 · IST DIESE PHASE EINE EIN-BLOCK-WELT? — die berechnete Eigenschaft,
+ * an der der Kit-Cutover hängt.
+ *
+ * Eine Phase ist fertig gemalt, wenn ihre deklarierten Sicht-Körper JEDE solide
+ * Zelle besitzen, die nicht ohnehin einem Möbel-Objekt gehört. Dann plant
+ * `planMass` kein einziges Kit-Stück mehr (§0 claimt die Körper-Zellen VOR
+ * allem anderen), und Kruste, Masse, Trims und Unterseite dieses Raums werden
+ * von niemandem mehr geladen.
+ *
+ * Warum gerechnet und nicht aufgeschrieben: eine Handliste „diese Räume sind
+ * fertig" wäre genau die Sorte Wahrheit, die an einer Grid-Änderung still
+ * veraltet — und das Ergebnis wäre ein Raum mit Löchern oder ein Raum, der
+ * 26 Blätter lädt, die er nie zeichnet. Diese Funktion fragt stattdessen das
+ * Raster.
+ */
+export const phaseIsOneBlock = (grid: readonly string[], kit: MassKit | null): boolean => {
+  const bodies = kit?.bodies ?? [];
+  if (bodies.length === 0) return false;
+  const byBodies = claimedBodyCells(kit);
+  const otherClaimed = claimedPlatformCells(grid, kit?.columnObjects ?? [], byBodies);
+  return bodyPartitionErrors(grid, bodies, { fullyPainted: true, otherClaimed }).length === 0;
 };
 
 /** A connected mass's shared material anchor and its stable origin cell. */
