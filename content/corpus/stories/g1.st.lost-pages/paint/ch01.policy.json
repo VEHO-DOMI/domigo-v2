@@ -2,7 +2,7 @@
  "schema": "paintChapterPolicy@1",
  "chapter": "ch01",
  "unit": "g1-u01",
- "note": "L0 · D10 · DIE KAPITEL-TABELLEN DIESES KAPITELS, aus dem Code neben den Inhalt geholt (Level-Welle, 2026-09-02). Verbatim uebernommen: fieldKinds aus CHAPTER_FIELD_KINDS (scripts/check-game-tasks.mjs), fieldForms aus CHAPTER_FIELD_FORMS (packages/game-paint/src/cards/variety.ts), lexiconClasses/families/vocabLedger aus scripts/game-tasks-variety-policy.json#chapters.ch01, arenaPromiseClass aus dem Literal im Arena-Versprechen. Die DIALS bleiben im Policy-JSON: sie sind kapiteluebergreifende Stellschrauben, keine Kapitel-Eigenschaften.",
+ "note": "L0 · D10 · DIE KAPITEL-TABELLEN DIESES KAPITELS, aus dem Code neben den Inhalt geholt (Level-Welle, 2026-09-02). Verbatim uebernommen: fieldKinds aus CHAPTER_FIELD_KINDS (scripts/check-game-tasks.mjs), fieldForms aus CHAPTER_FIELD_FORMS (packages/game-paint/src/cards/variety.ts), lexiconClasses/families/vocabLedger aus scripts/game-tasks-variety-policy.json#chapters.ch01, arenaPromiseClass aus dem Literal im Arena-Versprechen. nounDe (das deutsche Nomen jedes entfaerbten Wesens) ist mit L0 · N5 aus scripts/game-tasks-giveaway-policy.json hierher gezogen — verbatim, samt Begruendungs-Feldern. Es ist Kapitel-Inhalt (die Wesen dieses Kapitels), und fuenf T-Bahnen haetten sonst gleichzeitig in eine scripts/-Datei schreiben muessen. Die DIALS bleiben im Policy-JSON: sie sind kapiteluebergreifende Stellschrauben, keine Kapitel-Eigenschaften.",
  "fieldKinds": [
   "choice",
   "wheel",
@@ -294,6 +294,28 @@
    "cards": "exempt",
    "until": "2026-12-31",
    "reason": "Die FRAGE »How are you?« ist auf zwei Karten die Antwort (door.p2.d3 und enc.pen.k1); die Erwiderung »I'm fine, thanks.« ist die andere Haelfte desselben Wechsels und braucht eine Karte, die das Kind ANTWORTEN laesst statt fragen. Dafuer muesste ein Wesen das Kind zuerst fragen — in ch01 fragt kein Wesen zurueck. Als Wesen-Wunsch fuer die naechste Welle notiert."
+  }
+ },
+ "nounDe": {
+  "reason": "R5-W4 · C2 · Das deutsche Nomen jedes entfaerbten Wesens — die Pflicht, die die Ausnahme unten kauft. Es steht HIER und nicht in der Wortbank, weil die Wortbank die KORPUS-Glosse fuehrt (pen -> Kugelschreiber, glue stick -> Klebestift) und diese Tabelle die ERZAEHLSTIMME regelt: Koki spricht oesterreichisch (die Fuellfeder, der Spitzer, der Radiergummi). Zwei Listen, zwei Zustaendigkeiten — G3 besitzt die Glossen, C2 die Spielzeilen (LEXIKON_AT.md).",
+  "gluestick": "obj_gluestick sagt >Klebestift< und NICHT Kokis >Uhu-Stick<, und zwar aus einem gemessenen Grund: die englische Antwort ist >glue stick<, und >Uhu-Stick< traegt das Antwortwort >stick< im eigenen Namen (Schicht 18a hat es angeschlagen, als die Zeile zum ersten Mal stand). Ein Kind liest >Stick< und tippt >glue stick<, ohne ein Wort gelernt zu haben. Kokis Wort bleibt im Hinweis (>Auf Deutsch: der Klebestift — der Uhu-Stick.<), wo die Leiter absichtlich frei ist, und ueberall sonst im Kapitel.",
+  "pairs": {
+   "obj_book": "Buch",
+   "eraser": "Radiergummi",
+   "obj_schoolbag": "Schultasche",
+   "pen": "Füllfeder",
+   "heft": "Heft",
+   "obj_desk": "Tisch",
+   "obj_scissors": "Schere",
+   "obj_gluestick": "Klebestift",
+   "obj_sharpener": "Spitzer"
+  },
+  "captivesReason": "Die Kaefig-Karten teilen sich ALLE denselben Skin (satchel — das Portrait ist der Kaefig, nie der Insasse), also kann ihr Nomen nicht am Skin haengen; es haengt an der Karte. Die Namen sind die ratifizierte Insassen-Tabelle aus STORY_SPINE_CH01 §2 — EIN Ding, EIN Wort quer ueber Lehr-, Rettungs- und Befreiungs-Karte. Genau dort sass der schaerfste Fund einer frueheren Runde: die Lehr-Karte sagte >die Musikanlage<, die Rettungs-Karte zehn Sekunden spaeter >ein Lautsprecher<, und verbrannte damit die Vokabel-Bruecke, die sie eben gebaut hatte.",
+  "captives": {
+   "rsc.soundsystem.r1": "Musikanlage",
+   "rsc.tablet.r1": "Tablet",
+   "rsc.chair.r1": "Stuhl",
+   "rsc.picture.r1": "Klassenfoto"
   }
  }
 }

@@ -456,9 +456,21 @@ const OBLIGATIONS = {
     // so theirs hangs off the card instead, out of the ratified inmate table.
     const skin = (t.skins ?? [])[0];
     const shortId = String(t.id).replace(/^g1\.paint\.ch\d+\./, "");
-    const noun = givePolicy.nounDe?.pairs?.[skin] ?? givePolicy.nounDe?.captives?.[shortId];
+    // L0 · N5: die Nomen dieses KAPITELS zuerst (chNN.policy.json), die alte
+    // Tor-Datei nur noch als Rueckfall. Sie beschreiben die Wesen eines
+    // Kapitels — Kapitel-Inhalt also — und lagen trotzdem in einer
+    // scripts/-Datei, in die fuenf T-Bahnen gleichzeitig haetten schreiben
+    // muessen. Der Rueckfall bleibt, damit ein Kapitel ohne eigene Politik-
+    // Datei nicht schlagartig rot wird; er ist ausdruecklich uebergangsweise.
+    // EINE Quelle, kein Rueckfall. Ein Rueckfall auf die alte Tor-Datei haette
+    // die Verlagerung wertlos gemacht: das Datum staende an zwei Stellen, die
+    // Kapitel-Politik koennte still leer sein, und niemand saehe es — die
+    // Zwillings-Drift, gegen die dieselbe Datei anderswo eine Byte-Gleichheits-
+    // Zusicherung traegt.
+    const chNoun = chapterPolicy(CHAPTER_NOW)?.nounDe;
+    const noun = chNoun?.pairs?.[skin] ?? chNoun?.captives?.[shortId];
     if (noun === undefined) {
-      return `obliges "nounDe", but no German noun is declared for "${shortId}" (skin "${skin}") — add it to ${GIVEAWAY_POLICY_FILE} under nounDe.pairs (by skin) or nounDe.captives (by card), or the obligation exempts this card for free`;
+      return `obliges "nounDe", but no German noun is declared for "${shortId}" (skin "${skin}") — add it to ${CHAPTER_NOW?.chapter ?? "chNN"}.policy.json under nounDe.pairs (by skin) or nounDe.captives (by card), or the obligation exempts this card for free`;
     }
     if (!hasWord(text, noun)) {
       return `obliges "nounDe", but ${field} never names the being — it must say „${noun}" and instead says "${text}"`;
