@@ -239,5 +239,9 @@
    "to": "p2"
   }
  },
- "collectSkin": "feather"
+ "collectSkin": "feather",
+ "clothNounDe": "Tierspuren",
+ "clothNounDatDe": "Tierspuren",
+ "clothNounSgDe": "Tierspur",
+ "clothPlaceDe": "Zoo-Gelände"
 }

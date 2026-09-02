@@ -386,6 +386,41 @@ export interface PaintLevel {
    *  Das HUD zählt weiter über `collectNounDe` — das Wort, das das Kind liest,
    *  war schon immer eine Deklaration. */
   collectSkin?: string;
+  /** L0 · N2 · WIE DIE FUNDSTÜCKE DIESES KAPITELS HEISSEN (D-921).
+   *
+   *  Die `cloth`-Maschine — drei Fundstücke je Raum, Karte beim dritten Fund —
+   *  ist kapitel-neutral gebaut, ihr WORT war es nicht: „Kleider" stand an vier
+   *  Stellen hart im Code (HUD-Chip, Bilanz-Zeile, Legenden-Satz des Auftakts,
+   *  und der Ort „Schulhaus" gleich mit). ch06 benutzt dieselbe Maschine für
+   *  Hinweis-Schnipsel — „Kleider 3/9" wäre dort schlicht falsch.
+   *
+   *  VIER Felder und nicht zwei, und der Grund ist gemessen: die vier Stellen
+   *  brauchen DREI deutsche Formen. „Deine 9 Kleider sind …" (Nominativ),
+   *  „Du hast 4 von 9 Kleidern." (Dativ Plural), „Ein Kleidungsstück liegt …"
+   *  (Singular). Ein Kapitel, das nur den Nominativ deklariert, bekäme „von 9
+   *  Schnipsel" — genau die Sorte Deutsch, die das Register-Tor sonst rot färbt.
+   *  Deshalb ist jede Form DEKLARIERBAR und keine wird aus einer Regel geraten.
+   *
+   *  Die Vorgaben sind die heutigen Wörter von Kapitel 1, Zeichen für Zeichen —
+   *  ein Level ohne Deklaration liest sich unverändert. Wer nur `clothNounDe`
+   *  setzt, bekommt dieses Wort auch in den anderen beiden Rollen (für „Federn"
+   *  ist das richtig, für „Schnipsel" nicht — dann kommt `clothNounDatDe` dazu). */
+  clothNounDe?: string;
+  /** Dativ Plural („Du hast 4 von 9 …"). Ohne Angabe: `clothNounDe`, und ohne
+   *  auch das die heutige Form „Kleidern". */
+  clothNounDatDe?: string;
+  /** Singular („Ein … liegt irgendwo im …"). Ohne Angabe: `clothNounDe`, und
+   *  ohne auch das die heutige Form „Kleidungsstück". */
+  clothNounSgDe?: string;
+  /** Der ORT, über den die Fundstücke verstreut sind („das Schulhaus"). Steht
+   *  im selben Satz und war genauso hart wie das Nomen.
+   *
+   *  ⚠ Der ARTIKEL steht im Satz und nicht im Feld: „… über das ${ort}
+   *  verstreut". Ein Kapitel deklariert also ein Wort, das hinter „das" passt
+   *  („Zoo-Gelände", nicht „Zoo"). Das ist Absicht — die Alternative wäre eine
+   *  Genus-Regel im Motor, und die wäre für genau ein Wort je Kapitel teurer
+   *  Aberglaube. `check-copy-register` liest diese Felder mit. */
+  clothPlaceDe?: string;
   /** PK-R6 · C · THE OBJECTIVE SCREEN'S TITLE PLATE (doc 44 §2.6 / §3.4). The
    *  painted stem the goal card wears as its header — the chapter's own picture,
    *  with the chapter name set into the plate's lower band. DECLARED in the

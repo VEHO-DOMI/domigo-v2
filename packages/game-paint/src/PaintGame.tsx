@@ -23,7 +23,7 @@ import type { PaintLevel, PhaseSpec } from "./level.ts";
 import type { GameTaskV2 } from "@domigo/content-schema";
 import { CardHost } from "./cards/CardHost.tsx";
 import { FoundMark, Key, KeyBit } from "./cards/Glance.tsx";
-import { type AuftaktCard, type AuftaktCounts, type UniformPiece, auftaktChain, auftaktExit, auftaktPosition, auftaktStep, auftaktTasks, uniformLegend, uniformLegendLine } from "./cards/auftakt.ts";
+import { type AuftaktCard, type AuftaktCounts, type UniformPiece, auftaktChain, auftaktExit, auftaktPosition, auftaktStep, auftaktTasks, clothWordsDe, uniformLegend, uniformLegendLine } from "./cards/auftakt.ts";
 import { type ArenaBeat, arenaExit, arenaLines, arenaPosition, arenaStep } from "./cards/arena.ts";
 import { answerTextOf } from "./cards/resolution.ts";
 import { tierOfAsker } from "./cards/serving.ts";
@@ -1760,7 +1760,8 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
             />
           )}
           {booksCount > 0 && <Chip icon="book" label="Bonus-Bücher" value={`${booksCount}`} art={art} />}
-          {clothTotal > 0 && <Chip icon="uniform" label="Kleider" value={`${clothCount}/${clothTotal}`} art={art} />}
+          {/* L0 · N2: das Wort gehört dem Kapitel — ch06 sammelt mit derselben Maschine Schnipsel. */}
+          {clothTotal > 0 && <Chip icon="uniform" label={clothWordsDe(level).pl} value={`${clothCount}/${clothTotal}`} art={art} />}
           {/* ── R5-W9 · F10 · HIER STAND DIE LEBENSANZEIGE — UND DAS WAR DER
               FEHLER (R212e, P8 §2). Die Reihe zaehlt, was das KIND gesammelt
               hat; die Tafel-Leiste zaehlt, was dem GEGNER noch bleibt. Beides
@@ -2180,7 +2181,7 @@ function Overlay({
       const legendeRaster = legende.length === 0 ? null : (
         <div style={{ margin: "7px 0 0" }}>
           <span className="pb-quiet" style={{ display: "block", marginBottom: 4 }}>
-            {uniformLegendLine(legende.length, legende.filter((c) => c.found).length)}
+            {uniformLegendLine(legende.length, legende.filter((c) => c.found).length, clothWordsDe(level))}
           </span>
           <div style={{
             display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "4px 4px",
@@ -2857,7 +2858,8 @@ function ScorePage({
   if (bilanz.tipsTotal > 0) rows.push({ icon: "rule", labelDe: "Regel-Seiten gefunden", got: bilanz.tips, total: bilanz.tipsTotal });
   rows.push({ icon: "spark", labelDe: `${level.collectNounDe} gesammelt`, got: bilanz.letters, total: bilanz.lettersTotal });
   if (bilanz.booksTotal > 0) rows.push({ icon: "book", labelDe: "Bonus-Bücher", got: bilanz.books, total: bilanz.booksTotal });
-  if (bilanz.clothTotal > 0) rows.push({ icon: "uniform", labelDe: "Kleider", got: bilanz.cloth, total: bilanz.clothTotal });
+  // L0 · N2: siehe HUD-Chip — dasselbe Wort, dieselbe Quelle.
+  if (bilanz.clothTotal > 0) rows.push({ icon: "uniform", labelDe: clothWordsDe(level).pl, got: bilanz.cloth, total: bilanz.clothTotal });
 
   const ms = useCeremonyClock(countUpTotalMs(rows.length));
   const completion = runCompletion(rows);

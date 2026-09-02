@@ -243,7 +243,12 @@ for (const cx of CHAPTERS) {
 }
 
 // ── 2 · the level ────────────────────────────────────────────────────────────
-const LEVEL_FIELDS = /(^|\.)(name|goalDe|whyDe|hintsDe|captiveDe|topicDe|merksatzDe|erklaerungDe)(\[\d+\])?$/;
+// L0 · N2: die vier Fundstück-Wörter kommen dazu. Sie sind seit der Level-Welle
+// DEKLARIERT statt hart im Code (`clothNounDe` & Co.) — also stehen sie in einer
+// Inhalts-Datei und müssen wie jede andere deutsche Zeile durchs Register. Ohne
+// diese Zeile wäre die Verlagerung aus dem Code eine LOCKERUNG gewesen: hart
+// codiert las `check-paint-copy` sie mit, deklariert läse sie niemand.
+const LEVEL_FIELDS = /(^|\.)(name|goalDe|whyDe|hintsDe|captiveDe|topicDe|merksatzDe|erklaerungDe|collectNounDe|clothNounDe|clothNounDatDe|clothNounSgDe|clothPlaceDe)(\[\d+\])?$/;
 const strings = function* (node, at = "") {
   if (typeof node === "string") { yield [at, node]; return; }
   if (Array.isArray(node)) { for (const [i, v] of node.entries()) yield* strings(v, `${at}[${i}]`); return; }

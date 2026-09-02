@@ -294,9 +294,36 @@ export const uniformLegend = (
  *  GEZÄHLT und nicht getippt (doc 41 §7). Deutsch hat einen Singular, also hat
  *  diese Funktion einen Zweig dafür; ein Kapitel mit genau einem Fundstück wird
  *  es geben, und `1 Kleider` wäre dann kompiliert und trotzdem falsch. */
-export const uniformLegendLine = (total: number, found: number): string => {
-  if (total === 1) return found === 0 ? "Ein Kleidungsstück liegt irgendwo im Schulhaus." : "Du hast es.";
-  if (found === 0) return `Deine ${total} Kleider sind über das Schulhaus verstreut.`;
-  if (found >= total) return `Du hast alle ${total} Kleider.`;
-  return `Du hast ${found} von ${total} Kleidern.`;
+/** L0 · N2 · die vier deutschen Wörter dieser Zeile, aufgelöst aus dem Level.
+ *  EINE Stelle, damit HUD, Bilanz und Legende nicht dreimal dieselbe Vorgabe
+ *  buchstabieren — und weil eine Vorgabe, die dreimal dasteht, dreimal driftet. */
+export interface ClothWordsDe {
+  /** Nominativ Plural — „Deine 9 KLEIDER sind …" */
+  pl: string;
+  /** Dativ Plural — „Du hast 4 von 9 KLEIDERN." */
+  plDat: string;
+  /** Singular — „Ein KLEIDUNGSSTÜCK liegt …" */
+  sg: string;
+  /** der Ort — „… über das SCHULHAUS verstreut." */
+  ort: string;
+}
+
+/** Die Vorgaben sind Kapitel 1, Zeichen für Zeichen. Ein Level ohne Deklaration
+ *  liest sich damit unverändert; wer nur den Plural setzt, bekommt ihn auch in
+ *  den anderen Nomen-Rollen (richtig für „Federn", zu wenig für „Schnipsel" —
+ *  dafür gibt es `clothNounDatDe`). */
+export const clothWordsDe = (level: {
+  clothNounDe?: string; clothNounDatDe?: string; clothNounSgDe?: string; clothPlaceDe?: string;
+}): ClothWordsDe => ({
+  pl: level.clothNounDe ?? "Kleider",
+  plDat: level.clothNounDatDe ?? level.clothNounDe ?? "Kleidern",
+  sg: level.clothNounSgDe ?? level.clothNounDe ?? "Kleidungsstück",
+  ort: level.clothPlaceDe ?? "Schulhaus",
+});
+
+export const uniformLegendLine = (total: number, found: number, w: ClothWordsDe = clothWordsDe({})): string => {
+  if (total === 1) return found === 0 ? `Ein ${w.sg} liegt irgendwo im ${w.ort}.` : "Du hast es.";
+  if (found === 0) return `Deine ${total} ${w.pl} sind über das ${w.ort} verstreut.`;
+  if (found >= total) return `Du hast alle ${total} ${w.pl}.`;
+  return `Du hast ${found} von ${total} ${w.plDat}.`;
 };

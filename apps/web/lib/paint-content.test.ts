@@ -105,3 +105,19 @@ describe("L0 · N1 · R246 · der Sammel-Skin ist ein Level-Feld", () => {
     }
   });
 });
+
+describe("L0 · N2 · die Fundstück-Wörter überleben das Parsen (D-921)", () => {
+  it("ch01 deklariert keines — das HUD sagt weiter »Kleider«", () => {
+    const ch01 = loadPaintLevel(STORY, "ch01");
+    assert.equal(ch01.clothNounDe, undefined);
+    assert.equal(ch01.clothPlaceDe, undefined);
+  });
+
+  it("ch02 deklariert alle vier, und alle vier kommen an", () => {
+    const ch02 = loadPaintLevel(STORY, "ch02");
+    assert.equal(ch02.clothNounDe, "Tierspuren");
+    assert.equal(ch02.clothNounDatDe, "Tierspuren");
+    assert.equal(ch02.clothNounSgDe, "Tierspur");
+    assert.equal(ch02.clothPlaceDe, "Zoo-Gelände");
+  });
+});

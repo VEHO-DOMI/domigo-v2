@@ -193,6 +193,14 @@ const PaintLevelFile = z.object({
    *  Kapitel, dessen Sammel-Skin verschwindet, sammelt im Browser wieder
    *  Buchstaben, während jedes Tor grün bleibt. */
   collectSkin: z.string().min(1).optional(),
+  /** L0 · N2 · wie die `cloth`-Fundstücke dieses Kapitels heissen (D-921).
+   *  Vier Felder, weil die vier Lesestellen drei deutsche Formen brauchen —
+   *  siehe `level.ts`. Auch sie MÜSSEN hier stehen: was das Schema nicht kennt,
+   *  entfernt es still, und das HUD sagte wieder „Kleider". */
+  clothNounDe: z.string().min(1).optional(),
+  clothNounDatDe: z.string().min(1).optional(),
+  clothNounSgDe: z.string().min(1).optional(),
+  clothPlaceDe: z.string().min(1).optional(),
   /** PK-R3b · R3-16: how many Regel-Seiten the chapter hides (doc 41 §5). The
    *  `tip-honesty` law proves this against what the phases actually place. */
   tipsTotal: z.number().int().positive().optional(),
