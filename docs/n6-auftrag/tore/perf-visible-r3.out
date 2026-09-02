@@ -1,0 +1,13 @@
+sysctl: sysctl fmt -1 1024 1: Operation not permitted
+
+Maschine vor dem Lauf: Mess-Browser 0 · Lastmittel — · fremde Server im Band 3200–3399: keine
+  Die Maschine war frei, als diese Zahlen entstanden.
+file:///Users/veho/Code/domigo-v2-n6/scripts/perf-visible.mjs:448
+    if (chromeGone !== null) throw new Error(`Chrome ${chromeGone}`);
+                                   ^
+
+Error: Chrome ist ausgestiegen (Code —, Signal SIGABRT)
+    at endpoint (file:///Users/veho/Code/domigo-v2-n6/scripts/perf-visible.mjs:448:36)
+    at async file:///Users/veho/Code/domigo-v2-n6/scripts/perf-visible.mjs:513:26
+
+Node.js v22.23.1

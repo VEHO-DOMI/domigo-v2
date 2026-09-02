@@ -1,0 +1,165 @@
+1 · layer-value audit (doc 36 §1)
+    ch01/p1 L0: lum 90.4% · sat 16.3%  [v1.1 @K=88: 81.8–95.0%, sat ≤20%] lum in band
+    ch01/p1 L1: lum 78.0% · sat 50.6%  [v1.1 @K=88: 70.4–88.0%, sat ≤35%] lum in band — SATURATION OVER CAP (reported)
+    ch01/p1 L2: lum 54.6% · sat 40.9%  [v1.1 @K=88: 44.0–66.0%, sat ≤50%] lum in band
+    ch01/p1 L3: lum 32.8% · sat 64.2%  [K-exempt]
+    ch01/p1 L2↔L3 separation: 21.8% lum · 23.3% sat — PASS
+    ch01/p1 deep-row pigment: 65.8% of body (constant 65.9%, drift 0.1 pts) — PASS
+    ch01/p1 body→fade handover: 0.301 derived from the art (constant 0.301, drift 0.000) — PASS
+    ch01/p2 L0: lum 28.1% · sat 44.8%  [v1.1 @K=30: 27.9–32.4%, sat ≤20%] lum in band — SATURATION OVER CAP (reported)
+    ch01/p2 L1: lum 27.0% · sat 49.7%  [v1.1 @K=30: 24.0–30.0%, sat ≤35%] lum in band — SATURATION OVER CAP (reported)
+    ch01/p2 L2: lum 19.1% · sat 64.2%  [v1.1 @K=30: 15.0–22.5%, sat ≤50%] lum in band — SATURATION OVER CAP (reported)
+    ch01/p2 L3: lum 36.0% · sat 55.6%  [K-exempt]
+    ch01/p2 L2↔L3 separation: 17.0% lum · 8.6% sat — PASS
+    ch01/p3 L0: lum 85.8% · sat 16.1%  [v1.1 @K=86: 80.0–92.9%, sat ≤20%] lum in band
+    ch01/p3 L1: lum 80.0% · sat 42.9%  [v1.1 @K=86: 68.8–86.0%, sat ≤35%] lum in band — SATURATION OVER CAP (reported)
+    ch01/p3 L2: lum 51.1% · sat 31.1%  [v1.1 @K=86: 43.0–64.5%, sat ≤50%] lum in band
+    ch01/p3 L3: lum 34.9% · sat 53.4%  [K-exempt]
+    ch01/p3 L2↔L3 separation: 16.2% lum · 22.2% sat — PASS
+    ch01/p4 L0: lum 26.5% · sat 21.2%  [v1.1 @K=28: 26.0–30.2%, sat ≤20%] lum in band — SATURATION OVER CAP (reported)
+    ch01/p4 L1: lum 16.3% ausserhalb [v1.1 @K=28: 22.4–28.0%, sat ≤35%] — TIEFEN-AUSNAHME bis 2026-10-31: Bühne AQ13C7 ist ein Nacht-Saal (L1 16,3 % gegen ein Band 22,4–28,0 %); l2_p4 und band_p4_audience stammen noch aus der hellen Fassung. Zwei blinde Leser 2:0 »ein gemalter Ort«, 2:0 »keine störende Naht«, beide sehen die Tafel klar vor der Wand. Ende der Ausnahme: die Nacht-Fassung der zwei vorderen Bänder
+    ch01/p4 L2: lum 14.8% · sat 66.7%  [v1.1 @K=28: 14.0–21.0%, sat ≤50%] lum in band — SATURATION OVER CAP (reported)
+    ch01/p4 L3: lum 27.1% · sat 56.7%  [K-exempt]
+    ch01/p4: L1↔L2 gap 1.5% < 2.8% — TIEFEN-AUSNAHME bis 2026-10-31: Bühne AQ13C7 ist ein Nacht-Saal (L1 16,3 % gegen ein Band 22,4–28,0 %); l2_p4 und band_p4_audience stammen noch aus der hellen Fassung. Zwei blinde Leser 2:0 »ein gemalter Ort«, 2:0 »keine störende Naht«, beide sehen die Tafel klar vor der Wand. Ende der Ausnahme: die Nacht-Fassung der zwei vorderen Bänder
+    ch01/p4 L2↔L3 separation: 12.3% lum · 10.1% sat — PASS
+    ch01/p9 L0: lum 15.0% · sat 55.0%  [v1.1 @K=14: 13.0–15.1%, sat ≤20%] lum in band — SATURATION OVER CAP (reported)
+    ch01/p9 L1: lum 11.6% · sat 66.5%  [v1.1 @K=14: 11.2–14.0%, sat ≤35%] lum in band — SATURATION OVER CAP (reported)
+    ch01/p9 L3: lum 31.9% · sat 46.8%  [K-exempt]
+2 · coverage audit (doc 36 §4.2)
+    ch01/p1: 6 plane pieces over a 1024×416 px world — covered
+    ch01/p2: 6 plane pieces over a 1152×416 px world — covered
+    ch01/p3: 6 plane pieces over a 1024×416 px world — covered
+    ch01/p4: 6 plane pieces over a 576×320 px world — covered
+    ch01/p9: 4 plane pieces over a 704×320 px world — covered
+3 · no-naked-fill audit (doc 36 §4.3)
+    ch01/p1: 0 naked fills, 0 uncovered solids across all 569 solid cells (full world, not one screen)
+    ch01/p2: 0 naked fills, 0 uncovered solids across all 506 solid cells (full world, not one screen)
+    ch01/p3: 0 naked fills, 0 uncovered solids across all 510 solid cells (full world, not one screen)
+    ch01/p4: 0 naked fills, 0 uncovered solids across all 120 solid cells (full world, not one screen)
+    ch01/p9: 0 naked fills, 0 uncovered solids across all 235 solid cells (full world, not one screen)
+4 · glyph audit (doc 36 §4.4)
+    ch01/p1: 9 letters, 8 distinct characters (SCHOOLBAG)
+    ch01/p2: 9 letters, 7 distinct characters (PROJECTOR)
+    ch01/p3: 9 letters, 9 distinct characters (GLUESTICK)
+    ch01/p4: no trail letters
+    ch01/p9: 12 letters, 9 distinct characters (SCHOOLTHINGS)
+4b · letter-presence audit (R37, R5-W6 · L1)
+    ch01/p1: Schluessel 88 · Wand 199.0 (l1_p1_a+l1_p1_b) · Hof 28 % → Grund 156.6 · Rand 0x243048 26.0 px, ΔL -151.8/ΔH 170° · Fuellung↔Grund ΔL +44.2/ΔH 1° — 9 Buchstaben trennen sich von ihrem Raum
+    ch01/p2: Schluessel 30 · Wand 68.8 (l1_p2_a+l1_p2_b) · Hof 0 % → Grund 69.2 · Rand 0xfffdf6 16.1 px, ΔL +184.1/ΔH 173° · Fuellung↔Grund ΔL +131.6/ΔH 179° — 9 Buchstaben trennen sich von ihrem Raum
+    ch01/p3: Schluessel 86 · Wand 204.0 (l1_p3_a+l1_p3_b) · Hof 28 % → Grund 159.8 · Rand 0x243048 26.0 px, ΔL -156.9/ΔH 180° · Fuellung↔Grund ΔL +41.0/ΔH 6° — 9 Buchstaben trennen sich von ihrem Raum
+    ch01/p4: keine Trail-Buchstaben — nichts zu trennen
+    ch01/p9: Schluessel 14 · Wand 29.7 (l1_p9_a+l1_p9_b) · Hof 0 % → Grund 29.4 · Rand 0xfffdf6 16.1 px, ΔL +223.2/ΔH 169° · Fuellung↔Grund ΔL +171.4/ΔH 175° — 12 Buchstaben trennen sich von ihrem Raum
+5 · air audit (doc 36 §1 + doc 44 B14)
+    ch01/p1: haze 20% · 3 shaft(s) · 22 motes · vignette 30% — all above y=216 of 416
+    ch01/p2: haze 14% · 2 shaft(s) · 14 motes · vignette 30% — all above y=208 of 416
+    ch01/p3: 10 leaves in [0.58, 0.94] of the world, all behind the play plane
+    ch01/p3: haze 18% · 3 shaft(s) · 18 motes · vignette 30% — all above y=200 of 416
+    ch01/p4: haze 12% · 2 shaft(s) · 12 motes · vignette 34% — all above y=176 of 320
+    ch01/p9: haze 10% · 0 shaft(s) · 16 motes · vignette 38% — all above y=192 of 320
+6 · no-metronome audit (mass.ts NO_METRONOME_MIN_PERIOD)
+    ch01/p1 course: 2 long run(s) · shortest repeat cycle 11 cells at 53,18 (11 cells) (law: > 9) · leanest variety +1
+    ch01/p1 mass: 17 long run(s) · shortest repeat cycle 17 cells at 46,18 (18 cells) (law: > 9) · leanest variety +4
+    ch01/p2 course: 4 long run(s) · shortest repeat cycle 10 cells at 22,9 (10 cells) (law: > 9) · leanest variety +1
+    ch01/p2 mass: 16 long run(s) · shortest repeat cycle 10 cells at 22,9 (10 cells) (law: > 9) · leanest variety +2
+    ch01/p3 course: 2 long run(s) · shortest repeat cycle 10 cells at 0,15 (10 cells) (law: > 9) · leanest variety +1
+    ch01/p3 mass: 20 long run(s) · shortest repeat cycle 10 cells at 0,15 (10 cells) (law: > 9) · leanest variety +2
+    ch01/p4 course: 1 long run(s) · shortest repeat cycle 20 cells at 8,18 (20 cells) (law: > 9) · leanest variety +1
+    ch01/p4 mass: 3 long run(s) · shortest repeat cycle 36 cells at 0,0 (36 cells) (law: > 9) · leanest variety +4
+    ch01/p9 course: 1 long run(s) · shortest repeat cycle 43 cells at 0,16 (44 cells) (law: > 9) · leanest variety +4
+    ch01/p9 mass: 5 long run(s) · shortest repeat cycle 44 cells at 0,0 (44 cells) (law: > 9) · leanest variety +3
+7 · zone-palette audit (doc 36 §2 · complete objects)
+    ch01/p1: 4 object(s) for ledge widths 2/3
+    ch01/p2: 4 object(s) for ledge widths 1/2/3/4
+    ch01/p3: 3 object(s) for ledge widths 1/2/3/4
+    ch01/p4: 2 object(s) for ledge widths none
+    ch01/p9: 3 object(s) for ledge widths 2/3
+    reuse: plat_bench_2×2 · plat_shelf_2×2 · plat_bundle_1×2 · plat_desk×2 · plat_plank_2×2 · plat_column2_1×2
+8 · middle-distance audit (doc 36 §1, PK-R6 H2 amendment)
+    ch01/p1: L1 78.0% → L2b 63.5% → L2 54.6%  (three bands, law ≥3.5 apart)
+    ch01/p2: L1 27.0% → L2b 22.1% → L2 19.1%  (three bands, law ≥1.2 apart)
+    ch01/p3: L1 80.0% → L2b 62.1% → L2 51.1%  (three bands, law ≥3.4 apart)
+    ch01/p4: L2b rendert 19.0% zwischen L1 16.3% und L2 14.8% — TIEFEN-AUSNAHME bis 2026-10-31: Bühne AQ13C7 ist ein Nacht-Saal (L1 16,3 % gegen ein Band 22,4–28,0 %); l2_p4 und band_p4_audience stammen noch aus der hellen Fassung. Zwei blinde Leser 2:0 »ein gemalter Ort«, 2:0 »keine störende Naht«, beide sehen die Tafel klar vor der Wand. Ende der Ausnahme: die Nacht-Fassung der zwei vorderen Bänder
+    ch01/p9: no furniture plane — none owed (p9's own AF sheet: „atmosphere, not architecture")
+9 · child's-edge audit (PK-R6 H2, finding 1)
+    ch01/p1: contour 14.8% · swell 11% · nearest plane 39.8 points away
+    ch01/p2: contour 90.2% · swell 13% · nearest plane 63.2 points away
+    ch01/p3: contour 14.8% · swell 11% · nearest plane 36.4 points away
+    ch01/p4: contour 90.2% · swell 13% · nearest plane 73.9 points away
+    ch01/p9: contour 90.2% · swell 13% · nearest plane 78.6 points away
+9b · checkpoint-edge audit (R5-W3 · A5 · D-45)
+    ch01/p1: checkpoints are SILENT (B4 · R44) — nothing is drawn, so there is nothing to measure
+    ch01/p2: checkpoints are SILENT (B4 · R44) — nothing is drawn, so there is nothing to measure
+    ch01/p3: checkpoints are SILENT (B4 · R44) — nothing is drawn, so there is nothing to measure
+    ch01/p4: checkpoints are SILENT (B4 · R44) — nothing is drawn, so there is nothing to measure
+    ch01/p9: checkpoints are SILENT (B4 · R44) — nothing is drawn, so there is nothing to measure
+    dormant: all 5 phase(s) declare silent checkpoints — the law re-arms itself the moment a chapter draws one again
+10 · painted-scale audit (mass.ts paintScaleOf — R5-W1 · A1)
+    ch01/p1: mass_edge_l shows 40 % of its 248-px sheet (8.0 world px at 0.0802 — the world's own 0.0802)
+    ch01/p1: mass_edge_r shows 40 % of its 248-px sheet (8.0 world px at 0.0802 — the world's own 0.0802)
+    ch01/p1: ch01/p1:platform:plat_bench_2 zeichnet 0.0338 (0.42x der Welt) auf y — BENANNTE AUSNAHME bis 2026-11-30: gemalt 4,74 Zellen, gezeichnet auf 2 (0,42x) — p1 hat keinen Sims ueber 3 Zellen; auf gemalter Breite waere die Bank in dieser Halle nie sichtbar. Faellt mit AS6-P1 (breiteres Sims oder schmaleres Blatt)
+    ch01/p1: ch01/p1:platform:plat_bench_2 zeichnet 0.0338 (0.42x der Welt) auf x — BENANNTE AUSNAHME bis 2026-11-30: gemalt 4,74 Zellen, gezeichnet auf 2 (0,42x) — p1 hat keinen Sims ueber 3 Zellen; auf gemalter Breite waere die Bank in dieser Halle nie sichtbar. Faellt mit AS6-P1 (breiteres Sims oder schmaleres Blatt)
+    ch01/p1: ch01/p1:platform:plat_coatbench zeichnet 0.0361 (0.45x der Welt) auf y — BENANNTE AUSNAHME bis 2026-11-30: gemalt 2,22 Zellen, gezeichnet auf 1 (0,45x) — sie ist das einzige 1-Zellen-Objekt der Halle (Audit 7 verlangt eines, und die drei 3-Zellen-Simse brauchen es). ch01 besitzt kein Moebel, das im Welt-Massstab EINE Zelle breit ist — das schmalste misst 1,51. Das ist die Bestellung hinter dieser Zeile
+    ch01/p1: ch01/p1:platform:plat_coatbench zeichnet 0.0361 (0.45x der Welt) auf x — BENANNTE AUSNAHME bis 2026-11-30: gemalt 2,22 Zellen, gezeichnet auf 1 (0,45x) — sie ist das einzige 1-Zellen-Objekt der Halle (Audit 7 verlangt eines, und die drei 3-Zellen-Simse brauchen es). ch01 besitzt kein Moebel, das im Welt-Massstab EINE Zelle breit ist — das schmalste misst 1,51. Das ist die Bestellung hinter dieser Zeile
+    ch01/p1: ch01/p1:platform:plat_shelf_2 zeichnet 0.0373 (0.47x der Welt) auf y — BENANNTE AUSNAHME bis 2026-11-30: gemalt 4,30 Zellen, gezeichnet auf 2 (0,47x) — wie die Bank: p1s breitester Sims ist 3 Zellen. In p2, das einen 4-Zellen-Sims hat, IST dasselbe Blatt angehoben (0,93x). Faellt mit AS6-P1
+    ch01/p1: ch01/p1:platform:plat_shelf_2 zeichnet 0.0373 (0.47x der Welt) auf x — BENANNTE AUSNAHME bis 2026-11-30: gemalt 4,30 Zellen, gezeichnet auf 2 (0,47x) — wie die Bank: p1s breitester Sims ist 3 Zellen. In p2, das einen 4-Zellen-Sims hat, IST dasselbe Blatt angehoben (0,93x). Faellt mit AS6-P1
+    ch01/p1: inCornerR:mass_incorner_r zeichnet 0.0235 (0.29x der Welt) auf y — BENANNTE AUSNAHME bis 2026-11-30: Blatt 510x432 — DAS Blatt, das im quadratischen Kasten 18,1 % senkrecht gestaucht wurde. Die Stauchung ist WEG (0,0 % Verzug); die Untergroesse bleibt und faellt mit AS6
+    ch01/p1: inCornerR:mass_incorner_r zeichnet 0.0235 (0.29x der Welt) auf x — BENANNTE AUSNAHME bis 2026-11-30: Blatt 510x432 — DAS Blatt, das im quadratischen Kasten 18,1 % senkrecht gestaucht wurde. Die Stauchung ist WEG (0,0 % Verzug); die Untergroesse bleibt und faellt mit AS6
+    ch01/p1: inCornerL:mass_incorner_l zeichnet 0.0234 (0.29x der Welt) auf y — BENANNTE AUSNAHME bis 2026-11-30: Blatt 512x494, sonst wie cornerBL. Der Kasten trug frueher 3,6 % Verzug; jetzt 0,0 %
+    ch01/p1: inCornerL:mass_incorner_l zeichnet 0.0234 (0.29x der Welt) auf x — BENANNTE AUSNAHME bis 2026-11-30: Blatt 512x494, sonst wie cornerBL. Der Kasten trug frueher 3,6 % Verzug; jetzt 0,0 %
+    ch01/p1: every mass surface at 0.0802 world px/source px (tiled AND image) — a 512-wide painting every 2.57 cells
+    ch01/p2: ch01/p2:platform:plat_bookpile_s zeichnet 0.0526 (0.65x der Welt) auf y — BENANNTE AUSNAHME bis 2026-11-30: gemalt 1,53 Zellen, gezeichnet auf 1 (0,65x) — das einzige 1-Zellen-Objekt des Raumes, und p2 hat zwei 1-Zellen-Simse. Auf 2 gehoben zeichnete er 1,31x und liesse beide Simse leer
+    ch01/p2: ch01/p2:platform:plat_bookpile_s zeichnet 0.0526 (0.65x der Welt) auf x — BENANNTE AUSNAHME bis 2026-11-30: gemalt 1,53 Zellen, gezeichnet auf 1 (0,65x) — das einzige 1-Zellen-Objekt des Raumes, und p2 hat zwei 1-Zellen-Simse. Auf 2 gehoben zeichnete er 1,31x und liesse beide Simse leer
+    ch01/p2: inCornerL:mass_incorner_l zeichnet 0.0234 (0.29x der Welt) auf y — BENANNTE AUSNAHME bis 2026-11-30: Blatt 512x494, sonst wie cornerBL. Der Kasten trug frueher 3,6 % Verzug; jetzt 0,0 %
+    ch01/p2: inCornerL:mass_incorner_l zeichnet 0.0234 (0.29x der Welt) auf x — BENANNTE AUSNAHME bis 2026-11-30: Blatt 512x494, sonst wie cornerBL. Der Kasten trug frueher 3,6 % Verzug; jetzt 0,0 %
+    ch01/p2: inCornerR:mass_incorner_r zeichnet 0.0235 (0.29x der Welt) auf y — BENANNTE AUSNAHME bis 2026-11-30: Blatt 510x432 — DAS Blatt, das im quadratischen Kasten 18,1 % senkrecht gestaucht wurde. Die Stauchung ist WEG (0,0 % Verzug); die Untergroesse bleibt und faellt mit AS6
+    ch01/p2: inCornerR:mass_incorner_r zeichnet 0.0235 (0.29x der Welt) auf x — BENANNTE AUSNAHME bis 2026-11-30: Blatt 510x432 — DAS Blatt, das im quadratischen Kasten 18,1 % senkrecht gestaucht wurde. Die Stauchung ist WEG (0,0 % Verzug); die Untergroesse bleibt und faellt mit AS6
+    ch01/p2: cornerBL:mass_corner_bl zeichnet 0.0234 (0.29x der Welt) auf y — BENANNTE AUSNAHME bis 2026-11-30: Blatt 512x504 in einem 12-px-Kasten (0,29x…0,34x je Raum). Anhebung auf gemalte Groesse gebaut und von 2 blinden Lesern 2:0 verworfen — die Ecke wird zum Holzklotz ueber dem Material, das sie abrunden soll. Bestellung: Eckblatt bei ~150 px statt 512 (AS6). Verzug 0,0 %
+    ch01/p2: cornerBL:mass_corner_bl zeichnet 0.0234 (0.29x der Welt) auf x — BENANNTE AUSNAHME bis 2026-11-30: Blatt 512x504 in einem 12-px-Kasten (0,29x…0,34x je Raum). Anhebung auf gemalte Groesse gebaut und von 2 blinden Lesern 2:0 verworfen — die Ecke wird zum Holzklotz ueber dem Material, das sie abrunden soll. Bestellung: Eckblatt bei ~150 px statt 512 (AS6). Verzug 0,0 %
+    ch01/p2: cornerBR:mass_corner_br zeichnet 0.0234 (0.29x der Welt) auf y — BENANNTE AUSNAHME bis 2026-11-30: Blatt 512x503, sonst wie cornerBL — dieselbe Messung, dasselbe Panel, dieselbe Bestellung
+    ch01/p2: cornerBR:mass_corner_br zeichnet 0.0234 (0.29x der Welt) auf x — BENANNTE AUSNAHME bis 2026-11-30: Blatt 512x503, sonst wie cornerBL — dieselbe Messung, dasselbe Panel, dieselbe Bestellung
+    ch01/p2: every mass surface at 0.0806 world px/source px (tiled AND image) — a 512-wide painting every 2.58 cells
+    ch01/p3: ⚠ course crust_p3_a repeats every 2.08 cells — locked to the 2-cell grid. Its scale is pinned by CRUST_H, so this is an ART finding (re-cut the sheet's height) — filed, see SPEC_MASSEN_KIT §2 / DEBT_REGISTER
+    ch01/p3: ⚠ course crust_p3_b repeats every 2.08 cells — locked to the 2-cell grid. Its scale is pinned by CRUST_H, so this is an ART finding (re-cut the sheet's height) — filed, see SPEC_MASSEN_KIT §2 / DEBT_REGISTER
+    ch01/p3: ch01/p3:platform:ledge_windowsill zeichnet 0.0762 (1.17x der Welt) auf y — BENANNTE AUSNAHME bis 2026-11-30: gemalt 1,70 Zellen, gezeichnet auf 2 (1,17x) — 2 ist die naechste ganze Zelle, 1 waere 0,59x und damit doppelt so falsch. Die Fensterbank ist ZU GROSS, nicht zu klein; ein Blatt von 1,5 Zellen Breite loest es. Faellt mit AS6-P3
+    ch01/p3: ch01/p3:platform:ledge_windowsill zeichnet 0.0762 (1.17x der Welt) auf x — BENANNTE AUSNAHME bis 2026-11-30: gemalt 1,70 Zellen, gezeichnet auf 2 (1,17x) — 2 ist die naechste ganze Zelle, 1 waere 0,59x und damit doppelt so falsch. Die Fensterbank ist ZU GROSS, nicht zu klein; ein Blatt von 1,5 Zellen Breite loest es. Faellt mit AS6-P3
+    ch01/p3: ch01/p3:platform:plat_column2_1 zeichnet 0.0430 (0.66x der Welt) auf y — BENANNTE AUSNAHME bis 2026-11-30: gemalt 1,51 Zellen, gezeichnet auf 1 (0,66x) — das einzige 1-Zellen-Objekt des Hofes, und p3 hat einen 1-Zellen-Sims. Genau auf der Rundungsgrenze: 1,51 rundet auf 2 und zeichnete dann 1,33x
+    ch01/p3: ch01/p3:platform:plat_column2_1 zeichnet 0.0430 (0.66x der Welt) auf x — BENANNTE AUSNAHME bis 2026-11-30: gemalt 1,51 Zellen, gezeichnet auf 1 (0,66x) — das einzige 1-Zellen-Objekt des Hofes, und p3 hat einen 1-Zellen-Sims. Genau auf der Rundungsgrenze: 1,51 rundet auf 2 und zeichnete dann 1,33x
+    ch01/p3: inCornerR:mass_incorner_r zeichnet 0.0235 (0.36x der Welt) auf y — BENANNTE AUSNAHME bis 2026-11-30: Blatt 510x432 — DAS Blatt, das im quadratischen Kasten 18,1 % senkrecht gestaucht wurde. Die Stauchung ist WEG (0,0 % Verzug); die Untergroesse bleibt und faellt mit AS6
+    ch01/p3: inCornerR:mass_incorner_r zeichnet 0.0235 (0.36x der Welt) auf x — BENANNTE AUSNAHME bis 2026-11-30: Blatt 510x432 — DAS Blatt, das im quadratischen Kasten 18,1 % senkrecht gestaucht wurde. Die Stauchung ist WEG (0,0 % Verzug); die Untergroesse bleibt und faellt mit AS6
+    ch01/p3: inCornerL:mass_incorner_l zeichnet 0.0234 (0.36x der Welt) auf y — BENANNTE AUSNAHME bis 2026-11-30: Blatt 512x494, sonst wie cornerBL. Der Kasten trug frueher 3,6 % Verzug; jetzt 0,0 %
+    ch01/p3: inCornerL:mass_incorner_l zeichnet 0.0234 (0.36x der Welt) auf x — BENANNTE AUSNAHME bis 2026-11-30: Blatt 512x494, sonst wie cornerBL. Der Kasten trug frueher 3,6 % Verzug; jetzt 0,0 %
+    ch01/p3: cornerBR:mass_corner_br zeichnet 0.0234 (0.36x der Welt) auf y — BENANNTE AUSNAHME bis 2026-11-30: Blatt 512x503, sonst wie cornerBL — dieselbe Messung, dasselbe Panel, dieselbe Bestellung
+    ch01/p3: cornerBR:mass_corner_br zeichnet 0.0234 (0.36x der Welt) auf x — BENANNTE AUSNAHME bis 2026-11-30: Blatt 512x503, sonst wie cornerBL — dieselbe Messung, dasselbe Panel, dieselbe Bestellung
+    ch01/p3: ch01/p3:slideUnder:slide_under zeichnet 0.0313 (0.48x der Welt) auf y — BENANNTE AUSNAHME bis 2026-11-30: wie slide_top: die Strebe IST der Keil derselben 512er-Zelle (mass.ts §6)
+    ch01/p3: ch01/p3:slideUnder:slide_under zeichnet 0.0313 (0.48x der Welt) auf x — BENANNTE AUSNAHME bis 2026-11-30: wie slide_top: die Strebe IST der Keil derselben 512er-Zelle (mass.ts §6)
+    ch01/p3: ch01/p3:slideTop:slide_top zeichnet 0.0313 (0.48x der Welt) auf y — BENANNTE AUSNAHME bis 2026-11-30: gezeichnete 45°-ZELLE (Batch AF2): das Blatt ist von Ecke zu Ecke fuer EINE Gitterzelle gemalt, also ist 16 px die richtige Groesse und 0,48x die Folge davon, nicht ein Fehler. Im Welt-Massstab ruestete die Rutsche gegen das Gitter, auf dem gelaufen wird
+    ch01/p3: ch01/p3:slideTop:slide_top zeichnet 0.0313 (0.48x der Welt) auf x — BENANNTE AUSNAHME bis 2026-11-30: gezeichnete 45°-ZELLE (Batch AF2): das Blatt ist von Ecke zu Ecke fuer EINE Gitterzelle gemalt, also ist 16 px die richtige Groesse und 0,48x die Folge davon, nicht ein Fehler. Im Welt-Massstab ruestete die Rutsche gegen das Gitter, auf dem gelaufen wird
+    ch01/p3: ch01/p3:slideFoot:slide_foot zeichnet 0.0313 (0.48x der Welt) auf y — BENANNTE AUSNAHME bis 2026-11-30: wie slide_top: gezeichnete 45°-Zelle, eine Gitterzelle gross
+    ch01/p3: ch01/p3:slideFoot:slide_foot zeichnet 0.0313 (0.48x der Welt) auf x — BENANNTE AUSNAHME bis 2026-11-30: wie slide_top: gezeichnete 45°-Zelle, eine Gitterzelle gross
+    ch01/p3: every mass surface at 0.0649 world px/source px (tiled AND image) — a 512-wide painting every 2.08 cells
+    ch01/p4: inCornerR:mass_incorner_r zeichnet 0.0235 (0.33x der Welt) auf y — BENANNTE AUSNAHME bis 2026-11-30: Blatt 510x432 — DAS Blatt, das im quadratischen Kasten 18,1 % senkrecht gestaucht wurde. Die Stauchung ist WEG (0,0 % Verzug); die Untergroesse bleibt und faellt mit AS6
+    ch01/p4: inCornerR:mass_incorner_r zeichnet 0.0235 (0.33x der Welt) auf x — BENANNTE AUSNAHME bis 2026-11-30: Blatt 510x432 — DAS Blatt, das im quadratischen Kasten 18,1 % senkrecht gestaucht wurde. Die Stauchung ist WEG (0,0 % Verzug); die Untergroesse bleibt und faellt mit AS6
+    ch01/p4: inCornerL:mass_incorner_l zeichnet 0.0234 (0.33x der Welt) auf y — BENANNTE AUSNAHME bis 2026-11-30: Blatt 512x494, sonst wie cornerBL. Der Kasten trug frueher 3,6 % Verzug; jetzt 0,0 %
+    ch01/p4: inCornerL:mass_incorner_l zeichnet 0.0234 (0.33x der Welt) auf x — BENANNTE AUSNAHME bis 2026-11-30: Blatt 512x494, sonst wie cornerBL. Der Kasten trug frueher 3,6 % Verzug; jetzt 0,0 %
+    ch01/p4: every mass surface at 0.0717 world px/source px (tiled AND image) — a 512-wide painting every 2.30 cells
+    ch01/p9: ch01/p9:platform:plat_bundle_1 zeichnet 0.0419 (0.61x der Welt) auf y — BENANNTE AUSNAHME bis 2026-11-30: gemalt 1,65 Zellen, gezeichnet auf 1 (0,61x) — das einzige 1-Zellen-Objekt der Kammer; auf 2 gehoben zeichnete es 1,21x und liesse von jedem 3-Zellen-Sims eine Zelle leer. In p1, dessen Massstab groesser ist, IST dasselbe Blatt auf 2 gehoben (1,045x)
+    ch01/p9: ch01/p9:platform:plat_bundle_1 zeichnet 0.0419 (0.61x der Welt) auf x — BENANNTE AUSNAHME bis 2026-11-30: gemalt 1,65 Zellen, gezeichnet auf 1 (0,61x) — das einzige 1-Zellen-Objekt der Kammer; auf 2 gehoben zeichnete es 1,21x und liesse von jedem 3-Zellen-Sims eine Zelle leer. In p1, dessen Massstab groesser ist, IST dasselbe Blatt auf 2 gehoben (1,045x)
+    ch01/p9: ch01/p9:platform:plat_bench_2 zeichnet 0.0338 (0.49x der Welt) auf y — BENANNTE AUSNAHME bis 2026-11-30: gemalt 4,09 Zellen, gezeichnet auf 2 (0,49x) — p9s breitester Sims ist 3 Zellen (gemessen: 2x2, 3x2). Dieselbe Bestellung wie in p1
+    ch01/p9: ch01/p9:platform:plat_bench_2 zeichnet 0.0338 (0.49x der Welt) auf x — BENANNTE AUSNAHME bis 2026-11-30: gemalt 4,09 Zellen, gezeichnet auf 2 (0,49x) — p9s breitester Sims ist 3 Zellen (gemessen: 2x2, 3x2). Dieselbe Bestellung wie in p1
+    ch01/p9: cornerBL:mass_corner_bl zeichnet 0.0234 (0.34x der Welt) auf y — BENANNTE AUSNAHME bis 2026-11-30: Blatt 512x504 in einem 12-px-Kasten (0,29x…0,34x je Raum). Anhebung auf gemalte Groesse gebaut und von 2 blinden Lesern 2:0 verworfen — die Ecke wird zum Holzklotz ueber dem Material, das sie abrunden soll. Bestellung: Eckblatt bei ~150 px statt 512 (AS6). Verzug 0,0 %
+    ch01/p9: cornerBL:mass_corner_bl zeichnet 0.0234 (0.34x der Welt) auf x — BENANNTE AUSNAHME bis 2026-11-30: Blatt 512x504 in einem 12-px-Kasten (0,29x…0,34x je Raum). Anhebung auf gemalte Groesse gebaut und von 2 blinden Lesern 2:0 verworfen — die Ecke wird zum Holzklotz ueber dem Material, das sie abrunden soll. Bestellung: Eckblatt bei ~150 px statt 512 (AS6). Verzug 0,0 %
+    ch01/p9: cornerBR:mass_corner_br zeichnet 0.0234 (0.34x der Welt) auf y — BENANNTE AUSNAHME bis 2026-11-30: Blatt 512x503, sonst wie cornerBL — dieselbe Messung, dasselbe Panel, dieselbe Bestellung
+    ch01/p9: cornerBR:mass_corner_br zeichnet 0.0234 (0.34x der Welt) auf x — BENANNTE AUSNAHME bis 2026-11-30: Blatt 512x503, sonst wie cornerBL — dieselbe Messung, dasselbe Panel, dieselbe Bestellung
+    ch01/p9: every mass surface at 0.0691 world px/source px (tiled AND image) — a 512-wide painting every 2.21 cells
+    anchor honesty: scene and audit share tileScaleFor/tileAnchorFor; the anchor is exact in world space over 16/48/96/240 px
+11 · edge-coherence audit (R5-W4 · A6 — one painted body on ALL sides)
+    ch01/p1: 9 joints · worst ΔS 12.4 · worst ΔH 4° · carve +9.3/+9.2 — coherent
+    ch01/p2: 9 joints · worst ΔS 3.5 · worst ΔH 131° · carve +8.3/+8.2 — WAIVED until 2026-11-30: Nachtklassenraum zieht den geteilten warmen Buchkörper unter einem violetten Laufkurs — AS5b lieferte dafür ein Blatt ohne Motiv (A7). Reparaturpfad AS5F §10.6 (R201, A8 2026-08-22) — vierte Bestellung der Familie, c/d/e zurückgewiesen, die vorliegende Lieferung meldet sich selbst als INCOMPLETE; Import A9. Gemessen nach R194 (farbneutraler nearPlaneTint): ΔH 138° -> 131°, die Fuge bleibt weit außerhalb der Familie (crust↔body [crust_p2_b|mass_body_a] ΔH 129°>25° · crust↔edgeL [crust_p2_b|mass_edge_l] ΔH 131°>25° · crust↔edgeR [crust_p2_b|mass_edge_r] ΔH 130°>25°)
+    ch01/p3: 9 joints · worst ΔS 24.3 · worst ΔH 2° · carve +8.3/+8.2 — coherent
+    ch01/p4: 9 joints · worst ΔS 15.8 · worst ΔH 55° · carve +8.3/+8.2 — WAIVED until 2026-11-30: Bühnen-Laufkurs steht 55° vom geteilten Körper ab — AS5b nicht importierbar (A7). Reparaturpfad AS5F §10.6 (R201, A8 2026-08-22) — vierte Bestellung, c/d/e zurückgewiesen, Lieferung meldet sich selbst als INCOMPLETE; Import A9. Gemessen nach R194: ΔH 56° -> 55°, ΔS 15,5 -> 15,8 — der Farbton-Bruch ist Malerei, nicht Motor (crust↔body [crust_p4_a|mass_body_b] ΔH 55°>25° · crust↔edgeL [crust_p4_a|mass_edge_l] ΔH 53°>25° · crust↔edgeR [crust_p4_a|mass_edge_r] ΔH 53°>25°)
+    ch01/p9: 9 joints · worst ΔS 25.6 · worst ΔH 132° · carve +8.3/+8.2 — WAIVED until 2026-11-30: Kleckskammer zieht denselben warmen Körper unter einem tintigen Laufkurs — AS5b nicht importierbar (A7). Reparaturpfad AS5F §10.6 (R201, A8 2026-08-22) — vierte Bestellung, c/d/e zurückgewiesen, Lieferung meldet sich selbst als INCOMPLETE; Import A9. ⚠ Gemessen nach R194: ΔH 139° -> 132°, aber ΔS 24,3 -> 25,6 — dieser eine Wert wird SCHLECHTER und reißt jetzt auch die 25er-Linie. Genannt, nicht verschwiegen: p9 war und bleibt wegen ΔH ausgenommen, der Posten fällt mit derselben Bestellung (crust↔body [crust_p9_a|mass_body_a] ΔS 25.6>25, ΔH 130°>25° · crust↔edgeL [crust_p9_a|mass_edge_l] ΔH 132°>25° · crust↔edgeR [crust_p9_a|mass_edge_r] ΔH 132°>25°)
+
+Bands ARMED at doc 36 §1 v1.1 (relative to each phase's declared key). L3 is K-exempt;
+the L2↔L3 separation stays absolute. Saturation caps are measured and reported.
+
+check-composition: OK — 11 audits green over 5 phase(s)

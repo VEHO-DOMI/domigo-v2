@@ -24,7 +24,7 @@ import { buildOncePerKey, PatternLedger } from "./tilePatterns.ts";
 import { type LayerPiece, coverFit, planLayers } from "./layers.ts";
 import { AIR_DEPTH, LIFE_PARALLAX, type AirPiece, planBandShade, planHaze, planLife, planMotes, planShafts, planSources, shaftQuads, vignetteBands } from "./air.ts";
 import { type Cell, cellsOf, indexTerrain, mergeRowMajor, runsFrom } from "./terrain.ts";
-import { NEAR_PLANE_KINDS, CRUST_MARK_DEPTH, MASS_MARK_DEPTH, type MassPiece, type SurfaceMark, claimedPlatformCells, crustGrain, hash01, ledgeGrain, massGrain, drawnScaleFor, paintScaleOf, planMass, planPlatformShadows, tileAnchorFor, tileScaleFor } from "./mass.ts";
+import { NEAR_PLANE_KINDS, CRUST_MARK_DEPTH, MASS_MARK_DEPTH, type MassPiece, type SurfaceMark, claimedBodyCells, claimedPlatformCells, crustGrain, hash01, ledgeGrain, massGrain, drawnScaleFor, paintScaleOf, planMass, planPlatformShadows, tileAnchorFor, tileScaleFor } from "./mass.ts";
 import { BACKING_REACH, BACKING_STEPS, LETTER_AMBER, LETTER_GOLD, LETTER_STYLE, letterBackingFor, letterGlowGain, letterGlyphs, letterRimFor } from "./letters.ts";
 import { type PhraseSlot, bonusPhrase } from "./cards/ceremony.ts";
 import { PICKUP_ROLES, type PaintLevel, type PhaseSpec } from "./level.ts";
@@ -5109,6 +5109,7 @@ export class PaintScene extends Phaser.Scene {
     }
     const img = this.add.image(p.x, p.y, key).setOrigin(p.originX ?? 0, p.originY ?? 0).setDepth(p.depth);
     img.setDisplaySize(p.w, p.h);
+    if (p.flipX !== undefined) img.setFlipX(p.flipX);
     // R5-W9 · F10 · D-639: das Quellfenster des BILD-Zweigs. `setCrop` schneidet
     // in QUELL-Bildpunkten und aendert den Massstab nicht — das Stueck zeichnet
     // sein Blatt weiterhin in derselben Groesse, es zeigt nur weniger davon.
@@ -5532,7 +5533,7 @@ export class PaintScene extends Phaser.Scene {
       this.buildMs.push({ step: "· · davon Bilder", ms: this.imgMs, parent: "terrain" });
 
       tSub = performance.now();
-      this.buildGrain();
+      this.buildGrain(kit);
       this.mark("· koernung", tSub, "terrain");
     }
   }
@@ -5634,8 +5635,9 @@ export class PaintScene extends Phaser.Scene {
    * calls, the same order, the same rounding — it is simply drawn once instead
    * of sixty times a second.
    */
-  private buildGrain(): void {
-    const claimed = claimedPlatformCells(this.grid);
+  private buildGrain(kit: MassKit): void {
+    if (kit.proceduralGrain === false) return;
+    const claimed = claimedPlatformCells(this.grid, kit.columnObjects ?? [], claimedBodyCells(kit));
     const draw = (marks: readonly SurfaceMark[], depth: number, round: number): void => {
       if (marks.length === 0) return;
       const paint = (g: Phaser.GameObjects.Graphics): void => {

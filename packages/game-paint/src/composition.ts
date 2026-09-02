@@ -14,6 +14,9 @@
 // A phase with NO entry here renders exactly as it did before PB-C1 (the
 // fallback law) — nothing may break while art is pending.
 
+import { TERRAIN_JOIN_STEM, TERRAIN_POST_JOIN_STEM } from "./artManifest.ts";
+import { CH01_BODIES, type VisualBody } from "./visualBodies.ts";
+
 /** A length that may be stated absolutely or bound to the phase's world box. */
 export type Measure = number | "world" | "floor";
 
@@ -46,6 +49,16 @@ export interface ShellSpec {
   /** true = this plane is sized by the COVER LAW (doc 36 §3) instead of by its
    *  declared height/bottom — the far shell must never run out mid-travel. */
   cover?: boolean;
+}
+
+/** One complete multi-cell vertical book object. The image owns every cell in
+ * its rectangle, so the planner must not add a crust, trim, or join there. */
+export interface ColumnObject {
+  stem: string;
+  cellsW: number;
+  cellsH: number;
+  /** true when the object is attached to the ceiling and terminates downward. */
+  hanging?: boolean;
 }
 
 /** L3 — the carved terrain mass (doc 36 §2). One kit per phase. */
@@ -133,9 +146,29 @@ export interface MassKit {
    * anchoring it by its top edge would sink the seat below the standable line
    * and bury the backrest in the floor. 0 = the art's top edge IS the deck.
    */
-  platObjects: readonly { stem: string; cells: number; deck?: number }[];
+  platObjects: readonly { stem: string; cells: number; deck?: number;
+    /** R7 · Auflösungs-Stufe eines NEU gemalten Blatts (Quell-px je Zelle).
+     *  Deklariert nimmt Audit 10 das Blatt aus der Kurs-Paritäts-Messung —
+     *  seine Stufe ist Absicht (Ein-Block-Welt), nicht Drift. */
+    pxPerCell?: number }[];
+  /** Complete vertical book objects, matched to `columnRuns` by cell size. */
+  columnObjects?: readonly ColumnObject[];
+  /**
+   * R6 · deklarierte Sicht-Körper (visualBodies.ts): je Körper EIN Gemälde in
+   * exakter Zellmaske. `planMass` claimt ihre Zellen VOR allem anderen; alles
+   * Nachgelagerte (Kurs, Trims, Innenmasse, Grain, Säulen) lässt sie aus.
+   */
+  bodies?: readonly VisualBody[];
+  /** p1/p2 crust ends are painted into the one-piece/phase family. */
+  integratedCrustEnds?: boolean;
+  /** false disables the legacy procedural rectangle grain for this phase. */
+  proceduralGrain?: boolean;
   /** the chalk slide (`z` runs): top / repeatable mid / run-out foot + strut. */
   slide?: { top: string; mid: string; foot: string; under: string };
+  /** Painted bindery at the outside ends of platform-object groups. */
+  joint?: string;
+  /** Painted saddle/collar where a post meets a mass top or platform lip. */
+  postJoin?: string;
 }
 
 /**
@@ -511,6 +544,8 @@ export const massStems = (m: MassKit): string[] => {
   // `composition.test.ts` fest: sobald irgendein Gitter einen Steigungs-Glyph
   // trägt, müssen die Rampen-Blätter seines Kits auf der Platte liegen.
   out.push(m.edgeL, m.edgeR, m.cornerBL, m.cornerBR, m.inCornerL, m.inCornerR);
+  if (m.joint !== undefined) out.push(m.joint);
+  if (m.postJoin !== undefined) out.push(m.postJoin);
   // ★ R5-W7 · A8 · D-27. Conditional, like the ramps above are absent: this list
   // decides what a phase LOADS (`compositionStems` → `phaseArtScope`) and it is
   // the floor `check-paint-art` measures against, so an unconditional underside
@@ -519,6 +554,12 @@ export const massStems = (m: MassKit): string[] => {
   // nothing extra and the stem count does not move (53 before, 53 after).
   if (m.edgeD !== undefined) out.push(...m.edgeD);
   out.push(...m.platObjects.map((p) => p.stem));
+  out.push(...(m.columnObjects ?? []).map((p) => p.stem));
+  // Körper-Blätter: gemountet werden die Slices (falls geschnitten), sonst das
+  // eine Blatt — exakt enumeriert, kein Laufzeit-Raten (check-paint-art bleibt hart).
+  out.push(...(m.bodies ?? []).flatMap((b) => (b.slices ?? []).length > 0
+    ? (b.slices ?? []).map((s) => s.stem)
+    : [b.stem]));
   if (m.slide) out.push(m.slide.top, m.slide.mid, m.slide.foot, m.slide.under);
   return [...new Set(out)];
 };
@@ -575,32 +616,26 @@ export const compositionStems = (spec: CompositionSpec): string[] => {
  * surface reaches its full span), never guessed.
  */
 const PLAT_OBJECTS: Record<string, MassKit["platObjects"]> = {
-  // p1 Eingangshalle — the hall's own furniture: coat benches, a hall shelf,
-  // tied bundles. TWO 2-cell objects, because the hall's ledges are 3 and 4
-  // cells wide and a 4-cell ledge built from one object is two identical benches
-  // side by side — which is what the round-1 browser proof showed.
+  // R4 deck measurement: each RGBA sheet was scanned from the top; the deck
+  // is the first row reaching 90% of the maximum opaque span. The source rows
+  // are recorded in the R4 delivery note, so these fractions are reproducible
+  // measurements rather than visual guesses.
+  // p1 Eingangshalle — folio, tied bundle, reading bench, and two carved shelves.
   p1: [
-    { stem: "plat_bench_2", cells: 2, deck: 0.10 },
-    { stem: "plat_shelf_2", cells: 2, deck: 0 },
-    { stem: "plat_coatbench", cells: 1, deck: 0.58 }, // the seat plank, backboard + coats above it
-    // R5-W9 · M1: 1 → 2 Zellen. Gemalt ist das Buendel 1,91 Zellen breit
-    // (382 px x paintScale 0,080189 / 16), gezeichnet wurde es auf einer —
-    // also bei 0,52x des Massstabs, den jede Flaeche daneben traegt. Bei
-    // zwei Zellen sind es 1,045x. Die Halle behaelt ihr 1-Zellen-Objekt
-    // (`plat_coatbench`), also bleiben ihre 3-Zellen-Simse moebliert.
-    { stem: "plat_bundle_1", cells: 2, deck: 0.02 },
+    { stem: "terrain_reading_bench_p1", cells: 2, deck: 62 / 194 },
+    { stem: "terrain_book_bundle_p1", cells: 2, deck: 33 / 185 },
+    { stem: "terrain_book_shelf_p1", cells: 3, deck: 104 / 210 },
+    { stem: "terrain_book_shelf_p1_alt", cells: 3, deck: 36 / 232 },
+    { stem: "terrain_book_folio_p1", cells: 1, deck: 22 / 79 },
   ],
-  // p2 Klassenzimmer — desks, a wall shelf, and the book stacks off them.
+  // p2 Klassenzimmer — night folios, bundles, lecterns, and continuous shelves.
   p2: [
-    { stem: "plat_desk", cells: 2, deck: 0.03 },
-    // R5-W9 · M1: 2 → 4 Zellen. Das Regalblatt ist 857 px breit, im
-    // Massstab dieses Raumes 4,32 Zellen; auf zwei gezwungen zeichnete es
-    // bei 0,46x — halb so gross wie das Papier, auf dem es steht. Der Raum
-    // hat genau einen 4-Zellen-Sims, und der gehoert ab jetzt ihm.
-    { stem: "plat_shelf_2", cells: 4, deck: 0 },
-    // R5-W9 · M1: 1 → 2 Zellen (gemalt 1,98 — die Rundung kostet 0,8 %).
-    { stem: "plat_bookpile_l", cells: 2, deck: 0.06 },
-    { stem: "plat_bookpile_s", cells: 1, deck: 0.08 },
+    { stem: "terrain_night_lectern_shelf_p2", pxPerCell: 64, cells: 4, deck: 66 / 170 },
+    { stem: "terrain_night_shelf_p2", pxPerCell: 64, cells: 3, deck: 4 / 96 },
+    { stem: "terrain_night_bundle_p2", pxPerCell: 64, cells: 2, deck: 8 / 138 },
+    { stem: "terrain_night_lectern_p2", cells: 2, deck: 22 / 215 },
+    { stem: "terrain_night_folio_p2", pxPerCell: 64, cells: 1, deck: 6 / 33 },
+    { stem: "terrain_night_dictionary_p2", pxPerCell: 64, cells: 1, deck: 4 / 33 },
   ],
   // p3 Schulhof-Garten — PK-R6 · H2 (round-2 finding 12): the yard shared its
   // bench AND its bundles with the entrance hall, which is most of why „the same
@@ -636,6 +671,17 @@ const PLAT_OBJECTS: Record<string, MassKit["platObjects"]> = {
     { stem: "plat_bench_2", cells: 2, deck: 0.10 },
     { stem: "plat_bundle_1", cells: 1, deck: 0.02 },
   ],
+};
+
+/** R4 · one-piece columns. These are deliberately phase-owned: p1/p2 are the
+ * commissioned replacement for the old join/saddle construction; other phases
+ * keep their existing scenery until a matching sheet is ordered. */
+const COLUMN_OBJECTS: Record<string, NonNullable<MassKit["columnObjects"]>> = {
+  p1: [{ stem: "terrain_atlas_podest_p1", cellsW: 2, cellsH: 2 }],
+  // R7: p2 ist Ein-Block-Welt — alle Säulen/Pfeiler sind von den Körpern
+  // ABSORBIERT (Treppe in der Ostwand, Hänger in den Deckenbahnen); die sieben
+  // Blätter sind gelöscht. Kokis "tilted"-Befund stirbt per Löschung.
+  p2: [],
 };
 
 /**
@@ -684,30 +730,21 @@ const PLAT_OBJECTS: Record<string, MassKit["platObjects"]> = {
  */
 export const CANOPY_PHASES = new Set<string>([]);
 
-const PAINTED_MASS_PHASES = new Set(["p1"]);
+const PAINTED_MASS_PHASES = new Set(["p1", "p2"]);
 
 const paintedInterior = (phase: string): Pick<MassKit, "body" | "bodyDeep" | "fade" | "sediment"> => ({
   // Four variants where the shared body has two — and Audit 6 counts variety.
-  body: [`mass_body_${phase}_a`, `mass_body_${phase}_b`, `mass_body_${phase}_c`, `mass_body_${phase}_d`],
-  bodyDeep: [`mass_bodydeep_${phase}_a`, `mass_bodydeep_${phase}_b`, `mass_bodydeep_${phase}_c`, `mass_bodydeep_${phase}_d`],
-  fade: [`mass_fade_${phase}_a`, `mass_fade_${phase}_b`],
-  // THE SEDIMENT STAYS SHARED, and the reason is measured rather than cautious.
-  // Koki's AUFHELLEN ruling raised the commissioned sediment from today's 4.8 %
-  // to 7–10 %, and AS2 painted it at 8.78 %. But BAND_HANDOVER.fade = 0.55 was
-  // tuned to walk the fade band down to MEET a near-black sediment: against a
-  // lightened one the chain steps back UP (14.62 × 0.55 = 8.04, then 8.78), and
-  // "never brightens as it deepens" is a law, not a tolerance. The depth-law
-  // test says so out loud.
-  //
-  // The honest resolution is that the handover constants are ART-SPECIFIC, so
-  // the moment a second painted kit exists they have to be derived from the
-  // kit's own measured values instead of being global. That is a real change and
-  // it belongs to whoever paints the phase that NEEDS it: measured over the
-  // shipped grids, p1 draws 60 body and 47 fade pieces and **zero** sediment —
-  // only p2 reaches sediment at all (15 pieces). So wiring a painted sediment
-  // here would change nothing a child can see while breaking a law that
-  // protects what they can. It waits for p2's kit.
-  sediment: "mass_sediment",
+  body: phase === "p2"
+    ? ["mass_body_p2_a", "mass_body_p2_b"]
+    : [`mass_body_${phase}_a`, `mass_body_${phase}_b`, `mass_body_${phase}_c`, `mass_body_${phase}_d`],
+  ...(phase === "p2"
+    ? {}
+    : { bodyDeep: [`mass_bodydeep_${phase}_a`, `mass_bodydeep_${phase}_b`, `mass_bodydeep_${phase}_c`, `mass_bodydeep_${phase}_d`] }),
+  fade: phase === "p2" ? ["mass_fade_p2_a", "mass_fade_p2_b"] : [`mass_fade_${phase}_a`, `mass_fade_${phase}_b`],
+  // R5b: p1/p2 use phase-owned readable depth sheets. The shared near-black
+  // `mass_sediment` remains only for p3/p4/p9, where that depth family has not
+  // landed yet; the healing is therefore scoped to the two commissioned rooms.
+  sediment: phase === "p1" ? "mass_depth_p1" : "mass_depth_p2",
 });
 
 /** The shared interior + trims — one body for the whole school (AF group 3),
@@ -731,41 +768,10 @@ const sharedInterior = (): Pick<MassKit, "body" | "fade" | "sediment"> => ({
  * which hard-fails on a stem with no PNG. **A phase joins this list on the same
  * commit that adds its art, never before.**
  *
- * ── AND WHY IT IS EMPTY, AFTER p1'S TRIMS WERE IMPORTED AND MEASURED ────────
- * The AS3 edge sheet cut clean, tiled eightfold, and landed inside every value
- * window this file can express. It is still not wired, and the reason is a thing
- * no colour statistic can see: **the sheet paints the wrong FACE.**
- *
- * A mass's flank is the CUT through the material — for a stack of books, the
- * fore-edge: cream, horizontally striated, which is exactly what the shared
- * placeholder `mass_edge_l.png` has always drawn. AS3's side cells paint book
- * COVERS seen face-on — spines, gold tooling, a bright glare down one side. A
- * single solid cannot show its front on its side face and its edge in its
- * interior.
- *
- * Two blind critics, fresh, with the four frames in OPPOSITE orders and no idea
- * which was new, ranked the p1 flank LAST of four — below the placeholder it was
- * meant to replace. Independently:
- *   · "the side of the mass shows the FRONT face of the material … so the
- *      terrain has no sides at all, only a decorative gilt trim"
- *   · "the flank shows books facing the camera while the interior four pixels
- *      away shows books lying edge-on … visible as orange racing stripes at
- *      100 % without magnification"
- * One called it "broken"; both measured the flank as the most saturated and
- * (before the peak fix) the brightest surface in the mass.
- *
- * So the sheet is HELD, the way AS2's was, and for a better-documented reason:
- * this time the geometry is proven good and only the motif is wrong, which makes
- * the re-order small. `SPEC_MASSEN_KIT` §10.3 now states the motif requirement
- * that was never written down — and that is why it was never delivered.
- *
- * What p1 keeps from today: the derived trim COLOUR, which fixes the groove and
- * the grey in all five rooms and is measured in `check-composition` audit 11.
- *
- * The other two things AS3 did not deliver, both re-ordered in §10: the UNDERSIDE
- * cells cannot tile left↔right (75.73 against a texture step of 5.58, and no
- * sub-window of any width at any offset tiles either). RAMPS were never on the
- * sheet.
+ * R5b status: p1 and p2 now use phase-owned side and corner sheets. The
+ * original AS3 side motif was held because it showed book covers face-on rather
+ * than the cut edge of the mass; the R5b sheets below are the scoped replacement.
+ * Their colour and scale are checked by `check-composition` audit 10/11.
  *
  * ── ★ R5-W7 · A8: THE HOOK IS BUILT, AND §9.4 IS ANSWERED RATHER THAN BROKEN ─
  * This paragraph used to end „so there is no `edgeD` field and no `MassKind` for
@@ -785,13 +791,11 @@ const sharedInterior = (): Pick<MassKit, "body" | "fade" | "sediment"> => ({
  * — a raw horizontal cut along the bottom of every overhang, five rooms wide —
  * is the defect D-27 has been carrying since R5-W1.
  *
- * The order stays where it was: the sheet is still not delivered, `edgeD` is
- * still declared by no kit on `main` (`PAINTED_TRIM_PHASES` is empty and
- * `sharedTrims` has no underside), and the cells are still owed by §10.3. What
- * has changed is that the delivery no longer needs an engine round behind it:
- * the day the cells pass the gate, `paintedTrims` already names them.
+ * R5b closes that order for p1/p2: `edgeD` is phase-owned, listed by
+ * `massStems`, and emitted by `planMass`; p3/p4/p9 remain on the shared kit
+ * until their own underside deliveries land.
  */
-const PAINTED_TRIM_PHASES = new Set<string>([]);
+const PAINTED_TRIM_PHASES = new Set<string>(["p1", "p2"]);
 
 /**
  * R5-W4 · A6 · THE LAY-BACK, PER ROOM (Koki's ruling of 2026-08-15).
@@ -875,14 +879,12 @@ const TRIM_SHADE_BY_PHASE: Record<string, number | undefined> = {
   // die Schnittflaeche nach der Farbe der Oberseite — bei p2/p4/p9 heisst das
   // violett/rosa/blau geschnittenes Buchpapier. Gemeldet, nicht still umgesetzt.
   //
-  // ── DIE VIER GETEILTEN RAEUME BEKOMMEN KEINE ZEILE, UND DAS IST DAS ERGEBNIS
-  // p2, p3, p4 und p9 teilen `mass_body_a/b` UND `mass_edge_l/r`. Dieselbe
-  // Ableitung ergibt fuer alle vier **0xdabf90** — eine Rundungsstelle vom
-  // Schul-Standard 0xdabe90 entfernt. Vier Zeilen mit derselben Zahl waeren
-  // vier Stellen, an denen dieselbe Wahrheit veralten kann. Sie stehen deshalb
-  // NICHT hier; was ihre Kanten wirklich braucht, ist ein eigenes Koerper-Blatt
-  // (AS6), und genau das sagen ihre Kohaerenz-Ausnahmen schon.
+  // R5b: p2 now has phase-owned blue-violet edge sheets. They already carry
+  // the p2 material direction, so the correct pass is neutral: do not lay the
+  // global grey multiply over them. This places the cut edge about eight
+  // luminance points above the p2 body and removes the former waiver.
   p1: 0xe7ba67,
+  p2: 0xffffff,
 };
 
 const paintedTrims = (phase: string): Pick<MassKit, "edgeL" | "edgeR" | "cornerBL" | "cornerBR" | "inCornerL" | "inCornerR"> => ({
@@ -905,10 +907,10 @@ const paintedTrims = (phase: string): Pick<MassKit, "edgeL" | "edgeR" | "cornerB
  * mean a room could not take its side trims until its underside also passed,
  * which is exactly the coupling that left D-27 open for three waves.
  *
- * Empty today, and every entry has to be earned the same way the others are: the
- * cells on the plate, `check-paint-art` green, `--verify` green on the sheet.
+ * R5b: p1 and p2 are now admitted. Each entry is earned by a phase-owned
+ * sheet, the art gate, and the seam audit; unpainted rooms remain outside it.
  */
-const PAINTED_UNDERSIDE_PHASES = new Set<string>([]);
+const PAINTED_UNDERSIDE_PHASES = new Set<string>(["p1", "p2"]);
 
 /** the underside band's two variants, in the order the edge sheet cuts them.
  *  ⚠ the class name is `edgeD`, camel-cased, because that is what
@@ -960,9 +962,18 @@ const sharedMass = (phase: string): Omit<MassKit, "crust" | "crustCapL" | "crust
   // belongs — §10.3's motif law, drawn by the engine instead of by a painter.
   ...(PAINTED_UNDERSIDE_PHASES.has(phase) ? paintedUnderside(phase) : {}),
   trimShade: TRIM_SHADE_BY_PHASE[phase],
+  integratedCrustEnds: phase === "p1" || phase === "p2",
+  proceduralGrain: phase !== "p1" && phase !== "p2",
+  // R4: p1/p2 now use complete one-piece art; joins remain available for the
+  // untouched phases until their own one-piece commission arrives.
+  ...(phase === "p1" || phase === "p2" ? {} : { joint: TERRAIN_JOIN_STEM, postJoin: TERRAIN_POST_JOIN_STEM }),
   // No ramp sheets: R109 withdrew them and E6 deleted the two placeholders. A
   // surface that grows a slope orders its own (D-324, and the field's own note).
   platObjects: PLAT_OBJECTS[phase] ?? PLAT_OBJECTS.p1 ?? [],
+  columnObjects: COLUMN_OBJECTS[phase] ?? [],
+  // R6 · Ein-Block-Welt: deklarierte Sicht-Körper. Ein Eintrag in CH01_BODIES
+  // kommt erst MIT seinem angenommenen PNG (check-paint-art bleibt hart).
+  bodies: CH01_BODIES[phase] ?? [],
 });
 
 const crustOf = (phase: string): Pick<MassKit, "crust" | "crustCapL" | "crustCapR"> => ({

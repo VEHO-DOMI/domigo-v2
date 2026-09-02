@@ -40,6 +40,7 @@ import {
   MIN_PAINT_PERIOD_CELLS,
   NO_METRONOME_MIN_PERIOD,
   TRIM_SHADE,
+  claimedBodyCells,
   claimedPlatformCells,
   crustGrain,
   floatingPlatformRuns,
@@ -226,17 +227,17 @@ const COHERENCE_MAX = { ds: 25, dh: 25, dlSameLight: 10, carve: [2, 14] };
  * order behind it is just the defect with paperwork.
  */
 const COHERENCE_WAIVERS = {
-  // ── THE FOUR UNPAINTED ROOMS ───────────────────────────────────────────────
+  // ── THE THREE REMAINING UNPAINTED ROOMS ───────────────────────────────────
   // After Koki's ruling of 2026-08-15 the shared trims wear a derived colour
   // (`mass.ts#TRIM_SHADE`) instead of a grey multiply, and it moved every number
   // a tint can move: p2's worst saturation gap fell 22.9 → 3.5, p4's 36.7 → 15.5,
   // and the carve went from −1.9 (a groove) to +8.3 in all four rooms.
   //
   // What is left is identical in all four and is the reason each waiver exists:
-  // the walk course is painted for its room and THE BODY UNDER IT IS NOT. p2 and
-  // p9 draw a violet course over the shared warm book paper — 138° and 139° of
-  // hue — p4 a stage-red one at 56°, and p3 a course 40.8 points flatter than
-  // the paper it lies on. No trim tint reaches a body sheet. Only AS5 does.
+  // the walk course is painted for its room and THE BODY UNDER IT IS NOT. p9
+  // draws a violet course over the shared warm book paper (139° of hue), and p4
+  // a stage-red one (56°). No trim tint reaches a body sheet. Only a phase-owned
+  // mass family does.
   //
   // The order that ends these is SPEC_MASSEN_KIT §10, written this session with
   // the measurements below in it. That is what the exception buys: not silence,
@@ -269,7 +270,8 @@ const COHERENCE_WAIVERS = {
   // INCOMPLETE` — nach Rahmen-Regel 18 (R202) Rückweisung ohne Prüfung. Das
   // Urteil fällt der Architekt im Wareneingang, nicht diese Bahn; es steht hier,
   // damit niemand die Frist für gedeckt hält. Import gehört A9.
-  "ch01/p2": { until: "2026-11-30", why: "Nachtklassenraum zieht den geteilten warmen Buchkörper unter einem violetten Laufkurs — AS5b lieferte dafür ein Blatt ohne Motiv (A7). Reparaturpfad AS5F §10.6 (R201, A8 2026-08-22) — vierte Bestellung der Familie, c/d/e zurückgewiesen, die vorliegende Lieferung meldet sich selbst als INCOMPLETE; Import A9. Gemessen nach R194 (farbneutraler nearPlaneTint): ΔH 138° -> 131°, die Fuge bleibt weit außerhalb der Familie" },
+  // R5b retires p2's waiver: its phase-owned body, trim and crust family now
+  // measures ΔS 8.9, ΔH 21° and carve +5.7/+5.7, all inside the live law.
   // ── ★ p3 IST RAUS, WEIL DIE AUSNAHME SCHAL WURDE (R5-W7 · A8, R194) ───────
   // Hier stand: »Hof-Laufkurs ist 40,8 Punkte flacher gesättigt als das
   // geteilte Papier darunter«. Gemessen an derselben Kunst, nach dem
@@ -820,7 +822,7 @@ for (const { label, ph, spec } of withSpec) {
 // that only looked where the fix had been applied would have called that green.
 console.log("6 · no-metronome audit (mass.ts NO_METRONOME_MIN_PERIOD)");
 for (const { label, ph, spec } of withSpec) {
-  const claimed = claimedPlatformCells(ph.rows);
+  const claimed = claimedPlatformCells(ph.rows, spec.mass.columnObjects ?? [], claimedBodyCells(spec.mass));
   const plan = planMass(ph.rows, spec.mass, srcSize);
   const surfaces = [
     ["course", surfaceSignature(plan, ["crust"], crustGrain(ph.rows, claimed))],
@@ -1149,21 +1151,9 @@ const SCALE_WAIVERS = {
   "cornerBR:mass_corner_br": { until: "2026-11-30", why: "Blatt 512x503, sonst wie cornerBL — dieselbe Messung, dasselbe Panel, dieselbe Bestellung" },
   "inCornerL:mass_incorner_l": { until: "2026-11-30", why: "Blatt 512x494, sonst wie cornerBL. Der Kasten trug frueher 3,6 % Verzug; jetzt 0,0 %" },
   "inCornerR:mass_incorner_r": { until: "2026-11-30", why: "Blatt 510x432 — DAS Blatt, das im quadratischen Kasten 18,1 % senkrecht gestaucht wurde. Die Stauchung ist WEG (0,0 % Verzug); die Untergroesse bleibt und faellt mit AS6" },
-  // ── ch01/p1 · DIE EINGANGSHALLE HAT NUR 2- UND 3-ZELLEN-SIMSE ──────────────
-  // Gemessene Sims-Breiten: 2 (sechsmal) und 3 (dreimal). Bank und Regal sind
-  // gemalt 4,74 bzw. 4,30 Zellen breit — auf ihre gemalte Breite gesetzt kaeme
-  // KEINES von beiden je auf einen Sims dieses Raumes, und die Halle verloere
-  // genau die Moebel, die sie zur Halle machen. Die Kleiderbank ist das
-  // 1-Zellen-Objekt des Raumes: ohne sie bleibt von jedem 3-Zellen-Sims eine
-  // Zelle unmoebliert. Das Buendel IST angehoben (1 → 2 Zellen, 1,045x).
-  "ch01/p1:platform:plat_bench_2": { until: "2026-11-30", why: "gemalt 4,74 Zellen, gezeichnet auf 2 (0,42x) — p1 hat keinen Sims ueber 3 Zellen; auf gemalter Breite waere die Bank in dieser Halle nie sichtbar. Faellt mit AS6-P1 (breiteres Sims oder schmaleres Blatt)" },
-  "ch01/p1:platform:plat_shelf_2": { until: "2026-11-30", why: "gemalt 4,30 Zellen, gezeichnet auf 2 (0,47x) — wie die Bank: p1s breitester Sims ist 3 Zellen. In p2, das einen 4-Zellen-Sims hat, IST dasselbe Blatt angehoben (0,93x). Faellt mit AS6-P1" },
-  "ch01/p1:platform:plat_coatbench": { until: "2026-11-30", why: "gemalt 2,22 Zellen, gezeichnet auf 1 (0,45x) — sie ist das einzige 1-Zellen-Objekt der Halle (Audit 7 verlangt eines, und die drei 3-Zellen-Simse brauchen es). ch01 besitzt kein Moebel, das im Welt-Massstab EINE Zelle breit ist — das schmalste misst 1,51. Das ist die Bestellung hinter dieser Zeile" },
-  // ── ch01/p2 · DAS 1-ZELLEN-OBJEKT DES KLASSENZIMMERS ──────────────────────
-  // Regal (2 → 4) und grosser Buchstapel (1 → 2) sind angehoben; der kleine
-  // Stapel bleibt, weil p2 zwei 1-Zellen-Simse hat und er das einzige Objekt
-  // ist, das sie tragen kann.
-  "ch01/p2:platform:plat_bookpile_s": { until: "2026-11-30", why: "gemalt 1,53 Zellen, gezeichnet auf 1 (0,65x) — das einzige 1-Zellen-Objekt des Raumes, und p2 hat zwei 1-Zellen-Simse. Auf 2 gehoben zeichnete er 1,31x und liesse beide Simse leer" },
+  // R4 · the p1/p2 furniture is now painted at its measured world scale; the
+  // retired pre-R4 furniture no longer appears in these rooms and therefore
+  // has no live scale waiver to carry.
   // ── ch01/p3 · SIMS UND BLATT GEHEN NICHT AUF ──────────────────────────────
   "ch01/p3:platform:ledge_windowsill": { until: "2026-11-30", why: "gemalt 1,70 Zellen, gezeichnet auf 2 (1,17x) — 2 ist die naechste ganze Zelle, 1 waere 0,59x und damit doppelt so falsch. Die Fensterbank ist ZU GROSS, nicht zu klein; ein Blatt von 1,5 Zellen Breite loest es. Faellt mit AS6-P3" },
   "ch01/p3:platform:plat_column2_1": { until: "2026-11-30", why: "gemalt 1,51 Zellen, gezeichnet auf 1 (0,66x) — das einzige 1-Zellen-Objekt des Hofes, und p3 hat einen 1-Zellen-Sims. Genau auf der Rundungsgrenze: 1,51 rundet auf 2 und zeichnete dann 1,33x" },
@@ -1199,7 +1189,7 @@ const waiverSeen = new Set();
  * Rein: gibt Meldungen zurueck, druckt nichts, und fasst `waiverSeen` nur an,
  * wenn es tatsaechlich eine Ausnahme verbraucht hat.
  */
-const judgeScale = ({ label, plan, want, srcSize, windowsSeen, courseLocks, waiverSeen }) => {
+const judgeScale = ({ label, plan, want, srcSize, windowsSeen, courseLocks, waiverSeen, tieredStems = new Set() }) => {
   const bad = [];
   const said = [];
   // dieselbe Signatur wie die Datei-weiten `fail`/`note`, damit der gehobene
@@ -1227,6 +1217,22 @@ const judgeScale = ({ label, plan, want, srcSize, windowsSeen, courseLocks, waiv
     const src = srcSize(p.stem);
     if (!src) continue;
     const s = drawnScaleFor(p, src);
+    // ── 10-KÖRPER (R6 · Ein-Block-Welt) ─────────────────────────────────────
+    // Ein `bodyMount` trägt seine Auflösungs-Stufe DEKLARIERT (`srcScale` =
+    // TILE/pxPerCell, visualBodies.ts). Sein Gesetz ist EXAKTHEIT gegen die
+    // eigene Deklaration auf beiden Achsen — nicht Gleichheit mit dem Kurs:
+    // die Stufe ist der gemessene Hebel, der die Ein-Block-Welt unter GPU-
+    // und Speicher-Deckel hält (Anzeige-Decke 56,6 Canvas-px/Zelle; R6-Plan).
+    // Ein Körper, der seine Stufe verlässt, ist verzogen — keine Ausnahme.
+    if (p.kind === "bodyMount") {
+      const declared = p.srcScale ?? NaN;
+      for (const axis of ["x", "y"]) {
+        if (!(Math.abs(s[axis] - declared) <= declared * 1e-6)) {
+          fail("painted-scale", `${label}: bodyMount ${p.stem} zeichnet ${s[axis].toFixed(4)} auf ${axis}, deklariert ${Number.isFinite(declared) ? declared.toFixed(4) : "NICHTS"} (TILE/pxPerCell) — ein Körper, der seine Stufe verlässt, ist verzogen`);
+        }
+      }
+      continue;
+    }
     // 10a · SCALE PARITY — one painted world means one painted scale, on BOTH
     // axes.
     //
@@ -1246,6 +1252,12 @@ const judgeScale = ({ label, plan, want, srcSize, windowsSeen, courseLocks, waiv
     // mass_corner_bl` — die vier Eckblaetter sind ueberall zu gross gemalt).
     // Der genauere Schluessel gewinnt; sonst waere dieselbe Wahrheit an fuenf
     // Stellen gepflegt und veraltete an vieren davon.
+    // R7 · gestufte Möbel (platObjects mit pxPerCell): ihre Stufe ist
+    // deklarierte Absicht — Anisotropie- und Fenster-Gesetze gelten weiter,
+    // die Kurs-Parität nicht (der Kurs selbst stirbt mit dem Raum-Cutover).
+    if (p.kind === "platform" && tieredStems.has(p.stem)) {
+      continue;
+    }
     const wKeyRoom = `${label}:${p.kind}:${p.stem}`;
     const wKeyAll = `${p.kind}:${p.stem}`;
     const waiverKey = SCALE_WAIVERS[wKeyRoom] !== undefined ? wKeyRoom : wKeyAll;
@@ -1345,6 +1357,7 @@ for (const { label, ph, spec } of withSpec) {
     plan: planMass(ph.rows, spec.mass, srcSize),
     want: paintScaleOf(spec.mass, srcSize),
     srcSize, windowsSeen, courseLocks, waiverSeen,
+    tieredStems: new Set((spec.mass.platObjects ?? []).filter((o) => o.pxPerCell !== undefined).map((o) => o.stem)),
   });
   for (const m of v.said) note(m);
   for (const m of v.bad) fail("painted-scale", m);

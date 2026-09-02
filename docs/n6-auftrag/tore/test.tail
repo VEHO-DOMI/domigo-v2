@@ -1,0 +1,60 @@
+apps/web test: ok 59 - preGate · layer 3 pass — real corpus items are gateable & self-solvable
+apps/web test:   ---
+apps/web test:   duration_ms: 4.208875
+apps/web test:   type: 'suite'
+apps/web test:   ...
+apps/web test: # Subtest: preGate · layer 1 — zod rejects the structurally/semantically broken
+apps/web test:     # Subtest: garbage is rejected at the schema layer
+apps/web test:     ok 1 - garbage is rejected at the schema layer
+apps/web test:       ---
+apps/web test:       duration_ms: 1.514875
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: a definition that leaks the headword is rejected at schema (V-8)
+apps/web test:     ok 2 - a definition that leaks the headword is rejected at schema (V-8)
+apps/web test:       ---
+apps/web test:       duration_ms: 0.464209
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     1..2
+apps/web test: ok 60 - preGate · layer 1 — zod rejects the structurally/semantically broken
+apps/web test:   ---
+apps/web test:   duration_ms: 2.334583
+apps/web test:   type: 'suite'
+apps/web test:   ...
+apps/web test: # Subtest: preGate · layer 2 — un-gateable formats cannot publish
+apps/web test:     # Subtest: a matching-format grammar item is blocked as un-gateable
+apps/web test:     ok 1 - a matching-format grammar item is blocked as un-gateable
+apps/web test:       ---
+apps/web test:       duration_ms: 0.792917
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     1..1
+apps/web test: ok 61 - preGate · layer 2 — un-gateable formats cannot publish
+apps/web test:   ---
+apps/web test:   duration_ms: 1.155709
+apps/web test:   type: 'suite'
+apps/web test:   ...
+apps/web test: # Subtest: preGate · layer 3 — an item with nothing keyed correct is blocked
+apps/web test:     # Subtest: stripping the full answer blocks publish (at the schema OR key-defect guard)
+apps/web test:     ok 1 - stripping the full answer blocks publish (at the schema OR key-defect guard)
+apps/web test:       ---
+apps/web test:       duration_ms: 0.457834
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     1..1
+apps/web test: ok 62 - preGate · layer 3 — an item with nothing keyed correct is blocked
+apps/web test:   ---
+apps/web test:   duration_ms: 0.648041
+apps/web test:   type: 'suite'
+apps/web test:   ...
+apps/web test: 1..62
+apps/web test: # tests 159
+apps/web test: # suites 37
+apps/web test: # pass 159
+apps/web test: # fail 0
+apps/web test: # cancelled 0
+apps/web test: # skipped 0
+apps/web test: # todo 0
+apps/web test: # duration_ms 2646.704041
+apps/web test: Done

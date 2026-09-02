@@ -26,6 +26,37 @@ export const GLYPH_STEMS: Record<string, string[]> = {
   "C": ["krakel_a", "krakel_active"],
 };
 
+/** R5-W9 · N6 · the painted join that binds a platform object into the mass. */
+export const TERRAIN_JOIN_STEMS = ["terrain_join_bookbinder"] as const;
+export const TERRAIN_JOIN_STEM = TERRAIN_JOIN_STEMS[0];
+
+/** R233 · painted saddles where a timber post meets a stack or platform lip. */
+export const TERRAIN_POST_JOIN_STEMS = ["terrain_post_saddle"] as const;
+export const TERRAIN_POST_JOIN_STEM = TERRAIN_POST_JOIN_STEMS[0];
+
+/** R4 · complete one-piece terrain sheets, registered with their PNG delivery. */
+export const TERRAIN_ONE_PIECE_STEMS = [
+  "terrain_book_folio_p1",
+  "terrain_book_bundle_p1",
+  "terrain_reading_bench_p1",
+  "terrain_book_shelf_p1",
+  "terrain_book_shelf_p1_alt",
+  "terrain_night_folio_p2",
+  "terrain_night_dictionary_p2",
+  "terrain_night_bundle_p2",
+  "terrain_night_lectern_p2",
+  "terrain_night_shelf_p2",
+  "terrain_night_lectern_shelf_p2",
+  "terrain_tower_p2",
+  "terrain_pillar_p2_8",
+  "terrain_pillar_p2_5",
+  "terrain_pillar_p2_2",
+  "terrain_post_p2",
+  "terrain_hanging_pillar_p2_short",
+  "terrain_hanging_pillar_p2",
+  "terrain_atlas_podest_p1",
+] as const;
+
 /** Every entity skin needs at least its `_a` state cell (per-state renderer:
  *  pb-<skin>_<state> → pb-<skin>_a → procedural blob). */
 export const entitySkinStems = (skin: string): string[] => [`${skin}_a`];

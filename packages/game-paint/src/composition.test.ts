@@ -35,6 +35,7 @@ import {
   tileAnchorFor,
   tileScaleFor,
   claimedPlatformCells,
+  columnRuns,
   crustGrain,
   crustRuns,
   undersideRuns,
@@ -45,6 +46,9 @@ import {
   nakedFills,
   PLAT_SHADOW,
   planMass,
+  massComponents,
+  platformJoinPieces,
+  postJoinPieces,
   planPlatformShadows,
   shortestPeriod,
   surfaceSignature,
@@ -719,11 +723,121 @@ describe("the carved mass (doc 36 §2)", () => {
     }
   });
 
+  it("detects the commissioned vertical rectangles as separate one-piece runs", () => {
+    const p2 = [
+      "........................",
+      "......................##",
+      "......................##",
+      "......................##",
+      "......................##",
+      "......................##",
+      "......................##",
+      "......................##",
+      "......................##",
+      "......................##",
+      "......................##",
+      "########################",
+      "########################",
+    ];
+    expect(columnRuns(p2)).toEqual([{ c0: 22, c1: 23, r0: 1, r1: 10 }]);
+    const columns = [{ stem: "tower", cellsW: 2, cellsH: 10 }];
+    const claimed = claimedPlatformCells(p2, columns);
+    expect(claimed).toContain("22,1");
+    expect(claimed).toContain("23,10");
+    expect(claimed).not.toContain("21,1");
+  });
+
+  it("detects ceiling-attached p2 pillars only when the hanging option is enabled", () => {
+    const ceiling = [
+      "########################",
+      "..........##............",
+      "..........##............",
+      "..........##............",
+      "..........##............",
+      "........................",
+    ];
+    expect(columnRuns(ceiling)).toEqual([]);
+    expect(columnRuns(ceiling, { includeHanging: true })).toEqual([
+      { c0: 10, c1: 11, r0: 1, r1: 4, hanging: true },
+    ]);
+    const claimed = claimedPlatformCells(ceiling, [
+      { stem: "hanging", cellsW: 2, cellsH: 4, hanging: true },
+      { stem: "standing", cellsW: 2, cellsH: 4 },
+    ]);
+    expect(claimed).toContain("10,1");
+    expect(claimed).toContain("11,4");
+  });
+
+  it("mounts a column as one platform image and suppresses all mass anatomy inside it", () => {
+    const p2 = [
+      "........................",
+      "......................##",
+      "......................##",
+      "......................##",
+      "########################",
+      "########################",
+    ];
+    const columnKit: MassKit = { ...kit, columnObjects: [{ stem: "tower", cellsW: 2, cellsH: 3 }] };
+    const plan = planMass(p2, columnKit);
+    expect(plan.filter((q) => q.kind === "platform").map((q) => q.stem)).toEqual(["tower"]);
+    expect(plan.filter((q) => q.kind === "platform")[0]).toMatchObject({ c: 22, r: 1, w: 2 * TILE, h: 3 * TILE });
+    expect(plan.some((q) => ["body", "crust", "edgeL", "edgeR"].includes(q.kind) && q.c >= 22 && q.c <= 23 && q.r <= 3)).toBe(false);
+  });
+
   it("covers a 3-cell platform with complete objects, never one stretched", () => {
     const g3 = ["........", "..###...", "........", "########"];
     const plats = planMass(g3, kit).filter((q) => q.kind === "platform");
     expect(plats.map((q) => q.stem)).toEqual(["plat_2", "plat_1"]);
     expect(plats.reduce((s, q) => s + q.w, 0)).toBe(3 * TILE);
+  });
+
+  it("binds a multi-object ledge only at its two outside ends", () => {
+    const g3 = ["........", "..###...", "........", "########"];
+    const platforms = planMass(g3, kit).filter((q) => q.kind === "platform");
+    const joins = platformJoinPieces(platforms, "terrain_join_bookbinder", CRUST_H / 212, { w: 320, h: 220 });
+    expect(joins).toHaveLength(2);
+    expect(joins.map((q) => q.flipX)).toEqual([true, false]);
+    expect(joins[0]?.x).toBeLessThan(platforms[0]!.x);
+    expect(joins[1]?.x).toBeGreaterThan(platforms[1]!.x);
+    for (const q of joins) expect(q.w / 320).toBeCloseTo(CRUST_H / 212);
+  });
+
+  it("adds painted saddles below platform lips and at exposed mass tops", () => {
+    const g3 = ["........", "..###...", "........", "########"];
+    const platforms = planMass(g3, kit).filter((q) => q.kind === "platform");
+    const saddles = postJoinPieces(g3, platforms, "terrain_post_saddle", CRUST_H / 212, { w: 320, h: 265 });
+    expect(saddles.filter((q) => q.r === 1)).toHaveLength(2);
+    expect(saddles.filter((q) => q.r === 1).map((q) => q.flipX)).toEqual([true, false]);
+
+    const top = ["........", "##..##..", "##..##..", "########"];
+    const topSaddles = postJoinPieces(top, [], "terrain_post_saddle", CRUST_H / 212, { w: 320, h: 265 });
+    expect(topSaddles).toHaveLength(3);
+    expect(topSaddles.map((q) => q.flipX)).toEqual([false, true, false]);
+  });
+
+  it("shares the interior tile phase across runs in one connected mass", () => {
+    const separated = ["########", "........", "##..##..", "########"];
+    const body = planMass(separated, kit, afSrc).filter((q) => q.kind === "body");
+    const left = body.filter((q) => q.r === 2 && q.c < 2);
+    const right = body.filter((q) => q.r === 2 && q.c >= 4);
+    expect(left.length).toBeGreaterThan(0);
+    expect(right.length).toBeGreaterThan(0);
+    expect(new Set(left.map((q) => q.tileOffsetX)).size).toBe(1);
+    expect(new Set(right.map((q) => q.tileOffsetX)).size).toBe(1);
+    expect(left[0]?.tileOffsetX).toBe(right[0]?.tileOffsetX);
+  });
+
+  it("gives one connected mass one material origin, even when rows break into runs", () => {
+    const g = ["###...", "##....", "##...."];
+    const components = massComponents(g);
+    expect(components.get("0,0")).toEqual({ minC: 0, minR: 0 });
+    expect(components.get("1,2")).toEqual({ minC: 0, minR: 0 });
+    expect(components.get("4,0")).toBeUndefined();
+  });
+
+  it("lets a phase-owned family replace isolated crust caps", () => {
+    const p = planMass(["....", "####", "####"], { ...kit, integratedCrustEnds: true });
+    expect(p.filter((q) => q.kind === "capL" || q.kind === "capR")).toHaveLength(0);
   });
 
   it("treats an anchored ledge as terrain, not as a platform object", () => {

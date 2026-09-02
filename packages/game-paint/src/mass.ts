@@ -12,7 +12,8 @@
 // kind that means "no kit — the scene draws a flat rectangle here"; the
 // no-naked-fill audit asserts a kit-present plan contains ZERO of them.
 
-import { type MassKit } from "./composition.ts";
+import { type ColumnObject, type MassKit } from "./composition.ts";
+import { bodyCells } from "./visualBodies.ts";
 import { glyphAt, isSlope, isSolid } from "./collide.ts";
 import { TILE, mixMultiply } from "./paint.ts";
 
@@ -439,7 +440,13 @@ export type MassKind =
   // underside is the face over the child's head. Its five siblings are out for
   // the same reason, and `composition.test.ts` states that as law.
   | "edgeL" | "edgeR" | "edgeD" | "cornerBL" | "cornerBR" | "inCornerL" | "inCornerR"
-  | "ramp" | "platform"
+  | "ramp" | "platform" | "joint" | "postJoin"
+  // `bodyMount` — ein deklarierter Sicht-Körper als EIN Gemälde (R6 Ein-Block-
+  // Welt, visualBodies.ts). Nicht in NEAR_PLANE_KINDS: seine Kruste, Tiefe und
+  // Verschattung sind BESTELLTE Malerei; ein Engine-Tint würde genau die
+  // Pigment-Tiefe wieder in einen Multiply verwandeln, den das Massen-Kit
+  // abgeschafft hat.
+  | "bodyMount"
   | "slideUnder" | "slideTop" | "slideMid" | "slideFoot"
   | "fallbackFill";
 
@@ -468,6 +475,8 @@ export interface MassPiece {
    *  Rotated pieces anchor ON the diagonal, so they need an explicit origin. */
   originX?: number;
   originY?: number;
+  /** mirrored connector at the left end of a platform group */
+  flipX?: boolean;
   /** true ⇒ a tileSprite (seamless run); false ⇒ one Image */
   tile?: boolean;
   /**
@@ -523,6 +532,15 @@ export interface MassPiece {
   tileAnchor?: "xy" | "x";
   /** a MULTIPLY tint (near-white) — the value jitter of the no-metronome law */
   tint?: number;
+  /** source-pixel phase for a run-local tile origin; does not alter the sheet */
+  tileOffsetX?: number;
+  /**
+   * R6 · die Zellen, die ein `bodyMount` wirklich besitzt. Ein Körper-Blatt ist
+   * fast nie ein volles Rechteck (das Exemplar füllt 34 % seiner Box) — eine
+   * rechteckige Ableitung aus w/h würde Luftzellen als »gedeckt« melden und
+   * das Deckungs-Audit falsch-grün färben. Nur bodyMount trägt das Feld.
+   */
+  cells?: ReadonlyArray<{ c: number; r: number }>;
   depth: number;
 }
 
@@ -563,12 +581,143 @@ export const drawnScaleFor = (p: MassPiece, src: { w: number; h: number }): { x:
  *  `tilePosition mod sourceSize` per axis, so one shared divisor would slide a
  *  non-uniform piece off its own anchor. */
 export const tileAnchorFor = (p: MassPiece, scale: { x: number; y: number }): { x: number; y: number } => ({
-  x: scale.x > 0 ? p.x / scale.x : 0,
+  x: scale.x > 0 ? p.x / scale.x + (p.tileOffsetX ?? 0) : 0,
   y: p.tileAnchor === "x" || scale.y <= 0 ? 0 : p.y / scale.y,
 });
 
+/**
+ * N6 · THE OUTSIDE JOINS. A platform run may be covered by two complete
+ * painted objects, but the child should read one built ledge. This planner
+ * emits one bookbinder at each outside end of a contiguous object group;
+ * internal object boundaries stay clean and do not grow a third seam.
+ *
+ * The connector is painted at the course's scale. Its collar sits at 43 % of
+ * the source width (measured on the delivered sheet), so the saddle overlaps
+ * the platform edge while the page fold tucks into the object.
+ */
+export const platformJoinPieces = (
+  platforms: readonly MassPiece[],
+  stem: string,
+  paintScale: number,
+  source: { w: number; h: number } = { w: 320, h: 220 },
+): MassPiece[] => {
+  if (platforms.length === 0 || source.w <= 0 || source.h <= 0 || paintScale <= 0) return [];
+  const groups = new Map<number, MassPiece[]>();
+  for (const p of platforms.filter((q) => q.kind === "platform")) {
+    const row = groups.get(p.r) ?? [];
+    row.push(p);
+    groups.set(p.r, row);
+  }
+  const out: MassPiece[] = [];
+  const collar = 0.43;
+  const w = source.w * paintScale;
+  const h = source.h * paintScale;
+  for (const row of groups.values()) {
+    row.sort((a, b) => a.x - b.x);
+    let first: MassPiece | undefined;
+    let last: MassPiece | undefined;
+    const emit = (): void => {
+      if (first === undefined || last === undefined) return;
+      const leftX = first.x - w * (1 - collar);
+      const rightX = last.x + last.w - w * collar;
+      const y = first.y + (first.h - h) / 2;
+      out.push(
+        { kind: "joint", stem, c: first.c, r: first.r, x: leftX, y, w, h, depth: DEPTH.joint, flipX: true },
+        { kind: "joint", stem, c: last.c, r: last.r, x: rightX, y, w, h, depth: DEPTH.joint, flipX: false },
+      );
+    };
+    for (const p of row) {
+      if (first === undefined || last === undefined) { first = p; last = p; continue; }
+      // A shrunken image still owns its original grid span; the half-cell
+      // allowance bridges only that deliberate painted inset.
+      if (p.x <= last.x + last.w + TILE * 0.6) { last = p; continue; }
+      emit();
+      first = p;
+      last = p;
+    }
+    emit();
+  }
+  return out;
+};
+
+/**
+ * R233 · THE POST CONNECTIONS. The bookbinder join closes a platform's
+ * horizontal edge; this painted saddle closes the other missing relationship:
+ * a timber post entering a stack top or sitting beneath a platform lip.
+ *
+ * The same outside-group rule is used for platforms, so an object run gets two
+ * supports rather than a support at every internal object boundary. Elevated
+ * mass tops get one at each exposed side. Both are visual-only pieces: they do
+ * not claim grid cells and therefore cannot change walkability.
+ */
+export const postJoinPieces = (
+  grid: readonly string[],
+  platforms: readonly MassPiece[],
+  stem: string,
+  paintScale: number,
+  source: { w: number; h: number } = { w: 320, h: 265 },
+): MassPiece[] => {
+  if (source.w <= 0 || source.h <= 0 || paintScale <= 0) return [];
+  const w = source.w * paintScale;
+  const h = source.h * paintScale;
+  const collar = 0.43;
+  const out: MassPiece[] = [];
+  const emit = (p: MassPiece, x: number, y: number, flipX: boolean): void => {
+    out.push({ kind: "postJoin", stem, c: p.c, r: p.r, x, y, w, h, depth: DEPTH.postJoin, flipX });
+  };
+
+  // Platform groups: place the saddle under each outside lip, with the post
+  // descending below the object instead of leaving the edge unsupported.
+  const groups = new Map<number, MassPiece[]>();
+  for (const p of platforms.filter((q) => q.kind === "platform")) {
+    const row = groups.get(p.r) ?? [];
+    row.push(p);
+    groups.set(p.r, row);
+  }
+  for (const row of groups.values()) {
+    row.sort((a, b) => a.x - b.x);
+    let first: MassPiece | undefined;
+    let last: MassPiece | undefined;
+    const emitGroup = (): void => {
+      if (first === undefined || last === undefined) return;
+      const y = first.y + first.h - h * 0.45;
+      emit(first, first.x - w * (1 - collar), y, true);
+      emit(last, last.x + last.w - w * collar, y, false);
+    };
+    for (const p of row) {
+      if (first === undefined || last === undefined) { first = p; last = p; continue; }
+      if (p.x <= last.x + last.w + TILE * 0.6) { last = p; continue; }
+      emitGroup();
+      first = p;
+      last = p;
+    }
+    emitGroup();
+  }
+
+  // Elevated mass corners: a post that meets the stack from the side receives
+  // the same fitting. The outside-grid convention deliberately suppresses
+  // world-edge fittings, just as the existing trims do.
+  for (let r = 0; r < grid.length; r++) {
+    for (let c = 0; c < (grid[0]?.length ?? 0); c++) {
+      if (!isMass(glyphAt(grid, c, r))) continue;
+      const airU = !isMass(glyphAt(grid, c, r - 1));
+      const airD = !isMass(glyphAt(grid, c, r + 1));
+      if (!airU || airD) continue;
+      const p = { c, r } as MassPiece;
+      const y = r * TILE - h * 0.45;
+      if (!isMass(glyphAt(grid, c - 1, r))) emit(p, c * TILE - w * (1 - collar), y, true);
+      if (!isMass(glyphAt(grid, c + 1, r))) emit(p, (c + 1) * TILE - w * collar, y, false);
+    }
+  }
+  return out;
+};
+
 const DEPTH = {
-  body: 1, ramp: 1.5, crust: 2, trim: 2.2, cap: 2.3, platform: 2.5, slide: 2.6,
+  body: 1, ramp: 1.5, crust: 2, trim: 2.2, cap: 2.3, platform: 2.5, joint: 2.65, postJoin: 2.66, slide: 2.6,
+  // Körper liegen über Kit-Kruste (2): in der Teilmigration darf keine
+  // Nachbar-Kruste in das Gemälde hineinzeichnen. Anbau-Kragen stapeln per
+  // Deklarations-Reihenfolge ein Epsilon darüber (planMass).
+  bodyMount: 2.05,
 } as const;
 
 const gridSize = (grid: readonly string[]): { w: number; h: number } => ({
@@ -630,6 +779,87 @@ export const floatingPlatformRuns = (grid: readonly string[]): Array<{ c0: numbe
     }
   }
   return runs;
+};
+
+/**
+ * R4/R5b · one-piece vertical book objects. A standing column starts where a
+ * narrow solid run meets air above; an optional hanging column starts directly
+ * beneath a broad ceiling run. Both own their uninterrupted vertical rectangle
+ * until the first break/support. The support threshold deliberately ignores
+ * neighbouring 2–6-cell book fragments, so the p2 stepped pillars remain
+ * separate objects instead of becoming one accidental wall.
+ */
+export const columnRuns = (
+  grid: readonly string[],
+  options: { includeHanging?: boolean } = {},
+): Array<{ c0: number; c1: number; r0: number; r1: number; hanging?: boolean }> => {
+  const { w, h } = gridSize(grid);
+  const MIN_SUPPORT_WIDTH = 8;
+  const candidates: Array<{ c0: number; c1: number; r0: number; r1: number; hanging?: boolean }> = [];
+  for (let r = 0; r < h; r++) {
+    for (let c = 0; c < w; c++) {
+      if (!isMass(glyphAt(grid, c, r)) || isMass(glyphAt(grid, c, r - 1))) continue;
+      for (const width of [2, 1]) {
+        const c1 = c + width - 1;
+        if (c1 >= w || !Array.from({ length: width }, (_, i) => isMass(glyphAt(grid, c + i, r))).every(Boolean)) continue;
+        if (Array.from({ length: width }, (_, i) => isMass(glyphAt(grid, c + i, r - 1))).some(Boolean)) continue;
+        let end = r;
+        while (end + 1 < h && Array.from({ length: width }, (_, i) => isMass(glyphAt(grid, c + i, end + 1))).every(Boolean)) end++;
+        const support = Array.from({ length: h - r - 1 }, (_, i) => r + i + 1)
+          .find((rr) => {
+            let left = c;
+            while (left > 0 && isMass(glyphAt(grid, left - 1, rr))) left--;
+            let right = c1;
+            while (right + 1 < w && isMass(glyphAt(grid, right + 1, rr))) right++;
+            return right - left + 1 >= MIN_SUPPORT_WIDTH;
+          });
+        const r1 = support === undefined ? end : Math.min(end, support - 1);
+        if (r1 - r + 1 >= 2) candidates.push({ c0: c, c1, r0: r, r1 });
+      }
+    }
+  }
+  if (options.includeHanging === true) {
+    // A hanging column is attached to a broad ceiling row, then continues down
+    // as a narrow uninterrupted run until its first break. Requiring both side
+    // neighbours to be air prevents the full ceiling and ordinary floor walls
+    // from becoming hundreds of false one-cell candidates.
+    for (let r = 1; r < h; r++) {
+      for (const width of [2, 1]) {
+        for (let c = 0; c < w; c++) {
+          const c1 = c + width - 1;
+          if (c1 >= w) continue;
+          if (!Array.from({ length: width }, (_, i) => isMass(glyphAt(grid, c + i, r))).every(Boolean)) continue;
+          if (!Array.from({ length: width }, (_, i) => isMass(glyphAt(grid, c + i, r - 1))).every(Boolean)) continue;
+          if (isMass(glyphAt(grid, c - 1, r)) || isMass(glyphAt(grid, c1 + 1, r))) continue;
+          let aboveLeft = c;
+          while (aboveLeft > 0 && isMass(glyphAt(grid, aboveLeft - 1, r - 1))) aboveLeft--;
+          let aboveRight = c1;
+          while (aboveRight + 1 < w && isMass(glyphAt(grid, aboveRight + 1, r - 1))) aboveRight++;
+          if (aboveRight - aboveLeft + 1 < MIN_SUPPORT_WIDTH) continue;
+          let end = r;
+          while (end + 1 < h && Array.from({ length: width }, (_, i) => isMass(glyphAt(grid, c + i, end + 1))).every(Boolean)) end++;
+          if (end - r + 1 >= 2) candidates.push({ c0: c, c1, r0: r, r1: end, hanging: true });
+        }
+      }
+    }
+  }
+  // Longest first resolves the overlapping 1-wide sub-candidates inside a
+  // 2-wide tower; the remaining cells then select the stepped pillars cleanly.
+  candidates.sort((a, b) => (b.r1 - b.r0) - (a.r1 - a.r0) || a.r0 - b.r0 || a.c0 - b.c0 || (b.c1 - b.c0) - (a.c1 - a.c0));
+  const claimed = new Set<string>();
+  const out: Array<{ c0: number; c1: number; r0: number; r1: number; hanging?: boolean }> = [];
+  for (const candidate of candidates) {
+    let overlaps = false;
+    for (let rr = candidate.r0; rr <= candidate.r1 && !overlaps; rr++) {
+      for (let cc = candidate.c0; cc <= candidate.c1; cc++) if (claimed.has(`${cc},${rr}`)) overlaps = true;
+    }
+    if (overlaps) continue;
+    out.push(candidate);
+    for (let rr = candidate.r0; rr <= candidate.r1; rr++) {
+      for (let cc = candidate.c0; cc <= candidate.c1; cc++) claimed.add(`${cc},${rr}`);
+    }
+  }
+  return out.sort((a, b) => a.r0 - b.r0 || a.c0 - b.c0 || Number(a.hanging ?? false) - Number(b.hanging ?? false));
 };
 
 /**
@@ -712,10 +942,81 @@ export const slideRuns = (grid: readonly string[]): Array<{ c: number; r: number
  * the SAME question the planner does instead of re-deriving it — a second copy
  * of a rule is a second rule.
  */
-export const claimedPlatformCells = (grid: readonly string[]): Set<string> => {
+export const claimedPlatformCells = (
+  grid: readonly string[],
+  columnObjects: readonly ColumnObject[] = [],
+  // R7 · Zellen, die ein Sicht-Körper VOR den Läufen besitzt (planMass §0).
+  // Ohne diesen Parameter beantwortete diese Funktion die Frage ANDERS als
+  // planMass (dessen §1 geclaimte Ursprünge überspringt, mass.ts) — im
+  // heutigen Grid zufällig folgenlos, aber zwei Antworten auf eine Frage sind
+  // zwei Regeln. Läufe, deren Ursprung einem Körper gehört, zählen nicht.
+  blocked: ReadonlySet<string> = new Set(),
+): Set<string> => {
   const out = new Set<string>();
   for (const run of floatingPlatformRuns(grid)) {
+    if (blocked.has(`${run.c0},${run.r}`)) continue;
     for (let k = run.c0; k <= run.c1; k++) out.add(`${k},${run.r}`);
+  }
+  const sizes = new Set(columnObjects.map((o) => `${o.cellsW}x${o.cellsH}:${Boolean(o.hanging)}`));
+  for (const run of columnRuns(grid, { includeHanging: true })) {
+    if (blocked.has(`${run.c0},${run.r0}`)) continue;
+    if (!sizes.has(`${run.c1 - run.c0 + 1}x${run.r1 - run.r0 + 1}:${Boolean(run.hanging)}`)) continue;
+    for (let r = run.r0; r <= run.r1; r++) {
+      for (let c = run.c0; c <= run.c1; c++) out.add(`${c},${r}`);
+    }
+  }
+  return out;
+};
+
+/** Die Körper-Zellen eines Kits als Set — der `blocked`-Parameter oben, aus der
+ *  einen Quelle abgeleitet, damit Szene, Audits und Planer dieselbe Antwort geben. */
+export const claimedBodyCells = (kit: Pick<MassKit, "bodies"> | null): Set<string> => {
+  const out = new Set<string>();
+  for (const body of kit?.bodies ?? []) {
+    for (const { c, r } of bodyCells(body)) out.add(`${c},${r}`);
+  }
+  return out;
+};
+
+/** A connected mass's shared material anchor and its stable origin cell. */
+export interface MassComponent {
+  minC: number;
+  minR: number;
+}
+
+/**
+ * Returns the four-neighbour connected components of unclaimed solid cells.
+ * `minC/minR` is deliberately the only origin: every piece in that component
+ * receives the same source phase, while separate masses may start their own
+ * painted material field.
+ */
+export const massComponents = (
+  grid: readonly string[],
+  claimed: ReadonlySet<string> = new Set(),
+): Map<string, MassComponent> => {
+  const { w, h } = gridSize(grid);
+  const seen = new Set<string>();
+  const out = new Map<string, MassComponent>();
+  for (let r = 0; r < h; r++) {
+    for (let c = 0; c < w; c++) {
+      const start = `${c},${r}`;
+      if (seen.has(start) || claimed.has(start) || !isMass(glyphAt(grid, c, r))) continue;
+      const cells: Array<[number, number]> = [[c, r]];
+      seen.add(start);
+      let minC = c, minR = r;
+      for (let i = 0; i < cells.length; i++) {
+        const [cc, rr] = cells[i] ?? [c, r];
+        minC = Math.min(minC, cc); minR = Math.min(minR, rr);
+        for (const [dc, dr] of [[1, 0], [-1, 0], [0, 1], [0, -1]] as const) {
+          const nc = cc + dc, nr = rr + dr, key = `${nc},${nr}`;
+          if (nc < 0 || nc >= w || nr < 0 || nr >= h) continue;
+          if (seen.has(key) || claimed.has(key) || !isMass(glyphAt(grid, nc, nr))) continue;
+          seen.add(key); cells.push([nc, nr]);
+        }
+      }
+      const component = { minC, minR };
+      for (const [cc, rr] of cells) out.set(`${cc},${rr}`, component);
+    }
   }
   return out;
 };
@@ -1125,6 +1426,7 @@ export const planMass = (
   const { w, h } = gridSize(grid);
   const out: MassPiece[] = [];
   const claimed = new Set<string>(); // cells owned by a platform object
+  let massByCell = new Map<string, MassComponent>();
   /** width ÷ height of a stem's art, 1 when the art is not (yet) resolvable */
   const aspect = (stem: string): number => {
     const s = srcSize?.(stem) ?? null;
@@ -1134,12 +1436,55 @@ export const planMass = (
    *  which is the same number stepped off the cell grid where it would land on it */
   const crustScale = kit !== null ? paintScaleOf(kit, srcSize) : FALLBACK_PAINT_SCALE;
   const paintScale = kit !== null ? bodyScaleOf(kit, srcSize) : FALLBACK_PAINT_SCALE;
-  /** source width of a stem's art, 0 when the art is not (yet) resolvable */
-  const srcW = (stem: string): number => srcSize?.(stem)?.w ?? 0;
 
-  // ── 1 · floating platforms (they own their cells outright) ─────────────────
+  // ── 0 · deklarierte Sicht-Körper (R6 Ein-Block-Welt) ──────────────────────
+  // VOR allem anderen, denn der Claim ist der Generalschlüssel: jeder spätere
+  // Erzeuger (Kurs, Trims, Innenmasse, Grain, Säulen) respektiert `claimed`
+  // und lässt die Körper-Zellen aus — die Migration läuft körperweise.
   if (kit !== null) {
+    (kit.bodies ?? []).forEach((body, bodyIdx) => {
+      const cells = bodyCells(body);
+      for (const cell of cells) claimed.add(`${cell.c},${cell.r}`);
+      const s = TILE / body.pxPerCell;
+      const maskW = Math.max(...body.rows.map((row) => row.length), 1);
+      const sheetW = maskW * body.pxPerCell + body.overpaint.l + body.overpaint.r;
+      const sheetH = body.rows.length * body.pxPerCell + body.overpaint.t + body.overpaint.b;
+      const x0 = body.c0 * TILE - body.overpaint.l * s;
+      const y0 = body.r0 * TILE - body.overpaint.t * s;
+      // Anbau-Kragen (attachTo) liegen per Deklarations-Reihenfolge ein
+      // Epsilon über ihrem Wirt — gewachsen, nie gestoßen (K9).
+      const depth = DEPTH.bodyMount + bodyIdx * 0.001;
+      const slices = body.slices ?? [{ stem: body.stem, srcX: 0, srcW: sheetW }];
+      for (const slice of slices) {
+        out.push({
+          kind: "bodyMount", stem: slice.stem, c: body.c0, r: body.r0,
+          x: x0 + slice.srcX * s, y: y0, w: slice.srcW * s, h: sheetH * s,
+          srcScale: s, cells, depth,
+        });
+      }
+    });
+  }
+
+  // ── 1 · complete platforms and vertical book objects ──────────────────────
+  if (kit !== null) {
+    const columnObjects = kit.columnObjects ?? [];
+    for (const run of columnRuns(grid, { includeHanging: true })) {
+      // Zellen, die ein Sicht-Körper besitzt, stehen keiner Säule mehr zu —
+      // sonst zeichnete ein registriertes Maß doppelt in das Gemälde.
+      if (claimed.has(`${run.c0},${run.r0}`)) continue;
+      const obj = columnObjects.find((candidate) =>
+        candidate.cellsW === run.c1 - run.c0 + 1
+          && candidate.cellsH === run.r1 - run.r0 + 1
+          && Boolean(candidate.hanging) === Boolean(run.hanging));
+      if (obj === undefined) continue;
+      out.push({
+        kind: "platform", stem: obj.stem, c: run.c0, r: run.r0,
+        x: run.c0 * TILE, y: run.r0 * TILE, w: obj.cellsW * TILE, h: obj.cellsH * TILE,
+        depth: DEPTH.platform,
+      });
+    }
     for (const run of floatingPlatformRuns(grid)) {
+      if (claimed.has(`${run.c0},${run.r}`)) continue; // Körper-Zellen (§0)
       const width = run.c1 - run.c0 + 1;
       let x = run.c0 * TILE;
       for (const obj of coverWithObjects(width, kit.platObjects, run.c0 + run.r)) {
@@ -1165,7 +1510,13 @@ export const planMass = (
         // der Spanne ZENTRIERT: die Spanne gehoert dem Gitter (`x` rueckt
         // weiter um `span`, damit die Objekte eines Laufes auf dem Raster
         // bleiben), das Bild gehoert der Malerei.
-        const shrink = wantH > TILE * 2 ? (TILE * 2) / wantH : 1;
+        // R7: der Deckel begrenzt die UNTER-DECK-Tiefe, nicht die Gesamthöhe —
+        // sein Warum ist »kein Turm, der den Raum verstellt«, und was über der
+        // Steh-Linie aufragt (Lehne, Pult-Aufsatz), ist deck-verankertes Motiv,
+        // kein Raumverbau. Das Stand-Pult-Regal (170 px, deck 0,39) fiel sonst
+        // auf 75 % und ließ seine vierte Zelle nackt (gemessen, no-naked-fill).
+        const belowWant = wantH * (1 - (obj.deck ?? 0));
+        const shrink = belowWant > TILE * 2 ? (TILE * 2) / belowWant : 1;
         const objW = span * shrink;
         const objH = wantH * shrink;
         // anchored by its DECK, not its top edge: whatever the art draws above
@@ -1179,7 +1530,17 @@ export const planMass = (
         x += span;
       }
     }
-    for (const cell of claimedPlatformCells(grid)) claimed.add(cell);
+    for (const cell of claimedPlatformCells(grid, columnObjects, claimedBodyCells(kit))) claimed.add(cell);
+    massByCell = massComponents(grid, claimed);
+    const platformPieces = out.filter((p) => p.kind === "platform");
+    if (kit.joint !== undefined) {
+      const source = srcSize?.(kit.joint) ?? undefined;
+      out.push(...platformJoinPieces(platformPieces, kit.joint, crustScale, source));
+    }
+    if (kit.postJoin !== undefined) {
+      const postSource = srcSize?.(kit.postJoin) ?? undefined;
+      out.push(...postJoinPieces(grid, platformPieces, kit.postJoin, crustScale, postSource));
+    }
   }
 
   // ── 2 · interior mass: body → fade → sediment, as seamless per-row runs ────
@@ -1213,6 +1574,11 @@ export const planMass = (
       const variants = band === "body"
         ? (deepBody ?? kit.body)
         : (band === "fade" ? kit.fade : [kit.sediment]);
+      // A connected mass owns one source phase. The old run-local hash made each
+      // row restart the painting and exposed the assembler as a vertical seam.
+      // Separate masses may still own separate material fields.
+      const component = massByCell.get(`${c},${r}`);
+      const componentTileOffsetX = component === undefined ? 0 : (component.minC * TILE) / paintScale;
       // …laid in SEGMENTS, like the course above it and on its own table, so the
       // mass under the hall stops being one 656-px tileSprite of one variant
       // (measured in the running p1 — the wallpaper the critique was reading)
@@ -1220,20 +1586,20 @@ export const planMass = (
       for (let k = 0; seg <= c1; k++) {
         const want = BODY_SEGMENT_CELLS[(c + r + k) % BODY_SEGMENT_CELLS.length] ?? 5;
         const segEnd = Math.min(seg + want - 1, c1);
-        const stem = variants[(c + r + k) % variants.length] ?? variants[0] ?? kit.fade[0] ?? "";
+        const componentStep = component === undefined
+          ? c + r + k
+          : Math.floor((c - component.minC) + (r - component.minR) * 0.5 + k);
+        const stem = variants[Math.abs(componentStep) % variants.length] ?? variants[0] ?? kit.fade[0] ?? "";
         out.push({
           kind: band, stem, c: seg, r, x: seg * TILE, y: r * TILE,
           w: (segEnd - seg + 1) * TILE, h: TILE,
           // the interior is a CONTINUUM: anchored on both axes, so the row below
           // draws the next slice of the same painting instead of restamping it
-          tile: true, srcScale: paintScale, tileAnchor: "xy",
-          // ① the no-metronome value jitter, then ② the depth ramp on top of it.
-          // The order is a multiply either way; what matters is that ① SURVIVES
-          // — the five lights are what audit 6 counts as variety, and a ramp
-          // that replaced them instead of scaling them would turn a long floor
-          // back into wallpaper while looking, to the eye, like a fix.
+          tile: true, srcScale: paintScale, tileAnchor: "xy", tileOffsetX: componentTileOffsetX,
+          // Restrained value variation follows the component's material walk,
+          // rather than restarting from a different random seed at each run.
           tint: mixMultiply(
-            courseTintAt(c, r, k, 11),
+            CRUST_TINTS[Math.abs(componentStep + Math.floor((r - (component?.minR ?? r)) / 4)) % CRUST_TINTS.length] ?? 0xffffff,
             kit.bodyDeep === undefined
               ? depthTintAt(bucket)
               : depthTintAt(bucket, deepBody === undefined ? 1 : BODY_DEEP_SHADE, BODY_HANDOVER_PAINTED),
@@ -1269,6 +1635,7 @@ export const planMass = (
       });
       seg = segEnd + 1;
     }
+    if (kit.integratedCrustEnds) continue;
     // CAPS OVERLAP INWARD. The AF caps are painted as SEGMENT ENDS — a
     // rounded end followed by a stretch of the same course — not as outboard
     // bookends. So a cap is laid ON the run's last stretch with its outer
@@ -1578,12 +1945,21 @@ export const uncoveredSolids = (
   grid: readonly string[],
   pieces: readonly MassPiece[],
 ): Array<{ c: number; r: number }> => {
-  const covers: MassKind[] = ["body", "fade", "sediment", "platform", "fallbackFill"];
+  const covers: MassKind[] = ["body", "fade", "sediment", "platform", "fallbackFill", "bodyMount"];
   const covered = new Set<string>();
   for (const p of pieces) {
     if (!covers.includes(p.kind)) continue;
-    const cells = Math.max(1, Math.round(p.w / TILE));
-    for (let k = 0; k < cells; k++) covered.add(`${p.c + k},${p.r}`);
+    // R6: ein Körper deckt genau SEINE Zellen — die Rechteck-Ableitung darunter
+    // würde bei 34 % Füllgrad Luft als gedeckt melden (falsch-grünes Audit 3).
+    if (p.cells !== undefined) {
+      for (const cell of p.cells) covered.add(`${cell.c},${cell.r}`);
+      continue;
+    }
+    const cellsW = Math.max(1, Math.round(p.w / TILE));
+    const cellsH = p.kind === "platform" ? Math.max(1, Math.round(p.h / TILE)) : 1;
+    for (let y = 0; y < cellsH; y++) {
+      for (let x = 0; x < cellsW; x++) covered.add(`${p.c + x},${p.r + y}`);
+    }
   }
   const out: Array<{ c: number; r: number }> = [];
   const { w, h } = gridSize(grid);

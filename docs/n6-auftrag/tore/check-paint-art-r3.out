@@ -1,0 +1,5 @@
+[WARN] Unsupported engine: wanted: {"node":">=24"} (current: {"node":"v22.23.1","pnpm":"11.5.3"})
+$ node --experimental-strip-types scripts/check-paint-art.mjs
+⚠ 54 painted stems are loaded by nothing (37.0 MB): arenadoor_a, auftakt_ch01_a, band_p1_hallway, band_p2_furniture, band_p3_playground, canopy_fringe_loop, fence_feather, fibel_a, …
+  captive legibility: 4 cages · 4 captives at 34px · closest pair "soundsystem/tablet" differs by 11.3 px (law: 8)
+check-paint-art: OK — 163 required stems all present or explicitly allowlisted (341 painted stems on disk); all 341 painted stems clean of colour-key fringe

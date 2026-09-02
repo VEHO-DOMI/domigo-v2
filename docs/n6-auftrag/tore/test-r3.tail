@@ -1,0 +1,12 @@
+apps/web test:   type: 'suite'
+apps/web test:   ...
+apps/web test: 1..62
+apps/web test: # tests 159
+apps/web test: # suites 37
+apps/web test: # pass 159
+apps/web test: # fail 0
+apps/web test: # cancelled 0
+apps/web test: # skipped 0
+apps/web test: # todo 0
+apps/web test: # duration_ms 1725.79175
+apps/web test: Done

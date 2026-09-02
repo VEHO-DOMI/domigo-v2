@@ -1,0 +1,11 @@
+├ ƒ /review
+├ ƒ /review/session
+├ ƒ /signin
+├ ƒ /tests
+└ ƒ /tests/[slug]
+
+
+ƒ Proxy (Middleware)
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand

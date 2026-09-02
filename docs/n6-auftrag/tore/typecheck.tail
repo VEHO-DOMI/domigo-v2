@@ -1,0 +1,34 @@
+[WARN] Unsupported engine: wanted: {"node":">=24"} (current: {"node":"v22.23.1","pnpm":"11.5.3"})
+$ pnpm -r run typecheck
+.                                        | [WARN] Unsupported engine: wanted: {"node":">=24"} (current: {"node":"v22.23.1","pnpm":"11.5.3"})
+Scope: 15 of 16 workspace projects
+packages/art-gen typecheck$ tsc --noEmit
+packages/content-schema typecheck$ tsc --noEmit
+packages/game-feel typecheck$ tsc --noEmit
+packages/art-gen typecheck: Done
+packages/content-schema typecheck: Done
+packages/game-feel typecheck: Done
+packages/content-loader typecheck$ tsc --noEmit
+packages/content-pipeline typecheck$ tsc --noEmit
+packages/engine typecheck$ tsc --noEmit
+packages/content-loader typecheck: Done
+packages/engine typecheck: Done
+packages/content-pipeline typecheck: Done
+packages/db typecheck$ tsc --noEmit
+packages/task-ui typecheck$ tsc --noEmit
+packages/task-ui typecheck: Done
+packages/db typecheck: Done
+packages/game-core typecheck$ tsc --noEmit
+packages/game-core typecheck: Done
+packages/game-2d typecheck$ tsc --noEmit
+packages/game-novel typecheck$ tsc --noEmit
+packages/game-detective typecheck$ tsc --noEmit
+packages/game-paint typecheck$ tsc --noEmit
+packages/game-novel typecheck: Done
+packages/game-trip typecheck$ tsc --noEmit
+packages/game-detective typecheck: Done
+packages/game-2d typecheck: Done
+packages/game-paint typecheck: Done
+packages/game-trip typecheck: Done
+apps/web typecheck$ tsc --noEmit
+apps/web typecheck: Done

@@ -1,0 +1,17 @@
+{
+  "record": "N6 visible performance",
+  "status": "NOT_MEASURED",
+  "build": "production build from working tree after R233 Runde 3 terrain wiring",
+  "round": "R233-Runde 3",
+  "phase": "after",
+  "measurements": [],
+  "reason": "The production build completed, but the required Chrome process aborts with SIGABRT before opening DevTools; no after number is claimed.",
+  "attempted": [
+    "pnpm install",
+    "pnpm build",
+    "node scripts/perf-visible.mjs --port 4056 --phases p1,p2,p3,p4,p9 --warm 0 --runs 1 --settle 20",
+    "node scripts/perf-visible.mjs --port 4056 --phases p1,p2,p3,p4,p9 --warm 0 --runs 1 --settle 20 (R233-Runde 3)"
+  ],
+  "selftest": "PASS; control-threshold checks only, not a two-build runtime measurement",
+  "runtime_attempt": "Chrome exited with SIGABRT before a page or measurement JSON was produced"
+}

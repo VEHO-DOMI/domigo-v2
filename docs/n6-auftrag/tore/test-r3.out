@@ -1,0 +1,2972 @@
+[WARN] Unsupported engine: wanted: {"node":">=24"} (current: {"node":"v22.23.1","pnpm":"11.5.3"})
+$ pnpm -r run test
+.                                        | [WARN] Unsupported engine: wanted: {"node":">=24"} (current: {"node":"v22.23.1","pnpm":"11.5.3"})
+Scope: 15 of 16 workspace projects
+packages/art-gen test$ node --test "src/test/*.test.ts"
+packages/game-feel test$ vitest run
+packages/content-schema test$ node --test "src/test/*.test.ts"
+packages/art-gen test: TAP version 13
+packages/content-schema test: TAP version 13
+packages/art-gen test: # Subtest: tileset: base tiles, each a valid TILE×TILE indexed image
+packages/art-gen test: ok 1 - tileset: base tiles, each a valid TILE×TILE indexed image
+packages/art-gen test:   ---
+packages/art-gen test:   duration_ms: 32.6155
+packages/art-gen test:   type: 'test'
+packages/art-gen test:   ...
+packages/art-gen test: # Subtest: tileset is deterministic per seed, and varies across seeds
+packages/art-gen test: ok 2 - tileset is deterministic per seed, and varies across seeds
+packages/art-gen test:   ---
+packages/art-gen test:   duration_ms: 13.815417
+packages/art-gen test:   type: 'test'
+packages/art-gen test:   ...
+packages/art-gen test: # Subtest: encounter tile actually paints the glow marker (not blank floor)
+packages/art-gen test: ok 3 - encounter tile actually paints the glow marker (not blank floor)
+packages/art-gen test:   ---
+packages/art-gen test:   duration_ms: 0.479125
+packages/art-gen test:   type: 'test'
+packages/art-gen test:   ...
+packages/art-gen test: # Subtest: player sprite: 4 directional frames, valid indexed images
+packages/art-gen test: ok 4 - player sprite: 4 directional frames, valid indexed images
+packages/art-gen test:   ---
+packages/art-gen test:   duration_ms: 8.38825
+packages/art-gen test:   type: 'test'
+packages/art-gen test:   ...
+packages/art-gen test: # Subtest: player sprite is deterministic per seed, varies across seeds
+packages/art-gen test: ok 5 - player sprite is deterministic per seed, varies across seeds
+packages/art-gen test:   ---
+packages/art-gen test:   duration_ms: 45.655917
+packages/art-gen test:   type: 'test'
+packages/art-gen test:   ...
+packages/art-gen test: # Subtest: down vs up frames differ (facing cue is real)
+packages/art-gen test: ok 6 - down vs up frames differ (facing cue is real)
+packages/art-gen test:   ---
+packages/art-gen test:   duration_ms: 1.976083
+packages/art-gen test:   type: 'test'
+packages/art-gen test:   ...
+packages/art-gen test: # Subtest: walk: two valid step frames per facing
+packages/art-gen test: ok 7 - walk: two valid step frames per facing
+packages/art-gen test:   ---
+packages/art-gen test:   duration_ms: 3.031708
+packages/art-gen test:   type: 'test'
+packages/art-gen test:   ...
+packages/art-gen test: # Subtest: walk steps differ from the neutral frame ONLY in the leg rows (34+)
+packages/art-gen test: ok 8 - walk steps differ from the neutral frame ONLY in the leg rows (34+)
+packages/art-gen test:   ---
+packages/art-gen test:   duration_ms: 2.250708
+packages/art-gen test:   type: 'test'
+packages/art-gen test:   ...
+packages/art-gen test: # Subtest: the two walk steps alternate feet (step 1 ≠ step 2)
+packages/art-gen test: ok 9 - the two walk steps alternate feet (step 1 ≠ step 2)
+packages/art-gen test:   ---
+packages/art-gen test:   duration_ms: 1.868709
+packages/art-gen test:   type: 'test'
+packages/art-gen test:   ...
+packages/art-gen test: # Subtest: walk cycle is deterministic per seed
+packages/art-gen test: ok 10 - walk cycle is deterministic per seed
+packages/art-gen test:   ---
+packages/art-gen test:   duration_ms: 6.206458
+packages/art-gen test:   type: 'test'
+packages/art-gen test:   ...
+packages/art-gen test: # Subtest: every shipped generator resolves to its own theme; unknown/null falls back to school
+packages/art-gen test: ok 11 - every shipped generator resolves to its own theme; unknown/null falls back to school
+packages/art-gen test:   ---
+packages/art-gen test:   duration_ms: 0.943833
+packages/art-gen test:   type: 'test'
+packages/art-gen test:   ...
+packages/art-gen test: # Subtest: every theme layout is a save-compatible 15×11 room with the stable skeleton
+packages/art-gen test: ok 12 - every theme layout is a save-compatible 15×11 room with the stable skeleton
+packages/art-gen test:   ---
+packages/art-gen test:   duration_ms: 4.60625
+packages/art-gen test:   type: 'test'
+packages/art-gen test:   ...
+packages/art-gen test: # Subtest: every layout glyph is a skeleton cell or a declared prop
+packages/art-gen test: ok 13 - every layout glyph is a skeleton cell or a declared prop
+packages/art-gen test:   ---
+packages/art-gen test:   duration_ms: 17.894291
+packages/art-gen test:   type: 'test'
+packages/art-gen test:   ...
+packages/art-gen test: # Subtest: the G2 school themes exist, resolve by bare name, and obey the exact 1P/4E/1F law
+packages/art-gen test: ok 14 - the G2 school themes exist, resolve by bare name, and obey the exact 1P/4E/1F law
+packages/art-gen test:   ---
+packages/art-gen test:   duration_ms: 0.50025
+packages/art-gen test:   type: 'test'
+packages/art-gen test:   ...
+packages/art-gen test: # Subtest: a theme's prop tiles paint non-blank pixels
+packages/art-gen test: ok 15 - a theme's prop tiles paint non-blank pixels
+packages/art-gen test:   ---
+packages/art-gen test:   duration_ms: 49.407458
+packages/art-gen test:   type: 'test'
+packages/art-gen test:   ...
+packages/art-gen test: # Subtest: accent override recolours the encounter-glow slot (the brand-green node)
+packages/art-gen test: ok 16 - accent override recolours the encounter-glow slot (the brand-green node)
+packages/art-gen test:   ---
+packages/art-gen test:   duration_ms: 0.417458
+packages/art-gen test:   type: 'test'
+packages/art-gen test:   ...
+packages/art-gen test: 1..16
+packages/art-gen test: # tests 16
+packages/art-gen test: # suites 0
+packages/art-gen test: # pass 16
+packages/art-gen test: # fail 0
+packages/art-gen test: # cancelled 0
+packages/art-gen test: # skipped 0
+packages/art-gen test: # todo 0
+packages/art-gen test: # duration_ms 515.995625
+packages/content-schema test: # Subtest: gameTasks@2 — every kind's valid shape parses
+packages/content-schema test: ok 1 - gameTasks@2 — every kind's valid shape parses
+packages/content-schema test:   ---
+packages/content-schema test:   duration_ms: 11.988583
+packages/content-schema test:   type: 'test'
+packages/content-schema test:   ...
+packages/content-schema test: # Subtest: gameTasks@2 — cross-field invariants fire (red-first tamper block)
+packages/content-schema test: ok 2 - gameTasks@2 — cross-field invariants fire (red-first tamper block)
+packages/content-schema test:   ---
+packages/content-schema test:   duration_ms: 3.065417
+packages/content-schema test:   type: 'test'
+packages/content-schema test:   ...
+packages/content-schema test: # Subtest: gameTasks@2 — THE FORM LAW (R5-W2 · G1): a declared ask its widget can carry
+packages/content-schema test: ok 3 - gameTasks@2 — THE FORM LAW (R5-W2 · G1): a declared ask its widget can carry
+packages/content-schema test:   ---
+packages/content-schema test:   duration_ms: 2.7575
+packages/content-schema test:   type: 'test'
+packages/content-schema test:   ...
+packages/content-schema test: # Subtest: gameTasks@2 — THE BOSS-EVIDENCE LAW (R3-12): the card asks about the world
+packages/content-schema test: ok 4 - gameTasks@2 — THE BOSS-EVIDENCE LAW (R3-12): the card asks about the world
+packages/content-schema test:   ---
+packages/content-schema test:   duration_ms: 1.055167
+packages/content-schema test:   type: 'test'
+packages/content-schema test:   ...
+packages/content-schema test: # Subtest: gameTasks@2 — THE BINDING LAW (PB-F1): a card that claims a being must name it
+packages/content-schema test: ok 5 - gameTasks@2 — THE BINDING LAW (PB-F1): a card that claims a being must name it
+packages/content-schema test:   ---
+packages/content-schema test:   duration_ms: 1.543958
+packages/content-schema test:   type: 'test'
+packages/content-schema test:   ...
+packages/content-schema test: # Subtest: gameTasks@2 — a missing stimulus is rejected (F22/G10 law)
+packages/art-gen test: Done
+packages/content-schema test: ok 6 - gameTasks@2 — a missing stimulus is rejected (F22/G10 law)
+packages/content-schema test:   ---
+packages/content-schema test:   duration_ms: 1.907208
+packages/content-schema test:   type: 'test'
+packages/content-schema test:   ...
+packages/content-schema test: # Subtest: gameTasks@2 — the file wrapper catches duplicate ids
+packages/content-schema test: ok 7 - gameTasks@2 — the file wrapper catches duplicate ids
+packages/content-schema test:   ---
+packages/content-schema test:   duration_ms: 2.629708
+packages/content-schema test:   type: 'test'
+packages/content-schema test:   ...
+packages/content-schema test: # Subtest: deriveGapHints — first letter + per-word letter counts (F18 ladder data)
+packages/content-schema test: ok 8 - deriveGapHints — first letter + per-word letter counts (F18 ladder data)
+packages/content-schema test:   ---
+packages/content-schema test:   duration_ms: 1.500083
+packages/content-schema test:   type: 'test'
+packages/content-schema test:   ...
+packages/content-schema test: # Subtest: seededShuffle — deterministic permutation (no Math.random)
+packages/content-schema test: ok 9 - seededShuffle — deterministic permutation (no Math.random)
+packages/content-schema test:   ---
+packages/content-schema test:   duration_ms: 0.969791
+packages/content-schema test:   type: 'test'
+packages/content-schema test:   ...
+packages/content-schema test: # Subtest: renderTaskText — the projection shows the student's surface, per kind
+packages/content-schema test: ok 10 - renderTaskText — the projection shows the student's surface, per kind
+packages/content-schema test:   ---
+packages/content-schema test:   duration_ms: 3.164958
+packages/content-schema test:   type: 'test'
+packages/content-schema test:   ...
+packages/content-schema test: # Subtest: gameTasks@2 — the ch01 calibration exemplars all parse + cover every kind
+packages/content-schema test: ok 11 - gameTasks@2 — the ch01 calibration exemplars all parse + cover every kind
+packages/content-schema test:   ---
+packages/content-schema test:   duration_ms: 9.615375
+packages/content-schema test:   type: 'test'
+packages/content-schema test:   ...
+packages/content-schema test: # Subtest: encounter@1 round-trips (due + scope-random, unit + grade scope)
+packages/content-schema test: ok 12 - encounter@1 round-trips (due + scope-random, unit + grade scope)
+packages/content-schema test:   ---
+packages/content-schema test:   duration_ms: 14.217833
+packages/content-schema test:   type: 'test'
+packages/content-schema test:   ...
+packages/content-schema test: # Subtest: KEYSTONE (G0.1): an encounter is a scope recipe, never embedded item content
+packages/content-schema test: ok 13 - KEYSTONE (G0.1): an encounter is a scope recipe, never embedded item content
+packages/content-schema test:   ---
+packages/content-schema test:   duration_ms: 0.46075
+packages/content-schema test:   type: 'test'
+packages/content-schema test:   ...
+packages/content-schema test: # Subtest: encounter@1 red cases
+packages/content-schema test: ok 14 - encounter@1 red cases
+packages/content-schema test:   ---
+packages/content-schema test:   duration_ms: 7.768834
+packages/content-schema test:   type: 'test'
+packages/content-schema test:   ...
+packages/content-schema test: # Subtest: map@1 round-trips (render null + render blob)
+packages/content-schema test: ok 15 - map@1 round-trips (render null + render blob)
+packages/content-schema test:   ---
+packages/content-schema test:   duration_ms: 4.02725
+packages/content-schema test:   type: 'test'
+packages/content-schema test:   ...
+packages/content-schema test: # Subtest: map@1 red cases
+packages/content-schema test: ok 16 - map@1 red cases
+packages/content-schema test:   ---
+packages/content-schema test:   duration_ms: 1.95675
+packages/content-schema test:   type: 'test'
+packages/content-schema test:   ...
+packages/content-schema test: # Subtest: quest@1 round-trips (all three clear kinds)
+packages/content-schema test: ok 17 - quest@1 round-trips (all three clear kinds)
+packages/content-schema test:   ---
+packages/content-schema test:   duration_ms: 2.621458
+packages/content-schema test:   type: 'test'
+packages/content-schema test:   ...
+packages/content-schema test: # Subtest: quest@1 red cases
+packages/content-schema test: ok 18 - quest@1 red cases
+packages/content-schema test:   ---
+packages/content-schema test:   duration_ms: 5.194416
+packages/content-schema test:   type: 'test'
+packages/content-schema test:   ...
+packages/content-schema test: # Subtest: grammar: one valid item per format parses and JSON round-trips
+packages/content-schema test: ok 19 - grammar: one valid item per format parses and JSON round-trips
+packages/content-schema test:   ---
+packages/content-schema test:   duration_ms: 12.56725
+packages/content-schema test:   type: 'test'
+packages/content-schema test:   ...
+packages/content-schema test: # Subtest: vocab: valid item with gameMeta + variant round-trips
+packages/content-schema test: ok 20 - vocab: valid item with gameMeta + variant round-trips
+packages/content-schema test:   ---
+packages/content-schema test:   duration_ms: 3.317167
+packages/content-schema test:   type: 'test'
+packages/content-schema test:   ...
+packages/content-schema test: # Subtest: difficulty must be 1..3
+packages/content-schema test: ok 21 - difficulty must be 1..3
+packages/content-schema test:   ---
+packages/content-schema test:   duration_ms: 3.950166
+packages/content-schema test:   type: 'test'
+packages/content-schema test:   ...
+packages/content-schema test: # Subtest: variants may only re-frame carrier text
+packages/content-schema test: ok 22 - variants may only re-frame carrier text
+packages/content-schema test:   ---
+packages/content-schema test:   duration_ms: 1.527625
+packages/content-schema test:   type: 'test'
+packages/content-schema test:   ...
+packages/content-schema test: # Subtest: translation direction is required iff translation
+packages/content-schema test: ok 23 - translation direction is required iff translation
+packages/content-schema test:   ---
+packages/content-schema test:   duration_ms: 0.289291
+packages/content-schema test:   type: 'test'
+packages/content-schema test:   ...
+packages/content-schema test: # Subtest: per-format shape rules
+packages/content-schema test: ok 24 - per-format shape rules
+packages/content-schema test:   ---
+packages/content-schema test:   duration_ms: 5.0745
+packages/content-schema test:   type: 'test'
+packages/content-schema test:   ...
+packages/content-schema test: # Subtest: gameMeta sanity is schema-level for shape
+packages/content-schema test: ok 25 - gameMeta sanity is schema-level for shape
+packages/content-schema test:   ---
+packages/content-schema test:   duration_ms: 1.023667
+packages/content-schema test:   type: 'test'
+packages/content-schema test:   ...
+packages/content-schema test: # Subtest: grammar id coherence: unit, key, format code
+packages/content-schema test: ok 26 - grammar id coherence: unit, key, format code
+packages/content-schema test:   ---
+packages/content-schema test:   duration_ms: 1.249417
+packages/content-schema test:   type: 'test'
+packages/content-schema test:   ...
+packages/content-schema test: # Subtest: blank arity
+packages/content-schema test: ok 27 - blank arity
+packages/content-schema test:   ---
+packages/content-schema test:   duration_ms: 1.259625
+packages/content-schema test:   type: 'test'
+packages/content-schema test:   ...
+packages/content-schema test: # Subtest: vocab refinements: headword leak, blank, mc discipline
+packages/content-schema test: ok 28 - vocab refinements: headword leak, blank, mc discipline
+packages/content-schema test:   ---
+packages/content-schema test:   duration_ms: 2.913708
+packages/content-schema test:   type: 'test'
+packages/content-schema test:   ...
+packages/content-schema test: # Subtest: file-level: prefix and duplicate ids
+packages/content-schema test: ok 29 - file-level: prefix and duplicate ids
+packages/content-schema test:   ---
+packages/content-schema test:   duration_ms: 3.126209
+packages/content-schema test:   type: 'test'
+packages/content-schema test:   ...
+packages/content-schema test: # Subtest: journey@1 round-trips a valid spine (lesson/practice/game/review)
+packages/content-schema test: ok 30 - journey@1 round-trips a valid spine (lesson/practice/game/review)
+packages/content-schema test:   ---
+packages/content-schema test:   duration_ms: 13.153083
+packages/content-schema test:   type: 'test'
+packages/content-schema test:   ...
+packages/content-schema test: # Subtest: slug must equal grade+unit
+packages/content-schema test: ok 31 - slug must equal grade+unit
+packages/content-schema test:   ---
+packages/content-schema test:   duration_ms: 1.316292
+packages/content-schema test:   type: 'test'
+packages/content-schema test:   ...
+packages/content-schema test: # Subtest: duplicate node ids are rejected
+packages/content-schema test: ok 32 - duplicate node ids are rejected
+packages/content-schema test:   ---
+packages/content-schema test:   duration_ms: 0.244584
+packages/content-schema test:   type: 'test'
+packages/content-schema test:   ...
+packages/content-schema test: # Subtest: the mode-length invariant caps node ids (journey:<unit>:<node> ≤ 40)
+packages/content-schema test: ok 33 - the mode-length invariant caps node ids (journey:<unit>:<node> ≤ 40)
+packages/content-schema test:   ---
+packages/content-schema test:   duration_ms: 0.574084
+packages/content-schema test:   type: 'test'
+packages/content-schema test:   ...
+packages/content-schema test: # Subtest: gamePointer belongs to game nodes only, and its grade must match
+packages/content-schema test: ok 34 - gamePointer belongs to game nodes only, and its grade must match
+packages/content-schema test:   ---
+packages/content-schema test:   duration_ms: 3.270458
+packages/content-schema test:   type: 'test'
+packages/content-schema test:   ...
+packages/content-schema test: # Subtest: itemPool belongs to practice/side-quest only, and mock is not authorable
+packages/content-schema test: ok 35 - itemPool belongs to practice/side-quest only, and mock is not authorable
+packages/content-schema test:   ---
+packages/content-schema test:   duration_ms: 4.793958
+packages/content-schema test:   type: 'test'
+packages/content-schema test:   ...
+packages/content-schema test: # Subtest: story with linear scene, branch, terminal + task slots round-trips
+packages/content-schema test: ok 36 - story with linear scene, branch, terminal + task slots round-trips
+packages/content-schema test:   ---
+packages/content-schema test:   duration_ms: 17.544708
+packages/content-schema test:   type: 'test'
+packages/content-schema test:   ...
+packages/content-schema test: # Subtest: schema-level guardrails it does NOT enforce (VS validators, Track C)
+packages/content-schema test: ok 37 - schema-level guardrails it does NOT enforce (VS validators, Track C)
+packages/content-schema test:   ---
+packages/content-schema test:   duration_ms: 1.513041
+packages/content-schema test:   type: 'test'
+packages/content-schema test:   ...
+packages/content-schema test: # Subtest: story red cases
+packages/content-schema test: ok 38 - story red cases
+packages/content-schema test:   ---
+packages/content-schema test:   duration_ms: 2.646041
+packages/content-schema test:   type: 'test'
+packages/content-schema test:   ...
+packages/content-schema test: # Subtest: cast / names / story-items
+packages/content-schema test: ok 39 - cast / names / story-items
+packages/content-schema test:   ---
+packages/content-schema test:   duration_ms: 6.944125
+packages/content-schema test:   type: 'test'
+packages/content-schema test:   ...
+packages/content-schema test: # Subtest: catalog with mapped + new structure + waiver parses
+packages/content-schema test: ok 40 - catalog with mapped + new structure + waiver parses
+packages/content-schema test:   ---
+packages/content-schema test:   duration_ms: 24.00525
+packages/content-schema test:   type: 'test'
+packages/content-schema test:   ...
+packages/content-schema test: # Subtest: structure red cases
+packages/content-schema test: ok 41 - structure red cases
+packages/content-schema test:   ---
+packages/content-schema test:   duration_ms: 4.856125
+packages/content-schema test:   type: 'test'
+packages/content-schema test:   ...
+packages/content-schema test: # Subtest: file red cases
+packages/content-schema test: ok 42 - file red cases
+packages/content-schema test:   ---
+packages/content-schema test:   duration_ms: 1.232792
+packages/content-schema test:   type: 'test'
+packages/content-schema test:   ...
+packages/content-schema test: 1..42
+packages/content-schema test: # tests 42
+packages/content-schema test: # suites 0
+packages/content-schema test: # pass 42
+packages/content-schema test: # fail 0
+packages/content-schema test: # cancelled 0
+packages/content-schema test: # skipped 0
+packages/content-schema test: # todo 0
+packages/content-schema test: # duration_ms 694.159542
+packages/content-schema test: Done
+packages/game-feel test:  RUN  v3.2.6 /Users/veho/Code/domigo-v2-n6/packages/game-feel
+packages/game-feel test:  ✓ src/test/typing-guard.test.ts (3 tests) 4ms
+packages/game-feel test:  ✓ src/test/core.test.ts (16 tests) 29ms
+packages/game-feel test:  Test Files  2 passed (2)
+packages/game-feel test:       Tests  19 passed (19)
+packages/game-feel test:    Start at  11:19:12
+packages/game-feel test:    Duration  593ms (transform 197ms, setup 0ms, collect 216ms, tests 33ms, environment 0ms, prepare 185ms)
+packages/game-feel test: Done
+packages/content-pipeline test$ node --test "src/test/*.test.ts"
+packages/content-loader test$ node --test "src/test/*.test.ts"
+packages/engine test$ vitest run
+packages/content-loader test: TAP version 13
+packages/content-pipeline test: TAP version 13
+packages/content-loader test: # Subtest: validateFullItem: a real corpus item passes its schema
+packages/content-loader test: ok 1 - validateFullItem: a real corpus item passes its schema
+packages/content-loader test:   ---
+packages/content-loader test:   duration_ms: 1.812667
+packages/content-loader test:   type: 'test'
+packages/content-loader test:   ...
+packages/content-loader test: # Subtest: validateFullItem: broken items are rejected with field errors
+packages/content-loader test: ok 2 - validateFullItem: broken items are rejected with field errors
+packages/content-loader test:   ---
+packages/content-loader test:   duration_ms: 2.630708
+packages/content-loader test:   type: 'test'
+packages/content-loader test:   ...
+packages/content-loader test: # Subtest: mergeDrafts: no drafts is a passthrough (same arrays)
+packages/content-loader test: ok 3 - mergeDrafts: no drafts is a passthrough (same arrays)
+packages/content-loader test:   ---
+packages/content-loader test:   duration_ms: 0.415875
+packages/content-loader test:   type: 'test'
+packages/content-loader test:   ...
+packages/content-loader test: # Subtest: mergeDrafts: replace supersedes an item by id
+packages/content-loader test: ok 4 - mergeDrafts: replace supersedes an item by id
+packages/content-loader test:   ---
+packages/content-loader test:   duration_ms: 0.169
+packages/content-loader test:   type: 'test'
+packages/content-loader test:   ...
+packages/content-loader test: # Subtest: mergeDrafts: create adds a new item
+packages/content-loader test: ok 5 - mergeDrafts: create adds a new item
+packages/content-loader test:   ---
+packages/content-loader test:   duration_ms: 0.277333
+packages/content-loader test:   type: 'test'
+packages/content-loader test:   ...
+packages/content-loader test: # Subtest: mergeDrafts: remove drops an item by id
+packages/content-loader test: ok 6 - mergeDrafts: remove drops an item by id
+packages/content-loader test:   ---
+packages/content-loader test:   duration_ms: 0.118833
+packages/content-loader test:   type: 'test'
+packages/content-loader test:   ...
+packages/content-loader test: # Subtest: mergeDrafts: grammar drafts only touch grammar
+packages/content-loader test: ok 7 - mergeDrafts: grammar drafts only touch grammar
+packages/content-loader test:   ---
+packages/content-loader test:   duration_ms: 0.215292
+packages/content-loader test:   type: 'test'
+packages/content-loader test:   ...
+packages/content-pipeline test: # Subtest: expandContractions: unambiguous pairs incl. the won't irregular
+packages/content-pipeline test: ok 1 - expandContractions: unambiguous pairs incl. the won't irregular
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 13.003125
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: hasAmbiguousContraction: 's/'d flagged, plain possessive-free text not
+packages/content-pipeline test: ok 2 - hasAmbiguousContraction: 's/'d flagged, plain possessive-free text not
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 4.530167
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: R1: article form without bare noun (and vice versa) is critical; both present is clean
+packages/content-pipeline test: ok 3 - R1: article form without bare noun (and vice versa) is critical; both present is clean
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 5.250375
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: R1: phrase glosses and non-noun pools stay out of scope (conservative)
+packages/content-pipeline test: ok 4 - R1: phrase glosses and non-noun pools stay out of scope (conservative)
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 0.779375
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: R2: contraction without expanded twin is critical; twin present is clean
+packages/content-pipeline test: ok 5 - R2: contraction without expanded twin is critical; twin present is clean
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 2.516625
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: R2: long form without contracted twin is critical; ambiguous 's is advisory only
+packages/content-pipeline test: ok 6 - R2: long form without contracted twin is critical; ambiguous 's is advisory only
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 1.306458
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: R2: chip/tile formats are out of scope
+packages/content-pipeline test: ok 7 - R2: chip/tile formats are out of scope
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 0.239875
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: R3: single-answer question-formation is advisory; strict or multi-answer is clean
+packages/content-pipeline test: ok 8 - R3: single-answer question-formation is advisory; strict or multi-answer is clean
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 0.676958
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: R4: pipe-segment mismatch on any tier is critical (grammar + vocab carrier)
+packages/content-pipeline test: ok 9 - R4: pipe-segment mismatch on any tier is critical (grammar + vocab carrier)
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 0.674167
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: R5: a German-reading answer in the deToEn pool is advisory (any tier)
+packages/content-pipeline test: ok 10 - R5: a German-reading answer in the deToEn pool is advisory (any tier)
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 0.652375
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: a clean pair of items yields zero findings
+packages/content-pipeline test: ok 11 - a clean pair of items yields zero findings
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 0.25425
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: vocab frame shows d + s + glosses and one text box — never the answers
+packages/content-pipeline test: ok 12 - vocab frame shows d + s + glosses and one text box — never the answers
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 2.288375
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: grammar text frame derives blank count from the first full answer (task-ui blankCount)
+packages/content-pipeline test: ok 13 - grammar text frame derives blank count from the first full answer (task-ui blankCount)
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 0.469417
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: choice frame reproduces task-ui's seeded option order exactly
+packages/content-pipeline test: ok 14 - choice frame reproduces task-ui's seeded option order exactly
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 0.51275
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: out-of-scope formats frame to null
+packages/content-pipeline test: ok 15 - out-of-scope formats frame to null
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 0.147542
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: translation frame carries direction into the task description
+packages/content-pipeline test: ok 16 - translation frame carries direction into the task description
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 0.288792
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: buildEngineInput maps frames onto engine input shapes
+packages/content-pipeline test: ok 17 - buildEngineInput maps frames onto engine input shapes
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 32.723708
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: cannedCandidates feed back every authored key (and nothing for keyless items)
+packages/content-pipeline test: ok 18 - cannedCandidates feed back every authored key (and nothing for keyless items)
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 0.274625
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: class (a): confident best answer graded wrong ⇒ missingVariant
+packages/content-pipeline test: ok 19 - class (a): confident best answer graded wrong ⇒ missingVariant
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 0.612625
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: class (a) does not fire on low confidence or non-wrong tiers
+packages/content-pipeline test: ok 20 - class (a) does not fire on low confidence or non-wrong tiers
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 0.694084
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: class (b): single full answer + two defensible distinct candidates split correct/wrong ⇒ ambiguousCarrier
+packages/content-pipeline test: ok 21 - class (b): single full answer + two defensible distinct candidates split correct/wrong ⇒ ambiguousCarrier
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 36.317791
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: class (b) does not fire with multiple authored full answers, low confidence, or same-canon duplicates
+packages/content-pipeline test: ok 22 - class (b) does not fire with multiple authored full answers, low confidence, or same-canon duplicates
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 0.469125
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: class (c): a plain model miss triggers neither flag
+packages/content-pipeline test: ok 23 - class (c): a plain model miss triggers neither flag
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 0.324583
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-loader test: # Subtest: loadUnit reads + schema-validates a real approved unit
+packages/content-loader test: ok 8 - loadUnit reads + schema-validates a real approved unit
+packages/content-loader test:   ---
+packages/content-loader test:   duration_ms: 142.302
+packages/content-loader test:   type: 'test'
+packages/content-loader test:   ...
+packages/content-loader test: # Subtest: loadUnit applies the item-fixes overlay (g4-u11 ag.001 prompt patch)
+packages/content-loader test: ok 9 - loadUnit applies the item-fixes overlay (g4-u11 ag.001 prompt patch)
+packages/content-loader test:   ---
+packages/content-loader test:   duration_ms: 51.62075
+packages/content-loader test:   type: 'test'
+packages/content-loader test:   ...
+packages/content-loader test: # Subtest: listApprovedUnits returns all 57, sorted, g1-u01 first
+packages/content-loader test: ok 10 - listApprovedUnits returns all 57, sorted, g1-u01 first
+packages/content-loader test:   ---
+packages/content-loader test:   duration_ms: 5.787541
+packages/content-loader test:   type: 'test'
+packages/content-loader test:   ...
+packages/content-loader test: # Subtest: loadUnit rejects a bad slug
+packages/content-loader test: ok 11 - loadUnit rejects a bad slug
+packages/content-loader test:   ---
+packages/content-loader test:   duration_ms: 0.554584
+packages/content-loader test:   type: 'test'
+packages/content-loader test:   ...
+packages/content-loader test: # Subtest: listReleasedStories derives one story per grade from the corpus (all four grades released)
+packages/content-loader test: ok 12 - listReleasedStories derives one story per grade from the corpus (all four grades released)
+packages/content-loader test:   ---
+packages/content-loader test:   duration_ms: 80.459542
+packages/content-loader test:   type: 'test'
+packages/content-loader test:   ...
+packages/content-loader test: # Subtest: storyIdForGrade resolves every released grade from the corpus (no stale hand-maps)
+packages/content-loader test: ok 13 - storyIdForGrade resolves every released grade from the corpus (no stale hand-maps)
+packages/content-loader test:   ---
+packages/content-loader test:   duration_ms: 0.184458
+packages/content-loader test:   type: 'test'
+packages/content-loader test:   ...
+packages/content-loader test: # Subtest: resolveReleased: a canonical + a bonus in one grade coexist; two canonicals throw
+packages/content-loader test: ok 14 - resolveReleased: a canonical + a bonus in one grade coexist; two canonicals throw
+packages/content-loader test:   ---
+packages/content-loader test:   duration_ms: 55.996834
+packages/content-loader test:   type: 'test'
+packages/content-loader test:   ...
+packages/engine test:  RUN  v3.2.6 /Users/veho/Code/domigo-v2-n6/packages/engine
+packages/content-pipeline test: # Subtest: cumulativeSlugs: lower grades fully, own grade up to the unit
+packages/content-pipeline test: ok 24 - cumulativeSlugs: lower grades fully, own grade up to the unit
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 1.310125
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: matcher: inflections, phrases, apostrophes, numbers
+packages/content-pipeline test: ok 25 - matcher: inflections, phrases, apostrophes, numbers
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 109.109916
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: matcher: above-level tokens are unknown; gloss + grants rescue them
+packages/content-pipeline test: ok 26 - matcher: above-level tokens are unknown; gloss + grants rescue them
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 0.428209
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: matcher: cumulative boundary — a later-unit word is unknown earlier
+packages/content-pipeline test: ok 27 - matcher: cumulative boundary — a later-unit word is unknown earlier
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 152.953959
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: matcher: harvested proper nouns pass at their unit
+packages/content-pipeline test: ok 28 - matcher: harvested proper nouns pass at their unit
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 15.906875
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: matcher perf smoke: full build + 1k field checks stay fast
+packages/content-pipeline test: ok 29 - matcher perf smoke: full build + 1k field checks stay fast
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 364.447666
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: fingerprint: gloss/punctuation-stable, content-sensitive
+packages/content-pipeline test: ok 30 - fingerprint: gloss/punctuation-stable, content-sensitive
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 24.353542
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: minting: serials per structure+format, reuse by fingerprint, tombstones
+packages/content-pipeline test: ok 31 - minting: serials per structure+format, reuse by fingerprint, tombstones
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 8.626625
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: rekeyFingerprint: review edits keep the id, move the pin
+packages/content-pipeline test: ok 32 - rekeyFingerprint: review edits keep the id, move the pin
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 0.313917
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: regenerateUnitItems: committed g2-u03 round-trips from draft + item-fixes
+packages/content-pipeline test: ok 33 - regenerateUnitItems: committed g2-u03 round-trips from draft + item-fixes
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 305.571417
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: mintStructureIds: fresh mint, re-mint idempotence, tombstones
+packages/content-pipeline test: ok 34 - mintStructureIds: fresh mint, re-mint idempotence, tombstones
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 6.566583
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: mintStructureIds: unit move tombstones the old id and re-mints loudly
+packages/content-pipeline test: ok 35 - mintStructureIds: unit move tombstones the old id and re-mints loudly
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 0.320292
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: diffV1Floor: mapped / fresh / waived partition + red cases
+packages/content-pipeline test: ok 36 - diffV1Floor: mapped / fresh / waived partition + red cases
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 0.487666
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: v1DifficultyToV2 seed map
+packages/content-pipeline test: ok 37 - v1DifficultyToV2 seed map
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 0.101541
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: bare GRAMMAR heading: title = next non-empty line
+packages/content-pipeline test: ok 38 - bare GRAMMAR heading: title = next non-empty line
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 1.644542
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: inline GRAMMAR: <title> heading
+packages/content-pipeline test: ok 39 - inline GRAMMAR: <title> heading
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 0.386875
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: GRAMMAR CHANT is not a box and terminates a body
+packages/content-pipeline test: ok 40 - GRAMMAR CHANT is not a box and terminates a body
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 0.394042
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: verbatim-duplicated passage dedupes to one box; ordinals stable
+packages/content-pipeline test: ok 41 - verbatim-duplicated passage dedupes to one box; ordinals stable
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 0.242083
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: terminators: next GRAMMAR, page marker, short all-caps section, 60-line cap
+packages/content-pipeline test: ok 42 - terminators: next GRAMMAR, page marker, short all-caps section, 60-line cap
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 0.945708
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: overlay: drop keeps remaining ordinals; add continues numbering
+packages/content-pipeline test: ok 43 - overlay: drop keeps remaining ordinals; add continues numbering
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 0.26175
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/engine test:  ✓ src/index.test.ts (3 tests) 6ms
+packages/engine test:  ✓ src/grade.test.ts (37 tests) 12ms
+packages/engine test:  ✓ src/classify.test.ts (23 tests) 13ms
+packages/engine test:  Test Files  3 passed (3)
+packages/engine test:       Tests  63 passed (63)
+packages/engine test:    Start at  11:19:14
+packages/engine test:    Duration  1.15s (transform 259ms, setup 0ms, collect 430ms, tests 32ms, environment 1ms, prepare 962ms)
+packages/engine test: Done
+packages/content-loader test: # Subtest: PASSTHROUGH INVARIANT: empty overlay is deep-equal for EVERY item in ALL units
+packages/content-loader test: ok 15 - PASSTHROUGH INVARIANT: empty overlay is deep-equal for EVERY item in ALL units
+packages/content-loader test:   ---
+packages/content-loader test:   duration_ms: 2134.229209
+packages/content-loader test:   type: 'test'
+packages/content-loader test:   ...
+packages/content-loader test: # Subtest: applyStudioOverlay: empty/null patch is a byte-identical passthrough
+packages/content-loader test: ok 16 - applyStudioOverlay: empty/null patch is a byte-identical passthrough
+packages/content-loader test:   ---
+packages/content-loader test:   duration_ms: 0.477833
+packages/content-loader test:   type: 'test'
+packages/content-loader test:   ...
+packages/content-loader test: # Subtest: applyStudioOverlay: a prose edit applies, everything else identical
+packages/content-loader test: ok 17 - applyStudioOverlay: a prose edit applies, everything else identical
+packages/content-loader test:   ---
+packages/content-loader test:   duration_ms: 0.369667
+packages/content-loader test:   type: 'test'
+packages/content-loader test:   ...
+packages/content-loader test: # Subtest: applyStudioOverlay: grammar prompt keeps lang + blanks, only text moves
+packages/content-loader test: ok 18 - applyStudioOverlay: grammar prompt keeps lang + blanks, only text moves
+packages/content-loader test:   ---
+packages/content-loader test:   duration_ms: 0.137667
+packages/content-loader test:   type: 'test'
+packages/content-loader test:   ...
+packages/content-loader test: # Subtest: allowlist FUZZ: every grading key is rejected (vocab)
+packages/content-loader test: ok 19 - allowlist FUZZ: every grading key is rejected (vocab)
+packages/content-loader test:   ---
+packages/content-loader test:   duration_ms: 0.621042
+packages/content-loader test:   type: 'test'
+packages/content-loader test:   ...
+packages/content-loader test: # Subtest: allowlist FUZZ: every grading key is rejected (grammar)
+packages/content-loader test: ok 20 - allowlist FUZZ: every grading key is rejected (grammar)
+packages/content-loader test:   ---
+packages/content-loader test:   duration_ms: 0.284708
+packages/content-loader test:   type: 'test'
+packages/content-loader test:   ...
+packages/content-loader test: # Subtest: blank-count guard: vocab carrier must keep exactly one blank
+packages/content-loader test: ok 21 - blank-count guard: vocab carrier must keep exactly one blank
+packages/content-loader test:   ---
+packages/content-loader test:   duration_ms: 0.37725
+packages/content-loader test:   type: 'test'
+packages/content-loader test:   ...
+packages/content-loader test: # Subtest: blank-count guard: grammar prompt.text must match the base blank count
+packages/content-loader test: ok 22 - blank-count guard: grammar prompt.text must match the base blank count
+packages/content-loader test:   ---
+packages/content-loader test:   duration_ms: 0.202584
+packages/content-loader test:   type: 'test'
+packages/content-loader test:   ...
+packages/content-loader test: # Subtest: leak guard: a definition containing the headword is rejected
+packages/content-loader test: ok 23 - leak guard: a definition containing the headword is rejected
+packages/content-loader test:   ---
+packages/content-loader test:   duration_ms: 1.01075
+packages/content-loader test:   type: 'test'
+packages/content-loader test:   ...
+packages/content-loader test: # Subtest: defensive apply: a non-allowlist key present in a patch is never written
+packages/content-loader test: ok 24 - defensive apply: a non-allowlist key present in a patch is never written
+packages/content-loader test:   ---
+packages/content-loader test:   duration_ms: 0.887542
+packages/content-loader test:   type: 'test'
+packages/content-loader test:   ...
+packages/content-loader test: # Subtest: gloss validation: shape enforced, extra keys rejected
+packages/content-loader test: ok 25 - gloss validation: shape enforced, extra keys rejected
+packages/content-loader test:   ---
+packages/content-loader test:   duration_ms: 0.43625
+packages/content-loader test:   type: 'test'
+packages/content-loader test:   ...
+packages/content-loader test: # Subtest: normalizePatchColumn: object passthrough, JSON string parsed, garbage → {}
+packages/content-loader test: ok 26 - normalizePatchColumn: object passthrough, JSON string parsed, garbage → {}
+packages/content-loader test:   ---
+packages/content-loader test:   duration_ms: 0.17825
+packages/content-loader test:   type: 'test'
+packages/content-loader test:   ...
+packages/content-loader test: # Subtest: fieldsChanged: order-stable prose labels
+packages/content-loader test: ok 27 - fieldsChanged: order-stable prose labels
+packages/content-loader test:   ---
+packages/content-loader test:   duration_ms: 0.159667
+packages/content-loader test:   type: 'test'
+packages/content-loader test:   ...
+packages/content-loader test: # Subtest: assignPool — precedence reserved > override > default
+packages/content-loader test: ok 28 - assignPool — precedence reserved > override > default
+packages/content-loader test:   ---
+packages/content-loader test:   duration_ms: 1.028334
+packages/content-loader test:   type: 'test'
+packages/content-loader test:   ...
+packages/content-loader test: # Subtest: partitionUnit — a TOTAL partition (every item in exactly one pool)
+packages/content-loader test: ok 29 - partitionUnit — a TOTAL partition (every item in exactly one pool)
+packages/content-loader test:   ---
+packages/content-loader test:   duration_ms: 0.218375
+packages/content-loader test:   type: 'test'
+packages/content-loader test:   ...
+packages/content-loader test: # Subtest: mock comes ONLY from reserved — an override can never mint mock
+packages/content-loader test: ok 30 - mock comes ONLY from reserved — an override can never mint mock
+packages/content-loader test:   ---
+packages/content-loader test:   duration_ms: 0.670083
+packages/content-loader test:   type: 'test'
+packages/content-loader test:   ...
+packages/content-loader test: # Subtest: itemsInPool — a pool's items, corpus order preserved
+packages/content-loader test: ok 31 - itemsInPool — a pool's items, corpus order preserved
+packages/content-loader test:   ---
+packages/content-loader test:   duration_ms: 1.003416
+packages/content-loader test:   type: 'test'
+packages/content-loader test:   ...
+packages/content-loader test: 1..31
+packages/content-loader test: # tests 31
+packages/content-loader test: # suites 0
+packages/content-loader test: # pass 31
+packages/content-loader test: # fail 0
+packages/content-loader test: # cancelled 0
+packages/content-loader test: # skipped 0
+packages/content-loader test: # todo 0
+packages/content-loader test: # duration_ms 3098.673417
+packages/content-loader test: Done
+packages/content-pipeline test: # Subtest: countCapitalizedNonInitial: sentence starts excluded, possessives stripped
+packages/content-pipeline test: ok 44 - countCapitalizedNonInitial: sentence starts excluded, possessives stripped
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 1.7615
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: countCapitalizedNonInitial: ALL-CAPS and mixed tokens are not candidates
+packages/content-pipeline test: ok 45 - countCapitalizedNonInitial: ALL-CAPS and mixed tokens are not candidates
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 0.201417
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: committed proper-nouns.json equals the deterministic recomputation (drift gate)
+packages/content-pipeline test: ok 46 - committed proper-nouns.json equals the deterministic recomputation (drift gate)
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 2430.12125
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: harvest respects the rejects overlay and the ≥2 threshold
+packages/content-pipeline test: ok 47 - harvest respects the rejects overlay and the ≥2 threshold
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 1.586041
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: calibration: v1 unit-03 defects fire V-5 and V-9; taught words stay green
+packages/content-pipeline test: ok 48 - calibration: v1 unit-03 defects fire V-5 and V-9; taught words stay green
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 237.983625
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: V-5 level gate: unglossed above-level token in any EN field
+packages/content-pipeline test: ok 49 - V-5 level gate: unglossed above-level token in any EN field
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 42.152083
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: V-6 gloss correctness: stale gloss + gloss-unneeded
+packages/content-pipeline test: ok 50 - V-6 gloss correctness: stale gloss + gloss-unneeded
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 0.572166
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: V-7 substitution sanity: a/an, pipe arity, casing warns
+packages/content-pipeline test: ok 51 - V-7 substitution sanity: a/an, pipe arity, casing warns
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 0.835333
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: V-8 definition leak is lemma-aware
+packages/content-pipeline test: ok 52 - V-8 definition leak is lemma-aware
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 0.903125
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: V-9 distractor discipline: out-of-bank + lemma clash + duplicates
+packages/content-pipeline test: ok 53 - V-9 distractor discipline: out-of-bank + lemma clash + duplicates
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 101.693458
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: V-9/V-17 polarity twins + granted structure tokens are legal
+packages/content-pipeline test: ok 54 - V-9/V-17 polarity twins + granted structure tokens are legal
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 15.979208
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: V-10 translation sanity: strong language mismatch red, weak warn
+packages/content-pipeline test: ok 55 - V-10 translation sanity: strong language mismatch red, weak warn
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 0.972667
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: V-12 Sie-rule: mid-sentence red, sentence-initial warn
+packages/content-pipeline test: ok 56 - V-12 Sie-rule: mid-sentence red, sentence-initial warn
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 0.993042
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: V-12 Sie-rule: register-list slash-gloss exempt; space-flanked formal still red
+packages/content-pipeline test: ok 57 - V-12 Sie-rule: register-list slash-gloss exempt; space-flanked formal still red
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 0.991459
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: V-13 meta-talk: jargon vs tense-names vs DE terms
+packages/content-pipeline test: ok 58 - V-13 meta-talk: jargon vs tense-names vs DE terms
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 7.673084
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: V-14 German orthography: ASCII umlauts, English-quote + morpheme-boundary exceptions
+packages/content-pipeline test: ok 59 - V-14 German orthography: ASCII umlauts, English-quote + morpheme-boundary exceptions
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 1.724833
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: V-15 render shapes: pair duplicates, chip budget
+packages/content-pipeline test: ok 60 - V-15 render shapes: pair duplicates, chip budget
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 1.492834
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: V-16/V-17: duplicate variant keys; gameMeta required where it matters
+packages/content-pipeline test: ok 61 - V-16/V-17: duplicate variant keys; gameMeta required where it matters
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 0.824208
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: a valid journey passes (gamePointer resolves, pool non-empty)
+packages/content-pipeline test: ok 62 - a valid journey passes (gamePointer resolves, pool non-empty)
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 4.452875
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: J1 — an unreleased gamePointer fails
+packages/content-pipeline test: ok 63 - J1 — an unreleased gamePointer fails
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 0.678
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: J2 — an empty referenced pool fails
+packages/content-pipeline test: ok 64 - J2 — an empty referenced pool fails
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 6.252084
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: J2 — an arcade pool with an authored override IS non-empty
+packages/content-pipeline test: ok 65 - J2 — an arcade pool with an authored override IS non-empty
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 1.270125
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: J3 — a poolOverrides key that isn't a unit item fails
+packages/content-pipeline test: ok 66 - J3 — a poolOverrides key that isn't a unit item fails
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 3.206917
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: table round-trip survives pipes, newlines and editor re-spacing
+packages/content-pipeline test: ok 67 - table round-trip survives pipes, newlines and editor re-spacing
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 2.127167
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: verdict lexer: flag blocks + unit verdict + notes
+packages/content-pipeline test: ok 68 - verdict lexer: flag blocks + unit verdict + notes
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 0.807334
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: verdict lexer: trailing commentary after the verdict word is ignored
+packages/content-pipeline test: ok 69 - verdict lexer: trailing commentary after the verdict word is ignored
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 0.525583
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: happy path: in-bank carrier, matching blank count → no errors
+packages/content-pipeline test: ok 70 - happy path: in-bank carrier, matching blank count → no errors
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 1.830209
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: blank-count mismatch is rejected
+packages/content-pipeline test: ok 71 - blank-count mismatch is rejected
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 42.50675
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: above-level unglossed token is rejected
+packages/content-pipeline test: ok 72 - above-level unglossed token is rejected
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 14.973792
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: a gloss rescues an above-level word
+packages/content-pipeline test: ok 73 - a gloss rescues an above-level word
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 0.356125
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: glossing an already-taught word is rejected
+packages/content-pipeline test: ok 74 - glossing an already-taught word is rejected
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 0.22675
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: a duplicate variant key is rejected
+packages/content-pipeline test: ok 75 - a duplicate variant key is rejected
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 0.184166
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: vocab variant must keep exactly one blank
+packages/content-pipeline test: ok 76 - vocab variant must keep exactly one blank
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 0.302084
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: filterRealDocx: ' N' suffix is junk only when the sibling exists
+packages/content-pipeline test: ok 77 - filterRealDocx: ' N' suffix is junk only when the sibling exists
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 62.957833
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: splitDe: top-level alternatives split, parenthesised commas stay whole
+packages/content-pipeline test: ok 78 - splitDe: top-level alternatives split, parenthesised commas stay whole
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 9.756083
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: shapeEntry: lowercase particles combine with the base, never appear bare
+packages/content-pipeline test: ok 79 - shapeEntry: lowercase particles combine with the base, never appear bare
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 1.467167
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: shapeEntry: uppercase parentheticals are abbreviations, kept standalone
+packages/content-pipeline test: ok 80 - shapeEntry: uppercase parentheticals are abbreviations, kept standalone
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 0.708166
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: shapeEntry: (pl …) parentheticals add the plural form
+packages/content-pipeline test: ok 81 - shapeEntry: (pl …) parentheticals add the plural form
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 0.583208
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: g2-u03 review doc detects the known duplicate-headword (open or resolved-sticky)
+packages/content-pipeline test: ok 82 - g2-u03 review doc detects the known duplicate-headword (open or resolved-sticky)
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 584.139583
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: g2-u03 review doc is byte-stable and lists every entry
+packages/content-pipeline test: ok 83 - g2-u03 review doc is byte-stable and lists every entry
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 418.70125
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: g2-u03 v1 parity is computed from the committed snapshot
+packages/content-pipeline test: ok 84 - g2-u03 v1 parity is computed from the committed snapshot
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 155.408541
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: parseGlossCell round-trips the rendered format
+packages/content-pipeline test: ok 85 - parseGlossCell round-trips the rendered format
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 13.382458
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: diffItemTable: editable-cell edits become patches; immutable cells throw
+packages/content-pipeline test: ok 86 - diffItemTable: editable-cell edits become patches; immutable cells throw
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 10.57225
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: diffItemTable: vocab hintDe is a rendered, editable column
+packages/content-pipeline test: ok 87 - diffItemTable: vocab hintDe is a rendered, editable column
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 8.676208
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: diffItemTable: grammar prompt edit strips the direction suffix; mc arity enforced
+packages/content-pipeline test: ok 88 - diffItemTable: grammar prompt edit strips the direction suffix; mc arity enforced
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 5.76325
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: extractArrayLiteral is string/comment-aware (brackets inside strings + // comments)
+packages/content-pipeline test: ok 89 - extractArrayLiteral is string/comment-aware (brackets inside strings + // comments)
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 4.134625
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: parseLegacyCampaign maps a legacy level → draft chapter (no content copied)
+packages/content-pipeline test: ok 90 - parseLegacyCampaign maps a legacy level → draft chapter (no content copied)
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 32.181458
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: a clean story bundle passes VS-1…VS-10
+packages/content-pipeline test: ok 91 - a clean story bundle passes VS-1…VS-10
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 18.707042
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: VS-1: cross-file storyId mismatch
+packages/content-pipeline test: ok 92 - VS-1: cross-file storyId mismatch
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 4.720417
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: VS-2: above-level word in a student line (not glossed/named)
+packages/content-pipeline test: ok 93 - VS-2: above-level word in a student line (not glossed/named)
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 3.495792
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: VS-17: a grade-1 scene without scaffoldDe fails (German-first UX); grade 3+ is free
+packages/content-pipeline test: ok 94 - VS-17: a grade-1 scene without scaffoldDe fails (German-first UX); grade 3+ is free
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 4.683833
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: VS-3: formal Sie in a scaffold is an error
+packages/content-pipeline test: ok 95 - VS-3: formal Sie in a scaffold is an error
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 0.457375
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: VS-4: taskSlot above the chapter gate unit / unknown item
+packages/content-pipeline test: ok 96 - VS-4: taskSlot above the chapter gate unit / unknown item
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 0.712125
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: VS-5: unreachable scene and dead-end loop
+packages/content-pipeline test: ok 97 - VS-5: unreachable scene and dead-end loop
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 1.3675
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: VS-6: speaker not in cast
+packages/content-pipeline test: ok 98 - VS-6: speaker not in cast
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 0.931458
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: VS-7: gloss word absent from the line
+packages/content-pipeline test: ok 99 - VS-7: gloss word absent from the line
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 0.489625
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: VS-8: meta-talk in a student line
+packages/content-pipeline test: ok 100 - VS-8: meta-talk in a student line
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 0.49375
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: release gating: a released chapter whose gate unit is not ready
+packages/content-pipeline test: ok 101 - release gating: a released chapter whose gate unit is not ready
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 0.568209
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: VS-10: story item carrier above level at its lock unit
+packages/content-pipeline test: ok 102 - VS-10: story item carrier above level at its lock unit
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 2.965209
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: VS-15: a reconverging fork story passes; the matrix reports 3 combos → 1 ending
+packages/content-pipeline test: ok 103 - VS-15: a reconverging fork story passes; the matrix reports 3 combos → 1 ending
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 1.877209
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: VS-15: an authored ending that no combo routes to fails (orphaned)
+packages/content-pipeline test: ok 104 - VS-15: an authored ending that no combo routes to fails (orphaned)
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 0.632
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: VS-15: minor-only flags (no major) are a no-op — flagless/minor stories untouched
+packages/content-pipeline test: ok 105 - VS-15: minor-only flags (no major) are a no-op — flagless/minor stories untouched
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 0.771875
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: VS-18: a matching map (1:1 units, registered generator) passes
+packages/content-pipeline test: ok 106 - VS-18: a matching map (1:1 units, registered generator) passes
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 14.942208
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: VS-18: a zone unit with no chapter (and vice versa) fails the bijection
+packages/content-pipeline test: ok 107 - VS-18: a zone unit with no chapter (and vice versa) fails the bijection
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 0.657875
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: VS-18: zone count != chapter count fails
+packages/content-pipeline test: ok 108 - VS-18: zone count != chapter count fails
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 0.36075
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: VS-18: an unregistered render.generator fails; render:null is info-only (art deferred)
+packages/content-pipeline test: ok 109 - VS-18: an unregistered render.generator fails; render:null is info-only (art deferred)
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 2.784834
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: VS-18: a map whose id/grade disagrees with the story fails
+packages/content-pipeline test: ok 110 - VS-18: a map whose id/grade disagrees with the story fails
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 1.436542
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: VS-18/W-1: a clean data floor plan passes (door to a legacy zone is exempt from reciprocity)
+packages/content-pipeline test: ok 111 - VS-18/W-1: a clean data floor plan passes (door to a legacy zone is exempt from reciprocity)
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 3.431167
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: VS-18/W-1: ragged rows, sub-viewport size, and dim-field mismatch all fail
+packages/content-pipeline test: ok 112 - VS-18/W-1: ragged rows, sub-viewport size, and dim-field mismatch all fail
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 2.61575
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: VS-18/W-1: an unknown glyph fails (every mark on the map means something)
+packages/content-pipeline test: ok 113 - VS-18/W-1: an unknown glyph fails (every mark on the map means something)
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 3.669833
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: VS-18/W-1: doors must lead somewhere real — unknown zones and door-to-self fail
+packages/content-pipeline test: ok 114 - VS-18/W-1: doors must lead somewhere real — unknown zones and door-to-self fail
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 4.148416
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: VS-18/W-1: a one-way world fails — layout targets need a door back
+packages/content-pipeline test: ok 115 - VS-18/W-1: a one-way world fails — layout targets need a door back
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 0.960291
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: VS-18/W-1: declaring more battles than E cells fails; two P starts fail
+packages/content-pipeline test: ok 116 - VS-18/W-1: declaring more battles than E cells fails; two P starts fail
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 2.77625
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: VS-18/W-1: a walled-off E is unreachable and fails the BFS law
+packages/content-pipeline test: ok 117 - VS-18/W-1: a walled-off E is unreachable and fails the BFS law
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 0.629042
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: wordTokens: hyphens are separators, curly apostrophes normalize
+packages/content-pipeline test: ok 118 - wordTokens: hyphens are separators, curly apostrophes normalize
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 2.004292
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: inflectionFamily: regular rules
+packages/content-pipeline test: ok 119 - inflectionFamily: regular rules
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 0.522584
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: phraseExact: contiguous in-order with per-token inflection
+packages/content-pipeline test: ok 120 - phraseExact: contiguous in-order with per-token inflection
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 0.43225
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: traceForms: exact beats loose beats miss
+packages/content-pipeline test: ok 121 - traceForms: exact beats loose beats miss
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 1.04225
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: answer-pool change → touched, no violations
+packages/content-pipeline test: ok 122 - answer-pool change → touched, no violations
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 5.996208
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: prose change → violation, even alongside a legit answer change
+packages/content-pipeline test: ok 123 - prose change → violation, even alongside a legit answer change
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 0.219833
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: already-materialized field (equals corpus) → ignored (no-op)
+packages/content-pipeline test: ok 124 - already-materialized field (equals corpus) → ignored (no-op)
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 0.111958
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: vocab translation change → answer-pool, allowed
+packages/content-pipeline test: ok 125 - vocab translation change → answer-pool, allowed
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 0.409208
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: vocab prose (d) change → violation
+packages/content-pipeline test: ok 126 - vocab prose (d) change → violation
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 0.182125
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: unknown id → missingIds, not touched or violation
+packages/content-pipeline test: ok 127 - unknown id → missingIds, not touched or violation
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 4.119625
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: ANSWER_POOL_FIELDS is exactly the four authored answer pools
+packages/content-pipeline test: ok 128 - ANSWER_POOL_FIELDS is exactly the four authored answer pools
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 0.6285
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: merge: all four lenses mandatory; staleness refused
+packages/content-pipeline test: ok 129 - merge: all four lenses mandatory; staleness refused
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 6.227375
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: merge: union, no dedupe across lenses, counts
+packages/content-pipeline test: ok 130 - merge: union, no dedupe across lenses, counts
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 1.445458
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: # Subtest: merge: malformed flag keys and duplicates are errors
+packages/content-pipeline test: ok 131 - merge: malformed flag keys and duplicates are errors
+packages/content-pipeline test:   ---
+packages/content-pipeline test:   duration_ms: 0.327458
+packages/content-pipeline test:   type: 'test'
+packages/content-pipeline test:   ...
+packages/content-pipeline test: 1..131
+packages/content-pipeline test: # tests 131
+packages/content-pipeline test: # suites 0
+packages/content-pipeline test: # pass 131
+packages/content-pipeline test: # fail 0
+packages/content-pipeline test: # cancelled 0
+packages/content-pipeline test: # skipped 0
+packages/content-pipeline test: # todo 0
+packages/content-pipeline test: # duration_ms 3381.753292
+packages/content-pipeline test: Done
+packages/db test$ vitest run
+packages/task-ui test$ vitest run
+packages/task-ui test:  RUN  v3.2.6 /Users/veho/Code/domigo-v2-n6/packages/task-ui
+packages/db test:  RUN  v3.2.6 /Users/veho/Code/domigo-v2-n6/packages/db
+packages/task-ui test:  ✓ src/mask.test.ts (6 tests) 5ms
+packages/task-ui test:  ✓ src/vocab-pool.test.ts (12 tests) 23ms
+packages/task-ui test:  ✓ src/tactile.test.ts (10 tests) 59ms
+packages/task-ui test:  Test Files  3 passed (3)
+packages/task-ui test:       Tests  28 passed (28)
+packages/task-ui test:    Start at  11:19:16
+packages/task-ui test:    Duration  1.26s (transform 181ms, setup 0ms, collect 438ms, tests 87ms, environment 1ms, prepare 890ms)
+packages/db test:  ✓ src/identity.test.ts (12 tests) 193ms
+packages/task-ui test: Done
+packages/db test: stderr | src/assignment-service.test.ts > listClasses — v2 classes of the teacher, then the v1 legacy classes > degrades to the v1 list when the domigo_v2 tables are unreachable (never an empty picker)
+packages/db test: [assignment-service] v2 class query failed — falling back to the v1 mirror only: relation "domigo_v2.classes" does not exist
+packages/db test: stderr | src/assignment-service.test.ts > listClassesForGrandmaster — every class on the platform, each labelled with its owner > falls back to the legacy list alone when the v2 register is unreachable
+packages/db test: [class-service] v2 class overview failed: relation "domigo_v2.classes" does not exist
+packages/db test:  ✓ src/assignment-service.test.ts (16 tests) 54ms
+packages/db test:  ✓ src/teacher-identity.test.ts (13 tests) 14ms
+packages/db test:  ✓ src/studypath.test.ts (14 tests) 9ms
+packages/db test:  ✓ src/writing-review.test.ts (27 tests) 22ms
+packages/db test:  ✓ src/teacher-claim.test.ts (25 tests) 18ms
+packages/db test:  ✓ src/class-progress.test.ts (25 tests) 28ms
+packages/db test:  ✓ src/roster-service.test.ts (60 tests) 60ms
+packages/db test:  ✓ src/teacher-events.test.ts (10 tests) 28ms
+packages/db test:  ✓ src/streak.test.ts (9 tests) 5ms
+packages/db test:  ✓ src/checkup.test.ts (24 tests) 13ms
+packages/db test: stderr | src/class-service.test.ts > listAllClassesForGrandmaster — every class on the platform, both registers > reports a broken v2 register as BROKEN, never as an empty platform
+packages/db test: [class-service] v2 class overview failed: relation "domigo_v2.classes" does not exist
+packages/db test: stderr | src/class-service.test.ts > listAllClassesForGrandmaster — every class on the platform, both registers > K2b · reports a broken LEGACY register as BROKEN too, instead of taking the page down
+packages/db test: [class-service] legacy class overview failed: relation "public.classes" does not exist
+packages/db test:  ✓ src/assignment-draft.test.ts (16 tests) 44ms
+packages/db test:  ✓ src/class-service.test.ts (35 tests) 39ms
+packages/db test:  ✓ src/assignments.test.ts (18 tests) 54ms
+packages/db test:  ✓ src/assignment-session.test.ts (14 tests) 9ms
+packages/db test:  ✓ src/assignment-results.test.ts (6 tests) 7ms
+packages/db test:  ✓ src/progress-adjust.test.ts (16 tests) 26ms
+packages/db test:  ✓ src/auth-throttle.test.ts (16 tests) 23ms
+packages/db test:  ✓ src/reset-tokens.test.ts (14 tests) 26ms
+packages/db test: stderr | src/auth.test.ts > dual-read degrades to v1 when v2 tables are unreachable > student login: v2 class lookup throws → v1 student still found
+packages/db test: [auth] v2 identity query failed — falling back to the v1 mirror: relation "domigo_v2.users" does not exist
+packages/db test: stderr | src/auth.test.ts > dual-read degrades to v1 when v2 tables are unreachable > teacher login: v2 teacher lookup throws → v1 teacher still found (the VEHO lockout)
+packages/db test: [auth] v2 identity query failed — falling back to the v1 mirror: relation "domigo_v2.users" does not exist
+packages/db test: stderr | src/auth.test.ts > dual-read degrades to v1 when v2 tables are unreachable > getClassGrade: v2 throws → v1 grade still returned
+packages/db test: [auth] v2 identity query failed — falling back to the v1 mirror: relation "domigo_v2.users" does not exist
+packages/db test: stderr | src/auth.test.ts > dual-read degrades to v1 when v2 tables are unreachable > allocateClassCode: v2 code read throws → still mints against v1 codes
+packages/db test: [auth] v2 identity query failed — falling back to the v1 mirror: relation "domigo_v2.users" does not exist
+packages/db test: stderr | src/auth.test.ts > dual-read degrades to v1 when v2 tables are unreachable > v1 failure is NOT degraded — a real outage must surface
+packages/db test: [auth] v2 identity query failed — falling back to the v1 mirror: relation "domigo_v2.users" does not exist
+packages/db test:  ✓ src/auth.test.ts (7 tests) 21ms
+packages/db test:  ✓ src/roster-events.test.ts (22 tests) 38ms
+packages/db test:  ✓ src/ops-links.test.ts (5 tests) 14ms
+packages/db test:  ✓ src/assignment-session-service.test.ts (7 tests) 11ms
+packages/db test:  ✓ src/journey-progress.test.ts (8 tests) 7ms
+packages/db test:  ✓ src/gamesave.test.ts (5 tests) 6ms
+packages/db test:  ✓ src/review.test.ts (9 tests | 1 skipped) 5ms
+packages/db test:  Test Files  26 passed (26)
+packages/db test:       Tests  432 passed | 1 skipped (433)
+packages/db test:    Start at  11:19:16
+packages/db test:    Duration  4.81s (transform 1.31s, setup 0ms, collect 20.78s, tests 776ms, environment 17ms, prepare 5.05s)
+packages/db test: Done
+packages/game-core test$ node --test "src/test/*.test.ts"
+packages/game-core test: TAP version 13
+packages/game-core test: # Subtest: due path: returns due items soonest-first, up to count
+packages/game-core test: ok 1 - due path: returns due items soonest-first, up to count
+packages/game-core test:   ---
+packages/game-core test:   duration_ms: 5.97025
+packages/game-core test:   type: 'test'
+packages/game-core test:   ...
+packages/game-core test: # Subtest: formatAllow filters grammar; vocab always allowed (due path, count exact)
+packages/game-core test: ok 2 - formatAllow filters grammar; vocab always allowed (due path, count exact)
+packages/game-core test:   ---
+packages/game-core test:   duration_ms: 0.531084
+packages/game-core test:   type: 'test'
+packages/game-core test:   ...
+packages/game-core test: # Subtest: default battle formats carry the G-A1 widened gate
+packages/game-core test: ok 3 - default battle formats carry the G-A1 widened gate
+packages/game-core test:   ---
+packages/game-core test:   duration_ms: 14.184583
+packages/game-core test:   type: 'test'
+packages/game-core test:   ...
+packages/game-core test: # Subtest: an explicit formatAllow still narrows below the widened default
+packages/game-core test: ok 4 - an explicit formatAllow still narrows below the widened default
+packages/game-core test:   ---
+packages/game-core test:   duration_ms: 0.9555
+packages/game-core test:   type: 'test'
+packages/game-core test:   ...
+packages/game-core test: # Subtest: short/empty queue tops up from deterministic scope order (sorted by id)
+packages/game-core test: ok 5 - short/empty queue tops up from deterministic scope order (sorted by id)
+packages/game-core test:   ---
+packages/game-core test:   duration_ms: 0.561208
+packages/game-core test:   type: 'test'
+packages/game-core test:   ...
+packages/game-core test: # Subtest: scope-random kind ignores the queue, draws from scope order (battle-filtered)
+packages/game-core test: ok 6 - scope-random kind ignores the queue, draws from scope order (battle-filtered)
+packages/game-core test:   ---
+packages/game-core test:   duration_ms: 0.213625
+packages/game-core test:   type: 'test'
+packages/game-core test:   ...
+packages/game-core test: # Subtest: scope order alternates vocab and grammar (no same-kind battle clusters)
+packages/game-core test: ok 7 - scope order alternates vocab and grammar (no same-kind battle clusters)
+packages/game-core test:   ---
+packages/game-core test:   duration_ms: 0.386708
+packages/game-core test:   type: 'test'
+packages/game-core test:   ...
+packages/game-core test: # Subtest: stale due ref (not in pool) is skipped
+packages/game-core test: ok 8 - stale due ref (not in pool) is skipped
+packages/game-core test:   ---
+packages/game-core test:   duration_ms: 0.857958
+packages/game-core test:   type: 'test'
+packages/game-core test:   ...
+packages/game-core test: # Subtest: storyItemKey: bare itemId with no variant; itemId\#variant with one (no collision)
+packages/game-core test: ok 9 - storyItemKey: bare itemId with no variant; itemId\#variant with one (no collision)
+packages/game-core test:   ---
+packages/game-core test:   duration_ms: 0.821875
+packages/game-core test:   type: 'test'
+packages/game-core test:   ...
+packages/game-core test: # Subtest: seedStoryFlags: keeps only flags the story declares (stale cross-campaign flags dropped)
+packages/game-core test: ok 10 - seedStoryFlags: keeps only flags the story declares (stale cross-campaign flags dropped)
+packages/game-core test:   ---
+packages/game-core test:   duration_ms: 0.718
+packages/game-core test:   type: 'test'
+packages/game-core test:   ...
+packages/game-core test: # Subtest: tierAtLeast ranks correct > partial > close > wrong
+packages/game-core test: ok 11 - tierAtLeast ranks correct > partial > close > wrong
+packages/game-core test:   ---
+packages/game-core test:   duration_ms: 1.149792
+packages/game-core test:   type: 'test'
+packages/game-core test:   ...
+packages/game-core test: # Subtest: encounters-cleared: all listed encounters must meet minTier
+packages/game-core test: ok 12 - encounters-cleared: all listed encounters must meet minTier
+packages/game-core test:   ---
+packages/game-core test:   duration_ms: 3.224084
+packages/game-core test:   type: 'test'
+packages/game-core test:   ...
+packages/game-core test: # Subtest: due-drained: cleared iff nothing due in scope
+packages/game-core test: ok 13 - due-drained: cleared iff nothing due in scope
+packages/game-core test:   ---
+packages/game-core test:   duration_ms: 1.425417
+packages/game-core test:   type: 'test'
+packages/game-core test:   ...
+packages/game-core test: # Subtest: story-chapter: cleared iff the chapter was completed
+packages/game-core test: ok 14 - story-chapter: cleared iff the chapter was completed
+packages/game-core test:   ---
+packages/game-core test:   duration_ms: 1.143166
+packages/game-core test:   type: 'test'
+packages/game-core test:   ...
+packages/game-core test: 1..14
+packages/game-core test: # tests 14
+packages/game-core test: # suites 0
+packages/game-core test: # pass 14
+packages/game-core test: # fail 0
+packages/game-core test: # cancelled 0
+packages/game-core test: # skipped 0
+packages/game-core test: # todo 0
+packages/game-core test: # duration_ms 284.568083
+packages/game-core test: Done
+packages/game-2d test$ vitest run
+packages/game-paint test$ vitest run
+packages/game-trip test$ node --test "src/test/*.test.ts"
+packages/game-trip test: TAP version 13
+packages/game-trip test: # Subtest: tripCopyFor: distinct skins per trip story; unknown falls back to the original
+packages/game-trip test: ok 1 - tripCopyFor: distinct skins per trip story; unknown falls back to the original
+packages/game-trip test:   ---
+packages/game-trip test:   duration_ms: 1.478375
+packages/game-trip test:   type: 'test'
+packages/game-trip test:   ...
+packages/game-trip test: 1..1
+packages/game-trip test: # tests 1
+packages/game-trip test: # suites 0
+packages/game-trip test: # pass 1
+packages/game-trip test: # fail 0
+packages/game-trip test: # cancelled 0
+packages/game-trip test: # skipped 0
+packages/game-trip test: # todo 0
+packages/game-trip test: # duration_ms 162.492667
+packages/game-trip test: Done
+packages/game-2d test:  RUN  v3.2.6 /Users/veho/Code/domigo-v2-n6/packages/game-2d
+packages/game-paint test:  RUN  v3.2.6 /Users/veho/Code/domigo-v2-n6/packages/game-paint
+packages/game-2d test:  ✓ src/world.test.ts (15 tests) 12ms
+packages/game-2d test:  ✓ src/anim.test.ts (5 tests) 8ms
+packages/game-2d test:  ✓ src/path.test.ts (9 tests) 9ms
+packages/game-2d test:  ✓ src/content-levels.test.ts (2 tests) 19ms
+packages/game-2d test:  ✓ src/battle.test.ts (18 tests) 11ms
+packages/game-2d test:  ✓ src/boss.test.ts (17 tests) 16ms
+packages/game-2d test:  ✓ src/arcade.test.ts (38 tests) 39ms
+packages/game-2d test:  Test Files  7 passed (7)
+packages/game-2d test:       Tests  104 passed (104)
+packages/game-2d test:    Start at  11:19:22
+packages/game-2d test:    Duration  1.37s (transform 586ms, setup 0ms, collect 1.81s, tests 113ms, environment 2ms, prepare 2.54s)
+packages/game-2d test: Done
+packages/game-paint test:  ✓ src/cards/overlay-css.test.ts (48 tests) 1056ms
+packages/game-paint test:  ✓ src/guardian-flight.test.ts (59 tests) 1708ms
+packages/game-paint test:    ✓ her whole body stays in the visible band (readable = seeable) > R5-W2 · H1 · die Buehnen-Klammer haelt auch den DIP auf der Buehne  669ms
+packages/game-paint test:  ✓ src/dismiss-resumes.test.ts (21 tests) 553ms
+packages/game-paint test:  ✓ src/f5-feel.test.ts (38 tests) 577ms
+packages/game-paint test:  ✓ src/level.test.ts (81 tests) 2812ms
+packages/game-paint test:  ✓ src/content-levels.test.ts (2 tests) 3289ms
+packages/game-paint test:    ✓ shipped paint levels > g1.st.lost-pages/paint/ch01.level.json parses and passes the laws  3285ms
+packages/game-paint test:  ✓ src/entities.test.ts (48 tests) 629ms
+packages/game-paint test:  ✓ src/cards/rule-band.test.ts (2 tests) 708ms
+packages/game-paint test:    ✓ R5-W7 · D5 · das Buch-Fenster der Regel-Seite (P6/R196) > das Fenster zeigt nur BILD — kein Papierspalt und kein schwarzer Balken an der Tuschekante  705ms
+packages/game-paint test:  ✓ src/proof-tapes.test.ts (35 tests) 643ms
+packages/game-paint test:  ✓ src/swarm-gauntlet.test.ts (10 tests) 382ms
+packages/game-paint test:    ✓ D-85 · warum ein vierter Schwarm es NICHT löst > ★ KEINE Bestückung des Laufs schafft drei — der Lauf ist zu kurz  375ms
+packages/game-paint test:  ✓ src/ink.test.ts (23 tests) 316ms
+packages/game-paint test:  ✓ src/composition.test.ts (107 tests) 125ms
+packages/game-paint test:  ✓ src/cards/arena.test.ts (16 tests) 131ms
+packages/game-paint test:  ✓ src/awakening.test.ts (31 tests) 185ms
+packages/game-paint test:  ✓ src/audio/door.test.ts (10 tests) 5130ms
+packages/game-paint test:    ✓ R5 · T8 · ein Stück, das niemandem mehr gehört, darf es nicht geben > wer abgebaut ist, fängt nicht mehr an  5001ms
+packages/game-paint test:  ✓ src/air.test.ts (26 tests) 169ms
+packages/game-paint test:  ✓ src/cards/variety.test.ts (25 tests) 91ms
+packages/game-paint test:  ✓ src/terrain.test.ts (12 tests) 186ms
+packages/game-paint test:  ✓ src/cards/ceremony.test.ts (24 tests) 112ms
+packages/game-paint test:  ✓ src/collide.test.ts (40 tests) 77ms
+packages/game-paint test:  ✓ src/return-remembers.test.ts (12 tests) 117ms
+packages/game-paint test:  ✓ src/cue.test.ts (35 tests) 90ms
+packages/game-paint test:  ✓ src/ride-pose.test.ts (5 tests) 58ms
+packages/game-paint test:  ✓ src/audio/coverage.test.ts (11 tests) 21ms
+packages/game-paint test:  ✓ src/fight-drive.test.ts (5 tests) 5984ms
+packages/game-paint test:    ✓ R209d · der Treiber fährt dieselbe Kette und hält bei jedem Wisch > meldet Wisch für Wisch, bis die Tafel sauber ist  5813ms
+packages/game-paint test:  ✓ src/rig.test.ts (39 tests) 129ms
+packages/game-paint test:  ✓ src/player.test.ts (29 tests) 129ms
+packages/game-paint test:  ✓ src/artScope.test.ts (8 tests) 78ms
+packages/game-paint test:  ✓ src/cards/emphasis.test.ts (6 tests) 92ms
+packages/game-paint test:  ✓ src/audio/manifest.test.ts (15 tests) 90ms
+packages/game-paint test:  ✓ src/audio/director.test.ts (25 tests) 32ms
+packages/game-paint test:  ✓ src/checkpoint-silence.test.ts (24 tests) 6840ms
+packages/game-paint test:    ✓ R5-W5 · B4b · checkpoint-placement kennt zwei Seiten > ★ DIESELBE ZELLE, ZWEI DEKLARATIONEN: near grün, far rot  466ms
+packages/game-paint test:    ✓ R5-W5 · B4b · checkpoint-placement kennt zwei Seiten > ★ und spiegelbildlich am fernen Ufer: far grün, near rot  451ms
+packages/game-paint test:    ✓ R5-W5 · B4b · checkpoint-placement kennt zwei Seiten > die Entfernung gilt auf BEIDEN Seiten — ein Anker im Nebenzimmer zählt nicht  716ms
+packages/game-paint test:    ✓ R5-W5 · B4b · checkpoint-placement kennt zwei Seiten > KEINE Deklaration ist ein lauter Fehler, keine stille Vorgabe  404ms
+packages/game-paint test:    ✓ R5-W5 · B4b · checkpoint-placement kennt zwei Seiten > ★ das AUSGELIEFERTE ch01: p1 near · p2 near · p3 near, und kein Verstoß  3987ms
+packages/game-paint test:  ✓ src/cards/auftakt.test.ts (27 tests) 25ms
+packages/game-paint test:  ✓ src/hit-knockback.test.ts (7 tests) 116ms
+packages/game-paint test:  ✓ src/cards/machines.test.ts (103 tests) 67ms
+packages/game-paint test:  ✓ src/burst.test.ts (19 tests) 59ms
+packages/game-paint test:  ✓ src/speaker.test.ts (9 tests) 53ms
+packages/game-paint test:  ✓ src/key-rules.test.ts (14 tests) 71ms
+packages/game-paint test:  ✓ src/slide.test.ts (3 tests) 25ms
+packages/game-paint test:  ✓ src/swing.test.ts (5 tests) 50ms
+packages/game-paint test:  ✓ src/audio/gate.test.ts (11 tests) 76ms
+packages/game-paint test:  ✓ src/breath.test.ts (21 tests) 45ms
+packages/game-paint test:  ✓ src/cards/boss-router.test.ts (5 tests) 39ms
+packages/game-paint test:  ✓ src/audio/teardown.test.ts (5 tests) 7ms
+packages/game-paint test:  ✓ src/pose.test.ts (15 tests) 12ms
+packages/game-paint test:  ✓ src/cards/timer.test.ts (15 tests) 9ms
+packages/game-paint test:  ✓ src/letters.test.ts (11 tests) 17ms
+packages/game-paint test:  ✓ src/audio/settings.test.ts (6 tests) 9ms
+packages/game-paint test:  ✓ src/cards/glance.test.ts (19 tests) 16ms
+packages/game-paint test:  ✓ src/cards/legende.test.ts (17 tests) 11ms
+packages/game-paint test:  ✓ src/cards/portrait.test.ts (13 tests) 10ms
+packages/game-paint test:  ✓ src/hero2.test.ts (9 tests) 8ms
+packages/game-paint test: stdout | src/audio/tape-audio.test.ts > Bandlauf: jedes Ereignis tut, was das Manifest sagt > PROTOKOLL: welcher Klang in welchem Raum, und was bewusst schweigt
+packages/game-paint test: ── Klang-Protokoll der Bänder (/var/folders/63/d9639_n52tb4h8t7psr_l4gc0000gn/T/domigo-tape-audio.log) ──
+packages/game-paint test: p1 (705 Takte, 6 Ereignisse)
+packages/game-paint test:   klingt:    letter-take×2 · page-take×1
+packages/game-paint test:   schweigt:  sim/letters×2 · entity/pickupTaken×1
+packages/game-paint test: p2 (965 Takte, 2 Ereignisse)
+packages/game-paint test:   klingt:    page-take×1
+packages/game-paint test:   schweigt:  entity/pickupTaken×1
+packages/game-paint test: p3 (640 Takte, 8 Ereignisse)
+packages/game-paint test:   klingt:    letter-take×3 · bump×1 · card-open×1
+packages/game-paint test:   schweigt:  sim/letters×3
+packages/game-paint test: p4 (3528 Takte, 4 Ereignisse)
+packages/game-paint test:   klingt:    puff-chalk×1 · bump×1 · card-open×1
+packages/game-paint test:   schweigt:  entity/puff×1
+packages/game-paint test: p9 (498 Takte, 37 Ereignisse)
+packages/game-paint test:   klingt:    cloth-take×4 · puff-chalk×4 · letter-take×12 · letters-all×1 · door-open×1
+packages/game-paint test:   schweigt:  entity/pickupTaken×4 · sim/letters×11
+packages/game-paint test:  ✓ src/audio/tape-audio.test.ts (22 tests) 23ms
+packages/game-paint test:  ✓ src/cards/grade-audio.test.ts (6 tests) 16ms
+packages/game-paint test:  ✓ src/tilePatterns.test.ts (8 tests) 8ms
+packages/game-paint test:  ✓ src/cards/hint-routing.test.ts (25 tests) 9ms
+packages/game-paint test:  ✓ src/paint.test.ts (14 tests) 11ms
+packages/game-paint test:  ✓ src/face-floor.test.ts (9 tests) 9ms
+packages/game-paint test:  ✓ src/camera.test.ts (18 tests) 9ms
+packages/game-paint test:  ✓ src/cards/PaintedIcons.test.ts (18 tests) 46ms
+packages/game-paint test:  ✓ src/ent-size.test.ts (13 tests) 8ms
+packages/game-paint test:  ✓ src/warm.test.ts (18 tests) 9ms
+packages/game-paint test:  ✓ src/marker-edge.test.ts (13 tests) 8ms
+packages/game-paint test:  ✓ src/scribble-tint.test.ts (6 tests) 7ms
+packages/game-paint test:  ✓ src/fist.test.ts (5 tests) 4ms
+packages/game-paint test:  ✓ src/dev/bench-fixture.test.ts (6 tests) 24ms
+packages/game-paint test:  ✓ src/cards/overlay-css-source.test.ts (1 test) 4ms
+packages/game-paint test:  ✓ src/dev/bench-surfaces.test.ts (4 tests) 4ms
+packages/game-paint test:  ✓ src/cards/resolution.test.ts (10 tests) 6ms
+packages/game-paint test:  ✓ src/treasure-render.test.ts (4 tests) 4ms
+packages/game-paint test:  ✓ src/overlay-fit.test.ts (8 tests) 4ms
+packages/game-paint test:  ✓ src/dev/bench-card.test.ts (9 tests) 8ms
+packages/game-paint test:  ✓ src/letter-spread.test.ts (9 tests) 16129ms
+packages/game-paint test:    ✓ R45 · das ausgelieferte ch01 > stottert nirgends mehr  3260ms
+packages/game-paint test:    ✓ R45 · das ausgelieferte ch01 > ein Wort DARF einen Buchstaben zweimal benutzen — nur nicht in einem Atemzug  4716ms
+packages/game-paint test:    ✓ R45 · die Tamper — Kokis eigene Zellen zurückgelegt > p1: das O zurück auf die Stufe (29,14) macht das Gesetz rot  3737ms
+packages/game-paint test:    ✓ R45 · die Tamper — Kokis eigene Zellen zurückgelegt > p9: die beiden O zurück auf eine Reihe (18,8)/(20,8) macht das Gesetz rot  2163ms
+packages/game-paint test:    ✓ R45 · die Tamper — Kokis eigene Zellen zurückgelegt > DISKRIMINIERT: derselbe Griff eine Spalte weiter bleibt grün  2247ms
+packages/game-paint test:  ✓ src/pickups.test.ts (33 tests) 29316ms
+packages/game-paint test:    ✓ the tip-honesty law (doc 41 §7) > the shipped chapter passes it  3076ms
+packages/game-paint test:    ✓ the tip-honesty law (doc 41 §7) > promising a page the chapter does not place turns it RED  4431ms
+packages/game-paint test:    ✓ the tip-honesty law (doc 41 §7) > a page with no Merksatz turns it RED (an empty rule page is a broken promise)  3755ms
+packages/game-paint test:    ✓ the tip-honesty law (doc 41 §7) > two pages of the same rule turn it RED  2032ms
+packages/game-paint test:    ✓ the tip-honesty law (doc 41 §7) > a Merksatz that breaks the register law turns it RED  2115ms
+packages/game-paint test:    ✓ the tip-honesty law (doc 41 §7) > a Schlüssel that is not IN the Merksatz turns it RED (a key that paraphrases is a second rule)  1882ms
+packages/game-paint test:    ✓ the tip-honesty law (doc 41 §7) > a Schlüssel over the card's stroke cap turns it RED  1811ms
+packages/game-paint test:    ✓ the tip-honesty law (doc 41 §7) > a page with no English examples turns it RED  1721ms
+packages/game-paint test:    ✓ the tip-honesty law (doc 41 §7) > a single example turns it RED — a rule shown once is a rule asserted  1582ms
+packages/game-paint test:    ✓ the tip-honesty law (doc 41 §7) > German LETTERS in the English slot turn it RED  1794ms
+packages/game-paint test:    ✓ the tip-honesty law (doc 41 §7) > a page with no Beleg turns it RED (the teacher's view and the register still need the unit page)  1653ms
+packages/game-paint test:    ✓ the tip-honesty law (doc 41 §7) > ★ the five laws that arrived with Koki's ruling K-1, each proven RED  1770ms
+packages/game-paint test:    ✓ the tip-honesty law (doc 41 §7) > a Regel-Seite placed where no child can reach it turns entity-reachable RED  1609ms
+packages/game-paint test:  Test Files  74 passed (74)
+packages/game-paint test:       Tests  1465 passed (1465)
+packages/game-paint test:    Start at  11:19:22
+packages/game-paint test:    Duration  31.48s (transform 4.31s, setup 0ms, collect 20.17s, tests 78.93s, environment 15ms, prepare 13.11s)
+packages/game-paint test: Done
+apps/web test$ node --test "lib/*.test.ts"
+apps/web test: TAP version 13
+apps/web test: # (node:14154) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/veho/Code/domigo-v2-n6/apps/web/lib/auftakt.test.ts is not specified and it doesn't parse as CommonJS.
+apps/web test: # Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+apps/web test: # To eliminate this warning, add "type": "module" to /Users/veho/Code/domigo-v2-n6/apps/web/package.json.
+apps/web test: # (Use `node --trace-warnings ...` to show where the warning was created)
+apps/web test: # Subtest: R5-W2 · J1-B · has this child read the opening?
+apps/web test:     # Subtest: an unseen chapter is not seen; a remembered one is
+apps/web test:     ok 1 - an unseen chapter is not seen; a remembered one is
+apps/web test:       ---
+apps/web test:       duration_ms: 1.055958
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: is per CHAPTER — reading ch01's opening does not skip ch02's
+apps/web test:     ok 2 - is per CHAPTER — reading ch01's opening does not skip ch02's
+apps/web test:       ---
+apps/web test:       duration_ms: 0.365583
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: is idempotent — a chapter is remembered once, not appended forever
+apps/web test:     ok 3 - is idempotent — a chapter is remembered once, not appended forever
+apps/web test:       ---
+apps/web test:       duration_ms: 0.811583
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: survives corrupt JSON, a wrong version and a wrong shape — answering SHOW
+apps/web test:     ok 4 - survives corrupt JSON, a wrong version and a wrong shape — answering SHOW
+apps/web test:       ---
+apps/web test:       duration_ms: 0.520541
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: survives a THROWING localStorage (private mode) without breaking the run
+apps/web test:     ok 5 - survives a THROWING localStorage (private mode) without breaking the run
+apps/web test:       ---
+apps/web test:       duration_ms: 40.31925
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: answers SHOW with no window at all (the SSR pass)
+apps/web test:     ok 6 - answers SHOW with no window at all (the SSR pass)
+apps/web test:       ---
+apps/web test:       duration_ms: 20.366583
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     1..6
+apps/web test: ok 1 - R5-W2 · J1-B · has this child read the opening?
+apps/web test:   ---
+apps/web test:   duration_ms: 71.808041
+apps/web test:   type: 'suite'
+apps/web test:   ...
+apps/web test: # (node:14155) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/veho/Code/domigo-v2-n6/apps/web/lib/checkup.test.ts is not specified and it doesn't parse as CommonJS.
+apps/web test: # Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+apps/web test: # To eliminate this warning, add "type": "module" to /Users/veho/Code/domigo-v2-n6/apps/web/package.json.
+apps/web test: # (Use `node --trace-warnings ...` to show where the warning was created)
+apps/web test: # Subtest: GRADE_STRUCTURES — the §4 presets
+apps/web test:     # Subtest: every grade preset sums to exactly 20
+apps/web test:     ok 1 - every grade preset sums to exactly 20
+apps/web test:       ---
+apps/web test:       duration_ms: 0.90425
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: no active preset contains the deferred picture-mc kind
+apps/web test:     ok 2 - no active preset contains the deferred picture-mc kind
+apps/web test:       ---
+apps/web test:       duration_ms: 0.350667
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     1..2
+apps/web test: ok 2 - GRADE_STRUCTURES — the §4 presets
+apps/web test:   ---
+apps/web test:   duration_ms: 2.815209
+apps/web test:   type: 'suite'
+apps/web test:   ...
+apps/web test: # Subtest: composeCheckup — real corpus, every approved unit
+apps/web test:     # Subtest: every grade preset composes to exactly 20 against every approved unit
+apps/web test:     ok 1 - every grade preset composes to exactly 20 against every approved unit
+apps/web test:       ---
+apps/web test:       duration_ms: 503.661417
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: is deterministic under the same seed (g2-u06, the §8 calibration unit)
+apps/web test:     ok 2 - is deterministic under the same seed (g2-u06, the §8 calibration unit)
+apps/web test:       ---
+apps/web test:       duration_ms: 14.065667
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: excludes reserved items (J-1: the mock vault stays fresh)
+apps/web test:     ok 3 - excludes reserved items (J-1: the mock vault stays fresh)
+apps/web test:       ---
+apps/web test:       duration_ms: 11.329875
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: fails LOUDLY with the per-section shortfall, never silently thinner (§5.4)
+apps/web test:     ok 4 - fails LOUDLY with the per-section shortfall, never silently thinner (§5.4)
+apps/web test:       ---
+apps/web test:       duration_ms: 6.582292
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: g3's rewrite-weighted section actually prefers transformation-family formats
+apps/web test:     ok 5 - g3's rewrite-weighted section actually prefers transformation-family formats
+apps/web test:       ---
+apps/web test:       duration_ms: 11.687584
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     1..5
+apps/web test: ok 3 - composeCheckup — real corpus, every approved unit
+apps/web test:   ---
+apps/web test:   duration_ms: 548.294291
+apps/web test:   type: 'suite'
+apps/web test:   ...
+apps/web test: # (node:14156) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/veho/Code/domigo-v2-n6/apps/web/lib/grade-scope.test.ts is not specified and it doesn't parse as CommonJS.
+apps/web test: # Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+apps/web test: # To eliminate this warning, add "type": "module" to /Users/veho/Code/domigo-v2-n6/apps/web/package.json.
+apps/web test: # (Use `node --trace-warnings ...` to show where the warning was created)
+apps/web test: # Subtest: visibleGradesFor — a child sees its own school year only
+apps/web test:     # Subtest: narrows a resolved grade to exactly that year (the g2 student)
+apps/web test:     ok 1 - narrows a resolved grade to exactly that year (the g2 student)
+apps/web test:       ---
+apps/web test:       duration_ms: 1.370416
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: narrows every one of the four years the same way
+apps/web test:     ok 2 - narrows every one of the four years the same way
+apps/web test:       ---
+apps/web test:       duration_ms: 0.15275
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: opens ALL four years when the grade is null — teacher, no player, or a DB hiccup
+apps/web test:     ok 3 - opens ALL four years when the grade is null — teacher, no player, or a DB hiccup
+apps/web test:       ---
+apps/web test:       duration_ms: 0.267625
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: never returns an empty scope (a child must never face a blank page)
+apps/web test:     ok 4 - never returns an empty scope (a child must never face a blank page)
+apps/web test:       ---
+apps/web test:       duration_ms: 0.164833
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: returns a fresh array, so a caller cannot mutate ALL_GRADES
+apps/web test:     ok 5 - returns a fresh array, so a caller cannot mutate ALL_GRADES
+apps/web test:       ---
+apps/web test:       duration_ms: 0.229875
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     1..5
+apps/web test: ok 4 - visibleGradesFor — a child sees its own school year only
+apps/web test:   ---
+apps/web test:   duration_ms: 3.161792
+apps/web test:   type: 'suite'
+apps/web test:   ...
+apps/web test: # Subtest: gradeOfSlug — the year a unit slug belongs to
+apps/web test:     # Subtest: reads the year off a normal unit slug
+apps/web test:     ok 1 - reads the year off a normal unit slug
+apps/web test:       ---
+apps/web test:       duration_ms: 0.242458
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: returns null for a slug that carries no year
+apps/web test:     ok 2 - returns null for a slug that carries no year
+apps/web test:       ---
+apps/web test:       duration_ms: 0.330334
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     1..2
+apps/web test: ok 5 - gradeOfSlug — the year a unit slug belongs to
+apps/web test:   ---
+apps/web test:   duration_ms: 1.135375
+apps/web test:   type: 'suite'
+apps/web test:   ...
+apps/web test: # Subtest: isSlugAllowed — the deep-link gate
+apps/web test:     # Subtest: lets the g2 student into a g2 unit
+apps/web test:     ok 1 - lets the g2 student into a g2 unit
+apps/web test:       ---
+apps/web test:       duration_ms: 1.223708
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: keeps the g2 student out of a g4 unit (the deep-link that must redirect)
+apps/web test:     ok 2 - keeps the g2 student out of a g4 unit (the deep-link that must redirect)
+apps/web test:       ---
+apps/web test:       duration_ms: 0.276917
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: lets a teacher (grade null) into every year
+apps/web test:     ok 3 - lets a teacher (grade null) into every year
+apps/web test:       ---
+apps/web test:       duration_ms: 1.116583
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: never hides a slug it cannot classify
+apps/web test:     ok 4 - never hides a slug it cannot classify
+apps/web test:       ---
+apps/web test:       duration_ms: 0.180917
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     1..4
+apps/web test: ok 6 - isSlugAllowed — the deep-link gate
+apps/web test:   ---
+apps/web test:   duration_ms: 3.195667
+apps/web test:   type: 'suite'
+apps/web test:   ...
+apps/web test: # Subtest: die /play-Entscheidung — welche Geschichten ein Kind sieht
+apps/web test:     # Subtest: das Stufe-2-Kind sieht GENAU seine Geschichte, keine der anderen drei
+apps/web test:     ok 1 - das Stufe-2-Kind sieht GENAU seine Geschichte, keine der anderen drei
+apps/web test:       ---
+apps/web test:       duration_ms: 0.247417
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: jede Stufe bekommt ihre eigene, und nur ihre eigene
+apps/web test:     ok 2 - jede Stufe bekommt ihre eigene, und nur ihre eigene
+apps/web test:       ---
+apps/web test:       duration_ms: 0.253542
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: die Lehrkraft (Stufe null) behält alle vier — die Vorschau ist ihr Arbeitsmittel
+apps/web test:     ok 3 - die Lehrkraft (Stufe null) behält alle vier — die Vorschau ist ihr Arbeitsmittel
+apps/web test:       ---
+apps/web test:       duration_ms: 0.073166
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: null zeigt weiter ALLES: zu viel zeigen ist kosmetisch, nichts zeigen wäre eine tote Seite
+apps/web test:     ok 4 - null zeigt weiter ALLES: zu viel zeigen ist kosmetisch, nichts zeigen wäre eine tote Seite
+apps/web test:       ---
+apps/web test:       duration_ms: 0.084667
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: der Tiefen-Link: /play/1 ist für das Stufe-2-Kind AUSSER Reichweite, /play/2 nicht
+apps/web test:     ok 5 - der Tiefen-Link: /play/1 ist für das Stufe-2-Kind AUSSER Reichweite, /play/2 nicht
+apps/web test:       ---
+apps/web test:       duration_ms: 0.065334
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: das Ziel der Umleitung existiert immer — der Bereich ist nie leer
+apps/web test:     ok 6 - das Ziel der Umleitung existiert immer — der Bereich ist nie leer
+apps/web test:       ---
+apps/web test:       duration_ms: 0.073625
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: eine Stufe ohne veröffentlichte Geschichte ergibt eine LEERE Liste, nie eine fremde
+apps/web test:     ok 7 - eine Stufe ohne veröffentlichte Geschichte ergibt eine LEERE Liste, nie eine fremde
+apps/web test:       ---
+apps/web test:       duration_ms: 0.15925
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     1..7
+apps/web test: ok 7 - die /play-Entscheidung — welche Geschichten ein Kind sieht
+apps/web test:   ---
+apps/web test:   duration_ms: 1.173875
+apps/web test:   type: 'suite'
+apps/web test:   ...
+apps/web test: # (node:14157) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/veho/Code/domigo-v2-n6/apps/web/lib/grandmaster.test.ts is not specified and it doesn't parse as CommonJS.
+apps/web test: # Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+apps/web test: # To eliminate this warning, add "type": "module" to /Users/veho/Code/domigo-v2-n6/apps/web/package.json.
+apps/web test: # (Use `node --trace-warnings ...` to show where the warning was created)
+apps/web test: # Subtest: isGrandmaster — the rank is granted ONLY by the env allowlist
+apps/web test:     # Subtest: grants the rank to a single listed id
+apps/web test:     ok 1 - grants the rank to a single listed id
+apps/web test:       ---
+apps/web test:       duration_ms: 1.062417
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: grants it to EVERY id of a comma-separated list, and to nobody else
+apps/web test:     ok 2 - grants it to EVERY id of a comma-separated list, and to nobody else
+apps/web test:       ---
+apps/web test:       duration_ms: 0.295791
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: tolerates whitespace, empty entries and a trailing comma
+apps/web test:     ok 3 - tolerates whitespace, empty entries and a trailing comma
+apps/web test:       ---
+apps/web test:       duration_ms: 0.694542
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: ignores letter case on BOTH sides — a uuid pasted in caps is the same id
+apps/web test:     ok 4 - ignores letter case on BOTH sides — a uuid pasted in caps is the same id
+apps/web test:       ---
+apps/web test:       duration_ms: 28.61875
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: grants the rank to NOBODY when the variable is unset (fail closed)
+apps/web test:     ok 5 - grants the rank to NOBODY when the variable is unset (fail closed)
+apps/web test:       ---
+apps/web test:       duration_ms: 2.591458
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: grants the rank to NOBODY when the variable is empty or only separators
+apps/web test:     ok 6 - grants the rank to NOBODY when the variable is empty or only separators
+apps/web test:       ---
+apps/web test:       duration_ms: 0.4145
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: never grants the rank to an unresolved identity, even against a list
+apps/web test:     ok 7 - never grants the rank to an unresolved identity, even against a list
+apps/web test:       ---
+apps/web test:       duration_ms: 16.314833
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: re-reads the variable on EVERY call (emptying it really does close the door)
+apps/web test:     ok 8 - re-reads the variable on EVERY call (emptying it really does close the door)
+apps/web test:       ---
+apps/web test:       duration_ms: 0.290916
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     1..8
+apps/web test: ok 8 - isGrandmaster — the rank is granted ONLY by the env allowlist
+apps/web test:   ---
+apps/web test:   duration_ms: 51.461541
+apps/web test:   type: 'suite'
+apps/web test:   ...
+apps/web test: # (node:14158) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/veho/Code/domigo-v2-n6/apps/web/lib/hoeren.test.ts is not specified and it doesn't parse as CommonJS.
+apps/web test: # Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+apps/web test: # To eliminate this warning, add "type": "module" to /Users/veho/Code/domigo-v2-n6/apps/web/package.json.
+apps/web test: # (Use `node --trace-warnings ...` to show where the warning was created)
+apps/web test: # Subtest: ohneSprechtextFuersKind — der Loesungstext faehrt nicht mit
+apps/web test:     # Subtest: haelt den Sprechtext zurueck, sobald es eine Aufnahme gibt
+apps/web test:     ok 1 - haelt den Sprechtext zurueck, sobald es eine Aufnahme gibt
+apps/web test:       ---
+apps/web test:       duration_ms: 0.8825
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: laesst den Sprechtext drin, wenn es KEINE Aufnahme gibt (sonst waere die Aufgabe stumm)
+apps/web test:     ok 2 - laesst den Sprechtext drin, wenn es KEINE Aufnahme gibt (sonst waere die Aufgabe stumm)
+apps/web test:       ---
+apps/web test:       duration_ms: 0.129167
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: gibt den Pfad und die Stimme unveraendert weiter — der Abspieler braucht beides
+apps/web test:     ok 3 - gibt den Pfad und die Stimme unveraendert weiter — der Abspieler braucht beides
+apps/web test:       ---
+apps/web test:       duration_ms: 0.121166
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: ist eine POSITIV-Liste: was nicht genannt ist, faehrt nicht mit
+apps/web test:     ok 4 - ist eine POSITIV-Liste: was nicht genannt ist, faehrt nicht mit
+apps/web test:       ---
+apps/web test:       duration_ms: 0.763125
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: laesst in KEINEM Fall den Text irgendwo anders im Ergebnis stehen
+apps/web test:     ok 5 - laesst in KEINEM Fall den Text irgendwo anders im Ergebnis stehen
+apps/web test:       ---
+apps/web test:       duration_ms: 0.164542
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     1..5
+apps/web test: ok 9 - ohneSprechtextFuersKind — der Loesungstext faehrt nicht mit
+apps/web test:   ---
+apps/web test:   duration_ms: 3.154667
+apps/web test:   type: 'suite'
+apps/web test:   ...
+apps/web test: # Subtest: downloadName — ein sprechender Name fuer den Ordner der Lehrkraft
+apps/web test:     # Subtest: baut Einheit + Aufgabe + Zweck zusammen
+apps/web test:     ok 1 - baut Einheit + Aufgabe + Zweck zusammen
+apps/web test:       ---
+apps/web test:       duration_ms: 0.293458
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: traegt nie einen Pfadtrenner (ein Download-Name ist ein Name, kein Pfad)
+apps/web test:     ok 2 - traegt nie einen Pfadtrenner (ein Download-Name ist ein Name, kein Pfad)
+apps/web test:       ---
+apps/web test:       duration_ms: 0.321375
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: unterscheidet zwei Aufgaben derselben Einheit
+apps/web test:     ok 3 - unterscheidet zwei Aufgaben derselben Einheit
+apps/web test:       ---
+apps/web test:       duration_ms: 0.494042
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     1..3
+apps/web test: ok 10 - downloadName — ein sprechender Name fuer den Ordner der Lehrkraft
+apps/web test:   ---
+apps/web test:   duration_ms: 1.527458
+apps/web test:   type: 'suite'
+apps/web test:   ...
+apps/web test: # Subtest: woerterZaehlen
+apps/web test:     # Subtest: zaehlt Woerter, nicht Leerraum
+apps/web test:     ok 1 - zaehlt Woerter, nicht Leerraum
+apps/web test:       ---
+apps/web test:       duration_ms: 0.275042
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     1..1
+apps/web test: ok 11 - woerterZaehlen
+apps/web test:   ---
+apps/web test:   duration_ms: 0.674333
+apps/web test:   type: 'suite'
+apps/web test:   ...
+apps/web test: # Subtest: hoerStueckeFuerStufe — der echte Bestand
+apps/web test:     # Subtest: liefert nur Einheiten der eigenen Stufe
+apps/web test:     ok 1 - liefert nur Einheiten der eigenen Stufe
+apps/web test:       ---
+apps/web test:       duration_ms: 0.225792
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: liest den Sprechtext WOERTLICH aus dem Bestand — nicht leer, nicht gekuerzt
+apps/web test:     ok 2 - liest den Sprechtext WOERTLICH aus dem Bestand — nicht leer, nicht gekuerzt
+apps/web test:       ---
+apps/web test:       duration_ms: 0.216083
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: nennt jede Aufnahme mit wurzel-absolutem Pfad (der K5a-Datei-Kontrakt)
+apps/web test:     ok 3 - nennt jede Aufnahme mit wurzel-absolutem Pfad (der K5a-Datei-Kontrakt)
+apps/web test:       ---
+apps/web test:       duration_ms: 0.088834
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: meldet keine unlesbare Einheit auf einem gesunden Bestand
+apps/web test:     ok 4 - meldet keine unlesbare Einheit auf einem gesunden Bestand
+apps/web test:       ---
+apps/web test:       duration_ms: 0.068125
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: mischt keine fremde Stufe hinein
+apps/web test:     ok 5 - mischt keine fremde Stufe hinein
+apps/web test:       ---
+apps/web test:       duration_ms: 2.319
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     1..5
+apps/web test: ok 12 - hoerStueckeFuerStufe — der echte Bestand
+apps/web test:   ---
+apps/web test:   duration_ms: 3.123167
+apps/web test:   type: 'suite'
+apps/web test:   ...
+apps/web test: # Subtest: dauerSchaetzung — grob, gerundet, als Schaetzung beschriftet
+apps/web test:     # Subtest: nennt sehr kurze Stuecke ehrlich »unter 1 Min.«
+apps/web test:     ok 1 - nennt sehr kurze Stuecke ehrlich »unter 1 Min.«
+apps/web test:       ---
+apps/web test:       duration_ms: 0.149541
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: rundet auf halbe Minuten, mit deutschem Komma
+apps/web test:     ok 2 - rundet auf halbe Minuten, mit deutschem Komma
+apps/web test:       ---
+apps/web test:       duration_ms: 0.070583
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: waechst monoton — mehr Woerter sind nie weniger Zeit
+apps/web test:     ok 3 - waechst monoton — mehr Woerter sind nie weniger Zeit
+apps/web test:       ---
+apps/web test:       duration_ms: 0.138541
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     1..3
+apps/web test: ok 13 - dauerSchaetzung — grob, gerundet, als Schaetzung beschriftet
+apps/web test:   ---
+apps/web test:   duration_ms: 0.600917
+apps/web test:   type: 'suite'
+apps/web test:   ...
+apps/web test: # (node:14159) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/veho/Code/domigo-v2-n6/apps/web/lib/levels.test.ts is not specified and it doesn't parse as CommonJS.
+apps/web test: # Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+apps/web test: # To eliminate this warning, add "type": "module" to /Users/veho/Code/domigo-v2-n6/apps/web/package.json.
+apps/web test: # (Use `node --trace-warnings ...` to show where the warning was created)
+apps/web test: # Subtest: die Kurve — jede Schwelle als Grenzwert-Paar
+apps/web test:     # Subtest: trägt die 20 Schwellen der Studie, in genau dieser Reihenfolge
+apps/web test:     ok 1 - trägt die 20 Schwellen der Studie, in genau dieser Reihenfolge
+apps/web test:       ---
+apps/web test:       duration_ms: 2.315667
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: hebt an JEDER Schwelle um genau eine Stufe — und keinen Punkt früher
+apps/web test:     ok 2 - hebt an JEDER Schwelle um genau eine Stufe — und keinen Punkt früher
+apps/web test:       ---
+apps/web test:       duration_ms: 3.551375
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: beginnt bei null Punkten auf Level 1 und lässt sich nicht unter null drücken
+apps/web test:     ok 3 - beginnt bei null Punkten auf Level 1 und lässt sich nicht unter null drücken
+apps/web test:       ---
+apps/web test:       duration_ms: 0.185625
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: zählt die Punkte über der Schwelle und die Punkte bis zur nächsten
+apps/web test:     ok 4 - zählt die Punkte über der Schwelle und die Punkte bis zur nächsten
+apps/web test:       ---
+apps/web test:       duration_ms: 0.128125
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: führt von Level 19 aus auf die 30.000 zu
+apps/web test:     ok 5 - führt von Level 19 aus auf die 30.000 zu
+apps/web test:       ---
+apps/web test:       duration_ms: 0.240583
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     1..5
+apps/web test: ok 14 - die Kurve — jede Schwelle als Grenzwert-Paar
+apps/web test:   ---
+apps/web test:   duration_ms: 7.869459
+apps/web test:   type: 'suite'
+apps/web test:   ...
+apps/web test: # Subtest: die Zonen — die Farbe der Pill
+apps/web test:     # Subtest: teilt die Leiter in Fünferblöcke (Studie :225)
+apps/web test:     ok 1 - teilt die Leiter in Fünferblöcke (Studie :225)
+apps/web test:       ---
+apps/web test:       duration_ms: 0.140667
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: gibt jedem Zonen-Wechsel seinen Grenzwert
+apps/web test:     ok 2 - gibt jedem Zonen-Wechsel seinen Grenzwert
+apps/web test:       ---
+apps/web test:       duration_ms: 0.861208
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     1..2
+apps/web test: ok 15 - die Zonen — die Farbe der Pill
+apps/web test:   ---
+apps/web test:   duration_ms: 1.637542
+apps/web test:   type: 'suite'
+apps/web test:   ...
+apps/web test: # Subtest: Prestige — die zweite Achse über dem Deckel
+apps/web test:     # Subtest: trägt die fünf Schwellen der Studie
+apps/web test:     ok 1 - trägt die fünf Schwellen der Studie
+apps/web test:       ---
+apps/web test:       duration_ms: 3.206625
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: macht die 30.000 zu Level 20 UND zum ersten Prestige-Rang
+apps/web test:     ok 2 - macht die 30.000 zu Level 20 UND zum ersten Prestige-Rang
+apps/web test:       ---
+apps/web test:       duration_ms: 0.323292
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: hebt an jeder Prestige-Schwelle um genau einen Rang — und keinen Punkt früher
+apps/web test:     ok 3 - hebt an jeder Prestige-Schwelle um genau einen Rang — und keinen Punkt früher
+apps/web test:       ---
+apps/web test:       duration_ms: 5.118084
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: setzt einen Stern je Rang, und unter Prestige keinen
+apps/web test:     ok 4 - setzt einen Stern je Rang, und unter Prestige keinen
+apps/web test:       ---
+apps/web test:       duration_ms: 0.193958
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     1..4
+apps/web test: ok 16 - Prestige — die zweite Achse über dem Deckel
+apps/web test:   ---
+apps/web test:   duration_ms: 9.264542
+apps/web test:   type: 'suite'
+apps/web test:   ...
+apps/web test: # Subtest: der Deckel — wo es nichts mehr zu erreichen gibt
+apps/web test:     # Subtest: lässt xpToNext NUR am absoluten Deckel auf null fallen
+apps/web test:     ok 1 - lässt xpToNext NUR am absoluten Deckel auf null fallen
+apps/web test:       ---
+apps/web test:       duration_ms: 0.127333
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: hat unterhalb des Deckels IMMER eine Restzahl
+apps/web test:     ok 2 - hat unterhalb des Deckels IMMER eine Restzahl
+apps/web test:       ---
+apps/web test:       duration_ms: 3.004958
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: füllt den Balken am Deckel ganz
+apps/web test:     ok 3 - füllt den Balken am Deckel ganz
+apps/web test:       ---
+apps/web test:       duration_ms: 0.192291
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     1..3
+apps/web test: ok 17 - der Deckel — wo es nichts mehr zu erreichen gibt
+apps/web test:   ---
+apps/web test:   duration_ms: 3.4725
+apps/web test:   type: 'suite'
+apps/web test:   ...
+apps/web test: # Subtest: das Register — welche Leiter ein Kind liest
+apps/web test:     # Subtest: gibt der 1. Klasse die sanfte Leiter, allen anderen die Gamer-Leiter
+apps/web test:     ok 1 - gibt der 1. Klasse die sanfte Leiter, allen anderen die Gamer-Leiter
+apps/web test:       ---
+apps/web test:       duration_ms: 0.119125
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: fällt bei unbekannter Stufe auf die Gamer-Leiter zurück — die Mehrheit
+apps/web test:     ok 2 - fällt bei unbekannter Stufe auf die Gamer-Leiter zurück — die Mehrheit
+apps/web test:       ---
+apps/web test:       duration_ms: 0.064708
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     1..2
+apps/web test: ok 18 - das Register — welche Leiter ein Kind liest
+apps/web test:   ---
+apps/web test:   duration_ms: 0.414875
+apps/web test:   type: 'suite'
+apps/web test:   ...
+apps/web test: # Subtest: Vokabel-Titel — byte-gleich mit der Studie (:234-253 / :260-279)
+apps/web test:     # Subtest: liest die sanfte Leiter der 1. Klasse
+apps/web test:     ok 1 - liest die sanfte Leiter der 1. Klasse
+apps/web test:       ---
+apps/web test:       duration_ms: 0.209
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: liest die Gamer-Leiter der 2. bis 4. Klasse
+apps/web test:     ok 2 - liest die Gamer-Leiter der 2. bis 4. Klasse
+apps/web test:       ---
+apps/web test:       duration_ms: 0.20475
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: hält die beiden Leitern dort auseinander, wo sie sich unterscheiden
+apps/web test:     ok 3 - hält die beiden Leitern dort auseinander, wo sie sich unterscheiden
+apps/web test:       ---
+apps/web test:       duration_ms: 0.255917
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: friert den Titel am Deckel ein und zieht nur die Vibe-Zeile mit (:222/:254)
+apps/web test:     ok 4 - friert den Titel am Deckel ein und zieht nur die Vibe-Zeile mit (:222/:254)
+apps/web test:       ---
+apps/web test:       duration_ms: 0.30925
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     1..4
+apps/web test: ok 19 - Vokabel-Titel — byte-gleich mit der Studie (:234-253 / :260-279)
+apps/web test:   ---
+apps/web test:   duration_ms: 7.392542
+apps/web test:   type: 'suite'
+apps/web test:   ...
+apps/web test: # Subtest: Grammatik-Titel — eigener Topf, gleiche Schwellen (:288-301)
+apps/web test:     # Subtest: liest die Leiter, die alle vier Klassen teilen
+apps/web test:     ok 1 - liest die Leiter, die alle vier Klassen teilen
+apps/web test:       ---
+apps/web test:       duration_ms: 2.402792
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: weicht NUR auf Stufe 1 zwischen den Registern ab (:284-285)
+apps/web test:     ok 2 - weicht NUR auf Stufe 1 zwischen den Registern ab (:284-285)
+apps/web test:       ---
+apps/web test:       duration_ms: 0.553333
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: friert auch hier am Deckel ein
+apps/web test:     ok 3 - friert auch hier am Deckel ein
+apps/web test:       ---
+apps/web test:       duration_ms: 0.091833
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     1..3
+apps/web test: ok 20 - Grammatik-Titel — eigener Topf, gleiche Schwellen (:288-301)
+apps/web test:   ---
+apps/web test:   duration_ms: 3.27575
+apps/web test:   type: 'suite'
+apps/web test:   ...
+apps/web test: # Subtest: die Gesamt-Leiter — Vokabel plus Grammatik (:306-315)
+apps/web test:     # Subtest: nennt auf jeder Schwelle Namen, Zone und Vibe-Zeile byte-gleich
+apps/web test:     ok 1 - nennt auf jeder Schwelle Namen, Zone und Vibe-Zeile byte-gleich
+apps/web test:       ---
+apps/web test:       duration_ms: 0.811542
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: hebt an jeder Schwelle um genau eine Stufe — und keinen Punkt früher
+apps/web test:     ok 2 - hebt an jeder Schwelle um genau eine Stufe — und keinen Punkt früher
+apps/web test:       ---
+apps/web test:       duration_ms: 0.16175
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: hat auf der letzten Sprosse kein Danach mehr
+apps/web test:     ok 3 - hat auf der letzten Sprosse kein Danach mehr
+apps/web test:       ---
+apps/web test:       duration_ms: 0.09075
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     1..3
+apps/web test: ok 21 - die Gesamt-Leiter — Vokabel plus Grammatik (:306-315)
+apps/web test:   ---
+apps/web test:   duration_ms: 1.179667
+apps/web test:   type: 'suite'
+apps/web test:   ...
+apps/web test: # Subtest: die Zahlen, wie das Kind sie liest
+apps/web test:     # Subtest: setzt den englischen Tausender-Trenner (:511)
+apps/web test:     ok 1 - setzt den englischen Tausender-Trenner (:511)
+apps/web test:       ---
+apps/web test:       duration_ms: 74.643959
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     1..1
+apps/web test: ok 22 - die Zahlen, wie das Kind sie liest
+apps/web test:   ---
+apps/web test:   duration_ms: 74.747458
+apps/web test:   type: 'suite'
+apps/web test:   ...
+apps/web test: # (node:14160) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/veho/Code/domigo-v2-n6/apps/web/lib/mailer.test.ts is not specified and it doesn't parse as CommonJS.
+apps/web test: # Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+apps/web test: # To eliminate this warning, add "type": "module" to /Users/veho/Code/domigo-v2-n6/apps/web/package.json.
+apps/web test: # (Use `node --trace-warnings ...` to show where the warning was created)
+apps/web test: # Subtest: mailerState — fail-closed until it is actually configured
+apps/web test:     # Subtest: is off with nothing set
+apps/web test:     ok 1 - is off with nothing set
+apps/web test:       ---
+apps/web test:       duration_ms: 1.739958
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: is off with a key but no sender — half a configuration is not one
+apps/web test:     ok 2 - is off with a key but no sender — half a configuration is not one
+apps/web test:       ---
+apps/web test:       duration_ms: 0.304792
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: is off when the values are only whitespace
+apps/web test:     ok 3 - is off when the values are only whitespace
+apps/web test:       ---
+apps/web test:       duration_ms: 0.202834
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: uses Brevo once both are set, and falls back to a sender name
+apps/web test:     ok 4 - uses Brevo once both are set, and falls back to a sender name
+apps/web test:       ---
+apps/web test:       duration_ms: 1.200375
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     1..4
+apps/web test: ok 23 - mailerState — fail-closed until it is actually configured
+apps/web test:   ---
+apps/web test:   duration_ms: 4.655209
+apps/web test:   type: 'suite'
+apps/web test:   ...
+apps/web test: # Subtest: the dev transport is inert on production
+apps/web test:     # Subtest: writes to the log when the deployment is not production
+apps/web test:     ok 1 - writes to the log when the deployment is not production
+apps/web test:       ---
+apps/web test:       duration_ms: 0.586833
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: is IGNORED on production, even if someone sets it there
+apps/web test:     ok 2 - is IGNORED on production, even if someone sets it there
+apps/web test:       ---
+apps/web test:       duration_ms: 0.181917
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     1..2
+apps/web test: ok 24 - the dev transport is inert on production
+apps/web test:   ---
+apps/web test:   duration_ms: 0.986625
+apps/web test:   type: 'suite'
+apps/web test:   ...
+apps/web test: # Subtest: buildResetMail
+apps/web test:     # Subtest: carries the link and says how long it lives
+apps/web test:     ok 1 - carries the link and says how long it lives
+apps/web test:       ---
+apps/web test:       duration_ms: 0.258208
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: carries NO PIN — not the old one, not a new one, not any digit run that could be one
+apps/web test:     ok 2 - carries NO PIN — not the old one, not a new one, not any digit run that could be one
+apps/web test:       ---
+apps/web test:       duration_ms: 0.225208
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: tells someone who did not ask that ignoring it is enough
+apps/web test:     ok 3 - tells someone who did not ask that ignoring it is enough
+apps/web test:       ---
+apps/web test:       duration_ms: 0.276291
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: is pure — same input, same bytes
+apps/web test:     ok 4 - is pure — same input, same bytes
+apps/web test:       ---
+apps/web test:       duration_ms: 0.228583
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     1..4
+apps/web test: ok 25 - buildResetMail
+apps/web test:   ---
+apps/web test:   duration_ms: 1.278416
+apps/web test:   type: 'suite'
+apps/web test:   ...
+apps/web test: # Subtest: sendMail
+apps/web test:     # Subtest: sends nothing, and says so, when nothing is configured
+apps/web test:     ok 1 - sends nothing, and says so, when nothing is configured
+apps/web test:       ---
+apps/web test:       duration_ms: 0.264583
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: writes the whole message to the log on the dev transport, and touches no network
+apps/web test:     ok 2 - writes the whole message to the log on the dev transport, and touches no network
+apps/web test:       ---
+apps/web test:       duration_ms: 0.190583
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: posts to Brevo with the key in the header and the text in the body
+apps/web test:     ok 3 - posts to Brevo with the key in the header and the text in the body
+apps/web test:       ---
+apps/web test:       duration_ms: 74.769916
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: reports a refusal as false instead of throwing — the caller must answer either way
+apps/web test:     ok 4 - reports a refusal as false instead of throwing — the caller must answer either way
+apps/web test:       ---
+apps/web test:       duration_ms: 0.636625
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: survives a network throw the same way
+apps/web test:     ok 5 - survives a network throw the same way
+apps/web test:       ---
+apps/web test:       duration_ms: 0.328333
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     1..5
+apps/web test: ok 26 - sendMail
+apps/web test:   ---
+apps/web test:   duration_ms: 76.396333
+apps/web test:   type: 'suite'
+apps/web test:   ...
+apps/web test: # (node:14161) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/veho/Code/domigo-v2-n6/apps/web/lib/ops.test.ts is not specified and it doesn't parse as CommonJS.
+apps/web test: # Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+apps/web test: # To eliminate this warning, add "type": "module" to /Users/veho/Code/domigo-v2-n6/apps/web/package.json.
+apps/web test: # (Use `node --trace-warnings ...` to show where the warning was created)
+apps/web test: # Subtest: gate 1 — the bearer token
+apps/web test:     # Subtest: refuses when the variable is unset: no secret, no surface
+apps/web test:     ok 1 - refuses when the variable is unset: no secret, no surface
+apps/web test:       ---
+apps/web test:       duration_ms: 0.947125
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: refuses a secret BELOW the floor even when the header matches it exactly
+apps/web test:     ok 2 - refuses a secret BELOW the floor even when the header matches it exactly
+apps/web test:       ---
+apps/web test:       duration_ms: 0.235375
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: accepts exactly `Bearer <token>` and nothing else
+apps/web test:     ok 3 - accepts exactly `Bearer <token>` and nothing else
+apps/web test:       ---
+apps/web test:       duration_ms: 0.392167
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: refuses a wrong token, and a right token with something appended
+apps/web test:     ok 4 - refuses a wrong token, and a right token with something appended
+apps/web test:       ---
+apps/web test:       duration_ms: 0.244667
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: TAMPER: a prefix comparison instead of a full one would pass this
+apps/web test:     ok 5 - TAMPER: a prefix comparison instead of a full one would pass this
+apps/web test:       ---
+apps/web test:       duration_ms: 0.142208
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: every refusal has ONE body and ONE status
+apps/web test:     ok 6 - every refusal has ONE body and ONE status
+apps/web test:       ---
+apps/web test:       duration_ms: 112.211416
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     1..6
+apps/web test: ok 27 - gate 1 — the bearer token
+apps/web test:   ---
+apps/web test:   duration_ms: 116.337791
+apps/web test:   type: 'suite'
+apps/web test:   ...
+apps/web test: # Subtest: gate 2 — the class scope is configured, never guessed
+apps/web test:     # Subtest: falls back to the standing production test class when unset
+apps/web test:     ok 1 - falls back to the standing production test class when unset
+apps/web test:       ---
+apps/web test:       duration_ms: 0.456875
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     1..1
+apps/web test: ok 28 - gate 2 — the class scope is configured, never guessed
+apps/web test:   ---
+apps/web test:   duration_ms: 1.148042
+apps/web test:   type: 'suite'
+apps/web test:   ...
+apps/web test: # Subtest: gate 3 — the signed link: mint and verify
+apps/web test:     # Subtest: round-trips a freshly minted token
+apps/web test:     ok 1 - round-trips a freshly minted token
+apps/web test:       ---
+apps/web test:       duration_ms: 12.683375
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: mints nothing without a secret at or above the floor
+apps/web test:     ok 2 - mints nothing without a secret at or above the floor
+apps/web test:       ---
+apps/web test:       duration_ms: 0.393459
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: refuses to verify without a secret at or above the floor
+apps/web test:     ok 3 - refuses to verify without a secret at or above the floor
+apps/web test:       ---
+apps/web test:       duration_ms: 1.5855
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: refuses a token signed with a DIFFERENT secret — rotation kills every link
+apps/web test:     ok 4 - refuses a token signed with a DIFFERENT secret — rotation kills every link
+apps/web test:       ---
+apps/web test:       duration_ms: 1.173
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: refuses a tampered payload — the signature is checked BEFORE the payload is trusted
+apps/web test:     ok 5 - refuses a tampered payload — the signature is checked BEFORE the payload is trusted
+apps/web test:       ---
+apps/web test:       duration_ms: 2.635917
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: refuses a FOREIGN version — a v2 can never be read as a v1
+apps/web test:     ok 6 - refuses a FOREIGN version — a v2 can never be read as a v1
+apps/web test:       ---
+apps/web test:       duration_ms: 1.730666
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: refuses malformed shapes, each for its own reason
+apps/web test:     ok 7 - refuses malformed shapes, each for its own reason
+apps/web test:       ---
+apps/web test:       duration_ms: 2.904167
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: refuses an EXPIRED link — the floor
+apps/web test:     ok 8 - refuses an EXPIRED link — the floor
+apps/web test:       ---
+apps/web test:       duration_ms: 0.879083
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: refuses a FAR-FUTURE link — the ceiling, without which `short-lived` is only a property of the minting side
+apps/web test:     ok 9 - refuses a FAR-FUTURE link — the ceiling, without which `short-lived` is only a property of the minting side
+apps/web test:       ---
+apps/web test:       duration_ms: 0.672292
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: TAMPER: the ceiling has a NAMED slack minute, and one second past it is refused
+apps/web test:     ok 10 - TAMPER: the ceiling has a NAMED slack minute, and one second past it is refused
+apps/web test:       ---
+apps/web test:       duration_ms: 1.219542
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: two links minted in the same millisecond differ
+apps/web test:     ok 11 - two links minted in the same millisecond differ
+apps/web test:       ---
+apps/web test:       duration_ms: 0.956875
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     1..11
+apps/web test: ok 29 - gate 3 — the signed link: mint and verify
+apps/web test:   ---
+apps/web test:   duration_ms: 27.796375
+apps/web test:   type: 'suite'
+apps/web test:   ...
+apps/web test: # Subtest: gate 3b — the register row stores a HASH, never the nonce
+apps/web test:     # Subtest: hashes with domain separation and is stable
+apps/web test:     ok 1 - hashes with domain separation and is stable
+apps/web test:       ---
+apps/web test:       duration_ms: 1.250333
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: the row a redeemed link claims carries the hash, the id and the token's own expiry
+apps/web test:     ok 2 - the row a redeemed link claims carries the hash, the id and the token's own expiry
+apps/web test:       ---
+apps/web test:       duration_ms: 0.564792
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: a nonce carries 128 bits
+apps/web test:     ok 3 - a nonce carries 128 bits
+apps/web test:       ---
+apps/web test:       duration_ms: 0.198959
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     1..3
+apps/web test: ok 30 - gate 3b — the register row stores a HASH, never the nonce
+apps/web test:   ---
+apps/web test:   duration_ms: 2.152584
+apps/web test:   type: 'suite'
+apps/web test:   ...
+apps/web test: # Subtest: the redirect clamp — an open redirector that also mints a session is an account takeover
+apps/web test:     # Subtest: refuses the TAB escape that the URL parser strips before parsing
+apps/web test:     ok 1 - refuses the TAB escape that the URL parser strips before parsing
+apps/web test:       ---
+apps/web test:       duration_ms: 0.228458
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: refuses protocol-relative, backslash and absolute targets
+apps/web test:     ok 2 - refuses protocol-relative, backslash and absolute targets
+apps/web test:       ---
+apps/web test:       duration_ms: 0.074875
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: lets an ordinary same-site path through untouched
+apps/web test:     ok 3 - lets an ordinary same-site path through untouched
+apps/web test:       ---
+apps/web test:       duration_ms: 0.053875
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: a refused or absent target lands on /home, never on the signed-out page
+apps/web test:     ok 4 - a refused or absent target lands on /home, never on the signed-out page
+apps/web test:       ---
+apps/web test:       duration_ms: 0.073541
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: the parser is asked as well as the character rules — belt and braces
+apps/web test:     ok 5 - the parser is asked as well as the character rules — belt and braces
+apps/web test:       ---
+apps/web test:       duration_ms: 0.085
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     1..5
+apps/web test: ok 31 - the redirect clamp — an open redirector that also mints a session is an account takeover
+apps/web test:   ---
+apps/web test:   duration_ms: 0.715375
+apps/web test:   type: 'suite'
+apps/web test:   ...
+apps/web test: # Subtest: the POST body
+apps/web test:     # Subtest: treats an absent action as create, and an unknown one as a named 400
+apps/web test:     ok 1 - treats an absent action as create, and an unknown one as a named 400
+apps/web test:       ---
+apps/web test:       duration_ms: 0.180458
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: bounds the nickname the way the join form does
+apps/web test:     ok 2 - bounds the nickname the way the join form does
+apps/web test:       ---
+apps/web test:       duration_ms: 0.086292
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     1..2
+apps/web test: ok 32 - the POST body
+apps/web test:   ---
+apps/web test:   duration_ms: 0.326792
+apps/web test:   type: 'suite'
+apps/web test:   ...
+apps/web test: # Subtest: the provisioned PIN
+apps/web test:     # Subtest: is six digits, leading zeros allowed, and varies
+apps/web test:     ok 1 - is six digits, leading zeros allowed, and varies
+apps/web test:       ---
+apps/web test:       duration_ms: 1.348125
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     1..1
+apps/web test: ok 33 - the provisioned PIN
+apps/web test:   ---
+apps/web test:   duration_ms: 1.397792
+apps/web test:   type: 'suite'
+apps/web test:   ...
+apps/web test: # (node:14162) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/veho/Code/domigo-v2-n6/apps/web/lib/roster-parse.test.ts is not specified and it doesn't parse as CommonJS.
+apps/web test: # Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+apps/web test: # To eliminate this warning, add "type": "module" to /Users/veho/Code/domigo-v2-n6/apps/web/package.json.
+apps/web test: # (Use `node --trace-warnings ...` to show where the warning was created)
+apps/web test: # Subtest: twin fixture · plain list, one name per line
+apps/web test: ok 34 - twin fixture · plain list, one name per line
+apps/web test:   ---
+apps/web test:   duration_ms: 2.916458
+apps/web test:   type: 'test'
+apps/web test:   ...
+apps/web test: # Subtest: twin fixture · Windows CRLF line endings
+apps/web test: ok 35 - twin fixture · Windows CRLF line endings
+apps/web test:   ---
+apps/web test:   duration_ms: 0.207333
+apps/web test:   type: 'test'
+apps/web test:   ...
+apps/web test: # Subtest: twin fixture · blank and whitespace-only lines are dropped
+apps/web test: ok 36 - twin fixture · blank and whitespace-only lines are dropped
+apps/web test:   ---
+apps/web test:   duration_ms: 1.803334
+apps/web test:   type: 'test'
+apps/web test:   ...
+apps/web test: # Subtest: twin fixture · nothing at all
+apps/web test: ok 37 - twin fixture · nothing at all
+apps/web test:   ---
+apps/web test:   duration_ms: 0.211208
+apps/web test:   type: 'test'
+apps/web test:   ...
+apps/web test: # Subtest: twin fixture · dedupe is case-insensitive and keeps the FIRST casing
+apps/web test: ok 38 - twin fixture · dedupe is case-insensitive and keeps the FIRST casing
+apps/web test:   ---
+apps/web test:   duration_ms: 4.408709
+apps/web test:   type: 'test'
+apps/web test:   ...
+apps/web test: # Subtest: twin fixture · one-column CSV: trailing comma stripped
+apps/web test: ok 39 - twin fixture · one-column CSV: trailing comma stripped
+apps/web test:   ---
+apps/web test:   duration_ms: 0.385334
+apps/web test:   type: 'test'
+apps/web test:   ...
+apps/web test: # Subtest: twin fixture · one-column CSV: surrounding quotes stripped
+apps/web test: ok 40 - twin fixture · one-column CSV: surrounding quotes stripped
+apps/web test:   ---
+apps/web test:   duration_ms: 0.100959
+apps/web test:   type: 'test'
+apps/web test:   ...
+apps/web test: # Subtest: twin fixture · multi-column, semicolon separated: first cell wins
+apps/web test: ok 41 - twin fixture · multi-column, semicolon separated: first cell wins
+apps/web test:   ---
+apps/web test:   duration_ms: 0.302916
+apps/web test:   type: 'test'
+apps/web test:   ...
+apps/web test: # Subtest: twin fixture · multi-column, TAB separated: first cell wins
+apps/web test: ok 42 - twin fixture · multi-column, TAB separated: first cell wins
+apps/web test:   ---
+apps/web test:   duration_ms: 2.138
+apps/web test:   type: 'test'
+apps/web test:   ...
+apps/web test: # Subtest: twin fixture · quoted cell keeps its internal comma, the semicolon tail is dropped
+apps/web test: ok 43 - twin fixture · quoted cell keeps its internal comma, the semicolon tail is dropped
+apps/web test:   ---
+apps/web test:   duration_ms: 1.115
+apps/web test:   type: 'test'
+apps/web test:   ...
+apps/web test: # Subtest: twin fixture · quoted cell followed by a COMMA separator
+apps/web test: ok 44 - twin fixture · quoted cell followed by a COMMA separator
+apps/web test:   ---
+apps/web test:   duration_ms: 0.250208
+apps/web test:   type: 'test'
+apps/web test:   ...
+apps/web test: # Subtest: twin fixture · DECLARED BOUNDARY: an UNQUOTED comma keeps the whole line (surname-first is one name)
+apps/web test: ok 45 - twin fixture · DECLARED BOUNDARY: an UNQUOTED comma keeps the whole line (surname-first is one name)
+apps/web test:   ---
+apps/web test:   duration_ms: 0.083041
+apps/web test:   type: 'test'
+apps/web test:   ...
+apps/web test: # Subtest: twin fixture · a header row is just another name — the teacher removes it in the review list
+apps/web test: ok 46 - twin fixture · a header row is just another name — the teacher removes it in the review list
+apps/web test:   ---
+apps/web test:   duration_ms: 0.0635
+apps/web test:   type: 'test'
+apps/web test:   ...
+apps/web test: # Subtest: twin fixture · everything at once, the way a real export arrives
+apps/web test: ok 47 - twin fixture · everything at once, the way a real export arrives
+apps/web test:   ---
+apps/web test:   duration_ms: 0.184
+apps/web test:   type: 'test'
+apps/web test:   ...
+apps/web test: # Subtest: twin fixture · K9b-BLOCKER: a SPACE before the separator is not part of the name
+apps/web test: ok 48 - twin fixture · K9b-BLOCKER: a SPACE before the separator is not part of the name
+apps/web test:   ---
+apps/web test:   duration_ms: 0.181667
+apps/web test:   type: 'test'
+apps/web test:   ...
+apps/web test: # Subtest: twin fixture · K9b-BLOCKER: the padded line collapses into its twin instead of becoming a second student
+apps/web test: ok 49 - twin fixture · K9b-BLOCKER: the padded line collapses into its twin instead of becoming a second student
+apps/web test:   ---
+apps/web test:   duration_ms: 0.117
+apps/web test:   type: 'test'
+apps/web test:   ...
+apps/web test: # Subtest: twin fixture · K9b-BLOCKER: a comma cell padded with spaces normalizes the SAME on both halves
+apps/web test: ok 50 - twin fixture · K9b-BLOCKER: a comma cell padded with spaces normalizes the SAME on both halves
+apps/web test:   ---
+apps/web test:   duration_ms: 0.109334
+apps/web test:   type: 'test'
+apps/web test:   ...
+apps/web test: # Subtest: twin fixture · a CARRIAGE RETURN alone ends a line (old-Mac exports) — not one giant name
+apps/web test: ok 51 - twin fixture · a CARRIAGE RETURN alone ends a line (old-Mac exports) — not one giant name
+apps/web test:   ---
+apps/web test:   duration_ms: 0.053125
+apps/web test:   type: 'test'
+apps/web test:   ...
+apps/web test: # Subtest: twin fixture · all three line endings mixed in one paste
+apps/web test: ok 52 - twin fixture · all three line endings mixed in one paste
+apps/web test:   ---
+apps/web test:   duration_ms: 0.23275
+apps/web test:   type: 'test'
+apps/web test:   ...
+apps/web test: # Subtest: first cell wins, whatever the separator
+apps/web test: ok 53 - first cell wins, whatever the separator
+apps/web test:   ---
+apps/web test:   duration_ms: 0.350917
+apps/web test:   type: 'test'
+apps/web test:   ...
+apps/web test: # Subtest: a BARE comma is NOT a separator — the declared boundary
+apps/web test: ok 54 - a BARE comma is NOT a separator — the declared boundary
+apps/web test:   ---
+apps/web test:   duration_ms: 0.302708
+apps/web test:   type: 'test'
+apps/web test:   ...
+apps/web test: # Subtest: an unclosed quote is left alone rather than swallowing the line
+apps/web test: ok 55 - an unclosed quote is left alone rather than swallowing the line
+apps/web test:   ---
+apps/web test:   duration_ms: 0.129916
+apps/web test:   type: 'test'
+apps/web test:   ...
+apps/web test: # Subtest: dedupes AFTER the columns are cut
+apps/web test: ok 56 - dedupes AFTER the columns are cut
+apps/web test:   ---
+apps/web test:   duration_ms: 0.136625
+apps/web test:   type: 'test'
+apps/web test:   ...
+apps/web test: # Subtest: K9b-BLOCKER · never returns a name carrying outer whitespace — the INVARIANT, over every fixture
+apps/web test: ok 57 - K9b-BLOCKER · never returns a name carrying outer whitespace — the INVARIANT, over every fixture
+apps/web test:   ---
+apps/web test:   duration_ms: 0.468625
+apps/web test:   type: 'test'
+apps/web test:   ...
+apps/web test: # Subtest: isImportableName pins exactly what the server will accept
+apps/web test: ok 58 - isImportableName pins exactly what the server will accept
+apps/web test:   ---
+apps/web test:   duration_ms: 0.242875
+apps/web test:   type: 'test'
+apps/web test:   ...
+apps/web test: # (node:14163) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/veho/Code/domigo-v2-n6/apps/web/lib/studio-gate.test.ts is not specified and it doesn't parse as CommonJS.
+apps/web test: # Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+apps/web test: # To eliminate this warning, add "type": "module" to /Users/veho/Code/domigo-v2-n6/apps/web/package.json.
+apps/web test: # (Use `node --trace-warnings ...` to show where the warning was created)
+apps/web test: # Subtest: preGate · layer 3 pass — real corpus items are gateable & self-solvable
+apps/web test:     # Subtest: a real vocab item passes all three layers
+apps/web test:     ok 1 - a real vocab item passes all three layers
+apps/web test:       ---
+apps/web test:       duration_ms: 2.38325
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: a real gap-fill (text) grammar item passes
+apps/web test:     ok 2 - a real gap-fill (text) grammar item passes
+apps/web test:       ---
+apps/web test:       duration_ms: 0.761042
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: a real multiple-choice grammar item passes (choice framing round-trips)
+apps/web test:     ok 3 - a real multiple-choice grammar item passes (choice framing round-trips)
+apps/web test:       ---
+apps/web test:       duration_ms: 0.388042
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     1..3
+apps/web test: ok 59 - preGate · layer 3 pass — real corpus items are gateable & self-solvable
+apps/web test:   ---
+apps/web test:   duration_ms: 5.051
+apps/web test:   type: 'suite'
+apps/web test:   ...
+apps/web test: # Subtest: preGate · layer 1 — zod rejects the structurally/semantically broken
+apps/web test:     # Subtest: garbage is rejected at the schema layer
+apps/web test:     ok 1 - garbage is rejected at the schema layer
+apps/web test:       ---
+apps/web test:       duration_ms: 1.856042
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     # Subtest: a definition that leaks the headword is rejected at schema (V-8)
+apps/web test:     ok 2 - a definition that leaks the headword is rejected at schema (V-8)
+apps/web test:       ---
+apps/web test:       duration_ms: 0.420333
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     1..2
+apps/web test: ok 60 - preGate · layer 1 — zod rejects the structurally/semantically broken
+apps/web test:   ---
+apps/web test:   duration_ms: 2.686125
+apps/web test:   type: 'suite'
+apps/web test:   ...
+apps/web test: # Subtest: preGate · layer 2 — un-gateable formats cannot publish
+apps/web test:     # Subtest: a matching-format grammar item is blocked as un-gateable
+apps/web test:     ok 1 - a matching-format grammar item is blocked as un-gateable
+apps/web test:       ---
+apps/web test:       duration_ms: 0.576334
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     1..1
+apps/web test: ok 61 - preGate · layer 2 — un-gateable formats cannot publish
+apps/web test:   ---
+apps/web test:   duration_ms: 0.913917
+apps/web test:   type: 'suite'
+apps/web test:   ...
+apps/web test: # Subtest: preGate · layer 3 — an item with nothing keyed correct is blocked
+apps/web test:     # Subtest: stripping the full answer blocks publish (at the schema OR key-defect guard)
+apps/web test:     ok 1 - stripping the full answer blocks publish (at the schema OR key-defect guard)
+apps/web test:       ---
+apps/web test:       duration_ms: 0.389042
+apps/web test:       type: 'test'
+apps/web test:       ...
+apps/web test:     1..1
+apps/web test: ok 62 - preGate · layer 3 — an item with nothing keyed correct is blocked
+apps/web test:   ---
+apps/web test:   duration_ms: 0.50975
+apps/web test:   type: 'suite'
+apps/web test:   ...
+apps/web test: 1..62
+apps/web test: # tests 159
+apps/web test: # suites 37
+apps/web test: # pass 159
+apps/web test: # fail 0
+apps/web test: # cancelled 0
+apps/web test: # skipped 0
+apps/web test: # todo 0
+apps/web test: # duration_ms 1725.79175
+apps/web test: Done
