@@ -48,6 +48,41 @@ export interface VisualBody {
   slices?: readonly BodySlice[];
 }
 
+/**
+ * Ein Raum, wie das Level ihn traegt: die drei Phasen, die Arena (p4) und die
+ * Bonus-Kammer (p9) — getrennte Container mit derselben Form.
+ */
+export interface PhaseGrid {
+  id: string;
+  rows: readonly string[];
+}
+
+export interface LevelGrids {
+  phases: readonly PhaseGrid[];
+  arena?: PhaseGrid;
+  bonus?: PhaseGrid;
+}
+
+/**
+ * DAS RASTER EINER PHASE — die EINE Auflösung, aus der jedes Werkzeug liest.
+ *
+ * Warum geteilt: `check-body-silhouette` las das Raster als `level.phases[idx]`
+ * und wäre an jedem p4-/p9-Körper abgestürzt, weil diese beiden Räume gar nicht
+ * in `phases` wohnen (p4 = `arena`, p9 = `bonus`). Ein Tor, das nur die Räume
+ * kennt, für die es je gelaufen ist, ist ein Wunsch. Diese Funktion wirft lieber,
+ * als still ein Nebengitter zu liefern — ein leises falsches Raster wäre der
+ * teurere Fehler.
+ */
+export const gridOf = (level: LevelGrids, phaseId: string): readonly string[] => {
+  const all = [...level.phases, ...(level.arena ? [level.arena] : []), ...(level.bonus ? [level.bonus] : [])];
+  const phase = all.find((p) => p.id === phaseId);
+  if (phase === undefined) {
+    const known = all.map((p) => p.id).join(", ");
+    throw new Error(`gridOf: Phase "${phaseId}" gibt es in diesem Level nicht (vorhanden: ${known})`);
+  }
+  return phase.rows;
+};
+
 export const bodyCells = (b: VisualBody): Array<{ c: number; r: number }> => {
   const out: Array<{ c: number; r: number }> = [];
   b.rows.forEach((row, dr) => {
@@ -253,6 +288,19 @@ export const P2_WAVE_BODIES: readonly VisualBody[] = [
     ],
     pxPerCell: 64, overpaint: { l: 0, r: 0, t: 12, b: 16 },
   },
+];
+
+/**
+ * JEDER DEKLARIERTE KÖRPER MIT SEINEM RAUM — auch die, die noch nicht montiert
+ * sind. Der Wareneingang misst ein geliefertes Blatt, BEVOR es in `CH01_BODIES`
+ * wandert (dort landet ein Eintrag erst mit seinem angenommenen PNG), und er
+ * braucht dabei das Raster des richtigen Raums. Vorher kannte der Wareneingang
+ * nur die p2-Welle und stempelte die Phase hart auf "p2" — ein p1-Körper war
+ * damit gar nicht messbar.
+ */
+export const DECLARED_BODIES: ReadonlyArray<{ phase: string; body: VisualBody }> = [
+  { phase: "p2", body: P2_EXEMPLAR_BODY },
+  ...P2_WAVE_BODIES.map((body) => ({ phase: "p2", body })),
 ];
 
 /** Die live montierten Körper je Phase. Ein Eintrag kommt erst MIT seinem PNG. */

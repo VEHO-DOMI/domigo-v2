@@ -17,7 +17,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { PNG } from "pngjs";
-import { CH01_BODIES, P2_EXEMPLAR_BODY, P2_WAVE_BODIES, bodyCells } from "../packages/game-paint/src/visualBodies.ts";
+import { CH01_BODIES, DECLARED_BODIES, P2_EXEMPLAR_BODY, bodyCells, gridOf } from "../packages/game-paint/src/visualBodies.ts";
 import { glyphAt, isSolid } from "../packages/game-paint/src/collide.ts";
 
 const ART_DIR = path.join(process.cwd(), "apps/web/public/art/g1/paint/ch01");
@@ -26,8 +26,7 @@ const OPAQUE = 128;   // Alpha-Schwelle „sichtbar deckend"
 const FAINT = 16;     // Alpha-Schwelle „überhaupt vorhanden" (Gesetz 2)
 const FRINGE_PX = 16; // Fransen-Gürtel um Masken-Zellen (K6 erlaubt Überhänge)
 
-const gridOf = (phaseIdx) => JSON.parse(fs.readFileSync(LEVEL, "utf8")).phases[phaseIdx].rows;
-const PHASE_INDEX = { p1: 0, p2: 1, p3: 2, p4: 3, p9: 4 };
+const levelGrids = () => JSON.parse(fs.readFileSync(LEVEL, "utf8"));
 
 /** Misst die drei Gesetze eines Körpers an einem PNG. Gibt Fehlerzeilen zurück. */
 export const measureBody = (body, png, grid) => {
@@ -141,7 +140,26 @@ const selftest = () => {
     const errors = measureBody(body, synthSheet(body, mutate), grid);
     if (errors.length === 0) { console.error(`Selbsttest-TAMPER "${name}" blieb GRÜN`); return 1; }
   }
-  console.log("check-body-silhouette: Selbsttest OK — 1 sauber + 3 Tamper rot");
+  // N7A1 · DAS RASTER KOMMT AUS DER GETEILTEN AUFLÖSUNG. p4 wohnt in `arena`,
+  // p9 in `bonus`; vorher las dieses Tor `level.phases[idx]` und wäre an jedem
+  // p4-/p9-Körper abgestürzt — ein Tor, das nur die Räume kennt, für die es je
+  // gelaufen ist. Der Fall misst einen Dummy-Körper GEGEN das Arena-Raster.
+  const level = levelGrids();
+  const arena = gridOf(level, "p4");
+  if (arena !== level.arena.rows) { console.error("Selbsttest: gridOf('p4') liefert nicht das Arena-Raster"); return 1; }
+  let seat = null;
+  for (let r = 0; r < arena.length && seat === null; r++) {
+    for (let c = 0; c < (arena[r]?.length ?? 0); c++) if (isSolid(glyphAt(arena, c, r))) { seat = { c, r }; break; }
+  }
+  if (seat === null) { console.error("Selbsttest: das Arena-Raster hat keine solide Zelle"); return 1; }
+  const p4dummy = { id: "p4_dummy", stem: "p4_dummy", c0: seat.c, r0: seat.r, rows: ["#"], pxPerCell: 64, overpaint: { l: 0, r: 0, t: 12, b: 16 } };
+  const p4errors = measureBody(p4dummy, synthSheet(p4dummy), arena);
+  if (p4errors.length !== 0) { console.error("Selbsttest: p4-Dummy am Arena-Raster faellt durch:", p4errors); return 1; }
+  let gemeldet = false;
+  try { gridOf(level, "p7"); } catch { gemeldet = true; }
+  if (!gemeldet) { console.error("Selbsttest: gridOf hat eine unbekannte Phase NICHT gemeldet"); return 1; }
+  console.log(`check-body-silhouette: p4 aus dem Arena-Raster gelesen (Dummy auf (${seat.c},${seat.r}), kein Absturz), unbekannte Phase meldet sich`);
+  console.log("check-body-silhouette: Selbsttest OK — 1 sauber + 3 Tamper rot + p4/p9-Raster");
   return 0;
 };
 
@@ -154,9 +172,12 @@ const main = () => {
     const sheet = sheetIdx >= 0 ? args[sheetIdx + 1] : null;
     if (sheet === null) { console.error("Wareneingang braucht --sheet <png>"); return 1; }
     const wanted = args.includes("--body") ? args[args.indexOf("--body") + 1] : P2_EXEMPLAR_BODY.id;
-    const body = [P2_EXEMPLAR_BODY, ...P2_WAVE_BODIES].find((b) => b.id === wanted);
-    if (body === undefined) { console.error(`unbekannter Körper: ${wanted}`); return 1; }
-    jobs.push({ body, file: sheet, phase: "p2" });
+    const found = DECLARED_BODIES.find((d) => d.body.id === wanted);
+    if (found === undefined) {
+      console.error(`unbekannter Körper: ${wanted} — deklariert sind: ${DECLARED_BODIES.map((d) => d.body.id).join(", ")}`);
+      return 1;
+    }
+    jobs.push({ body: found.body, file: sheet, phase: found.phase });
   } else {
     for (const [phase, bodies] of Object.entries(CH01_BODIES)) {
       for (const body of bodies) {
@@ -165,11 +186,12 @@ const main = () => {
     }
   }
   if (jobs.length === 0) { console.log("check-body-silhouette: 0 Körper deklariert — nichts zu messen"); return 0; }
+  const level = levelGrids();
   let failed = 0;
   for (const { body, file, phase } of jobs) {
     if (!fs.existsSync(file)) { console.error(`✗ ${body.id}: Blatt fehlt (${file})`); failed++; continue; }
     const png = PNG.sync.read(fs.readFileSync(file));
-    const grid = gridOf(PHASE_INDEX[phase] ?? 0);
+    const grid = gridOf(level, phase);
     const errors = measureBody(body, png, grid);
     if (errors.length === 0) {
       console.log(`✓ ${body.id} (${bodyCells(body).length} Zellen): alle drei Gesetze halten`);
