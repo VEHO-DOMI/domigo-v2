@@ -1,26 +1,36 @@
 {
  "schema": "paintLevel@1",
- "id": "g1.ch02",
+ "id": "g1.paint.ch02",
  "chapter": "ch02",
  "draft": true,
- "note": "L0 · D12 · ENTWURFS-EXEMPLAR, KEIN KAPITEL. Diese Datei existiert, damit die Kapitel-Schleife der Tore an einem ZWEITEN Kapitel bewiesen ist und die Route `/play/1/buch/ch02` etwas zu laden hat. Ids und Namen stammen aus docs/design/g1/paint/ch02.md §1; die BREITEN aus §5 (64/72/64), die HOEHE ist die Konvention R243: jeder Feld-Raum 26 Zeilen (L0 · N8c). Arena und Kleckskammer behalten ihre kleineren Masse wie in ch01. Der Sammel-Skin ist `feather` (L0 · N1): die `*`-Zellen sind Federn, keine Buchstaben — deshalb tragen die Phasen KEINE `words` (ein Federn-Kapitel buchstabiert nichts, und das Gesetz `trail-words` sagt das jetzt auch). Alles andere ist das Minimum, das die Gesetze erfüllt. Die L2-Bahn ersetzt die Gitter vollständig. REGEL-SEITEN-SLOTS (drei, aus der Grammatik der Unit g1-u02): (1) there-is/are · (2) prepositions-place · (3) to-be. Sie stehen hier als Notiz und NICHT als `tip`-Entities, weil ein Slot ohne Merksatz eine leere Seite im Regelbuch wäre; `tipsTotal` fehlt GANZ, bis die Texte da sind: der Lader verlangt eine POSITIVE Zahl (`z.number().int().positive()`), waehrend die Motor-Gesetze eine 0 durchlassen — eine 0 haette die Seite mit einem 500 gefaellt, obwohl jedes Gesetz gruen war (L0-Befund D-790). »Weggelassen« heisst in beiden Haeusern »noch nicht entschieden«. WÄCHTER: R237 setzt den Käfig-König (Löwe); die Besetzung gehört der L2-Bahn, hier steht nur ein tier-M-Platzhalter, damit die Arena eine Arena ist.",
- "name": "Der Zoo im Buch",
- "goalDe": "Finde die Federn und öffne das Zoo-Tor.",
- "whyDe": "Der Zoo im Buch ist grau geworden — die Tiere warten auf ihre Farben.",
+ "note": "L2-P1 (Level-2-Architekt, 2026-09-03): p1 »Das Zoo-Tor« ist das Kalibrier-Exemplar des Kapitels — Gitter, Wesen, Faust-Gabe, Anker am Tinten-Graben; Ids/Skins sind eingefroren (Blaupause L2 v5 §2), L2-T1 bindet daran. p2/p3/p4/p9 sind noch das L0-Gerüst (D12) und werden von L2-G2 vollendet. Kapitel-Neuheiten (Mini-Szenen-Bühne, Wasserlinie, Löwe, Hang-Pflicht) stehen als Daten in docs/design/g1/paint/ch02-dossiers-v2/pending.md, bis L2-M sie verdrahtet. Sammel-Skin feather (R246): die *-Zellen sind Federn. draft:true bleibt bis L2-A.",
+ "name": "Der Zoo im Buch — Der Zoo mit den falschen Schildern",
+ "goalDe": "Der Tinten-Schatten war im Zoo. Jedes Tier steht am falschen Platz, und die Schilder lügen.",
+ "whyDe": "Sag, was ein Tier ist und wo es ist. Dann geht es heim.",
  "hintsDe": [
-  "Sammle die Federn auf deinem Weg.",
-  "Schau nach, wer in den Gehegen sitzt.",
-  "Das Tor am Ende führt weiter."
+  "Springen: SPACE — halten für höher!",
+  "Kante? Du hältst dich fest — SPACE springt weiter.",
+  "Ein graues Tier? Stell dich davor und drück ↑!"
  ],
  "collectNounDe": "Federn",
+ "collectSkin": "feather",
+ "clothNounDe": "Tierspuren",
+ "clothNounDatDe": "Tierspuren",
+ "clothNounSgDe": "Tierspur",
+ "clothPlaceDe": "Zoo-Gelände",
  "abilities": [
-  "jump"
+  "jump",
+  "run",
+  "hang",
+  "punch"
  ],
+ "checkpointStyle": "silent",
  "phases": [
   {
    "id": "p1",
    "nameDe": "Das Zoo-Tor",
    "surface": "normal",
+   "checkpointSide": "near",
    "plates": {},
    "rows": [
     "################################################################",
@@ -28,29 +38,159 @@
     "................................................................",
     "................................................................",
     "................................................................",
+    "....................................#####.......................",
+    "....................................#...#.......................",
+    "....................................#...#.......................",
+    "....................................#...#.......................",
+    "....................................#####.......................",
     "................................................................",
     "................................................................",
+    ".........*............*.*.*.....................................",
     "................................................................",
-    "................................................................",
-    "................................................................",
-    "................................................................",
-    "................................................................",
-    "................................................................",
-    "................................................................",
-    "................................................................",
-    "................................................................",
-    "................................................................",
-    "................................................................",
-    "................................................................",
-    "................................................................",
-    "..............*...............*...............*.................",
-    "....S.......................................................X...",
-    "################################################################",
-    "################################################################",
-    "################################################################",
-    "################################################################"
+    ".......*###...........#####.............###*.........*..........",
+    "........###*............................................##......",
+    ".....*..###.*..*..*.....#.....*..*.....*......*.*...###*........",
+    "..S.....###.............#...........................###...C...X.",
+    "#############################################~~~~~#########..###",
+    "###########################################################..###",
+    "###########################################################..###",
+    "###########################################################..###",
+    "###########################################################ww###",
+    "###########################################################ww###",
+    "###########################################################ww###",
+    "###########################################################ww###"
    ],
-   "entities": [],
+   "entities": [
+    {
+     "id": "p1-regel-ortswoerter",
+     "role": "tip",
+     "skin": "regelseite",
+     "c": 14,
+     "r": 17,
+     "tier": "E",
+     "params": {
+      "topicDe": "Ortswörter: wo etwas ist",
+      "erklaerungDe": "Ein Ortswort sagt dir, wo ein Tier oder ein Ding ist. Es steht vor dem Ding, bei dem es ist.",
+      "merksatzDe": "in, on, under, behind, next to, in front of: erst das Ortswort, dann das Ding.",
+      "schluesselDe": "erst das Ortswort, dann das Ding",
+      "beispieleEn": [
+       "The parrot is in the tree.",
+       "The dog is under the bus.",
+       "The monkey is behind the tree.",
+       "The penguin is next to the bus."
+      ],
+      "beispielMuster": "einzeln",
+      "lehrtEn": [
+       "in",
+       "under",
+       "behind",
+       "next to"
+      ],
+      "belegDe": "MORE! 1 · Unit 2 · Seite 16, 19, 20"
+     }
+    },
+    {
+     "id": "p1-hund",
+     "role": "drained",
+     "skin": "hund",
+     "c": 21,
+     "r": 17,
+     "tier": "E",
+     "params": {}
+    },
+    {
+     "id": "p1-schubkarre",
+     "role": "chaser",
+     "skin": "schubkarre",
+     "c": 28,
+     "r": 17,
+     "tier": "E",
+     "params": {
+      "patrolMinC": 28,
+      "patrolMaxC": 34
+     }
+    },
+    {
+     "id": "p1-cage2",
+     "role": "cage",
+     "skin": "zookaefig",
+     "c": 41,
+     "r": 13,
+     "tier": "E",
+     "params": {
+      "captive": "ticket",
+      "captiveDe": "das Ticket"
+     }
+    },
+    {
+     "id": "p1-regel-there-is",
+     "role": "tip",
+     "skin": "regelseite",
+     "c": 44,
+     "r": 17,
+     "tier": "E",
+     "params": {
+      "topicDe": "there is / there are",
+      "erklaerungDe": "Wenn du sagst, dass etwas da ist, fängst du mit there is oder there are an. Bei einem: is. Bei mehreren: are.",
+      "merksatzDe": "Eines: there is. Mehrere: there are.",
+      "schluesselDe": "Eines: there is. Mehrere: there are",
+      "beispieleEn": [
+       "There is a train.",
+       "There are two trains.",
+       "There is a penguin.",
+       "There are three monkeys."
+      ],
+      "beispielMuster": "einzeln",
+      "lehrtEn": [
+       "there is",
+       "there are"
+      ],
+      "belegDe": "MORE! 1 · Unit 2 · Seite 17, 20"
+     }
+    },
+    {
+     "id": "p1-rutscher",
+     "role": "bouncer",
+     "skin": "pinguin_rutscher",
+     "c": 47,
+     "r": 17,
+     "tier": "E",
+     "params": {}
+    },
+    {
+     "id": "p1-pinguin",
+     "role": "drained",
+     "skin": "pinguin",
+     "c": 51,
+     "r": 17,
+     "tier": "E",
+     "params": {}
+    },
+    {
+     "id": "p1-faust",
+     "role": "powerup",
+     "skin": "fibel_faust",
+     "c": 57,
+     "r": 14,
+     "tier": "E",
+     "params": {
+      "grants": "punch",
+      "essential": true,
+      "gabeDe": "die Faust"
+     }
+    },
+    {
+     "id": "p1-drehkreuz",
+     "role": "door.trigger",
+     "skin": "drehkreuz",
+     "c": 61,
+     "r": 17,
+     "tier": "E",
+     "params": {
+      "kind": "exit"
+     }
+    }
+   ],
    "links": [],
    "exit": {
     "to": "p2"
@@ -248,9 +388,5 @@
   },
   "budgetSec": 30
  },
- "collectSkin": "feather",
- "clothNounDe": "Tierspuren",
- "clothNounDatDe": "Tierspuren",
- "clothNounSgDe": "Tierspur",
- "clothPlaceDe": "Zoo-Gelände"
+ "tipsTotal": 2
 }
