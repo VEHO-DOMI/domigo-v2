@@ -831,8 +831,8 @@ export class Sim {
    *  Atem an. Was dabei niemand bemerkt hatte: sie hält auch seine ZÄHLER an.
    *  Blinker, Treffer-Sperre und der Landetakt froren auf dem Tick ein, an dem
    *  die Karte aufging, und liefen nach dem Schließen in voller Länge ab. Aus
-   *  „Karte weg" wurden so bis zu zwei Sekunden Flackern, ein Rest-Rückstoß und
-   *  eine zweite Lande-Animation — Koki: „he remains in this stunned animation".
+   *  »Karte weg« wurden so bis zu zwei Sekunden Flackern, ein Rest-Rückstoß und
+   *  eine zweite Lande-Animation — Koki: »he remains in this stunned animation«.
    *
    *  Die Karte hat den Beat erzählt; danach ist das Kind frei. Deshalb werden
    *  die Zähler hier GELÖSCHT und nicht unter der Karte gealtert: wie lange eine
@@ -854,8 +854,8 @@ export class Sim {
    *  ist und man zu ihr geht, wird gelöscht` (Kokis Entscheid 15.08.) setzt
    *  voraus, dass ein Treffer das Kind von der gefallenen Schicht WEGTRÄGT.
    *  Gemessen: mit `vx = 0` gewinnt ein Kind, das die Tastatur nie anfasst, den
-   *  Tafel-Kampf — `dismiss-resumes.test.ts` „ein Kind, das stehen bleibt,
-   *  steckt trotzdem NIE fest" wird rot. Der Bogen NACH OBEN dagegen ist reine
+   *  Tafel-Kampf — `dismiss-resumes.test.ts` »ein Kind, das stehen bleibt,
+   *  steckt trotzdem NIE fest« wird rot. Der Bogen NACH OBEN dagegen ist reine
    *  Restanimation (Flug + zweite echte Landung), und genau der fällt hier weg.
    *  Der Stoß bleibt also, die Sperre geht — das Kind fliegt steuerbar. */
   private resumeAfterCard(): void {
