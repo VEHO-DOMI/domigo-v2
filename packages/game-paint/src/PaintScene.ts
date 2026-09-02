@@ -1409,6 +1409,13 @@ export class PaintScene extends Phaser.Scene {
     this.keys = kb
       ? (kb.addKeys(PAD_KEYS) as Record<string, Phaser.Input.Keyboard.Key>)
       : {};
+    // …und eine Szene, die UNTER einer offenen Karte geboren wird, fängt gar
+    // nicht erst an abzufangen. `addKeys` meldet das Abfangen mit an, und die
+    // Hülle friert eine frisch gebaute Szene ein, bevor der erste Tick läuft
+    // (`PaintGame.tsx`: »a scene born UNDER an open card starts frozen«) — ohne
+    // diese Zeile hätte die Boot-Karte des Kapitels ihr Antwortfeld wieder
+    // verloren, obwohl `setOverlay` alles richtig macht.
+    applyKeyCapture(kb, this.sim.overlayOpen);
 
     this.cameras.main.setZoom(RENDER_SCALE);
     this.cameras.main.centerOn(fromSubs(this.player.x), fromSubs(this.player.y) - LOGICAL_H / 4);
@@ -1726,7 +1733,13 @@ export class PaintScene extends Phaser.Scene {
     // der Hülle, weil hier alle Wege durchkommen: der Effekt, der Freeze beim
     // Szenen-Mount, das Lösen, das Weglegen und der Entwickler-Griff. Ein
     // Schalter in nur einem der fünf Wege wäre eine halbe Wand.
-    applyKeyCapture(this.input.keyboard, open);
+    // ⚠ `this.input` ist erst da, wenn Phaser die Szene gestartet hat — die
+    // Hülle ruft `setOverlay(true)` aber schon in dem Moment, in dem die Szene
+    // ERZEUGT wird (Mount-Freeze). Ohne das Fragezeichen stirbt genau dort der
+    // Boot mit »Cannot read properties of undefined (reading 'keyboard')«, und
+    // zwar unsichtbar für jeden Unit-Test: gemessen hat es erst der Perf-Lauf
+    // im echten Browser. Die Liste wird ohnehin in `create()` gesetzt.
+    applyKeyCapture(this.input?.keyboard, open);
   }
 
   /** PK-R6 · H1 · the restore-hold (doc 44 §3.1.7): the child stays frozen, the

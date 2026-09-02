@@ -89,7 +89,23 @@ describe("N7B2 · und die Regel ist auch wirklich angeschlossen", () => {
     const open = scene.indexOf("setOverlay(open: boolean): void {");
     expect(open, "der Rückgabe-Ort ist nicht auffindbar — der Wächter wäre blind").toBeGreaterThan(0);
     const block = scene.slice(open, open + 900);
-    expect(block).toContain("applyKeyCapture(this.input.keyboard, open)");
+    expect(block).toContain("applyKeyCapture(this.input?.keyboard, open)");
+    // Das Fragezeichen ist kein Stil, sondern der Bau: die Hülle friert eine
+    // frisch ERZEUGTE Szene ein, bevor Phaser sie gestartet hat — dort gibt es
+    // `this.input` noch nicht. Ohne Fragezeichen stirbt der Boot (gemessen im
+    // Perf-Lauf: »Cannot read properties of undefined (reading 'keyboard')«,
+    // fünf Phasen ohne Bild, während jeder Unit-Test grün blieb).
+    expect(
+      block.includes("applyKeyCapture(this.input.keyboard"),
+      "harter Zugriff auf `this.input` — das killt den Boot einer noch nicht gestarteten Szene",
+    ).toBe(false);
+  });
+
+  it("…und eine Szene, die UNTER einer Karte geboren wird, fängt gar nicht erst an", () => {
+    // Der zweite Ruf-Ort: `create()` meldet die Tasten an (samt Abfangen) und
+    // muss danach den WELTZUSTAND anwenden. Ohne ihn hätte die Boot-Karte des
+    // Kapitels ihr Antwortfeld wieder verloren.
+    expect(scene).toContain("applyKeyCapture(kb, this.sim.overlayOpen)");
   });
 
   it("das Polling bleibt an — `enabled = false` würde die gehaltene Taste töten", () => {
