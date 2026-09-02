@@ -76,11 +76,16 @@ Ein Kapitel hat **genau drei Feldräume**, dazu eine Arena und einen Bonusraum.
 Die Ids sind Konvention, nicht Zufall, und sie sind die einzige Stelle, an der
 das Buch überhaupt Ids vorschreibt:
 
-| Id | Was | Wo im Level |
-|---|---|---|
-| `p1` `p2` `p3` | die drei Feldräume, in Spielreihenfolge | `phases[]` |
-| `p4` | die Arena des Wächters | `arena` |
-| `p9` | die Kleckskammer (Bonusraum) | `bonus` |
+| Id | Was | Wo im Level | Maß |
+|---|---|---|---|
+| `p1` `p2` `p3` | die drei Feldräume, in Spielreihenfolge | `phases[]` | **26 Zeilen** hoch (R243); Breite nach Blatt |
+| `p4` | die Arena des Wächters | `arena` | ein Schirm, ch01: 36×20 |
+| `p9` | die Kleckskammer (Bonusraum) | `bonus` | ch01: 44×20 |
+
+**26 Zeilen ist die Höhe eines Feldraums (R243)**, und sie ist keine Vorliebe:
+die Kamera und die Sprung-Hüllkurve sind darauf geeicht. Die TALL-Ausnahme
+56×30 bleibt, wo ein Kapitel sie ausdrücklich braucht. Arena und Kleckskammer
+sind kleiner — sie sind je ein Schirm, kein Weg.
 
 Die Lücke zwischen 4 und 9 ist Absicht: p5–p8 sind frei für Räume, die ein
 späteres Kapitel braucht, und der Bonusraum bleibt trotzdem überall die 9.
@@ -122,9 +127,14 @@ Tore fragen.
 
 `"draft": true` heisst: dieses Kapitel wird gerade gebaut.
 
-- Die **Form-Gesetze** des Levels laufen weiter (geschlossene Decke, Erreichbarkeit,
-  Käfig-Regeln, Trail-Wörter). Nur die **Kapitel-Form-Gesetze** ruhen: die Zahl
-  der Phasen, die Käfig-Bilanz, das Klassenkind-Paar.
+- **`draft:true` klammert GENAU FÜNF Gesetze aus** — nachgezählt im `!draft`-Block
+  von `level.ts`, nicht aus dem Rahmen-Text übernommen (der sagte es zu weit):
+  `phase-count` · `checkpoint-silent` · `cage-law` · `classmate-cage` ·
+  `classmate-pair`. **Die anderen 23 Gesetze laufen auch im Entwurf**, und
+  `content-levels.test.ts` fährt sie über jedes Level auf der Platte — also auch
+  über deins, ab dem Tag, an dem du die Datei anlegst. Das ist Absicht: die
+  ausgeklammerten fünf sind Aussagen über die VOLLSTÄNDIGKEIT eines Kapitels,
+  alle anderen über die Spielbarkeit eines Raums, und die gilt sofort.
 - **Kunst darf fehlen** (`check-paint-art` überspringt Entwürfe), und **Bänder
   auch** (`proof-tapes.test.ts` ebenso).
 - Die Route zeigt einen Entwurf in **jeder** Umgebung nur hinter der Lehrer-Tür.
@@ -152,6 +162,23 @@ Ergebnis im PR — der Abschluss-PR eines Kapitels darf kein Überraschungs-Tor 
    `node --experimental-strip-types scripts/record-paint-tape.mjs --chapter chNN`.
 7. Der Abschluss-PR nimmt `draft` weg, trägt fehlende Blätter mit Grund und
    Ablaufdatum in `scripts/paint-art-allowlist.json` und nimmt die vollen Bänder auf.
+
+## §L0.5 · Drei Sätze, die man sonst zweimal misst
+
+- **`bonuspay` ist eine SHELL-ZEREMONIE, kein Kartentyp.** Die Klecks-Tür stellt
+  `use: "bonuspay"` (`sim.ts:82` führt eine eigene use-Union), und
+  `PaintGame.tsx:1152` fängt es ab und zeichnet die Bezahl-Karte selbst —
+  `item: null`, Preis aus `door.params.price`. Im Karten-SCHEMA gibt es
+  `bonuspay` nicht, und das ist **kein Schema-Loch**: es gibt nichts zu
+  autorisieren. Wer eine `bonuspay`-Karte schreiben will, schreibt keine.
+- **Der Sammel-Skin bestimmt, was auf den `*`-Zellen liegt** (`collectSkin`,
+  Vorgabe `letters`). Die Zelle bleibt `*` — alle Abstands- und
+  Erreichbarkeits-Gesetze rechnen unverändert —, und das Gesetz `trail-words`
+  gilt nur, wenn wirklich Buchstaben gesammelt werden.
+- **Die Fundstück-Wörter sind vier Felder, nicht eines** (`clothNounDe`,
+  `clothNounDatDe`, `clothNounSgDe`, `clothPlaceDe`): die Sätze brauchen
+  Nominativ, Dativ Plural und Singular. Wer nur den Nominativ deklariert,
+  bekommt „von 9 Schnipsel".
 
 **Zwei Fallen, beide bezahlt:** ein neues Level-Feld braucht das Interface UND
 das zod in `apps/web/lib/paint-content.ts` — zod strippt still, was es nicht
