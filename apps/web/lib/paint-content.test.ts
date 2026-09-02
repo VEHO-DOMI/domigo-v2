@@ -133,3 +133,28 @@ describe("L0 · N7 · das Bonus-Budget überlebt das Parsen (D-831 = D-927)", ()
     assert.equal(loadPaintLevel(STORY, "ch02").bonus?.budgetSec, 30);
   });
 });
+
+// ── L0 · D1 · DIE WEITERLEITUNG DARF DIE ABFRAGE NICHT VERSCHLUCKEN ─────────
+//
+// Der Defekt, den erst der PERF-Vertrag gefunden hat: `/play/1/buch` leitete
+// auf `/play/1/buch/ch01` um und liess `?phase=p2&perf=1` fallen. Jedes Tor
+// blieb grün — die Route antwortet ja —, und alle fünf Phasen der Messung
+// meldeten »die Szene wurde nie fertig geladen (Lehrer-Tür zu?)«. Dieselben
+// Parameter SIND die Lehrer-Debug-Tür.
+//
+// Ein Test kann eine Next-Route hier nicht ausführen (sie ist server-only und
+// ruft `redirect()`), also prüft dieser Fall die QUELLE: das Ziel wird aus den
+// `searchParams` zusammengesetzt und nicht als Literal geschrieben. Die
+// laufende Gegenprobe steht im PR (HTTP-Rauchtest gegen den echten Bau).
+describe("L0 · D1 · der Weiterleitungs-Stumpf", () => {
+  it("baut sein Ziel aus den searchParams, statt sie zu verlieren", async () => {
+    const fs = await import("node:fs");
+    const url = new URL("../app/(game)/play/[grade]/buch/page.tsx", import.meta.url);
+    const src = fs.readFileSync(url, "utf8");
+    assert.match(src, /URLSearchParams/, "die Abfrage wird nicht mitgenommen — genau der Defekt, den der Perf-Vertrag gefunden hat");
+    assert.match(src, /searchParams/, "die Route liest die Abfrage gar nicht");
+    // …und der Wächter kann sehen, was er sucht: ein Literal-Ziel ohne Abfrage
+    // wäre genau die alte Zeile, und die ist hier nicht mehr.
+    assert.doesNotMatch(src, /redirect\(`\/play\/\$\{grade\}\/buch\/ch01`\)/, "das Ziel ist wieder ein Literal ohne Abfrage");
+  });
+});
