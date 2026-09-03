@@ -1,0 +1,97 @@
+{
+ "schema": "paintClaims@1",
+ "chapter": "ch02",
+ "note": "L2-P1 (2026-09-03) · Vokabel-Ansprüche des Zoo-Kapitels. Klassen wie ch01 (being/thing/architecture/cards/pickup/debt; Bedeutung im Tor). p1 gebaut: dog, penguin (being), ticket (thing). p2/p3/Arena-Wesen als debt bis L2-G2. Alles Übrige: Karten-Abdeckung mit Ausnahme bis 2026-12-31 (L2-T1/T2 beantworten; die Ausnahme fällt, sobald eine Karte das Wort ANTWORTEN lässt — Block 2 meldet das).",
+ "claims": {
+  "tree": {
+   "kind": "architecture",
+   "stems": [],
+   "note": "Prop der Bühne 1 (Krone r14 c22–26, Stamm c24) — Gitter-Geometrie; Kunst-Zeit"
+  },
+  "monkey": {
+   "kind": "debt",
+   "stems": [],
+   "note": "Wesen/Prop von p2/p3/Arena — L2-G2 setzt den Stem (Blaupause §2)"
+  },
+  "parrot": {
+   "kind": "debt",
+   "stems": [],
+   "note": "Wesen/Prop von p2/p3/Arena — L2-G2 setzt den Stem (Blaupause §2)"
+  },
+  "giraffe": {
+   "kind": "debt",
+   "stems": [],
+   "note": "Wesen/Prop von p2/p3/Arena — L2-G2 setzt den Stem (Blaupause §2)"
+  },
+  "train": {
+   "kind": "debt",
+   "stems": [],
+   "note": "Wesen/Prop von p2/p3/Arena — L2-G2 setzt den Stem (Blaupause §2)"
+  },
+  "penguin": {
+   "kind": "being",
+   "stems": [
+    "pinguin",
+    "pinguin_rutscher"
+   ]
+  },
+  "guide": {
+   "kind": "debt",
+   "stems": [],
+   "note": "Wesen/Prop von p2/p3/Arena — L2-G2 setzt den Stem (Blaupause §2)"
+  },
+  "lion": {
+   "kind": "debt",
+   "stems": [],
+   "note": "Wesen/Prop von p2/p3/Arena — L2-G2 setzt den Stem (Blaupause §2)"
+  },
+  "next to": {
+   "kind": "cards",
+   "exception": {
+    "why": "Karten-Welle L2-T1/L2-T2 beantwortet es; p1 hat noch keine Karten",
+    "expires": "2026-12-31",
+    "owner": "L2-Architekt"
+   }
+  },
+  "in": {
+   "kind": "cards",
+   "exception": {
+    "why": "Karten-Welle L2-T1/L2-T2 beantwortet es; p1 hat noch keine Karten",
+    "expires": "2026-12-31",
+    "owner": "L2-Architekt"
+   }
+  },
+  "behind": {
+   "kind": "cards",
+   "exception": {
+    "why": "Karten-Welle L2-T1/L2-T2 beantwortet es; p1 hat noch keine Karten",
+    "expires": "2026-12-31",
+    "owner": "L2-Architekt"
+   }
+  },
+  "under": {
+   "kind": "cards",
+   "exception": {
+    "why": "Karten-Welle L2-T1/L2-T2 beantwortet es; p1 hat noch keine Karten",
+    "expires": "2026-12-31",
+    "owner": "L2-Architekt"
+   }
+  },
+  "on": {
+   "kind": "cards",
+   "exception": {
+    "why": "Karten-Welle L2-T1/L2-T2 beantwortet es; p1 hat noch keine Karten",
+    "expires": "2026-12-31",
+    "owner": "L2-Architekt"
+   }
+  },
+  "in front of": {
+   "kind": "cards",
+   "exception": {
+    "why": "Karten-Welle L2-T1/L2-T2 beantwortet es; p1 hat noch keine Karten",
+    "expires": "2026-12-31",
+    "owner": "L2-Architekt"
+   }
+  }
+ }
+}

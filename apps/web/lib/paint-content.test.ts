@@ -164,15 +164,22 @@ describe("L0b · D-790 · tipsTotal darf 0 sein (Ruling 2026-09-02)", () => {
   // von ch02 auf der Platte, an denen genau eine Zahl gedreht ist. Kein
   // erfundenes Level (das würde die anderen Regeln mitprüfen, die hier nicht
   // zur Debatte stehen) und keine Datei im Korpus (dort lesen die Tore).
-  const roh = () => JSON.parse(JSON.stringify(loadPaintLevel(STORY, "ch02")));
+  // L2-P1 (2026-09-03): ch02 ist kein Gerüst mehr — p1 setzt zwei Regel-Seiten.
+  // Die Fixture nimmt die echten Bytes und ENTFERNT die Regel-Seiten selbst, damit
+  // »0 = 0« unabhängig davon gilt, wie viele Seiten ein Kapitel gerade setzt; ein
+  // Lader-Test darf keinen Kapitel-INHALT pinnen (jede Kapitel-Bahn bräche ihn).
+  const roh = () => {
+    const l = JSON.parse(JSON.stringify(loadPaintLevel(STORY, "ch02")));
+    for (const ph of l.phases) ph.entities = ph.entities.filter((e: { role: string }) => e.role !== "tip");
+    return l;
+  };
 
-  it("ch02 setzt wirklich null tip-Zellen — die 0 ist die WAHRE Zahl", () => {
+  it("ch02 deklariert genau so viele Regel-Seiten, wie es setzt — die Prämisse »deklariert = platziert«", () => {
     // die Prämisse des Rulings: `tip-honesty` verlangt nur »deklariert =
-    // platziert«, und 0 = 0 ist gesetzestreu. Ohne diese Zeile prüfte der Fall
-    // darunter eine Erlaubnis, die niemand braucht.
+    // platziert«; 0 = 0 ist genauso gesetzestreu wie 2 = 2.
     const ch02 = loadPaintLevel(STORY, "ch02");
     const tips = ch02.phases.flatMap((p) => p.entities.filter((e) => e.role === "tip"));
-    assert.equal(tips.length, 0);
+    assert.equal(ch02.tipsTotal ?? 0, tips.length);
   });
 
   it("ein Kapitel mit `tipsTotal: 0` lädt", () => {

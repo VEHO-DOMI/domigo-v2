@@ -1323,6 +1323,24 @@ ch06 D-920…949.** Der Level-1-Sitz hält D-950…979 (nicht hier).
 
 ### LW · ch02 (D-800…829)
 #### L2-G
+**L2-P1 (2026-09-03, Level-2-Architekt; p1-Exemplar, PR `L2-P1:`).** Befunde des Kapitel-Sitzes aus Planung + Bau; je Befund führt die niedrigste Nummer (R253).
+
+| D | Befund | Beleg | Stand/Fix | Status · Datum | Quelle |
+|---|---|---|---|---|---|
+| D-800 | **`restore` Schritt 2 ist fest FARBE** (`colourAskDe/colourOptions/colour`, `game-tasks.ts#RestoreTask`; Tore 16d/0g nennen das Feld) — doc 41 §1 verspricht für ch02 einen Tier-ID-Zweischritt „was → wo" mit „null Motor" | Schema + `check-game-tasks.mjs` gemessen 02.09. | Feld: Name → Farbe (unit-wahr: blue and yellow, brown, black and white, yellow); das WO fragen Bühne, `match`, Löwe; `restore`-Variante „place" = Option im M-Blatt | offen (Entscheid) · 2026-09-02 | L2-Planung |
+| D-801 | **Neck-Käfige #4/#5 vs. Käfig-Gesetz** („jede erklärte Befreiung erreichbar", HUD zählt die Welt): sichtbare, aber erst in ch03 erreichbare Käfige können keine `cage`-Entities sein | `level.ts` cage-law/entity-reachable | Geometrie + Kunst-Dekor (p1 Voliere-Nische c37–39 r6–8); ch03 setzt die Entities; Antrag R-a angenommen 02.09. | offen bis ch03 · 2026-09-03 | L2-Planung |
+| D-802 | **Blatt/L0-Gerüst 22/24 Zeilen vs. ch01 gebaut 26** | `ch01.level.json` (p1 `rows`) | R243: 26 Zeilen Standard für Feld-Räume; L0 N8 hob das Gerüst | geschlossen · R243 | L2-Planung |
+| D-803 | **Anker sind an Tinten-Querungen gebunden** (`checkpoint-count`: genau ein `C` je gequerter Passage, null Querung ⇒ null Anker) — Kokis Anker-Plätze werden damit zu Querungs-Plätzen | `level.ts#checkpoint-count` | p1: Graben c59–60 mit `C` (58,17) `near`; p2/p3 je eine Querung an Kokis Stelle (G2) | offen (Design-Regel) · 2026-09-02 | L2-Planung |
+| D-804 | **`*` rendert immer als Buchstabe** (`letters.ts#letterGlyphs`), kein Sammel-Skin-Feld (L3 fand dasselbe unabhängig — führt unter ch03) | gemessen 02.09. | **R246 / L0 N1 `collectSkin`** — ch02 trägt `feather`; Kunst-Zeit malt `pb-collect_feather` | geschlossen (Motor) · offen (Kunst) | L2-Planung |
+| D-805 | **R235 (Bonus einmalig) im Motor nicht gebaut**; ch01 verhält sich absichtlich gegenteilig (`sim.ts#isBonusRoom` (Restock)) | gemessen 02.09. | **R249: L2-M-a baut die Schließung zuerst** | offen bis L2-M-a | L2-Planung |
+| D-806 | **`check-story-grounding.mjs` + `check-paint-copy.mjs` u01-fest (harte `u01-lexicon.json`-Pfade)** (L5 fand dasselbe unabhängig — führt unter ch05), fehlten in L0 D10 | gemessen 02.09. | L0-Nachtrag N4 (story-grounding meldet namentlich, prüft nur ch01) | geschlossen · L0 | L2-Planung |
+| D-807 | **Boss-Beweis nur für Schreib-Arten** (mistake/oddone/order/memory); `choice` darf kein `evidence` tragen (`game-tasks.ts#taskInvariantErrors`) | Schema | R250: choice-Fenster zeigen das Board ohne Kreide — Löwe W1/W3 choice, W2 mistake, W4 order | geschlossen · R250 | L2-Planung |
+| D-808 | **`bonuspay` ist keine Karte, `bonus`-Pool leer**; Bonusraum ohne Karten (ch01-Präzedenz) | `PaintGame.tsx#bonuspay`, `sim.ts` use-Union | ch02-Bonus ohne Karten (L5 hatte es zuerst als Shell-Zeremonie erkannt) | geschlossen · Rahmen §4 | L2-Planung |
+| D-809 | **Wächter-Rig FLIEGT** (Tafel-Choreografie `entities.ts#stepGuardian`); ein Löwe braucht eine Boden-Variante | gemessen 02.09. | `locomotion:"prowl"` + `projectileSkin` (Stab-Platten) = L2-M-b (`M_ENTWURF_L2`) | offen bis L2-M-b | L2-Planung |
+| D-810 | **`GUARDIAN_BOARDS` kennt nur `tafel`** (`PaintScene.ts#GUARDIAN_BOARDS`): fremder Wächter-Skin ⇒ Karte öffnet ohne Beweis-Fläche | gemessen 02.09. | `GUARDIAN_BOARDS.loewe` in L2-M-b (`GUARDIAN_SLATE` ist zell-geschlüsselt — nichts zu tun) | offen bis L2-M-b | L2-Planung |
+| D-811 | **Die letzte Gitter-Spalte kennt das Reach-Modell nicht:** `X` auf c63 (Breite 64) ⇒ `exit-reachable` rot, `X` auf c62 grün — die BFS betritt die Randspalte nie | `check-level-candidate --chapter ch02`, Kandidat X@63 vs X@62, 03.09. | p1: Tür (61,17), X (62,17) wie ch01; Motor-Gebiet: `reachFrom` Randbehandlung prüfen (L2-M-a Rider oder N7C) | offen · 2026-09-03 | L2-P1 |
+| D-812 | **Hangeln fehlt im Reach-Modell** (`level.ts#REACH_ENVELOPE` (JUMP_UP 4); hang = Leistengriff beim Fallen `player.ts#hangAt`): jede Mauer >4 Zeilen ist für die Gesetze unerreichbar, auch mit `hang` | gemessen 02./03.09. | Kassenmauer 4 hoch, hang optional; hang-Kante = L2-M-a (Nachtrag-Klarstellung „erster Konsument L2-M") — danach Mauer 5–6 + p2-Traversen | offen bis L2-M-a | L2-P1 |
+
 #### L2-T
 #### L2-S
 #### L2-M
