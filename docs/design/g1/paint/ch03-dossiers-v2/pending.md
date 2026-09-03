@@ -83,3 +83,27 @@ Der Schlüssel ist frei wählbar (nur Kleinbuchstaben und Ziffern), das Kunst-Bl
 - **Segelraum 44×20** — zwölf ebenerdige Münzen, `budgetSec: 40`. Der Schwungkurs kommt mit G2.
 - **Keine Münzen in p2 und p3.** Jede `*`-Zelle verlangt eine Anker-Zeile im Dossier ihres Raums;
   Trails ohne Gitter wären erfundene Koordinaten. G2 schneidet beides zusammen.
+
+## ⚠ Reihenfolge-Konflikt, den diese Bahn gefunden hat: G1 und T1 brauchen einander
+
+`check-paint-copy` (CI-Tor, in der Blatt-Batterie NICHT genannt) erdet **jede englische Zeile
+einer Regel-Seite** gegen das kumulative Unit-Lexikon `docs/design/g1/grounding/uNN-lexicon.json`.
+Es existiert bis heute nur `u01-lexicon.json`. Gemessen: **24 Verstöße, alle in den zwei
+Regel-Seiten von ch03 p1**, und zwar genau an den Wörtern, die die Unit lehrt — `have`, `got`,
+`has`, `he`, `she`, `they`, `ship`, `beard`, `hair`, `purple`, `foot`, `feet`, `tooth`, `teeth`,
+`man`, `men`, `woman`, `women`. ch01 ist unberührt (0 Verstöße).
+
+Das ist ein **Kreis in der Zug-Ordnung**, kein Fehler der Zeilen:
+- **T1 braucht G1 zuerst** — die Karten binden an die Skins des gemergten Levels.
+- **G1 braucht T1 zuerst** — die Regel-Seiten brauchen `u03-lexicon.json`, und das ist die
+  ERSTE Lieferung von L3-T1 (und liegt in meiner Scope-Wand ausdrücklich bei der T-Bahn).
+
+Die Zeilen selbst sind richtig: jedes beanstandete Wort steht in `content/corpus/units/g1-u03/
+wordbank.json`. Es fehlt nur die Erdungs-Datei.
+
+Drei Wege, Entscheid des Architekten:
+(a) **L3-T1 liefert `u03-lexicon.json` als eigene, winzige PR ZUERST**, dann G1, dann T1s Karten —
+    der Kreis bricht an der kleinsten Stelle. **Empfehlung.**
+(b) G1 und T1 fahren als EIN Zug und werden zusammen gemergt.
+(c) Die zwei Regel-Seiten wandern aus p1 nach G2 (nach T1). Kostet Kokis Kalibrier-Walk zwei
+    Beats und `tipsTotal` fällt auf 0 — möglich seit L0b, aber es nimmt dem Exemplar die Lehre.
