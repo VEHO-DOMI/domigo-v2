@@ -14,7 +14,7 @@
       ],
       "stimulus": {
         "type": "entity",
-        "showsDe": "Ein Schnipsel liegt auf dem Pflaster der Gasse."
+        "showsDe": "Ein zerrissener Zettel in Mos krakeliger Handschrift."
       },
       "storyDe": "Welches Wort fehlt auf dem Schnipsel?",
       "promptEn": "Mo runs down the ___.",
@@ -46,10 +46,10 @@
       ],
       "stimulus": {
         "type": "entity",
-        "showsDe": "Am Tor winkt jemand zum Park hinüber.",
+        "showsDe": "Mo bleibt am Tor stehen und schaut zu dir zurück.",
         "art": "door_a"
       },
-      "storyDe": "Was rufst du ihm zu?",
+      "storyDe": "Er soll weiter! Was rufst du ihm zu?",
       "options": [
         "Help me!",
         "Well done.",
@@ -111,8 +111,7 @@
         "type": "entity",
         "showsDe": "Der Obststand quillt über vor Äpfeln."
       },
-      "storyDe": "So viele! Welcher Satz stimmt?",
-      "promptEn": "How many?",
+      "storyDe": "So viele Äpfel! Was sagst du?",
       "options": [
         "a lot of apples",
         "a lots of apples",
@@ -203,7 +202,7 @@
       ],
       "stimulus": {
         "type": "entity",
-        "showsDe": "Tammo steht auf. Die Tür vom Büro steht offen."
+        "showsDe": "Ein Fuß schon draußen, hinter Tammo das leere Büro."
       },
       "storyDe": "Was tut er? Sag es auf Englisch!",
       "options": [
@@ -281,8 +280,8 @@
       },
       "correctionOptions": [
         "street",
-        "woods",
-        "tree"
+        "tree",
+        "office"
       ],
       "evidence": [
         "Mo runs down the river."
