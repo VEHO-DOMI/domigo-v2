@@ -1,0 +1,206 @@
+{
+  "schema": "paintProof@1",
+  "level": "g1.paint.ch06",
+  "phases": {
+    "p1": {
+      "abilities": [
+        "jump",
+        "run",
+        "punch",
+        "hang",
+        "swing",
+        "hover"
+      ],
+      "pads": [
+        [
+          20,
+          2
+        ],
+        [
+          12,
+          0
+        ],
+        [
+          6,
+          18
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          33,
+          0
+        ],
+        [
+          15,
+          1
+        ],
+        [
+          10,
+          0
+        ],
+        [
+          6,
+          18
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          31,
+          0
+        ],
+        [
+          50,
+          2
+        ],
+        [
+          12,
+          0
+        ],
+        [
+          14,
+          2
+        ],
+        [
+          26,
+          0
+        ],
+        [
+          10,
+          2
+        ],
+        [
+          13,
+          0
+        ],
+        [
+          11,
+          2
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          6,
+          18
+        ],
+        [
+          8,
+          2
+        ],
+        [
+          25,
+          0
+        ],
+        [
+          16,
+          2
+        ],
+        [
+          11,
+          0
+        ],
+        [
+          38,
+          1
+        ],
+        [
+          21,
+          0
+        ],
+        [
+          75,
+          2
+        ],
+        [
+          12,
+          0
+        ],
+        [
+          74,
+          2
+        ],
+        [
+          12,
+          0
+        ],
+        [
+          6,
+          18
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          36,
+          0
+        ],
+        [
+          26,
+          2
+        ],
+        [
+          12,
+          0
+        ],
+        [
+          14,
+          18
+        ],
+        [
+          43,
+          0
+        ],
+        [
+          22,
+          2
+        ],
+        [
+          12,
+          0
+        ],
+        [
+          25,
+          2
+        ],
+        [
+          12,
+          0
+        ],
+        [
+          17,
+          2
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "expect": {
+        "lettersGot": 12,
+        "lettersTotal": 12,
+        "exitTo": "p2",
+        "cagesFreed": 0,
+        "guardianDown": false,
+        "tasksSolved": 3,
+        "redeemedPresent": true,
+        "classmatesAwake": 0,
+        "tipsGot": 2,
+        "booksGot": 0,
+        "clothGot": 3,
+        "scorePageShown": false,
+        "guardianPathsFlown": 0,
+        "guardianTelegraphs": 0,
+        "guardianWindows": 0,
+        "guardianWroteLow": false,
+        "guardianConsoled": false,
+        "guardianLanded": false
+      }
+    }
+  }
+}
