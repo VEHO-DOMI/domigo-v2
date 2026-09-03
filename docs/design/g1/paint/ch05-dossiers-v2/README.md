@@ -22,7 +22,7 @@ _»Das Konzert der Seiten — Die Band ohne Takt« · Unit 5. Stand **2026-09-03
 | Höchsttempo | 2,25 px/Tick |
 | Tap-Sprung | Scheitel 50 px = 3,13 Zeilen · Spannweite 4,92 Spalten |
 | Halte-Sprung | Scheitel 101 px = 6,31 Zeilen · Spannweite 8,02 Spalten |
-| **Feder (`s`)** | **Hub 4,94 Zeilen** — nicht durch Halten verlängerbar |
+| **Feder (`s`)** | **Hub 5,94 Zeilen** aus dem Stand (Füße r18 → r12,06); 5,81 im aufgezeichneten Band — nicht durch Halten verlängerbar |
 | **Ausrollen ohne Eingabe** | `#` 0,77 Spalten · **`~` 1,62 Spalten** (halbe Bremsrate) |
 | Noten-Magnet | 25,6 px ab Fuß−10 |
 | Erreichbarkeits-Hülle | 4 Zeilen hoch · 4 Spalten weit · 7 mit Schweben |

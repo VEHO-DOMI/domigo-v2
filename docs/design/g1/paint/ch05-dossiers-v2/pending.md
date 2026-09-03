@@ -64,7 +64,7 @@ bestellt, bestellt zuerst die Reparatur dieses Lochs (**L5-M1**).
 ## d · Der Taktsprung (Gunst I)
 
 `beatjump` als neue Fähigkeit (**L5-M2**): auf einer Feder **und** mit Absprung im Takt-Fenster (±6 Ticks,
-Kokis Fühlwert am Walk) hebt es −10 px/Tick statt −8 — der Scheitel wächst von den heute **gemessenen 4,94
+Kokis Fühlwert am Walk) hebt es −10 px/Tick statt −8 — der Scheitel wächst von den heute **gemessenen 5,94
 Zeilen** auf rund zwölf. Vergabe als `powerup { grants: "beatjump", gabeDe: "der Taktsprung" }` am Ende des
 Ost-Trakts, nachdem das Schlagzeug getröstet ist. Kapitel 6 deklariert die Fähigkeit dann selbst.
 
