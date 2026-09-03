@@ -18,6 +18,7 @@ import { CANOPY_STEM, phaseArtScope } from "./artScope.ts";
 import { FACE_FLOOR_CX, FACE_FLOOR_CY, faceFloorHalbachsen } from "./face-floor.ts";
 import { type AudioDirector, surfaceOfPhase } from "./audio/index.ts";
 import { captiveStem, isCaptiveKey } from "./artManifest.ts";
+import { heroFallbackNote } from "./heroFallbackNote.ts";
 import { PAD_KEYS, applyKeyCapture } from "./keyCapture.ts";
 import { TextureWarmer, type WarmScene, type WarmStats } from "./warmer.ts";
 import { WARM_MPX_PER_FRAME } from "./warm.ts";
@@ -4254,6 +4255,14 @@ export class PaintScene extends Phaser.Scene {
       this.player.jumpedAgo, // R5-F4: die Uhr, an der die Hocke hängt
     );
     const full = fullCell !== null && this.textures.exists(this.tex(fullCell)) ? fullCell : null;
+    // L0d · R263 · …und wenn die bestellte Zelle fehlt, ist das ein DEFEKT, kein
+    // Zustand. Gezeichnet wird trotzdem weiter (der Baukasten haelt das Spiel am
+    // Leben), aber im Entwicklungs-Bau sagt es einmal je Kapitel und Stem
+    // Bescheid — siehe heroFallbackNote.ts fuer die ganze Herleitung.
+    if (fullCell !== null && full === null) {
+      const notiz = heroFallbackNote(fullCell, this.cfg.level.chapter);
+      if (notiz !== null) console.warn(notiz);
+    }
     // R5-F3 · DIE ANHOLUNG GILT FÜR BEIDE ZEICHENWEGE. Die per-Glied-Anholung
     // im Rig ist richtig — und blieb unsichtbar, weil für den Sprung eine
     // gemalte Ganzkörper-Zelle existiert und die Teile darunter versteckt sind
