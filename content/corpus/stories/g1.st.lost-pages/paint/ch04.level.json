@@ -21,7 +21,7 @@
     "hover"
   ],
   "checkpointStyle": "silent",
-  "tipsTotal": 2,
+  "tipsTotal": 0,
   "doorPlate": "plate_ch01_door",
   "scorePlate": "plate_ch01_score",
   "rulePlate": "plate_ch01_rule",
@@ -74,32 +74,6 @@
             "grants": "hover",
             "gabeDe": "der Feder-Rotor",
             "essential": true
-          }
-        },
-        {
-          "id": "p1-regel-verneinung",
-          "role": "tip",
-          "skin": "regelseite",
-          "c": 21,
-          "r": 17,
-          "tier": "E",
-          "params": {
-            "topicDe": "Verneinung mit to be",
-            "erklaerungDe": "Bei to be hängst du einfach not an. Aus „He is happy“ wird kurz „He isn't happy“.",
-            "merksatzDe": "Bei to be steht not gleich nach dem Verb — kurz: isn't, aren't, I'm not.",
-            "schluesselDe": "not gleich nach dem Verb",
-            "beispieleEn": [
-              "He isn't happy.",
-              "We aren't tired.",
-              "I'm not cold."
-            ],
-            "beispielMuster": "einzeln",
-            "lehrtEn": [
-              "isn't",
-              "aren't",
-              "I'm not"
-            ],
-            "belegDe": "MORE! 1 · Unit 4"
           }
         },
         {
@@ -212,34 +186,6 @@
           "params": {
             "patrolMinC": 33,
             "patrolMaxC": 41
-          }
-        },
-        {
-          "id": "p1-regel-fragen",
-          "role": "tip",
-          "skin": "regelseite",
-          "c": 49,
-          "r": 17,
-          "tier": "E",
-          "params": {
-            "topicDe": "Fragen mit to be",
-            "erklaerungDe": "Für eine Frage stellst du das to be nach vorn. Aus „You are cold“ wird „Are you cold?“.",
-            "merksatzDe": "Frage: erst das to be, dann die Person — Are you …? Is he …?",
-            "schluesselDe": "erst das to be, dann die Person",
-            "beispieleEn": [
-              "Are you cold?",
-              "Is he sad?",
-              "Yes, I am.",
-              "No, he isn't."
-            ],
-            "beispielMuster": "einzeln",
-            "lehrtEn": [
-              "Are you",
-              "Is he",
-              "Yes, I am",
-              "No, he isn't"
-            ],
-            "belegDe": "MORE! 1 · Unit 4"
           }
         },
         {

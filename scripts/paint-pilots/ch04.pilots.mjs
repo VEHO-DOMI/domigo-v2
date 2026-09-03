@@ -4,7 +4,7 @@
 // der den Ausgang nicht erreicht, IST der Beweis, dass der Raum sein
 // Spielbarkeits-Gesetz bricht. p1 »Der graue Marktplatz« ist das Kalibrier-
 // Exemplar des Kapitels (Dossier ch04-dossiers-v2/p1.md §10); p2/p3/p4/p9 folgen
-// mit L4-G2. Karten (Regel-Seite, Gabe, Restore, Käfig, Tür) legt der Rekorder
+// mit L4-G2. Karten (Gabe, Restore, Begegnung, Käfig, Tür) legt der Rekorder
 // ab bzw. löst sie auto (record-paint-tape.mjs `handle`), genau wie der CI-Replayer.
 //
 // DIE EINE STELLE, DIE DIESES KAPITEL AUSMACHT: der Sprung über die Markisen-
@@ -15,10 +15,11 @@
 // das ist die Gegenprobe im Report.
 export const PILOTS = {
   // p1 »Der graue Marktplatz«: S (3,17) → Marktkiste r16 → Markise r13 mit dem
-  // FEDER-ROTOR (14,12) → Blumenstand-Theke → Marktfrau (20,17) → Anker C (23,17)
+  // FEDER-ROTOR (15,12) → Blumenstand-Theke → Marktfrau (19,17) → Anker C (23,17)
   // → SCHWEBEN über die Grube c24–28 → Waggon-Reihe r14 (Mo…So, Tropfen darüber)
-  // → Käsestand → Regel-Seite (50,17) → Regenkind (55,17) → Zaunlatten ^ c56–57
-  // → Flasche mit dem Morgen (59,17) → Marktgatter (61,17) → X (62,17).
+  // → Regenkind (52,17) → Zaunlatten ^ c55–56 → Flasche mit dem Morgen (59,17)
+  // → Marktgatter (61,17) → X (62,17). Die zwei Regel-Seiten warten auf das Kapitel-
+  // Lexikon (ch04-dossiers-v2/pending.md §5); ihre Zellen (21,17) und (49,17) sind frei.
   p1: {
     abilities: ["jump", "run", "punch"], // hover kommt IM Raum, aus dem Feder-Rotor
     program: [

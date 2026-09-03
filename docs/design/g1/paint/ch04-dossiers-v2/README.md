@@ -10,7 +10,7 @@ R246 (`collectSkin`) · R250 · R251 (Bonus-Eintritt und Timer setzt der Archite
 
 | Raum | Name | Gitter | Wesen | Farbtropfen | Ausgang |
 |---|---|---|---|---|---|
-| p1 | Der graue Marktplatz | 64×26 | 16 | 12 | p2 |
+| p1 | Der graue Marktplatz | 64×26 | 14 | 12 | p2 |
 | p2 | Das Haus der Tage | 72×26 | 8 | 12 | p3 |
 | p3 | Der Wetterturm | 56×30 | 1 | 0 | boss |
 | p4 | Die Kalender-Halle | 40×20 | 2 | 0 | done |
@@ -18,7 +18,7 @@ R246 (`collectSkin`) · R250 · R251 (Bonus-Eintritt und Timer setzt der Archite
 
 Sammel-Nomen **Farbtropfen** (`collectSkin: "farbtropfen"`) · Faehigkeiten
 `jump` · `run` · `punch` · `hover` · `checkpointStyle: "silent"` ·
-`tipsTotal: 2` (beide Regel-Seiten liegen in p1) · Bonus-Eintritt **10 Tropfen**,
+`tipsTotal: 0` (beide Regel-Seiten liegen in p1) · Bonus-Eintritt **10 Tropfen**,
 Timer **35 s** + 2 s Gnade, EIN Lauf (R235/R251).
 
 ## Kanon-Zahlen (kapitelweit, wie ch01)
