@@ -1146,7 +1146,12 @@ export const CH01_COMPOSITION: Record<string, CompositionSpec> = {
     words: ["projector"], // R5-P1: Trail PROJECTOR = 9 (p2.md §4 — der Projektor wirft die Zahlen)
   },
   // p3 Schulhof-Garten — afternoon-soft: sand plaster and chalk pastel.
-  // The one phase with the chalk slide (`z` runs, AF group 4).
+  // ★ N7A2c: HIER STAND DAS RUTSCHEN-KIT. Der Hof zeichnet seine fuenf
+  // `z`-Zellen nicht mehr aus `slide_top/mid/foot/under`, sondern malt sie —
+  // sie stehen als Schraegen in der Maske von `p3_westterrasse_rutsche`. Weil
+  // die fuenf Zellen nicht zusammenhaengen, hatte der Planer fuenfmal dasselbe
+  // kleine Eckstueck in einen sonst durchgemalten Raum gesetzt (R264). Damit ist
+  // p3 der erste Raum, in dem KEIN Bausatz-Teil mehr gezeichnet wird.
   p3: {
     key: 86,
     wash: { colors: [0xf3ecd9, 0xe6dcc0, 0xd2c9a6] },
@@ -1173,7 +1178,6 @@ export const CH01_COMPOSITION: Record<string, CompositionSpec> = {
     mass: {
       ...sharedMass("p3"),
       ...crustOf("p3"),
-      slide: { top: "slide_top", mid: "slide_mid", foot: "slide_foot", under: "slide_under" },
     },
     words: ["glue", "stick"], // the u01 phrase „glue stick", split over the yard
   },
