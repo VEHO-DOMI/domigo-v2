@@ -81,15 +81,15 @@
       "merksatzDe": "Bei er, sie und es hängt am Verb ein s.",
       "schluesselDe": "hängt am Verb ein s",
       "beispieleEn": [
-       "He lives in London.",
-       "She plays football.",
-       "Mo looks for his dog."
+       "The girl looks for the dog.",
+       "The dog sits down.",
+       "The boy runs to the park."
       ],
       "beispielMuster": "einzeln",
       "lehrtEn": [
-       "lives",
-       "plays",
-       "looks for"
+       "looks for",
+       "sits",
+       "runs"
       ],
       "belegDe": "MORE! 1 · Unit 6 · Seite 50"
      }
@@ -98,7 +98,7 @@
      "id": "p1-regel-a-lot-of",
      "role": "tip",
      "skin": "regelseite",
-     "c": 31,
+     "c": 17,
      "r": 17,
      "tier": "E",
      "params": {
@@ -107,9 +107,9 @@
       "merksatzDe": "a lot of und lots of heißen beide: ganz viele.",
       "schluesselDe": "a lot of und lots of",
       "beispieleEn": [
-       "a lot of apples",
-       "lots of apples",
-       "a lot of homework"
+       "a lot of books",
+       "lots of books",
+       "a lot of fun"
       ],
       "beispielMuster": "einzeln",
       "lehrtEn": [
@@ -137,7 +137,7 @@
      "tier": "E",
      "params": {
       "patrolMinC": 36,
-      "patrolMaxC": 44
+      "patrolMaxC": 42
      }
     },
     {

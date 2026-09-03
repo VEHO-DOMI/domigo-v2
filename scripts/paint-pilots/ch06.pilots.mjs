@@ -9,9 +9,9 @@
 // p4/p9 bekommen ihre Makros von L6-G2, wenn sie ihre echten Gitter haben; der
 // Rekorder überspringt Phasen ohne Piloten anstandslos (`phases = Object.keys(PILOTS)`).
 export const PILOTS = {
-  // p1 »Die Markt-Gassen« (Dossier p1.md §10): Auftakt → Regel-Seite auf dem
-  // Markisen-Absatz → Sprungfeder → Balkon A (Schnipsel »runs«) → Dachkante →
-  // zurück auf die Gasse → Obststand/Markt-Wagen → nasses Pflaster → Beweis-Glas
+  // p1 »Die Markt-Gassen« (Dossier p1.md §10): Auftakt-Bogen → Regel-Seite 1 auf dem
+  // Markisen-Absatz → Regel-Seite 2 → Sprungfeder → Balkon A (Schnipsel »runs«) →
+  // Dachkante → über die WESTKANTE zurück auf die Gasse → Marktzone → Beweis-Glas
   // → Anker → Tinten-Rinne → Schnipsel »street« → Hausnummer 7 → Tür.
   //
   // Zwei gemessene Regeln stecken in der Reihenfolge: vor der Feder wird NICHT
@@ -25,7 +25,7 @@ export const PILOTS = {
       ["jump", { dir: "right", hold: 6, steer: 12 }], ["settle"],   // der Auftakt-Bogen: der Scheitel-Funke (7,15)
       ["walkTo", 9], ["settle"],
       ["jump", { dir: "right", hold: 6, steer: 10 }], ["settle"],   // auf den Markisen-Absatz → Regel-Seite 1
-      ["walkTo", 18], ["settle"],                                    // herunter auf die Gasse, Funken im Gehen
+      ["walkTo", 18], ["settle"],                                    // herunter auf die Gasse: Funken + Regel-Seite 2 (17,17)
       ["hold", { right: true }, 14],                                 // auf die Feder (20,17) — kein settle davor
       ["hold", {}, 26],                                              // der Wurf trägt senkrecht 5,94 Zeilen hinauf
       ["hold", { right: true }, 10],                                 // im Scheitel nach rechts auf Balkon A
@@ -34,7 +34,7 @@ export const PILOTS = {
       ["jump", { dir: "right", hold: 6, steer: 14 }], ["settle"],    // Balkon A → Dachkante (Δr3, Δc2)
       ["walkTo", 28], ["settle"],
       ["walkTo", 24], ["settle"],                                    // über die Westkante zurück auf die Gasse
-      ["walkTo", 32], ["settle"],                                    // Regel-Seite 2 vor dem Obststand
+      ["walkTo", 32], ["settle"],                                    // zurück auf der Gasse, Richtung Marktzone
       ["walkTo", 42], ["settle"],                                    // unter dem Obststand durch, nasses Pflaster
       ["jump", { dir: "right", hold: 6, steer: 12 }], ["settle"],    // Bogen über (44,15) → Schnipsel »down«
       ["walkTo", 49], ["settle"],                                    // Beweis-Glas, dann der stille Anker
