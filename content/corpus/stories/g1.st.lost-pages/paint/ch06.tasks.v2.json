@@ -51,9 +51,9 @@
       },
       "storyDe": "Was rufst du ihm zu?",
       "options": [
-        "Come on!",
         "Help me!",
-        "Well done."
+        "Well done.",
+        "Come on!"
       ],
       "answer": "Come on!",
       "skins": [
@@ -144,9 +144,9 @@
       },
       "storyDe": "Was steckt im Glas? Sag es auf Englisch!",
       "options": [
-        "It's an umbrella.",
         "It's a mirror.",
-        "It's a hat."
+        "It's a hat.",
+        "It's an umbrella."
       ],
       "answer": "It's an umbrella.",
       "skins": [
@@ -240,8 +240,8 @@
       "select": "odd",
       "items": [
         "Mo runs down the street.",
-        "Mo looks for his hat in the park.",
-        "Mo jumps into the river."
+        "Mo jumps into the river.",
+        "Mo looks for his hat in the park."
       ],
       "correct": [
         "Mo jumps into the river."
