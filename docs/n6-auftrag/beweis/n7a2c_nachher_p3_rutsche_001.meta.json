@@ -1,0 +1,181 @@
+{
+  "tick": 600,
+  "phase": "p3",
+  "overlay": false,
+  "reducedMotion": false,
+  "visibility": "visible",
+  "hidden": false,
+  "hero": {
+    "x": 248,
+    "y": 288,
+    "pose": "stand",
+    "grounded": true
+  },
+  "camX": 136,
+  "camY": 147,
+  "canvas": {
+    "w": 1056,
+    "h": 672,
+    "cssW": 1056,
+    "cssH": 672
+  },
+  "entities": [
+    {
+      "id": "p3-ranzen",
+      "role": "crusher",
+      "skin": "ranzen",
+      "state": "patrol",
+      "redeemed": false,
+      "x": 760,
+      "y": 272,
+      "breath": null
+    },
+    {
+      "id": "p3-heft",
+      "role": "flyer",
+      "skin": "heft",
+      "state": "patrol",
+      "redeemed": false,
+      "x": 402,
+      "y": 324,
+      "breath": null
+    },
+    {
+      "id": "p3-cage4",
+      "role": "cage",
+      "skin": "satchel",
+      "state": "closed",
+      "redeemed": false,
+      "x": 760,
+      "y": 208,
+      "breath": {
+        "rot": -0.026539943217006343,
+        "dy": 0,
+        "sx": 1,
+        "sy": 1,
+        "hPx": 34,
+        "scr": {
+          "x": 1832.43747740952,
+          "y": 80.05754102396682,
+          "w": 76.41828875797216,
+          "h": 103.92083864142575
+        }
+      }
+    },
+    {
+      "id": "p3-door",
+      "role": "door.trigger",
+      "skin": "door",
+      "state": "patrol",
+      "redeemed": false,
+      "x": 968,
+      "y": 224,
+      "breath": null
+    },
+    {
+      "id": "p3-regel-plural",
+      "role": "tip",
+      "skin": "regelseite",
+      "state": "patrol",
+      "redeemed": false,
+      "x": 424,
+      "y": 224,
+      "breath": {
+        "rot": 0,
+        "dy": 0,
+        "sx": 1,
+        "sy": 1,
+        "hPx": 22,
+        "scr": {
+          "x": 842.0449388333907,
+          "y": 169.91749860720074,
+          "w": 43.91012233321851,
+          "h": 66
+        }
+      }
+    },
+    {
+      "id": "p3-obj-gluestick",
+      "role": "drained",
+      "skin": "obj_gluestick",
+      "state": "patrol",
+      "redeemed": false,
+      "x": 232,
+      "y": 208,
+      "breath": {
+        "rot": 0.021686361076459666,
+        "dy": 0,
+        "sx": 1,
+        "sy": 1,
+        "hPx": 28,
+        "scr": {
+          "x": 252.8780559415483,
+          "y": 98.31214701637165,
+          "w": 67.0693234684604,
+          "h": 85.3954577199203
+        }
+      }
+    },
+    {
+      "id": "p3-obj-sharpener",
+      "role": "drained",
+      "skin": "obj_sharpener",
+      "state": "patrol",
+      "redeemed": false,
+      "x": 328,
+      "y": 320,
+      "breath": {
+        "rot": 0.0373164715019507,
+        "dy": 0,
+        "sx": 1,
+        "sy": 1,
+        "hPx": 22,
+        "scr": {
+          "x": 534.3482791936351,
+          "y": 451.577458398305,
+          "w": 81.13040191963205,
+          "h": 68.89103099958379
+        }
+      }
+    },
+    {
+      "id": "p3-cloth-skirt",
+      "role": "cloth",
+      "skin": "cloth_skirt",
+      "state": "patrol",
+      "redeemed": false,
+      "x": 456,
+      "y": 272,
+      "breath": null
+    },
+    {
+      "id": "p3-cloth-socks",
+      "role": "cloth",
+      "skin": "cloth_socks",
+      "state": "patrol",
+      "redeemed": false,
+      "x": 680,
+      "y": 336,
+      "breath": null
+    },
+    {
+      "id": "p3-cloth-shoe",
+      "role": "cloth",
+      "skin": "cloth_shoe",
+      "state": "patrol",
+      "redeemed": false,
+      "x": 856,
+      "y": 288,
+      "breath": null
+    }
+  ],
+  "shotCostTicks": 0,
+  "pure": true,
+  "via": "snapshot",
+  "serie": "n7a2c_nachher_p3_rutsche",
+  "nr": 1,
+  "tickBefore": 600,
+  "frame": "n7a2c_nachher_p3_rutsche_001.png",
+  "md5": "2f501d6738e63bfc9945421a46f6cb9b",
+  "index": 1
+}

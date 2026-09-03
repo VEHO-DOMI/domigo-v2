@@ -1,6 +1,6 @@
 # N7A2c · DIE KREIDE-RUTSCHE WIRD GEMALT — die Westterrasse, ein Wurf
 
-**Stand: 2026-09-03 · N7A2c · Runde 1** — diese Zeile zitierst du in Zeile 1 deiner
+**Stand: 2026-09-03 · N7A2c · Runde 2 (Fix-Runde, EIN Posten)** — diese Zeile zitierst du in Zeile 1 deiner
 Selbstauskunft. Kommt eine Order-Änderung, ändert sich diese Zeile; was du nicht
 zitieren kannst, hast du nicht gelesen.
 
@@ -152,6 +152,46 @@ Das heißt konkret, und daran wird sie gemessen:
 Dichte-Maß hin gebaut (Steh-Zellen von 1,9 auf 58,1 %) und ist genau daran
 gescheitert — mehr Kanten auf der Lauffläche **arbeiten gegen Punkt 3**. Eine höhere
 Zahl ist nicht das Ziel. Das Ziel ist, dass man die Stufe als Stufe sieht.
+
+---
+
+## ★ RUNDE 2 · DER EINE POSTEN AUS DER BLINDEN PRÜFUNG
+
+Deine Runde-1-Lieferung hat **alle Tore bestanden** (Silhouette 5/5, Bodenebene
+Reichweite 91 % / Kipp 0,0°, Luminanz 33,5 %, Sättigung 66,2 %, Kanten-Median 52,6 %)
+und die blinde Prüferin hat sie **auf dem Blatt deutlich gewinnen lassen**: die
+Trittstufe liest jetzt als eigenes benennbares Ding, die helle Fase zieht durch,
+und unter jeder Bohle liegt der Schattenkeil, der sie als tragendes Objekt ausweist.
+Der alte Stand fiel bei ihr am Anti-Kriterium »nackter Schnitt« durch. **Das bleibt.**
+
+**In der SPIELSZENE hat sie die alte Fassung knapp vorgezogen — aus genau einem
+Grund**, und der ist zu beheben, ohne das Gewonnene anzufassen. Wörtlich:
+
+> „In A tragen die Stufenkanten mehrere helle, **gleich geformte** Glanz-/Funkenstriche"
+> · „die Glanzstriche sitzen als klar abgegrenzte, **wiederkehrende** Einzelereignisse
+> an jeder Stufenecke — das liest sich eher als **aufgesetzter Effekt** denn als lokales
+> Ereignis am Material" · „wirkt wie **derselbe Dekal-Sticker mehrfach eingesetzt**
+> statt einzeln gemalt".
+
+Das ist bitter genau der Befund, für den diese ganze Bahn existiert: Koki hat fünf
+**gleiche eingesetzte Teile** eingekreist. Wir haben den Bausatz entfernt und an
+seiner Stelle fünf gleiche Glanz-Keile hinterlassen.
+
+**Der Auftrag der Fix-Runde, und NUR dieser:**
+
+1. **Die fünf Kreide-Spuren werden fünf VERSCHIEDENE Spuren.** Verschiedene Länge,
+   verschiedene Dichte, verschiedener Verlauf, verschiedene Helligkeit; eine reicht
+   fast bis zur Stufenkante, eine ist fast weggewischt, eine hat eine breite und eine
+   dünne Zone. Keine zwei dürfen dieselbe Form haben.
+2. **Kreidestaub statt Glanz-Funke.** Es ist abgeriebene Kreide auf Buchleinen —
+   matt, körnig, in die Oberfläche gearbeitet, an den Rändern ausfransend. Kein
+   scharf begrenzter weißer Keil, kein Glanzlicht, kein Funkeln, kein Blitz.
+3. **Alles andere bleibt.** Silhouette, Rampengeometrie, Trittstufen mit ihrer hellen
+   Fase und ihrem Schattenkeil, Bücherverband, Werte. Der Wert-Vertrag ist erfüllt und
+   soll erfüllt bleiben (Luminanz 30–38 %, Sättigung ≥45).
+
+Prüfe wieder mit denselben drei Befehlen und liefere dieselben zwei Dateien
+(die Selbstauskunft ergänzt einen Abschnitt »Runde 2«).
 
 ---
 
