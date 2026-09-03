@@ -3,26 +3,26 @@
  "label": "warm=1",
  "port": 4051,
  "url": "http://localhost:4051/play/1/buch?phase=<phase>&perf=1",
- "buildCommit": "95905a136d53614aee16649fa241945646a8e268",
+ "buildCommit": "c730257caa5f61482b38d16c663df5a838e1c5c6",
  "buildCommitSource": "--worktree /Users/veho/Code/domigo-v2-l0d (ERKLÄRT, nicht geprüft — dass dort der gemessene Server läuft, ist die Behauptung des Aufrufers)",
  "buildLabel": null,
- "scriptCommit": "95905a136d53614aee16649fa241945646a8e268",
- "controlFps": 61.84538653366584,
+ "scriptCommit": "c730257caa5f61482b38d16c663df5a838e1c5c6",
+ "controlFps": 60.92688773363018,
  "controlFloor": 58,
  "visibilityState": "visible",
  "hidden": false,
  "warm": "1",
- "runsPerPhase": 1,
+ "runsPerPhase": 3,
  "maschine": {
   "vorher": {
    "messBrowser": 0,
    "browser": [],
    "zeilen": [],
    "last": {
-    "roh": "{ 6.02 9.12 7.93 }",
-    "m1": 6.02,
-    "m5": 9.12,
-    "m15": 7.93
+    "roh": "{ 5.41 6.12 6.77 }",
+    "m1": 5.41,
+    "m5": 6.12,
+    "m15": 6.77
    },
    "fremdeServer": [
     {
@@ -92,10 +92,10 @@
    "browser": [],
    "zeilen": [],
    "last": {
-    "roh": "{ 5.67 8.89 7.86 }",
-    "m1": 5.67,
-    "m5": 8.89,
-    "m15": 7.86
+    "roh": "{ 5.26 6.01 6.70 }",
+    "m1": 5.26,
+    "m5": 6.01,
+    "m15": 6.7
    },
    "fremdeServer": [
     {
@@ -171,19 +171,19 @@
  "rows": [
   {
    "phase": "p1",
-   "bauMs": 4.543249999999716,
-   "runs": 1,
-   "attempts": 1,
-   "loadMs": 588.7,
-   "createMs": 64.8,
-   "firstGpuMs": 1.76,
-   "settledGpuMs": 1.13,
-   "firstCpuMs": 21.1,
+   "bauMs": 4.296249999999873,
+   "runs": 3,
+   "attempts": 3,
+   "loadMs": 365.8,
+   "createMs": 72,
+   "firstGpuMs": 1.77,
+   "settledGpuMs": 1.24,
+   "firstCpuMs": 20.2,
    "firstDrawCalls": 4,
    "filesQueued": 88,
-   "fps": 60.02164715072763,
+   "fps": 60.04528004689645,
    "cpuP50": 3.6,
-   "cpuP95": 4.8,
+   "cpuP95": 4.7,
    "drawCalls": 4,
    "glTextures": 197,
    "texMb": 132.4,
@@ -191,32 +191,32 @@
     {
      "step": "fallbackTextures",
      "parent": null,
-     "ms": 5.5
+     "ms": 6.3
     },
     {
      "step": "backdrop",
      "parent": null,
-     "ms": 8.2
+     "ms": 9.4
     },
     {
      "step": "air",
      "parent": null,
-     "ms": 0.9
+     "ms": 1
     },
     {
      "step": "· gitter",
      "parent": "terrain",
-     "ms": 0.4
+     "ms": 0.5
     },
     {
      "step": "· tinten-spalten",
      "parent": "terrain",
-     "ms": 0.1
+     "ms": 0.2
     },
     {
      "step": "· · krone",
      "parent": "terrain",
-     "ms": 0.1
+     "ms": 0
     },
     {
      "step": "· · planke",
@@ -251,22 +251,22 @@
     {
      "step": "· verzierung",
      "parent": "terrain",
-     "ms": 1.7
+     "ms": 1.6
     },
     {
      "step": "· planMass",
      "parent": "terrain",
-     "ms": 6.3
+     "ms": 6.1
     },
     {
      "step": "· schatten",
      "parent": "terrain",
-     "ms": 0.7
+     "ms": 0.6
     },
     {
      "step": "· platzieren",
      "parent": "terrain",
-     "ms": 0.3
+     "ms": 0.4
     },
     {
      "step": "· · davon Kacheln",
@@ -281,12 +281,12 @@
     {
      "step": "· koernung",
      "parent": "terrain",
-     "ms": 0.1
+     "ms": 0
     },
     {
      "step": "terrain",
      "parent": null,
-     "ms": 13.5
+     "ms": 13.2
     },
     {
      "step": "· letterGlyphs",
@@ -296,12 +296,12 @@
     {
      "step": "· gitter",
      "parent": "props",
-     "ms": 0.9
+     "ms": 0.7
     },
     {
      "step": "· letterTex",
      "parent": "props",
-     "ms": 15
+     "ms": 21.4
     },
     {
      "step": "· · Leinwände gebaut — STÜCK, nicht ms",
@@ -316,7 +316,7 @@
     {
      "step": "props",
      "parent": null,
-     "ms": 16.1
+     "ms": 22.3
     },
     {
      "step": "rig",
@@ -326,12 +326,12 @@
     {
      "step": "· bilder",
      "parent": "entityImgs",
-     "ms": 0.3
+     "ms": 0.5
     },
     {
      "step": "· graustufen-kopien",
      "parent": "entityImgs",
-     "ms": 15.3
+     "ms": 15.7
     },
     {
      "step": "· davon schon im Speicher — STÜCK, nicht ms",
@@ -346,22 +346,22 @@
     {
      "step": "entityImgs",
      "parent": null,
-     "ms": 15.7
+     "ms": 16.3
     },
     {
      "step": "finishWarming",
      "parent": null,
-     "ms": 2.6
+     "ms": 2.3
     },
     {
      "step": "· Phaser-TileSprite-Konstruktor",
      "parent": "quer durch create() (steckt schon oben drin)",
-     "ms": 8.7
+     "ms": 9.8
     },
     {
      "step": "· davon echter Musterbau (erstes Sprite je Blatt)",
      "parent": "quer durch create() (steckt schon oben drin)",
-     "ms": 7.8
+     "ms": 8.8
     },
     {
      "step": "· unsere Buchhaltung (preDestroy-Haken)",
@@ -387,37 +387,37 @@
    "buildFirstRun": [
     {
      "step": "fallbackTextures",
-     "ms": 5.5,
+     "ms": 7.3,
      "parent": null
     },
     {
      "step": "backdrop",
-     "ms": 8.2,
+     "ms": 9.4,
      "parent": null
     },
     {
      "step": "air",
-     "ms": 0.9,
+     "ms": 1,
      "parent": null
     },
     {
      "step": "· gitter",
-     "ms": 0.4,
+     "ms": 0.5,
      "parent": "terrain"
     },
     {
      "step": "· tinten-spalten",
-     "ms": 0.1,
+     "ms": 0.2,
      "parent": "terrain"
     },
     {
      "step": "· · krone",
-     "ms": 0.1,
+     "ms": 0,
      "parent": "terrain"
     },
     {
      "step": "· · planke",
-     "ms": 0.1,
+     "ms": 0,
      "parent": "terrain"
     },
     {
@@ -427,7 +427,7 @@
     },
     {
      "step": "· · tinte",
-     "ms": 1.5,
+     "ms": 1.6,
      "parent": "terrain"
     },
     {
@@ -447,17 +447,17 @@
     },
     {
      "step": "· verzierung",
-     "ms": 1.7,
+     "ms": 1.6,
      "parent": "terrain"
     },
     {
      "step": "· planMass",
-     "ms": 6.3,
+     "ms": 6.1,
      "parent": "terrain"
     },
     {
      "step": "· schatten",
-     "ms": 0.7,
+     "ms": 0.8,
      "parent": "terrain"
     },
     {
@@ -477,12 +477,12 @@
     },
     {
      "step": "· koernung",
-     "ms": 0.1,
+     "ms": 0,
      "parent": "terrain"
     },
     {
      "step": "terrain",
-     "ms": 13.5,
+     "ms": 13.2,
      "parent": null
     },
     {
@@ -492,12 +492,12 @@
     },
     {
      "step": "· gitter",
-     "ms": 0.9,
+     "ms": 1.3,
      "parent": "props"
     },
     {
      "step": "· letterTex",
-     "ms": 15,
+     "ms": 23.7,
      "parent": "props"
     },
     {
@@ -512,7 +512,7 @@
     },
     {
      "step": "props",
-     "ms": 16.1,
+     "ms": 25.5,
      "parent": null
     },
     {
@@ -522,12 +522,12 @@
     },
     {
      "step": "· bilder",
-     "ms": 0.3,
+     "ms": 0.5,
      "parent": "entityImgs"
     },
     {
      "step": "· graustufen-kopien",
-     "ms": 15.3,
+     "ms": 15.7,
      "parent": "entityImgs"
     },
     {
@@ -542,22 +542,22 @@
     },
     {
      "step": "entityImgs",
-     "ms": 15.7,
+     "ms": 16.3,
      "parent": null
     },
     {
      "step": "finishWarming",
-     "ms": 2.6,
+     "ms": 2.4,
      "parent": null
     },
     {
      "step": "· Phaser-TileSprite-Konstruktor",
-     "ms": 8.7,
+     "ms": 9.8,
      "parent": "quer durch create() (steckt schon oben drin)"
     },
     {
      "step": "· davon echter Musterbau (erstes Sprite je Blatt)",
-     "ms": 7.8,
+     "ms": 8.8,
      "parent": "quer durch create() (steckt schon oben drin)"
     },
     {
@@ -588,18 +588,18 @@
   },
   {
    "phase": "p2",
-   "bauMs": 4.657624999999825,
-   "runs": 1,
-   "attempts": 1,
-   "loadMs": 534.5,
-   "createMs": 88.2,
-   "firstGpuMs": 2.29,
-   "settledGpuMs": 1.3,
-   "firstCpuMs": 19.8,
+   "bauMs": 5.532874999998967,
+   "runs": 3,
+   "attempts": 3,
+   "loadMs": 460.6,
+   "createMs": 83.2,
+   "firstGpuMs": 3.15,
+   "settledGpuMs": 1.32,
+   "firstCpuMs": 21.1,
    "firstDrawCalls": 6,
    "filesQueued": 130,
-   "fps": 60.08076430717456,
-   "cpuP50": 2.7,
+   "fps": 60.175594356243444,
+   "cpuP50": 2.8,
    "cpuP95": 3.3,
    "drawCalls": 6,
    "glTextures": 238,
@@ -608,17 +608,17 @@
     {
      "step": "fallbackTextures",
      "parent": null,
-     "ms": 5.5
+     "ms": 5.4
     },
     {
      "step": "backdrop",
      "parent": null,
-     "ms": 14.9
+     "ms": 14.4
     },
     {
      "step": "air",
      "parent": null,
-     "ms": 1.8
+     "ms": 0.9
     },
     {
      "step": "· gitter",
@@ -628,7 +628,7 @@
     {
      "step": "· tinten-spalten",
      "parent": "terrain",
-     "ms": 0.2
+     "ms": 0.1
     },
     {
      "step": "· · krone",
@@ -668,12 +668,12 @@
     {
      "step": "· verzierung",
      "parent": "terrain",
-     "ms": 2
+     "ms": 1.9
     },
     {
      "step": "· planMass",
      "parent": "terrain",
-     "ms": 7.4
+     "ms": 8
     },
     {
      "step": "· schatten",
@@ -703,12 +703,12 @@
     {
      "step": "terrain",
      "parent": null,
-     "ms": 15.9
+     "ms": 17.3
     },
     {
      "step": "· letterGlyphs",
      "parent": "props",
-     "ms": 0.1
+     "ms": 0.3
     },
     {
      "step": "· gitter",
@@ -718,7 +718,7 @@
     {
      "step": "· letterTex",
      "parent": "props",
-     "ms": 15.3
+     "ms": 14.8
     },
     {
      "step": "· · Leinwände gebaut — STÜCK, nicht ms",
@@ -733,7 +733,7 @@
     {
      "step": "props",
      "parent": null,
-     "ms": 16.5
+     "ms": 16
     },
     {
      "step": "rig",
@@ -748,7 +748,7 @@
     {
      "step": "· graustufen-kopien",
      "parent": "entityImgs",
-     "ms": 25.7
+     "ms": 24
     },
     {
      "step": "· davon schon im Speicher — STÜCK, nicht ms",
@@ -763,22 +763,22 @@
     {
      "step": "entityImgs",
      "parent": null,
-     "ms": 26.5
+     "ms": 24.7
     },
     {
      "step": "finishWarming",
      "parent": null,
-     "ms": 5
+     "ms": 2.7
     },
     {
      "step": "· Phaser-TileSprite-Konstruktor",
      "parent": "quer durch create() (steckt schon oben drin)",
-     "ms": 15.3
+     "ms": 14.9
     },
     {
      "step": "· davon echter Musterbau (erstes Sprite je Blatt)",
      "parent": "quer durch create() (steckt schon oben drin)",
-     "ms": 14.4
+     "ms": 13.3
     },
     {
      "step": "· unsere Buchhaltung (preDestroy-Haken)",
@@ -804,27 +804,27 @@
    "buildFirstRun": [
     {
      "step": "fallbackTextures",
-     "ms": 5.5,
+     "ms": 5,
      "parent": null
     },
     {
      "step": "backdrop",
-     "ms": 14.9,
+     "ms": 14.4,
      "parent": null
     },
     {
      "step": "air",
-     "ms": 1.8,
+     "ms": 0.9,
      "parent": null
     },
     {
      "step": "· gitter",
-     "ms": 0.4,
+     "ms": 0.5,
      "parent": "terrain"
     },
     {
      "step": "· tinten-spalten",
-     "ms": 0.2,
+     "ms": 0.1,
      "parent": "terrain"
     },
     {
@@ -844,7 +844,7 @@
     },
     {
      "step": "· · tinte",
-     "ms": 1.9,
+     "ms": 2,
      "parent": "terrain"
     },
     {
@@ -859,22 +859,22 @@
     },
     {
      "step": "· · eisstreifen",
-     "ms": 0,
+     "ms": 0.1,
      "parent": "terrain"
     },
     {
      "step": "· verzierung",
-     "ms": 2,
+     "ms": 2.2,
      "parent": "terrain"
     },
     {
      "step": "· planMass",
-     "ms": 7.4,
+     "ms": 8,
      "parent": "terrain"
     },
     {
      "step": "· schatten",
-     "ms": 0.5,
+     "ms": 0.9,
      "parent": "terrain"
     },
     {
@@ -894,27 +894,27 @@
     },
     {
      "step": "· koernung",
-     "ms": 0,
+     "ms": 0.1,
      "parent": "terrain"
     },
     {
      "step": "terrain",
-     "ms": 15.9,
+     "ms": 17.3,
      "parent": null
     },
     {
      "step": "· letterGlyphs",
-     "ms": 0.1,
+     "ms": 0.3,
      "parent": "props"
     },
     {
      "step": "· gitter",
-     "ms": 0.8,
+     "ms": 0.7,
      "parent": "props"
     },
     {
      "step": "· letterTex",
-     "ms": 15.3,
+     "ms": 14.1,
      "parent": "props"
     },
     {
@@ -929,7 +929,7 @@
     },
     {
      "step": "props",
-     "ms": 16.5,
+     "ms": 15.3,
      "parent": null
     },
     {
@@ -944,7 +944,7 @@
     },
     {
      "step": "· graustufen-kopien",
-     "ms": 25.7,
+     "ms": 24,
      "parent": "entityImgs"
     },
     {
@@ -959,22 +959,22 @@
     },
     {
      "step": "entityImgs",
-     "ms": 26.5,
+     "ms": 24.7,
      "parent": null
     },
     {
      "step": "finishWarming",
-     "ms": 5,
+     "ms": 2.7,
      "parent": null
     },
     {
      "step": "· Phaser-TileSprite-Konstruktor",
-     "ms": 15.3,
+     "ms": 14.9,
      "parent": "quer durch create() (steckt schon oben drin)"
     },
     {
      "step": "· davon echter Musterbau (erstes Sprite je Blatt)",
-     "ms": 14.4,
+     "ms": 14,
      "parent": "quer durch create() (steckt schon oben drin)"
     },
     {
@@ -1005,19 +1005,19 @@
   },
   {
    "phase": "p3",
-   "bauMs": 2.964458000000377,
-   "runs": 1,
-   "attempts": 1,
-   "loadMs": 405.2,
-   "createMs": 76.6,
-   "firstGpuMs": 1.73,
-   "settledGpuMs": 1.31,
-   "firstCpuMs": 16.6,
+   "bauMs": 3.0535000000018044,
+   "runs": 3,
+   "attempts": 3,
+   "loadMs": 348.6,
+   "createMs": 73.4,
+   "firstGpuMs": 0.82,
+   "settledGpuMs": 0.52,
+   "firstCpuMs": 16.2,
    "firstDrawCalls": 5,
    "filesQueued": 91,
-   "fps": 60.594020064484454,
+   "fps": 60.30051403752414,
    "cpuP50": 3.3,
-   "cpuP95": 4.6,
+   "cpuP95": 4.5,
    "drawCalls": 5,
    "glTextures": 201,
    "texMb": 142.2,
@@ -1025,12 +1025,12 @@
     {
      "step": "fallbackTextures",
      "parent": null,
-     "ms": 5.9
+     "ms": 5.5
     },
     {
      "step": "backdrop",
      "parent": null,
-     "ms": 11.2
+     "ms": 10.1
     },
     {
      "step": "air",
@@ -1045,7 +1045,7 @@
     {
      "step": "· tinten-spalten",
      "parent": "terrain",
-     "ms": 0.2
+     "ms": 0.1
     },
     {
      "step": "· · krone",
@@ -1065,7 +1065,7 @@
     {
      "step": "· · tinte",
      "parent": "terrain",
-     "ms": 1.6
+     "ms": 1.5
     },
     {
      "step": "· · grube",
@@ -1085,22 +1085,22 @@
     {
      "step": "· verzierung",
      "parent": "terrain",
-     "ms": 1.7
+     "ms": 1.6
     },
     {
      "step": "· planMass",
      "parent": "terrain",
-     "ms": 5.8
+     "ms": 5.4
     },
     {
      "step": "· schatten",
      "parent": "terrain",
-     "ms": 0.5
+     "ms": 0.6
     },
     {
      "step": "· platzieren",
      "parent": "terrain",
-     "ms": 0.5
+     "ms": 0.4
     },
     {
      "step": "· · davon Kacheln",
@@ -1115,12 +1115,12 @@
     {
      "step": "· koernung",
      "parent": "terrain",
-     "ms": 4.6
+     "ms": 4.7
     },
     {
      "step": "terrain",
      "parent": null,
-     "ms": 18.9
+     "ms": 16.6
     },
     {
      "step": "· letterGlyphs",
@@ -1130,12 +1130,12 @@
     {
      "step": "· gitter",
      "parent": "props",
-     "ms": 0.6
+     "ms": 0.5
     },
     {
      "step": "· letterTex",
      "parent": "props",
-     "ms": 18.4
+     "ms": 17.1
     },
     {
      "step": "· · Leinwände gebaut — STÜCK, nicht ms",
@@ -1150,7 +1150,7 @@
     {
      "step": "props",
      "parent": null,
-     "ms": 19.5
+     "ms": 18.4
     },
     {
      "step": "rig",
@@ -1160,12 +1160,12 @@
     {
      "step": "· bilder",
      "parent": "entityImgs",
-     "ms": 0.4
+     "ms": 0.2
     },
     {
      "step": "· graustufen-kopien",
      "parent": "entityImgs",
-     "ms": 15.2
+     "ms": 16.2
     },
     {
      "step": "· davon schon im Speicher — STÜCK, nicht ms",
@@ -1180,22 +1180,22 @@
     {
      "step": "entityImgs",
      "parent": null,
-     "ms": 15.6
+     "ms": 16.5
     },
     {
      "step": "finishWarming",
      "parent": null,
-     "ms": 2.5
+     "ms": 4.7
     },
     {
      "step": "· Phaser-TileSprite-Konstruktor",
      "parent": "quer durch create() (steckt schon oben drin)",
-     "ms": 11.5
+     "ms": 10.5
     },
     {
      "step": "· davon echter Musterbau (erstes Sprite je Blatt)",
      "parent": "quer durch create() (steckt schon oben drin)",
-     "ms": 10.6
+     "ms": 9.6
     },
     {
      "step": "· unsere Buchhaltung (preDestroy-Haken)",
@@ -1221,12 +1221,12 @@
    "buildFirstRun": [
     {
      "step": "fallbackTextures",
-     "ms": 5.9,
+     "ms": 5.5,
      "parent": null
     },
     {
      "step": "backdrop",
-     "ms": 11.2,
+     "ms": 10.1,
      "parent": null
     },
     {
@@ -1236,7 +1236,7 @@
     },
     {
      "step": "· gitter",
-     "ms": 0.4,
+     "ms": 0.3,
      "parent": "terrain"
     },
     {
@@ -1261,7 +1261,7 @@
     },
     {
      "step": "· · tinte",
-     "ms": 1.6,
+     "ms": 1.5,
      "parent": "terrain"
     },
     {
@@ -1281,22 +1281,22 @@
     },
     {
      "step": "· verzierung",
-     "ms": 1.7,
+     "ms": 1.6,
      "parent": "terrain"
     },
     {
      "step": "· planMass",
-     "ms": 5.8,
+     "ms": 5.4,
      "parent": "terrain"
     },
     {
      "step": "· schatten",
-     "ms": 0.5,
+     "ms": 0.6,
      "parent": "terrain"
     },
     {
      "step": "· platzieren",
-     "ms": 0.5,
+     "ms": 0.4,
      "parent": "terrain"
     },
     {
@@ -1311,12 +1311,12 @@
     },
     {
      "step": "· koernung",
-     "ms": 4.6,
+     "ms": 4.5,
      "parent": "terrain"
     },
     {
      "step": "terrain",
-     "ms": 18.9,
+     "ms": 16.6,
      "parent": null
     },
     {
@@ -1326,12 +1326,12 @@
     },
     {
      "step": "· gitter",
-     "ms": 0.6,
+     "ms": 0.8,
      "parent": "props"
     },
     {
      "step": "· letterTex",
-     "ms": 18.4,
+     "ms": 17.1,
      "parent": "props"
     },
     {
@@ -1346,22 +1346,22 @@
     },
     {
      "step": "props",
-     "ms": 19.5,
+     "ms": 18.4,
      "parent": null
     },
     {
      "step": "rig",
-     "ms": 0.5,
+     "ms": 0.4,
      "parent": null
     },
     {
      "step": "· bilder",
-     "ms": 0.4,
+     "ms": 0.1,
      "parent": "entityImgs"
     },
     {
      "step": "· graustufen-kopien",
-     "ms": 15.2,
+     "ms": 15,
      "parent": "entityImgs"
     },
     {
@@ -1376,22 +1376,22 @@
     },
     {
      "step": "entityImgs",
-     "ms": 15.6,
+     "ms": 15.2,
      "parent": null
     },
     {
      "step": "finishWarming",
-     "ms": 2.5,
+     "ms": 2.3,
      "parent": null
     },
     {
      "step": "· Phaser-TileSprite-Konstruktor",
-     "ms": 11.5,
+     "ms": 10.5,
      "parent": "quer durch create() (steckt schon oben drin)"
     },
     {
      "step": "· davon echter Musterbau (erstes Sprite je Blatt)",
-     "ms": 10.6,
+     "ms": 9.6,
      "parent": "quer durch create() (steckt schon oben drin)"
     },
     {
@@ -1412,6 +1412,840 @@
     {
      "step": "· Bauten gespart — STÜCK, nicht ms",
      "ms": 1,
+     "parent": "quer durch create() (steckt schon oben drin)"
+    }
+   ],
+   "hidden": false,
+   "visibility": "visible",
+   "ffGaps": [],
+   "gaps": []
+  },
+  {
+   "phase": "p4",
+   "bauMs": 0.19754100000136532,
+   "runs": 3,
+   "attempts": 3,
+   "loadMs": 356,
+   "createMs": 58.6,
+   "firstGpuMs": 1.22,
+   "settledGpuMs": 0.72,
+   "firstCpuMs": 9.7,
+   "firstDrawCalls": 7,
+   "filesQueued": 121,
+   "fps": 60.372129849208385,
+   "cpuP50": 1.1,
+   "cpuP95": 2.3,
+   "drawCalls": 7,
+   "glTextures": 270,
+   "texMb": 154.9,
+   "build": [
+    {
+     "step": "fallbackTextures",
+     "parent": null,
+     "ms": 6.2
+    },
+    {
+     "step": "backdrop",
+     "parent": null,
+     "ms": 13.6
+    },
+    {
+     "step": "air",
+     "parent": null,
+     "ms": 1.1
+    },
+    {
+     "step": "· gitter",
+     "parent": "terrain",
+     "ms": 0.3
+    },
+    {
+     "step": "· tinten-spalten",
+     "parent": "terrain",
+     "ms": 0
+    },
+    {
+     "step": "· · krone",
+     "parent": "terrain",
+     "ms": 0
+    },
+    {
+     "step": "· · planke",
+     "parent": "terrain",
+     "ms": 0
+    },
+    {
+     "step": "· · stachel",
+     "parent": "terrain",
+     "ms": 0
+    },
+    {
+     "step": "· · tinte",
+     "parent": "terrain",
+     "ms": 0.1
+    },
+    {
+     "step": "· · grube",
+     "parent": "terrain",
+     "ms": 0
+    },
+    {
+     "step": "· · bodenstreifen",
+     "parent": "terrain",
+     "ms": 0
+    },
+    {
+     "step": "· · eisstreifen",
+     "parent": "terrain",
+     "ms": 0
+    },
+    {
+     "step": "· verzierung",
+     "parent": "terrain",
+     "ms": 0.2
+    },
+    {
+     "step": "· planMass",
+     "parent": "terrain",
+     "ms": 4
+    },
+    {
+     "step": "· schatten",
+     "parent": "terrain",
+     "ms": 0
+    },
+    {
+     "step": "· platzieren",
+     "parent": "terrain",
+     "ms": 18.7
+    },
+    {
+     "step": "· · davon Kacheln",
+     "parent": "terrain",
+     "ms": 18.2
+    },
+    {
+     "step": "· · davon Bilder",
+     "parent": "terrain",
+     "ms": 0.4
+    },
+    {
+     "step": "· koernung",
+     "parent": "terrain",
+     "ms": 4.3
+    },
+    {
+     "step": "terrain",
+     "parent": null,
+     "ms": 28
+    },
+    {
+     "step": "· letterGlyphs",
+     "parent": "props",
+     "ms": 0.1
+    },
+    {
+     "step": "· gitter",
+     "parent": "props",
+     "ms": 0.3
+    },
+    {
+     "step": "· letterTex",
+     "parent": "props",
+     "ms": 0
+    },
+    {
+     "step": "· · Leinwände gebaut — STÜCK, nicht ms",
+     "parent": "props",
+     "ms": 0
+    },
+    {
+     "step": "· · aus dem Speicher — STÜCK, nicht ms",
+     "parent": "props",
+     "ms": 0
+    },
+    {
+     "step": "props",
+     "parent": null,
+     "ms": 0.6
+    },
+    {
+     "step": "rig",
+     "parent": null,
+     "ms": 0.5
+    },
+    {
+     "step": "· bilder",
+     "parent": "entityImgs",
+     "ms": 0.3
+    },
+    {
+     "step": "· graustufen-kopien",
+     "parent": "entityImgs",
+     "ms": 4.9
+    },
+    {
+     "step": "· davon schon im Speicher — STÜCK, nicht ms",
+     "parent": "entityImgs",
+     "ms": 0
+    },
+    {
+     "step": "· neu gerechnet — STÜCK, nicht ms",
+     "parent": "entityImgs",
+     "ms": 1
+    },
+    {
+     "step": "entityImgs",
+     "parent": null,
+     "ms": 5.2
+    },
+    {
+     "step": "finishWarming",
+     "parent": null,
+     "ms": 2.4
+    },
+    {
+     "step": "· Phaser-TileSprite-Konstruktor",
+     "parent": "quer durch create() (steckt schon oben drin)",
+     "ms": 30.9
+    },
+    {
+     "step": "· davon echter Musterbau (erstes Sprite je Blatt)",
+     "parent": "quer durch create() (steckt schon oben drin)",
+     "ms": 28.3
+    },
+    {
+     "step": "· unsere Buchhaltung (preDestroy-Haken)",
+     "parent": "quer durch create() (steckt schon oben drin)",
+     "ms": 0
+    },
+    {
+     "step": "· Kachel-Sprites — STÜCK, nicht ms",
+     "parent": "quer durch create() (steckt schon oben drin)",
+     "ms": 44
+    },
+    {
+     "step": "· Muster gebaut — STÜCK, nicht ms",
+     "parent": "quer durch create() (steckt schon oben drin)",
+     "ms": 8
+    },
+    {
+     "step": "· Bauten gespart — STÜCK, nicht ms",
+     "parent": "quer durch create() (steckt schon oben drin)",
+     "ms": 36
+    }
+   ],
+   "buildFirstRun": [
+    {
+     "step": "fallbackTextures",
+     "ms": 6.5,
+     "parent": null
+    },
+    {
+     "step": "backdrop",
+     "ms": 13.6,
+     "parent": null
+    },
+    {
+     "step": "air",
+     "ms": 1.3,
+     "parent": null
+    },
+    {
+     "step": "· gitter",
+     "ms": 0.5,
+     "parent": "terrain"
+    },
+    {
+     "step": "· tinten-spalten",
+     "ms": 0,
+     "parent": "terrain"
+    },
+    {
+     "step": "· · krone",
+     "ms": 0,
+     "parent": "terrain"
+    },
+    {
+     "step": "· · planke",
+     "ms": 0,
+     "parent": "terrain"
+    },
+    {
+     "step": "· · stachel",
+     "ms": 0.1,
+     "parent": "terrain"
+    },
+    {
+     "step": "· · tinte",
+     "ms": 0.1,
+     "parent": "terrain"
+    },
+    {
+     "step": "· · grube",
+     "ms": 0,
+     "parent": "terrain"
+    },
+    {
+     "step": "· · bodenstreifen",
+     "ms": 0,
+     "parent": "terrain"
+    },
+    {
+     "step": "· · eisstreifen",
+     "ms": 0,
+     "parent": "terrain"
+    },
+    {
+     "step": "· verzierung",
+     "ms": 0.2,
+     "parent": "terrain"
+    },
+    {
+     "step": "· planMass",
+     "ms": 6,
+     "parent": "terrain"
+    },
+    {
+     "step": "· schatten",
+     "ms": 0,
+     "parent": "terrain"
+    },
+    {
+     "step": "· platzieren",
+     "ms": 20.2,
+     "parent": "terrain"
+    },
+    {
+     "step": "· · davon Kacheln",
+     "ms": 18.9,
+     "parent": "terrain"
+    },
+    {
+     "step": "· · davon Bilder",
+     "ms": 0.4,
+     "parent": "terrain"
+    },
+    {
+     "step": "· koernung",
+     "ms": 8.1,
+     "parent": "terrain"
+    },
+    {
+     "step": "terrain",
+     "ms": 35.5,
+     "parent": null
+    },
+    {
+     "step": "· letterGlyphs",
+     "ms": 0.1,
+     "parent": "props"
+    },
+    {
+     "step": "· gitter",
+     "ms": 0.3,
+     "parent": "props"
+    },
+    {
+     "step": "· letterTex",
+     "ms": 0,
+     "parent": "props"
+    },
+    {
+     "step": "· · Leinwände gebaut — STÜCK, nicht ms",
+     "ms": 0,
+     "parent": "props"
+    },
+    {
+     "step": "· · aus dem Speicher — STÜCK, nicht ms",
+     "ms": 0,
+     "parent": "props"
+    },
+    {
+     "step": "props",
+     "ms": 0.8,
+     "parent": null
+    },
+    {
+     "step": "rig",
+     "ms": 1.1,
+     "parent": null
+    },
+    {
+     "step": "· bilder",
+     "ms": 0.3,
+     "parent": "entityImgs"
+    },
+    {
+     "step": "· graustufen-kopien",
+     "ms": 6.1,
+     "parent": "entityImgs"
+    },
+    {
+     "step": "· davon schon im Speicher — STÜCK, nicht ms",
+     "ms": 0,
+     "parent": "entityImgs"
+    },
+    {
+     "step": "· neu gerechnet — STÜCK, nicht ms",
+     "ms": 1,
+     "parent": "entityImgs"
+    },
+    {
+     "step": "entityImgs",
+     "ms": 6.7,
+     "parent": null
+    },
+    {
+     "step": "finishWarming",
+     "ms": 5.2,
+     "parent": null
+    },
+    {
+     "step": "· Phaser-TileSprite-Konstruktor",
+     "ms": 31.4,
+     "parent": "quer durch create() (steckt schon oben drin)"
+    },
+    {
+     "step": "· davon echter Musterbau (erstes Sprite je Blatt)",
+     "ms": 28.3,
+     "parent": "quer durch create() (steckt schon oben drin)"
+    },
+    {
+     "step": "· unsere Buchhaltung (preDestroy-Haken)",
+     "ms": 0,
+     "parent": "quer durch create() (steckt schon oben drin)"
+    },
+    {
+     "step": "· Kachel-Sprites — STÜCK, nicht ms",
+     "ms": 44,
+     "parent": "quer durch create() (steckt schon oben drin)"
+    },
+    {
+     "step": "· Muster gebaut — STÜCK, nicht ms",
+     "ms": 8,
+     "parent": "quer durch create() (steckt schon oben drin)"
+    },
+    {
+     "step": "· Bauten gespart — STÜCK, nicht ms",
+     "ms": 36,
+     "parent": "quer durch create() (steckt schon oben drin)"
+    }
+   ],
+   "hidden": false,
+   "visibility": "visible",
+   "ffGaps": [],
+   "gaps": []
+  },
+  {
+   "phase": "p9",
+   "bauMs": 0.24704200000269338,
+   "runs": 3,
+   "attempts": 3,
+   "loadMs": 324,
+   "createMs": 66.2,
+   "firstGpuMs": 0.68,
+   "settledGpuMs": 0.6,
+   "firstCpuMs": 12.6,
+   "firstDrawCalls": 4,
+   "filesQueued": 80,
+   "fps": 60.18746916625555,
+   "cpuP50": 2.2,
+   "cpuP95": 3,
+   "drawCalls": 4,
+   "glTextures": 243,
+   "texMb": 126.5,
+   "build": [
+    {
+     "step": "fallbackTextures",
+     "parent": null,
+     "ms": 6.7
+    },
+    {
+     "step": "backdrop",
+     "parent": null,
+     "ms": 0.6
+    },
+    {
+     "step": "air",
+     "parent": null,
+     "ms": 0.2
+    },
+    {
+     "step": "· gitter",
+     "parent": "terrain",
+     "ms": 0.3
+    },
+    {
+     "step": "· tinten-spalten",
+     "parent": "terrain",
+     "ms": 0.1
+    },
+    {
+     "step": "· · krone",
+     "parent": "terrain",
+     "ms": 0
+    },
+    {
+     "step": "· · planke",
+     "parent": "terrain",
+     "ms": 0
+    },
+    {
+     "step": "· · stachel",
+     "parent": "terrain",
+     "ms": 0
+    },
+    {
+     "step": "· · tinte",
+     "parent": "terrain",
+     "ms": 0.1
+    },
+    {
+     "step": "· · grube",
+     "parent": "terrain",
+     "ms": 0
+    },
+    {
+     "step": "· · bodenstreifen",
+     "parent": "terrain",
+     "ms": 0
+    },
+    {
+     "step": "· · eisstreifen",
+     "parent": "terrain",
+     "ms": 0
+    },
+    {
+     "step": "· verzierung",
+     "parent": "terrain",
+     "ms": 0.2
+    },
+    {
+     "step": "· planMass",
+     "parent": "terrain",
+     "ms": 5.3
+    },
+    {
+     "step": "· schatten",
+     "parent": "terrain",
+     "ms": 0.5
+    },
+    {
+     "step": "· platzieren",
+     "parent": "terrain",
+     "ms": 22.7
+    },
+    {
+     "step": "· · davon Kacheln",
+     "parent": "terrain",
+     "ms": 22.2
+    },
+    {
+     "step": "· · davon Bilder",
+     "parent": "terrain",
+     "ms": 0.3
+    },
+    {
+     "step": "· koernung",
+     "parent": "terrain",
+     "ms": 5.9
+    },
+    {
+     "step": "terrain",
+     "parent": null,
+     "ms": 35.1
+    },
+    {
+     "step": "· letterGlyphs",
+     "parent": "props",
+     "ms": 0.2
+    },
+    {
+     "step": "· gitter",
+     "parent": "props",
+     "ms": 0.6
+    },
+    {
+     "step": "· letterTex",
+     "parent": "props",
+     "ms": 15.8
+    },
+    {
+     "step": "· · Leinwände gebaut — STÜCK, nicht ms",
+     "parent": "props",
+     "ms": 9
+    },
+    {
+     "step": "· · aus dem Speicher — STÜCK, nicht ms",
+     "parent": "props",
+     "ms": 3
+    },
+    {
+     "step": "props",
+     "parent": null,
+     "ms": 17
+    },
+    {
+     "step": "rig",
+     "parent": null,
+     "ms": 0.5
+    },
+    {
+     "step": "· bilder",
+     "parent": "entityImgs",
+     "ms": 0.1
+    },
+    {
+     "step": "· graustufen-kopien",
+     "parent": "entityImgs",
+     "ms": 0
+    },
+    {
+     "step": "· davon schon im Speicher — STÜCK, nicht ms",
+     "parent": "entityImgs",
+     "ms": 0
+    },
+    {
+     "step": "· neu gerechnet — STÜCK, nicht ms",
+     "parent": "entityImgs",
+     "ms": 0
+    },
+    {
+     "step": "entityImgs",
+     "parent": null,
+     "ms": 0.2
+    },
+    {
+     "step": "finishWarming",
+     "parent": null,
+     "ms": 2.6
+    },
+    {
+     "step": "· Phaser-TileSprite-Konstruktor",
+     "parent": "quer durch create() (steckt schon oben drin)",
+     "ms": 21.9
+    },
+    {
+     "step": "· davon echter Musterbau (erstes Sprite je Blatt)",
+     "parent": "quer durch create() (steckt schon oben drin)",
+     "ms": 15.9
+    },
+    {
+     "step": "· unsere Buchhaltung (preDestroy-Haken)",
+     "parent": "quer durch create() (steckt schon oben drin)",
+     "ms": 0.1
+    },
+    {
+     "step": "· Kachel-Sprites — STÜCK, nicht ms",
+     "parent": "quer durch create() (steckt schon oben drin)",
+     "ms": 50
+    },
+    {
+     "step": "· Muster gebaut — STÜCK, nicht ms",
+     "parent": "quer durch create() (steckt schon oben drin)",
+     "ms": 6
+    },
+    {
+     "step": "· Bauten gespart — STÜCK, nicht ms",
+     "parent": "quer durch create() (steckt schon oben drin)",
+     "ms": 44
+    }
+   ],
+   "buildFirstRun": [
+    {
+     "step": "fallbackTextures",
+     "ms": 6.4,
+     "parent": null
+    },
+    {
+     "step": "backdrop",
+     "ms": 0.6,
+     "parent": null
+    },
+    {
+     "step": "air",
+     "ms": 0.2,
+     "parent": null
+    },
+    {
+     "step": "· gitter",
+     "ms": 0.3,
+     "parent": "terrain"
+    },
+    {
+     "step": "· tinten-spalten",
+     "ms": 0.1,
+     "parent": "terrain"
+    },
+    {
+     "step": "· · krone",
+     "ms": 0,
+     "parent": "terrain"
+    },
+    {
+     "step": "· · planke",
+     "ms": 0,
+     "parent": "terrain"
+    },
+    {
+     "step": "· · stachel",
+     "ms": 0.1,
+     "parent": "terrain"
+    },
+    {
+     "step": "· · tinte",
+     "ms": 0,
+     "parent": "terrain"
+    },
+    {
+     "step": "· · grube",
+     "ms": 0,
+     "parent": "terrain"
+    },
+    {
+     "step": "· · bodenstreifen",
+     "ms": 0,
+     "parent": "terrain"
+    },
+    {
+     "step": "· · eisstreifen",
+     "ms": 0,
+     "parent": "terrain"
+    },
+    {
+     "step": "· verzierung",
+     "ms": 0.1,
+     "parent": "terrain"
+    },
+    {
+     "step": "· planMass",
+     "ms": 5.1,
+     "parent": "terrain"
+    },
+    {
+     "step": "· schatten",
+     "ms": 0.5,
+     "parent": "terrain"
+    },
+    {
+     "step": "· platzieren",
+     "ms": 22.4,
+     "parent": "terrain"
+    },
+    {
+     "step": "· · davon Kacheln",
+     "ms": 21.8,
+     "parent": "terrain"
+    },
+    {
+     "step": "· · davon Bilder",
+     "ms": 0.5,
+     "parent": "terrain"
+    },
+    {
+     "step": "· koernung",
+     "ms": 5.9,
+     "parent": "terrain"
+    },
+    {
+     "step": "terrain",
+     "ms": 34.8,
+     "parent": null
+    },
+    {
+     "step": "· letterGlyphs",
+     "ms": 0.2,
+     "parent": "props"
+    },
+    {
+     "step": "· gitter",
+     "ms": 0.4,
+     "parent": "props"
+    },
+    {
+     "step": "· letterTex",
+     "ms": 15.3,
+     "parent": "props"
+    },
+    {
+     "step": "· · Leinwände gebaut — STÜCK, nicht ms",
+     "ms": 9,
+     "parent": "props"
+    },
+    {
+     "step": "· · aus dem Speicher — STÜCK, nicht ms",
+     "ms": 3,
+     "parent": "props"
+    },
+    {
+     "step": "props",
+     "ms": 16.2,
+     "parent": null
+    },
+    {
+     "step": "rig",
+     "ms": 0.5,
+     "parent": null
+    },
+    {
+     "step": "· bilder",
+     "ms": 0.1,
+     "parent": "entityImgs"
+    },
+    {
+     "step": "· graustufen-kopien",
+     "ms": 0,
+     "parent": "entityImgs"
+    },
+    {
+     "step": "· davon schon im Speicher — STÜCK, nicht ms",
+     "ms": 0,
+     "parent": "entityImgs"
+    },
+    {
+     "step": "· neu gerechnet — STÜCK, nicht ms",
+     "ms": 0,
+     "parent": "entityImgs"
+    },
+    {
+     "step": "entityImgs",
+     "ms": 0.2,
+     "parent": null
+    },
+    {
+     "step": "finishWarming",
+     "ms": 2.5,
+     "parent": null
+    },
+    {
+     "step": "· Phaser-TileSprite-Konstruktor",
+     "ms": 21.3,
+     "parent": "quer durch create() (steckt schon oben drin)"
+    },
+    {
+     "step": "· davon echter Musterbau (erstes Sprite je Blatt)",
+     "ms": 15.6,
+     "parent": "quer durch create() (steckt schon oben drin)"
+    },
+    {
+     "step": "· unsere Buchhaltung (preDestroy-Haken)",
+     "ms": 0,
+     "parent": "quer durch create() (steckt schon oben drin)"
+    },
+    {
+     "step": "· Kachel-Sprites — STÜCK, nicht ms",
+     "ms": 50,
+     "parent": "quer durch create() (steckt schon oben drin)"
+    },
+    {
+     "step": "· Muster gebaut — STÜCK, nicht ms",
+     "ms": 6,
+     "parent": "quer durch create() (steckt schon oben drin)"
+    },
+    {
+     "step": "· Bauten gespart — STÜCK, nicht ms",
+     "ms": 44,
      "parent": "quer durch create() (steckt schon oben drin)"
     }
    ],
