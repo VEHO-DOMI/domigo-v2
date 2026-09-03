@@ -63,7 +63,12 @@ Empfehlung: (b) — es braucht keinen Motor und liest sich als Takelage genauso.
 
 ### (f) Der Insasse von Käfig #2
 Arbeitsstand im Level: `captive: "polly"`, `captiveDe: "Polly mit den lila Haaren"` — eine
-Korpus-Figur, mit „purple hair" aus der have-got-Zeile der Unit beschreibbar. Die Insassen-Wahl
+Korpus-Figur, mit „purple hair" aus der have-got-Zeile der Unit beschreibbar.
+⚠ **Ein Argument GEGEN diesen Arbeitsstand, vom blinden Leser gefunden:** „Polly" ist der
+Standardname für den Papagei eines Piraten — und in DIESEM Raum sitzt zwanzig Spalten weiter ein
+echter Papagei (der Streit-Papagei). Ein Kind erwartet hinter dem Namen einen Vogel und findet
+eine Person mit lila Haaren. Wenn Koki den Namen behalten will, gehört der Papagei umbenannt
+oder der Käfig-Insasse; beides zugleich liest sich als Versehen. Die Insassen-Wahl
 gehört Koki; bis sie fällt, ist das ein Arbeitsstand und kein Entwurf einer Entscheidung.
 Der Schlüssel ist frei wählbar (nur Kleinbuchstaben und Ziffern), das Kunst-Blatt hieße
 `captive_polly`.

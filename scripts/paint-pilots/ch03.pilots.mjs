@@ -48,7 +48,8 @@ export const PILOTS = {
       // ── Pier ──
       ["walkTo", 45], ["settle"], ["wait", 24],                     // Regel-Seite 2 (Plurale)
       ["walkTo", 48], ["settle"], ["hold", { up: true }, 8], ["wait", 40], // das Holzbein
-      ["settle"], ["walkTo", 51], ["settle"], ["wait", 30],
+      ["settle"], ["walkTo", 50], ["settle"], ["wait", 150],       // dem Streit-Papagei Zeit fuer seinen Stossflug geben
+      ["walkTo", 51], ["settle"], ["wait", 30],
       ["walkTo", 54], ["settle"], ["walkTo", 58], ["settle"], ["walkTo", 53], ["settle"],
       ["jump", { dir: "right", hold: 10, steer: 5 }], ["settle"],    // Kanonen-Podest
       ["walkTo", 57], ["settle"],
