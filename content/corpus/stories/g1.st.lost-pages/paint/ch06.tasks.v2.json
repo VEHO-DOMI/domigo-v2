@@ -46,7 +46,8 @@
       ],
       "stimulus": {
         "type": "entity",
-        "showsDe": "Am Tor winkt jemand zum Park hinüber."
+        "showsDe": "Am Tor winkt jemand zum Park hinüber.",
+        "art": "door_a"
       },
       "storyDe": "Was rufst du ihm zu?",
       "options": [
@@ -64,7 +65,7 @@
       "hints": {
         "deDesc": "Du willst, dass er mitkommt."
       },
-      "grounding": "SB S. 48, Lied 'Call Groans': 'Call Sherlock Groans. Come on, come on!' — Ausruf-Serie des Kapitels: Come on! ist GENAU EINMAL Antwort einer Tuer-Karte (p1-Ausgang)."
+      "grounding": "SB S. 48, Lied 'Call Groans': 'Call Sherlock Groans. Come on, come on!' — Ausruf-Serie des Kapitels: Come on! ist GENAU EINMAL Antwort einer Tuer-Karte (p1-Ausgang). · Als-gebaut: stimulus.art ist Pflicht, weil door_a.png existiert (check-game-tasks#checkPortraits misst den Kunst-Baum FLACH). Das Blatt liegt aber in art/g1/paint/ch01/, und der Auflöser gibt jedem Kapitel nur [hero, chapter] (paint-art.ts#artDirsFor) — ch06 kann es nicht laden und rendert den grauen Platzhalter. Gemeldet als D-935 (dieselbe Klasse wie R263, eine Schicht höher)."
     },
     {
       "id": "g1.paint.ch06.enc.marktwagen.k1",
@@ -338,7 +339,8 @@
       ],
       "stimulus": {
         "type": "entity",
-        "showsDe": "An Mos Bürotür klebt ein Zettel-Wirrwarr."
+        "showsDe": "An Mos Bürotür klebt ein Zettel-Wirrwarr.",
+        "art": "door_a"
       },
       "storyDe": "Finde zu jedem Verb seine er/sie/es-Form!",
       "pairs": [
@@ -368,7 +370,7 @@
       "hints": {
         "deDesc": "Vier Paare, jedes gehört zusammen."
       },
-      "grounding": "SB S. 50 Grammatik-Kasten 'Achtung': go — goes, carry — carries, watch — watches, catch — catches. Tür-Karten sind von der Ein-Stimme-Regel 14a ausgenommen (variety.ts, Kommentar zu 14a), deshalb trägt die Bürotür die pair-it-Maschine."
+      "grounding": "SB S. 50 Grammatik-Kasten 'Achtung': go — goes, carry — carries, watch — watches, catch — catches. Tür-Karten sind von der Ein-Stimme-Regel 14a ausgenommen (variety.ts, Kommentar zu 14a), deshalb trägt die Bürotür die pair-it-Maschine. · Als-gebaut: stimulus.art ist Pflicht, weil door_a.png existiert (check-game-tasks#checkPortraits misst den Kunst-Baum FLACH). Das Blatt liegt aber in art/g1/paint/ch01/, und der Auflöser gibt jedem Kapitel nur [hero, chapter] (paint-art.ts#artDirsFor) — ch06 kann es nicht laden und rendert den grauen Platzhalter. Gemeldet als D-935 (dieselbe Klasse wie R263, eine Schicht höher)."
     }
   ]
 }
