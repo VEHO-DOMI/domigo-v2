@@ -1330,6 +1330,10 @@ ch06 D-920…949.** Der Level-1-Sitz hält D-950…979 (nicht hier).
 
 ### LW · ch03 (D-830…859)
 #### L3-G
+
+| Nr. | Stelle | Zustand / Befund | Erwartete Auflösung | Einbau-Schritt | Quelle |
+|---|---|---|---|---|---|
+| D-835 | `content/corpus/stories/g1.st.lost-pages/paint/ch01.level.json` | ch01 trägt **0** Ring-Glyphen `o` und **0** Feder-Glyphen `s` (alle fünf Räume gezählt), und **0** `powerup`-Wesen. Die Annahme „ch03 öffnet rückwirkend auch ch01" (D-503) ist damit für ch01 falsch — es gibt dort nichts zu öffnen. | Keine Reparatur; die Zeile hält die Messung fest, damit niemand sie noch einmal bezahlt. ch02 hängt an L2-G. | erledigt (Messung, L3-G1) | L3-G1, gezählt am ausgelieferten Level |
 #### L3-T
 #### L3-S
 #### L3-M

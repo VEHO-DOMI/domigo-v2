@@ -45,6 +45,20 @@ ch02 lässt seine Nacken-Käfige #4/#5 für den Ring-Schwung stehen. Sie zu öff
 Erreichbarkeits-Modell, das Fähigkeiten über Kapitelgrenzen kennt, und (ii) eine Bahn, die
 `ch02.level.json` anfasst. Beides gehört NICHT zu ch03; hier steht es, damit es niemand vergisst.
 
+### (f) ⚠ RINGKETTEN SIND MIT DIESEM SEIL NICHT BAUBAR — Posten für p3
+Am Band gemessen: das Schwungseil ist 96 px lang (sechs Kacheln), das Kind hängt also sechs
+Zeilen UNTER dem Ring, den es greift, und ein Loslassen trägt rund acht Spalten weit und
+höchstens eine Zeile hinauf. Zwei Ringe auf gleicher Höhe sind damit nie zu verketten: nach dem
+ersten Schwung hängt das Kind sieben Zeilen unter dem zweiten. Ringe TIEFER zu hängen löst es
+nicht — dann endet der Schwung im Wasser bzw. an der Bordwand des Zielufers.
+p1 baut deshalb EINEN Ring, der die ganze Querung trägt (bewiesen im Band).
+**Die Blaupause plant p3 „Die Takelage" als Ringketten von Mast zu Mast.** Das ist mit dem
+heutigen Seil nicht baubar. Drei Wege, Entscheid des Architekten VOR G2:
+(a) kürzeres Seil bzw. eine zweite Seillänge als Ring-Parameter (Motor-Posten, L3-M);
+(b) Ketten mit Rastplätzen — jede Ring-Querung endet auf einer Rah, nicht am nächsten Ring;
+(c) p3 baut Einzel-Schwünge statt Ketten, und die Fiktion „Kette" fällt.
+Empfehlung: (b) — es braucht keinen Motor und liest sich als Takelage genauso.
+
 ## Offen — Kokis Entscheid
 
 ### (f) Der Insasse von Käfig #2
