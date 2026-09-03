@@ -14,7 +14,7 @@
       ],
       "stimulus": {
         "type": "entity",
-        "showsDe": "Ein zerrissener Zettel in Mos Handschrift."
+        "showsDe": "Ein Schnipsel liegt auf dem Pflaster der Gasse."
       },
       "storyDe": "Welches Wort fehlt auf dem Schnipsel?",
       "promptEn": "Mo runs down the ___.",
@@ -203,7 +203,7 @@
       ],
       "stimulus": {
         "type": "entity",
-        "showsDe": "Tammo steht auf und geht aus dem Büro."
+        "showsDe": "Tammo steht auf. Die Tür vom Büro steht offen."
       },
       "storyDe": "Was tut er? Sag es auf Englisch!",
       "options": [
@@ -236,15 +236,15 @@
         "type": "entity",
         "showsDe": "Drei Zettel wirbeln dir um den Kopf."
       },
-      "storyDe": "Mo sucht seinen Hut. Was passt NICHT dazu?",
+      "storyDe": "Ein Zettel ist gefälscht. Welcher?",
       "select": "odd",
       "items": [
         "Mo runs down the street.",
-        "Mo jumps into the river.",
+        "Mo runs down the river.",
         "Mo looks for his hat in the park."
       ],
       "correct": [
-        "Mo jumps into the river."
+        "Mo runs down the river."
       ],
       "skins": [
         "zettelwirbel"
@@ -253,9 +253,9 @@
         "p3"
       ],
       "hints": {
-        "deDesc": "Zwei Zettel erzählen von der Suche."
+        "deDesc": "Zwei Zettel hast du selbst gefunden."
       },
-      "grounding": "Die zwei wahren Hinweise des Kapitels (Blaupause §1) gegen eine Unit-6-Handlung, die nichts mit der Hut-Suche zu tun hat: WB Word File 'to jump into the river' (Buch S. 57)."
+      "grounding": "Die zwei wahren Hinweise des Kapitels (Blaupause §1) gegen die Fälschung, die das Notizbuch in der Arena auf seine Seite kritzelt (Fenster W2). SB S. 46: 'He runs down the street.' — der Fluss steht nirgends. Umgebaut nach der blinden Runde 1: beide Löser waren unsicher, weil 'runs down the street' selbst zur Hut-Suche gehören konnte."
     },
     {
       "id": "g1.paint.ch06.boss.me1",
@@ -281,7 +281,7 @@
       },
       "correctionOptions": [
         "street",
-        "park",
+        "woods",
         "tree"
       ],
       "evidence": [
