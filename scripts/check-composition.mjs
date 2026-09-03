@@ -425,30 +425,25 @@ for (const { label, ph, spec } of withSpec) {
 // point: a waiver is a named room with a written reason and an expiry, never a
 // quiet `if`. The next one that is needed will be visible here.
 /**
- * ── N7A1 (2026-09-02): DIESE TABELLE IST NICHT MEHR LEER — UND IHR ABLAUF IST
- *    JETZT EIN DATUM ─────────────────────────────────────────────────────────
+ * ── N7A2b (2026-09-03): DIE TABELLE IST WIEDER LEER — UND DAS IST DER BEWEIS ──
  *
- * A5 ließ sie leer und der Kommentar an COHERENCE_WAIVERS nennt auch den Grund:
- * die alte Fassung trug ihren Ablauf in PROSA ("bis zum F2-Retusche-Pass"), und
- * niemand konnte ihn prüfen. Diese Fassung trägt `until` als Datum, das
- * `waiverExpired` liest, und sie ratscht in beide Richtungen: eine Duldung, die
- * der Raum nicht mehr braucht, macht das Audit ihrerseits rot.
+ * N7A1 trug hier `ch01/p2` ein: gemessen 9,7 % lum / 10,0 % sat gegen verlangte
+ * 12 % / 25 %. Der Bruch war echt und gehörte einer Entscheidung, nicht einer
+ * Duldung — Koki hat sie getroffen (R242, D-959): das Möbelband `l2_p2` wurde NEU
+ * GEMALT statt per Wertepass verschoben. Über die Luminanz war es ohnehin nicht
+ * zu lösen: das Band hätte unter 15,2 % gemusst und der Boden seines eigenen
+ * K-Bandes liegt bei 15,0. Getragen hat die Sättigung — das Band traegt jetzt 23,1 % Saettigung gegen die 54,1 % der Sicht-Koerper, also 31,0 Punkte Abstand gegen die verlangten 25 (die Luminanz allein reicht mit 11,8 gegen 12 weiter nicht, und konnte es nie).
+ *
+ * Die Zeile ist deshalb gelöscht, und die Ratsche unten (`traegt eine
+ * Trennungs-Duldung, die es nicht mehr braucht`) ist der Beweis dafür: stünde sie
+ * noch da, wäre das Audit ROT. Sie ist keine Formalie, sie ist der Nachweis, dass
+ * der Raum das Gesetz aus eigener Kraft besteht.
+ *
+ * Die Form bleibt eine Tabelle und kein `if`: eine Duldung ist ein benannter Raum
+ * mit geschriebenem Grund und einem Ablaufdatum, das `waiverExpired` liest — und
+ * sie ratscht in beide Richtungen.
  */
-const SEPARATION_WAIVERS = {
-  "ch01/p2": {
-    until: "2026-10-15",
-    why: "gemessen 9,7 % lum / 10,0 % sat gegen verlangte 12 % / 25 % (L2 lum 17,5 · L3 lum 27,2). "
-      + "Der Bruch ist weder neu noch von dieser Bahn gemacht: p2 zeichnet seit #387 seine "
-      + "Sicht-Koerper und nicht mehr sein Kit — L3 wurde aber weiter AM KIT gemessen und meldete "
-      + "12,5 %, eine Zahl, die der Bau nicht mehr zeichnet. Das ist exakt die Drift, vor der der "
-      + "Kommentar an mass.ts#NEAR_PLANE_KINDS warnt. Der N7A1-Cutover hat das Kit geloescht und "
-      + "die Frage damit zum ersten Mal ehrlich gestellt. Was die Duldung beendet, ist eine "
-      + "Entscheidung ueber die abgenommene p2-Kunst und gehoert Koki: ein Wertepass auf l2_p2 "
-      + "(17,5 -> hoechstens 15,2 % Luminanz, bleibt in seinem eigenen Band 15,0-22,5 %) oder eine "
-      + "hellere Laufkante in der p2-Koerper-Welle. Diese Bahn fasst p2-Kunst nicht an. "
-      + "p1 misst mit derselben Rechnung 24,9 % / 33,1 % und besteht deutlich.",
-  },
-};
+const SEPARATION_WAIVERS = {};
 
 const BANDS = bandsFor(K);
   for (const [name, m] of Object.entries(planes)) {
