@@ -79,10 +79,10 @@
       "merksatzDe": "can heißt kann — can't heißt kann nicht.",
       "schluesselDe": "can heißt kann",
       "beispieleEn": [
-       "I can dance.",
-       "I can't dance.",
-       "She can play the drums.",
-       "She can't play the drums."
+       "I can play the drums.",
+       "I can't play the drums.",
+       "You can play the guitar.",
+       "You can't play the guitar."
       ],
       "beispielMuster": "gegensatz",
       "lehrtEn": [
@@ -157,7 +157,7 @@
       "schluesselDe": "Erst wem es gehört, dann das Ding",
       "beispieleEn": [
        "Is this your guitar? – No, it's her guitar.",
-       "Can I play his drums? – They're my drums!"
+       "Is this my keyboard? – No, it's his keyboard."
       ],
       "beispielMuster": "dialog",
       "lehrtEn": [
