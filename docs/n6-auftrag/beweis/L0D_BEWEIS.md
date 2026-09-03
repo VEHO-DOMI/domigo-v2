@@ -60,3 +60,27 @@ der Kamera, Leinwandmaß.
   `apps/web/lib/paint-art.test.ts` misst, dass jedes Kapitel dieselben
   Helden-Adressen bekommt — und die Adresse trägt den Inhalts-Fingerabdruck des
   Blattes (`art-fingerprint.ts`), zwei gleiche Adressen sind also dasselbe BILD.
+
+## Perf, zwei Bauten, alle fünf ch01-Phasen
+
+Rohdaten: `l0d_perf_vorher.json` / `l0d_perf_nachher.json`, gemessen mit
+`scripts/perf-visible.mjs --runs 3`, beide als **Produktions-Bau** auf eigenen
+Ports (4052 = `075ff1c2`, 4051 = diese Bahn), je mit `--worktree` deklariert —
+ohne die Angabe weist das Werkzeug den Lauf ab (R183).
+
+| Phase | fps vorher → nachher |
+|---|---|
+| p1 | 60,4 → 60,0 |
+| p2 | 60,1 → 60,2 |
+| p3 | 60,7 → 60,3 |
+| p4 | 60,6 → 60,4 |
+| p9 | 60,1 → 60,2 |
+
+Gelesen wird die fps-Spalte, nicht die ms-Spalte: die Maschine trug zehn fremde
+Server im Mess-Band und Lastmittel 5,4, und das Werkzeug hängt den Makel selbst
+an (R115/D-339). fps liegt überall an der Decke von 60 — keine Regression.
+
+Ohne Maschineneinfluss gemessen: schwerste Phase unverändert **25,3/35 MB**,
+tote Kunst unverändert **57/57**. Die zwei nachgetragenen Zellen kosten null,
+weil die Lade-Decke ohnehin über alle `hero2_*`-Blätter auf der Platte schloss
+(`artScope#phaseArtScope`, `closure("hero2")`).
