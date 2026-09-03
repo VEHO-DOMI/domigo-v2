@@ -89,7 +89,7 @@ bekommt dieselbe Form wie diese hier. **Das ist eine Entscheidung der T2-Bahn, k
 
 ## §4 · Was die Welle T2 aus den zehn Exemplaren erbt (gemessen, nicht geraten)
 
-1. **Ein Wesen, eine Form** (Gesetz 14a, `variety.ts:371-378`): die Formen-Zählung läuft über
+1. **Ein Wesen, eine Form** (Gesetz 14a, `variety.ts#varietyErrors`): die Formen-Zählung läuft über
    feindliche Wesen (chaser/gunner/flyer/bouncer/crusher/swarm) und Restore-Wesen. Deshalb tragen
    BEIDE Triangel-Karten der Exemplare `ask-it` (die `order`-Karte kann gar nichts anderes
    tragen — `ask-it` ist die einzige Form, die `order` erlaubt). Türen und Käfige sind von 14a
@@ -100,7 +100,7 @@ bekommt dieselbe Form wie diese hier. **Das ist eine Entscheidung der T2-Bahn, k
    das mit der Familie `merle-ceremony` in `ch01.policy.json` (exempts 16c, obliges
    `distinctStoryDe` + `distinctAnswers`). ch05 braucht das Gegenstück in `ch05.policy.json`,
    sonst ist die zweite Veit-Karte rot.
-3. **`stimulus.art` nur, wo das Blatt existiert** (Schicht 11, `check-game-tasks.mjs:796`): ein
+3. **`stimulus.art` nur, wo das Blatt existiert** (Schicht 11, `check-game-tasks.mjs#checkPortraits`): ein
    deklarierter Kunst-Name ohne PNG ist rot, ein FEHLENDER Name bei GEMALTEM Wesen ebenso. Heute
    gemalt: `door_a`, `klecksdoor_a` — sonst nichts aus ch05. Die A-Bahn trägt die Namen nach,
    wenn die Kunst kommt.
