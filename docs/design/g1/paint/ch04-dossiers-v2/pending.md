@@ -9,11 +9,11 @@ Geschrieben von L4-G1 am 2026-09-03, gemessen an `origin/main` `64248a75` (L0 is
 
 L0 (PR #391) ist gemergt, deshalb sind diese drei KEINE Wartenden mehr:
 - `collectSkin: "farbtropfen"` (N1/R246) steht im Kopf. Das Blatt dazu existiert noch nicht;
-  `check-paint-art` ueberspringt Entwuerfe (`check-paint-art.mjs:67`), der Tropfen rendert bis zur
+  `check-paint-art` ueberspringt Entwuerfe (`check-paint-art` überspringt jedes Level mit `draft: true`), der Tropfen rendert bis zur
   Kunst-Zeit als Platzhalter.
 - `clothNounDe`: **nicht gesetzt und das ist richtig** — ch04 hat keine `cloth`-Fundstuecke.
 - `budgetSec: 35` (N7) steht **an der Bonus-Phase**, nicht als `bonus.budgetSec` am Kopf.
-  ⚠ Korrektur am Boot-Blatt: das Feld sitzt in `PhaseSpec` (`level.ts:366`), gemessen an L0s
+  ⚠ Korrektur am Boot-Blatt: das Feld sitzt in `PhaseSpec` (`level.ts#PhaseSpec`), gemessen an L0s
   eigenem ch02-Geruest (`p9 … budgetSec: 30`).
 
 ## 1 · Hue-Return (L4-M) — die Farb-Rueckkehr als Daten

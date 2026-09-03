@@ -238,12 +238,8 @@
           0
         ],
         [
-          39,
+          32,
           2
-        ],
-        [
-          12,
-          0
         ],
         [
           8,
@@ -274,7 +270,7 @@
           0
         ],
         [
-          29,
+          36,
           2
         ],
         [
@@ -304,7 +300,7 @@
         "exitTo": "p2",
         "cagesFreed": 1,
         "guardianDown": false,
-        "tasksSolved": 6,
+        "tasksSolved": 5,
         "redeemedPresent": true,
         "classmatesAwake": 0,
         "tipsGot": 2,
