@@ -14,7 +14,7 @@ Die große Bühne: die Arena des Ton-Schluckers, mit dem Sieg-Trakt-Käfig der S
 
 ## 10 · Bau-Vertrag
 
-- Spawn `S` **(3,15)** · Ausgang `X` **(38,15)** — nie in die letzten zwei Spalten, das Erreichbarkeits-Modell betritt sie nicht.
+- Spawn `S` **(3,15)** · keine Ausgangstür (die Arena endet am Wächter, wie in ch01) · Ausgang `X` **(38,15)**. Die Erreichbarkeits-Suche betritt nur die Spalten 1 bis 37; das `X` liegt eine Spalte daneben und ist damit legal.
 - Keine Tinte im Gerüst ⇒ keine Schwelle, kein Anker (das Gesetz `checkpoint-count` zählt Anker je Tinten-Querung).
 - **Dieser Raum wird von L5-G2 vollständig ersetzt.** Was hier steht, ist der Bindungs-Vertrag mit den Karten der T-Bahn, nicht der fertige Raum.
 
