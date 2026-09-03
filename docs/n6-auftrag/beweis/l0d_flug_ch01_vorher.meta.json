@@ -1,0 +1,203 @@
+{
+  "tick": 35,
+  "phase": "p1",
+  "overlay": false,
+  "reducedMotion": false,
+  "visibility": "visible",
+  "hidden": false,
+  "hero": {
+    "x": 88,
+    "y": 222,
+    "pose": "fall",
+    "grounded": false
+  },
+  "camX": 0,
+  "camY": 82,
+  "canvas": {
+    "w": 1056,
+    "h": 672,
+    "cssW": 1056,
+    "cssH": 672
+  },
+  "entities": [
+    {
+      "id": "p1-pencil1",
+      "role": "chaser",
+      "skin": "pencil",
+      "state": "patrol",
+      "redeemed": false,
+      "x": 370,
+      "y": 288,
+      "breath": null
+    },
+    {
+      "id": "p1-eraser",
+      "role": "bouncer",
+      "skin": "eraser",
+      "state": "patrol",
+      "redeemed": false,
+      "x": 758,
+      "y": 277,
+      "breath": null
+    },
+    {
+      "id": "p1-cage1",
+      "role": "cage",
+      "skin": "satchel",
+      "state": "closed",
+      "redeemed": false,
+      "x": 936,
+      "y": 208,
+      "breath": {
+        "rot": 0.04972712451848768,
+        "dy": -0.41819955919469415,
+        "sx": 1.0376379603275225,
+        "sy": 0.9717715297543581,
+        "hPx": 34,
+        "scr": {
+          "x": 2769.7908756846964,
+          "y": 323.8456346595364,
+          "w": 81.3452046866696,
+          "h": 102.8013642190856
+        }
+      }
+    },
+    {
+      "id": "p1-door",
+      "role": "door.trigger",
+      "skin": "door",
+      "state": "patrol",
+      "redeemed": false,
+      "x": 984,
+      "y": 288,
+      "breath": null
+    },
+    {
+      "id": "p1-regel-kurzformen",
+      "role": "tip",
+      "skin": "regelseite",
+      "state": "patrol",
+      "redeemed": false,
+      "x": 520,
+      "y": 208,
+      "breath": {
+        "rot": 0,
+        "dy": 0,
+        "sx": 1,
+        "sy": 1,
+        "hPx": 22,
+        "scr": {
+          "x": 1536.492868770274,
+          "y": 366.3260795423164,
+          "w": 47.01426245945186,
+          "h": 66
+        }
+      }
+    },
+    {
+      "id": "p1-regel-befehle",
+      "role": "tip",
+      "skin": "regelseite",
+      "state": "patrol",
+      "redeemed": false,
+      "x": 200,
+      "y": 256,
+      "breath": {
+        "rot": 0,
+        "dy": 0,
+        "sx": 1,
+        "sy": 1,
+        "hPx": 22,
+        "scr": {
+          "x": 579.3828813826965,
+          "y": 502.3211065178103,
+          "w": 41.234237234607065,
+          "h": 66
+        }
+      }
+    },
+    {
+      "id": "p1-obj-book",
+      "role": "drained",
+      "skin": "obj_book",
+      "state": "patrol",
+      "redeemed": false,
+      "x": 120,
+      "y": 256,
+      "breath": {
+        "rot": -0.053436615074979016,
+        "dy": 0,
+        "sx": 1,
+        "sy": 1,
+        "hPx": 24,
+        "scr": {
+          "x": 327.627354428164,
+          "y": 496.6633559410983,
+          "w": 57.66811098834164,
+          "h": 74.77606064487756
+        }
+      }
+    },
+    {
+      "id": "p1-obj-schoolbag",
+      "role": "drained",
+      "skin": "obj_schoolbag",
+      "state": "patrol",
+      "redeemed": false,
+      "x": 872,
+      "y": 224,
+      "breath": {
+        "rot": 0.055006737745414015,
+        "dy": 0,
+        "sx": 1,
+        "sy": 1,
+        "hPx": 26,
+        "scr": {
+          "x": 2579.898726165,
+          "y": 394.06336720005714,
+          "w": 78.91683083044654,
+          "h": 81.99123975547792
+        }
+      }
+    },
+    {
+      "id": "p1-cloth-hairband",
+      "role": "cloth",
+      "skin": "cloth_hairband",
+      "state": "patrol",
+      "redeemed": false,
+      "x": 248,
+      "y": 256,
+      "breath": null
+    },
+    {
+      "id": "p1-cloth-hat",
+      "role": "cloth",
+      "skin": "cloth_hat",
+      "state": "patrol",
+      "redeemed": false,
+      "x": 664,
+      "y": 352,
+      "breath": null
+    },
+    {
+      "id": "p1-cloth-sunglasses",
+      "role": "cloth",
+      "skin": "cloth_sunglasses",
+      "state": "patrol",
+      "redeemed": false,
+      "x": 488,
+      "y": 288,
+      "breath": null
+    }
+  ],
+  "shotCostTicks": 0,
+  "pure": true,
+  "via": "snapshot",
+  "serie": "flug_ch01_vorher",
+  "nr": 4,
+  "tickBefore": 35,
+  "frame": "flug_ch01_vorher_004.png",
+  "md5": "f51b99514342e856cf939a9bf0531c2e",
+  "index": 4
+}
