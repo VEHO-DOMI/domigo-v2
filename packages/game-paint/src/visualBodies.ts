@@ -13,7 +13,8 @@
  * von R4. Eine Deklaration, deren Maske nicht mehr zum Grid passt, wird ROT
  * (`bodyPartitionErrors`), nie still.
  */
-import { glyphAt, isSolid } from "./collide.ts";
+import { glyphAt, isSlope, isSolid, slopeSurfaceYPx } from "./collide.ts";
+import { TILE } from "./paint.ts";
 
 /** Ein Streifen eines groß gemalten Blattes (Slicer-Sicherheitsnetz, >2048 px).
  *  Streifen sind EIGENE PNGs, aus demselben Gemälde geschnitten, mit
@@ -34,7 +35,23 @@ export interface VisualBody {
   /** Zell-Ursprung der Maske im Grid. */
   c0: number;
   r0: number;
-  /** Maske relativ zu (c0,r0): '#' = Zelle gehört dem Körper. */
+  /**
+   * Maske relativ zu (c0,r0). DREI Zeichen-Klassen (N7A2c):
+   *   '#'   = solide Zelle des Körpers. Das Grid muss dort `isSolid` sein, und
+   *           das Blatt muss die Zelle voll decken (Silhouetten-Gesetz 1).
+   *   '.'   = gehört diesem Körper nicht.
+   *   sonst = das SCHRÄGEN-GLYPH selbst (`z` `/` `\\` `1`–`4`). Die Zelle ist eine
+   *           GEMALTE Schräge dieses Körpers, und das Grid muss GENAU dieses Glyph
+   *           tragen — nicht bloß irgendeine Schräge (Drift wird so in beide
+   *           Richtungen rot).
+   *
+   * Warum die Schräge eine eigene Klasse ist und nicht einfach '#': eine Schräge
+   * ist eine HALBE Zelle (`slopeSurfaceYPx` in collide.ts). Als '#' verlangte das
+   * Silhouetten-Tor 98 % Deckung, das Blatt müsste die Rutschbahn zumauern, und
+   * das Bild löge um eine halbe Zelle gegen die Kollision. Deshalb bleibt sie
+   * auch NIE körper-pflichtig: `fullyPainted` fragt nur nach soliden Zellen, eine
+   * Phase ohne gemalte Schräge ist weiterhin legal.
+   */
   rows: readonly string[];
   /** gemalte Quell-px je Zelle (64 große Massen · 96 Held-/Mittel-Körper). */
   pxPerCell: number;
@@ -94,10 +111,51 @@ export const bodyCells = (b: VisualBody): Array<{ c: number; r: number }> => {
 };
 
 /**
+ * Die SCHRÄGEN-Zellen eines Körpers — die zweite Zeichen-Klasse der Maske.
+ *
+ * Bewusst getrennt von `bodyCells`: die beiden beantworten verschiedene Fragen.
+ * `bodyCells` ist die PFLICHT-Rechnung des Cutovers (nur solide Zellen zählen —
+ * daran hängt „493 Körper + 17 Möbel = 510 solide" im Schulhof), `bodySlopeCells`
+ * ist das, was der Maler ZUSÄTZLICH malt. Wer beides in einen Topf wirft,
+ * verschiebt still die Cutover-Rechnung jedes Raums mit einer Rampe.
+ */
+export const bodySlopeCells = (b: VisualBody): Array<{ c: number; r: number; glyph: string }> => {
+  const out: Array<{ c: number; r: number; glyph: string }> = [];
+  b.rows.forEach((row, dr) => {
+    for (let dc = 0; dc < row.length; dc++) {
+      const g = row[dc];
+      if (g !== undefined && g !== "#" && g !== "." && isSlope(g)) {
+        out.push({ c: b.c0 + dc, r: b.r0 + dr, glyph: g });
+      }
+    }
+  });
+  return out;
+};
+
+/**
+ * Die Oberfläche einer Schrägen-Zelle in BLATT-Pixeln (0 = Zell-Oberkante).
+ *
+ * Es ist dieselbe Geometrie, die die Kollision benutzt (`slopeSurfaceYPx`), nur
+ * auf die Blatt-Auflösung skaliert — gerechnet, nicht nachgebaut. Werkzeug und
+ * Motor dürfen sich hier nicht um ein Pixel unterscheiden: die gemalte Kante IST
+ * die Kollision, und eine zweite Formel wäre eine zweite Wahrheit.
+ */
+export const slopeSurfaceInCell = (glyph: string, xInCell: number, pxPerCell: number): number =>
+  (slopeSurfaceYPx(glyph, 0, 0, (xInCell / pxPerCell) * TILE) / TILE) * pxPerCell;
+
+/**
  * Das Partitions-Gesetz. Fehlerliste statt boolean, damit das Tor SAGT, was
- * driftet: (1) jede Masken-Zelle ist im Grid solide, (2) kein Körper besitzt
- * eine Zelle doppelt, (3) jede Maske ist 4er-zusammenhängend, (4) bei
+ * driftet: (1) jede solide Masken-Zelle ist im Grid solide UND jede Schrägen-Zelle
+ * trägt im Grid genau ihr eigenes Glyph, (2) kein Körper besitzt eine Zelle
+ * doppelt, (3) jede Maske ist 4er-zusammenhängend — über BEIDE Zeichen-Klassen,
+ * denn die gemalte Silhouette hängt auch an ihren Rampen —, (4) bei
  * `fullyPainted` bleibt keine unbeanspruchte Solid-Zelle übrig.
+ *
+ * ★ N7A2c: (1) verlangte früher für JEDE Masken-Zelle eine solide Grid-Zelle.
+ * Das machte „die Schräge malen" nicht bloß ungetan, sondern unmöglich — und der
+ * Kommentar daneben las sich wie eine Entscheidung, nicht wie eine Grenze
+ * (R264). Ein unbekanntes Maskenzeichen ist jetzt selbst ein Fehler: die dritte
+ * Klasse darf keine stille Tür für Tippfehler aufmachen.
  */
 export const bodyPartitionErrors = (
   grid: readonly string[],
@@ -108,6 +166,15 @@ export const bodyPartitionErrors = (
   const owned = new Map<string, string>();
   for (const b of bodies) {
     const cells = bodyCells(b);
+    const slopes = bodySlopeCells(b);
+    b.rows.forEach((row, dr) => {
+      for (let dc = 0; dc < row.length; dc++) {
+        const g = row[dc];
+        if (g !== "#" && g !== "." && (g === undefined || !isSlope(g))) {
+          errors.push(`${b.id}: Maskenzeichen "${g ?? "?"}" bei (${b.c0 + dc},${b.r0 + dr}) ist weder '#' noch '.' noch ein Schrägen-Glyph`);
+        }
+      }
+    });
     if (cells.length === 0) { errors.push(`${b.id}: leere Maske`); continue; }
     for (const { c, r } of cells) {
       if (!isSolid(glyphAt(grid, c, r))) errors.push(`${b.id}: (${c},${r}) ist im Grid nicht solide`);
@@ -116,9 +183,20 @@ export const bodyPartitionErrors = (
       if (prev !== undefined) errors.push(`${b.id}: (${c},${r}) gehört schon ${prev}`);
       owned.set(key, b.id);
     }
+    for (const { c, r, glyph } of slopes) {
+      const ist = glyphAt(grid, c, r);
+      if (ist !== glyph) errors.push(`${b.id}: (${c},${r}) ist in der Maske die Schräge "${glyph}", im Grid aber "${ist}"`);
+      const key = `${c},${r}`;
+      const prev = owned.get(key);
+      if (prev !== undefined) errors.push(`${b.id}: (${c},${r}) gehört schon ${prev}`);
+      owned.set(key, b.id);
+    }
     // 4er-Zusammenhang: Flutfüllung von der ersten Zelle aus muss alle erreichen.
-    const inBody = new Set(cells.map(({ c, r }) => `${c},${r}`));
-    const first = cells[0];
+    // Schrägen zählen mit — eine Rampe, die den Körper nicht berührt, wäre ein
+    // angesetztes Teil, und genau das verbieten die Anti-Kriterien des Kanons.
+    const alle = [...cells, ...slopes.map(({ c, r }) => ({ c, r }))];
+    const inBody = new Set(alle.map(({ c, r }) => `${c},${r}`));
+    const first = alle[0];
     if (first !== undefined) {
       const seen = new Set([`${first.c},${first.r}`]);
       const queue = [first];
@@ -372,12 +450,22 @@ export const P1_WAVE_BODIES: readonly VisualBody[] = [
  * Zellen gehoeren den sieben Moebel-Laeufen (`floatingPlatformRuns`: Breiten
  * 3,2,4,2,2,3,1), nicht einer Handliste. Probe: 510 solide = 493 + 17.
  *
- * ⚠ DIE RUTSCHE IST KEIN LOCH. Die fuenf `z`-Zellen (10,15)…(19,19) sind die
- * Kreidestaub-Rutsche und stehen in KEINER Maske: `z` gehoert zu SLOPES, nicht
- * zu SOLID (`collide.ts`), also verlangt `fullyPainted` sie gar nicht erst —
- * das Rutschen-Kit (`slide_top/mid/foot/under`) zeichnet sie weiter, und
- * `massStems` fuehrt es unabhaengig vom Cutover. Wer `z` je solide macht,
- * bricht diese Welle; `visualBodies.test.ts` haelt das mit einem Tamper fest.
+ * ★ DIE RUTSCHE IST GEMALT (N7A2c, 2026-09-03). Die fuenf `z`-Zellen
+ * (10,15) (13,16) (14,17) (16,18) (19,19) — die einzigen Schraegen im ganzen
+ * Spiel — gehoeren der Westterrasse und stehen als `z` in ihrer Maske.
+ *
+ * Bis #401 standen sie in KEINER Maske, und der Kommentar hier las sich wie eine
+ * Entscheidung („bleibt FREI"). Er war in Wahrheit eine GRENZE: das Partitions-
+ * Gesetz verlangte fuer jede Masken-Zelle eine solide Grid-Zelle, `z` gehoert zu
+ * SLOPES — die Schraege zu malen war damit verboten, nicht bloss ungetan. Also
+ * zeichnete der Vierteile-Bausatz `slide_top/mid/foot/under` weiter, und weil die
+ * fuenf Zellen nicht zusammenhaengen, baute der Motor fuenfmal dasselbe kleine
+ * Eckstueck in einen sonst durchgemalten Raum. Koki hat genau das gesehen (R264).
+ *
+ * `z` bleibt eine SCHRAEGE, nicht solide: `fullyPainted` fragt weiterhin nur nach
+ * soliden Zellen (493 + 17 Moebel = 510), die Kollision ist unveraendert, und das
+ * Kind rutscht wie zuvor. Neu ist nur, dass das BILD die Rampe traegt.
+ * Festgehalten in `oneBlockCutover.test.ts`, Block „die Kreide-Rutsche".
  */
 export const P3_WAVE_BODIES: readonly VisualBody[] = [
   {
@@ -411,16 +499,20 @@ export const P3_WAVE_BODIES: readonly VisualBody[] = [
     pxPerCell: 64, overpaint: { l: 0, r: 0, t: 12, b: 16 },
   },
   {
-    // 194 Zellen · die abgetreppte Buecherboeschung; die z-Diagonale der Kreide-Rutsche bleibt FREI
+    // 194 solide Zellen + 5 gemalte Schraegen (N7A2c) · die abgetreppte
+    // Buecherboeschung mit der Kreide-Rutsche an der Aussenkante jeder Stufe.
+    // Das `z` steht jeweils dort, wo die Stufe endet und die naechste beginnt.
+    // Blattmass unveraendert 1408x732: die fuenf Zellen liegen INNERHALB des
+    // bestehenden Fensters (22x11), also aendert sich am Zell-Vertrag nichts.
     id: "p3_westterrasse_rutsche",
     stem: "body_p3_westterrasse_rutsche",
     c0: 0, r0: 15,
     rows: [
-      "##########............",
-      "#############.........",
-      "##############........",
-      "################......",
-      "###################...",
+      "##########z...........",
+      "#############z........",
+      "##############z.......",
+      "################z.....",
+      "###################z..",
       "######################",
       "####################..",
       "####################..",

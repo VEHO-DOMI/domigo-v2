@@ -1,0 +1,3 @@
+spiel: A = ERSTE · B = ZWEITE
+fassung: A = ZWEITE · B = ERSTE
+kontrolle: A = ERSTE · B = ZWEITE

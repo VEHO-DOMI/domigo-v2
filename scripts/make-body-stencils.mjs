@@ -3,6 +3,13 @@
  * N7 · DER SCHABLONEN-GENERATOR — das Werkzeug hinter den Magenta-Schablonen.
  *
  * Eine Schablone ist ein blattgrosses PNG, das der Maler UNTER sein Bild legt:
+ * ★ N7A2c · SCHRAEGEN. Eine Masken-Zelle, die kein '#' ist, traegt das Glyph
+ * ihrer Schraege (`z` `/` `\\` `1`-`4`). Dort ist nur die MATERIE-Seite unter der
+ * Rutschbahn Pflicht; die Luft darueber bleibt in der Schablone LEER, weil sie
+ * verbotenes Gebiet ist — ein Blatt, das die Rutsche zumauert, luegt um eine
+ * halbe Zelle gegen die Kollision. Das gruene Steh-Band folgt dort der
+ * Diagonale, nicht der Zell-Oberkante.
+ *
  * Magenta = Pflicht-Materie (muss voll gedeckt werden), gruenes Band = die
  * Steh-Kante (dort beginnt die Malerei), transparent = verbotenes Gebiet. Genau
  * dieses Werkzeug hat die R7-Runde 1 (6 von 6 zurueckgewiesen) in Runde 2 (6 von
@@ -45,6 +52,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { PNG } from "pngjs";
+import { bodySlopeCells, slopeSurfaceInCell } from "../packages/game-paint/src/visualBodies.ts";
 import { CH01_BODIES, P2_WAVE_BODIES, bodyCells, gridOf } from "../packages/game-paint/src/visualBodies.ts";
 import { isSolid } from "../packages/game-paint/src/collide.ts";
 
@@ -77,7 +85,10 @@ export const stencilOf = (body, grid) => {
   const { width, height } = sheetSize(body);
   const png = new PNG({ width, height });
   png.data.fill(0);
-  const inMask = (dc, dr) => (body.rows[dr]?.[dc] ?? ".") === "#";
+  // Eine Zelle gehoert dem Koerper, sobald sie nicht '.' ist — '#' solide,
+  // sonst das Schraegen-Glyph. Damit gilt ein '#' UNTER einer gemalten Rampe
+  // nicht mehr als Steh-Zelle: die Rampe deckt seine Kante bereits.
+  const inMask = (dc, dr) => ((body.rows[dr]?.[dc] ?? ".") !== ".");
   const put = (x, y, rgba) => {
     const i = (y * width + x) * 4;
     png.data[i] = rgba[0];
@@ -87,12 +98,21 @@ export const stencilOf = (body, grid) => {
   };
   body.rows.forEach((row, dr) => {
     for (let dc = 0; dc < row.length; dc++) {
-      if (row[dc] !== "#") continue;
+      const kind = row[dc];
+      if (kind === undefined || kind === ".") continue;
       const stand = !inMask(dc, dr - 1) && !solidAt(grid, body.c0 + dc, body.r0 + dr - 1);
       const x0 = body.overpaint.l + dc * px;
       const y0 = body.overpaint.t + dr * px;
       for (let dy = 0; dy < px; dy++) {
         for (let dx = 0; dx < px; dx++) {
+          if (kind !== "#") {
+            const s = slopeSurfaceInCell(kind, dx, px);
+            if (dy < s) continue; // Luft ueber der Rutschbahn: die Schablone bleibt leer
+            const green = dy < s + BAND_PX;
+            const edge = dx < BORDER_PX || dx >= px - BORDER_PX || dy >= px - BORDER_PX || dy < s + BORDER_PX;
+            put(x0 + dx, y0 + dy, green ? (edge ? EDGE_GREEN : FILL_GREEN) : (edge ? EDGE_MAGENTA : FILL_MAGENTA));
+            continue;
+          }
           const green = stand && dy < BAND_PX;
           const edge = dx < BORDER_PX || dx >= px - BORDER_PX || dy < BORDER_PX || dy >= px - BORDER_PX;
           put(x0 + dx, y0 + dy, green ? (edge ? EDGE_GREEN : FILL_GREEN) : (edge ? EDGE_MAGENTA : FILL_MAGENTA));
@@ -203,11 +223,15 @@ const main = () => {
     const file = path.join(outDir, `${body.stem}.MASKE.png`);
     fs.writeFileSync(file, PNG.sync.write(png));
     const cells = bodyCells(body);
+    // dieselbe Frage wie in stencilOf: eine Zelle unter einer GEMALTEN Rampe
+    // ist keine Steh-Zelle mehr, die Rampe deckt ihre Kante.
     const stand = cells.filter(({ c, r }) => {
       const dc = c - body.c0, dr = r - body.r0;
-      return (body.rows[dr - 1]?.[dc] ?? ".") !== "#" && !solidAt(grid, c, r - 1);
+      return (body.rows[dr - 1]?.[dc] ?? ".") === "." && !solidAt(grid, c, r - 1);
     }).length;
-    console.log(`✓ ${path.relative(process.cwd(), file)} — ${png.width}x${png.height}, ${cells.length} Zellen, ${stand} Steh-Zellen`);
+    const schraegen = bodySlopeCells(body).length;
+    const schraegText = schraegen > 0 ? `, ${schraegen} gemalte Schraegen` : "";
+    console.log(`✓ ${path.relative(process.cwd(), file)} — ${png.width}x${png.height}, ${cells.length} Zellen${schraegText}, ${stand} Steh-Zellen`);
   }
   return 0;
 };

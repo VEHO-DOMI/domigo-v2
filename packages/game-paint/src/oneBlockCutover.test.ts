@@ -14,8 +14,8 @@ import fs from "node:fs";
 import { describe, expect, it } from "vitest";
 import { COMPOSITION, compositionStems } from "./composition.ts";
 import { claimedPlatformCells, massKitUsable, phaseIsOneBlock, planMass } from "./mass.ts";
-import { isSolid } from "./collide.ts";
-import { P3_WAVE_BODIES, bodyCells, bodyPartitionErrors } from "./visualBodies.ts";
+import { isSlope, isSolid } from "./collide.ts";
+import { P3_WAVE_BODIES, bodyCells, bodyPartitionErrors, bodySlopeCells } from "./visualBodies.ts";
 
 const level = JSON.parse(fs.readFileSync(
   new URL("../../../content/corpus/stories/g1.st.lost-pages/paint/ch01.level.json", import.meta.url),
@@ -151,20 +151,21 @@ describe("massKitUsable — die Wache vor der Masse (N7A1)", () => {
 });
 
 /**
- * ★ N7A2 · DIE KREIDE-RUTSCHE IST KEIN LOCH IM SCHULHOF.
+ * ★ N7A2c · DIE KREIDE-RUTSCHE IST GEMALT.
  *
- * Das Boot-Blatt dieser Bahn vermutete, die Cutover-Rechnung koennte die fuenf
- * `z`-Zellen der Rutsche als koerper-pflichtig ansehen, und bestellte dafuer eine
- * `exemptGlyphs`-Erweiterung. Gemessen ist das nicht noetig: `z` steht in SLOPES,
- * nicht in SOLID (`collide.ts`), also fragt `fullyPainted` gar nicht nach ihm.
+ * N7A2 hielt die Schraege frei, weil kein Gesetz sie verlangte; N7A2c malt sie,
+ * weil fuenf zusammengesetzte Eckstuecke in einer Ein-Block-Welt als Fremdkoerper
+ * lesen (Kokis Befund 03.09., R264). Die Tests dieses Blocks behaupteten bis
+ * gestern das Gegenteil — sie sind UMGEDREHT, nicht geloescht: ein Test, der eine
+ * Uebergangs-Entscheidung festnagelt, wird zur Behauptung ueber die Zukunft, und
+ * die Geschichte gehoert an dieselbe Stelle wie die Zusicherung.
  *
- * Das ist aber eine Eigenschaft, auf die sich sechs gemalte Blaetter STILL
- * verlassen: haette `z` je Masse, waeren in der Westterrasse fuenf Zellen ohne
- * Besitzer, und der Cutover wuerde still nicht mehr greifen — p3 laedt dann wieder
- * ein Kit, das die Bahn geloescht hat. Genau diese Sorte stiller Kopplung haelt
- * dieser Block fest, in beide Richtungen.
+ * Was NICHT gekippt ist: `z` bleibt eine Schraege, nicht solide. Die Kollision ist
+ * unveraendert, das Kind rutscht wie zuvor, und `fullyPainted` fragt weiterhin nur
+ * nach soliden Zellen (493 + 17 Moebel = 510). Neu ist allein, dass das BILD die
+ * Rampe traegt — und dass der Motor in p3 kein Bausatz-Teil mehr zeichnet.
  */
-describe("die Kreide-Rutsche und der p3-Cutover (N7A2)", () => {
+describe("die Kreide-Rutsche und der p3-Cutover (N7A2c)", () => {
   const p3 = phases.find((p) => p.id === "p3");
   const zZellen = (rows: readonly string[]): string[] => {
     const out: string[] = [];
@@ -172,62 +173,128 @@ describe("die Kreide-Rutsche und der p3-Cutover (N7A2)", () => {
     return out;
   };
 
-  it("`z` ist keine solide Zelle — die Rutsche wird nie vom Cutover verlangt", () => {
+  it("`z` ist eine Schraege und keine solide Zelle — der Cutover verlangt sie nie", () => {
     expect(isSolid("z")).toBe(false);
+    expect(isSlope("z")).toBe(true);
   });
 
-  it("die sechs Koerper partitionieren p3 vollstaendig: 493 + 17 Moebel = 510", () => {
+  it("die sechs Koerper partitionieren p3: 493 solide + 17 Moebel = 510, dazu 5 gemalte Schraegen", () => {
     expect(p3).toBeDefined();
     if (p3 === undefined) return;
     const moebel = claimedPlatformCells(p3.rows, [], new Set());
     const koerper = P3_WAVE_BODIES.reduce((n, b) => n + bodyCells(b).length, 0);
+    const schraegen = P3_WAVE_BODIES.reduce((n, b) => n + bodySlopeCells(b).length, 0);
     const solide = p3.rows.join("").split("").filter((g) => isSolid(g)).length;
-    expect({ solide, koerper, moebel: moebel.size }).toEqual({ solide: 510, koerper: 493, moebel: 17 });
+    expect({ solide, koerper, schraegen, moebel: moebel.size }).toEqual({ solide: 510, koerper: 493, schraegen: 5, moebel: 17 });
     expect(bodyPartitionErrors(p3.rows, P3_WAVE_BODIES, { fullyPainted: true, otherClaimed: moebel })).toEqual([]);
   });
 
-  it("die fuenf z-Zellen gehoeren KEINEM Koerper", () => {
+  it("die fuenf z-Zellen gehoeren der WESTTERRASSE — frueher gehoerten sie keinem Koerper", () => {
     expect(p3).toBeDefined();
     if (p3 === undefined) return;
-    const besitz = new Set(P3_WAVE_BODIES.flatMap((b) => bodyCells(b).map(({ c, r }) => `${c},${r}`)));
+    const west = P3_WAVE_BODIES.find((b) => b.id === "p3_westterrasse_rutsche");
+    expect(west).toBeDefined();
+    if (west === undefined) return;
+    const besitz = new Set(bodySlopeCells(west).map(({ c, r }) => `${c},${r}`));
     const zs = zZellen(p3.rows);
     expect(zs).toHaveLength(5);
-    expect(zs.filter((k) => besitz.has(k))).toEqual([]);
+    expect(zs.filter((k) => !besitz.has(k))).toEqual([]);
+    // …und jede von ihnen traegt in der Maske GENAU ihr Grid-Glyph, nicht bloss
+    // irgendeine Schraege: das ist die Haelfte des Gesetzes, die Drift faengt.
+    expect(bodySlopeCells(west).map((s) => s.glyph)).toEqual(["z", "z", "z", "z", "z"]);
   });
 
-  it("TAMPER: waere `z` solide, faende der Cutover fuenf Zellen ohne Besitzer", () => {
+  it("TAMPER: eine Masken-Zelle ueber LUFT ist weiterhin rot", () => {
     expect(p3).toBeDefined();
     if (p3 === undefined) return;
-    const alsSolide = p3.rows.map((row) => row.split("z").join("#"));
-    const moebel = claimedPlatformCells(alsSolide, [], new Set());
-    const fehler = bodyPartitionErrors(alsSolide, P3_WAVE_BODIES, { fullyPainted: true, otherClaimed: moebel });
-    // jede der fuenf Rutschen-Zellen muss namentlich als unbeansprucht auftauchen
-    for (const k of zZellen(p3.rows)) {
-      expect(fehler.some((e) => e.includes(`(${k})`)), `z-Zelle ${k} fehlt im Tamper-Befund`).toBe(true);
+    const west = P3_WAVE_BODIES.find((b) => b.id === "p3_westterrasse_rutsche");
+    expect(west).toBeDefined();
+    if (west === undefined) return;
+    // Die Zelle rechts der obersten Stufe ist im Gitter Luft. Sie als solide
+    // Pflicht-Zelle zu beanspruchen muss dieselbe Meldung geben wie vorher —
+    // das neue Gesetz macht die Maske breiter, nicht laxer.
+    const kaputt = { ...west, rows: west.rows.map((row, i) => i === 0 ? `${row.slice(0, 11)}#${row.slice(12)}` : row) };
+    const fehler = bodyPartitionErrors(p3.rows, [kaputt], {});
+    expect(fehler.some((e) => e.includes("(11,15) ist im Grid nicht solide"))).toBe(true);
+  });
+
+  it("TAMPER: eine Schraegen-Zelle ueber einer SOLIDEN Zelle ist rot", () => {
+    expect(p3).toBeDefined();
+    if (p3 === undefined) return;
+    const west = P3_WAVE_BODIES.find((b) => b.id === "p3_westterrasse_rutsche");
+    expect(west).toBeDefined();
+    if (west === undefined) return;
+    // Die Gegenrichtung: die Maske behauptet eine Rampe, wo das Gitter Masse hat.
+    // Ohne diesen Fall koennte die Maske Schraegen erfinden, wo keine sind.
+    const kaputt = { ...west, rows: west.rows.map((row, i) => i === 0 ? `z${row.slice(1)}` : row) };
+    const fehler = bodyPartitionErrors(p3.rows, [kaputt], {});
+    expect(fehler.some((e) => e.includes(`(0,15) ist in der Maske die Schräge "z", im Grid aber "#"`))).toBe(true);
+  });
+
+  it("der Bausatz ist in Rente — kein Raum fuehrt noch ein slide_*-Blatt", () => {
+    for (const [phaseId, spec] of Object.entries(COMPOSITION.ch01 ?? {})) {
+      expect(spec.mass.slide, `${phaseId} deklariert noch ein Rutschen-Kit`).toBeUndefined();
+      const geladen = compositionStems(spec, phaseIsOneBlock(phases.find((p) => p.id === phaseId)?.rows ?? [], spec.mass));
+      for (const stem of ["slide_top", "slide_mid", "slide_foot", "slide_under"]) {
+        expect(geladen, `${phaseId} laedt ${stem}`).not.toContain(stem);
+      }
     }
   });
 
-  it("das Rutschen-Kit ueberlebt den Cutover — massStems fuehrt es unabhaengig", () => {
-    const spec = COMPOSITION.ch01?.p3;
-    expect(spec).toBeDefined();
-    if (spec === undefined) return;
-    const nachCutover = compositionStems(spec, true);
-    for (const stem of ["slide_top", "slide_mid", "slide_foot", "slide_under"]) {
-      expect(nachCutover, stem).toContain(stem);
-    }
-    // …und die Kruste, an der der Malmassstab haengt, ist dann weg
-    expect(nachCutover).not.toContain("crust_p3_a");
-  });
-
-  it("die Rutschen-Module haengen NICHT am Malmassstab: eine Zelle bleibt eine Zelle", () => {
+  it("der Motor zeichnet in p3 KEIN Rutschen-Modul mehr (frueher fuenf)", () => {
     const spec = COMPOSITION.ch01?.p3;
     expect(p3).toBeDefined();
     expect(spec).toBeDefined();
     if (p3 === undefined || spec === undefined) return;
     const module = planMass(p3.rows, spec.mass)
-      .filter((p) => p.kind === "slideTop" || p.kind === "slideMid" || p.kind === "slideFoot");
-    expect(module.length).toBe(5);
-    // 16 world px = genau eine Gitterzelle, in beiden Achsen (mass.ts, Abschnitt 6)
-    for (const m of module) expect({ w: m.w, h: m.h }).toEqual({ w: 16, h: 16 });
+      .filter((p) => p.kind === "slideTop" || p.kind === "slideMid" || p.kind === "slideFoot" || p.kind === "slideUnder");
+    expect(module.length).toBe(0);
+  });
+});
+
+/**
+ * ★ N7A2c · DAS GESETZ AUS R264, MASCHINELL.
+ *
+ * „Ein Raum ist erst Ein-Block, wenn KEIN Bausatz-Teil mehr in ihm gezeichnet
+ * wird." Der berechnete Cutover allein sagt das NICHT: er fragt, ob die
+ * Sicht-Koerper jede PFLICHTZELLE decken — Schraegen sind keine Pflichtzellen,
+ * also blieb der Vierteile-Rutschen-Bausatz im fertig gemalten Raum stehen, und
+ * kein Tor hat es gesagt. Silhouetten-Tor, Aufstands-Tor, Naht-Tor, Wert-Vertrag
+ * und zwei blinde Pruefungen waren gruen; gefunden hat es ein Blick auf den
+ * Bildschirm. Diese zwei Tests sind der Ersatz fuer diesen Blick.
+ */
+describe("eine Ein-Block-Welt zeichnet keine Bausteine (R264)", () => {
+  /** Was ein fertig gemalter Raum zeichnen darf: sein Gemaelde und seine Moebel. */
+  const ERLAUBT = new Set(["bodyMount", "platform"]);
+
+  it("keine Ein-Block-Phase plant ein Bausatz-Stueck", () => {
+    const geprueft: string[] = [];
+    for (const ph of phases) {
+      const spec = COMPOSITION.ch01?.[ph.id];
+      if (spec === undefined || !phaseIsOneBlock(ph.rows, spec.mass)) continue;
+      geprueft.push(ph.id);
+      const fremd = [...new Set(planMass(ph.rows, spec.mass).map((p) => p.kind))].filter((k) => !ERLAUBT.has(k));
+      expect(fremd, `${ph.id} zeichnet Bausatz-Teile`).toEqual([]);
+    }
+    // Der Fall darf nicht still auf einer leeren Menge laufen (P-56).
+    expect(geprueft).toEqual(["p1", "p2", "p3"]);
+  });
+
+  it("in einer Ein-Block-Phase gehoert jede Schraegen-Zelle einem Koerper", () => {
+    for (const ph of phases) {
+      const spec = COMPOSITION.ch01?.[ph.id];
+      if (spec === undefined || !phaseIsOneBlock(ph.rows, spec.mass)) continue;
+      const gemalt = new Set((spec.mass.bodies ?? []).flatMap((b) => bodySlopeCells(b).map(({ c, r }) => `${c},${r}`)));
+      const offen: string[] = [];
+      ph.rows.forEach((row, r) => {
+        for (let c = 0; c < row.length; c++) {
+          const g = row[c] ?? ".";
+          if (isSlope(g) && !gemalt.has(`${c},${r}`)) offen.push(`${ph.id} (${c},${r}) "${g}"`);
+        }
+      });
+      // Ohne diesen Test ist ein Loch dort von KEINEM Tor sichtbar: `uncoveredSolids`
+      // fragt nur nach soliden Zellen, und eine Schraege ist keine.
+      expect(offen, "Schraegen-Zellen ohne Bild").toEqual([]);
+    }
   });
 });

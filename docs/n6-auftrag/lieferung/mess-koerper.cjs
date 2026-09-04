@@ -16,7 +16,12 @@ const src=fs.readFileSync(SRC,"utf8");
 const i=src.indexOf(`id: "${wantId}"`);
 if(i<0){console.error("Koerper nicht in visualBodies.ts: "+wantId);process.exit(2);}
 const blk=src.slice(i, src.indexOf("},", src.indexOf("pxPerCell", i)));
-const rows=[...blk.matchAll(/"([#.]+)"/g)].map(m=>m[1]);
+// ★ N7A2c · DIE MASKE HAT DREI ZEICHEN-KLASSEN. Die alte Zeile las nur
+// [#.]+ — eine Zeile mit einer Schraege ("##########z...") passte NICHT und fiel
+// still aus der Maske; das Blattmass haette dann 6 statt 11 Zeilen verlangt und
+// die Messung waere auf ein anderes Blatt gelaufen, ohne ein Wort zu sagen.
+const MASKEN_ALPHABET=/^[#.z\/\\1-4]+$/;
+const rows=[...blk.matchAll(/"([^"]*)"/g)].map(m=>m[1]).filter(t=>MASKEN_ALPHABET.test(t));
 const px=Number((blk.match(/pxPerCell:\s*(\d+)/)||[])[1]);
 const op=blk.match(/overpaint:\s*\{\s*l:\s*(\d+),\s*r:\s*(\d+),\s*t:\s*(\d+),\s*b:\s*(\d+)/);
 const [opl,opr,opt,opb]=[+op[1],+op[2],+op[3],+op[4]];
@@ -30,8 +35,21 @@ const satOf=(r,g,b)=>{const M=Math.max(r,g,b);return M===0?0:(M-Math.min(r,g,b))
 const W=Math.max(...rows.map(r=>r.length));
 const sollW=W*px+opl+opr, sollH=rows.length*px+opt+opb;
 
-const dichte=(dc,dr)=>{const x0=opl+dc*px,y0=opt+dr*px,m=Math.round(px*0.1);let k=0,n=0;
+// Die Oberflaeche einer Schraegen-Zelle, Zell-lokal in Blatt-Pixeln. EINZIGE
+// WAHRHEIT ist `slopeSurfaceInCell` in packages/game-paint/src/visualBodies.ts
+// (die wiederum `slopeSurfaceYPx` der Kollision benutzt); hier steht sie nur
+// nach, weil eine .cjs-Datei das TS-Modul nicht laden kann. Jedes Glyph, das
+// hier fehlt, bricht LAUT ab statt still falsch zu messen.
+const surf=(glyph,lx)=>{
+ if(glyph==="z"||glyph==="\\")return lx;                 // faellt nach rechts
+ if(glyph==="/")return px-lx;                            // steigt nach rechts
+ console.error("mess-koerper: Schraegen-Glyph \""+glyph+"\" kennt dieses Werkzeug nicht — bitte gegen slopeSurfaceInCell nachziehen.");
+ process.exit(2);};
+const FEATHER=4; // wie SLOPE_FEATHER im Silhouetten-Tor
+const materie=(kind,lx,ly)=>kind==="#"?true:ly>=surf(kind,lx)+FEATHER;
+const dichte=(dc,dr)=>{const kind=rows[dr][dc];const x0=opl+dc*px,y0=opt+dr*px,m=Math.round(px*0.1);let k=0,n=0;
  for(let y=y0+m;y<y0+px-m;y++)for(let x=x0+m;x<x0+px-m;x++){
+  if(!materie(kind,x-x0,y-y0))continue;
   if(A(x,y)<128||A(x+1,y)<128||A(x,y+1)<128)continue;n++;
   if(Math.hypot(Lg(x+1,y)-Lg(x,y),Lg(x,y+1)-Lg(x,y))>12)k++;}
  return n===0?null:k/n*100;};
@@ -39,12 +57,15 @@ const med=a=>{const s=[...a].sort((x,y)=>x-y);return s[Math.floor(s.length/2)];}
 
 let alle=[],steh=[],karte=[];
 for(let dr=0;dr<rows.length;dr++){let z="";
- for(let dc=0;dc<W;dc++){ if(rows[dr][dc]!=="#"){z+=".";continue;}
+ for(let dc=0;dc<W;dc++){ if(rows[dr][dc]==="."){z+=".";continue;}
   const d=dichte(dc,dr); if(d!==null)alle.push(d);
   z+= d===null?"?":(d>=95?"X":String(Math.min(9,Math.floor(d/10))));}
  karte.push(z);}
+// Steh-Zelle = die OBERSTE Zelle einer Spalte, die dem Koerper gehoert. Seit
+// N7A2c kann das eine Rampe sein: dort steht das Kind auf der Diagonale, also
+// ist sie die Flaeche, die D-975 meint — nicht das '#' darunter.
 for(let dc=0;dc<W;dc++)for(let dr=0;dr<rows.length;dr++)
- if(rows[dr][dc]==="#"){const d=dichte(dc,dr);if(d!==null)steh.push(d);break;}
+ if(rows[dr][dc]!=="."){const d=dichte(dc,dr);if(d!==null)steh.push(d);break;}
 
 let n=0,L=0,S=0,r=0,g=0,b=0;
 for(let y=0;y<p.height;y+=3)for(let x=0;x<p.width;x+=3){const k=(p.width*y+x)<<2;
@@ -53,7 +74,8 @@ for(let y=0;y<p.height;y+=3)for(let x=0;x<p.width;x+=3){const k=(p.width*y+x)<<2
  r+=p.data[k];g+=p.data[k+1];b+=p.data[k+2];n++;}
 
 console.log(`Blatt        : ${sheet}`);
-console.log(`Koerper      : ${wantId}  (Maske aus visualBodies.ts: ${rows.length} Zeilen x ${W} Spalten, ${alle.length} Pflicht-Zellen)`);
+const nSchraeg=rows.join("").split("").filter(c=>c!=="#"&&c!==".").length;
+console.log(`Koerper      : ${wantId}  (Maske aus visualBodies.ts: ${rows.length} Zeilen x ${W} Spalten, ${alle.length} Mess-Zellen, davon ${nSchraeg} Schraegen)`);
 console.log(`Mass         : ${p.width}x${p.height}   ${p.width===sollW&&p.height===sollH?"OK":"✗ SOLL "+sollW+"x"+sollH}`);
 console.log(`Wert-Vertrag : Luminanz ${(L/n*100).toFixed(1)} % (30-38, Ziel 34) · Saettigung ${(S/n*100).toFixed(1)} % (>=45) · rgb ${Math.round(r/n)},${Math.round(g/n)},${Math.round(b/n)} (Anker 115,88,52)`);
 console.log(`Gesetz 5     : Kanten-Median ganzes Blatt ${med(alle).toFixed(1)} %  (Decke 80; 76-84 => Mensch)`);
