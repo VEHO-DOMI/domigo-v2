@@ -88,15 +88,43 @@
 
 import fs from "node:fs";
 import path from "node:path";
+import { ROOT, orphanTaskFiles, paintChapters, skipLedger } from "./paint-chapters.mjs";
 
 const R = process.cwd();
-const STORIES = "content/corpus/stories";
-const ART = "apps/web/public/art/g1/paint";
+// L0 · D10: der Kapitel-Pfad kommt jetzt aus der geteilten Aufloesung, die vom
+// Skript-Ordner aus rechnet — also rechnet auch der Kunst-Pfad von dort, sonst
+// mischt ein Lauf ausserhalb des Wurzelordners absolute und relative Pfade.
+const ART = path.join(ROOT, "apps", "web", "public", "art", "g1", "paint");
 const selftest = process.argv.includes("--selftest");
 
 let failures = 0;
 const reported = [];
 const fail = (where, msg) => { failures++; reported.push(`${where}: ${msg}`); console.error(`✗ ${where}: ${msg}`); };
+
+/**
+ * DIE BINDUNG ALS REINE ENTSCHEIDUNG (Entwurfs-Weg, 2026-09-04).
+ *
+ * Sie stand als drei verschachtelte `if` mitten im Datei-Lauf, und damit konnte
+ * der `--selftest` sie nicht fahren: er beweist Funktionen, keine Dateibaeume.
+ * Genau hier ist der Entwurfs-Weg eingebaut worden, also muss genau hier ein
+ * rotes Licht nachweisbar sein — sonst ist die Ausnahme eine Behauptung.
+ *
+ *   `kein-skin`       die Karte bindet an gar kein Blatt
+ *   `falsches-blatt`  sie nennt ein anderes Blatt, als die Welt entfaerbt
+ *   `kein-blatt`      das genannte Blatt ist nicht gemalt — die MESSUNG entfaellt
+ *   `messen`          alles da, das Blatt wird geoeffnet
+ *
+ * Die ersten beiden sind Aussagen der KARTE ueber sich selbst und brauchen keine
+ * Kunst; sie bleiben deshalb auch im Entwurf hart. Nur `kein-blatt` kennt einen
+ * Entwurfs-Weg (siehe unten am Lauf).
+ */
+export const bindingVerdict = ({ skin, art, sheetOnDisk }) => {
+  if (skin === undefined) return { verdict: "kein-skin", stem: null };
+  const stem = `${skin}_a`;
+  if (art !== stem) return { verdict: "falsches-blatt", stem };
+  if (!sheetOnDisk) return { verdict: "kein-blatt", stem };
+  return { verdict: "messen", stem };
+};
 
 // ── the measurement ──────────────────────────────────────────────────────────
 // R5-W6b · W5: die Schwellen und die drei Rechnungen, die aus einem Bildpunkt
@@ -455,6 +483,41 @@ if (selftest) {
   sagK("two colours in one line are both seen", coloursIn("erst blau, jetzt rosa"),
     (f) => f.size === 2 && f.has("blue") && f.has("pink"));
 
+  // ── DIE BINDUNG UND DER ENTWURFS-WEG (2026-09-04) ─────────────────────────
+  // Sechs Faelle. Die ersten vier fahren `bindingVerdict`, die letzten zwei die
+  // Ratsche selbst — denn die Ausnahme ist nur so viel wert wie der Exit-Code,
+  // der sie beendet.
+  //
+  // 16 · der Fall, der ch02 heute rot macht: die Karte nennt ihr Blatt nicht.
+  //      Er MUSS auch im Entwurf beissen — er braucht keine Kunst, nur die Karte.
+  say("eine restore-Karte ohne stimulus.art ist rot, auch im Entwurf",
+    bindingVerdict({ skin: "hund", art: undefined, sheetOnDisk: false }),
+    (b) => b.verdict === "falsches-blatt" && b.stem === "hund_a");
+  // 17 · …und ebenso, wenn sie ein FREMDES Blatt nennt
+  say("eine Karte, die ein anderes Blatt nennt, ist rot",
+    bindingVerdict({ skin: "hund", art: "pinguin_a", sheetOnDisk: true }),
+    (b) => b.verdict === "falsches-blatt");
+  // 18 · gar keine Bindung
+  say("eine restore-Karte ohne skin bindet an nichts",
+    bindingVerdict({ skin: undefined, art: "hund_a", sheetOnDisk: true }),
+    (b) => b.verdict === "kein-skin");
+  // 19 · DER ENTWURFS-WEG: Blatt korrekt genannt, aber noch nicht gemalt ⇒
+  //      ausgelassen, NICHT rot und NICHT gemessen.
+  say("ein korrekt genanntes, noch nicht gemaltes Blatt wird ausgelassen statt gemessen",
+    bindingVerdict({ skin: "hund", art: "hund_a", sheetOnDisk: false }),
+    (b) => b.verdict === "kein-blatt");
+  // 20 · DIE RATSCHE, in der Richtung, die kosten wuerde: ein Kapitel OHNE
+  //      draft-Flagge, dem ein Blatt fehlt, landet in `gaps()` — und `gaps()`
+  //      ist oben ein `fail`. Ohne diesen Fall waere der Entwurfs-Weg ein Loch.
+  say("eine Auslassung in einem Kapitel OHNE draft-Flagge wird zur Luecke",
+    (() => { const l = skipLedger([{ chapter: "chZZ", draft: false }]); l.skip("chZZ", "colour-truth/messung", "Blatt fehlt"); return { gaps: l.gaps().length, rows: l.rows().length }; })(),
+    (r) => r.gaps === 1 && r.rows === 1);
+  // 21 · …und dieselbe Auslassung IM Entwurf ist keine Luecke, steht aber
+  //      trotzdem namentlich da (nie still — das ist die andere Haelfte).
+  say("dieselbe Auslassung IM Entwurf ist keine Luecke, wird aber benannt",
+    (() => { const l = skipLedger([{ chapter: "chZZ", draft: true }]); l.skip("chZZ", "colour-truth/messung", "Blatt fehlt"); return { gaps: l.gaps().length, rows: l.rows().length }; })(),
+    (r) => r.gaps === 0 && r.rows === 1);
+
   let kopieBad = 0;
   for (const [name, got, ok] of kopieCases) {
     const pass = ok(got);
@@ -473,14 +536,33 @@ if (selftest) {
   process.exit(0);
 }
 
-const files = [];
-if (fs.existsSync(STORIES)) {
-  for (const story of fs.readdirSync(STORIES)) {
-    const dir = path.join(STORIES, story, "paint");
-    if (!fs.existsSync(dir)) continue;
-    for (const f of fs.readdirSync(dir).filter((x) => x.endsWith(".tasks.v2.json"))) files.push(path.join(dir, f));
-  }
+// ── L0 · D10 · DIESES TOR FRAGT JETZT DIE GETEILTE KAPITEL-AUFLOESUNG ────────
+//
+// Hier stand ein eigener `readdirSync` ueber den ganzen Korpus — die neunte
+// Meinung darueber, was ein Kapitel ist. `scripts/paint-chapters.mjs` sagt in
+// seinem Kopf, warum das eine Falle ist, und drei Tore fragen es laengst
+// (`check-level-design`, `check-game-tasks`, `check-copy-register`). Dieses war
+// das vierte, das es nicht tat — und es hat bezahlt: der eigene Lauf kannte das
+// Wort ENTWURF nicht, also konnte ein Kapitel, dessen Kunst noch nicht gemalt
+// ist, dieses Tor mit einer einzigen `restore`-Karte gar nicht bestehen. ch02,
+// ch03 und ch04 standen mit sechs Karten davor (gemessen 2026-09-04).
+//
+// Die Doktrin, die damit gilt, ist die des Helfers, nicht eine neue: „Die
+// Gesetze, deren EINGABEN dastehen, laufen trotzdem — ein Entwurf ist kein
+// Freibrief. Was fehlt, wird NAMENTLICH als >uebersprungen (draft)< gedruckt,
+// nie still."
+const CHAPTERS = paintChapters();
+const ledger = skipLedger(CHAPTERS);
+
+// L0 · N6 · eine Kartendatei OHNE Level-Datei waere fuer die Aufloesung
+// unsichtbar — und damit fuer dieses Tor. Der Helfer sammelt sie; still
+// uebergehen darf man sie nicht, sonst tauscht dieser Umbau eine Blindheit
+// gegen eine andere.
+for (const o of orphanTaskFiles()) {
+  fail(o.file, "Kartendatei ohne `chNN.level.json` — die geteilte Aufloesung fuehrt Kapitel ueber ihren Level-Ausweis; ohne ihn saehe dieses Tor die Datei nie (L0 · N6)");
 }
+
+const files = CHAPTERS.filter((c) => c.hasTasks).map((c) => c.tasksPath);
 
 let measured = 0;
 const table = [];
@@ -491,19 +573,29 @@ for (const file of files) {
     if (t.kind !== "restore") continue;
     const id = t.id.replace(`g1.paint.${chapter}.`, "");
     const w = `${file} ${id}`;
-    const skin = (t.skins ?? [])[0];
-    if (skin === undefined) { fail(w, "a restore card with no skin — nothing binds it to a sheet"); continue; }
-
     // LAW 0 · the binding. The world washes `<skin>_a` and the card's portrait is
     // `stimulus.art`; if those two ever disagree, the child is asked about one
     // picture while looking at another, and every measurement below is moot.
-    const stem = `${skin}_a`;
-    if (t.stimulus?.art !== stem) {
+    // Diese beiden Zweige sind Aussagen der KARTE ueber sich selbst — sie
+    // brauchen keine Kunst und bleiben deshalb auch im Entwurf hart.
+    const skin = (t.skins ?? [])[0];
+    const sheet = skin === undefined ? null : path.join(ART, chapter, `${skin}_a.png`);
+    const b = bindingVerdict({ skin, art: t.stimulus?.art, sheetOnDisk: sheet !== null && fs.existsSync(sheet) });
+    const stem = b.stem;
+    if (b.verdict === "kein-skin") { fail(w, "a restore card with no skin — nothing binds it to a sheet"); continue; }
+    if (b.verdict === "falsches-blatt") {
       fail(w, `binding: skin »${skin}« washes ${stem}.png, but the card shows »${t.stimulus?.art}« — the question and the picture must be the same sheet`);
       continue;
     }
-    const sheet = path.join(ART, chapter, `${stem}.png`);
-    if (!fs.existsSync(sheet)) { fail(w, `binding: ${sheet} is not on disk`); continue; }
+    if (b.verdict === "kein-blatt") {
+      // DER ENTWURFS-WEG. Das Blatt ist noch nicht gemalt, also ist die Farbe
+      // dieser Karte nicht BELEGBAR — weder richtig noch falsch. Das wird
+      // namentlich ausgelassen statt still uebergangen, und fuer ein Kapitel
+      // OHNE `draft`-Flagge landet dieselbe Zeile in `ledger.gaps()` und wird
+      // unten zum Exit-Code: die Auslassung darf den Entwurf nicht ueberleben.
+      ledger.skip(chapter, "colour-truth/messung", `${stem}.png liegt nicht auf der Platte — die Farbaussage von »${id}« (»${t.colour}«) ist damit UNBELEGT`);
+      continue;
+    }
 
     const png = await readSheet(sheet);
     const m = measure(png.data, { w: png.width, h: png.height });
@@ -614,6 +706,18 @@ if (coloursIn("blau").has("pink") || !coloursIn("rosa").has("pink")) {
   fail("VACUITY", "the colour-word reader no longer distinguishes blue from pink — every verdict above is noise");
 }
 
+// ── DIE RATSCHE · eine Auslassung darf den Entwurf nicht ueberleben ─────────
+//
+// `skipLedger` legt jede Auslassung eines Kapitels OHNE `draft`-Flagge
+// zusaetzlich in `gaps()`. Der Helfer sagt selbst, warum das einen Exit-Code
+// braucht (L0b · D-792): „Ein Etikett ohne Exit-Code ist eine Notiz, kein Tor."
+// Praktisch heisst das: ein Kapitel kann den Entwurf nicht verlassen, solange
+// eine seiner Farbaussagen unbelegt ist — die `draft`-Flagge IST die Frist,
+// und niemand muss ein Ablaufdatum pflegen.
+for (const g of ledger.gaps()) {
+  fail("LUECKE", `${g} — dieses Kapitel traegt keine draft-Flagge, steht Kindern also offen; eine unbelegte Farbe darf ein fertiges Kapitel nicht verlassen`);
+}
+
 // ── VACUITY — the gate proves it still sees ──────────────────────────────────
 // Every law above runs on sheets this walk found. A walk that finds none reports
 // a clean repo forever, which is the worst way for a picture check to break.
@@ -622,6 +726,11 @@ if (Object.keys(READINGS).length < measured) fail("VACUITY", `${measured} sheets
 // …and the measurement itself must still be able to tell two colours apart.
 if (measure(flat(214, 40, 30)).dominant === measure(flat(40, 90, 200)).dominant) {
   fail("VACUITY", "the measurement puts a red sheet and a blue sheet in the same family — it is not discriminating and every verdict above is noise");
+}
+
+if (ledger.rows().length > 0) {
+  console.log("\ncheck-colour-truth · was ausgelassen wurde (namentlich, nie still):");
+  ledger.print();
 }
 
 console.log("\ncheck-colour-truth · die Ist-Palette:");
