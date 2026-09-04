@@ -121,6 +121,20 @@ const fail = (where, msg) => { failures++; reported.push(`${where}: ${msg}`); co
 export const bindingVerdict = ({ skin, art, sheetOnDisk }) => {
   if (skin === undefined) return { verdict: "kein-skin", stem: null };
   const stem = `${skin}_a`;
+  if (art === undefined) {
+    // ZWEI TORE, EIN FELD (gemessen an #398, beide CI-Laeufe vom 2026-09-04).
+    // `check-game-tasks.mjs:943` VERBIETET, ein nicht gemaltes Blatt zu nennen
+    // („would fall back silently to text"). Waere die Nennung hier auch im
+    // Entwurf Pflicht, forderten die beiden Tore fuer dasselbe Feld das
+    // Gegenteil, und ein Entwurfs-Kapitel haette keinen gruenen Weg: ohne Feld
+    // rot bei uns, mit Feld rot dort. Also gilt: fehlt das Blatt ohnehin, ist
+    // die fehlende Nennung DIESELBE Auslassung wie das fehlende Blatt — ein
+    // Eintrag, eine Ratsche.
+    // Ist das Blatt dagegen GEMALT, bleibt die fehlende Nennung rot: dann
+    // ignoriert die Karte bestellte Kunst. Das ist genau das Gesetz, das
+    // `check-game-tasks.mjs:939` aus der anderen Richtung fuehrt.
+    return sheetOnDisk ? { verdict: "blatt-nicht-genannt", stem } : { verdict: "kein-blatt", stem };
+  }
   if (art !== stem) return { verdict: "falsches-blatt", stem };
   if (!sheetOnDisk) return { verdict: "kein-blatt", stem };
   return { verdict: "messen", stem };
@@ -488,11 +502,17 @@ if (selftest) {
   // Ratsche selbst — denn die Ausnahme ist nur so viel wert wie der Exit-Code,
   // der sie beendet.
   //
-  // 16 · der Fall, der ch02 heute rot macht: die Karte nennt ihr Blatt nicht.
-  //      Er MUSS auch im Entwurf beissen — er braucht keine Kunst, nur die Karte.
-  say("eine restore-Karte ohne stimulus.art ist rot, auch im Entwurf",
+  // 16 · KEINE Nennung, KEIN Blatt: dieselbe Auslassung, ein Eintrag. Waere das
+  //      rot, forderte `check-game-tasks` fuer dasselbe Feld das Gegenteil und
+  //      ein Entwurfs-Kapitel haette keinen gruenen Weg (an #398 gemessen).
+  say("ohne Nennung UND ohne Blatt ist es dieselbe Auslassung, nicht ein zweiter Fehler",
     bindingVerdict({ skin: "hund", art: undefined, sheetOnDisk: false }),
-    (b) => b.verdict === "falsches-blatt" && b.stem === "hund_a");
+    (b) => b.verdict === "kein-blatt" && b.stem === "hund_a");
+  // 16b · …aber ist das Blatt GEMALT, ist die fehlende Nennung rot: dann legt
+  //       die Karte den Text-Platzhalter ueber bestellte Kunst.
+  say("ohne Nennung, aber MIT gemaltem Blatt, ist rot",
+    bindingVerdict({ skin: "hund", art: undefined, sheetOnDisk: true }),
+    (b) => b.verdict === "blatt-nicht-genannt");
   // 17 · …und ebenso, wenn sie ein FREMDES Blatt nennt
   say("eine Karte, die ein anderes Blatt nennt, ist rot",
     bindingVerdict({ skin: "hund", art: "pinguin_a", sheetOnDisk: true }),
@@ -562,13 +582,42 @@ for (const o of orphanTaskFiles()) {
   fail(o.file, "Kartendatei ohne `chNN.level.json` — die geteilte Aufloesung fuehrt Kapitel ueber ihren Level-Ausweis; ohne ihn saehe dieses Tor die Datei nie (L0 · N6)");
 }
 
-const files = CHAPTERS.filter((c) => c.hasTasks).map((c) => c.tasksPath);
+// EINE Kartendatei je Kapitel, und das Kapitel ist der ORDNER-Ausweis.
+const KARTENDATEIEN = CHAPTERS.filter((c) => c.hasTasks).map((c) => ({ chapter: c.chapter, file: c.tasksPath }));
+const files = KARTENDATEIEN.map((k) => k.file);
+
+// Das Namensmuster der geteilten Aufloesung ist streng (`chNN.tasks.v2.json`).
+// Der alte Lauf dieses Tors war es nicht (`endsWith(".tasks.v2.json")`) — eine
+// Datei wie `ch2.tasks.v2.json` sah er, die Aufloesung sieht sie nicht. Das
+// Spiel laedt sie ebenfalls nie (`paint-content.ts:322` baut den Namen aus der
+// Kapitel-Id), sie erreicht also kein Kind; aber sie waere GESCHRIEBENE ARBEIT,
+// die still niemand prueft — genau die Klasse, gegen die `orphanTaskFiles`
+// gebaut wurde. Also wird sie hier benannt statt uebergangen.
+for (const c of CHAPTERS) {
+  for (const f of fs.readdirSync(c.dir).filter((x) => x.endsWith(".tasks.v2.json"))) {
+    if (!/^ch\d{2}\.tasks\.v2\.json$/.test(f)) {
+      fail(path.join(c.dir, f), "Kartendatei mit abweichendem Namensmuster — die geteilte Kapitel-Aufloesung und der Lader des Spiels bauen beide `chNN.tasks.v2.json`; diese Datei wird von keinem von beiden je geoeffnet");
+    }
+  }
+  break; // ein Story-Ordner je Kapitel-Liste; `c.dir` ist fuer alle derselbe Paint-Ordner
+}
 
 let measured = 0;
 const table = [];
-for (const file of files) {
+for (const { chapter, file } of KARTENDATEIEN) {
   const json = JSON.parse(fs.readFileSync(file, "utf8"));
-  const chapter = json.chapter;
+  // DIE IDENTITAET KOMMT AUS DEM ORDNER, NICHT AUS DER DATEI.
+  // Der erste Entwurf dieses Umbaus las `json.chapter` und nahm an, ein
+  // Widerspruch faende sich schon von selbst. Ein blinder Pruefer hat das
+  // Gegenteil gezeigt (2026-09-04): eine Kartendatei, die PHYSISCH im Ordner
+  // eines FERTIGEN Kapitels liegt und sich intern nach einem ENTWURFS-Kapitel
+  // benennt, erbt dessen Nachsicht — der Lauf endete mit exit 0 und null
+  // Luecken, obwohl das Spiel die Datei als die des fertigen Kapitels laedt.
+  // Die Nachsicht haengt jetzt am Ordner, und der Widerspruch selbst ist rot.
+  if (json.chapter !== chapter) {
+    fail(file, `die Datei liegt im Ordner von »${chapter}«, nennt sich aber »${json.chapter}« — das Spiel laedt sie als ${chapter} (paint-content.ts baut den Namen aus der Kapitel-Id), jedes Tor wuerde sie als ${json.chapter} beurteilen`);
+    continue;
+  }
   for (const t of json.items ?? []) {
     if (t.kind !== "restore") continue;
     const id = t.id.replace(`g1.paint.${chapter}.`, "");
@@ -583,6 +632,10 @@ for (const file of files) {
     const b = bindingVerdict({ skin, art: t.stimulus?.art, sheetOnDisk: sheet !== null && fs.existsSync(sheet) });
     const stem = b.stem;
     if (b.verdict === "kein-skin") { fail(w, "a restore card with no skin — nothing binds it to a sheet"); continue; }
+    if (b.verdict === "blatt-nicht-genannt") {
+      fail(w, `portrait: ${stem}.png ist gemalt, aber die Karte nennt kein stimulus.art — sie wuerde den Text-Platzhalter ueber bestellte Kunst legen (dasselbe Gesetz fuehrt check-game-tasks aus der anderen Richtung)`);
+      continue;
+    }
     if (b.verdict === "falsches-blatt") {
       fail(w, `binding: skin »${skin}« washes ${stem}.png, but the card shows »${t.stimulus?.art}« — the question and the picture must be the same sheet`);
       continue;
@@ -714,8 +767,20 @@ if (coloursIn("blau").has("pink") || !coloursIn("rosa").has("pink")) {
 // Praktisch heisst das: ein Kapitel kann den Entwurf nicht verlassen, solange
 // eine seiner Farbaussagen unbelegt ist — die `draft`-Flagge IST die Frist,
 // und niemand muss ein Ablaufdatum pflegen.
-for (const g of ledger.gaps()) {
+const luecken = ledger.gaps();
+const vorLuecken = failures;
+for (const g of luecken) {
   fail("LUECKE", `${g} — dieses Kapitel traegt keine draft-Flagge, steht Kindern also offen; eine unbelegte Farbe darf ein fertiges Kapitel nicht verlassen`);
+}
+// DIE VERDRAHTUNG BEWEIST SICH SELBST. Ein blinder Pruefer hat gezeigt, dass
+// der `--selftest` diese Schleife NICHT deckt: er faehrt `skipLedger` als reine
+// Funktion, und ein Tamper genau hier bleibt fuer ihn unsichtbar, waehrend der
+// echte Lauf still durchwinkt. Ein Selbsttest, der die Verdrahtung nicht sieht,
+// ist genau das, wovor `check-ci-gates` warnt („A self-test proves the
+// INSTRUMENT. Only a real run proves the WORK"). Also prueft der echte Lauf
+// sich hier selbst: gemeldete Luecken MUESSEN Verstoesse gezaehlt haben.
+if (luecken.length > 0 && failures === vorLuecken) {
+  fail("VACUITY", `die Ratsche hat ${luecken.length} Luecke(n) gemeldet, aber kein Verstoss wurde gezaehlt — die Verdrahtung zwischen skipLedger und diesem Tor ist tot`);
 }
 
 // ── VACUITY — the gate proves it still sees ──────────────────────────────────
