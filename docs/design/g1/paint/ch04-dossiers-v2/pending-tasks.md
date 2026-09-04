@@ -30,7 +30,7 @@ das Schema kennt sie nicht, der Router kennt sie nicht.
 }
 ```
 
-**Gemessener Befund zu den Polen (D-869).** Das Boot-Blatt schlug „a little" / „very" vor. `little` steht in
+**Gemessener Befund zu den Polen (D-878).** Das Boot-Blatt schlug „a little" / „very" vor. `little` steht in
 KEINER Quelle dieses Kapitels — nicht in `g1-u04/wordbank.json`, nicht in der SB/WB-Abschrift, nicht in der
 Kumulativ-Bank u01–u03; das Erdungs-Tor würde die Karte rot färben. Die Unit hat ihre eigene Skala, und sie
 ist besser: **`not …` ← → `very …`**, mit dem nackten Adjektiv in der Mitte.
