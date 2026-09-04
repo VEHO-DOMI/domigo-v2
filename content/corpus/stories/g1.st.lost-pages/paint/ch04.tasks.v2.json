@@ -25,7 +25,7 @@
     "angry"
    ],
    "name": "happy",
-   "colourAskDe": "Der Marktfrau fehlt ihr Sonnengelb.",
+   "colourAskDe": "Der Marktfrau fehlt ihr Gelb — das Sonnengelb.",
    "colourOptions": [
     "yellow",
     "blue",
@@ -65,7 +65,7 @@
     "excited"
    ],
    "name": "sad",
-   "colourAskDe": "Dem Regenkind fehlt sein Tintenblau.",
+   "colourAskDe": "Dem Regenkind fehlt sein Blau — das Tintenblau.",
    "colourOptions": [
     "blue",
     "green",
@@ -79,7 +79,7 @@
     "p1"
    ],
    "hints": {
-    "deDesc": "Die Tränen laufen ihm über das graue Gesicht.",
+    "deDesc": "Die Tränen laufen ihm über das leere Gesicht.",
     "deWord": "Auf Deutsch: traurig — und Tintenblau."
    },
    "grounding": "SB S. 31: In this scene Harry isn't happy. He's sad! · Kontrastpaar zu happy (Wirbelsäule p1)."
@@ -208,7 +208,7 @@
     "bored"
    ],
    "name": "tired",
-   "colourAskDe": "Der Nachbarin fehlt ihr Moosgrün.",
+   "colourAskDe": "Der Nachbarin fehlt ihr Grün — das Moosgrün.",
    "colourOptions": [
     "green",
     "orange",

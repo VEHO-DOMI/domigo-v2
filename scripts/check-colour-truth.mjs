@@ -88,6 +88,7 @@
 
 import fs from "node:fs";
 import path from "node:path";
+import { paintChapters } from "./paint-chapters.mjs";
 
 const R = process.cwd();
 const STORIES = "content/corpus/stories";
@@ -344,6 +345,34 @@ export const PARCHMENT_CREAM = [191, 161, 100];
 /** sattes Gold wie die Ecken desselben Buchs: Ton 42°, S·V 0,78 */
 export const VIVID_GOLD = [230, 170, 30];
 
+// ── L4-T1 · D-881 · WAS EIN ENTWURF SCHULDIG BLEIBEN DARF (Form: L0 · N6) ────
+//
+// Jedes Gesetz von KAPITEL 1 oeffnet ein PNG: es ist eine Aussage ueber das
+// BILD. Ein Kapitel im Bau hat seine Karten, aber noch kein Blatt — und damit
+// gab es fuer eine restore-Karte eines Entwurfs KEINEN gruenen Zustand. Beide
+// Richtungen gemessen an ch04 (2026-09-04):
+//
+//   ohne `stimulus.art`  → hier rot:  »the card shows undefined«
+//   mit  `stimulus.art`  → check-game-tasks Schicht 11 rot:
+//                          »declares art "<stem>", which is not painted«
+//
+// Dieselbe Klemme sitzt in ch02 (#398, 2 Karten) und ch03 (#394, 1 Karte) —
+// gemessen, indem deren Kartendateien geliehen durch dieses Tor liefen, nicht
+// vermutet. Das Schwester-Tor hat die Entwurfs-Semantik mit L0 · N6 bekommen,
+// dieses nie (dieselbe Familie wie D-792 und D-806).
+//
+// Die Regel folgt N6 woertlich: BERICHTET, nicht still uebersprungen — eine
+// stille Auslassung ist von einem toten Gesetz nicht zu unterscheiden. Sie gilt
+// NUR fuer die Mess-Gesetze; KAPITEL 2 (die Kopie) sind Aussagen ueber die
+// KARTE und bleiben im Entwurf unveraendert hart (sie haben in ch04 vier echte
+// Defekte gefunden). Und der Nachlass haengt am fehlenden BILD, nicht an der
+// Flagge: sobald ein Blatt auf der Platte liegt, wird auch im Entwurf gemessen.
+export const bindingVerdict = ({ draft, art, stem, sheetOnDisk }) => {
+  if (art !== stem) return draft ? "report-art" : "fail-art";
+  if (!sheetOnDisk) return draft ? "report-sheet" : "fail-sheet";
+  return "measure";
+};
+
 if (selftest) {
   // The specimens run through the REAL measurement and the REAL laws, not a copy.
   const cases = [];
@@ -423,6 +452,16 @@ if (selftest) {
     measure(flau.data, flau.dims), (m) => m.dominant === "MIXED");
 
 
+  // ── L4-T1 · D-881 · die Entwurfs-Regel der BINDUNG, sechs Faelle, beide
+  //    Richtungen: der Nachlass darf NUR im Entwurf und NUR ohne Blatt gelten.
+  const BV = (draft, art, sheetOnDisk) => bindingVerdict({ draft, art, stem: "marktfrau_a", sheetOnDisk });
+  say("fertiges Kapitel, Karte nennt kein Blatt: ROT", BV(false, undefined, false), (v) => v === "fail-art");
+  say("fertiges Kapitel, Blatt genannt aber nicht auf der Platte: ROT", BV(false, "marktfrau_a", false), (v) => v === "fail-sheet");
+  say("Entwurf, Karte nennt kein Blatt: BERICHTET", BV(true, undefined, false), (v) => v === "report-art");
+  say("Entwurf, Blatt genannt aber nicht gemalt: BERICHTET", BV(true, "marktfrau_a", false), (v) => v === "report-sheet");
+  say("NICHT-TAMPER · Entwurf MIT gemaltem Blatt wird weiter GEMESSEN", BV(true, "marktfrau_a", true), (v) => v === "measure");
+  say("NICHT-TAMPER · fertiges Kapitel mit Blatt wird GEMESSEN", BV(false, "marktfrau_a", true), (v) => v === "measure");
+
   // ── KAPITEL 2 · die Kopie · eigene Faelle, eigene Zaehlung (D-420) ────────
   const kopieCases = [];
   const sagK = (name, got, ok) => kopieCases.push([name, got, ok]);
@@ -482,6 +521,13 @@ if (fs.existsSync(STORIES)) {
   }
 }
 
+// Welche Kapitel im Bau sind, sagt ihre eigene Level-Datei (`draft: true`) —
+// gelesen mit demselben Kapitel-Leser wie in check-game-tasks/-level-design.
+// Eine Kartendatei OHNE Level steht hier NICHT drin und bleibt damit hart:
+// die Waise gehoert check-game-tasks (D-792), nicht diesem Tor.
+const DRAFT = new Set(paintChapters().filter((c) => c.draft).map((c) => c.chapter));
+const entwurfsBerichte = [];
+
 let measured = 0;
 const table = [];
 for (const file of files) {
@@ -498,12 +544,21 @@ for (const file of files) {
     // `stimulus.art`; if those two ever disagree, the child is asked about one
     // picture while looking at another, and every measurement below is moot.
     const stem = `${skin}_a`;
-    if (t.stimulus?.art !== stem) {
-      fail(w, `binding: skin »${skin}« washes ${stem}.png, but the card shows »${t.stimulus?.art}« — the question and the picture must be the same sheet`);
-      continue;
-    }
     const sheet = path.join(ART, chapter, `${stem}.png`);
-    if (!fs.existsSync(sheet)) { fail(w, `binding: ${sheet} is not on disk`); continue; }
+    switch (bindingVerdict({ draft: DRAFT.has(chapter), art: t.stimulus?.art, stem, sheetOnDisk: fs.existsSync(sheet) })) {
+      case "fail-art":
+        fail(w, `binding: skin »${skin}« washes ${stem}.png, but the card shows »${t.stimulus?.art}« — the question and the picture must be the same sheet`);
+        continue;
+      case "fail-sheet":
+        fail(w, `binding: ${sheet} is not on disk`);
+        continue;
+      case "report-art":
+        entwurfsBerichte.push(`${w}: die Karte nennt kein Blatt (»${t.stimulus?.art}«), weil ${stem}.png noch nicht gemalt ist`);
+        continue;
+      case "report-sheet":
+        entwurfsBerichte.push(`${w}: ${sheet} ist noch nicht gemalt`);
+        continue;
+    }
 
     const png = await readSheet(sheet);
     const m = measure(png.data, { w: png.width, h: png.height });
@@ -622,6 +677,11 @@ if (Object.keys(READINGS).length < measured) fail("VACUITY", `${measured} sheets
 // …and the measurement itself must still be able to tell two colours apart.
 if (measure(flat(214, 40, 30)).dominant === measure(flat(40, 90, 200)).dominant) {
   fail("VACUITY", "the measurement puts a red sheet and a blue sheet in the same family — it is not discriminating and every verdict above is noise");
+}
+
+if (entwurfsBerichte.length > 0) {
+  console.log(`\ncheck-colour-truth: ${entwurfsBerichte.length} Bindungs-Posten in ENTWURFS-Kapiteln (berichtet, nicht rot — D-881):`);
+  for (const line of entwurfsBerichte) console.log(`  · ${line}`);
 }
 
 console.log("\ncheck-colour-truth · die Ist-Palette:");
