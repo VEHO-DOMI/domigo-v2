@@ -58,7 +58,11 @@ describe("L0 · D1 · der Kapitel-Lader", () => {
 
   it("ein Kapitel ohne Kartensatz ist kein Fehler, sondern ein Zustand", () => {
     assert.equal(chapterHasTasks(STORY, "ch01"), true);
-    assert.equal(chapterHasTasks(STORY, "ch02"), false);
+    // L2-T1 03.09.: ch02 trägt Karten (vorher: die Prämisse war »ch02 hat noch keine«).
+    // Der Titel dieses Falls stammt noch aus dieser Prämisse und ist damit zu weit —
+    // beide Kapitel tragen jetzt einen Kartensatz. Umbenennen gehört nicht dieser Bahn
+    // (Scope-Wand: nur dieser eine Fall); gemeldet im Report der Bahn L2-T1.
+    assert.equal(chapterHasTasks(STORY, "ch02"), true);
   });
 });
 
