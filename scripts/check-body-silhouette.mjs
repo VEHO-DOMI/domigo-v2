@@ -8,18 +8,30 @@
  *       ist ≤0,5 % opak: nichts darf begehbar AUSSEHEN, was es nicht ist.
  *   3 · LAUF-LINIE     — über jeder Steh-Zelle beginnt die Malerei im Fenster
  *       [Zellkante−8 px, Zellkante+2 px]: die gemalte Kante IST die Kollision.
- *   4 · KEIN LOCH      — keine Pflicht-Zelle ist flach UND schwarz (SD < 2 bei
- *       Luminanz < 8). Deckendes Schwarz erfüllt Gesetz 1 und ist doch nichts.
+ *   4 · KEIN LOCH      — keine Pflicht-Zelle ist ohne Struktur (Wert-SD < 2).
+ *       Deckende Fuellung erfuellt Gesetz 1 und ist doch keine Malerei.
+ *   5 · MALEREI, NICHT RAUSCHEN — Kanten-Dichte im MEDIAN je Blatt ≤80 %.
+ *       (D-976: der Kopf zaehlte bis N7A2c nur vier auf, obwohl er fuenf
+ *       versprach — das schaerfste Gesetz stand nur im Code.)
+ *
+ * ★ N7A2c · SCHRAEGEN. Eine Masken-Zelle, die kein '#' ist, traegt das Glyph
+ * ihrer Schraege. Sie ist eine HALBE Zelle: die Kollision laeuft als Diagonale
+ * durch sie (`slopeSurfaceInCell`, dieselbe Formel wie im Motor). Deshalb messen
+ * ALLE fuenf Gesetze dort ueber der MATERIE-Seite — und die Luft ueber der
+ * Rutschbahn wird zur Aussenzone von Gesetz 2, damit kein Blatt die Rutsche
+ * zumauern kann. Ohne das war „die Schraege malen" nicht ungetan, sondern
+ * verboten: als '#' verlangte Gesetz 1 98 % Deckung (eine ehrliche Rampe hat
+ * 50,8 %), ohne Maske meldete Gesetz 2 1,44 % Alpha gegen 0,50 % Schwelle.
  *
  * Aufrufe:
  *   node scripts/check-body-silhouette.mjs                      # alle CH01_BODIES
  *   node scripts/check-body-silhouette.mjs --sheet <png> --exemplar   # Wareneingang
- *   node scripts/check-body-silhouette.mjs --selftest           # drei Tamper
+ *   node scripts/check-body-silhouette.mjs --selftest           # 1 sauber + Tamper
  */
 import fs from "node:fs";
 import path from "node:path";
 import { PNG } from "pngjs";
-import { CH01_BODIES, DECLARED_BODIES, P2_EXEMPLAR_BODY, bodyCells, gridOf } from "../packages/game-paint/src/visualBodies.ts";
+import { CH01_BODIES, DECLARED_BODIES, P2_EXEMPLAR_BODY, bodyCells, bodySlopeCells, gridOf, slopeSurfaceInCell } from "../packages/game-paint/src/visualBodies.ts";
 import { glyphAt, isSolid } from "../packages/game-paint/src/collide.ts";
 
 const ART_DIR = path.join(process.cwd(), "apps/web/public/art/g1/paint/ch01");
@@ -31,6 +43,7 @@ const VOID_SD = 2;    // Struktur-Schwelle „flach" (Gesetz 4)
 const VOID_L = 8;     // Luminanz-Schwelle „schwarz" (Gesetz 4)
 const EDGE_G = 12;    // Gradient, ab dem ein Pixel als Kante zaehlt (Gesetz 5)
 const EDGE_MEDIAN_MAX = 80; // Median-Kantendichte eines Blattes in Prozent (Gesetz 5)
+const SLOPE_FEATHER = 4; // px Toleranzband beiderseits der gemalten Rutschbahn
 
 const levelGrids = () => JSON.parse(fs.readFileSync(LEVEL, "utf8"));
 
@@ -50,18 +63,30 @@ export const measureBody = (body, png, grid) => {
   body.rows.forEach((row, dr) => {
     for (let dc = 0; dc < row.length; dc++) if (row[dc] === "#") inMask.add(`${dc},${dr}`);
   });
+  // ★ N7A2c · die Schraegen-Zellen, als zweite Zeichen-Klasse der Maske.
+  const slopes = new Map();
+  for (const { c, r, glyph } of bodySlopeCells(body)) slopes.set(`${c - body.c0},${r - body.r0}`, glyph);
+  /** Alle Mess-Zellen mit ihrer Art: "#" oder das Schraegen-Glyph. */
+  const messZellen = [...[...inMask].map((k) => [k, "#"]), ...slopes.entries()];
+  /** Gehoert dieses Pixel (Zell-lokale Koordinaten) zur Pflicht-Materie? */
+  const istMaterie = (kind, lx, ly) =>
+    kind === "#" ? true : ly >= slopeSurfaceInCell(kind, lx, px) + SLOPE_FEATHER;
 
-  // Gesetz 1 · Kern-Deckung
-  for (const key of inMask) {
+  // Gesetz 1 · Kern-Deckung (bei einer Schraege: ueber der Materie-Seite)
+  for (const [key, kind] of messZellen) {
     const [dc, dr] = key.split(",").map(Number);
     const x0 = body.overpaint.l + dc * px, y0 = body.overpaint.t + dr * px;
     const m = Math.round(px * 0.1);
     let opaque = 0, total = 0;
     for (let y = y0 + m; y < y0 + px - m; y++) {
-      for (let x = x0 + m; x < x0 + px - m; x++) { total++; if (alphaAt(x, y) >= OPAQUE) opaque++; }
+      for (let x = x0 + m; x < x0 + px - m; x++) {
+        if (!istMaterie(kind, x - x0, y - y0)) continue;
+        total++; if (alphaAt(x, y) >= OPAQUE) opaque++;
+      }
     }
-    if (opaque / total < 0.98) {
-      errors.push(`Kern-Deckung Zelle (${body.c0 + dc},${body.r0 + dr}): ${(100 * opaque / total).toFixed(1)} % < 98 %`);
+    if (total > 0 && opaque / total < 0.98) {
+      const was = kind === "#" ? "Kern-Deckung" : `Rampen-Deckung ("${kind}")`;
+      errors.push(`${was} Zelle (${body.c0 + dc},${body.r0 + dr}): ${(100 * opaque / total).toFixed(1)} % < 98 %`);
     }
   }
 
@@ -70,9 +95,16 @@ export const measureBody = (body, png, grid) => {
     const dc = Math.floor((x - body.overpaint.l) / px), dr = Math.floor((y - body.overpaint.t) / px);
     for (let a = dr - 1; a <= dr + 1; a++) {
       for (let b = dc - 1; b <= dc + 1; b++) {
-        if (!inMask.has(`${b},${a}`)) continue;
+        const kind = inMask.has(`${b},${a}`) ? "#" : slopes.get(`${b},${a}`);
+        if (kind === undefined) continue;
         const cx0 = body.overpaint.l + b * px - FRINGE_PX, cy0 = body.overpaint.t + a * px - FRINGE_PX;
-        if (x >= cx0 && x < cx0 + px + 2 * FRINGE_PX && y >= cy0 && y < cy0 + px + 2 * FRINGE_PX) return true;
+        if (!(x >= cx0 && x < cx0 + px + 2 * FRINGE_PX && y >= cy0 && y < cy0 + px + 2 * FRINGE_PX)) continue;
+        if (kind === "#") return true;
+        // ★ Eine Schraege deckt nur ihre Materie-Seite (plus Fransen-Guertel).
+        // Die Luft ueber der Rutschbahn bleibt Aussenzone — das ist die einzige
+        // Stelle, an der ein zugemaltes Rutschbrett rot wird.
+        const lx = Math.min(Math.max(x - (cx0 + FRINGE_PX), 0), px - 1);
+        if (y - (cy0 + FRINGE_PX) >= slopeSurfaceInCell(kind, lx, px) - FRINGE_PX) return true;
       }
     }
     return false;
@@ -95,6 +127,9 @@ export const measureBody = (body, png, grid) => {
     const c = body.c0 + dc, r = body.r0 + dr;
     if (grid !== null && isSolid(glyphAt(grid, c, r - 1))) continue; // verdeckt
     if (inMask.has(`${dc},${dr - 1}`)) continue;
+    // ★ N7A2c: eine GEMALTE Rampe darueber deckt die Kante dieser Zelle bereits
+    // — ihre Malerei beginnt an der Zell-Oberkante der Rampe, eine Zelle hoeher.
+    if (slopes.has(`${dc},${dr - 1}`)) continue;
     const x0 = body.overpaint.l + dc * px, cellTop = body.overpaint.t + dr * px;
     let first = null;
     for (let y = Math.max(0, cellTop - px); y < cellTop + px && first === null; y++) {
@@ -106,6 +141,28 @@ export const measureBody = (body, png, grid) => {
       errors.push(`Lauf-Linie (${c},${r}): erste opake Zeile ${first ?? "—"}, Fenster [${cellTop - 8}, ${cellTop + 2}]`);
     }
   }
+  // Gesetz 3b · DIE RUTSCH-LINIE. Bei einer Schraege ist die Laufkante keine
+  // Waagrechte, sondern die Diagonale selbst. Gemessen an drei Saeulen (15 %,
+  // 40 %, 65 % der Zellbreite — das duenne rechte Ende bleibt aussen vor, dort
+  // frisst die Kantenglaettung das letzte Pixel): die erste opake Zeile muss im
+  // Fenster [Sollkante-8, Sollkante+4] liegen. Sonst schwebt das gemalte Brett
+  // ueber der Bahn, auf der das Kind rutscht, oder liegt darunter.
+  for (const [key, glyph] of slopes) {
+    const [dc, dr] = key.split(",").map(Number);
+    const c = body.c0 + dc, r = body.r0 + dr;
+    const x0 = body.overpaint.l + dc * px, cellTop = body.overpaint.t + dr * px;
+    for (const lx of [Math.round(px * 0.15), Math.round(px * 0.4), Math.round(px * 0.65)]) {
+      const soll = cellTop + slopeSurfaceInCell(glyph, lx, px);
+      let first = null;
+      for (let y = Math.max(0, Math.floor(soll) - px); y < cellTop + px && first === null; y++) {
+        if (alphaAt(x0 + lx, y) >= OPAQUE) first = y;
+      }
+      if (first === null || first < soll - 8 || first > soll + 4) {
+        errors.push(`Rutsch-Linie (${c},${r}) bei x+${lx}: erste opake Zeile ${first ?? "—"}, Fenster [${Math.round(soll - 8)}, ${Math.round(soll + 4)}]`);
+      }
+    }
+  }
+
   // Gesetz 4 · KEIN LOCH. Die drei Gesetze oben messen ALPHA — und deckendes
   // Schwarz ist deckend. N7A1 hat die Lücke bezahlt: zwei p1-Blätter kamen mit
   // 100 % Deckung durch alle drei Gesetze, während 17 bzw. 15 Pflicht-Zellen
@@ -132,7 +189,7 @@ export const measureBody = (body, png, grid) => {
   // p1/p2-Wellen liegt KEINE unter SD 2**, die schwächste bei 3,72 (86 %
   // Luft über der Schwelle). Eine reine SD-Schwelle bricht also nichts, was
   // Koki angenommen hat — sie schließt nur das Schlupfloch.
-  for (const key of inMask) {
+  for (const [key, kind] of messZellen) {
     const [dc, dr] = key.split(",").map(Number);
     const x0 = body.overpaint.l + dc * px, y0 = body.overpaint.t + dr * px;
     const m = Math.round(px * 0.1);
@@ -140,6 +197,7 @@ export const measureBody = (body, png, grid) => {
     for (let y = y0 + m; y < y0 + px - m; y++) {
       for (let x = x0 + m; x < x0 + px - m; x++) {
         const i = (y * png.width + x) * 4;
+        if (!istMaterie(kind, x - x0, y - y0)) continue;
         if (alphaAt(x, y) >= OPAQUE) {
           values.push(0.299 * (png.data[i] ?? 0) + 0.587 * (png.data[i + 1] ?? 0) + 0.114 * (png.data[i + 2] ?? 0));
         }
@@ -175,7 +233,7 @@ export const measureBody = (body, png, grid) => {
   // (eine Buchschnitt-Kante); ein ganzes Blatt darf es nicht.
   {
     const dichten = [];
-    for (const key of inMask) {
+    for (const [key, kind] of messZellen) {
       const [dc, dr] = key.split(",").map(Number);
       const x0 = body.overpaint.l + dc * px, y0 = body.overpaint.t + dr * px;
       const m = Math.round(px * 0.1);
@@ -186,6 +244,7 @@ export const measureBody = (body, png, grid) => {
       let kanten = 0, n = 0;
       for (let y = y0 + m; y < y0 + px - m; y++) {
         for (let x = x0 + m; x < x0 + px - m; x++) {
+          if (!istMaterie(kind, x - x0, y - y0)) continue;
           if (alphaAt(x, y) < OPAQUE || alphaAt(x + 1, y) < OPAQUE || alphaAt(x, y + 1) < OPAQUE) continue;
           n += 1;
           if (Math.hypot(lum(x + 1, y) - lum(x, y), lum(x, y + 1) - lum(x, y)) > EDGE_G) kanten += 1;
@@ -211,9 +270,16 @@ const synthSheet = (body, mutate) => {
   const png = new PNG({ width: w, height: h });
   body.rows.forEach((row, dr) => {
     for (let dc = 0; dc < row.length; dc++) {
-      if (row[dc] !== "#") continue;
+      const kind = row[dc];
+      if (kind === undefined || kind === ".") continue;
       for (let y = body.overpaint.t + dr * px; y < body.overpaint.t + (dr + 1) * px; y++) {
         for (let x = body.overpaint.l + dc * px; x < body.overpaint.l + (dc + 1) * px; x++) {
+          // Eine Schraege wird nur unter ihrer Rutschbahn gemalt — die
+          // Vorrichtung muss dasselbe koennen wie eine echte Lieferung.
+          if (kind !== "#") {
+            const lx = x - (body.overpaint.l + dc * px), ly = y - (body.overpaint.t + dr * px);
+            if (ly < slopeSurfaceInCell(kind, lx, px)) continue;
+          }
           const i = (y * w + x) * 4;
           // ★ N7A2 · DAS PRUEFBLATT MUSS GEMALTE MATERIE SEIN, NICHT FARBE —
           // und auch nicht Rauschen. Hier stand erst ein flacher Ton (90,70,120,
@@ -266,6 +332,57 @@ const selftest = () => {
     const errors = measureBody(body, synthSheet(body, mutate), grid);
     if (errors.length === 0) { console.error(`Selbsttest-TAMPER "${name}" blieb GRÜN`); return 1; }
   }
+  // ★ N7A2c · DIE SCHRAEGE HAT IHRE EIGENE VORRICHTUNG. Die L-Form oben traegt
+  // keine, und ein Gesetz ohne Vorrichtung ist eine Behauptung. Drei Tamper,
+  // und jeder trifft GENAU EIN Gesetz — das ist zugleich der Beweis, wofuer die
+  // drei Gesetze nebeneinander noetig sind:
+  //   · zugemauert  ⇒ Gesetz 2 (die Luft ueber der Bahn ist Aussenzone)
+  //   · Rampe fehlt ⇒ Gesetz 1 (die Materie-Seite ist Pflicht)
+  //   · 12 px zu hoch ⇒ AUSSCHLIESSLICH Gesetz 3b. Der Fransen-Guertel von Gesetz 2 duldet
+  //     16 px Ueberhang (K6 erlaubt Kragen), und Gesetz 1 misst erst ab
+  //     Sollkante+4 — ein leicht zu hoch gemaltes Brett faellt also durch KEINES
+  //     der beiden auf, obwohl das Kind sichtbar darin versaenke.
+  const zBody = { id: "stz", stem: "stz", c0: 1, r0: 1, rows: ["#z", "##"], pxPerCell: 64, overpaint: { l: 0, r: 0, t: 8, b: 8 } };
+  const zGrid = ["....", ".#z.", ".##.", "...."];
+  const zClean = measureBody(zBody, synthSheet(zBody), zGrid);
+  if (zClean.length !== 0) { console.error("Selbsttest: sauberes Schraegen-Blatt faellt durch:", zClean); return 1; }
+  const zx0 = 64, zy0 = 8, zpx = 64;
+  const malen = (png, w, x, y) => {
+    const i = (y * w + x) * 4;
+    const n = (((x >> 3) * 7 + (y >> 3) * 13) % 17) * 3;
+    png.data[i] = 90 + n; png.data[i + 1] = 70 + n; png.data[i + 2] = 120 + n; png.data[i + 3] = 255;
+  };
+  const zTampers = [
+    ["Rutschbahn zugemauert (Gesetz 2)", (png, w) => {
+      for (let y = zy0; y < zy0 + zpx; y++) for (let x = zx0; x < zx0 + zpx; x++) malen(png, w, x, y);
+    }, "Alpha außerhalb"],
+    ["Rampe fehlt (Gesetz 1)", (png, w) => {
+      for (let y = zy0; y < zy0 + zpx; y++) for (let x = zx0; x < zx0 + zpx; x++) png.data[((y * w + x) * 4) + 3] = 0;
+    }, "Rampen-Deckung"],
+    ["Rampe steht 12 px ueber der Bahn (Gesetz 3b)", (png, w) => {
+      for (let x = zx0; x < zx0 + zpx; x++) {
+        const soll = zy0 + slopeSurfaceInCell("z", x - zx0, zpx);
+        for (let y = Math.max(zy0, Math.floor(soll) - 12); y < soll; y++) malen(png, w, x, y);
+      }
+    }, "Rutsch-Linie"],
+  ];
+  for (const [name, mutate, erwartet] of zTampers) {
+    const errors = measureBody(zBody, synthSheet(zBody, mutate), zGrid);
+    if (errors.length === 0) { console.error(`Selbsttest-TAMPER "${name}" blieb GRUEN`); return 1; }
+    if (!errors.some((e) => e.includes(erwartet))) {
+      console.error(`Selbsttest-TAMPER "${name}" nennt sein Gesetz "${erwartet}" nicht:`, errors);
+      return 1;
+    }
+  }
+  // ★ Der dritte Fall ist der eigentliche Beweis fuer Gesetz 3b: er muss
+  // AUSSCHLIESSLICH die Rutsch-Linie melden. Meldete er auch Gesetz 1 oder 2,
+  // waere 3b ueberfluessig — und ein ueberfluessiges Gesetz ist eine Behauptung.
+  const nurLinie = measureBody(zBody, synthSheet(zBody, zTampers[2][1]), zGrid);
+  if (!nurLinie.every((e) => e.includes("Rutsch-Linie"))) {
+    console.error("Selbsttest: die 12-px-Rampe trifft nicht NUR Gesetz 3b:", nurLinie);
+    return 1;
+  }
+
   // N7A1 · DAS RASTER KOMMT AUS DER GETEILTEN AUFLÖSUNG. p4 wohnt in `arena`,
   // p9 in `bonus`; vorher las dieses Tor `level.phases[idx]` und wäre an jedem
   // p4-/p9-Körper abgestürzt — ein Tor, das nur die Räume kennt, für die es je
@@ -285,7 +402,8 @@ const selftest = () => {
   try { gridOf(level, "p7"); } catch { gemeldet = true; }
   if (!gemeldet) { console.error("Selbsttest: gridOf hat eine unbekannte Phase NICHT gemeldet"); return 1; }
   console.log(`check-body-silhouette: p4 aus dem Arena-Raster gelesen (Dummy auf (${seat.c},${seat.r}), kein Absturz), unbekannte Phase meldet sich`);
-  console.log("check-body-silhouette: Selbsttest OK — 1 sauber + 6 Tamper rot + p4/p9-Raster");
+  console.log("check-body-silhouette: Schraege — 1 sauber + 3 Tamper (zugemauert ⇒ Gesetz 2 · fehlend ⇒ Gesetz 1 · 12 px zu hoch ⇒ AUSSCHLIESSLICH Gesetz 3b)");
+  console.log("check-body-silhouette: Selbsttest OK — 2 sauber + 9 Tamper rot + p4/p9-Raster");
   return 0;
 };
 
