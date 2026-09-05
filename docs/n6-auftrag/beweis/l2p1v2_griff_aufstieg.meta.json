@@ -1,0 +1,152 @@
+{
+  "tick": 154,
+  "phase": "p1",
+  "overlay": false,
+  "reducedMotion": false,
+  "visibility": "visible",
+  "hidden": false,
+  "hero": {
+    "x": 122,
+    "y": 248,
+    "pose": "jump",
+    "grounded": false
+  },
+  "camX": 10,
+  "camY": 135,
+  "canvas": {
+    "w": 1056,
+    "h": 672,
+    "cssW": 1056,
+    "cssH": 672
+  },
+  "entities": [
+    {
+      "id": "p1-cage2",
+      "role": "cage",
+      "skin": "zookaefig",
+      "state": "closed",
+      "redeemed": false,
+      "x": 184,
+      "y": 176,
+      "breath": {
+        "rot": -0.02070811887684577,
+        "dy": 0,
+        "sx": 1.0083833043945127,
+        "sy": 0.9937125217041154,
+        "hPx": 34,
+        "scr": {
+          "x": 502.7693904769368,
+          "y": -54.31309606557545,
+          "w": 96.36242151991132,
+          "h": 103.28924676827125
+        }
+      }
+    },
+    {
+      "id": "p1-buehne-papagei",
+      "role": "scene.stage",
+      "skin": "papagei",
+      "state": "walk",
+      "redeemed": false,
+      "x": 296,
+      "y": 176,
+      "breath": null
+    },
+    {
+      "id": "p1-schubkarre",
+      "role": "chaser",
+      "skin": "schubkarre",
+      "state": "turn",
+      "redeemed": false,
+      "x": 680,
+      "y": 288,
+      "breath": null
+    },
+    {
+      "id": "p1-rutscher",
+      "role": "bouncer",
+      "skin": "pinguin_rutscher",
+      "state": "patrol",
+      "redeemed": false,
+      "x": 651,
+      "y": 279,
+      "breath": null
+    },
+    {
+      "id": "p1-pinguin",
+      "role": "drained",
+      "skin": "pinguin",
+      "state": "patrol",
+      "redeemed": false,
+      "x": 776,
+      "y": 288,
+      "breath": {
+        "rot": 0.060916643885232574,
+        "dy": 0,
+        "sx": 1,
+        "sy": 1,
+        "hPx": 26,
+        "scr": {
+          "x": 2291.922088084082,
+          "y": 303.96825453759556,
+          "w": 76.11593867356487,
+          "h": 82.20816883940802
+        }
+      }
+    },
+    {
+      "id": "p1-buehne-buddy",
+      "role": "scene.stage",
+      "skin": "buddy",
+      "state": "walk",
+      "redeemed": false,
+      "x": 840,
+      "y": 288,
+      "breath": null
+    },
+    {
+      "id": "p1-faust",
+      "role": "powerup",
+      "skin": "fibel_faust",
+      "state": "patrol",
+      "redeemed": false,
+      "x": 904,
+      "y": 176,
+      "breath": null
+    },
+    {
+      "id": "p1-drehkreuz",
+      "role": "door.trigger",
+      "skin": "drehkreuz",
+      "state": "patrol",
+      "redeemed": false,
+      "x": 984,
+      "y": 288,
+      "breath": null
+    }
+  ],
+  "shotCostTicks": 0,
+  "pure": true,
+  "via": "snapshot",
+  "serie": "l2p1v2_griff",
+  "nr": 12,
+  "tickBefore": 154,
+  "fight": true,
+  "karten": 0,
+  "kampf": {
+    "grund": "takte-auf",
+    "gespielt": 66,
+    "takt": 154,
+    "schichten": -1,
+    "schichtenGesamt": 0,
+    "wische": [],
+    "karten": 0,
+    "fertig": false,
+    "wartete": 0,
+    "geduld": 4000,
+    "last": 45.57177734375
+  },
+  "frame": "l2p1v2_griff_012.png",
+  "md5": "8a93787cb9583783615f71d71a90b0d8",
+  "index": 12
+}
