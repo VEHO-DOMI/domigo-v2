@@ -141,6 +141,52 @@ describe("reachability (the honest movement envelope)", () => {
     expect(withHover.has("10,4")).toBe(true);
   });
 
+  it("climbs a ledge it could never jump — but only WITH the grip (L2-M-a · D-812)", () => {
+    // Eine Mauer von SECHS Zeilen ueber der Lauflinie, mit begehbarer Krone.
+    // Ohne den Griff verspricht das Modell JUMP_UP = 4 und die Krone liegt
+    // ausserhalb; mit dem Griff JUMP_UP + HANG_ROWS = 6, und sie liegt drin.
+    const rows = [
+      "................",
+      "................",
+      "................",
+      "................",
+      "................",
+      "..........######",   // Krone (r5); die Fuesse stehen auf r5 ⇒ Knoten r4
+      "..........######",
+      "..........######",
+      "..........######",
+      "..........######",
+      "..........######",
+      "..S.............",
+      "################",
+    ];
+    const ohne = reachableCells(rows, ["jump", "run"]);
+    expect(ohne.has("10,4"), "ohne den Griff ist die Krone sechs Zeilen weit weg").toBe(false);
+    const mit = reachableCells(rows, ["jump", "run", "hang"]);
+    expect(mit.has("10,4"), "mit dem Griff traegt die Kante das Kind hinauf").toBe(true);
+  });
+
+  it("…and the envelope still holds: a ledge too high stays out (L2-M-a)", () => {
+    // NEUN Zeilen. Die Sonde misst, dass die Engine hoechstens acht traegt —
+    // das Modell verspricht sechs und darf deshalb hier NICHTS segnen.
+    const rows = [
+      "................",
+      "................",
+      "..........######",   // Krone (r2) ⇒ Knoten r1, neun Zeilen ueber r10
+      "..........######",
+      "..........######",
+      "..........######",
+      "..........######",
+      "..........######",
+      "..........######",
+      "..........######",
+      "..S.............",
+      "################",
+    ];
+    const mit = reachableCells(rows, ["jump", "run", "hang"]);
+    expect(mit.has("10,1"), "das Modell darf nie eine unerreichbare Stelle segnen").toBe(false);
+  });
+
   it("bridges an even wider gap with a ring", () => {
     const rows = [
       "................",

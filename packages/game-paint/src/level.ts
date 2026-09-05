@@ -8,7 +8,7 @@
 
 import { MAX_LINE_DE, cloakErrorsDe, registerErrorsDe } from "@domigo/content-schema";
 import { BEISPIEL_MUSTER, BEISPIEL_PAAR_TRENNER } from "./rule-text.ts";
-import { type Grid, glyphAt, isOneWay, isSlope, isSolid } from "./collide.ts";
+import { type Grid, glyphAt, isOneWay, isSlope, isSolid, ledgeGrabAt } from "./collide.ts";
 import { PAINT, SUBS, TILE } from "./paint.ts";
 import { platformPathAt } from "./entities.ts";
 // R5-W4 · B4 · R45: READ-ONLY, both of them. The law has to see the trail the
@@ -619,6 +619,24 @@ export const REACH_ENVELOPE = {
   FALL_DRIFT_PER_ROW: 0.5, // cols of air-steer per row fallen (cap below; floor'd)
   FALL_DX_CAP: 4,
   RING_DX: 8,
+  /** L2-M-a · D-812 · WAS DAS HANGELN ZUSAETZLICH KAUFT, in Zeilen.
+   *
+   *  Bis hierher kannte das Modell `hang` gar nicht: jede Mauer ueber JUMP_UP
+   *  galt den Gesetzen als unerreichbar, obwohl `player.ts#hangAt` den
+   *  Leistengriff seit jeher kann. ch02 baut seine zweite Ebene genau darauf.
+   *
+   *  DIE ZAHL IST GEMESSEN, nicht gerechnet — `scripts/paint-probes/ch02.probe.mjs`
+   *  faehrt die echte `Sim` gegen Mauern von 4 bis 10 Zeilen, einmal mit und
+   *  einmal ohne die Faehigkeit: ohne traegt die Engine 6 Zeilen, mit 8. Das
+   *  Hangeln kauft also 2. (Die Messung als DIFFERENZ zu fuehren war noetig:
+   *  bei den Mauern 4-6 greift das Kind ueberhaupt nicht, es springt hinauf —
+   *  ein Lauf, der nur „kommt es hinauf?" fragt, schreibt dem Hangeln vier
+   *  Zeilen gut, die der Sprung allein schafft.)
+   *
+   *  Das Modell segnet damit JUMP_UP + HANG_ROWS = 6 Zeilen gegen 8 gemessene —
+   *  zwei Zeilen Abstand, dieselbe Richtung wie bei JUMP_UP (4 versprochen,
+   *  6,06 gemessen). Die Huellkurve darf uebersehen, nie zuviel versprechen. */
+  HANG_ROWS: 2,
 } as const;
 
 /** B3 · THE HEADROOM TABLE — indexed by clear rows of sky above the take-off
@@ -934,6 +952,36 @@ export const reachFrom = (
         }
       }
     }
+    // L2-M-a · D-812 · LEISTEN — aber nur fuer ein Kind, das den Griff HAT
+    // (dieselbe Bindung wie beim Ring: `sim.ts` reicht `canHang` nur mit der
+    // Faehigkeit herein, also muss das Modell es auch). Eine Leiste ist eine
+    // feste Zelle mit Luft darueber und einer freien Anflug-Spalte daneben —
+    // und dieses Praedikat gibt es schon: `collide.ts#ledgeGrabAt` ist genau
+    // die Probe, mit der die Engine greift. Ein zweites, aehnliches Praedikat
+    // hier waere die Klasse „ein Name, zwei Haeuser".
+    //
+    // Gesucht wird NUR im Fenster ueber dem Knoten (hoechstens JUMP_UP +
+    // HANG_ROWS Zeilen hoch, JUMP_DX Spalten breit) — ein Kataster aller
+    // Leisten waere in einem 64x26-Gitter vierstellig und je Knoten neu zu
+    // durchlaufen.
+    if (abilities.includes("hang")) {
+      const maxUp = JUMP_UP + REACH_ENVELOPE.HANG_ROWS;
+      for (let lr = Math.max(0, n.r - maxUp); lr <= n.r - 1; lr++) {
+        for (let lc = n.c - JUMP_DX; lc <= n.c + JUMP_DX; lc++) {
+          for (const dir of [1, -1] as const) {
+            if (!ledgeGrabAt(grid, lc, lr, dir)) continue;
+            // die Anflug-Spalte: dort haengt der Koerper, wenn er greift
+            const ac = lc - dir;
+            // …und sie muss auf einem ehrlichen L-Weg erreichbar sein
+            if (!jumpPathClear(n.c, n.r, ac, lr)) continue;
+            // Der Absprung von der Kante ist ein VOLLER Sprung (es gibt keinen
+            // Klimmzug, `player.ts`) — er setzt das Kind auf die Krone.
+            push(lc, lr - 1);
+          }
+        }
+      }
+    }
+
     // springs boost a couple of rows — landings along an honest L-path from
     // the cell ABOVE the spring (the spring glyph itself may be solid)
     for (const sp of springTops) {
