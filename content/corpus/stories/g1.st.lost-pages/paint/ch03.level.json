@@ -5,12 +5,12 @@
  "draft": true,
  "note": "L3-G1 · KALIBRIER-EXEMPLAR. Nur p1 ist gebaut: das Kapitel wird an EINEM Raum geeicht, bevor die Welle die vier anderen fuellt (RAHMEN Kalibrier-Gesetz). p2/p3/Achterdeck/Segelraum sind minimale, aber VOLL gesetzestreue Geruest-Raeume (draft klammert nur fuenf Gesetze; alle anderen laufen auch im Entwurf) — richtige Groessen, geschlossener Deckel, ein Spawn, ein Ausgang, keine Tinte und darum kein Anker. Sie tragen ABSICHTLICH keine Muenzen ausser dem Segelraum: jede *-Zelle braucht eine Anker-Zeile im Dossier, und die Trails von p2/p3 schneidet erst G2. Die Arena traegt die Galionsfigur schon als tier-M-Platzhalter, damit L3-T1 seine Boss-Karten binden kann. Der Sammel-Skin ist coin (R246): die *-Zellen sind Goldmuenzen; deshalb tragen die Phasen KEINE words — ein Muenz-Kapitel buchstabiert nichts, und trail-words sagt das auch. Ilvy und ihr Kaefig kommen mit G2 (p2) — bis dahin meldet ein Lauf mit draft:false GENAU classmate-cage. Alle offenen Kapitel-Daten stehen in docs/design/g1/paint/ch03-dossiers-v2/pending.md.",
  "name": "Das Piratenschiff — Der Hafen der Tintensee",
- "goalDe": "Sag den Piraten, was sie haben und was nicht. Wer sich wieder kennt, hört auf zu streiten.",
+ "goalDe": "Sag den Piraten, was sie haben und was nicht. Dann streiten sie nicht mehr.",
  "whyDe": "Jeder richtige Satz näht das Musterbuch der Mannschaft wieder zusammen.",
  "hintsDe": [
   "Springen: SPACE — halten für höher!",
   "Etwas steht grau da? Stell dich davor und drück ↑!",
-  "Der Ring: in der Luft greifen — mit einem Sprung wieder loslassen!"
+  "Greif den Ring in der Luft. Spring, um loszulassen!"
  ],
  "collectNounDe": "Goldmünzen",
  "collectSkin": "coin",
@@ -106,7 +106,7 @@
      "tier": "E",
      "params": {
       "captive": "polly",
-      "captiveDe": "Polly mit den lila Haaren"
+      "captiveDe": "Polly mit den violetten Haaren"
      }
     },
     {
