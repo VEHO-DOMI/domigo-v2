@@ -1,0 +1,151 @@
+{
+ "schema": "paintChapterPolicy@1",
+ "chapter": "ch03",
+ "unit": "g1-u03",
+ "note": "L0 · D10 · Die Kapitel-Tabellen von ch03, neben den Karten (Level-Welle, L3-T1). fieldKinds nach doc 41 §1 + R252 (restore trägt die Körperteil-Karte, die doc 44 §4 ch03 verlangt; match kommt mit L2-M, sort mit L3-M — beide stehen bis dahin als Daten in ch03-dossiers-v2/tasks-pending.md und in KEINER Kartendatei, weil das Schema sie nicht kennt). fieldForms führt count-it statt des im Blatt vorgeschlagenen belongs-or-not: belongs-or-not ist laut FORM_KINDS nur als oddone ausdrückbar, und oddone steht nicht in dieser Feld-Palette — ohne eine dritte inhalts-variable Form wäre Gesetz 14b (zwei Feinde eines Raums fragen nie dasselbe) bei DREI feindlichen Wesen in p1 unerfüllbar. arenaPromiseClass fehlt bewusst: ch03 hat keine Zahlen-Zusage einer Regel-Seite an die Arena; solange das Kapitel draft ist, meldet das Tor die Zeile als Abdeckungs-Posten (berichtet, nicht rot), und L3-T2 entscheidet mit der vollen Boss-Batterie, welche Klasse die Arena einlöst. families ist LEER, und das ist gemessen, nicht vergessen: kein Varietäts-Gesetz feuert auf diesem Satz, und eine Familie, die nichts unterdrückt, ist nach Gesetz 0a/0d selbst rot. ★ L3-Fix 2026-09-05: der vocabLedger ist von 35 auf 19 Eintraege gefallen. Kein Eintrag wurde nachgetragen und keiner geaendert — es sind genau die 16 herausgenommen, die eine neue Feld-Karte inzwischen in ihrem exercises-Block fuehrt (Gesetz 17c macht eine Ausnahme, die eine Karte beantwortet, zum Fehler). Die Liste ist maschinell aus der Kartendatei abgeleitet, nicht von Hand gepflegt. ⚠ Zwei Toren messen hier VERSCHIEDENES: check-level-design (D-77) liest den Antwort-TEXT jeder Karte, Gesetz 17c liest die exercises-Deklaration und nur von FELD-Karten (encounter/quickfire/door/rescue/pickupset). Ein Wort, das nur eine Boss-Karte beantwortet, bleibt deshalb im Hauptbuch stehen — genau so stand long hier bis heute.",
+ "fieldKinds": [
+  "choice",
+  "order",
+  "spell",
+  "restore"
+ ],
+ "fieldForms": [
+  "name-it",
+  "state-it",
+  "pick-correct-form",
+  "ask-it",
+  "count-it"
+ ],
+ "lexiconClasses": {
+  "g1u03.x.colours": {
+   "reason": "Die Farbe ist die zweite Hälfte jeder restore-Karte (doc 41 §2), und Unit 3 beschreibt Piraten durchgehend über Farben (»She has got purple hair«, »He has got a black beard«, »He has got grey hair«) — aber keine Farbe ist ein eigener Wortbank-Eintrag, also könnte eine Farb-Karte sonst nichts Wahres in exercises deklarieren. Jedes Wort hier ist über Gesetz 0j gegen docs/design/g1/grounding/u03-lexicon.json geprüft. grey fehlt mit Absicht: Grau ist der entfärbte Zustand, den die Karte aufhebt, nie eine Antwort (dieselbe Regel wie in ch01).",
+   "words": [
+    "red",
+    "blue",
+    "green",
+    "brown",
+    "black",
+    "white",
+    "pink",
+    "purple"
+   ]
+  },
+  "g1u03.x.numbers-small": {
+   "reason": "Die Zähl-Karten der Bugkanone fragen nach der Menge (»How many feet?«), und genau daran hängt die Plural-Lektion des Kapitels: das Buch stellt eins gegen zwei (»one foot – two feet«, »one tooth – five teeth«). Die Klasse ist GENAU die Menge der Zahlwörter, die Unit 3 ausschreibt — one · two · five · eight (»Erm – eight.«, WB Ü17); alles andere druckt das Buch als Ziffer. Keines davon ist ein Wortbank-Eintrag, ohne diese Klasse könnte eine count-it-Karte nichts Wahres in exercises deklarieren. Die Zahlen 1–25 sind Stoff von Unit 1 und gehören NICHT in die Feld-Palette dieses Kapitels.",
+   "words": [
+    "one",
+    "two",
+    "five",
+    "eight"
+   ]
+  }
+ },
+ "families": [],
+ "vocabLedger": {
+  "g1u03.w.also": {
+   "cards": "exempt",
+   "reason": "T2-Welle: die 16 Exemplare kalibrieren den Maßstab, sie decken den Wortschatz nicht ab. Dieses Wort bekommt seine Karte in der ~60er-Welle (L3-T2) — die Ausnahme ist eine Buchung mit Datum, keine Lücke.",
+   "until": "2026-12-31"
+  },
+  "g1u03.w.famous": {
+   "cards": "exempt",
+   "reason": "T2-Welle: die 16 Exemplare kalibrieren den Maßstab, sie decken den Wortschatz nicht ab. Dieses Wort bekommt seine Karte in der ~60er-Welle (L3-T2) — die Ausnahme ist eine Buchung mit Datum, keine Lücke.",
+   "until": "2026-12-31"
+  },
+  "g1u03.w.him": {
+   "cards": "exempt",
+   "reason": "T2-Welle: die 16 Exemplare kalibrieren den Maßstab, sie decken den Wortschatz nicht ab. Dieses Wort bekommt seine Karte in der ~60er-Welle (L3-T2) — die Ausnahme ist eine Buchung mit Datum, keine Lücke.",
+   "until": "2026-12-31"
+  },
+  "g1u03.w.his": {
+   "cards": "exempt",
+   "reason": "T2-Welle: die 16 Exemplare kalibrieren den Maßstab, sie decken den Wortschatz nicht ab. Dieses Wort bekommt seine Karte in der ~60er-Welle (L3-T2) — die Ausnahme ist eine Buchung mit Datum, keine Lücke.",
+   "until": "2026-12-31"
+  },
+  "g1u03.w.to-be-scared": {
+   "cards": "exempt",
+   "reason": "T2-Welle: die 16 Exemplare kalibrieren den Maßstab, sie decken den Wortschatz nicht ab. Dieses Wort bekommt seine Karte in der ~60er-Welle (L3-T2) — die Ausnahme ist eine Buchung mit Datum, keine Lücke.",
+   "until": "2026-12-31"
+  },
+  "g1u03.w.captain": {
+   "cards": "exempt",
+   "reason": "T2-Welle: die 16 Exemplare kalibrieren den Maßstab, sie decken den Wortschatz nicht ab. Dieses Wort bekommt seine Karte in der ~60er-Welle (L3-T2) — die Ausnahme ist eine Buchung mit Datum, keine Lücke.",
+   "until": "2026-12-31"
+  },
+  "g1u03.w.have-got-has-got": {
+   "cards": "offered",
+   "reason": "Steht als Ablenker auf einer Karte im Bild: das Kind LIEST das Wort, muss es aber im Exemplar nicht selbst produzieren. Die T2-Welle entscheidet, ob es eine eigene Karte bekommt — Gesetz 17b prüft die Behauptung, ein Wort ohne Bildschirm-Auftritt gilt als ABWESEND, nicht als angeboten.",
+   "until": "2026-12-31"
+  },
+  "g1u03.w.pretty": {
+   "cards": "exempt",
+   "reason": "T2-Welle: die 16 Exemplare kalibrieren den Maßstab, sie decken den Wortschatz nicht ab. Dieses Wort bekommt seine Karte in der ~60er-Welle (L3-T2) — die Ausnahme ist eine Buchung mit Datum, keine Lücke.",
+   "until": "2026-12-31"
+  },
+  "g1u03.w.week": {
+   "cards": "exempt",
+   "reason": "T2-Welle: die 16 Exemplare kalibrieren den Maßstab, sie decken den Wortschatz nicht ab. Dieses Wort bekommt seine Karte in der ~60er-Welle (L3-T2) — die Ausnahme ist eine Buchung mit Datum, keine Lücke.",
+   "until": "2026-12-31"
+  },
+  "g1u03.w.again": {
+   "cards": "exempt",
+   "reason": "T2-Welle: die 16 Exemplare kalibrieren den Maßstab, sie decken den Wortschatz nicht ab. Dieses Wort bekommt seine Karte in der ~60er-Welle (L3-T2) — die Ausnahme ist eine Buchung mit Datum, keine Lücke.",
+   "until": "2026-12-31"
+  },
+  "g1u03.w.back": {
+   "cards": "exempt",
+   "reason": "T2-Welle: die 16 Exemplare kalibrieren den Maßstab, sie decken den Wortschatz nicht ab. Dieses Wort bekommt seine Karte in der ~60er-Welle (L3-T2) — die Ausnahme ist eine Buchung mit Datum, keine Lücke.",
+   "until": "2026-12-31"
+  },
+  "g1u03.w.to-paint": {
+   "cards": "exempt",
+   "reason": "T2-Welle: die 16 Exemplare kalibrieren den Maßstab, sie decken den Wortschatz nicht ab. Dieses Wort bekommt seine Karte in der ~60er-Welle (L3-T2) — die Ausnahme ist eine Buchung mit Datum, keine Lücke.",
+   "until": "2026-12-31"
+  },
+  "g1u03.w.sister": {
+   "cards": "exempt",
+   "reason": "T2-Welle: die 16 Exemplare kalibrieren den Maßstab, sie decken den Wortschatz nicht ab. Dieses Wort bekommt seine Karte in der ~60er-Welle (L3-T2) — die Ausnahme ist eine Buchung mit Datum, keine Lücke.",
+   "until": "2026-12-31"
+  },
+  "g1u03.w.boy": {
+   "cards": "exempt",
+   "reason": "T2-Welle: die 16 Exemplare kalibrieren den Maßstab, sie decken den Wortschatz nicht ab. Dieses Wort bekommt seine Karte in der ~60er-Welle (L3-T2) — die Ausnahme ist eine Buchung mit Datum, keine Lücke.",
+   "until": "2026-12-31"
+  },
+  "g1u03.w.girl": {
+   "cards": "exempt",
+   "reason": "T2-Welle: die 16 Exemplare kalibrieren den Maßstab, sie decken den Wortschatz nicht ab. Dieses Wort bekommt seine Karte in der ~60er-Welle (L3-T2) — die Ausnahme ist eine Buchung mit Datum, keine Lücke.",
+   "until": "2026-12-31"
+  },
+  "g1u03.w.man": {
+   "cards": "exempt",
+   "reason": "T2-Welle: die 16 Exemplare kalibrieren den Maßstab, sie decken den Wortschatz nicht ab. Dieses Wort bekommt seine Karte in der ~60er-Welle (L3-T2) — die Ausnahme ist eine Buchung mit Datum, keine Lücke.",
+   "until": "2026-12-31"
+  },
+  "g1u03.w.woman": {
+   "cards": "exempt",
+   "reason": "T2-Welle: die 16 Exemplare kalibrieren den Maßstab, sie decken den Wortschatz nicht ab. Dieses Wort bekommt seine Karte in der ~60er-Welle (L3-T2) — die Ausnahme ist eine Buchung mit Datum, keine Lücke.",
+   "until": "2026-12-31"
+  },
+  "g1u03.w.her-name-is": {
+   "cards": "exempt",
+   "reason": "T2-Welle: die 16 Exemplare kalibrieren den Maßstab, sie decken den Wortschatz nicht ab. Dieses Wort bekommt seine Karte in der ~60er-Welle (L3-T2) — die Ausnahme ist eine Buchung mit Datum, keine Lücke.",
+   "until": "2026-12-31"
+  },
+  "g1u03.w.his-name-is": {
+   "cards": "exempt",
+   "reason": "T2-Welle: die 16 Exemplare kalibrieren den Maßstab, sie decken den Wortschatz nicht ab. Dieses Wort bekommt seine Karte in der ~60er-Welle (L3-T2) — die Ausnahme ist eine Buchung mit Datum, keine Lücke.",
+   "until": "2026-12-31"
+  }
+ },
+ "nounDe": {
+  "reason": "R5-W4 · C2 / L0 · N5 · Das deutsche Nomen jedes entfärbten Wesens und jedes Käfig-Insassen — die Pflicht, die die Verrats-Ausnahme (scripts/game-tasks-giveaway-policy.json, Familien restore-nennt-das-wesen und kaefig-nennt-den-insassen) kauft. Sie steht HIER und nicht in der Wortbank, weil die Wortbank die Korpus-Glosse führt und diese Tabelle die Erzählstimme regelt: Koki spricht österreichisch.",
+  "pairs": {
+   "obj_holzbein": "Holzbein"
+  },
+  "captivesReason": "Das Portrait einer Käfig-Karte ist der KÄFIG, nie der Insasse — das Wesen hinter dem Netz hat keine eigene gemalte Zelle. Die deutsche Zeile ist deshalb das Einzige, was sagt, wer da drinsteckt (D-34). ⚠ ARBEITSSTAND: der Insasse ist Kokis Wahl (D-777) und noch offen. Ein Tausch ändert genau drei Stellen — showsDe und die Optionen der beiden rsc-Karten und diesen Eintrag.",
+  "captives": {
+   "rsc.polly.r1": "Polly"
+  }
+ }
+}
