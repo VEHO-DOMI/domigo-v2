@@ -1,0 +1,159 @@
+{
+ "schema": "paintClaims@1",
+ "chapter": "ch06",
+ "note": "L6-G1 · Vokabel-Anspruch von Kapitel 6. GEMESSEN, nicht geschaetzt: die Wortbank g1-u06 traegt 49 Eintraege, davon 19 mit kind wordfile — und NUR die zaehlt das Tor (claimFails baut seine Tabelle aus den wordfile-Eintraegen; jeder Schluessel darueber hinaus ist ein toter Schluessel, D-77). Die 30 phrase-Eintraege (darunter to climb, to jump, mirror, detective) stehen deshalb ABSICHTLICH nicht hier; sie sind Sache der Karten-Erdung, nicht dieses Anspruchs. Kind-Vergabe nach dem, was der gebaute Raum ZEIGT: street und city tragen kind architecture auf dem Stem haustuer, market auf obststand. Die uebrigen 16 tragen kind cards und sind damit ein Vertrag an die T-Bahn: jedes Wort muss in ch06.tasks.v2.json als ANTWORT einer Karte vorkommen, nicht als Ablenker. FORM (2026-09-05, L6-G1b): diese Tabelle stand bis heute FLACH auf der obersten Ebene. check-level-design.mjs liest .claims und faellt bei fehlendem Schluessel still auf eine leere Tabelle zurueck — das Kapitel sah damit hier gruen aus und machte den Karten-PR mit 19 Zeilen rot. Wer diese Datei anfasst, laesst schema/chapter/claims stehen: ohne sie prueft das Tor nichts.",
+ "claims": {
+ "street": {
+  "kind": "architecture",
+  "stems": [
+   "haustuer"
+  ]
+ },
+ "market": {
+  "kind": "architecture",
+  "stems": [
+   "obststand"
+  ]
+ },
+ "city": {
+  "kind": "architecture",
+  "stems": [
+   "haustuer"
+  ]
+ },
+ "supermarket": {
+  "kind": "cards",
+  "stems": [],
+  "exception": {
+   "why": "kommt als Kartenwort der Unit; im gebauten Raum steht kein Supermarkt",
+   "expires": "2026-12-31",
+   "owner": "L6-T2"
+  }
+ },
+ "river": {
+  "kind": "cards",
+  "stems": []
+ },
+ "woods": {
+  "kind": "cards",
+  "stems": [],
+  "exception": {
+   "why": "kein Wald im Kapitel; reines Kartenwort der Unit",
+   "expires": "2026-12-31",
+   "owner": "L6-T2"
+  }
+ },
+ "park": {
+  "kind": "cards",
+  "stems": []
+ },
+ "tree": {
+  "kind": "cards",
+  "stems": [],
+  "exception": {
+   "why": "Fundstück-Wort von p3; die pickupset-Karte kommt von L6-T2",
+   "expires": "2026-12-31",
+   "owner": "L6-T2"
+  }
+ },
+ "to jump into the river": {
+  "kind": "cards",
+  "stems": [],
+  "exception": {
+   "why": "Verb-Phrase der Unit; die Karte kommt von L6-T2",
+   "expires": "2026-12-31",
+   "owner": "L6-T2"
+  }
+ },
+ "to look out the window": {
+  "kind": "cards",
+  "stems": [],
+  "exception": {
+   "why": "Verb-Phrase der Unit; die Karte kommt von L6-T2",
+   "expires": "2026-12-31",
+   "owner": "L6-T2"
+  }
+ },
+ "to pick something up": {
+  "kind": "cards",
+  "stems": [],
+  "exception": {
+   "why": "Verb-Phrase der Unit; die Karte kommt von L6-T2",
+   "expires": "2026-12-31",
+   "owner": "L6-T2"
+  }
+ },
+ "to sit in a tree": {
+  "kind": "cards",
+  "stems": [],
+  "exception": {
+   "why": "Verb-Phrase der Unit; die Karte kommt von L6-T2",
+   "expires": "2026-12-31",
+   "owner": "L6-T2"
+  }
+ },
+ "to fall out of the tree": {
+  "kind": "cards",
+  "stems": [],
+  "exception": {
+   "why": "Verb-Phrase der Unit; die Karte kommt von L6-T2",
+   "expires": "2026-12-31",
+   "owner": "L6-T2"
+  }
+ },
+ "to bump into a tree": {
+  "kind": "cards",
+  "stems": [],
+  "exception": {
+   "why": "Verb-Phrase der Unit; die Karte kommt von L6-T2",
+   "expires": "2026-12-31",
+   "owner": "L6-T2"
+  }
+ },
+ "to go to the park": {
+  "kind": "cards",
+  "stems": [],
+  "exception": {
+   "why": "Verb-Phrase der Unit; die Karte kommt von L6-T2",
+   "expires": "2026-12-31",
+   "owner": "L6-T2"
+  }
+ },
+ "to pull": {
+  "kind": "cards",
+  "stems": [],
+  "exception": {
+   "why": "Verb-Phrase der Unit; die Karte kommt von L6-T2",
+   "expires": "2026-12-31",
+   "owner": "L6-T2"
+  }
+ },
+ "to climb up a tree": {
+  "kind": "cards",
+  "stems": [],
+  "exception": {
+   "why": "Verb-Phrase der Unit; die Karte kommt von L6-T2",
+   "expires": "2026-12-31",
+   "owner": "L6-T2"
+  }
+ },
+ "to leave the office": {
+  "kind": "cards",
+  "stems": [],
+  "exception": {
+   "why": "Tammos Befreiungs-Satz; die Rettungs-Karten kommen von L6-T2",
+   "expires": "2026-12-31",
+   "owner": "L6-T2"
+  }
+ },
+ "to look in the mirror": {
+  "kind": "cards",
+  "stems": [],
+  "exception": {
+   "why": "das Motiv der Spiegelkammer; die Karte kommt von L6-T2",
+   "expires": "2026-12-31",
+   "owner": "L6-T2"
+  }
+ }
+}
+}

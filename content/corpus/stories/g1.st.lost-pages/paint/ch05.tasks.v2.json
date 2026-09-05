@@ -1,0 +1,536 @@
+{
+ "schema": "gameTasks@2",
+ "chapter": "ch05",
+ "unit": "g1-u05",
+ "note": "ENTWURF · sechzehn Karten · Welle T2 folgt. Die zehn Exemplare der Bahn L5-T1 stehen UNVERAENDERT; der Sitz L5-Fix (2026-09-05, R272) hat sechs Karten ERGAENZT, damit jedes der neun wordfile-Woerter der Unit als ANTWORT vorkommt und der Abdeckungs-Anspruch in ch05-dossiers-v2/claims.json eingeloest ist: rsc.notenstaender.saxophone · rsc.notenstaender.singer · door.p2.d1 · door.p3.d1 · door.p9.d1 · door.p1.d3. Sie sitzen auf Traegern, die im Level ohnehin ohne Karte standen (die Kaefige p2-cage-saxophone und p4-cage-singer, die Tueren von p2, p3 und p9). gameTasks@2 · ch05 »Das Konzert der Seiten« (MORE! 1 Unit 5 »This is our band«). Eine Karte je Maschine/Pool des Kapitels als Kalibrierstück (Bahn L5-T1): encounter · rescue · door · quickfire · boss, Maschinen choice · order · mistake. Die Feld-Palette des Kapitels (doc 41 §1) ist choice · mistake · order · memory; mistake und memory haben heute KEINE Form in FORM_KINDS (D-902/R247), deshalb stehen ihre Feld-Debüts als Daten in docs/design/g1/paint/ch05-dossiers-v2/pending-tasks.md und im Feld steht bis zum L0-Nachtrag nur choice und order. Erdung: docs/design/g1/grounding/u05-lexicon.json (kumulativ u01-u05 + SB/WB-Abschrift).",
+ "items": [
+  {
+   "id": "g1.paint.ch05.enc.falschenote.k1",
+   "use": "encounter",
+   "kind": "choice",
+   "form": "state-it",
+   "exercises": [
+    "g1u05.s.can",
+    "g1u05.w.to-play"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Die Note hüpft auf die Tasten — kein Ton kommt."
+   },
+   "storyDe": "Sie sagt, sie kann spielen. Stimmt das?",
+   "options": [
+    "It can't play.",
+    "It can play.",
+    "It can dance."
+   ],
+   "answer": "It can't play.",
+   "skins": [
+    "falschenote"
+   ],
+   "phases": [
+    "p1"
+   ],
+   "hints": {
+    "deDesc": "Sie hüpft auf die Tasten — und nichts klingt.",
+    "deWord": "Auf Deutsch: Sie kann nicht spielen."
+   },
+   "grounding": "u05 can/can't — SB S. 39 (Lesetext »The perfect job«: »Yes, I can.« / »No, he can't.«). Die Welt widerlegt die Behauptung: der Ton geht hörbar daneben."
+  },
+  {
+   "id": "g1.paint.ch05.enc.trompete.k1",
+   "use": "encounter",
+   "kind": "choice",
+   "form": "pick-correct-form",
+   "exercises": [
+    "g1u05.s.can",
+    "g1u05.w.drums"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Die Trompete bläst drei Sätze in die Luft."
+   },
+   "storyDe": "Nur ein Satz ist richtig gebaut. Welcher?",
+   "options": [
+    "She can play the drums.",
+    "She cans play the drums.",
+    "She can plays the drums."
+   ],
+   "answer": "She can play the drums.",
+   "skins": [
+    "trompete"
+   ],
+   "phases": [
+    "p1"
+   ],
+   "hints": {
+    "deDesc": "Nach can steht die Grundform — ohne Endung.",
+    "deWord": "can bleibt can, play bleibt play."
+   },
+   "grounding": "u05 can in der 3. Person — WB S. 48 (MORE Words and Phrases, Eintrag »can, cannot / can't«: »She can play the drums.«). Fehlermuster wie im Korpus g1u05.gi.can.cp.001-003 (doesn't can / can dances), Wortlaut eigen."
+  },
+  {
+   "id": "g1.paint.ch05.rsc.notenstaender.keyboard",
+   "use": "rescue",
+   "kind": "choice",
+   "form": "name-it",
+   "exercises": [
+    "g1u05.w.keyboard"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Im Käfig steht ein Pult voller Tasten."
+   },
+   "storyDe": "Was steckt im Käfig? Sag es auf Englisch!",
+   "promptEn": "What is it?",
+   "options": [
+    "It's a keyboard.",
+    "It's a guitar.",
+    "It's a saxophone."
+   ],
+   "answer": "It's a keyboard.",
+   "skins": [
+    "notenstaender"
+   ],
+   "phases": [
+    "p1"
+   ],
+   "hints": {
+    "deDesc": "Man drückt die Tasten, dann klingt es.",
+    "deWord": "Auf Deutsch: das Keyboard."
+   },
+   "grounding": "u05 Instrumente — SB S. 38 (Vokabelseite »Musicians and instruments«: keyboard · saxophone · guitar). Käfig-Karte nach dem ch01-Muster »It's a …«."
+  },
+  {
+   "id": "g1.paint.ch05.awk.veit.r1",
+   "use": "rescue",
+   "kind": "choice",
+   "form": "state-it",
+   "exercises": [
+    "g1u05.s.can",
+    "g1u05.w.to-wiggle"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Veit wackelt im Koffer mit beiden Ohren."
+   },
+   "storyDe": "Was kann er? Sag es auf Englisch!",
+   "promptEn": "What can he do?",
+   "options": [
+    "He can wiggle his ears.",
+    "He can't wiggle his ears.",
+    "He can dance."
+   ],
+   "answer": "He can wiggle his ears.",
+   "skins": [
+    "veit"
+   ],
+   "phases": [
+    "p2"
+   ],
+   "hints": {
+    "deDesc": "Schau seine Ohren an, nicht seine Füße.",
+    "deWord": "Auf Deutsch: wackeln."
+   },
+   "grounding": "u05 can + Körperverben — SB S. 42 (»I can wiggle my ears. I can walk on my hands.«) und SB S. 40 (Übung »wiggle your …«). Die Pose IST das Bild: er wackelt, während die Karte offen ist."
+  },
+  {
+   "id": "g1.paint.ch05.door.p1.d1",
+   "use": "door",
+   "kind": "choice",
+   "form": "pick-correct-form",
+   "exercises": [
+    "g1u05.s.can",
+    "g1u05.w.drums"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Die Tür summt drei Fragen vor sich hin.",
+    "art": "door_a"
+   },
+   "storyDe": "Welche Frage ist richtig gebaut?",
+   "options": [
+    "Can you play the drums?",
+    "Do you can play the drums?",
+    "You can play the drums?"
+   ],
+   "answer": "Can you play the drums?",
+   "skins": [
+    "door"
+   ],
+   "phases": [
+    "p1"
+   ],
+   "hints": {
+    "deDesc": "Eine Frage mit can fängt mit can an.",
+    "deWord": "Kein do vor can."
+   },
+   "grounding": "u05 Fragebildung mit can — SB S. 39 (»Can you play the guitar?« / »Can you play the keyboards?«). Muster wie g1u05.gi.can.cp.003, Wortlaut und Ablenker eigen."
+  },
+  {
+   "id": "g1.paint.ch05.qf.triangel.o1",
+   "use": "quickfire",
+   "kind": "order",
+   "form": "ask-it",
+   "exercises": [
+    "g1u05.s.can",
+    "g1u05.w.keyboard"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Die Funken wirbeln Wortstücke durch die Luft."
+   },
+   "storyDe": "Schnell — bau die Frage zusammen!",
+   "orderedChips": [
+    "Can",
+    "she",
+    "play",
+    "the",
+    "keyboard",
+    "?"
+   ],
+   "skins": [
+    "triangel"
+   ],
+   "phases": [
+    "p1"
+   ],
+   "hints": {
+    "deDesc": "Womit fängt eine Frage mit can an?"
+   },
+   "grounding": "u05 Fragebildung mit can — SB S. 39 (»Can you play the keyboards?«); Satzbau-Format wie die question-formation-/sentence-building-Items der Unit. Andere Frage als die Tür-Karte d1 (Zwillings-Gesetz)."
+  },
+  {
+   "id": "g1.paint.ch05.door.p1.d2",
+   "use": "door",
+   "kind": "choice",
+   "form": "state-it",
+   "exercises": [
+    "g1u05.s.possessives",
+    "g1u05.w.guitar"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Die Tür zeigt die Gitarristin mit der Gitarre.",
+    "art": "door_a"
+   },
+   "storyDe": "Wem gehört sie? Sag es auf Englisch!",
+   "options": [
+    "It's her guitar.",
+    "It's his guitar.",
+    "It's my guitar."
+   ],
+   "answer": "It's her guitar.",
+   "skins": [
+    "door"
+   ],
+   "phases": [
+    "p1"
+   ],
+   "hints": {
+    "deDesc": "Eine Frau hält sie fest — sie gehört ihr.",
+    "deWord": "Auf Deutsch: ihre Gitarre."
+   },
+   "grounding": "u05 Possessivbegleiter — SB S. 42 (Tabelle »she – her: Her name's Ellie.«) und SB S. 38 (»And this is her boyfriend«). »Whose« steht in der ganzen Unit NICHT (0 Treffer in SB und WB), deshalb fragt die deutsche Zeile."
+  },
+  {
+   "id": "g1.paint.ch05.qf.triangel.k1",
+   "use": "quickfire",
+   "kind": "choice",
+   "form": "ask-it",
+   "exercises": [
+    "g1u05.s.can",
+    "g1u05.w.to-dance"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Sie dreht sich im Kreis und wippt mit den Hüften."
+   },
+   "storyDe": "Schnell — frag sie, ob sie DAS kann!",
+   "options": [
+    "Can you dance?",
+    "Can you sing?",
+    "Can you play the drums?"
+   ],
+   "answer": "Can you dance?",
+   "skins": [
+    "triangel"
+   ],
+   "phases": [
+    "p1"
+   ],
+   "hints": {
+    "deDesc": "Sie dreht sich und wippt zur Musik.",
+    "deWord": "Auf Deutsch: Kannst du tanzen?"
+   },
+   "grounding": "u05 can-Frage + to dance — SB S. 39 (»Can you sing?«) und die Unit-Vokabel to dance. Die Frage muss zu dem passen, was die Funken zeigen."
+  },
+  {
+   "id": "g1.paint.ch05.rsc.notenstaender.saxophone",
+   "use": "rescue",
+   "kind": "choice",
+   "form": "name-it",
+   "exercises": [
+    "g1u05.w.saxophone"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Im Käfig steckt ein gebogenes Blasinstrument."
+   },
+   "storyDe": "Was steckt im zweiten Käfig? Sag es auf Englisch!",
+   "promptEn": "What is it?",
+   "options": [
+    "This is a saxophone.",
+    "This is a keyboard.",
+    "This is a guitar."
+   ],
+   "answer": "This is a saxophone.",
+   "skins": [
+    "notenstaender"
+   ],
+   "phases": [
+    "p2"
+   ],
+   "hints": {
+    "deDesc": "Man bläst hinein — Tasten hat es keine.",
+    "deWord": "Auf Deutsch: das Saxophon."
+   },
+   "grounding": "u05 Instrumente — SB S. 38 (»Musicians and instruments«: keyboard · saxophone · guitar) im Satzmuster »This is …« der Leitgeschichte (SB S. 38 »This is our band«). Bewusst NICHT »It's a …«: mit demselben Rahmen waere die Options-Menge identisch mit rsc.notenstaender.keyboard und damit ein Zwilling. Der Kaefig p2-cage-saxophone traegt captive »saxophone« im Level."
+  },
+  {
+   "id": "g1.paint.ch05.rsc.notenstaender.singer",
+   "use": "rescue",
+   "kind": "choice",
+   "form": "name-it",
+   "exercises": [
+    "g1u05.w.singer"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Im Käfig steht ein Kind mit einem Mikrofon."
+   },
+   "storyDe": "Wer steckt in diesem Käfig? Sag es auf Englisch!",
+   "promptEn": "Who is she?",
+   "options": [
+    "She's a drummer.",
+    "She's a singer.",
+    "She's a guitarist."
+   ],
+   "answer": "She's a singer.",
+   "skins": [
+    "notenstaender"
+   ],
+   "phases": [
+    "p4"
+   ],
+   "hints": {
+    "deDesc": "Sie braucht kein Instrument — nur ihre Stimme.",
+    "deWord": "Auf Deutsch: die Sängerin."
+   },
+   "grounding": "u05 Musiker — SB S. 38 (»Musicians and instruments«: singer · drummer · guitarist). Der Käfig p4-cage-singer trägt captive »singer« im Level; die Arena gibt der Band ihre Stimme zurück."
+  },
+  {
+   "id": "g1.paint.ch05.door.p2.d1",
+   "use": "door",
+   "kind": "choice",
+   "form": "state-it",
+   "exercises": [
+    "g1u05.w.drummer"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Die Tür zeigt ein Kind hinter einer Trommel.",
+    "art": "door_a"
+   },
+   "storyDe": "Wer gehört zur Band? Sag es auf Englisch!",
+   "options": [
+    "This is our singer.",
+    "This is our drummer.",
+    "This is our keyboard player."
+   ],
+   "answer": "This is our drummer.",
+   "skins": [
+    "door"
+   ],
+   "phases": [
+    "p2"
+   ],
+   "hints": {
+    "deDesc": "Er schlägt den Takt — schau auf die Stöcke.",
+    "deWord": "Auf Deutsch: der Schlagzeuger."
+   },
+   "grounding": "u05 Musiker + »This is our …« — SB S. 38 (Leitgeschichte »This is our band« und die Vokabelseite »Musicians and instruments«). Andere Frage als door.p1.d1 und door.p1.d2 (Zwillings-Gesetz).",
+   "promptEn": "Who is in our band?"
+  },
+  {
+   "id": "g1.paint.ch05.door.p3.d1",
+   "use": "door",
+   "kind": "choice",
+   "form": "name-it",
+   "exercises": [
+    "g1u05.w.guitarist"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Die Tür zeigt ein Kind, das Saiten zupft.",
+    "art": "door_a"
+   },
+   "storyDe": "Wer spielt da? Sag es auf Englisch!",
+   "promptEn": "Who is she?",
+   "options": [
+    "She's a singer.",
+    "She's a keyboard player.",
+    "She's a guitarist."
+   ],
+   "answer": "She's a guitarist.",
+   "skins": [
+    "door"
+   ],
+   "phases": [
+    "p3"
+   ],
+   "hints": {
+    "deDesc": "Ihre Finger zupfen die Saiten.",
+    "deWord": "Auf Deutsch: die Gitarristin."
+   },
+   "grounding": "u05 Musiker — SB S. 38 (»Musicians and instruments«: guitarist). Die Tür zeigt dieselbe Spielerin, die door.p1.d2 mit ihrer Gitarre zeigt — dort ist der Possessivbegleiter die Antwort, hier die Rolle."
+  },
+  {
+   "id": "g1.paint.ch05.door.p9.d1",
+   "use": "door",
+   "kind": "choice",
+   "form": "name-it",
+   "exercises": [
+    "g1u05.w.saxophone-player"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Die Tür zeigt eine Frau mit einem Blasinstrument.",
+    "art": "door_a"
+   },
+   "storyDe": "Wer bläst da? Sag es auf Englisch!",
+   "promptEn": "Who is she?",
+   "options": [
+    "She's a saxophone player.",
+    "She's a drummer.",
+    "She's a singer."
+   ],
+   "answer": "She's a saxophone player.",
+   "skins": [
+    "door"
+   ],
+   "phases": [
+    "p9"
+   ],
+   "hints": {
+    "deDesc": "Sie bläst hinein und drückt dabei die Klappen.",
+    "deWord": "Auf Deutsch: die Saxophonistin."
+   },
+   "grounding": "u05 Musiker — SB S. 38 (»Musicians and instruments«: saxophone player). Gegenstück zur Käfig-Karte rsc.notenstaender.saxophone: dort ist das Instrument die Antwort, hier die Spielerin."
+  },
+  {
+   "id": "g1.paint.ch05.door.p1.d3",
+   "use": "door",
+   "kind": "choice",
+   "form": "name-it",
+   "exercises": [
+    "g1u05.w.keyboard-player"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Die Tür zeigt ein Kind an einer Reihe Tasten.",
+    "art": "door_a"
+   },
+   "storyDe": "Wer spielt hier? Sag es auf Englisch!",
+   "promptEn": "Who is he?",
+   "options": [
+    "He's a drummer.",
+    "He's a singer.",
+    "He's a keyboard player."
+   ],
+   "answer": "He's a keyboard player.",
+   "skins": [
+    "door"
+   ],
+   "phases": [
+    "p1"
+   ],
+   "hints": {
+    "deDesc": "Seine Hände liegen auf den Tasten.",
+    "deWord": "Auf Deutsch: der Keyboarder."
+   },
+   "grounding": "u05 Musiker — SB S. 38 (»Musicians and instruments«: keyboard player). Gegenstück zur Käfig-Karte rsc.notenstaender.keyboard: dort ist das Instrument die Antwort, hier der Spieler."
+  },
+  {
+   "id": "g1.paint.ch05.boss.k1",
+   "use": "boss",
+   "kind": "choice",
+   "exercises": [
+    "g1u05.s.can"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Eine runde Note fliegt her — die spielst du zurück."
+   },
+   "storyDe": "Er fragt dich. Antworte ihm auf Englisch!",
+   "promptEn": "Can you play it back?",
+   "options": [
+    "Yes, I can.",
+    "No, I can't.",
+    "Yes, it can."
+   ],
+   "answer": "Yes, I can.",
+   "skins": [
+    "tonschlucker"
+   ],
+   "phases": [
+    "p4"
+   ],
+   "hints": {
+    "deDesc": "Er fragt DICH — nicht die Note."
+   },
+   "grounding": "u05 Kurzantwort auf eine can-Frage — SB S. 39 (»Can you play the guitar?« – »Yes, I can.«). Fenster 1 des Boss-Duos (R239/R250: choice-Fenster ohne evidence)."
+  },
+  {
+   "id": "g1.paint.ch05.boss.mi1",
+   "use": "boss",
+   "kind": "mistake",
+   "exercises": [
+    "g1u05.s.possessives"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Das Songblatt schreibt über die Gitarristin."
+   },
+   "storyDe": "Ein Wort stimmt nicht — tipp es an!",
+   "sentence": [
+    "It's",
+    "my",
+    "guitar",
+    "."
+   ],
+   "errorIndex": 1,
+   "fix": {
+    "mode": "replace",
+    "correction": "her"
+   },
+   "correctionOptions": [
+    "her",
+    "his",
+    "our"
+   ],
+   "evidence": [
+    "It's my guitar."
+   ],
+   "skins": [
+    "tonschlucker"
+   ],
+   "phases": [
+    "p4"
+   ],
+   "hints": {
+    "deDesc": "Wem gehört die Gitarre? Schau hin."
+   },
+   "grounding": "u05 Possessivbegleiter — SB S. 42 (Tabelle »she – her«). Die falsche Zeile ist der WELTZUSTAND: das Songblatt behauptet etwas Falsches, während die Gitarristin daneben steht (E8 des Blatts)."
+  }
+ ]
+}

@@ -1,0 +1,357 @@
+{
+ "schema": "paintChapterPolicy@1",
+ "chapter": "ch04",
+ "unit": "g1-u04",
+ "note": "ENTWURF der Kapitel-Politik ch04, angelegt von L4-T1 nach dem Muster von ch01.policy.json (L0 · D10). fieldKinds/fieldForms/lexiconClasses/families/vocabLedger/nounDe stehen neben dem Inhalt, den sie beschreiben — nicht in scripts/, wo fuenf Kapitel-Bahnen gleichzeitig haetten schreiben muessen. Die Welle T2 schreibt das Hauptbuch (vocabLedger) leer, waehrend sie die restlichen Karten baut; die A-Bahn zieht am Kapitel-Ende nach.",
+ "fieldKinds": [
+  "choice",
+  "restore",
+  "slider",
+  "memory",
+  "sort"
+ ],
+ "fieldForms": [
+  "name-it",
+  "state-it",
+  "pick-correct-form",
+  "command",
+  "social-formula",
+  "pair-it"
+ ],
+ "arenaPromiseClass": "g1u04.x.days",
+ "fieldKindsReason": "doc 41 §1 nennt fuer ch04 choice · slider · memory · sort; `restore` steht dazu, weil die Gefuehls-Wirbelsaeule des Kapitels (sechs entfaerbte Wesen) darauf laeuft — R252: doc 41 listet DEBUETS, keine Ausschluesse. `slider` und `sort` sind bewusst deklariert, obwohl ihre Maschinen noch fehlen (game-tasks.ts:12 „deferred“): die Palette beschreibt die Absicht des Kapitels, und die Karten dazu liegen als Daten in docs/design/g1/paint/ch04-dossiers-v2/pending-tasks.md, bis L3-M (sort) und L4-M (slider) sie bauen.",
+ "fieldFormsReason": "Die sechs Fragen, die das Feld dieses Kapitels stellt. `pair-it` ist neu (L0 · N3 / R247) und traegt das Feld-Debuet der memory-Maschine; `pick-correct-form` traegt die to-be-Verneinung unter der Uhr (quickfire), weil drei kurze Saetze schneller zu lesen sind als drei lange.",
+ "lexiconClasses": {
+  "g1u04.x.colours": {
+   "reason": "Die Farbhaelfte jeder restore-Karte ist die Kernmechanik des Kapitels (Gefuehl zurueck = Farbe zurueck, Blaupause §1/§6), aber keine Farbe ist ein eigener Wortbank-Eintrag der Unit 4 — sie kommen aus der Kumulativ-Bank (u01 gelb/blau/rot/gruen/orange, u03 lila). Ohne eine deklarierte Klasse koennte eine restore-Karte in `exercises` nichts Wahres nennen. Jedes Wort hier wird von Gesetz 0j gegen docs/design/g1/grounding/u04-lexicon.json geprueft. `grey` fehlt absichtlich: Grau IST der Zustand, den die Karte aufhebt, nie eine Antwort.",
+   "words": [
+    "yellow",
+    "blue",
+    "red",
+    "green",
+    "purple",
+    "orange"
+   ]
+  },
+  "g1u04.x.days": {
+   "reason": "Die sieben Wochentage sind Wortbank-Eintraege, aber die ARENA verspricht sie als Reihe (das Haus der Tage, die Kalender-Wand des Waechters) — dieselbe Rolle, die `g1u01.x.numbers` in ch01 spielt. Die Klasse macht das Versprechen pruefbar (arenaPromiseClass).",
+   "words": [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday"
+   ]
+  }
+ },
+ "families": [
+  {
+   "id": "restore-gesture",
+   "match": {
+    "kind": "restore"
+   },
+   "exempts": [
+    "16b"
+   ],
+   "reason": "Die zweistufige Farbkarte fragt mit Absicht immer dasselbe: sie ist EINE Geste, die das Kind lernt (sag, wie es dem Wesen geht — dann gib ihm seine Farbe zurueck), einmal gelehrt und an jedem entfaerbten Wesen wiederholt. Sechs Wesen mit sechs Formulierungen waeren sechs Gesten. Uebernommen aus ch01 (`restore-gesture`), wo Kokis Walk die Gleichfoermigkeit ausdruecklich als Paedagogik bestaetigt hat.",
+   "doc": "docs/design/g1/paint/STORY_SPINE_CH01.md §5 + doc 41 §2 + BLAUPAUSE_L4_v5 §6",
+   "obliges": {
+    "distinctColourAsk": true
+   }
+  },
+  {
+   "id": "nachbarin-zwei-momente",
+   "match": {
+    "skins": [
+     "nachbarin"
+    ]
+   },
+   "exempts": [
+    "14a"
+   ],
+   "reason": "Die Nachbarin ist zweimal dieselbe Person in zwei Momenten desselben Beats: erst sitzt sie grau und muede auf ihrer Stufe (restore, name-it), dann haelt sie den zerrissenen Zettel und das Kind fragt sie, wie es ihr geht (social-formula). Das ist nicht die Paintbox-Falle aus doc 45 B12 (ein Wesen wechselt willkuerlich zwischen Benennen und Gruessen), sondern die Szene, die die Blaupause fuer sie vorsieht: erst das Gefuehl zurueckgeben, dann warm nachfragen. Gemessen: Gesetz 14a laesst eine zweite Stimme nur einem DUAL-STATE-Wesen (feindliche Rolle PLUS restore-Karte) — die Nachbarin ist `drained`, also feindlos, und faellt sonst durch.",
+   "doc": "BLAUPAUSE_L4_v5 §4 (Skin-Vertrag: nachbarin = tired-Restore UND die Are-you-OK-Szene)",
+   "obliges": {
+    "distinctStoryDe": true,
+    "minForms": 2
+   }
+  }
+ ],
+ "vocabLedger": {
+  "g1u04.w.angry": {
+   "cards": "pending",
+   "reason": "ENTWURF · L4-T1 liefert elf Exemplar-Karten, nicht die Welle. „angry“ wird von der Welle T2 beantwortet (Kalibrier-Gesetz RAHMEN §5: erst das Exemplar durch das Tor, dann die ~60 Karten). Dieses Hauptbuch IST damit die Arbeitsliste von T2: was hier steht, hat noch keine Karte.",
+   "until": "2026-12-31"
+  },
+  "g1u04.w.scared": {
+   "cards": "pending",
+   "reason": "ENTWURF · L4-T1 liefert elf Exemplar-Karten, nicht die Welle. „scared“ wird von der Welle T2 beantwortet (Kalibrier-Gesetz RAHMEN §5: erst das Exemplar durch das Tor, dann die ~60 Karten). Dieses Hauptbuch IST damit die Arbeitsliste von T2: was hier steht, hat noch keine Karte.",
+   "until": "2026-12-31"
+  },
+  "g1u04.w.hot": {
+   "cards": "pending",
+   "reason": "ENTWURF · L4-T1 liefert elf Exemplar-Karten, nicht die Welle. „hot“ wird von der Welle T2 beantwortet (Kalibrier-Gesetz RAHMEN §5: erst das Exemplar durch das Tor, dann die ~60 Karten). Dieses Hauptbuch IST damit die Arbeitsliste von T2: was hier steht, hat noch keine Karte.",
+   "until": "2026-12-31"
+  },
+  "g1u04.w.bored": {
+   "cards": "pending",
+   "reason": "ENTWURF · L4-T1 liefert elf Exemplar-Karten, nicht die Welle. „bored“ wird von der Welle T2 beantwortet (Kalibrier-Gesetz RAHMEN §5: erst das Exemplar durch das Tor, dann die ~60 Karten). Dieses Hauptbuch IST damit die Arbeitsliste von T2: was hier steht, hat noch keine Karte.",
+   "until": "2026-12-31"
+  },
+  "g1u04.w.hungry": {
+   "cards": "pending",
+   "reason": "ENTWURF · L4-T1 liefert elf Exemplar-Karten, nicht die Welle. „hungry“ wird von der Welle T2 beantwortet (Kalibrier-Gesetz RAHMEN §5: erst das Exemplar durch das Tor, dann die ~60 Karten). Dieses Hauptbuch IST damit die Arbeitsliste von T2: was hier steht, hat noch keine Karte.",
+   "until": "2026-12-31"
+  },
+  "g1u04.w.nervous": {
+   "cards": "pending",
+   "reason": "ENTWURF · L4-T1 liefert elf Exemplar-Karten, nicht die Welle. „nervous“ wird von der Welle T2 beantwortet (Kalibrier-Gesetz RAHMEN §5: erst das Exemplar durch das Tor, dann die ~60 Karten). Dieses Hauptbuch IST damit die Arbeitsliste von T2: was hier steht, hat noch keine Karte.",
+   "until": "2026-12-31"
+  },
+  "g1u04.w.proud": {
+   "cards": "pending",
+   "reason": "ENTWURF · L4-T1 liefert elf Exemplar-Karten, nicht die Welle. „proud“ wird von der Welle T2 beantwortet (Kalibrier-Gesetz RAHMEN §5: erst das Exemplar durch das Tor, dann die ~60 Karten). Dieses Hauptbuch IST damit die Arbeitsliste von T2: was hier steht, hat noch keine Karte.",
+   "until": "2026-12-31"
+  },
+  "g1u04.w.lunchtime": {
+   "cards": "pending",
+   "reason": "ENTWURF · L4-T1 liefert elf Exemplar-Karten, nicht die Welle. „lunchtime“ wird von der Welle T2 beantwortet (Kalibrier-Gesetz RAHMEN §5: erst das Exemplar durch das Tor, dann die ~60 Karten). Dieses Hauptbuch IST damit die Arbeitsliste von T2: was hier steht, hat noch keine Karte.",
+   "until": "2026-12-31"
+  },
+  "g1u04.w.afternoon": {
+   "cards": "pending",
+   "reason": "ENTWURF · L4-T1 liefert elf Exemplar-Karten, nicht die Welle. „afternoon“ wird von der Welle T2 beantwortet (Kalibrier-Gesetz RAHMEN §5: erst das Exemplar durch das Tor, dann die ~60 Karten). Dieses Hauptbuch IST damit die Arbeitsliste von T2: was hier steht, hat noch keine Karte.",
+   "until": "2026-12-31"
+  },
+  "g1u04.w.evening": {
+   "cards": "pending",
+   "reason": "ENTWURF · L4-T1 liefert elf Exemplar-Karten, nicht die Welle. „evening“ wird von der Welle T2 beantwortet (Kalibrier-Gesetz RAHMEN §5: erst das Exemplar durch das Tor, dann die ~60 Karten). Dieses Hauptbuch IST damit die Arbeitsliste von T2: was hier steht, hat noch keine Karte.",
+   "until": "2026-12-31"
+  },
+  "g1u04.w.night": {
+   "cards": "pending",
+   "reason": "ENTWURF · L4-T1 liefert elf Exemplar-Karten, nicht die Welle. „night“ wird von der Welle T2 beantwortet (Kalibrier-Gesetz RAHMEN §5: erst das Exemplar durch das Tor, dann die ~60 Karten). Dieses Hauptbuch IST damit die Arbeitsliste von T2: was hier steht, hat noch keine Karte.",
+   "until": "2026-12-31"
+  },
+  "g1u04.w.monday": {
+   "cards": "pending",
+   "reason": "ENTWURF · L4-T1 liefert elf Exemplar-Karten, nicht die Welle. „Monday“ wird von der Welle T2 beantwortet (Kalibrier-Gesetz RAHMEN §5: erst das Exemplar durch das Tor, dann die ~60 Karten). Dieses Hauptbuch IST damit die Arbeitsliste von T2: was hier steht, hat noch keine Karte.",
+   "until": "2026-12-31"
+  },
+  "g1u04.w.wednesday": {
+   "cards": "pending",
+   "reason": "ENTWURF · L4-T1 liefert elf Exemplar-Karten, nicht die Welle. „Wednesday“ wird von der Welle T2 beantwortet (Kalibrier-Gesetz RAHMEN §5: erst das Exemplar durch das Tor, dann die ~60 Karten). Dieses Hauptbuch IST damit die Arbeitsliste von T2: was hier steht, hat noch keine Karte.",
+   "until": "2026-12-31"
+  },
+  "g1u04.w.thursday": {
+   "cards": "pending",
+   "reason": "ENTWURF · L4-T1 liefert elf Exemplar-Karten, nicht die Welle. „Thursday“ wird von der Welle T2 beantwortet (Kalibrier-Gesetz RAHMEN §5: erst das Exemplar durch das Tor, dann die ~60 Karten). Dieses Hauptbuch IST damit die Arbeitsliste von T2: was hier steht, hat noch keine Karte.",
+   "until": "2026-12-31"
+  },
+  "g1u04.w.friday": {
+   "cards": "pending",
+   "reason": "ENTWURF · L4-T1 liefert elf Exemplar-Karten, nicht die Welle. „Friday“ wird von der Welle T2 beantwortet (Kalibrier-Gesetz RAHMEN §5: erst das Exemplar durch das Tor, dann die ~60 Karten). Dieses Hauptbuch IST damit die Arbeitsliste von T2: was hier steht, hat noch keine Karte.",
+   "until": "2026-12-31"
+  },
+  "g1u04.w.saturday": {
+   "cards": "pending",
+   "reason": "ENTWURF · L4-T1 liefert elf Exemplar-Karten, nicht die Welle. „Saturday“ wird von der Welle T2 beantwortet (Kalibrier-Gesetz RAHMEN §5: erst das Exemplar durch das Tor, dann die ~60 Karten). Dieses Hauptbuch IST damit die Arbeitsliste von T2: was hier steht, hat noch keine Karte.",
+   "until": "2026-12-31"
+  },
+  "g1u04.w.sunday": {
+   "cards": "pending",
+   "reason": "ENTWURF · L4-T1 liefert elf Exemplar-Karten, nicht die Welle. „Sunday“ wird von der Welle T2 beantwortet (Kalibrier-Gesetz RAHMEN §5: erst das Exemplar durch das Tor, dann die ~60 Karten). Dieses Hauptbuch IST damit die Arbeitsliste von T2: was hier steht, hat noch keine Karte.",
+   "until": "2026-12-31"
+  },
+  "g1u04.w.after": {
+   "cards": "pending",
+   "reason": "ENTWURF · L4-T1 liefert elf Exemplar-Karten, nicht die Welle. „after“ wird von der Welle T2 beantwortet (Kalibrier-Gesetz RAHMEN §5: erst das Exemplar durch das Tor, dann die ~60 Karten). Dieses Hauptbuch IST damit die Arbeitsliste von T2: was hier steht, hat noch keine Karte.",
+   "until": "2026-12-31"
+  },
+  "g1u04.w.day": {
+   "cards": "pending",
+   "reason": "ENTWURF · L4-T1 liefert elf Exemplar-Karten, nicht die Welle. „day“ wird von der Welle T2 beantwortet (Kalibrier-Gesetz RAHMEN §5: erst das Exemplar durch das Tor, dann die ~60 Karten). Dieses Hauptbuch IST damit die Arbeitsliste von T2: was hier steht, hat noch keine Karte.",
+   "until": "2026-12-31"
+  },
+  "g1u04.w.end": {
+   "cards": "pending",
+   "reason": "ENTWURF · L4-T1 liefert elf Exemplar-Karten, nicht die Welle. „end“ wird von der Welle T2 beantwortet (Kalibrier-Gesetz RAHMEN §5: erst das Exemplar durch das Tor, dann die ~60 Karten). Dieses Hauptbuch IST damit die Arbeitsliste von T2: was hier steht, hat noch keine Karte.",
+   "until": "2026-12-31"
+  },
+  "g1u04.w.fun": {
+   "cards": "pending",
+   "reason": "ENTWURF · L4-T1 liefert elf Exemplar-Karten, nicht die Welle. „fun“ wird von der Welle T2 beantwortet (Kalibrier-Gesetz RAHMEN §5: erst das Exemplar durch das Tor, dann die ~60 Karten). Dieses Hauptbuch IST damit die Arbeitsliste von T2: was hier steht, hat noch keine Karte.",
+   "until": "2026-12-31"
+  },
+  "g1u04.w.to-happen": {
+   "cards": "pending",
+   "reason": "ENTWURF · L4-T1 liefert elf Exemplar-Karten, nicht die Welle. „to happen“ wird von der Welle T2 beantwortet (Kalibrier-Gesetz RAHMEN §5: erst das Exemplar durch das Tor, dann die ~60 Karten). Dieses Hauptbuch IST damit die Arbeitsliste von T2: was hier steht, hat noch keine Karte.",
+   "until": "2026-12-31"
+  },
+  "g1u04.w.show": {
+   "cards": "pending",
+   "reason": "ENTWURF · L4-T1 liefert elf Exemplar-Karten, nicht die Welle. „show“ wird von der Welle T2 beantwortet (Kalibrier-Gesetz RAHMEN §5: erst das Exemplar durch das Tor, dann die ~60 Karten). Dieses Hauptbuch IST damit die Arbeitsliste von T2: was hier steht, hat noch keine Karte.",
+   "until": "2026-12-31"
+  },
+  "g1u04.w.a-day-in-the-life-of": {
+   "cards": "pending",
+   "reason": "ENTWURF · L4-T1 liefert elf Exemplar-Karten, nicht die Welle. „a day in the life of“ wird von der Welle T2 beantwortet (Kalibrier-Gesetz RAHMEN §5: erst das Exemplar durch das Tor, dann die ~60 Karten). Dieses Hauptbuch IST damit die Arbeitsliste von T2: was hier steht, hat noch keine Karte.",
+   "until": "2026-12-31"
+  },
+  "g1u04.w.to-be-asleep": {
+   "cards": "pending",
+   "reason": "ENTWURF · L4-T1 liefert elf Exemplar-Karten, nicht die Welle. „to be asleep“ wird von der Welle T2 beantwortet (Kalibrier-Gesetz RAHMEN §5: erst das Exemplar durch das Tor, dann die ~60 Karten). Dieses Hauptbuch IST damit die Arbeitsliste von T2: was hier steht, hat noch keine Karte.",
+   "until": "2026-12-31"
+  },
+  "g1u04.w.early": {
+   "cards": "pending",
+   "reason": "ENTWURF · L4-T1 liefert elf Exemplar-Karten, nicht die Welle. „early“ wird von der Welle T2 beantwortet (Kalibrier-Gesetz RAHMEN §5: erst das Exemplar durch das Tor, dann die ~60 Karten). Dieses Hauptbuch IST damit die Arbeitsliste von T2: was hier steht, hat noch keine Karte.",
+   "until": "2026-12-31"
+  },
+  "g1u04.w.life": {
+   "cards": "pending",
+   "reason": "ENTWURF · L4-T1 liefert elf Exemplar-Karten, nicht die Welle. „life“ wird von der Welle T2 beantwortet (Kalibrier-Gesetz RAHMEN §5: erst das Exemplar durch das Tor, dann die ~60 Karten). Dieses Hauptbuch IST damit die Arbeitsliste von T2: was hier steht, hat noch keine Karte.",
+   "until": "2026-12-31"
+  },
+  "g1u04.w.still": {
+   "cards": "pending",
+   "reason": "ENTWURF · L4-T1 liefert elf Exemplar-Karten, nicht die Welle. „still“ wird von der Welle T2 beantwortet (Kalibrier-Gesetz RAHMEN §5: erst das Exemplar durch das Tor, dann die ~60 Karten). Dieses Hauptbuch IST damit die Arbeitsliste von T2: was hier steht, hat noch keine Karte.",
+   "until": "2026-12-31"
+  },
+  "g1u04.w.story": {
+   "cards": "pending",
+   "reason": "ENTWURF · L4-T1 liefert elf Exemplar-Karten, nicht die Welle. „story“ wird von der Welle T2 beantwortet (Kalibrier-Gesetz RAHMEN §5: erst das Exemplar durch das Tor, dann die ~60 Karten). Dieses Hauptbuch IST damit die Arbeitsliste von T2: was hier steht, hat noch keine Karte.",
+   "until": "2026-12-31"
+  },
+  "g1u04.w.today": {
+   "cards": "pending",
+   "reason": "ENTWURF · L4-T1 liefert elf Exemplar-Karten, nicht die Welle. „today“ wird von der Welle T2 beantwortet (Kalibrier-Gesetz RAHMEN §5: erst das Exemplar durch das Tor, dann die ~60 Karten). Dieses Hauptbuch IST damit die Arbeitsliste von T2: was hier steht, hat noch keine Karte.",
+   "until": "2026-12-31"
+  },
+  "g1u04.w.homework": {
+   "cards": "pending",
+   "reason": "ENTWURF · L4-T1 liefert elf Exemplar-Karten, nicht die Welle. „homework (no pl)“ wird von der Welle T2 beantwortet (Kalibrier-Gesetz RAHMEN §5: erst das Exemplar durch das Tor, dann die ~60 Karten). Dieses Hauptbuch IST damit die Arbeitsliste von T2: was hier steht, hat noch keine Karte.",
+   "until": "2026-12-31"
+  },
+  "g1u04.w.into": {
+   "cards": "pending",
+   "reason": "ENTWURF · L4-T1 liefert elf Exemplar-Karten, nicht die Welle. „into“ wird von der Welle T2 beantwortet (Kalibrier-Gesetz RAHMEN §5: erst das Exemplar durch das Tor, dann die ~60 Karten). Dieses Hauptbuch IST damit die Arbeitsliste von T2: was hier steht, hat noch keine Karte.",
+   "until": "2026-12-31"
+  },
+  "g1u04.w.oh-dear": {
+   "cards": "pending",
+   "reason": "ENTWURF · L4-T1 liefert elf Exemplar-Karten, nicht die Welle. „Oh dear!“ wird von der Welle T2 beantwortet (Kalibrier-Gesetz RAHMEN §5: erst das Exemplar durch das Tor, dann die ~60 Karten). Dieses Hauptbuch IST damit die Arbeitsliste von T2: was hier steht, hat noch keine Karte.",
+   "until": "2026-12-31"
+  },
+  "g1u04.w.room": {
+   "cards": "pending",
+   "reason": "ENTWURF · L4-T1 liefert elf Exemplar-Karten, nicht die Welle. „room“ wird von der Welle T2 beantwortet (Kalibrier-Gesetz RAHMEN §5: erst das Exemplar durch das Tor, dann die ~60 Karten). Dieses Hauptbuch IST damit die Arbeitsliste von T2: was hier steht, hat noch keine Karte.",
+   "until": "2026-12-31"
+  },
+  "g1u04.w.bad": {
+   "cards": "pending",
+   "reason": "ENTWURF · L4-T1 liefert elf Exemplar-Karten, nicht die Welle. „bad“ wird von der Welle T2 beantwortet (Kalibrier-Gesetz RAHMEN §5: erst das Exemplar durch das Tor, dann die ~60 Karten). Dieses Hauptbuch IST damit die Arbeitsliste von T2: was hier steht, hat noch keine Karte.",
+   "until": "2026-12-31"
+  },
+  "g1u04.w.don-t-be-late": {
+   "cards": "pending",
+   "reason": "ENTWURF · L4-T1 liefert elf Exemplar-Karten, nicht die Welle. „Don't be late.“ wird von der Welle T2 beantwortet (Kalibrier-Gesetz RAHMEN §5: erst das Exemplar durch das Tor, dann die ~60 Karten). Dieses Hauptbuch IST damit die Arbeitsliste von T2: was hier steht, hat noch keine Karte.",
+   "until": "2026-12-31"
+  },
+  "g1u04.w.tomorrow": {
+   "cards": "pending",
+   "reason": "ENTWURF · L4-T1 liefert elf Exemplar-Karten, nicht die Welle. „tomorrow“ wird von der Welle T2 beantwortet (Kalibrier-Gesetz RAHMEN §5: erst das Exemplar durch das Tor, dann die ~60 Karten). Dieses Hauptbuch IST damit die Arbeitsliste von T2: was hier steht, hat noch keine Karte.",
+   "until": "2026-12-31"
+  },
+  "g1u04.w.birthday": {
+   "cards": "pending",
+   "reason": "ENTWURF · L4-T1 liefert elf Exemplar-Karten, nicht die Welle. „birthday“ wird von der Welle T2 beantwortet (Kalibrier-Gesetz RAHMEN §5: erst das Exemplar durch das Tor, dann die ~60 Karten). Dieses Hauptbuch IST damit die Arbeitsliste von T2: was hier steht, hat noch keine Karte.",
+   "until": "2026-12-31"
+  },
+  "g1u04.w.friend": {
+   "cards": "pending",
+   "reason": "ENTWURF · L4-T1 liefert elf Exemplar-Karten, nicht die Welle. „friend“ wird von der Welle T2 beantwortet (Kalibrier-Gesetz RAHMEN §5: erst das Exemplar durch das Tor, dann die ~60 Karten). Dieses Hauptbuch IST damit die Arbeitsliste von T2: was hier steht, hat noch keine Karte.",
+   "until": "2026-12-31"
+  },
+  "g1u04.w.be-yourself": {
+   "cards": "pending",
+   "reason": "ENTWURF · L4-T1 liefert elf Exemplar-Karten, nicht die Welle. „Be yourself.“ wird von der Welle T2 beantwortet (Kalibrier-Gesetz RAHMEN §5: erst das Exemplar durch das Tor, dann die ~60 Karten). Dieses Hauptbuch IST damit die Arbeitsliste von T2: was hier steht, hat noch keine Karte.",
+   "until": "2026-12-31"
+  },
+  "g1u04.w.no-one-else": {
+   "cards": "pending",
+   "reason": "ENTWURF · L4-T1 liefert elf Exemplar-Karten, nicht die Welle. „no one else“ wird von der Welle T2 beantwortet (Kalibrier-Gesetz RAHMEN §5: erst das Exemplar durch das Tor, dann die ~60 Karten). Dieses Hauptbuch IST damit die Arbeitsliste von T2: was hier steht, hat noch keine Karte.",
+   "until": "2026-12-31"
+  },
+  "g1u04.w.bottle": {
+   "cards": "pending",
+   "reason": "ENTWURF · L4-T1 liefert elf Exemplar-Karten, nicht die Welle. „bottle“ wird von der Welle T2 beantwortet (Kalibrier-Gesetz RAHMEN §5: erst das Exemplar durch das Tor, dann die ~60 Karten). Dieses Hauptbuch IST damit die Arbeitsliste von T2: was hier steht, hat noch keine Karte.",
+   "until": "2026-12-31"
+  },
+  "g1u04.w.to-get-back": {
+   "cards": "pending",
+   "reason": "ENTWURF · L4-T1 liefert elf Exemplar-Karten, nicht die Welle. „to get back“ wird von der Welle T2 beantwortet (Kalibrier-Gesetz RAHMEN §5: erst das Exemplar durch das Tor, dann die ~60 Karten). Dieses Hauptbuch IST damit die Arbeitsliste von T2: was hier steht, hat noch keine Karte.",
+   "until": "2026-12-31"
+  },
+  "g1u04.w.mad": {
+   "cards": "pending",
+   "reason": "ENTWURF · L4-T1 liefert elf Exemplar-Karten, nicht die Welle. „mad“ wird von der Welle T2 beantwortet (Kalibrier-Gesetz RAHMEN §5: erst das Exemplar durch das Tor, dann die ~60 Karten). Dieses Hauptbuch IST damit die Arbeitsliste von T2: was hier steht, hat noch keine Karte.",
+   "until": "2026-12-31"
+  },
+  "g1u04.w.magic": {
+   "cards": "pending",
+   "reason": "ENTWURF · L4-T1 liefert elf Exemplar-Karten, nicht die Welle. „magic“ wird von der Welle T2 beantwortet (Kalibrier-Gesetz RAHMEN §5: erst das Exemplar durch das Tor, dann die ~60 Karten). Dieses Hauptbuch IST damit die Arbeitsliste von T2: was hier steht, hat noch keine Karte.",
+   "until": "2026-12-31"
+  },
+  "g1u04.w.to-break": {
+   "cards": "pending",
+   "reason": "ENTWURF · L4-T1 liefert elf Exemplar-Karten, nicht die Welle. „to break“ wird von der Welle T2 beantwortet (Kalibrier-Gesetz RAHMEN §5: erst das Exemplar durch das Tor, dann die ~60 Karten). Dieses Hauptbuch IST damit die Arbeitsliste von T2: was hier steht, hat noch keine Karte.",
+   "until": "2026-12-31"
+  },
+  "g1u04.w.to-go-to-sleep": {
+   "cards": "pending",
+   "reason": "ENTWURF · L4-T1 liefert elf Exemplar-Karten, nicht die Welle. „to go to sleep“ wird von der Welle T2 beantwortet (Kalibrier-Gesetz RAHMEN §5: erst das Exemplar durch das Tor, dann die ~60 Karten). Dieses Hauptbuch IST damit die Arbeitsliste von T2: was hier steht, hat noch keine Karte.",
+   "until": "2026-12-31"
+  },
+  "g1u04.w.because": {
+   "cards": "pending",
+   "reason": "ENTWURF · L4-T1 liefert elf Exemplar-Karten, nicht die Welle. „because“ wird von der Welle T2 beantwortet (Kalibrier-Gesetz RAHMEN §5: erst das Exemplar durch das Tor, dann die ~60 Karten). Dieses Hauptbuch IST damit die Arbeitsliste von T2: was hier steht, hat noch keine Karte.",
+   "until": "2026-12-31"
+  },
+  "g1u04.w.it-s-me": {
+   "cards": "pending",
+   "reason": "ENTWURF · L4-T1 liefert elf Exemplar-Karten, nicht die Welle. „It's me.“ wird von der Welle T2 beantwortet (Kalibrier-Gesetz RAHMEN §5: erst das Exemplar durch das Tor, dann die ~60 Karten). Dieses Hauptbuch IST damit die Arbeitsliste von T2: was hier steht, hat noch keine Karte.",
+   "until": "2026-12-31"
+  },
+  "g1u04.w.try-it": {
+   "cards": "pending",
+   "reason": "ENTWURF · L4-T1 liefert elf Exemplar-Karten, nicht die Welle. „Try it!“ wird von der Welle T2 beantwortet (Kalibrier-Gesetz RAHMEN §5: erst das Exemplar durch das Tor, dann die ~60 Karten). Dieses Hauptbuch IST damit die Arbeitsliste von T2: was hier steht, hat noch keine Karte.",
+   "until": "2026-12-31"
+  },
+  "g1u04.w.let-go": {
+   "cards": "pending",
+   "reason": "ENTWURF · L4-T1 liefert elf Exemplar-Karten, nicht die Welle. „Let go!“ wird von der Welle T2 beantwortet (Kalibrier-Gesetz RAHMEN §5: erst das Exemplar durch das Tor, dann die ~60 Karten). Dieses Hauptbuch IST damit die Arbeitsliste von T2: was hier steht, hat noch keine Karte.",
+   "until": "2026-12-31"
+  },
+  "g1u04.w.what-s-happening": {
+   "cards": "pending",
+   "reason": "ENTWURF · L4-T1 liefert elf Exemplar-Karten, nicht die Welle. „What's happening?“ wird von der Welle T2 beantwortet (Kalibrier-Gesetz RAHMEN §5: erst das Exemplar durch das Tor, dann die ~60 Karten). Dieses Hauptbuch IST damit die Arbeitsliste von T2: was hier steht, hat noch keine Karte.",
+   "until": "2026-12-31"
+  }
+ },
+ "nounDe": {
+  "reason": "Das deutsche Nomen jedes entfaerbten Wesens und jedes Kaefig-Insassen — die strengere Pflicht, die die Verrats-Ausnahme kauft (scripts/game-tasks-giveaway-policy.json, Familien `restore-nennt-das-wesen` und `kaefig-nennt-den-insassen`). Es steht HIER und nicht in der Wortbank, weil die Wortbank die Korpus-Glosse fuehrt und diese Tabelle die Erzaehlstimme regelt (oesterreichisches Deutsch, docs/design/g1/paint/LEXIKON_AT.md). L0 · N5 hat den Block aus der Tor-Datei hierher geholt.",
+  "pairs": {
+   "marktfrau": "Marktfrau",
+   "regenkind": "Regenkind",
+   "nachbarin": "Nachbarin"
+  },
+  "captivesReason": "Die Kaefige des Kapitels sind graue Gefuehls-FLASCHEN und teilen sich alle den Skin `flasche` (das Portrait ist die Flasche, nie der Insasse) — ihr Nomen haengt deshalb an der KARTE. Die Insassen sind die fuenf Tageszeiten (Blaupause §2/§4). Piets Wiedererweckungs-Runden sind ebenfalls `rescue` mit der Form `state-it` und fallen damit unter dieselbe Familie; sein Nomen ist sein Eigenname.",
+  "captives": {
+   "rsc.flasche.morning": "Morgen",
+   "awk.piet.r1": "Piet"
+  }
+ }
+}

@@ -78,13 +78,24 @@ const ART = path.join(R, "apps/web/public/art/g1/paint");
  */
 const TARGETS = {
   l2_p2: {
-    lum: 17.5,
-    was: 19.1,
+    // ── N7A2b · DAS ZIEL IST JETZT DOKUMENTATION (2026-09-03) ──────────────
+    // R5b setzte 17,5 % und rechnete damit, dass die Luminanz die Trennung
+    // traegt. Sie kann es nicht: gegen ein L3 von 27,2 % muesste das Band unter
+    // 15,2 %, und der Boden seines eigenen K-Bandes liegt bei 15,0 — das Fenster
+    // ist praktisch zu. Koki hat deshalb NEU MALEN statt verschieben entschieden
+    // (R242, D-959). Das gelieferte Band traegt die Trennung ueber die
+    // SAETTIGUNG: 23,1 % gegen 54,1 % sind 31,0 Punkte gegen die verlangten 25.
+    // Der Wert unten ist gemessen, nicht bestellt — er sagt, wo das abgenommene
+    // Blatt steht, und der Wareneingangs-Pin unten verweigert jede Bewegung.
+    lum: 15.483,
+    was: 17.5,
     why:
-      "R5b adds p2's phase-owned mass and the resulting L3 includes readable depth plus "
-      + "interactive objects. The p2 furniture row therefore takes the declared 17.5 % "
-      + "value inside its L2 band [15.0, 22.5], restoring the absolute L2↔L3 contrast "
-      + "without a separation waiver.",
+      "N7A2b: the furniture row is REPAINTED, not value-passed (Koki, R242/D-959). "
+      + "It clears the absolute L2↔L3 law on saturation (23.05 % against L3's 54.1 % "
+      + "= 31.0 points, law asks 25), which luminance alone never could: the law "
+      + "would need the band under 15.2 % and its own K-band floor is 15.0. The "
+      + "figure is where the accepted sheet MEASURES, not an instruction to move it "
+      + "— and the Wareneingangs-Pin below refuses the move in any case.",
   },
   band_p4_audience: {
     // ── R5-T10 · DAS ZIEL FOLGT DER NACHT (2026-08-31) ─────────────────────
@@ -160,6 +171,17 @@ export const WARENEINGANGS_PINS = new Map([
     + "gehaltenem Reihenfolgen-Tausch, lum 11,639 % im bestellten Fenster [10,0–12,5], "
     + "sat 24,17, Magenta 0, frisch gemalt r=0,08 gegen den Bestand); ausgeliefert nach "
     + "Import + strip-key-fringe + Nachverdichtung. Lieferungs-RGB-sha war 7694c48b…"],
+  // ── N7A2b (2026-09-03): DAS NEU GEMALTE MOEBELBAND DES NACHT-KLASSENZIMMERS ─
+  // Gemessen NACH der letzten Byte-Bewegung — Import + strip-key-fringe (48
+  // Saum-Pixel geheilt). Genau das ist der Fehler, den der Kommentar oben
+  // beziffert: ein Pin, der vor der Saum-Reparatur gemessen wird, zeigt ins
+  // Leere und hoert STILL auf zu sperren.
+  ["01e919caeae7536e551e787221c57145f41b45238fc4ed65e2cbf5aa7ef2c732",
+    "l2_p2 aus N7A2b — Wareneingang 03.09.2026 (neu gemalt, nicht umgefaerbt: Silhouette "
+    + "47,5 % deckungsgleich mit dem Vorgaenger, 534 kB Malerei gegen 66 kB einer "
+    + "verworfenen Umfaerbung; lum 15,483 % im Band [15,0-22,5], sat 23,05 % unter dem "
+    + "Deckel 50, Kachel-Naht 3,06 im Mittel / 10,16 im Maximum gegen 7,60 / 11,26 des "
+    + "Bestands; check-composition 11/11 gruen OHNE Trennungs-Duldung)"],
 ]);
 
 /** Der Satz, mit dem verweigert wird. Als Konstante, damit der Selbsttest auf

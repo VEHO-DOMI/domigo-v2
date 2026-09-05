@@ -1,7 +1,7 @@
 {
  "schema": "paintClaims@1",
  "chapter": "ch02",
- "note": "L2-P1 (2026-09-03) · Vokabel-Ansprüche des Zoo-Kapitels. Klassen wie ch01 (being/thing/architecture/cards/pickup/debt; Bedeutung im Tor). p1 gebaut: dog, penguin (being), ticket (thing). p2/p3/Arena-Wesen als debt bis L2-G2. Alles Übrige: Karten-Abdeckung mit Ausnahme bis 2026-12-31 (L2-T1/T2 beantworten; die Ausnahme fällt, sobald eine Karte das Wort ANTWORTEN lässt — Block 2 meldet das).",
+ "note": "L2-P1 (2026-09-03) · Vokabel-Ansprüche des Zoo-Kapitels. Klassen wie ch01 (being/thing/architecture/cards/pickup/debt; Bedeutung im Tor). p1 gebaut: dog, penguin (being), ticket (thing). p2/p3/Arena-Wesen als debt bis L2-G2. ★ L2-T1 (2026-09-04, Rebase-Sitz): die sechs Ortswort-Ausnahmen sind GEFALLEN — die Karten von PR #398 lassen alle sechs ANTWORTEN, und Gesetz D-77 verlangt dann, dass die Ausnahme weicht (check-level-design nannte genau diese sechs Wörter namentlich). Gestrichen wurde, was das Tor benannt hat, nichts sonst.",
  "claims": {
   "tree": {
    "kind": "architecture",
@@ -46,52 +46,22 @@
    "note": "Wesen/Prop von p2/p3/Arena — L2-G2 setzt den Stem (Blaupause §2)"
   },
   "next to": {
-   "kind": "cards",
-   "exception": {
-    "why": "Karten-Welle L2-T1/L2-T2 beantwortet es; p1 hat noch keine Karten",
-    "expires": "2026-12-31",
-    "owner": "L2-Architekt"
-   }
+   "kind": "cards"
   },
   "in": {
-   "kind": "cards",
-   "exception": {
-    "why": "Karten-Welle L2-T1/L2-T2 beantwortet es; p1 hat noch keine Karten",
-    "expires": "2026-12-31",
-    "owner": "L2-Architekt"
-   }
+   "kind": "cards"
   },
   "behind": {
-   "kind": "cards",
-   "exception": {
-    "why": "Karten-Welle L2-T1/L2-T2 beantwortet es; p1 hat noch keine Karten",
-    "expires": "2026-12-31",
-    "owner": "L2-Architekt"
-   }
+   "kind": "cards"
   },
   "under": {
-   "kind": "cards",
-   "exception": {
-    "why": "Karten-Welle L2-T1/L2-T2 beantwortet es; p1 hat noch keine Karten",
-    "expires": "2026-12-31",
-    "owner": "L2-Architekt"
-   }
+   "kind": "cards"
   },
   "on": {
-   "kind": "cards",
-   "exception": {
-    "why": "Karten-Welle L2-T1/L2-T2 beantwortet es; p1 hat noch keine Karten",
-    "expires": "2026-12-31",
-    "owner": "L2-Architekt"
-   }
+   "kind": "cards"
   },
   "in front of": {
-   "kind": "cards",
-   "exception": {
-    "why": "Karten-Welle L2-T1/L2-T2 beantwortet es; p1 hat noch keine Karten",
-    "expires": "2026-12-31",
-    "owner": "L2-Architekt"
-   }
+   "kind": "cards"
   }
  }
 }
