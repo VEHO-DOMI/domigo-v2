@@ -317,3 +317,111 @@ const laufen = () => {
 };
 
 laufen();
+
+// ─────────────────────────────────────────────────────────────────────────────
+// TEIL B · DIE ZAHLEN, DIE DAS ERREICHBARKEITS-MODELL BRAUCHT
+//
+// `level.ts#reachFrom` segnet heute von einem Ring aus alle Zellen in einem
+// festen Fenster von RING_DX = 8 Spalten. Diese Zahl gehoert zum 96-px-Seil; ein
+// Kettenseil von 48 px traegt nicht so weit, und ein Modell, das trotzdem 8
+// verspricht, segnet Zellen, die kein Kind erreicht — genau die Richtung, die die
+// Huellkurven-Regel verbietet („every constant here must be <= what the real
+// engine can do"). Die beiden Sweeps unten messen die zwei Zahlen, die das
+// Gesetz `ring-chain` und `ringDxFor` brauchen.
+
+/** EIN Ring, EINE Landeplattform im Abstand (dx, dy) davon. Kommt das Kind an? */
+const landung = ({ ropePx, dx, dy, richtung = 1, maxTicks = 700 }) => {
+  const breite = 40, hoehe = 26;
+  const ringC = 12, ringR = 8;
+  const zielC = ringC + dx * richtung, zielR = ringR + dy;
+  if (zielC < 2 || zielC > breite - 3 || zielR < 2 || zielR > hoehe - 5) return null;
+  const rows = [];
+  for (let r = 0; r < hoehe; r++) {
+    let z = "";
+    for (let c = 0; c < breite; c++) z += (r === 0 || r === hoehe - 1) ? "#" : (r >= hoehe - 4 ? "w" : ".");
+    rows.push(z);
+  }
+  const plattR = ringR + 5;
+  let a = rows[plattR].split(""); for (let c = ringC - 2; c <= ringC + 2; c++) a[c] = "#"; rows[plattR] = a.join("");
+  let b = rows[plattR - 1].split(""); b[ringC] = "S"; rows[plattR - 1] = b.join("");
+  let o = rows[ringR].split(""); o[ringC] = "o"; rows[ringR] = o.join("");
+  // die Ziel-Plattform: drei Kacheln breit, Krone auf zielR
+  let z2 = rows[zielR].split("");
+  for (let c = Math.max(0, zielC - 1); c <= Math.min(breite - 1, zielC + 1); c++) z2[c] = "#";
+  rows[zielR] = z2.join("");
+  let x = rows[plattR - 1].split(""); x[breite - 3] = "X"; rows[plattR - 1] = x.join("");
+
+  const sim = neueSim(rows, ropePx === PAINT.swingRopePx ? undefined : { ropePx, releaseLiftPx: 4, regrabLockTicks: 20 });
+  let gegriffen = false;
+  for (let t = 0; t < maxTicks; t++) {
+    const q = sim.player;
+    let tasten;
+    if (q.swing) {
+      gegriffen = true;
+      const w = q.swing.angle;
+      const reif = richtung === 1 ? w >= 368 : w <= 144;
+      tasten = reif ? { jump: true, right: richtung === 1, left: richtung === -1 } : {};
+    } else if (!gegriffen) tasten = { jump: true };
+    else tasten = { right: richtung === 1, left: richtung === -1 };
+    sim.step(pad(tasten));
+    const r2p = sim.player;
+    if (gegriffen && !r2p.swing && r2p.grounded) {
+      const fussR = Math.round(r2p.y / SUBS / TILE) - 1;
+      const cc = Math.floor(r2p.x / SUBS / TILE);
+      // auf der Zielkrone gelandet? (die Krone ist zielR, die Fuesse stehen darauf)
+      return Math.abs(cc - zielC) <= 1 && fussR === zielR - 1;
+    }
+    if (r2p.y / SUBS / TILE >= hoehe - 4) return false; // Platsch
+  }
+  return false;
+};
+
+/** Zwei Ringe im Abstand d — traegt die Kette? (fuer `ring-chain`) */
+const zweiRinge = ({ ropePx, d, dRows = 0 }) => {
+  const sw = ropePx === PAINT.swingRopePx ? undefined : { ropePx, releaseLiftPx: 4, regrabLockTicks: 20 };
+  return kette({ ringe: 2, dCols: d, dRows, swing: sw }).gefangen === 2;
+};
+
+const teilB = () => {
+  console.log("# TEIL B · DIE ZAHLEN FUER DAS ERREICHBARKEITS-MODELL\n");
+
+  console.log("## 6 · VON EINEM RING AUS — welche Landeflaeche erreicht das Kind wirklich?\n");
+  console.log("Ein Ring, eine drei Kacheln breite Plattform im Abstand (dx, dy). `x` = das Kind steht am Ende");
+  console.log("darauf. Die Zeile `max dx` ist die groesste Spalte, in der noch irgendein dy traegt — das ist die");
+  console.log("Zahl, die `ringDxFor(ropePx)` verspricht, und sie wird nach unten gerundet, nie nach oben.\n");
+  const dys = [-4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6];
+  for (const L of [32, 48, 64, 96]) {
+    console.log(`### Seil ${L} px`);
+    console.log("| dy \\ dx |" + [...Array(13).keys()].slice(1).map((d) => String(d).padStart(3)).join(" |") + " |");
+    console.log("|---------|" + [...Array(12)].map(() => "----").join("|") + "|");
+    let maxDx = 0;
+    for (const dy of dys) {
+      const zellen = [];
+      for (let dx = 1; dx <= 12; dx++) {
+        const ok = landung({ ropePx: L, dx, dy });
+        zellen.push(ok === null ? " . " : ok ? " x " : "   ");
+        if (ok === true) maxDx = Math.max(maxDx, dx);
+      }
+      console.log(`| ${String(dy).padStart(7)} |` + zellen.join(" |") + " |");
+    }
+    console.log(`**max dx (Seil ${L}) = ${maxDx} Spalten**\n`);
+  }
+
+  console.log("## 7 · RING ZU RING — wie weit traegt die Kette? (fuer das Gesetz `ring-chain`)\n");
+  console.log("Zwei Ringe im Abstand d Spalten und dy Zeilen. `x` = Ring 2 wurde gefangen.\n");
+  for (const L of [32, 48, 64, 96]) {
+    const zeilen = [];
+    for (const dy of [-2, -1, 0, 1, 2]) {
+      const zellen = [];
+      for (let d = 1; d <= 12; d++) zellen.push(zweiRinge({ ropePx: L, d, dRows: dy }) ? " x " : "   ");
+      zeilen.push(`| ${String(dy).padStart(7)} |` + zellen.join(" |") + " |");
+    }
+    console.log(`### Seil ${L} px`);
+    console.log("| dy \\ d  |" + [...Array(13).keys()].slice(1).map((d) => String(d).padStart(3)).join(" |") + " |");
+    console.log("|---------|" + [...Array(12)].map(() => "----").join("|") + "|");
+    for (const z of zeilen) console.log(z);
+    console.log("");
+  }
+};
+
+teilB();

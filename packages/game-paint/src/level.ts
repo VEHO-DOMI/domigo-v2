@@ -686,6 +686,43 @@ export const REACH_ENVELOPE = {
   HANG_ROWS: 2,
 } as const;
 
+/** L3-M-a · RING ZU RING — die Spanne, in der eine KETTE traegt, in Spalten.
+ *
+ *  `RING_DX` oben beantwortet eine andere Frage: wie weit von einem Ring aus
+ *  eine LANDEFLAECHE liegen darf. Diese hier beantwortet die Frage von ch03:
+ *  wie weit der NAECHSTE RING liegen darf, damit das Kind ihn im Flug faengt.
+ *
+ *  BEIDE Grenzen sind noetig, und die untere ist die ueberraschende: stehen zwei
+ *  Ringe zu DICHT, faengt das Kind den zweiten gar nicht — es laesst am Scheitel
+ *  los, und der Scheitel liegt bereits jenseits des Nachbarn. Ein Modell mit nur
+ *  einer Obergrenze wuerde genau die Ketten segnen, die im Spiel nicht gehen.
+ *
+ *  GEMESSEN, nicht gerechnet (`scripts/paint-probes/ch03.probe.mjs` §7 — zwei
+ *  Ringe im Abstand d, faengt das Kind den zweiten?), Spalten bei dy = 0:
+ *
+ *      Seil │ gemessen  │ versprochen (min … max)
+ *      ─────┼───────────┼────────────────────────
+ *        32 │  2 …  7   │  2 …  5
+ *        48 │  3 …  7   │  3 …  6
+ *        64 │  4 …  8   │  4 …  7
+ *        96 │  6 …  9   │  6 …  9
+ *
+ *  Die Untergrenze ist `ceil(ropePx / TILE)` — in der Messung exakt getroffen,
+ *  und sie ist auch die anschauliche: das Pendel traegt die Haende am Scheitel
+ *  etwa eine Seillaenge weit zur Seite. Die Obergrenze ist `Untergrenze + 3`,
+ *  also bei drei der vier Seillaengen enger als gemessen: die Huellkurven-Regel
+ *  dieser Datei erlaubt Uebersehen, nie Zuvielversprechen.
+ *
+ *  Der Hoehenversatz ist auf eine Zeile begrenzt (gemessen traegt dy = ±2 nur
+ *  in einem Teil der Spanne). */
+export const ringChainSpan = (ropePx: number): { readonly min: number; readonly max: number } => {
+  const min = Math.ceil(ropePx / TILE);
+  return { min, max: min + 3 };
+};
+
+/** L3-M-a · die groesste Zeilendifferenz, ueber die eine Kette noch traegt. */
+export const RING_CHAIN_DR = 1;
+
 /** B3 · THE HEADROOM TABLE — indexed by clear rows of sky above the take-off
  *  feet, valued in columns the jump may cross. Measured off the real
  *  `stepPlayer` from a STANDSTILL (run-up buys nothing: air control SNAPS, so
@@ -741,10 +778,11 @@ export const reachableCells = (
   rows: readonly string[],
   abilities: readonly Ability[],
   entities: readonly EntitySpec[] = [],
+  ropePx: number = PAINT.swingRopePx,
 ): Set<string> => {
   const start = findGlyph(rows, "S");
   if (!start) return new Set();
-  return reachFrom(rows, abilities, start, entities);
+  return reachFrom(rows, abilities, start, entities, ropePx);
 };
 
 // B1 · PURE-INPUT MEMOS. Both of the caches below key on OBJECT IDENTITY of
@@ -797,6 +835,10 @@ export const reachFrom = (
   abilities: readonly Ability[],
   from: { c: number; r: number },
   entities: readonly EntitySpec[] = [],
+  /** L3-M-a · die Seillaenge DIESER Phase (`PhaseSpec.swing.ropePx`). Ohne
+   *  Angabe das ausgelieferte 96-px-Seil — jeder Aufrufer, der keine Kette
+   *  kennt, rechnet also genau wie bisher. */
+  ropePx: number = PAINT.swingRopePx,
 ): Set<string> => {
   const grid = rows;
   const h = rows.length;
@@ -906,6 +948,40 @@ export const reachFrom = (
     return h + 1;
   };
 
+  // L3-M-a · DIE ZWEITE WARTESCHLANGE: erreichte Ringe.
+  //
+  // `ringSpan` haengt an der Seillaenge der PHASE. Ohne `swing`-Block ist es das
+  // ausgelieferte 96-px-Seil, und dann ist `RING_CHAIN` genau die Spanne, die
+  // heute schon faktisch gilt — die Ketten-Kante fuegt fuer ch01/ch02 nichts
+  // hinzu, weil dort kein zweiter Ring in der Spanne steht.
+  const ringSpan = ringChainSpan(ropePx);
+  const ringSeen = new Set<string>();
+  const ringQueue: Array<{ c: number; r: number }> = [];
+  const reachRing = (g: { c: number; r: number }): void => {
+    const k = key(g.c, g.r);
+    if (ringSeen.has(k)) return;
+    ringSeen.add(k);
+    ringQueue.push(g);
+  };
+  /** Was ein erreichter Ring segnet: seine Landeflaechen — und die Ringe, die
+   *  von ihm aus in der Kettenspanne liegen. */
+  const visitRing = (g: { c: number; r: number }): void => {
+    for (let dc = -RING_DX; dc <= RING_DX; dc++) {
+      for (let dr = -2; dr <= 6; dr++) {
+        if (jumpPathClear(g.c, g.r, g.c + dc, g.r + dr)) push(g.c + dc, g.r + dr);
+      }
+    }
+    for (const g2 of rings) {
+      const dc = Math.abs(g2.c - g.c);
+      const dr = Math.abs(g2.r - g.r);
+      if (dc < ringSpan.min || dc > ringSpan.max || dr > RING_CHAIN_DR) continue;
+      // der Flugweg zwischen den beiden Ringen muss offen sein — eine Rah
+      // dazwischen ist eine Wand, kein Hindernis, das man umfliegt
+      if (!jumpPathClear(g.c, g.r, g2.c, g2.r)) continue;
+      reachRing(g2);
+    }
+  };
+
   const visit = (n: { c: number; r: number }): void => {
     // walk + step-up + step-down
     for (const dc of [-1, 1]) {
@@ -986,17 +1062,24 @@ export const reachFrom = (
       }
     }
     // rings bridge wide gaps — but only for a child who HOLDS the swing verb
-    // (sim.ts passes ringAt only with the ability; the model must match), and
-    // every landing along an honest L-path from the ring
+    // (sim.ts passes ringAt only with the ability; the model must match).
+    //
+    // L3-M-a · RINGE SIND JETZT KNOTEN. Bis hierher war ein Ring eine Eigenschaft
+    // von Steh-Knoten: „steht das Kind neben einem Ring, segne dessen Umkreis".
+    // Damit ist eine KETTE nicht abbildbar — der zweite Ring einer Kette haengt in
+    // der Luft, weit von jedem Stehplatz, und `push` schiebt ausschliesslich
+    // STEHBARE Zellen in die Warteschlange (`standable`, oben). Eine gelockerte
+    // `push`-Bedingung waere die falsche Reparatur: sie wuerde Luft zu Boden
+    // erklaeren und jedes andere Gesetz mit vergiften.
+    //
+    // Stattdessen gibt es eine ZWEITE Knoten-Art mit eigener Warteschlange
+    // (`ringQueue`): erreichte Ringe. Von hier aus wird sie nur GEFUELLT; geleert
+    // wird sie in der Hauptschleife unten, weil ein Ring wieder Ringe erreicht.
+    // Die Steh-Semantik bleibt damit unberuehrt — das ist der Grund, warum ch01
+    // und ch02 Zelle fuer Zelle dasselbe Ergebnis liefern.
     if (abilities.includes("swing")) {
       for (const g of rings) {
-        if (Math.abs(g.c - n.c) <= RING_DX && Math.abs(g.r - n.r) <= 4) {
-          for (let dc = -RING_DX; dc <= RING_DX; dc++) {
-            for (let dr = -2; dr <= 6; dr++) {
-              if (jumpPathClear(g.c, g.r, g.c + dc, g.r + dr)) push(g.c + dc, g.r + dr);
-            }
-          }
-        }
+        if (Math.abs(g.c - n.c) <= RING_DX && Math.abs(g.r - n.r) <= 4) reachRing(g);
       }
     }
     // L2-M-a · D-812 · LEISTEN — aber nur fuer ein Kind, das den Griff HAT
@@ -1046,10 +1129,16 @@ export const reachFrom = (
   // whose swept path is boardable from a seen node, disembarking the jump
   // envelope from EVERY swept cell; repeat until nothing new unlocks
   for (;;) {
-    while (queue.length > 0) {
+    // L3-M-a: beide Warteschlangen bis zur Erschoepfung. Ein Ring oeffnet
+    // Stehplaetze, ein Stehplatz oeffnet Ringe — also wird abwechselnd geleert,
+    // bis keine von beiden mehr waechst. Ohne einen einzigen `o` im Gitter
+    // bleibt `ringQueue` leer und diese Schleife ist die alte.
+    while (queue.length > 0 || ringQueue.length > 0) {
       const n = queue.shift();
-      if (!n) break;
-      visit(n);
+      if (n) { visit(n); continue; }
+      const g = ringQueue.shift();
+      if (!g) break;
+      visitRing(g);
     }
     let unlocked = false;
     for (const p of platforms) {
@@ -1663,10 +1752,55 @@ export const checkLevelLaws = (level: PaintLevel): LawFailure[] => {
       }
     }
 
-    const reach = reachableCells(ph.rows, level.abilities, ph.entities);
+    const reach = reachableCells(ph.rows, level.abilities, ph.entities, ph.swing?.ropePx);
     const has = (c: number, r: number): boolean => reach.has(`${c},${r}`);
     const nearReachable = (c: number, r: number, dc: number, drUp: number, drDown: number): boolean =>
       nearIn(reach, c, r, dc, drUp, drDown);
+    // ── L3-M-a · DAS GESETZ `ring-chain` (ch03, die Takelage) ────────────────
+    //
+    // Jeder Ring muss WEITERFUEHREN: entweder auf eine stehbare Landeflaeche in
+    // seiner Reichweite, oder auf einen weiteren Ring in Kettenspanne. Ein Ring,
+    // von dem aus es keins von beidem gibt, ist ein TOTER RING — das Kind greift
+    // ihn, schwingt, laesst los und faellt ins Wasser, ohne dass irgendetwas im
+    // Raum gesagt haette, dass dieser Weg keiner ist.
+    //
+    // Warum das ein eigenes Gesetz braucht und `collectible-reachable` nicht
+    // reicht: die bestehenden Gesetze fragen, ob das Kind irgendwo HINkommt.
+    // Dieses fragt, ob es von dort auch wieder WEGkommt — dieselbe Richtung wie
+    // das Fallgruben-Gesetz, nur fuer einen Griff statt fuer einen Stehplatz.
+    //
+    // Die Spanne ist gemessen, nicht geraten: `ringChainSpan`, oben, mit der
+    // Sonden-Tabelle. Nur ERREICHTE Ringe werden geprueft — ein Ring, den das
+    // Kind nie fassen kann, ist eine Sache fuer die Erreichbarkeits-Gesetze.
+    if (level.abilities.includes("swing")) {
+      const chainRope = ph.swing?.ropePx ?? PAINT.swingRopePx;
+      const span = ringChainSpan(chainRope);
+      const ringe: Array<{ c: number; r: number }> = [];
+      for (const [r, row] of ph.rows.entries()) {
+        for (let c = 0; c < row.length; c++) if (row[c] === "o") ringe.push({ c, r });
+      }
+      for (const g of ringe) {
+        const landung = [...reach].some((k) => {
+          const parts = k.split(",").map(Number);
+          const c = parts[0] ?? 0;
+          const r = parts[1] ?? 0;
+          return Math.abs(c - g.c) <= RING_DX && r - g.r >= -2 && r - g.r <= 6 && standable(ph.rows, c, r);
+        });
+        if (landung) continue;
+        const nachbar = ringe.some((g2) => {
+          if (g2.c === g.c && g2.r === g.r) return false;
+          const dc = Math.abs(g2.c - g.c);
+          return dc >= span.min && dc <= span.max && Math.abs(g2.r - g.r) <= RING_CHAIN_DR;
+        });
+        if (nachbar) continue;
+        failures.push({
+          phase: ph.id,
+          law: "ring-chain",
+          detail: `toter Ring (${g.c},${g.r}): keine stehbare Landefläche in Reichweite (±${RING_DX} Spalten, −2…+6 Zeilen) und kein weiterer Ring in Kettenspanne (${span.min}…${span.max} Spalten bei ${chainRope} px Seil, ±${RING_CHAIN_DR} Zeilen) — das Kind greift ihn und kommt nicht weiter`,
+        });
+      }
+    }
+
     const exitCell = findGlyph(ph.rows, "X") ?? findGlyph(ph.rows, "B");
     if (exitCell && !nearReachable(exitCell.c, exitCell.r, 1, 1, 3)) {
       failures.push({ phase: ph.id, law: "exit-reachable", detail: `the exit at (${exitCell.c},${exitCell.r}) cannot be reached` });
@@ -1905,7 +2039,7 @@ export const checkLevelLaws = (level: PaintLevel): LawFailure[] => {
       }
       if (!startCell) continue; // parse already failed on a phase without S
       const sealed = ph.rows.map((row, r) => (r === e.r ? row.slice(0, e.c) + "#" + row.slice(e.c + 1) : row));
-      const before = reachFrom(sealed, level.abilities, startCell, ph.entities);
+      const before = reachFrom(sealed, level.abilities, startCell, ph.entities, ph.swing?.ropePx);
       const affordable = letters.filter((l) => nearIn(before, l.c, l.r, 1, 1, 3)).length;
       if (price > affordable) {
         failures.push({
@@ -1926,7 +2060,7 @@ export const checkLevelLaws = (level: PaintLevel): LawFailure[] => {
     const essentials = ph.entities.filter((e) => e.role === "powerup" && e.params?.essential === true);
     if (essentials.length > 0 && startCell) {
       const entryAbilities = abilitiesEnteringPhase(level, ph.id);
-      const preGrant = reachFrom(ph.rows, entryAbilities, startCell, ph.entities);
+      const preGrant = reachFrom(ph.rows, entryAbilities, startCell, ph.entities, ph.swing?.ropePx);
       for (const e of essentials) {
         if (!nearIn(preGrant, e.c, e.r, 2, 2, 4)) {
           failures.push({
@@ -1940,7 +2074,7 @@ export const checkLevelLaws = (level: PaintLevel): LawFailure[] => {
         const withGrant = [...new Set([...entryAbilities, String(e.params?.grants ?? "")])].filter((a): a is Ability =>
           (["jump", "punch", "hang", "swing", "hover", "run"] as string[]).includes(a),
         );
-        const afterGrant = reachFrom(ph.rows, withGrant, { c: e.c, r: e.r }, ph.entities);
+        const afterGrant = reachFrom(ph.rows, withGrant, { c: e.c, r: e.r }, ph.entities, ph.swing?.ropePx);
         if (!nearIn(afterGrant, exitCell.c, exitCell.r, 1, 1, 3)) {
           failures.push({
             phase: ph.id,
@@ -1969,7 +2103,7 @@ export const checkLevelLaws = (level: PaintLevel): LawFailure[] => {
         // its sub-reach buys nothing (43 sweeps saved across the shipped
         // chapter — this law is O(nodes × BFS) and the basins are wide).
         if (submerged(ph.rows, c, r)) continue;
-        const sub = reachFrom(ph.rows, level.abilities, { c, r }, ph.entities);
+        const sub = reachFrom(ph.rows, level.abilities, { c, r }, ph.entities, ph.swing?.ropePx);
         let exitOk = false;
         for (let dr = -1; dr <= 3 && !exitOk; dr++) {
           for (let d = -1; d <= 1 && !exitOk; d++) {
