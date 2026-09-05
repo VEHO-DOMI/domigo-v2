@@ -1,0 +1,200 @@
+{
+ "schema": "paintChapterPolicy@1",
+ "chapter": "ch05",
+ "unit": "g1-u05",
+ "note": "ENTWURF der Bahn L5-T1 (2026-09-03), Form 1:1 nach ch01.policy.json (L0 · D10). fieldKinds = die Feld-Palette aus doc 41 §1 fuer ch05 (choice · mistake · order · memory; mistake ist das Feld-Debuet des Kapitels). fieldForms = die vier Formen, die dieses Kapitel heute stellen KANN: state-it (can/can't und Possessiv-Aussagen), ask-it (Fragen mit can; die einzige Form, die `order` traegt), pick-correct-form (drei Formen desselben Satzes), name-it (die Notenstaender-Kaefige). fix-it/pair-it kommen mit R247 (L0-Nachtrag) dazu — erst dann sind mistake- und memory-Karten im FELD baubar (D-902); bis dahin liegen ihre Exemplare als Daten in docs/design/g1/paint/ch05-dossiers-v2/pending-tasks.md. nounDe traegt heute nur den Kaefig-Insassen, den die Familie `kaefig-nennt-den-insassen` verlangt (L0 · N5: Kapitel-Nomen stehen HIER, nicht in scripts/). vocabLedger ist mit ABLAUFDATUM gefuellt; der Sitz L5-Fix (2026-09-05) hat die SECHS Eintraege keyboard-player, singer, drummer, saxophone-player, saxophone und guitarist wieder ENTFERNT, weil die sechs neuen Karten dieser Woerter sie jetzt beantworten — Gesetz 17c macht eine Ausnahme, die eine Karte einloest, zum Fehler (»a stale exemption hides the next gap«). Der Rest bleibt, damit das Kapitel nach dem Merge nicht 38 Zeilen rot ist — die Welle T2 loescht jeden Eintrag, den sie beantwortet (Gesetz 17c erzwingt es). families bleibt leer: die Ausnahme, die Veits sechs Wiedererweckungs-Runden brauchen (Gesetz 14c, Vorbild ch01s Familie `merle-ceremony`), gehoert der Bahn, die diese sechs Karten schreibt.",
+ "fieldKinds": [
+  "choice",
+  "mistake",
+  "order",
+  "memory"
+ ],
+ "fieldForms": [
+  "state-it",
+  "ask-it",
+  "pick-correct-form",
+  "name-it"
+ ],
+ "arenaPromiseClass": "g1u05.x.instruments",
+ "lexiconClasses": {
+  "g1u05.x.instruments": {
+   "reason": "Die Unit lehrt vier Instrumente (MORE! 1 Unit 5, SB S. 38 »Musicians and instruments«), und die Arena verspricht sie — aber keines ist eine KLASSE im Korpus, sondern vier getrennte Wortbank-Eintraege. Als Klasse deklariert, damit das Arena-Versprechen (arenaPromiseClass) pruefbar wird: die vier Fenster eines sauberen Kampfes muessen mindestens einmal ein Instrument verlangen. Jedes Wort hier wird von Gesetz 0j gegen docs/design/g1/grounding/u05-lexicon.json geprueft.",
+   "words": [
+    "keyboard",
+    "drums",
+    "saxophone",
+    "guitar"
+   ]
+  }
+ },
+ "families": [],
+ "vocabLedger": {
+  "g1u05.w.boyfriend": {
+   "cards": "exempt",
+   "reason": "Wirbelsaeulen-Wort des Kapitels (Musiker · Instrumente · can/Possessive · Koerperverben). Dieses Set ist das KALIBRIERSTUECK mit zehn Karten; die Welle T2 vergibt die uebrigen ~60 und gibt diesem Wort seine Karte. Der Eintrag ist dann nach Gesetz 17c zu LOESCHEN — eine stehengebliebene Ausnahme verdeckt die naechste Luecke.",
+   "until": "2026-10-31"
+  },
+  "g1u05.w.its": {
+   "cards": "exempt",
+   "reason": "Wirbelsaeulen-Wort des Kapitels (Musiker · Instrumente · can/Possessive · Koerperverben). Dieses Set ist das KALIBRIERSTUECK mit zehn Karten; die Welle T2 vergibt die uebrigen ~60 und gibt diesem Wort seine Karte. Der Eintrag ist dann nach Gesetz 17c zu LOESCHEN — eine stehengebliebene Ausnahme verdeckt die naechste Luecke.",
+   "until": "2026-10-31"
+  },
+  "g1u05.w.sister": {
+   "cards": "exempt",
+   "reason": "Wirbelsaeulen-Wort des Kapitels (Musiker · Instrumente · can/Possessive · Koerperverben). Dieses Set ist das KALIBRIERSTUECK mit zehn Karten; die Welle T2 vergibt die uebrigen ~60 und gibt diesem Wort seine Karte. Der Eintrag ist dann nach Gesetz 17c zu LOESCHEN — eine stehengebliebene Ausnahme verdeckt die naechste Luecke.",
+   "until": "2026-10-31"
+  },
+  "g1u05.w.can-cannot-can-t": {
+   "cards": "exempt",
+   "reason": "Wirbelsaeulen-Wort des Kapitels (Musiker · Instrumente · can/Possessive · Koerperverben). Dieses Set ist das KALIBRIERSTUECK mit zehn Karten; die Welle T2 vergibt die uebrigen ~60 und gibt diesem Wort seine Karte. Der Eintrag ist dann nach Gesetz 17c zu LOESCHEN — eine stehengebliebene Ausnahme verdeckt die naechste Luecke.",
+   "until": "2026-10-31"
+  },
+  "g1u05.w.concert": {
+   "cards": "exempt",
+   "reason": "Wirbelsaeulen-Wort des Kapitels (Musiker · Instrumente · can/Possessive · Koerperverben). Dieses Set ist das KALIBRIERSTUECK mit zehn Karten; die Welle T2 vergibt die uebrigen ~60 und gibt diesem Wort seine Karte. Der Eintrag ist dann nach Gesetz 17c zu LOESCHEN — eine stehengebliebene Ausnahme verdeckt die naechste Luecke.",
+   "until": "2026-10-31"
+  },
+  "g1u05.w.don-t-worry": {
+   "cards": "exempt",
+   "reason": "Sprechformel der Unit. Die Form `social-formula` steht heute NICHT in ch05s fieldForms, also ist diese Vokabel im Feld nicht stellbar (Gesetz 13b). ⚠ Die Parade-Begegnung der Blaupause (»Can you keep up? — Don't worry!«) braucht sie: entweder waechst fieldForms um `social-formula`, oder die Begegnung faellt. Antrag an den Level-Architekten, im Report der Bahn L5-T1 benannt.",
+   "until": "2026-10-31"
+  },
+  "g1u05.w.job": {
+   "cards": "exempt",
+   "reason": "Kein Anker in der WELT dieses Kapitels: ch05 ist ein Konzert. Die CLIL-Seiten der Unit handeln von Schulkantine, Geld, Gewinn und Krankenhaus — dafuer steht in den fuenf Raeumen nichts, was ein Kind sehen koennte, und eine Karte ueber ein Ding, das nirgends steht, ist genau die Klasse Fehler, die doc 45 §4b aufgelistet hat. Level-Design-Schuld, keine Karten-Schuld.",
+   "until": "2026-10-31"
+  },
+  "g1u05.w.perfect": {
+   "cards": "exempt",
+   "reason": "Kein Anker in der WELT dieses Kapitels: ch05 ist ein Konzert. Die CLIL-Seiten der Unit handeln von Schulkantine, Geld, Gewinn und Krankenhaus — dafuer steht in den fuenf Raeumen nichts, was ein Kind sehen koennte, und eine Karte ueber ein Ding, das nirgends steht, ist genau die Klasse Fehler, die doc 45 §4b aufgelistet hat. Level-Design-Schuld, keine Karten-Schuld.",
+   "until": "2026-10-31"
+  },
+  "g1u05.w.to-carry": {
+   "cards": "exempt",
+   "reason": "Wirbelsaeulen-Wort des Kapitels (Musiker · Instrumente · can/Possessive · Koerperverben). Dieses Set ist das KALIBRIERSTUECK mit zehn Karten; die Welle T2 vergibt die uebrigen ~60 und gibt diesem Wort seine Karte. Der Eintrag ist dann nach Gesetz 17c zu LOESCHEN — eine stehengebliebene Ausnahme verdeckt die naechste Luecke.",
+   "until": "2026-10-31"
+  },
+  "g1u05.w.to-stand-on": {
+   "cards": "exempt",
+   "reason": "Wirbelsaeulen-Wort des Kapitels (Musiker · Instrumente · can/Possessive · Koerperverben). Dieses Set ist das KALIBRIERSTUECK mit zehn Karten; die Welle T2 vergibt die uebrigen ~60 und gibt diesem Wort seine Karte. Der Eintrag ist dann nach Gesetz 17c zu LOESCHEN — eine stehengebliebene Ausnahme verdeckt die naechste Luecke.",
+   "until": "2026-10-31"
+  },
+  "g1u05.w.tongue": {
+   "cards": "exempt",
+   "reason": "Wirbelsaeulen-Wort des Kapitels (Musiker · Instrumente · can/Possessive · Koerperverben). Dieses Set ist das KALIBRIERSTUECK mit zehn Karten; die Welle T2 vergibt die uebrigen ~60 und gibt diesem Wort seine Karte. Der Eintrag ist dann nach Gesetz 17c zu LOESCHEN — eine stehengebliebene Ausnahme verdeckt die naechste Luecke.",
+   "until": "2026-10-31"
+  },
+  "g1u05.w.to-touch": {
+   "cards": "exempt",
+   "reason": "Wirbelsaeulen-Wort des Kapitels (Musiker · Instrumente · can/Possessive · Koerperverben). Dieses Set ist das KALIBRIERSTUECK mit zehn Karten; die Welle T2 vergibt die uebrigen ~60 und gibt diesem Wort seine Karte. Der Eintrag ist dann nach Gesetz 17c zu LOESCHEN — eine stehengebliebene Ausnahme verdeckt die naechste Luecke.",
+   "until": "2026-10-31"
+  },
+  "g1u05.w.to-walk-on": {
+   "cards": "exempt",
+   "reason": "Wirbelsaeulen-Wort des Kapitels (Musiker · Instrumente · can/Possessive · Koerperverben). Dieses Set ist das KALIBRIERSTUECK mit zehn Karten; die Welle T2 vergibt die uebrigen ~60 und gibt diesem Wort seine Karte. Der Eintrag ist dann nach Gesetz 17c zu LOESCHEN — eine stehengebliebene Ausnahme verdeckt die naechste Luecke.",
+   "until": "2026-10-31"
+  },
+  "g1u05.w.can": {
+   "cards": "exempt",
+   "reason": "Kein Anker in der WELT dieses Kapitels: ch05 ist ein Konzert. Die CLIL-Seiten der Unit handeln von Schulkantine, Geld, Gewinn und Krankenhaus — dafuer steht in den fuenf Raeumen nichts, was ein Kind sehen koennte, und eine Karte ueber ein Ding, das nirgends steht, ist genau die Klasse Fehler, die doc 45 §4b aufgelistet hat. Level-Design-Schuld, keine Karten-Schuld.",
+   "until": "2026-10-31"
+  },
+  "g1u05.w.to-drink": {
+   "cards": "exempt",
+   "reason": "Kein Anker in der WELT dieses Kapitels: ch05 ist ein Konzert. Die CLIL-Seiten der Unit handeln von Schulkantine, Geld, Gewinn und Krankenhaus — dafuer steht in den fuenf Raeumen nichts, was ein Kind sehen koennte, und eine Karte ueber ein Ding, das nirgends steht, ist genau die Klasse Fehler, die doc 45 §4b aufgelistet hat. Level-Design-Schuld, keine Karten-Schuld.",
+   "until": "2026-10-31"
+  },
+  "g1u05.w.hundred": {
+   "cards": "exempt",
+   "reason": "Kein Anker in der WELT dieses Kapitels: ch05 ist ein Konzert. Die CLIL-Seiten der Unit handeln von Schulkantine, Geld, Gewinn und Krankenhaus — dafuer steht in den fuenf Raeumen nichts, was ein Kind sehen koennte, und eine Karte ueber ein Ding, das nirgends steht, ist genau die Klasse Fehler, die doc 45 §4b aufgelistet hat. Level-Design-Schuld, keine Karten-Schuld.",
+   "until": "2026-10-31"
+  },
+  "g1u05.w.in-one-go": {
+   "cards": "exempt",
+   "reason": "Kein Anker in der WELT dieses Kapitels: ch05 ist ein Konzert. Die CLIL-Seiten der Unit handeln von Schulkantine, Geld, Gewinn und Krankenhaus — dafuer steht in den fuenf Raeumen nichts, was ein Kind sehen koennte, und eine Karte ueber ein Ding, das nirgends steht, ist genau die Klasse Fehler, die doc 45 §4b aufgelistet hat. Level-Design-Schuld, keine Karten-Schuld.",
+   "until": "2026-10-31"
+  },
+  "g1u05.w.is-that-so": {
+   "cards": "exempt",
+   "reason": "Sprechformel der Unit. Die Form `social-formula` steht heute NICHT in ch05s fieldForms, also ist diese Vokabel im Feld nicht stellbar (Gesetz 13b). ⚠ Die Parade-Begegnung der Blaupause (»Can you keep up? — Don't worry!«) braucht sie: entweder waechst fieldForms um `social-formula`, oder die Begegnung faellt. Antrag an den Level-Architekten, im Report der Bahn L5-T1 benannt.",
+   "until": "2026-10-31"
+  },
+  "g1u05.w.this-is-me": {
+   "cards": "exempt",
+   "reason": "Sprechformel der Unit. Die Form `social-formula` steht heute NICHT in ch05s fieldForms, also ist diese Vokabel im Feld nicht stellbar (Gesetz 13b). ⚠ Die Parade-Begegnung der Blaupause (»Can you keep up? — Don't worry!«) braucht sie: entweder waechst fieldForms um `social-formula`, oder die Begegnung faellt. Antrag an den Level-Architekten, im Report der Bahn L5-T1 benannt.",
+   "until": "2026-10-31"
+  },
+  "g1u05.w.economy": {
+   "cards": "exempt",
+   "reason": "Kein Anker in der WELT dieses Kapitels: ch05 ist ein Konzert. Die CLIL-Seiten der Unit handeln von Schulkantine, Geld, Gewinn und Krankenhaus — dafuer steht in den fuenf Raeumen nichts, was ein Kind sehen koennte, und eine Karte ueber ein Ding, das nirgends steht, ist genau die Klasse Fehler, die doc 45 §4b aufgelistet hat. Level-Design-Schuld, keine Karten-Schuld.",
+   "until": "2026-10-31"
+  },
+  "g1u05.w.hospital": {
+   "cards": "exempt",
+   "reason": "Kein Anker in der WELT dieses Kapitels: ch05 ist ein Konzert. Die CLIL-Seiten der Unit handeln von Schulkantine, Geld, Gewinn und Krankenhaus — dafuer steht in den fuenf Raeumen nichts, was ein Kind sehen koennte, und eine Karte ueber ein Ding, das nirgends steht, ist genau die Klasse Fehler, die doc 45 §4b aufgelistet hat. Level-Design-Schuld, keine Karten-Schuld.",
+   "until": "2026-10-31"
+  },
+  "g1u05.w.to-laugh": {
+   "cards": "exempt",
+   "reason": "Kein Anker in der WELT dieses Kapitels: ch05 ist ein Konzert. Die CLIL-Seiten der Unit handeln von Schulkantine, Geld, Gewinn und Krankenhaus — dafuer steht in den fuenf Raeumen nichts, was ein Kind sehen koennte, und eine Karte ueber ein Ding, das nirgends steht, ist genau die Klasse Fehler, die doc 45 §4b aufgelistet hat. Level-Design-Schuld, keine Karten-Schuld.",
+   "until": "2026-10-31"
+  },
+  "g1u05.w.money": {
+   "cards": "exempt",
+   "reason": "Kein Anker in der WELT dieses Kapitels: ch05 ist ein Konzert. Die CLIL-Seiten der Unit handeln von Schulkantine, Geld, Gewinn und Krankenhaus — dafuer steht in den fuenf Raeumen nichts, was ein Kind sehen koennte, und eine Karte ueber ein Ding, das nirgends steht, ist genau die Klasse Fehler, die doc 45 §4b aufgelistet hat. Level-Design-Schuld, keine Karten-Schuld.",
+   "until": "2026-10-31"
+  },
+  "g1u05.w.pound": {
+   "cards": "exempt",
+   "reason": "Kein Anker in der WELT dieses Kapitels: ch05 ist ein Konzert. Die CLIL-Seiten der Unit handeln von Schulkantine, Geld, Gewinn und Krankenhaus — dafuer steht in den fuenf Raeumen nichts, was ein Kind sehen koennte, und eine Karte ueber ein Ding, das nirgends steht, ist genau die Klasse Fehler, die doc 45 §4b aufgelistet hat. Level-Design-Schuld, keine Karten-Schuld.",
+   "until": "2026-10-31"
+  },
+  "g1u05.w.profit": {
+   "cards": "exempt",
+   "reason": "Kein Anker in der WELT dieses Kapitels: ch05 ist ein Konzert. Die CLIL-Seiten der Unit handeln von Schulkantine, Geld, Gewinn und Krankenhaus — dafuer steht in den fuenf Raeumen nichts, was ein Kind sehen koennte, und eine Karte ueber ein Ding, das nirgends steht, ist genau die Klasse Fehler, die doc 45 §4b aufgelistet hat. Level-Design-Schuld, keine Karten-Schuld.",
+   "until": "2026-10-31"
+  },
+  "g1u05.w.school-canteen": {
+   "cards": "exempt",
+   "reason": "Kein Anker in der WELT dieses Kapitels: ch05 ist ein Konzert. Die CLIL-Seiten der Unit handeln von Schulkantine, Geld, Gewinn und Krankenhaus — dafuer steht in den fuenf Raeumen nichts, was ein Kind sehen koennte, und eine Karte ueber ein Ding, das nirgends steht, ist genau die Klasse Fehler, die doc 45 §4b aufgelistet hat. Level-Design-Schuld, keine Karten-Schuld.",
+   "until": "2026-10-31"
+  },
+  "g1u05.w.table": {
+   "cards": "exempt",
+   "reason": "Kein Anker in der WELT dieses Kapitels: ch05 ist ein Konzert. Die CLIL-Seiten der Unit handeln von Schulkantine, Geld, Gewinn und Krankenhaus — dafuer steht in den fuenf Raeumen nichts, was ein Kind sehen koennte, und eine Karte ueber ein Ding, das nirgends steht, ist genau die Klasse Fehler, die doc 45 §4b aufgelistet hat. Level-Design-Schuld, keine Karten-Schuld.",
+   "until": "2026-10-31"
+  },
+  "g1u05.w.teacher": {
+   "cards": "exempt",
+   "reason": "Kein Anker in der WELT dieses Kapitels: ch05 ist ein Konzert. Die CLIL-Seiten der Unit handeln von Schulkantine, Geld, Gewinn und Krankenhaus — dafuer steht in den fuenf Raeumen nichts, was ein Kind sehen koennte, und eine Karte ueber ein Ding, das nirgends steht, ist genau die Klasse Fehler, die doc 45 §4b aufgelistet hat. Level-Design-Schuld, keine Karten-Schuld.",
+   "until": "2026-10-31"
+  },
+  "g1u05.w.uncle": {
+   "cards": "exempt",
+   "reason": "Kein Anker in der WELT dieses Kapitels: ch05 ist ein Konzert. Die CLIL-Seiten der Unit handeln von Schulkantine, Geld, Gewinn und Krankenhaus — dafuer steht in den fuenf Raeumen nichts, was ein Kind sehen koennte, und eine Karte ueber ein Ding, das nirgends steht, ist genau die Klasse Fehler, die doc 45 §4b aufgelistet hat. Level-Design-Schuld, keine Karten-Schuld.",
+   "until": "2026-10-31"
+  },
+  "g1u05.w.to-wash": {
+   "cards": "exempt",
+   "reason": "Kein Anker in der WELT dieses Kapitels: ch05 ist ein Konzert. Die CLIL-Seiten der Unit handeln von Schulkantine, Geld, Gewinn und Krankenhaus — dafuer steht in den fuenf Raeumen nichts, was ein Kind sehen koennte, und eine Karte ueber ein Ding, das nirgends steht, ist genau die Klasse Fehler, die doc 45 §4b aufgelistet hat. Level-Design-Schuld, keine Karten-Schuld.",
+   "until": "2026-10-31"
+  },
+  "g1u05.w.nothing": {
+   "cards": "exempt",
+   "reason": "Kein Anker in der WELT dieses Kapitels: ch05 ist ein Konzert. Die CLIL-Seiten der Unit handeln von Schulkantine, Geld, Gewinn und Krankenhaus — dafuer steht in den fuenf Raeumen nichts, was ein Kind sehen koennte, und eine Karte ueber ein Ding, das nirgends steht, ist genau die Klasse Fehler, die doc 45 §4b aufgelistet hat. Level-Design-Schuld, keine Karten-Schuld.",
+   "until": "2026-10-31"
+  },
+  "g1u05.w.sorry": {
+   "cards": "exempt",
+   "reason": "Sprechformel der Unit. Die Form `social-formula` steht heute NICHT in ch05s fieldForms, also ist diese Vokabel im Feld nicht stellbar (Gesetz 13b). ⚠ Die Parade-Begegnung der Blaupause (»Can you keep up? — Don't worry!«) braucht sie: entweder waechst fieldForms um `social-formula`, oder die Begegnung faellt. Antrag an den Level-Architekten, im Report der Bahn L5-T1 benannt.",
+   "until": "2026-10-31"
+  }
+ },
+ "nounDe": {
+  "reason": "L0 · N5 · Die deutschen Nomen der Wesen dieses Kapitels stehen HIER (Kapitel-Inhalt), nicht in scripts/game-tasks-giveaway-policy.json — sonst haetten fuenf T-Bahnen gleichzeitig in eine Motor-Datei schreiben muessen. Gebraucht wird der Block von der Familie `kaefig-nennt-den-insassen` (match: use=rescue, form=state-it): sie gibt der deutschen Zeile frei, den Insassen zu NENNEN, und kauft dafuer die Pflicht, dass die Zeile ihn auch wirklich nennt.",
+  "captivesReason": "Die Kaefig-Karten teilen sich EINEN Skin (`notenstaender` — das Portrait ist der Kaefig, nie der Insasse; Veit sitzt im `kontrabasskoffer`), also kann das Nomen nicht am Skin haengen, sondern an der Karte. Ein Ding, ein Wort — quer ueber Lehr-, Rettungs- und Befreiungs-Karte (die Falle, die ch01 bezahlt hat: die Lehr-Karte sagte »die Musikanlage«, die Rettungs-Karte zehn Sekunden spaeter »ein Lautsprecher«).",
+  "captives": {
+   "awk.veit.r1": "Veit"
+  }
+ }
+}

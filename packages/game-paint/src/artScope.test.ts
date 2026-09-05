@@ -267,9 +267,19 @@ describe("L0 · D6 · domArtStems(ch01) ist dieselbe Menge wie vor der Level-Wel
     expect(ch01).toBeDefined();
   });
 
-  it("beansprucht exakt die Stems von vorher — kein Blatt dazu, keines weg", () => {
+  // L0d · R263 · DER PREIS DIESER BAHN IST ZWEI BLAETTER, UND SIE HEISSEN SO:
+  // `hero2_crouch` und `hero2_jump2` wurden seit R5-F4 GEZEICHNET
+  // (`rigSpec.heroFullCell` gibt sie zurueck) und standen nicht im Manifest —
+  // also forderte sie kein Tor und beanspruchte sie niemand. L0d traegt sie ein.
+  // Der L0-Schnappschuss bleibt unangetastet: er ist die Grundlinie, gegen die
+  // sich jede spaetere Bahn erklaeren muss. Ein Blatt mehr als diese zwei laesst
+  // den Test weiterhin fallen — die Ratsche haelt, sie hat nur eine benannte
+  // Stufe bekommen.
+  const DOM_STEMS_NACH_L0D = [...DOM_STEMS_CH01_VOR_L0, "hero2_crouch", "hero2_jump2"].sort();
+
+  it("beansprucht die Stems von vorher plus genau die zwei nachgetragenen Helden-Zellen", () => {
     const now = [...domArtStems(ch01!.level)].sort();
-    expect(now).toEqual([...DOM_STEMS_CH01_VOR_L0]);
+    expect(now).toEqual(DOM_STEMS_NACH_L0D);
   });
 
   it("und die fünf ausgezogenen Platten kommen wirklich aus dem LEVEL", () => {

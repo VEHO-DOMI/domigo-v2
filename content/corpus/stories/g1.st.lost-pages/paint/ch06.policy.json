@@ -1,0 +1,312 @@
+{
+  "schema": "paintChapterPolicy@1",
+  "chapter": "ch06",
+  "unit": "g1-u06",
+  "note": "ENTWURF der Kapitel-Politik ch06, gelegt von L6-T1 zusammen mit den elf Exemplar-Karten. fieldKinds nennt die volle Palette minus typed (doc 41 §1); match/sort/slider sind ABSICHTLICH deklariert, obwohl die Maschinen noch fehlen (game-tasks.ts: deferred) — die Politik sagt, was das Kapitel fragen DARF, das Schema, was es heute KANN. Gemessen: eine noch unbekannte Art in fieldKinds stoert das Tor nicht (palette.has(kind) fragt nur nach).",
+  "fieldKinds": [
+    "choice",
+    "wheel",
+    "oddone",
+    "order",
+    "mistake",
+    "memory",
+    "spell",
+    "match",
+    "sort",
+    "slider"
+  ],
+  "fieldForms": [
+    "name-it",
+    "state-it",
+    "pick-correct-form",
+    "command",
+    "social-formula",
+    "ask-it",
+    "count-it",
+    "number-transcode",
+    "belongs-or-not",
+    "fix-it",
+    "pair-it"
+  ],
+  "arenaPromiseClass": "g1u06.x.present-simple-verbs",
+  "lexiconClasses": {
+    "g1u06.x.numbers": {
+      "reason": "Die Hausnummern der Markt-Gassen werden gedreht, nie getippt (SB S. 48: 'He lives at 221B Baker Street'). Die Zahlwoerter selbst lehrt Unit 1; das Kapitel-Lexikon ist kumulativ, jedes Wort steht in u06-lexicon.json (Gesetz 0j).",
+      "words": [
+        "one",
+        "two",
+        "three",
+        "four",
+        "five",
+        "six",
+        "seven",
+        "eight",
+        "nine",
+        "ten",
+        "eleven",
+        "twelve",
+        "thirteen",
+        "fourteen",
+        "fifteen",
+        "sixteen",
+        "seventeen",
+        "eighteen",
+        "nineteen",
+        "twenty"
+      ]
+    },
+    "g1u06.x.beweisstuecke": {
+      "reason": "Die Insassen der vier Beweis-Glaeser (Kokis Arbeitsstand, G1s Level: umbrella p1, pipe p2, violin p3, necklace p4). Alle vier sind Buchtext der Unit 6 (WB S. 50 umbrella; SB S. 48 pipe, violin; SB S. 49 necklace) und stehen deshalb im Unit-Lexikon, aber in keiner Wortbank-Zeile.",
+      "words": [
+        "umbrella",
+        "pipe",
+        "violin",
+        "necklace"
+      ]
+    },
+    "g1u06.x.present-simple-verbs": {
+      "reason": "Die er/sie/es-Formen, die die Arena einloest: das Notizbuch schreibt falsche Saetze im present simple, das Kind stellt sie richtig (SB S. 50 'Achtung': go-goes, carry-carries, watch-watches, catch-catches).",
+      "words": [
+        "goes",
+        "watches",
+        "catches",
+        "carries",
+        "runs",
+        "looks",
+        "leaves",
+        "sits"
+      ]
+    }
+  },
+  "families": [],
+  "vocabLedger": {
+    "g1u06.w.city": {
+      "cards": "exempt",
+      "reason": "Das Kalibrier-Set stellt eine Karte je Maschine, nicht je Vokabel — \"city\" hat in diesen elf Karten keinen Platz. L6-T2 schreibt die Karte dieser Vokabel.",
+      "until": "2026-12-31"
+    },
+    "g1u06.w.market": {
+      "cards": "exempt",
+      "reason": "Das Kalibrier-Set stellt eine Karte je Maschine, nicht je Vokabel — \"market\" hat in diesen elf Karten keinen Platz. L6-T2 schreibt die Karte dieser Vokabel.",
+      "until": "2026-12-31"
+    },
+    "g1u06.w.supermarket": {
+      "cards": "exempt",
+      "reason": "Das Kalibrier-Set stellt eine Karte je Maschine, nicht je Vokabel — \"supermarket\" hat in diesen elf Karten keinen Platz. L6-T2 schreibt die Karte dieser Vokabel.",
+      "until": "2026-12-31"
+    },
+    "g1u06.w.river": {
+      "cards": "offered",
+      "reason": "Steht als Wort auf einer Karten-Oberflaeche dieses Exemplar-Sets (\"river\"): das Kind LIEST es, muss es aber noch nicht selbst produzieren. L6-T2 schreibt die Karte dieser Vokabel.",
+      "until": "2026-12-31"
+    },
+    "g1u06.w.woods": {
+      "cards": "exempt",
+      "reason": "Das Kalibrier-Set stellt eine Karte je Maschine, nicht je Vokabel — \"woods\" hat in diesen elf Karten keinen Platz. L6-T2 schreibt die Karte dieser Vokabel.",
+      "until": "2026-12-31"
+    },
+    "g1u06.w.tree": {
+      "cards": "offered",
+      "reason": "Steht als Wort auf einer Karten-Oberflaeche dieses Exemplar-Sets (\"tree\"): das Kind LIEST es, muss es aber noch nicht selbst produzieren. L6-T2 schreibt die Karte dieser Vokabel.",
+      "until": "2026-12-31"
+    },
+    "g1u06.w.to-jump-into-the-river": {
+      "cards": "exempt",
+      "reason": "Das Kalibrier-Set stellt eine Karte je Maschine, nicht je Vokabel — \"to jump into the river\" hat in diesen elf Karten keinen Platz. L6-T2 schreibt die Karte dieser Vokabel.",
+      "until": "2026-12-31"
+    },
+    "g1u06.w.to-look-out-the-window": {
+      "cards": "exempt",
+      "reason": "Das Kalibrier-Set stellt eine Karte je Maschine, nicht je Vokabel — \"to look out the window\" hat in diesen elf Karten keinen Platz. L6-T2 schreibt die Karte dieser Vokabel.",
+      "until": "2026-12-31"
+    },
+    "g1u06.w.to-pick-something-up": {
+      "cards": "exempt",
+      "reason": "Das Kalibrier-Set stellt eine Karte je Maschine, nicht je Vokabel — \"to pick something up\" hat in diesen elf Karten keinen Platz. L6-T2 schreibt die Karte dieser Vokabel.",
+      "until": "2026-12-31"
+    },
+    "g1u06.w.to-sit-in-a-tree": {
+      "cards": "exempt",
+      "reason": "Das Kalibrier-Set stellt eine Karte je Maschine, nicht je Vokabel — \"to sit in a tree\" hat in diesen elf Karten keinen Platz. L6-T2 schreibt die Karte dieser Vokabel.",
+      "until": "2026-12-31"
+    },
+    "g1u06.w.to-fall-out-of-the-tree": {
+      "cards": "exempt",
+      "reason": "Das Kalibrier-Set stellt eine Karte je Maschine, nicht je Vokabel — \"to fall out of the tree\" hat in diesen elf Karten keinen Platz. L6-T2 schreibt die Karte dieser Vokabel.",
+      "until": "2026-12-31"
+    },
+    "g1u06.w.to-bump-into-a-tree": {
+      "cards": "exempt",
+      "reason": "Das Kalibrier-Set stellt eine Karte je Maschine, nicht je Vokabel — \"to bump into a tree\" hat in diesen elf Karten keinen Platz. L6-T2 schreibt die Karte dieser Vokabel.",
+      "until": "2026-12-31"
+    },
+    "g1u06.w.to-go-to-the-park": {
+      "cards": "exempt",
+      "reason": "Das Kalibrier-Set stellt eine Karte je Maschine, nicht je Vokabel — \"to go to the park\" hat in diesen elf Karten keinen Platz. L6-T2 schreibt die Karte dieser Vokabel.",
+      "until": "2026-12-31"
+    },
+    "g1u06.w.to-pull": {
+      "cards": "exempt",
+      "reason": "Das Kalibrier-Set stellt eine Karte je Maschine, nicht je Vokabel — \"to pull\" hat in diesen elf Karten keinen Platz. L6-T2 schreibt die Karte dieser Vokabel.",
+      "until": "2026-12-31"
+    },
+    "g1u06.w.to-climb-up-a-tree": {
+      "cards": "exempt",
+      "reason": "Das Kalibrier-Set stellt eine Karte je Maschine, nicht je Vokabel — \"to climb up a tree\" hat in diesen elf Karten keinen Platz. L6-T2 schreibt die Karte dieser Vokabel.",
+      "until": "2026-12-31"
+    },
+    "g1u06.w.to-leave-the-office": {
+      "cards": "exempt",
+      "reason": "Das Kalibrier-Set stellt eine Karte je Maschine, nicht je Vokabel — \"to leave the office\" hat in diesen elf Karten keinen Platz. L6-T2 schreibt die Karte dieser Vokabel.",
+      "until": "2026-12-31"
+    },
+    "g1u06.w.to-look-in-the-mirror": {
+      "cards": "exempt",
+      "reason": "Das Kalibrier-Set stellt eine Karte je Maschine, nicht je Vokabel — \"to look in the mirror\" hat in diesen elf Karten keinen Platz. L6-T2 schreibt die Karte dieser Vokabel.",
+      "until": "2026-12-31"
+    },
+    "g1u06.w.to-climb": {
+      "cards": "exempt",
+      "reason": "Das Kalibrier-Set stellt eine Karte je Maschine, nicht je Vokabel — \"to climb\" hat in diesen elf Karten keinen Platz. L6-T2 schreibt die Karte dieser Vokabel.",
+      "until": "2026-12-31"
+    },
+    "g1u06.w.to-jump": {
+      "cards": "exempt",
+      "reason": "Das Kalibrier-Set stellt eine Karte je Maschine, nicht je Vokabel — \"to jump\" hat in diesen elf Karten keinen Platz. L6-T2 schreibt die Karte dieser Vokabel.",
+      "until": "2026-12-31"
+    },
+    "g1u06.w.to-leave": {
+      "cards": "exempt",
+      "reason": "Das Kalibrier-Set stellt eine Karte je Maschine, nicht je Vokabel — \"to leave\" hat in diesen elf Karten keinen Platz. L6-T2 schreibt die Karte dieser Vokabel.",
+      "until": "2026-12-31"
+    },
+    "g1u06.w.mirror": {
+      "cards": "offered",
+      "reason": "Steht als Wort auf einer Karten-Oberflaeche dieses Exemplar-Sets (\"mirror\"): das Kind LIEST es, muss es aber noch nicht selbst produzieren. L6-T2 schreibt die Karte dieser Vokabel.",
+      "until": "2026-12-31"
+    },
+    "g1u06.w.to-put-on": {
+      "cards": "exempt",
+      "reason": "Das Kalibrier-Set stellt eine Karte je Maschine, nicht je Vokabel — \"to put on\" hat in diesen elf Karten keinen Platz. L6-T2 schreibt die Karte dieser Vokabel.",
+      "until": "2026-12-31"
+    },
+    "g1u06.w.away": {
+      "cards": "exempt",
+      "reason": "Das Kalibrier-Set stellt eine Karte je Maschine, nicht je Vokabel — \"away\" hat in diesen elf Karten keinen Platz. L6-T2 schreibt die Karte dieser Vokabel.",
+      "until": "2026-12-31"
+    },
+    "g1u06.w.best": {
+      "cards": "exempt",
+      "reason": "Das Kalibrier-Set stellt eine Karte je Maschine, nicht je Vokabel — \"(world's) best\" hat in diesen elf Karten keinen Platz. L6-T2 schreibt die Karte dieser Vokabel.",
+      "until": "2026-12-31"
+    },
+    "g1u06.w.detective": {
+      "cards": "exempt",
+      "reason": "Das Kalibrier-Set stellt eine Karte je Maschine, nicht je Vokabel — \"detective\" hat in diesen elf Karten keinen Platz. L6-T2 schreibt die Karte dieser Vokabel.",
+      "until": "2026-12-31"
+    },
+    "g1u06.w.help-me": {
+      "cards": "offered",
+      "reason": "Steht als Wort auf einer Karten-Oberflaeche dieses Exemplar-Sets (\"Help me!\"): das Kind LIEST es, muss es aber noch nicht selbst produzieren. L6-T2 schreibt die Karte dieser Vokabel.",
+      "until": "2026-12-31"
+    },
+    "g1u06.w.to-run": {
+      "cards": "offered",
+      "reason": "Steht als Wort auf einer Karten-Oberflaeche dieses Exemplar-Sets (\"to run\"): das Kind LIEST es, muss es aber noch nicht selbst produzieren. L6-T2 schreibt die Karte dieser Vokabel.",
+      "until": "2026-12-31"
+    },
+    "g1u06.w.to-find": {
+      "cards": "exempt",
+      "reason": "Das Kalibrier-Set stellt eine Karte je Maschine, nicht je Vokabel — \"to find\" hat in diesen elf Karten keinen Platz. L6-T2 schreibt die Karte dieser Vokabel.",
+      "until": "2026-12-31"
+    },
+    "g1u06.w.to-pull-2": {
+      "cards": "exempt",
+      "reason": "Das Kalibrier-Set stellt eine Karte je Maschine, nicht je Vokabel — \"to pull\" hat in diesen elf Karten keinen Platz. L6-T2 schreibt die Karte dieser Vokabel.",
+      "until": "2026-12-31"
+    },
+    "g1u06.w.to-catch": {
+      "cards": "offered",
+      "reason": "Steht als Wort auf einer Karten-Oberflaeche dieses Exemplar-Sets (\"to catch\"): das Kind LIEST es, muss es aber noch nicht selbst produzieren. L6-T2 schreibt die Karte dieser Vokabel.",
+      "until": "2026-12-31"
+    },
+    "g1u06.w.clever": {
+      "cards": "exempt",
+      "reason": "Das Kalibrier-Set stellt eine Karte je Maschine, nicht je Vokabel — \"clever\" hat in diesen elf Karten keinen Platz. L6-T2 schreibt die Karte dieser Vokabel.",
+      "until": "2026-12-31"
+    },
+    "g1u06.w.to-come-to": {
+      "cards": "exempt",
+      "reason": "Das Kalibrier-Set stellt eine Karte je Maschine, nicht je Vokabel — \"to come to\" hat in diesen elf Karten keinen Platz. L6-T2 schreibt die Karte dieser Vokabel.",
+      "until": "2026-12-31"
+    },
+    "g1u06.w.to-live": {
+      "cards": "exempt",
+      "reason": "Das Kalibrier-Set stellt eine Karte je Maschine, nicht je Vokabel — \"to live\" hat in diesen elf Karten keinen Platz. L6-T2 schreibt die Karte dieser Vokabel.",
+      "until": "2026-12-31"
+    },
+    "g1u06.w.nice": {
+      "cards": "exempt",
+      "reason": "Das Kalibrier-Set stellt eine Karte je Maschine, nicht je Vokabel — \"nice\" hat in diesen elf Karten keinen Platz. L6-T2 schreibt die Karte dieser Vokabel.",
+      "until": "2026-12-31"
+    },
+    "g1u06.w.to-call": {
+      "cards": "exempt",
+      "reason": "Das Kalibrier-Set stellt eine Karte je Maschine, nicht je Vokabel — \"to call\" hat in diesen elf Karten keinen Platz. L6-T2 schreibt die Karte dieser Vokabel.",
+      "until": "2026-12-31"
+    },
+    "g1u06.w.to-solve": {
+      "cards": "exempt",
+      "reason": "Das Kalibrier-Set stellt eine Karte je Maschine, nicht je Vokabel — \"to solve\" hat in diesen elf Karten keinen Platz. L6-T2 schreibt die Karte dieser Vokabel.",
+      "until": "2026-12-31"
+    },
+    "g1u06.w.to-wait": {
+      "cards": "exempt",
+      "reason": "Das Kalibrier-Set stellt eine Karte je Maschine, nicht je Vokabel — \"to wait\" hat in diesen elf Karten keinen Platz. L6-T2 schreibt die Karte dieser Vokabel.",
+      "until": "2026-12-31"
+    },
+    "g1u06.w.to-watch": {
+      "cards": "offered",
+      "reason": "Steht als Wort auf einer Karten-Oberflaeche dieses Exemplar-Sets (\"to watch\"): das Kind LIEST es, muss es aber noch nicht selbst produzieren. L6-T2 schreibt die Karte dieser Vokabel.",
+      "until": "2026-12-31"
+    },
+    "g1u06.w.street-2": {
+      "cards": "offered",
+      "reason": "Steht als Wort auf einer Karten-Oberflaeche dieses Exemplar-Sets (\"street\"): das Kind LIEST es, muss es aber noch nicht selbst produzieren. L6-T2 schreibt die Karte dieser Vokabel.",
+      "until": "2026-12-31"
+    },
+    "g1u06.w.to-get-up": {
+      "cards": "exempt",
+      "reason": "Das Kalibrier-Set stellt eine Karte je Maschine, nicht je Vokabel — \"to get up\" hat in diesen elf Karten keinen Platz. L6-T2 schreibt die Karte dieser Vokabel.",
+      "until": "2026-12-31"
+    },
+    "g1u06.w.to-become": {
+      "cards": "exempt",
+      "reason": "Das Kalibrier-Set stellt eine Karte je Maschine, nicht je Vokabel — \"to become\" hat in diesen elf Karten keinen Platz. L6-T2 schreibt die Karte dieser Vokabel.",
+      "until": "2026-12-31"
+    },
+    "g1u06.w.but-it-s-true": {
+      "cards": "exempt",
+      "reason": "Das Kalibrier-Set stellt eine Karte je Maschine, nicht je Vokabel — \"But it's true!\" hat in diesen elf Karten keinen Platz. L6-T2 schreibt die Karte dieser Vokabel.",
+      "until": "2026-12-31"
+    },
+    "g1u06.w.go-on": {
+      "cards": "exempt",
+      "reason": "Das Kalibrier-Set stellt eine Karte je Maschine, nicht je Vokabel — \"Go on.\" hat in diesen elf Karten keinen Platz. L6-T2 schreibt die Karte dieser Vokabel.",
+      "until": "2026-12-31"
+    },
+    "g1u06.w.well-done": {
+      "cards": "offered",
+      "reason": "Steht als Wort auf einer Karten-Oberflaeche dieses Exemplar-Sets (\"Well done.\"): das Kind LIEST es, muss es aber noch nicht selbst produzieren. L6-T2 schreibt die Karte dieser Vokabel.",
+      "until": "2026-12-31"
+    }
+  },
+  "nounDe": {
+    "reason": "Die globale Familie kaefig-nennt-den-insassen (scripts/game-tasks-giveaway-policy.json) ist auf use rescue + form state-it geschluesselt und erlaubt der deutschen Zeile, den Insassen zu NENNEN (D-34) — dafuer schuldet sie das deutsche Nomen hier. Die Familie selbst wird nicht nachgebaut, sie ist korpusweit; diese Bahn liefert nur die Nomen.",
+    "captivesReason": "Nach Karte geschluesselt, nicht nach Skin: der Skin beweisglas traegt in ch06 FUENF Wesen (umbrella, pipe, violin, necklace und Tammos Glas), ein nounDe.pairs.beweisglas waere ein Nomen fuer alle fuenf.",
+    "captives": {
+      "rsc.beweisglas.umbrella": "Regenschirm",
+      "awk.tammo.r1": "Büro"
+    }
+  }
+}
