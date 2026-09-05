@@ -435,8 +435,13 @@ if (selftest) {
       if (staleAllowLaw(v.allowedSeen, LINE_REF_ALLOW).length > 0) fail("x");
     }],
     ["D-242(b) · eine Nummer ist erwähnt, hat aber keine Zeile", () => {
-      const t = `${debtText}\n**Nebenbei:** D-901 hängt daran.`;
-      if (debtMentions(t).dangling.some((d) => d.n === 901)) fail("x");
+      // Die Prüf-Nummer wird BERECHNET, nie festgelegt: bis 2026-09-05 stand hier
+      // fest D-901 - an dem Tag bekam D-901 seine Zeile (ch05-Block), und der
+      // Tamper wurde blind, weil das Register ehrlicher wurde. Eine Nummer
+      // oberhalb der hoechsten vergebenen hat per Bauart keine Zeile.
+      const free = Math.max(...rowIds(debtText, "D")) + 1;
+      const t = `${debtText}\n**Nebenbei:** D-${free} hängt daran.`;
+      if (debtMentions(t).dangling.some((d) => d.n === free)) fail("x");
     }],
     ["D-242(b) · eine zweite Beschreibung in Prosa (die D-45-Klasse)", () => {
       const t = `${debtText}\n**D-45** · und hier steht dieselbe Nummer noch einmal, anders beschrieben.`;
