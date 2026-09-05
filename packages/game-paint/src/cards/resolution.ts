@@ -107,5 +107,10 @@ export function answerTextOf(t: GameTaskV2): string {
     }
     case "memory":
       return "";
+    // Wie die Gedaechtnis-Karte: der Gewinn ist das BRETT, nicht ein Wort. Ein
+    // erfundener Satz aus vier Paaren waere genau die Projektions-Luege (P-18)
+    // mit Fluegeln.
+    case "match":
+      return "";
   }
 }

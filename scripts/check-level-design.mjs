@@ -123,6 +123,10 @@ export const answerWordsOf = (t) => {
     case "order": return [...t.orderedChips];
     case "mistake": return [t.fix?.correction ?? ""];
     case "memory": return t.pairs.flatMap((p) => [p.a, p.b]);
+    // L2-M-a: beide Spalten. Dieses Tor misst die Vokabel-DECKUNG des Kapitels
+    // („welches Wort kommt auf einer Karte vor"), nicht den Verrat — dafuer
+    // zaehlt jedes Wort, das das Kind auf der Karte liest.
+    case "match": return t.pairs.flatMap((p) => [p.left, p.right]);
     case "restore": return [t.name, t.colour];
     default: return [];
   }

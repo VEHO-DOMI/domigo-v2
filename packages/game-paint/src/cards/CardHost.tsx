@@ -39,13 +39,14 @@ import { prefersReducedMotion } from "./motion.ts";
 import { armedClockMs, clockMsFor } from "./timer.ts";
 import { answerTextOf } from "./resolution.ts";
 import {
-  ChoiceCard, TypedCard, SpellCard, OrderCard, OddCard, WheelCard, MistakeCard, MemoryCard,
+  ChoiceCard, TypedCard, SpellCard, OrderCard, OddCard, WheelCard, MistakeCard, MemoryCard, MatchCard,
   RestoreCard, type Dispatch,
 } from "./skins.tsx";
 import type {
   ChoiceState, ChoiceAction, TypedState, TypedAction, SpellState, SpellAction,
   OrderState, OrderAction, OddState, OddAction, WheelState, WheelAction,
   MistakeState, MistakeAction, MemoryState, MemoryAction, RestoreState, RestoreAction,
+  MatchState, MatchAction,
 } from "./machines.ts";
 
 /**
@@ -240,5 +241,6 @@ function Skin({ task, state, dispatch }: { task: GameTaskV2; state: unknown; dis
     case "mistake": return <MistakeCard state={state as MistakeState} dispatch={d as Dispatch<MistakeAction>} />;
     case "memory": return <MemoryCard state={state as MemoryState} dispatch={d as Dispatch<MemoryAction>} />;
     case "restore": return <RestoreCard state={state as RestoreState} dispatch={d as Dispatch<RestoreAction>} />;
+    case "match": return <MatchCard state={state as MatchState} dispatch={d as Dispatch<MatchAction>} />;
   }
 }

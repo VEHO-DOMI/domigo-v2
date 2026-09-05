@@ -155,6 +155,9 @@ export function answerSurfaceOf(t: GameTaskV2): string[] {
     case "oddone": return [...t.items];
     case "mistake": return [t.fix.correction ?? "", ...t.sentence];
     case "memory": return t.pairs.map((p) => p.b);
+    // BEIDE Spalten: wer zuordnet, muss links UND rechts gelesen haben —
+    // dieselbe Lesart wie bei `oddone`, wo die ganze Familie zaehlt.
+    case "match": return t.pairs.flatMap((p) => [p.left, p.right]);
     case "restore": return [t.name, t.colour];
   }
 }
@@ -171,6 +174,7 @@ function optionSurfaceOf(t: GameTaskV2): string[] {
     case "mistake": return [...t.sentence, ...(t.correctionOptions ?? [])];
     case "order": return [...t.orderedChips];
     case "memory": return t.pairs.flatMap((p) => [p.a, p.b]);
+    case "match": return t.pairs.flatMap((p) => [p.left, p.right]);
     case "typed": return [t.answer, ...t.accept];
     case "spell": return [t.answer];
   }
@@ -186,6 +190,7 @@ function answerKeyOf(t: GameTaskV2): string {
     case "order": return t.orderedChips.map(norm).join("|");
     case "mistake": return `${t.errorIndex}|${norm(t.fix.correction ?? t.fix.mode)}`;
     case "memory": return t.pairs.map((p) => `${norm(p.a)}=${norm(p.b)}`).sort().join("|");
+    case "match": return t.pairs.map((p) => `${norm(p.left)}=${norm(p.right)}`).sort().join("|");
   }
 }
 

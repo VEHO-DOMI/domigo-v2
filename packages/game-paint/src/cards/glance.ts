@@ -50,6 +50,11 @@ export const actMarkFor = (kind: GameTaskV2["kind"], step?: string): ActMark => 
     case "wheel": return "wheel";
     case "mistake": return "fix";
     case "memory": return "pairs";
+    // L2-M-a: `match` erbt das Paar-Zeichen. Ein eigenes Zeichen zu praegen
+    // hiesse, in `Glance.tsx` ein neues Symbol zu ZEICHNEN — Kunst, und nicht
+    // das Gebiet dieser Bahn. Die Handlung ist dieselbe: zwei Dinge, die
+    // zusammengehoeren.
+    case "match": return "pairs";
     case "typed": return "write";
     case "restore": return step === "colour" ? "colour" : "tap";
   }

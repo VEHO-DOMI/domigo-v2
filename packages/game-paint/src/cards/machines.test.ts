@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import fs from "node:fs";
 import path from "node:path";
-import { GameTasksFileV2 } from "@domigo/content-schema";
+import { GameTasksFileV2, renderTaskText, seededShuffle } from "@domigo/content-schema";
 import type { GameTaskV2 } from "@domigo/content-schema";
 import {
   MACHINES, autoSolve, normText, spellSlots, spellTrayDisabled,
@@ -25,6 +25,20 @@ const shipped = GameTasksFileV2.parse(
 // fails if a fixture ever shadows a kind the content DOES ship. Coverage of the
 // machine registry stays total either way — which is the actual law.
 const FIXTURES: Partial<Record<GameTaskV2["kind"], GameTaskV2>> = {
+  // L2-M-a: `match` debuetiert laut doc 41 §1 im Feld von ch02 — der Motor
+  // steht, die Karten traegt L2-G2 ein. Bis dahin dieselbe Loesung wie bei
+  // `spell`: eine erklaerte Vorrichtung, und der Test unten faellt rot, sobald
+  // ein Kapitel wirklich eine liefert (dann gehoert die echte Karte geprueft).
+  match: {
+    id: "fixture.match", use: "encounter", kind: "match", form: "match-it",
+    stimulus: { type: "entity", showsDe: "Die Erdmännchen halten vier Schilder hoch" },
+    storyDe: "Bring die Schilder zu ihren Tieren zurück!",
+    pairs: [
+      { left: "The monkey", right: "in the tree" },
+      { left: "The penguin", right: "in the water" },
+    ],
+    skins: ["erdmaennchen"],
+  },
   spell: {
     id: "fixture.spell", use: "encounter", kind: "spell",
     stimulus: { type: "entity", showsDe: "Ein Stift wartet auf sein Wort" },
@@ -346,6 +360,65 @@ describe("restore — name it, then give the colour back", () => {
   });
 });
 
-it("MACHINES covers exactly the 9 kinds", () => {
-  expect(Object.keys(MACHINES).sort()).toEqual(["choice", "memory", "mistake", "oddone", "order", "restore", "spell", "typed", "wheel"]);
+describe("match · zwei offene Spalten, eine Zuordnung (L2-M-a · R249)", () => {
+  const t = byKind("match");
+  const m = MACHINES.match;
+
+  it("ein FALSCHES Paar beendet die Karte — anders als beim Gedächtnis", () => {
+    // Die Gedächtnis-Karte ist nachsichtig (ein Fehlgriff deckt nur wieder zu),
+    // weil sie das Erinnern prüft. Hier liegt alles offen: wer falsch zuordnet,
+    // hat die Frage anders verstanden, und das ist ein `wrong`.
+    const s0 = m.init(t);
+    const falsch = s0.right.find((r: string) => r !== s0.key[s0.left[0]!]);
+    const s1 = m.act(m.act(s0, { tapLeft: s0.left[0] }), { tapRight: falsch });
+    expect(m.grade(s1)).toBe("wrong");
+  });
+
+  it("ein richtiges Paar sitzt und lässt die Karte weiterlaufen", () => {
+    const s0 = m.init(t);
+    const s1 = m.act(m.act(s0, { tapLeft: s0.left[0] }), { tapRight: s0.key[s0.left[0]!] });
+    expect(s1.matched).toEqual([s0.left[0]]);
+    expect(m.grade(s1)).toBe("pending");
+  });
+
+  it("rechts ohne links tut nichts — kein Zufallstreffer", () => {
+    const s0 = m.init(t);
+    expect(m.act(s0, { tapRight: s0.right[0] })).toEqual(s0);
+  });
+
+  it("die zwei Spalten benutzen ZWEI Seeds — sonst stünde die Lösung an der Position", () => {
+    // Dieselbe Klausel, die `restore` schon bezahlt hat. Geprüft wird der
+    // MECHANISMUS, nicht das Ergebnis: bei zwei Paaren fallen zwei verschiedene
+    // Mischungen in der Hälfte aller Fälle zufällig zusammen — eine Zusicherung
+    // auf „die Reihenfolge ist anders" wäre also per Bauart wackelig (im ersten
+    // Anlauf war sie es prompt). Was hält: die rechte Spalte entsteht NICHT aus
+    // dem Karten-Seed, sondern aus `${id}:right`.
+    const s0 = m.init(t);
+    const rechteWerte = t.pairs.map((p) => p.right);
+    expect(s0.right).toEqual(seededShuffle(rechteWerte, `${t.id}:right`));
+    expect(s0.left).toEqual(seededShuffle(t.pairs.map((p) => p.left), t.id));
+  });
+
+  it("und die Zuordnung überlebt jede Mischung — der Schlüssel hängt am Wort, nicht am Platz", () => {
+    const s0 = m.init(t);
+    for (const p of t.pairs) expect(s0.key[p.left]).toBe(p.right);
+    expect(autoSolve(t), "die Karte muss durchspielbar sein").toBe("correct");
+  });
+
+  it("die Kindersicht zeigt beide Spalten und NIE die Paarung", () => {
+    const sicht = renderTaskText(t);
+    expect(sicht).toContain("Links:");
+    expect(sicht).toContain("Rechts:");
+    for (const p of t.pairs) {
+      expect(sicht, `die Sicht verrät das Paar ${p.left} → ${p.right}`).not.toContain(`${p.left} → ${p.right}`);
+      // …und die beiden Hälften stehen nie nebeneinander in EINER Zeile.
+      for (const zeile of sicht.split("\n")) {
+        expect(zeile.includes(p.left) && zeile.includes(p.right), `»${zeile}« trägt beide Hälften eines Paares`).toBe(false);
+      }
+    }
+  });
+});
+
+it("MACHINES covers exactly the 10 kinds", () => {
+  expect(Object.keys(MACHINES).sort()).toEqual(["choice", "match", "memory", "mistake", "oddone", "order", "restore", "spell", "typed", "wheel"]);
 });
