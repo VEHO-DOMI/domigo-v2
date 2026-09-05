@@ -49,7 +49,7 @@
         "showsDe": "Mo bleibt am Tor stehen und schaut zu dir zurück.",
         "art": "door_a"
       },
-      "storyDe": "Er soll weiter! Was rufst du ihm zu?",
+      "storyDe": "Mo soll weitergehen. Was rufst du ihm zu?",
       "options": [
         "Help me!",
         "Well done.",
@@ -109,7 +109,7 @@
       ],
       "stimulus": {
         "type": "entity",
-        "showsDe": "Der Obststand quillt über vor Äpfeln."
+        "showsDe": "Äpfel liegen auf dem ganzen Obststand."
       },
       "storyDe": "So viele Äpfel! Was sagst du?",
       "options": [
@@ -169,7 +169,7 @@
       ],
       "stimulus": {
         "type": "entity",
-        "showsDe": "Eine gemalte Haustür trägt eine große Zahl."
+        "showsDe": "Eine große Zahl steht auf der Haustür."
       },
       "storyDe": "Mo wohnt hier. Sag die Nummer auf Englisch!",
       "variant": "digit-to-word",
@@ -202,7 +202,7 @@
       ],
       "stimulus": {
         "type": "entity",
-        "showsDe": "Ein Fuß schon draußen, hinter Tammo das leere Büro."
+        "showsDe": "Tammo geht hinaus. Hinter ihm ist das Büro leer."
       },
       "storyDe": "Was tut er? Sag es auf Englisch!",
       "options": [
@@ -235,7 +235,7 @@
         "type": "entity",
         "showsDe": "Drei Zettel wirbeln dir um den Kopf."
       },
-      "storyDe": "Ein Zettel ist gefälscht. Welcher?",
+      "storyDe": "Ein Zettel stimmt nicht. Welcher?",
       "select": "odd",
       "items": [
         "Mo runs down the street.",
@@ -262,7 +262,7 @@
       "kind": "mistake",
       "stimulus": {
         "type": "entity",
-        "showsDe": "Das Notizbuch kritzelt groß auf seine Seite."
+        "showsDe": "Das Notizbuch kritzelt groß auf eine Seite."
       },
       "storyDe": "Ein Wort stimmt nicht — tipp es an!",
       "sentence": [
@@ -338,7 +338,7 @@
       ],
       "stimulus": {
         "type": "entity",
-        "showsDe": "An Mos Bürotür klebt ein Zettel-Wirrwarr.",
+        "showsDe": "An Mos Bürotür kleben viele Zettel.",
         "art": "door_a"
       },
       "storyDe": "Finde zu jedem Verb seine er/sie/es-Form!",
