@@ -641,6 +641,12 @@ export class Sim {
       fistBusy: this.fist !== null,
       airModel: this.cfg.airModel,
       ringAt: abilities.includes("swing") ? near : null,
+      // L3-M-a · E1: die Seil-Werte dieser Phase. Fehlt `swing`, ist jedes
+      // Feld undefined und `stepPlayer` faellt auf die ausgelieferten Werte
+      // zurueck — ch01 und ch02 rechnen also Bit fuer Bit wie vorher.
+      swingRopePx: this.phase.swing?.ropePx,
+      swingReleaseLiftPx: this.phase.swing?.releaseLiftPx,
+      ringRegrabLockTicks: this.phase.swing?.regrabLockTicks,
     });
     this.player = out.st;
     this.poseLocked = out.locked;
@@ -1436,8 +1442,19 @@ export class Sim {
     }
   }
 
+  /** L3-M-a · E1 · DER NAECHSTE GREIFBARE RING — mit einer Ausnahme.
+   *
+   *  Die Sperre nach dem Loslassen (`player.ringCooldown`) wird HIER gelesen und
+   *  nicht in `player.ts`, und das ist der Unterschied zwischen einer Kette und
+   *  einer Sackgasse: `nearestRing` liefert den ERSTEN Ring in Reichweite. Stuende
+   *  die Sperre am Griff selbst, wuerde ein gesperrter Ring, der zufaellig vor dem
+   *  Nachbarn in der Liste steht, den Griff komplett verhindern — auch den an den
+   *  Nachbarn. Als FILTER uebersprungen wird nur der eine gesperrte Ring; jeder
+   *  andere ist im selben Tick greifbar, und genau das ist die Ring-Kette. */
   private nearestRing(): { x: number; y: number } | null {
+    const locked = this.player.ringCooldown > 0 ? this.player.lastRing : null;
     for (const g of this.rings) {
+      if (locked !== null && g.x === locked.x && g.y === locked.y) continue;
       if (Math.abs(g.x - this.player.x) <= 14 * SUBS && Math.abs(g.y - (this.player.y - 30 * SUBS)) <= 28 * SUBS) return g;
     }
     return null;

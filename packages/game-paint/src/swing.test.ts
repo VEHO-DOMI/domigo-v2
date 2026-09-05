@@ -14,7 +14,7 @@ describe("the pendulum", () => {
   });
 
   it("hangs straight down at the bottom of the arc", () => {
-    const s: SwingState = { anchorX: ANCHOR_X, anchorY: ANCHOR_Y, angle: 256, dir: 1, dwell: 0 };
+    const s: SwingState = { anchorX: ANCHOR_X, anchorY: ANCHOR_Y, angle: 256, dir: 1, dwell: 0, ropePx: PAINT.swingRopePx };
     const pos = swingPos(s);
     expect(pos.xSubs).toBe(ANCHOR_X);
     expect(pos.ySubs).toBe(ANCHOR_Y + (PAINT.swingRopePx + 22) * SUBS);
@@ -59,7 +59,7 @@ describe("the pendulum", () => {
   });
 
   it("releases the tangential speed as a jump (+ the studied −2 lift)", () => {
-    const bottom: SwingState = { anchorX: ANCHOR_X, anchorY: ANCHOR_Y, angle: 256, dir: 1, dwell: 0 };
+    const bottom: SwingState = { anchorX: ANCHOR_X, anchorY: ANCHOR_Y, angle: 256, dir: 1, dwell: 0, ropePx: PAINT.swingRopePx };
     const rel = releaseSwing(bottom);
     expect(rel.vxSubs).toBe(5 * SUBS); // max speed at the bottom, rightward
     expect(rel.vySubs).toBe(-2 * SUBS);

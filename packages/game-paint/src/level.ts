@@ -389,6 +389,28 @@ export interface PhaseSpec {
    *  sondern die Antwort auf die Reaktionszeit eines Sechsjährigen — dieselbe
    *  in jedem Kapitel. Ohne Angabe gilt 35 ⇒ ch01 byte-gleich. */
   budgetSec?: number;
+  /** L3-M-a · E1 · DIE SEILE DIESER PHASE (ch03: das Tauwerk).
+   *
+   *  Bis hierher war der Ring-Schwung EINE Zahl fuer das ganze Spiel:
+   *  `PAINT.swingRopePx` = 96 px = sechs Kacheln, und der Loslass-Lift eine
+   *  Konstante von 2 px/Tick. An dieser Geometrie ist eine KETTE — Ring zu Ring,
+   *  ohne Boden dazwischen — nicht baubar, und die Kette ist die Signatur von
+   *  ch03 (das Tau-Gewirr, SB 23). Gemessen an der Engine, nicht gerechnet:
+   *  `scripts/paint-probes/ch03.probe.mjs`.
+   *
+   *  Alle drei Felder sind freiwillig, und ihr Fehlen ist exakt das
+   *  ausgelieferte Verhalten (96 px · 2 px/t · keine Sperre) — deshalb bleiben
+   *  ch01 und ch02 byte-gleich, Beweisbaender eingeschlossen.
+   *
+   *  · `ropePx`          — Abstand Ring → Haende.
+   *  · `releaseLiftPx`   — Aufwaerts-Geschwindigkeit beim Loslassen, px/Tick.
+   *  · `regrabLockTicks` — wie lange der EBEN verlassene Ring gesperrt bleibt.
+   *                        Andere Ringe bleiben sofort greifbar. */
+  swing?: {
+    ropePx: number;
+    releaseLiftPx?: number;
+    regrabLockTicks?: number;
+  };
 }
 
 export interface PaintLevel {

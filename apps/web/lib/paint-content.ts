@@ -195,6 +195,18 @@ const PaintPhase = z.object({
   // gelesen, Vorgabe 35). Dieselbe Strip-Regel wie oben: ohne diese Zeile
   // liefe jede Kammer wieder 35 Sekunden, egal was das Level sagt.
   budgetSec: z.number().int().positive().max(600).optional(),
+  // L3-M-a · E1: die Seil-Werte der Phase (level.ts PhaseSpec.swing) — die
+  // Ring-Kette von ch03. Dieselbe Strip-Regel wie oben, und sie beisst hier
+  // besonders hart: ohne diese Zeile schwaenge jeder Ring wieder an 96 px,
+  // waehrend `ring-chain` auf der Platte gruen bliebe — das Gesetz pruefte
+  // eine Geometrie, die der Browser nie sieht.
+  swing: z
+    .object({
+      ropePx: z.number().int().positive().max(256),
+      releaseLiftPx: z.number().int().nonnegative().max(16).optional(),
+      regrabLockTicks: z.number().int().nonnegative().max(240).optional(),
+    })
+    .optional(),
 });
 
 const PaintLevelFile = z.object({
