@@ -138,6 +138,80 @@ describe("L0 · N7 · das Bonus-Budget überlebt das Parsen (D-831 = D-927)", ()
   });
 });
 
+// ── L3-M-a · TAUWERK UND BILGE ÜBERLEBEN DAS PARSEN ────────────────────────
+//
+// `PaintPhase` ist ein GESCHLOSSENES `z.object`: was hier nicht aufgezählt ist,
+// wird STILL entfernt. Bei diesen beiden Feldern ist das besonders bösartig,
+// weil die Gesetze auf der Platte gegen die DATEI laufen und grün blieben — das
+// Gesetz prüfte dann eine Ring-Kette und eine steigende Bilge, die im Browser
+// gar nicht existieren, und jeder Ring schwänge wieder an 96 px.
+//
+// ⚠ Kein Kapitel deklariert die Felder heute (die M-a-Bahn fasst kein Level an,
+// G2 setzt sie), also prüft dieser Fall den PARSER an einem gebauten Objekt —
+// genau die Stelle, an der der Strip passiert.
+describe("L3-M-a · Tauwerk und Bilge überleben das Parsen", () => {
+  const grid = [
+    "############",
+    ...Array.from({ length: 16 }, () => "............"),
+    "..S....o..X.",
+    "############",
+    "############",
+  ];
+  const datei = (phaseOver: Record<string, unknown>): unknown => ({
+    schema: "paintLevel@1",
+    id: "g1-zod-test",
+    chapter: "ch03",
+    draft: true,
+    name: "Test",
+    goalDe: "x",
+    whyDe: "x",
+    hintsDe: [],
+    collectNounDe: "x",
+    abilities: ["jump", "swing", "punch"],
+    phases: [{ id: "p1", nameDe: "T", surface: "normal", plates: {}, rows: grid, entities: [], links: [], exit: { to: "done" }, ...phaseOver }],
+  });
+
+  it("`swing` kommt vollständig an — Seil, Lift und Sperre", () => {
+    const parsed = parsePaintLevelFile(datei({ swing: { ropePx: 48, releaseLiftPx: 4, regrabLockTicks: 20 } }));
+    assert.deepEqual(parsed.phases[0]?.swing, { ropePx: 48, releaseLiftPx: 4, regrabLockTicks: 20 });
+  });
+
+  it("`bilge` kommt vollständig an — Band, Stände, Puls und die Griffe", () => {
+    const bilge = {
+      band: { c0: 1, c1: 10 },
+      rStart: 17,
+      rTop: 12,
+      pulseTicks: 30,
+      riseRows: 1,
+      freezeTicks: 180,
+      pumps: ["pumpe"],
+      valve: "ventil",
+    };
+    const parsed = parsePaintLevelFile(datei({ bilge }));
+    assert.deepEqual(parsed.phases[0]?.bilge, bilge);
+  });
+
+  it("und eine Phase ohne beides trägt beide als undefined — ch01/ch02 unberührt", () => {
+    const parsed = parsePaintLevelFile(datei({}));
+    assert.equal(parsed.phases[0]?.swing, undefined);
+    assert.equal(parsed.phases[0]?.bilge, undefined);
+  });
+
+  it("die neue Rolle `pump.trigger` steht in der EINEN Rollenliste", () => {
+    // dieselbe Zusicherung wie D4 oben: `ENTITY_ROLES` ist die Quelle, aus der
+    // zod sein `z.enum` zieht — eine Rolle, die der Motor kennt und der Lader
+    // nicht, käme als Parse-Fehler auf den Bildschirm des Kindes.
+    assert.ok(ENTITY_ROLES.includes("pump.trigger"));
+    const parsed = parsePaintLevelFile(datei({
+      entities: [{ id: "pumpe", role: "pump.trigger", skin: "fb-ent-generic", c: 4, r: 17, tier: "E", params: { kind: "pump" } }],
+    }));
+    assert.equal(parsed.phases[0]?.entities[0]?.role, "pump.trigger");
+    // ⚠ `params` ist ein OFFENES z.record — `kind` kommt hier ungeprüft durch.
+    // Genau deshalb prüft das Gesetz `bilge-wiring` die Form selbst.
+    assert.equal(parsed.phases[0]?.entities[0]?.params?.kind, "pump");
+  });
+});
+
 // ── L0 · D1 · DIE WEITERLEITUNG DARF DIE ABFRAGE NICHT VERSCHLUCKEN ─────────
 //
 // Der Defekt, den erst der PERF-Vertrag gefunden hat: `/play/1/buch` leitete

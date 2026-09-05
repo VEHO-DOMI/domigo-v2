@@ -1,0 +1,39 @@
+{
+  "tick": 0,
+  "phase": "p2",
+  "overlay": true,
+  "reducedMotion": false,
+  "visibility": "visible",
+  "hidden": false,
+  "hero": {
+    "x": 40,
+    "y": 336,
+    "pose": "fall",
+    "grounded": false
+  },
+  "camX": 0,
+  "camY": 192,
+  "canvas": {
+    "w": 1056,
+    "h": 672,
+    "cssW": 1056,
+    "cssH": 672
+  },
+  "entities": [],
+  "shotCostTicks": 0,
+  "pure": true,
+  "via": "snapshot",
+  "serie": "l3ma_bilge_ohne",
+  "nr": 1,
+  "tickBefore": 0,
+  "standbild": {
+    "was": "Standbild, keine Reihe: EIN Bild aus einem Augenblick, in dem die Welt absichtlich steht (stehender Toast, offene Karte). Eine Reihe waere hier N-mal dasselbe Bild — deshalb nimmt dieser Zustand genau EINES an und weist jedes weitere ab.",
+    "handschlag": "Handschlag ENTFALLEN: er verlangt zwei Aufnahmen mit verschiedenen Pruefsummen, und die Welt stand schon, als dieser Lauf ankam. Dieses Bild traegt deshalb KEINEN Kamerabeweis (P-66) — es ist ungeprueft dasselbe, was die Kamera zuletzt gemalt hat.",
+    "kamerabeweis": false
+  },
+  "weltStand": "eine KARTE haelt die Welt fest: »goal« (1 von 1 Runden)",
+  "frame": "l3ma_bilge_ohne_001.png",
+  "md5": "79a63f2a24b8e7e6561cbb0bba487681",
+  "index": 1,
+  "modus": "standbild"
+}
