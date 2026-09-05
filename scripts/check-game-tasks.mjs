@@ -53,7 +53,7 @@
 // (same lexicon, same law) — kept compact and local on purpose.
 import fs from "node:fs";
 import path from "node:path";
-import { GameTasksFileV2, MAX_LINE_DE, registerErrorsDe, seededShuffle } from "../packages/content-schema/src/game-tasks.ts";
+import { GameTasksFileV2, MAX_LINE_DE, cloakErrorsDe, registerErrorsDe, seededShuffle } from "../packages/content-schema/src/game-tasks.ts";
 import { CALM_DE, TIMED_USES, URGENCY_DE, spokenDeOf, timerClassFor } from "../packages/game-paint/src/cards/timer.ts";
 // PK-R6 · D: the reawakening's length is a LAW, not a number this file may
 // restate — imported from the engine that plays it (doc 44 §3.3's six rounds).
@@ -162,7 +162,12 @@ const fail = (where, msg) => {
 let words = new Set();
 let phrases = [];
 let proper = new Set();
+// L0c · P2 (D-877): woGEGEN gerade geerdet wird. Die Meldung nannte hart
+// »MORE! 1 Unit 1«, auch wenn das Kapitel Unit 4 lehrt — ein Kind-Autor las
+// daraus, sein Wort stehe nicht in Unit 1, und suchte an der falschen Stelle.
+let erdungsQuelle = "MORE! 1 Unit 1";
 const loadUnitRegisters = (cx) => {
+  erdungsQuelle = `${cx.chapter} · ${cx.unit ?? "Unit unbekannt"} · ${path.relative(process.cwd(), cx.lexiconPath)}`;
   lex = JSON.parse(fs.readFileSync(cx.lexiconPath, "utf8"));
   words = new Set(lex.words.map((w) => w.toLowerCase()));
   phrases = lex.phrases.map((x) => x.toLowerCase());
@@ -188,13 +193,19 @@ function checkEn(where, en) {
   const extra = new Set();
   const enLow = String(en).toLowerCase();
   for (const p of phrases) if (enLow.includes(p)) for (const t of tokens(p)) extra.add(t);
-  for (const t of tokens(en)) if (!FREE.has(t) && !grounded(t, extra)) fail(where, `EN token not in MORE! 1 Unit 1: "${t}" (in "${en}")`);
+  for (const t of tokens(en)) if (!FREE.has(t) && !grounded(t, extra)) fail(where, `EN token not in the unit lexicon of ${erdungsQuelle}: "${t}" (in "${en}")`);
 }
 // PK-R3b: the ban list moved into content-schema (registerErrorsDe) so the LEVEL
 // laws can apply the identical rule to the Regel-Seiten' authored German — a
 // register law with a second copy is a register law with one enforced copy.
 function checkDe(where, de) {
   for (const msg of registerErrorsDe(de)) fail(where, msg);
+  // L0c · P4 (L2-T1) · DAS UMHANG-GESETZ GILT AUCH AUF EINER KARTE. Es lief
+  // bisher nur in `check-paint-copy` ueber Schale und Level — ein Antagonisten-
+  // Name in einer KARTE war fuer dieses Tor unsichtbar. Dieselbe exportierte
+  // Funktion, EIN Ort, kein Zwilling: `cloakErrorsDe` vergleicht das Kapitel
+  // lexikographisch gegen ch15, und ohne Kapitel gilt der Umhang immer.
+  for (const msg of cloakErrorsDe(de, CHAPTER_NOW?.chapter)) fail(where, msg);
 }
 // ── 18 · THE GIVEAWAY CLASS (R5-W3 · G2 · R25) ───────────────────────────────
 // A giveaway is an UNINTENDED reveal (doc 29 §4.3): the card already contains
@@ -1079,13 +1090,30 @@ function checkExercisesExist(file, items, reg) {
     }
   }
   // 19b · the policy may narrow a corpus class, never widen it
+  // L0c · P3 (L2-T1) · …UND EINE KLASSE, DIE IM KORPUS GAR NICHT STEHT, WURDE
+  // STUMM UEBERSPRUNGEN. `continue` ohne Zeile heisst: wer die Klasse aus
+  // `lexicon-classes.json` loescht, entwaffnet 19b fuer diese Id — bei gruenem
+  // Tor. Gesammelt und unten NAMENTLICH gemeldet, mit Zahl.
+  const ohneKorpusklasse = [];
   for (const [id, policyWords] of reg.policyClasses) {
     const corpusWords = reg.corpusClasses.get(id);
-    if (corpusWords === undefined) continue;
+    if (corpusWords === undefined) { ohneKorpusklasse.push(id); continue; }
     const extra = policyWords.filter((x) => !corpusWords.has(x.toLowerCase()));
     if (extra.length > 0) {
       fail(`${w}:${id}`, `19b · the variety policy lets "${id}" answer [${extra.join(" · ")}], which the corpus class does not teach — a policy may narrow the corpus (grey is taught but never an answer), never widen it`);
     }
+  }
+  // Der Skip geht durch dieselbe Buchfuehrung wie jede andere Auslassung: bei
+  // `draft:true` eine namentliche Zeile, ohne die Flagge dieselbe Zeile PLUS
+  // Exit-Code (D-792, die `gaps()`-Schleife am Dateiende).
+  if (ohneKorpusklasse.length > 0) {
+    ledger.skip(
+      CHAPTER_NOW?.chapter ?? "ch??",
+      "19b",
+      `${ohneKorpusklasse.length === 1 ? "eine Politik-Klasse hat" : `${ohneKorpusklasse.length} Politik-Klassen haben`} `
+      + `in content/corpus/units/${reg.unitSlug}/lexicon-classes.json gar kein Gegenstueck `
+      + `(${ohneKorpusklasse.join(", ")}) — das Verengungs-Gesetz hatte nichts zu vergleichen`,
+    );
   }
 }
 
