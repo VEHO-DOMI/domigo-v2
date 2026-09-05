@@ -166,10 +166,28 @@ export const guardianSkinStems = (skin: string): string[] =>
 /** PK-R6 · H3 · the hero's FULL-POSE override cells (batch-ap hero_rig_v2,
  *  consumed by rigSpec.heroFullCell). Required: the core locomotion states
  *  read from these now, and a missing one would silently fall back to the
- *  composed rig mid-run — one frame in another body. */
+ *  composed rig mid-run — one frame in another body.
+ *
+ *  L0d · R263 · DIESE LISTE UND `rigSpec.HERO2_STEMS` SIND EIN PAAR.
+ *  Es gibt zwei gleichnamige Listen: dort steht, was GEZEICHNET wird
+ *  (`heroFullCell` gibt genau diese Namen zurueck), hier steht, was GELADEN und
+ *  von CI GEFORDERT wird (`artScope.ALWAYS_STEMS` und `phaseRequiredStems`
+ *  lesen diese). Sie waren zwei Zellen auseinander: `hero2_crouch` und
+ *  `hero2_jump2` wurden seit R5-F4 gezeichnet und standen hier nicht — also
+ *  forderte kein Tor sie, und kein Audit ueber diese Liste konnte sie sehen.
+ *  Wer eine Zelle zeichnet, traegt sie ein; `hero2-manifest.test.ts` haelt die
+ *  beiden Listen ab jetzt maschinell deckungsgleich.
+ *
+ *  BEWUSST NICHT IN DER LISTE: `hero2_det`. Das Blatt liegt (die Reserve aus
+ *  batch-ap, siehe rigSpec-Kopfnote), aber KEIN Pfad zeichnet es —
+ *  `heroFullCell` gibt es nie zurueck, die Lauf-Zellen tragen die
+ *  Entschlossenheit schon. Es hier aufzunehmen hiesse: in jeder Phase geladen
+ *  und in jedem Kapitel gefordert, ohne dass ein Kind es je sieht. Es bleibt
+ *  deshalb ein benannter toter Stem, kein verschwiegener. */
 export const HERO2_STEMS = [
   "hero2_run0", "hero2_run1", "hero2_run2", "hero2_run3",
-  "hero2_jump", "hero2_apex", "hero2_fall", "hero2_land",
+  "hero2_jump", "hero2_jump2", "hero2_apex", "hero2_fall", "hero2_land",
+  "hero2_crouch",
   "hero2_idle", "hero2_hit", "hero2_cheer",
   // R5-W4 · F5 · R46: `hero2_teeter0/1` sind raus (Zellen gelöscht) — ein
   // Pflicht-Stem ohne Blatt liesse `check-paint-art` eine Datei fordern, die es

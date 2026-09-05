@@ -425,30 +425,25 @@ for (const { label, ph, spec } of withSpec) {
 // point: a waiver is a named room with a written reason and an expiry, never a
 // quiet `if`. The next one that is needed will be visible here.
 /**
- * ── N7A1 (2026-09-02): DIESE TABELLE IST NICHT MEHR LEER — UND IHR ABLAUF IST
- *    JETZT EIN DATUM ─────────────────────────────────────────────────────────
+ * ── N7A2b (2026-09-03): DIE TABELLE IST WIEDER LEER — UND DAS IST DER BEWEIS ──
  *
- * A5 ließ sie leer und der Kommentar an COHERENCE_WAIVERS nennt auch den Grund:
- * die alte Fassung trug ihren Ablauf in PROSA ("bis zum F2-Retusche-Pass"), und
- * niemand konnte ihn prüfen. Diese Fassung trägt `until` als Datum, das
- * `waiverExpired` liest, und sie ratscht in beide Richtungen: eine Duldung, die
- * der Raum nicht mehr braucht, macht das Audit ihrerseits rot.
+ * N7A1 trug hier `ch01/p2` ein: gemessen 9,7 % lum / 10,0 % sat gegen verlangte
+ * 12 % / 25 %. Der Bruch war echt und gehörte einer Entscheidung, nicht einer
+ * Duldung — Koki hat sie getroffen (R242, D-959): das Möbelband `l2_p2` wurde NEU
+ * GEMALT statt per Wertepass verschoben. Über die Luminanz war es ohnehin nicht
+ * zu lösen: das Band hätte unter 15,2 % gemusst und der Boden seines eigenen
+ * K-Bandes liegt bei 15,0. Getragen hat die Sättigung — das Band traegt jetzt 23,1 % Saettigung gegen die 54,1 % der Sicht-Koerper, also 31,0 Punkte Abstand gegen die verlangten 25 (die Luminanz allein reicht mit 11,8 gegen 12 weiter nicht, und konnte es nie).
+ *
+ * Die Zeile ist deshalb gelöscht, und die Ratsche unten (`traegt eine
+ * Trennungs-Duldung, die es nicht mehr braucht`) ist der Beweis dafür: stünde sie
+ * noch da, wäre das Audit ROT. Sie ist keine Formalie, sie ist der Nachweis, dass
+ * der Raum das Gesetz aus eigener Kraft besteht.
+ *
+ * Die Form bleibt eine Tabelle und kein `if`: eine Duldung ist ein benannter Raum
+ * mit geschriebenem Grund und einem Ablaufdatum, das `waiverExpired` liest — und
+ * sie ratscht in beide Richtungen.
  */
-const SEPARATION_WAIVERS = {
-  "ch01/p2": {
-    until: "2026-10-15",
-    why: "gemessen 9,7 % lum / 10,0 % sat gegen verlangte 12 % / 25 % (L2 lum 17,5 · L3 lum 27,2). "
-      + "Der Bruch ist weder neu noch von dieser Bahn gemacht: p2 zeichnet seit #387 seine "
-      + "Sicht-Koerper und nicht mehr sein Kit — L3 wurde aber weiter AM KIT gemessen und meldete "
-      + "12,5 %, eine Zahl, die der Bau nicht mehr zeichnet. Das ist exakt die Drift, vor der der "
-      + "Kommentar an mass.ts#NEAR_PLANE_KINDS warnt. Der N7A1-Cutover hat das Kit geloescht und "
-      + "die Frage damit zum ersten Mal ehrlich gestellt. Was die Duldung beendet, ist eine "
-      + "Entscheidung ueber die abgenommene p2-Kunst und gehoert Koki: ein Wertepass auf l2_p2 "
-      + "(17,5 -> hoechstens 15,2 % Luminanz, bleibt in seinem eigenen Band 15,0-22,5 %) oder eine "
-      + "hellere Laufkante in der p2-Koerper-Welle. Diese Bahn fasst p2-Kunst nicht an. "
-      + "p1 misst mit derselben Rechnung 24,9 % / 33,1 % und besteht deutlich.",
-  },
-};
+const SEPARATION_WAIVERS = {};
 
 const BANDS = bandsFor(K);
   for (const [name, m] of Object.entries(planes)) {
@@ -1222,9 +1217,6 @@ const SCALE_WAIVERS = {
   // zeichnen (32 px statt 16) verschoebe die Rutsche gegen das Gitter, auf dem
   // ein Kind steht. Das ist kein Versehen wie bei den Ecken, sondern der
   // Vertrag, den die Kunst mitbringt.
-  "ch01/p3:slideTop:slide_top": { until: "2026-11-30", why: "gezeichnete 45°-ZELLE (Batch AF2): das Blatt ist von Ecke zu Ecke fuer EINE Gitterzelle gemalt, also ist 16 px die richtige Groesse und der Bruchteil die Folge davon, nicht ein Fehler. Im Welt-Massstab ruestete die Rutsche gegen das Gitter, auf dem gelaufen wird. ★ N7A2: die Zahl ist von 0,48x auf 0,39x gewandert, OHNE dass jemand die Rutsche angefasst hat — `paintScaleOf` liest die HOEHE von `crust_p3_a`, und der p3-Cutover hat das Blatt geloescht, also faellt der Welt-Massstab des Hofes auf FALLBACK_PAINT_SCALE (0,0649 -> 0,0802, +23,6 %). Die Rutschen-Module selbst sind unveraendert 16x16 (mass.ts Abschnitt 6, per Test festgehalten); gewandert ist das Lineal, nicht das Bild" },
-  "ch01/p3:slideUnder:slide_under": { until: "2026-11-30", why: "wie slide_top: die Strebe IST der Keil derselben 512er-Zelle (mass.ts §6)" },
-  "ch01/p3:slideFoot:slide_foot": { until: "2026-11-30", why: "wie slide_top: gezeichnete 45°-Zelle, eine Gitterzelle gross" },
   // ── ch01/p9 · DIE KLECKSKAMMER HAT NUR 2- UND 3-ZELLEN-SIMSE ──────────────
   "ch01/p9:platform:plat_bench_2": { until: "2026-11-30", why: "gemalt 4,09 Zellen, gezeichnet auf 2 (0,49x) — p9s breitester Sims ist 3 Zellen (gemessen: 2x2, 3x2). Dieselbe Bestellung wie in p1" },
   "ch01/p9:platform:plat_bundle_1": { until: "2026-11-30", why: "gemalt 1,65 Zellen, gezeichnet auf 1 (0,61x) — das einzige 1-Zellen-Objekt der Kammer; auf 2 gehoben zeichnete es 1,21x und liesse von jedem 3-Zellen-Sims eine Zelle leer. In p1, dessen Massstab groesser ist, IST dasselbe Blatt auf 2 gehoben (1,045x)" },

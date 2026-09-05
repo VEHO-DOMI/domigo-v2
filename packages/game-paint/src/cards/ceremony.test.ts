@@ -232,8 +232,12 @@ describe("R5-W4 · D3 · R55 · the ceremony hero is the world's hero", () => {
     expect(heroCellPresent({})).toBe(false);     // and nothing is honestly nothing
   });
 
-  it("the shipped chapter really has the new cells, so this is not a fallback in practice", () => {
-    const dir = path.resolve(__dirname, "../../../../apps/web/public/art/g1/paint/ch01");
+  // L0d · R263: der Ordner ist NICHT mehr ch01. Genau diese Zeile war ein
+  // Beispiel des Befunds: sie pruefte, dass die Zelle DA ist, und sagte damit
+  // ungewollt aus, sie gehoere Kapitel 1. Sie gehoert allen Kapiteln, und der
+  // geteilte Helden-Ordner ist der einzige Ort, an dem das stimmt.
+  it("the shipped chapters really have the new cells, so this is not a fallback in practice", () => {
+    const dir = path.resolve(__dirname, "../../../../apps/web/public/art/g1/paint/hero");
     for (const pose of ["jump", "stand"] as const) {
       expect(fs.existsSync(path.join(dir, `${heroCellFor(pose)}.png`)), `${heroCellFor(pose)}.png is missing`).toBe(true);
     }
