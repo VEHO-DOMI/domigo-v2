@@ -50,6 +50,50 @@ Blätter hinzufügt, hebt sie **im selben PR, mit einem Grund, den ein Prüfer l
 Blätter verdrahtet oder löscht, **senkt sie im selben PR um sein eigenes Delta** — jeder
 Lauf sagt die verbliebene Luft laut an, und der Post-Zug-Eigentümer misst neu.
 
+**★ N7A2c (2026-09-03): 57 tote Blätter — unverändert, und das ist die Aussage.**
+Die Bahn löscht die vier Blätter des Rutschen-Bausatzes (`slide_top`, `slide_mid`,
+`slide_foot`, `slide_under`, zusammen 0,73 MB) und ersetzt ein Blatt am selben Stem
+(`body_p3_westterrasse_rutsche`). Gemessen vor und nach der Löschung: der Stapel
+ging 57 → 61 → 57. Die vier fallen gleichzeitig aus dem Geladenen UND von der
+Platte, deshalb bleibt die Decke bei 57 — sie sinkt **nicht**. Blätter auf der
+Platte: 347 → 343.
+
+⚠ Der Lösch-Wächter hätte sie zunächst **verweigert**: seine Eigentums-Bedingung
+verlangt den Raum im Namen (`_p3`), und `slide_top` trägt keinen. Die Regel schützt
+geteilte Blätter und ist als Namens-Prüfung eine Abkürzung, kein Beweis. Belegt am
+Basis-Commit `da915d35`, mit derselben Rechnung, die auch `check-paint-art` benutzt:
+jedes der vier ist von **genau einer** Stelle geladen (ch01/p3) und von **null**
+Karten. Deshalb steht in `retire-phase-art.mjs` jetzt eine namentliche, datierte
+Ausnahme mit dieser Messung im Grund — und ein zweiter Tamper hält fest, dass eine
+Ausnahme die Verwaisungs-Bedingung niemals aufweichen kann.
+
+Gemessene Phasen-Gewichte, mit demselben Lineal wie `artScope.test.ts`
+(`bytesOf(phaseArtScope(level, ph.id, present)) / 1048576`, über den ganzen
+Kunst-Baum), am Basis-Baum `da915d35` und an dieser Bahn:
+**p1 19,4 · p2 25,2 · p3 21,9 → 21,1 · p4 17,8 · p9 15,1 MB** (Grenze 35).
+Nur p3 bewegt sich, um −0,8 MB: die vier Bausatz-Blätter fallen weg (−0,73 MB), das
+neu gemalte Blatt wiegt 2,29 statt 2,18 MB. Das Lineal ist gegengeprüft — es
+reproduziert die vier unveränderten Zahlen des N7A2b-Blocks auf die Stelle.
+
+**★ N7A2b (2026-09-03): 57 tote Blätter — die Nachmal-Bahn löscht und erzeugt keine.**
+Drei Blätter wurden am selben Stem byte-für-byte ersetzt (`l2_p2`,
+`body_p3_westterrasse_rutsche`, `body_p3_mittelpfeiler`), keines umbenannt, keines
+neu angelegt: die Tot-Liste ist unverändert, die Decke bleibt bei 57.
+
+Gemessene Phasen-Gewichte, mit demselben Lineal wie `artScope.test.ts`
+(`bytesOf(phaseArtScope(level, ph.id, present)) / 1048576`), am Basis-Baum
+`64248a75` und an dieser Bahn:
+**p1 19,4 · p2 25,3 → 25,2 · p3 20,7 → 21,9 · p4 17,8 · p9 15,1 MB** (Grenze 35).
+p3 wächst um 1,2 MB, weil die zwei neu gemalten Böden mehr Malerei tragen als ihre
+Vorgänger (Westterrasse 1,28 → 2,29 MB, Hofmitte 0,46 → 0,71 MB); p2 wird um
+0,1 MB leichter (0,67 → 0,56 MB). Das Lineal ist gegengeprüft: es reproduziert
+`check-perf-budget`s eigene Ausgabe für die schwerste Phase exakt (25,3 bzw. 25,2).
+
+⚠ **Eine Zahl aus dem N7A2-Block darunter reproduziert sich nicht.** Dort steht
+„p3 20,9 → 22,6 MB"; an dem Commit, den jene Bahn hinterlassen hat (`64248a75`),
+misst dasselbe Lineal **20,7 MB**. Genannt, nicht stillschweigend überschrieben —
+die Zahlen dieser Bahn stehen oben und sind an zwei Bäumen gemessen.
+
 **★ N7A2 (2026-09-02): 57 tote Blätter — unverändert, und das ist die Aussage.**
 Der p3-Cutover hat vier Blätter freigegeben (`crust_p3_a/b/cap_l/cap_r`, 0,84 MB)
 und alle vier sind im selben PR gelöscht: die Tot-Liste nach dieser Bahn ist

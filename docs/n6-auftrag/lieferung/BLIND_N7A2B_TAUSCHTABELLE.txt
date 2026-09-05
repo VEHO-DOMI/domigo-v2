@@ -1,0 +1,4 @@
+paar_west: A=nachher  B=vorher
+paar_mitte: A=vorher  B=nachher
+paar_ost: A=nachher  B=vorher
+paar_p2: A=nachher  B=vorher

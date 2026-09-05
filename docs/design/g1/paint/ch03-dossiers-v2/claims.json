@@ -1,0 +1,70 @@
+{
+ "schema": "paintClaims@1",
+ "chapter": "ch03",
+ "note": "L3-G1 · Vokabel-Anspruch von Kapitel 3. GEMESSEN, nicht geschaetzt: die Wortbank g1-u03 traegt 42 Eintraege, davon 20 mit kind wordfile — und NUR die zaehlt das Tor (claimFails baut seine Tabelle aus den wordfile-Eintraegen; jeder Schluessel darueber hinaus ist ein toter Schluessel, D-77). Die 22 phrase-Eintraege (darunter ship, captain, purple, have got / has got) stehen deshalb ABSICHTLICH nicht hier; sie sind Sache der Karten-Erdung, nicht dieses Anspruchs. Kind-Vergabe nach dem, was der gebaute Raum ZEIGT: leg = thing, denn das graue Holzbein am Pier traegt den Stem obj_holzbein und wird per restore-Karte zurueckgeholt (R252). Die uebrigen 19 — Koerperteile und Groessen-Adjektive — tragen kind cards und sind damit ein Vertrag an die T-Bahn (L3-T1): jedes Wort muss in ch03.tasks.v2.json als ANTWORT einer Karte vorkommen, nicht als Ablenker. Solange die Kartendatei fehlt, ueberspringt check-level-design den Abdeckungs-Block NAMENTLICH; diese Datei ist der Vertrag, den T2 einloest, kein bereits gefuehrter Beweis. Wer ein Wort nicht einloesen kann, dreht es auf kind debt mit Grund, statt die Zeile zu loeschen.",
+ "claims": {
+  "finger": {
+   "kind": "cards"
+  },
+  "ear": {
+   "kind": "cards"
+  },
+  "nose": {
+   "kind": "cards"
+  },
+  "hair": {
+   "kind": "cards"
+  },
+  "eye": {
+   "kind": "cards"
+  },
+  "mouth": {
+   "kind": "cards"
+  },
+  "beard": {
+   "kind": "cards"
+  },
+  "right arm": {
+   "kind": "cards"
+  },
+  "left arm": {
+   "kind": "cards"
+  },
+  "shoulder": {
+   "kind": "cards"
+  },
+  "leg": {
+   "kind": "thing",
+   "stems": [
+    "obj_holzbein"
+   ]
+  },
+  "foot": {
+   "kind": "cards"
+  },
+  "feet": {
+   "kind": "cards"
+  },
+  "tooth": {
+   "kind": "cards"
+  },
+  "teeth": {
+   "kind": "cards"
+  },
+  "tall": {
+   "kind": "cards"
+  },
+  "short": {
+   "kind": "cards"
+  },
+  "big": {
+   "kind": "cards"
+  },
+  "small": {
+   "kind": "cards"
+  },
+  "long": {
+   "kind": "cards"
+  }
+ }
+}

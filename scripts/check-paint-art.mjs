@@ -28,7 +28,7 @@ import { PLACEHOLDER_UNTIL, isPlaceholderStem } from "../packages/game-paint/src
 // R5-W1 · E1: the required set and the LOADED set are derived by ONE module,
 // so the gate can no longer demand a stem the loader would never fetch (and
 // vice versa) — Audit A below is that assertion.
-import { allScopePhases, domArtStems, levelRequiredStems, phaseArtScope, phaseRequiredStems } from "../packages/game-paint/src/artScope.ts";
+import { ALWAYS_STEMS, allScopePhases, domArtStems, levelRequiredStems, phaseArtScope, phaseRequiredStems } from "../packages/game-paint/src/artScope.ts";
 import { captiveStem, isCaptiveKey } from "../packages/game-paint/src/artManifest.ts";
 import { entDisplayH } from "../packages/game-paint/src/anim.ts";
 import { keyFringe, readPng } from "./key-fringe.mjs";
@@ -59,14 +59,46 @@ const today = new Date().toISOString().slice(0, 10);
 
 // the parsed non-draft levels, kept for the scope audits
 const levels = [];
+// L0d · R263 · …und JEDES Kapitel, Entwurf eingeschlossen. Die Entwurfs-Ausnahme
+// gilt fuer die WELT (graue Kaesten sind gewollt, solange ein Kapitel im Bau
+// ist), nie fuer die FIGUR: die steht in jedem Bild auf dem Schirm.
+const alleKapitel = [];
 for (const story of fs.existsSync(CONTENT) ? fs.readdirSync(CONTENT) : []) {
   const paintDir = path.join(CONTENT, story, "paint");
   if (!fs.existsSync(paintDir)) continue;
   for (const f of fs.readdirSync(paintDir).filter((x) => x.endsWith(".level.json"))) {
     const level = JSON.parse(fs.readFileSync(path.join(paintDir, f), "utf8"));
+    if (typeof level.chapter === "string") alleKapitel.push({ file: f, chapter: level.chapter, draft: level.draft === true });
     if (level.draft === true) continue;
     levels.push({ file: f, level });
   }
+}
+
+// ── L0d · R263 · DIE KARTE JE KAPITEL, NICHT DIE PLATTE ─────────────────────
+// `present` oben ist die FLACHE Menge ueber den ganzen Kunst-Baum: fuer sie
+// liegt `hero2_run0` da, egal in welchem Ordner. Der ausgelieferte Aufloeser ist
+// ordner-genau — `apps/web/lib/paint-art.ts#artDirsFor` gibt jedem Kapitel
+// GENAU `["hero", chapter]`. Genau diese Luecke ist der Grund, warum kein Tor
+// gesehen hat, dass die 14 hero2-Zellen im Ordner von ch01 lagen und ch02–ch06
+// still den alten Teile-Baukasten zeichneten.
+// Die flache Menge bleibt, wo sie hingehoert (Tot-Kunst, Farbschluessel-Fransen);
+// fuer die Frage „was loest DIESES Kapitel auf" wird hier gespiegelt.
+const blaetterIn = (dir) => {
+  const out = new Set();
+  if (!fs.existsSync(dir)) return out;
+  for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
+    if (e.isFile() && e.name.endsWith(".png")) out.add(e.name.replace(/\.png$/, ""));
+  }
+  return out;
+};
+/** Mirror von artDirsFor: hero (geteilt) zuerst, dann der Kapitel-Ordner. */
+const KAPITEL_ORDNER = ["hero"];
+const praesentJeKapitel = new Map();
+for (const { chapter } of alleKapitel) {
+  if (praesentJeKapitel.has(chapter)) continue;
+  const menge = new Set();
+  for (const dir of [...KAPITEL_ORDNER, chapter]) for (const s of blaetterIn(path.join(ART_ROOT, dir))) menge.add(s);
+  praesentJeKapitel.set(chapter, menge);
 }
 
 /** die MB-Summe der toten Blaetter — Platte, deshalb ausserhalb der reinen Funktion */
@@ -85,9 +117,11 @@ const bytesOfDead = (dead) => {
  *
  * @param {{levels:{file:string,level:object}[], present:Set<string>,
  *          allow:{stem:string,reason?:string,until?:string}[], today:string,
- *          deadCeiling:number, bytesOfDead?:(dead:string[])=>string}} welt
+ *          deadCeiling:number, bytesOfDead?:(dead:string[])=>string,
+ *          alleKapitel:{file:string,chapter:string,draft:boolean}[],
+ *          praesentJeKapitel:Map<string,Set<string>>}} welt
  */
-export const analyse = ({ levels, present, allow, today, deadCeiling, bytesOfDead = () => "? MB" }) => {
+export const analyse = ({ levels, present, allow, today, deadCeiling, bytesOfDead = () => "? MB", alleKapitel = [], praesentJeKapitel = new Map() }) => {
     const allowByStem = new Map(allow.map((a) => [a.stem, a]));
     const failures = [];
     const warnings = [];
@@ -177,7 +211,33 @@ export const analyse = ({ levels, present, allow, today, deadCeiling, bytesOfDea
   }
 
 
-  return { failures, warnings, required, dead };
+  // ── L0d · R263 · AUDIT C · DER HELD GEHOERT ALLEN KAPITELN ─────────────────
+  // Jedes Kapitel — auch ein Entwurf — muss JEDEN `ALWAYS_STEM` in seiner
+  // EIGENEN Kunst-Karte aufloesen. Das ist die einzige Schicht dieses Tors, die
+  // ordner-genau misst; alle anderen fragen die flache Platte.
+  //
+  // Warum es das Gesetz braucht: die Figur ist keine Kapitel-Kunst. Ein Kapitel
+  // im Bau darf graue Kaesten haben — es darf nicht den falschen Jungen haben.
+  // Und der Rueckfall auf den Teile-Baukasten ist zur Laufzeit kein Fehler,
+  // sondern ein anderes Bild (`PaintScene`, Full-Pose-Block): ohne dieses Tor
+  // sieht ihn niemand ausser einem Menschen, der genau hinschaut.
+  const heldenZeilen = [];
+  for (const { file, chapter, draft } of alleKapitel) {
+    const karte = praesentJeKapitel.get(chapter) ?? new Set();
+    const fehlt = ALWAYS_STEMS.filter((stem) => !karte.has(stem));
+    heldenZeilen.push(`${chapter}${draft ? " (Entwurf)" : ""}: ${ALWAYS_STEMS.length - fehlt.length}/${ALWAYS_STEMS.length}`);
+    if (fehlt.length === 0) continue;
+    fail(
+      `HELD FEHLT in ${chapter}${draft ? " (Entwurf — die Ausnahme gilt fuer die Welt, nicht fuer die Figur)" : ""}: `
+        + `${fehlt.length} von ${ALWAYS_STEMS.length} Helden-Blaettern loest dieses Kapitel nicht auf `
+        + `(${fehlt.slice(0, 6).join(", ")}${fehlt.length > 6 ? ", …" : ""}). `
+        + `Der Aufloeser gibt ${chapter} genau die Ordner art/g1/paint/{hero,${chapter}} `
+        + `(apps/web/lib/paint-art.ts#artDirsFor) — ein Helden-Blatt gehoert nach hero/, `
+        + `sonst zeichnet ${chapter} still den alten Teile-Baukasten (${file}, L0d · R263)`,
+    );
+  }
+
+  return { failures, warnings, required, dead, heldenZeilen };
 };
 
 // ── SELBSTTEST ───────────────────────────────────────────────────────────────
@@ -186,11 +246,20 @@ export const analyse = ({ levels, present, allow, today, deadCeiling, bytesOfDea
 // rot und beweist ueber das gemeinte nichts). Der fuenfte Fall ist der
 // wichtigste: unverfaelscht muss der Stand gruen sein.
 if (process.argv.includes("--selftest")) {
-  const welt = { levels, present, allow, today, deadCeiling: DEAD_ART_CEILING, bytesOfDead };
+  const welt = { levels, present, allow, today, deadCeiling: DEAD_ART_CEILING, bytesOfDead, alleKapitel, praesentJeKapitel };
   // ein Stem, den ein Level WIRKLICH verlangt und der WIRKLICH liegt — nicht geraten
   const { required: echtGefordert } = analyse(welt);
   const echterStem = [...echtGefordert.keys()].find((s) => present.has(s));
   if (echterStem === undefined) throw new Error("kein geforderter Stem liegt — der Selbsttest kann nicht bauen");
+  // L0d: das Kapitel und das Blatt fuer den Helden-Fall werden GESUCHT, nicht
+  // getippt — ein Selbsttest, der sich seine Fixture aus dem Bestand holt, wird
+  // sonst blind, sobald der Bestand sich dreht (N7A2-Falle, 02.09.). Bevorzugt
+  // ein Entwurf, weil dort die Blindheit sass; sonst irgendein Kapitel.
+  const tamperKapitel = (alleKapitel.find((k) => k.draft) ?? alleKapitel[0])?.chapter ?? null;
+  const tamperStem = ALWAYS_STEMS.find((x) => x.startsWith("hero2_")) ?? ALWAYS_STEMS[0];
+  if (tamperKapitel !== null && !(praesentJeKapitel.get(tamperKapitel) ?? new Set()).has(tamperStem)) {
+    throw new Error(`der Selbsttest kann nichts wegnehmen: ${tamperKapitel} loest ${tamperStem} schon jetzt nicht auf`);
+  }
 
   const faelle = [
     ["ein gefordertes Blatt fehlt auf der Platte", () => {
@@ -212,6 +281,19 @@ if (process.argv.includes("--selftest")) {
       for (let i = 0; i <= 0; i++) mehr.add(`w6_selftest_totes_blatt_${i}`);
       return analyse({ ...welt, present: mehr });
     }, `the ceiling is ${DEAD_ART_CEILING}`],
+
+    // L0d · R263 · der Fall, den es vor dieser Bahn nicht gab. Verfaelscht wird
+    // die KAPITEL-KARTE (der Messwert), nicht das Gesetz: einem Kapitel wird
+    // genau ein Helden-Blatt weggenommen. Bevorzugt einem ENTWURF, denn genau
+    // dort war das Tor blind — es hat Entwurfs-Kapitel gar nicht erst gelesen.
+    [`ein Kapitel loest ein Helden-Blatt nicht auf${tamperKapitel === null ? " (kein Kapitel auf der Platte — uebersprungen)" : ""}`, () => {
+      if (tamperKapitel === null) return { failures: [] };
+      const karten = new Map(praesentJeKapitel);
+      const ohne = new Set(karten.get(tamperKapitel));
+      ohne.delete(tamperStem);
+      karten.set(tamperKapitel, ohne);
+      return analyse({ ...welt, praesentJeKapitel: karten });
+    }, tamperKapitel === null ? null : `HELD FEHLT in ${tamperKapitel}`],
 
     ["NICHT-TAMPER: der echte Stand ist gruen", () => analyse(welt), null],
   ];
@@ -244,15 +326,19 @@ if (process.argv.includes("--selftest")) {
     }
   }
   if (schlecht > 0) { console.error("check-paint-art --selftest: FEHLGESCHLAGEN"); process.exit(1); }
-  console.log(`check-paint-art --selftest: OK — ${faelle.length} Faelle, vier rote Lichter an der `
-    + `eingespeisten Stelle, der echte Stand gruen (Decke ${DEAD_ART_CEILING})`);
+  console.log(`check-paint-art --selftest: OK — ${faelle.length} Faelle, fuenf rote Lichter an der `
+    + `eingespeisten Stelle, der echte Stand gruen (Decke ${DEAD_ART_CEILING}; `
+    + `Helden-Fall an ${tamperKapitel ?? "keinem Kapitel"} / ${tamperStem})`);
   process.exit(0);
 }
 
 // ── ECHTER LAUF ──────────────────────────────────────────────────────────────
-const { failures: mengenFehler, warnings, required } = analyse({
-  levels, present, allow, today, deadCeiling: DEAD_ART_CEILING, bytesOfDead,
+const { failures: mengenFehler, warnings, required, heldenZeilen } = analyse({
+  levels, present, allow, today, deadCeiling: DEAD_ART_CEILING, bytesOfDead, alleKapitel, praesentJeKapitel,
 });
+// L0d: die Helden-Bilanz steht VOR dem Urteil — ein Bericht, den nur ein gruener
+// Lauf zeigt, fehlt genau dann, wenn jemand ihn braucht (L0-Falle, 02.09.).
+console.log(`check-paint-art: Helden-Blaetter je Kapitel — ${heldenZeilen.join(" · ")}`);
 for (const w of warnings) console.warn(w);
 let failures = 0;
 const fail = (msg) => { failures++; console.error(`✗ ${msg}`); };

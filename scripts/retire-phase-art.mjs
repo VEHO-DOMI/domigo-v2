@@ -71,15 +71,44 @@ export const loadedStems = (lvls, present) => {
 };
 
 /** Das Urteil je Stem — als Funktion, damit der Selbsttest sie ohne Platte fahren kann. */
+/**
+ * ★ N7A2c · NAMENTLICHE AUSNAHMEN VON BEDINGUNG 1 (Eigentum).
+ *
+ * Bedingung 1 verlangt den Raum IM NAMEN. Das ist eine ABKUERZUNG, kein Beweis:
+ * sie schuetzt zuverlaessig vor geteilten Blaettern (`mass_body_a` gehoert p3 UND
+ * p4 UND p9), sagt aber nichts ueber ein Blatt, das GEMESSEN genau einem Raum
+ * gehoert und trotzdem keinen Raum im Namen traegt. Genau so ein Fall ist der
+ * Vierteile-Rutschen-Bausatz: er hiess nie `slide_p3_*`.
+ *
+ * Eine Ausnahme steht deshalb NAMENTLICH, mit Datum und mit der Messung im
+ * Grund — und sie kann Bedingung 2 (VERWAIST) niemals aufweichen. Sie hebt
+ * allein die Namens-Abkuerzung auf; ob noch jemand das Blatt laedt, entscheidet
+ * weiterhin die Rechnung, nicht diese Tabelle. Der Selbsttest haelt das fest.
+ */
+export const EIGENTUM_AUSNAHMEN = {
+  slide_top: { phase: "p3", seit: "2026-09-03", why: "Rutschen-Bausatz, R264/N7A2c. Am Basis-Commit da915d35 gemessen: von GENAU EINER Stelle geladen (ch01/p3) und von 0 Karten; COMPOSITION hat eine einzige Kapitel-Tabelle, und nur ch01/p3 hat je ein slide deklariert. Der Hof malt seine fuenf z-Zellen jetzt selbst" },
+  slide_mid: { phase: "p3", seit: "2026-09-03", why: "wie slide_top — und zusaetzlich: p3 hat dieses Blatt GELADEN und NIE gezeichnet (die fuenf z-Zellen zerfallen in vier Laeufe, drei davon einzellig: 4x slideTop + 1x slideFoot + 0x slideMid)" },
+  slide_foot: { phase: "p3", seit: "2026-09-03", why: "wie slide_top" },
+  slide_under: { phase: "p3", seit: "2026-09-03", why: "wie slide_top — die Strebe unter der Rutschbahn" },
+};
+
 export const judgeRetirement = (stem, phase, loaded) => {
-  const owns = stem.includes(`_${phase}_`) || stem.endsWith(`_${phase}`);
+  const ausnahme = EIGENTUM_AUSNAHMEN[stem];
+  const owns = stem.includes(`_${phase}_`) || stem.endsWith(`_${phase}`)
+    || (ausnahme !== undefined && ausnahme.phase === phase);
   if (!owns) return { ok: false, why: `traegt "${phase}" nicht im Namen — ein geteiltes Blatt faellt nie mit EINEM Raum` };
+  // Bedingung 2 steht IMMER, auch fuer eine Ausnahme — sie ist die Rechnung.
   if (loaded.has(stem)) return { ok: false, why: "wird noch geladen (ein Raum oder eine Karte fragt danach)" };
-  return { ok: true, why: `gehoert ${phase} und wird von nichts mehr geladen` };
+  return {
+    ok: true,
+    why: ausnahme === undefined
+      ? `gehoert ${phase} und wird von nichts mehr geladen`
+      : `namentliche Ausnahme seit ${ausnahme.seit} und wird von nichts mehr geladen`,
+  };
 };
 
 const selftest = () => {
-  const geladen = new Set(["body_p3_westterrasse_rutsche", "mass_body_a", "crust_p4_a"]);
+  const geladen = new Set(["body_p3_westterrasse_rutsche", "mass_body_a", "crust_p4_a", "slide_under"]);
   const faelle = [
     ["crust_p3_a", "p3", true, "verwaistes Blatt des eigenen Raums"],
     ["crust_p3_cap_l", "p3", true, "dito, mit Zusatz im Namen"],
@@ -88,6 +117,10 @@ const selftest = () => {
     ["body_p3_westterrasse_rutsche", "p3", false, "gehoert p3, wird aber LEBEND geladen"],
     ["crust_p4_a", "p3", false, "fremder Raum"],
     ["terrain_join_bookbinder", "p3", false, "geteiltes Verbindungsstueck"],
+    // ★ N7A2c · die namentliche Ausnahme, in beide Richtungen geprueft.
+    ["slide_top", "p3", true, "Ausnahme: gemessen genau EINEM Raum gehoerig, ohne Raum im Namen"],
+    ["slide_top", "p9", false, "die Ausnahme gilt nur fuer ihren eigenen Raum"],
+    ["slide_under", "p3", false, "Ausnahme — aber noch GELADEN: Bedingung 2 schlaegt sie"],
   ];
   for (const [stem, phase, erwartet, wieso] of faelle) {
     const u = judgeRetirement(stem, phase, geladen);
@@ -102,7 +135,16 @@ const selftest = () => {
     console.error("✗ Selbsttest-TAMPER: ohne die Eigentums-Bedingung muesste ein geteiltes Blatt durchfallen — tut es nicht");
     return 1;
   }
-  console.log(`retire-phase-art: Selbsttest OK — ${faelle.length} Urteile (2 Freigaben, 5 Verweigerungen) + 1 Tamper`);
+  // ★ Tamper 2: eine Ausnahme darf Bedingung 2 nicht aufweichen. Waere sie
+  // VORGESCHALTET statt nachgeordnet, fiele ein LEBENDES Blatt von der Platte.
+  const ausnahmeVorschaltung = (stem, phase, loaded) =>
+    EIGENTUM_AUSNAHMEN[stem]?.phase === phase ? { ok: true } : { ok: !loaded.has(stem) };
+  if (ausnahmeVorschaltung("slide_under", "p3", geladen).ok !== true) {
+    console.error("✗ Selbsttest-TAMPER 2: eine vorgeschaltete Ausnahme muesste ein geladenes Blatt freigeben — tut sie nicht");
+    return 1;
+  }
+  const freigaben = faelle.filter(([, , e]) => e).length;
+  console.log(`retire-phase-art: Selbsttest OK — ${faelle.length} Urteile (${freigaben} Freigaben, ${faelle.length - freigaben} Verweigerungen) + 2 Tamper`);
   return 0;
 };
 

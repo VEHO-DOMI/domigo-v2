@@ -1,0 +1,3 @@
+spiel: A = NACHHER · B = VORHER
+blatt: A = VORHER · B = NACHHER
+kontrolle: A = NACHHER · B = VORHER

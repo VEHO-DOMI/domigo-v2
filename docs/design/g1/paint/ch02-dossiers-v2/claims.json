@@ -1,0 +1,67 @@
+{
+ "schema": "paintClaims@1",
+ "chapter": "ch02",
+ "note": "L2-P1 (2026-09-03) · Vokabel-Ansprüche des Zoo-Kapitels. Klassen wie ch01 (being/thing/architecture/cards/pickup/debt; Bedeutung im Tor). p1 gebaut: dog, penguin (being), ticket (thing). p2/p3/Arena-Wesen als debt bis L2-G2. ★ L2-T1 (2026-09-04, Rebase-Sitz): die sechs Ortswort-Ausnahmen sind GEFALLEN — die Karten von PR #398 lassen alle sechs ANTWORTEN, und Gesetz D-77 verlangt dann, dass die Ausnahme weicht (check-level-design nannte genau diese sechs Wörter namentlich). Gestrichen wurde, was das Tor benannt hat, nichts sonst.",
+ "claims": {
+  "tree": {
+   "kind": "architecture",
+   "stems": [],
+   "note": "Prop der Bühne 1 (Krone r14 c22–26, Stamm c24) — Gitter-Geometrie; Kunst-Zeit"
+  },
+  "monkey": {
+   "kind": "debt",
+   "stems": [],
+   "note": "Wesen/Prop von p2/p3/Arena — L2-G2 setzt den Stem (Blaupause §2)"
+  },
+  "parrot": {
+   "kind": "debt",
+   "stems": [],
+   "note": "Wesen/Prop von p2/p3/Arena — L2-G2 setzt den Stem (Blaupause §2)"
+  },
+  "giraffe": {
+   "kind": "debt",
+   "stems": [],
+   "note": "Wesen/Prop von p2/p3/Arena — L2-G2 setzt den Stem (Blaupause §2)"
+  },
+  "train": {
+   "kind": "debt",
+   "stems": [],
+   "note": "Wesen/Prop von p2/p3/Arena — L2-G2 setzt den Stem (Blaupause §2)"
+  },
+  "penguin": {
+   "kind": "being",
+   "stems": [
+    "pinguin",
+    "pinguin_rutscher"
+   ]
+  },
+  "guide": {
+   "kind": "debt",
+   "stems": [],
+   "note": "Wesen/Prop von p2/p3/Arena — L2-G2 setzt den Stem (Blaupause §2)"
+  },
+  "lion": {
+   "kind": "debt",
+   "stems": [],
+   "note": "Wesen/Prop von p2/p3/Arena — L2-G2 setzt den Stem (Blaupause §2)"
+  },
+  "next to": {
+   "kind": "cards"
+  },
+  "in": {
+   "kind": "cards"
+  },
+  "behind": {
+   "kind": "cards"
+  },
+  "under": {
+   "kind": "cards"
+  },
+  "on": {
+   "kind": "cards"
+  },
+  "in front of": {
+   "kind": "cards"
+  }
+ }
+}
