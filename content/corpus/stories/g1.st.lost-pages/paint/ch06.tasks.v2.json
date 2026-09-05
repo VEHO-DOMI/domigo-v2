@@ -1,0 +1,375 @@
+{
+  "schema": "gameTasks@2",
+  "chapter": "ch06",
+  "unit": "g1-u06",
+  "note": "ENTWURF · elf Exemplar-Karten · Welle T2 folgt. Eine je Maschine/Pool des Kapitels, als Kalibrierstueck nach dem Kalibrier-Gesetz (Rahmen §5). Die drei wahren Hinweis-Saetze sind der Vertrag zwischen T-Bahn, G-Bahn und Boss.",
+  "items": [
+    {
+      "id": "g1.paint.ch06.spur.street",
+      "use": "pickupset",
+      "kind": "choice",
+      "form": "name-it",
+      "exercises": [
+        "g1u06.w.street"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Ein zerrissener Zettel in Mos krakeliger Handschrift."
+      },
+      "storyDe": "Welches Wort fehlt auf dem Schnipsel?",
+      "promptEn": "Mo runs down the ___.",
+      "options": [
+        "street",
+        "river",
+        "park"
+      ],
+      "answer": "street",
+      "skins": [
+        "schnipsel"
+      ],
+      "phases": [
+        "p1"
+      ],
+      "hints": {
+        "deDesc": "Da, wo die Marktstände stehen.",
+        "deWord": "Auf Deutsch: die Straße."
+      },
+      "grounding": "WB Word File 'Around town' (Buch S. 57): street. Der wahre Hinweis 1 des Kapitels lautet 'Mo runs down the street.' (SB S. 46: 'He runs down the street.') — die Karte öffnet beim dritten frischen Schnipsel-Fund, answer == cloth.wordEn (D-931)."
+    },
+    {
+      "id": "g1.paint.ch06.door.p1.exit",
+      "use": "door",
+      "kind": "choice",
+      "form": "social-formula",
+      "exercises": [
+        "g1u06.w.come-on"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Mo bleibt am Tor stehen und schaut zu dir zurück.",
+        "art": "door_a"
+      },
+      "storyDe": "Er soll weiter! Was rufst du ihm zu?",
+      "options": [
+        "Help me!",
+        "Well done.",
+        "Come on!"
+      ],
+      "answer": "Come on!",
+      "skins": [
+        "door"
+      ],
+      "phases": [
+        "p1"
+      ],
+      "hints": {
+        "deDesc": "Du willst, dass er mitkommt."
+      },
+      "grounding": "SB S. 48, Lied 'Call Groans': 'Call Sherlock Groans. Come on, come on!' — Ausruf-Serie des Kapitels: Come on! ist GENAU EINMAL Antwort einer Tuer-Karte (p1-Ausgang). · Als-gebaut: stimulus.art ist Pflicht, weil door_a.png existiert (check-game-tasks#checkPortraits misst den Kunst-Baum FLACH). Das Blatt liegt aber in art/g1/paint/ch01/, und der Auflöser gibt jedem Kapitel nur [hero, chapter] (paint-art.ts#artDirsFor) — ch06 kann es nicht laden und rendert den grauen Platzhalter. Gemeldet als D-935 (dieselbe Klasse wie R263, eine Schicht höher)."
+    },
+    {
+      "id": "g1.paint.ch06.enc.marktwagen.k1",
+      "use": "encounter",
+      "kind": "choice",
+      "form": "pick-correct-form",
+      "exercises": [
+        "g1u06.s.present-simple",
+        "g1u06.w.street"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Der Markt-Wagen rollt allein die Gasse hinab."
+      },
+      "storyDe": "Nur EIN Satz stimmt — welcher?",
+      "options": [
+        "It runs down the street.",
+        "It run down the street.",
+        "They runs down the street."
+      ],
+      "answer": "It runs down the street.",
+      "skins": [
+        "marktwagen"
+      ],
+      "phases": [
+        "p1"
+      ],
+      "hints": {
+        "deDesc": "Ein Ding, ein Verb — was hängt hinten dran?"
+      },
+      "grounding": "SB S. 50 Grammatik-Kasten: 'Wenn du über eine Person, ein Tier oder ein Ding sprichst, dann musst du beim Verb ein -s anhängen' (He lives in London). Steht NACH der Regel-Seite present-simple in p1 (D-785)."
+    },
+    {
+      "id": "g1.paint.ch06.enc.obststand.k1",
+      "use": "encounter",
+      "kind": "choice",
+      "form": "count-it",
+      "exercises": [
+        "g1u06.w.a-lot-of-lots-of",
+        "g1u06.s.a-lot-of"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Der Obststand quillt über vor Äpfeln."
+      },
+      "storyDe": "So viele Äpfel! Was sagst du?",
+      "options": [
+        "a lot of apples",
+        "a lots of apples",
+        "lot of apples"
+      ],
+      "answer": "a lot of apples",
+      "skins": [
+        "obststand"
+      ],
+      "phases": [
+        "p1"
+      ],
+      "hints": {
+        "deDesc": "Zwei kleine Wörter gehören davor."
+      },
+      "grounding": "SB S. 50: 'Für viel/viele kannst du im Englischen sowohl a lot of als auch lots of verwenden' (a lot of books / lots of books). Steht NACH der Regel-Seite a-lot-of in p1 (D-785)."
+    },
+    {
+      "id": "g1.paint.ch06.rsc.beweisglas.umbrella",
+      "use": "rescue",
+      "kind": "choice",
+      "form": "state-it",
+      "exercises": [
+        "g1u06.x.beweisstuecke"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Im Beweis-Glas steckt ein Regenschirm, ganz grau."
+      },
+      "storyDe": "Was steckt im Glas? Sag es auf Englisch!",
+      "options": [
+        "It's a mirror.",
+        "It's a hat.",
+        "It's an umbrella."
+      ],
+      "answer": "It's an umbrella.",
+      "skins": [
+        "beweisglas"
+      ],
+      "phases": [
+        "p1"
+      ],
+      "hints": {
+        "deDesc": "Damit bleibst du im Regen trocken."
+      },
+      "grounding": "WB S. 50, Übung 5: 'Where is my umbrella? Is it in the woods? Is it in the park?' — der Regenschirm ist Kokis Arbeitsstand-Insasse fuer Käfig #1 (G1s Level: captive 'umbrella'). Die Familie kaefig-nennt-den-insassen erlaubt das deutsche Nennen (D-34); das Nomen steht in ch06.policy.json unter nounDe.captives."
+    },
+    {
+      "id": "g1.paint.ch06.door.p1.haus7",
+      "use": "door",
+      "kind": "wheel",
+      "form": "number-transcode",
+      "exercises": [
+        "g1u06.x.numbers"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Eine gemalte Haustür trägt eine große Zahl."
+      },
+      "storyDe": "Mo wohnt hier. Sag die Nummer auf Englisch!",
+      "variant": "digit-to-word",
+      "shown": "7",
+      "values": [
+        "seven",
+        "six",
+        "nine"
+      ],
+      "answer": "seven",
+      "skins": [
+        "haustuer"
+      ],
+      "phases": [
+        "p1"
+      ],
+      "hints": {
+        "deDesc": "Zähl nach: eins, zwei, drei ..."
+      },
+      "grounding": "SB S. 48: 'He lives at 221B Baker Street in London' — die Hausnummern der Markt-Gassen. Zahlen sind u01-Klasse (kumulatives Lexikon); die Welt-Zahl wird gedreht, nie getippt (Rahmen §3)."
+    },
+    {
+      "id": "g1.paint.ch06.awk.tammo.r1",
+      "use": "rescue",
+      "kind": "choice",
+      "form": "state-it",
+      "exercises": [
+        "g1u06.s.present-simple",
+        "g1u06.w.office"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Ein Fuß schon draußen, hinter Tammo das leere Büro."
+      },
+      "storyDe": "Was tut er? Sag es auf Englisch!",
+      "options": [
+        "He leaves the office.",
+        "He looks in the mirror.",
+        "He climbs up a tree."
+      ],
+      "answer": "He leaves the office.",
+      "skins": [
+        "tammo"
+      ],
+      "phases": [
+        "p2"
+      ],
+      "hints": {
+        "deDesc": "Schau, wohin er geht."
+      },
+      "grounding": "WB Word File (Buch S. 57): to leave the office; SB S. 46 'Doctor Grey leaves the office and closes the door.' R240: Tammo sitzt in Mos Büro, 'I can leave the office!' bleibt. Die Pose ist der Prompt (doc 44 §3.3)."
+    },
+    {
+      "id": "g1.paint.ch06.qf.zettelwirbel.o1",
+      "use": "quickfire",
+      "kind": "oddone",
+      "form": "belongs-or-not",
+      "exercises": [
+        "g1u06.s.present-simple",
+        "g1u06.w.street"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Drei Zettel wirbeln dir um den Kopf."
+      },
+      "storyDe": "Ein Zettel ist gefälscht. Welcher?",
+      "select": "odd",
+      "items": [
+        "Mo runs down the street.",
+        "Mo runs down the river.",
+        "Mo looks for his hat in the park."
+      ],
+      "correct": [
+        "Mo runs down the river."
+      ],
+      "skins": [
+        "zettelwirbel"
+      ],
+      "phases": [
+        "p3"
+      ],
+      "hints": {
+        "deDesc": "Zwei Zettel hast du selbst gefunden."
+      },
+      "grounding": "Die zwei wahren Hinweise des Kapitels (Blaupause §1) gegen die Fälschung, die das Notizbuch in der Arena auf seine Seite kritzelt (Fenster W2). SB S. 46: 'He runs down the street.' — der Fluss steht nirgends. Umgebaut nach der blinden Runde 1: beide Löser waren unsicher, weil 'runs down the street' selbst zur Hut-Suche gehören konnte."
+    },
+    {
+      "id": "g1.paint.ch06.boss.me1",
+      "use": "boss",
+      "kind": "mistake",
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Das Notizbuch kritzelt groß auf seine Seite."
+      },
+      "storyDe": "Ein Wort stimmt nicht — tipp es an!",
+      "sentence": [
+        "Mo",
+        "runs",
+        "down",
+        "the",
+        "river",
+        "."
+      ],
+      "errorIndex": 4,
+      "fix": {
+        "mode": "replace",
+        "correction": "street"
+      },
+      "correctionOptions": [
+        "street",
+        "tree",
+        "office"
+      ],
+      "evidence": [
+        "Mo runs down the river."
+      ],
+      "skins": [
+        "notizbuch"
+      ],
+      "phases": [
+        "p4"
+      ],
+      "hints": {
+        "deDesc": "Wo läuft Mo wirklich entlang?"
+      },
+      "grounding": "Fenster W2 der Blaupause §5: das Notizbuch schreibt den falschen Hinweis 1 auf seine Seite, das Kind stellt den wahren her (SB S. 46: 'He runs down the street'). Punkt als eigener Chip wie ch01s boss.m1."
+    },
+    {
+      "id": "g1.paint.ch06.enc.amtsstempel.or1",
+      "use": "encounter",
+      "kind": "order",
+      "form": "ask-it",
+      "exercises": [
+        "g1u06.w.park",
+        "g1u06.s.present-simple"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Der Amts-Stempel hat den Hinweis zerstückelt."
+      },
+      "storyDe": "Bring die Teile in die richtige Reihenfolge!",
+      "orderedChips": [
+        "Mo",
+        "looks for",
+        "his hat",
+        "in the park."
+      ],
+      "skins": [
+        "amtsstempel"
+      ],
+      "phases": [
+        "p2"
+      ],
+      "hints": {
+        "deDesc": "Wer zuerst, dann was er tut, dann wo."
+      },
+      "grounding": "Der wahre Hinweis 2 des Kapitels (Blaupause §1), wortgleich mit dem Buch: WB MORE Words (Buch S. 57) 'to look for — He looks for his hat in the park.'"
+    },
+    {
+      "id": "g1.paint.ch06.door.p2.me1",
+      "use": "door",
+      "kind": "memory",
+      "form": "pair-it",
+      "exercises": [
+        "g1u06.s.present-simple"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "An Mos Bürotür klebt ein Zettel-Wirrwarr.",
+        "art": "door_a"
+      },
+      "storyDe": "Finde zu jedem Verb seine er/sie/es-Form!",
+      "pairs": [
+        {
+          "a": "go",
+          "b": "goes"
+        },
+        {
+          "a": "watch",
+          "b": "watches"
+        },
+        {
+          "a": "catch",
+          "b": "catches"
+        },
+        {
+          "a": "carry",
+          "b": "carries"
+        }
+      ],
+      "skins": [
+        "door"
+      ],
+      "phases": [
+        "p2"
+      ],
+      "hints": {
+        "deDesc": "Vier Paare, jedes gehört zusammen."
+      },
+      "grounding": "SB S. 50 Grammatik-Kasten 'Achtung': go — goes, carry — carries, watch — watches, catch — catches. Tür-Karten sind von der Ein-Stimme-Regel 14a ausgenommen (variety.ts, Kommentar zu 14a), deshalb trägt die Bürotür die pair-it-Maschine. · Als-gebaut: stimulus.art ist Pflicht, weil door_a.png existiert (check-game-tasks#checkPortraits misst den Kunst-Baum FLACH). Das Blatt liegt aber in art/g1/paint/ch01/, und der Auflöser gibt jedem Kapitel nur [hero, chapter] (paint-art.ts#artDirsFor) — ch06 kann es nicht laden und rendert den grauen Platzhalter. Gemeldet als D-935 (dieselbe Klasse wie R263, eine Schicht höher)."
+    }
+  ]
+}
