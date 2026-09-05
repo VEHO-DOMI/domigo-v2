@@ -1,7 +1,7 @@
 {
  "schema": "paintClaims@1",
  "chapter": "ch04",
- "note": "L4-G1 · DIE VOKABEL-ANSPRUECHE VON ch04 (Form: ch01-dossiers-v2/claims.json). Klassen wie im Tor: being/thing/architecture/cards/pickup/debt. Drei Gefuehle haben ein Wesen IM Level (happy/sad/tired) und stehen deshalb als being; die sieben Wochentage sind als die sieben Waggons in die Welt gebaut (architecture); die uebrigen Gefuehle und die vier weiteren Tageszeiten werden ueber Karten erworben und tragen eine DATIERTE Ausnahme, weil ihre Karten erst mit L4-T2 entstehen. ⚠ HANDOVER an L4-T1/L4-T2: sobald eine Karte eines dieser Woerter ANTWORTEN laesst, meldet check-level-design die Ausnahme als ueberfluessig (Regel b) — dann die Ausnahme in DIESER Datei entfernen, nicht das Tor umgehen.",
+ "note": "L4-G1 · DIE VOKABEL-ANSPRUECHE VON ch04 (Form: ch01-dossiers-v2/claims.json). Klassen wie im Tor: being/thing/architecture/cards/pickup/debt. Drei Gefuehle haben ein Wesen IM Level (happy/sad/tired) und stehen deshalb als being; die sieben Wochentage sind als die sieben Waggons in die Welt gebaut (architecture); die uebrigen Gefuehle und die vier weiteren Tageszeiten werden ueber Karten erworben. L4-T1 (2026-09-04): die elf Exemplar-Karten beantworten angry, excited, cold, hot, bored — ihre DATIERTEN Ausnahmen sind damit tot und hier entfernt (check-level-design Regel b, D-77; gemessen: fuenf rote Zeilen vor der Loeschung, exit 0 danach). 8 Ansprueche tragen weiter eine Ausnahme (lunchtime, afternoon, evening, night, scared, hungry, nervous, proud), weil ihre Karten erst mit L4-T2 entstehen. ⚠ HANDOVER an L4-T2: sobald eine Karte eines dieser Woerter ANTWORTEN laesst, meldet check-level-design die Ausnahme als ueberfluessig (Regel b) — dann die Ausnahme in DIESER Datei entfernen, nicht das Tor umgehen.",
  "claims": {
   "happy": {
    "kind": "being",
@@ -76,12 +76,7 @@
    "stems": [
     "gesichtsloser",
     "phonebox"
-   ],
-   "exception": {
-    "why": "die Karte dazu schreibt L4-T2 (Blaupause L4 v5 §6: restore ×6, rescue ×11); G1 baut nur p1 und die Geruest-Wesen, das Wort hat im Level noch keinen Traeger",
-    "expires": "2026-12-31",
-    "owner": "L4-T2"
-   }
+   ]
   },
   "scared": {
    "kind": "cards",
@@ -100,36 +95,21 @@
    "stems": [
     "gesichtsloser",
     "phonebox"
-   ],
-   "exception": {
-    "why": "die Karte dazu schreibt L4-T2 (Blaupause L4 v5 §6: restore ×6, rescue ×11); G1 baut nur p1 und die Geruest-Wesen, das Wort hat im Level noch keinen Traeger",
-    "expires": "2026-12-31",
-    "owner": "L4-T2"
-   }
+   ]
   },
   "cold": {
    "kind": "cards",
    "stems": [
     "gesichtsloser",
     "phonebox"
-   ],
-   "exception": {
-    "why": "die Karte dazu schreibt L4-T2 (Blaupause L4 v5 §6: restore ×6, rescue ×11); G1 baut nur p1 und die Geruest-Wesen, das Wort hat im Level noch keinen Traeger",
-    "expires": "2026-12-31",
-    "owner": "L4-T2"
-   }
+   ]
   },
   "hot": {
    "kind": "cards",
    "stems": [
     "gesichtsloser",
     "phonebox"
-   ],
-   "exception": {
-    "why": "die Karte dazu schreibt L4-T2 (Blaupause L4 v5 §6: restore ×6, rescue ×11); G1 baut nur p1 und die Geruest-Wesen, das Wort hat im Level noch keinen Traeger",
-    "expires": "2026-12-31",
-    "owner": "L4-T2"
-   }
+   ]
   },
   "hungry": {
    "kind": "cards",
@@ -148,12 +128,7 @@
    "stems": [
     "gesichtsloser",
     "phonebox"
-   ],
-   "exception": {
-    "why": "die Karte dazu schreibt L4-T2 (Blaupause L4 v5 §6: restore ×6, rescue ×11); G1 baut nur p1 und die Geruest-Wesen, das Wort hat im Level noch keinen Traeger",
-    "expires": "2026-12-31",
-    "owner": "L4-T2"
-   }
+   ]
   },
   "nervous": {
    "kind": "cards",

@@ -1406,6 +1406,11 @@ ch06 D-920…949.** Der Level-1-Sitz hält D-950…979 (nicht hier).
 ### LW · ch04 (D-860…889)
 #### L4-G
 #### L4-T
+**L4-T1 (2026-09-04, ch04-Kartenbahn, PR `L4-T1:` #395).** Ein Befund der Kartenbahn, dessen Fix in einer fremden Bahn liegt (R268); je Befund führt die niedrigste Nummer (R253).
+
+| D | Befund | Beleg | Stand/Fix | Status · Datum | Quelle |
+|---|---|---|---|---|---|
+| D-881 | **Ein Entwurfs-Kapitel hatte für eine `restore`-Karte keinen grünen Zustand** — zwei Tore forderten für dasselbe Feld das Gegenteil: OHNE `stimulus.art` meldete das Farb-Tor (`check-colour-truth.mjs#bindingVerdict`) »the card shows undefined«, MIT `stimulus.art` das Karten-Tor (`check-game-tasks.mjs#checkPortraits`) »declares art …, which is not painted«. Die Gegenrichtung allein (Karten-Tor rot auf einem ungemalten `stimulus.art`) war schon als eigener T1-Befund gebucht; erst beide Backen zusammen ergeben die Zange | gemessen 2026-09-04 an ch04, beide Richtungen; dieselbe Klemme in ch02 (#398, 2 Karten) und ch03 (#394, 1 Karte) | **PR #410**: das Farb-Tor fragt die geteilte Kapitel-Auflösung, der Entwurfs-Weg ist ein namentlicher Skip über `paint-chapters.mjs#skipLedger`, und die Ratsche kommt vom Helfer — dieselbe Zeile ohne `draft`-Flagge wird zum Exit-Code (D-792). #395 gab seine eigene Tor-Fassung ersatzlos auf (R267: eine Tor-Datei gehört zu jedem Zeitpunkt genau EINER Bahn) | geschlossen · 2026-09-05 | L4-T1 (Befund), R268 |
 #### L4-S
 #### L4-M
 #### L4-A
