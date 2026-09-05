@@ -9,7 +9,7 @@
  "whyDe": "Sag, was ein Tier ist und wo es ist. Dann geht es heim.",
  "hintsDe": [
   "Springen: SPACE — halten für höher!",
-  "An einer Kante hältst du dich fest — SPACE springt.",
+  "An Kanten hältst du dich fest. Mit SPACE springst du.",
   "Ein graues Tier? Stell dich davor und drück ↑!"
  ],
  "collectNounDe": "Federn",
@@ -70,7 +70,7 @@
      "tier": "E",
      "params": {
       "topicDe": "Ortswörter: wo etwas ist",
-      "erklaerungDe": "Ein Ortswort sagt dir, wo ein Tier oder ein Ding ist. Es steht vor dem Ding, bei dem es ist.",
+      "erklaerungDe": "Ein Ortswort sagt dir, wo etwas ist. Es steht vor dem Ding.",
       "merksatzDe": "in, under, behind, next to: erst das Ortswort, dann das Ding.",
       "schluesselDe": "erst das Ortswort, dann das Ding",
       "beispieleEn": [
