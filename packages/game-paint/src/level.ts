@@ -86,6 +86,23 @@ export const ENTITY_ROLES = [
   // Die Entity-ZELLE ist der Prop-Anker (der Baum); der Entity-`skin` ist der
   // DARSTELLER (der Papagei); die Stationen sind Versaetze davon.
   "scene.stage",
+  // L3-M-a · E3 · DER PUMPENGRIFF UND DAS ABLASSVENTIL (Signatur von ch03, unter
+  // Deck). Ein Ding an der Wand, das ein FAUST-Treffer bedient: die Pumpe friert
+  // die steigende Bilge fuer eine gezaehlte Zeit ein, das Ventil senkt sie auf
+  // ihren Anfangsstand. `params.kind` sagt, welches von beidem — und weil
+  // `PaintParams` ein OFFENES `z.record` ist (zod prueft dort NICHTS), prueft das
+  // Gesetz `bilge-wiring` unten die Form selbst.
+  //
+  // Warum eine eigene Rolle und nicht `door.trigger`: eine Tuer wird EINMAL
+  // ausgeloest und oeffnet etwas anderes; ein Pumpengriff wird immer wieder
+  // geschlagen und aendert eine Groesse, die von selbst zurueckwaechst.
+  //
+  // ⚠ Der Punkt im Namen ist eine bezahlte Falle: `spawnEntities` waehlt den
+  // Anfangszustand mit `role.startsWith("platform")`, und jede andere gepunktete
+  // Rolle faellt dort still auf „patrol“ (L2-M-a hat das fuer `scene.stage`
+  // bezahlt). `pump.trigger` beginnt bei „ready“ und ist dort ausdruecklich
+  // genannt.
+  "pump.trigger",
 ] as const;
 
 export type EntityRole = (typeof ENTITY_ROLES)[number];
@@ -411,6 +428,33 @@ export interface PhaseSpec {
     releaseLiftPx?: number;
     regrabLockTicks?: number;
   };
+  /** L3-M-a · E3 · DIE STEIGENDE BILGE (ch03 p2, unter Deck).
+   *
+   *  Das Wasser dieses Spiels war bis hierher reine Geografie: ein `w` im Gitter
+   *  liegt, wo es liegt, und das Gitter aendert sich nie. Unter Deck steigt es —
+   *  in PULSEN, nicht stetig, damit ein Kind es kommen sieht und nicht bloss
+   *  irgendwann nass ist. Ein Faust-Treffer auf einen Pumpengriff friert es ein,
+   *  das Ablassventil senkt es auf `rStart` zurueck.
+   *
+   *  · `band {c0,c1}` — welche Spalten ueberhaupt fluten (das Schiff ist nicht
+   *    ueberall Bilge). Nur LEERE Zellen (`.`) darin werden zu `w`: was gebaut
+   *    ist, bleibt gebaut, und ein Kind auf einer versunkenen Planke ertrinkt
+   *    trotzdem, weil sein Koerper in die Zellen darueber ragt.
+   *  · `rStart` / `rTop`  — Anfangs- und Hoechststand als Gitterzeile
+   *    (`rTop < rStart`: kleinere Zeile = weiter oben).
+   *  · `pulseTicks` / `riseRows` — alle wie viele Ticks um wie viele Zeilen.
+   *  · `freezeTicks`      — was ein Pumpen-Treffer kauft.
+   *  · `pumps` / `valve`  — die Entity-Ids, die das koennen. */
+  bilge?: {
+    band: { c0: number; c1: number };
+    rStart: number;
+    rTop: number;
+    pulseTicks: number;
+    riseRows: number;
+    freezeTicks: number;
+    pumps: string[];
+    valve?: string;
+  };
 }
 
 export interface PaintLevel {
@@ -722,6 +766,32 @@ export const ringChainSpan = (ropePx: number): { readonly min: number; readonly 
 
 /** L3-M-a · die groesste Zeilendifferenz, ueber die eine Kette noch traegt. */
 export const RING_CHAIN_DR = 1;
+
+/** L3-M-a · E3 · DAS GITTER BEI EINEM BESTIMMTEN WASSERSTAND.
+ *
+ *  Eine Funktion, zwei Kunden: `Sim#rebuildLiveGrid` giesst damit das Gitter, das
+ *  der Tick sieht, und das Gesetz `bilge-bait` prueft damit denselben Raum bei
+ *  Anfangs- und Hoechststand. Zwei Fassungen derselben Regel waeren die Klasse
+ *  „ein Name, zwei Haeuser“: das Gesetz pruefte dann eine Flut, die das Spiel nie
+ *  hat, und beide waeren gruen.
+ *
+ *  Nur LEERE Zellen (`.`) im Band werden Wasser. Was gebaut ist, bleibt gebaut —
+ *  eine versunkene Planke traegt weiter, und das Kind darauf ertrinkt trotzdem,
+ *  weil die Hazard-Probe das ganze Koerperrechteck liest. */
+export const floodedRows = (
+  rows: readonly string[],
+  band: { c0: number; c1: number },
+  bilgeRow: number,
+): readonly string[] => {
+  const c0 = Math.max(0, band.c0);
+  const c1 = Math.min((rows[0]?.length ?? 0) - 1, band.c1);
+  return rows.map((row, r) => {
+    if (r < bilgeRow) return row;
+    let out = "";
+    for (let c = 0; c < row.length; c++) out += c >= c0 && c <= c1 && row[c] === "." ? "w" : (row[c] ?? ".");
+    return out;
+  });
+};
 
 /** B3 · THE HEADROOM TABLE — indexed by clear rows of sky above the take-off
  *  feet, valued in columns the jump may cross. Measured off the real
@@ -1065,7 +1135,7 @@ export const reachFrom = (
     // (sim.ts passes ringAt only with the ability; the model must match).
     //
     // L3-M-a · RINGE SIND JETZT KNOTEN. Bis hierher war ein Ring eine Eigenschaft
-    // von Steh-Knoten: „steht das Kind neben einem Ring, segne dessen Umkreis".
+    // von Steh-Knoten: „steht das Kind neben einem Ring, segne dessen Umkreis“.
     // Damit ist eine KETTE nicht abbildbar — der zweite Ring einer Kette haengt in
     // der Luft, weit von jedem Stehplatz, und `push` schiebt ausschliesslich
     // STEHBARE Zellen in die Warteschlange (`standable`, oben). Eine gelockerte
@@ -1798,6 +1868,73 @@ export const checkLevelLaws = (level: PaintLevel): LawFailure[] => {
           law: "ring-chain",
           detail: `toter Ring (${g.c},${g.r}): keine stehbare Landefläche in Reichweite (±${RING_DX} Spalten, −2…+6 Zeilen) und kein weiterer Ring in Kettenspanne (${span.min}…${span.max} Spalten bei ${chainRope} px Seil, ±${RING_CHAIN_DR} Zeilen) — das Kind greift ihn und kommt nicht weiter`,
         });
+      }
+    }
+
+    // ── L3-M-a · E3/E4 · DIE GESETZE DER BILGE ───────────────────────────────
+    if (ph.bilge) {
+      const b = ph.bilge;
+      const w = ph.rows[0]?.length ?? 0;
+      const hoehe = ph.rows.length;
+
+      // `bilge-wiring` · DIE FORM. `PaintParams` ist ein OFFENES `z.record` (L2-M-a
+      // hat das bezahlt): zod prueft dort GAR NICHTS, ein Tippfehler in
+      // `params.kind` kaeme ungeprueft bis in die Welt und der Griff taete
+      // schlicht nie etwas. Also prueft es das Gesetz.
+      if (b.rTop >= b.rStart) {
+        failures.push({ phase: ph.id, law: "bilge-wiring", detail: `bilge: rTop (${b.rTop}) muss ÜBER rStart (${b.rStart}) liegen — kleinere Zeile = höher; so steigt das Wasser nie` });
+      }
+      if (b.rStart >= hoehe || b.rTop < 0 || b.band.c0 > b.band.c1 || b.band.c1 >= w) {
+        failures.push({ phase: ph.id, law: "bilge-wiring", detail: `bilge: Band (${b.band.c0}…${b.band.c1}) oder Stände (${b.rTop}…${b.rStart}) liegen ausserhalb des ${w}×${hoehe}-Gitters` });
+      }
+      const griffe = ph.entities.filter((e) => e.role === "pump.trigger");
+      for (const id of [...b.pumps, ...(b.valve === undefined ? [] : [b.valve])]) {
+        const e = griffe.find((g) => g.id === id);
+        if (!e) {
+          failures.push({ phase: ph.id, law: "bilge-wiring", detail: `bilge nennt "${id}", aber die Phase hat kein pump.trigger-Wesen mit dieser Id` });
+          continue;
+        }
+        const soll = b.valve === id ? "valve" : "pump";
+        if (e.params?.kind !== soll) {
+          failures.push({ phase: ph.id, law: "bilge-wiring", detail: `pump.trigger ${id} braucht params.kind "${soll}" (hat "${String(e.params?.kind)}") — params ist ein offenes Schema, hier prüft es sonst niemand` });
+        }
+      }
+      for (const g of griffe) {
+        if (b.pumps.includes(g.id) || b.valve === g.id) continue;
+        failures.push({ phase: ph.id, law: "bilge-wiring", detail: `pump.trigger ${g.id} steht im Raum, aber die bilge-Deklaration nennt ihn nicht — ein Griff, den kein Kind bedienen kann, ist eine Lüge im Raum` });
+      }
+
+      // `bilge-bait` · KÖDER NIE ÜBER EINER TODESZONE. Alles, wofür ein Kind
+      // absichtlich hinuntergeht, muss beim HÖCHSTSTAND noch trocken stehen —
+      // sonst lockt der Raum es an eine Stelle, die es beim zweiten Anlauf tötet.
+      const unterWasser = (c: number, r: number): boolean =>
+        c >= b.band.c0 && c <= b.band.c1 && r >= b.rTop;
+      const koederRollen = new Set(["cage", "powerup", "drained", "tip", "book", "cloth"]);
+      for (const e of ph.entities) {
+        if (!koederRollen.has(e.role) || !unterWasser(e.c, e.r)) continue;
+        failures.push({ phase: ph.id, law: "bilge-bait", detail: `${e.role} ${e.id} bei (${e.c},${e.r}) steht beim Höchststand der Bilge (Zeile ${b.rTop}) unter Wasser — ein Köder über einer Todeszone` });
+      }
+      for (const [r, row] of ph.rows.entries()) {
+        for (let c = 0; c < row.length; c++) {
+          if (row[c] === "*" && unterWasser(c, r)) {
+            failures.push({ phase: ph.id, law: "bilge-bait", detail: `Sammelobjekt bei (${c},${r}) steht beim Höchststand der Bilge (Zeile ${b.rTop}) unter Wasser` });
+          }
+        }
+      }
+
+      // …und der WEG muss bei beiden Ständen offen bleiben. Zweimal gerechnet,
+      // weil ein Raum, der nur leer erreichbar ist, beim Höchststand ein
+      // Gefängnis wäre — und das Kind kommt dort erst an, wenn das Wasser steht.
+      const startCell = findGlyph(ph.rows, "S");
+      const ziel = findGlyph(ph.rows, "X") ?? findGlyph(ph.rows, "B");
+      if (startCell && ziel) {
+        for (const [name, row] of [["Anfangsstand", b.rStart], ["Höchststand", b.rTop]] as const) {
+          const geflutet = floodedRows(ph.rows, b.band, row);
+          const r2 = reachFrom(geflutet, level.abilities, startCell, ph.entities, ph.swing?.ropePx);
+          if (!nearIn(r2, ziel.c, ziel.r, 1, 1, 3)) {
+            failures.push({ phase: ph.id, law: "bilge-bait", detail: `beim ${name} der Bilge (Zeile ${row}) ist der Ausgang (${ziel.c},${ziel.r}) nicht mehr erreichbar — das Kind kann immer vorankommen müssen` });
+          }
+        }
       }
     }
 

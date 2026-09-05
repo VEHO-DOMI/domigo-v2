@@ -46,9 +46,9 @@ const unionMembers = (file: string, name: string): readonly string[] => {
 
 describe("Abdeckung: jede Ereignis-Art des Spiels hat genau einen Zustand", () => {
   const cases = [
-    { file: "sim.ts", name: "SimEvent", table: SIM_REACTIONS as Readonly<Record<string, unknown>>, expected: 17 /* 15 + `cloth` (R5-W5 · G4, 18.08.) + `gate` (R5-W7 · S3, D-372) */ },
+    { file: "sim.ts", name: "SimEvent", table: SIM_REACTIONS as Readonly<Record<string, unknown>>, expected: 20 /* 15 + `cloth` (R5-W5 · G4, 18.08.) + `gate` (R5-W7 · S3, D-372) + die drei der Bilge (L3-M-a · E5) */ },
     { file: "player.ts", name: "PlayerEvent", table: PLAYER_REACTIONS as Readonly<Record<string, unknown>>, expected: 8 },
-    { file: "entities.ts", name: "EntityEvent", table: ENTITY_REACTIONS as Readonly<Record<string, unknown>>, expected: 16 },
+    { file: "entities.ts", name: "EntityEvent", table: ENTITY_REACTIONS as Readonly<Record<string, unknown>>, expected: 17 /* + `pumpHit` (L3-M-a · E5) */ },
   ];
 
   for (const c of cases) {
@@ -64,11 +64,14 @@ describe("Abdeckung: jede Ereignis-Art des Spiels hat genau einen Zustand", () =
     });
   }
 
-  it("zusammen sind es 41 (39 + cloth + gate) — und jede Reaktion ist genau eines von drei Dingen", () => {
+  it("zusammen sind es 45 (41 + Bilge) — und jede Reaktion ist genau eines von drei Dingen", () => {
     const total = ["sim.ts", "player.ts", "entities.ts"]
       .map((f, i) => unionMembers(f, ["SimEvent", "PlayerEvent", "EntityEvent"][i] as string).length)
       .reduce((a, b) => a + b, 0);
-    expect(total).toBe(41);
+    // L3-M-a · E5: 41 → 45. Die vier neuen sind die steigende Bilge von ch03 —
+    // drei SimEvents (`bilgePulse`, `pumpFrozen`, `bilgeDrained`) und ein
+    // EntityEvent (`pumpHit`, gefaltet, weil die Wirkung den Klang traegt).
+    expect(total).toBe(45);
 
     for (const { union, event, reaction } of allReactions()) {
       const kinds = [isPlay(reaction), isSilent(reaction), isReserved(reaction)].filter(Boolean).length;

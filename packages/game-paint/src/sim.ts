@@ -44,7 +44,7 @@ import { cameraTargetX, clampScroll, stepCameraAxis, stepCameraY } from "./camer
 // Kamera. `ink.ts` importiert selbst NICHTS, ein Zyklus ist hier also
 // ausgeschlossen — und sim.ts holt sich Takt-Zahlen schon aus `anim.ts` (oben).
 import { INK_SPLASH_TICKS } from "./ink.ts";
-import { type Ability, type PaintLevel, type PhaseSpec, allPhases, findGlyph } from "./level.ts";
+import { type Ability, type PaintLevel, type PhaseSpec, allPhases, findGlyph, floodedRows } from "./level.ts";
 
 /** R5-W2 · H1 · Wie lange sie NACH dem Ausruhen noch liegt, bevor die Karte
  *  kommt, die den Beat beschreibt. Ein Atemzug, damit »sie ruht« ein Bild ist
@@ -167,6 +167,16 @@ export type SimEvent =
    *  zweiter dazu, wird aus dem Literal eine Vereinigung. */
   | { type: "toast"; msg: string; echoes?: "gate" }
   | { type: "task"; req: TaskRequest }
+  /** L3-M-a · E3 · die Bilge ist gerade um eine Stufe gestiegen. `row` ist der
+   *  Stand DANACH (kleinere Zeile = hoeher), `atTop` sagt, ob der Hoechststand
+   *  erreicht ist — damit die Huelle den letzten Puls anders klingen lassen kann
+   *  als die davor. */
+  | { type: "bilgePulse"; row: number; atTop: boolean }
+  /** L3-M-a · E3 · ein Faust-Treffer auf einen Pumpengriff haelt das Wasser an. */
+  | { type: "pumpFrozen"; id: string; ticks: number }
+  /** L3-M-a · E3 · das Ablassventil hat die Bilge auf ihren Anfangsstand
+   *  zurueckgesetzt. */
+  | { type: "bilgeDrained"; id: string; row: number }
   | { type: "powerup"; grants: string; gabeDe?: string }
   | { type: "cageFreed"; id: string; skin: string; classmate: string | undefined; count: number }
   | { type: "guardianDown"; id: string; skin: string }
@@ -345,11 +355,31 @@ export const HIT_PAUSE_TICKS = 2;
 
 export class Sim {
   readonly phase: PhaseSpec;
+  /** DAS AUTORIERTE GITTER — die Bytes, die im Level stehen.
+   *
+   *  ⚠ L3-M-a: dieses Feld wird VON AUSSEN gelesen (`PaintScene#grid`, das ganze
+   *  Terrain-Zeichnen, `bonusPhrase`, `massKitUsable`, `awakening.test.ts`) und
+   *  darf deshalb NIE mutiert werden — der Renderer baute sonst in jedem Tick ein
+   *  anderes Terrain. Was sich waehrend des Laufs aendern darf, lebt in
+   *  `liveGrid` daneben. */
   readonly grid: readonly string[];
   readonly worldWpx: number;
   readonly worldHpx: number;
   readonly exitCell: { c: number; r: number };
   readonly rings: Array<{ x: number; y: number }> = [];
+
+  /** L3-M-a · E3 · DAS GITTER, DAS DER TICK SIEHT.
+   *
+   *  Startet als DIESELBE REFERENZ wie `grid` und wird nur dann neu gebaut, wenn
+   *  die Phase eine `bilge` hat UND ihr Wasserstand sich gerade bewegt hat. Ohne
+   *  Bilge gilt also `liveGrid === grid` — nicht „gleicher Inhalt“, sondern
+   *  Referenz-Gleichheit, und `bilge.test.ts` sichert genau das zu. Das ist die
+   *  Paritaets-Garantie dieser Bahn: ch01, ch02 und ch03 rechnen Byte fuer Byte
+   *  wie vorher, weil sie buchstaeblich dasselbe Array bekommen. */
+  private liveGrid: readonly string[];
+  private bilgeRow: number;
+  private bilgeFrozen = 0;
+  private bilgePulseTick = 0;
 
   player: PlayerState;
   prevPad: Pad = { ...IDLE_PAD };
@@ -453,6 +483,9 @@ export class Sim {
     if (!phase) throw new Error(`Sim: unknown phase ${cfg.phaseId}`);
     this.phase = phase;
     this.grid = phase.rows;
+    // L3-M-a · E3: dieselbe Referenz, solange die Phase kein Wasser bewegt
+    this.liveGrid = phase.rows;
+    this.bilgeRow = phase.bilge?.rStart ?? -1;
     this.worldWpx = (phase.rows[0]?.length ?? 0) * TILE;
     this.worldHpx = phase.rows.length * TILE;
     const exit = findGlyph(phase.rows, "X") ?? findGlyph(phase.rows, "B");
@@ -593,7 +626,7 @@ export class Sim {
       // event — see entities.stepRedeemedOnly.
       if (this.holdOpen || this.holdTicks > 0) {
         if (this.holdTicks > 0) this.holdTicks--;
-        stepRedeemedOnly(this.world, this.grid);
+        stepRedeemedOnly(this.world, this.liveGrid);
       }
       // N7B · EINE GEHALTENE TASTE BLEIBT GEHALTEN. `prevPad` stand bis hierher
       // hinter diesem `return` und fror auf dem Tick ein, an dem die Karte
@@ -630,9 +663,13 @@ export class Sim {
     // PK-R6 · C1: the engage edge, read BEFORE prevPad is overwritten below.
     this.engagePressed = pad.up && !this.prevPad.up;
 
+    // L3-M-a · E3: das Wasser steigt VOR der Figur — sonst laeuft das Kind einen
+    // Tick lang durch eine Zelle, die erst danach zu Wasser wird.
+    this.stepBilge(events);
+
     const near = this.nearestRing();
     const abilities = this.cfg.grantedAbilities();
-    const out = stepPlayer(this.player, pad, this.prevPad, this.grid, {
+    const out = stepPlayer(this.player, pad, this.prevPad, this.liveGrid, {
       slippery: this.phase.surface === "slippery",
       canRun: abilities.includes("run"),
       canHover: abilities.includes("hover"),
@@ -1136,7 +1173,7 @@ export class Sim {
   }
 
   private stepEntityWorld(events: SimEvent[]): void {
-    const evs = stepEntities(this.world, this.grid, {
+    const evs = stepEntities(this.world, this.liveGrid, {
       playerX: this.player.x,
       playerY: this.player.y,
       playerIframes: this.player.iframes,
@@ -1187,6 +1224,25 @@ export class Sim {
   private onEntityEvent(ev: EntityEvent, events: SimEvent[]): void {
     this.cfg.onEntityAudio?.(ev); // R5-W6 · S2: siehe SimCfg#onEntityAudio
     switch (ev.type) {
+      // L3-M-a · E3: die Faust hat einen Griff getroffen. Die Entity meldet nur
+      // den Treffer; welcher Griff was bewirkt, steht in der PHASE — und nur die
+      // Sim liest die. Ein Griff, den die Phase nicht nennt, tut nichts: die
+      // Zuordnung ist eine Deklaration, kein Ratespiel ueber Rollen-Namen.
+      case "pumpHit": {
+        const b = this.phase.bilge;
+        if (!b) break;
+        if (ev.kind === "valve" && b.valve === ev.id) {
+          this.bilgeRow = b.rStart;
+          this.bilgeFrozen = 0;
+          this.bilgePulseTick = 0;
+          this.rebuildLiveGrid();
+          events.push({ type: "bilgeDrained", id: ev.id, row: this.bilgeRow });
+        } else if (ev.kind === "pump" && b.pumps.includes(ev.id)) {
+          this.bilgeFrozen = b.freezeTicks;
+          events.push({ type: "pumpFrozen", id: ev.id, ticks: b.freezeTicks });
+        }
+        break;
+      }
       case "encounter": {
         const src = this.world.entities.find((e) => e.id === ev.id);
         // R5-F2 · DER RÜCKSTOSS GEHÖRT DEM BOSS (Architekten-Ruling 11.08.).
@@ -1451,6 +1507,57 @@ export class Sim {
    *  Nachbarn in der Liste steht, den Griff komplett verhindern — auch den an den
    *  Nachbarn. Als FILTER uebersprungen wird nur der eine gesperrte Ring; jeder
    *  andere ist im selben Tick greifbar, und genau das ist die Ring-Kette. */
+  /** L3-M-a · E3 · DIE STEIGENDE BILGE.
+   *
+   *  Sie steigt in PULSEN und nicht stetig: ein Kind soll das Wasser KOMMEN
+   *  sehen und nicht bloss irgendwann nass sein. Ein Puls hebt den Stand um
+   *  `riseRows` Zeilen, hoechstens bis `rTop`.
+   *
+   *  ⚠ Der Wasserstand wird NICHT ins autorierte Gitter geschrieben. `this.grid`
+   *  liest die Zeichen-Ebene jeden Frame; ein mutiertes Feld dort waere ein
+   *  Terrain, das sich unter dem Renderer bewegt. Stattdessen wird `liveGrid` neu
+   *  gebaut — und nur dann, wenn der Stand sich wirklich verschoben hat. */
+  private stepBilge(events: SimEvent[]): void {
+    const b = this.phase.bilge;
+    if (!b) return;
+    if (this.bilgeFrozen > 0) {
+      this.bilgeFrozen--;
+      return;
+    }
+    if (this.bilgeRow <= b.rTop) return; // Hoechststand erreicht, nichts mehr zu tun
+    this.bilgePulseTick++;
+    if (this.bilgePulseTick < b.pulseTicks) return;
+    this.bilgePulseTick = 0;
+    this.bilgeRow = Math.max(b.rTop, this.bilgeRow - b.riseRows);
+    this.rebuildLiveGrid();
+    events.push({ type: "bilgePulse", row: this.bilgeRow, atTop: this.bilgeRow <= b.rTop });
+  }
+
+  /** L3-M-a · E3 · das Tick-Gitter neu giessen.
+   *
+   *  Nur LEERE Zellen (`.`) im Band werden zu Wasser. Was gebaut ist, bleibt
+   *  gebaut: eine versunkene Planke traegt weiter, und das Kind darauf ertrinkt
+   *  trotzdem, weil sein Koerper in die Zellen darueber ragt und die Hazard-Probe
+   *  das ganze Koerperrechteck liest (`collide.ts`). Buchstaben, Ringe und Anker
+   *  bleiben ebenfalls stehen — was davon unter Wasser stehen DARF, entscheidet
+   *  das Gesetz `bilge-bait`, nicht diese Zeile. */
+  private rebuildLiveGrid(): void {
+    const b = this.phase.bilge;
+    if (!b) return;
+    // DIESELBE Funktion, die das Gesetz `bilge-bait` fuer seine zwei Staende
+    // benutzt (`level.ts#floodedRows`). Zwei Fassungen derselben Regel waeren die
+    // Klasse „ein Name, zwei Haeuser“: das Gesetz pruefte eine Flut, die das
+    // Spiel nie hat, und beide waeren gruen.
+    this.liveGrid = floodedRows(this.grid, b.band, this.bilgeRow);
+  }
+
+  /** L3-M-a · E3 · der aktuelle Wasserstand als Gitterzeile, fuer die Huelle.
+   *  `-1` heisst: diese Phase hat keine Bilge. Nur lesbar — die Zeile bewegt
+   *  ausschliesslich `stepBilge` und das Ablassventil. */
+  get bilgeWaterRow(): number {
+    return this.bilgeRow;
+  }
+
   private nearestRing(): { x: number; y: number } | null {
     const locked = this.player.ringCooldown > 0 ? this.player.lastRing : null;
     for (const g of this.rings) {

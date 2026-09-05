@@ -207,6 +207,21 @@ const PaintPhase = z.object({
       regrabLockTicks: z.number().int().nonnegative().max(240).optional(),
     })
     .optional(),
+  // L3-M-a · E3: die steigende Bilge (level.ts PhaseSpec.bilge). Dieselbe
+  // Strip-Regel wie oben — ohne diese Zeile bliebe das Wasser im Browser still
+  // stehen, waehrend jedes Gesetz auf der Platte eine steigende Bilge prueft.
+  bilge: z
+    .object({
+      band: z.object({ c0: z.number().int().nonnegative(), c1: z.number().int().nonnegative() }),
+      rStart: z.number().int().nonnegative(),
+      rTop: z.number().int().nonnegative(),
+      pulseTicks: z.number().int().positive().max(3600),
+      riseRows: z.number().int().positive().max(8),
+      freezeTicks: z.number().int().nonnegative().max(3600),
+      pumps: z.array(z.string().min(1)),
+      valve: z.string().min(1).optional(),
+    })
+    .optional(),
 });
 
 const PaintLevelFile = z.object({
