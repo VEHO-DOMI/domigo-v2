@@ -1742,3 +1742,11 @@ nicht gibt — kein Absturz, nur ein leeres Bild.
 ob sie die Mitgliedschaft prüft oder die GESCHLOSSENHEIT ausnutzt. Die zweite Sorte braucht
 einen echten Unterscheider aus den DATEN (hier: aus welchem Feld der Name kam), bevor die
 Liste aufgeht.
+
+**PB-173 · EIN TOR MIT EIGENEM DATEI-LAUF IST EIN TOR MIT EIGENER MEINUNG — und die eine, die es sich nicht leisten kann, ist »was ist ein Kapitel«.** *(Farb-Tor-Bahn, 2026-09-04.)*
+
+**Was passierte.** `check-colour-truth.mjs` sammelte seine Kartendateien selbst (`readdirSync` über `content/corpus/stories`) statt `scripts/paint-chapters.mjs` zu fragen. Der eigene Lauf kennt keine `draft`-Flagge, also konnte ein Kapitel, dessen Kunst noch nicht gemalt ist, dieses Tor mit einer einzigen `restore`-Karte gar nicht bestehen — zwei Fehlermeldungen hintereinander, keine davon reparierbar, solange die Kunst fehlt. Sechs Karten in drei offenen PRs standen davor, und die Ursache lag in keinem der drei.
+
+**Warum.** Der Kopf von `paint-chapters.mjs` hat genau diese Klasse schon einmal bezahlt und benannt: „Acht Skripte, acht Meinungen darüber, was ein Kapitel ist — und keines davon hätte je bemerkt, dass ein zweites existiert.“ Drei Tore wurden damals umgestellt, dieses nicht. Ein Tor, das seine eigene Welt-Sicht mitbringt, erbt keine einzige Lehre, die an der geteilten Sicht gelernt wird — hier die Entwurfs-Doktrin und die Ratsche aus D-792, beide fertig vorhanden und beide ungenutzt.
+
+**Der Check, der es künftig fängt.** Für dieses Tor: es fragt jetzt `paintChapters()`, und `orphanTaskFiles()` steht daneben, damit der Umbau nicht eine Blindheit gegen eine andere tauscht. Allgemein, und das ist der eigentliche Ertrag: **wer ein neues `scripts/check-*.mjs` schreibt oder ein altes anfasst, prüft zuerst `git grep -l paint-chapters scripts/` — steht das Tor nicht auf der Liste und liest es Kapitel-Dateien, ist das der Befund, bevor irgendein Gesetz geschrieben wird.** Erkennungszeichen im Diff: ein `readdirSync` über `content/corpus` oder ein fest verdrahteter `chNN`-Pfad.

@@ -1116,7 +1116,9 @@ describe("the manifest", () => {
     // PK-R6 · H2 (round-2 finding 12): the yard's bench went back to the hall it
     // was borrowed from; the sill it kept is the one this phase's own painted
     // wall implies (four arched windows), and it is what the kit names now.
-    for (const want of ["crust_p3_a", "mass_body_a", "mass_sediment", "slide_mid", "ledge_windowsill", "l1_p3_a", "l2_p3"]) {
+    // ★ N7A2c: `slide_mid` stand hier bis gestern. Der Hof fuehrt kein
+    // Rutschen-Kit mehr — die Rutsche ist gemalt (R264).
+    for (const want of ["crust_p3_a", "mass_body_a", "mass_sediment", "ledge_windowsill", "l1_p3_a", "l2_p3"]) {
       expect(stems, want).toContain(want);
     }
     expect(new Set(stems).size).toBe(stems.length);
@@ -1126,9 +1128,16 @@ describe("the manifest", () => {
     expect(CH01_COMPOSITION.p9!.mid).toBeUndefined();
   });
 
-  it("gives the slide to p3 and to nobody else", () => {
+  // ★ N7A2c · UMGEDREHT, NICHT GELOESCHT. Bis gestern lautete dieser Test
+  // „gives the slide to p3 and to nobody else". p3 war der einzige Raum mit
+  // einem Rutschen-Kit; jetzt malt er seine fuenf `z`-Zellen selbst, und damit
+  // fuehrt KEIN Raum mehr eines. Die Maschinerie in mass.ts lebt weiter (spaetere
+  // Kapitel bekommen Rampen, bevor sie gemalte Koerper haben) — nur benutzt sie
+  // in ch01 niemand mehr. Der Test bleibt an dieser Stelle, damit ein
+  // Wiedereinbau auffaellt statt still zu passieren.
+  it("gives the slide to nobody — the yard paints its own ramp now (N7A2c)", () => {
     for (const [id, spec] of Object.entries(CH01_COMPOSITION)) {
-      expect(spec.mass.slide !== undefined, id).toBe(id === "p3");
+      expect(spec.mass.slide, id).toBeUndefined();
     }
   });
 });
