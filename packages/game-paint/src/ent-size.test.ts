@@ -16,11 +16,10 @@
 // So the table moved too, and these tests hold it there.
 import fs from "node:fs";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 import { describe, expect, it } from "vitest";
 import { CAGE_DISPLAY_H, GUARDIAN_DISPLAY_H, entDisplayArea, entDisplayH } from "./anim.ts";
 import { CAPTIVE_KEYS, captiveStem, isCaptiveKey } from "./artManifest.ts";
-import { paintChapters } from "../../../scripts/paint-chapters.mjs";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const REPO = path.resolve(HERE, "../../..");
@@ -64,6 +63,17 @@ const levelDateienAufDerPlatte = fs.readdirSync(STORIES)
 // ch01 bleibt der Traeger der KAPITEL-FORM-Gesetze unten (vier Ding-Kaefige, ein
 // Personen-Kaefig): das sind Aussagen ueber DIESES Kapitel, nicht ueber die
 // Tabelle. Die Tabellen-Gesetze laufen weiter unten ueber alle Kapitel.
+// Der ZWEITE, FREMDE Leser: die geteilte Kapitel-Aufloesung, die auch die Tore
+// fragen. Sie ist reines JavaScript ohne Typ-Deklaration, deshalb dynamisch
+// geladen und hier EINMAL auf die eine Form gebracht, die dieser Test braucht.
+// Der Pfad wird zur LAUFZEIT gebaut: `paint-chapters.mjs` ist reines
+// JavaScript ohne Typ-Deklaration, und ein statischer Import daraus waere fuer
+// `tsc` ein implizites `any`. Ueber eine URL geladen, ist die Form eine
+// ausdrueckliche Zusage dieses Tests — genau die drei Felder, die er braucht.
+const GETEILT = pathToFileURL(path.resolve(HERE, "../../../scripts/paint-chapters.mjs")).href;
+const geteilt = await import(GETEILT) as { paintChapters: () => Array<{ chapter: string }> };
+const geteilteKapitel: string[] = geteilt.paintChapters().map((c) => c.chapter);
+
 const ch01 = kapitel.find((c) => c.name === "ch01");
 if (ch01 === undefined) throw new Error("ch01.level.json nicht gefunden — diese Suite misst die ausgelieferte Tabelle");
 const everyEntity: Ent[] = ch01.entities;
@@ -164,7 +174,7 @@ describe("L0c · P7 · die Groessen-Tabelle antwortet fuer JEDES Kapitel", () =>
     // nicht rot werden: laesst die Schleife ein Kapitel aus, laesst die
     // Gegenprobe es genauso aus. Der zweite Leser muss deshalb ein FREMDER
     // sein — `paintChapters()` ist die Aufloesung, die auch die Tore fragen.
-    expect(kapitel.map((c) => c.name).sort()).toEqual(paintChapters().map((c) => c.chapter).sort());
+    expect(kapitel.map((c) => c.name).sort()).toEqual([...geteilteKapitel].sort());
     // …und die Datei-Liste daneben, damit auch eine kaputte GETEILTE Aufloesung
     // auffaellt statt beide Seiten gemeinsam blind zu machen
     expect(kapitel.map((c) => c.name).sort()).toEqual([...levelDateienAufDerPlatte].map((f) => f.slice(0, 4)).sort());
