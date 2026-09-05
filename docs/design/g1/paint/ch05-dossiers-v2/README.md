@@ -41,4 +41,4 @@ _»Das Konzert der Seiten — Die Band ohne Takt« · Unit 5. Stand **2026-09-03
 - `p2.md` · `p3.md` · `arena.md` · `p9.md` — **Gerüste.** Sie tragen den Bindungs-Vertrag mit den Karten
   (Ids, Insassen, Preise) und werden von L5-G2 vollständig ersetzt.
 - `pending.md` — die Daten-Entwürfe der Neuheiten.
-- `claims.json` — welche Vokabel welcher Platzhalter-Skin bedient.
+- `claims.json` — welche Vokabel WIE eingelöst wird (`cards` = eine Karte lässt sie antworten · `thing` = ein Ding im Raum · `architecture` = die Raumform); geprüft von `check-level-design` gegen die Karten des Kapitels (D-909).

@@ -1367,14 +1367,14 @@ ch06 D-920…949.** Der Level-1-Sitz hält D-950…979 (nicht hier).
 | D-802 | **Blatt/L0-Gerüst 22/24 Zeilen vs. ch01 gebaut 26** | `ch01.level.json` (p1 `rows`) | R243: 26 Zeilen Standard für Feld-Räume; L0 N8 hob das Gerüst | geschlossen · R243 | L2-Planung |
 | D-803 | **Anker sind an Tinten-Querungen gebunden** (`checkpoint-count`: genau ein `C` je gequerter Passage, null Querung ⇒ null Anker) — Kokis Anker-Plätze werden damit zu Querungs-Plätzen | `level.ts#checkpoint-count` | p1: Graben c59–60 mit `C` (58,17) `near`; p2/p3 je eine Querung an Kokis Stelle (G2) | offen (Design-Regel) · 2026-09-02 | L2-Planung |
 | D-804 | **`*` rendert immer als Buchstabe** (`letters.ts#letterGlyphs`), kein Sammel-Skin-Feld (L3 fand dasselbe unabhängig — führt unter ch03) | gemessen 02.09. | **R246 / L0 N1 `collectSkin`** — ch02 trägt `feather`; Kunst-Zeit malt `pb-collect_feather` | geschlossen (Motor) · offen (Kunst) | L2-Planung |
-| D-805 | **R235 (Bonus einmalig) im Motor nicht gebaut**; ch01 verhält sich absichtlich gegenteilig (`sim.ts#isBonusRoom` (Restock)) | gemessen 02.09. | **R249: L2-M-a baut die Schließung zuerst** | offen bis L2-M-a | L2-Planung |
+| D-805 | **R235 (Bonus einmalig) im Motor nicht gebaut**; ch01 verhält sich absichtlich gegenteilig (`sim.ts#isBonusRoom` (Restock)) | gemessen 02.09. | **R249: L2-M-a baut die Schließung zuerst** — **GESCHLOSSEN (#411, 2026-09-05):** die Kleckskammer schließt nach ihrem Lauf; Test `bonus-once.test.ts`, Tamper (Sperre entfernt ⇒ rot) | geschlossen · #411 | L2-Planung |
 | D-806 | **`check-story-grounding.mjs` + `check-paint-copy.mjs` u01-fest (harte `u01-lexicon.json`-Pfade)** (L5 fand dasselbe unabhängig — führt unter ch05), fehlten in L0 D10 | gemessen 02.09. | L0-Nachtrag N4 (story-grounding meldet namentlich, prüft nur ch01) | geschlossen · L0 | L2-Planung |
 | D-807 | **Boss-Beweis nur für Schreib-Arten** (mistake/oddone/order/memory); `choice` darf kein `evidence` tragen (`game-tasks.ts#taskInvariantErrors`) | Schema | R250: choice-Fenster zeigen das Board ohne Kreide — Löwe W1/W3 choice, W2 mistake, W4 order | geschlossen · R250 | L2-Planung |
 | D-808 | **`bonuspay` ist keine Karte, `bonus`-Pool leer**; Bonusraum ohne Karten (ch01-Präzedenz) | `PaintGame.tsx#bonuspay`, `sim.ts` use-Union | ch02-Bonus ohne Karten (L5 hatte es zuerst als Shell-Zeremonie erkannt) | geschlossen · Rahmen §4 | L2-Planung |
 | D-809 | **Wächter-Rig FLIEGT** (Tafel-Choreografie `entities.ts#stepGuardian`); ein Löwe braucht eine Boden-Variante | gemessen 02.09. | `locomotion:"prowl"` + `projectileSkin` (Stab-Platten) = L2-M-b (`M_ENTWURF_L2`) | offen bis L2-M-b | L2-Planung |
 | D-810 | **`GUARDIAN_BOARDS` kennt nur `tafel`** (`PaintScene.ts#GUARDIAN_BOARDS`): fremder Wächter-Skin ⇒ Karte öffnet ohne Beweis-Fläche | gemessen 02.09. | `GUARDIAN_BOARDS.loewe` in L2-M-b (`GUARDIAN_SLATE` ist zell-geschlüsselt — nichts zu tun) | offen bis L2-M-b | L2-Planung |
 | D-811 | **Die letzte Gitter-Spalte kennt das Reach-Modell nicht:** `X` auf c63 (Breite 64) ⇒ `exit-reachable` rot, `X` auf c62 grün — die BFS betritt die Randspalte nie | `check-level-candidate --chapter ch02`, Kandidat X@63 vs X@62, 03.09. | p1: Tür (61,17), X (62,17) wie ch01; Motor-Gebiet: `reachFrom` Randbehandlung prüfen (L2-M-a Rider oder N7C) | offen · 2026-09-03 | L2-P1 |
-| D-812 | **Hangeln fehlt im Reach-Modell** (`level.ts#REACH_ENVELOPE` (JUMP_UP 4); hang = Leistengriff beim Fallen `player.ts#hangAt`): jede Mauer >4 Zeilen ist für die Gesetze unerreichbar, auch mit `hang` | gemessen 02./03.09. | Kassenmauer 4 hoch, hang optional; hang-Kante = L2-M-a (Nachtrag-Klarstellung „erster Konsument L2-M") — danach Mauer 5–6 + p2-Traversen | offen bis L2-M-a | L2-P1 |
+| D-812 | **Hangeln fehlt im Reach-Modell** (`level.ts#REACH_ENVELOPE` (JUMP_UP 4); hang = Leistengriff beim Fallen `player.ts#hangAt`): jede Mauer >4 Zeilen ist für die Gesetze unerreichbar, auch mit `hang` | gemessen 02./03.09. | Kassenmauer 4 hoch, hang optional; hang-Kante = L2-M-a (Nachtrag-Klarstellung „erster Konsument L2-M") — danach Mauer 5–6 + p2-Traversen — **GESCHLOSSEN (#411, 2026-09-05):** hang-Kante im Reach-Modell mit `HANG_ROWS = 2`, GEMESSEN durch die Sonde `scripts/paint-probes/ch02.probe.mjs` gegen den Zustand ohne `hang` (6 Zeilen ohne, 8 mit) | geschlossen · #411 | L2-P1 |
 
 #### L2-T
 **L2-T1 (2026-09-04, Rebase-Sitz).** Befunde der Karten-/Lexikon-Bahn aus Bau und Rebase; je Befund führt die niedrigste Nummer (R253). Ohne D-Nummern — die vergibt der Architekt, die meisten gehören nach L0c.
@@ -1390,17 +1390,19 @@ ch06 D-920…949.** Der Level-1-Sitz hält D-950…979 (nicht hier).
 
 #### L2-S
 #### L2-M
-**L2-M-a (2026-09-05, Motor-Bahn).** Befunde aus dem Bau selbst. Ohne D-Nummern — die vergibt der Architekt beim Merge.
+**L2-M-a (2026-09-05, Motor-Bahn, PR #411).** Befunde aus dem Bau selbst. **D-813–821 vergeben vom Programm-Architekten am 2026-09-05 (R280);** Block ch02 nächste freie Nummer **822**.
 
-- **Der Bonus-Timeout schob sein `exit`, setzte aber `exitFired` nicht.** Der Wächter in `sim.ts#checkExit` blieb damit scharf; ein Kind, das beim Ablauf der Uhr zufällig auf dem Ausgang steht, konnte im selben Lauf ein ZWEITES `exit` auslösen. Eine Zeile, mitten im Gegenstand von R235, mitgebaut und im PR ausdrücklich als zusätzlicher Fund benannt.
-- **Die Hülle kann gar keinen Toast auslösen.** `PaintScene#toast` ist privat und steht in keiner öffentlichen Szenen-Schnittstelle; ein Toast entsteht ausschliesslich als `SimEvent`. Ein Posten, der „die Hülle zeigt einen Satz" bestellt, bestellt damit immer auch einen Weg von der Hülle in die Sim — hier den Rückruf `bonusRunDone`, nach dem Muster von `cageHintShown`.
-- **`spawnEntities` wählt seinen Anfangszustand mit `role.startsWith("platform")`.** Eine GEPUNKTETE Rolle, die nicht `platform.*` heisst, fällt dort still auf `patrol` — `scene.stage` hätte für immer stillgestanden, ohne dass ein Tor es sagt. Jede künftige Rolle mit Punkt im Namen prüft diese Zeile.
-- **`PaintParams` (`apps/web/lib/paint-content.ts`) ist ein OFFENES `z.record`, nicht ein geschlossenes Objekt.** Nur `PaintEntity`, `PaintPhase` und `PaintLevelFile` sind geschlossen. Ein neues `params`-Feld kommt also ungeprüft durch — was gut ist (kein Strippen), aber heisst: wer ein Feld baut, das ein GESETZ liest, schreibt die Formprüfung selbst dazu, sonst stünde ein Tippfehler im Drehbuch unbemerkt in der Welt.
-- **Sim und Tabelle sind zwei Leser desselben Vertrags.** `sim.ts#onEntityEvent` und `cards/serving.ts#askerUsesOf` beantworten beide die Frage „welchen Pool hebt dieses Wesen?", und der Kommentar des Sprecher-Gesetzes behauptet, es sei EINE Tabelle. Gemessen ist es das nicht: die Sim liest `askerUsesOf` nicht. Für die Bühne hält ein Test beide in Deckung; die Vereinigung selbst wäre ein eigener Posten.
-- **Das Reichweiten-Modell unterverspricht stärker, als sein eigener Kommentar nahelegt.** Die Sonde misst 6,06 Zeilen Fuss-Hub für einen reinen Halte-Sprung, während `JUMP_UP` 4 verspricht. Das ist Absicht und richtig — aber wer eine neue Kante daran hängt, rechnet mit dem VERSPRECHEN, nicht mit der Messung, und muss den Abstand selbst wählen.
-- **Die hang-Kante findet in den heutigen Kapiteln nichts Neues.** Gemessen an allen sechs Level-Dateien: null neue Knoten, null neue Verstösse. Sie FEUERT (ch02 hat 15 Leisten, zwölf ihrer Kronen bestätigt sie), aber die L0-Gerüsträume sind flach — die zweite Ebene, für die sie gebaut ist, schneidet erst L2-G2.
-- **`ch02.policy.json` führt `match` in `fieldKinds`, aber `match-it` NICHT in `fieldForms`.** Sobald eine echte `match`-Karte ins Kapitel wandert, meldet Gesetz 13b sie. Gehört der Karten-Bahn, nicht dieser — hier nur gemeldet.
-- **Der ch06-Entwurf für `match` schlägt Englisch↔Deutsch vor** (`park` ↔ `Park`), ch02s ratifizierter Vertrag ist Englisch↔Englisch. Das Tor erdet jetzt BEIDE Spalten als Englisch; ch06s Form wäre damit rot. Als Antrag gemeldet, nicht still zugelassen.
+| D | Befund | Beleg | Route | Status | Bahn |
+|---|---|---|---|---|---|
+| D-813 | **Der Bonus-Timeout schob sein `exit`, setzte aber `exitFired` nicht.** Der Wächter in `sim.ts#checkExit` blieb damit scharf; ein Kind, das beim Ablauf der Uhr zufällig auf dem Ausgang steht, konnte im selben Lauf ein ZWEITES `exit` auslösen. Eine Zeile, mitten im Gegenstand von R235, mitgebaut und im PR ausdrücklich als zusätzlicher Fund benannt. | PR #411, gemessen 2026-09-05 | Bonus-Timeout setzt jetzt exitFired (im Gegenstand von R235 mitgebaut) | geschlossen · #411 | L2-M-a |
+| D-814 | **Die Hülle kann gar keinen Toast auslösen.** `PaintScene#toast` ist privat und steht in keiner öffentlichen Szenen-Schnittstelle; ein Toast entsteht ausschliesslich als `SimEvent`. Ein Posten, der „die Hülle zeigt einen Satz" bestellt, bestellt damit immer auch einen Weg von der Hülle in die Sim — hier den Rückruf `bonusRunDone`, nach dem Muster von `cageHintShown`. | PR #411, gemessen 2026-09-05 | Regel: ein Hüllen-Satz bestellt immer einen Weg Hülle → Sim (Muster cageHintShown / bonusRunDone) | erledigt (Wissen) | L2-M-a |
+| D-815 | **`spawnEntities` wählt seinen Anfangszustand mit `role.startsWith("platform")`.** Eine GEPUNKTETE Rolle, die nicht `platform.*` heisst, fällt dort still auf `patrol` — `scene.stage` hätte für immer stillgestanden, ohne dass ein Tor es sagt. Jede künftige Rolle mit Punkt im Namen prüft diese Zeile. | PR #411, gemessen 2026-09-05 | Rollen-Tabelle statt Präfix-Test; jede neue Rolle mit Punkt prüft diese Zeile | offen · L0c/N7C-Kandidat | L2-M-a |
+| D-816 | **`PaintParams` (`apps/web/lib/paint-content.ts`) ist ein OFFENES `z.record`, nicht ein geschlossenes Objekt.** Nur `PaintEntity`, `PaintPhase` und `PaintLevelFile` sind geschlossen. Ein neues `params`-Feld kommt also ungeprüft durch — was gut ist (kein Strippen), aber heisst: wer ein Feld baut, das ein GESETZ liest, schreibt die Formprüfung selbst dazu, sonst stünde ein Tippfehler im Drehbuch unbemerkt in der Welt. | PR #411, gemessen 2026-09-05 | Regel: jedes params-Feld, das ein Gesetz liest, bekommt seine eigene Formprüfung | offen (Regel) | L2-M-a |
+| D-817 | **Sim und Tabelle sind zwei Leser desselben Vertrags.** `sim.ts#onEntityEvent` und `cards/serving.ts#askerUsesOf` beantworten beide die Frage „welchen Pool hebt dieses Wesen?", und der Kommentar des Sprecher-Gesetzes behauptet, es sei EINE Tabelle. Gemessen ist es das nicht: die Sim liest `askerUsesOf` nicht. Für die Bühne hält ein Test beide in Deckung; die Vereinigung selbst wäre ein eigener Posten. | PR #411, gemessen 2026-09-05 | R279: eigener Posten in L2-M-b — die Sim liest die Tabelle | offen bis L2-M-b | L2-M-a |
+| D-818 | **Das Reichweiten-Modell unterverspricht stärker, als sein eigener Kommentar nahelegt.** Die Sonde misst 6,06 Zeilen Fuss-Hub für einen reinen Halte-Sprung, während `JUMP_UP` 4 verspricht. Das ist Absicht und richtig — aber wer eine neue Kante daran hängt, rechnet mit dem VERSPRECHEN, nicht mit der Messung, und muss den Abstand selbst wählen. | PR #411, gemessen 2026-09-05 | Messung, kein Fix — wer eine neue Kante an das Modell hängt, wählt den Abstand selbst | erledigt (Messung) | L2-M-a |
+| D-819 | **Die hang-Kante findet in den heutigen Kapiteln nichts Neues.** Gemessen an allen sechs Level-Dateien: null neue Knoten, null neue Verstösse. Sie FEUERT (ch02 hat 15 Leisten, zwölf ihrer Kronen bestätigt sie), aber die L0-Gerüsträume sind flach — die zweite Ebene, für die sie gebaut ist, schneidet erst L2-G2. | PR #411, gemessen 2026-09-05 | Standbild-Paar schuldet L2-G2, sobald ein Gitter existiert, das man hangeln MUSS | erledigt (Messung) | L2-M-a |
+| D-820 | **`ch02.policy.json` führt `match` in `fieldKinds`, aber `match-it` NICHT in `fieldForms`.** Sobald eine echte `match`-Karte ins Kapitel wandert, meldet Gesetz 13b sie. Gehört der Karten-Bahn, nicht dieser — hier nur gemeldet. | PR #411, gemessen 2026-09-05 | L2-T2 trägt match-it in fieldForms nach (Gesetz 13b) | offen · L2-T2 | L2-M-a |
+| D-821 | **Der ch06-Entwurf für `match` schlägt Englisch↔Deutsch vor** (`park` ↔ `Park`), ch02s ratifizierter Vertrag ist Englisch↔Englisch. Das Tor erdet jetzt BEIDE Spalten als Englisch; ch06s Form wäre damit rot. **Entschieden: R277 (2026-09-05) — `match` ist Englisch↔Englisch, ch06 zieht in L6-T2 nach.** (offen · L6-T2) | PR #411, gemessen 2026-09-05 | R277: match ist Englisch↔Englisch; L6-T2 zieht nach | offen · L6-T2 | L2-M-a |
 
 #### L2-A
 
@@ -1421,7 +1423,36 @@ ch06 D-920…949.** Der Level-1-Sitz hält D-950…979 (nicht hier).
 
 ### LW · ch04 (D-860…889)
 #### L4-G
+**L4-Planung + L4-G1 (2026-09-02/03; nachgetragen vom Programm-Architekten 2026-09-05, R280 — Quelle `PASSOVER_L4_2026-09-03.md` §2, `L4G1_REPORT_2026-09-03.md`).** Unterblöcke: Architekt 860–867 · G1 868–876 · T1 877–880 · M-a/M-b 881–889 (D-881 ist bereits vergeben, s. L4-T).
+
+| D | Befund | Beleg | Route | Status | Bahn |
+|---|---|---|---|---|---|
+| D-860 | Schweben ist gebaut (die Tabelle des Boot-Blatts war zu groß) | Messung 02.09. | — | erledigt (Messung) | L4-Planung |
+| D-861 | Stale Kommentar „fuel left" in `player.ts` | gelesen 02.09. | L4-M-a E10 streicht die Zeile | offen bis L4-M-a | L4-Planung |
+| D-862 | Käfig hinter der Sprint-Tür (ch04.md) fällt | Design-Blatt vs. Signatur | L4-A zieht `ch04.md` nach | offen · L4-A | L4-Planung |
+| D-863 | Tropfen-Farbe je Spur (farbige Sammel-Spur) | Signatur §3 | Kunst-Zeit | offen · Kunst | L4-Planung |
+| D-864 | `sort` kommt aus L3-M, die Faust aus L2 — Zug-Ordnung | Rahmen §6 | Konsum, kein Bau | erledigt (deklariert) | L4-Planung |
+| D-865 | = D-895 (R253: `bonuspay` ist eine Shell-Zeremonie, kein Schema-Defekt) | — | — | geschlossen → D-895 | L4-Planung |
+| D-866 | 29 statt 28 Gesetze in `level.ts` (README zählt 28) | Zählung 02.09. | Programm: README-Zahl nachziehen (L0c) | offen · L0c | L4-Planung |
+| D-867 | `LinkSpec.action` wird nicht gelesen; G2 misst `seal` | `level.ts#LinkSpec` | Programm/G2 | offen · L4-G2 | L4-Planung |
+| D-868 | **Das Reach-Modell kann keine Sperre begründen** — Engine trägt 7,7 Spalten, Modell verspricht 4 (`DX_BY_SKY`); eine Grube, die das Modell sperrt, ist der Engine offen | erstes Piloten-Band sprang ohne Schwebe-Gabe hinüber, 03.09. | Sperre wird am BAND gemessen, nie am Modell; Deckel = Steighöhe (Dach), nicht Weite — L0c Posten 11 (README-Gesetz) | offen · L0c | L4-G1 |
+| D-869 | Ein Dach, das an der Hindernis-Kante endet, deckelt nicht — die Figur verlässt es horizontal | Piloten-Band 03.09. | Dossier-Wissen: Deckel überspannt das Hindernis, ohne begehbare Oberseite | erledigt (Wissen) | L4-G1 |
+| D-870 | `^` (Tinten-Spitze) fragt nicht: Toast + Rückstoß, keine Karte | `sim.ts#onPlayerEvent` | Blatt-Glossar korrigiert | erledigt | L4-G1 |
+| D-871 | `budgetSec` sitzt an der Phase (`PhaseSpec`), nicht am Level-Kopf | `level.ts#PhaseSpec` | erledigt (Level trägt es so) | erledigt | L4-G1 |
+| D-872 | Der Dossier-Ordner ist alles oder nichts — fünf Dateien Pflicht, sobald er existiert | `check-level-design` Block 3 | G2-Blatt liefert fünf Dossiers | erledigt (Gerüste) | L4-G1 |
+| D-873 | Stem-Dedup verbietet einen Skin in zwei Räumen (regenwolke/fensterladen p1+p3) | `check-level-design` Block 1 | Skin-Vertrag: je Raum eigener Skin (G2) | offen · L4-G2 | L4-G1 |
+| D-874 | `check-registers` verbietet `datei:zeile` in Dossiers, verlangt `datei#symbol` | Tor-Lauf 03.09. | G2/T2-Blätter zitieren Symbole | erledigt (Regel) | L4-G1 |
+| D-875 | **`check-paint-copy` hat keine Entwurfs-Semantik** — erdet Regelseiten-Beispiele gegen das kumulative Unit-Lexikon ohne Skip für `draft:true`; die zwei fertigen ch04-Regelseiten warten deshalb in `ch04-dossiers-v2/pending.md` §5 | Lauf 03.09.: neun rote Zeilen über sechs Wörter (he · happy · sad · cold · tired · aren't) | L0c Posten 1 (Skip bei draft + fehlendem Lexikon; rot bei `draft:false`); u04 liegt seit #409 — die Regelseiten-PR ist frei | offen · L0c / L4-Regelseiten-PR | L4-G1 |
+| D-876 | Die Blatt-Batterie deckte `ci.yml` nicht (`check-paint-copy` fehlte) | Vergleich Blatt vs. `ci.yml` 03.09. | Rahmen: Tor-Liste aus `ci.yml` ziehen (Regel im TRAPS) | erledigt (Regel) | L4-G1 |
 #### L4-T
+**L4-T1 (2026-09-03, Kartenbahn; nachgetragen 2026-09-05, R280 — Quelle `L4T1_REPORT_2026-09-03.md`, umnummeriert nach ANTWORT_PROGRAMM_2 §3 L4: 868→877 · 869→878 · 870→879 · 871→880).**
+
+| D | Befund | Beleg | Route | Status | Bahn |
+|---|---|---|---|---|---|
+| D-877 | **Die Erdungs-Meldung nennt hart „MORE! 1 Unit 1"**, obwohl das Lexikon seit L0 je Kapitel gilt — eine ch04-Karte fällt mit einer Meldung, die auf Unit 1 zeigt | Tamper-Lauf 03.09. | L0c Posten 2 (Meldung trägt Kapitel + Unit + Lexikon-Pfad) | offen · L0c | L4-T1 |
+| D-878 | Die Regler-Pole des Boot-Blatts („a little"/„very") sind nicht geerdet — `little` steht in keiner Quelle; die Unit-Skala ist `not …` ↔ `very …` | SB 31/32/34 | Entwurf in `pending-tasks.md` | erledigt | L4-T1 |
+| D-879 | **Gesetz 14e schützt nur die halbe Klasse:** „Farbkarte zuerst im Pool" gilt nur für Wesen mit zusätzlich feindlicher Rolle; ein reines `drained`-Wesen mit zwei Karten (die Nachbarin) hängt allein an der Dateireihenfolge | gemessen 03.09. | Programm/L0c-Kandidat: 14e auf jedes `drained`-Wesen ausdehnen | offen · L0c | L4-T1 |
+| D-880 | **`stimulus.art` auf ungemalten Wesen ist rot** (`checkPortraits`); fünf T1-Blätter bestellten `<skin>_a` — Weglassen ist der einzige grüne Zustand, solange kein Wesen gemalt ist; Verwandt: D-935 (Tor misst flach, Auflöser ordner-genau) | Tor-Lauf 03.09. | L0c Posten 9 (unter `draft:true` berichtet, nicht rot; Ordner-Regel wie der Auflöser) | offen · L0c | L4-T1 |
 **L4-T1 (2026-09-04, ch04-Kartenbahn, PR `L4-T1:` #395).** Ein Befund der Kartenbahn, dessen Fix in einer fremden Bahn liegt (R268); je Befund führt die niedrigste Nummer (R253).
 
 | D | Befund | Beleg | Stand/Fix | Status · Datum | Quelle |
@@ -1433,20 +1464,75 @@ ch06 D-920…949.** Der Level-1-Sitz hält D-950…979 (nicht hier).
 
 ### LW · ch05 (D-890…919)
 #### L5-G
+**L5-Planung + L5-G1 (2026-09-02/03; nachgetragen vom Programm-Architekten 2026-09-05, R280 — Quelle `PASSOVER_L5_2026-09-02.md` §2, `L5G1_REPORT_2026-09-03.md`).** Unterblöcke: Architekt 890–902 · G 903–909 · T 910–914 · M 915–919.
+
+| D | Befund | Beleg | Route | Status | Bahn |
+|---|---|---|---|---|---|
+| D-890 | Gunner-Kugel ist abwehrbar (Deflect-Zweig ungegated), aber ohne Leine und ohne Wirkung — halbe Projektil-Klasse | `entities.ts` Deflect-Zweig, gemessen 02.09. | L5-M-a: Klassen `returnable`/`dodge`, Kugel default `dodge` | offen bis L5-M-a | L5-Planung |
+| D-891 | Glyph `U` ist tot: `collide.ts#isUTurn` hat nur einen Test-Leser | gemessen 02.09. | Programm (beobachtet) | offen · Programm | L5-Planung |
+| D-892 | Kein Wächter wird je `redeemed`; „jeder Wächter schließt sich an" ist heute nur `consoled` + Zelle | `entities.ts` | Programm (ch05: Tanz = Rig-Zustand) | offen · Programm | L5-Planung |
+| D-893 | Sprechblasen ankern am Kind, nicht am Wesen (D-772-Klasse) | `PaintScene.ts` | Programm (ch05: Karten + Slate statt Blasen) | offen · Programm | L5-Planung |
+| D-894 | „metronome" ist belegtes Kunst-Anti-Muster (`mass.ts`) — der Beat-Layer heißt `beat` | gelesen 02.09. | L5-M-a Namensgesetz | offen bis L5-M-a | L5-Planung |
+| D-895 | D-865-Korrektur: `bonuspay` ist eine Shell-Zeremonie (`PaintGame.tsx#bonuspay`, Preis aus `door.params.price`) — kein Schema-Defekt; Rahmen §4 `use`-Liste war irreführend | gemessen 02.09. | Rahmen korrigiert | geschlossen | L5-Planung |
+| D-896 | ch05 p2 80 Spalten + p3 30 Zeilen = neue Maxima der Welt | Blaupause | Perf-Vertrag L5-M-a/M-b; G2 misst | offen · L5-G2 | L5-Planung |
+| D-897 | `checkpointSide` in ch01 überall `near`, FILED_WELLE5 nennt p2 `far` — Drift | Daten/Doku | Programm | offen · Programm | L5-Planung |
+| D-898 | `PAINT.activationMarginPx` deklariert, test-gepinnt, ohne Leser | `paint.ts` | Programm | offen · Programm | L5-Planung |
+| D-899 | Sammel-Reihenfolge wird nicht protokolliert; Melodie = Stufen-Stems nach Zählstand | Entscheid | L5-M-a (`note-take` 8 Stufen) | offen bis L5-M-a | L5-Planung |
+| D-900 | = D-806 (R253): `check-paint-copy` u01-Hardcode | — | L0-Nachtrag N4 | geschlossen → D-806 | L5-Planung |
+| D-901 | `drained` erzwingt `restore`; ch05 ohne `drained` — Veits Bilder-Runde wandert an seinen Koffer p2 (R49) | Design-Delta | Koki-Veto (Frage im Report) | offen · Koki | L5-Planung |
+| D-902 | `FORM_KINDS` führte `mistake`/`memory` in keiner Form ⇒ Feld-Debüts schema-blockiert | Schema | **R247: `fix-it`/`pair-it`** (L0-Nachtrag N3) | geschlossen · R247 | L5-Planung |
+| D-903 | Die Feder löscht bei jedem Aufsetzen den Boden-Zustand — jedes „settle"-Makro auf einer Feder hüpft sein volles Budget ab | Piloten-Bänder 03.09. | Gesetz für Piloten: nie auf/vor einer Feder warten | erledigt (Wissen) | L5-G1 |
+| D-904 | Die Feder hebt WENIGER als ein voller Halte-Sprung (5,94 gegen 6,31 Zeilen) — nie ein Höhen-Tor für sich | Sonde 03.09. | Dossier sagt es; Sonde in L5-M-a reproduziert | erledigt (Messung) | L5-G1 |
+| D-905 | Das Dossier-Tor liest den Sammel-Skin nicht — Noten müssen als A·B·C-Ketten dokumentiert werden | `check-level-design` | Programm (Kandidat L0c) | offen · Programm | L5-G1 |
+| D-906 | Platzhalter einer Sammel-Form zeigt die ersten drei Buchstaben des Namens („NOT" auf jeder Note) | Walk 03.09. | Kunst-Zeit | offen · Kunst | L5-G1 |
+| D-907 | ch01 nennt eine Hintergrund-Platte, die es nicht mehr gibt (`band_p1_hallway`); kein Tor prüft `plates` gegen Blätter | `ch01.level.json` | Kunst-Bahn / L0c-Kandidat | offen · Programm | L5-G1 |
 
 | Nr. | Befund | Beleg | Fix | Wer/wann | Herkunft |
 |---|---|---|---|---|---|
 | D-908 | **Eine `claims.json` in falscher Form macht den ZWILLINGS-PR rot und sieht dabei selbst gruen aus.** `ch05-dossiers-v2/claims.json` trug ihre neun Woerter FLACH auf der obersten Ebene, ohne `schema`/`chapter`/`claims`. `check-level-design.mjs#claimsOf` liest den Schluessel `claims` und faellt ohne ihn STILL auf eine leere Tabelle zurueck; danach gilt jedes wordfile-Wort als unklassifiziert. Im G1-PR faellt nichts auf (ohne Kartendatei wird der Abdeckungs-Block namentlich uebersprungen) — die neun roten Zeilen erscheinen erst am T1-PR, also an der Datei, die den Fehler NICHT hat. Nebenwirkung: der tote Schluessel »Veit« (kein wordfile-Eintrag der Unit) konnte nicht auffallen, weil die D-77-Pruefung auf Schluesseln arbeitet, die es fuer das Tor gar nicht mehr gab | Mess-Baum aus `origin/main` + beiden Zweigen: `check-level-design` 9 Verstoesse, alle `ch05 abdeckung: wordfile "X" ist unklassifiziert`. Ursache per Injektion bewiesen, nicht per Code-Lesung: die reparierte Datei mit `claims` → `claimsX` umbenannt reproduziert **exakt dieselben 9 Zeilen** | **GESCHLOSSEN (L5-Fix, 2026-09-05):** die Datei traegt jetzt `schema`/`chapter`/`note`/`claims` nach dem Vorbild von `ch03-dossiers-v2/claims.json`, alle neun wordfile-Woerter mit `kind: cards`, »Veit« ersatzlos gestrichen. **Der `?? {}`-Rueckfall selbst ist NICHT hier repariert** — er ist ein Tor-Defekt und gehoert der Bahn L0c (R271/R267): wer eine `claims.json` in falscher Form schreibt, muss ein rotes Tor bekommen, das die FORM nennt, nicht die Woerter | geschlossen · L5-Fix, 2026-09-05 | R271 (Pruefer) · Sitz L5-Fix (R272) |
-| D-909 | **Die README des Dossier-Ordners beschreibt `claims.json` nach dem Fix falsch.** `ch05-dossiers-v2/README.md` fuehrt sie unter §Blaetter als »welche Vokabel welcher Platzhalter-Skin bedient« — das war die Lesart der flachen Fassung mit ihren `stems`-Feldern. Die Datei klassifiziert jetzt gegen KARTEN, nicht gegen Skins; der Satz fuehrt den naechsten Leser in die Irre | `docs/design/g1/paint/ch05-dossiers-v2/README.md`, Abschnitt Blaetter | Einen Satz nachziehen (»welche Vokabel wie eingeloest wird: cards/thing/architecture«). **Vom Sitz L5-Fix bewusst NICHT angefasst** — die README steht nicht auf seiner Scope-Wand | offen · Abschluss-Bahn ch05 | Sitz L5-Fix, 2026-09-05 |
+| D-909 | **Die README des Dossier-Ordners beschreibt `claims.json` nach dem Fix falsch.** `ch05-dossiers-v2/README.md` fuehrt sie unter §Blaetter als »welche Vokabel welcher Platzhalter-Skin bedient« — das war die Lesart der flachen Fassung mit ihren `stems`-Feldern. Die Datei klassifiziert jetzt gegen KARTEN, nicht gegen Skins; der Satz fuehrt den naechsten Leser in die Irre | `docs/design/g1/paint/ch05-dossiers-v2/README.md`, Abschnitt Blaetter | Einen Satz nachziehen (»welche Vokabel wie eingeloest wird: cards/thing/architecture«). **Vom Sitz L5-Fix bewusst NICHT angefasst** — die README steht nicht auf seiner Scope-Wand. **GESCHLOSSEN (Register-Nachzug, 2026-09-05): Satz in `ch05-dossiers-v2/README.md` nachgezogen** | geschlossen · 2026-09-05 | Sitz L5-Fix, 2026-09-05 · Programm-Architekt |
 
 #### L5-T
+**L5-T1 (2026-09-03, Kartenbahn; nachgetragen 2026-09-05, R280 — Quelle `L5T1_REPORT_2026-09-03.md`; Unterblock T 910–914).**
+
+| D | Befund | Beleg | Route | Status | Bahn |
+|---|---|---|---|---|---|
+| D-910 | `stimulus.art` auf ungemalten Wesen ist rot — in allen fünf T1-Blättern bestellt (= Klasse D-880) | Tor-Lauf 03.09. | L0c Posten 9 | offen · L0c | L5-T1 |
+| D-911 | Ein Wesen, eine Stimme (14a): der Triangel-Funke hatte zwei Formen; beide Karten jetzt `ask-it` | Tor-Lauf 03.09. | erledigt im PR | erledigt | L5-T1 |
+| D-912 | Ein leeres `vocabLedger` ist nach dem Merge 38 rote Zeilen (17a) — 38 Einträge mit Grund + Ablauf angelegt; 17c räumt sie mit T2 ab (R274) | Tor-Lauf 03.09. | T2 löst die Einträge ein | offen · L5-T2 | L5-T1 |
+| D-913 | Veits sechs Wiedererweckungs-Runden brauchen eine erklärte Familie (14c; ch01 löst es mit `merle-ceremony`) | Gesetzestext | die Bahn, die die sechs Karten schreibt (T2) | offen · L5-T2 | L5-T1 |
+| D-914 | `social-formula` fehlte in `fieldForms` (Parade-Sprechformel) | Politik-Datei | Programm-Entscheid: `social-formula` JA (ANTWORT_2 §3 L5) | erledigt | L5-T1 |
 #### L5-S
 #### L5-M
 #### L5-A
 
 ### LW · ch06 (D-920…949)
 #### L6-G
+**L6-Planung (2026-09-02/03; nachgetragen vom Programm-Architekten 2026-09-05, R280 — Quelle `PASSOVER_L6_2026-09-02` V2 §2 + V3).** Unterblöcke: G 920–934 · T 935–941 · M 942–949.
+
+| D | Befund | Beleg | Route | Status | Bahn |
+|---|---|---|---|---|---|
+| D-920 | Boot-Blatt „Währung Hinweis-Schnipsel" UND Drehbuch „Schnipsel = zerrissene wahre Hinweise" — zwei Motor-Klassen, ein Wort | Boot L6 §1 | R248: Lupen-Funken = `*`, Schnipsel = `cloth` | geschlossen · R248 | L6-Planung |
+| D-921 | `cloth`-Fundstücke hießen an vier Stellen hart „Kleider" (`PaintGame.tsx`, `cards/auftakt.ts`) | gemessen 02.09. | R246 / L0 N2: `clothNounDe` + `clothPlaceDe` — im ch06-Level eingetragen (G1) | geschlossen · L0 N2 | L6-Planung |
+| D-922 | Boot §2 bestellte einen Sprungstellen-Trigger; `w` warpt nur, eine `.`-Tasche ist legal | `sim.ts` | kein Motor — Daten (G2) | offen · L6-G2 | L6-Planung |
+| D-923 | Taktsprung fehlt im `Ability`-Enum; die Reichweiten-Hülle ist blind | `level.ts#Ability` | **R245:** `beatjump` — L5-M-b Gabe, L6-M-b Hülle + Favor-Linien | offen bis L6-M-b | L6-Planung |
+| D-924 | ch06.md §7 „Regel-Seiten versteckt" vs D-785 | Design-Blatt | beide on-path in p1 (R248) | geschlossen · R248 | L6-Planung |
+| D-925 | ch06.md „MAILO" — Kanon ist Tammo (R240) | Design-Blatt | L6-A zieht `ch06.md` nach | offen · L6-A | L6-Planung |
+| D-926 | doc 41 §1 vs doc 44 §4 Paletten-Drift; match/sort/slider = Konsum | Doku | `pending-tasks.md` (T) | offen · L6-T2 | L6-Planung |
+| D-927 | = Befund 831 des L3-Passovers (R253: Bonus-Uhr `p9`-literal + 35 s; `budgetSec` aus L0 N7) | — | konsumiert | geschlossen → L3 831 | L6-Planung |
+| D-928 | Schulbuch-Detektiv = Sherlock Groans/Doctor Grey; Haus-Name Mo | Korpus/Kanon | `Mo` als properNoun (T1) | geschlossen · L6-T1 | L6-Planung |
+| D-929 | Wächter-Rig fliegt (D-809-Instanz) — passt dem Notizbuch | Motor | Anti-Posten, kein Bau | erledigt (Vermerk) | L6-Planung |
+| D-930 | `GUARDIAN_BOARDS` kennt nur `tafel` (D-810-Instanz) | `PaintScene.ts#GUARDIAN_BOARDS` | L6-M-a M2: `notizbuch` — erster Eintrag neben `tafel` (L2-M-a hat KEIN `loewe` gebaut) | offen bis L6-M-a | L6-Planung |
+| D-931 | pickupset-Karte prüft `answer === wordEn` ⇒ Schnipsel-Karten = `choice` | `PaintGame.tsx` | Vertrag T1 | geschlossen · L6-T1 | L6-Planung |
+| D-932 | `story.json` ch06 s006 zeigt auf eine Karte, die es nicht gibt (Keen-Ära) | Korpus | filed | offen · Programm | L6-Planung |
+| D-933 | WB-Dateiname mit typografischem Apostroph (U+2019) | iCloud | T1 pinnt byte-genau | geschlossen · L6-T1 | L6-Planung |
+| D-934 | Rahmen §3.0a trug Buchseiten als PDF-Seiten (SB Buch = PDF + 2, WB Buch = PDF − 2) | vier SB-Seiten + eine WB-Seite als Bild | **R260**, `KORREKTUR_SEITEN_2026-09-03.md` | geschlossen · R260 | L6-Planung / L5 |
 #### L6-T
+**L6-T1 (2026-09-03, Kartenbahn; nachgetragen 2026-09-05, R280 — Quelle `L6T1_REPORT_2026-09-03.md`; Unterblock T 935–941).**
+
+| D | Befund | Beleg | Route | Status | Bahn |
+|---|---|---|---|---|---|
+| D-935 | **Das Kunst-Tor misst flach, der Auflöser misst ordner-genau:** `checkPortraits` sammelt gemalte Blätter über ALLE Kapitel-Ordner und verlangt `door_a` — das Blatt liegt in `art/g1/paint/ch01/`, `paint-art.ts#artDirsFor` gibt ch06 nur `hero` + `ch06`; ch06 rendert den grauen Platzhalter, während das Tor die Zusage erzwingt (R263-Klasse, eine Schicht höher) | gemessen 03.09. | L0c Posten 9 (dieselbe Ordner-Regel wie der Auflöser) | offen · L0c | L6-T1 |
 #### L6-S
 #### L6-M
 #### L6-A
