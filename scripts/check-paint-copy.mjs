@@ -259,11 +259,15 @@ export const analyse = ({ shell, content, corpus, lexika, kapitel = [], probeSrc
   // Defekt: die Datei sagt jetzt, welche Unit sie meint, oder das Tor sagt,
   // welche Datei es nicht einordnen konnte.
   const uDatei = (n) => `u${String(n).padStart(2, "0")}-lexicon.json`;
+  // Reihenfolge wie vor L0c und wie im Nachbar-Tor: was die DATEI ueber sich
+  // sagt, zaehlt vor dem, was ihr Name nahelegt. (Die erste Fassung drehte das
+  // still um — folgenlos, weil kein `chNN.level.json` ein `unit`-Feld traegt,
+  // aber eine unkommentierte Verhaltensaenderung ist selbst ein Befund.)
   const unitVon = (file, json) => {
-    const chNum = /(?:^|\/)ch(\d{2})\.(?:level|tasks\.v2)\.json$/.exec(file)?.[1];
-    if (chNum !== undefined) return Number(chNum);
     const ausFeld = typeof json.unit === "string" ? Number(/u(\d{2})$/.exec(json.unit)?.[1]) : Number.NaN;
-    return Number.isFinite(ausFeld) ? ausFeld : null;
+    if (Number.isFinite(ausFeld)) return ausFeld;
+    const chNum = /(?:^|\/)ch(\d{2})\.(?:level|tasks\.v2)\.json$/.exec(file)?.[1];
+    return chNum === undefined ? null : Number(chNum);
   };
   for (const { file, json } of content) {
     if (unitVon(file, json) === null) {

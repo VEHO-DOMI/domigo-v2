@@ -439,10 +439,10 @@ describe("L0 · N3 · fix-it und pair-it", () => {
 // `g1u02.w.he` nicht als geübt deklarieren — die Wortgrenze von `hasWord` zählt
 // den Apostroph zum Wort. Die zwei Fälle darunter sind das ganze Gesetz: der
 // Apostroph wird aufgelöst, und NUR er. »hers« bleibt ein anderes Wort.
-describe("L0c · 13e sieht über einen Apostroph hinweg, aber nicht über einen Buchstaben", () => {
+describe("L0c · 13e sieht über einen Apostroph hinweg, aber erfindet keine Deckung", () => {
   const deckt = (flaeche: string, wort: string): boolean => hasWord(withContractionsExpanded(flaeche), wort);
 
-  it("»He's got a dog.« deckt `he`", () => {
+  it("»He's got a dog.« deckt `he` — der Posten, den L2-T1 gemessen hat", () => {
     expect(deckt("He's got a dog.", "he")).toBe(true);
   });
 
@@ -450,23 +450,54 @@ describe("L0c · 13e sieht über einen Apostroph hinweg, aber nicht über einen 
     expect(deckt("hers", "he")).toBe(false);
   });
 
-  it("die aufgelöste Form kommt DAZU, die ursprüngliche bleibt lesbar", () => {
-    // `he's` muss weiterhin als es selbst gefunden werden — eine Auflösung, die
-    // die Vorlage ERSETZT, nähme dem Gesetz die engere Lesart weg.
-    expect(deckt("He's got a dog.", "he's")).toBe(true);
-    expect(deckt("He's got a dog.", "is")).toBe(true);
+  // ── die drei Gegenbeispiele des blinden Lesers (2026-09-05) ───────────────
+  // Die erste Fassung löste JEDEN Apostroph-Schwanz mechanisch auf. Alle drei
+  // Fälle darunter waren damit falsch, und der dritte ist der gefährliche: er
+  // schrieb dem Kind ein Wort GUT, das es nie produziert hat.
+  it("ein Genitiv-`'s` schreibt NICHT `is` gut — die gefährliche Richtung", () => {
+    // u01 und u05 lehren Possessive: „Sam's dog" wäre morgen eine echte Karte.
+    expect(deckt("The dog's tail.", "is")).toBe(false);
+    expect(deckt("The dog's tail.", "dog")).toBe(true);
   });
 
-  it("auch die verneinte Form: »She isn't here.« deckt `is` und `not`", () => {
+  it("»won't« ist unregelmäßig: `will`, nicht das Nicht-Wort »wo«", () => {
+    expect(deckt("He won't come.", "will")).toBe(true);
+    expect(deckt("He won't come.", "not")).toBe(true);
+    expect(deckt("He won't come.", "wo")).toBe(false);
+  });
+
+  it("»let's« ist `let us`, nicht `let is`", () => {
+    expect(deckt("Let's go home.", "let")).toBe(true);
+    expect(deckt("Let's go home.", "us")).toBe(true);
+    expect(deckt("Let's go home.", "is")).toBe(false);
+  });
+
+  it("die eindeutigen Schwänze werden aufgelöst, die mehrdeutigen nicht", () => {
+    expect(deckt("I'm ready.", "am")).toBe(true);
+    expect(deckt("They're here.", "are")).toBe(true);
+    expect(deckt("We've got one.", "have")).toBe(true);
+    expect(deckt("She'll come.", "will")).toBe(true);
+    // `'s` = is ODER has ODER Genitiv, `'d` = would ODER had: beide bleiben zu
+    expect(deckt("He's got a dog.", "is")).toBe(false);
+    expect(deckt("He'd go.", "would")).toBe(false);
+    expect(deckt("He'd go.", "he")).toBe(true);
+  });
+
+  it("die verneinte Form deckt Stamm UND `not`", () => {
     expect(deckt("She isn't here.", "is")).toBe(true);
     expect(deckt("She isn't here.", "not")).toBe(true);
+  });
+
+  it("»don't« deckt weiterhin NICHT `don` — die enge Grenze von hasWord bleibt", () => {
+    expect(deckt("I don't know.", "don")).toBe(false);
+    expect(deckt("I don't know.", "do")).toBe(true);
   });
 
   it("ein Satz ohne Apostroph bleibt Zeichen für Zeichen derselbe", () => {
     expect(withContractionsExpanded("The dog sits down.")).toBe("The dog sits down.");
   });
 
-  it("»don't« deckt weiterhin NICHT `don` — die enge Grenze von hasWord bleibt", () => {
-    expect(deckt("I don't know.", "don")).toBe(false);
+  it("die aufgelöste Form kommt DAZU, die ursprüngliche bleibt lesbar", () => {
+    expect(deckt("He's got a dog.", "he's")).toBe(true);
   });
 });

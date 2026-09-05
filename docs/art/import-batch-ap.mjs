@@ -68,6 +68,13 @@ const KAPITEL = "ch01";
 //
 // Und der dritte Fall ist der wichtigste: ein Stem, der zu KEINEM passt, haelt
 // das Werkzeug an. Raten ist genau das, was D-793 gekostet hat.
+//
+// IN DIESER DATEI kann dieser dritte Zweig nicht feuern: `KAPITEL` ist eine
+// Konstante (diese Lieferung IST die ch01-Runde), also ist `kapitel` nie null.
+// Er steht trotzdem hier, weil beide Werkzeuge dieselbe Form tragen sollen —
+// im allgemeinen Werkzeug (`scripts/import-codex-sheet.mjs`, ohne `--chapter`)
+// ist er der Zweig, der wirklich anhaelt. Vom blinden Leser benannt, damit
+// niemand ihn fuer eine hier wirksame Sicherung haelt.
 const istHeldenStem = (stem) => ALWAYS_STEMS.includes(stem) || /^hero\d*_/.test(stem);
 const zielFuer = (stem, kapitel) => {
   if (istHeldenStem(stem)) return path.join(ART_ROOT, "hero");

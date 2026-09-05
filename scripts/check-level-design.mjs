@@ -336,7 +336,14 @@ const ledgerDifferenz = (cx) => {
 // Sim. Es kann aber verlangen, dass NEBEN der Behauptung ein Beweis steht. Das
 // hier ist deshalb eine WARNUNG mit Zeile und Datei, kein Exit-Code: die
 // Behauptung ist erlaubt, das Schweigen darueber nicht.
-const SPERR_BEHAUPTUNG = /(unerreichbar ohne|nicht erreichbar ohne|ohne .{1,40} nicht (?:zu )?erreich)/i;
+// Vom blinden Leser gemessen: die erste Fassung verlangte eine feste Wortfolge
+// und verpasste damit »ohne die Feder unerreichbar« — genau den Satz, den das
+// README als Leitfall zitiert, und die haeufigste deutsche Form der Aussage.
+// Die Behauptung besteht aus ZWEI Teilen, und beide muessen in derselben Zeile
+// stehen: ein Wort fuer Unerreichbarkeit UND die Bedingung »ohne«.
+const SPERR_WORT = /(unerreichbar|nicht (?:zu )?erreich\w*|kommt\b.{0,25}\bnicht\b.{0,15}(?:hinauf|rauf|hoch|hin))/i;
+const SPERR_BEDINGUNG = /\bohne\b/i;
+const SPERR_BEHAUPTUNG = { test: (zeile) => SPERR_WORT.test(zeile) && SPERR_BEDINGUNG.test(zeile) };
 const BAND_BEWEIS = /(Band|proof\.json|Sim|gemessen|Messfahrt|Gegenprobe|Anlaeuf|Anläuf)/i;
 const sperrWarnungen = (cx) => {
   const out = [];
@@ -756,6 +763,31 @@ if (process.argv.includes("--selftest")) {
     ["ANSPRUECHE: kaputtes JSON stirbt MIT Dateinamen, nicht als nackter SyntaxError",
       claimsProbe("{ das ist kein JSON"),
       (r) => r.ergebnis === null && r.neue.some((x) => /claims\.json ist kein gueltiges JSON/.test(x))],
+  );
+
+  // ── Block 9 · L0c · P11 · die Sperr-Warnung kann rot werden ───────────────
+  // Vom blinden Leser bestellt: dieses Gesetz hatte gar keinen Fall und haette
+  // vakuum-gruen bestehen koennen — im echten Lauf meldet es null Warnungen,
+  // und niemand haette bemerkt, dass sein Regex den eigenen Leitfall verpasst.
+  const sperrProbe = (zeilen) => {
+    const dir = fs.mkdtempSync(path.join(tmp, "dossier-"));
+    fs.writeFileSync(path.join(dir, "p1.md"), zeilen);
+    return sperrWarnungen({ chapter: "ch99", hasDossiers: true, dossiers: dir });
+  };
+  cases.push(
+    ["SPERRE: »ohne die Feder unerreichbar« — der Leitfall des README",
+      sperrProbe("Balkon A ist ohne die Feder unerreichbar.\n"), (f) => f.length === 1],
+    ["SPERRE: die umgekehrte Wortfolge faengt sie auch",
+      sperrProbe("Ohne die Feder ist Balkon A unerreichbar.\n"), (f) => f.length === 1],
+    ["SPERRE: »kommt ohne den Ring nicht hinauf« ist dieselbe Behauptung",
+      sperrProbe("Ohne den Ring kommt das Kind hier nicht hinauf.\n"), (f) => f.length === 1],
+    ["SPERRE: MIT Band-Beweis daneben bleibt es still",
+      sperrProbe("Balkon A ist ohne die Feder unerreichbar.\nGegenprobe am Band: sechs Anlaeufe, null Landungen.\n"),
+      (f) => f.length === 0],
+    ["SPERRE: eine ERLAUBNIS ist keine Sperre",
+      sperrProbe("Das Dach ist ohne Umweg erreichbar.\n"), (f) => f.length === 0],
+    ["SPERRE: der Kamera-Rand ist unerreichbar OHNE Bedingung — keine Behauptung ueber eine Gabe",
+      sperrProbe("Die Muenze in Spalte 62 ist unerreichbar (Kamera-Rand).\n"), (f) => f.length === 0],
   );
 
   let bad = 0;

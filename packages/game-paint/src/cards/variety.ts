@@ -152,19 +152,40 @@ export const hasWord = (haystack: string, needle: string): boolean =>
  *  he's → he is · don't → do not · I'm → I am. Kein Stemming und keine
  *  Wortliste — »hers« traegt keinen Apostroph und deckt `he` weiterhin NICHT.
  */
+/** Die EINDEUTIGEN Apostroph-Schwaenze. `'s` und `'d` stehen bewusst NICHT
+ *  drin: `'s` ist is ODER has ODER Genitiv, `'d` ist would ODER had. Wer sie
+ *  auflöst, schreibt dem Kind ein Wort gut, das es vielleicht nie produziert
+ *  hat — und ein Gesetz, das Deckung ERFINDET, ist derselbe Defekt wie eines,
+ *  das sie übersieht, nur in die andere Richtung. */
 const CONTRACTION_TAIL: Readonly<Record<string, string>> = {
-  s: "is", re: "are", ve: "have", ll: "will", d: "would", m: "am",
+  re: "are", ve: "have", ll: "will", m: "am",
 };
+/** Die drei Stämme, die vor `n't` nicht ihr eigenes Wort sind. Ohne sie würde
+ *  „won't" mechanisch zu „wo not" — ein Wort, das es nicht gibt, statt „will". */
+const NT_UNREGELMAESSIG: Readonly<Record<string, string>> = {
+  wo: "will", ca: "can", sha: "shall",
+};
+
 export const withContractionsExpanded = (surface: string): string => {
-  const ohneNt = surface.replace(/([a-z]+)n't\b/gi, "$1 not");
-  const aufgeloest = ohneNt.replace(
-    /([a-z]+)'([a-z]{1,2})\b/gi,
-    (ganz, stamm: string, schwanz: string) => {
-      const wort = CONTRACTION_TAIL[schwanz.toLowerCase()];
-      return wort === undefined ? ganz : `${stamm} ${wort}`;
-    },
-  );
-  return aufgeloest === surface ? surface : `${surface} ${aufgeloest}`;
+  const dazu: string[] = [];
+  // `n't`: der Stamm (namentlich berichtigt, wo er keiner ist) plus „not".
+  for (const m of surface.matchAll(/([a-z]+)n't\b/gi)) {
+    dazu.push(NT_UNREGELMAESSIG[m[1].toLowerCase()] ?? m[1], "not");
+  }
+  // Jeder andere Apostroph: das GRUNDWORT immer, der Schwanz nur, wenn er
+  // eindeutig ist. „He's" deckt damit `he`, aber nicht `is`.
+  for (const m of surface.matchAll(/([a-z]+)'([a-z]{1,2})\b/gi)) {
+    // `'t` ist immer die `n't`-Form von oben — sonst hiesse der Stamm hier
+    // „don" statt „do", und ausgerechnet »don« ist der Fall, den die enge
+    // Wortgrenze von `hasWord` seit jeher richtig NICHT deckt.
+    if (m[2].toLowerCase() === "t") continue;
+    dazu.push(m[1]);
+    const wort = CONTRACTION_TAIL[m[2].toLowerCase()];
+    if (wort !== undefined) dazu.push(wort);
+  }
+  // …und die eine Form, deren `'s` weder is noch has noch Genitiv ist.
+  if (/\blet's\b/i.test(surface)) dazu.push("us");
+  return dazu.length === 0 ? surface : `${surface} ${dazu.join(" ")}`;
 };
 
 /** Every string the CHILD must produce or judge to answer this card. Coverage
