@@ -1,38 +1,34 @@
 {
- "keyboard": {
-  "kind": "cards",
-  "stems": [
-   "notenstaender"
-  ]
- },
- "saxophone": {
-  "kind": "cards",
-  "stems": [
-   "notenstaender"
-  ]
- },
- "guitar": {
-  "kind": "cards",
-  "stems": [
-   "notenstaender"
-  ]
- },
- "singer": {
-  "kind": "cards",
-  "stems": [
-   "notenstaender"
-  ]
- },
- "drums": {
-  "kind": "architecture",
-  "stems": [
-   "pauke"
-  ]
- },
- "Veit": {
-  "kind": "architecture",
-  "stems": [
-   "kontrabasskoffer"
-  ]
+ "schema": "paintClaims@1",
+ "chapter": "ch05",
+ "note": "L5-Fix (2026-09-05) · Vokabel-Anspruch von Kapitel 5. GEMESSEN, nicht geschaetzt: die Wortbank g1-u05 traegt 44 Eintraege, davon 9 mit kind wordfile — und NUR die zaehlt das Tor (claimFails baut seine Tabelle aus den wordfile-Eintraegen; jeder Schluessel darueber hinaus ist ein toter Schluessel, D-77). Die 35 phrase-Eintraege (can/cannot, to play, concert, boyfriend, die CLIL-Woerter der Schulkantine, die Sprechformeln) stehen deshalb ABSICHTLICH nicht hier; sie sind Sache der Karten-Erdung und des vocabLedger in ch05.policy.json, nicht dieses Anspruchs. VORHER trug diese Datei ihre Woerter FLACH auf der obersten Ebene, ohne schema/chapter/claims: check-level-design.mjs liest claimsOf als JSON.parse(...).claims ?? {} und fiel damit STILL auf eine leere Tabelle zurueck — alle neun Woerter galten als unklassifiziert, sichtbar aber erst am Zwillings-PR mit den Karten (R271; der Rueckfall selbst ist ein Tor-Defekt und gehoert der Bahn L0c, nicht hier). Kind-Vergabe: alle neun tragen kind cards, und das ist eine MESSUNG, keine Bequemlichkeit. thing/being scheidet aus, weil im ganzen Level kein Entity-Skin keyboard, guitar, drums oder pauke steht (die Skins sind regelseite, falschenote, trompete, triangel, notenstaender, door, klecksdoor, kontrabasskoffer, veit, schwalbe, tonschlucker) — ein thing-Anspruch auf einen Kaefig-Stem waere wahr ueber den Kaefig und nichts ueber das Wort. architecture scheidet aus, weil diese Klasse per Bauart NICHTS prueft (der Selbsttest des Tors pinnt sie als Versprechen des Menschen, D-25): der alte Anspruch drums = architecture [pauke] stand nur deshalb still. cards ist die einzige Klasse, die jedes der neun Woerter an einer echten Karten-ANTWORT misst (Ablenker zaehlt nicht), und alle neun sind eingeloest. Wer ein Wort spaeter nicht mehr einloesen kann, dreht es auf eine deklarierte Ausnahme { why, expires, owner } statt die Zeile zu loeschen — heute braucht keines eine. Der Schluessel Veit ist ersatzlos gefallen: die Wortbank hat keinen wordfile-Eintrag Veit (der Name lebt als Entity-Skin veit und als nounDe.captives-Zeile der Rettungs-Karte, beides etwas anderes als eine Unit-Vokabel).",
+ "claims": {
+  "keyboard player": {
+   "kind": "cards"
+  },
+  "keyboard": {
+   "kind": "cards"
+  },
+  "singer": {
+   "kind": "cards"
+  },
+  "drummer": {
+   "kind": "cards"
+  },
+  "drums": {
+   "kind": "cards"
+  },
+  "saxophone player": {
+   "kind": "cards"
+  },
+  "saxophone": {
+   "kind": "cards"
+  },
+  "guitarist": {
+   "kind": "cards"
+  },
+  "guitar": {
+   "kind": "cards"
+  }
  }
 }
