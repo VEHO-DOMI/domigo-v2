@@ -1417,6 +1417,12 @@ ch06 D-920…949.** Der Level-1-Sitz hält D-950…979 (nicht hier).
 
 ### LW · ch05 (D-890…919)
 #### L5-G
+
+| Nr. | Befund | Beleg | Fix | Wer/wann | Herkunft |
+|---|---|---|---|---|---|
+| D-908 | **Eine `claims.json` in falscher Form macht den ZWILLINGS-PR rot und sieht dabei selbst gruen aus.** `ch05-dossiers-v2/claims.json` trug ihre neun Woerter FLACH auf der obersten Ebene, ohne `schema`/`chapter`/`claims`. `check-level-design.mjs#claimsOf` liest den Schluessel `claims` und faellt ohne ihn STILL auf eine leere Tabelle zurueck; danach gilt jedes wordfile-Wort als unklassifiziert. Im G1-PR faellt nichts auf (ohne Kartendatei wird der Abdeckungs-Block namentlich uebersprungen) — die neun roten Zeilen erscheinen erst am T1-PR, also an der Datei, die den Fehler NICHT hat. Nebenwirkung: der tote Schluessel »Veit« (kein wordfile-Eintrag der Unit) konnte nicht auffallen, weil die D-77-Pruefung auf Schluesseln arbeitet, die es fuer das Tor gar nicht mehr gab | Mess-Baum aus `origin/main` + beiden Zweigen: `check-level-design` 9 Verstoesse, alle `ch05 abdeckung: wordfile "X" ist unklassifiziert`. Ursache per Injektion bewiesen, nicht per Code-Lesung: die reparierte Datei mit `claims` → `claimsX` umbenannt reproduziert **exakt dieselben 9 Zeilen** | **GESCHLOSSEN (L5-Fix, 2026-09-05):** die Datei traegt jetzt `schema`/`chapter`/`note`/`claims` nach dem Vorbild von `ch03-dossiers-v2/claims.json`, alle neun wordfile-Woerter mit `kind: cards`, »Veit« ersatzlos gestrichen. **Der `?? {}`-Rueckfall selbst ist NICHT hier repariert** — er ist ein Tor-Defekt und gehoert der Bahn L0c (R271/R267): wer eine `claims.json` in falscher Form schreibt, muss ein rotes Tor bekommen, das die FORM nennt, nicht die Woerter | geschlossen · L5-Fix, 2026-09-05 | R271 (Pruefer) · Sitz L5-Fix (R272) |
+| D-909 | **Die README des Dossier-Ordners beschreibt `claims.json` nach dem Fix falsch.** `ch05-dossiers-v2/README.md` fuehrt sie unter §Blaetter als »welche Vokabel welcher Platzhalter-Skin bedient« — das war die Lesart der flachen Fassung mit ihren `stems`-Feldern. Die Datei klassifiziert jetzt gegen KARTEN, nicht gegen Skins; der Satz fuehrt den naechsten Leser in die Irre | `docs/design/g1/paint/ch05-dossiers-v2/README.md`, Abschnitt Blaetter | Einen Satz nachziehen (»welche Vokabel wie eingeloest wird: cards/thing/architecture«). **Vom Sitz L5-Fix bewusst NICHT angefasst** — die README steht nicht auf seiner Scope-Wand | offen · Abschluss-Bahn ch05 | Sitz L5-Fix, 2026-09-05 |
+
 #### L5-T
 #### L5-S
 #### L5-M
