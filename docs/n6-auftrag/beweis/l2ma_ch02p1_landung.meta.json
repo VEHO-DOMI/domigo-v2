@@ -1,0 +1,183 @@
+{
+  "tick": 46,
+  "phase": "p1",
+  "overlay": false,
+  "reducedMotion": false,
+  "visibility": "visible",
+  "hidden": false,
+  "hero": {
+    "x": 180,
+    "y": 224,
+    "pose": "run",
+    "grounded": true
+  },
+  "camX": 68,
+  "camY": 82,
+  "canvas": {
+    "w": 1056,
+    "h": 672,
+    "cssW": 1056,
+    "cssH": 672
+  },
+  "entities": [
+    {
+      "id": "p1-regel-ortswoerter",
+      "role": "tip",
+      "skin": "regelseite",
+      "state": "patrol",
+      "redeemed": false,
+      "x": 232,
+      "y": 288,
+      "breath": {
+        "rot": 0,
+        "dy": 0,
+        "sx": 1,
+        "sy": 1,
+        "hPx": 22,
+        "scr": {
+          "x": 482.05978750130424,
+          "y": 569.1498044345481,
+          "w": 43.8804249973916,
+          "h": 66
+        }
+      }
+    },
+    {
+      "id": "p1-hund",
+      "role": "drained",
+      "skin": "hund",
+      "state": "patrol",
+      "redeemed": false,
+      "x": 344,
+      "y": 288,
+      "breath": {
+        "rot": 0.011491782785515455,
+        "dy": 0,
+        "sx": 1,
+        "sy": 1,
+        "hPx": 26,
+        "scr": {
+          "x": 801.5998539088744,
+          "y": 551.5943281329387,
+          "w": 72.39161819702485,
+          "h": 78.81649405923429
+        }
+      }
+    },
+    {
+      "id": "p1-schubkarre",
+      "role": "chaser",
+      "skin": "schubkarre",
+      "state": "patrol",
+      "redeemed": false,
+      "x": 471,
+      "y": 288,
+      "breath": null
+    },
+    {
+      "id": "p1-cage2",
+      "role": "cage",
+      "skin": "zookaefig",
+      "state": "closed",
+      "redeemed": false,
+      "x": 664,
+      "y": 224,
+      "breath": {
+        "rot": 0.029411292147926735,
+        "dy": 0,
+        "sx": 1,
+        "sy": 1,
+        "hPx": 34,
+        "scr": {
+          "x": 1753.270218480954,
+          "y": 334.6693333643713,
+          "w": 96.4590823507823,
+          "h": 104.70544632061197
+        }
+      }
+    },
+    {
+      "id": "p1-regel-there-is",
+      "role": "tip",
+      "skin": "regelseite",
+      "state": "patrol",
+      "redeemed": false,
+      "x": 712,
+      "y": 288,
+      "breath": {
+        "rot": 0,
+        "dy": 0,
+        "sx": 1,
+        "sy": 1,
+        "hPx": 22,
+        "scr": {
+          "x": 1919.685581659869,
+          "y": 560.7092199657901,
+          "w": 48.62883668026154,
+          "h": 66
+        }
+      }
+    },
+    {
+      "id": "p1-rutscher",
+      "role": "bouncer",
+      "skin": "pinguin_rutscher",
+      "state": "patrol",
+      "redeemed": false,
+      "x": 737,
+      "y": 278,
+      "breath": null
+    },
+    {
+      "id": "p1-pinguin",
+      "role": "drained",
+      "skin": "pinguin",
+      "state": "patrol",
+      "redeemed": false,
+      "x": 824,
+      "y": 288,
+      "breath": {
+        "rot": -0.06091664388523257,
+        "dy": 0,
+        "sx": 1,
+        "sy": 1,
+        "hPx": 26,
+        "scr": {
+          "x": 2239.9619732423535,
+          "y": 549.9682545375956,
+          "w": 76.11593867356487,
+          "h": 82.20816883940802
+        }
+      }
+    },
+    {
+      "id": "p1-faust",
+      "role": "powerup",
+      "skin": "fibel_faust",
+      "state": "patrol",
+      "redeemed": false,
+      "x": 920,
+      "y": 240,
+      "breath": null
+    },
+    {
+      "id": "p1-drehkreuz",
+      "role": "door.trigger",
+      "skin": "drehkreuz",
+      "state": "patrol",
+      "redeemed": false,
+      "x": 984,
+      "y": 288,
+      "breath": null
+    }
+  ],
+  "shotCostTicks": 3,
+  "pure": false,
+  "via": "snapshot",
+  "serie": "l2ma_hangeln",
+  "nr": 4,
+  "tickBefore": 43,
+  "frame": "l2ma_hangeln_004.png",
+  "md5": "e6d71131ec3a349f1e9c444692fca321",
+  "index": 4
+}

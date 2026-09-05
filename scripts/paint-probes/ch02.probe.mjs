@@ -109,13 +109,13 @@ const griffUndTragweite = (hoehe) => {
   for (let t = 0; t < 240; t++) { if (sim.player.x / SUBS / TILE >= 9) break; sim.step(pad({ right: true })); }
   for (let t = 0; t < PAINT.jumpHoldTicks; t++) sim.step(pad({ right: true, jump: true }));
   // haengen lassen, ohne zu springen
-  let haltTicks = 0, gegriffen = false;
+  let haltTicks = 0, gegriffen = false, haltung = null;
   for (let t = 0; t < 600; t++) {
     sim.step(pad({ right: true }));
-    if (sim.player.hangAt) { gegriffen = true; haltTicks++; }
+    if (sim.player.hangAt) { gegriffen = true; haltTicks++; haltung ??= sim.player.pose; }
     else if (gegriffen) break;
   }
-  if (!gegriffen) return { haltTicks: null, tragWeite: null };
+  if (!gegriffen) return { haltTicks: null, tragWeite: null, haltung: null };
   // jetzt abspringen und die waagrechte Strecke messen
   const xVorher = sim.player.x / SUBS;
   let xWeitest = xVorher;
@@ -124,7 +124,7 @@ const griffUndTragweite = (hoehe) => {
     xWeitest = Math.max(xWeitest, sim.player.x / SUBS);
     if (sim.player.grounded && t > 4) break;
   }
-  return { haltTicks, tragWeite: (xWeitest - xVorher) / TILE };
+  return { haltTicks, tragWeite: (xWeitest - xVorher) / TILE, haltung };
 };
 
 const OHNE = ["jump", "run"];
@@ -148,6 +148,13 @@ const gt = griffUndTragweite(8);
 console.log("");
 console.log(`GRIFF · haelt ohne Absprung ${gt.haltTicks} Takte (${(gt.haltTicks / 60).toFixed(1)} s) — der Griff ist statisch, es gibt keinen Klimmzug.`);
 console.log(`TRAG-WEITE · der Absprung von der Kante traegt ${gt.tragWeite?.toFixed(2)} Spalten nach rechts.`);
+console.log("");
+console.log(`HALTUNG am Griff: die Engine meldet »${gt.haltung}« (player.ts#derivePose).`);
+console.log(`  ⇒ `+"`rigSpec.ts#heroFullCell` gibt fuer diese Haltung `null` zurueck — gezeichnet wird der");
+console.log("    TEILE-BAUKASTEN, und der Griff hat dort sein eigenes Blatt (`hand_grip`, rigSpec.ts ≈114).");
+console.log("    Das ist die Haltungs-Entscheidung dieses Verbs, an der Engine gemessen statt behauptet.");
+console.log("  ⚠ Der Haar-Rotor ist dabei NICHT sichtbar: `rig.ts` versteckt ihn per Vorgabe fuer jede");
+console.log("    Haltung, und nur `case \"hover\"` schaltet ihn an. Ein fehlender Rotor ist kein Befund.");
 
 const delta = maxMit - maxOhne;
 console.log("");

@@ -116,6 +116,33 @@ deklariert zwei der drei Hof-Möbel mit (zeichnet sie nie, gemessen null
 Plattform-Läufe), und die neuen Blätter sind auf der Auflösungs-Stufe des
 Kapitels kleiner (943→256 px und 372→64 px).
 
+**★ L2-M-a (2026-09-05): eine Motor-Bahn ohne Kunst — und eine Messreihe, die man NICHT als Verbesserung lesen darf.**
+Die Bahn baut Motor-Posten (Rolle `scene.stage`, hang-Kante im Reichweiten-Modell,
+Kartenart `match`, Bonus-Schliessung, Audio-Gründe, Gabe-Beat) und fasst **kein
+einziges Blatt** an. Die Tot-Kunst-Decke bleibt darum unberührt, und `massStems`
+ändert sich nicht.
+
+Gemessen an zwei Bauten (`6acb2a43` gegen `132d06f2`), Ports 3347/3348, beide
+Kontrollseiten über der Schwelle (61,2 und 61,9 fps), beide Bau-Angaben aus
+`/api/version` und damit GEPRÜFT:
+
+| Phase | laden (ms) vorher/nachher | bau+aufbau (ms) | fps |
+|---|---|---|---|
+| p1 | 574,7 / 417,8 | 120,7 / 69,0 | 60,4 / 60,4 |
+| p2 | 664,0 / 402,4 | 132,8 / 75,3 | 60,3 / 60,7 |
+| p3 | 547,8 / 289,9 | 109,5 / 71,7 | 60,2 / 60,1 |
+| p4 | 540,3 / 299,2 | 104,7 / 58,1 | 60,2 / 60,7 |
+| p9 | 423,5 / 285,0 | 115,3 / 65,8 | 60,6 / 60,2 |
+
+⚠ **Die Nachher-Spalte ist durchgehend schneller, und das ist NICHT der Code.**
+Beide Läufe tragen den Makel, den `perf-visible` selbst meldet: ein fremder
+Server im Mess-Band (3391, die Hauptstand-Sitzung einer Nachbar-Bahn). Dazu ist
+das Lastmittel zwischen den Läufen von 3,31 auf 2,52 gefallen. A7 hat für genau
+diese Klasse bezahlt: derselbe Bau, derselbe Port, beide Kontrollen grün — und
+`create()` einmal 833 ms, einmal 1394 ms. Die Zahlen stehen, die Richtung ist
+Maschine. Was die Reihe wirklich zeigt: **keine Phase überschreitet ein Budget,
+und die Bildrate bleibt an allen fünf Räumen bei 60.**
+
 **★ N7A1 (2026-09-02): 57 tote Blätter — die erste Runde, in der die Zahl SINKT.**
 Der Cutover der Ein-Block-Welt hat 42 Blätter gelöscht (9,3 MB): das komplette Kit
 von p1 und p2, das absorbierte `terrain_atlas_podest_p1` und das längst tote
