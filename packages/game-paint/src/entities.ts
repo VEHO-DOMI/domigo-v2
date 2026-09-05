@@ -173,6 +173,10 @@ export type EntityEvent =
   | { type: "guardianKnot"; id: string; knotsLeft: number }
   | { type: "guardianDown"; id: string }
   | { type: "projectileDeflected"; id: number }
+  /** L3-M-a · E3: die Faust hat einen Pumpengriff oder das Ablassventil
+   *  getroffen. Was das mit dem Wasserstand macht, entscheidet die `Sim` — sie
+   *  ist die Einzige, die die Bilge-Werte der Phase kennt. */
+  | { type: "pumpHit"; id: string; kind: "pump" | "valve" }
   /** R3-4/R3-6 · a puff of chalk dust in world px — the ONLY way impact becomes
    *  visible without the sim knowing what a particle is. `chalk` = a piece
    *  shattering, `hit` = the fist landing on something solid. */
@@ -1142,7 +1146,8 @@ export const spawnEntities = (specs: EntitySpec[], links: LinkSpec[]): EntityWor
     // fuer immer still. Sie beginnt beim GEHEN.
     state: s.role === "cage" ? "closed" : s.role === "classmate" ? "caged"
       : s.role.startsWith("platform") ? "carry" : s.role === "guardian" ? "fly"
-      : s.role === "scene.stage" ? "walk" : "patrol",
+      : s.role === "scene.stage" ? "walk"
+      : s.role === "pump.trigger" ? "ready" : "patrol",
     timer: 0,
     hp: s.role === "cage" ? 2 : s.role === "guardian" ? GUARDIAN_SCRIPT[s.tier].knots : 1,
     homeX: cellX,
@@ -1185,6 +1190,11 @@ const fistHits = (e: EntityState, fist: WorldInput["fist"], wPx = 14): boolean =
 // child never presses ↑ at something the game silently considers out of range.
 // Generous on purpose (the letter-magnet lesson, R3-16): a six-year-old parks
 // their mascot roughly next to a desk, not on its centre pixel.
+/** L3-M-a · E3: wie lange ein geschlagener Pumpengriff taub bleibt. Eine
+ *  geworfene Faust steht mehrere Ticks ueber demselben Griff — ohne diese Sperre
+ *  waere ein Schlag sechzig Treffer. */
+export const PUMP_REARM_TICKS = 20;
+
 export const ENGAGE_REACH_PX = 22;
 export const ENGAGE_REACH_Y_PX = 34;
 
@@ -2072,6 +2082,25 @@ export const stepEntities = (
       }
     }
     if (e.state === "shooed" && e.timer > 40) e.state = "patrol";
+
+    // ── L3-M-a · E3 · DER PUMPENGRIFF (Faust-Treffer, Muster: der Deflect-Zweig
+    // weiter unten — `inp.fist?.active` plus Abstand). Der Griff meldet nur den
+    // TREFFER; was er bewirkt, weiß allein die `Sim`, die die Bilge-Werte der
+    // Phase haelt.
+    //
+    // Die Sperre ist noetig, weil eine geworfene Faust MEHRERE Ticks lang aktiv
+    // ueber demselben Griff steht: ohne sie feuerte ein Schlag sechzig Ereignisse
+    // und die Bilge stuende fuer immer. `timer` laeuft in `stepEntities` fuer
+    // jedes Wesen ohnehin hoch, also braucht der Griff kein eigenes Feld.
+    if (e.role === "pump.trigger" && fistHits(e, inp.fist, 16)) {
+      if (e.state !== "struck") {
+        e.state = "struck";
+        e.timer = 0;
+        events.push({ type: "puff", x: inp.fist?.x ?? e.x, y: inp.fist?.y ?? e.y, kind: "hit" });
+        events.push({ type: "pumpHit", id: e.id, kind: e.params?.kind === "valve" ? "valve" : "pump" });
+      }
+    }
+    if (e.role === "pump.trigger" && e.state === "struck" && e.timer > PUMP_REARM_TICKS) e.state = "ready";
   }
 
   // ── projectiles ──

@@ -86,6 +86,23 @@ export const ENTITY_ROLES = [
   // Die Entity-ZELLE ist der Prop-Anker (der Baum); der Entity-`skin` ist der
   // DARSTELLER (der Papagei); die Stationen sind Versaetze davon.
   "scene.stage",
+  // L3-M-a · E3 · DER PUMPENGRIFF UND DAS ABLASSVENTIL (Signatur von ch03, unter
+  // Deck). Ein Ding an der Wand, das ein FAUST-Treffer bedient: die Pumpe friert
+  // die steigende Bilge fuer eine gezaehlte Zeit ein, das Ventil senkt sie auf
+  // ihren Anfangsstand. `params.kind` sagt, welches von beidem — und weil
+  // `PaintParams` ein OFFENES `z.record` ist (zod prueft dort NICHTS), prueft das
+  // Gesetz `bilge-wiring` unten die Form selbst.
+  //
+  // Warum eine eigene Rolle und nicht `door.trigger`: eine Tuer wird EINMAL
+  // ausgeloest und oeffnet etwas anderes; ein Pumpengriff wird immer wieder
+  // geschlagen und aendert eine Groesse, die von selbst zurueckwaechst.
+  //
+  // ⚠ Der Punkt im Namen ist eine bezahlte Falle: `spawnEntities` waehlt den
+  // Anfangszustand mit `role.startsWith("platform")`, und jede andere gepunktete
+  // Rolle faellt dort still auf „patrol“ (L2-M-a hat das fuer `scene.stage`
+  // bezahlt). `pump.trigger` beginnt bei „ready“ und ist dort ausdruecklich
+  // genannt.
+  "pump.trigger",
 ] as const;
 
 export type EntityRole = (typeof ENTITY_ROLES)[number];
@@ -389,6 +406,55 @@ export interface PhaseSpec {
    *  sondern die Antwort auf die Reaktionszeit eines Sechsjährigen — dieselbe
    *  in jedem Kapitel. Ohne Angabe gilt 35 ⇒ ch01 byte-gleich. */
   budgetSec?: number;
+  /** L3-M-a · E1 · DIE SEILE DIESER PHASE (ch03: das Tauwerk).
+   *
+   *  Bis hierher war der Ring-Schwung EINE Zahl fuer das ganze Spiel:
+   *  `PAINT.swingRopePx` = 96 px = sechs Kacheln, und der Loslass-Lift eine
+   *  Konstante von 2 px/Tick. An dieser Geometrie ist eine KETTE — Ring zu Ring,
+   *  ohne Boden dazwischen — nicht baubar, und die Kette ist die Signatur von
+   *  ch03 (das Tau-Gewirr, SB 23). Gemessen an der Engine, nicht gerechnet:
+   *  `scripts/paint-probes/ch03.probe.mjs`.
+   *
+   *  Alle drei Felder sind freiwillig, und ihr Fehlen ist exakt das
+   *  ausgelieferte Verhalten (96 px · 2 px/t · keine Sperre) — deshalb bleiben
+   *  ch01 und ch02 byte-gleich, Beweisbaender eingeschlossen.
+   *
+   *  · `ropePx`          — Abstand Ring → Haende.
+   *  · `releaseLiftPx`   — Aufwaerts-Geschwindigkeit beim Loslassen, px/Tick.
+   *  · `regrabLockTicks` — wie lange der EBEN verlassene Ring gesperrt bleibt.
+   *                        Andere Ringe bleiben sofort greifbar. */
+  swing?: {
+    ropePx: number;
+    releaseLiftPx?: number;
+    regrabLockTicks?: number;
+  };
+  /** L3-M-a · E3 · DIE STEIGENDE BILGE (ch03 p2, unter Deck).
+   *
+   *  Das Wasser dieses Spiels war bis hierher reine Geografie: ein `w` im Gitter
+   *  liegt, wo es liegt, und das Gitter aendert sich nie. Unter Deck steigt es —
+   *  in PULSEN, nicht stetig, damit ein Kind es kommen sieht und nicht bloss
+   *  irgendwann nass ist. Ein Faust-Treffer auf einen Pumpengriff friert es ein,
+   *  das Ablassventil senkt es auf `rStart` zurueck.
+   *
+   *  · `band {c0,c1}` — welche Spalten ueberhaupt fluten (das Schiff ist nicht
+   *    ueberall Bilge). Nur LEERE Zellen (`.`) darin werden zu `w`: was gebaut
+   *    ist, bleibt gebaut, und ein Kind auf einer versunkenen Planke ertrinkt
+   *    trotzdem, weil sein Koerper in die Zellen darueber ragt.
+   *  · `rStart` / `rTop`  — Anfangs- und Hoechststand als Gitterzeile
+   *    (`rTop < rStart`: kleinere Zeile = weiter oben).
+   *  · `pulseTicks` / `riseRows` — alle wie viele Ticks um wie viele Zeilen.
+   *  · `freezeTicks`      — was ein Pumpen-Treffer kauft.
+   *  · `pumps` / `valve`  — die Entity-Ids, die das koennen. */
+  bilge?: {
+    band: { c0: number; c1: number };
+    rStart: number;
+    rTop: number;
+    pulseTicks: number;
+    riseRows: number;
+    freezeTicks: number;
+    pumps: string[];
+    valve?: string;
+  };
 }
 
 export interface PaintLevel {
@@ -664,6 +730,69 @@ export const REACH_ENVELOPE = {
   HANG_ROWS: 2,
 } as const;
 
+/** L3-M-a · RING ZU RING — die Spanne, in der eine KETTE traegt, in Spalten.
+ *
+ *  `RING_DX` oben beantwortet eine andere Frage: wie weit von einem Ring aus
+ *  eine LANDEFLAECHE liegen darf. Diese hier beantwortet die Frage von ch03:
+ *  wie weit der NAECHSTE RING liegen darf, damit das Kind ihn im Flug faengt.
+ *
+ *  BEIDE Grenzen sind noetig, und die untere ist die ueberraschende: stehen zwei
+ *  Ringe zu DICHT, faengt das Kind den zweiten gar nicht — es laesst am Scheitel
+ *  los, und der Scheitel liegt bereits jenseits des Nachbarn. Ein Modell mit nur
+ *  einer Obergrenze wuerde genau die Ketten segnen, die im Spiel nicht gehen.
+ *
+ *  GEMESSEN, nicht gerechnet (`scripts/paint-probes/ch03.probe.mjs` §7 — zwei
+ *  Ringe im Abstand d, faengt das Kind den zweiten?), Spalten bei dy = 0:
+ *
+ *      Seil │ gemessen  │ versprochen (min … max)
+ *      ─────┼───────────┼────────────────────────
+ *        32 │  2 …  7   │  2 …  5
+ *        48 │  3 …  7   │  3 …  6
+ *        64 │  4 …  8   │  4 …  7
+ *        96 │  6 …  9   │  6 …  9
+ *
+ *  Die Untergrenze ist `ceil(ropePx / TILE)` — in der Messung exakt getroffen,
+ *  und sie ist auch die anschauliche: das Pendel traegt die Haende am Scheitel
+ *  etwa eine Seillaenge weit zur Seite. Die Obergrenze ist `Untergrenze + 3`,
+ *  also bei drei der vier Seillaengen enger als gemessen: die Huellkurven-Regel
+ *  dieser Datei erlaubt Uebersehen, nie Zuvielversprechen.
+ *
+ *  Der Hoehenversatz ist auf eine Zeile begrenzt (gemessen traegt dy = ±2 nur
+ *  in einem Teil der Spanne). */
+export const ringChainSpan = (ropePx: number): { readonly min: number; readonly max: number } => {
+  const min = Math.ceil(ropePx / TILE);
+  return { min, max: min + 3 };
+};
+
+/** L3-M-a · die groesste Zeilendifferenz, ueber die eine Kette noch traegt. */
+export const RING_CHAIN_DR = 1;
+
+/** L3-M-a · E3 · DAS GITTER BEI EINEM BESTIMMTEN WASSERSTAND.
+ *
+ *  Eine Funktion, zwei Kunden: `Sim#rebuildLiveGrid` giesst damit das Gitter, das
+ *  der Tick sieht, und das Gesetz `bilge-bait` prueft damit denselben Raum bei
+ *  Anfangs- und Hoechststand. Zwei Fassungen derselben Regel waeren die Klasse
+ *  „ein Name, zwei Haeuser“: das Gesetz pruefte dann eine Flut, die das Spiel nie
+ *  hat, und beide waeren gruen.
+ *
+ *  Nur LEERE Zellen (`.`) im Band werden Wasser. Was gebaut ist, bleibt gebaut —
+ *  eine versunkene Planke traegt weiter, und das Kind darauf ertrinkt trotzdem,
+ *  weil die Hazard-Probe das ganze Koerperrechteck liest. */
+export const floodedRows = (
+  rows: readonly string[],
+  band: { c0: number; c1: number },
+  bilgeRow: number,
+): readonly string[] => {
+  const c0 = Math.max(0, band.c0);
+  const c1 = Math.min((rows[0]?.length ?? 0) - 1, band.c1);
+  return rows.map((row, r) => {
+    if (r < bilgeRow) return row;
+    let out = "";
+    for (let c = 0; c < row.length; c++) out += c >= c0 && c <= c1 && row[c] === "." ? "w" : (row[c] ?? ".");
+    return out;
+  });
+};
+
 /** B3 · THE HEADROOM TABLE — indexed by clear rows of sky above the take-off
  *  feet, valued in columns the jump may cross. Measured off the real
  *  `stepPlayer` from a STANDSTILL (run-up buys nothing: air control SNAPS, so
@@ -719,10 +848,11 @@ export const reachableCells = (
   rows: readonly string[],
   abilities: readonly Ability[],
   entities: readonly EntitySpec[] = [],
+  ropePx: number = PAINT.swingRopePx,
 ): Set<string> => {
   const start = findGlyph(rows, "S");
   if (!start) return new Set();
-  return reachFrom(rows, abilities, start, entities);
+  return reachFrom(rows, abilities, start, entities, ropePx);
 };
 
 // B1 · PURE-INPUT MEMOS. Both of the caches below key on OBJECT IDENTITY of
@@ -775,6 +905,10 @@ export const reachFrom = (
   abilities: readonly Ability[],
   from: { c: number; r: number },
   entities: readonly EntitySpec[] = [],
+  /** L3-M-a · die Seillaenge DIESER Phase (`PhaseSpec.swing.ropePx`). Ohne
+   *  Angabe das ausgelieferte 96-px-Seil — jeder Aufrufer, der keine Kette
+   *  kennt, rechnet also genau wie bisher. */
+  ropePx: number = PAINT.swingRopePx,
 ): Set<string> => {
   const grid = rows;
   const h = rows.length;
@@ -884,6 +1018,40 @@ export const reachFrom = (
     return h + 1;
   };
 
+  // L3-M-a · DIE ZWEITE WARTESCHLANGE: erreichte Ringe.
+  //
+  // `ringSpan` haengt an der Seillaenge der PHASE. Ohne `swing`-Block ist es das
+  // ausgelieferte 96-px-Seil, und dann ist `RING_CHAIN` genau die Spanne, die
+  // heute schon faktisch gilt — die Ketten-Kante fuegt fuer ch01/ch02 nichts
+  // hinzu, weil dort kein zweiter Ring in der Spanne steht.
+  const ringSpan = ringChainSpan(ropePx);
+  const ringSeen = new Set<string>();
+  const ringQueue: Array<{ c: number; r: number }> = [];
+  const reachRing = (g: { c: number; r: number }): void => {
+    const k = key(g.c, g.r);
+    if (ringSeen.has(k)) return;
+    ringSeen.add(k);
+    ringQueue.push(g);
+  };
+  /** Was ein erreichter Ring segnet: seine Landeflaechen — und die Ringe, die
+   *  von ihm aus in der Kettenspanne liegen. */
+  const visitRing = (g: { c: number; r: number }): void => {
+    for (let dc = -RING_DX; dc <= RING_DX; dc++) {
+      for (let dr = -2; dr <= 6; dr++) {
+        if (jumpPathClear(g.c, g.r, g.c + dc, g.r + dr)) push(g.c + dc, g.r + dr);
+      }
+    }
+    for (const g2 of rings) {
+      const dc = Math.abs(g2.c - g.c);
+      const dr = Math.abs(g2.r - g.r);
+      if (dc < ringSpan.min || dc > ringSpan.max || dr > RING_CHAIN_DR) continue;
+      // der Flugweg zwischen den beiden Ringen muss offen sein — eine Rah
+      // dazwischen ist eine Wand, kein Hindernis, das man umfliegt
+      if (!jumpPathClear(g.c, g.r, g2.c, g2.r)) continue;
+      reachRing(g2);
+    }
+  };
+
   const visit = (n: { c: number; r: number }): void => {
     // walk + step-up + step-down
     for (const dc of [-1, 1]) {
@@ -964,17 +1132,24 @@ export const reachFrom = (
       }
     }
     // rings bridge wide gaps — but only for a child who HOLDS the swing verb
-    // (sim.ts passes ringAt only with the ability; the model must match), and
-    // every landing along an honest L-path from the ring
+    // (sim.ts passes ringAt only with the ability; the model must match).
+    //
+    // L3-M-a · RINGE SIND JETZT KNOTEN. Bis hierher war ein Ring eine Eigenschaft
+    // von Steh-Knoten: „steht das Kind neben einem Ring, segne dessen Umkreis“.
+    // Damit ist eine KETTE nicht abbildbar — der zweite Ring einer Kette haengt in
+    // der Luft, weit von jedem Stehplatz, und `push` schiebt ausschliesslich
+    // STEHBARE Zellen in die Warteschlange (`standable`, oben). Eine gelockerte
+    // `push`-Bedingung waere die falsche Reparatur: sie wuerde Luft zu Boden
+    // erklaeren und jedes andere Gesetz mit vergiften.
+    //
+    // Stattdessen gibt es eine ZWEITE Knoten-Art mit eigener Warteschlange
+    // (`ringQueue`): erreichte Ringe. Von hier aus wird sie nur GEFUELLT; geleert
+    // wird sie in der Hauptschleife unten, weil ein Ring wieder Ringe erreicht.
+    // Die Steh-Semantik bleibt damit unberuehrt — das ist der Grund, warum ch01
+    // und ch02 Zelle fuer Zelle dasselbe Ergebnis liefern.
     if (abilities.includes("swing")) {
       for (const g of rings) {
-        if (Math.abs(g.c - n.c) <= RING_DX && Math.abs(g.r - n.r) <= 4) {
-          for (let dc = -RING_DX; dc <= RING_DX; dc++) {
-            for (let dr = -2; dr <= 6; dr++) {
-              if (jumpPathClear(g.c, g.r, g.c + dc, g.r + dr)) push(g.c + dc, g.r + dr);
-            }
-          }
-        }
+        if (Math.abs(g.c - n.c) <= RING_DX && Math.abs(g.r - n.r) <= 4) reachRing(g);
       }
     }
     // L2-M-a · D-812 · LEISTEN — aber nur fuer ein Kind, das den Griff HAT
@@ -1024,10 +1199,16 @@ export const reachFrom = (
   // whose swept path is boardable from a seen node, disembarking the jump
   // envelope from EVERY swept cell; repeat until nothing new unlocks
   for (;;) {
-    while (queue.length > 0) {
+    // L3-M-a: beide Warteschlangen bis zur Erschoepfung. Ein Ring oeffnet
+    // Stehplaetze, ein Stehplatz oeffnet Ringe — also wird abwechselnd geleert,
+    // bis keine von beiden mehr waechst. Ohne einen einzigen `o` im Gitter
+    // bleibt `ringQueue` leer und diese Schleife ist die alte.
+    while (queue.length > 0 || ringQueue.length > 0) {
       const n = queue.shift();
-      if (!n) break;
-      visit(n);
+      if (n) { visit(n); continue; }
+      const g = ringQueue.shift();
+      if (!g) break;
+      visitRing(g);
     }
     let unlocked = false;
     for (const p of platforms) {
@@ -1641,10 +1822,122 @@ export const checkLevelLaws = (level: PaintLevel): LawFailure[] => {
       }
     }
 
-    const reach = reachableCells(ph.rows, level.abilities, ph.entities);
+    const reach = reachableCells(ph.rows, level.abilities, ph.entities, ph.swing?.ropePx);
     const has = (c: number, r: number): boolean => reach.has(`${c},${r}`);
     const nearReachable = (c: number, r: number, dc: number, drUp: number, drDown: number): boolean =>
       nearIn(reach, c, r, dc, drUp, drDown);
+    // ── L3-M-a · DAS GESETZ `ring-chain` (ch03, die Takelage) ────────────────
+    //
+    // Jeder Ring muss WEITERFUEHREN: entweder auf eine stehbare Landeflaeche in
+    // seiner Reichweite, oder auf einen weiteren Ring in Kettenspanne. Ein Ring,
+    // von dem aus es keins von beidem gibt, ist ein TOTER RING — das Kind greift
+    // ihn, schwingt, laesst los und faellt ins Wasser, ohne dass irgendetwas im
+    // Raum gesagt haette, dass dieser Weg keiner ist.
+    //
+    // Warum das ein eigenes Gesetz braucht und `collectible-reachable` nicht
+    // reicht: die bestehenden Gesetze fragen, ob das Kind irgendwo HINkommt.
+    // Dieses fragt, ob es von dort auch wieder WEGkommt — dieselbe Richtung wie
+    // das Fallgruben-Gesetz, nur fuer einen Griff statt fuer einen Stehplatz.
+    //
+    // Die Spanne ist gemessen, nicht geraten: `ringChainSpan`, oben, mit der
+    // Sonden-Tabelle. Nur ERREICHTE Ringe werden geprueft — ein Ring, den das
+    // Kind nie fassen kann, ist eine Sache fuer die Erreichbarkeits-Gesetze.
+    if (level.abilities.includes("swing")) {
+      const chainRope = ph.swing?.ropePx ?? PAINT.swingRopePx;
+      const span = ringChainSpan(chainRope);
+      const ringe: Array<{ c: number; r: number }> = [];
+      for (const [r, row] of ph.rows.entries()) {
+        for (let c = 0; c < row.length; c++) if (row[c] === "o") ringe.push({ c, r });
+      }
+      for (const g of ringe) {
+        const landung = [...reach].some((k) => {
+          const parts = k.split(",").map(Number);
+          const c = parts[0] ?? 0;
+          const r = parts[1] ?? 0;
+          return Math.abs(c - g.c) <= RING_DX && r - g.r >= -2 && r - g.r <= 6 && standable(ph.rows, c, r);
+        });
+        if (landung) continue;
+        const nachbar = ringe.some((g2) => {
+          if (g2.c === g.c && g2.r === g.r) return false;
+          const dc = Math.abs(g2.c - g.c);
+          return dc >= span.min && dc <= span.max && Math.abs(g2.r - g.r) <= RING_CHAIN_DR;
+        });
+        if (nachbar) continue;
+        failures.push({
+          phase: ph.id,
+          law: "ring-chain",
+          detail: `toter Ring (${g.c},${g.r}): keine stehbare Landefläche in Reichweite (±${RING_DX} Spalten, −2…+6 Zeilen) und kein weiterer Ring in Kettenspanne (${span.min}…${span.max} Spalten bei ${chainRope} px Seil, ±${RING_CHAIN_DR} Zeilen) — das Kind greift ihn und kommt nicht weiter`,
+        });
+      }
+    }
+
+    // ── L3-M-a · E3/E4 · DIE GESETZE DER BILGE ───────────────────────────────
+    if (ph.bilge) {
+      const b = ph.bilge;
+      const w = ph.rows[0]?.length ?? 0;
+      const hoehe = ph.rows.length;
+
+      // `bilge-wiring` · DIE FORM. `PaintParams` ist ein OFFENES `z.record` (L2-M-a
+      // hat das bezahlt): zod prueft dort GAR NICHTS, ein Tippfehler in
+      // `params.kind` kaeme ungeprueft bis in die Welt und der Griff taete
+      // schlicht nie etwas. Also prueft es das Gesetz.
+      if (b.rTop >= b.rStart) {
+        failures.push({ phase: ph.id, law: "bilge-wiring", detail: `bilge: rTop (${b.rTop}) muss ÜBER rStart (${b.rStart}) liegen — kleinere Zeile = höher; so steigt das Wasser nie` });
+      }
+      if (b.rStart >= hoehe || b.rTop < 0 || b.band.c0 > b.band.c1 || b.band.c1 >= w) {
+        failures.push({ phase: ph.id, law: "bilge-wiring", detail: `bilge: Band (${b.band.c0}…${b.band.c1}) oder Stände (${b.rTop}…${b.rStart}) liegen ausserhalb des ${w}×${hoehe}-Gitters` });
+      }
+      const griffe = ph.entities.filter((e) => e.role === "pump.trigger");
+      for (const id of [...b.pumps, ...(b.valve === undefined ? [] : [b.valve])]) {
+        const e = griffe.find((g) => g.id === id);
+        if (!e) {
+          failures.push({ phase: ph.id, law: "bilge-wiring", detail: `bilge nennt "${id}", aber die Phase hat kein pump.trigger-Wesen mit dieser Id` });
+          continue;
+        }
+        const soll = b.valve === id ? "valve" : "pump";
+        if (e.params?.kind !== soll) {
+          failures.push({ phase: ph.id, law: "bilge-wiring", detail: `pump.trigger ${id} braucht params.kind "${soll}" (hat "${String(e.params?.kind)}") — params ist ein offenes Schema, hier prüft es sonst niemand` });
+        }
+      }
+      for (const g of griffe) {
+        if (b.pumps.includes(g.id) || b.valve === g.id) continue;
+        failures.push({ phase: ph.id, law: "bilge-wiring", detail: `pump.trigger ${g.id} steht im Raum, aber die bilge-Deklaration nennt ihn nicht — ein Griff, den kein Kind bedienen kann, ist eine Lüge im Raum` });
+      }
+
+      // `bilge-bait` · KÖDER NIE ÜBER EINER TODESZONE. Alles, wofür ein Kind
+      // absichtlich hinuntergeht, muss beim HÖCHSTSTAND noch trocken stehen —
+      // sonst lockt der Raum es an eine Stelle, die es beim zweiten Anlauf tötet.
+      const unterWasser = (c: number, r: number): boolean =>
+        c >= b.band.c0 && c <= b.band.c1 && r >= b.rTop;
+      const koederRollen = new Set(["cage", "powerup", "drained", "tip", "book", "cloth"]);
+      for (const e of ph.entities) {
+        if (!koederRollen.has(e.role) || !unterWasser(e.c, e.r)) continue;
+        failures.push({ phase: ph.id, law: "bilge-bait", detail: `${e.role} ${e.id} bei (${e.c},${e.r}) steht beim Höchststand der Bilge (Zeile ${b.rTop}) unter Wasser — ein Köder über einer Todeszone` });
+      }
+      for (const [r, row] of ph.rows.entries()) {
+        for (let c = 0; c < row.length; c++) {
+          if (row[c] === "*" && unterWasser(c, r)) {
+            failures.push({ phase: ph.id, law: "bilge-bait", detail: `Sammelobjekt bei (${c},${r}) steht beim Höchststand der Bilge (Zeile ${b.rTop}) unter Wasser` });
+          }
+        }
+      }
+
+      // …und der WEG muss bei beiden Ständen offen bleiben. Zweimal gerechnet,
+      // weil ein Raum, der nur leer erreichbar ist, beim Höchststand ein
+      // Gefängnis wäre — und das Kind kommt dort erst an, wenn das Wasser steht.
+      const startCell = findGlyph(ph.rows, "S");
+      const ziel = findGlyph(ph.rows, "X") ?? findGlyph(ph.rows, "B");
+      if (startCell && ziel) {
+        for (const [name, row] of [["Anfangsstand", b.rStart], ["Höchststand", b.rTop]] as const) {
+          const geflutet = floodedRows(ph.rows, b.band, row);
+          const r2 = reachFrom(geflutet, level.abilities, startCell, ph.entities, ph.swing?.ropePx);
+          if (!nearIn(r2, ziel.c, ziel.r, 1, 1, 3)) {
+            failures.push({ phase: ph.id, law: "bilge-bait", detail: `beim ${name} der Bilge (Zeile ${row}) ist der Ausgang (${ziel.c},${ziel.r}) nicht mehr erreichbar — das Kind kann immer vorankommen müssen` });
+          }
+        }
+      }
+    }
+
     const exitCell = findGlyph(ph.rows, "X") ?? findGlyph(ph.rows, "B");
     if (exitCell && !nearReachable(exitCell.c, exitCell.r, 1, 1, 3)) {
       failures.push({ phase: ph.id, law: "exit-reachable", detail: `the exit at (${exitCell.c},${exitCell.r}) cannot be reached` });
@@ -1883,7 +2176,7 @@ export const checkLevelLaws = (level: PaintLevel): LawFailure[] => {
       }
       if (!startCell) continue; // parse already failed on a phase without S
       const sealed = ph.rows.map((row, r) => (r === e.r ? row.slice(0, e.c) + "#" + row.slice(e.c + 1) : row));
-      const before = reachFrom(sealed, level.abilities, startCell, ph.entities);
+      const before = reachFrom(sealed, level.abilities, startCell, ph.entities, ph.swing?.ropePx);
       const affordable = letters.filter((l) => nearIn(before, l.c, l.r, 1, 1, 3)).length;
       if (price > affordable) {
         failures.push({
@@ -1904,7 +2197,7 @@ export const checkLevelLaws = (level: PaintLevel): LawFailure[] => {
     const essentials = ph.entities.filter((e) => e.role === "powerup" && e.params?.essential === true);
     if (essentials.length > 0 && startCell) {
       const entryAbilities = abilitiesEnteringPhase(level, ph.id);
-      const preGrant = reachFrom(ph.rows, entryAbilities, startCell, ph.entities);
+      const preGrant = reachFrom(ph.rows, entryAbilities, startCell, ph.entities, ph.swing?.ropePx);
       for (const e of essentials) {
         if (!nearIn(preGrant, e.c, e.r, 2, 2, 4)) {
           failures.push({
@@ -1918,7 +2211,7 @@ export const checkLevelLaws = (level: PaintLevel): LawFailure[] => {
         const withGrant = [...new Set([...entryAbilities, String(e.params?.grants ?? "")])].filter((a): a is Ability =>
           (["jump", "punch", "hang", "swing", "hover", "run"] as string[]).includes(a),
         );
-        const afterGrant = reachFrom(ph.rows, withGrant, { c: e.c, r: e.r }, ph.entities);
+        const afterGrant = reachFrom(ph.rows, withGrant, { c: e.c, r: e.r }, ph.entities, ph.swing?.ropePx);
         if (!nearIn(afterGrant, exitCell.c, exitCell.r, 1, 1, 3)) {
           failures.push({
             phase: ph.id,
@@ -1947,7 +2240,7 @@ export const checkLevelLaws = (level: PaintLevel): LawFailure[] => {
         // its sub-reach buys nothing (43 sweeps saved across the shipped
         // chapter — this law is O(nodes × BFS) and the basins are wide).
         if (submerged(ph.rows, c, r)) continue;
-        const sub = reachFrom(ph.rows, level.abilities, { c, r }, ph.entities);
+        const sub = reachFrom(ph.rows, level.abilities, { c, r }, ph.entities, ph.swing?.ropePx);
         let exitOk = false;
         for (let dr = -1; dr <= 3 && !exitOk; dr++) {
           for (let d = -1; d <= 1 && !exitOk; d++) {

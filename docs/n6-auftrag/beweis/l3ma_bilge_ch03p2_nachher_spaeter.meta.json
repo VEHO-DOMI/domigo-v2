@@ -1,0 +1,53 @@
+{
+  "tick": 384,
+  "phase": "p2",
+  "overlay": false,
+  "reducedMotion": false,
+  "visibility": "visible",
+  "hidden": false,
+  "hero": {
+    "x": 40,
+    "y": 336,
+    "pose": "stand",
+    "grounded": true
+  },
+  "camX": 0,
+  "camY": 192,
+  "canvas": {
+    "w": 1056,
+    "h": 672,
+    "cssW": 1056,
+    "cssH": 672
+  },
+  "entities": [
+    {
+      "id": "pumpe_bug",
+      "role": "pump.trigger",
+      "skin": "fb-ent-generic",
+      "state": "ready",
+      "redeemed": false,
+      "x": 328,
+      "y": 336,
+      "breath": null
+    },
+    {
+      "id": "ventil_heck",
+      "role": "pump.trigger",
+      "skin": "fb-ent-generic",
+      "state": "ready",
+      "redeemed": false,
+      "x": 840,
+      "y": 336,
+      "breath": null
+    }
+  ],
+  "shotCostTicks": 0,
+  "pure": true,
+  "via": "snapshot",
+  "serie": "l3ma_bilge",
+  "nr": 5,
+  "tickBefore": 384,
+  "frame": "l3ma_bilge_005.png",
+  "md5": "46c4619897a8043f05ec5733330f90e3",
+  "index": 5
+}

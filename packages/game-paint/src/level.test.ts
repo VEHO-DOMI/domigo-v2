@@ -317,6 +317,84 @@ describe("checkLevelLaws", () => {
     expect(fails.some((f) => f.law === "exit-reachable")).toBe(true);
   });
 
+  // ── L3-M-a · DIE ZWEI GESETZE DES TAUWERKS UND DER BILGE ──────────────────
+
+  it("ring-chain · ein Ring ohne Landefläche und ohne Nachfolger ist ein toter Ring (L3-M-a)", () => {
+    const ringLaws = (l: PaintLevel): string[] =>
+      checkLevelLaws(parsePaintLevel(l)).filter((f) => f.law === "ring-chain").map((f) => f.detail);
+
+    // GRÜN: ein Ring über dem Boden — seine Landefläche ist der Boden selbst
+    const nah = [...OK_ROWS];
+    nah[13] = ".....o......";
+    expect(ringLaws(level(nah, { abilities: ["jump", "swing"] }))).toEqual([]);
+
+    // GRÜN: zwei Ringe in Kettenspanne über einem Loch. Bei 96 px Seil ist die
+    // Spanne 6…9 Spalten (`ringChainSpan`, an der Sonde gemessen).
+    const kette = [
+      "########################",
+      ...Array.from({ length: 10 }, () => "........................"),
+      "....o......o............",
+      ...Array.from({ length: 5 }, () => "........................"),
+      "..S..................X..",
+      "########################",
+      "########################",
+    ];
+    expect(ringLaws(level(kette, { abilities: ["jump", "swing"] }))).toEqual([]);
+
+    // TAMPER: derselbe Ring, sechs Spalten weiter ins Leere geschoben — jetzt ist
+    // er weder über einer Landefläche noch in Spanne eines anderen Rings
+    const tot = [
+      "########################",
+      ...Array.from({ length: 3 }, () => "........................"),
+      ".....o..................",
+      ...Array.from({ length: 13 }, () => "........................"),
+      "..S..................X..",
+      "########################",
+      "########################",
+    ];
+    const fails = ringLaws(level(tot, { abilities: ["jump", "swing"] }));
+    expect(fails.length).toBe(1);
+    expect(fails[0]).toContain("toter Ring (5,4)");
+
+    // …und OHNE das Verb prüft das Gesetz gar nicht: ein `o` in einem Kapitel,
+    // das nicht schwingen kann, ist Dekoration
+    expect(ringLaws(level(tot, { abilities: ["jump"] }))).toEqual([]);
+  });
+
+  it("bilge-bait · kein Köder unter dem Höchststand, und der Ausgang bleibt offen (L3-M-a)", () => {
+    const bilgeLaws = (l: PaintLevel, law: string): string[] =>
+      checkLevelLaws(parsePaintLevel(l)).filter((f) => f.law === law).map((f) => f.detail);
+    const rows = [...OK_ROWS];
+    const mit = (over: Record<string, unknown>, entities: unknown[] = []): PaintLevel =>
+      level(rows, {
+        phases: [{
+          id: "p1", nameDe: "T", surface: "normal", plates: {}, rows, entities,
+          links: [], exit: { to: "done" }, checkpointSide: "far",
+          bilge: { band: { c0: 1, c1: 10 }, rStart: 16, rTop: 12, pulseTicks: 30, riseRows: 1, freezeTicks: 120, pumps: [], ...over },
+        }] as unknown as PaintLevel["phases"],
+      });
+
+    // GRÜN: das Sammelobjekt in OK_ROWS steht auf Zeile 17 — im Band, aber UNTER
+    // dem Höchststand 12 … Moment: Zeile 17 ist eine GRÖSSERE Zahl als 12, liegt
+    // also TIEFER und säuft ab. Genau diese Verwechslung ist der Grund, warum das
+    // Gesetz existiert; die grüne Fassung hebt den Höchststand unter das Objekt.
+    expect(bilgeLaws(mit({ rTop: 18, rStart: 19 }), "bilge-bait")).toEqual([]);
+
+    // TAMPER: der Höchststand steigt über das Sammelobjekt (7,17)
+    const rot = bilgeLaws(mit({ rTop: 12 }), "bilge-bait");
+    expect(rot.some((d) => d.includes("Sammelobjekt bei (7,17)"))).toBe(true);
+
+    // TAMPER 2 · bilge-wiring: ein Griff, den die Deklaration nicht nennt
+    const griff = [{ id: "p1x", role: "pump.trigger", skin: "fb-ent-generic", c: 4, r: 17, tier: "E", params: { kind: "pump" } }];
+    expect(bilgeLaws(mit({ rTop: 18, rStart: 19 }, griff), "bilge-wiring").some((d) => d.includes("nennt ihn nicht"))).toBe(true);
+
+    // …und umgekehrt: eine Deklaration, die auf ein Wesen zeigt, das es nicht gibt
+    expect(bilgeLaws(mit({ rTop: 18, rStart: 19, pumps: ["gibtsnicht"] }), "bilge-wiring").some((d) => d.includes("kein pump.trigger-Wesen"))).toBe(true);
+
+    // …und eine Bilge, die gar nicht steigen kann (rTop unter rStart)
+    expect(bilgeLaws(mit({ rTop: 19, rStart: 12 }), "bilge-wiring").some((d) => d.includes("muss ÜBER"))).toBe(true);
+  });
+
   it("stage-script · eine Bühne mit EINER Station ist ein Standbild, keine Szene (L2-M-a)", () => {
     const rows = [...OK_ROWS];
     const st = (stations: unknown, over: Record<string, unknown> = {}) => level(rows, {

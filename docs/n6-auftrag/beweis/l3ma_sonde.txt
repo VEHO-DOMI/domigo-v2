@@ -1,0 +1,314 @@
+# L3-M-a · TAUWERK-SONDE — die Ring-Kette an der echten Sim
+
+Konstanten: TILE=16px · SUBS=256 · BODY_H=30px · Griffradius 14px waagrecht / 28px senkrecht
+Ausgeliefert: Seil 96px · Lift 2px/Tick · Dwell 5 Ticks · keine Sperre
+
+VERFAHREN. Jede Zeile ist EIN Lauf der echten `Sim` in einem synthetischen Raum: Decke, Tintensee,
+eine Startplatte unter Ring 1, dann `ringe` Ringe im Abstand `d` Spalten. Das Kind springt senkrecht
+an Ring 1, lässt bei Pendelwinkel >= 368 (von 512; 256 = Bogen-Unterkante) los und hält die Richtung.
+
+SPALTEN. `Fang` = verschiedene Ringe / gestellte Ringe · `Gr` = Griffe insgesamt · **`Fl` = ECHTE FLÜGE**
+(Griffe nach mindestens 8 px Flugstrecke) · `Flug` = mittlere Flugstrecke in px · `t/F` = Ticks je Flug ·
+`Lift` = Höhengewinn nach dem Loslassen in Zeilen · `t/Gr` = Ticks am Ring ·
+`Snap` = REINER Sprung beim Griff in px: wohin der Bogen die Figur setzt, gegen die Stelle, an der sie fasste.
+
+⚠ `Fl` IST DIE ENTSCHEIDENDE SPALTE. Ein Pendel von 96 px trägt die Hände am Scheitel selbst 94 px weit;
+stehen die Ringe sechs Spalten (= 96 px) auseinander, greift das Kind den nächsten OHNE zu fliegen.
+Das sieht in einer reinen Fang-Zählung wie eine Kette aus und ist keine.
+
+## 1 · EICH-ZEILE — der AUSGELIEFERTE Motor (Seil 96px, Lift 2px/t, keine Sperre)
+
+| Lauf                         | Fang | Gr | Fl | Flug | t/F |  Lift | t/Gr | Snap | Platsch | Ringfolge |
+|------------------------------|------|----|----|------|-----|-------|------|------|---------|-----------|
+| heute · d=3 Spalten          | 2/3 |  2 |  0 |    0 |   1 |  0.56 |   51 |   81 | ja  | 0>2 |
+| heute · d=4 Spalten          | 2/3 |  2 |  1 |   20 |  11 |  0.56 |   51 |   81 | nein | 0>2 |
+| heute · d=5 Spalten          | 1/3 |  1 |  0 |    0 |   0 |  0.56 |   51 |   69 | ja  | 0 |
+| heute · d=6 Spalten          | 3/3 |  3 |  0 |    0 |   1 |  0.56 |   51 |   81 | ja  | 0>1>2 |
+| heute · d=7 Spalten          | 3/3 |  3 |  0 |    4 |   3 |  0.44 |   51 |   77 | nein | 0>1>2 |
+| heute · d=8 Spalten          | 3/3 |  3 |  2 |   20 |  11 |  0.56 |   51 |   81 | ja  | 0>1>2 |
+| heute · d=9 Spalten          | 2/3 |  2 |  1 |   36 |  19 |  0.56 |   51 |   69 | nein | 0>1 |
+| heute · d=10 Spalten         | 1/3 |  1 |  0 |    0 |   0 |  0.56 |   51 |   69 | ja  | 0 |
+
+## 2 · RASTER Seil x Ring-Abstand (Lift 4 px/t, Sperre 20 Ticks, 3 Ringe)
+
+| Lauf                         | Fang | Gr | Fl | Flug | t/F |  Lift | t/Gr | Snap | Platsch | Ringfolge |
+|------------------------------|------|----|----|------|-----|-------|------|------|---------|-----------|
+| Seil 32 · d=3                | 3/3 |  3 |  0 |    4 |   3 |  1.63 |   76 |   20 | nein | 0>1>2 |
+| Seil 32 · d=4                | 3/3 |  3 |  2 |   38 |  20 |  1.88 |   14 |   33 | nein | 0>1>2 |
+| Seil 32 · d=5                | 3/3 |  3 |  2 |   37 |  20 |  1.88 |   76 |   29 | nein | 0>1>2 |
+| Seil 32 · d=6                | 3/3 |  3 |  2 |   52 |  27 |  1.88 |   56 |   19 | nein | 0>1>2 |
+| Seil 32 · d=7                | 2/3 |  2 |  1 |   68 |  35 |  1.88 |   43 |    5 | nein | 0>1 |
+| Seil 32 · d=8                | 1/3 |  1 |  0 |    0 |   0 |  1.88 |   39 |    3 | ja  | 0 |
+| Seil 40 · d=3                | 3/3 |  3 |  0 |    0 |   1 |  1.88 |   52 |   29 | nein | 0>1>2 |
+| Seil 40 · d=4                | 3/3 |  3 |  2 |   12 |   7 |  1.31 |   76 |   31 | nein | 0>1>2 |
+| Seil 40 · d=5                | 3/3 |  3 |  2 |   32 |  17 |  1.88 |   76 |   40 | nein | 0>1>2 |
+| Seil 40 · d=6                | 3/3 |  3 |  2 |   44 |  23 |  1.88 |   76 |   29 | nein | 0>1>2 |
+| Seil 40 · d=7                | 2/3 |  2 |  1 |   60 |  31 |  1.88 |   45 |   16 | nein | 0>1 |
+| Seil 40 · d=8                | 1/3 |  1 |  0 |    0 |   0 |  1.88 |   39 |    5 | nein | 0 |
+| Seil 48 · d=3                | 3/3 |  3 |  0 |    0 |   1 |  1.88 |   40 |   39 | nein | 0>1>2 |
+| Seil 48 · d=4                | 3/3 |  3 |  0 |    4 |   3 |  1.63 |   71 |   35 | nein | 0>1>2 |
+| Seil 48 · d=5                | 3/3 |  3 |  2 |   20 |  11 |  1.75 |   76 |   40 | nein | 0>1>2 |
+| Seil 48 · d=6                | 3/3 |  3 |  2 |   36 |  19 |  1.88 |   76 |   40 | nein | 0>1>2 |
+| Seil 48 · d=7                | 3/3 |  3 |  2 |   52 |  27 |  1.88 |   52 |   34 | nein | 0>1>2 |
+| Seil 48 · d=8                | 1/3 |  1 |  0 |    0 |   0 |  1.88 |   39 |   13 | nein | 0 |
+| Seil 56 · d=3                | 3/3 |  3 |  0 |    0 |   1 |  1.88 |  124 |   44 | nein | 0>1>2 |
+| Seil 56 · d=4                | 3/3 |  3 |  0 |    0 |   1 |  1.88 |   49 |   42 | nein | 0>1>2 |
+| Seil 56 · d=5                | 3/3 |  3 |  2 |   12 |   7 |  1.31 |   76 |   44 | ja  | 0>1>2 |
+| Seil 56 · d=6                | 3/3 |  3 |  2 |   28 |  15 |  1.88 |   76 |   47 | ja  | 0>1>2 |
+| Seil 56 · d=7                | 3/3 |  3 |  2 |   44 |  23 |  1.88 |   76 |   44 | ja  | 0>1>2 |
+| Seil 56 · d=8                | 2/3 |  2 |  1 |   60 |  31 |  1.88 |   45 |   29 | ja  | 0>1 |
+| Seil 64 · d=3                | 2/3 |  2 |  1 |   20 |  11 |  1.75 |   67 |   53 | nein | 0>2 |
+| Seil 64 · d=4                | 3/3 |  3 |  0 |    0 |   1 |  1.88 |   40 |   52 | nein | 0>1>2 |
+| Seil 64 · d=5                | 3/3 |  3 |  0 |    4 |   3 |  1.63 |   61 |   50 | nein | 0>1>2 |
+| Seil 64 · d=6                | 3/3 |  3 |  2 |   20 |  11 |  1.75 |   76 |   53 | nein | 0>1>2 |
+| Seil 64 · d=7                | 3/3 |  3 |  2 |   36 |  19 |  1.88 |   71 |   53 | nein | 0>1>2 |
+| Seil 64 · d=8                | 3/3 |  3 |  2 |   52 |  27 |  1.88 |   50 |   48 | nein | 0>1>2 |
+
+## 3 · DER LOSLASS-LIFT — dieselbe Geometrie (Seil 48, Sperre 20), nur der Lift bewegt sich
+
+| Lauf                         | Fang | Gr | Fl | Flug | t/F |  Lift | t/Gr | Snap | Platsch | Ringfolge |
+|------------------------------|------|----|----|------|-----|-------|------|------|---------|-----------|
+| Seil 48 · Lift 0 · d=5       | 3/3 |  3 |  2 |   20 |  11 |     0 |   45 |   21 | ja  | 0>1>2 |
+| Seil 48 · Lift 0 · d=6       | 1/3 |  1 |  0 |    0 |   0 |     0 |   39 |   13 | ja  | 0 |
+| Seil 48 · Lift 2 · d=5       | 3/3 |  3 |  2 |   20 |  11 |  0.56 |   67 |   35 | nein | 0>1>2 |
+| Seil 48 · Lift 2 · d=6       | 3/3 |  3 |  2 |   36 |  19 |  0.56 |   46 |   26 | nein | 0>1>2 |
+| Seil 48 · Lift 4 · d=5       | 3/3 |  3 |  2 |   20 |  11 |  1.75 |   76 |   40 | nein | 0>1>2 |
+| Seil 48 · Lift 4 · d=6       | 3/3 |  3 |  2 |   36 |  19 |  1.88 |   76 |   40 | nein | 0>1>2 |
+| Seil 48 · Lift 6 · d=5       | 1/3 |  1 |  0 |    0 |   0 |  3.94 |   39 |   13 | ja  | 0 |
+| Seil 48 · Lift 6 · d=6       | 1/3 |  1 |  0 |    0 |   0 |  3.94 |   39 |   13 | ja  | 0 |
+| Seil 48 · Lift 8 · d=5       | 2/3 |  2 |  1 |  100 |  51 |  6.69 |   67 |   37 | nein | 0>2 |
+| Seil 48 · Lift 8 · d=6       | 1/3 |  1 |  0 |    0 |   0 |  6.69 |   39 |   13 | nein | 0 |
+| Seil 48 · Lift 12 · d=5      | 2/3 |  2 |  1 |  100 |  51 |  7.55 |   61 |   35 | nein | 0>2 |
+| Seil 48 · Lift 12 · d=6      | 1/3 |  1 |  0 |    0 |   0 |  7.55 |   39 |   13 | ja  | 0 |
+
+## 4 · DIE REGRAB-SPERRE — zweimal gemessen, weil die erste Messung NICHTS sah
+
+4a · Loslassen am SCHEITEL (Winkel >= 368). Dort ist die Hand 24-47 px vom Anker entfernt,
+also LAENGST ausserhalb des 14-px-Griffradius — die Sperre kann hier gar nichts bewirken,
+und dass alle fuenf Zeilen gleich sind, ist der Beweis dafuer und kein Beweis fuer die Sperre.
+
+| Lauf                         | Fang | Gr | Fl | Flug | t/F |  Lift | t/Gr | Snap | Platsch | Ringfolge |
+|------------------------------|------|----|----|------|-----|-------|------|------|---------|-----------|
+| Scheitel · Sperre 0          | 3/3 |  3 |  2 |   20 |  11 |  1.75 |   76 |   40 | nein | 0>1>2 |
+| Scheitel · Sperre 6          | 3/3 |  3 |  2 |   20 |  11 |  1.75 |   76 |   40 | nein | 0>1>2 |
+| Scheitel · Sperre 12         | 3/3 |  3 |  2 |   20 |  11 |  1.75 |   76 |   40 | nein | 0>1>2 |
+| Scheitel · Sperre 20         | 3/3 |  3 |  2 |   20 |  11 |  1.75 |   76 |   40 | nein | 0>1>2 |
+| Scheitel · Sperre 30         | 3/3 |  3 |  2 |   20 |  11 |  1.75 |   76 |   40 | nein | 0>1>2 |
+
+4b · Loslassen NAHE DER BOGEN-UNTERKANTE (Winkel >= 280). Dort steht die Hand bei 32 px Seil nur
+32·sin(16,9°) = 9 px neben dem Anker, also MITTEN im Griffradius: ohne Sperre greift das Kind
+denselben Ring sofort wieder. Genau hier misst die Sperre etwas — `Gr` > `Fang` ist der Doppelgriff.
+
+| Lauf                         | Fang | Gr | Fl | Flug | t/F |  Lift | t/Gr | Snap | Platsch | Ringfolge |
+|------------------------------|------|----|----|------|-----|-------|------|------|---------|-----------|
+| Unterkante · Sperre 0        | 1/3 | 37 |  0 |    0 |   1 |     0 |   40 |    3 | nein | 0>0>0>0>0>0>0>0>0>0>0>0>0>0>0>0>0>0>0>0>0>0>0>0>0>0>0>0>0>0>0>0>0>0>0>0>0 |
+| Unterkante · Sperre 4        | 3/3 |  3 |  2 |   56 |  15 |  1.88 |   33 |   19 | nein | 0>1>2 |
+| Unterkante · Sperre 8        | 3/3 |  3 |  2 |   56 |  15 |  1.88 |   33 |   19 | nein | 0>1>2 |
+| Unterkante · Sperre 12       | 3/3 |  3 |  2 |   56 |  15 |  1.88 |   33 |   19 | nein | 0>1>2 |
+| Unterkante · Sperre 20       | 3/3 |  3 |  2 |   56 |  15 |  1.88 |   33 |   19 | nein | 0>1>2 |
+
+## 4c · DER SCHNAPPER — was ein Griff die Figur wirklich versetzt
+
+Ein Griff setzt die Figur auf den PENDELBOGEN, nicht dorthin, wo sie den Ring berührt hat.
+Das Codex-Physik-Labor (2026-09-05) nannte das einen „unverzichtbaren Fang-Fix" und schlug vor,
+den Eintrittswinkel aus dem tatsächlichen Fangpunkt abzuleiten statt fest 210/302 zu setzen.
+
+Beide Regeln werden hier aus DEMSELBEN Lauf gerechnet — gleiche Flugbahn, gleicher Fangpunkt,
+nur die Bogenposition unterscheidet sich. Deshalb ist der Vergleich kontrolliert, und die Spalte
+`Motor` zeigt daneben, welche der beiden Regeln der gebaute Motor in diesem Lauf tatsächlich fuhr.
+
+| Lauf                         | Seil | fester Bogen | aus dem Fangpunkt | Differenz | Motor |
+|------------------------------|------|--------------|-------------------|-----------|-------|
+| Seil 96 · d=5                |   96 |           69 |                61 |        -8 |    69 |
+| Seil 96 · d=6                |   96 |           81 |                78 |        -3 |    81 |
+| Seil 96 · d=5                |   96 |           69 |                61 |        -8 |    61 |
+| Seil 96 · d=6                |   96 |           81 |                78 |        -3 |    78 |
+| Seil 64 · d=5                |   64 |           55 |                50 |        -5 |    50 |
+| Seil 64 · d=6                |   64 |           73 |                53 |       -20 |    53 |
+| Seil 48 · d=5                |   48 |           61 |                40 |       -21 |    40 |
+| Seil 48 · d=6                |   48 |           60 |                40 |       -20 |    40 |
+| Seil 40 · d=5                |   40 |           56 |                40 |       -16 |    40 |
+| Seil 40 · d=6                |   40 |           45 |                29 |       -16 |    29 |
+| Seil 32 · d=5                |   32 |           47 |                29 |       -18 |    29 |
+| Seil 32 · d=6                |   32 |           25 |                19 |        -6 |    19 |
+
+BEFUND, und eine Korrektur an mir selbst. Am ausgelieferten 96-px-Seil kauft die Fangpunkt-Regel
+fast nichts (3–8 px von rund achtzig) — an dieser Zeile allein hätte ich sie verworfen. Am
+KETTENSEIL, um das es hier geht, nimmt sie ein Drittel weg (60 → 40 px bei 48 px Seil). Ein Teil
+des Sprungs bleibt unvermeidbar: das Griff-Fenster ist 14 × 28 px, das Seil bis zu 96 px, der
+Körper MUSS also versetzt werden. Gebaut ist die Fangpunkt-Regel deshalb NUR für eine Phase, die
+ihr Tauwerk erklärt (`PhaseSpec.swing`); jede Phase davor behält den ausgelieferten festen Bogen.
+
+## 5 · FÜNF RINGE, mit Höhenversatz (Seil 48, Lift 4, Sperre 20)
+
+| Lauf                         | Fang | Gr | Fl | Flug | t/F |  Lift | t/Gr | Snap | Platsch | Ringfolge |
+|------------------------------|------|----|----|------|-----|-------|------|------|---------|-----------|
+| 5 Ringe · d=4 · dy=0         | 5/5 |  5 |  0 |    4 |   3 |  1.38 |   76 |   35 | nein | 0>1>2>3>4 |
+| 5 Ringe · d=5 · dy=0         | 5/5 |  5 |  4 |   20 |  11 |  1.75 |   84 |   40 | nein | 0>1>2>3>4 |
+| 5 Ringe · d=6 · dy=0         | 5/5 |  5 |  4 |   36 |  19 |  1.88 |   84 |   40 | nein | 0>1>2>3>4 |
+| 5 Ringe · d=4 · dy=-1        | 5/5 |  5 |  0 |    4 |   3 |  1.38 |   50 |   27 | nein | 0>1>2>3>4 |
+| 5 Ringe · d=5 · dy=-1        | 5/5 |  5 |  4 |   20 |  11 |  1.75 |   74 |   35 | nein | 0>1>2>3>4 |
+| 5 Ringe · d=6 · dy=-1        | 5/5 |  5 |  4 |   36 |  19 |  1.88 |   59 |   35 | nein | 0>1>2>3>4 |
+| 5 Ringe · d=4 · dy=1         | 5/5 |  5 |  0 |    4 |   3 |  2.42 |   84 |   38 | nein | 0>1>2>3>4 |
+| 5 Ringe · d=5 · dy=1         | 1/5 |  1 |  0 |    0 |   0 |  1.88 |   39 |   13 | nein | 0 |
+| 5 Ringe · d=6 · dy=1         | 5/5 |  5 |  4 |   39 |  21 |  2.42 |   84 |   51 | nein | 0>1>2>3>4 |
+
+# TEIL B · DIE ZAHLEN FUER DAS ERREICHBARKEITS-MODELL
+
+## 6 · VON EINEM RING AUS — welche Landeflaeche erreicht das Kind wirklich?
+
+Ein Ring, eine drei Kacheln breite Plattform im Abstand (dx, dy). `x` = das Kind steht am Ende
+darauf. Die Zeile `max dx` ist die groesste Spalte, in der noch irgendein dy traegt — das ist die
+Zahl, die `ringDxFor(ropePx)` verspricht, und sie wird nach unten gerundet, nie nach oben.
+
+### Seil 32 px
+| dy \ dx |  1 |  2 |  3 |  4 |  5 |  6 |  7 |  8 |  9 | 10 | 11 | 12 |
+|---------|----|----|----|----|----|----|----|----|----|----|----|----|
+|      -4 |    |    |    |    |    |    |    |    |    |    |    |    |
+|      -3 |    |    |    |    |    |    |    |    |    |    |    |    |
+|      -2 |    |    |    |    |    |    |    |    |    |    |    |    |
+|      -1 |    |    |    |    |    |    |    |    |    |    |    |    |
+|       0 |    |    |    |    |    |    |    |    |    |    |    |    |
+|       1 | x  | x  | x  | x  | x  | x  |    |    |    |    |    |    |
+|       2 |    |    |    | x  | x  | x  |    |    |    |    |    |    |
+|       3 |    |    |    |    | x  | x  | x  |    |    |    |    |    |
+|       4 |    |    |    |    | x  | x  | x  |    |    |    |    |    |
+|       5 |    |    |    |    |    | x  | x  | x  |    |    |    |    |
+|       6 |    |    |    |    |    | x  | x  | x  |    |    |    |    |
+**max dx (Seil 32) = 8 Spalten**
+
+### Seil 48 px
+| dy \ dx |  1 |  2 |  3 |  4 |  5 |  6 |  7 |  8 |  9 | 10 | 11 | 12 |
+|---------|----|----|----|----|----|----|----|----|----|----|----|----|
+|      -4 |    |    |    |    |    |    |    |    |    |    |    |    |
+|      -3 |    |    |    |    |    |    |    |    |    |    |    |    |
+|      -2 |    |    |    |    |    |    |    |    |    |    |    |    |
+|      -1 |    |    |    |    |    |    |    |    |    |    |    |    |
+|       0 |    |    |    |    |    |    |    |    |    |    |    |    |
+|       1 |    | x  | x  | x  | x  | x  | x  |    |    |    |    |    |
+|       2 |    |    |    | x  | x  | x  | x  |    |    |    |    |    |
+|       3 |    |    |    |    |    | x  | x  | x  |    |    |    |    |
+|       4 |    |    |    |    |    | x  | x  | x  |    |    |    |    |
+|       5 | x  |    |    |    |    |    | x  | x  | x  |    |    |    |
+|       6 |    |    |    |    |    |    | x  | x  | x  |    |    |    |
+**max dx (Seil 48) = 9 Spalten**
+
+### Seil 64 px
+| dy \ dx |  1 |  2 |  3 |  4 |  5 |  6 |  7 |  8 |  9 | 10 | 11 | 12 |
+|---------|----|----|----|----|----|----|----|----|----|----|----|----|
+|      -4 |    |    |    |    |    |    |    |    |    |    |    |    |
+|      -3 |    |    |    |    |    |    |    |    |    |    |    |    |
+|      -2 |    |    |    |    |    |    |    |    |    |    |    |    |
+|      -1 |    |    |    |    |    |    |    |    |    |    |    |    |
+|       0 |    |    |    |    |    |    |    |    |    |    |    |    |
+|       1 |    |    | x  | x  | x  | x  | x  |    |    |    |    |    |
+|       2 |    |    |    |    | x  | x  | x  | x  |    |    |    |    |
+|       3 |    |    |    |    |    |    | x  | x  | x  |    |    |    |
+|       4 |    |    |    |    |    |    | x  | x  | x  |    |    |    |
+|       5 | x  |    |    |    |    |    |    | x  | x  | x  |    |    |
+|       6 |    |    |    |    |    |    |    | x  | x  | x  |    |    |
+**max dx (Seil 64) = 10 Spalten**
+
+### Seil 96 px
+| dy \ dx |  1 |  2 |  3 |  4 |  5 |  6 |  7 |  8 |  9 | 10 | 11 | 12 |
+|---------|----|----|----|----|----|----|----|----|----|----|----|----|
+|      -4 |    |    |    |    |    |    |    |    |    |    |    |    |
+|      -3 |    |    |    |    |    |    |    |    |    |    |    |    |
+|      -2 |    |    |    |    |    |    |    |    |    |    |    |    |
+|      -1 |    |    |    |    |    |    |    |    |    |    |    |    |
+|       0 |    |    |    |    |    |    |    |    |    |    |    |    |
+|       1 |    |    |    |    |    |    |    |    |    |    |    |    |
+|       2 |    |    |    |    | x  | x  |    |    |    |    |    |    |
+|       3 |    |    |    |    |    |    | x  | x  | x  |    |    |    |
+|       4 |    |    |    |    |    |    | x  | x  | x  |    |    |    |
+|       5 |    |    |    |    |    |    |    | x  | x  | x  |    |    |
+|       6 |    |    |    |    |    |    |    | x  | x  | x  |    |    |
+**max dx (Seil 96) = 10 Spalten**
+
+## 7 · RING ZU RING — wie weit traegt die Kette? (fuer das Gesetz `ring-chain`)
+
+Zwei Ringe im Abstand d Spalten und dy Zeilen. `x` = Ring 2 wurde gefangen.
+
+### Seil 32 px
+| dy \ d  |  1 |  2 |  3 |  4 |  5 |  6 |  7 |  8 |  9 | 10 | 11 | 12 |
+|---------|----|----|----|----|----|----|----|----|----|----|----|----|
+|      -2 |    | x  | x  | x  | x  | x  |    |    |    |    |    |    |
+|      -1 |    | x  | x  | x  | x  | x  |    |    |    |    |    |    |
+|       0 |    | x  | x  | x  | x  | x  | x  |    |    |    |    |    |
+|       1 |    | x  | x  |    | x  | x  | x  |    |    |    |    |    |
+|       2 |    |    |    |    | x  | x  | x  | x  |    |    |    |    |
+
+### Seil 48 px
+| dy \ d  |  1 |  2 |  3 |  4 |  5 |  6 |  7 |  8 |  9 | 10 | 11 | 12 |
+|---------|----|----|----|----|----|----|----|----|----|----|----|----|
+|      -2 |    |    | x  | x  | x  | x  |    |    |    |    |    |    |
+|      -1 |    |    | x  | x  | x  | x  | x  |    |    |    |    |    |
+|       0 |    |    | x  | x  | x  | x  | x  |    |    |    |    |    |
+|       1 |    |    | x  | x  |    | x  | x  | x  |    |    |    |    |
+|       2 |    |    |    |    |    | x  | x  | x  |    |    |    |    |
+
+### Seil 64 px
+| dy \ d  |  1 |  2 |  3 |  4 |  5 |  6 |  7 |  8 |  9 | 10 | 11 | 12 |
+|---------|----|----|----|----|----|----|----|----|----|----|----|----|
+|      -2 |    |    |    | x  | x  | x  | x  |    |    |    |    |    |
+|      -1 |    |    |    | x  | x  | x  | x  | x  |    |    |    |    |
+|       0 |    |    |    | x  | x  | x  | x  | x  |    |    |    |    |
+|       1 |    |    |    | x  | x  | x  | x  | x  | x  |    |    |    |
+|       2 |    |    |    |    |    |    | x  | x  | x  |    |    |    |
+
+### Seil 96 px
+| dy \ d  |  1 |  2 |  3 |  4 |  5 |  6 |  7 |  8 |  9 | 10 | 11 | 12 |
+|---------|----|----|----|----|----|----|----|----|----|----|----|----|
+|      -2 |    |    |    |    |    |    |    |    |    |    |    |    |
+|      -1 |    |    |    |    |    | x  | x  | x  |    |    |    |    |
+|       0 |    |    |    |    |    | x  | x  | x  | x  |    |    |    |
+|       1 |    |    |    |    |    | x  | x  | x  | x  |    |    |    |
+|       2 |    |    |    |    |    | x  | x  | x  | x  | x  |    |    |
+
+# TEIL C · DIE STEIGENDE BILGE
+
+## 8 · DIE ANSTIEGSKURVE — steigt sie wirklich in Pulsen?
+
+Deklariert: Start Zeile 20 · Höchststand 6 · alle 30 Ticks um 1 Zeile(n)
+| Tick | Zeile | Ereignis `bilgePulse`? | Abstand zum vorigen Puls |
+|------|-------|------------------------|--------------------------|
+|   29 |    19 | ja                     | — |
+|   59 |    18 | ja                     |  30 |
+|   89 |    17 | ja                     |  30 |
+|  119 |    16 | ja                     |  30 |
+|  149 |    15 | ja                     |  30 |
+|  179 |    14 | ja                     |  30 |
+|  209 |    13 | ja                     |  30 |
+|  239 |    12 | ja                     |  30 |
+|  269 |    11 | ja                     |  30 |
+|  299 |    10 | ja                     |  30 |
+|  329 |     9 | ja                     |  30 |
+|  359 |     8 | ja                     |  30 |
+|  389 |     7 | ja                     |  30 |
+|  419 |     6 | ja                     |  30 |
+
+Gemessen: 14 Pulse, Endstand Zeile 6. Erwartet 14 Pulse bis Zeile 6.
+
+## 9 · DAS GITTER, DAS DER TICK SIEHT — und das, das im Level steht
+
+Autoriertes `grid` nach 200 Ticks unverändert: JA
+Wasserstand nach 200 Ticks: Zeile 14 (Start 20)
+Phase OHNE bilge: Wasserzeile = -1 (−1 heißt: keine Bilge, liveGrid bleibt dieselbe Referenz)
+
+## 10 · DIE FAUST — friert der Pumpengriff das Wasser ein, lässt das Ventil es ab?
+
+Verfahren: das Kind läuft über den Laufgang zum Griff und wirft die Faust. ⚠ Die Faust fliegt beim
+LOSLASSEN der Taste (`player.ts#punchReleased`), nicht beim Drücken — der erste Entwurf dieser
+Sonde hielt die Taste gedrückt und meldete „nie getroffen" über einem Motor, der einwandfrei lief.
+Gedruckt wird der Stand vor dem Treffer und 200 Ticks danach, dazu die VERGLEICHSZEILE ohne Treffer.
+
+**Ohne Faust** (Eich-Zeile): Zeile 17 → 11 in 200 Ticks.
+**Pumpengriff** (Spalte 8): Stand vor dem Treffer Zeile 17 · Ereignis `pumpFrozen` bei Tick 54 · 200 Ticks später Zeile 16 → eingefroren — ohne Treffer stünde es bei 11
+**Ablassventil** (Spalte 18): Stand vor dem Treffer Zeile 17 · Ereignis `bilgeDrained` bei Tick 182 · 200 Ticks später Zeile 20 → abgelassen auf den Anfangsstand 20
+
+## 11 · ERTRINKT DAS KIND, WENN DAS WASSER ES ERREICHT?
+
+Das Kind steht still auf Zeile 9. Die Bilge erreicht es bei Tick 329 (Wasserzeile 9).
+Das ist die eigentliche Probe der ganzen Trennung: der Hazard-Treffer kommt aus `stepPlayer`,
+und `stepPlayer` liest `liveGrid` — läse es weiter `grid`, stiege das Wasser sichtbar und täte nichts.
+

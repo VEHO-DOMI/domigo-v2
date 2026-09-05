@@ -64,6 +64,18 @@ export interface PlayerState {
   climbing: boolean;
   vineCooldown: number; // R3-M7: 10-tick no-regrab window after a vine exit
   swing: SwingState | null;
+  /** L3-M-a · E1 · DER EBEN LOSGELASSENE RING (subs), und wie lange er gesperrt
+   *  bleibt. Ohne diese beiden Felder ist eine Ring-KETTE nicht baubar: nach dem
+   *  Loslassen steht das Kind einen Wimpernschlag lang immer noch im Griffradius
+   *  des Rings, den es gerade verlassen hat, und `nearestRing` reicht ihn sofort
+   *  wieder herein — der Schwung endet also am selben Ring statt am naechsten.
+   *
+   *  Gesperrt wird NUR dieser eine Ring: jeder andere bleibt im selben Tick
+   *  greifbar, sonst waere die Sperre selbst die Bremse der Kette. Die Dauer
+   *  kommt aus der Phase (`PhaseSpec.swing.regrabLockTicks`); ohne Angabe ist
+   *  sie 0 und das Verhalten bleibt exakt das ausgelieferte. */
+  lastRing: { x: number; y: number } | null;
+  ringCooldown: number;
   // recovery
   iframes: number;
   /** N7B · DER BLINKER HAT SEINE EIGENE UHR. Bis hierher zeichnete das Bild
@@ -104,6 +116,11 @@ export interface StepOpts {
   canHang?: boolean; // the ledge verb (ch02 unlock)
   fistBusy?: boolean; // one fist in flight at a time
   ringAt?: { x: number; y: number } | null; // nearest grabbable ring anchor (subs)
+  /** L3-M-a · E1 · die Schwung-Werte DIESER Phase. Alle drei fehlen duerfen:
+   *  dann gelten die ausgelieferten (96 px Seil, 2 px/t Lift, keine Sperre). */
+  swingRopePx?: number;
+  swingReleaseLiftPx?: number;
+  ringRegrabLockTicks?: number;
   /** PB-F2: which air model to run (paint.ts AIR_MODELS). Omitted = the shipped one. */
   airModel?: AirModel;
 }
@@ -139,6 +156,8 @@ export const spawnPlayer = (xPx: number, feetYPx: number): PlayerState => ({
   climbing: false,
   vineCooldown: 0,
   swing: null,
+  lastRing: null,
+  ringCooldown: 0,
   iframes: 0,
   blinkTicks: 0,
   stun: 0,
@@ -189,6 +208,12 @@ export const stepPlayer = (
   s.jumpedAgo = Math.min(s.jumpedAgo + 1, 99);
   if (s.iframes > 0) s.iframes--;
   if (s.blinkTicks > 0) s.blinkTicks--;
+  // L3-M-a · E1: die Ring-Sperre laeuft in JEDEM Zustand ab — auch am Ring
+  // selbst. Sie steht hier oben, weil die Griff-Zweige (swing/hang/vine)
+  // darunter frueh zurueckkehren; ein Zaehler unter ihnen stuende still,
+  // genau die Klasse, die `poseGrace` einmal bezahlt hat (D-10).
+  if (s.ringCooldown > 0) s.ringCooldown--;
+  if (s.ringCooldown === 0 && s.lastRing !== null && s.swing === null) s.lastRing = null;
 
   // ── the swing (a world of its own while attached) ──
   if (s.swing) {
@@ -199,10 +224,13 @@ export const stepPlayer = (
     s.vx = 0;
     s.vy = 0;
     if (jumpPressed) {
-      const rel = releaseSwing(s.swing);
+      const rel = releaseSwing(s.swing, opts.swingReleaseLiftPx);
       s.vx = rel.vxSubs;
       s.vy = rel.vySubs;
       s.facing = rel.vxSubs >= 0 ? 1 : -1;
+      // L3-M-a · E1: den verlassenen Ring merken und sperren (0 = ausgeliefert)
+      s.lastRing = { x: s.swing.anchorX, y: s.swing.anchorY };
+      s.ringCooldown = opts.ringRegrabLockTicks ?? 0;
       s.swing = null;
       s.grounded = false;
       s.pose = "jump";
@@ -315,7 +343,16 @@ export const stepPlayer = (
     const dx = Math.abs(s.x - opts.ringAt.x) / SUBS;
     const dy = Math.abs(s.y - BODY_H * SUBS - opts.ringAt.y) / SUBS;
     if (dx <= RING_REACH_PX && dy <= RING_REACH_PX * 2) {
-      s.swing = attachSwing(opts.ringAt.x, opts.ringAt.y, s.x);
+      // L3-M-a: nur eine Phase mit eigenem Tauwerk bekommt den Eintritt aus dem
+      // echten Fangpunkt (Zahlen und Begruendung in `attachSwing`) — sonst bleibt
+      // der ausgelieferte feste Bogenwinkel und kein Band bewegt sich.
+      s.swing = attachSwing(
+        opts.ringAt.x,
+        opts.ringAt.y,
+        s.x,
+        opts.swingRopePx,
+        opts.swingRopePx === undefined ? undefined : { x: s.x, feetY: s.y },
+      );
       s.poseGrace = 0; // D-10, same reason as the vine above
       s.pose = "swing";
       s.hovering = false;

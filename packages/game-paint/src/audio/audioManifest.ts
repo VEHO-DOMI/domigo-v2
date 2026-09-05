@@ -213,7 +213,7 @@ type SimKind = SimEvent["type"];
 type PlayerKind = PlayerEvent["type"];
 type EntityKind = EntityEvent["type"];
 
-/** Alle 17 SimEvent-Arten. Fehlt eine, geht der Typecheck rot. */
+/** Alle 20 SimEvent-Arten. Fehlt eine, geht der Typecheck rot. */
 export const SIM_REACTIONS = {
   toast: [
     { play: "toast", note: "die per TOAST_MATCHES erkannte Tinten-Zeile geht an ink-splash" },
@@ -247,6 +247,14 @@ export const SIM_REACTIONS = {
     { silent: "der Käfig-Torschluss klingt bereits als EntityEvent `cageGated` → `cage-locked`, und zwei Klänge auf einem Augenblick sind einer zu viel. Bis heute kam hier beides — der Käfig-Klang UND der Toast-Klang", when: 'reason === "cageGated"' },
   ],
   exit: [{ play: "door-open" }],
+  // ── L3-M-a · E5 · die steigende Bilge von ch03 (unter Deck) ────────────────
+  // Alle drei sind `reserved`: die Dateien sind Kunst-Zeit, die Beats stehen.
+  bilgePulse: [
+    { reserved: "ch03 Bilge — ein Puls hebt das Wasser: dumpfes Schwappen gegen Holz, tief; der Prompt heißt `bilge-pulse`" },
+    { reserved: "ch03 Bilge — der LETZTE Puls, das Wasser steht am Hoechststand: derselbe Klang, eine Terz hoeher und ohne Nachhall, damit das Kind hoert, dass es jetzt nicht mehr schlimmer wird", when: "atTop" },
+  ],
+  pumpFrozen: [{ reserved: "ch03 Bilge — die Faust trifft den Pumpengriff, das Wasser haelt an: Metall-Klack plus ein Saugen, das aufhoert; Prompt `pump-freeze`" }],
+  bilgeDrained: [{ reserved: "ch03 Bilge — das Ablassventil, das Wasser laeuft ab: ein langer Gurgel-Abgang; Prompt `bilge-drain`" }],
 } as const satisfies Record<SimKind, readonly Reaction[]>;
 
 /** Alle 8 PlayerEvent-Arten. */
@@ -267,7 +275,7 @@ export const PLAYER_REACTIONS = {
   swingStart: [{ reserved: "kein o-Glyph im Kapitel; Prompt `swing-start` liegt bereit" }],
 } as const satisfies Record<PlayerKind, readonly Reaction[]>;
 
-/** Alle 16 EntityEvent-Arten. */
+/** Alle 17 EntityEvent-Arten. */
 export const ENTITY_REACTIONS = {
   encounter: [{ play: "bump", note: "ein WESEN berührt das Kind — nicht zu verwechseln mit dem gleichnamigen PlayerEvent (Tinte/Spitzen)" }],
   engaged: [{ silent: "hebt nur eine Karte → card-open: die Wiederherstellung am grauen Ding und, ab ch02, die Frage der Tier-Bühne" }],
@@ -285,6 +293,11 @@ export const ENTITY_REACTIONS = {
   projectileDeflected: [{ silent: "feuert ab ch02 (Faust, Hangeln, Gabe); Datei folgt mit dem ch02-Audio-Batch — braucht die Faust; Prompt `deflect` liegt bereit" }],
   puff: [{ silent: "gefaltet — das gleichnamige SimEvent trägt den Klang" }],
   shooed: [{ play: "shoo" }],
+  // L3-M-a · E5: der Treffer selbst klingt nicht doppelt. Was das Kind hoert,
+  // ist die WIRKUNG — `pumpFrozen` bzw. `bilgeDrained` als SimEvent —, und die
+  // Beruehrung traegt bereits der `puff` mit kind "hit". Zwei Klaenge auf einem
+  // Augenblick sind einer zu viel; dieselbe Faltung wie bei `guardianDown`.
+  pumpHit: [{ silent: "gefaltet — die SimEvents pumpFrozen / bilgeDrained tragen den Klang, und der Aufprall klingt als puff" }],
 } as const satisfies Record<EntityKind, readonly Reaction[]>;
 
 // ── Nachschlagen ─────────────────────────────────────────────────────────────

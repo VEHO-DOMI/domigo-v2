@@ -116,6 +116,39 @@ deklariert zwei der drei Hof-Möbel mit (zeichnet sie nie, gemessen null
 Plattform-Läufe), und die neuen Blätter sind auf der Auflösungs-Stufe des
 Kapitels kleiner (943→256 px und 372→64 px).
 
+**★ L3-M-a (2026-09-05): eine Motor-Bahn ohne Kunst — und ein Lauf, dessen erste Fassung wertlos war.**
+Die Bahn baut die Ring-Kette (Seillänge je Phase, Ring→Ring im Reichweiten-Modell,
+Gesetz `ring-chain`), die steigende Bilge (`pump.trigger`, `bilge-bait`) und eine
+Sonde. Sie fasst **kein einziges Blatt** an; die Tot-Kunst-Decke und `massStems`
+bleiben unberührt. Kein ausgeliefertes Level deklariert `swing` oder `bilge`, die
+Messung fährt also dieselben Räume wie vorher.
+
+Gemessen an zwei Bauten (`3f47435f` gegen `a38371e7`), Ports 3357/3358, beide
+Kontrollseiten über der Schwelle (61,5 und 61,1 fps), beide Bau-Angaben aus
+`/api/version` und damit GEPRÜFT:
+
+| Phase | laden (ms) vorher/nachher | bau+aufbau (ms) | fps |
+|---|---|---|---|
+| p1 | 1372,9 / 704,5 | 170,9 / 129,8 | 60,6 / 60,6 |
+| p2 | 627,6 / 878,2 | 84,5 / 120,0 | 60,5 / 60,4 |
+| p3 | 903,3 / 672,8 | 151,9 / 107,1 | 60,5 / 60,7 |
+| p4 | 669,0 / 730,9 | 121,7 / 114,6 | 60,4 / 60,2 |
+| p9 | 497,8 / 546,9 | 105,5 / 132,8 | 60,5 / 60,4 |
+
+**Die Bildrate bewegt sich nicht** (0,0 bis 0,2 fps in beide Richtungen) — das ist
+die Aussage. Die Ladezeiten streuen in BEIDE Richtungen um bis zu 40 %, und das
+ist die Maschine und nicht der Code: beide Läufe tragen den MAKEL-Vermerk
+(Lastmittel 42,5 bzw. 23,0; zwei fremde Server im Messband).
+
+⚠ **Die erste Messreihe dieser Bahn ist verworfen worden, und zwar von mir selbst.**
+Der Vorher-Lauf lief bei Lastmittel 7,3, der Nachher-Lauf bei 34,5 — ein Vergleich
+zwischen einer leeren und einer vollen Maschine, der jede Zahl erklären kann und
+keine belegt. Beide Läufe waren formal gültig (Kontrollseite über der Schwelle,
+Exit 0). Die hier stehende Reihe ist die zweite: Vorher und Nachher **unmittelbar
+hintereinander** gefahren, damit die Maschine für beide dieselbe ist. Regel für die
+nächste Bahn: die Kontrollseite prüft die BILDRATE, nicht die Vergleichbarkeit —
+wer Vorher und Nachher Stunden auseinander misst, misst den Tag.
+
 **★ L2-M-a (2026-09-05): eine Motor-Bahn ohne Kunst — und eine Messreihe, die man NICHT als Verbesserung lesen darf.**
 Die Bahn baut Motor-Posten (Rolle `scene.stage`, hang-Kante im Reichweiten-Modell,
 Kartenart `match`, Bonus-Schliessung, Audio-Gründe, Gabe-Beat) und fasst **kein
