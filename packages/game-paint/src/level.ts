@@ -1835,6 +1835,22 @@ export const checkLevelLaws = (level: PaintLevel): LawFailure[] => {
       if ((e.role === "cage" || e.role === "powerup" || e.role === "drained" || e.role === "scene.stage" || PICKUP_ROLES.has(e.role)) && !nearReachable(e.c, e.r, 2, 2, 4)) {
         failures.push({ phase: ph.id, law: "entity-reachable", detail: `${e.role} ${e.id} at (${e.c},${e.r}) unreachable` });
       }
+      // Blinder Leser, Fund 13, mit Gegenbeispiel bewiesen: fuer eine Buehne ist
+      // die Anker-Zelle die FALSCHE Frage. Der Anker ist das Objekt (der Baum);
+      // stehen bleibt der Darsteller auf seiner ENDSTATION, und dort muss das
+      // Kind stehen koennen, um ein weggeklicktes Fenster mit ↑ erneut zu heben.
+      // Ein Anker am Weg mit einer Endstation jenseits einer Grube bestand das
+      // Gesetz — genau der Zustand, den sein eigener Kommentar ausschliesst.
+      if (e.role === "scene.stage") {
+        const st = e.params?.stage;
+        const letzte = st?.stations?.[st.stations.length - 1];
+        if (letzte !== undefined && !nearReachable(e.c + letzte.dc, e.r + letzte.dr, 2, 2, 4)) {
+          failures.push({
+            phase: ph.id, law: "entity-reachable",
+            detail: `stage ${e.id} ends at (${e.c + letzte.dc},${e.r + letzte.dr}), which the child cannot reach — it would ask from across a gap`,
+          });
+        }
+      }
     }
 
     const startCell = findGlyph(ph.rows, "S");

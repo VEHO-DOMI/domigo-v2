@@ -2256,6 +2256,12 @@ export class PaintScene extends Phaser.Scene {
       // halten kann, ohne Phaser zu laden.
       if (e.role === "scene.stage") {
         img.setDepth(stageDepthOf(stagePointAt(e.homeX, e.homeY, e.params, e.timer).z));
+        // Blinder Leser, Fund 10: das Objekt wurde NUR beim Bau auf sichtbar
+        // gesetzt. Eine versteckt gespawnte Buehne (`params.hidden`, per Link
+        // enthuellt) haette danach einen Darsteller ohne sein Objekt gezeigt —
+        // er waere um nichts herumgelaufen. Jedes andere Zweitbild dieser Datei
+        // (Wasch-Schicht, Kaefig-Insasse) wird je Takt nachgezogen; dieses nicht.
+        this.stagePropImgs.get(e.id)?.setVisible(!e.hidden);
       }
       const cell = this.entStateCell({
         ...e,

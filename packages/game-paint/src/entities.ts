@@ -1238,6 +1238,13 @@ export const engageTargetId = (
   let best: { id: string; d: number } | null = null;
   for (const e of w.entities) {
     if (e.hidden || !ENGAGEABLE_ROLES.has(e.role)) continue;
+    // Blinder Leser, Fund 12: eine Buehne, die noch GEHT, ist nicht ansprechbar
+    // — der `stepEntities`-Zweig beantwortet ein ↑ erst im Zustand `posed`.
+    // Ohne diese Zeile zeigte der Kreide-Pfeil ueber einem laufenden Darsteller
+    // eine Handlung an, die nichts tut: eine tote Zusage, und die verwirrt ein
+    // Kind mehr als gar kein Zeichen. `ENGAGEABLE_ROLES` kennt nur die ROLLE,
+    // nicht den Zustand — deshalb steht die Bedingung hier.
+    if (e.role === "scene.stage" && e.state !== "posed") continue;
     // R5-W2 · H1: redemption normally ends the conversation — except for a cage,
     // which is `redeemed` from the moment its lid comes off, long before its
     // rescue has been answered. One that still owes a card stays askable, or
@@ -1641,6 +1648,12 @@ export const stepEntities = (
       // man es streift, macht den Zoo feindlich.
       case "scene.stage": {
         const p = stagePointAt(e.homeX, e.homeY, e.params, e.timer);
+        // Blinder Leser, Fund 11: `vx` blieb 0, weil die Bahn die Lage SETZT
+        // statt zu beschleunigen. Damit haette `anim.ts#entPoseCell` niemals
+        // eine Geh-Zelle zeigen koennen, auch wenn eines Tages eine gemalt ist —
+        // ihr Zweig fragt `Math.abs(e.vx)`. Die Plattformen rechnen ihre
+        // Waagrechte aus genau diesem Grund selbst aus; die Buehne jetzt auch.
+        e.vx = p.x - e.x;
         e.x = p.x;
         e.y = p.y;
         if (e.state === "walk" && p.angekommen) {

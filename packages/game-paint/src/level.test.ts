@@ -340,6 +340,38 @@ describe("checkLevelLaws", () => {
     expect(laws(ohneProp).length).toBe(1);
   });
 
+  it("entity-reachable · eine Bühne wird an ihrer ENDSTATION gemessen, nicht am Anker (L2-M-a)", () => {
+    // Blinder Leser, Fund 13, mit Gegenbeispiel bewiesen: der Anker ist das
+    // Objekt (der Baum) und steht am Weg; stehen bleibt der Darsteller auf
+    // seiner Endstation, und DORT muss das Kind hinkommen. Ein Anker in
+    // Reichweite mit einer Endstation jenseits einer Grube bestand das Gesetz.
+    // Links der Boden mit Start und Ausgang, rechts ein TURM (c14/c15), dessen
+    // Krone sechs Zeilen ueber dem Boden liegt — ohne Schwebe und ohne Griff
+    // unerreichbar. Der ANKER der Buehne steht links am Weg.
+    const rows = [
+      "################",
+      ...Array.from({ length: 11 }, () => "................"),
+      ...Array.from({ length: 5 }, () => "..............##"),
+      "..S..X........##",
+      "#######.......##",
+      "################",
+    ];
+    const mit = (dc: number, dr: number) => level(rows, {
+      draft: false,
+      abilities: ["jump", "run"], // KEIN hover, KEIN hang — sonst traegt die Huellkurve hinueber
+      phases: [{
+        id: "p1", nameDe: "T", surface: "normal", plates: {}, rows,
+        entities: [{ id: "b1", role: "scene.stage", skin: "papagei", c: 3, r: 17, tier: "E",
+          params: { stage: { propSkin: "auto", stations: [{ dc: 0, dr: 0 }, { dc, dr }] } } }],
+        links: [], exit: { to: "done" }, checkpointSide: "far",
+      }] as PaintLevel["phases"],
+    });
+    const unreach = (l: PaintLevel) => checkLevelLaws(parsePaintLevel(l))
+      .filter((f) => f.law === "entity-reachable" && f.detail.includes("b1"));
+    expect(unreach(mit(1, 0)).length, "eine Endstation nebenan ist erreichbar").toBe(0);
+    expect(unreach(mit(11, -6)).length, "eine Endstation auf dem Turm nicht").toBeGreaterThan(0);
+  });
+
   it("flags unreachable letters", () => {
     const rows = [
       "############",

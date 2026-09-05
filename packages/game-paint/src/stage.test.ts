@@ -14,7 +14,7 @@
  * Tore lesen.
  */
 import { describe, expect, it } from "vitest";
-import { ENGAGEABLE_ROLES, STAGE_TICKS_PER_STATION, spawnEntities, stageDepthOf, stagePointAt, stepEntities } from "./entities.ts";
+import { ENGAGEABLE_ROLES, STAGE_TICKS_PER_STATION, engageTargetId, spawnEntities, stageDepthOf, stagePointAt, stepEntities } from "./entities.ts";
 import type { EntityEvent, WorldInput } from "./entities.ts";
 import { askerUsesOf } from "./cards/serving.ts";
 import { Sim } from "./sim.ts";
@@ -97,6 +97,19 @@ describe("scene.stage · die Tier-Bühne", () => {
     expect(ENGAGEABLE_ROLES.has("scene.stage")).toBe(true);
   });
 
+  it("waehrend sie GEHT, verspricht kein Kreide-Pfeil ein ↑", () => {
+    // Blinder Leser, Fund 12: `ENGAGEABLE_ROLES` kennt nur die ROLLE, nicht den
+    // Zustand. Ohne die Zustandsprüfung zeigte der Pfeil über einem laufenden
+    // Darsteller eine Handlung an, die nichts tut — eine tote Zusage.
+    const w = spawnEntities([buehne()], []);
+    const e = w.entities[0]!;
+    laufe(w, idle(), 5); // mitten im Gehen
+    expect(e.state).toBe("walk");
+    expect(engageTargetId(w, e.x, e.y), "die gehende Bühne ist NICHT ansprechbar").toBeNull();
+    laufe(w, idle(), 200); // sie steht
+    expect(engageTargetId(w, e.x, e.y), "die stehende schon").toBe("papagei");
+  });
+
   it("die reine Bahn ist DETERMINISTISCH und kennt hinter/vor", () => {
     const p0 = stagePointAt(0, 0, buehne().params!, 0);
     const p0b = stagePointAt(0, 0, buehne().params!, 0);
@@ -140,6 +153,21 @@ describe("scene.stage · sie hebt den Schnell-Schirm, und beide Leser sind sich 
 
   it("die Tabelle sagt quickfire", () => {
     expect(askerUsesOf({ role: "scene.stage", params: {} })).toEqual(["quickfire"]);
+  });
+
+  it("und eine geloeste Frage LOEST die Bühne ein", () => {
+    // Blinder Leser, Fund 26: der Weg „gelöst ⇒ redeemEntity" läuft generisch
+    // über `ctx.type === "entity"` — geprüft war er für die Bühne nirgends.
+    const sim = new Sim({
+      level, phaseId: "p1",
+      grantedAbilities: () => ["jump", "run"], freedCageIds: () => [],
+    });
+    const evs: SimEvent[] = [];
+    for (let t = 0; t < 30; t++) evs.push(...sim.step(IDLE_PAD));
+    const frage = evs.find((e): e is Extract<SimEvent, { type: "task" }> => e.type === "task")!;
+    expect(sim.world.entities[0]!.redeemed, "vor der Antwort steht sie noch offen").toBe(false);
+    sim.solveTask(frage.req.ctx);
+    expect(sim.world.entities[0]!.redeemed, "danach ist sie eingelöst").toBe(true);
   });
 
   it("…und die Sim fragt denselben Pool", () => {
