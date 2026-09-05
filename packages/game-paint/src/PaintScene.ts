@@ -867,6 +867,11 @@ const EARTH = 0xa8794f;
 const EARTH_DARK = 0x8a6140;
 const ICE = 0xd7e9f2;
 const INK = 0x243048;
+/** L3-M-a · E3 · Platzhalter-Blau der Bilge. Zwei Werte, weil eine Wasserlinie
+ *  das ist, was ein Kind steigen SIEHT — eine Flaeche allein liest sich nicht als
+ *  Bewegung. Die gemalte Fassung ist Kunst-Zeit. */
+const BILGE_BODY = 0x1b3a52;
+const BILGE_LINE = 0x4e93b8;
 const GRASS = 0x59a83c;
 
 /** R5-W3 · W1 · DER ZEICHEN-ABGRIFF, und warum er ein eigener Schalter ist.
@@ -1098,6 +1103,9 @@ export class PaintScene extends Phaser.Scene {
   private landHardness = 0;
   private fistImg!: Phaser.GameObjects.Image;
   private ropeG!: Phaser.GameObjects.Graphics;
+  /** L3-M-a · E3 · die steigende Bilge von ch03: EIN Rechteck, jeden Frame neu
+   *  gesetzt. Platzhalter-Blau — die gemalte Fassung ist Kunst-Zeit. */
+  private bilgeG!: Phaser.GameObjects.Graphics;
   private letterImgs = new Map<string, Phaser.GameObjects.Image>();
   /** PB-F3: checkpoint art by column, so the ACTIVE one can light up.
    *  R5-W4 · B4 · R44: empty for the whole phase when the chapter is `silent`. */
@@ -1366,6 +1374,13 @@ export class PaintScene extends Phaser.Scene {
     }
     this.fistImg = this.add.image(0, 0, this.tex("hand_fist")).setScale(RIG_SRC_SCALE).setDepth(11).setVisible(false);
     this.ropeG = this.add.graphics().setDepth(9);
+    // L3-M-a · E3 · TIEFE 3, VON DEN NACHBARN ABGELESEN und nicht geraten: die
+    // Terrain-Fuellung liegt auf 1, ihr Beiwerk (Planken, Spitzen, Tinten-
+    // Oberflaeche `pool_ink_loop`) auf 2-3, die Wesen auf 7. Die Bilge ist
+    // dasselbe Ding wie die stehende Tinte, also teilt sie deren Ebene: sie deckt
+    // den gefluteten Boden zu und laesst Kind und Wesen davor stehen. Ohne
+    // ausdrueckliche Angabe landete sie an unbestimmter Stelle.
+    this.bilgeG = this.add.graphics().setDepth(3);
 
     // player/world/letters/bonus clock all spawned by the Sim in the constructor
     this.timed("entityImgs", () => this.buildEntityImgs());
@@ -4433,6 +4448,22 @@ export class PaintScene extends Phaser.Scene {
     }
 
     // R7: the rope — without it the pendulum's arc extreme reads as floating
+    // ── L3-M-a · E3 · DIE BILGE ─────────────────────────────────────────────
+    // Sie wird aus `sim.bilgeWaterRow` gelesen, nicht aus dem Gitter: das
+    // autorierte `grid` kennt den Wasserstand gar nicht (das ist der Punkt der
+    // ganzen Trennung), und das Tick-Gitter ist Sim-intern.
+    this.bilgeG.clear();
+    const bilge = this.phase.bilge;
+    const bRow = this.sim.bilgeWaterRow;
+    if (bilge && bRow >= 0) {
+      const x0 = bilge.band.c0 * TILE;
+      const bw = (bilge.band.c1 - bilge.band.c0 + 1) * TILE;
+      const y0 = bRow * TILE;
+      this.bilgeG.fillStyle(BILGE_BODY, 0.55).fillRect(x0, y0, bw, this.worldHpx - y0);
+      // die Wasserlinie: der Rand ist das, was ein Kind SIEHT steigen
+      this.bilgeG.fillStyle(BILGE_LINE, 0.85).fillRect(x0, y0, bw, 2);
+    }
+
     this.ropeG.clear();
     if (this.player.swing) {
       const ax = fromSubs(this.player.swing.anchorX);

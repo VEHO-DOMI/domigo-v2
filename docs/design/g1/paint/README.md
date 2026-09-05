@@ -185,3 +185,34 @@ das zod in `apps/web/lib/paint-content.ts` — zod strippt still, was es nicht
 kennt, und das Feld verschwindet zwischen Platte und Browser. Und `tipsTotal: 0`
 besteht jedes Gesetz, fällt aber die Seite (der Lader verlangt eine positive
 Zahl): ein Kapitel ohne entschiedene Regel-Seiten lässt das Feld weg (D-790).
+
+## §L0.6 · Zwei Gesetze über Erreichbarkeit (L0c, 2026-09-05)
+
+Beide stehen hier, weil sie **Design-Regeln** sind und keine Motor-Defekte —
+zweimal hat eine Kapitel-Bahn sie als Fehler gemeldet und Zeit auf eine
+Reparatur verwendet, die es nicht braucht.
+
+- **Der Ausgang liegt bei X ≤ Breite − 2; die letzten zwei Spalten sind
+  Kamera-Rand.** Gemessen an `level.ts` (`R5-A7 · THE SCREEN BOX IS PHYSICS`,
+  `minCol`/`maxCol` aus `PAINT.screenBoxLeftPx`/`…RightPx`) und an
+  `level.test.ts` (`R5-A7 · path-honest edges`): die Kamera-Box endet bei c61
+  eines 64 Spalten breiten Raums, das Erreichbarkeits-Modell trägt dort nichts
+  mehr, und `exit-reachable` duldet deshalb einen Abstand von einer Spalte zur
+  Nachbarzelle. Eine Münze in Spalte 62 oder 63 ist unerreichbar, ein Ausgang
+  dort wird nur geduldet. **Das ist gewollt** (D-811 ist eine Design-Regel, kein
+  Defekt): wer den Ausgang zwei Spalten vor den Rand setzt, hat nichts zu
+  reparieren. *(Das Hangeln im Reach-Modell — D-812 — ist eine andere Frage und
+  gehört der Motor-Bahn von ch02.)*
+
+- **Eine SPERRE wird an der Engine gemessen, eine ERLAUBNIS am Modell (D-868).**
+  Das Erreichbarkeits-Modell verspricht absichtlich weniger, als der Motor
+  trägt: es rechnet mit rund vier Zeilen Hub, gehalten schafft der Sprung sechs
+  bis sieben. Für „das Kind kommt hinauf" ist diese Vorsicht sicher — wer nach
+  dem Modell baut, baut erreichbar. Für „das Kind kommt NICHT hinauf" ist sie
+  genau falsch herum, und der Satz „ohne die Feder unerreichbar" war schon
+  dreimal falsch (L4-G1, L6-G1, L2-M-a; zuletzt landete das Kind in vier von
+  sechs federlosen Anläufen oben). **Wer eine Sperre behauptet, misst sie am
+  Band oder an einer Sim-Gegenprobe** — Rezept: den Mechanismus ENTFERNEN
+  (`s` → `.`, nie → `#`, sonst baut der Tamper eine Treppe) und die Landungen
+  zählen. `check-level-design` warnt seit L0c namentlich, wenn ein Dossier eine
+  Sperre behauptet und in den drei Zeilen darum kein Band-Beweis steht.

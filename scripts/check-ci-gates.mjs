@@ -574,3 +574,37 @@ console.log(`\ncheck-ci-gates: OK — ${real} Tore laufen in CI an echten Dateie
   + `${tools} Werkzeuge fahren dort bewusst nur ihren Selbsttest · `
   + `${Object.keys(NOT_A_GATE).length} Skript(e) sind bewusst kein CI-Tor · `
   + `${imps} Importeur-Selbsttest(s) geprüft (C10)`);
+
+// ── L0c · P12 · DIE BILANZ-ZEILE: EINE ZAHL, DIE NIEMAND MEHR ERINNERN MUSS ──
+//
+// Die acht Kapitel-Reports vom 03.09. nannten die Basis-Testzahl mal 1557, mal
+// 1558 — je nachdem, welcher Stand im Kopf des Autors stand. Eine Zahl aus dem
+// Gedaechtnis ist keine Messung, und der billigste Ort, sie stattdessen zu
+// DRUCKEN, ist das Tor, das die Tor-Liste ohnehin schon aus `ci.yml` zieht.
+//
+// Was hier steht, ist maschinell gezaehlt und nichts davon geschaetzt. Die Zahl
+// der PRUEFUNGEN (assertions) kann dieses Tor nicht kennen — sie entsteht erst
+// im Testlauf. Also nennt die Zeile das KOMMANDO, dessen Ausgabe sie liefert,
+// statt eine Zahl zu erfinden: ein Report zitiert ab jetzt entweder diese Zeile
+// oder die Bilanz jenes Laufs, nie sein Gedaechtnis.
+const zaehleTestdateien = (wurzel) => {
+  let n = 0;
+  const geh = (dir) => {
+    for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
+      if (e.name === "node_modules" || e.name === ".git" || e.name === "dist" || e.name === ".next") continue;
+      const voll = path.join(dir, e.name);
+      if (e.isDirectory()) geh(voll);
+      else if (/\.test\.(ts|tsx|mts)$/.test(e.name)) n += 1;
+    }
+  };
+  for (const w of wurzel) if (fs.existsSync(path.join(R, w))) geh(path.join(R, w));
+  return n;
+};
+const ciZeilen = ciOnDisk.split("\n").filter((l) => /^\s+-\s+run:\s+node\s/.test(l)).length;
+console.log(`check-ci-gates: BILANZ (maschinell gezaehlt, ${TODAY}) — `
+  + `${ciZeilen} einzeilige \`run: node\`-Zeilen in ci.yml · `
+  + `${gatesOnDisk.length} check-*.mjs auf der Platte · `
+  + `${importersOnDisk.length} docs/art/import-batch-*.mjs · `
+  + `${zaehleTestdateien(["packages", "apps"])} Testdateien. `
+  + "Die Zahl der gefahrenen PRUEFUNGEN druckt `pnpm test` selbst (Zeile »Tests  N passed«) — "
+  + "ein Report zitiert diese beiden Quellen, nie sein Gedaechtnis.");

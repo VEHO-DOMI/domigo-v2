@@ -3,7 +3,10 @@
  * import-batch-ap — PK-R6 H3 · THE ART ROUND.
  * Imports the reviewed batches AP + AM3 into apps/web/public/art/g1/paint/ch01/.
  *
- *   node docs/art/import-batch-ap.mjs
+ *   node --experimental-strip-types docs/art/import-batch-ap.mjs
+ *
+ * (Die Strip-Types-Flagge kam mit L0c: das Ziel jeder Zelle wird aus
+ *  `ALWAYS_STEMS` abgeleitet, und die Liste wohnt in einer .ts-Datei.)
  *
  * Same laws as import-batch-am (tol-40 chroma key → 3-pass defringe → content
  * trim → alpha audit; exit 1 on any failure), with THREE additions this round
@@ -40,9 +43,49 @@
 import fs from "node:fs";
 import path from "node:path";
 import { PNG } from "pngjs";
+import { ALWAYS_STEMS } from "../../packages/game-paint/src/artScope.ts";
 
 const LAB = path.join(process.env.HOME, "Code", "codex-art-lab");
-const OUT = path.join(process.cwd(), "apps/web/public/art/g1/paint/ch01");
+const ART_ROOT = path.join(process.cwd(), "apps/web/public/art/g1/paint");
+// Diese Lieferung ist die ch01-Runde; ihre Zellenliste unten IST der ch01-Kit.
+const KAPITEL = "ch01";
+
+// ── L0c · P15 · D-793 · DAS ZIEL KOMMT AUS DEM STEM, NICHT AUS DIESER ZEILE ──
+//
+// Hier stand EIN fester Zielordner (`…/paint/ch01`), und jede Lieferung ging
+// dorthin — auch die der FIGUR. So sind die vierzehn `hero2_*`-Zellen in
+// `ch01/` gelandet, und genau daraus wurde R263: der Aufloeser gibt jedem
+// Kapitel nur `["hero", chapter]` (`apps/web/lib/paint-art.ts#artDirsFor`),
+// also fand ch02–ch06 die Figur nicht und zeichnete still den alten
+// Teile-Baukasten. Ohne diese Zeilen kaeme die naechste Figuren-Lieferung
+// wieder falsch an.
+//
+// Die Regel hat zwei Leser und eine Quelle: `ALWAYS_STEMS` (die Blaetter, die
+// JEDES Kapitel laedt) plus die Namensform `hero…_`. Der Praefix steht daneben,
+// weil die Listen in `artManifest.ts` und `rigSpec.ts` schon einmal
+// auseinandergelaufen sind (D-173) — ein neues Helden-Blatt darf nicht davon
+// abhaengen, dass jemand die Liste nachgezogen hat.
+//
+// Und der dritte Fall ist der wichtigste: ein Stem, der zu KEINEM passt, haelt
+// das Werkzeug an. Raten ist genau das, was D-793 gekostet hat.
+//
+// IN DIESER DATEI kann dieser dritte Zweig nicht feuern: `KAPITEL` ist eine
+// Konstante (diese Lieferung IST die ch01-Runde), also ist `kapitel` nie null.
+// Er steht trotzdem hier, weil beide Werkzeuge dieselbe Form tragen sollen —
+// im allgemeinen Werkzeug (`scripts/import-codex-sheet.mjs`, ohne `--chapter`)
+// ist er der Zweig, der wirklich anhaelt. Vom blinden Leser benannt, damit
+// niemand ihn fuer eine hier wirksame Sicherung haelt.
+const istHeldenStem = (stem) => ALWAYS_STEMS.includes(stem) || /^hero\d*_/.test(stem);
+const zielFuer = (stem, kapitel) => {
+  if (istHeldenStem(stem)) return path.join(ART_ROOT, "hero");
+  if (kapitel === null) {
+    console.error(`✗ "${stem}" ist kein Helden-Blatt (weder in ALWAYS_STEMS noch in der Form hero…_), `
+      + "und dieser Lauf nennt kein Kapitel (--chapter chNN). Ein Ziel wird hier nicht geraten (D-793).");
+    process.exit(2);
+  }
+  return path.join(ART_ROOT, kapitel);
+};
+
 
 const TOL = 40;
 const read = (p) => PNG.sync.read(fs.readFileSync(p));
@@ -238,7 +281,8 @@ const SPARE_MAX_ALPHA = 0.001;
 const failures = [];
 const written = [];
 const spareLog = [];
-fs.mkdirSync(OUT, { recursive: true });
+fs.mkdirSync(path.join(ART_ROOT, KAPITEL), { recursive: true });
+fs.mkdirSync(path.join(ART_ROOT, "hero"), { recursive: true });
 
 const sheetCache = new Map();
 const sheetOf = (rel) => {
@@ -307,8 +351,10 @@ for (const sheet of SHEETS) {
       failures.push(`${stem}: nearly empty (alpha ${(share * 100).toFixed(2)}%, need ≥${MIN_ALPHA[mode] * 100}%)`);
       continue;
     }
-    fs.writeFileSync(path.join(OUT, `${stem}.png`), PNG.sync.write(img));
-    written.push({ stem, mode, w: img.width, h: img.height, alpha: share, from: sheet.file });
+    const ziel = zielFuer(stem, KAPITEL);
+    fs.mkdirSync(ziel, { recursive: true });
+    fs.writeFileSync(path.join(ziel, `${stem}.png`), PNG.sync.write(img));
+    written.push({ stem, mode, w: img.width, h: img.height, alpha: share, from: sheet.file, ziel: path.basename(ziel) });
   }
 }
 

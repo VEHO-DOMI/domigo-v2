@@ -195,6 +195,33 @@ const PaintPhase = z.object({
   // gelesen, Vorgabe 35). Dieselbe Strip-Regel wie oben: ohne diese Zeile
   // liefe jede Kammer wieder 35 Sekunden, egal was das Level sagt.
   budgetSec: z.number().int().positive().max(600).optional(),
+  // L3-M-a · E1: die Seil-Werte der Phase (level.ts PhaseSpec.swing) — die
+  // Ring-Kette von ch03. Dieselbe Strip-Regel wie oben, und sie beisst hier
+  // besonders hart: ohne diese Zeile schwaenge jeder Ring wieder an 96 px,
+  // waehrend `ring-chain` auf der Platte gruen bliebe — das Gesetz pruefte
+  // eine Geometrie, die der Browser nie sieht.
+  swing: z
+    .object({
+      ropePx: z.number().int().positive().max(256),
+      releaseLiftPx: z.number().int().nonnegative().max(16).optional(),
+      regrabLockTicks: z.number().int().nonnegative().max(240).optional(),
+    })
+    .optional(),
+  // L3-M-a · E3: die steigende Bilge (level.ts PhaseSpec.bilge). Dieselbe
+  // Strip-Regel wie oben — ohne diese Zeile bliebe das Wasser im Browser still
+  // stehen, waehrend jedes Gesetz auf der Platte eine steigende Bilge prueft.
+  bilge: z
+    .object({
+      band: z.object({ c0: z.number().int().nonnegative(), c1: z.number().int().nonnegative() }),
+      rStart: z.number().int().nonnegative(),
+      rTop: z.number().int().nonnegative(),
+      pulseTicks: z.number().int().positive().max(3600),
+      riseRows: z.number().int().positive().max(8),
+      freezeTicks: z.number().int().nonnegative().max(3600),
+      pumps: z.array(z.string().min(1)),
+      valve: z.string().min(1).optional(),
+    })
+    .optional(),
 });
 
 const PaintLevelFile = z.object({

@@ -248,7 +248,17 @@ for (const cx of CHAPTERS) {
 // Inhalts-Datei und müssen wie jede andere deutsche Zeile durchs Register. Ohne
 // diese Zeile wäre die Verlagerung aus dem Code eine LOCKERUNG gewesen: hart
 // codiert las `check-paint-copy` sie mit, deklariert läse sie niemand.
-const LEVEL_FIELDS = /(^|\.)(name|goalDe|whyDe|hintsDe|captiveDe|topicDe|merksatzDe|erklaerungDe|collectNounDe|clothNounDe|clothNounDatDe|clothNounSgDe|clothPlaceDe)(\[\d+\])?$/;
+// L0c · P21 · `gabeDe` UND `belegDe` STANDEN NICHT AUF DIESER LISTE.
+// Ein Zensus am 05.09. hat sie gefunden: ch02s „die Faust", ch03s „der
+// Ring-Schwung", ch04s „der Feder-Rotor" und sechzehn Beleg-Zeilen waren vom
+// Register-Tor unbewacht — ein Kind LIEST beide, also gilt fuer sie dasselbe
+// oesterreichische Register wie fuer jede andere Zeile.
+// Zur Musterfrage: die Muster in `scripts/lexikon-at.json` sind ueber ihre
+// `felder`-Liste gebunden, und die zwei feldgebundenen zielen auf `showsDe`
+// und `colourAskDe`. `belegDe` bekommt damit nur das Lexikon und das eine
+// Allgemein-Muster (`schweizer-ss`) — das ist die bestellte Trennung, und sie
+// steht dort, wo sie hingehoert, statt als zweite Feldliste hier.
+const LEVEL_FIELDS = /(^|\.)(name|goalDe|whyDe|hintsDe|captiveDe|topicDe|merksatzDe|erklaerungDe|collectNounDe|clothNounDe|clothNounDatDe|clothNounSgDe|clothPlaceDe|gabeDe|belegDe)(\[\d+\])?$/;
 const strings = function* (node, at = "") {
   if (typeof node === "string") { yield [at, node]; return; }
   if (Array.isArray(node)) { for (const [i, v] of node.entries()) yield* strings(v, `${at}[${i}]`); return; }

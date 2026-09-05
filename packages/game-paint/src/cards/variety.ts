@@ -140,6 +140,58 @@ const norm = (s: string) => s.toLowerCase().trim();
 export const hasWord = (haystack: string, needle: string): boolean =>
   new RegExp(`(^|[^a-z'])${needle.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}($|[^a-z'])`, "i").test(haystack);
 
+/** L0c · P5 · GESETZ 13e SAH UEBER EINEN APOSTROPH NICHT HINWEG.
+ *
+ *  `hasWord` zaehlt den Apostroph absichtlich zum Wort (Grenzklasse `[^a-z']`):
+ *  so trennt es »don't« von »don«. Fuer die Frage, die 13e stellt — hat das
+ *  Kind dieses Wort auf DIESER Karte produziert? — ist das zu streng: eine
+ *  Karte mit der Antwort »He's got a dog.« uebt `he`, und 13e konnte es nicht
+ *  sehen (L2-T1 hat es an `g1u02.w.he` gemessen).
+ *
+ *  Die Antwort-Flaeche bekommt deshalb ihre AUFGELOESTE Form DAZU, nie statt:
+ *  he's → he is · don't → do not · I'm → I am. Kein Stemming und keine
+ *  Wortliste — »hers« traegt keinen Apostroph und deckt `he` weiterhin NICHT.
+ */
+/** Die EINDEUTIGEN Apostroph-Schwaenze. `'s` und `'d` stehen bewusst NICHT
+ *  drin: `'s` ist is ODER has ODER Genitiv, `'d` ist would ODER had. Wer sie
+ *  auflöst, schreibt dem Kind ein Wort gut, das es vielleicht nie produziert
+ *  hat — und ein Gesetz, das Deckung ERFINDET, ist derselbe Defekt wie eines,
+ *  das sie übersieht, nur in die andere Richtung. */
+const CONTRACTION_TAIL: Readonly<Record<string, string>> = {
+  re: "are", ve: "have", ll: "will", m: "am",
+};
+/** Die drei Stämme, die vor `n't` nicht ihr eigenes Wort sind. Ohne sie würde
+ *  „won't" mechanisch zu „wo not" — ein Wort, das es nicht gibt, statt „will". */
+const NT_UNREGELMAESSIG: Readonly<Record<string, string>> = {
+  wo: "will", ca: "can", sha: "shall",
+};
+
+export const withContractionsExpanded = (surface: string): string => {
+  const dazu: string[] = [];
+  // `n't`: der Stamm (namentlich berichtigt, wo er keiner ist) plus „not".
+  for (const m of surface.matchAll(/([a-z]+)n't\b/gi)) {
+    const stamm = m[1] ?? "";
+    if (stamm === "") continue;
+    dazu.push(NT_UNREGELMAESSIG[stamm.toLowerCase()] ?? stamm, "not");
+  }
+  // Jeder andere Apostroph: das GRUNDWORT immer, der Schwanz nur, wenn er
+  // eindeutig ist. „He's" deckt damit `he`, aber nicht `is`.
+  for (const m of surface.matchAll(/([a-z]+)'([a-z]{1,2})\b/gi)) {
+    const stamm = m[1] ?? "";
+    const schwanz = (m[2] ?? "").toLowerCase();
+    // `'t` ist immer die `n't`-Form von oben — sonst hiesse der Stamm hier
+    // „don" statt „do", und ausgerechnet »don« ist der Fall, den die enge
+    // Wortgrenze von `hasWord` seit jeher richtig NICHT deckt.
+    if (stamm === "" || schwanz === "t") continue;
+    dazu.push(stamm);
+    const wort = CONTRACTION_TAIL[schwanz];
+    if (wort !== undefined) dazu.push(wort);
+  }
+  // …und die eine Form, deren `'s` weder is noch has noch Genitiv ist.
+  if (/\blet's\b/i.test(surface)) dazu.push("us");
+  return dazu.length === 0 ? surface : `${surface} ${dazu.join(" ")}`;
+};
+
 /** Every string the CHILD must produce or judge to answer this card. Coverage
  *  measured on a prompt would credit words the child only reads; this is the
  *  answerable surface, which is what "exercises" claims. */
@@ -326,7 +378,10 @@ function lawsOf(input: VarietyInput, honourExemptions: boolean): VarietyFailure[
       fail("13c", w, "a field card must name the unit items it makes the child produce (`exercises`) — coverage measured on prose is coverage nobody can trust");
       continue;
     }
-    const surface = answerSurfaceOf(t).join(" ");
+    // L0c · P5: nur DIESER Vergleich sieht ueber den Apostroph hinweg. Die
+    // Optionen-Flaeche von 17d unten bleibt unveraendert — dort ist die enge
+    // Lesart richtig, weil sie einen VERRAT sucht, keine Deckung.
+    const surface = withContractionsExpanded(answerSurfaceOf(t).join(" "));
     for (const id of t.exercises) {
       const entry = wbById.get(id);
       const cls = chap.lexiconClasses?.[id];
