@@ -312,7 +312,10 @@ export interface SimCfg {
    *  keinen Weg (`PaintScene#toast` ist privat).
    *  ⚠ `sim.ts#isBonusRoom` bestueckt die Kammer weiterhin je Besuch (D-5
    *  Option A). Dieser Zweig wird durch R235 TOT — absichtlich stehengelassen:
-   *  er ist die Antwort auf „was, wenn ein Kapitel je zwei Laeufe verkauft". */
+   *  er ist die Antwort auf »was, wenn ein Kapitel je zwei Laeufe verkauft«.
+   *  ⚠ Kein GERADES Anfuehrungszeichen in einem Kommentar dieser Datei: das
+   *  Klang-Tor zieht alle "..."-Literale mit einem Regex heraus, und ein
+   *  unpaariges verschiebt die Paarbildung aller folgenden. */
   bonusRunDone?: () => boolean;
 }
 
