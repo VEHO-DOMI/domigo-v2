@@ -91,7 +91,18 @@ const POLICY_FILE = "scripts/game-tasks-variety-policy.json";
 const policy = JSON.parse(fs.readFileSync(POLICY_FILE, "utf8"));
 /** L0 · D10: die Kapitel-Tabellen liegen neben dem Inhalt (chNN.policy.json);
  *  im Politik-JSON bleiben nur die DIALS, die über allen Kapiteln stehen. */
-const chapterPolicy = (cx) => (cx?.hasPolicy ? JSON.parse(fs.readFileSync(cx.policyPath, "utf8")) : null);
+// L0c · dieselbe Klasse wie P20, eine Datei weiter: eine kaputte Kapitel-Politik
+// starb hier als nackter SyntaxError ohne Dateinamen — gemessen beim Tampern.
+// Ein Fehler, der nicht sagt, WELCHE Datei er meint, schickt den Leser suchen.
+const chapterPolicy = (cx) => {
+  if (!cx?.hasPolicy) return null;
+  try {
+    return JSON.parse(fs.readFileSync(cx.policyPath, "utf8"));
+  } catch (e) {
+    console.error(`✗ ${path.relative(process.cwd(), cx.policyPath)}: keine gueltige Kapitel-Politik — ${e.message}`);
+    process.exit(1);
+  }
+};
 /** Die Sicht, die `varietyErrors` erwartet: dieselbe Form wie früher das
  *  Politik-JSON, nur je Kapitel aus dessen eigener Datei zusammengesetzt. */
 const policyFor = (cx) => {
@@ -180,7 +191,13 @@ const KUNST_FREILISTE = (() => {
   if (!fs.existsSync(p)) return new Map();
   try {
     return new Map((JSON.parse(fs.readFileSync(p, "utf8")) ?? []).map((e) => [e.stem, e]));
-  } catch { return new Map(); }
+  } catch (e) {
+    // Nie STILL: die Hygiene dieser Datei gehoert `check-paint-art` (es faellt
+    // hier zu Recht nicht aus), aber wer diesen Lauf liest, muss wissen, dass
+    // die Freiliste gerade LEER gerechnet wurde.
+    console.error(`✗ ${p}: keine gueltige Freiliste (${e.message}) — sie zaehlt in diesem Lauf als LEER; die Hygiene dieser Datei prueft check-paint-art`);
+    return new Map();
+  }
 })();
 
 let failures = 0;

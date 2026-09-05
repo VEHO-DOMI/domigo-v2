@@ -291,7 +291,16 @@ const ledgerDifferenz = (cx) => {
   const out = [];
   if (!cx.hasTasks || !cx.hasPolicy || !cx.wordbankPath || !fs.existsSync(cx.wordbankPath)) return out;
   let pol;
-  try { pol = JSON.parse(fs.readFileSync(cx.policyPath, "utf8")); } catch { return out; }
+  try {
+    pol = JSON.parse(fs.readFileSync(cx.policyPath, "utf8"));
+  } catch (e) {
+    // Nie STILL. Das Urteil ueber eine kaputte Politik faellt `check-game-tasks`
+    // (dort mit Exit-Code); hier waere ein zweites Urteil ein zweiter Besitzer.
+    // Aber dieser Bericht sagt, dass er dieses Kapitel NICHT gelesen hat.
+    out.push(`${cx.chapter}: die Kapitel-Politik ${path.relative(ROOT, cx.policyPath)} ist kein gueltiges JSON `
+      + `(${e.message}) — die Differenz-Pruefung hat dieses Kapitel ausgelassen`);
+    return out;
+  }
   const buch = pol.vocabLedger ?? {};
   if (Object.keys(buch).length === 0) return out;
   const bank = new Map(JSON.parse(fs.readFileSync(cx.wordbankPath, "utf8")).entries.map((e) => [e.id, e]));
