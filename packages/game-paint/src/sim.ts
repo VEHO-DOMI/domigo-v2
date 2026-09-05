@@ -167,7 +167,7 @@ export type SimEvent =
    *  zweiter dazu, wird aus dem Literal eine Vereinigung. */
   | { type: "toast"; msg: string; echoes?: "gate" }
   | { type: "task"; req: TaskRequest }
-  | { type: "powerup"; grants: string }
+  | { type: "powerup"; grants: string; gabeDe?: string }
   | { type: "cageFreed"; id: string; skin: string; classmate: string | undefined; count: number }
   | { type: "guardianDown"; id: string; skin: string }
   /** R5-W4 · H2 (R50): eine Kritzel-Schicht ist gerade weggewischt worden.
@@ -1306,7 +1306,7 @@ export class Sim {
       }
       case "powerupTaken":
         this.overlayOpen = true;
-        events.push({ type: "powerup", grants: ev.grants });
+        events.push({ type: "powerup", grants: ev.grants, gabeDe: ev.gabeDe });
         break;
       case "pickupTaken": {
         const e = this.world.entities.find((x) => x.id === ev.id);

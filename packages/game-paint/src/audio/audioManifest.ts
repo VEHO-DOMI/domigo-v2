@@ -220,7 +220,7 @@ export const SIM_REACTIONS = {
     { silent: "nur das Echo eines Beats, der sein eigenes Ereignis hat (`gate`) — dort klingt er; hier wäre es ein zweiter Klang auf demselben Augenblick", when: "echoes ist gesetzt" },
   ],
   task: [{ play: "card-open", note: "jede Karte kommt hier heraus — auch die von cageHint, engaged, cageAsk, awakenAsk" }],
-  powerup: [{ reserved: "ch01 hat kein powerup-Entity; der Prompt liegt als `powerup-take` bereit" }],
+  powerup: [{ silent: "feuert ab ch02 (Faust, Hangeln, Gabe); Datei folgt mit dem ch02-Audio-Batch — Prompt `powerup-take` liegt bereit" }],
   cageFreed: [{ play: "cage-free" }],
   guardianDown: [{ play: "board-bloom" }],
   guardianWipe: [
@@ -240,7 +240,7 @@ export const SIM_REACTIONS = {
   book: [{ reserved: "ch01 hat kein book-Entity (nur fünf tip); der Prompt liegt als `book-take` bereit" }],
   puff: [
     { play: "puff-chalk", when: 'kind === "chalk"' },
-    { reserved: 'entsteht nur an der Faust; der Prompt liegt als `fist-hit` bereit', when: 'kind === "hit"' },
+    { silent: 'feuert ab ch02 (Faust, Hangeln, Gabe); Datei folgt mit dem ch02-Audio-Batch — Prompt `fist-hit` liegt bereit', when: 'kind === "hit"' },
   ],
   gate: [
     { play: "gate-waits", note: "R5-W7 · S3 · D-372: der Torschluss klingt jetzt am EREIGNIS statt am Wortlaut der Meldung. Vier der fünf Gründe kommen aus `checkExit` — darunter das Klassenfoto, das bis heute als einziges Tor GAR NICHT klang, weil sein Satz aus dem Level gebaut wird und auf kein Muster passte" },
@@ -258,31 +258,31 @@ export const PLAYER_REACTIONS = {
   ],
   hoverStart: [{ reserved: "canHover ist in ch01 false (Federkiel-Rotor, ch04); Prompt `hover` liegt bereit" }],
   sprung: [{ reserved: "kein s-Glyph im Kapitel; Prompt `spring` liegt bereit" }],
-  fistThrown: [{ reserved: "ch01 vergibt keine Faust; Prompt `fist-throw` liegt bereit" }],
+  fistThrown: [{ silent: "feuert ab ch02 (Faust, Hangeln, Gabe); Datei folgt mit dem ch02-Audio-Batch — Prompt `fist-throw` liegt bereit" }],
   encounter: [
     { play: "ink-splash", when: 'hazard === "w"', note: "erreicht die Szene als toast »Platsch!«" },
     { reserved: 'kein ^-Glyph im Kapitel; Prompt `spike-touch` liegt bereit', when: 'hazard === "^"' },
   ],
-  grabbedLedge: [{ reserved: "canHang ist in ch01 false (ch02); Prompt `ledge-grab` liegt bereit" }],
+  grabbedLedge: [{ silent: "feuert ab ch02 (Faust, Hangeln, Gabe); Datei folgt mit dem ch02-Audio-Batch — Prompt `ledge-grab` liegt bereit" }],
   swingStart: [{ reserved: "kein o-Glyph im Kapitel; Prompt `swing-start` liegt bereit" }],
 } as const satisfies Record<PlayerKind, readonly Reaction[]>;
 
 /** Alle 16 EntityEvent-Arten. */
 export const ENTITY_REACTIONS = {
   encounter: [{ play: "bump", note: "ein WESEN berührt das Kind — nicht zu verwechseln mit dem gleichnamigen PlayerEvent (Tinte/Spitzen)" }],
-  engaged: [{ silent: "hebt nur die Wiederherstellungs-Karte → card-open" }],
-  cageHit: [{ reserved: "die Zwei-Schlag-Grammatik gehört der Faust (entities.ts: »↑ opens a cage in a chapter with no fist«); Prompt `cage-hit` liegt bereit" }],
+  engaged: [{ silent: "hebt nur eine Karte → card-open: die Wiederherstellung am grauen Ding und, ab ch02, die Frage der Tier-Bühne" }],
+  cageHit: [{ silent: "feuert ab ch02 (Faust, Hangeln, Gabe); Datei folgt mit dem ch02-Audio-Batch — die Zwei-Schlag-Grammatik gehört der Faust; Prompt `cage-hit` liegt bereit" }],
   cageBurst: [{ play: "cage-open" }],
   cageAsk: [{ silent: "hebt nur die Karte erneut; das Bersten hat schon gespielt" }],
   cageGated: [{ play: "cage-locked" }],
   awakenAsk: [{ silent: "hebt nur Merles Runde erneut → card-open" }],
   doorTouched: [{ silent: "hebt die Tür-Karte → card-open; das Aufgehen klingt am SimEvent exit" }],
-  powerupTaken: [{ reserved: "wie SimEvent powerup — kein powerup-Entity in ch01" }],
+  powerupTaken: [{ silent: "feuert ab ch02 (Faust, Hangeln, Gabe); Datei folgt mit dem ch02-Audio-Batch — wie SimEvent powerup; Prompt `powerup-take` liegt bereit" }],
   pickupTaken: [{ silent: "gefaltet — die SimEvents tip / book tragen den Klang" }],
   guardianStagger: [{ play: "boss-window" }],
   guardianKnot: [{ silent: "gefaltet — das SimEvent guardianWipe trägt den Klang" }],
   guardianDown: [{ silent: "gefaltet — das gleichnamige SimEvent trägt den Klang" }],
-  projectileDeflected: [{ reserved: "braucht die Faust; Prompt `deflect` liegt bereit" }],
+  projectileDeflected: [{ silent: "feuert ab ch02 (Faust, Hangeln, Gabe); Datei folgt mit dem ch02-Audio-Batch — braucht die Faust; Prompt `deflect` liegt bereit" }],
   puff: [{ silent: "gefaltet — das gleichnamige SimEvent trägt den Klang" }],
   shooed: [{ play: "shoo" }],
 } as const satisfies Record<EntityKind, readonly Reaction[]>;

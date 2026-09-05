@@ -255,7 +255,7 @@ export interface PaintCallbacks {
    *  phase remount cannot ask for it again. */
   onEntityResolved?: (id: string, role: string) => void;
   onTask: (req: TaskRequest) => void;
-  onPowerup: (grants: string) => void;
+  onPowerup: (grants: string, gabeDe?: string) => void;
   onCageFreed: (id: string, skin: string, classmate: string | undefined, freedCount: number) => void;
   onGuardianDown: (id: string, skin: string) => void;
   /** PB-F3 · F2-8: the first cage the fist can open, once per phase.
@@ -1676,7 +1676,7 @@ export class PaintScene extends Phaser.Scene {
       switch (ev.type) {
         case "toast": this.toast(ev.msg); break;
         case "task": cb.onTask(ev.req); break;
-        case "powerup": cb.onPowerup(ev.grants); break;
+        case "powerup": cb.onPowerup(ev.grants, ev.gabeDe); break;
         case "cageFreed": cb.onCageFreed(ev.id, ev.skin, ev.classmate, ev.count); break;
         case "guardianDown": cb.onGuardianDown(ev.id, ev.skin); break;
         // R5-W4 · H2 (R50): der Augenblick, in dem eine Kritzel-Schicht wirklich

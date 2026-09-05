@@ -165,7 +165,7 @@ export type EntityEvent =
    *  friend standing grey with no way back into her own rescue. */
   | { type: "awakenAsk"; id: string; skin: string }
   | { type: "doorTouched"; id: string; kind: string }
-  | { type: "powerupTaken"; id: string; grants: string }
+  | { type: "powerupTaken"; id: string; grants: string; gabeDe?: string }
   /** PK-R3b · R3-16: a static-state collectible was walked into — a Regel-Seite
    *  (which stops the world to show its rule) or a Bonus-Buch (which does not). */
   | { type: "pickupTaken"; id: string; role: "tip" | "book" | "cloth"; skin: string }
@@ -1610,7 +1610,17 @@ export const stepEntities = (
       case "powerup": {
         if (overlapsPlayer(e, inp, 14, 20)) {
           e.redeemed = true;
-          events.push({ type: "powerupTaken", id: e.id, grants: String(e.params.grants ?? "punch") });
+          // L2-M-a · M5: die Gabe nennt SICH SELBST. `gabeDe` steht schon im
+          // Schema (level.ts) und erreichte bisher nur den Tor-Toast; der
+          // Gabe-Beat tippte „die FAUST" hart und haette in ch03 („der
+          // Ring-Schwung") und ch04 („der Feder-Rotor") gelogen. Dasselbe
+          // Muster wie `captiveDe` am Kaefig: der Satz kommt vom DING.
+          events.push({
+            type: "powerupTaken",
+            id: e.id,
+            grants: String(e.params.grants ?? "punch"),
+            gabeDe: typeof e.params.gabeDe === "string" ? e.params.gabeDe : undefined,
+          });
         }
         break;
       }

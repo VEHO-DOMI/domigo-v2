@@ -22,7 +22,8 @@
 import { describe, expect, it } from "vitest";
 import { Sim } from "./sim.ts";
 import { IDLE_PAD } from "./player.ts";
-import type { PaintLevel, PhaseSpec, SimEvent } from "./index.ts";
+import type { SimEvent } from "./sim.ts";
+import type { PaintLevel, PhaseSpec } from "./level.ts";
 
 // Boden auf der vorletzten Zeile, S und die Klecks-Tür auf DERSELBEN Spalte:
 // `overlapsPlayer(e, inp, 12, 26)` greift damit im ersten Takt.
