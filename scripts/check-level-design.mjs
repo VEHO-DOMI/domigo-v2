@@ -343,7 +343,19 @@ const ledgerDifferenz = (cx) => {
 // stehen: ein Wort fuer Unerreichbarkeit UND die Bedingung »ohne«.
 const SPERR_WORT = /(unerreichbar|nicht (?:zu )?erreich\w*|kommt\b.{0,25}\bnicht\b.{0,15}(?:hinauf|rauf|hoch|hin))/i;
 const SPERR_BEDINGUNG = /\bohne\b/i;
-const SPERR_BEHAUPTUNG = { test: (zeile) => SPERR_WORT.test(zeile) && SPERR_BEDINGUNG.test(zeile) };
+// …und beide muessen im selben SATZTEIL stehen, nicht nur in derselben Zeile.
+// Gemessen an einer echten ch01-Dossier-Zeile, die vom ersten Anlauf faelschlich
+// gemeldet wurde: dort steht »unerreichbar« ueber die PERFEKT-Rosette und 78
+// Zeichen weiter ein »ohne PERFEKT-Chance« — zwei Aussagen, kein Zusammenhang.
+// Die vier echten Faelle liegen bei 14–28 Zeichen Abstand, der Fehlalarm bei 78.
+const SPERR_NAEHE = 40;
+const SPERR_BEHAUPTUNG = {
+  test: (zeile) => {
+    const w = SPERR_WORT.exec(zeile);
+    const o = SPERR_BEDINGUNG.exec(zeile);
+    return w !== null && o !== null && Math.abs(o.index - w.index) <= SPERR_NAEHE;
+  },
+};
 const BAND_BEWEIS = /(Band|proof\.json|Sim|gemessen|Messfahrt|Gegenprobe|Anlaeuf|Anläuf)/i;
 const sperrWarnungen = (cx) => {
   const out = [];
@@ -788,6 +800,12 @@ if (process.argv.includes("--selftest")) {
       sperrProbe("Das Dach ist ohne Umweg erreichbar.\n"), (f) => f.length === 0],
     ["SPERRE: der Kamera-Rand ist unerreichbar OHNE Bedingung — keine Behauptung ueber eine Gabe",
       sperrProbe("Die Muenze in Spalte 62 ist unerreichbar (Kamera-Rand).\n"), (f) => f.length === 0],
+    // Eine ECHTE Zeile aus ch01s p9-Dossier, die der erste Anlauf faelschlich
+    // meldete: »unerreichbar« ueber die PERFEKT-Rosette, 78 Zeichen weiter ein
+    // »ohne PERFEKT-Chance«. Zwei Aussagen in einer Zeile sind kein Zusammenhang.
+    ["SPERRE: zwei unabhaengige Aussagen in einer Zeile sind KEINE Sperr-Behauptung (Fehlalarm ch01/p9)",
+      sperrProbe("unerreichbar**; ein Wiederkauf (falls je bezahlbar) kauft einen leereren Raum ohne PERFEKT-Chance.\n"),
+      (f) => f.length === 0],
   );
 
   let bad = 0;
