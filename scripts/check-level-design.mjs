@@ -313,6 +313,42 @@ const ledgerDifferenz = (cx) => {
   return out;
 };
 
+// ── 2c · L0c · P11 (D-868) · EINE SPERRE WIRD AN DER ENGINE GEMESSEN ────────
+//
+// Das Erreichbarkeits-Modell verspricht ABSICHTLICH weniger, als die Engine
+// traegt: es rechnet mit rund 4 Zeilen Hub, gehalten schafft der Sprung 6–7,7.
+// Fuer die Frage »kommt das Kind HINAUF?« ist das sicher — wer nach dem Modell
+// baut, baut erreichbar. Fuer die Frage »kommt es NICHT hinauf?« ist es genau
+// falsch herum: dreimal bezahlt (L4-G1/D-868, L6-G1, L2-M-a), zuletzt an einem
+// Balkon, der »ohne die Feder nicht erreichbar« hiess und in vier von sechs
+// Anlaeufen ohne Feder erreicht wurde.
+//
+// Ein Tor kann diese Aussage nicht selbst nachmessen — dafuer braucht es die
+// Sim. Es kann aber verlangen, dass NEBEN der Behauptung ein Beweis steht. Das
+// hier ist deshalb eine WARNUNG mit Zeile und Datei, kein Exit-Code: die
+// Behauptung ist erlaubt, das Schweigen darueber nicht.
+const SPERR_BEHAUPTUNG = /(unerreichbar ohne|nicht erreichbar ohne|ohne .{1,40} nicht (?:zu )?erreich)/i;
+const BAND_BEWEIS = /(Band|proof\.json|Sim|gemessen|Messfahrt|Gegenprobe|Anlaeuf|Anläuf)/i;
+const sperrWarnungen = (cx) => {
+  const out = [];
+  if (!cx.hasDossiers) return out;
+  for (const df of fs.readdirSync(cx.dossiers).filter((f) => f.endsWith(".md"))) {
+    const zeilen = fs.readFileSync(path.join(cx.dossiers, df), "utf8").split("\n");
+    zeilen.forEach((zeile, i) => {
+      if (!SPERR_BEHAUPTUNG.test(zeile)) return;
+      // Der Beweis darf drei Zeilen ueber oder unter der Behauptung stehen —
+      // ein Dossier ist Prosa, kein Formular.
+      const umfeld = zeilen.slice(Math.max(0, i - 3), i + 4).join(" ");
+      if (BAND_BEWEIS.test(umfeld)) return;
+      out.push(`${cx.chapter} ${df}:${i + 1}: behauptet eine SPERRE ("${zeile.trim().slice(0, 70)}…"), `
+        + "aber in den drei Zeilen darum steht kein Band-Beweis. Eine Sperre wird an der ENGINE gemessen "
+        + "(Band/Sim-Gegenprobe), nie am Reach-Modell — das verspricht absichtlich weniger, als der Motor "
+        + "traegt, und ist fuer »erreichbar« sicher und fuer »gesperrt« falsch herum (D-868, README §L0.6)");
+    });
+  }
+  return out;
+};
+
 // ── 3 · MANIFEST-ANKER ───────────────────────────────────────────────────────
 const DOSSIER_OF = { p1: "p1.md", p2: "p2.md", p3: "p3.md", p9: "p9.md", p4: "arena.md" };
 /** Block 3 für EIN Kapitel: jede Entity hat eine Manifest-Zeile MIT Anker, und
@@ -771,6 +807,7 @@ const purposeFails = (cx) => {
 // gelaufen ist, ist genau die Klasse, die diese Bahn schliesst.
 const CHAPTERS = paintChapters();
 const differenzen = [];
+const warnungen = [];
 let stemCount = 0;
 let vocabCount = 0;
 let phaseCount = 0;
@@ -789,6 +826,7 @@ for (const cx of CHAPTERS) {
   // vor UND nach der Reparatur einer leeren Anspruchsdatei (L6-G1b).
   if (claims !== null) vocabCount += Object.keys(claims).length;
   differenzen.push(...ledgerDifferenz(cx));
+  warnungen.push(...sperrWarnungen(cx));
   fails.push(...manifestFails(cx));
   fails.push(...purposeFails(cx));
   if (cx.hasDossiers) {
@@ -825,6 +863,10 @@ for (const g of ledger.gaps()) {
 if (differenzen.length > 0) {
   console.log(`check-level-design: ${differenzen.length} Hauptbuch-Ausnahmen, die eine Karte laengst einloest (D-840, berichtet — nicht rot):`);
   for (const d of differenzen) console.log(`  · ${d}`);
+}
+if (warnungen.length > 0) {
+  console.log(`check-level-design: ${warnungen.length} Sperr-Behauptung(en) ohne Band-Beweis (WARNUNG — nicht rot):`);
+  for (const w of warnungen) console.log(`  · ${w}`);
 }
 ledger.print();
 if (fails.length) {
