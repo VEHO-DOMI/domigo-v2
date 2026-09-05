@@ -145,7 +145,7 @@
     "type": "entity",
     "showsDe": "Der Hund steht grau bei der Kassa."
    },
-   "storyDe": "Sag, wer er ist — dann gib ihm die Farbe!",
+   "storyDe": "Sag, wer er ist — dann gib ihm seine Farbe zurück!",
    "nameOptions": [
     "dog",
     "cat",
@@ -168,7 +168,7 @@
    ],
    "hints": {
     "deDesc": "Er bellt und wedelt am Eingang.",
-    "deWord": "Auf Deutsch: der Hund — und Schwarz."
+    "deWord": "Auf Deutsch: der Hund. Er war schwarz."
    },
    "grounding": "u02 wordbank g1u02.w.dog (WB p. 14–15 WORD FILE) · Farbe aus g1u02.x.colours (WB p. 18–19 ex. 9: „black and white\")"
   },
@@ -185,7 +185,7 @@
     "type": "entity",
     "showsDe": "Der Pinguin wartet grau an den Fliesen."
    },
-   "storyDe": "Sag, wer er ist — dann gib ihm die Farbe!",
+   "storyDe": "Sag, wer er ist — dann gib ihm seine Farbe zurück!",
    "nameOptions": [
     "penguin",
     "giraffe",
@@ -208,7 +208,7 @@
    ],
    "hints": {
     "deDesc": "Er watschelt und rutscht auf dem Bauch.",
-    "deWord": "Auf Deutsch: der Pinguin — und Weiß."
+    "deWord": "Auf Deutsch: der Pinguin. Er war weiß."
    },
    "grounding": "u02 wordbank g1u02.w.penguin (WB p. 14–15 WORD FILE) · Farbe aus g1u02.x.colours"
   },
@@ -314,7 +314,7 @@
     "type": "entity",
     "showsDe": "Das Drehkreuz zählt die Gäste und kommt durcheinander."
    },
-   "storyDe": "Du bist 11. Antworte dem Drehkreuz!",
+   "storyDe": "Sag dem Drehkreuz, wie alt du bist!",
    "promptEn": "How old are you?",
    "options": [
     "I'm from Cork.",
