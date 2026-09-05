@@ -1,0 +1,19 @@
+t=    1 STAGE p1-buehne-papagei: hidden (Kind bei c2.6)
+t=    1 STAGE p1-buehne-buddy: hidden (Kind bei c2.6)
+t=   13 TIP {"type":"tip","id":"p1-poster","skin":"regelseite","topicDe"
+t=   94 GRIFF an Kante (8,11) Haltung=hang
+t=  221 TASK  use=rescue ctx=cage:p1-cage2
+t=  221 CAGE FREED p1-cage2
+t=  222 STAGE p1-buehne-papagei: walk (Kind bei c11.0)
+t=  581 TASK  use=quickfire ctx=entity:p1-buehne-papagei
+t=  582 STAGE p1-buehne-papagei: dazed (Kind bei c16.1)
+t=  918 GRIFF an Kante (28,4) Haltung=hang
+t= 1113 TASK  use=encounter ctx=entity:p1-schubkarre
+t= 1201 TASK  use=encounter ctx=entity:p1-pinguin
+t= 1202 STAGE p1-buehne-buddy: walk (Kind bei c48.5)
+t= 1471 TASK  use=quickfire ctx=entity:p1-buehne-buddy
+t= 1472 STAGE p1-buehne-buddy: dazed (Kind bei c51.0)
+t= 1743 GRIFF an Kante (55,11) Haltung=hang
+t= 1813 POWERUP punch gabeDe=die Faust
+t= 1963 TASK  use=door ctx=door:p1-drehkreuz
+t= 1964 EXIT → p2

@@ -2,7 +2,7 @@
  "schema": "gameTasks@2",
  "chapter": "ch02",
  "unit": "g1-u02",
- "note": "L2-T1 · Die ersten Karten von ch02 „Der Zoo im Buch\" (MORE! 1 Unit 2 „At the zoo\"). Erdung: docs/design/g1/grounding/u02-lexicon.json. Die Karten der Maschinen, die es noch nicht gibt (match), des Wächters (der Löwe kommt mit L2-G2/L2-M) und der Schwarm-Karten (kein swarm im Kapitel, bis L2-G2 die Erdmännchen stellt) liegen als Daten-Entwurf in docs/design/g1/paint/ch02-dossiers-v2/pending-tasks.md. Formen: die zwei Feinde von p1 fragen Verschiedenes (Gesetz 14b), die Türserie rotiert drei Formen wie in ch01, und die sechs Fenn-Runden sind eine erklärte Zeremonie (Familie fenn-ceremony in ch02.policy.json).",
+ "note": "L2-T1 · Die ersten Karten von ch02 „Der Zoo im Buch\" (MORE! 1 Unit 2 „At the zoo\"). Erdung: docs/design/g1/grounding/u02-lexicon.json. Die Karten der Maschinen, die es noch nicht gibt (match), des Wächters (der Löwe kommt mit L2-G2/L2-M) und der Schwarm-Karten (kein swarm im Kapitel, bis L2-G2 die Erdmännchen stellt) liegen als Daten-Entwurf in docs/design/g1/paint/ch02-dossiers-v2/pending-tasks.md. Formen: die zwei Feinde von p1 fragen Verschiedenes (Gesetz 14b), die Türserie rotiert drei Formen wie in ch01, und die sechs Fenn-Runden sind eine erklärte Zeremonie (Familie fenn-ceremony in ch02.policy.json). L2-P1v2 (2026-09-05): zwei Bühnen-Karten (quickfire, state-it, Fernglas-Form) als Walk-Minimum, enc.hund.r1 nach p2, Sprach-Pass Runde 1 (5 Felder).",
  "items": [
   {
    "id": "g1.paint.ch02.enc.schubkarre.k1",
@@ -143,9 +143,9 @@
    ],
    "stimulus": {
     "type": "entity",
-    "showsDe": "Der Hund steht grau bei der Kassa."
+    "showsDe": "Der Hund steht grau in der Gehege-Gasse."
    },
-   "storyDe": "Sag, wer er ist — dann gib ihm die Farbe!",
+   "storyDe": "Sag, wer er ist — dann gib ihm seine Farbe zurück!",
    "nameOptions": [
     "dog",
     "cat",
@@ -164,13 +164,13 @@
     "hund"
    ],
    "phases": [
-    "p1"
+    "p2"
    ],
    "hints": {
-    "deDesc": "Er bellt und wedelt am Eingang.",
-    "deWord": "Auf Deutsch: der Hund — und Schwarz."
+    "deDesc": "Er bellt und wedelt mit dem Schwanz.",
+    "deWord": "Auf Deutsch: der Hund. Er war schwarz."
    },
-   "grounding": "u02 wordbank g1u02.w.dog (WB p. 14–15 WORD FILE) · Farbe aus g1u02.x.colours (WB p. 18–19 ex. 9: „black and white\")"
+   "grounding": "u02 wordbank g1u02.w.dog (WB p. 14–15 WORD FILE) · Farbe aus g1u02.x.colours (WB p. 18–19 ex. 9: „black and white\") · L2-P1v2: nach p2 versetzt (WB p. 17: der Hund hinter dem Bus; L2-G2 stellt den Bus)"
   },
   {
    "id": "g1.paint.ch02.enc.pinguin.r1",
@@ -185,7 +185,7 @@
     "type": "entity",
     "showsDe": "Der Pinguin wartet grau an den Fliesen."
    },
-   "storyDe": "Sag, wer er ist — dann gib ihm die Farbe!",
+   "storyDe": "Sag, wer er ist — dann gib ihm seine Farbe zurück!",
    "nameOptions": [
     "penguin",
     "giraffe",
@@ -208,7 +208,7 @@
    ],
    "hints": {
     "deDesc": "Er watschelt und rutscht auf dem Bauch.",
-    "deWord": "Auf Deutsch: der Pinguin — und Weiß."
+    "deWord": "Auf Deutsch: der Pinguin. Er war weiß."
    },
    "grounding": "u02 wordbank g1u02.w.penguin (WB p. 14–15 WORD FILE) · Farbe aus g1u02.x.colours"
   },
@@ -314,7 +314,7 @@
     "type": "entity",
     "showsDe": "Das Drehkreuz zählt die Gäste und kommt durcheinander."
    },
-   "storyDe": "Du bist 11. Antworte dem Drehkreuz!",
+   "storyDe": "Sag dem Drehkreuz, wie alt du bist!",
    "promptEn": "How old are you?",
    "options": [
     "I'm from Cork.",
@@ -364,6 +364,72 @@
     "deWord": "Auf Deutsch: Lasst uns raus!"
    },
    "grounding": "u02 Chant (SB p. 18 ex. 9: „We are in. They are out. We're not happy. Let us out.\") · g1u02.w.us"
+  },
+  {
+   "id": "g1.paint.ch02.qf.papagei.b1",
+   "use": "quickfire",
+   "kind": "choice",
+   "form": "state-it",
+   "exercises": [
+    "g1u02.s.prepositions-place",
+    "g1u02.w.car"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Der Papagei hüpft ums Auto und bleibt vorne sitzen."
+   },
+   "storyDe": "Da drüben, der Papagei! Sag, wo er jetzt sitzt!",
+   "promptEn": "There's a parrot over there. Where?",
+   "options": [
+    "It's in front of the car.",
+    "It's behind the car.",
+    "It's on the car."
+   ],
+   "answer": "It's in front of the car.",
+   "skins": [
+    "papagei"
+   ],
+   "phases": [
+    "p1"
+   ],
+   "hints": {
+    "deDesc": "Nicht hinten, nicht oben: du siehst ihn ganz.",
+    "deWord": "Auf Deutsch: Er ist vor dem Auto."
+   },
+   "grounding": "u02 prepositions of place · SB p. 19 ex. 10 (Papagei × Auto, sechs Panels) · WB p. 15 ex. 3 Fernglas-Form („There's a monkey over there. — Where?\") · Endstation der Bühne p1-buehne-papagei (in front of)"
+  },
+  {
+   "id": "g1.paint.ch02.qf.buddy.b1",
+   "use": "quickfire",
+   "kind": "choice",
+   "form": "state-it",
+   "exercises": [
+    "g1u02.s.prepositions-place",
+    "g1u02.w.tree"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Buddy trabt um den Baum und verschwindet dahinter."
+   },
+   "storyDe": "Da ist Buddy! Sag, wo er jetzt steckt!",
+   "promptEn": "There's a dog over there. Where?",
+   "options": [
+    "It's behind the tree.",
+    "It's in front of the tree.",
+    "It's next to the tree."
+   ],
+   "answer": "It's behind the tree.",
+   "skins": [
+    "buddy"
+   ],
+   "phases": [
+    "p1"
+   ],
+   "hints": {
+    "deDesc": "Du siehst nur seinen Schwanz hinter dem Stamm.",
+    "deWord": "Auf Deutsch: Er ist hinter dem Baum."
+   },
+   "grounding": "u02 prepositions of place · SB p. 16 Story (Buddy, „Where's the parrot?\") · WB p. 15 ex. 3 Fernglas-Form · Endstation der Bühne p1-buehne-hund (behind)"
   },
   {
    "id": "g1.paint.ch02.rsc.fenn.r1",

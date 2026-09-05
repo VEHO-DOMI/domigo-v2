@@ -1,64 +1,80 @@
-# ch02 · PENDING — Kapitel-Neuheiten als DATEN + Pflichten späterer Bahnen (L2-P1, 2026-09-03)
+# ch02 · PENDING — Kapitel-Neuheiten als DATEN + Pflichten späterer Bahnen (L2-P1v2, 2026-09-05; ersetzt den Stand vom 03.09.)
 
-_Was hier steht, ist im Level NOCH NICHT verdrahtet: zod strippt unbekannte Felder still, und eine Rolle,
-die der Motor nicht kennt, wäre ein 500 im gelieferten Kapitel. Die M-Bahnen (L2-M-a, L2-M-b) bauen die
-Rollen/Felder, die G2-/A-Bahn trägt die Daten dann ins Level. Rahmen: `RAHMEN_LEVELWELLE_2026-09-02.md` §5;
-Motor-Schnitt: `SESSION-PROMPTS/LEVELWELLE/M_ENTWURF_L2_2026-09-02.md`._
+_Was hier steht, ist im Level NOCH NICHT verdrahtet oder noch nicht gebaut. Die M-Bahn L2-M-a (#411) hat
+die Signatur-Mechanik geliefert (Bühne `scene.stage`, hang-Kante im Reach-Modell, `match`); p1 v2 benutzt
+sie. Was bleibt, gehört L2-G2 (Räume), L2-T2 (Karten), L2-S (Copy) oder L2-M-b (Motor-Rest). Rahmen:
+`RAHMEN_LEVELWELLE_2026-09-02.md` §5; Signatur: `LEVELWELLE/KAPITEL_SIGNATUR_L2_2026-09-03.md`._
 
-## 1 · Mini-Szenen-Bühne (Rolle `scene.stage`, L2-M-b) — Kokis Riff, die Signatur des Kapitels
+## 1 · Die Tier-Bühne — GEBAUT in p1 v2, und was G2 daraus lernt
 
-Heute stehen an beiden Bühnen `drained`-Stand-ins (`p1-hund`, `p1-pinguin`): Name → Farbe (`restore`).
-Nach L2-M-b werden sie zu Bühnen-Darstellern; die Props sind heute Gitter-Geometrie.
+Zwei Bühnen stehen in p1 (`p1-buehne-papagei` Papagei × Auto auf dem Affenhaus-Dach, `p1-buehne-buddy`
+Buddy × Baum am Boulevard). **Drei Regeln, am Motor gemessen (05.09.):**
 
-| Bühne | Entity (heute) | Darsteller-Skin | Prop (Gitter) | Stationen (dc,dr relativ zum Prop-Anker) | Ticks/Station | hebt | Karte |
+1. **Eine Bühne läuft ab dem Spawn los** (`entities.ts#stepEntities`, `e.timer` ab Takt 0). Sie muss
+   deshalb `hidden:true` spawnen und per **Link** enthüllt werden, wenn das Kind daneben steht — sonst sieht
+   es nur die Endpose. Nur `on:"redeemed"` (gelöstes Wesen) und `on:"opened"` (befreiter Käfig, gelöste Tür)
+   feuern (`sim.ts#applyLinks`); `collected`/`pressed` stehen im Typ, feuern aber nie (D-823).
+2. **Props sind Bilder, keine Geometrie** (`propSkin`, Zeichen-Tiefe 7; Darsteller davor/dahinter). Die
+   Stationen dürfen in der Luft liegen (Buddy „on the tree" = (0,−4) ohne Krone); nur die ENDSTATION muss
+   stehbar und erreichbar sein (Gesetz `stage-script` + `entity-reachable`, Fund 13 von #411).
+3. **Ein Darsteller-Skin hat EINE Stimme** (Gesetz 14a): der Bühnen-Hund heisst `buddy`, damit der graue
+   `hund` (restore, name-it) in p2 weiter binden kann.
+
+| Bühne | Raum | Darsteller | Prop | Stationen (dc,dr,z) | Endstation | Link | Karte (T2 / Walk-Minimum) |
 |---|---|---|---|---|---|---|---|
-| 1 | `p1-hund` (21,17) | `hund` | Baum: Stamm (24,16–17), Krone r14 c22–26 · Anker (24,17) | behind (−2,0) → on (0,−4 = Krone) → under (0,−1 unter der Krone, c23) → in front of (+2,0) | 90 | `quickfire` am Skin `hund` | Ortswort-Schnellschirm („Where is the dog?") |
-| 2 | `p1-pinguin` (51,17) | `pinguin` | Bus: Block r16–17 c52–54 · Anker (53,17) | next to (−2,0) → on (0,−2) → in front of (+2,0) → behind (+2,−1 hinter dem Block, Tiefe z) | 90 | `quickfire` am Skin `pinguin` | Ortswort-Schnellschirm („Where is the penguin?") |
+| Papagei × Auto | p1 (18,10) | `papagei` | `auto` | next to (−2,0,f) → in (0,−1,b) → on (0,−2,f) → behind (+1,0,b) → **in front of (0,0,f)** | (18,10) | `p1-cage2` opened | `qf.papagei.b1` ✓ |
+| Buddy × Baum | p1 (52,17) | `buddy` | `baum` | next to (−2,0,f) → in front of (0,0,f) → on (0,−4,f) → **behind (0,0,b)** | (52,17) | `p1-pinguin` redeemed | `qf.buddy.b1` ✓ |
+| Frosch × Bus | p2 (G2) | `frosch` | `bus` | under (0,+0?) → in front of → on → **next to** — G2 schneidet die Zellen | — | Ortswörter-Seite? nein: `redeemed` des grauen Hundes `p2-hund` | T2 |
+| Giraffe × Baum | p3 (G2) | `giraffe` | `baum` | on → behind → **next to** (WB 18) | — | `opened` des Stein-Käfigs | T2 |
 
-Gesetz (M-b): „Bühne braucht Karte" — jede `scene.stage` hat ≥1 gebundene quickfire-Karte (T2 liefert sie).
-p2 (Affe × Auto) und p3 (Giraffe × Baum) trägt L2-G2 hier nach.
+**Heimlauf (die Weltreaktion NACH der Antwort — „das Tier geht heim") ist NICHT in M-a:** die Bühne
+läuft VOR der Frage. Die falschen Gehege von p2 sind deshalb Tableau + Schild-Richten-Karten; der
+Heimlauf (zweite Stationenliste, läuft nach `redeemed`) ist ein Antrag an L2-M-b.
 
-## 2 · Hangeln — heute optional, Pflicht erst nach L2-M-a
+## 2 · Hangeln — GEBAUT: drei Griffe à 7 Zeilen
 
-Das Erreichbarkeits-Modell (`level.ts` `reachFrom`, `JUMP_UP 4`) kennt `hang` nicht. Jede Mauer >4 Zeilen
-wäre für die Gesetze unerreichbar. Deshalb ist die Kassenmauer (c8–10, r14–17) genau 4 hoch: Halte-Sprung
-reicht, der Griff an der Kante wird gezeigt, nicht verlangt. **Pflicht-Hang-Stellen** (nach der hang-Kante im
-Modell): Kassenmauer auf 5–6 Zeilen heben · p2 Hang-Traversen zwischen den Gehegen (L2-G2 plant sie als
-Komfort und hebt sie nach M-a).
+Das Reach-Modell segnet Mauern auf dem Boden mit `hang` bis **7 Zeilen** (8 = rot); die Engine trägt
+ohne Griff 6, mit Griff 8 (Sonde #411). **7 ist die einzige Höhe, die legal ist UND den Griff erzwingt**
+— bei 5–6 springt das Kind hinauf, ohne je zu greifen. p1 v2: Kassenmauer c8 (Boulevard → Dach),
+Voliere c28 (Dach → Krone), Faust-Turm c55 (`essential`). G2 baut p2-Traversen und den Giraffen-Turm
+in p3 nach derselben Zahl. Abstand Modell↔Engine beim Hangeln: EINE Zeile (D-822).
 
 ## 3 · Faust (`punch`) — vergeben in p1, verlangt erst in der Arena
 
-`p1-faust` (57,14): `powerup` `grants punch` `essential true` `gabeDe "die Faust"`. Der Gabe-Text der Hülle
-ist heute hart (`PaintGame.tsx` „Das Buch schenkt dir die FAUST!"); L2-M-a lässt ihn `gabeDe` lesen. Vorschlag
-Gabe-Text: „Fibel legt dir die Faust in die Hand: wirf sie — sie kommt zurück." Freiwilliger Erst-Einsatz:
-Käfig-Zweischlag (`cageHit`); Pflicht-Einsatz: Deflect der Stab-Platten in der Arena (doc 44 §4 ch02).
+`p1-faust` (56,10) auf dem Faust-Turm: `powerup` `grants punch` `essential true` `gabeDe "die Faust"`.
+Der Gabe-Beat liest `gabeDe` seit #411. Freiwilliger Erst-Einsatz: Käfig-Zweischlag; Pflicht-Einsatz:
+Deflect in der Arena (M-b, Löwe).
 
-## 4 · Neck-Käfig #5 „das rote Auto" (Voliere p1) — Geometrie, kein Entity
+## 4 · Neck-Käfig #5 (Voliere p1) — Geometrie, kein Entity; Insasse OFFEN
 
-Nische c37–39 r6–8 im `#`-Rahmen c36–40 r5–9, unerreichbar sichtbar. Kunst-Zeit: Käfig + rotes Auto als
-Dekor-Blatt. **ch03 (Ring-Schwung) macht die Nische erreichbar und setzt das `cage`-Entity** (Antrag L2 R-a,
-angenommen 02.09.; Querverweis in `FRAGE_L2_2026-09-02.md`). Neck-Käfig #4 (Baum-Setzling, p3) analog — L2-G2.
+Nische c29–32 r6–8 im Volieren-Block c28–33 r4–17, unerreichbar sichtbar. **Das rote Auto ist seit p1 v2
+der Prop der Papagei-Bühne (SB 19)** — der Insasse des Neck-Käfigs ist damit neu zu vergeben (Kokis
+Entscheid; Vorschlag des Architekten: die Katze, SB 19/WB 20). ch03 (Ring-Schwung) macht die Nische
+erreichbar und setzt das `cage`-Entity. Neck-Käfig #4 (Baum-Setzling, p3) analog — L2-G2.
 
-## 5 · Sammel-Skin `feather` (R246) — im Level (L0 N1)
+## 5 · Sammel-Skin `feather` (R246) — im Level
 
-`collectSkin: "feather"` steht im Level; Platzhalter-Glyph „FEA" bis Kunst-Zeit (`pb-collect_feather`).
-Tierspuren sind Boden-Dekor (Kunst-Zeit), keine Sammelobjekte; `clothNounDe` „Tierspuren" bleibt L0s Vorgabe
-(ch02 hat keine `cloth`-Fundstücke — falls ch02 später welche bekommt, ist das Nomen schon da).
+`collectSkin: "feather"`; Platzhalter-Glyph bis Kunst-Zeit. Tierspuren sind Boden-Dekor (Kunst-Zeit).
+**Die Federn sind die Spur des Papageis** (Kokis Entscheid 2): sie führen vom Tor über das Dach zur
+Voliere und enden am Boulevard AUF Buddy (52,16) — die Endstation der Buddy-Bühne.
 
 ## 6 · Pflichten für L2-G2 (Räume p2/p3/p4/p9)
 
+- `p2-regel-ortswoerter` (10,21) und `p2-hund` (20,21) stehen schon im p2-Gerüst (aus p1 v2 gezogen) —
+  VERSETZEN, nicht neu anlegen (T1-Karte `enc.hund.r1` bindet an `hund`/p2).
 - `tipsTotal` 2 → 4 (Regelseiten p2 „to be: Kurzformen", p3 „he / she / it / they"), je VOR ihrer Aufgabe (D-785).
-- p2: Klecks-Tür `price 10` ⇒ ≥10 erreichbare `*` VOR der Tür (Gesetz `door-price`); `bonus.budgetSec 30`
-  (steht schon im Gerüst; Grund: 12 Blasen, keine Fundstücke — 30 s + 2 s Gnade hält die Eile-Fiktion, R251).
+- p2: Klecks-Tür `price 10` ⇒ ≥10 erreichbare `*` VOR der Tür (`door-price`); `bonus.budgetSec 30` steht.
 - p9: 12 erreichbare `*`.
-- Je Feldraum genau EINE Tinten-Querung an Kokis Anker-Stelle, `C` auf der `near`-Bank (`checkpoint-count`/
-  `-placement` laufen auch im Entwurf): p2 Flamingo-Teich (vor Fenn) · p3 Tinten-Tal (vor dem Giraffen-Turm).
-- Fenn: Käfig + `classmate`-Entity mit Roam-Zone stehen im Gerüst (`p2-cage-fenn`, `p2-fenn`) — nur versetzen.
-- Löwe: Gerüst-Wächter `waechter` Tier M → Skin `loewe`; `locomotion:"prowl"`, `projectileSkin`,
-  `GUARDIAN_BOARDS.loewe` sind L2-M-b — bis dahin fliegt der Platzhalter (Tafel-Choreografie).
-- Wasserlinie (p2): statisches `w`-Band; Ventil-Tür (`door.trigger kind:"valve"`) + `phase.water` sind L2-M-b.
-- Dossiers p2/p3/p9/arena: die Gerüst-Stubs in diesem Ordner durch volle Dossiers ersetzen.
+- Je Feldraum genau EINE Tinten-Querung an Kokis Anker-Stelle, `C` auf der `near`-Bank: p2 Flamingo-Teich
+  (statisches `w`-Band; Wasserlinie = M-b) · p3 Tinten-Tal (vor dem Giraffen-Turm).
+- Fenn: Käfig + `classmate` stehen im Gerüst — nur versetzen.
+- Löwe: Gerüst-Wächter `waechter` Tier M bleibt (Bestands-Rig fliegt); `loewe`, `prowl`, `projectileSkin`,
+  `GUARDIAN_BOARDS.loewe` = L2-M-b. Die fünf Arena-Karten bleiben im Sidecar `pending-tasks.md`, bis M-b die
+  Kreide-Fläche baut (eine mistake-Karte ohne Beweis wäre unlösbar).
+- Zoo-Zug als Ausfahrt p2 (`platform.move` + `door.trigger` Skin `schaffner`, Türserie Ticket-Fragen).
+- Dossiers p2/p3/p9/arena: Stubs durch volle Dossiers ersetzen; `claims.json` mit Seitenzahlen im `note` (R256).
 
 ## 7 · Beobachtet, nicht meins (Programm-Befunde, R253: niedrigste Nummer führt)
 
-D-867 `links.action` ungelesen · D-891 Glyph `U` tot · D-892 kein Wächter-„redeemed" · D-893 Blasen ankern am Kind.
+D-867 `links.action` ungelesen · D-823 `links.on` collected/pressed feuern nie (Schwester) · D-891 Glyph `U`
+tot · D-892 kein Wächter-„redeemed" · D-893 Blasen ankern am Kind.
