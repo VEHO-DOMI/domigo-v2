@@ -207,6 +207,11 @@ interface OverlayState {
   /** R5-C1: the one teaching card names the one cage it fired at. */
   cagehint?: { captiveDe: string };
   bonusend?: { got: number; total: number; timeout: boolean; secsLeft: number; phrase: PhraseSlot[][] };
+  /** grant: WAS das Buch schenkt, als deutsche Nominalphrase MIT Artikel
+   *  („die Faust", „der Ring-Schwung") — aus `params.gabeDe` des Wesens.
+   *  L2-M-a · M5: der Satz stand hier hart und nannte fuer jedes Kapitel die
+   *  Faust. Fehlt das Feld, faellt die Karte DEKLARIERT auf „die Faust". */
+  grant?: string;
   /** bonuspay: what THIS door costs, read from its own params (PB-R1 · R3-2). */
   price?: number;
   /** tip: the Regel-Seite's own rule, carried from the level (PK-R3b · R3-16).
@@ -503,6 +508,11 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
    *  and found-count. The remount consumes it: the child returns to the spot
    *  (and wallet) they left with, not to the phase start with an empty hand. */
   const bonusReturnRef = useRef<{ phaseId: string; spawn: { c: number; r: number }; purse: number; found: number } | null>(null);
+  /** R235 · L2-M-a: die Kleckskammer wird EINMAL betreten. Gesetzt, wenn der
+   *  Lauf endet — durch die Uhr ODER durch den Ausgang —, gelesen von der Sim
+   *  an der Klecks-Tuer. Ein Kapitel hat genau eine `level.bonus`-Phase, darum
+   *  genuegt ein Ja/Nein (dieselbe Form wie `cageHintShownRef`). */
+  const bonusRunDoneRef = useRef(false);
   /** R5-A2: letter CELLS consumed per phase — a remount must not respawn them
    *  into double-collectability. Same outlives-a-mount contract as the refs
    *  below. */
@@ -1060,6 +1070,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
         reducedMotion,
         grantedAbilities: () => abilitiesRef.current,
         freedCageIds: () => freedRef.current,
+        bonusRunDone: () => bonusRunDoneRef.current,
         cageHintShown: () => cageHintShownRef.current,
         arenaBriefShown: () => arenaBriefShownRef.current,
         collectedPickupIds: () => [...tipsTakenRef.current.map((t) => t.id), ...booksTakenRef.current, ...clothIdsRef.current],
@@ -1203,9 +1214,9 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
             }
             openCard({ req, item, card: "task", attempts: 0, typed: "", align, wash });
           },
-          onPowerup: (grants) => {
+          onPowerup: (grants, gabeDe) => {
             if (!abilitiesRef.current.includes(grants)) abilitiesRef.current = [...abilitiesRef.current, grants];
-            openCard({ req: { use: "quickfire", ctx: { type: "ceremony", beat: "grant" } }, item: null, card: "grant", attempts: 0, typed: "", align: "center" });
+            openCard({ req: { use: "quickfire", ctx: { type: "ceremony", beat: "grant" } }, item: null, card: "grant", attempts: 0, typed: "", align: "center", grant: gabeDe });
           },
           onCageHint: (cageId) => {
             // PB-F3 · F2-8: the first time the child stands next to a cage the
@@ -1328,6 +1339,11 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
               phrase: bs?.phrase ?? [],
             },
           });
+          // R235 · L2-M-a: DIESER Zweig ist beide Enden des einen Laufs — die
+          // Uhr (`bonus-timeout`) und der Ausgang. Ab hier ist die Kammer zu;
+          // die naechste Beruehrung der Klecks-Tuer bekommt einen Satz statt
+          // einer Rechnung. Die Rueckerstattung bleibt unberuehrt (Rahmen §3).
+          bonusRunDoneRef.current = true;
           // R5-A2: mountPhase consumes the return ticket (spawn + wallet)
           target = bonusReturnRef.current?.phaseId ?? level.phases[0]!.id;
         }
@@ -2440,7 +2456,9 @@ function Overlay({
             name goes, because no chapter has introduced her yet.
             Rebase-Merge: C1s Wortlaut (kein „Fibel") in D1s Rang — ein
             Schlüssel je Karte, der Rest leise. */}
-        <Key>Das Buch schenkt dir die <KeyBit>FAUST</KeyBit>!</Key>
+        {/* L2-M-a · M5: der Artikel steckt IM Feld („die Faust"), darum steht
+            er nicht mehr davor — sonst laese ch03 „die der Ring-Schwung". */}
+        <Key>Das Buch schenkt dir <KeyBit>{o.grant ?? "die Faust"}</KeyBit>!</Key>
         {/* R5-W4 · H2: die Zeile nannte „Knoten" — ein Wort, das es seit R50
             nicht mehr gibt. Nachgeprüft, dass diese Karte in ch01 gar nicht
             feuern KANN (kein `role:"powerup"` und kein `grants` im Level,

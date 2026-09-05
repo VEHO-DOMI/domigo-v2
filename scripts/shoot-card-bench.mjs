@@ -140,6 +140,7 @@ export const SURFACES = [
   "order",
   "mistake",
   "memory",
+  "match",
   "typed",
   "spell",
   "choice-hints",

@@ -1750,3 +1750,36 @@ Liste aufgeht.
 **Warum.** Der Kopf von `paint-chapters.mjs` hat genau diese Klasse schon einmal bezahlt und benannt: „Acht Skripte, acht Meinungen darüber, was ein Kapitel ist — und keines davon hätte je bemerkt, dass ein zweites existiert.“ Drei Tore wurden damals umgestellt, dieses nicht. Ein Tor, das seine eigene Welt-Sicht mitbringt, erbt keine einzige Lehre, die an der geteilten Sicht gelernt wird — hier die Entwurfs-Doktrin und die Ratsche aus D-792, beide fertig vorhanden und beide ungenutzt.
 
 **Der Check, der es künftig fängt.** Für dieses Tor: es fragt jetzt `paintChapters()`, und `orphanTaskFiles()` steht daneben, damit der Umbau nicht eine Blindheit gegen eine andere tauscht. Allgemein, und das ist der eigentliche Ertrag: **wer ein neues `scripts/check-*.mjs` schreibt oder ein altes anfasst, prüft zuerst `git grep -l paint-chapters scripts/` — steht das Tor nicht auf der Liste und liest es Kapitel-Dateien, ist das der Befund, bevor irgendein Gesetz geschrieben wird.** Erkennungszeichen im Diff: ein `readdirSync` über `content/corpus` oder ein fest verdrahteter `chNN`-Pfad.
+
+
+**L2-M-a (2026-09-05): Ein Prüfstand, dessen Ergebniszeile das KOMMANDO enthält, erfindet rote Tore.** *(Motor-Bahn ch02.)*
+
+**Was passierte.** Die Vorher-Batterie schrieb je Zeile `<exit>\t<kommando>` in eine Sammel-Datei. Zwei der 69 CI-Kommandos sind mehrzeilige `run: |`-Blöcke; ihre Zeilenumbrüche landeten damit MITTEN in der Ergebnis-Datei. Die Auswertung (`awk -F'\t'`) las die Fortsetzungszeilen als eigene Ergebnisse und meldete vierzehn rote Tore — darunter `check-ci-gates`, `check-audio` und `shoot-card-bench`. Einzeln nachgefahren war jedes davon grün. Die Bahn hätte fast eine Stunde damit verbracht, Fehler zu suchen, die es nicht gab.
+
+**Warum.** Ein Ausgabeformat, das ein FREMDES Feld als Schlüssel benutzt, hält nur, solange dieses Feld die Trennzeichen des Formats nicht enthält. Ein Kommando aus einer YAML-Datei kann alles enthalten. Dieselbe Klasse wie „Kommentar-Zahlen driften": die Datei sah vollständig aus, und niemand zählte ihre Zeilen (81 statt 72 — die Zahl stand da und wurde überlesen).
+
+**Der Check, der es künftig fängt.** Die Ergebniszeile ist INDEX-geschlüsselt (`<i> <exit>`), das Kommando steht nur im Protokoll; und die Auswertung vergleicht die Zeilenzahl der Ergebnis-Datei mit der Zahl der bestellten Kommandos, bevor sie irgendetwas über rot oder grün sagt.
+
+**L2-M-a (2026-09-05): Die CI-Datei enthält Kommandos, die man lokal nicht fahren DARF — einer davon ist ein flacher Fetch.** *(Motor-Bahn ch02.)*
+
+**Was passierte.** Dieselbe Batterie zog ihre Liste aus `ci.yml` und fuhr sie vollständig. Darin steht `git fetch --no-tags --depth=1 origin "${{ github.base_ref }}"`. Lokal ist `${{ github.base_ref }}` kein Ref, der Befehl scheiterte — aber nur deshalb. Ein FLACHER Fetch auf diesen Klon hätte `.git/shallow` angelegt und, wie am 04.09. bezahlt, jede `git diff main...branch`-Messung in ALLEN Worktrees des Hauses zerstört; zwölf Sitzungen teilen ihn.
+
+**Warum.** Die Regel „zieh die Tor-Liste aus `ci.yml`, nie aus dem Gedächtnis" (L2-P1) ist richtig und unvollständig: die Datei beschreibt einen CI-LÄUFER, nicht eine Arbeitskopie. Ihre Umgebungs-Aufbauschritte (Fetch-Tiefe, `apt-get`, Cache) sind keine Tore und gehören nicht in eine lokale Batterie.
+
+**Der Check, der es künftig fängt.** Die Extraktion nimmt nur die EINZEILIGEN `run:`-Kommandos; die mehrzeiligen `run: |`-Blöcke werden ausgelassen und im Report namentlich als ausgelassen benannt. Kontrolle danach: `git rev-parse --is-shallow-repository` muss `false` sagen.
+
+**L2-M-a (2026-09-05): Eine Sonde, die fragt „kommt das Kind hinauf?", schreibt dem neuen Verb gut, was der alte Sprung schon konnte.** *(Motor-Bahn ch02.)*
+
+**Was passierte.** Die Hangel-Sonde maß, welche Mauer das Kind MIT `hang` erklimmt: acht Zeilen. Daraus wäre `HANG_ROWS = 4` geworden. Die Eichung gegen eine bekannte Größe zeigte den Fehler: ein reiner Halte-Sprung hebt die Füße schon 6,06 Zeilen, und bei den Mauern 4 bis 6 hat das Kind kein einziges Mal gegriffen (Griffe = 0). Das Hangeln kauft in Wahrheit ZWEI Zeilen, nicht vier — die Sonde hätte das Modell doppelt so weit versprechen lassen, wie die Fähigkeit trägt, und genau das verbietet die Hüllkurven-Regel.
+
+**Warum.** Eine Messung an einem Verb ist nur dann eine Messung DES Verbs, wenn sie gegen den Zustand OHNE das Verb läuft. Verwandt mit „ein Tamper, der nicht beisst, ist zuerst ein Verdacht gegen den Tamper" — hier war es ein Lauf, der zu früh grün wurde.
+
+**Der Check, der es künftig fängt.** Die Sonde misst grundsätzlich als DIFFERENZ (mit und ohne die Fähigkeit) und druckt ihre Eich-Größe — den reinen Sprung — in dieselbe Ausgabe. Wer die Zahl liest, sieht sofort, ob das Verb überhaupt beteiligt war (die Spalte „Griffe").
+
+**L2-M-a (2026-09-05): EIN unpaariges gerades Anführungszeichen in einem KOMMENTAR macht ein Tor in einer anderen Datei rot.** *(Motor-Bahn ch02 — die deutsche-Anführungszeichen-Klasse in neuem Gewand.)*
+
+**Was passierte.** Ein neuer Kommentar in `sim.ts` schrieb `auf „was, wenn …verkauft".` — deutsches Zeichen auf, GERADES zu. `scripts/check-audio.mjs` Gesetz 9b zieht alle `"…"`-Literale der Datei mit einem Regex heraus, um zu prüfen, ob die Toast-Bindungen des Klang-Manifests noch auf eine Zeile passen. Das eine unpaarige Zeichen verschob die Paarbildung ALLER folgenden Literale; das Tor meldete daraufhin, `ink-splash` finde seine Zeile `/Platsch/` nicht mehr, und behauptete damit einen Copy-Umbau, den es nie gab. Der Kommentar stand dreihundert Zeilen von der gemeldeten Stelle entfernt.
+
+**Warum.** Die bekannte Regel heisst „deutsche Anführungszeichen nie in Code" und wird gelesen als „nicht in Zeichenketten". Sie gilt aber genauso in KOMMENTAREN, sobald irgendein Werkzeug die Datei als Text liest statt als Syntaxbaum — und mehrere Tore dieses Repos tun genau das. Ein gemischtes Paar (`„` … `"`) ist dabei schlimmer als zwei deutsche, weil es aussieht wie ein Paar.
+
+**Der Check, der es künftig fängt.** Zehn Sekunden, vor jedem Commit an einer Datei, die ein Tor als TEXT liest: `tr -cd '"' < datei | wc -c` muss GERADE sein. In diesem Repo schreibt man Zitate in Kommentaren als `»…«` — die Konvention stand schon in der Datei, sie wurde nur nicht befolgt.

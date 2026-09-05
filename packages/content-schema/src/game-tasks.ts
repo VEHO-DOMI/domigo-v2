@@ -116,6 +116,11 @@ export const TASK_FORMS = [
   /** ordne Paare zu: was gehört zu was (die Gedächtnis-Karte fragt eine
    *  Zuordnung, keine Benennung) */
   "pair-it",
+  /** L2-M-a · R249 · ordne die beiden OFFENEN Spalten einander zu — das Tier
+   *  links, seine Lage rechts. Der Unterschied zu `pair-it`: dort sind die
+   *  Karten verdeckt und die Frage ist das Gedächtnis; hier liegt alles offen
+   *  und die Frage ist die Zuordnung selbst (MORE! 1 Unit 2: „Where is it?"). */
+  "match-it",
 ] as const;
 export type TaskForm = (typeof TASK_FORMS)[number];
 
@@ -249,8 +254,32 @@ const RestoreTask = z.object({
   colour: z.string().min(1), // ∈ colourOptions
 });
 
+/**
+ * L2-M-a · R249 · DIE ZUORDNUNGS-KARTE (doc 41 §1: `match` debütiert im Feld
+ * von ch02). Zwei OFFENE Spalten, die das Kind einander zuordnet — „The monkey"
+ * ↔ „in the tree". Sie ist nicht die Gedächtnis-Karte: dort sind die Karten
+ * verdeckt und geprüft wird das Erinnern, hier liegt alles sichtbar und geprüft
+ * wird das Verstehen.
+ *
+ * ZWEI BIS VIER PAARE, und die Obergrenze ist kein Geschmack: ab fünf wird die
+ * rechte Spalte auf einem Kartenschirm zur Liste, und die Unit-2-Vorlagen des
+ * Buches (SB 19 sechs Panels, WB 17 der rote Bus) zeigen höchstens vier Dinge
+ * zugleich. Die Untergrenze zwei ist die kleinste Menge, bei der „zuordnen"
+ * überhaupt eine Handlung ist.
+ *
+ * Die Invarianten stehen in `taskInvariantErrors`: beide Spalten in sich
+ * eindeutig (sonst gibt es zwei richtige Antworten und keine davon ist falsch),
+ * und `left !== right` je Paar (ein Paar, das sich selbst zuordnet, prüft
+ * nichts).
+ */
+const MatchTask = z.object({
+  ...base,
+  kind: z.literal("match"),
+  pairs: z.array(z.object({ left: z.string().min(1), right: z.string().min(1) })).min(2).max(4),
+});
 const GameTaskUnion = z.discriminatedUnion("kind", [
   ChoiceTask, TypedTask, SpellTask, OrderTask, OddOneTask, MistakeTask, WheelTask, MemoryTask, RestoreTask,
+  MatchTask,
 ]);
 export type GameTaskV2 = z.infer<typeof GameTaskUnion>;
 export type TaskKind = GameTaskV2["kind"];
@@ -281,6 +310,9 @@ export const FORM_KINDS: Readonly<Record<TaskForm, readonly TaskKind[]>> = {
   // Ableitung, die für restore/wheel/oddone schon gilt).
   "fix-it": ["mistake"],
   "pair-it": ["memory"],
+  // L2-M-a: genau EINE Art, also faellt die feste Form aus `fixedFormOf` —
+  // dieselbe Ableitung wie bei fix-it/pair-it.
+  "match-it": ["match"],
 };
 
 /**
@@ -412,6 +444,18 @@ export function taskInvariantErrors(t: GameTaskV2): string[] {
       const as = t.pairs.map((p) => p.a);
       const bs = t.pairs.map((p) => p.b);
       if (dup(as) || dup(bs)) errs.push("memory pairs must be unique on both sides");
+      break;
+    }
+    case "match": {
+      // Beide Spalten in sich eindeutig — sonst hat eine Zuordnung zwei richtige
+      // Antworten und die Maschine nennt eine davon falsch.
+      const lefts = t.pairs.map((p) => p.left);
+      const rights = t.pairs.map((p) => p.right);
+      if (dup(lefts) || dup(rights)) errs.push("match pairs must be unique on both sides");
+      // Und ein Paar, das sich selbst zuordnet, prueft nichts.
+      if (t.pairs.some((p) => p.left.trim().toLowerCase() === p.right.trim().toLowerCase())) {
+        errs.push("a match pair may not have the same word on both sides");
+      }
       break;
     }
     case "restore":
@@ -608,6 +652,16 @@ export function renderTaskText(t: GameTaskV2): string {
       // now, and it is why a memory card can no longer be blind-solved — which
       // is the honest outcome for a recall game, not a defect to paper over.
       lines.push(`Spielfeld: ${t.pairs.length * 2} verdeckte Karten (${t.pairs.length} Paare)`);
+      break;
+    case "match":
+      // Die Zuordnungs-Karte IST blind loesbar — anders als die Gedaechtnis-
+      // Karte, deren Karten verdeckt liegen. Beide Spalten stehen also da, jede
+      // fuer sich gemischt und mit EIGENEM Seed: mit demselben Seed wuerden
+      // beide Spalten im Gleichschritt mischen und die Loesung waere an der
+      // Position ablesbar (dieselbe Klausel wie bei `restore`).
+      // Die PAARUNG steht hier nie — sie ist die Antwort.
+      lines.push("Links: " + seededShuffle(t.pairs.map((p) => p.left), t.id).join(" · "));
+      lines.push("Rechts: " + seededShuffle(t.pairs.map((p) => p.right), `${t.id}:right`).join(" · "));
       break;
     case "restore":
       // Both steps, in the order the card reveals them (the skin shows step 2

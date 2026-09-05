@@ -46,6 +46,36 @@ const PaintParams = z.record(z.string(), z.unknown()).check((ctx) => {
   // PK-R6 · D: `cage` is the classmate's pointer at the cage she was locked in.
   // The `classmate-pair` law resolves it by id, so a number or an empty string
   // would leave the chapter's one rescue pointing at nobody.
+  // L2-M-a: `stage` treibt ein Gesetz (`stage-script`) und den Renderer, also
+  // wird seine FORM hier geprueft. Dieses record ist offen — ein Tippfehler im
+  // Drehbuch kaeme sonst unbemerkt durch und der Darsteller stuende still.
+  if ("stage" in p) {
+    const st = p.stage;
+    if (typeof st !== "object" || st === null || Array.isArray(st)) {
+      ctx.issues.push({ code: "custom", input: p, path: ["stage"], message: "params.stage must be an object" });
+    } else {
+      const g = st as Record<string, unknown>;
+      if (typeof g.propSkin !== "string" || g.propSkin.trim() === "") {
+        ctx.issues.push({ code: "custom", input: p, path: ["stage", "propSkin"], message: "params.stage.propSkin must be a non-empty string" });
+      }
+      if (!Array.isArray(g.stations) || (g.stations as unknown[]).length < 2) {
+        ctx.issues.push({ code: "custom", input: p, path: ["stage", "stations"], message: "params.stage.stations must list at least two stations" });
+      } else {
+        for (const [i, raw] of (g.stations as unknown[]).entries()) {
+          const s = raw as Record<string, unknown> | null;
+          const ok = typeof raw === "object" && s !== null && !Array.isArray(raw)
+            && Number.isInteger(s.dc) && Number.isInteger(s.dr)
+            && (s.z === undefined || s.z === "behind" || s.z === "front");
+          if (!ok) {
+            ctx.issues.push({ code: "custom", input: p, path: ["stage", "stations", i], message: "a station is { dc, dr, z?: \"behind\" | \"front\" } with whole-cell offsets" });
+          }
+        }
+      }
+      if ("ticksPerStation" in g && (!Number.isInteger(g.ticksPerStation) || (g.ticksPerStation as number) <= 0)) {
+        ctx.issues.push({ code: "custom", input: p, path: ["stage", "ticksPerStation"], message: "params.stage.ticksPerStation must be a whole number ≥ 1" });
+      }
+    }
+  }
   if ("cage" in p && (typeof p.cage !== "string" || p.cage.trim() === "")) {
     ctx.issues.push({ code: "custom", input: p, path: ["cage"], message: "params.cage must be a non-empty entity id" });
   }

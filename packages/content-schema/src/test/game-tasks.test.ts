@@ -29,8 +29,11 @@ const MI = (over: Record<string, unknown> = {}) => ({ id: "t1", use: "boss", sti
 const ME = (over: Record<string, unknown> = {}) => ({ id: "t1", use: "boss", stimulus: { type: "entity", showsDe: "schreibt drei Zahlen" }, skins: ["tafel"], evidence: ["3", "7", "9"], storyDe: "Paare.", kind: "memory", pairs: [{ a: "3", b: "three" }, { a: "7", b: "seven" }, { a: "9", b: "nine" }], ...over });
 const TY = (over: Record<string, unknown> = {}) => ({ id: "t1", use: "boss", stimulus: { type: "text" }, storyDe: "Grüße.", kind: "typed", answer: "hello", ...over });
 
+/** L2-M-a: die Zuordnungs-Karte. Zwei OFFENE Spalten, 2-4 Paare. */
+const MA = (over: Record<string, unknown> = {}) => ({ id: "t1", use: "encounter", form: "match-it", stimulus: { type: "entity", showsDe: "Sie halten Schilder hoch" }, skins: ["erdmaennchen"], storyDe: "Bring die Schilder zurück!", kind: "match", pairs: [{ left: "The monkey", right: "in the tree" }, { left: "The penguin", right: "in the water" }], ...over });
+
 test("gameTasks@2 — every kind's valid shape parses", () => {
-  for (const t of [CH(), WH(), SP(), OR(), OD(), MI(), ME(), TY()]) {
+  for (const t of [CH(), WH(), SP(), OR(), OD(), MI(), ME(), TY(), MA()]) {
     const r = GameTaskV2.safeParse(t);
     assert.equal(r.success, true, `${(t as { kind: string }).kind} should parse: ${r.success ? "" : JSON.stringify(r.error.issues)}`);
   }
@@ -50,6 +53,13 @@ test("gameTasks@2 — cross-field invariants fire (red-first tamper block)", () 
   red(GameTaskV2.safeParse(MI({ fix: { mode: "replace" } })), "mistake replace without correction");
   red(GameTaskV2.safeParse(MI({ fix: { mode: "remove", correction: "x" } })), "mistake remove with a stray correction");
   red(GameTaskV2.safeParse(ME({ pairs: [{ a: "3", b: "three" }, { a: "3", b: "seven" }, { a: "9", b: "nine" }] })), "memory duplicate on a");
+  // L2-M-a: die zwei Invarianten der Zuordnungs-Karte. Ohne diese Zeilen waere
+  // ein Tamper, der `taskInvariantErrors` die beiden `errs.push` nimmt, in der
+  // ganzen Batterie GRUEN geblieben — der blinde Leser hat genau das gefunden.
+  red(GameTaskV2.safeParse(MA({ pairs: [{ left: "The monkey", right: "in the tree" }, { left: "The monkey", right: "in the water" }] })), "match duplicate on the left");
+  red(GameTaskV2.safeParse(MA({ pairs: [{ left: "The monkey", right: "in the tree" }, { left: "The penguin", right: "in the tree" }] })), "match duplicate on the right");
+  red(GameTaskV2.safeParse(MA({ pairs: [{ left: "tree", right: "Tree" }, { left: "The penguin", right: "in the water" }] })), "a match pair that answers itself");
+  red(GameTaskV2.safeParse(MA({ pairs: [{ left: "a", right: "b" }, { left: "c", right: "d" }, { left: "e", right: "f" }, { left: "g", right: "h" }, { left: "i", right: "j" }] })), "match with five pairs");
 });
 
 // a restore fixture, needed by the form law below (the shipped battery has nine

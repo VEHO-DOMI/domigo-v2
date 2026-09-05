@@ -281,6 +281,7 @@ function offeredOf(t) {
     case "oddone": return t.items;
     case "mistake": return [...t.sentence, ...(t.correctionOptions ?? [])];
     case "memory": return t.pairs.flatMap((p) => [p.a, p.b]);
+    case "match": return t.pairs.flatMap((p) => [p.left, p.right]);
     case "restore": return [...t.nameOptions, ...t.colourOptions];
     default: return [];
   }
@@ -306,6 +307,12 @@ function decidingWordsOf(t) {
     case "mistake": return only(t.fix.correction ?? "", (t.correctionOptions ?? []).filter((o) => o !== t.fix.correction));
     // every English word on a memory board is half of a pair the child must find
     case "memory": return [...new Set(t.pairs.flatMap((p) => contentToks(p.b)))];
+    // L2-M-a: bei der Zuordnungs-Karte ist die RECHTE Spalte die Antwort — die
+    // linke ist die Frage und darf in der deutschen Zeile vorkommen, genau wie
+    // der Gegenstand einer choice-Karte. („Der Affe wirft Kokosnuesse" ist
+    // erlaubt; „Der Affe sitzt IM BAUM" waere der Verrat.) Dieselbe Lesart wie
+    // bei `memory`, wo auch nur die zu findende Haelfte zaehlt.
+    case "match": return [...new Set(t.pairs.flatMap((p) => contentToks(p.right)))];
     case "restore": return [
       ...only(t.name, t.nameOptions.filter((o) => o !== t.name)),
       ...only(t.colour, t.colourOptions.filter((o) => o !== t.colour)),
@@ -336,6 +343,12 @@ function boardAllowanceOf(t) {
     case "order": return t.orderedChips;
     case "mistake": return t.sentence;
     case "memory": return t.pairs.map((p) => p.a);
+    // L2-M-a: ausdruecklich, obwohl es der Vorgabe entspricht — `match` ist
+    // KEINE Beweis-Art (die Kreide des Waechters zeigt sie nicht), also gilt
+    // dieselbe Erlaubnis wie fuer choice/typed/spell/wheel/restore. Die Zeile
+    // steht da, damit die naechste Bahn die Entscheidung sieht statt sie aus
+    // einem `default` erraten zu muessen.
+    case "match": return offeredOf(t);
     default: return offeredOf(t);
   }
 }
@@ -624,6 +637,11 @@ function checkItem(chId, t) {
     case "oddone": t.items.forEach((i) => checkEn(w, i)); break;
     case "mistake": t.sentence.forEach((s) => checkEn(w, s)); checkEn(w, t.fix.correction); (t.correctionOptions ?? []).forEach((o) => checkEn(w, o)); break;
     case "memory": t.pairs.forEach((p) => checkEn(w, p.b)); break;
+    // L2-M-a: BEIDE Spalten sind Englisch und werden beide geerdet. ch02s
+    // Vertrag ist Englisch↔Englisch („The monkey" ↔ „in the tree").
+    // ⚠ Der ch06-ENTWURF schlaegt Englisch↔Deutsch vor („park" ↔ „Park") — das
+    // waere hier rot und ist als Antrag gemeldet, nicht still zugelassen.
+    case "match": t.pairs.forEach((p) => { checkEn(w, p.left); checkEn(w, p.right); }); break;
     case "restore":
       t.nameOptions.forEach((o) => checkEn(w, o));
       t.colourOptions.forEach((o) => checkEn(w, o));
@@ -869,6 +887,14 @@ function checkAgainstLevel(file, level, items) {
         }
         const n = boundCards(items, "rescue", e.skin, ph.id).length;
         if (n < 1) covFail(at, `coverage: cage skin "${e.skin}" has no rescue card here`);
+      } else if (e.role === "scene.stage") {
+        // L2-M-a · R249 · DAS BUEHNEN-VERSPRECHEN. Die Buehne haelt an und
+        // fragt — ohne gebundene Karte faellt der Router in den ungebundenen
+        // quickfire-Pool, und ein Papagei, der eben auf ein Auto geklettert
+        // ist, fragt nach einer Zahl. Genau die Klasse „von jemand anderem
+        // beantwortet", gegen die es die Bindung (PB-F1) gibt.
+        const n = boundCards(items, "quickfire", e.skin, ph.id).length;
+        if (n < 1) covFail(at, `coverage: stage "${e.skin}" has no bound quickfire card in ${ph.id} — it acts out a place and then asks nothing`);
       } else if (e.role === "drained") {
         // PK-R6 · C1 · THE RESTORE-PAIR LAW. A drained object is a promise
         // rendered in grey: the child walks up, presses ↑, and the world owes
@@ -1002,6 +1028,9 @@ function checkNoTwins(file, items) {
     // R3-15: two restore cards offering the same four names ARE the same item —
     // the colour step is a second question about the same choice, not a new one.
     if (t.kind === "restore") return `restore:${[...t.nameOptions].sort().join("|")}`;
+    // L2-M-a: zwei Zuordnungs-Karten, die dieselben Dinge zuordnen lassen, sind
+    // dieselbe Aufgabe — auch wenn die rechte Spalte anders formuliert ist.
+    if (t.kind === "match") return `match:${t.pairs.map((p) => p.left).sort().join("|")}`;
     return null;
   };
   for (const t of items) {
@@ -1219,6 +1248,9 @@ if (process.argv.includes("--selftest")) {
   const honestOrder = card({ id: "boss.o1", kind: "order", storyDe: "Ordne ihre Zahlen!", orderedChips: ["nine", "ten", "eleven", "twelve"], evidence: seededShuffle(["nine", "ten", "eleven", "twelve"], "boss.o1") });
   const honestMistake = card({ kind: "mistake", sentence: ["This", "is", "a", "door", "."], errorIndex: 3, fix: { mode: "replace", correction: "board" }, correctionOptions: ["board", "floor", "chair"], evidence: ["This is a door."], stimulus: { type: "entity", showsDe: "Sie schreibt einen Satz über sich selbst" } });
   const honestMemory = card({ kind: "memory", storyDe: "Finde zu jeder Zahl das Wort!", pairs: [{ a: "3", b: "three" }, { a: "12", b: "twelve" }], evidence: ["3", "12"] });
+  // L2-M-a: die Zuordnungs-Karte. Die LINKE Spalte ist die Frage und darf in der
+  // deutschen Zeile stehen; die RECHTE ist die Antwort und darf es nie.
+  const honestMatch = card({ kind: "match", form: "match-it", storyDe: "Bring die Schilder zu ihren Tieren zurück!", stimulus: { type: "entity", showsDe: "Die Erdmännchen halten Schilder hoch" }, pairs: [{ left: "The monkey", right: "in the tree" }, { left: "The penguin", right: "in the water" }] });
   // merle.r4, verbatim in shape: the German DOES say „Fenster" and the answer IS
   // „Close the window!" — and it does not spoil anything, because two of the three
   // options say `window` too. The blunt rule this layer replaces flags it.
@@ -1236,6 +1268,13 @@ if (process.argv.includes("--selftest")) {
     // separates them keeps the faulty sentence AND adds the fix beside it.
     ["mistake · the chalk carries the correction next to the error", laws(card({ ...honestMistake, evidence: ["This is a door.", "board"] })), (l) => l.includes("18e")],
     ["memory · the German says one pair out loud", laws(card({ ...honestMemory, storyDe: "Finde die Zahl zwölf!" })), (l) => l.includes("18b")],
+    // L2-M-a: derselbe Verrat, eine Karte weiter — die deutsche Zeile traegt das
+    // Wort der RECHTEN Spalte, also die halbe Zuordnung.
+    // GEMESSEN, nicht vermutet: das ist 18a (die *deciding words*, die genau
+    // `decidingWordsOf` liefert), nicht 18b (die deutsche Glosse). Der erste
+    // Entwurf dieses Falls erwartete 18b und lag falsch — die Nummer steht hier,
+    // weil der Lauf sie gesagt hat.
+    ["match · the German carries a word from the answer column", laws(card({ ...honestMatch, storyDe: "Der Affe sitzt in the tree — bring die Schilder zurück!" })), (l) => l.includes("18a")],
     // ── the leak that really shipped, reproduced (A5's rule: a tamper is worth
     //    most when it is the defect that was live) ──
     ["boss.m1 · showsDe said »Die Tafel« while the answer was `board`", laws(card({ ...honestMistake, stimulus: { type: "entity", showsDe: "Die Tafel schreibt einen Satz über sich selbst" } })), (l) => l.includes("18b")],
@@ -1276,6 +1315,7 @@ if (process.argv.includes("--selftest")) {
       familyMsgs(restoreCard()), (m) => m.length === 0],
     // ── and the cases that must stay GREEN ──
     ["NON-TAMPER · the four honest boss shapes stay silent", [honestOddone, honestOrder, honestMistake, honestMemory].flatMap((t) => laws(t)), (l) => l.length === 0],
+    ["NON-TAMPER · and the honest match card says nothing away", laws(honestMatch), (l) => l.length === 0],
     ["NON-TAMPER · a German word two options share does not spoil", laws(sharedWord), (l) => l.length === 0],
     // ── PB-15: the pair that separates right from plausibly-wrong. Same card,
     //    same German, same answer — only the distractors change. ──

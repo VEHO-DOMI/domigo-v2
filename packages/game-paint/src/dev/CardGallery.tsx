@@ -67,6 +67,26 @@ const SYNTHETIC_SPELL: GameTaskV2 = {
   hints: { deDesc: "Das Schreibgerät mit Tinte.", deWord: "a pen" },
 } as unknown as GameTaskV2;
 
+/** L2-M-a: die Zuordnungs-Karte, bis L2-G2 eine echte ins Kapitel traegt.
+ *  Wortlaut nach dem Vertrag in ch02-dossiers-v2/pending-tasks.md. */
+const SYNTHETIC_MATCH: GameTaskV2 = {
+  id: "gallery.synthetic.match",
+  use: "encounter",
+  kind: "match",
+  form: "match-it",
+  exercises: ["g1u02.s.prepositions-place"],
+  stimulus: { type: "entity", showsDe: "Die Erdmännchen halten vier Schilder hoch" },
+  storyDe: "Bring die Schilder zu ihren Tieren zurück!",
+  pairs: [
+    { left: "The monkey", right: "in the tree" },
+    { left: "The penguin", right: "in the water" },
+    { left: "The lion", right: "under the tree" },
+    { left: "The parrot", right: "on the car" },
+  ],
+  skins: ["erdmaennchen"],
+  phases: ["p1"],
+} as unknown as GameTaskV2;
+
 /** The bonus room's phrase, laid out the way the room lays it out: the first
  *  `caught` letters inked, the rest left blank. Deterministic — the bench may
  *  never draw a different card twice. */
@@ -321,6 +341,10 @@ export default function CardGallery({ level, art, tasks, Overlay, which, karte }
     card("order", "order", byKind("order")),
     card("mistake", "mistake", byKind("mistake")),
     card("memory", "memory", byKind("memory")),
+    // L2-M-a: bis L2-G2 die Karten ins Kapitel traegt, liefert kein Kapitel eine
+    // `match`-Karte — also eine SYNTHETISCHE, nach dem Vorbild von `spell`.
+    // Ohne sie zeigt die Bank eine Fehlzeile statt einer Flaeche.
+    card("match", "match", SYNTHETIC_MATCH, undefined, "SYNTHETISCH — noch traegt kein Kapitel eine match-Karte (L2-G2 liefert sie)"),
     card("typed", "typed", byKind("typed")),
     card("spell", "spell", SYNTHETIC_SPELL, undefined, "SYNTHETISCH — ch01 führt keine spell-Karte (doc 41 §1)"),
     // the two states a card also has to survive: the hint ladder open, and a

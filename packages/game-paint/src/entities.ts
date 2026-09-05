@@ -165,7 +165,7 @@ export type EntityEvent =
    *  friend standing grey with no way back into her own rescue. */
   | { type: "awakenAsk"; id: string; skin: string }
   | { type: "doorTouched"; id: string; kind: string }
-  | { type: "powerupTaken"; id: string; grants: string }
+  | { type: "powerupTaken"; id: string; grants: string; gabeDe?: string }
   /** PK-R3b · R3-16: a static-state collectible was walked into — a Regel-Seite
    *  (which stops the world to show its rule) or a Bonus-Buch (which does not). */
   | { type: "pickupTaken"; id: string; role: "tip" | "book" | "cloth"; skin: string }
@@ -1137,8 +1137,12 @@ export const spawnEntities = (specs: EntitySpec[], links: LinkSpec[]): EntityWor
     // PK-R6 · E: a guardian is AIRBORNE from her first tick — there is no
     // grounded idle to fall out of, which is what keeps the old easel cells
     // (`tafel_sad`/`_dazed`/`_stagger`) unreachable while she flies.
+    // ⚠ `startsWith("platform")` faengt KEINE gepunktete Rolle ausser den
+    // Plattformen — `scene.stage` faellt sonst still auf „patrol" und stuende
+    // fuer immer still. Sie beginnt beim GEHEN.
     state: s.role === "cage" ? "closed" : s.role === "classmate" ? "caged"
-      : s.role.startsWith("platform") ? "carry" : s.role === "guardian" ? "fly" : "patrol",
+      : s.role.startsWith("platform") ? "carry" : s.role === "guardian" ? "fly"
+      : s.role === "scene.stage" ? "walk" : "patrol",
     timer: 0,
     hp: s.role === "cage" ? 2 : s.role === "guardian" ? GUARDIAN_SCRIPT[s.tier].knots : 1,
     homeX: cellX,
@@ -1193,7 +1197,7 @@ export const ENGAGE_REACH_Y_PX = 34;
  *  law (PB-T1) applied to a six-round ceremony — putting round 3 down with
  *  „Später" must leave a way back INTO it, and ↑ is the verb this chapter
  *  already teaches for stepping up to a bewitched being. */
-export const ENGAGEABLE_ROLES = new Set<string>(["drained", "cage", "classmate"]);
+export const ENGAGEABLE_ROLES = new Set<string>(["drained", "cage", "classmate", "scene.stage"]);
 
 const inEngageReach = (e: EntityState, playerX: number, playerY: number): boolean =>
   Math.abs(e.x - playerX) / SUBS < ENGAGE_REACH_PX
@@ -1234,6 +1238,13 @@ export const engageTargetId = (
   let best: { id: string; d: number } | null = null;
   for (const e of w.entities) {
     if (e.hidden || !ENGAGEABLE_ROLES.has(e.role)) continue;
+    // Blinder Leser, Fund 12: eine Buehne, die noch GEHT, ist nicht ansprechbar
+    // — der `stepEntities`-Zweig beantwortet ein ↑ erst im Zustand `posed`.
+    // Ohne diese Zeile zeigte der Kreide-Pfeil ueber einem laufenden Darsteller
+    // eine Handlung an, die nichts tut: eine tote Zusage, und die verwirrt ein
+    // Kind mehr als gar kein Zeichen. `ENGAGEABLE_ROLES` kennt nur die ROLLE,
+    // nicht den Zustand — deshalb steht die Bedingung hier.
+    if (e.role === "scene.stage" && e.state !== "posed") continue;
     // R5-W2 · H1: redemption normally ends the conversation — except for a cage,
     // which is `redeemed` from the moment its lid comes off, long before its
     // rescue has been answered. One that still owes a card stays askable, or
@@ -1288,6 +1299,52 @@ export const platformPathAt = (
     period,
   };
 };
+
+/** L2-M-a · R249 · WO DER DARSTELLER AUF SEINER BUEHNE STEHT.
+ *
+ *  Rein, wie `platformPathAt` — eine Funktion von (Anker, Drehbuch, Takt) und
+ *  sonst nichts. Der Grund ist derselbe: die Szene ZEICHNET sie, die Tests
+ *  PRUEFEN sie, und ein zweites Exemplar in der Szene waere die Klasse „ein
+ *  Name, zwei Haeuser".
+ *
+ *  Anders als eine Plattform LAEUFT die Buehne nicht im Kreis: sie geht ihre
+ *  Stationen EINMAL ab und bleibt auf der letzten stehen. Der Halt IST die
+ *  Frage — eine Schleife wuerde das Kind zwingen, im Vorbeigehen zu antworten.
+ */
+export const stagePointAt = (
+  homeX: number,
+  homeY: number,
+  params: Record<string, unknown>,
+  tick: number,
+): { x: number; y: number; station: number; z: "behind" | "front"; angekommen: boolean } => {
+  const spec = params.stage as { stations?: Array<{ dc: number; dr: number; z?: string }>; ticksPerStation?: number } | undefined;
+  const st = spec?.stations ?? [];
+  if (st.length === 0) return { x: homeX, y: homeY, station: 0, z: "front", angekommen: true };
+  const je = Math.max(1, Number(spec?.ticksPerStation ?? STAGE_TICKS_PER_STATION));
+  const gesamt = (st.length - 1) * je;
+  const t = Math.max(0, Math.min(tick, gesamt));
+  const i = Math.min(st.length - 2, Math.floor(t / je));
+  const a = st[Math.max(0, i)]!;
+  const b = st[Math.min(st.length - 1, i + 1)]!;
+  const f = st.length === 1 ? 1 : (t - i * je) / je;
+  const jetzt = tick >= gesamt ? st[st.length - 1]! : f < 0.5 ? a : b;
+  return {
+    x: homeX + Math.round((a.dc + (b.dc - a.dc) * f) * TILE * SUBS),
+    y: homeY + Math.round((a.dr + (b.dr - a.dr) * f) * TILE * SUBS),
+    station: tick >= gesamt ? st.length - 1 : i,
+    z: (jetzt.z === "behind" ? "behind" : "front"),
+    angekommen: tick >= gesamt,
+  };
+};
+
+/** Vorgabe-Gehzeit je Abschnitt: 90 Takte = 1,5 s. Langsam genug, dass ein Kind
+ *  die Lage LIEST, statt sie zu erraten. */
+export const STAGE_TICKS_PER_STATION = 90;
+
+/** Die Zeichen-Tiefe des Darstellers: das Objekt liegt auf 7, er tritt dahinter
+ *  oder davor. (Die Szene setzt sie; hier steht sie, damit ein Test sie halten
+ *  kann, ohne Phaser zu laden.) */
+export const stageDepthOf = (z: "behind" | "front"): number => (z === "behind" ? 6.9 : 7.1);
 
 /** PB-T1 · the walker's AHEAD probe (the entity ground contract): strict about
  *  edges — a drop deeper than one tile, a tall rise, a slope, or a one-way
@@ -1581,6 +1638,32 @@ export const stepEntities = (
         if (e.id === engageId) events.push({ type: "awakenAsk", id: e.id, skin: e.skin });
         break;
       }
+      // ── L2-M-a · R249 · DIE TIER-BUEHNE ────────────────────────────────
+      // Sie geht ihre Stationen EINMAL ab und haelt an. Der Halt ist die
+      // Frage: GENAU EIN `engaged` faellt in dem Takt, in dem sie ankommt —
+      // nicht in jedem Takt danach, sonst oeffnete sich die Karte endlos neu.
+      // Ein spaeteres ↑ hebt sie erneut (derselbe Weg zurueck in eine
+      // weggeklickte Frage, den die Klassenkameradin schon hat).
+      // Beruehrung tut NICHTS: ein Tier, das eine Vokabelfrage stellt, sobald
+      // man es streift, macht den Zoo feindlich.
+      case "scene.stage": {
+        const p = stagePointAt(e.homeX, e.homeY, e.params, e.timer);
+        // Blinder Leser, Fund 11: `vx` blieb 0, weil die Bahn die Lage SETZT
+        // statt zu beschleunigen. Damit haette `anim.ts#entPoseCell` niemals
+        // eine Geh-Zelle zeigen koennen, auch wenn eines Tages eine gemalt ist —
+        // ihr Zweig fragt `Math.abs(e.vx)`. Die Plattformen rechnen ihre
+        // Waagrechte aus genau diesem Grund selbst aus; die Buehne jetzt auch.
+        e.vx = p.x - e.x;
+        e.x = p.x;
+        e.y = p.y;
+        if (e.state === "walk" && p.angekommen) {
+          e.state = "posed";
+          events.push({ type: "engaged", id: e.id, role: e.role, skin: e.skin });
+        } else if (e.state === "posed" && e.id === engageId) {
+          events.push({ type: "engaged", id: e.id, role: e.role, skin: e.skin });
+        }
+        break;
+      }
       case "cage": {
         // PK-R6 · C2: ↑ opens a cage in a chapter with no fist. One press frees
         // it — the two-hit rattle below is the FIST's grammar (wind up, feel the
@@ -1610,7 +1693,17 @@ export const stepEntities = (
       case "powerup": {
         if (overlapsPlayer(e, inp, 14, 20)) {
           e.redeemed = true;
-          events.push({ type: "powerupTaken", id: e.id, grants: String(e.params.grants ?? "punch") });
+          // L2-M-a · M5: die Gabe nennt SICH SELBST. `gabeDe` steht schon im
+          // Schema (level.ts) und erreichte bisher nur den Tor-Toast; der
+          // Gabe-Beat tippte „die FAUST" hart und haette in ch03 („der
+          // Ring-Schwung") und ch04 („der Feder-Rotor") gelogen. Dasselbe
+          // Muster wie `captiveDe` am Kaefig: der Satz kommt vom DING.
+          events.push({
+            type: "powerupTaken",
+            id: e.id,
+            grants: String(e.params.grants ?? "punch"),
+            gabeDe: typeof e.params.gabeDe === "string" ? e.params.gabeDe : undefined,
+          });
         }
         break;
       }

@@ -14,7 +14,7 @@ import {
 import type {
   ChoiceState, ChoiceAction, TypedState, TypedAction, SpellState, SpellAction,
   OrderState, OrderAction, OddState, OddAction, WheelState, WheelAction,
-  MistakeState, MistakeAction, MemoryState, MemoryAction, RestoreState, RestoreAction,
+  MatchState, MatchAction, MistakeState, MistakeAction, MemoryState, MemoryAction, RestoreState, RestoreAction,
 } from "./machines.ts";
 
 export type Dispatch<A> = (a: A | A[]) => void;
@@ -472,6 +472,47 @@ export function RestoreCard({ state, dispatch }: { state: RestoreState; dispatch
           </div>
         </>
       )}
+    </div>
+  );
+}
+
+/**
+ * L2-M-a · R249 · ZWEI SPALTEN, EINE ZUORDNUNG.
+ *
+ * Links das Ding, rechts die Lage. Das Kind tippt links, dann rechts. Was sitzt,
+ * wird blass und ist nicht mehr anfassbar — dieselbe `used`-Sprache wie bei der
+ * Reihenfolge-Karte, damit „erledigt" ueberall gleich aussieht.
+ */
+export function MatchCard({ state, dispatch }: { state: MatchState; dispatch: Dispatch<MatchAction> }): React.ReactElement {
+  const rightsDone = new Set(state.matched.map((l) => state.key[l]));
+  const spalte = (
+    werte: string[],
+    fertig: (v: string) => boolean,
+    gewaehlt: (v: string) => boolean,
+    tap: (v: string) => MatchAction,
+  ): React.ReactElement => (
+    <div style={{ ...col, flex: 1, minWidth: 0 }}>
+      {werte.map((v) => (
+        <button
+          key={v}
+          disabled={fertig(v)}
+          style={{
+            ...(fertig(v) ? used : tile),
+            textTransform: "none",
+            width: "100%",
+            ...(gewaehlt(v) ? { backgroundColor: "#f7ecd0" } : {}),
+          }}
+          onClick={() => dispatch(tap(v))}
+        >
+          {v}
+        </button>
+      ))}
+    </div>
+  );
+  return (
+    <div data-chips style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
+      {spalte(state.left, (v) => state.matched.includes(v), (v) => state.pickedLeft === v, (v) => ({ tapLeft: v }))}
+      {spalte(state.right, (v) => rightsDone.has(v), () => false, (v) => ({ tapRight: v }))}
     </div>
   );
 }
