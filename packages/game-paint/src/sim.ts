@@ -1229,7 +1229,12 @@ export class Sim {
       // field palette (check-game-tasks §9) is what keeps that pool to
       // restore/choice/wheel/oddone in the tutorial chapter.
       case "engaged": {
-        this.ask({ use: "encounter", ctx: { type: "entity", id: ev.id, skin: ev.skin } }, events);
+        // L2-M-a: die Tier-Buehne hebt `quickfire`, jedes andere angesprochene
+        // Wesen `encounter`. Dieselbe Zuordnung fuehrt `cards/serving.ts`
+        // (`askerUsesOf`) fuer die Tore und die Karten-Zustellung; ein Test
+        // haelt beide Leser in Deckung, damit sie nicht auseinanderlaufen.
+        const use = ev.role === "scene.stage" ? "quickfire" : "encounter";
+        this.ask({ use, ctx: { type: "entity", id: ev.id, skin: ev.skin } }, events);
         break;
       }
       case "cageGated": {

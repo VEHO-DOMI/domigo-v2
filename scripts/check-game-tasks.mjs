@@ -887,6 +887,14 @@ function checkAgainstLevel(file, level, items) {
         }
         const n = boundCards(items, "rescue", e.skin, ph.id).length;
         if (n < 1) covFail(at, `coverage: cage skin "${e.skin}" has no rescue card here`);
+      } else if (e.role === "scene.stage") {
+        // L2-M-a · R249 · DAS BUEHNEN-VERSPRECHEN. Die Buehne haelt an und
+        // fragt — ohne gebundene Karte faellt der Router in den ungebundenen
+        // quickfire-Pool, und ein Papagei, der eben auf ein Auto geklettert
+        // ist, fragt nach einer Zahl. Genau die Klasse „von jemand anderem
+        // beantwortet", gegen die es die Bindung (PB-F1) gibt.
+        const n = boundCards(items, "quickfire", e.skin, ph.id).length;
+        if (n < 1) covFail(at, `coverage: stage "${e.skin}" has no bound quickfire card in ${ph.id} — it acts out a place and then asks nothing`);
       } else if (e.role === "drained") {
         // PK-R6 · C1 · THE RESTORE-PAIR LAW. A drained object is a promise
         // rendered in grey: the child walks up, presses ↑, and the world owes

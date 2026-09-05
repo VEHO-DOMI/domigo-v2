@@ -48,6 +48,13 @@ export function askerUsesOf(e: Pick<EntitySpec, "role" | "params">): readonly st
   if (e.role === "swarm") return ["quickfire"];
   if (HOSTILE_ROLES.includes(e.role)) return ["encounter"];
   if (e.role === "drained") return ["encounter"];
+  // L2-M-a · R249: die Tier-Buehne hebt `quickfire`, nicht `encounter`. Der
+  // Unterschied ist die FIKTION: eine Begegnung ist ein Wesen, das dem Kind in
+  // den Weg tritt; die Buehne tritt niemandem in den Weg — sie spielt etwas vor
+  // und fragt danach. Der Schnell-Schirm ist der Pool dieser kurzen
+  // Welt-Fragen („Where is it?"), und er ist getaktet, was hier passt: die
+  // Antwort steht sichtbar im Bild.
+  if (e.role === "scene.stage") return ["quickfire"];
   // she is the asker of every round after the latch, from the cage's own pool
   if (e.role === "cage" || e.role === "classmate") return ["rescue"];
   if (e.role === "door.trigger") return [String(e.params?.kind ?? "exit") === "bonus" ? "bonuspay" : "door"];

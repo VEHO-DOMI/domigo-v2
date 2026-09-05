@@ -72,6 +72,20 @@ export const ENTITY_ROLES = [
   // card. It is NOT the chapter's collectible: it feeds no trail, pays no door,
   // and carries its own counter (doc 44 §2.7 amendment).
   "cloth",
+  // L2-M-a · R249 · DIE TIER-BÜHNE (Signatur von ch02, doc 44 §4 „placement
+  // play"). Ein Wesen bewegt sich SICHTBAR um ein Objekt herum — hinter den
+  // Baum, auf das Auto, unter die Bank —, hält an, und die Welt fragt „Where is
+  // it?". Sie ist der Grund, warum MORE! 1 Unit 2 die Ortswörter ausschliesslich
+  // am bewegten Bild lehrt (SB 19 sechs Panels, WB 14 der Hamster am Käfig): das
+  // Kind SCHAUT ZU, bevor es antwortet.
+  //
+  // Warum eine eigene Rolle und nicht `drained`: ein graues Ding wird
+  // grau gewaschen (WASHED_ROLES), schuldet eine restore-Karte und hebt
+  // `encounter`. Drei Gesetze zu biegen ist groesser als eine Rolle zu bauen.
+  //
+  // Die Entity-ZELLE ist der Prop-Anker (der Baum); der Entity-`skin` ist der
+  // DARSTELLER (der Papagei); die Stationen sind Versaetze davon.
+  "scene.stage",
 ] as const;
 
 export type EntityRole = (typeof ENTITY_ROLES)[number];
@@ -264,6 +278,17 @@ export interface EntityParams {
    *  dass ein Level-Autor sie nachrechnet. */
   roamMinC?: number;
   roamMaxC?: number;
+  /** L2-M-a · scene.stage: das Drehbuch der Buehne.
+   *  `propSkin` ist das Blatt des OBJEKTS, um das gespielt wird (die Zelle des
+   *  Wesens ist sein Anker). `stations` sind Versaetze davon, in Zellen, in der
+   *  Reihenfolge, in der der Darsteller sie abgeht; `z` sagt, ob er dort HINTER
+   *  oder VOR dem Objekt steht — das ist die halbe Lehre („behind the tree").
+   *  `ticksPerStation` ist die Gehzeit je Abschnitt (Vorgabe 90 = 1,5 s). */
+  stage?: {
+    propSkin: string;
+    stations: Array<{ dc: number; dr: number; z?: "behind" | "front" }>;
+    ticksPerStation?: number;
+  };
   /** spawned hidden, revealed by a link. */
   hidden?: boolean;
   [key: string]: unknown;
@@ -1250,6 +1275,43 @@ export const checkLevelLaws = (level: PaintLevel): LawFailure[] => {
         });
       }
     }
+    // ── L2-M-a · R249 · DAS BUEHNEN-DREHBUCH ─────────────────────────────
+    // Eine Buehne ohne Drehbuch ist ein Wesen, das im Nichts steht und nie
+    // fragt. Die vier Bedingungen sind genau die, ohne die der Motor still
+    // etwas anderes tut: ohne zwei Stationen gibt es keine BEWEGUNG (und die
+    // Bewegung IST die Lehre); ausserhalb des Gitters laeuft der Darsteller aus
+    // dem Bild; auf einer Endstation ohne Boden haelt er in der Luft an; und
+    // ohne `propSkin` gibt es kein Objekt, um das herum das Ortswort ueberhaupt
+    // einen Sinn haette.
+    for (const ph of allPhases(level)) {
+      for (const e of ph.entities.filter((x) => x.role === "scene.stage")) {
+        const st = e.params?.stage;
+        const at = `${e.id}`;
+        if (st === undefined) {
+          failures.push({ phase: ph.id, law: "stage-script", detail: `stage ${at} carries no params.stage — nothing would ever move` });
+          continue;
+        }
+        if (!Array.isArray(st.stations) || st.stations.length < 2) {
+          failures.push({ phase: ph.id, law: "stage-script", detail: `stage ${at} needs at least two stations — one station is a statue, not a scene` });
+          continue;
+        }
+        if (typeof st.propSkin !== "string" || st.propSkin.trim() === "") {
+          failures.push({ phase: ph.id, law: "stage-script", detail: `stage ${at} names no propSkin — there is nothing to be behind or in front of` });
+        }
+        const zellen = st.stations.map((s) => ({ c: e.c + s.dc, r: e.r + s.dr }));
+        for (const [i, z] of zellen.entries()) {
+          if (z.c < 0 || z.c >= (ph.rows[0]?.length ?? 0) || z.r < 0 || z.r >= ph.rows.length) {
+            failures.push({ phase: ph.id, law: "stage-script", detail: `stage ${at} station ${i} at (${z.c},${z.r}) lies outside the grid` });
+          }
+        }
+        const letzte = zellen[zellen.length - 1]!;
+        if (letzte.c >= 0 && letzte.c < (ph.rows[0]?.length ?? 0) && letzte.r >= 0 && letzte.r < ph.rows.length
+            && !standable(ph.rows, letzte.c, letzte.r)) {
+          failures.push({ phase: ph.id, law: "stage-script", detail: `stage ${at} ends at (${letzte.c},${letzte.r}), where nothing stands — the question would be asked in mid-air` });
+        }
+      }
+    }
+
     for (const m of mates) {
       const cageId = m.e.params?.cage;
       if (cageId === undefined) {
@@ -1767,7 +1829,10 @@ export const checkLevelLaws = (level: PaintLevel): LawFailure[] => {
       // does — it is a being the chapter PROMISES the child can free, and the
       // HUD counts it. One standing on a ledge nobody can climb is a broken
       // promise, not a secret.
-      if ((e.role === "cage" || e.role === "powerup" || e.role === "drained" || PICKUP_ROLES.has(e.role)) && !nearReachable(e.c, e.r, 2, 2, 4)) {
+      // L2-M-a: die Buehne gehoert in dieselbe Reihe. Sie ist ein Versprechen —
+      // das Kind soll zusehen und dann antworten —, und eine Buehne, an die
+      // niemand herankommt, ist ein Versprechen, das die Welt nicht haelt.
+      if ((e.role === "cage" || e.role === "powerup" || e.role === "drained" || e.role === "scene.stage" || PICKUP_ROLES.has(e.role)) && !nearReachable(e.c, e.r, 2, 2, 4)) {
         failures.push({ phase: ph.id, law: "entity-reachable", detail: `${e.role} ${e.id} at (${e.c},${e.r}) unreachable` });
       }
     }

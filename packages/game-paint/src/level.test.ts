@@ -317,6 +317,29 @@ describe("checkLevelLaws", () => {
     expect(fails.some((f) => f.law === "exit-reachable")).toBe(true);
   });
 
+  it("stage-script · eine Bühne mit EINER Station ist ein Standbild, keine Szene (L2-M-a)", () => {
+    const rows = [...OK_ROWS];
+    const st = (stations: unknown, over: Record<string, unknown> = {}) => level(rows, {
+      draft: false,
+      phases: [{
+        id: "p1", nameDe: "T", surface: "normal", plates: {}, rows,
+        entities: [{ id: "b1", role: "scene.stage", skin: "papagei", c: 5, r: 17, tier: "E",
+          params: { stage: { propSkin: "auto", stations, ...over } } }],
+        links: [], exit: { to: "done" }, checkpointSide: "far",
+      }] as PaintLevel["phases"],
+    });
+    const laws = (l: PaintLevel) => checkLevelLaws(parsePaintLevel(l)).filter((f) => f.law === "stage-script");
+
+    expect(laws(st([{ dc: 0, dr: 0 }])).length, "eine Station ist keine Bewegung").toBe(1);
+    expect(laws(st([{ dc: 0, dr: 0 }, { dc: 1, dr: 0 }])).length, "zwei genügen").toBe(0);
+    // …die Endstation muss tragen: dc +40 liegt weit hinter dem Gitterrand
+    expect(laws(st([{ dc: 0, dr: 0 }, { dc: 40, dr: 0 }])).length).toBeGreaterThan(0);
+    // …und ohne Objekt hat „dahinter" keinen Sinn
+    const ohneProp = st([{ dc: 0, dr: 0 }, { dc: 1, dr: 0 }]);
+    (ohneProp.phases[0]!.entities[0]!.params!.stage as { propSkin: string }).propSkin = "";
+    expect(laws(ohneProp).length).toBe(1);
+  });
+
   it("flags unreachable letters", () => {
     const rows = [
       "############",
