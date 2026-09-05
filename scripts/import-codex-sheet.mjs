@@ -21,7 +21,11 @@
 //   node --experimental-strip-types scripts/import-codex-sheet.mjs \
 //     --sheet ~/Code/codex-art-lab/batch-aq5/hero2_flight_cycle.png \
 //     --cells hero2_jump,hero2_jump2,hero2_apex,hero2_fall \
-//     [--dest apps/web/public/art/g1/paint/ch01] [--dry]
+//     [--chapter ch01] [--dest <ordner>] [--dry]
+//
+// `--dest` erzwingt EINEN Ordner fuer alle Zellen (der alte Weg, jetzt
+// ausdruecklich getippt statt stillschweigend). Ohne ihn entscheidet der STEM:
+// ein Helden-Blatt geht nach `hero/`, ein Kapitel-Blatt nach `<chapter>/`.
 //
 // `--cells` benennt die Zellen VON LINKS NACH RECHTS, dann zeilenweise nach
 // unten. Ein Name `-` überspringt eine Zelle (Reservefelder der Lieferung).
@@ -31,6 +35,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { PNG } from "pngjs";
+import { ALWAYS_STEMS } from "../packages/game-paint/src/artScope.ts";
 
 const CELL = 512;
 /** Wie weit eine Farbe vom reinen Schlüssel abweichen darf und trotzdem
@@ -51,7 +56,42 @@ const arg = (name, fallback = null) => {
 const dry = process.argv.includes("--dry");
 const sheetPath = arg("sheet");
 const cellNames = (arg("cells") ?? "").split(",").map((s) => s.trim()).filter(Boolean);
-const dest = arg("dest", "apps/web/public/art/g1/paint/ch01");
+const ART_ROOT = "apps/web/public/art/g1/paint";
+const kapitelArg = arg("chapter");
+const destArg = arg("dest");
+
+// ── L0c · P15 · D-793 · DAS ZIEL KOMMT AUS DEM STEM, NICHT AUS DIESER ZEILE ──
+//
+// Hier stand EIN Zielordner als Standardwert (`…/paint/ch01`), und jede
+// Lieferung ging dorthin — auch die der FIGUR. So sind die vierzehn
+// `hero2_*`-Zellen in `ch01/` gelandet, und genau daraus wurde R263: der
+// Aufloeser gibt jedem Kapitel nur `["hero", chapter]`
+// (`apps/web/lib/paint-art.ts#artDirsFor`), also fand ch02–ch06 die Figur nicht
+// und zeichnete still den alten Teile-Baukasten. Ohne diese Zeilen kaeme die
+// naechste Figuren-Lieferung wieder falsch an.
+//
+// Die Regel hat zwei Leser und eine Quelle: `ALWAYS_STEMS` (die Blaetter, die
+// JEDES Kapitel laedt) plus die Namensform `hero…_`. Der Praefix steht daneben,
+// weil die Listen in `artManifest.ts` und `rigSpec.ts` schon einmal
+// auseinandergelaufen sind (D-173) — ein neues Helden-Blatt darf nicht davon
+// abhaengen, dass jemand die Liste nachgezogen hat.
+//
+// Und der dritte Fall ist der wichtigste: ein Stem, der zu KEINEM passt, haelt
+// das Werkzeug an. Raten ist genau das, was D-793 gekostet hat.
+const istHeldenStem = (stem) => ALWAYS_STEMS.includes(stem) || /^hero\d*_/.test(stem);
+const zielFuer = (stem, kapitel) => {
+  if (istHeldenStem(stem)) return path.join(ART_ROOT, "hero");
+  if (kapitel === null) {
+    console.error(`✗ "${stem}" ist kein Helden-Blatt (weder in ALWAYS_STEMS noch in der Form hero…_), `
+      + "und dieser Lauf nennt kein Kapitel (--chapter chNN). Ein Ziel wird hier nicht geraten (D-793).");
+    process.exit(2);
+  }
+  return path.join(ART_ROOT, kapitel);
+};
+
+/** `--dest` schlaegt die Ableitung — aber nur, wenn jemand sie ausdruecklich tippt. */
+const zielVon = (stem) => (destArg !== null ? destArg : zielFuer(stem, kapitelArg));
+const zieleGeschrieben = new Set();
 
 if (!sheetPath || cellNames.length === 0) {
   console.error("brauche --sheet <datei.png> und --cells <name,name,…>");
@@ -113,14 +153,21 @@ for (let i = 0; i < cellNames.length; i++) {
       out.data[d + 2] = cell.data[s + 2]; out.data[d + 3] = cell.data[s + 3];
     }
   }
-  const file = path.join(dest, `${name}.png`);
+  const ziel = zielVon(name);
+  zieleGeschrieben.add(ziel);
+  const file = path.join(ziel, `${name}.png`);
   const gab = fs.existsSync(file);
-  console.log(`  ${name}: ${w}×${h} (Verhältnis ${(w / h).toFixed(2)})${gab ? " — ERSETZT" : " — neu"}${dry ? " [dry]" : ""}`);
+  // Der Ordner steht MIT in der Zeile: dass niemand ihn sah, ist die halbe
+  // Geschichte von D-793 — vierzehn Zellen gingen falsch, und der Lauf sagte
+  // nur »14 Zelle(n) geschrieben«.
+  console.log(`  ${name} → ${path.basename(ziel)}/: ${w}×${h} (Verhältnis ${(w / h).toFixed(2)})${gab ? " — ERSETZT" : " — neu"}${dry ? " [dry]" : ""}`);
   if (!dry) {
-    fs.mkdirSync(dest, { recursive: true });
+    fs.mkdirSync(ziel, { recursive: true });
     fs.writeFileSync(file, PNG.sync.write(out));
     wrote++;
   }
 }
-console.log(dry ? "dry-run, nichts geschrieben" : `${wrote} Zelle(n) geschrieben nach ${dest}`);
+console.log(dry
+  ? `dry-run, nichts geschrieben (Ziele waeren: ${[...zieleGeschrieben].join(", ") || "keine"})`
+  : `${wrote} Zelle(n) geschrieben nach ${[...zieleGeschrieben].join(", ")}`);
 console.log("→ jetzt: node --experimental-strip-types scripts/strip-key-fringe.mjs && pnpm check:paint-art");

@@ -33,11 +33,36 @@ describe("proof tapes (the playability law)", () => {
   for (const lf of levelFiles) {
     const level = JSON.parse(fs.readFileSync(lf, "utf8")) as PaintLevel;
     const name = path.basename(lf);
-    if (level.draft === true) continue; // drafts are exempt (level.ts law parity)
+    const entwurf = level.draft === true;
 
+    // ── L0c · P13 · EIN COMMITTETES BAND WIRD ABGESPIELT, AUCH IM ENTWURF ────
+    //
+    // Hier stand `if (level.draft === true) continue` — die Parität mit den
+    // KAPITEL-FORM-Gesetzen von `level.ts` (Phasenzahl, Käfig-Gesetz), die einen
+    // Entwurf zu Recht klammern. Für ein BAND ist dieselbe Regel falsch: fünf
+    // Kapitel hatten ihr p1-Band committet, und kein Test spielte es je ab —
+    // jede Motor-PR konnte sie still brechen, und die Bahn, die es merkt, wäre
+    // die G2-Bahn Wochen später gewesen.
+    //
+    // Die Trennlinie liegt jetzt zwischen BEWEIS und VOLLSTÄNDIGKEIT:
+    //   · Beweis-Gesetze (spielt das Band noch?) laufen über JEDES Band, das
+    //     committet ist — Entwurf oder nicht.
+    //   · Vollständigkeits-Gesetze (hat jede Phase ein Band? ist die Fähigkeits-
+    //     leiter lückenlos? sperrt jede wesentliche Gabe?) bleiben den fertigen
+    //     Kapiteln vorbehalten; ein Entwurf hat seine Phasen noch nicht.
+    // Was ein Entwurf auslässt, wird NAMENTLICH gedruckt, nie still.
     const proofPath = lf.replace(".level.json", ".proof.json");
 
-    it(`${name}: has a proof sidecar with a tape for every phase`, () => {
+    if (entwurf && !fs.existsSync(proofPath)) {
+      // eslint-disable-next-line no-console
+      console.log(`proof-tapes: ${name} — kein ${path.basename(proofPath)}, übersprungen (draft)`);
+      it(`${name}: kein Beweisband — Entwurf, namentlich übersprungen`, () => {
+        expect(fs.existsSync(proofPath)).toBe(false);
+      });
+      continue;
+    }
+
+    if (!entwurf) it(`${name}: has a proof sidecar with a tape for every phase`, () => {
       expect(fs.existsSync(proofPath), `missing ${path.basename(proofPath)} — record it with scripts/record-paint-tape.mjs`).toBe(true);
       const proof = JSON.parse(fs.readFileSync(proofPath, "utf8")) as ProofFile;
       expect(proof.schema).toBe(PROOF_SCHEMA);
@@ -48,6 +73,18 @@ describe("proof tapes (the playability law)", () => {
 
     if (!fs.existsSync(proofPath)) continue;
     const proof = JSON.parse(fs.readFileSync(proofPath, "utf8")) as ProofFile;
+
+    if (entwurf) {
+      const ohneBand = allPhases(level).filter((ph) => !proof.phases[ph.id]).map((ph) => ph.id);
+      if (ohneBand.length > 0) {
+        // eslint-disable-next-line no-console
+        console.log(`proof-tapes: ${name} — ohne Band: ${ohneBand.join(", ")}, übersprungen (draft)`);
+      }
+      it(`${name}: die Phasen ohne Band sind namentlich bekannt (Entwurf)`, () => {
+        const mitBand = allPhases(level).filter((ph) => proof.phases[ph.id]).map((ph) => ph.id);
+        expect(mitBand.length, `${name} hat ein Beweisband, aber keine einzige Phase darin`).toBeGreaterThan(0);
+      });
+    }
 
     for (const ph of allPhases(level)) {
       const tape = proof.phases[ph.id];
@@ -102,7 +139,7 @@ describe("proof tapes (the playability law)", () => {
     // earned them. ch01's set declared `punch` at p3 while p2's pilot walked
     // straight past Fibel and out of the phase: R3-3's soft-lock, written into
     // the proof data itself, invisible because every phase replayed alone.
-    it(`${name}: every phase enters with the abilities the chapter actually granted`, () => {
+    if (!entwurf) it(`${name}: every phase enters with the abilities the chapter actually granted`, () => {
       const granted = new Set(
         allPhases(level).flatMap((p) => p.entities.filter((e) => e.role === "powerup").map((e) => String(e.params?.grants ?? ""))),
       );
@@ -124,7 +161,7 @@ describe("proof tapes (the playability law)", () => {
     // lying in the level must NOT exit, and the identical walk with the grant
     // taken MUST. Every other gate on the exit (the door's word, the guardian) is
     // cleared first, so only the essential gate can be the difference.
-    it(`${name}: an uncollected essential grant locks its phase exit — and only that`, () => {
+    if (!entwurf) it(`${name}: an uncollected essential grant locks its phase exit — and only that`, () => {
       for (const ph of allPhases(level)) {
         const essentials = ph.entities.filter((e) => e.role === "powerup" && e.params?.essential === true);
         if (essentials.length === 0) continue;
