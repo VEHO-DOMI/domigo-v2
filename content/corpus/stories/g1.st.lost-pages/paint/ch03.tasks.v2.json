@@ -78,15 +78,15 @@
    ],
    "stimulus": {
     "type": "entity",
-    "showsDe": "Der Papagei kreischt, wie kräftig der Kapitän rudert."
+    "showsDe": "Der Papagei kreischt, wie kräftig die Steuerfrau rudert."
    },
    "storyDe": "Der Satz ist krumm. Zieh ihn gerade!",
    "options": [
-    "He is got a strong right arm.",
-    "He has got a strong right arm.",
-    "He have got a strong right arm."
+    "She is got a strong right arm.",
+    "She has got a strong right arm.",
+    "She have got a strong right arm."
    ],
-   "answer": "He has got a strong right arm.",
+   "answer": "She has got a strong right arm.",
    "skins": [
     "streitpapagei"
    ],
@@ -94,8 +94,8 @@
     "p1"
    ],
    "hints": {
-    "deDesc": "Nach he steht nie have.",
-    "deWord": "Auf Deutsch: Er hat einen starken rechten Arm."
+    "deDesc": "Nach she steht nie have.",
+    "deWord": "Auf Deutsch: Sie hat einen starken rechten Arm."
    }
   },
   {
@@ -110,15 +110,15 @@
    ],
    "stimulus": {
     "type": "entity",
-    "showsDe": "Der Papagei kreischt über die Steuerfrau am Ruder."
+    "showsDe": "Der Papagei kreischt über den Arm des Kapitäns."
    },
-   "storyDe": "Sag den Satz über die Steuerfrau richtig!",
+   "storyDe": "Sag den Satz über den Kapitän richtig!",
    "options": [
-    "She have got a small left arm.",
-    "She has got a small left arm.",
-    "She is got a small left arm."
+    "He have got a small left arm.",
+    "He has got a small left arm.",
+    "He is got a small left arm."
    ],
-   "answer": "She has got a small left arm.",
+   "answer": "He has got a small left arm.",
    "skins": [
     "streitpapagei"
    ],
@@ -127,7 +127,7 @@
    ],
    "hints": {
     "deDesc": "Eine einzelne Person bekommt nicht have.",
-    "deWord": "Auf Deutsch: Sie hat einen kleinen linken Arm."
+    "deWord": "Auf Deutsch: Er hat einen kleinen linken Arm."
    }
   },
   {
@@ -365,7 +365,7 @@
    ],
    "stimulus": {
     "type": "entity",
-    "showsDe": "Der Deckschrubber ahmt nach, wie der Kapitän zeigt."
+    "showsDe": "Der Deckschrubber ahmt nach, wie die Steuerfrau zeigt."
    },
    "storyDe": "Leg die Wörter in die richtige Reihenfolge!",
    "orderedChips": [
