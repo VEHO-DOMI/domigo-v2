@@ -36,7 +36,7 @@ import { type AirModel, DELTA_CAP_MS, LOGICAL_H, LOGICAL_W, MAX_TICKS_PER_FRAME,
 import { INK_BODY, INK_CROWN_DARK, INK_MENISCUS, INK_SHEEN, INK_SPLASH_DROPS, INK_SPLASH_TICKS, INK_SURFACE_TINT, inkCrownOffsetAt, inkCrownPoints, inkDepthTint, inkLipThicknessAt, inkScrollAt, inkSheenRuns, inkSplashDropAt, planInkColumns } from "./ink.ts";
 import { type FistState } from "./fist.ts";
 import { type Pad, type PlayerState } from "./player.ts";
-import { CHALK_COLOURS, CHALK_FLIGHT_TICKS, CHALK_GRAVITY, type EntityState, type EntityWorld, GUARDIAN_SCRIPT, JOY_ROLES, KNOT_BEAT_TICKS, SHARD_TICKS, WIPE_TICKS, engageTargetId, telegraphTicksFor } from "./entities.ts";
+import { CHALK_COLOURS, CHALK_FLIGHT_TICKS, CHALK_GRAVITY, type EntityState, type EntityWorld, GUARDIAN_SCRIPT, JOY_ROLES, KNOT_BEAT_TICKS, SHARD_TICKS, WIPE_TICKS, engageTargetId, telegraphTicksFor, stagePointAt, stageDepthOf } from "./entities.ts";
 import { COLLECT_ANCHOR_PX, MAGNET_FIELD_PX, Sim, type SimEvent, type TaskRequest, type TipPayload } from "./sim.ts";
 import { bubbleSpot, FOCUS_MS, focusView } from "./camera.ts";
 import {
@@ -255,7 +255,7 @@ export interface PaintCallbacks {
    *  phase remount cannot ask for it again. */
   onEntityResolved?: (id: string, role: string) => void;
   onTask: (req: TaskRequest) => void;
-  onPowerup: (grants: string) => void;
+  onPowerup: (grants: string, gabeDe?: string) => void;
   onCageFreed: (id: string, skin: string, classmate: string | undefined, freedCount: number) => void;
   onGuardianDown: (id: string, skin: string) => void;
   /** PB-F3 · F2-8: the first cage the fist can open, once per phase.
@@ -314,6 +314,8 @@ export interface PaintSceneCfg {
    *  state (see SimCfg; the scene only forwards). */
   spawnCell?: { c: number; r: number };
   letterLedger?: () => { takenCells: readonly string[]; purse: number; found: number };
+  /** R235 · L2-M-a: hat die Kleckskammer ihren einen Lauf gehabt? (SimCfg) */
+  bonusRunDone?: () => boolean;
   /** R5-A6: draw the collision grid over the world (teacher door, ?grid=1). */
   debugGrid?: boolean;
   /** R5-N3 · E4: skip the pre-warmer entirely (teacher door `?warm=0`). */
@@ -912,6 +914,9 @@ export class PaintScene extends Phaser.Scene {
   private get camY(): number { return this.sim.camY; }
 
   private entityImgs = new Map<string, Phaser.GameObjects.Image>();
+  /** L2-M-a: das Objekt einer Tier-Buehne — ein zweites Bild je Buehnen-Wesen,
+   *  am Anker festgenagelt, waehrend der Darsteller es umrundet. */
+  private stagePropImgs = new Map<string, Phaser.GameObjects.Image>();
   /** R3-15: the grey wash laid OVER a being OSWIN drained (doc 41 §2). One per
    *  redeemable creature, built beside its sprite and driven by washAlphaFor. */
   private washImgs = new Map<string, Phaser.GameObjects.Image>();
@@ -1163,6 +1168,7 @@ export class PaintScene extends Phaser.Scene {
       airModel: cfg.airModel,
       spawnCell: cfg.spawnCell,
       letterLedger: cfg.letterLedger,
+      bonusRunDone: cfg.bonusRunDone,
     });
   }
 
@@ -1673,7 +1679,7 @@ export class PaintScene extends Phaser.Scene {
       switch (ev.type) {
         case "toast": this.toast(ev.msg); break;
         case "task": cb.onTask(ev.req); break;
-        case "powerup": cb.onPowerup(ev.grants); break;
+        case "powerup": cb.onPowerup(ev.grants, ev.gabeDe); break;
         case "cageFreed": cb.onCageFreed(ev.id, ev.skin, ev.classmate, ev.count); break;
         case "guardianDown": cb.onGuardianDown(ev.id, ev.skin); break;
         // R5-W4 · H2 (R50): der Augenblick, in dem eine Kritzel-Schicht wirklich
@@ -1828,6 +1834,19 @@ export class PaintScene extends Phaser.Scene {
       // back into p1 from throwing confetti at work the child finished ten
       // minutes ago — the flourish marks a CHANGE, and nothing changed.
       if (e.redeemed) this.cheered.add(e.id);
+      // L2-M-a · R249: die Tier-Buehne bringt ein ZWEITES Bild mit — das Objekt,
+      // um das gespielt wird. Es sitzt auf dem ANKER (der Zelle des Wesens) und
+      // bleibt dort stehen, waehrend der Darsteller es umrundet. Solange ch02
+      // ungemalt ist, faellt `entTex` auf die graue Ersatz-Textur zurueck; das
+      // ist die Platzhalter-Doktrin und genau richtig.
+      if (e.role === "scene.stage") {
+        const propSkin = String((e.params.stage as { propSkin?: string } | undefined)?.propSkin ?? "");
+        if (propSkin !== "") {
+          const prop = this.add.image(fromSubs(e.homeX), fromSubs(e.homeY), this.entTex(propSkin, "a")).setDepth(7).setOrigin(0.5, 1);
+          prop.setVisible(!e.hidden);
+          this.stagePropImgs.set(e.id, prop);
+        }
+      }
       const img = this.add.image(fromSubs(e.x), fromSubs(e.y), this.entTex(e.skin, "a")).setDepth(7).setOrigin(0.5, 1);
       img.setVisible(!e.hidden);
       this.entityImgs.set(e.id, img);
@@ -2232,6 +2251,18 @@ export class PaintScene extends Phaser.Scene {
       // R3-16: a taken Regel-Seite / Bonus-Buch is GONE — it went into the tally
       img.setVisible(!e.hidden && !(PICKUP_ROLES.has(e.role) && e.redeemed));
       img.setPosition(fromSubs(e.x), fromSubs(e.y));
+      // L2-M-a: HINTER oder VOR dem Objekt — das ist die halbe Lehre der Unit.
+      // Die Rechnung steht in `entities.ts#stageDepthOf`, damit ein Test sie
+      // halten kann, ohne Phaser zu laden.
+      if (e.role === "scene.stage") {
+        img.setDepth(stageDepthOf(stagePointAt(e.homeX, e.homeY, e.params, e.timer).z));
+        // Blinder Leser, Fund 10: das Objekt wurde NUR beim Bau auf sichtbar
+        // gesetzt. Eine versteckt gespawnte Buehne (`params.hidden`, per Link
+        // enthuellt) haette danach einen Darsteller ohne sein Objekt gezeigt —
+        // er waere um nichts herumgelaufen. Jedes andere Zweitbild dieser Datei
+        // (Wasch-Schicht, Kaefig-Insasse) wird je Takt nachgezogen; dieses nicht.
+        this.stagePropImgs.get(e.id)?.setVisible(!e.hidden);
+      }
       const cell = this.entStateCell({
         ...e,
         idleFrames: this.idleFramesOf(e.skin),

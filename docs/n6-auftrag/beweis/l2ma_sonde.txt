@@ -1,0 +1,29 @@
+── ch02-Sonde · was das Hangeln an der ECHTEN Sim kauft ──
+Engine: hangJumpVy -5 px/Takt · jumpHoldTicks 12 · ledgeMagnetPx 4 · HAND/HANG s. player.ts
+Eichung · reiner Halte-Sprung im Freien: 6.06 Zeilen Fuss-Hub
+
+| Mauer | ohne hang | mit hang | Griffe (mit) | Griff-Takte | Kante |
+|---|---|---|---|---|---|
+| 4 | oben | oben | 0 | 0 | — |
+| 5 | oben | oben | 0 | 0 | — |
+| 6 | oben | oben | 0 | 0 | — |
+| 7 | — | oben | 1 | 1 | 13 |
+| 8 | — | oben | 1 | 1 | 12 |
+| 9 | — | — | 0 | 0 | — |
+| 10 | — | — | 0 | 0 | — |
+
+GRIFF · haelt ohne Absprung 585 Takte (9.8 s) — der Griff ist statisch, es gibt keinen Klimmzug.
+TRAG-WEITE · der Absprung von der Kante traegt 5.56 Spalten nach rechts.
+
+HALTUNG am Griff: die Engine meldet »hang« (player.ts#derivePose).
+  ⇒ `rigSpec.ts#heroFullCell` gibt fuer diese Haltung `null` zurueck — gezeichnet wird der
+    TEILE-BAUKASTEN, und der Griff hat dort sein eigenes Blatt (`hand_grip`, rigSpec.ts ≈114).
+    Das ist die Haltungs-Entscheidung dieses Verbs, an der Engine gemessen statt behauptet.
+  ⚠ Der Haar-Rotor ist dabei NICHT sichtbar: `rig.ts` versteckt ihn per Vorgabe fuer jede
+    Haltung, und nur `case "hover"` schaltet ihn an. Ein fehlender Rotor ist kein Befund.
+
+GEMESSEN · ohne hang traegt die Engine 6 Zeilen, mit hang 8 — das Hangeln kauft 2 Zeilen.
+Das Modell verspricht JUMP_UP = 4 (die Engine kann 6.06); es unterverspricht um Absicht.
+EMPFEHLUNG · HANG_ROWS = 2 ⇒ das Modell segnet 6 Zeilen gegen 8 gemessene.
+Sicherheitsabstand 2 Zeilen — dieselbe Richtung wie bei JUMP_UP: das Modell darf
+eine erreichbare Stelle uebersehen, aber nie eine unerreichbare segnen (level.ts, THE ENVELOPE LAW).

@@ -84,6 +84,36 @@ describe("Abdeckung: jede Ereignis-Art des Spiels hat genau einen Zustand", () =
     }
   });
 
+  /**
+   * L2-M-a · M4 — SIEBEN GRUENDE, DIE AB ch02 UNWAHR WAREN.
+   *
+   * `reserved` heisst „kann hier gar nicht feuern". Fuer diese sieben Ereignisse
+   * stimmte das, solange ch01 das einzige Kapitel war: keine Faust, kein
+   * Hangeln, kein powerup-Entity. ch02 vergibt die Faust, deklariert `hang` und
+   * stellt ein `powerup` — ab da beschreibt `reserved` einen Zustand, den es
+   * nicht mehr gibt, und der Direktor haette einen Grund gedruckt, der luegt.
+   *
+   * `silent` ist die ehrliche Zwischenstufe: das Ereignis FEUERT, es gibt nur
+   * noch keine Datei. (`play` waere es erst mit Stem, Prompt, Messzeile und
+   * Budget-Zeile — das ist Kunst-Zeit, nicht diese Bahn.)
+   */
+  it("die sieben ch02-Ereignisse sind nicht mehr »reserved« — sie feuern", () => {
+    const abCh02 = [
+      ["sim", "powerup"], ["sim", "puff"],
+      ["player", "fistThrown"], ["player", "grabbedLedge"],
+      ["entity", "cageHit"], ["entity", "powerupTaken"], ["entity", "projectileDeflected"],
+    ] as const;
+    for (const [union, event] of abCh02) {
+      const treffer = allReactions().filter((r) => r.union === union && r.event === event);
+      expect(treffer.length, `${union}/${event} steht nicht im Manifest`).toBeGreaterThan(0);
+      // `puff` traegt ZWEI Reaktionen (chalk spielt, hit war reserviert) — die
+      // Behauptung gilt fuer jede von ihnen: keine ist mehr reserviert.
+      for (const { reaction } of treffer) {
+        expect(isReserved(reaction), `${union}/${event} ist noch »reserved«, feuert ab ch02 aber wirklich`).toBe(false);
+      }
+    }
+  });
+
   it("jeder gespielte Stem existiert im Manifest — kein Klang zeigt ins Leere", () => {
     const known = new Set(STEMS.map((s) => s.stem));
     for (const { union, event, reaction } of allReactions()) {

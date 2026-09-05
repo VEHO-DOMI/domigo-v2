@@ -141,6 +141,52 @@ describe("reachability (the honest movement envelope)", () => {
     expect(withHover.has("10,4")).toBe(true);
   });
 
+  it("climbs a ledge it could never jump — but only WITH the grip (L2-M-a · D-812)", () => {
+    // Eine Mauer von SECHS Zeilen ueber der Lauflinie, mit begehbarer Krone.
+    // Ohne den Griff verspricht das Modell JUMP_UP = 4 und die Krone liegt
+    // ausserhalb; mit dem Griff JUMP_UP + HANG_ROWS = 6, und sie liegt drin.
+    const rows = [
+      "................",
+      "................",
+      "................",
+      "................",
+      "................",
+      "..........######",   // Krone (r5); die Fuesse stehen auf r5 ⇒ Knoten r4
+      "..........######",
+      "..........######",
+      "..........######",
+      "..........######",
+      "..........######",
+      "..S.............",
+      "################",
+    ];
+    const ohne = reachableCells(rows, ["jump", "run"]);
+    expect(ohne.has("10,4"), "ohne den Griff ist die Krone sechs Zeilen weit weg").toBe(false);
+    const mit = reachableCells(rows, ["jump", "run", "hang"]);
+    expect(mit.has("10,4"), "mit dem Griff traegt die Kante das Kind hinauf").toBe(true);
+  });
+
+  it("…and the envelope still holds: a ledge too high stays out (L2-M-a)", () => {
+    // NEUN Zeilen. Die Sonde misst, dass die Engine hoechstens acht traegt —
+    // das Modell verspricht sechs und darf deshalb hier NICHTS segnen.
+    const rows = [
+      "................",
+      "................",
+      "..........######",   // Krone (r2) ⇒ Knoten r1, neun Zeilen ueber r10
+      "..........######",
+      "..........######",
+      "..........######",
+      "..........######",
+      "..........######",
+      "..........######",
+      "..........######",
+      "..S.............",
+      "################",
+    ];
+    const mit = reachableCells(rows, ["jump", "run", "hang"]);
+    expect(mit.has("10,1"), "das Modell darf nie eine unerreichbare Stelle segnen").toBe(false);
+  });
+
   it("bridges an even wider gap with a ring", () => {
     const rows = [
       "................",
@@ -269,6 +315,61 @@ describe("checkLevelLaws", () => {
     gutted[5] = "..........X.";
     const fails = checkLevelLaws(parsePaintLevel(level([...gutted])));
     expect(fails.some((f) => f.law === "exit-reachable")).toBe(true);
+  });
+
+  it("stage-script · eine Bühne mit EINER Station ist ein Standbild, keine Szene (L2-M-a)", () => {
+    const rows = [...OK_ROWS];
+    const st = (stations: unknown, over: Record<string, unknown> = {}) => level(rows, {
+      draft: false,
+      phases: [{
+        id: "p1", nameDe: "T", surface: "normal", plates: {}, rows,
+        entities: [{ id: "b1", role: "scene.stage", skin: "papagei", c: 5, r: 17, tier: "E",
+          params: { stage: { propSkin: "auto", stations, ...over } } }],
+        links: [], exit: { to: "done" }, checkpointSide: "far",
+      }] as PaintLevel["phases"],
+    });
+    const laws = (l: PaintLevel) => checkLevelLaws(parsePaintLevel(l)).filter((f) => f.law === "stage-script");
+
+    expect(laws(st([{ dc: 0, dr: 0 }])).length, "eine Station ist keine Bewegung").toBe(1);
+    expect(laws(st([{ dc: 0, dr: 0 }, { dc: 1, dr: 0 }])).length, "zwei genügen").toBe(0);
+    // …die Endstation muss tragen: dc +40 liegt weit hinter dem Gitterrand
+    expect(laws(st([{ dc: 0, dr: 0 }, { dc: 40, dr: 0 }])).length).toBeGreaterThan(0);
+    // …und ohne Objekt hat „dahinter" keinen Sinn
+    const ohneProp = st([{ dc: 0, dr: 0 }, { dc: 1, dr: 0 }]);
+    (ohneProp.phases[0]!.entities[0]!.params!.stage as { propSkin: string }).propSkin = "";
+    expect(laws(ohneProp).length).toBe(1);
+  });
+
+  it("entity-reachable · eine Bühne wird an ihrer ENDSTATION gemessen, nicht am Anker (L2-M-a)", () => {
+    // Blinder Leser, Fund 13, mit Gegenbeispiel bewiesen: der Anker ist das
+    // Objekt (der Baum) und steht am Weg; stehen bleibt der Darsteller auf
+    // seiner Endstation, und DORT muss das Kind hinkommen. Ein Anker in
+    // Reichweite mit einer Endstation jenseits einer Grube bestand das Gesetz.
+    // Links der Boden mit Start und Ausgang, rechts ein TURM (c14/c15), dessen
+    // Krone sechs Zeilen ueber dem Boden liegt — ohne Schwebe und ohne Griff
+    // unerreichbar. Der ANKER der Buehne steht links am Weg.
+    const rows = [
+      "################",
+      ...Array.from({ length: 11 }, () => "................"),
+      ...Array.from({ length: 5 }, () => "..............##"),
+      "..S..X........##",
+      "#######.......##",
+      "################",
+    ];
+    const mit = (dc: number, dr: number) => level(rows, {
+      draft: false,
+      abilities: ["jump", "run"], // KEIN hover, KEIN hang — sonst traegt die Huellkurve hinueber
+      phases: [{
+        id: "p1", nameDe: "T", surface: "normal", plates: {}, rows,
+        entities: [{ id: "b1", role: "scene.stage", skin: "papagei", c: 3, r: 17, tier: "E",
+          params: { stage: { propSkin: "auto", stations: [{ dc: 0, dr: 0 }, { dc, dr }] } } }],
+        links: [], exit: { to: "done" }, checkpointSide: "far",
+      }] as PaintLevel["phases"],
+    });
+    const unreach = (l: PaintLevel) => checkLevelLaws(parsePaintLevel(l))
+      .filter((f) => f.law === "entity-reachable" && f.detail.includes("b1"));
+    expect(unreach(mit(1, 0)).length, "eine Endstation nebenan ist erreichbar").toBe(0);
+    expect(unreach(mit(11, -6)).length, "eine Endstation auf dem Turm nicht").toBeGreaterThan(0);
   });
 
   it("flags unreachable letters", () => {

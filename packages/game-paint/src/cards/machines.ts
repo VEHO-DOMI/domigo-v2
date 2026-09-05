@@ -350,12 +350,73 @@ export const restoreMachine: CardMachine<RestoreState, RestoreAction> = {
   solve: (s) => [{ pickName: s.name }, { pickColour: s.colour }],
 };
 
+// ── match (zwei offene Spalten, einander zuordnen) ───────────────────────────
+//
+// L2-M-a · R249. Das Gegenstueck zur Gedaechtnis-Karte, und bewusst die ANDERE
+// Haelfte: dort liegen die Karten verdeckt und die Maschine ist NACHSICHTIG (ein
+// Fehlgriff deckt nur wieder zu, `memoryMachine.grade` kennt „wrong" gar nicht),
+// weil ein Gedaechtnisspiel vom Probieren lebt. Hier liegt alles offen — wer
+// falsch zuordnet, hat nicht schlecht erinnert, sondern die Frage anders
+// verstanden. Also die mistake-Ordnung: EIN falsches Paar beendet die Karte mit
+// `wrong`, und `CardHost` baut sie neu auf (mit neuer Mischung, weil `init`
+// ohne Seed den Karten-Id nimmt).
+export type MatchState = {
+  kind: "match";
+  left: string[];
+  right: string[];
+  /** links → rechts. Der Schluessel, nie gerendert. */
+  key: Record<string, string>;
+  pickedLeft: string | null;
+  matched: string[];
+  result: Grade;
+};
+export type MatchAction = { tapLeft: string } | { tapRight: string };
+export const matchMachine: CardMachine<MatchState, MatchAction> = {
+  init(task, seed = task.id) {
+    const t = task as Of<"match">;
+    return {
+      kind: "match",
+      // ZWEI Seeds, sonst mischen beide Spalten im Gleichschritt und die
+      // Loesung ist an der Position ablesbar (die Klausel, die `restore` schon
+      // bezahlt hat — und `renderTaskText` benutzt dieselben zwei).
+      left: seededShuffle(t.pairs.map((p) => p.left), seed),
+      right: seededShuffle(t.pairs.map((p) => p.right), `${seed}:right`),
+      key: Object.fromEntries(t.pairs.map((p) => [p.left, p.right])),
+      pickedLeft: null,
+      matched: [],
+      result: "pending",
+    };
+  },
+  act(s, a) {
+    if (s.result !== "pending") return s;
+    if ("tapLeft" in a) {
+      if (s.matched.includes(a.tapLeft)) return s; // sitzt schon
+      return { ...s, pickedLeft: a.tapLeft };
+    }
+    if (s.pickedLeft === null) return s; // rechts ohne links tut nichts
+    if (s.key[s.pickedLeft] !== a.tapRight) return { ...s, pickedLeft: null, result: "wrong" };
+    const matched = [...s.matched, s.pickedLeft];
+    return {
+      ...s,
+      matched,
+      pickedLeft: null,
+      result: matched.length === s.left.length ? "correct" : "pending",
+    };
+  },
+  grade: (s) => s.result,
+  solve(s) {
+    const acts: MatchAction[] = [];
+    for (const l of s.left) acts.push({ tapLeft: l }, { tapRight: s.key[l]! });
+    return acts;
+  },
+};
+
 // ── the registry ─────────────────────────────────────────────────────────────
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const MACHINES: Record<GameTaskV2["kind"], CardMachine<any, any>> = {
   choice: choiceMachine, typed: typedMachine, spell: spellMachine, order: orderMachine,
   oddone: oddMachine, mistake: mistakeMachine, wheel: wheelMachine, memory: memoryMachine,
-  restore: restoreMachine,
+  restore: restoreMachine, match: matchMachine,
 };
 
 /** Drive a task from init to a graded end via its own solution — the harness +

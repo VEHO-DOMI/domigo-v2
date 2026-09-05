@@ -1390,6 +1390,18 @@ ch06 D-920…949.** Der Level-1-Sitz hält D-950…979 (nicht hier).
 
 #### L2-S
 #### L2-M
+**L2-M-a (2026-09-05, Motor-Bahn).** Befunde aus dem Bau selbst. Ohne D-Nummern — die vergibt der Architekt beim Merge.
+
+- **Der Bonus-Timeout schob sein `exit`, setzte aber `exitFired` nicht.** Der Wächter in `sim.ts#checkExit` blieb damit scharf; ein Kind, das beim Ablauf der Uhr zufällig auf dem Ausgang steht, konnte im selben Lauf ein ZWEITES `exit` auslösen. Eine Zeile, mitten im Gegenstand von R235, mitgebaut und im PR ausdrücklich als zusätzlicher Fund benannt.
+- **Die Hülle kann gar keinen Toast auslösen.** `PaintScene#toast` ist privat und steht in keiner öffentlichen Szenen-Schnittstelle; ein Toast entsteht ausschliesslich als `SimEvent`. Ein Posten, der „die Hülle zeigt einen Satz" bestellt, bestellt damit immer auch einen Weg von der Hülle in die Sim — hier den Rückruf `bonusRunDone`, nach dem Muster von `cageHintShown`.
+- **`spawnEntities` wählt seinen Anfangszustand mit `role.startsWith("platform")`.** Eine GEPUNKTETE Rolle, die nicht `platform.*` heisst, fällt dort still auf `patrol` — `scene.stage` hätte für immer stillgestanden, ohne dass ein Tor es sagt. Jede künftige Rolle mit Punkt im Namen prüft diese Zeile.
+- **`PaintParams` (`apps/web/lib/paint-content.ts`) ist ein OFFENES `z.record`, nicht ein geschlossenes Objekt.** Nur `PaintEntity`, `PaintPhase` und `PaintLevelFile` sind geschlossen. Ein neues `params`-Feld kommt also ungeprüft durch — was gut ist (kein Strippen), aber heisst: wer ein Feld baut, das ein GESETZ liest, schreibt die Formprüfung selbst dazu, sonst stünde ein Tippfehler im Drehbuch unbemerkt in der Welt.
+- **Sim und Tabelle sind zwei Leser desselben Vertrags.** `sim.ts#onEntityEvent` und `cards/serving.ts#askerUsesOf` beantworten beide die Frage „welchen Pool hebt dieses Wesen?", und der Kommentar des Sprecher-Gesetzes behauptet, es sei EINE Tabelle. Gemessen ist es das nicht: die Sim liest `askerUsesOf` nicht. Für die Bühne hält ein Test beide in Deckung; die Vereinigung selbst wäre ein eigener Posten.
+- **Das Reichweiten-Modell unterverspricht stärker, als sein eigener Kommentar nahelegt.** Die Sonde misst 6,06 Zeilen Fuss-Hub für einen reinen Halte-Sprung, während `JUMP_UP` 4 verspricht. Das ist Absicht und richtig — aber wer eine neue Kante daran hängt, rechnet mit dem VERSPRECHEN, nicht mit der Messung, und muss den Abstand selbst wählen.
+- **Die hang-Kante findet in den heutigen Kapiteln nichts Neues.** Gemessen an allen sechs Level-Dateien: null neue Knoten, null neue Verstösse. Sie FEUERT (ch02 hat 15 Leisten, zwölf ihrer Kronen bestätigt sie), aber die L0-Gerüsträume sind flach — die zweite Ebene, für die sie gebaut ist, schneidet erst L2-G2.
+- **`ch02.policy.json` führt `match` in `fieldKinds`, aber `match-it` NICHT in `fieldForms`.** Sobald eine echte `match`-Karte ins Kapitel wandert, meldet Gesetz 13b sie. Gehört der Karten-Bahn, nicht dieser — hier nur gemeldet.
+- **Der ch06-Entwurf für `match` schlägt Englisch↔Deutsch vor** (`park` ↔ `Park`), ch02s ratifizierter Vertrag ist Englisch↔Englisch. Das Tor erdet jetzt BEIDE Spalten als Englisch; ch06s Form wäre damit rot. Als Antrag gemeldet, nicht still zugelassen.
+
 #### L2-A
 
 ### LW · ch03 (D-830…859)
