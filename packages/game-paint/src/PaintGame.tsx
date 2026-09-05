@@ -503,6 +503,11 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
    *  and found-count. The remount consumes it: the child returns to the spot
    *  (and wallet) they left with, not to the phase start with an empty hand. */
   const bonusReturnRef = useRef<{ phaseId: string; spawn: { c: number; r: number }; purse: number; found: number } | null>(null);
+  /** R235 · L2-M-a: die Kleckskammer wird EINMAL betreten. Gesetzt, wenn der
+   *  Lauf endet — durch die Uhr ODER durch den Ausgang —, gelesen von der Sim
+   *  an der Klecks-Tuer. Ein Kapitel hat genau eine `level.bonus`-Phase, darum
+   *  genuegt ein Ja/Nein (dieselbe Form wie `cageHintShownRef`). */
+  const bonusRunDoneRef = useRef(false);
   /** R5-A2: letter CELLS consumed per phase — a remount must not respawn them
    *  into double-collectability. Same outlives-a-mount contract as the refs
    *  below. */
@@ -1060,6 +1065,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
         reducedMotion,
         grantedAbilities: () => abilitiesRef.current,
         freedCageIds: () => freedRef.current,
+        bonusRunDone: () => bonusRunDoneRef.current,
         cageHintShown: () => cageHintShownRef.current,
         arenaBriefShown: () => arenaBriefShownRef.current,
         collectedPickupIds: () => [...tipsTakenRef.current.map((t) => t.id), ...booksTakenRef.current, ...clothIdsRef.current],
@@ -1328,6 +1334,11 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
               phrase: bs?.phrase ?? [],
             },
           });
+          // R235 · L2-M-a: DIESER Zweig ist beide Enden des einen Laufs — die
+          // Uhr (`bonus-timeout`) und der Ausgang. Ab hier ist die Kammer zu;
+          // die naechste Beruehrung der Klecks-Tuer bekommt einen Satz statt
+          // einer Rechnung. Die Rueckerstattung bleibt unberuehrt (Rahmen §3).
+          bonusRunDoneRef.current = true;
           // R5-A2: mountPhase consumes the return ticket (spawn + wallet)
           target = bonusReturnRef.current?.phaseId ?? level.phases[0]!.id;
         }

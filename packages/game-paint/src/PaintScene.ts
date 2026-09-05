@@ -314,6 +314,8 @@ export interface PaintSceneCfg {
    *  state (see SimCfg; the scene only forwards). */
   spawnCell?: { c: number; r: number };
   letterLedger?: () => { takenCells: readonly string[]; purse: number; found: number };
+  /** R235 · L2-M-a: hat die Kleckskammer ihren einen Lauf gehabt? (SimCfg) */
+  bonusRunDone?: () => boolean;
   /** R5-A6: draw the collision grid over the world (teacher door, ?grid=1). */
   debugGrid?: boolean;
   /** R5-N3 · E4: skip the pre-warmer entirely (teacher door `?warm=0`). */
@@ -1163,6 +1165,7 @@ export class PaintScene extends Phaser.Scene {
       airModel: cfg.airModel,
       spawnCell: cfg.spawnCell,
       letterLedger: cfg.letterLedger,
+      bonusRunDone: cfg.bonusRunDone,
     });
   }
 

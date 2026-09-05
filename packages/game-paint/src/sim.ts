@@ -302,6 +302,18 @@ export interface SimCfg {
    *  must not buy an already emptied room. The guard is in the constructor.
    *  Same contract as freedCageIds. */
   letterLedger?: () => { takenCells: readonly string[]; purse: number; found: number };
+  /** R235 · L2-M-a · HAT DIE KLECKSKAMMER IHREN EINEN LAUF SCHON GEHABT?
+   *  Kokis Ruling R235: ein Bonusraum wird EINMAL betreten, danach ist er zu.
+   *  Der Zustand kann nicht hier wohnen — eine Sim lebt eine Phase lang, der
+   *  Lauf liegt eine Phase frueher. Also dieselbe Paarung wie beim
+   *  Kaefig-Hinweis (`cageHintShown`): der Shell haelt die Erinnerung ueber die
+   *  Phasenwechsel, die Sim faellt das Urteil an der Tuer — denn nur hier
+   *  entsteht ein Toast (`SimEvent{type:"toast"}`), die Huelle hat dafuer gar
+   *  keinen Weg (`PaintScene#toast` ist privat).
+   *  ⚠ `sim.ts#isBonusRoom` bestueckt die Kammer weiterhin je Besuch (D-5
+   *  Option A). Dieser Zweig wird durch R235 TOT — absichtlich stehengelassen:
+   *  er ist die Antwort auf „was, wenn ein Kapitel je zwei Laeufe verkauft". */
+  bonusRunDone?: () => boolean;
 }
 
 // ── PK-R3b · R3-16 · THE COLLECTIBLE MAGNET (doc 42 §4, mined from Keen) ─────
@@ -601,7 +613,15 @@ export class Sim {
     // is already exactly 0.
     if (this.bonusLeftTicks > 0 && !this.exitFired) {
       this.bonusLeftTicks--;
-      if (this.bonusLeftTicks === 0) { events.push({ type: "exit", to: "bonus-timeout" }); return events; }
+      if (this.bonusLeftTicks === 0) {
+        // L2-M-a (Fund am Rande von R235): hier stand kein `exitFired = true`.
+        // Der Waechter in `checkExit` (»if (this.exitFired) return;«) blieb
+        // damit scharf, und ein Kind, das beim Ablauf der Uhr zufaellig auf dem
+        // Ausgang steht, konnte im selben Lauf ein ZWEITES exit ausloesen.
+        this.exitFired = true;
+        events.push({ type: "exit", to: "bonus-timeout" });
+        return events;
+      }
     }
 
     // PK-R6 · C1: the engage edge, read BEFORE prevPad is overwritten below.
@@ -1274,6 +1294,12 @@ export class Sim {
         const e = this.world.entities.find((x) => x.id === ev.id);
         if (this.doorSolved.has(ev.id)) break;
         const doorSkin = e?.skin ?? "door";
+        if (ev.kind === "bonus" && this.cfg.bonusRunDone?.() === true) {
+          // R235: der Lauf ist gelaufen. Kein Bezahl-Fenster mehr — ein Satz,
+          // der sagt WARUM, statt einer Tuer, die sich stumm nicht oeffnet.
+          events.push({ type: "toast", msg: "Die Kleckskammer ist zu — du warst schon drin." });
+          break;
+        }
         if (ev.kind === "bonus") this.ask({ use: "bonuspay", ctx: { type: "door", id: ev.id, kind: ev.kind, skin: doorSkin } }, events);
         else this.ask({ use: "door", ctx: { type: "door", id: ev.id, kind: String(e?.params.kind ?? "exit"), skin: doorSkin } }, events);
         break;
