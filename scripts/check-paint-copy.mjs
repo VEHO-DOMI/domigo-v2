@@ -38,6 +38,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { cloakErrorsDe, registerErrorsDe } from "../packages/content-schema/src/game-tasks.ts";
+import { paintChapters, skipLedger } from "./paint-chapters.mjs";
 
 // ── the stripper ─────────────────────────────────────────────────────────────
 /** Everything in `src` that is NOT a comment, line by line (blank where a
@@ -128,12 +129,20 @@ const strings = function* (node, at = "") {
  * Selbsttest ihr echte Quellen mit genau einer Verfälschung reichen kann.
  *
  * @param {{shell:{file:string,src:string}[], content:{file:string,json:object}[],
- *          corpus:{file:string,text:string}[], lexika:Record<number,object>, probeSrc:string}} welt
+ *          corpus:{file:string,text:string}[], lexika:Record<number,object>,
+ *          kapitel:object[], probeSrc:string}} welt
  */
-export const analyse = ({ shell, content, corpus, lexika, probeSrc }) => {
+export const analyse = ({ shell, content, corpus, lexika, kapitel = [], probeSrc }) => {
   const failures = [];
   const notes = [];
   const fail = (where, msg) => { failures.push(`${where}: ${msg}`); };
+  // L0c · P1: der NAMENTLICHE Skip kommt aus der geteilten Buchfuehrung, damit
+  // dieses Tor dasselbe Etikett benutzt wie seine vier Nachbarn — und damit ein
+  // FERTIGES Kapitel, dem eine Eingabe fehlt, als Luecke gilt und nicht als
+  // Bauphase (`skipLedger` unterscheidet das, dieses Tor konnte es bisher gar
+  // nicht: es kannte das Wort `draft` nicht).
+  const ledger = skipLedger(kapitel);
+  const entwurfVon = new Map(kapitel.map((c) => [c.chapter, c.draft === true]));
 
   // ── 1 · THE SHELL ──────────────────────────────────────────────────────────
   for (const { file, src } of shell) {
@@ -242,17 +251,69 @@ export const analyse = ({ shell, content, corpus, lexika, probeSrc }) => {
   let erklaerungenSeen = 0;
   let lehrtSeen = 0;
   let liftedSeen = 0;
+  // ── 2c-a · L0c · DIE UNIT EINER INHALTSDATEI IST BESTIMMBAR ODER ROT (R266b) ─
+  // Hier stand ein Rueckfall: war die Unit nicht bestimmbar, galt die Summe
+  // ALLER Lexika. Gemessen war das am 03.09. eine Erdung gegen 334 Woerter und
+  // nach dem Merge-Zug gegen 913 — also ein Tor, das mit jedem neuen Kapitel
+  // NACHSICHTIGER wird. Ein Rueckfall, der ein Tor lascher macht, ist ein
+  // Defekt: die Datei sagt jetzt, welche Unit sie meint, oder das Tor sagt,
+  // welche Datei es nicht einordnen konnte.
+  const uDatei = (n) => `u${String(n).padStart(2, "0")}-lexicon.json`;
+  const unitVon = (file, json) => {
+    const chNum = /(?:^|\/)ch(\d{2})\.(?:level|tasks\.v2)\.json$/.exec(file)?.[1];
+    if (chNum !== undefined) return Number(chNum);
+    const ausFeld = typeof json.unit === "string" ? Number(/u(\d{2})$/.exec(json.unit)?.[1]) : Number.NaN;
+    return Number.isFinite(ausFeld) ? ausFeld : null;
+  };
+  for (const { file, json } of content) {
+    if (unitVon(file, json) === null) {
+      fail(file, "unit: keine bestimmbare Unit — weder ein `unit`-Feld der Form g<n>-uNN noch die "
+        + `Namensform chNN.level.json / chNN.tasks.v2.json. Ohne Unit fiele die Erdung auf die Summe `
+        + `ALLER Lexika zurueck (${alle.words.size} Woerter statt der Summe bis zur eigenen Unit) — `
+        + "ein Rueckfall, der dieses Tor LASCHER macht, ist ein Defekt (R266b)");
+    }
+  }
+
   for (const { file, json } of content) {
     if (!file.endsWith(".level.json")) continue;
-    // L0 · N4: die Unit dieses Kapitels — aus der Datei selbst (`unit`), sonst
-    // aus der Kapitel-Nummer, die im Korpus eins zu eins auf die Unit zeigt.
-    // Faellt beides aus, gilt die Summe aller Lexika: weiter als noetig, aber
-    // niemals stumm.
-    const chNum = /ch(\d{2})\.level\.json$/.exec(file)?.[1];
-    const unitNum = typeof json.unit === "string"
-      ? Number(/u(\d{2})$/.exec(json.unit)?.[1])
-      : (chNum === undefined ? undefined : Number(chNum));
-    const L = lexBis(Number.isFinite(unitNum) ? unitNum : undefined);
+    // L0 · N4: die Unit dieses Kapitels — aus der Kapitel-Nummer, die im Korpus
+    // eins zu eins auf die Unit zeigt, sonst aus dem `unit`-Feld der Datei.
+    // L0c: faellt beides aus, ist das oben gemeldet und hier nichts mehr zu tun.
+    const chapter = /(?:^|\/)(ch\d{2})\.level\.json$/.exec(file)?.[1];
+    const unitNum = unitVon(file, json);
+    if (unitNum === null) continue;
+    const uPfad = `${GROUNDING}/${uDatei(unitNum)}`;
+
+    // L0c · P1 (D-875) · DIE ENTWURFS-SEMANTIK, die diesem Tor als einzigem
+    // Inhalts-Tor noch fehlte. Ein Kapitel im Bau hat seine Regel-Seiten oft vor
+    // dem Unit-Lexikon — die G-Bahn schreibt die Seiten, die T-Bahn das Lexikon.
+    // Fehlt es im ENTWURF, wird das NAMENTLICH gemeldet und die Erdung dieses
+    // Kapitels ausgelassen; fehlt es einem FERTIGEN Kapitel, ist es ein Loch.
+    if (lexika?.[unitNum] === undefined) {
+      if (chapter !== undefined && entwurfVon.get(chapter) === true) {
+        ledger.skip(chapter, "paint-copy/erdung", `kein ${uPfad} — die T-Bahn dieses Kapitels liefert es`);
+      } else {
+        fail(file, `grounding: ${chapter ?? "dieses Kapitel"} lehrt Unit ${unitNum}, aber ${uPfad} liegt nicht `
+          + "auf der Platte — ohne Lexikon prueft die Erdung nichts und bliebe trotzdem gruen");
+      }
+      continue;
+    }
+
+    // L0c · P16 (R266a) · DIE REIHE DARF KEINE LOECHER HABEN. Der Ordner-Scan
+    // nimmt, was da ist; am 03.09. fehlte u04 zwischen u03 und u05 (es steckte in
+    // einem PR), und kein Tor sagte es — die kumulative Summe war damit still um
+    // eine ganze Unit zu klein, und jedes Beispiel, das ihre Woerter benutzt,
+    // waere aus dem falschen Grund rot geworden.
+    const loecher = [];
+    for (let n = 1; n < unitNum; n += 1) if (lexika[n] === undefined) loecher.push(uDatei(n));
+    if (loecher.length > 0) {
+      fail(file, `grounding: die Lexikon-Reihe hat Loecher — ${chapter ?? "dieses Kapitel"} lehrt Unit `
+        + `${unitNum} und erdet kumulativ gegen u01…${uDatei(unitNum).slice(0, 3)}, aber unter ${GROUNDING} `
+        + `fehlt: ${loecher.join(", ")}. Die Summe waere still zu klein`);
+      continue;
+    }
+
+    const L = lexBis(unitNum);
     const lexPhrases = L.phrases;
     for (const [at, text] of strings(json)) {
       if (/(^|\.)erklaerungDe$/.test(at)) erklaerungenSeen += 1;
@@ -270,7 +331,8 @@ export const analyse = ({ shell, content, corpus, lexika, probeSrc }) => {
       for (const t of enTokens(text)) {
         if (!EN_FREE.has(t) && !enGrounded(t, extra, L)) {
           clean = false;
-          fail(`${file} ${at}`, `grounding: EN token not in the unit lexicon: "${t}" (line: "${text}")`);
+          fail(`${file} ${at}`, `grounding: EN token not in ${chapter ?? "this chapter"}'s cumulative unit `
+            + `lexicon (u01…${uDatei(unitNum).slice(0, 3)}, ${uPfad}): "${t}" (line: "${text}")`);
         }
       }
       // …and the note, not a verdict (K-1). A sentence of ours that is also the
@@ -340,6 +402,16 @@ export const analyse = ({ shell, content, corpus, lexika, probeSrc }) => {
     notes.push(`  … ${liftedSeen} von ${examplesSeen} Beispielen stehen 1:1 im Buch (erlaubt seit K-1, aber sichtbar)`);
   }
 
+  // L0c · P1 · DIE BUCHFUEHRUNG STEHT VOR DEM URTEIL. L0 hat diese Klasse einmal
+  // bezahlt: der Bericht ueber ausgelassene Gesetze stand HINTER `process.exit(1)`
+  // und war im roten Lauf nie zu sehen — also genau dann nicht, wenn jemand
+  // wissen muss, welches Gesetz mangels Eingaben gar nicht lief. `notes` wird vom
+  // echten Lauf vor den Fehlern gedruckt, also gehoert er hierher.
+  for (const r of ledger.rows()) notes.push(`  · ${r}`);
+  // …und ein Etikett ohne Exit-Code ist eine Notiz, kein Tor (L0b · D-792): was
+  // `skipLedger` als Luecke eines FERTIGEN Kapitels fuehrt, wird rot.
+  for (const g of ledger.gaps()) fail("LUECKE", `${g} — dieses Kapitel traegt kein \`draft\`, das ist ein Loch, keine Bauphase`);
+
   return { failures, notes, scanned: `${shell.length} shell files · ${content.length} content files` };
 };
 
@@ -391,7 +463,11 @@ const laden = () => {
       if (m) lexika[Number(m[1])] = JSON.parse(fs.readFileSync(path.join(GROUNDING, f), "utf8"));
     }
   }
-  return { shell, content, corpus, lexika, probeSrc: fs.readFileSync(PROBE_FILE, "utf8") };
+  // L0c: die geteilte Kapitel-Aufloesung — dieselbe, die check-colour-truth,
+  // check-copy-register, check-game-tasks und check-level-design fragen. Dieses
+  // Tor war das letzte Inhalts-Tor, das sie nicht kannte, und deshalb das
+  // letzte, das das Wort `draft` nicht buchstabieren konnte.
+  return { shell, content, corpus, lexika, kapitel: paintChapters(), probeSrc: fs.readFileSync(PROBE_FILE, "utf8") };
 };
 
 const weltAufDerPlatte = laden();
@@ -466,7 +542,7 @@ if (process.argv.includes("--selftest")) {
       }
       if (!gesetzt) throw new Error("kein beispieleEn im Level — der Fall kann nicht gebaut werden");
       return analyse(w);
-    }, "grounding: EN token not in the unit lexicon"],
+    }, "grounding: EN token not in"],
 
     ["der Kommentar-Streifer frisst die Kopie (VACUITY)", () => {
       const w = kopie(weltAufDerPlatte);
@@ -475,6 +551,29 @@ if (process.argv.includes("--selftest")) {
       w.probeSrc = w.probeSrc.replace(/Los geht's!/g, "LOS-GEHTS-WEG");
       return analyse(w);
     }, "VACUITY"],
+
+    // L0c · P17 (R266b): eine Datei, die ihre Unit nicht nennt, faellt nicht mehr
+    // auf die Summe aller Lexika zurueck, sondern wird namentlich rot.
+    ["eine Inhaltsdatei ohne bestimmbare Unit (2c-a, R266b)", () => {
+      const w = kopie(weltAufDerPlatte);
+      w.content.push({
+        file: `${STORIES}/g1.st.lost-pages/paint/fremd.tasks.v2.json`,
+        json: { schema: "gameTasks@2", items: [] },
+      });
+      return analyse(w);
+    }, "unit: keine bestimmbare Unit"],
+
+    // L0c · P1 (D-875), die ROTE Haelfte: einem FERTIGEN Kapitel fehlt sein
+    // Unit-Lexikon. Die gruene Haelfte (Entwurf ⇒ namentlicher Skip) steht als
+    // eigene Probe unter der Fallliste — sie prueft eine NOTIZ, keinen Fehler.
+    ["ein fertiges Kapitel ohne sein Unit-Lexikon (P1, D-875)", () => {
+      const w = kopie(weltAufDerPlatte);
+      w.content.push({
+        file: `${STORIES}/g1.st.lost-pages/paint/ch09.level.json`,
+        json: { schema: "paintLevel@2", chapter: "ch09" },
+      });
+      return analyse(w);
+    }, "liegt nicht"],
 
     ["NICHT-TAMPER: der echte Stand ist gruen", () => analyse(weltAufDerPlatte), null],
   ];
@@ -506,9 +605,32 @@ if (process.argv.includes("--selftest")) {
       console.log(`  ✓ ${name} — gruen`);
     }
   }
+  // ── L0c · P1, die GRUENE Haelfte ────────────────────────────────────────────
+  // Ein Entwurfs-Kapitel ohne Unit-Lexikon darf nicht rot werden — aber es darf
+  // auch nicht SCHWEIGEN. Genau das ist der Unterschied, den dieses Tor bisher
+  // nicht kannte, und ein Fall, der nur »gruen« prueft, wuerde ihn nicht sehen:
+  // ein stiller Skip ist von einem defekten Tor nicht zu unterscheiden.
+  {
+    const w = kopie(weltAufDerPlatte);
+    w.kapitel = [...w.kapitel, { chapter: "ch09", draft: true }];
+    w.content.push({
+      file: `${STORIES}/g1.st.lost-pages/paint/ch09.level.json`,
+      json: { schema: "paintLevel@2", chapter: "ch09" },
+    });
+    const { failures, notes } = analyse(w);
+    const genannt = notes.some((n) => n.includes("ch09") && n.includes("draft"));
+    if (failures.length !== 0 || !genannt) {
+      schlecht++;
+      console.error("  ✗ ein ENTWURFS-Kapitel ohne Unit-Lexikon — erwartet: gruen UND namentlich gemeldet; "
+        + `gemessen: ${failures.length} Fehler, Skip-Zeile ${genannt ? "da" : "FEHLT"}`);
+    } else {
+      console.log("  ✓ ein ENTWURFS-Kapitel ohne Unit-Lexikon — gruen, aber namentlich gemeldet (nie still)");
+    }
+  }
+
   if (schlecht > 0) { console.error("check-paint-copy --selftest: FEHLGESCHLAGEN"); process.exit(1); }
-  console.log(`check-paint-copy --selftest: OK — ${faelle.length} Faelle, sechs rote Lichter an der `
-    + `eingespeisten Stelle, der echte Stand gruen`);
+  console.log(`check-paint-copy --selftest: OK — ${faelle.length} Faelle + die Entwurfs-Probe: `
+    + `${faelle.length - 1} rote Lichter an der eingespeisten Stelle, ein namentlicher Skip, der echte Stand gruen`);
   process.exit(0);
 }
 
