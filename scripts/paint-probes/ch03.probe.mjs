@@ -425,3 +425,134 @@ const teilB = () => {
 };
 
 teilB();
+
+// ─────────────────────────────────────────────────────────────────────────────
+// TEIL C · DIE STEIGENDE BILGE
+//
+// Dieselbe Regel wie oben: keine Zahl aus einer Rechnung. Die Sonde baut einen
+// Laderaum, laesst das Wasser laufen und druckt, was die echte `Sim` tut.
+
+/** Ein Laderaum mit einem LAUFGANG: das Kind steht darauf und kann die Griffe
+ *  erreichen, waehrend das Wasser von unten steigt. Ohne den Laufgang stuende
+ *  das Kind im Anfangsstand der Bilge und waere nach dem ersten Puls ertrunken —
+ *  der erste Entwurf dieser Sonde hat genau das gemessen und nichts gelernt. */
+const laderaum = ({ pumpeC = 8, ventilC = 18, gangR = 10 } = {}) => {
+  const breite = 28, hoehe = 22;
+  const rows = [];
+  for (let r = 0; r < hoehe; r++) {
+    let z = "";
+    for (let c = 0; c < breite; c++) z += (r === 0 || r === hoehe - 1) ? "#" : ".";
+    rows.push(z);
+  }
+  let gang = rows[gangR + 1].split("");
+  for (let c = 1; c < breite - 1; c++) gang[c] = "#";
+  rows[gangR + 1] = gang.join("");
+  let st = rows[gangR].split(""); st[3] = "S"; st[breite - 4] = "X"; rows[gangR] = st.join("");
+  return {
+    rows,
+    entities: [
+      { id: "pumpe", role: "pump.trigger", skin: "fb-ent-generic", c: pumpeC, r: gangR, tier: "E", params: { kind: "pump" } },
+      { id: "ventil", role: "pump.trigger", skin: "fb-ent-generic", c: ventilC, r: gangR, tier: "E", params: { kind: "valve" } },
+    ],
+    bilge: { band: { c0: 1, c1: breite - 2 }, rStart: hoehe - 2, rTop: 6, pulseTicks: 30, riseRows: 1, freezeTicks: 180, pumps: ["pumpe"], valve: "ventil" },
+    bodenR: gangR,
+  };
+};
+
+const bilgeSim = (raum) => new Sim({
+  level: {
+    schema: "paintLevel@1", id: "g1-probe-ch03b", chapter: "ch03", draft: true, name: "Sonde",
+    goalDe: "x", whyDe: "x", hintsDe: [], collectNounDe: "x", abilities: ["jump", "punch"],
+    phases: [{ id: "p1", nameDe: "Laderaum", surface: "normal", plates: {}, rows: raum.rows,
+      entities: raum.entities, links: [], exit: { to: "done" }, bilge: raum.bilge }],
+  },
+  phaseId: "p1", grantedAbilities: () => ["jump", "punch"], freedCageIds: () => [],
+});
+
+const teilC = () => {
+  console.log("# TEIL C · DIE STEIGENDE BILGE\n");
+
+  console.log("## 8 · DIE ANSTIEGSKURVE — steigt sie wirklich in Pulsen?\n");
+  const raum = laderaum();
+  const sim = bilgeSim(raum);
+  console.log(`Deklariert: Start Zeile ${raum.bilge.rStart} · Höchststand ${raum.bilge.rTop} · alle ${raum.bilge.pulseTicks} Ticks um ${raum.bilge.riseRows} Zeile(n)`);
+  const pulse = [];
+  let letzte = sim.bilgeWaterRow;
+  for (let t = 0; t < 900; t++) {
+    const evs = sim.step(pad({}));
+    if (sim.bilgeWaterRow !== letzte) { pulse.push([t, sim.bilgeWaterRow, evs.some((e) => e.type === "bilgePulse")]); letzte = sim.bilgeWaterRow; }
+  }
+  console.log("| Tick | Zeile | Ereignis `bilgePulse`? | Abstand zum vorigen Puls |");
+  console.log("|------|-------|------------------------|--------------------------|");
+  let vorher = null;
+  for (const [t, r, ev] of pulse) {
+    console.log(`| ${String(t).padStart(4)} | ${String(r).padStart(5)} | ${ev ? "ja" : "NEIN"}${" ".repeat(20)} | ${vorher === null ? "—" : String(t - vorher).padStart(3)} |`);
+    vorher = t;
+  }
+  console.log(`\nGemessen: ${pulse.length} Pulse, Endstand Zeile ${sim.bilgeWaterRow}. Erwartet ${raum.bilge.rStart - raum.bilge.rTop} Pulse bis Zeile ${raum.bilge.rTop}.\n`);
+
+  console.log("## 9 · DAS GITTER, DAS DER TICK SIEHT — und das, das im Level steht\n");
+  const s2 = bilgeSim(laderaum());
+  const vor = s2.grid.join("\n");
+  for (let t = 0; t < 200; t++) s2.step(pad({}));
+  console.log(`Autoriertes \`grid\` nach 200 Ticks unverändert: ${s2.grid.join("\n") === vor ? "JA" : "NEIN — der Renderer bekäme ein wanderndes Terrain"}`);
+  console.log(`Wasserstand nach 200 Ticks: Zeile ${s2.bilgeWaterRow} (Start ${laderaum().bilge.rStart})`);
+  const ohne = new Sim({
+    level: { schema: "paintLevel@1", id: "x", chapter: "ch03", draft: true, name: "s", goalDe: "x", whyDe: "x", hintsDe: [], collectNounDe: "x", abilities: ["jump"],
+      phases: [{ id: "p1", nameDe: "s", surface: "normal", plates: {}, rows: laderaum().rows, entities: [], links: [], exit: { to: "done" } }] },
+    phaseId: "p1", grantedAbilities: () => ["jump"], freedCageIds: () => [],
+  });
+  console.log(`Phase OHNE bilge: Wasserzeile = ${ohne.bilgeWaterRow} (−1 heisst: keine Bilge, liveGrid bleibt dieselbe Referenz)\n`);
+
+  console.log("## 10 · DIE FAUST — friert der Pumpengriff das Wasser ein, lässt das Ventil es ab?\n");
+  console.log("Verfahren: das Kind läuft über den Laufgang zum Griff und wirft die Faust. ⚠ Die Faust fliegt beim");
+  console.log("LOSLASSEN der Taste (`player.ts#punchReleased`), nicht beim Drücken — der erste Entwurf dieser");
+  console.log("Sonde hielt die Taste gedrückt und meldete „nie getroffen\" über einem Motor, der einwandfrei lief.");
+  console.log("Gedruckt wird der Stand vor dem Treffer und 200 Ticks danach, dazu die VERGLEICHSZEILE ohne Treffer.\n");
+
+  // die Eich-Zeile: derselbe Raum, dieselben 200 Ticks, keine Faust
+  const rEich = laderaum();
+  const sEich = bilgeSim(rEich);
+  for (let t = 0; t < 90; t++) sEich.step(pad({}));
+  const eichVor = sEich.bilgeWaterRow;
+  for (let t = 0; t < 200; t++) sEich.step(pad({}));
+  console.log(`**Ohne Faust** (Eich-Zeile): Zeile ${eichVor} → ${sEich.bilgeWaterRow} in 200 Ticks.`);
+
+  for (const [was, zielC] of [["Pumpengriff", 8], ["Ablassventil", 18]]) {
+    const r3 = laderaum();
+    const s3 = bilgeSim(r3);
+    for (let t = 0; t < 90; t++) s3.step(pad({}));
+    const vorherRow = s3.bilgeWaterRow;
+    let getroffen = null, ereignis = "—";
+    for (let t = 0; t < 900; t++) {
+      const cc = s3.player.x / SUBS / TILE;
+      const nah = Math.abs(cc - zielC) < 1.5;
+      // 6 Ticks halten, dann loslassen — die Faust fliegt beim Loslassen
+      const punch = nah && t % 16 < 6;
+      const evs = s3.step(pad({ right: cc < zielC - 0.5, left: cc > zielC + 0.5, punch }));
+      const e = evs.find((x) => x.type === "pumpFrozen" || x.type === "bilgeDrained");
+      if (e && getroffen === null) { getroffen = t; ereignis = e.type; }
+      if (getroffen !== null && t >= getroffen + 200) break;
+    }
+    const nachher = s3.bilgeWaterRow;
+    const urteil = ereignis === "bilgeDrained" ? `abgelassen auf den Anfangsstand ${r3.bilge.rStart}`
+      : ereignis === "pumpFrozen" ? `eingefroren — ohne Treffer stünde es bei ${sEich.bilgeWaterRow}`
+      : "NICHTS PASSIERT — das wäre ein Befund";
+    console.log(`**${was}** (Spalte ${zielC}): Stand vor dem Treffer Zeile ${vorherRow} · Ereignis \`${ereignis}\` bei Tick ${getroffen ?? "NIE GETROFFEN"} · 200 Ticks später Zeile ${nachher} → ${urteil}`);
+  }
+  console.log("");
+
+  console.log("## 11 · ERTRINKT DAS KIND, WENN DAS WASSER ES ERREICHT?\n");
+  const r4 = laderaum();
+  const s4 = bilgeSim(r4);
+  let platsch = null;
+  for (let t = 0; t < 1200 && platsch === null; t++) {
+    const evs = s4.step(pad({}));
+    if (evs.some((e) => e.type === "toast" && e.msg.includes("Platsch"))) platsch = t;
+  }
+  console.log(`Das Kind steht still auf Zeile ${r4.bodenR - 1}. Die Bilge erreicht es bei Tick ${platsch ?? "NIE — DAS WÄRE EIN BEFUND"} (Wasserzeile ${s4.bilgeWaterRow}).`);
+  console.log("Das ist die eigentliche Probe der ganzen Trennung: der Hazard-Treffer kommt aus `stepPlayer`,");
+  console.log("und `stepPlayer` liest `liveGrid` — läse es weiter `grid`, stiege das Wasser sichtbar und täte nichts.\n");
+};
+
+teilC();
