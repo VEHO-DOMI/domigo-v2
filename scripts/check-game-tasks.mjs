@@ -111,6 +111,10 @@ let CHAPTER_NOW = null;
 // `checkAgainstLevel` weiter unten darauf schreibt: eine Deklaration NACH ihrem
 // Leser haelt nur so lange, wie die Aufruf-Reihenfolge stimmt.
 const coverageReports = [];
+// L0c · P9 (D-880): die Kunst-Posten eines Entwurfs — dieselbe Form wie die
+// Abdeckungs-Posten daneben, eigener Topf, damit die Zahl am Ende sagt, WOVON
+// ein Entwurf noch etwas schuldet.
+const kunstBerichte = [];
 /** L0 · N6: die Summe ALLER Unit-Lexika des Korpus. Nur Gesetz 18f liest sie —
  *  es prueft eine GLOBALE Glossen-Tabelle und darf deshalb nicht am Wortschatz
  *  eines einzelnen Kapitels haengen. Die Karten-Erdung selbst bleibt streng je
@@ -143,6 +147,41 @@ const walkArt = (dir) => {
   }
 };
 walkArt(PAINT_ART_ROOT);
+
+// ── L0c · P9 (D-935) · …UND DIE ORDNER-GENAUE MENGE JE KAPITEL ──────────────
+// `paintedStems` oben ist FLACH: fuer sie liegt `door_a` da, egal in welchem
+// Ordner. Der ausgelieferte Aufloeser ist ordner-genau —
+// `apps/web/lib/paint-art.ts#artDirsFor` gibt jedem Kapitel GENAU
+// `["hero", chapter]`. Aus der Differenz kam D-935: ch06 musste zwei Tuer-Karten
+// `door_a` zusagen, weil die FLACHE Menge das Blatt in `ch01/` fand — laden kann
+// ch06 es nie, und das Kind sieht den grauen Platzhalter. `check-paint-art`
+// spiegelt `artDirsFor` bereits (dort `praesentJeKapitel`); hier stand die
+// Spiegelung noch aus. Die flache Menge bleibt, wo sie hingehoert.
+const blaetterIn = (dir) => {
+  const out = new Set();
+  if (!fs.existsSync(dir)) return out;
+  for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
+    if (e.isFile() && e.name.endsWith(".png")) out.add(e.name.replace(/\.png$/, ""));
+  }
+  return out;
+};
+const gemaltFuer = (chapter) => {
+  const menge = new Set(blaetterIn(path.join(PAINT_ART_ROOT, "hero")));
+  for (const stem of blaetterIn(path.join(PAINT_ART_ROOT, chapter))) menge.add(stem);
+  return menge;
+};
+
+// L0c · P9 (D-880) · DIE FREILISTE, nur konsultiert. Ihre Hygiene (Grund,
+// Ablaufdatum, ueberfluessige Eintraege) gehoert `check-paint-art` — zwei
+// Besitzer fuer eine Datei sind ein Streit, kein Gesetz. Hier zaehlt allein:
+// steht dieser Stem heute noch geduldet drin?
+const KUNST_FREILISTE = (() => {
+  const p = "scripts/paint-art-allowlist.json";
+  if (!fs.existsSync(p)) return new Map();
+  try {
+    return new Map((JSON.parse(fs.readFileSync(p, "utf8")) ?? []).map((e) => [e.stem, e]));
+  } catch { return new Map(); }
+})();
 
 let failures = 0;
 /** When the selftest is driving, failures are COLLECTED instead of printed: a
@@ -964,12 +1003,17 @@ function checkAgainstLevel(file, level, items) {
 //   a · art exists for the asker and the card declares none  → silent fallback
 //   b · the declared stem is not on disk                     → a broken portrait
 //   c · the declared stem is not a cell of any declared skin → someone else's face
-function checkPortraits(file, items) {
+function checkPortraits(file, items, cx) {
   const w = path.basename(file);
+  // L0c · P9: dieselbe Menge, die der Aufloeser diesem Kapitel gibt — nicht der
+  // ganze Kunst-Baum. Ein Blatt im Ordner eines fremden Kapitels ist fuer dieses
+  // hier nicht gemalt, auch wenn `paintedStems` es kennt.
+  const gemalt = gemaltFuer(cx?.chapter ?? "ch01");
+  const entwurf = cx?.draft === true;
   for (const t of items) {
     if (t.stimulus?.type !== "entity") continue; // no asker, no portrait
     const skins = t.skins ?? [];
-    const painted = skins.filter((s) => paintedStems.has(`${s}_a`));
+    const painted = skins.filter((s) => gemalt.has(`${s}_a`));
     const stem = t.stimulus.art;
     if (stem === undefined) {
       if (painted.length > 0) {
@@ -977,8 +1021,22 @@ function checkPortraits(file, items) {
       }
       continue;
     }
-    if (!paintedStems.has(stem)) {
-      fail(`${w}:${t.id}`, `portrait: declares art "${stem}", which is not painted — the card would fall back silently to text`);
+    if (!gemalt.has(stem)) {
+      // L0c · P9 (D-880) · EIN UNGEMALTES WESEN IST IM ENTWURF EIN POSTEN, KEIN
+      // FEHLER. Fuenf T1-Bahnen haben dasselbe bezahlt: die Karten stehen, die
+      // Kunst kommt stapelweise spaeter, und das Tor verlangte trotzdem ein
+      // Blatt auf der Platte. Bei `draft:false` bleibt das Gesetz scharf, und
+      // die Freiliste ist der einzige Weg daran vorbei (Only-Present unveraendert).
+      const geduldet = KUNST_FREILISTE.get(stem);
+      const nochGueltig = geduldet !== undefined && String(geduldet.until ?? "") >= TODAY;
+      if (entwurf) {
+        kunstBerichte.push(`${w}:${t.id}: Kunst-Stem "${stem}" ist fuer ${cx.chapter} nicht gemalt `
+          + `(art/g1/paint/{hero,${cx.chapter}}) — berichtet, nicht rot: das Kapitel ist ein Entwurf`);
+      } else if (!nochGueltig) {
+        fail(`${w}:${t.id}`, `portrait: declares art "${stem}", which is not painted for ${cx?.chapter ?? "this chapter"} `
+          + `— the resolver gives it art/g1/paint/{hero,${cx?.chapter ?? "chNN"}} (apps/web/lib/paint-art.ts#artDirsFor), `
+          + "so the card would fall back silently to text");
+      }
       continue;
     }
     if (!skins.some((s) => stem === s || stem.startsWith(`${s}_`))) {
@@ -1416,7 +1474,7 @@ for (const cx of withTasks) {
   checkAgainstLevel(file, level, parsed.data.items);
   checkGiveawayFamilies(file, parsed.data.items);
   checkNoTwins(file, parsed.data.items);
-  checkPortraits(file, parsed.data.items);
+  checkPortraits(file, parsed.data.items, cx);
   // 19 · every `exercises` name resolves in the unit this chapter teaches (R59,
   // D-89). Unit per chapter as everywhere else in this file: ch01 teaches g1-u01.
   // L0 · D10: die Unit kommt aus dem Kapitel, nicht aus einem Literal.
@@ -1448,6 +1506,10 @@ if (coverageReports.length > 0) {
   // etwas« nicht dasselbe aussieht wie »hier prueft nichts mehr«.
   console.log(`check-game-tasks: ${coverageReports.length} Abdeckungs-Posten in ENTWURFS-Kapiteln (berichtet, nicht rot):`);
   for (const r of coverageReports) console.log(`  · ${r}`);
+}
+if (kunstBerichte.length > 0) {
+  console.log(`check-game-tasks: ${kunstBerichte.length} Kunst-Posten in ENTWURFS-Kapiteln (berichtet, nicht rot):`);
+  for (const r of kunstBerichte) console.log(`  · ${r}`);
 }
 // ★ L0 · DER SKIP-BERICHT STEHT VOR DEM URTEIL, NICHT DANACH.
 // Ein blinder Leser fand ihn hinter `process.exit(1)`: im ROTEN Lauf wurde er
