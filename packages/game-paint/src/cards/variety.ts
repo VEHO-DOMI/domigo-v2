@@ -140,6 +140,33 @@ const norm = (s: string) => s.toLowerCase().trim();
 export const hasWord = (haystack: string, needle: string): boolean =>
   new RegExp(`(^|[^a-z'])${needle.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}($|[^a-z'])`, "i").test(haystack);
 
+/** L0c · P5 · GESETZ 13e SAH UEBER EINEN APOSTROPH NICHT HINWEG.
+ *
+ *  `hasWord` zaehlt den Apostroph absichtlich zum Wort (Grenzklasse `[^a-z']`):
+ *  so trennt es »don't« von »don«. Fuer die Frage, die 13e stellt — hat das
+ *  Kind dieses Wort auf DIESER Karte produziert? — ist das zu streng: eine
+ *  Karte mit der Antwort »He's got a dog.« uebt `he`, und 13e konnte es nicht
+ *  sehen (L2-T1 hat es an `g1u02.w.he` gemessen).
+ *
+ *  Die Antwort-Flaeche bekommt deshalb ihre AUFGELOESTE Form DAZU, nie statt:
+ *  he's → he is · don't → do not · I'm → I am. Kein Stemming und keine
+ *  Wortliste — »hers« traegt keinen Apostroph und deckt `he` weiterhin NICHT.
+ */
+const CONTRACTION_TAIL: Readonly<Record<string, string>> = {
+  s: "is", re: "are", ve: "have", ll: "will", d: "would", m: "am",
+};
+export const withContractionsExpanded = (surface: string): string => {
+  const ohneNt = surface.replace(/([a-z]+)n't\b/gi, "$1 not");
+  const aufgeloest = ohneNt.replace(
+    /([a-z]+)'([a-z]{1,2})\b/gi,
+    (ganz, stamm: string, schwanz: string) => {
+      const wort = CONTRACTION_TAIL[schwanz.toLowerCase()];
+      return wort === undefined ? ganz : `${stamm} ${wort}`;
+    },
+  );
+  return aufgeloest === surface ? surface : `${surface} ${aufgeloest}`;
+};
+
 /** Every string the CHILD must produce or judge to answer this card. Coverage
  *  measured on a prompt would credit words the child only reads; this is the
  *  answerable surface, which is what "exercises" claims. */
@@ -326,7 +353,10 @@ function lawsOf(input: VarietyInput, honourExemptions: boolean): VarietyFailure[
       fail("13c", w, "a field card must name the unit items it makes the child produce (`exercises`) — coverage measured on prose is coverage nobody can trust");
       continue;
     }
-    const surface = answerSurfaceOf(t).join(" ");
+    // L0c · P5: nur DIESER Vergleich sieht ueber den Apostroph hinweg. Die
+    // Optionen-Flaeche von 17d unten bleibt unveraendert — dort ist die enge
+    // Lesart richtig, weil sie einen VERRAT sucht, keine Deckung.
+    const surface = withContractionsExpanded(answerSurfaceOf(t).join(" "));
     for (const id of t.exercises) {
       const entry = wbById.get(id);
       const cls = chap.lexiconClasses?.[id];

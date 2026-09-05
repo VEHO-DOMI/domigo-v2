@@ -18,7 +18,7 @@ import path from "node:path";
 import { describe, expect, it } from "vitest";
 import { taskInvariantErrors, type GameTaskV2 } from "@domigo/content-schema";
 import { parsePaintLevel } from "../level.ts";
-import { type VarietyPolicy, varietyErrors } from "./variety.ts";
+import { type VarietyPolicy, hasWord, varietyErrors, withContractionsExpanded } from "./variety.ts";
 
 const ROOT = path.resolve(import.meta.dirname, "../../../..");
 const LEVEL = path.join(ROOT, "content/corpus/stories/g1.st.lost-pages/paint/ch01.level.json");
@@ -431,5 +431,42 @@ describe("L0 · N3 · fix-it und pair-it", () => {
     // das Gesetz wohnt.
     expect(taskInvariantErrors(choice("c1", { form: "fix-it" })).join(" "))
       .toMatch(/fix-it/);
+  });
+});
+
+// ── L0c · P5 · GESETZ 13e UND DER APOSTROPH ──────────────────────────────────
+// Gemessen von L2-T1: eine Karte, deren Antwort »He's got a dog.« lautet, konnte
+// `g1u02.w.he` nicht als geübt deklarieren — die Wortgrenze von `hasWord` zählt
+// den Apostroph zum Wort. Die zwei Fälle darunter sind das ganze Gesetz: der
+// Apostroph wird aufgelöst, und NUR er. »hers« bleibt ein anderes Wort.
+describe("L0c · 13e sieht über einen Apostroph hinweg, aber nicht über einen Buchstaben", () => {
+  const deckt = (flaeche: string, wort: string): boolean => hasWord(withContractionsExpanded(flaeche), wort);
+
+  it("»He's got a dog.« deckt `he`", () => {
+    expect(deckt("He's got a dog.", "he")).toBe(true);
+  });
+
+  it("»hers« deckt `he` NICHT — kein Stemming, nur der Apostroph", () => {
+    expect(deckt("hers", "he")).toBe(false);
+  });
+
+  it("die aufgelöste Form kommt DAZU, die ursprüngliche bleibt lesbar", () => {
+    // `he's` muss weiterhin als es selbst gefunden werden — eine Auflösung, die
+    // die Vorlage ERSETZT, nähme dem Gesetz die engere Lesart weg.
+    expect(deckt("He's got a dog.", "he's")).toBe(true);
+    expect(deckt("He's got a dog.", "is")).toBe(true);
+  });
+
+  it("auch die verneinte Form: »She isn't here.« deckt `is` und `not`", () => {
+    expect(deckt("She isn't here.", "is")).toBe(true);
+    expect(deckt("She isn't here.", "not")).toBe(true);
+  });
+
+  it("ein Satz ohne Apostroph bleibt Zeichen für Zeichen derselbe", () => {
+    expect(withContractionsExpanded("The dog sits down.")).toBe("The dog sits down.");
+  });
+
+  it("»don't« deckt weiterhin NICHT `don` — die enge Grenze von hasWord bleibt", () => {
+    expect(deckt("I don't know.", "don")).toBe(false);
   });
 });
