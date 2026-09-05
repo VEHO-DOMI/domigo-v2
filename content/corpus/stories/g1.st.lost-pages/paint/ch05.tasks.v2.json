@@ -63,8 +63,8 @@
     "p1"
    ],
    "hints": {
-    "deDesc": "Nach can steht die Grundform — ohne Endung.",
-    "deWord": "can bleibt can, play bleibt play."
+    "deDesc": "Nach can kommt play ohne s.",
+    "deWord": "Auf Deutsch: Sie kann Schlagzeug spielen."
    },
    "grounding": "u05 can in der 3. Person — WB S. 48 (MORE Words and Phrases, Eintrag »can, cannot / can't«: »She can play the drums.«). Fehlermuster wie im Korpus g1u05.gi.can.cp.001-003 (doesn't can / can dances), Wortlaut eigen."
   },
@@ -243,7 +243,7 @@
    ],
    "stimulus": {
     "type": "entity",
-    "showsDe": "Sie dreht sich im Kreis und wippt mit den Hüften."
+    "showsDe": "Sie dreht sich und wippt hin und her."
    },
    "storyDe": "Schnell — frag sie, ob sie DAS kann!",
    "options": [
@@ -274,7 +274,7 @@
    ],
    "stimulus": {
     "type": "entity",
-    "showsDe": "Im Käfig steckt ein gebogenes Blasinstrument."
+    "showsDe": "Im Käfig steckt ein krummes Rohr zum Blasen."
    },
    "storyDe": "Was steckt im zweiten Käfig? Sag es auf Englisch!",
    "promptEn": "What is it?",
@@ -291,7 +291,7 @@
     "p2"
    ],
    "hints": {
-    "deDesc": "Man bläst hinein — Tasten hat es keine.",
+    "deDesc": "Du bläst hinein. Es hat keine Tasten.",
     "deWord": "Auf Deutsch: das Saxophon."
    },
    "grounding": "u05 Instrumente — SB S. 38 (»Musicians and instruments«: keyboard · saxophone · guitar) im Satzmuster »This is …« der Leitgeschichte (SB S. 38 »This is our band«). Bewusst NICHT »It's a …«: mit demselben Rahmen waere die Options-Menge identisch mit rsc.notenstaender.keyboard und damit ein Zwilling. Der Kaefig p2-cage-saxophone traegt captive »saxophone« im Level."
@@ -404,7 +404,7 @@
    ],
    "stimulus": {
     "type": "entity",
-    "showsDe": "Die Tür zeigt eine Frau mit einem Blasinstrument.",
+    "showsDe": "Die Tür zeigt eine Frau, die hineinbläst.",
     "art": "door_a"
    },
    "storyDe": "Wer bläst da? Sag es auf Englisch!",
@@ -437,7 +437,7 @@
    ],
    "stimulus": {
     "type": "entity",
-    "showsDe": "Die Tür zeigt ein Kind an einer Reihe Tasten.",
+    "showsDe": "Die Tür zeigt ein Kind vor vielen Tasten.",
     "art": "door_a"
    },
    "storyDe": "Wer spielt hier? Sag es auf Englisch!",
@@ -499,7 +499,7 @@
    ],
    "stimulus": {
     "type": "entity",
-    "showsDe": "Das Songblatt schreibt über die Gitarristin."
+    "showsDe": "Auf dem Songblatt steht etwas zur Gitarristin."
    },
    "storyDe": "Ein Wort stimmt nicht — tipp es an!",
    "sentence": [

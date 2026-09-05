@@ -1521,6 +1521,7 @@ ch06 D-920…949.** Der Level-1-Sitz hält D-950…979 (nicht hier).
 | D-913 | Veits sechs Wiedererweckungs-Runden brauchen eine erklärte Familie (14c; ch01 löst es mit `merle-ceremony`) | Gesetzestext | die Bahn, die die sechs Karten schreibt (T2) | offen · L5-T2 | L5-T1 |
 | D-914 | `social-formula` fehlte in `fieldForms` (Parade-Sprechformel) | Politik-Datei | Programm-Entscheid: `social-formula` JA (ANTWORT_2 §3 L5) | erledigt | L5-T1 |
 #### L5-S
+**L5-S (2026-09-05, Sprach-Pass Runde 1, ohne D-Nummer — die vergibt der Architekt).** Innerhalb EINES Kapitels ist dasselbe Wortfeld auf der Käfig-Karte frei und auf der Tür-Karte verboten: `scaffoldFieldsOf` nimmt `showsDe` bei `use: "rescue"` vom Verrats-Gesetz 18b aus (die Käfig-Karte darf den Insassen nennen), bei `use: "door"` gilt es voll — gemessen an `rsc.notenstaender.saxophone` gegen `door.p9.d1`, die beide dasselbe Instrument zeigen; wer für zwei solche Zwillinge EINEN Wortlaut triagiert, bekommt ihn nur auf einer der beiden Karten durch (L5-T2 prüft je Karte, nicht je Wort).
 #### L5-M
 #### L5-A
 
