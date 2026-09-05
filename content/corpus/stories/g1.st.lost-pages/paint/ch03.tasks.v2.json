@@ -2,7 +2,7 @@
  "schema": "gameTasks@2",
  "chapter": "ch03",
  "unit": "g1-u03",
- "note": "gameTasks@2 · ch03 EXEMPLAR (L3-T1, Kalibrier-Bahn der Level-Welle). VERTEILUNGSKARTE (doc 41 §1 + R252): das Feld dieses Kapitels serviert choice · order · spell · restore; order debuetiert hier im Feld und deklariert deshalb die einzige Form, die das Schema ihm laesst (ask-it) — die Chips bilden eine FRAGE, keine Aussage. KORPUS-GESETZ: MORE! 1 Unit 3 lehrt KEIN there-is/are; keine Karte fragt es, keine bietet es als Ablenker. Und keine Karte bietet eine FALSCHSCHREIBUNG an: die Fehlerformen des Korpus (foots · feets · tooths · teeths) sind Distraktoren von grammar.json, nie Optionen — die pick-correct-form-Regel des Schemas verlangt, dass jede Option ein echter Lexikon-Eintrag ist. Die Plural-Lektion tragen deshalb die order-Chips, die Zähl-Karten der Bugkanone und das Boss-Fenster mit have/has. STATUS: 16 Exemplare, nicht die Welle — je Maschine mindestens eines, je Wesen des p1-Raums so viele, dass das Deckungs-Gesetz gruen ist (2 encounter je Feind · 1 rescue je Käfig · 1 restore je entfaerbtem Ding · door-Serie · 2 boss + 1 finale). Die ~60 Karten der Welle schneidet L3-T2 nach Kokis p1-Walk. Der Insasse des Netzkäfigs ist Arbeitsstand (D-777, Kokis Wahl steht aus): ein Insassen-Tausch ändert NUR showsDe und die Optionen der beiden rsc-Karten sowie nounDe.captives in ch03.policy.json.",
+ "note": "gameTasks@2 · ch03 EXEMPLAR (L3-T1, Kalibrier-Bahn der Level-Welle). VERTEILUNGSKARTE (doc 41 §1 + R252): das Feld dieses Kapitels serviert choice · order · spell · restore; order debuetiert hier im Feld und deklariert deshalb die einzige Form, die das Schema ihm laesst (ask-it) — die Chips bilden eine FRAGE, keine Aussage. KORPUS-GESETZ: MORE! 1 Unit 3 lehrt KEIN there-is/are; keine Karte fragt es, keine bietet es als Ablenker. Und keine Karte bietet eine FALSCHSCHREIBUNG an: die Fehlerformen des Korpus (foots · feets · tooths · teeths) sind Distraktoren von grammar.json, nie Optionen — die pick-correct-form-Regel des Schemas verlangt, dass jede Option ein echter Lexikon-Eintrag ist. Die Plural-Lektion tragen deshalb die order-Chips, die Zähl-Karten der Bugkanone und das Boss-Fenster mit have/has. STATUS: 28 Karten. Die ersten 16 sind der abgenommene Kalibrier-Satz (unveraendert, Zeichen fuer Zeichen); die 12 danach kommen aus der L3-Fix-Bahn und loesen den Vokabel-Anspruch der Anspruchsdatei ein: alle 19 cards-Woerter von claims.json stehen jetzt als ANTWORT auf einer Karte, kein Wort bleibt vertagt (Kokis Entscheid 2026-09-05). Sie haengen ausschliesslich an Wesen, die p1 ohnehin traegt — je Feind seine EINE Stimme (Gesetz 14a: Papagei pick-correct-form, Deckschrubber ask-it, Bugkanone count-it), die Tuer und der Netzkaefig tragen den Rest. Die vier Legekarten des Deckschrubbers sind bewusst eindeutig geschnitten: aus ihren Bausteinen laesst sich genau EIN richtiger Satz bauen. Je Maschine mindestens ein Exemplar, je Wesen des p1-Raums so viele, dass das Deckungs-Gesetz gruen ist (2 encounter je Feind · 1 rescue je Käfig · 1 restore je entfaerbtem Ding · door-Serie · 2 boss + 1 finale). Die restliche Welle (Feinschliff und Menge) schneidet L3-T2 nach Kokis p1-Walk. Der Insasse des Netzkäfigs ist Arbeitsstand (D-777, Kokis Wahl steht aus): ein Insassen-Tausch ändert NUR showsDe und die Optionen der drei rsc-Karten sowie nounDe.captives in ch03.policy.json.",
  "items": [
   {
    "id": "g1.paint.ch03.enc.papagei.e1",
@@ -67,6 +67,132 @@
    }
   },
   {
+   "id": "g1.paint.ch03.enc.papagei.e3",
+   "use": "encounter",
+   "kind": "choice",
+   "form": "pick-correct-form",
+   "exercises": [
+    "g1u03.s.have-got",
+    "g1u03.w.right-arm",
+    "g1u03.w.strong"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Der Papagei kreischt, wie kräftig der Kapitän rudert."
+   },
+   "storyDe": "Der Satz ist krumm. Zieh ihn gerade!",
+   "options": [
+    "He is got a strong right arm.",
+    "He has got a strong right arm.",
+    "He have got a strong right arm."
+   ],
+   "answer": "He has got a strong right arm.",
+   "skins": [
+    "streitpapagei"
+   ],
+   "phases": [
+    "p1"
+   ],
+   "hints": {
+    "deDesc": "Nach he steht nie have.",
+    "deWord": "Auf Deutsch: Er hat einen starken rechten Arm."
+   }
+  },
+  {
+   "id": "g1.paint.ch03.enc.papagei.e4",
+   "use": "encounter",
+   "kind": "choice",
+   "form": "pick-correct-form",
+   "exercises": [
+    "g1u03.s.have-got",
+    "g1u03.w.left-arm",
+    "g1u03.w.small"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Der Papagei kreischt über die Steuerfrau am Ruder."
+   },
+   "storyDe": "Sag den Satz über die Steuerfrau richtig!",
+   "options": [
+    "She have got a small left arm.",
+    "She has got a small left arm.",
+    "She is got a small left arm."
+   ],
+   "answer": "She has got a small left arm.",
+   "skins": [
+    "streitpapagei"
+   ],
+   "phases": [
+    "p1"
+   ],
+   "hints": {
+    "deDesc": "Eine einzelne Person bekommt nicht have.",
+    "deWord": "Auf Deutsch: Sie hat einen kleinen linken Arm."
+   }
+  },
+  {
+   "id": "g1.paint.ch03.enc.papagei.e5",
+   "use": "encounter",
+   "kind": "choice",
+   "form": "pick-correct-form",
+   "exercises": [
+    "g1u03.s.have-got",
+    "g1u03.w.tooth"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Der Papagei kreischt über den Mund des Kapitäns."
+   },
+   "storyDe": "Der Papagei verhaspelt sich. Sag es sauber!",
+   "options": [
+    "He have got a black tooth.",
+    "He has got a black tooth.",
+    "He is got a black tooth."
+   ],
+   "answer": "He has got a black tooth.",
+   "skins": [
+    "streitpapagei"
+   ],
+   "phases": [
+    "p1"
+   ],
+   "hints": {
+    "deDesc": "Einer davon ist bei ihm nicht mehr weiß.",
+    "deWord": "Auf Deutsch: Er hat einen schwarzen Zahn."
+   }
+  },
+  {
+   "id": "g1.paint.ch03.enc.papagei.e6",
+   "use": "encounter",
+   "kind": "choice",
+   "form": "pick-correct-form",
+   "exercises": [
+    "g1u03.s.have-got",
+    "g1u03.w.foot"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Der Papagei kreischt über den einen Fuß des Kapitäns."
+   },
+   "storyDe": "Auch dieser Satz ist schief. Stell ihn gerade!",
+   "options": [
+    "He is got one foot.",
+    "He have got one foot.",
+    "He has got one foot."
+   ],
+   "answer": "He has got one foot.",
+   "skins": [
+    "streitpapagei"
+   ],
+   "phases": [
+    "p1"
+   ],
+   "hints": {
+    "deDesc": "Bei einer Person heißt es nicht have.",
+    "deWord": "Auf Deutsch: Er hat einen Fuß."
+   }
+  },
+  {
    "id": "g1.paint.ch03.enc.deckschrubber.e1",
    "use": "encounter",
    "kind": "choice",
@@ -127,6 +253,139 @@
    ],
    "hints": {
     "deDesc": "Beginn mit dem Wort, das die Frage macht."
+   }
+  },
+  {
+   "id": "g1.paint.ch03.enc.deckschrubber.e3",
+   "use": "encounter",
+   "kind": "order",
+   "form": "ask-it",
+   "exercises": [
+    "g1u03.s.have-got",
+    "g1u03.w.big",
+    "g1u03.w.nose"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Dem Deckschrubber rutscht die Frage vom Mopp."
+   },
+   "storyDe": "Bau die Frage über den Kapitän zusammen!",
+   "orderedChips": [
+    "Has",
+    "he",
+    "got",
+    "a",
+    "big",
+    "nose",
+    "?"
+   ],
+   "skins": [
+    "deckschrubber"
+   ],
+   "phases": [
+    "p1"
+   ],
+   "hints": {
+    "deDesc": "Das Frage-Wort steht vorn, das Fragezeichen hinten.",
+    "deWord": "Auf Deutsch: Hat er eine große Nase?"
+   }
+  },
+  {
+   "id": "g1.paint.ch03.enc.deckschrubber.e4",
+   "use": "encounter",
+   "kind": "order",
+   "form": "ask-it",
+   "exercises": [
+    "g1u03.w.tall"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Der Deckschrubber schielt zur Kapitänin hinauf."
+   },
+   "storyDe": "Drei Wörter und ein Zeichen — setz die Frage!",
+   "orderedChips": [
+    "Is",
+    "she",
+    "tall",
+    "?"
+   ],
+   "skins": [
+    "deckschrubber"
+   ],
+   "phases": [
+    "p1"
+   ],
+   "hints": {
+    "deDesc": "Die Frage beginnt mit dem kurzen Wort für ist.",
+    "deWord": "Auf Deutsch: Ist sie groß?"
+   }
+  },
+  {
+   "id": "g1.paint.ch03.enc.deckschrubber.e5",
+   "use": "encounter",
+   "kind": "order",
+   "form": "ask-it",
+   "exercises": [
+    "g1u03.s.have-got",
+    "g1u03.w.short"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Er zeigt auf den Kopf der Steuerfrau und stockt."
+   },
+   "storyDe": "Setz die Frage über ihre Haare zusammen!",
+   "orderedChips": [
+    "Has",
+    "she",
+    "got",
+    "short",
+    "hair",
+    "?"
+   ],
+   "skins": [
+    "deckschrubber"
+   ],
+   "phases": [
+    "p1"
+   ],
+   "hints": {
+    "deDesc": "Das Gegenteil von lang steht vor dem letzten Wort.",
+    "deWord": "Auf Deutsch: Hat sie kurze Haare?"
+   }
+  },
+  {
+   "id": "g1.paint.ch03.enc.deckschrubber.e6",
+   "use": "encounter",
+   "kind": "order",
+   "form": "ask-it",
+   "exercises": [
+    "g1u03.s.have-got",
+    "g1u03.w.finger",
+    "g1u03.w.long"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Der Deckschrubber ahmt nach, wie der Kapitän zeigt."
+   },
+   "storyDe": "Leg die Wörter in die richtige Reihenfolge!",
+   "orderedChips": [
+    "Has",
+    "she",
+    "got",
+    "a",
+    "long",
+    "finger",
+    "?"
+   ],
+   "skins": [
+    "deckschrubber"
+   ],
+   "phases": [
+    "p1"
+   ],
+   "hints": {
+    "deDesc": "Zuerst das Wort, das aus einer Aussage eine Frage macht.",
+    "deWord": "Auf Deutsch: Hat sie einen langen Finger?"
    }
   },
   {
@@ -248,6 +507,37 @@
    "hints": {
     "deDesc": "Bei sie in der Einzahl heißt es nicht have.",
     "deWord": "Auf Deutsch: Sie hat einen Papagei."
+   }
+  },
+  {
+   "id": "g1.paint.ch03.rsc.polly.r3",
+   "use": "rescue",
+   "kind": "choice",
+   "form": "pick-correct-form",
+   "exercises": [
+    "g1u03.s.have-got",
+    "g1u03.w.shoulder"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Auf Pollys Schulter hockt ihr Papagei am Netz."
+   },
+   "storyDe": "Sag den Satz richtig — dann fällt das Netz!",
+   "options": [
+    "She have got a parrot on her shoulder.",
+    "She is got a parrot on her shoulder.",
+    "She has got a parrot on her shoulder."
+   ],
+   "answer": "She has got a parrot on her shoulder.",
+   "skins": [
+    "netzkaefig"
+   ],
+   "phases": [
+    "p1"
+   ],
+   "hints": {
+    "deDesc": "Eine Person allein bekommt nicht have.",
+    "deWord": "Auf Deutsch: Sie hat einen Papagei auf der Schulter."
    }
   },
   {
@@ -377,6 +667,104 @@
    "hints": {
     "deDesc": "Damit beißt du in einen Apfel.",
     "deWord": "Auf Deutsch: die Zähne."
+   }
+  },
+  {
+   "id": "g1.paint.ch03.door.p1.d4",
+   "use": "door",
+   "kind": "choice",
+   "form": "ask-it",
+   "exercises": [
+    "g1u03.s.have-got",
+    "g1u03.w.mouth",
+    "g1u03.w.big"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Die Tür zeigt einen Piraten, der schallend lacht.",
+    "art": "door_a"
+   },
+   "storyDe": "Frag nach dem, was er beim Lachen weit aufmacht!",
+   "options": [
+    "Has he got a big ear?",
+    "Has he got a big nose?",
+    "Has he got a big mouth?"
+   ],
+   "answer": "Has he got a big mouth?",
+   "skins": [
+    "door"
+   ],
+   "phases": [
+    "p1"
+   ],
+   "hints": {
+    "deDesc": "Damit lacht er, isst er und singt er.",
+    "deWord": "Auf Deutsch: Hat er einen großen Mund?"
+   }
+  },
+  {
+   "id": "g1.paint.ch03.door.p1.d5",
+   "use": "door",
+   "kind": "choice",
+   "form": "ask-it",
+   "exercises": [
+    "g1u03.s.have-got",
+    "g1u03.w.ear",
+    "g1u03.w.small"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Die Piratin auf der Tür lauscht zum Meer hinaus.",
+    "art": "door_a"
+   },
+   "storyDe": "Frag nach dem, womit sie dich hört!",
+   "options": [
+    "Has she got a small ear?",
+    "Has she got a small eye?",
+    "Has she got a small nose?"
+   ],
+   "answer": "Has she got a small ear?",
+   "skins": [
+    "door"
+   ],
+   "phases": [
+    "p1"
+   ],
+   "hints": {
+    "deDesc": "Damit hört man das Meer rauschen.",
+    "deWord": "Auf Deutsch: Hat sie ein kleines Ohr?"
+   }
+  },
+  {
+   "id": "g1.paint.ch03.door.p1.d6",
+   "use": "door",
+   "kind": "choice",
+   "form": "ask-it",
+   "exercises": [
+    "g1u03.s.have-got",
+    "g1u03.w.eye"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Die Tür zeigt einen Piraten mit Klappe im Gesicht.",
+    "art": "door_a"
+   },
+   "storyDe": "Frag nach dem, was unter der Klappe fehlt!",
+   "options": [
+    "Has he got one ear?",
+    "Has he got one tooth?",
+    "Has he got one eye?"
+   ],
+   "answer": "Has he got one eye?",
+   "skins": [
+    "door"
+   ],
+   "phases": [
+    "p1"
+   ],
+   "hints": {
+    "deDesc": "Zwei hat jeder — bei ihm schaut nur eines heraus.",
+    "deWord": "Auf Deutsch: Hat er ein Auge?"
    }
   },
   {

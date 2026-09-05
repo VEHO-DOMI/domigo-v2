@@ -2,7 +2,7 @@
  "schema": "paintChapterPolicy@1",
  "chapter": "ch03",
  "unit": "g1-u03",
- "note": "L0 · D10 · Die Kapitel-Tabellen von ch03, neben den Karten (Level-Welle, L3-T1). fieldKinds nach doc 41 §1 + R252 (restore trägt die Körperteil-Karte, die doc 44 §4 ch03 verlangt; match kommt mit L2-M, sort mit L3-M — beide stehen bis dahin als Daten in ch03-dossiers-v2/tasks-pending.md und in KEINER Kartendatei, weil das Schema sie nicht kennt). fieldForms führt count-it statt des im Blatt vorgeschlagenen belongs-or-not: belongs-or-not ist laut FORM_KINDS nur als oddone ausdrückbar, und oddone steht nicht in dieser Feld-Palette — ohne eine dritte inhalts-variable Form wäre Gesetz 14b (zwei Feinde eines Raums fragen nie dasselbe) bei DREI feindlichen Wesen in p1 unerfüllbar. arenaPromiseClass fehlt bewusst: ch03 hat keine Zahlen-Zusage einer Regel-Seite an die Arena; solange das Kapitel draft ist, meldet das Tor die Zeile als Abdeckungs-Posten (berichtet, nicht rot), und L3-T2 entscheidet mit der vollen Boss-Batterie, welche Klasse die Arena einlöst. families ist LEER, und das ist gemessen, nicht vergessen: kein Varietäts-Gesetz feuert auf diesem Satz, und eine Familie, die nichts unterdrückt, ist nach Gesetz 0a/0d selbst rot.",
+ "note": "L0 · D10 · Die Kapitel-Tabellen von ch03, neben den Karten (Level-Welle, L3-T1). fieldKinds nach doc 41 §1 + R252 (restore trägt die Körperteil-Karte, die doc 44 §4 ch03 verlangt; match kommt mit L2-M, sort mit L3-M — beide stehen bis dahin als Daten in ch03-dossiers-v2/tasks-pending.md und in KEINER Kartendatei, weil das Schema sie nicht kennt). fieldForms führt count-it statt des im Blatt vorgeschlagenen belongs-or-not: belongs-or-not ist laut FORM_KINDS nur als oddone ausdrückbar, und oddone steht nicht in dieser Feld-Palette — ohne eine dritte inhalts-variable Form wäre Gesetz 14b (zwei Feinde eines Raums fragen nie dasselbe) bei DREI feindlichen Wesen in p1 unerfüllbar. arenaPromiseClass fehlt bewusst: ch03 hat keine Zahlen-Zusage einer Regel-Seite an die Arena; solange das Kapitel draft ist, meldet das Tor die Zeile als Abdeckungs-Posten (berichtet, nicht rot), und L3-T2 entscheidet mit der vollen Boss-Batterie, welche Klasse die Arena einlöst. families ist LEER, und das ist gemessen, nicht vergessen: kein Varietäts-Gesetz feuert auf diesem Satz, und eine Familie, die nichts unterdrückt, ist nach Gesetz 0a/0d selbst rot. ★ L3-Fix 2026-09-05: der vocabLedger ist von 35 auf 19 Eintraege gefallen. Kein Eintrag wurde nachgetragen und keiner geaendert — es sind genau die 16 herausgenommen, die eine neue Feld-Karte inzwischen in ihrem exercises-Block fuehrt (Gesetz 17c macht eine Ausnahme, die eine Karte beantwortet, zum Fehler). Die Liste ist maschinell aus der Kartendatei abgeleitet, nicht von Hand gepflegt. ⚠ Zwei Toren messen hier VERSCHIEDENES: check-level-design (D-77) liest den Antwort-TEXT jeder Karte, Gesetz 17c liest die exercises-Deklaration und nur von FELD-Karten (encounter/quickfire/door/rescue/pickupset). Ein Wort, das nur eine Boss-Karte beantwortet, bleibt deshalb im Hauptbuch stehen — genau so stand long hier bis heute.",
  "fieldKinds": [
   "choice",
   "order",
@@ -42,81 +42,6 @@
  },
  "families": [],
  "vocabLedger": {
-  "g1u03.w.finger": {
-   "cards": "exempt",
-   "reason": "T2-Welle: die 16 Exemplare kalibrieren den Maßstab, sie decken den Wortschatz nicht ab. Dieses Wort bekommt seine Karte in der ~60er-Welle (L3-T2) — die Ausnahme ist eine Buchung mit Datum, keine Lücke.",
-   "until": "2026-12-31"
-  },
-  "g1u03.w.ear": {
-   "cards": "offered",
-   "reason": "Steht als Ablenker auf einer Karte im Bild: das Kind LIEST das Wort, muss es aber im Exemplar nicht selbst produzieren. Die T2-Welle entscheidet, ob es eine eigene Karte bekommt — Gesetz 17b prüft die Behauptung, ein Wort ohne Bildschirm-Auftritt gilt als ABWESEND, nicht als angeboten.",
-   "until": "2026-12-31"
-  },
-  "g1u03.w.nose": {
-   "cards": "offered",
-   "reason": "Steht als Ablenker auf einer Karte im Bild: das Kind LIEST das Wort, muss es aber im Exemplar nicht selbst produzieren. Die T2-Welle entscheidet, ob es eine eigene Karte bekommt — Gesetz 17b prüft die Behauptung, ein Wort ohne Bildschirm-Auftritt gilt als ABWESEND, nicht als angeboten.",
-   "until": "2026-12-31"
-  },
-  "g1u03.w.eye": {
-   "cards": "exempt",
-   "reason": "T2-Welle: die 16 Exemplare kalibrieren den Maßstab, sie decken den Wortschatz nicht ab. Dieses Wort bekommt seine Karte in der ~60er-Welle (L3-T2) — die Ausnahme ist eine Buchung mit Datum, keine Lücke.",
-   "until": "2026-12-31"
-  },
-  "g1u03.w.mouth": {
-   "cards": "exempt",
-   "reason": "T2-Welle: die 16 Exemplare kalibrieren den Maßstab, sie decken den Wortschatz nicht ab. Dieses Wort bekommt seine Karte in der ~60er-Welle (L3-T2) — die Ausnahme ist eine Buchung mit Datum, keine Lücke.",
-   "until": "2026-12-31"
-  },
-  "g1u03.w.right-arm": {
-   "cards": "exempt",
-   "reason": "T2-Welle: die 16 Exemplare kalibrieren den Maßstab, sie decken den Wortschatz nicht ab. Dieses Wort bekommt seine Karte in der ~60er-Welle (L3-T2) — die Ausnahme ist eine Buchung mit Datum, keine Lücke.",
-   "until": "2026-12-31"
-  },
-  "g1u03.w.left-arm": {
-   "cards": "exempt",
-   "reason": "T2-Welle: die 16 Exemplare kalibrieren den Maßstab, sie decken den Wortschatz nicht ab. Dieses Wort bekommt seine Karte in der ~60er-Welle (L3-T2) — die Ausnahme ist eine Buchung mit Datum, keine Lücke.",
-   "until": "2026-12-31"
-  },
-  "g1u03.w.shoulder": {
-   "cards": "exempt",
-   "reason": "T2-Welle: die 16 Exemplare kalibrieren den Maßstab, sie decken den Wortschatz nicht ab. Dieses Wort bekommt seine Karte in der ~60er-Welle (L3-T2) — die Ausnahme ist eine Buchung mit Datum, keine Lücke.",
-   "until": "2026-12-31"
-  },
-  "g1u03.w.foot": {
-   "cards": "exempt",
-   "reason": "T2-Welle: die 16 Exemplare kalibrieren den Maßstab, sie decken den Wortschatz nicht ab. Dieses Wort bekommt seine Karte in der ~60er-Welle (L3-T2) — die Ausnahme ist eine Buchung mit Datum, keine Lücke.",
-   "until": "2026-12-31"
-  },
-  "g1u03.w.tooth": {
-   "cards": "exempt",
-   "reason": "T2-Welle: die 16 Exemplare kalibrieren den Maßstab, sie decken den Wortschatz nicht ab. Dieses Wort bekommt seine Karte in der ~60er-Welle (L3-T2) — die Ausnahme ist eine Buchung mit Datum, keine Lücke.",
-   "until": "2026-12-31"
-  },
-  "g1u03.w.tall": {
-   "cards": "exempt",
-   "reason": "T2-Welle: die 16 Exemplare kalibrieren den Maßstab, sie decken den Wortschatz nicht ab. Dieses Wort bekommt seine Karte in der ~60er-Welle (L3-T2) — die Ausnahme ist eine Buchung mit Datum, keine Lücke.",
-   "until": "2026-12-31"
-  },
-  "g1u03.w.short": {
-   "cards": "exempt",
-   "reason": "T2-Welle: die 16 Exemplare kalibrieren den Maßstab, sie decken den Wortschatz nicht ab. Dieses Wort bekommt seine Karte in der ~60er-Welle (L3-T2) — die Ausnahme ist eine Buchung mit Datum, keine Lücke.",
-   "until": "2026-12-31"
-  },
-  "g1u03.w.big": {
-   "cards": "exempt",
-   "reason": "T2-Welle: die 16 Exemplare kalibrieren den Maßstab, sie decken den Wortschatz nicht ab. Dieses Wort bekommt seine Karte in der ~60er-Welle (L3-T2) — die Ausnahme ist eine Buchung mit Datum, keine Lücke.",
-   "until": "2026-12-31"
-  },
-  "g1u03.w.small": {
-   "cards": "exempt",
-   "reason": "T2-Welle: die 16 Exemplare kalibrieren den Maßstab, sie decken den Wortschatz nicht ab. Dieses Wort bekommt seine Karte in der ~60er-Welle (L3-T2) — die Ausnahme ist eine Buchung mit Datum, keine Lücke.",
-   "until": "2026-12-31"
-  },
-  "g1u03.w.long": {
-   "cards": "exempt",
-   "reason": "T2-Welle: die 16 Exemplare kalibrieren den Maßstab, sie decken den Wortschatz nicht ab. Dieses Wort bekommt seine Karte in der ~60er-Welle (L3-T2) — die Ausnahme ist eine Buchung mit Datum, keine Lücke.",
-   "until": "2026-12-31"
-  },
   "g1u03.w.also": {
    "cards": "exempt",
    "reason": "T2-Welle: die 16 Exemplare kalibrieren den Maßstab, sie decken den Wortschatz nicht ab. Dieses Wort bekommt seine Karte in der ~60er-Welle (L3-T2) — die Ausnahme ist eine Buchung mit Datum, keine Lücke.",
@@ -138,11 +63,6 @@
    "until": "2026-12-31"
   },
   "g1u03.w.to-be-scared": {
-   "cards": "exempt",
-   "reason": "T2-Welle: die 16 Exemplare kalibrieren den Maßstab, sie decken den Wortschatz nicht ab. Dieses Wort bekommt seine Karte in der ~60er-Welle (L3-T2) — die Ausnahme ist eine Buchung mit Datum, keine Lücke.",
-   "until": "2026-12-31"
-  },
-  "g1u03.w.strong": {
    "cards": "exempt",
    "reason": "T2-Welle: die 16 Exemplare kalibrieren den Maßstab, sie decken den Wortschatz nicht ab. Dieses Wort bekommt seine Karte in der ~60er-Welle (L3-T2) — die Ausnahme ist eine Buchung mit Datum, keine Lücke.",
    "until": "2026-12-31"

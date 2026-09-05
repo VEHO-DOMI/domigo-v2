@@ -108,9 +108,11 @@ L2-M. Fällt die Antwort „nein", wird `m4` zu `they` ↔ `haven't got` / `she`
 ## D · Was die Türserie in T2 noch abdecken muss (Gesetz M-E)
 
 Gemessen an `content/corpus/units/g1-u03/grammar.json` (42 Items, zwei Strukturen) und an
-Gesetz 17g (`jede` Grammatik-Struktur wird von einer Feld-Karte geübt). Die drei Exemplar-Türen
-decken heute: **Frage 3. Person Einzahl** (`Has she got …?`), **Verneinung 3. Person Einzahl**
-(`He hasn't got …`) und ein **Buchstabier-Wort**. Offen für die Welle:
+Gesetz 17g (`jede` Grammatik-Struktur wird von einer Feld-Karte geübt). Die **sechs** Exemplar-Türen
+(drei aus L3-T1, drei aus der L3-Fix-Bahn) decken heute: **Frage 3. Person Einzahl** (`Has she got …?`,
+vier Karten), **Verneinung 3. Person Einzahl** (`He hasn't got …`) und ein **Buchstabier-Wort**.
+Die drei neuen Türen bringen VOKABEL-Inhalt, keine neue Struktur — die Liste unten ist deshalb
+unverändert offen. Offen für die Welle:
 
 1. Frage 1./2. Person + Mehrzahl: `Have you got …?` · `Have they got …?` (WB Ü8)
 2. Kurzantworten: `Yes, he has.` · `No, he hasn't.` · `Yes, I have.` · `No, I haven't.` (SB S. 24 Note, WB Ü9/Ü10)
@@ -121,3 +123,30 @@ decken heute: **Frage 3. Person Einzahl** (`Has she got …?`), **Verneinung 3. 
 ⚠ Die Türserie ist der einzige Träger, der die Unit-Fragen SYSTEMATISCH abfahren kann — die
 Feinde tragen je EINE Form (Gesetz 14a), die Türen nicht (sie sind keine `voiceSkins`).
 Das ist der Grund, warum das Exemplar drei Tür-Karten hat und nicht zwei.
+
+---
+
+## E · Was die L3-Fix-Bahn erledigt hat (2026-09-05) — und was sie NICHT erledigt hat
+
+**Erledigt.** Der Vokabel-Anspruch von `ch03-dossiers-v2/claims.json` ist eingelöst: alle 19
+`cards`-Wörter der Unit stehen als ANTWORT auf einer Karte, keines trägt eine Ausnahme
+(Kokis Entscheid 2026-09-05: einlösen statt vertagen). Zwölf neue Karten, alle an Wesen, die p1
+ohnehin trägt. Der `vocabLedger` in `ch03.policy.json` ist entsprechend von 35 auf 19 Einträge
+gefallen (Gesetz 17c).
+
+**Nicht erledigt, und bewusst nicht.** Die Karten unter A, B und C oben brauchen weiter ihre
+Maschine (`sort`, `match`) bzw. den Raum p2, den G2 erst schneidet. Und die Karten dieser Bahn sind
+KALIBRIER-Ware, keine Welle: sie beweisen, dass jedes Unit-Wort einen ehrlichen Ort im gebauten
+Raum hat — sie sind nicht die Menge, die ein Kind im fertigen Kapitel spielt.
+
+**Zwei Grenzen, an die T2 stoßen wird — hier gemessen, nicht vermutet:**
+
+1. **Jeder Feind hat genau EINE Frageform** (Gesetz 14a): Papagei `pick-correct-form`,
+   Deckschrubber `ask-it`, Bugkanone `count-it`. Und `state-it`/`name-it` sind
+   *referenz-feste* Formen (Gesetz 14c) — davon verträgt ein Pool genau eine. In der Tür-Serie
+   und im Netzkäfig sind beide bereits vergeben. Wer in T2 mehr Karten will, bekommt sie über
+   `ask-it`, `pick-correct-form`, `count-it` und `order` — nicht über eine zweite Nenn-Karte.
+2. **Ein mehrteiliger Wortbank-Eintrag kann von einer Legekarte nicht eingelöst werden.**
+   `check-level-design` verbindet die Chips einer `order`-Karte mit ` | `, aus
+   `[a] [long] [right] [arm]` wird also nie die Form `right arm`. `right arm` und `left arm`
+   sitzen deshalb auf Auswahlkarten mit ganzem Satz. Registriert als **D-840**.
