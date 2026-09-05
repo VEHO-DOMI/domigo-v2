@@ -1498,15 +1498,6 @@ export class Sim {
     }
   }
 
-  /** L3-M-a · E1 · DER NAECHSTE GREIFBARE RING — mit einer Ausnahme.
-   *
-   *  Die Sperre nach dem Loslassen (`player.ringCooldown`) wird HIER gelesen und
-   *  nicht in `player.ts`, und das ist der Unterschied zwischen einer Kette und
-   *  einer Sackgasse: `nearestRing` liefert den ERSTEN Ring in Reichweite. Stuende
-   *  die Sperre am Griff selbst, wuerde ein gesperrter Ring, der zufaellig vor dem
-   *  Nachbarn in der Liste steht, den Griff komplett verhindern — auch den an den
-   *  Nachbarn. Als FILTER uebersprungen wird nur der eine gesperrte Ring; jeder
-   *  andere ist im selben Tick greifbar, und genau das ist die Ring-Kette. */
   /** L3-M-a · E3 · DIE STEIGENDE BILGE.
    *
    *  Sie steigt in PULSEN und nicht stetig: ein Kind soll das Wasser KOMMEN
@@ -1569,6 +1560,15 @@ export class Sim {
     return this.bilgeRow;
   }
 
+  /** L3-M-a · E1 · DER NAECHSTE GREIFBARE RING — mit einer Ausnahme.
+   *
+   *  Die Sperre nach dem Loslassen (`player.ringCooldown`) wird HIER gelesen und
+   *  nicht in `player.ts`, und das ist der Unterschied zwischen einer Kette und
+   *  einer Sackgasse: `nearestRing` liefert den ERSTEN Ring in Reichweite. Stuende
+   *  die Sperre am Griff selbst, wuerde ein gesperrter Ring, der zufaellig vor dem
+   *  Nachbarn in der Liste steht, den Griff komplett verhindern — auch den an den
+   *  Nachbarn. Als FILTER uebersprungen wird nur der eine gesperrte Ring; jeder
+   *  andere ist im selben Tick greifbar, und genau das ist die Ring-Kette. */
   private nearestRing(): { x: number; y: number } | null {
     const locked = this.player.ringCooldown > 0 ? this.player.lastRing : null;
     for (const g of this.rings) {
