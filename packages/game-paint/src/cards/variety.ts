@@ -170,17 +170,21 @@ export const withContractionsExpanded = (surface: string): string => {
   const dazu: string[] = [];
   // `n't`: der Stamm (namentlich berichtigt, wo er keiner ist) plus „not".
   for (const m of surface.matchAll(/([a-z]+)n't\b/gi)) {
-    dazu.push(NT_UNREGELMAESSIG[m[1].toLowerCase()] ?? m[1], "not");
+    const stamm = m[1] ?? "";
+    if (stamm === "") continue;
+    dazu.push(NT_UNREGELMAESSIG[stamm.toLowerCase()] ?? stamm, "not");
   }
   // Jeder andere Apostroph: das GRUNDWORT immer, der Schwanz nur, wenn er
   // eindeutig ist. „He's" deckt damit `he`, aber nicht `is`.
   for (const m of surface.matchAll(/([a-z]+)'([a-z]{1,2})\b/gi)) {
+    const stamm = m[1] ?? "";
+    const schwanz = (m[2] ?? "").toLowerCase();
     // `'t` ist immer die `n't`-Form von oben — sonst hiesse der Stamm hier
     // „don" statt „do", und ausgerechnet »don« ist der Fall, den die enge
     // Wortgrenze von `hasWord` seit jeher richtig NICHT deckt.
-    if (m[2].toLowerCase() === "t") continue;
-    dazu.push(m[1]);
-    const wort = CONTRACTION_TAIL[m[2].toLowerCase()];
+    if (stamm === "" || schwanz === "t") continue;
+    dazu.push(stamm);
+    const wort = CONTRACTION_TAIL[schwanz];
     if (wort !== undefined) dazu.push(wort);
   }
   // …und die eine Form, deren `'s` weder is noch has noch Genitiv ist.
