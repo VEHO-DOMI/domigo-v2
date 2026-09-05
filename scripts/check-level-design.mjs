@@ -45,7 +45,13 @@ const fails = [];
 const ledger = skipLedger();
 
 // ── 1 · STEM-DEDUP ───────────────────────────────────────────────────────────
-const BEING_ROLES = new Set(["chaser", "gunner", "flyer", "bouncer", "crusher", "guardian", "drained"]);
+// L0c · P19 · `scene.stage` FEHLTE HIER. Die Buehne (L2-M-a, PR #411) traegt
+// einen Darsteller-Skin wie jedes andere Wesen — der Dedup liest `e.skin`, und
+// er las an ihr vorbei. Zwei Buehnen haetten sich einen Skin teilen koennen,
+// ohne dass ein Tor es meldet; im Spiel waeren es zwei Raeume mit demselben
+// Gesicht. Gemessen am Code, nicht geraten: die Rolle heisst `scene.stage`
+// (level.ts ENTITY_ROLES), und ihr Stem steht in `skin`, nicht in `params`.
+const BEING_ROLES = new Set(["chaser", "gunner", "flyer", "bouncer", "crusher", "guardian", "drained", "scene.stage"]);
 /** @returns {{fails: string[], stems: Map<string,string>}} */
 const dedupFails = (phases, ch) => {
   const out = [];
@@ -102,8 +108,41 @@ const dedupFails = (phases, ch) => {
 // Geladen statt importiert, damit ein Tamper die Tabelle per SCHLÜSSEL
 // verfälschen kann statt per Textsuche: ein Tamper, der die falsche Stelle
 // trifft, beweist nichts.
-export const claimsOf = (cx) =>
-  cx.hasClaims ? (JSON.parse(fs.readFileSync(cx.claimsPath, "utf8")).claims ?? {}) : null;
+// L0c · P20 (R271) · `?? {}` HATTE DREI GESICHTER, UND ALLE DREI LOGEN.
+//
+//  (a) Eine Datei, die ihre Woerter FLACH traegt statt unter `claims`, lieferte
+//      eine LEERE Tabelle — das Gesetz mass danach nichts mehr und blieb gruen.
+//      Gemessen an ch05 (#396) und ch06 (#402); der Defekt war im G1-PR
+//      unsichtbar und machte erst den T1-Zwilling rot, also den falschen Sitz.
+//  (b) Die Zaehlzeile am Dateiende zaehlte die WORTBANK, nicht die geprueften
+//      Ansprueche — 45 vor UND nach der Reparatur (L6-G1b).
+//  (c) Kaputtes JSON starb als nackter SyntaxError OHNE Dateinamen.
+//
+// Soll-Form (`ch03-dossiers-v2/claims.json`): `schema`, `chapter`, `claims`.
+export const claimsOf = (cx) => {
+  if (!cx.hasClaims) return null;
+  const rel = path.relative(ROOT, cx.claimsPath);
+  let roh;
+  try {
+    roh = JSON.parse(fs.readFileSync(cx.claimsPath, "utf8"));
+  } catch (e) {
+    fails.push(`${cx.chapter} claims: ${rel} ist kein gueltiges JSON — ${e.message}`);
+    return null;
+  }
+  const fehlend = ["schema", "chapter", "claims"].filter((k) => roh?.[k] === undefined);
+  if (fehlend.length > 0) {
+    fails.push(`${cx.chapter} claims: ${rel} fehlt ${fehlend.join(", ")} — die Soll-Form ist `
+      + "{ schema, chapter, claims }. Eine flache Datei liefert eine LEERE Anspruchstabelle, "
+      + "und das Abdeckungs-Gesetz misst danach nichts mehr, ohne rot zu werden (R271)");
+    return null;
+  }
+  if (roh.chapter !== cx.chapter) {
+    fails.push(`${cx.chapter} claims: ${rel} nennt sich "${roh.chapter}" — eine Anspruchstabelle, `
+      + "die ein anderes Kapitel behauptet, wird gegen die falschen Karten gehalten");
+    return null;
+  }
+  return roh.claims;
+};
 
 /** Was ein Kind auf dieser Karte PRODUZIEREN muss. Bewusst schärfer als
  *  variety.ts `answerSurfaceOf`: dort zählt eine oddone-Karte ALLE ihre Items
@@ -120,7 +159,12 @@ export const answerWordsOf = (t) => {
     case "typed": return [t.answer, ...(t.accept ?? [])];
     case "wheel": return [t.answer]; // `shown` ist der Anlass, nicht die Antwort
     case "oddone": return [...t.correct];
-    case "order": return [...t.orderedChips];
+    // L0c · P18 (D-840, zweiter Fund): die Chips gingen EINZELN hinein und wurden
+    // dann mit ` | ` verbunden — ein mehrteiliger Wortbank-Eintrag („right arm")
+    // konnte von einer Legekarte per BAUART nie eingeloest werden, waehrend
+    // `variety.ts#answerSurfaceOf` dieselben Chips mit Leerzeichen verbindet und
+    // ihn sehr wohl fand. Zwei Tore, zwei Antworten auf dieselbe Frage.
+    case "order": return [t.orderedChips.join(" ")];
     case "mistake": return [t.fix?.correction ?? ""];
     case "memory": return t.pairs.flatMap((p) => [p.a, p.b]);
     // L2-M-a: beide Spalten. Dieses Tor misst die Vokabel-DECKUNG des Kapitels
@@ -205,8 +249,7 @@ const TODAY = new Date().toISOString().slice(0, 10);
 
 /** Block 2 für EIN Kapitel. Braucht drei Eingaben (Ansprüche, Wortbank, Karten);
  *  fehlt eine, wird das Gesetz NAMENTLICH übersprungen statt still. */
-const coverageFails = (cx) => {
-  const claims = claimsOf(cx);
+const coverageFails = (cx, claims) => {
   if (claims === null) { ledger.skip(cx.chapter, "abdeckung", `keine ${path.relative(ROOT, cx.claimsPath)}`); return []; }
   if (!cx.wordbankPath || !fs.existsSync(cx.wordbankPath)) { ledger.skip(cx.chapter, "abdeckung", `keine Wortbank für Unit ${cx.unit ?? "?"}`); return []; }
   if (!cx.hasTasks) { ledger.skip(cx.chapter, "abdeckung", `kein ${cx.chapter}.tasks.v2.json`); return []; }
@@ -222,6 +265,52 @@ const coverageFails = (cx) => {
     // dem Sammelobjekt, nicht nach irgendeinem Stem gleichen Namens
     new Set(cx.phases.flatMap((ph) => ph.entities.filter((e) => e.role === "cloth").map((e) => e.skin))),
   ).map((f) => `${cx.chapter} ${f}`);
+};
+
+// ── 2b · L0c · P18 · DIE DIFFERENZ ZWISCHEN ZWEI LESARTEN VON »EINGELOEST« ──
+//
+// D-840, an den laufenden Toren gemessen: `check-level-design` (D-77) liest den
+// ANTWORT-TEXT jeder Karte des Kapitels, Boss und Finale eingeschlossen. Gesetz
+// 17c (`variety.ts`) liest die DEKLARATION `exercises`, und nur von FELD-Karten
+// (`FIELD_USES`). Beleg im Bestand: „long" stand als Antwort-Chip auf der
+// Boss-Karte `boss.o1` UND als datierte Ausnahme im Vokabel-Hauptbuch — beide
+// Tore gruen, die Buchfuehrung trotzdem falsch.
+//
+// Die gemeinsame Lesart waere teuer und falsch: die Doppelung ist Absicht (eine
+// oddone-Karte zaehlt hier nur `correct`, dort alle Items), und dieses Tor
+// laeuft in CI als reines `node` und kann die TypeScript-Engine gar nicht
+// importieren. Die Registerzeile von D-840 nennt deshalb selbst den billigeren
+// Weg, und das ist dieser: ein Gesetz, das genau die DIFFERENZ meldet.
+//
+// Es BERICHTET mit Zahl, statt rot zu werden (Koki, 2026-09-05): der erste Lauf
+// findet 16 solcher Stellen im ausgelieferten Bestand, und ihre Reparatur liegt
+// in `chNN.policy.json` — Kapitel-Dateien, die dieser Bahn gesperrt sind. Die
+// Zeilen gehen namentlich an die T2-Bahnen; wer sie abraeumt, dreht `BERICHTET`
+// auf `fails.push`. Eine Zeile, ein Schalter, kein zweites Register.
+const ledgerDifferenz = (cx) => {
+  const out = [];
+  if (!cx.hasTasks || !cx.hasPolicy || !cx.wordbankPath || !fs.existsSync(cx.wordbankPath)) return out;
+  let pol;
+  try { pol = JSON.parse(fs.readFileSync(cx.policyPath, "utf8")); } catch { return out; }
+  const buch = pol.vocabLedger ?? {};
+  if (Object.keys(buch).length === 0) return out;
+  const bank = new Map(JSON.parse(fs.readFileSync(cx.wordbankPath, "utf8")).entries.map((e) => [e.id, e]));
+  const items = JSON.parse(fs.readFileSync(cx.tasksPath, "utf8")).items ?? [];
+  for (const [id, eintrag] of Object.entries(buch)) {
+    const entry = bank.get(id);
+    if (entry === undefined) continue;
+    const formen = [entry.en, ...(entry.forms ?? [])].filter(Boolean).map((x) => String(x).toLowerCase());
+    for (const t of items) {
+      const flaeche = answerWordsOf(t).join(" | ");
+      const treffer = formen.find((f) => saysWord(flaeche, f));
+      if (treffer === undefined) continue;
+      out.push(`${cx.chapter}: "${id}" steht als Ausnahme im Hauptbuch (cards: ${eintrag.cards}), `
+        + `aber die Karte ${t.id} [${t.use ?? "?"}/${t.kind}] laesst das Kind „${treffer}" antworten `
+        + "— eine Ausnahme, die eine Karte laengst einloest, versteckt die naechste Luecke (D-77, D-840)");
+      break;
+    }
+  }
+  return out;
 };
 
 // ── 3 · MANIFEST-ANKER ───────────────────────────────────────────────────────
@@ -581,6 +670,49 @@ if (process.argv.includes("--selftest")) {
     ["BUCHSTABEN: Kette und Zellen zählen verschieden", lwrite("| A·B·C | Buchstaben | **(4,10) (11,10)** | p | m |\n"),
       (f) => f.some((x) => /nennt 3 Zeichen, aber 2 Zelle\(n\)/.test(x))],
   );
+  // ── Block 7 · L0c · P19 · `scene.stage` im Stem-Dedup ─────────────────────
+  // Ein SPIELZEUG-Level, nie ein echtes Kapitel: der Tamper soll die Regel
+  // treffen, nicht den Bestand.
+  const buehne = (id, skin) => ({ id, role: "scene.stage", skin, c: 5, r: 17, tier: "E" });
+  cases.push(
+    ["BUEHNE: zwei scene.stage mit demselben Darsteller-Skin sind ein Doppel",
+      dedupFails([{ id: "p1", entities: [buehne("b1", "papagei"), buehne("b2", "papagei")] }], "ch99").fails,
+      (f) => f.some((x) => /dedup: Stem "papagei" doppelt/.test(x))],
+    ["BUEHNE: zwei scene.stage mit VERSCHIEDENEN Skins sind still",
+      dedupFails([{ id: "p1", entities: [buehne("b1", "papagei"), buehne("b2", "loewe")] }], "ch99").fails,
+      (f) => f.length === 0],
+    ["…und der Dedup liest `skin`, nicht `params` — eine Buehne ohne Skin-Doppel bleibt gruen",
+      dedupFails([{ id: "p1", entities: [{ ...buehne("b1", "papagei"), params: { actorSkin: "loewe" } },
+                                          { ...buehne("b2", "loewe"), params: { actorSkin: "papagei" } }] }], "ch99").fails,
+      (f) => f.length === 0],
+  );
+
+  // ── Block 8 · L0c · P20 · die drei Gesichter von `?? {}` ──────────────────
+  // Jede Verfaelschung sitzt auf einer WEGWERF-Datei im Temp-Ordner, und die
+  // Meldung wird aus `fails` gefischt: `claimsOf` urteilt dort, wo es liest.
+  const claimsProbe = (inhalt) => {
+    const p = path.join(tmp, "claims.json");
+    fs.writeFileSync(p, inhalt);
+    const vorher = fails.length;
+    const ergebnis = claimsOf({ chapter: "ch99", hasClaims: true, claimsPath: p });
+    const neue = fails.splice(vorher);   // aus dem echten Lauf wieder heraus
+    return { ergebnis, neue };
+  };
+  cases.push(
+    ["ANSPRUECHE: die Soll-Form ist gruen und liefert die Tabelle",
+      claimsProbe(JSON.stringify({ schema: "paint-claims@1", chapter: "ch99", claims: { shirt: { kind: "cards" } } })),
+      (r) => r.neue.length === 0 && Object.keys(r.ergebnis ?? {}).length === 1],
+    ["ANSPRUECHE: eine FLACHE Datei faellt nicht mehr still auf leer",
+      claimsProbe(JSON.stringify({ shirt: { kind: "cards" } })),
+      (r) => r.ergebnis === null && r.neue.some((x) => /fehlt schema, chapter, claims/.test(x))],
+    ["ANSPRUECHE: ein fremdes Kapitel im Kopf wird genannt",
+      claimsProbe(JSON.stringify({ schema: "paint-claims@1", chapter: "ch07", claims: {} })),
+      (r) => r.ergebnis === null && r.neue.some((x) => /nennt sich "ch07"/.test(x))],
+    ["ANSPRUECHE: kaputtes JSON stirbt MIT Dateinamen, nicht als nackter SyntaxError",
+      claimsProbe("{ das ist kein JSON"),
+      (r) => r.ergebnis === null && r.neue.some((x) => /claims\.json ist kein gueltiges JSON/.test(x))],
+  );
+
   let bad = 0;
   for (const [name, got, ok] of cases) {
     const pass = ok(got);
@@ -638,6 +770,7 @@ const purposeFails = (cx) => {
 // zu unterscheiden — und ein Tor, das nur die Kapitel kennt, für die es je
 // gelaufen ist, ist genau die Klasse, die diese Bahn schliesst.
 const CHAPTERS = paintChapters();
+const differenzen = [];
 let stemCount = 0;
 let vocabCount = 0;
 let phaseCount = 0;
@@ -646,11 +779,16 @@ for (const cx of CHAPTERS) {
   stemCount += dedup.stems.size;
   phaseCount += cx.phases.length;
   fails.push(...dedup.fails);
-  fails.push(...coverageFails(cx));
+  // L0c · P20 (b): EINMAL laden, zweimal benutzt — eine kaputte Anspruchsdatei
+  // wuerde sonst zweimal gemeldet, und zwei Zeilen fuer einen Defekt lesen sich
+  // wie zwei Defekte.
   const claims = claimsOf(cx);
-  if (claims !== null && cx.wordbankPath && fs.existsSync(cx.wordbankPath)) {
-    vocabCount += JSON.parse(fs.readFileSync(cx.wordbankPath, "utf8")).entries.filter((e) => e.kind === "wordfile").length;
-  }
+  fails.push(...coverageFails(cx, claims));
+  // …und die Zahl kommt aus der GEPRUEFTEN Tabelle, nicht aus der Wortbank
+  // daneben. Die alte Zeile zaehlte die Wortbank und stand deshalb bei 45 —
+  // vor UND nach der Reparatur einer leeren Anspruchsdatei (L6-G1b).
+  if (claims !== null) vocabCount += Object.keys(claims).length;
+  differenzen.push(...ledgerDifferenz(cx));
   fails.push(...manifestFails(cx));
   fails.push(...purposeFails(cx));
   if (cx.hasDossiers) {
@@ -682,6 +820,12 @@ for (const g of ledger.gaps()) {
   fails.push(`${g} — das Kapitel trägt KEINE draft-Flagge, ist also fertig: eine fehlende Eingabe ist hier ein Loch, keine Bauphase (D-792)`);
 }
 
+// L0c · P18: BERICHTET, mit Zahl — vor dem Urteil, damit ein roter Lauf sie
+// auch zeigt (L0-Lehre: eine Diagnose hinter dem Exit-Code ist keine Diagnose).
+if (differenzen.length > 0) {
+  console.log(`check-level-design: ${differenzen.length} Hauptbuch-Ausnahmen, die eine Karte laengst einloest (D-840, berichtet — nicht rot):`);
+  for (const d of differenzen) console.log(`  · ${d}`);
+}
 ledger.print();
 if (fails.length) {
   console.error(`check-level-design: ${fails.length} Verstöße`);
