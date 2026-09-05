@@ -2,7 +2,7 @@
  "schema": "paintChapterPolicy@1",
  "chapter": "ch05",
  "unit": "g1-u05",
- "note": "ENTWURF der Bahn L5-T1 (2026-09-03), Form 1:1 nach ch01.policy.json (L0 · D10). fieldKinds = die Feld-Palette aus doc 41 §1 fuer ch05 (choice · mistake · order · memory; mistake ist das Feld-Debuet des Kapitels). fieldForms = die vier Formen, die dieses Kapitel heute stellen KANN: state-it (can/can't und Possessiv-Aussagen), ask-it (Fragen mit can; die einzige Form, die `order` traegt), pick-correct-form (drei Formen desselben Satzes), name-it (die Notenstaender-Kaefige). fix-it/pair-it kommen mit R247 (L0-Nachtrag) dazu — erst dann sind mistake- und memory-Karten im FELD baubar (D-902); bis dahin liegen ihre Exemplare als Daten in docs/design/g1/paint/ch05-dossiers-v2/pending-tasks.md. nounDe traegt heute nur den Kaefig-Insassen, den die Familie `kaefig-nennt-den-insassen` verlangt (L0 · N5: Kapitel-Nomen stehen HIER, nicht in scripts/). vocabLedger ist mit ABLAUFDATUM gefuellt, damit das Kapitel nach dem Merge nicht 38 Zeilen rot ist — die Welle T2 loescht jeden Eintrag, den sie beantwortet (Gesetz 17c erzwingt es). families bleibt leer: die Ausnahme, die Veits sechs Wiedererweckungs-Runden brauchen (Gesetz 14c, Vorbild ch01s Familie `merle-ceremony`), gehoert der Bahn, die diese sechs Karten schreibt.",
+ "note": "ENTWURF der Bahn L5-T1 (2026-09-03), Form 1:1 nach ch01.policy.json (L0 · D10). fieldKinds = die Feld-Palette aus doc 41 §1 fuer ch05 (choice · mistake · order · memory; mistake ist das Feld-Debuet des Kapitels). fieldForms = die vier Formen, die dieses Kapitel heute stellen KANN: state-it (can/can't und Possessiv-Aussagen), ask-it (Fragen mit can; die einzige Form, die `order` traegt), pick-correct-form (drei Formen desselben Satzes), name-it (die Notenstaender-Kaefige). fix-it/pair-it kommen mit R247 (L0-Nachtrag) dazu — erst dann sind mistake- und memory-Karten im FELD baubar (D-902); bis dahin liegen ihre Exemplare als Daten in docs/design/g1/paint/ch05-dossiers-v2/pending-tasks.md. nounDe traegt heute nur den Kaefig-Insassen, den die Familie `kaefig-nennt-den-insassen` verlangt (L0 · N5: Kapitel-Nomen stehen HIER, nicht in scripts/). vocabLedger ist mit ABLAUFDATUM gefuellt; der Sitz L5-Fix (2026-09-05) hat die SECHS Eintraege keyboard-player, singer, drummer, saxophone-player, saxophone und guitarist wieder ENTFERNT, weil die sechs neuen Karten dieser Woerter sie jetzt beantworten — Gesetz 17c macht eine Ausnahme, die eine Karte einloest, zum Fehler (»a stale exemption hides the next gap«). Der Rest bleibt, damit das Kapitel nach dem Merge nicht 38 Zeilen rot ist — die Welle T2 loescht jeden Eintrag, den sie beantwortet (Gesetz 17c erzwingt es). families bleibt leer: die Ausnahme, die Veits sechs Wiedererweckungs-Runden brauchen (Gesetz 14c, Vorbild ch01s Familie `merle-ceremony`), gehoert der Bahn, die diese sechs Karten schreibt.",
  "fieldKinds": [
   "choice",
   "mistake",
@@ -29,36 +29,6 @@
  },
  "families": [],
  "vocabLedger": {
-  "g1u05.w.keyboard-player": {
-   "cards": "exempt",
-   "reason": "Wirbelsaeulen-Wort des Kapitels (Musiker · Instrumente · can/Possessive · Koerperverben). Dieses Set ist das KALIBRIERSTUECK mit zehn Karten; die Welle T2 vergibt die uebrigen ~60 und gibt diesem Wort seine Karte. Der Eintrag ist dann nach Gesetz 17c zu LOESCHEN — eine stehengebliebene Ausnahme verdeckt die naechste Luecke.",
-   "until": "2026-10-31"
-  },
-  "g1u05.w.singer": {
-   "cards": "exempt",
-   "reason": "Wirbelsaeulen-Wort des Kapitels (Musiker · Instrumente · can/Possessive · Koerperverben). Dieses Set ist das KALIBRIERSTUECK mit zehn Karten; die Welle T2 vergibt die uebrigen ~60 und gibt diesem Wort seine Karte. Der Eintrag ist dann nach Gesetz 17c zu LOESCHEN — eine stehengebliebene Ausnahme verdeckt die naechste Luecke.",
-   "until": "2026-10-31"
-  },
-  "g1u05.w.drummer": {
-   "cards": "exempt",
-   "reason": "Wirbelsaeulen-Wort des Kapitels (Musiker · Instrumente · can/Possessive · Koerperverben). Dieses Set ist das KALIBRIERSTUECK mit zehn Karten; die Welle T2 vergibt die uebrigen ~60 und gibt diesem Wort seine Karte. Der Eintrag ist dann nach Gesetz 17c zu LOESCHEN — eine stehengebliebene Ausnahme verdeckt die naechste Luecke.",
-   "until": "2026-10-31"
-  },
-  "g1u05.w.saxophone-player": {
-   "cards": "exempt",
-   "reason": "Wirbelsaeulen-Wort des Kapitels (Musiker · Instrumente · can/Possessive · Koerperverben). Dieses Set ist das KALIBRIERSTUECK mit zehn Karten; die Welle T2 vergibt die uebrigen ~60 und gibt diesem Wort seine Karte. Der Eintrag ist dann nach Gesetz 17c zu LOESCHEN — eine stehengebliebene Ausnahme verdeckt die naechste Luecke.",
-   "until": "2026-10-31"
-  },
-  "g1u05.w.saxophone": {
-   "cards": "exempt",
-   "reason": "Wirbelsaeulen-Wort des Kapitels (Musiker · Instrumente · can/Possessive · Koerperverben). Dieses Set ist das KALIBRIERSTUECK mit zehn Karten; die Welle T2 vergibt die uebrigen ~60 und gibt diesem Wort seine Karte. Der Eintrag ist dann nach Gesetz 17c zu LOESCHEN — eine stehengebliebene Ausnahme verdeckt die naechste Luecke.",
-   "until": "2026-10-31"
-  },
-  "g1u05.w.guitarist": {
-   "cards": "exempt",
-   "reason": "Wirbelsaeulen-Wort des Kapitels (Musiker · Instrumente · can/Possessive · Koerperverben). Dieses Set ist das KALIBRIERSTUECK mit zehn Karten; die Welle T2 vergibt die uebrigen ~60 und gibt diesem Wort seine Karte. Der Eintrag ist dann nach Gesetz 17c zu LOESCHEN — eine stehengebliebene Ausnahme verdeckt die naechste Luecke.",
-   "until": "2026-10-31"
-  },
   "g1u05.w.boyfriend": {
    "cards": "exempt",
    "reason": "Wirbelsaeulen-Wort des Kapitels (Musiker · Instrumente · can/Possessive · Koerperverben). Dieses Set ist das KALIBRIERSTUECK mit zehn Karten; die Welle T2 vergibt die uebrigen ~60 und gibt diesem Wort seine Karte. Der Eintrag ist dann nach Gesetz 17c zu LOESCHEN — eine stehengebliebene Ausnahme verdeckt die naechste Luecke.",
