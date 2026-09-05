@@ -252,7 +252,7 @@
     "p1"
    ],
    "hints": {
-    "deDesc": "Das Wort für die Frage kommt zuerst."
+    "deDesc": "Das Fragewort kommt zuerst."
    }
   },
   {
@@ -655,7 +655,7 @@
     "showsDe": "Die Tür zeigt einen Mund, weit offen.",
     "art": "door_a"
    },
-   "storyDe": "Was siehst du da? Leg die Buchstaben zum Wort!",
+   "storyDe": "Was siehst du da? Leg die Buchstaben zum Wort zusammen!",
    "answer": "teeth",
    "extraLetters": "or",
    "skins": [
@@ -773,7 +773,7 @@
    "kind": "choice",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Ihre Schulter ist leer. Sie schreibt einen Satz."
+    "showsDe": "Auf ihrer Schulter sitzt nichts. Sie schreibt es auf."
    },
    "storyDe": "Ein Wort stimmt nicht. Wähl den Satz!",
    "options": [
