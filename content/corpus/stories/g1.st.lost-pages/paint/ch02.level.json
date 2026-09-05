@@ -3,13 +3,13 @@
  "id": "g1.paint.ch02",
  "chapter": "ch02",
  "draft": true,
- "note": "L2-P1 (Level-2-Architekt, 2026-09-03): p1 »Das Zoo-Tor« ist das Kalibrier-Exemplar des Kapitels — Gitter, Wesen, Faust-Gabe, Anker am Tinten-Graben; Ids/Skins sind eingefroren (Blaupause L2 v5 §2), L2-T1 bindet daran. p2/p3/p4/p9 sind noch das L0-Gerüst (D12) und werden von L2-G2 vollendet. Kapitel-Neuheiten (Mini-Szenen-Bühne, Wasserlinie, Löwe, Hang-Pflicht) stehen als Daten in docs/design/g1/paint/ch02-dossiers-v2/pending.md, bis L2-M sie verdrahtet. Sammel-Skin feather (R246): die *-Zellen sind Federn. draft:true bleibt bis L2-A.",
+ "note": "L2-P1v2 (Level-2-Architekt, 2026-09-05): p1 »Das Zoo-Tor« v2 ist das Kalibrier-Exemplar MIT der Signatur (R255): Park-Poster statt Regelseite, drei 7-Zeilen-Griffe (Kassenmauer · Voliere · Faust-Turm — das Reach-Modell verlangt hang, die Engine erzwingt den Griff), zwei Tier-Bühnen (scene.stage: Papagei × Auto auf dem Affenhaus-Dach, Hund × Baum am Boulevard), die per Link enthüllt werden, damit das Kind ZUSCHAUT (Käfig befreit ⇒ Papagei, Pinguin zurückgefärbt ⇒ Hund). Die Ortswörter-Regelseite und der graue Hund sind ins p2-Gerüst gezogen (L2-G2 versetzt sie). p2/p3/p4/p9 sonst L0-Gerüst — L2-G2. Löwe, Wasserlinie, Heimlauf = L2-M-b. Sammel-Skin feather. draft:true bleibt bis L2-A.",
  "name": "Der Zoo im Buch — Der Zoo mit den falschen Schildern",
  "goalDe": "Der Tinten-Schatten war im Zoo. Jedes Tier steht am falschen Platz, und die Schilder lügen.",
  "whyDe": "Sag, was ein Tier ist und wo es ist. Dann geht es heim.",
  "hintsDe": [
   "Springen: SPACE — halten für höher!",
-  "An einer Kante hältst du dich fest — SPACE springt.",
+  "An Kanten hältst du dich fest. Mit SPACE springst du.",
   "Ein graues Tier? Stell dich davor und drück ↑!"
  ],
  "collectNounDe": "Federn",
@@ -35,23 +35,23 @@
    "rows": [
     "################################################################",
     "................................................................",
+    ".............................*.*.*..............................",
     "................................................................",
-    "................................................................",
-    "................................................................",
-    "....................................#####.......................",
-    "....................................#...#.......................",
-    "....................................#...#.......................",
-    "....................................#...#.......................",
-    "....................................#####.......................",
-    "................................................................",
-    "................................................................",
-    ".........*............*.*.*.....................................",
-    "................................................................",
-    ".......*###...........#####.............###*.........*..........",
-    "........###*............................................##......",
-    ".....*..###.*..*..*.....#.....*..*.....*......*.*...###*........",
-    "..S.....###.............#...........................###...C...X.",
-    "#############################################~~~~~#########..###",
+    "...........................*######..............................",
+    "............................######..............................",
+    "............................#....#..............................",
+    "............................#....#..............................",
+    "............................#....#..............................",
+    ".........*..*..*....*..*..*.######..............................",
+    "............................######..............................",
+    ".......*##########################....................*##.......",
+    "........##########################.....................##.......",
+    "........##########################.....................##.......",
+    "........##########################.....................##.......",
+    "......*.##########################.....................##*......",
+    "....*...##########################..*..*..*..*..*...*..##.......",
+    "..S.....##########################.....................##.C...X.",
+    "###########################################~~~~~###########..###",
     "###########################################################..###",
     "###########################################################..###",
     "###########################################################..###",
@@ -62,83 +62,22 @@
    ],
    "entities": [
     {
-     "id": "p1-regel-ortswoerter",
+     "id": "p1-poster",
      "role": "tip",
      "skin": "regelseite",
-     "c": 14,
+     "c": 5,
      "r": 17,
      "tier": "E",
      "params": {
-      "topicDe": "Ortswörter: wo etwas ist",
-      "erklaerungDe": "Ein Ortswort sagt dir, wo ein Tier oder ein Ding ist. Es steht vor dem Ding, bei dem es ist.",
-      "merksatzDe": "in, under, behind, next to: erst das Ortswort, dann das Ding.",
-      "schluesselDe": "erst das Ortswort, dann das Ding",
-      "beispieleEn": [
-       "The parrot is in the tree.",
-       "The dog is under the bus.",
-       "The monkey is behind the tree.",
-       "The penguin is next to the bus."
-      ],
-      "beispielMuster": "einzeln",
-      "lehrtEn": [
-       "in",
-       "under",
-       "behind",
-       "next to"
-      ],
-      "belegDe": "MORE! 1 · Unit 2 · Seite 16, 19, 20"
-     }
-    },
-    {
-     "id": "p1-hund",
-     "role": "drained",
-     "skin": "hund",
-     "c": 21,
-     "r": 17,
-     "tier": "E",
-     "params": {}
-    },
-    {
-     "id": "p1-schubkarre",
-     "role": "chaser",
-     "skin": "schubkarre",
-     "c": 28,
-     "r": 17,
-     "tier": "E",
-     "params": {
-      "patrolMinC": 28,
-      "patrolMaxC": 34
-     }
-    },
-    {
-     "id": "p1-cage2",
-     "role": "cage",
-     "skin": "zookaefig",
-     "c": 41,
-     "r": 13,
-     "tier": "E",
-     "params": {
-      "captive": "ticket",
-      "captiveDe": "das Ticket"
-     }
-    },
-    {
-     "id": "p1-regel-there-is",
-     "role": "tip",
-     "skin": "regelseite",
-     "c": 44,
-     "r": 17,
-     "tier": "E",
-     "params": {
-      "topicDe": "there is / there are",
-      "erklaerungDe": "Wenn du sagst, dass etwas da ist, fängst du mit there is oder there are an. Bei einem: is. Bei mehreren: are.",
+      "topicDe": "Das Park-Plakat: there is / there are",
+      "erklaerungDe": "Das Plakat sagt, was es im Park gibt. Eines: there is. Mehrere: there are.",
       "merksatzDe": "Eines: there is. Mehrere: there are.",
       "schluesselDe": "Eines: there is. Mehrere: there are",
       "beispieleEn": [
        "There is a train.",
-       "There are two trains.",
-       "There is a penguin.",
-       "There are three monkeys."
+       "There are penguins.",
+       "There is a lion.",
+       "There are giraffes."
       ],
       "beispielMuster": "einzeln",
       "lehrtEn": [
@@ -149,10 +88,76 @@
      }
     },
     {
+     "id": "p1-cage2",
+     "role": "cage",
+     "skin": "zookaefig",
+     "c": 11,
+     "r": 10,
+     "tier": "E",
+     "params": {
+      "captive": "ticket",
+      "captiveDe": "das Ticket"
+     }
+    },
+    {
+     "id": "p1-buehne-papagei",
+     "role": "scene.stage",
+     "skin": "papagei",
+     "c": 18,
+     "r": 10,
+     "tier": "E",
+     "params": {
+      "hidden": true,
+      "stage": {
+       "propSkin": "auto",
+       "ticksPerStation": 90,
+       "stations": [
+        {
+         "dc": -2,
+         "dr": 0,
+         "z": "front"
+        },
+        {
+         "dc": 0,
+         "dr": -1,
+         "z": "behind"
+        },
+        {
+         "dc": 0,
+         "dr": -2,
+         "z": "front"
+        },
+        {
+         "dc": 1,
+         "dr": 0,
+         "z": "behind"
+        },
+        {
+         "dc": 0,
+         "dr": 0,
+         "z": "front"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "id": "p1-schubkarre",
+     "role": "chaser",
+     "skin": "schubkarre",
+     "c": 37,
+     "r": 17,
+     "tier": "E",
+     "params": {
+      "patrolMinC": 37,
+      "patrolMaxC": 42
+     }
+    },
+    {
      "id": "p1-rutscher",
      "role": "bouncer",
      "skin": "pinguin_rutscher",
-     "c": 47,
+     "c": 45,
      "r": 17,
      "tier": "E",
      "params": {}
@@ -161,17 +166,54 @@
      "id": "p1-pinguin",
      "role": "drained",
      "skin": "pinguin",
-     "c": 51,
+     "c": 48,
      "r": 17,
      "tier": "E",
      "params": {}
     },
     {
+     "id": "p1-buehne-buddy",
+     "role": "scene.stage",
+     "skin": "buddy",
+     "c": 52,
+     "r": 17,
+     "tier": "E",
+     "params": {
+      "hidden": true,
+      "stage": {
+       "propSkin": "baum",
+       "ticksPerStation": 90,
+       "stations": [
+        {
+         "dc": -2,
+         "dr": 0,
+         "z": "front"
+        },
+        {
+         "dc": 0,
+         "dr": 0,
+         "z": "front"
+        },
+        {
+         "dc": 0,
+         "dr": -4,
+         "z": "front"
+        },
+        {
+         "dc": 0,
+         "dr": 0,
+         "z": "behind"
+        }
+       ]
+      }
+     }
+    },
+    {
      "id": "p1-faust",
      "role": "powerup",
      "skin": "fibel_faust",
-     "c": 57,
-     "r": 14,
+     "c": 56,
+     "r": 10,
      "tier": "E",
      "params": {
       "grants": "punch",
@@ -191,7 +233,24 @@
      }
     }
    ],
-   "links": [],
+   "links": [
+    {
+     "trigger": "p1-cage2",
+     "on": "opened",
+     "action": "reveal",
+     "targets": [
+      "p1-buehne-papagei"
+     ]
+    },
+    {
+     "trigger": "p1-pinguin",
+     "on": "redeemed",
+     "action": "reveal",
+     "targets": [
+      "p1-buehne-buddy"
+     ]
+    }
+   ],
    "exit": {
     "to": "p2"
    }
@@ -230,6 +289,43 @@
     "########################################################################"
    ],
    "entities": [
+    {
+     "id": "p2-regel-ortswoerter",
+     "role": "tip",
+     "skin": "regelseite",
+     "c": 10,
+     "r": 21,
+     "tier": "E",
+     "params": {
+      "topicDe": "Ortswörter: wo etwas ist",
+      "erklaerungDe": "Ein Ortswort sagt dir, wo etwas ist. Es steht vor dem Ding.",
+      "merksatzDe": "in, under, behind, next to: erst das Ortswort, dann das Ding.",
+      "schluesselDe": "erst das Ortswort, dann das Ding",
+      "beispieleEn": [
+       "The parrot is in the tree.",
+       "The dog is under the bus.",
+       "The monkey is behind the tree.",
+       "The penguin is next to the bus."
+      ],
+      "beispielMuster": "einzeln",
+      "lehrtEn": [
+       "in",
+       "under",
+       "behind",
+       "next to"
+      ],
+      "belegDe": "MORE! 1 · Unit 2 · Seite 16, 19, 20"
+     }
+    },
+    {
+     "id": "p2-hund",
+     "role": "drained",
+     "skin": "hund",
+     "c": 20,
+     "r": 21,
+     "tier": "E",
+     "params": {}
+    },
     {
      "id": "p2-cage-fenn",
      "role": "cage",

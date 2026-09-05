@@ -1,67 +1,76 @@
 {
  "schema": "paintClaims@1",
  "chapter": "ch02",
- "note": "L2-P1 (2026-09-03) · Vokabel-Ansprüche des Zoo-Kapitels. Klassen wie ch01 (being/thing/architecture/cards/pickup/debt; Bedeutung im Tor). p1 gebaut: dog, penguin (being), ticket (thing). p2/p3/Arena-Wesen als debt bis L2-G2. ★ L2-T1 (2026-09-04, Rebase-Sitz): die sechs Ortswort-Ausnahmen sind GEFALLEN — die Karten von PR #398 lassen alle sechs ANTWORTEN, und Gesetz D-77 verlangt dann, dass die Ausnahme weicht (check-level-design nannte genau diese sechs Wörter namentlich). Gestrichen wurde, was das Tor benannt hat, nichts sonst.",
+ "note": "L2-P1v2 (2026-09-05) · Vokabel-Ansprüche des Zoo-Kapitels, jetzt MIT Seitenzahlen (R256) im note je Wort (SB/WB = Buchseiten). Klassen wie ch01 (being/thing/architecture/cards/pickup/debt). p1 v2 gebaut: parrot (being: Bühnen-Darsteller papagei; dog und car sind KEINE wordfile-Einträge der u02-Wortbank — das Tor nennt sie tote Schlüssel, also stehen sie nur im README), penguin (being), ticket (thing), tree (architecture: Bühnen-Props sind Bilder, keine Entities). p2/p3/Arena-Wesen als debt bis L2-G2. Die sechs Ortswort-Ansprüche sind cards (T1-Karten antworten; D-77 hat die Ausnahmen am 04.09. gestrichen).",
  "claims": {
   "tree": {
    "kind": "architecture",
    "stems": [],
-   "note": "Prop der Bühne 1 (Krone r14 c22–26, Stamm c24) — Gitter-Geometrie; Kunst-Zeit"
+   "note": "Prop der Buddy-Bühne (Bild baum, keine Geometrie) · SB 16 (Giraffe unter dem Baum, Affen im Baum) · WB 20 WORD FILE"
   },
   "monkey": {
    "kind": "debt",
    "stems": [],
-   "note": "Wesen/Prop von p2/p3/Arena — L2-G2 setzt den Stem (Blaupause §2)"
+   "note": "p2 Kokos-Affe (gunner) · SB 16 (drei Affen im Baum), SB 18 Chant, WB 17 (Affen auf dem Bus) — L2-G2"
   },
   "parrot": {
-   "kind": "debt",
-   "stems": [],
-   "note": "Wesen/Prop von p2/p3/Arena — L2-G2 setzt den Stem (Blaupause §2)"
+   "kind": "being",
+   "stems": [
+    "papagei"
+   ],
+   "note": "Darsteller der Bühne p1-buehne-papagei · SB 16 Story (Where's the parrot?) · SB 19"
   },
   "giraffe": {
    "kind": "debt",
    "stems": [],
-   "note": "Wesen/Prop von p2/p3/Arena — L2-G2 setzt den Stem (Blaupause §2)"
+   "note": "p3 Giraffe × Baum (Bühne) + Giraffen-Turm · SB 16, WB 18 — L2-G2"
   },
   "train": {
    "kind": "debt",
    "stems": [],
-   "note": "Wesen/Prop von p2/p3/Arena — L2-G2 setzt den Stem (Blaupause §2)"
+   "note": "p2 Zoo-Zug (Käfig-Insasse + Ausfahrt) · SB 17 Poster (There is a train), WB 14 — L2-G2"
   },
   "penguin": {
    "kind": "being",
    "stems": [
     "pinguin",
     "pinguin_rutscher"
-   ]
+   ],
+   "note": "grauer Pinguin (restore) + Rutscher (bouncer) in p1 · SB 17 Poster (There are penguins) · WB 17 (Pinguine im Bus)"
   },
   "guide": {
    "kind": "debt",
    "stems": [],
-   "note": "Wesen/Prop von p2/p3/Arena — L2-G2 setzt den Stem (Blaupause §2)"
+   "note": "Zoowärter-Schubkarre steht in p1 (chaser schubkarre, Fiktion des Wärters); das Wort selbst antwortet eine T2-Karte · SB 17, WB 20 — L2-T2"
   },
   "lion": {
    "kind": "debt",
    "stems": [],
-   "note": "Wesen/Prop von p2/p3/Arena — L2-G2 setzt den Stem (Blaupause §2)"
+   "note": "Arena: der Käfig-König (R237) · SB 17 Poster (See a lion), WB 20 — L2-M-b/G2"
   },
   "next to": {
-   "kind": "cards"
+   "kind": "cards",
+   "note": "T1-Karten antworten (Fenn r1–r6) + Bühnen-Karten p1 v2 · SB 16 Rand-Note, SB 19 ex. 10, SB 20 GRAMMAR, WB 14"
   },
   "in": {
-   "kind": "cards"
+   "kind": "cards",
+   "note": "T1-Karten antworten (Fenn r1–r6) + Bühnen-Karten p1 v2 · SB 16 Rand-Note, SB 19 ex. 10, SB 20 GRAMMAR, WB 14"
   },
   "behind": {
-   "kind": "cards"
+   "kind": "cards",
+   "note": "T1-Karten antworten (Fenn r1–r6) + Bühnen-Karten p1 v2 · SB 16 Rand-Note, SB 19 ex. 10, SB 20 GRAMMAR, WB 14"
   },
   "under": {
-   "kind": "cards"
+   "kind": "cards",
+   "note": "T1-Karten antworten (Fenn r1–r6) + Bühnen-Karten p1 v2 · SB 16 Rand-Note, SB 19 ex. 10, SB 20 GRAMMAR, WB 14"
   },
   "on": {
-   "kind": "cards"
+   "kind": "cards",
+   "note": "T1-Karten antworten (Fenn r1–r6) + Bühnen-Karten p1 v2 · SB 16 Rand-Note, SB 19 ex. 10, SB 20 GRAMMAR, WB 14"
   },
   "in front of": {
-   "kind": "cards"
+   "kind": "cards",
+   "note": "T1-Karten antworten (Fenn r1–r6) + Bühnen-Karten p1 v2 · SB 16 Rand-Note, SB 19 ex. 10, SB 20 GRAMMAR, WB 14"
   }
  }
 }
