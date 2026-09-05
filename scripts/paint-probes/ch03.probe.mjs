@@ -107,7 +107,7 @@ const neueSim = (rows, swing) => new Sim({
  * Schwung, es ist ein Pendel, das zufällig am Nachbarn endet.
  *
  * Gemessen wird deshalb der FLUG: die Strecke zwischen dem Loslassen und dem
- * nächsten Griff. `flug=0` heisst „am Scheitel weitergereicht", und nur eine
+ * nächsten Griff. `flug=0` heißt „am Scheitel weitergereicht", und nur eine
  * Zeile mit echtem Flug ist eine Kette. Dazu der SCHNAPPER: `attachSwing`
  * setzt die Figur auf einen FESTEN Eintrittswinkel (210 bzw. 302 von 512), also
  * auf den Bogenpunkt — nicht dorthin, wo sie den Ring berührt hat. Der Versatz
@@ -502,7 +502,7 @@ const teilC = () => {
       phases: [{ id: "p1", nameDe: "s", surface: "normal", plates: {}, rows: laderaum().rows, entities: [], links: [], exit: { to: "done" } }] },
     phaseId: "p1", grantedAbilities: () => ["jump"], freedCageIds: () => [],
   });
-  console.log(`Phase OHNE bilge: Wasserzeile = ${ohne.bilgeWaterRow} (−1 heisst: keine Bilge, liveGrid bleibt dieselbe Referenz)\n`);
+  console.log(`Phase OHNE bilge: Wasserzeile = ${ohne.bilgeWaterRow} (−1 heißt: keine Bilge, liveGrid bleibt dieselbe Referenz)\n`);
 
   console.log("## 10 · DIE FAUST — friert der Pumpengriff das Wasser ein, lässt das Ventil es ab?\n");
   console.log("Verfahren: das Kind läuft über den Laufgang zum Griff und wirft die Faust. ⚠ Die Faust fliegt beim");

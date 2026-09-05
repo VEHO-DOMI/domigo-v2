@@ -1554,7 +1554,7 @@ export class Sim {
   /** L3-M-a · E3 · DAS GITTER, DAS DER TICK GERADE SIEHT.
    *
    *  Oeffentlich aus genau einem Grund: die Paritaets-Zusicherung dieser Bahn
-   *  lautet „ohne `bilge` ist es DIESELBE REFERENZ wie `grid`", und eine Zusage
+   *  lautet „ohne `bilge` ist es DIESELBE REFERENZ wie `grid`“, und eine Zusage
    *  ueber Referenz-Gleichheit, die niemand pruefen kann, ist keine Zusage
    *  (`bilge.test.ts`). Nur lesen — geschrieben wird es allein in
    *  `rebuildLiveGrid`. Die Zeichen-Ebene nimmt weiter `grid`. */
@@ -1563,7 +1563,7 @@ export class Sim {
   }
 
   /** L3-M-a · E3 · der aktuelle Wasserstand als Gitterzeile, fuer die Huelle.
-   *  `-1` heisst: diese Phase hat keine Bilge. Nur lesbar — die Zeile bewegt
+   *  `-1` heißt: diese Phase hat keine Bilge. Nur lesbar — die Zeile bewegt
    *  ausschliesslich `stepBilge` und das Ablassventil. */
   get bilgeWaterRow(): number {
     return this.bilgeRow;

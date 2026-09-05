@@ -2085,7 +2085,7 @@ export const stepEntities = (
 
     // ── L3-M-a · E3 · DER PUMPENGRIFF (Faust-Treffer, Muster: der Deflect-Zweig
     // weiter unten — `inp.fist?.active` plus Abstand). Der Griff meldet nur den
-    // TREFFER; was er bewirkt, weiss allein die `Sim`, die die Bilge-Werte der
+    // TREFFER; was er bewirkt, weiß allein die `Sim`, die die Bilge-Werte der
     // Phase haelt.
     //
     // Die Sperre ist noetig, weil eine geworfene Faust MEHRERE Ticks lang aktiv

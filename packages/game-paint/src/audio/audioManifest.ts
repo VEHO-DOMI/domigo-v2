@@ -250,7 +250,7 @@ export const SIM_REACTIONS = {
   // ── L3-M-a · E5 · die steigende Bilge von ch03 (unter Deck) ────────────────
   // Alle drei sind `reserved`: die Dateien sind Kunst-Zeit, die Beats stehen.
   bilgePulse: [
-    { reserved: "ch03 Bilge — ein Puls hebt das Wasser: dumpfes Schwappen gegen Holz, tief; der Prompt heisst `bilge-pulse`" },
+    { reserved: "ch03 Bilge — ein Puls hebt das Wasser: dumpfes Schwappen gegen Holz, tief; der Prompt heißt `bilge-pulse`" },
     { reserved: "ch03 Bilge — der LETZTE Puls, das Wasser steht am Hoechststand: derselbe Klang, eine Terz hoeher und ohne Nachhall, damit das Kind hoert, dass es jetzt nicht mehr schlimmer wird", when: "atTop" },
   ],
   pumpFrozen: [{ reserved: "ch03 Bilge — die Faust trifft den Pumpengriff, das Wasser haelt an: Metall-Klack plus ein Saugen, das aufhoert; Prompt `pump-freeze`" }],
