@@ -1,0 +1,567 @@
+{
+ "schema": "gameTasks@2",
+ "chapter": "ch02",
+ "unit": "g1-u02",
+ "note": "L2-T1 · Die ersten Karten von ch02 „Der Zoo im Buch\" (MORE! 1 Unit 2 „At the zoo\"). Erdung: docs/design/g1/grounding/u02-lexicon.json. Die Karten der Maschinen, die es noch nicht gibt (match), des Wächters (der Löwe kommt mit L2-G2/L2-M) und der Schwarm-Karten (kein swarm im Kapitel, bis L2-G2 die Erdmännchen stellt) liegen als Daten-Entwurf in docs/design/g1/paint/ch02-dossiers-v2/pending-tasks.md. Formen: die zwei Feinde von p1 fragen Verschiedenes (Gesetz 14b), die Türserie rotiert drei Formen wie in ch01, und die sechs Fenn-Runden sind eine erklärte Zeremonie (Familie fenn-ceremony in ch02.policy.json).",
+ "items": [
+  {
+   "id": "g1.paint.ch02.enc.schubkarre.k1",
+   "use": "encounter",
+   "kind": "choice",
+   "form": "pick-correct-form",
+   "exercises": [
+    "g1u02.s.there-is-are",
+    "g1u02.w.train"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Die Schubkarre poltert mit einem Schild heran."
+   },
+   "storyDe": "Auf dem Schild steht Unsinn. Welcher Satz stimmt?",
+   "options": [
+    "There is a train.",
+    "There are a train.",
+    "There a train."
+   ],
+   "answer": "There is a train.",
+   "skins": [
+    "schubkarre"
+   ],
+   "phases": [
+    "p1"
+   ],
+   "hints": {
+    "deDesc": "Ein Zug, also Einzahl.",
+    "deWord": "Auf Deutsch: Da ist ein Zug."
+   },
+   "grounding": "u02 there is / there are (SB p. 20 GRAMMAR: „There is a train. | There are two trains.\") · train: g1u02.w.train"
+  },
+  {
+   "id": "g1.paint.ch02.enc.schubkarre.k2",
+   "use": "encounter",
+   "kind": "choice",
+   "form": "pick-correct-form",
+   "exercises": [
+    "g1u02.s.there-is-are",
+    "g1u02.w.tree"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Die Schubkarre kippt, ein zweites Schild fällt."
+   },
+   "storyDe": "Drei Affen sitzen oben. Welcher Satz stimmt?",
+   "options": [
+    "There are three monkeys in the tree.",
+    "There is three monkeys in the tree.",
+    "There are three monkey in the tree."
+   ],
+   "answer": "There are three monkeys in the tree.",
+   "skins": [
+    "schubkarre"
+   ],
+   "phases": [
+    "p1"
+   ],
+   "hints": {
+    "deDesc": "Mehr als eines, also Mehrzahl.",
+    "deWord": "Auf Deutsch: Da sind drei Affen im Baum."
+   },
+   "grounding": "u02 there is / there are + Plural (SB p. 16 Story: „there are three monkeys\") · tree: g1u02.w.tree"
+  },
+  {
+   "id": "g1.paint.ch02.enc.pinguin_rutscher.a1",
+   "use": "encounter",
+   "kind": "choice",
+   "form": "ask-it",
+   "exercises": [
+    "g1u02.w.penguin",
+    "g1u02.s.prepositions-place"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Der Rutscher schlittert über die nassen Fliesen."
+   },
+   "storyDe": "Ein Pinguin ist weg. Stell dem Rutscher die Frage!",
+   "options": [
+    "Where's the penguin?",
+    "What's the penguin?",
+    "How old is the penguin?"
+   ],
+   "answer": "Where's the penguin?",
+   "skins": [
+    "pinguin_rutscher"
+   ],
+   "phases": [
+    "p1"
+   ],
+   "hints": {
+    "deDesc": "Du willst den Platz wissen, nicht das Alter.",
+    "deWord": "Auf Deutsch: Wo ist der Pinguin?"
+   },
+   "grounding": "u02 Where's …? (SB p. 16 „Where's the parrot?\", SB p. 19 ex. 11 A) · penguin: g1u02.w.penguin"
+  },
+  {
+   "id": "g1.paint.ch02.enc.pinguin_rutscher.a2",
+   "use": "encounter",
+   "kind": "choice",
+   "form": "ask-it",
+   "exercises": [
+    "g1u02.w.dog",
+    "g1u02.s.prepositions-place"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Der Rutscher bremst vor einer grauen Lacke."
+   },
+   "storyDe": "Auch der Hund fehlt. Frag noch einmal nach!",
+   "options": [
+    "How old is the dog?",
+    "Where's the dog?",
+    "What's the dog?"
+   ],
+   "answer": "Where's the dog?",
+   "skins": [
+    "pinguin_rutscher"
+   ],
+   "phases": [
+    "p1"
+   ],
+   "hints": {
+    "deDesc": "Wieder die Frage nach dem Platz.",
+    "deWord": "Auf Deutsch: Wo ist der Hund?"
+   },
+   "grounding": "u02 Where's …? (SB p. 19 ex. 11 A: „Where's the dog?\") · dog: g1u02.w.dog"
+  },
+  {
+   "id": "g1.paint.ch02.enc.hund.r1",
+   "use": "encounter",
+   "kind": "restore",
+   "form": "name-it",
+   "exercises": [
+    "g1u02.w.dog",
+    "g1u02.x.colours"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Der Hund steht grau bei der Kassa."
+   },
+   "storyDe": "Sag, wer er ist — dann gib ihm die Farbe!",
+   "nameOptions": [
+    "dog",
+    "cat",
+    "frog",
+    "lion"
+   ],
+   "name": "dog",
+   "colourAskDe": "Der Hund war schwarz.",
+   "colourOptions": [
+    "black",
+    "white",
+    "brown"
+   ],
+   "colour": "black",
+   "skins": [
+    "hund"
+   ],
+   "phases": [
+    "p1"
+   ],
+   "hints": {
+    "deDesc": "Er bellt und wedelt am Eingang.",
+    "deWord": "Auf Deutsch: der Hund — und Schwarz."
+   },
+   "grounding": "u02 wordbank g1u02.w.dog (WB p. 14–15 WORD FILE) · Farbe aus g1u02.x.colours (WB p. 18–19 ex. 9: „black and white\")"
+  },
+  {
+   "id": "g1.paint.ch02.enc.pinguin.r1",
+   "use": "encounter",
+   "kind": "restore",
+   "form": "name-it",
+   "exercises": [
+    "g1u02.w.penguin",
+    "g1u02.x.colours"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Der Pinguin wartet grau an den Fliesen."
+   },
+   "storyDe": "Sag, wer er ist — dann gib ihm die Farbe!",
+   "nameOptions": [
+    "penguin",
+    "giraffe",
+    "parrot",
+    "monkey"
+   ],
+   "name": "penguin",
+   "colourAskDe": "Der Pinguin war weiß.",
+   "colourOptions": [
+    "white",
+    "green",
+    "yellow"
+   ],
+   "colour": "white",
+   "skins": [
+    "pinguin"
+   ],
+   "phases": [
+    "p1"
+   ],
+   "hints": {
+    "deDesc": "Er watschelt und rutscht auf dem Bauch.",
+    "deWord": "Auf Deutsch: der Pinguin — und Weiß."
+   },
+   "grounding": "u02 wordbank g1u02.w.penguin (WB p. 14–15 WORD FILE) · Farbe aus g1u02.x.colours"
+  },
+  {
+   "id": "g1.paint.ch02.rsc.zookaefig.1",
+   "use": "rescue",
+   "kind": "choice",
+   "form": "state-it",
+   "exercises": [
+    "g1u02.w.ticket"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Hinter den Gittern klemmt das Ticket."
+   },
+   "storyDe": "Sag auf Englisch, was da drinsteckt!",
+   "promptEn": "What is it?",
+   "options": [
+    "It's a ticket.",
+    "It's a stone.",
+    "It's a car."
+   ],
+   "answer": "It's a ticket.",
+   "skins": [
+    "zookaefig"
+   ],
+   "phases": [
+    "p1"
+   ],
+   "hints": {
+    "deDesc": "Ohne das kommst du nicht durch das Drehkreuz.",
+    "deWord": "Auf Deutsch: das Ticket."
+   },
+   "grounding": "u02 wordbank g1u02.w.ticket (MORE Words: „Adults are €14.40.\") · to be (SB p. 20: „It's yellow.\")"
+  },
+  {
+   "id": "g1.paint.ch02.rsc.zookaefig.s1",
+   "use": "rescue",
+   "kind": "spell",
+   "form": "name-it",
+   "exercises": [
+    "g1u02.w.ticket"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Am Gitter klebt die Eintrittskarte."
+   },
+   "storyDe": "Buchstabiere, was dich durch das Drehkreuz lässt!",
+   "answer": "ticket",
+   "extraLetters": "xz",
+   "skins": [
+    "zookaefig"
+   ],
+   "phases": [
+    "p1"
+   ],
+   "hints": {
+    "deDesc": "Sechs Buchstaben, und es beginnt mit t.",
+    "deWord": "Auf Deutsch: das Ticket."
+   },
+   "grounding": "u02 wordbank g1u02.w.ticket — das spell-Debüt des Kapitels (doc 41 §1)"
+  },
+  {
+   "id": "g1.paint.ch02.door.p1.d1",
+   "use": "door",
+   "kind": "choice",
+   "form": "ask-it",
+   "exercises": [
+    "g1u02.w.ticket"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Das Drehkreuz klappert und lässt niemanden durch."
+   },
+   "storyDe": "Das Drehkreuz sucht dein Ticket. Stell die Frage!",
+   "options": [
+    "How old is the ticket?",
+    "Where's the ticket?",
+    "What's the ticket?"
+   ],
+   "answer": "Where's the ticket?",
+   "skins": [
+    "drehkreuz"
+   ],
+   "phases": [
+    "p1"
+   ],
+   "hints": {
+    "deDesc": "Du willst den Platz wissen, nicht das Alter.",
+    "deWord": "Auf Deutsch: Wo ist das Ticket?"
+   },
+   "grounding": "u02 Where's …? + g1u02.w.ticket — erste Frage der Türserie"
+  },
+  {
+   "id": "g1.paint.ch02.door.p1.d2",
+   "use": "door",
+   "kind": "choice",
+   "form": "social-formula",
+   "exercises": [
+    "g1u02.s.to-be"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Das Drehkreuz zählt die Gäste und kommt durcheinander."
+   },
+   "storyDe": "Du bist 11. Antworte dem Drehkreuz!",
+   "promptEn": "How old are you?",
+   "options": [
+    "I'm from Cork.",
+    "I'm eleven.",
+    "I'm happy."
+   ],
+   "answer": "I'm eleven.",
+   "skins": [
+    "drehkreuz"
+   ],
+   "phases": [
+    "p1"
+   ],
+   "hints": {
+    "deDesc": "Es fragt nach deinem Alter, nicht nach dem Ort.",
+    "deWord": "Auf Deutsch: Ich bin elf."
+   },
+   "grounding": "u02 to be, Kurzform I'm (SB p. 18 ex. 6: „I'm 11.\" · WB p. 18–19 ex. 11: „Aileen is eleven.\")"
+  },
+  {
+   "id": "g1.paint.ch02.door.p1.d3",
+   "use": "door",
+   "kind": "choice",
+   "form": "command",
+   "exercises": [
+    "g1u02.w.us"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Das Drehkreuz steht still und sperrt den Ausgang."
+   },
+   "storyDe": "Sag dem Drehkreuz, es soll euch RAUSLASSEN!",
+   "options": [
+    "Let me see.",
+    "Let us out!",
+    "Bring your dog."
+   ],
+   "answer": "Let us out!",
+   "skins": [
+    "drehkreuz"
+   ],
+   "phases": [
+    "p1"
+   ],
+   "hints": {
+    "deDesc": "Ihr wollt alle hinaus, nicht nur du.",
+    "deWord": "Auf Deutsch: Lasst uns raus!"
+   },
+   "grounding": "u02 Chant (SB p. 18 ex. 9: „We are in. They are out. We're not happy. Let us out.\") · g1u02.w.us"
+  },
+  {
+   "id": "g1.paint.ch02.rsc.fenn.r1",
+   "use": "rescue",
+   "kind": "choice",
+   "form": "state-it",
+   "exercises": [
+    "g1u02.w.under",
+    "g1u02.s.prepositions-place"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Fenn hockt unter dem Baum."
+   },
+   "storyDe": "Sag, wo er hockt!",
+   "promptEn": "Where is he?",
+   "options": [
+    "He's under the tree.",
+    "He's in the tree.",
+    "He's behind the tree."
+   ],
+   "answer": "He's under the tree.",
+   "skins": [
+    "fenn"
+   ],
+   "phases": [
+    "p2"
+   ],
+   "hints": {
+    "deDesc": "Die Äste sind über ihm.",
+    "deWord": "Auf Deutsch: Er ist unter dem Baum."
+   },
+   "grounding": "u02 prepositions of place, g1u02.w.under (SB p. 19 ex. 10)"
+  },
+  {
+   "id": "g1.paint.ch02.rsc.fenn.r2",
+   "use": "rescue",
+   "kind": "choice",
+   "form": "state-it",
+   "exercises": [
+    "g1u02.w.behind",
+    "g1u02.s.subject-pronouns"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Fenn versteckt sich hinter dem Baum."
+   },
+   "storyDe": "Sag, wo er sich versteckt!",
+   "promptEn": "Where is he?",
+   "options": [
+    "He's next to the tree.",
+    "He's behind the tree.",
+    "He's on the tree."
+   ],
+   "answer": "He's behind the tree.",
+   "skins": [
+    "fenn"
+   ],
+   "phases": [
+    "p2"
+   ],
+   "hints": {
+    "deDesc": "Der Stamm steht zwischen dir und ihm.",
+    "deWord": "Auf Deutsch: Er ist hinter dem Baum."
+   },
+   "grounding": "u02 prepositions of place, g1u02.w.behind (SB p. 16 Story: „They're behind the tree.\")"
+  },
+  {
+   "id": "g1.paint.ch02.rsc.fenn.r3",
+   "use": "rescue",
+   "kind": "choice",
+   "form": "state-it",
+   "exercises": [
+    "g1u02.w.next-to",
+    "g1u02.w.giraffe"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Fenn steht neben der Giraffe."
+   },
+   "storyDe": "Sag, wo er steht!",
+   "promptEn": "Where is he?",
+   "options": [
+    "He's under the giraffe.",
+    "He's next to the giraffe.",
+    "He's behind the giraffe."
+   ],
+   "answer": "He's next to the giraffe.",
+   "skins": [
+    "fenn"
+   ],
+   "phases": [
+    "p2"
+   ],
+   "hints": {
+    "deDesc": "Er steht direkt daneben, Schulter an Bein.",
+    "deWord": "Auf Deutsch: Er ist neben der Giraffe."
+   },
+   "grounding": "u02 g1u02.w.next-to (WB p. 18–19 ex. 3: „He's next to a giraffe.\") · giraffe: g1u02.w.giraffe"
+  },
+  {
+   "id": "g1.paint.ch02.rsc.fenn.r4",
+   "use": "rescue",
+   "kind": "choice",
+   "form": "state-it",
+   "exercises": [
+    "g1u02.w.in-front-of",
+    "g1u02.w.car"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Fenn wartet vor dem Auto."
+   },
+   "storyDe": "Sag, wo er wartet!",
+   "promptEn": "Where is he?",
+   "options": [
+    "He's in front of the car.",
+    "He's behind the car.",
+    "He's under the car."
+   ],
+   "answer": "He's in front of the car.",
+   "skins": [
+    "fenn"
+   ],
+   "phases": [
+    "p2"
+   ],
+   "hints": {
+    "deDesc": "Das Auto ist hinter ihm, er steht davor.",
+    "deWord": "Auf Deutsch: Er ist vor dem Auto."
+   },
+   "grounding": "u02 g1u02.w.in-front-of (SB p. 19 ex. 10) · car: g1u02.w.car (MORE Words: „The parrot is in the car.\")"
+  },
+  {
+   "id": "g1.paint.ch02.rsc.fenn.r5",
+   "use": "rescue",
+   "kind": "choice",
+   "form": "state-it",
+   "exercises": [
+    "g1u02.w.on",
+    "g1u02.s.to-be"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Fenn klettert auf den Bus."
+   },
+   "storyDe": "Sag, wo er klettert!",
+   "promptEn": "Where is he?",
+   "options": [
+    "He's on the bus.",
+    "He's under the bus.",
+    "He's in the bus."
+   ],
+   "answer": "He's on the bus.",
+   "skins": [
+    "fenn"
+   ],
+   "phases": [
+    "p2"
+   ],
+   "hints": {
+    "deDesc": "Ganz oben, auf dem Dach.",
+    "deWord": "Auf Deutsch: Er ist auf dem Bus."
+   },
+   "grounding": "u02 g1u02.w.on (WB p. 18–19 ex. 10: Affen sind auf dem Bus) · to be: g1u02.s.to-be"
+  },
+  {
+   "id": "g1.paint.ch02.rsc.fenn.r6",
+   "use": "rescue",
+   "kind": "choice",
+   "form": "state-it",
+   "exercises": [
+    "g1u02.w.in",
+    "g1u02.s.prepositions-place"
+   ],
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Fenn steht mitten im Wasser."
+   },
+   "storyDe": "Sag, wo er planscht!",
+   "promptEn": "Where is he?",
+   "options": [
+    "He's in the water.",
+    "He's next to the water.",
+    "He's under the water."
+   ],
+   "answer": "He's in the water.",
+   "skins": [
+    "fenn"
+   ],
+   "phases": [
+    "p2"
+   ],
+   "hints": {
+    "deDesc": "Bis zu den Knien im Teich der Flamingos.",
+    "deWord": "Auf Deutsch: Er ist im Wasser."
+   },
+   "grounding": "u02 g1u02.w.in · „It's in the water.\" steht wörtlich in WB p. 14–15 ex. 3 · das Buch fährt „on a train\", nie „in the train\" (SB p. 17 Poster, MORE Words)"
+  }
+ ]
+}

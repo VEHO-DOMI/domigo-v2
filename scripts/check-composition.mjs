@@ -1217,9 +1217,6 @@ const SCALE_WAIVERS = {
   // zeichnen (32 px statt 16) verschoebe die Rutsche gegen das Gitter, auf dem
   // ein Kind steht. Das ist kein Versehen wie bei den Ecken, sondern der
   // Vertrag, den die Kunst mitbringt.
-  "ch01/p3:slideTop:slide_top": { until: "2026-11-30", why: "gezeichnete 45°-ZELLE (Batch AF2): das Blatt ist von Ecke zu Ecke fuer EINE Gitterzelle gemalt, also ist 16 px die richtige Groesse und der Bruchteil die Folge davon, nicht ein Fehler. Im Welt-Massstab ruestete die Rutsche gegen das Gitter, auf dem gelaufen wird. ★ N7A2: die Zahl ist von 0,48x auf 0,39x gewandert, OHNE dass jemand die Rutsche angefasst hat — `paintScaleOf` liest die HOEHE von `crust_p3_a`, und der p3-Cutover hat das Blatt geloescht, also faellt der Welt-Massstab des Hofes auf FALLBACK_PAINT_SCALE (0,0649 -> 0,0802, +23,6 %). Die Rutschen-Module selbst sind unveraendert 16x16 (mass.ts Abschnitt 6, per Test festgehalten); gewandert ist das Lineal, nicht das Bild" },
-  "ch01/p3:slideUnder:slide_under": { until: "2026-11-30", why: "wie slide_top: die Strebe IST der Keil derselben 512er-Zelle (mass.ts §6)" },
-  "ch01/p3:slideFoot:slide_foot": { until: "2026-11-30", why: "wie slide_top: gezeichnete 45°-Zelle, eine Gitterzelle gross" },
   // ── ch01/p9 · DIE KLECKSKAMMER HAT NUR 2- UND 3-ZELLEN-SIMSE ──────────────
   "ch01/p9:platform:plat_bench_2": { until: "2026-11-30", why: "gemalt 4,09 Zellen, gezeichnet auf 2 (0,49x) — p9s breitester Sims ist 3 Zellen (gemessen: 2x2, 3x2). Dieselbe Bestellung wie in p1" },
   "ch01/p9:platform:plat_bundle_1": { until: "2026-11-30", why: "gemalt 1,65 Zellen, gezeichnet auf 1 (0,61x) — das einzige 1-Zellen-Objekt der Kammer; auf 2 gehoben zeichnete es 1,21x und liesse von jedem 3-Zellen-Sims eine Zelle leer. In p1, dessen Massstab groesser ist, IST dasselbe Blatt auf 2 gehoben (1,045x)" },

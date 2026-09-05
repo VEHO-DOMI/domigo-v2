@@ -1,0 +1,42 @@
+{
+  "schema": "lexicon-classes@1",
+  "slug": "g1-u02",
+  "note": "L2-T1 · Level-Welle ch02. Dieselbe Zuständigkeit wie in g1-u01: was eine Karte in `exercises` nennt, muss es geben. Wortbank-Einträge und Grammatik-Strukturen tragen ihre eigene ID; drei Wortgruppen der Unit werden aber GELEHRT, ohne je ein Wortbank-Eintrag zu sein — die Farben, die Tiere über die acht Wortbank-Tiere hinaus, und die einwortigen Ortswörter als Gruppe. Sie stehen hier mit Buchbeleg. Jedes Wort unten ist in den zwei Abschriften der Unit (content/build/transcripts/g1/) gedruckt und steht in docs/design/g1/grounding/u02-lexicon.json; die Kapitel-Politik darf enger sein als diese Liste, nie weiter (check-game-tasks.mjs 19b erzwingt policy ⊆ corpus). ⚠ Gemessen am Tor: Gesetz 0j prüft jedes Klassenwort mit `lexicon.has(...)` gegen die EINWORT-Menge des Lexikons. Die zwei mehrwortigen Ortswörter der Unit (»next to«, »in front of«) können deshalb kein Klassenwort sein — sie sind Wortbank-Einträge mit eigener ID (g1u02.w.next-to, g1u02.w.in-front-of) und stehen im Lexikon unter `phrases`. Eine Karte, die sie übt, nennt die Wortbank-ID, nicht die Klasse.",
+  "classes": {
+    "g1u02.x.prepositions": {
+      "title": "Die einwortigen Ortswörter",
+      "why": "Der Kann-Vertrag der Unit (SB p. 16) nennt „how to use prepositions of place\" als eigenes Lernziel, und das Kapitel steht darauf: die Mini-Szenen-Bühne, der Schnell-Schirm und Fenns sechs Runden fragen alle nach dem WO. Als Gruppe ist das kein Wortbank-Eintrag — die vier einwortigen Ortswörter sind zwar auch einzeln in der Wortbank, aber die Karte, die »irgendein Ortswort« als Antwort zulässt, braucht die Gruppe.",
+      "evidence": [
+        "SB p. 16 Note-Kasten über der Story: „next to behind on under in front of\"",
+        "SB p. 19 ex. 10 „Where's the parrot? Complete with in / on / under / in front of / behind / next to.\"",
+        "SB p. 20 GRAMMAR ▶ Prepositions of place: „Where's the frog? — It's in the shoe.\"",
+        "WB p. 14–15 ex. 2 „Verbinde die Wörter mit den Bildern: in on under behind in front of next to\"",
+        "WB p. 20–21 WORD FILE „Prepositions of place\""
+      ],
+      "words": ["in", "on", "under", "behind"]
+    },
+    "g1u02.x.colours": {
+      "title": "Die Farben, die Unit 2 druckt",
+      "why": "Die restore-Karten des Kapitels geben jedem entfärbten Tier seine Farbe zurück — das ist die Kernmechanik von ch02 —, und keine Farbe ist ein Wortbank-Eintrag dieser Unit. Aufgenommen sind AUSSCHLIESSLICH die sechs Farben, die in den zwei Abschriften als Unit-Text gedruckt stehen; »red« und »grey« stehen nur in den [Image description …]-Blöcken der Abschrift (rotes Auto, roter Bus) und sind damit Wortschatz des Abschreibers, nicht des Buchs.",
+      "evidence": [
+        "SB p. 16 Story: „The parrot is blue and yellow. It's beautiful.\" · „It's next to the brown monkey.\"",
+        "SB p. 16 ex. 2: „The parrot is blue and yellow / green and yellow.\"",
+        "SB p. 20 GRAMMAR ▶ to be (affirmative): „It's yellow. (It is yellow.)\"",
+        "WB p. 16–17 ex. 6 Nr. 2: „There ______ a blue and yellow parrot.\"",
+        "WB p. 18–19 ex. 9 Nr. 5: „______ black and white.\" (das schwarz-weiße Hunde-Bild der Übung)"
+      ],
+      "words": ["blue", "yellow", "brown", "black", "white", "green"]
+    },
+    "g1u02.x.animals": {
+      "title": "Die Tiere des Zoos",
+      "why": "Sechs Tiere der Unit sind Wortbank-Einträge (giraffe, parrot, monkey, dog, penguin, lion); »cat« und »frog« sind es nicht, obwohl die Unit sie in Übung um Übung als Antwort verlangt. Eine Karte, deren Ablenker »irgendein Tier dieser Unit« sein dürfen, braucht deshalb die Gruppe — sonst müsste sie zwei Tiere nennen, die nichts definiert.",
+      "evidence": [
+        "WB p. 20–21 WORD FILE „At the wildlife park\": tree monkey parrot giraffe train penguin guide lion",
+        "WB p. 16–17 ex. 5: „There are four monkeys / two frogs / five dogs / nine penguins / one lion / two cats.\"",
+        "SB p. 19 ex. 11 A: „Where's the chair? Where's the frog? Where's the cat? Where's the dog?\"",
+        "SB p. 16 Story: „there's a parrot under the giraffe\" · „there are three monkeys\""
+      ],
+      "words": ["giraffe", "parrot", "monkey", "dog", "penguin", "lion", "cat", "frog"]
+    }
+  }
+}

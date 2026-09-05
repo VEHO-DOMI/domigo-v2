@@ -1,0 +1,296 @@
+{
+ "schema": "paintChapterPolicy@1",
+ "chapter": "ch02",
+ "unit": "g1-u02",
+ "note": "L2-T1 · Die Kapitel-Tabellen von ch02, neben den Karten, die sie beschreiben (L0 · D10). fieldKinds = was das FELD dieses Kapitels servieren darf (doc 41 §1), fieldForms = was eine Feld-Karte fragen darf, lexiconClasses = die Wortgruppen, die eine Karte als geübt nennen darf, families = die erklärten Ausnahmen samt der strengeren Pflicht, die sie kaufen, vocabLedger = der Zustand jedes Unit-Wortes, nounDe = die deutschen Nomen der entfärbten Wesen und der Käfig-Insassen (L0 · N5).",
+ "fieldKinds": [
+  "choice",
+  "restore",
+  "spell",
+  "match"
+ ],
+ "fieldForms": [
+  "name-it",
+  "state-it",
+  "pick-correct-form",
+  "ask-it",
+  "social-formula",
+  "command"
+ ],
+ "arenaPromiseClass": "g1u02.x.prepositions",
+ "lexiconClasses": {
+  "g1u02.x.prepositions": {
+   "words": [
+    "in",
+    "on",
+    "under",
+    "behind"
+   ],
+   "reason": "Spiegelt die Korpus-Klasse g1u02.x.prepositions aus content/corpus/units/g1-u02/lexicon-classes.json unverändert — die Politik darf enger sein als der Korpus, nie weiter (Gesetz 19b). Enger wird sie erst, wenn eine Welle einen Grund dafür hat."
+  },
+  "g1u02.x.colours": {
+   "words": [
+    "blue",
+    "yellow",
+    "brown",
+    "black",
+    "white",
+    "green"
+   ],
+   "reason": "Spiegelt die Korpus-Klasse g1u02.x.colours aus content/corpus/units/g1-u02/lexicon-classes.json unverändert — die Politik darf enger sein als der Korpus, nie weiter (Gesetz 19b). Enger wird sie erst, wenn eine Welle einen Grund dafür hat."
+  },
+  "g1u02.x.animals": {
+   "words": [
+    "giraffe",
+    "parrot",
+    "monkey",
+    "dog",
+    "penguin",
+    "lion",
+    "cat",
+    "frog"
+   ],
+   "reason": "Spiegelt die Korpus-Klasse g1u02.x.animals aus content/corpus/units/g1-u02/lexicon-classes.json unverändert — die Politik darf enger sein als der Korpus, nie weiter (Gesetz 19b). Enger wird sie erst, wenn eine Welle einen Grund dafür hat."
+  }
+ },
+ "families": [
+  {
+   "id": "restore-gesture",
+   "match": {
+    "kind": "restore"
+   },
+   "exempts": [
+    "16b"
+   ],
+   "reason": "Die Restore-Geste ist EINE Zeile, weil sie EIN Ritual ist: das Kind streckt die Hand aus, nennt das Wesen und gibt ihm die Farbe zurück. Zwei verschiedene Aufforderungen für dieselbe Geste wären zwei Rituale. Die Unterscheidung wandert deshalb dorthin, wo sie hingehört — auf die Farbzeile, die von jedem Wesen etwas anderes erzählt.",
+   "doc": "STORY_SPINE_CH01 §5 · ch01.policy.json (dieselbe Familie, dieselbe Begründung) · R47",
+   "obliges": {
+    "distinctColourAsk": true
+   }
+  },
+  {
+   "id": "fenn-ceremony",
+   "match": {
+    "use": "rescue",
+    "skins": [
+     "fenn"
+    ]
+   },
+   "exempts": [
+    "16c",
+    "14c",
+    "14d"
+   ],
+   "reason": "Fenns Wiedererweckung ist eine ZEREMONIE, keine Karten-Folge (doc 44 §3.3): sechs Runden, immer dieselbe Frage — „Where is he?\" —, und die Antwort ist jedes Mal ein anderer Ort. Genau das verletzt vier Gesetze, die für gewöhnliche Pools richtig sind: eine Frage je Pool (16c), eine referenz-feste Form je Pool (14c) und ein Raum fragt vier verschiedene Dinge (14d). 15d stand hier zuerst mit und wurde wieder gestrichen: gemessen feuert es auf diesem Kapitel nicht, und Gesetz 0k nennt eine Ausnahme, die nichts entschaerft, zu Recht toten Text. Der Grund, aus dem 14c existiert — die Antwort wäre die Identität des Wesens und müsste sich wiederholen —, trifft hier NICHT zu: gefragt ist die POSE, und die sechs Antworten sind sechs verschiedene Ortswörter. p2 trägt in dieser Welle ausserdem nur Fenn; sein übriger Bestand kommt mit L2-G2, und mit ihm fällt die 14d-Zeile.",
+   "doc": "doc 44 §3.3 (Wiedererweckung, „Frage n von 6\") · ch01.policy.json merle-ceremony (dieselbe Zeremonie, ein Kapitel früher) · BLAUPAUSE_L2_v5 §3",
+   "obliges": {
+    "distinctStoryDe": true,
+    "distinctAnswers": true
+   }
+  }
+ ],
+ "vocabLedger": {
+  "g1u02.w.monkey": {
+   "cards": "offered",
+   "reason": "Steht auf einer Karte dieses Kapitels als Option auf dem Schirm: das Kind LIEST das Wort, muss es aber in dieser Welle nicht selbst produzieren. Bewusst so — die Unit hat 52 Einträge und die erste Welle stellt 17 Karten; wer jedes Wort zur Antwort macht, macht jede Karte zur Vokabelabfrage. Die Welle L2-T2 (p2/p3-Roster, Bühne, Löwe) prüft, welches davon ein eigenes Wesen verdient.",
+   "until": "2026-12-31"
+  },
+  "g1u02.w.parrot": {
+   "cards": "offered",
+   "reason": "Steht auf einer Karte dieses Kapitels als Option auf dem Schirm: das Kind LIEST das Wort, muss es aber in dieser Welle nicht selbst produzieren. Bewusst so — die Unit hat 52 Einträge und die erste Welle stellt 17 Karten; wer jedes Wort zur Antwort macht, macht jede Karte zur Vokabelabfrage. Die Welle L2-T2 (p2/p3-Roster, Bühne, Löwe) prüft, welches davon ein eigenes Wesen verdient.",
+   "until": "2026-12-31"
+  },
+  "g1u02.w.guide": {
+   "cards": "absent",
+   "reason": "In dieser Welle von keiner Karte berührt. L2-T1 deckt p1 (Schubkarre, Rutscher, die zwei entfärbten Tiere, der Käfig, die Türserie) und Fenns sechs Runden ab; die Wesen, die dieses Wort tragen, stellt erst L2-G2 ins Level. Die Welle L2-T2 baut die Karten dazu.",
+   "until": "2026-12-31"
+  },
+  "g1u02.w.lion": {
+   "cards": "offered",
+   "reason": "Steht auf einer Karte dieses Kapitels als Option auf dem Schirm: das Kind LIEST das Wort, muss es aber in dieser Welle nicht selbst produzieren. Bewusst so — die Unit hat 52 Einträge und die erste Welle stellt 17 Karten; wer jedes Wort zur Antwort macht, macht jede Karte zur Vokabelabfrage. Die Welle L2-T2 (p2/p3-Roster, Bühne, Löwe) prüft, welches davon ein eigenes Wesen verdient.",
+   "until": "2026-12-31"
+  },
+  "g1u02.w.zoo": {
+   "cards": "absent",
+   "reason": "In dieser Welle von keiner Karte berührt. L2-T1 deckt p1 (Schubkarre, Rutscher, die zwei entfärbten Tiere, der Käfig, die Türserie) und Fenns sechs Runden ab; die Wesen, die dieses Wort tragen, stellt erst L2-G2 ins Level. Die Welle L2-T2 baut die Karten dazu.",
+   "until": "2026-12-31"
+  },
+  "g1u02.w.beautiful": {
+   "cards": "absent",
+   "reason": "In dieser Welle von keiner Karte berührt. L2-T1 deckt p1 (Schubkarre, Rutscher, die zwei entfärbten Tiere, der Käfig, die Türserie) und Fenns sechs Runden ab; die Wesen, die dieses Wort tragen, stellt erst L2-G2 ins Level. Die Welle L2-T2 baut die Karten dazu.",
+   "until": "2026-12-31"
+  },
+  "g1u02.w.behind-2": {
+   "cards": "offered",
+   "reason": "Steht auf einer Karte dieses Kapitels als Option auf dem Schirm: das Kind LIEST das Wort, muss es aber in dieser Welle nicht selbst produzieren. Bewusst so — die Unit hat 52 Einträge und die erste Welle stellt 17 Karten; wer jedes Wort zur Antwort macht, macht jede Karte zur Vokabelabfrage. Die Welle L2-T2 (p2/p3-Roster, Bühne, Löwe) prüft, welches davon ein eigenes Wesen verdient.",
+   "until": "2026-12-31"
+  },
+  "g1u02.w.big": {
+   "cards": "absent",
+   "reason": "In dieser Welle von keiner Karte berührt. L2-T1 deckt p1 (Schubkarre, Rutscher, die zwei entfärbten Tiere, der Käfig, die Türserie) und Fenns sechs Runden ab; die Wesen, die dieses Wort tragen, stellt erst L2-G2 ins Level. Die Welle L2-T2 baut die Karten dazu.",
+   "until": "2026-12-31"
+  },
+  "g1u02.w.in-front-of-2": {
+   "cards": "offered",
+   "reason": "Steht auf einer Karte dieses Kapitels als Option auf dem Schirm: das Kind LIEST das Wort, muss es aber in dieser Welle nicht selbst produzieren. Bewusst so — die Unit hat 52 Einträge und die erste Welle stellt 17 Karten; wer jedes Wort zur Antwort macht, macht jede Karte zur Vokabelabfrage. Die Welle L2-T2 (p2/p3-Roster, Bühne, Löwe) prüft, welches davon ein eigenes Wesen verdient.",
+   "until": "2026-12-31"
+  },
+  "g1u02.w.next-to-2": {
+   "cards": "offered",
+   "reason": "Steht auf einer Karte dieses Kapitels als Option auf dem Schirm: das Kind LIEST das Wort, muss es aber in dieser Welle nicht selbst produzieren. Bewusst so — die Unit hat 52 Einträge und die erste Welle stellt 17 Karten; wer jedes Wort zur Antwort macht, macht jede Karte zur Vokabelabfrage. Die Welle L2-T2 (p2/p3-Roster, Bühne, Löwe) prüft, welches davon ein eigenes Wesen verdient.",
+   "until": "2026-12-31"
+  },
+  "g1u02.w.under-2": {
+   "cards": "offered",
+   "reason": "Steht auf einer Karte dieses Kapitels als Option auf dem Schirm: das Kind LIEST das Wort, muss es aber in dieser Welle nicht selbst produzieren. Bewusst so — die Unit hat 52 Einträge und die erste Welle stellt 17 Karten; wer jedes Wort zur Antwort macht, macht jede Karte zur Vokabelabfrage. Die Welle L2-T2 (p2/p3-Roster, Bühne, Löwe) prüft, welches davon ein eigenes Wesen verdient.",
+   "until": "2026-12-31"
+  },
+  "g1u02.w.where": {
+   "cards": "absent",
+   "reason": "In dieser Welle von keiner Karte berührt. L2-T1 deckt p1 (Schubkarre, Rutscher, die zwei entfärbten Tiere, der Käfig, die Türserie) und Fenns sechs Runden ab; die Wesen, die dieses Wort tragen, stellt erst L2-G2 ins Level. Die Welle L2-T2 baut die Karten dazu.",
+   "until": "2026-12-31"
+  },
+  "g1u02.w.small": {
+   "cards": "absent",
+   "reason": "In dieser Welle von keiner Karte berührt. L2-T1 deckt p1 (Schubkarre, Rutscher, die zwei entfärbten Tiere, der Käfig, die Türserie) und Fenns sechs Runden ab; die Wesen, die dieses Wort tragen, stellt erst L2-G2 ins Level. Die Welle L2-T2 baut die Karten dazu.",
+   "until": "2026-12-31"
+  },
+  "g1u02.w.adult": {
+   "cards": "absent",
+   "reason": "In dieser Welle von keiner Karte berührt. L2-T1 deckt p1 (Schubkarre, Rutscher, die zwei entfärbten Tiere, der Käfig, die Türserie) und Fenns sechs Runden ab; die Wesen, die dieses Wort tragen, stellt erst L2-G2 ins Level. Die Welle L2-T2 baut die Karten dazu.",
+   "until": "2026-12-31"
+  },
+  "g1u02.w.at": {
+   "cards": "absent",
+   "reason": "In dieser Welle von keiner Karte berührt. L2-T1 deckt p1 (Schubkarre, Rutscher, die zwei entfärbten Tiere, der Käfig, die Türserie) und Fenns sechs Runden ab; die Wesen, die dieses Wort tragen, stellt erst L2-G2 ins Level. Die Welle L2-T2 baut die Karten dazu.",
+   "until": "2026-12-31"
+  },
+  "g1u02.w.to-bring": {
+   "cards": "offered",
+   "reason": "Steht auf einer Karte dieses Kapitels als Option auf dem Schirm: das Kind LIEST das Wort, muss es aber in dieser Welle nicht selbst produzieren. Bewusst so — die Unit hat 52 Einträge und die erste Welle stellt 17 Karten; wer jedes Wort zur Antwort macht, macht jede Karte zur Vokabelabfrage. Die Welle L2-T2 (p2/p3-Roster, Bühne, Löwe) prüft, welches davon ein eigenes Wesen verdient.",
+   "until": "2026-12-31"
+  },
+  "g1u02.w.but": {
+   "cards": "absent",
+   "reason": "In dieser Welle von keiner Karte berührt. L2-T1 deckt p1 (Schubkarre, Rutscher, die zwei entfärbten Tiere, der Käfig, die Türserie) und Fenns sechs Runden ab; die Wesen, die dieses Wort tragen, stellt erst L2-G2 ins Level. Die Welle L2-T2 baut die Karten dazu.",
+   "until": "2026-12-31"
+  },
+  "g1u02.w.child": {
+   "cards": "absent",
+   "reason": "In dieser Welle von keiner Karte berührt. L2-T1 deckt p1 (Schubkarre, Rutscher, die zwei entfärbten Tiere, der Käfig, die Türserie) und Fenns sechs Runden ab; die Wesen, die dieses Wort tragen, stellt erst L2-G2 ins Level. Die Welle L2-T2 baut die Karten dazu.",
+   "until": "2026-12-31"
+  },
+  "g1u02.w.family": {
+   "cards": "absent",
+   "reason": "In dieser Welle von keiner Karte berührt. L2-T1 deckt p1 (Schubkarre, Rutscher, die zwei entfärbten Tiere, der Käfig, die Türserie) und Fenns sechs Runden ab; die Wesen, die dieses Wort tragen, stellt erst L2-G2 ins Level. Die Welle L2-T2 baut die Karten dazu.",
+   "until": "2026-12-31"
+  },
+  "g1u02.w.free": {
+   "cards": "absent",
+   "reason": "In dieser Welle von keiner Karte berührt. L2-T1 deckt p1 (Schubkarre, Rutscher, die zwei entfärbten Tiere, der Käfig, die Türserie) und Fenns sechs Runden ab; die Wesen, die dieses Wort tragen, stellt erst L2-G2 ins Level. Die Welle L2-T2 baut die Karten dazu.",
+   "until": "2026-12-31"
+  },
+  "g1u02.w.grandma": {
+   "cards": "absent",
+   "reason": "In dieser Welle von keiner Karte berührt. L2-T1 deckt p1 (Schubkarre, Rutscher, die zwei entfärbten Tiere, der Käfig, die Türserie) und Fenns sechs Runden ab; die Wesen, die dieses Wort tragen, stellt erst L2-G2 ins Level. Die Welle L2-T2 baut die Karten dazu.",
+   "until": "2026-12-31"
+  },
+  "g1u02.w.group": {
+   "cards": "absent",
+   "reason": "In dieser Welle von keiner Karte berührt. L2-T1 deckt p1 (Schubkarre, Rutscher, die zwei entfärbten Tiere, der Käfig, die Türserie) und Fenns sechs Runden ab; die Wesen, die dieses Wort tragen, stellt erst L2-G2 ins Level. Die Welle L2-T2 baut die Karten dazu.",
+   "until": "2026-12-31"
+  },
+  "g1u02.w.long": {
+   "cards": "absent",
+   "reason": "In dieser Welle von keiner Karte berührt. L2-T1 deckt p1 (Schubkarre, Rutscher, die zwei entfärbten Tiere, der Käfig, die Türserie) und Fenns sechs Runden ab; die Wesen, die dieses Wort tragen, stellt erst L2-G2 ins Level. Die Welle L2-T2 baut die Karten dazu.",
+   "until": "2026-12-31"
+  },
+  "g1u02.w.to-want": {
+   "cards": "absent",
+   "reason": "In dieser Welle von keiner Karte berührt. L2-T1 deckt p1 (Schubkarre, Rutscher, die zwei entfärbten Tiere, der Käfig, die Türserie) und Fenns sechs Runden ab; die Wesen, die dieses Wort tragen, stellt erst L2-G2 ins Level. Die Welle L2-T2 baut die Karten dazu.",
+   "until": "2026-12-31"
+  },
+  "g1u02.w.from": {
+   "cards": "offered",
+   "reason": "Steht auf einer Karte dieses Kapitels als Option auf dem Schirm: das Kind LIEST das Wort, muss es aber in dieser Welle nicht selbst produzieren. Bewusst so — die Unit hat 52 Einträge und die erste Welle stellt 17 Karten; wer jedes Wort zur Antwort macht, macht jede Karte zur Vokabelabfrage. Die Welle L2-T2 (p2/p3-Roster, Bühne, Löwe) prüft, welches davon ein eigenes Wesen verdient.",
+   "until": "2026-12-31"
+  },
+  "g1u02.w.year": {
+   "cards": "absent",
+   "reason": "In dieser Welle von keiner Karte berührt. L2-T1 deckt p1 (Schubkarre, Rutscher, die zwei entfärbten Tiere, der Käfig, die Türserie) und Fenns sechs Runden ab; die Wesen, die dieses Wort tragen, stellt erst L2-G2 ins Level. Die Welle L2-T2 baut die Karten dazu.",
+   "until": "2026-12-31"
+  },
+  "g1u02.w.he": {
+   "cards": "absent",
+   "reason": "In dieser Welle von keiner Karte berührt. L2-T1 deckt p1 (Schubkarre, Rutscher, die zwei entfärbten Tiere, der Käfig, die Türserie) und Fenns sechs Runden ab; die Wesen, die dieses Wort tragen, stellt erst L2-G2 ins Level. Die Welle L2-T2 baut die Karten dazu.",
+   "until": "2026-12-31"
+  },
+  "g1u02.w.she": {
+   "cards": "absent",
+   "reason": "In dieser Welle von keiner Karte berührt. L2-T1 deckt p1 (Schubkarre, Rutscher, die zwei entfärbten Tiere, der Käfig, die Türserie) und Fenns sechs Runden ab; die Wesen, die dieses Wort tragen, stellt erst L2-G2 ins Level. Die Welle L2-T2 baut die Karten dazu.",
+   "until": "2026-12-31"
+  },
+  "g1u02.w.to-talk": {
+   "cards": "absent",
+   "reason": "In dieser Welle von keiner Karte berührt. L2-T1 deckt p1 (Schubkarre, Rutscher, die zwei entfärbten Tiere, der Käfig, die Türserie) und Fenns sechs Runden ab; die Wesen, die dieses Wort tragen, stellt erst L2-G2 ins Level. Die Welle L2-T2 baut die Karten dazu.",
+   "until": "2026-12-31"
+  },
+  "g1u02.w.they": {
+   "cards": "absent",
+   "reason": "In dieser Welle von keiner Karte berührt. L2-T1 deckt p1 (Schubkarre, Rutscher, die zwei entfärbten Tiere, der Käfig, die Türserie) und Fenns sechs Runden ab; die Wesen, die dieses Wort tragen, stellt erst L2-G2 ins Level. Die Welle L2-T2 baut die Karten dazu.",
+   "until": "2026-12-31"
+  },
+  "g1u02.w.we": {
+   "cards": "absent",
+   "reason": "In dieser Welle von keiner Karte berührt. L2-T1 deckt p1 (Schubkarre, Rutscher, die zwei entfärbten Tiere, der Käfig, die Türserie) und Fenns sechs Runden ab; die Wesen, die dieses Wort tragen, stellt erst L2-G2 ins Level. Die Welle L2-T2 baut die Karten dazu.",
+   "until": "2026-12-31"
+  },
+  "g1u02.w.for": {
+   "cards": "absent",
+   "reason": "In dieser Welle von keiner Karte berührt. L2-T1 deckt p1 (Schubkarre, Rutscher, die zwei entfärbten Tiere, der Käfig, die Türserie) und Fenns sechs Runden ab; die Wesen, die dieses Wort tragen, stellt erst L2-G2 ins Level. Die Welle L2-T2 baut die Karten dazu.",
+   "until": "2026-12-31"
+  },
+  "g1u02.w.happy": {
+   "cards": "offered",
+   "reason": "Steht auf einer Karte dieses Kapitels als Option auf dem Schirm: das Kind LIEST das Wort, muss es aber in dieser Welle nicht selbst produzieren. Bewusst so — die Unit hat 52 Einträge und die erste Welle stellt 17 Karten; wer jedes Wort zur Antwort macht, macht jede Karte zur Vokabelabfrage. Die Welle L2-T2 (p2/p3-Roster, Bühne, Löwe) prüft, welches davon ein eigenes Wesen verdient.",
+   "until": "2026-12-31"
+  },
+  "g1u02.w.to-let-somebody-out": {
+   "cards": "absent",
+   "reason": "In dieser Welle von keiner Karte berührt. L2-T1 deckt p1 (Schubkarre, Rutscher, die zwei entfärbten Tiere, der Käfig, die Türserie) und Fenns sechs Runden ab; die Wesen, die dieses Wort tragen, stellt erst L2-G2 ins Level. Die Welle L2-T2 baut die Karten dazu.",
+   "until": "2026-12-31"
+  },
+  "g1u02.w.at-last": {
+   "cards": "absent",
+   "reason": "In dieser Welle von keiner Karte berührt. L2-T1 deckt p1 (Schubkarre, Rutscher, die zwei entfärbten Tiere, der Käfig, die Türserie) und Fenns sechs Runden ab; die Wesen, die dieses Wort tragen, stellt erst L2-G2 ins Level. Die Welle L2-T2 baut die Karten dazu.",
+   "until": "2026-12-31"
+  },
+  "g1u02.w.how-strange": {
+   "cards": "absent",
+   "reason": "In dieser Welle von keiner Karte berührt. L2-T1 deckt p1 (Schubkarre, Rutscher, die zwei entfärbten Tiere, der Käfig, die Türserie) und Fenns sechs Runden ab; die Wesen, die dieses Wort tragen, stellt erst L2-G2 ins Level. Die Welle L2-T2 baut die Karten dazu.",
+   "until": "2026-12-31"
+  },
+  "g1u02.w.let-me-see": {
+   "cards": "offered",
+   "reason": "Steht auf einer Karte dieses Kapitels als Option auf dem Schirm: das Kind LIEST das Wort, muss es aber in dieser Welle nicht selbst produzieren. Bewusst so — die Unit hat 52 Einträge und die erste Welle stellt 17 Karten; wer jedes Wort zur Antwort macht, macht jede Karte zur Vokabelabfrage. Die Welle L2-T2 (p2/p3-Roster, Bühne, Löwe) prüft, welches davon ein eigenes Wesen verdient.",
+   "until": "2026-12-31"
+  },
+  "g1u02.w.stone": {
+   "cards": "offered",
+   "reason": "Steht auf einer Karte dieses Kapitels als Option auf dem Schirm: das Kind LIEST das Wort, muss es aber in dieser Welle nicht selbst produzieren. Bewusst so — die Unit hat 52 Einträge und die erste Welle stellt 17 Karten; wer jedes Wort zur Antwort macht, macht jede Karte zur Vokabelabfrage. Die Welle L2-T2 (p2/p3-Roster, Bühne, Löwe) prüft, welches davon ein eigenes Wesen verdient.",
+   "until": "2026-12-31"
+  }
+ },
+ "nounDe": {
+  "reason": "L0 · N5 · Das deutsche Nomen jedes entfärbten Wesens dieses Kapitels — Fenn eingeschlossen: seine sechs Runden sind `rescue` in der Form `state-it` und fallen damit unter dieselbe erklärte Ausnahme wie die Käfig-Karten (kaefig-nennt-den-insassen), die das Nennen ERZWINGT statt es nur zu erlauben. Er heisst Fenn, und jede seiner sechs Zeilen sagt das auch. (ch01 stiess nicht darauf: Merles Runden fragen `command`, nicht `state-it`.) Es steht HIER und nicht in der Wortbank, weil die Wortbank die KORPUS-Glosse führt und diese Tabelle die ERZÄHLSTIMME regelt: Koki spricht österreichisch (docs/design/g1/paint/LEXIKON_AT.md). Die Tabelle ist die Pflicht, die die Verrats-Ausnahme der restore- und Käfig-Karten kauft: die deutsche Zeile MUSS das Wesen beim Namen nennen, statt es zu umschreiben.",
+  "pairs": {
+   "hund": "Hund",
+   "pinguin": "Pinguin",
+   "fenn": "Fenn"
+  },
+  "captivesReason": "Das Porträt einer Käfig-Karte ist der KÄFIG, nie der Insasse — das Wesen hinter den Gittern hat keine gemalte Zelle. Die deutsche Zeile ist also das Einzige, was sagt, wer da drinsteckt (D-34). Der Name hängt deshalb an der KARTE, nicht am Skin: ein Käfig kann in verschiedenen Räumen Verschiedenes halten.",
+  "captives": {
+   "rsc.zookaefig.1": "Ticket"
+  }
+ }
+}
