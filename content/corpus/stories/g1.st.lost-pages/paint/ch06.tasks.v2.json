@@ -109,7 +109,7 @@
       ],
       "stimulus": {
         "type": "entity",
-        "showsDe": "Äpfel liegen auf dem ganzen Obststand."
+        "showsDe": "Der Obststand ist voller Äpfel."
       },
       "storyDe": "So viele Äpfel! Was sagst du?",
       "options": [
@@ -169,7 +169,7 @@
       ],
       "stimulus": {
         "type": "entity",
-        "showsDe": "Eine große Zahl steht auf der Haustür."
+        "showsDe": "An der Haustür steht eine große Zahl."
       },
       "storyDe": "Mo wohnt hier. Sag die Nummer auf Englisch!",
       "variant": "digit-to-word",
@@ -202,7 +202,7 @@
       ],
       "stimulus": {
         "type": "entity",
-        "showsDe": "Tammo geht hinaus. Hinter ihm ist das Büro leer."
+        "showsDe": "Tammo geht hinaus. Das Büro ist leer."
       },
       "storyDe": "Was tut er? Sag es auf Englisch!",
       "options": [
@@ -262,7 +262,7 @@
       "kind": "mistake",
       "stimulus": {
         "type": "entity",
-        "showsDe": "Das Notizbuch kritzelt groß auf eine Seite."
+        "showsDe": "Das Notizbuch schreibt groß auf eine Seite."
       },
       "storyDe": "Ein Wort stimmt nicht — tipp es an!",
       "sentence": [
