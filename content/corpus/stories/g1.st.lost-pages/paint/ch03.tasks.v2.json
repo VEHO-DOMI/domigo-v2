@@ -143,7 +143,7 @@
     "type": "entity",
     "showsDe": "Der Papagei kreischt über den Mund des Kapitäns."
    },
-   "storyDe": "Der Papagei verhaspelt sich. Sag es sauber!",
+   "storyDe": "Der Papagei verhaspelt sich. Sag den Satz richtig!",
    "options": [
     "He have got a black tooth.",
     "He has got a black tooth.",
@@ -252,7 +252,7 @@
     "p1"
    ],
    "hints": {
-    "deDesc": "Beginn mit dem Wort, das die Frage macht."
+    "deDesc": "Das Fragewort kommt zuerst."
    }
   },
   {
@@ -286,7 +286,7 @@
     "p1"
    ],
    "hints": {
-    "deDesc": "Das Frage-Wort steht vorn, das Fragezeichen hinten.",
+    "deDesc": "Das Fragewort steht vorn, das Fragezeichen hinten.",
     "deWord": "Auf Deutsch: Hat er eine große Nase?"
    }
   },
@@ -331,7 +331,7 @@
    ],
    "stimulus": {
     "type": "entity",
-    "showsDe": "Er zeigt auf den Kopf der Steuerfrau und stockt."
+    "showsDe": "Er zeigt auf die Steuerfrau und kommt nicht weiter."
    },
    "storyDe": "Setz die Frage über ihre Haare zusammen!",
    "orderedChips": [
@@ -384,7 +384,7 @@
     "p1"
    ],
    "hints": {
-    "deDesc": "Zuerst das Wort, das aus einer Aussage eine Frage macht.",
+    "deDesc": "Fang mit dem Fragewort an.",
     "deWord": "Auf Deutsch: Hat sie einen langen Finger?"
    }
   },
@@ -475,8 +475,8 @@
     "p1"
    ],
    "hints": {
-    "deDesc": "Es wächst ihr auf dem Kopf — und ist lila.",
-    "deWord": "Auf Deutsch: die Haare — und Lila."
+    "deDesc": "Es wächst ihr auf dem Kopf — und ist violett.",
+    "deWord": "Auf Deutsch: die Haare. Sie sind violett."
    }
   },
   {
@@ -624,7 +624,7 @@
     "showsDe": "Die Tür zeigt einen Piraten mit einem Bein.",
     "art": "door_a"
    },
-   "storyDe": "Nenn das Fehlende — dann geht die Tür auf!",
+   "storyDe": "Sag, was ihm fehlt — dann geht die Tür auf!",
    "options": [
     "He hasn't got two arms.",
     "He hasn't got two eyes.",
@@ -655,7 +655,7 @@
     "showsDe": "Die Tür zeigt einen Mund, weit offen.",
     "art": "door_a"
    },
-   "storyDe": "Was sieht man da? Leg das Wort aus Buchstaben!",
+   "storyDe": "Was siehst du da? Leg die Buchstaben zum Wort zusammen!",
    "answer": "teeth",
    "extraLetters": "or",
    "skins": [
@@ -681,7 +681,7 @@
    ],
    "stimulus": {
     "type": "entity",
-    "showsDe": "Die Tür zeigt einen Piraten, der schallend lacht.",
+    "showsDe": "Auf der Tür lacht ein Pirat ganz laut.",
     "art": "door_a"
    },
    "storyDe": "Frag nach dem, was er beim Lachen weit aufmacht!",
@@ -698,7 +698,7 @@
     "p1"
    ],
    "hints": {
-    "deDesc": "Damit lacht er, isst er und singt er.",
+    "deDesc": "Damit kann er lachen und essen.",
     "deWord": "Auf Deutsch: Hat er einen großen Mund?"
    }
   },
@@ -773,7 +773,7 @@
    "kind": "choice",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Sie schreibt über ihre leere Schulter."
+    "showsDe": "Ihre Schulter ist leer. Sie schreibt einen Satz."
    },
    "storyDe": "Ein Wort stimmt nicht. Wähl den Satz!",
    "options": [
@@ -799,7 +799,7 @@
    "kind": "order",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Die Galionsfigur kritzelt fünf Wörter auf sich."
+    "showsDe": "Auf ihrem Lack stehen fünf Wörter."
    },
    "storyDe": "Bring ihre Wörter in die richtige Reihenfolge!",
    "orderedChips": [
@@ -861,7 +861,7 @@
     "p4"
    ],
    "hints": {
-    "deDesc": "Bei sie in der Einzahl klingt es anders."
+    "deDesc": "Bei ihr klingt der Satz anders."
    },
    "grounding": "u03 have got, dritte Person Einzahl; die Waechterin schreibt den Satz falsch auf sich",
    "evidence": [
@@ -876,7 +876,7 @@
     "type": "entity",
     "showsDe": "Die Galionsfigur schaut dich an. Ihr Lack blättert."
    },
-   "storyDe": "Schreib ihr ein Wort: Freund auf Englisch!",
+   "storyDe": "Schreib ihr das englische Wort für Freund!",
    "answer": "friend",
    "accept": [
     "a friend",
@@ -890,7 +890,7 @@
     "p4"
    ],
    "hints": {
-    "deDesc": "Jemand, der zu dir gehört und bleibt.",
+    "deDesc": "Das ist jemand, den du gern hast.",
     "deWord": "Auf Deutsch: Freund."
    },
    "grounding": "u03 WB S. 27 (Schreib über einen Freund) — der Schluss wird gespielt, nicht erzaehlt"
