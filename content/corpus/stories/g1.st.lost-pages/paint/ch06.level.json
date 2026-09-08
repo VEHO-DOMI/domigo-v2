@@ -6,11 +6,11 @@
  "name": "Die falschen Hinweise — Die Markt-Gassen",
  "goalPlate": "plate_ch01_goal",
  "goalDe": "Der Tinten-Schatten hat Mos Notizbuch gestohlen. Er hat alle Hinweise im Viertel verdreht. Mos wahre Hinweise liegen zerrissen in der Stadt.",
- "whyDe": "Jeder wahre Hinweis bringt Mo näher an seinen Fall.",
+ "whyDe": "Mit jedem wahren Hinweis kommt Mo weiter.",
  "hintsDe": [
   "Auf dem nassen Pflaster rutschst du weiter — brems früh genug!",
   "Stell dich auf die Sprungfeder am Laternenmast — sie wirft dich hinauf.",
-  "Etwas sitzt im Beweis-Glas? Stell dich davor und drück ↑!"
+  "Was steckt im Beweis-Glas? Stell dich davor, drück ↑!"
  ],
  "collectNounDe": "Lupen-Funken",
  "collectSkin": "lupenfunke",
@@ -77,7 +77,7 @@
      "tier": "E",
      "params": {
       "topicDe": "Was er und sie tun — das s am Verb",
-      "erklaerungDe": "Sprichst du über eine Person — er, sie oder es —, dann bekommt das englische Verb ein s am Ende.",
+      "erklaerungDe": "Wenn du über er, sie oder es sprichst, bekommt das englische Verb ein s am Ende.",
       "merksatzDe": "Bei er, sie und es hängt am Verb ein s.",
       "schluesselDe": "hängt am Verb ein s",
       "beispieleEn": [

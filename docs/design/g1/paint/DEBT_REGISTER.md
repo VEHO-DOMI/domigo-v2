@@ -1562,6 +1562,11 @@ ch06 D-920…949.** Der Level-1-Sitz hält D-950…979 (nicht hier).
 |---|---|---|---|---|---|
 | D-935 | **Das Kunst-Tor misst flach, der Auflöser misst ordner-genau:** `checkPortraits` sammelt gemalte Blätter über ALLE Kapitel-Ordner und verlangt `door_a` — das Blatt liegt in `art/g1/paint/ch01/`, `paint-art.ts#artDirsFor` gibt ch06 nur `hero` + `ch06`; ch06 rendert den grauen Platzhalter, während das Tor die Zusage erzwingt (R263-Klasse, eine Schicht höher) | gemessen 03.09. | L0c Posten 9 (dieselbe Ordner-Regel wie der Auflöser) | offen · L0c | L6-T1 |
 #### L6-S
+**L6-S (2026-09-05, Sprach-Pass Runde 1 — Quelle `SPRACHPASS_L6_2026-09-05.md` §4; Nummer vergibt der Architekt).**
+
+| D | Befund | Beleg | Route | Status | Bahn |
+|---|---|---|---|---|---|
+| (Nummer vergibt der Architekt) | **Die Steuer-Hinweise teilen eine Schluss-Formel über die Kapitel hinweg, und ein Sprach-Pass sieht immer nur sein eigenes Kapitel.** `hintsDe[2]` von ch06 steht byte-gleich in keinem anderen Kapitel, die Formel „Stell dich davor und drück ↑!" aber in ch01, ch03, ch04 (zweimal), ch05 und ch06. Die triagierte Zeile ändert sie in ch06 auf „… davor, drück ↑!" — erlaubt, weil kein Zwilling byte-gleich ist, aber die Familie driftet in der Zeichensetzung auseinander. Ein Kapitel-Pass kann diese Klasse strukturell nicht entscheiden | gemessen 05.09. auf `origin/main d43fa01d`: alle sechs `hintsDe`-Tripel gegeneinander gelesen; Formel-Treffer ch01/ch03/ch04×2/ch05/ch06, byte-gleiches Tripel-Element: keines | L0c / Programm-Architekt — gemeinsam mit dem ↑-Symbol-Posten aus `L2SPRACH_REPORT_2026-09-05.md` §4 | offen · Architekt | L6-S |
 #### L6-M
 #### L6-A
 
