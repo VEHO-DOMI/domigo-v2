@@ -198,7 +198,7 @@
    ],
    "stimulus": {
     "type": "entity",
-    "showsDe": "Die Nachbarin gähnt grau, das Kissen im Arm."
+    "showsDe": "Die graue Nachbarin gähnt, das Kissen im Arm."
    },
    "storyDe": "Sag, wie es ihr geht — dann gib ihr die Farbe zurück!",
    "nameOptions": [
@@ -222,7 +222,7 @@
     "p2"
    ],
    "hints": {
-    "deDesc": "Sie hat ein Kissen unter dem Arm und kann die Augen kaum offen halten.",
+    "deDesc": "Sie hält ein Kissen. Ihre Augen fallen zu.",
     "deWord": "Auf Deutsch: müde — und Moosgrün."
    },
    "grounding": "SB S. 32: It's evening. Is Richard tired? · WB S. 37: I'm tired. Then go to bed."
@@ -304,7 +304,7 @@
     "type": "entity",
     "showsDe": "Das Montag-Zimmer ist fertig, die Tür klemmt."
    },
-   "storyDe": "Welcher Tag kommt nach Montag? Antworte der Tür!",
+   "storyDe": "Was kommt nach Montag? Sag es der Tür!",
    "promptEn": "Is it Monday?",
    "options": [
     "No, it isn't. It's Tuesday.",
@@ -335,7 +335,7 @@
    ],
    "stimulus": {
     "type": "entity",
-    "showsDe": "Der Wecker-Trupp klingelt am stockdunklen Fenster."
+    "showsDe": "Vor dem dunklen Fenster klingelt der Wecker-Trupp."
    },
    "storyDe": "Nur EIN Satz stimmt — schnell, welcher?",
    "options": [
@@ -351,8 +351,8 @@
     "p2"
    ],
    "hints": {
-    "deDesc": "Bei es heißt die Verneinung isn't.",
-    "deWord": "Auf Deutsch: Es ist nicht Morgen."
+    "deDesc": "Bei es passt isn't.",
+    "deWord": "Auf Deutsch: Es ist noch nicht Morgen."
    },
    "grounding": "Grammatik SB S. 36 to be (negative): He/She/It isn't. · WB S. 33 Übung 7, dieselbe Wahl zwischen isn't und aren't."
   },
@@ -362,7 +362,7 @@
    "kind": "choice",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Die rote Maske zeigt Zorn, doch die Brauen hängen."
+    "showsDe": "Die rote Maske zeigt Zorn, doch die Augenbrauen hängen."
    },
    "storyDe": "Die Maske lügt. Sag, wie es ihm wirklich geht!",
    "promptEn": "How is he?",
