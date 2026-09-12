@@ -664,7 +664,7 @@
         "showsDe": "Auf dem Pass steht, wie alt der Gast ist.",
         "art": "drehkreuz_adult_a19"
       },
-      "storyDe": "Für wen ist das Ticket, und wo kannst du es benutzen?",
+      "storyDe": "Für wen ist dieses Ticket, und wohin kommst du damit?",
       "promptEn": "What is the ticket for?",
       "skins": [
         "drehkreuz"
@@ -1867,7 +1867,7 @@
         "showsDe": "Beim Besucherpass ist eine Sprechblase leer.",
         "art": "papagei_sturz_c04_family_visit"
       },
-      "storyDe": "Du planst einen Zoobesuch — frag den Guide!",
+      "storyDe": "Frag, ob du die anderen mitnehmen darfst!",
       "promptEn": "What do you ask the guide?",
       "skins": [
         "papagei_sturz"

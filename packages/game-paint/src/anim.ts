@@ -154,7 +154,7 @@ export const awakenWash = (step: number, rounds: number = AWAKEN_ROUNDS): number
  *  card is answered. Under reduced motion a redeemed being is simply already in
  *  colour — the end-states law, applied to the world instead of to CSS. */
 export const washAlphaFor = (
-  e: { role: string; redeemed: boolean; timer: number; awakenStep?: number; freedTick?: number },
+  e: { role: string; redeemed: boolean; timer: number; awakenStep?: number; freedTick?: number; params?: { artSet?: unknown } },
   reducedMotion = false,
 ): number => {
   if (!WASHED_ROLES.has(e.role)) return 0; // furniture was never drained
@@ -164,9 +164,10 @@ export const washAlphaFor = (
   // the child never sees); redeemed, the flood animates the LAST degree away,
   // which is the sixth round's payoff and the same choreography every restored
   // being gets.
-  // Restore asks for missing colours. A residual brown dog would already show
-  // its answer; both the world and its card therefore begin fully grey.
-  const full = e.role === "classmate" ? awakenWash(Math.max((e.awakenStep ?? 0) - (e.redeemed ? 1 : 0), 0)) : e.role === "drained" ? 1 : WASH_ALPHA;
+  // Zoo restore asks for missing colours. A residual brown dog would already
+  // show its answer. The opt-in changes world and card together; older art
+  // retains its existing wash.
+  const full = e.role === "classmate" ? awakenWash(Math.max((e.awakenStep ?? 0) - (e.redeemed ? 1 : 0), 0)) : e.role === "drained" && e.params?.artSet === "zoo-v2" ? 1 : WASH_ALPHA;
   if (!e.redeemed) return full;
   if (reducedMotion) return 0;
   return full * (1 - floodT(e));

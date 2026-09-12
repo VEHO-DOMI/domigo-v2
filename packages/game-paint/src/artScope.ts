@@ -17,9 +17,11 @@ import type { ClassmatePresentationSpec, StageV2Spec } from "../../content-schem
 //
 //   * classes that can be enumerated exactly (hero rig, composition kit) are
 //     taken WHOLE — never a subset;
-//   * classes whose names the renderer BUILDS at run time (`${skin}_${state}`,
+//   * legacy classes whose names the renderer BUILDS at run time (`${skin}_${state}`,
 //     `chalk_${colour}`, `hero2_${cell}`) are closed over what exists on disk,
 //     so a cell this module has never heard of is still in scope;
+//   * opt-in Zoo entities and StageV2 actors use their explicit render-cell registry;
+//     a same-prefix card illustration does not become a world texture;
 //   * the backdrop branches on `compositionFor(...) !== null` — the renderer's
 //     OWN condition, read from the same function, so the two cannot drift.
 //
@@ -280,9 +282,11 @@ export const levelRequiredStems = (level: ScopeLevel, label = ""): Map<string, s
  * Every stem this phase's render path may ask for.
  *
  * @param present the art map's key set — i.e. what exists on disk. The
- *   run-time-constructed name classes are closed over THIS, which is what
+ *   legacy run-time-constructed name classes are closed over THIS, which is what
  *   makes under-scoping structurally impossible for them: the scene can only
  *   ask for `${skin}_${something}` that exists, and every such stem is here.
+ *   Zoo opt-ins use the shared registered cells instead; StageV2 pose validation
+ *   and the required-stem floor keep that explicit contract covered.
  */
 export const phaseArtScope = (level: ScopeLevel, phaseId: string, present: Iterable<string>): Set<string> => {
   const disk = present instanceof Set ? present : new Set(present);
@@ -327,12 +331,15 @@ export const phaseArtScope = (level: ScopeLevel, phaseId: string, present: Itera
   // 3 · beings — the WHOLE cell family of every skin present in this phase
   let guardianHere = false;
   for (const e of ph.entities) {
-    closure(e.skin);
+    // Zoo render cells are explicitly registered; same-prefix card illustrations stay DOM-only.
+    if (e.params?.artSet !== "zoo-v2" && !(e.role === "guardian" && (e.params?.guardian as { mode?: string } | undefined)?.mode === "zoo-lion")) closure(e.skin);
     for (const s of e.params?.artSet === "zoo-v2" ? zooSkinStems(e.skin) : entitySkinStems(e.skin)) add(s);
     if (e.role === "classmate" && e.params?.artSet === "zoo-v2") for (const stem of ZOO_FRIEND_STEMS) add(stem);
     for (const p of (e.params?.classmatePresentation as ClassmatePresentationSpec | undefined)?.props ?? []) for (const layer of zooPropLayers(p.skin)) add(layer.stem);
     const stage=e.params?.stageV2 as StageV2Spec | undefined;
-    for (const a of stage?.actors ?? []) { closure(zooActorSkin(a.skin)); for (const stem of zooSkinStems(zooActorSkin(a.skin))) add(stem); }
+    for (const a of stage?.actors ?? []) {
+      for (const stem of a.skin === "loewe" ? guardianSkinStems(a.skin, "zoo-lion") : zooSkinStems(zooActorSkin(a.skin))) add(stem);
+    }
     for (const p of stage?.props ?? []) for (const layer of zooPropLayers(p.skin)) add(layer.stem);
     if (typeof e.params?.projectileSkin === "string") add(e.params.projectileSkin);
     const guardian = e.params?.guardian as { mode?: string; projectileSkin?: string } | undefined;

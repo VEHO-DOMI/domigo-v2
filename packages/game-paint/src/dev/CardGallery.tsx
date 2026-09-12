@@ -283,7 +283,7 @@ export default function CardGallery({ level, art, tasks, Overlay, which, karte }
       const sequence = e.params?.taskSequenceV2 as { requiredIds?: string[]; variantIds?: string[] } | undefined;
       return restoreId !== undefined && [...(sequence?.requiredIds ?? []), ...(sequence?.variantIds ?? [])].includes(restoreId);
     });
-  const DRAINED_WASH = restoreOwner ? washAlphaFor({ role: restoreOwner.role, redeemed: false, timer: 0 }) : WASH_ALPHA;
+  const DRAINED_WASH = restoreOwner ? washAlphaFor({ role: restoreOwner.role, params: restoreOwner.params, redeemed: false, timer: 0 }) : WASH_ALPHA;
 
   const card = (id: string, label: string, task: GameTaskV2 | undefined, extra?: Record<string, unknown>, note?: string): Surface => ({
     id, label, note, taskId: task?.id,
