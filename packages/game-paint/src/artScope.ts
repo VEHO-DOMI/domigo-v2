@@ -1,3 +1,5 @@
+import { ZOO_HERO_STEMS, zooSkinStems, zooActorSkin, effectiveCollectSkin, collectStems, zooPropLayers } from "./zoo-visuals.ts";
+import type { StageV2Spec } from "../../content-schema/src/paint-zoo.ts";
 // THE PAINTED BOOK — artScope.ts — WHICH STEMS A PHASE ACTUALLY NEEDS.
 //
 // R5-W1 · E1. Measured on the shipped chapter: entering phase 1 queued all
@@ -34,6 +36,8 @@ import { CHALK_PROJECTILE_STEMS } from "./entities.ts";
 /** The shape this module needs. Structural on purpose: the CI gate hands it
  *  raw parsed JSON, the scene hands it a PaintLevel, and both must fit. */
 export interface ScopePhase {
+  collectSkin?: string;
+  collectAnimation?: "zoo-v2";
   id: string;
   rows: readonly string[];
   entities: ReadonlyArray<{ id?: string; role?: string; skin: string; params?: Record<string, unknown> | undefined }>;
@@ -41,6 +45,8 @@ export interface ScopePhase {
 }
 
 export interface ScopeLevel {
+  collectSkin?: string;
+  heroArtSet?: "zoo-v2";
   chapter: string;
   phases: readonly ScopePhase[];
   arena?: ScopePhase | null | undefined;
@@ -201,8 +207,16 @@ export const phaseRequiredStems = (level: ScopeLevel, phaseId: string, label = "
   for (const g of new Set(ph.rows.join(""))) {
     for (const stem of GLYPH_STEMS[g] ?? []) need(stem, `${label} ${ph.id} glyph '${g}'`);
   }
+  for (const stem of collectStems(effectiveCollectSkin(level, ph),ph.collectAnimation)) need(stem, `${label} ${ph.id} collectible`);
+  if (level.heroArtSet === "zoo-v2") for (const stem of ZOO_HERO_STEMS) need(stem,"zoo hero actions");
   for (const e of ph.entities) {
-    const stems = e.role === "guardian" ? guardianSkinStems(e.skin) : entitySkinStems(e.skin);
+    const stage = e.params?.stageV2 as StageV2Spec | undefined;
+    if (stage) {
+      for (const a of stage.actors) for (const stem of (a.skin === "loewe" ? guardianSkinStems(a.skin,"zoo-lion") : zooSkinStems(zooActorSkin(a.skin)))) need(stem,`${label} ${ph.id} scene actor ${a.id}`);
+      for (const p of stage.props) for (const layer of zooPropLayers(p.skin)) need(layer.stem,`${label} ${ph.id} scene prop ${p.id}`);
+    }
+    if (typeof e.params?.projectileSkin === "string") need(e.params.projectileSkin,`${label} ${ph.id} projectile`);
+    const stems = e.role === "guardian" ? guardianSkinStems(e.skin, (e.params?.guardian as { mode?: string } | undefined)?.mode) : e.role === "scene.stage" && stage ? [] : e.params?.artSet === "zoo-v2" ? zooSkinStems(e.skin) : entitySkinStems(e.skin);
     for (const stem of stems) need(stem, `${label} ${ph.id} ${e.role ?? "entity"} ${e.id ?? e.skin}`);
   }
   // The plates belong to the LEGACY backdrop only. buildBackdrop() returns
@@ -274,9 +288,12 @@ export const phaseArtScope = (level: ScopeLevel, phaseId: string, present: Itera
   // 1 · the hero, always
   for (const s of ALWAYS_STEMS) add(s);
   closure("hero2"); // heroFullCell builds cell names by index
+  if (level.heroArtSet !== "zoo-v2") for (const stem of ZOO_HERO_STEMS) out.delete(stem);
 
   const ph = phaseById(level, phaseId);
   if (ph === null) return out;
+  if (level.heroArtSet === "zoo-v2") for (const s of ZOO_HERO_STEMS) add(s);
+  for (const s of collectStems(effectiveCollectSkin(level,ph),ph.collectAnimation)) add(s);
 
   // 2 · THE WHOLE TERRAIN KIT, in every phase — 17 stems, 4.4 MB.
   // Not by glyph, deliberately. buildTerrain() probes `pb-plank_loop`,
@@ -299,10 +316,14 @@ export const phaseArtScope = (level: ScopeLevel, phaseId: string, present: Itera
   let guardianHere = false;
   for (const e of ph.entities) {
     closure(e.skin);
-    for (const s of entitySkinStems(e.skin)) add(s);
+    for (const s of e.params?.artSet === "zoo-v2" ? zooSkinStems(e.skin) : entitySkinStems(e.skin)) add(s);
+    const stage=e.params?.stageV2 as StageV2Spec | undefined;
+    for (const a of stage?.actors ?? []) { closure(zooActorSkin(a.skin)); for (const stem of zooSkinStems(zooActorSkin(a.skin))) add(stem); }
+    for (const p of stage?.props ?? []) for (const layer of zooPropLayers(p.skin)) add(layer.stem);
+    if (typeof e.params?.projectileSkin === "string") add(e.params.projectileSkin);
     if (e.role === "guardian") {
       guardianHere = true;
-      for (const s of guardianSkinStems(e.skin)) add(s);
+      for (const s of guardianSkinStems(e.skin, (e.params?.guardian as { mode?: string } | undefined)?.mode)) add(s);
     }
     // R5-W3 · A5 · D-48: the captive is scoped BY KEY, one layer per cage, and
     // deliberately not through `closure` — see the prefix note in artManifest.

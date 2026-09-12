@@ -3,7 +3,7 @@
 // adds the exact letter count with one underscore per remaining letter. Pure;
 // the painted skin renders the returned string. deDesc/deWord (the German
 // tips) are separate authored escalations shown alongside.
-import { deriveGapHints } from "@domigo/content-schema";
+import { deriveGapHints } from "../../../content-schema/src/game-tasks.ts";
 
 /** The gap rendered with the first letter shown and every other letter as an
  *  underscore; punctuation kept; words spaced apart. "pen" → "P _ _". */

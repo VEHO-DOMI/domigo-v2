@@ -1,3 +1,5 @@
+import { stageV2LawErrors } from "./stage-v2-laws.ts";
+import type { StageV2Spec, ZooGuardianSpec, ZooRideSpec, TaskSequenceV2Spec, SequenceTransferSpec } from "../../content-schema/src/paint-zoo.ts";
 // THE PAINTED BOOK — the paintLevel@1 format: pure parse + THE LEVEL LAWS.
 // The app-side zod loader (apps/web/lib/paint-content.ts) guarantees the JSON
 // SHAPE; this module owns the SEMANTICS and throws loud on any violation
@@ -6,7 +8,7 @@
 // an ability-parameterized reachability sweep (a cage or letter no child can
 // reach is a defect, not a secret).
 
-import { MAX_LINE_DE, cloakErrorsDe, registerErrorsDe } from "@domigo/content-schema";
+import { MAX_LINE_DE, cloakErrorsDe, registerErrorsDe } from "../../content-schema/src/game-tasks.ts";
 import { BEISPIEL_MUSTER, BEISPIEL_PAAR_TRENNER } from "./rule-text.ts";
 import { type Grid, glyphAt, isOneWay, isSlope, isSolid, ledgeGrabAt } from "./collide.ts";
 import { PAINT, SUBS, TILE } from "./paint.ts";
@@ -116,6 +118,20 @@ export const PICKUP_ROLES = new Set<EntityRole>(["tip", "book", "cloth"]);
  * instead of a level that ships with a door nobody can pay.
  */
 export interface EntityParams {
+  /** scene.stage: station numbers at which the witnessed scene may ask.  The
+   * list is explicit so a moving picture cannot quietly serve an unrelated
+   * playlist card. */
+  taskSequence?: number[];
+  /** Ordered card identities for the opt-in sequence router. */
+  taskSequenceV2?: TaskSequenceV2Spec;
+  stageV2?: StageV2Spec;
+  onSequenceComplete?: SequenceTransferSpec;
+  guardian?: ZooGuardianSpec;
+  ride?: ZooRideSpec;
+  encounterObserver?: { c: number; r: number };
+  artSet?: "zoo-v2";
+  gunnerAim?: "lock-on-telegraph";
+  projectileSkin?: string;
   /** door.trigger: which door this is — "exit" | "bonus" | "seal". */
   kind?: string;
   /** door.trigger: what the door COSTS in letters. PB-R1 · R3-2 — Klecks' price
@@ -147,6 +163,8 @@ export interface EntityParams {
    *  reach this field today. The law is chapter-spanning; ch02 is where it
    *  first pays. */
   gabeDe?: string;
+  /** A spoken reminder naming the unfinished encounter at the phase exit. */
+  exitHintDe?: string;
   /** cage: WHO is inside — the classmate's name. Its presence is what makes a
    *  cage the chapter's one person-cage (doc 44 §2.3's `captive:"classmate"` is
    *  this field; the shipped data has carried the name itself since ch01, and a
@@ -377,6 +395,12 @@ export interface PhaseSpec {
   entities: EntitySpec[];
   links: LinkSpec[];
   exit: { to: string }; // a phase id, "boss", or "done"
+  /** Optional per-room collectible appearance.  A missing value deliberately
+   * inherits the chapter skin, so old chapters keep their byte-identical look. */
+  collectSkin?: string;
+  collectAnimation?: "zoo-v2";
+  /** Extra completion contracts introduced by the zoo chapter. */
+  exitRequires?: { rides?: string[]; sequences?: string[] };
   /** Declared dry-pocket ink exits. Absent on every phase that has none — an
    *  undeclared pocket whose only way out is a hazard is a softlock, not a
    *  design (Kokis Replay 2026-08-11, p1-Keller). */
@@ -457,6 +481,16 @@ export interface PhaseSpec {
   };
 }
 
+/** Authored German forms: grammar cannot be inferred from an animal or prop skin. */
+export interface PaintRestorationDe {
+  /** Full singular dative, including article and adjective. */
+  oneDative: string;
+  /** Plural dative after the counted number, including adjective. */
+  manyDative: string;
+  oneSubject: "er" | "sie" | "es";
+  freedLabel: string;
+}
+
 export interface PaintLevel {
   schema: typeof LEVEL_SCHEMA;
   id: string;
@@ -473,6 +507,8 @@ export interface PaintLevel {
   whyDe: string;
   hintsDe: string[];
   collectNounDe: string;
+  /** Chapter-specific restoration wording; omitted chapters retain their school wording. */
+  restorationDe?: PaintRestorationDe;
   /** L0 · N1 · R246 · WAS DIE `*`-ZELLEN EIGENTLICH SIND.
    *
    *  Der Motor zeichnet auf jeder `*`-Zelle einen BUCHSTABEN — immer, und ohne
@@ -491,6 +527,7 @@ export interface PaintLevel {
    *  Das HUD zählt weiter über `collectNounDe` — das Wort, das das Kind liest,
    *  war schon immer eine Deklaration. */
   collectSkin?: string;
+  heroArtSet?: "zoo-v2";
   /** L0 · N2 · WIE DIE FUNDSTÜCKE DIESES KAPITELS HEISSEN (D-921).
    *
    *  Die `cloth`-Maschine — drei Fundstücke je Raum, Karte beim dritten Fund —
@@ -1456,6 +1493,16 @@ export const checkLevelLaws = (level: PaintLevel): LawFailure[] => {
         });
       }
     }
+    for (const m of mates) {
+      const cageId = m.e.params?.cage;
+      if (cageId === undefined) {
+        failures.push({ phase: m.p.id, law: "classmate-pair", detail: `classmate ${m.e.id} declares no cage — nothing can ever reveal her` });
+      } else if (!cages.some((c) => c.id === cageId && c.params?.classmate !== undefined)) {
+        failures.push({ phase: m.p.id, law: "classmate-pair", detail: `classmate ${m.e.id} points at "${cageId}", which is not a person-cage in this chapter` });
+      }
+    }
+  }
+
     // ── L2-M-a · R249 · DAS BUEHNEN-DREHBUCH ─────────────────────────────
     // Eine Buehne ohne Drehbuch ist ein Wesen, das im Nichts steht und nie
     // fragt. Die vier Bedingungen sind genau die, ohne die der Motor still
@@ -1465,7 +1512,7 @@ export const checkLevelLaws = (level: PaintLevel): LawFailure[] => {
     // ohne `propSkin` gibt es kein Objekt, um das herum das Ortswort ueberhaupt
     // einen Sinn haette.
     for (const ph of allPhases(level)) {
-      for (const e of ph.entities.filter((x) => x.role === "scene.stage")) {
+      for (const e of ph.entities.filter((x) => x.role === "scene.stage" && !x.params?.stageV2)) {
         const st = e.params?.stage;
         const at = `${e.id}`;
         if (st === undefined) {
@@ -1480,6 +1527,15 @@ export const checkLevelLaws = (level: PaintLevel): LawFailure[] => {
           failures.push({ phase: ph.id, law: "stage-script", detail: `stage ${at} names no propSkin — there is nothing to be behind or in front of` });
         }
         const zellen = st.stations.map((s) => ({ c: e.c + s.dc, r: e.r + s.dr }));
+        if (e.params?.taskSequence !== undefined) {
+          const seq = e.params.taskSequence;
+          if (!Array.isArray(seq) || seq.length === 0 || seq.some((n) => !Number.isInteger(n) || n < 0 || n >= st.stations.length)) {
+            failures.push({ phase: ph.id, law: "stage-sequence", detail: `stage ${at} taskSequence must name existing whole-number station indices` });
+          }
+          if (Array.isArray(seq) && new Set(seq).size !== seq.length) {
+            failures.push({ phase: ph.id, law: "stage-sequence", detail: `stage ${at} taskSequence repeats a station — one witnessed state may ask once` });
+          }
+        }
         for (const [i, z] of zellen.entries()) {
           if (z.c < 0 || z.c >= (ph.rows[0]?.length ?? 0) || z.r < 0 || z.r >= ph.rows.length) {
             failures.push({ phase: ph.id, law: "stage-script", detail: `stage ${at} station ${i} at (${z.c},${z.r}) lies outside the grid` });
@@ -1493,13 +1549,22 @@ export const checkLevelLaws = (level: PaintLevel): LawFailure[] => {
       }
     }
 
-    for (const m of mates) {
-      const cageId = m.e.params?.cage;
-      if (cageId === undefined) {
-        failures.push({ phase: m.p.id, law: "classmate-pair", detail: `classmate ${m.e.id} declares no cage — nothing can ever reveal her` });
-      } else if (!cages.some((c) => c.id === cageId && c.params?.classmate !== undefined)) {
-        failures.push({ phase: m.p.id, law: "classmate-pair", detail: `classmate ${m.e.id} points at "${cageId}", which is not a person-cage in this chapter` });
-      }
+  failures.push(...stageV2LawErrors(level));
+
+  // A draft may omit the chapter's roster, but a declared witnessed sequence is
+  // already executable data.  Keep this small contract outside `!draft`: a
+  // malformed stop otherwise reaches the prototype reader as a green lie.
+  for (const ph of allPhases(level)) for (const e of ph.entities.filter((x) => x.role === "scene.stage" && x.params?.taskSequence !== undefined)) {
+    const st = e.params?.stage as { stations?: unknown[] } | undefined;
+    const seq = e.params?.taskSequence;
+    if (!Array.isArray(st?.stations) || !Array.isArray(seq) || seq.length === 0 || seq.some((n) => !Number.isInteger(n) || n < 0 || n >= st.stations!.length)) {
+      failures.push({ phase: ph.id, law: "stage-sequence", detail: `stage ${e.id} taskSequence must name existing whole-number station indices` });
+    }
+    if (Array.isArray(seq) && new Set(seq).size !== seq.length) {
+      failures.push({ phase: ph.id, law: "stage-sequence", detail: `stage ${e.id} taskSequence repeats a station — one witnessed state may ask once` });
+    }
+    if (Array.isArray(seq) && seq.some((n, i) => i > 0 && n <= seq[i - 1]!)) {
+      failures.push({ phase: ph.id, law: "stage-sequence", detail: `stage ${e.id} taskSequence must follow the scene from earlier to later stations` });
     }
   }
 
@@ -1728,10 +1793,12 @@ export const checkLevelLaws = (level: PaintLevel): LawFailure[] => {
   const copyFields: Array<{ what: string; text: string; cap: number }> = [
     { what: "name", text: level.name, cap: MAX_LINE_DE },
     { what: "collectNounDe", text: level.collectNounDe, cap: MAX_LINE_DE },
+    ...Object.entries(level.restorationDe ?? {}).map(([key, text]) => ({ what: `restorationDe.${key}`, text, cap: MAX_LINE_DE })),
     // The *Warum* and the hints are read at rest, like a Merksatz — one
     // sentence, out loud, in one breath — so they take the Merksatz cap.
     { what: "whyDe", text: level.whyDe, cap: MAX_MERKSATZ },
     ...level.hintsDe.map((h, i) => ({ what: `hintsDe[${i}]`, text: h, cap: MAX_MERKSATZ })),
+    ...allPhases(level).flatMap(p => p.entities.filter(e => typeof e.params?.exitHintDe === "string").map(e => ({ what: `${e.id}.exitHintDe`, text: e.params!.exitHintDe!, cap: MAX_MERKSATZ }))),
     ...allPhases(level).map((p) => ({ what: `${p.id}.nameDe`, text: p.nameDe, cap: MAX_LINE_DE })),
   ];
   for (const f of copyFields) {
@@ -1797,8 +1864,16 @@ export const checkLevelLaws = (level: PaintLevel): LawFailure[] => {
         // '\': the 30° halves have their own pairing law above, and 'z' is the
         // slide — a long chute whose whole body is diagonal by design.
         if (g === "/" || g === "\\") {
+          // Look outward FROM the ramp, not downward from row zero.  Every
+          // field room has a mandatory solid ceiling at row zero; the former
+          // scan therefore "found" that ceiling on both sides and declared
+          // every useful ramp level.  The first walk surface at or below the
+          // ramp is the floor a child can actually enter from either side.
           const walkTop = (col: number): number => {
-            for (let rr = 0; rr < ph.rows.length; rr++) if (isSolid(glyphAt(ph.rows, col, rr)) || isSlope(glyphAt(ph.rows, col, rr))) return rr;
+            for (let rr = r; rr < ph.rows.length; rr++) {
+              const here = glyphAt(ph.rows, col, rr);
+              if (isSolid(here) || isSlope(here)) return rr;
+            }
             return ph.rows.length;
           };
           if (walkTop(c - 1) === walkTop(c + 1)) {

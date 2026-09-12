@@ -1,3 +1,6 @@
+import { newChapterLearning, type ChapterLearningState } from "./learning.ts";
+import type { GameTaskV2 } from "../../content-schema/src/game-tasks.ts";
+import { solveTapeCard, evidenceKeys, newTapeEvidence, observeEvidence } from "./tape-evidence.ts";
 // THE PAINTED BOOK — proof tapes (PB-T2): a recorded pad stream that the REAL
 // engine (sim.ts) replays to its exit. THE LAW: no non-draft level ships
 // without a green tape per phase — completability is proven by execution,
@@ -29,6 +32,13 @@ export const PROOF_SCHEMA = "paintProof@1";
  *  is optional so an old tape stays valid — but a recorded tape writes them
  *  all, and the suite fails on any mismatch. */
 export interface TapeExpect {
+  hangEdges?: string[];
+  rideCompletions?: string[];
+  solvedTaskIds?: string[];
+  sceneBeatsSeen?: string[];
+  homeArrivals?: string[];
+  guardianRounds?: string[];
+  deflects?: number[];
   lettersGot?: number;
   lettersTotal?: number;
   exitTo?: string;
@@ -194,6 +204,9 @@ export const POSE_VIOLATION_CAP = 20;
 // second cage hint — the one PaintGame silently declines — never happened in
 // CI. This object is that memory, threaded through a whole chapter's tapes.
 export interface ChapterShellState {
+  onTask?: (request:TaskRequest)=>void;
+  learning?: ChapterLearningState;
+  tasks?: readonly GameTaskV2[];
   /** PaintGame.cageHintShownRef: the fist hint teaches once, then never again. */
   cageHintShown: boolean;
   /** PK-R3b · R3-16 — PaintGame's tipsTakenRef/booksTakenRef: a Regel-Seite
@@ -220,6 +233,7 @@ export const replayPhaseTape = (
 ): ReplayResult => {
   const abilities: string[] = [...tape.abilities];
   const freed: string[] = [...freedCages];
+  shell.learning ??= newChapterLearning();
   const sim = new Sim({
     level,
     phaseId,
@@ -228,6 +242,8 @@ export const replayPhaseTape = (
     cageHintShown: () => shell.cageHintShown,
     arenaBriefShown: () => shell.arenaBriefShown,
     collectedPickupIds: () => shell.pickedUp,
+    tasks: shell.tasks,
+    learningProgress: shell.learning,
   });
   let exited = false;
   let exitTo: string | null = null;
@@ -254,9 +270,12 @@ export const replayPhaseTape = (
   /** R5-W5 · G4: uniform pieces the pilot picked up on this run. */
   let clothGot = 0;
   const grantsPicked: string[] = [];
+  const trace=newTapeEvidence();
+  let previousHang:string|null=null;
 
   const handle = (evs: SimEvent[]): void => {
     for (const ev of evs) {
+      observeEvidence(trace,ev);
       // R5-W8 · S4 · R209d: die fallende Lebensanzeige, mitgeschrieben. Bewusst
       // VOR der if/else-Kette und als eigene Anweisung — der Wisch ist eine
       // Beobachtung, keine Shell-Pflicht, und darf keinen der Zweige verdrängen,
@@ -264,6 +283,8 @@ export const replayPhaseTape = (
       // Landung auf).
       if (ev.type === "guardianWipe") wipes.push(ev.layersLeft);
       if (ev.type === "task") {
+        shell.onTask?.(structuredClone(ev.req));
+        if(shell.tasks)solveTapeCard(shell.tasks,ev.req,phaseId);
         tasksSolved++;
         // PK-R6 · E · THE COUNTER-WINDOW, caught where it actually happens. It
         // is opened and (in a replay) answered inside ONE sim step, so a sampler
@@ -372,6 +393,9 @@ export const replayPhaseTape = (
   let t = 0;
   for (; t < masks.length && !exited; t++) {
     handle(sim.step(maskToPad(masks[t] ?? 0)));
+    const hang=sim.player.hangAt?`${sim.player.hangAt.c},${sim.player.hangAt.r}`:null;
+    if(hang && hang!==previousHang)trace.hangEdges.push(hang);
+    previousHang=hang;
     // die Karte über der Landung: sie bleibt oben, bis die Haltezeit durch ist
     if (awaitLanding && sim.holdTicks === 0) {
       const g = sim.world.entities.find((e) => e.role === "guardian");
@@ -389,6 +413,7 @@ export const replayPhaseTape = (
     }
   }
   const world = {
+    ...trace,
     lettersGot: sim.lettersGot,
     lettersTotal: sim.lettersTotal,
     exitTo,
@@ -400,7 +425,10 @@ export const replayPhaseTape = (
     // waving that follows it (entities.stepRedeemed). A classmate in any OTHER
     // state at the end of a run is one the sequence did not finish.
     classmatesAwake: sim.world.entities.filter(
-      (e) => e.role === "classmate" && e.redeemed && ["settle", "joy", "rest", "wave"].includes(e.state),
+      // `roam` is the legal post-welcome state: a fully awakened classmate
+      // may walk before the tape ends.  Count the completed ceremony, not a
+      // photogenic but transient pose.
+      (e) => e.role === "classmate" && e.redeemed && e.awakenStep >= 6 && ["settle", "joy", "rest", "wave", "roam"].includes(e.state),
     ).length,
     tipsGot,
     booksGot,
@@ -430,8 +458,10 @@ export const replayChapterTapes = (
   level: PaintLevel,
   phases: Record<string, PhaseTape>,
   order: readonly string[],
+  tasks?: readonly GameTaskV2[],
 ): Array<{ phaseId: string; result: ReplayResult }> => {
   const shell = newChapterShell();
+  shell.tasks=tasks;
   const out: Array<{ phaseId: string; result: ReplayResult }> = [];
   for (const phaseId of order) {
     const tape = phases[phaseId];
@@ -449,8 +479,9 @@ export const worldAssertionErrors = (expect: TapeExpect | undefined, world: Repl
   const errs: string[] = [];
   const cmp = (key: keyof TapeExpect, got: unknown): void => {
     const want = expect[key];
-    if (want !== undefined && want !== got) errs.push(`${key}: tape says ${String(want)}, the run produced ${String(got)}`);
+    if (want !== undefined && JSON.stringify(want) !== JSON.stringify(got)) errs.push(`${key}: tape says ${String(want)}, the run produced ${String(got)}`);
   };
+  for (const key of evidenceKeys) cmp(key, world[key]);
   cmp("lettersGot", world.lettersGot);
   cmp("lettersTotal", world.lettersTotal);
   cmp("exitTo", world.exitTo);

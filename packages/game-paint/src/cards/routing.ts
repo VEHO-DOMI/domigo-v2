@@ -42,8 +42,25 @@
 // pool's progress eat another's — and a pool that is the same set of cards in
 // every phase keeps ONE series across the chapter instead of restarting at card
 // one behind every door.
-import { seededShuffle } from "@domigo/content-schema";
+import { seededShuffle } from "../../../content-schema/src/game-tasks.ts";
 import type { GameTaskV2 } from "@domigo/content-schema";
+import type { TaskRequest } from "../sim.ts";
+
+/** A bound identity never falls back to another card or auto-resolves. */
+export const requestedTask = (items: readonly GameTaskV2[], req: TaskRequest, phase: string): GameTaskV2 | undefined => {
+  const id = "taskId" in req.ctx ? req.ctx.taskId : undefined;
+  if (id === undefined) return undefined;
+  const task = items.find(t => t.id === id);
+  const skin = "skin" in req.ctx ? req.ctx.skin : undefined;
+  if (!task || task.use !== req.use || (task.phases && !task.phases.includes(phase)) || (task.skins && (!skin || !task.skins.includes(skin)))) {
+    throw new Error(`Bound task ${id} is missing or belongs to another speaker`);
+  }
+  const ref = task.sceneRef; const scene = req.sceneSnapshot;
+  if (ref?.beatId && (!scene || scene.entityId !== ref.entityId || scene.beatId !== ref.beatId || scene.viewId !== ref.viewId)) {
+    throw new Error(`Bound task ${id} has no matching observed scene`);
+  }
+  return task;
+};
 
 /** Where and for whom a card is being served. `skin` is the addressed being's
  *  skin (entity, cage, door, guardian); a hazard has none. */

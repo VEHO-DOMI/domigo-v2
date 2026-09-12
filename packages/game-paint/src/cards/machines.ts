@@ -8,7 +8,7 @@
 //
 // Determinism: every shuffle uses content-schema's seededShuffle keyed by the
 // task id — the on-screen order is reproducible and matches renderTaskText.
-import { type GameTaskV2, seededShuffle } from "@domigo/content-schema";
+import { type GameTaskV2, seededShuffle } from "../../../content-schema/src/game-tasks.ts";
 
 export type Grade = "pending" | "correct" | "wrong";
 

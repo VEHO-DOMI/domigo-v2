@@ -1,0 +1,56 @@
+{
+  "schema": "codexTrialZooFixtures@1",
+  "sourceRepository": "W2 ch02 local workshop snapshot",
+  "sourceCommit": "2b2871c83da0c642a117ab0555a6fd6da76c706e",
+  "purpose": "Frozen motor test inputs for PR-A; these files do not publish chapter 2.",
+  "files": [
+    {
+      "source": "content/corpus/stories/g1.st.lost-pages/paint/ch02.level.json",
+      "file": "ch02.level.json",
+      "sha256": "762ed2b3325e5d6ec87095b8c6f09507e74cd0ff9e31920bb0879ad4bc7b85d9",
+      "bytes": 107969
+    },
+    {
+      "source": "content/corpus/stories/g1.st.lost-pages/paint/ch02.tasks.v2.json",
+      "file": "ch02.tasks.v2.json",
+      "sha256": "485da50158fcb5813b1bf16e2fe41f9038c9057362e5329f715109e792879045",
+      "bytes": 85413
+    },
+    {
+      "source": "content/corpus/stories/g1.st.lost-pages/paint/ch02.proof.json",
+      "file": "ch02.proof.json",
+      "sha256": "6a52f0212eb06f652c7d10fbda11a462b4367a37a2ae03764713588f941c6b2c",
+      "bytes": 28290
+    },
+    {
+      "source": "content/corpus/stories/g1.st.lost-pages/paint/ch02.policy.json",
+      "file": "ch02.policy.json",
+      "sha256": "501a863c9794462780cba2fb5fdcff1641cadca0610281f1bfbb7109b578c416",
+      "bytes": 7535
+    },
+    {
+      "source": "docs/design/g1/paint/ch02-dossiers-v2/coverage.json",
+      "file": "coverage.json",
+      "sha256": "b966b6d29ec46b856e081a3795b8fdf902930e93eeae140a4e24d62919f66296",
+      "bytes": 22713
+    },
+    {
+      "source": "content/corpus/units/g1-u02/wordbank.json",
+      "file": "wordbank.json",
+      "sha256": "973a4178320a03dadcd69c6538980d2d9b53f85c280a93e2d46d70ec00390e0a",
+      "bytes": 16654
+    },
+    {
+      "source": "content/build/transcripts/g1/sb/SB Unit 2- At the zoo.txt",
+      "file": "SB Unit 2- At the zoo.txt",
+      "sha256": "5e643a7870ea6d282c9fb9efa0c204f3cbc3491285a9a3958e82fe69055de490",
+      "bytes": 7629
+    },
+    {
+      "source": "content/build/transcripts/g1/wb/WB Unit 2 At the zoo.txt",
+      "file": "WB Unit 2 At the zoo.txt",
+      "sha256": "4abf48015bc2affbfb2bc337d1329119722b0b3eff77cf27623ad30d099a4e10",
+      "bytes": 10415
+    }
+  ]
+}

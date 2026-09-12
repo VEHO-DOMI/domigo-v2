@@ -36,7 +36,7 @@
 // (the gate imports `timerClassFor` from the runtime so gate and game cannot
 // drift): the ROUTER ITSELF. Law 15 does not model the serve, it runs it. If
 // routing.ts changes, this law changes with it or goes red.
-import { REFERENT_FIXED_FORMS, type GameTaskV2, type TaskForm, seededShuffle } from "@domigo/content-schema";
+import { REFERENT_FIXED_FORMS, type GameTaskV2, type TaskForm, seededShuffle } from "../../../content-schema/src/game-tasks.ts";
 import type { PaintLevel } from "../level.ts";
 import { initRoute, nextTask, resolvePool } from "./routing.ts";
 import { HOSTILE_ROLES, allPhasesOf, serveContextsOf } from "./serving.ts";

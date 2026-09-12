@@ -1,3 +1,4 @@
+import type { SceneSnapshot } from "../scene-v2.ts";
 // CARD HOST (PB-T8 / Build-B-skins) — the glue between a v2 task and its
 // painted skin. Owns the machine state + the wrong-attempt counter; on each
 // dispatch it folds the action(s) over the current state, grades, and either
@@ -70,7 +71,7 @@ export function writtenTextOf(state: unknown, task: GameTaskV2): string {
 }
 
 export function CardHost({
-  task, onResolve, onWorldChange, onDismiss, onGrade, align = "center", art, portraitWash, captive, captiveIsPerson, servedUse, clockMs: clockMsProp, round,
+  task, onResolve, onWorldChange, onDismiss, onGrade, align = "center", art, portraitWash, sceneSnapshot, captive, captiveIsPerson, servedUse, clockMs: clockMsProp, round,
 }: {
   task: GameTaskV2;
   /** the card is finished: close it (and hand on any beat it opened) */
@@ -101,6 +102,7 @@ export function CardHost({
   art?: Record<string, string>;
   /** how drained the asker is right now — the portrait matches the world */
   portraitWash?: number;
+  sceneSnapshot?: SceneSnapshot;
   /** R5-W4 · D3 · F-14 · the art stem of whoever is inside the cage this card is
    *  about, so the picture shows what is in there (R54). Undefined for every
    *  card that is not about a cage. */
@@ -218,6 +220,7 @@ export function CardHost({
       onActivity={onActivity}
       art={art}
       portraitWash={portraitWash}
+      sceneSnapshot={sceneSnapshot}
       captive={captive}
       captiveIsPerson={captiveIsPerson}
       round={round}

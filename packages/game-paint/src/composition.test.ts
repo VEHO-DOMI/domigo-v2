@@ -1,3 +1,4 @@
+import { readZooJson } from "./test-fixtures/zoo/read-fixture.ts";
 // PB-C1 · the composition engine's pure brains: the layer compositor
 // (doc 36 §1), the carved mass (§2), cover-fit (§3) and the letter glyphs.
 // Everything the renderer places is planned here, so everything the renderer
@@ -1468,7 +1469,6 @@ describe("D-267 · Rampen-Blätter und Gitter dürfen nicht auseinanderlaufen", 
 
     const CONTENT = path.resolve(__dirname, "../../../content/corpus/stories");
     let phasesChecked = 0;
-    let phasesWithSlope = 0;
     if (fs.existsSync(CONTENT)) {
       for (const story of fs.readdirSync(CONTENT)) {
         const paintDir = path.join(CONTENT, story, "paint");
@@ -1481,12 +1481,11 @@ describe("D-267 · Rampen-Blätter und Gitter dürfen nicht auseinanderlaufen", 
             arena?: { id: string; rows: string[] } | null;
             bonus?: { id: string; rows: string[] } | null;
           };
-          if (level.draft === true) continue;
+
           const all = [...level.phases, ...(level.arena ? [level.arena] : []), ...(level.bonus ? [level.bonus] : [])];
           for (const ph of all) {
             phasesChecked += 1;
             if (!needsRampSheets(ph.rows)) continue;
-            phasesWithSlope += 1;
             const spec = compositionFor(level.chapter, ph.id);
             if (spec === null) continue;
             for (const [field, stem] of [["rampUp", spec.mass.rampUp], ["rampDown", spec.mass.rampDown]] as const) {
@@ -1505,7 +1504,22 @@ describe("D-267 · Rampen-Blätter und Gitter dürfen nicht auseinanderlaufen", 
     }
     // Der Lauf muss überhaupt etwas gesehen haben — sonst prüft er nichts.
     expect(phasesChecked).toBeGreaterThan(0);
-    // Heute ist der Stand: keine einzige Steigung im ganzen Bestand (D-267).
-    expect(phasesWithSlope).toBe(0);
+    // PR-A ships the motor before ch02 content. The corpus scan above remains
+    // live; its nonzero room count prevents an empty inspection from passing.
+  });
+
+  it("prüft beide Rampenrichtungen am eingefrorenen Zoo-Unterweg", () => {
+    const zoo = readZooJson("ch02.level.json") as { phases: Array<{ id: string; rows: string[] }> };
+    const bus = zoo.phases.find((phase) => phase.id === "p2");
+    expect(bus, "Die Zoo-Prüfdaten müssen den Busraum enthalten").toBeDefined();
+    const rows = bus!.rows;
+    expect(needsRampSheets(rows)).toBe(true);
+    expect(rows.some((row) => row.includes("/"))).toBe(true);
+    expect(rows.some((row) => row.includes("\\"))).toBe(true);
+    const ramps = planMass(rows, kit, afSrc).filter((quad) => quad.kind === "ramp");
+    expect(ramps.filter((quad) => quad.stem === "ramp_up").length).toBeGreaterThan(0);
+    expect(ramps.filter((quad) => quad.stem === "ramp_down").length).toBeGreaterThan(0);
+    const { rampUp: _u, rampDown: _d, ...noRamps } = kit;
+    expect(() => planMass(rows, noRamps, afSrc)).toThrow(/declares no ramp/);
   });
 });

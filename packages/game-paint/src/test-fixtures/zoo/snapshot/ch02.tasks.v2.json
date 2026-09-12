@@ -1,0 +1,2851 @@
+{
+  "schema": "gameTasks@2",
+  "chapter": "ch02",
+  "unit": "g1-u02",
+  "note": "CODEX DRAFT — NOT CANON. R1a: 72 individually authored slots, 56 required and 16 variants. Images are commissioned evidence, not delivered art; M-1/M-2/M-3/M-6 still need implementation.",
+  "items": [
+    {
+      "id": "g1.paint.ch02.a01",
+      "use": "encounter",
+      "kind": "choice",
+      "form": "state-it",
+      "exercises": [
+        "g1u02.w.guide",
+        "g1u02.w.zoo",
+        "g1u02.w.at",
+        "g1u02.s.there-is-are"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Ein Mann mit Abzeichen hält einen gefalteten Plan."
+      },
+      "storyDe": "Sag dem Guide, was du auf seinem Bild siehst!",
+      "promptEn": "What can you see?",
+      "skins": [
+        "waertereimer"
+      ],
+      "phases": [
+        "p1"
+      ],
+      "hints": {
+        "deDesc": "Schau auf das Abzeichen und das Tor.",
+        "deWord": "Auf Deutsch: Im Zoo ist ein Guide."
+      },
+      "grounding": "SB 17, Cotswold Wildlife Park poster; use the pictured park activity. ART ORDER: One named male guide with familiar GUIDE badge and folded zoo map stands beside the zoo gate; no train overlaps him. Exactly one person, not two.",
+      "options": [
+        "There is a guide at the zoo.",
+        "There are two guides at the zoo.",
+        "There is a guide on the train."
+      ],
+      "answer": "There is a guide at the zoo."
+    },
+    {
+      "id": "g1.paint.ch02.a02",
+      "use": "encounter",
+      "kind": "choice",
+      "form": "state-it",
+      "exercises": [
+        "g1u02.w.penguin",
+        "g1u02.s.there-is-are"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Pinguine mit runden Bäuchen stehen im Rahmen.",
+        "art": "count_a02"
+      },
+      "storyDe": "Schau, wer auf dem nächsten Bild wartet!",
+      "promptEn": "What is in the picture?",
+      "skins": [
+        "waertereimer"
+      ],
+      "phases": [
+        "p1"
+      ],
+      "hints": {
+        "deDesc": "Zähle die Pinguine im Rahmen.",
+        "deWord": "Auf Deutsch: Da sind zwei Pinguine."
+      },
+      "grounding": "SB 17, Cotswold Wildlife Park poster; use the pictured park activity. Art order: exactly 2 distinct penguins bodies inside the frame, no numeral or number word.",
+      "options": [
+        "There are two penguins.",
+        "There is one penguin.",
+        "There are three penguins."
+      ],
+      "answer": "There are two penguins."
+    },
+    {
+      "id": "g1.paint.ch02.a03",
+      "use": "encounter",
+      "kind": "choice",
+      "form": "state-it",
+      "exercises": [
+        "g1u02.w.train",
+        "g1u02.s.there-is-are"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Wagen mit Rädern stehen auf Schienen.",
+        "art": "park_train_view"
+      },
+      "storyDe": "Der Guide zeigt dir das nächste Bild.",
+      "promptEn": "What can you see now?",
+      "skins": [
+        "waertereimer"
+      ],
+      "phases": [
+        "p1"
+      ],
+      "hints": {
+        "deDesc": "Schau, wie die Wagen aneinanderhängen.",
+        "deWord": "Auf Deutsch: Da ist ein Zug."
+      },
+      "grounding": "SB 17, Cotswold Wildlife Park poster; use the pictured park activity. ART ORDER: One unmistakable train: locomotive plus coupled wagons on rails, no bus or car. Same zoo train as SB 17.",
+      "options": [
+        "There is a train.",
+        "There is a bus.",
+        "There is a car."
+      ],
+      "answer": "There is a train."
+    },
+    {
+      "id": "g1.paint.ch02.a04",
+      "use": "encounter",
+      "kind": "choice",
+      "form": "count-it",
+      "exercises": [
+        "g1u02.w.penguin"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Im Rahmen siehst du Federn und kurze Füße.",
+        "art": "count_a04"
+      },
+      "storyDe": "Hier gibt es wieder etwas zu zählen!",
+      "promptEn": "How many penguins?",
+      "skins": [
+        "pinguin_rutscher"
+      ],
+      "phases": [
+        "p1"
+      ],
+      "hints": {
+        "deDesc": "Zähle nur die Pinguine im Rahmen.",
+        "deWord": "Auf Deutsch: Ich sehe einen Pinguin."
+      },
+      "grounding": "SB 20, there is/are and place grammar; WB 20 Word File. Art order: exactly 1 distinct penguin bodies inside the frame, no numeral or number word.",
+      "options": [
+        "One penguin.",
+        "Two penguins.",
+        "Three penguins."
+      ],
+      "answer": "One penguin."
+    },
+    {
+      "id": "g1.paint.ch02.a05",
+      "use": "encounter",
+      "kind": "choice",
+      "form": "count-it",
+      "exercises": [
+        "g1u02.w.penguin"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Du siehst die Bäuche der Pinguine.",
+        "art": "count_a05"
+      },
+      "storyDe": "Schau noch einmal hin und zähle!",
+      "promptEn": "How many can you see?",
+      "skins": [
+        "pinguin_rutscher"
+      ],
+      "phases": [
+        "p1"
+      ],
+      "hints": {
+        "deDesc": "Zähle jeden Pinguin nur einmal.",
+        "deWord": "Auf Deutsch: Ich sehe zwei Pinguine."
+      },
+      "grounding": "SB 20, there is/are and place grammar; WB 20 Word File. Art order: exactly 2 distinct penguins bodies inside the frame, no numeral or number word.",
+      "options": [
+        "Two penguins.",
+        "Three penguins.",
+        "Four penguins."
+      ],
+      "answer": "Two penguins."
+    },
+    {
+      "id": "g1.paint.ch02.a06",
+      "use": "encounter",
+      "kind": "restore",
+      "form": "name-it",
+      "exercises": [
+        "g1u02.w.penguin",
+        "g1u02.x.colours"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Der Pinguin ist noch grau und wartet auf seine Farben."
+      },
+      "storyDe": "Sag, welches Tier ich bin — gib mir die Farbe zurück!",
+      "promptEn": "What is it?",
+      "skins": [
+        "pinguin"
+      ],
+      "phases": [
+        "p1"
+      ],
+      "hints": {
+        "deDesc": "Schau auf die Flügel, den Schnabel und den runden Bauch.",
+        "deWord": "Auf Deutsch: Der Pinguin ist schwarz und weiß."
+      },
+      "grounding": "SB 20, there is/are and place grammar; WB 20 Word File.",
+      "nameOptions": [
+        "penguin",
+        "parrot",
+        "monkey",
+        "giraffe"
+      ],
+      "name": "penguin",
+      "colourAskDe": "Ich bin ein Pinguin. Mir fehlen Schwarz und Weiß.",
+      "colourOptions": [
+        "black and white",
+        "blue and yellow",
+        "green and brown"
+      ],
+      "colour": "black and white"
+    },
+    {
+      "id": "g1.paint.ch02.a07",
+      "use": "quickfire",
+      "kind": "choice",
+      "form": "state-it",
+      "exercises": [
+        "g1u02.w.parrot",
+        "g1u02.w.car",
+        "g1u02.w.next-to",
+        "g1u02.w.next-to-2",
+        "g1u02.s.prepositions-place"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Der Papagei sitzt am Auto."
+      },
+      "storyDe": "Hilf dem Guide, den Papagei zu finden!",
+      "promptEn": "Where is the parrot now?",
+      "skins": [
+        "papagei"
+      ],
+      "phases": [
+        "p1"
+      ],
+      "hints": {
+        "deDesc": "Schau genau: Wo sitzt der Papagei beim Auto?",
+        "deWord": "Auf Deutsch: Schau, wo der Papagei jetzt sitzt."
+      },
+      "grounding": "SB 19, panels 1–6; current sceneRef binds the tested relation; picture art pending.",
+      "options": [
+        "The parrot is next to the car.",
+        "The parrot is under the car.",
+        "The parrot is in front of the car."
+      ],
+      "answer": "The parrot is next to the car.",
+      "sceneRef": {
+        "entityId": "p1-buehne-papagei",
+        "station": 0,
+        "beatId": "a07",
+        "viewId": "a07"
+      }
+    },
+    {
+      "id": "g1.paint.ch02.a08",
+      "use": "quickfire",
+      "kind": "choice",
+      "form": "state-it",
+      "exercises": [
+        "g1u02.w.car",
+        "g1u02.w.in",
+        "g1u02.s.prepositions-place",
+        "g1u02.s.to-be"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Das Autofenster ist offen, der Papagei sitzt still."
+      },
+      "storyDe": "Schon sitzt er woanders — siehst du ihn?",
+      "promptEn": "And now?",
+      "skins": [
+        "papagei"
+      ],
+      "phases": [
+        "p1"
+      ],
+      "hints": {
+        "deDesc": "Schau genau ins Fenster hinein.",
+        "deWord": "Auf Deutsch: Er ist im Auto."
+      },
+      "grounding": "SB 19, panels 1–6; current sceneRef binds the tested relation; picture art pending. Full to-be forms here precede the short-forms rule page at p2 (41,17).",
+      "options": [
+        "The parrot is in the car.",
+        "The parrot is on the car.",
+        "The parrot is behind the car."
+      ],
+      "answer": "The parrot is in the car.",
+      "sceneRef": {
+        "entityId": "p1-buehne-papagei",
+        "station": 1,
+        "beatId": "a08",
+        "viewId": "a08"
+      }
+    },
+    {
+      "id": "g1.paint.ch02.a09",
+      "use": "quickfire",
+      "kind": "choice",
+      "form": "state-it",
+      "exercises": [
+        "g1u02.w.parrot",
+        "g1u02.w.car",
+        "g1u02.w.under",
+        "g1u02.w.under-2",
+        "g1u02.s.prepositions-place"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Du siehst die Federn und Füße des Papageis beim Auto."
+      },
+      "storyDe": "Maria sucht den Papagei — hilf ihr!",
+      "promptEn": "Look — where is it?",
+      "skins": [
+        "papagei"
+      ],
+      "phases": [
+        "p1"
+      ],
+      "hints": {
+        "deDesc": "Schau dir die Räder und die Füße des Vogels an.",
+        "deWord": "Auf Deutsch: Der Papagei ist unter dem Auto."
+      },
+      "grounding": "SB 19, panels 1–6; current sceneRef binds the tested relation; picture art pending.",
+      "options": [
+        "The parrot is under the car.",
+        "The parrot is on the car.",
+        "The parrot is next to the car."
+      ],
+      "answer": "The parrot is under the car.",
+      "sceneRef": {
+        "entityId": "p1-buehne-papagei",
+        "station": 2,
+        "beatId": "a09",
+        "viewId": "a09"
+      }
+    },
+    {
+      "id": "g1.paint.ch02.a10",
+      "use": "quickfire",
+      "kind": "choice",
+      "form": "state-it",
+      "exercises": [
+        "g1u02.w.parrot",
+        "g1u02.w.car",
+        "g1u02.w.on",
+        "g1u02.s.prepositions-place"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Der Papagei sitzt wieder am Auto."
+      },
+      "storyDe": "Sag Maria, wo der Papagei jetzt sitzt!",
+      "promptEn": "Where is it now?",
+      "skins": [
+        "papagei"
+      ],
+      "phases": [
+        "p1"
+      ],
+      "hints": {
+        "deDesc": "Schau, was die Füße des Vogels berühren.",
+        "deWord": "Auf Deutsch: Schau, wo der Papagei jetzt sitzt."
+      },
+      "grounding": "SB 19, panels 1–6; current sceneRef binds the tested relation; picture art pending.",
+      "options": [
+        "The parrot is on the car.",
+        "The parrot is in front of the car.",
+        "The parrot is behind the car."
+      ],
+      "answer": "The parrot is on the car.",
+      "sceneRef": {
+        "entityId": "p1-buehne-papagei",
+        "station": 3,
+        "beatId": "a10",
+        "viewId": "a10"
+      }
+    },
+    {
+      "id": "g1.paint.ch02.a11",
+      "use": "quickfire",
+      "kind": "choice",
+      "form": "state-it",
+      "exercises": [
+        "g1u02.w.parrot",
+        "g1u02.w.car",
+        "g1u02.w.behind",
+        "g1u02.w.behind-2",
+        "g1u02.s.prepositions-place"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Am Auto siehst du einen Teil des Papageis."
+      },
+      "storyDe": "Der Guide sucht den Vogel wieder.",
+      "promptEn": "Where's the parrot?",
+      "skins": [
+        "papagei"
+      ],
+      "phases": [
+        "p1"
+      ],
+      "hints": {
+        "deDesc": "Schau, was du vom Vogel erkennen kannst.",
+        "deWord": "Auf Deutsch: Der Papagei ist hinter dem Auto."
+      },
+      "grounding": "SB 19, panels 1–6; current sceneRef binds the tested relation; picture art pending.",
+      "options": [
+        "The parrot is behind the car.",
+        "The parrot is next to the car.",
+        "The parrot is under the car."
+      ],
+      "answer": "The parrot is behind the car.",
+      "sceneRef": {
+        "entityId": "p1-buehne-papagei",
+        "station": 4,
+        "beatId": "a11",
+        "viewId": "a11"
+      }
+    },
+    {
+      "id": "g1.paint.ch02.a12",
+      "use": "quickfire",
+      "kind": "choice",
+      "form": "state-it",
+      "exercises": [
+        "g1u02.w.parrot",
+        "g1u02.w.car",
+        "g1u02.w.in-front-of",
+        "g1u02.w.in-front-of-2",
+        "g1u02.s.prepositions-place"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Der Papagei sitzt am Auto und bewegt sich nicht."
+      },
+      "storyDe": "Zeig dem Guide, wo der Vogel diesmal sitzt!",
+      "promptEn": "Now look — where is the parrot?",
+      "skins": [
+        "papagei"
+      ],
+      "phases": [
+        "p1"
+      ],
+      "hints": {
+        "deDesc": "Schau, ob du das ganze Auto sehen kannst.",
+        "deWord": "Auf Deutsch: Der Papagei ist vor dem Auto."
+      },
+      "grounding": "SB 19, panels 1–6; current sceneRef binds the tested relation; picture art pending.",
+      "options": [
+        "The parrot is in front of the car.",
+        "The parrot is behind the car.",
+        "The parrot is next to the car."
+      ],
+      "answer": "The parrot is in front of the car.",
+      "sceneRef": {
+        "entityId": "p1-buehne-papagei",
+        "station": 5,
+        "beatId": "a12",
+        "viewId": "a12"
+      }
+    },
+    {
+      "id": "g1.paint.ch02.a13",
+      "use": "quickfire",
+      "kind": "choice",
+      "form": "state-it",
+      "exercises": [
+        "g1u02.w.dog",
+        "g1u02.w.tree",
+        "g1u02.w.behind",
+        "g1u02.w.behind-2",
+        "g1u02.s.prepositions-place"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Du siehst ein Stück von Buddy und den Baumstamm."
+      },
+      "storyDe": "Maria sucht Buddy — kannst du ihr helfen?",
+      "promptEn": "Where is the dog?",
+      "skins": [
+        "buddy"
+      ],
+      "phases": [
+        "p1"
+      ],
+      "hints": {
+        "deDesc": "Schau am Baumstamm genau hin.",
+        "deWord": "Auf Deutsch: Schau, wo Buddy jetzt ist."
+      },
+      "grounding": "SB 16, zoo story; authored zoo view, no copied dialogue.",
+      "options": [
+        "The dog is behind the tree.",
+        "The dog is under the tree.",
+        "The dog is next to the tree."
+      ],
+      "answer": "The dog is behind the tree.",
+      "sceneRef": {
+        "entityId": "p1-buehne-buddy",
+        "station": 0,
+        "beatId": "a13",
+        "viewId": "a13"
+      }
+    },
+    {
+      "id": "g1.paint.ch02.a14",
+      "use": "quickfire",
+      "kind": "choice",
+      "form": "state-it",
+      "exercises": [
+        "g1u02.w.parrot",
+        "g1u02.w.dog",
+        "g1u02.w.on",
+        "g1u02.s.prepositions-place"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Der Papagei berührt Buddy."
+      },
+      "storyDe": "Der Papagei ist gelandet — sag Maria, wo!",
+      "promptEn": "Where is the parrot now?",
+      "skins": [
+        "buddy"
+      ],
+      "phases": [
+        "p1"
+      ],
+      "hints": {
+        "deDesc": "Schau, wo die Füße des Papageis jetzt sind.",
+        "deWord": "Auf Deutsch: Der Papagei ist jetzt auf dem Hund."
+      },
+      "grounding": "SB 16, zoo story; authored zoo view, no copied dialogue. New two-actor landing, based on the printed Buddy sentence.",
+      "options": [
+        "The parrot is on the dog now.",
+        "The parrot is in the car now.",
+        "The parrot is under the tree now."
+      ],
+      "answer": "The parrot is on the dog now.",
+      "sceneRef": {
+        "entityId": "p1-buehne-buddy",
+        "station": 1,
+        "beatId": "a14",
+        "viewId": "a14"
+      }
+    },
+    {
+      "id": "g1.paint.ch02.a15",
+      "use": "rescue",
+      "kind": "spell",
+      "form": "name-it",
+      "exercises": [
+        "g1u02.w.ticket"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Im Käfig steckt ein Stück Papier mit einem Zoozeichen.",
+        "art": "captive_ticket"
+      },
+      "storyDe": "Sag, wie das Ding im Käfig heißt!",
+      "promptEn": "What is it?",
+      "skins": [
+        "zookaefig"
+      ],
+      "phases": [
+        "p1"
+      ],
+      "hints": {
+        "deDesc": "Das Papier brauchst du, um in den Zoo zu kommen.",
+        "deWord": "Auf Deutsch: Das ist mein Ticket."
+      },
+      "grounding": "SB 17, Cotswold Wildlife Park poster; use the pictured park activity. Captive picture: admission ticket silhouette, no written noun.",
+      "answer": "ticket",
+      "extraLetters": "ar"
+    },
+    {
+      "id": "g1.paint.ch02.a16",
+      "use": "rescue",
+      "kind": "choice",
+      "form": "state-it",
+      "exercises": [
+        "g1u02.w.ticket",
+        "g1u02.w.child",
+        "g1u02.w.for",
+        "g1u02.w.at"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Am Besucherpass hängt ein Ticket mit einem Zeichen."
+      },
+      "storyDe": "Schau, für wen dieses Ticket gedacht ist!",
+      "promptEn": "What is the ticket for?",
+      "skins": [
+        "zookaefig"
+      ],
+      "phases": [
+        "p1"
+      ],
+      "hints": {
+        "deDesc": "Schau auf das Alter im Pass und das Zeichen am Ticket.",
+        "deWord": "Auf Deutsch: Mit dem Ticket darf ein Kind in den Tierpark."
+      },
+      "grounding": "SB 17, Cotswold Wildlife Park poster; use the pictured park activity. Age 10 is an authored visitor datum; no price question. ART ORDER: An admission ticket with the wildlife-park logo is attached to a child visitor pass; the 10 is in the age field beside the learned birthday icon, never a ticket number or price.",
+      "options": [
+        "A ticket for a child at the wildlife park.",
+        "A ticket for the adult at the wildlife park.",
+        "A ticket for a child on the train."
+      ],
+      "answer": "A ticket for a child at the wildlife park."
+    },
+    {
+      "id": "g1.paint.ch02.a17",
+      "use": "door",
+      "kind": "choice",
+      "form": "social-formula",
+      "exercises": [
+        "g1u02.w.at-last"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Auf den Bildern wartet jemand, bis ein Freund kommt."
+      },
+      "storyDe": "Der Freund ist da — was rufst du ihm zu?",
+      "promptEn": "What do you say?",
+      "skins": [
+        "drehkreuz"
+      ],
+      "phases": [
+        "p1"
+      ],
+      "hints": {
+        "deDesc": "Schau auf die Uhr und auf die Person, die wartet. Wie schaut sie drein?",
+        "deWord": "Auf Deutsch: Endlich bist du da!"
+      },
+      "grounding": "SB 16, zoo story; authored zoo view, no copied dialogue. At last from master phrase list; reunion is an authored event. ART ORDER: Three panels: visitor waits beside a clock, clock hands advance, friend arrives; outgoing bubble on the waiting visitor; relieved welcoming pose.",
+      "options": [
+        "At last!",
+        "Let us out!",
+        "Can I bring my family?"
+      ],
+      "answer": "At last!"
+    },
+    {
+      "id": "g1.paint.ch02.a19",
+      "use": "door",
+      "kind": "choice",
+      "form": "state-it",
+      "exercises": [
+        "g1u02.w.ticket",
+        "g1u02.w.adult",
+        "g1u02.w.for",
+        "g1u02.w.at"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Auf dem Pass beim Ticket steht auch das Alter."
+      },
+      "storyDe": "Jetzt braucht der nächste Gast sein Ticket.",
+      "promptEn": "What is the ticket for?",
+      "skins": [
+        "drehkreuz"
+      ],
+      "phases": [
+        "p1"
+      ],
+      "hints": {
+        "deDesc": "Schau auf das Alter und das Zeichen am Ticket.",
+        "deWord": "Auf Deutsch: Das Ticket ist für den Erwachsenen."
+      },
+      "grounding": "SB 17, Cotswold Wildlife Park poster; use the pictured park activity. Age 42 is an authored visitor datum. ART ORDER: A visitor age field marked 42 with the learned birthday icon, linked to one wildlife-park ticket and logo; not a ride ticket.",
+      "options": [
+        "A ticket for the adult at the wildlife park.",
+        "A ticket for a child at the wildlife park.",
+        "A ticket for the adult on the train."
+      ],
+      "answer": "A ticket for the adult at the wildlife park."
+    },
+    {
+      "id": "g1.paint.ch02.a20",
+      "use": "door",
+      "kind": "choice",
+      "form": "social-formula",
+      "exercises": [
+        "g1u02.w.let-me-see"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Der Schaffner streckt die Hand nach dem Pass aus."
+      },
+      "storyDe": "Der Schaffner streckt die Hand aus — was sagt er?",
+      "promptEn": "What does he say?",
+      "skins": [
+        "drehkreuz"
+      ],
+      "phases": [
+        "p1"
+      ],
+      "hints": {
+        "deDesc": "Schau auf seine Hand und den geschlossenen Pass.",
+        "deWord": "Auf Deutsch: Lass mich einmal schauen."
+      },
+      "grounding": "SB 16, zoo story; authored zoo view, no copied dialogue. Phrase from the unit; ticket check is a park adaptation.",
+      "options": [
+        "Let me see.",
+        "Bring Grandma!",
+        "Where is it?"
+      ],
+      "answer": "Let me see."
+    },
+    {
+      "id": "g1.paint.ch02.a18",
+      "use": "door",
+      "kind": "choice",
+      "form": "ask-it",
+      "exercises": [
+        "g1u02.w.where",
+        "g1u02.w.guide"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Am leeren Treffpunkt steht ein Fragezeichen."
+      },
+      "storyDe": "Du brauchst Hilfe — was fragst du?",
+      "promptEn": "What do you ask?",
+      "skins": [
+        "drehkreuz"
+      ],
+      "phases": [
+        "p1"
+      ],
+      "hints": {
+        "deDesc": "Schau, ob dich am Treffpunkt jemand erwartet.",
+        "deWord": "Auf Deutsch: Wo ist der Guide?"
+      },
+      "grounding": "SB 17, Cotswold Wildlife Park poster; use the pictured park activity.",
+      "options": [
+        "Where is the guide?",
+        "How old is the guide?",
+        "What is the guide?"
+      ],
+      "answer": "Where is the guide?"
+    },
+    {
+      "id": "g1.paint.ch02.b01",
+      "use": "encounter",
+      "kind": "choice",
+      "form": "count-it",
+      "exercises": [
+        "g1u02.w.monkey",
+        "g1u02.s.there-is-are"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Affen mit langen Armen stehen im Rahmen.",
+        "art": "count_b01"
+      },
+      "storyDe": "Zähle die Affen auf dem Bild!",
+      "promptEn": "How many monkeys are there?",
+      "skins": [
+        "affe"
+      ],
+      "phases": [
+        "p2"
+      ],
+      "hints": {
+        "deDesc": "Zähle die Affen, nicht ihre Arme.",
+        "deWord": "Auf Deutsch: Da sind zwei Affen."
+      },
+      "grounding": "SB 16, zoo story; authored zoo view, no copied dialogue. Count tableau adapts WB 17 bus monkeys. Art order: exactly 2 distinct monkeys bodies inside the frame, no numeral or number word.",
+      "options": [
+        "There are three monkeys.",
+        "There are two monkeys.",
+        "There is one monkey."
+      ],
+      "answer": "There are two monkeys."
+    },
+    {
+      "id": "g1.paint.ch02.b02",
+      "use": "encounter",
+      "kind": "choice",
+      "form": "count-it",
+      "exercises": [
+        "g1u02.w.monkey"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Im Rahmen siehst du Affengesichter und lange Arme.",
+        "art": "count_b02"
+      },
+      "storyDe": "Der Affe zeigt dir ein neues Bild.",
+      "promptEn": "How many monkeys?",
+      "skins": [
+        "affe"
+      ],
+      "phases": [
+        "p2"
+      ],
+      "hints": {
+        "deDesc": "Geh beim Zählen von einem Affen zum nächsten.",
+        "deWord": "Auf Deutsch: Ich sehe drei Affen."
+      },
+      "grounding": "SB 16, zoo story; authored zoo view, no copied dialogue. Art order: exactly 3 distinct monkeys bodies inside the frame, no numeral or number word.",
+      "options": [
+        "Two monkeys.",
+        "Three monkeys.",
+        "Four monkeys."
+      ],
+      "answer": "Three monkeys."
+    },
+    {
+      "id": "g1.paint.ch02.b03",
+      "use": "encounter",
+      "kind": "choice",
+      "form": "count-it",
+      "exercises": [
+        "g1u02.w.lion"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Im Rahmen siehst du Fell und kräftige Löwenpfoten.",
+        "art": "count_b03"
+      },
+      "storyDe": "Was siehst du auf dem nächsten Bild?",
+      "promptEn": "How many lions?",
+      "skins": [
+        "affe"
+      ],
+      "phases": [
+        "p2"
+      ],
+      "hints": {
+        "deDesc": "Zähle nur die Löwen im Rahmen.",
+        "deWord": "Auf Deutsch: Ich sehe einen Löwen."
+      },
+      "grounding": "SB 17, Cotswold Wildlife Park poster; use the pictured park activity. Art order: exactly 1 distinct lion bodies inside the frame, no numeral or number word.",
+      "options": [
+        "Three lions.",
+        "One lion.",
+        "Two lions."
+      ],
+      "answer": "One lion."
+    },
+    {
+      "id": "g1.paint.ch02.b04",
+      "use": "encounter",
+      "kind": "choice",
+      "form": "count-it",
+      "exercises": [
+        "g1u02.w.penguin"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Pinguine mit dunklen Rücken stehen im Rahmen.",
+        "art": "count_b04"
+      },
+      "storyDe": "Hilf dem Affen beim Zählen!",
+      "promptEn": "How many penguins are there?",
+      "skins": [
+        "affe"
+      ],
+      "phases": [
+        "p2"
+      ],
+      "hints": {
+        "deDesc": "Zähle nur die Pinguine im Rahmen.",
+        "deWord": "Auf Deutsch: Ich sehe zwei Pinguine."
+      },
+      "grounding": "SB 17, Cotswold Wildlife Park poster; use the pictured park activity. Art order: exactly 2 distinct penguins bodies inside the frame, no numeral or number word.",
+      "options": [
+        "One penguin.",
+        "Four penguins.",
+        "Two penguins."
+      ],
+      "answer": "Two penguins."
+    },
+    {
+      "id": "g1.paint.ch02.b05",
+      "use": "encounter",
+      "kind": "restore",
+      "form": "name-it",
+      "exercises": [
+        "g1u02.w.dog",
+        "g1u02.x.colours"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Der Hund ist noch grau und wartet auf seine Farbe."
+      },
+      "storyDe": "Sag, welches Tier ich bin — gib mir die Farbe zurück!",
+      "promptEn": "What is it?",
+      "skins": [
+        "hund"
+      ],
+      "phases": [
+        "p2"
+      ],
+      "hints": {
+        "deDesc": "Schau auf die Schnauze, die Ohren und den Schwanz.",
+        "deWord": "Auf Deutsch: Der Hund ist braun."
+      },
+      "grounding": "WB 17 bus dog; restored colour is an authored brown identity.",
+      "nameOptions": [
+        "dog",
+        "frog",
+        "lion",
+        "cat"
+      ],
+      "name": "dog",
+      "colourAskDe": "Ich bin ein Hund. Mir fehlt Braun.",
+      "colourOptions": [
+        "brown",
+        "black",
+        "white"
+      ],
+      "colour": "brown"
+    },
+    {
+      "id": "g1.paint.ch02.b06",
+      "use": "quickfire",
+      "kind": "match",
+      "form": "match-it",
+      "exercises": [
+        "g1u02.w.monkey",
+        "g1u02.w.penguin",
+        "g1u02.w.giraffe",
+        "g1u02.w.on",
+        "g1u02.w.in",
+        "g1u02.w.next-to",
+        "g1u02.w.next-to-2",
+        "g1u02.s.prepositions-place"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Affen, Pinguine und eine Giraffe sind am roten Wagen."
+      },
+      "storyDe": "Zeig dem Guide, wo die Tiere sind!",
+      "promptEn": "Match.",
+      "skins": [
+        "bus_buehne"
+      ],
+      "phases": [
+        "p2"
+      ],
+      "hints": {
+        "deDesc": "Schau dir jede Gruppe an. Wo sind die Tiere beim Bus?",
+        "deWord": "Auf Deutsch: Schau, wo die Tiere beim Bus sind."
+      },
+      "grounding": "WB 17 red bus; rooftop, interior window and adjacent giraffe; stageV2 B06.",
+      "pairs": [
+        {
+          "left": "monkeys",
+          "right": "on the bus"
+        },
+        {
+          "left": "penguins",
+          "right": "in the bus"
+        },
+        {
+          "left": "giraffe",
+          "right": "next to the bus"
+        }
+      ],
+      "sceneRef": {
+        "entityId": "p2-buehne-bus",
+        "station": 0,
+        "beatId": "b06",
+        "viewId": "b06"
+      }
+    },
+    {
+      "id": "g1.paint.ch02.b07",
+      "use": "quickfire",
+      "kind": "match",
+      "form": "match-it",
+      "exercises": [
+        "g1u02.w.dog",
+        "g1u02.w.under",
+        "g1u02.w.under-2",
+        "g1u02.w.behind",
+        "g1u02.w.behind-2",
+        "g1u02.w.in-front-of",
+        "g1u02.w.in-front-of-2",
+        "g1u02.s.prepositions-place"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Ein Frosch, ein Hund und Katzen sind am roten Wagen."
+      },
+      "storyDe": "Jetzt sind die nächsten Tiere dran.",
+      "promptEn": "Match.",
+      "skins": [
+        "bus_buehne"
+      ],
+      "phases": [
+        "p2"
+      ],
+      "hints": {
+        "deDesc": "Schau, was der Bus von den Tieren verdeckt.",
+        "deWord": "Auf Deutsch: Schau, wo die Tiere jetzt sind."
+      },
+      "grounding": "WB 17 bus; frog/cats from picture, dogHome must precede this authored clear mask view.",
+      "pairs": [
+        {
+          "left": "frog",
+          "right": "under the bus"
+        },
+        {
+          "left": "dog",
+          "right": "behind the bus"
+        },
+        {
+          "left": "cats",
+          "right": "in front of the bus"
+        }
+      ],
+      "sceneRef": {
+        "entityId": "p2-buehne-bus",
+        "station": 2,
+        "beatId": "b07",
+        "viewId": "b07"
+      }
+    },
+    {
+      "id": "g1.paint.ch02.b08",
+      "use": "quickfire",
+      "kind": "match",
+      "form": "match-it",
+      "exercises": [
+        "g1u02.w.grandma",
+        "g1u02.w.adult",
+        "g1u02.w.child",
+        "g1u02.w.family",
+        "g1u02.w.dog",
+        "g1u02.w.he",
+        "g1u02.w.she",
+        "g1u02.w.they",
+        "g1u02.w.zoo",
+        "g1u02.w.at",
+        "g1u02.w.but",
+        "g1u02.s.subject-pronouns",
+        "g1u02.s.to-be"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Du siehst Pässe und Schilder mit einem Hund."
+      },
+      "storyDe": "Finde für jedes Bild den passenden Satz!",
+      "promptEn": "Match.",
+      "skins": [
+        "parkgruppe"
+      ],
+      "phases": [
+        "p2"
+      ],
+      "hints": {
+        "deDesc": "Schau in die Pässe und auf die Schilder mit dem Hund.",
+        "deWord": "Auf Deutsch: Der Hund darf mit, aber nicht herumrennen."
+      },
+      "grounding": "SB 17, Cotswold Wildlife Park poster; use the pictured park activity. Master wordbank g1-u02; contextual park adaptation, not an additional printed book scene. Grandma/pass frames are explicit identities; dog welcome + crossed running icon, not a price icon. Child is a distinct fictional boy, explicitly labelled BOY with age 10 in this comparison frame; the frame does not reuse Fenn or the printed WB 18 children. Full to-be forms here precede the short-forms rule page at p2 (41,17).",
+      "pairs": [
+        {
+          "left": "Grandma",
+          "right": "She is the adult."
+        },
+        {
+          "left": "child",
+          "right": "He is ten."
+        },
+        {
+          "left": "family",
+          "right": "They are at the zoo."
+        },
+        {
+          "left": "dog",
+          "right": "It is welcome, but it can't run around."
+        }
+      ],
+      "sceneRef": {
+        "entityId": "p2-parkgruppe",
+        "station": 0,
+        "beatId": "b08",
+        "viewId": "b08"
+      }
+    },
+    {
+      "id": "g1.paint.ch02.b09",
+      "use": "quickfire",
+      "kind": "match",
+      "form": "match-it",
+      "exercises": [
+        "g1u02.w.free",
+        "g1u02.w.family",
+        "g1u02.w.group",
+        "g1u02.w.ticket",
+        "g1u02.w.giraffe",
+        "g1u02.w.train",
+        "g1u02.s.to-be"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Auf den Bildern sind Besucher, Tickets und Tiere."
+      },
+      "storyDe": "Was können die Besucher hier machen?",
+      "promptEn": "Match.",
+      "skins": [
+        "parkgruppe"
+      ],
+      "phases": [
+        "p2"
+      ],
+      "hints": {
+        "deDesc": "Schau, was die Besucher tun und was auf den Schildern steht.",
+        "deWord": "Auf Deutsch: Das Parken kostet nichts."
+      },
+      "grounding": "SB 17, Cotswold Wildlife Park poster; use the pictured park activity. Master wordbank g1-u02; contextual park adaptation, not an additional printed book scene. Parking £0 visualises master sentence Parking is free; no fabricated ticket price. ART ORDER: Four separated frames: Parking sign with £0; family using one group ticket; child feeds a giraffe; children boarding the zoo train. No fabricated dog or entry price.",
+      "pairs": [
+        {
+          "left": "Parking",
+          "right": "It is free."
+        },
+        {
+          "left": "family",
+          "right": "A group ticket."
+        },
+        {
+          "left": "giraffe",
+          "right": "You can feed the giraffe."
+        },
+        {
+          "left": "train",
+          "right": "You can go on the train."
+        }
+      ],
+      "sceneRef": {
+        "entityId": "p2-parkgruppe",
+        "station": 1,
+        "beatId": "b09",
+        "viewId": "b09"
+      }
+    },
+    {
+      "id": "g1.paint.ch02.b10",
+      "use": "quickfire",
+      "kind": "choice",
+      "form": "command",
+      "exercises": [
+        "g1u02.w.to-let-somebody-out",
+        "g1u02.w.us"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Die Tiere strecken die Pfoten durch die Käfigstäbe."
+      },
+      "storyDe": "Die Tiere rufen dir etwas zu — was wohl?",
+      "promptEn": "What do they say?",
+      "skins": [
+        "gehege_buehne"
+      ],
+      "phases": [
+        "p2"
+      ],
+      "hints": {
+        "deDesc": "Schau auf die Stäbe und die ausgestreckten Pfoten.",
+        "deWord": "Auf Deutsch: Lasst uns raus!"
+      },
+      "grounding": "SB 18 cage picture and master phrase let somebody out; stage opens painted bars.",
+      "options": [
+        "Let us out!",
+        "Bring Grandma!",
+        "Let me see."
+      ],
+      "answer": "Let us out!",
+      "sceneRef": {
+        "entityId": "p2-gehege",
+        "station": 0,
+        "beatId": "b10",
+        "viewId": "b10"
+      }
+    },
+    {
+      "id": "g1.paint.ch02.b11",
+      "use": "quickfire",
+      "kind": "choice",
+      "form": "state-it",
+      "exercises": [
+        "g1u02.w.we",
+        "g1u02.w.to-want",
+        "g1u02.w.train"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Die Tiere zeigen gemeinsam auf ein Bild mit Wagen."
+      },
+      "storyDe": "Die Tiere wünschen sich etwas — sprich für sie!",
+      "promptEn": "What do we want?",
+      "skins": [
+        "gehege_buehne"
+      ],
+      "phases": [
+        "p2"
+      ],
+      "hints": {
+        "deDesc": "Schau auf das Bild, das sich die Tiere ausgesucht haben.",
+        "deWord": "Auf Deutsch: Wir möchten mit dem Zug fahren."
+      },
+      "grounding": "SB 17, Cotswold Wildlife Park poster; use the pictured park activity.",
+      "options": [
+        "We want to go on the train.",
+        "We want to feed the giraffe.",
+        "We want to see the guide."
+      ],
+      "answer": "We want to go on the train.",
+      "sceneRef": {
+        "entityId": "p2-gehege",
+        "station": 1,
+        "beatId": "b11",
+        "viewId": "b11"
+      }
+    },
+    {
+      "id": "g1.paint.ch02.b12",
+      "use": "rescue",
+      "kind": "choice",
+      "form": "state-it",
+      "exercises": [
+        "g1u02.s.to-be"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Fenn hält seinen Pass mit Namen und Foto hoch."
+      },
+      "storyDe": "Fenn stellt sich vor — sprich für ihn!",
+      "promptEn": "What do you say?",
+      "skins": [
+        "fenn"
+      ],
+      "phases": [
+        "p2"
+      ],
+      "hints": {
+        "deDesc": "Schau, wem die leere Sprechblase gehört.",
+        "deWord": "Auf Deutsch: Ich bin Fenn."
+      },
+      "grounding": "SB 18 to be; Fenn is the established game classmate, not a book character.",
+      "options": [
+        "I'm Fenn.",
+        "He's Fenn.",
+        "You're Fenn."
+      ],
+      "answer": "I'm Fenn.",
+      "sceneRef": {
+        "entityId": "p2-fenn",
+        "station": 0,
+        "beatId": "b12",
+        "viewId": "b12"
+      }
+    },
+    {
+      "id": "g1.paint.ch02.b13",
+      "use": "rescue",
+      "kind": "choice",
+      "form": "state-it",
+      "exercises": [
+        "g1u02.w.happy",
+        "g1u02.s.to-be"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Fenn zeigt dir sein Foto im Pass."
+      },
+      "storyDe": "Fenn erzählt, wie es ihm geht — was sagt er?",
+      "promptEn": "How are you?",
+      "skins": [
+        "fenn"
+      ],
+      "phases": [
+        "p2"
+      ],
+      "hints": {
+        "deDesc": "Schau auf Fenns Mund und seine Augen.",
+        "deWord": "Auf Deutsch: Ich bin glücklich."
+      },
+      "grounding": "SB 18 happy / I am; authored Fenn expression.",
+      "options": [
+        "I'm happy.",
+        "I'm not happy.",
+        "He's happy."
+      ],
+      "answer": "I'm happy.",
+      "sceneRef": {
+        "entityId": "p2-fenn",
+        "station": 1,
+        "beatId": "b13",
+        "viewId": "b13"
+      }
+    },
+    {
+      "id": "g1.paint.ch02.b14",
+      "use": "rescue",
+      "kind": "choice",
+      "form": "state-it",
+      "exercises": [
+        "g1u02.w.from",
+        "g1u02.s.to-be"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Fenn zeigt auf den Ortsnamen in seinem Pass."
+      },
+      "storyDe": "Fenn erzählt, woher er kommt — hilf ihm!",
+      "promptEn": "Where are you from?",
+      "skins": [
+        "fenn"
+      ],
+      "phases": [
+        "p2"
+      ],
+      "hints": {
+        "deDesc": "Schau auf den Ort im Pass und auf Fenns Sprechblase.",
+        "deWord": "Auf Deutsch: Ich komme aus Oxford."
+      },
+      "grounding": "SB 18 first-person from pattern; Oxford is a declared fictional Fenn game-pass datum.",
+      "options": [
+        "I'm from Oxford.",
+        "He's from Oxford.",
+        "They're from Oxford."
+      ],
+      "answer": "I'm from Oxford.",
+      "sceneRef": {
+        "entityId": "p2-fenn",
+        "station": 2,
+        "beatId": "b14",
+        "viewId": "b14"
+      }
+    },
+    {
+      "id": "g1.paint.ch02.b15",
+      "use": "rescue",
+      "kind": "choice",
+      "form": "state-it",
+      "exercises": [
+        "g1u02.w.year",
+        "g1u02.s.to-be"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Fenn zeigt dir, was im Pass über seine Schule steht."
+      },
+      "storyDe": "Fenn erzählt von der Schule — sprich für ihn!",
+      "promptEn": "What year are you in?",
+      "skins": [
+        "fenn"
+      ],
+      "phases": [
+        "p2"
+      ],
+      "hints": {
+        "deDesc": "Schau in Fenns Pass nach der Zeile mit Year.",
+        "deWord": "Auf Deutsch: Ich bin in der siebten Schulstufe."
+      },
+      "grounding": "SB 18 Year 7 pattern; fictional Fenn pass, not biography or inferred real school year.",
+      "options": [
+        "I am in Year 7.",
+        "He is in Year 7.",
+        "We are in Year 7."
+      ],
+      "answer": "I am in Year 7.",
+      "sceneRef": {
+        "entityId": "p2-fenn",
+        "station": 3,
+        "beatId": "b15",
+        "viewId": "b15"
+      }
+    },
+    {
+      "id": "g1.paint.ch02.b16",
+      "use": "rescue",
+      "kind": "choice",
+      "form": "state-it",
+      "exercises": [
+        "g1u02.w.we",
+        "g1u02.w.group",
+        "g1u02.s.subject-pronouns",
+        "g1u02.s.to-be"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Auf dem Foto im Pass steht Fenn mit anderen Leuten."
+      },
+      "storyDe": "Fenn spricht für alle auf dem Foto.",
+      "promptEn": "What do you say now?",
+      "skins": [
+        "fenn"
+      ],
+      "phases": [
+        "p2"
+      ],
+      "hints": {
+        "deDesc": "Schau, ob Fenn selbst mit auf dem Foto ist.",
+        "deWord": "Auf Deutsch: Wir sind eine Gruppe."
+      },
+      "grounding": "WB 18, pupil-pass pictures; pictured identity and speaker determine the pronoun. Master wordbank g1-u02; contextual park adaptation, not an additional printed book scene.",
+      "options": [
+        "We're a group.",
+        "They're a group.",
+        "You're a group."
+      ],
+      "answer": "We're a group.",
+      "sceneRef": {
+        "entityId": "p2-fenn",
+        "station": 4,
+        "beatId": "b16",
+        "viewId": "b16"
+      }
+    },
+    {
+      "id": "g1.paint.ch02.b17",
+      "use": "rescue",
+      "kind": "choice",
+      "form": "state-it",
+      "exercises": [
+        "g1u02.w.we",
+        "g1u02.w.happy",
+        "g1u02.s.subject-pronouns",
+        "g1u02.s.to-be"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Fenn und seine Freunde teilen sich eine Sprechblase."
+      },
+      "storyDe": "Wie geht es Fenn und seinen Freunden jetzt?",
+      "promptEn": "How are you now?",
+      "skins": [
+        "fenn"
+      ],
+      "phases": [
+        "p2"
+      ],
+      "hints": {
+        "deDesc": "Schau in ihre Gesichter und auf die gemeinsame Sprechblase.",
+        "deWord": "Auf Deutsch: Wir sind glücklich."
+      },
+      "grounding": "SB 18 happy / to be; authored reunion after all six rounds.",
+      "options": [
+        "We're happy.",
+        "They're happy.",
+        "She's happy."
+      ],
+      "answer": "We're happy.",
+      "sceneRef": {
+        "entityId": "p2-fenn",
+        "station": 5,
+        "beatId": "b17",
+        "viewId": "b17"
+      }
+    },
+    {
+      "id": "g1.paint.ch02.b18",
+      "use": "rescue",
+      "kind": "spell",
+      "form": "name-it",
+      "exercises": [
+        "g1u02.w.train"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Im Käfig stehen Wagen, die aneinanderhängen.",
+        "art": "captive_train"
+      },
+      "storyDe": "Wie heißt das Fahrzeug im Käfig?",
+      "promptEn": "What is it?",
+      "skins": [
+        "zookaefig"
+      ],
+      "phases": [
+        "p2"
+      ],
+      "hints": {
+        "deDesc": "Schau, wie die Wagen zusammenhängen.",
+        "deWord": "Auf Deutsch: Das ist ein Zug."
+      },
+      "grounding": "SB 17, Cotswold Wildlife Park poster; use the pictured park activity. Painted captive train; scale-model vignette, not a full railway inside the cage.",
+      "answer": "train",
+      "extraLetters": "eo"
+    },
+    {
+      "id": "g1.paint.ch02.b19",
+      "use": "rescue",
+      "kind": "choice",
+      "form": "state-it",
+      "exercises": [
+        "g1u02.w.train",
+        "g1u02.w.long",
+        "g1u02.s.to-be"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Der Zug steht beim Maßband."
+      },
+      "storyDe": "Sag dem Guide, was dir an dem Zug auffällt!",
+      "promptEn": "What can you see?",
+      "skins": [
+        "zookaefig"
+      ],
+      "phases": [
+        "p2"
+      ],
+      "hints": {
+        "deDesc": "Schau aufs Maßband: Wo fängt der Zug an, wo hört er auf?",
+        "deWord": "Auf Deutsch: Das ist ein langer Zug."
+      },
+      "grounding": "SB 17, Cotswold Wildlife Park poster; use the pictured park activity. Clear elongated vignette and scale reference, not a geographical assertion. ART ORDER: One locomotive and six coupled wagons; measuring brackets span the full length, against a one-wagon reference. Not two separate trains; length is the comparison.",
+      "options": [
+        "This is a long train.",
+        "This is not a long train.",
+        "These are two trains."
+      ],
+      "answer": "This is a long train."
+    },
+    {
+      "id": "g1.paint.ch02.b20",
+      "use": "door",
+      "kind": "choice",
+      "form": "ask-it",
+      "exercises": [
+        "g1u02.w.where",
+        "g1u02.w.they",
+        "g1u02.s.subject-pronouns"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Der Platz der Reisegruppe ist jetzt leer."
+      },
+      "storyDe": "Der Schaffner sucht die Gruppe — was fragt er?",
+      "promptEn": "What does he ask?",
+      "skins": [
+        "schaffner"
+      ],
+      "phases": [
+        "p2"
+      ],
+      "hints": {
+        "deDesc": "Schau auf den Platz, an dem die Gruppe eben noch war.",
+        "deWord": "Auf Deutsch: Wo sind sie jetzt?"
+      },
+      "grounding": "SB 16, zoo story; authored zoo view, no copied dialogue. Authored departure context.",
+      "options": [
+        "Where are they now?",
+        "How old are they?",
+        "What are they?"
+      ],
+      "answer": "Where are they now?"
+    },
+    {
+      "id": "g1.paint.ch02.b22",
+      "use": "door",
+      "kind": "choice",
+      "form": "social-formula",
+      "exercises": [
+        "g1u02.w.how-strange"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Ein gemalter Wagen rollt aus dem Papier heraus."
+      },
+      "storyDe": "Der Schaffner staunt — was sagt er?",
+      "promptEn": "What do you say?",
+      "skins": [
+        "schaffner"
+      ],
+      "phases": [
+        "p2"
+      ],
+      "hints": {
+        "deDesc": "Schau dir den gemalten Wagen an und dann den Wagen vor dem Schaffner.",
+        "deWord": "Auf Deutsch: Das ist ja seltsam!"
+      },
+      "grounding": "Master wordbank g1-u02; contextual park adaptation, not an additional printed book scene. Visible vignette-to-carriage transfer supplies the surprise. ART ORDER: Two clearly linked panels: small flat train painting leaves its paper outline and becomes the boarding wagon. Conductor sees both panels, raised brows and question-mark bubble.",
+      "options": [
+        "How strange!",
+        "Where is the guide?",
+        "Let us out!"
+      ],
+      "answer": "How strange!"
+    },
+    {
+      "id": "g1.paint.ch02.b21",
+      "use": "door",
+      "kind": "choice",
+      "form": "ask-it",
+      "exercises": [
+        "g1u02.w.where",
+        "g1u02.w.from",
+        "g1u02.s.to-be"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Im Pass ist bei der kleinen Landkarte ein Feld leer."
+      },
+      "storyDe": "Im Pass fehlt etwas — frag das Kind danach!",
+      "promptEn": "What do you ask the child?",
+      "skins": [
+        "schaffner"
+      ],
+      "phases": [
+        "p2"
+      ],
+      "hints": {
+        "deDesc": "Schau nach, welches Feld im Pass noch leer ist.",
+        "deWord": "Auf Deutsch: Woher kommst du?"
+      },
+      "grounding": "WB 18, pupil-pass pictures; pictured identity and speaker determine the pronoun. ART ORDER: The same visitor-pass design already taught by Fenn; FROM row represented by the familiar map-pin icon and map thumbnail, its city entry is blank; name and age remain completed.",
+      "options": [
+        "Where are you from?",
+        "Where is your dog?",
+        "How old are you?"
+      ],
+      "answer": "Where are you from?"
+    },
+    {
+      "id": "g1.paint.ch02.b23",
+      "use": "door",
+      "kind": "choice",
+      "form": "command",
+      "exercises": [
+        "g1u02.w.to-bring",
+        "g1u02.w.grandma"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Oma wartet am Tor, ihr Sitz im Zug ist leer."
+      },
+      "storyDe": "Der Schaffner zeigt auf Omas Sitz — was sagt er?",
+      "promptEn": "What does he say?",
+      "skins": [
+        "schaffner"
+      ],
+      "phases": [
+        "p2"
+      ],
+      "hints": {
+        "deDesc": "Schau, wo Oma wartet und wohin der Schaffner zeigt.",
+        "deWord": "Auf Deutsch: Bring Oma mit!"
+      },
+      "grounding": "Master wordbank g1-u02; contextual park adaptation, not an additional printed book scene. Explicit Grandma identity frame; invitation, not a guessed family resemblance. Image order: train departure is paused; Grandma is visible at the gate, her reserved seat is empty; conductor gestures from the gate toward that seat. Talking at the gate or walking there alone cannot complete the boarding scene.",
+      "options": [
+        "Bring Grandma!",
+        "Talk to Grandma!",
+        "Go to Grandma!"
+      ],
+      "answer": "Bring Grandma!"
+    },
+    {
+      "id": "g1.paint.ch02.b24",
+      "use": "door",
+      "kind": "choice",
+      "form": "pick-correct-form",
+      "exercises": [
+        "g1u02.w.child",
+        "g1u02.w.year",
+        "g1u02.s.to-be"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Auf den Kinderpässen steht Year 7."
+      },
+      "storyDe": "Hilf den Kindern, den Satz fertig zu machen!",
+      "promptEn": "The children ___ in Year 7.",
+      "skins": [
+        "schaffner"
+      ],
+      "phases": [
+        "p2"
+      ],
+      "hints": {
+        "deDesc": "Schau, über wen der Satz etwas erzählt.",
+        "deWord": "Auf Deutsch: Die Kinder sind in der siebten Schulstufe."
+      },
+      "grounding": "SB 18 Year 7 / plural are; deliberately grammatical alternatives.",
+      "options": [
+        "The children are in Year 7.",
+        "The children is in Year 7.",
+        "The children am in Year 7."
+      ],
+      "answer": "The children are in Year 7."
+    },
+    {
+      "id": "g1.paint.ch02.b25",
+      "use": "door",
+      "kind": "match",
+      "form": "match-it",
+      "exercises": [
+        "g1u02.w.free",
+        "g1u02.w.family",
+        "g1u02.w.group",
+        "g1u02.w.ticket",
+        "g1u02.w.dog",
+        "g1u02.w.but",
+        "g1u02.s.to-be"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Bei den Besuchern siehst du Tickets und Schilder."
+      },
+      "storyDe": "Hilf den Gästen, die passenden Sätze zu finden!",
+      "promptEn": "Match.",
+      "skins": [
+        "schaffner"
+      ],
+      "phases": [
+        "p2"
+      ],
+      "hints": {
+        "deDesc": "Schau auf die Tickets und die Schilder für Autos und Hunde.",
+        "deWord": "Auf Deutsch: Das Parken kostet nichts."
+      },
+      "grounding": "SB 17, Cotswold Wildlife Park poster; use the pictured park activity. Master wordbank g1-u02; contextual park adaptation, not an additional printed book scene. New visitors use the same posted rule; dog is not labelled free. ART ORDER: Three separate new visitor frames: Parking £0; family/group admission ticket; dog admitted with a green gate check but running-dog pictogram crossed. No dog-price symbol.",
+      "pairs": [
+        {
+          "left": "Parking",
+          "right": "It is free."
+        },
+        {
+          "left": "family",
+          "right": "A group ticket."
+        },
+        {
+          "left": "dog",
+          "right": "It is welcome, but it can't run around."
+        }
+      ]
+    },
+    {
+      "id": "g1.paint.ch02.c01",
+      "use": "encounter",
+      "kind": "choice",
+      "form": "ask-it",
+      "exercises": [
+        "g1u02.s.to-be"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Du kannst noch nicht erkennen, wer sich da versteckt."
+      },
+      "storyDe": "Da versteckt sich wer — frag den Guide danach!",
+      "promptEn": "What do you ask?",
+      "skins": [
+        "papagei_sturz"
+      ],
+      "phases": [
+        "p3"
+      ],
+      "hints": {
+        "deDesc": "Schau auf die versteckte Figur und das Fragezeichen.",
+        "deWord": "Auf Deutsch: Was ist das?"
+      },
+      "grounding": "SB 16, zoo story; authored zoo view, no copied dialogue.",
+      "options": [
+        "What is it?",
+        "Where is it?",
+        "How old is it?"
+      ],
+      "answer": "What is it?"
+    },
+    {
+      "id": "g1.paint.ch02.c02",
+      "use": "encounter",
+      "kind": "choice",
+      "form": "ask-it",
+      "exercises": [
+        "g1u02.w.where",
+        "g1u02.w.big",
+        "g1u02.w.giraffe",
+        "g1u02.s.prepositions-place"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Bei den Giraffenbildern ist ein Rahmen leer."
+      },
+      "storyDe": "Dem Guide fehlt eine Giraffe — frag nach ihr!",
+      "promptEn": "What do you ask now?",
+      "skins": [
+        "papagei_sturz"
+      ],
+      "phases": [
+        "p3"
+      ],
+      "hints": {
+        "deDesc": "Schau, welche Giraffe zum leeren Rahmen gehört.",
+        "deWord": "Auf Deutsch: Wo ist die große Giraffe jetzt?"
+      },
+      "grounding": "SB 16, zoo story; authored zoo view, no copied dialogue. Authored large/small comparison and changed current view. ART ORDER: Comparison silhouettes establish two giraffe sizes. Larger silhouette is highlighted, its matching current place-frame is empty and marked NOW; completed age icon excludes an age query.",
+      "options": [
+        "Where is the big giraffe now?",
+        "How old is the big giraffe?",
+        "Where is the small giraffe now?"
+      ],
+      "answer": "Where is the big giraffe now?"
+    },
+    {
+      "id": "g1.paint.ch02.c03",
+      "use": "encounter",
+      "kind": "choice",
+      "form": "ask-it",
+      "exercises": [
+        "g1u02.w.us"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Fenn winkt, ein Vorhang versperrt dem Guide die Sicht."
+      },
+      "storyDe": "Du rufst dem Guide zusammen mit Fenn eine Frage zu.",
+      "promptEn": "What do we ask?",
+      "skins": [
+        "papagei_sturz"
+      ],
+      "phases": [
+        "p3"
+      ],
+      "hints": {
+        "deDesc": "Schau, wem der Vorhang die Sicht versperrt.",
+        "deWord": "Auf Deutsch: Kannst du uns sehen?"
+      },
+      "grounding": "SB 17, Cotswold Wildlife Park poster; use the pictured park activity. Authored line-of-sight question; no new zoo rule. Image order: player and Fenn stand clearly visible to each other; a curtain blocks the guide’s view toward them. Their outgoing shared question bubble points at the guide. No feed props.",
+      "options": [
+        "Can you see us?",
+        "Can we see you?",
+        "Can you feed us?"
+      ],
+      "answer": "Can you see us?"
+    },
+    {
+      "id": "g1.paint.ch02.c04",
+      "use": "encounter",
+      "kind": "choice",
+      "form": "ask-it",
+      "exercises": [
+        "g1u02.w.to-bring",
+        "g1u02.w.family",
+        "g1u02.w.zoo"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Beim Besucherpass ist eine Sprechblase leer."
+      },
+      "storyDe": "Du planst einen Zoobesuch — frag den Guide!",
+      "promptEn": "What do you ask the guide?",
+      "skins": [
+        "papagei_sturz"
+      ],
+      "phases": [
+        "p3"
+      ],
+      "hints": {
+        "deDesc": "Schau im Pass, wer beim Besuch dabei sein möchte.",
+        "deWord": "Auf Deutsch: Darf meine Familie in den Zoo mitkommen?"
+      },
+      "grounding": "Master wordbank g1-u02; contextual park adaptation, not an additional printed book scene.",
+      "options": [
+        "Can I bring my family to the zoo?",
+        "Can I feed the giraffe at the zoo?",
+        "Can I go on the train at the zoo?"
+      ],
+      "answer": "Can I bring my family to the zoo?"
+    },
+    {
+      "id": "g1.paint.ch02.c05",
+      "use": "quickfire",
+      "kind": "choice",
+      "form": "state-it",
+      "exercises": [
+        "g1u02.w.giraffe",
+        "g1u02.w.long"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Du siehst die Giraffe von den Hufen bis zum Kopf."
+      },
+      "storyDe": "Schau dir die Giraffe an — was fällt dir auf?",
+      "promptEn": "What can you see?",
+      "skins": [
+        "giraffe"
+      ],
+      "phases": [
+        "p3"
+      ],
+      "hints": {
+        "deDesc": "Schau die Giraffe vom Kopf bis zu den Hufen an.",
+        "deWord": "Auf Deutsch: Die Giraffe hat einen langen Hals."
+      },
+      "grounding": "WB 20 giraffe long neck; authored measurement reference clarifies long. ART ORDER: Exactly one giraffe; neck bracket spans over twice the vertical torso measure, drawn continuously and unobscured. Full creature includes an obvious neck.",
+      "options": [
+        "The giraffe has a long neck.",
+        "The giraffe has no neck.",
+        "There are two giraffes."
+      ],
+      "answer": "The giraffe has a long neck.",
+      "sceneRef": {
+        "entityId": "p3-buehne-giraffe",
+        "station": 0,
+        "beatId": "c05",
+        "viewId": "c05"
+      }
+    },
+    {
+      "id": "g1.paint.ch02.c06",
+      "use": "quickfire",
+      "kind": "choice",
+      "form": "state-it",
+      "exercises": [
+        "g1u02.w.tree",
+        "g1u02.w.big",
+        "g1u02.s.there-is-are"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Die Kinder stehen bei den Bäumen."
+      },
+      "storyDe": "Erzähl dem Guide etwas über den markierten Baum!",
+      "promptEn": "What is in the picture?",
+      "skins": [
+        "giraffe"
+      ],
+      "phases": [
+        "p3"
+      ],
+      "hints": {
+        "deDesc": "Vergleiche den Baum mit den Kindern.",
+        "deWord": "Auf Deutsch: Da ist ein großer Baum."
+      },
+      "grounding": "SB 16, zoo story; authored zoo view, no copied dialogue. Same baseline and child-size reference make big visible. ART ORDER: One mature tree towering over three same-baseline children and a sapling comparison; the marked target is the mature tree, never the sapling.",
+      "options": [
+        "There is a big tree.",
+        "There is a small tree.",
+        "There are two big trees."
+      ],
+      "answer": "There is a big tree.",
+      "sceneRef": {
+        "entityId": "p3-buehne-giraffe",
+        "station": 1,
+        "beatId": "c06",
+        "viewId": "c06"
+      }
+    },
+    {
+      "id": "g1.paint.ch02.c07",
+      "use": "quickfire",
+      "kind": "choice",
+      "form": "state-it",
+      "exercises": [
+        "g1u02.w.stone",
+        "g1u02.w.small",
+        "g1u02.s.to-be"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Du siehst den Stein und eine offene Hand."
+      },
+      "storyDe": "Schau dir den Stein an — was fällt dir auf?",
+      "promptEn": "What can you see here?",
+      "skins": [
+        "stein_buehne"
+      ],
+      "phases": [
+        "p3"
+      ],
+      "hints": {
+        "deDesc": "Vergleiche den Stein mit der Hand.",
+        "deWord": "Auf Deutsch: Das ist ein kleiner Stein."
+      },
+      "grounding": "SB 21 / WB 19 stone image; palm-sized round stone is a declared game comparison. ART ORDER: One blue, round stone covers less than one quarter of the comparison palm; outline is compact, not elongated. Hand and stone share scale. Contraction deliberately applied after the p2 short-forms rule page; full and short speech patterns stay tied to the same picture.",
+      "options": [
+        "It's a small stone.",
+        "It's a big stone.",
+        "It's not a stone."
+      ],
+      "answer": "It's a small stone.",
+      "sceneRef": {
+        "entityId": "p3-buehne-stein",
+        "station": 1,
+        "beatId": "c07",
+        "viewId": "c07"
+      }
+    },
+    {
+      "id": "g1.paint.ch02.c08",
+      "use": "quickfire",
+      "kind": "choice",
+      "form": "state-it",
+      "exercises": [
+        "g1u02.w.we",
+        "g1u02.w.to-want",
+        "g1u02.w.to-talk"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Die Kinder heben die Hände, der Guide hält sein Ohr hin."
+      },
+      "storyDe": "Was wünschen sich die Kinder vom Guide?",
+      "promptEn": "What do we want?",
+      "skins": [
+        "baumhaus_gruppe"
+      ],
+      "phases": [
+        "p3"
+      ],
+      "hints": {
+        "deDesc": "Schau auf die Hände der Kinder und das Ohr des Guides.",
+        "deWord": "Auf Deutsch: Wir wollen reden."
+      },
+      "grounding": "Master wordbank g1-u02; contextual park adaptation, not an additional printed book scene. Empty dialogue bubbles request a conversation, not a translation scaffold. Image order: visitors raise hands to request a conversational turn; guide holds listening pose and open ear gesture. Train and feed activities are visibly crossed in their choice frame; outgoing bubbles alone are insufficient evidence.",
+      "options": [
+        "We want to talk.",
+        "We want to feed the penguins.",
+        "We want to go on the train."
+      ],
+      "answer": "We want to talk.",
+      "sceneRef": {
+        "entityId": "p3-baumhaus-gruppe",
+        "station": 0,
+        "beatId": "c08",
+        "viewId": "c08"
+      }
+    },
+    {
+      "id": "g1.paint.ch02.c11",
+      "use": "quickfire",
+      "kind": "choice",
+      "form": "pick-correct-form",
+      "exercises": [
+        "g1u02.w.she",
+        "g1u02.w.from",
+        "g1u02.s.subject-pronouns",
+        "g1u02.s.to-be"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Auf dem Passfoto siehst du Aileen."
+      },
+      "storyDe": "Erzähl dem Guide etwas über Aileen!",
+      "promptEn": "Aileen: ___ from Cambridge.",
+      "skins": [
+        "baumhaus_gruppe"
+      ],
+      "phases": [
+        "p3"
+      ],
+      "hints": {
+        "deDesc": "Schau, über wen der Satz etwas erzählt.",
+        "deWord": "Auf Deutsch: Sie kommt aus Cambridge."
+      },
+      "grounding": "WB 18, pupil-pass pictures; pictured identity and speaker determine the pronoun. Aileen 11, Cambridge, class 7A; she is explicitly modelled on page. Contraction deliberately applied after the p2 short-forms rule page; full and short speech patterns stay tied to the same picture.",
+      "options": [
+        "She's from Cambridge.",
+        "She are from Cambridge.",
+        "She am from Cambridge."
+      ],
+      "answer": "She's from Cambridge.",
+      "sceneRef": {
+        "entityId": "p3-baumhaus-gruppe",
+        "station": 3,
+        "beatId": "c11",
+        "viewId": "c11"
+      }
+    },
+    {
+      "id": "g1.paint.ch02.c09",
+      "use": "quickfire",
+      "kind": "match",
+      "form": "match-it",
+      "exercises": [
+        "g1u02.w.grandma",
+        "g1u02.w.she",
+        "g1u02.w.happy",
+        "g1u02.w.guide",
+        "g1u02.w.he",
+        "g1u02.w.lion",
+        "g1u02.w.child",
+        "g1u02.w.they",
+        "g1u02.w.penguin",
+        "g1u02.w.family",
+        "g1u02.w.we",
+        "g1u02.w.train",
+        "g1u02.s.subject-pronouns"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Die Bilder zeigen Oma, Kinder und einen Mann mit Hut."
+      },
+      "storyDe": "Sprich für die Familie, erzähl von den anderen Bildern!",
+      "promptEn": "Match.",
+      "skins": [
+        "baumhaus_gruppe"
+      ],
+      "phases": [
+        "p3"
+      ],
+      "hints": {
+        "deDesc": "Schau, was in jedem Bild passiert und wer dort spricht.",
+        "deWord": "Auf Deutsch: Die Kinder können die Pinguine füttern."
+      },
+      "grounding": "SB 17, Cotswold Wildlife Park poster; use the pictured park activity. Master wordbank g1-u02; contextual park adaptation, not an additional printed book scene. Grandma smile, guide sightline, children feeding, family speaking at train. Family frame has an outgoing speech bubble visibly owned by its members; the player voices that frame, reports the other three. Contraction deliberately applied after the p2 short-forms rule page; full and short speech patterns stay tied to the same picture.",
+      "pairs": [
+        {
+          "left": "Grandma",
+          "right": "She is happy."
+        },
+        {
+          "left": "guide",
+          "right": "He's a guide. He can see a lion."
+        },
+        {
+          "left": "children",
+          "right": "They can feed the penguins."
+        },
+        {
+          "left": "family",
+          "right": "We can go on the train."
+        }
+      ],
+      "sceneRef": {
+        "entityId": "p3-baumhaus-gruppe",
+        "station": 1,
+        "beatId": "c09",
+        "viewId": "c09"
+      }
+    },
+    {
+      "id": "g1.paint.ch02.c12",
+      "use": "quickfire",
+      "kind": "choice",
+      "form": "pick-correct-form",
+      "exercises": [
+        "g1u02.w.they",
+        "g1u02.w.year",
+        "g1u02.s.subject-pronouns",
+        "g1u02.s.to-be"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Amrita und Rajit zeigen ihre Pässe."
+      },
+      "storyDe": "Erzähl dem Guide etwas über Amrita und Rajit!",
+      "promptEn": "Amrita and Rajit: ___ in Year 7.",
+      "skins": [
+        "baumhaus_gruppe"
+      ],
+      "phases": [
+        "p3"
+      ],
+      "hints": {
+        "deDesc": "Schau, um wie viele Kinder es im Satz geht.",
+        "deWord": "Auf Deutsch: Sie sind in der siebten Schulstufe."
+      },
+      "grounding": "WB 18, pupil-pass pictures; pictured identity and speaker determine the pronoun. Printed class 7C, Year 7 is the declared game adaptation of the SB 18 pattern, not a verbatim pass label. Contraction deliberately applied after the p2 short-forms rule page; full and short speech patterns stay tied to the same picture.",
+      "options": [
+        "They're in Year 7.",
+        "They is in Year 7.",
+        "They am in Year 7."
+      ],
+      "answer": "They're in Year 7.",
+      "sceneRef": {
+        "entityId": "p3-baumhaus-gruppe",
+        "station": 4,
+        "beatId": "c12",
+        "viewId": "c12"
+      }
+    },
+    {
+      "id": "g1.paint.ch02.c10",
+      "use": "quickfire",
+      "kind": "match",
+      "form": "match-it",
+      "exercises": [
+        "g1u02.w.lion",
+        "g1u02.w.monkey",
+        "g1u02.w.big",
+        "g1u02.w.small",
+        "g1u02.w.he",
+        "g1u02.w.she",
+        "g1u02.w.they",
+        "g1u02.w.happy",
+        "g1u02.w.grandma",
+        "g1u02.s.subject-pronouns"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Du siehst Tierbilder und Fotos von Fenn und Oma."
+      },
+      "storyDe": "Für jedes Bild fehlt noch der passende Satz.",
+      "promptEn": "Look and match.",
+      "skins": [
+        "baumhaus_gruppe"
+      ],
+      "phases": [
+        "p3"
+      ],
+      "hints": {
+        "deDesc": "Schau auf die Tiere und in die Gesichter von Fenn und Oma.",
+        "deWord": "Auf Deutsch: Oma ist glücklich."
+      },
+      "grounding": "SB 20, there is/are and place grammar; WB 20 Word File. Authored four-pane comparison; each right side is unique.",
+      "pairs": [
+        {
+          "left": "one lion",
+          "right": "It is big."
+        },
+        {
+          "left": "two monkeys",
+          "right": "They are small."
+        },
+        {
+          "left": "Fenn",
+          "right": "He is happy."
+        },
+        {
+          "left": "Grandma",
+          "right": "She is happy."
+        }
+      ],
+      "sceneRef": {
+        "entityId": "p3-baumhaus-gruppe",
+        "station": 2,
+        "beatId": "c10",
+        "viewId": "c10"
+      }
+    },
+    {
+      "id": "g1.paint.ch02.c13",
+      "use": "rescue",
+      "kind": "spell",
+      "form": "name-it",
+      "exercises": [
+        "g1u02.w.stone"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Ein rundes, graues Ding liegt im Käfig.",
+        "art": "captive_stein"
+      },
+      "storyDe": "Wie heißt das Ding im Käfig?",
+      "promptEn": "What is it?",
+      "skins": [
+        "zookaefig"
+      ],
+      "phases": [
+        "p3"
+      ],
+      "hints": {
+        "deDesc": "Schau das graue, runde Ding im Käfig genau an.",
+        "deWord": "Auf Deutsch: Das ist ein Stein."
+      },
+      "grounding": "SB 21 / WB 19 stone picture; no invented Stones video action.",
+      "answer": "stone",
+      "extraLetters": "ai"
+    },
+    {
+      "id": "g1.paint.ch02.c14",
+      "use": "rescue",
+      "kind": "choice",
+      "form": "state-it",
+      "exercises": [
+        "g1u02.w.stone",
+        "g1u02.w.beautiful",
+        "g1u02.s.to-be"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Das Kind schaut den Stein an."
+      },
+      "storyDe": "Was sagt das Kind über den Stein?",
+      "promptEn": "What does the child say?",
+      "skins": [
+        "zookaefig"
+      ],
+      "phases": [
+        "p3"
+      ],
+      "hints": {
+        "deDesc": "Schau dir das Gesicht des Kindes an.",
+        "deWord": "Auf Deutsch: Der Stein ist schön."
+      },
+      "grounding": "WB 19/20 stone + beautiful; blue round stone, praise belongs to the child, not an objective taste score.",
+      "options": [
+        "The stone is beautiful.",
+        "The stone is brown.",
+        "The stone is long."
+      ],
+      "answer": "The stone is beautiful."
+    },
+    {
+      "id": "g1.paint.ch02.c15",
+      "use": "door",
+      "kind": "choice",
+      "form": "social-formula",
+      "exercises": [
+        "g1u02.w.let-me-see"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Der Guide streckt die Hand nach dem Pass aus."
+      },
+      "storyDe": "Der Guide streckt die Hand aus — was sagt er?",
+      "promptEn": "What does the guide say?",
+      "skins": [
+        "baumhaus_tor"
+      ],
+      "phases": [
+        "p3"
+      ],
+      "hints": {
+        "deDesc": "Schau auf seine Hand und den geschlossenen Pass.",
+        "deWord": "Auf Deutsch: Lass mich einmal schauen."
+      },
+      "grounding": "Master wordbank g1-u02; contextual park adaptation, not an additional printed book scene.",
+      "options": [
+        "Let me see.",
+        "Can I feed the giraffe?",
+        "Where is the train?"
+      ],
+      "answer": "Let me see."
+    },
+    {
+      "id": "g1.paint.ch02.c17",
+      "use": "door",
+      "kind": "choice",
+      "form": "command",
+      "exercises": [
+        "g1u02.w.to-let-somebody-out",
+        "g1u02.w.us"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Die Gruppe wartet an einem Tor mit Gitterstäben."
+      },
+      "storyDe": "Was ruft die Gruppe dir zu?",
+      "promptEn": "What do we say?",
+      "skins": [
+        "baumhaus_tor"
+      ],
+      "phases": [
+        "p3"
+      ],
+      "hints": {
+        "deDesc": "Schau auf das geschlossene Tor und die wartenden Leute.",
+        "deWord": "Auf Deutsch: Lasst uns raus!"
+      },
+      "grounding": "SB 18 cage plea; second distinct group at the treehouse exit.",
+      "options": [
+        "Let us out!",
+        "We want to talk.",
+        "Bring Grandma!"
+      ],
+      "answer": "Let us out!"
+    },
+    {
+      "id": "g1.paint.ch02.c16",
+      "use": "door",
+      "kind": "choice",
+      "form": "social-formula",
+      "exercises": [
+        "g1u02.w.at-last"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Jemand kommt durchs Tor zu den Leuten, die dort warten."
+      },
+      "storyDe": "Was ruft die Gruppe dem letzten Gast zu?",
+      "promptEn": "What do you say?",
+      "skins": [
+        "baumhaus_tor"
+      ],
+      "phases": [
+        "p3"
+      ],
+      "hints": {
+        "deDesc": "Schau auf die Uhr und in die Gesichter der Leute am Tor.",
+        "deWord": "Auf Deutsch: Endlich sind alle da!"
+      },
+      "grounding": "Master wordbank g1-u02; contextual park adaptation, not an additional printed book scene. ART ORDER: Waiting group and progressing clock in two small panels; final companion now steps through the gate; outgoing bubble is owned by the relieved group.",
+      "options": [
+        "At last!",
+        "How strange!",
+        "Can you see us?"
+      ],
+      "answer": "At last!"
+    },
+    {
+      "id": "g1.paint.ch02.c18",
+      "use": "door",
+      "kind": "order",
+      "form": "ask-it",
+      "exercises": [
+        "g1u02.w.where",
+        "g1u02.w.lion",
+        "g1u02.s.prepositions-place"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Du kannst noch nicht ins nächste Gehege schauen."
+      },
+      "storyDe": "Frag den Guide nach dem nächsten Tier!",
+      "promptEn": "Ask the guide.",
+      "skins": [
+        "baumhaus_tor"
+      ],
+      "phases": [
+        "p3"
+      ],
+      "hints": {
+        "deDesc": "Schau auf die Wörter, aus denen du die Frage baust.",
+        "deWord": "Auf Deutsch: Wo ist der Löwe?"
+      },
+      "grounding": "SB 17, Cotswold Wildlife Park poster; use the pictured park activity.",
+      "orderedChips": [
+        "Where",
+        "is",
+        "the",
+        "lion",
+        "?"
+      ]
+    },
+    {
+      "id": "g1.paint.ch02.d01",
+      "use": "boss",
+      "kind": "choice",
+      "form": "state-it",
+      "exercises": [
+        "g1u02.w.lion",
+        "g1u02.w.tree",
+        "g1u02.w.behind",
+        "g1u02.w.behind-2",
+        "g1u02.s.prepositions-place"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Beim Baum siehst du die Mähne des Löwen."
+      },
+      "storyDe": "Der Guide sucht den Löwen — hilf ihm!",
+      "promptEn": "Where is the lion?",
+      "skins": [
+        "loewe"
+      ],
+      "phases": [
+        "p4"
+      ],
+      "hints": {
+        "deDesc": "Schau am Stamm nach dem Löwen.",
+        "deWord": "Auf Deutsch: Schau, wo der Löwe jetzt ist."
+      },
+      "grounding": "SB 17, Cotswold Wildlife Park poster; use the pictured park activity. Lion round 1 view; clear masking, separate fence board.",
+      "options": [
+        "The lion is behind the tree.",
+        "The lion is next to the tree.",
+        "The lion is in front of the tree."
+      ],
+      "answer": "The lion is behind the tree.",
+      "sceneRef": {
+        "entityId": "p4-guardian",
+        "station": 0,
+        "beatId": "d01",
+        "viewId": "d01"
+      }
+    },
+    {
+      "id": "g1.paint.ch02.d03",
+      "use": "boss",
+      "kind": "mistake",
+      "form": "fix-it",
+      "exercises": [
+        "g1u02.w.monkey",
+        "g1u02.s.there-is-are"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Affen stehen bei einem Schild mit einem Satz."
+      },
+      "storyDe": "Ein Wort stimmt nicht — bessere den Satz aus!",
+      "promptEn": "Look and check.",
+      "skins": [
+        "loewe"
+      ],
+      "phases": [
+        "p4"
+      ],
+      "hints": {
+        "deDesc": "Schau auf die Affen und lies den Satz dazu.",
+        "deWord": "Auf Deutsch: Da sind zwei Affen."
+      },
+      "grounding": "SB 16, zoo story; authored zoo view, no copied dialogue. The board says There is two monkeys.; only is is wrong.",
+      "sentence": [
+        "There",
+        "is",
+        "two",
+        "monkeys",
+        "."
+      ],
+      "errorIndex": 1,
+      "fix": {
+        "mode": "replace",
+        "correction": "are"
+      },
+      "correctionOptions": [
+        "are",
+        "is",
+        "am"
+      ],
+      "evidence": [
+        "There is two monkeys."
+      ],
+      "sceneRef": {
+        "entityId": "p4-guardian",
+        "station": 2,
+        "beatId": "d03",
+        "viewId": "d03"
+      }
+    },
+    {
+      "id": "g1.paint.ch02.d02",
+      "use": "boss",
+      "kind": "choice",
+      "form": "state-it",
+      "exercises": [
+        "g1u02.w.parrot",
+        "g1u02.w.beautiful"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Eine Figur schaut auf einen Vogel mit krummem Schnabel.",
+        "art": "lion_view_parrot_praise"
+      },
+      "storyDe": "Die Figur sieht ein Tier — was sagt sie?",
+      "promptEn": "What do you say?",
+      "skins": [
+        "loewe"
+      ],
+      "phases": [
+        "p4"
+      ],
+      "hints": {
+        "deDesc": "Schau dir den Schnabel und die Federn an.",
+        "deWord": "Auf Deutsch: Ich sehe einen schönen Papagei."
+      },
+      "grounding": "SB 20, there is/are and place grammar; WB 20 Word File. Subjective praise is expressed by the character; the seen animal is a parrot.",
+      "options": [
+        "I can see a beautiful parrot.",
+        "I can see a beautiful monkey.",
+        "I can see a beautiful penguin."
+      ],
+      "answer": "I can see a beautiful parrot.",
+      "sceneRef": {
+        "entityId": "p4-guardian",
+        "station": 1,
+        "beatId": "d02",
+        "viewId": "d02"
+      }
+    },
+    {
+      "id": "g1.paint.ch02.d05",
+      "use": "boss",
+      "kind": "order",
+      "form": "ask-it",
+      "exercises": [
+        "g1u02.w.where",
+        "g1u02.w.small",
+        "g1u02.w.monkey",
+        "g1u02.s.prepositions-place"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Auf dem Affenbild ist ein Tier markiert."
+      },
+      "storyDe": "Frag den Guide nach dem markierten Tier!",
+      "promptEn": "Ask the guide.",
+      "skins": [
+        "loewe"
+      ],
+      "phases": [
+        "p4"
+      ],
+      "hints": {
+        "deDesc": "Vergleiche das markierte Tier mit den anderen.",
+        "deWord": "Auf Deutsch: Wo ist der kleine Affe?"
+      },
+      "grounding": "SB 20, there is/are and place grammar; WB 20 Word File. Small monkey is indicated by a comparison frame; its place is revealed after the question.",
+      "orderedChips": [
+        "Where",
+        "is",
+        "the",
+        "small",
+        "monkey",
+        "?"
+      ],
+      "sceneRef": {
+        "entityId": "p4-guardian",
+        "station": 4,
+        "beatId": "d05",
+        "viewId": "d05"
+      },
+      "evidence": [
+        "Where",
+        "the",
+        "monkey",
+        "?",
+        "is",
+        "small"
+      ]
+    },
+    {
+      "id": "g1.paint.ch02.d08",
+      "use": "boss",
+      "kind": "choice",
+      "form": "state-it",
+      "exercises": [
+        "g1u02.w.we",
+        "g1u02.w.to-want",
+        "g1u02.w.to-talk",
+        "g1u02.w.but",
+        "g1u02.w.lion",
+        "g1u02.w.happy",
+        "g1u02.s.to-be"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Die Besucher heben die Hände, der Löwe senkt den Kopf."
+      },
+      "storyDe": "Sprich für die Besucher — wie geht es dem Löwen?",
+      "promptEn": "What do we say?",
+      "skins": [
+        "loewe"
+      ],
+      "phases": [
+        "p4"
+      ],
+      "hints": {
+        "deDesc": "Schau, was die Besucher tun und wie der Löwe schaut.",
+        "deWord": "Auf Deutsch: Wir wollen reden, aber der Löwe ist traurig."
+      },
+      "grounding": "Master wordbank g1-u02; contextual park adaptation, not an additional printed book scene. Speech intention plus sad lion; not happy is visible, not a translated first-line answer. Image order: visitors raise hands to request a conversational turn; guide holds listening pose and open ear gesture. Train and feed activities are visibly crossed in their choice frame; outgoing bubbles alone are insufficient evidence.",
+      "options": [
+        "We want to talk, but the lion is not happy.",
+        "We want to talk, but the lion is happy.",
+        "We want to go on the train, but the lion is not happy."
+      ],
+      "answer": "We want to talk, but the lion is not happy.",
+      "sceneRef": {
+        "entityId": "p4-guardian",
+        "station": 7,
+        "beatId": "d08",
+        "viewId": "d08"
+      }
+    },
+    {
+      "id": "g1.paint.ch02.d06",
+      "use": "boss",
+      "kind": "order",
+      "form": "ask-it",
+      "exercises": [
+        "g1u02.s.to-be"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Eine Figur versteckt sich beim Fragezeichen."
+      },
+      "storyDe": "Frag nach der Figur, dann zeigt sie sich!",
+      "promptEn": "What do you ask?",
+      "skins": [
+        "loewe"
+      ],
+      "phases": [
+        "p4"
+      ],
+      "hints": {
+        "deDesc": "Schau auf die Figur, die du noch nicht erkennen kannst.",
+        "deWord": "Auf Deutsch: Was ist das?"
+      },
+      "grounding": "SB 16, zoo story; authored zoo view, no copied dialogue. The guide is revealed after this question, not before.",
+      "orderedChips": [
+        "What",
+        "is",
+        "it",
+        "?"
+      ],
+      "sceneRef": {
+        "entityId": "p4-guardian",
+        "station": 5,
+        "beatId": "d06",
+        "viewId": "d06"
+      },
+      "evidence": [
+        "What",
+        "it",
+        "is",
+        "?"
+      ]
+    },
+    {
+      "id": "g1.paint.ch02.d07",
+      "use": "boss",
+      "kind": "choice",
+      "form": "social-formula",
+      "exercises": [
+        "g1u02.w.how-strange"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Die Giraffe hält das Holzbrett vom Löwen."
+      },
+      "storyDe": "Jetzt macht die Giraffe das, was sonst der Löwe macht.",
+      "promptEn": "What does the child say?",
+      "skins": [
+        "loewe"
+      ],
+      "phases": [
+        "p4"
+      ],
+      "hints": {
+        "deDesc": "Vergleiche die Bilder: Wer war vorher wo?",
+        "deWord": "Auf Deutsch: Das ist ja seltsam!"
+      },
+      "grounding": "Master wordbank g1-u02; contextual park adaptation, not an additional printed book scene. Playful authored role reversal, not natural animal behaviour. ART ORDER: The giraffe holds the lion’s previously established plate guard; the lion peeks from the giraffe’s tree-view frame. Show familiar previous and swapped current assignments together. Child has raised eyebrows and a question-mark bubble, no arrival or ticket inspection.",
+      "options": [
+        "How strange!",
+        "Let me see.",
+        "Can I go on the train?"
+      ],
+      "answer": "How strange!",
+      "sceneRef": {
+        "entityId": "p4-guardian",
+        "station": 6,
+        "beatId": "d07",
+        "viewId": "d07"
+      }
+    },
+    {
+      "id": "g1.paint.ch02.d04",
+      "use": "boss",
+      "kind": "mistake",
+      "form": "fix-it",
+      "exercises": [
+        "g1u02.w.penguin",
+        "g1u02.w.under",
+        "g1u02.w.under-2",
+        "g1u02.s.prepositions-place"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Beim Bus siehst du einen Pinguin und ein Schild."
+      },
+      "storyDe": "Ein Wort am Schild stimmt nicht — ändere es!",
+      "promptEn": "Look at the picture.",
+      "skins": [
+        "loewe"
+      ],
+      "phases": [
+        "p4"
+      ],
+      "hints": {
+        "deDesc": "Schau auf die Räder und die Füße des Pinguins.",
+        "deWord": "Auf Deutsch: Der Pinguin ist unter dem Bus."
+      },
+      "grounding": "WB 17 bus; the penguin is authored under the raised bus in this new lion preview, not a false claim about the original page.",
+      "sentence": [
+        "The",
+        "penguin",
+        "is",
+        "on",
+        "the",
+        "bus",
+        "."
+      ],
+      "errorIndex": 3,
+      "fix": {
+        "mode": "replace",
+        "correction": "under"
+      },
+      "correctionOptions": [
+        "under",
+        "behind",
+        "in"
+      ],
+      "evidence": [
+        "The penguin is on the bus."
+      ],
+      "sceneRef": {
+        "entityId": "p4-guardian",
+        "station": 3,
+        "beatId": "d04",
+        "viewId": "d04"
+      }
+    },
+    {
+      "id": "g1.paint.ch02.d09",
+      "use": "finale",
+      "kind": "typed",
+      "form": "social-formula",
+      "exercises": [
+        "g1u02.w.zoo",
+        "g1u02.s.to-be"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Der Löwe steht allein, bei den Besuchern ist Platz."
+      },
+      "storyDe": "Schreib für eure Gruppe eine Einladung an den Löwen.",
+      "promptEn": "What do you say to the lion?",
+      "skins": [
+        "loewe"
+      ],
+      "phases": [
+        "p4"
+      ],
+      "hints": {
+        "deDesc": "Schau zum Löwen und zum freien Platz bei der Gruppe.",
+        "deWord": "Auf Deutsch: Du bist bei uns im Zoo willkommen."
+      },
+      "grounding": "SB 17, Cotswold Wildlife Park poster; use the pictured park activity. Welcome phrase expanded into authored invitation; full and short forms accepted. Open invitation: welcome to / welcome at and the natural shorter Welcome to the zoo are all valid. No penalty for optional terminal punctuation. Accepted corpus-grounded invitations also include You can talk to us, Do you want to talk to us and We want to talk to you. Other communicatively sound invitations outside the unit lexicon remain a rubric expansion for M-2/M-6; exact matching cannot cover all free English.",
+      "answer": "You're welcome to the zoo.",
+      "accept": [
+        "You are welcome to the zoo.",
+        "You're welcome to the zoo",
+        "You are welcome to the zoo",
+        "You're welcome at the zoo.",
+        "You are welcome at the zoo.",
+        "You're welcome at the zoo",
+        "You are welcome at the zoo",
+        "Welcome to the zoo.",
+        "Welcome to the zoo!",
+        "Welcome to the zoo",
+        "Welcome!",
+        "Welcome.",
+        "You're welcome.",
+        "You are welcome.",
+        "You can talk to us.",
+        "Do you want to talk to us?",
+        "We want to talk to you.",
+        "You can go to the zoo with us.",
+        "Do you want to go to the zoo with us?"
+      ],
+      "sceneRef": {
+        "entityId": "p4-guardian",
+        "station": 8,
+        "beatId": "d09",
+        "viewId": "d09"
+      }
+    }
+  ]
+}

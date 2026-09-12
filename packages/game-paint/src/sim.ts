@@ -1,3 +1,14 @@
+import { zooStageCell } from "./zoo-visuals.ts";
+import { abandonShuttle, boardShuttle } from "./train-ride.ts";
+import { newChapterLearning, type ChapterLearningState } from "./learning.ts";
+import { stepStage, solveStage, stageSpec, nearObserver } from "./stage-v2.ts";
+import { sceneView, beginSceneBeat, stepSceneBeat, createSceneState, scenePathAt, worldPathPoints } from "./scene-v2.ts";
+import { askerUsesOf } from "./cards/serving.ts";
+import { sequenceRequest, nextRequiredTask } from "./sequences.ts";
+import type { GameTaskV2 } from "../../content-schema/src/game-tasks.ts";
+import { beginZooReviewReturn, stepZooReviewReturn, solveZooTask, zooSpec, zooSnapshot, moveZooToBeat } from "./guardian-zoo.ts";
+import { snapshotScene, type SceneSnapshot } from "./scene-v2.ts";
+import type { StageV2Spec } from "../../content-schema/src/paint-zoo.ts";
 // THE PAINTED BOOK — sim.ts: the headless phase runner (PB-T2).
 //
 // EVERYTHING gameplay is here, pure and Phaser-free: player step, screen
@@ -70,6 +81,7 @@ const LANDING_SETTLE_TICKS = 18;
  *     NO task and never touches a card pool — it is a panel the shell opens
  *     and closes. */
 export interface TaskRequest {
+  sceneSnapshot?: SceneSnapshot;
   // R5-W2 · H1: `finale` gehörte immer schon dazu — `cards/serving.ts` erklärt
   // die Tafel seit jeher zur Sprecherin von `["boss", "finale"]`, und der Shell
   // zieht die Klimax-Karte auch aus diesem Pool. Nur der TYP kannte ihn nicht,
@@ -81,17 +93,17 @@ export interface TaskRequest {
   // raises: the piece it is about is already in the child's hands.
   use: "quickfire" | "encounter" | "door" | "rescue" | "boss" | "bonus" | "bonuspay" | "finale" | "pickupset";
   ctx:
-    | { type: "entity"; id: string; skin: string }
-    | { type: "cage"; id: string; skin: string; classmate?: string }
+    | { type: "entity"; id: string; skin: string; sceneStation?: number; taskId?: string; optionalSlotId?: string }
+    | { type: "cage"; id: string; skin: string; classmate?: string; taskId?: string; optionalSlotId?: string }
     /** PK-R6 · D · THE REAWAKENING ROUND (doc 44 §3.3). A fifth world asker,
      *  and the only one that asks the SAME being more than once: the classmate
      *  standing ghost-pale out of her cage, on round `round` of `rounds`. The
      *  index rides in the request because the ceremony is ORDERED — round 3
      *  shows the pose round 3 was authored for — which is the one thing the
      *  shuffling playlist router (cards/routing) must not decide here. */
-    | { type: "classmate"; id: string; skin: string; round: number; rounds: number }
-    | { type: "door"; id: string; kind: string; skin: string }
-    | { type: "guardian"; id: string; skin: string }
+    | { type: "classmate"; id: string; skin: string; round: number; rounds: number; taskId?: string; optionalSlotId?: string }
+    | { type: "door"; id: string; kind: string; skin: string; taskId?: string; optionalSlotId?: string }
+    | { type: "guardian"; id: string; skin: string; taskId?: string; optionalSlotId?: string }
     | { type: "console"; id: string; skin: string }
     // R5-W5 · G4: `cloth` is the naming card the uniform owes at every third
     // find. It is a ceremony beat and not an entity ask because it belongs to no
@@ -159,6 +171,13 @@ export interface TipPayload {
 export type GateReason = "powerup" | "tuerwort" | "tafel" | "klassenfoto" | "cageGated";
 
 export type SimEvent =
+  | { type: "fistCaught" }
+  | { type: "rideCompletion"; entityId: string }
+  | { type: "taskSolved"; taskId: string; entityId: string }
+  | { type: "sceneBeatSeen"; entityId: string; beatId: string; viewId: string }
+  | { type: "homeArrival"; entityId: string; actorId: string; round?: number }
+  | { type: "guardianRound"; entityId: string; round: number; actorId: string }
+  | { type: "deflect"; projectileId: number }
   /** `echoes` sagt: dieser Toast trägt nur den TEXT eines Beats, der im selben
    *  Takt sein eigenes Ereignis hat (R5-W7 · S3 · D-372). Wer am Text hängt —
    *  die Anzeige — nimmt ihn wie jeden anderen; wer am BEAT hängt — der Klang —
@@ -243,6 +262,8 @@ export type SimEvent =
   | { type: "exit"; to: string };
 
 export interface SimCfg {
+  tasks?: readonly GameTaskV2[];
+  learningProgress?: ChapterLearningState;
   level: PaintLevel;
   phaseId: string;
   grantedAbilities: () => readonly string[];
@@ -403,6 +424,13 @@ export class Sim {
   holdTicks = 0;
   doorSolved = new Set<string>();
   guardianDefeated = false;
+  /** Opt-in sequence and shuttle facts; old phases leave both sets empty. */
+  readonly solvedTaskIds = new Set<string>();
+  readonly completedSequences = new Set<string>();
+  readonly learning: ChapterLearningState;
+  readonly arrivalFlags = new Set<string>();
+  activeTask: TaskRequest | null = null;
+  readonly completedRides = new Set<string>();
   ridingId: string | null = null;
   respawnCell: { c: number; r: number } | null = null;
   /** R3-11: a request whose asker was off screen when it was raised. The world
@@ -479,6 +507,11 @@ export class Sim {
 
   constructor(cfg: SimCfg) {
     this.cfg = cfg;
+    this.learning = cfg.learningProgress ?? newChapterLearning();
+    for (const id of this.learning.solvedTaskIds ?? []) this.solvedTaskIds.add(id);
+    for (const id of this.learning.completedSequences ?? []) this.completedSequences.add(id);
+    for (const id of this.learning.completedRides ?? []) this.completedRides.add(id);
+    for (const id of this.learning.flags ?? []) this.arrivalFlags.add(id);
     const phase = allPhases(cfg.level).find((p) => p.id === cfg.phaseId);
     if (!phase) throw new Error(`Sim: unknown phase ${cfg.phaseId}`);
     this.phase = phase;
@@ -614,6 +647,122 @@ export class Sim {
 
     this.camX = clampScroll(cameraTargetX(this.player.x, this.player.facing), this.worldWpx, LOGICAL_W);
     this.camY = clampScroll(this.player.y - Math.round(LOGICAL_H * 0.57) * SUBS, this.worldHpx, LOGICAL_H);
+    for (const [i, e] of this.world.entities.entries()) {
+      if (!e.params.taskSequenceV2 && !e.params.stageV2 && !e.params.ride) continue;
+      const saved = this.learning.entities[e.id];
+      const current = saved ? { ...structuredClone(saved), params: e.params } : e;
+      if (current.stageRuntime && current.state === "asking") current.stageRuntime.retry = true;
+      if(current.zoo){this.world.guardianKnots=Math.max(0,current.hp);this.guardianDefeated=current.redeemed;}
+      if (current.zoo && ["report", "finale", "review-report"].includes(current.state)) current.zoo.waitingForRetry = true;
+      this.world.entities[i] = current; this.learning.entities[e.id] = current;
+      if (this.completedSequences.has(current.id) && current.role === "door.trigger") this.doorSolved.add(current.id);
+    }
+    for (const e of this.world.entities) {
+      const stage = stageSpec(e);
+      if (!stage) continue;
+      e.stageRuntime ??= { scene: createSceneState(stage), completedBeats: [], completedGroups: [], retry: false, returnedActors: [] };
+      for (const source of this.phase.entities) {
+        const transfer = source.params?.onSequenceComplete;
+        if (transfer?.target.entityId !== e.id || !transfer.target.actorId) continue;
+        const actor = e.stageRuntime.scene.actors.find(a => a.id === transfer.target.actorId);
+        if (actor && !this.arrivalFlags.has(transfer.arrivalFlag) && !this.learning.transfers.some(t => t.id === transfer.transferId)) actor.hidden = true;
+      }
+    }
+  }
+
+  private saveLearning(): void {
+    this.learning.solvedTaskIds = [...this.solvedTaskIds];
+    this.learning.completedSequences = [...this.completedSequences];
+    this.learning.completedRides = [...this.completedRides];
+    this.learning.flags = [...this.arrivalFlags];
+  }
+
+  private finishSequence(e: EntityState, events: SimEvent[]): void {
+    if (this.completedSequences.has(e.id)) return;
+    this.completedSequences.add(e.id); this.arrivalFlags.add(e.id);
+    const transfer = e.params.onSequenceComplete;
+    if (transfer && !this.arrivalFlags.has(transfer.arrivalFlag) && !this.learning.transfers.some(t=>t.id===transfer.transferId)) {
+      const target = this.world.entities.find(t=>t.id===transfer.target.entityId)!;
+      const points = [{ x: e.x/SUBS, y: e.y/SUBS }, ...worldPathPoints(transfer.waypoints)];
+      const actorId=transfer.target.actorId ?? transfer.actorId;
+      const skin = e.role === "cage" ? String(e.params.captive ?? target.skin) === "zug" ? target.skin : String(e.params.captive ?? target.skin) : e.skin;
+      this.learning.transfers.push({id:transfer.transferId,sourceId:e.id,targetId:target.id,actorId,skin,points,tick:-COLOUR_FLOOD_TICKS,ticks:transfer.ticks,arrivalFlag:transfer.arrivalFlag,x:e.x/SUBS,y:e.y/SUBS});
+    }
+    events.push({type:"entityResolved",id:e.id,role:e.role});
+    this.saveLearning();
+  }
+
+  private stepTransfers(events: SimEvent[]): void {
+    for (const t of this.learning.transfers) {
+      const target=this.world.entities.find(e=>e.id===t.targetId);
+      const source=this.world.entities.find(e=>e.id===t.sourceId);
+      if (!target || !source || this.arrivalFlags.has(t.arrivalFlag)) continue;
+      t.tick++;
+      if (t.tick<0) continue;
+      source.hidden=source.role!=="cage";
+      const p=scenePathAt(t.points,t.tick/t.ticks); t.x=p.x;t.y=p.y;
+      const actor=target.stageRuntime?.scene.actors.find(a=>a.id===t.actorId);
+      if (actor) { actor.hidden=false;actor.skin=t.skin;actor.worldX=p.x;actor.worldY=p.y;actor.cell=zooStageCell(actor.skin,"moving",t.tick); }
+      else target.hidden=true;
+      if (t.tick>=t.ticks) {
+        if (!actor) {target.hidden=false;target.x=p.x*SUBS;target.y=p.y*SUBS;}
+        else actor.cell="a";
+        this.arrivalFlags.add(t.arrivalFlag);
+        events.push({type:"homeArrival",entityId:target.id,actorId:t.actorId??target.id});
+        this.saveLearning();
+      }
+    }
+  }
+
+  private stepStages(events: SimEvent[]): void {
+    let owner: string | null = null;
+    for (const e of this.world.entities) {
+      if (!stageSpec(e) || e.hidden) continue;
+      const next=e.params.taskSequenceV2?.requiredIds.find(id=>!this.solvedTaskIds.has(id));
+      if(!next && e.state==="complete" && this.engagePressed && e.params.taskSequenceV2) {
+        const slot=sequenceRequest(e.params.taskSequenceV2,this.solvedTaskIds,this.learning.optionalCursors[e.id]??0);
+        const beat=e.params.stageV2!.beats.find(b=>b.taskIds.includes(slot?.taskId??""));
+        if(beat && nearObserver(e.params.stageV2!,beat,this.player.x,this.player.y))e.stageRuntime!.optionalTaskId=slot!.taskId;
+      }
+      const result=stepStage(e,next,{visible:this.onScreen(e.id),playerX:this.player.x,playerY:this.player.y,grounded:this.player.grounded,
+        engage:this.engagePressed,flags:this.arrivalFlags,ownerAvailable:owner===null});
+      if (result.length || ["moving","observing","asking","returning"].includes(e.state)) {
+        const beat=e.params.stageV2!.beats.find(b=>b.id===e.stageRuntime!.scene.beatId);
+        if (beat && nearObserver(e.params.stageV2!,beat,this.player.x,this.player.y)) owner=e.id;
+      }
+      for (const r of result) {
+        if (r.type==="home") { if(r.flag)this.arrivalFlags.add(r.flag);events.push({type:"homeArrival",entityId:e.id,actorId:r.actorId}); }
+        if (r.type==="complete") { e.redeemed=true;this.finishSequence(e,events);applyLinks(this.world,"redeemed",e.id); }
+        if (r.type==="question") {
+          events.push({type:"sceneBeatSeen",entityId:e.id,beatId:r.snapshot.beatId,viewId:r.snapshot.viewId});
+          this.ask({use:"quickfire",ctx:{type:"entity",id:e.id,skin:e.skin,taskId:r.taskId},sceneSnapshot:r.snapshot},events);
+        }
+      }
+    }
+    for(const e of this.world.entities) {
+      if(!e.zoo || !e.redeemed || !e.params.taskSequenceV2 || this.overlayOpen)continue;
+      if(e.zoo.review?.returnStart){stepZooReviewReturn(e);continue;}
+      if(!this.onScreen(e.id))continue;
+      const near=Math.abs(e.x-this.player.x)<60*SUBS && Math.abs(e.y-this.player.y)<40*SUBS;
+      if(!near)continue;
+      const z=e.zoo,spec=e.params.stageV2!;
+      if(!z.review && this.engagePressed){
+        const slot=sequenceRequest(e.params.taskSequenceV2,this.solvedTaskIds,this.learning.optionalCursors[e.id]??0);
+        const beat=spec.beats.find(b=>b.taskIds.includes(slot?.taskId??""));
+        if(slot?.optionalSlotId && beat){z.review={taskId:slot.taskId,slotId:slot.optionalSlotId,savedScene:structuredClone(z.scene),savedBody:{x:e.x,y:e.y,dir:e.dir}};beginSceneBeat(z.scene,beat,sceneView(e.homeX,e.homeY));z.bodyStartX=e.x;e.state="review-observe";}
+      }
+      if(!z.review)continue;
+      const beat=spec.beats.find(b=>b.taskIds.includes(z.review!.taskId))!;
+      const ready=e.state==="review-observe"?stepSceneBeat(z.scene,spec,beat):z.waitingForRetry&&this.engagePressed;
+      if(e.state==="review-observe")moveZooToBeat(e);
+      if(ready){
+        e.state="review-report";z.waitingForRetry=false;
+        const snapshot=zooSnapshot(e);
+        events.push({type:"sceneBeatSeen",entityId:e.id,beatId:beat.id,viewId:beat.viewId});
+        this.ask({use:"boss",ctx:{type:"guardian",id:e.id,skin:e.skin,taskId:z.review.taskId,optionalSlotId:z.review.slotId},sceneSnapshot:snapshot},events);
+      }
+    }
+    this.saveLearning();
   }
 
   /** Advance ONE 60Hz tick. Returns the events the shell must react to. */
@@ -627,6 +776,7 @@ export class Sim {
       if (this.holdOpen || this.holdTicks > 0) {
         if (this.holdTicks > 0) this.holdTicks--;
         stepRedeemedOnly(this.world, this.liveGrid);
+        this.stepTransfers(events);
       }
       // N7B · EINE GEHALTENE TASTE BLEIBT GEHALTEN. `prevPad` stand bis hierher
       // hinter diesem `return` und fror auf dem Tick ein, an dem die Karte
@@ -729,11 +879,14 @@ export class Sim {
       }
       this.fistOnSolid = bounced;
       const res = stepFist(this.fist, this.player.x, this.player.y, bounced);
+      if (res.caught) events.push({type:"fistCaught"});
       this.fist = res.caught || !res.fist.active ? null : res.fist;
       if (this.fist === null) this.fistOnSolid = false;
     }
 
     this.stepEntityWorld(events);
+    this.stepTransfers(events);
+    if (!this.overlayOpen) this.stepStages(events);
     this.atStageThreshold(events);
     this.nearOpenableCage(events);
     this.touchCheckpoints(events);
@@ -845,10 +998,27 @@ export class Sim {
     if (!e || e.hidden) return false;
     const x = fromSubs(e.x) - fromSubs(this.camX);
     const y = fromSubs(e.y) - fromSubs(this.camY);
+    if (e.params.stageV2) return x + 80 >= 0 && x - 80 <= LOGICAL_W && y >= 0 && y - 120 <= LOGICAL_H;
     return (
       x >= -SPEAKER_MARGIN_PX && x <= LOGICAL_W + SPEAKER_MARGIN_PX
       && y >= -SPEAKER_MARGIN_PX && y <= LOGICAL_H + SPEAKER_MARGIN_PX
     );
+  }
+
+  private waitingFigureMessage(id:string):string {
+    const e=this.world.entities.find(e=>e.id===id);
+    const names:Record<string,string>={fenn:"Fenn",papagei:"der Papagei",pinguin:"der Pinguin",hund:"der Hund",affe:"der Affe",giraffe:"die Giraffe",loewe:"der Löwe",schaffner:"der Schaffner",drehkreuz:"das Drehkreuz",tor:"das Tor",eimer:"der Eimer"};
+    if (e?.params.exitHintDe) return e.params.exitHintDe;
+    if (e?.role === "cage") return "Im Käfig braucht dich noch jemand.";
+    const placeHints: Record<string, string> = {
+      drehkreuz: "Am Drehkreuz gibt es noch eine Frage.",
+      tor: "Beim Tor gibt es noch eine Frage.",
+      eimer: "Beim Eimer gibt es noch eine Frage.",
+    };
+    const placeHint = placeHints[e?.skin ?? ""];
+    if (placeHint) return placeHint;
+    const name = names[e?.skin ?? ""];
+    return name ? `${name.charAt(0).toUpperCase()}${name.slice(1)} wartet noch auf dich.` : "Hier braucht dich noch jemand.";
   }
 
   /** May this request be served RIGHT NOW? A shell ceremony always may (nobody
@@ -861,8 +1031,32 @@ export class Sim {
   /** Raise a card FOR an asker: served now if the child can see them, parked
    *  until they can otherwise. Only a served request freezes the world. */
   private ask(req: TaskRequest, events: SimEvent[]): void {
+    const id=askerIdOf(req.ctx), source=this.world.entities.find(e=>e.id===id), seq=source?.params.taskSequenceV2;
+    if(seq && req.ctx.type!=="ceremony" && req.ctx.type!=="console" && req.ctx.type!=="guardian") {
+      const slot=sequenceRequest(seq,this.solvedTaskIds,this.learning.optionalCursors[source!.id]??0);
+      if(!slot)return;
+      req={...req,ctx:{...req.ctx,...slot}};
+    }
+    if(source && req.ctx.type==="classmate" && req.ctx.taskId) {
+      const taskId=req.ctx.taskId;
+      const observedRound=req.ctx.round;
+      const task=this.cfg.tasks?.find(t=>t.id===taskId);
+      const ref=task?.sceneRef;
+      if(ref?.beatId && ref.viewId) {
+        const cells=["awake_name","awake_happy","awake_from","awake_year","awake_group","awake_reunited"];
+        const cell=cells[req.ctx.round-1]!;
+        source.actingCell=cell;
+        req={...req,sceneSnapshot:{entityId:source.id,beatId:ref.beatId,viewId:ref.viewId,round:req.ctx.round,
+          view:{x:source.x/SUBS-80,y:source.y/SUBS-120,width:160,height:120},
+          actors:[{id:source.id,skin:source.skin,x:.5,y:1,z:"front",displayHeightPx:30,cell,count:1},...(req.ctx.round>=5?Array.from({length:3},(_,i)=>({id:`${source.id}-friend-${i+1}`,skin:"besucherkinder",x:.08+i*.14,y:1,z:"front" as const,displayHeightPx:30,cell:"wave_a",count:1})):[])],props:[],relations:[]}};
+        if(observedRound>=5)req.sceneSnapshot!.actors[0]!.x=.5;
+        source.classmateScene=structuredClone(req.sceneSnapshot!);
+        events.push({type:"sceneBeatSeen",entityId:source.id,beatId:ref.beatId,viewId:ref.viewId});
+      }
+    }
     if (!this.canServe(req.ctx)) { this.pendingAsk = req; return; }
     this.overlayOpen = true;
+    this.activeTask = structuredClone(req);
     events.push({ type: "task", req });
   }
 
@@ -877,6 +1071,7 @@ export class Sim {
     if (id !== null && !this.onScreen(id)) return;
     this.pendingAsk = null;
     this.overlayOpen = true;
+    this.activeTask = structuredClone(req);
     events.push({ type: "task", req });
   }
 
@@ -963,20 +1158,90 @@ export class Sim {
 
   /** The shell reports the task for `ctx` SOLVED. */
   solveTask(ctx: TaskRequest["ctx"], events: SimEvent[] = []): SimEvent[] {
+    const source=this.world.entities.find(e=>e.id===askerIdOf(ctx)), sequence=source?.params.taskSequenceV2;
+    if(sequence && source && !stageSpec(source) && !source.zoo && ctx.type!=="ceremony" && ctx.type!=="console" && ctx.type!=="guardian") {
+      const expected=sequenceRequest(sequence,this.solvedTaskIds,this.learning.optionalCursors[source.id]??0);
+      if(!ctx.taskId || expected?.taskId!==ctx.taskId || expected.optionalSlotId!==ctx.optionalSlotId || this.activeTask===null || !("taskId" in this.activeTask.ctx) || this.activeTask.ctx.taskId!==ctx.taskId || askerIdOf(this.activeTask.ctx)!==source.id)return events;
+      this.activeTask=null;
+      this.solvedTaskIds.add(ctx.taskId);
+      events.push({type:"taskSolved",entityId:source.id,taskId:ctx.taskId});
+      if(ctx.optionalSlotId) {
+        this.learning.optionalCursors[source.id]=(this.learning.optionalCursors[source.id]??0)+1;
+        this.saveLearning();this.setOverlay(false);return events;
+      }
+      source.friendly=true;
+      this.world.projectiles=this.world.projectiles.filter(p=>p.fromId!==source.id);
+      const next=nextRequiredTask(sequence,this.solvedTaskIds);
+      this.saveLearning();
+      if(next && ctx.type!=="classmate") {
+        this.setOverlay(false);
+        if(ctx.type==="cage"||ctx.type==="door")this.ask({use:ctx.type==="cage"?"rescue":"door",ctx:{...ctx,taskId:next}},events);
+        return events;
+      }
+      if(!next)this.finishSequence(source,events);
+    }
+    if (ctx.type === "entity") {
+      const stage = this.world.entities.find(e=>e.id===ctx.id && !!stageSpec(e));
+      if (stage) {
+        if (!ctx.taskId || this.activeTask?.ctx.type !== "entity" || this.activeTask.ctx.taskId !== ctx.taskId || stage.state !== "asking") return events;
+        this.activeTask=null;
+        this.solvedTaskIds.add(ctx.taskId);
+        if(ctx.optionalSlotId)this.learning.optionalCursors[stage.id]=(this.learning.optionalCursors[stage.id]??0)+1;
+        events.push({type:"taskSolved",entityId:stage.id,taskId:ctx.taskId});
+        solveStage(stage); this.saveLearning(); this.setOverlay(false); return events;
+      }
+    }
+    if (ctx.type === "guardian") {
+      const lion = this.world.entities.find(e => e.id === ctx.id);
+      if (lion && zooSpec(lion)) {
+        if(lion.zoo?.review){
+          const review=lion.zoo.review;
+          if(this.activeTask?.ctx.type!=="guardian" || this.activeTask.ctx.id!==ctx.id || ctx.taskId!==review.taskId || ctx.optionalSlotId!==review.slotId || lion.state!=="review-report")return events;
+          this.activeTask=null;events.push({type:"taskSolved",entityId:lion.id,taskId:review.taskId});
+          beginZooReviewReturn(lion);
+          this.learning.optionalCursors[lion.id]=(this.learning.optionalCursors[lion.id]??0)+1;
+          this.saveLearning();this.setOverlay(false);return events;
+        }
+        if (this.activeTask?.ctx.type!=="guardian" || this.activeTask.ctx.id!==ctx.id || this.activeTask.ctx.taskId!==ctx.taskId || !solveZooTask(lion, ctx.taskId)) return events;
+        this.activeTask=null;
+        this.solvedTaskIds.add(ctx.taskId!);
+        events.push({ type: "taskSolved", taskId: ctx.taskId!, entityId: lion.id });
+        if (lion.state === "welcomed") this.completedSequences.add(lion.id);
+        this.saveLearning();
+        this.setOverlay(false);
+        return events;
+      }
+    }
     if (ctx.type === "entity") {
       const e = this.world.entities.find((x) => x.id === ctx.id);
       if (e?.role === "guardian") {
         events.push({ type: "toast", msg: "Weiter!" });
       } else {
-        redeemEntity(this.world, ctx.id);
-        applyLinks(this.world, "redeemed", ctx.id);
-        events.push({ type: "toast", msg: "Danke!" });
+        if (ctx.taskId) this.solvedTaskIds.add(ctx.taskId);
+        const required = (e?.params.taskSequenceV2 as { requiredIds?: unknown } | undefined)?.requiredIds;
+        const sequenceDone = Array.isArray(required) && required.length > 0
+          ? required.every((id) => typeof id === "string" && this.solvedTaskIds.has(id)) : undefined;
+        const sequence = e?.role === "scene.stage" && Array.isArray(e.params.taskSequence)
+          ? e.params.taskSequence.filter((x): x is number => Number.isInteger(x)) : [];
+        const hasNextWitness = sequenceDone === undefined
+          ? sequence.some((station) => station > (e?.stageAsked ?? -1)) : !sequenceDone;
+        if (hasNextWitness) {
+          // A scene is not a defeated enemy. Its next observed state still owes
+          // a card, so it remains in the world and resumes when the overlay
+          // closes; only the final witnessed answer may redeem it and fire links.
+          events.push({ type: "toast", msg: "Schau weiter!" });
+        } else {
+          if (sequenceDone && e) this.finishSequence(e, events);
+          redeemEntity(this.world, ctx.id);
+          applyLinks(this.world, "redeemed", ctx.id);
+          events.push({ type: "toast", msg: "Danke!" });
+        }
         // R5-W4 · B4 · D-4: …and TELL THE SHELL. Up to here this branch changed
         // the world and announced nothing with an id on it, so the fact died
         // with the mount — which is why a paid trip to the Kleckskammer used to
         // hand every moth back unasked. The cage branch below has always emitted
         // `cageFreed`; this is the same courtesy for everyone else.
-        if (e) events.push({ type: "entityResolved", id: e.id, role: e.role });
+        if (e && !hasNextWitness && !sequenceDone) events.push({ type: "entityResolved", id: e.id, role: e.role });
       }
     } else if (ctx.type === "cage") {
       const freed = this.cfg.freedCageIds().length + 1;
@@ -1086,6 +1351,9 @@ export class Sim {
     this.setOverlay(false); // N7B: derselbe Rückgabe-Ort wie beim Lösen
     const id = askerIdOf(ctx);
     const asker = id === null ? undefined : this.world.entities.find((e) => e.id === id);
+    if (asker?.stageRuntime) asker.stageRuntime.retry=true;
+    this.activeTask=null;
+    if (asker?.zoo && ["report", "finale", "review-report"].includes(asker.state)) asker.zoo.waitingForRetry = true;
     if (asker?.role === "guardian" && asker.state === "window") {
       asker.state = "stagger";
       asker.timer = 0;
@@ -1117,6 +1385,11 @@ export class Sim {
    *  nahe am Teich liegt«. Ein Halt ist gegen die Entfernung unempfindlich; eine
    *  Fahrt ist es nicht. */
   warp(c: number, r: number, opts: { holdCameraTicks?: number } = {}): void {
+    if (this.ridingId) {
+      const ride = this.world.entities.find(e => e.id === this.ridingId);
+      if (ride) abandonShuttle(ride);
+      this.ridingId = null;
+    }
     // a warp always detaches and SNAPS the camera (the screen clamp would
     // otherwise drag the player back toward the stale view)
     this.player = {
@@ -1173,6 +1446,10 @@ export class Sim {
   }
 
   private stepEntityWorld(events: SimEvent[]): void {
+    if (this.ridingId !== null) {
+      const ride = this.world.entities.find(e => e.id === this.ridingId);
+      if (ride && (this.player.vy < 0 || Math.abs(ride.x-this.player.x) > 24 * SUBS)) abandonShuttle(ride);
+    }
     const evs = stepEntities(this.world, this.liveGrid, {
       playerX: this.player.x,
       playerY: this.player.y,
@@ -1183,6 +1460,7 @@ export class Sim {
       // that); only the press engages, so riding a vine past a drained object
       // cannot fire its card, and holding ↑ at one cannot fire it twice.
       playerEngage: this.engagePressed,
+      ridingId: this.player.vy < 0 ? null : this.ridingId,
       // R5-P1 (Arena): solange der Wächter steht, sind Käfige gegated —
       // dieselbe Ehrlichkeits-Klasse wie das ✕-Gate unten.
       cagesGated: this.world.entities.some((e) => e.role === "guardian" && !e.redeemed) && !this.guardianDefeated,
@@ -1192,7 +1470,8 @@ export class Sim {
     // ── the G3 ride contract: stand on a moving platform, inherit its motion ──
     if (this.ridingId !== null) {
       const e = this.world.entities.find((x) => x.id === this.ridingId);
-      const gone = !e || e.state === "gone" || Math.abs((e?.x ?? 0) - this.player.x) / SUBS > 24 || this.player.vy < 0;
+      const landedBelowFall=!!e && e.role==="platform.fall" && this.player.grounded && e.y-6*SUBS>this.player.y+SUBS;
+      const gone = landedBelowFall || !e || e.state === "gone" || Math.abs((e?.x ?? 0) - this.player.x) / SUBS > 24 || this.player.vy < 0;
       if (gone) this.ridingId = null;
       else if (e) {
         this.player.x += e.vx;
@@ -1203,8 +1482,12 @@ export class Sim {
     }
     if (this.ridingId === null && !this.player.grounded) {
       for (const e of this.world.entities) {
+        const ride = e.params.ride as { mode?: unknown; requires?: unknown } | undefined;
+        const requires = Array.isArray(ride?.requires) ? ride.requires.filter((x): x is string => typeof x === "string") : [];
+        if (ride?.mode === "shuttle" && !requires.every((id) => this.completedSequences.has(id) || this.completedRides.has(id) || this.arrivalFlags.has(id))) continue;
         if (e.hidden || e.redeemed || !rideAttachCheck(e, this.player.y, this.player.x, this.player.vy)) continue;
         this.ridingId = e.id;
+        if (ride?.mode === "shuttle") boardShuttle(e);
         if (e.role === "platform.fall" && e.state === "carry") { e.state = "armed"; e.timer = 0; }
         this.player.y = e.y - 6 * SUBS;
         this.player.vy = 0;
@@ -1219,11 +1502,30 @@ export class Sim {
         break;
       }
     }
+
   }
 
   private onEntityEvent(ev: EntityEvent, events: SimEvent[]): void {
     this.cfg.onEntityAudio?.(ev); // R5-W6 · S2: siehe SimCfg#onEntityAudio
     switch (ev.type) {
+      case "rideComplete":
+        if (!this.completedRides.has(ev.id)) {
+          this.completedRides.add(ev.id); events.push({ type: "rideCompletion", entityId: ev.id });
+        }
+        break;
+      case "zooQuestion": {
+        const e = this.world.entities.find(e => e.id === ev.id)!;
+        const sceneSnapshot = zooSnapshot(e);
+        events.push({ type: "sceneBeatSeen", entityId: e.id, beatId: sceneSnapshot.beatId, viewId: sceneSnapshot.viewId });
+        this.ask({ use: ev.finale ? "finale" : "boss", ctx: { type: "guardian", id: e.id, skin: e.skin, taskId: ev.taskId }, sceneSnapshot }, events);
+        break;
+      }
+      case "zooRound": events.push({ type: "guardianRound", entityId: ev.id, round: ev.round, actorId: ev.actorId }); break;
+      case "zooHome": events.push({ type: "homeArrival", entityId: ev.id, actorId: ev.actorId, round: ev.round }); break;
+      case "projectileDeflected": events.push({ type: "deflect", projectileId: ev.id }); break;
+      case "zooMiss":
+        this.player = applyKnockback(this.player, this.player.facing, false);
+        events.push({ type: "toast", msg: "Versuch es noch einmal mit der Faust!" }); break;
       // L3-M-a · E3: die Faust hat einen Griff getroffen. Die Entity meldet nur
       // den Treffer; welcher Griff was bewirkt, steht in der PHASE — und nur die
       // Sim liest die. Ein Griff, den die Phase nicht nennt, tut nichts: die
@@ -1245,6 +1547,11 @@ export class Sim {
       }
       case "encounter": {
         const src = this.world.entities.find((e) => e.id === ev.id);
+        if(src?.params.taskSequenceV2) {
+          if(this.overlayOpen)break;
+          src.friendly=true;
+          this.world.projectiles=this.world.projectiles.filter(p=>p.fromId!==src.id);
+        }
         // R5-F2 · DER RÜCKSTOSS GEHÖRT DEM BOSS (Architekten-Ruling 11.08.).
         //
         // Vorgeschichte, weil die Zeile sonst wieder „aufgeräumt" wird: hier
@@ -1298,8 +1605,15 @@ export class Sim {
         // Wesen `encounter`. Dieselbe Zuordnung fuehrt `cards/serving.ts`
         // (`askerUsesOf`) fuer die Tore und die Karten-Zustellung; ein Test
         // haelt beide Leser in Deckung, damit sie nicht auseinanderlaufen.
-        const use = ev.role === "scene.stage" ? "quickfire" : "encounter";
-        this.ask({ use, ctx: { type: "entity", id: ev.id, skin: ev.skin } }, events);
+        const entity = this.world.entities.find((x) => x.id === ev.id);
+        const use = (entity ? askerUsesOf(entity)[0] : "encounter") as TaskRequest["use"];
+        if(entity?.role==="cage") {this.ask({use,ctx:{type:"cage",id:entity.id,skin:entity.skin}},events);break;}
+        if(entity?.role==="door.trigger") {this.ask({use,ctx:{type:"door",id:entity.id,skin:entity.skin,kind:String(entity.params.kind??"exit")}},events);break;}
+        const required = (entity?.params.taskSequenceV2 as { requiredIds?: unknown } | undefined)?.requiredIds;
+        const taskId = Array.isArray(required)
+          ? required.find((id): id is string => typeof id === "string" && !this.solvedTaskIds.has(id))
+          : undefined;
+        this.ask({ use, ctx: { type: "entity", id: ev.id, skin: ev.skin, sceneStation: ev.sceneStation, taskId } }, events);
         break;
       }
       case "cageGated": {
@@ -1459,6 +1773,7 @@ export class Sim {
       case "guardianDown": {
         this.guardianDefeated = true;
         const g = this.world.entities.find((x) => x.id === ev.id);
+        if (g?.zoo) { events.push({ type: "guardianDown", id: g.id, skin: g.skin }); break; }
         // ── R5-W2 · H1 · DIE LANDUNG WIRD GESEHEN ──────────────────────────
         // Der Sieg-Bogen spielte bisher in einem leeren Raum. `guardianDown`
         // setzte KEINE Haltezeit (anders als der berstende Käfig, der seine
@@ -1735,11 +2050,23 @@ export class Sim {
         if (this.gateToastCooldown === 0) { events.push({ type: "gate", reason: "tuerwort" }, { type: "toast", msg: "Die Tür wartet auf ihr Wort!", echoes: "gate" }); this.gateToastCooldown = 120; }
         return;
       }
-      if (this.phase.entities.some((e) => e.role === "guardian") && !this.guardianDefeated) {
+      const guardian = this.world.entities.find((e) => e.role === "guardian");
+      if (guardian && !this.guardianDefeated) {
         // R5-W4 · H2 (R50): der Grund, warum das Tor zu ist, steht jetzt in der
         // Zeile selbst. „Sie möchte noch reden" war unter der alten Lore wahr
         // und ist unter der neuen eine Ausrede — das Kind sieht die Kritzelei.
-        if (this.gateToastCooldown === 0) { events.push({ type: "gate", reason: "tafel" }, { type: "toast", msg: "Die Tafel ist noch voller Kritzel!", echoes: "gate" }); this.gateToastCooldown = 120; }
+        if (this.gateToastCooldown === 0) { events.push({ type: "gate", reason: "tafel" }, { type: "toast", msg: guardian.params.exitHintDe ?? (guardian.zoo ? this.waitingFigureMessage(guardian.id) : "Die Tafel ist noch voller Kritzel!"), echoes: "gate" }); this.gateToastCooldown = 120; }
+        return;
+      }
+      const sequences = this.phase.exitRequires?.sequences ?? [];
+      const missingSequence = sequences.find((id) => !this.completedSequences.has(id) || !(this.world.entities.find(e=>e.id===id)?.params.taskSequenceV2?.requiredIds.every(t=>this.solvedTaskIds.has(t))??true));
+      if (missingSequence !== undefined) {
+        if (this.gateToastCooldown === 0) { events.push({ type: "toast", msg: this.waitingFigureMessage(missingSequence) }); this.gateToastCooldown = 120; }
+        return;
+      }
+      const rides = this.phase.exitRequires?.rides ?? [];
+      if (!rides.every((id) => this.completedRides.has(id))) {
+        if (this.gateToastCooldown === 0) { events.push({ type: "toast", msg: "Fahr mit dem Zoo-Wagen bis zur nächsten Haltestelle." }); this.gateToastCooldown = 120; }
         return;
       }
       // ── R5-W2 · H1 · DER AUSGANG WARTET AUFS KLASSENFOTO (Koki, 14.08.2026)
