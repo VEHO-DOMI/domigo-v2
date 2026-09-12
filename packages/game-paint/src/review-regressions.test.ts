@@ -215,3 +215,20 @@ it("returns the lion home after a voluntary review without freezing or teleporti
   expect([...sim.solvedTaskIds]).toEqual(required);
   expect(sim.learning.optionalCursors[lion.id]).toBe(1);
 });
+
+describe("guardian exit reminder", () => {
+  for (const authored of [undefined, "Der Löwe wartet noch auf dich."]) {
+    it(authored ? "uses the authored reminder at the real exit" : "names the zoo guardian when no reminder is authored", () => {
+      const l = structuredClone(level);
+      const phase = l.arena!;
+      phase.entities = phase.entities.filter(e => e.role === "guardian");
+      phase.entities[0]!.params!.exitHintDe = authored;
+      const sim = new Sim(cfg(l, "p4"));
+      sim.warp(sim.exitCell.c, sim.exitCell.r);
+      const events = sim.step(IDLE_PAD);
+      expect(events.some(e => e.type === "toast" && e.msg === "Der Löwe wartet noch auf dich.")).toBe(true);
+      expect(events.some(e => e.type === "exit")).toBe(false);
+      expect(sim.guardianDefeated).toBe(false);
+    });
+  }
+});

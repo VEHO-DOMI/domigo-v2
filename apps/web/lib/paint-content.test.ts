@@ -327,7 +327,7 @@ describe("M-5 art opt-ins survive browser loading", () => {
 });
 
 describe("chapter restoration copy survives the real loader", () => {
-  const restorationDe = { oneDative: "einem entfärbten Tier", manyDative: "entfärbten Tieren", oneSubject: "es", freedLabel: "Tiere befreit" };
+  const restorationDe = { oneDative: "einem entfärbten Tier", manyDative: "entfärbten Tieren", oneSubject: "es", freedLabel: "Sachen zurückgeholt" };
   it("preserves every form and leaves the existing chapter default absent", () => {
     const original = loadPaintLevel(STORY, "ch01");
     assert.equal(original.restorationDe, undefined);

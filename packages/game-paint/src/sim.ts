@@ -2050,11 +2050,12 @@ export class Sim {
         if (this.gateToastCooldown === 0) { events.push({ type: "gate", reason: "tuerwort" }, { type: "toast", msg: "Die Tür wartet auf ihr Wort!", echoes: "gate" }); this.gateToastCooldown = 120; }
         return;
       }
-      if (this.phase.entities.some((e) => e.role === "guardian") && !this.guardianDefeated) {
+      const guardian = this.world.entities.find((e) => e.role === "guardian");
+      if (guardian && !this.guardianDefeated) {
         // R5-W4 · H2 (R50): der Grund, warum das Tor zu ist, steht jetzt in der
         // Zeile selbst. „Sie möchte noch reden" war unter der alten Lore wahr
         // und ist unter der neuen eine Ausrede — das Kind sieht die Kritzelei.
-        if (this.gateToastCooldown === 0) { events.push({ type: "gate", reason: "tafel" }, { type: "toast", msg: "Die Tafel ist noch voller Kritzel!", echoes: "gate" }); this.gateToastCooldown = 120; }
+        if (this.gateToastCooldown === 0) { events.push({ type: "gate", reason: "tafel" }, { type: "toast", msg: guardian.params.exitHintDe ?? (guardian.zoo ? this.waitingFigureMessage(guardian.id) : "Die Tafel ist noch voller Kritzel!"), echoes: "gate" }); this.gateToastCooldown = 120; }
         return;
       }
       const sequences = this.phase.exitRequires?.sequences ?? [];
