@@ -1,7 +1,7 @@
 // CODEX DRAFT — NOT CANON · opt-in art names; absent art uses the draft kit.
 import type { StageV2Spec, ZooGuardianSpec } from "../../content-schema/src/paint-zoo.ts";
 import { TILE } from "./paint.ts";
-export const ZOO_LION_CELLS = ["walk0", "walk1", "walk2", "walk3", "mark0", "mark1", "cast0", "cast1", "returned", "watch", "listen", "release0", "release1", "follow", "lonely0", "lonely1", "welcome", "lie0", "lie1", "sleep"] as const;
+export { ZOO_LION_CELLS } from "../../content-schema/src/zoo-pose-cells.ts";
 export const zooLionCell = (state: string, timer: number): string => {
   switch (state) {
     case "review-return": case "prowl": return `walk${Math.floor(timer / 12) % 4}`;

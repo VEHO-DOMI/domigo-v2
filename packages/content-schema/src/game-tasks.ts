@@ -42,7 +42,10 @@ export const TaskStimulus = z.discriminatedUnion("type", [
   // card must render before its being is painted; it is mandatory in the GATE
   // (scripts/check-game-tasks.mjs layer 11) the moment the asker's art exists,
   // so „silent text fallback where art exists" cannot ship.
-  z.object({ type: z.literal("entity"), showsDe: z.string().min(1), art: z.string().min(1).optional() }),
+  z.object({ type: z.literal("entity"), showsDe: z.string().min(1), art: z.string().min(1).optional(),
+    /** Complete evidence pictures already contain their subject; portraits may receive a separate captive. */
+    artComposition: z.enum(["portrait", "complete"]).optional(),
+  }),
 ]);
 export type TaskStimulus = z.infer<typeof TaskStimulus>;
 

@@ -5,8 +5,10 @@ import { SUBS, TILE } from "./paint.ts";
 
 export interface SceneActor {
   id: string; skin: string; x: number; y: number; z: "front" | "behind";
-  displayHeightPx: number; cell: string; count: number; emotion?: string;
+  displayHeightPx: number; displayWidthPx?: number; cell: string; count: number; emotion?: string;
   worldX?: number; worldY?: number; hidden?: boolean;
+  /** Presentation-only grey overlay, inherited from the live owner. */
+  wash?: number;
 }
 export interface SceneSnapshot {
   entityId: string; beatId: string; viewId: string; round: number;
@@ -23,7 +25,7 @@ export interface SceneState {
 export const createSceneState = (spec: StageV2Spec): SceneState => ({
   beatId: null, ticks: 0, actors: spec.actors.map(a => ({
     id: a.id, skin: a.skin, x: a.anchor.x, y: a.anchor.y, z: "front",
-    displayHeightPx: a.displayHeightPx, cell: "a", count: 1,
+    displayHeightPx: a.displayHeightPx, ...(a.displayWidthPx === undefined ? {} : { displayWidthPx: a.displayWidthPx }), cell: "a", count: 1,
   })), starts: [], returning: false, returnTicks: 0, label: null,
 });
 export const sceneView = (xSubs: number, ySubs: number): SceneSnapshot["view"] => ({
@@ -79,7 +81,11 @@ const sceneContents = (s: SceneState, spec: StageV2Spec, beat?: ZooBeatSpec) => 
   const observation = s.returning ? undefined : beat?.view;
   const actorIds = observation?.actorIds ?? spec.view?.actorIds;
   const propIds = observation?.propIds ?? spec.view?.propIds;
-  const actors = actorIds === undefined ? s.actors : s.actors.filter(a => actorIds.includes(a.id));
+  let actors = actorIds === undefined ? s.actors : s.actors.filter(a => actorIds.includes(a.id));
+  // Draw-only endpoint pose: live actors, return paths and the next beat keep their own cells.
+  if (!s.returning && beat?.poseByActor && s.ticks >= beat.moveTicks) {
+    actors = actors.map(a => beat.poseByActor?.[a.id] === undefined ? a : { ...a, cell: beat.poseByActor[a.id]! });
+  }
   const props = propIds === undefined ? spec.props : spec.props.filter(p => propIds.includes(p.id));
   const visibleActors = new Set(actors.map(a => a.id));
   const visibleTargets = new Set([...visibleActors, ...props.map(p => p.id)]);
@@ -101,7 +107,12 @@ export const worldSceneSnapshot = (entityId:string,xSubs:number,ySubs:number,s:S
 export const worldPathPoints = (points: readonly { c: number; r: number }[]): { x: number; y: number }[] =>
   points.map(p => ({ x: (p.c + 0.5) * TILE, y: (p.r + 1) * TILE }));
 
-export interface SceneDrawItem { id: string; stem: string; x: number; y: number; w: number; h: number; depth: number; kind: "actor" | "prop" }
+/** Keep frozen observations immutable while applying the owner’s live spell. */
+export const sceneWithActorWash = (snapshot: SceneSnapshot, actorId: string, wash: number): SceneSnapshot => ({
+  ...snapshot, actors: snapshot.actors.map(a => a.id === actorId ? { ...a, wash: Math.max(0, Math.min(1, wash)) } : a),
+});
+
+export interface SceneDrawItem { wash?: number; id: string; stem: string; x: number; y: number; w: number; h: number; depth: number; kind: "actor" | "prop" }
 /** Shared placement, including repeated bodies and registered sign rectangles. */
 export const sceneDrawItems = (s: SceneSnapshot): SceneDrawItem[] => {
   const items: SceneDrawItem[] = [];
@@ -109,8 +120,8 @@ export const sceneDrawItems = (s: SceneSnapshot): SceneDrawItem[] => {
     const relation=s.relations.find(r=>r.actorId===a.id)?.relation;
     const depth=relation==="in"?2:relation==="behind"||relation==="under"?0:relation==="in front of"||relation==="on"||relation==="next to"?4:a.z==="behind"?0:2;
     items.push({ id: `${a.id}:${i}`, stem: `${zooActorSkin(a.skin)}_${a.cell}`, x: (a.worldX ?? s.view.x + a.x * s.view.width) + i * 18,
-      y: a.worldY ?? s.view.y + a.y * s.view.height, w: a.displayHeightPx * .65, h: a.displayHeightPx,
-      depth, kind: "actor" });
+      y: a.worldY ?? s.view.y + a.y * s.view.height, w: a.displayWidthPx ?? a.displayHeightPx * .65, h: a.displayHeightPx,
+      depth, kind: "actor", ...(a.wash === undefined ? {} : { wash: a.wash }) });
   }
   for (const p of s.props) for (const layer of zooPropLayers(p.skin)) {
     items.push({ id: zooPropLayers(p.skin).length===1?p.id:`${p.id}:${layer.stem}`, stem: layer.stem, x: p.worldAnchor ? (p.worldAnchor.c + .5) * TILE : s.view.x + (p.anchor?.x ?? .5) * s.view.width,

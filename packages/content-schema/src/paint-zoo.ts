@@ -1,5 +1,6 @@
 // CODEX DRAFT — NOT CANON · opt-in zoo contracts shared by the loader and game.
 import { z } from "zod";
+import { zooActorPoseCells } from "./zoo-pose-cells.ts";
 
 const Id = z.string().min(1);
 const Ticks = z.number().int().positive();
@@ -7,6 +8,8 @@ export const ZooCell = z.object({ c: z.number().int().nonnegative(), r: z.number
 export const ZooPoint = z.object({ x: z.number().min(0).max(1), y: z.number().min(0).max(1) });
 export const ZooActor = z.object({
   id: Id, skin: Id, displayHeightPx: z.number().positive(), anchor: ZooPoint,
+  /** Registered source-frame width; omitted keeps the legacy drawing ratio. */
+  displayWidthPx: z.number().finite().positive().optional(),
   attachTo: z.object({ actorId: Id, socket: Id, offsetPx: z.object({ x: z.number(), y: z.number() }) }).optional(),
 });
 export const ZooProp = z.object({
@@ -68,6 +71,8 @@ export const ZooBeat = z.object({
   teachBefore: z.object({ labelEn: Id, holdTicks: z.number().int().min(30), clearBeforeAsk: z.literal(true) }).optional(),
   countByActor: z.record(Id, z.number().int().positive()).optional(),
   emotionByActor: z.record(Id, Id).optional(),
+  /** Observed endpoint pose; never replaces the moving animation. */
+  poseByActor: z.record(Id, Id).optional(),
 });
 export const StageV2 = z.object({
   groups: z.array(z.object({ id: Id, activate: ZooCell.extend({ radiusTiles: z.number().positive() }), observer: ZooCell, requires: z.array(Id) })).min(1),
@@ -85,7 +90,15 @@ export const StageV2 = z.object({
     }
   };
   check(stage.view, ["view"]);
-  stage.beats.forEach((beat, index) => check(beat.view, ["beats", index, "view"]));
+  stage.beats.forEach((beat, index) => {
+    check(beat.view, ["beats", index, "view"]);
+    for (const [id, cell] of Object.entries(beat.poseByActor ?? {})) {
+      const matches = stage.actors.filter(a => a.id === id);
+      const at = ["beats", index, "poseByActor", id];
+      if (matches.length !== 1) ctx.addIssue({ code: "custom", path: at, message: "unknown or ambiguous pose actor " + id });
+      else if (!zooActorPoseCells(matches[0]!.skin).includes(cell)) ctx.addIssue({ code: "custom", path: at, message: "unsupported pose " + cell + " for " + matches[0]!.skin });
+    }
+  });
 });
 export const TaskSequenceV2 = z.object({
   requiredIds: z.array(Id), variantIds: z.array(Id),

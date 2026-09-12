@@ -1,5 +1,5 @@
 import { SceneCutout } from "./SceneCutout.tsx";
-import type { SceneSnapshot } from "../scene-v2.ts";
+import { sceneWithActorWash, type SceneSnapshot } from "../scene-v2.ts";
 // THE CARD SHELL (PB-T8 / Build-B-skins) — the painted overlay frame every
 // task card lives in: stimulus + story line + prompt, the child interaction
 // (the skin, passed as children), the F18 hint ladder, and the „Später"
@@ -578,7 +578,8 @@ export function CardShell({
   // R5-W4 · D3 · F-14 · the occupant's cell, when this card is about a cage and
   // the sheet has landed. Keen-art law: a missing cell leaves the shell exactly
   // as it was, so no card hangs on a file.
-  const occupant = art?.[cageCellFor(captive, captiveIsPerson) ?? ""];
+  const occupant = task.stimulus.type === "entity" && task.stimulus.artComposition === "complete"
+    ? undefined : art?.[cageCellFor(captive, captiveIsPerson) ?? ""];
 
   // ── R5-W1 · D1 · THE GLANCE GRAMMAR ────────────────────────────────────────
   // plate → key → quiet → act → help. Which line is the KEY is decided in
@@ -630,7 +631,7 @@ export function CardShell({
             lies entirely beyond the card's own edge, and the clock is the card's
             frame furniture, not its writing. */}
         <div className="pb-card-scroll">
-        {sceneSnapshot && <SceneCutout snapshot={sceneSnapshot} art={art} />}
+        {sceneSnapshot && <SceneCutout snapshot={round ? sceneWithActorWash(sceneSnapshot, sceneSnapshot.entityId, portraitWash ?? 0) : sceneSnapshot} art={art} />}
 
         {/* PK-R6 · D · THE ROUND COUNTER (doc 44 §3.3). A ceremony a six-year-old
             can see the end of: six is a long way to be asked questions by a

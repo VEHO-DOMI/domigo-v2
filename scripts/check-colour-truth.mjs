@@ -88,6 +88,8 @@
 
 import fs from "node:fs";
 import path from "node:path";
+import { checkDualColour, neutralSelftestCases } from "./achromatic-colour.mjs";
+import { DUAL_READINGS } from "./achromatic-readings.mjs";
 import { ROOT, orphanTaskFiles, paintChapters, skipLedger } from "./paint-chapters.mjs";
 
 const R = process.cwd();
@@ -252,6 +254,9 @@ export function measure(data, dims = null) {
 // import PR must change the picture, the table and the card together.
 export const DRIFT = 6; // degrees; the orange↔brown gap measured here is ~11°
 export const READINGS = {
+  hund: { word: "brown", family: "warm", warmCentre: 36.573564913503525,
+    sourceSha256: "b29fbcc0928cced8ba7c0bdeed2919742e26304ffabc62df0003817f57874aaf",
+    why: "Imported brown dog with blue collar, inspected 2026-09-12. Unchanged measurement: warm share 0.9962899894561758, blue 0.0036864387333534654, margin 270.25811671359975, parchment 0.08477379264132974. The broad ochre-brown fur dominates; the small blue collar is an accent. This records the fine-word reading and measured centre; no blind pupil colour acceptance is claimed." },
   obj_book: { word: "blue", family: "blue", warmCentre: null,
     why: "Blau mit Gold-Ecken. Gemessen 2026-08-15: blau 74 %, Verhältnis 2,8. Kokis Befund vom 15.08.: »Das Buch ist blau, aber es will rot.« R41s Zielpalette will es rot — das ist AQ12s Auftrag, nicht der der Karte. ★ AQ12 HAT geliefert, und das Blatt ist gut gemalt: ein Mensch liest ein rotes Buch. Dieses Tor nicht. Gemessen an der Lieferung: 58 413 Pixel im Rot-Band mit Median-Chroma 0,373 — knapp UNTER der PARCHMENT-Schwelle 0,45, also fallen 90 % der warmen Masse als Pergament weg und übrig bleiben die Goldecken bei 38,0°. Das ist eine Fehlzündung von Regel 4 an neuem Material: dort ist warm-und-flau die aged-paper-Grundierung, hier ist es der Bucheinband selbst. Die Regel zu ändern gehört dieser Session nicht (nur die READINGS-Zeilen), und »rot« auf 38,0° zu ratifizieren würde diese Tabelle entwerten — der Tisch steht als »braun« auf 35,7°, die Feder als »gelb« auf 39,1°, das wären drei Farbwörter in 3,4°. Wahrheit vor Varietät: das Blatt bleibt blau, und AQ12d ist mit der exakten Zahl bestellt (Deckel-Median-S·V ≥ 0,53; AQ12c hat 0,533 erreicht, die Zahl ist also treffbar). D-221." },
   eraser: { word: "pink", family: "pink", warmCentre: null,
@@ -549,6 +554,7 @@ if (selftest) {
   sagK("an unknown second colour is rejected",keyedColours("black and silver"),s=>s.size===0);
   sagK("repeating one colour does not form two colours",keyedColours("black and black"),s=>s.size===0);
 
+  for (const c of neutralSelftestCases()) say(c.name, c.pass, v => v);
   let kopieBad = 0;
   for (const [name, got, ok] of kopieCases) {
     const pass = ok(got);
@@ -662,6 +668,14 @@ for (const { chapter, file } of KARTENDATEIEN) {
     }
 
     const png = await readSheet(sheet);
+    const dualReading = DUAL_READINGS[`${chapter}/${skin}`];
+    if (dualReading || keyedColours(t.colour).size > 1) {
+      measured++;
+      const result = checkDualColour({ png, bytes: fs.readFileSync(sheet), task: t, reading: dualReading });
+      for (const error of result.errors) fail(w, error);
+      table.push(`  ${id.padEnd(22)} neutral body regions ${result.regions.map(r => `${r.id}:${(r.coverage*100).toFixed(1)}%/core${(r.coreShare*100).toFixed(1)}%`).join(" · ")} → Karte sagt ${t.colour}`);
+      continue;
+    }
     const m = measure(png.data, { w: png.width, h: png.height });
     measured++;
     const declaredFamily = WORD_FAMILY[t.colour];
@@ -799,7 +813,7 @@ if (luecken.length > 0 && failures === vorLuecken) {
 // Every law above runs on sheets this walk found. A walk that finds none reports
 // a clean repo forever, which is the worst way for a picture check to break.
 if (measured === 0) fail("VACUITY", "no restore card was measured — either the walk missed the task files or the kind was renamed; every law in this gate is asleep");
-if (Object.keys(READINGS).length < measured) fail("VACUITY", `${measured} sheets measured but only ${Object.keys(READINGS).length} ratified readings — a skin without a row is a colour word nobody ratified`);
+if (Object.keys(READINGS).length + Object.keys(DUAL_READINGS).length < measured) fail("VACUITY", `${measured} sheets measured but only ${Object.keys(READINGS).length + Object.keys(DUAL_READINGS).length} ratified readings — a skin without a row is a colour word nobody ratified`);
 // …and the measurement itself must still be able to tell two colours apart.
 if (measure(flat(214, 40, 30)).dominant === measure(flat(40, 90, 200)).dominant) {
   fail("VACUITY", "the measurement puts a red sheet and a blue sheet in the same family — it is not discriminating and every verdict above is noise");

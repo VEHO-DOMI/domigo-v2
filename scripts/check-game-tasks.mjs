@@ -1020,6 +1020,32 @@ function checkAgainstLevel(file, level, items) {
 //   a · art exists for the asker and the card declares none  → silent fallback
 //   b · the declared stem is not on disk                     → a broken portrait
 //   c · the declared stem is not a cell of any declared skin → someone else's face
+/** A reference earns the scene exemption only when the runtime can serve it. */
+function portraitSceneError(task, level) {
+  const ref = task.sceneRef;
+  if (!ref) return "scene stimulus has no scene reference";
+  if (!level || !ref.beatId || !ref.viewId) return "no named observed beat/view";
+  const found = allPhasesOf(level).filter(ph => !task.phases || task.phases.includes(ph.id))
+    .flatMap(ph => ph.entities.filter(e => e.id === ref.entityId));
+  if (found.length !== 1) return "scene entity is missing or ambiguous in the card phases";
+  const e = found[0];
+  if (!(task.skins ?? []).includes(e.skin)) return "scene entity does not match the bound skin";
+  if (task.stimulus.type === "scene" && task.stimulus.viewId !== ref.viewId) return "stimulus and reference views differ";
+  if (e.role === "classmate") {
+    const index = (e.params?.taskSequenceV2?.requiredIds ?? []).indexOf(task.id);
+    return index >= 0 && index < AWAKEN_ROUNDS && (ref.station === undefined || ref.station === index)
+      ? null : "classmate scene is not a served awakening round";
+  }
+  if (e.role !== "scene.stage" && !(e.role === "guardian" && e.params?.guardian?.mode === "zoo-lion")) return "entity does not serve named scene snapshots";
+  const seq = e.params?.taskSequenceV2;
+  const guardian = e.role === "guardian" ? e.params?.guardian : undefined;
+  const scheduled = [...(seq?.requiredIds ?? []), ...(seq?.variantIds ?? []), ...(seq?.reserveSlots ?? []).map(s => s.taskId),
+    ...(guardian?.rounds ?? []).flatMap(r => r.taskIds), guardian?.finaleTaskId];
+  if (!scheduled.includes(task.id)) return "scene card is absent from its serving sequence";
+  const matches = (e.params?.stageV2?.beats ?? []).filter(b => b.id === ref.beatId && b.viewId === ref.viewId && b.taskIds.includes(task.id));
+  return matches.length === 1 ? null : "scene beat/view does not bind this card";
+}
+
 function checkPortraits(file, items, cx) {
   const w = path.basename(file);
   // L0c · P9: dieselbe Menge, die der Aufloeser diesem Kapitel gibt — nicht der
@@ -1028,6 +1054,12 @@ function checkPortraits(file, items, cx) {
   const gemalt = gemaltFuer(cx?.chapter ?? "ch01");
   const entwurf = cx?.draft === true;
   for (const t of items) {
+    if (t.sceneRef?.beatId || t.sceneRef?.viewId || t.stimulus?.type === "scene") {
+      const error = portraitSceneError(t, cx?.level);
+      if (error) fail(`${w}:${t.id}`, `portrait-scene: ${error}`);
+      // CardShell draws the observed snapshot instead of stimulus.art.
+      continue;
+    }
     if (t.stimulus?.type !== "entity") continue; // no asker, no portrait
     const skins = t.skins ?? [];
     const painted = skins.filter((s) => gemalt.has(`${s}_a`));

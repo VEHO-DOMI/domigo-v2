@@ -183,6 +183,10 @@ export const domArtStems = (level: ScopeLevel): Set<string> => {
   // leave its card with an empty plate.
   for (const ph of allScopePhases(level)) {
     for (const e of ph.entities) if (e.role === "cloth") out.add(`${e.skin}_a`);
+    for (const e of ph.entities) if (e.role === "cage" && e.params?.artSet === "zoo-v2" && isCaptiveKey(e.params?.captive)) {
+      out.add(captiveStem(e.params.captive));
+      out.add(`obj_${e.params.captive}`);
+    }
   }
   for (const s of ALWAYS_STEMS) out.add(s);
   return out;
@@ -210,6 +214,10 @@ export const phaseRequiredStems = (level: ScopeLevel, phaseId: string, label = "
   for (const stem of collectStems(effectiveCollectSkin(level, ph),ph.collectAnimation)) need(stem, `${label} ${ph.id} collectible`);
   if (level.heroArtSet === "zoo-v2") for (const stem of ZOO_HERO_STEMS) need(stem,"zoo hero actions");
   for (const e of ph.entities) {
+    if (e.role === "cage" && e.params?.artSet === "zoo-v2" && isCaptiveKey(e.params?.captive)) {
+      need(captiveStem(e.params.captive), `${label} ${ph.id} captive ${e.id}`);
+      need(`obj_${e.params.captive}`, `${label} ${ph.id} freed captive ${e.id}`);
+    }
     if (e.role === "classmate" && e.params?.artSet === "zoo-v2") for (const stem of ZOO_FRIEND_STEMS) need(stem, `${label} ${ph.id} classmate friends`);
     for (const p of (e.params?.classmatePresentation as ClassmatePresentationSpec | undefined)?.props ?? []) for (const layer of zooPropLayers(p.skin)) need(layer.stem, `${label} ${ph.id} classmate prop ${p.id}`);
     const stage = e.params?.stageV2 as StageV2Spec | undefined;
@@ -218,6 +226,8 @@ export const phaseRequiredStems = (level: ScopeLevel, phaseId: string, label = "
       for (const p of stage.props) for (const layer of zooPropLayers(p.skin)) need(layer.stem,`${label} ${ph.id} scene prop ${p.id}`);
     }
     if (typeof e.params?.projectileSkin === "string") need(e.params.projectileSkin,`${label} ${ph.id} projectile`);
+    const guardian = e.params?.guardian as { mode?: string; projectileSkin?: string } | undefined;
+    if (e.role === "guardian" && guardian?.mode === "zoo-lion" && guardian.projectileSkin) need(guardian.projectileSkin, `${label} ${ph.id} guardian plate`);
     const stems = e.role === "guardian" ? guardianSkinStems(e.skin, (e.params?.guardian as { mode?: string } | undefined)?.mode) : e.role === "scene.stage" && stage ? [] : e.params?.artSet === "zoo-v2" ? zooSkinStems(e.skin) : entitySkinStems(e.skin);
     for (const stem of stems) need(stem, `${label} ${ph.id} ${e.role ?? "entity"} ${e.id ?? e.skin}`);
   }
@@ -325,13 +335,18 @@ export const phaseArtScope = (level: ScopeLevel, phaseId: string, present: Itera
     for (const a of stage?.actors ?? []) { closure(zooActorSkin(a.skin)); for (const stem of zooSkinStems(zooActorSkin(a.skin))) add(stem); }
     for (const p of stage?.props ?? []) for (const layer of zooPropLayers(p.skin)) add(layer.stem);
     if (typeof e.params?.projectileSkin === "string") add(e.params.projectileSkin);
+    const guardian = e.params?.guardian as { mode?: string; projectileSkin?: string } | undefined;
+    if (e.role === "guardian" && guardian?.mode === "zoo-lion" && guardian.projectileSkin) add(guardian.projectileSkin);
     if (e.role === "guardian") {
       guardianHere = true;
       for (const s of guardianSkinStems(e.skin, (e.params?.guardian as { mode?: string } | undefined)?.mode)) add(s);
     }
     // R5-W3 · A5 · D-48: the captive is scoped BY KEY, one layer per cage, and
     // deliberately not through `closure` — see the prefix note in artManifest.
-    if (e.role === "cage" && isCaptiveKey(e.params?.captive)) add(captiveStem(e.params.captive));
+    if (e.role === "cage" && isCaptiveKey(e.params?.captive)) {
+      add(captiveStem(e.params.captive));
+      if (e.params?.artSet === "zoo-v2") add(`obj_${e.params.captive}`);
+    }
   }
 
   // 4 · chalk, only where something throws it

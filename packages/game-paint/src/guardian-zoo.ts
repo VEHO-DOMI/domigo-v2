@@ -1,4 +1,5 @@
 import { zooStageCell } from "./zoo-visuals.ts";
+import { zooLionDisplaySize } from "./zoo-lion-size.ts";
 // CODEX DRAFT — NOT CANON · opt-in grounded guardian, independent of the slate.
 import type { EntityState, EntityWorld, EntityEvent, WorldInput, ProjectileState } from "./entities.ts";
 import type { ZooGuardianSpec, StageV2Spec } from "../../content-schema/src/paint-zoo.ts";
@@ -44,16 +45,21 @@ export const zooSnapshot=(e:EntityState):SceneSnapshot=>{
   const s=worldSceneSnapshot(e.id,e.homeX,e.homeY,e.zoo!.scene,e.params.stageV2!,Math.min(4,e.zoo!.round+1));
   const lion=s.actors.find(a=>a.id==="lion");
   if (lion) {
-    lion.worldX = e.x / SUBS; lion.worldY = e.y / SUBS; lion.displayHeightPx = 64;
+    lion.worldX = e.x / SUBS; lion.worldY = e.y / SUBS;
+    const size = zooLionDisplaySize(e);
+    lion.displayHeightPx = size?.height ?? 64;
+    if (size) lion.displayWidthPx = size.width;
     const observing = ["observe", "report", "review-observe", "review-report"].includes(e.state);
     const beat = e.params.stageV2!.beats.find(b => b.id === e.zoo!.scene.beatId);
     const emotion = beat?.emotionByActor?.lion;
     // The pose is authored evidence; the feet still belong to the physical lion.
-    lion.cell = observing && e.vx === 0 && emotion
+    const pose = !e.zoo!.scene.returning && e.vx === 0 && beat && e.zoo!.scene.ticks >= beat.moveTicks
+      && ["observe", "report", "lonely", "finale", "review-observe", "review-report"].includes(e.state) ? beat.poseByActor?.lion : undefined;
+    lion.cell = pose ?? (observing && e.vx === 0 && emotion
       ? zooStageCell("loewe", "observing", e.timer, emotion)
       : e.state === "after-solve"
         ? zooStageCell("loewe", e.vx ? "moving" : "observing", e.timer, emotion)
-        : zooLionCell(e.vx !== 0 && observing ? "prowl" : e.state, e.timer);
+        : zooLionCell(e.vx !== 0 && observing ? "prowl" : e.state, e.timer));
   }
   return s;
 };

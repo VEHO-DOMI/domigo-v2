@@ -1,5 +1,6 @@
 import { zooEntityCell, ZOO_DISPLAY_HEIGHTS } from "./zoo-visuals.ts";
 import { zooLionCell } from "./zoo-art.ts";
+import { zooLionDisplaySize } from "./zoo-lion-size.ts";
 // THE PAINTED BOOK — deterministic sheet-frame selection (the proven game-2d
 // pattern): frames advance on accumulated WALK TIME / entity ticks, never on
 // wall-clock, so manual-step harness runs and real RAF agree exactly.
@@ -714,7 +715,7 @@ export interface EntSizeInput { role: string; skin: string; params?: Record<stri
  */
 export const entDisplayH = (e: EntSizeInput): number => {
   if (e.params?.artSet === "zoo-v2" && ZOO_DISPLAY_HEIGHTS[e.skin] !== undefined) return ZOO_DISPLAY_HEIGHTS[e.skin]!;
-  if (e.role === "guardian") return (e.params?.guardian as {mode?:string}|undefined)?.mode === "zoo-lion" ? 64 : GUARDIAN_DISPLAY_H;
+  if (e.role === "guardian") return (e.params?.guardian as {mode?:string}|undefined)?.mode === "zoo-lion" ? (zooLionDisplaySize(e)?.height ?? 64) : GUARDIAN_DISPLAY_H;
   if (e.role === "swarm") return 34;
   if (e.role === "crusher") return 30;
   if (e.role === "door.trigger") return e.skin === "klecksdoor" ? 30 : 34;
