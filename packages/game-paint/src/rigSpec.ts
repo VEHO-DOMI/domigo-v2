@@ -1,3 +1,4 @@
+export { ZOO_HERO_STEMS } from "./zoo-visuals.ts";
 // THE PAINTED BOOK — the rig SPEC: how the sliced 384px parts assemble into
 // the ~35-logical-px hero. The import pipeline (docs/art/import-batch-aa.mjs)
 // never trims rig cells, so every part registers by its CELL CENTER and one

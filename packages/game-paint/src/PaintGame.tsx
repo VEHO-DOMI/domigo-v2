@@ -1,4 +1,5 @@
 "use client";
+import { newChapterLearning } from "./learning.ts";
 /**
  * PaintGame — the React shell around PaintScene: mounts Phaser, owns phase
  * HANDOFFS (P-49: scene switches never happen inside a game step), owns the
@@ -38,7 +39,7 @@ import { PAINT_OVERLAY_CSS } from "./cards/overlay-css.ts";
 import { PaintedIcon, type PaintedIconName } from "./cards/PaintedIcons.tsx";
 import { CeremonyBurst, PaintedHero, SceneCut, useCeremonyClock } from "./cards/CeremonyStage.tsx";
 import { COUNT_UP_STAGGER_MS, type PhraseSlot, countUpAt, countUpTotalMs, heroArtPresent, runCompletion } from "./cards/ceremony.ts";
-import { initRoute, nextTask, orderedTask, type RouteState, type ServeCtx } from "./cards/routing.ts";
+import { initRoute, nextTask, orderedTask, requestedTask, type RouteState, type ServeCtx } from "./cards/routing.ts";
 
 /** The in-game task item — gameTasks@2 (the card kit). Content lives in
  *  chNN.tasks.v2.json; the card renderer is packages/game-paint/src/cards. */
@@ -416,6 +417,7 @@ function afterPaint(fn: () => void): void {
 const auftaktCountsFor = (level: PaintLevel): AuftaktCounts => ({
   letters: chapterLetterTotal(level),
   collectNounDe: level.collectNounDe,
+  restorationDe: level.restorationDe,
   drained: chapterRoleCount(level, "drained"),
   cages: chapterRoleCount(level, "cage"),
   kids: chapterClassmateCount(level),
@@ -522,6 +524,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
    *  the whole chapter, so they need no phase key, while a cell like „18,8"
    *  exists in every phase and would collide without one. */
   const resolvedEntitiesRef = useRef<string[]>([]);
+  const learningRef = useRef(newChapterLearning());
   /** PB-F3: the cage hint is a once-per-chapter teacher, not a nag. */
   const cageHintShownRef = useRef(false);
   /** R5-W2 · H1 (Teil 3): die Arena-Anleitung, einmal je Kapitel. */
@@ -1075,6 +1078,8 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
         arenaBriefShown: () => arenaBriefShownRef.current,
         collectedPickupIds: () => [...tipsTakenRef.current.map((t) => t.id), ...booksTakenRef.current, ...clothIdsRef.current],
         resolvedEntityIds: () => resolvedEntitiesRef.current,
+        learningProgress: learningRef.current,
+        tasks,
         airModel,
         spawnCell: fromBonus ? ret.spawn : undefined,
         debugGrid,
@@ -1172,7 +1177,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
             // card and the girl standing next to the child are one declaration.
             if (req.ctx.type === "classmate") {
               const ctx = req.ctx;
-              const round = orderedTask(tasks, req.use, { phase: pid, skin: ctx.skin }, ctx.round - 1);
+              const round = requestedTask(tasks, req, pid) ?? orderedTask(tasks, req.use, { phase: pid, skin: ctx.skin }, ctx.round - 1);
               if (!round) { sceneRef.current?.resolveTask(ctx); return; } // never softlock
               if (round.stimulus.type === "entity" && round.stimulus.art !== undefined) {
                 sceneRef.current?.setActingPose(ctx.id, round.stimulus.art);
@@ -1190,7 +1195,11 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
               return;
             }
             // the serve context: this phase, and the being that triggered it
-            const item = pickTask(req.use, { phase: pid, skin: skinOfCtx(req.ctx) });
+            const sceneCtx = req.ctx.type === "entity" ? req.ctx : null;
+            const bound = requestedTask(tasks, req, pid);
+            const sceneItem = sceneCtx?.sceneStation === undefined ? undefined : tasks.find(t =>
+              t.sceneRef?.entityId === sceneCtx.id && t.sceneRef.station === sceneCtx.sceneStation);
+            const item = bound ?? sceneItem ?? pickTask(req.use, { phase: pid, skin: skinOfCtx(req.ctx) });
             if (!item) { sceneRef.current?.resolveTask(req.ctx); return; } // no pool: never softlock
             // R3-12 · THE BOSS-EVIDENCE BEAT (doc 41 §4): a card that asks about
             // written material may not open before that material is ON the being.
@@ -1259,6 +1268,10 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
             });
           },
           onGuardianDown: (id, skin) => {
+            if (phase?.entities.some(e => e.id === id && e.params?.guardian?.mode === "zoo-lion")) {
+              sceneRef.current?.setOverlay(false);
+              return; // The invitation was already answered in the lion's own window.
+            }
             // F2-24: the chapter's climax is PLAYED, not narrated. The finale
             // card (the child writes HELLO on the board) runs first; its
             // resolution opens the console beat. No finale card in the set ⇒
@@ -2788,6 +2801,7 @@ function Overlay({
     <CardHost
       key={o.item!.id}
       task={o.item!}
+      sceneSnapshot={o.req.sceneSnapshot}
       align={o.align}
       art={art}
       portraitWash={o.wash}
@@ -2862,7 +2876,7 @@ function ScorePage({
     // R5-C1: „Wesen befreit" counted the cages that held a sound system, a
     // tablet, a chair and a class photo. They are school things, which is also
     // what the bonus room spells out in letters.
-    rows.push({ icon: "cage", labelDe: "Schulsachen befreit", got: bilanz.freed - bilanz.kids, total: bilanz.freedTotal - bilanz.kidsTotal });
+    rows.push({ icon: "cage", labelDe: level.restorationDe?.freedLabel ?? "Schulsachen befreit", got: bilanz.freed - bilanz.kids, total: bilanz.freedTotal - bilanz.kidsTotal });
   }
   // R5-W7 · D5 · P6/R196 (B15) · DIE ZEILE, DIE DER MECHANIK GEHÖRT.
   // Die Bilanz zählte Kinder, Käfige, Regel-Seiten, Buchstaben, Bücher und

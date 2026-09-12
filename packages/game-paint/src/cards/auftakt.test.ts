@@ -347,3 +347,15 @@ describe("L0 · N2 · clothWordsDe", () => {
       .toBe("Du hast 4 von 9 Schnipsel."); // grammatisch zu wenig ⇒ clothNounDatDe
   });
 });
+
+describe("chapter-specific restoration grammar", () => {
+  const base = { letters: 0, collectNounDe: "Federn", cages: 0, kids: 0, tips: 0, books: 0 };
+  const restorationDe = { oneDative: "einem entfärbten Tier", manyDative: "entfärbten Tieren", oneSubject: "es" as const, freedLabel: "Tiere befreit" };
+  it("uses the authored singular, pronoun and counted plural", () => {
+    const one = auftaktTasks({ ...base, drained: 1, restorationDe });
+    expect(one[0]?.askDe).toBe("Gib einem entfärbten Tier die Farbe zurück.");
+    expect(one[0]?.whyDe).toBe("Sag auf Englisch, was es ist.");
+    expect(auftaktTasks({ ...base, drained: 2, restorationDe })[0]?.askDe).toBe("Gib 2 entfärbten Tieren die Farbe zurück.");
+    expect(auftaktTasks({ ...base, drained: 0, restorationDe })).toEqual([]);
+  });
+});

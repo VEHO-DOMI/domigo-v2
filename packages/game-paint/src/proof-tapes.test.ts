@@ -1,3 +1,4 @@
+import { PaintProof } from "@domigo/content-schema";
 // PB-T2 · THE PLAYABILITY LAW: no non-draft level ships without a green proof
 // tape for EVERY phase — a recorded pad stream that the REAL engine (sim.ts)
 // replays to the phase exit, in this suite, on every CI run. The reachability
@@ -7,7 +8,7 @@
 import { describe, expect, it } from "vitest";
 import fs from "node:fs";
 import path from "node:path";
-import { POSE_VIOLATION_CAP, PROOF_SCHEMA, type ProofFile, replayChapterTapes, replayPhaseTape, worldAssertionErrors } from "./tape.ts";
+import { POSE_VIOLATION_CAP, PROOF_SCHEMA, type ChapterShellState, type ProofFile, replayChapterTapes, replayPhaseTape, worldAssertionErrors } from "./tape.ts";
 import { allPhases, type PaintLevel } from "./level.ts";
 import { Sim } from "./sim.ts";
 import { IDLE_PAD, posePairErrors, spawnPlayer } from "./player.ts";
@@ -33,6 +34,7 @@ describe("proof tapes (the playability law)", () => {
   for (const lf of levelFiles) {
     const level = JSON.parse(fs.readFileSync(lf, "utf8")) as PaintLevel;
     const name = path.basename(lf);
+    const tasks=JSON.parse(fs.readFileSync(lf.replace(".level.json",".tasks.v2.json"),"utf8")).items;
     const entwurf = level.draft === true;
 
     // ── L0c · P13 · EIN COMMITTETES BAND WIRD ABGESPIELT, AUCH IM ENTWURF ────
@@ -64,7 +66,7 @@ describe("proof tapes (the playability law)", () => {
 
     if (!entwurf) it(`${name}: has a proof sidecar with a tape for every phase`, () => {
       expect(fs.existsSync(proofPath), `missing ${path.basename(proofPath)} — record it with scripts/record-paint-tape.mjs`).toBe(true);
-      const proof = JSON.parse(fs.readFileSync(proofPath, "utf8")) as ProofFile;
+      const proof = PaintProof.parse(JSON.parse(fs.readFileSync(proofPath, "utf8"))) as ProofFile;
       expect(proof.schema).toBe(PROOF_SCHEMA);
       for (const ph of allPhases(level)) {
         expect(proof.phases[ph.id], `phase ${ph.id} has no tape`).toBeDefined();
@@ -72,7 +74,7 @@ describe("proof tapes (the playability law)", () => {
     });
 
     if (!fs.existsSync(proofPath)) continue;
-    const proof = JSON.parse(fs.readFileSync(proofPath, "utf8")) as ProofFile;
+    const proof = PaintProof.parse(JSON.parse(fs.readFileSync(proofPath, "utf8"))) as ProofFile;
 
     if (entwurf) {
       const ohneBand = allPhases(level).filter((ph) => !proof.phases[ph.id]).map((ph) => ph.id);
@@ -90,7 +92,7 @@ describe("proof tapes (the playability law)", () => {
       const tape = proof.phases[ph.id];
       if (!tape) continue;
       it(`${name} · ${ph.id}: the tape reaches the exit AND the world it promises`, () => {
-        const res = replayPhaseTape(level, ph.id, tape);
+        const res = replayPhaseTape(level, ph.id, tape, [], {tasks,cageHintShown:false,arenaBriefShown:false,pickedUp:[]});
         expect(res.exited, `tape ended after ${res.ticksUsed} ticks without the exit firing — the level changed; re-record`).toBe(true);
         // the exit must lead where the level says it leads (bonus timeout is
         // the sanctioned early return of the Kleckskammer)
@@ -108,7 +110,7 @@ describe("proof tapes (the playability law)", () => {
       // Band. Der Andock-Tick war EINE Instanz — dieser Test bewacht die
       // Klasse, auch in den Phasen, an die niemand gedacht hat.
       it(`${name} · ${ph.id}: die gezeichnete Pose widerspricht nie dem Zustand`, () => {
-        const res = replayPhaseTape(level, ph.id, tape);
+        const res = replayPhaseTape(level, ph.id, tape, [], {tasks,cageHintShown:false,arenaBriefShown:false,pickedUp:[]});
         const lies = res.poseViolations
           .map((v) => `  Tick ${v.tick}: ${v.errors.join(" · ")}`)
           .join("\n");
@@ -126,7 +128,7 @@ describe("proof tapes (the playability law)", () => {
     // the world shut in p3 and the arena while every per-phase tape stayed green.
     it(`${name}: the whole chapter replays through ONE shell`, () => {
       const order = allPhases(level).map((p) => p.id);
-      for (const { phaseId, result } of replayChapterTapes(level, proof.phases, order)) {
+      for (const { phaseId, result } of replayChapterTapes(level, proof.phases, order, tasks)) {
         expect(
           result.exited,
           `phase ${phaseId} never reached its exit after ${result.ticksUsed} ticks when the chapter's once-per-chapter cards had ALREADY been shown — a card the shell declines must still resume the world (PB-R1 · R3-1)`,
@@ -152,7 +154,7 @@ describe("proof tapes (the playability law)", () => {
           [...tape.abilities].sort(),
           `${ph.id}'s tape enters holding abilities the chapter has not handed over yet — either the pilot must collect the grant, or the tape is lying about the ladder`,
         ).toEqual([...held].sort());
-        for (const g of replayPhaseTape(level, ph.id, tape).grantsPicked) held.add(g);
+        for (const g of replayPhaseTape(level, ph.id, tape, [], {tasks,cageHintShown:false,arenaBriefShown:false,pickedUp:[]}).grantsPicked) held.add(g);
       }
     });
 
@@ -167,12 +169,19 @@ describe("proof tapes (the playability law)", () => {
         if (essentials.length === 0) continue;
         if (ph.entities.some((e) => e.role === "guardian")) continue; // that exit is the fight's to open
 
+        // Fulfil opt-in learning/ride gates by the actual tape before isolating
+        // the grant gate. An invented completion flag cannot unlock a V2 exit.
+        const prerequisites: ChapterShellState = { tasks, cageHintShown: false, arenaBriefShown: false, pickedUp: [] };
+        if (ph.exitRequires) {
+          const earned = replayPhaseTape(level, ph.id, proof.phases[ph.id]!, [], prerequisites);
+          expect(earned.exited, `${ph.id}: prerequisite route must really finish`).toBe(true);
+        }
         const walkOntoExit = (takeGrants: boolean): boolean => {
-          const sim = new Sim({ level, phaseId: ph.id, grantedAbilities: () => [...level.abilities], freedCageIds: () => [] });
+          const sim = new Sim({ level, phaseId: ph.id, grantedAbilities: () => [...level.abilities], freedCageIds: () => [], learningProgress: prerequisites.learning ? structuredClone(prerequisites.learning) : undefined });
           for (const d of ph.entities.filter((e) => e.role === "door.trigger" && e.params?.kind === "exit")) {
             sim.solveTask({ type: "door", id: d.id, kind: "exit", skin: d.skin });
           }
-          if (takeGrants) for (const e of sim.world.entities) if (e.role === "powerup") e.redeemed = true;
+          for (const e of sim.world.entities) if (e.role === "powerup") e.redeemed = takeGrants;
           sim.warp(sim.exitCell.c, sim.exitCell.r);
           for (let t = 0; t < 240; t++) {
             for (const ev of sim.step({ ...IDLE_PAD })) if (ev.type === "exit") return true;

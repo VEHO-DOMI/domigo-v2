@@ -1,3 +1,5 @@
+import { SceneCutout } from "./SceneCutout.tsx";
+import type { SceneSnapshot } from "../scene-v2.ts";
 // THE CARD SHELL (PB-T8 / Build-B-skins) — the painted overlay frame every
 // task card lives in: stimulus + story line + prompt, the child interaction
 // (the skin, passed as children), the F18 hint ladder, and the „Später"
@@ -504,9 +506,10 @@ const hasAnswer = (t: GameTaskV2): t is Extract<GameTaskV2, { kind: "typed" | "s
 
 export function CardShell({
   task, attempts, onDismiss, align = "center", clockMs, armCount = 0, onActivity, art, portraitWash, captive, captiveIsPerson, round, flight, doff = false,
-  colourAskDe, actStep, children,
+  colourAskDe, actStep, children, sceneSnapshot,
 }: {
   task: GameTaskV2;
+  sceneSnapshot?: SceneSnapshot;
   attempts: number;
   onDismiss: () => void;
   align?: CardAlign;
@@ -563,7 +566,8 @@ export function CardShell({
   // §3.1.5: the asker's painted face, when this card declares one AND it has
   // actually landed. Both halves matter — the declaration is the author's
   // (which cell of the being is talking), the presence is the disk's.
-  const portrait = task.stimulus.type === "entity" && task.stimulus.art !== undefined
+  if(task.stimulus.type==="scene" && !sceneSnapshot)throw new Error(`Scene task ${task.id} has no observed view`);
+  const portrait = !sceneSnapshot && task.stimulus.type === "entity" && task.stimulus.art !== undefined
     ? art?.[task.stimulus.art]
     : undefined;
   // an image stimulus names a painted piece too; it used to be drawn as its
@@ -626,6 +630,7 @@ export function CardShell({
             lies entirely beyond the card's own edge, and the clock is the card's
             frame furniture, not its writing. */}
         <div className="pb-card-scroll">
+        {sceneSnapshot && <SceneCutout snapshot={sceneSnapshot} art={art} />}
 
         {/* PK-R6 · D · THE ROUND COUNTER (doc 44 §3.3). A ceremony a six-year-old
             can see the end of: six is a long way to be asked questions by a
@@ -662,6 +667,7 @@ export function CardShell({
             the restraint of the quiet layer, at a size a first-reader can hold.
             The quiet layer itself stays where it is, so the glance grammar
             (one key line leads, the rest steps back) does not flatten out. */}
+        {task.stimulus.type === "scene" && <p className="pb-cap">{task.stimulus.altDe}</p>}
         {task.stimulus.type === "entity" && <p className="pb-cap">{task.stimulus.showsDe}</p>}
         {task.stimulus.type === "image" && picture === undefined && (
           <p className="pb-cap"><span style={{ display: "inline-flex", verticalAlign: "-0.2em", marginRight: 5 }}><PictureMark /></span>{task.stimulus.altDe}</p>

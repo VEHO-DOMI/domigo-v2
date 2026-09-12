@@ -215,6 +215,7 @@ type EntityKind = EntityEvent["type"];
 
 /** Alle 20 SimEvent-Arten. Fehlt eine, geht der Typecheck rot. */
 export const SIM_REACTIONS = {
+  fistCaught: [{ silent: "Faustfang ist ein Bildereignis; eigener Klang folgt mit Zoo-Kunst." }],
   toast: [
     { play: "toast", note: "die per TOAST_MATCHES erkannte Tinten-Zeile geht an ink-splash" },
     { silent: "nur das Echo eines Beats, der sein eigenes Ereignis hat (`gate`) — dort klingt er; hier wäre es ein zweiter Klang auf demselben Augenblick", when: "echoes ist gesetzt" },
@@ -255,6 +256,12 @@ export const SIM_REACTIONS = {
   ],
   pumpFrozen: [{ reserved: "ch03 Bilge — die Faust trifft den Pumpengriff, das Wasser haelt an: Metall-Klack plus ein Saugen, das aufhoert; Prompt `pump-freeze`" }],
   bilgeDrained: [{ reserved: "ch03 Bilge — das Ablassventil, das Wasser laeuft ab: ein langer Gurgel-Abgang; Prompt `bilge-drain`" }],
+  rideCompletion: [{ silent: "Nachweis der vollständigen Fahrt" }],
+  taskSolved: [{ silent: "Nachweis der Antwort; Kartenklang gehört zur Oberfläche" }],
+  sceneBeatSeen: [{ silent: "Beobachtungsnachweis; die folgende Karte besitzt ihren eigenen Klang" }],
+  homeArrival: [{ silent: "Heimlauf-Nachweis; Zoo-Kunst und Ton folgen" }],
+  guardianRound: [{ silent: "Nachweis der gelösten Platte; der Kartenabschluss besitzt bereits seinen Klang" }],
+  deflect: [{ silent: "Klang gehört zum Entity-Ereignis projectileDeflected" }],
 } as const satisfies Record<SimKind, readonly Reaction[]>;
 
 /** Alle 8 PlayerEvent-Arten. */
@@ -298,6 +305,11 @@ export const ENTITY_REACTIONS = {
   // Beruehrung traegt bereits der `puff` mit kind "hit". Zwei Klaenge auf einem
   // Augenblick sind einer zu viel; dieselbe Faltung wie bei `guardianDown`.
   pumpHit: [{ silent: "gefaltet — die SimEvents pumpFrozen / bilgeDrained tragen den Klang, und der Aufprall klingt als puff" }],
+  rideComplete: [{ silent: "Zoo-Wagen erreicht seinen Halt" }],
+  zooQuestion: [{ silent: "Die folgende Karte trägt den Klang ihrer Frage und Antwort" }],
+  zooRound: [{ silent: "Zoo-Freigabe; eigener Ton noch nicht bestellt" }],
+  zooHome: [{ silent: "Zoo-Heimlauf; eigener Ton noch nicht bestellt" }],
+  zooMiss: [{ play: "bump" }],
 } as const satisfies Record<EntityKind, readonly Reaction[]>;
 
 // ── Nachschlagen ─────────────────────────────────────────────────────────────

@@ -18,6 +18,7 @@
  * `node --test`, wie die Nachbarn hier: apps/web hat kein vitest.
  */
 import assert from "node:assert/strict";
+import { readZooJson } from "../../../packages/game-paint/src/test-fixtures/zoo/read-fixture.ts";
 import { register } from "node:module";
 import { describe, it } from "node:test";
 import { ENTITY_ROLES } from "@domigo/game-paint/level";
@@ -30,6 +31,26 @@ register(new URL("./testing/server-only-shim.mjs", import.meta.url));
 const { CHAPTER_ID, chapterHasTasks, listPaintChapters, loadPaintLevel, parsePaintLevelFile } = await import("./paint-content.ts");
 
 const STORY = "g1.st.lost-pages";
+
+describe("R1b · opt-in zoo data survives the browser loader", () => {
+  const raw = readZooJson("ch02.level.json");
+  it("preserves every authored parameter and phase gate through a JSON roundtrip", () => {
+    const parsed = parsePaintLevelFile(JSON.parse(JSON.stringify(raw)));
+    const before = [...raw.phases, raw.arena, raw.bonus];
+    const after = [...parsed.phases, parsed.arena!, parsed.bonus!];
+    for (const [i, b] of after.entries()) {
+      const a = before[i];
+      assert.deepEqual(b.entities, a.entities);
+      assert.deepEqual(b.exitRequires, a.exitRequires);
+      assert.equal(b.collectSkin, a.collectSkin);
+    }
+  });
+  it("rejects a shortened lion warning in the actual loader", () => {
+    const broken = structuredClone(raw);
+    broken.arena.entities[0].params.guardian.telegraphTicks[0] = 1;
+    assert.throws(() => parsePaintLevelFile(broken));
+  });
+});
 
 describe("L0 · D1 · der Kapitel-Lader", () => {
   it("findet mehr als ein Kapitel auf der Platte", () => {
@@ -272,4 +293,59 @@ describe("L0b · D-790 · tipsTotal darf 0 sein (Ruling 2026-09-02)", () => {
   it("das ausgelieferte ch01 bleibt unberührt", () => {
     assert.equal(loadPaintLevel(STORY, "ch01").tipsTotal, 5);
   });
+});
+
+// CODEX DRAFT — NOT CANON · M-5 loader roundtrip and malformed opt-in tamper.
+describe("M-5 art opt-ins survive browser loading", () => {
+  const raw = readZooJson("ch02.level.json");
+  it("retains hero, room animation, and entity art contracts", () => {
+    const parsed = parsePaintLevelFile(JSON.parse(JSON.stringify(raw)));
+    assert.equal(parsed.heroArtSet, "zoo-v2");
+    for (const phase of [...parsed.phases, parsed.arena!, parsed.bonus!])
+      assert.equal(phase.collectAnimation, "zoo-v2");
+    assert.equal(parsed.bonus!.collectSkin, "bubble");
+    const inherited = structuredClone(raw);
+    delete inherited.phases[0].collectSkin;
+    const out = parsePaintLevelFile(inherited);
+    assert.equal(out.phases[0]!.collectSkin, undefined);
+    assert.equal(out.collectSkin, "feather");
+  });
+  it("rejects misspelled modes and malformed projectile names instead of silently stripping them", () => {
+    for (const field of ["heroArtSet", "collectAnimation", "artSet", "gunnerAim", "projectileSkin"]) {
+      const bad = structuredClone(raw);
+      if (field === "heroArtSet")
+        bad[field] = "typo";
+      else if (field === "collectAnimation")
+        bad.bonus[field] = "typo";
+      else
+        bad.phases[1].entities.find((e: {
+          role: string;
+        }) => e.role === "gunner").params[field] = field === "projectileSkin" ? 42 : "typo";
+      assert.throws(() => parsePaintLevelFile(bad), field);
+    }
+  });
+});
+
+describe("chapter restoration copy survives the real loader", () => {
+  const restorationDe = { oneDative: "einem entfärbten Tier", manyDative: "entfärbten Tieren", oneSubject: "es", freedLabel: "Tiere befreit" };
+  it("preserves every form and leaves the existing chapter default absent", () => {
+    const original = loadPaintLevel(STORY, "ch01");
+    assert.equal(original.restorationDe, undefined);
+    assert.deepEqual(parsePaintLevelFile({ ...original, restorationDe }).restorationDe, restorationDe);
+  });
+  it("rejects incomplete grammar and an invalid singular pronoun", () => {
+    const original = loadPaintLevel(STORY, "ch01");
+    assert.throws(() => parsePaintLevelFile({ ...original, restorationDe: { ...restorationDe, manyDative: undefined } }));
+    assert.throws(() => parsePaintLevelFile({ ...original, restorationDe: { ...restorationDe, oneSubject: "they" } }));
+  });
+});
+
+it("preserves an authored exit reminder and rejects a blank or non-text reminder", () => {
+  const raw = readZooJson("ch02.level.json");
+  raw.phases[0].entities[0].params.exitHintDe = "Hier braucht dich noch jemand.";
+  assert.equal(parsePaintLevelFile(raw).phases[0]!.entities[0]!.params!.exitHintDe, "Hier braucht dich noch jemand.");
+  for (const bad of [" ", 42, "a".repeat(121)]) {
+    raw.phases[0].entities[0].params.exitHintDe = bad;
+    assert.throws(() => parsePaintLevelFile(raw));
+  }
 });
