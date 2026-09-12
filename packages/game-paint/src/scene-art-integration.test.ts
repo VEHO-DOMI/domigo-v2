@@ -3,7 +3,7 @@ import React from 'react';
 import {it,expect} from 'vitest';
 import fs from 'node:fs';import {fileURLToPath} from 'node:url';import vm from 'node:vm';import {createRequire,stripTypeScriptTypes} from 'node:module';
 import {fromSubs} from './paint.ts';
-import {sceneWithActorWash,sceneDrawItems} from './scene-v2.ts';
+import {sceneWithActorWash,sceneDrawItems,sceneImagePlacement} from './scene-v2.ts';
 import {washAlphaFor} from './anim.ts';
 import {phaseArtScope,phaseRequiredStems} from './artScope.ts';
 import {CardShell} from './cards/CardShell.tsx';
@@ -16,9 +16,9 @@ const snap=()=>({entityId:'fenn',beatId:'b12',viewId:'b12',round:1,view:{x:0,y:0
  {id:'fenn',skin:'fenn',x:.5,y:1,z:'front' as const,displayHeightPx:30,cell:'awake_name',count:1},
  {id:'friend',skin:'besucherkinder',x:.2,y:1,z:'front' as const,displayHeightPx:30,cell:'wave_a',count:1}],props:[{id:'panel',skin:'panel',anchor:{x:.5,y:1},canvas:{widthPx:160,heightPx:120}}],relations:[]});
 const art={fenn_awake_name:'/fenn.png',besucherkinder_wave_a:'/friend.png',panel_a:'/panel.png'};
-function img(){const o:any={};for(const k of ['Visible','Texture','Position','DisplaySize','Depth','Alpha','Rotation','Origin'])o['set'+k]=(...v:any[])=>{o[k]=v;return o;};return o;}
+function img(){const o:any={frame:{realWidth:512,realHeight:512}};for(const k of ['Visible','Texture','Position','DisplaySize','Depth','Alpha','Rotation','Origin','Crop'])o['set'+k]=(...v:any[])=>{o[k]=v;return o;};return o;}
 function adapter(){const g:any={rectangles:0};for(const k of ['clear','fillStyle','lineStyle','strokeRoundedRect'])g[k]=()=>g;g.fillRoundedRect=()=>{g.rectangles++;return g;};const o:any={cfg:{reducedMotion:false},world:{entities:[],projectiles:[]},projG:g,projImgs:[],zooSceneImgs:new Map(),zooSceneLabels:new Map(),entityImgs:new Map(),washImgs:new Map(),bloomImgs:new Map(),stagePropImgs:new Map(),sim:{learning:{transfers:[]}},add:{image:()=>img(),graphics:()=>({...g,setDepth(){return this;}})},textures:{exists:()=>true},greyTexOf:(k:string)=>k+'-grey',scenePlaceholder:()=> 'placeholder'};return o;}
-function runZoo(o:any){const a=source.indexOf('  private renderZooScenes()'),b=source.indexOf('  private renderEntities()',a);const js=stripTypeScriptTypes(source.slice(a,b).replace('private renderZooScenes','function draw'));const c=vm.createContext({sceneWithActorWash,sceneDrawItems,washAlphaFor,structuredClone,fromSubs,zooEntityCell:()=> 'awake_name',ZOO_FRIEND_CELLS:{walking:'walk0',waiting:'wave_a'},classmatePresentationProps:()=>[]});vm.runInContext(js,c);c.draw.call(o);}
+function runZoo(o:any){const a=source.indexOf('  private renderZooScenes()'),b=source.indexOf('  private renderEntities()',a);const js=stripTypeScriptTypes(source.slice(a,b).replace('private renderZooScenes','function draw'));const c=vm.createContext({sceneWithActorWash,sceneDrawItems,sceneImagePlacement,washAlphaFor,structuredClone,fromSubs,zooEntityCell:()=> 'awake_name',ZOO_FRIEND_CELLS:{walking:'walk0',waiting:'wave_a'},classmatePresentationProps:()=>[]});vm.runInContext(js,c);c.draw.call(o);}
 function runProjectiles(o:any){const a=source.indexOf('    this.projG.clear();',source.indexOf('private renderEntities')),b=source.indexOf("    // R3-4's `tafel_hand`",a);const c=vm.createContext({fromSubs});vm.runInContext('function draw(){'+source.slice(a,b)+'}',c);c.draw.call(o);}
 it('keeps every awakening degree on the world owner, without greying friends or props or retaining the old pose',()=>{
  const o=adapter();const e:any={id:'fenn',role:'classmate',skin:'fenn',x:0,y:0,state:'awake',redeemed:false,timer:0,params:{},classmateScene:snap()};o.world.entities=[e];

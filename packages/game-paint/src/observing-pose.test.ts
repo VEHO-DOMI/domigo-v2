@@ -12,7 +12,7 @@ import {readZooJson} from './test-fixtures/zoo/read-fixture.ts';
 import type {PaintLevel} from './level.ts';
 import {spawnEntities} from './entities.ts';
 import {SUBS,TILE} from './paint.ts';
-import {beginSceneBeat,createSceneState,stepSceneBeat,snapshotScene,worldSceneSnapshot,sceneDrawItems} from './scene-v2.ts';
+import {beginSceneBeat,createSceneState,stepSceneBeat,snapshotScene,worldSceneSnapshot,sceneDrawItems,sceneImagePlacement} from './scene-v2.ts';
 import {stageV2LawErrors} from './stage-v2-laws.ts';
 import {stepStage,solveStage} from './stage-v2.ts';
 import {zooSnapshot} from './guardian-zoo.ts';
@@ -46,9 +46,9 @@ const threeByTwo='data:image/svg+xml,'+encodeURIComponent('<svg xmlns="http://ww
 function recordedWorld(spec:StageV2Spec,s:ReturnType<typeof createSceneState>){
  const code=fs.readFileSync(new URL('./PaintScene.ts',import.meta.url),'utf8'),a=code.indexOf('  private renderZooScenes()'),b=code.indexOf('  private renderEntities()',a);
  const js=stripTypeScriptTypes(code.slice(a,b).replace('private renderZooScenes','function renderZooScenes'));
- const ctx=vm.createContext({worldSceneSnapshot,sceneDrawItems,fromSubs,structuredClone});
+ const ctx=vm.createContext({worldSceneSnapshot,sceneDrawItems,sceneImagePlacement,fromSubs,structuredClone});
  vm.runInContext(js,ctx);
- const make=()=>{const o:Record<string,unknown>={};for(const k of ['Visible','Texture','Position','DisplaySize','Depth','Origin','Alpha'])o['set'+k]=(...v:unknown[])=>{o[k]=v;return o;};return o;};
+ const make=()=>{const o:Record<string,unknown>={frame:{realWidth:3,realHeight:2}};for(const k of ['Visible','Texture','Position','DisplaySize','Depth','Origin','Alpha','Crop'])o['set'+k]=(...v:unknown[])=>{o[k]=v;return o;};return o;};
  const imgs=new Map<string,Record<string,unknown>>();
  const host={world:{entities:[{id:'stage',state:'asking',homeX:0,homeY:0,params:{stageV2:spec},stageRuntime:{scene:s}}]},sim:{learning:{transfers:[]}},zooSceneImgs:imgs,zooSceneLabels:new Map(),entityImgs:new Map(),washImgs:new Map(),bloomImgs:new Map(),stagePropImgs:new Map(),textures:{exists:()=>true},add:{graphics:()=>({setDepth(){return this;},clear(){}}),image:make}};
  ctx.renderZooScenes.call(host);return imgs;
