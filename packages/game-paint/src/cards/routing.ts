@@ -42,7 +42,7 @@
 // pool's progress eat another's — and a pool that is the same set of cards in
 // every phase keeps ONE series across the chapter instead of restarting at card
 // one behind every door.
-import { seededShuffle } from "@domigo/content-schema";
+import { seededShuffle } from "../../../content-schema/src/game-tasks.ts";
 import type { GameTaskV2 } from "@domigo/content-schema";
 import type { TaskRequest } from "../sim.ts";
 

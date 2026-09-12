@@ -61,7 +61,7 @@ describe("M-2 exact, persistent task places", () => {
     sim.warp(61, 17);
     const ev = Array.from({ length: 8 }, () => sim.step(IDLE_PAD)).flat();
     expect(ev.some(e => e.type === "exit")).toBe(false);
-    expect(ev.some(e => e.type === "toast" && e.msg.includes("wartet") && !e.msg.includes("p1-"))).toBe(true);
+    expect(ev.some(e => e.type === "toast" && e.msg === "Im Käfig braucht dich noch jemand.")).toBe(true);
   });
   it("actually serves all sixteen variants by ↑ through the same bound router; optional slots never create required places", () => {
     const served: string[] = [];

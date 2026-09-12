@@ -1,7 +1,7 @@
 // CODEX DRAFT — NOT CANON · ordered observations, never expected totals.
 import type {SimEvent,TaskRequest} from "./sim.ts";
 import type {GameTaskV2} from "@domigo/content-schema";
-import {renderTaskText} from "@domigo/content-schema";
+import {renderTaskText} from "../../content-schema/src/game-tasks.ts";
 import {requestedTask} from "./cards/routing.ts";
 import {autoSolve} from "./cards/machines.ts";
 export const evidenceKeys=["solvedTaskIds","sceneBeatsSeen","homeArrivals","hangEdges","rideCompletions","guardianRounds","deflects"] as const;

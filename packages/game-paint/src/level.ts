@@ -8,7 +8,7 @@ import type { StageV2Spec, ZooGuardianSpec, ZooRideSpec, TaskSequenceV2Spec, Seq
 // an ability-parameterized reachability sweep (a cage or letter no child can
 // reach is a defect, not a secret).
 
-import { MAX_LINE_DE, cloakErrorsDe, registerErrorsDe } from "@domigo/content-schema";
+import { MAX_LINE_DE, cloakErrorsDe, registerErrorsDe } from "../../content-schema/src/game-tasks.ts";
 import { BEISPIEL_MUSTER, BEISPIEL_PAAR_TRENNER } from "./rule-text.ts";
 import { type Grid, glyphAt, isOneWay, isSlope, isSolid, ledgeGrabAt } from "./collide.ts";
 import { PAINT, SUBS, TILE } from "./paint.ts";

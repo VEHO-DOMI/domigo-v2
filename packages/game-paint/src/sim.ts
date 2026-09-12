@@ -2059,8 +2059,9 @@ export class Sim {
         return;
       }
       const sequences = this.phase.exitRequires?.sequences ?? [];
-      if (!sequences.every((id) => this.completedSequences.has(id) && (this.world.entities.find(e=>e.id===id)?.params.taskSequenceV2?.requiredIds.every(t=>this.solvedTaskIds.has(t))??true))) {
-        if (this.gateToastCooldown === 0) { events.push({ type: "toast", msg: this.waitingFigureMessage(sequences.find(id=>!this.completedSequences.has(id))!) }); this.gateToastCooldown = 120; }
+      const missingSequence = sequences.find((id) => !this.completedSequences.has(id) || !(this.world.entities.find(e=>e.id===id)?.params.taskSequenceV2?.requiredIds.every(t=>this.solvedTaskIds.has(t))??true));
+      if (missingSequence !== undefined) {
+        if (this.gateToastCooldown === 0) { events.push({ type: "toast", msg: this.waitingFigureMessage(missingSequence) }); this.gateToastCooldown = 120; }
         return;
       }
       const rides = this.phase.exitRequires?.rides ?? [];
