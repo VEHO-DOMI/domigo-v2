@@ -11,9 +11,11 @@
 // exit IS the proof that the level fails the playability law.
 
 import fs from "node:fs";
+import { PaintProof } from "../packages/content-schema/src/paint-proof.ts";
 import path from "node:path";
 import { Sim } from "../packages/game-paint/src/sim.ts";
 import { encodePads, padToMask, replayPhaseTape, PROOF_SCHEMA } from "../packages/game-paint/src/tape.ts";
+import { solveTapeCard, evidenceKeys, newTapeEvidence, observeEvidence } from "../packages/game-paint/src/tape-evidence.ts";
 import { IDLE_PAD } from "../packages/game-paint/src/player.ts";
 import { SUBS, TILE } from "../packages/game-paint/src/paint.ts";
 
@@ -26,6 +28,7 @@ const LEVEL_PATH = `content/corpus/stories/g1.st.lost-pages/paint/${CHAPTER}.lev
 const PROOF_PATH = LEVEL_PATH.replace(".level.json", ".proof.json");
 if (!fs.existsSync(path.resolve(LEVEL_PATH))) { console.error(`record-paint-tape: ${LEVEL_PATH} gibt es nicht`); process.exit(2); }
 const level = JSON.parse(fs.readFileSync(path.resolve(LEVEL_PATH), "utf8"));
+const tasks = JSON.parse(fs.readFileSync(path.resolve(LEVEL_PATH.replace(".level.json", ".tasks.v2.json")), "utf8")).items;
 const PILOTS_PATH = path.resolve(import.meta.dirname, "paint-pilots", `${CHAPTER}.pilots.mjs`);
 if (!fs.existsSync(PILOTS_PATH)) {
   console.error(`record-paint-tape: ${CHAPTER} hat keine Piloten (scripts/paint-pilots/${CHAPTER}.pilots.mjs) — ohne handgeführte Makros gibt es kein Beweis-Band`);
@@ -40,15 +43,18 @@ const cellOf = (sim) => ({ c: Math.round(sim.player.x / SUBS / TILE * 10) / 10, 
 const runPilot = (phaseId, entryAbilities, program, { maxTicks = 60 * 120, trace = false } = {}) => {
   const abilities = [...entryAbilities];
   const freed = [];
-  const sim = new Sim({ level, phaseId, grantedAbilities: () => abilities, freedCageIds: () => freed });
+  const sim = new Sim({ level, phaseId, tasks, grantedAbilities: () => abilities, freedCageIds: () => freed });
   const masks = [];
+  const evidence = newTapeEvidence();
+  let previousHang=null;
   let exited = false;
   let exitTo = null;
   let awaitLanding = false;
 
   const handle = (evs) => {
     for (const ev of evs) {
-      if (ev.type === "task") handle(sim.solveTask(ev.req.ctx));
+      observeEvidence(evidence,ev);
+      if (ev.type === "task") { solveTapeCard(tasks, ev.req, phaseId); handle(sim.solveTask(ev.req.ctx)); }
       else if (ev.type === "powerup") { if (!abilities.includes(ev.grants)) abilities.push(ev.grants); sim.setOverlay(false); }
       else if (ev.type === "cageFreed") { freed.push(ev.id); sim.setOverlay(false); }
       else if (ev.type === "guardianDown") awaitLanding = true; // R5-W2 · H1: die Karte bleibt über der Landung oben (siehe tape.ts)
@@ -66,6 +72,9 @@ const runPilot = (phaseId, entryAbilities, program, { maxTicks = 60 * 120, trace
     if (masks.length >= maxTicks || exited) return false;
     masks.push(padToMask(pad));
     handle(sim.step(pad));
+    const hang=sim.player.hangAt?`${sim.player.hangAt.c},${sim.player.hangAt.r}`:null;
+    if(hang && hang!==previousHang)evidence.hangEdges.push(hang);
+    previousHang=hang;
     // R5-W2 · H1: dieselbe Reihenfolge wie im Abspiel-Shell — sonst nimmt der
     // Rekorder ein Band auf, das die Prüfung anders fährt als er selbst.
     if (awaitLanding && sim.holdTicks === 0) { awaitLanding = false; sim.setOverlay(false); }
@@ -130,6 +139,27 @@ const runPilot = (phaseId, entryAbilities, program, { maxTicks = 60 * 120, trace
       for (let i = 0; i < total; i++) {
         if (!tick(pad(i % interval === 0 ? { punch: true } : {}))) break;
       }
+    } else if (op === "talk" || op === "watch") {
+      const [id, group, timeout=2400]=args;
+      for(let i=0;i<timeout;i++) {
+        const e=sim.world.entities.find(e=>e.id===id);
+        if (op==="talk" ? sim.completedSequences.has(id) : group ? e?.stageRuntime?.completedGroups.includes(group) : sim.completedSequences.has(id)) break;
+        if(!tick(pad({up:op==="talk" && i%30===0})))break;
+      }
+    } else if (op === "zooFight") {
+      for (let i = 0; i < (args[0] ?? 6000) && !sim.guardianDefeated; i++) {
+        const g = sim.world.entities.find(e => e.role === "guardian");
+        if (!g) break;
+        const dx = (g.x - sim.player.x) / SUBS;
+        const p = sim.world.projectiles.find(p => p.kind === "plate" && !p.deflected);
+        const faceDx=p?p.x-sim.player.x:dx*SUBS;
+        const face = faceDx > 0 ? { right: true } : { left: true };
+        const approach = Math.abs(dx) > 100 && g.state === "prowl";
+        const faceNeeded = sim.player.facing !== Math.sign(faceDx);
+        const dodge=!!p?.groundReturn && !p.grounded && Math.abs(p.x-sim.player.x)<60*SUBS && sim.player.grounded;
+        const strike = p && (!p.groundReturn || p.grounded) && Math.abs(p.x - sim.player.x) < 80 * SUBS && !sim.fist;
+        if (!tick(pad({ ...((approach || faceNeeded) ? face : {}), punch: !!strike && i % 2 === 0, jump:dodge, up: i % 30 === 0 }))) break;
+      }
     } else if (op === "paceUntilDown") {
       // ["paceUntilDown", halfPeriod, timeout] — pace until the guardian is
       // actually DOWN, CLOSED LOOP on the sim's own flag (the A-3 principle
@@ -179,6 +209,9 @@ const runPilot = (phaseId, entryAbilities, program, { maxTicks = 60 * 120, trace
         if (c === null || Math.abs(c - col) <= tol) break;
         if (!tick(pad({}))) break;
       }
+    } else if (op === "rideToEnd") {
+      const [id, timeout = 1200] = args;
+      for (let i = 0; i < timeout && !sim.completedRides.has(id); i++) if (!tick(pad({}))) break;
     } else if (op === "rideUntil") {
       // ["rideUntil", entityId, col, tol?, timeout?] — stand still on the
       // platform until IT has carried us to the column (also closed loop).
@@ -193,7 +226,7 @@ const runPilot = (phaseId, entryAbilities, program, { maxTicks = 60 * 120, trace
   }
   // pad out a short tail so late exit triggers (fresh landing on the door) fire
   for (let i = 0; i < 90 && tick(pad({})); i++);
-  return { masks, exited, exitTo, sim, abilities };
+  return { masks, exited, exitTo, sim, abilities, evidence };
 };
 
 // L0 · D10 · DIE PILOTEN LEBEN JETZT JE KAPITEL IN scripts/paint-pilots/.
@@ -206,7 +239,7 @@ const runPilot = (phaseId, entryAbilities, program, { maxTicks = 60 * 120, trace
 const rest = process.argv.slice(2).filter((a, i, all) => a !== "--chapter" && all[i - 1] !== "--chapter");
 const phases = rest.length > 0 ? rest : Object.keys(PILOTS);
 const proof = fs.existsSync(PROOF_PATH)
-  ? JSON.parse(fs.readFileSync(PROOF_PATH, "utf8"))
+  ? PaintProof.parse(JSON.parse(fs.readFileSync(PROOF_PATH, "utf8")))
   : { schema: PROOF_SCHEMA, level: level.id, phases: {} };
 
 let allGreen = true;
@@ -217,20 +250,24 @@ for (const phaseId of phases) {
   const rec = runPilot(phaseId, pilot.abilities, pilot.program, { trace: true });
   if (!rec.exited) {
     console.error(`✗ ${phaseId}: pilot did NOT reach the exit (${rec.masks.length} ticks) — final cell ${JSON.stringify(cellOf(rec.sim))}`);
+    console.error(JSON.stringify({ overlay: rec.sim.overlayOpen, solved: [...rec.sim.solvedTaskIds], completed: [...rec.sim.completedSequences], entities: rec.sim.world.entities.filter(e => e.params.taskSequenceV2 || e.params.ride).map(e => ({ id: e.id, state: e.state, hidden:e.hidden, x: e.x / SUBS, y: e.y / SUBS, beat:e.stageRuntime?.scene.beatId, groups:e.stageRuntime?.completedGroups })), projectiles: rec.sim.world.projectiles }));
     allGreen = false;
     continue;
   }
   const tape = { abilities: pilot.abilities, pads: encodePads(rec.masks) };
   // the honest half: verify OPEN-LOOP through the CI replayer before saving
-  const verdict = replayPhaseTape(level, phaseId, tape);
+  const verdict = replayPhaseTape(level, phaseId, tape, [], { cageHintShown: false, arenaBriefShown: false, pickedUp: [], tasks });
   if (!verdict.exited) {
     console.error(`✗ ${phaseId}: closed-loop reached the exit but the OPEN-LOOP replay did not — nondeterminism, do not save`);
     allGreen = false;
     continue;
   }
+  const contentDrift=evidenceKeys.filter(key=>JSON.stringify(rec.evidence[key])!==JSON.stringify(verdict.world[key]));
+  if(contentDrift.length) { console.error(`Recorder/replayer content mismatch: ${contentDrift.join(", ")}`);allGreen=false;continue; }
   // PB-F2: a tape carries the WORLD it produced, not just the buttons. Stamped
   // from the open-loop replay, so what CI asserts is what the recorder saw.
   tape.expect = {
+    ...(CHAPTER === "ch02" ? rec.evidence : {}),
     lettersGot: verdict.world.lettersGot,
     lettersTotal: verdict.world.lettersTotal,
     exitTo: verdict.world.exitTo,

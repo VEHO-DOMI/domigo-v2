@@ -1,488 +1,3626 @@
 {
- "schema": "paintLevel@1",
- "id": "g1.paint.ch02",
- "chapter": "ch02",
- "draft": true,
- "note": "L2-P1v2 (Level-2-Architekt, 2026-09-05): p1 »Das Zoo-Tor« v2 ist das Kalibrier-Exemplar MIT der Signatur (R255): Park-Poster statt Regelseite, drei 7-Zeilen-Griffe (Kassenmauer · Voliere · Faust-Turm — das Reach-Modell verlangt hang, die Engine erzwingt den Griff), zwei Tier-Bühnen (scene.stage: Papagei × Auto auf dem Affenhaus-Dach, Hund × Baum am Boulevard), die per Link enthüllt werden, damit das Kind ZUSCHAUT (Käfig befreit ⇒ Papagei, Pinguin zurückgefärbt ⇒ Hund). Die Ortswörter-Regelseite und der graue Hund sind ins p2-Gerüst gezogen (L2-G2 versetzt sie). p2/p3/p4/p9 sonst L0-Gerüst — L2-G2. Löwe, Wasserlinie, Heimlauf = L2-M-b. Sammel-Skin feather. draft:true bleibt bis L2-A.",
- "name": "Der Zoo im Buch — Der Zoo mit den falschen Schildern",
- "goalDe": "Der Tinten-Schatten war im Zoo. Jedes Tier steht am falschen Platz, und die Schilder lügen.",
- "whyDe": "Sag, was ein Tier ist und wo es ist. Dann geht es heim.",
- "hintsDe": [
-  "Springen: SPACE — halten für höher!",
-  "An Kanten hältst du dich fest. Mit SPACE springst du.",
-  "Ein graues Tier? Stell dich davor und drück ↑!"
- ],
- "collectNounDe": "Federn",
- "collectSkin": "feather",
- "clothNounDe": "Tierspuren",
- "clothNounDatDe": "Tierspuren",
- "clothNounSgDe": "Tierspur",
- "clothPlaceDe": "Zoo-Gelände",
- "abilities": [
-  "jump",
-  "run",
-  "hang",
-  "punch"
- ],
- "checkpointStyle": "silent",
- "phases": [
-  {
-   "id": "p1",
-   "nameDe": "Das Zoo-Tor",
-   "surface": "normal",
-   "checkpointSide": "near",
-   "plates": {},
-   "rows": [
-    "################################################################",
-    "................................................................",
-    ".............................*.*.*..............................",
-    "................................................................",
-    "...........................*######..............................",
-    "............................######..............................",
-    "............................#....#..............................",
-    "............................#....#..............................",
-    "............................#....#..............................",
-    ".........*..*..*....*..*..*.######..............................",
-    "............................######..............................",
-    ".......*##########################....................*##.......",
-    "........##########################.....................##.......",
-    "........##########################.....................##.......",
-    "........##########################.....................##.......",
-    "......*.##########################.....................##*......",
-    "....*...##########################..*..*..*..*..*...*..##.......",
-    "..S.....##########################.....................##.C...X.",
-    "###########################################~~~~~###########..###",
-    "###########################################################..###",
-    "###########################################################..###",
-    "###########################################################..###",
-    "###########################################################ww###",
-    "###########################################################ww###",
-    "###########################################################ww###",
-    "###########################################################ww###"
-   ],
-   "entities": [
+  "schema": "paintLevel@1",
+  "id": "g1.paint.ch02",
+  "chapter": "ch02",
+  "draft": true,
+  "note": "R1a-Werkstattbau vom 05.09.2026; Inhaltsfassung für den im Trial eingebauten Motor. Erneute Inhalts- und Bildabnahme stehen aus.",
+  "name": "Der Zoo mit den falschen Schildern",
+  "goalDe": "Der Tinten-Schatten war im Zoo. Jedes Tier steht am falschen Platz, und die Schilder lügen.",
+  "whyDe": "Sag, welches Tier wo ist. Dann darf das Tier wieder in sein Gehege.",
+  "hintsDe": [
+    "Springen: SPACE — halten für höher!",
+    "An Kanten hältst du dich fest. Mit SPACE springst du.",
+    "Ein graues Tier? Stell dich davor und drück ↑!"
+  ],
+  "collectNounDe": "Federn",
+  "collectSkin": "feather",
+  "heroArtSet": "zoo-v2",
+  "clothNounDe": "Tierspuren",
+  "clothNounDatDe": "Tierspuren",
+  "clothNounSgDe": "Tierspur",
+  "clothPlaceDe": "Zoo-Gelände",
+  "abilities": [
+    "jump",
+    "run",
+    "hang",
+    "punch"
+  ],
+  "checkpointStyle": "silent",
+  "phases": [
     {
-     "id": "p1-poster",
-     "role": "tip",
-     "skin": "regelseite",
-     "c": 5,
-     "r": 17,
-     "tier": "E",
-     "params": {
-      "topicDe": "Das Park-Plakat: there is / there are",
-      "erklaerungDe": "Das Plakat sagt, was es im Park gibt. Eines: there is. Mehrere: there are.",
-      "merksatzDe": "Eines: there is. Mehrere: there are.",
-      "schluesselDe": "Eines: there is. Mehrere: there are",
-      "beispieleEn": [
-       "There is a train.",
-       "There are penguins.",
-       "There is a lion.",
-       "There are giraffes."
+      "id": "p1",
+      "nameDe": "Die Spur über den Gehegen",
+      "surface": "normal",
+      "checkpointSide": "near",
+      "plates": {},
+      "rows": [
+        "################################################################",
+        "................................................................",
+        ".............................*.*.*..............................",
+        "................................................................",
+        "...........................*######..............................",
+        "............................######..............................",
+        "............................#....#..............................",
+        "............................#....#..............................",
+        "............................#....#..............................",
+        ".........*..*..*....*..*..*.######..............................",
+        "............................######..............................",
+        ".......*##########################.....................##.......",
+        "........##########################.....................##.......",
+        "........##########################.....................##.......",
+        "........##########################.....................##.......",
+        "......*.##########################.....................##.......",
+        "....*...##########################..*..*..*..*..*.***..##.......",
+        "..S.....##########################.....................##.C..X..",
+        "###########################################~~~~~###########..###",
+        "###########################################################..###",
+        "###########################################################..###",
+        "###########################################################..###",
+        "###########################################################ww###",
+        "###########################################################ww###",
+        "###########################################################ww###",
+        "###########################################################ww###"
       ],
-      "beispielMuster": "einzeln",
-      "lehrtEn": [
-       "there is",
-       "there are"
-      ],
-      "belegDe": "MORE! 1 · Unit 2 · Seite 17, 20"
-     }
-    },
-    {
-     "id": "p1-cage2",
-     "role": "cage",
-     "skin": "zookaefig",
-     "c": 11,
-     "r": 10,
-     "tier": "E",
-     "params": {
-      "captive": "ticket",
-      "captiveDe": "das Ticket"
-     }
-    },
-    {
-     "id": "p1-buehne-papagei",
-     "role": "scene.stage",
-     "skin": "papagei",
-     "c": 18,
-     "r": 10,
-     "tier": "E",
-     "params": {
-      "hidden": true,
-      "stage": {
-       "propSkin": "auto",
-       "ticksPerStation": 90,
-       "stations": [
+      "entities": [
         {
-         "dc": -2,
-         "dr": 0,
-         "z": "front"
+          "id": "p1-poster",
+          "role": "tip",
+          "skin": "regelseite",
+          "c": 5,
+          "r": 17,
+          "tier": "E",
+          "params": {
+            "topicDe": "Eines oder mehrere?",
+            "erklaerungDe": "Bei einem Tier sagst du there is, bei mehreren there are.",
+            "merksatzDe": "Zähle zuerst, dann sag there is oder there are.",
+            "schluesselDe": "there is oder there are",
+            "beispieleEn": [
+              "There is a train.",
+              "There are penguins.",
+              "There is a lion.",
+              "There are giraffes."
+            ],
+            "beispielMuster": "einzeln",
+            "lehrtEn": [
+              "there is",
+              "there are"
+            ],
+            "belegDe": "MORE! 1 · Unit 2 · Seite 17, 20"
+          }
         },
         {
-         "dc": 0,
-         "dr": -1,
-         "z": "behind"
+          "id": "p1-cage2",
+          "role": "cage",
+          "skin": "zookaefig",
+          "c": 11,
+          "r": 10,
+          "tier": "E",
+          "params": {
+            "artSet": "zoo-v2",
+            "captive": "ticket",
+            "captiveDe": "das Ticket",
+            "taskSequenceV2": {
+              "requiredIds": [
+                "g1.paint.ch02.a15",
+                "g1.paint.ch02.a16"
+              ],
+              "variantIds": [],
+              "reserveSlots": [
+                {
+                  "slotId": "r-at",
+                  "target": "g1u02.w.at",
+                  "taskId": "g1.paint.ch02.a16",
+                  "when": "optional-after-sequence",
+                  "countsAsRequired": false
+                },
+                {
+                  "slotId": "r-ticket",
+                  "target": "g1u02.w.ticket",
+                  "taskId": "g1.paint.ch02.a16",
+                  "when": "optional-after-sequence",
+                  "countsAsRequired": false
+                },
+                {
+                  "slotId": "r-for",
+                  "target": "g1u02.w.for",
+                  "taskId": "g1.paint.ch02.a16",
+                  "when": "optional-after-sequence",
+                  "countsAsRequired": false
+                },
+                {
+                  "slotId": "r-wildlife-park",
+                  "target": "wildlife park",
+                  "taskId": "g1.paint.ch02.a16",
+                  "when": "optional-after-sequence",
+                  "countsAsRequired": false
+                }
+              ]
+            },
+            "exitHintDe": "Beim Käfig gibt es noch eine Frage."
+          }
         },
         {
-         "dc": 0,
-         "dr": -2,
-         "z": "front"
+          "id": "p1-buehne-papagei",
+          "role": "scene.stage",
+          "skin": "papagei",
+          "c": 18,
+          "r": 10,
+          "tier": "E",
+          "params": {
+            "artSet": "zoo-v2",
+            "hidden": true,
+            "taskSequence": [
+              0,
+              1,
+              2,
+              3,
+              5
+            ],
+            "stage": {
+              "propSkin": "auto",
+              "ticksPerStation": 90,
+              "stations": [
+                {
+                  "dc": -2,
+                  "dr": 0,
+                  "z": "front"
+                },
+                {
+                  "dc": 0,
+                  "dr": -1,
+                  "z": "behind"
+                },
+                {
+                  "dc": 0,
+                  "dr": 0,
+                  "z": "front"
+                },
+                {
+                  "dc": 0,
+                  "dr": -2,
+                  "z": "front"
+                },
+                {
+                  "dc": 1,
+                  "dr": 0,
+                  "z": "behind"
+                },
+                {
+                  "dc": -1,
+                  "dr": 0,
+                  "z": "front"
+                }
+              ]
+            },
+            "taskSequenceV2": {
+              "requiredIds": [
+                "g1.paint.ch02.a07",
+                "g1.paint.ch02.a08",
+                "g1.paint.ch02.a09",
+                "g1.paint.ch02.a10",
+                "g1.paint.ch02.a12"
+              ],
+              "variantIds": [
+                "g1.paint.ch02.a11"
+              ],
+              "reserveSlots": [
+                {
+                  "slotId": "r-parrot",
+                  "target": "g1u02.w.parrot",
+                  "taskId": "g1.paint.ch02.a11",
+                  "when": "optional-after-sequence",
+                  "countsAsRequired": false
+                },
+                {
+                  "slotId": "r-next-to",
+                  "target": "g1u02.w.next-to",
+                  "taskId": "g1.paint.ch02.a07",
+                  "when": "optional-after-sequence",
+                  "countsAsRequired": false
+                },
+                {
+                  "slotId": "r-in",
+                  "target": "g1u02.w.in",
+                  "taskId": "g1.paint.ch02.a08",
+                  "when": "optional-after-sequence",
+                  "countsAsRequired": false
+                },
+                {
+                  "slotId": "r-behind",
+                  "target": "g1u02.w.behind",
+                  "taskId": "g1.paint.ch02.a11",
+                  "when": "optional-after-sequence",
+                  "countsAsRequired": false
+                },
+                {
+                  "slotId": "r-in-front-of",
+                  "target": "g1u02.w.in-front-of",
+                  "taskId": "g1.paint.ch02.a12",
+                  "when": "optional-after-sequence",
+                  "countsAsRequired": false
+                },
+                {
+                  "slotId": "r-behind-2",
+                  "target": "g1u02.w.behind-2",
+                  "taskId": "g1.paint.ch02.a11",
+                  "when": "optional-after-sequence",
+                  "countsAsRequired": false
+                },
+                {
+                  "slotId": "r-in-front-of-2",
+                  "target": "g1u02.w.in-front-of-2",
+                  "taskId": "g1.paint.ch02.a12",
+                  "when": "optional-after-sequence",
+                  "countsAsRequired": false
+                },
+                {
+                  "slotId": "r-next-to-2",
+                  "target": "g1u02.w.next-to-2",
+                  "taskId": "g1.paint.ch02.a07",
+                  "when": "optional-after-sequence",
+                  "countsAsRequired": false
+                },
+                {
+                  "slotId": "r-car",
+                  "target": "g1u02.w.car",
+                  "taskId": "g1.paint.ch02.a11",
+                  "when": "optional-after-sequence",
+                  "countsAsRequired": false
+                }
+              ]
+            },
+            "stageV2": {
+              "groups": [
+                {
+                  "id": "car-west",
+                  "activate": {
+                    "c": 14,
+                    "r": 10,
+                    "radiusTiles": 3
+                  },
+                  "observer": {
+                    "c": 14,
+                    "r": 10
+                  },
+                  "requires": []
+                },
+                {
+                  "id": "car-east",
+                  "activate": {
+                    "c": 22,
+                    "r": 10,
+                    "radiusTiles": 3
+                  },
+                  "observer": {
+                    "c": 22,
+                    "r": 10
+                  },
+                  "requires": [
+                    "car-west"
+                  ]
+                }
+              ],
+              "actors": [
+                {
+                  "id": "parrot",
+                  "skin": "papagei",
+                  "displayHeightPx": 40,
+                  "anchor": {
+                    "x": 0.2,
+                    "y": 0.75
+                  }
+                }
+              ],
+              "props": [
+                {
+                  "id": "car",
+                  "skin": "auto",
+                  "anchor": {
+                    "x": 0.5,
+                    "y": 0.8
+                  }
+                }
+              ],
+              "beats": [
+                {
+                  "id": "a07",
+                  "groupId": "car-west",
+                  "viewId": "a07",
+                  "targetPositions": [
+                    {
+                      "actorId": "parrot",
+                      "x": 0.13,
+                      "y": 0.8,
+                      "z": "front"
+                    }
+                  ],
+                  "relations": [
+                    {
+                      "actorId": "parrot",
+                      "propId": "car",
+                      "relation": "next to"
+                    }
+                  ],
+                  "moveTicks": 60,
+                  "holdTicks": 45,
+                  "taskIds": [
+                    "g1.paint.ch02.a07"
+                  ],
+                  "afterSolve": [],
+                  "teachBefore": {
+                    "labelEn": "next to",
+                    "holdTicks": 90,
+                    "clearBeforeAsk": true
+                  }
+                },
+                {
+                  "id": "a08",
+                  "groupId": "car-west",
+                  "viewId": "a08",
+                  "targetPositions": [
+                    {
+                      "actorId": "parrot",
+                      "x": 0.49,
+                      "y": 0.62,
+                      "z": "behind"
+                    }
+                  ],
+                  "relations": [
+                    {
+                      "actorId": "parrot",
+                      "propId": "car",
+                      "relation": "in"
+                    }
+                  ],
+                  "moveTicks": 60,
+                  "holdTicks": 45,
+                  "taskIds": [
+                    "g1.paint.ch02.a08"
+                  ],
+                  "afterSolve": [],
+                  "teachBefore": {
+                    "labelEn": "in",
+                    "holdTicks": 90,
+                    "clearBeforeAsk": true
+                  }
+                },
+                {
+                  "id": "a09",
+                  "groupId": "car-west",
+                  "viewId": "a09",
+                  "targetPositions": [
+                    {
+                      "actorId": "parrot",
+                      "x": 0.5,
+                      "y": 0.93,
+                      "z": "behind"
+                    }
+                  ],
+                  "relations": [
+                    {
+                      "actorId": "parrot",
+                      "propId": "car",
+                      "relation": "under"
+                    }
+                  ],
+                  "moveTicks": 60,
+                  "holdTicks": 45,
+                  "taskIds": [
+                    "g1.paint.ch02.a09"
+                  ],
+                  "afterSolve": [],
+                  "teachBefore": {
+                    "labelEn": "under",
+                    "holdTicks": 90,
+                    "clearBeforeAsk": true
+                  }
+                },
+                {
+                  "id": "a10",
+                  "groupId": "car-east",
+                  "viewId": "a10",
+                  "targetPositions": [
+                    {
+                      "actorId": "parrot",
+                      "x": 0.5,
+                      "y": 0.39,
+                      "z": "front"
+                    }
+                  ],
+                  "relations": [
+                    {
+                      "actorId": "parrot",
+                      "propId": "car",
+                      "relation": "on"
+                    }
+                  ],
+                  "moveTicks": 60,
+                  "holdTicks": 45,
+                  "taskIds": [
+                    "g1.paint.ch02.a10"
+                  ],
+                  "afterSolve": [],
+                  "teachBefore": {
+                    "labelEn": "on",
+                    "holdTicks": 90,
+                    "clearBeforeAsk": true
+                  }
+                },
+                {
+                  "id": "a11",
+                  "groupId": "car-east",
+                  "viewId": "a11",
+                  "targetPositions": [
+                    {
+                      "actorId": "parrot",
+                      "x": 0.7,
+                      "y": 0.72,
+                      "z": "behind"
+                    }
+                  ],
+                  "relations": [
+                    {
+                      "actorId": "parrot",
+                      "propId": "car",
+                      "relation": "behind"
+                    }
+                  ],
+                  "moveTicks": 60,
+                  "holdTicks": 45,
+                  "taskIds": [
+                    "g1.paint.ch02.a11"
+                  ],
+                  "afterSolve": [],
+                  "variant": true,
+                  "teachBefore": {
+                    "labelEn": "behind",
+                    "holdTicks": 90,
+                    "clearBeforeAsk": true
+                  }
+                },
+                {
+                  "id": "a12",
+                  "groupId": "car-east",
+                  "viewId": "a12",
+                  "targetPositions": [
+                    {
+                      "actorId": "parrot",
+                      "x": 0.55,
+                      "y": 0.88,
+                      "z": "front"
+                    }
+                  ],
+                  "relations": [
+                    {
+                      "actorId": "parrot",
+                      "propId": "car",
+                      "relation": "in front of"
+                    }
+                  ],
+                  "moveTicks": 60,
+                  "holdTicks": 45,
+                  "taskIds": [
+                    "g1.paint.ch02.a12"
+                  ],
+                  "afterSolve": [
+                    {
+                      "actorId": "parrot",
+                      "waypoints": [
+                        {
+                          "x": 0.86,
+                          "y": 0.3
+                        }
+                      ],
+                      "ticks": 90
+                    }
+                  ],
+                  "teachBefore": {
+                    "labelEn": "in front of",
+                    "holdTicks": 90,
+                    "clearBeforeAsk": true
+                  }
+                }
+              ]
+            },
+            "exitHintDe": "Beim Auto gibt es noch eine Frage."
+          }
         },
         {
-         "dc": 1,
-         "dr": 0,
-         "z": "behind"
+          "id": "p1-schubkarre",
+          "role": "chaser",
+          "skin": "waertereimer",
+          "c": 37,
+          "r": 17,
+          "tier": "E",
+          "params": {
+            "artSet": "zoo-v2",
+            "patrolMinC": 37,
+            "patrolMaxC": 42,
+            "taskSequenceV2": {
+              "requiredIds": [
+                "g1.paint.ch02.a01"
+              ],
+              "variantIds": [
+                "g1.paint.ch02.a02",
+                "g1.paint.ch02.a03"
+              ],
+              "reserveSlots": [
+                {
+                  "slotId": "r-train",
+                  "target": "g1u02.w.train",
+                  "taskId": "g1.paint.ch02.a03",
+                  "when": "optional-after-sequence",
+                  "countsAsRequired": false
+                },
+                {
+                  "slotId": "r-penguin",
+                  "target": "g1u02.w.penguin",
+                  "taskId": "g1.paint.ch02.a02",
+                  "when": "optional-after-sequence",
+                  "countsAsRequired": false
+                },
+                {
+                  "slotId": "r-there-is",
+                  "target": "there is",
+                  "taskId": "g1.paint.ch02.a03",
+                  "when": "optional-after-sequence",
+                  "countsAsRequired": false
+                },
+                {
+                  "slotId": "r-there-are",
+                  "target": "there are",
+                  "taskId": "g1.paint.ch02.a02",
+                  "when": "optional-after-sequence",
+                  "countsAsRequired": false
+                }
+              ]
+            },
+            "exitHintDe": "Beim Eimer gibt es noch eine Frage."
+          }
         },
         {
-         "dc": 0,
-         "dr": 0,
-         "z": "front"
+          "id": "p1-rutscher",
+          "role": "bouncer",
+          "skin": "pinguin_rutscher",
+          "c": 45,
+          "r": 17,
+          "tier": "E",
+          "params": {
+            "artSet": "zoo-v2",
+            "taskSequenceV2": {
+              "requiredIds": [],
+              "variantIds": [
+                "g1.paint.ch02.a04",
+                "g1.paint.ch02.a05"
+              ]
+            }
+          }
+        },
+        {
+          "id": "p1-pinguin",
+          "role": "drained",
+          "skin": "pinguin",
+          "c": 48,
+          "r": 17,
+          "tier": "E",
+          "params": {
+            "artSet": "zoo-v2",
+            "taskSequenceV2": {
+              "requiredIds": [
+                "g1.paint.ch02.a06"
+              ],
+              "variantIds": []
+            },
+            "onSequenceComplete": {
+              "transferId": "penguin-transfer",
+              "target": {
+                "entityId": "p1-buehne-buddy",
+                "actorId": "penguinHome"
+              },
+              "waypoints": [
+                {
+                  "c": 48,
+                  "r": 17
+                },
+                {
+                  "c": 49,
+                  "r": 17
+                }
+              ],
+              "ticks": 60,
+              "arrivalFlag": "penguinHome"
+            },
+            "exitHintDe": "Der Pinguin wartet noch auf dich."
+          }
+        },
+        {
+          "id": "p1-buehne-buddy",
+          "role": "scene.stage",
+          "skin": "buddy",
+          "c": 52,
+          "r": 17,
+          "tier": "E",
+          "params": {
+            "artSet": "zoo-v2",
+            "hidden": true,
+            "stage": {
+              "propSkin": "baum",
+              "ticksPerStation": 90,
+              "stations": [
+                {
+                  "dc": 0,
+                  "dr": 0,
+                  "z": "behind"
+                },
+                {
+                  "dc": 0,
+                  "dr": 0,
+                  "z": "front"
+                }
+              ]
+            },
+            "taskSequenceV2": {
+              "requiredIds": [
+                "g1.paint.ch02.a13",
+                "g1.paint.ch02.a14"
+              ],
+              "variantIds": [],
+              "reserveSlots": [
+                {
+                  "slotId": "r-on",
+                  "target": "g1u02.w.on",
+                  "taskId": "g1.paint.ch02.a14",
+                  "when": "optional-after-sequence",
+                  "countsAsRequired": false
+                },
+                {
+                  "slotId": "r-dog",
+                  "target": "g1u02.w.dog",
+                  "taskId": "g1.paint.ch02.a14",
+                  "when": "optional-after-sequence",
+                  "countsAsRequired": false
+                }
+              ]
+            },
+            "stageV2": {
+              "groups": [
+                {
+                  "id": "buddy",
+                  "activate": {
+                    "c": 50,
+                    "r": 17,
+                    "radiusTiles": 3
+                  },
+                  "observer": {
+                    "c": 50,
+                    "r": 17
+                  },
+                  "requires": [
+                    "penguinHome"
+                  ]
+                }
+              ],
+              "actors": [
+                {
+                  "id": "buddy",
+                  "skin": "buddy",
+                  "displayHeightPx": 36,
+                  "anchor": {
+                    "x": 0.5,
+                    "y": 0.82
+                  }
+                },
+                {
+                  "id": "parrot",
+                  "skin": "papagei",
+                  "displayHeightPx": 40,
+                  "anchor": {
+                    "x": 0.15,
+                    "y": 0.25
+                  },
+                  "attachTo": {
+                    "actorId": "buddy",
+                    "socket": "back",
+                    "offsetPx": {
+                      "x": 0,
+                      "y": -18
+                    }
+                  }
+                },
+                {
+                  "id": "penguinHome",
+                  "skin": "pinguin",
+                  "displayHeightPx": 36,
+                  "anchor": {
+                    "x": 0.12,
+                    "y": 0.86
+                  }
+                }
+              ],
+              "props": [
+                {
+                  "id": "tree",
+                  "skin": "baum",
+                  "anchor": {
+                    "x": 0.5,
+                    "y": 0.8
+                  }
+                }
+              ],
+              "beats": [
+                {
+                  "id": "a13",
+                  "groupId": "buddy",
+                  "viewId": "a13",
+                  "targetPositions": [
+                    {
+                      "actorId": "buddy",
+                      "x": 0.55,
+                      "y": 0.78,
+                      "z": "behind"
+                    }
+                  ],
+                  "relations": [
+                    {
+                      "actorId": "buddy",
+                      "propId": "tree",
+                      "relation": "behind"
+                    }
+                  ],
+                  "moveTicks": 60,
+                  "holdTicks": 45,
+                  "taskIds": [
+                    "g1.paint.ch02.a13"
+                  ],
+                  "afterSolve": []
+                },
+                {
+                  "id": "a14",
+                  "groupId": "buddy",
+                  "viewId": "a14",
+                  "targetPositions": [
+                    {
+                      "actorId": "buddy",
+                      "x": 0.7,
+                      "y": 0.84,
+                      "z": "front"
+                    },
+                    {
+                      "actorId": "parrot",
+                      "x": 0.7,
+                      "y": 0.53,
+                      "z": "front"
+                    }
+                  ],
+                  "relations": [
+                    {
+                      "actorId": "parrot",
+                      "propId": "buddy",
+                      "relation": "on"
+                    }
+                  ],
+                  "moveTicks": 60,
+                  "holdTicks": 45,
+                  "taskIds": [
+                    "g1.paint.ch02.a14"
+                  ],
+                  "afterSolve": []
+                }
+              ]
+            },
+            "taskSequence": [
+              0,
+              1
+            ],
+            "exitHintDe": "Buddy wartet noch auf dich."
+          }
+        },
+        {
+          "id": "p1-faust",
+          "role": "powerup",
+          "skin": "fibel_faust",
+          "c": 56,
+          "r": 10,
+          "tier": "E",
+          "params": {
+            "grants": "punch",
+            "essential": true,
+            "gabeDe": "die Faust"
+          }
+        },
+        {
+          "id": "p1-drehkreuz",
+          "role": "door.trigger",
+          "skin": "drehkreuz",
+          "c": 57,
+          "r": 17,
+          "tier": "E",
+          "params": {
+            "kind": "exit",
+            "taskSequenceV2": {
+              "requiredIds": [
+                "g1.paint.ch02.a17",
+                "g1.paint.ch02.a19",
+                "g1.paint.ch02.a20"
+              ],
+              "variantIds": [
+                "g1.paint.ch02.a18"
+              ],
+              "reserveSlots": [
+                {
+                  "slotId": "r-guide",
+                  "target": "g1u02.w.guide",
+                  "taskId": "g1.paint.ch02.a18",
+                  "when": "optional-after-sequence",
+                  "countsAsRequired": false
+                },
+                {
+                  "slotId": "r-where",
+                  "target": "g1u02.w.where",
+                  "taskId": "g1.paint.ch02.a18",
+                  "when": "optional-after-sequence",
+                  "countsAsRequired": false
+                },
+                {
+                  "slotId": "r-adult",
+                  "target": "g1u02.w.adult",
+                  "taskId": "g1.paint.ch02.a19",
+                  "when": "optional-after-sequence",
+                  "countsAsRequired": false
+                },
+                {
+                  "slotId": "r-at-last",
+                  "target": "g1u02.w.at-last",
+                  "taskId": "g1.paint.ch02.a17",
+                  "when": "optional-after-sequence",
+                  "countsAsRequired": false
+                },
+                {
+                  "slotId": "r-let-me-see",
+                  "target": "g1u02.w.let-me-see",
+                  "taskId": "g1.paint.ch02.a20",
+                  "when": "optional-after-sequence",
+                  "countsAsRequired": false
+                }
+              ]
+            },
+            "exitHintDe": "Am Drehkreuz gibt es noch eine Frage."
+          }
+        },
+        {
+          "id": "p1-zug",
+          "role": "platform.move",
+          "skin": "zoozug",
+          "c": 58,
+          "r": 17,
+          "tier": "E",
+          "params": {
+            "artSet": "zoo-v2",
+            "hidden": true,
+            "dxTiles": 3,
+            "periodTicks": 128,
+            "ride": {
+              "mode": "shuttle",
+              "from": {
+                "c": 58,
+                "r": 17
+              },
+              "to": {
+                "c": 61,
+                "r": 17
+              },
+              "dwellTicks": 60,
+              "startOnBoard": true,
+              "requiredForExit": true,
+              "requires": [
+                "p1-drehkreuz"
+              ],
+              "speedPxPerTick": 1.5,
+              "deckWidthPx": 40
+            }
+          }
         }
-       ]
-      }
-     }
-    },
-    {
-     "id": "p1-schubkarre",
-     "role": "chaser",
-     "skin": "schubkarre",
-     "c": 37,
-     "r": 17,
-     "tier": "E",
-     "params": {
-      "patrolMinC": 37,
-      "patrolMaxC": 42
-     }
-    },
-    {
-     "id": "p1-rutscher",
-     "role": "bouncer",
-     "skin": "pinguin_rutscher",
-     "c": 45,
-     "r": 17,
-     "tier": "E",
-     "params": {}
-    },
-    {
-     "id": "p1-pinguin",
-     "role": "drained",
-     "skin": "pinguin",
-     "c": 48,
-     "r": 17,
-     "tier": "E",
-     "params": {}
-    },
-    {
-     "id": "p1-buehne-buddy",
-     "role": "scene.stage",
-     "skin": "buddy",
-     "c": 52,
-     "r": 17,
-     "tier": "E",
-     "params": {
-      "hidden": true,
-      "stage": {
-       "propSkin": "baum",
-       "ticksPerStation": 90,
-       "stations": [
+      ],
+      "links": [
         {
-         "dc": -2,
-         "dr": 0,
-         "z": "front"
+          "trigger": "p1-cage2",
+          "on": "opened",
+          "action": "reveal",
+          "targets": [
+            "p1-buehne-papagei"
+          ]
         },
         {
-         "dc": 0,
-         "dr": 0,
-         "z": "front"
+          "trigger": "p1-pinguin",
+          "on": "redeemed",
+          "action": "reveal",
+          "targets": [
+            "p1-buehne-buddy"
+          ]
         },
         {
-         "dc": 0,
-         "dr": -4,
-         "z": "front"
-        },
-        {
-         "dc": 0,
-         "dr": 0,
-         "z": "behind"
+          "trigger": "p1-drehkreuz",
+          "on": "opened",
+          "action": "reveal",
+          "targets": [
+            "p1-zug"
+          ]
         }
-       ]
+      ],
+      "exit": {
+        "to": "p2"
+      },
+      "exitRequires": {
+        "sequences": [
+          "p1-cage2",
+          "p1-buehne-papagei",
+          "p1-schubkarre",
+          "p1-pinguin",
+          "p1-buehne-buddy",
+          "p1-drehkreuz"
+        ],
+        "rides": [
+          "p1-zug"
+        ]
+      },
+      "collectSkin": "feather",
+      "collectAnimation": "zoo-v2"
+    },
+    {
+      "id": "p2",
+      "nameDe": "Die Tiere rund um den Bus",
+      "surface": "normal",
+      "checkpointSide": "near",
+      "plates": {},
+      "rows": [
+        "########################################################################",
+        "........................................................................",
+        "........................................................................",
+        "........................................................................",
+        "........................................................................",
+        "........................................................................",
+        "........................................................................",
+        "........................................................................",
+        "........................................................................",
+        "...........*...*...*...*...*...*........................................",
+        "........................................................................",
+        ".........*#######================.......................................",
+        "..........#######.......................................................",
+        "..........#######.......................................................",
+        "..........#######.......................................................",
+        "..........#######.......................................................",
+        "....*..*..#######..................*.*.**..*...*...*...*....*.....*.....",
+        "..S.......#######...........................C........................X..",
+        "###################\\...=====.......===/######..#########################",
+        "#################..#\\................/#######..#########################",
+        "#################..##\\.*..*..*.*.*../########..#########################",
+        "#################..###\\............/#########..#########################",
+        "#############################################ww#########################",
+        "#############################################ww#########################",
+        "#############################################ww#########################",
+        "#############################################ww#########################"
+      ],
+      "entities": [
+        {
+          "id": "p2-regel-ortswoerter",
+          "role": "tip",
+          "skin": "regelseite",
+          "c": 5,
+          "r": 17,
+          "tier": "E",
+          "params": {
+            "topicDe": "Wo sind die Tiere?",
+            "erklaerungDe": "Mit in, on oder under sagst du, wo das Tier ist.",
+            "merksatzDe": "Schau auf das Tier und auf den Bus.",
+            "schluesselDe": "auf das Tier und auf den Bus",
+            "beispieleEn": [
+              "in the bus / on the bus",
+              "under the bus / behind the bus",
+              "next to the bus / in front of the bus"
+            ],
+            "beispielMuster": "einzeln",
+            "lehrtEn": [
+              "in",
+              "on",
+              "under",
+              "behind"
+            ],
+            "belegDe": "MORE! 1 · Unit 2 · Seite 16, 19, 20"
+          }
+        },
+        {
+          "id": "p2-hund",
+          "role": "drained",
+          "skin": "hund",
+          "c": 18,
+          "r": 17,
+          "tier": "E",
+          "params": {
+            "artSet": "zoo-v2",
+            "taskSequenceV2": {
+              "requiredIds": [
+                "g1.paint.ch02.b05"
+              ],
+              "variantIds": []
+            },
+            "onSequenceComplete": {
+              "transferId": "dog-transfer",
+              "target": {
+                "entityId": "p2-buehne-bus",
+                "actorId": "dog"
+              },
+              "waypoints": [
+                {
+                  "c": 18,
+                  "r": 17
+                },
+                {
+                  "c": 18,
+                  "r": 21
+                },
+                {
+                  "c": 32,
+                  "r": 21
+                }
+              ],
+              "ticks": 120,
+              "arrivalFlag": "dogHome"
+            },
+            "exitHintDe": "Der Hund wartet noch auf dich."
+          }
+        },
+        {
+          "id": "p2-cage-fenn",
+          "role": "cage",
+          "skin": "loewenkaefig",
+          "c": 50,
+          "r": 17,
+          "tier": "E",
+          "params": {
+            "artSet": "zoo-v2",
+            "classmate": "fenn",
+            "captiveDe": "Fenn"
+          }
+        },
+        {
+          "id": "p2-fenn",
+          "role": "classmate",
+          "skin": "fenn",
+          "c": 51,
+          "r": 17,
+          "tier": "E",
+          "params": {
+            "artSet": "zoo-v2",
+            "cage": "p2-cage-fenn",
+            "taskSequenceV2": {
+              "requiredIds": [
+                "g1.paint.ch02.b12",
+                "g1.paint.ch02.b13",
+                "g1.paint.ch02.b14",
+                "g1.paint.ch02.b15",
+                "g1.paint.ch02.b16",
+                "g1.paint.ch02.b17"
+              ],
+              "variantIds": []
+            },
+            "hidden": true,
+            "exitHintDe": "Fenn wartet noch auf dich."
+          }
+        },
+        {
+          "id": "p2-klecks",
+          "role": "door.trigger",
+          "skin": "klecksdoor",
+          "c": 57,
+          "r": 17,
+          "tier": "E",
+          "params": {
+            "kind": "bonus",
+            "price": 10
+          }
+        },
+        {
+          "id": "p2-affe",
+          "role": "gunner",
+          "skin": "affe",
+          "c": 16,
+          "r": 10,
+          "tier": "E",
+          "params": {
+            "artSet": "zoo-v2",
+            "patrolMinC": 14,
+            "patrolMaxC": 18,
+            "gunnerAim": "lock-on-telegraph",
+            "projectileSkin": "ticket",
+            "taskSequenceV2": {
+              "requiredIds": [
+                "g1.paint.ch02.b01"
+              ],
+              "variantIds": [
+                "g1.paint.ch02.b02",
+                "g1.paint.ch02.b03",
+                "g1.paint.ch02.b04"
+              ],
+              "reserveSlots": [
+                {
+                  "slotId": "r-monkey",
+                  "target": "g1u02.w.monkey",
+                  "taskId": "g1.paint.ch02.b02",
+                  "when": "optional-after-sequence",
+                  "countsAsRequired": false
+                },
+                {
+                  "slotId": "r-lion",
+                  "target": "g1u02.w.lion",
+                  "taskId": "g1.paint.ch02.b03",
+                  "when": "optional-after-sequence",
+                  "countsAsRequired": false
+                }
+              ]
+            },
+            "exitHintDe": "Der Affe wartet noch auf dich."
+          }
+        },
+        {
+          "id": "p2-buehne-bus",
+          "role": "scene.stage",
+          "skin": "bus_buehne",
+          "c": 25,
+          "r": 17,
+          "tier": "E",
+          "params": {
+            "artSet": "zoo-v2",
+            "stage": {
+              "propSkin": "bus",
+              "ticksPerStation": 90,
+              "stations": [
+                {
+                  "dc": -2,
+                  "dr": 0,
+                  "z": "front"
+                },
+                {
+                  "dc": 0,
+                  "dr": -1,
+                  "z": "front"
+                },
+                {
+                  "dc": 2,
+                  "dr": 0,
+                  "z": "behind"
+                }
+              ]
+            },
+            "taskSequenceV2": {
+              "requiredIds": [
+                "g1.paint.ch02.b06",
+                "g1.paint.ch02.b07"
+              ],
+              "variantIds": []
+            },
+            "stageV2": {
+              "groups": [
+                {
+                  "id": "bus-roof",
+                  "activate": {
+                    "c": 19,
+                    "r": 10,
+                    "radiusTiles": 3
+                  },
+                  "observer": {
+                    "c": 19,
+                    "r": 10
+                  },
+                  "requires": []
+                },
+                {
+                  "id": "bus-under",
+                  "activate": {
+                    "c": 33,
+                    "r": 21,
+                    "radiusTiles": 3
+                  },
+                  "observer": {
+                    "c": 33,
+                    "r": 21
+                  },
+                  "requires": [
+                    "dogHome",
+                    "bus-roof"
+                  ]
+                }
+              ],
+              "actors": [
+                {
+                  "id": "monkeys",
+                  "skin": "affe",
+                  "displayHeightPx": 36,
+                  "anchor": {
+                    "x": 0.5,
+                    "y": 0.27
+                  }
+                },
+                {
+                  "id": "penguins",
+                  "skin": "pinguin",
+                  "displayHeightPx": 36,
+                  "anchor": {
+                    "x": 0.48,
+                    "y": 0.6
+                  }
+                },
+                {
+                  "id": "giraffe",
+                  "skin": "giraffe",
+                  "displayHeightPx": 112,
+                  "anchor": {
+                    "x": 0.12,
+                    "y": 0.83
+                  }
+                },
+                {
+                  "id": "frog",
+                  "skin": "frosch",
+                  "displayHeightPx": 22,
+                  "anchor": {
+                    "x": 0.5,
+                    "y": 0.94
+                  }
+                },
+                {
+                  "id": "dog",
+                  "skin": "hund",
+                  "displayHeightPx": 36,
+                  "anchor": {
+                    "x": 0.72,
+                    "y": 0.79
+                  }
+                },
+                {
+                  "id": "cats",
+                  "skin": "katze",
+                  "displayHeightPx": 26,
+                  "anchor": {
+                    "x": 0.5,
+                    "y": 0.87
+                  }
+                }
+              ],
+              "props": [
+                {
+                  "id": "bus",
+                  "skin": "bus",
+                  "anchor": {
+                    "x": 0.5,
+                    "y": 0.8
+                  }
+                }
+              ],
+              "beats": [
+                {
+                  "id": "b06",
+                  "groupId": "bus-roof",
+                  "viewId": "b06",
+                  "targetPositions": [
+                    {
+                      "actorId": "monkeys",
+                      "x": 0.5,
+                      "y": 0.27,
+                      "z": "front"
+                    },
+                    {
+                      "actorId": "penguins",
+                      "x": 0.48,
+                      "y": 0.6,
+                      "z": "behind"
+                    },
+                    {
+                      "actorId": "giraffe",
+                      "x": 0.12,
+                      "y": 0.83,
+                      "z": "front"
+                    }
+                  ],
+                  "relations": [
+                    {
+                      "actorId": "monkeys",
+                      "propId": "bus",
+                      "relation": "on"
+                    },
+                    {
+                      "actorId": "penguins",
+                      "propId": "bus",
+                      "relation": "in"
+                    },
+                    {
+                      "actorId": "giraffe",
+                      "propId": "bus",
+                      "relation": "next to"
+                    }
+                  ],
+                  "moveTicks": 60,
+                  "holdTicks": 45,
+                  "taskIds": [
+                    "g1.paint.ch02.b06"
+                  ],
+                  "afterSolve": [
+                    {
+                      "actorId": "monkeys",
+                      "waypoints": [
+                        {
+                          "x": 0.2,
+                          "y": 0.85
+                        }
+                      ],
+                      "ticks": 120
+                    },
+                    {
+                      "actorId": "penguins",
+                      "waypoints": [
+                        {
+                          "x": 0.3,
+                          "y": 0.85
+                        }
+                      ],
+                      "ticks": 120
+                    },
+                    {
+                      "actorId": "giraffe",
+                      "waypoints": [
+                        {
+                          "x": 0.1,
+                          "y": 0.85
+                        }
+                      ],
+                      "ticks": 120
+                    }
+                  ]
+                },
+                {
+                  "id": "b07",
+                  "groupId": "bus-under",
+                  "viewId": "b07",
+                  "targetPositions": [
+                    {
+                      "actorId": "frog",
+                      "x": 0.5,
+                      "y": 0.94,
+                      "z": "behind"
+                    },
+                    {
+                      "actorId": "dog",
+                      "x": 0.72,
+                      "y": 0.79,
+                      "z": "behind"
+                    },
+                    {
+                      "actorId": "cats",
+                      "x": 0.5,
+                      "y": 0.87,
+                      "z": "front"
+                    }
+                  ],
+                  "relations": [
+                    {
+                      "actorId": "frog",
+                      "propId": "bus",
+                      "relation": "under"
+                    },
+                    {
+                      "actorId": "dog",
+                      "propId": "bus",
+                      "relation": "behind"
+                    },
+                    {
+                      "actorId": "cats",
+                      "propId": "bus",
+                      "relation": "in front of"
+                    }
+                  ],
+                  "moveTicks": 60,
+                  "holdTicks": 45,
+                  "taskIds": [
+                    "g1.paint.ch02.b07"
+                  ],
+                  "afterSolve": [
+                    {
+                      "actorId": "frog",
+                      "waypoints": [
+                        {
+                          "x": 0.7,
+                          "y": 0.85
+                        }
+                      ],
+                      "ticks": 120
+                    },
+                    {
+                      "actorId": "dog",
+                      "waypoints": [
+                        {
+                          "x": 0.8,
+                          "y": 0.85
+                        }
+                      ],
+                      "ticks": 120
+                    },
+                    {
+                      "actorId": "cats",
+                      "waypoints": [
+                        {
+                          "x": 0.9,
+                          "y": 0.85
+                        }
+                      ],
+                      "ticks": 120
+                    }
+                  ]
+                }
+              ]
+            },
+            "taskSequence": [
+              0,
+              2
+            ],
+            "exitHintDe": "Beim Bus gibt es noch eine Frage."
+          }
+        },
+        {
+          "id": "p2-cage-zug",
+          "role": "cage",
+          "skin": "zookaefig",
+          "c": 32,
+          "r": 10,
+          "tier": "E",
+          "params": {
+            "artSet": "zoo-v2",
+            "captive": "train",
+            "captiveDe": "der Zug",
+            "taskSequenceV2": {
+              "requiredIds": [
+                "g1.paint.ch02.b18",
+                "g1.paint.ch02.b19"
+              ],
+              "variantIds": [],
+              "reserveSlots": [
+                {
+                  "slotId": "r-long",
+                  "target": "g1u02.w.long",
+                  "taskId": "g1.paint.ch02.b19",
+                  "when": "optional-after-sequence",
+                  "countsAsRequired": false
+                }
+              ]
+            },
+            "onSequenceComplete": {
+              "transferId": "train-transfer",
+              "target": {
+                "entityId": "p2-zug"
+              },
+              "actorId": "trainTransfer",
+              "waypoints": [
+                {
+                  "c": 32,
+                  "r": 10
+                },
+                {
+                  "c": 35,
+                  "r": 17
+                },
+                {
+                  "c": 58,
+                  "r": 17
+                }
+              ],
+              "ticks": 180,
+              "arrivalFlag": "trainReady"
+            },
+            "exitHintDe": "Beim Käfig gibt es noch eine Frage."
+          }
+        },
+        {
+          "id": "p2-parkgruppe",
+          "role": "scene.stage",
+          "skin": "parkgruppe",
+          "c": 37,
+          "r": 17,
+          "tier": "E",
+          "params": {
+            "artSet": "zoo-v2",
+            "stage": {
+              "propSkin": "bus",
+              "ticksPerStation": 90,
+              "stations": [
+                {
+                  "dc": -1,
+                  "dr": 0,
+                  "z": "front"
+                },
+                {
+                  "dc": 1,
+                  "dr": 0,
+                  "z": "front"
+                }
+              ]
+            },
+            "taskSequenceV2": {
+              "requiredIds": [
+                "g1.paint.ch02.b08",
+                "g1.paint.ch02.b09"
+              ],
+              "variantIds": [],
+              "reserveSlots": [
+                {
+                  "slotId": "r-giraffe",
+                  "target": "g1u02.w.giraffe",
+                  "taskId": "g1.paint.ch02.b09",
+                  "when": "optional-after-sequence",
+                  "countsAsRequired": false
+                },
+                {
+                  "slotId": "r-family",
+                  "target": "g1u02.w.family",
+                  "taskId": "g1.paint.ch02.b09",
+                  "when": "optional-after-sequence",
+                  "countsAsRequired": false
+                },
+                {
+                  "slotId": "r-free",
+                  "target": "g1u02.w.free",
+                  "taskId": "g1.paint.ch02.b09",
+                  "when": "optional-after-sequence",
+                  "countsAsRequired": false
+                },
+                {
+                  "slotId": "r-feed",
+                  "target": "feed",
+                  "taskId": "g1.paint.ch02.b09",
+                  "when": "optional-after-sequence",
+                  "countsAsRequired": false
+                },
+                {
+                  "slotId": "r-run-around",
+                  "target": "run around",
+                  "taskId": "g1.paint.ch02.b08",
+                  "when": "optional-after-sequence",
+                  "countsAsRequired": false
+                }
+              ]
+            },
+            "stageV2": {
+              "groups": [
+                {
+                  "id": "visitors",
+                  "activate": {
+                    "c": 37,
+                    "r": 17,
+                    "radiusTiles": 3
+                  },
+                  "observer": {
+                    "c": 37,
+                    "r": 17
+                  },
+                  "requires": []
+                }
+              ],
+              "actors": [
+                {
+                  "id": "grandma",
+                  "skin": "grandma",
+                  "displayHeightPx": 40,
+                  "anchor": {
+                    "x": 0.16,
+                    "y": 0.85
+                  }
+                },
+                {
+                  "id": "child",
+                  "skin": "besucherkind",
+                  "displayHeightPx": 32,
+                  "anchor": {
+                    "x": 0.37,
+                    "y": 0.85
+                  }
+                },
+                {
+                  "id": "family",
+                  "skin": "familie",
+                  "displayHeightPx": 44,
+                  "anchor": {
+                    "x": 0.64,
+                    "y": 0.85
+                  }
+                },
+                {
+                  "id": "dog",
+                  "skin": "hund",
+                  "displayHeightPx": 36,
+                  "anchor": {
+                    "x": 0.85,
+                    "y": 0.85
+                  }
+                }
+              ],
+              "props": [
+                {
+                  "id": "passes",
+                  "skin": "gruppenpaesse",
+                  "anchor": {
+                    "x": 0.5,
+                    "y": 0.8
+                  }
+                },
+                {
+                  "id": "parking",
+                  "skin": "parkplatz",
+                  "anchor": {
+                    "x": 0.5,
+                    "y": 0.8
+                  }
+                },
+                {
+                  "id": "poster",
+                  "skin": "parkposter",
+                  "anchor": {
+                    "x": 0.5,
+                    "y": 0.8
+                  }
+                }
+              ],
+              "beats": [
+                {
+                  "id": "b08",
+                  "groupId": "visitors",
+                  "viewId": "b08",
+                  "targetPositions": [
+                    {
+                      "actorId": "grandma",
+                      "x": 0.16,
+                      "y": 0.85,
+                      "z": "front"
+                    },
+                    {
+                      "actorId": "child",
+                      "x": 0.37,
+                      "y": 0.85,
+                      "z": "front"
+                    },
+                    {
+                      "actorId": "family",
+                      "x": 0.64,
+                      "y": 0.85,
+                      "z": "front"
+                    },
+                    {
+                      "actorId": "dog",
+                      "x": 0.85,
+                      "y": 0.85,
+                      "z": "front"
+                    }
+                  ],
+                  "relations": [],
+                  "moveTicks": 60,
+                  "holdTicks": 45,
+                  "taskIds": [
+                    "g1.paint.ch02.b08"
+                  ],
+                  "afterSolve": []
+                },
+                {
+                  "id": "b09",
+                  "groupId": "visitors",
+                  "viewId": "b09",
+                  "targetPositions": [
+                    {
+                      "actorId": "family",
+                      "x": 0.64,
+                      "y": 0.85,
+                      "z": "front"
+                    }
+                  ],
+                  "relations": [],
+                  "moveTicks": 60,
+                  "holdTicks": 45,
+                  "taskIds": [
+                    "g1.paint.ch02.b09"
+                  ],
+                  "afterSolve": [
+                    {
+                      "actorId": "family",
+                      "waypoints": [
+                        {
+                          "x": 0.9,
+                          "y": 0.8
+                        }
+                      ],
+                      "ticks": 90
+                    }
+                  ]
+                }
+              ]
+            },
+            "taskSequence": [
+              0,
+              1
+            ],
+            "exitHintDe": "Bei den Besuchern gibt es noch eine Frage."
+          }
+        },
+        {
+          "id": "p2-gehege",
+          "role": "scene.stage",
+          "skin": "gehege_buehne",
+          "c": 40,
+          "r": 17,
+          "tier": "E",
+          "params": {
+            "artSet": "zoo-v2",
+            "stage": {
+              "propSkin": "tree",
+              "ticksPerStation": 90,
+              "stations": [
+                {
+                  "dc": 0,
+                  "dr": 0,
+                  "z": "behind"
+                },
+                {
+                  "dc": 1,
+                  "dr": 0,
+                  "z": "front"
+                }
+              ]
+            },
+            "taskSequenceV2": {
+              "requiredIds": [
+                "g1.paint.ch02.b10"
+              ],
+              "variantIds": [
+                "g1.paint.ch02.b11"
+              ],
+              "reserveSlots": [
+                {
+                  "slotId": "r-to-want",
+                  "target": "g1u02.w.to-want",
+                  "taskId": "g1.paint.ch02.b11",
+                  "when": "optional-after-sequence",
+                  "countsAsRequired": false
+                },
+                {
+                  "slotId": "r-we",
+                  "target": "g1u02.w.we",
+                  "taskId": "g1.paint.ch02.b11",
+                  "when": "optional-after-sequence",
+                  "countsAsRequired": false
+                },
+                {
+                  "slotId": "r-to-let-somebody-out",
+                  "target": "g1u02.w.to-let-somebody-out",
+                  "taskId": "g1.paint.ch02.b10",
+                  "when": "optional-after-sequence",
+                  "countsAsRequired": false
+                },
+                {
+                  "slotId": "r-go-on",
+                  "target": "go on",
+                  "taskId": "g1.paint.ch02.b11",
+                  "when": "optional-after-sequence",
+                  "countsAsRequired": false
+                }
+              ]
+            },
+            "stageV2": {
+              "groups": [
+                {
+                  "id": "cages",
+                  "activate": {
+                    "c": 40,
+                    "r": 17,
+                    "radiusTiles": 3
+                  },
+                  "observer": {
+                    "c": 40,
+                    "r": 17
+                  },
+                  "requires": [
+                    "visitors"
+                  ]
+                }
+              ],
+              "actors": [
+                {
+                  "id": "animals",
+                  "skin": "zootiere",
+                  "displayHeightPx": 56,
+                  "anchor": {
+                    "x": 0.5,
+                    "y": 0.8
+                  }
+                }
+              ],
+              "props": [
+                {
+                  "id": "bars",
+                  "skin": "gitter",
+                  "anchor": {
+                    "x": 0.5,
+                    "y": 0.8
+                  }
+                }
+              ],
+              "beats": [
+                {
+                  "id": "b10",
+                  "groupId": "cages",
+                  "viewId": "b10",
+                  "targetPositions": [
+                    {
+                      "actorId": "animals",
+                      "x": 0.5,
+                      "y": 0.8,
+                      "z": "behind"
+                    }
+                  ],
+                  "relations": [],
+                  "moveTicks": 60,
+                  "holdTicks": 45,
+                  "taskIds": [
+                    "g1.paint.ch02.b10"
+                  ],
+                  "afterSolve": [
+                    {
+                      "actorId": "animals",
+                      "waypoints": [
+                        {
+                          "x": 0.85,
+                          "y": 0.82
+                        }
+                      ],
+                      "ticks": 90
+                    }
+                  ]
+                },
+                {
+                  "id": "b11",
+                  "groupId": "cages",
+                  "viewId": "b11",
+                  "targetPositions": [
+                    {
+                      "actorId": "animals",
+                      "x": 0.85,
+                      "y": 0.82,
+                      "z": "front"
+                    }
+                  ],
+                  "relations": [],
+                  "moveTicks": 60,
+                  "holdTicks": 45,
+                  "taskIds": [
+                    "g1.paint.ch02.b11"
+                  ],
+                  "afterSolve": [],
+                  "variant": true
+                }
+              ]
+            },
+            "taskSequence": [
+              0
+            ],
+            "exitHintDe": "Beim Gehege gibt es noch eine Frage."
+          }
+        },
+        {
+          "id": "p2-regel-kurzformen",
+          "role": "tip",
+          "skin": "regelseite",
+          "c": 41,
+          "r": 17,
+          "tier": "E",
+          "params": {
+            "topicDe": "Aus zwei Wörtern wird eines",
+            "erklaerungDe": "Du kannst I am auch kurz als I'm sagen.",
+            "merksatzDe": "Der kleine Strich steht da, wo du Buchstaben weglässt.",
+            "schluesselDe": "wo du Buchstaben weglässt",
+            "beispieleEn": [
+              "I am = I'm / you are = you're",
+              "he is = he's / she is = she's",
+              "it is = it's / we are = we're",
+              "they are = they're"
+            ],
+            "beispielMuster": "einzeln",
+            "lehrtEn": [
+              "I'm",
+              "he's",
+              "we're",
+              "they're"
+            ],
+            "belegDe": "MORE! 1 · Unit 2 · Seite 18"
+          }
+        },
+        {
+          "id": "p2-schaffner",
+          "role": "door.trigger",
+          "skin": "schaffner",
+          "c": 58,
+          "r": 17,
+          "tier": "E",
+          "params": {
+            "kind": "exit",
+            "taskSequenceV2": {
+              "requiredIds": [
+                "g1.paint.ch02.b22",
+                "g1.paint.ch02.b23",
+                "g1.paint.ch02.b25"
+              ],
+              "variantIds": [
+                "g1.paint.ch02.b20",
+                "g1.paint.ch02.b21",
+                "g1.paint.ch02.b24"
+              ],
+              "reserveSlots": [
+                {
+                  "slotId": "r-to-bring",
+                  "target": "g1u02.w.to-bring",
+                  "taskId": "g1.paint.ch02.b23",
+                  "when": "optional-after-sequence",
+                  "countsAsRequired": false
+                },
+                {
+                  "slotId": "r-but",
+                  "target": "g1u02.w.but",
+                  "taskId": "g1.paint.ch02.b25",
+                  "when": "optional-after-sequence",
+                  "countsAsRequired": false
+                },
+                {
+                  "slotId": "r-child",
+                  "target": "g1u02.w.child",
+                  "taskId": "g1.paint.ch02.b24",
+                  "when": "optional-after-sequence",
+                  "countsAsRequired": false
+                },
+                {
+                  "slotId": "r-group",
+                  "target": "g1u02.w.group",
+                  "taskId": "g1.paint.ch02.b25",
+                  "when": "optional-after-sequence",
+                  "countsAsRequired": false
+                },
+                {
+                  "slotId": "r-from",
+                  "target": "g1u02.w.from",
+                  "taskId": "g1.paint.ch02.b21",
+                  "when": "optional-after-sequence",
+                  "countsAsRequired": false
+                },
+                {
+                  "slotId": "r-year",
+                  "target": "g1u02.w.year",
+                  "taskId": "g1.paint.ch02.b24",
+                  "when": "optional-after-sequence",
+                  "countsAsRequired": false
+                },
+                {
+                  "slotId": "r-they",
+                  "target": "g1u02.w.they",
+                  "taskId": "g1.paint.ch02.b20",
+                  "when": "optional-after-sequence",
+                  "countsAsRequired": false
+                },
+                {
+                  "slotId": "r-how-strange",
+                  "target": "g1u02.w.how-strange",
+                  "taskId": "g1.paint.ch02.b22",
+                  "when": "optional-after-sequence",
+                  "countsAsRequired": false
+                },
+                {
+                  "slotId": "r-now",
+                  "target": "now",
+                  "taskId": "g1.paint.ch02.b20",
+                  "when": "optional-after-sequence",
+                  "countsAsRequired": false
+                },
+                {
+                  "slotId": "r-welcome",
+                  "target": "welcome",
+                  "taskId": "g1.paint.ch02.b25",
+                  "when": "optional-after-sequence",
+                  "countsAsRequired": false
+                }
+              ]
+            },
+            "exitHintDe": "Der Schaffner wartet noch auf dich."
+          }
+        },
+        {
+          "id": "p2-zug",
+          "role": "platform.move",
+          "skin": "zoozug",
+          "c": 58,
+          "r": 17,
+          "tier": "E",
+          "params": {
+            "artSet": "zoo-v2",
+            "dxTiles": 10,
+            "periodTicks": 214,
+            "ride": {
+              "mode": "shuttle",
+              "from": {
+                "c": 58,
+                "r": 17
+              },
+              "to": {
+                "c": 68,
+                "r": 17
+              },
+              "dwellTicks": 60,
+              "startOnBoard": true,
+              "requiredForExit": true,
+              "requires": [
+                "trainReady",
+                "p2-fenn",
+                "p2-schaffner"
+              ],
+              "speedPxPerTick": 1.5,
+              "deckWidthPx": 40
+            },
+            "hidden": true
+          }
+        }
+      ],
+      "links": [
+        {
+          "trigger": "p2-cage-fenn",
+          "on": "opened",
+          "action": "reveal",
+          "targets": [
+            "p2-fenn"
+          ]
+        },
+        {
+          "trigger": "p2-schaffner",
+          "on": "opened",
+          "action": "reveal",
+          "targets": [
+            "p2-zug"
+          ]
+        }
+      ],
+      "exit": {
+        "to": "p3"
+      },
+      "exitRequires": {
+        "sequences": [
+          "p2-affe",
+          "p2-hund",
+          "p2-buehne-bus",
+          "p2-cage-zug",
+          "p2-parkgruppe",
+          "p2-gehege",
+          "p2-fenn",
+          "p2-schaffner"
+        ],
+        "rides": [
+          "p2-zug"
+        ]
+      },
+      "collectSkin": "feather",
+      "collectAnimation": "zoo-v2"
+    },
+    {
+      "id": "p3",
+      "nameDe": "Hoch oben in den Bäumen",
+      "surface": "normal",
+      "checkpointSide": "near",
+      "plates": {},
+      "rows": [
+        "################################################################",
+        "................................................................",
+        ".............................................................*..",
+        ".............................................................X..",
+        "..........................................................*#####",
+        "...........................................................#####",
+        "...........................................................#####",
+        "...........................................................#####",
+        "...........................................................#####",
+        ".....*...*..........................*...................*..#####",
+        "...S.......................................................#####",
+        "###########...*................========..............*##########",
+        "###########...........................................##########",
+        "###########.........*.............*...................##########",
+        "###########...........................................##########",
+        "#############....................##........==.........##########",
+        "#############............*....*.*##....*.*=*.*.*......##########",
+        "#############*...................##......=.....C......##########",
+        "###############........####..*.#################..##############",
+        "###############........####....#################..##############",
+        "###############..*...*.#########################..##############",
+        "###############........#########################..##############",
+        "################################################ww##############",
+        "################################################ww##############",
+        "################################################ww##############",
+        "################################################ww##############"
+      ],
+      "entities": [
+        {
+          "id": "p3-regel-pronomen",
+          "role": "tip",
+          "skin": "regelseite",
+          "c": 6,
+          "r": 10,
+          "tier": "E",
+          "params": {
+            "topicDe": "Von wem erzählst du?",
+            "erklaerungDe": "Du kannst einen Namen auch durch he oder she ersetzen.",
+            "merksatzDe": "Schau, wer spricht und um wen es geht.",
+            "schluesselDe": "wer spricht und um wen es geht",
+            "beispieleEn": [
+              "Fenn: he / Grandma: she",
+              "the parrot: it",
+              "the children: they",
+              "Fenn and I: we"
+            ],
+            "beispielMuster": "einzeln",
+            "lehrtEn": [
+              "he",
+              "it",
+              "they",
+              "we"
+            ],
+            "belegDe": "MORE! 1 Unit 2 · SB 20/21, WB 18"
+          }
+        },
+        {
+          "id": "p3-ast-1",
+          "role": "platform.swing",
+          "skin": "ast",
+          "c": 14,
+          "r": 9,
+          "tier": "E",
+          "params": {
+            "artSet": "zoo-v2",
+            "ropePx": 48,
+            "periodTicks": 180
+          }
+        },
+        {
+          "id": "p3-ast-2",
+          "role": "platform.swing",
+          "skin": "ast",
+          "c": 20,
+          "r": 11,
+          "tier": "E",
+          "params": {
+            "artSet": "zoo-v2",
+            "ropePx": 48,
+            "periodTicks": 180
+          }
+        },
+        {
+          "id": "p3-schild-1",
+          "role": "platform.fall",
+          "skin": "schild",
+          "c": 25,
+          "r": 13,
+          "tier": "E",
+          "params": {
+            "artSet": "zoo-v2"
+          }
+        },
+        {
+          "id": "p3-schild-2",
+          "role": "platform.fall",
+          "skin": "schild",
+          "c": 29,
+          "r": 15,
+          "tier": "E",
+          "params": {
+            "artSet": "zoo-v2"
+          }
+        },
+        {
+          "id": "p3-papagei",
+          "role": "flyer",
+          "skin": "papagei_sturz",
+          "c": 28,
+          "r": 11,
+          "tier": "E",
+          "params": {
+            "artSet": "zoo-v2",
+            "patrolMinC": 25,
+            "patrolMaxC": 30,
+            "encounterObserver": {
+              "c": 28,
+              "r": 19
+            },
+            "taskSequenceV2": {
+              "requiredIds": [
+                "g1.paint.ch02.c01",
+                "g1.paint.ch02.c02",
+                "g1.paint.ch02.c04"
+              ],
+              "variantIds": [
+                "g1.paint.ch02.c03"
+              ],
+              "reserveSlots": [
+                {
+                  "slotId": "r-zoo",
+                  "target": "g1u02.w.zoo",
+                  "taskId": "g1.paint.ch02.c04",
+                  "when": "optional-after-sequence",
+                  "countsAsRequired": false
+                },
+                {
+                  "slotId": "r-us",
+                  "target": "g1u02.w.us",
+                  "taskId": "g1.paint.ch02.c03",
+                  "when": "optional-after-sequence",
+                  "countsAsRequired": false
+                },
+                {
+                  "slotId": "r-see",
+                  "target": "see",
+                  "taskId": "g1.paint.ch02.c03",
+                  "when": "optional-after-sequence",
+                  "countsAsRequired": false
+                },
+                {
+                  "slotId": "r-to",
+                  "target": "to",
+                  "taskId": "g1.paint.ch02.c04",
+                  "when": "optional-after-sequence",
+                  "countsAsRequired": false
+                },
+                {
+                  "slotId": "r-what-is-it",
+                  "target": "What is it?",
+                  "taskId": "g1.paint.ch02.c01",
+                  "when": "optional-after-sequence",
+                  "countsAsRequired": false
+                }
+              ]
+            },
+            "exitHintDe": "Der Papagei wartet noch auf dich."
+          }
+        },
+        {
+          "id": "p3-buehne-giraffe",
+          "role": "scene.stage",
+          "skin": "giraffe",
+          "c": 35,
+          "r": 10,
+          "tier": "E",
+          "params": {
+            "artSet": "zoo-v2",
+            "stage": {
+              "propSkin": "baum",
+              "ticksPerStation": 90,
+              "stations": [
+                {
+                  "dc": 0,
+                  "dr": 0,
+                  "z": "front"
+                },
+                {
+                  "dc": 1,
+                  "dr": 0,
+                  "z": "front"
+                }
+              ]
+            },
+            "taskSequenceV2": {
+              "requiredIds": [
+                "g1.paint.ch02.c05",
+                "g1.paint.ch02.c06"
+              ],
+              "variantIds": []
+            },
+            "stageV2": {
+              "groups": [
+                {
+                  "id": "giraffe",
+                  "activate": {
+                    "c": 32,
+                    "r": 10,
+                    "radiusTiles": 3
+                  },
+                  "observer": {
+                    "c": 32,
+                    "r": 10
+                  },
+                  "requires": []
+                }
+              ],
+              "actors": [
+                {
+                  "id": "giraffe",
+                  "skin": "giraffe",
+                  "displayHeightPx": 112,
+                  "anchor": {
+                    "x": 0.48,
+                    "y": 0.86
+                  }
+                }
+              ],
+              "props": [
+                {
+                  "id": "tree",
+                  "skin": "baum",
+                  "anchor": {
+                    "x": 0.5,
+                    "y": 0.8
+                  }
+                }
+              ],
+              "beats": [
+                {
+                  "id": "c05",
+                  "groupId": "giraffe",
+                  "viewId": "c05",
+                  "targetPositions": [
+                    {
+                      "actorId": "giraffe",
+                      "x": 0.48,
+                      "y": 0.86,
+                      "z": "front"
+                    }
+                  ],
+                  "relations": [],
+                  "moveTicks": 60,
+                  "holdTicks": 45,
+                  "taskIds": [
+                    "g1.paint.ch02.c05"
+                  ],
+                  "afterSolve": []
+                },
+                {
+                  "id": "c06",
+                  "groupId": "giraffe",
+                  "viewId": "c06",
+                  "targetPositions": [
+                    {
+                      "actorId": "giraffe",
+                      "x": 0.48,
+                      "y": 0.86,
+                      "z": "front"
+                    }
+                  ],
+                  "relations": [],
+                  "moveTicks": 60,
+                  "holdTicks": 45,
+                  "taskIds": [
+                    "g1.paint.ch02.c06"
+                  ],
+                  "afterSolve": [
+                    {
+                      "actorId": "giraffe",
+                      "worldWaypoints": [
+                        {
+                          "c": 35,
+                          "r": 17
+                        },
+                        {
+                          "c": 56,
+                          "r": 17
+                        }
+                      ],
+                      "ticks": 180,
+                      "arrivalFlag": "giraffeHome"
+                    }
+                  ]
+                }
+              ]
+            },
+            "taskSequence": [
+              0,
+              1
+            ],
+            "exitHintDe": "Die Giraffe wartet noch auf dich."
+          }
+        },
+        {
+          "id": "p3-cage-stein",
+          "role": "cage",
+          "skin": "zookaefig",
+          "c": 39,
+          "r": 17,
+          "tier": "E",
+          "params": {
+            "artSet": "zoo-v2",
+            "captive": "stone",
+            "captiveDe": "der Stein",
+            "taskSequenceV2": {
+              "requiredIds": [
+                "g1.paint.ch02.c13",
+                "g1.paint.ch02.c14"
+              ],
+              "variantIds": [],
+              "reserveSlots": [
+                {
+                  "slotId": "r-beautiful",
+                  "target": "g1u02.w.beautiful",
+                  "taskId": "g1.paint.ch02.c14",
+                  "when": "optional-after-sequence",
+                  "countsAsRequired": false
+                }
+              ]
+            },
+            "exitHintDe": "Beim Käfig gibt es noch eine Frage."
+          }
+        },
+        {
+          "id": "p3-buehne-stein",
+          "role": "scene.stage",
+          "skin": "stein_buehne",
+          "c": 41,
+          "r": 17,
+          "tier": "E",
+          "params": {
+            "artSet": "zoo-v2",
+            "hidden": true,
+            "stage": {
+              "propSkin": "steinmass",
+              "ticksPerStation": 90,
+              "stations": [
+                {
+                  "dc": 0,
+                  "dr": 0,
+                  "z": "front"
+                },
+                {
+                  "dc": -1,
+                  "dr": 0,
+                  "z": "front"
+                }
+              ]
+            },
+            "taskSequenceV2": {
+              "requiredIds": [
+                "g1.paint.ch02.c07"
+              ],
+              "variantIds": [],
+              "reserveSlots": [
+                {
+                  "slotId": "r-stone",
+                  "target": "g1u02.w.stone",
+                  "taskId": "g1.paint.ch02.c07",
+                  "when": "optional-after-sequence",
+                  "countsAsRequired": false
+                }
+              ]
+            },
+            "stageV2": {
+              "groups": [
+                {
+                  "id": "stone",
+                  "activate": {
+                    "c": 40,
+                    "r": 17,
+                    "radiusTiles": 3
+                  },
+                  "observer": {
+                    "c": 40,
+                    "r": 17
+                  },
+                  "requires": [
+                    "p3-cage-stein"
+                  ]
+                }
+              ],
+              "actors": [
+                {
+                  "id": "stone",
+                  "skin": "stein",
+                  "displayHeightPx": 20,
+                  "anchor": {
+                    "x": 0.35,
+                    "y": 0.85
+                  }
+                }
+              ],
+              "props": [
+                {
+                  "id": "size-reference",
+                  "skin": "steinmass",
+                  "anchor": {
+                    "x": 0.5,
+                    "y": 0.8
+                  }
+                }
+              ],
+              "beats": [
+                {
+                  "id": "c07",
+                  "groupId": "stone",
+                  "viewId": "c07",
+                  "targetPositions": [
+                    {
+                      "actorId": "stone",
+                      "x": 0.35,
+                      "y": 0.85,
+                      "z": "front"
+                    }
+                  ],
+                  "relations": [],
+                  "moveTicks": 60,
+                  "holdTicks": 45,
+                  "taskIds": [
+                    "g1.paint.ch02.c07"
+                  ],
+                  "afterSolve": []
+                }
+              ]
+            },
+            "taskSequence": [
+              1
+            ],
+            "exitHintDe": "Beim Stein gibt es noch eine Frage."
+          }
+        },
+        {
+          "id": "p3-baumhaus-gruppe",
+          "role": "scene.stage",
+          "skin": "baumhaus_gruppe",
+          "c": 43,
+          "r": 17,
+          "tier": "E",
+          "params": {
+            "artSet": "zoo-v2",
+            "stage": {
+              "propSkin": "baumhaus",
+              "ticksPerStation": 90,
+              "stations": [
+                {
+                  "dc": 0,
+                  "dr": 0,
+                  "z": "front"
+                },
+                {
+                  "dc": 1,
+                  "dr": 0,
+                  "z": "front"
+                },
+                {
+                  "dc": 0,
+                  "dr": 0,
+                  "z": "front"
+                },
+                {
+                  "dc": 1,
+                  "dr": 0,
+                  "z": "front"
+                },
+                {
+                  "dc": 0,
+                  "dr": 0,
+                  "z": "front"
+                }
+              ]
+            },
+            "taskSequenceV2": {
+              "requiredIds": [
+                "g1.paint.ch02.c08",
+                "g1.paint.ch02.c09",
+                "g1.paint.ch02.c11",
+                "g1.paint.ch02.c12"
+              ],
+              "variantIds": [
+                "g1.paint.ch02.c10"
+              ],
+              "reserveSlots": [
+                {
+                  "slotId": "r-big",
+                  "target": "g1u02.w.big",
+                  "taskId": "g1.paint.ch02.c10",
+                  "when": "optional-after-sequence",
+                  "countsAsRequired": false
+                },
+                {
+                  "slotId": "r-small",
+                  "target": "g1u02.w.small",
+                  "taskId": "g1.paint.ch02.c10",
+                  "when": "optional-after-sequence",
+                  "countsAsRequired": false
+                },
+                {
+                  "slotId": "r-grandma",
+                  "target": "g1u02.w.grandma",
+                  "taskId": "g1.paint.ch02.c10",
+                  "when": "optional-after-sequence",
+                  "countsAsRequired": false
+                },
+                {
+                  "slotId": "r-he",
+                  "target": "g1u02.w.he",
+                  "taskId": "g1.paint.ch02.c10",
+                  "when": "optional-after-sequence",
+                  "countsAsRequired": false
+                },
+                {
+                  "slotId": "r-she",
+                  "target": "g1u02.w.she",
+                  "taskId": "g1.paint.ch02.c10",
+                  "when": "optional-after-sequence",
+                  "countsAsRequired": false
+                },
+                {
+                  "slotId": "r-to-talk",
+                  "target": "g1u02.w.to-talk",
+                  "taskId": "g1.paint.ch02.c08",
+                  "when": "optional-after-sequence",
+                  "countsAsRequired": false
+                },
+                {
+                  "slotId": "r-happy",
+                  "target": "g1u02.w.happy",
+                  "taskId": "g1.paint.ch02.c10",
+                  "when": "optional-after-sequence",
+                  "countsAsRequired": false
+                }
+              ]
+            },
+            "stageV2": {
+              "groups": [
+                {
+                  "id": "treehouse-lower",
+                  "activate": {
+                    "c": 43,
+                    "r": 17,
+                    "radiusTiles": 3
+                  },
+                  "observer": {
+                    "c": 43,
+                    "r": 17
+                  },
+                  "requires": []
+                },
+                {
+                  "id": "treehouse-passes",
+                  "activate": {
+                    "c": 43,
+                    "r": 14,
+                    "radiusTiles": 3
+                  },
+                  "observer": {
+                    "c": 43,
+                    "r": 14
+                  },
+                  "requires": [
+                    "treehouse-lower"
+                  ]
+                }
+              ],
+              "actors": [
+                {
+                  "id": "grandma",
+                  "skin": "grandma",
+                  "displayHeightPx": 40,
+                  "anchor": {
+                    "x": 0.15,
+                    "y": 0.85
+                  }
+                },
+                {
+                  "id": "guide",
+                  "skin": "guide",
+                  "displayHeightPx": 44,
+                  "anchor": {
+                    "x": 0.34,
+                    "y": 0.85
+                  }
+                },
+                {
+                  "id": "children",
+                  "skin": "besucherkinder",
+                  "displayHeightPx": 36,
+                  "anchor": {
+                    "x": 0.58,
+                    "y": 0.85
+                  }
+                },
+                {
+                  "id": "family",
+                  "skin": "familie",
+                  "displayHeightPx": 44,
+                  "anchor": {
+                    "x": 0.84,
+                    "y": 0.85
+                  }
+                },
+                {
+                  "id": "aileen",
+                  "skin": "aileen",
+                  "displayHeightPx": 36,
+                  "anchor": {
+                    "x": 0.3,
+                    "y": 0.85
+                  }
+                },
+                {
+                  "id": "amrita-rajit",
+                  "skin": "amrita_rajit",
+                  "displayHeightPx": 36,
+                  "anchor": {
+                    "x": 0.7,
+                    "y": 0.85
+                  }
+                }
+              ],
+              "props": [
+                {
+                  "id": "passes",
+                  "skin": "schuelerpaesse",
+                  "anchor": {
+                    "x": 0.5,
+                    "y": 0.8
+                  }
+                },
+                {
+                  "id": "tree",
+                  "skin": "baumhaus",
+                  "anchor": {
+                    "x": 0.5,
+                    "y": 0.8
+                  }
+                },
+                {
+                  "id": "activity",
+                  "skin": "parkposter",
+                  "anchor": {
+                    "x": 0.5,
+                    "y": 0.8
+                  }
+                }
+              ],
+              "beats": [
+                {
+                  "id": "c08",
+                  "groupId": "treehouse-lower",
+                  "viewId": "c08",
+                  "targetPositions": [
+                    {
+                      "actorId": "children",
+                      "x": 0.58,
+                      "y": 0.85,
+                      "z": "front"
+                    }
+                  ],
+                  "relations": [],
+                  "moveTicks": 60,
+                  "holdTicks": 45,
+                  "taskIds": [
+                    "g1.paint.ch02.c08"
+                  ],
+                  "afterSolve": []
+                },
+                {
+                  "id": "c09",
+                  "groupId": "treehouse-lower",
+                  "viewId": "c09",
+                  "targetPositions": [
+                    {
+                      "actorId": "grandma",
+                      "x": 0.15,
+                      "y": 0.85,
+                      "z": "front"
+                    },
+                    {
+                      "actorId": "guide",
+                      "x": 0.34,
+                      "y": 0.85,
+                      "z": "front"
+                    },
+                    {
+                      "actorId": "children",
+                      "x": 0.58,
+                      "y": 0.85,
+                      "z": "front"
+                    },
+                    {
+                      "actorId": "family",
+                      "x": 0.84,
+                      "y": 0.85,
+                      "z": "front"
+                    }
+                  ],
+                  "relations": [],
+                  "moveTicks": 60,
+                  "holdTicks": 45,
+                  "taskIds": [
+                    "g1.paint.ch02.c09"
+                  ],
+                  "afterSolve": []
+                },
+                {
+                  "id": "c10",
+                  "groupId": "treehouse-lower",
+                  "viewId": "c10",
+                  "targetPositions": [
+                    {
+                      "actorId": "grandma",
+                      "x": 0.15,
+                      "y": 0.85,
+                      "z": "front"
+                    }
+                  ],
+                  "relations": [],
+                  "moveTicks": 60,
+                  "holdTicks": 45,
+                  "taskIds": [
+                    "g1.paint.ch02.c10"
+                  ],
+                  "afterSolve": [],
+                  "variant": true
+                },
+                {
+                  "id": "c11",
+                  "groupId": "treehouse-passes",
+                  "viewId": "c11",
+                  "targetPositions": [
+                    {
+                      "actorId": "aileen",
+                      "x": 0.3,
+                      "y": 0.85,
+                      "z": "front"
+                    }
+                  ],
+                  "relations": [],
+                  "moveTicks": 60,
+                  "holdTicks": 45,
+                  "taskIds": [
+                    "g1.paint.ch02.c11"
+                  ],
+                  "afterSolve": []
+                },
+                {
+                  "id": "c12",
+                  "groupId": "treehouse-passes",
+                  "viewId": "c12",
+                  "targetPositions": [
+                    {
+                      "actorId": "amrita-rajit",
+                      "x": 0.7,
+                      "y": 0.85,
+                      "z": "front"
+                    }
+                  ],
+                  "relations": [],
+                  "moveTicks": 60,
+                  "holdTicks": 45,
+                  "taskIds": [
+                    "g1.paint.ch02.c12"
+                  ],
+                  "afterSolve": []
+                }
+              ]
+            },
+            "taskSequence": [
+              0,
+              1,
+              3,
+              4
+            ],
+            "exitHintDe": "Bei den Besuchern gibt es noch eine Frage."
+          }
+        },
+        {
+          "id": "p3-tor",
+          "role": "door.trigger",
+          "skin": "baumhaus_tor",
+          "c": 46,
+          "r": 17,
+          "tier": "E",
+          "params": {
+            "kind": "exit",
+            "taskSequenceV2": {
+              "requiredIds": [
+                "g1.paint.ch02.c15",
+                "g1.paint.ch02.c16",
+                "g1.paint.ch02.c17"
+              ],
+              "variantIds": [
+                "g1.paint.ch02.c18"
+              ]
+            },
+            "exitHintDe": "Beim Tor gibt es noch eine Frage."
+          }
+        }
+      ],
+      "links": [
+        {
+          "trigger": "p3-cage-stein",
+          "on": "opened",
+          "action": "reveal",
+          "targets": [
+            "p3-buehne-stein"
+          ]
+        }
+      ],
+      "exit": {
+        "to": "boss"
+      },
+      "exitRequires": {
+        "sequences": [
+          "p3-papagei",
+          "p3-buehne-giraffe",
+          "p3-cage-stein",
+          "p3-buehne-stein",
+          "p3-baumhaus-gruppe",
+          "p3-tor"
+        ],
+        "rides": []
+      },
+      "collectSkin": "feather",
+      "collectAnimation": "zoo-v2"
+    }
+  ],
+  "arena": {
+    "id": "p4",
+    "nameDe": "Der Löwe will alle bei sich behalten",
+    "surface": "normal",
+    "plates": {},
+    "rows": [
+      "####################################",
+      "....................................",
+      "....................................",
+      "....................................",
+      "....................................",
+      "....................................",
+      "....................................",
+      "....................................",
+      "....................................",
+      "....................................",
+      "....................................",
+      "....................................",
+      "....................................",
+      "....................................",
+      "....................................",
+      "....................................",
+      "......###..................###......",
+      "...S..###..................###...X..",
+      "####################################",
+      "####################################"
+    ],
+    "entities": [
+      {
+        "id": "p4-guardian",
+        "role": "guardian",
+        "skin": "loewe",
+        "c": 18,
+        "r": 17,
+        "tier": "M",
+        "params": {
+          "taskSequenceV2": {
+            "requiredIds": [
+              "g1.paint.ch02.d01",
+              "g1.paint.ch02.d02",
+              "g1.paint.ch02.d03",
+              "g1.paint.ch02.d04",
+              "g1.paint.ch02.d05",
+              "g1.paint.ch02.d06",
+              "g1.paint.ch02.d07",
+              "g1.paint.ch02.d08",
+              "g1.paint.ch02.d09"
+            ],
+            "variantIds": [],
+            "reserveSlots": [
+              {
+                "slotId": "r-tree",
+                "target": "g1u02.w.tree",
+                "taskId": "g1.paint.ch02.d01",
+                "when": "optional-after-sequence",
+                "countsAsRequired": false
+              },
+              {
+                "slotId": "r-under",
+                "target": "g1u02.w.under",
+                "taskId": "g1.paint.ch02.d04",
+                "when": "optional-after-sequence",
+                "countsAsRequired": false
+              },
+              {
+                "slotId": "r-under-2",
+                "target": "g1u02.w.under-2",
+                "taskId": "g1.paint.ch02.d04",
+                "when": "optional-after-sequence",
+                "countsAsRequired": false
+              }
+            ]
+          },
+          "guardian": {
+            "mode": "zoo-lion",
+            "plateCount": 4,
+            "rounds": [
+              {
+                "taskIds": [
+                  "g1.paint.ch02.d01",
+                  "g1.paint.ch02.d02"
+                ],
+                "sceneId": "lion-r1",
+                "homeActorId": "parrot",
+                "homeWaypoints": [
+                  {
+                    "x": 0.25,
+                    "y": 0.83
+                  },
+                  {
+                    "x": 0.1,
+                    "y": 0.83
+                  }
+                ],
+                "homeTicks": 105
+              },
+              {
+                "taskIds": [
+                  "g1.paint.ch02.d03",
+                  "g1.paint.ch02.d04"
+                ],
+                "sceneId": "lion-r2",
+                "homeActorId": "monkeys",
+                "homeWaypoints": [
+                  {
+                    "x": 0.5,
+                    "y": 0.8
+                  },
+                  {
+                    "x": 0.3,
+                    "y": 0.8
+                  }
+                ],
+                "homeTicks": 105
+              },
+              {
+                "taskIds": [
+                  "g1.paint.ch02.d05",
+                  "g1.paint.ch02.d06"
+                ],
+                "sceneId": "lion-r3",
+                "homeActorId": "penguin",
+                "homeWaypoints": [
+                  {
+                    "x": 0.5,
+                    "y": 0.83
+                  },
+                  {
+                    "x": 0.7,
+                    "y": 0.83
+                  }
+                ],
+                "homeTicks": 105,
+                "returnAfterGroundContact": true
+              },
+              {
+                "taskIds": [
+                  "g1.paint.ch02.d07",
+                  "g1.paint.ch02.d08"
+                ],
+                "sceneId": "lion-r4",
+                "homeActorId": "giraffe",
+                "homeWaypoints": [
+                  {
+                    "x": 0.65,
+                    "y": 0.85
+                  },
+                  {
+                    "x": 0.9,
+                    "y": 0.85
+                  }
+                ],
+                "homeTicks": 120,
+                "inactivePlatePropId": "resting-plate"
+              }
+            ],
+            "projectileSkin": "stabplatte",
+            "evidencePropId": "loewenschild",
+            "arenaMinC": 10,
+            "arenaMaxC": 25,
+            "prowlTicks": 120,
+            "prowlSpeedPxPerTick": 0.6,
+            "telegraphTicks": [
+              60,
+              45,
+              45,
+              45
+            ],
+            "projectileSpeedPxPerTick": 2,
+            "settleBetweenTicks": 45,
+            "finaleTaskId": "g1.paint.ch02.d09",
+            "finaleAfter": "allHome",
+            "welcomeWaypoints": [
+              {
+                "c": 18,
+                "r": 17
+              },
+              {
+                "c": 22,
+                "r": 17
+              }
+            ]
+          },
+          "stageV2": {
+            "groups": [
+              {
+                "id": "lion-r1",
+                "activate": {
+                  "c": 12,
+                  "r": 17,
+                  "radiusTiles": 3
+                },
+                "observer": {
+                  "c": 12,
+                  "r": 17
+                },
+                "requires": []
+              },
+              {
+                "id": "lion-r2",
+                "activate": {
+                  "c": 24,
+                  "r": 17,
+                  "radiusTiles": 3
+                },
+                "observer": {
+                  "c": 24,
+                  "r": 17
+                },
+                "requires": [
+                  "lion-r1"
+                ]
+              },
+              {
+                "id": "lion-r3",
+                "activate": {
+                  "c": 12,
+                  "r": 17,
+                  "radiusTiles": 3
+                },
+                "observer": {
+                  "c": 12,
+                  "r": 17
+                },
+                "requires": [
+                  "lion-r2"
+                ]
+              },
+              {
+                "id": "lion-r4",
+                "activate": {
+                  "c": 24,
+                  "r": 17,
+                  "radiusTiles": 3
+                },
+                "observer": {
+                  "c": 24,
+                  "r": 17
+                },
+                "requires": [
+                  "lion-r3"
+                ]
+              },
+              {
+                "id": "lion-finale",
+                "activate": {
+                  "c": 20,
+                  "r": 17,
+                  "radiusTiles": 3
+                },
+                "observer": {
+                  "c": 20,
+                  "r": 17
+                },
+                "requires": [
+                  "lion-r4"
+                ]
+              }
+            ],
+            "actors": [
+              {
+                "id": "lion",
+                "skin": "loewe",
+                "displayHeightPx": 64,
+                "anchor": {
+                  "x": 0.5,
+                  "y": 0.86
+                }
+              },
+              {
+                "id": "parrot",
+                "skin": "papagei",
+                "displayHeightPx": 40,
+                "anchor": {
+                  "x": 0.25,
+                  "y": 0.6
+                }
+              },
+              {
+                "id": "monkeys",
+                "skin": "affe",
+                "displayHeightPx": 36,
+                "anchor": {
+                  "x": 0.35,
+                  "y": 0.8
+                }
+              },
+              {
+                "id": "penguin",
+                "skin": "pinguin",
+                "displayHeightPx": 36,
+                "anchor": {
+                  "x": 0.55,
+                  "y": 0.84
+                }
+              },
+              {
+                "id": "giraffe",
+                "skin": "giraffe",
+                "displayHeightPx": 112,
+                "anchor": {
+                  "x": 0.76,
+                  "y": 0.86
+                }
+              },
+              {
+                "id": "guide",
+                "skin": "guide",
+                "displayHeightPx": 44,
+                "anchor": {
+                  "x": 0.22,
+                  "y": 0.86
+                }
+              }
+            ],
+            "props": [
+              {
+                "id": "tree",
+                "skin": "baum",
+                "anchor": {
+                  "x": 0.5,
+                  "y": 0.8
+                }
+              },
+              {
+                "id": "bus",
+                "skin": "bus",
+                "anchor": {
+                  "x": 0.5,
+                  "y": 0.8
+                }
+              },
+              {
+                "id": "loewenschild",
+                "skin": "loewenschild",
+                "worldAnchor": {
+                  "c": 18,
+                  "r": 13
+                },
+                "canvas": {
+                  "widthPx": 112,
+                  "heightPx": 64
+                },
+                "innerRect": {
+                  "x": 8,
+                  "y": 8,
+                  "width": 96,
+                  "height": 48
+                }
+              },
+              {
+                "id": "resting-plate",
+                "skin": "stabplatte_ruhig",
+                "anchor": {
+                  "x": 0.5,
+                  "y": 0.8
+                }
+              }
+            ],
+            "beats": [
+              {
+                "id": "d01",
+                "groupId": "lion-r1",
+                "viewId": "d01",
+                "targetPositions": [
+                  {
+                    "actorId": "lion",
+                    "x": 0.55,
+                    "y": 0.84,
+                    "z": "behind"
+                  }
+                ],
+                "relations": [
+                  {
+                    "actorId": "lion",
+                    "propId": "tree",
+                    "relation": "behind"
+                  }
+                ],
+                "moveTicks": 60,
+                "holdTicks": 45,
+                "taskIds": [
+                  "g1.paint.ch02.d01"
+                ],
+                "afterSolve": []
+              },
+              {
+                "id": "d02",
+                "groupId": "lion-r1",
+                "viewId": "d02",
+                "targetPositions": [
+                  {
+                    "actorId": "parrot",
+                    "x": 0.3,
+                    "y": 0.58,
+                    "z": "front"
+                  }
+                ],
+                "relations": [],
+                "moveTicks": 60,
+                "holdTicks": 45,
+                "taskIds": [
+                  "g1.paint.ch02.d02"
+                ],
+                "afterSolve": []
+              },
+              {
+                "id": "d03",
+                "groupId": "lion-r2",
+                "viewId": "d03",
+                "targetPositions": [
+                  {
+                    "actorId": "monkeys",
+                    "x": 0.4,
+                    "y": 0.82,
+                    "z": "front"
+                  }
+                ],
+                "relations": [],
+                "moveTicks": 60,
+                "holdTicks": 45,
+                "taskIds": [
+                  "g1.paint.ch02.d03"
+                ],
+                "afterSolve": [],
+                "countByActor": {
+                  "monkeys": 2
+                }
+              },
+              {
+                "id": "d04",
+                "groupId": "lion-r2",
+                "viewId": "d04",
+                "targetPositions": [
+                  {
+                    "actorId": "penguin",
+                    "x": 0.5,
+                    "y": 0.94,
+                    "z": "behind"
+                  }
+                ],
+                "relations": [
+                  {
+                    "actorId": "penguin",
+                    "propId": "bus",
+                    "relation": "under"
+                  }
+                ],
+                "moveTicks": 60,
+                "holdTicks": 45,
+                "taskIds": [
+                  "g1.paint.ch02.d04"
+                ],
+                "afterSolve": []
+              },
+              {
+                "id": "d05",
+                "groupId": "lion-r3",
+                "viewId": "d05",
+                "targetPositions": [
+                  {
+                    "actorId": "monkeys",
+                    "x": 0.35,
+                    "y": 0.84,
+                    "z": "front"
+                  }
+                ],
+                "relations": [],
+                "moveTicks": 60,
+                "holdTicks": 45,
+                "taskIds": [
+                  "g1.paint.ch02.d05"
+                ],
+                "afterSolve": [
+                  {
+                    "actorId": "monkeys",
+                    "waypoints": [
+                      {
+                        "x": 0.3,
+                        "y": 0.84
+                      }
+                    ],
+                    "ticks": 60
+                  }
+                ]
+              },
+              {
+                "id": "d06",
+                "groupId": "lion-r3",
+                "viewId": "d06",
+                "targetPositions": [
+                  {
+                    "actorId": "guide",
+                    "x": 0.22,
+                    "y": 0.86,
+                    "z": "behind"
+                  }
+                ],
+                "relations": [],
+                "moveTicks": 60,
+                "holdTicks": 45,
+                "taskIds": [
+                  "g1.paint.ch02.d06"
+                ],
+                "afterSolve": [
+                  {
+                    "actorId": "guide",
+                    "waypoints": [
+                      {
+                        "x": 0.3,
+                        "y": 0.86
+                      }
+                    ],
+                    "ticks": 60
+                  }
+                ]
+              },
+              {
+                "id": "d07",
+                "groupId": "lion-r4",
+                "viewId": "d07",
+                "targetPositions": [
+                  {
+                    "actorId": "lion",
+                    "x": 0.45,
+                    "y": 0.86,
+                    "z": "front"
+                  },
+                  {
+                    "actorId": "giraffe",
+                    "x": 0.7,
+                    "y": 0.86,
+                    "z": "front"
+                  }
+                ],
+                "relations": [],
+                "moveTicks": 60,
+                "holdTicks": 45,
+                "taskIds": [
+                  "g1.paint.ch02.d07"
+                ],
+                "afterSolve": []
+              },
+              {
+                "id": "d08",
+                "groupId": "lion-r4",
+                "viewId": "d08",
+                "targetPositions": [
+                  {
+                    "actorId": "lion",
+                    "x": 0.5,
+                    "y": 0.86,
+                    "z": "front"
+                  },
+                  {
+                    "actorId": "guide",
+                    "x": 0.22,
+                    "y": 0.86,
+                    "z": "front"
+                  }
+                ],
+                "relations": [],
+                "moveTicks": 60,
+                "holdTicks": 45,
+                "taskIds": [
+                  "g1.paint.ch02.d08"
+                ],
+                "afterSolve": [],
+                "emotionByActor": {
+                  "lion": "sad",
+                  "guide": "inviting"
+                }
+              },
+              {
+                "id": "d09",
+                "groupId": "lion-finale",
+                "viewId": "d09",
+                "targetPositions": [
+                  {
+                    "actorId": "lion",
+                    "x": 0.5,
+                    "y": 0.86,
+                    "z": "front"
+                  }
+                ],
+                "relations": [],
+                "moveTicks": 60,
+                "holdTicks": 45,
+                "taskIds": [
+                  "g1.paint.ch02.d09"
+                ],
+                "afterSolve": [
+                  {
+                    "actorId": "lion",
+                    "waypoints": [
+                      {
+                        "x": 0.27,
+                        "y": 0.86
+                      }
+                    ],
+                    "ticks": 90
+                  }
+                ],
+                "emotionByActor": {
+                  "lion": "lonely"
+                }
+              }
+            ]
+          },
+          "exitHintDe": "Der Löwe wartet noch auf dich."
+        }
       }
-     }
+    ],
+    "links": [],
+    "exit": {
+      "to": "done"
     },
-    {
-     "id": "p1-faust",
-     "role": "powerup",
-     "skin": "fibel_faust",
-     "c": 56,
-     "r": 10,
-     "tier": "E",
-     "params": {
-      "grants": "punch",
-      "essential": true,
-      "gabeDe": "die Faust"
-     }
-    },
-    {
-     "id": "p1-drehkreuz",
-     "role": "door.trigger",
-     "skin": "drehkreuz",
-     "c": 61,
-     "r": 17,
-     "tier": "E",
-     "params": {
-      "kind": "exit"
-     }
-    }
-   ],
-   "links": [
-    {
-     "trigger": "p1-cage2",
-     "on": "opened",
-     "action": "reveal",
-     "targets": [
-      "p1-buehne-papagei"
-     ]
-    },
-    {
-     "trigger": "p1-pinguin",
-     "on": "redeemed",
-     "action": "reveal",
-     "targets": [
-      "p1-buehne-buddy"
-     ]
-    }
-   ],
-   "exit": {
-    "to": "p2"
-   }
-  },
-  {
-   "id": "p2",
-   "nameDe": "Die Gehege-Gassen",
-   "surface": "normal",
-   "plates": {},
-   "rows": [
-    "########################################################################",
-    "........................................................................",
-    "........................................................................",
-    "........................................................................",
-    "........................................................................",
-    "........................................................................",
-    "........................................................................",
-    "........................................................................",
-    "........................................................................",
-    "........................................................................",
-    "........................................................................",
-    "........................................................................",
-    "........................................................................",
-    "........................................................................",
-    "........................................................................",
-    "........................................................................",
-    "........................................................................",
-    "........................................................................",
-    "........................................................................",
-    "........................................................................",
-    "............*.............*.............*.............*.................",
-    "....S...............................................................X...",
-    "########################################################################",
-    "########################################################################",
-    "########################################################################",
-    "########################################################################"
-   ],
-   "entities": [
-    {
-     "id": "p2-regel-ortswoerter",
-     "role": "tip",
-     "skin": "regelseite",
-     "c": 10,
-     "r": 21,
-     "tier": "E",
-     "params": {
-      "topicDe": "Ortswörter: wo etwas ist",
-      "erklaerungDe": "Ein Ortswort sagt dir, wo etwas ist. Es steht vor dem Ding.",
-      "merksatzDe": "in, under, behind, next to: erst das Ortswort, dann das Ding.",
-      "schluesselDe": "erst das Ortswort, dann das Ding",
-      "beispieleEn": [
-       "The parrot is in the tree.",
-       "The dog is under the bus.",
-       "The monkey is behind the tree.",
-       "The penguin is next to the bus."
+    "exitRequires": {
+      "sequences": [
+        "p4-guardian"
       ],
-      "beispielMuster": "einzeln",
-      "lehrtEn": [
-       "in",
-       "under",
-       "behind",
-       "next to"
-      ],
-      "belegDe": "MORE! 1 · Unit 2 · Seite 16, 19, 20"
-     }
+      "rides": []
     },
-    {
-     "id": "p2-hund",
-     "role": "drained",
-     "skin": "hund",
-     "c": 20,
-     "r": 21,
-     "tier": "E",
-     "params": {}
-    },
-    {
-     "id": "p2-cage-fenn",
-     "role": "cage",
-     "skin": "loewenkaefig",
-     "c": 34,
-     "r": 21,
-     "tier": "E",
-     "params": {
-      "classmate": "fenn",
-      "captiveDe": "Fenn"
-     }
-    },
-    {
-     "id": "p2-fenn",
-     "role": "classmate",
-     "skin": "fenn",
-     "c": 35,
-     "r": 21,
-     "tier": "E",
-     "params": {
-      "cage": "p2-cage-fenn"
-     }
-    },
-    {
-     "id": "p2-klecks",
-     "role": "door.trigger",
-     "skin": "klecksdoor",
-     "c": 62,
-     "r": 21,
-     "tier": "E",
-     "params": {
-      "kind": "bonus",
-      "price": 4
-     }
-    }
-   ],
-   "links": [],
-   "exit": {
-    "to": "p3"
-   }
+    "collectSkin": "feather",
+    "collectAnimation": "zoo-v2"
   },
-  {
-   "id": "p3",
-   "nameDe": "Das Baumhaus-Revier",
-   "surface": "normal",
-   "plates": {},
-   "rows": [
-    "################################################################",
-    "................................................................",
-    "................................................................",
-    "................................................................",
-    "................................................................",
-    "................................................................",
-    "................................................................",
-    "................................................................",
-    "................................................................",
-    "................................................................",
-    "................................................................",
-    "................................................................",
-    "................................................................",
-    "................................................................",
-    "................................................................",
-    "................................................................",
-    "................................................................",
-    "................................................................",
-    "................................................................",
-    "................................................................",
-    "............*...........*.............*...........*.............",
-    "....S.......................................................X...",
-    "################################################################",
-    "################################################################",
-    "################################################################",
-    "################################################################"
-   ],
-   "entities": [],
-   "links": [],
-   "exit": {
-    "to": "boss"
-   }
-  }
- ],
- "arena": {
-  "id": "p4",
-  "nameDe": "Die Arena",
-  "surface": "normal",
-  "plates": {},
-  "rows": [
-   "####################################",
-   "....................................",
-   "....................................",
-   "....................................",
-   "....................................",
-   "....................................",
-   "....................................",
-   "....................................",
-   "....................................",
-   "....................................",
-   "....................................",
-   "....................................",
-   "....................................",
-   "....................................",
-   "....................................",
-   "....S...........................X...",
-   "####################################",
-   "####################################",
-   "####################################",
-   "####################################"
-  ],
-  "entities": [
-   {
-    "id": "p4-guardian",
-    "role": "guardian",
-    "skin": "waechter",
-    "c": 26,
-    "r": 14,
-    "tier": "M",
-    "params": {}
-   }
-  ],
-  "links": [],
-  "exit": {
-   "to": "done"
-  }
- },
- "bonus": {
-  "id": "p9",
-  "nameDe": "Die Kleckskammer",
-  "surface": "normal",
-  "plates": {},
-  "rows": [
-   "############################################",
-   "............................................",
-   "............................................",
-   "............................................",
-   "............................................",
-   "............................................",
-   "............................................",
-   "............................................",
-   "............................................",
-   "............................................",
-   "............................................",
-   "............................................",
-   "............................................",
-   "............................................",
-   "........*.......*.......*.......*......*....",
-   "....S...................................X...",
-   "############################################",
-   "############################################",
-   "############################################",
-   "############################################"
-  ],
-  "entities": [],
-  "links": [],
-  "exit": {
-   "to": "p2"
+  "bonus": {
+    "id": "p9",
+    "nameDe": "Die Blasen im Aquarium",
+    "surface": "normal",
+    "plates": {},
+    "rows": [
+      "############################################",
+      "............................................",
+      "............................................",
+      "............................................",
+      "............................................",
+      "............................................",
+      "............................................",
+      "............................................",
+      "............................................",
+      "................................*...........",
+      "..............*..*...........*..............",
+      "............................................",
+      "........*..*...====.*..*..*..===...*........",
+      "......................................*.....",
+      "..........===.........===..........===..*...",
+      "...S.....................................X..",
+      "############################################",
+      "############################################",
+      "############################################",
+      "############################################"
+    ],
+    "entities": [],
+    "links": [],
+    "exit": {
+      "to": "p2"
+    },
+    "budgetSec": 30,
+    "collectSkin": "bubble",
+    "collectAnimation": "zoo-v2"
   },
-  "budgetSec": 30
- },
- "tipsTotal": 2
+  "tipsTotal": 4,
+  "restorationDe": {
+    "oneDative": "einem entfärbten Tier",
+    "manyDative": "entfärbten Tieren",
+    "oneSubject": "es",
+    "freedLabel": "Sachen zurückgeholt"
+  }
 }

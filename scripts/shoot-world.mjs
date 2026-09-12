@@ -186,10 +186,12 @@ export const fightSidecar = (geloest) => {
 // Prüfung, die nie rot wird, ist Dekoration.
 export const levelDrift = ({ level, html, phase }) => {
   const ph = (level.phases ?? []).find((x) => x.id === phase)
-    ?? (level.arena?.id === phase ? level.arena : null);
+    ?? (level.arena?.id === phase ? level.arena : null)
+    ?? (level.bonus?.id === phase ? level.bonus : null);
   if (ph === null || ph === undefined) return null;      // kein Urteil über eine Phase, die es nicht gibt
   if (!Array.isArray(ph.rows) || ph.rows.length === 0) return null;
-  const alsPayload = JSON.stringify(ph.rows).replaceAll('"', '\\"');
+  // Rows are JSON inside a serialized Flight string: escape both layers.
+  const alsPayload = JSON.stringify(JSON.stringify(ph.rows)).slice(1, -1);
   if (html.includes(alsPayload)) return null;
   return `die Zeilen-Landkarte der Phase ${phase} steht NICHT in der ausgelieferten Seite. `
     + "Der Server liefert eine ANDERE (fast immer: eine ältere) Fassung des Levels als die Platte — "
@@ -306,26 +308,27 @@ if (has("--selftest")) {
   ok("…und er nennt den Grund beim Namen", fightSidecar(["wer"]).beipackzettel.includes("resolveCorrect"), true);
   ok("…und die Karten stehen mit dabei", fightSidecar(["wer", "wie"]).karten.join(","), "wer,wie");
 
-  // 4 · D-443 · die Level-Frische, beide Richtungen. Das Level ist das ECHTE
-  //     von der Platte (P-71); die »ausgelieferte Seite« wird daraus gebaut —
-  //     einmal treu, einmal mit genau EINER geänderten Zelle.
-  {
-    const lvl = JSON.parse(fs.readFileSync(
-      path.join(hier, "../content/corpus/stories/g1.st.lost-pages/paint/ch01.level.json"), "utf8"));
-    const ph = lvl.phases[0];
-    const treu = `…irgendwas davor…${JSON.stringify(ph.rows).replaceAll('"', '\\"')}…irgendwas danach…`;
-    ok("eine Seite mit DIESER Zeilen-Landkarte ist frisch", levelDrift({ level: lvl, html: treu, phase: ph.id }), null);
-
-    const alt = JSON.parse(JSON.stringify(lvl));
-    const zeile = alt.phases[0].rows.findIndex((r) => /[^.\s]/.test(String(r)));
-    const r = String(alt.phases[0].rows[zeile]);
-    const spalte = r.split("").findIndex((c) => c !== "." && c !== " ");
-    // EINE Zelle, mehr nicht (W5-Falle 4: ein Tamper darf nur eine Größe bewegen)
-    alt.phases[0].rows[zeile] = `${r.slice(0, spalte)}.${r.slice(spalte + 1)}`;
-    const drift = levelDrift({ level: alt, html: treu, phase: ph.id });
-    ok("EINE geänderte Zelle wird gefunden", typeof drift === "string" && drift.includes("D-443"), true);
-    ok("…und die Meldung nennt die Phase", typeof drift === "string" && drift.includes(ph.id), true);
-    ok("über eine Phase, die es nicht gibt, wird nicht geurteilt",
+  // 4 · D-443: actual maps inside a normally serialized Flight payload.
+  // Independent construction: serialize the whole level, then the transport.
+  for (const chapter of ["ch01", "ch02"]) {
+    const lvl = JSON.parse(fs.readFileSync(path.join(hier,
+      "../content/corpus/stories/g1.st.lost-pages/paint/" + chapter + ".level.json"), "utf8"));
+    const treu = "<script>self.__next_f.push(" + JSON.stringify([1,
+      "0:" + JSON.stringify({ level: lvl }) + "\n"]) + ")</script>";
+    const all = (l) => [...(l.phases ?? []), l.arena, l.bonus].filter(Boolean);
+    for (const ph of all(lvl)) {
+      ok(chapter + "/" + ph.id + " unverändert, einschließlich Rampen/Bonus",
+        levelDrift({ level: lvl, html: treu, phase: ph.id }), null);
+      const alt = structuredClone(lvl);
+      const target = all(alt).find(p => p.id === ph.id);
+      const row = target.rows.findIndex(r => /[^.\s]/.test(r));
+      const col = target.rows[row].search(/[^.\s]/);
+      target.rows[row] = target.rows[row].slice(0, col) + "." + target.rows[row].slice(col + 1);
+      const drift = levelDrift({ level: alt, html: treu, phase: ph.id });
+      ok(chapter + "/" + ph.id + " eine geänderte Zelle wird gefunden",
+        typeof drift === "string" && drift.includes("D-443") && drift.includes(ph.id), true);
+    }
+    ok(chapter + " unbekannte Phase bleibt ohne Urteil",
       levelDrift({ level: lvl, html: treu, phase: "gibt-es-nicht" }), null);
   }
 

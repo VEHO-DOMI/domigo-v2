@@ -344,6 +344,13 @@ export const DE_COLOUR = {
   grey: ["grau", "graue", "grauer", "graues", "grauen", "grauem"],
 };
 
+/** One taught colour, or two distinct taught colours joined by and. */
+export const keyedColours = (answer) => {
+  if(typeof answer!=="string")return new Set();
+  const words=answer.split(" and ");
+  return words.length<=2 && new Set(words).size===words.length && words.every(w=>DE_COLOUR[w])?new Set(words):new Set();
+};
+
 /** Which colour words a German line names. Word boundaries matter both ways:
  *  „Blaubeere" is not blue and „rote" is red — so the longest inflection wins
  *  and a match must stand alone as a word. */
@@ -538,6 +545,10 @@ if (selftest) {
     (() => { const l = skipLedger([{ chapter: "chZZ", draft: true }]); l.skip("chZZ", "colour-truth/messung", "Blatt fehlt"); return { gaps: l.gaps().length, rows: l.rows().length }; })(),
     (r) => r.gaps === 0 && r.rows === 1);
 
+  sagK("a two-colour key retains both taught words",keyedColours("black and white"),s=>s.size===2&&s.has("black")&&s.has("white"));
+  sagK("an unknown second colour is rejected",keyedColours("black and silver"),s=>s.size===0);
+  sagK("repeating one colour does not form two colours",keyedColours("black and black"),s=>s.size===0);
+
   let kopieBad = 0;
   for (const [name, got, ok] of kopieCases) {
     const pass = ok(got);
@@ -724,7 +735,8 @@ for (const file of taskFiles) {
     if (t.kind !== "restore") continue;
     const where = `${file} ${t.id.replace(`g1.paint.${chapter}.`, "")}`;
     const answer = t.colour;
-    if (typeof answer !== "string" || DE_COLOUR[answer] === undefined) {
+    const answers=keyedColours(answer);
+    if (answers.size===0) {
       fail(where, `the card keys »${answer}«, which is not one of this book's ten colour words — nothing to hold the German to`);
       continue;
     }
@@ -734,8 +746,8 @@ for (const file of taskFiles) {
     const ask = t.colourAskDe;
     kopieZeilen += 1;
     const inAsk = coloursIn(ask);
-    if (!inAsk.has(answer)) {
-      fail(where, `the ask »${ask}« does not name the keyed colour »${answer}« (${DE_COLOUR[answer][0]}) — the German question and the chips are about different colours`);
+    if (![...answers].every(a=>inAsk.has(a))) {
+      fail(where, `the ask »${ask}« does not name the keyed colour »${answer}« (${[...answers].map(a=>DE_COLOUR[a][0]).join(" und ")}) — the German question and the chips are about different colours`);
     }
 
     // LAW B · no other colour word in the ask or in the help.
@@ -744,7 +756,7 @@ for (const file of taskFiles) {
       if (typeof line !== "string") continue;
       if (field !== "colourAskDe") kopieZeilen += 1;
       for (const other of coloursIn(line)) {
-        if (other === answer) continue;
+        if (answers.has(other)) continue;
         fail(where, `${field} names »${other}« while the card's answer is »${answer}«: „${line}" — the child who opens the help is the child who is stuck, and this line tells them the wrong word`);
       }
     }
