@@ -12,15 +12,18 @@ export const ZooActor = z.object({
   displayWidthPx: z.number().finite().positive().optional(),
   attachTo: z.object({ actorId: Id, socket: Id, offsetPx: z.object({ x: z.number(), y: z.number() }) }).optional(),
 });
+export const ZooSourceRect = z.object({x:z.number().min(0).max(1),y:z.number().min(0).max(1),width:z.number().positive().max(1),height:z.number().positive().max(1)}).refine(r=>r.x+r.width<=1&&r.y+r.height<=1,"source rectangle leaves the image");
+export const ClassmateOwnerRect = z.object({anchor:ZooPoint,displayHeightPx:z.number().finite().positive(),displayWidthPx:z.number().finite().positive().optional()});
 export const ZooProp = z.object({
   id: Id, skin: Id, anchor: ZooPoint.optional(), worldAnchor: ZooCell.optional(),
+  sourceRect: ZooSourceRect.optional(),
   canvas: z.object({ widthPx: z.number().positive(), heightPx: z.number().positive() }).optional(),
   innerRect: z.object({ x: z.number().nonnegative(), y: z.number().nonnegative(), width: z.number().positive(), height: z.number().positive() }).optional(),
 }).refine(p => !!p.anchor || !!p.worldAnchor, "prop needs an anchor");
 /** Optional illustrated props for the classmate's existing task-bound snapshots. */
 export const ClassmatePresentation = z.object({
   props: z.array(ZooProp),
-  views: z.array(z.object({ taskId: Id, propIds: z.array(Id) })),
+  views: z.array(z.object({ taskId: Id, propIds: z.array(Id), ownerRect: ClassmateOwnerRect.optional(), showFriends: z.boolean().optional() })),
   homePropIds: z.array(Id).optional(),
 }).superRefine((spec, ctx) => {
   const props = new Set<string>();
@@ -73,6 +76,8 @@ export const ZooBeat = z.object({
   emotionByActor: z.record(Id, Id).optional(),
   /** Observed endpoint pose; never replaces the moving animation. */
   poseByActor: z.record(Id, Id).optional(),
+  /** Keep witnessed endpoint cells after solving for actors without a return path. */
+  holdPoseAfterSolve: z.boolean().optional(),
 });
 export const StageV2 = z.object({
   groups: z.array(z.object({ id: Id, activate: ZooCell.extend({ radiusTiles: z.number().positive() }), observer: ZooCell, requires: z.array(Id) })).min(1),

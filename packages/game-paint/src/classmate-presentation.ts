@@ -8,3 +8,10 @@ export const classmatePresentationProps = (spec: ClassmatePresentationSpec | und
   // Keep declaration order for registered overlays, and freeze nested anchors/canvases too.
   return structuredClone(spec.props.filter(prop => ids.includes(prop.id)));
 };
+
+/** Optional question-frozen drawing layout; contains no language or actor-state mutation. */
+export const classmateOwnerPresentation = (spec: ClassmatePresentationSpec | undefined, taskId: string, ownerId: string) => {
+  const view = spec?.views.find(view => view.taskId === taskId);
+  if (!view || (!view.ownerRect && view.showFriends === undefined)) return {};
+  return { ownerPresentation: { ownerId, ...(view.ownerRect ? { rect: structuredClone(view.ownerRect) } : {}), ...(view.showFriends === undefined ? {} : { showFriends: view.showFriends }) } };
+};

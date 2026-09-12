@@ -1,3 +1,4 @@
+import { sceneImagePlacement } from "./scene-v2.ts";
 import { applyZooLionDisplaySize } from "./zoo-lion-size.ts";
 import { classmatePresentationProps } from "./classmate-presentation.ts";
 import { transferDrawItem } from "./transfer-visual.ts";
@@ -2221,7 +2222,8 @@ export class PaintScene extends Phaser.Scene {
     const id = engageTargetId(this.world, this.player.x, this.player.y);
     const e = id === null ? null : this.world.entities.find((x) => x.id === id);
     this.engageCueG.clear();
-    if (!e) return;
+    // An open question already owns the interaction; its cue would cover the observed evidence.
+    if (!e || this.overlayOpen) return;
     const x = fromSubs(e.x);
     // R5-W1 · F1: das Wippen ist nach cue.ts gezogen — dort ist es eine reine
     // Funktion mit einem Namen und einem Test, hier war es ein Literal in einer
@@ -2328,6 +2330,7 @@ export class PaintScene extends Phaser.Scene {
         snapshot = sceneWithActorWash(snapshot, e.id, washAlphaFor(e, this.cfg.reducedMotion));
         snapshot.view.x=fromSubs(e.x)-80;snapshot.view.y=fromSubs(e.y)-120;
         if(e.redeemed && e.params.classmatePresentation) snapshot.props=classmatePresentationProps(e.params.classmatePresentation,"home");
+        if(e.redeemed)delete snapshot.ownerPresentation;
         if(e.redeemed) {snapshot.actors[0]!.cell=zooEntityCell(e);for(const a of snapshot.actors.slice(1))a.cell=e.state==="roam"?ZOO_FRIEND_CELLS.walking:ZOO_FRIEND_CELLS.waiting;}
       }
       if(scene?.label){
@@ -2346,7 +2349,10 @@ export class PaintScene extends Phaser.Scene {
         const id = `${e.id}:${item.id}`;
         let img = this.zooSceneImgs.get(id);
         if (!img) { img = this.add.image(item.x, item.y, key).setOrigin(.5, 1); this.zooSceneImgs.set(id, img); }
-        img.setVisible(true).setTexture(key).setPosition(item.x,item.y).setDisplaySize(item.w,item.h).setDepth(7.21+item.depth*.01);
+        img.setVisible(true).setTexture(key);
+        const placement=sceneImagePlacement(this.textures.exists(artKey)?item:{...item,sourceRect:undefined},img.frame.realWidth,img.frame.realHeight);
+        if(placement.crop)img.setCrop(placement.crop.x,placement.crop.y,placement.crop.width,placement.crop.height);else img.setCrop();
+        img.setPosition(placement.x,placement.y).setDisplaySize(placement.w,placement.h).setDepth(7.21+item.depth*.01);
         if (item.wash && this.textures.exists(artKey)) {
           const washId = `${id}:wash`, greyKey = this.greyTexOf(artKey);
           let wash = this.zooSceneImgs.get(washId);

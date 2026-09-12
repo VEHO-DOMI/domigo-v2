@@ -90,5 +90,12 @@ export const restoredStageUsesHomeView = (state: string, runtime: StageRuntime):
 };
 export const solveStage = (e: EntityState): void => {
   const s=e.stageRuntime!;
+  const beat = stageSpec(e)?.beats.find(b => b.id === s.scene.beatId);
+  if (beat?.holdPoseAfterSolve && s.scene.ticks >= beat.moveTicks) {
+    for (const actor of s.scene.actors) {
+      const pose = beat.poseByActor?.[actor.id];
+      if (pose !== undefined && !beat.afterSolve.some(path => path.actorId === actor.id)) actor.cell = pose;
+    }
+  }
   e.state="returning"; s.scene.returning=true; s.scene.returnTicks=0; s.scene.starts=structuredClone(s.scene.actors); s.retry=false;
 };

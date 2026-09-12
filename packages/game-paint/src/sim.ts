@@ -1,4 +1,4 @@
-import { classmatePresentationProps } from "./classmate-presentation.ts";
+import { classmatePresentationProps, classmateOwnerPresentation } from "./classmate-presentation.ts";
 import { ZOO_FRIEND_SKIN, ZOO_FRIEND_CELLS, zooStageCell } from "./zoo-visuals.ts";
 import { abandonShuttle, boardShuttle } from "./train-ride.ts";
 import { newChapterLearning, type ChapterLearningState } from "./learning.ts";
@@ -1054,7 +1054,7 @@ export class Sim {
         source.actingCell=cell;
         req={...req,sceneSnapshot:{entityId:source.id,beatId:ref.beatId,viewId:ref.viewId,round:req.ctx.round,
           view:{x:source.x/SUBS-80,y:source.y/SUBS-120,width:160,height:120},
-          actors:[{id:source.id,skin:source.skin,x:.5,y:1,z:"front",displayHeightPx:30,cell,count:1},...(req.ctx.round>=5?Array.from({length:3},(_,i)=>({id:`${source.id}-friend-${i+1}`,skin:ZOO_FRIEND_SKIN,x:.08+i*.14,y:1,z:"front" as const,displayHeightPx:30,cell:ZOO_FRIEND_CELLS.waiting,count:1})):[])],props:classmatePresentationProps(source.params.classmatePresentation,taskId),relations:[]}};
+          actors:[{id:source.id,skin:source.skin,x:.5,y:1,z:"front",displayHeightPx:30,cell,count:1},...(req.ctx.round>=5?Array.from({length:3},(_,i)=>({id:`${source.id}-friend-${i+1}`,skin:ZOO_FRIEND_SKIN,x:.08+i*.14,y:1,z:"front" as const,displayHeightPx:30,cell:ZOO_FRIEND_CELLS.waiting,count:1})):[])],props:classmatePresentationProps(source.params.classmatePresentation,taskId),relations:[],...classmateOwnerPresentation(source.params.classmatePresentation,taskId,source.id)}};
         if(observedRound>=5)req.sceneSnapshot!.actors[0]!.x=.5;
         source.classmateScene=structuredClone(req.sceneSnapshot!);
         events.push({type:"sceneBeatSeen",entityId:source.id,beatId:ref.beatId,viewId:ref.viewId});

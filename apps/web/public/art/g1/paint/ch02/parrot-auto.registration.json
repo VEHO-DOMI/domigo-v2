@@ -1,0 +1,26 @@
+[
+  {
+    "registrationGroup": "parrot-auto",
+    "stem": "papagei_auto_crouch",
+    "canvas": {
+      "width": 512,
+      "height": 512
+    },
+    "trim": {
+      "x": 36,
+      "y": 362,
+      "width": 440,
+      "height": 150
+    },
+    "output": {
+      "x": 0,
+      "y": 0,
+      "width": 512,
+      "height": 512
+    },
+    "anchor": {
+      "x": 0.5,
+      "y": 1
+    }
+  }
+]

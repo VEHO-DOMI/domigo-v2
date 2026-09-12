@@ -17,7 +17,8 @@
       ],
       "stimulus": {
         "type": "entity",
-        "showsDe": "Ein Mann mit Abzeichen hält einen gefalteten Plan."
+        "showsDe": "Ein Mann mit Abzeichen hält einen gefalteten Plan.",
+        "art": "waertereimer_guide_a01"
       },
       "storyDe": "Sag dem Guide, was du auf seinem Bild siehst!",
       "promptEn": "What can you see?",
@@ -51,9 +52,9 @@
       "stimulus": {
         "type": "entity",
         "showsDe": "Pinguine mit runden Bäuchen stehen im Rahmen.",
-        "art": "count_a02"
+        "art": "waertereimer_count_a02"
       },
-      "storyDe": "Schau, wer auf dem nächsten Bild wartet!",
+      "storyDe": "Sag, wie viele Tiere du auf dem Bild siehst!",
       "promptEn": "What is in the picture?",
       "skins": [
         "waertereimer"
@@ -85,7 +86,7 @@
       "stimulus": {
         "type": "entity",
         "showsDe": "Wagen mit Rädern stehen auf Schienen.",
-        "art": "park_train_view"
+        "art": "waertereimer_train_a03"
       },
       "storyDe": "Der Guide zeigt dir das nächste Bild.",
       "promptEn": "What can you see now?",
@@ -117,8 +118,8 @@
       ],
       "stimulus": {
         "type": "entity",
-        "showsDe": "Im Rahmen siehst du Federn und kurze Füße.",
-        "art": "count_a04"
+        "showsDe": "Im Rahmen steht ein Tier mit kurzen Füßen.",
+        "art": "pinguin_rutscher_count_a04"
       },
       "storyDe": "Hier gibt es wieder etwas zu zählen!",
       "promptEn": "How many penguins?",
@@ -151,7 +152,7 @@
       "stimulus": {
         "type": "entity",
         "showsDe": "Du siehst die Bäuche der Pinguine.",
-        "art": "count_a05"
+        "art": "pinguin_rutscher_count_a05"
       },
       "storyDe": "Schau noch einmal hin und zähle!",
       "promptEn": "How many can you see?",
@@ -184,7 +185,8 @@
       ],
       "stimulus": {
         "type": "entity",
-        "showsDe": "Der Pinguin ist noch grau und wartet auf seine Farben."
+        "showsDe": "Der Pinguin ist noch grau und wartet auf seine Farben.",
+        "art": "pinguin_a"
       },
       "storyDe": "Sag, welches Tier ich bin — gib mir die Farbe zurück!",
       "promptEn": "What is it?",
@@ -206,7 +208,7 @@
         "giraffe"
       ],
       "name": "penguin",
-      "colourAskDe": "Ich bin ein Pinguin. Mir fehlen Schwarz und Weiß.",
+      "colourAskDe": "Welche Farben gehören zum Pinguin?",
       "colourOptions": [
         "black and white",
         "blue and yellow",
@@ -411,7 +413,7 @@
       "grounding": "SB 19, panels 1–6; current sceneRef binds the tested relation; picture art pending.",
       "options": [
         "The parrot is behind the car.",
-        "The parrot is next to the car.",
+        "The parrot is on the car.",
         "The parrot is under the car."
       ],
       "answer": "The parrot is behind the car.",
@@ -454,7 +456,7 @@
       "options": [
         "The parrot is in front of the car.",
         "The parrot is behind the car.",
-        "The parrot is next to the car."
+        "The parrot is in the car."
       ],
       "answer": "The parrot is in front of the car.",
       "sceneRef": {
@@ -558,7 +560,7 @@
       "stimulus": {
         "type": "entity",
         "showsDe": "Im Käfig liegt Papier mit einem Zeichen für den Zoo.",
-        "art": "captive_ticket"
+        "art": "zookaefig_a15"
       },
       "storyDe": "Sag, wie das Ding im Käfig heißt!",
       "promptEn": "What is it?",
@@ -589,7 +591,9 @@
       ],
       "stimulus": {
         "type": "entity",
-        "showsDe": "Am Besucherpass hängt ein Ticket mit einem Zeichen."
+        "showsDe": "Am Besucherpass hängt ein Ticket mit einem Zeichen.",
+        "art": "zookaefig_a16",
+        "artComposition": "complete"
       },
       "storyDe": "Schau, für wen dieses Ticket gedacht ist!",
       "promptEn": "What is the ticket for?",
@@ -621,7 +625,8 @@
       ],
       "stimulus": {
         "type": "entity",
-        "showsDe": "Auf den Bildern wartet jemand, bis ein Freund kommt."
+        "showsDe": "Auf den Bildern wartet jemand, bis ein Freund kommt.",
+        "art": "drehkreuz_arrival_a17"
       },
       "storyDe": "Der Freund ist da — was rufst du ihm zu?",
       "promptEn": "What do you say?",
@@ -656,7 +661,8 @@
       ],
       "stimulus": {
         "type": "entity",
-        "showsDe": "Auf dem Pass beim Ticket steht auch das Alter."
+        "showsDe": "Auf dem Pass steht, wie alt der Gast ist.",
+        "art": "drehkreuz_adult_a19"
       },
       "storyDe": "Jetzt braucht der nächste Gast sein Ticket.",
       "promptEn": "What is the ticket for?",
@@ -688,7 +694,8 @@
       ],
       "stimulus": {
         "type": "entity",
-        "showsDe": "Der Schaffner streckt die Hand nach dem Pass aus."
+        "showsDe": "Der Schaffner streckt die Hand nach dem Pass aus.",
+        "art": "drehkreuz_ticket_a20"
       },
       "storyDe": "Der Schaffner streckt die Hand aus — was sagt er?",
       "promptEn": "What does he say?",
@@ -721,7 +728,8 @@
       ],
       "stimulus": {
         "type": "entity",
-        "showsDe": "Am leeren Treffpunkt steht ein Fragezeichen."
+        "showsDe": "Am leeren Treffpunkt steht ein Fragezeichen.",
+        "art": "drehkreuz_guide_a18"
       },
       "storyDe": "Du brauchst Hilfe — was fragst du?",
       "promptEn": "What do you ask?",
@@ -755,7 +763,7 @@
       "stimulus": {
         "type": "entity",
         "showsDe": "Affen mit langen Armen stehen im Rahmen.",
-        "art": "count_b01"
+        "art": "affe_count_b01"
       },
       "storyDe": "Zähle die Affen auf dem Bild!",
       "promptEn": "How many monkeys are there?",
@@ -788,7 +796,7 @@
       "stimulus": {
         "type": "entity",
         "showsDe": "Im Rahmen siehst du Affengesichter und lange Arme.",
-        "art": "count_b02"
+        "art": "affe_count_b02"
       },
       "storyDe": "Der Affe zeigt dir ein neues Bild.",
       "promptEn": "How many monkeys?",
@@ -821,7 +829,7 @@
       "stimulus": {
         "type": "entity",
         "showsDe": "Im Rahmen siehst du Fell und kräftige Löwenpfoten.",
-        "art": "count_b03"
+        "art": "affe_count_b03"
       },
       "storyDe": "Was siehst du auf dem nächsten Bild?",
       "promptEn": "How many lions?",
@@ -854,7 +862,7 @@
       "stimulus": {
         "type": "entity",
         "showsDe": "Pinguine mit dunklen Rücken stehen im Rahmen.",
-        "art": "count_b04"
+        "art": "affe_count_b04"
       },
       "storyDe": "Hilf dem Affen beim Zählen!",
       "promptEn": "How many penguins are there?",
@@ -887,7 +895,8 @@
       ],
       "stimulus": {
         "type": "entity",
-        "showsDe": "Der Hund ist noch grau und wartet auf seine Farbe."
+        "showsDe": "Der Hund ist noch grau und wartet auf seine Farbe.",
+        "art": "hund_a"
       },
       "storyDe": "Sag, welches Tier ich bin — gib mir die Farbe zurück!",
       "promptEn": "What is it?",
@@ -1468,7 +1477,7 @@
       "stimulus": {
         "type": "entity",
         "showsDe": "Im Käfig stehen Wagen, die aneinanderhängen.",
-        "art": "captive_train"
+        "art": "zookaefig_b18"
       },
       "storyDe": "Wie heißt das Fahrzeug im Käfig?",
       "promptEn": "What is it?",
@@ -1498,7 +1507,9 @@
       ],
       "stimulus": {
         "type": "entity",
-        "showsDe": "Der Zug steht beim Maßband."
+        "showsDe": "Der Zug steht beim Maßband.",
+        "art": "zookaefig_b19",
+        "artComposition": "complete"
       },
       "storyDe": "Sag dem Guide, was dir an dem Zug auffällt!",
       "promptEn": "What can you see?",
@@ -1532,7 +1543,8 @@
       ],
       "stimulus": {
         "type": "entity",
-        "showsDe": "Der Platz der Reisegruppe ist jetzt leer."
+        "showsDe": "Der Platz der Reisegruppe ist jetzt leer.",
+        "art": "schaffner_b20"
       },
       "storyDe": "Der Schaffner sucht die Gruppe — was fragt er?",
       "promptEn": "What does he ask?",
@@ -1564,7 +1576,8 @@
       ],
       "stimulus": {
         "type": "entity",
-        "showsDe": "Ein gemalter Wagen rollt aus dem Papier heraus."
+        "showsDe": "Ein gemalter Wagen rollt aus dem Papier heraus.",
+        "art": "schaffner_b22"
       },
       "storyDe": "Der Schaffner staunt — was sagt er?",
       "promptEn": "What do you say?",
@@ -1598,7 +1611,8 @@
       ],
       "stimulus": {
         "type": "entity",
-        "showsDe": "Im Pass ist bei der kleinen Landkarte ein Feld leer."
+        "showsDe": "Im Pass ist bei der kleinen Landkarte ein Feld leer.",
+        "art": "schaffner_b21"
       },
       "storyDe": "Im Pass fehlt etwas — frag das Kind danach!",
       "promptEn": "What do you ask the child?",
@@ -1631,7 +1645,8 @@
       ],
       "stimulus": {
         "type": "entity",
-        "showsDe": "Oma wartet am Tor, ihr Sitz im Zug ist leer."
+        "showsDe": "Oma wartet am Tor, ihr Sitz im Zug ist leer.",
+        "art": "schaffner_b23"
       },
       "storyDe": "Der Schaffner zeigt auf Omas Sitz — was sagt er?",
       "promptEn": "What does he say?",
@@ -1665,7 +1680,8 @@
       ],
       "stimulus": {
         "type": "entity",
-        "showsDe": "Auf den Kinderpässen steht Year 7."
+        "showsDe": "Auf den Kinderpässen steht Year 7.",
+        "art": "schaffner_b24"
       },
       "storyDe": "Hilf den Kindern, den Satz fertig zu machen!",
       "promptEn": "The children ___ in Year 7.",
@@ -1703,7 +1719,8 @@
       ],
       "stimulus": {
         "type": "entity",
-        "showsDe": "Bei den Besuchern siehst du Tickets und Schilder."
+        "showsDe": "Bei den Besuchern siehst du Tickets und Schilder.",
+        "art": "schaffner_b25"
       },
       "storyDe": "Hilf den Gästen, die passenden Sätze zu finden!",
       "promptEn": "Match.",
@@ -1743,7 +1760,8 @@
       ],
       "stimulus": {
         "type": "entity",
-        "showsDe": "Du kannst noch nicht erkennen, wer sich da versteckt."
+        "showsDe": "Du kannst noch nicht erkennen, wer sich da versteckt.",
+        "art": "papagei_sturz_c01_hidden_question"
       },
       "storyDe": "Da versteckt sich wer — frag den Guide danach!",
       "promptEn": "What do you ask?",
@@ -1778,7 +1796,8 @@
       ],
       "stimulus": {
         "type": "entity",
-        "showsDe": "Bei den Giraffenbildern ist ein Rahmen leer."
+        "showsDe": "Bei den Giraffenbildern ist ein Rahmen leer.",
+        "art": "papagei_sturz_c02_missing_big_giraffe"
       },
       "storyDe": "Dem Guide fehlt eine Giraffe — frag nach ihr!",
       "promptEn": "What do you ask now?",
@@ -1810,7 +1829,8 @@
       ],
       "stimulus": {
         "type": "entity",
-        "showsDe": "Fenn winkt, ein Vorhang versperrt dem Guide die Sicht."
+        "showsDe": "Fenn winkt, ein Vorhang versperrt dem Guide die Sicht.",
+        "art": "papagei_sturz_c03_curtain_us"
       },
       "storyDe": "Du rufst dem Guide zusammen mit Fenn eine Frage zu.",
       "promptEn": "What do we ask?",
@@ -1844,7 +1864,8 @@
       ],
       "stimulus": {
         "type": "entity",
-        "showsDe": "Beim Besucherpass ist eine Sprechblase leer."
+        "showsDe": "Beim Besucherpass ist eine Sprechblase leer.",
+        "art": "papagei_sturz_c04_family_visit"
       },
       "storyDe": "Du planst einen Zoobesuch — frag den Guide!",
       "promptEn": "What do you ask the guide?",
@@ -2239,7 +2260,7 @@
       "stimulus": {
         "type": "entity",
         "showsDe": "Ein rundes, graues Ding liegt im Käfig.",
-        "art": "captive_stein"
+        "art": "zookaefig_c13"
       },
       "storyDe": "Wie heißt das Ding im Käfig?",
       "promptEn": "What is it?",
@@ -2269,7 +2290,9 @@
       ],
       "stimulus": {
         "type": "entity",
-        "showsDe": "Das Kind schaut den Stein an."
+        "showsDe": "Das Kind schaut den Stein an.",
+        "art": "zookaefig_c14_stone_praise",
+        "artComposition": "complete"
       },
       "storyDe": "Was sagt das Kind über den Stein?",
       "promptEn": "What does the child say?",
@@ -2301,7 +2324,8 @@
       ],
       "stimulus": {
         "type": "entity",
-        "showsDe": "Der Guide streckt die Hand nach dem Pass aus."
+        "showsDe": "Der Guide streckt die Hand nach dem Pass aus.",
+        "art": "baumhaus_tor_c15_pass_request"
       },
       "storyDe": "Der Guide streckt die Hand aus — was sagt er?",
       "promptEn": "What does the guide say?",
@@ -2334,7 +2358,8 @@
       ],
       "stimulus": {
         "type": "entity",
-        "showsDe": "Die Gruppe wartet an einem Tor mit Gitterstäben."
+        "showsDe": "Die Gruppe wartet an einem Tor mit Gitterstäben.",
+        "art": "baumhaus_tor_c17_let_us_out"
       },
       "storyDe": "Was ruft die Gruppe dir zu?",
       "promptEn": "What do we say?",
@@ -2366,7 +2391,8 @@
       ],
       "stimulus": {
         "type": "entity",
-        "showsDe": "Jemand kommt durchs Tor zu den Leuten, die dort warten."
+        "showsDe": "Jemand kommt durchs Tor zu den Leuten, die dort warten.",
+        "art": "baumhaus_tor_c16_at_last"
       },
       "storyDe": "Was ruft die Gruppe dem letzten Gast zu?",
       "promptEn": "What do you say?",
@@ -2400,7 +2426,8 @@
       ],
       "stimulus": {
         "type": "entity",
-        "showsDe": "Du kannst noch nicht ins nächste Gehege schauen."
+        "showsDe": "Du kannst noch nicht ins nächste Gehege schauen.",
+        "art": "baumhaus_tor_c18_next_lion"
       },
       "storyDe": "Frag den Guide nach dem nächsten Tier!",
       "promptEn": "Ask the guide.",

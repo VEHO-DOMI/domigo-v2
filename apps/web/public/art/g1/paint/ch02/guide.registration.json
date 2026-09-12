@@ -1,0 +1,194 @@
+[
+  {
+    "registrationGroup": "guide",
+    "stem": "guide_a",
+    "canvas": {
+      "width": 512,
+      "height": 512
+    },
+    "trim": {
+      "x": 151,
+      "y": 13,
+      "width": 212,
+      "height": 496
+    },
+    "output": {
+      "x": 0,
+      "y": 0,
+      "width": 512,
+      "height": 512
+    },
+    "anchor": {
+      "x": 0.5,
+      "y": 1
+    }
+  },
+  {
+    "registrationGroup": "guide",
+    "stem": "guide_point0",
+    "canvas": {
+      "width": 512,
+      "height": 512
+    },
+    "trim": {
+      "x": 125,
+      "y": 14,
+      "width": 358,
+      "height": 495
+    },
+    "output": {
+      "x": 0,
+      "y": 0,
+      "width": 512,
+      "height": 512
+    },
+    "anchor": {
+      "x": 0.5,
+      "y": 1
+    }
+  },
+  {
+    "registrationGroup": "guide",
+    "stem": "guide_point1",
+    "canvas": {
+      "width": 512,
+      "height": 512
+    },
+    "trim": {
+      "x": 123,
+      "y": 14,
+      "width": 319,
+      "height": 495
+    },
+    "output": {
+      "x": 0,
+      "y": 0,
+      "width": 512,
+      "height": 512
+    },
+    "anchor": {
+      "x": 0.5,
+      "y": 1
+    }
+  },
+  {
+    "registrationGroup": "guide",
+    "stem": "guide_look",
+    "canvas": {
+      "width": 512,
+      "height": 512
+    },
+    "trim": {
+      "x": 126,
+      "y": 15,
+      "width": 237,
+      "height": 494
+    },
+    "output": {
+      "x": 0,
+      "y": 0,
+      "width": 512,
+      "height": 512
+    },
+    "anchor": {
+      "x": 0.5,
+      "y": 1
+    }
+  },
+  {
+    "registrationGroup": "guide",
+    "stem": "guide_wave0",
+    "canvas": {
+      "width": 512,
+      "height": 512
+    },
+    "trim": {
+      "x": 100,
+      "y": 8,
+      "width": 269,
+      "height": 495
+    },
+    "output": {
+      "x": 0,
+      "y": 0,
+      "width": 512,
+      "height": 512
+    },
+    "anchor": {
+      "x": 0.5,
+      "y": 1
+    }
+  },
+  {
+    "registrationGroup": "guide",
+    "stem": "guide_wave1",
+    "canvas": {
+      "width": 512,
+      "height": 512
+    },
+    "trim": {
+      "x": 107,
+      "y": 8,
+      "width": 264,
+      "height": 495
+    },
+    "output": {
+      "x": 0,
+      "y": 0,
+      "width": 512,
+      "height": 512
+    },
+    "anchor": {
+      "x": 0.5,
+      "y": 1
+    }
+  },
+  {
+    "registrationGroup": "guide",
+    "stem": "guide_welcome",
+    "canvas": {
+      "width": 512,
+      "height": 512
+    },
+    "trim": {
+      "x": 29,
+      "y": 8,
+      "width": 458,
+      "height": 495
+    },
+    "output": {
+      "x": 0,
+      "y": 0,
+      "width": 512,
+      "height": 512
+    },
+    "anchor": {
+      "x": 0.5,
+      "y": 1
+    }
+  },
+  {
+    "registrationGroup": "guide",
+    "stem": "guide_rest",
+    "canvas": {
+      "width": 512,
+      "height": 512
+    },
+    "trim": {
+      "x": 161,
+      "y": 8,
+      "width": 204,
+      "height": 495
+    },
+    "output": {
+      "x": 0,
+      "y": 0,
+      "width": 512,
+      "height": 512
+    },
+    "anchor": {
+      "x": 0.5,
+      "y": 1
+    }
+  }
+]
