@@ -88,7 +88,7 @@
         "showsDe": "Wagen mit Rädern stehen auf Schienen.",
         "art": "waertereimer_train_a03"
       },
-      "storyDe": "Der Guide zeigt dir das nächste Bild.",
+      "storyDe": "Was für ein Fahrzeug siehst du?",
       "promptEn": "What can you see now?",
       "skins": [
         "waertereimer"
@@ -118,7 +118,7 @@
       ],
       "stimulus": {
         "type": "entity",
-        "showsDe": "Im Rahmen steht ein Tier mit kurzen Füßen.",
+        "showsDe": "Im Rahmen siehst du ein Tier mit kurzen Beinen.",
         "art": "pinguin_rutscher_count_a04"
       },
       "storyDe": "Hier gibt es wieder etwas zu zählen!",
@@ -208,7 +208,7 @@
         "giraffe"
       ],
       "name": "penguin",
-      "colourAskDe": "Welche Farben gehören zum Pinguin?",
+      "colourAskDe": "Ich bin ein Pinguin. Mir fehlen Schwarz und Weiß.",
       "colourOptions": [
         "black and white",
         "blue and yellow",
@@ -595,7 +595,7 @@
         "art": "zookaefig_a16",
         "artComposition": "complete"
       },
-      "storyDe": "Schau, für wen dieses Ticket gedacht ist!",
+      "storyDe": "Für wen ist das Ticket, und wo kannst du es benutzen?",
       "promptEn": "What is the ticket for?",
       "skins": [
         "zookaefig"
@@ -664,7 +664,7 @@
         "showsDe": "Auf dem Pass steht, wie alt der Gast ist.",
         "art": "drehkreuz_adult_a19"
       },
-      "storyDe": "Jetzt braucht der nächste Gast sein Ticket.",
+      "storyDe": "Für wen ist das Ticket, und wo kannst du es benutzen?",
       "promptEn": "What is the ticket for?",
       "skins": [
         "drehkreuz"
@@ -2557,7 +2557,7 @@
       "stimulus": {
         "type": "entity",
         "showsDe": "Eine Figur schaut auf einen Vogel mit krummem Schnabel.",
-        "art": "lion_view_parrot_praise"
+        "art": "ch02_d02_parrot_praise_a"
       },
       "storyDe": "Die Figur sieht ein Tier — was sagt sie?",
       "promptEn": "What do you say?",

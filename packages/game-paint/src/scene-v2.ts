@@ -14,6 +14,8 @@ export interface SceneSnapshot {
   entityId: string; beatId: string; viewId: string; round: number;
   /** Explicitly include selected drawing extents; absent retains the legacy card crop. */
   fitContent?: boolean;
+  /** Optional card camera; actor and prop coordinates still use view. */
+  camera?: { x: number; y: number; width: number; height: number };
   ownerPresentation?: {ownerId:string;rect?:{anchor:{x:number;y:number};displayHeightPx:number;displayWidthPx?:number};showFriends?:boolean};
   view: { x: number; y: number; width: number; height: number };
   actors: SceneActor[]; props: StageV2Spec["props"]; relations: ZooBeatSpec["relations"];
@@ -78,7 +80,7 @@ export const stepSceneBeat = (s: SceneState, spec: StageV2Spec, beat: ZooBeatSpe
   return s.ticks >= beat.moveTicks + (teach?.holdTicks ?? 0) + beat.holdTicks;
 };
 /** Select presentation only: live actors, paths and hidden flags remain untouched. */
-const sceneContents = (s: SceneState, spec: StageV2Spec, beat?: ZooBeatSpec) => {
+const sceneContents = (s: SceneState, spec: StageV2Spec, view: SceneSnapshot["view"], beat?: ZooBeatSpec) => {
   const observation = s.returning ? undefined : beat?.view;
   const actorIds = observation?.actorIds ?? spec.view?.actorIds;
   const propIds = observation?.propIds ?? spec.view?.propIds;
@@ -92,19 +94,21 @@ const sceneContents = (s: SceneState, spec: StageV2Spec, beat?: ZooBeatSpec) => 
   const visibleTargets = new Set([...visibleActors, ...props.map(p => p.id)]);
   const relations = (beat?.relations ?? []).filter(r => visibleActors.has(r.actorId) && visibleTargets.has(r.propId));
   const fitContent = observation?.fitContent ?? spec.view?.fitContent;
-  return { actors, props, relations, ...(fitContent === true ? { fitContent: true } : {}) };
+  const crop = observation?.camera ?? spec.view?.camera;
+  const camera = crop ? { x: view.x + crop.x * view.width, y: view.y + crop.y * view.height, width: crop.width * view.width, height: crop.height * view.height } : undefined;
+  return { actors, props, relations, ...(fitContent === true ? { fitContent: true } : {}), ...(camera ? { camera } : {}) };
 };
 export const snapshotScene = (entityId: string, xSubs: number, ySubs: number, s: SceneState, spec: StageV2Spec, round = 0): SceneSnapshot => {
   const beat = spec.beats.find(b => b.id === s.beatId);
   if (!beat) throw new Error(`Scene ${entityId} has no observed beat`);
   return structuredClone({ entityId, beatId: beat.id, viewId: beat.viewId, round,
     view: sceneView(xSubs, ySubs),
-    ...sceneContents(s, spec, beat) });
+    ...sceneContents(s, spec, sceneView(xSubs, ySubs), beat) });
 };
 /** A home is visible even when the child has not started its first question. */
 export const worldSceneSnapshot = (entityId:string,xSubs:number,ySubs:number,s:SceneState,spec:StageV2Spec,round=0):SceneSnapshot =>
   s.beatId ? snapshotScene(entityId,xSubs,ySubs,s,spec,round) : structuredClone({entityId,beatId:"waiting",viewId:"waiting",round,
-    view:sceneView(xSubs,ySubs),...sceneContents(s,spec)});
+    view:sceneView(xSubs,ySubs),...sceneContents(s,spec,sceneView(xSubs,ySubs))});
 export const worldPathPoints = (points: readonly { c: number; r: number }[]): { x: number; y: number }[] =>
   points.map(p => ({ x: (p.c + 0.5) * TILE, y: (p.r + 1) * TILE }));
 

@@ -164,7 +164,9 @@ export const washAlphaFor = (
   // the child never sees); redeemed, the flood animates the LAST degree away,
   // which is the sixth round's payoff and the same choreography every restored
   // being gets.
-  const full = e.role === "classmate" ? awakenWash(Math.max((e.awakenStep ?? 0) - (e.redeemed ? 1 : 0), 0)) : WASH_ALPHA;
+  // Restore asks for missing colours. A residual brown dog would already show
+  // its answer; both the world and its card therefore begin fully grey.
+  const full = e.role === "classmate" ? awakenWash(Math.max((e.awakenStep ?? 0) - (e.redeemed ? 1 : 0), 0)) : e.role === "drained" ? 1 : WASH_ALPHA;
   if (!e.redeemed) return full;
   if (reducedMotion) return 0;
   return full * (1 - floodT(e));

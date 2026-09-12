@@ -1480,12 +1480,12 @@
                 {
                   "id": "cats",
                   "skin": "katze",
-                  "displayHeightPx": 26,
+                  "displayHeightPx": 40,
                   "anchor": {
                     "x": 0.35,
                     "y": 1
                   },
-                  "displayWidthPx": 26
+                  "displayWidthPx": 40
                 }
               ],
               "props": [
@@ -1616,7 +1616,7 @@
                     },
                     {
                       "actorId": "cats",
-                      "x": 0.35,
+                      "x": 0.3,
                       "y": 1,
                       "z": "front"
                     }
@@ -1858,7 +1858,7 @@
                   "skin": "besucherkind",
                   "displayHeightPx": 32,
                   "anchor": {
-                    "x": 0.4625,
+                    "x": 0.6875,
                     "y": 1
                   },
                   "displayWidthPx": 32
@@ -1878,7 +1878,7 @@
                   "skin": "hund",
                   "displayHeightPx": 36.977777777777774,
                   "anchor": {
-                    "x": 0.75,
+                    "x": 0.4625,
                     "y": 1
                   },
                   "displayWidthPx": 39.82222222222222
@@ -1932,7 +1932,7 @@
                     },
                     {
                       "actorId": "child",
-                      "x": 0.4625,
+                      "x": 0.6875,
                       "y": 1,
                       "z": "front"
                     },
@@ -1944,7 +1944,7 @@
                     },
                     {
                       "actorId": "dog",
-                      "x": 0.75,
+                      "x": 0.4625,
                       "y": 1,
                       "z": "front"
                     }
@@ -1985,10 +1985,10 @@
                     {
                       "actorId": "family",
                       "ticks": 90,
-                      "worldWaypoints": [
+                      "waypoints": [
                         {
-                          "c": 43,
-                          "r": 17
+                          "x": 0.8625,
+                          "y": 1
                         }
                       ]
                     }
@@ -2100,11 +2100,12 @@
                 {
                   "id": "animals",
                   "skin": "zootiere",
-                  "displayHeightPx": 56,
+                  "displayHeightPx": 24,
                   "anchor": {
-                    "x": 0.5,
-                    "y": 0.8
-                  }
+                    "x": 0.525,
+                    "y": 1
+                  },
+                  "displayWidthPx": 37.125
                 }
               ],
               "props": [
@@ -2112,8 +2113,12 @@
                   "id": "bars",
                   "skin": "gitter",
                   "anchor": {
-                    "x": 0.5,
-                    "y": 0.8
+                    "x": 0.525,
+                    "y": 1
+                  },
+                  "canvas": {
+                    "widthPx": 54.896484375,
+                    "heightPx": 27
                   }
                 },
                 {
@@ -2121,7 +2126,7 @@
                   "skin": "zoozug_wunschbild",
                   "anchor": {
                     "x": 0.35,
-                    "y": 0.68
+                    "y": 1
                   },
                   "canvas": {
                     "widthPx": 88,
@@ -2137,8 +2142,8 @@
                   "targetPositions": [
                     {
                       "actorId": "animals",
-                      "x": 0.5,
-                      "y": 0.8,
+                      "x": 0.525,
+                      "y": 1,
                       "z": "behind"
                     }
                   ],
@@ -2153,8 +2158,8 @@
                       "actorId": "animals",
                       "waypoints": [
                         {
-                          "x": 0.85,
-                          "y": 0.82
+                          "x": 0.83125,
+                          "y": 1
                         }
                       ],
                       "ticks": 90
@@ -2166,7 +2171,13 @@
                     ],
                     "propIds": [
                       "bars"
-                    ]
+                    ],
+                    "camera": {
+                      "x": 0.35,
+                      "y": 0.75,
+                      "width": 0.36,
+                      "height": 0.25
+                    }
                   }
                 },
                 {
@@ -2176,8 +2187,8 @@
                   "targetPositions": [
                     {
                       "actorId": "animals",
-                      "x": 0.85,
-                      "y": 0.82,
+                      "x": 0.83125,
+                      "y": 1,
                       "z": "front"
                     }
                   ],
@@ -2195,14 +2206,21 @@
                     ],
                     "propIds": [
                       "train-wish-picture"
-                    ]
+                    ],
+                    "camera": {
+                      "x": 0.075,
+                      "y": 0.5,
+                      "width": 0.875,
+                      "height": 0.5
+                    }
                   }
                 }
               ],
               "view": {
                 "propIds": [
                   "bars"
-                ]
+                ],
+                "fitContent": true
               }
             },
             "taskSequence": [
@@ -2667,7 +2685,7 @@
                   },
                   "canvas": {
                     "widthPx": 160,
-                    "heightPx": 120
+                    "heightPx": 118.8663967611336
                   }
                 },
                 {
@@ -2704,9 +2722,7 @@
                   ],
                   "afterSolve": [],
                   "view": {
-                    "actorIds": [
-                      "giraffe"
-                    ],
+                    "actorIds": [],
                     "propIds": [
                       "ch02_c05_giraffe_measure"
                     ]
@@ -2866,8 +2882,8 @@
                   "skin": "stein",
                   "displayHeightPx": 20,
                   "anchor": {
-                    "x": 0.44,
-                    "y": 0.65
+                    "x": 0.5,
+                    "y": 1
                   },
                   "displayWidthPx": 25.98639455782313
                 }
@@ -2905,9 +2921,34 @@
                   "taskIds": [
                     "g1.paint.ch02.c07"
                   ],
-                  "afterSolve": []
+                  "afterSolve": [
+                    {
+                      "actorId": "stone",
+                      "ticks": 20,
+                      "waypoints": [
+                        {
+                          "x": 0.5,
+                          "y": 1
+                        }
+                      ]
+                    }
+                  ],
+                  "view": {
+                    "actorIds": [
+                      "stone"
+                    ],
+                    "propIds": [
+                      "size-reference"
+                    ]
+                  }
                 }
-              ]
+              ],
+              "view": {
+                "actorIds": [
+                  "stone"
+                ],
+                "propIds": []
+              }
             },
             "taskSequence": [
               1
@@ -3052,60 +3093,62 @@
                 {
                   "id": "grandma",
                   "skin": "grandma",
-                  "displayHeightPx": 40,
+                  "displayHeightPx": 30.308668076109935,
                   "anchor": {
-                    "x": 0.15,
-                    "y": 0.85
-                  }
+                    "x": 0.28125,
+                    "y": 0.8666666666666667
+                  },
+                  "displayWidthPx": 30.308668076109935
                 },
                 {
                   "id": "guide",
                   "skin": "guide",
-                  "displayHeightPx": 44,
+                  "displayHeightPx": 31.09311740890688,
                   "anchor": {
-                    "x": 0.34,
-                    "y": 0.85
+                    "x": 0.39375,
+                    "y": 0.735357624831309
                   },
-                  "displayWidthPx": 44
+                  "displayWidthPx": 31.09311740890688
                 },
                 {
                   "id": "children",
                   "skin": "besucherkinder",
-                  "displayHeightPx": 40.15686274509804,
+                  "displayHeightPx": 26.77124183006536,
                   "anchor": {
-                    "x": 0.58,
-                    "y": 0.85
+                    "x": 0.525,
+                    "y": 1
                   },
-                  "displayWidthPx": 40.15686274509804
+                  "displayWidthPx": 26.77124183006536
                 },
                 {
                   "id": "family",
                   "skin": "familie",
-                  "displayHeightPx": 44,
+                  "displayHeightPx": 32.06680584551148,
                   "anchor": {
-                    "x": 0.84,
-                    "y": 0.85
-                  }
+                    "x": 0.7625,
+                    "y": 1
+                  },
+                  "displayWidthPx": 32.06680584551148
                 },
                 {
                   "id": "aileen",
                   "skin": "aileen",
-                  "displayHeightPx": 39.982646420824295,
+                  "displayHeightPx": 26.655097613882862,
                   "anchor": {
-                    "x": 0.3,
-                    "y": 0.85
+                    "x": 0.48125,
+                    "y": 0.6013015184381778
                   },
-                  "displayWidthPx": 24.989154013015185
+                  "displayWidthPx": 16.65943600867679
                 },
                 {
                   "id": "amrita-rajit",
                   "skin": "amrita_rajit",
-                  "displayHeightPx": 38.72268907563025,
+                  "displayHeightPx": 25.81512605042017,
                   "anchor": {
-                    "x": 0.7,
-                    "y": 0.85
+                    "x": 0.584375,
+                    "y": 0.6008403361344539
                   },
-                  "displayWidthPx": 38.72268907563025
+                  "displayWidthPx": 25.81512605042017
                 }
               ],
               "props": [
@@ -3125,8 +3168,12 @@
                   "id": "tree",
                   "skin": "baumhaus",
                   "anchor": {
-                    "x": 0.5,
-                    "y": 0.8
+                    "x": 0.55,
+                    "y": 1
+                  },
+                  "canvas": {
+                    "widthPx": 144,
+                    "heightPx": 93.5629820051414
                   }
                 },
                 {
@@ -3170,7 +3217,7 @@
                   },
                   "canvas": {
                     "widthPx": 160,
-                    "heightPx": 120
+                    "heightPx": 119.04
                   }
                 },
                 {
@@ -3196,6 +3243,42 @@
                     "widthPx": 160,
                     "heightPx": 120
                   }
+                },
+                {
+                  "id": "visitor-platform-upper",
+                  "skin": "ast",
+                  "anchor": {
+                    "x": 0.55,
+                    "y": 0.6401041666666667
+                  },
+                  "canvas": {
+                    "widthPx": 32,
+                    "heightPx": 8
+                  }
+                },
+                {
+                  "id": "visitor-platform-middle",
+                  "skin": "ast",
+                  "anchor": {
+                    "x": 0.4,
+                    "y": 0.753125
+                  },
+                  "canvas": {
+                    "widthPx": 16,
+                    "heightPx": 4
+                  }
+                },
+                {
+                  "id": "visitor-platform-lower",
+                  "skin": "ast",
+                  "anchor": {
+                    "x": 0.3,
+                    "y": 0.8864583333333333
+                  },
+                  "canvas": {
+                    "widthPx": 16,
+                    "heightPx": 4
+                  }
                 }
               ],
               "beats": [
@@ -3206,8 +3289,8 @@
                   "targetPositions": [
                     {
                       "actorId": "children",
-                      "x": 0.58,
-                      "y": 0.85,
+                      "x": 0.525,
+                      "y": 1,
                       "z": "front"
                     }
                   ],
@@ -3232,26 +3315,26 @@
                   "targetPositions": [
                     {
                       "actorId": "grandma",
-                      "x": 0.15,
-                      "y": 0.85,
+                      "x": 0.28125,
+                      "y": 0.8666666666666667,
                       "z": "front"
                     },
                     {
                       "actorId": "guide",
-                      "x": 0.34,
-                      "y": 0.85,
+                      "x": 0.39375,
+                      "y": 0.735357624831309,
                       "z": "front"
                     },
                     {
                       "actorId": "children",
-                      "x": 0.58,
-                      "y": 0.85,
+                      "x": 0.525,
+                      "y": 1,
                       "z": "front"
                     },
                     {
                       "actorId": "family",
-                      "x": 0.84,
-                      "y": 0.85,
+                      "x": 0.7625,
+                      "y": 1,
                       "z": "front"
                     }
                   ],
@@ -3276,8 +3359,8 @@
                   "targetPositions": [
                     {
                       "actorId": "grandma",
-                      "x": 0.15,
-                      "y": 0.85,
+                      "x": 0.28125,
+                      "y": 0.8666666666666667,
                       "z": "front"
                     }
                   ],
@@ -3303,8 +3386,8 @@
                   "targetPositions": [
                     {
                       "actorId": "aileen",
-                      "x": 0.3,
-                      "y": 0.85,
+                      "x": 0.48125,
+                      "y": 0.6013015184381778,
                       "z": "front"
                     }
                   ],
@@ -3329,8 +3412,8 @@
                   "targetPositions": [
                     {
                       "actorId": "amrita-rajit",
-                      "x": 0.7,
-                      "y": 0.85,
+                      "x": 0.584375,
+                      "y": 0.6008403361344539,
                       "z": "front"
                     }
                   ],
@@ -3359,7 +3442,10 @@
                   "amrita-rajit"
                 ],
                 "propIds": [
-                  "tree"
+                  "tree",
+                  "visitor-platform-upper",
+                  "visitor-platform-middle",
+                  "visitor-platform-lower"
                 ]
               }
             },
@@ -3718,12 +3804,12 @@
               {
                 "id": "penguin",
                 "skin": "pinguin",
-                "displayHeightPx": 36.18848167539267,
+                "displayHeightPx": 20,
                 "anchor": {
                   "x": 0.55,
                   "y": 0.84
                 },
-                "displayWidthPx": 48.25130890052356
+                "displayWidthPx": 26.666666666666668
               },
               {
                 "id": "giraffe",
@@ -3760,7 +3846,11 @@
                 "skin": "bus",
                 "anchor": {
                   "x": 0.5,
-                  "y": 0.8
+                  "y": 1
+                },
+                "canvas": {
+                  "widthPx": 160,
+                  "heightPx": 160
                 }
               },
               {
@@ -3864,6 +3954,24 @@
                   "widthPx": 160,
                   "heightPx": 120
                 }
+              },
+              {
+                "id": "d04-sign",
+                "skin": "loewenschild",
+                "worldAnchor": {
+                  "c": 11,
+                  "r": 13
+                },
+                "canvas": {
+                  "widthPx": 56,
+                  "heightPx": 32
+                },
+                "innerRect": {
+                  "x": 4,
+                  "y": 4,
+                  "width": 48,
+                  "height": 24
+                }
               }
             ],
             "beats": [
@@ -3966,7 +4074,7 @@
                   {
                     "actorId": "penguin",
                     "x": 0.5,
-                    "y": 0.94,
+                    "y": 1,
                     "z": "behind"
                   }
                 ],
@@ -3989,8 +4097,9 @@
                   ],
                   "propIds": [
                     "bus",
-                    "loewenschild"
-                  ]
+                    "d04-sign"
+                  ],
+                  "fitContent": true
                 }
               },
               {
@@ -4129,9 +4238,7 @@
                   "guide": "inviting"
                 },
                 "view": {
-                  "actorIds": [
-                    "lion"
-                  ],
+                  "actorIds": [],
                   "propIds": [
                     "ch02_d08_visitors_talk"
                   ]
@@ -4171,13 +4278,17 @@
                   "lion": "lonely"
                 },
                 "view": {
-                  "actorIds": [
-                    "lion"
-                  ],
+                  "actorIds": [],
                   "propIds": [
                     "ch02_d09_welcome_visitors"
                   ],
-                  "fitContent": true
+                  "fitContent": true,
+                  "camera": {
+                    "x": 0.5,
+                    "y": 0,
+                    "width": 0.5,
+                    "height": 1
+                  }
                 }
               }
             ],

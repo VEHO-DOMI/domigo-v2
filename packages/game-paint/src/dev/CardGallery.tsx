@@ -27,6 +27,7 @@ import { answerTextOf } from "../cards/resolution.ts";
 import { PAINT_OVERLAY_CSS } from "../cards/overlay-css.ts";
 import { LOGICAL_H, LOGICAL_W, RENDER_SCALE } from "../paint.ts";
 import { benchBilanz } from "./bench-counts.ts";
+import { WASH_ALPHA, washAlphaFor } from "../anim.ts";
 
 /** The ceremony renderer, handed in by PaintGame. Typed structurally — the
  *  gallery must not import PaintGame (see the bundle note above). */
@@ -274,8 +275,15 @@ export default function CardGallery({ level, art, tasks, Overlay, which, karte }
    *  right about the picture and wrong about the game: in play that portrait
    *  carries the being's live wash (the desaturation law, doc 41 §2) and IS
    *  grey. The bench was handing the verifier a projection the game never
-   *  shows. It passes the world's own WASH_ALPHA now. */
-  const DRAINED_WASH = 0.72;
+   *  shows. Named sequences use their actual owner's wash; legacy fixtures
+   *  retain the general wash until their owner is known. */
+  const restoreId = byKind("restore")?.id;
+  const restoreOwner = [...level.phases, ...(level.arena ? [level.arena] : []), ...(level.bonus ? [level.bonus] : [])]
+    .flatMap(p => p.entities).find(e => {
+      const sequence = e.params?.taskSequenceV2 as { requiredIds?: string[]; variantIds?: string[] } | undefined;
+      return restoreId !== undefined && [...(sequence?.requiredIds ?? []), ...(sequence?.variantIds ?? [])].includes(restoreId);
+    });
+  const DRAINED_WASH = restoreOwner ? washAlphaFor({ role: restoreOwner.role, redeemed: false, timer: 0 }) : WASH_ALPHA;
 
   const card = (id: string, label: string, task: GameTaskV2 | undefined, extra?: Record<string, unknown>, note?: string): Surface => ({
     id, label, note, taskId: task?.id,

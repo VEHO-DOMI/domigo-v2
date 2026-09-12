@@ -54,6 +54,8 @@ export const ZooPath = z.object({
 }).refine(p => !!p.waypoints !== !!p.worldWaypoints, "path needs exactly one coordinate system");
 /** Omitted fields inherit the stage view; an empty list intentionally draws none. */
 export const ZooSceneView = z.object({
+  /** Card-only normalized crop within the unchanged world scene rectangle. */
+  camera: ZooSourceRect.optional(),
   actorIds: z.array(Id).optional(), propIds: z.array(Id).optional(),
   fitContent: z.boolean().optional(),
 }).superRefine((view, ctx) => {
