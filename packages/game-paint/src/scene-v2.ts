@@ -10,11 +10,14 @@ export interface SceneActor {
 }
 export interface SceneSnapshot {
   entityId: string; beatId: string; viewId: string; round: number;
+  /** Explicitly include selected drawing extents; absent retains the legacy card crop. */
+  fitContent?: boolean;
   view: { x: number; y: number; width: number; height: number };
   actors: SceneActor[]; props: StageV2Spec["props"]; relations: ZooBeatSpec["relations"];
 }
 export interface SceneState {
   beatId: string | null; ticks: number; actors: SceneActor[]; starts: SceneActor[];
+  /** Home presentation after solving, including waiting/complete, until the next beat begins. */
   returning: boolean; returnTicks: number; label: string | null;
 }
 export const createSceneState = (spec: StageV2Spec): SceneState => ({
@@ -71,17 +74,30 @@ export const stepSceneBeat = (s: SceneState, spec: StageV2Spec, beat: ZooBeatSpe
   s.label = teach && s.ticks > beat.moveTicks && s.ticks <= beat.moveTicks + teach.holdTicks ? teach.labelEn : null;
   return s.ticks >= beat.moveTicks + (teach?.holdTicks ?? 0) + beat.holdTicks;
 };
+/** Select presentation only: live actors, paths and hidden flags remain untouched. */
+const sceneContents = (s: SceneState, spec: StageV2Spec, beat?: ZooBeatSpec) => {
+  const observation = s.returning ? undefined : beat?.view;
+  const actorIds = observation?.actorIds ?? spec.view?.actorIds;
+  const propIds = observation?.propIds ?? spec.view?.propIds;
+  const actors = actorIds === undefined ? s.actors : s.actors.filter(a => actorIds.includes(a.id));
+  const props = propIds === undefined ? spec.props : spec.props.filter(p => propIds.includes(p.id));
+  const visibleActors = new Set(actors.map(a => a.id));
+  const visibleTargets = new Set([...visibleActors, ...props.map(p => p.id)]);
+  const relations = (beat?.relations ?? []).filter(r => visibleActors.has(r.actorId) && visibleTargets.has(r.propId));
+  const fitContent = observation?.fitContent ?? spec.view?.fitContent;
+  return { actors, props, relations, ...(fitContent === true ? { fitContent: true } : {}) };
+};
 export const snapshotScene = (entityId: string, xSubs: number, ySubs: number, s: SceneState, spec: StageV2Spec, round = 0): SceneSnapshot => {
   const beat = spec.beats.find(b => b.id === s.beatId);
   if (!beat) throw new Error(`Scene ${entityId} has no observed beat`);
   return structuredClone({ entityId, beatId: beat.id, viewId: beat.viewId, round,
     view: sceneView(xSubs, ySubs),
-    actors: s.actors, props: spec.props, relations: beat.relations });
+    ...sceneContents(s, spec, beat) });
 };
 /** A home is visible even when the child has not started its first question. */
 export const worldSceneSnapshot = (entityId:string,xSubs:number,ySubs:number,s:SceneState,spec:StageV2Spec,round=0):SceneSnapshot =>
   s.beatId ? snapshotScene(entityId,xSubs,ySubs,s,spec,round) : structuredClone({entityId,beatId:"waiting",viewId:"waiting",round,
-    view:sceneView(xSubs,ySubs),actors:s.actors,props:spec.props,relations:[]});
+    view:sceneView(xSubs,ySubs),...sceneContents(s,spec)});
 export const worldPathPoints = (points: readonly { c: number; r: number }[]): { x: number; y: number }[] =>
   points.map(p => ({ x: (p.c + 0.5) * TILE, y: (p.r + 1) * TILE }));
 

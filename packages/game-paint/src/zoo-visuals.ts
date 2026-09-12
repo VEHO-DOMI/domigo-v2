@@ -25,6 +25,9 @@ export const ZOO_CELLS: Readonly<Record<string, readonly string[]>> = {
   stein: ["a","glow"],
 };
 export const ZOO_DISPLAY_HEIGHTS: Readonly<Record<string,number>> = {waertereimer:24,pinguin_rutscher:22,pinguin:24,hund:24,buddy:26,papagei:16,affe:24,papagei_sturz:28,fenn:30};
+export const ZOO_FRIEND_SKIN = "besucherkinder";
+export const ZOO_FRIEND_CELLS = { waiting: "wave_a", walking: "walk0" } as const;
+export const ZOO_FRIEND_STEMS = Object.values(ZOO_FRIEND_CELLS).map(cell => `${ZOO_FRIEND_SKIN}_${cell}`);
 export const ZOO_HERO_STEMS = ["grab","hang0","hang1","hangjump","release","charge0","charge1","charge2","throw0","throw1","catch0","catch1"].map(c=>`hero2_${c}`);
 const frame = (t: number, dwell: number, names: readonly string[]): string => names[Math.floor(Math.max(0,t)/dwell)%names.length]!;
 export const zooSkinStems = (skin: string): string[] => (ZOO_CELLS[skin] ?? ["a"]).map(c=>`${skin}_${c}`);

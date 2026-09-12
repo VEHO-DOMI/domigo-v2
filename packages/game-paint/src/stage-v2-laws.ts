@@ -1,5 +1,5 @@
 // CODEX DRAFT — NOT CANON · executable scene contracts also apply to drafts.
-import { StageV2, SequenceTransfer, ZooGuardian, ZooRide, TaskSequenceV2 } from "../../content-schema/src/paint-zoo.ts";
+import { ClassmatePresentation, StageV2, SequenceTransfer, ZooGuardian, ZooRide, TaskSequenceV2 } from "../../content-schema/src/paint-zoo.ts";
 import type { PaintLevel, LawFailure } from "./level.ts";
 import { glyphAt, isSolid } from "./collide.ts";
 
@@ -16,10 +16,20 @@ export const stageV2LawErrors = (level: PaintLevel): LawFailure[] => {
     }
     const inside=(p:{c:number;r:number})=>p.c>=0&&p.c<(ph.rows[0]?.length??0)&&p.r>=0&&p.r<ph.rows.length;
     for(const e of ph.entities) {
-      for(const [key,schema] of Object.entries({stageV2:StageV2,onSequenceComplete:SequenceTransfer,guardian:ZooGuardian,ride:ZooRide,taskSequenceV2:TaskSequenceV2})) {
+      for(const [key,schema] of Object.entries({classmatePresentation:ClassmatePresentation,stageV2:StageV2,onSequenceComplete:SequenceTransfer,guardian:ZooGuardian,ride:ZooRide,taskSequenceV2:TaskSequenceV2})) {
         if(e.params?.[key]!==undefined) {
           const parsed=schema.safeParse(e.params[key]);
           if(!parsed.success) fail(e.id,`${key}: ${parsed.error.issues.map(i=>i.path.join('.')+' '+i.message).join('; ')}`);
+        }
+      }
+      const presentation=e.params?.classmatePresentation;
+      if(presentation!==undefined) {
+        if(e.role!=="classmate") fail(e.id,"classmatePresentation requires a classmate owner");
+        const parsed=ClassmatePresentation.safeParse(presentation);
+        if(parsed.success) {
+          const sequence=e.params?.taskSequenceV2;
+          const owned=new Set([...(sequence?.requiredIds??[]),...(sequence?.variantIds??[]),...(sequence?.reserveSlots??[]).map(slot=>slot.taskId)]);
+          for(const view of parsed.data.views) if(!owned.has(view.taskId)) fail(e.id,`classmatePresentation card ${view.taskId} is outside its sequence`);
         }
       }
       const s=e.params?.stageV2;

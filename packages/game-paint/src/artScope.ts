@@ -1,5 +1,5 @@
-import { ZOO_HERO_STEMS, zooSkinStems, zooActorSkin, effectiveCollectSkin, collectStems, zooPropLayers } from "./zoo-visuals.ts";
-import type { StageV2Spec } from "../../content-schema/src/paint-zoo.ts";
+import { ZOO_FRIEND_STEMS, ZOO_HERO_STEMS, zooSkinStems, zooActorSkin, effectiveCollectSkin, collectStems, zooPropLayers } from "./zoo-visuals.ts";
+import type { ClassmatePresentationSpec, StageV2Spec } from "../../content-schema/src/paint-zoo.ts";
 // THE PAINTED BOOK — artScope.ts — WHICH STEMS A PHASE ACTUALLY NEEDS.
 //
 // R5-W1 · E1. Measured on the shipped chapter: entering phase 1 queued all
@@ -210,6 +210,8 @@ export const phaseRequiredStems = (level: ScopeLevel, phaseId: string, label = "
   for (const stem of collectStems(effectiveCollectSkin(level, ph),ph.collectAnimation)) need(stem, `${label} ${ph.id} collectible`);
   if (level.heroArtSet === "zoo-v2") for (const stem of ZOO_HERO_STEMS) need(stem,"zoo hero actions");
   for (const e of ph.entities) {
+    if (e.role === "classmate" && e.params?.artSet === "zoo-v2") for (const stem of ZOO_FRIEND_STEMS) need(stem, `${label} ${ph.id} classmate friends`);
+    for (const p of (e.params?.classmatePresentation as ClassmatePresentationSpec | undefined)?.props ?? []) for (const layer of zooPropLayers(p.skin)) need(layer.stem, `${label} ${ph.id} classmate prop ${p.id}`);
     const stage = e.params?.stageV2 as StageV2Spec | undefined;
     if (stage) {
       for (const a of stage.actors) for (const stem of (a.skin === "loewe" ? guardianSkinStems(a.skin,"zoo-lion") : zooSkinStems(zooActorSkin(a.skin)))) need(stem,`${label} ${ph.id} scene actor ${a.id}`);
@@ -317,6 +319,8 @@ export const phaseArtScope = (level: ScopeLevel, phaseId: string, present: Itera
   for (const e of ph.entities) {
     closure(e.skin);
     for (const s of e.params?.artSet === "zoo-v2" ? zooSkinStems(e.skin) : entitySkinStems(e.skin)) add(s);
+    if (e.role === "classmate" && e.params?.artSet === "zoo-v2") for (const stem of ZOO_FRIEND_STEMS) add(stem);
+    for (const p of (e.params?.classmatePresentation as ClassmatePresentationSpec | undefined)?.props ?? []) for (const layer of zooPropLayers(p.skin)) add(layer.stem);
     const stage=e.params?.stageV2 as StageV2Spec | undefined;
     for (const a of stage?.actors ?? []) { closure(zooActorSkin(a.skin)); for (const stem of zooSkinStems(zooActorSkin(a.skin))) add(stem); }
     for (const p of stage?.props ?? []) for (const layer of zooPropLayers(p.skin)) add(layer.stem);
