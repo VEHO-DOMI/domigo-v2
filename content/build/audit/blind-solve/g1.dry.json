@@ -1,6 +1,104 @@
 {
   "schema": "blind-solve@2",
-  "generatedAt": "2026-07-12T15:04:27.295Z",
+  "paintKeys": {
+    "cards": 208,
+    "observedScenes": 34,
+    "sceneStimulusVisited": true,
+    "inputHash": "87c734437d23c146949c3bda51fd0011c8d33fb97aea0140523b2d14d367b623",
+    "inputs": [
+      {
+        "file": "content/corpus/stories/g1.st.lost-pages/paint/ch01.level.json",
+        "bytes": 22171,
+        "sha256": "1358cde125e48bffd7b3c296caa52ce27550eafb52344bf61c36f67206438c5f"
+      },
+      {
+        "file": "content/corpus/stories/g1.st.lost-pages/paint/ch01.proof.json",
+        "bytes": 14397,
+        "sha256": "8e016f4936ea7707f267e404a67f7f5aa2bb5d8415cb990e0977e254e3199798"
+      },
+      {
+        "file": "content/corpus/stories/g1.st.lost-pages/paint/ch01.tasks.v2.json",
+        "bytes": 53693,
+        "sha256": "4ab7eb76564df6a9c614e1ba7132a3014aacc570452660f5cec6a28801f229e5"
+      },
+      {
+        "file": "content/corpus/stories/g1.st.lost-pages/paint/ch02.level.json",
+        "bytes": 109530,
+        "sha256": "765a03989d3741808181aab493767bd0175f25813f867c50c936235e0c2e5ad3"
+      },
+      {
+        "file": "content/corpus/stories/g1.st.lost-pages/paint/ch02.proof.json",
+        "bytes": 28290,
+        "sha256": "6a52f0212eb06f652c7d10fbda11a462b4367a37a2ae03764713588f941c6b2c"
+      },
+      {
+        "file": "content/corpus/stories/g1.st.lost-pages/paint/ch02.tasks.v2.json",
+        "bytes": 84607,
+        "sha256": "d4d6c9ac8567e66a08e0fb06da6d08ce08feed827e7c65e0667495fb19909d8a"
+      },
+      {
+        "file": "content/corpus/stories/g1.st.lost-pages/paint/ch03.level.json",
+        "bytes": 13773,
+        "sha256": "13143168693bb2def3ccdcc7444ff65da775bc2c68ca1f1a31fd0d97cb69b319"
+      },
+      {
+        "file": "content/corpus/stories/g1.st.lost-pages/paint/ch03.proof.json",
+        "bytes": 4088,
+        "sha256": "7befb40cb0bbf7ec0aae0bdaf161f1f6c9da49821000fecb2e3d5fd41eca0fe1"
+      },
+      {
+        "file": "content/corpus/stories/g1.st.lost-pages/paint/ch03.tasks.v2.json",
+        "bytes": 21399,
+        "sha256": "42d5baf069919dbfa9ce4d0660e1c0987e1750641ed164247a4e5e8ebdbd596e"
+      },
+      {
+        "file": "content/corpus/stories/g1.st.lost-pages/paint/ch04.level.json",
+        "bytes": 17086,
+        "sha256": "b93e7570d17b97a816cbbc4e63ac63c001e569c3d31e8224e6347fb67cb567a3"
+      },
+      {
+        "file": "content/corpus/stories/g1.st.lost-pages/paint/ch04.proof.json",
+        "bytes": 4084,
+        "sha256": "2d4a3e9288209a4f073a890a01e36be2485efe080f40a404571d54dffddea971"
+      },
+      {
+        "file": "content/corpus/stories/g1.st.lost-pages/paint/ch04.tasks.v2.json",
+        "bytes": 10555,
+        "sha256": "082b5a791b25d8906abb4143d99bd3896e82e3d01df8851cd01cff3fa3122857"
+      },
+      {
+        "file": "content/corpus/stories/g1.st.lost-pages/paint/ch05.level.json",
+        "bytes": 15175,
+        "sha256": "b0cb60d2bb8b1a72c9a9162bcdcd7d148f61473e12a8c3a2cf71f139e6e1c1b1"
+      },
+      {
+        "file": "content/corpus/stories/g1.st.lost-pages/paint/ch05.proof.json",
+        "bytes": 2486,
+        "sha256": "d2b60dfd28c52fe424ece70ced60ce81def09465800f35980a8acfc7c2c9cf90"
+      },
+      {
+        "file": "content/corpus/stories/g1.st.lost-pages/paint/ch05.tasks.v2.json",
+        "bytes": 15629,
+        "sha256": "a28d0ad2c83afeb91632af4bb4f17e33397c65a1c46c14ff5e892d8dc563415e"
+      },
+      {
+        "file": "content/corpus/stories/g1.st.lost-pages/paint/ch06.level.json",
+        "bytes": 16488,
+        "sha256": "78e1eab87ff91eb9a7d50c4bc29e324e97d95f2b3fe8b26f548d6c9b8bbc89e5"
+      },
+      {
+        "file": "content/corpus/stories/g1.st.lost-pages/paint/ch06.proof.json",
+        "bytes": 2764,
+        "sha256": "312b8527c2c55f64c2b531064e129d10da84be166557475940be23d3487f2f81"
+      },
+      {
+        "file": "content/corpus/stories/g1.st.lost-pages/paint/ch06.tasks.v2.json",
+        "bytes": 11927,
+        "sha256": "18b8d1995f97c1d5561f38c7b93a7c79c9f0b2dadf8c235b75c6d3f9c9524e69"
+      }
+    ]
+  },
+  "generatedAt": "2026-09-12T12:35:59.284Z",
   "corpusHash": "95c0b22c0bd80854",
   "mode": "no-llm",
   "model": null,

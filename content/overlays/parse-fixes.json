@@ -3,6 +3,63 @@
     "patch": {
       "g1u02.w.ticket": {
         "exampleSb": "Adult tickets are €14.40."
+      },
+      "g1u02.w.tree": {
+        "forms": [
+          "tree",
+          "trees"
+        ]
+      },
+      "g1u02.w.monkey": {
+        "forms": [
+          "monkey",
+          "monkeys"
+        ]
+      },
+      "g1u02.w.giraffe": {
+        "forms": [
+          "giraffe",
+          "giraffes"
+        ]
+      },
+      "g1u02.w.train": {
+        "forms": [
+          "train",
+          "trains"
+        ]
+      },
+      "g1u02.w.penguin": {
+        "forms": [
+          "penguin",
+          "penguins"
+        ]
+      },
+      "g1u02.w.guide": {
+        "forms": [
+          "guide",
+          "guides"
+        ]
+      },
+      "g1u02.w.lion": {
+        "forms": [
+          "lion",
+          "lions"
+        ]
+      },
+      "g1u02.w.to-let-somebody-out": {
+        "forms": [
+          "to let somebody out",
+          "let somebody out",
+          "let us out",
+          "let me out"
+        ]
+      },
+      "g1u02.w.at-last": {
+        "forms": [
+          "At last.",
+          "At last",
+          "At last!"
+        ]
       }
     }
   },

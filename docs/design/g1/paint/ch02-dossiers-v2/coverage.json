@@ -1,0 +1,941 @@
+{
+  "schema": "paintCoverage@1",
+  "chapter": "ch02",
+  "note": "CODEX DRAFT — NOT CANON. Machine-readable transcription of coverage.md: 52 wordbank IDs and 11 separately sourced semantic goals. Required IDs are the two authored applications; variants and reserve repeats are not required credit.",
+  "targets": [
+    {
+      "id": "g1u02.w.tree",
+      "term": "tree",
+      "kind": "wordbank",
+      "requiredTaskIds": [
+        "g1.paint.ch02.a13",
+        "g1.paint.ch02.c06"
+      ],
+      "source": {
+        "kind": "wordbank",
+        "path": "content/corpus/units/g1-u02/wordbank.json",
+        "entryId": "g1u02.w.tree"
+      }
+    },
+    {
+      "id": "g1u02.w.monkey",
+      "term": "monkey",
+      "kind": "wordbank",
+      "requiredTaskIds": [
+        "g1.paint.ch02.b06",
+        "g1.paint.ch02.d03"
+      ],
+      "source": {
+        "kind": "wordbank",
+        "path": "content/corpus/units/g1-u02/wordbank.json",
+        "entryId": "g1u02.w.monkey"
+      }
+    },
+    {
+      "id": "g1u02.w.parrot",
+      "term": "parrot",
+      "kind": "wordbank",
+      "requiredTaskIds": [
+        "g1.paint.ch02.a07",
+        "g1.paint.ch02.d02"
+      ],
+      "source": {
+        "kind": "wordbank",
+        "path": "content/corpus/units/g1-u02/wordbank.json",
+        "entryId": "g1u02.w.parrot"
+      }
+    },
+    {
+      "id": "g1u02.w.giraffe",
+      "term": "giraffe",
+      "kind": "wordbank",
+      "requiredTaskIds": [
+        "g1.paint.ch02.b06",
+        "g1.paint.ch02.c02"
+      ],
+      "source": {
+        "kind": "wordbank",
+        "path": "content/corpus/units/g1-u02/wordbank.json",
+        "entryId": "g1u02.w.giraffe"
+      }
+    },
+    {
+      "id": "g1u02.w.train",
+      "term": "train",
+      "kind": "wordbank",
+      "requiredTaskIds": [
+        "g1.paint.ch02.b18",
+        "g1.paint.ch02.c09"
+      ],
+      "source": {
+        "kind": "wordbank",
+        "path": "content/corpus/units/g1-u02/wordbank.json",
+        "entryId": "g1u02.w.train"
+      }
+    },
+    {
+      "id": "g1u02.w.penguin",
+      "term": "penguin",
+      "kind": "wordbank",
+      "requiredTaskIds": [
+        "g1.paint.ch02.a06",
+        "g1.paint.ch02.b06"
+      ],
+      "source": {
+        "kind": "wordbank",
+        "path": "content/corpus/units/g1-u02/wordbank.json",
+        "entryId": "g1u02.w.penguin"
+      }
+    },
+    {
+      "id": "g1u02.w.guide",
+      "term": "guide",
+      "kind": "wordbank",
+      "requiredTaskIds": [
+        "g1.paint.ch02.a01",
+        "g1.paint.ch02.c09"
+      ],
+      "source": {
+        "kind": "wordbank",
+        "path": "content/corpus/units/g1-u02/wordbank.json",
+        "entryId": "g1u02.w.guide"
+      }
+    },
+    {
+      "id": "g1u02.w.lion",
+      "term": "lion",
+      "kind": "wordbank",
+      "requiredTaskIds": [
+        "g1.paint.ch02.c09",
+        "g1.paint.ch02.d01"
+      ],
+      "source": {
+        "kind": "wordbank",
+        "path": "content/corpus/units/g1-u02/wordbank.json",
+        "entryId": "g1u02.w.lion"
+      }
+    },
+    {
+      "id": "g1u02.w.next-to",
+      "term": "next to",
+      "kind": "wordbank",
+      "requiredTaskIds": [
+        "g1.paint.ch02.a07",
+        "g1.paint.ch02.b06"
+      ],
+      "source": {
+        "kind": "wordbank",
+        "path": "content/corpus/units/g1-u02/wordbank.json",
+        "entryId": "g1u02.w.next-to"
+      }
+    },
+    {
+      "id": "g1u02.w.in",
+      "term": "in",
+      "kind": "wordbank",
+      "requiredTaskIds": [
+        "g1.paint.ch02.a08",
+        "g1.paint.ch02.b06"
+      ],
+      "source": {
+        "kind": "wordbank",
+        "path": "content/corpus/units/g1-u02/wordbank.json",
+        "entryId": "g1u02.w.in"
+      },
+      "excludePhrases": [
+        "in Year 7",
+        "in Year 8",
+        "in Year 9"
+      ]
+    },
+    {
+      "id": "g1u02.w.behind",
+      "term": "behind",
+      "kind": "wordbank",
+      "requiredTaskIds": [
+        "g1.paint.ch02.a13",
+        "g1.paint.ch02.b07"
+      ],
+      "source": {
+        "kind": "wordbank",
+        "path": "content/corpus/units/g1-u02/wordbank.json",
+        "entryId": "g1u02.w.behind"
+      }
+    },
+    {
+      "id": "g1u02.w.under",
+      "term": "under",
+      "kind": "wordbank",
+      "requiredTaskIds": [
+        "g1.paint.ch02.a09",
+        "g1.paint.ch02.b07"
+      ],
+      "source": {
+        "kind": "wordbank",
+        "path": "content/corpus/units/g1-u02/wordbank.json",
+        "entryId": "g1u02.w.under"
+      }
+    },
+    {
+      "id": "g1u02.w.on",
+      "term": "on",
+      "kind": "wordbank",
+      "requiredTaskIds": [
+        "g1.paint.ch02.a10",
+        "g1.paint.ch02.b06"
+      ],
+      "source": {
+        "kind": "wordbank",
+        "path": "content/corpus/units/g1-u02/wordbank.json",
+        "entryId": "g1u02.w.on"
+      },
+      "excludePhrases": [
+        "go on"
+      ]
+    },
+    {
+      "id": "g1u02.w.in-front-of",
+      "term": "in front of",
+      "kind": "wordbank",
+      "requiredTaskIds": [
+        "g1.paint.ch02.a12",
+        "g1.paint.ch02.b07"
+      ],
+      "source": {
+        "kind": "wordbank",
+        "path": "content/corpus/units/g1-u02/wordbank.json",
+        "entryId": "g1u02.w.in-front-of"
+      }
+    },
+    {
+      "id": "g1u02.w.zoo",
+      "term": "zoo",
+      "kind": "wordbank",
+      "requiredTaskIds": [
+        "g1.paint.ch02.a01",
+        "g1.paint.ch02.b08"
+      ],
+      "source": {
+        "kind": "wordbank",
+        "path": "content/corpus/units/g1-u02/wordbank.json",
+        "entryId": "g1u02.w.zoo"
+      }
+    },
+    {
+      "id": "g1u02.w.beautiful",
+      "term": "beautiful",
+      "kind": "wordbank",
+      "requiredTaskIds": [
+        "g1.paint.ch02.c14",
+        "g1.paint.ch02.d02"
+      ],
+      "source": {
+        "kind": "wordbank",
+        "path": "content/corpus/units/g1-u02/wordbank.json",
+        "entryId": "g1u02.w.beautiful"
+      }
+    },
+    {
+      "id": "g1u02.w.behind-2",
+      "term": "behind",
+      "kind": "wordbank",
+      "requiredTaskIds": [
+        "g1.paint.ch02.a13",
+        "g1.paint.ch02.b07"
+      ],
+      "source": {
+        "kind": "wordbank",
+        "path": "content/corpus/units/g1-u02/wordbank.json",
+        "entryId": "g1u02.w.behind-2"
+      }
+    },
+    {
+      "id": "g1u02.w.big",
+      "term": "big",
+      "kind": "wordbank",
+      "requiredTaskIds": [
+        "g1.paint.ch02.c02",
+        "g1.paint.ch02.c06"
+      ],
+      "source": {
+        "kind": "wordbank",
+        "path": "content/corpus/units/g1-u02/wordbank.json",
+        "entryId": "g1u02.w.big"
+      }
+    },
+    {
+      "id": "g1u02.w.in-front-of-2",
+      "term": "in front of",
+      "kind": "wordbank",
+      "requiredTaskIds": [
+        "g1.paint.ch02.a12",
+        "g1.paint.ch02.b07"
+      ],
+      "source": {
+        "kind": "wordbank",
+        "path": "content/corpus/units/g1-u02/wordbank.json",
+        "entryId": "g1u02.w.in-front-of-2"
+      }
+    },
+    {
+      "id": "g1u02.w.next-to-2",
+      "term": "next to",
+      "kind": "wordbank",
+      "requiredTaskIds": [
+        "g1.paint.ch02.a07",
+        "g1.paint.ch02.b06"
+      ],
+      "source": {
+        "kind": "wordbank",
+        "path": "content/corpus/units/g1-u02/wordbank.json",
+        "entryId": "g1u02.w.next-to-2"
+      }
+    },
+    {
+      "id": "g1u02.w.under-2",
+      "term": "under",
+      "kind": "wordbank",
+      "requiredTaskIds": [
+        "g1.paint.ch02.a09",
+        "g1.paint.ch02.b07"
+      ],
+      "source": {
+        "kind": "wordbank",
+        "path": "content/corpus/units/g1-u02/wordbank.json",
+        "entryId": "g1u02.w.under-2"
+      }
+    },
+    {
+      "id": "g1u02.w.where",
+      "term": "where",
+      "kind": "wordbank",
+      "requiredTaskIds": [
+        "g1.paint.ch02.c02",
+        "g1.paint.ch02.d05"
+      ],
+      "source": {
+        "kind": "wordbank",
+        "path": "content/corpus/units/g1-u02/wordbank.json",
+        "entryId": "g1u02.w.where"
+      }
+    },
+    {
+      "id": "g1u02.w.small",
+      "term": "small",
+      "kind": "wordbank",
+      "requiredTaskIds": [
+        "g1.paint.ch02.c07",
+        "g1.paint.ch02.d05"
+      ],
+      "source": {
+        "kind": "wordbank",
+        "path": "content/corpus/units/g1-u02/wordbank.json",
+        "entryId": "g1u02.w.small"
+      }
+    },
+    {
+      "id": "g1u02.w.adult",
+      "term": "adult",
+      "kind": "wordbank",
+      "requiredTaskIds": [
+        "g1.paint.ch02.a19",
+        "g1.paint.ch02.b08"
+      ],
+      "source": {
+        "kind": "wordbank",
+        "path": "content/corpus/units/g1-u02/wordbank.json",
+        "entryId": "g1u02.w.adult"
+      }
+    },
+    {
+      "id": "g1u02.w.at",
+      "term": "at",
+      "kind": "wordbank",
+      "requiredTaskIds": [
+        "g1.paint.ch02.a01",
+        "g1.paint.ch02.b08"
+      ],
+      "source": {
+        "kind": "wordbank",
+        "path": "content/corpus/units/g1-u02/wordbank.json",
+        "entryId": "g1u02.w.at"
+      },
+      "excludePhrases": [
+        "at last"
+      ]
+    },
+    {
+      "id": "g1u02.w.to-bring",
+      "term": "to bring",
+      "kind": "wordbank",
+      "requiredTaskIds": [
+        "g1.paint.ch02.b23",
+        "g1.paint.ch02.c04"
+      ],
+      "source": {
+        "kind": "wordbank",
+        "path": "content/corpus/units/g1-u02/wordbank.json",
+        "entryId": "g1u02.w.to-bring"
+      }
+    },
+    {
+      "id": "g1u02.w.but",
+      "term": "but",
+      "kind": "wordbank",
+      "requiredTaskIds": [
+        "g1.paint.ch02.b08",
+        "g1.paint.ch02.d08"
+      ],
+      "source": {
+        "kind": "wordbank",
+        "path": "content/corpus/units/g1-u02/wordbank.json",
+        "entryId": "g1u02.w.but"
+      }
+    },
+    {
+      "id": "g1u02.w.child",
+      "term": "child (pl children)",
+      "kind": "wordbank",
+      "requiredTaskIds": [
+        "g1.paint.ch02.a16",
+        "g1.paint.ch02.b08"
+      ],
+      "source": {
+        "kind": "wordbank",
+        "path": "content/corpus/units/g1-u02/wordbank.json",
+        "entryId": "g1u02.w.child"
+      }
+    },
+    {
+      "id": "g1u02.w.dog",
+      "term": "dog",
+      "kind": "wordbank",
+      "requiredTaskIds": [
+        "g1.paint.ch02.a13",
+        "g1.paint.ch02.b07"
+      ],
+      "source": {
+        "kind": "wordbank",
+        "path": "content/corpus/units/g1-u02/wordbank.json",
+        "entryId": "g1u02.w.dog"
+      }
+    },
+    {
+      "id": "g1u02.w.family",
+      "term": "family",
+      "kind": "wordbank",
+      "requiredTaskIds": [
+        "g1.paint.ch02.b08",
+        "g1.paint.ch02.c04"
+      ],
+      "source": {
+        "kind": "wordbank",
+        "path": "content/corpus/units/g1-u02/wordbank.json",
+        "entryId": "g1u02.w.family"
+      }
+    },
+    {
+      "id": "g1u02.w.free",
+      "term": "free",
+      "kind": "wordbank",
+      "requiredTaskIds": [
+        "g1.paint.ch02.b09",
+        "g1.paint.ch02.b25"
+      ],
+      "source": {
+        "kind": "wordbank",
+        "path": "content/corpus/units/g1-u02/wordbank.json",
+        "entryId": "g1u02.w.free"
+      }
+    },
+    {
+      "id": "g1u02.w.grandma",
+      "term": "Grandma",
+      "kind": "wordbank",
+      "requiredTaskIds": [
+        "g1.paint.ch02.b08",
+        "g1.paint.ch02.c09"
+      ],
+      "source": {
+        "kind": "wordbank",
+        "path": "content/corpus/units/g1-u02/wordbank.json",
+        "entryId": "g1u02.w.grandma"
+      }
+    },
+    {
+      "id": "g1u02.w.group",
+      "term": "group",
+      "kind": "wordbank",
+      "requiredTaskIds": [
+        "g1.paint.ch02.b09",
+        "g1.paint.ch02.b16"
+      ],
+      "source": {
+        "kind": "wordbank",
+        "path": "content/corpus/units/g1-u02/wordbank.json",
+        "entryId": "g1u02.w.group"
+      }
+    },
+    {
+      "id": "g1u02.w.long",
+      "term": "long",
+      "kind": "wordbank",
+      "requiredTaskIds": [
+        "g1.paint.ch02.b19",
+        "g1.paint.ch02.c05"
+      ],
+      "source": {
+        "kind": "wordbank",
+        "path": "content/corpus/units/g1-u02/wordbank.json",
+        "entryId": "g1u02.w.long"
+      }
+    },
+    {
+      "id": "g1u02.w.ticket",
+      "term": "ticket",
+      "kind": "wordbank",
+      "requiredTaskIds": [
+        "g1.paint.ch02.a15",
+        "g1.paint.ch02.b09"
+      ],
+      "source": {
+        "kind": "wordbank",
+        "path": "content/corpus/units/g1-u02/wordbank.json",
+        "entryId": "g1u02.w.ticket"
+      }
+    },
+    {
+      "id": "g1u02.w.to-want",
+      "term": "to want",
+      "kind": "wordbank",
+      "requiredTaskIds": [
+        "g1.paint.ch02.c08",
+        "g1.paint.ch02.d08"
+      ],
+      "source": {
+        "kind": "wordbank",
+        "path": "content/corpus/units/g1-u02/wordbank.json",
+        "entryId": "g1u02.w.to-want"
+      }
+    },
+    {
+      "id": "g1u02.w.from",
+      "term": "from",
+      "kind": "wordbank",
+      "requiredTaskIds": [
+        "g1.paint.ch02.b14",
+        "g1.paint.ch02.c11"
+      ],
+      "source": {
+        "kind": "wordbank",
+        "path": "content/corpus/units/g1-u02/wordbank.json",
+        "entryId": "g1u02.w.from"
+      }
+    },
+    {
+      "id": "g1u02.w.year",
+      "term": "year",
+      "kind": "wordbank",
+      "requiredTaskIds": [
+        "g1.paint.ch02.b15",
+        "g1.paint.ch02.c12"
+      ],
+      "source": {
+        "kind": "wordbank",
+        "path": "content/corpus/units/g1-u02/wordbank.json",
+        "entryId": "g1u02.w.year"
+      }
+    },
+    {
+      "id": "g1u02.w.he",
+      "term": "he",
+      "kind": "wordbank",
+      "requiredTaskIds": [
+        "g1.paint.ch02.b08",
+        "g1.paint.ch02.c09"
+      ],
+      "source": {
+        "kind": "wordbank",
+        "path": "content/corpus/units/g1-u02/wordbank.json",
+        "entryId": "g1u02.w.he"
+      }
+    },
+    {
+      "id": "g1u02.w.she",
+      "term": "she",
+      "kind": "wordbank",
+      "requiredTaskIds": [
+        "g1.paint.ch02.b08",
+        "g1.paint.ch02.c11"
+      ],
+      "source": {
+        "kind": "wordbank",
+        "path": "content/corpus/units/g1-u02/wordbank.json",
+        "entryId": "g1u02.w.she"
+      }
+    },
+    {
+      "id": "g1u02.w.to-talk",
+      "term": "to talk",
+      "kind": "wordbank",
+      "requiredTaskIds": [
+        "g1.paint.ch02.c08",
+        "g1.paint.ch02.d08"
+      ],
+      "source": {
+        "kind": "wordbank",
+        "path": "content/corpus/units/g1-u02/wordbank.json",
+        "entryId": "g1u02.w.to-talk"
+      }
+    },
+    {
+      "id": "g1u02.w.they",
+      "term": "they",
+      "kind": "wordbank",
+      "requiredTaskIds": [
+        "g1.paint.ch02.b08",
+        "g1.paint.ch02.c12"
+      ],
+      "source": {
+        "kind": "wordbank",
+        "path": "content/corpus/units/g1-u02/wordbank.json",
+        "entryId": "g1u02.w.they"
+      }
+    },
+    {
+      "id": "g1u02.w.we",
+      "term": "we",
+      "kind": "wordbank",
+      "requiredTaskIds": [
+        "g1.paint.ch02.b16",
+        "g1.paint.ch02.c08"
+      ],
+      "source": {
+        "kind": "wordbank",
+        "path": "content/corpus/units/g1-u02/wordbank.json",
+        "entryId": "g1u02.w.we"
+      }
+    },
+    {
+      "id": "g1u02.w.for",
+      "term": "for",
+      "kind": "wordbank",
+      "requiredTaskIds": [
+        "g1.paint.ch02.a16",
+        "g1.paint.ch02.a19"
+      ],
+      "source": {
+        "kind": "wordbank",
+        "path": "content/corpus/units/g1-u02/wordbank.json",
+        "entryId": "g1u02.w.for"
+      }
+    },
+    {
+      "id": "g1u02.w.happy",
+      "term": "happy",
+      "kind": "wordbank",
+      "requiredTaskIds": [
+        "g1.paint.ch02.b13",
+        "g1.paint.ch02.c09"
+      ],
+      "source": {
+        "kind": "wordbank",
+        "path": "content/corpus/units/g1-u02/wordbank.json",
+        "entryId": "g1u02.w.happy"
+      }
+    },
+    {
+      "id": "g1u02.w.to-let-somebody-out",
+      "term": "to let somebody out",
+      "kind": "wordbank",
+      "requiredTaskIds": [
+        "g1.paint.ch02.b10",
+        "g1.paint.ch02.c17"
+      ],
+      "source": {
+        "kind": "wordbank",
+        "path": "content/corpus/units/g1-u02/wordbank.json",
+        "entryId": "g1u02.w.to-let-somebody-out"
+      }
+    },
+    {
+      "id": "g1u02.w.us",
+      "term": "us",
+      "kind": "wordbank",
+      "requiredTaskIds": [
+        "g1.paint.ch02.b10",
+        "g1.paint.ch02.c17"
+      ],
+      "source": {
+        "kind": "wordbank",
+        "path": "content/corpus/units/g1-u02/wordbank.json",
+        "entryId": "g1u02.w.us"
+      }
+    },
+    {
+      "id": "g1u02.w.car",
+      "term": "car",
+      "kind": "wordbank",
+      "requiredTaskIds": [
+        "g1.paint.ch02.a07",
+        "g1.paint.ch02.a08"
+      ],
+      "source": {
+        "kind": "wordbank",
+        "path": "content/corpus/units/g1-u02/wordbank.json",
+        "entryId": "g1u02.w.car"
+      }
+    },
+    {
+      "id": "g1u02.w.at-last",
+      "term": "At last.",
+      "kind": "wordbank",
+      "requiredTaskIds": [
+        "g1.paint.ch02.a17",
+        "g1.paint.ch02.c16"
+      ],
+      "source": {
+        "kind": "wordbank",
+        "path": "content/corpus/units/g1-u02/wordbank.json",
+        "entryId": "g1u02.w.at-last"
+      }
+    },
+    {
+      "id": "g1u02.w.how-strange",
+      "term": "How strange!",
+      "kind": "wordbank",
+      "requiredTaskIds": [
+        "g1.paint.ch02.b22",
+        "g1.paint.ch02.d07"
+      ],
+      "source": {
+        "kind": "wordbank",
+        "path": "content/corpus/units/g1-u02/wordbank.json",
+        "entryId": "g1u02.w.how-strange"
+      }
+    },
+    {
+      "id": "g1u02.w.let-me-see",
+      "term": "Let me see.",
+      "kind": "wordbank",
+      "requiredTaskIds": [
+        "g1.paint.ch02.a20",
+        "g1.paint.ch02.c15"
+      ],
+      "source": {
+        "kind": "wordbank",
+        "path": "content/corpus/units/g1-u02/wordbank.json",
+        "entryId": "g1u02.w.let-me-see"
+      }
+    },
+    {
+      "id": "g1u02.w.stone",
+      "term": "stone",
+      "kind": "wordbank",
+      "requiredTaskIds": [
+        "g1.paint.ch02.c13",
+        "g1.paint.ch02.c14"
+      ],
+      "source": {
+        "kind": "wordbank",
+        "path": "content/corpus/units/g1-u02/wordbank.json",
+        "entryId": "g1u02.w.stone"
+      }
+    },
+    {
+      "id": "semantic:wildlife-park",
+      "term": "wildlife park",
+      "kind": "semantic",
+      "requiredTaskIds": [
+        "g1.paint.ch02.a16",
+        "g1.paint.ch02.a19"
+      ],
+      "source": {
+        "kind": "quotation",
+        "path": "content/build/transcripts/g1/wb/WB Unit 2 At the zoo.txt",
+        "quote": "At the wildlife park / Prepositions of place"
+      },
+      "forms": [
+        "wildlife park"
+      ]
+    },
+    {
+      "id": "semantic:now",
+      "term": "now",
+      "kind": "semantic",
+      "requiredTaskIds": [
+        "g1.paint.ch02.a14",
+        "g1.paint.ch02.c02"
+      ],
+      "source": {
+        "kind": "quotation",
+        "path": "content/build/transcripts/g1/wb/WB Unit 2 At the zoo.txt",
+        "quote": "now — Where is it now?"
+      },
+      "forms": [
+        "now"
+      ]
+    },
+    {
+      "id": "semantic:feed",
+      "term": "feed",
+      "kind": "semantic",
+      "requiredTaskIds": [
+        "g1.paint.ch02.b09",
+        "g1.paint.ch02.c09"
+      ],
+      "source": {
+        "kind": "quotation",
+        "path": "content/build/transcripts/g1/sb/SB Unit 2- At the zoo.txt",
+        "quote": "Feed the giraffes."
+      },
+      "forms": [
+        "feed"
+      ]
+    },
+    {
+      "id": "semantic:see",
+      "term": "see",
+      "kind": "semantic",
+      "requiredTaskIds": [
+        "g1.paint.ch02.c09",
+        "g1.paint.ch02.d02"
+      ],
+      "source": {
+        "kind": "quotation",
+        "path": "content/build/transcripts/g1/sb/SB Unit 2- At the zoo.txt",
+        "quote": "See a lion."
+      },
+      "forms": [
+        "see"
+      ],
+      "excludePhrases": [
+        "let me see"
+      ]
+    },
+    {
+      "id": "semantic:go-on",
+      "term": "go on",
+      "kind": "semantic",
+      "requiredTaskIds": [
+        "g1.paint.ch02.b09",
+        "g1.paint.ch02.c09"
+      ],
+      "source": {
+        "kind": "quotation",
+        "path": "content/build/transcripts/g1/sb/SB Unit 2- At the zoo.txt",
+        "quote": "Go on a train."
+      },
+      "forms": [
+        "go on"
+      ]
+    },
+    {
+      "id": "semantic:run-around",
+      "term": "run around",
+      "kind": "semantic",
+      "requiredTaskIds": [
+        "g1.paint.ch02.b08",
+        "g1.paint.ch02.b25"
+      ],
+      "source": {
+        "kind": "quotation",
+        "path": "content/build/transcripts/g1/sb/SB Unit 2- At the zoo.txt",
+        "quote": "Fact box Dogs are welcome at Cotswold Wildlife Park and Gardens! But they can't run around!"
+      },
+      "forms": [
+        "run around"
+      ]
+    },
+    {
+      "id": "semantic:welcome",
+      "term": "welcome",
+      "kind": "semantic",
+      "requiredTaskIds": [
+        "g1.paint.ch02.b08",
+        "g1.paint.ch02.d09"
+      ],
+      "source": {
+        "kind": "quotation",
+        "path": "content/build/transcripts/g1/wb/WB Unit 2 At the zoo.txt",
+        "quote": "welcome — Welcome to London."
+      },
+      "forms": [
+        "welcome"
+      ]
+    },
+    {
+      "id": "semantic:to",
+      "term": "to",
+      "kind": "semantic",
+      "requiredTaskIds": [
+        "g1.paint.ch02.c04",
+        "g1.paint.ch02.d09"
+      ],
+      "source": {
+        "kind": "quotation",
+        "path": "content/build/transcripts/g1/wb/WB Unit 2 At the zoo.txt",
+        "quote": "to — Welcome to the wildlife park!"
+      },
+      "forms": [
+        "to"
+      ],
+      "excludePhrases": [
+        "next to",
+        "want to",
+        "wants to"
+      ]
+    },
+    {
+      "id": "semantic:what-is-it",
+      "term": "What is it?",
+      "kind": "semantic",
+      "requiredTaskIds": [
+        "g1.paint.ch02.c01",
+        "g1.paint.ch02.d06"
+      ],
+      "source": {
+        "kind": "quotation",
+        "path": "content/build/transcripts/g1/wb/WB Unit 2 At the zoo.txt",
+        "quote": "What is it? — — Was ist los?"
+      },
+      "forms": [
+        "What is it?"
+      ]
+    },
+    {
+      "id": "semantic:there-is",
+      "term": "there is",
+      "kind": "semantic",
+      "requiredTaskIds": [
+        "g1.paint.ch02.a01",
+        "g1.paint.ch02.c06"
+      ],
+      "source": {
+        "kind": "quotation",
+        "path": "content/build/transcripts/g1/sb/SB Unit 2- At the zoo.txt",
+        "quote": "There is a train."
+      },
+      "forms": [
+        "there is"
+      ]
+    },
+    {
+      "id": "semantic:there-are",
+      "term": "there are",
+      "kind": "semantic",
+      "requiredTaskIds": [
+        "g1.paint.ch02.b01",
+        "g1.paint.ch02.d03"
+      ],
+      "source": {
+        "kind": "quotation",
+        "path": "content/build/transcripts/g1/sb/SB Unit 2- At the zoo.txt",
+        "quote": "There are two trains."
+      },
+      "forms": [
+        "there are"
+      ]
+    }
+  ]
+}

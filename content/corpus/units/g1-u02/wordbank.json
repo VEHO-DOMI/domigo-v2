@@ -23,7 +23,8 @@
       "exampleSb": null,
       "cf": null,
       "forms": [
-        "tree"
+        "tree",
+        "trees"
       ],
       "taughtGloss": false
     },
@@ -39,7 +40,8 @@
       "exampleSb": null,
       "cf": null,
       "forms": [
-        "monkey"
+        "monkey",
+        "monkeys"
       ],
       "taughtGloss": false
     },
@@ -71,7 +73,8 @@
       "exampleSb": null,
       "cf": null,
       "forms": [
-        "giraffe"
+        "giraffe",
+        "giraffes"
       ],
       "taughtGloss": false
     },
@@ -87,7 +90,8 @@
       "exampleSb": null,
       "cf": null,
       "forms": [
-        "train"
+        "train",
+        "trains"
       ],
       "taughtGloss": false
     },
@@ -103,7 +107,8 @@
       "exampleSb": null,
       "cf": null,
       "forms": [
-        "penguin"
+        "penguin",
+        "penguins"
       ],
       "taughtGloss": false
     },
@@ -120,7 +125,8 @@
       "exampleSb": null,
       "cf": null,
       "forms": [
-        "guide"
+        "guide",
+        "guides"
       ],
       "taughtGloss": false
     },
@@ -136,7 +142,8 @@
       "exampleSb": null,
       "cf": null,
       "forms": [
-        "lion"
+        "lion",
+        "lions"
       ],
       "taughtGloss": false
     },
@@ -757,7 +764,9 @@
       "cf": "let somebody out",
       "forms": [
         "to let somebody out",
-        "let somebody out"
+        "let somebody out",
+        "let us out",
+        "let me out"
       ],
       "taughtGloss": false
     },
@@ -805,7 +814,9 @@
       "exampleSb": null,
       "cf": null,
       "forms": [
-        "At last."
+        "At last.",
+        "At last",
+        "At last!"
       ],
       "taughtGloss": false
     },

@@ -141,6 +141,27 @@
       "contentHash": "a2e12ea514a0d840907a02f41d8e0669d2bf204dbc5fcb4c29860b3cfb28b7a4",
       "note": "trusted patch (mechanical): 3 answer-pool fix(es) [g1u02.gi.there-is-are.ec.005, g1u02.gi.there-is-are.tr.005, g1u02.gi.to-be.ff.001] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
       "at": "2026-07-12T11:30:31.613Z"
+    },
+    {
+      "state": "wordbank_review",
+      "by": "CODEX-TRIAL",
+      "contentHash": "f663b08cf1e80c30f36caf660945c364a58f8f6a2e0a7cbf746b92ec1f36481b",
+      "note": "round 2: nine changed rows; independent full-table lenses A and B/C; canonical source hash verified",
+      "at": "2026-09-12T14:21:07.012Z"
+    },
+    {
+      "state": "wordbank_approved",
+      "by": "CODEX-TRIAL",
+      "contentHash": "f663b08cf1e80c30f36caf660945c364a58f8f6a2e0a7cbf746b92ec1f36481b",
+      "note": "CODEX-TRIAL round 2: independent lenses A and B/C read all 52 rows; nine forms fields / eleven additions accepted with source and grammar evidence. See wordbank.trial-round2.md. Ten historical Fable flag verdicts retained verbatim; no new Fable or human approval asserted. Canonical master reconstruction byte-identical with persisted forms overlays. Existing unchanged item approval carried forward separately; no new item assessment.",
+      "at": "2026-09-12T14:21:07.012Z"
+    },
+    {
+      "state": "approved",
+      "by": "CODEX-TRIAL",
+      "contentHash": "a2e12ea514a0d840907a02f41d8e0669d2bf204dbc5fcb4c29860b3cfb28b7a4",
+      "note": "Bestehende Itemfreigabe vom 2026-07-12 unverändert weitergeführt; keine neue Itembewertung. vocab.json/grammar.json bytegleich zu HEAD, vorhandener Items-Hash bestätigt. Neue Wortbankrunde 2 enthält ausschließlich belegte Formen und verändert keine Aufgaben.",
+      "at": "2026-09-12T14:21:07.012Z"
     }
   ]
 }
