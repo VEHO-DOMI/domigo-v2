@@ -96,5 +96,20 @@ const COMIC_CSS = `
 @keyframes pb-comic-drift{from{transform:scale(1.025)}to{transform:scale(1)}}
 @media(max-height:600px){.pb-comic-heading,.pb-comic-foot{padding:5px 12px}.pb-comic-caption{padding:8px 14px;max-height:60%}.pb-comic-caption h2{font-size:18px}.pb-comic-caption p{font-size:15px;margin:3px 0}}
 @media(max-width:500px){.pb-comic-heading{gap:6px;padding:8px;font-size:12px}.pb-comic-heading button{max-width:105px}.pb-comic-caption{padding:10px 14px}.pb-comic-caption p{font-size:16px}.pb-comic-foot{padding:8px;gap:6px}.pb-comic-foot button{padding:8px;font-size:13px}}
+@media(pointer:coarse){
+  .pb-comic-veil{padding:max(8px,env(safe-area-inset-top)) max(8px,env(safe-area-inset-right)) max(8px,env(safe-area-inset-bottom)) max(8px,env(safe-area-inset-left))}
+  .pb-comic-heading button{min-height:44px}.pb-comic-foot button{min-height:44px}
+}
+@media(pointer:coarse) and (orientation:portrait){
+  .pb-comic-book{height:auto;max-height:100%}
+  .pb-comic-picture{flex:0 0 auto;aspect-ratio:3/2}
+  .pb-comic-shot{flex:0 1 auto;overflow:auto}
+  .pb-comic-caption{max-height:none;overflow:visible}
+}
+@media(pointer:coarse) and (orientation:landscape){
+  .pb-comic-shot{flex-direction:row}
+  .pb-comic-picture{flex:1 1 55%;min-width:0}
+  .pb-comic-caption{flex:1 1 45%;min-width:0;max-height:none;box-sizing:border-box;border-top:0;border-left:3px solid #715437;overflow:auto}
+}
 @media(prefers-reduced-motion:reduce){.pb-comic-art{animation:none!important;transform:none!important}}
 `;
