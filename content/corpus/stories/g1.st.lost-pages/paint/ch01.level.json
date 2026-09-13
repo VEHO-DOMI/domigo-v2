@@ -1,846 +1,899 @@
 {
- "schema": "paintLevel@1",
- "id": "g1.paint.ch01",
- "chapter": "ch01",
- "name": "Zeit für die Schule — Das Schulhaus ohne Farbe",
- "goalPlate": "plate_ch01_goal",
- "goalDe": "Der Tinten-Schatten war hier. Er hat dem Schulhaus die Farben genommen. Manche Schulsachen stehen grau da, andere stellen sich dir quer.",
- "whyDe": "Das Buch versteht Englisch: Wer es richtig sagt, holt die Farbe zurück.",
- "hintsDe": [
-  "Springen: SPACE — halten für höher!",
-  "Etwas steht grau da? Stell dich davor und drück ↑!",
-  "Stellt sich dir eine Schulsache quer? Sag ihr, was sie wissen will!"
- ],
- "collectNounDe": "Buchstaben",
- "abilities": [
-  "jump",
-  "run"
- ],
- "checkpointStyle": "silent",
- "phases": [
-  {
-   "id": "p1",
-   "nameDe": "Die Eingangshalle",
-   "surface": "normal",
-   "checkpointSide": "near",
-   "plates": {
-    "far": "plate_p1_entrancehall",
-    "mid": "band_p1_hallway"
-   },
-   "rows": [
-    "################################################################",
-    "................................................................",
-    "................................................................",
-    "................................................................",
-    "................................................................",
-    "................................................................",
-    "................................................................",
-    "................................................................",
-    "................................................................",
-    "................................................................",
-    "................................................................",
-    "...............................*.*..............................",
-    "..................###..................................*........",
-    ".............*.................###.......................###....",
-    "...........*....*..................................*..##........",
-    "................................................................",
-    "......##...##..##.......*....##...............*....##...........",
-    "...S.......................................C.......##.........X.",
-    "########################################..##..##################",
-    "########################################......##################",
-    "########################################......##################",
-    "########################################......##################",
-    "############################################ww##################",
-    "############################################ww##################",
-    "############################################ww##################",
-    "############################################ww##################"
-   ],
-   "entities": [
+  "schema": "paintLevel@1",
+  "id": "g1.paint.ch01",
+  "chapter": "ch01",
+  "name": "Zeit für die Schule — Das Schulhaus ohne Farbe",
+  "goalPlate": "plate_ch01_goal",
+  "goalDe": "Der Tintengeist hat eure Schule verhext. Viele Schulsachen haben ihre Farbe verloren. Deine Mitschülerin Merle sitzt in einem Federpenal fest. Klecks zeigt dir den Weg zu ihr.",
+  "whyDe": "Mit Englisch löst du den Zauber und hilfst Merle.",
+  "hintsDe": [
+    "Mit der Leertaste springst du. Halte sie für einen höheren Sprung.",
+    "Stell dich vor eine graue Sache und drück Pfeil nach oben.",
+    "Manche Schulsachen greifen dich an. Mit Englisch beruhigst du sie."
+  ],
+  "collectNounDe": "Buchstaben",
+  "abilities": [
+    "jump",
+    "run"
+  ],
+  "checkpointStyle": "silent",
+  "phases": [
     {
-     "id": "p1-pencil1",
-     "role": "chaser",
-     "skin": "pencil",
-     "c": 24,
-     "r": 17,
-     "tier": "E",
-     "params": {
-      "patrolMinC": 20,
-      "patrolMaxC": 28
-     }
-    },
-    {
-     "id": "p1-eraser",
-     "role": "bouncer",
-     "skin": "eraser",
-     "c": 48,
-     "r": 17,
-     "tier": "E",
-     "params": {}
-    },
-    {
-     "id": "p1-cage1",
-     "role": "cage",
-     "skin": "satchel",
-     "c": 58,
-     "r": 12,
-     "tier": "E",
-     "params": {
-      "captive": "soundsystem",
-      "captiveDe": "die Musikanlage"
-     }
-    },
-    {
-     "id": "p1-door",
-     "role": "door.trigger",
-     "skin": "door",
-     "c": 61,
-     "r": 17,
-     "tier": "E",
-     "params": {
-      "kind": "exit"
-     }
-    },
-    {
-     "id": "p1-regel-kurzformen",
-     "role": "tip",
-     "skin": "regelseite",
-     "c": 32,
-     "r": 12,
-     "tier": "E",
-     "params": {
-      "topicDe": "Kurzformen",
-      "erklaerungDe": "Im Englischen werden zwei Wörter oft zu einer Kurzform. Aus „I am“ wird „I'm“.",
-      "merksatzDe": "Der Apostroph zeigt: Hier fehlt ein Buchstabe.",
-      "schluesselDe": "Hier fehlt ein Buchstabe",
-      "beispieleEn": [
-       "I am here. – I'm here.",
-       "It is my school bag. – It's my school bag.",
-       "It is not dark here. – It isn't dark here.",
-       "I do not understand. – I don't understand."
+      "id": "p1",
+      "nameDe": "Die Eingangshalle",
+      "surface": "normal",
+      "checkpointSide": "near",
+      "plates": {
+        "far": "plate_p1_entrancehall",
+        "mid": "band_p1_hallway"
+      },
+      "rows": [
+        "################################################################",
+        "................................................................",
+        "................................................................",
+        "................................................................",
+        "................................................................",
+        "................................................................",
+        "................................................................",
+        "................................................................",
+        "................................................................",
+        "................................................................",
+        "................................................................",
+        "...............................*.*..............................",
+        "..................###..................................*........",
+        ".............*.................###.......................###....",
+        "...........*....*..................................*..##........",
+        "................................................................",
+        "......##...##..##.......*....##...............*....##...........",
+        "...S.......................................C.......##.........X.",
+        "########################################..##..##################",
+        "########################################......##################",
+        "########################################......##################",
+        "########################################......##################",
+        "############################################ww##################",
+        "############################################ww##################",
+        "############################################ww##################",
+        "############################################ww##################"
       ],
-      "beispielMuster": "wandel",
-      "lehrtEn": [
-       "I'm",
-       "It's",
-       "isn't",
-       "don't"
+      "entities": [
+        {
+          "id": "p1-pencil1",
+          "role": "chaser",
+          "skin": "pencil",
+          "c": 24,
+          "r": 17,
+          "tier": "E",
+          "params": {
+            "patrolMinC": 20,
+            "patrolMaxC": 28
+          }
+        },
+        {
+          "id": "p1-eraser",
+          "role": "bouncer",
+          "skin": "eraser",
+          "c": 48,
+          "r": 17,
+          "tier": "E",
+          "params": {
+            "taskSequenceV2": {
+              "requiredIds": [
+                "g1.paint.ch01.enc.eraser.k1",
+                "g1.paint.ch01.enc.eraser.r1"
+              ],
+              "variantIds": [
+                "g1.paint.ch01.enc.eraser.k2"
+              ]
+            }
+          }
+        },
+        {
+          "id": "p1-cage1",
+          "role": "cage",
+          "skin": "satchel",
+          "c": 58,
+          "r": 12,
+          "tier": "E",
+          "params": {
+            "captive": "soundsystem",
+            "captiveDe": "die Musikanlage",
+            "shellArt": "device_locker"
+          }
+        },
+        {
+          "id": "p1-door",
+          "role": "door.trigger",
+          "skin": "door",
+          "c": 61,
+          "r": 17,
+          "tier": "E",
+          "params": {
+            "kind": "exit"
+          }
+        },
+        {
+          "id": "p1-regel-kurzformen",
+          "role": "tip",
+          "skin": "regelseite",
+          "c": 32,
+          "r": 12,
+          "tier": "E",
+          "params": {
+            "topicDe": "Kurzformen",
+            "erklaerungDe": "Im Englischen werden zwei Wörter oft zu einer Kurzform. Aus „I am“ wird „I'm“.",
+            "merksatzDe": "Der Apostroph zeigt, dass ein oder mehrere Buchstaben ausgelassen wurden.",
+            "schluesselDe": "Buchstaben ausgelassen wurden",
+            "beispieleEn": [
+              "I am here. – I'm here.",
+              "It is my school bag. – It's my school bag.",
+              "It is not dark here. – It isn't dark here.",
+              "I do not understand. – I don't understand."
+            ],
+            "beispielMuster": "wandel",
+            "lehrtEn": [
+              "I'm",
+              "It's",
+              "isn't",
+              "don't"
+            ],
+            "belegDe": "MORE! 1 · Unit 1 · Seite 11, 13, 14"
+          }
+        },
+        {
+          "id": "p1-regel-befehle",
+          "role": "tip",
+          "skin": "regelseite",
+          "c": 12,
+          "r": 15,
+          "tier": "E",
+          "params": {
+            "topicDe": "Befehle auf Englisch",
+            "erklaerungDe": "Bei einem englischen Befehl beginnst du gleich mit dem Verb. Du brauchst davor kein you.",
+            "merksatzDe": "Soll jemand etwas nicht tun, stellst du Don't vor das Verb.",
+            "schluesselDe": "stellst du Don't vor das Verb",
+            "beispieleEn": [
+              "Sit down!",
+              "Don't sit down!",
+              "Close the door!",
+              "Don't close the door!"
+            ],
+            "beispielMuster": "gegensatz",
+            "lehrtEn": [
+              "Sit down",
+              "Close",
+              "Don't"
+            ],
+            "belegDe": "MORE! 1 · Unit 1 · Seite 15"
+          }
+        },
+        {
+          "id": "p1-obj-book",
+          "role": "drained",
+          "skin": "obj_book",
+          "c": 7,
+          "r": 15,
+          "tier": "E",
+          "params": {}
+        },
+        {
+          "id": "p1-obj-schoolbag",
+          "role": "drained",
+          "skin": "obj_schoolbag",
+          "c": 54,
+          "r": 13,
+          "tier": "E",
+          "params": {}
+        },
+        {
+          "id": "p1-cloth-hairband",
+          "role": "cloth",
+          "skin": "cloth_hairband",
+          "c": 15,
+          "r": 15,
+          "tier": "E",
+          "params": {
+            "wordEn": "hairband"
+          }
+        },
+        {
+          "id": "p1-cloth-hat",
+          "role": "cloth",
+          "skin": "cloth_hat",
+          "c": 41,
+          "r": 21,
+          "tier": "E",
+          "params": {
+            "wordEn": "hat"
+          }
+        },
+        {
+          "id": "p1-cloth-sunglasses",
+          "role": "cloth",
+          "skin": "cloth_sunglasses",
+          "c": 30,
+          "r": 17,
+          "tier": "E",
+          "params": {
+            "wordEn": "sunglasses"
+          }
+        }
       ],
-      "belegDe": "MORE! 1 · Unit 1 · Seite 11, 13, 14"
-     }
+      "links": [],
+      "exit": {
+        "to": "p2"
+      }
     },
     {
-     "id": "p1-regel-befehle",
-     "role": "tip",
-     "skin": "regelseite",
-     "c": 12,
-     "r": 15,
-     "tier": "E",
-     "params": {
-      "topicDe": "Befehle — ohne you vor dem Verb",
-      "erklaerungDe": "Bei einem englischen Befehl musst du „du“ nicht dazusagen. Das Verb zeigt schon, dass du gemeint bist.",
-      "merksatzDe": "Soll jemand etwas nicht tun, stellst du Don't vor das Verb.",
-      "schluesselDe": "stellst du Don't vor das Verb",
-      "beispieleEn": [
-       "Sit down!",
-       "Don't sit down!",
-       "Close the door!",
-       "Don't close the door!"
+      "id": "p2",
+      "nameDe": "Das Klassenzimmer bei Nacht",
+      "surface": "normal",
+      "checkpointSide": "near",
+      "plates": {
+        "far": "plate_p2_nightwall",
+        "mid": "band_p2_furniture"
+      },
+      "rows": [
+        "############################################################################################",
+        "......................##......#....#...................##..................................#",
+        "......................##......######...................##..................................#",
+        "......................##......#....#...................##..................................#",
+        "......................##......#....#...................##..................................#",
+        "........................#######....######################..................................#",
+        "................................*......................##..................................#",
+        "..................................*.*..................##..................................#",
+        ".................##....C...................................................................#",
+        "......................##########..####################.....................................#",
+        "......................##...............................*...................................#",
+        "..................*.####..............................#....................................#",
+        "......................##...............................##..................................#",
+        "..................##..##...............................##*.................................#",
+        "...............*......##...............................##..................................#",
+        "......................##...............................####................................#",
+        "............*..###....##...............................####*...............................#",
+        "......................##...............................####................................#",
+        "....####....###.......##...............................#####...............................#",
+        "..S....#......#.......##...............................#####..............................X#",
+        "########################wwwwwwwwwwwwwwwwwwwwwwwwwwwwwww#####################################",
+        "########################wwwwwwwwwwwwwwwwwwwwwwwwwwwwwww#####################################",
+        "########################wwwwwwwwwwwwwwwwwwwwwwwwwwwwwww#####################################",
+        "########################wwwwwwwwwwwwwwwwwwwwwwwwwwwwwww#####################################",
+        "########################wwwwwwwwwwwwwwwwwwwwwwwwwwwwwww#####################################",
+        "########################wwwwwwwwwwwwwwwwwwwwwwwwwwwwwww#####################################"
       ],
-      "beispielMuster": "gegensatz",
-      "lehrtEn": [
-       "Sit down",
-       "Close",
-       "Don't"
+      "entities": [
+        {
+          "id": "p2-pen",
+          "role": "chaser",
+          "skin": "pen",
+          "c": 11,
+          "r": 19,
+          "tier": "E",
+          "params": {
+            "curseVisual": "violet-ink",
+            "taskSequenceV2": {
+              "requiredIds": [
+                "g1.paint.ch01.enc.pen.k1",
+                "g1.paint.ch01.enc.pen.r1"
+              ],
+              "variantIds": [
+                "g1.paint.ch01.enc.pen.k2"
+              ]
+            }
+          }
+        },
+        {
+          "id": "p2-paintbox",
+          "role": "gunner",
+          "skin": "paintbox",
+          "c": 85,
+          "r": 19,
+          "tier": "E",
+          "params": {}
+        },
+        {
+          "id": "p2-moths-1",
+          "role": "swarm",
+          "skin": "moths",
+          "c": 26,
+          "r": 7,
+          "tier": "E",
+          "params": {}
+        },
+        {
+          "id": "p2-moths-2",
+          "role": "swarm",
+          "skin": "moths",
+          "c": 41,
+          "r": 7,
+          "tier": "E",
+          "params": {}
+        },
+        {
+          "id": "p2-moths-3",
+          "role": "swarm",
+          "skin": "moths",
+          "c": 56,
+          "r": 11,
+          "tier": "E",
+          "params": {}
+        },
+        {
+          "id": "p2-cage-tablet",
+          "role": "cage",
+          "skin": "satchel",
+          "c": 17,
+          "r": 7,
+          "tier": "E",
+          "params": {
+            "captive": "tablet",
+            "captiveDe": "das Tablet",
+            "shellArt": "device_locker"
+          }
+        },
+        {
+          "id": "p2-cage-merle",
+          "role": "cage",
+          "skin": "pencilcase",
+          "c": 75,
+          "r": 19,
+          "tier": "E",
+          "params": {
+            "classmate": "merle",
+            "captiveDe": "Merle"
+          }
+        },
+        {
+          "id": "merle",
+          "role": "classmate",
+          "skin": "merle",
+          "c": 76,
+          "r": 19,
+          "tier": "E",
+          "params": {
+            "cage": "p2-cage-merle",
+            "hidden": true,
+            "roamMinC": 73,
+            "roamMaxC": 79
+          }
+        },
+        {
+          "id": "p2-klecks",
+          "role": "door.trigger",
+          "skin": "klecksdoor",
+          "c": 63,
+          "r": 19,
+          "tier": "E",
+          "params": {
+            "kind": "bonus",
+            "price": 8
+          }
+        },
+        {
+          "id": "p2-door",
+          "role": "door.trigger",
+          "skin": "door",
+          "c": 89,
+          "r": 19,
+          "tier": "E",
+          "params": {
+            "kind": "exit"
+          }
+        },
+        {
+          "id": "p2-regel-gruss",
+          "role": "tip",
+          "skin": "regelseite",
+          "c": 5,
+          "r": 17,
+          "tier": "E",
+          "params": {
+            "topicDe": "Fragen und passende Antworten",
+            "erklaerungDe": "Mit I'm sagst du, wie du heißt oder wie es dir geht. Mit It's kannst du eine Sache benennen.",
+            "merksatzDe": "Mit I'm sprichst du über dich. Mit It's benennst du eine Sache.",
+            "schluesselDe": "Mit I'm sprichst du über dich",
+            "beispieleEn": [
+              "Hello! What's your name? – I'm Merle.",
+              "How are you? – I'm great, thanks.",
+              "What's this? – It's a pencil."
+            ],
+            "beispielMuster": "dialog",
+            "lehrtEn": [
+              "I'm",
+              "It's"
+            ],
+            "belegDe": "MORE! 1 · Unit 1 · Seite 15"
+          }
+        },
+        {
+          "id": "p2-regel-zahlen",
+          "role": "tip",
+          "skin": "regelseite",
+          "c": 17,
+          "r": 15,
+          "tier": "E",
+          "params": {
+            "topicDe": "Englische Zahlen bis 25",
+            "erklaerungDe": "Von 21 bis 25 kommt zuerst twenty. Danach hängst du die Einerzahl mit einem Bindestrich an.",
+            "merksatzDe": "Für 23 schreibst du twenty-three.",
+            "schluesselDe": "twenty-three",
+            "beispieleEn": [
+              "I can count to twenty-five.",
+              "There are twenty-three books.",
+              "I want twenty-four pencils."
+            ],
+            "beispielMuster": "einzeln",
+            "lehrtEn": [
+              "twenty-three",
+              "twenty-four",
+              "twenty-five"
+            ],
+            "belegDe": "MORE! 1 · Unit 1 · Seite 8, 10"
+          }
+        },
+        {
+          "id": "p2-obj-desk",
+          "role": "drained",
+          "skin": "obj_desk",
+          "c": 19,
+          "r": 19,
+          "tier": "E",
+          "params": {}
+        },
+        {
+          "id": "p2-obj-scissors",
+          "role": "chaser",
+          "skin": "obj_scissors",
+          "c": 68,
+          "r": 19,
+          "tier": "E",
+          "params": {
+            "patrolMinC": 66,
+            "patrolMaxC": 70,
+            "curseVisual": "violet-ink"
+          }
+        },
+        {
+          "id": "p2-cloth-shirt",
+          "role": "cloth",
+          "skin": "cloth_shirt",
+          "c": 13,
+          "r": 17,
+          "tier": "E",
+          "params": {
+            "wordEn": "shirt"
+          }
+        },
+        {
+          "id": "p2-cloth-school-tie",
+          "role": "cloth",
+          "skin": "cloth_school_tie",
+          "c": 21,
+          "r": 19,
+          "tier": "E",
+          "params": {
+            "wordEn": "school tie"
+          }
+        },
+        {
+          "id": "p2-cloth-sweater",
+          "role": "cloth",
+          "skin": "cloth_sweater",
+          "c": 81,
+          "r": 19,
+          "tier": "E",
+          "params": {
+            "wordEn": "sweater"
+          }
+        }
       ],
-      "belegDe": "MORE! 1 · Unit 1 · Seite 15"
-     }
+      "links": [],
+      "exit": {
+        "to": "p3"
+      }
     },
     {
-     "id": "p1-obj-book",
-     "role": "drained",
-     "skin": "obj_book",
-     "c": 7,
-     "r": 15,
-     "tier": "E",
-     "params": {}
-    },
-    {
-     "id": "p1-obj-schoolbag",
-     "role": "drained",
-     "skin": "obj_schoolbag",
-     "c": 54,
-     "r": 13,
-     "tier": "E",
-     "params": {}
-    },
-    {
-     "id": "p1-cloth-hairband",
-     "role": "cloth",
-     "skin": "cloth_hairband",
-     "c": 15,
-     "r": 15,
-     "tier": "E",
-     "params": {
-      "wordEn": "hairband"
-     }
-    },
-    {
-     "id": "p1-cloth-hat",
-     "role": "cloth",
-     "skin": "cloth_hat",
-     "c": 41,
-     "r": 21,
-     "tier": "E",
-     "params": {
-      "wordEn": "hat"
-     }
-    },
-    {
-     "id": "p1-cloth-sunglasses",
-     "role": "cloth",
-     "skin": "cloth_sunglasses",
-     "c": 30,
-     "r": 17,
-     "tier": "E",
-     "params": {
-      "wordEn": "sunglasses"
-     }
+      "id": "p3",
+      "nameDe": "Der Schulhof",
+      "surface": "normal",
+      "checkpointSide": "near",
+      "plates": {
+        "far": "plate_p3_yardwall",
+        "mid": "band_p3_playground"
+      },
+      "rows": [
+        "################################################################",
+        "................................................................",
+        "................................................................",
+        "................................................................",
+        "................................................................",
+        "................................................................",
+        "................................................................",
+        "................................................................",
+        "................................................................",
+        "................................................................",
+        "................................................................",
+        "................................................................",
+        ".......###......................................................",
+        "..............##..............................####........*.....",
+        "....S.......................................................X...",
+        "##########z..*..........................................########",
+        "#############z...............C*...*....*............*...########",
+        "##############z.*...........##..##...##.....###.#.......########",
+        "################z..*........##....................##############",
+        "###################z........##............*.......##############",
+        "######################.....###....................##############",
+        "####################..####.###..........########################",
+        "####################..########wwwwwwwwww########################",
+        "####################..########wwwwwwwwww########################",
+        "####################..########wwwwwwwwww########################",
+        "####################..########wwwwwwwwww########################"
+      ],
+      "entities": [
+        {
+          "id": "p3-ranzen",
+          "role": "crusher",
+          "skin": "ranzen",
+          "c": 47,
+          "r": 16,
+          "tier": "E",
+          "params": {}
+        },
+        {
+          "id": "p3-heft",
+          "role": "flyer",
+          "skin": "heft",
+          "c": 23,
+          "r": 19,
+          "tier": "E",
+          "params": {
+            "curseVisual": "violet-ink",
+            "taskSequenceV2": {
+              "requiredIds": [
+                "g1.paint.ch01.enc.heft.n1",
+                "g1.paint.ch01.enc.heft.r1"
+              ],
+              "variantIds": [
+                "g1.paint.ch01.enc.heft.n2"
+              ]
+            }
+          }
+        },
+        {
+          "id": "p3-cage4",
+          "role": "drained",
+          "skin": "obj_chair",
+          "c": 51,
+          "r": 17,
+          "tier": "E",
+          "params": {}
+        },
+        {
+          "id": "p3-door",
+          "role": "door.trigger",
+          "skin": "door",
+          "c": 60,
+          "r": 14,
+          "tier": "E",
+          "params": {
+            "kind": "exit",
+            "exitHintDe": "Durch diese Tür kommst du zur Tafelbühne."
+          }
+        },
+        {
+          "id": "p3-regel-plural",
+          "role": "tip",
+          "skin": "regelseite",
+          "c": 26,
+          "r": 13,
+          "tier": "E",
+          "params": {
+            "topicDe": "Ein Buch und viele Bücher",
+            "erklaerungDe": "Für mehrere Dinge hängst du oft ein s an. Nach einem Mitlaut wird y zu ies. Aus child wird children.",
+            "merksatzDe": "Nach einem Mitlaut wird y zu ies. Nach einem Selbstlaut bleibt y.",
+            "schluesselDe": "wird y zu ies",
+            "beispieleEn": [
+              "one book – two books",
+              "one baby – three babies",
+              "one boy – two boys",
+              "one child – five children"
+            ],
+            "beispielMuster": "wandel",
+            "lehrtEn": [
+              "books",
+              "babies",
+              "boys",
+              "children"
+            ],
+            "belegDe": "MORE! 1 · Unit 1 · Seite 15"
+          }
+        },
+        {
+          "id": "p3-obj-gluestick",
+          "role": "chaser",
+          "skin": "obj_gluestick",
+          "c": 14,
+          "r": 12,
+          "tier": "E",
+          "params": {
+            "patrolMinC": 14,
+            "patrolMaxC": 15
+          }
+        },
+        {
+          "id": "p3-obj-sharpener",
+          "role": "chaser",
+          "skin": "obj_sharpener",
+          "c": 20,
+          "r": 19,
+          "tier": "E",
+          "params": {
+            "patrolMinC": 20,
+            "patrolMaxC": 21
+          }
+        },
+        {
+          "id": "p3-cloth-skirt",
+          "role": "cloth",
+          "skin": "cloth_skirt",
+          "c": 28,
+          "r": 16,
+          "tier": "E",
+          "params": {
+            "wordEn": "skirt"
+          }
+        },
+        {
+          "id": "p3-cloth-socks",
+          "role": "cloth",
+          "skin": "cloth_socks",
+          "c": 42,
+          "r": 20,
+          "tier": "E",
+          "params": {
+            "wordEn": "socks"
+          }
+        },
+        {
+          "id": "p3-cloth-shoe",
+          "role": "cloth",
+          "skin": "cloth_shoe",
+          "c": 53,
+          "r": 17,
+          "tier": "E",
+          "params": {
+            "wordEn": "shoe"
+          }
+        }
+      ],
+      "links": [],
+      "exit": {
+        "to": "boss"
+      }
     }
-   ],
-   "links": [],
-   "exit": {
-    "to": "p2"
-   }
+  ],
+  "arena": {
+    "id": "p4",
+    "nameDe": "Die Tafel-Bühne",
+    "surface": "normal",
+    "plates": {
+      "far": "plate_p2_nightwall",
+      "mid": "band_p4_audience"
+    },
+    "rows": [
+      "####################################",
+      "....................................",
+      "....................................",
+      "....................................",
+      "....................................",
+      "....................................",
+      "....................................",
+      "....................................",
+      "....................................",
+      "....................................",
+      "....................................",
+      "....................................",
+      "....................................",
+      "....................................",
+      "....................................",
+      "....................................",
+      ".....###....................###.....",
+      "...S.###....................###..X..",
+      "####################################",
+      "####################################"
+    ],
+    "entities": [
+      {
+        "id": "tafel",
+        "role": "guardian",
+        "skin": "tafel",
+        "c": 17,
+        "r": 13,
+        "tier": "E",
+        "params": {
+          "stageMinC": 5,
+          "stageMaxC": 30
+        }
+      },
+      {
+        "id": "p4-cage5",
+        "role": "cage",
+        "skin": "satchel",
+        "c": 31,
+        "r": 17,
+        "tier": "E",
+        "params": {
+          "captive": "picture",
+          "captiveDe": "das Klassenfoto",
+          "shellArt": "photo_frame_cage"
+        }
+      }
+    ],
+    "links": [],
+    "exit": {
+      "to": "done"
+    }
   },
-  {
-   "id": "p2",
-   "nameDe": "Das Klassenzimmer bei Nacht",
-   "surface": "normal",
-   "checkpointSide": "near",
-   "plates": {
-    "far": "plate_p2_nightwall",
-    "mid": "band_p2_furniture"
-   },
-   "rows": [
-    "########################################################################",
-    "......................##......#....#...................##..............#",
-    "......................##......######...................##..............#",
-    "......................##......#....#...................##..............#",
-    "......................##......#....#...................##..............#",
-    "........................#######....######################..............#",
-    "................................*......................##..............#",
-    "..................................*.*..................##..............#",
-    ".................##....C...............................................#",
-    "......................##########..####################.................#",
-    "......................##...............................*...............#",
-    "..................*.####..............................#................#",
-    "......................##...............................##..............#",
-    "..................##..##...............................##*.............#",
-    "...............*......##...............................##......####....#",
-    "......................##...............................####............#",
-    "............*..###....##...............................####*........#..#",
-    "......................##...............................####..##......X.#",
-    "....####....###.......##...............................######........###",
-    "..S....#......#.......##...............................######..........#",
-    "########################wwwwwwwwwwwwwwwwwwwwwwwwwwwwwww#################",
-    "########################wwwwwwwwwwwwwwwwwwwwwwwwwwwwwww#################",
-    "########################wwwwwwwwwwwwwwwwwwwwwwwwwwwwwww#################",
-    "########################wwwwwwwwwwwwwwwwwwwwwwwwwwwwwww#################",
-    "########################wwwwwwwwwwwwwwwwwwwwwwwwwwwwwww#################",
-    "########################wwwwwwwwwwwwwwwwwwwwwwwwwwwwwww#################"
-   ],
-   "entities": [
-    {
-     "id": "p2-pen",
-     "role": "chaser",
-     "skin": "pen",
-     "c": 11,
-     "r": 19,
-     "tier": "E",
-     "params": {}
+  "bonus": {
+    "id": "p9",
+    "nameDe": "Die Kleckskammer",
+    "surface": "normal",
+    "plates": {
+      "far": "plate_p9_inkdream"
     },
-    {
-     "id": "p2-paintbox",
-     "role": "gunner",
-     "skin": "paintbox",
-     "c": 68,
-     "r": 15,
-     "tier": "E",
-     "params": {}
-    },
-    {
-     "id": "p2-moths-1",
-     "role": "swarm",
-     "skin": "moths",
-     "c": 26,
-     "r": 7,
-     "tier": "E",
-     "params": {}
-    },
-    {
-     "id": "p2-moths-2",
-     "role": "swarm",
-     "skin": "moths",
-     "c": 41,
-     "r": 7,
-     "tier": "E",
-     "params": {}
-    },
-    {
-     "id": "p2-moths-3",
-     "role": "swarm",
-     "skin": "moths",
-     "c": 56,
-     "r": 11,
-     "tier": "E",
-     "params": {}
-    },
-    {
-     "id": "p2-cage-tablet",
-     "role": "cage",
-     "skin": "satchel",
-     "c": 17,
-     "r": 7,
-     "tier": "E",
-     "params": {
-      "captive": "tablet",
-      "captiveDe": "das Tablet"
-     }
-    },
-    {
-     "id": "p2-cage-merle",
-     "role": "cage",
-     "skin": "pencilcase",
-     "c": 64,
-     "r": 13,
-     "tier": "E",
-     "params": {
-      "classmate": "merle",
-      "captiveDe": "Merle"
-     }
-    },
-    {
-     "id": "merle",
-     "role": "classmate",
-     "skin": "merle",
-     "c": 65,
-     "r": 13,
-     "tier": "E",
-     "params": {
-      "cage": "p2-cage-merle",
-      "hidden": true,
-      "roamMinC": 63,
-      "roamMaxC": 66
-     }
-    },
-    {
-     "id": "p2-klecks",
-     "role": "door.trigger",
-     "skin": "klecksdoor",
-     "c": 61,
-     "r": 19,
-     "tier": "E",
-     "params": {
-      "kind": "bonus",
-      "price": 8
-     }
-    },
-    {
-     "id": "p2-door",
-     "role": "door.trigger",
-     "skin": "door",
-     "c": 69,
-     "r": 17,
-     "tier": "E",
-     "params": {
-      "kind": "exit"
-     }
-    },
-    {
-     "id": "p2-regel-gruss",
-     "role": "tip",
-     "skin": "regelseite",
-     "c": 5,
-     "r": 17,
-     "tier": "E",
-     "params": {
-      "topicDe": "Fragen und passende Antworten",
-      "erklaerungDe": "Die Frage möchte etwas wissen. Die Antwort gibt diese Information.",
-      "merksatzDe": "Über dich: I'm + Name oder Gefühl. Über eine Sache: It's + Antwort.",
-      "schluesselDe": "Über eine Sache: It's + Antwort",
-      "beispieleEn": [
-       "Hello! What's your name? – I'm Merle.",
-       "How are you? – I'm great, thanks.",
-       "What's your email address? – It's merle@school.com."
-      ],
-      "beispielMuster": "dialog",
-      "lehrtEn": [
-       "I'm",
-       "It's"
-      ],
-      "belegDe": "MORE! 1 · Unit 1 · Seite 15"
-     }
-    },
-    {
-     "id": "p2-regel-zahlen",
-     "role": "tip",
-     "skin": "regelseite",
-     "c": 17,
-     "r": 15,
-     "tier": "E",
-     "params": {
-      "topicDe": "Englische Zahlen bis 25",
-      "erklaerungDe": "Bei Zahlen wie 23, 24 und 25 kommt im Englischen zuerst twenty und danach three, four oder five.",
-      "merksatzDe": "Erst twenty, dann three: twenty-three.",
-      "schluesselDe": "twenty-three",
-      "beispieleEn": [
-       "I can count to twenty-five.",
-       "There are twenty-three books.",
-       "I want twenty-four pencils."
-      ],
-      "beispielMuster": "einzeln",
-      "lehrtEn": [
-       "twenty-three",
-       "twenty-four",
-       "twenty-five"
-      ],
-      "belegDe": "MORE! 1 · Unit 1 · Seite 8, 10"
-     }
-    },
-    {
-     "id": "p2-obj-desk",
-     "role": "drained",
-     "skin": "obj_desk",
-     "c": 19,
-     "r": 19,
-     "tier": "E",
-     "params": {}
-    },
-    {
-     "id": "p2-obj-scissors",
-     "role": "drained",
-     "skin": "obj_scissors",
-     "c": 63,
-     "r": 19,
-     "tier": "E",
-     "params": {}
-    },
-    {
-     "id": "p2-cloth-shirt",
-     "role": "cloth",
-     "skin": "cloth_shirt",
-     "c": 13,
-     "r": 17,
-     "tier": "E",
-     "params": {
-      "wordEn": "shirt"
-     }
-    },
-    {
-     "id": "p2-cloth-school-tie",
-     "role": "cloth",
-     "skin": "cloth_school_tie",
-     "c": 21,
-     "r": 19,
-     "tier": "E",
-     "params": {
-      "wordEn": "school tie"
-     }
-    },
-    {
-     "id": "p2-cloth-sweater",
-     "role": "cloth",
-     "skin": "cloth_sweater",
-     "c": 67,
-     "r": 19,
-     "tier": "E",
-     "params": {
-      "wordEn": "sweater"
-     }
+    "rows": [
+      "############################################",
+      "............................................",
+      "............................................",
+      "............................................",
+      "............................................",
+      "............................................",
+      ".................*....*.....................",
+      "............................................",
+      "................*....*.*...*................",
+      "............................................",
+      ".............*...#####......*...*...........",
+      "............................................",
+      "...........*..##........###......*..........",
+      "............................................",
+      "...........##................###.....*......",
+      "..S.......................................X.",
+      "############################################",
+      "############################################",
+      "############################################",
+      "############################################"
+    ],
+    "entities": [
+      {
+        "id": "p9-cloth-hairband",
+        "role": "cloth",
+        "skin": "cloth_hairband",
+        "c": 4,
+        "r": 15,
+        "tier": "E",
+        "params": {
+          "wordEn": "hairband",
+          "repeatOf": "p1-cloth-hairband"
+        }
+      },
+      {
+        "id": "p9-cloth-sunglasses",
+        "role": "cloth",
+        "skin": "cloth_sunglasses",
+        "c": 9,
+        "r": 15,
+        "tier": "E",
+        "params": {
+          "wordEn": "sunglasses",
+          "repeatOf": "p1-cloth-sunglasses"
+        }
+      },
+      {
+        "id": "p9-cloth-hat",
+        "role": "cloth",
+        "skin": "cloth_hat",
+        "c": 13,
+        "r": 15,
+        "tier": "E",
+        "params": {
+          "wordEn": "hat",
+          "repeatOf": "p1-cloth-hat"
+        }
+      },
+      {
+        "id": "p9-cloth-shirt",
+        "role": "cloth",
+        "skin": "cloth_shirt",
+        "c": 18,
+        "r": 15,
+        "tier": "E",
+        "params": {
+          "wordEn": "shirt",
+          "repeatOf": "p2-cloth-shirt"
+        }
+      },
+      {
+        "id": "p9-cloth-sweater",
+        "role": "cloth",
+        "skin": "cloth_sweater",
+        "c": 22,
+        "r": 15,
+        "tier": "E",
+        "params": {
+          "wordEn": "sweater",
+          "repeatOf": "p2-cloth-sweater"
+        }
+      },
+      {
+        "id": "p9-cloth-school-tie",
+        "role": "cloth",
+        "skin": "cloth_school_tie",
+        "c": 27,
+        "r": 15,
+        "tier": "E",
+        "params": {
+          "wordEn": "school tie",
+          "repeatOf": "p2-cloth-school-tie"
+        }
+      },
+      {
+        "id": "p9-cloth-skirt",
+        "role": "cloth",
+        "skin": "cloth_skirt",
+        "c": 31,
+        "r": 15,
+        "tier": "E",
+        "params": {
+          "wordEn": "skirt",
+          "repeatOf": "p3-cloth-skirt"
+        }
+      },
+      {
+        "id": "p9-cloth-socks",
+        "role": "cloth",
+        "skin": "cloth_socks",
+        "c": 36,
+        "r": 15,
+        "tier": "E",
+        "params": {
+          "wordEn": "socks",
+          "repeatOf": "p3-cloth-socks"
+        }
+      },
+      {
+        "id": "p9-cloth-shoe",
+        "role": "cloth",
+        "skin": "cloth_shoe",
+        "c": 40,
+        "r": 15,
+        "tier": "E",
+        "params": {
+          "wordEn": "shoe",
+          "repeatOf": "p3-cloth-shoe"
+        }
+      }
+    ],
+    "links": [],
+    "exit": {
+      "to": "p2"
     }
-   ],
-   "links": [],
-   "exit": {
-    "to": "p3"
-   }
   },
-  {
-   "id": "p3",
-   "nameDe": "Der Schulhof-Garten",
-   "surface": "normal",
-   "checkpointSide": "near",
-   "plates": {
-    "far": "plate_p3_yardwall",
-    "mid": "band_p3_playground"
-   },
-   "rows": [
-    "################################################################",
-    "................................................................",
-    "................................................................",
-    "................................................................",
-    "................................................................",
-    "................................................................",
-    "................................................................",
-    "................................................................",
-    "................................................................",
-    "................................................................",
-    "................................................................",
-    "................................................................",
-    ".......###......................................................",
-    "..............##..............................####........*.X...",
-    "....S.......................................................#...",
-    "##########z..*..........................................########",
-    "#############z...............C*...*....*............*...########",
-    "##############z.*...........##..##...##.....###.#.......########",
-    "################z..*........##....................##############",
-    "###################z........##............*.......##############",
-    "######################.....###....................##############",
-    "####################..####.###..........########################",
-    "####################..########wwwwwwwwww########################",
-    "####################..########wwwwwwwwww########################",
-    "####################..########wwwwwwwwww########################",
-    "####################..########wwwwwwwwww########################"
-   ],
-   "entities": [
-    {
-     "id": "p3-ranzen",
-     "role": "crusher",
-     "skin": "ranzen",
-     "c": 47,
-     "r": 16,
-     "tier": "E",
-     "params": {}
-    },
-    {
-     "id": "p3-heft",
-     "role": "flyer",
-     "skin": "heft",
-     "c": 23,
-     "r": 19,
-     "tier": "E",
-     "params": {}
-    },
-    {
-     "id": "p3-cage4",
-     "role": "cage",
-     "skin": "satchel",
-     "c": 47,
-     "r": 12,
-     "tier": "E",
-     "params": {
-      "captive": "chair",
-      "captiveDe": "der Stuhl"
-     }
-    },
-    {
-     "id": "p3-door",
-     "role": "door.trigger",
-     "skin": "door",
-     "c": 60,
-     "r": 13,
-     "tier": "E",
-     "params": {
-      "kind": "exit"
-     }
-    },
-    {
-     "id": "p3-regel-plural",
-     "role": "tip",
-     "skin": "regelseite",
-     "c": 26,
-     "r": 13,
-     "tier": "E",
-     "params": {
-      "topicDe": "Plural: aus einem werden viele",
-      "erklaerungDe": "Bei vielen englischen Wörtern hörst du die Mehrzahl am Ende: book wird zu books.",
-      "merksatzDe": "Steht vor dem y ein Mitlaut, wird y zu -ies. Ausnahme: child wird children.",
-      "schluesselDe": "wird y zu -ies",
-      "beispieleEn": [
-       "one book – two books",
-       "one baby – three babies",
-       "one boy – two boys",
-       "one child – five children"
-      ],
-      "beispielMuster": "wandel",
-      "lehrtEn": [
-       "books",
-       "babies",
-       "boys",
-       "children"
-      ],
-      "belegDe": "MORE! 1 · Unit 1 · Seite 15"
-     }
-    },
-    {
-     "id": "p3-obj-gluestick",
-     "role": "drained",
-     "skin": "obj_gluestick",
-     "c": 14,
-     "r": 12,
-     "tier": "E",
-     "params": {}
-    },
-    {
-     "id": "p3-obj-sharpener",
-     "role": "drained",
-     "skin": "obj_sharpener",
-     "c": 20,
-     "r": 19,
-     "tier": "E",
-     "params": {}
-    },
-    {
-     "id": "p3-cloth-skirt",
-     "role": "cloth",
-     "skin": "cloth_skirt",
-     "c": 28,
-     "r": 16,
-     "tier": "E",
-     "params": {
-      "wordEn": "skirt"
-     }
-    },
-    {
-     "id": "p3-cloth-socks",
-     "role": "cloth",
-     "skin": "cloth_socks",
-     "c": 42,
-     "r": 20,
-     "tier": "E",
-     "params": {
-      "wordEn": "socks"
-     }
-    },
-    {
-     "id": "p3-cloth-shoe",
-     "role": "cloth",
-     "skin": "cloth_shoe",
-     "c": 53,
-     "r": 17,
-     "tier": "E",
-     "params": {
-      "wordEn": "shoe"
-     }
-    }
-   ],
-   "links": [],
-   "exit": {
-    "to": "boss"
-   }
+  "tipsTotal": 5,
+  "doorPlate": "plate_ch01_door",
+  "scorePlate": "plate_ch01_score",
+  "rulePlate": "plate_ch01_rule",
+  "auftaktPlates": {
+    "schatten": [
+      "auftakt_ch01_b",
+      "schulhaus_ch01_b",
+      "schulhaus_ch01_a"
+    ],
+    "auftrag": "auftakt_ch01_c",
+    "los": "auftakt_ch01_d"
+  },
+  "restorationDe": {
+    "freedLabel": "Schulsachen wiedergefunden",
+    "oneDative": "einem grauen Gegenstand",
+    "manyDative": "grauen Gegenständen",
+    "oneSubject": "es"
   }
- ],
- "arena": {
-  "id": "p4",
-  "nameDe": "Die Tafel-Bühne",
-  "surface": "normal",
-  "plates": {
-   "far": "plate_p2_nightwall",
-   "mid": "band_p4_audience"
-  },
-  "rows": [
-   "####################################",
-   "....................................",
-   "....................................",
-   "....................................",
-   "....................................",
-   "....................................",
-   "....................................",
-   "....................................",
-   "....................................",
-   "....................................",
-   "....................................",
-   "....................................",
-   "....................................",
-   "....................................",
-   "....................................",
-   "....................................",
-   ".....###....................###.....",
-   "...S.###....................###..X..",
-   "####################################",
-   "####################################"
-  ],
-  "entities": [
-   {
-    "id": "tafel",
-    "role": "guardian",
-    "skin": "tafel",
-    "c": 17,
-    "r": 13,
-    "tier": "E",
-    "params": {
-     "stageMinC": 5,
-     "stageMaxC": 30
-    }
-   },
-   {
-    "id": "p4-cage5",
-    "role": "cage",
-    "skin": "satchel",
-    "c": 31,
-    "r": 17,
-    "tier": "E",
-    "params": {
-     "captive": "picture",
-     "captiveDe": "das Klassenfoto"
-    }
-   }
-  ],
-  "links": [],
-  "exit": {
-   "to": "done"
-  }
- },
- "bonus": {
-  "id": "p9",
-  "nameDe": "Die Kleckskammer",
-  "surface": "normal",
-  "plates": {
-   "far": "plate_p9_inkdream"
-  },
-  "rows": [
-   "############################################",
-   "............................................",
-   "............................................",
-   "............................................",
-   "............................................",
-   "............................................",
-   ".................*....*.....................",
-   "............................................",
-   "................*....*.*...*................",
-   "............................................",
-   ".............*...#####......*...*...........",
-   "............................................",
-   "...........*..##........###......*..........",
-   "............................................",
-   "...........##................###.....*......",
-   "..S.......................................X.",
-   "############################################",
-   "############################################",
-   "############################################",
-   "############################################"
-  ],
-  "entities": [
-   {
-    "id": "p9-cloth-hairband",
-    "role": "cloth",
-    "skin": "cloth_hairband",
-    "c": 4,
-    "r": 15,
-    "tier": "E",
-    "params": {
-     "wordEn": "hairband",
-     "repeatOf": "p1-cloth-hairband"
-    }
-   },
-   {
-    "id": "p9-cloth-sunglasses",
-    "role": "cloth",
-    "skin": "cloth_sunglasses",
-    "c": 9,
-    "r": 15,
-    "tier": "E",
-    "params": {
-     "wordEn": "sunglasses",
-     "repeatOf": "p1-cloth-sunglasses"
-    }
-   },
-   {
-    "id": "p9-cloth-hat",
-    "role": "cloth",
-    "skin": "cloth_hat",
-    "c": 13,
-    "r": 15,
-    "tier": "E",
-    "params": {
-     "wordEn": "hat",
-     "repeatOf": "p1-cloth-hat"
-    }
-   },
-   {
-    "id": "p9-cloth-shirt",
-    "role": "cloth",
-    "skin": "cloth_shirt",
-    "c": 18,
-    "r": 15,
-    "tier": "E",
-    "params": {
-     "wordEn": "shirt",
-     "repeatOf": "p2-cloth-shirt"
-    }
-   },
-   {
-    "id": "p9-cloth-sweater",
-    "role": "cloth",
-    "skin": "cloth_sweater",
-    "c": 22,
-    "r": 15,
-    "tier": "E",
-    "params": {
-     "wordEn": "sweater",
-     "repeatOf": "p2-cloth-sweater"
-    }
-   },
-   {
-    "id": "p9-cloth-school-tie",
-    "role": "cloth",
-    "skin": "cloth_school_tie",
-    "c": 27,
-    "r": 15,
-    "tier": "E",
-    "params": {
-     "wordEn": "school tie",
-     "repeatOf": "p2-cloth-school-tie"
-    }
-   },
-   {
-    "id": "p9-cloth-skirt",
-    "role": "cloth",
-    "skin": "cloth_skirt",
-    "c": 31,
-    "r": 15,
-    "tier": "E",
-    "params": {
-     "wordEn": "skirt",
-     "repeatOf": "p3-cloth-skirt"
-    }
-   },
-   {
-    "id": "p9-cloth-socks",
-    "role": "cloth",
-    "skin": "cloth_socks",
-    "c": 36,
-    "r": 15,
-    "tier": "E",
-    "params": {
-     "wordEn": "socks",
-     "repeatOf": "p3-cloth-socks"
-    }
-   },
-   {
-    "id": "p9-cloth-shoe",
-    "role": "cloth",
-    "skin": "cloth_shoe",
-    "c": 40,
-    "r": 15,
-    "tier": "E",
-    "params": {
-     "wordEn": "shoe",
-     "repeatOf": "p3-cloth-shoe"
-    }
-   }
-  ],
-  "links": [],
-  "exit": {
-   "to": "p2"
-  }
- },
- "tipsTotal": 5,
- "doorPlate": "plate_ch01_door",
- "scorePlate": "plate_ch01_score",
- "rulePlate": "plate_ch01_rule",
- "auftaktPlates": {
-  "schatten": ["auftakt_ch01_b", "schulhaus_ch01_b", "schulhaus_ch01_a"],
-  "auftrag": "auftakt_ch01_c",
-  "los": "auftakt_ch01_d"
- }
 }

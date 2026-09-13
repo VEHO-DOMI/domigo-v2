@@ -3,6 +3,9 @@
 // Manifest: an array (or {assets:[...]}) of {source,stem,width,height,x,y}.
 // Optional clipAlpha: PNG path, target-sized; only its alpha=0 cuts pixels.
 // Optional chromaMatte: "no-violet", only for an explicitly non-violet palette.
+// Optional sourceCrop: {x,y,width,height,foregroundBounds:{x,y,width,height}}.
+// Its declared complete foreground must fit; crop BEFORE key/fringe processing.
+// Registration axes remain in original-source coordinates in the manifest.
 // Axes contain [output, source] pixel-centre coordinates: 0 is the first
 // pixel, size-1 the last. Both coordinates strictly increase. Endpoints must
 // cover the output; no extrapolation. Source coordinates outside its canvas
@@ -56,6 +59,38 @@ export function validateAxis(points, size, name = "axis") {
   }
 }
 
+/** A declared full-figure window, not a colour-selected mask. */
+export function validateSourceCrop(crop, canvas) {
+  if (crop === undefined) return null;
+  const rect = (r) => r && typeof r === "object"
+    && [r.x, r.y, r.width, r.height].every(Number.isSafeInteger)
+    && r.x >= 0 && r.y >= 0 && r.width > 0 && r.height > 0
+    && Number.isSafeInteger(r.x + r.width) && Number.isSafeInteger(r.y + r.height);
+  if (!rect(crop)) throw Error("sourceCrop: integer positive rectangle required");
+  if (crop.x + crop.width > canvas.width || crop.y + crop.height > canvas.height)
+    throw Error("sourceCrop: outside original canvas");
+  const f = crop.foregroundBounds;
+  if (!rect(f)) throw Error("sourceCrop: complete foregroundBounds required");
+  if (f.x < crop.x || f.y < crop.y || f.x + f.width > crop.x + crop.width || f.y + f.height > crop.y + crop.height)
+    throw Error("sourceCrop: cuts declared complete foreground");
+  return { x: crop.x, y: crop.y, width: crop.width, height: crop.height,
+    foregroundBounds: { x: f.x, y: f.y, width: f.width, height: f.height } };
+}
+
+export function cropSource(original, crop) {
+  const c = validateSourceCrop(crop, original);
+  if (!c) return original;
+  const axis = (origin, size) => [[0, origin], [Math.max(1, size - 1), origin + Math.max(1, size - 1)]];
+  return registerPixels(original, { width: c.width, height: c.height,
+    x: axis(c.x, c.width), y: axis(c.y, c.height) });
+}
+
+export function cropLocalRegistration(spec, crop) {
+  if (!crop) return spec;
+  return { ...spec, x: spec.x.map(([out, src]) => [out, src - crop.x]),
+    y: spec.y.map(([out, src]) => [out, src - crop.y]) };
+}
+
 function coordinates(points, size) {
   const out = new Float64Array(size);
   let segment = 0;
@@ -86,7 +121,7 @@ export function removeKey(png) {
   return { cut, softened, keyRgb: KEY_RGB, tolerance: KEY_TOL, softTolerance: SOFT_TOL };
 }
 
-function cleanFringe(png) {
+function cleanFringe(png, matteMode) {
   const img = image(png);
   const specks = stripKeySpecks(img);
   const fringe = stripKeyFringe(img);
@@ -95,9 +130,10 @@ function cleanFringe(png) {
   // the existing speck rule; never loop or relax either detector's threshold.
   const finalSpecks = stripKeySpecks(img);
   for (let i = 0; i < png.data.length; i += 4) if (!png.data[i + 3]) png.data.fill(0, i, i + 4);
+  const chromaMatte = decontaminateMatte(png, matteMode);
   const remaining = { fringe: keyFringe(img).length, specks: keySpecks(img).length };
   if (remaining.fringe || remaining.specks) throw Error(`key cleanup incomplete: ${JSON.stringify(remaining)}`);
-  return { specks, fringe, finalSpecks, remaining };
+  return { specks, fringe, finalSpecks, chromaMatte, remaining };
 }
 
 /** Explicit palette contract, not a general colour-key heuristic. This is
@@ -141,10 +177,18 @@ export function decontaminateMatte(png, mode) {
 }
 
 /** Bilinear sampling in premultiplied alpha; hidden RGB has zero weight. */
-export function registerPixels(source, spec) {
+export function registerPixels(source, spec, sourceOrigin = null) {
   validateAxis(spec.x, spec.width, "x"); validateAxis(spec.y, spec.height, "y");
   if (!Number.isSafeInteger(spec.width * spec.height * 4)) throw Error("unsafe canvas byte count");
   const xs = coordinates(spec.x, spec.width), ys = coordinates(spec.y, spec.height);
+  // Evaluate the original axes first, then translate each sample. Translating
+  // endpoints before interpolation can change floating half-rounding by one
+  // channel value; the source crop must retain the original sampling weights.
+  if (sourceOrigin) {
+    if (![sourceOrigin.x, sourceOrigin.y].every(Number.isSafeInteger)) throw Error("source origin: integer offsets required");
+    for (let i = 0; i < xs.length; i++) xs[i] -= sourceOrigin.x;
+    for (let i = 0; i < ys.length; i++) ys[i] -= sourceOrigin.y;
+  }
   const target = new PNG({ width: spec.width, height: spec.height });
   for (let y = 0; y < spec.height; y++) for (let x = 0; x < spec.width; x++) {
     const sx = xs[x], sy = ys[y];
@@ -197,16 +241,19 @@ export function importManifest(manifestPath, dest) {
     stems.add(a.stem);
     if (typeof a.source !== "string" || !a.source.trim()) throw Error(`${a.stem}: source required`);
     if (a.chromaMatte !== undefined && a.chromaMatte !== "no-violet") throw Error(`${a.stem}: invalid chromaMatte declaration`);
+    if (a.sourceChromaMatte !== undefined && a.sourceChromaMatte !== "no-violet") throw Error(`${a.stem}: invalid sourceChromaMatte declaration`);
     validateAxis(a.x, a.width, `${a.stem}.x`); validateAxis(a.y, a.height, `${a.stem}.y`);
     const source = fs.realpathSync(path.resolve(path.dirname(manifestPath), a.source));
     if (!fs.statSync(source).isFile()) throw Error(`${a.stem}: source is not a file`);
+    const sourceCrop = a.sourceCrop === undefined ? null
+      : validateSourceCrop(a.sourceCrop, PNG.sync.read(fs.readFileSync(source)));
     let maskPath = null;
     if (a.clipAlpha !== undefined) {
       if (typeof a.clipAlpha !== "string" || !a.clipAlpha.trim()) throw Error(`${a.stem}: clipAlpha must be a PNG path`);
       maskPath = fs.realpathSync(path.resolve(path.dirname(manifestPath), a.clipAlpha));
       if (!fs.statSync(maskPath).isFile()) throw Error(`${a.stem}: clipAlpha is not a file`);
     }
-    return { ...a, source, maskPath, target: path.join(dest, `${a.stem}.png`) };
+    return { ...a, source, sourceCrop, maskPath, target: path.join(dest, `${a.stem}.png`) };
   });
   const sources = new Set(plans.map(p => p.source));
   for (const p of plans) {
@@ -227,14 +274,25 @@ export function importManifest(manifestPath, dest) {
     for (const p of plans) {
       let step = "decode source";
       try {
-        const bytes = fs.readFileSync(p.source), source = PNG.sync.read(bytes);
-        const sourceBounds = alphaBounds(source), sourceRgbaSha256 = sha(source.data);
+        const bytes = fs.readFileSync(p.source), original = PNG.sync.read(bytes);
+        const sourceCanvas = { width: original.width, height: original.height };
+        const sourceBounds = alphaBounds(original), sourceRgbaSha256 = sha(original.data);
+        step = "declared source crop";
+        const source = cropSource(original, p.sourceCrop ?? undefined);
+        const croppedCanvas = { width: source.width, height: source.height };
+        const croppedBounds = alphaBounds(source), croppedRgbaSha256 = sha(source.data);
         step = "source key/fringe cleanup";
-        const key = removeKey(source), sourceCleanup = cleanFringe(source);
+        const key = removeKey(source);
+        // A keyed multi-pose original can retain pink pigment on an opaque
+        // outline. Apply the explicitly declared no-violet palette before
+        // judging that outline, using the same colour-only operation as the
+        // output stage. Alpha and the authored silhouette stay untouched.
+        const sourceCleanup = cleanFringe(source, p.sourceChromaMatte);
         const keyedBounds = alphaBounds(source), keyedInkBounds = alphaBounds(source, CUT_ALPHA);
         const keyedRgbaSha256 = sha(source.data);
         step = "coordinate registration";
-        const target = registerPixels(source, p), beforeClipBounds = alphaBounds(target);
+        const registration = cropLocalRegistration(p, p.sourceCrop);
+        const target = registerPixels(source, p, p.sourceCrop), beforeClipBounds = alphaBounds(target);
         let clip = null;
         if (p.maskPath) {
           step = `clipAlpha ${p.maskPath}`;
@@ -255,7 +313,8 @@ export function importManifest(manifestPath, dest) {
           sourceSha256: sha(bytes), sourceRgbaSha256, keyedRgbaSha256,
           previousTargetSha256: fs.existsSync(p.target) ? sha(fs.readFileSync(p.target)) : null,
           outputSha256: sha(encoded), outputRgbaSha256: sha(target.data), outputBytes: encoded.length,
-          sourceCanvas: { width: source.width, height: source.height },
+          sourceCanvas, sourceCrop: p.sourceCrop, croppedCanvas, croppedBounds, croppedRgbaSha256,
+          registeredAxes: { x: registration.x, y: registration.y, space: p.sourceCrop ? "crop-local" : "original" },
           outputCanvas: { width: p.width, height: p.height }, x: p.x, y: p.y,
           sourceBounds, keyedBounds, keyedInkBounds, beforeClipBounds, clip, outputBounds, outputInkBounds,
           boundsConvention: "integer origin and extent; Bounds alpha>0, InkBounds alpha>CUT_ALPHA",
@@ -369,6 +428,33 @@ export function selftest() {
     assert.deepEqual(pixel(p, 3, 0), [0, 0, 0, 0]);
     assert.throws(() => clipAlpha(p, new PNG({ width: 3, height: 1 })), /expected 4×1/);
   });
+  test("source crop preserves original integer and fractional samples and all source bytes", () => {
+    const p = new PNG({ width: 12, height: 12 });
+    for (let y = 0; y < 12; y++) for (let x = 0; x < 12; x++) put(p, x, y, [x * 15, y * 15, 20, 128 + x]);
+    const before = Buffer.from(p.data);
+    const crop = { x: 2, y: 3, width: 8, height: 7, foregroundBounds: { x: 3, y: 4, width: 4, height: 4 } };
+    const cut = cropSource(p, crop);
+    assert.equal(cut.width, 8); assert.equal(cut.height, 7);
+    assert.deepEqual(pixel(cut, 0, 0), pixel(p, 2, 3));
+    for (const spec of [
+      { width: 4, height: 4, x: [[0, 3], [3, 6]], y: [[0, 4], [3, 7]] },
+      { width: 4, height: 4, x: [[0, 3.25], [3, 6.75]], y: [[0, 4.25], [3, 7.5]] },
+    ]) assert.deepEqual(registerPixels(cut, spec, crop).data, registerPixels(p, spec).data);
+    const outside = registerPixels(cut, { width: 3, height: 3,
+      x: [[0, 1], [2, 3]], y: [[0, 2], [2, 4]] }, crop);
+    assert.deepEqual(pixel(outside, 0, 1), [0, 0, 0, 0]);
+    assert.deepEqual(pixel(outside, 1, 0), [0, 0, 0, 0]);
+    assert.deepEqual(p.data, before);
+  });
+  test("source crop rejects malformed, out-of-canvas and cut-figure declarations", () => {
+    const c = { x: 2, y: 2, width: 8, height: 8, foregroundBounds: { x: 3, y: 3, width: 5, height: 5 } };
+    assert.deepEqual(validateSourceCrop(c, { width: 12, height: 12 }), c);
+    for (const bad of [null, { ...c, x: 2.5 }, { ...c, width: 0 }, { ...c, x: -1 },
+      { ...c, width: 20 }, { ...c, foregroundBounds: undefined }, { ...c, x: 4 },
+      { ...c, width: 4 }, { ...c, foregroundBounds: { ...c.foregroundBounds, height: 0 } }])
+      assert.throws(() => validateSourceCrop(bad, { width: 12, height: 12 }), /sourceCrop/);
+    assert.throws(() => validateSourceCrop({ ...c, x: 4 }, { width: 12, height: 12 }), /cuts declared complete foreground/);
+  });
   const tmp = fs.mkdtempSync(path.join(os.tmpdir(), "ch01-terrain-selftest-"));
   try {
     const src = new PNG({ width: 3, height: 3 });
@@ -377,6 +463,32 @@ export function selftest() {
     const source = path.join(tmp, "source.png"), manifest = path.join(tmp, "manifest.json"), dest = path.join(tmp, "out");
     fs.writeFileSync(source, PNG.sync.write(src)); const original = fs.readFileSync(source);
     const asset = { source: "source.png", stem: "test_ground", ...identity(3, 3) };
+    test("declared source crop ignores unused distant corner but preserves the full painted figure", () => {
+      const p = new PNG({ width: 80, height: 80 });
+      for (let y = 0; y < 80; y++) for (let x = 0; x < 80; x++) put(p, x, y, [255, 0, 255, 255]);
+      for (let y = 10; y < 20; y++) for (let x = 10; x < 20; x++) put(p, x, y, [150, 100, 20, 255]);
+      put(p, 79, 79, [241, 35, 239, 255]); // Real diagnosis: key leaves alpha3, no colour donor.
+      const raw = PNG.sync.write(p); fs.writeFileSync(path.join(tmp, "corner.png"), raw);
+      const a = { source: "corner.png", stem: "crop_figure", width: 20, height: 20,
+        x: [[0, 6], [19, 25]], y: [[0, 6], [19, 25]], sourceChromaMatte: "no-violet",
+        sourceCrop: { x: 4, y: 4, width: 22, height: 22, foregroundBounds: { x: 10, y: 10, width: 10, height: 10 } } };
+      fs.writeFileSync(manifest, JSON.stringify([a]));
+      const result = importManifest(manifest, dest).assets[0];
+      assert.equal(result.sourceSha256, sha(raw)); assert.deepEqual(result.sourceCanvas, { width: 80, height: 80 });
+      assert.deepEqual(result.croppedCanvas, { width: 22, height: 22 });
+      assert.deepEqual(result.outputInkBounds, { x: 4, y: 4, width: 10, height: 10, pixels: 100 });
+      assert.deepEqual(fs.readFileSync(path.join(tmp, "corner.png")), raw);
+      const installed = fs.readFileSync(result.target);
+      fs.writeFileSync(manifest, JSON.stringify([{ ...a, sourceCrop: undefined }]));
+      assert.throws(() => importManifest(manifest, dest), /no non-violet painted neighbour/);
+      fs.writeFileSync(manifest, JSON.stringify([{ ...a, sourceCrop: { ...a.sourceCrop, width: 80 } }]));
+      assert.throws(() => importManifest(manifest, dest), /outside original canvas/);
+      fs.writeFileSync(manifest, JSON.stringify([{ ...a, sourceCrop: { ...a.sourceCrop, x: 12 } }]));
+      assert.throws(() => importManifest(manifest, dest), /cuts declared complete foreground/);
+      fs.writeFileSync(manifest, JSON.stringify([{ ...a, sourceChromaMatte: true }]));
+      assert.throws(() => importManifest(manifest, dest), /invalid sourceChromaMatte/);
+      assert.deepEqual(fs.readFileSync(result.target), installed);
+    });
     test("manifest opt-in affects only its declared asset; genuine violet default stays intact", () => {
       const p = new PNG({ width: 32, height: 32 });
       for (let y = 0; y < 32; y++) for (let x = 0; x < 32; x++) put(p, x, y, [100, 120, 30, 255]);

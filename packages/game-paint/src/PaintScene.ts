@@ -29,7 +29,11 @@ import { CANOPY_PHASES, type CompositionSpec, MARKER_H, type MassKit, ROOM_SHADO
 import { CANOPY_STEM, phaseArtScope } from "./artScope.ts";
 import { FACE_FLOOR_CX, FACE_FLOOR_CY, faceFloorHalbachsen } from "./face-floor.ts";
 import { type AudioDirector, surfaceOfPhase } from "./audio/index.ts";
-import { captiveStem, isCaptiveKey } from "./artManifest.ts";
+import { classmateStem, captiveStem, isCaptiveKey } from "./artManifest.ts";
+import { containInPictureWindow, DEVICE_WINDOW, PENCILCASE_WINDOW, CLASS_PHOTO_WINDOW, CLASS_PHOTO_OPEN_WINDOW, CLASS_PHOTO_ORIGIN } from "./story/picture-windows.ts";
+import { paintedInkRects, paintedInkOffset } from "./story/ink-paint.ts";
+import { isNumberSwarm, numberSwarmLayout } from "./story/number-swarm.ts";
+import { CH01_CHALK_WINDOW } from "./story/ChalkGreeting.tsx";
 import { heroFallbackNote } from "./heroFallbackNote.ts";
 import { PAD_KEYS, applyKeyCapture } from "./keyCapture.ts";
 import { TextureWarmer, type WarmScene, type WarmStats } from "./warmer.ts";
@@ -290,6 +294,8 @@ export interface PaintCallbacks {
 }
 
 export interface PaintSceneCfg {
+  /** Stable for one level start; shared with the encounter cards. */
+  runSeed?: string;
   tasks?: readonly GameTaskV2[];
   learningProgress?: ChapterLearningState;
   level: PaintLevel;
@@ -933,6 +939,7 @@ export class PaintScene extends Phaser.Scene {
   private get camY(): number { return this.sim.camY; }
 
   private entityImgs = new Map<string, Phaser.GameObjects.Image>();
+  private numberSwarmImgs = new Map<string, Phaser.GameObjects.Image[]>();
   /** L2-M-a: das Objekt einer Tier-Buehne — ein zweites Bild je Buehnen-Wesen,
    *  am Anker festgenagelt, waehrend der Darsteller es umrundet. */
   private zooSceneImgs = new Map<string, Phaser.GameObjects.Image>();
@@ -942,6 +949,7 @@ export class PaintScene extends Phaser.Scene {
   /** R3-15: the grey wash laid OVER a being OSWIN drained (doc 41 §2). One per
    *  redeemable creature, built beside its sprite and driven by washAlphaFor. */
   private washImgs = new Map<string, Phaser.GameObjects.Image>();
+  private curseImgs = new Map<string, Phaser.GameObjects.Image>();
   /** PK-R6 · H1 · a hostile's own cast shadow — its cell, inked, one step behind
    *  the light (finding 3). Mirrored every frame in renderEntities. */
   private hostileShadeImgs = new Map<string, Phaser.GameObjects.Image>();
@@ -987,6 +995,7 @@ export class PaintScene extends Phaser.Scene {
   /** R5-W1 · A2 — the ink's animated surface: the drifting texture strips, the
    *  runs they cover, and the crown redrawn over them each tick. */
   private readonly inkSurfaces: Phaser.GameObjects.TileSprite[] = [];
+  private readonly paintedInkSurfaces = new Set<Phaser.GameObjects.TileSprite>();
   private readonly inkRuns: Array<{ x0: number; x1: number; y: number }> = [];
   private inkCrownG: Phaser.GameObjects.Graphics | null = null;
   /** last tick's player position, in world px — the only way the scene can see
@@ -1032,7 +1041,7 @@ export class PaintScene extends Phaser.Scene {
   private knotG!: Phaser.GameObjects.Graphics;
   /** R5-W4 · H2 (R50): die drei gebackenen Kritzel-Schichten auf ihrer Fläche.
    *  Leer, bis die erste Tafel gezeichnet wird — `ensureScribbles`. */
-  private scribbleImgs: Phaser.GameObjects.Image[] = [];
+  private scribbleImgs: Array<Phaser.GameObjects.Image | undefined> = [];
   /** Die freie Augenpartie (R5-T1). Eine Graphics-Ellipse, die als UMGEKEHRTE
    *  Geometrie-Maske auf den Kritzel-Schichten und dem Wischer liegt: gezeichnet
    *  wird überall AUSSER in ihr. Sie liegt in Welt-Koordinaten und trägt die
@@ -1176,7 +1185,7 @@ export class PaintScene extends Phaser.Scene {
     this.cfg = cfg;
     this.comp = compositionFor(cfg.level.chapter, cfg.phaseId);
     this.trailWords = trailWordsFor(cfg.level, cfg.phaseId);
-    this.scope = phaseArtScope(cfg.level, cfg.phaseId, Object.keys(cfg.art));
+    this.scope = phaseArtScope(cfg.level, cfg.phaseId, Object.keys(cfg.art), { freedCageIds: cfg.freedCageIds() });
     this.sim = new Sim({
       level: cfg.level,
       phaseId: cfg.phaseId,
@@ -1676,7 +1685,13 @@ export class PaintScene extends Phaser.Scene {
   private stepInk(): void {
     if (this.inkRuns.length === 0) return;
     const drift = inkScrollAt(this.tickCount);
-    for (const t of this.inkSurfaces) t.tilePositionX = drift / t.tileScaleX;
+    for (const t of this.inkSurfaces) {
+      if (this.paintedInkSurfaces.has(t)) {
+        const offset = paintedInkOffset(t.x, t.y, t.tileScaleX, this.tickCount, this.cfg.reducedMotion);
+        t.tilePositionX = offset.x;
+        t.tilePositionY = offset.y;
+      } else t.tilePositionX = drift / t.tileScaleX;
+    }
     this.noteInkEntry();
     this.drawInkCrown();
   }
@@ -1894,7 +1909,16 @@ export class PaintScene extends Phaser.Scene {
           this.stagePropImgs.set(e.id, prop);
         }
       }
-      const img = this.add.image(fromSubs(e.x), fromSubs(e.y), this.entTex(e.skin, "a")).setDepth(7).setOrigin(0.5, 1);
+      // The first chapter's encounter is flying numbers. Do not allocate the
+      // retired insect or copies of its silhouette (shadow, wash, bloom).
+      if (isNumberSwarm(this.cfg.level.chapter, e)) {
+        const glyphs = numberSwarmLayout({ runSeed: this.cfg.runSeed, entityId: e.id, tick: this.tickCount, reducedMotion: this.cfg.reducedMotion });
+        this.numberSwarmImgs.set(e.id, glyphs.map(glyph =>
+          this.add.image(fromSubs(e.x) + glyph.x, fromSubs(e.y) + glyph.y, this.letterTex(glyph.text))
+            .setDepth(7).setOrigin(0.5).setScale(glyph.height / 128).setRotation(glyph.rotation).setVisible(!e.hidden)));
+        continue;
+      }
+      const img = this.add.image(fromSubs(e.x), fromSubs(e.y), this.entTex(e.params.shellArt === "photo_frame_cage" ? "photo_frame_cage" : e.params.shellArt === "device_locker" ? "device_locker" : e.skin, "a")).setDepth(7).setOrigin(0.5, 1);
       img.setVisible(!e.hidden);
       this.entityImgs.set(e.id, img);
       // PK-R6 · H1 (round-1 critique, finding 3): a hostile casts its own shadow,
@@ -1921,59 +1945,21 @@ export class PaintScene extends Phaser.Scene {
       // own box, so `syncOverlay` alone aligns it and it inherits the breath,
       // the pop and every future transform without a second copy of any of them.
       if (e.role === "cage" && isCaptiveKey(e.params?.captive)) {
-        const key = `pb-${captiveStem(e.params.captive)}`;
+        const key = `pb-${this.cfg.level.chapter === "ch01" && e.params.captive === "picture" ? "klassenfoto_a" : e.params.shellArt === "device_locker" ? `obj_${e.params.captive}` : captiveStem(e.params.captive)}`;
         if (this.textures.exists(key)) {
           const cap = this.add.image(fromSubs(e.x), fromSubs(e.y), key).setDepth(6.99).setOrigin(0.5, 1);
           cap.setVisible(!e.hidden);
           this.captiveImgs.set(e.id, cap);
         }
       }
-      // R5-W4b · C3 · R103 · DER PERSONEN-KÄFIG BLEIBT VORERST LEER — ehrlicher
-      // Stopp mit Messung, kein halber Einbau.
-      //
-      // Der Auftrag lautete: `p2-cage-merle` trägt `params.classmate`, nicht einen
-      // der vier `captive`-Schlüssel, also zeichnet die Schicht oben hinter dem
-      // einen Personen-Käfig des Kapitels NIEMANDEN. Sobald AQ15c das Pennal-
-      // Fenster freistellt, stünde der Käfig leer, obwohl die Karte sagt, Merle
-      // sei darin.
-      //
-      // Gebaut, gemessen, wieder ausgebaut. Die Verzweigung selbst sind sieben
-      // Zeilen; das Problem sitzt in der GRÖSSE, und es ist nicht klein:
-      // `syncOverlay` kopiert den SKALIERUNGSFAKTOR, nicht die Anzeigegröße. Bei
-      // den vier Ding-Käfigen geht das auf, weil `import-batch-aq6` jedes
-      // `captive_*`-Blatt auf die Leinwand der Hülle geschnitten hat — `satchel_a`
-      // und `captive_tablet` sind beide 347×480, ein Faktor passt für beide.
-      // Der Personen-Käfig bricht die Annahme: `pencilcase_a` ist 480×275 (breit,
-      // liegend), `merle_caged0` ist 268×383 (hoch). Bei CAGE_DISPLAY_H = 34 ist
-      // der Faktor 34/275 = 0,1236, also würde Merle roh 47,4 px hoch gezeichnet —
-      // 39 % höher als ihr eigener Käfig.
-      //
-      // Die naheliegende Reparatur (Insasse einmalig auf eine Leinwand in
-      // Käfig-Maßen einpassen, unten zentriert, wie es die Karte in Glance.tsx
-      // tut) wurde gebaut und GERENDERT: sie stimmt rechnerisch — 34,0 px gegen
-      // 34,0 px, gleiche Bodenlinie — und ist trotzdem falsch. Gemessen am
-      // fertigen Bild stehen **3716 Insassen-Pixel (13 %) AUSSERHALB der
-      // Käfig-Silhouette**: Kopf und Zöpfe über der Oberkante, Füße unter dem
-      // Boden, weil das Pennal in seiner Mittelspalte deutlich flacher ist als
-      // seine Leinwand. Richtig eingepasst gehört der Insasse nicht in den
-      // KASTEN, sondern ins FENSTER (gemessen 315×158 bei 55,68 ⇒ Faktor 0,413) —
-      // und diese Geometrie gehört dem Blatt, das AQ15c erst noch liefert.
-      //
-      // Also: kein Einbau auf Verdacht. Heute ist der Nutzen ohnehin null (das
-      // Fenster trägt weiter das alte gemalte Gesicht, D-224), und eine Zahl aus
-      // dem heutigen Blatt fest in die Szene zu schreiben wäre genau die
-      // Kopplung, vor der `import-batch-aq6` warnt. Die Sitzung, die AQ15c
-      // importiert, baut beides in EINEM Zug: leeres Fenster + Insasse, an der
-      // dann gültigen Fenstergeometrie ausgerichtet. Messwerte und Belegbild
-      // liegen im C3-Report; Schuldzeilen D-224 und D-228.
-      //
-      // R5-W5 · C4 · D-228 GESCHLOSSEN, so weit es ohne AQ15c geht: die Zelle
-      // heisst `artManifest.classmateStem(e.params.classmate)` — NICHT
-      // `${name}_caged0` von Hand. Wer die Schicht hier baut, ruft die Konstante
-      // auf; dann sagen Karte (CardShell#cageCellFor) und Szene dasselbe, weil
-      // sie dieselbe Zeile lesen. Das war der ganze Inhalt von D-228: die
-      // Konvention stand schriftlich nur EINMAL im Repo, in der Karte, und die
-      // Szene hätte sie beim Einbau zwangsläufig ein zweites Mal getippt.
+      if (e.role === "cage" && e.params.classmate === "merle") {
+        const key = `pb-${classmateStem("merle")}`;
+        if (this.textures.exists(key)) this.captiveImgs.set(e.id,
+          this.add.image(fromSubs(e.x), fromSubs(e.y), key).setDepth(6.99).setOrigin(0.5, 1));
+      }
+      if (e.params.curseVisual === "violet-ink" && this.textures.exists("pb-curse_violet")) {
+        this.curseImgs.set(e.id, this.add.image(fromSubs(e.x), fromSubs(e.y), "pb-curse_violet").setDepth(7.03).setOrigin(0.5, 1));
+      }
       // R3-15 · the grey wash sits a hair in front of its being, wearing the
       // SAME texture every frame — so it drains whatever cell the being is
       // showing, including cells and skins that do not exist yet.
@@ -2284,6 +2270,7 @@ export class PaintScene extends Phaser.Scene {
    */
   private syncOverlay(copy: Phaser.GameObjects.Image, img: Phaser.GameObjects.Image): void {
     copy.setPosition(img.x, img.y);
+    copy.setOrigin(img.originX, img.originY);
     const fit = overlayFit(
       { frameW: img.frame.width, frameH: img.frame.height, scaleX: img.scaleX, scaleY: img.scaleY },
       { frameW: copy.frame.width, frameH: copy.frame.height },
@@ -2365,10 +2352,24 @@ export class PaintScene extends Phaser.Scene {
 
   private renderEntities(): void {
     for (const e of this.world.entities) {
+      const swarm = this.numberSwarmImgs.get(e.id);
+      if (swarm) {
+        const glyphs = numberSwarmLayout({ runSeed: this.cfg.runSeed, entityId: e.id, tick: this.tickCount, reducedMotion: this.cfg.reducedMotion });
+        glyphs.forEach((glyph, i) => swarm[i]!.setVisible(!e.hidden)
+          .setPosition(fromSubs(e.x) + glyph.x, fromSubs(e.y) + glyph.y)
+          .setRotation(glyph.rotation).setAlpha(e.redeemed ? 0.85 : 1));
+        if (e.redeemed && !this.cheered.has(e.id)) {
+          this.cheered.add(e.id);
+          this.redeemFlourish(fromSubs(e.x), fromSubs(e.y) - 17, 1);
+          this.cheerMs = 0;
+        }
+        continue;
+      }
       const img = this.entityImgs.get(e.id);
       if (!img) continue;
       // R3-16: a taken Regel-Seite / Bonus-Buch is GONE — it went into the tally
-      img.setVisible(!e.hidden && !(PICKUP_ROLES.has(e.role) && e.redeemed));
+      const insideCase = this.cfg.level.chapter === "ch01" && e.role === "classmate" && e.skin === "merle" && !e.redeemed;
+      img.setVisible(!insideCase && !e.hidden && !(PICKUP_ROLES.has(e.role) && e.redeemed));
       img.setPosition(fromSubs(e.x), fromSubs(e.y));
       // L2-M-a: HINTER oder VOR dem Objekt — das ist die halbe Lehre der Unit.
       // Die Rechnung steht in `entities.ts#stageDepthOf`, damit ein Test sie
@@ -2394,7 +2395,13 @@ export class PaintScene extends Phaser.Scene {
         // ohne eine Zeile Code hier oder in anim.ts.
         hasStretch: this.textures.exists(`pb-${e.skin}_stretch`),
       });
-      img.setTexture(this.entTex(e.skin, cell, e.params.artSet === "zoo-v2"));
+      const shellSkin = e.params.shellArt === "photo_frame_cage" ? "photo_frame_cage" : e.params.shellArt === "device_locker" ? "device_locker" : e.skin;
+      img.setTexture(this.entTex(shellSkin, (e.params.shellArt === "device_locker" || e.params.shellArt === "photo_frame_cage") && e.redeemed ? "open" : cell, e.params.artSet === "zoo-v2"));
+      if (e.params.shellArt === "photo_frame_cage") {
+        const origin = e.redeemed ? CLASS_PHOTO_ORIGIN.open : CLASS_PHOTO_ORIGIN.closed;
+        img.setOrigin(origin.x, origin.y);
+      } else if (e.params.shellArt === "device_locker") img.setOrigin(295 / 820, 676 / 736);
+      else if (e.skin === "pencilcase" && e.params.classmate === "merle") img.setOrigin(380 / 744, 389 / 440);
       const targetH = this.entTargetH(e);
       const frameH = img.frame.height || 1;
       if (e.role.startsWith("platform")) img.setDisplaySize(40, targetH);
@@ -2582,7 +2589,7 @@ export class PaintScene extends Phaser.Scene {
       // …and a cell that already faces a direction is never mirrored: flipping a
       // right-bank cell would draw a LEFT bank while she flies right (the facing
       // law, R3-4, applied to art that carries its own facing).
-      img.setFlipX(CELL_IS_DIRECTIONAL(cell) ? false : e.dir > 0);
+      img.setFlipX(e.params.shellArt === "photo_frame_cage" || CELL_IS_DIRECTIONAL(cell) ? false : e.dir > 0);
       // THE TRANSPARENCY GRAMMAR (PB-F2, Fable's PK-F1 review ruling 3):
       // SOLID = you can act on this now · TRANSPARENT = not yet.
       // AMENDED (PK-R6 · C2). The rule said SOLID =
@@ -2613,7 +2620,7 @@ export class PaintScene extends Phaser.Scene {
       // it is a MIX toward sunflower rather than a flat repaint, so the painted
       // wood and slate are still there underneath, lit.
       const giftT = e.role === "guardian" ? this.giftBloomT(e.id) : 0;
-      if (giftT > 0) img.setTint(mixRGB(0xffffff, GIFT_BLOOM_TINT, GIFT_TINT_MIX * giftT));
+      if (giftT > 0 && this.cfg.level.chapter !== "ch01") img.setTint(mixRGB(0xffffff, GIFT_BLOOM_TINT, GIFT_TINT_MIX * giftT));
       else if (e.state === "telegraph") img.setTint(0xfff2b0);
       else img.clearTint();
       // …and the light the bloom ADDS. The tint above can only ever multiply,
@@ -2638,7 +2645,7 @@ export class PaintScene extends Phaser.Scene {
       const wash = this.washImgs.get(e.id);
       if (wash) {
         const a = washAlphaFor(e, this.cfg.reducedMotion);
-        wash.setVisible(!e.hidden && a > 0);
+        wash.setVisible(img.visible && a > 0);
         if (a > 0) {
           // the DRAINED copy of whatever cell the being is showing this tick —
           // built once per cell, so a being that changes pose mid-wash (Merle
@@ -2658,8 +2665,25 @@ export class PaintScene extends Phaser.Scene {
       // Käfig trägt die Gefangenen-Silhouette NICHT weiter").
       const cap = this.captiveImgs.get(e.id);
       if (cap) {
-        cap.setVisible(!e.hidden && !e.redeemed);
-        if (cap.visible) this.syncOverlay(cap, img);
+        const photo = this.cfg.level.chapter === "ch01" && e.params.captive === "picture";
+        const registered = photo ? (e.redeemed ? CLASS_PHOTO_OPEN_WINDOW : CLASS_PHOTO_WINDOW) : e.params.shellArt === "device_locker" ? DEVICE_WINDOW
+          : e.params.classmate === "merle" ? PENCILCASE_WINDOW : undefined;
+        cap.setVisible(!e.hidden && (!e.redeemed || e.params.shellArt === "device_locker" || photo));
+        if (cap.visible && registered) {
+          const rect = containInPictureWindow(registered, { width: cap.frame.width, height: cap.frame.height });
+          const dx = (rect.x + rect.width / 2 - img.frame.width * img.originX) * img.scaleX * (img.flipX ? -1 : 1);
+          const dy = (rect.y + rect.height - img.frame.height * img.originY) * img.scaleY;
+          const c = Math.cos(img.rotation), s = Math.sin(img.rotation);
+          cap.setPosition(img.x + dx * c - dy * s, img.y + dx * s + dy * c);
+          cap.setDisplaySize(rect.width * Math.abs(img.scaleX), rect.height * Math.abs(img.scaleY));
+          cap.setRotation(img.rotation).setFlipX(img.flipX);
+        } else if (cap.visible) this.syncOverlay(cap, img);
+      }
+      const curse = this.curseImgs.get(e.id);
+      if (curse) {
+        const a = washAlphaFor(e, this.cfg.reducedMotion);
+        curse.setVisible(img.visible && a > 0);
+        if (curse.visible) { this.syncOverlay(curse, img); curse.setAlpha(a); }
       }
       // PK-R6 · H1 · THE COLOUR ARRIVING (round-1 critique, finding 8). The same
       // mirror trick as the wash, run the other way: a warm ADD-blended copy of
@@ -2669,7 +2693,7 @@ export class PaintScene extends Phaser.Scene {
       const bloom = this.bloomImgs.get(e.id);
       if (bloom) {
         const b = floodBloomFor(e, this.cfg.reducedMotion);
-        bloom.setVisible(!e.hidden && b > 0);
+        bloom.setVisible(img.visible && b > 0);
         if (b > 0) {
           bloom.setTexture(img.texture.key);
           this.syncOverlay(bloom, img);
@@ -3152,16 +3176,16 @@ export class PaintScene extends Phaser.Scene {
   chalkTheGift(entityId: string, word: string): void {
     const clean = word.trim().slice(0, 24);
     if (clean === "") return;
-    const anchor = this.boardAnchor(entityId);
+    const anchor = this.giftAnchor(entityId);
     if (!anchor) return; // a guardian with no writing surface simply keeps her face
     this.giftText?.destroy();
     this.giftOwner = entityId;
     this.giftWord = clean;
     this.giftTick = 0;
     this.giftText = this.add
-      .text(0, anchor.y + this.giftDy(entityId), "", {
-        fontFamily: "system-ui, sans-serif",
-        fontSize: "8px", // bigger than her scribbles: it is the loudest thing on the board
+      .text(anchor.x, anchor.y, "", {
+        fontFamily: "Chalkboard SE, Comic Sans MS, cursive",
+        fontSize: "13px", // Legible at world scale; always confined to the actual slate.
         color: "#fff6d8", // fresh chalk, warmer than the evidence's slate-white
         align: "center",
         wordWrap: { width: anchor.w },
@@ -3177,7 +3201,7 @@ export class PaintScene extends Phaser.Scene {
    *  rather than gaining a rectangle of glow. */
   private giftGlow(id: string, img: Phaser.GameObjects.Image, t: number): void {
     let glow = this.giftGlowImgs.get(id);
-    if (t <= 0) { glow?.setVisible(false); return; }
+    if (t <= 0 || this.cfg.level.chapter === "ch01") { glow?.setVisible(false); return; }
     if (!glow) {
       glow = this.add.image(img.x, img.y, img.texture.key).setOrigin(img.originX, img.originY).setDepth(7.03);
       glow.setBlendMode(Phaser.BlendModes.ADD);
@@ -3188,6 +3212,24 @@ export class PaintScene extends Phaser.Scene {
     glow.setPosition(img.x, img.y).setScale(img.scaleX, img.scaleY);
     glow.setFlipX(img.flipX).setRotation(img.rotation);
     glow.setAlpha(GIFT_ADD_ALPHA * t * img.alpha);
+  }
+
+  /** The typed greeting sits in the same measured lower rectangle as its DOM
+   * card, transformed with the actual painted body rather than a second offset. */
+  private giftAnchor(entityId: string): { x: number; y: number; w: number; h: number; rotation: number } | null {
+    const img = this.entityImgs.get(entityId);
+    if (this.cfg.level.chapter === "ch01" && img) {
+      const w = CH01_CHALK_WINDOW;
+      const cx = (w.x + w.width / 2) / w.frameWidth;
+      const cy = (w.y + w.height / 2) / w.frameHeight;
+      const dx = ((img.flipX ? 1 - cx : cx) - img.originX) * img.displayWidth;
+      const dy = (cy - img.originY) * img.displayHeight;
+      const c = Math.cos(img.rotation), s = Math.sin(img.rotation);
+      return { x: img.x + dx * c - dy * s, y: img.y + dx * s + dy * c,
+        w: w.width / w.frameWidth * img.displayWidth, h: w.height / w.frameHeight * img.displayHeight, rotation: img.rotation };
+    }
+    const anchor = this.boardAnchor(entityId);
+    return anchor ? { ...anchor, y: anchor.y + this.giftDy(entityId), h: 24, rotation: 0 } : null;
   }
 
   /** How far below the board's centre the gift is written, in world px — read
@@ -3215,18 +3257,19 @@ export class PaintScene extends Phaser.Scene {
     const t = this.giftText;
     if (!t || this.giftOwner === null) return;
     const e = this.world?.entities.find((x) => x.id === this.giftOwner);
-    const anchor = this.boardAnchor(this.giftOwner);
+    const anchor = this.giftAnchor(this.giftOwner);
     if (!e || !anchor) { t.setVisible(false); return; }
-    t.setVisible(true).setPosition(fromSubs(e.x), anchor.y + this.giftDy(this.giftOwner));
+    t.setVisible(true).setPosition(anchor.x, anchor.y).setRotation(anchor.rotation);
     this.giftTick++;
     const shown = this.cfg.reducedMotion
       ? this.giftWord.length
       : Math.ceil((this.giftWord.length * Math.min(this.giftTick, GIFT_WRITE_TICKS)) / GIFT_WRITE_TICKS);
     t.setText(this.giftWord.slice(0, shown));
+    if (this.cfg.level.chapter === "ch01") t.setScale(Math.min(1, Math.max(1, anchor.w - 2) / Math.max(1, t.width), Math.max(1, anchor.h - 2) / Math.max(1, t.height)));
     this.chalkDust(t, anchor.w); // her gift is chalk too, and chalk is dusty (finding 9)
     // …and the sunflower light it brings up, thrown behind her so the bloom
     // reads as the BOARD glowing rather than as a lamp parked in front of it.
-    if (this.cfg.reducedMotion) return;
+    if (this.cfg.reducedMotion || this.cfg.level.chapter === "ch01") return;
     const b = this.giftBloomT(this.giftOwner);
     if (b <= 0) return;
     const img = this.entityImgs.get(this.giftOwner);
@@ -4057,7 +4100,7 @@ export class PaintScene extends Phaser.Scene {
     const g = this.world?.entities.find((e) => e.role === "guardian" && !e.redeemed);
     const img = g ? this.entityImgs.get(g.id) : undefined;
     if (!g || !img || !img.visible) {
-      for (const s of this.scribbleImgs) s.setVisible(false);
+      for (const s of this.scribbleImgs) s?.setVisible(false);
       this.knotG.clear();
       return;
     }
@@ -4072,7 +4115,7 @@ export class PaintScene extends Phaser.Scene {
     const left = counted < 0 ? total : Math.max(0, Math.min(total, counted));
     const slate = this.slateRect(g.id);
     if (total <= 0 || slate === null) {
-      for (const s of this.scribbleImgs) s.setVisible(false);
+      for (const s of this.scribbleImgs) s?.setVisible(false);
       this.knotG.clear();
       return;
     }
@@ -4092,7 +4135,8 @@ export class PaintScene extends Phaser.Scene {
     this.renderFaceFloor(slate, img.rotation, img.flipX, frei);
 
     for (let i = 0; i < this.scribbleImgs.length; i++) {
-      const s = this.scribbleImgs[i]!;
+      const s = this.scribbleImgs[i];
+      if (!s) continue;
       const standing = i < left;
       s.setVisible(standing && img.visible);
       if (!standing) continue;
@@ -4111,7 +4155,8 @@ export class PaintScene extends Phaser.Scene {
       s.setAlpha((top ? SCRIBBLE_TOP_ALPHA : SCRIBBLE_ALPHA) * img.alpha);
       // Die Kritzel liegen UM die Augenpartie, nie darüber (Kokis Entscheid).
       // Die Maske ist umgekehrt: gezeichnet wird alles AUSSER der Ellipse.
-      if (this.faceMask && s.mask !== this.faceMask) s.setMask(this.faceMask);
+      if (this.cfg.level.chapter === "ch01") s.clearMask();
+      else if (this.faceMask && s.mask !== this.faceMask) s.setMask(this.faceMask);
       // Der Wischer nimmt NUR die oberste Schicht, und er nimmt sie von links
       // nach rechts — dieselbe Richtung, in der ein Kind eine Tafel wischt.
       // Der Schnitt läuft in TEXTUR-Koordinaten, also in der Auflösung des
@@ -4267,7 +4312,7 @@ export class PaintScene extends Phaser.Scene {
     for (const [id, cap] of this.captiveImgs) {
       const cage = this.world?.entities.find((e) => e.id === id);
       if (cage?.params?.captive !== "picture") continue;
-      const key = "pb-obj_picture";
+      const key = this.cfg.level.chapter === "ch01" ? "pb-klassenfoto_a" : "pb-obj_picture";
       if (this.textures.exists(key) && cap.texture.key !== key) {
         // dieselbe Fusslinie, dieselbe Breite — nur eben in Farbe
         const w = cap.displayWidth;
@@ -4303,7 +4348,7 @@ export class PaintScene extends Phaser.Scene {
       const key = `pb-${SCRIBBLE_STEMS[layer]!}`;
       if (!this.textures.exists(key)) continue;
       const img = this.add.image(0, 0, key).setOrigin(0.5, 0.5).setDepth(SCRIBBLE_DEPTH).setVisible(false);
-      this.scribbleImgs.push(img);
+      this.scribbleImgs[layer] = img;
     }
   }
 
@@ -5129,7 +5174,7 @@ export class PaintScene extends Phaser.Scene {
       const pts = inkCrownPoints(run.x0, run.x1, tick);
       if (pts.length < 2) continue;
       // the shadow the lip casts into its own liquid, a hair below the band
-      g.lineStyle(1.2, INK_CROWN_DARK, 0.8).beginPath();
+      g.lineStyle(1.2, this.cfg.level.chapter === "ch01" ? 0x141527 : INK_CROWN_DARK, 0.8).beginPath();
       pts.forEach((p, i) => {
         const y = run.y + p.y + inkLipThicknessAt(p.x, tick) + 0.8;
         return i === 0 ? g.moveTo(p.x, y) : g.lineTo(p.x, y);
@@ -5138,7 +5183,7 @@ export class PaintScene extends Phaser.Scene {
       // the lip itself: a closed band whose lower edge swells in the troughs
       const head = pts[0];
       if (head === undefined) continue;
-      g.fillStyle(INK_MENISCUS, 0.92).beginPath();
+      g.fillStyle(this.cfg.level.chapter === "ch01" ? 0x242341 : INK_MENISCUS, 0.92).beginPath();
       g.moveTo(head.x, run.y + head.y);
       for (const p of pts) g.lineTo(p.x, run.y + p.y);
       for (let i = pts.length - 1; i >= 0; i--) {
@@ -5150,7 +5195,7 @@ export class PaintScene extends Phaser.Scene {
       g.fillPath();
       // and the gloss, only where the surface turns towards the light
       for (const seg of inkSheenRuns(run.x0, run.x1, tick)) {
-        g.lineStyle(0.9, INK_SHEEN, 0.75).beginPath();
+        g.lineStyle(0.9, this.cfg.level.chapter === "ch01" ? 0x626989 : INK_SHEEN, this.cfg.level.chapter === "ch01" ? 0.45 : 0.75).beginPath();
         let first = true;
         for (let x = seg.x0; x <= seg.x1; x += 4) {
           const y = run.y + inkCrownOffsetAt(x, tick) + 0.5;
@@ -5439,6 +5484,7 @@ export class PaintScene extends Phaser.Scene {
   private buildTerrain(): void {
     const kit = this.massKit();
     const fill = this.add.graphics().setDepth(1);
+    const paintedInk = this.cfg.level.chapter === "ch01" && this.textures.exists("pb-ink_liquid");
     const h = this.grid.length;
     const w = this.grid[0]?.length ?? 0;
     const CANOPY = 0x2e4d33;
@@ -5520,7 +5566,7 @@ export class PaintScene extends Phaser.Scene {
     // instead of per 16-px row. The staircase the blind critic measured — four
     // stops, and in p2 a flat bottom half — was not a tuning error; it was what a
     // per-cell fill can produce and nothing else.
-    for (const col of planInkColumns(this.grid)) {
+    for (const col of paintedInk ? [] : planInkColumns(this.grid)) {
       const top = mixMultiply(INK_BODY, inkDepthTint(col.dTop));
       const bot = mixMultiply(INK_BODY, inkDepthTint(col.dBot));
       fill.fillGradientStyle(top, top, bot, bot, 1, 1, 1, 1);
@@ -5592,25 +5638,28 @@ export class PaintScene extends Phaser.Scene {
     // texture now drifts and it carries a crown that rises and falls — both
     // pure functions of the SIM TICK (ink.ts), so a replay draws the same water
     // twice and the wave is assertable without a screenshot.
-    if (this.textures.exists("pb-pool_ink_loop")) {
-      const dh = 16;
-      const ts = dh / srcH("pool_ink_loop");
-      runs(
-        cellsOf(idx, "w"),
-        (c, r) => glyphAt(this.grid, c, r) === "w" && glyphAt(this.grid, c, r - 1) !== "w",
-        (c0, c1, r) => {
-          const t = this.tiled(c0 * TILE, r * TILE, (c1 - c0 + 1) * TILE, dh, "pb-pool_ink_loop")
-            .setOrigin(0, 0).setDepth(3).setTileScale(ts);
-          // R5-W4 · A6: the painted surface is the only real paint in the pool
-          // and it was the one part that did not belong to it — a neutral
-          // grey-green over a violet body. The tint brings it into the ink's own
-          // family (1.7° apart) and carries its painted flecks with it.
-          t.setTint(INK_SURFACE_TINT);
+    if (paintedInk || this.textures.exists("pb-pool_ink_loop")) {
+      if (paintedInk) {
+        // Full-depth rectangles follow each actual bottom step. Their texture
+        // coordinates share world space, so adjoining faces form one liquid.
+        for (const rect of paintedInkRects(this.grid)) {
+          const t = this.tiled(rect.x, rect.y, rect.width, rect.height, "pb-ink_liquid")
+            .setOrigin(0, 0).setDepth(3).setTileScale(0.16);
+          const offset = paintedInkOffset(rect.x, rect.y, 0.16, this.tickCount, this.cfg.reducedMotion);
+          t.tilePositionX = offset.x;
+          t.tilePositionY = offset.y;
           this.inkSurfaces.push(t);
-          this.inkRuns.push({ x0: c0 * TILE, x1: (c1 + 1) * TILE, y: r * TILE });
-        },
-      );
-      // …and the crown rides just above them
+          this.paintedInkSurfaces.add(t);
+        }
+      }
+      runs(cellsOf(idx, "w"), (c, r) => glyphAt(this.grid, c, r - 1) !== "w", (c0, c1, r) => {
+        if (!paintedInk) {
+          const t = this.tiled(c0 * TILE, r * TILE, (c1 - c0 + 1) * TILE, 16, "pb-pool_ink_loop")
+            .setOrigin(0, 0).setDepth(3).setTileScale(16 / srcH("pool_ink_loop")).setTint(INK_SURFACE_TINT);
+          this.inkSurfaces.push(t);
+        }
+        this.inkRuns.push({ x0: c0 * TILE, x1: (c1 + 1) * TILE, y: r * TILE });
+      });
       this.inkCrownG = this.add.graphics().setDepth(3.1);
       this.drawInkCrown();
     }
@@ -6303,7 +6352,7 @@ export class PaintScene extends Phaser.Scene {
         img.y + (warn ? HOSTILE_RIM_DY : HERO_SHADOW_DY * 0.7) + img.displayHeight * (spread - 1) * 0.5,
       );
       shade.setScale(img.scaleX * spread, img.scaleY * spread);
-      shade.setFlipX(img.flipX).setRotation(img.rotation);
+      shade.setOrigin(img.originX, img.originY).setFlipX(img.flipX).setRotation(img.rotation);
       shade.setTint(warn ? colour : HERO_SHADOW_TINT);
       // chalk is ADDED (a dark room takes light) and ink is laid flat (a bright
       // room takes shade) — the same asymmetry the hero's own edge follows
@@ -6512,6 +6561,9 @@ export class PaintScene extends Phaser.Scene {
     }
     this.letterBuilds += 1;
     const S = 128;
+    // Two-digit numbers use a wider canvas, retaining the SAME letter size.
+    // Single-character collectibles keep their original 128 × 128 texture.
+    const W = char.length > 1 ? 192 : S;
     // ★ R5-W5 · E6 · DIESE STELLE BLEIBT, WIE SIE IST — und das ist ein MESSWERT,
     // keine Bequemlichkeit. Die Ein-Upload-Reparatur aus `greyTexOf` (dort 580 →
     // 123 ms) wurde hier ebenfalls gebaut, weil es dieselbe Fundstelle derselben
@@ -6524,10 +6576,10 @@ export class PaintScene extends Phaser.Scene {
     // `document.createElement` nicht. Also: zurückgenommen, Zahl im Register
     // (D-326). Eine Klassen-Reparatur ist eine Hypothese über jede Fundstelle,
     // bis jede Fundstelle gemessen ist.
-    const tex = this.textures.createCanvas(key, S, S);
+    const tex = this.textures.createCanvas(key, W, S);
     if (!tex) return this.tex("prop_letter"); // headless/canvas-less safety
     const ctx = tex.getContext();
-    ctx.clearRect(0, 0, S, S);
+    ctx.clearRect(0, 0, W, S);
     ctx.font = LETTER_STYLE.font;
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
@@ -6548,12 +6600,12 @@ export class PaintScene extends Phaser.Scene {
       ctx.globalAlpha = rim.alpha;
       ctx.lineWidth = rim.width;
       ctx.strokeStyle = `#${rim.colour.toString(16).padStart(6, "0")}`;
-      ctx.strokeText(char, S / 2, S / 2 + 3);
+      ctx.strokeText(char, W / 2, S / 2 + 3);
       ctx.globalAlpha = 1;
     }
     ctx.lineWidth = LETTER_STYLE.strokeWidth * 2;
     ctx.strokeStyle = LETTER_STYLE.stroke;
-    ctx.strokeText(char, S / 2, S / 2 + 3);
+    ctx.strokeText(char, W / 2, S / 2 + 3);
     ctx.shadowColor = "transparent";
     ctx.shadowBlur = 0;
     ctx.shadowOffsetY = 0;
@@ -6561,7 +6613,7 @@ export class PaintScene extends Phaser.Scene {
     grad.addColorStop(0, LETTER_STYLE.fill);
     grad.addColorStop(1, LETTER_STYLE.fillDeep);
     ctx.fillStyle = grad;
-    ctx.fillText(char, S / 2, S / 2 + 3);
+    ctx.fillText(char, W / 2, S / 2 + 3);
     // ── PK-R6 · H2 · THE PAPER UNDER THE GOLD (round-2 finding 8) ────────────
     // „The gold letters have a smooth vector-embossed look, unlike the visible
     // canvas/brush texture on the towels and wall behind them." True, and it is
@@ -6581,7 +6633,7 @@ export class PaintScene extends Phaser.Scene {
       // in its dents — a tooth has both, and only having one reads as dirt
       ctx.fillStyle = hv < 0.5 ? `rgba(255,246,214,${0.05 + hv * 0.16})` : `rgba(120,72,20,${0.04 + (hv - 0.5) * 0.18})`;
       ctx.beginPath();
-      ctx.arc(hx * S, hy * S, r, 0, Math.PI * 2);
+      ctx.arc(hx * W, hy * S, r, 0, Math.PI * 2);
       ctx.fill();
     }
     ctx.globalCompositeOperation = "source-over";

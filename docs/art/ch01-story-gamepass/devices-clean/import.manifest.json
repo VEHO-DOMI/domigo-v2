@@ -1,0 +1,157 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "assets": [
+    {
+      "source": "soundsystem-original.png",
+      "width": 512,
+      "height": 512,
+      "sourceCrop": {
+        "x": 200,
+        "y": 66,
+        "width": 865,
+        "height": 1127,
+        "foregroundBounds": {
+          "x": 206,
+          "y": 72,
+          "width": 853,
+          "height": 1115
+        }
+      },
+      "x": [
+        [
+          0,
+          63
+        ],
+        [
+          511,
+          1201
+        ]
+      ],
+      "y": [
+        [
+          0,
+          60
+        ],
+        [
+          511,
+          1198
+        ]
+      ],
+      "stem": "obj_soundsystem"
+    },
+    {
+      "source": "soundsystem-original.png",
+      "width": 512,
+      "height": 512,
+      "sourceCrop": {
+        "x": 200,
+        "y": 66,
+        "width": 865,
+        "height": 1127,
+        "foregroundBounds": {
+          "x": 206,
+          "y": 72,
+          "width": 853,
+          "height": 1115
+        }
+      },
+      "x": [
+        [
+          0,
+          63
+        ],
+        [
+          511,
+          1201
+        ]
+      ],
+      "y": [
+        [
+          0,
+          60
+        ],
+        [
+          511,
+          1198
+        ]
+      ],
+      "stem": "captive_soundsystem"
+    },
+    {
+      "source": "tablet-original.png",
+      "width": 512,
+      "height": 512,
+      "sourceCrop": {
+        "x": 177,
+        "y": 107,
+        "width": 952,
+        "height": 1064,
+        "foregroundBounds": {
+          "x": 183,
+          "y": 113,
+          "width": 940,
+          "height": 1052
+        }
+      },
+      "x": [
+        [
+          0,
+          115
+        ],
+        [
+          511,
+          1190
+        ]
+      ],
+      "y": [
+        [
+          0,
+          101
+        ],
+        [
+          511,
+          1176
+        ]
+      ],
+      "stem": "obj_tablet"
+    },
+    {
+      "source": "tablet-original.png",
+      "width": 512,
+      "height": 512,
+      "sourceCrop": {
+        "x": 177,
+        "y": 107,
+        "width": 952,
+        "height": 1064,
+        "foregroundBounds": {
+          "x": 183,
+          "y": 113,
+          "width": 940,
+          "height": 1052
+        }
+      },
+      "x": [
+        [
+          0,
+          115
+        ],
+        [
+          511,
+          1190
+        ]
+      ],
+      "y": [
+        [
+          0,
+          101
+        ],
+        [
+          511,
+          1176
+        ]
+      ],
+      "stem": "captive_tablet"
+    }
+  ]
+}

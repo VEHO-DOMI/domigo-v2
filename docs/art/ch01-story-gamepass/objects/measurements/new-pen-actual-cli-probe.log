@@ -1,0 +1,147 @@
+{
+  "scope": "single-source authoring probe, not the chapter gate",
+  "errors": [
+    "single-neutral: anatomical mask is only a small detail of the object"
+  ],
+  "regions": [
+    {
+      "id": "cap-plane",
+      "area": 5148,
+      "coverage": 0.9968919968919969,
+      "componentShare": 0.9968919968919969,
+      "coreShare": 0.8818958818958819,
+      "lumaQuantiles": [
+        31.927799999999998,
+        52.212599999999995,
+        69.42519999999999
+      ],
+      "chromaQuantiles": [
+        1,
+        2,
+        4
+      ]
+    },
+    {
+      "id": "cap-rim",
+      "area": 2500,
+      "coverage": 0.9528,
+      "componentShare": 0.9528,
+      "coreShare": 0.6468,
+      "lumaQuantiles": [
+        4.2126,
+        37.4252,
+        98.8504
+      ],
+      "chromaQuantiles": [
+        1,
+        2,
+        8
+      ]
+    },
+    {
+      "id": "upper-left-barrel",
+      "area": 1260,
+      "coverage": 0.9976190476190476,
+      "componentShare": 0.9976190476190476,
+      "coreShare": 0.7531746031746032,
+      "lumaQuantiles": [
+        44.14039999999999,
+        61.709999999999994,
+        78.2808
+      ],
+      "chromaQuantiles": [
+        1,
+        2,
+        4
+      ]
+    },
+    {
+      "id": "left-shoulder",
+      "area": 1225,
+      "coverage": 0.9975510204081632,
+      "componentShare": 0.9975510204081632,
+      "coreShare": 0.7534693877551021,
+      "lumaQuantiles": [
+        46.2126,
+        58.1404,
+        73.06819999999999
+      ],
+      "chromaQuantiles": [
+        1,
+        2,
+        4
+      ]
+    },
+    {
+      "id": "left-barrel",
+      "area": 4356,
+      "coverage": 0.9871441689623508,
+      "componentShare": 0.9871441689623508,
+      "coreShare": 0.859504132231405,
+      "lumaQuantiles": [
+        42.0682,
+        53.2126,
+        63.63779999999999
+      ],
+      "chromaQuantiles": [
+        1,
+        2,
+        4
+      ]
+    },
+    {
+      "id": "right-barrel",
+      "area": 2112,
+      "coverage": 0.9247159090909091,
+      "componentShare": 0.9247159090909091,
+      "coreShare": 0.6974431818181818,
+      "lumaQuantiles": [
+        5.068199999999999,
+        39.855599999999995,
+        218.06199999999998
+      ],
+      "chromaQuantiles": [
+        1,
+        2,
+        63
+      ]
+    },
+    {
+      "id": "lower-barrel",
+      "area": 10082,
+      "coverage": 0.9947431065264828,
+      "componentShare": 0.9946439198571712,
+      "coreShare": 0.9111287442967665,
+      "lumaQuantiles": [
+        37.2126,
+        49.4252,
+        58.425200000000004
+      ],
+      "chromaQuantiles": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "id": "barrel-foot",
+      "area": 2375,
+      "coverage": 1,
+      "componentShare": 1,
+      "coreShare": 0.8046315789473685,
+      "lumaQuantiles": [
+        31.425199999999997,
+        44.212599999999995,
+        52.4252
+      ],
+      "chromaQuantiles": [
+        1,
+        2,
+        3
+      ]
+    }
+  ],
+  "interiorCount": 87744,
+  "maskInteriorShare": 0.3303587709700948,
+  "wholeTargetShare": 0.8177311269146609
+}

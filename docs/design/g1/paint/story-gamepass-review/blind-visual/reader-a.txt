@@ -1,0 +1,72 @@
+Geprüft wurden ausschließlich alle 13 PNGs. Nichts wurde verändert. Zwei unabhängige Bildlesungen, die meine Voranalyse nicht kannten, dienten als Gegenprüfung.
+
+## Sichtbar erzählte Geschichte
+
+Die Klasse hat ihre erste Englischstunde. Aus dem neuen Englischbuch steigt ein Tintengeist; ein Wirbel zieht alle 16 Kinder ins Buch. Die Lehrerin bleibt im Klassenzimmer zurück.
+
+Die Spielfigur landet allein in der Buchwelt und wird zur gezeichneten Abenteuerfigur. Dort begegnet sie Klecks, einem freundlichen Teil des Tintengeists. Klecks erklärt:
+
+- Das Buch verleiht magische Kräfte.
+- Richtige englische Wörter können den Zauber lösen.
+- Goldene Buchstaben sollen für später gesammelt werden.
+- Die 15 verschwundenen Mitschüler müssen gefunden werden.
+
+Später werden eine Tafel-Bühne, ein nächtlich verzaubertes Klassenzimmer, ein gesperrtes Klassenfoto und ein Kapitelabschluss gespielt. Am Ende gilt die Tafel als gereinigt; laut Klassenfoto sind aber weiterhin alle 15 Mitschüler im Buch.
+
+## Kleidung, Ausrüstung und Fähigkeiten
+
+Vor der Buchwelt trägt die Spielfigur einen dunkelblauen Pullover über einem weißen Kragen, eine lange dunkle Hose und braune Schuhe.
+
+Ab `comic-4.png` trägt sie ein blaues Abenteueroberteil mit gelber Zickzacklinie, kurze Hose, weiße Handschuhe, helle Beinwickel oder dicke Socken, rotbraune Stiefel und einen braunen Rucksack mit weißer Feder. Diese Gestaltung bleibt bis `comic-7.png` und in den Spielszenen erstaunlich stabil.
+
+Die Kräfte kommen laut `comic-6.png` ausdrücklich vom Buch. Klecks ist der Helfer und Lehrer; die englischen Wörter sind das Werkzeug, mit dem der Zauber gelöst werden soll. Welche eigentliche Magie ausgeführt wird, zeigen die Standbilder nicht. Sichtbar sind nur Laufen, Springen und Klettern.
+
+## Ist die Klasse als Klasse erkennbar?
+
+Ja. `comic-2.png` und `comic-3.png` zeigen 16 unterscheidbare Kinder. `ui-final-photo-overview.png` zeigt genau 15 Mitschüler; die braunhaarige Spielfigur fehlt folgerichtig.
+
+Die 15 Kinder lassen sich anhand von Frisuren, Hautfarben und Kleidung wiederfinden: etwa Doppeldutt und rotes Oberteil, weißes Haar und Lila, Brille mit grüner Krawatte, schwarzer Bob und Türkis sowie blonde Locken und Gelb. Auch die Namensmatrix folgt den drei Fotoreihen mit jeweils fünf Kindern. Das ist die stärkste bildliche Kontinuität des Satzes.
+
+## Konkrete Fehler
+
+Schweregrade: Ein **Blocker** verhindert nachweisbar den Fortgang; ein **Major** beschädigt wesentlich Geschichte, Orientierung oder Bedienung; ein **Minor** ist ein begrenzter sichtbarer Qualitätsfehler.
+
+| Datei(en) | Schwere | Sichtbarer Befund und Lösung |
+|---|---:|---|
+| `comic-2.png`, `comic-4.png`, `comic-6.png` | Major; möglicher Blocker | Auf allen drei Seiten fehlt die obere Prologleiste. Auf Seite 2 fehlt „Weiter“; auf Seiten 4 und 6 fehlen Navigation und Seitenzahl vollständig. Direkt belegt ist nur ihr Fehlen im aufgenommenen Zustand. Falls sie nicht später erscheinen oder durch Scrollen erreichbar sind, wäre dies ein Blocker. **Lösung:** Kopf- und Fußnavigation ständig im sichtbaren Bereich halten und nur den Textbereich wachsen oder scrollen lassen. |
+| `comic-6.png`, `comic-7.png` gegenüber den späteren Spielszenen | Major | Klecks wird als blauer Tintenkörper eingeführt, erscheint danach aber in keinem späteren PNG. Stattdessen wird ein lächelndes grünes Täfelchen zur sichtbaren Helferfigur und zum Symbol links unten; eine Verwandlung wird nicht erzählt. Im Foto-Dialog spricht dennoch „Klecks“. **Lösung:** Klecks selbst im Spiel und im Symbol verwenden oder seine Verwandlung in das Täfelchen sichtbar erzählen. |
+| `cohesion-world-photo-closed.png`, `cohesion-world-photo-open.png` | Major | Das gesperrte Foto hat einen grauen Metallrahmen mit Gitter; geöffnet erscheint ein anders gebauter goldbrauner Holzrahmen mit violetter Tür. Es wirkt eher wie ein ausgetauschtes Objekt als wie dieselbe geöffnete Sperre. **Lösung:** Außenrahmen, Material, Schloss und Scharniere beibehalten und nur Gitter beziehungsweise Tür bewegen. |
+| `cohesion-world-hello.png`, `ui-final-ending-door.png` | Major | Der Abschluss sagt „Die Tafel ist wieder sauber“, zeigt aber eine Bibliothek mit offener Tür und überhaupt keine Tafel. Zudem sieht die „Hello“-Tafel am Anfang bereits sauber und freundlich aus. Ausgangsschaden und sichtbarer Reinigungserfolg fehlen. **Lösung:** dieselbe anfangs verschmutzte und später gereinigte Tafel zeigen – oder den Abschlusstext auf die tatsächlich sichtbare offene Tür beziehen. |
+| `cohesion-world-hello.png`, beide Fotozustände, `ui-final-photo-overview.png`, `ui-final-ending-door.png` | Major | „Befreit 1/4“ bleibt semantisch ungeklärt, obwohl das Foto alle 15 Kinder als „Noch im Buch“ bezeichnet. Am Kapitelende stehen außerdem `Regel-Seiten 0/5` und `Kleider 0/9` neben der Erfolgsmeldung. Ein Kind kann nicht erkennen, was befreit wurde und welche Ziele verpflichtend sind. **Lösung:** beispielsweise „Sperren 1/4“ oder „Tafelteile 1/4“ schreiben; Personen getrennt als „Mitschüler 0/15“ zählen und freiwillige Sammelobjekte als optional kennzeichnen. |
+| `cohesion-world-hello.png`, `cohesion-world-photo-closed.png`, `ui-final-photo-overview.png`, `ui-final-ending-door.png` | Major | Ein schwarzes technisches Diagnosefeld mit Lade-, Grafik- und Audiodaten liegt über der Kinderansicht. Im Foto-Überblick verdeckt es einen Teil des Schlusssatzes. **Lösung:** die Diagnoseanzeige in der Schüleransicht vollständig abschalten und die Bilder neu aufnehmen. |
+| Alle 13 PNGs | Minor | Unten links bleibt ein schwarzer Kreis mit weißem „N“ als Entwicklungsabzeichen sichtbar. **Lösung:** Entwicklungswerkzeuge für die Schüleransicht ausblenden. |
+| `cohesion-world-photo-closed.png`, `cohesion-world-photo-open.png` | Minor | Die Spielfigur überlappt Rahmen, Foto und Sperre. Dadurch ist unklar, ob sie davor, darin oder dahinter steht. **Lösung:** den Haltepunkt etwas nach links verschieben und die Verdeckung eindeutig ordnen. |
+| `cohesion-world-p2.png` | Minor | Rechts erscheint ein sehr schmaler, abgeschnittener Streifen aus Buchkacheln samt angeschnittenem Objekt. Das liest sich wie ein versehentlich sichtbarer Levelrand. **Lösung:** mit einer vollständigen Wand abschließen oder den Rand außerhalb des Bildausschnitts platzieren. |
+| `comic-4.png` | Minor | Der Text nennt Handschuhe, Rucksack und Feder, obwohl sich auch Oberteil, Hose, Schuhe und Beinkleidung sichtbar verwandeln. **Lösung:** mit einem Satz wie „Deine Schulsachen werden zu einer Abenteuerausrüstung“ den gesamten Wechsel erklären. |
+| `cohesion-world-hello.png` gegenüber `cohesion-world-p2.png` | Minor | Direkt nach dem Auftrag, goldene Buchstaben zu sammeln, fehlt in der Tafel-Bühne der Buchstabenzähler; im nächtlichen Klassenzimmer erscheint `Buchstaben 0/9`. **Lösung:** den Zähler durchgehend zeigen oder erklären, dass Buchstaben erst in diesem Raum vorkommen. |
+| `ui-final-photo-overview.png` | Minor | Der große Foto-Dialog hat keinen sichtbaren Schließen- oder Weiterknopf. Eine unsichtbare Bedienmöglichkeit wäre für Erstklässler schwer auffindbar. **Lösung:** einen klar beschrifteten Knopf ergänzen. |
+| Prolog gegenüber Spielszenen | Minor | Die gemalte, detailreiche Buchillustration wechselt zu einer deutlich gröberen Spielfigur vor weiterhin malerischen Hintergründen. Der Identitätswechsel ist verständlich, stilistisch aber hart. **Lösung:** den Wechsel als sichtbares „Zum-Spielstein-Werden“ inszenieren oder die Auflösungen stärker angleichen. |
+
+Ein sicherer Blocker ist aus Standbildern allein nicht beweisbar.
+
+## Nicht durch PNGs prüfbar
+
+Nicht feststellbar sind:
+
+- ob die fehlenden Prologknöpfe später erscheinen oder erreichbar sind;
+- Laufen, Sprunghöhe, Klettern und Kollisionsgrenzen;
+- ob „Platsch!“ zu einer passenden Fall- und Spritzbewegung gehört;
+- Öffnungsbewegung, Sperrwirkung und Speicherung des Fototors;
+- tatsächliche Aktualisierung der Zähler;
+- Sammeln von Buchstaben, Kleidung und Regelseiten;
+- Wirkung richtiger englischer Wörter;
+- ob Klecks während der Bewegung erscheint;
+- Ton, Neustart und Kapitelwechsel.
+
+## Urteil zur Verständlichkeit des Prologs
+
+Inhaltlich ist der Prolog verständlich: Ursache, Verwandlung, Helfer, Rettungsziel und Englischmechanik bilden eine klare Kette. Die Kräfte werden allerdings nur behauptet, nicht vorgeführt. Die fehlende Navigation auf drei Seiten gefährdet außerdem die praktische Verständlichkeit des Ablaufs.
+
+## Urteil zur Bildkohärenz
+
+Klasse, Spielfigur, Abenteuerkleidung, Büchermaßstab und Tintenmotiv halten gut zusammen. Nicht geschlossen ist die Bildkohärenz bei Klecks, dem Materialwechsel der Fotosperre, der unerklärten Fortschrittsanzeige und dem Schlussbild ohne Tafel. Die Welt ist wiedererkennbar, aber ihre wichtigsten Zustandswechsel werden noch nicht verlässlich durch dieselben Figuren und Gegenstände erzählt.

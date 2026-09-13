@@ -1,0 +1,615 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "tool": "builtin image_gen",
+  "date": "2026-09-13",
+  "scope": "Original raster generation only; no repository imports, no pixel modifications.",
+  "measurementMethod": "Read-only PNG decoding. Foreground heuristic: not(r>160 && g<100 && b>150). Source windows chosen in measured empty magenta gutters; bounds are inclusive foreground extrema. Not a chromakey implementation or alpha approval.",
+  "images": [
+    {
+      "file": "merle-motion-original.png",
+      "source": "/Users/veho/.codex/generated_images/01a09a32-134e-7ea3-aca9-497d50209de4/exec-a159c621-0f96-4d41-8086-fbdef550960a.png",
+      "bytes": 1906182,
+      "width": 1024,
+      "height": 1536,
+      "sha256": "11b2292fa3b61c1f877cf6dd0bf9f3a9df806c9dac010966c990c74a0fe6a45a",
+      "sourceByteIdentical": true,
+      "promptFile": "merle-motion.prompt.txt",
+      "promptSha256": "c361e40db7630fce2634161169bbd8dc922bf690e3938d7978a05b2db8473fa3",
+      "status": "superseded",
+      "exactMagentaPixels": 11,
+      "alphaMin": 255,
+      "cornerRGBA": [
+        238,
+        12,
+        240,
+        255
+      ],
+      "nonKeyBorderPixels": 0,
+      "regions": [
+        {
+          "id": "idle",
+          "sourceWindow": {
+            "x": 0,
+            "y": 0,
+            "width": 512,
+            "height": 517
+          },
+          "foregroundBounds": {
+            "minX": 114,
+            "minY": 25,
+            "maxX": 432,
+            "maxY": 501,
+            "width": 319,
+            "height": 477
+          },
+          "foregroundPixels": 76175
+        },
+        {
+          "id": "walk-stride",
+          "sourceWindow": {
+            "x": 512,
+            "y": 0,
+            "width": 512,
+            "height": 517
+          },
+          "foregroundBounds": {
+            "minX": 566,
+            "minY": 24,
+            "maxX": 911,
+            "maxY": 503,
+            "width": 346,
+            "height": 480
+          },
+          "foregroundPixels": 83608
+        },
+        {
+          "id": "walk-second",
+          "sourceWindow": {
+            "x": 0,
+            "y": 517,
+            "width": 512,
+            "height": 487
+          },
+          "foregroundBounds": {
+            "minX": 98,
+            "minY": 532,
+            "maxX": 434,
+            "maxY": 993,
+            "width": 337,
+            "height": 462
+          },
+          "foregroundPixels": 81824
+        },
+        {
+          "id": "hop",
+          "sourceWindow": {
+            "x": 512,
+            "y": 517,
+            "width": 512,
+            "height": 487
+          },
+          "foregroundBounds": {
+            "minX": 574,
+            "minY": 531,
+            "maxX": 945,
+            "maxY": 956,
+            "width": 372,
+            "height": 426
+          },
+          "foregroundPixels": 84045
+        },
+        {
+          "id": "greeting",
+          "sourceWindow": {
+            "x": 0,
+            "y": 1004,
+            "width": 512,
+            "height": 532
+          },
+          "foregroundBounds": {
+            "minX": 112,
+            "minY": 1014,
+            "maxX": 443,
+            "maxY": 1493,
+            "width": 332,
+            "height": 480
+          },
+          "foregroundPixels": 81660
+        },
+        {
+          "id": "relief",
+          "sourceWindow": {
+            "x": 512,
+            "y": 1004,
+            "width": 512,
+            "height": 532
+          },
+          "foregroundBounds": {
+            "minX": 591,
+            "minY": 1012,
+            "maxX": 913,
+            "maxY": 1495,
+            "width": 323,
+            "height": 484
+          },
+          "foregroundPixels": 79898
+        }
+      ]
+    },
+    {
+      "file": "merle-motion-v2-original.png",
+      "source": "/Users/veho/.codex/generated_images/01a09a32-134e-7ea3-aca9-497d50209de4/exec-e5d3b1a6-54c8-4334-97c6-0b9547279377.png",
+      "bytes": 1749357,
+      "width": 1024,
+      "height": 1536,
+      "sha256": "9bb148ec5279c85e1869c6c5e0a53453eb9ced793462b1c6228f42958c3ececb",
+      "sourceByteIdentical": true,
+      "promptFile": "merle-motion-correction.prompt.txt",
+      "promptSha256": "aa702fab6610edcbd4251267fc38f64c429e0c7d9c7ef862f651ce25ff45e459",
+      "status": "candidate",
+      "exactMagentaPixels": 6,
+      "alphaMin": 255,
+      "cornerRGBA": [
+        237,
+        13,
+        238,
+        255
+      ],
+      "nonKeyBorderPixels": 0,
+      "regions": [
+        {
+          "id": "idle",
+          "sourceWindow": {
+            "x": 0,
+            "y": 0,
+            "width": 512,
+            "height": 520
+          },
+          "foregroundBounds": {
+            "minX": 135,
+            "minY": 67,
+            "maxX": 408,
+            "maxY": 486,
+            "width": 274,
+            "height": 420
+          },
+          "foregroundPixels": 56071
+        },
+        {
+          "id": "walk-stride",
+          "sourceWindow": {
+            "x": 512,
+            "y": 0,
+            "width": 512,
+            "height": 520
+          },
+          "foregroundBounds": {
+            "minX": 594,
+            "minY": 77,
+            "maxX": 880,
+            "maxY": 489,
+            "width": 287,
+            "height": 413
+          },
+          "foregroundPixels": 61499
+        },
+        {
+          "id": "walk-passing",
+          "sourceWindow": {
+            "x": 0,
+            "y": 520,
+            "width": 512,
+            "height": 475
+          },
+          "foregroundBounds": {
+            "minX": 136,
+            "minY": 552,
+            "maxX": 417,
+            "maxY": 971,
+            "width": 282,
+            "height": 420
+          },
+          "foregroundPixels": 57446
+        },
+        {
+          "id": "hop",
+          "sourceWindow": {
+            "x": 512,
+            "y": 520,
+            "width": 512,
+            "height": 475
+          },
+          "foregroundBounds": {
+            "minX": 593,
+            "minY": 555,
+            "maxX": 916,
+            "maxY": 939,
+            "width": 324,
+            "height": 385
+          },
+          "foregroundPixels": 65316
+        },
+        {
+          "id": "greeting",
+          "sourceWindow": {
+            "x": 0,
+            "y": 995,
+            "width": 512,
+            "height": 541
+          },
+          "foregroundBounds": {
+            "minX": 132,
+            "minY": 1019,
+            "maxX": 434,
+            "maxY": 1459,
+            "width": 303,
+            "height": 441
+          },
+          "foregroundPixels": 66150
+        },
+        {
+          "id": "relief",
+          "sourceWindow": {
+            "x": 512,
+            "y": 995,
+            "width": 512,
+            "height": 541
+          },
+          "foregroundBounds": {
+            "minX": 600,
+            "minY": 1021,
+            "maxX": 894,
+            "maxY": 1460,
+            "width": 295,
+            "height": 440
+          },
+          "foregroundPixels": 64673
+        }
+      ]
+    },
+    {
+      "file": "merle-actions-sing-stand-original.png",
+      "source": "/Users/veho/.codex/generated_images/01a09a32-134e-7ea3-aca9-497d50209de4/exec-94b119ae-0868-43f8-92d6-2baf9701c77e.png",
+      "bytes": 1678204,
+      "width": 1254,
+      "height": 1254,
+      "sha256": "f6c206df0a46a460628f8ebaf4f086add007f28e381033890ead02e7a161bebc",
+      "sourceByteIdentical": true,
+      "promptFile": "merle-actions-sing-stand.prompt.txt",
+      "promptSha256": "c2f33dc7d461b20bf9c5374af498d22e668b9607a41210dbef6703d1d8a94230",
+      "status": "candidate",
+      "exactMagentaPixels": 24,
+      "alphaMin": 255,
+      "cornerRGBA": [
+        239,
+        11,
+        241,
+        255
+      ],
+      "nonKeyBorderPixels": 0,
+      "regions": [
+        {
+          "id": "sing-0",
+          "sourceWindow": {
+            "x": 0,
+            "y": 0,
+            "width": 627,
+            "height": 565
+          },
+          "foregroundBounds": {
+            "minX": 117,
+            "minY": 46,
+            "maxX": 583,
+            "maxY": 537,
+            "width": 467,
+            "height": 492
+          },
+          "foregroundPixels": 111083
+        },
+        {
+          "id": "sing-1",
+          "sourceWindow": {
+            "x": 627,
+            "y": 0,
+            "width": 627,
+            "height": 565
+          },
+          "foregroundBounds": {
+            "minX": 717,
+            "minY": 47,
+            "maxX": 1184,
+            "maxY": 537,
+            "width": 468,
+            "height": 491
+          },
+          "foregroundPixels": 113283
+        },
+        {
+          "id": "stand-on-desk-0",
+          "sourceWindow": {
+            "x": 0,
+            "y": 565,
+            "width": 627,
+            "height": 689
+          },
+          "foregroundBounds": {
+            "minX": 130,
+            "minY": 591,
+            "maxX": 573,
+            "maxY": 1192,
+            "width": 444,
+            "height": 602
+          },
+          "foregroundPixels": 111746
+        },
+        {
+          "id": "stand-on-desk-1",
+          "sourceWindow": {
+            "x": 627,
+            "y": 565,
+            "width": 627,
+            "height": 689
+          },
+          "foregroundBounds": {
+            "minX": 733,
+            "minY": 593,
+            "maxX": 1169,
+            "maxY": 1192,
+            "width": 437,
+            "height": 600
+          },
+          "foregroundPixels": 110014
+        }
+      ]
+    },
+    {
+      "file": "merle-actions-scribble-window-original.png",
+      "source": "/Users/veho/.codex/generated_images/01a09a32-134e-7ea3-aca9-497d50209de4/exec-b479f7ce-668f-4b97-a0d3-75322b64acbd.png",
+      "bytes": 1999838,
+      "width": 1254,
+      "height": 1254,
+      "sha256": "52bb8623e76455c39029ed30838096c0561e914ab7afd076559d6f88ebdea0f2",
+      "sourceByteIdentical": true,
+      "promptFile": "merle-actions-scribble-window.prompt.txt",
+      "promptSha256": "98c34e93df37005a45b23221deb8b3fc65675d3ba5f66b92366fe8885f8dd901",
+      "status": "candidate",
+      "exactMagentaPixels": 5,
+      "alphaMin": 255,
+      "cornerRGBA": [
+        237,
+        11,
+        240,
+        255
+      ],
+      "nonKeyBorderPixels": 0,
+      "regions": [
+        {
+          "id": "scribble-0",
+          "sourceWindow": {
+            "x": 0,
+            "y": 0,
+            "width": 627,
+            "height": 582
+          },
+          "foregroundBounds": {
+            "minX": 112,
+            "minY": 46,
+            "maxX": 600,
+            "maxY": 574,
+            "width": 489,
+            "height": 529
+          },
+          "foregroundPixels": 134156
+        },
+        {
+          "id": "scribble-1",
+          "sourceWindow": {
+            "x": 627,
+            "y": 0,
+            "width": 627,
+            "height": 582
+          },
+          "foregroundBounds": {
+            "minX": 715,
+            "minY": 46,
+            "maxX": 1203,
+            "maxY": 572,
+            "width": 489,
+            "height": 527
+          },
+          "foregroundPixels": 130452
+        },
+        {
+          "id": "window-open-0",
+          "sourceWindow": {
+            "x": 0,
+            "y": 582,
+            "width": 627,
+            "height": 672
+          },
+          "foregroundBounds": {
+            "minX": 26,
+            "minY": 590,
+            "maxX": 599,
+            "maxY": 1204,
+            "width": 574,
+            "height": 615
+          },
+          "foregroundPixels": 235843
+        },
+        {
+          "id": "window-open-1",
+          "sourceWindow": {
+            "x": 627,
+            "y": 582,
+            "width": 627,
+            "height": 672
+          },
+          "foregroundBounds": {
+            "minX": 646,
+            "minY": 589,
+            "maxX": 1207,
+            "maxY": 1202,
+            "width": 562,
+            "height": 614
+          },
+          "foregroundPixels": 237769
+        }
+      ]
+    },
+    {
+      "file": "merle-actions-books-leave-original.png",
+      "source": "/Users/veho/.codex/generated_images/01a09a32-134e-7ea3-aca9-497d50209de4/exec-91ee4b93-1240-415d-95dd-fbc978bb95ba.png",
+      "bytes": 1800034,
+      "width": 1254,
+      "height": 1254,
+      "sha256": "1cdd370a72f45e8d49c68f2414f7a5a8c441c93a34848eb706504a52fa3f8aaf",
+      "sourceByteIdentical": true,
+      "promptFile": "merle-actions-books-leave.prompt.txt",
+      "promptSha256": "6454c2daaae22253f3daf61656bae15cdc35676ed3f0d13cb10694f4469ae32c",
+      "status": "candidate",
+      "exactMagentaPixels": 9,
+      "alphaMin": 255,
+      "cornerRGBA": [
+        238,
+        12,
+        241,
+        255
+      ],
+      "nonKeyBorderPixels": 0,
+      "regions": [
+        {
+          "id": "books-in-bag-0",
+          "sourceWindow": {
+            "x": 0,
+            "y": 0,
+            "width": 627,
+            "height": 612
+          },
+          "foregroundBounds": {
+            "minX": 106,
+            "minY": 46,
+            "maxX": 570,
+            "maxY": 588,
+            "width": 465,
+            "height": 543
+          },
+          "foregroundPixels": 132810
+        },
+        {
+          "id": "books-in-bag-1",
+          "sourceWindow": {
+            "x": 627,
+            "y": 0,
+            "width": 627,
+            "height": 612
+          },
+          "foregroundBounds": {
+            "minX": 720,
+            "minY": 46,
+            "maxX": 1131,
+            "maxY": 589,
+            "width": 412,
+            "height": 544
+          },
+          "foregroundPixels": 122919
+        },
+        {
+          "id": "leave-0",
+          "sourceWindow": {
+            "x": 0,
+            "y": 612,
+            "width": 627,
+            "height": 642
+          },
+          "foregroundBounds": {
+            "minX": 45,
+            "minY": 635,
+            "maxX": 571,
+            "maxY": 1188,
+            "width": 527,
+            "height": 554
+          },
+          "foregroundPixels": 183733
+        },
+        {
+          "id": "leave-1",
+          "sourceWindow": {
+            "x": 627,
+            "y": 612,
+            "width": 627,
+            "height": 642
+          },
+          "foregroundBounds": {
+            "minX": 661,
+            "minY": 635,
+            "maxX": 1175,
+            "maxY": 1188,
+            "width": 515,
+            "height": 554
+          },
+          "foregroundPixels": 173734
+        }
+      ]
+    },
+    {
+      "file": "pencilcase-empty-states-original.png",
+      "source": "/Users/veho/.codex/generated_images/01a09a32-134e-7ea3-aca9-497d50209de4/exec-dc670f83-c7e0-4c23-8090-5c2e6e93b69a.png",
+      "bytes": 1654846,
+      "width": 1536,
+      "height": 1024,
+      "sha256": "84a2cbbf22e94837d3d2e75a6b6876b753559356cbe2bcc83f6920da1576f787",
+      "sourceByteIdentical": true,
+      "promptFile": "pencilcase-empty-states.prompt.txt",
+      "promptSha256": "a362d14994df86f80e8f1838cce6677091f9315a6f19b940b0cf43ca0075f7fe",
+      "status": "candidate",
+      "exactMagentaPixels": 1,
+      "alphaMin": 255,
+      "cornerRGBA": [
+        242,
+        11,
+        241,
+        255
+      ],
+      "nonKeyBorderPixels": 0,
+      "regions": [
+        {
+          "id": "closed-empty",
+          "sourceWindow": {
+            "x": 0,
+            "y": 0,
+            "width": 744,
+            "height": 1024
+          },
+          "foregroundBounds": {
+            "minX": 42,
+            "minY": 299,
+            "maxX": 718,
+            "maxY": 678,
+            "width": 677,
+            "height": 380
+          },
+          "foregroundPixels": 171782
+        },
+        {
+          "id": "open-empty",
+          "sourceWindow": {
+            "x": 744,
+            "y": 0,
+            "width": 792,
+            "height": 1024
+          },
+          "foregroundBounds": {
+            "minX": 764,
+            "minY": 299,
+            "maxX": 1484,
+            "maxY": 727,
+            "width": 721,
+            "height": 429
+          },
+          "foregroundPixels": 152203
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,203 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "schema": "ch01TerrainImport@1",
+  "manifestPath": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/desk-final/import.manifest.json",
+  "manifestSha256": "f59a99474751c2cd538b41ed3f71cf755b0c76f680cce4a5175a5b65c1f4fe9a",
+  "importerSha256": "19413e21239e9480dccba9557a1b913be05abe0c72c1681025a7da0f4c058884",
+  "fringeModuleSha256": "51e4044e953feb7e3af96b2d4b562cf73a97dd596d9b7cb2c7d3d688c0145e80",
+  "node": "v24.20.0",
+  "pngjsVersion": "7.0.0",
+  "convention": "pixel centres; strict monotone inverse map; no extrapolation; outside source transparent; premultiplied bilinear",
+  "assets": [
+    {
+      "stem": "obj_desk_a",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/desk-final/desk-original.png",
+      "target": "/Users/veho/Code/codex-lab/trial-berichte/CH01_STORY_SPIELPASS/imported-desk-final/obj_desk_a.png",
+      "sourceSha256": "6782311b5266127163094ea4b50f46d721ab35e8f93dac2cc59793be423a1aa0",
+      "sourceRgbaSha256": "6376c22530bc5fbc45210c71bb9da1d9f727fcf83076d173270da258731d3c74",
+      "keyedRgbaSha256": "001804e63005404aaf2e236af3d18477c36cb8ccbe663735e99cf6eb139efde4",
+      "previousTargetSha256": null,
+      "outputSha256": "4b79954f035891108844b80a4a6a10a898bce10c1b2c709af4d5ff416ac09931",
+      "outputRgbaSha256": "ecaa8488c7499d685e68850cdee46537e43da9f6d58bbdc8a76dd987fc264e2b",
+      "outputBytes": 229772,
+      "sourceCanvas": {
+        "width": 1536,
+        "height": 1024
+      },
+      "sourceCrop": {
+        "x": 108,
+        "y": 24,
+        "width": 1321,
+        "height": 974,
+        "foregroundBounds": {
+          "x": 114,
+          "y": 30,
+          "width": 1309,
+          "height": 962
+        }
+      },
+      "croppedCanvas": {
+        "width": 1321,
+        "height": 974
+      },
+      "croppedBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1321,
+        "height": 974,
+        "pixels": 1286654
+      },
+      "croppedRgbaSha256": "87aa9c129c3a3060e1f571366873a9ea42ccbf1c391bd09e7583bb5e31df5299",
+      "registeredAxes": {
+        "x": [
+          [
+            0,
+            -29.699999999999932
+          ],
+          [
+            559,
+            1349.6999999999998
+          ]
+        ],
+        "y": [
+          [
+            0,
+            -6
+          ],
+          [
+            399,
+            979
+          ]
+        ],
+        "space": "crop-local"
+      },
+      "outputCanvas": {
+        "width": 560,
+        "height": 400
+      },
+      "x": [
+        [
+          0,
+          78.30000000000007
+        ],
+        [
+          559,
+          1457.6999999999998
+        ]
+      ],
+      "y": [
+        [
+          0,
+          18
+        ],
+        [
+          399,
+          1003
+        ]
+      ],
+      "sourceBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1536,
+        "height": 1024,
+        "pixels": 1572864
+      },
+      "keyedBounds": {
+        "x": 5,
+        "y": 5,
+        "width": 1311,
+        "height": 964,
+        "pixels": 599123
+      },
+      "keyedInkBounds": {
+        "x": 5,
+        "y": 5,
+        "width": 1311,
+        "height": 964,
+        "pixels": 598874
+      },
+      "beforeClipBounds": {
+        "x": 14,
+        "y": 5,
+        "width": 532,
+        "height": 390,
+        "pixels": 99003
+      },
+      "clip": null,
+      "outputBounds": {
+        "x": 14,
+        "y": 5,
+        "width": 532,
+        "height": 390,
+        "pixels": 99003
+      },
+      "outputInkBounds": {
+        "x": 14,
+        "y": 5,
+        "width": 532,
+        "height": 390,
+        "pixels": 98780
+      },
+      "boundsConvention": "integer origin and extent; Bounds alpha>0, InkBounds alpha>CUT_ALPHA",
+      "cutAlpha": 16,
+      "key": {
+        "cut": 687531,
+        "softened": 2594,
+        "keyRgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 40,
+        "softTolerance": 110
+      },
+      "sourceCleanup": {
+        "specks": {
+          "healed": 954,
+          "cut": 0,
+          "total": 954
+        },
+        "fringe": {
+          "healed": 6347,
+          "cut": 0,
+          "total": 6347,
+          "threshold": 12
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "chromaMatte": null,
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "outputCleanup": {
+        "specks": {
+          "healed": 2,
+          "cut": 0,
+          "total": 2
+        },
+        "fringe": {
+          "healed": 3,
+          "cut": 0,
+          "total": 3,
+          "threshold": 12
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "chromaMatte": null,
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "chromaMatte": null
+    }
+  ]
+}

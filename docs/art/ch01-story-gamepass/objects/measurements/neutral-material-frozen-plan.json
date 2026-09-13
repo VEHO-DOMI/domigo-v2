@@ -1,0 +1,489 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "status": "ANATOMICAL PLAN FROZEN BEFORE FIRST MATERIAL MEASUREMENT; no automatic pixelselection",
+  "sourceRegions": {
+    "pen": [
+      [
+        "cap-plane",
+        245,
+        184,
+        140,
+        74
+      ],
+      [
+        "cap-rim",
+        217,
+        282,
+        176,
+        30
+      ],
+      [
+        "upper-left-barrel",
+        218,
+        336,
+        40,
+        64
+      ],
+      [
+        "left-shoulder",
+        192,
+        400,
+        50,
+        50
+      ],
+      [
+        "left-barrel",
+        160,
+        450,
+        64,
+        140
+      ],
+      [
+        "right-barrel",
+        352,
+        450,
+        32,
+        135
+      ],
+      [
+        "lower-barrel",
+        145,
+        590,
+        200,
+        100
+      ],
+      [
+        "barrel-foot",
+        174,
+        690,
+        135,
+        35
+      ]
+    ],
+    "heft": [
+      [
+        "left-cover-upper",
+        542,
+        302,
+        95,
+        135
+      ],
+      [
+        "left-cover-lower",
+        567,
+        437,
+        69,
+        70
+      ],
+      [
+        "left-cover-inner",
+        637,
+        396,
+        35,
+        110
+      ],
+      [
+        "right-cover-upper",
+        882,
+        300,
+        100,
+        70
+      ],
+      [
+        "right-cover-main",
+        833,
+        370,
+        149,
+        150
+      ],
+      [
+        "right-cover-inner",
+        806,
+        408,
+        27,
+        90
+      ],
+      [
+        "blank-page-upper",
+        711,
+        480,
+        90,
+        55
+      ],
+      [
+        "blank-page-lower",
+        718,
+        641,
+        100,
+        35
+      ]
+    ],
+    "obj_scissors": [
+      [
+        "left-handle-top",
+        1120,
+        255,
+        80,
+        35
+      ],
+      [
+        "left-handle-outer",
+        1083,
+        290,
+        45,
+        130
+      ],
+      [
+        "left-handle-inner",
+        1228,
+        290,
+        27,
+        150
+      ],
+      [
+        "left-handle-base",
+        1128,
+        431,
+        100,
+        35
+      ],
+      [
+        "left-neck",
+        1195,
+        466,
+        50,
+        55
+      ],
+      [
+        "right-handle-top",
+        1358,
+        250,
+        80,
+        35
+      ],
+      [
+        "right-handle-inner",
+        1293,
+        290,
+        30,
+        140
+      ],
+      [
+        "right-handle-outer",
+        1440,
+        287,
+        27,
+        140
+      ],
+      [
+        "right-handle-base",
+        1330,
+        433,
+        103,
+        36
+      ],
+      [
+        "right-neck",
+        1296,
+        471,
+        50,
+        47
+      ],
+      [
+        "right-blade-top",
+        1295,
+        620,
+        60,
+        65
+      ],
+      [
+        "right-blade-middle",
+        1335,
+        685,
+        60,
+        65
+      ],
+      [
+        "right-blade-bottom",
+        1375,
+        750,
+        40,
+        60
+      ],
+      [
+        "left-blade-top",
+        1199,
+        660,
+        50,
+        60
+      ],
+      [
+        "left-blade-middle",
+        1170,
+        720,
+        50,
+        60
+      ],
+      [
+        "left-blade-bottom",
+        1153,
+        780,
+        25,
+        30
+      ]
+    ]
+  },
+  "readings": {
+    "pen": {
+      "word": "black",
+      "sourceSha256": "309dd8f1c90d6dc30e35e43a1127ed1f592fc48befe4aa04039889afb54dd8d3",
+      "width": 340,
+      "height": 512,
+      "regions": [
+        {
+          "id": "cap-plane",
+          "x": 162,
+          "y": 32,
+          "w": 99,
+          "h": 52
+        },
+        {
+          "id": "cap-rim",
+          "x": 142,
+          "y": 102,
+          "w": 125,
+          "h": 20
+        },
+        {
+          "id": "upper-left-barrel",
+          "x": 143,
+          "y": 140,
+          "w": 28,
+          "h": 45
+        },
+        {
+          "id": "left-shoulder",
+          "x": 124,
+          "y": 186,
+          "w": 35,
+          "h": 35
+        },
+        {
+          "id": "left-barrel",
+          "x": 102,
+          "y": 221,
+          "w": 44,
+          "h": 99
+        },
+        {
+          "id": "right-barrel",
+          "x": 238,
+          "y": 221,
+          "w": 22,
+          "h": 96
+        },
+        {
+          "id": "lower-barrel",
+          "x": 91,
+          "y": 321,
+          "w": 142,
+          "h": 71
+        },
+        {
+          "id": "barrel-foot",
+          "x": 112,
+          "y": 392,
+          "w": 95,
+          "h": 25
+        }
+      ],
+      "why": "Fixed geometric body material planes selected on the complete source before measurement: cap/barrel excluding nib, eyes, hands and shoes; blank cover/page planes excluding face; handle/blade planes excluding eyes, screw and gloves. No targetpixel classification used to construct the mask."
+    },
+    "heft": {
+      "word": "white",
+      "sourceSha256": "5383626da1b13fcf1e6a75259e7d98504cb766fd2e22f8dc3fd434efc8a72cce",
+      "width": 456,
+      "height": 512,
+      "regions": [
+        {
+          "id": "left-cover-upper",
+          "x": 39,
+          "y": 64,
+          "w": 78,
+          "h": 111
+        },
+        {
+          "id": "left-cover-lower",
+          "x": 60,
+          "y": 176,
+          "w": 56,
+          "h": 56
+        },
+        {
+          "id": "left-cover-inner",
+          "x": 118,
+          "y": 142,
+          "w": 28,
+          "h": 90
+        },
+        {
+          "id": "right-cover-upper",
+          "x": 320,
+          "y": 62,
+          "w": 82,
+          "h": 57
+        },
+        {
+          "id": "right-cover-main",
+          "x": 280,
+          "y": 120,
+          "w": 122,
+          "h": 123
+        },
+        {
+          "id": "right-cover-inner",
+          "x": 257,
+          "y": 152,
+          "w": 22,
+          "h": 73
+        },
+        {
+          "id": "blank-page-upper",
+          "x": 179,
+          "y": 211,
+          "w": 73,
+          "h": 45
+        },
+        {
+          "id": "blank-page-lower",
+          "x": 185,
+          "y": 344,
+          "w": 81,
+          "h": 28
+        }
+      ],
+      "why": "Fixed geometric body material planes selected on the complete source before measurement: cap/barrel excluding nib, eyes, hands and shoes; blank cover/page planes excluding face; handle/blade planes excluding eyes, screw and gloves. No targetpixel classification used to construct the mask."
+    },
+    "obj_scissors": {
+      "word": "grey",
+      "sourceSha256": "4e58c050a77983110b8c15750234f39d09b14a007e7b937f40fa1accbb47f1e4",
+      "width": 365,
+      "height": 512,
+      "regions": [
+        {
+          "id": "left-handle-top",
+          "x": 52,
+          "y": 25,
+          "w": 62,
+          "h": 27
+        },
+        {
+          "id": "left-handle-outer",
+          "x": 23,
+          "y": 52,
+          "w": 34,
+          "h": 102
+        },
+        {
+          "id": "left-handle-inner",
+          "x": 137,
+          "y": 52,
+          "w": 20,
+          "h": 118
+        },
+        {
+          "id": "left-handle-base",
+          "x": 58,
+          "y": 163,
+          "w": 78,
+          "h": 27
+        },
+        {
+          "id": "left-neck",
+          "x": 111,
+          "y": 191,
+          "w": 38,
+          "h": 43
+        },
+        {
+          "id": "right-handle-top",
+          "x": 239,
+          "y": 21,
+          "w": 62,
+          "h": 27
+        },
+        {
+          "id": "right-handle-inner",
+          "x": 188,
+          "y": 52,
+          "w": 22,
+          "h": 110
+        },
+        {
+          "id": "right-handle-outer",
+          "x": 303,
+          "y": 50,
+          "w": 21,
+          "h": 110
+        },
+        {
+          "id": "right-handle-base",
+          "x": 217,
+          "y": 165,
+          "w": 80,
+          "h": 28
+        },
+        {
+          "id": "right-neck",
+          "x": 190,
+          "y": 195,
+          "w": 38,
+          "h": 36
+        },
+        {
+          "id": "right-blade-top",
+          "x": 189,
+          "y": 312,
+          "w": 47,
+          "h": 51
+        },
+        {
+          "id": "right-blade-middle",
+          "x": 221,
+          "y": 363,
+          "w": 46,
+          "h": 51
+        },
+        {
+          "id": "right-blade-bottom",
+          "x": 252,
+          "y": 415,
+          "w": 31,
+          "h": 46
+        },
+        {
+          "id": "left-blade-top",
+          "x": 114,
+          "y": 344,
+          "w": 38,
+          "h": 46
+        },
+        {
+          "id": "left-blade-middle",
+          "x": 91,
+          "y": 391,
+          "w": 38,
+          "h": 46
+        },
+        {
+          "id": "left-blade-bottom",
+          "x": 78,
+          "y": 438,
+          "w": 18,
+          "h": 23
+        }
+      ],
+      "why": "Fixed geometric body material planes selected on the complete source before measurement: cap/barrel excluding nib, eyes, hands and shoes; blank cover/page planes excluding face; handle/blade planes excluding eyes, screw and gloves. No targetpixel classification used to construct the mask."
+    }
+  }
+}

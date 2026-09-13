@@ -1,0 +1,121 @@
+{
+  "word": "grey",
+  "sourceSha256": "4e58c050a77983110b8c15750234f39d09b14a007e7b937f40fa1accbb47f1e4",
+  "width": 365,
+  "height": 512,
+  "regions": [
+    {
+      "id": "left-handle-top",
+      "x": 52,
+      "y": 25,
+      "w": 62,
+      "h": 27
+    },
+    {
+      "id": "left-handle-outer",
+      "x": 23,
+      "y": 52,
+      "w": 34,
+      "h": 102
+    },
+    {
+      "id": "left-handle-inner",
+      "x": 137,
+      "y": 52,
+      "w": 20,
+      "h": 118
+    },
+    {
+      "id": "left-handle-base",
+      "x": 58,
+      "y": 163,
+      "w": 78,
+      "h": 27
+    },
+    {
+      "id": "left-neck",
+      "x": 111,
+      "y": 191,
+      "w": 38,
+      "h": 43
+    },
+    {
+      "id": "right-handle-top",
+      "x": 239,
+      "y": 21,
+      "w": 62,
+      "h": 27
+    },
+    {
+      "id": "right-handle-inner",
+      "x": 188,
+      "y": 52,
+      "w": 22,
+      "h": 110
+    },
+    {
+      "id": "right-handle-outer",
+      "x": 303,
+      "y": 50,
+      "w": 21,
+      "h": 110
+    },
+    {
+      "id": "right-handle-base",
+      "x": 217,
+      "y": 165,
+      "w": 80,
+      "h": 28
+    },
+    {
+      "id": "right-neck",
+      "x": 190,
+      "y": 195,
+      "w": 38,
+      "h": 36
+    },
+    {
+      "id": "right-blade-top",
+      "x": 189,
+      "y": 312,
+      "w": 47,
+      "h": 51
+    },
+    {
+      "id": "right-blade-middle",
+      "x": 221,
+      "y": 363,
+      "w": 46,
+      "h": 51
+    },
+    {
+      "id": "right-blade-bottom",
+      "x": 252,
+      "y": 415,
+      "w": 31,
+      "h": 46
+    },
+    {
+      "id": "left-blade-top",
+      "x": 114,
+      "y": 344,
+      "w": 38,
+      "h": 46
+    },
+    {
+      "id": "left-blade-middle",
+      "x": 91,
+      "y": 391,
+      "w": 38,
+      "h": 46
+    },
+    {
+      "id": "left-blade-bottom",
+      "x": 78,
+      "y": 438,
+      "w": 18,
+      "h": 23
+    }
+  ],
+  "why": "Fixed geometric body material planes selected on the complete source before measurement: cap/barrel excluding nib, eyes, hands and shoes; blank cover/page planes excluding face; handle/blade planes excluding eyes, screw and gloves. No targetpixel classification used to construct the mask."
+}

@@ -583,10 +583,9 @@ describe("R5-W2 · H1 · ein Kind, das stehen bleibt, kann den Kampf gewinnen", 
       ),
     ) as PaintLevel;
 
-  /** Spielt die Arena mit einem Pad, das nie gedrückt wird. Fenster-Karten
-   *  werden gelöst, Treffer-Karten weggelegt — genau das, was ein Kind kann,
-   *  das die Tastatur nicht anfasst. */
-  const playStandingStill = (): { defeated: boolean; ticks: number; windows: number; hits: number } => {
+  /** Spielt ohne Bewegungseingabe. Gegenfenster werden gelöst; Kreide erzeugt
+   *  im aktuellen ch01 Rückstoß und keine zusätzliche Aufgabenkarte. */
+  const playStandingStill = (): { defeated: boolean; ticks: number; windows: number; hits: number; hitCards: number } => {
     const level = shipped();
     const sim = new Sim({
       level, phaseId: "p4",
@@ -595,15 +594,22 @@ describe("R5-W2 · H1 · ein Kind, das stehen bleibt, kann den Kampf gewinnen", 
     });
     let windows = 0;
     let hits = 0;
+    let hitCards = 0;
     let t = 0;
     for (; t < 20000 && !sim.guardianDefeated; t++) {
-      for (const ev of sim.step(IDLE_PAD)) {
+      const previousStun = sim.player.stun;
+      const events = sim.step(IDLE_PAD);
+      if (sim.player.stun > previousStun) {
+        hits++;
+        expect(Math.abs(sim.player.vx), "ein Treffer stößt den Körper zurück").toBeGreaterThan(0);
+      }
+      for (const ev of events) {
         if (ev.type !== "task") continue;
-        if (ev.req.ctx.type === "guardian") { sim.solveTask(ev.req.ctx); windows++; } else { sim.dismissTask(ev.req.ctx); hits++; }
+        if (ev.req.ctx.type === "guardian") { sim.solveTask(ev.req.ctx); windows++; } else { sim.dismissTask(ev.req.ctx); hitCards++; }
         sim.setOverlay(false);
       }
     }
-    return { defeated: sim.guardianDefeated, ticks: t, windows, hits };
+    return { defeated: sim.guardianDefeated, ticks: t, windows, hits, hitCards };
   };
 
   /** Dasselbe Kind, aber es GEHT — und mehr kann es nicht: keine Sprungtaste,
@@ -672,11 +678,11 @@ describe("R5-W2 · H1 · ein Kind, das stehen bleibt, kann den Kampf gewinnen", 
   });
 
   it("und Ausweichen bleibt trotzdem die bessere Antwort", () => {
-    // Sonst wäre die Reparatur eine Einladung, stehen zu bleiben. Der Preis des
-    // Stehenbleibens sind die Treffer-Karten: jede unterbricht den Kampf und
-    // löst KEINEN Knoten (sim.ts `encounter` sagt das wörtlich).
+    // Der Preis bleibt der tatsächliche Rückstoß. Kokis neuer Vertrag entfernt
+    // nur die zusätzlichen Treffer-Karten, nicht die Wirkung der Kreide.
     const r = playStandingStill();
     expect(r.hits, "ohne Preis wäre Stehenbleiben gratis").toBeGreaterThan(0);
+    expect(r.hitCards, "Kreide darf in ch01 keine Aufgabenkarte erzwingen").toBe(0);
   });
 });
 

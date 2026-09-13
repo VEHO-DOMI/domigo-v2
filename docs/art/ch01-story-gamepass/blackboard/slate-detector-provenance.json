@@ -1,0 +1,7 @@
+{
+  "source": "packages/game-paint/src/guardian-flight.test.ts",
+  "wholeSourceSha256": "4c6c26423bdaa80c10f023dc7e41648c60295f5109f9b9a6919bb8266f7cdb42",
+  "verbatimFunctionSliceSha256": "8d81f1cdfdc22c405f689ffaa74be8eab0cbd3b219ceb4796f49fe2c623c3116",
+  "islandThreshold": 12,
+  "existingTolerance": 0.002
+}

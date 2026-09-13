@@ -1,0 +1,1221 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "status": "documentation snapshot; not an importer or release approval",
+  "date": "2026-09-13",
+  "assets": [
+    {
+      "stem": "body_p2_deckenbahn_ost",
+      "target": "apps/web/public/art/g1/paint/ch01/body_p2_deckenbahn_ost.png",
+      "sha256": "d121f4b515cb1ed51569df199fcd3f599e3a9e409d70ff5d4e5d82082fc93c73",
+      "importReport": "terrain/registered/import-ch01-buecherwelt.report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/terrain/sources/body-p2-east-ceiling-source.png",
+      "sourceSha256": "6ee219f399a75ec1c2cc4b58b91e330a3462cf1e5d7ee1df59e53b002f136158"
+    },
+    {
+      "stem": "body_p2_ostwand_treppe_boden",
+      "target": "apps/web/public/art/g1/paint/ch01/body_p2_ostwand_treppe_boden.png",
+      "sha256": "f6d554fd6e0a3edfd0d8ee6670dd8d938e5265ba0ff3ab18d1f48c914b3d614d",
+      "importReport": "terrain/registered/import-ch01-buecherwelt.report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/terrain/sources/body-p2-east-floor-source.png",
+      "sourceSha256": "edf71bec6a702495a6ca4e17f5081c0b1457df0605c5ea58cf9b582141004e7e"
+    },
+    {
+      "stem": "body_p3_ostmauer_sims",
+      "target": "apps/web/public/art/g1/paint/ch01/body_p3_ostmauer_sims.png",
+      "sha256": "fd00259664ec65051c2f2d285f73a0f0a2125cc6aca13a4838ef41b64ec859a6",
+      "importReport": "terrain/registered/import-ch01-buecherwelt.report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/terrain/sources/body-p3-east-wall-source.png",
+      "sourceSha256": "8f9cdafa48a0008c73b885a33310086df0fd0d1042af7983120cd45b23727506"
+    },
+    {
+      "stem": "captive_soundsystem",
+      "target": "apps/web/public/art/g1/paint/ch01/captive_soundsystem.png",
+      "sha256": "f85572ab5074673589eeb7e46fdf2b66bee875eaa0b8ae216032edc813557878",
+      "importReport": "devices-clean/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/devices-clean/soundsystem-original.png",
+      "sourceSha256": "3eb361bc1ac7d41e7bf3aea6ebd547466e95d6fc3f116524a170986b1898f6a9"
+    },
+    {
+      "stem": "captive_tablet",
+      "target": "apps/web/public/art/g1/paint/ch01/captive_tablet.png",
+      "sha256": "9dbbfcfa65c87df73f853151d69913bbbe9a295b530090965391b29a60dd1356",
+      "importReport": "devices-clean/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/devices-clean/tablet-original.png",
+      "sourceSha256": "1e6916776cc402599d1d67d7e496b3e7e4f2c92f188bede1f5305f12f9852b73"
+    },
+    {
+      "stem": "cloth_skirt_a",
+      "target": "apps/web/public/art/g1/paint/ch01/cloth_skirt_a.png",
+      "sha256": "f85058bdfde59bd2e0d919076858be988445cb6b64e15bc4bcc887651733f951",
+      "importReport": "objects/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/objects/sources/skirt-knee-length.raw.png",
+      "sourceSha256": "75f87f74e77c4a683631b2db016b33d0560b8fc6dd22bb97b904e7e410480312"
+    },
+    {
+      "stem": "curse_violet",
+      "target": "apps/web/public/art/g1/paint/ch01/curse_violet.png",
+      "sha256": "d5fe70a903a8c9170e58bd9d2476a1ac48148e54f2a4b80b578afc4a898121e6",
+      "importReport": "curse.import.report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/sources/curse-violet-original.png",
+      "sourceSha256": "c9e5807b4c52f00dcd6029d9f5865b5a4634c7f0028cae0d8e4c5e5515a584ee"
+    },
+    {
+      "stem": "device_locker_a",
+      "target": "apps/web/public/art/g1/paint/ch01/device_locker_a.png",
+      "sha256": "a863c8e1906c049ca411b3d7afd49a666ea7a176bf46649e5874aade776f218c",
+      "importReport": "devices-photo/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/devices-photo/device-locker-empty-states-v2-original.png",
+      "sourceSha256": "a4f085cdae9bb22f86b1c6f63d7ddaa5b0a9966f5d9debe0e26f430f295adfc2"
+    },
+    {
+      "stem": "device_locker_b",
+      "target": "apps/web/public/art/g1/paint/ch01/device_locker_b.png",
+      "sha256": "a863c8e1906c049ca411b3d7afd49a666ea7a176bf46649e5874aade776f218c",
+      "importReport": "devices-photo/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/devices-photo/device-locker-empty-states-v2-original.png",
+      "sourceSha256": "a4f085cdae9bb22f86b1c6f63d7ddaa5b0a9966f5d9debe0e26f430f295adfc2"
+    },
+    {
+      "stem": "device_locker_open",
+      "target": "apps/web/public/art/g1/paint/ch01/device_locker_open.png",
+      "sha256": "cfd3d946d320a15f464c6512dffbf3d528d44807df83c15126bfc6efedb187e6",
+      "importReport": "devices-photo/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/devices-photo/device-locker-empty-states-v2-original.png",
+      "sourceSha256": "a4f085cdae9bb22f86b1c6f63d7ddaa5b0a9966f5d9debe0e26f430f295adfc2"
+    },
+    {
+      "stem": "eraser_a",
+      "target": "apps/web/public/art/g1/paint/ch01/eraser_a.png",
+      "sha256": "86c91217c897a35ee53c5c53226156611fbe2574a168245bfe49632004cc63c3",
+      "importReport": "objects/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/objects/sources/attacker-objects-3x2.corrected.raw.png",
+      "sourceSha256": "3f19dfa14f64a14ca53357f457504025fd20f51677af1c8d148ddae519ed41dc"
+    },
+    {
+      "stem": "eraser_act",
+      "target": "apps/web/public/art/g1/paint/ch01/eraser_act.png",
+      "sha256": "c055eb30d00c759eb68d3d236da6966bc14eef7c50008f24ed34624ee72d3f97",
+      "importReport": "objects/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/objects/sources/attacks-pen-eraser-exercisebook-3x2.raw.png",
+      "sourceSha256": "45072b9fc5080968361d3a86fa1f27ee4df6e58955c82c67d4ebb2113b987cbf"
+    },
+    {
+      "stem": "eraser_b",
+      "target": "apps/web/public/art/g1/paint/ch01/eraser_b.png",
+      "sha256": "86c91217c897a35ee53c5c53226156611fbe2574a168245bfe49632004cc63c3",
+      "importReport": "objects/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/objects/sources/attacker-objects-3x2.corrected.raw.png",
+      "sourceSha256": "3f19dfa14f64a14ca53357f457504025fd20f51677af1c8d148ddae519ed41dc"
+    },
+    {
+      "stem": "eraser_dazed",
+      "target": "apps/web/public/art/g1/paint/ch01/eraser_dazed.png",
+      "sha256": "86c91217c897a35ee53c5c53226156611fbe2574a168245bfe49632004cc63c3",
+      "importReport": "objects/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/objects/sources/attacker-objects-3x2.corrected.raw.png",
+      "sourceSha256": "3f19dfa14f64a14ca53357f457504025fd20f51677af1c8d148ddae519ed41dc"
+    },
+    {
+      "stem": "eraser_run",
+      "target": "apps/web/public/art/g1/paint/ch01/eraser_run.png",
+      "sha256": "c055eb30d00c759eb68d3d236da6966bc14eef7c50008f24ed34624ee72d3f97",
+      "importReport": "objects/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/objects/sources/attacks-pen-eraser-exercisebook-3x2.raw.png",
+      "sourceSha256": "45072b9fc5080968361d3a86fa1f27ee4df6e58955c82c67d4ebb2113b987cbf"
+    },
+    {
+      "stem": "eraser_squash",
+      "target": "apps/web/public/art/g1/paint/ch01/eraser_squash.png",
+      "sha256": "be8fff3b0eec1c5d1fe1e6930e70de40812759559af994bb40d91b88c826031b",
+      "importReport": "objects/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/objects/sources/attacks-pen-eraser-exercisebook-3x2.raw.png",
+      "sourceSha256": "45072b9fc5080968361d3a86fa1f27ee4df6e58955c82c67d4ebb2113b987cbf"
+    },
+    {
+      "stem": "eraser_telegraph",
+      "target": "apps/web/public/art/g1/paint/ch01/eraser_telegraph.png",
+      "sha256": "be8fff3b0eec1c5d1fe1e6930e70de40812759559af994bb40d91b88c826031b",
+      "importReport": "objects/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/objects/sources/attacks-pen-eraser-exercisebook-3x2.raw.png",
+      "sourceSha256": "45072b9fc5080968361d3a86fa1f27ee4df6e58955c82c67d4ebb2113b987cbf"
+    },
+    {
+      "stem": "heft_a",
+      "target": "apps/web/public/art/g1/paint/ch01/heft_a.png",
+      "sha256": "5383626da1b13fcf1e6a75259e7d98504cb766fd2e22f8dc3fd434efc8a72cce",
+      "sourceManifest": "objects/neutral-installed-variants.json",
+      "importReport": "objects/neutral-material-import-report.json",
+      "sourceCell": "heft_a",
+      "limitation": "Static alias of complete approved neutral drawing; no independent pose artwork."
+    },
+    {
+      "stem": "heft_act",
+      "target": "apps/web/public/art/g1/paint/ch01/heft_act.png",
+      "sha256": "5383626da1b13fcf1e6a75259e7d98504cb766fd2e22f8dc3fd434efc8a72cce",
+      "sourceManifest": "objects/neutral-installed-variants.json",
+      "importReport": "objects/neutral-material-import-report.json",
+      "sourceCell": "heft_a",
+      "limitation": "Static alias of complete approved neutral drawing; no independent pose artwork."
+    },
+    {
+      "stem": "heft_b",
+      "target": "apps/web/public/art/g1/paint/ch01/heft_b.png",
+      "sha256": "5383626da1b13fcf1e6a75259e7d98504cb766fd2e22f8dc3fd434efc8a72cce",
+      "sourceManifest": "objects/neutral-installed-variants.json",
+      "importReport": "objects/neutral-material-import-report.json",
+      "sourceCell": "heft_a",
+      "limitation": "Static alias of complete approved neutral drawing; no independent pose artwork."
+    },
+    {
+      "stem": "heft_bank",
+      "target": "apps/web/public/art/g1/paint/ch01/heft_bank.png",
+      "sha256": "5383626da1b13fcf1e6a75259e7d98504cb766fd2e22f8dc3fd434efc8a72cce",
+      "sourceManifest": "objects/neutral-installed-variants.json",
+      "importReport": "objects/neutral-material-import-report.json",
+      "sourceCell": "heft_a",
+      "limitation": "Static alias of complete approved neutral drawing; no independent pose artwork."
+    },
+    {
+      "stem": "heft_count_books_a",
+      "target": "apps/web/public/art/g1/paint/ch01/heft_count_books_a.png",
+      "sha256": "390d7f1bb5b32e46a894cce952c69ed8cb3213a08d2f85c5d274ec7c1e022c0d",
+      "importReport": "heft-tasks/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/heft-tasks/books-final-original.png",
+      "sourceSha256": "fbbcb8f84761fcb00757224e259665703a6ea95565705226f17636ac50a9bd5a"
+    },
+    {
+      "stem": "heft_count_dots_a",
+      "target": "apps/web/public/art/g1/paint/ch01/heft_count_dots_a.png",
+      "sha256": "e48e4966ae89e26270093ca2309cc8f7336257a63796ceccfe1c24f3c88684e6",
+      "importReport": "heft-tasks/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/heft-tasks/dots-final-original.png",
+      "sourceSha256": "98899492dbbf1fb1222248294c0bfc73bf16fcc82fa310b3ae17aa0177ad57c5"
+    },
+    {
+      "stem": "heft_dazed",
+      "target": "apps/web/public/art/g1/paint/ch01/heft_dazed.png",
+      "sha256": "5383626da1b13fcf1e6a75259e7d98504cb766fd2e22f8dc3fd434efc8a72cce",
+      "sourceManifest": "objects/neutral-installed-variants.json",
+      "importReport": "objects/neutral-material-import-report.json",
+      "sourceCell": "heft_a",
+      "limitation": "Static alias of complete approved neutral drawing; no independent pose artwork."
+    },
+    {
+      "stem": "heft_run",
+      "target": "apps/web/public/art/g1/paint/ch01/heft_run.png",
+      "sha256": "5383626da1b13fcf1e6a75259e7d98504cb766fd2e22f8dc3fd434efc8a72cce",
+      "sourceManifest": "objects/neutral-installed-variants.json",
+      "importReport": "objects/neutral-material-import-report.json",
+      "sourceCell": "heft_a",
+      "limitation": "Static alias of complete approved neutral drawing; no independent pose artwork."
+    },
+    {
+      "stem": "heft_telegraph",
+      "target": "apps/web/public/art/g1/paint/ch01/heft_telegraph.png",
+      "sha256": "5383626da1b13fcf1e6a75259e7d98504cb766fd2e22f8dc3fd434efc8a72cce",
+      "sourceManifest": "objects/neutral-installed-variants.json",
+      "importReport": "objects/neutral-material-import-report.json",
+      "sourceCell": "heft_a",
+      "limitation": "Static alias of complete approved neutral drawing; no independent pose artwork."
+    },
+    {
+      "stem": "ink_liquid",
+      "target": "apps/web/public/art/g1/paint/ch01/ink_liquid.png",
+      "sha256": "96e1b28edfbd3f46d9c18b2b73e99946a18be0023d62746b3a1c9231f83e1894",
+      "source": "sources/ink_liquid.png",
+      "sourceSha256": "96e1b28edfbd3f46d9c18b2b73e99946a18be0023d62746b3a1c9231f83e1894",
+      "sourceManifest": "ink-liquid.manifest.json"
+    },
+    {
+      "stem": "klassenfoto_a",
+      "target": "apps/web/public/art/g1/paint/ch01/klassenfoto_a.png",
+      "sha256": "1ceb05be8f4aa91fd04a0ef410f75a8c8289a66b1ef5119f1ae62dbfbcfe28ca",
+      "importReport": "devices-photo/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/devices-photo/classphoto-15-original.png",
+      "sourceSha256": "4ac4e7214d82e0ce775ba0fa14e9755cd2aff2c696813f5411187f8d9f659d83"
+    },
+    {
+      "stem": "klecks_mentor",
+      "target": "apps/web/public/art/g1/paint/ch01/klecks_mentor.png",
+      "sha256": "e357fd1fe3c6a9032ac06c0ce33997a57118a9916de09ada9944cacabcc712c1",
+      "importReport": "klecks.import.report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/sources/klecks-key.png",
+      "sourceSha256": "8b0b53c811bb00695795725202e1f8480f82c7cd1bdde37cebe7ec3fc218fd98"
+    },
+    {
+      "stem": "merle_a",
+      "target": "apps/web/public/art/g1/paint/ch01/merle_a.png",
+      "sha256": "56792853920c585c6fe263cf718009e5984ffaa8c7bf97e361c8ee5b6a9e42fa",
+      "importReport": "merle/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/merle/merle-motion-v2-original.png",
+      "sourceSha256": "9bb148ec5279c85e1869c6c5e0a53453eb9ced793462b1c6228f42958c3ececb"
+    },
+    {
+      "stem": "merle_act_books0",
+      "target": "apps/web/public/art/g1/paint/ch01/merle_act_books0.png",
+      "sha256": "973e5de0591fdc139f51410825c220e5eb8fd29e5502a9a2a2f728de211e3484",
+      "importReport": "merle/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/merle/merle-actions-books-leave-original.png",
+      "sourceSha256": "1cdd370a72f45e8d49c68f2414f7a5a8c441c93a34848eb706504a52fa3f8aaf"
+    },
+    {
+      "stem": "merle_act_books1",
+      "target": "apps/web/public/art/g1/paint/ch01/merle_act_books1.png",
+      "sha256": "75526d1da80a5a47531db8bdded4f57fbdcced015ecc1dce8613ca6a2b9a967d",
+      "importReport": "merle/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/merle/merle-actions-books-leave-original.png",
+      "sourceSha256": "1cdd370a72f45e8d49c68f2414f7a5a8c441c93a34848eb706504a52fa3f8aaf"
+    },
+    {
+      "stem": "merle_act_leave0",
+      "target": "apps/web/public/art/g1/paint/ch01/merle_act_leave0.png",
+      "sha256": "d1108729ad033a158d3764e960f692c1eb38d28a23f430a3a6d358dd7a3cf86f",
+      "importReport": "merle/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/merle/merle-actions-books-leave-original.png",
+      "sourceSha256": "1cdd370a72f45e8d49c68f2414f7a5a8c441c93a34848eb706504a52fa3f8aaf"
+    },
+    {
+      "stem": "merle_act_leave1",
+      "target": "apps/web/public/art/g1/paint/ch01/merle_act_leave1.png",
+      "sha256": "877ed01666010ed34c176222633ac7195c677765057bdf07ae03174a7b5f8379",
+      "importReport": "merle/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/merle/merle-actions-books-leave-original.png",
+      "sourceSha256": "1cdd370a72f45e8d49c68f2414f7a5a8c441c93a34848eb706504a52fa3f8aaf"
+    },
+    {
+      "stem": "merle_act_scribble0",
+      "target": "apps/web/public/art/g1/paint/ch01/merle_act_scribble0.png",
+      "sha256": "5b40d809caae78bf6e296b685ba632c4c96996e9a2bce2cf3be7091a684d5489",
+      "importReport": "merle/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/merle/merle-actions-scribble-window-original.png",
+      "sourceSha256": "52bb8623e76455c39029ed30838096c0561e914ab7afd076559d6f88ebdea0f2"
+    },
+    {
+      "stem": "merle_act_scribble1",
+      "target": "apps/web/public/art/g1/paint/ch01/merle_act_scribble1.png",
+      "sha256": "c50a42527a157fab2ddcae147bbfad4905fa1233fb8448bbf8f0333f0bd77377",
+      "importReport": "merle/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/merle/merle-actions-scribble-window-original.png",
+      "sourceSha256": "52bb8623e76455c39029ed30838096c0561e914ab7afd076559d6f88ebdea0f2"
+    },
+    {
+      "stem": "merle_act_sing0",
+      "target": "apps/web/public/art/g1/paint/ch01/merle_act_sing0.png",
+      "sha256": "6f7b7d4ed3fe59466a5037f6fbcb6d4840effabfc9695a49cfb852a9ec49197d",
+      "importReport": "merle/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/merle/merle-actions-sing-stand-original.png",
+      "sourceSha256": "f6c206df0a46a460628f8ebaf4f086add007f28e381033890ead02e7a161bebc"
+    },
+    {
+      "stem": "merle_act_sing1",
+      "target": "apps/web/public/art/g1/paint/ch01/merle_act_sing1.png",
+      "sha256": "089da0cf12e717b0e394e0417e3f71bbbabe1f39004360f7f8713855880b7816",
+      "importReport": "merle/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/merle/merle-actions-sing-stand-original.png",
+      "sourceSha256": "f6c206df0a46a460628f8ebaf4f086add007f28e381033890ead02e7a161bebc"
+    },
+    {
+      "stem": "merle_act_stand0",
+      "target": "apps/web/public/art/g1/paint/ch01/merle_act_stand0.png",
+      "sha256": "0aa5f7de955d36a48db48eb516f5ebede627b7ad84eb5c27814ddfa60df2050a",
+      "importReport": "merle/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/merle/merle-actions-sing-stand-original.png",
+      "sourceSha256": "f6c206df0a46a460628f8ebaf4f086add007f28e381033890ead02e7a161bebc"
+    },
+    {
+      "stem": "merle_act_stand1",
+      "target": "apps/web/public/art/g1/paint/ch01/merle_act_stand1.png",
+      "sha256": "fc80fbae4e2331709960bb183d05b509da853c292d230752af72a01e4ca8813a",
+      "importReport": "merle/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/merle/merle-actions-sing-stand-original.png",
+      "sourceSha256": "f6c206df0a46a460628f8ebaf4f086add007f28e381033890ead02e7a161bebc"
+    },
+    {
+      "stem": "merle_act_window0",
+      "target": "apps/web/public/art/g1/paint/ch01/merle_act_window0.png",
+      "sha256": "1f95af8710346f3a2b32d6432608f90274ded88bc4936fbc849ecee1305c21f1",
+      "importReport": "merle/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/merle/merle-actions-scribble-window-original.png",
+      "sourceSha256": "52bb8623e76455c39029ed30838096c0561e914ab7afd076559d6f88ebdea0f2"
+    },
+    {
+      "stem": "merle_act_window1",
+      "target": "apps/web/public/art/g1/paint/ch01/merle_act_window1.png",
+      "sha256": "3db8ff2d1f22718447a410b9230905a979b491956c63a76110602f35f7e2de1d",
+      "importReport": "merle/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/merle/merle-actions-scribble-window-original.png",
+      "sourceSha256": "52bb8623e76455c39029ed30838096c0561e914ab7afd076559d6f88ebdea0f2"
+    },
+    {
+      "stem": "merle_b",
+      "target": "apps/web/public/art/g1/paint/ch01/merle_b.png",
+      "sha256": "56792853920c585c6fe263cf718009e5984ffaa8c7bf97e361c8ee5b6a9e42fa",
+      "importReport": "merle/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/merle/merle-motion-v2-original.png",
+      "sourceSha256": "9bb148ec5279c85e1869c6c5e0a53453eb9ced793462b1c6228f42958c3ececb"
+    },
+    {
+      "stem": "merle_c",
+      "target": "apps/web/public/art/g1/paint/ch01/merle_c.png",
+      "sha256": "56792853920c585c6fe263cf718009e5984ffaa8c7bf97e361c8ee5b6a9e42fa",
+      "importReport": "merle/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/merle/merle-motion-v2-original.png",
+      "sourceSha256": "9bb148ec5279c85e1869c6c5e0a53453eb9ced793462b1c6228f42958c3ececb"
+    },
+    {
+      "stem": "merle_caged0",
+      "target": "apps/web/public/art/g1/paint/ch01/merle_caged0.png",
+      "sha256": "56792853920c585c6fe263cf718009e5984ffaa8c7bf97e361c8ee5b6a9e42fa",
+      "importReport": "merle/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/merle/merle-motion-v2-original.png",
+      "sourceSha256": "9bb148ec5279c85e1869c6c5e0a53453eb9ced793462b1c6228f42958c3ececb"
+    },
+    {
+      "stem": "merle_caged1",
+      "target": "apps/web/public/art/g1/paint/ch01/merle_caged1.png",
+      "sha256": "56792853920c585c6fe263cf718009e5984ffaa8c7bf97e361c8ee5b6a9e42fa",
+      "importReport": "merle/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/merle/merle-motion-v2-original.png",
+      "sourceSha256": "9bb148ec5279c85e1869c6c5e0a53453eb9ced793462b1c6228f42958c3ececb"
+    },
+    {
+      "stem": "merle_d",
+      "target": "apps/web/public/art/g1/paint/ch01/merle_d.png",
+      "sha256": "56792853920c585c6fe263cf718009e5984ffaa8c7bf97e361c8ee5b6a9e42fa",
+      "importReport": "merle/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/merle/merle-motion-v2-original.png",
+      "sourceSha256": "9bb148ec5279c85e1869c6c5e0a53453eb9ced793462b1c6228f42958c3ececb"
+    },
+    {
+      "stem": "merle_joy",
+      "target": "apps/web/public/art/g1/paint/ch01/merle_joy.png",
+      "sha256": "dad850d0f251ac10f22efa7397daf85d1866eabd1a55de1aa4d39f199d873187",
+      "importReport": "merle/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/merle/merle-motion-v2-original.png",
+      "sourceSha256": "9bb148ec5279c85e1869c6c5e0a53453eb9ced793462b1c6228f42958c3ececb"
+    },
+    {
+      "stem": "merle_joy1",
+      "target": "apps/web/public/art/g1/paint/ch01/merle_joy1.png",
+      "sha256": "dad850d0f251ac10f22efa7397daf85d1866eabd1a55de1aa4d39f199d873187",
+      "importReport": "merle/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/merle/merle-motion-v2-original.png",
+      "sourceSha256": "9bb148ec5279c85e1869c6c5e0a53453eb9ced793462b1c6228f42958c3ececb"
+    },
+    {
+      "stem": "merle_run",
+      "target": "apps/web/public/art/g1/paint/ch01/merle_run.png",
+      "sha256": "6f42a019028afd268f92c0ddd3b0a95f9ad7c2a2b355cf6216f54e128b5153ab",
+      "importReport": "merle/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/merle/merle-motion-v2-original.png",
+      "sourceSha256": "9bb148ec5279c85e1869c6c5e0a53453eb9ced793462b1c6228f42958c3ececb"
+    },
+    {
+      "stem": "merle_settle0",
+      "target": "apps/web/public/art/g1/paint/ch01/merle_settle0.png",
+      "sha256": "56792853920c585c6fe263cf718009e5984ffaa8c7bf97e361c8ee5b6a9e42fa",
+      "importReport": "merle/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/merle/merle-motion-v2-original.png",
+      "sourceSha256": "9bb148ec5279c85e1869c6c5e0a53453eb9ced793462b1c6228f42958c3ececb"
+    },
+    {
+      "stem": "merle_settle1",
+      "target": "apps/web/public/art/g1/paint/ch01/merle_settle1.png",
+      "sha256": "68d484563c557f658e6d39a3d697d59c89d2d8f84b0e50d5ad17f6b3143aed03",
+      "importReport": "merle/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/merle/merle-motion-v2-original.png",
+      "sourceSha256": "9bb148ec5279c85e1869c6c5e0a53453eb9ced793462b1c6228f42958c3ececb"
+    },
+    {
+      "stem": "merle_walk1",
+      "target": "apps/web/public/art/g1/paint/ch01/merle_walk1.png",
+      "sha256": "6f42a019028afd268f92c0ddd3b0a95f9ad7c2a2b355cf6216f54e128b5153ab",
+      "importReport": "merle/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/merle/merle-motion-v2-original.png",
+      "sourceSha256": "9bb148ec5279c85e1869c6c5e0a53453eb9ced793462b1c6228f42958c3ececb"
+    },
+    {
+      "stem": "merle_walk2",
+      "target": "apps/web/public/art/g1/paint/ch01/merle_walk2.png",
+      "sha256": "b63957e8a2e17d30ca127831da702a9cb15499e6c23af72832405ff978bcc7bb",
+      "importReport": "merle/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/merle/merle-motion-v2-original.png",
+      "sourceSha256": "9bb148ec5279c85e1869c6c5e0a53453eb9ced793462b1c6228f42958c3ececb"
+    },
+    {
+      "stem": "merle_walk3",
+      "target": "apps/web/public/art/g1/paint/ch01/merle_walk3.png",
+      "sha256": "b63957e8a2e17d30ca127831da702a9cb15499e6c23af72832405ff978bcc7bb",
+      "importReport": "merle/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/merle/merle-motion-v2-original.png",
+      "sourceSha256": "9bb148ec5279c85e1869c6c5e0a53453eb9ced793462b1c6228f42958c3ececb"
+    },
+    {
+      "stem": "merle_wave0",
+      "target": "apps/web/public/art/g1/paint/ch01/merle_wave0.png",
+      "sha256": "d25e6bfce081bdbce7890e244fe0708db38fcd3f75e692cb1411499228042c1a",
+      "importReport": "merle/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/merle/merle-motion-v2-original.png",
+      "sourceSha256": "9bb148ec5279c85e1869c6c5e0a53453eb9ced793462b1c6228f42958c3ececb"
+    },
+    {
+      "stem": "merle_wave1",
+      "target": "apps/web/public/art/g1/paint/ch01/merle_wave1.png",
+      "sha256": "d25e6bfce081bdbce7890e244fe0708db38fcd3f75e692cb1411499228042c1a",
+      "importReport": "merle/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/merle/merle-motion-v2-original.png",
+      "sourceSha256": "9bb148ec5279c85e1869c6c5e0a53453eb9ced793462b1c6228f42958c3ececb"
+    },
+    {
+      "stem": "obj_book_a",
+      "target": "apps/web/public/art/g1/paint/ch01/obj_book_a.png",
+      "sha256": "5a261651e885e0f456ac298171568f233a5784b2dcd1d45065f46a30831cfd97",
+      "importReport": "objects/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/objects/sources/lying-book-and-real-gluestick-2x2.raw.png",
+      "sourceSha256": "1ea702f0b5f09b405cf1d0955f2646a7019f1b1df49f7f719b9191d0ec14f84a"
+    },
+    {
+      "stem": "obj_chair",
+      "target": "apps/web/public/art/g1/paint/ch01/obj_chair.png",
+      "sha256": "3bd5351ed09656001ab694a95d083369f7442ceb47ae0a9ec9d453dccdc63748",
+      "importReport": "objects/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/objects/sources/passive-objects-2x2.raw.png",
+      "sourceSha256": "e69b62a6fcccb2c46832478877eeccf154e440b0e7ff991461e9b993341a270f"
+    },
+    {
+      "stem": "obj_chair_a",
+      "target": "apps/web/public/art/g1/paint/ch01/obj_chair_a.png",
+      "sha256": "3bd5351ed09656001ab694a95d083369f7442ceb47ae0a9ec9d453dccdc63748",
+      "importReport": "objects/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/objects/sources/passive-objects-2x2.raw.png",
+      "sourceSha256": "e69b62a6fcccb2c46832478877eeccf154e440b0e7ff991461e9b993341a270f"
+    },
+    {
+      "stem": "obj_desk_a",
+      "target": "apps/web/public/art/g1/paint/ch01/obj_desk_a.png",
+      "sha256": "4b79954f035891108844b80a4a6a10a898bce10c1b2c709af4d5ff416ac09931",
+      "importReport": "desk-final/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/desk-final/desk-original.png",
+      "sourceSha256": "6782311b5266127163094ea4b50f46d721ab35e8f93dac2cc59793be423a1aa0"
+    },
+    {
+      "stem": "obj_gluestick_a",
+      "target": "apps/web/public/art/g1/paint/ch01/obj_gluestick_a.png",
+      "sha256": "bd5f77a7e5f7faa475b0eb528e47c0e56e9deec1eeca7b9d5f8263094618d904",
+      "importReport": "objects/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/objects/sources/lying-book-and-real-gluestick-2x2.raw.png",
+      "sourceSha256": "1ea702f0b5f09b405cf1d0955f2646a7019f1b1df49f7f719b9191d0ec14f84a"
+    },
+    {
+      "stem": "obj_gluestick_act",
+      "target": "apps/web/public/art/g1/paint/ch01/obj_gluestick_act.png",
+      "sha256": "afdbb9f9d1cb170738de5a9de6e563ad84b499ddc5f25c20a0ad5085175c3479",
+      "importReport": "objects/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/objects/sources/lying-book-and-real-gluestick-2x2.raw.png",
+      "sourceSha256": "1ea702f0b5f09b405cf1d0955f2646a7019f1b1df49f7f719b9191d0ec14f84a"
+    },
+    {
+      "stem": "obj_gluestick_b",
+      "target": "apps/web/public/art/g1/paint/ch01/obj_gluestick_b.png",
+      "sha256": "bd5f77a7e5f7faa475b0eb528e47c0e56e9deec1eeca7b9d5f8263094618d904",
+      "importReport": "objects/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/objects/sources/lying-book-and-real-gluestick-2x2.raw.png",
+      "sourceSha256": "1ea702f0b5f09b405cf1d0955f2646a7019f1b1df49f7f719b9191d0ec14f84a"
+    },
+    {
+      "stem": "obj_gluestick_dazed",
+      "target": "apps/web/public/art/g1/paint/ch01/obj_gluestick_dazed.png",
+      "sha256": "bd5f77a7e5f7faa475b0eb528e47c0e56e9deec1eeca7b9d5f8263094618d904",
+      "importReport": "objects/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/objects/sources/lying-book-and-real-gluestick-2x2.raw.png",
+      "sourceSha256": "1ea702f0b5f09b405cf1d0955f2646a7019f1b1df49f7f719b9191d0ec14f84a"
+    },
+    {
+      "stem": "obj_gluestick_run",
+      "target": "apps/web/public/art/g1/paint/ch01/obj_gluestick_run.png",
+      "sha256": "afdbb9f9d1cb170738de5a9de6e563ad84b499ddc5f25c20a0ad5085175c3479",
+      "importReport": "objects/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/objects/sources/lying-book-and-real-gluestick-2x2.raw.png",
+      "sourceSha256": "1ea702f0b5f09b405cf1d0955f2646a7019f1b1df49f7f719b9191d0ec14f84a"
+    },
+    {
+      "stem": "obj_gluestick_telegraph",
+      "target": "apps/web/public/art/g1/paint/ch01/obj_gluestick_telegraph.png",
+      "sha256": "be329119cce04ac02463e2b7fd7fd1519d2c9c60d408a67b53dc89a96902b3ac",
+      "importReport": "objects/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/objects/sources/lying-book-and-real-gluestick-2x2.raw.png",
+      "sourceSha256": "1ea702f0b5f09b405cf1d0955f2646a7019f1b1df49f7f719b9191d0ec14f84a"
+    },
+    {
+      "stem": "obj_schoolbag_a",
+      "target": "apps/web/public/art/g1/paint/ch01/obj_schoolbag_a.png",
+      "sha256": "b1f86fae145e4899a448af7228e794fbacde0a3d71af821659a12fcd618d69d8",
+      "importReport": "objects/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/objects/sources/passive-objects-2x2.raw.png",
+      "sourceSha256": "e69b62a6fcccb2c46832478877eeccf154e440b0e7ff991461e9b993341a270f"
+    },
+    {
+      "stem": "obj_scissors_a",
+      "target": "apps/web/public/art/g1/paint/ch01/obj_scissors_a.png",
+      "sha256": "4e58c050a77983110b8c15750234f39d09b14a007e7b937f40fa1accbb47f1e4",
+      "sourceManifest": "objects/neutral-installed-variants.json",
+      "importReport": "objects/neutral-material-import-report.json",
+      "sourceCell": "obj_scissors_a",
+      "limitation": "Static alias of complete approved neutral drawing; no independent pose artwork."
+    },
+    {
+      "stem": "obj_scissors_act",
+      "target": "apps/web/public/art/g1/paint/ch01/obj_scissors_act.png",
+      "sha256": "4e58c050a77983110b8c15750234f39d09b14a007e7b937f40fa1accbb47f1e4",
+      "sourceManifest": "objects/neutral-installed-variants.json",
+      "importReport": "objects/neutral-material-import-report.json",
+      "sourceCell": "obj_scissors_a",
+      "limitation": "Static alias of complete approved neutral drawing; no independent pose artwork."
+    },
+    {
+      "stem": "obj_scissors_b",
+      "target": "apps/web/public/art/g1/paint/ch01/obj_scissors_b.png",
+      "sha256": "4e58c050a77983110b8c15750234f39d09b14a007e7b937f40fa1accbb47f1e4",
+      "sourceManifest": "objects/neutral-installed-variants.json",
+      "importReport": "objects/neutral-material-import-report.json",
+      "sourceCell": "obj_scissors_a",
+      "limitation": "Static alias of complete approved neutral drawing; no independent pose artwork."
+    },
+    {
+      "stem": "obj_scissors_dazed",
+      "target": "apps/web/public/art/g1/paint/ch01/obj_scissors_dazed.png",
+      "sha256": "4e58c050a77983110b8c15750234f39d09b14a007e7b937f40fa1accbb47f1e4",
+      "sourceManifest": "objects/neutral-installed-variants.json",
+      "importReport": "objects/neutral-material-import-report.json",
+      "sourceCell": "obj_scissors_a",
+      "limitation": "Static alias of complete approved neutral drawing; no independent pose artwork."
+    },
+    {
+      "stem": "obj_scissors_run",
+      "target": "apps/web/public/art/g1/paint/ch01/obj_scissors_run.png",
+      "sha256": "4e58c050a77983110b8c15750234f39d09b14a007e7b937f40fa1accbb47f1e4",
+      "sourceManifest": "objects/neutral-installed-variants.json",
+      "importReport": "objects/neutral-material-import-report.json",
+      "sourceCell": "obj_scissors_a",
+      "limitation": "Static alias of complete approved neutral drawing; no independent pose artwork."
+    },
+    {
+      "stem": "obj_scissors_telegraph",
+      "target": "apps/web/public/art/g1/paint/ch01/obj_scissors_telegraph.png",
+      "sha256": "4e58c050a77983110b8c15750234f39d09b14a007e7b937f40fa1accbb47f1e4",
+      "sourceManifest": "objects/neutral-installed-variants.json",
+      "importReport": "objects/neutral-material-import-report.json",
+      "sourceCell": "obj_scissors_a",
+      "limitation": "Static alias of complete approved neutral drawing; no independent pose artwork."
+    },
+    {
+      "stem": "obj_sharpener_a",
+      "target": "apps/web/public/art/g1/paint/ch01/obj_sharpener_a.png",
+      "sha256": "e1ac0a2f35d87fd8c636630e13c3b9ae095ea4d8b5af7894a05bdb2753cf0fac",
+      "importReport": "objects/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/objects/sources/attacker-objects-3x2.corrected.raw.png",
+      "sourceSha256": "3f19dfa14f64a14ca53357f457504025fd20f51677af1c8d148ddae519ed41dc"
+    },
+    {
+      "stem": "obj_sharpener_act",
+      "target": "apps/web/public/art/g1/paint/ch01/obj_sharpener_act.png",
+      "sha256": "cf4f1cc9724640be81241eadc5dee6d507c7c1290e21db7d6caa5ea32ced35cd",
+      "importReport": "objects/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/objects/sources/attacks-scissors-glue-sharpener-3x2.corrected.raw.png",
+      "sourceSha256": "7aea6fd4a51cc4a2b552735d7fd06d3099ea2a3fed6f2b9eaa238262f90b4869"
+    },
+    {
+      "stem": "obj_sharpener_b",
+      "target": "apps/web/public/art/g1/paint/ch01/obj_sharpener_b.png",
+      "sha256": "e1ac0a2f35d87fd8c636630e13c3b9ae095ea4d8b5af7894a05bdb2753cf0fac",
+      "importReport": "objects/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/objects/sources/attacker-objects-3x2.corrected.raw.png",
+      "sourceSha256": "3f19dfa14f64a14ca53357f457504025fd20f51677af1c8d148ddae519ed41dc"
+    },
+    {
+      "stem": "obj_sharpener_dazed",
+      "target": "apps/web/public/art/g1/paint/ch01/obj_sharpener_dazed.png",
+      "sha256": "e1ac0a2f35d87fd8c636630e13c3b9ae095ea4d8b5af7894a05bdb2753cf0fac",
+      "importReport": "objects/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/objects/sources/attacker-objects-3x2.corrected.raw.png",
+      "sourceSha256": "3f19dfa14f64a14ca53357f457504025fd20f51677af1c8d148ddae519ed41dc"
+    },
+    {
+      "stem": "obj_sharpener_run",
+      "target": "apps/web/public/art/g1/paint/ch01/obj_sharpener_run.png",
+      "sha256": "cf4f1cc9724640be81241eadc5dee6d507c7c1290e21db7d6caa5ea32ced35cd",
+      "importReport": "objects/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/objects/sources/attacks-scissors-glue-sharpener-3x2.corrected.raw.png",
+      "sourceSha256": "7aea6fd4a51cc4a2b552735d7fd06d3099ea2a3fed6f2b9eaa238262f90b4869"
+    },
+    {
+      "stem": "obj_sharpener_telegraph",
+      "target": "apps/web/public/art/g1/paint/ch01/obj_sharpener_telegraph.png",
+      "sha256": "ce8807dfa04850bc619aab00f34713741ce6ce95dd2aafee259c9684dbe8c214",
+      "importReport": "objects/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/objects/sources/attacks-scissors-glue-sharpener-3x2.corrected.raw.png",
+      "sourceSha256": "7aea6fd4a51cc4a2b552735d7fd06d3099ea2a3fed6f2b9eaa238262f90b4869"
+    },
+    {
+      "stem": "obj_soundsystem",
+      "target": "apps/web/public/art/g1/paint/ch01/obj_soundsystem.png",
+      "sha256": "f85572ab5074673589eeb7e46fdf2b66bee875eaa0b8ae216032edc813557878",
+      "importReport": "devices-clean/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/devices-clean/soundsystem-original.png",
+      "sourceSha256": "3eb361bc1ac7d41e7bf3aea6ebd547466e95d6fc3f116524a170986b1898f6a9"
+    },
+    {
+      "stem": "obj_tablet",
+      "target": "apps/web/public/art/g1/paint/ch01/obj_tablet.png",
+      "sha256": "9dbbfcfa65c87df73f853151d69913bbbe9a295b530090965391b29a60dd1356",
+      "importReport": "devices-clean/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/devices-clean/tablet-original.png",
+      "sourceSha256": "1e6916776cc402599d1d67d7e496b3e7e4f2c92f188bede1f5305f12f9852b73"
+    },
+    {
+      "stem": "pen_a",
+      "target": "apps/web/public/art/g1/paint/ch01/pen_a.png",
+      "sha256": "309dd8f1c90d6dc30e35e43a1127ed1f592fc48befe4aa04039889afb54dd8d3",
+      "sourceManifest": "objects/neutral-installed-variants.json",
+      "importReport": "objects/neutral-material-import-report.json",
+      "sourceCell": "pen_a",
+      "limitation": "Static alias of complete approved neutral drawing; no independent pose artwork."
+    },
+    {
+      "stem": "pen_act",
+      "target": "apps/web/public/art/g1/paint/ch01/pen_act.png",
+      "sha256": "309dd8f1c90d6dc30e35e43a1127ed1f592fc48befe4aa04039889afb54dd8d3",
+      "sourceManifest": "objects/neutral-installed-variants.json",
+      "importReport": "objects/neutral-material-import-report.json",
+      "sourceCell": "pen_a",
+      "limitation": "Static alias of complete approved neutral drawing; no independent pose artwork."
+    },
+    {
+      "stem": "pen_b",
+      "target": "apps/web/public/art/g1/paint/ch01/pen_b.png",
+      "sha256": "309dd8f1c90d6dc30e35e43a1127ed1f592fc48befe4aa04039889afb54dd8d3",
+      "sourceManifest": "objects/neutral-installed-variants.json",
+      "importReport": "objects/neutral-material-import-report.json",
+      "sourceCell": "pen_a",
+      "limitation": "Static alias of complete approved neutral drawing; no independent pose artwork."
+    },
+    {
+      "stem": "pen_dazed",
+      "target": "apps/web/public/art/g1/paint/ch01/pen_dazed.png",
+      "sha256": "309dd8f1c90d6dc30e35e43a1127ed1f592fc48befe4aa04039889afb54dd8d3",
+      "sourceManifest": "objects/neutral-installed-variants.json",
+      "importReport": "objects/neutral-material-import-report.json",
+      "sourceCell": "pen_a",
+      "limitation": "Static alias of complete approved neutral drawing; no independent pose artwork."
+    },
+    {
+      "stem": "pen_run",
+      "target": "apps/web/public/art/g1/paint/ch01/pen_run.png",
+      "sha256": "309dd8f1c90d6dc30e35e43a1127ed1f592fc48befe4aa04039889afb54dd8d3",
+      "sourceManifest": "objects/neutral-installed-variants.json",
+      "importReport": "objects/neutral-material-import-report.json",
+      "sourceCell": "pen_a",
+      "limitation": "Static alias of complete approved neutral drawing; no independent pose artwork."
+    },
+    {
+      "stem": "pen_telegraph",
+      "target": "apps/web/public/art/g1/paint/ch01/pen_telegraph.png",
+      "sha256": "309dd8f1c90d6dc30e35e43a1127ed1f592fc48befe4aa04039889afb54dd8d3",
+      "sourceManifest": "objects/neutral-installed-variants.json",
+      "importReport": "objects/neutral-material-import-report.json",
+      "sourceCell": "pen_a",
+      "limitation": "Static alias of complete approved neutral drawing; no independent pose artwork."
+    },
+    {
+      "stem": "pencilcase_a",
+      "target": "apps/web/public/art/g1/paint/ch01/pencilcase_a.png",
+      "sha256": "827e5af46457c69883041d19162ed5894149a83ba7fbb84dacc02a0670e331ef",
+      "importReport": "merle/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/merle/pencilcase-empty-states-original.png",
+      "sourceSha256": "84a2cbbf22e94837d3d2e75a6b6876b753559356cbe2bcc83f6920da1576f787"
+    },
+    {
+      "stem": "pencilcase_b",
+      "target": "apps/web/public/art/g1/paint/ch01/pencilcase_b.png",
+      "sha256": "827e5af46457c69883041d19162ed5894149a83ba7fbb84dacc02a0670e331ef",
+      "importReport": "merle/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/merle/pencilcase-empty-states-original.png",
+      "sourceSha256": "84a2cbbf22e94837d3d2e75a6b6876b753559356cbe2bcc83f6920da1576f787"
+    },
+    {
+      "stem": "pencilcase_burst",
+      "target": "apps/web/public/art/g1/paint/ch01/pencilcase_burst.png",
+      "sha256": "f292af3460eb138d7128a794a311b9b5c7ed6fd3d2229afe4d03b268854c9724",
+      "importReport": "merle/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/merle/pencilcase-empty-states-original.png",
+      "sourceSha256": "84a2cbbf22e94837d3d2e75a6b6876b753559356cbe2bcc83f6920da1576f787"
+    },
+    {
+      "stem": "pencilcase_open",
+      "target": "apps/web/public/art/g1/paint/ch01/pencilcase_open.png",
+      "sha256": "f292af3460eb138d7128a794a311b9b5c7ed6fd3d2229afe4d03b268854c9724",
+      "importReport": "merle/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/merle/pencilcase-empty-states-original.png",
+      "sourceSha256": "84a2cbbf22e94837d3d2e75a6b6876b753559356cbe2bcc83f6920da1576f787"
+    },
+    {
+      "stem": "pencilcase_open0",
+      "target": "apps/web/public/art/g1/paint/ch01/pencilcase_open0.png",
+      "sha256": "f292af3460eb138d7128a794a311b9b5c7ed6fd3d2229afe4d03b268854c9724",
+      "importReport": "merle/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/merle/pencilcase-empty-states-original.png",
+      "sourceSha256": "84a2cbbf22e94837d3d2e75a6b6876b753559356cbe2bcc83f6920da1576f787"
+    },
+    {
+      "stem": "pencilcase_open1",
+      "target": "apps/web/public/art/g1/paint/ch01/pencilcase_open1.png",
+      "sha256": "f292af3460eb138d7128a794a311b9b5c7ed6fd3d2229afe4d03b268854c9724",
+      "importReport": "merle/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/merle/pencilcase-empty-states-original.png",
+      "sourceSha256": "84a2cbbf22e94837d3d2e75a6b6876b753559356cbe2bcc83f6920da1576f787"
+    },
+    {
+      "stem": "pencilcase_open2",
+      "target": "apps/web/public/art/g1/paint/ch01/pencilcase_open2.png",
+      "sha256": "f292af3460eb138d7128a794a311b9b5c7ed6fd3d2229afe4d03b268854c9724",
+      "importReport": "merle/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/merle/pencilcase-empty-states-original.png",
+      "sourceSha256": "84a2cbbf22e94837d3d2e75a6b6876b753559356cbe2bcc83f6920da1576f787"
+    },
+    {
+      "stem": "pencilcase_shake",
+      "target": "apps/web/public/art/g1/paint/ch01/pencilcase_shake.png",
+      "sha256": "827e5af46457c69883041d19162ed5894149a83ba7fbb84dacc02a0670e331ef",
+      "importReport": "merle/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/merle/pencilcase-empty-states-original.png",
+      "sourceSha256": "84a2cbbf22e94837d3d2e75a6b6876b753559356cbe2bcc83f6920da1576f787"
+    },
+    {
+      "stem": "photo_frame_cage_a",
+      "target": "apps/web/public/art/g1/paint/ch01/photo_frame_cage_a.png",
+      "sha256": "b5ebc910b4ec73cb511e86cc2ba5340c2187ee5cf3d197981e27d0a30238195f",
+      "importReport": "photo-cage/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/photo-cage/photo-frame-cage-original.png",
+      "sourceSha256": "88be2e248e0c9b73629c651857979e5c26742c2175fba5cd817b9b529ee11ffe"
+    },
+    {
+      "stem": "photo_frame_cage_open",
+      "target": "apps/web/public/art/g1/paint/ch01/photo_frame_cage_open.png",
+      "sha256": "67e738318e61ae0f1436a758a8de1e5b1d7cfc15188d340d05a14a7ce9221a8c",
+      "importReport": "photo-cage/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/photo-cage/photo-frame-cage-original.png",
+      "sourceSha256": "88be2e248e0c9b73629c651857979e5c26742c2175fba5cd817b9b529ee11ffe"
+    },
+    {
+      "stem": "plate_ch01_door",
+      "target": "apps/web/public/art/g1/paint/ch01/plate_ch01_door.png",
+      "sha256": "3a36ed1d2db5ad50a790839b75de20ca13491a3d6b5bafbd488065a6e4d6d5b6",
+      "importReport": "ending-door/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/ending-door/sources/ending-door-original.png",
+      "sourceSha256": "61f2124861fba3a1af8cdf90ef712fe495fe114cfe93703d4f1a78921139b121"
+    },
+    {
+      "stem": "story_arrival",
+      "target": "apps/web/public/art/g1/paint/ch01/story_arrival.png",
+      "sha256": "19072f8df4dcfd69c0fb293cafeacb4ee089a1239c86f134827549e0e1de9b73",
+      "source": "sources/story_arrival.png",
+      "sourceSha256": "19072f8df4dcfd69c0fb293cafeacb4ee089a1239c86f134827549e0e1de9b73",
+      "sourceManifest": "panels.manifest.json"
+    },
+    {
+      "stem": "story_book",
+      "target": "apps/web/public/art/g1/paint/ch01/story_book.png",
+      "sha256": "2b6afe8968725847ce98ba211532608814228b4b7733574089ec3dd78e423f74",
+      "source": "sources/story_book.png",
+      "sourceSha256": "2b6afe8968725847ce98ba211532608814228b4b7733574089ec3dd78e423f74",
+      "sourceManifest": "panels.manifest.json"
+    },
+    {
+      "stem": "story_fall",
+      "target": "apps/web/public/art/g1/paint/ch01/story_fall.png",
+      "sha256": "80a266d61e1cda97ee4ec1032cfaeddaa41522d854fa8ad3c767f232a2a46cb7",
+      "source": "sources/story_fall.png",
+      "sourceSha256": "80a266d61e1cda97ee4ec1032cfaeddaa41522d854fa8ad3c767f232a2a46cb7",
+      "sourceManifest": "panels.manifest.json"
+    },
+    {
+      "stem": "story_first_step",
+      "target": "apps/web/public/art/g1/paint/ch01/story_first_step.png",
+      "sha256": "9a8f35af8c9edc11e391303084b6e662bb1f9930cadbf78bb6b90a6c072d4808",
+      "source": "sources/story_first_step.png",
+      "sourceSha256": "9a8f35af8c9edc11e391303084b6e662bb1f9930cadbf78bb6b90a6c072d4808",
+      "sourceManifest": "panels.manifest.json"
+    },
+    {
+      "stem": "story_klecks",
+      "target": "apps/web/public/art/g1/paint/ch01/story_klecks.png",
+      "sha256": "7de19e4d04dab1645f3585d42a35153189c507c9eb058ae4089f5a900569ffb4",
+      "source": "sources/story_klecks.png",
+      "sourceSha256": "7de19e4d04dab1645f3585d42a35153189c507c9eb058ae4089f5a900569ffb4",
+      "sourceManifest": "panels.manifest.json"
+    },
+    {
+      "stem": "story_school",
+      "target": "apps/web/public/art/g1/paint/ch01/story_school.png",
+      "sha256": "0c7eef9dae3c2e3c90863a238d37b6c4bbc2bcef0580e33cd70814c70cffae0a",
+      "source": "sources/story_school.png",
+      "sourceSha256": "0c7eef9dae3c2e3c90863a238d37b6c4bbc2bcef0580e33cd70814c70cffae0a",
+      "sourceManifest": "panels.manifest.json"
+    },
+    {
+      "stem": "story_transform",
+      "target": "apps/web/public/art/g1/paint/ch01/story_transform.png",
+      "sha256": "40c3246bdd4e55b17af83875ab2dd8f5e268e17f3f1749449e147d91c7aacc68",
+      "source": "sources/story_transform.png",
+      "sourceSha256": "40c3246bdd4e55b17af83875ab2dd8f5e268e17f3f1749449e147d91c7aacc68",
+      "sourceManifest": "panels.manifest.json"
+    },
+    {
+      "stem": "tafel_a",
+      "target": "apps/web/public/art/g1/paint/ch01/tafel_a.png",
+      "sha256": "3ae3e2caa64c97d453b08ef3c1a2deebfefd10bc1ea810342486afccd38f4618",
+      "importReport": "blackboard/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/blackboard/blackboard-rest-win-original.png",
+      "sourceSha256": "9c33be86f3315a1c5d5a50b1a9b4bfff052374da527ba0010c6fdc84e757a0aa"
+    },
+    {
+      "stem": "tafel_b",
+      "target": "apps/web/public/art/g1/paint/ch01/tafel_b.png",
+      "sha256": "3ae3e2caa64c97d453b08ef3c1a2deebfefd10bc1ea810342486afccd38f4618",
+      "importReport": "blackboard/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/blackboard/blackboard-rest-win-original.png",
+      "sourceSha256": "9c33be86f3315a1c5d5a50b1a9b4bfff052374da527ba0010c6fdc84e757a0aa"
+    },
+    {
+      "stem": "tafel_bank_l1",
+      "target": "apps/web/public/art/g1/paint/ch01/tafel_bank_l1.png",
+      "sha256": "3ae3e2caa64c97d453b08ef3c1a2deebfefd10bc1ea810342486afccd38f4618",
+      "importReport": "blackboard/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/blackboard/blackboard-rest-win-original.png",
+      "sourceSha256": "9c33be86f3315a1c5d5a50b1a9b4bfff052374da527ba0010c6fdc84e757a0aa"
+    },
+    {
+      "stem": "tafel_bank_r0",
+      "target": "apps/web/public/art/g1/paint/ch01/tafel_bank_r0.png",
+      "sha256": "3ae3e2caa64c97d453b08ef3c1a2deebfefd10bc1ea810342486afccd38f4618",
+      "importReport": "blackboard/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/blackboard/blackboard-rest-win-original.png",
+      "sourceSha256": "9c33be86f3315a1c5d5a50b1a9b4bfff052374da527ba0010c6fdc84e757a0aa"
+    },
+    {
+      "stem": "tafel_bank_r1",
+      "target": "apps/web/public/art/g1/paint/ch01/tafel_bank_r1.png",
+      "sha256": "3ae3e2caa64c97d453b08ef3c1a2deebfefd10bc1ea810342486afccd38f4618",
+      "importReport": "blackboard/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/blackboard/blackboard-rest-win-original.png",
+      "sourceSha256": "9c33be86f3315a1c5d5a50b1a9b4bfff052374da527ba0010c6fdc84e757a0aa"
+    },
+    {
+      "stem": "tafel_c",
+      "target": "apps/web/public/art/g1/paint/ch01/tafel_c.png",
+      "sha256": "3ae3e2caa64c97d453b08ef3c1a2deebfefd10bc1ea810342486afccd38f4618",
+      "importReport": "blackboard/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/blackboard/blackboard-rest-win-original.png",
+      "sourceSha256": "9c33be86f3315a1c5d5a50b1a9b4bfff052374da527ba0010c6fdc84e757a0aa"
+    },
+    {
+      "stem": "tafel_d",
+      "target": "apps/web/public/art/g1/paint/ch01/tafel_d.png",
+      "sha256": "3ae3e2caa64c97d453b08ef3c1a2deebfefd10bc1ea810342486afccd38f4618",
+      "importReport": "blackboard/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/blackboard/blackboard-rest-win-original.png",
+      "sourceSha256": "9c33be86f3315a1c5d5a50b1a9b4bfff052374da527ba0010c6fdc84e757a0aa"
+    },
+    {
+      "stem": "tafel_dazed",
+      "target": "apps/web/public/art/g1/paint/ch01/tafel_dazed.png",
+      "sha256": "3ae3e2caa64c97d453b08ef3c1a2deebfefd10bc1ea810342486afccd38f4618",
+      "importReport": "blackboard/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/blackboard/blackboard-rest-win-original.png",
+      "sourceSha256": "9c33be86f3315a1c5d5a50b1a9b4bfff052374da527ba0010c6fdc84e757a0aa"
+    },
+    {
+      "stem": "tafel_land0",
+      "target": "apps/web/public/art/g1/paint/ch01/tafel_land0.png",
+      "sha256": "3ae3e2caa64c97d453b08ef3c1a2deebfefd10bc1ea810342486afccd38f4618",
+      "importReport": "blackboard/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/blackboard/blackboard-rest-win-original.png",
+      "sourceSha256": "9c33be86f3315a1c5d5a50b1a9b4bfff052374da527ba0010c6fdc84e757a0aa"
+    },
+    {
+      "stem": "tafel_land1",
+      "target": "apps/web/public/art/g1/paint/ch01/tafel_land1.png",
+      "sha256": "3ae3e2caa64c97d453b08ef3c1a2deebfefd10bc1ea810342486afccd38f4618",
+      "importReport": "blackboard/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/blackboard/blackboard-rest-win-original.png",
+      "sourceSha256": "9c33be86f3315a1c5d5a50b1a9b4bfff052374da527ba0010c6fdc84e757a0aa"
+    },
+    {
+      "stem": "tafel_rest",
+      "target": "apps/web/public/art/g1/paint/ch01/tafel_rest.png",
+      "sha256": "3ae3e2caa64c97d453b08ef3c1a2deebfefd10bc1ea810342486afccd38f4618",
+      "importReport": "blackboard/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/blackboard/blackboard-rest-win-original.png",
+      "sourceSha256": "9c33be86f3315a1c5d5a50b1a9b4bfff052374da527ba0010c6fdc84e757a0aa"
+    },
+    {
+      "stem": "tafel_roll",
+      "target": "apps/web/public/art/g1/paint/ch01/tafel_roll.png",
+      "sha256": "3ae3e2caa64c97d453b08ef3c1a2deebfefd10bc1ea810342486afccd38f4618",
+      "importReport": "blackboard/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/blackboard/blackboard-rest-win-original.png",
+      "sourceSha256": "9c33be86f3315a1c5d5a50b1a9b4bfff052374da527ba0010c6fdc84e757a0aa"
+    },
+    {
+      "stem": "tafel_sad",
+      "target": "apps/web/public/art/g1/paint/ch01/tafel_sad.png",
+      "sha256": "3ae3e2caa64c97d453b08ef3c1a2deebfefd10bc1ea810342486afccd38f4618",
+      "importReport": "blackboard/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/blackboard/blackboard-rest-win-original.png",
+      "sourceSha256": "9c33be86f3315a1c5d5a50b1a9b4bfff052374da527ba0010c6fdc84e757a0aa"
+    },
+    {
+      "stem": "tafel_scribble1",
+      "target": "apps/web/public/art/g1/paint/ch01/tafel_scribble1.png",
+      "sha256": "5c800c79b2fc9202a6043a93e9cda4a7bbeb3046c192b4e0c4b194bd62a6a20a",
+      "importReport": "blackboard/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/blackboard/blackboard-scribble-layers-original.png",
+      "sourceSha256": "0d5315180e17629d83db48a9b81086dc19c4b01915e06ed8ba74f417d54f6cc8"
+    },
+    {
+      "stem": "tafel_scribble2",
+      "target": "apps/web/public/art/g1/paint/ch01/tafel_scribble2.png",
+      "sha256": "bf64ac0cf292642ca6c77743f0edf529ac9349844c06022bb994dc7be2c4ac86",
+      "importReport": "blackboard/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/blackboard/blackboard-scribble-layers-original.png",
+      "sourceSha256": "0d5315180e17629d83db48a9b81086dc19c4b01915e06ed8ba74f417d54f6cc8"
+    },
+    {
+      "stem": "tafel_scribble3",
+      "target": "apps/web/public/art/g1/paint/ch01/tafel_scribble3.png",
+      "sha256": "c7bac908990442c852bb5dd3f08d072f86b027cc71a96dadf25a81dfee32686a",
+      "importReport": "blackboard/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/blackboard/blackboard-scribble-layers-original.png",
+      "sourceSha256": "0d5315180e17629d83db48a9b81086dc19c4b01915e06ed8ba74f417d54f6cc8"
+    },
+    {
+      "stem": "tafel_scribble3b",
+      "target": "apps/web/public/art/g1/paint/ch01/tafel_scribble3b.png",
+      "sha256": "c7bac908990442c852bb5dd3f08d072f86b027cc71a96dadf25a81dfee32686a",
+      "importReport": "blackboard/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/blackboard/blackboard-scribble-layers-original.png",
+      "sourceSha256": "0d5315180e17629d83db48a9b81086dc19c4b01915e06ed8ba74f417d54f6cc8"
+    },
+    {
+      "stem": "tafel_spiral0",
+      "target": "apps/web/public/art/g1/paint/ch01/tafel_spiral0.png",
+      "sha256": "3ae3e2caa64c97d453b08ef3c1a2deebfefd10bc1ea810342486afccd38f4618",
+      "importReport": "blackboard/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/blackboard/blackboard-rest-win-original.png",
+      "sourceSha256": "9c33be86f3315a1c5d5a50b1a9b4bfff052374da527ba0010c6fdc84e757a0aa"
+    },
+    {
+      "stem": "tafel_spiral1",
+      "target": "apps/web/public/art/g1/paint/ch01/tafel_spiral1.png",
+      "sha256": "3ae3e2caa64c97d453b08ef3c1a2deebfefd10bc1ea810342486afccd38f4618",
+      "importReport": "blackboard/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/blackboard/blackboard-rest-win-original.png",
+      "sourceSha256": "9c33be86f3315a1c5d5a50b1a9b4bfff052374da527ba0010c6fdc84e757a0aa"
+    },
+    {
+      "stem": "tafel_spiral2",
+      "target": "apps/web/public/art/g1/paint/ch01/tafel_spiral2.png",
+      "sha256": "3ae3e2caa64c97d453b08ef3c1a2deebfefd10bc1ea810342486afccd38f4618",
+      "importReport": "blackboard/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/blackboard/blackboard-rest-win-original.png",
+      "sourceSha256": "9c33be86f3315a1c5d5a50b1a9b4bfff052374da527ba0010c6fdc84e757a0aa"
+    },
+    {
+      "stem": "tafel_spiral3",
+      "target": "apps/web/public/art/g1/paint/ch01/tafel_spiral3.png",
+      "sha256": "3ae3e2caa64c97d453b08ef3c1a2deebfefd10bc1ea810342486afccd38f4618",
+      "importReport": "blackboard/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/blackboard/blackboard-rest-win-original.png",
+      "sourceSha256": "9c33be86f3315a1c5d5a50b1a9b4bfff052374da527ba0010c6fdc84e757a0aa"
+    },
+    {
+      "stem": "tafel_stagger",
+      "target": "apps/web/public/art/g1/paint/ch01/tafel_stagger.png",
+      "sha256": "3ae3e2caa64c97d453b08ef3c1a2deebfefd10bc1ea810342486afccd38f4618",
+      "importReport": "blackboard/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/blackboard/blackboard-rest-win-original.png",
+      "sourceSha256": "9c33be86f3315a1c5d5a50b1a9b4bfff052374da527ba0010c6fdc84e757a0aa"
+    },
+    {
+      "stem": "tafel_telegraph",
+      "target": "apps/web/public/art/g1/paint/ch01/tafel_telegraph.png",
+      "sha256": "3ae3e2caa64c97d453b08ef3c1a2deebfefd10bc1ea810342486afccd38f4618",
+      "importReport": "blackboard/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/blackboard/blackboard-rest-win-original.png",
+      "sourceSha256": "9c33be86f3315a1c5d5a50b1a9b4bfff052374da527ba0010c6fdc84e757a0aa"
+    },
+    {
+      "stem": "tafel_throw",
+      "target": "apps/web/public/art/g1/paint/ch01/tafel_throw.png",
+      "sha256": "3ae3e2caa64c97d453b08ef3c1a2deebfefd10bc1ea810342486afccd38f4618",
+      "importReport": "blackboard/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/blackboard/blackboard-rest-win-original.png",
+      "sourceSha256": "9c33be86f3315a1c5d5a50b1a9b4bfff052374da527ba0010c6fdc84e757a0aa"
+    },
+    {
+      "stem": "tafel_win",
+      "target": "apps/web/public/art/g1/paint/ch01/tafel_win.png",
+      "sha256": "8888b1a7b4a495687e1ac75c32b797b7b43db3e6eabe178270ae70795daa2fce",
+      "importReport": "blackboard/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/blackboard/blackboard-rest-win-original.png",
+      "sourceSha256": "9c33be86f3315a1c5d5a50b1a9b4bfff052374da527ba0010c6fdc84e757a0aa"
+    },
+    {
+      "stem": "tafel_windup",
+      "target": "apps/web/public/art/g1/paint/ch01/tafel_windup.png",
+      "sha256": "3ae3e2caa64c97d453b08ef3c1a2deebfefd10bc1ea810342486afccd38f4618",
+      "importReport": "blackboard/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/blackboard/blackboard-rest-win-original.png",
+      "sourceSha256": "9c33be86f3315a1c5d5a50b1a9b4bfff052374da527ba0010c6fdc84e757a0aa"
+    },
+    {
+      "stem": "tafel_windup0",
+      "target": "apps/web/public/art/g1/paint/ch01/tafel_windup0.png",
+      "sha256": "3ae3e2caa64c97d453b08ef3c1a2deebfefd10bc1ea810342486afccd38f4618",
+      "importReport": "blackboard/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/blackboard/blackboard-rest-win-original.png",
+      "sourceSha256": "9c33be86f3315a1c5d5a50b1a9b4bfff052374da527ba0010c6fdc84e757a0aa"
+    },
+    {
+      "stem": "tafel_windup1",
+      "target": "apps/web/public/art/g1/paint/ch01/tafel_windup1.png",
+      "sha256": "3ae3e2caa64c97d453b08ef3c1a2deebfefd10bc1ea810342486afccd38f4618",
+      "importReport": "blackboard/import-report.json",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/blackboard/blackboard-rest-win-original.png",
+      "sourceSha256": "9c33be86f3315a1c5d5a50b1a9b4bfff052374da527ba0010c6fdc84e757a0aa"
+    }
+  ],
+  "historicalOutputs": [
+    {
+      "stem": "obj_scissors_a",
+      "historicalReport": "objects/import-report.json",
+      "historicalOutputSha256": "1359353434183e887b7156c9ea9ccf8678819dee780e7b00bef6f0db56556f35",
+      "status": "historical-output-not-current"
+    },
+    {
+      "stem": "obj_scissors_b",
+      "historicalReport": "objects/import-report.json",
+      "historicalOutputSha256": "1359353434183e887b7156c9ea9ccf8678819dee780e7b00bef6f0db56556f35",
+      "status": "historical-output-not-current"
+    },
+    {
+      "stem": "obj_scissors_dazed",
+      "historicalReport": "objects/import-report.json",
+      "historicalOutputSha256": "1359353434183e887b7156c9ea9ccf8678819dee780e7b00bef6f0db56556f35",
+      "status": "historical-output-not-current"
+    },
+    {
+      "stem": "obj_scissors_telegraph",
+      "historicalReport": "objects/import-report.json",
+      "historicalOutputSha256": "26b7b59f498f1358551c99ff0d6f14a97e553f600a1dc9b41a1369c211a7effd",
+      "status": "historical-output-not-current"
+    },
+    {
+      "stem": "obj_scissors_act",
+      "historicalReport": "objects/import-report.json",
+      "historicalOutputSha256": "1359353434183e887b7156c9ea9ccf8678819dee780e7b00bef6f0db56556f35",
+      "status": "historical-output-not-current"
+    },
+    {
+      "stem": "obj_scissors_run",
+      "historicalReport": "objects/import-report.json",
+      "historicalOutputSha256": "1359353434183e887b7156c9ea9ccf8678819dee780e7b00bef6f0db56556f35",
+      "status": "historical-output-not-current"
+    },
+    {
+      "stem": "pen_a",
+      "historicalReport": "objects/import-report.json",
+      "historicalOutputSha256": "15ecf4911d18cfbcb6dc9be277b28d4ab2730e3ecb8d3691fa25edbaf69c2b34",
+      "status": "historical-output-not-current"
+    },
+    {
+      "stem": "pen_b",
+      "historicalReport": "objects/import-report.json",
+      "historicalOutputSha256": "15ecf4911d18cfbcb6dc9be277b28d4ab2730e3ecb8d3691fa25edbaf69c2b34",
+      "status": "historical-output-not-current"
+    },
+    {
+      "stem": "pen_dazed",
+      "historicalReport": "objects/import-report.json",
+      "historicalOutputSha256": "15ecf4911d18cfbcb6dc9be277b28d4ab2730e3ecb8d3691fa25edbaf69c2b34",
+      "status": "historical-output-not-current"
+    },
+    {
+      "stem": "pen_telegraph",
+      "historicalReport": "objects/import-report.json",
+      "historicalOutputSha256": "2e8d872df0f11de08e8712e803ccee3ad9a75e6bedb20d49bf11dcc687b99ddb",
+      "status": "historical-output-not-current"
+    },
+    {
+      "stem": "pen_act",
+      "historicalReport": "objects/import-report.json",
+      "historicalOutputSha256": "5e1c954cc2c37318de8918fa992a2f1ebe0479e31c573c605d77c54f1c19659d",
+      "status": "historical-output-not-current"
+    },
+    {
+      "stem": "pen_run",
+      "historicalReport": "objects/import-report.json",
+      "historicalOutputSha256": "5e1c954cc2c37318de8918fa992a2f1ebe0479e31c573c605d77c54f1c19659d",
+      "status": "historical-output-not-current"
+    },
+    {
+      "stem": "heft_a",
+      "historicalReport": "objects/import-report.json",
+      "historicalOutputSha256": "847d09b30a5b0ff3987262c81178796d068889d4baf01e7f1df3e35b98a97117",
+      "status": "historical-output-not-current"
+    },
+    {
+      "stem": "heft_b",
+      "historicalReport": "objects/import-report.json",
+      "historicalOutputSha256": "847d09b30a5b0ff3987262c81178796d068889d4baf01e7f1df3e35b98a97117",
+      "status": "historical-output-not-current"
+    },
+    {
+      "stem": "heft_dazed",
+      "historicalReport": "objects/import-report.json",
+      "historicalOutputSha256": "847d09b30a5b0ff3987262c81178796d068889d4baf01e7f1df3e35b98a97117",
+      "status": "historical-output-not-current"
+    },
+    {
+      "stem": "heft_telegraph",
+      "historicalReport": "objects/import-report.json",
+      "historicalOutputSha256": "ab841426d5caa6d9443255026bc75e48a8e73132291cb14a4e8e9d847fe638f9",
+      "status": "historical-output-not-current"
+    },
+    {
+      "stem": "heft_act",
+      "historicalReport": "objects/import-report.json",
+      "historicalOutputSha256": "ccea6be897767f445d826ac2339f6154a87c25dde1d40b1316144937da450694",
+      "status": "historical-output-not-current"
+    },
+    {
+      "stem": "heft_run",
+      "historicalReport": "objects/import-report.json",
+      "historicalOutputSha256": "ccea6be897767f445d826ac2339f6154a87c25dde1d40b1316144937da450694",
+      "status": "historical-output-not-current"
+    },
+    {
+      "stem": "heft_bank",
+      "historicalReport": "objects/import-report.json",
+      "historicalOutputSha256": "ccea6be897767f445d826ac2339f6154a87c25dde1d40b1316144937da450694",
+      "status": "historical-output-not-current"
+    },
+    {
+      "stem": "obj_desk_a",
+      "historicalReport": "objects/import-report.json",
+      "historicalOutputSha256": "33f6c43f68b65edcc004fa63ce0d01904e50b7c9de253194163f7f38256cfbc3",
+      "status": "historical-output-not-current"
+    }
+  ],
+  "refreshedFor": "Final count-dots/count-books task drawings and recognizable school desk, verified against installed PNG and original source bytes."
+}

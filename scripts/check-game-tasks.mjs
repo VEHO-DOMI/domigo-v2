@@ -859,8 +859,18 @@ function checkAgainstLevel(file, level, items) {
       const at = `${w}:${ph.id}/${e.id}`;
       if (HOSTILE_ROLES.includes(e.role)) {
         const use = encounterUseFor(e.role);
-        const need = Math.max(2, simultaneous.get(e.skin) ?? 1);
-        const n = boundCards(items, use, e.skin, ph.id).length;
+        const pool = boundCards(items, use, e.skin, ph.id);
+        // User story pass: one unique hostile object still owes the complete
+        // name + colour restore. It is not a repeatable enemy question deck.
+        // A mixed pool or multiple same-skin objects keep the old >=2 floor.
+        const completeRestore = pool.length === 1 && pool[0].kind === "restore"
+          && pool[0].nameOptions.includes(pool[0].name)
+          && pool[0].colourOptions.includes(pool[0].colour)
+          && typeof pool[0].colourAskDe === "string" && pool[0].colourAskDe.trim() !== "";
+        const restoreObject = level.chapter === "ch01" && e.role === "chaser"
+          && e.skin.startsWith("obj_") && simultaneous.get(e.skin) === 1 && completeRestore;
+        const need = restoreObject ? 1 : Math.max(2, simultaneous.get(e.skin) ?? 1);
+        const n = pool.length;
         if (n < need) covFail(at, `coverage: hostile skin "${e.skin}" has ${n} ${use} card(s) here — needs ≥${need} (${simultaneous.get(e.skin)} of them stand in ${ph.id} at once)`);
       } else if (e.role === "guardian") {
         // PK-R6 · F · A GUARDIAN RAISES TWO POOLS, NOT THREE. This row used to
@@ -1046,6 +1056,49 @@ function portraitSceneError(task, level) {
   return matches.length === 1 ? null : "scene beat/view does not bind this card";
 }
 
+/** A chapter-one device portrait is the declared locker PLUS its real object.
+ * The route still uses phase/use/skin. Earn the alternate shell only when that
+ * route identifies one matching entity and the lesson names its actual device. */
+function deviceLockerPortraitError(task, level, painted) {
+  if (level?.chapter !== "ch01" || task.use !== "rescue" || task.kind !== "choice" || task.form !== "state-it")
+    return "device locker portrait is only a chapter-one device naming rescue";
+  if (task.skins?.length !== 1 || task.skins[0] !== "satchel") return "device locker route must bind the satchel skin";
+  if (!["device_locker_a", "device_locker_b"].includes(task.stimulus.art)) return "locked-device portrait must use a closed locker cell";
+  const candidates = allPhasesOf(level).filter(ph => !task.phases || task.phases.includes(ph.id))
+    .flatMap(ph => ph.entities.filter(e => task.skins.includes(e.skin) && askerUsesOf(e).includes(task.use)));
+  if (candidates.length !== 1) return "device locker route has no unique serving entity in its card phases";
+  const entity = candidates[0];
+  if (entity.role !== "cage" || entity.params?.shellArt !== "device_locker" || entity.params?.classmate !== undefined)
+    return "device locker portrait disagrees with the serving entity's shell or role";
+  const lessons = {
+    soundsystem: { exercise: "g1u01.w.sound-system", answer: "It's a sound system." },
+    tablet: { exercise: "g1u01.w.tablet", answer: "It's a tablet." },
+  };
+  const captive = entity.params?.captive, lesson = lessons[captive];
+  if (!lesson || !task.exercises?.includes(lesson.exercise) || task.answer !== lesson.answer)
+    return "device locker lesson does not name the actual captive device";
+  if (!painted.has(`obj_${captive}`)) return "device locker has no painted actual device to show inside";
+  return null;
+}
+
+/** The final memory is a specific photo behind its registered frame. */
+function classPhotoPortraitError(task, level, painted) {
+  if (level?.chapter !== "ch01" || task.use !== "rescue" || task.kind !== "choice" || task.form !== "state-it"
+    || task.stimulus.art !== "photo_frame_cage_a" || task.skins?.length !== 1 || task.skins[0] !== "satchel")
+    return "class photo frame is only the closed chapter-one photo naming rescue";
+  const candidates = allPhasesOf(level).filter(ph => !task.phases || task.phases.includes(ph.id))
+    .flatMap(ph => ph.entities.filter(e => task.skins.includes(e.skin) && askerUsesOf(e).includes(task.use)));
+  if (candidates.length !== 1) return "class photo route has no unique serving entity in its card phases";
+  const entity = candidates[0];
+  if (entity.role !== "cage" || entity.params?.shellArt !== "photo_frame_cage"
+    || entity.params?.captive !== "picture" || entity.params?.classmate !== undefined)
+    return "class photo portrait disagrees with its real frame or captive";
+  if (task.answer !== "It's a picture." || !task.exercises?.includes("g1u01.w.picture"))
+    return "class photo lesson does not name the pictured memory";
+  if (!painted.has("klassenfoto_a")) return "class photo frame has no actual class photo to show inside";
+  return null;
+}
+
 function checkPortraits(file, items, cx) {
   const w = path.basename(file);
   // L0c · P9: dieselbe Menge, die der Aufloeser diesem Kapitel gibt — nicht der
@@ -1088,7 +1141,13 @@ function checkPortraits(file, items, cx) {
       }
       continue;
     }
-    if (!skins.some((s) => stem === s || stem.startsWith(`${s}_`))) {
+    if (stem.startsWith("device_locker_")) {
+      const error = deviceLockerPortraitError(t, cx?.level, gemalt);
+      if (error) fail(`${w}:${t.id}`, `portrait-device: ${error}`);
+    } else if (stem.startsWith("photo_frame_cage_")) {
+      const error = classPhotoPortraitError(t, cx?.level, gemalt);
+      if (error) fail(`${w}:${t.id}`, `portrait-photo: ${error}`);
+    } else if (!skins.some((s) => stem === s || stem.startsWith(`${s}_`))) {
       fail(`${w}:${t.id}`, `portrait: art "${stem}" is not a cell of [${skins.join(", ")}] — the card would wear another being's face`);
     }
     // one card, one face: a card bound to two painted beings can only be right
@@ -1250,6 +1309,94 @@ function exerciseRegistry(unitSlug, chapter) {
   };
 }
 
+// Device portraits: exercise the actual portrait gate with copies of shipped
+// tasks/entities; every alternate-shell permission has a corresponding red case.
+if (process.argv.includes("--selftest")) {
+  const cx = CHAPTERS.find(c => c.chapter === "ch01" && c.hasTasks);
+  if (!cx) throw new Error("device portrait selftest needs real ch01");
+  const items = GameTasksFileV2.parse(JSON.parse(fs.readFileSync(cx.tasksPath, "utf8"))).items;
+  const real = items.find(t => t.id === "g1.paint.ch01.rsc.soundsystem.r1");
+  const tablet = items.find(t => t.id === "g1.paint.ch01.rsc.tablet.r1");
+  if (!real || !tablet) throw new Error("device portrait selftest needs both real device cards");
+  const run = (edit, original = real) => {
+    const level = structuredClone(cx.level), task = structuredClone(original);
+    const phase = allPhasesOf(level).find(ph => task.phases?.includes(ph.id));
+    const entity = phase?.entities.find(e => e.skin === "satchel" && e.params?.shellArt === "device_locker");
+    if (!entity) throw new Error("device portrait fixture lost its real serving locker");
+    edit({ task, level, phase, entity });
+    captured = [];
+    try { checkPortraits(cx.tasksPath, [task], { ...cx, level }); return captured; }
+    finally { captured = null; }
+  };
+  const red = messages => messages.some(m => m.includes("portrait-device:"));
+  const cases = [
+    ["real sound system and registered locker", run(() => {}), m => m.length === 0],
+    ["real tablet and registered locker", run(() => {}, tablet), m => m.length === 0],
+    ["swapped captive rejects the same card", run(({ entity }) => { entity.params.captive = "tablet"; }), red],
+    ["missing shell declaration rejects", run(({ entity }) => { delete entity.params.shellArt; }), red],
+    ["another shell rejects", run(({ entity }) => { entity.params.shellArt = "pencilcase"; }), red],
+    ["wrong entity role rejects", run(({ entity }) => { entity.role = "drained"; }), red],
+    ["wrong phase rejects", run(({ task }) => { task.phases = ["p3"]; }), red],
+    ["unscoped multi-locker route rejects", run(({ task }) => { delete task.phases; }), red],
+    ["duplicate serving entity rejects", run(({ phase, entity }) => { phase.entities.push({ ...structuredClone(entity), id: "duplicate-locker" }); }), red],
+    ["wrong English device answer rejects", run(({ task }) => { task.answer = "It's a tablet."; }), red],
+    ["wrong taught word rejects", run(({ task }) => { task.exercises = ["g1u01.w.tablet"]; }), red],
+    ["a person is not a device", run(({ entity }) => { entity.params.classmate = "merle"; }), red],
+    ["open shell contradicts locked-device task", run(({ task }) => { task.stimulus.art = "device_locker_open"; }), red],
+    ["other chapter gets no device permission", run(({ level }) => { level.chapter = "ch02"; }), red],
+    ["ordinary foreign portrait remains forbidden", run(({ task }) => { task.stimulus.art = "pencil_a"; }), m => m.some(s => s.includes("portrait: art"))],
+  ];
+  const withoutDevice = new Set(gemaltFuer("ch01")); withoutDevice.delete("obj_soundsystem");
+  cases.push(["absent actual object art rejects", [deviceLockerPortraitError(real, cx.level, withoutDevice)],
+    m => m[0] === "device locker has no painted actual device to show inside"]);
+  let bad = 0;
+  for (const [name, messages, ok] of cases) {
+    const pass = ok(messages); if (!pass) bad++;
+    console.log(`  ${pass ? "✓" : "✗"} device-portrait · ${name}${pass ? "" : ` → ${JSON.stringify(messages)}`}`);
+  }
+  if (bad) { console.error(`check-game-tasks --selftest: ${bad} device-portrait case(s) did not bite`); process.exit(1); }
+  console.log(`check-game-tasks --selftest: device-portrait OK — ${cases.length} cases`);
+}
+
+// Class-photo permission must fail when its frame, real contents or lesson drift.
+if (process.argv.includes("--selftest")) {
+  const cx = CHAPTERS.find(c => c.chapter === "ch01" && c.hasTasks);
+  const real = GameTasksFileV2.parse(JSON.parse(fs.readFileSync(cx.tasksPath, "utf8"))).items
+    .find(t => t.id === "g1.paint.ch01.rsc.picture.r1");
+  const run = edit => {
+    const task = structuredClone(real), level = structuredClone(cx.level);
+    const phase = allPhasesOf(level).find(p => task.phases?.includes(p.id));
+    const entity = phase.entities.find(e => e.params?.captive === "picture");
+    edit({ task, level, phase, entity }); captured = [];
+    try { checkPortraits(cx.tasksPath, [task], { ...cx, level }); return captured; }
+    finally { captured = null; }
+  };
+  const red = m => m.some(x => x.includes("portrait-photo:"));
+  const cases = [
+    ["actual class photo in its real frame", run(() => {}), m => m.length === 0],
+    ["missing frame declaration", run(({ entity }) => { delete entity.params.shellArt; }), red],
+    ["device frame cannot stand in for photo", run(({ entity }) => { entity.params.shellArt = "device_locker"; }), red],
+    ["wrong captive cannot borrow photo", run(({ entity }) => { entity.params.captive = "tablet"; }), red],
+    ["wrong role", run(({ entity }) => { entity.role = "drained"; }), red],
+    ["person is not the class photo", run(({ entity }) => { entity.params.classmate = "merle"; }), red],
+    ["wrong phase", run(({ task }) => { task.phases = ["p1"]; }), red],
+    ["ambiguous unscoped route", run(({ task }) => { delete task.phases; }), red],
+    ["duplicate photo route", run(({ phase, entity }) => { phase.entities.push({ ...structuredClone(entity), id: "duplicate-photo" }); }), red],
+    ["wrong lesson answer", run(({ task }) => { task.answer = "It's a tablet."; }), red],
+    ["wrong taught word", run(({ task }) => { task.exercises = ["g1u01.w.tablet"]; }), red],
+    ["open frame contradicts locked photo", run(({ task }) => { task.stimulus.art = "photo_frame_cage_open"; }), red],
+    ["other chapter gets no photo permission", run(({ level }) => { level.chapter = "ch02"; }), red],
+  ];
+  const noPhoto = new Set(gemaltFuer("ch01")); noPhoto.delete("klassenfoto_a");
+  cases.push(["absent actual class photo", [classPhotoPortraitError(real, cx.level, noPhoto)],
+    m => m[0] === "class photo frame has no actual class photo to show inside"]);
+  let bad = 0;
+  for (const [name, messages, ok] of cases) { const pass = ok(messages); if (!pass) bad++;
+    console.log(`  ${pass ? "✓" : "✗"} photo-portrait · ${name}${pass ? "" : ` → ${JSON.stringify(messages)}`}`); }
+  if (bad) { console.error(`check-game-tasks --selftest: ${bad} photo-portrait case(s) did not bite`); process.exit(1); }
+  console.log(`check-game-tasks --selftest: photo-portrait OK — ${cases.length} cases`);
+}
+
 // ── SELFTEST · layer 19 (own block, own red light) ──────────────────────────
 // House rule: a gate that has never been seen going red is a claim. Layer 19 is
 // two laws, so it gets two traitors — and, because a tamper that changes nothing
@@ -1314,6 +1461,36 @@ if (process.argv.includes("--selftest")) {
   }
   if (bad19 > 0) { console.error(`check-game-tasks --selftest: ${bad19} layer-19 case(s) did NOT bite`); process.exit(1); }
   console.log(`check-game-tasks --selftest: layer 19 OK — ${cases19.length} cases, both red lights seen, the real corpus still green`);
+}
+
+// User story pass: narrow restore-object coverage, with the unchanged hostile
+// minimum tested beside it. Inputs are copies of the shipped chapter.
+if (process.argv.includes("--selftest")) {
+  const cx = CHAPTERS.find(c => c.chapter === "ch01" && c.hasTasks);
+  if (!cx) throw new Error("restore coverage selftest needs real ch01");
+  CHAPTER_NOW = cx; loadUnitRegisters(cx);
+  const realItems = GameTasksFileV2.parse(JSON.parse(fs.readFileSync(cx.tasksPath, "utf8"))).items;
+  const run = (edit) => {
+    const l = structuredClone(cx.level), items = structuredClone(realItems);
+    edit(l, items); captured = [];
+    checkAgainstLevel(cx.tasksPath, l, items);
+    const result = captured; captured = null; return result;
+  };
+  const scissors = m => m.some(x => /coverage: hostile skin "obj_scissors"/.test(x));
+  const cases = [
+    ["one complete restore object stays green", run(() => {}), m => m.length === 0],
+    ["missing restore stays red", run((l, ts) => ts.splice(ts.findIndex(t => t.skins?.includes("obj_scissors")), 1)), scissors],
+    ["name-only choice is not a complete restore", run((l, ts) => { const t = ts.find(t => t.skins?.includes("obj_scissors")); t.kind = "choice"; t.options = t.nameOptions; t.answer = t.name; delete t.nameOptions; delete t.name; delete t.colourOptions; delete t.colour; delete t.colourAskDe; delete t.curseVisual; }), scissors],
+    ["two same-skin objects still need two cards", run(l => { const ph = l.phases.find(p => p.id === "p2"); const e = ph.entities.find(e => e.skin === "obj_scissors"); ph.entities.push({ ...e, id: "second-scissors" }); }), scissors],
+    ["ordinary hostiles still need their full deck", run((l, ts) => { const pool = ts.filter(t => t.use === "encounter" && t.skins?.includes("pencil")); for (const t of pool.slice(1)) ts.splice(ts.indexOf(t), 1); }), m => m.some(x => /coverage: hostile skin "pencil"/.test(x))],
+    ["the new chapter-one contract does not change other chapters", run(l => { l.chapter = "ch99"; }), scissors],
+  ];
+  let bad = 0;
+  for (const [name, messages, ok] of cases) {
+    const pass = ok(messages); if (!pass) bad++;
+    console.log(`  ${pass ? "✓" : "✗"} restore-coverage · ${name}${pass ? "" : ` → ${JSON.stringify(messages)}`}`);
+  }
+  if (bad) { console.error(`check-game-tasks --selftest: ${bad} restore-coverage case(s) did not bite`); process.exit(1); }
 }
 
 // ── SELFTEST (`--selftest`) — the red light of layer 18, seen once per class ──
@@ -1540,6 +1717,7 @@ for (const cx of withTasks) {
     // L0 · D10: die Feld-Formen des Kapitels aus seiner eigenen Politik-Datei
     fieldForms: chapterPolicy(cx)?.fieldForms,
     wordbank,
+    passiveCoverage: chapterPolicy(cx)?.passiveCoverage,
     structureIds,
     lexicon: words,
     today: TODAY,

@@ -1,0 +1,7 @@
+1 | Mensch | Das klingt natürlich und ist sofort verständlich.  
+2 | Mensch | Die Frage klingt klar und so, wie man sie im Unterricht stellen würde.  
+3 | geschrieben | Man versteht die Anweisung, aber „Häng an book ein s an“ klingt beim Sprechen etwas steif.  
+4 | Mensch | Die Frage ist natürlich formuliert und eindeutig verständlich.  
+5 | Mensch | Die kurze Anweisung klingt natürlich und kindgerecht.  
+6 | geschrieben | Der Satz ist verständlich, aber „Je eine Zahl und ein Zahlwort“ klingt eher nach Arbeitsbuchsprache.  
+7 | stolpere | Ohne eine vorher genannte Person ist unklar, wessen Bildschirm mit „seinen Bildschirm“ gemeint ist.

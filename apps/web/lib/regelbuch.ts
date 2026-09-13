@@ -23,10 +23,13 @@
  * game clients use for their saves.
  */
 
-/** One rule page as the library keeps it. Mirrors the game's TipPayload minus
- *  the entity id, plus where it was found and how many the chapter holds. */
+import type { PaintLevel } from "@domigo/game-paint/level";
+
+/** One rule page as the library keeps it, plus its chapter and page count. */
 export interface RegelbuchEntry {
   chapter: string;
+  /** Stable level entity id. Optional so existing v3 collections still load. */
+  ruleId?: string;
   topicDe: string;
   /** R5-W4 · I2 — the Notion, so the hub reads the same four steps as the card. */
   erklaerungDe: string;
@@ -113,6 +116,7 @@ export const readRegelbuch = (): RegelbuchEntry[] => {
 let snapRaw: string | null = null;
 let snapVal: RegelbuchEntry[] = [];
 const EMPTY: RegelbuchEntry[] = [];
+const localListeners = new Set<() => void>();
 
 export const regelbuchSnapshot = (): RegelbuchEntry[] => {
   if (typeof window === "undefined") return EMPTY;
@@ -131,26 +135,77 @@ export const regelbuchServerSnapshot = (): RegelbuchEntry[] => EMPTY;
 /** Another tab writing the book counts as a change here. */
 export const subscribeRegelbuch = (onChange: () => void): (() => void) => {
   if (typeof window === "undefined") return () => {};
+  localListeners.add(onChange);
   const h = (e: StorageEvent): void => { if (e.key === KEY || e.key === null) onChange(); };
   window.addEventListener("storage", h);
-  return () => window.removeEventListener("storage", h);
+  return () => { localListeners.delete(onChange); window.removeEventListener("storage", h); };
 };
 
-/** Put one page in the book. Idempotent on (chapter, topicDe) — the same page
- *  found twice across two runs is one page, and `tip-honesty` already proves a
- *  topic is unique within a chapter. Returns the new list. */
+/** Only these two authored ch01 titles changed before rule ids were stored.
+ *  Explicit ids always win; no fuzzy matching or cross-chapter migration. */
+const ruleIdentity = (entry: RegelbuchEntry): string | undefined => {
+  if (typeof entry.ruleId === "string" && entry.ruleId !== "") return entry.ruleId;
+  if (entry.chapter !== "ch01") return undefined;
+  if (entry.topicDe === "Befehle — ohne you vor dem Verb" || entry.topicDe === "Befehle auf Englisch") return "p1-regel-befehle";
+  if (entry.topicDe === "Plural: aus einem werden viele" || entry.topicDe === "Ein Buch und viele Bücher") return "p3-regel-plural";
+  return undefined;
+};
+
+const sameRule = (left: RegelbuchEntry, right: RegelbuchEntry): boolean => {
+  if (left.chapter !== right.chapter) return false;
+  const leftId = ruleIdentity(left);
+  const rightId = ruleIdentity(right);
+  return leftId !== undefined && rightId !== undefined
+    ? leftId === rightId
+    : left.topicDe === right.topicDe;
+};
+
+/** Re-finding a page refreshes its copy in its original position. Stable ids
+ *  survive title edits; legacy pages use exact topics or the two narrow aliases.
+ *  Already duplicated copies of this rule coalesce, leaving all others intact. */
 export const rememberRegelSeite = (entry: RegelbuchEntry): RegelbuchEntry[] => {
   const have = readRegelbuch();
-  const next = have.some((e) => e.chapter === entry.chapter && e.topicDe === entry.topicDe)
-    ? have
-    : [...have, entry];
+  const matches = have.map((page, index) => sameRule(page, entry) ? index : -1).filter(index => index >= 0);
+  const index = matches[0] ?? -1;
+  const ruleId = ruleIdentity(entry) ?? (index < 0 ? undefined : ruleIdentity(have[index]));
+  const refreshed = ruleId === undefined ? entry : { ...entry, ruleId };
+  const next = index < 0 ? [...have, refreshed]
+    : matches.length === 1 && JSON.stringify(have[index]) === JSON.stringify(refreshed) ? have
+    : have.flatMap((page, i) => i === index ? [refreshed] : matches.includes(i) ? [] : [page]);
   if (typeof window !== "undefined" && next !== have) {
     try {
       window.localStorage.setItem(KEY, JSON.stringify({ v: 3, entries: next } satisfies RegelbuchFile));
       snapRaw = null; // this tab wrote it, so its own cache is stale
+      for (const listener of localListeners) listener();
     } catch {
       /* quota or private mode: the run keeps working, the library just does not grow */
     }
   }
   return next;
+};
+
+/** Current authored text for genuinely banked pages in this chapter. Identity
+ * proves ownership; projecting current text never creates a new collected page.
+ * Unrelated/retired entries remain untouched in the durable library. */
+export const chapterRegelSeiten = (level: PaintLevel, entries: readonly RegelbuchEntry[]) => {
+  const strings = (value: unknown): string[] => Array.isArray(value) ? value.filter((v): v is string => typeof v === "string") : [];
+  const phases = [...level.phases, ...(level.arena ? [level.arena] : []), ...(level.bonus ? [level.bonus] : [])];
+  return phases.flatMap(phase => phase.entities).filter(entity => entity.role === "tip").flatMap(entity => {
+    const params = entity.params ?? {};
+    const page = {
+      chapter: level.chapter, ruleId: entity.id, id: entity.id, skin: entity.skin,
+      topicDe: String(params.topicDe ?? ""), erklaerungDe: String(params.erklaerungDe ?? ""),
+      merksatzDe: String(params.merksatzDe ?? ""), schluesselDe: String(params.schluesselDe ?? ""),
+      beispieleEn: strings(params.beispieleEn), lehrtEn: strings(params.lehrtEn),
+      beispielMuster: String(params.beispielMuster ?? "einzeln"), belegDe: String(params.belegDe ?? ""),
+      total: level.tipsTotal ?? 0,
+    };
+    return entries.some(entry => sameRule(entry, page)) ? [page] : [];
+  });
+};
+
+/** Run at the app's chapter mount, outside rendering. Both the hub and the
+ * internal archive then read the same corrected saved copy, including aliases. */
+export const refreshChapterRegelbuch = (level: PaintLevel): void => {
+  for (const { id: _id, skin: _skin, ...entry } of chapterRegelSeiten(level, readRegelbuch())) rememberRegelSeite(entry);
 };

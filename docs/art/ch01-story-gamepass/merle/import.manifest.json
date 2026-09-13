@@ -1,0 +1,1422 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "assets": [
+    {
+      "source": "merle-motion-v2-original.png",
+      "stem": "merle_a",
+      "width": 282,
+      "height": 428,
+      "x": [
+        [
+          0,
+          131
+        ],
+        [
+          281,
+          412
+        ]
+      ],
+      "y": [
+        [
+          0,
+          63
+        ],
+        [
+          427,
+          490
+        ]
+      ],
+      "sourceChromaMatte": "no-violet",
+      "sourceCrop": {
+        "x": 129,
+        "y": 61,
+        "width": 286,
+        "height": 432,
+        "foregroundBounds": {
+          "x": 135,
+          "y": 67,
+          "width": 274,
+          "height": 420
+        }
+      }
+    },
+    {
+      "source": "merle-motion-v2-original.png",
+      "stem": "merle_b",
+      "width": 282,
+      "height": 428,
+      "x": [
+        [
+          0,
+          131
+        ],
+        [
+          281,
+          412
+        ]
+      ],
+      "y": [
+        [
+          0,
+          63
+        ],
+        [
+          427,
+          490
+        ]
+      ],
+      "sourceChromaMatte": "no-violet",
+      "sourceCrop": {
+        "x": 129,
+        "y": 61,
+        "width": 286,
+        "height": 432,
+        "foregroundBounds": {
+          "x": 135,
+          "y": 67,
+          "width": 274,
+          "height": 420
+        }
+      }
+    },
+    {
+      "source": "merle-motion-v2-original.png",
+      "stem": "merle_caged0",
+      "width": 282,
+      "height": 428,
+      "x": [
+        [
+          0,
+          131
+        ],
+        [
+          281,
+          412
+        ]
+      ],
+      "y": [
+        [
+          0,
+          63
+        ],
+        [
+          427,
+          490
+        ]
+      ],
+      "sourceChromaMatte": "no-violet",
+      "sourceCrop": {
+        "x": 129,
+        "y": 61,
+        "width": 286,
+        "height": 432,
+        "foregroundBounds": {
+          "x": 135,
+          "y": 67,
+          "width": 274,
+          "height": 420
+        }
+      }
+    },
+    {
+      "source": "merle-motion-v2-original.png",
+      "stem": "merle_caged1",
+      "width": 282,
+      "height": 428,
+      "x": [
+        [
+          0,
+          131
+        ],
+        [
+          281,
+          412
+        ]
+      ],
+      "y": [
+        [
+          0,
+          63
+        ],
+        [
+          427,
+          490
+        ]
+      ],
+      "sourceChromaMatte": "no-violet",
+      "sourceCrop": {
+        "x": 129,
+        "y": 61,
+        "width": 286,
+        "height": 432,
+        "foregroundBounds": {
+          "x": 135,
+          "y": 67,
+          "width": 274,
+          "height": 420
+        }
+      }
+    },
+    {
+      "source": "merle-motion-v2-original.png",
+      "stem": "merle_settle0",
+      "width": 282,
+      "height": 428,
+      "x": [
+        [
+          0,
+          131
+        ],
+        [
+          281,
+          412
+        ]
+      ],
+      "y": [
+        [
+          0,
+          63
+        ],
+        [
+          427,
+          490
+        ]
+      ],
+      "sourceChromaMatte": "no-violet",
+      "sourceCrop": {
+        "x": 129,
+        "y": 61,
+        "width": 286,
+        "height": 432,
+        "foregroundBounds": {
+          "x": 135,
+          "y": 67,
+          "width": 274,
+          "height": 420
+        }
+      }
+    },
+    {
+      "source": "merle-motion-v2-original.png",
+      "stem": "merle_walk1",
+      "width": 295,
+      "height": 421,
+      "x": [
+        [
+          0,
+          590
+        ],
+        [
+          294,
+          884
+        ]
+      ],
+      "y": [
+        [
+          0,
+          73
+        ],
+        [
+          420,
+          493
+        ]
+      ],
+      "sourceChromaMatte": "no-violet",
+      "sourceCrop": {
+        "x": 588,
+        "y": 71,
+        "width": 299,
+        "height": 425,
+        "foregroundBounds": {
+          "x": 594,
+          "y": 77,
+          "width": 287,
+          "height": 413
+        }
+      }
+    },
+    {
+      "source": "merle-motion-v2-original.png",
+      "stem": "merle_walk2",
+      "width": 290,
+      "height": 428,
+      "x": [
+        [
+          0,
+          132
+        ],
+        [
+          289,
+          421
+        ]
+      ],
+      "y": [
+        [
+          0,
+          548
+        ],
+        [
+          427,
+          975
+        ]
+      ],
+      "sourceChromaMatte": "no-violet",
+      "sourceCrop": {
+        "x": 130,
+        "y": 546,
+        "width": 294,
+        "height": 432,
+        "foregroundBounds": {
+          "x": 136,
+          "y": 552,
+          "width": 282,
+          "height": 420
+        }
+      }
+    },
+    {
+      "source": "merle-motion-v2-original.png",
+      "stem": "merle_walk3",
+      "width": 290,
+      "height": 428,
+      "x": [
+        [
+          0,
+          132
+        ],
+        [
+          289,
+          421
+        ]
+      ],
+      "y": [
+        [
+          0,
+          548
+        ],
+        [
+          427,
+          975
+        ]
+      ],
+      "sourceChromaMatte": "no-violet",
+      "sourceCrop": {
+        "x": 130,
+        "y": 546,
+        "width": 294,
+        "height": 432,
+        "foregroundBounds": {
+          "x": 136,
+          "y": 552,
+          "width": 282,
+          "height": 420
+        }
+      }
+    },
+    {
+      "source": "merle-motion-v2-original.png",
+      "stem": "merle_joy",
+      "width": 332,
+      "height": 393,
+      "x": [
+        [
+          0,
+          589
+        ],
+        [
+          331,
+          920
+        ]
+      ],
+      "y": [
+        [
+          0,
+          551
+        ],
+        [
+          392,
+          943
+        ]
+      ],
+      "sourceChromaMatte": "no-violet",
+      "sourceCrop": {
+        "x": 587,
+        "y": 549,
+        "width": 336,
+        "height": 397,
+        "foregroundBounds": {
+          "x": 593,
+          "y": 555,
+          "width": 324,
+          "height": 385
+        }
+      }
+    },
+    {
+      "source": "merle-motion-v2-original.png",
+      "stem": "merle_joy1",
+      "width": 332,
+      "height": 393,
+      "x": [
+        [
+          0,
+          589
+        ],
+        [
+          331,
+          920
+        ]
+      ],
+      "y": [
+        [
+          0,
+          551
+        ],
+        [
+          392,
+          943
+        ]
+      ],
+      "sourceChromaMatte": "no-violet",
+      "sourceCrop": {
+        "x": 587,
+        "y": 549,
+        "width": 336,
+        "height": 397,
+        "foregroundBounds": {
+          "x": 593,
+          "y": 555,
+          "width": 324,
+          "height": 385
+        }
+      }
+    },
+    {
+      "source": "merle-motion-v2-original.png",
+      "stem": "merle_wave0",
+      "width": 311,
+      "height": 449,
+      "x": [
+        [
+          0,
+          128
+        ],
+        [
+          310,
+          438
+        ]
+      ],
+      "y": [
+        [
+          0,
+          1015
+        ],
+        [
+          448,
+          1463
+        ]
+      ],
+      "sourceChromaMatte": "no-violet",
+      "sourceCrop": {
+        "x": 126,
+        "y": 1013,
+        "width": 315,
+        "height": 453,
+        "foregroundBounds": {
+          "x": 132,
+          "y": 1019,
+          "width": 303,
+          "height": 441
+        }
+      }
+    },
+    {
+      "source": "merle-motion-v2-original.png",
+      "stem": "merle_wave1",
+      "width": 311,
+      "height": 449,
+      "x": [
+        [
+          0,
+          128
+        ],
+        [
+          310,
+          438
+        ]
+      ],
+      "y": [
+        [
+          0,
+          1015
+        ],
+        [
+          448,
+          1463
+        ]
+      ],
+      "sourceChromaMatte": "no-violet",
+      "sourceCrop": {
+        "x": 126,
+        "y": 1013,
+        "width": 315,
+        "height": 453,
+        "foregroundBounds": {
+          "x": 132,
+          "y": 1019,
+          "width": 303,
+          "height": 441
+        }
+      }
+    },
+    {
+      "source": "merle-motion-v2-original.png",
+      "stem": "merle_settle1",
+      "width": 303,
+      "height": 448,
+      "x": [
+        [
+          0,
+          596
+        ],
+        [
+          302,
+          898
+        ]
+      ],
+      "y": [
+        [
+          0,
+          1017
+        ],
+        [
+          447,
+          1464
+        ]
+      ],
+      "sourceChromaMatte": "no-violet",
+      "sourceCrop": {
+        "x": 594,
+        "y": 1015,
+        "width": 307,
+        "height": 452,
+        "foregroundBounds": {
+          "x": 600,
+          "y": 1021,
+          "width": 295,
+          "height": 440
+        }
+      }
+    },
+    {
+      "source": "merle-actions-sing-stand-original.png",
+      "stem": "merle_act_sing0",
+      "width": 456,
+      "height": 480,
+      "x": [
+        [
+          0,
+          112.83050847457628
+        ],
+        [
+          455,
+          587.1101694915254
+        ]
+      ],
+      "y": [
+        [
+          0,
+          41.83050847457627
+        ],
+        [
+          479,
+          541.1271186440679
+        ]
+      ],
+      "sourceChromaMatte": "no-violet",
+      "sourceCrop": {
+        "x": 111,
+        "y": 40,
+        "width": 479,
+        "height": 504,
+        "foregroundBounds": {
+          "x": 117,
+          "y": 46,
+          "width": 467,
+          "height": 492
+        }
+      }
+    },
+    {
+      "source": "merle-actions-sing-stand-original.png",
+      "stem": "merle_act_sing1",
+      "width": 458,
+      "height": 480,
+      "x": [
+        [
+          0,
+          712.8389830508474
+        ],
+        [
+          457,
+          1188.2351694915255
+        ]
+      ],
+      "y": [
+        [
+          0,
+          42.83898305084746
+        ],
+        [
+          479,
+          541.1207627118644
+        ]
+      ],
+      "sourceChromaMatte": "no-violet",
+      "sourceCrop": {
+        "x": 711,
+        "y": 41,
+        "width": 480,
+        "height": 503,
+        "foregroundBounds": {
+          "x": 717,
+          "y": 47,
+          "width": 468,
+          "height": 491
+        }
+      }
+    },
+    {
+      "source": "merle-actions-sing-stand-original.png",
+      "stem": "merle_act_stand0",
+      "width": 356,
+      "height": 480,
+      "x": [
+        [
+          0,
+          124.89830508474576
+        ],
+        [
+          355,
+          577.6737288135594
+        ]
+      ],
+      "y": [
+        [
+          0,
+          585.8983050847457
+        ],
+        [
+          479,
+          1196.8262711864406
+        ]
+      ],
+      "sourceChromaMatte": "no-violet",
+      "sourceCrop": {
+        "x": 124,
+        "y": 585,
+        "width": 456,
+        "height": 614,
+        "foregroundBounds": {
+          "x": 130,
+          "y": 591,
+          "width": 444,
+          "height": 602
+        }
+      }
+    },
+    {
+      "source": "merle-actions-sing-stand-original.png",
+      "stem": "merle_act_stand1",
+      "width": 352,
+      "height": 480,
+      "x": [
+        [
+          0,
+          727.9152542372881
+        ],
+        [
+          351,
+          1174.1016949152543
+        ]
+      ],
+      "y": [
+        [
+          0,
+          587.9152542372881
+        ],
+        [
+          479,
+          1196.813559322034
+        ]
+      ],
+      "sourceChromaMatte": "no-violet",
+      "sourceCrop": {
+        "x": 727,
+        "y": 587,
+        "width": 449,
+        "height": 612,
+        "foregroundBounds": {
+          "x": 733,
+          "y": 593,
+          "width": 437,
+          "height": 600
+        }
+      }
+    },
+    {
+      "source": "merle-actions-scribble-window-original.png",
+      "stem": "merle_act_scribble0",
+      "width": 444,
+      "height": 480,
+      "x": [
+        [
+          0,
+          107.51694915254237
+        ],
+        [
+          443,
+          604.0148305084746
+        ]
+      ],
+      "y": [
+        [
+          0,
+          41.516949152542374
+        ],
+        [
+          479,
+          578.3622881355932
+        ]
+      ],
+      "sourceChromaMatte": "no-violet",
+      "sourceCrop": {
+        "x": 106,
+        "y": 40,
+        "width": 501,
+        "height": 541,
+        "foregroundBounds": {
+          "x": 112,
+          "y": 46,
+          "width": 489,
+          "height": 529
+        }
+      }
+    },
+    {
+      "source": "merle-actions-scribble-window-original.png",
+      "stem": "merle_act_scribble1",
+      "width": 446,
+      "height": 480,
+      "x": [
+        [
+          0,
+          710.5338983050848
+        ],
+        [
+          445,
+          1207.3877118644068
+        ]
+      ],
+      "y": [
+        [
+          0,
+          41.53389830508475
+        ],
+        [
+          479,
+          576.3495762711865
+        ]
+      ],
+      "sourceChromaMatte": "no-violet",
+      "sourceCrop": {
+        "x": 709,
+        "y": 40,
+        "width": 501,
+        "height": 539,
+        "foregroundBounds": {
+          "x": 715,
+          "y": 46,
+          "width": 489,
+          "height": 527
+        }
+      }
+    },
+    {
+      "source": "merle-actions-scribble-window-original.png",
+      "stem": "merle_act_window0",
+      "width": 449,
+      "height": 480,
+      "x": [
+        [
+          0,
+          20.78813559322034
+        ],
+        [
+          448,
+          604.5169491525423
+        ]
+      ],
+      "y": [
+        [
+          0,
+          584.7881355932203
+        ],
+        [
+          479,
+          1208.9088983050847
+        ]
+      ],
+      "sourceChromaMatte": "no-violet",
+      "sourceCrop": {
+        "x": 20,
+        "y": 584,
+        "width": 586,
+        "height": 627,
+        "foregroundBounds": {
+          "x": 26,
+          "y": 590,
+          "width": 574,
+          "height": 615
+        }
+      }
+    },
+    {
+      "source": "merle-actions-scribble-window-original.png",
+      "stem": "merle_act_window1",
+      "width": 440,
+      "height": 480,
+      "x": [
+        [
+          0,
+          640.7966101694915
+        ],
+        [
+          439,
+          1211.8686440677966
+        ]
+      ],
+      "y": [
+        [
+          0,
+          583.7966101694915
+        ],
+        [
+          479,
+          1206.9025423728813
+        ]
+      ],
+      "sourceChromaMatte": "no-violet",
+      "sourceCrop": {
+        "x": 640,
+        "y": 583,
+        "width": 574,
+        "height": 626,
+        "foregroundBounds": {
+          "x": 646,
+          "y": 589,
+          "width": 562,
+          "height": 614
+        }
+      }
+    },
+    {
+      "source": "merle-actions-books-leave-original.png",
+      "stem": "merle_act_books0",
+      "width": 412,
+      "height": 480,
+      "x": [
+        [
+          0,
+          101.39830508474576
+        ],
+        [
+          411,
+          574.2224576271187
+        ]
+      ],
+      "y": [
+        [
+          0,
+          41.398305084745765
+        ],
+        [
+          479,
+          592.4512711864406
+        ]
+      ],
+      "sourceChromaMatte": "no-violet",
+      "sourceCrop": {
+        "x": 100,
+        "y": 40,
+        "width": 477,
+        "height": 555,
+        "foregroundBounds": {
+          "x": 106,
+          "y": 46,
+          "width": 465,
+          "height": 543
+        }
+      }
+    },
+    {
+      "source": "merle-actions-books-leave-original.png",
+      "stem": "merle_act_books1",
+      "width": 365,
+      "height": 480,
+      "x": [
+        [
+          0,
+          715.3898305084746
+        ],
+        [
+          364,
+          1134.915254237288
+        ]
+      ],
+      "y": [
+        [
+          0,
+          41.389830508474574
+        ],
+        [
+          479,
+          593.457627118644
+        ]
+      ],
+      "sourceChromaMatte": "no-violet",
+      "sourceCrop": {
+        "x": 714,
+        "y": 40,
+        "width": 424,
+        "height": 556,
+        "foregroundBounds": {
+          "x": 720,
+          "y": 46,
+          "width": 412,
+          "height": 544
+        }
+      }
+    },
+    {
+      "source": "merle-actions-books-leave-original.png",
+      "stem": "merle_act_leave0",
+      "width": 457,
+      "height": 480,
+      "x": [
+        [
+          0,
+          40.30508474576271
+        ],
+        [
+          456,
+          575.5254237288135
+        ]
+      ],
+      "y": [
+        [
+          0,
+          630.3050847457627
+        ],
+        [
+          479,
+          1192.5211864406779
+        ]
+      ],
+      "sourceChromaMatte": "no-violet",
+      "sourceCrop": {
+        "x": 39,
+        "y": 629,
+        "width": 539,
+        "height": 566,
+        "foregroundBounds": {
+          "x": 45,
+          "y": 635,
+          "width": 527,
+          "height": 554
+        }
+      }
+    },
+    {
+      "source": "merle-actions-books-leave-original.png",
+      "stem": "merle_act_leave1",
+      "width": 447,
+      "height": 480,
+      "x": [
+        [
+          0,
+          656.3050847457627
+        ],
+        [
+          446,
+          1179.7881355932204
+        ]
+      ],
+      "y": [
+        [
+          0,
+          630.3050847457627
+        ],
+        [
+          479,
+          1192.5211864406779
+        ]
+      ],
+      "sourceChromaMatte": "no-violet",
+      "sourceCrop": {
+        "x": 655,
+        "y": 629,
+        "width": 527,
+        "height": 566,
+        "foregroundBounds": {
+          "x": 661,
+          "y": 635,
+          "width": 515,
+          "height": 554
+        }
+      }
+    },
+    {
+      "source": "pencilcase-empty-states-original.png",
+      "stem": "pencilcase_a",
+      "width": 744,
+      "height": 440,
+      "x": [
+        [
+          0,
+          0
+        ],
+        [
+          743,
+          743
+        ]
+      ],
+      "y": [
+        [
+          0,
+          289
+        ],
+        [
+          439,
+          728
+        ]
+      ],
+      "sourceChromaMatte": "no-violet",
+      "sourceCrop": {
+        "x": 36,
+        "y": 293,
+        "width": 689,
+        "height": 392,
+        "foregroundBounds": {
+          "x": 42,
+          "y": 299,
+          "width": 677,
+          "height": 380
+        }
+      }
+    },
+    {
+      "source": "pencilcase-empty-states-original.png",
+      "stem": "pencilcase_b",
+      "width": 744,
+      "height": 440,
+      "x": [
+        [
+          0,
+          0
+        ],
+        [
+          743,
+          743
+        ]
+      ],
+      "y": [
+        [
+          0,
+          289
+        ],
+        [
+          439,
+          728
+        ]
+      ],
+      "sourceChromaMatte": "no-violet",
+      "sourceCrop": {
+        "x": 36,
+        "y": 293,
+        "width": 689,
+        "height": 392,
+        "foregroundBounds": {
+          "x": 42,
+          "y": 299,
+          "width": 677,
+          "height": 380
+        }
+      }
+    },
+    {
+      "source": "pencilcase-empty-states-original.png",
+      "stem": "pencilcase_open",
+      "width": 744,
+      "height": 440,
+      "x": [
+        [
+          0,
+          744
+        ],
+        [
+          743,
+          1487
+        ]
+      ],
+      "y": [
+        [
+          0,
+          289
+        ],
+        [
+          439,
+          728
+        ]
+      ],
+      "sourceChromaMatte": "no-violet",
+      "sourceCrop": {
+        "x": 758,
+        "y": 293,
+        "width": 733,
+        "height": 441,
+        "foregroundBounds": {
+          "x": 764,
+          "y": 299,
+          "width": 721,
+          "height": 429
+        }
+      }
+    },
+    {
+      "source": "merle-motion-v2-original.png",
+      "stem": "merle_c",
+      "width": 282,
+      "height": 428,
+      "x": [
+        [
+          0,
+          131
+        ],
+        [
+          281,
+          412
+        ]
+      ],
+      "y": [
+        [
+          0,
+          63
+        ],
+        [
+          427,
+          490
+        ]
+      ],
+      "sourceChromaMatte": "no-violet",
+      "sourceCrop": {
+        "x": 129,
+        "y": 61,
+        "width": 286,
+        "height": 432,
+        "foregroundBounds": {
+          "x": 135,
+          "y": 67,
+          "width": 274,
+          "height": 420
+        }
+      }
+    },
+    {
+      "source": "merle-motion-v2-original.png",
+      "stem": "merle_d",
+      "width": 282,
+      "height": 428,
+      "x": [
+        [
+          0,
+          131
+        ],
+        [
+          281,
+          412
+        ]
+      ],
+      "y": [
+        [
+          0,
+          63
+        ],
+        [
+          427,
+          490
+        ]
+      ],
+      "sourceChromaMatte": "no-violet",
+      "sourceCrop": {
+        "x": 129,
+        "y": 61,
+        "width": 286,
+        "height": 432,
+        "foregroundBounds": {
+          "x": 135,
+          "y": 67,
+          "width": 274,
+          "height": 420
+        }
+      }
+    },
+    {
+      "source": "merle-motion-v2-original.png",
+      "stem": "merle_run",
+      "width": 295,
+      "height": 421,
+      "x": [
+        [
+          0,
+          590
+        ],
+        [
+          294,
+          884
+        ]
+      ],
+      "y": [
+        [
+          0,
+          73
+        ],
+        [
+          420,
+          493
+        ]
+      ],
+      "sourceChromaMatte": "no-violet",
+      "sourceCrop": {
+        "x": 588,
+        "y": 71,
+        "width": 299,
+        "height": 425,
+        "foregroundBounds": {
+          "x": 594,
+          "y": 77,
+          "width": 287,
+          "height": 413
+        }
+      }
+    },
+    {
+      "source": "pencilcase-empty-states-original.png",
+      "stem": "pencilcase_burst",
+      "width": 744,
+      "height": 440,
+      "x": [
+        [
+          0,
+          744
+        ],
+        [
+          743,
+          1487
+        ]
+      ],
+      "y": [
+        [
+          0,
+          289
+        ],
+        [
+          439,
+          728
+        ]
+      ],
+      "sourceChromaMatte": "no-violet",
+      "sourceCrop": {
+        "x": 758,
+        "y": 293,
+        "width": 733,
+        "height": 441,
+        "foregroundBounds": {
+          "x": 764,
+          "y": 299,
+          "width": 721,
+          "height": 429
+        }
+      }
+    },
+    {
+      "source": "pencilcase-empty-states-original.png",
+      "stem": "pencilcase_open0",
+      "width": 744,
+      "height": 440,
+      "x": [
+        [
+          0,
+          744
+        ],
+        [
+          743,
+          1487
+        ]
+      ],
+      "y": [
+        [
+          0,
+          289
+        ],
+        [
+          439,
+          728
+        ]
+      ],
+      "sourceChromaMatte": "no-violet",
+      "sourceCrop": {
+        "x": 758,
+        "y": 293,
+        "width": 733,
+        "height": 441,
+        "foregroundBounds": {
+          "x": 764,
+          "y": 299,
+          "width": 721,
+          "height": 429
+        }
+      }
+    },
+    {
+      "source": "pencilcase-empty-states-original.png",
+      "stem": "pencilcase_open1",
+      "width": 744,
+      "height": 440,
+      "x": [
+        [
+          0,
+          744
+        ],
+        [
+          743,
+          1487
+        ]
+      ],
+      "y": [
+        [
+          0,
+          289
+        ],
+        [
+          439,
+          728
+        ]
+      ],
+      "sourceChromaMatte": "no-violet",
+      "sourceCrop": {
+        "x": 758,
+        "y": 293,
+        "width": 733,
+        "height": 441,
+        "foregroundBounds": {
+          "x": 764,
+          "y": 299,
+          "width": 721,
+          "height": 429
+        }
+      }
+    },
+    {
+      "source": "pencilcase-empty-states-original.png",
+      "stem": "pencilcase_open2",
+      "width": 744,
+      "height": 440,
+      "x": [
+        [
+          0,
+          744
+        ],
+        [
+          743,
+          1487
+        ]
+      ],
+      "y": [
+        [
+          0,
+          289
+        ],
+        [
+          439,
+          728
+        ]
+      ],
+      "sourceChromaMatte": "no-violet",
+      "sourceCrop": {
+        "x": 758,
+        "y": 293,
+        "width": 733,
+        "height": 441,
+        "foregroundBounds": {
+          "x": 764,
+          "y": 299,
+          "width": 721,
+          "height": 429
+        }
+      }
+    },
+    {
+      "source": "pencilcase-empty-states-original.png",
+      "stem": "pencilcase_shake",
+      "width": 744,
+      "height": 440,
+      "x": [
+        [
+          0,
+          0
+        ],
+        [
+          743,
+          743
+        ]
+      ],
+      "y": [
+        [
+          0,
+          289
+        ],
+        [
+          439,
+          728
+        ]
+      ],
+      "sourceChromaMatte": "no-violet",
+      "sourceCrop": {
+        "x": 36,
+        "y": 293,
+        "width": 689,
+        "height": 392,
+        "foregroundBounds": {
+          "x": 42,
+          "y": 299,
+          "width": 677,
+          "height": 380
+        }
+      }
+    }
+  ],
+  "legacyStateAliases": {
+    "reason": "Existing state files must keep the same new identity; repeated rest/open drawings are static, not invented animation.",
+    "aliases": {
+      "merle_c": "merle_a",
+      "merle_d": "merle_a",
+      "merle_run": "merle_walk1",
+      "pencilcase_burst": "pencilcase_open",
+      "pencilcase_open0": "pencilcase_open",
+      "pencilcase_open1": "pencilcase_open",
+      "pencilcase_open2": "pencilcase_open",
+      "pencilcase_shake": "pencilcase_a"
+    }
+  }
+}

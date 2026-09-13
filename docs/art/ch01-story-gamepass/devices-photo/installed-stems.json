@@ -1,0 +1,53 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "installed": [
+    {
+      "stem": "klassenfoto_a",
+      "target": "apps/web/public/art/g1/paint/ch01/klassenfoto_a.png",
+      "canvas": {
+        "width": 1408,
+        "height": 972
+      },
+      "previousSha256": null,
+      "outputSha256": "1ceb05be8f4aa91fd04a0ef410f75a8c8289a66b1ef5119f1ae62dbfbcfe28ca",
+      "source": "classphoto-15-original.png",
+      "sourceSha256": "4ac4e7214d82e0ce775ba0fa14e9755cd2aff2c696813f5411187f8d9f659d83"
+    },
+    {
+      "stem": "device_locker_a",
+      "target": "apps/web/public/art/g1/paint/ch01/device_locker_a.png",
+      "canvas": {
+        "width": 820,
+        "height": 736
+      },
+      "previousSha256": null,
+      "outputSha256": "a863c8e1906c049ca411b3d7afd49a666ea7a176bf46649e5874aade776f218c",
+      "source": "device-locker-empty-states-v2-original.png",
+      "sourceSha256": "a4f085cdae9bb22f86b1c6f63d7ddaa5b0a9966f5d9debe0e26f430f295adfc2"
+    },
+    {
+      "stem": "device_locker_b",
+      "target": "apps/web/public/art/g1/paint/ch01/device_locker_b.png",
+      "canvas": {
+        "width": 820,
+        "height": 736
+      },
+      "previousSha256": null,
+      "outputSha256": "a863c8e1906c049ca411b3d7afd49a666ea7a176bf46649e5874aade776f218c",
+      "source": "device-locker-empty-states-v2-original.png",
+      "sourceSha256": "a4f085cdae9bb22f86b1c6f63d7ddaa5b0a9966f5d9debe0e26f430f295adfc2"
+    },
+    {
+      "stem": "device_locker_open",
+      "target": "apps/web/public/art/g1/paint/ch01/device_locker_open.png",
+      "canvas": {
+        "width": 820,
+        "height": 736
+      },
+      "previousSha256": null,
+      "outputSha256": "cfd3d946d320a15f464c6512dffbf3d528d44807df83c15126bfc6efedb187e6",
+      "source": "device-locker-empty-states-v2-original.png",
+      "sourceSha256": "a4f085cdae9bb22f86b1c6f63d7ddaa5b0a9966f5d9debe0e26f430f295adfc2"
+    }
+  ]
+}

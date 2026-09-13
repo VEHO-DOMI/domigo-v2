@@ -28,7 +28,7 @@
       "words": [
         "red", "yellow", "blue", "orange", "green", "brown", "pink", "white", "black", "grey"
       ],
-      "narrowedByPolicy": "Die Varietäts-Policy führt neun dieser zehn: `grey` ist im Spiel der ENTFÄRBTE Zustand, den die Karte aufhebt, also nie eine Antwort. Das Buch lehrt es trotzdem — deshalb steht es hier und nicht dort."
+      "narrowedByPolicy": "Die Kapitel-1-Policy führt jetzt alle zehn Farben. Neutrale Zielfarben brauchen eine unabhängig sichtbare violette Tintenverhexung; Grau ist damit eine gelernte Farbe und nicht mehr zugleich das alleinige Zeichen für einen noch verhexten Zustand."
     },
     "g1u01.x.politeness": {
       "title": "Die Höflichkeitsformeln",

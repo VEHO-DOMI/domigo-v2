@@ -1,0 +1,29 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "originals": [
+    {
+      "subject": "dots",
+      "iteration": "first",
+      "generatedSource": "/Users/veho/.codex/generated_images/01a09a2f-d34b-7ed0-963d-a58057e19e2a/exec-e7614c79-e2d7-4c81-b4c1-ae3021a21b3f.png",
+      "sha256": "366a99af15a9424d4afcbdf0a433eb7c0bb8a9b0dfca02cf18b221153e0712f0"
+    },
+    {
+      "subject": "dots",
+      "iteration": "final",
+      "generatedSource": "/Users/veho/.codex/generated_images/01a09a2f-d34b-7ed0-963d-a58057e19e2a/exec-9888e4b3-04a9-4ad0-a7fa-baf5d5243eb3.png",
+      "sha256": "98899492dbbf1fb1222248294c0bfc73bf16fcc82fa310b3ae17aa0177ad57c5"
+    },
+    {
+      "subject": "books",
+      "iteration": "first",
+      "generatedSource": "/Users/veho/.codex/generated_images/01a09a2f-d34b-7ed0-963d-a58057e19e2a/exec-77302eff-961d-4f20-872e-390320c82a80.png",
+      "sha256": "06b9771028e54de20cd0e906202abb4ba5fb9d0d552281d37f986a8ff3762b0d"
+    },
+    {
+      "subject": "books",
+      "iteration": "final",
+      "generatedSource": "/Users/veho/.codex/generated_images/01a09a2f-d34b-7ed0-963d-a58057e19e2a/exec-0b4b9166-a9c4-4f54-81c6-1bb9fedb33fe.png",
+      "sha256": "fbbcb8f84761fcb00757224e259665703a6ea95565705226f17636ac50a9bd5a"
+    }
+  ]
+}

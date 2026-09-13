@@ -53,7 +53,7 @@
    ]
   },
   "g1u01.x.colours": {
-   "reason": "Same shape as the numbers: the colour half of every restore card is the chapter's core mechanic (doc 41 §2) and is taught by the unit, but no colour is a wordbank entry of its own. `grey` is deliberately absent — it is the drained state the card undoes, never an answer (the schema forbids offering it).",
+   "reason": "The unit explicitly teaches ten colour words, including grey (SB p.12 ex.12b; corpus lexicon-classes). Chapter one now restores one object in each of those ten colours. Neutral targets declare curseVisual violet-ink: their visible ink curse is independent of the final surface colour, so restoring grey does not mean leaving the object unchanged.",
    "words": [
     "red",
     "yellow",
@@ -63,7 +63,8 @@
     "brown",
     "pink",
     "white",
-    "black"
+    "black",
+    "grey"
    ]
   },
   "g1u01.x.politeness": {
@@ -112,20 +113,57 @@
    }
   },
   {
-   "id": "uniform-naming",
+   "id": "moth-number-wheel",
    "match": {
-    "use": "pickupset"
+    "use": "quickfire",
+    "kind": "wheel",
+    "skins": [
+     "moths"
+    ]
    },
    "exempts": [
-    "14c",
-    "15d",
-    "14d"
+    "16b"
    ],
-   "reason": "Die neun Benenn-Karten der verstreuten Uniform sind KEINE neun Karten über ein Wesen — sie sind neun Wesen mit je einer Karte. Das Raster liest den Pool als eine Stimme, weil die Karten an kein Wesen gebunden sind (sie öffnen erst, wenn das Teil schon aufgehoben ist, also niemand mehr dasteht). Genau deshalb fragt jede dieselbe Sache: Bild → Wort. Die Gleichförmigkeit IST die Lektion — neun Wörter einer Schulbuchseite, in derselben Geste gelernt (UNIFORM_SAMMELN_DESIGN §1, Kokis Auftrag vom 15.08.). Erkauft wird sie mit zwei härteren Pflichten: jede Karte antwortet ein ANDERES Wort, und jede erzählt einen anderen Fundort. 14d kommt dazu, weil die Karten an KEINE Phase gebunden sind (ein Teil kann in jedem Raum gefunden werden) und deshalb in die Varietäts-Rechnung jedes Raums fielen — die Kleckskammer sah dadurch aus wie ein Raum, der neunmal dasselbe fragt, obwohl sie gar keine eigenen Karten hat.",
-   "doc": "docs/design/g1/paint/UNIFORM_SAMMELN_DESIGN.md §1",
+   "reason": "Die Zahlenschwärme wiederholen bewusst dieselbe Bedienung. Das Kind übersetzt wechselnde Zahlen zwischen Ziffer und Zahlwort. Unterschiedliche Antworten sind Pflicht; ein neuer Fragesatz pro Zahl würde die Anleitung unnötig verändern.",
+   "doc": "Kokis Kapitel-1-Spieldurchgang vom 13.09.2026",
    "obliges": {
-    "distinctAnswers": true,
-    "distinctStoryDe": true
+    "distinctAnswers": true
+   }
+  },
+  {
+   "id": "schoolbag-sorting",
+   "match": {
+    "use": "encounter",
+    "kind": "oddone",
+    "skins": [
+     "ranzen"
+    ]
+   },
+   "exempts": [
+    "16b"
+   ],
+   "reason": "Beim Sortieren bleibt die Frage nach dem unpassenden Gegenstand gleich. Jede Karte verlangt ein anderes ausgeschiedenes Wort; es ist keine doppelte Aufgabe.",
+   "doc": "Kokis Kapitel-1-Spieldurchgang vom 13.09.2026",
+   "obliges": {
+    "distinctAnswers": true
+   }
+  },
+  {
+   "id": "locked-school-equipment",
+   "match": {
+    "use": "rescue",
+    "kind": "choice",
+    "skins": [
+     "satchel"
+    ]
+   },
+   "exempts": [
+    "16b"
+   ],
+   "reason": "Die Benennaufgabe an verschlossenen Schulgegenständen bleibt gleich. Jede Karte zeigt und benennt einen anderen Gegenstand; identische richtige Antworten sind ausgeschlossen.",
+   "doc": "Kokis Kapitel-1-Spieldurchgang vom 13.09.2026",
+   "obliges": {
+    "distinctAnswers": true
    }
   }
  ],
@@ -305,17 +343,73 @@
    "obj_schoolbag": "Schultasche",
    "pen": "Füllfeder",
    "heft": "Heft",
-   "obj_desk": "Tisch",
+   "obj_desk": "Schreibtisch",
    "obj_scissors": "Schere",
    "obj_gluestick": "Klebestift",
-   "obj_sharpener": "Spitzer"
+   "obj_sharpener": "Spitzer",
+   "obj_chair": "Stuhl"
   },
   "captivesReason": "Die Kaefig-Karten teilen sich ALLE denselben Skin (satchel — das Portrait ist der Kaefig, nie der Insasse), also kann ihr Nomen nicht am Skin haengen; es haengt an der Karte. Die Namen sind die ratifizierte Insassen-Tabelle aus STORY_SPINE_CH01 §2 — EIN Ding, EIN Wort quer ueber Lehr-, Rettungs- und Befreiungs-Karte. Genau dort sass der schaerfste Fund einer frueheren Runde: die Lehr-Karte sagte >die Musikanlage<, die Rettungs-Karte zehn Sekunden spaeter >ein Lautsprecher<, und verbrannte damit die Vokabel-Bruecke, die sie eben gebaut hatte.",
   "captives": {
    "rsc.soundsystem.r1": "Musikanlage",
    "rsc.tablet.r1": "Tablet",
-   "rsc.chair.r1": "Stuhl",
    "rsc.picture.r1": "Klassenfoto"
   }
- }
+ },
+ "passiveCoverage": [
+  {
+   "wordId": "g1u01.w.hairband",
+   "entityId": "p1-cloth-hairband",
+   "phaseId": "p1",
+   "reason": "Das Kind sammelt dieses erreichbare Kleidungsstück ein. Dabei erscheint sein englischer Name; es öffnet sich keine Quizkarte."
+  },
+  {
+   "wordId": "g1u01.w.hat",
+   "entityId": "p1-cloth-hat",
+   "phaseId": "p1",
+   "reason": "Das Kind sammelt dieses erreichbare Kleidungsstück ein. Dabei erscheint sein englischer Name; es öffnet sich keine Quizkarte."
+  },
+  {
+   "wordId": "g1u01.w.sunglasses",
+   "entityId": "p1-cloth-sunglasses",
+   "phaseId": "p1",
+   "reason": "Das Kind sammelt dieses erreichbare Kleidungsstück ein. Dabei erscheint sein englischer Name; es öffnet sich keine Quizkarte."
+  },
+  {
+   "wordId": "g1u01.w.shirt",
+   "entityId": "p2-cloth-shirt",
+   "phaseId": "p2",
+   "reason": "Das Kind sammelt dieses erreichbare Kleidungsstück ein. Dabei erscheint sein englischer Name; es öffnet sich keine Quizkarte."
+  },
+  {
+   "wordId": "g1u01.w.school-tie",
+   "entityId": "p2-cloth-school-tie",
+   "phaseId": "p2",
+   "reason": "Das Kind sammelt dieses erreichbare Kleidungsstück ein. Dabei erscheint sein englischer Name; es öffnet sich keine Quizkarte."
+  },
+  {
+   "wordId": "g1u01.w.sweater",
+   "entityId": "p2-cloth-sweater",
+   "phaseId": "p2",
+   "reason": "Das Kind sammelt dieses erreichbare Kleidungsstück ein. Dabei erscheint sein englischer Name; es öffnet sich keine Quizkarte."
+  },
+  {
+   "wordId": "g1u01.w.skirt",
+   "entityId": "p3-cloth-skirt",
+   "phaseId": "p3",
+   "reason": "Das Kind sammelt dieses erreichbare Kleidungsstück ein. Dabei erscheint sein englischer Name; es öffnet sich keine Quizkarte."
+  },
+  {
+   "wordId": "g1u01.w.socks",
+   "entityId": "p3-cloth-socks",
+   "phaseId": "p3",
+   "reason": "Das Kind sammelt dieses erreichbare Kleidungsstück ein. Dabei erscheint sein englischer Name; es öffnet sich keine Quizkarte."
+  },
+  {
+   "wordId": "g1u01.w.shoe",
+   "entityId": "p3-cloth-shoe",
+   "phaseId": "p3",
+   "reason": "Das Kind sammelt dieses erreichbare Kleidungsstück ein. Dabei erscheint sein englischer Name; es öffnet sich keine Quizkarte."
+  }
+ ]
 }

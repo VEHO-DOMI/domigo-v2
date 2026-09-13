@@ -1,0 +1,81 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "method": "Bounded connected alpha<=16 components; main window is largest component. safeRectangle is the largest axis-aligned rectangle inside its bounds whose every PNG pixel has alpha=0. Bounds alone include rounded corners; do not use bounds as an all-transparent rectangle.",
+  "canvas": {
+    "width": 820,
+    "height": 736
+  },
+  "registeredHull": {
+    "left": 20,
+    "right": 570,
+    "top": 16,
+    "baseline": 676
+  },
+  "images": [
+    {
+      "stem": "device_locker_a",
+      "holes": [
+        {
+          "x": 141,
+          "y": 147,
+          "width": 261,
+          "height": 410,
+          "pixels": 105625
+        }
+      ],
+      "mainWindow": {
+        "x": 141,
+        "y": 147,
+        "width": 261,
+        "height": 410,
+        "pixels": 105625
+      },
+      "safeRectangle": {
+        "x": 158,
+        "y": 149,
+        "width": 239,
+        "height": 405,
+        "area": 96795
+      }
+    },
+    {
+      "stem": "device_locker_open",
+      "holes": [
+        {
+          "x": 134,
+          "y": 122,
+          "width": 314,
+          "height": 451,
+          "pixels": 141512
+        },
+        {
+          "x": 556,
+          "y": 133,
+          "width": 140,
+          "height": 493,
+          "pixels": 64663
+        }
+      ],
+      "mainWindow": {
+        "x": 134,
+        "y": 122,
+        "width": 314,
+        "height": 451,
+        "pixels": 141512
+      },
+      "safeRectangle": {
+        "x": 135,
+        "y": 123,
+        "width": 313,
+        "height": 449,
+        "area": 140537
+      }
+    }
+  ],
+  "commonSafeDeviceRectangle": {
+    "x": 158,
+    "y": 149,
+    "width": 239,
+    "height": 405
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "canvas": {
+    "width": 384,
+    "height": 512
+  },
+  "checks": [
+    {
+      "stem": "tafel_rest",
+      "writingRectangle": {
+        "x": 80,
+        "y": 264,
+        "width": 230,
+        "height": 96
+      },
+      "pixelsChecked": 22080,
+      "nonGreen": 0
+    },
+    {
+      "stem": "tafel_win",
+      "writingRectangle": {
+        "x": 80,
+        "y": 264,
+        "width": 230,
+        "height": 96
+      },
+      "pixelsChecked": 22080,
+      "nonGreen": 0
+    }
+  ]
+}

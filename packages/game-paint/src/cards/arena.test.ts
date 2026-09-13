@@ -119,25 +119,24 @@ describe("was die Anleitung sagt", () => {
     // dieses Gesetz die Zeilen und nicht den Quelltext.
     for (const l of all) {
       const text = Object.values(l).join(" ").toLowerCase();
-      expect(text, `„${text}" trägt noch die Knoten-Lore`).not.toMatch(/knoten|verknotet|tinte/);
+      expect(text, `„${text}" trägt noch die Knoten-Lore`).not.toMatch(/knoten|verknotet/);
     }
   });
 
   it("beantwortet BEIDE Fragen, die Koki gestellt hat", () => {
-    // F1 „warum wirft sie?" — der erste Takt muss den Zustand benennen, aus dem
-    // ihre Laune folgt: vollgekritzelt, ungeputzt, grantig.
-    // F2 „wie besiegt man sie?" — der zweite muss die ganze Schleife benennen,
-    // inklusive des HINGEHENS, das seit R5-W4 eine eigene Handlung ist.
-    const wer = Object.values(arenaLines("wer" as ArenaBeat)).join(" ").toLowerCase();
-    expect(wer, "der erste Takt muss die Kritzelei benennen").toMatch(/kritzel/);
-    expect(wer, "…und ihre Laune").toContain("grantig");
-    expect(wer, "…und den Auftrag").toMatch(/wisch/);
-    const wie = Object.values(arenaLines("wie" as ArenaBeat)).join(" ").toLowerCase();
-    expect(wie, "der zweite Takt muss das Ausweichen nennen").toMatch(/weich .* aus|ausweichen/);
-    expect(wie, "…und das Antworten").toMatch(/antworte/);
-    expect(wie, "…und das Hingehen").toMatch(/geh hin/);
-    expect(wie, "…und das Wischen einer Schicht").toMatch(/wisch/);
-    expect(wie, "…und dass es je eine Schicht ist").toContain("schicht");
+    // Kokis Spielpass: Verhexung und sichtbare Kritzeleien begründen die
+    // Gefahr. Beide Bilder erklären zusammen die tatsächlich gespielte Folge.
+    const wer = Object.values(arenaLines("wer")).join(" ").toLowerCase();
+    expect(wer).toContain("verhext");
+    expect(wer).toMatch(/kritzel/);
+    expect(wer).toMatch(/weich .* aus/);
+    expect(wer).toContain("landet");
+    const wie = Object.values(arenaLines("wie")).join(" ").toLowerCase();
+    expect(wie).toContain("unten");
+    expect(wie).toContain("aufgabe");
+    expect(wie).toContain("geh danach zur tafel");
+    expect(wie).toContain("wisch");
+    expect(wie).toContain("eine schicht");
   });
 });
 

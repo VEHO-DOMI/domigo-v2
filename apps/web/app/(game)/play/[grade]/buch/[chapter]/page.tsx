@@ -118,6 +118,7 @@ export default async function BuchPage({
   return (
     <main style={{ padding: "12px 8px", background: "#f3ead6", minHeight: "100vh" }}>
       <BuchClient
+        playerKey={acting.userId}
         level={level}
         art={art}
         tasks={tasks}

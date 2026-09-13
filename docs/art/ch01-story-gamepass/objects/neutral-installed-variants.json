@@ -1,0 +1,140 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "authorization": "Root visually approved all three sources and authorized all active variant replacements 2026-09-13",
+  "limitation": "Each skin currently uses one identical drawing for all poses; runtime movement remains. No colour reversion to old animation frames.",
+  "variants": [
+    {
+      "skin": "pen",
+      "target": "apps/web/public/art/g1/paint/ch01/pen_a.png",
+      "oldSha256": "15ecf4911d18cfbcb6dc9be277b28d4ab2730e3ecb8d3691fa25edbaf69c2b34",
+      "source": "/Users/veho/Code/codex-lab/trial-berichte/CH01_STORY_SPIELPASS/imported-neutral-material/pen_a.png",
+      "newSha256": "309dd8f1c90d6dc30e35e43a1127ed1f592fc48befe4aa04039889afb54dd8d3"
+    },
+    {
+      "skin": "pen",
+      "target": "apps/web/public/art/g1/paint/ch01/pen_act.png",
+      "oldSha256": "5e1c954cc2c37318de8918fa992a2f1ebe0479e31c573c605d77c54f1c19659d",
+      "source": "/Users/veho/Code/codex-lab/trial-berichte/CH01_STORY_SPIELPASS/imported-neutral-material/pen_a.png",
+      "newSha256": "309dd8f1c90d6dc30e35e43a1127ed1f592fc48befe4aa04039889afb54dd8d3"
+    },
+    {
+      "skin": "pen",
+      "target": "apps/web/public/art/g1/paint/ch01/pen_b.png",
+      "oldSha256": "15ecf4911d18cfbcb6dc9be277b28d4ab2730e3ecb8d3691fa25edbaf69c2b34",
+      "source": "/Users/veho/Code/codex-lab/trial-berichte/CH01_STORY_SPIELPASS/imported-neutral-material/pen_a.png",
+      "newSha256": "309dd8f1c90d6dc30e35e43a1127ed1f592fc48befe4aa04039889afb54dd8d3"
+    },
+    {
+      "skin": "pen",
+      "target": "apps/web/public/art/g1/paint/ch01/pen_dazed.png",
+      "oldSha256": "15ecf4911d18cfbcb6dc9be277b28d4ab2730e3ecb8d3691fa25edbaf69c2b34",
+      "source": "/Users/veho/Code/codex-lab/trial-berichte/CH01_STORY_SPIELPASS/imported-neutral-material/pen_a.png",
+      "newSha256": "309dd8f1c90d6dc30e35e43a1127ed1f592fc48befe4aa04039889afb54dd8d3"
+    },
+    {
+      "skin": "pen",
+      "target": "apps/web/public/art/g1/paint/ch01/pen_run.png",
+      "oldSha256": "5e1c954cc2c37318de8918fa992a2f1ebe0479e31c573c605d77c54f1c19659d",
+      "source": "/Users/veho/Code/codex-lab/trial-berichte/CH01_STORY_SPIELPASS/imported-neutral-material/pen_a.png",
+      "newSha256": "309dd8f1c90d6dc30e35e43a1127ed1f592fc48befe4aa04039889afb54dd8d3"
+    },
+    {
+      "skin": "pen",
+      "target": "apps/web/public/art/g1/paint/ch01/pen_telegraph.png",
+      "oldSha256": "2e8d872df0f11de08e8712e803ccee3ad9a75e6bedb20d49bf11dcc687b99ddb",
+      "source": "/Users/veho/Code/codex-lab/trial-berichte/CH01_STORY_SPIELPASS/imported-neutral-material/pen_a.png",
+      "newSha256": "309dd8f1c90d6dc30e35e43a1127ed1f592fc48befe4aa04039889afb54dd8d3"
+    },
+    {
+      "skin": "heft",
+      "target": "apps/web/public/art/g1/paint/ch01/heft_a.png",
+      "oldSha256": "847d09b30a5b0ff3987262c81178796d068889d4baf01e7f1df3e35b98a97117",
+      "source": "/Users/veho/Code/codex-lab/trial-berichte/CH01_STORY_SPIELPASS/imported-neutral-material/heft_a.png",
+      "newSha256": "5383626da1b13fcf1e6a75259e7d98504cb766fd2e22f8dc3fd434efc8a72cce"
+    },
+    {
+      "skin": "heft",
+      "target": "apps/web/public/art/g1/paint/ch01/heft_act.png",
+      "oldSha256": "ccea6be897767f445d826ac2339f6154a87c25dde1d40b1316144937da450694",
+      "source": "/Users/veho/Code/codex-lab/trial-berichte/CH01_STORY_SPIELPASS/imported-neutral-material/heft_a.png",
+      "newSha256": "5383626da1b13fcf1e6a75259e7d98504cb766fd2e22f8dc3fd434efc8a72cce"
+    },
+    {
+      "skin": "heft",
+      "target": "apps/web/public/art/g1/paint/ch01/heft_b.png",
+      "oldSha256": "847d09b30a5b0ff3987262c81178796d068889d4baf01e7f1df3e35b98a97117",
+      "source": "/Users/veho/Code/codex-lab/trial-berichte/CH01_STORY_SPIELPASS/imported-neutral-material/heft_a.png",
+      "newSha256": "5383626da1b13fcf1e6a75259e7d98504cb766fd2e22f8dc3fd434efc8a72cce"
+    },
+    {
+      "skin": "heft",
+      "target": "apps/web/public/art/g1/paint/ch01/heft_bank.png",
+      "oldSha256": "ccea6be897767f445d826ac2339f6154a87c25dde1d40b1316144937da450694",
+      "source": "/Users/veho/Code/codex-lab/trial-berichte/CH01_STORY_SPIELPASS/imported-neutral-material/heft_a.png",
+      "newSha256": "5383626da1b13fcf1e6a75259e7d98504cb766fd2e22f8dc3fd434efc8a72cce"
+    },
+    {
+      "skin": "heft",
+      "target": "apps/web/public/art/g1/paint/ch01/heft_dazed.png",
+      "oldSha256": "847d09b30a5b0ff3987262c81178796d068889d4baf01e7f1df3e35b98a97117",
+      "source": "/Users/veho/Code/codex-lab/trial-berichte/CH01_STORY_SPIELPASS/imported-neutral-material/heft_a.png",
+      "newSha256": "5383626da1b13fcf1e6a75259e7d98504cb766fd2e22f8dc3fd434efc8a72cce"
+    },
+    {
+      "skin": "heft",
+      "target": "apps/web/public/art/g1/paint/ch01/heft_run.png",
+      "oldSha256": "ccea6be897767f445d826ac2339f6154a87c25dde1d40b1316144937da450694",
+      "source": "/Users/veho/Code/codex-lab/trial-berichte/CH01_STORY_SPIELPASS/imported-neutral-material/heft_a.png",
+      "newSha256": "5383626da1b13fcf1e6a75259e7d98504cb766fd2e22f8dc3fd434efc8a72cce"
+    },
+    {
+      "skin": "heft",
+      "target": "apps/web/public/art/g1/paint/ch01/heft_telegraph.png",
+      "oldSha256": "ab841426d5caa6d9443255026bc75e48a8e73132291cb14a4e8e9d847fe638f9",
+      "source": "/Users/veho/Code/codex-lab/trial-berichte/CH01_STORY_SPIELPASS/imported-neutral-material/heft_a.png",
+      "newSha256": "5383626da1b13fcf1e6a75259e7d98504cb766fd2e22f8dc3fd434efc8a72cce"
+    },
+    {
+      "skin": "obj_scissors",
+      "target": "apps/web/public/art/g1/paint/ch01/obj_scissors_a.png",
+      "oldSha256": "1359353434183e887b7156c9ea9ccf8678819dee780e7b00bef6f0db56556f35",
+      "source": "/Users/veho/Code/codex-lab/trial-berichte/CH01_STORY_SPIELPASS/imported-neutral-material/obj_scissors_a.png",
+      "newSha256": "4e58c050a77983110b8c15750234f39d09b14a007e7b937f40fa1accbb47f1e4"
+    },
+    {
+      "skin": "obj_scissors",
+      "target": "apps/web/public/art/g1/paint/ch01/obj_scissors_act.png",
+      "oldSha256": "1359353434183e887b7156c9ea9ccf8678819dee780e7b00bef6f0db56556f35",
+      "source": "/Users/veho/Code/codex-lab/trial-berichte/CH01_STORY_SPIELPASS/imported-neutral-material/obj_scissors_a.png",
+      "newSha256": "4e58c050a77983110b8c15750234f39d09b14a007e7b937f40fa1accbb47f1e4"
+    },
+    {
+      "skin": "obj_scissors",
+      "target": "apps/web/public/art/g1/paint/ch01/obj_scissors_b.png",
+      "oldSha256": "1359353434183e887b7156c9ea9ccf8678819dee780e7b00bef6f0db56556f35",
+      "source": "/Users/veho/Code/codex-lab/trial-berichte/CH01_STORY_SPIELPASS/imported-neutral-material/obj_scissors_a.png",
+      "newSha256": "4e58c050a77983110b8c15750234f39d09b14a007e7b937f40fa1accbb47f1e4"
+    },
+    {
+      "skin": "obj_scissors",
+      "target": "apps/web/public/art/g1/paint/ch01/obj_scissors_dazed.png",
+      "oldSha256": "1359353434183e887b7156c9ea9ccf8678819dee780e7b00bef6f0db56556f35",
+      "source": "/Users/veho/Code/codex-lab/trial-berichte/CH01_STORY_SPIELPASS/imported-neutral-material/obj_scissors_a.png",
+      "newSha256": "4e58c050a77983110b8c15750234f39d09b14a007e7b937f40fa1accbb47f1e4"
+    },
+    {
+      "skin": "obj_scissors",
+      "target": "apps/web/public/art/g1/paint/ch01/obj_scissors_run.png",
+      "oldSha256": "1359353434183e887b7156c9ea9ccf8678819dee780e7b00bef6f0db56556f35",
+      "source": "/Users/veho/Code/codex-lab/trial-berichte/CH01_STORY_SPIELPASS/imported-neutral-material/obj_scissors_a.png",
+      "newSha256": "4e58c050a77983110b8c15750234f39d09b14a007e7b937f40fa1accbb47f1e4"
+    },
+    {
+      "skin": "obj_scissors",
+      "target": "apps/web/public/art/g1/paint/ch01/obj_scissors_telegraph.png",
+      "oldSha256": "26b7b59f498f1358551c99ff0d6f14a97e553f600a1dc9b41a1369c211a7effd",
+      "source": "/Users/veho/Code/codex-lab/trial-berichte/CH01_STORY_SPIELPASS/imported-neutral-material/obj_scissors_a.png",
+      "newSha256": "4e58c050a77983110b8c15750234f39d09b14a007e7b937f40fa1accbb47f1e4"
+    }
+  ]
+}

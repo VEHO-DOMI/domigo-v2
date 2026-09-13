@@ -1,0 +1,11 @@
+001 | geschrieben | Verständlich, aber „die Aufgabe öffnen“ klingt beim Vorlesen technisch und etwas steif.  
+002 | geschrieben | Verständlich, aber „die Aufgabe öffnen“ klingt nicht wie natürlich gesprochene Sprache.  
+003 | Mensch | Der Satz ist kurz, klar und klingt natürlich.  
+004 | Mensch | Der Satz lässt sich flüssig vorlesen und ist sofort verständlich.  
+005 | Mensch | Die Aufforderung klingt lebendig, freundlich und natürlich gesprochen.  
+006 | Mensch | Die Frage ist klar formuliert und für Kinder gut verständlich.  
+007 | geschrieben | „Über seinen Bildschirm“ ist verständlich, klingt aber technisch und etwas steif.
+
+Mensch: 4  
+geschrieben: 3  
+stolpere: 0

@@ -1,0 +1,1150 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "note": "Only registered source sampling and stock chromakey/fringe cleanup. No chromaMatte colour replacement. Scissor snap rejected; scissors act/run explicitly hold approved base pose. Static b/dazed repeat base; no fabricated animation. Lying book overlaps nominal cell boundary in empty gap; selected full isolated authored book.",
+  "assets": [
+    {
+      "source": "sources/lying-book-and-real-gluestick-2x2.raw.png",
+      "stem": "obj_book_a",
+      "width": 631,
+      "height": 471,
+      "x": [
+        [
+          0,
+          33
+        ],
+        [
+          630,
+          663
+        ]
+      ],
+      "y": [
+        [
+          0,
+          84
+        ],
+        [
+          470,
+          554
+        ]
+      ]
+    },
+    {
+      "source": "sources/passive-objects-2x2.raw.png",
+      "stem": "obj_schoolbag_a",
+      "width": 480,
+      "height": 512,
+      "x": [
+        [
+          0,
+          662
+        ],
+        [
+          479,
+          1215
+        ]
+      ],
+      "y": [
+        [
+          0,
+          13
+        ],
+        [
+          511,
+          603
+        ]
+      ]
+    },
+    {
+      "source": "sources/passive-objects-2x2.raw.png",
+      "stem": "obj_desk_a",
+      "width": 498,
+      "height": 512,
+      "x": [
+        [
+          0,
+          39
+        ],
+        [
+          497,
+          608
+        ]
+      ],
+      "y": [
+        [
+          0,
+          629
+        ],
+        [
+          511,
+          1214
+        ]
+      ]
+    },
+    {
+      "source": "sources/passive-objects-2x2.raw.png",
+      "stem": "obj_chair_a",
+      "width": 368,
+      "height": 512,
+      "x": [
+        [
+          0,
+          731
+        ],
+        [
+          367,
+          1147
+        ]
+      ],
+      "y": [
+        [
+          0,
+          639
+        ],
+        [
+          511,
+          1218
+        ]
+      ]
+    },
+    {
+      "source": "sources/passive-objects-2x2.raw.png",
+      "stem": "obj_chair",
+      "width": 368,
+      "height": 512,
+      "x": [
+        [
+          0,
+          731
+        ],
+        [
+          367,
+          1147
+        ]
+      ],
+      "y": [
+        [
+          0,
+          639
+        ],
+        [
+          511,
+          1218
+        ]
+      ]
+    },
+    {
+      "source": "sources/skirt-knee-length.raw.png",
+      "stem": "cloth_skirt_a",
+      "width": 471,
+      "height": 512,
+      "x": [
+        [
+          0,
+          94
+        ],
+        [
+          470,
+          1159
+        ]
+      ],
+      "y": [
+        [
+          0,
+          44
+        ],
+        [
+          511,
+          1203
+        ]
+      ]
+    },
+    {
+      "source": "sources/attacker-objects-3x2.corrected.raw.png",
+      "stem": "obj_scissors_a",
+      "width": 392,
+      "height": 492,
+      "x": [
+        [
+          0,
+          80
+        ],
+        [
+          391,
+          471
+        ]
+      ],
+      "y": [
+        [
+          0,
+          30
+        ],
+        [
+          491,
+          521
+        ]
+      ]
+    },
+    {
+      "source": "sources/attacker-objects-3x2.corrected.raw.png",
+      "stem": "obj_scissors_b",
+      "width": 392,
+      "height": 492,
+      "x": [
+        [
+          0,
+          80
+        ],
+        [
+          391,
+          471
+        ]
+      ],
+      "y": [
+        [
+          0,
+          30
+        ],
+        [
+          491,
+          521
+        ]
+      ]
+    },
+    {
+      "source": "sources/attacker-objects-3x2.corrected.raw.png",
+      "stem": "obj_scissors_dazed",
+      "width": 392,
+      "height": 492,
+      "x": [
+        [
+          0,
+          80
+        ],
+        [
+          391,
+          471
+        ]
+      ],
+      "y": [
+        [
+          0,
+          30
+        ],
+        [
+          491,
+          521
+        ]
+      ]
+    },
+    {
+      "source": "sources/attacks-scissors-glue-sharpener-3x2.corrected.raw.png",
+      "stem": "obj_scissors_telegraph",
+      "width": 367,
+      "height": 447,
+      "x": [
+        [
+          0,
+          81
+        ],
+        [
+          366,
+          447
+        ]
+      ],
+      "y": [
+        [
+          0,
+          49
+        ],
+        [
+          446,
+          495
+        ]
+      ]
+    },
+    {
+      "source": "sources/attacker-objects-3x2.corrected.raw.png",
+      "stem": "obj_scissors_act",
+      "width": 392,
+      "height": 492,
+      "x": [
+        [
+          0,
+          80
+        ],
+        [
+          391,
+          471
+        ]
+      ],
+      "y": [
+        [
+          0,
+          30
+        ],
+        [
+          491,
+          521
+        ]
+      ]
+    },
+    {
+      "source": "sources/attacker-objects-3x2.corrected.raw.png",
+      "stem": "obj_scissors_run",
+      "width": 392,
+      "height": 492,
+      "x": [
+        [
+          0,
+          80
+        ],
+        [
+          391,
+          471
+        ]
+      ],
+      "y": [
+        [
+          0,
+          30
+        ],
+        [
+          491,
+          521
+        ]
+      ]
+    },
+    {
+      "source": "sources/lying-book-and-real-gluestick-2x2.raw.png",
+      "stem": "obj_gluestick_a",
+      "width": 340,
+      "height": 512,
+      "x": [
+        [
+          0,
+          755
+        ],
+        [
+          339,
+          1119
+        ]
+      ],
+      "y": [
+        [
+          0,
+          41
+        ],
+        [
+          511,
+          589
+        ]
+      ]
+    },
+    {
+      "source": "sources/lying-book-and-real-gluestick-2x2.raw.png",
+      "stem": "obj_gluestick_b",
+      "width": 340,
+      "height": 512,
+      "x": [
+        [
+          0,
+          755
+        ],
+        [
+          339,
+          1119
+        ]
+      ],
+      "y": [
+        [
+          0,
+          41
+        ],
+        [
+          511,
+          589
+        ]
+      ]
+    },
+    {
+      "source": "sources/lying-book-and-real-gluestick-2x2.raw.png",
+      "stem": "obj_gluestick_dazed",
+      "width": 340,
+      "height": 512,
+      "x": [
+        [
+          0,
+          755
+        ],
+        [
+          339,
+          1119
+        ]
+      ],
+      "y": [
+        [
+          0,
+          41
+        ],
+        [
+          511,
+          589
+        ]
+      ]
+    },
+    {
+      "source": "sources/lying-book-and-real-gluestick-2x2.raw.png",
+      "stem": "obj_gluestick_telegraph",
+      "width": 381,
+      "height": 512,
+      "x": [
+        [
+          0,
+          92
+        ],
+        [
+          380,
+          496
+        ]
+      ],
+      "y": [
+        [
+          0,
+          624
+        ],
+        [
+          511,
+          1167
+        ]
+      ]
+    },
+    {
+      "source": "sources/lying-book-and-real-gluestick-2x2.raw.png",
+      "stem": "obj_gluestick_act",
+      "width": 508,
+      "height": 512,
+      "x": [
+        [
+          0,
+          627
+        ],
+        [
+          507,
+          1162
+        ]
+      ],
+      "y": [
+        [
+          0,
+          636
+        ],
+        [
+          511,
+          1175
+        ]
+      ]
+    },
+    {
+      "source": "sources/lying-book-and-real-gluestick-2x2.raw.png",
+      "stem": "obj_gluestick_run",
+      "width": 508,
+      "height": 512,
+      "x": [
+        [
+          0,
+          627
+        ],
+        [
+          507,
+          1162
+        ]
+      ],
+      "y": [
+        [
+          0,
+          636
+        ],
+        [
+          511,
+          1175
+        ]
+      ]
+    },
+    {
+      "source": "sources/attacker-objects-3x2.corrected.raw.png",
+      "stem": "obj_sharpener_a",
+      "width": 486,
+      "height": 410,
+      "x": [
+        [
+          0,
+          1024
+        ],
+        [
+          485,
+          1509
+        ]
+      ],
+      "y": [
+        [
+          0,
+          84
+        ],
+        [
+          409,
+          493
+        ]
+      ]
+    },
+    {
+      "source": "sources/attacker-objects-3x2.corrected.raw.png",
+      "stem": "obj_sharpener_b",
+      "width": 486,
+      "height": 410,
+      "x": [
+        [
+          0,
+          1024
+        ],
+        [
+          485,
+          1509
+        ]
+      ],
+      "y": [
+        [
+          0,
+          84
+        ],
+        [
+          409,
+          493
+        ]
+      ]
+    },
+    {
+      "source": "sources/attacker-objects-3x2.corrected.raw.png",
+      "stem": "obj_sharpener_dazed",
+      "width": 486,
+      "height": 410,
+      "x": [
+        [
+          0,
+          1024
+        ],
+        [
+          485,
+          1509
+        ]
+      ],
+      "y": [
+        [
+          0,
+          84
+        ],
+        [
+          409,
+          493
+        ]
+      ]
+    },
+    {
+      "source": "sources/attacks-scissors-glue-sharpener-3x2.corrected.raw.png",
+      "stem": "obj_sharpener_telegraph",
+      "width": 453,
+      "height": 398,
+      "x": [
+        [
+          0,
+          1039
+        ],
+        [
+          452,
+          1491
+        ]
+      ],
+      "y": [
+        [
+          0,
+          98
+        ],
+        [
+          397,
+          495
+        ]
+      ]
+    },
+    {
+      "source": "sources/attacks-scissors-glue-sharpener-3x2.corrected.raw.png",
+      "stem": "obj_sharpener_act",
+      "width": 483,
+      "height": 389,
+      "x": [
+        [
+          0,
+          1024
+        ],
+        [
+          482,
+          1506
+        ]
+      ],
+      "y": [
+        [
+          0,
+          567
+        ],
+        [
+          388,
+          955
+        ]
+      ]
+    },
+    {
+      "source": "sources/attacks-scissors-glue-sharpener-3x2.corrected.raw.png",
+      "stem": "obj_sharpener_run",
+      "width": 483,
+      "height": 389,
+      "x": [
+        [
+          0,
+          1024
+        ],
+        [
+          482,
+          1506
+        ]
+      ],
+      "y": [
+        [
+          0,
+          567
+        ],
+        [
+          388,
+          955
+        ]
+      ]
+    },
+    {
+      "source": "sources/attacker-objects-3x2.corrected.raw.png",
+      "stem": "pen_a",
+      "width": 368,
+      "height": 414,
+      "x": [
+        [
+          0,
+          77
+        ],
+        [
+          367,
+          444
+        ]
+      ],
+      "y": [
+        [
+          0,
+          545
+        ],
+        [
+          413,
+          958
+        ]
+      ]
+    },
+    {
+      "source": "sources/attacker-objects-3x2.corrected.raw.png",
+      "stem": "pen_b",
+      "width": 368,
+      "height": 414,
+      "x": [
+        [
+          0,
+          77
+        ],
+        [
+          367,
+          444
+        ]
+      ],
+      "y": [
+        [
+          0,
+          545
+        ],
+        [
+          413,
+          958
+        ]
+      ]
+    },
+    {
+      "source": "sources/attacker-objects-3x2.corrected.raw.png",
+      "stem": "pen_dazed",
+      "width": 368,
+      "height": 414,
+      "x": [
+        [
+          0,
+          77
+        ],
+        [
+          367,
+          444
+        ]
+      ],
+      "y": [
+        [
+          0,
+          545
+        ],
+        [
+          413,
+          958
+        ]
+      ]
+    },
+    {
+      "source": "sources/attacks-pen-eraser-exercisebook-3x2.raw.png",
+      "stem": "pen_telegraph",
+      "width": 301,
+      "height": 441,
+      "x": [
+        [
+          0,
+          126
+        ],
+        [
+          300,
+          426
+        ]
+      ],
+      "y": [
+        [
+          0,
+          54
+        ],
+        [
+          440,
+          494
+        ]
+      ]
+    },
+    {
+      "source": "sources/attacks-pen-eraser-exercisebook-3x2.raw.png",
+      "stem": "pen_act",
+      "width": 440,
+      "height": 414,
+      "x": [
+        [
+          0,
+          36
+        ],
+        [
+          439,
+          475
+        ]
+      ],
+      "y": [
+        [
+          0,
+          537
+        ],
+        [
+          413,
+          950
+        ]
+      ]
+    },
+    {
+      "source": "sources/attacks-pen-eraser-exercisebook-3x2.raw.png",
+      "stem": "pen_run",
+      "width": 440,
+      "height": 414,
+      "x": [
+        [
+          0,
+          36
+        ],
+        [
+          439,
+          475
+        ]
+      ],
+      "y": [
+        [
+          0,
+          537
+        ],
+        [
+          413,
+          950
+        ]
+      ]
+    },
+    {
+      "source": "sources/attacker-objects-3x2.corrected.raw.png",
+      "stem": "eraser_a",
+      "width": 496,
+      "height": 218,
+      "x": [
+        [
+          0,
+          512
+        ],
+        [
+          495,
+          1007
+        ]
+      ],
+      "y": [
+        [
+          0,
+          695
+        ],
+        [
+          217,
+          912
+        ]
+      ]
+    },
+    {
+      "source": "sources/attacker-objects-3x2.corrected.raw.png",
+      "stem": "eraser_b",
+      "width": 496,
+      "height": 218,
+      "x": [
+        [
+          0,
+          512
+        ],
+        [
+          495,
+          1007
+        ]
+      ],
+      "y": [
+        [
+          0,
+          695
+        ],
+        [
+          217,
+          912
+        ]
+      ]
+    },
+    {
+      "source": "sources/attacker-objects-3x2.corrected.raw.png",
+      "stem": "eraser_dazed",
+      "width": 496,
+      "height": 218,
+      "x": [
+        [
+          0,
+          512
+        ],
+        [
+          495,
+          1007
+        ]
+      ],
+      "y": [
+        [
+          0,
+          695
+        ],
+        [
+          217,
+          912
+        ]
+      ]
+    },
+    {
+      "source": "sources/attacks-pen-eraser-exercisebook-3x2.raw.png",
+      "stem": "eraser_telegraph",
+      "width": 448,
+      "height": 244,
+      "x": [
+        [
+          0,
+          539
+        ],
+        [
+          447,
+          986
+        ]
+      ],
+      "y": [
+        [
+          0,
+          236
+        ],
+        [
+          243,
+          479
+        ]
+      ]
+    },
+    {
+      "source": "sources/attacks-pen-eraser-exercisebook-3x2.raw.png",
+      "stem": "eraser_act",
+      "width": 454,
+      "height": 268,
+      "x": [
+        [
+          0,
+          526
+        ],
+        [
+          453,
+          979
+        ]
+      ],
+      "y": [
+        [
+          0,
+          640
+        ],
+        [
+          267,
+          907
+        ]
+      ]
+    },
+    {
+      "source": "sources/attacks-pen-eraser-exercisebook-3x2.raw.png",
+      "stem": "eraser_run",
+      "width": 454,
+      "height": 268,
+      "x": [
+        [
+          0,
+          526
+        ],
+        [
+          453,
+          979
+        ]
+      ],
+      "y": [
+        [
+          0,
+          640
+        ],
+        [
+          267,
+          907
+        ]
+      ]
+    },
+    {
+      "source": "sources/attacker-objects-3x2.corrected.raw.png",
+      "stem": "heft_a",
+      "width": 490,
+      "height": 448,
+      "x": [
+        [
+          0,
+          1031
+        ],
+        [
+          489,
+          1520
+        ]
+      ],
+      "y": [
+        [
+          0,
+          536
+        ],
+        [
+          447,
+          983
+        ]
+      ]
+    },
+    {
+      "source": "sources/attacker-objects-3x2.corrected.raw.png",
+      "stem": "heft_b",
+      "width": 490,
+      "height": 448,
+      "x": [
+        [
+          0,
+          1031
+        ],
+        [
+          489,
+          1520
+        ]
+      ],
+      "y": [
+        [
+          0,
+          536
+        ],
+        [
+          447,
+          983
+        ]
+      ]
+    },
+    {
+      "source": "sources/attacker-objects-3x2.corrected.raw.png",
+      "stem": "heft_dazed",
+      "width": 490,
+      "height": 448,
+      "x": [
+        [
+          0,
+          1031
+        ],
+        [
+          489,
+          1520
+        ]
+      ],
+      "y": [
+        [
+          0,
+          536
+        ],
+        [
+          447,
+          983
+        ]
+      ]
+    },
+    {
+      "source": "sources/attacks-pen-eraser-exercisebook-3x2.raw.png",
+      "stem": "heft_telegraph",
+      "width": 358,
+      "height": 410,
+      "x": [
+        [
+          0,
+          1111
+        ],
+        [
+          357,
+          1468
+        ]
+      ],
+      "y": [
+        [
+          0,
+          84
+        ],
+        [
+          409,
+          493
+        ]
+      ]
+    },
+    {
+      "source": "sources/attacks-pen-eraser-exercisebook-3x2.raw.png",
+      "stem": "heft_act",
+      "width": 478,
+      "height": 405,
+      "x": [
+        [
+          0,
+          1027
+        ],
+        [
+          477,
+          1504
+        ]
+      ],
+      "y": [
+        [
+          0,
+          531
+        ],
+        [
+          404,
+          935
+        ]
+      ]
+    },
+    {
+      "source": "sources/attacks-pen-eraser-exercisebook-3x2.raw.png",
+      "stem": "heft_run",
+      "width": 478,
+      "height": 405,
+      "x": [
+        [
+          0,
+          1027
+        ],
+        [
+          477,
+          1504
+        ]
+      ],
+      "y": [
+        [
+          0,
+          531
+        ],
+        [
+          404,
+          935
+        ]
+      ]
+    },
+    {
+      "source": "sources/attacks-pen-eraser-exercisebook-3x2.raw.png",
+      "stem": "eraser_squash",
+      "width": 448,
+      "height": 244,
+      "x": [
+        [
+          0,
+          539
+        ],
+        [
+          447,
+          986
+        ]
+      ],
+      "y": [
+        [
+          0,
+          236
+        ],
+        [
+          243,
+          479
+        ]
+      ]
+    },
+    {
+      "source": "sources/attacks-pen-eraser-exercisebook-3x2.raw.png",
+      "stem": "heft_bank",
+      "width": 478,
+      "height": 405,
+      "x": [
+        [
+          0,
+          1027
+        ],
+        [
+          477,
+          1504
+        ]
+      ],
+      "y": [
+        [
+          0,
+          531
+        ],
+        [
+          404,
+          935
+        ]
+      ]
+    }
+  ]
+}

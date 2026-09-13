@@ -1,0 +1,82 @@
+{
+  "label": "CODEX DRAFT \u2014 NOT CANON",
+  "registration": "Two complete states, source crop only, one-to-one painted pixels; identical original main-frame baseline y730. No chromaMatte because authored violet lock ink is retained.",
+  "assets": [
+    {
+      "source": "photo-frame-cage-original.png",
+      "stem": "photo_frame_cage_a",
+      "width": 768,
+      "height": 674,
+      "sourceCrop": {
+        "x": 0,
+        "y": 178,
+        "width": 768,
+        "height": 678,
+        "foregroundBounds": {
+          "x": 50,
+          "y": 209,
+          "width": 657,
+          "height": 521
+        }
+      },
+      "x": [
+        [
+          0,
+          0
+        ],
+        [
+          767,
+          767
+        ]
+      ],
+      "y": [
+        [
+          0,
+          180
+        ],
+        [
+          673,
+          853
+        ]
+      ]
+    },
+    {
+      "source": "photo-frame-cage-original.png",
+      "stem": "photo_frame_cage_open",
+      "width": 768,
+      "height": 674,
+      "sourceCrop": {
+        "x": 768,
+        "y": 178,
+        "width": 768,
+        "height": 678,
+        "foregroundBounds": {
+          "x": 774,
+          "y": 184,
+          "width": 732,
+          "height": 664
+        }
+      },
+      "x": [
+        [
+          0,
+          768
+        ],
+        [
+          767,
+          1535
+        ]
+      ],
+      "y": [
+        [
+          0,
+          180
+        ],
+        [
+          673,
+          853
+        ]
+      ]
+    }
+  ]
+}

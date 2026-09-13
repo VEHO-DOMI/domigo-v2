@@ -1,0 +1,93 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "files": [
+    {
+      "file": "README.md",
+      "sha256": "eb550fea6f0dfdee36bf3541c35179639c7c495147676162d76b6c45d9441df4"
+    },
+    {
+      "file": "blackboard-rest-win-original.png",
+      "sha256": "9c33be86f3315a1c5d5a50b1a9b4bfff052374da527ba0010c6fdc84e757a0aa"
+    },
+    {
+      "file": "blackboard-rest-win.prompt.txt",
+      "sha256": "68ee7d9bcd7866460abcc49fd66a7b3bb1a5b5f6e7bd3d073daf2cc0c209cbf0"
+    },
+    {
+      "file": "blackboard-scribble-layers-original.png",
+      "sha256": "0d5315180e17629d83db48a9b81086dc19c4b01915e06ed8ba74f417d54f6cc8"
+    },
+    {
+      "file": "blackboard-scribble-layers.prompt.txt",
+      "sha256": "048c59e825a6cc437490f7bf138cb2572ca87e05008a1a42c4d9d1129254c3ac"
+    },
+    {
+      "file": "cropped-body-tamper.log",
+      "sha256": "37bfcd22bdad4b96833676d6cc44693411f5535224db6bc26fc486b458d25e0d"
+    },
+    {
+      "file": "existing-browser.png",
+      "sha256": "44bcf775848037781418a73fe75f1542cb57f0f0e781832c43d6bb9bdf496ba7"
+    },
+    {
+      "file": "existing-inventory.json",
+      "sha256": "36be525442db74e42293e274369541843ffae0f78191c2259402f02f3ac484b0"
+    },
+    {
+      "file": "existing-scribble-measurements.json",
+      "sha256": "8a0ae8fb73c06d3d4406a5dc719e059ed382824c3c04f0e8f56e39844496d62b"
+    },
+    {
+      "file": "import-body-and-first-two.manifest.json",
+      "sha256": "5db038582018d19e58fdd4e3a2d04af77286b2d0b59f54b26194390e493327d7"
+    },
+    {
+      "file": "import-first-red.log",
+      "sha256": "b37a2408c5e536428f86a44fe3e56b50fdb009adba175383f4d2c1e7d5094b6a"
+    },
+    {
+      "file": "import-matte-red.log",
+      "sha256": "b37a2408c5e536428f86a44fe3e56b50fdb009adba175383f4d2c1e7d5094b6a"
+    },
+    {
+      "file": "import-report.json",
+      "sha256": "fdfaa22d22ae1c2304a728a4d0d6fe0fe536c5a91bce4cc8345077c8444e0dbb"
+    },
+    {
+      "file": "import-source-matte.log",
+      "sha256": "1bd30a8329f52aea5174ef098f4a00dda731aaf32f1d1b8f99c2635f2e0418ac"
+    },
+    {
+      "file": "import.manifest.json",
+      "sha256": "06388dc486df96a43714ac44f55ed2287c8e512522f148b19d5fac368a6b526f"
+    },
+    {
+      "file": "importer-selftest.log",
+      "sha256": "26cc8a4f8f355cd3c9b2c96fc02559c41cafb71c44e1d43b951a01608fff44ed"
+    },
+    {
+      "file": "installed-stems.json",
+      "sha256": "0e63802242782279986bb92938c88b163ca37cb1ae3a7904ff87ee86b9f60af8"
+    },
+    {
+      "file": "layers-browser.png",
+      "sha256": "e64bf8628a225d1bd63900c4ae82547c61a90ee601bf83764494f2002fda5f8f"
+    },
+    {
+      "file": "new-slate-measurements.json",
+      "sha256": "ea739827ed2973e5e2759214609b5a5dedc13f80afc0edb38d8353a7ef0efe7f"
+    },
+    {
+      "file": "originals.manifest.json",
+      "sha256": "92ea06c40755b673f7a9187a8fdd0938a05e74e7b9fb67f297a3736efb1cf5d3"
+    },
+    {
+      "file": "slate-detector-provenance.json",
+      "sha256": "d9b9f0e33809dd908b409f4428d4a28f9c08e878ca3cd00853b13d0ad09a7c7c"
+    },
+    {
+      "file": "writing-window.json",
+      "sha256": "fbeeb3b6841dba7f372ddb0f9bab08a74996cd13a84e38c0fb7a461fc774f2ba"
+    }
+  ]
+}

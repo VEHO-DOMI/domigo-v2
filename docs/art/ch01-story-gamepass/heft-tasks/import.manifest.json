@@ -1,0 +1,81 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "assets": [
+    {
+      "stem": "heft_count_dots_a",
+      "source": "dots-final-original.png",
+      "width": 512,
+      "height": 384,
+      "sourceCrop": {
+        "x": 80,
+        "y": 112,
+        "width": 1317,
+        "height": 823,
+        "foregroundBounds": {
+          "x": 86,
+          "y": 118,
+          "width": 1305,
+          "height": 811
+        }
+      },
+      "x": [
+        [
+          0,
+          74
+        ],
+        [
+          511,
+          1402
+        ]
+      ],
+      "y": [
+        [
+          0,
+          25.125
+        ],
+        [
+          383,
+          1020.875
+        ]
+      ]
+    },
+    {
+      "stem": "heft_count_books_a",
+      "source": "books-final-original.png",
+      "width": 512,
+      "height": 384,
+      "sourceCrop": {
+        "x": 19,
+        "y": 131,
+        "width": 1414,
+        "height": 771,
+        "foregroundBounds": {
+          "x": 25,
+          "y": 137,
+          "width": 1402,
+          "height": 759
+        }
+      },
+      "x": [
+        [
+          0,
+          13
+        ],
+        [
+          511,
+          1438
+        ]
+      ],
+      "y": [
+        [
+          0,
+          -18.25
+        ],
+        [
+          383,
+          1050.25
+        ]
+      ]
+    }
+  ]
+}

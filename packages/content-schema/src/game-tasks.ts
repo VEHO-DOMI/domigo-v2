@@ -266,6 +266,8 @@ const RestoreTask = z.object({
   colourAskDe: z.string().min(1), // the German line the being says at step 2
   colourOptions: z.array(z.string().min(1)).length(3), // the unit's colour words
   colour: z.string().min(1), // ∈ colourOptions
+  /** Neutral restored surfaces need a visible curse independent of desaturation. */
+  curseVisual: z.literal("violet-ink").optional(),
 });
 
 /**
@@ -483,14 +485,15 @@ export function taskInvariantErrors(t: GameTaskV2): string[] {
       if (dup(t.nameOptions)) errs.push("duplicate name option");
       if (!t.colourOptions.includes(t.colour)) errs.push("colour is not among the colour options");
       if (dup(t.colourOptions)) errs.push("duplicate colour option");
-      // GREY IS THE WOUND, NOT A CURE. A restore card exists because OSWIN
-      // rained the colour OUT of the being — grey is the state on screen while
-      // the card is open, so offering it back as an answer reads to a literal
-      // six-year-old as „leave it as it is". Found by a blind verifier on the
-      // first authored set (the exercise book was offered grey); made
-      // structural here so no future chapter can re-author it.
-      if (t.colourOptions.some((c) => /^gr[ea]y$/i.test(c.trim()))) {
-        errs.push("restore may not offer grey — grey is the drained state the card undoes, not a colour to give back");
+      // Black, white and grey are taught colours. Desaturating those surfaces
+      // cannot show whether their curse is gone, so a neutral target needs an
+      // explicitly declared violet ink layer in both the world and the card.
+      // Grey as a distractor requires the same treatment: otherwise leaving an
+      // already grey object alone is visually indistinguishable from success.
+      if ((["black", "white", "grey"].includes(t.colour.toLowerCase().trim())
+        || t.colourOptions.some((c) => /^gr[ea]y$/i.test(c.trim())))
+        && t.curseVisual !== "violet-ink") {
+        errs.push("neutral restore colours require curseVisual violet-ink so the curse differs from the restored surface");
       }
       break;
     case "typed":

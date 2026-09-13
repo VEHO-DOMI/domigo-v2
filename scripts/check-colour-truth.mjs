@@ -87,6 +87,7 @@
 // exactly »the child must not be able to read the answer off the picture«.
 
 import fs from "node:fs";
+import { createHash } from "node:crypto";
 import path from "node:path";
 import { checkDualColour, neutralSelftestCases } from "./achromatic-colour.mjs";
 import { DUAL_READINGS } from "./achromatic-readings.mjs";
@@ -257,24 +258,55 @@ export const READINGS = {
   hund: { word: "brown", family: "warm", warmCentre: 36.573564913503525,
     sourceSha256: "719cf0df00811992181767d216b88ddf6bfe4587613a61f5d69495da286b8abb",
     why: "Imported brown dog with blue collar, inspected 2026-09-12. Unchanged measurement: warm share 0.9962899894561758, blue 0.0036864387333534654, margin 270.25811671359975, parchment 0.08477379264132974. The broad ochre-brown fur dominates; the small blue collar is an accent. This records the fine-word reading and measured centre; no blind pupil colour acceptance is claimed." },
-  obj_book: { word: "blue", family: "blue", warmCentre: null,
-    why: "Blau mit Gold-Ecken. Gemessen 2026-08-15: blau 74 %, Verhältnis 2,8. Kokis Befund vom 15.08.: »Das Buch ist blau, aber es will rot.« R41s Zielpalette will es rot — das ist AQ12s Auftrag, nicht der der Karte. ★ AQ12 HAT geliefert, und das Blatt ist gut gemalt: ein Mensch liest ein rotes Buch. Dieses Tor nicht. Gemessen an der Lieferung: 58 413 Pixel im Rot-Band mit Median-Chroma 0,373 — knapp UNTER der PARCHMENT-Schwelle 0,45, also fallen 90 % der warmen Masse als Pergament weg und übrig bleiben die Goldecken bei 38,0°. Das ist eine Fehlzündung von Regel 4 an neuem Material: dort ist warm-und-flau die aged-paper-Grundierung, hier ist es der Bucheinband selbst. Die Regel zu ändern gehört dieser Session nicht (nur die READINGS-Zeilen), und »rot« auf 38,0° zu ratifizieren würde diese Tabelle entwerten — der Tisch steht als »braun« auf 35,7°, die Feder als »gelb« auf 39,1°, das wären drei Farbwörter in 3,4°. Wahrheit vor Varietät: das Blatt bleibt blau, und AQ12d ist mit der exakten Zahl bestellt (Deckel-Median-S·V ≥ 0,53; AQ12c hat 0,533 erreicht, die Zahl ist also treffbar). D-221." },
-  eraser: { word: "pink", family: "pink", warmCentre: null,
-    why: "Rosa Band, cremefarbenes Oberteil. NEU ANGESTRICHEN von Codex AQ12 und importiert in R5-W4b/C3: das Blatt war blau (blau 100 %), es misst jetzt rosa 100 %, Verhältnis 343. Damit fällt Kokis »viele Farben, aber jede richtig« auf diesem Wesen zum ersten Mal zusammen — die Karte ist in derselben Änderung von blue auf pink gekippt, weil dieses Tor sie sonst rot hält. Blinder Blatt-Prüfer vor dem Import: ANGENOMMEN (dasselbe Wesen, dieselbe Pose, 167 388 von 242 952 Pixeln byte-identisch, reiner Farbtondreh)." },
-  obj_sharpener: { word: "blue", family: "blue", warmCentre: null,
-    why: "Blauer Würfel mit Metall-Schlitz. Gemessen: blau 100 %. Kokis Befund: »Spitzer sagt gelb, ist blau.«" },
-  heft: { word: "green", family: "green", warmCentre: null,
-    why: "Grüne Deckel, cremefarbener Seitenblock. Gemessen: grün 76 %, Verhältnis 3,2 (nach der Pergament-Regel — ohne sie 51/49 und damit MIXED). Karte war schon richtig; Fables Vormessung sagte »Mischbild ohne klaren Sieger« und wird hiermit widerlegt." },
-  obj_gluestick: { word: "orange", family: "warm", warmCentre: 24.6,
-    why: "Kräftig orangefarbener Körper, cremefarbener Rahmen. Gemessen: warm 100 %, Mitte 24,6°, Median-Chroma 0,76 — der sattteste Warmton der neun. Kokis Befund: »Uhu-Stick sagt grün, ist orange.«" },
-  obj_scissors: { word: "orange", family: "warm", warmCentre: 23.9,
-    why: "Orange Griffe, cremefarbene Klingen. Gemessen: warm 100 %, Mitte 23,9°. Die Pergament-Regel wirft 35 % (die Klingen) weg — genau deshalb liest die Schere orange und nicht sandfarben." },
-  obj_desk: { word: "brown", family: "warm", warmCentre: 35.7,
-    why: "Honigfarbenes Holz. Gemessen: warm 100 %, Mitte 35,7°, Median-Chroma 0,56. Die Mitte liegt 11° von den beiden Orange-Blättern entfernt — das ist der Abstand, auf dem die Drift-Regel steht." },
-  obj_schoolbag: { word: "brown", family: "warm", warmCentre: 35.9,
-    why: "SCHWÄCHSTE Lesung der neun: cremefarbener Rucksack mit petrolfarbenem Besatz. Gemessen: warm 66 % / grün 26 %, Verhältnis 2,5 — und 51 % der Fläche fällt als Pergament weg. Das Blatt trägt kein sattes Braun; die Familie stimmt, der Ton ist Kunst-Schuld (D-130 — hier stand versehentlich D-133, das ist die glance.test-Fixture; korrigiert in R5-W4b/C3). Codex AQ12c hat einen braunen Anstrich geliefert, der die Zahl trifft (warm 100 %, Mitte 28,9°, S·V 0,533), dabei aber Petrol-Besatz, Messing und die bunten Bücher mitgebräunt — Wahrheit gegen Handwerk. Kokis Entscheidung vom 15.08.: nicht importieren, nachbestellen (AQ12f, nur der Stoffkörper). Bis dahin bleibt dieses Blatt und diese Lesung stehen. D-222." },
-  pen: { word: "yellow", family: "warm", warmCentre: 58.0,
-    why: "Sonnengelber Körper, oliver Deckel, goldene Feder. NEU ANGESTRICHEN von Codex AQ12 und importiert in R5-W4b/C3: die Warm-Mitte ist von 39,1° auf 58,0° gewandert (Drift 18,9° — dieses Tor stand deshalb rot, bis Blatt, Tabelle und Karte gemeinsam entschieden waren), das Median-Chroma von 0,40 auf 0,49. 58° ist Gelb ohne Diskussion; vorher war das Wort »gelb« über einem holzfarbenen Blatt eine Behauptung. Gemessen: warm 85 % / grün 13 %, Verhältnis 6,6, 56 % Pergament (der cremefarbene Manschettenblock). ★ D-131 (»das Blatt zeigt gar keine Füllfeder«) ist WIDERLEGT: ein blinder Prüfer hat das Wesen unabhängig als Füllfeder gelesen, und bei fünffacher Vergrößerung trägt es eine goldene Schreibfeder mit Mittelschlitz, Luftloch und geschulterter Federform unter einer Kappe mit Zierring. Bei Spielgröße liest sich die Feder wie eine Bleistiftspitze — daher der Irrtum in C2 und in der ersten Runde von C3." },
+  obj_book: {
+    "word": "blue",
+    "family": "blue",
+    "warmCentre": null,
+    "sourceSha256": "5a261651e885e0f456ac298171568f233a5784b2dcd1d45065f46a30831cfd97",
+    "why": "Imported and visually inspected 2026-09-13. Lying closed blue book, upward blue cover with small goldcorners and cream pageblock; no face or arms. Unchanged instrument measures {\"shares\":{\"blue\":0.783032721253516,\"warm\":0.21695621737976656,\"green\":0.00001106136673193728},\"ratio\":3.609173918638489,\"warmCentre\":38.53531604098143,\"parchmentShare\":0.060398711460216706}. No blind pupil colour acceptance is claimed."
+  },
+  obj_schoolbag: {
+    "word": "brown",
+    "family": "warm",
+    "warmCentre": 30.476462294542866,
+    "sourceSha256": "b1f86fae145e4899a448af7228e794fbacde0a3d71af821659a12fcd618d69d8",
+    "why": "Imported and visually inspected 2026-09-13. Brown cloth backpack preserves narrow petrol binding, brassbuckles and coloured books; ordinary sewn pocket with no face. Unchanged instrument measures {\"shares\":{\"warm\":0.8052441685172048,\"blue\":0.16800081690146196,\"violet\":0.015092049260718849,\"green\":0.007628883748999592,\"pink\":0.0040340815714210556},\"ratio\":4.793096744223019,\"warmCentre\":30.476462294542866,\"parchmentShare\":0.3472137092052961}. No blind pupil colour acceptance is claimed."
+  },
+  obj_desk: {
+    "word": "green",
+    "family": "green",
+    "warmCentre": null,
+    "sourceSha256": "4b79954f035891108844b80a4a6a10a898bce10c1b2c709af4d5ff416ac09931",
+    "why": "Imported and visually inspected 2026-09-13 after blind reader identified the old desk as stool-like. Root-approved wide green school desk with broad writing surface and open book shelf. Proportional 560x400 import, no square squeezing. Unchanged full-object instrument measures {\"dominant\":\"green\",\"warmCentre\":56.74231899643538,\"opaque\":97707,\"shares\":{\"green\":0.6659731387396751,\"warm\":0.33402328003984094,\"pink\":3.581220501012332e-06},\"ratio\":1.9937925843379556,\"parchmentShare\":0.04095355418543243,\"fieldRule\":true,\"rescuedShare\":0}. Colour thresholds unchanged; independent pupil rereading follows."
+  },
+  obj_chair: {
+    "word": "yellow",
+    "family": "warm",
+    "warmCentre": 40.7692712324958,
+    "sourceSha256": "3bd5351ed09656001ab694a95d083369f7442ceb47ae0a9ec9d453dccdc63748",
+    "why": "Imported and visually inspected 2026-09-13. Yellow painted schoolchair: seat, backrest and fourleg frame, no face or arms. Unchanged instrument measures {\"shares\":{\"warm\":0.9999499346057171,\"pink\":0.00005006539428281891},\"ratio\":19972.87645348422,\"warmCentre\":40.7692712324958,\"parchmentShare\":0.07296497424081153}. No blind pupil colour acceptance is claimed."
+  },
+  obj_gluestick: {
+    "word": "orange",
+    "family": "warm",
+    "warmCentre": 28.193269019127357,
+    "sourceSha256": "bd5f77a7e5f7faa475b0eb528e47c0e56e9deec1eeca7b9d5f8263094618d904",
+    "why": "Imported and visually inspected 2026-09-13. Actual cylindrical orange glue stick with flatattached cap and ridged twistbase; the former squeezebottle is replaced. Unchanged instrument measures {\"shares\":{\"warm\":1},\"ratio\":\"Infinity\",\"warmCentre\":28.193269019127357,\"parchmentShare\":0.03597346245383181}. No blind pupil colour acceptance is claimed."
+  },
+  obj_sharpener: {
+    "word": "red",
+    "family": "warm",
+    "warmCentre": 2.714120764062305,
+    "sourceSha256": "e1ac0a2f35d87fd8c636630e13c3b9ae095ea4d8b5af7894a05bdb2753cf0fac",
+    "why": "Imported and visually inspected 2026-09-13. Red cube sharpener with narrow silverblade and real pencilhole; red body and limbs. Unchanged instrument measures {\"shares\":{\"warm\":0.9999507631006366,\"pink\":0.00004923689936331342},\"ratio\":20308.971036582036,\"warmCentre\":2.714120764062305,\"parchmentShare\":0.04211281369050682}. No blind pupil colour acceptance is claimed."
+  },
+  eraser: {
+    "word": "pink",
+    "family": "pink",
+    "warmCentre": null,
+    "sourceSha256": "86c91217c897a35ee53c5c53226156611fbe2574a168245bfe49632004cc63c3",
+    "why": "Imported and visually inspected 2026-09-13. Pink horizontal eraser body with small cream topedge and gloves. Unchanged instrument measures {\"shares\":{\"pink\":0.99216431406024,\"warm\":0.005658050598506741,\"violet\":0.0020887522660989386,\"green\":0.00008888307515314646},\"ratio\":175.3544435113552,\"warmCentre\":347.0265078274861,\"parchmentShare\":0.024194307231451745}. No blind pupil colour acceptance is claimed."
+  },
 };
 
 /** Sheets whose measured reading is not confident enough to rule on. Every entry
@@ -283,11 +315,261 @@ export const READINGS = {
  *  parchment rule every one of the nine sheets ranks a family with margin. */
 export const ART_DEBT = {};
 
+// Single neutral colours are a separate measurement, never a relaxed version
+// of the chromatic or black-and-white instruments above. Regions are the
+// author's anatomical material mask (rectangles or declared polygons with holes), not
+// a colour-threshold-selected set of favourable pixels. Source hash + dimensions
+// bind that mask to the inspected painting. The whole opaque interior is an
+// independent denominator, so a shadow, eye or ink outline cannot stand in for
+// the object. The painted curse is a runtime violet layer, not part of this
+// restored source image; its world/card binding is checked by the renderer.
+export const SINGLE_NEUTRAL_LIMITS = Object.freeze({
+  blackMax: 105, blackSpread: 32, whiteMin: 185, whiteSpread: 32, whiteLuma: 200,
+  greyMinLuma: 110, greyMaxLuma: 185, greySpread: 24,
+  erosion: 2, minRegionSide: 20, regionCoverage: .80, componentShare: .70,
+  regionCoreShare: .45, maskInteriorShare: .35, wholeInteriorTargetShare: .60,
+});
+// Root visually inspected the new neutral paintings on 2026-09-13.
+// Their independently authored geometric readings remain source-hash bound.
+// Shape: "ch01/pen": {word:"black",sourceSha256,width,height,
+//   regions:[{id:"barrel",x,y,w,h}],why:"material, exclusions and measured values"}.
+// No existing coloured source is silently ratified under its requested colour.
+const neutralMaterialPlan=JSON.parse(fs.readFileSync(path.join(ROOT,"docs/art/ch01-story-gamepass/objects/measurements/neutral-polygon-readings.json"),"utf8"));
+export const SINGLE_NEUTRAL_READINGS = Object.fromEntries(Object.entries(neutralMaterialPlan.readings).map(([skin,reading])=>[`ch01/${skin}`,reading]));
+const SINGLE_NEUTRALS = new Set(["black", "white", "grey"]);
+const qtile = (a) => { a.sort((a,b) => a-b); return a.length ? [.05,.5,.95].map(p => a[Math.floor((a.length-1)*p)]) : []; };
+const erodeMask = (mask,w,h,radius) => {
+  const out = new Uint8Array(w*h);
+  for(let y=radius;y<h-radius;y++) for(let x=radius;x<w-radius;x++) {
+    let full=true;
+    for(let dy=-radius;dy<=radius&&full;dy++) for(let dx=-radius;dx<=radius;dx++)
+      if(!mask[(y+dy)*w+x+dx]) { full=false; break; }
+    if(full) out[y*w+x]=1;
+  }
+  return out;
+};
+const sumMask = mask => mask.reduce((sum,x) => sum+x,0);
+export const singleNeutralPixel = (r,g,b,word) => {
+  const lim=SINGLE_NEUTRAL_LIMITS, hi=Math.max(r,g,b), lo=Math.min(r,g,b);
+  const spread=hi-lo, luma=.2126*r+.7152*g+.0722*b;
+  if(word==="black") return hi<=lim.blackMax && spread<=lim.blackSpread;
+  if(word==="white") return lo>=lim.whiteMin && spread<=lim.whiteSpread && luma>=lim.whiteLuma;
+  if(word==="grey") return luma>=lim.greyMinLuma && luma<=lim.greyMaxLuma && spread<=lim.greySpread;
+  return false;
+};
+// A polygon records anatomy before colour measurement. Pixel-centre membership
+// never consults RGB. Rectangles retain their original integer-area contract.
+const crossNeutral = (a,b,c) => (b[0]-a[0])*(c[1]-a[1])-(b[1]-a[1])*(c[0]-a[0]);
+const onNeutralSegment = (a,b,p) => crossNeutral(a,b,p)===0 && p[0]>=Math.min(a[0],b[0]) && p[0]<=Math.max(a[0],b[0]) && p[1]>=Math.min(a[1],b[1]) && p[1]<=Math.max(a[1],b[1]);
+const neutralSegmentsMeet = (a,b,c,d) => {
+ const abC=crossNeutral(a,b,c),abD=crossNeutral(a,b,d),cdA=crossNeutral(c,d,a),cdB=crossNeutral(c,d,b);
+ return (abC*abD<0 && cdA*cdB<0) || onNeutralSegment(a,b,c) || onNeutralSegment(a,b,d) || onNeutralSegment(c,d,a) || onNeutralSegment(c,d,b);
+};
+const insideNeutralPolygon = (x,y,points) => {
+ let inside=false;
+ for(let i=0,j=points.length-1;i<points.length;j=i++) {
+  const [a,b]=points[i],[c,d]=points[j];
+  if((b>y)!==(d>y) && x<(c-a)*(y-b)/(d-b)+a) inside=!inside;
+ }
+ return inside;
+};
+const neutralLoopsMeet = (a,b) => a.some((p,i)=>b.some((q,j)=>neutralSegmentsMeet(p,a[(i+1)%a.length],q,b[(j+1)%b.length])));
+export function neutralRegionGeometry(r,w,h) {
+ const min=SINGLE_NEUTRAL_LIMITS.minRegionSide;
+ if(r.outer===undefined && r.holes===undefined) {
+  if(![r.x,r.y,r.w,r.h].every(Number.isInteger)||r.x<0||r.y<0||r.w<min||r.h<min||r.x+r.w>w||r.y+r.h>h) return null;
+  return {x:r.x,y:r.y,w:r.w,h:r.h,area:r.w*r.h,mask:null};
+ }
+ if(['x','y','w','h'].some(k=>r[k]!==undefined)||!Array.isArray(r.outer)||!Array.isArray(r.holes??[])||(r.holes??[]).length>32) return null;
+ const loops=[r.outer,...(r.holes??[])];
+ for(const points of loops) {
+  if(!Array.isArray(points)||points.length<3||points.length>256||points.some(p=>!Array.isArray(p)||p.length!==2||!p.every(Number.isInteger)||p[0]<0||p[1]<0||p[0]>w||p[1]>h)) return null;
+  if(new Set(points.map(p=>p.join(','))).size!==points.length) return null;
+  const signed=points.reduce((a,p,i)=>a+p[0]*points[(i+1)%points.length][1]-points[(i+1)%points.length][0]*p[1],0);
+  if(signed===0) return null;
+  for(let i=0;i<points.length;i++) {
+   const prev=points[(i+points.length-1)%points.length],p=points[i],next=points[(i+1)%points.length];
+   if(crossNeutral(prev,p,next)===0 && !onNeutralSegment(prev,next,p)) return null;
+   for(let j=i+1;j<points.length;j++) {
+    if(j===i+1 || (i===0&&j===points.length-1)) continue;
+    if(neutralSegmentsMeet(p,next,points[j],points[(j+1)%points.length])) return null;
+   }
+  }
+ }
+ for(let i=1;i<loops.length;i++) {
+  if(neutralLoopsMeet(r.outer,loops[i])||!insideNeutralPolygon(...loops[i][0],r.outer)) return null;
+  for(let j=1;j<i;j++) if(neutralLoopsMeet(loops[i],loops[j])||insideNeutralPolygon(...loops[i][0],loops[j])||insideNeutralPolygon(...loops[j][0],loops[i])) return null;
+ }
+ const x=Math.min(...r.outer.map(p=>p[0])),y=Math.min(...r.outer.map(p=>p[1]));
+ const rw=Math.max(...r.outer.map(p=>p[0]))-x,rh=Math.max(...r.outer.map(p=>p[1]))-y;
+ if(rw<min||rh<min) return null;
+ const mask=new Uint8Array(rw*rh);
+ for(let yy=0;yy<rh;yy++) for(let xx=0;xx<rw;xx++) if(insideNeutralPolygon(x+xx+.5,y+yy+.5,r.outer)&&!loops.slice(1).some(hole=>insideNeutralPolygon(x+xx+.5,y+yy+.5,hole))) mask[yy*rw+xx]=1;
+ const area=sumMask(mask);
+ if(area<min*min) return null;
+ return {x,y,w:rw,h:rh,area,mask};
+}
+export function measureSingleNeutral(png,reading) {
+  const errors=[],regions=[],lim=SINGLE_NEUTRAL_LIMITS;
+  const {width:w,height:h,data}=png;
+  if(!reading || !SINGLE_NEUTRALS.has(reading.word) || !Number.isInteger(w) || !Number.isInteger(h)
+    || w!==reading.width || h!==reading.height || data.length!==w*h*4)
+    return {errors:["single-neutral: missing or mismatched material frame"],regions};
+  if(!Array.isArray(reading.regions) || !reading.regions.length)
+    return {errors:["single-neutral: no anatomical body mask"],regions};
+  const opaque=new Uint8Array(w*h),target=new Uint8Array(w*h),used=new Uint8Array(w*h);
+  for(let p=0;p<w*h;p++) {
+    const i=p*4;
+    if(data[i+3]<OPAQUE) continue;
+    opaque[p]=1;
+    if(singleNeutralPixel(data[i],data[i+1],data[i+2],reading.word)) target[p]=1;
+  }
+  const interior=erodeMask(opaque,w,h,lim.erosion),interiorCount=sumMask(interior);
+  const wholeTarget=sumMask(target.map((v,i)=>v*interior[i]));
+  const wholeTargetShare=interiorCount ? wholeTarget/interiorCount : 0;
+  let maskInterior=0;
+  const ids=new Set();
+  for(const r of reading.regions) {
+    const geometry=r && neutralRegionGeometry(r,w,h);
+    if(!r || typeof r.id!=="string" || !r.id.trim() || ids.has(r.id) || !geometry) {
+      errors.push("single-neutral: invalid or repeated anatomical region"); continue;
+    }
+    ids.add(r.id);
+    const {area,x:rx,y:ry,w:rw,h:rh,mask:regionMask}=geometry,qualifying=new Uint8Array(rw*rh),lumas=[],spreads=[];
+    let overlap=false;
+    for(let y=0;y<rh;y++) for(let x=0;x<rw;x++) {
+      if(regionMask && !regionMask[y*rw+x]) continue;
+      const p=(ry+y)*w+rx+x,i=p*4;
+      overlap ||= used[p]===1;
+      if(!used[p] && interior[p]) maskInterior++;
+      used[p]=1;
+      if(interior[p] && target[p]) qualifying[y*rw+x]=1;
+      if(opaque[p]) {
+        lumas.push(.2126*data[i]+.7152*data[i+1]+.0722*data[i+2]);
+        spreads.push(Math.max(...data.subarray(i,i+3))-Math.min(...data.subarray(i,i+3)));
+      }
+    }
+    if(overlap) errors.push(`single-neutral: overlapping region ${r.id}`);
+    const count=sumMask(qualifying),largest=fields(qualifying,rw,rh)[0]?.length??0;
+    const core=sumMask(erodeMask(qualifying,rw,rh,lim.erosion));
+    const m={id:r.id,area,coverage:count/area,componentShare:largest/area,coreShare:core/area,
+      lumaQuantiles:qtile(lumas),chromaQuantiles:qtile(spreads)};
+    regions.push(m);
+    if(m.coverage<lim.regionCoverage || m.componentShare<lim.componentShare || m.coreShare<lim.regionCoreShare)
+      errors.push(`single-neutral: ${r.id} is not a broad opaque ${reading.word} body material`);
+  }
+  const maskInteriorShare=interiorCount ? maskInterior/interiorCount : 0;
+  if(maskInteriorShare<lim.maskInteriorShare) errors.push("single-neutral: anatomical mask is only a small detail of the object");
+  if(wholeTargetShare<lim.wholeInteriorTargetShare) errors.push("single-neutral: target colour does not dominate the whole opaque body interior");
+  return {errors,regions,interiorCount,maskInteriorShare,wholeTargetShare};
+}
+export function checkSingleNeutral({png,bytes,task,reading}) {
+  const errors=[];
+  if(!reading) return {errors:["single-neutral: no chapter-qualified anatomical reading"],regions:[]};
+  if(!SINGLE_NEUTRALS.has(task.colour) || reading.word!==task.colour) errors.push("single-neutral: card and anatomical reading disagree");
+  if(task.curseVisual!=="violet-ink") errors.push("single-neutral: no independent violet ink curse declared");
+  if(typeof reading.why!=="string" || !reading.why.trim()) errors.push("single-neutral: reading has no material rationale");
+  if(createHash("sha256").update(bytes).digest("hex")!==reading.sourceSha256) errors.push("single-neutral: source changed; body mask must be reviewed");
+  const options=task.colourOptions??[];
+  if(options.length!==3 || new Set(options).size!==3 || !options.includes(task.colour)
+    || options.some(o=>WORD_FAMILY[o]===undefined)) errors.push("single-neutral: invalid taught-colour choices");
+  if(options.filter(o=>WORD_FAMILY[o]==="neutral").length!==1) errors.push("single-neutral: a distractor shares the neutral target family");
+  const measured=measureSingleNeutral(png,reading);
+  return {...measured,errors:[...errors,...measured.errors]};
+}
+export function singleNeutralSelftestCases() {
+  const bytes=Buffer.from("synthetic neutral specimen"),hash=createHash("sha256").update(bytes).digest("hex");
+  const make=word=>{
+    const width=80,height=80,data=new Uint8Array(width*height*4),v={black:50,white:240,grey:150}[word];
+    for(let y=5;y<75;y++) for(let x=5;x<75;x++) data.set([v,v,v,255],(y*width+x)*4);
+    return {png:{width,height,data},bytes,task:{colour:word,colourOptions:[word,"blue","pink"],curseVisual:"violet-ink"},
+      reading:{word,sourceSha256:hash,width,height,regions:[{id:"main-body",x:12,y:12,w:56,h:56}],why:"Synthetic broad body, not an eye, outline or shadow."}};
+  };
+  const cases=[];
+  const test=(name,word,mutate,green)=>{const a=make(word);mutate(a);const got=checkSingleNeutral(a);cases.push({name:`[single-neutral] ${name}`,pass:(got.errors.length===0)===green,errors:got.errors});};
+  const recolour=(a,rgb)=>{for(let p=0;p<80*80;p++) if(a.png.data[p*4+3]) a.png.data.set(rgb,p*4);};
+  for(const word of SINGLE_NEUTRALS) test(`${word} broad material`,word,()=>{},true);
+  test("warm ivory is not white","white",a=>recolour(a,[208,185,134]),false);
+  test("dark saturated blue is not black","black",a=>recolour(a,[25,50,120]),false);
+  test("coloured blue-grey is not neutral grey","grey",a=>recolour(a,[90,145,180]),false);
+  test("white does not satisfy grey","grey",a=>recolour(a,[240,240,240]),false);
+  test("black does not satisfy grey","grey",a=>recolour(a,[45,45,45]),false);
+  test("transparent white RGB is not painted material","white",a=>{for(let p=0;p<80*80;p++)a.png.data[p*4+3]=0;},false);
+  test("only an opaque outline is not black material","black",a=>{for(let y=8;y<72;y++)for(let x=8;x<72;x++)a.png.data.set([30,90,180,255],(y*80+x)*4);},false);
+  test("a genuine neutral shadow on a coloured body is not the body colour","black",a=>{
+    recolour(a,[30,90,180]);for(let y=38;y<70;y++)for(let x=10;x<70;x++)a.png.data.set([50,50,50,255],(y*80+x)*4);
+    a.reading.regions=[{id:"shadow-only",x:12,y:39,w:56,h:30}];
+  },false);
+  test("a small central eye is not enough even on neutral material","white",a=>{a.reading.regions=[{id:"eye",x:25,y:25,w:20,h:20}];},false);
+  test("sparse neutral specks are not a continuous surface","grey",a=>{for(let y=5;y<75;y++)for(let x=5;x<75;x++)if(x%4===0||y%4===0)a.png.data.set([30,90,180,255],(y*80+x)*4);},false);
+  test("a large transparent hole cannot count as coverage","white",a=>{for(let y=28;y<52;y++)for(let x=28;x<52;x++)a.png.data[(y*80+x)*4+3]=0;},false);
+  test("overlapping masks cannot double the covered body","grey",a=>a.reading.regions.push({...a.reading.regions[0],id:"duplicate-area"}),false);
+  test("source drift invalidates ratification","black",a=>a.bytes=Buffer.from("changed source"),false);
+  test("wrong source dimensions invalidate material coordinates","white",a=>a.reading.width=81,false);
+  test("missing body regions cannot pass","black",a=>a.reading.regions=[],false);
+  test("a missing violet curse cannot make grey look restored","grey",a=>delete a.task.curseVisual,false);
+  test("a second neutral choice cannot collapse the colour family","black",a=>a.task.colourOptions=["black","grey","pink"],false);
+  test("a missing anatomical reading is red","black",a=>delete a.reading,false);
+  test("wrong target name cannot inherit a reading","white",a=>a.reading.word="grey",false);
+  test("a coloured accent does not erase a dominant neutral body","white",a=>{for(let y=8;y<14;y++)for(let x=8;x<72;x++)a.png.data.set([30,90,180,255],(y*80+x)*4);},true);
+  const polygon=a=>{a.reading.regions=[{id:"main-body",outer:[[12,12],[68,12],[68,68],[12,68]],holes:[]}];};
+  test("polygon broad body preserves the material contract","grey",polygon,true);
+  {
+   const a=make("white"),rect=measureSingleNeutral(a.png,a.reading);polygon(a);
+   const poly=measureSingleNeutral(a.png,a.reading);
+   cases.push({name:"[single-neutral] polygon rectangle is numerically identical to legacy rectangle",pass:JSON.stringify(rect)===JSON.stringify(poly)});
+  }
+  test("polygon anatomical hole excludes a nonmaterial screw","grey",a=>{
+   polygon(a);a.reading.regions[0].holes=[[[30,30],[50,30],[50,50],[30,50]]];
+   for(let y=30;y<50;y++)for(let x=30;x<50;x++)a.png.data.set([230,230,230,255],(y*80+x)*4);
+  },true);
+  test("polygon tiny eye cannot stand for the body","white",a=>{polygon(a);a.reading.regions[0].outer=[[25,25],[45,25],[45,45],[25,45]];},false);
+  test("polygon painted miniature patch on coloured body is rejected","black",a=>{
+   polygon(a);recolour(a,[30,90,180]);
+   for(let y=25;y<55;y++)for(let x=25;x<55;x++)a.png.data.set([50,50,50,255],(y*80+x)*4);
+   a.reading.regions[0].outer=[[25,25],[55,25],[55,55],[25,55]];
+  },false);
+  test("polygon thin sliver cannot impersonate a broad surface","grey",a=>{polygon(a);a.reading.regions[0].outer=[[12,12],[68,65],[68,68],[12,15]];},false);
+  test("polygon crossing boundary is invalid","grey",a=>{polygon(a);a.reading.regions[0].outer=[[12,12],[68,68],[12,68],[68,12]];},false);
+  test("polygon crossing with nonzero signed area is invalid","grey",a=>{polygon(a);a.reading.regions[0].outer=[[12,12],[68,60],[12,68],[60,12]];},false);
+  test("polygon coordinates outside the source are invalid","grey",a=>{polygon(a);a.reading.regions[0].outer[0]=[-1,12];},false);
+  test("polygon fractional coordinates are invalid","grey",a=>{polygon(a);a.reading.regions[0].outer[0]=[12.5,12];},false);
+  test("polygon repeated vertex is invalid","grey",a=>{polygon(a);a.reading.regions[0].outer.push([12,12]);},false);
+  test("polygon backtracking adjacent edge is invalid","grey",a=>{polygon(a);a.reading.regions[0].outer=[[12,12],[68,12],[40,12],[68,68],[12,68]];},false);
+  test("polygon hole outside body is invalid","grey",a=>{polygon(a);a.reading.regions[0].holes=[[[1,1],[8,1],[8,8],[1,8]]];},false);
+  test("polygon hole crossing body edge is invalid","grey",a=>{polygon(a);a.reading.regions[0].holes=[[[60,30],[72,30],[72,40],[60,40]]];},false);
+  test("polygon touching hole is invalid","grey",a=>{polygon(a);a.reading.regions[0].holes=[[[12,30],[30,30],[30,40],[12,40]]];},false);
+  test("polygon nested holes are invalid","grey",a=>{polygon(a);a.reading.regions[0].holes=[[[25,25],[55,25],[55,55],[25,55]],[[30,30],[40,30],[40,40],[30,40]]];},false);
+  test("polygon overlaps cannot inflate material area","grey",a=>{polygon(a);a.reading.regions.push({...a.reading.regions[0],id:"overlapping-body"});},false);
+  test("polygon source drift cannot inherit ratification","black",a=>{polygon(a);a.bytes=Buffer.from("changed polygon source");},false);
+  test("polygon geometry never omits inconvenient coloured pixels","grey",a=>{polygon(a);for(let y=12;y<68;y++)for(let x=12;x<40;x++)a.png.data.set([30,90,180,255],(y*80+x)*4);},false);
+  test("polygon transparency counts against its full geometric area","grey",a=>{polygon(a);for(let y=12;y<68;y++)for(let x=12;x<40;x++)a.png.data[(y*80+x)*4+3]=0;},false);
+  test("polygon mixed shape declarations are invalid","grey",a=>{polygon(a);a.reading.regions[0].x=12;},false);
+
+  return cases;
+}
+
 // ── the walk ─────────────────────────────────────────────────────────────────
 const readSheet = async (file) => {
   const { PNG } = await import("pngjs");
   return PNG.sync.read(fs.readFileSync(file));
 };
+
+
+// Authoring probe of one proposed material mask. This is explicitly not the
+// chapter gate: the normal file walker below still verifies the real task.
+// node scripts/check-colour-truth.mjs --measure-single image.png reading.json
+const probeSingleAt = process.argv.indexOf("--measure-single");
+if (probeSingleAt >= 0) {
+  const [sheetFile,readingFile] = process.argv.slice(probeSingleAt+1);
+  if (!sheetFile || !readingFile) throw new Error("--measure-single needs a PNG and a reading JSON");
+  const reading=JSON.parse(fs.readFileSync(readingFile,"utf8"));
+  const png=await readSheet(sheetFile),bytes=fs.readFileSync(sheetFile);
+  const task={colour:reading.word,colourOptions:[reading.word,"blue","pink"],curseVisual:"violet-ink"};
+  const result=checkSingleNeutral({png,bytes,task,reading});
+  console.log(JSON.stringify({scope:"single-source authoring probe, not the chapter gate",...result},null,2));
+  process.exit(result.errors.length ? 1 : 0);
+}
 
 
 // ═══ KAPITEL 2 · DIE KOPIE (R5-W6b · W5 · D-420 · R132) ═════════════════════
@@ -421,12 +703,14 @@ if (selftest) {
   // 5 · the ink outline must not become the answer
   const inky = measure(flat(20, 18, 14));
   say("the ink outline is not a colour", inky, (m) => m.dominant === "MIXED");
-  // 6 · the drift rule: the desk's ratified 35.7° must reject an orange repaint
+  // 6 · Historical brown-desk fixture: its ratified35.7° must reject an orange repaint.
+  // The live desk is now green; keep this independent measured fixture stable.
+  const historicalBrownDeskCentre = 35.7;
   say("a repaint that moves the warm centre invalidates the ratified reading",
-    Math.abs(24.6 - READINGS.obj_desk.warmCentre), (d) => d > DRIFT);
+    Math.abs(24.6 - historicalBrownDeskCentre), (d) => d > DRIFT);
   // 7 · …and must accept the sheet it was ratified on
   say("NON-TAMPER · the sheet it was ratified on still passes the drift rule",
-    Math.abs(35.7 - READINGS.obj_desk.warmCentre), (d) => d <= DRIFT);
+    Math.abs(35.7 - historicalBrownDeskCentre), (d) => d <= DRIFT);
   // 8 · law D: a second word of the target's own family is a giveaway
   say("two warm words among the options give the answer away",
     ["orange", "yellow", "blue"].filter((w) => WORD_FAMILY[w] === "warm").length, (n) => n > 1);
@@ -555,6 +839,7 @@ if (selftest) {
   sagK("repeating one colour does not form two colours",keyedColours("black and black"),s=>s.size===0);
 
   for (const c of neutralSelftestCases()) say(c.name, c.pass, v => v);
+  for (const c of singleNeutralSelftestCases()) say(c.name, c.pass, v => v);
   let kopieBad = 0;
   for (const [name, got, ok] of kopieCases) {
     const pass = ok(got);
@@ -674,6 +959,14 @@ for (const { chapter, file } of KARTENDATEIEN) {
       const result = checkDualColour({ png, bytes: fs.readFileSync(sheet), task: t, reading: dualReading });
       for (const error of result.errors) fail(w, error);
       table.push(`  ${id.padEnd(22)} neutral body regions ${result.regions.map(r => `${r.id}:${(r.coverage*100).toFixed(1)}%/core${(r.coreShare*100).toFixed(1)}%`).join(" · ")} → Karte sagt ${t.colour}`);
+      continue;
+    }
+    const singleReading = SINGLE_NEUTRAL_READINGS[`${chapter}/${skin}`];
+    if (singleReading || SINGLE_NEUTRALS.has(t.colour)) {
+      measured++;
+      const result = checkSingleNeutral({ png, bytes: fs.readFileSync(sheet), task: t, reading: singleReading });
+      for (const error of result.errors) fail(w, error);
+      table.push(`  ${id.padEnd(22)} single neutral ${t.colour}, ${result.wholeTargetShare === undefined ? "UNBELEGT — keine gültige Körperlesart" : `whole interior ${(result.wholeTargetShare*100).toFixed(1)}%, mask ${(result.maskInteriorShare*100).toFixed(1)}%`}`);
       continue;
     }
     const m = measure(png.data, { w: png.width, h: png.height });
@@ -813,7 +1106,7 @@ if (luecken.length > 0 && failures === vorLuecken) {
 // Every law above runs on sheets this walk found. A walk that finds none reports
 // a clean repo forever, which is the worst way for a picture check to break.
 if (measured === 0) fail("VACUITY", "no restore card was measured — either the walk missed the task files or the kind was renamed; every law in this gate is asleep");
-if (Object.keys(READINGS).length + Object.keys(DUAL_READINGS).length < measured) fail("VACUITY", `${measured} sheets measured but only ${Object.keys(READINGS).length + Object.keys(DUAL_READINGS).length} ratified readings — a skin without a row is a colour word nobody ratified`);
+if (Object.keys(READINGS).length + Object.keys(DUAL_READINGS).length + Object.keys(SINGLE_NEUTRAL_READINGS).length < measured) fail("VACUITY", `${measured} sheets measured but only ${Object.keys(READINGS).length + Object.keys(DUAL_READINGS).length + Object.keys(SINGLE_NEUTRAL_READINGS).length} ratified readings — a skin without a row is a colour word nobody ratified`);
 // …and the measurement itself must still be able to tell two colours apart.
 if (measure(flat(214, 40, 30)).dominant === measure(flat(40, 90, 200)).dominant) {
   fail("VACUITY", "the measurement puts a red sheet and a blue sheet in the same family — it is not discriminating and every verdict above is noise");

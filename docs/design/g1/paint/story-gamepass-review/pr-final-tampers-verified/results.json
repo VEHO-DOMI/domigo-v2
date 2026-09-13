@@ -1,0 +1,92 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "results": [
+    {
+      "name": "control",
+      "exit": 0,
+      "signal": null,
+      "expectedExit": 0,
+      "command": [
+        "nice",
+        "-n",
+        "15",
+        "/Users/veho/Code/codex-lab/trial-domigo-v2/packages/game-paint/node_modules/.bin/vitest",
+        "run",
+        "src/story/number-swarm.test.ts",
+        "src/artScope.test.ts",
+        "--maxWorkers=1",
+        "--minWorkers=1"
+      ],
+      "cwd": "/Users/veho/Code/codex-lab/trial-berichte/CH01_STORY_SPIELPASS/pr-final-tampers-verified/control/packages/game-paint",
+      "log": "control.log",
+      "passed": true
+    },
+    {
+      "name": "ignore-run-seed",
+      "exit": 1,
+      "signal": null,
+      "expectedExit": 1,
+      "command": [
+        "nice",
+        "-n",
+        "15",
+        "/Users/veho/Code/codex-lab/trial-domigo-v2/packages/game-paint/node_modules/.bin/vitest",
+        "run",
+        "src/story/number-swarm.test.ts",
+        "src/artScope.test.ts",
+        "--maxWorkers=1",
+        "--minWorkers=1"
+      ],
+      "cwd": "/Users/veho/Code/codex-lab/trial-berichte/CH01_STORY_SPIELPASS/pr-final-tampers-verified/ignore-run-seed/packages/game-paint",
+      "log": "ignore-run-seed.log",
+      "passed": true
+    },
+    {
+      "name": "omit-comic-panel",
+      "exit": 1,
+      "signal": null,
+      "expectedExit": 1,
+      "command": [
+        "nice",
+        "-n",
+        "15",
+        "/Users/veho/Code/codex-lab/trial-domigo-v2/packages/game-paint/node_modules/.bin/vitest",
+        "run",
+        "src/story/number-swarm.test.ts",
+        "src/artScope.test.ts",
+        "--maxWorkers=1",
+        "--minWorkers=1"
+      ],
+      "cwd": "/Users/veho/Code/codex-lab/trial-berichte/CH01_STORY_SPIELPASS/pr-final-tampers-verified/omit-comic-panel/packages/game-paint",
+      "log": "omit-comic-panel.log",
+      "passed": true
+    },
+    {
+      "name": "omit-mentor",
+      "exit": 1,
+      "signal": null,
+      "expectedExit": 1,
+      "command": [
+        "nice",
+        "-n",
+        "15",
+        "/Users/veho/Code/codex-lab/trial-domigo-v2/packages/game-paint/node_modules/.bin/vitest",
+        "run",
+        "src/story/number-swarm.test.ts",
+        "src/artScope.test.ts",
+        "--maxWorkers=1",
+        "--minWorkers=1"
+      ],
+      "cwd": "/Users/veho/Code/codex-lab/trial-berichte/CH01_STORY_SPIELPASS/pr-final-tampers-verified/omit-mentor/packages/game-paint",
+      "log": "omit-mentor.log",
+      "passed": true
+    }
+  ],
+  "sourceHashes": {
+    "packages/game-paint/src/artScope.ts": "93f2687e7252bb301b345470cb6e594c5b3904f6bb8e10dfb39fc2f4dd0b65c6",
+    "packages/game-paint/src/artScope.test.ts": "7c6bc5b3c51dff45df31ba805ebb4017e1a87a1a7f09b1b085db7b549d2bb7ea",
+    "packages/game-paint/src/story/number-swarm.ts": "50a280709513b6fc1852502f2f4c787b3afc4d5834862b607e143ecd64666578",
+    "packages/game-paint/src/story/number-swarm.test.ts": "b3e07c4efbc34df67a2c5d16c256cebd7e766378858ec903ac11a5d8698a0fcd"
+  },
+  "sourceUnchanged": true
+}

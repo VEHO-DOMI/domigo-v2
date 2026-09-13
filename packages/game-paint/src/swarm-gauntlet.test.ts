@@ -139,8 +139,8 @@ describe("R5-W5 · B4b · D-161 · Karten garantiert JE PHASE", () => {
 
   it("VAKUITÄT: die Frager je Phase sind die, die im Level stehen", () => {
     expect(kontaktSpalten("p1")).toEqual([24, 48]);
-    expect(kontaktSpalten("p2")).toEqual([11, 26, 41, 56, 68]);
-    expect(kontaktSpalten("p3")).toEqual([23, 47]);
+    expect(kontaktSpalten("p2")).toEqual([11, 26, 41, 56, 68, 85]);
+    expect(kontaktSpalten("p3")).toEqual([14, 20, 23, 47]);
     expect(kontaktSpalten("p4"), "die Wächterin ist kein Berührungs-Frager").toEqual([]);
     expect(kontaktSpalten("p9"), "die Kleckskammer hat gar keine Wesen").toEqual([]);
   });
@@ -176,7 +176,9 @@ describe("R5-W5 · B4b · D-161 · Karten garantiert JE PHASE", () => {
     // erste erlaubte Zelle hinter der Presse bei c69 — p3 ist 64 Spalten breit
     // und endet mit der Tür auf c60. Nach rechts gibt es die Strecke nicht; nach
     // links schon, und dort trifft das Kind ihn ZUERST, mit leerem Träger.
-    const [flieger, presse] = kontaktSpalten("p3") as [number, number];
+    const p3 = level.phases.find(p => p.id === "p3")!;
+    const flieger = p3.entities.find(e => e.role === "flyer")!.c;
+    const presse = p3.entities.find(e => e.role === "crusher")!.c;
     expect(presse - flieger, "Abstand in Spalten").toBe(24);
     expect((presse - flieger) * TILE, "Abstand in px").toBeGreaterThan(needPx);
     expect(guaranteed(kontaktSpalten("p3")), "zwei von zwei").toBe(2);

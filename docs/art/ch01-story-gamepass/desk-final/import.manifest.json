@@ -1,0 +1,43 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "assets": [
+    {
+      "stem": "obj_desk_a",
+      "source": "desk-original.png",
+      "width": 560,
+      "height": 400,
+      "sourceCrop": {
+        "x": 108,
+        "y": 24,
+        "width": 1321,
+        "height": 974,
+        "foregroundBounds": {
+          "x": 114,
+          "y": 30,
+          "width": 1309,
+          "height": 962
+        }
+      },
+      "x": [
+        [
+          0,
+          78.30000000000007
+        ],
+        [
+          559,
+          1457.6999999999998
+        ]
+      ],
+      "y": [
+        [
+          0,
+          18
+        ],
+        [
+          399,
+          1003
+        ]
+      ]
+    }
+  ]
+}

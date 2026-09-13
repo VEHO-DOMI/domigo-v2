@@ -1,0 +1,45 @@
+{
+  "label": "CODEX DRAFT \u2014 NOT CANON",
+  "files": [
+    {
+      "file": "README.md",
+      "sha256": "860e746f58761e341d761a6a2e785f5c78e07b5c5bf11b335a5b1750fe997a9d"
+    },
+    {
+      "file": "import-report.json",
+      "sha256": "fd78b98ab92d8dbe7ea5e367d743b1ac9a216839fb5a12115c6fa0e217c12b29"
+    },
+    {
+      "file": "import.log",
+      "sha256": "55816a2119749ffc7e1c6574b0119973246976e5ef7ce94e017e171d40720266"
+    },
+    {
+      "file": "import.manifest.json",
+      "sha256": "06597dc475f3ada68e93426ee308e2bf55e5e43b577cad16527f7dfa70e1a692"
+    },
+    {
+      "file": "installed.manifest.json",
+      "sha256": "e18d3e0a7030fa091e80124c81f3f1cd1ca45a194b3ac29f95ccff136e63cd83"
+    },
+    {
+      "file": "originals.manifest.json",
+      "sha256": "e3f9ede5a91f4c0abc7bd07eadf19c4863fe9455a855a70fe129c95dd46b4d9b"
+    },
+    {
+      "file": "soundsystem-original.png",
+      "sha256": "3eb361bc1ac7d41e7bf3aea6ebd547466e95d6fc3f116524a170986b1898f6a9"
+    },
+    {
+      "file": "speaker.prompt.txt",
+      "sha256": "323aefca9537d4760cd087bfb9d873369b494a0065872f262132902bc57dc3ee"
+    },
+    {
+      "file": "tablet-original.png",
+      "sha256": "1e6916776cc402599d1d67d7e496b3e7e4f2c92f188bede1f5305f12f9852b73"
+    },
+    {
+      "file": "tablet.prompt.txt",
+      "sha256": "42a6c9f80f195c5791511e53bc9a303d9fcdaefccfadda65af687a64cb60ca08"
+    }
+  ]
+}

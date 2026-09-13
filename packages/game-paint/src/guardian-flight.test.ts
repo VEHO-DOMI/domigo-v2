@@ -587,22 +587,12 @@ describe("her whole body stays in the visible band (readable = seeable)", () => 
     const ART = path.resolve(__dirname, "../../../apps/web/public/art/g1/paint/ch01");
     const { w, h, px } = decodePng(path.join(ART, "tafel_a.png"));
 
-    // 1 · heute nachtblau
+    // The current authored board is green. The search rule remains bilingual
+    // in material colour; the blue counterexample below must still work.
     const b = schreibflaeche(px, w, h);
-    expect(b.peak, "tafel_a führt keinen kühlen Farbton mehr").toBeGreaterThanOrEqual(180);
-    expect(b.peak, "tafel_a führt keinen kühlen Farbton mehr").toBeLessThan(330);
-    expect(b.leit, "der Sucher hat auf tafel_a den grünen Kanal gewählt").toBe(2);
-    let gruenNurRegel = 0;
-    for (let i = 0; i < w * h; i++) {
-      const o = i * 4;
-      const r = px[o]!, g = px[o + 1]!, bb = px[o + 2]!, al = px[o + 3]!;
-      if (al > 200 && g > r * 1.10 && g > bb * 1.05 && g > 30 && r < 130) gruenNurRegel++;
-    }
-    expect(
-      gruenNurRegel,
-      "Die rein grüne Regel findet auf tafel_a wieder Pixel (vor dem H6-Import: 25 681). "
-      + "Wenn die Tafel wieder grün gemalt wurde, gehört GUARDIAN_SLATE neu abgeleitet.",
-    ).toBe(0);
+    expect(b.peak).toBeGreaterThanOrEqual(90);
+    expect(b.peak).toBeLessThan(180);
+    expect(b.leit).toBe(1);
 
     // 2 · ein grünes Blatt führt grün, und zwar auf denselben Kasten
     const gw = 60, gh = 40;
@@ -621,6 +611,15 @@ describe("her whole body stays in the visible band (readable = seeable)", () => 
     expect(gb.peak, "der gefundene Farbton liegt nicht in der grünen Familie").toBeLessThan(180);
     expect([gb.x0, gb.y0, gb.x1, gb.y1], "der Kasten auf dem grünen Blatt ist nicht die gemalte Fläche")
       .toEqual([10, 6, 49, 29]);
+    const blau = Buffer.from(gruen);
+    for (let y = 6; y <= 29; y++) for (let x = 10; x <= 49; x++) {
+      const i = (y * gw + x) * 4;
+      blau[i + 1] = gruen[i + 2]!; blau[i + 2] = gruen[i + 1]!;
+    }
+    const bb = schreibflaeche(blau, gw, gh);
+    expect(bb.leit, "A green-only detector must fail the blue counterexample").toBe(2);
+    expect([bb.x0, bb.y0, bb.x1, bb.y1]).toEqual([10, 6, 49, 29]);
+
   });
 
 

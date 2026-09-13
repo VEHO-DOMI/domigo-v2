@@ -1,8 +1,9 @@
 // L0 · D10 · DIE PILOTEN VON KAPITEL 1.
 //
-// VERBATIM aus `scripts/record-paint-tape.mjs` hierher gezogen (Level-Welle,
+// Ursprung: VERBATIM aus `scripts/record-paint-tape.mjs` hierher gezogen (Level-Welle,
 // 2026-09-02) — Zeile für Zeile dieselben Makros, dieselben Kommentare, dieselbe
-// Reihenfolge. Sie standen im Aufnahme-Werkzeug, weil es nur ein Kapitel gab;
+// Reihenfolge. p2/p3 sind seit dem Story-Spielpass neu aufgenommen.
+// Sie standen im Aufnahme-Werkzeug, weil es nur ein Kapitel gab;
 // mit fünf Kapiteln wäre dieses Werkzeug die heisseste Datei des Programms
 // geworden, denn jede Gitter-Bahn tunt ihre Piloten gegen die gedruckte
 // Zell-Spur, oft mehrmals am Tag.
@@ -41,6 +42,7 @@ export const PILOTS = {
       ["walkTo", 39], ["settle"],
       ["jump", { dir: "right", hold: 6, steer: 12 }], ["settle"], // Lücke 1 → Steg
       ["jump", { dir: "right", hold: 6, steer: 12 }], ["settle"], // Lücke 2 → B zahlt die Landung
+      ["talk", "p1-eraser"], // Nach dem Satz noch den Radiergummi färben.
       ["walkTo", 50], ["settle"], // durchs Hüpfer-Band
       ["jump", { dir: "right", hold: 6, steer: 8 }], ["settle"], // auf die Truhe → A
       ["jump", { dir: "right", hold: 6, steer: 10 }], ["settle"], // über c53 aufs Spind-Top → G
@@ -52,40 +54,39 @@ export const PILOTS = {
   // p2 „Das Klassenzimmer bei Nacht" (R5-P1, Dossier p2.md §10): PROJECTOR
   // 9/9 — P/R/O treppauf (Halte an Stufe 3) · Arch-TAP (Halte bonkt am
   // Sturz!) · J im Loch-Bogen, E/C im Korridor, drei Schwarm-Karten ehrlich ·
-  // Kavernen-Tritt → T in der Kaverne · O/R im Terrassen-Abstieg · MERLE
-  // (Pult-Anlauf 2×Δ48) — die R6-Zeremonie bleibt auf Band · Sims-Tap → X.
+  // Kavernen-Tritt und Terrassen-Abstieg zahlen die letzten Buchstaben.
+  // Der verbreiterte untere Rettungsraum führt über Klecks und Schere zu Merle.
   p2: {
     abilities: ["jump", "run"],
     program: [
-      ["walkTo", 3], ["settle"],
-      ["jump", { dir: "right", hold: 6, steer: 10 }], ["settle"], // auf Bank/Hürden-Kamm (c4–7)
-      ["walkTo", 11], ["settle"], // hinab in den Pen-Hof
-      ["jump", { dir: "right", hold: 6, steer: 8 }], ["settle"], // auf Stufe 1 → P
-      ["walkTo", 14], ["settle"], // die Ost-Hürde IST Teil der Treppe
-      ["jump", { dir: "right", hold: 6, steer: 8 }], ["settle"], // auf Stufe 2 → R
-      ["jump", { dir: "right", hold: 26, steer: 8 }], ["settle"], // der Bonk-Scheitel zahlt O (deterministisch)
-      ["jump", { dir: "right", hold: 6, steer: 10 }], ["settle"], // AUF Stufe 3 (gemessen: c19.6)
-      ["jump", { dir: "right", hold: 6, steer: 10 }], ["settle"], // Tap über den Absatz auf die Schrankwand-Krone (gemessen)
-      ["runJump", 31.2, 6], ["settle"], // ANLAUF-Loch-Bogen (Momentum-Belohnung) → J im Flug; Schwarm 1 zahlt unterwegs
-      ["walkTo", 53], ["settle"], // E, C im Lauf; Schwarm 2 zahlt
-      ["hold", { right: true }, 20], ["settle"], // auf den Kavernen-Tritt (c54)
-      ["hold", { right: true }, 20], ["settle"], // in die Kaverne → T; Schwarm 3 zahlt
-      ["hold", { right: true }, 24], ["settle"], // Terrasse 2 → O
-      ["hold", { right: true }, 24], ["settle"], // Terrasse 3 → R
-      ["hold", { right: true }, 24], ["settle"], // auf den Boden
-      ["walkTo", 60], ["settle"],
-      ["jump", { dir: "right", hold: 26, steer: 8 }], ["settle"], // HALTE auf die Klecks-/Pult-Stufe
-      ["jump", { dir: "right", hold: 26, steer: 8 }], ["settle"], // HALTE aufs Pult-Deck
-      ["walkTo", 64], ["settle"],
-      ["hold", { up: true }, 8], ["wait", 30], // MERLE: ↑ öffnet, sechs Runden laufen
-      ["walkTo", 66], ["settle"],
-      ["hold", { right: true }, 24], ["settle"], // durch die Gasse c67 auf den Boden
-      ["walkTo", 68], ["settle"],
-      ["jump", { dir: "right", hold: 6, steer: 8 }], ["settle"], // der Sims-Tap
-      ["walkTo", 69], ["settle"], ["wait", 60], // Fenster „Open!" + X
+      ["walkTo",3], ["settle"],
+      ["jump",{"dir":"right","hold":6,"steer":10}], ["settle"],
+      ["walkTo",9], ["talk", "p2-pen"], ["settle"],
+      ["walkTo",11], ["settle"],
+      ["jump",{"dir":"right","hold":6,"steer":8}], ["settle"],
+      ["walkTo",14], ["settle"],
+      ["jump",{"dir":"right","hold":6,"steer":8}], ["settle"],
+      ["jump",{"dir":"right","hold":26,"steer":8}], ["settle"],
+      ["jump",{"dir":"right","hold":6,"steer":10}], ["settle"],
+      ["jump",{"dir":"right","hold":6,"steer":10}], ["settle"],
+      ["runJump",31.2,6], ["settle"],
+      ["walkTo",53], ["settle"],
+      ["hold",{"right":true},20], ["settle"],
+      ["hold",{"right":true},20], ["settle"],
+      ["walkTo",63], ["settle"],
+      ["walkTo",68], ["settle"],
+      ["walkTo",75], ["settle"],
+      ["hold",{"up":true},8],
+      ["wait",30],
+      ["walkTo",81], ["settle"],
+      ["walkTo",85], ["settle"],
+      ["walkTo",89], ["settle"],
+      ["wait",60],
+      ["walkTo",90], ["settle"],
+      ["wait",60],
     ],
   },
-  // p3 „Der Schulhof-Garten" (R5-P1, Dossier ch01-dossiers-v2/p3.md §10):
+  // p3 „Der Schulhof" (R5-P1, Dossier ch01-dossiers-v2/p3.md §10):
   // das terrassierte V. Die Rutsche zahlt G/L/U im Tempo (Magnet), die
   // FAHRT zahlt E/S/T (Deck-Fußlinie 282, Buchstaben r16 → dy 8), der
   // Anstieg zahlt I/C/K im Lauf-Magneten (je dy 14). Tape-Pflicht laut
@@ -98,30 +99,24 @@ export const PILOTS = {
   p3: {
     abilities: ["jump", "run"],
     program: [
-      ["walkTo", 9], ["settle"], // to the lip of the chalk slide
-      ["hold", { right: true }, 140], ["settle"], // the slide run pays G, L, U; ends in the Senke
-      ["walkTo", 26], ["settle"], // the Krakel checkpoint
-      ["jump", { dir: "right", hold: 10 }], ["settle"], // measured: this arc lands ON the pier (~c29.8)
-      // B1-INTERIM (Kokis Entscheid 2026-08-11: die Mover »lesen sich als
-      // Durchfallen«): die Fähre ist ausgebaut, die Querung sind DREI Sprünge
-      // über zwei statische Planken (r17 c32–33 · c36–37, Pier-Höhe). Je ein
-      // Buchstabe hängt eine Spalte vor der Absprung-Lippe, also zahlt jeder
-      // Sprung seinen eigenen — E (30,16) · S (34,16) · T (38,16).
-      // `steer` MUSS begrenzt bleiben: ein Vollflug-Tap fliegt 5+ Spalten und
-      // landet neben einer 2 Zellen breiten Planke (R5-P1-Messung).
-      ["walkTo", 29], ["settle"], // the pier lip — E magnets in from here
-      ["jump", { dir: "right", hold: 6, steer: 5 }], ["settle"], // hop 1 → Planke A
-      ["walkTo", 33], ["settle"], // A's east lip — S magnets in
-      ["jump", { dir: "right", hold: 6, steer: 5 }], ["settle"], // hop 2 → Planke B
-      ["walkTo", 37], ["settle"], // B's east lip — T magnets in
-      ["jump", { dir: "right", hold: 6, steer: 5 }], ["settle"], // hop 3 → T1 (Fall der Tiefe 4)
-      ["walkTo", 49], // I by magnet at c42, then THROUGH the Stampfer zone without stopping
-      ["jump", { dir: "right", hold: 18 }], ["settle"], // up to T2
-      ["walkTo", 55], ["settle"], // C by magnet at c52
-      ["jump", { dir: "right", hold: 18 }], ["settle"], // up to T3
-      ["walkTo", 59], ["settle"], // K by magnet at c58
-      ["jump", { dir: "right", hold: 8 }], ["settle"], // onto the Tor-Sockel
-      ["walkTo", 60], ["settle"], ["wait", 60],
+      ["walkTo",9], ["settle"],
+      ["hold",{"right":true},140], ["settle"],
+      ["hold", {"left":true}, 10], ["talk", "p3-heft"], ["settle"],
+      ["walkTo",26], ["settle"],
+      ["jump",{"dir":"right","hold":10}], ["settle"],
+      ["walkTo",29], ["settle"],
+      ["jump",{"dir":"right","hold":6,"steer":5}], ["settle"],
+      ["walkTo",33], ["settle"],
+      ["jump",{"dir":"right","hold":6,"steer":5}], ["settle"],
+      ["walkTo",37], ["settle"],
+      ["jump",{"dir":"right","hold":6,"steer":5}], ["settle"],
+      ["walkTo",49],
+      ["jump",{"dir":"right","hold":18}], ["settle"],
+      ["walkTo",55], ["settle"],
+      ["jump",{"dir":"right","hold":18}], ["settle"],
+      ["walkTo",59], ["settle"],
+      ["walkTo",60], ["settle"],
+      ["wait",60],
     ],
   },
   // p4 „Die Tafel-Bühne" (R5-P1, arena.md §10): faustlos ausweichen von

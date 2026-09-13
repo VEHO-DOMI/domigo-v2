@@ -1,0 +1,31 @@
+{
+  "label": "CODEX DRAFT \u2014 NOT CANON",
+  "assets": [
+    {
+      "source": "sources/ending-door-original.png",
+      "stem": "plate_ch01_door",
+      "width": 1024,
+      "height": 768,
+      "x": [
+        [
+          0,
+          0
+        ],
+        [
+          1023,
+          1447
+        ]
+      ],
+      "y": [
+        [
+          0,
+          0
+        ],
+        [
+          767,
+          1085
+        ]
+      ]
+    }
+  ]
+}

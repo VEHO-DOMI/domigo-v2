@@ -1,0 +1,11 @@
+ok 1 - undeclared matte leaves legitimate violet and every RGBA byte untouched
+ok 2 - declared matte only borrows existing RGB and preserves every alpha and honest pixel
+ok 3 - actual alpha survives key removal; key and hidden RGB remain empty
+ok 4 - fringe cleanup also heals newly separated specks without deleting paint
+ok 5 - bilinear uses both axes and premultiplied colour, never hidden blue
+ok 6 - nonuniform x/y pass points land on their exact authored pixels
+ok 7 - out-of-canvas mapping stays empty, including fractional coordinates
+ok 8 - bad axes rejected: reversal, duplicates, NaN, malformed, uncovered
+ok 9 - clip mask only removes zero-alpha pixels; partial alpha cannot boost or dim
+ok 10 - source crop preserves original integer and fractional samples and all source bytes
+import-ch01-buecherwelt: Missing expected exception.

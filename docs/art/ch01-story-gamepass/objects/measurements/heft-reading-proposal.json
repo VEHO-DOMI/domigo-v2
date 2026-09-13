@@ -1,0 +1,65 @@
+{
+  "word": "white",
+  "sourceSha256": "847d09b30a5b0ff3987262c81178796d068889d4baf01e7f1df3e35b98a97117",
+  "width": 490,
+  "height": 448,
+  "regions": [
+    {
+      "id": "right-pages-main",
+      "x": 302,
+      "y": 113,
+      "w": 90,
+      "h": 121
+    },
+    {
+      "id": "right-pages-outer",
+      "x": 392,
+      "y": 90,
+      "w": 40,
+      "h": 90
+    },
+    {
+      "id": "page-body-main",
+      "x": 194,
+      "y": 193,
+      "w": 101,
+      "h": 141
+    },
+    {
+      "id": "page-body-bottom",
+      "x": 183,
+      "y": 334,
+      "w": 86,
+      "h": 20
+    },
+    {
+      "id": "left-pages-mid",
+      "x": 95,
+      "y": 130,
+      "w": 44,
+      "h": 55
+    },
+    {
+      "id": "left-pages-upper",
+      "x": 57,
+      "y": 80,
+      "w": 35,
+      "h": 43
+    },
+    {
+      "id": "left-pages-inner",
+      "x": 122,
+      "y": 165,
+      "w": 30,
+      "h": 60
+    },
+    {
+      "id": "right-pages-top",
+      "x": 355,
+      "y": 60,
+      "w": 30,
+      "h": 50
+    }
+  ],
+  "why": "Authored anatomical material rectangles on inspected imported painting; excludes eyes, outlines, metal details and background."
+}

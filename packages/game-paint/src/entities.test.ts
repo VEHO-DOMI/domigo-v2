@@ -780,22 +780,21 @@ describe("R5-W5 · B4b · Merles Raum kommt aus dem Level", () => {
   });
 
   it("★ das AUSGELIEFERTE p2: die gemalten Spalten sagen genau, was das Gitter trägt", () => {
-    // Die Ehrlichkeits-Prüfung dieser Änderung. Merles Sims IST vier Kacheln
-    // breit (c63…c66, am Gitter gemessen), und R85 sagt vier — die gemalten
-    // Zahlen erfinden also nichts, sie schreiben die Wahrheit des Levels fest.
-    // Wäre eine der beiden falsch, liefen Gitter-Fenster und Level-Fenster hier
-    // auseinander.
+    // The wider rescue room leaves a safe local waiting area before the
+    // companion joins the hero's path. Authored bounds are inside real floor,
+    // not the former four-cell shelf or the full chapter-following contract.
     const p = path.resolve(__dirname, "../../../content/corpus/stories/g1.st.lost-pages/paint/ch01.level.json");
     const level = JSON.parse(fs.readFileSync(p, "utf8")) as { phases: Array<{ id: string; rows: string[]; entities: EntitySpec[] }> };
     const p2 = level.phases.find((x) => x.id === "p2")!;
     const merle = p2.entities.find((e) => e.id === "merle")!;
-    expect(merle.params?.roamMinC, "im Level deklariert").toBe(63);
-    expect(merle.params?.roamMaxC).toBe(66);
+    expect(merle.params?.roamMinC, "im Level deklariert").toBe(73);
+    expect(merle.params?.roamMaxC).toBe(79);
     const ausDemGitter = roamZone(p2.rows, xOf(merle.c), feetOf(merle.r));
     const ausDemLevel = roamZone(p2.rows, xOf(merle.c), feetOf(merle.r), roamBoundsOf(merle.params ?? {}));
-    expect(cellOf(ausDemLevel.minX)).toBe(cellOf(ausDemGitter.minX));
-    expect(cellOf(ausDemLevel.maxX)).toBe(cellOf(ausDemGitter.maxX));
-    expect([cellOf(ausDemLevel.minX), cellOf(ausDemLevel.maxX)]).toEqual([63, 66]);
+    expect(cellOf(ausDemLevel.minX)).toBeGreaterThanOrEqual(cellOf(ausDemGitter.minX));
+    expect(cellOf(ausDemLevel.maxX)).toBeLessThanOrEqual(cellOf(ausDemGitter.maxX));
+    expect([cellOf(ausDemLevel.minX), cellOf(ausDemLevel.maxX)]).toEqual([73, 79]);
+    expect(p2.rows[merle.r + 1]?.slice(73, 80), "jeder Warteplatz hat wirklichen Boden").toBe("#######");
   });
 
   it("★ und die MASCHINE nimmt sie: 1200 Ticks im ausgelieferten p2 bleiben im gemalten Fenster", () => {
@@ -809,13 +808,13 @@ describe("R5-W5 · B4b · Merles Raum kommt aus dem Level", () => {
     const merle = w.entities.find((e) => e.id === "merle")!;
     merle.hidden = false;
     restoreFreedClassmate(merle, 999);
-    expect(merle.params.roamMinC, "spawnEntities reicht params durch").toBe(63);
+    expect(merle.params.roamMinC, "spawnEntities reicht params durch").toBe(73);
     let ging = false;
     for (let t = 0; t < 1200; t++) {
       stepEntities(w, p2.rows, idleInput({ playerX: 0, playerY: 0 } as never));
       if (merle.state === "roam" && merle.x !== merle.homeX) ging = true;
-      expect(cellOf(merle.x)).toBeGreaterThanOrEqual(63);
-      expect(cellOf(merle.x)).toBeLessThanOrEqual(66);
+      expect(cellOf(merle.x)).toBeGreaterThanOrEqual(73);
+      expect(cellOf(merle.x)).toBeLessThanOrEqual(79);
     }
     expect(ging, "sie ist auch wirklich gegangen").toBe(true);
   });

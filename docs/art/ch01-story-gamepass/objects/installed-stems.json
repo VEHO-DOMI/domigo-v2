@@ -1,0 +1,225 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "stems": [
+    {
+      "stem": "obj_book_a",
+      "previousSha256": "5c48a9368a03a7888b58586acfb704db8a13bb2e0b3a9b3fb8dd3a923d4dc042",
+      "outputSha256": "5a261651e885e0f456ac298171568f233a5784b2dcd1d45065f46a30831cfd97"
+    },
+    {
+      "stem": "obj_schoolbag_a",
+      "previousSha256": "b1652fc84305dffa87fdf94e0d4cb9c5d5d94a7d3e9c3a48f8fbe468a7aa3153",
+      "outputSha256": "b1f86fae145e4899a448af7228e794fbacde0a3d71af821659a12fcd618d69d8"
+    },
+    {
+      "stem": "obj_desk_a",
+      "previousSha256": "254b7292d0ccba77bd2c6dab1f3e9d51f72412d424aef6c8aef045e54ccf6256",
+      "outputSha256": "33f6c43f68b65edcc004fa63ce0d01904e50b7c9de253194163f7f38256cfbc3"
+    },
+    {
+      "stem": "obj_chair_a",
+      "previousSha256": null,
+      "outputSha256": "3bd5351ed09656001ab694a95d083369f7442ceb47ae0a9ec9d453dccdc63748"
+    },
+    {
+      "stem": "obj_chair",
+      "previousSha256": "33d10e39979c94652d64d3e348ef6b1ce0d8237f94543e25c0d6e52294396a35",
+      "outputSha256": "3bd5351ed09656001ab694a95d083369f7442ceb47ae0a9ec9d453dccdc63748"
+    },
+    {
+      "stem": "cloth_skirt_a",
+      "previousSha256": "0fdbbe55d0102451e79f5d663dec0e9ed74c9b29b03481325d18257b513a4c51",
+      "outputSha256": "f85058bdfde59bd2e0d919076858be988445cb6b64e15bc4bcc887651733f951"
+    },
+    {
+      "stem": "obj_scissors_a",
+      "previousSha256": "c14e735d50c5f5a6c5be61c2fe7d21b01411169fb69fcd17753abac645d839c6",
+      "outputSha256": "1359353434183e887b7156c9ea9ccf8678819dee780e7b00bef6f0db56556f35"
+    },
+    {
+      "stem": "obj_scissors_b",
+      "previousSha256": "1cfbd41910a6613dd1a00710d1aaed0284ff48e5c475f3c3654389993f47f5a0",
+      "outputSha256": "1359353434183e887b7156c9ea9ccf8678819dee780e7b00bef6f0db56556f35"
+    },
+    {
+      "stem": "obj_scissors_dazed",
+      "previousSha256": null,
+      "outputSha256": "1359353434183e887b7156c9ea9ccf8678819dee780e7b00bef6f0db56556f35"
+    },
+    {
+      "stem": "obj_scissors_telegraph",
+      "previousSha256": null,
+      "outputSha256": "26b7b59f498f1358551c99ff0d6f14a97e553f600a1dc9b41a1369c211a7effd"
+    },
+    {
+      "stem": "obj_scissors_act",
+      "previousSha256": null,
+      "outputSha256": "1359353434183e887b7156c9ea9ccf8678819dee780e7b00bef6f0db56556f35"
+    },
+    {
+      "stem": "obj_scissors_run",
+      "previousSha256": null,
+      "outputSha256": "1359353434183e887b7156c9ea9ccf8678819dee780e7b00bef6f0db56556f35"
+    },
+    {
+      "stem": "obj_gluestick_a",
+      "previousSha256": "04859ed5a99adb9b45e56d79c5c6939cdd59e1ad50f950b3bbd6012d2510cc05",
+      "outputSha256": "bd5f77a7e5f7faa475b0eb528e47c0e56e9deec1eeca7b9d5f8263094618d904"
+    },
+    {
+      "stem": "obj_gluestick_b",
+      "previousSha256": null,
+      "outputSha256": "bd5f77a7e5f7faa475b0eb528e47c0e56e9deec1eeca7b9d5f8263094618d904"
+    },
+    {
+      "stem": "obj_gluestick_dazed",
+      "previousSha256": null,
+      "outputSha256": "bd5f77a7e5f7faa475b0eb528e47c0e56e9deec1eeca7b9d5f8263094618d904"
+    },
+    {
+      "stem": "obj_gluestick_telegraph",
+      "previousSha256": null,
+      "outputSha256": "be329119cce04ac02463e2b7fd7fd1519d2c9c60d408a67b53dc89a96902b3ac"
+    },
+    {
+      "stem": "obj_gluestick_act",
+      "previousSha256": null,
+      "outputSha256": "afdbb9f9d1cb170738de5a9de6e563ad84b499ddc5f25c20a0ad5085175c3479"
+    },
+    {
+      "stem": "obj_gluestick_run",
+      "previousSha256": null,
+      "outputSha256": "afdbb9f9d1cb170738de5a9de6e563ad84b499ddc5f25c20a0ad5085175c3479"
+    },
+    {
+      "stem": "obj_sharpener_a",
+      "previousSha256": "0e74c9ef98a1b4f5cf22df5dc902343cb46c05f16fbd5da675bfc08060c1be95",
+      "outputSha256": "e1ac0a2f35d87fd8c636630e13c3b9ae095ea4d8b5af7894a05bdb2753cf0fac"
+    },
+    {
+      "stem": "obj_sharpener_b",
+      "previousSha256": null,
+      "outputSha256": "e1ac0a2f35d87fd8c636630e13c3b9ae095ea4d8b5af7894a05bdb2753cf0fac"
+    },
+    {
+      "stem": "obj_sharpener_dazed",
+      "previousSha256": null,
+      "outputSha256": "e1ac0a2f35d87fd8c636630e13c3b9ae095ea4d8b5af7894a05bdb2753cf0fac"
+    },
+    {
+      "stem": "obj_sharpener_telegraph",
+      "previousSha256": null,
+      "outputSha256": "ce8807dfa04850bc619aab00f34713741ce6ce95dd2aafee259c9684dbe8c214"
+    },
+    {
+      "stem": "obj_sharpener_act",
+      "previousSha256": null,
+      "outputSha256": "cf4f1cc9724640be81241eadc5dee6d507c7c1290e21db7d6caa5ea32ced35cd"
+    },
+    {
+      "stem": "obj_sharpener_run",
+      "previousSha256": null,
+      "outputSha256": "cf4f1cc9724640be81241eadc5dee6d507c7c1290e21db7d6caa5ea32ced35cd"
+    },
+    {
+      "stem": "pen_a",
+      "previousSha256": "f6898fbd964f4a0c028aeec9d8eadc53aee567bee9036fda0719d2b9a29811cd",
+      "outputSha256": "15ecf4911d18cfbcb6dc9be277b28d4ab2730e3ecb8d3691fa25edbaf69c2b34"
+    },
+    {
+      "stem": "pen_b",
+      "previousSha256": "c3dff1ced2929a31067098dd373e7e82dc2fc5c26ba0f99548d397aedb514f9f",
+      "outputSha256": "15ecf4911d18cfbcb6dc9be277b28d4ab2730e3ecb8d3691fa25edbaf69c2b34"
+    },
+    {
+      "stem": "pen_dazed",
+      "previousSha256": "4504cce9602565703b05ff76a7e3be939abc1a88d43c3005aeb8421e66fad97e",
+      "outputSha256": "15ecf4911d18cfbcb6dc9be277b28d4ab2730e3ecb8d3691fa25edbaf69c2b34"
+    },
+    {
+      "stem": "pen_telegraph",
+      "previousSha256": null,
+      "outputSha256": "2e8d872df0f11de08e8712e803ccee3ad9a75e6bedb20d49bf11dcc687b99ddb"
+    },
+    {
+      "stem": "pen_act",
+      "previousSha256": "7444f90f2a041c012e5396478576b63839400a8d8482e2b538623e2d9af0afe3",
+      "outputSha256": "5e1c954cc2c37318de8918fa992a2f1ebe0479e31c573c605d77c54f1c19659d"
+    },
+    {
+      "stem": "pen_run",
+      "previousSha256": null,
+      "outputSha256": "5e1c954cc2c37318de8918fa992a2f1ebe0479e31c573c605d77c54f1c19659d"
+    },
+    {
+      "stem": "eraser_a",
+      "previousSha256": "8cbb6b6e1af987d0a5feca39e1664022a127f98bcd3cdbbbc905ececd52538ee",
+      "outputSha256": "86c91217c897a35ee53c5c53226156611fbe2574a168245bfe49632004cc63c3"
+    },
+    {
+      "stem": "eraser_b",
+      "previousSha256": "a957d8bffce5e2a5faf4026845b63519286a81a2dbc0df057f2d05d8f213114e",
+      "outputSha256": "86c91217c897a35ee53c5c53226156611fbe2574a168245bfe49632004cc63c3"
+    },
+    {
+      "stem": "eraser_dazed",
+      "previousSha256": "a3d534fb211731a1177d1af3ea9480530d3e41419de244fcede0a7521b73fe0b",
+      "outputSha256": "86c91217c897a35ee53c5c53226156611fbe2574a168245bfe49632004cc63c3"
+    },
+    {
+      "stem": "eraser_telegraph",
+      "previousSha256": null,
+      "outputSha256": "be8fff3b0eec1c5d1fe1e6930e70de40812759559af994bb40d91b88c826031b"
+    },
+    {
+      "stem": "eraser_act",
+      "previousSha256": "dd210f1c342345985dc46179842a1d99e12bea86c0844a1e4a8ef40752c5a585",
+      "outputSha256": "c055eb30d00c759eb68d3d236da6966bc14eef7c50008f24ed34624ee72d3f97"
+    },
+    {
+      "stem": "eraser_run",
+      "previousSha256": null,
+      "outputSha256": "c055eb30d00c759eb68d3d236da6966bc14eef7c50008f24ed34624ee72d3f97"
+    },
+    {
+      "stem": "heft_a",
+      "previousSha256": "415303e46ec041d725311f0a2cc1b01e01b66dd75fd2b073e04073681ea266a6",
+      "outputSha256": "847d09b30a5b0ff3987262c81178796d068889d4baf01e7f1df3e35b98a97117"
+    },
+    {
+      "stem": "heft_b",
+      "previousSha256": "3d1fa919465b6bdccbcf142f7b230609c513481dc119b84f30c61c082966c2d1",
+      "outputSha256": "847d09b30a5b0ff3987262c81178796d068889d4baf01e7f1df3e35b98a97117"
+    },
+    {
+      "stem": "heft_dazed",
+      "previousSha256": "441bf358c813468e0f19b1dee3cf33ff0fe9e2509e4fea82455ca5cfe0f087c5",
+      "outputSha256": "847d09b30a5b0ff3987262c81178796d068889d4baf01e7f1df3e35b98a97117"
+    },
+    {
+      "stem": "heft_telegraph",
+      "previousSha256": null,
+      "outputSha256": "ab841426d5caa6d9443255026bc75e48a8e73132291cb14a4e8e9d847fe638f9"
+    },
+    {
+      "stem": "heft_act",
+      "previousSha256": "93a89ae50f49845518dc73e734252c0a46cce9eef481f50bc4caab1b89a6dafa",
+      "outputSha256": "ccea6be897767f445d826ac2339f6154a87c25dde1d40b1316144937da450694"
+    },
+    {
+      "stem": "heft_run",
+      "previousSha256": null,
+      "outputSha256": "ccea6be897767f445d826ac2339f6154a87c25dde1d40b1316144937da450694"
+    },
+    {
+      "stem": "eraser_squash",
+      "previousSha256": "5102d57894c2b29e7cd8595935ae8e02a3ec8a3c0fddea88960b7353adb73e8f",
+      "outputSha256": "be8fff3b0eec1c5d1fe1e6930e70de40812759559af994bb40d91b88c826031b"
+    },
+    {
+      "stem": "heft_bank",
+      "previousSha256": "be10c82667c7b8906c405cb19e16c0f02ea1cf2d8623c5c21704abd921167a6c",
+      "outputSha256": "ccea6be897767f445d826ac2339f6154a87c25dde1d40b1316144937da450694"
+    }
+  ]
+}

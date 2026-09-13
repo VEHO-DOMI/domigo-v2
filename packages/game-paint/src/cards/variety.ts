@@ -37,7 +37,8 @@
 // drift): the ROUTER ITSELF. Law 15 does not model the serve, it runs it. If
 // routing.ts changes, this law changes with it or goes red.
 import { REFERENT_FIXED_FORMS, type GameTaskV2, type TaskForm, seededShuffle } from "../../../content-schema/src/game-tasks.ts";
-import type { PaintLevel } from "../level.ts";
+import { reachableCells, type PaintLevel } from "../level.ts";
+import { glyphAt, isHazard, isSolid } from "../collide.ts";
 import { initRoute, nextTask, resolvePool } from "./routing.ts";
 import { HOSTILE_ROLES, allPhasesOf, serveContextsOf } from "./serving.ts";
 
@@ -107,6 +108,14 @@ export interface VarietyPolicy {
   }>;
 }
 
+/** A declared pickup lesson, independently verified against the real level. */
+export interface PassiveCoverage {
+  wordId: string;
+  entityId: string;
+  phaseId: string;
+  reason: string;
+}
+
 export interface WordbankEntry { id: string; en: string; forms: string[] }
 
 export interface VarietyInput {
@@ -115,6 +124,8 @@ export interface VarietyInput {
   level: PaintLevel;
   policy: VarietyPolicy;
   wordbank: readonly WordbankEntry[];
+  /** Separate from answered/offered cards. Never manufactures a task or a ledger exemption. */
+  passiveCoverage?: readonly PassiveCoverage[];
   /** the unit's grammar structure ids (grammar.json `structureId`, de-duped) */
   structureIds: readonly string[];
   /** the lexicon the grounding law reads — a declared lexicon class must be made
@@ -689,6 +700,39 @@ function lawsOf(input: VarietyInput, honourExemptions: boolean): VarietyFailure[
   // Every taught item of the unit is in exactly one state — ANSWERED by a card,
   // OFFERED as a distractor, or EXEMPT with a reason and an expiry. A gap that is
   // declared is a decision; an undeclared gap is an accident.
+  // A pickup counts only while its actual visible English label and reachable
+  // world body exist. Missing/renamed/hidden/decorative entities do not teach.
+  const passivelySeen = new Set<string>();
+  const passiveBodies = new Set<string>();
+  const reachByPhase = new Map<string, Set<string>>();
+  for (const claim of input.passiveCoverage ?? []) {
+    const entry = wordbank.find(w => w.id === claim.wordId);
+    const phase = phases.find(p => p.id === claim.phaseId);
+    const matches = phase?.entities.filter(e => e.id === claim.entityId) ?? [];
+    const body = matches[0];
+    const bodyKey = `${claim.phaseId}/${claim.entityId}`;
+    const label = body?.params?.wordEn;
+    const legalLabel = typeof label === "string" && label.length > 0 && label === label.trim()
+      && entry !== undefined && entry.forms.some(f => norm(f) === norm(label));
+    let reachable = false;
+    if (phase && body && body.role === "cloth" && !isSolid(glyphAt(phase.rows, body.c, body.r)) && !isHazard(glyphAt(phase.rows, body.c, body.r))) {
+      let reach = reachByPhase.get(phase.id);
+      if (!reach) { reach = reachableCells(phase.rows, level.abilities, phase.entities, phase.swing?.ropePx); reachByPhase.set(phase.id, reach); }
+      // The same pickup interaction envelope as level.ts entity-reachable.
+      for (let dr = -2; dr <= 4; dr++) for (let dc = -2; dc <= 2; dc++) if (reach.has(`${body.c + dc},${body.r + dr}`)) reachable = true;
+    }
+    if (!entry || !phase || matches.length !== 1 || body?.role !== "cloth" || body.params?.hidden === true
+      || body.params?.repeatOf !== undefined || !legalLabel || !reachable || typeof claim.reason !== "string" || !claim.reason.trim()) {
+      fail("17p", `${chapter}:passiveCoverage`, `"${claim.wordId}" needs one visible, reachable original clothing pickup "${bodyKey}" with its exact English wordbank label and a reason`);
+      continue;
+    }
+    if (passivelySeen.has(claim.wordId) || passiveBodies.has(bodyKey)) {
+      fail("17q", `${chapter}:passiveCoverage`, `"${claim.wordId}" or pickup "${bodyKey}" is claimed twice`);
+      continue;
+    }
+    passivelySeen.add(claim.wordId);
+    passiveBodies.add(bodyKey);
+  }
   const ledger = chap.vocabLedger ?? {};
   const answeredIds = new Set(field.flatMap((t) => t.exercises ?? []));
   const optionBlob = field.map((t) => optionSurfaceOf(t).join(" ")).join(" ");
@@ -700,8 +744,9 @@ function lawsOf(input: VarietyInput, honourExemptions: boolean): VarietyFailure[
       }
       continue;
     }
+    if (passivelySeen.has(entry.id) && declared === undefined) continue;
     if (declared === undefined) {
-      fail("17a", `${chapter}:ledger`, `unit item "${entry.en}" (${entry.id}) is exercised by no card and carries no ledger entry — every core word is answered, offered, or declared (doc 45 B8)`);
+      fail("17a", `${chapter}:ledger`, `unit item "${entry.en}" (${entry.id}) is exercised by no card and carries no ledger entry — every core word is answered, visibly collected, offered, or declared (doc 45 B8)`);
       continue;
     }
     if (declared.reason === undefined || declared.reason.trim() === "" || declared.until === undefined) {

@@ -436,7 +436,7 @@ describe("R5-F6 · die Wisch-Klammer: das Kind hält an ihrer Kante, und wischt 
     row("#"),
   ];
 
-  const arena = (): PaintLevel => ({
+  const arena = (skin = "tafel"): PaintLevel => ({
     schema: "paintLevel@1",
     id: "g1-ch99",
     chapter: "ch99",
@@ -453,7 +453,7 @@ describe("R5-F6 · die Wisch-Klammer: das Kind hält an ihrer Kante, und wischt 
       surface: "normal",
       plates: {},
       rows: [...FLOOR],
-      entities: [{ id: "tafel", role: "guardian", skin: "tafel", c: 26, r: 14, tier: "E", params: {} }],
+      entities: [{ id: "tafel", role: "guardian", skin, c: 26, r: 14, tier: "E", params: {} }],
       links: [],
       exit: { to: "done" },
     }],
@@ -462,8 +462,8 @@ describe("R5-F6 · die Wisch-Klammer: das Kind hält an ihrer Kante, und wischt 
   /** Eine Tafel, die auf den Brettern sitzt und aufs Kind wartet — der Zustand
    *  aus H3s Bild. Ihre Lage wird festgeschrieben, damit der Abstand eine
    *  Aussage über die Klammer ist und nicht über ihre Choreografie. */
-  const wartendeTafel = (state: "wipeable" | "wipe") => {
-    const s = new PaintSim({ level: arena(), phaseId: "p1", grantedAbilities: () => [], freedCageIds: () => [] });
+  const wartendeTafel = (state: "wipeable" | "wipe", skin = "tafel") => {
+    const s = new PaintSim({ level: arena(skin), phaseId: "p1", grantedAbilities: () => [], freedCageIds: () => [] });
     const board = s.world.entities.find((e) => e.role === "guardian");
     if (board === undefined) throw new Error("keine Tafel in der Vorrichtung");
     board.state = state;
@@ -511,6 +511,9 @@ describe("R5-F6 · die Wisch-Klammer: das Kind hält an ihrer Kante, und wischt 
 
   it("die Klammer nimmt nur die Geschwindigkeit NACH INNEN — weggehen geht jederzeit", () => {
     const { s, board } = wartendeTafel("wipeable");
+    // Start one tile before real contact. The former 96px approach only got
+    // to 43.375px in 40 ticks and therefore never tested the new 40px clamp.
+    s.player.x = board.x - (GUARDIAN_WIPE_REACH_PX + TILE) * SUBS;
     const halteSieFest = (): void => {
       // Sie bleibt für diesen Test auf den Brettern stehen: geprüft wird die
       // KLAMMER, nicht ihre Choreografie — sonst fliegt sie nach dem Wischen
@@ -526,6 +529,18 @@ describe("R5-F6 · die Wisch-Klammer: das Kind hält an ihrer Kante, und wischt 
     expect(anDerKante, "erst einmal steht er an ihrer Kante").toBeLessThan(GUARDIAN_WIPE_REACH_PX + 1);
     for (let t = 0; t < 20; t++) { halteSieFest(); s.step(pad({ left: true })); }
     expect(Math.abs(s.player.x - board.x) / SUBS, "nach links kommt er frei weg").toBeGreaterThan(anDerKante + 10);
+  });
+
+  it.each([["tafel", 41], ["loewe", 45]] as const)("%s keeps its own body edge and can still be wiped", (skin, reach) => {
+    const { s, board } = wartendeTafel("wipeable", skin);
+    // Place a moving body just inside the edge to exercise the clamp itself,
+    // not an approach duration. The lion is the existing chapter-two guardian.
+    s.player.x = board.x - (reach - 3) * SUBS;
+    s.player.vx = PAINT.walkMax;
+    s.step(pad({ right: true }));
+    expect(Math.abs(s.player.x - board.x) / SUBS).toBe(reach - 1);
+    expect(s.player.vx).toBe(0);
+    expect(board.state, "the body clamp must still permit actual wipe contact").toBe("wipe");
   });
 
   it("ohne Bodenzustand klemmt nichts — eine fliegende Tafel ist keine Wand", () => {

@@ -1,0 +1,235 @@
+1 | Mensch | Die Zeile klingt lebendig und passt zu einer fantasievollen Spielhandlung.
+2 | Mensch | Die Aufforderung ist klar, direkt und kindgerecht formuliert.
+3 | Mensch | Der kurze Hinweis klingt natürlich und ist eindeutig.
+4 | Mensch | Der Befehl ist knapp, geläufig und leicht verständlich.
+5 | Mensch | Die ungewöhnliche Handlung ist innerhalb einer Fantasiegeschichte sofort verständlich.
+6 | Mensch | Die Aufforderung klingt natürlich und nennt das Ziel eindeutig.
+7 | Mensch | Der Hinweis ist klar und altersgerecht.
+8 | Mensch | Der Befehl ist eine natürliche gesprochene Form.
+9 | Mensch | Die Zeile beschreibt die drohende Handlung anschaulich und verständlich.
+10 | Mensch | Die Aufforderung ist kurz und eindeutig.
+11 | Mensch | Der Hinweis erklärt klar, was verhindert werden soll.
+12 | Mensch | Der Befehl klingt natürlich und unmissverständlich.
+13 | Mensch | Das Bild der bedeckenden Tinte ist klar und sprachlich stimmig.
+14 | geschrieben | „Sag, wie er auf Englisch heißt“ würde mündlicher und natürlicher klingen.
+15 | Mensch | Die spielerische Aufforderung ist anschaulich und leicht verständlich.
+16 | Mensch | Die umgangssprachliche Erklärung passt gut für Volksschulkinder.
+17 | Mensch | Als kurze Antwort ist die Bezeichnung völlig natürlich.
+18 | geschrieben | „An Sätzen herumwischen“ ist verständlich, klingt aber etwas konstruiert.
+19 | Mensch | Die Frage ist klar und klingt wie eine natürliche Arbeitsanweisung.
+20 | Mensch | Der Hinweis lenkt verständlich auf die entscheidenden Stellen.
+21 | Mensch | Der kurze Satz klingt natürlich und eindeutig.
+22 | geschrieben | Das Bild des Herumwischens an Sätzen bleibt verständlich, wirkt aber sprachlich etwas bemüht.
+23 | Mensch | Die Frage ist klar und benennt die gesuchte Bedeutung genau.
+24 | Mensch | Der Hinweis ist verständlich und für eine Sprachaufgabe passend.
+25 | Mensch | Der Satz klingt natürlich und ist eindeutig.
+26 | Mensch | Die fantasievolle Beschreibung ist sofort verständlich.
+27 | geschrieben | „Sag, wie es auf Englisch heißt“ wäre in gesprochener Sprache natürlicher.
+28 | Mensch | Die Aufforderung ist bildhaft, klar und kindgerecht.
+29 | Mensch | Die Erklärung klingt natürlich und beschreibt das Buch eindeutig.
+30 | Mensch | Als kurze Antwort ist die Bezeichnung passend.
+31 | Mensch | Die Zeile ist bildhaft und leicht verständlich.
+32 | geschrieben | „Sag, wie sie auf Englisch heißt“ würde mündlicher klingen.
+33 | Mensch | Die Aufforderung ist natürlich und der Bezug auf die Schultasche klar.
+34 | Mensch | Die Erklärung klingt alltagsnah und eindeutig.
+35 | Mensch | Als kurze Antwort ist die Bezeichnung natürlich.
+36 | Mensch | Die Zeile beschreibt die Spielsituation klar und anschaulich.
+37 | Mensch | Die beiden kurzen Aufforderungen klingen natürlich und verständlich.
+38 | Mensch | Die Erklärung benennt den Zweck der Musikanlage klar.
+39 | Mensch | Als kurze Antwort ist die Bezeichnung passend.
+40 | Mensch | Die Zeile klingt natürlich und weckt verständlich eine Erwartung.
+41 | Mensch | Diese Frage entspricht natürlicher österreichischer Unterrichtssprache.
+42 | Mensch | Der Hinweis erklärt die gewünschte Handlung eindeutig.
+43 | Mensch | Der kurze Befehl klingt natürlich.
+44 | Mensch | Die Situation ist anschaulich und sprachlich stimmig beschrieben.
+45 | Mensch | Die Frage klingt natürlich und ist für Kinder klar.
+46 | Mensch | Der Hinweis beschreibt die Sprechabsicht verständlich.
+47 | Mensch | Als kurze höfliche Äußerung klingt das natürlich.
+48 | Mensch | Die Zeile beschreibt den Fundort klar und unauffällig.
+49 | Mensch | Die Frage ist eindeutig und klingt natürlich.
+50 | Mensch | Der Hinweis erklärt die gewünschte Frage verständlich.
+51 | Mensch | Die Frage ist natürlich und eindeutig.
+52 | Mensch | Die Beschreibung klingt anschaulich und logisch.
+53 | Mensch | Die Frage entspricht natürlicher gesprochener Unterrichtssprache.
+54 | Mensch | Der Hinweis ist klar und leicht verständlich.
+55 | Mensch | Der kurze Befehl passt im Zusammenhang mit der Tür.
+56 | Mensch | Die Zeile klingt natürlich und führt verständlich zur nächsten Aufgabe.
+57 | Mensch | Die Frage beschreibt eine vertraute Alltagssituation.
+58 | Mensch | Der Hinweis ist kurz, natürlich und eindeutig.
+59 | Mensch | Als kurze Äußerung klingt das völlig natürlich.
+60 | Mensch | Die Ortsangabe und der Gegenstand sind klar beschrieben.
+61 | Mensch | Die Frage klingt natürlich und ist eindeutig.
+62 | stolpere | „Ob es der Person gut geht“ legt eine Ja-nein-Frage nahe und trifft „Wie geht es dir?“ deshalb nicht genau.
+63 | Mensch | Die Frage ist natürlich und sofort verständlich.
+64 | Mensch | Die Zeile erzeugt ein klares und anschauliches Bild.
+65 | Mensch | Die Aufforderung ist verständlich und sprachlich natürlich.
+66 | Mensch | Der Hinweis beschreibt die gewünschte Handlung klar.
+67 | Mensch | Der kurze Befehl ist natürlich und eindeutig.
+68 | Mensch | Das fantasievolle Wort „Tafelbühne“ ist im Satz gut verständlich.
+69 | Mensch | Die Frage klingt natürlich und nennt die Sprechsituation klar.
+70 | Mensch | Der Hinweis beschreibt die Begrüßungssituation verständlich.
+71 | Mensch | Der Gruß klingt selbstverständlich und natürlich.
+72 | Mensch | Die Zeile ist anschaulich und leicht verständlich.
+73 | Mensch | Die Frage ist klar und klingt natürlich.
+74 | Mensch | Der Hinweis beschreibt die gewünschte Information eindeutig.
+75 | Mensch | Die Frage ist kurz, geläufig und verständlich.
+76 | Mensch | Die fantasievolle Beschreibung ist sprachlich klar.
+77 | geschrieben | „Sag, wie sie auf Englisch heißt“ wäre mündlich natürlicher.
+78 | Mensch | Die Aufforderung ist anschaulich und der Bezug eindeutig.
+79 | Mensch | Die Erklärung benennt den Zweck der Füllfeder klar.
+80 | Mensch | Als kurze Antwort ist die Bezeichnung passend.
+81 | Mensch | Die Vermenschlichung der Füllfeder passt natürlich zur Spielwelt.
+82 | Mensch | Die Frage ist klar und vollständig formuliert.
+83 | Mensch | Der Hinweis beschreibt die Sprechabsicht natürlich.
+84 | Mensch | Die Frage klingt natürlich und eindeutig.
+85 | Mensch | Die Zeile beschreibt das Vorhaben verständlich.
+86 | geschrieben | „Nach der Wohnadresse fragen“ ist zwar eindeutig, klingt für Volksschulkinder aber etwas amtlich.
+87 | Mensch | Der Hinweis ist natürlich und leicht verständlich.
+88 | Mensch | Die Frage ist sprachlich korrekt und eindeutig.
+89 | Mensch | Die Spielsituation ist knapp und anschaulich beschrieben.
+90 | Mensch | Die Frage ist klar und kindgerecht.
+91 | Mensch | Der Hinweis erklärt die Gemeinsamkeit verständlich.
+92 | Mensch | Die Zeile ist anschaulich und eindeutig.
+93 | Mensch | Die Frage klingt natürlich und passt zum österreichischen Schulwortschatz.
+94 | Mensch | Der Hinweis ist kurz und leicht verständlich.
+95 | Mensch | Die Beschreibung klingt lebendig und alltagsnah.
+96 | Mensch | Die Frage ist natürlich und verwendet das in Österreich vertraute Wort „Federpennal“.
+97 | Mensch | Der Hinweis erklärt die Auswahlaufgabe klar.
+98 | Mensch | Die Zeile beschreibt die Bewegung anschaulich und verständlich.
+99 | Mensch | Die Frage ist kurz und eindeutig.
+100 | Mensch | Die vereinfachte Formulierung ist für Kinder gut verständlich.
+101 | Mensch | Die Zeile beschreibt die Anordnung klar.
+102 | Mensch | Die verkürzte zweite Frage klingt in gesprochener Sprache natürlich.
+103 | Mensch | Der Hinweis erklärt den Außenseiter eindeutig.
+104 | Mensch | Die Zeile schließt natürlich an die Spielsituation an.
+105 | Mensch | Die Frage ist trotz ihrer Kürze klar und mündlich natürlich.
+106 | Mensch | Der Hinweis beschreibt den Zweck des Gegenstands eindeutig.
+107 | Mensch | Die fantasievolle Beschreibung ist anschaulich und verständlich.
+108 | geschrieben | „Sag, wie es auf Englisch heißt“ würde natürlicher klingen.
+109 | Mensch | Die Aufforderung ist bildhaft und der Bezug zum Heft klar.
+110 | Mensch | Die Erklärung klingt natürlich und beschreibt das Heft eindeutig.
+111 | Mensch | Als kurze Antwort ist die Bezeichnung passend.
+112 | Mensch | Die Zeile beschreibt das sichtbare Bild klar.
+113 | Mensch | Die Frage ist kurz, natürlich und eindeutig.
+114 | Mensch | Die Aufforderung ist kindgerecht und gut verständlich.
+115 | Mensch | Die Beschreibung klingt natürlich und eindeutig.
+116 | Mensch | Die Frage ist klar und offen genug für eine Auswahlaufgabe.
+117 | geschrieben | „Bei book hängt man … an“ ist verständlich, klingt aber wie eine konstruierte Regelerklärung.
+118 | Mensch | Die kurze Mengenangabe klingt natürlich.
+119 | Mensch | Das fantasievolle Bild ist lebendig und verständlich.
+120 | Mensch | Die Bedienungsanweisung ist klar und nennt das Ziel genau.
+121 | Mensch | Die Aufforderung klingt natürlich und eindeutig.
+122 | Mensch | Das fantasievolle Bild ist auch bei der Wiederholung verständlich.
+123 | Mensch | Die Anweisung ist klar und für eine Spieloberfläche passend.
+124 | Mensch | Die Aufforderung klingt natürlich.
+125 | Mensch | Die Zeile erzeugt ein klares fantasievolles Bild.
+126 | Mensch | Die Bedienungsanweisung ist kurz und eindeutig.
+127 | Mensch | Die Aufforderung klingt natürlich und nennt das Zahlwort klar.
+128 | Mensch | Die wiederholte Spielsituation bleibt verständlich.
+129 | Mensch | Die Bedienungsanweisung klingt natürlich und eindeutig.
+130 | Mensch | Die Aufforderung ist klar.
+131 | Mensch | Die Zeile führt die Fantasiehandlung anschaulich ein.
+132 | Mensch | Die Situation und die gewünschte Reaktion sind klar.
+133 | Mensch | Der Hinweis klingt natürlich und eindeutig.
+134 | Mensch | Der kurze Befehl ist sprachlich natürlich.
+135 | Mensch | Die ungewöhnliche Situation ist klar beschrieben.
+136 | Mensch | Die Aufforderung klingt natürlich und nennt das Ziel eindeutig.
+137 | Mensch | Der Hinweis macht den gewünschten Platz klar.
+138 | Mensch | Der kurze Befehl ist geläufig und verständlich.
+139 | Mensch | Die Zeile beschreibt die Handlung anschaulich.
+140 | Mensch | Das Fürwort „ihn“ bezieht sich im Zusammenhang eindeutig auf den Tisch.
+141 | Mensch | Der Hinweis erklärt das Ziel klar und natürlich.
+142 | Mensch | Der Befehl ist direkt, kindgerecht und eindeutig.
+143 | Mensch | Die Zeile beschreibt Ursache und Wirkung anschaulich.
+144 | Mensch | Das Fürwort „es“ bezieht sich eindeutig auf das Fenster.
+145 | Mensch | Der Hinweis ist klar und leicht verständlich.
+146 | Mensch | Der Befehl klingt natürlich und kindgerecht.
+147 | Mensch | Die Zeile beschreibt die Situation eindeutig.
+148 | Mensch | Die Aufforderung ist natürlich und klar.
+149 | Mensch | Der Hinweis benennt die gewünschte Handlung genau.
+150 | Mensch | Der Befehl klingt im Zusammenhang mit der Schultasche natürlich.
+151 | Mensch | Die Situation ist klar und alltagsnah beschrieben.
+152 | Mensch | Die Aufforderung klingt natürlich und eindeutig.
+153 | Mensch | Der Hinweis erklärt das gewünschte Verhalten klar.
+154 | Mensch | Der kurze Befehl ist natürlich und unmissverständlich.
+155 | Mensch | Die Zeile beschreibt den Fehler klar.
+156 | Mensch | Die Aufforderung klingt natürlich und nennt beide Arbeitsschritte.
+157 | Mensch | Der Hinweis lenkt verständlich auf das Bild.
+158 | Mensch | Die Aussage ist knapp und eindeutig.
+159 | Mensch | „Bessere es aus“ ist in österreichischer Unterrichtssprache natürlich.
+160 | Mensch | Der Hinweis erklärt die beabsichtigte Bedeutung verständlich.
+161 | Mensch | Die Zeile beschreibt eine vertraute Ordnungsaufgabe klar.
+162 | Mensch | Die Aufforderung ist verständlich und die Startregel eindeutig.
+163 | Mensch | Der Hinweis gibt einen klaren ersten Schritt vor.
+164 | Mensch | Die Zeile klingt natürlich und beschreibt die Situation anschaulich.
+165 | geschrieben | Die Wendung „mit welchem Wort zum Putzen auffordern“ ist verständlich, klingt aber metasprachlich und steif.
+166 | Mensch | Der Hinweis formuliert das Ziel kurz und klar.
+167 | Mensch | Die Aussage ist natürlich und leicht verständlich.
+168 | Mensch | Die Frage klingt wie eine gewöhnliche Arbeitsanweisung.
+169 | Mensch | Der Hinweis nennt die zu prüfenden Stellen klar.
+170 | Mensch | Die kurze Zeile klingt in einer sichtbaren Spielsituation natürlich.
+171 | Mensch | Die Aufforderung ist eindeutig und sprachlich natürlich.
+172 | Mensch | Der Hinweis beschreibt die gewünschte Frage klar.
+173 | Mensch | Die Zeile ist kurz und unauffällig.
+174 | Mensch | Die Frage ist natürlich und leicht verständlich.
+175 | Mensch | Der Hinweis erklärt die Gemeinsamkeit der beiden Dinge klar.
+176 | Mensch | „Eine Mehrzahl“ ist vereinfachte, aber vertraute Volksschulsprache.
+177 | Mensch | Die Aufforderung ist kurz und eindeutig.
+178 | Mensch | Der Hinweis erklärt verständlich, worauf die Mehrzahl hinweist.
+179 | Mensch | Die Situation ist klar und natürlich beschrieben.
+180 | Mensch | Die Frage klingt natürlich und nennt die Sprache eindeutig.
+181 | Mensch | Der Hinweis beschreibt den Grund für den Dank klar.
+182 | Mensch | Die Zeile ist knapp und verständlich.
+183 | Mensch | Die Frage ist natürlich und eindeutig.
+184 | geschrieben | „Von der genannten Zahl aus“ ist verständlich, klingt für Kinder aber unnötig förmlich.
+185 | Mensch | Die Zeile ist kurz und klar.
+186 | Mensch | Die Frage klingt natürlich und eindeutig.
+187 | Mensch | Der Hinweis erklärt die Gemeinsamkeit verständlich.
+188 | Mensch | Die Zeile beschreibt die Ordnungsaufgabe klar.
+189 | Mensch | Die Aufforderung klingt natürlich und nennt das Ziel genau.
+190 | Mensch | Der Hinweis gibt einen verständlichen ersten Schritt.
+191 | Mensch | Die Frage ist natürlich und eindeutig.
+192 | geschrieben | Die Wortstellung mit „Immer eine Zahl“ klingt steif und wäre mit „Jeweils“ natürlicher.
+193 | Mensch | Die Aufforderung ist klar und leicht verständlich.
+194 | Mensch | Der Hinweis klingt natürlich und fordert angemessene Genauigkeit.
+195 | geschrieben | Dass eine Tafel „still“ steht, ist verständlich, klingt ohne vorherige Bewegung aber etwas künstlich.
+196 | Mensch | Die Aufforderung ist klar und kindgerecht.
+197 | Mensch | Der Hinweis beschreibt die passende Alltagssituation natürlich.
+198 | Mensch | Als Gruß oder kurze Antwort klingt das natürlich.
+199 | Mensch | Die fantasievolle Beschreibung ist leicht verständlich.
+200 | geschrieben | „Sag, wie er auf Englisch heißt“ würde in gesprochener Sprache natürlicher klingen.
+201 | Mensch | Die Aufforderung ist anschaulich und der Bezug eindeutig.
+202 | Mensch | Die Erklärung beschreibt die Verwendung eines Tisches natürlich.
+203 | Mensch | Als kurze Antwort ist die Bezeichnung passend.
+204 | Mensch | Die fantasievolle Gefahr ist lebendig und klar beschrieben.
+205 | geschrieben | „Sag, wie sie auf Englisch heißt“ wäre mündlicher und natürlicher.
+206 | Mensch | Die Aufforderung ist bildhaft und eindeutig.
+207 | Mensch | Die Erklärung beschreibt den Zweck der Schere klar.
+208 | Mensch | Als kurze Antwort ist die Bezeichnung passend.
+209 | Mensch | Die Zeile passt natürlich zu einer fantasievollen Spielwelt.
+210 | geschrieben | „Sag, wie er auf Englisch heißt“ würde natürlicher klingen.
+211 | Mensch | Die Aufforderung ist anschaulich und der Bezug klar.
+212 | Mensch | Die Erklärung klingt alltagsnah und eindeutig.
+213 | Mensch | Als kurze Antwort ist die Bezeichnung passend.
+214 | Mensch | Die Zeile beschreibt die Bewegung klar und natürlich.
+215 | geschrieben | „Sag, wie er auf Englisch heißt“ wäre als gesprochene Aufforderung natürlicher.
+216 | Mensch | Die Aufforderung ist bildhaft und eindeutig.
+217 | Mensch | Die Erklärung beschreibt den Zweck des Spitzers kindgerecht.
+218 | Mensch | Als kurze Antwort ist die Bezeichnung passend.
+219 | Mensch | Die Spielsituation ist klar und anschaulich beschrieben.
+220 | Mensch | Die beiden kurzen Aufforderungen klingen natürlich.
+221 | stolpere | Ein Tablet besitzt normalerweise eine Bildschirmtastatur, sodass „keine Tastatur“ ohne den Zusatz „keine feste Tastatur“ irreführen kann.
+222 | Mensch | Als kurze Antwort ist die Bezeichnung passend.
+223 | Mensch | Die fantasievolle Beschreibung ist leicht verständlich.
+224 | geschrieben | „Sag, wie er auf Englisch heißt“ würde mündlicher klingen.
+225 | Mensch | Die Aufforderung ist anschaulich und der Bezug eindeutig.
+226 | Mensch | Die Erklärung klingt natürlich und beschreibt den Stuhl klar.
+227 | Mensch | Als kurze Antwort ist die Bezeichnung passend.
+228 | Mensch | Die spielerische Beschreibung des verschlossenen Bildes ist verständlich.
+229 | Mensch | Die Frage ist klar und für eine Auswahlaufgabe natürlich.
+230 | Mensch | Die Erklärung beschreibt ein Klassenfoto eindeutig.
+231 | Mensch | Als kurze Bezeichnung oder Antwort klingt „Das Bild“ natürlich.
+
+Mensch: 211  
+geschrieben: 18  
+stolpere: 2

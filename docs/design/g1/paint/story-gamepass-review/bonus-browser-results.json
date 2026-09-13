@@ -1,0 +1,231 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "method": "Actual pickups; declared cell warp only",
+  "picks": [
+    {
+      "cell": [
+        32,
+        6
+      ],
+      "letters": 1,
+      "found": 1
+    },
+    {
+      "cell": [
+        34,
+        7
+      ],
+      "letters": 2,
+      "found": 2,
+      "overlay": null
+    },
+    {
+      "cell": [
+        36,
+        7
+      ],
+      "letters": 3,
+      "found": 3,
+      "overlay": null
+    },
+    {
+      "cell": [
+        55,
+        10
+      ],
+      "letters": 4,
+      "found": 4,
+      "overlay": null
+    },
+    {
+      "cell": [
+        18,
+        11
+      ],
+      "letters": 4,
+      "found": 4,
+      "overlay": null
+    },
+    {
+      "cell": [
+        57,
+        13
+      ],
+      "letters": 4,
+      "found": 4,
+      "overlay": null
+    },
+    {
+      "cell": [
+        15,
+        14
+      ],
+      "letters": 4,
+      "found": 4,
+      "overlay": null
+    },
+    {
+      "cell": [
+        12,
+        16
+      ],
+      "letters": 4,
+      "found": 4,
+      "overlay": null
+    },
+    {
+      "cell": [
+        59,
+        16
+      ],
+      "letters": 4,
+      "found": 4,
+      "overlay": null
+    },
+    {
+      "cell": [
+        18,
+        11
+      ],
+      "letters": 4,
+      "found": 4,
+      "overlay": "task",
+      "tick": 1276,
+      "x": 296,
+      "y": 192
+    },
+    {
+      "cell": [
+        57,
+        13
+      ],
+      "letters": 4,
+      "found": 4,
+      "overlay": "task",
+      "tick": 1276,
+      "x": 920,
+      "y": 224
+    },
+    {
+      "cell": [
+        15,
+        14
+      ],
+      "letters": 4,
+      "found": 4,
+      "overlay": "task",
+      "tick": 1276,
+      "x": 248,
+      "y": 240
+    },
+    {
+      "cell": [
+        12,
+        16
+      ],
+      "letters": 4,
+      "found": 4,
+      "overlay": "task",
+      "tick": 1276,
+      "x": 200,
+      "y": 272
+    },
+    {
+      "cell": [
+        59,
+        16
+      ],
+      "letters": 4,
+      "found": 4,
+      "overlay": "task",
+      "tick": 1276,
+      "x": 952,
+      "y": 272
+    },
+    {
+      "cell": [
+        12,
+        16
+      ],
+      "letters": 5,
+      "found": 5
+    },
+    {
+      "cell": [
+        15,
+        14
+      ],
+      "letters": 6,
+      "found": 6
+    },
+    {
+      "cell": [
+        18,
+        11
+      ],
+      "letters": 7,
+      "found": 7
+    },
+    {
+      "cell": [
+        57,
+        13
+      ],
+      "letters": 8,
+      "found": 8
+    },
+    {
+      "cell": [
+        59,
+        16
+      ],
+      "letters": 9,
+      "found": 9
+    }
+  ],
+  "before": {
+    "text": "DomiGo\nENGLISH · VOCABULARY & GRAMMAR\nDas Klassenzimmer bei Nacht\nTon\naus\nGeschichte\nRegel-Seiten\n0/5\nKleider\n1/9\nBuchstaben\n9/9\n8\n\nDu hast 9 Buchstaben gesammelt.\n\nKlecks braucht 8 Buchstaben, um diese Tür aufzumachen. Dahinter sind 12 weitere versteckt. Such sie, bevor die Tinte trocken ist.\n\n8 Buchstaben abgebenSpäter\n\n←→ laufen · SPACE springen (halten = höher)· ↑ hingehen & klettern",
+    "state": {
+      "phase": "p2",
+      "letters": 9,
+      "found": 9,
+      "x": 1016,
+      "y": 320
+    }
+  },
+  "enter": {
+    "text": "DomiGo\nENGLISH · VOCABULARY & GRAMMAR\nDie Kleckskammer\nTon\naus\nGeschichte\nRegel-Seiten\n0/5\nKleider\n1/9\nTinte\n37s\nBuchstaben\n0/12\n\nWir öffnen das Kapitel …\n\nDie Farbe wird noch aufgetragen.\n\n←→ laufen · SPACE springen (halten = höher)· ↑ hingehen & klettern",
+    "state": {
+      "phase": "p9",
+      "letters": 0,
+      "found": 0,
+      "bonusLeft": 2220,
+      "x": 40,
+      "y": 256
+    }
+  },
+  "bonusPickup": {
+    "phase": "p9",
+    "letters": 1,
+    "found": 1
+  },
+  "result": {
+    "text": "DomiGo\nENGLISH · VOCABULARY & GRAMMAR\nDas Klassenzimmer bei Nacht\nTon\naus\nGeschichte\nRegel-Seiten\n0/5\nKleider\n1/9\nBuchstaben\n1/9\n\nWir öffnen das Kapitel …\n\nDie Farbe wird noch aufgetragen.\n\n1\n/ 12\n\n___O__ ______\n\n1 von 12 Buchstaben — die Lücken oben bleiben offen. Komm wieder!\n\nWeiter\n\n←→ laufen · SPACE springen (halten = höher)· ↑ hingehen & klettern",
+    "phase": "p2",
+    "overlay": {
+      "hold": false,
+      "changed": false,
+      "queued": null,
+      "overlay": "bonusend"
+    }
+  },
+  "returned": {
+    "text": "DomiGo\nENGLISH · VOCABULARY & GRAMMAR\nDas Klassenzimmer bei Nacht\nTon\naus\nGeschichte\nRegel-Seiten\n0/5\nKleider\n1/9\nBuchstaben\n1/9\n\n←→ laufen · SPACE springen (halten = höher)· ↑ hingehen & klettern",
+    "phase": "p2",
+    "letters": 1,
+    "found": 9,
+    "x": 1016,
+    "y": 320,
+    "overlay": null
+  }
+}

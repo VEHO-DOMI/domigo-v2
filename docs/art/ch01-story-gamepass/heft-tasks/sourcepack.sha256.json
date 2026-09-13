@@ -1,0 +1,75 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 1855,
+      "sha256": "bc7f31976438ba95e1bbd20d68b615950e2e63293947563551838e31362fc196"
+    },
+    {
+      "path": "books-correction.prompt.txt",
+      "bytes": 976,
+      "sha256": "f7524136c72d6e80e11362e8ed4587803490d6fe0d05b1ce99add9d40850c27b"
+    },
+    {
+      "path": "books-final-original.png",
+      "bytes": 1804957,
+      "sha256": "fbbcb8f84761fcb00757224e259665703a6ea95565705226f17636ac50a9bd5a"
+    },
+    {
+      "path": "books-first-original.png",
+      "bytes": 2026605,
+      "sha256": "06b9771028e54de20cd0e906202abb4ba5fb9d0d552281d37f986a8ff3762b0d"
+    },
+    {
+      "path": "books.prompt.txt",
+      "bytes": 1530,
+      "sha256": "c22e31fe452d2a57cca7683ed53484d79bcaa59ac8add78e9a2e7fbae62f0c60"
+    },
+    {
+      "path": "dots-correction.prompt.txt",
+      "bytes": 906,
+      "sha256": "e763f88da7c313becb4cfc830ad092947ad6f30fd4f1421da31c6934940c4063"
+    },
+    {
+      "path": "dots-final-original.png",
+      "bytes": 1516897,
+      "sha256": "98899492dbbf1fb1222248294c0bfc73bf16fcc82fa310b3ae17aa0177ad57c5"
+    },
+    {
+      "path": "dots-first-original.png",
+      "bytes": 1844125,
+      "sha256": "366a99af15a9424d4afcbdf0a433eb7c0bb8a9b0dfca02cf18b221153e0712f0"
+    },
+    {
+      "path": "dots.prompt.txt",
+      "bytes": 1423,
+      "sha256": "ef531fe29fa8b30dece6412b063d9fb6ece588de716e7a74d67cd81cb93a2495"
+    },
+    {
+      "path": "import-report.json",
+      "bytes": 9163,
+      "sha256": "2f184afea800805b461b97d55cf91a67fd01d8e1071a56754d64faa2e94c06e8"
+    },
+    {
+      "path": "import.log",
+      "bytes": 456,
+      "sha256": "d14fa1cf0bb44d8be13a0c6ca2c868d17cd8b09b4ddead8332b9045a9c6f24a6"
+    },
+    {
+      "path": "import.manifest.json",
+      "bytes": 1296,
+      "sha256": "a7aafd18453ff7af935e8e35e5efe10afe4625606233827826c47bd79f67b80a"
+    },
+    {
+      "path": "installed.manifest.json",
+      "bytes": 327,
+      "sha256": "e7fa22832bbd76e756a52352317d98f03282c6280a3239dd22b21b1e3c83d316"
+    },
+    {
+      "path": "originals.manifest.json",
+      "bytes": 1250,
+      "sha256": "fe86b936fd2adf60fc4b40623e869fa311a874d2dbd830a5a51ccde1fd04c26e"
+    }
+  ]
+}

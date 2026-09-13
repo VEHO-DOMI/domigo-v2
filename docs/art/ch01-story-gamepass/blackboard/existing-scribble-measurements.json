@@ -1,0 +1,41 @@
+[
+  {
+    "stem": "tafel_scribble1",
+    "alphaOver16": 5055,
+    "canvasArea": 38010,
+    "centreROI": {
+      "x": 50,
+      "y": 65,
+      "width": 81,
+      "height": 85
+    },
+    "centreAlphaOver16": 1,
+    "centreWeightedArea": 0.18823529411764706
+  },
+  {
+    "stem": "tafel_scribble2",
+    "alphaOver16": 4837,
+    "canvasArea": 38010,
+    "centreROI": {
+      "x": 50,
+      "y": 65,
+      "width": 81,
+      "height": 85
+    },
+    "centreAlphaOver16": 0,
+    "centreWeightedArea": 0
+  },
+  {
+    "stem": "tafel_scribble3",
+    "alphaOver16": 4332,
+    "canvasArea": 38010,
+    "centreROI": {
+      "x": 50,
+      "y": 65,
+      "width": 81,
+      "height": 85
+    },
+    "centreAlphaOver16": 12,
+    "centreWeightedArea": 5.258823529411765
+  }
+]

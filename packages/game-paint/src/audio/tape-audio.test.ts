@@ -180,14 +180,16 @@ describe("was die aufgezeichneten Piloten wirklich auslösen", () => {
    * eigenen Erwartungen in `ch01.proof.json`), aber wer hier »unverändert«
    * liest, hat nur »dieselben Klänge« gelesen.
    */
-  const GEMESSEN_22_08 = ["bump", "card-open", "cloth-take", "door-open", "letter-take", "letters-all", "page-take", "puff-chalk"];
+  // Story-Spielpass: das neue p4-Band wischt tatsächlich Schichten und trägt
+  // damit zusätzlich boss-window und toast. Die ursprünglichen acht bleiben.
+  const GEMESSEN_13_09 = ["boss-window", "bump", "card-open", "cloth-take", "door-open", "letter-take", "letters-all", "page-take", "puff-chalk", "toast"];
 
   const fired = [...new Set(
     [...runs.values()].flatMap((r) => r.hits).map((h) => h.stem).filter((s): s is string => s !== null),
   )].sort();
 
-  it("die Bänder lösen genau die gemessenen acht Klänge aus", () => {
-    expect(fired, "die Bänder klingen anders als am 22.08. gemessen — Verdrahtung raus, oder die Welt hat sich geändert").toEqual(GEMESSEN_22_08);
+  it("die Bänder lösen genau die zehn Klänge des aktuellen Spielpasses aus", () => {
+    expect(fired, "die Bänder klingen anders als am 13.09. gemessen — Verdrahtung raus, oder die Welt hat sich geändert").toEqual(GEMESSEN_13_09);
   });
 
   it("darunter `cloth-take` — der Beweis, dass der Uniform-Fund seinen eigenen Klang hat", () => {

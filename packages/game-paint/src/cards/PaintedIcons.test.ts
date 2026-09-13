@@ -46,7 +46,10 @@ describe("the ceremonies carry painted pictures, never platform emoji", () => {
     // a name typo renders an empty <svg> — invisible on screen, and silent in
     // every other check this repo runs
     const asked = [...code.matchAll(/<PaintedIcon\s+name="([a-z]+)"/g)].map((m) => m[1]);
-    expect(asked.length, "no ceremony asks for a painted icon at all").toBeGreaterThan(5);
+    // W36 replaces generic opening/mentor pictures with their real artwork.
+    // Exact remaining identities preserve non-vacuity: removing one or asking
+    // for an unrelated extra icon must still fail, regardless of total count.
+    expect([...asked].sort()).toEqual(["brush", "door", "slate", "spark", "uniform"]);
     for (const name of asked) {
       expect(PAINTED_ICON_NAMES, `PaintGame asks for an icon that does not exist: ${name}`).toContain(name);
     }

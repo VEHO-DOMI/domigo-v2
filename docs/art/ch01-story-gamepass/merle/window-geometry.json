@@ -1,0 +1,153 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "method": "Bounded connected alpha<=16 regions, ignoring the exterior; these are observed hole bounds, not a claim that all bounding-box pixels are transparent.",
+  "images": [
+    {
+      "stem": "pencilcase_a",
+      "width": 744,
+      "height": 440,
+      "holes": [
+        {
+          "x": 456,
+          "y": 182,
+          "width": 101,
+          "height": 91,
+          "pixels": 8970
+        },
+        {
+          "x": 337,
+          "y": 182,
+          "width": 97,
+          "height": 91,
+          "pixels": 8578
+        },
+        {
+          "x": 220,
+          "y": 182,
+          "width": 96,
+          "height": 91,
+          "pixels": 8530
+        },
+        {
+          "x": 122,
+          "y": 182,
+          "width": 76,
+          "height": 91,
+          "pixels": 6812
+        },
+        {
+          "x": 456,
+          "y": 115,
+          "width": 101,
+          "height": 46,
+          "pixels": 4560
+        },
+        {
+          "x": 338,
+          "y": 115,
+          "width": 96,
+          "height": 47,
+          "pixels": 4415
+        },
+        {
+          "x": 220,
+          "y": 115,
+          "width": 96,
+          "height": 46,
+          "pixels": 4399
+        },
+        {
+          "x": 456,
+          "y": 293,
+          "width": 100,
+          "height": 38,
+          "pixels": 3721
+        },
+        {
+          "x": 337,
+          "y": 293,
+          "width": 97,
+          "height": 38,
+          "pixels": 3647
+        },
+        {
+          "x": 220,
+          "y": 293,
+          "width": 96,
+          "height": 39,
+          "pixels": 3596
+        },
+        {
+          "x": 122,
+          "y": 115,
+          "width": 76,
+          "height": 46,
+          "pixels": 3459
+        },
+        {
+          "x": 122,
+          "y": 293,
+          "width": 76,
+          "height": 38,
+          "pixels": 2804
+        }
+      ]
+    },
+    {
+      "stem": "pencilcase_open",
+      "width": 744,
+      "height": 440,
+      "holes": [
+        {
+          "x": 101,
+          "y": 113,
+          "width": 424,
+          "height": 215,
+          "pixels": 90535
+        },
+        {
+          "x": 685,
+          "y": 225,
+          "width": 34,
+          "height": 109,
+          "pixels": 3120
+        },
+        {
+          "x": 636,
+          "y": 208,
+          "width": 28,
+          "height": 100,
+          "pixels": 2380
+        },
+        {
+          "x": 685,
+          "y": 154,
+          "width": 34,
+          "height": 61,
+          "pixels": 1643
+        },
+        {
+          "x": 685,
+          "y": 342,
+          "width": 34,
+          "height": 66,
+          "pixels": 1623
+        },
+        {
+          "x": 631,
+          "y": 317,
+          "width": 34,
+          "height": 59,
+          "pixels": 1472
+        },
+        {
+          "x": 637,
+          "y": 140,
+          "width": 27,
+          "height": 55,
+          "pixels": 1251
+        }
+      ]
+    }
+  ]
+}

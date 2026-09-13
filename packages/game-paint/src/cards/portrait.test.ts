@@ -3,9 +3,9 @@
 // Koki, replay of 15 August: „beim Käfig zeigt das Bild immer noch die
 // Schultasche, nicht die Musikanlage … das Bild soll zeigen, was drin ist."
 //
-// All four object cages in ch01 wear the one `satchel` shell, and all four
-// rescue cards declare that shell as their stimulus — so the sound system, the
-// tablet, the chair and the class photo were the same picture. The world has
+// The original four object cages shared one shell. The current story keeps
+// electronics in lockers and the photograph locked away, while the ordinary
+// chair is restored in place. Merle remains the only captive person. The world has
 // not had that problem since A5: each cage carries a `captive` key and the
 // occupant is drawn behind the bars. The card simply never asked.
 //
@@ -32,29 +32,52 @@ const onDisk = new Set(fs.readdirSync(artDir).filter((f) => f.endsWith(".png")).
 
 // EVERY phase, the way `PaintGame.allPhasesOf` counts them: the class-photo cage
 // stands in the arena, not in `phases`, and a sweep that reads only `phases`
-// reports four cages and misses the fifth. (It did, on this suite's first run.)
+// would miss the final photograph. The chair no longer belongs to this set.
 const allPhases: Phase[] = [...level.phases, ...(level.arena ? [level.arena] : []), ...(level.bonus ? [level.bonus] : [])];
 const cages = allPhases.flatMap((p) => p.entities).filter((e) => e.role === "cage");
 
+function expectChairRestored(entities: Ent[]): void {
+    const chair = entities.find(e => e.skin === "obj_chair");
+    expect(chair).toBeDefined();
+    expect(chair?.role).toBe("drained");
+    expect(chair?.params?.captive).toBeUndefined();
+    const tasks = JSON.parse(fs.readFileSync(path.join(ROOT, "content/corpus/stories/g1.st.lost-pages/paint/ch01.tasks.v2.json"), "utf8")).items;
+    const restore = tasks.find((t: { kind: string; skins?: string[] }) => t.kind === "restore" && t.skins?.includes("obj_chair"));
+    expect(restore).toMatchObject({ use: "encounter", kind: "restore", name: "chair", colour: "yellow" });
+    expect(restore.colourOptions).toContain("yellow");
+    expect(restore.stimulus.art).toBe("obj_chair_a");
+    expect(onDisk.has(restore.stimulus.art)).toBe(true);
+}
+
 describe("R5-W4 · D3 · the cage portrait names its occupant", () => {
-  it("the chapter still has the five cages this packet was written against", () => {
-    // an absence claim is worth nothing without the count beside it
-    expect(cages.length).toBe(5);
+  it("keeps only the two devices, the final photograph and Merle locked away", () => {
+    expect(cages.length).toBe(4);
+    expect(cages.filter(c => c.params?.captive).map(c => c.params?.captive).sort()).toEqual(["picture", "soundsystem", "tablet"]);
     expect(cages.filter((c) => c.params?.classmate !== undefined).length).toBe(1);
-    expect(cages.filter((c) => typeof c.params?.captive === "string").length).toBe(4);
+    expect(cages.filter((c) => typeof c.params?.captive === "string").length).toBe(3);
+  });
+
+  it("restores the ordinary chair to yellow instead of rescuing it from a cage", () => {
+    expectChairRestored(allPhases.flatMap(p => p.entities));
+  });
+
+  it("the same chair contract rejects a regression back into a cage", () => {
+    const broken = allPhases.flatMap(p => p.entities).map(e => e.skin === "obj_chair"
+      ? { ...e, role: "cage", params: { captive: "chair" } } : e);
+    expect(() => expectChairRestored(broken)).toThrow();
   });
 
   it("every thing-cage resolves to a captive sheet that is actually on disk", () => {
     const things = cages.filter((c) => c.params?.classmate === undefined);
-    expect(things.length).toBe(4);
+    expect(things.length).toBe(3);
     for (const c of things) {
       const stem = cageCellFor(c.params?.captive as string | undefined);
       expect(stem, `${c.id} has no captive key`).toBeDefined();
       expect(onDisk.has(stem!), `${c.id} names ${stem}, which is not painted`).toBe(true);
     }
-    // and they are four DIFFERENT pictures — the whole point of the finding
+    // and they are three DIFFERENT pictures — the whole point of the finding
     const stems = new Set(things.map((c) => cageCellFor(c.params?.captive as string | undefined)));
-    expect(stems.size).toBe(4);
+    expect(stems.size).toBe(3);
   });
 
   it("the person-cage resolves to her caged pose, not to a captive sheet", () => {
@@ -147,7 +170,7 @@ describe("R5-W4 · D3 · the cage portrait names its occupant", () => {
 describe("R5-W4b · D3b · the ceremony shows the occupant WITHOUT its cage", () => {
   it("every thing-cage has a free cell that is painted and is NOT the caged one", () => {
     const things = cages.filter((c) => c.params?.classmate === undefined);
-    expect(things.length).toBe(4);
+    expect(things.length).toBe(3);
     for (const c of things) {
       const key = c.params?.captive as string;
       const free = freeCellsFor(key);

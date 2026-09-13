@@ -1,0 +1,9 @@
+# CODEX DRAFT — NOT CANON
+
+Two authored counting illustrations for the actual chapter-one notebook cards. `heft_count_dots_a` visibly contains three separate blue dots; `heft_count_books_a` visibly contains two blue closed books. No number, word or answer key is burned into either image. The containing object remains the thin white school exercise book used in this chapter.
+
+Builtin ImageGen created both illustrations from the viewed existing notebook and blue-book references. The first originals mistakenly used the blue/gold hard-cover identity for the containing notebook. One targeted correction per original restored the thin white soft cover while preserving the pictured counts. All four unchanged originals and all four exact prompts are retained. Only final originals were imported. `originals.manifest.json` records generation paths and SHA-256 hashes.
+
+`import.manifest.json` uses the existing registered importer, measured complete foreground bounds plus six pixels of source margin, and proportional 512×384 canvases. No raster painting, recolouring, new thresholds or output matte special cases. Import source/output diagnostics report zero remaining fringe and isolated specks. Final alpha bounds: dots (4,35,504,314), books (4,55,504,274). Source and output measurements are in `import-report.json`; installed hashes in `installed.manifest.json`.
+
+The cards use these task-specific portraits at 180 pixels high. Changing a task answer key cannot alter the rendered illustration. Tests measure actual image components: three large blue dots (4210, 3935, 3874 pixels), two large blue book covers (11715, 11471 pixels). Deliberately replacing the dot picture with the two-book picture fails the three-component assertion. Full test and blinded-reader evidence: lab report `CH01_STORY_SPIELPASS/implementation-heft-blind-followup.md`.

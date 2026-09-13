@@ -1,0 +1,41 @@
+{
+  "photo_frame_cage_a": {
+    "width": 768,
+    "height": 674,
+    "bytes": 302401,
+    "sha256": "b5ebc910b4ec73cb511e86cc2ba5340c2187ee5cf3d197981e27d0a30238195f",
+    "photoBox": {
+      "x": 163,
+      "y": 168.15340909090907,
+      "width": 430,
+      "height": 296.84659090909093
+    },
+    "photoPixels": {
+      "clear": 114256,
+      "foregroundBars": 13024,
+      "clearRatio": 0.8976744186046511
+    }
+  },
+  "photo_frame_cage_open": {
+    "width": 768,
+    "height": 674,
+    "bytes": 351466,
+    "sha256": "67e738318e61ae0f1436a758a8de1e5b1d7cfc15188d340d05a14a7ce9221a8c",
+    "photoBox": {
+      "x": 92,
+      "y": 168.15340909090907,
+      "width": 430,
+      "height": 296.84659090909093
+    },
+    "photoPixels": {
+      "clear": 127280,
+      "foregroundBars": 0,
+      "clearRatio": 1.0
+    }
+  },
+  "source": {
+    "sha256": "88be2e248e0c9b73629c651857979e5c26742c2175fba5cd817b9b529ee11ffe",
+    "originalToolPath": "/Users/veho/.codex/generated_images/01a09a32-134e-7ea3-aca9-497d50209de4/exec-7391e261-7e39-46cc-800e-640df2ccdc06.png"
+  },
+  "label": "CODEX DRAFT \u2014 NOT CANON"
+}

@@ -196,3 +196,22 @@ test("gameTasks@2 — the ch01 calibration exemplars all parse + cover every kin
   // every exemplar is invariant-clean (belt and braces beside the superRefine)
   for (const it of r.data.items) assert.deepEqual(taskInvariantErrors(it), [], `${it.id} invariants`);
 });
+
+// Neutral colour is a taught answer only when the colour-independent curse is
+// explicit. These are payload tests: the field must survive the closed schema,
+// not merely appear in a JSON file that a loader silently strips.
+test("neutral restoration needs a preserved violet ink cue", () => {
+  for (const colour of ["black", "white", "grey"]) {
+    const task = RE({ colour, colourOptions: [colour, "blue", "pink"], curseVisual: "violet-ink" });
+    const parsed = GameTaskV2.safeParse(task);
+    ok(parsed, `${colour} can be restored with an independent ink cue`);
+    assert.equal(parsed.success && parsed.data.kind === "restore" && parsed.data.curseVisual, "violet-ink");
+    const missing = { ...task, curseVisual: undefined };
+    red(GameTaskV2.safeParse(missing), `${colour} without an independent cue is visually ambiguous`);
+  }
+  red(GameTaskV2.safeParse(RE({ colourOptions: ["blue", "grey", "pink"] })), "grey distractor also needs the independent curse cue");
+  ok(GameTaskV2.safeParse(RE({ colourOptions: ["blue", "grey", "pink"], curseVisual: "violet-ink" })), "grey distractor is valid with the cue");
+  red(GameTaskV2.safeParse(RE({ curseVisual: "grey-wash" })), "a renamed grey wash is not a violet ink cue");
+  ok(GameTaskV2.safeParse(RE()), "existing chromatic restoration is unchanged");
+  ok(GameTaskV2.safeParse(RE({ colour: "black and white", colourOptions: ["black and white", "red and blue", "green and yellow"] })), "existing dual-colour restoration remains unchanged");
+});

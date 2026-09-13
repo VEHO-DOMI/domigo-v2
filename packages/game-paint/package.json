@@ -9,7 +9,8 @@
     "./collide": "./src/collide.ts",
     "./level": "./src/level.ts",
     "./game": "./src/PaintGame.tsx",
-    "./rule-text": "./src/rule-text.ts"
+    "./rule-text": "./src/rule-text.ts",
+    "./story": "./src/story/ch01-story.ts"
   },
   "scripts": {
     "typecheck": "tsc --noEmit",

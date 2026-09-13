@@ -1,3 +1,4 @@
+import { createCompanionTrail } from "./companion.ts";
 import { classmatePresentationProps, classmateOwnerPresentation } from "./classmate-presentation.ts";
 import { ZOO_FRIEND_SKIN, ZOO_FRIEND_CELLS, zooStageCell } from "./zoo-visuals.ts";
 import { abandonShuttle, boardShuttle } from "./train-ride.ts";
@@ -38,7 +39,7 @@ import {
   awakenClassmate,
   classmateOfCage,
   guardianKnotSolved,
-  GUARDIAN_WIPE_REACH_PX,
+  guardianWipeReachPx,
   JOY_ROLES,
   redeemEntity,
   restoreFreedClassmate,
@@ -456,6 +457,7 @@ export class Sim {
    *  value that step used (see stepPlayer). */
   private poseLocked = false;
   tickCount = 0;
+  private companionEpoch = 0;
   exitFired = false;
   lettersTotal = 0;
   lettersGot = 0;
@@ -585,6 +587,21 @@ export class Sim {
       // silently owed a second time.
       const mate = classmateOfCage(this.world, id);
       if (mate) restoreFreedClassmate(mate, COLOUR_FLOOD_TICKS);
+    }
+    if (cfg.level.chapter === "ch01" && cfg.freedCageIds().includes("p2-cage-merle")) {
+      let mate = this.world.entities.find(e => e.role === "classmate" && e.skin === "merle");
+      if (!mate) {
+        const source = allPhases(cfg.level).flatMap(p => p.entities).find(e => e.role === "classmate" && e.skin === "merle");
+        if (source) {
+          mate = spawnEntities([{ ...source, c: start.c, r: start.r }], []).entities[0];
+          if (mate) this.world.entities.push(mate);
+        }
+      }
+      if (mate) {
+        restoreFreedClassmate(mate, COLOUR_FLOOD_TICKS);
+        mate.x = this.player.x; mate.y = this.player.y;
+        mate.companion = createCompanionTrail(cfg.phaseId, { x: mate.x, y: mate.y, grounded: true, dir: mate.dir }, this.liveGrid) ?? undefined;
+      }
     }
     // R3-16: a Regel-Seite taken before the Kleckskammer stays taken after it
     const takenPickups = new Set(cfg.collectedPickupIds?.() ?? []);
@@ -983,7 +1000,7 @@ export class Sim {
       (e) => e.role === "guardian" && !e.hidden && (e.state === "wipeable" || e.state === "wipe"),
     );
     if (board === undefined) return;
-    const keepPx = GUARDIAN_WIPE_REACH_PX - 1;
+    const keepPx = guardianWipeReachPx(board.skin) - 1;
     const dx = this.player.x - board.x;
     if (Math.abs(dx) / SUBS >= keepPx) return;
     const side = dx >= 0 ? 1 : -1; // auf 0 geht er nach rechts heraus, nie hindurch
@@ -1240,7 +1257,7 @@ export class Sim {
           if (sequenceDone && e) this.finishSequence(e, events);
           redeemEntity(this.world, ctx.id);
           applyLinks(this.world, "redeemed", ctx.id);
-          events.push({ type: "toast", msg: "Danke!" });
+          events.push({ type: "toast", msg: e?.role === "drained" ? "Die Farbe ist wieder da." : "Der Zauber ist weg." });
         }
         // R5-W4 · B4 · D-4: …and TELL THE SHELL. Up to here this branch changed
         // the world and announced nothing with an id on it, so the fact died
@@ -1284,6 +1301,9 @@ export class Sim {
       // ceremony card all hang off this one event, exactly as they did when a
       // cage freed in one beat (doc 44 §2.3's „every HUD denominator counted
       // from the world" is untouched; what moved is WHEN the numerator ticks).
+      if (mate && this.cfg.level.chapter === "ch01") {
+        mate.companion = createCompanionTrail(this.cfg.phaseId, { x: mate.x, y: mate.y, grounded: true, dir: mate.dir }, this.liveGrid) ?? undefined;
+      }
       const cageId = String(mate?.params.cage ?? "");
       const cage = this.world.entities.find((x) => x.id === cageId);
       const freed = this.cfg.freedCageIds().length + 1;
@@ -1391,6 +1411,7 @@ export class Sim {
    *  nahe am Teich liegt«. Ein Halt ist gegen die Entfernung unempfindlich; eine
    *  Fahrt ist es nicht. */
   warp(c: number, r: number, opts: { holdCameraTicks?: number } = {}): void {
+    this.companionEpoch++;
     if (this.ridingId) {
       const ride = this.world.entities.find(e => e.id === this.ridingId);
       if (ride) abandonShuttle(ride);
@@ -1457,6 +1478,7 @@ export class Sim {
       if (ride && (this.player.vy < 0 || Math.abs(ride.x-this.player.x) > 24 * SUBS)) abandonShuttle(ride);
     }
     const evs = stepEntities(this.world, this.liveGrid, {
+      companionLeader: { phaseId: this.cfg.phaseId, tick: this.tickCount, epoch: this.companionEpoch, x: this.player.x, y: this.player.y, grounded: this.player.grounded, dir: this.player.facing },
       playerX: this.player.x,
       playerY: this.player.y,
       playerIframes: this.player.iframes,
@@ -1597,6 +1619,10 @@ export class Sim {
         // clock. It stays an `entity` ctx on purpose — solving it says „Weiter!"
         // and unties NOTHING. Knots are earned in the counter-window, so being
         // hit can never be a shortcut through the fight.
+        if (src?.role === "guardian" && this.cfg.level.chapter === "ch01") {
+          events.push({ type: "toast", msg: "Weich der Kreide aus!" });
+          break;
+        }
         const use = src?.role === "guardian" ? "boss" : ev.role === "swarm" ? "quickfire" : "encounter";
         this.ask({ use, ctx: { type: "entity", id: ev.id, skin: ev.skin } }, events);
         break;

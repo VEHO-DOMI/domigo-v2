@@ -1,0 +1,17 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "status": "installed",
+  "assets": [
+    {
+      "stem": "ink_liquid",
+      "source": "sources/ink_liquid.png",
+      "sourceOriginal": "/Users/veho/.codex/generated_images/01a09269-9f1d-7703-905c-e911ce143254/exec-d368c8e7-d1bf-43ea-8f26-52849dea6be4.png",
+      "prompt": "ink_liquid.prompt.txt",
+      "promptSha256": "1ab76744a6f568a662bbe8f2212e181ad1eea2217355916b669356e97e602365",
+      "mode": "byte-copy",
+      "sha256": "96e1b28edfbd3f46d9c18b2b73e99946a18be0023d62746b3a1c9231f83e1894",
+      "target": "apps/web/public/art/g1/paint/ch01/ink_liquid.png",
+      "targetSha256": "96e1b28edfbd3f46d9c18b2b73e99946a18be0023d62746b3a1c9231f83e1894"
+    }
+  ]
+}

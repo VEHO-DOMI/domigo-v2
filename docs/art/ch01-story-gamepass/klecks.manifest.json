@@ -1,0 +1,30 @@
+{
+  "assets": [
+    {
+      "source": "sources/klecks-key.png",
+      "stem": "klecks_mentor",
+      "width": 512,
+      "height": 512,
+      "x": [
+        [
+          0,
+          0
+        ],
+        [
+          511,
+          1253
+        ]
+      ],
+      "y": [
+        [
+          0,
+          0
+        ],
+        [
+          511,
+          1253
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,150 @@
+{
+  "errors": [
+    "single-neutral: right-pages-outer is not a broad opaque white body material",
+    "single-neutral: page-body-bottom is not a broad opaque white body material",
+    "single-neutral: left-pages-upper is not a broad opaque white body material",
+    "single-neutral: overlapping region left-pages-inner",
+    "single-neutral: anatomical mask is only a small detail of the object"
+  ],
+  "regions": [
+    {
+      "id": "right-pages-main",
+      "area": 10890,
+      "coverage": 0.8993572084481175,
+      "componentShare": 0.8890725436179981,
+      "coreShare": 0.6618916437098256,
+      "lumaQuantiles": [
+        193.37539999999998,
+        226.49059999999997,
+        234.26479999999998
+      ],
+      "chromaQuantiles": [
+        6,
+        20,
+        24
+      ]
+    },
+    {
+      "id": "right-pages-outer",
+      "area": 3600,
+      "coverage": 0.7866666666666666,
+      "componentShare": 0.7866666666666666,
+      "coreShare": 0.5972222222222222,
+      "lumaQuantiles": [
+        170.0024,
+        225.7582,
+        231.5496
+      ],
+      "chromaQuantiles": [
+        8,
+        21,
+        25
+      ]
+    },
+    {
+      "id": "page-body-main",
+      "area": 14241,
+      "coverage": 0.8943894389438944,
+      "componentShare": 0.891369988062636,
+      "coreShare": 0.7392739273927392,
+      "lumaQuantiles": [
+        37.349000000000004,
+        240.1926,
+        247.337
+      ],
+      "chromaQuantiles": [
+        4,
+        20,
+        26
+      ]
+    },
+    {
+      "id": "page-body-bottom",
+      "area": 1720,
+      "coverage": 0.6697674418604651,
+      "componentShare": 0.6697674418604651,
+      "coreShare": 0.3744186046511628,
+      "lumaQuantiles": [
+        32.8688,
+        226.9026,
+        243.4774
+      ],
+      "chromaQuantiles": [
+        5,
+        21,
+        25
+      ]
+    },
+    {
+      "id": "left-pages-mid",
+      "area": 2420,
+      "coverage": 0.9669421487603306,
+      "componentShare": 0.9669421487603306,
+      "coreShare": 0.8099173553719008,
+      "lumaQuantiles": [
+        214.6074,
+        237.333,
+        241.4092
+      ],
+      "chromaQuantiles": [
+        5,
+        21,
+        26
+      ]
+    },
+    {
+      "id": "left-pages-upper",
+      "area": 1505,
+      "coverage": 0.8438538205980066,
+      "componentShare": 0.6019933554817276,
+      "coreShare": 0.5016611295681063,
+      "lumaQuantiles": [
+        192.517,
+        230.68599999999998,
+        237.4774
+      ],
+      "chromaQuantiles": [
+        7,
+        23,
+        74
+      ]
+    },
+    {
+      "id": "left-pages-inner",
+      "area": 1800,
+      "coverage": 0.9572222222222222,
+      "componentShare": 0.9572222222222222,
+      "coreShare": 0.6372222222222222,
+      "lumaQuantiles": [
+        200.8436,
+        232.40519999999998,
+        239.5496
+      ],
+      "chromaQuantiles": [
+        4,
+        21,
+        25
+      ]
+    },
+    {
+      "id": "right-pages-top",
+      "area": 1500,
+      "coverage": 0.874,
+      "componentShare": 0.7873333333333333,
+      "coreShare": 0.524,
+      "lumaQuantiles": [
+        189.83440000000002,
+        226.19259999999997,
+        249.7834
+      ],
+      "chromaQuantiles": [
+        6,
+        20,
+        24
+      ]
+    }
+  ],
+  "interiorCount": 108358,
+  "maskInteriorShare": 0.34181140294209933,
+  "wholeTargetShare": 0.6856531128296942
+}

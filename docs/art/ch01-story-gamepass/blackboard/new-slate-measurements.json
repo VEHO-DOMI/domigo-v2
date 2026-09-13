@@ -1,0 +1,92 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "measures": [
+    {
+      "stem": "tafel_a",
+      "canvas": {
+        "width": 384,
+        "height": 512
+      },
+      "slate": {
+        "x": 64,
+        "y": 108,
+        "width": 263,
+        "height": 269
+      },
+      "normalized": {
+        "cx": 0.5091145833333334,
+        "cy": 0.4736328125,
+        "w": 0.6848958333333334,
+        "h": 0.525390625
+      },
+      "peak": 144,
+      "greenPixels": 66115
+    },
+    {
+      "stem": "tafel_rest",
+      "canvas": {
+        "width": 384,
+        "height": 512
+      },
+      "slate": {
+        "x": 64,
+        "y": 108,
+        "width": 263,
+        "height": 269
+      },
+      "normalized": {
+        "cx": 0.5091145833333334,
+        "cy": 0.4736328125,
+        "w": 0.6848958333333334,
+        "h": 0.525390625
+      },
+      "peak": 144,
+      "greenPixels": 66115
+    },
+    {
+      "stem": "tafel_win",
+      "canvas": {
+        "width": 384,
+        "height": 512
+      },
+      "slate": {
+        "x": 63,
+        "y": 108,
+        "width": 264,
+        "height": 269
+      },
+      "normalized": {
+        "cx": 0.5078125,
+        "cy": 0.4736328125,
+        "w": 0.6875,
+        "h": 0.525390625
+      },
+      "peak": 145,
+      "greenPixels": 66143
+    }
+  ],
+  "faceCoverageMethod": "Cream pixels r>160,g>140,b>70,alpha>200 inside slate inset8 and upper55%; overlay sampled in measured full slate coordinates without face-mask holes.",
+  "coverage": [
+    {
+      "stem": "tafel_scribble1",
+      "facePaintPixels": 2721,
+      "faceTouchedPixels": 2059,
+      "faceTouchedPercent": 75.67070929805219,
+      "weightedFaceOpacity": 0.7351175677915416
+    },
+    {
+      "stem": "tafel_scribble2",
+      "facePaintPixels": 2721,
+      "faceTouchedPixels": 1509,
+      "faceTouchedPercent": 55.45755237045204,
+      "weightedFaceOpacity": 0.5299493410006407
+    },
+    {
+      "stem": "tafel_scribble3",
+      "facePaintPixels": 2721,
+      "faceTouchedPixels": 1479,
+      "faceTouchedPercent": 54.35501653803749,
+      "weightedFaceOpacity": 0.5103169970671108
+    }
+  ]
+}

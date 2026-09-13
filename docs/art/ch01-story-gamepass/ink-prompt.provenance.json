@@ -1,0 +1,8 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "method": "Exact prompt string decoded from first actual ImageGen call, not reconstructed",
+  "source": "/Users/veho/Code/codex-lab/trial-berichte/CH01_STORY_SPIELPASS/ink-prompt-recovered.json",
+  "timestamp": "2026-09-13T10:28:56.895Z",
+  "promptSha256": "1ab76744a6f568a662bbe8f2212e181ad1eea2217355916b669356e97e602365",
+  "generatedOriginal": "/Users/veho/.codex/generated_images/01a09269-9f1d-7703-905c-e911ce143254/exec-d368c8e7-d1bf-43ea-8f26-52849dea6be4.png"
+}

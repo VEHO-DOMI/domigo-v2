@@ -1,0 +1,8 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "chromaticFunctionByteIdentical": true,
+  "sha256": "3df2b297b3e935f45a00af36fc37fbdff7e4ac60b59ce23092ea2e5e9a063ccc",
+  "selftest": "52 measurement + 11 copy PASS",
+  "tamper": "Actual labcopy DRIFT6→100 fails the historical warmrepaint test, Exit1; no realinstrument thresholdchanged",
+  "neutralReadings": "remain empty, proposed planes not ratified"
+}

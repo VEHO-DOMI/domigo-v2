@@ -1,0 +1,662 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "rule": "Existing originals.manifest.json foregroundBounds plus six source pixels on each side, clamped to original canvas. No measurement-driven crop narrowing.",
+  "assets": [
+    {
+      "stem": "merle_a",
+      "source": "merle-motion-v2-original.png",
+      "sourceSha256": "9bb148ec5279c85e1869c6c5e0a53453eb9ced793462b1c6228f42958c3ececb",
+      "region": "idle",
+      "sourceCrop": {
+        "x": 129,
+        "y": 61,
+        "width": 286,
+        "height": 432,
+        "foregroundBounds": {
+          "x": 135,
+          "y": 67,
+          "width": 274,
+          "height": 420
+        }
+      }
+    },
+    {
+      "stem": "merle_b",
+      "source": "merle-motion-v2-original.png",
+      "sourceSha256": "9bb148ec5279c85e1869c6c5e0a53453eb9ced793462b1c6228f42958c3ececb",
+      "region": "idle",
+      "sourceCrop": {
+        "x": 129,
+        "y": 61,
+        "width": 286,
+        "height": 432,
+        "foregroundBounds": {
+          "x": 135,
+          "y": 67,
+          "width": 274,
+          "height": 420
+        }
+      }
+    },
+    {
+      "stem": "merle_caged0",
+      "source": "merle-motion-v2-original.png",
+      "sourceSha256": "9bb148ec5279c85e1869c6c5e0a53453eb9ced793462b1c6228f42958c3ececb",
+      "region": "idle",
+      "sourceCrop": {
+        "x": 129,
+        "y": 61,
+        "width": 286,
+        "height": 432,
+        "foregroundBounds": {
+          "x": 135,
+          "y": 67,
+          "width": 274,
+          "height": 420
+        }
+      }
+    },
+    {
+      "stem": "merle_caged1",
+      "source": "merle-motion-v2-original.png",
+      "sourceSha256": "9bb148ec5279c85e1869c6c5e0a53453eb9ced793462b1c6228f42958c3ececb",
+      "region": "idle",
+      "sourceCrop": {
+        "x": 129,
+        "y": 61,
+        "width": 286,
+        "height": 432,
+        "foregroundBounds": {
+          "x": 135,
+          "y": 67,
+          "width": 274,
+          "height": 420
+        }
+      }
+    },
+    {
+      "stem": "merle_settle0",
+      "source": "merle-motion-v2-original.png",
+      "sourceSha256": "9bb148ec5279c85e1869c6c5e0a53453eb9ced793462b1c6228f42958c3ececb",
+      "region": "idle",
+      "sourceCrop": {
+        "x": 129,
+        "y": 61,
+        "width": 286,
+        "height": 432,
+        "foregroundBounds": {
+          "x": 135,
+          "y": 67,
+          "width": 274,
+          "height": 420
+        }
+      }
+    },
+    {
+      "stem": "merle_walk1",
+      "source": "merle-motion-v2-original.png",
+      "sourceSha256": "9bb148ec5279c85e1869c6c5e0a53453eb9ced793462b1c6228f42958c3ececb",
+      "region": "walk-stride",
+      "sourceCrop": {
+        "x": 588,
+        "y": 71,
+        "width": 299,
+        "height": 425,
+        "foregroundBounds": {
+          "x": 594,
+          "y": 77,
+          "width": 287,
+          "height": 413
+        }
+      }
+    },
+    {
+      "stem": "merle_walk2",
+      "source": "merle-motion-v2-original.png",
+      "sourceSha256": "9bb148ec5279c85e1869c6c5e0a53453eb9ced793462b1c6228f42958c3ececb",
+      "region": "walk-passing",
+      "sourceCrop": {
+        "x": 130,
+        "y": 546,
+        "width": 294,
+        "height": 432,
+        "foregroundBounds": {
+          "x": 136,
+          "y": 552,
+          "width": 282,
+          "height": 420
+        }
+      }
+    },
+    {
+      "stem": "merle_walk3",
+      "source": "merle-motion-v2-original.png",
+      "sourceSha256": "9bb148ec5279c85e1869c6c5e0a53453eb9ced793462b1c6228f42958c3ececb",
+      "region": "walk-passing",
+      "sourceCrop": {
+        "x": 130,
+        "y": 546,
+        "width": 294,
+        "height": 432,
+        "foregroundBounds": {
+          "x": 136,
+          "y": 552,
+          "width": 282,
+          "height": 420
+        }
+      }
+    },
+    {
+      "stem": "merle_joy",
+      "source": "merle-motion-v2-original.png",
+      "sourceSha256": "9bb148ec5279c85e1869c6c5e0a53453eb9ced793462b1c6228f42958c3ececb",
+      "region": "hop",
+      "sourceCrop": {
+        "x": 587,
+        "y": 549,
+        "width": 336,
+        "height": 397,
+        "foregroundBounds": {
+          "x": 593,
+          "y": 555,
+          "width": 324,
+          "height": 385
+        }
+      }
+    },
+    {
+      "stem": "merle_joy1",
+      "source": "merle-motion-v2-original.png",
+      "sourceSha256": "9bb148ec5279c85e1869c6c5e0a53453eb9ced793462b1c6228f42958c3ececb",
+      "region": "hop",
+      "sourceCrop": {
+        "x": 587,
+        "y": 549,
+        "width": 336,
+        "height": 397,
+        "foregroundBounds": {
+          "x": 593,
+          "y": 555,
+          "width": 324,
+          "height": 385
+        }
+      }
+    },
+    {
+      "stem": "merle_wave0",
+      "source": "merle-motion-v2-original.png",
+      "sourceSha256": "9bb148ec5279c85e1869c6c5e0a53453eb9ced793462b1c6228f42958c3ececb",
+      "region": "greeting",
+      "sourceCrop": {
+        "x": 126,
+        "y": 1013,
+        "width": 315,
+        "height": 453,
+        "foregroundBounds": {
+          "x": 132,
+          "y": 1019,
+          "width": 303,
+          "height": 441
+        }
+      }
+    },
+    {
+      "stem": "merle_wave1",
+      "source": "merle-motion-v2-original.png",
+      "sourceSha256": "9bb148ec5279c85e1869c6c5e0a53453eb9ced793462b1c6228f42958c3ececb",
+      "region": "greeting",
+      "sourceCrop": {
+        "x": 126,
+        "y": 1013,
+        "width": 315,
+        "height": 453,
+        "foregroundBounds": {
+          "x": 132,
+          "y": 1019,
+          "width": 303,
+          "height": 441
+        }
+      }
+    },
+    {
+      "stem": "merle_settle1",
+      "source": "merle-motion-v2-original.png",
+      "sourceSha256": "9bb148ec5279c85e1869c6c5e0a53453eb9ced793462b1c6228f42958c3ececb",
+      "region": "relief",
+      "sourceCrop": {
+        "x": 594,
+        "y": 1015,
+        "width": 307,
+        "height": 452,
+        "foregroundBounds": {
+          "x": 600,
+          "y": 1021,
+          "width": 295,
+          "height": 440
+        }
+      }
+    },
+    {
+      "stem": "merle_act_sing0",
+      "source": "merle-actions-sing-stand-original.png",
+      "sourceSha256": "f6c206df0a46a460628f8ebaf4f086add007f28e381033890ead02e7a161bebc",
+      "region": "sing-0",
+      "sourceCrop": {
+        "x": 111,
+        "y": 40,
+        "width": 479,
+        "height": 504,
+        "foregroundBounds": {
+          "x": 117,
+          "y": 46,
+          "width": 467,
+          "height": 492
+        }
+      }
+    },
+    {
+      "stem": "merle_act_sing1",
+      "source": "merle-actions-sing-stand-original.png",
+      "sourceSha256": "f6c206df0a46a460628f8ebaf4f086add007f28e381033890ead02e7a161bebc",
+      "region": "sing-1",
+      "sourceCrop": {
+        "x": 711,
+        "y": 41,
+        "width": 480,
+        "height": 503,
+        "foregroundBounds": {
+          "x": 717,
+          "y": 47,
+          "width": 468,
+          "height": 491
+        }
+      }
+    },
+    {
+      "stem": "merle_act_stand0",
+      "source": "merle-actions-sing-stand-original.png",
+      "sourceSha256": "f6c206df0a46a460628f8ebaf4f086add007f28e381033890ead02e7a161bebc",
+      "region": "stand-on-desk-0",
+      "sourceCrop": {
+        "x": 124,
+        "y": 585,
+        "width": 456,
+        "height": 614,
+        "foregroundBounds": {
+          "x": 130,
+          "y": 591,
+          "width": 444,
+          "height": 602
+        }
+      }
+    },
+    {
+      "stem": "merle_act_stand1",
+      "source": "merle-actions-sing-stand-original.png",
+      "sourceSha256": "f6c206df0a46a460628f8ebaf4f086add007f28e381033890ead02e7a161bebc",
+      "region": "stand-on-desk-1",
+      "sourceCrop": {
+        "x": 727,
+        "y": 587,
+        "width": 449,
+        "height": 612,
+        "foregroundBounds": {
+          "x": 733,
+          "y": 593,
+          "width": 437,
+          "height": 600
+        }
+      }
+    },
+    {
+      "stem": "merle_act_scribble0",
+      "source": "merle-actions-scribble-window-original.png",
+      "sourceSha256": "52bb8623e76455c39029ed30838096c0561e914ab7afd076559d6f88ebdea0f2",
+      "region": "scribble-0",
+      "sourceCrop": {
+        "x": 106,
+        "y": 40,
+        "width": 501,
+        "height": 541,
+        "foregroundBounds": {
+          "x": 112,
+          "y": 46,
+          "width": 489,
+          "height": 529
+        }
+      }
+    },
+    {
+      "stem": "merle_act_scribble1",
+      "source": "merle-actions-scribble-window-original.png",
+      "sourceSha256": "52bb8623e76455c39029ed30838096c0561e914ab7afd076559d6f88ebdea0f2",
+      "region": "scribble-1",
+      "sourceCrop": {
+        "x": 709,
+        "y": 40,
+        "width": 501,
+        "height": 539,
+        "foregroundBounds": {
+          "x": 715,
+          "y": 46,
+          "width": 489,
+          "height": 527
+        }
+      }
+    },
+    {
+      "stem": "merle_act_window0",
+      "source": "merle-actions-scribble-window-original.png",
+      "sourceSha256": "52bb8623e76455c39029ed30838096c0561e914ab7afd076559d6f88ebdea0f2",
+      "region": "window-open-0",
+      "sourceCrop": {
+        "x": 20,
+        "y": 584,
+        "width": 586,
+        "height": 627,
+        "foregroundBounds": {
+          "x": 26,
+          "y": 590,
+          "width": 574,
+          "height": 615
+        }
+      }
+    },
+    {
+      "stem": "merle_act_window1",
+      "source": "merle-actions-scribble-window-original.png",
+      "sourceSha256": "52bb8623e76455c39029ed30838096c0561e914ab7afd076559d6f88ebdea0f2",
+      "region": "window-open-1",
+      "sourceCrop": {
+        "x": 640,
+        "y": 583,
+        "width": 574,
+        "height": 626,
+        "foregroundBounds": {
+          "x": 646,
+          "y": 589,
+          "width": 562,
+          "height": 614
+        }
+      }
+    },
+    {
+      "stem": "merle_act_books0",
+      "source": "merle-actions-books-leave-original.png",
+      "sourceSha256": "1cdd370a72f45e8d49c68f2414f7a5a8c441c93a34848eb706504a52fa3f8aaf",
+      "region": "books-in-bag-0",
+      "sourceCrop": {
+        "x": 100,
+        "y": 40,
+        "width": 477,
+        "height": 555,
+        "foregroundBounds": {
+          "x": 106,
+          "y": 46,
+          "width": 465,
+          "height": 543
+        }
+      }
+    },
+    {
+      "stem": "merle_act_books1",
+      "source": "merle-actions-books-leave-original.png",
+      "sourceSha256": "1cdd370a72f45e8d49c68f2414f7a5a8c441c93a34848eb706504a52fa3f8aaf",
+      "region": "books-in-bag-1",
+      "sourceCrop": {
+        "x": 714,
+        "y": 40,
+        "width": 424,
+        "height": 556,
+        "foregroundBounds": {
+          "x": 720,
+          "y": 46,
+          "width": 412,
+          "height": 544
+        }
+      }
+    },
+    {
+      "stem": "merle_act_leave0",
+      "source": "merle-actions-books-leave-original.png",
+      "sourceSha256": "1cdd370a72f45e8d49c68f2414f7a5a8c441c93a34848eb706504a52fa3f8aaf",
+      "region": "leave-0",
+      "sourceCrop": {
+        "x": 39,
+        "y": 629,
+        "width": 539,
+        "height": 566,
+        "foregroundBounds": {
+          "x": 45,
+          "y": 635,
+          "width": 527,
+          "height": 554
+        }
+      }
+    },
+    {
+      "stem": "merle_act_leave1",
+      "source": "merle-actions-books-leave-original.png",
+      "sourceSha256": "1cdd370a72f45e8d49c68f2414f7a5a8c441c93a34848eb706504a52fa3f8aaf",
+      "region": "leave-1",
+      "sourceCrop": {
+        "x": 655,
+        "y": 629,
+        "width": 527,
+        "height": 566,
+        "foregroundBounds": {
+          "x": 661,
+          "y": 635,
+          "width": 515,
+          "height": 554
+        }
+      }
+    },
+    {
+      "stem": "pencilcase_a",
+      "source": "pencilcase-empty-states-original.png",
+      "sourceSha256": "84a2cbbf22e94837d3d2e75a6b6876b753559356cbe2bcc83f6920da1576f787",
+      "region": "closed-empty",
+      "sourceCrop": {
+        "x": 36,
+        "y": 293,
+        "width": 689,
+        "height": 392,
+        "foregroundBounds": {
+          "x": 42,
+          "y": 299,
+          "width": 677,
+          "height": 380
+        }
+      }
+    },
+    {
+      "stem": "pencilcase_b",
+      "source": "pencilcase-empty-states-original.png",
+      "sourceSha256": "84a2cbbf22e94837d3d2e75a6b6876b753559356cbe2bcc83f6920da1576f787",
+      "region": "closed-empty",
+      "sourceCrop": {
+        "x": 36,
+        "y": 293,
+        "width": 689,
+        "height": 392,
+        "foregroundBounds": {
+          "x": 42,
+          "y": 299,
+          "width": 677,
+          "height": 380
+        }
+      }
+    },
+    {
+      "stem": "pencilcase_open",
+      "source": "pencilcase-empty-states-original.png",
+      "sourceSha256": "84a2cbbf22e94837d3d2e75a6b6876b753559356cbe2bcc83f6920da1576f787",
+      "region": "open-empty",
+      "sourceCrop": {
+        "x": 758,
+        "y": 293,
+        "width": 733,
+        "height": 441,
+        "foregroundBounds": {
+          "x": 764,
+          "y": 299,
+          "width": 721,
+          "height": 429
+        }
+      }
+    },
+    {
+      "stem": "merle_c",
+      "source": "merle-motion-v2-original.png",
+      "sourceSha256": "9bb148ec5279c85e1869c6c5e0a53453eb9ced793462b1c6228f42958c3ececb",
+      "region": "idle",
+      "sourceCrop": {
+        "x": 129,
+        "y": 61,
+        "width": 286,
+        "height": 432,
+        "foregroundBounds": {
+          "x": 135,
+          "y": 67,
+          "width": 274,
+          "height": 420
+        }
+      },
+      "aliasOf": "merle_a"
+    },
+    {
+      "stem": "merle_d",
+      "source": "merle-motion-v2-original.png",
+      "sourceSha256": "9bb148ec5279c85e1869c6c5e0a53453eb9ced793462b1c6228f42958c3ececb",
+      "region": "idle",
+      "sourceCrop": {
+        "x": 129,
+        "y": 61,
+        "width": 286,
+        "height": 432,
+        "foregroundBounds": {
+          "x": 135,
+          "y": 67,
+          "width": 274,
+          "height": 420
+        }
+      },
+      "aliasOf": "merle_a"
+    },
+    {
+      "stem": "merle_run",
+      "source": "merle-motion-v2-original.png",
+      "sourceSha256": "9bb148ec5279c85e1869c6c5e0a53453eb9ced793462b1c6228f42958c3ececb",
+      "region": "walk-stride",
+      "sourceCrop": {
+        "x": 588,
+        "y": 71,
+        "width": 299,
+        "height": 425,
+        "foregroundBounds": {
+          "x": 594,
+          "y": 77,
+          "width": 287,
+          "height": 413
+        }
+      },
+      "aliasOf": "merle_walk1"
+    },
+    {
+      "stem": "pencilcase_burst",
+      "source": "pencilcase-empty-states-original.png",
+      "sourceSha256": "84a2cbbf22e94837d3d2e75a6b6876b753559356cbe2bcc83f6920da1576f787",
+      "region": "open-empty",
+      "sourceCrop": {
+        "x": 758,
+        "y": 293,
+        "width": 733,
+        "height": 441,
+        "foregroundBounds": {
+          "x": 764,
+          "y": 299,
+          "width": 721,
+          "height": 429
+        }
+      },
+      "aliasOf": "pencilcase_open"
+    },
+    {
+      "stem": "pencilcase_open0",
+      "source": "pencilcase-empty-states-original.png",
+      "sourceSha256": "84a2cbbf22e94837d3d2e75a6b6876b753559356cbe2bcc83f6920da1576f787",
+      "region": "open-empty",
+      "sourceCrop": {
+        "x": 758,
+        "y": 293,
+        "width": 733,
+        "height": 441,
+        "foregroundBounds": {
+          "x": 764,
+          "y": 299,
+          "width": 721,
+          "height": 429
+        }
+      },
+      "aliasOf": "pencilcase_open"
+    },
+    {
+      "stem": "pencilcase_open1",
+      "source": "pencilcase-empty-states-original.png",
+      "sourceSha256": "84a2cbbf22e94837d3d2e75a6b6876b753559356cbe2bcc83f6920da1576f787",
+      "region": "open-empty",
+      "sourceCrop": {
+        "x": 758,
+        "y": 293,
+        "width": 733,
+        "height": 441,
+        "foregroundBounds": {
+          "x": 764,
+          "y": 299,
+          "width": 721,
+          "height": 429
+        }
+      },
+      "aliasOf": "pencilcase_open"
+    },
+    {
+      "stem": "pencilcase_open2",
+      "source": "pencilcase-empty-states-original.png",
+      "sourceSha256": "84a2cbbf22e94837d3d2e75a6b6876b753559356cbe2bcc83f6920da1576f787",
+      "region": "open-empty",
+      "sourceCrop": {
+        "x": 758,
+        "y": 293,
+        "width": 733,
+        "height": 441,
+        "foregroundBounds": {
+          "x": 764,
+          "y": 299,
+          "width": 721,
+          "height": 429
+        }
+      },
+      "aliasOf": "pencilcase_open"
+    },
+    {
+      "stem": "pencilcase_shake",
+      "source": "pencilcase-empty-states-original.png",
+      "sourceSha256": "84a2cbbf22e94837d3d2e75a6b6876b753559356cbe2bcc83f6920da1576f787",
+      "region": "closed-empty",
+      "sourceCrop": {
+        "x": 36,
+        "y": 293,
+        "width": 689,
+        "height": 392,
+        "foregroundBounds": {
+          "x": 42,
+          "y": 299,
+          "width": 677,
+          "height": 380
+        }
+      },
+      "aliasOf": "pencilcase_a"
+    }
+  ]
+}
