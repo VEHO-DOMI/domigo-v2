@@ -36,6 +36,7 @@ import {
   tileAnchorFor,
   tileScaleFor,
   claimedPlatformCells,
+  claimedBodyCells,
   columnRuns,
   crustGrain,
   crustRuns,
@@ -1057,12 +1058,60 @@ describe("the no-metronome law (round-1 critique, finding 1 — critical)", () =
 });
 
 describe("the per-zone platform palettes (round-1 critique, finding 8)", () => {
-  it("gives every zone a palette that can cover 1-, 2-, 3- and 4-cell runs", () => {
-    for (const [id, spec] of Object.entries(CH01_COMPOSITION)) {
-      const widths = new Set(spec.mass.platObjects.map((p) => p.cells));
-      expect(widths.has(1), `${id} has no 1-cell object (a 3-cell run is 2+1)`).toBe(true);
-      expect(widths.has(2), `${id} has no 2-cell object`).toBe(true);
+  const level = JSON.parse(fs.readFileSync(new URL(
+    "../../../content/corpus/stories/g1.st.lost-pages/paint/ch01.level.json", import.meta.url,
+  ), "utf8")) as { phases: Array<{ id: string; rows: string[] }>; arena: { id: string; rows: string[] }; bonus: { id: string; rows: string[] } };
+  const phases = [...level.phases, level.arena, level.bonus];
+  const platformStems = new Set(Object.values(CH01_COMPOSITION).flatMap((p) => p.mass.platObjects.map((o) => o.stem)));
+  const sourceSize = (stem: string): { w: number; h: number } | null => {
+    // Only furniture dimensions affect this assertion. Retired kit files no
+    // longer exist; a missing active furniture file must still throw below.
+    if (!platformStems.has(stem)) return null;
+    const png = fs.readFileSync(new URL(
+      `../../../apps/web/public/art/g1/paint/ch01/${stem}.png`, import.meta.url,
+    ));
+    return { w: png.readUInt32BE(16), h: png.readUInt32BE(20) };
+  };
+  // Check the mounted image width, not just a palette's declared cell count:
+  // the renderer can shrink an over-tall painting and expose a walkable gap.
+  const uncovered = (rows: string[], mass: MassKit, sizes = sourceSize): string[] => {
+    const bodies = claimedBodyCells(mass);
+    const pieces = planMass(rows, mass, sizes).filter((p) => p.kind === "platform");
+    const missing: string[] = [];
+    for (const run of floatingPlatformRuns(rows)) {
+      for (let c = run.c0; c <= run.c1; c++) {
+        if (bodies.has(`${c},${run.r}`)) continue;
+        let coveredTo = c * TILE;
+        for (const p of pieces.filter((p) => p.r === run.r).sort((a, b) => a.x - b.x)) {
+          if (p.x <= coveredTo + 0.001) coveredTo = Math.max(coveredTo, p.x + p.w);
+        }
+        if (coveredTo < (c + 1) * TILE - 0.001) missing.push(`${c},${run.r}`);
+      }
     }
+    return missing;
+  };
+
+  it("covers every actual floating cell with a whole body or a mounted platform", () => {
+    expect(phases.map((p) => p.id).sort()).toEqual(Object.keys(CH01_COMPOSITION).sort());
+    for (const phase of phases) {
+      expect(uncovered(phase.rows, CH01_COMPOSITION[phase.id]!.mass), phase.id).toEqual([]);
+    }
+  });
+
+  it("detects missing bonus books even though its whole ground bodies remain", () => {
+    const mass = CH01_COMPOSITION.p9!.mass;
+    expect(uncovered(level.bonus.rows, mass)).toEqual([]);
+    expect(uncovered(level.bonus.rows, { ...mass, platObjects: [] })).toEqual([
+      "14,12", "15,12", "24,12", "25,12", "26,12",
+      "11,14", "12,14", "29,14", "30,14", "31,14",
+    ]);
+  });
+
+  it("rejects paintings shrunk below their declared walkable span", () => {
+    expect(uncovered(level.bonus.rows, CH01_COMPOSITION.p9!.mass, (stem) => {
+      const size = sourceSize(stem);
+      return size === null ? null : { w: size.w, h: size.h * 10 };
+    }).length).toBeGreaterThan(0);
   });
 
   it("furnishes no two rooms out of the same box", () => {
@@ -1084,12 +1133,13 @@ describe("the per-zone platform palettes (round-1 critique, finding 8)", () => {
     }
   });
 
-  it("keeps two objects at a width where a phase's ledges are all that width", () => {
-    // p9's twelve ledges are every one of them 2 cells wide: with a single
-    // 2-cell object the seeded pick has nothing to alternate between and the
-    // dream draws the same plank twelve times.
-    const twoCell = CH01_COMPOSITION.p9!.mass.platObjects.filter((p) => p.cells === 2);
-    expect(twoCell.length).toBeGreaterThanOrEqual(2);
+  it("offers two complete book variants for each of the bonus's ledge widths", () => {
+    for (const width of new Set(floatingPlatformRuns(level.bonus.rows)
+      .filter((r) => !claimedBodyCells(CH01_COMPOSITION.p9!.mass).has(`${r.c0},${r.r}`))
+      .map((r) => r.c1 - r.c0 + 1))) {
+      expect(CH01_COMPOSITION.p9!.mass.platObjects.filter((p) => p.cells === width).length)
+        .toBeGreaterThanOrEqual(2);
+    }
   });
 });
 
