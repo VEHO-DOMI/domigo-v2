@@ -1,0 +1,74 @@
+[
+  {
+    "registrationGroup": "auto",
+    "stem": "auto_base",
+    "canvas": {
+      "width": 512,
+      "height": 512
+    },
+    "trim": {
+      "x": 44,
+      "y": 213,
+      "width": 405,
+      "height": 115
+    },
+    "output": {
+      "x": 0,
+      "y": 0,
+      "width": 512,
+      "height": 512
+    },
+    "anchor": {
+      "x": 0.5,
+      "y": 1
+    }
+  },
+  {
+    "registrationGroup": "auto",
+    "stem": "auto_interior",
+    "canvas": {
+      "width": 512,
+      "height": 512
+    },
+    "trim": {
+      "x": 87,
+      "y": 279,
+      "width": 163,
+      "height": 49
+    },
+    "output": {
+      "x": 0,
+      "y": 0,
+      "width": 512,
+      "height": 512
+    },
+    "anchor": {
+      "x": 0.5,
+      "y": 1
+    }
+  },
+  {
+    "registrationGroup": "auto",
+    "stem": "auto_front",
+    "canvas": {
+      "width": 512,
+      "height": 512
+    },
+    "trim": {
+      "x": 8,
+      "y": 328,
+      "width": 496,
+      "height": 184
+    },
+    "output": {
+      "x": 0,
+      "y": 0,
+      "width": 512,
+      "height": 512
+    },
+    "anchor": {
+      "x": 0.5,
+      "y": 1
+    }
+  }
+]

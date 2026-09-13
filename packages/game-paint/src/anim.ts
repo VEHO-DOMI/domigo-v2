@@ -1,5 +1,6 @@
 import { zooEntityCell, ZOO_DISPLAY_HEIGHTS } from "./zoo-visuals.ts";
 import { zooLionCell } from "./zoo-art.ts";
+import { zooLionDisplaySize } from "./zoo-lion-size.ts";
 // THE PAINTED BOOK — deterministic sheet-frame selection (the proven game-2d
 // pattern): frames advance on accumulated WALK TIME / entity ticks, never on
 // wall-clock, so manual-step harness runs and real RAF agree exactly.
@@ -153,7 +154,7 @@ export const awakenWash = (step: number, rounds: number = AWAKEN_ROUNDS): number
  *  card is answered. Under reduced motion a redeemed being is simply already in
  *  colour — the end-states law, applied to the world instead of to CSS. */
 export const washAlphaFor = (
-  e: { role: string; redeemed: boolean; timer: number; awakenStep?: number; freedTick?: number },
+  e: { role: string; redeemed: boolean; timer: number; awakenStep?: number; freedTick?: number; params?: { artSet?: unknown } },
   reducedMotion = false,
 ): number => {
   if (!WASHED_ROLES.has(e.role)) return 0; // furniture was never drained
@@ -163,7 +164,10 @@ export const washAlphaFor = (
   // the child never sees); redeemed, the flood animates the LAST degree away,
   // which is the sixth round's payoff and the same choreography every restored
   // being gets.
-  const full = e.role === "classmate" ? awakenWash(Math.max((e.awakenStep ?? 0) - (e.redeemed ? 1 : 0), 0)) : WASH_ALPHA;
+  // Zoo restore asks for missing colours. A residual brown dog would already
+  // show its answer. The opt-in changes world and card together; older art
+  // retains its existing wash.
+  const full = e.role === "classmate" ? awakenWash(Math.max((e.awakenStep ?? 0) - (e.redeemed ? 1 : 0), 0)) : e.role === "drained" && e.params?.artSet === "zoo-v2" ? 1 : WASH_ALPHA;
   if (!e.redeemed) return full;
   if (reducedMotion) return 0;
   return full * (1 - floodT(e));
@@ -714,7 +718,7 @@ export interface EntSizeInput { role: string; skin: string; params?: Record<stri
  */
 export const entDisplayH = (e: EntSizeInput): number => {
   if (e.params?.artSet === "zoo-v2" && ZOO_DISPLAY_HEIGHTS[e.skin] !== undefined) return ZOO_DISPLAY_HEIGHTS[e.skin]!;
-  if (e.role === "guardian") return (e.params?.guardian as {mode?:string}|undefined)?.mode === "zoo-lion" ? 64 : GUARDIAN_DISPLAY_H;
+  if (e.role === "guardian") return (e.params?.guardian as {mode?:string}|undefined)?.mode === "zoo-lion" ? (zooLionDisplaySize(e)?.height ?? 64) : GUARDIAN_DISPLAY_H;
   if (e.role === "swarm") return 34;
   if (e.role === "crusher") return 30;
   if (e.role === "door.trigger") return e.skin === "klecksdoor" ? 30 : 34;

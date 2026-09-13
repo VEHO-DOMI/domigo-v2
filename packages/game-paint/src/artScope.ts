@@ -1,5 +1,5 @@
-import { ZOO_HERO_STEMS, zooSkinStems, zooActorSkin, effectiveCollectSkin, collectStems, zooPropLayers } from "./zoo-visuals.ts";
-import type { StageV2Spec } from "../../content-schema/src/paint-zoo.ts";
+import { ZOO_FRIEND_STEMS, ZOO_HERO_STEMS, zooSkinStems, zooActorSkin, effectiveCollectSkin, collectStems, zooPropLayers } from "./zoo-visuals.ts";
+import type { ClassmatePresentationSpec, StageV2Spec } from "../../content-schema/src/paint-zoo.ts";
 // THE PAINTED BOOK — artScope.ts — WHICH STEMS A PHASE ACTUALLY NEEDS.
 //
 // R5-W1 · E1. Measured on the shipped chapter: entering phase 1 queued all
@@ -17,9 +17,11 @@ import type { StageV2Spec } from "../../content-schema/src/paint-zoo.ts";
 //
 //   * classes that can be enumerated exactly (hero rig, composition kit) are
 //     taken WHOLE — never a subset;
-//   * classes whose names the renderer BUILDS at run time (`${skin}_${state}`,
+//   * legacy classes whose names the renderer BUILDS at run time (`${skin}_${state}`,
 //     `chalk_${colour}`, `hero2_${cell}`) are closed over what exists on disk,
 //     so a cell this module has never heard of is still in scope;
+//   * opt-in Zoo entities and StageV2 actors use their explicit render-cell registry;
+//     a same-prefix card illustration does not become a world texture;
 //   * the backdrop branches on `compositionFor(...) !== null` — the renderer's
 //     OWN condition, read from the same function, so the two cannot drift.
 //
@@ -183,6 +185,10 @@ export const domArtStems = (level: ScopeLevel): Set<string> => {
   // leave its card with an empty plate.
   for (const ph of allScopePhases(level)) {
     for (const e of ph.entities) if (e.role === "cloth") out.add(`${e.skin}_a`);
+    for (const e of ph.entities) if (e.role === "cage" && e.params?.artSet === "zoo-v2" && isCaptiveKey(e.params?.captive)) {
+      out.add(captiveStem(e.params.captive));
+      out.add(`obj_${e.params.captive}`);
+    }
   }
   for (const s of ALWAYS_STEMS) out.add(s);
   return out;
@@ -210,12 +216,20 @@ export const phaseRequiredStems = (level: ScopeLevel, phaseId: string, label = "
   for (const stem of collectStems(effectiveCollectSkin(level, ph),ph.collectAnimation)) need(stem, `${label} ${ph.id} collectible`);
   if (level.heroArtSet === "zoo-v2") for (const stem of ZOO_HERO_STEMS) need(stem,"zoo hero actions");
   for (const e of ph.entities) {
+    if (e.role === "cage" && e.params?.artSet === "zoo-v2" && isCaptiveKey(e.params?.captive)) {
+      need(captiveStem(e.params.captive), `${label} ${ph.id} captive ${e.id}`);
+      need(`obj_${e.params.captive}`, `${label} ${ph.id} freed captive ${e.id}`);
+    }
+    if (e.role === "classmate" && e.params?.artSet === "zoo-v2") for (const stem of ZOO_FRIEND_STEMS) need(stem, `${label} ${ph.id} classmate friends`);
+    for (const p of (e.params?.classmatePresentation as ClassmatePresentationSpec | undefined)?.props ?? []) for (const layer of zooPropLayers(p.skin)) need(layer.stem, `${label} ${ph.id} classmate prop ${p.id}`);
     const stage = e.params?.stageV2 as StageV2Spec | undefined;
     if (stage) {
       for (const a of stage.actors) for (const stem of (a.skin === "loewe" ? guardianSkinStems(a.skin,"zoo-lion") : zooSkinStems(zooActorSkin(a.skin)))) need(stem,`${label} ${ph.id} scene actor ${a.id}`);
       for (const p of stage.props) for (const layer of zooPropLayers(p.skin)) need(layer.stem,`${label} ${ph.id} scene prop ${p.id}`);
     }
     if (typeof e.params?.projectileSkin === "string") need(e.params.projectileSkin,`${label} ${ph.id} projectile`);
+    const guardian = e.params?.guardian as { mode?: string; projectileSkin?: string } | undefined;
+    if (e.role === "guardian" && guardian?.mode === "zoo-lion" && guardian.projectileSkin) need(guardian.projectileSkin, `${label} ${ph.id} guardian plate`);
     const stems = e.role === "guardian" ? guardianSkinStems(e.skin, (e.params?.guardian as { mode?: string } | undefined)?.mode) : e.role === "scene.stage" && stage ? [] : e.params?.artSet === "zoo-v2" ? zooSkinStems(e.skin) : entitySkinStems(e.skin);
     for (const stem of stems) need(stem, `${label} ${ph.id} ${e.role ?? "entity"} ${e.id ?? e.skin}`);
   }
@@ -268,9 +282,11 @@ export const levelRequiredStems = (level: ScopeLevel, label = ""): Map<string, s
  * Every stem this phase's render path may ask for.
  *
  * @param present the art map's key set — i.e. what exists on disk. The
- *   run-time-constructed name classes are closed over THIS, which is what
+ *   legacy run-time-constructed name classes are closed over THIS, which is what
  *   makes under-scoping structurally impossible for them: the scene can only
  *   ask for `${skin}_${something}` that exists, and every such stem is here.
+ *   Zoo opt-ins use the shared registered cells instead; StageV2 pose validation
+ *   and the required-stem floor keep that explicit contract covered.
  */
 export const phaseArtScope = (level: ScopeLevel, phaseId: string, present: Iterable<string>): Set<string> => {
   const disk = present instanceof Set ? present : new Set(present);
@@ -315,19 +331,29 @@ export const phaseArtScope = (level: ScopeLevel, phaseId: string, present: Itera
   // 3 · beings — the WHOLE cell family of every skin present in this phase
   let guardianHere = false;
   for (const e of ph.entities) {
-    closure(e.skin);
+    // Zoo render cells are explicitly registered; same-prefix card illustrations stay DOM-only.
+    if (e.params?.artSet !== "zoo-v2" && !(e.role === "guardian" && (e.params?.guardian as { mode?: string } | undefined)?.mode === "zoo-lion")) closure(e.skin);
     for (const s of e.params?.artSet === "zoo-v2" ? zooSkinStems(e.skin) : entitySkinStems(e.skin)) add(s);
+    if (e.role === "classmate" && e.params?.artSet === "zoo-v2") for (const stem of ZOO_FRIEND_STEMS) add(stem);
+    for (const p of (e.params?.classmatePresentation as ClassmatePresentationSpec | undefined)?.props ?? []) for (const layer of zooPropLayers(p.skin)) add(layer.stem);
     const stage=e.params?.stageV2 as StageV2Spec | undefined;
-    for (const a of stage?.actors ?? []) { closure(zooActorSkin(a.skin)); for (const stem of zooSkinStems(zooActorSkin(a.skin))) add(stem); }
+    for (const a of stage?.actors ?? []) {
+      for (const stem of a.skin === "loewe" ? guardianSkinStems(a.skin, "zoo-lion") : zooSkinStems(zooActorSkin(a.skin))) add(stem);
+    }
     for (const p of stage?.props ?? []) for (const layer of zooPropLayers(p.skin)) add(layer.stem);
     if (typeof e.params?.projectileSkin === "string") add(e.params.projectileSkin);
+    const guardian = e.params?.guardian as { mode?: string; projectileSkin?: string } | undefined;
+    if (e.role === "guardian" && guardian?.mode === "zoo-lion" && guardian.projectileSkin) add(guardian.projectileSkin);
     if (e.role === "guardian") {
       guardianHere = true;
       for (const s of guardianSkinStems(e.skin, (e.params?.guardian as { mode?: string } | undefined)?.mode)) add(s);
     }
     // R5-W3 · A5 · D-48: the captive is scoped BY KEY, one layer per cage, and
     // deliberately not through `closure` — see the prefix note in artManifest.
-    if (e.role === "cage" && isCaptiveKey(e.params?.captive)) add(captiveStem(e.params.captive));
+    if (e.role === "cage" && isCaptiveKey(e.params?.captive)) {
+      add(captiveStem(e.params.captive));
+      if (e.params?.artSet === "zoo-v2") add(`obj_${e.params.captive}`);
+    }
   }
 
   // 4 · chalk, only where something throws it

@@ -1,4 +1,5 @@
 import { zooStageCell } from "./zoo-visuals.ts";
+import { zooLionDisplaySize } from "./zoo-lion-size.ts";
 // CODEX DRAFT — NOT CANON · opt-in grounded guardian, independent of the slate.
 import type { EntityState, EntityWorld, EntityEvent, WorldInput, ProjectileState } from "./entities.ts";
 import type { ZooGuardianSpec, StageV2Spec } from "../../content-schema/src/paint-zoo.ts";
@@ -23,11 +24,43 @@ export const zooTaskId = (e: EntityState): string | undefined => {
   const g = zooSpec(e); const s = e.zoo;
   return !g || !s ? undefined : s.round === 4 ? g.finaleTaskId : g.rounds[s.round]?.taskIds[s.card];
 };
+/** Recover presentation from the saved lifecycle; never restart or advance a path. */
+export const restoredZooUsesHomeView = (
+  entityState: string, runtime: ZooState, stage: StageV2Spec, guardian: ZooGuardianSpec,
+): boolean => {
+  if (["release", "home", "welcomed", "done", "after-solve", "review-return"].includes(entityState)) return true;
+  if (["observe", "report", "lonely", "finale", "review-observe", "review-report"].includes(entityState)) return false;
+  if (["prowl", "mark", "cast", "returned"].includes(entityState)) {
+    if (runtime.scene.returning) return true;
+    const beat = stage.beats.find(b => b.id === runtime.scene.beatId);
+    const completed = new Set(guardian.rounds.flatMap(r => r.taskIds).slice(0, runtime.round * 2 + runtime.card));
+    // Only completion of the retained beat counts; an unrelated old answer does not.
+    return !!beat && beat.taskIds.length > 0 && beat.taskIds.every(id => completed.has(id));
+  }
+  return runtime.scene.returning === true;
+};
+
 /** The drawn lion owns the same grounded feet as its physical body. */
 export const zooSnapshot=(e:EntityState):SceneSnapshot=>{
   const s=worldSceneSnapshot(e.id,e.homeX,e.homeY,e.zoo!.scene,e.params.stageV2!,Math.min(4,e.zoo!.round+1));
   const lion=s.actors.find(a=>a.id==="lion");
-  if(lion){lion.worldX=e.x/SUBS;lion.worldY=e.y/SUBS;lion.displayHeightPx=64;lion.cell=zooLionCell(e.vx!==0&&["observe","review-observe"].includes(e.state)?"prowl":e.state,e.timer);}
+  if (lion) {
+    lion.worldX = e.x / SUBS; lion.worldY = e.y / SUBS;
+    const size = zooLionDisplaySize(e);
+    lion.displayHeightPx = size?.height ?? 64;
+    if (size) lion.displayWidthPx = size.width;
+    const observing = ["observe", "report", "review-observe", "review-report"].includes(e.state);
+    const beat = e.params.stageV2!.beats.find(b => b.id === e.zoo!.scene.beatId);
+    const emotion = beat?.emotionByActor?.lion;
+    // The pose is authored evidence; the feet still belong to the physical lion.
+    const pose = !e.zoo!.scene.returning && e.vx === 0 && beat && e.zoo!.scene.ticks >= beat.moveTicks
+      && ["observe", "report", "lonely", "finale", "review-observe", "review-report"].includes(e.state) ? beat.poseByActor?.lion : undefined;
+    lion.cell = pose ?? (observing && e.vx === 0 && emotion
+      ? zooStageCell("loewe", "observing", e.timer, emotion)
+      : e.state === "after-solve"
+        ? zooStageCell("loewe", e.vx ? "moving" : "observing", e.timer, emotion)
+        : zooLionCell(e.vx !== 0 && observing ? "prowl" : e.state, e.timer));
+  }
   return s;
 };
 /** Walk the real body into its authored picture; no pose-to-body teleport. */
@@ -93,6 +126,35 @@ export const stepZooGuardian = (e: EntityState, w: EntityWorld, grid: readonly s
         events.push({ type: "zooQuestion", id: e.id, taskId: zooTaskId(e)!, finale: s.round === 4 });
       }
       break;
+    case "after-solve": {
+      const beat = stage.beats.find(b => b.id === s.scene.beatId)!;
+      s.scene.returning = true;
+      s.scene.returnTicks++;
+      for (const path of beat.afterSolve) {
+        const actor = s.scene.actors.find(a => a.id === path.actorId)!;
+        const start = s.scene.starts.find(a => a.id === path.actorId)!;
+        const f = Math.min(1, s.scene.returnTicks / path.ticks);
+        if (path.worldWaypoints) {
+          const points = worldPathPoints(path.worldWaypoints);
+          const p = scenePathAt([{ x: start.worldX ?? e.homeX / SUBS - 80 + start.x * 160,
+            y: start.worldY ?? e.homeY / SUBS - 120 + start.y * 120 }, ...points], f);
+          actor.worldX = p.x; actor.worldY = p.y;
+        } else {
+          Object.assign(actor, scenePathAt([{ x: start.x, y: start.y }, ...path.waypoints!], f));
+          delete actor.worldX; delete actor.worldY;
+        }
+        actor.cell = zooStageCell(actor.skin, f < 1 ? "moving" : "home", s.scene.returnTicks);
+        if (actor.id === "lion") {
+          const before = e.x;
+          e.x = Math.round((actor.worldX ?? e.homeX / SUBS - 80 + actor.x * 160) * SUBS);
+          e.vx = e.x - before;
+          if (e.vx) e.dir = e.vx > 0 ? 1 : -1;
+          // Local picture height cannot lift a ground-bound guardian into the air.
+        }
+      }
+      if (s.scene.returnTicks >= Math.max(...beat.afterSolve.map(p => p.ticks))) advanceZooCard(e);
+      break;
+    }
     case "release":
       if (e.timer >= g.settleBetweenTicks) {
         state(e, "home"); const actor = s.scene.actors.find(a => a.id === round!.homeActorId)!;
@@ -121,19 +183,34 @@ export const stepZooGuardian = (e: EntityState, w: EntityWorld, grid: readonly s
   }
 };
 
+const advanceZooCard = (e: EntityState): void => {
+  if (++e.zoo!.card === 2) state(e, "release");
+  else prepareBeat(e);
+};
+
 /** Validating the active window also makes duplicate/stale answers harmless. */
 export const solveZooTask = (e: EntityState, taskId: string | undefined): boolean => {
   const s = e.zoo;
   if (!s || !["report", "finale"].includes(e.state) || taskId !== zooTaskId(e)) return false;
   s.waitingForRetry = false;
-  if (s.round === 4) { if (s.homes.length !== 4) return false; state(e, "welcomed"); }
-  else if (++s.card === 2) state(e, "release");
-  else prepareBeat(e);
+  if (s.round === 4) { if (s.homes.length !== 4) return false; s.scene.returning = true; state(e, "welcomed"); }
+  else {
+    const beat = e.params.stageV2!.beats.find(b => b.id === s.scene.beatId)!;
+    // Switch to the ordinary world view only AFTER the answer. No answer or
+    // plate progress is charged again when this serializable route resumes.
+    s.scene.returning = true;
+    if (zooSpec(e)?.playAfterSolvePaths === true && beat.afterSolve.length) {
+      s.scene.returnTicks = 0;
+      s.scene.starts = structuredClone(s.scene.actors);
+      state(e, "after-solve");
+    } else advanceZooCard(e);
+  }
   return true;
 };
 
 /** Optional questions borrow the scene. Everyone walks back while the player is free. */
 export const beginZooReviewReturn = (e: EntityState): void => {
+  e.zoo!.scene.returning = true;
   const review = e.zoo!.review!;
   review.returnStart = { x: e.x, y: e.y, actors: structuredClone(e.zoo!.scene.actors), tick: 0 };
   e.zoo!.waitingForRetry = false;

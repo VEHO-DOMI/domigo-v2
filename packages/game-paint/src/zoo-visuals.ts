@@ -1,35 +1,16 @@
 import { PAINT } from "./paint.ts";
 // CODEX DRAFT — NOT CANON · one opt-in cell contract for drawing and checking.
-export const ZOO_CELLS: Readonly<Record<string, readonly string[]>> = {
-  waertereimer: ["a","b","telegraph0","telegraph1","act0","act1","joy","rest"],
-  pinguin_rutscher: ["a","b","brace","slide0","slide1","pop","joy","rest"],
-  pinguin: ["a","walk0","walk1","look","joy","rest"],
-  hund: ["a","walk0","walk1","walk2","walk3","look","joy","rest"],
-  buddy: ["a","walk0","walk1","walk2","walk3","listen","parrot_support0","parrot_support1"],
-  papagei: ["a","flap0","flap1","flap2","flap3","land","look","rest"],
-  affe: ["a","windup0","windup1","throw0","throw1","scratch0","scratch1","rest"],
-  bus_affe: ["a","climb0","climb1","sit0","sit1","home"],
-  bus_frosch: ["a","compress","hop0","hop1","look","rest"],
-  bus_katze: ["a","walk0","walk1","walk2","walk3","sit"],
-  papagei_sturz: ["a","flap0","flap1","warn0","warn1","dive","land","joy"],
-  giraffe: ["a","walk0","walk1","walk2","walk3","bend","blink","rest"],
-  guide: ["a","point0","point1","look","wave0","wave1","welcome","rest"],
-  grandma: ["a","walk0","walk1","wave"],
-  besucherkind: ["a","walk0","walk1","point"],
-  besucherin_aileen: ["a","look","wave0","wave1"],
-  besucher_amrita: ["a","look","wave0","wave1"],
-  besucher_rajit: ["a","look","wave0","wave1"],
-  fenn: ["a","b","caged0","caged1","awake_name","awake_happy","awake_from","awake_year","awake_group","awake_reunited","walk0","walk1","walk2","walk3","joy","joy1","settle0","settle1","wave0","wave1"],
-  zoozug: ["a","b","wait"], ast: ["a","b"], schild: ["a","crack","fall","rest"],
-  zookaefig: ["a","shake","burst","open0","open1"], loewenkaefig: ["a","shake","burst","open0","open1"],
-  stein: ["a","glow"],
-};
+import { ZOO_CELLS, zooActorSkin } from "../../content-schema/src/zoo-pose-cells.ts";
+export { ZOO_CELLS, zooActorSkin } from "../../content-schema/src/zoo-pose-cells.ts";
 export const ZOO_DISPLAY_HEIGHTS: Readonly<Record<string,number>> = {waertereimer:24,pinguin_rutscher:22,pinguin:24,hund:24,buddy:26,papagei:16,affe:24,papagei_sturz:28,fenn:30};
+export const ZOO_FRIEND_SKIN = "besucherkinder";
+export const ZOO_FRIEND_CELLS = { waiting: "wave_a", walking: "walk0" } as const;
+export const ZOO_FRIEND_STEMS = Object.values(ZOO_FRIEND_CELLS).map(cell => `${ZOO_FRIEND_SKIN}_${cell}`);
 export const ZOO_HERO_STEMS = ["grab","hang0","hang1","hangjump","release","charge0","charge1","charge2","throw0","throw1","catch0","catch1"].map(c=>`hero2_${c}`);
 const frame = (t: number, dwell: number, names: readonly string[]): string => names[Math.floor(Math.max(0,t)/dwell)%names.length]!;
 export const zooSkinStems = (skin: string): string[] => (ZOO_CELLS[skin] ?? ["a"]).map(c=>`${skin}_${c}`);
 /** Aliases for the same individual; group placeholders retain their own names. */
-export const zooActorSkin = (skin: string): string => ({ affe:"bus_affe", frosch:"bus_frosch", katze:"bus_katze", aileen:"besucherin_aileen" }[skin] ?? skin);
+
 export const zooStageCell = (skin: string, state: "moving"|"observing"|"home", timer: number, emotion?: string): string => {
   const cells=ZOO_CELLS[zooActorSkin(skin)] ?? ["a"];
   if (emotion && cells.includes(emotion)) return emotion;

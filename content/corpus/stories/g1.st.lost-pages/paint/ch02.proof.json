@@ -372,11 +372,11 @@
           0
         ],
         [
-          74,
+          60,
           2
         ],
         [
-          214,
+          228,
           0
         ],
         [
@@ -771,7 +771,7 @@
           2
         ],
         [
-          52,
+          72,
           0
         ],
         [
@@ -899,7 +899,8 @@
           "p3-baumhaus-gruppe:c12:c12"
         ],
         "homeArrivals": [
-          "p3-buehne-giraffe:giraffe"
+          "p3-buehne-giraffe:giraffe",
+          "p3-buehne-stein:stone"
         ],
         "hangEdges": [
           "54,11",
@@ -1497,7 +1498,7 @@
           4
         ],
         [
-          29,
+          89,
           0
         ],
         [
@@ -1529,7 +1530,7 @@
           4
         ],
         [
-          29,
+          89,
           0
         ],
         [

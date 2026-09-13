@@ -1,8 +1,12 @@
+import { sceneImagePlacement } from "./scene-v2.ts";
+import { applyZooLionDisplaySize } from "./zoo-lion-size.ts";
+import { classmatePresentationProps } from "./classmate-presentation.ts";
+import { transferDrawItem } from "./transfer-visual.ts";
 import { zooSnapshot } from "./guardian-zoo.ts";
-import { zooEntityCell, effectiveCollectSkin, collectCell, bubblePopAlive, zooHeroCell, type HeroVisualClock } from "./zoo-visuals.ts";
+import { ZOO_FRIEND_CELLS, zooEntityCell, effectiveCollectSkin, collectCell, bubblePopAlive, zooHeroCell, type HeroVisualClock } from "./zoo-visuals.ts";
 import type { GameTaskV2 } from "../../content-schema/src/game-tasks.ts";
 import type { ChapterLearningState } from "./learning.ts";
-import { sceneDrawItems, worldSceneSnapshot } from "./scene-v2.ts";
+import { sceneDrawItems, worldSceneSnapshot, sceneWithActorWash } from "./scene-v2.ts";
 import { zooEvidenceRect } from "./zoo-art.ts";
 import type { StageV2Spec, ZooGuardianSpec } from "../../content-schema/src/paint-zoo.ts";
 // THE PAINTED BOOK — the phase scene: a THIN renderer over the pure brains.
@@ -20,6 +24,7 @@ import type { StageV2Spec, ZooGuardianSpec } from "../../content-schema/src/pain
 
 import Phaser from "phaser";
 import { glyphAt, isSlope, isSolid } from "./collide.ts";
+import { groundCapPlacement } from "./ground-cap.ts";
 import { CANOPY_PHASES, type CompositionSpec, MARKER_H, type MassKit, ROOM_SHADOW_INK, compositionFor, heroEdgeFor, markerPlacementFor, nearPlaneTint } from "./composition.ts";
 import { CANOPY_STEM, phaseArtScope } from "./artScope.ts";
 import { FACE_FLOOR_CX, FACE_FLOOR_CY, faceFloorHalbachsen } from "./face-floor.ts";
@@ -2217,7 +2222,8 @@ export class PaintScene extends Phaser.Scene {
     const id = engageTargetId(this.world, this.player.x, this.player.y);
     const e = id === null ? null : this.world.entities.find((x) => x.id === id);
     this.engageCueG.clear();
-    if (!e) return;
+    // An open question already owns the interaction; its cue would cover the observed evidence.
+    if (!e || this.overlayOpen) return;
     const x = fromSubs(e.x);
     // R5-W1 · F1: das Wippen ist nach cue.ts gezogen — dort ist es eine reine
     // Funktion mit einem Namen und einem Test, hier war es ein Literal in einer
@@ -2305,9 +2311,13 @@ export class PaintScene extends Phaser.Scene {
     for (const img of this.zooSceneImgs.values()) img.setVisible(false);
     for (const label of this.zooSceneLabels.values()) label.setVisible(false);
     for (const t of this.sim.learning.transfers) {
-      if(t.tick<0||t.tick>=t.ticks||!this.world.entities.some(e=>e.id===t.targetId))continue;
-      graphics.fillStyle(0xcfad73,1).fillRoundedRect(t.x-12,t.y-32,24,32,8);
-      graphics.lineStyle(1,0x423c32,1).strokeRoundedRect(t.x-12,t.y-32,24,32,8);
+      const item = transferDrawItem(t, this.world.entities.find(e => e.id === t.targetId));
+      if (!item) continue;
+      const artKey = `pb-${item.stem}`;
+      const key = this.textures.exists(artKey) ? artKey : this.scenePlaceholder(item.kind);
+      let img = this.zooSceneImgs.get(item.id);
+      if (!img) { img = this.add.image(item.x, item.y, key).setOrigin(.5, 1); this.zooSceneImgs.set(item.id, img); }
+      img.setVisible(true).setTexture(key).setPosition(item.x, item.y).setDisplaySize(item.w, item.h).setDepth(7.21 + item.depth * .01);
     }
     for (const e of scenes) {
       if (e.state === "mark") {
@@ -2315,10 +2325,13 @@ export class PaintScene extends Phaser.Scene {
       }
       const scene = e.zoo?.scene ?? e.stageRuntime?.scene;
       if (!scene && !e.classmateScene) continue;
-      const snapshot = e.classmateScene ? structuredClone(e.classmateScene) : e.zoo ? zooSnapshot(e) : worldSceneSnapshot(e.id, e.homeX, e.homeY, scene!, e.params.stageV2 as StageV2Spec, 0);
+      let snapshot = e.classmateScene ? structuredClone(e.classmateScene) : e.zoo ? zooSnapshot(e) : worldSceneSnapshot(e.id, e.homeX, e.homeY, scene!, e.params.stageV2 as StageV2Spec, 0);
       if(e.classmateScene){
+        snapshot = sceneWithActorWash(snapshot, e.id, washAlphaFor(e, this.cfg.reducedMotion));
         snapshot.view.x=fromSubs(e.x)-80;snapshot.view.y=fromSubs(e.y)-120;
-        if(e.redeemed) {snapshot.actors[0]!.cell=zooEntityCell(e);for(const a of snapshot.actors.slice(1))a.cell=e.state==="roam"?"walk0":"wave_a";}
+        if(e.redeemed && e.params.classmatePresentation) snapshot.props=classmatePresentationProps(e.params.classmatePresentation,"home");
+        if(e.redeemed)delete snapshot.ownerPresentation;
+        if(e.redeemed) {snapshot.actors[0]!.cell=zooEntityCell(e);for(const a of snapshot.actors.slice(1))a.cell=e.state==="roam"?ZOO_FRIEND_CELLS.walking:ZOO_FRIEND_CELLS.waiting;}
       }
       if(scene?.label){
         let label=this.zooSceneLabels.get(e.id);
@@ -2326,7 +2339,7 @@ export class PaintScene extends Phaser.Scene {
         label.setText(scene.label).setPosition(snapshot.view.x+snapshot.view.width/2,snapshot.view.y+4).setVisible(true);
       }
       snapshot.actors=snapshot.actors.filter(a=>!this.sim.learning.transfers.some(t=>t.targetId===e.id&&t.actorId===a.id&&t.tick>=0&&t.tick<t.ticks));
-      const inScene = !!e.classmateScene || !!e.stageRuntime || ["observe", "report", "release", "home", "lonely", "finale", "review-observe", "review-report"].includes(e.state);
+      const inScene = !!e.classmateScene || !!e.stageRuntime || ["observe", "report", "after-solve", "release", "home", "lonely", "finale", "review-observe", "review-report"].includes(e.state);
       if (e.stageRuntime) this.stagePropImgs.get(e.id)?.setVisible(false);
       if (inScene) {this.entityImgs.get(e.id)?.setVisible(false);this.washImgs.get(e.id)?.setVisible(false);this.bloomImgs.get(e.id)?.setVisible(false);}
       else snapshot.actors = snapshot.actors.filter(a => a.id !== "lion");
@@ -2336,7 +2349,16 @@ export class PaintScene extends Phaser.Scene {
         const id = `${e.id}:${item.id}`;
         let img = this.zooSceneImgs.get(id);
         if (!img) { img = this.add.image(item.x, item.y, key).setOrigin(.5, 1); this.zooSceneImgs.set(id, img); }
-        img.setVisible(true).setTexture(key).setPosition(item.x,item.y).setDisplaySize(item.w,item.h).setDepth(7.21+item.depth*.01);
+        img.setVisible(true).setTexture(key);
+        const placement=sceneImagePlacement(this.textures.exists(artKey)?item:{...item,sourceRect:undefined},img.frame.realWidth,img.frame.realHeight);
+        if(placement.crop)img.setCrop(placement.crop.x,placement.crop.y,placement.crop.width,placement.crop.height);else img.setCrop();
+        img.setPosition(placement.x,placement.y).setDisplaySize(placement.w,placement.h).setDepth(7.21+item.depth*.01);
+        if (item.wash && this.textures.exists(artKey)) {
+          const washId = `${id}:wash`, greyKey = this.greyTexOf(artKey);
+          let wash = this.zooSceneImgs.get(washId);
+          if (!wash) { wash = this.add.image(item.x,item.y,greyKey).setOrigin(.5,1); this.zooSceneImgs.set(washId,wash); }
+          wash.setVisible(true).setTexture(greyKey).setPosition(item.x,item.y).setDisplaySize(item.w,item.h).setDepth(7.2101+item.depth*.01).setAlpha(item.wash);
+        }
       }
     }
   }
@@ -2401,7 +2423,7 @@ export class PaintScene extends Phaser.Scene {
         //    child most needs to look at her.
         const roll = airborne ? guardianRollScaleX(e.vx, e.vy, e.flightTick, this.cfg.reducedMotion) : 1;
         const beat = 1 + BOSS_BEAT_SWELL * this.bossBeatT(e);
-        img.setScale(base * roll * beat, base * beat);
+        if (!applyZooLionDisplaySize(img, e, beat)) img.setScale(base * roll * beat, base * beat);
         // PK-R6 · H1 (round-1 critique, finding 2): …and she FLIES it. The sheet
         // paints banks and rolls but has no cell for a dive, and her vertical
         // amplitude (26 px) is a third of her horizontal one — so the half of
@@ -2698,6 +2720,7 @@ export class PaintScene extends Phaser.Scene {
     // Splitter immer an etwas entlangfährt, das dem Kind vorher gezeigt wurde.
     for (const pr of this.world.projectiles) {
       if (pr.kind === "plate") {
+        if (pr.skin && this.textures.exists(`pb-${pr.skin}`)) continue;
         this.projG.fillStyle(0xc19a60, 1).fillRoundedRect(fromSubs(pr.x)-12, fromSubs(pr.y)-4, 24, 8, 3);
         this.projG.lineStyle(1.5, 0x59442f, 1).strokeRoundedRect(fromSubs(pr.x)-12, fromSubs(pr.y)-4, 24, 8, 3);
         continue;
@@ -2720,7 +2743,16 @@ export class PaintScene extends Phaser.Scene {
     }
     let used = 0;
     for (const pr of this.world.projectiles) {
-      if (pr.kind === "plate") continue;
+      if (pr.kind === "plate") {
+        const key = pr.skin ? `pb-${pr.skin}` : "";
+        if (key && this.textures.exists(key)) {
+          let img = this.projImgs[used];
+          if (!img) { img = this.add.image(0,0,key).setDepth(8).setOrigin(.5,.5); this.projImgs[used] = img; }
+          used++;
+          img.setVisible(true).setTexture(key).setPosition(fromSubs(pr.x),fromSubs(pr.y)).setDisplaySize(24,8).setRotation(0).setAlpha(1);
+        }
+        continue;
+      }
       const thrower = this.world.entities.find((e) => e.id === pr.fromId);
       // PK-R6 · E · THE SIX PAINTED STICKS. The colour rides on the piece
       // (entities.CHALK_COLOURS, cycled by throw index), so the stick that flies
@@ -5620,10 +5652,14 @@ export class PaintScene extends Phaser.Scene {
           .setDepth(2)
           .setTileScale(tileScale);
         if (this.textures.exists("pb-strip_cap_l") && c > 0) {
-          this.add.image(c * TILE + 2, r * TILE - 7, "pb-strip_cap_l").setOrigin(1, 0).setScale(tileScale).setDepth(2);
+          const capSrc = this.textures.get("pb-strip_cap_l").getSourceImage() as HTMLImageElement;
+          const cap = groundCapPlacement(this.grid, c, c1, r, "left", capSrc.width, tileScale);
+          if (cap) this.add.image(cap.x, cap.y, "pb-strip_cap_l").setOrigin(cap.originX, 0).setScale(tileScale).setDepth(2);
         }
         if (this.textures.exists("pb-strip_cap_r") && c1 < w - 1) {
-          this.add.image((c1 + 1) * TILE - 2, r * TILE - 7, "pb-strip_cap_r").setOrigin(0, 0).setScale(tileScale).setDepth(2);
+          const capSrc = this.textures.get("pb-strip_cap_r").getSourceImage() as HTMLImageElement;
+          const cap = groundCapPlacement(this.grid, c, c1, r, "right", capSrc.width, tileScale);
+          if (cap) this.add.image(cap.x, cap.y, "pb-strip_cap_r").setOrigin(cap.originX, 0).setScale(tileScale).setDepth(2);
         }
       });
     }

@@ -32,7 +32,9 @@
       "nameDe": "Die Spur über den Gehegen",
       "surface": "normal",
       "checkpointSide": "near",
-      "plates": {},
+      "plates": {
+        "far": "ch02_p1_far"
+      },
       "rows": [
         "################################################################",
         "................................................................",
@@ -303,12 +305,13 @@
               "actors": [
                 {
                   "id": "parrot",
-                  "skin": "papagei",
-                  "displayHeightPx": 40,
+                  "skin": "papagei_auto",
+                  "displayHeightPx": 36,
                   "anchor": {
                     "x": 0.2,
                     "y": 0.75
-                  }
+                  },
+                  "displayWidthPx": 36
                 }
               ],
               "props": [
@@ -329,7 +332,7 @@
                   "targetPositions": [
                     {
                       "actorId": "parrot",
-                      "x": 0.13,
+                      "x": 0.2,
                       "y": 0.8,
                       "z": "front"
                     }
@@ -360,8 +363,8 @@
                   "targetPositions": [
                     {
                       "actorId": "parrot",
-                      "x": 0.49,
-                      "y": 0.62,
+                      "x": 0.53,
+                      "y": 0.65,
                       "z": "behind"
                     }
                   ],
@@ -392,7 +395,7 @@
                     {
                       "actorId": "parrot",
                       "x": 0.5,
-                      "y": 0.93,
+                      "y": 0.83,
                       "z": "behind"
                     }
                   ],
@@ -413,6 +416,9 @@
                     "labelEn": "under",
                     "holdTicks": 90,
                     "clearBeforeAsk": true
+                  },
+                  "poseByActor": {
+                    "parrot": "crouch"
                   }
                 },
                 {
@@ -423,7 +429,7 @@
                     {
                       "actorId": "parrot",
                       "x": 0.5,
-                      "y": 0.39,
+                      "y": 0.42,
                       "z": "front"
                     }
                   ],
@@ -453,8 +459,8 @@
                   "targetPositions": [
                     {
                       "actorId": "parrot",
-                      "x": 0.7,
-                      "y": 0.72,
+                      "x": 0.22,
+                      "y": 0.79,
                       "z": "behind"
                     }
                   ],
@@ -485,8 +491,8 @@
                   "targetPositions": [
                     {
                       "actorId": "parrot",
-                      "x": 0.55,
-                      "y": 0.88,
+                      "x": 0.76,
+                      "y": 0.8,
                       "z": "front"
                     }
                   ],
@@ -704,16 +710,17 @@
                 {
                   "id": "buddy",
                   "skin": "buddy",
-                  "displayHeightPx": 36,
+                  "displayHeightPx": 36.977777777777774,
                   "anchor": {
                     "x": 0.5,
                     "y": 0.82
-                  }
+                  },
+                  "displayWidthPx": 39.82222222222222
                 },
                 {
                   "id": "parrot",
                   "skin": "papagei",
-                  "displayHeightPx": 40,
+                  "displayHeightPx": 18,
                   "anchor": {
                     "x": 0.15,
                     "y": 0.25
@@ -722,19 +729,21 @@
                     "actorId": "buddy",
                     "socket": "back",
                     "offsetPx": {
-                      "x": 0,
-                      "y": -18
+                      "x": -11.7,
+                      "y": -19.044444444444444
                     }
-                  }
+                  },
+                  "displayWidthPx": 17.666666666666668
                 },
                 {
                   "id": "penguinHome",
                   "skin": "pinguin",
-                  "displayHeightPx": 36,
+                  "displayHeightPx": 24.12565445026178,
                   "anchor": {
                     "x": 0.12,
                     "y": 0.86
-                  }
+                  },
+                  "displayWidthPx": 32.167539267015705
                 }
               ],
               "props": [
@@ -742,8 +751,12 @@
                   "id": "tree",
                   "skin": "baum",
                   "anchor": {
-                    "x": 0.5,
-                    "y": 0.8
+                    "x": 0.45,
+                    "y": 1
+                  },
+                  "canvas": {
+                    "widthPx": 104,
+                    "heightPx": 104
                   }
                 }
               ],
@@ -755,8 +768,8 @@
                   "targetPositions": [
                     {
                       "actorId": "buddy",
-                      "x": 0.55,
-                      "y": 0.78,
+                      "x": 0.4625,
+                      "y": 1,
                       "z": "behind"
                     }
                   ],
@@ -772,7 +785,18 @@
                   "taskIds": [
                     "g1.paint.ch02.a13"
                   ],
-                  "afterSolve": []
+                  "afterSolve": [],
+                  "view": {
+                    "actorIds": [
+                      "buddy"
+                    ],
+                    "propIds": [
+                      "tree"
+                    ]
+                  },
+                  "poseByActor": {
+                    "buddy": "parrot_support0"
+                  }
                 },
                 {
                   "id": "a14",
@@ -782,7 +806,7 @@
                     {
                       "actorId": "buddy",
                       "x": 0.7,
-                      "y": 0.84,
+                      "y": 1,
                       "z": "front"
                     },
                     {
@@ -804,7 +828,25 @@
                   "taskIds": [
                     "g1.paint.ch02.a14"
                   ],
-                  "afterSolve": []
+                  "afterSolve": [],
+                  "view": {
+                    "actorIds": [
+                      "buddy",
+                      "parrot"
+                    ],
+                    "propIds": [],
+                    "camera": {
+                      "x": 0.6,
+                      "y": 0.76,
+                      "width": 0.2,
+                      "height": 0.24
+                    }
+                  },
+                  "poseByActor": {
+                    "buddy": "parrot_support1",
+                    "parrot": "look"
+                  },
+                  "holdPoseAfterSolve": true
                 }
               ]
             },
@@ -971,7 +1013,10 @@
       "nameDe": "Die Tiere rund um den Bus",
       "surface": "normal",
       "checkpointSide": "near",
-      "plates": {},
+      "plates": {
+        "far": "ch02_p2_far",
+        "mid": "ch02_p2_mid"
+      },
       "rows": [
         "########################################################################",
         "........................................................................",
@@ -991,7 +1036,7 @@
         "..........#######.......................................................",
         "....*..*..#######..................*.*.**..*...*...*...*....*.....*.....",
         "..S.......#######...........................C........................X..",
-        "###################\\...=====.......===/######..#########################",
+        "###################==========.==...===/######..#########################",
         "#################..#\\................/#######..#########################",
         "#################..##\\.*..*..*.*.*../########..#########################",
         "#################..###\\............/#########..#########################",
@@ -1104,7 +1149,162 @@
               "variantIds": []
             },
             "hidden": true,
-            "exitHintDe": "Fenn wartet noch auf dich."
+            "exitHintDe": "Fenn wartet noch auf dich.",
+            "classmatePresentation": {
+              "props": [
+                {
+                  "id": "fenn-pass",
+                  "skin": "fenn_pass",
+                  "anchor": {
+                    "x": 0.6625,
+                    "y": 0.9144549763033176
+                  },
+                  "canvas": {
+                    "widthPx": 90,
+                    "heightPx": 48.2345971563981
+                  },
+                  "sourceRect": {
+                    "x": 0.0859375,
+                    "y": 0.0390625,
+                    "width": 0.82421875,
+                    "height": 0.69140625
+                  }
+                },
+                {
+                  "id": "fenn-pass-group-photo",
+                  "skin": "fenn_pass_gruppenfoto",
+                  "anchor": {
+                    "x": 0.6625,
+                    "y": 0.9144549763033176
+                  },
+                  "canvas": {
+                    "widthPx": 90,
+                    "heightPx": 48.2345971563981
+                  },
+                  "sourceRect": {
+                    "x": 0.0859375,
+                    "y": 0.0390625,
+                    "width": 0.82421875,
+                    "height": 0.69140625
+                  }
+                },
+                {
+                  "id": "fenn-group-bubble",
+                  "skin": "fenn_gruppensprechblase",
+                  "anchor": {
+                    "x": 0.5,
+                    "y": 0.8
+                  },
+                  "canvas": {
+                    "widthPx": 144,
+                    "heightPx": 92
+                  }
+                },
+                {
+                  "id": "fenn-pass-speech",
+                  "skin": "fenn_pass",
+                  "anchor": {
+                    "x": 0.10625,
+                    "y": 0.6563749590298263
+                  },
+                  "canvas": {
+                    "widthPx": 34,
+                    "heightPx": 10.764995083579155
+                  },
+                  "sourceRect": {
+                    "x": 0.05859375,
+                    "y": 0.734375,
+                    "width": 0.44140625,
+                    "height": 0.21875
+                  }
+                }
+              ],
+              "views": [
+                {
+                  "taskId": "g1.paint.ch02.b12",
+                  "propIds": [
+                    "fenn-pass",
+                    "fenn-pass-speech"
+                  ],
+                  "ownerRect": {
+                    "anchor": {
+                      "x": 0.2875,
+                      "y": 1
+                    },
+                    "displayHeightPx": 58
+                  },
+                  "showFriends": false
+                },
+                {
+                  "taskId": "g1.paint.ch02.b13",
+                  "propIds": [
+                    "fenn-pass",
+                    "fenn-pass-speech"
+                  ],
+                  "ownerRect": {
+                    "anchor": {
+                      "x": 0.2875,
+                      "y": 1
+                    },
+                    "displayHeightPx": 58
+                  },
+                  "showFriends": false
+                },
+                {
+                  "taskId": "g1.paint.ch02.b14",
+                  "propIds": [
+                    "fenn-pass",
+                    "fenn-pass-speech"
+                  ],
+                  "ownerRect": {
+                    "anchor": {
+                      "x": 0.2875,
+                      "y": 1
+                    },
+                    "displayHeightPx": 58
+                  },
+                  "showFriends": false
+                },
+                {
+                  "taskId": "g1.paint.ch02.b15",
+                  "propIds": [
+                    "fenn-pass",
+                    "fenn-pass-speech"
+                  ],
+                  "ownerRect": {
+                    "anchor": {
+                      "x": 0.2875,
+                      "y": 1
+                    },
+                    "displayHeightPx": 58
+                  },
+                  "showFriends": false
+                },
+                {
+                  "taskId": "g1.paint.ch02.b16",
+                  "propIds": [
+                    "fenn-pass",
+                    "fenn-pass-group-photo",
+                    "fenn-pass-speech"
+                  ],
+                  "ownerRect": {
+                    "anchor": {
+                      "x": 0.2875,
+                      "y": 1
+                    },
+                    "displayHeightPx": 58
+                  },
+                  "showFriends": false
+                },
+                {
+                  "taskId": "g1.paint.ch02.b17",
+                  "propIds": [
+                    "fenn-group-bubble"
+                  ]
+                }
+              ],
+              "homePropIds": []
+            }
           }
         },
         {
@@ -1234,56 +1434,62 @@
                 {
                   "id": "monkeys",
                   "skin": "affe",
-                  "displayHeightPx": 36,
+                  "displayHeightPx": 24.88888888888889,
                   "anchor": {
-                    "x": 0.5,
-                    "y": 0.27
-                  }
+                    "x": 0.43125,
+                    "y": 0.42291666666666666
+                  },
+                  "displayWidthPx": 29.629629629629633
                 },
                 {
                   "id": "penguins",
                   "skin": "pinguin",
-                  "displayHeightPx": 36,
+                  "displayHeightPx": 24.25263157894737,
                   "anchor": {
-                    "x": 0.48,
-                    "y": 0.6
-                  }
+                    "x": 0.35625,
+                    "y": 0.7583333333333333
+                  },
+                  "displayWidthPx": 32.33684210526316
                 },
                 {
                   "id": "giraffe",
                   "skin": "giraffe",
-                  "displayHeightPx": 112,
+                  "displayHeightPx": 91.91489361702128,
                   "anchor": {
-                    "x": 0.12,
-                    "y": 0.83
-                  }
+                    "x": 0.025,
+                    "y": 1
+                  },
+                  "displayWidthPx": 95.31914893617021
                 },
                 {
                   "id": "frog",
                   "skin": "frosch",
                   "displayHeightPx": 22,
                   "anchor": {
-                    "x": 0.5,
-                    "y": 0.94
-                  }
+                    "x": 0.5875,
+                    "y": 1
+                  },
+                  "displayWidthPx": 22
                 },
                 {
                   "id": "dog",
                   "skin": "hund",
-                  "displayHeightPx": 36,
+                  "displayHeightPx": 24.651851851851852,
                   "anchor": {
-                    "x": 0.72,
-                    "y": 0.79
-                  }
+                    "x": 0.925,
+                    "y": 0.85
+                  },
+                  "displayWidthPx": 26.548148148148147
                 },
                 {
                   "id": "cats",
                   "skin": "katze",
-                  "displayHeightPx": 26,
+                  "displayHeightPx": 40,
                   "anchor": {
-                    "x": 0.5,
-                    "y": 0.87
-                  }
+                    "x": 0.35,
+                    "y": 1
+                  },
+                  "displayWidthPx": 40
                 }
               ],
               "props": [
@@ -1291,8 +1497,12 @@
                   "id": "bus",
                   "skin": "bus",
                   "anchor": {
-                    "x": 0.5,
-                    "y": 0.8
+                    "x": 0.575,
+                    "y": 1
+                  },
+                  "canvas": {
+                    "widthPx": 128,
+                    "heightPx": 128
                   }
                 }
               ],
@@ -1304,20 +1514,20 @@
                   "targetPositions": [
                     {
                       "actorId": "monkeys",
-                      "x": 0.5,
-                      "y": 0.27,
+                      "x": 0.43125,
+                      "y": 0.42291666666666666,
                       "z": "front"
                     },
                     {
                       "actorId": "penguins",
-                      "x": 0.48,
-                      "y": 0.6,
+                      "x": 0.35625,
+                      "y": 0.7583333333333333,
                       "z": "behind"
                     },
                     {
                       "actorId": "giraffe",
-                      "x": 0.12,
-                      "y": 0.83,
+                      "x": 0.025,
+                      "y": 1,
                       "z": "front"
                     }
                   ],
@@ -1349,7 +1559,7 @@
                       "waypoints": [
                         {
                           "x": 0.2,
-                          "y": 0.85
+                          "y": 1
                         }
                       ],
                       "ticks": 120
@@ -1359,7 +1569,7 @@
                       "waypoints": [
                         {
                           "x": 0.3,
-                          "y": 0.85
+                          "y": 1
                         }
                       ],
                       "ticks": 120
@@ -1369,12 +1579,27 @@
                       "waypoints": [
                         {
                           "x": 0.1,
-                          "y": 0.85
+                          "y": 1
                         }
                       ],
                       "ticks": 120
                     }
-                  ]
+                  ],
+                  "countByActor": {
+                    "monkeys": 2,
+                    "penguins": 2
+                  },
+                  "view": {
+                    "actorIds": [
+                      "monkeys",
+                      "penguins",
+                      "giraffe"
+                    ],
+                    "propIds": [
+                      "bus"
+                    ],
+                    "fitContent": true
+                  }
                 },
                 {
                   "id": "b07",
@@ -1383,20 +1608,20 @@
                   "targetPositions": [
                     {
                       "actorId": "frog",
-                      "x": 0.5,
-                      "y": 0.94,
+                      "x": 0.5875,
+                      "y": 1,
                       "z": "behind"
                     },
                     {
                       "actorId": "dog",
-                      "x": 0.72,
-                      "y": 0.79,
+                      "x": 0.1625,
+                      "y": 1,
                       "z": "behind"
                     },
                     {
                       "actorId": "cats",
-                      "x": 0.5,
-                      "y": 0.87,
+                      "x": 1,
+                      "y": 1,
                       "z": "front"
                     }
                   ],
@@ -1428,7 +1653,7 @@
                       "waypoints": [
                         {
                           "x": 0.7,
-                          "y": 0.85
+                          "y": 1
                         }
                       ],
                       "ticks": 120
@@ -1438,24 +1663,51 @@
                       "waypoints": [
                         {
                           "x": 0.8,
-                          "y": 0.85
+                          "y": 1
                         }
                       ],
                       "ticks": 120
                     },
                     {
                       "actorId": "cats",
-                      "waypoints": [
+                      "ticks": 120,
+                      "worldWaypoints": [
                         {
-                          "x": 0.9,
-                          "y": 0.85
+                          "c": 32,
+                          "r": 17
+                        },
+                        {
+                          "c": 32,
+                          "r": 21
+                        },
+                        {
+                          "c": 29,
+                          "r": 21
                         }
-                      ],
-                      "ticks": 120
+                      ]
                     }
-                  ]
+                  ],
+                  "countByActor": {
+                    "cats": 2
+                  },
+                  "view": {
+                    "actorIds": [
+                      "frog",
+                      "dog",
+                      "cats"
+                    ],
+                    "propIds": [
+                      "bus"
+                    ],
+                    "fitContent": true
+                  }
                 }
-              ]
+              ],
+              "view": {
+                "propIds": [
+                  "bus"
+                ]
+              }
             },
             "taskSequence": [
               0,
@@ -1608,61 +1860,73 @@
                   "skin": "grandma",
                   "displayHeightPx": 40,
                   "anchor": {
-                    "x": 0.16,
-                    "y": 0.85
-                  }
+                    "x": 0.3,
+                    "y": 1
+                  },
+                  "displayWidthPx": 40
                 },
                 {
                   "id": "child",
                   "skin": "besucherkind",
                   "displayHeightPx": 32,
                   "anchor": {
-                    "x": 0.37,
-                    "y": 0.85
-                  }
+                    "x": 0.6875,
+                    "y": 1
+                  },
+                  "displayWidthPx": 32
                 },
                 {
                   "id": "family",
                   "skin": "familie",
                   "displayHeightPx": 44,
                   "anchor": {
-                    "x": 0.64,
-                    "y": 0.85
-                  }
+                    "x": 1,
+                    "y": 1
+                  },
+                  "displayWidthPx": 44
                 },
                 {
                   "id": "dog",
                   "skin": "hund",
-                  "displayHeightPx": 36,
+                  "displayHeightPx": 36.977777777777774,
                   "anchor": {
-                    "x": 0.85,
-                    "y": 0.85
-                  }
+                    "x": 0.4625,
+                    "y": 1
+                  },
+                  "displayWidthPx": 39.82222222222222
                 }
               ],
               "props": [
-                {
-                  "id": "passes",
-                  "skin": "gruppenpaesse",
-                  "anchor": {
-                    "x": 0.5,
-                    "y": 0.8
-                  }
-                },
-                {
-                  "id": "parking",
-                  "skin": "parkplatz",
-                  "anchor": {
-                    "x": 0.5,
-                    "y": 0.8
-                  }
-                },
                 {
                   "id": "poster",
                   "skin": "parkposter",
                   "anchor": {
                     "x": 0.5,
                     "y": 0.8
+                  }
+                },
+                {
+                  "id": "visitor-match-board",
+                  "skin": "park_besucher_vergleich",
+                  "anchor": {
+                    "x": 0.5,
+                    "y": 1
+                  },
+                  "canvas": {
+                    "widthPx": 160,
+                    "heightPx": 120
+                  }
+                },
+                {
+                  "id": "activity-match-board",
+                  "skin": "park_aktivitaeten_vergleich",
+                  "anchor": {
+                    "x": 0.5,
+                    "y": 1
+                  },
+                  "canvas": {
+                    "widthPx": 160,
+                    "heightPx": 120
                   }
                 }
               ],
@@ -1674,26 +1938,26 @@
                   "targetPositions": [
                     {
                       "actorId": "grandma",
-                      "x": 0.16,
-                      "y": 0.85,
+                      "x": 0.3,
+                      "y": 1,
                       "z": "front"
                     },
                     {
                       "actorId": "child",
-                      "x": 0.37,
-                      "y": 0.85,
+                      "x": 0.6875,
+                      "y": 1,
                       "z": "front"
                     },
                     {
                       "actorId": "family",
-                      "x": 0.64,
-                      "y": 0.85,
+                      "x": 1,
+                      "y": 1,
                       "z": "front"
                     },
                     {
                       "actorId": "dog",
-                      "x": 0.85,
-                      "y": 0.85,
+                      "x": 0.4625,
+                      "y": 1,
                       "z": "front"
                     }
                   ],
@@ -1703,7 +1967,13 @@
                   "taskIds": [
                     "g1.paint.ch02.b08"
                   ],
-                  "afterSolve": []
+                  "afterSolve": [],
+                  "view": {
+                    "actorIds": [],
+                    "propIds": [
+                      "visitor-match-board"
+                    ]
+                  }
                 },
                 {
                   "id": "b09",
@@ -1712,8 +1982,8 @@
                   "targetPositions": [
                     {
                       "actorId": "family",
-                      "x": 0.64,
-                      "y": 0.85,
+                      "x": 1,
+                      "y": 1,
                       "z": "front"
                     }
                   ],
@@ -1726,17 +1996,29 @@
                   "afterSolve": [
                     {
                       "actorId": "family",
+                      "ticks": 90,
                       "waypoints": [
                         {
-                          "x": 0.9,
-                          "y": 0.8
+                          "x": 0.8625,
+                          "y": 1
                         }
-                      ],
-                      "ticks": 90
+                      ]
                     }
-                  ]
+                  ],
+                  "view": {
+                    "actorIds": [],
+                    "propIds": [
+                      "activity-match-board"
+                    ]
+                  }
                 }
-              ]
+              ],
+              "view": {
+                "propIds": [
+                  "poster"
+                ],
+                "fitContent": true
+              }
             },
             "taskSequence": [
               0,
@@ -1830,11 +2112,12 @@
                 {
                   "id": "animals",
                   "skin": "zootiere",
-                  "displayHeightPx": 56,
+                  "displayHeightPx": 24,
                   "anchor": {
-                    "x": 0.5,
-                    "y": 0.8
-                  }
+                    "x": 0.525,
+                    "y": 1
+                  },
+                  "displayWidthPx": 37.125
                 }
               ],
               "props": [
@@ -1842,8 +2125,24 @@
                   "id": "bars",
                   "skin": "gitter",
                   "anchor": {
-                    "x": 0.5,
-                    "y": 0.8
+                    "x": 0.525,
+                    "y": 1
+                  },
+                  "canvas": {
+                    "widthPx": 54.896484375,
+                    "heightPx": 27
+                  }
+                },
+                {
+                  "id": "train-wish-picture",
+                  "skin": "zoozug_wunschbild",
+                  "anchor": {
+                    "x": 0.35,
+                    "y": 1
+                  },
+                  "canvas": {
+                    "widthPx": 88,
+                    "heightPx": 60
                   }
                 }
               ],
@@ -1855,8 +2154,8 @@
                   "targetPositions": [
                     {
                       "actorId": "animals",
-                      "x": 0.5,
-                      "y": 0.8,
+                      "x": 0.525,
+                      "y": 1,
                       "z": "behind"
                     }
                   ],
@@ -1871,13 +2170,27 @@
                       "actorId": "animals",
                       "waypoints": [
                         {
-                          "x": 0.85,
-                          "y": 0.82
+                          "x": 0.83125,
+                          "y": 1
                         }
                       ],
                       "ticks": 90
                     }
-                  ]
+                  ],
+                  "view": {
+                    "actorIds": [
+                      "animals"
+                    ],
+                    "propIds": [
+                      "bars"
+                    ],
+                    "camera": {
+                      "x": 0.35,
+                      "y": 0.75,
+                      "width": 0.36,
+                      "height": 0.25
+                    }
+                  }
                 },
                 {
                   "id": "b11",
@@ -1886,8 +2199,8 @@
                   "targetPositions": [
                     {
                       "actorId": "animals",
-                      "x": 0.85,
-                      "y": 0.82,
+                      "x": 0.83125,
+                      "y": 1,
                       "z": "front"
                     }
                   ],
@@ -1898,9 +2211,29 @@
                     "g1.paint.ch02.b11"
                   ],
                   "afterSolve": [],
-                  "variant": true
+                  "variant": true,
+                  "view": {
+                    "actorIds": [
+                      "animals"
+                    ],
+                    "propIds": [
+                      "train-wish-picture"
+                    ],
+                    "camera": {
+                      "x": 0.075,
+                      "y": 0.5,
+                      "width": 0.875,
+                      "height": 0.5
+                    }
+                  }
                 }
-              ]
+              ],
+              "view": {
+                "propIds": [
+                  "bars"
+                ],
+                "fitContent": true
+              }
             },
             "taskSequence": [
               0
@@ -2029,7 +2362,8 @@
                 }
               ]
             },
-            "exitHintDe": "Der Schaffner wartet noch auf dich."
+            "exitHintDe": "Der Schaffner wartet noch auf dich.",
+            "artSet": "zoo-v2"
           }
         },
         {
@@ -2112,7 +2446,10 @@
       "nameDe": "Hoch oben in den Bäumen",
       "surface": "normal",
       "checkpointSide": "near",
-      "plates": {},
+      "plates": {
+        "far": "ch02_p3_far",
+        "mid": "ch02_p3_mid"
+      },
       "rows": [
         "################################################################",
         "................................................................",
@@ -2335,11 +2672,12 @@
                 {
                   "id": "giraffe",
                   "skin": "giraffe",
-                  "displayHeightPx": 112,
+                  "displayHeightPx": 114.38297872340425,
                   "anchor": {
                     "x": 0.48,
                     "y": 0.86
-                  }
+                  },
+                  "displayWidthPx": 118.6193853427896
                 }
               ],
               "props": [
@@ -2349,6 +2687,30 @@
                   "anchor": {
                     "x": 0.5,
                     "y": 0.8
+                  }
+                },
+                {
+                  "id": "ch02_c05_giraffe_measure",
+                  "skin": "ch02_c05_giraffe_measure",
+                  "anchor": {
+                    "x": 0.5,
+                    "y": 0.9
+                  },
+                  "canvas": {
+                    "widthPx": 160,
+                    "heightPx": 118.8663967611336
+                  }
+                },
+                {
+                  "id": "ch02_c06_tree_comparison",
+                  "skin": "ch02_c06_tree_comparison",
+                  "anchor": {
+                    "x": 0.5,
+                    "y": 1
+                  },
+                  "canvas": {
+                    "widthPx": 160,
+                    "heightPx": 120
                   }
                 }
               ],
@@ -2371,7 +2733,13 @@
                   "taskIds": [
                     "g1.paint.ch02.c05"
                   ],
-                  "afterSolve": []
+                  "afterSolve": [],
+                  "view": {
+                    "actorIds": [],
+                    "propIds": [
+                      "ch02_c05_giraffe_measure"
+                    ]
+                  }
                 },
                 {
                   "id": "c06",
@@ -2407,9 +2775,23 @@
                       "ticks": 180,
                       "arrivalFlag": "giraffeHome"
                     }
-                  ]
+                  ],
+                  "view": {
+                    "actorIds": [],
+                    "propIds": [
+                      "ch02_c06_tree_comparison"
+                    ]
+                  }
                 }
-              ]
+              ],
+              "view": {
+                "actorIds": [
+                  "giraffe"
+                ],
+                "propIds": [
+                  "tree"
+                ]
+              }
             },
             "taskSequence": [
               0,
@@ -2513,9 +2895,10 @@
                   "skin": "stein",
                   "displayHeightPx": 20,
                   "anchor": {
-                    "x": 0.35,
-                    "y": 0.85
-                  }
+                    "x": 0.5,
+                    "y": 1
+                  },
+                  "displayWidthPx": 25.98639455782313
                 }
               ],
               "props": [
@@ -2524,7 +2907,11 @@
                   "skin": "steinmass",
                   "anchor": {
                     "x": 0.5,
-                    "y": 0.8
+                    "y": 0.95
+                  },
+                  "canvas": {
+                    "widthPx": 156,
+                    "heightPx": 100
                   }
                 }
               ],
@@ -2536,8 +2923,8 @@
                   "targetPositions": [
                     {
                       "actorId": "stone",
-                      "x": 0.35,
-                      "y": 0.85,
+                      "x": 0.44,
+                      "y": 0.65,
                       "z": "front"
                     }
                   ],
@@ -2547,9 +2934,34 @@
                   "taskIds": [
                     "g1.paint.ch02.c07"
                   ],
-                  "afterSolve": []
+                  "afterSolve": [
+                    {
+                      "actorId": "stone",
+                      "ticks": 20,
+                      "waypoints": [
+                        {
+                          "x": 0.5,
+                          "y": 1
+                        }
+                      ]
+                    }
+                  ],
+                  "view": {
+                    "actorIds": [
+                      "stone"
+                    ],
+                    "propIds": [
+                      "size-reference"
+                    ]
+                  }
                 }
-              ]
+              ],
+              "view": {
+                "actorIds": [
+                  "stone"
+                ],
+                "propIds": []
+              }
             },
             "taskSequence": [
               1
@@ -2694,56 +3106,62 @@
                 {
                   "id": "grandma",
                   "skin": "grandma",
-                  "displayHeightPx": 40,
+                  "displayHeightPx": 30.308668076109935,
                   "anchor": {
-                    "x": 0.15,
-                    "y": 0.85
-                  }
+                    "x": 0.28125,
+                    "y": 0.8666666666666667
+                  },
+                  "displayWidthPx": 30.308668076109935
                 },
                 {
                   "id": "guide",
                   "skin": "guide",
-                  "displayHeightPx": 44,
+                  "displayHeightPx": 31.09311740890688,
                   "anchor": {
-                    "x": 0.34,
-                    "y": 0.85
-                  }
+                    "x": 0.39375,
+                    "y": 0.735357624831309
+                  },
+                  "displayWidthPx": 31.09311740890688
                 },
                 {
                   "id": "children",
                   "skin": "besucherkinder",
-                  "displayHeightPx": 36,
+                  "displayHeightPx": 26.77124183006536,
                   "anchor": {
-                    "x": 0.58,
-                    "y": 0.85
-                  }
+                    "x": 0.525,
+                    "y": 1
+                  },
+                  "displayWidthPx": 26.77124183006536
                 },
                 {
                   "id": "family",
                   "skin": "familie",
-                  "displayHeightPx": 44,
+                  "displayHeightPx": 32.06680584551148,
                   "anchor": {
-                    "x": 0.84,
-                    "y": 0.85
-                  }
+                    "x": 0.7625,
+                    "y": 1
+                  },
+                  "displayWidthPx": 32.06680584551148
                 },
                 {
                   "id": "aileen",
                   "skin": "aileen",
-                  "displayHeightPx": 36,
+                  "displayHeightPx": 26.655097613882862,
                   "anchor": {
-                    "x": 0.3,
-                    "y": 0.85
-                  }
+                    "x": 0.48125,
+                    "y": 0.6013015184381778
+                  },
+                  "displayWidthPx": 16.65943600867679
                 },
                 {
                   "id": "amrita-rajit",
                   "skin": "amrita_rajit",
-                  "displayHeightPx": 36,
+                  "displayHeightPx": 25.81512605042017,
                   "anchor": {
-                    "x": 0.7,
-                    "y": 0.85
-                  }
+                    "x": 0.584375,
+                    "y": 0.6008403361344539
+                  },
+                  "displayWidthPx": 25.81512605042017
                 }
               ],
               "props": [
@@ -2753,14 +3171,22 @@
                   "anchor": {
                     "x": 0.5,
                     "y": 0.8
+                  },
+                  "canvas": {
+                    "widthPx": 80,
+                    "heightPx": 60
                   }
                 },
                 {
                   "id": "tree",
                   "skin": "baumhaus",
                   "anchor": {
-                    "x": 0.5,
-                    "y": 0.8
+                    "x": 0.55,
+                    "y": 1
+                  },
+                  "canvas": {
+                    "widthPx": 144,
+                    "heightPx": 93.5629820051414
                   }
                 },
                 {
@@ -2769,6 +3195,102 @@
                   "anchor": {
                     "x": 0.5,
                     "y": 0.8
+                  }
+                },
+                {
+                  "id": "ch02_c08_children_talk_choice",
+                  "skin": "ch02_c08_children_talk_choice",
+                  "anchor": {
+                    "x": 0.5,
+                    "y": 1
+                  },
+                  "canvas": {
+                    "widthPx": 160,
+                    "heightPx": 120
+                  }
+                },
+                {
+                  "id": "ch02_c09_four_speakers",
+                  "skin": "ch02_c09_four_speakers",
+                  "anchor": {
+                    "x": 0.5,
+                    "y": 1
+                  },
+                  "canvas": {
+                    "widthPx": 160,
+                    "heightPx": 120
+                  }
+                },
+                {
+                  "id": "ch02_c10_four_comparisons",
+                  "skin": "ch02_c10_four_comparisons",
+                  "anchor": {
+                    "x": 0.5,
+                    "y": 1
+                  },
+                  "canvas": {
+                    "widthPx": 160,
+                    "heightPx": 119.04
+                  }
+                },
+                {
+                  "id": "ch02_c11_aileen_own_pass",
+                  "skin": "ch02_c11_aileen_own_pass",
+                  "anchor": {
+                    "x": 0.5,
+                    "y": 1
+                  },
+                  "canvas": {
+                    "widthPx": 160,
+                    "heightPx": 120
+                  }
+                },
+                {
+                  "id": "ch02_c12_amrita_rajit_own_passes",
+                  "skin": "ch02_c12_amrita_rajit_own_passes",
+                  "anchor": {
+                    "x": 0.5,
+                    "y": 1
+                  },
+                  "canvas": {
+                    "widthPx": 160,
+                    "heightPx": 120
+                  }
+                },
+                {
+                  "id": "visitor-platform-upper",
+                  "skin": "ast",
+                  "anchor": {
+                    "x": 0.55,
+                    "y": 0.6401041666666667
+                  },
+                  "canvas": {
+                    "widthPx": 32,
+                    "heightPx": 8
+                  }
+                },
+                {
+                  "id": "visitor-platform-middle",
+                  "skin": "ast",
+                  "anchor": {
+                    "x": 0.4,
+                    "y": 0.753125
+                  },
+                  "canvas": {
+                    "widthPx": 16,
+                    "heightPx": 4
+                  }
+                },
+                {
+                  "id": "visitor-platform-lower",
+                  "skin": "ast",
+                  "anchor": {
+                    "x": 0.3,
+                    "y": 0.8864583333333333
+                  },
+                  "canvas": {
+                    "widthPx": 16,
+                    "heightPx": 4
                   }
                 }
               ],
@@ -2780,8 +3302,8 @@
                   "targetPositions": [
                     {
                       "actorId": "children",
-                      "x": 0.58,
-                      "y": 0.85,
+                      "x": 0.525,
+                      "y": 1,
                       "z": "front"
                     }
                   ],
@@ -2791,7 +3313,13 @@
                   "taskIds": [
                     "g1.paint.ch02.c08"
                   ],
-                  "afterSolve": []
+                  "afterSolve": [],
+                  "view": {
+                    "actorIds": [],
+                    "propIds": [
+                      "ch02_c08_children_talk_choice"
+                    ]
+                  }
                 },
                 {
                   "id": "c09",
@@ -2800,26 +3328,26 @@
                   "targetPositions": [
                     {
                       "actorId": "grandma",
-                      "x": 0.15,
-                      "y": 0.85,
+                      "x": 0.28125,
+                      "y": 0.8666666666666667,
                       "z": "front"
                     },
                     {
                       "actorId": "guide",
-                      "x": 0.34,
-                      "y": 0.85,
+                      "x": 0.39375,
+                      "y": 0.735357624831309,
                       "z": "front"
                     },
                     {
                       "actorId": "children",
-                      "x": 0.58,
-                      "y": 0.85,
+                      "x": 0.525,
+                      "y": 1,
                       "z": "front"
                     },
                     {
                       "actorId": "family",
-                      "x": 0.84,
-                      "y": 0.85,
+                      "x": 0.7625,
+                      "y": 1,
                       "z": "front"
                     }
                   ],
@@ -2829,7 +3357,13 @@
                   "taskIds": [
                     "g1.paint.ch02.c09"
                   ],
-                  "afterSolve": []
+                  "afterSolve": [],
+                  "view": {
+                    "actorIds": [],
+                    "propIds": [
+                      "ch02_c09_four_speakers"
+                    ]
+                  }
                 },
                 {
                   "id": "c10",
@@ -2838,8 +3372,8 @@
                   "targetPositions": [
                     {
                       "actorId": "grandma",
-                      "x": 0.15,
-                      "y": 0.85,
+                      "x": 0.28125,
+                      "y": 0.8666666666666667,
                       "z": "front"
                     }
                   ],
@@ -2850,7 +3384,13 @@
                     "g1.paint.ch02.c10"
                   ],
                   "afterSolve": [],
-                  "variant": true
+                  "variant": true,
+                  "view": {
+                    "actorIds": [],
+                    "propIds": [
+                      "ch02_c10_four_comparisons"
+                    ]
+                  }
                 },
                 {
                   "id": "c11",
@@ -2859,8 +3399,8 @@
                   "targetPositions": [
                     {
                       "actorId": "aileen",
-                      "x": 0.3,
-                      "y": 0.85,
+                      "x": 0.48125,
+                      "y": 0.6013015184381778,
                       "z": "front"
                     }
                   ],
@@ -2870,7 +3410,13 @@
                   "taskIds": [
                     "g1.paint.ch02.c11"
                   ],
-                  "afterSolve": []
+                  "afterSolve": [],
+                  "view": {
+                    "actorIds": [],
+                    "propIds": [
+                      "ch02_c11_aileen_own_pass"
+                    ]
+                  }
                 },
                 {
                   "id": "c12",
@@ -2879,8 +3425,8 @@
                   "targetPositions": [
                     {
                       "actorId": "amrita-rajit",
-                      "x": 0.7,
-                      "y": 0.85,
+                      "x": 0.584375,
+                      "y": 0.6008403361344539,
                       "z": "front"
                     }
                   ],
@@ -2890,9 +3436,31 @@
                   "taskIds": [
                     "g1.paint.ch02.c12"
                   ],
-                  "afterSolve": []
+                  "afterSolve": [],
+                  "view": {
+                    "actorIds": [],
+                    "propIds": [
+                      "ch02_c12_amrita_rajit_own_passes"
+                    ]
+                  }
                 }
-              ]
+              ],
+              "view": {
+                "actorIds": [
+                  "grandma",
+                  "guide",
+                  "children",
+                  "family",
+                  "aileen",
+                  "amrita-rajit"
+                ],
+                "propIds": [
+                  "tree",
+                  "visitor-platform-upper",
+                  "visitor-platform-middle",
+                  "visitor-platform-lower"
+                ]
+              }
             },
             "taskSequence": [
               0,
@@ -2958,7 +3526,9 @@
     "id": "p4",
     "nameDe": "Der Löwe will alle bei sich behalten",
     "surface": "normal",
-    "plates": {},
+    "plates": {
+      "far": "ch02_p4_far"
+    },
     "rows": [
       "####################################",
       "....................................",
@@ -3135,7 +3705,8 @@
                 "c": 22,
                 "r": 17
               }
-            ]
+            ],
+            "playAfterSolvePaths": true
           },
           "stageV2": {
             "groups": [
@@ -3217,11 +3788,12 @@
               {
                 "id": "lion",
                 "skin": "loewe",
-                "displayHeightPx": 64,
+                "displayHeightPx": 96,
                 "anchor": {
                   "x": 0.5,
                   "y": 0.86
-                }
+                },
+                "displayWidthPx": 96
               },
               {
                 "id": "parrot",
@@ -3235,29 +3807,32 @@
               {
                 "id": "monkeys",
                 "skin": "affe",
-                "displayHeightPx": 36,
+                "displayHeightPx": 36.433734939759034,
                 "anchor": {
                   "x": 0.35,
                   "y": 0.8
-                }
+                },
+                "displayWidthPx": 43.373493975903614
               },
               {
                 "id": "penguin",
                 "skin": "pinguin",
-                "displayHeightPx": 36,
+                "displayHeightPx": 20,
                 "anchor": {
                   "x": 0.55,
                   "y": 0.84
-                }
+                },
+                "displayWidthPx": 26.666666666666668
               },
               {
                 "id": "giraffe",
                 "skin": "giraffe",
-                "displayHeightPx": 112,
+                "displayHeightPx": 114.38297872340425,
                 "anchor": {
                   "x": 0.76,
                   "y": 0.86
-                }
+                },
+                "displayWidthPx": 118.6193853427896
               },
               {
                 "id": "guide",
@@ -3266,7 +3841,8 @@
                 "anchor": {
                   "x": 0.22,
                   "y": 0.86
-                }
+                },
+                "displayWidthPx": 44
               }
             ],
             "props": [
@@ -3274,8 +3850,12 @@
                 "id": "tree",
                 "skin": "baum",
                 "anchor": {
-                  "x": 0.5,
-                  "y": 0.8
+                  "x": 0.5625,
+                  "y": 1
+                },
+                "canvas": {
+                  "widthPx": 136,
+                  "heightPx": 136
                 }
               },
               {
@@ -3283,7 +3863,11 @@
                 "skin": "bus",
                 "anchor": {
                   "x": 0.5,
-                  "y": 0.8
+                  "y": 1
+                },
+                "canvas": {
+                  "widthPx": 160,
+                  "heightPx": 160
                 }
               },
               {
@@ -3309,7 +3893,101 @@
                 "skin": "stabplatte_ruhig",
                 "anchor": {
                   "x": 0.5,
-                  "y": 0.8
+                  "y": 1
+                },
+                "canvas": {
+                  "widthPx": 24,
+                  "heightPx": 8
+                }
+              },
+              {
+                "id": "ch02_d02_parrot_praise",
+                "skin": "ch02_d02_parrot_praise",
+                "anchor": {
+                  "x": 0.5,
+                  "y": 1
+                },
+                "canvas": {
+                  "widthPx": 160,
+                  "heightPx": 120
+                }
+              },
+              {
+                "id": "ch02_d05_small_monkey_question",
+                "skin": "ch02_d05_small_monkey_question",
+                "anchor": {
+                  "x": 0.5,
+                  "y": 1
+                },
+                "canvas": {
+                  "widthPx": 160,
+                  "heightPx": 120
+                }
+              },
+              {
+                "id": "ch02_d06_hidden_question",
+                "skin": "ch02_d06_hidden_question",
+                "anchor": {
+                  "x": 0.5,
+                  "y": 1
+                },
+                "canvas": {
+                  "widthPx": 160,
+                  "heightPx": 120
+                }
+              },
+              {
+                "id": "ch02_d07_role_swap",
+                "skin": "ch02_d07_role_swap",
+                "anchor": {
+                  "x": 0.5,
+                  "y": 1
+                },
+                "canvas": {
+                  "widthPx": 160,
+                  "heightPx": 120
+                }
+              },
+              {
+                "id": "ch02_d08_visitors_talk",
+                "skin": "ch02_d08_visitors_talk",
+                "anchor": {
+                  "x": 0.5,
+                  "y": 1
+                },
+                "canvas": {
+                  "widthPx": 160,
+                  "heightPx": 120
+                }
+              },
+              {
+                "id": "ch02_d09_welcome_visitors",
+                "skin": "ch02_d09_welcome_visitors",
+                "worldAnchor": {
+                  "c": 23,
+                  "r": 17
+                },
+                "canvas": {
+                  "widthPx": 160,
+                  "heightPx": 120
+                }
+              },
+              {
+                "id": "d04-sign",
+                "skin": "loewenschild",
+                "worldAnchor": {
+                  "c": 11,
+                  "r": 13
+                },
+                "canvas": {
+                  "widthPx": 56,
+                  "heightPx": 32
+                },
+                "innerRect": {
+                  "x": 4,
+                  "y": 4,
+                  "width": 48,
+                  "height": 24
                 }
               }
             ],
@@ -3338,7 +4016,15 @@
                 "taskIds": [
                   "g1.paint.ch02.d01"
                 ],
-                "afterSolve": []
+                "afterSolve": [],
+                "view": {
+                  "actorIds": [
+                    "lion"
+                  ],
+                  "propIds": [
+                    "tree"
+                  ]
+                }
               },
               {
                 "id": "d02",
@@ -3358,7 +4044,13 @@
                 "taskIds": [
                   "g1.paint.ch02.d02"
                 ],
-                "afterSolve": []
+                "afterSolve": [],
+                "view": {
+                  "actorIds": [],
+                  "propIds": [
+                    "ch02_d02_parrot_praise"
+                  ]
+                }
               },
               {
                 "id": "d03",
@@ -3381,6 +4073,14 @@
                 "afterSolve": [],
                 "countByActor": {
                   "monkeys": 2
+                },
+                "view": {
+                  "actorIds": [
+                    "monkeys"
+                  ],
+                  "propIds": [
+                    "loewenschild"
+                  ]
                 }
               },
               {
@@ -3391,7 +4091,7 @@
                   {
                     "actorId": "penguin",
                     "x": 0.5,
-                    "y": 0.94,
+                    "y": 1,
                     "z": "behind"
                   }
                 ],
@@ -3407,7 +4107,17 @@
                 "taskIds": [
                   "g1.paint.ch02.d04"
                 ],
-                "afterSolve": []
+                "afterSolve": [],
+                "view": {
+                  "actorIds": [
+                    "penguin"
+                  ],
+                  "propIds": [
+                    "bus",
+                    "d04-sign"
+                  ],
+                  "fitContent": true
+                }
               },
               {
                 "id": "d05",
@@ -3438,7 +4148,13 @@
                     ],
                     "ticks": 60
                   }
-                ]
+                ],
+                "view": {
+                  "actorIds": [],
+                  "propIds": [
+                    "ch02_d05_small_monkey_question"
+                  ]
+                }
               },
               {
                 "id": "d06",
@@ -3469,7 +4185,13 @@
                     ],
                     "ticks": 60
                   }
-                ]
+                ],
+                "view": {
+                  "actorIds": [],
+                  "propIds": [
+                    "ch02_d06_hidden_question"
+                  ]
+                }
               },
               {
                 "id": "d07",
@@ -3495,7 +4217,13 @@
                 "taskIds": [
                   "g1.paint.ch02.d07"
                 ],
-                "afterSolve": []
+                "afterSolve": [],
+                "view": {
+                  "actorIds": [],
+                  "propIds": [
+                    "ch02_d07_role_swap"
+                  ]
+                }
               },
               {
                 "id": "d08",
@@ -3525,6 +4253,12 @@
                 "emotionByActor": {
                   "lion": "sad",
                   "guide": "inviting"
+                },
+                "view": {
+                  "actorIds": [],
+                  "propIds": [
+                    "ch02_d08_visitors_talk"
+                  ]
                 }
               },
               {
@@ -3559,9 +4293,37 @@
                 ],
                 "emotionByActor": {
                   "lion": "lonely"
+                },
+                "view": {
+                  "actorIds": [],
+                  "propIds": [
+                    "ch02_d09_welcome_visitors"
+                  ],
+                  "fitContent": true,
+                  "camera": {
+                    "x": 0.5,
+                    "y": 0,
+                    "width": 0.5,
+                    "height": 1
+                  }
                 }
               }
-            ]
+            ],
+            "view": {
+              "actorIds": [
+                "lion",
+                "parrot",
+                "monkeys",
+                "penguin",
+                "giraffe",
+                "guide"
+              ],
+              "propIds": [
+                "loewenschild",
+                "resting-plate",
+                "ch02_d09_welcome_visitors"
+              ]
+            }
           },
           "exitHintDe": "Der Löwe wartet noch auf dich."
         }
@@ -3584,7 +4346,9 @@
     "id": "p9",
     "nameDe": "Die Blasen im Aquarium",
     "surface": "normal",
-    "plates": {},
+    "plates": {
+      "far": "ch02_p9_far"
+    },
     "rows": [
       "############################################",
       "............................................",

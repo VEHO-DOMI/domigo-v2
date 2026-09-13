@@ -14,8 +14,8 @@
 //    ceremony `Overlay` (handed in as a prop, so this file never imports
 //    PaintGame and Phaser can never leak into a second chunk — the bundle law).
 //  · REAL CONTENT WHERE IT EXISTS. The cards come from the chapter's own
-//    tasks file and the ceremonies from the chapter's own level; only `spell`
-//    is synthetic, and it says so on the tile.
+//    tasks file and the ceremonies from the chapter's own level. A synthetic
+//    spell/match example is labelled and used only when that kind is absent.
 //  · ONE SURFACE PER URL. `?karten=<id>` renders exactly one stage at the
 //    game's own size, which is what a screenshot wants; `?karten=1` lists them.
 import React from "react";
@@ -27,6 +27,7 @@ import { answerTextOf } from "../cards/resolution.ts";
 import { PAINT_OVERLAY_CSS } from "../cards/overlay-css.ts";
 import { LOGICAL_H, LOGICAL_W, RENDER_SCALE } from "../paint.ts";
 import { benchBilanz } from "./bench-counts.ts";
+import { WASH_ALPHA, washAlphaFor } from "../anim.ts";
 
 /** The ceremony renderer, handed in by PaintGame. Typed structurally — the
  *  gallery must not import PaintGame (see the bundle note above). */
@@ -139,6 +140,23 @@ export const waehleKarte = (
   };
 };
 
+/** Named sequence membership binds a rescue illustration to its real cage.
+ * Legacy chapters used the captive name inside the task id. */
+export const cageContextForTask = (level: PaintLevel, task: GameTaskV2): {
+  captive?: string; captiveIsPerson?: boolean;
+} => {
+  if (task.use !== "rescue") return {};
+  const cages = [...level.phases, ...(level.arena ? [level.arena] : []), ...(level.bonus ? [level.bonus] : [])]
+    .flatMap(p => p.entities).filter(e => e.role === "cage");
+  const cage = cages.find(e => {
+    const sequence = e.params?.taskSequenceV2 as { requiredIds?: string[]; variantIds?: string[] } | undefined;
+    return [...(sequence?.requiredIds ?? []), ...(sequence?.variantIds ?? [])].includes(task.id);
+  }) ?? cages.find(e => typeof e.params?.captive === "string" && task.id.includes(e.params.captive));
+  const person = cage?.params?.classmate;
+  const captive = typeof person === "string" ? person : cage?.params?.captive;
+  return typeof captive === "string" ? { captive, captiveIsPerson: typeof person === "string" } : {};
+};
+
 export default function CardGallery({ level, art, tasks, Overlay, which, karte }: GalleryProps): React.ReactElement {
   // R5-W6b · W5 · C5s Befund (D-386-Nachbar): `byKind` nimmt die ERSTE Karte
   // ihrer Art. Bei `restore` ist das immer der Radiergummi — ein Schirmbild der
@@ -152,7 +170,7 @@ export default function CardGallery({ level, art, tasks, Overlay, which, karte }
   // angefordert hat, und merkt es nicht.
   const { gewaehlt, kartenFehler } = waehleKarte(tasks, karte);
   const byKind = (kind: string): GameTaskV2 | undefined => {
-    if (gewaehlt !== undefined) return gewaehlt.kind === kind ? gewaehlt : undefined;
+    if (karte !== undefined) return gewaehlt?.kind === kind ? gewaehlt : undefined;
     return tasks.find((t) => t.kind === kind);
   };
 
@@ -257,8 +275,15 @@ export default function CardGallery({ level, art, tasks, Overlay, which, karte }
    *  right about the picture and wrong about the game: in play that portrait
    *  carries the being's live wash (the desaturation law, doc 41 §2) and IS
    *  grey. The bench was handing the verifier a projection the game never
-   *  shows. It passes the world's own WASH_ALPHA now. */
-  const DRAINED_WASH = 0.72;
+   *  shows. Named sequences use their actual owner's wash; legacy fixtures
+   *  retain the general wash until their owner is known. */
+  const restoreId = byKind("restore")?.id;
+  const restoreOwner = [...level.phases, ...(level.arena ? [level.arena] : []), ...(level.bonus ? [level.bonus] : [])]
+    .flatMap(p => p.entities).find(e => {
+      const sequence = e.params?.taskSequenceV2 as { requiredIds?: string[]; variantIds?: string[] } | undefined;
+      return restoreId !== undefined && [...(sequence?.requiredIds ?? []), ...(sequence?.variantIds ?? [])].includes(restoreId);
+    });
+  const DRAINED_WASH = restoreOwner ? washAlphaFor({ role: restoreOwner.role, params: restoreOwner.params, redeemed: false, timer: 0 }) : WASH_ALPHA;
 
   const card = (id: string, label: string, task: GameTaskV2 | undefined, extra?: Record<string, unknown>, note?: string): Surface => ({
     id, label, note, taskId: task?.id,
@@ -278,6 +303,7 @@ export default function CardGallery({ level, art, tasks, Overlay, which, karte }
           align="right"
           art={art}
           servedUse={task.use}
+          {...cageContextForTask(level, task)}
           {...extra}
         />
       ),
@@ -341,12 +367,13 @@ export default function CardGallery({ level, art, tasks, Overlay, which, karte }
     card("order", "order", byKind("order")),
     card("mistake", "mistake", byKind("mistake")),
     card("memory", "memory", byKind("memory")),
-    // L2-M-a: bis L2-G2 die Karten ins Kapitel traegt, liefert kein Kapitel eine
-    // `match`-Karte — also eine SYNTHETISCHE, nach dem Vorbild von `spell`.
-    // Ohne sie zeigt die Bank eine Fehlzeile statt einer Flaeche.
-    card("match", "match", SYNTHETIC_MATCH, undefined, "SYNTHETISCH — noch traegt kein Kapitel eine match-Karte (L2-G2 liefert sie)"),
+    // Chapter cards take precedence. A synthetic example is only an unnamed
+    // fallback; an unknown explicit card must remain an honest error.
+    card("match", "match", byKind("match") ?? (karte === undefined ? SYNTHETIC_MATCH : undefined), undefined,
+      byKind("match") ? undefined : "SYNTHETISCH — dieses Kapitel hat keine match-Karte"),
     card("typed", "typed", byKind("typed")),
-    card("spell", "spell", SYNTHETIC_SPELL, undefined, "SYNTHETISCH — ch01 führt keine spell-Karte (doc 41 §1)"),
+    card("spell", "spell", byKind("spell") ?? (karte === undefined ? SYNTHETIC_SPELL : undefined), undefined,
+      byKind("spell") ? undefined : "SYNTHETISCH — dieses Kapitel hat keine spell-Karte"),
     // the two states a card also has to survive: the hint ladder open, and a
     // reawakening round counter above it
     card("choice-hints", "choice · Hinweis-Ebene", byKind("choice"), { round: { n: 3, of: 6 } },

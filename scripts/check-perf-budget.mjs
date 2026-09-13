@@ -22,7 +22,8 @@
 import fs from "node:fs";
 import path from "node:path";
 import { BUDGETS } from "../packages/game-paint/src/perfBudget.ts";
-import { allScopePhases, domArtStems, phaseArtScope } from "../packages/game-paint/src/artScope.ts";
+import { allScopePhases, phaseArtScope } from "../packages/game-paint/src/artScope.ts";
+import { loadedArtClaims } from "./paint-art-claims.mjs";
 
 const R = process.cwd();
 const DOC = path.join(R, "docs/PERF_WAECHTER.md");
@@ -119,16 +120,14 @@ for (const b of budgets) {
 }
 
 // ── 3 · re-derive the static budgets from the repository itself ─────────────
-const present = new Set();
-const fileOf = new Map();
+const files = new Map(); // relative PNG paths retain hero/chapter ownership
 const walk = (dir) => {
   if (!fs.existsSync(dir)) return;
   for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
     if (e.isDirectory()) walk(path.join(dir, e.name));
     else if (e.name.endsWith(".png")) {
-      const stem = e.name.replace(/\.png$/, "");
-      present.add(stem);
-      fileOf.set(stem, path.join(dir, e.name));
+      const file = path.join(dir, e.name);
+      files.set(path.relative(ART_ROOT, file).split(path.sep).join("/"), file);
     }
   }
 };
@@ -140,39 +139,35 @@ for (const story of fs.existsSync(CONTENT) ? fs.readdirSync(CONTENT) : []) {
   if (!fs.existsSync(paintDir)) continue;
   for (const f of fs.readdirSync(paintDir).filter((x) => x.endsWith(".level.json"))) {
     const level = JSON.parse(fs.readFileSync(path.join(paintDir, f), "utf8"));
-    // L0: NAMENTLICH, nicht still. Ein Kapitel im Bau hat keine Kunst, also
-    // auch kein Kunst-Budget — aber das Ueberspringen wird GESAGT. (Vom blinden
-    // Leser dieser Bahn gefunden: dieselbe Zeile stand hier stumm.)
-    if (level.draft !== true) levels.push({ file: f, level });
-    else console.log(`check-perf-budget: ${level.chapter ?? f} uebersprungen (draft) — ein Kapitel im Bau traegt kein Kunst-Budget`);
+    const taskFile = path.join(paintDir, f.replace(/\.level\.json$/, ".tasks.v2.json"));
+    const tasks = fs.existsSync(taskFile) ? JSON.parse(fs.readFileSync(taskFile, "utf8")).items : [];
+    levels.push({ file: f, level, tasks });
   }
 }
 
+const loaded = loadedArtClaims(levels, files.keys());
 const phaseMbLimit = budgets.find((b) => b.key === "PHASE_ART_MB")?.limit ?? Infinity;
 const worst = { id: "—", mb: 0 };
 for (const { level } of levels) {
+  const resolved = loaded.byChapter.get(level.chapter);
+  const present = new Set(resolved.keys());
   for (const ph of allScopePhases(level)) {
     let bytes = 0;
     for (const s of phaseArtScope(level, ph.id, present)) {
-      const f = fileOf.get(s);
+      const f = files.get(resolved.get(s));
       if (f !== undefined) bytes += fs.statSync(f).size;
     }
     const mb = bytes / MB;
     if (mb > worst.mb) {
       worst.mb = mb;
-      worst.id = ph.id;
+      worst.id = `${level.chapter}/${ph.id}`;
     }
-    if (mb > phaseMbLimit) fail(`phase ${ph.id} loads ${mb.toFixed(1)} MB of art, over the ${phaseMbLimit} MB ceiling`);
+    if (mb > phaseMbLimit) fail(`phase ${level.chapter}/${ph.id}${level.draft ? " (draft)" : ""} loads ${mb.toFixed(3)} MB of art, over the ${phaseMbLimit} MB ceiling`);
   }
 }
 
 const deadCeiling = budgets.find((b) => b.key === "DEAD_ART_CEILING")?.limit ?? Infinity;
-const claimed = new Set();
-for (const { level } of levels) {
-  for (const ph of allScopePhases(level)) for (const s of phaseArtScope(level, ph.id, present)) claimed.add(s);
-  for (const s of domArtStems(level)) claimed.add(s);
-}
-const dead = [...present].filter((s) => !claimed.has(s));
+const dead = loaded.dead;
 // SELFTEST (R104/P-71): die Decke wird erst JETZT gebogen — unter den wirklich gemessenen
 // Stapel, nicht unter den konfigurierten Wert. So feuert `dead.length > deadLimit` bei
 // jedem Stapel ≥ 0, ganz gleich, wie viel Luft die Konfiguration gerade hat.
@@ -190,7 +185,7 @@ if (dead.length < deadLimit) {
 }
 if (dead.length > deadLimit) {
   fail(
-    `${dead.length} painted stems are loaded by nothing, over the ceiling of ${deadLimit}. ` +
+    `${dead.length} painted files are loaded by nothing, over the ceiling of ${deadLimit}. ` +
       `Art may land before its wiring — the pile may not grow unnoticed. Wire it, delete it, or raise the ceiling WITH a reason.`,
   );
 }
@@ -202,7 +197,7 @@ if (dead.length > deadLimit) {
 // when it has seen its own red light. Anything else fails the CI step that runs it.)
 if (selftest) {
   const sawQuote = reported.some((m) => m.startsWith("PHASE_ART_MB:"));
-  const sawDead = reported.some((m) => m.includes("painted stems are loaded by nothing"));
+  const sawDead = reported.some((m) => m.includes("painted files are loaded by nothing"));
   if (sawQuote && sawDead) {
     console.log(`check-perf-budget SELFTEST: OK — beide roten Lichter brennen (${failures} failure(s): `
       + "ein Budget gegen das Dokument verstellt, die Tot-Kunst-Decke unter den echten Stapel gesenkt)");
@@ -224,5 +219,5 @@ if (failures > 0) {
 }
 console.log(
   `check-perf-budget: OK — ${budgets.length} budgets, all quoted in the guard and enforced somewhere. ` +
-    `Heaviest phase ${worst.id} at ${worst.mb.toFixed(1)}/${phaseMbLimit} MB · dead art ${dead.length}/${deadLimit} stems.`,
+    `Heaviest phase ${worst.id} at ${worst.mb.toFixed(1)}/${phaseMbLimit} MB · dead art ${dead.length}/${deadLimit} files.`,
 );

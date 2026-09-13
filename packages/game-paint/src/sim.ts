@@ -1,12 +1,13 @@
-import { zooStageCell } from "./zoo-visuals.ts";
+import { classmatePresentationProps, classmateOwnerPresentation } from "./classmate-presentation.ts";
+import { ZOO_FRIEND_SKIN, ZOO_FRIEND_CELLS, zooStageCell } from "./zoo-visuals.ts";
 import { abandonShuttle, boardShuttle } from "./train-ride.ts";
 import { newChapterLearning, type ChapterLearningState } from "./learning.ts";
-import { stepStage, solveStage, stageSpec, nearObserver } from "./stage-v2.ts";
+import { restoredStageUsesHomeView, stepStage, solveStage, stageSpec, nearObserver } from "./stage-v2.ts";
 import { sceneView, beginSceneBeat, stepSceneBeat, createSceneState, scenePathAt, worldPathPoints } from "./scene-v2.ts";
 import { askerUsesOf } from "./cards/serving.ts";
 import { sequenceRequest, nextRequiredTask } from "./sequences.ts";
 import type { GameTaskV2 } from "../../content-schema/src/game-tasks.ts";
-import { beginZooReviewReturn, stepZooReviewReturn, solveZooTask, zooSpec, zooSnapshot, moveZooToBeat } from "./guardian-zoo.ts";
+import { restoredZooUsesHomeView, beginZooReviewReturn, stepZooReviewReturn, solveZooTask, zooSpec, zooSnapshot, moveZooToBeat } from "./guardian-zoo.ts";
 import { snapshotScene, type SceneSnapshot } from "./scene-v2.ts";
 import type { StageV2Spec } from "../../content-schema/src/paint-zoo.ts";
 // THE PAINTED BOOK — sim.ts: the headless phase runner (PB-T2).
@@ -651,7 +652,12 @@ export class Sim {
       if (!e.params.taskSequenceV2 && !e.params.stageV2 && !e.params.ride) continue;
       const saved = this.learning.entities[e.id];
       const current = saved ? { ...structuredClone(saved), params: e.params } : e;
+      if (current.stageRuntime) current.stageRuntime.scene.returning = restoredStageUsesHomeView(current.state, current.stageRuntime);
       if (current.stageRuntime && current.state === "asking") current.stageRuntime.retry = true;
+      if (current.zoo) {
+        current.zoo.scene.returning = restoredZooUsesHomeView(current.state, current.zoo, current.params.stageV2!, zooSpec(current)!);
+        if (current.zoo.review) current.zoo.review.savedScene.returning = true;
+      }
       if(current.zoo){this.world.guardianKnots=Math.max(0,current.hp);this.guardianDefeated=current.redeemed;}
       if (current.zoo && ["report", "finale", "review-report"].includes(current.state)) current.zoo.waitingForRetry = true;
       this.world.entities[i] = current; this.learning.entities[e.id] = current;
@@ -685,7 +691,7 @@ export class Sim {
       const target = this.world.entities.find(t=>t.id===transfer.target.entityId)!;
       const points = [{ x: e.x/SUBS, y: e.y/SUBS }, ...worldPathPoints(transfer.waypoints)];
       const actorId=transfer.target.actorId ?? transfer.actorId;
-      const skin = e.role === "cage" ? String(e.params.captive ?? target.skin) === "zug" ? target.skin : String(e.params.captive ?? target.skin) : e.skin;
+      const skin = e.role === "cage" ? ["zug", "train"].includes(String(e.params.captive ?? target.skin)) ? target.skin : String(e.params.captive ?? target.skin) : e.skin;
       this.learning.transfers.push({id:transfer.transferId,sourceId:e.id,targetId:target.id,actorId,skin,points,tick:-COLOUR_FLOOD_TICKS,ticks:transfer.ticks,arrivalFlag:transfer.arrivalFlag,x:e.x/SUBS,y:e.y/SUBS});
     }
     events.push({type:"entityResolved",id:e.id,role:e.role});
@@ -1048,7 +1054,7 @@ export class Sim {
         source.actingCell=cell;
         req={...req,sceneSnapshot:{entityId:source.id,beatId:ref.beatId,viewId:ref.viewId,round:req.ctx.round,
           view:{x:source.x/SUBS-80,y:source.y/SUBS-120,width:160,height:120},
-          actors:[{id:source.id,skin:source.skin,x:.5,y:1,z:"front",displayHeightPx:30,cell,count:1},...(req.ctx.round>=5?Array.from({length:3},(_,i)=>({id:`${source.id}-friend-${i+1}`,skin:"besucherkinder",x:.08+i*.14,y:1,z:"front" as const,displayHeightPx:30,cell:"wave_a",count:1})):[])],props:[],relations:[]}};
+          actors:[{id:source.id,skin:source.skin,x:.5,y:1,z:"front",displayHeightPx:30,cell,count:1},...(req.ctx.round>=5?Array.from({length:3},(_,i)=>({id:`${source.id}-friend-${i+1}`,skin:ZOO_FRIEND_SKIN,x:.08+i*.14,y:1,z:"front" as const,displayHeightPx:30,cell:ZOO_FRIEND_CELLS.waiting,count:1})):[])],props:classmatePresentationProps(source.params.classmatePresentation,taskId),relations:[],...classmateOwnerPresentation(source.params.classmatePresentation,taskId,source.id)}};
         if(observedRound>=5)req.sceneSnapshot!.actors[0]!.x=.5;
         source.classmateScene=structuredClone(req.sceneSnapshot!);
         events.push({type:"sceneBeatSeen",entityId:source.id,beatId:ref.beatId,viewId:ref.viewId});

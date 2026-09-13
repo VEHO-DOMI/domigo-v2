@@ -1,5 +1,5 @@
 import { stageV2LawErrors } from "./stage-v2-laws.ts";
-import type { StageV2Spec, ZooGuardianSpec, ZooRideSpec, TaskSequenceV2Spec, SequenceTransferSpec } from "../../content-schema/src/paint-zoo.ts";
+import type { ClassmatePresentationSpec, StageV2Spec, ZooGuardianSpec, ZooRideSpec, TaskSequenceV2Spec, SequenceTransferSpec } from "../../content-schema/src/paint-zoo.ts";
 // THE PAINTED BOOK — the paintLevel@1 format: pure parse + THE LEVEL LAWS.
 // The app-side zod loader (apps/web/lib/paint-content.ts) guarantees the JSON
 // SHAPE; this module owns the SEMANTICS and throws loud on any violation
@@ -125,6 +125,7 @@ export interface EntityParams {
   /** Ordered card identities for the opt-in sequence router. */
   taskSequenceV2?: TaskSequenceV2Spec;
   stageV2?: StageV2Spec;
+  classmatePresentation?: ClassmatePresentationSpec;
   onSequenceComplete?: SequenceTransferSpec;
   guardian?: ZooGuardianSpec;
   ride?: ZooRideSpec;

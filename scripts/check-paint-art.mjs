@@ -28,11 +28,12 @@ import { PLACEHOLDER_UNTIL, isPlaceholderStem } from "../packages/game-paint/src
 // R5-W1 · E1: the required set and the LOADED set are derived by ONE module,
 // so the gate can no longer demand a stem the loader would never fetch (and
 // vice versa) — Audit A below is that assertion.
-import { ALWAYS_STEMS, allScopePhases, domArtStems, levelRequiredStems, phaseArtScope, phaseRequiredStems } from "../packages/game-paint/src/artScope.ts";
+import { ALWAYS_STEMS, allScopePhases, levelRequiredStems, phaseArtScope, phaseRequiredStems } from "../packages/game-paint/src/artScope.ts";
 import { captiveStem, isCaptiveKey } from "../packages/game-paint/src/artManifest.ts";
 import { entDisplayH } from "../packages/game-paint/src/anim.ts";
 import { keyFringe, readPng } from "./key-fringe.mjs";
 import { DEAD_ART_CEILING } from "../packages/game-paint/src/perfBudget.ts";
+import { chapterArtFiles, loadedArtClaims } from "./paint-art-claims.mjs";
 
 const R = process.cwd();
 const ART_ROOT = path.join(R, "apps/web/public/art/g1/paint");
@@ -41,14 +42,14 @@ const CONTENT = path.join(R, "content/corpus/stories");
 
 // gather every present stem (any depth under the paint art root)
 const present = new Set();
-const fileOf = new Map(); // stem → absolute path, for the pixel checks below
+const files = new Map(); // relative PNG path → absolute path; chapter identity is never flattened
 const walk = (dir) => {
   if (!fs.existsSync(dir)) return;
   for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
     if (e.isDirectory()) walk(path.join(dir, e.name));
     else if (e.name.endsWith(".png")) {
+      files.set(path.relative(ART_ROOT, path.join(dir, e.name)).split(path.sep).join("/"), path.join(dir, e.name));
       present.add(e.name.replace(/\.png$/, ""));
-      fileOf.set(e.name.replace(/\.png$/, ""), path.join(dir, e.name));
     }
   }
 };
@@ -57,7 +58,7 @@ walk(ART_ROOT);
 const allow = fs.existsSync(ALLOW_PATH) ? JSON.parse(fs.readFileSync(ALLOW_PATH, "utf8")) : [];
 const today = new Date().toISOString().slice(0, 10);
 
-// the parsed non-draft levels, kept for the scope audits
+// All levels claim real loaded files; missing-art obligations remain shipped-only.
 const levels = [];
 // L0d · R263 · …und JEDES Kapitel, Entwurf eingeschlossen. Die Entwurfs-Ausnahme
 // gilt fuer die WELT (graue Kaesten sind gewollt, solange ein Kapitel im Bau
@@ -69,8 +70,9 @@ for (const story of fs.existsSync(CONTENT) ? fs.readdirSync(CONTENT) : []) {
   for (const f of fs.readdirSync(paintDir).filter((x) => x.endsWith(".level.json"))) {
     const level = JSON.parse(fs.readFileSync(path.join(paintDir, f), "utf8"));
     if (typeof level.chapter === "string") alleKapitel.push({ file: f, chapter: level.chapter, draft: level.draft === true });
-    if (level.draft === true) continue;
-    levels.push({ file: f, level });
+    const taskFile = path.join(paintDir, f.replace(/\.level\.json$/, ".tasks.v2.json"));
+    const tasks = fs.existsSync(taskFile) ? JSON.parse(fs.readFileSync(taskFile, "utf8")).items : [];
+    levels.push({ file: f, level, tasks });
   }
 }
 
@@ -81,8 +83,8 @@ for (const story of fs.existsSync(CONTENT) ? fs.readdirSync(CONTENT) : []) {
 // GENAU `["hero", chapter]`. Genau diese Luecke ist der Grund, warum kein Tor
 // gesehen hat, dass die 14 hero2-Zellen im Ordner von ch01 lagen und ch02–ch06
 // still den alten Teile-Baukasten zeichneten.
-// Die flache Menge bleibt, wo sie hingehoert (Tot-Kunst, Farbschluessel-Fransen);
-// fuer die Frage „was loest DIESES Kapitel auf" wird hier gespiegelt.
+// Loaded-file and pixel audits also keep physical paths; hero availability below
+// retains its explicit per-chapter report.
 const blaetterIn = (dir) => {
   const out = new Set();
   if (!fs.existsSync(dir)) return out;
@@ -104,7 +106,7 @@ for (const { chapter } of alleKapitel) {
 /** die MB-Summe der toten Blaetter — Platte, deshalb ausserhalb der reinen Funktion */
 const bytesOfDead = (dead) => {
   let bytes = 0;
-  for (const s of dead) { const f = fileOf.get(s); if (f) bytes += fs.statSync(f).size; }
+  for (const s of dead) { const f = files.get(s); if (f) bytes += fs.statSync(f).size; }
   return `${(bytes / 1048576).toFixed(1)} MB`;
 };
 
@@ -115,27 +117,34 @@ const bytesOfDead = (dead) => {
  * deshalb ueber ein zusaetzliches Blatt in `present` ausgeloest, nicht ueber
  * eine heruntergedrehte Decke).
  *
- * @param {{levels:{file:string,level:object}[], present:Set<string>,
+ * @param {{levels:{file:string,level:object}[], present:Set<string>, files:Map<string,string>,
  *          allow:{stem:string,reason?:string,until?:string}[], today:string,
  *          deadCeiling:number, bytesOfDead?:(dead:string[])=>string,
  *          alleKapitel:{file:string,chapter:string,draft:boolean}[],
  *          praesentJeKapitel:Map<string,Set<string>>}} welt
  */
-export const analyse = ({ levels, present, allow, today, deadCeiling, bytesOfDead = () => "? MB", alleKapitel = [], praesentJeKapitel = new Map() }) => {
+export const analyse = ({ levels, present, files, allow, today, deadCeiling, bytesOfDead = () => "? MB", alleKapitel = [], praesentJeKapitel = new Map() }) => {
+    const shippedLevels = levels.filter(({ level }) => level.draft !== true);
+    const loaded = loadedArtClaims(levels, files.keys());
     const allowByStem = new Map(allow.map((a) => [a.stem, a]));
     const failures = [];
     const warnings = [];
     const fail = (msg) => { failures.push(msg); };
     // collect required stems from every non-draft level (derivation: artScope.ts)
     const required = new Map(); // stem → where it's needed
-    for (const { file, level } of levels) {
-      for (const [stem, where] of levelRequiredStems(level, file)) if (!required.has(stem)) required.set(stem, where);
+    const requiredLocations = new Map();
+    for (const { file, level } of shippedLevels) {
+      for (const [stem, where] of levelRequiredStems(level, file)) {
+        if (!required.has(stem)) required.set(stem, where);
+        requiredLocations.set(`${level.chapter}/${stem}`, { stem, where, chapter: level.chapter });
+      }
     }
 
-  for (const [stem, where] of required) {
+  const staleReported = new Set();
+  for (const { stem, where, chapter } of requiredLocations.values()) {
     const listed = allowByStem.get(stem);
-    if (present.has(stem)) {
-      if (listed) fail(`allowlist STALE: ${stem} exists now — remove its entry`);
+    if (loaded.byChapter.get(chapter)?.has(stem)) {
+      if (listed && !staleReported.has(stem)) { fail(`allowlist STALE: ${stem} exists now — remove its entry`); staleReported.add(stem); }
       continue;
     }
     if (!listed) { fail(`missing stem "${stem}" (needed by ${where}) — paint it or allowlist it with a reason+until`); continue; }
@@ -152,9 +161,10 @@ export const analyse = ({ levels, present, allow, today, deadCeiling, bytesOfDea
   // grey shapes with every gate green. This audit is the structural answer — every
   // stem this gate demands must be a stem the phase's loader would actually fetch.
   // Floor ⊆ ceiling, asserted per phase, by machine.
-  for (const { file, level } of levels) {
+  for (const { file, level } of shippedLevels) {
+    const chapterPresent = new Set(loaded.byChapter.get(level.chapter)?.keys() ?? []);
     for (const ph of allScopePhases(level)) {
-      const scope = phaseArtScope(level, ph.id, present);
+      const scope = phaseArtScope(level, ph.id, chapterPresent);
       for (const [stem, where] of phaseRequiredStems(level, ph.id, file)) {
         if (!scope.has(stem)) fail(`SCOPE HOLE: "${stem}" is required (${where}) but phase ${ph.id} would never load it — it would render as a procedural fallback with every gate green`);
       }
@@ -167,14 +177,9 @@ export const analyse = ({ levels, present, allow, today, deadCeiling, bytesOfDea
   // ever asks for, so the number is now said out loud on every run.
   let dead = [];
   {
-    const claimed = new Set();
-    for (const { level } of levels) {
-      for (const ph of allScopePhases(level)) for (const s of phaseArtScope(level, ph.id, present)) claimed.add(s);
-      for (const s of domArtStems(level)) claimed.add(s);
-    }
-    dead = [...present].filter((s) => !claimed.has(s));
+    dead = loaded.dead;
     if (dead.length > 0) {
-      warnings.push(`⚠ ${dead.length} painted stems are loaded by nothing (${bytesOfDead(dead)}): ${dead.slice(0, 8).join(", ")}${dead.length > 8 ? ", …" : ""}`);
+      warnings.push(`⚠ ${dead.length} painted files are loaded by nothing (${bytesOfDead(dead)}): ${dead.slice(0, 8).join(", ")}${dead.length > 8 ? ", …" : ""}`);
       // R5-W3 · E5 · THE RATCHET. The warning above ran on every build for three
       // sessions while the pile went 53 → 57 → 59 → 61 stems, because a warning
       // costs nothing to ignore. (R5-W6b · W5 · D-271 — the story continues past
@@ -188,7 +193,7 @@ export const analyse = ({ levels, present, allow, today, deadCeiling, bytesOfDea
       // The full annotated list, by group: docs/design/g1/paint/DEAD_ART_2026-08-14.md
       if (dead.length > deadCeiling) {
         fail(
-          `${dead.length} painted stems are loaded by nothing — the ceiling is ${deadCeiling} (perfBudget.ts). ` +
+          `${dead.length} painted files are loaded by nothing — the ceiling is ${deadCeiling} (perfBudget.ts). ` +
             `Wire them, delete them, or raise deadCeiling in this same PR with a reason. New since the ceiling: ` +
             dead.slice(deadCeiling).join(", "),
         );
@@ -213,8 +218,8 @@ export const analyse = ({ levels, present, allow, today, deadCeiling, bytesOfDea
 
   // ── L0d · R263 · AUDIT C · DER HELD GEHOERT ALLEN KAPITELN ─────────────────
   // Jedes Kapitel — auch ein Entwurf — muss JEDEN `ALWAYS_STEM` in seiner
-  // EIGENEN Kunst-Karte aufloesen. Das ist die einzige Schicht dieses Tors, die
-  // ordner-genau misst; alle anderen fragen die flache Platte.
+  // EIGENEN Kunst-Karte aufloesen. Diese explizite Helden-Ausnahme bleibt
+  // auch fuer Entwuerfe verbindlich.
   //
   // Warum es das Gesetz braucht: die Figur ist keine Kapitel-Kunst. Ein Kapitel
   // im Bau darf graue Kaesten haben — es darf nicht den falschen Jungen haben.
@@ -237,7 +242,7 @@ export const analyse = ({ levels, present, allow, today, deadCeiling, bytesOfDea
     );
   }
 
-  return { failures, warnings, required, dead, heldenZeilen };
+  return { failures, warnings, required, requiredLocations, dead, heldenZeilen };
 };
 
 // ── SELBSTTEST ───────────────────────────────────────────────────────────────
@@ -246,10 +251,12 @@ export const analyse = ({ levels, present, allow, today, deadCeiling, bytesOfDea
 // rot und beweist ueber das gemeinte nichts). Der fuenfte Fall ist der
 // wichtigste: unverfaelscht muss der Stand gruen sein.
 if (process.argv.includes("--selftest")) {
-  const welt = { levels, present, allow, today, deadCeiling: DEAD_ART_CEILING, bytesOfDead, alleKapitel, praesentJeKapitel };
+  const welt = { levels, present, files, allow, today, deadCeiling: DEAD_ART_CEILING, bytesOfDead, alleKapitel, praesentJeKapitel };
   // ein Stem, den ein Level WIRKLICH verlangt und der WIRKLICH liegt — nicht geraten
-  const { required: echtGefordert } = analyse(welt);
-  const echterStem = [...echtGefordert.keys()].find((s) => present.has(s));
+  const { requiredLocations: echtGefordert } = analyse(welt);
+  const witness = [...echtGefordert.values()].find(({ stem, chapter }) => chapterArtFiles(files.keys(), chapter).has(stem));
+  const echterStem = witness?.stem;
+  const echteDatei = witness ? chapterArtFiles(files.keys(), witness.chapter).get(witness.stem) : undefined;
   if (echterStem === undefined) throw new Error("kein geforderter Stem liegt — der Selbsttest kann nicht bauen");
   // L0d: das Kapitel und das Blatt fuer den Helden-Fall werden GESUCHT, nicht
   // getippt — ein Selbsttest, der sich seine Fixture aus dem Bestand holt, wird
@@ -263,8 +270,8 @@ if (process.argv.includes("--selftest")) {
 
   const faelle = [
     ["ein gefordertes Blatt fehlt auf der Platte", () => {
-      const ohne = new Set(present); ohne.delete(echterStem);
-      return analyse({ ...welt, present: ohne });
+      const ohne = new Map(files); ohne.delete(echteDatei);
+      return analyse({ ...welt, files: ohne });
     }, `missing stem "${echterStem}"`],
 
     ["eine Ausnahme ist schal: das Blatt liegt inzwischen doch", () =>
@@ -277,9 +284,9 @@ if (process.argv.includes("--selftest")) {
 
     ["die Tot-Kunst-Ratsche: ein Blatt mehr, als die Decke traegt", () => {
       // die WELT waechst, nicht die Decke — sonst misst der Fall die Konstante
-      const mehr = new Set(present);
-      for (let i = 0; i <= 0; i++) mehr.add(`w6_selftest_totes_blatt_${i}`);
-      return analyse({ ...welt, present: mehr });
+      const mehr = new Map(files);
+      mehr.set("ch01/w6_selftest_totes_blatt_0.png", "unused test path");
+      return analyse({ ...welt, files: mehr });
     }, `the ceiling is ${DEAD_ART_CEILING}`],
 
     // L0d · R263 · der Fall, den es vor dieser Bahn nicht gab. Verfaelscht wird
@@ -294,6 +301,51 @@ if (process.argv.includes("--selftest")) {
       karten.set(tamperKapitel, ohne);
       return analyse({ ...welt, praesentJeKapitel: karten });
     }, tamperKapitel === null ? null : `HELD FEHLT in ${tamperKapitel}`],
+
+    ["Ordneraufloeser verwendet auch einen einmaligen Iterator vollstaendig", () => {
+      const fixture = ["hero/shared.png", "ch01/shared.png", "ch02/other.png"];
+      const chapter = chapterArtFiles(new Set(fixture).keys(), "ch01");
+      const second = chapterArtFiles(new Set(fixture).keys(), "ch02");
+      const good = chapter.get("shared") === "ch01/shared.png"
+        && second.get("shared") === "hero/shared.png"
+        && !chapter.has("other")
+        && !chapterArtFiles(["ch01/shared.png"], "ch02").has("shared");
+      return { failures: good ? [] : ["Kapitel-/Hero-Aufloesung oder Iteratorwiederverwendung falsch"] };
+    }, null],
+
+    ["echte geladene Entwurfskunst bleibt beansprucht", () => {
+      const source = levels.find(({ level }) => level.draft === true && [...files.keys()].some(f => f.startsWith(level.chapter + "/"))) ?? levels[0];
+      const draft = { ...source, level: { ...source.level, draft: true } };
+      const result = loadedArtClaims([draft], files.keys());
+      const own = [...result.claimed.keys()].filter(f => f.startsWith(draft.level.chapter + "/"));
+      return { failures: own.length > 0 && own.every(f => !result.dead.includes(f)) ? [] : ["Geladene Entwurfsdatei wird faelschlich tot genannt"] };
+    }, null],
+
+    ["fehlende Weltkunst eines Entwurfs bleibt erlaubt", () => {
+      const source = levels.find(({ level }) => level.draft === true && [...files.keys()].some(f => f.startsWith(level.chapter + "/"))) ?? levels[0];
+      const draft = { ...source, level: { ...source.level, draft: true } };
+      const stem = [...levelRequiredStems(draft.level).keys()].find(s => !ALWAYS_STEMS.includes(s) && chapterArtFiles(files.keys(), draft.level.chapter).has(s));
+      if (!stem) throw new Error("Kein echtes Weltblatt fuer den Entwurfs-Gegentest gefunden");
+      const fewer = new Map(files); fewer.delete(chapterArtFiles(files.keys(), draft.level.chapter).get(stem));
+      const changed = levels.map(row => row === source ? draft : row);
+      return analyse({ ...welt, levels: changed, files: fewer });
+    }, null],
+
+    ["Aufgabenbilder gehoeren nur zur passenden Kapitelkarte, auch als HTML", () => {
+      const source = levels[0];
+      const stem = "qa_selftest_card_only", imageStem = "qa_selftest_image_only";
+      const chapter = source.level.chapter, wrong = chapter === "ch02" ? "ch03" : "ch02";
+      const own = `${chapter}/${stem}.png`, other = `${wrong}/${stem}.png`, hero = `hero/${stem}.png`;
+      const image = `${chapter}/${imageStem}.png`;
+      const context = { ...source, tasks: [...(source.tasks ?? []),
+        { id: "qa-card", stimulus: { type: "entity", art: stem } },
+        { id: "qa-image", stimulus: { type: "image", stem: imageStem } }] };
+      const result = loadedArtClaims([context], [...files.keys(), own, other, hero, image]);
+      const good = result.claimed.get(own)?.has(`${source.file} task qa-card DOM`)
+        && result.claimed.get(image)?.has(`${source.file} task qa-image DOM`)
+        && !result.claimed.has(other) && !result.claimed.has(hero);
+      return { failures: good ? [] : ["HTML-Aufgabenbild wird nicht ordnergenau beansprucht"] };
+    }, null],
 
     ["NICHT-TAMPER: der echte Stand ist gruen", () => analyse(welt), null],
   ];
@@ -334,7 +386,7 @@ if (process.argv.includes("--selftest")) {
 
 // ── ECHTER LAUF ──────────────────────────────────────────────────────────────
 const { failures: mengenFehler, warnings, required, heldenZeilen } = analyse({
-  levels, present, allow, today, deadCeiling: DEAD_ART_CEILING, bytesOfDead, alleKapitel, praesentJeKapitel,
+  levels, present, files, allow, today, deadCeiling: DEAD_ART_CEILING, bytesOfDead, alleKapitel, praesentJeKapitel,
 });
 // L0d: die Helden-Bilanz steht VOR dem Urteil — ein Bericht, den nur ein gruener
 // Lauf zeigt, fehlt genau dann, wenn jemand ihn braucht (L0-Falle, 02.09.).
@@ -366,10 +418,10 @@ for (const m of mengenFehler) fail(m);
 // The gate is therefore the CLASS, not the instance: every PNG under the paint
 // art root, tiling or not, prop or hero cell. There is no stem in this kit whose
 // cut edge is allowed to keep the colour it was cut against.
-const fringeStems = new Set(present);
+const fringeStems = new Set(files.keys());
 let fringeTotal = 0;
 for (const stem of [...fringeStems].sort()) {
-  const file = fileOf.get(stem);
+  const file = files.get(stem);
   if (!file) continue; // "missing" is the presence gate's business, above
   const hits = keyFringe(readPng(file));
   if (hits.length === 0) continue;
@@ -429,26 +481,31 @@ const maskAt = (png, H) => {
 };
 
 const captiveCages = [];
-for (const { level } of levels) {
+for (const { level } of levels.filter(({ level }) => level.draft !== true)) {
   for (const ph of allScopePhases(level)) {
     for (const e of ph.entities) {
-      if (e.role === "cage" && isCaptiveKey(e.params?.captive)) captiveCages.push({ phase: ph.id, id: e.id, key: e.params.captive });
+      if (e.role === "cage" && isCaptiveKey(e.params?.captive)) captiveCages.push({ phase: ph.id, id: e.id, key: e.params.captive, chapter: level.chapter });
     }
   }
 }
 if (captiveCages.length > 0) {
   const H = entDisplayH({ role: "cage", skin: "satchel" });
   const masks = new Map();
-  for (const { key } of captiveCages) {
-    if (masks.has(key)) continue;
-    const file = fileOf.get(captiveStem(key));
+  for (const { key, chapter } of captiveCages) {
+    const maskKey = chapter + "/" + key;
+    if (masks.has(maskKey)) continue;
+    const relative = chapterArtFiles(files.keys(), chapter).get(captiveStem(key));
+    const file = relative ? files.get(relative) : undefined;
     if (!file) { fail(`captive "${key}" is declared by a cage but ${captiveStem(key)}.png is not on disk`); continue; }
-    masks.set(key, maskAt(readPng(file).png, H));
+    masks.set(maskKey, maskAt(readPng(file).png, H));
   }
   const keys = [...masks.keys()].sort();
   let worst = { d: Infinity, pair: "" };
+  let comparedPairs = 0;
   for (let i = 0; i < keys.length; i++) {
     for (let j = i + 1; j < keys.length; j++) {
+      if (keys[i].split("/")[0] !== keys[j].split("/")[0]) continue;
+      comparedPairs++;
       const p = masks.get(keys[i]);
       const q = masks.get(keys[j]);
       let d = 0;
@@ -456,8 +513,8 @@ if (captiveCages.length > 0) {
       if (d < worst.d) worst = { d, pair: `${keys[i]}/${keys[j]}` };
     }
   }
-  if (keys.length < 2) {
-    console.log(`  captive legibility: only ${keys.length} captive declared — nothing to tell apart`);
+  if (comparedPairs === 0) {
+    console.log(`  captive legibility: ${keys.length} chapter-specific captives; no chapter has a pair to compare`);
   } else if (worst.d < CAPTIVE_MIN_SEPARATION_PX) {
     fail(`captive legibility: at the ${H}px the engine draws a cage, "${worst.pair}" differ by only ${worst.d.toFixed(1)} px on screen (law: ${CAPTIVE_MIN_SEPARATION_PX}) — the cage is too small for the paint inside it (D-48)`);
   } else {

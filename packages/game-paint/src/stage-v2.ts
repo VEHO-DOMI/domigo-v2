@@ -77,7 +77,25 @@ export const stepStage = (e: EntityState, taskId: string | undefined, input: {
   }
   return events;
 };
+/** Recover the presentation mode of older saved stages without changing their motion.
+ * Old saves always wrote scene.returning=false; lifecycle and return progress are authoritative.
+ * A dismissed/asking or newly begun beat must never inherit a previous home view.
+ */
+export const restoredStageUsesHomeView = (state: string, runtime: StageRuntime): boolean => {
+  if (["moving", "observing", "asking"].includes(state)) return false;
+  if (state === "returning" || state === "complete") return true;
+  if (state !== "waiting") return runtime.scene.returning;
+  return runtime.scene.returning || runtime.scene.returnTicks > 0
+    || (runtime.scene.beatId !== null && runtime.completedBeats.includes(runtime.scene.beatId));
+};
 export const solveStage = (e: EntityState): void => {
   const s=e.stageRuntime!;
-  e.state="returning"; s.scene.returnTicks=0; s.scene.starts=structuredClone(s.scene.actors); s.retry=false;
+  const beat = stageSpec(e)?.beats.find(b => b.id === s.scene.beatId);
+  if (beat?.holdPoseAfterSolve && s.scene.ticks >= beat.moveTicks) {
+    for (const actor of s.scene.actors) {
+      const pose = beat.poseByActor?.[actor.id];
+      if (pose !== undefined && !beat.afterSolve.some(path => path.actorId === actor.id)) actor.cell = pose;
+    }
+  }
+  e.state="returning"; s.scene.returning=true; s.scene.returnTicks=0; s.scene.starts=structuredClone(s.scene.actors); s.retry=false;
 };

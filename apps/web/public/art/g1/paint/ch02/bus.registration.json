@@ -1,0 +1,98 @@
+[
+  {
+    "registrationGroup": "bus",
+    "stem": "bus_base",
+    "canvas": {
+      "width": 512,
+      "height": 512
+    },
+    "trim": {
+      "x": 19,
+      "y": 277,
+      "width": 475,
+      "height": 85
+    },
+    "output": {
+      "x": 0,
+      "y": 0,
+      "width": 512,
+      "height": 512
+    },
+    "anchor": {
+      "x": 0.5,
+      "y": 1
+    }
+  },
+  {
+    "registrationGroup": "bus",
+    "stem": "bus_interior",
+    "canvas": {
+      "width": 512,
+      "height": 512
+    },
+    "trim": {
+      "x": 45,
+      "y": 344,
+      "width": 379,
+      "height": 18
+    },
+    "output": {
+      "x": 0,
+      "y": 0,
+      "width": 512,
+      "height": 512
+    },
+    "anchor": {
+      "x": 0.5,
+      "y": 1
+    }
+  },
+  {
+    "registrationGroup": "bus",
+    "stem": "bus_roof",
+    "canvas": {
+      "width": 512,
+      "height": 512
+    },
+    "trim": {
+      "x": 27,
+      "y": 231,
+      "width": 450,
+      "height": 46
+    },
+    "output": {
+      "x": 0,
+      "y": 0,
+      "width": 512,
+      "height": 512
+    },
+    "anchor": {
+      "x": 0.5,
+      "y": 1
+    }
+  },
+  {
+    "registrationGroup": "bus",
+    "stem": "bus_front",
+    "canvas": {
+      "width": 512,
+      "height": 512
+    },
+    "trim": {
+      "x": 11,
+      "y": 362,
+      "width": 492,
+      "height": 150
+    },
+    "output": {
+      "x": 0,
+      "y": 0,
+      "width": 512,
+      "height": 512
+    },
+    "anchor": {
+      "x": 0.5,
+      "y": 1
+    }
+  }
+]
