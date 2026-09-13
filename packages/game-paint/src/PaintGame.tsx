@@ -39,6 +39,7 @@ import { askerIdOf } from "./sim.ts";
 import { createFightDriver, type FightDriver } from "./fight-drive.ts";
 import { InkWipe, PaintedCage, type CardAlign, alignedWrap, cageCellFor, cardBtn, freeCellsFor } from "./cards/CardShell.tsx";
 import { PAINT_OVERLAY_CSS } from "./cards/overlay-css.ts";
+import { PAINT_MOBILE_CSS } from "./mobile-css.ts";
 import { PaintedIcon, type PaintedIconName } from "./cards/PaintedIcons.tsx";
 import { CeremonyBurst, PaintedHero, SceneCut, useCeremonyClock } from "./cards/CeremonyStage.tsx";
 import { COUNT_UP_STAGGER_MS, type PhraseSlot, countUpAt, countUpTotalMs, heroArtPresent, runCompletion } from "./cards/ceremony.ts";
@@ -457,6 +458,7 @@ const auftaktCountsFor = (level: PaintLevel): AuftaktCounts => ({
 
 export default function PaintGame({ level, art, tasks, hubHref, buildSha, startPhase, debugGrid, debugPerf, noWarm, onTipCollected, archivedTips = [], openingSeen, onOpeningRead, storySeen, runSeed, displayName = "", rescuedClassmateIds = [], profilePersisted = true, onStoryRead, onNameChosen, onClassmateRescued, classPhotoUnlocked = false, onClassPhotoFound }: PaintGameProps): React.ReactElement {
   const hostRef = useRef<HTMLDivElement | null>(null);
+  const shellRef = useRef<HTMLDivElement | null>(null);
   const gameRef = useRef<Phaser.Game | null>(null);
   const sceneRef = useRef<PaintScene | null>(null);
   const padRef = useRef<Pad>({ ...IDLE_PAD });
@@ -496,6 +498,27 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
   /** R5-N3 · E4: the level-start readout, teacher door only. */
   const [startLine, setStartLine] = useState<string | null>(null);
   const [coarse, setCoarse] = useState(false);
+  const mobile = coarse && level.chapter === "ch01";
+  useEffect(() => {
+    if (!mobile) return;
+    const viewport = window.visualViewport;
+    const update = (): void => {
+      // Keyboard/browser chrome resize the visible area without changing the
+      // layout viewport. Leave pinch zoom to the browser's accessibility behavior.
+      if (viewport && viewport.scale !== 1) return;
+      shellRef.current?.style.setProperty("--pb-viewport-height", `${viewport?.height ?? window.innerHeight}px`);
+      shellRef.current?.style.setProperty("--pb-viewport-top", `${viewport?.offsetTop ?? 0}px`);
+    };
+    update();
+    window.addEventListener("resize", update);
+    viewport?.addEventListener("resize", update);
+    viewport?.addEventListener("scroll", update);
+    return () => {
+      window.removeEventListener("resize", update);
+      viewport?.removeEventListener("resize", update);
+      viewport?.removeEventListener("scroll", update);
+    };
+  }, [mobile]);
   // R3-8 · THE BOOT CEREMONY (doc 42 §3). The child never spawns mid-noise:
   // the chapter opens on a painted book page that names the Auftrag, the
   // chapter, the *Warum* and what there is to collect, over a frozen world.
@@ -1636,7 +1659,17 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
       };
     }
 
+    // The parent has an explicit size, independent of the previous canvas.
+    // Refresh after header wrapping, rotation or the on-screen keyboard changes it.
+    let resizeFrame = 0;
+    const observer = new ResizeObserver(() => {
+      cancelAnimationFrame(resizeFrame);
+      resizeFrame = requestAnimationFrame(() => game.scale.refresh());
+    });
+    observer.observe(host);
     return () => {
+      observer.disconnect();
+      cancelAnimationFrame(resizeFrame);
       if (process.env.NODE_ENV !== "production") delete window.__domigoPaint;
       window.clearInterval(poll);
       // R5-W1 · E1: nothing this component scheduled may fire into a torn-down
@@ -1772,7 +1805,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
   };
 
   return (
-    <div style={{ maxWidth: LOGICAL_W * RENDER_SCALE, margin: "0 auto", fontFamily: "var(--font-body, system-ui, sans-serif)", position: "relative" }}>
+    <div ref={shellRef} className="pb-game-shell" data-mobile={mobile} style={{ maxWidth: LOGICAL_W * RENDER_SCALE, margin: "0 auto", fontFamily: "var(--font-body, system-ui, sans-serif)", position: "relative" }}>
       {/* R5-N3 · E4 · THE ONE LINE A HUMAN CAN READ.
           Every automation browser here keeps its tab hidden, and a hidden tab
           gets no frame clock — so the level-start cost can only be measured
@@ -1793,12 +1826,13 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
           build step, so the painted layer's animations ride in with the game
           they belong to — and travel with the package, not the app. */}
       <style>{PAINT_OVERLAY_CSS}</style>
+      <style>{PAINT_MOBILE_CSS}</style>
       {/* R5-W4b · D3b · D-209: the whole row dims while a card holds the screen
           (overlay-css `.pb-hud-dim`) — the focus mode's veil covers the stage,
           and the counters sit above it. One class on the ROW, so a chip added
           later cannot forget to step back with the rest. */}
       <div
-        className={overlay !== null ? "pb-hud-dim" : undefined}
+        className={`pb-game-hud${overlay !== null ? " pb-hud-dim" : ""}`}
         style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "6px 2px", gap: 8 }}
       >
         <span className="pb-key-bit" style={{ fontSize: 15, display: "inline-flex", alignItems: "center", gap: 7 }}>
@@ -1901,10 +1935,10 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
       {fatal !== null && (
         <div style={{ background: "#c0392b", color: "#fff", padding: "8px 12px", borderRadius: 8, marginBottom: 6 }}>⚠ {fatal}</div>
       )}
-      <div style={{ position: "relative" }}>
+      <div className="pb-game-stage" style={mobile ? undefined : { aspectRatio: LOGICAL_W / LOGICAL_H }}>
         <div
           ref={hostRef}
-          className={booted ? "pb-world-in" : undefined}
+          className={`pb-game-host${booted ? " pb-world-in" : ""}`}
           style={{ borderRadius: 10, overflow: "hidden", boxShadow: "0 2px 14px rgba(30,20,10,0.25)" }}
         />
         {building && (
@@ -1962,7 +1996,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
       {/* PB-F3 (the rest of F2-34): the bar only offers verbs you actually have —
           advertising the fist before Fibel gives it is what made the rattling
           cage in the entrance hall read as broken instead of as a promise. */}
-      <p style={{ fontSize: 12, color: "#8a8066", textAlign: "center", marginTop: 6 }}>
+      <p className="pb-keyboard-help" style={{ fontSize: 12, color: "#8a8066", textAlign: "center", marginTop: 6 }}>
         ←→ laufen · SPACE springen (halten = höher)
         {abilitiesRef.current.includes("punch") ? " · X Faust (halten = laden)" : ""} · ↑ hingehen &amp; klettern
         {buildSha ? ` · Build ${buildSha.slice(0, 7)}` : ""}
@@ -3269,7 +3303,7 @@ function TouchPad({ pad, canPunch }: { pad: Pad; canPunch: boolean }): React.Rea
     userSelect: "none",
   };
   return (
-    <div style={{ display: "flex", justifyContent: "space-between", marginTop: 8 }}>
+    <div className="pb-touch-pad" style={{ display: "flex", justifyContent: "space-between", marginTop: 8 }}>
       <div style={{ display: "flex", gap: 10 }}>
         <button aria-label="links" style={zone} {...bind("left")}>←</button>
         <button aria-label="rechts" style={zone} {...bind("right")}>→</button>

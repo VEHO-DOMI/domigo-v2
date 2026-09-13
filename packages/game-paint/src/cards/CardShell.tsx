@@ -650,6 +650,7 @@ export function CardShell({
             lies entirely beyond the card's own edge, and the clock is the card's
             frame furniture, not its writing. */}
         <div className="pb-card-scroll">
+        <div className="pb-task-picture">
         {sceneSnapshot && <SceneCutout snapshot={round ? sceneWithActorWash(sceneSnapshot, sceneSnapshot.entityId, portraitWash ?? 0) : sceneSnapshot} art={art} />}
 
         {/* PK-R6 · D · THE ROUND COUNTER (doc 44 §3.3). A ceremony a six-year-old
@@ -681,6 +682,8 @@ export function CardShell({
           <ActPlate mark={mark} />
         )}
 
+        </div>
+        <div className="pb-task-content">
         {/* R5-W4 · D3 · THE CAPTION IS THE CONTEXT, NOT THE SMALL PRINT.
             Koki, 15 August: „der deutsche Satz ist winzig klein." He was right
             and the measurement agrees — this line rode the quiet layer at
@@ -729,7 +732,7 @@ export function CardShell({
         >
           Später ↩
         </button>
-
+        </div>
         </div>
 
         {/* beat 1 of the resolution: the answer flies home over the card face.
