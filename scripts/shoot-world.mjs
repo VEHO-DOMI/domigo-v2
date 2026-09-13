@@ -36,6 +36,15 @@
  *        [--chapter ch02] [--warp c,r] [--settle 240] [--shots 14] [--every 6] [--pure] \
  *        [--press left|right|jump] [--name uns_kaefig] [--tick 900]
  *        [--standbild] [--toast]
+ *        [--fight [--band <proof.json>] [--halt-griff]]
+ *
+ * ── --halt-griff, und das Band, das dem Kapitel folgt (L0e) ────────────────
+ * L2-P1v2 (Antrag R 5): »sonst bleibt das Griff-Foto jeder Bahn Glückssache«.
+ * Mit `--halt-griff` haelt der Kampf-Treiber ZUSAETZLICH am ersten Takt, in dem
+ * das Kind eine Kante greift (`pose === "hang"` = `hangAt !== null`), und die
+ * Reihe fotografiert diesen Halt wie jeden Wisch. Und `--band` folgt jetzt
+ * `--chapter`: ohne die Flagge las `--fight` das ch01-Band, auch fuer ch02
+ * (TRAPS_REGISTRY: »--fight liest das ch01-Band, wenn man --band vergisst«).
  *
  * ── --tick, und warum ein Vorher/Nachher es braucht (R5-W6b · W5, L1) ──────
  * Bis hierher konnte diese Reihe sagen, WANN sie entstanden ist (`state().tick`
@@ -144,6 +153,16 @@ const has = (name) => argv.includes(name);
 // Alias-Falle, die D-171 gemeldet hat. Die Zahlen sind hier KOPIERT, und weil
 // eine Kopie driftet, liest der Selbsttest sie aus `entities.ts` nach.
 const FIGHT_BEATS = { WIPE_TICKS: 36, KNOT_BEAT_TICKS: 48 };
+
+/** L0e · welches Band `--fight` liest: das ausdrueckliche, sonst das des
+ *  KAPITELS — nie still das von ch01 (TRAPS_REGISTRY, `--band` vergessen). */
+export const bandFuer = (chapter, explizit = null) =>
+  explizit ?? `content/corpus/stories/g1.st.lost-pages/paint/${chapter}.proof.json`;
+
+/** L0e · der Aufruf an den Treiber, als Text fuer `evalIn` — eine Funktion,
+ *  damit der Selbsttest sieht, dass `--halt-griff` die Option wirklich reicht. */
+export const advanceAufruf = (every, haltGriff) =>
+  `window.__domigoPaint.fight.advance(${every ?? "undefined"}${haltGriff ? ", { haltAmGriff: true }" : ""})`;
 export const maxEveryForFight = (beats = FIGHT_BEATS) =>
   Math.floor(Math.min(...Object.values(beats)) / 3); // ein Drittel, nicht die Hälfte: Nyquist ist die
                                                      // Grenze, an der ein Signal gerade noch existiert,
@@ -292,6 +311,12 @@ if (has("--selftest")) {
     ok(`${name} stimmt mit entities.ts überein`, Number(m[1]), wert);
   }
 
+  // L0e · das Band folgt dem Kapitel, und --halt-griff reicht die Option
+  ok("ohne --band liest ch02 SEIN Band, nicht das von ch01 (TRAPS)", bandFuer("ch02"), "content/corpus/stories/g1.st.lost-pages/paint/ch02.proof.json");
+  ok("…ein ausdrueckliches --band gewinnt", bandFuer("ch02", "x/band.json"), "x/band.json");
+  ok("--halt-griff reicht haltAmGriff an den Treiber", advanceAufruf(null, true).includes("haltAmGriff: true"), true);
+  ok("…und ohne die Flagge steht die Option nicht im Aufruf", advanceAufruf(8, false), "window.__domigoPaint.fight.advance(8)");
+
   // 2 · die Abtastrate liegt unter beiden Takten (D-171, Alias-Falle)
   const maxEvery = maxEveryForFight();
   ok("die Höchst-Abtastrate liegt unter dem Wisch-Takt", maxEvery < FIGHT_BEATS.WIPE_TICKS / 2, true);
@@ -435,7 +460,8 @@ const every = fight ? Math.min(everyWunsch, maxEveryForFight()) : everyWunsch;
 // faehrt der Treiber von Wisch zu Wisch — das Ereignis ist der Ausloeser.
 const kampfTastetAb = fight && argv.includes("--every");
 /** Wo das aufgezeichnete Band liegt (S4 reicht es herein, es steht nicht im Bündel). */
-const bandDatei = flag("--band", "content/corpus/stories/g1.st.lost-pages/paint/ch01.proof.json");
+const bandDatei = bandFuer(chapter, has("--band") ? flag("--band", null) : null);
+const haltGriff = has("--halt-griff");
 // …und p4 läuft mit 240 Setz-Schritten über sein Ende hinaus (gemessen 17.08.:
 // bei 240 steht der Tick hinterher, bei 20 und 60 läuft die Welt).
 // …und ein Standbild will nicht 240 Schritte weit weg von dem Augenblick sein,
@@ -1050,7 +1076,8 @@ try {
         + "Ein Kampf ohne Band wäre eine erfundene Eingabe — genau das, was S4s Treiber ausschließt.");
     }
     const takte = await evalIn(`window.__domigoPaint.fight.load(${JSON.stringify(pads)})`);
-    console.log(`  Kampf-Treiber: Band ${bandDatei} · Phase ${phase} · ${pads.length} Abschnitte = ${takte} Takte`);
+    console.log(`  Kampf-Treiber: Band ${bandDatei} · Phase ${phase} · ${pads.length} Abschnitte = ${takte} Takte`
+      + `${haltGriff ? " · haelt zusaetzlich an jedem Griff (--halt-griff)" : ""}`);
     console.log(kampfTastetAb
       ? `  …und zusätzlich abgetastet, höchstens alle ${every} Takte (Wisch ${FIGHT_BEATS.WIPE_TICKS} · `
         + `Knoten-Schlag ${FIGHT_BEATS.KNOT_BEAT_TICKS} — D-171)`
@@ -1085,9 +1112,7 @@ try {
       // `advance` ist AWAIT-BAR, und das ist der ganze Unterschied zu den drei
       // gescheiterten Anläufen: die Boss-Karte kommt hinter einem echten
       // Zeitgeber, und eine synchrone Schleife lässt ihn nie feuern.
-      halt = await evalIn(
-        `window.__domigoPaint.fight.advance(${kampfTastetAb ? every : ""})`, true,
-      );
+      halt = await evalIn(advanceAufruf(kampfTastetAb ? every : null, haltGriff), true);
       halte.push(halt);
       bild = i;
       await shoot(`${stem}_${String(i).padStart(3, "0")}`, {

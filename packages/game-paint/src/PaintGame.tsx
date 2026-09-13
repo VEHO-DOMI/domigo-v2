@@ -1659,6 +1659,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
               tick: st.tick, knots: st.knots, knotsTotal: st.knotsTotal, wipeTeil: st.wipeTeil, overlay: st.overlay,
               guardian: g ? { state: g.state, x: g.x, y: g.y } : null,
               hero: { x: st.x, y: st.y },
+              griff: st.pose === "hang",
             };
           },
         }),
