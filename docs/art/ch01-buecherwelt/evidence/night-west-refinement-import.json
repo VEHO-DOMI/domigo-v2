@@ -1,0 +1,167 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "schema": "ch01TerrainImport@1",
+  "manifestPath": "reproduction/night-west-refinement.json",
+  "manifestSha256": "1e999dd9532dac65c62a670e2436a15fdafdbd5fb85014a3784e1d50ef2e15aa",
+  "importerSha256": "1c9e3347f2cabd9d5f18c58d982b0a0b6d810359cb61d1697ba7d296bdc201f5",
+  "fringeModuleSha256": "51e4044e953feb7e3af96b2d4b562cf73a97dd596d9b7cb2c7d3d688c0145e80",
+  "node": "v24.20.0",
+  "pngjsVersion": "7.0.0",
+  "convention": "pixel centres; strict monotone inverse map; no extrapolation; outside source transparent; premultiplied bilinear",
+  "assets": [
+    {
+      "stem": "body_p2_regal_turm_boden",
+      "source": "pack/sources/night-west-refinement/edit-v2.png",
+      "target": "reproduction/night-west-refinement/body_p2_regal_turm_boden.png",
+      "sourceSha256": "caa4e1b33197171992f3154222e3c92cd8e9d8592d35b079b1d340d00d11288b",
+      "sourceRgbaSha256": "a5bf63f57b41c1059d4fb78546a387b3980a048c584b9dc421cf1c278708d3f6",
+      "keyedRgbaSha256": "9f529f31f9752a42279f513171f9cb4883e375f32023436dad5eba9c0f85268d",
+      "previousTargetSha256": null,
+      "outputSha256": "145fb9613dbb5952263a064328266f111deacc514284e0da228465ca8fe0ab62",
+      "outputRgbaSha256": "5f536f748e3e7e125040701f61c5aedc06f15b0c70f7809a524f9895971658ca",
+      "outputBytes": 1201675,
+      "sourceCanvas": {
+        "width": 1698,
+        "height": 926
+      },
+      "outputCanvas": {
+        "width": 2048,
+        "height": 1116
+      },
+      "x": [
+        [
+          0,
+          0
+        ],
+        [
+          2047,
+          1697
+        ]
+      ],
+      "y": [
+        [
+          0,
+          0
+        ],
+        [
+          1115,
+          925
+        ]
+      ],
+      "sourceBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1698,
+        "height": 926,
+        "pixels": 1572348
+      },
+      "keyedBounds": {
+        "x": 0,
+        "y": 8,
+        "width": 1698,
+        "height": 918,
+        "pixels": 605135
+      },
+      "keyedInkBounds": {
+        "x": 0,
+        "y": 9,
+        "width": 1693,
+        "height": 917,
+        "pixels": 605079
+      },
+      "beforeClipBounds": {
+        "x": 0,
+        "y": 9,
+        "width": 2048,
+        "height": 1107,
+        "pixels": 882703
+      },
+      "clip": {
+        "path": "pack/masks/body_p2_regal_turm_boden.original-alpha.png",
+        "sha256": "aa4a5d3a349070cad6bbc120a64b3ee5051824325dad77e33734687356255dc0",
+        "rgbaSha256": "b9e40d9d0278ca090f3b5c2877d6a9d7207def886643dd89c4e99b7ccfaa70f4",
+        "bounds": {
+          "x": 0,
+          "y": 12,
+          "width": 2048,
+          "height": 1088,
+          "pixels": 757760
+        },
+        "cut": 125329,
+        "rule": "mask alpha=0 cuts; all nonzero mask alpha leaves source alpha unchanged"
+      },
+      "outputBounds": {
+        "x": 0,
+        "y": 12,
+        "width": 2043,
+        "height": 1088,
+        "pixels": 757374
+      },
+      "outputInkBounds": {
+        "x": 0,
+        "y": 12,
+        "width": 2043,
+        "height": 1088,
+        "pixels": 757343
+      },
+      "boundsConvention": "integer origin and extent; Bounds alpha>0, InkBounds alpha>CUT_ALPHA",
+      "cutAlpha": 16,
+      "key": {
+        "cut": 967213,
+        "softened": 756,
+        "keyRgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 40,
+        "softTolerance": 110
+      },
+      "sourceCleanup": {
+        "specks": {
+          "healed": 42,
+          "cut": 0,
+          "total": 42
+        },
+        "fringe": {
+          "healed": 4195,
+          "cut": 0,
+          "total": 4195,
+          "threshold": 34
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "outputCleanup": {
+        "specks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "fringe": {
+          "healed": 9,
+          "cut": 0,
+          "total": 9,
+          "threshold": 33
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "chromaMatte": null
+    }
+  ]
+}

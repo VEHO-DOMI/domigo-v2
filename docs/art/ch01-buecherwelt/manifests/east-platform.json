@@ -1,0 +1,52 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "assets": [
+    {
+      "stem": "body_p1_ostpodest",
+      "source": "../sources/east-platform/ostpodest-source.png",
+      "width": 1152,
+      "height": 668,
+      "x": [
+        [
+          0,
+          90
+        ],
+        [
+          320,
+          505
+        ],
+        [
+          447,
+          802
+        ],
+        [
+          1151,
+          1596
+        ]
+      ],
+      "y": [
+        [
+          0,
+          0
+        ],
+        [
+          12,
+          23
+        ],
+        [
+          140,
+          163
+        ],
+        [
+          651,
+          945
+        ],
+        [
+          667,
+          954
+        ]
+      ],
+      "clipAlpha": "../masks/body_p1_ostpodest.MASKE.png"
+    }
+  ]
+}

@@ -609,13 +609,9 @@ export const compositionStems = (spec: CompositionSpec, oneBlock = false): strin
  * classroom, planks and a garden bench in the yard, stage boards on the Bühne,
  * paper adrift in the ink dream.
  *
- * Two rules the table has to keep, or the planner misbehaves:
- *  · every palette carries at least one 2-cell AND one 1-cell object, because
- *    `coverWithObjects` fills widest-first and the live grids hold 2-, 3- and
- *    4-cell runs (3 = 2+1);
- *  · a phase whose runs are all the same width needs TWO objects at that width,
- *    or the seeded pick has nothing to alternate between (p9's twelve 2-cell
- *    ledges were the case that made this explicit).
+ * `coverWithObjects` fills widest-first. Each palette must therefore cover its
+ * actual run widths without an uncovered remainder. Complete objects at the
+ * full run width avoid visible joints; two variants let equal-width runs vary.
  *
  * NOT wired: `plat_roofarrow`. It carries a chalk arrow pointing down — that is
  * a signposted one-way, i.e. an instruction, and laying it as generic scenery
@@ -633,26 +629,26 @@ const PLAT_OBJECTS: Record<string, MassKit["platObjects"]> = {
   // p1 Eingangshalle — folio, tied bundle, reading bench, and two carved shelves.
   // N7A1 · orthografisch neu gemalt (Punkt 13): gerade waagrechte Aufstandskante
   // über ≥80 % der Breite, frontal, Seitenflächen ≤3° — an jedem Blatt gemessen
-  // (Reichweite 100 %, Kipp 0,0°). Die deck-Werte sind neu am Blatt gemessen,
+  // Die neu gemalten Möbel verwenden volle gerade Sockel; gemessene deck-Werte
   // nach dem Verfahren dieses Kommentars: erste Zeile, die 90 % der maximalen
   // opaken Spannweite erreicht, geteilt durch die Blatthöhe.
   p1: [
-    { stem: "terrain_reading_bench_p1", pxPerCell: 64, cells: 2, deck: 8 / 96 },
-    { stem: "terrain_book_bundle_p1", pxPerCell: 64, cells: 2, deck: 8 / 120 },
-    { stem: "terrain_book_shelf_p1", pxPerCell: 64, cells: 3, deck: 8 / 96 },
-    { stem: "terrain_book_shelf_p1_alt", pxPerCell: 64, cells: 3, deck: 8 / 112 },
-    { stem: "terrain_book_folio_p1", pxPerCell: 64, cells: 1, deck: 4 / 33 },
+    { stem: "terrain_reading_bench_p1", pxPerCell: 64, cells: 2, deck: 6 / 58 },
+    { stem: "terrain_book_bundle_p1", pxPerCell: 64, cells: 2, deck: 8 / 104 },
+    { stem: "terrain_book_shelf_p1", pxPerCell: 64, cells: 3, deck: 5 / 79 },
+    { stem: "terrain_book_shelf_p1_alt", pxPerCell: 64, cells: 3, deck: 5 / 66 },
+    { stem: "terrain_book_folio_p1", pxPerCell: 64, cells: 1, deck: 5 / 27 },
   ],
   // p2 Klassenzimmer — night folios, bundles, lecterns, and continuous shelves.
   p2: [
     { stem: "terrain_night_lectern_shelf_p2", pxPerCell: 64, cells: 4, deck: 66 / 170 },
     { stem: "terrain_night_shelf_p2", pxPerCell: 64, cells: 3, deck: 4 / 96 },
-    { stem: "terrain_night_bundle_p2", pxPerCell: 64, cells: 2, deck: 8 / 138 },
+    { stem: "terrain_night_bundle_p2", pxPerCell: 64, cells: 2, deck: 4 / 108 },
     // N7A1 · Neuwurf: das gelieferte R7-Blatt war 2,75 Zellen hoch und hinge als
     // Stalaktit unter der Schwebe-Linie (REVIEW_R7P2_RUNDE1 NACHTRAG). Jetzt
     // 128×110 px, deck am Blatt gemessen.
-    { stem: "terrain_night_lectern_p2", pxPerCell: 64, cells: 2, deck: 10 / 110 },
-    { stem: "terrain_night_folio_p2", pxPerCell: 64, cells: 1, deck: 6 / 33 },
+    { stem: "terrain_night_lectern_p2", pxPerCell: 64, cells: 2, deck: 11 / 110 },
+    { stem: "terrain_night_folio_p2", pxPerCell: 64, cells: 1, deck: 5 / 33 },
     { stem: "terrain_night_dictionary_p2", pxPerCell: 64, cells: 1, deck: 4 / 33 },
   ],
   // p3 Schulhof-Garten — PK-R6 · H2 (round-2 finding 12): the yard shared its
@@ -678,25 +674,19 @@ const PLAT_OBJECTS: Record<string, MassKit["platObjects"]> = {
   // („Schwebendes verjüngt nach unten") und schob die deck-Messung auf y=60
   // von 72 — das Objekt hätte über seiner eigenen Linie geschwebt.
   p3: [
-    { stem: "plat_plank_2", pxPerCell: 64, cells: 4, deck: 6 / 80 },
-    { stem: "ledge_windowsill", pxPerCell: 64, cells: 2, deck: 11 / 72 },
-    { stem: "plat_column2_1", pxPerCell: 64, cells: 1, deck: 6 / 72 },
+    { stem: "plat_plank_2", pxPerCell: 64, cells: 4, deck: 4 / 76 },
+    { stem: "ledge_windowsill", pxPerCell: 64, cells: 2, deck: 4 / 50 },
+    { stem: "plat_column2_1", pxPerCell: 64, cells: 1, deck: 4 / 83 },
   ],
-  // p4 Tafel-Bühne — stage boards on crates, nothing soft.
-  p4: [
-    { stem: "plat_plank_2", cells: 2, deck: 0 },
-    { stem: "plat_column2_1", cells: 1, deck: 0.01 },
-  ],
-  // p9 Kleckskammer — furniture adrift in ink; two 2-cell objects because every
-  // ledge in the dream is exactly two cells wide.
-  // PK-R6 · H2: plank and shelf traded for a desk and a bench, so that no single
-  // object furnishes more than two of the chapter's five rooms (the ≤2 law armed
-  // in check-composition audit 7). The dream is where the school's furniture
-  // drifts, so it may quote — but a quote repeated three times is a template.
+  // Die Bühne samt Podesten ist ein ganzer Körper; keine separaten Möbel.
+  p4: [],
+  // Vier echte Läufe: zwei mit zwei und zwei mit drei Zellen. Jeder bekommt
+  // ein vollständiges Buch; kein angesetztes Miniaturstück verlängert Möbel.
   p9: [
-    { stem: "plat_desk", cells: 2, deck: 0.03 },
-    { stem: "plat_bench_2", cells: 2, deck: 0.10 },
-    { stem: "plat_bundle_1", cells: 1, deck: 0.02 },
+    { stem: "terrain_dream_folio_p9", pxPerCell: 64, cells: 3, deck: 5 / 78 },
+    { stem: "terrain_dream_bundle_p9", pxPerCell: 64, cells: 3, deck: 2 / 90 },
+    { stem: "terrain_dream_folio_short_p9", pxPerCell: 64, cells: 2, deck: 4 / 52 },
+    { stem: "terrain_dream_bundle_short_p9", pxPerCell: 64, cells: 2, deck: 1 / 60 },
   ],
 };
 
@@ -993,7 +983,7 @@ const sharedTrims = (): Pick<MassKit, "edgeL" | "edgeR" | "cornerBL" | "cornerBR
  * und keine Ableitung aus `pxPerCell`: die beiden Fragen fallen heute zufällig
  * zusammen, und zwei Wahrheiten an einer Stelle sind eine zu viel.
  */
-const ONE_PIECE_FURNITURE_PHASES = new Set(["p1", "p2", "p3"]);
+const ONE_PIECE_FURNITURE_PHASES = new Set(["p1", "p2", "p3", "p4", "p9"]);
 
 const sharedMass = (phase: string): Omit<MassKit, "crust" | "crustCapL" | "crustCapR" | "slide"> => ({
   ...(PAINTED_MASS_PHASES.has(phase) ? paintedInterior(phase) : sharedInterior()),
@@ -1024,15 +1014,16 @@ const sharedMass = (phase: string): Omit<MassKit, "crust" | "crustCapL" | "crust
   // Kommentars beim Wort zu nehmen: die Binder gehören den Räumen, deren Möbel
   // noch NICHT als ein Stück gemalt sind. p3s drei Möbel sind es seit dieser
   // Bahn (orthografisch, 64 px/Zelle, geprüfte Stufe) — ein angesetztes
-  // Verbindungsstück ist dort ohnehin ein Anti-Kriterium des Kanons. p4/p9
-  // behalten beide Blätter, sie sind geteilt und werden dort weiter gezeichnet.
+  // Verbindungsstück ist dort ohnehin ein Anti-Kriterium des Kanons. Nun tragen
+  // auch p4/p9 ganze Böden und Decken; p9 behält seine gemalten Einzelmöbel.
+  // Beide Räume brauchen deshalb ebenfalls keine angesetzten Binder mehr.
   ...(ONE_PIECE_FURNITURE_PHASES.has(phase) ? {} : { joint: TERRAIN_JOIN_STEM, postJoin: TERRAIN_POST_JOIN_STEM }),
   // No ramp sheets: R109 withdrew them and E6 deleted the two placeholders. A
   // surface that grows a slope orders its own (D-324, and the field's own note).
   platObjects: PLAT_OBJECTS[phase] ?? PLAT_OBJECTS.p1 ?? [],
   columnObjects: COLUMN_OBJECTS[phase] ?? [],
-  // R6 · Ein-Block-Welt: deklarierte Sicht-Körper. Ein Eintrag in CH01_BODIES
-  // kommt erst MIT seinem angenommenen PNG (check-paint-art bleibt hart).
+  // R6 · Ein-Block-Welt: deklarierte Sicht-Körper. Zur Auslieferung braucht jeder
+  // Eintrag sein angenommenes PNG (check-paint-art bleibt hart).
   bodies: CH01_BODIES[phase] ?? [],
 });
 
@@ -1225,42 +1216,10 @@ export const CH01_COMPOSITION: Record<string, CompositionSpec> = {
     //   Leuchtdichte durchfallen); dieser Zug hat sie nicht bewegt.
     wash: { colors: [0x2a2534, 0x352d38, 0x43393b] },
     far: shell("p4", 0.25),
-    // R5-W2 · H1 · THE CLASS IS MISSING, AND NOW YOU CAN SEE IT.
-    //
-    // The arena's whole premise is the story bible's own line: „Reihen leerer
-    // Stühle in der Ferne — die Klasse fehlt, und das Loch ist die Erzählung."
-    // The art for it has been on disk all along and the level declares it —
-    // `arena.plates.mid = "band_p4_audience"`, rows of empty wooden SCHOOL
-    // chairs. It has never been drawn: `plates` feeds only the legacy backdrop,
-    // and `buildBackdrop` returns early for any composed phase, which p4 is.
-    // `pnpm check:paint-art` has been listing it under „loaded by nothing" the
-    // whole time. What rendered instead was `l2_p4` — blue Victorian armchairs
-    // and a sofa. The chapter fought its boss in a parlour.
-    //
-    // R5-W3 · A5 · …AND NOW THEY ARE THE ROW YOU ARE STANDING IN.
-    //
-    // H1 could only get the chairs into the room, not to the front of it. It
-    // put them in the FAR row and wrote down exactly why: the value law reads
-    // L2 off `mid`, and the school chairs' wood measured 22.3 % against a
-    // 14–21 % window, with the L1↔L2 lift collapsing to 2.8 %. Its last line
-    // was „repainting a sheet this session may not". Koki's verdict on the
-    // result was that the armchairs were still in front — his „Ohrensessel
-    // statt Schulstühle" was half-answered — so this session may, and did.
-    //
-    // `scripts/set-plane-value.mjs` took the sheet to a DECLARED 14.8 %: one
-    // multiplicative pass, hue and saturation untouched, the same painting at
-    // a different key. That number is not taste, it is the only window two
-    // laws leave open — audit 1's band [14.0, 21.0], and the ABSOLUTE L2↔L3
-    // separation of 12 points against this room's L3 of 27.5 %, which caps L2
-    // at 15.5. So the chairs take the near row, and the armchairs fall back to
-    // where `midFarBand` puts anything behind: 0.68 of the height, lifted past
-    // the near row's top edge, parallax 0.36, ghosted to 0.62 — the back of a
-    // hall. Nothing is deleted; the parlour becomes the depth behind the class.
-    //
-    // The victory beat needed this too: „warmes Licht überm Stuhl-Band" had no
-    // chair band to warm while the chairs were the far row.
+    // Leere Schulstühle erzählen die fehlende Klasse. Beide Entfernungen
+    // verwenden dieselbe Schulmöbel-Familie; die alten Salon-Sessel entfallen.
     mid: { ...midBand("p4", 96), segments: ["band_p4_audience"] },
-    midFar: midFarBand("p4", midBand("p4", 96)),
+    midFar: { ...midFarBand("p4", midBand("p4", 96)), segments: ["band_p4_audience"] },
     // two stage lamps, nearly vertical and wider than a window's beam — the one
     // room in the chapter whose light is aimed rather than let in.
     // PK-R6 · H2 (round-2 finding 9): …and the lamps are now DRAWN. This phase

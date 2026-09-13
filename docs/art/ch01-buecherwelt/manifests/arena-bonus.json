@@ -1,0 +1,200 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "assets": [
+    {
+      "stem": "body_p4_buehne_podeste",
+      "source": "../sources/arena-bonus/p4-stage-v2.png",
+      "width": 2304,
+      "height": 284,
+      "x": [
+        [
+          0,
+          34
+        ],
+        [
+          320,
+          317
+        ],
+        [
+          511,
+          600
+        ],
+        [
+          1792,
+          1570
+        ],
+        [
+          1983,
+          1855
+        ],
+        [
+          2303,
+          2138
+        ]
+      ],
+      "y": [
+        [
+          0,
+          232
+        ],
+        [
+          12,
+          240.5
+        ],
+        [
+          140,
+          328
+        ],
+        [
+          267,
+          472
+        ],
+        [
+          283,
+          490
+        ]
+      ],
+      "clipAlpha": "../masks/body_p4_buehne_podeste.MASKE.png"
+    },
+    {
+      "stem": "body_p4_deckenbahn",
+      "source": "../sources/arena-bonus/p4-ceiling.png",
+      "width": 2304,
+      "height": 92,
+      "x": [
+        [
+          0,
+          0
+        ],
+        [
+          2303,
+          2171
+        ]
+      ],
+      "y": [
+        [
+          0,
+          240
+        ],
+        [
+          12,
+          269.5
+        ],
+        [
+          75,
+          421
+        ],
+        [
+          91,
+          459
+        ]
+      ],
+      "clipAlpha": "../masks/body_p4_deckenbahn.MASKE.png"
+    },
+    {
+      "stem": "body_p9_deckenbahn",
+      "source": "../sources/arena-bonus/p9-ceiling.png",
+      "width": 2816,
+      "height": 92,
+      "x": [
+        [
+          0,
+          0
+        ],
+        [
+          2815,
+          2172
+        ]
+      ],
+      "y": [
+        [
+          0,
+          218
+        ],
+        [
+          12,
+          252
+        ],
+        [
+          75,
+          428
+        ],
+        [
+          91,
+          473
+        ]
+      ],
+      "clipAlpha": "../masks/body_p9_deckenbahn.MASKE.png"
+    },
+    {
+      "stem": "body_p9_kammerboden",
+      "source": "../sources/arena-bonus/p9-floor-v1.png",
+      "width": 2816,
+      "height": 284,
+      "x": [
+        [
+          0,
+          0
+        ],
+        [
+          2815,
+          1314
+        ]
+      ],
+      "y": [
+        [
+          0,
+          492
+        ],
+        [
+          12,
+          502.5
+        ],
+        [
+          267,
+          718
+        ],
+        [
+          283,
+          732
+        ]
+      ],
+      "clipAlpha": "../masks/body_p9_kammerboden.MASKE.png"
+    },
+    {
+      "stem": "body_p9_oberer_sims",
+      "source": "../sources/arena-bonus/p9-sims.png",
+      "width": 320,
+      "height": 92,
+      "x": [
+        [
+          0,
+          60
+        ],
+        [
+          319,
+          2110
+        ]
+      ],
+      "y": [
+        [
+          0,
+          235
+        ],
+        [
+          12,
+          279
+        ],
+        [
+          75,
+          504
+        ],
+        [
+          91,
+          561
+        ]
+      ],
+      "clipAlpha": "../masks/body_p9_oberer_sims.MASKE.png"
+    }
+  ]
+}

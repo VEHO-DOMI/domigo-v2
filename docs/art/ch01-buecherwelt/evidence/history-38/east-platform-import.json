@@ -1,0 +1,187 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "schema": "ch01TerrainImport@1",
+  "manifestPath": "reproduction/east-platform.json",
+  "manifestSha256": "fccd27c131e0fe255a6f8c96565f48f4ca7dcd8c5788c891a814b960f5c5a5c3",
+  "importerSha256": "1c9e3347f2cabd9d5f18c58d982b0a0b6d810359cb61d1697ba7d296bdc201f5",
+  "fringeModuleSha256": "51e4044e953feb7e3af96b2d4b562cf73a97dd596d9b7cb2c7d3d688c0145e80",
+  "node": "v24.20.0",
+  "pngjsVersion": "7.0.0",
+  "convention": "pixel centres; strict monotone inverse map; no extrapolation; outside source transparent; premultiplied bilinear",
+  "assets": [
+    {
+      "stem": "body_p1_ostpodest",
+      "source": "pack/sources/east-platform/ostpodest-source.png",
+      "target": "reproduction/east-platform/body_p1_ostpodest.png",
+      "sourceSha256": "899b500670f6010d172359a397cb6ee5a32783c16573419dd924f5573487d109",
+      "sourceRgbaSha256": "deeeda09cda44a1ed820a465d666d7de6a58d989159f8f741ca523e54503cc9a",
+      "keyedRgbaSha256": "2e4966b1b8ce32c344c6b112226524b544f7d020cb07c49c3c0c92b4c4b573b0",
+      "previousTargetSha256": null,
+      "outputSha256": "37916da70be4d6bfa5733e043e4dfdbcb660ba77c0c1fe229cd5f7b1b4c8eac2",
+      "outputRgbaSha256": "fd379890baf71a3e8077e3e5b4bb306e555b13dbad19918bce31217ce6f5799f",
+      "outputBytes": 1228903,
+      "sourceCanvas": {
+        "width": 1647,
+        "height": 955
+      },
+      "outputCanvas": {
+        "width": 1152,
+        "height": 668
+      },
+      "x": [
+        [
+          0,
+          90
+        ],
+        [
+          320,
+          505
+        ],
+        [
+          447,
+          802
+        ],
+        [
+          1151,
+          1596
+        ]
+      ],
+      "y": [
+        [
+          0,
+          0
+        ],
+        [
+          12,
+          23
+        ],
+        [
+          140,
+          163
+        ],
+        [
+          651,
+          945
+        ],
+        [
+          667,
+          954
+        ]
+      ],
+      "sourceBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1647,
+        "height": 955,
+        "pixels": 1572885
+      },
+      "keyedBounds": {
+        "x": 0,
+        "y": 12,
+        "width": 1647,
+        "height": 943,
+        "pixels": 1360791
+      },
+      "keyedInkBounds": {
+        "x": 0,
+        "y": 12,
+        "width": 1647,
+        "height": 943,
+        "pixels": 1360650
+      },
+      "beforeClipBounds": {
+        "x": 0,
+        "y": 6,
+        "width": 1152,
+        "height": 662,
+        "pixels": 640439
+      },
+      "clip": {
+        "path": "pack/masks/body_p1_ostpodest.MASKE.png",
+        "sha256": "f68301d7ca6a8fad26f9cf25af9ba267ca672979884fd99c6727332845f4c593",
+        "rgbaSha256": "0a3c967b06da2825dced17368881391f50c6f3d82395538b2f649f8c20cb97c7",
+        "bounds": {
+          "x": 0,
+          "y": 12,
+          "width": 1152,
+          "height": 640,
+          "pixels": 606208
+        },
+        "cut": 34231,
+        "rule": "mask alpha=0 cuts; all nonzero mask alpha leaves source alpha unchanged"
+      },
+      "outputBounds": {
+        "x": 0,
+        "y": 12,
+        "width": 1152,
+        "height": 640,
+        "pixels": 606208
+      },
+      "outputInkBounds": {
+        "x": 0,
+        "y": 12,
+        "width": 1152,
+        "height": 640,
+        "pixels": 606208
+      },
+      "boundsConvention": "integer origin and extent; Bounds alpha>0, InkBounds alpha>CUT_ALPHA",
+      "cutAlpha": 16,
+      "key": {
+        "cut": 212094,
+        "softened": 2105,
+        "keyRgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 40,
+        "softTolerance": 110
+      },
+      "sourceCleanup": {
+        "specks": {
+          "healed": 186,
+          "cut": 0,
+          "total": 186
+        },
+        "fringe": {
+          "healed": 8385,
+          "cut": 0,
+          "total": 8385,
+          "threshold": 17
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "outputCleanup": {
+        "specks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "fringe": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0,
+          "threshold": 15
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "chromaMatte": null
+    }
+  ]
+}

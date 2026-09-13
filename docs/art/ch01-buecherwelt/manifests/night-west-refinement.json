@@ -1,0 +1,32 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "assets": [
+    {
+      "stem": "body_p2_regal_turm_boden",
+      "source": "../sources/night-west-refinement/edit-v2.png",
+      "width": 2048,
+      "height": 1116,
+      "x": [
+        [
+          0,
+          0
+        ],
+        [
+          2047,
+          1697
+        ]
+      ],
+      "y": [
+        [
+          0,
+          0
+        ],
+        [
+          1115,
+          925
+        ]
+      ],
+      "clipAlpha": "../masks/body_p2_regal_turm_boden.original-alpha.png"
+    }
+  ]
+}

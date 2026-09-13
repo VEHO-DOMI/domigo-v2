@@ -132,76 +132,40 @@ export const opaqueTileStems = (composition = COMPOSITION, oneBlockOf = () => fa
   return out;
 };
 
+/** A zero-tile scope is valid only when every registered mass phase has an
+ * actual, nonempty grid and the shipping partition check proves its cutover.
+ * Missing inputs must never masquerade as a finished whole-body world. */
+export const inspectTileScope = (composition, gridOf) => {
+  let massPhases = 0;
+  let wholePhases = 0;
+  const errors = [];
+  const scope = opaqueTileStems(composition, (chapter, phaseId, mass) => {
+    massPhases += 1;
+    const grid = gridOf(chapter, phaseId);
+    if (!Array.isArray(grid) || grid.length === 0
+      || !grid.every((row) => typeof row === "string" && row.length > 0 && row.length === grid[0].length)) {
+      errors.push(`${chapter}/${phaseId}: kein vollstaendiges, nichtleeres Level-Gitter`);
+      return false;
+    }
+    const whole = phaseIsOneBlock(grid, mass);
+    if (whole) wholePhases += 1;
+    return whole;
+  });
+  if (massPhases === 0) errors.push("kein Bauplan mit Masse registriert — leerer Pruefauftrag");
+  if (scope.size === 0 && wholePhases !== massPhases) {
+    errors.push("keine deckenden Kacheln, aber nicht alle Massen durch Koerper belegt");
+  }
+  return { scope, massPhases, wholePhases, errors };
+};
+
 // ── Die Ausnahmen ───────────────────────────────────────────────────────────
-// Die neun heute blutenden Stems stehen hier, jeder mit Grund, Datum UND der gemessenen
-// Zahl. Reparatur ist KEIN Merge, sondern eine Neulieferung: A6b (PR #306) hat bewiesen,
-// dass die Magenta-Bahnen in Codex' gelieferter QUELLE sitzen (`batch-af2/mass/crust_p4.png`,
-// 512 Versaetze geprueft, kein sauberer Schnitt moeglich, Uebermalen verboten) — deshalb
-// bindet sich das Ablaufdatum an die Krusten-Neulieferung (Kommission AS5b, D-199/D-265,
-// Import-Lane A7), nicht an einen Merge (R106, Hotfix nach dem 4b-Zug). Bis dahin bleibt
-// das Tor lesbar rot statt still gruen.
-//
-// `seen` ist eine RATSCHE, kein Freibrief: waechst die Zahl ueber den Messwert, wird
-// das Tor trotz Ausnahme rot. Eine Ausnahme darf einen bekannten Defekt dulden, nie
-// einen neuen aufnehmen. Vier Hygiene-Richtungen, wie paint-art-allowlist:43-76:
-// fehlender Eintrag · unvollstaendiger · abgelaufener · schaler (Kachel ist repariert).
-const MEASURED_ON = "2026-08-16 @ 3daaf47 (unveraendert auf ae0dd42 und auf 4a0d5c4: kein crust_* seither beruehrt)";
-// ── VERLAENGERT AUF 2026-11-30 (R5-W6 · A7, 2026-08-18 — Ruling R147) ────────
-//
-// Diese Ausnahme sollte mit der Krusten-Neulieferung AS5b von selbst fallen. Die
-// Lieferung ist da und traegt die Reparatur wirklich: `batch-as5b/crust_p*.png`
-// enthaelt NULL Pixel, die `importerWouldDelete` trifft, gegen 6938 in der heute
-// verbauten Quelle `batch-af2/mass/crust_p4.png`. Die Bandhoehen treffen den
-// Bestand auf den Pixel (211 · 262 · 237 · 246).
-//
-// Importiert ist sie trotzdem nicht, und der Grund ist nicht die Naht: die
-// gelieferten Krusten tragen KEIN MOTIV. Der Lieferschein sagt es selbst — die
-// Runde hat die Naht mit »periodic material functions« geschlossen, also die
-// Malerei durch eine Texturfunktion ersetzt. Zwei frische, blinde Kritiker haben
-// dasselbe Paar in entgegengesetzter Reihenfolge gesehen und beide unabhaengig
-// die HEUTIGE Kachel gewaehlt: sie sehen dort Planken und liegende Buecher, in
-// der Lieferung »keine benennbaren Objekte«. Ein sauberer Schluessel ist kein
-// Grund, eine gemalte Flaeche gegen eine gerechnete zu tauschen.
-//
-// Also bleibt der Defekt stehen, und die Ausnahme bleibt mit ihm — deklariert,
-// datiert, mit Eigentuemer, nie still. A7 hat damals AS5c als Reparaturpfad
-// eingetragen (SPEC_MASSEN_KIT §10.6, mit Zahlen spezifiziert); wo der Pfad
-// heute steht, sagt der Block direkt darunter — dieser Absatz ist ab hier
-// Geschichte, kein Stand.
-const UNTIL = "2026-11-30";
-// ── ★ DER REPARATURPFAD HEISST AS5F, UND ER IST EIN TERMINRISIKO (R201, A8) ──
-// Hier stand »AS5c«. Der Pfad ist seither zweimal weitergerueckt, und das
-// gehoert in die Akte, weil eine Ausnahme ohne Bestellung nur der Defekt mit
-// Papier ist: AS5c (19.08.) zurueck — Generator-Raster statt Malerei; AS5d
-// (20.08.) zurueck; AS5e (21.08.) zurueck — IoU 0 von 24, tex ueber dem Deckel
-// auf 63 von 124 Zellen, Schluesselabstand < 182 auf vier Blaettern. AS5F ist
-// die VIERTE Bestellung dieser Familie.
-//
-// ⚠ Stand 2026-08-22: `batch-as5f/` liegt im Labor und meldet sich im
-// Lieferschein-Kopf SELBST als `pass: false · status: INCOMPLETE`. Nach
-// Rahmen-Regel 18 (R202) ist das Rueckweisung ohne Pruefung — das Urteil faellt
-// der Architekt im Wareneingang, nicht diese Bahn. Es steht hier, damit der
-// naechste Leser die Frist nicht fuer gedeckt haelt: vier Runden ohne
-// importierbare Kruste gegen einen 30.11., das ist ein Terminrisiko und kein
-// Formfehler.
-const AS5B = "D-199: Innen-Naht der Kruste, gemessen am selben Stand. Ursache sitzt in Codex' "
-  + "Quelle (A6b, PR #306). AS5b (18.08.) hat den Schluessel repariert (0 Treffer statt 6938), "
-  + "aber die Krusten ohne Motiv geliefert (zwei blinde Kritiker, getauschte Reihenfolge, beide "
-  + "fuer den Bestand) — nicht importierbar. Verlaengert auf 2026-11-30 durch A7 (R147). "
-  + "Reparaturpfad jetzt AS5F (R201, A8 2026-08-22) — VIERTE Bestellung der Familie: AS5c, "
-  + "AS5d und AS5e sind alle zurueckgewiesen, und die vorliegende AS5F-Lieferung meldet sich "
-  + "selbst als INCOMPLETE (Wareneingang beim Architekten offen, R202). Import gehoert A9. "
-  + "Faellt von selbst, sobald die neue Kachel liegt (das Tor meldet den Eintrag dann als schal).";
-// N7A2: die zwei `crust_p3_*`-Zeilen sind mit ihren Blaettern gefallen — der
-// p3-Cutover hat das Kit zurueckgezogen, der Loesch-Waechter die PNGs freigegeben.
-// Die Schal-Pruefung unten hat sie selbst genannt, sobald der Geltungsbereich dem
-// Cutover folgte; vorher haetten sie die Loeschung still ueberlebt.
-export const SEAM_ALLOW = [
-  { stem: "crust_p4_a", seen: 2348, until: UNTIL, reason: AS5B },
-  { stem: "crust_p4_b", seen: 2670, until: UNTIL, reason: AS5B },
-  { stem: "crust_p9_b", seen: 305, until: UNTIL, reason: AS5B },
-  { stem: "crust_p4_cap_l", seen: 3, until: UNTIL, reason: AS5B },
-];
+// Der vollstaendige p4/p9-Cutover zieht die letzten vier Krusten samt ihren
+// D-199-Duldungen zurueck. Farbregel und Ausnahme-Hygiene bleiben fuer jedes
+// spaeter wieder tatsaechlich benutzte Kachel-Kit aktiv. Die alte AS5b–AS5F-
+// Liefergeschichte und die Messwerte bleiben in der Git-Historie erhalten.
+// `seen` ist weiterhin eine Ratsche: neue Treffer sind durch keine Duldung gedeckt.
+const MEASURED_ON = "dem im Ausnahmengrund belegten Messstand";
+export const SEAM_ALLOW = [];
 
 // ── Blatt → Datei ───────────────────────────────────────────────────────────
 const fileOf = new Map();
@@ -266,10 +230,34 @@ if (selftest) {
     `D-199s Spitzenpixel RGB(118,5,137): ${v.importer} Importer-Treffer, aber ${v.magenta} M-Pixel `
     + "— die zwei Regeln sind nicht ineinander enthalten");
 
-  // 4 · Vakuitaets-Waechter: ein Lauf ohne Kacheln wuerde still gruen sein.
-  const scope = opaqueTileStems();
-  say(scope.size > 0, `der Bauplan liefert ${scope.size} deckende Kacheln (ein leerer Lauf waere still gruen)`);
-  say(!scope.has("mass_ramp_up") && !scope.has("mass_edge_l"),
+  // 4 · A genuine legacy palette stays in scope; a proved cutover may be empty.
+  const legacy = Object.values(Object.values(COMPOSITION)[0])[0].mass;
+  const whole = { ...legacy, columnObjects: [], bodies: [{
+    id: "fixture", stem: "fixture_body", c0: 0, r0: 0, rows: ["##", "##"],
+    pxPerCell: 64, overpaint: { l: 0, r: 0, t: 0, b: 0 },
+  }] };
+  const fixture = (mass) => ({ fixture: { room: { mass } } });
+  const grid = ["##", "##"];
+  const complete = inspectTileScope(fixture(whole), () => grid);
+  say(complete.errors.length === 0 && complete.scope.size === 0
+    && complete.massPhases === 1 && complete.wholePhases === 1,
+  "ein durch echte Koerper-Partition belegter Raum darf ohne Kachel-Kit bestehen");
+  const missing = inspectTileScope(fixture(whole), () => undefined);
+  say(missing.errors.length > 0 && missing.wholePhases === 0,
+    "fehlendes Level-Gitter wird abgewiesen");
+  const emptyGrid = inspectTileScope(fixture(whole), () => []);
+  say(emptyGrid.errors.length > 0, "leeres Level-Gitter wird abgewiesen");
+  const noComposition = inspectTileScope({}, () => grid);
+  say(noComposition.errors.length > 0, "leerer Bauplan wird abgewiesen");
+  const broken = { ...whole, bodies: [{ ...whole.bodies[0], rows: ["#.", "##"] }] };
+  const uncovered = inspectTileScope(fixture(broken), () => grid);
+  say(uncovered.wholePhases === 0 && uncovered.scope.size > 0,
+    "ein Loch im Koerper holt das Kachel-Kit zurueck in die Pruefung");
+  const noPalette = { ...broken, crust: [], crustCapL: null, crustCapR: null,
+    body: [], bodyDeep: [], fade: [], sediment: null };
+  say(inspectTileScope(fixture(noPalette), () => grid).errors.length > 0,
+    "unbelegte Masse ohne Ersatz-Kacheln wird abgewiesen");
+  say(!uncovered.scope.has("mass_ramp_up") && !uncovered.scope.has("mass_edge_l"),
     "geschnittene Blaetter (Rampe, Kante) sind NICHT im Geltungsbereich");
 
   if (bad > 0) {
@@ -297,16 +285,10 @@ const gridsByChapter = new Map();
     }
   }
 }
-const oneBlockOf = (chapter, phaseId, mass) => {
-  const rows = gridsByChapter.get(chapter)?.get(phaseId);
-  return rows !== undefined && phaseIsOneBlock(rows, mass);
-};
-
-const scope = opaqueTileStems(COMPOSITION, oneBlockOf);
-if (scope.size === 0) {
-  fail("kein Bauplan liefert deckende Kacheln — dieses Tor haette nichts mehr zu pruefen; "
-    + "lies es neu, bevor du es loeschst");
-}
+const inspected = inspectTileScope(COMPOSITION,
+  (chapter, phaseId) => gridsByChapter.get(chapter)?.get(phaseId));
+const { scope, massPhases, wholePhases } = inspected;
+for (const error of inspected.errors) fail(error);
 
 const allowByStem = new Map(SEAM_ALLOW.map((a) => [a.stem, a]));
 const today = new Date().toISOString().slice(0, 10);
@@ -316,7 +298,7 @@ const dirty = new Set();
 for (const [stem, where] of [...scope].sort()) {
   const file = fileOf.get(stem);
   if (!file) {
-    // »fehlt« ist das Revier der Praesenz-Pruefung in check-paint-art, nicht meins.
+    fail(`deckende Kachel ${stem} (${where}) fehlt — der berechnete Geltungsbereich darf nicht still schrumpfen`);
     continue;
   }
   const hit = seamHits(readPng(file));
@@ -368,7 +350,8 @@ if (rows.length > 0) {
 }
 
 if (failures === 0) {
-  console.log(`check-png-seams: OK — ${scope.size} deklarierte deckende Kacheln geprueft, `
+  console.log(`check-png-seams: OK — ${wholePhases}/${massPhases} Massen durch Level-Gitter als Ein-Block-Welt belegt; `
+    + `${scope.size} tatsaechlich benutzte deckende Kacheln geprueft, `
     + `${dirty.size} davon bluten und sind namentlich mit Datum geduldet, `
     + `${scope.size - dirty.size} sind sauber.`);
 } else {

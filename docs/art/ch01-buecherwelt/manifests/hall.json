@@ -1,0 +1,253 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "assets": [
+    {
+      "stem": "terrain_reading_bench_p1",
+      "source": "../sources/hall/platforms-hall-source-v2.png",
+      "width": 128,
+      "height": 58,
+      "x": [
+        [
+          0,
+          35
+        ],
+        [
+          127,
+          522
+        ]
+      ],
+      "y": [
+        [
+          0,
+          190.66141732283464
+        ],
+        [
+          4,
+          206
+        ],
+        [
+          56,
+          404
+        ],
+        [
+          57,
+          407.8346456692913
+        ]
+      ]
+    },
+    {
+      "stem": "terrain_book_bundle_p1",
+      "source": "../sources/hall/platforms-hall-source-v2.png",
+      "width": 128,
+      "height": 104,
+      "x": [
+        [
+          0,
+          603
+        ],
+        [
+          127,
+          933
+        ]
+      ],
+      "y": [
+        [
+          0,
+          142.60629921259843
+        ],
+        [
+          4,
+          153
+        ],
+        [
+          102,
+          407
+        ],
+        [
+          103,
+          409.59842519685037
+        ]
+      ]
+    },
+    {
+      "stem": "terrain_book_shelf_p1",
+      "source": "../sources/hall/platforms-hall-source-v2.png",
+      "width": 192,
+      "height": 79,
+      "x": [
+        [
+          0,
+          1006
+        ],
+        [
+          191,
+          1493
+        ]
+      ],
+      "y": [
+        [
+          0,
+          192.80104712041884
+        ],
+        [
+          4,
+          203
+        ],
+        [
+          77,
+          389
+        ],
+        [
+          78,
+          391.5497382198953
+        ]
+      ]
+    },
+    {
+      "stem": "terrain_book_shelf_p1_alt",
+      "source": "../sources/hall/platforms-hall-source-v2.png",
+      "width": 192,
+      "height": 66,
+      "x": [
+        [
+          0,
+          30
+        ],
+        [
+          191,
+          522
+        ]
+      ],
+      "y": [
+        [
+          0,
+          671.696335078534
+        ],
+        [
+          4,
+          682
+        ],
+        [
+          64,
+          836
+        ],
+        [
+          65,
+          838.5759162303665
+        ]
+      ]
+    },
+    {
+      "stem": "terrain_book_folio_p1",
+      "source": "../sources/hall/platforms-hall-source-v2.png",
+      "width": 64,
+      "height": 27,
+      "x": [
+        [
+          0,
+          564
+        ],
+        [
+          63,
+          980
+        ]
+      ],
+      "y": [
+        [
+          0,
+          666.5873015873016
+        ],
+        [
+          4,
+          693
+        ],
+        [
+          25,
+          829
+        ],
+        [
+          26,
+          835.6031746031746
+        ]
+      ]
+    },
+    {
+      "stem": "body_p1_hallenboden",
+      "source": "../sources/hall/hallenboden-source.png",
+      "width": 2816,
+      "height": 540,
+      "x": [
+        [
+          0,
+          25
+        ],
+        [
+          2559,
+          1740
+        ],
+        [
+          2815,
+          2070
+        ]
+      ],
+      "y": [
+        [
+          0,
+          177
+        ],
+        [
+          12,
+          189
+        ],
+        [
+          268,
+          409
+        ],
+        [
+          524,
+          620
+        ],
+        [
+          539,
+          633
+        ]
+      ],
+      "clipAlpha": "../masks/body_p1_hallenboden.MASKE.png"
+    },
+    {
+      "stem": "l2_p1",
+      "source": "../sources/hall/hall-background-source-v3.png",
+      "width": 2048,
+      "height": 445,
+      "x": [
+        [
+          0,
+          0
+        ],
+        [
+          2047,
+          2171
+        ]
+      ],
+      "y": [
+        [
+          0,
+          123.75769418661456
+        ],
+        [
+          4,
+          128
+        ],
+        [
+          440,
+          590
+        ],
+        [
+          444,
+          594.2423058133854
+        ]
+      ],
+      "chromaMatte": "no-violet"
+    }
+  ]
+}

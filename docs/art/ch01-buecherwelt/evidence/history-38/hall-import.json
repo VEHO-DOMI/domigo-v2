@@ -1,0 +1,1238 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "schema": "ch01TerrainImport@1",
+  "manifestPath": "reproduction/hall.json",
+  "manifestSha256": "ca59a0dcba844d46f4ffa31cf7b9e183a45573f98ddce1c923055cc1aefe2266",
+  "importerSha256": "1c9e3347f2cabd9d5f18c58d982b0a0b6d810359cb61d1697ba7d296bdc201f5",
+  "fringeModuleSha256": "51e4044e953feb7e3af96b2d4b562cf73a97dd596d9b7cb2c7d3d688c0145e80",
+  "node": "v24.20.0",
+  "pngjsVersion": "7.0.0",
+  "convention": "pixel centres; strict monotone inverse map; no extrapolation; outside source transparent; premultiplied bilinear",
+  "assets": [
+    {
+      "stem": "terrain_reading_bench_p1",
+      "source": "pack/sources/hall/platforms-hall-source-v2.png",
+      "target": "reproduction/hall/terrain_reading_bench_p1.png",
+      "sourceSha256": "63f5cb017b3e8aa3d1b75580caff204372f2b40672cb8f7b4f0486b6ea63943f",
+      "sourceRgbaSha256": "a9d3126fdbe7f452debc43ea1c5ff084f2f54d762ff20a0afe48c5dddda79b53",
+      "keyedRgbaSha256": "2c8ab3f3e7b81fd129124f198485038497360dd768501d89bc75fb1924d620a0",
+      "previousTargetSha256": null,
+      "outputSha256": "e5053b18cca350c484fc0797c4774322c2bfcd4fd0707eebc2cb35d46ce9babe",
+      "outputRgbaSha256": "1b33fb558b95fe93a89e369250c748018a5964a2e62d553616621a661da9e8ca",
+      "outputBytes": 16114,
+      "sourceCanvas": {
+        "width": 1536,
+        "height": 1024
+      },
+      "outputCanvas": {
+        "width": 128,
+        "height": 58
+      },
+      "x": [
+        [
+          0,
+          35
+        ],
+        [
+          127,
+          522
+        ]
+      ],
+      "y": [
+        [
+          0,
+          190.66141732283464
+        ],
+        [
+          4,
+          206
+        ],
+        [
+          56,
+          404
+        ],
+        [
+          57,
+          407.8346456692913
+        ]
+      ],
+      "sourceBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1536,
+        "height": 1024,
+        "pixels": 1572864
+      },
+      "keyedBounds": {
+        "x": 29,
+        "y": 152,
+        "width": 1476,
+        "height": 689,
+        "pixels": 429051
+      },
+      "keyedInkBounds": {
+        "x": 30,
+        "y": 152,
+        "width": 1475,
+        "height": 689,
+        "pixels": 428637
+      },
+      "beforeClipBounds": {
+        "x": 0,
+        "y": 4,
+        "width": 128,
+        "height": 53,
+        "pixels": 6488
+      },
+      "clip": null,
+      "outputBounds": {
+        "x": 0,
+        "y": 4,
+        "width": 128,
+        "height": 53,
+        "pixels": 6488
+      },
+      "outputInkBounds": {
+        "x": 0,
+        "y": 4,
+        "width": 128,
+        "height": 53,
+        "pixels": 6486
+      },
+      "boundsConvention": "integer origin and extent; Bounds alpha>0, InkBounds alpha>CUT_ALPHA",
+      "cutAlpha": 16,
+      "key": {
+        "cut": 1143812,
+        "softened": 3064,
+        "keyRgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 40,
+        "softTolerance": 110
+      },
+      "sourceCleanup": {
+        "specks": {
+          "healed": 453,
+          "cut": 1,
+          "total": 454
+        },
+        "fringe": {
+          "healed": 7865,
+          "cut": 0,
+          "total": 7865,
+          "threshold": 24
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "outputCleanup": {
+        "specks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "fringe": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0,
+          "threshold": 27
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "chromaMatte": null
+    },
+    {
+      "stem": "terrain_book_bundle_p1",
+      "source": "pack/sources/hall/platforms-hall-source-v2.png",
+      "target": "reproduction/hall/terrain_book_bundle_p1.png",
+      "sourceSha256": "63f5cb017b3e8aa3d1b75580caff204372f2b40672cb8f7b4f0486b6ea63943f",
+      "sourceRgbaSha256": "a9d3126fdbe7f452debc43ea1c5ff084f2f54d762ff20a0afe48c5dddda79b53",
+      "keyedRgbaSha256": "2c8ab3f3e7b81fd129124f198485038497360dd768501d89bc75fb1924d620a0",
+      "previousTargetSha256": null,
+      "outputSha256": "b53fbeecf6aba31e439fa19a767b0aceee33e7f0a67f9fdc02a15277e8dc9e0d",
+      "outputRgbaSha256": "24e6cb513e1bf07975652c0f21fec51069e9fe0344c8bc8a6521f6aa3ddbdb21",
+      "outputBytes": 30405,
+      "sourceCanvas": {
+        "width": 1536,
+        "height": 1024
+      },
+      "outputCanvas": {
+        "width": 128,
+        "height": 104
+      },
+      "x": [
+        [
+          0,
+          603
+        ],
+        [
+          127,
+          933
+        ]
+      ],
+      "y": [
+        [
+          0,
+          142.60629921259843
+        ],
+        [
+          4,
+          153
+        ],
+        [
+          102,
+          407
+        ],
+        [
+          103,
+          409.59842519685037
+        ]
+      ],
+      "sourceBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1536,
+        "height": 1024,
+        "pixels": 1572864
+      },
+      "keyedBounds": {
+        "x": 29,
+        "y": 152,
+        "width": 1476,
+        "height": 689,
+        "pixels": 429051
+      },
+      "keyedInkBounds": {
+        "x": 30,
+        "y": 152,
+        "width": 1475,
+        "height": 689,
+        "pixels": 428637
+      },
+      "beforeClipBounds": {
+        "x": 0,
+        "y": 4,
+        "width": 128,
+        "height": 99,
+        "pixels": 12044
+      },
+      "clip": null,
+      "outputBounds": {
+        "x": 0,
+        "y": 4,
+        "width": 128,
+        "height": 99,
+        "pixels": 12044
+      },
+      "outputInkBounds": {
+        "x": 0,
+        "y": 4,
+        "width": 128,
+        "height": 99,
+        "pixels": 12036
+      },
+      "boundsConvention": "integer origin and extent; Bounds alpha>0, InkBounds alpha>CUT_ALPHA",
+      "cutAlpha": 16,
+      "key": {
+        "cut": 1143812,
+        "softened": 3064,
+        "keyRgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 40,
+        "softTolerance": 110
+      },
+      "sourceCleanup": {
+        "specks": {
+          "healed": 453,
+          "cut": 1,
+          "total": 454
+        },
+        "fringe": {
+          "healed": 7865,
+          "cut": 0,
+          "total": 7865,
+          "threshold": 24
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "outputCleanup": {
+        "specks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "fringe": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0,
+          "threshold": 18
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "chromaMatte": null
+    },
+    {
+      "stem": "terrain_book_shelf_p1",
+      "source": "pack/sources/hall/platforms-hall-source-v2.png",
+      "target": "reproduction/hall/terrain_book_shelf_p1.png",
+      "sourceSha256": "63f5cb017b3e8aa3d1b75580caff204372f2b40672cb8f7b4f0486b6ea63943f",
+      "sourceRgbaSha256": "a9d3126fdbe7f452debc43ea1c5ff084f2f54d762ff20a0afe48c5dddda79b53",
+      "keyedRgbaSha256": "2c8ab3f3e7b81fd129124f198485038497360dd768501d89bc75fb1924d620a0",
+      "previousTargetSha256": null,
+      "outputSha256": "d34b50652c2347e70420a9ff83f78ae0663ee1ad2a063799930abe951bc85547",
+      "outputRgbaSha256": "ff22e32acd94f447ae1c6cbde2d859de5598279b68742dc39e60577c39698c3b",
+      "outputBytes": 31712,
+      "sourceCanvas": {
+        "width": 1536,
+        "height": 1024
+      },
+      "outputCanvas": {
+        "width": 192,
+        "height": 79
+      },
+      "x": [
+        [
+          0,
+          1006
+        ],
+        [
+          191,
+          1493
+        ]
+      ],
+      "y": [
+        [
+          0,
+          192.80104712041884
+        ],
+        [
+          4,
+          203
+        ],
+        [
+          77,
+          389
+        ],
+        [
+          78,
+          391.5497382198953
+        ]
+      ],
+      "sourceBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1536,
+        "height": 1024,
+        "pixels": 1572864
+      },
+      "keyedBounds": {
+        "x": 29,
+        "y": 152,
+        "width": 1476,
+        "height": 689,
+        "pixels": 429051
+      },
+      "keyedInkBounds": {
+        "x": 30,
+        "y": 152,
+        "width": 1475,
+        "height": 689,
+        "pixels": 428637
+      },
+      "beforeClipBounds": {
+        "x": 0,
+        "y": 4,
+        "width": 192,
+        "height": 74,
+        "pixels": 13639
+      },
+      "clip": null,
+      "outputBounds": {
+        "x": 0,
+        "y": 4,
+        "width": 192,
+        "height": 74,
+        "pixels": 13639
+      },
+      "outputInkBounds": {
+        "x": 0,
+        "y": 4,
+        "width": 192,
+        "height": 74,
+        "pixels": 13629
+      },
+      "boundsConvention": "integer origin and extent; Bounds alpha>0, InkBounds alpha>CUT_ALPHA",
+      "cutAlpha": 16,
+      "key": {
+        "cut": 1143812,
+        "softened": 3064,
+        "keyRgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 40,
+        "softTolerance": 110
+      },
+      "sourceCleanup": {
+        "specks": {
+          "healed": 453,
+          "cut": 1,
+          "total": 454
+        },
+        "fringe": {
+          "healed": 7865,
+          "cut": 0,
+          "total": 7865,
+          "threshold": 24
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "outputCleanup": {
+        "specks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "fringe": {
+          "healed": 3,
+          "cut": 0,
+          "total": 3,
+          "threshold": 17
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "chromaMatte": null
+    },
+    {
+      "stem": "terrain_book_shelf_p1_alt",
+      "source": "pack/sources/hall/platforms-hall-source-v2.png",
+      "target": "reproduction/hall/terrain_book_shelf_p1_alt.png",
+      "sourceSha256": "63f5cb017b3e8aa3d1b75580caff204372f2b40672cb8f7b4f0486b6ea63943f",
+      "sourceRgbaSha256": "a9d3126fdbe7f452debc43ea1c5ff084f2f54d762ff20a0afe48c5dddda79b53",
+      "keyedRgbaSha256": "2c8ab3f3e7b81fd129124f198485038497360dd768501d89bc75fb1924d620a0",
+      "previousTargetSha256": null,
+      "outputSha256": "b7e7f1d36da63f145cd49133f2967548d6b5e494c92a711868a3b1627de809b2",
+      "outputRgbaSha256": "74041a06b4ee91ebbe9e85876c78bdb5ae5634d5c16bf8e32cd409e3e88289cc",
+      "outputBytes": 24327,
+      "sourceCanvas": {
+        "width": 1536,
+        "height": 1024
+      },
+      "outputCanvas": {
+        "width": 192,
+        "height": 66
+      },
+      "x": [
+        [
+          0,
+          30
+        ],
+        [
+          191,
+          522
+        ]
+      ],
+      "y": [
+        [
+          0,
+          671.696335078534
+        ],
+        [
+          4,
+          682
+        ],
+        [
+          64,
+          836
+        ],
+        [
+          65,
+          838.5759162303665
+        ]
+      ],
+      "sourceBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1536,
+        "height": 1024,
+        "pixels": 1572864
+      },
+      "keyedBounds": {
+        "x": 29,
+        "y": 152,
+        "width": 1476,
+        "height": 689,
+        "pixels": 429051
+      },
+      "keyedInkBounds": {
+        "x": 30,
+        "y": 152,
+        "width": 1475,
+        "height": 689,
+        "pixels": 428637
+      },
+      "beforeClipBounds": {
+        "x": 0,
+        "y": 4,
+        "width": 192,
+        "height": 61,
+        "pixels": 11068
+      },
+      "clip": null,
+      "outputBounds": {
+        "x": 0,
+        "y": 4,
+        "width": 192,
+        "height": 61,
+        "pixels": 11068
+      },
+      "outputInkBounds": {
+        "x": 0,
+        "y": 4,
+        "width": 192,
+        "height": 61,
+        "pixels": 11039
+      },
+      "boundsConvention": "integer origin and extent; Bounds alpha>0, InkBounds alpha>CUT_ALPHA",
+      "cutAlpha": 16,
+      "key": {
+        "cut": 1143812,
+        "softened": 3064,
+        "keyRgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 40,
+        "softTolerance": 110
+      },
+      "sourceCleanup": {
+        "specks": {
+          "healed": 453,
+          "cut": 1,
+          "total": 454
+        },
+        "fringe": {
+          "healed": 7865,
+          "cut": 0,
+          "total": 7865,
+          "threshold": 24
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "outputCleanup": {
+        "specks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "fringe": {
+          "healed": 2,
+          "cut": 0,
+          "total": 2,
+          "threshold": 12
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "chromaMatte": null
+    },
+    {
+      "stem": "terrain_book_folio_p1",
+      "source": "pack/sources/hall/platforms-hall-source-v2.png",
+      "target": "reproduction/hall/terrain_book_folio_p1.png",
+      "sourceSha256": "63f5cb017b3e8aa3d1b75580caff204372f2b40672cb8f7b4f0486b6ea63943f",
+      "sourceRgbaSha256": "a9d3126fdbe7f452debc43ea1c5ff084f2f54d762ff20a0afe48c5dddda79b53",
+      "keyedRgbaSha256": "2c8ab3f3e7b81fd129124f198485038497360dd768501d89bc75fb1924d620a0",
+      "previousTargetSha256": null,
+      "outputSha256": "9b06a3552b239ea2c575382178f663661b7fcba6c25d272ede215d64c55a3080",
+      "outputRgbaSha256": "4c65ee2648866f665e08e2bbd37e4f85c9cf89cdd234a15bb69e22e3f98d69b2",
+      "outputBytes": 3972,
+      "sourceCanvas": {
+        "width": 1536,
+        "height": 1024
+      },
+      "outputCanvas": {
+        "width": 64,
+        "height": 27
+      },
+      "x": [
+        [
+          0,
+          564
+        ],
+        [
+          63,
+          980
+        ]
+      ],
+      "y": [
+        [
+          0,
+          666.5873015873016
+        ],
+        [
+          4,
+          693
+        ],
+        [
+          25,
+          829
+        ],
+        [
+          26,
+          835.6031746031746
+        ]
+      ],
+      "sourceBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1536,
+        "height": 1024,
+        "pixels": 1572864
+      },
+      "keyedBounds": {
+        "x": 29,
+        "y": 152,
+        "width": 1476,
+        "height": 689,
+        "pixels": 429051
+      },
+      "keyedInkBounds": {
+        "x": 30,
+        "y": 152,
+        "width": 1475,
+        "height": 689,
+        "pixels": 428637
+      },
+      "beforeClipBounds": {
+        "x": 0,
+        "y": 4,
+        "width": 64,
+        "height": 22,
+        "pixels": 1344
+      },
+      "clip": null,
+      "outputBounds": {
+        "x": 0,
+        "y": 4,
+        "width": 64,
+        "height": 22,
+        "pixels": 1344
+      },
+      "outputInkBounds": {
+        "x": 0,
+        "y": 4,
+        "width": 64,
+        "height": 22,
+        "pixels": 1326
+      },
+      "boundsConvention": "integer origin and extent; Bounds alpha>0, InkBounds alpha>CUT_ALPHA",
+      "cutAlpha": 16,
+      "key": {
+        "cut": 1143812,
+        "softened": 3064,
+        "keyRgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 40,
+        "softTolerance": 110
+      },
+      "sourceCleanup": {
+        "specks": {
+          "healed": 453,
+          "cut": 1,
+          "total": 454
+        },
+        "fringe": {
+          "healed": 7865,
+          "cut": 0,
+          "total": 7865,
+          "threshold": 24
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "outputCleanup": {
+        "specks": {
+          "healed": 1,
+          "cut": 0,
+          "total": 1
+        },
+        "fringe": {
+          "healed": 2,
+          "cut": 0,
+          "total": 2,
+          "threshold": 12
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "chromaMatte": null
+    },
+    {
+      "stem": "plat_desk",
+      "source": "pack/sources/hall/platforms-hall-source-v2.png",
+      "target": "reproduction/hall/plat_desk.png",
+      "sourceSha256": "63f5cb017b3e8aa3d1b75580caff204372f2b40672cb8f7b4f0486b6ea63943f",
+      "sourceRgbaSha256": "a9d3126fdbe7f452debc43ea1c5ff084f2f54d762ff20a0afe48c5dddda79b53",
+      "keyedRgbaSha256": "2c8ab3f3e7b81fd129124f198485038497360dd768501d89bc75fb1924d620a0",
+      "previousTargetSha256": null,
+      "outputSha256": "aec0e247113e0d7458969b20e2c22ed5a9718e9631823464e51225ca19e26393",
+      "outputRgbaSha256": "2445490e4cb58bd54f98b5ff1dd2360c20c5fda3cfee0b7caddd28b54819c341",
+      "outputBytes": 6980,
+      "sourceCanvas": {
+        "width": 1536,
+        "height": 1024
+      },
+      "outputCanvas": {
+        "width": 128,
+        "height": 48
+      },
+      "x": [
+        [
+          0,
+          1022
+        ],
+        [
+          127,
+          1503
+        ]
+      ],
+      "y": [
+        [
+          0,
+          666.8503937007874
+        ],
+        [
+          4,
+          682
+        ],
+        [
+          46,
+          840
+        ],
+        [
+          47,
+          843.7874015748032
+        ]
+      ],
+      "sourceBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1536,
+        "height": 1024,
+        "pixels": 1572864
+      },
+      "keyedBounds": {
+        "x": 29,
+        "y": 152,
+        "width": 1476,
+        "height": 689,
+        "pixels": 429051
+      },
+      "keyedInkBounds": {
+        "x": 30,
+        "y": 152,
+        "width": 1475,
+        "height": 689,
+        "pixels": 428637
+      },
+      "beforeClipBounds": {
+        "x": 0,
+        "y": 4,
+        "width": 128,
+        "height": 43,
+        "pixels": 2750
+      },
+      "clip": null,
+      "outputBounds": {
+        "x": 0,
+        "y": 4,
+        "width": 128,
+        "height": 43,
+        "pixels": 2750
+      },
+      "outputInkBounds": {
+        "x": 0,
+        "y": 4,
+        "width": 128,
+        "height": 43,
+        "pixels": 2744
+      },
+      "boundsConvention": "integer origin and extent; Bounds alpha>0, InkBounds alpha>CUT_ALPHA",
+      "cutAlpha": 16,
+      "key": {
+        "cut": 1143812,
+        "softened": 3064,
+        "keyRgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 40,
+        "softTolerance": 110
+      },
+      "sourceCleanup": {
+        "specks": {
+          "healed": 453,
+          "cut": 1,
+          "total": 454
+        },
+        "fringe": {
+          "healed": 7865,
+          "cut": 0,
+          "total": 7865,
+          "threshold": 24
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "outputCleanup": {
+        "specks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "fringe": {
+          "healed": 3,
+          "cut": 0,
+          "total": 3,
+          "threshold": 12
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "chromaMatte": null
+    },
+    {
+      "stem": "body_p1_hallenboden",
+      "source": "pack/sources/hall/hallenboden-source.png",
+      "target": "reproduction/hall/body_p1_hallenboden.png",
+      "sourceSha256": "98cc13fa410f92bee380160dcd5dd189d21c30aa3748045c88a69e0a54de0a43",
+      "sourceRgbaSha256": "da55ebdc184d74a77f9829fe31bdc9db656e66d354f5cea5cfa25b6fec9b3045",
+      "keyedRgbaSha256": "dc4e6fd8a1d560a9a50291c83842905377d16654659a89f8ee61fbb7b7734a41",
+      "previousTargetSha256": null,
+      "outputSha256": "0b7e9ec1d074bec981d6dcb45b89bff83653373401066c1d643fe023245106a7",
+      "outputRgbaSha256": "b2338f837bbf112b7a8b9278b7e0e10c412d8adeee7a9151b6e203e43ccfa9d5",
+      "outputBytes": 2357260,
+      "sourceCanvas": {
+        "width": 2079,
+        "height": 756
+      },
+      "outputCanvas": {
+        "width": 2816,
+        "height": 540
+      },
+      "x": [
+        [
+          0,
+          25
+        ],
+        [
+          2559,
+          1740
+        ],
+        [
+          2815,
+          2070
+        ]
+      ],
+      "y": [
+        [
+          0,
+          177
+        ],
+        [
+          12,
+          189
+        ],
+        [
+          268,
+          409
+        ],
+        [
+          524,
+          620
+        ],
+        [
+          539,
+          633
+        ]
+      ],
+      "sourceBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 2079,
+        "height": 756,
+        "pixels": 1571724
+      },
+      "keyedBounds": {
+        "x": 0,
+        "y": 183,
+        "width": 2079,
+        "height": 444,
+        "pixels": 862461
+      },
+      "keyedInkBounds": {
+        "x": 0,
+        "y": 183,
+        "width": 2079,
+        "height": 444,
+        "pixels": 862390
+      },
+      "beforeClipBounds": {
+        "x": 0,
+        "y": 6,
+        "width": 2816,
+        "height": 527,
+        "pixels": 1431267
+      },
+      "clip": {
+        "path": "pack/masks/body_p1_hallenboden.MASKE.png",
+        "sha256": "b348f3e3a85765527a81db63b7508e1cae07c806996443073cac0a70611eed18",
+        "rgbaSha256": "3bbcb777702d590ba1b05121a99152f6dac6ac2e8ddf784bc593d8dea14650dc",
+        "bounds": {
+          "x": 0,
+          "y": 12,
+          "width": 2816,
+          "height": 512,
+          "pixels": 1376256
+        },
+        "cut": 55240,
+        "rule": "mask alpha=0 cuts; all nonzero mask alpha leaves source alpha unchanged"
+      },
+      "outputBounds": {
+        "x": 0,
+        "y": 12,
+        "width": 2816,
+        "height": 512,
+        "pixels": 1376027
+      },
+      "outputInkBounds": {
+        "x": 0,
+        "y": 12,
+        "width": 2816,
+        "height": 512,
+        "pixels": 1376013
+      },
+      "boundsConvention": "integer origin and extent; Bounds alpha>0, InkBounds alpha>CUT_ALPHA",
+      "cutAlpha": 16,
+      "key": {
+        "cut": 709262,
+        "softened": 2752,
+        "keyRgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 40,
+        "softTolerance": 110
+      },
+      "sourceCleanup": {
+        "specks": {
+          "healed": 75,
+          "cut": 1,
+          "total": 76
+        },
+        "fringe": {
+          "healed": 5446,
+          "cut": 0,
+          "total": 5446,
+          "threshold": 23
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "outputCleanup": {
+        "specks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "fringe": {
+          "healed": 6,
+          "cut": 0,
+          "total": 6,
+          "threshold": 21
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "chromaMatte": null
+    },
+    {
+      "stem": "l2_p1",
+      "source": "pack/sources/hall/hall-background-source-v3.png",
+      "target": "reproduction/hall/l2_p1.png",
+      "sourceSha256": "f12e4eaf32d47f02844bf5525c0db67b01da8f5200a4a1cd9a10ed463c6f96cc",
+      "sourceRgbaSha256": "0b2c42bd9ae17531477e072ce87329cd634f45a84bffd44b5e63f464344c7f80",
+      "keyedRgbaSha256": "d75145dfa92e2338a4a7985d8a678a2db2cc9609258de6282f07d8e73e4f6824",
+      "previousTargetSha256": null,
+      "outputSha256": "c6e7cbbe09d05a2b1c2ee39cac0fc6e1ff692117b4de8085513544f56a11ead6",
+      "outputRgbaSha256": "df9be3ff02abe20d63992ec479da7aae88a2885bfa283d940cddd02d22bc9675",
+      "outputBytes": 638465,
+      "sourceCanvas": {
+        "width": 2172,
+        "height": 724
+      },
+      "outputCanvas": {
+        "width": 2048,
+        "height": 445
+      },
+      "x": [
+        [
+          0,
+          0
+        ],
+        [
+          2047,
+          2171
+        ]
+      ],
+      "y": [
+        [
+          0,
+          123.75769418661456
+        ],
+        [
+          4,
+          128
+        ],
+        [
+          440,
+          590
+        ],
+        [
+          444,
+          594.2423058133854
+        ]
+      ],
+      "sourceBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 2172,
+        "height": 724,
+        "pixels": 1572528
+      },
+      "keyedBounds": {
+        "x": 89,
+        "y": 128,
+        "width": 2083,
+        "height": 596,
+        "pixels": 308755
+      },
+      "keyedInkBounds": {
+        "x": 89,
+        "y": 128,
+        "width": 1958,
+        "height": 463,
+        "pixels": 307329
+      },
+      "beforeClipBounds": {
+        "x": 83,
+        "y": 4,
+        "width": 1848,
+        "height": 437,
+        "pixels": 281681
+      },
+      "clip": null,
+      "outputBounds": {
+        "x": 83,
+        "y": 4,
+        "width": 1848,
+        "height": 437,
+        "pixels": 281681
+      },
+      "outputInkBounds": {
+        "x": 84,
+        "y": 4,
+        "width": 1846,
+        "height": 437,
+        "pixels": 277708
+      },
+      "boundsConvention": "integer origin and extent; Bounds alpha>0, InkBounds alpha>CUT_ALPHA",
+      "cutAlpha": 16,
+      "key": {
+        "cut": 1263772,
+        "softened": 13445,
+        "keyRgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 40,
+        "softTolerance": 110
+      },
+      "sourceCleanup": {
+        "specks": {
+          "healed": 437,
+          "cut": 1,
+          "total": 438
+        },
+        "fringe": {
+          "healed": 3818,
+          "cut": 0,
+          "total": 3818,
+          "threshold": 182
+        },
+        "finalSpecks": {
+          "healed": 1652,
+          "cut": 0,
+          "total": 1652
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "outputCleanup": {
+        "specks": {
+          "healed": 106,
+          "cut": 0,
+          "total": 106
+        },
+        "fringe": {
+          "healed": 351,
+          "cut": 0,
+          "total": 351,
+          "threshold": 177
+        },
+        "finalSpecks": {
+          "healed": 109,
+          "cut": 0,
+          "total": 109
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "chromaMatte": {
+        "mode": "no-violet",
+        "recoloured": 30278,
+        "threshold": 0,
+        "radius": 24,
+        "maxDistanceSquared": 121,
+        "alphaBefore": "d815c456823beb6f6d6c9c8327b88e7c922e784eb1d028887eb04dcbface5627",
+        "alphaAfter": "d815c456823beb6f6d6c9c8327b88e7c922e784eb1d028887eb04dcbface5627",
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,109 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "assets": [
+    {
+      "stem": "terrain_dream_folio_p9",
+      "source": "../sources/bonus-refinement/folio-v2.png",
+      "width": 192,
+      "height": 78,
+      "x": [
+        [
+          0,
+          62.205729166666664
+        ],
+        [
+          191,
+          1477.7942708333333
+        ]
+      ],
+      "y": [
+        [
+          0,
+          202.15885416666666
+        ],
+        [
+          77,
+          772.8411458333333
+        ]
+      ]
+    },
+    {
+      "stem": "terrain_dream_folio_short_p9",
+      "source": "../sources/bonus-refinement/folio-v2.png",
+      "width": 128,
+      "height": 52,
+      "x": [
+        [
+          0,
+          64.05859375
+        ],
+        [
+          127,
+          1475.94140625
+        ]
+      ],
+      "y": [
+        [
+          0,
+          204.01171875
+        ],
+        [
+          51,
+          770.98828125
+        ]
+      ]
+    },
+    {
+      "stem": "terrain_dream_bundle_p9",
+      "source": "../sources/bonus-refinement/bundle-v2.png",
+      "width": 192,
+      "height": 90,
+      "x": [
+        [
+          0,
+          68.17447916666667
+        ],
+        [
+          191,
+          1471.8255208333333
+        ]
+      ],
+      "y": [
+        [
+          0,
+          179.97135416666666
+        ],
+        [
+          89,
+          834.0286458333333
+        ]
+      ]
+    },
+    {
+      "stem": "terrain_dream_bundle_short_p9",
+      "source": "../sources/bonus-refinement/bundle-v2.png",
+      "width": 128,
+      "height": 60,
+      "x": [
+        [
+          0,
+          70.01171875
+        ],
+        [
+          127,
+          1469.98828125
+        ]
+      ],
+      "y": [
+        [
+          0,
+          181.80859375
+        ],
+        [
+          59,
+          832.19140625
+        ]
+      ]
+    }
+  ]
+}

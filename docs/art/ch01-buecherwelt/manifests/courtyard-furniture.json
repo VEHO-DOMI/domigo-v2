@@ -1,0 +1,86 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "assets": [
+    {
+      "stem": "plat_plank_2",
+      "source": "../sources/courtyard-furniture/atlas-3x512.png",
+      "width": 256,
+      "height": 76,
+      "x": [
+        [
+          0,
+          61
+        ],
+        [
+          255,
+          485
+        ]
+      ],
+      "y": [
+        [
+          0,
+          200.34901960784313
+        ],
+        [
+          75,
+          325.0549019607843
+        ]
+      ],
+      "chromaMatte": "no-violet"
+    },
+    {
+      "stem": "ledge_windowsill",
+      "source": "../sources/courtyard-furniture/atlas-3x512.png",
+      "width": 128,
+      "height": 50,
+      "x": [
+        [
+          0,
+          542
+        ],
+        [
+          127,
+          1002
+        ]
+      ],
+      "y": [
+        [
+          0,
+          168.51181102362204
+        ],
+        [
+          49,
+          345.99212598425197
+        ]
+      ],
+      "chromaMatte": "no-violet"
+    },
+    {
+      "stem": "plat_column2_1",
+      "source": "../sources/courtyard-furniture/atlas-3x512.png",
+      "width": 64,
+      "height": 83,
+      "x": [
+        [
+          0,
+          1141
+        ],
+        [
+          63,
+          1416
+        ]
+      ],
+      "y": [
+        [
+          0,
+          73.53968253968254
+        ],
+        [
+          82,
+          431.4761904761904
+        ]
+      ],
+      "chromaMatte": "no-violet"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "assets": [
+    {
+      "stem": "l2_p3",
+      "source": "../sources/courtyard-plants/source-final.png",
+      "width": 2048,
+      "height": 340,
+      "x": [
+        [
+          0,
+          0
+        ],
+        [
+          2047,
+          2078
+        ]
+      ],
+      "y": [
+        [
+          0,
+          240
+        ],
+        [
+          339,
+          584.133854421104
+        ]
+      ],
+      "chromaMatte": "no-violet"
+    }
+  ]
+}

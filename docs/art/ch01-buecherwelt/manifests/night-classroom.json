@@ -1,0 +1,523 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "assets": [
+    {
+      "stem": "body_p2_tafelgeruest",
+      "source": "../sources/night-classroom/tafel-source-v1.png",
+      "width": 1984,
+      "height": 348,
+      "x": [
+        [
+          0,
+          1
+        ],
+        [
+          384,
+          409
+        ],
+        [
+          448,
+          502
+        ],
+        [
+          704,
+          772
+        ],
+        [
+          768,
+          861
+        ],
+        [
+          1983,
+          2157
+        ]
+      ],
+      "y": [
+        [
+          0,
+          167
+        ],
+        [
+          12,
+          179
+        ],
+        [
+          76,
+          242
+        ],
+        [
+          140,
+          329
+        ],
+        [
+          268,
+          447
+        ],
+        [
+          331,
+          537
+        ],
+        [
+          347,
+          554
+        ]
+      ],
+      "clipAlpha": "../masks/body_p2_tafelgeruest.MASKE.png"
+    },
+    {
+      "stem": "body_p2_pultreihe_r9",
+      "source": "../sources/night-classroom/pult-source-v1.png",
+      "width": 1280,
+      "height": 92,
+      "x": [
+        [
+          0,
+          9
+        ],
+        [
+          1279,
+          2160
+        ]
+      ],
+      "y": [
+        [
+          0,
+          220
+        ],
+        [
+          12,
+          252
+        ],
+        [
+          75,
+          431
+        ],
+        [
+          91,
+          475
+        ]
+      ],
+      "clipAlpha": "../masks/body_p2_pultreihe_r9.MASKE.png"
+    },
+    {
+      "stem": "body_p2_deckenbahn_west",
+      "source": "../sources/night-classroom/west-source-v1.png",
+      "width": 1536,
+      "height": 348,
+      "x": [
+        [
+          0,
+          15
+        ],
+        [
+          1408,
+          1865
+        ],
+        [
+          1535,
+          2127
+        ]
+      ],
+      "y": [
+        [
+          0,
+          84
+        ],
+        [
+          12,
+          108
+        ],
+        [
+          76,
+          233
+        ],
+        [
+          331,
+          645
+        ],
+        [
+          347,
+          672
+        ]
+      ],
+      "clipAlpha": "../masks/body_p2_deckenbahn_west.MASKE.png"
+    },
+    {
+      "stem": "body_p2_deckenbahn_mitte",
+      "source": "../sources/night-classroom/middle-source-v1.png",
+      "width": 1984,
+      "height": 92,
+      "x": [
+        [
+          0,
+          26
+        ],
+        [
+          1983,
+          1720
+        ]
+      ],
+      "y": [
+        [
+          0,
+          353
+        ],
+        [
+          12,
+          377
+        ],
+        [
+          75,
+          493
+        ],
+        [
+          91,
+          523
+        ]
+      ],
+      "clipAlpha": "../masks/body_p2_deckenbahn_mitte.MASKE.png"
+    },
+    {
+      "stem": "body_p2_deckenbahn_ost",
+      "source": "../sources/night-classroom/east-source-v1.png",
+      "width": 1088,
+      "height": 540,
+      "x": [
+        [
+          0,
+          34
+        ],
+        [
+          128,
+          282
+        ],
+        [
+          1087,
+          1758
+        ]
+      ],
+      "y": [
+        [
+          0,
+          -6
+        ],
+        [
+          12,
+          20
+        ],
+        [
+          76,
+          163
+        ],
+        [
+          523,
+          862
+        ],
+        [
+          539,
+          887
+        ]
+      ],
+      "clipAlpha": "../masks/body_p2_deckenbahn_ost.MASKE.png"
+    },
+    {
+      "stem": "body_p2_ostwand_treppe_boden",
+      "source": "../sources/night-classroom/floor-source-v1.png",
+      "width": 1088,
+      "height": 1628,
+      "x": [
+        [
+          0,
+          0
+        ],
+        [
+          127,
+          113
+        ],
+        [
+          128,
+          116
+        ],
+        [
+          255,
+          237
+        ],
+        [
+          256,
+          240
+        ],
+        [
+          383,
+          359
+        ],
+        [
+          384,
+          365
+        ],
+        [
+          896,
+          841
+        ],
+        [
+          1024,
+          965
+        ],
+        [
+          1087,
+          1024
+        ]
+      ],
+      "y": [
+        [
+          0,
+          -2
+        ],
+        [
+          12,
+          10
+        ],
+        [
+          716,
+          677
+        ],
+        [
+          908,
+          857
+        ],
+        [
+          1100,
+          1031
+        ],
+        [
+          1164,
+          1097
+        ],
+        [
+          1228,
+          1159
+        ],
+        [
+          1611,
+          1533
+        ],
+        [
+          1627,
+          1548
+        ]
+      ],
+      "clipAlpha": "../masks/body_p2_ostwand_treppe_boden.MASKE.png"
+    },
+    {
+      "stem": "terrain_night_folio_p2",
+      "source": "../sources/night-classroom/folio-source-v2.png",
+      "width": 64,
+      "height": 33,
+      "x": [
+        [
+          0,
+          72
+        ],
+        [
+          63,
+          1701
+        ]
+      ],
+      "y": [
+        [
+          0,
+          340
+        ],
+        [
+          4,
+          371
+        ],
+        [
+          29,
+          577
+        ],
+        [
+          32,
+          601
+        ]
+      ]
+    },
+    {
+      "stem": "terrain_night_dictionary_p2",
+      "source": "../sources/night-classroom/furniture-source-v1.png",
+      "width": 64,
+      "height": 33,
+      "x": [
+        [
+          0,
+          575
+        ],
+        [
+          63,
+          989
+        ]
+      ],
+      "y": [
+        [
+          0,
+          172
+        ],
+        [
+          4,
+          201
+        ],
+        [
+          29,
+          405
+        ],
+        [
+          32,
+          427
+        ]
+      ]
+    },
+    {
+      "stem": "terrain_night_bundle_p2",
+      "source": "../sources/night-classroom/furniture-source-v1.png",
+      "width": 128,
+      "height": 108,
+      "x": [
+        [
+          0,
+          1071
+        ],
+        [
+          127,
+          1471
+        ]
+      ],
+      "y": [
+        [
+          0,
+          135
+        ],
+        [
+          4,
+          156
+        ],
+        [
+          104,
+          408
+        ],
+        [
+          107,
+          416
+        ]
+      ]
+    },
+    {
+      "stem": "terrain_night_lectern_p2",
+      "source": "../sources/night-classroom/furniture-source-v1.png",
+      "width": 128,
+      "height": 110,
+      "x": [
+        [
+          0,
+          40
+        ],
+        [
+          127,
+          486
+        ]
+      ],
+      "y": [
+        [
+          0,
+          530
+        ],
+        [
+          8,
+          584
+        ],
+        [
+          11,
+          601
+        ],
+        [
+          107,
+          881
+        ],
+        [
+          109,
+          887
+        ]
+      ]
+    },
+    {
+      "stem": "terrain_night_shelf_p2",
+      "source": "../sources/night-classroom/furniture-source-v1.png",
+      "width": 192,
+      "height": 96,
+      "x": [
+        [
+          0,
+          528
+        ],
+        [
+          191,
+          994
+        ]
+      ],
+      "y": [
+        [
+          0,
+          605
+        ],
+        [
+          4,
+          617
+        ],
+        [
+          92,
+          881
+        ],
+        [
+          95,
+          890
+        ]
+      ]
+    },
+    {
+      "stem": "terrain_night_lectern_shelf_p2",
+      "source": "../sources/night-classroom/furniture-source-v1.png",
+      "width": 256,
+      "height": 170,
+      "x": [
+        [
+          0,
+          1021
+        ],
+        [
+          255,
+          1508
+        ]
+      ],
+      "y": [
+        [
+          0,
+          524
+        ],
+        [
+          4,
+          532
+        ],
+        [
+          66,
+          667
+        ],
+        [
+          166,
+          881
+        ],
+        [
+          169,
+          887
+        ]
+      ]
+    }
+  ]
+}

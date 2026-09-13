@@ -1,0 +1,222 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "assets": [
+    {
+      "stem": "body_p3_westterrasse_rutsche",
+      "source": "../sources/courtyard-bodies/p3_westterrasse_rutsche-source.png",
+      "width": 1408,
+      "height": 732,
+      "x": [
+        [
+          0,
+          0
+        ],
+        [
+          640,
+          726
+        ],
+        [
+          704,
+          818
+        ],
+        [
+          832,
+          970
+        ],
+        [
+          960,
+          1094
+        ],
+        [
+          1024,
+          1206
+        ],
+        [
+          1088,
+          1312
+        ],
+        [
+          1216,
+          1478
+        ],
+        [
+          1280,
+          1590
+        ],
+        [
+          1407,
+          1739
+        ]
+      ],
+      "y": [
+        [
+          0,
+          18
+        ],
+        [
+          12,
+          30
+        ],
+        [
+          76,
+          128
+        ],
+        [
+          140,
+          195
+        ],
+        [
+          204,
+          267
+        ],
+        [
+          268,
+          378
+        ],
+        [
+          332,
+          480
+        ],
+        [
+          396,
+          604
+        ],
+        [
+          715,
+          899
+        ],
+        [
+          731,
+          915
+        ]
+      ],
+      "clipAlpha": "../masks/body_p3_westterrasse_rutsche.MASKE.png"
+    },
+    {
+      "stem": "body_p3_ostmauer_sims",
+      "source": "../sources/courtyard-bodies/p3_ostmauer_sims-source.png",
+      "width": 1536,
+      "height": 796,
+      "x": [
+        [
+          0,
+          0
+        ],
+        [
+          640,
+          718
+        ],
+        [
+          1024,
+          1146
+        ],
+        [
+          1280,
+          1434
+        ],
+        [
+          1343,
+          1506
+        ],
+        [
+          1535,
+          1741
+        ]
+      ],
+      "y": [
+        [
+          0,
+          12
+        ],
+        [
+          12,
+          29
+        ],
+        [
+          76,
+          97
+        ],
+        [
+          268,
+          298
+        ],
+        [
+          460,
+          510
+        ],
+        [
+          779,
+          901
+        ],
+        [
+          795,
+          917
+        ]
+      ],
+      "clipAlpha": "../masks/body_p3_ostmauer_sims.MASKE.png"
+    },
+    {
+      "stem": "body_p3_mittelpfeiler",
+      "source": "../sources/courtyard-bodies/p3_mittelpfeiler-source.png",
+      "width": 512,
+      "height": 604,
+      "x": [
+        [
+          0,
+          0
+        ],
+        [
+          255,
+          562
+        ],
+        [
+          256,
+          574
+        ],
+        [
+          320,
+          721
+        ],
+        [
+          384,
+          865
+        ],
+        [
+          511,
+          1154
+        ]
+      ],
+      "y": [
+        [
+          0,
+          10
+        ],
+        [
+          12,
+          30
+        ],
+        [
+          204,
+          463
+        ],
+        [
+          268,
+          594
+        ],
+        [
+          332,
+          745
+        ],
+        [
+          587,
+          1358
+        ],
+        [
+          603,
+          1374
+        ]
+      ],
+      "clipAlpha": "../masks/body_p3_mittelpfeiler.MASKE.png"
+    }
+  ]
+}

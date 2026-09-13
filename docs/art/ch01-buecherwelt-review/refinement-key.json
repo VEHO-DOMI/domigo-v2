@@ -1,0 +1,46 @@
+{
+  "a": [
+    {
+      "pair": 1,
+      "name": "p9-bonus",
+      "new": "B"
+    },
+    {
+      "pair": 2,
+      "name": "p2-west",
+      "new": "A"
+    },
+    {
+      "pair": 3,
+      "name": "p2-middle",
+      "new": "B"
+    },
+    {
+      "pair": 4,
+      "name": "control",
+      "new": "A"
+    }
+  ],
+  "b": [
+    {
+      "pair": 1,
+      "name": "p2-middle",
+      "new": "A"
+    },
+    {
+      "pair": 2,
+      "name": "control",
+      "new": "B"
+    },
+    {
+      "pair": 3,
+      "name": "p9-bonus",
+      "new": "A"
+    },
+    {
+      "pair": 4,
+      "name": "p2-west",
+      "new": "B"
+    }
+  ]
+}

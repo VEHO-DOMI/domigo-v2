@@ -1,0 +1,611 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "schema": "ch01TerrainImport@1",
+  "manifestPath": "reproduction/courtyard-bodies.json",
+  "manifestSha256": "b21e8b7c38c15a0b033d045a1b97d7e3ca31fcf34195c20b7f21bf1302306356",
+  "importerSha256": "1c9e3347f2cabd9d5f18c58d982b0a0b6d810359cb61d1697ba7d296bdc201f5",
+  "fringeModuleSha256": "51e4044e953feb7e3af96b2d4b562cf73a97dd596d9b7cb2c7d3d688c0145e80",
+  "node": "v24.20.0",
+  "pngjsVersion": "7.0.0",
+  "convention": "pixel centres; strict monotone inverse map; no extrapolation; outside source transparent; premultiplied bilinear",
+  "assets": [
+    {
+      "stem": "body_p3_westterrasse_rutsche",
+      "source": "pack/sources/courtyard-bodies/p3_westterrasse_rutsche-source.png",
+      "target": "reproduction/courtyard-bodies/body_p3_westterrasse_rutsche.png",
+      "sourceSha256": "e3ec524865232ad2481b855ea557001b26c0f5c541426bda7173588ac426525c",
+      "sourceRgbaSha256": "c2db3b441fa33ddf0b922fd8837c9b77141a984bdd5bace7f2dac78d92039bcc",
+      "keyedRgbaSha256": "cd20814954eb841f101f465c44c66bcc36b237293a1147298bed705545a0cd50",
+      "previousTargetSha256": null,
+      "outputSha256": "009419493eaba020974c05254f8c50265f06af42a1a03542bb4f4947632af4c5",
+      "outputRgbaSha256": "5fc445142e5d3003092af9347f982c030b9ca1a949ae2fd74f3dfbd9c231259f",
+      "outputBytes": 1562882,
+      "sourceCanvas": {
+        "width": 1740,
+        "height": 904
+      },
+      "outputCanvas": {
+        "width": 1408,
+        "height": 732
+      },
+      "x": [
+        [
+          0,
+          0
+        ],
+        [
+          640,
+          726
+        ],
+        [
+          704,
+          818
+        ],
+        [
+          832,
+          970
+        ],
+        [
+          960,
+          1094
+        ],
+        [
+          1024,
+          1206
+        ],
+        [
+          1088,
+          1312
+        ],
+        [
+          1216,
+          1478
+        ],
+        [
+          1280,
+          1590
+        ],
+        [
+          1407,
+          1739
+        ]
+      ],
+      "y": [
+        [
+          0,
+          18
+        ],
+        [
+          12,
+          30
+        ],
+        [
+          76,
+          128
+        ],
+        [
+          140,
+          195
+        ],
+        [
+          204,
+          267
+        ],
+        [
+          268,
+          378
+        ],
+        [
+          332,
+          480
+        ],
+        [
+          396,
+          604
+        ],
+        [
+          715,
+          899
+        ],
+        [
+          731,
+          915
+        ]
+      ],
+      "sourceBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1740,
+        "height": 904,
+        "pixels": 1572960
+      },
+      "keyedBounds": {
+        "x": 0,
+        "y": 24,
+        "width": 1740,
+        "height": 880,
+        "pixels": 1219482
+      },
+      "keyedInkBounds": {
+        "x": 0,
+        "y": 24,
+        "width": 1740,
+        "height": 880,
+        "pixels": 1219398
+      },
+      "beforeClipBounds": {
+        "x": 0,
+        "y": 6,
+        "width": 1408,
+        "height": 714,
+        "pixels": 817694
+      },
+      "clip": {
+        "path": "pack/masks/body_p3_westterrasse_rutsche.MASKE.png",
+        "sha256": "4f35a0e9a4f6162ec087f24899a08e8cad56164a6e64c8ecb2f71fee73c4f87e",
+        "rgbaSha256": "8bb157ae950b1f0f53c7e3d93f7964bb0957c99e1ac2636e6d2d9a6851f240b8",
+        "bounds": {
+          "x": 0,
+          "y": 12,
+          "width": 1408,
+          "height": 704,
+          "pixels": 805024
+        },
+        "cut": 12740,
+        "rule": "mask alpha=0 cuts; all nonzero mask alpha leaves source alpha unchanged"
+      },
+      "outputBounds": {
+        "x": 0,
+        "y": 12,
+        "width": 1408,
+        "height": 704,
+        "pixels": 804954
+      },
+      "outputInkBounds": {
+        "x": 0,
+        "y": 12,
+        "width": 1408,
+        "height": 704,
+        "pixels": 804948
+      },
+      "boundsConvention": "integer origin and extent; Bounds alpha>0, InkBounds alpha>CUT_ALPHA",
+      "cutAlpha": 16,
+      "key": {
+        "cut": 353478,
+        "softened": 1424,
+        "keyRgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 40,
+        "softTolerance": 110
+      },
+      "sourceCleanup": {
+        "specks": {
+          "healed": 47,
+          "cut": 0,
+          "total": 47
+        },
+        "fringe": {
+          "healed": 2414,
+          "cut": 0,
+          "total": 2414,
+          "threshold": 16
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "outputCleanup": {
+        "specks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "fringe": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0,
+          "threshold": 15
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "chromaMatte": null
+    },
+    {
+      "stem": "body_p3_ostmauer_sims",
+      "source": "pack/sources/courtyard-bodies/p3_ostmauer_sims-source.png",
+      "target": "reproduction/courtyard-bodies/body_p3_ostmauer_sims.png",
+      "sourceSha256": "e6b9ec61495cbd37f29f6f9416e631bbfee88e16b6c300287801fc192f74c76d",
+      "sourceRgbaSha256": "6b98c08ea92b6a1c4f5d2775ba0491f93b2a160e62f8e1e671def460e0d5cc86",
+      "keyedRgbaSha256": "bbb485f751ac180a78db3ffe9bbdd5674ad05d2f249542dc8429694c3989ee5f",
+      "previousTargetSha256": null,
+      "outputSha256": "cd40858375df1b2e20e23d00b127a9a6db251c39a5032cdc243310fa137b33e3",
+      "outputRgbaSha256": "5e322925d327fab0c774213a594589dcfe34980f45e5e669dfcd1ab4d6215791",
+      "outputBytes": 1521156,
+      "sourceCanvas": {
+        "width": 1742,
+        "height": 903
+      },
+      "outputCanvas": {
+        "width": 1536,
+        "height": 796
+      },
+      "x": [
+        [
+          0,
+          0
+        ],
+        [
+          640,
+          718
+        ],
+        [
+          1024,
+          1146
+        ],
+        [
+          1280,
+          1434
+        ],
+        [
+          1343,
+          1506
+        ],
+        [
+          1535,
+          1741
+        ]
+      ],
+      "y": [
+        [
+          0,
+          12
+        ],
+        [
+          12,
+          29
+        ],
+        [
+          76,
+          97
+        ],
+        [
+          268,
+          298
+        ],
+        [
+          460,
+          510
+        ],
+        [
+          779,
+          901
+        ],
+        [
+          795,
+          917
+        ]
+      ],
+      "sourceBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1742,
+        "height": 903,
+        "pixels": 1573026
+      },
+      "keyedBounds": {
+        "x": 0,
+        "y": 24,
+        "width": 1742,
+        "height": 879,
+        "pixels": 1046203
+      },
+      "keyedInkBounds": {
+        "x": 0,
+        "y": 24,
+        "width": 1742,
+        "height": 879,
+        "pixels": 1046008
+      },
+      "beforeClipBounds": {
+        "x": 0,
+        "y": 8,
+        "width": 1536,
+        "height": 773,
+        "pixels": 784688
+      },
+      "clip": {
+        "path": "pack/masks/body_p3_ostmauer_sims.MASKE.png",
+        "sha256": "b648e2c73af9b89040799c83a4d236ade67ddc33f5e7ecfc691aaea0db2fe16c",
+        "rgbaSha256": "31fe0a38d9d38f20f7dc90486f73e5602879a58fa1e25eb469727cd8a85b17ab",
+        "bounds": {
+          "x": 0,
+          "y": 12,
+          "width": 1536,
+          "height": 768,
+          "pixels": 765952
+        },
+        "cut": 18736,
+        "rule": "mask alpha=0 cuts; all nonzero mask alpha leaves source alpha unchanged"
+      },
+      "outputBounds": {
+        "x": 0,
+        "y": 12,
+        "width": 1536,
+        "height": 768,
+        "pixels": 765952
+      },
+      "outputInkBounds": {
+        "x": 0,
+        "y": 12,
+        "width": 1536,
+        "height": 768,
+        "pixels": 765952
+      },
+      "boundsConvention": "integer origin and extent; Bounds alpha>0, InkBounds alpha>CUT_ALPHA",
+      "cutAlpha": 16,
+      "key": {
+        "cut": 526823,
+        "softened": 992,
+        "keyRgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 40,
+        "softTolerance": 110
+      },
+      "sourceCleanup": {
+        "specks": {
+          "healed": 74,
+          "cut": 0,
+          "total": 74
+        },
+        "fringe": {
+          "healed": 2769,
+          "cut": 0,
+          "total": 2769,
+          "threshold": 20
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "outputCleanup": {
+        "specks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "fringe": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0,
+          "threshold": 19
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "chromaMatte": null
+    },
+    {
+      "stem": "body_p3_mittelpfeiler",
+      "source": "pack/sources/courtyard-bodies/p3_mittelpfeiler-source.png",
+      "target": "reproduction/courtyard-bodies/body_p3_mittelpfeiler.png",
+      "sourceSha256": "ebae5750f1b33b25be9a2e3670463993dab16a226edcb94f9777374250486bd7",
+      "sourceRgbaSha256": "f8c49209dcb0d0c3ba407e8cf416008fea2ec58d7f45e40f35d981b11cc7bb66",
+      "keyedRgbaSha256": "89a743229f6700e2da1e5f0941403bf2243b28ba5604dada83fc9de0bf67f957",
+      "previousTargetSha256": null,
+      "outputSha256": "5f600be0f85072925c470a00c6dee8161649755d9dd5332ac7599845366be4ce",
+      "outputRgbaSha256": "6a54b9855059d395b1681fe20482031ab6b7d9e2bc96f84695974100ae15d7c1",
+      "outputBytes": 455599,
+      "sourceCanvas": {
+        "width": 1155,
+        "height": 1362
+      },
+      "outputCanvas": {
+        "width": 512,
+        "height": 604
+      },
+      "x": [
+        [
+          0,
+          0
+        ],
+        [
+          255,
+          562
+        ],
+        [
+          256,
+          574
+        ],
+        [
+          320,
+          721
+        ],
+        [
+          384,
+          865
+        ],
+        [
+          511,
+          1154
+        ]
+      ],
+      "y": [
+        [
+          0,
+          10
+        ],
+        [
+          12,
+          30
+        ],
+        [
+          204,
+          463
+        ],
+        [
+          268,
+          594
+        ],
+        [
+          332,
+          745
+        ],
+        [
+          587,
+          1358
+        ],
+        [
+          603,
+          1374
+        ]
+      ],
+      "sourceBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1155,
+        "height": 1362,
+        "pixels": 1573110
+      },
+      "keyedBounds": {
+        "x": 0,
+        "y": 22,
+        "width": 1155,
+        "height": 1340,
+        "pixels": 1065106
+      },
+      "keyedInkBounds": {
+        "x": 0,
+        "y": 22,
+        "width": 1155,
+        "height": 1340,
+        "pixels": 1064982
+      },
+      "beforeClipBounds": {
+        "x": 0,
+        "y": 7,
+        "width": 512,
+        "height": 584,
+        "pixels": 201968
+      },
+      "clip": {
+        "path": "pack/masks/body_p3_mittelpfeiler.MASKE.png",
+        "sha256": "81bf6dd9ed415d5589b19189e4d099282ae2cba66db17ec617044d441c00fac0",
+        "rgbaSha256": "3cab5940cc5e86c8c7cc04f9f6e7f6e4e970720da9d5bf600674c67689d4962a",
+        "bounds": {
+          "x": 0,
+          "y": 12,
+          "width": 512,
+          "height": 576,
+          "pixels": 196608
+        },
+        "cut": 5360,
+        "rule": "mask alpha=0 cuts; all nonzero mask alpha leaves source alpha unchanged"
+      },
+      "outputBounds": {
+        "x": 0,
+        "y": 12,
+        "width": 512,
+        "height": 576,
+        "pixels": 196608
+      },
+      "outputInkBounds": {
+        "x": 0,
+        "y": 12,
+        "width": 512,
+        "height": 576,
+        "pixels": 196608
+      },
+      "boundsConvention": "integer origin and extent; Bounds alpha>0, InkBounds alpha>CUT_ALPHA",
+      "cutAlpha": 16,
+      "key": {
+        "cut": 508004,
+        "softened": 1139,
+        "keyRgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 40,
+        "softTolerance": 110
+      },
+      "sourceCleanup": {
+        "specks": {
+          "healed": 182,
+          "cut": 0,
+          "total": 182
+        },
+        "fringe": {
+          "healed": 2387,
+          "cut": 0,
+          "total": 2387,
+          "threshold": 24
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "outputCleanup": {
+        "specks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "fringe": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0,
+          "threshold": 23
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "chromaMatte": null
+    }
+  ]
+}
