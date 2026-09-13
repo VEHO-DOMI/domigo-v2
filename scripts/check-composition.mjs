@@ -337,29 +337,83 @@ const DEPTH_WAIVERS = {};
 
 
 // ── the levels under audit ───────────────────────────────────────────────────
-const phases = [];
+// L0e · DER ENTWURFS-MODUS (Nachpruefung ch02, 13.09.: »check-composition
+// ueberspringt Entwurfskapitel — Stil-Kohaerenz wird fuer ch02 von keinem Tor
+// gemessen«). Bis hier fiel ein Entwurf als GANZES Kapitel heraus, auch eine
+// Phase, die ihren COMPOSITION-Eintrag schon traegt — und eine FERTIGE Phase
+// ohne Eintrag fiel still aus `withSpec`, solange irgendeine andere Phase einen
+// hatte. Jetzt wird je PHASE sortiert:
+//   · Eintrag vorhanden            → geprueft, Entwurf oder nicht
+//   · kein Eintrag, Kapitel Entwurf → benannte Ausnahme, je Kapitel mit Phasen
+//   · kein Eintrag, Kapitel fertig  → ROT (ein Loch, keine Bauphase — D-792)
+// Was dieses Tor NICHT kann und deshalb laut sagt: eine Phase ohne Eintrag hat
+// keinen Schluesselwert, keine Ebenen, keine Masse — keine der elf Messungen
+// hat dort etwas zu vergleichen. Die Figuren-Stilfrage (ch02-Tiere) ist ein
+// Urteil (welle-014/027), keine Rechnung.
+export function sortiereKompositionsPhasen(levels, composition) {
+  const geprueft = [];
+  const entwurfOhne = new Map();
+  const loecher = [];
+  for (const level of levels) {
+    const all = [...level.phases, ...(level.arena ? [level.arena] : []), ...(level.bonus ? [level.bonus] : [])];
+    for (const ph of all) {
+      const label = `${level.chapter}/${ph.id}`;
+      const spec = composition[level.chapter]?.[ph.id] ?? null;
+      if (spec !== null) { geprueft.push({ label, ph, spec, level }); continue; }
+      if (level.draft === true) {
+        entwurfOhne.set(level.chapter, [...(entwurfOhne.get(level.chapter) ?? []), ph.id]);
+      } else {
+        loecher.push(label);
+      }
+    }
+  }
+  return { geprueft, entwurfOhne, loecher };
+}
+
+const levelsUnderAudit = [];
 for (const story of fs.existsSync(CONTENT) ? fs.readdirSync(CONTENT) : []) {
   const dir = path.join(CONTENT, story, "paint");
   if (!fs.existsSync(dir)) continue;
   for (const f of fs.readdirSync(dir).filter((x) => x.endsWith(".level.json"))) {
-    const level = JSON.parse(fs.readFileSync(path.join(dir, f), "utf8"));
-    if (level.draft === true) {
-    // L0: NAMENTLICH, nicht still. Ein Entwurf hat per Platzhalter-Doktrin
-    // keinen COMPOSITION-Eintrag, also ist das Ueberspringen richtig — aber ein
-    // Tor, das schweigend ueberspringt, ist von einem kaputten Tor nicht zu
-    // unterscheiden. (Vom blinden Leser dieser Bahn gefunden.)
-    console.log(`check-composition: ${level.chapter ?? "?"} uebersprungen (draft) — ein Kapitel im Bau traegt keine Komposition`);
-    continue;
-  }
-    const all = [...level.phases, ...(level.arena ? [level.arena] : []), ...(level.bonus ? [level.bonus] : [])];
-    for (const ph of all) {
-      const spec = COMPOSITION[level.chapter]?.[ph.id] ?? null;
-      phases.push({ label: `${level.chapter}/${ph.id}`, ph, spec, level });
-    }
+    levelsUnderAudit.push(JSON.parse(fs.readFileSync(path.join(dir, f), "utf8")));
   }
 }
-const withSpec = phases.filter((p) => p.spec !== null);
+const sortiert = sortiereKompositionsPhasen(levelsUnderAudit, COMPOSITION);
+for (const [chapter, ids] of sortiert.entwurfOhne) {
+  // NAMENTLICH, nicht still (L0) — und jetzt je Phase, mit Zahl.
+  console.log(`check-composition: ${chapter} (Entwurf) — ${ids.length} Phase(n) ohne COMPOSITION-Eintrag, keine der elf Messungen hat dort etwas zu vergleichen: ${ids.join(", ")}`);
+}
+for (const label of sortiert.loecher) {
+  fail("setup", `${label}: das Kapitel traegt KEINE draft-Flagge, aber diese Phase hat keinen COMPOSITION-Eintrag — sie faellt aus allen elf Audits (ein Loch, keine Bauphase, D-792)`);
+}
+const phases = sortiert.geprueft;
+const withSpec = phases;
 if (withSpec.length === 0) fail("setup", "no phase carries a composition manifest — the audits would pass vacuously");
+
+if (process.argv.includes("--selftest")) {
+  // L0e · der Entwurfs-Modus, als PAARE: dasselbe Kapitel, nur Flagge oder
+  // Eintrag bewegen sich. Beendet den Prozess nicht (wie der Buchstaben-Block).
+  const ph = (id) => ({ id });
+  const lv = (chapter, draft, ids) => ({ chapter, draft, phases: ids.map(ph) });
+  const comp = { ch01: { p1: {} }, ch02: { p1: {} } };
+  const faelle = [
+    ["ein Entwurf ohne Eintrag ist eine benannte Ausnahme, nicht rot",
+      sortiereKompositionsPhasen([lv("ch03", true, ["p1", "p2"])], comp), (r) => r.loecher.length === 0 && r.entwurfOhne.get("ch03")?.length === 2],
+    ["…dasselbe Kapitel OHNE Flagge ist ein Loch (rot)",
+      sortiereKompositionsPhasen([lv("ch03", false, ["p1", "p2"])], comp), (r) => r.loecher.length === 2],
+    ["eine Entwurfs-Phase MIT Eintrag wird geprueft (frueher fiel das ganze Kapitel heraus)",
+      sortiereKompositionsPhasen([lv("ch02", true, ["p1", "p2"])], comp), (r) => r.geprueft.map((x) => x.label).join() === "ch02/p1" && r.entwurfOhne.get("ch02")?.join() === "p2"],
+    ["eine fertige Phase ohne Eintrag neben einer mit Eintrag ist rot (frueher still)",
+      sortiereKompositionsPhasen([lv("ch01", false, ["p1", "p9"])], comp), (r) => r.loecher.join() === "ch01/p9" && r.geprueft.length === 1],
+  ];
+  let schlecht = 0;
+  for (const [name, got, ok] of faelle) {
+    const pass = ok(got);
+    if (!pass) schlecht++;
+    console.log(`${pass ? "✓" : "✗"} entwurfs-modus: ${name}`);
+  }
+  if (schlecht > 0) { failures += schlecht; console.error("  ✗ [setup] der Entwurfs-Modus-Selbsttest unterscheidet nicht"); }
+}
 
 // ── 1 · LAYER-VALUE ──────────────────────────────────────────────────────────
 console.log("1 · layer-value audit (doc 36 §1)");
