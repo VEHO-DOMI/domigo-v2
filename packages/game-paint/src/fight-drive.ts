@@ -312,11 +312,9 @@ export const createFightDriver = (s: FightSurfaces): FightDriver => {
         }
 
         const nach = s.read();
-        const griffJetzt = nach?.griff === true;
-        if (opts.haltAmGriff === true && griffJetzt && !griffVorher) {
-          return stop("griff", wipes, cards, cursor >= masks.length);
-        }
-        griffVorher = griffJetzt;
+        // Der Wisch ZUERST: faellt eine Schicht im selben Takt, in dem das Kind
+        // eine Kante greift, gewinnt der Wisch — sonst verschwaende er aus
+        // `wipes`, weil der naechste Abschnitt `vorher` neu liest (L0e-Review).
         if (nach !== null && vorher >= 0 && nach.knots < vorher) {
           wipes.push(nach.knots);
           vorher = nach.knots;
@@ -324,6 +322,11 @@ export const createFightDriver = (s: FightSurfaces): FightDriver => {
           return stop("wisch", wipes, cards, false);
         }
         if (nach !== null) vorher = nach.knots;
+        const griffJetzt = nach?.griff === true;
+        if (opts.haltAmGriff === true && griffJetzt && !griffVorher) {
+          return stop("griff", wipes, cards, cursor >= masks.length);
+        }
+        griffVorher = griffJetzt;
       }
       return stop("takte-auf", wipes, cards, cursor >= masks.length);
     },

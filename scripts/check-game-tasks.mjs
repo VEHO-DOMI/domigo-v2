@@ -221,6 +221,12 @@ export const D987_BESTAND = new Set([
 ]);
 const d985Gesehen = new Set();
 const d987Gesehen = new Set();
+/** …und WELCHE Units bzw. Kapitel ueberhaupt bis zu diesen Gesetzen kamen: ein
+ *  Kapitel ohne Karten-Datei (erlaubt, Entwurf) oder eines, das vorher an einem
+ *  anderen Fehler abbricht, hat seinen Bestand nicht bestaetigt — und nicht
+ *  WIDERLEGT. Veraltet heisst nur, was geprueft wurde und nicht zutraf. */
+const d985Units = new Set();
+const d987Kapitel = new Set();
 
 let failures = 0;
 /** When the selftest is driving, failures are COLLECTED instead of printed: a
@@ -1128,6 +1134,7 @@ function checkPortraits(file, items, cx, bestand = D987_BESTAND) {
   // hier nicht gemalt, auch wenn `paintedStems` es kennt.
   const gemalt = gemaltFuer(cx?.chapter ?? "ch01");
   const entwurf = cx?.draft === true;
+  if (cx?.chapter) d987Kapitel.add(cx.chapter);
   for (const t of items) {
     if (t.sceneRef?.beatId || t.sceneRef?.viewId || t.stimulus?.type === "scene") {
       const error = portraitSceneError(t, cx?.level);
@@ -1272,6 +1279,7 @@ function checkNoTwins(file, items) {
  *  exactly the drift this layer exists to catch. */
 function checkExercisesExist(file, items, reg, bestand = D985_BESTAND) {
   const w = path.basename(file);
+  d985Units.add(String(reg.unitSlug ?? "").replace(/-/g, ""));
   for (const t of items) {
     for (const id of t.exercises ?? []) {
       const where = [];
@@ -1814,9 +1822,11 @@ if (kunstBerichte.length > 0) {
 // L0e · die Sperrklinken veralten nicht still: ein Bestands-Eintrag, der in
 // diesem Lauf nicht mehr zutraf, ist erledigt und muss aus der Liste.
 for (const id of D985_BESTAND) {
+  if (!d985Units.has(id.split(".")[0])) continue; // Unit nicht geprueft — weder bestaetigt noch widerlegt
   if (!d985Gesehen.has(id)) fail("D985_BESTAND", `"${id}" hat inzwischen ein Korpus-Gegenstueck (oder keine Politik-Zeile mehr) — aus der Liste streichen, sonst deckt der Eintrag den naechsten Fall (D-985)`);
 }
 for (const id of D987_BESTAND) {
+  if (!d987Kapitel.has(id.split(".")[2])) continue; // Kapitel nicht geprueft — weder bestaetigt noch widerlegt
   if (!d987Gesehen.has(id)) fail("D987_BESTAND", `"${id}" verspricht keine fremde Kunst mehr — aus der Liste streichen, sonst deckt der Eintrag den naechsten Fall (D-987)`);
 }
 for (const g of ledger.gaps()) {

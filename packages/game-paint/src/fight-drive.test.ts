@@ -171,6 +171,20 @@ describe("L0e · haltAmGriff: der Abschnitt haelt am ersten Takt, in dem das Kin
     expect(c.reason).toBe("band-ende");
   });
 
+  it("faellt im Griff-Takt zugleich eine Schicht, gewinnt der WISCH (er darf nicht aus `wipes` verschwinden)", async () => {
+    let t = 0;
+    const d = createFightDriver({
+      press: () => undefined,
+      step: () => { t++; },
+      cardOpen: () => false,
+      solveCard: () => false,
+      read: () => ({ tick: t, knots: t >= 5 ? 1 : 2, knotsTotal: 2, wipeTeil: 0, overlay: false, guardian: null, hero: { x: 0, y: 0 }, griff: t >= 5 }),
+    });
+    d.load(band);
+    const a = await d.advance(undefined, { haltAmGriff: true });
+    expect([a.reason, a.played, a.wipes]).toEqual(["wisch", 5, [1]]);
+  });
+
   it("…und OHNE die Option faehrt derselbe Lauf bis ans Bandende (Tamper: die Option traegt)", async () => {
     const d = createFightDriver(griffShell());
     d.load(band);
