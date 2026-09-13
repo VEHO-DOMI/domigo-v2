@@ -1,0 +1,3 @@
+# CODEX DRAFT — NOT CANON
+
+Die aktuelle Gesamtprüfung fand59 unbenutzte Gemälde bei unveränderter Grenze57. Genau zwei durch den neuen Kapitelausgang/Tintenentwurf abgelöste Dateien wurden entfernt: ch01/tip_sparks.png und ch01/window_exit.png. loadedArtClaims prüfte zuvor sämtliche sechs Kapitel, ihre tatsächlichen Aufgaben und die vorhandenen PNGs: beide haben keine Ladestelle. Nach Entfernung bleiben sämtliche anderen beanspruchten Dateischlüssel identisch und57 unbenutzte Dateien. Keine fingierte Referenz, kein erhöhter Grenzwert. Größe und SHA256 stehen in retire-unused-ch01-applied.json. Historische Bilddateien bleiben in der Git-Geschichte. Das erzeugte Bildverzeichnis wurde mit dem bestehenden Generator aktualisiert.

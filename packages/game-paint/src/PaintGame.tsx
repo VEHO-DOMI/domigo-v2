@@ -22,7 +22,9 @@ import { IDLE_PAD, type Pad } from "./player.ts";
 import { LOGICAL_H, LOGICAL_W, LOOP_FPS, RENDER_SCALE, airModelByName } from "./paint.ts";
 import type { Ability, PaintLevel, PhaseSpec } from "./level.ts";
 import type { GameTaskV2 } from "@domigo/content-schema";
-import { CardHost } from "./cards/CardHost.tsx";
+// Input machines are needed only when an actual task opens. Keeping this
+// boundary outside the component preserves its identity across reference views.
+const CardHost = React.lazy(() => import("./cards/CardHost.tsx").then(module => ({ default: module.CardHost })));
 import { DEVICE_WINDOW } from "./story/picture-windows.ts";
 import { FoundMark, Key, KeyBit, Plate } from "./cards/Glance.tsx";
 import { type AuftaktCard, type AuftaktCounts, type UniformPiece, auftaktChain, auftaktExit, auftaktPosition, auftaktStep, auftaktTasks, clothWordsDe, uniformLegend, uniformLegendLine } from "./cards/auftakt.ts";
@@ -2780,6 +2782,7 @@ function Overlay({
   // ── the task card — the v2 card kit (machines + painted skins) ──
   // key by task id so CardHost re-mounts (fresh machine state) per task.
   return (
+    <React.Suspense fallback={<p className="pb-building-title">Wir öffnen das Kapitel …</p>}>
     <CardHost
       key={o.item!.id}
       task={o.item!}
@@ -2811,6 +2814,7 @@ function Overlay({
       // R5-W6b · D4 · D-371 · der eine Rückkanal für die Wertung (BLUEPRINT :371)
       onGrade={onGrade}
     />
+    </React.Suspense>
   );
 }
 

@@ -1,0 +1,22 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "levels": 6,
+  "beforeDead": 59,
+  "apply": true,
+  "targets": [
+    {
+      "file": "ch01/tip_sparks.png",
+      "claimers": [],
+      "bytes": 13930,
+      "sha256": "91734707c787a59b038f6363c34100ff3df36d63f45e52ce033c7c5c89ff9c79"
+    },
+    {
+      "file": "ch01/window_exit.png",
+      "claimers": [],
+      "bytes": 234212,
+      "sha256": "0b2b609d75ced32b2ed2ee90a943d6b5be204f4a506882091ff165b84389c336"
+    }
+  ],
+  "afterDead": 57,
+  "remainingClaimsUnchanged": true
+}

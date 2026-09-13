@@ -1,0 +1,5 @@
+# CODEX DRAFT — NOT CANON
+
+Der unveränderte AQ17-Selbsttest druckte fünf bestandene Fälle, blieb aber im erzwungenen Node-24-Prozessabschluss hängen. Die native Stichprobe zeigt NodePlatform::Shutdown/uv_thread_join und einen auf Speicherbereinigung wartenden Compiler-Arbeiter. Ein unveränderter Kontrolllauf reproduzierte dies; beide ausschließlich eigenen Prozesse wurden beendet. Der erste Gesamtlauf zählt das Tor deshalb als fehlgeschlagen.
+
+Die Selbsttest-Verzweigung setzt jetzt den Exit-Code und lässt Node natürlich beenden. Ein ausdrücklicher else-Zweig verhindert jeden anschließenden echten Import. Alle fünf Prüfungen, Messungen und Grenzwerte bleiben unverändert. Node24 ohne Sonderflags endet mit Exit0. Eine isolierte Kopie setzt ausschließlich die gemessene Magentapunktzahl auf null: der vorhandene negative Fall wird rot, Exit1, ohne Erfolgsmeldung und ohne Importdurchlauf. Unveränderte Kontrollen davor und danach enden mit Exit0. Belege aq17-final-proof/results.json und zugehörige Logs; Produktionsdatei bei den Negativproben unverändert.

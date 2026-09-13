@@ -6,8 +6,16 @@
       "sha256": "6980db20bd51add1f0701236c16439ce287e51b34942351f72f4c38c6d3ebbc0"
     },
     {
+      "path": "aq17-final-proof/results.json",
+      "sha256": "27cd388e8a8ceefec99defac93cd13d301cff8e15e8fa036523ee2940fb2b6cd"
+    },
+    {
+      "path": "aq17-stuck-sample.txt",
+      "sha256": "b1133ae9673c9b439e387107e5410c5b828487c2990d4c0bcd4b029b99e39f23"
+    },
+    {
       "path": "blind-language/METHOD.md",
-      "sha256": "2ba4f0cb6ce65d878009a99427935a499759b9f6548fd87ae2c1d22a15f4ec55"
+      "sha256": "a312c6d18f3215717ca78bb732e0020003d0b5c38aefbfbcad646af6b8cf47d2"
     },
     {
       "path": "blind-language/arena-followup-reader.txt",
@@ -23,7 +31,7 @@
     },
     {
       "path": "blind-language/pin-verification.json",
-      "sha256": "85c9ef3aebe62ebd4ea40f5c26f335503aabd51047341de5ab3c20f0d0bb04bc"
+      "sha256": "bee814cbbbd85e832542cd73cb389556d5319fe9ed5159f53e1755e1a16dcdc4"
     },
     {
       "path": "blind-language/tasks-reader.txt",
@@ -35,7 +43,7 @@
     },
     {
       "path": "blind-language/ui-line-mapping.json",
-      "sha256": "91cef198479ea09228853d3a31c7795f1ae26040b01e5262030b14227c509f1b"
+      "sha256": "9798faf3f6df22efa6f7c1277c135770de979ad036b7611c7868e988375bb631"
     },
     {
       "path": "blind-language/ui-reader.txt",
@@ -43,7 +51,7 @@
     },
     {
       "path": "blind-language/ui-sourcehashes.json",
-      "sha256": "d9d89264499462691d52a4e0b6c15d0e274ac39d5f2a3b14e9845196161b92be"
+      "sha256": "7c76ac3094a0977c0b75f17ff0dc5078605b00bc919e2314294abffb3ace93e4"
     },
     {
       "path": "blind-language/ui-student-lines.txt",
@@ -91,7 +99,7 @@
     },
     {
       "path": "blind-visual/TRIAGE.md",
-      "sha256": "402f87703befbf6d842eae571fe8b1e0b686e73b9268bdaa1c75f67abdcf38d9"
+      "sha256": "90716359084c0ffc77b072f5e6f7f672d7dbb007d52025e9dd596ac27dae99ce"
     },
     {
       "path": "blind-visual/reader-a.txt",
@@ -128,6 +136,38 @@
     {
       "path": "cohesion-browser-4.png",
       "sha256": "d212018388215d76c5e371621f33664013d120a1b88bbb744c672b80e0a7d75b"
+    },
+    {
+      "path": "final-battery-first-summary.json",
+      "sha256": "f0014125cd96c0e3cd7eb46e0fb5dc2bfca8f35d53da6d9d75a7480194937c2a"
+    },
+    {
+      "path": "final-gate-aq17-fix.md",
+      "sha256": "627c0c512e63fa5dc3338dd5799fc2e255ab64a4b393031b24d22a037bf9b6b7"
+    },
+    {
+      "path": "final-gate-bundle-fix.md",
+      "sha256": "284a621c838875b814bd8ed8b01e3cf43e1a827de1b5ee418eebecb04304bc51"
+    },
+    {
+      "path": "final-gate-level-fix.md",
+      "sha256": "541ade5be51f0542fab0ce45c9fce75a9bb0eb1e36a89b9a7b643619ec4128fd"
+    },
+    {
+      "path": "final-gate-stencil-fix.md",
+      "sha256": "6a612cbb1b44e824c61b973e087481806e301995a108af9ce0988e9dd815c6e0"
+    },
+    {
+      "path": "final-gate-stencil-tamper/results.json",
+      "sha256": "3907813894bdf1d13ea9e41c6492e1b297f265ddde549abcaded7e1634d951ae"
+    },
+    {
+      "path": "final-gate-web-diagnosis.md",
+      "sha256": "8a07acd8d9c4e0b5d419b5c06303dcc40e792e45517793e84316941a52afca56"
+    },
+    {
+      "path": "final-lazy-card-bundle-measurements.json",
+      "sha256": "3af641beb96e8f359498b4e6533b82ecd9ef591fe9de06918fdbe8825c504e0e"
     },
     {
       "path": "implementation-blackboard-art.md",
@@ -210,6 +250,10 @@
       "sha256": "fa64042adce0af643fab16a49e8b5947212ecbc60f528c689954d69f7300be9e"
     },
     {
+      "path": "implementation-perf-final.md",
+      "sha256": "cccf5ee9c557cf02655a1d2177b97c5c7e523bef965e0988ca9c10700e420633"
+    },
+    {
       "path": "implementation-photo-card.md",
       "sha256": "3c57132b853e10568b85e83b8752c5796df700d34c0d9321bde94ecb48327c68"
     },
@@ -224,6 +268,10 @@
     {
       "path": "implementation-preflight-mechanics.md",
       "sha256": "b61ab6a0a0b03d13153355dade65e9667f6d6ba3fd954cf33ca6575b5045e450"
+    },
+    {
+      "path": "implementation-production-browser.md",
+      "sha256": "fe42f76ee6c27d00f332e4583950ba075a73178d01b8aa508346cf23d5292b24"
     },
     {
       "path": "implementation-profile-photo.md",
@@ -266,6 +314,22 @@
       "sha256": "3ce35adfe1e6bc8a16027bd4f94fea9993a2d4eb941457799abc6a6fe4f9e730"
     },
     {
+      "path": "implementation-unused-art-retirement.md",
+      "sha256": "ace33ada967634b1c55f2b0812e9f1f563b51e63f2ef64131c46ec3938e37437"
+    },
+    {
+      "path": "lazy-card-browser-results.json",
+      "sha256": "b180b4af296091e1071cca99675d3de5d83f73df82b52d3e30f0ab62168c2576"
+    },
+    {
+      "path": "level-design-fix-sourcehashes.json",
+      "sha256": "56eea7fdd59f9cecc190753407b4ba00ae211519dd6d88b4c8d164a3fa50f6ab"
+    },
+    {
+      "path": "level-design-fix-tampers/results.json",
+      "sha256": "e81dacf58fd11a1e8926aadd3ba0fe5db7b44840fd2169b5065de1e67a5133a5"
+    },
+    {
       "path": "merle-corrected-p3-final-standing.png",
       "sha256": "ce7bc6dc9e1e2d37bd4b1c7ca783ddee9936b1b7f8f9821913077324b7c1b444"
     },
@@ -274,12 +338,20 @@
       "sha256": "5cd6024c6ec4082d747005f19cb89c6bfb3aee917ea72a80bba55eeb44459e8d"
     },
     {
+      "path": "pr-gate-inventory-final.json",
+      "sha256": "48e89a8460ce5b3f3a7f9f6f8428a9ec257acaf05a3a95205aee52d71aebfdf7"
+    },
+    {
       "path": "pr-gate-inventory.json",
       "sha256": "411ab94bede3dc2a738734955113e11cfeaca5e5680967f16e045b5b4bc6d184"
     },
     {
       "path": "provenance-requirements-final-audit.md",
       "sha256": "31c67819369c8aa4586192160bc7820b8523f84828ffff792538efdc488a7b8c"
+    },
+    {
+      "path": "retire-unused-ch01-applied.json",
+      "sha256": "846193c4ef7fcd9364b5948778686fd8f6c33bc5bf3592656a94f2c183db81cc"
     },
     {
       "path": "rulebook-archive-after-reload.png",

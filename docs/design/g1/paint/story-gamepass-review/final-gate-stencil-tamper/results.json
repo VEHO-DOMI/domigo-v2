@@ -1,0 +1,32 @@
+{
+  "label": "CODEX DRAFT \u2014 NOT CANON",
+  "isolatedCopy": "/Users/veho/Code/codex-lab/trial-berichte/CH01_STORY_SPIELPASS/final-gate-stencil-tamper/isolated-5gyuz1f2",
+  "scriptSha256": "96e2d5679530df8e82596489486ad09d836d24adbb5738831db2f28cc925f84a",
+  "cases": [
+    {
+      "case": "baseline",
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "messagePresent": true
+    },
+    {
+      "case": "wrong-historical-reference",
+      "exitCode": 1,
+      "expectedExitCode": 1,
+      "messagePresent": true
+    },
+    {
+      "case": "removed-podium-restored",
+      "exitCode": 1,
+      "expectedExitCode": 1,
+      "messagePresent": true
+    },
+    {
+      "case": "restored-baseline",
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "messagePresent": true
+    }
+  ],
+  "productSourcesAndPNGsNeverMutated": true
+}

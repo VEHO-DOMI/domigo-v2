@@ -333,9 +333,7 @@
     "terrain_night_lectern_p2": "/art/g1/paint/ch01/terrain_night_lectern_p2.png?v=69fe8de1",
     "terrain_night_lectern_shelf_p2": "/art/g1/paint/ch01/terrain_night_lectern_shelf_p2.png?v=b55e6740",
     "terrain_night_shelf_p2": "/art/g1/paint/ch01/terrain_night_shelf_p2.png?v=0381d2b0",
-    "terrain_reading_bench_p1": "/art/g1/paint/ch01/terrain_reading_bench_p1.png?v=e96fa928",
-    "tip_sparks": "/art/g1/paint/ch01/tip_sparks.png?v=07003c60",
-    "window_exit": "/art/g1/paint/ch01/window_exit.png?v=b136e19b"
+    "terrain_reading_bench_p1": "/art/g1/paint/ch01/terrain_reading_bench_p1.png?v=e96fa928"
   },
   "ch02": {
     "affe_a": "/art/g1/paint/ch02/affe_a.png?v=061939f0",

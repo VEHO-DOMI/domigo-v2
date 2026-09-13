@@ -51,6 +51,7 @@
  */
 import fs from "node:fs";
 import path from "node:path";
+import { createHash } from "node:crypto";
 import { PNG } from "pngjs";
 import { bodySlopeCells, slopeSurfaceInCell } from "../packages/game-paint/src/visualBodies.ts";
 import { CH01_BODIES, P2_WAVE_BODIES, bodyCells, gridOf } from "../packages/game-paint/src/visualBodies.ts";
@@ -145,19 +146,54 @@ const SELFTEST_MIN_PCT = 99;
 const selftest = () => {
   const level = levelGrids();
   const grid = gridOf(level, "p2");
+  // The three changed rooms own current, importer-bound stencils. Keep the
+  // earlier N6 delivery intact: its paintings and masks describe the old rooms.
+  const currentIds = new Set(["p2_deckenbahn_ost", "p2_ostwand_treppe_boden", "p3_ostmauer_sims"]);
+  const pack = path.join(process.cwd(), "docs/art/ch01-story-gamepass/terrain");
+  const manifest = JSON.parse(fs.readFileSync(path.join(pack, "import-manifest.json"), "utf8"));
+  const report = JSON.parse(fs.readFileSync(path.join(pack, "registered/import-ch01-buecherwelt.report.json"), "utf8"));
+  const p3Body = CH01_BODIES.p3.find(body => body.id === "p3_ostmauer_sims");
+  if (!p3Body) { console.error("Selbsttest: aktueller Koerper p3_ostmauer_sims fehlt"); return 1; }
+  const cases = [...P2_WAVE_BODIES.map(body => ({ body, phase: "p2" })), { body: p3Body, phase: "p3" }];
+  if (cases.filter(({body}) => currentIds.has(body.id)).length !== 3) {
+    console.error("Selbsttest: genau drei aktuelle Referenzkoerper erforderlich"); return 1;
+  }
   let worst = 100;
-  for (const body of P2_WAVE_BODIES) {
-    const file = path.join(MASK_DIR, `${body.stem}.MASKE.png`);
+  for (const { body, phase } of cases) {
+    const current = currentIds.has(body.id);
+    const entry = current ? manifest.assets.find(asset => asset.stem === body.stem) : undefined;
+    const receipt = current ? report.assets.find(asset => asset.stem === body.stem) : undefined;
+    const relativeMask = `masks/${body.stem}.MASKE.png`;
+    if (current && (entry?.clipAlpha !== relativeMask || !receipt?.clip?.sha256)) {
+      console.error(`Selbsttest: aktuelle Importmasken-Bindung fehlt (${body.stem})`); return 1;
+    }
+    const file = current ? path.join(pack, relativeMask) : path.join(MASK_DIR, `${body.stem}.MASKE.png`);
     if (!fs.existsSync(file)) {
       console.error(`Selbsttest: committete Schablone fehlt (${file})`);
       return 1;
     }
-    const committed = PNG.sync.read(fs.readFileSync(file));
-    const built = stencilOf(body, grid);
+    const bytes = fs.readFileSync(file);
+    if (current && createHash("sha256").update(bytes).digest("hex") !== receipt.clip.sha256) {
+      console.error(`Selbsttest: aktuelle Maske stimmt nicht mit Importbeleg ueberein (${body.stem})`); return 1;
+    }
+    const committed = PNG.sync.read(bytes);
+    const built = stencilOf(body, gridOf(level, phase));
     const cmp = compareSheets(built, committed);
     if (!cmp.sameSize || cmp.equalPct < SELFTEST_MIN_PCT) {
       console.error(`✗ ${body.stem}: ${cmp.equalPct.toFixed(3)} % gleich (${cmp.note}) — verlangt sind ${SELFTEST_MIN_PCT} %`);
       return 1;
+    }
+    // The 99% RGBA tolerance remains unchanged. Current room geometry has a
+    // separate exact contract: no mandatory-material pixel may become air or
+    // vice versa. Otherwise the removed one-cell p3 podium slips through at
+    // 99.61%, despite changing the room's actual standing surface.
+    if (current) {
+      let differentMatter = 0;
+      for (let i = 3; i < built.data.length; i += 4)
+        if ((built.data[i] > 0) !== (committed.data[i] > 0)) differentMatter++;
+      if (differentMatter) {
+        console.error(`Selbsttest: aktuelle Pflichtkontur weicht ab (${body.stem}): ${differentMatter} Materie/Luft-Pixel`); return 1;
+      }
     }
     worst = Math.min(worst, cmp.equalPct);
     console.log(`✓ ${body.stem} (${bodyCells(body).length} Zellen, ${built.width}x${built.height}): ${cmp.equalPct.toFixed(3)} % Pixel-Gleichheit`);
@@ -177,7 +213,7 @@ const selftest = () => {
     return 1;
   }
   console.log(`✓ Tamper: eine gekippte Masken-Zelle faellt auf ${bentCmp.equalPct.toFixed(3)} % (< ${SELFTEST_MIN_PCT} %) — rot`);
-  console.log(`make-body-stencils: Selbsttest OK — 6 Schablonen nachgebaut (schlechteste ${worst.toFixed(3)} %), 1 Tamper rot`);
+  console.log(`make-body-stencils: Selbsttest OK — 7 Schablonen nachgebaut (4 historische, 3 aktuelle Importmasken) (schlechteste ${worst.toFixed(3)} %), 1 Tamper rot`);
   return 0;
 };
 

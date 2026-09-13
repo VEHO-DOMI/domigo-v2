@@ -1,7 +1,7 @@
 {
  "schema": "paintClaims@1",
  "chapter": "ch01",
- "note": "L0 · D10 · DIE VOKABEL-ANSPRUECHE DIESES KAPITELS. Verbatim aus der CLAIMS-Tabelle von scripts/check-level-design.mjs uebernommen (Level-Welle, 2026-09-02) — dieselben Schluessel, dieselben Werte, dieselbe Reihenfolge. Sie standen im Tor, weil es nur ein Kapitel gab; ein zweites haette entweder die Tabelle des ersten geerbt oder eine zweite Tabelle im selben Code gebraucht, in die fuenf Kapitel-Bahnen gleichzeitig haetten schreiben muessen. Die Bedeutung der Klassen steht unveraendert im Tor (being/thing/architecture/cards/pickup/debt).",
+ "note": "L0 · D10 · DIE VOKABEL-ANSPRUECHE DIESES KAPITELS. Historischer Stand 2026-09-02: verbatim aus der CLAIMS-Tabelle von scripts/check-level-design.mjs uebernommen (Level-Welle, 2026-09-02) — dieselben Schluessel, dieselben Werte, dieselbe Reihenfolge. Sie standen im Tor, weil es nur ein Kapitel gab; ein zweites haette entweder die Tabelle des ersten geerbt oder eine zweite Tabelle im selben Code gebraucht, in die fuenf Kapitel-Bahnen gleichzeitig haetten schreiben muessen. Die bisherigen Klassen (being/thing/architecture/cards/pickup/debt) behalten ihre Bedeutung im Tor; die unten datierte Änderung ergänzt genau passivePickup. CODEX DRAFT — NOT CANON; Koki-Spielpass 2026-09-13: neun reine Wortfunde, keine Benennkarten. passivePickup bindet die wirkliche Policy und deren strenge Fundprüfung; der alte pickup-Vertrag bleibt unverändert.",
  "claims": {
   "pencil": {
    "kind": "being",
@@ -85,67 +85,85 @@
    "kind": "cards"
   },
   "hairband": {
-   "kind": "pickup",
+   "kind": "passivePickup",
    "stems": [
     "cloth_hairband"
    ],
-   "card": "g1.paint.ch01.uni.hairband"
+   "wordId": "g1u01.w.hairband",
+   "phaseId": "p1",
+   "entityId": "p1-cloth-hairband"
   },
   "sunglasses": {
-   "kind": "pickup",
+   "kind": "passivePickup",
    "stems": [
     "cloth_sunglasses"
    ],
-   "card": "g1.paint.ch01.uni.sunglasses"
+   "wordId": "g1u01.w.sunglasses",
+   "phaseId": "p1",
+   "entityId": "p1-cloth-sunglasses"
   },
   "hat": {
-   "kind": "pickup",
+   "kind": "passivePickup",
    "stems": [
     "cloth_hat"
    ],
-   "card": "g1.paint.ch01.uni.hat"
+   "wordId": "g1u01.w.hat",
+   "phaseId": "p1",
+   "entityId": "p1-cloth-hat"
   },
   "school tie": {
-   "kind": "pickup",
+   "kind": "passivePickup",
    "stems": [
     "cloth_school_tie"
    ],
-   "card": "g1.paint.ch01.uni.school-tie"
+   "wordId": "g1u01.w.school-tie",
+   "phaseId": "p2",
+   "entityId": "p2-cloth-school-tie"
   },
   "shirt": {
-   "kind": "pickup",
+   "kind": "passivePickup",
    "stems": [
     "cloth_shirt"
    ],
-   "card": "g1.paint.ch01.uni.shirt"
+   "wordId": "g1u01.w.shirt",
+   "phaseId": "p2",
+   "entityId": "p2-cloth-shirt"
   },
   "sweater": {
-   "kind": "pickup",
+   "kind": "passivePickup",
    "stems": [
     "cloth_sweater"
    ],
-   "card": "g1.paint.ch01.uni.sweater"
+   "wordId": "g1u01.w.sweater",
+   "phaseId": "p2",
+   "entityId": "p2-cloth-sweater"
   },
   "skirt": {
-   "kind": "pickup",
+   "kind": "passivePickup",
    "stems": [
     "cloth_skirt"
    ],
-   "card": "g1.paint.ch01.uni.skirt"
+   "wordId": "g1u01.w.skirt",
+   "phaseId": "p3",
+   "entityId": "p3-cloth-skirt"
   },
   "socks": {
-   "kind": "pickup",
+   "kind": "passivePickup",
    "stems": [
     "cloth_socks"
    ],
-   "card": "g1.paint.ch01.uni.socks"
+   "wordId": "g1u01.w.socks",
+   "phaseId": "p3",
+   "entityId": "p3-cloth-socks"
   },
   "shoe": {
-   "kind": "pickup",
+   "kind": "passivePickup",
    "stems": [
     "cloth_shoe"
    ],
-   "card": "g1.paint.ch01.uni.shoe"
+   "wordId": "g1u01.w.shoe",
+   "phaseId": "p3",
+   "entityId": "p3-cloth-shoe"
   },
   "projector": {
    "kind": "architecture"

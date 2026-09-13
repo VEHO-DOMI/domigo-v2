@@ -1,0 +1,23 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "before": {
+    "name": "3gewpw4tptjus.js",
+    "gzipBytes": 153853
+  },
+  "budget": 153600,
+  "after": {
+    "name": "3gzso4ko9jjfn.js",
+    "bytes": 531454,
+    "gzipBytes": 150276,
+    "phaser": false
+  },
+  "phaser": [
+    {
+      "name": "12k7f8j6ncspm.js",
+      "bytes": 1192611,
+      "gzipBytes": 315903,
+      "phaser": true
+    }
+  ],
+  "clientChunks": 44
+}
