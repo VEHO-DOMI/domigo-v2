@@ -459,6 +459,7 @@ const auftaktCountsFor = (level: PaintLevel): AuftaktCounts => ({
 export default function PaintGame({ level, art, tasks, hubHref, buildSha, startPhase, debugGrid, debugPerf, noWarm, onTipCollected, archivedTips = [], openingSeen, onOpeningRead, storySeen, runSeed, displayName = "", rescuedClassmateIds = [], profilePersisted = true, onStoryRead, onNameChosen, onClassmateRescued, classPhotoUnlocked = false, onClassPhotoFound }: PaintGameProps): React.ReactElement {
   const hostRef = useRef<HTMLDivElement | null>(null);
   const shellRef = useRef<HTMLDivElement | null>(null);
+  const hudRef = useRef<HTMLDivElement | null>(null);
   const gameRef = useRef<Phaser.Game | null>(null);
   const sceneRef = useRef<PaintScene | null>(null);
   const padRef = useRef<Pad>({ ...IDLE_PAD });
@@ -508,12 +509,17 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
       if (viewport && viewport.scale !== 1) return;
       shellRef.current?.style.setProperty("--pb-viewport-height", `${viewport?.height ?? window.innerHeight}px`);
       shellRef.current?.style.setProperty("--pb-viewport-top", `${viewport?.offsetTop ?? 0}px`);
+      const hud = hudRef.current;
+      if (hud) shellRef.current?.style.setProperty("--pb-hud-space", `${hud.offsetTop + hud.offsetHeight + 6}px`);
     };
     update();
+    const observer = new ResizeObserver(update);
+    if (hudRef.current) observer.observe(hudRef.current);
     window.addEventListener("resize", update);
     viewport?.addEventListener("resize", update);
     viewport?.addEventListener("scroll", update);
     return () => {
+      observer.disconnect();
       window.removeEventListener("resize", update);
       viewport?.removeEventListener("resize", update);
       viewport?.removeEventListener("scroll", update);
@@ -1832,6 +1838,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
           and the counters sit above it. One class on the ROW, so a chip added
           later cannot forget to step back with the rest. */}
       <div
+        ref={hudRef}
         className={`pb-game-hud${overlay !== null ? " pb-hud-dim" : ""}`}
         style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "6px 2px", gap: 8 }}
       >
