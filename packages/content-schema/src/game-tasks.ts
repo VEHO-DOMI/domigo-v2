@@ -533,8 +533,10 @@ export function registerErrorsDe(text: string | undefined): string[] {
 }
 
 /** The kurzweilig law (F2-2): a card line is one short clause + the ask,
- *  read-aloud-able by a six-year-old in about five seconds. Shared with the
- *  Regel-Seiten Merksatz law, which is read aloud in exactly the same breath. */
+ *  read-aloud-able by a six-year-old in about five seconds. NOT shared with the
+ *  Merksatz: the Regel-Seite and the chapter's resting lines (whyDe, hintsDe)
+ *  take their own, longer cap, `MAX_MERKSATZ` = 78 in
+ *  packages/game-paint/src/level.ts (L0e · D-988). */
 export const MAX_LINE_DE = 56;
 
 // ── the CLOAK LAW (doc 31 §6, doc 44 §4; R5-C1) ──────────────────────────────
