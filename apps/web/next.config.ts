@@ -1,4 +1,6 @@
 import type { NextConfig } from "next";
+import { PHASE_PRODUCTION_BUILD } from "next/constants";
+import { writePaintArtManifest } from "./scripts/paint-art-manifest.ts";
 
 const nextConfig: NextConfig = {
   // Vercel ships each serverless function with only the files STATIC analysis
@@ -14,6 +16,12 @@ const nextConfig: NextConfig = {
     // static tracing); the S-2b sandbox gate reads the skill + runner off disk
     // and writes them into the Vercel Sandbox — trace those in too.
     "/**": ["../../content/corpus/**", "../../content/overlays/**", "skills/**", "scripts/sandbox/**"],
+  },
+  // Paint URLs/hashes are compiled from the manifest below. PNGs remain public
+  // static assets, but must not ALSO fill every play function (303.7 MB >250 MB).
+  // Other art resolvers still read their own files at runtime: do not exclude them.
+  outputFileTracingExcludes: {
+    "/**": ["public/art/g1/paint/**"],
   },
   // Workspace packages ship raw TS/TSX (exports → ./src/index.ts*); Next must transpile them.
   transpilePackages: [
@@ -73,4 +81,9 @@ const nextConfig: NextConfig = {
     : {}),
 };
 
-export default nextConfig;
+export default function config(phase: string): NextConfig {
+  // Run for direct `next build` too, before route compilation. Never regenerate
+  // at `next start`: a deployed function deliberately has no paint PNGs on disk.
+  if (phase === PHASE_PRODUCTION_BUILD) writePaintArtManifest(process.cwd());
+  return nextConfig;
+}

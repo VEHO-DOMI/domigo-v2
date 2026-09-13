@@ -1,14 +1,16 @@
 import "server-only";
 /**
  * paint-art — the only-present resolver for THE PAINTED BOOK's art tree
- * (apps/web/public/art/g1/paint/**): every PNG that EXISTS becomes a
+ * (apps/web/public/art/g1/paint/**): every PNG that EXISTS at build time becomes a
  * stem → url entry; every missing stem keeps its procedural fallback inside
  * the scene (the keen-art law — art lands incrementally, batch by batch,
- * and the game never breaks on a missing file).
+ * and the game never breaks on a missing file). Production reads the build's
+ * manifest; local development retains filesystem discovery.
  */
 import fs from "node:fs";
 import path from "node:path";
 import { stamped } from "./art-fingerprint";
+import paintManifest from "./paint-art-manifest.json" with { type: "json" };
 
 /** L0 · D2 · DER AUFLÖSER BEKOMMT DAS KAPITEL.
  *
@@ -41,9 +43,11 @@ const artDirsFor = (chapter: string): readonly string[] => ["hero", chapter];
  * After a merge that repaints three files, a returning child downloads three
  * files instead of 298.
  *
- * Cost, measured on this machine: 228 ms to hash 118 MB, ONCE per server
+ * Historical runtime cost: 228 ms to hash 118 MB, ONCE per server
  * instance — the result is cached below, so no request pays it twice. The commit
- * sha stays as the fallback for any file that cannot be read.
+ * sha stays as the local-development fallback for any unreadable file.
+ * Production now computes the same hashes at build time: shipping the PNGs
+ * inside the function exceeded Vercel's 250 MiB limit when Zoo art landed.
  */
 // R5-W3 · E5: the helper moved to art-fingerprint.ts, because keen/tile/story
 // art was serving 66 MB under the same immutable header with NO cache key.
@@ -59,6 +63,14 @@ export const resolvePaintArt = (chapter: string): Record<string, string> => {
   const hit = cache.get(chapter);
   if (hit) return hit;
   const out: Record<string, string> = {};
+  if (process.env.NODE_ENV === "production") {
+    // Generated at every production build from exactly the same file bytes.
+    // Keep hero → chapter precedence; an absent chapter keeps the shared hero.
+    const manifest: Record<string, Record<string, string>> = paintManifest;
+    for (const dir of artDirsFor(chapter)) Object.assign(out, manifest[dir] ?? {});
+    cache.set(chapter, out);
+    return out;
+  }
   const root = path.join(process.cwd(), "public", "art", "g1", "paint");
   for (const dir of artDirsFor(chapter)) {
     const abs = path.join(root, dir);

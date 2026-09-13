@@ -1447,6 +1447,8 @@ Nummernblock D-1000–1029 gemäß Trial-Mandat R295; Fortsetzung der ch02-Werks
 
 | D-1007 | Der Ladegrößentest übersprang Entwurfskapitel; ch02/p2 lag trotz grünem altem Test über 35 MiB. | `packages/game-paint/src/artScope-budget-drafts.test.ts`; `packages/game-paint/src/zoo-art-scope.test.ts`; Trial-Belege `lossless-compression` und `zoo-exact-scope`. | 33 zusätzliche Größenprüfungen erfassen alle 30 Räume. Neue Bilder werden verlustfrei komprimiert; ausdrücklich aktivierte Zoo-Figuren laden ihre registrierten Animationszellen statt sämtlicher namensähnlicher Kartenbilder. Vorher 38,833 MiB nach Kompression allein, danach rund 33,549 MiB im schwersten Raum. Grenzwert 35 MiB unverändert; entfernte echte Bewegungszelle wird rot erkannt. | behoben und gezielt geprüft · 2026-09-13 | CODEX-TRIAL · Bildbau ch02 |
 
+| D-1008 | Die Vorschau von PR #424 packte die öffentlich ausgelieferten Bilder zusätzlich in die Spiel-Serverfunktion: 303,7 MB überschritten Vercels 250-MB-Grenze. | `apps/web/lib/paint-art-manifest.test.ts`; `apps/web/scripts/check-paint-function-traces.mjs`; `apps/web/next.config.ts`. | Jeder Produktionsbau erzeugt die Paint-Dateiliste samt unveränderten Inhalts-Fingerabdrücken vor dem Kompilieren. Der Produktionsauflöser braucht nur diesen Index; ausschließlich Paint-Dateien werden aus den Funktionspaketen ausgeschlossen und bleiben öffentliche Bilder. Andere Bildauflöser behalten ihre Laufzeitdateien. Der Test vergleicht alle realen Kapiteladressen ohne verfügbaren Paint-Ordner; der Bauprüfer lehnt Bilddateien im tatsächlichen Funktionspaket sowie Pakete über 250 MiB ab. | Korrektur gebaut; vollständige Batterie und Vercel-Nachprüfung im PR-Bericht | CODEX-TRIAL · Vorschau-Paketgröße |
+
 ### LW · ch03 (D-830…859)
 #### L3-G
 
