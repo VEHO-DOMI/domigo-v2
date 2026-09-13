@@ -1173,38 +1173,8 @@ const SCALE_WAIVERS = {
   // GEPRUEFTE Stufe (`pxPerCell: 64`, Blattbreite = Zellen x 64 exakt) — damit
   // gilt fuer sie die Kurs-Paritaet nicht mehr, ihre Zeilen wurden nie wieder
   // konsultiert, und die Schal-Pruefung unten hat sie selbst genannt.
-  // ── DIE VIER ECKEN · ★ EINE NARBE, KEINE BEQUEMLICHKEIT (M1, 2026-08-22) ───
-  //
-  // Die Eckblaetter sind 512x504 / 512x503 / 512x494 / 510x432 und werden in
-  // einen 12-px-Kasten gezeichnet — 0,29x bis 0,36x des Massstabs, den der Trim
-  // EINEN Bildpunkt daneben traegt. Das ist gemessen der schaerfste Bruch, den
-  // diese Bahn gefunden hat, und er ist NICHT behoben.
-  //
-  // Er ist behoben WORDEN — und wieder zurueckgebaut. Der Kasten wuchs auf die
-  // gemalte Groesse (41,1 px, alle vier Ecken exakt 1,00 x 1,00), das Bild wurde
-  // schlechter, und ZWEI blinde Leser (Sonnet 5, dasselbe Paar in getauschter
-  // Reihenfolge, p3 Warp 16,17, Takt 276) nannten unabhaengig den ALTEN Stand
-  // das Bild, das sich eher wie EIN Material liest — 2:0. Woertlich aus einem
-  // der beiden Protokolle: die grossen Ecken lesen sich als »einzeln angesetzte
-  // Holzkloetze statt wie aus dem Buecherstapel herausgearbeitete Stufen«.
-  //
-  // Die Zeile sagt deshalb etwas Genaueres als »ausgenommen«: **die Blaetter
-  // sind fuer ihre Rolle zu gross gemalt.** Eine Ecke, die eine 16-px-Zelle
-  // abrundet, braucht rund 150 Quellpixel, nicht 512. Das ist eine Bestellung
-  // an AS6, kein Motor-Posten — und bis sie geliefert ist, gewinnt die Anatomie
-  // (`CORNER`) gegen den Massstab, wie bei `EDGE_W` und `CRUST_H` auch.
-  //
-  // ⚠ Was NICHT ausgenommen ist und auch nicht sein darf: die Verzerrung. Der
-  // Kasten war quadratisch und quetschte `mass_incorner_r` 18,1 % senkrecht.
-  // Der Kasten traegt jetzt das Seitenverhaeltnis seines Blattes (`mass.ts`
-  // §4 `cornerBox`), alle vier Ecken messen 0,0 % Verzug, und das
-  // Verzogen-Gesetz oben laesst diese Zeile das gar nicht decken.
-  //
-  // Ohne Raum-Praefix: die vier Blaetter sind in ALLEN fuenf Raeumen dieselben.
-  "cornerBL:mass_corner_bl": { until: "2026-11-30", why: "Blatt 512x504 in einem 12-px-Kasten (0,29x…0,34x je Raum). Anhebung auf gemalte Groesse gebaut und von 2 blinden Lesern 2:0 verworfen — die Ecke wird zum Holzklotz ueber dem Material, das sie abrunden soll. Bestellung: Eckblatt bei ~150 px statt 512 (AS6). Verzug 0,0 %" },
-  "cornerBR:mass_corner_br": { until: "2026-11-30", why: "Blatt 512x503, sonst wie cornerBL — dieselbe Messung, dasselbe Panel, dieselbe Bestellung" },
-  "inCornerL:mass_incorner_l": { until: "2026-11-30", why: "Blatt 512x494, sonst wie cornerBL. Der Kasten trug frueher 3,6 % Verzug; jetzt 0,0 %" },
-  "inCornerR:mass_incorner_r": { until: "2026-11-30", why: "Blatt 510x432 — DAS Blatt, das im quadratischen Kasten 18,1 % senkrecht gestaucht wurde. Die Stauchung ist WEG (0,0 % Verzug); die Untergroesse bleibt und faellt mit AS6" },
+  // Kapitel1 ist vollständig auf ganze Körper umgestellt. Die vier früheren
+  // Eckbauteile werden nicht mehr geplant; ihre Duldungen sind damit erledigt.
   // R4 · the p1/p2 furniture is now painted at its measured world scale; the
   // retired pre-R4 furniture no longer appears in these rooms and therefore
   // has no live scale waiver to carry.
@@ -1218,8 +1188,6 @@ const SCALE_WAIVERS = {
   // ein Kind steht. Das ist kein Versehen wie bei den Ecken, sondern der
   // Vertrag, den die Kunst mitbringt.
   // ── ch01/p9 · DIE KLECKSKAMMER HAT NUR 2- UND 3-ZELLEN-SIMSE ──────────────
-  "ch01/p9:platform:plat_bench_2": { until: "2026-11-30", why: "gemalt 4,09 Zellen, gezeichnet auf 2 (0,49x) — p9s breitester Sims ist 3 Zellen (gemessen: 2x2, 3x2). Dieselbe Bestellung wie in p1" },
-  "ch01/p9:platform:plat_bundle_1": { until: "2026-11-30", why: "gemalt 1,65 Zellen, gezeichnet auf 1 (0,61x) — das einzige 1-Zellen-Objekt der Kammer; auf 2 gehoben zeichnete es 1,21x und liesse von jedem 3-Zellen-Sims eine Zelle leer. In p1, dessen Massstab groesser ist, IST dasselbe Blatt auf 2 gehoben (1,045x)" },
 };
 
 /** Below this a declared window is a hairline, not an anatomy (R5-A5 · R3). */
@@ -1703,47 +1671,32 @@ const judgeKit = (kit, key) => {
 // Eckstueck in einem 12x12-Kasten. Er MUSS rot werden; der heutige Plan (Fall
 // 4) ist gruen. Das ist das rot→gruen, das Posten 1 beweist.
 if (process.argv.includes("--selftest")) {
-  // R7/N7 · Die Phase heisst hier nicht umsonst `kitPhase`: die drei Tamper
-  // unten biegen Ecken, Flaechen und Moebel eines KITS. Eine Ein-Block-Welt hat
-  // nichts davon — ihr Plan besteht aus Koerper-Blaettern —, und seit p1 eine
-  // ist, lief der Selbsttest auf einer Phase, an der sein Fall 1 gar nicht
-  // greifen kann. Er sucht deshalb die erste Phase, die ihr Kit noch traegt.
-  // ★ N7A2 · …UND SIE MUSS AUCH MOEBEL TRAGEN. Zweite Zahlung derselben Klasse,
-  // einen Raum spaeter: seit p3 eine Ein-Block-Welt ist, faellt die Wahl auf p4 —
-  // und p4 hat NULL freistehende Plattform-Laeufe, zeichnet also kein einziges
-  // Moebel. Fall 3 („ein Moebel ohne eigene Ausnahme wird nicht von den
-  // Nachbarzeilen gedeckt") schrumpft dann eine leere Menge und bleibt gruen:
-  // ein Tamper, der nichts rot machen kann, hat nichts bewiesen. Die Wahl
-  // verlangt deshalb BEIDES — ein lebendes Kit UND geplante Moebel — und bricht
-  // laut ab, statt still auf eine Phase auszuweichen, an der ihre Faelle nicht
-  // greifen. Heute erfuellt p9 das (drei Moebel, Kit lebt).
-  const kitPhase = withSpec.find(({ ph, spec }) => !phaseIsOneBlock(ph.rows, spec.mass)
-    && planMass(ph.rows, spec.mass, srcSize).some((p) => p.kind === "platform"));
-  if (kitPhase === undefined) {
-    console.error("✗ M1-Selbsttest: keine Phase traegt zugleich ihr Kit UND gezeichnete Moebel — "
-      + "die drei Faelle unten koennten gar nicht feuern. Das ist ein Befund, keine Ausrede: "
-      + "entweder eine Fixture-Phase einchecken oder die Faelle neu schneiden.");
-    process.exit(1);
-  }
-  const echterPlan = planMass(kitPhase.ph.rows, kitPhase.spec.mass, srcSize);
-  const echtesWant = paintScaleOf(kitPhase.spec.mass, srcSize);
-  const label = kitPhase.label;
-  // …und dieselbe Moebel-Stufen-Liste wie der echte Lauf: ohne sie beurteilt der
-  // Selbsttest ein gestuftes Blatt nach einer Regel, von der der Bestand es
-  // ausdruecklich ausnimmt — zwei Lineale an derselben Frage.
-  const selbsttestTiered = new Map((kitPhase.spec.mass.platObjects ?? [])
-    .filter((o) => o.pxPerCell !== undefined).map((o) => [o.stem, o]));
+  // Der vollständige Körperumbau lässt keine Kit-Phase im Produkt zurück.
+  // Eine feste Prüfvorrichtung hält die bisherigen Maßstabs-Gegenproben aktiv:
+  // ein gekachelter Kurs und ein frei gezeichnetes Möbel mit eigener Bildgröße.
+  // Beide durchlaufen denselben judgeScale wie die tatsächlich gezeichnete Welt.
+  const label = "selbsttest/legacy-kit";
+  const echtesWant = 0.08;
+  const fixtureSizes = new Map([
+    ["__legacy_course__", { w: 512, h: 150 }],
+    ["__legacy_furniture__", { w: 512, h: 240 }],
+  ]);
+  const fixtureSource = (stem) => fixtureSizes.get(stem) ?? srcSize(stem);
+  const echterPlan = [
+    { kind: "crust", stem: "__legacy_course__", x: 0, y: 0,
+      w: 40.96, h: 12, tile: true, srcScale: echtesWant },
+    { kind: "platform", stem: "__legacy_furniture__", x: 60, y: 0,
+      w: 40.96, h: 19.2 },
+  ];
+  const selbsttestTiered = new Map();
   const fahre = (plan) => judgeScale({
-    label, plan, want: echtesWant, srcSize, tieredStems: selbsttestTiered,
+    label, plan, want: echtesWant, srcSize: fixtureSource, tieredStems: selbsttestTiered,
     windowsSeen: new Set(), courseLocks: new Set(), waiverSeen: new Set(),
   }).bad;
 
   // ── ★ N7A2 · TAMPER FUER DIE GESTUFTE DEKLARATION ─────────────────────────
-  // Dieser Fall kann NICHT am echten Plan haengen: `kitPhase` ist per Definition
-  // die erste Phase, die ihr Kit noch traegt, und genau die hat heute keine
-  // gestuften Moebel (die gestuften liegen in den Ein-Block-Raeumen). Ein Tamper,
-  // der am Bestand nichts findet, beweist nichts — also bekommt dieses Gesetz
-  // synthetische Eingaben und wird an ihnen in beide Richtungen gezeigt.
+  // Die feste Prüfvorrichtung muss auch falsche gestufte Deklarationen erkennen,
+  // unabhängig davon, welche Räume noch einen alten Bausatz verwenden.
   const stufeStem = "__n7a2_stufe__";
   const stufePlan = [{ kind: "platform", stem: stufeStem, x: 0, y: 0, w: 64, h: 64 }];
   const stufeSrc = (stem) => (stem === stufeStem ? { w: 256, h: 100 } : srcSize(stem));

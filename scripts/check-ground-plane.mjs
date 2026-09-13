@@ -14,7 +14,11 @@
  *   2 · WAAGE — die Kontaktkante (lineare Regression der untersten opaken Zeile
  *       je Spalte, über die berührende Spanne) kippt ≤3°.
  *
- * Geprüft werden die STEH-Blätter: alle platObjects + columnObjects des Kapitels.
+ * Heute werden die tatsächlich geplanten Möbelbindungen geprüft: schwebende
+ * platObjects zusätzlich an ihrer deklarierten Laufkante (deck), stehende
+ * columnObjects weiter an ihrer Basis. Getrennte Füße brauchen vollständig
+ * registrierte Kontaktspannen und den passenden PNG-Hash; kein Winkel wird
+ * dadurch großzügiger. Die reine Unterkantenmessung unten bleibt unverändert.
  * Der ALTBESTAND fällt absichtlich durch — er IST der Befund. Damit CI nicht auf
  * dem Befund rot steht, trägt jedes alte Blatt eine DATIERTE Zeile in
  * GROUND_PLANE_PENDING (Grund + Raum-Cutover, der es löscht). Ein NEUES Blatt
@@ -27,8 +31,14 @@
  */
 import fs from "node:fs";
 import path from "node:path";
+import crypto from "node:crypto";
+import { pathToFileURL } from "node:url";
 import { PNG } from "pngjs";
 import { CH01_COMPOSITION } from "../packages/game-paint/src/composition.ts";
+import { planMass } from "../packages/game-paint/src/mass.ts";
+import { measureDeck, measureContacts } from "./ground-plane-geometry.mjs";
+import { GROUND_CONTACTS } from "./ground-plane-contacts.mjs";
+import { geometrySelftest } from "./ground-plane-selftest.mjs";
 
 const ART_DIR = path.join(process.cwd(), "apps/web/public/art/g1/paint/ch01");
 const OPAQUE = 128;
@@ -61,12 +71,7 @@ const TILT_MAX_DEG = 3;
  *  `plat_column2_1` — sie halten Gesetz 13 ohne Duldung, und ein Kommentar, der
  *  sie aufzählt, beschreibt Zeilen, die es nicht gab. */
 const GROUND_PLANE_PENDING = {
-  // Der Hof ist FERTIG: die Fensterbank war das eine p3-Möbel, das Punkt 13 brach
-  // (Reichweite 21 % — ein V). Ihr Neuwurf misst 87 % bei 0,0°, also hat die
-  // Hygiene-Regel oben ihre eigene Zeile als schal gemeldet und sie ist gefallen.
-  // Genau so soll eine Duldung sterben: die Reparatur beendet sie, nicht ein Datum.
-  // Die Kleckskammer: nicht diese Bahn (p9-Kunst gehört N7A4).
-  "plat_desk": { until: "2026-10-15", why: "Reichweite 8 % — V-Sockel, Perspektiv-Altbestand; fällt mit der p9-Möbel-Welle" },
+  // Der alte Tisch samt V-Sockel-Duldung ist durch ganze Bonusbücher ersetzt.
 };
 
 /** Misst Reichweite + Kipp der Kontaktkante eines Blatts. */
@@ -97,12 +102,41 @@ export const measureGroundPlane = (png) => {
   return { reach, tiltDeg: Math.abs(Math.atan(slope) * 180 / Math.PI), span: opaqueXs.length };
 };
 
-const judge = (stem, png) => {
+export const judge = (stem, png) => {
   const m = measureGroundPlane(png);
   const errors = [];
   if (m.reach < REACH_MIN) errors.push(`Reichweite ${(100 * m.reach).toFixed(0)} % < 80 % — die Aufstandskante ist ein V, keine Gerade`);
   if (m.tiltDeg > TILT_MAX_DEG) errors.push(`Kontaktkante kippt ${m.tiltDeg.toFixed(1)}° > ${TILT_MAX_DEG}°`);
   return { m, errors };
+};
+
+export const judgeBinding = (stem, png, binding, sha256, contacts = GROUND_CONTACTS) => {
+  const contact = binding.role === "deck" ? contacts[stem] : undefined;
+  // Hanging pieces do not stand on their tip. No live ch01 binding uses this;
+  // leave it explicitly red until its ceiling-contact contract is implemented.
+  if (binding.hanging) return { errors: ["hängende Säule: Deckenanschluss noch nicht prüfbar"], m: {} };
+  const ground = contact ? measureContacts(png, contact, sha256) : judge(stem, png);
+  const deck = binding.role === "deck" ? measureDeck(png, binding.deck ?? 0) : null;
+  return { m: { ground: ground.m ?? ground, deck }, contactRegistered: Boolean(contact), groundErrors: ground.errors, deckErrors: deck?.errors ?? [], errors: [...ground.errors, ...(deck?.errors ?? [])] };
+};
+
+// The historical waiver covers the old footer only, never a new deck error,
+// hash mismatch or a replacement image. Hygiene still counts actual use.
+export const applyGroundPending = (result, pending, sha256) => {
+  const used = !result.contactRegistered && pending !== undefined && pending.sha256 === sha256 && (result.groundErrors?.length ?? 0) > 0;
+  return { used, errors: used ? result.deckErrors : result.errors };
+};
+
+export const activeGroundBindings = (phases, composition, sourceSize) => {
+  const out = [];
+  for (const ph of phases) {
+    const kit = composition[ph.id]?.mass;
+    if (!kit) continue;
+    const planned = new Set(planMass(ph.rows, kit, sourceSize).filter((p) => p.kind === "platform").map((p) => p.stem));
+    for (const obj of kit.platObjects ?? []) if (planned.has(obj.stem)) out.push({ ...obj, phase: ph.id, role: "deck" });
+    for (const obj of kit.columnObjects ?? []) if (planned.has(obj.stem)) out.push({ ...obj, phase: ph.id, role: "ground" });
+  }
+  return out;
 };
 
 const synth = (mutate) => {
@@ -177,6 +211,7 @@ const selftest = () => {
   if (waiverHygiene({ a: { until: "2026-08-01", why: "Grund A" } }, new Set(["a"]), heute).length !== 1) {
     console.error('Selbsttest-TAMPER "abgelaufene Zeile" blieb GRÜN'); return 1;
   }
+  geometrySelftest({ judgeBinding, activeGroundBindings, applyGroundPending });
   console.log("check-ground-plane: Selbsttest OK — 1 sauber + 3 Tamper rot · Duldungs-Hygiene 1 sauber + 2 Tamper rot");
   return 0;
 };
@@ -186,32 +221,49 @@ const main = () => {
   if (args.includes("--selftest")) return selftest();
   if (args.includes("--sheet")) {
     const file = args[args.indexOf("--sheet") + 1];
-    const { m, errors } = judge(file, PNG.sync.read(fs.readFileSync(file)));
-    if (errors.length === 0) { console.log(`✓ ${file}: Reichweite ${(100 * m.reach).toFixed(0)} % · Kipp ${m.tiltDeg.toFixed(1)}°`); return 0; }
+    const bytes = fs.readFileSync(file), png = PNG.sync.read(bytes);
+    const sha = crypto.createHash("sha256").update(bytes).digest("hex");
+    const stem = path.basename(file, ".png");
+    const result = args.includes("--deck")
+      ? judgeBinding(stem, png, { role: "deck", deck: Number(args[args.indexOf("--deck") + 1]) }, sha)
+      : judge(stem, png);
+    const { errors } = result;
+    console.log(JSON.stringify({ file, sha256: sha, ...result }));
+    if (errors.length === 0) { console.log(`✓ ${file}: Vertrag erfüllt`); return 0; }
     console.error(`✗ ${file}:`); for (const e of errors) console.error(`    ${e}`);
     return 1;
   }
-  const stems = new Set();
-  for (const spec of Object.values(CH01_COMPOSITION)) {
-    const m = spec?.mass;
-    if (!m) continue;
-    for (const o of m.platObjects ?? []) stems.add(o.stem);
-    for (const o of m.columnObjects ?? []) stems.add(o.stem);
-  }
+  const level = JSON.parse(fs.readFileSync(path.join(process.cwd(), "content/corpus/stories/g1.st.lost-pages/paint/ch01.level.json"), "utf8"));
+  const phases = [...level.phases, ...[level.arena, level.bonus].filter(Boolean)];
+  const sourceSize = (stem) => {
+    const file = path.join(ART_DIR, `${stem}.png`);
+    if (!fs.existsSync(file)) return null;
+    const data = fs.readFileSync(file);
+    return { w: data.readUInt32BE(16), h: data.readUInt32BE(20) };
+  };
+  const bindings = activeGroundBindings(phases, CH01_COMPOSITION, sourceSize);
+  const stems = new Set(bindings.map((b) => b.stem));
   // Pending-Zeilen ohne lebendes Blatt sind selbst ein Befund — außer das PNG
   // ist schon gelöscht (dann ist die Zeile nur noch Doku und darf mitfallen).
   let failed = 0;
   const waiverSeen = new Set();
-  for (const stem of [...stems].sort()) {
+  for (const binding of bindings) {
+    const stem = binding.stem;
     const file = path.join(ART_DIR, `${stem}.png`);
     if (!fs.existsSync(file)) { console.error(`✗ ${stem}: PNG fehlt`); failed++; continue; }
     const pending = GROUND_PLANE_PENDING[stem];
-    const { m, errors } = judge(stem, PNG.sync.read(fs.readFileSync(file)));
-    if (errors.length === 0) {
-      console.log(`✓ ${stem}: Reichweite ${(100 * m.reach).toFixed(0)} % · Kipp ${m.tiltDeg.toFixed(1)}°`);
-    } else if (pending !== undefined) {
+    const bytes = fs.readFileSync(file);
+    const sha = crypto.createHash("sha256").update(bytes).digest("hex");
+    const result = judgeBinding(stem, PNG.sync.read(bytes), binding, sha);
+    const { m } = result;
+    const { used, errors } = applyGroundPending(result, pending, sha);
+    if (used) {
       waiverSeen.add(stem);
-      console.log(`⚠ ${stem}: BEFUND GEDULDET bis ${pending.until} (${pending.why}) — ${errors.join(" · ")}`);
+      console.log(`⚠ ${stem}: nur historischer Fußbefund GEDULDET bis ${pending.until} (${pending.why}) — ${result.groundErrors.join(" · ")}`);
+    }
+    console.log(JSON.stringify({ phase: binding.phase, stem, role: binding.role, sha256: sha, ...m }));
+    if (errors.length === 0) {
+      console.log(`✓ ${binding.phase}/${stem}: Lauf-/Kontaktvertrag erfüllt`);
     } else {
       failed++;
       console.error(`✗ ${stem}:`);
@@ -223,4 +275,4 @@ const main = () => {
   return failed === 0 ? 0 : 1;
 };
 
-process.exit(main());
+if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href) process.exit(main());

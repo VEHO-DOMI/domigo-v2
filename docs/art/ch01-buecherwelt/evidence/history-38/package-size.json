@@ -1,0 +1,18 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "excludes": [
+    "ROOT_PROMPTS.md (owned and completed separately by Root)"
+  ],
+  "files": 85,
+  "bytes": 45150517,
+  "rawPngCount": 27,
+  "rawPngBytes": 43953979,
+  "sourcesBytes": 44810654,
+  "largestRaw": {
+    "path": "sources/east-platform/ostpodest-source.png",
+    "role": "raw",
+    "bytes": 2535957,
+    "sha256": "899b500670f6010d172359a397cb6ee5a32783c16573419dd924f5573487d109",
+    "origin": "CH01_NEUFASSUNG/art/ostpodest-source.png"
+  }
+}

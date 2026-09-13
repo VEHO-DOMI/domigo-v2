@@ -12,7 +12,7 @@
  */
 import fs from "node:fs";
 import { describe, expect, it } from "vitest";
-import { COMPOSITION, compositionStems } from "./composition.ts";
+import { COMPOSITION, compositionStems, type MassKit } from "./composition.ts";
 import { claimedPlatformCells, massKitUsable, phaseIsOneBlock, planMass } from "./mass.ts";
 import { isSlope, isSolid } from "./collide.ts";
 import { P3_WAVE_BODIES, bodyCells, bodyPartitionErrors, bodySlopeCells } from "./visualBodies.ts";
@@ -23,6 +23,17 @@ const level = JSON.parse(fs.readFileSync(
 )) as { chapter: string; phases: Array<{ id: string; rows: string[] }>; arena?: { id: string; rows: string[] }; bonus?: { id: string; rows: string[] } };
 
 const phases = [...level.phases, ...(level.arena ? [level.arena] : []), ...(level.bonus ? [level.bonus] : [])];
+
+// Der alte Renderer bleibt unterstützt, auch wenn kein echter ch01-Raum ihn
+// mehr braucht. Diese feste Kleinwelt darf nicht vom Fortschritt der Kunst abhängen.
+const legacyRows = ["....", "####", "####"];
+const legacyKit: MassKit = {
+  crust: ["legacy_crust"], crustCapL: "legacy_cap_l", crustCapR: "legacy_cap_r",
+  body: ["legacy_body"], fade: ["legacy_fade"], sediment: "legacy_sediment",
+  edgeL: "legacy_edge_l", edgeR: "legacy_edge_r",
+  cornerBL: "legacy_corner_l", cornerBR: "legacy_corner_r",
+  inCornerL: "legacy_inner_l", inCornerR: "legacy_inner_r", platObjects: [],
+};
 
 /** Die Kit-Stems einer Phase: was die Ein-Block-Rechnung wegnimmt. */
 const kitStems = (phaseId: string): string[] => {
@@ -87,12 +98,7 @@ describe("der berechnete Cutover (N7A1)", () => {
   });
 
   it("eine Phase ohne deklarierte Körper ist nie eine Ein-Block-Welt", () => {
-    const ph = phases.find((p) => (COMPOSITION.ch01?.[p.id]?.mass.bodies ?? []).length === 0);
-    expect(ph).toBeDefined();
-    if (ph === undefined) return;
-    const spec = COMPOSITION.ch01?.[ph.id];
-    if (spec === undefined) return;
-    expect(phaseIsOneBlock(ph.rows, spec.mass)).toBe(false);
+    expect(phaseIsOneBlock(legacyRows, legacyKit)).toBe(false);
   });
 });
 
@@ -135,18 +141,10 @@ describe("massKitUsable — die Wache vor der Masse (N7A1)", () => {
   });
 
   it("eine Kit-Phase wird weiter an ihren Kern-Blättern gemessen", () => {
-    const ph = phases.find((p) => {
-      const spec = COMPOSITION.ch01?.[p.id];
-      return spec !== undefined && !phaseIsOneBlock(p.rows, spec.mass);
-    });
-    expect(ph).toBeDefined();
-    if (ph === undefined) return;
-    const spec = COMPOSITION.ch01?.[ph.id];
-    if (spec === undefined) return;
-    const kern = [spec.mass.crust[0], spec.mass.body[0], spec.mass.fade[0], spec.mass.sediment]
+    const kern = [legacyKit.crust[0], legacyKit.body[0], legacyKit.fade[0], legacyKit.sediment]
       .filter((s): s is string => s !== undefined);
-    expect(massKitUsable(ph.rows, spec.mass, (s) => kern.includes(s))).toBe(true);
-    expect(massKitUsable(ph.rows, spec.mass, (s) => kern.slice(1).includes(s))).toBe(false);
+    expect(massKitUsable(legacyRows, legacyKit, (s) => kern.includes(s))).toBe(true);
+    expect(massKitUsable(legacyRows, legacyKit, (s) => kern.slice(1).includes(s))).toBe(false);
   });
 });
 
@@ -263,6 +261,77 @@ describe("die Kreide-Rutsche und der p3-Cutover (N7A2c)", () => {
  * und zwei blinde Pruefungen waren gruen; gefunden hat es ein Blick auf den
  * Bildschirm. Diese zwei Tests sind der Ersatz fuer diesen Blick.
  */
+describe.each([
+  { id: "p4", cells: 120, furnitureCells: 0, width: 2304 },
+  { id: "p9", cells: 225, furnitureCells: 10, width: 2816 },
+])("Arena/Bonus: $id als vollständige Bildkörper", ({ id, cells, furnitureCells, width }) => {
+  const ph = phases.find((p) => p.id === id);
+  const spec = COMPOSITION.ch01?.[id];
+  if (ph === undefined || spec === undefined) throw new Error(`fehlende echte Phase ${id}`);
+  const bodies = spec.mass.bodies ?? [];
+  const occupied = new Set(bodies.flatMap((b) => bodyCells(b).map(({ c, r }) => `${c},${r}`)));
+  const furniture = claimedPlatformCells(ph.rows, spec.mass.columnObjects, occupied);
+
+  it("zusammenhängende Bilder plus vorhandene Möbel decken jede echte Laufzelle genau einmal", () => {
+    expect(bodies).toHaveLength(id === "p4" ? 2 : 3);
+    expect(occupied.size).toBe(cells);
+    expect(furniture.size).toBe(furnitureCells);
+    expect(ph.rows.join("").split("").filter(isSolid)).toHaveLength(cells + furnitureCells);
+    expect(bodyPartitionErrors(ph.rows, bodies, { fullyPainted: true, otherClaimed: furniture })).toEqual([]);
+    expect(phaseIsOneBlock(ph.rows, spec.mass)).toBe(true);
+  });
+
+  it("gemeinsame Decke und Boden behalten das 64-Pixel-Raster samt Malrändern", () => {
+    expect(bodies.map((b) => ({
+      c: b.c0, r: b.r0, scale: b.pxPerCell,
+      width: (b.rows[0]?.length ?? 0) * b.pxPerCell + b.overpaint.l + b.overpaint.r,
+      height: b.rows.length * b.pxPerCell + b.overpaint.t + b.overpaint.b,
+    }))).toEqual([
+      { c: 0, r: 0, scale: 64, width, height: 92 },
+      { c: 0, r: 16, scale: 64, width, height: 284 },
+      ...(id === "p9" ? [{ c: 17, r: 10, scale: 64, width: 320, height: 92 }] : []),
+    ]);
+    expect(planMass(ph.rows, spec.mass).filter((p) => p.kind === "bodyMount")).toHaveLength(id === "p4" ? 2 : 3);
+  });
+
+  it("ganze Einzelbücher behalten ihren vollständigen Plan, ohne alte Binder", () => {
+    const before = planMass(ph.rows, { ...spec.mass, bodies: [] }).filter((p) => p.kind === "platform");
+    const after = planMass(ph.rows, spec.mass).filter((p) => p.kind === "platform");
+    expect(after).toEqual(before);
+    expect(after.map((p) => p.stem).sort()).toEqual(id === "p4" ? [] : [
+      "terrain_dream_bundle_p9", "terrain_dream_bundle_short_p9", "terrain_dream_folio_p9", "terrain_dream_folio_short_p9",
+    ]);
+    expect(planMass(ph.rows, spec.mass).filter((p) => !["bodyMount", "platform"].includes(p.kind))).toEqual([]);
+  });
+
+  it("TAMPER: jeder einzelne fehlende neue Bildkörper sperrt den echten Renderpfad", () => {
+    const stems = bodies.map((b) => b.stem);
+    expect(massKitUsable(ph.rows, spec.mass, (s) => stems.includes(s))).toBe(true);
+    for (const missing of stems) {
+      expect(massKitUsable(ph.rows, spec.mass, (s) => s !== missing && stems.includes(s)), missing).toBe(false);
+    }
+  });
+
+  it("TAMPER: fehlende Bodenfläche, Doppelbesitz und Masse über Luft bleiben Fehler", () => {
+    const floor = bodies[1];
+    if (floor === undefined) throw new Error("Boden fehlt");
+    const last = floor.rows.length - 1;
+    const hole = { ...floor, rows: floor.rows.map((row, i) => i === last ? `.${row.slice(1)}` : row) };
+    expect(bodyPartitionErrors(ph.rows, bodies.map((b) => b === floor ? hole : b), { fullyPainted: true, otherClaimed: furniture }).length).toBeGreaterThan(0);
+    expect(phaseIsOneBlock(ph.rows, { ...spec.mass, bodies: [bodies[0]!, hole] })).toBe(false);
+    expect(bodyPartitionErrors(ph.rows, [...bodies, floor], {}).length).toBeGreaterThan(0);
+    expect(bodyPartitionErrors(ph.rows, [{ ...floor, r0: 5 }], {}).length).toBeGreaterThan(0);
+  });
+
+  it("TAMPER: alte Verbinder würden weiterhin unerlaubte und ungeladene Teile erzeugen", () => {
+    const restored = { ...spec.mass, joint: "legacy_joint", postJoin: "legacy_post" };
+    const foreign = planMass(ph.rows, restored).filter((p) => !["bodyMount", "platform"].includes(p.kind));
+    expect(foreign.length).toBeGreaterThan(0);
+    const loaded = new Set(compositionStems({ ...spec, mass: restored }, true));
+    expect(foreign.some((p) => p.stem !== null && !loaded.has(p.stem))).toBe(true);
+  });
+});
+
 describe("eine Ein-Block-Welt zeichnet keine Bausteine (R264)", () => {
   /** Was ein fertig gemalter Raum zeichnen darf: sein Gemaelde und seine Moebel. */
   const ERLAUBT = new Set(["bodyMount", "platform"]);
@@ -277,7 +346,7 @@ describe("eine Ein-Block-Welt zeichnet keine Bausteine (R264)", () => {
       expect(fremd, `${ph.id} zeichnet Bausatz-Teile`).toEqual([]);
     }
     // Der Fall darf nicht still auf einer leeren Menge laufen (P-56).
-    expect(geprueft).toEqual(["p1", "p2", "p3"]);
+    expect(geprueft).toEqual(["p1", "p2", "p3", "p4", "p9"]);
   });
 
   it("in einer Ein-Block-Phase gehoert jede Schraegen-Zelle einem Koerper", () => {

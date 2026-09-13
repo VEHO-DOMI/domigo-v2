@@ -1,0 +1,84 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "assets": [
+    {
+      "stem": "l1_p4_a",
+      "source": "../sources/arena-background/l1_p4_a.png",
+      "width": 1024,
+      "height": 1260,
+      "x": [
+        [
+          0,
+          0
+        ],
+        [
+          1023,
+          1130
+        ]
+      ],
+      "y": [
+        [
+          0,
+          0
+        ],
+        [
+          1259,
+          1390
+        ]
+      ]
+    },
+    {
+      "stem": "band_p4_audience",
+      "source": "../sources/arena-background/chairs-edit2.png",
+      "width": 2048,
+      "height": 384,
+      "x": [
+        [
+          0,
+          0
+        ],
+        [
+          2047,
+          2171
+        ]
+      ],
+      "y": [
+        [
+          0,
+          152.3126526624328
+        ],
+        [
+          383,
+          558.5134342940889
+        ]
+      ],
+      "chromaMatte": "no-violet"
+    },
+    {
+      "stem": "l1_p4_b",
+      "source": "../sources/arena-background/wall-b-fresh.png",
+      "width": 1024,
+      "height": 1260,
+      "x": [
+        [
+          0,
+          0
+        ],
+        [
+          1023,
+          1130
+        ]
+      ],
+      "y": [
+        [
+          0,
+          0
+        ],
+        [
+          1259,
+          1390
+        ]
+      ]
+    }
+  ]
+}

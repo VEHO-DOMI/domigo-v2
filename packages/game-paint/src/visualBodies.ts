@@ -563,22 +563,62 @@ export const P3_WAVE_BODIES: readonly VisualBody[] = [
   },
 ];
 
-/**
- * JEDER DEKLARIERTE KÖRPER MIT SEINEM RAUM — auch die, die noch nicht montiert
- * sind. Der Wareneingang misst ein geliefertes Blatt, BEVOR es in `CH01_BODIES`
- * wandert (dort landet ein Eintrag erst mit seinem angenommenen PNG), und er
- * braucht dabei das Raster des richtigen Raums. Vorher kannte der Wareneingang
- * nur die p2-Welle und stempelte die Phase hart auf "p2" — ein p1-Körper war
- * damit gar nicht messbar.
- */
+/** Arena: eine durchgehende Decke und ein Boden samt beiden Podesten. */
+export const P4_WAVE_BODIES: readonly VisualBody[] = [
+  {
+    id: "p4_deckenbahn", stem: "body_p4_deckenbahn", c0: 0, r0: 0,
+    rows: ["####################################"],
+    pxPerCell: 64, overpaint: { l: 0, r: 0, t: 12, b: 16 },
+  },
+  {
+    // Beide Podeste gehören zum durchgehenden Bühnenboden, ohne angesetzte Teile.
+    id: "p4_buehne_podeste", stem: "body_p4_buehne_podeste", c0: 0, r0: 16,
+    rows: [
+      ".....###....................###.....",
+      ".....###....................###.....",
+      "####################################",
+      "####################################",
+    ],
+    pxPerCell: 64, overpaint: { l: 0, r: 0, t: 12, b: 16 },
+  },
+];
+
+export const P9_WAVE_BODIES: readonly VisualBody[] = [
+  {
+    id: "p9_deckenbahn", stem: "body_p9_deckenbahn", c0: 0, r0: 0,
+    rows: ["############################################"],
+    pxPerCell: 64, overpaint: { l: 0, r: 0, t: 12, b: 16 },
+  },
+  {
+    // Zehn frei stehende Plattformzellen behalten ihre bisherigen Einzelmöbel.
+    id: "p9_kammerboden", stem: "body_p9_kammerboden", c0: 0, r0: 16,
+    rows: [
+      "############################################",
+      "############################################",
+      "############################################",
+      "############################################",
+    ],
+    pxPerCell: 64, overpaint: { l: 0, r: 0, t: 12, b: 16 },
+  },
+  {
+    // Der Fünfzellen-Sims ist für die vorhandenen Einzelmöbel zu breit.
+    id: "p9_oberer_sims", stem: "body_p9_oberer_sims", c0: 17, r0: 10,
+    rows: ["#####"],
+    pxPerCell: 64, overpaint: { l: 0, r: 0, t: 12, b: 16 },
+  },
+];
+
+/** Alle deklarierten Körper mit ihrem Raum für den Wareneingang. */
 export const DECLARED_BODIES: ReadonlyArray<{ phase: string; body: VisualBody }> = [
   { phase: "p2", body: P2_EXEMPLAR_BODY },
   ...P2_WAVE_BODIES.map((body) => ({ phase: "p2", body })),
   ...P1_WAVE_BODIES.map((body) => ({ phase: "p1", body })),
   ...P3_WAVE_BODIES.map((body) => ({ phase: "p3", body })),
+  ...P4_WAVE_BODIES.map((body) => ({ phase: "p4", body })),
+  ...P9_WAVE_BODIES.map((body) => ({ phase: "p9", body })),
 ];
 
-/** Die live montierten Körper je Phase. Ein Eintrag kommt erst MIT seinem PNG. */
+/** Die live montierten Körper je Phase. Zur Auslieferung muss jedes PNG vorliegen. */
 export const CH01_BODIES: Record<string, readonly VisualBody[]> = {
   // N7A1: die Eingangshalle ist VOLLSTÄNDIG gemalt — fünf Körper, 548 Zellen.
   p1: P1_WAVE_BODIES,
@@ -586,4 +626,6 @@ export const CH01_BODIES: Record<string, readonly VisualBody[]> = {
   p2: [P2_EXEMPLAR_BODY, ...P2_WAVE_BODIES],
   // N7A2: der Schulhof-Garten ist VOLLSTÄNDIG gemalt — sechs Körper, 493 Zellen.
   p3: P3_WAVE_BODIES,
+  p4: P4_WAVE_BODIES,
+  p9: P9_WAVE_BODIES,
 };

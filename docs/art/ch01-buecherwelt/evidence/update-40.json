@@ -1,0 +1,25 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "previousEvidence": "history-38/",
+  "removedStems": [
+    "plat_desk",
+    "plat_bench_2",
+    "plat_bundle_1"
+  ],
+  "removedInputs": [
+    "sources/arena-bonus/p9-bench.png",
+    "sources/arena-bonus/p9-bundle.png",
+    "prompts/arena-bonus-art/prompts/plat_bench_2.txt",
+    "prompts/arena-bonus-art/prompts/plat_bundle_1.txt"
+  ],
+  "addedStems": [
+    "terrain_dream_folio_p9",
+    "terrain_dream_folio_short_p9",
+    "terrain_dream_bundle_p9",
+    "terrain_dream_bundle_short_p9",
+    "body_p2_regal_turm_boden"
+  ],
+  "assetCount": 40,
+  "rootPromptSha256Before": "f011c26352e152fa184629aed7ccb0fb8290f519f3debac6d803336edbf7e63b",
+  "rootPromptSha256After": "f011c26352e152fa184629aed7ccb0fb8290f519f3debac6d803336edbf7e63b"
+}

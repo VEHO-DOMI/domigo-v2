@@ -1,0 +1,577 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "schema": "ch01TerrainImport@1",
+  "manifestPath": "reproduction/bonus-refinement.json",
+  "manifestSha256": "f275260e190c6ebed79d962df3bfd572ae6698fb9796487b1347427c04962494",
+  "importerSha256": "1c9e3347f2cabd9d5f18c58d982b0a0b6d810359cb61d1697ba7d296bdc201f5",
+  "fringeModuleSha256": "51e4044e953feb7e3af96b2d4b562cf73a97dd596d9b7cb2c7d3d688c0145e80",
+  "node": "v24.20.0",
+  "pngjsVersion": "7.0.0",
+  "convention": "pixel centres; strict monotone inverse map; no extrapolation; outside source transparent; premultiplied bilinear",
+  "assets": [
+    {
+      "stem": "terrain_dream_folio_p9",
+      "source": "pack/sources/bonus-refinement/folio-v2.png",
+      "target": "reproduction/bonus-refinement/terrain_dream_folio_p9.png",
+      "sourceSha256": "2f617f983e588e229eb01efb9f13a0f41bf05bf6cd01d83b741446b2e030b778",
+      "sourceRgbaSha256": "5c58480ed42e636ca62921de1fadbf5afb9d4bec62af19cdc84d620c1897d86e",
+      "keyedRgbaSha256": "f308edfffc53a657c80758fef2c00aba272d5a75acb9bd67bc103d509e355814",
+      "previousTargetSha256": null,
+      "outputSha256": "ad1575dd577300ad7e2e755f52eb9ff9b71ba4bd671204cfafab8f63282fdcae",
+      "outputRgbaSha256": "e5f707e03ce870cf3ae2fffbcf634889fa09a6255fbdb830aca003a5d34d84d6",
+      "outputBytes": 38770,
+      "sourceCanvas": {
+        "width": 1536,
+        "height": 1024
+      },
+      "outputCanvas": {
+        "width": 192,
+        "height": 78
+      },
+      "x": [
+        [
+          0,
+          62.205729166666664
+        ],
+        [
+          191,
+          1477.7942708333333
+        ]
+      ],
+      "y": [
+        [
+          0,
+          202.15885416666666
+        ],
+        [
+          77,
+          772.8411458333333
+        ]
+      ],
+      "sourceBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1536,
+        "height": 1024,
+        "pixels": 1572864
+      },
+      "keyedBounds": {
+        "x": 58,
+        "y": 209,
+        "width": 1478,
+        "height": 815,
+        "pixels": 779979
+      },
+      "keyedInkBounds": {
+        "x": 58,
+        "y": 209,
+        "width": 1424,
+        "height": 557,
+        "pixels": 779643
+      },
+      "beforeClipBounds": {
+        "x": 0,
+        "y": 1,
+        "width": 192,
+        "height": 76,
+        "pixels": 14371
+      },
+      "clip": null,
+      "outputBounds": {
+        "x": 0,
+        "y": 1,
+        "width": 192,
+        "height": 76,
+        "pixels": 14371
+      },
+      "outputInkBounds": {
+        "x": 0,
+        "y": 1,
+        "width": 192,
+        "height": 76,
+        "pixels": 14362
+      },
+      "boundsConvention": "integer origin and extent; Bounds alpha>0, InkBounds alpha>CUT_ALPHA",
+      "cutAlpha": 16,
+      "key": {
+        "cut": 792884,
+        "softened": 2697,
+        "keyRgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 40,
+        "softTolerance": 110
+      },
+      "sourceCleanup": {
+        "specks": {
+          "healed": 309,
+          "cut": 1,
+          "total": 310
+        },
+        "fringe": {
+          "healed": 4972,
+          "cut": 0,
+          "total": 4972,
+          "threshold": 13
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "outputCleanup": {
+        "specks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "fringe": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0,
+          "threshold": 12
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "chromaMatte": null
+    },
+    {
+      "stem": "terrain_dream_folio_short_p9",
+      "source": "pack/sources/bonus-refinement/folio-v2.png",
+      "target": "reproduction/bonus-refinement/terrain_dream_folio_short_p9.png",
+      "sourceSha256": "2f617f983e588e229eb01efb9f13a0f41bf05bf6cd01d83b741446b2e030b778",
+      "sourceRgbaSha256": "5c58480ed42e636ca62921de1fadbf5afb9d4bec62af19cdc84d620c1897d86e",
+      "keyedRgbaSha256": "f308edfffc53a657c80758fef2c00aba272d5a75acb9bd67bc103d509e355814",
+      "previousTargetSha256": null,
+      "outputSha256": "f7b310b69f43ad543acc2aabd5b557b4d8508748822716537743b2d56f398f42",
+      "outputRgbaSha256": "c37b05c5b7a383a5f54f53d8473542a948bcb75a120f342239ac358740444df8",
+      "outputBytes": 17583,
+      "sourceCanvas": {
+        "width": 1536,
+        "height": 1024
+      },
+      "outputCanvas": {
+        "width": 128,
+        "height": 52
+      },
+      "x": [
+        [
+          0,
+          64.05859375
+        ],
+        [
+          127,
+          1475.94140625
+        ]
+      ],
+      "y": [
+        [
+          0,
+          204.01171875
+        ],
+        [
+          51,
+          770.98828125
+        ]
+      ],
+      "sourceBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1536,
+        "height": 1024,
+        "pixels": 1572864
+      },
+      "keyedBounds": {
+        "x": 58,
+        "y": 209,
+        "width": 1478,
+        "height": 815,
+        "pixels": 779979
+      },
+      "keyedInkBounds": {
+        "x": 58,
+        "y": 209,
+        "width": 1424,
+        "height": 557,
+        "pixels": 779643
+      },
+      "beforeClipBounds": {
+        "x": 0,
+        "y": 1,
+        "width": 128,
+        "height": 50,
+        "pixels": 6315
+      },
+      "clip": null,
+      "outputBounds": {
+        "x": 0,
+        "y": 1,
+        "width": 128,
+        "height": 50,
+        "pixels": 6315
+      },
+      "outputInkBounds": {
+        "x": 0,
+        "y": 1,
+        "width": 128,
+        "height": 50,
+        "pixels": 6307
+      },
+      "boundsConvention": "integer origin and extent; Bounds alpha>0, InkBounds alpha>CUT_ALPHA",
+      "cutAlpha": 16,
+      "key": {
+        "cut": 792884,
+        "softened": 2697,
+        "keyRgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 40,
+        "softTolerance": 110
+      },
+      "sourceCleanup": {
+        "specks": {
+          "healed": 309,
+          "cut": 1,
+          "total": 310
+        },
+        "fringe": {
+          "healed": 4972,
+          "cut": 0,
+          "total": 4972,
+          "threshold": 13
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "outputCleanup": {
+        "specks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "fringe": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0,
+          "threshold": 12
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "chromaMatte": null
+    },
+    {
+      "stem": "terrain_dream_bundle_p9",
+      "source": "pack/sources/bonus-refinement/bundle-v2.png",
+      "target": "reproduction/bonus-refinement/terrain_dream_bundle_p9.png",
+      "sourceSha256": "b80c909fc1e761cb22bf0f8c49cc89abe0c7bbb8884a6bacd073d8bd9e8e2aa4",
+      "sourceRgbaSha256": "0d60aacd45253140543a6025efbd8ff1414ae3f96aa653e392f422c7ce2a7795",
+      "keyedRgbaSha256": "195fe69d386853fbcd45dfe06fd734520f5692b0b930fa6a7ce2960a2eae082b",
+      "previousTargetSha256": null,
+      "outputSha256": "b685d9a11ed6d2092b6e1304a3daaff3f74bf116a3ebff21ed8255744b44a09d",
+      "outputRgbaSha256": "21683f9f46259c6a51f4a519e0513b119bf7ba82ed3ca784f7295e6251482866",
+      "outputBytes": 45954,
+      "sourceCanvas": {
+        "width": 1536,
+        "height": 1024
+      },
+      "outputCanvas": {
+        "width": 192,
+        "height": 90
+      },
+      "x": [
+        [
+          0,
+          68.17447916666667
+        ],
+        [
+          191,
+          1471.8255208333333
+        ]
+      ],
+      "y": [
+        [
+          0,
+          179.97135416666666
+        ],
+        [
+          89,
+          834.0286458333333
+        ]
+      ],
+      "sourceBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1536,
+        "height": 1024,
+        "pixels": 1572864
+      },
+      "keyedBounds": {
+        "x": 65,
+        "y": 184,
+        "width": 1471,
+        "height": 840,
+        "pixels": 900400
+      },
+      "keyedInkBounds": {
+        "x": 65,
+        "y": 184,
+        "width": 1412,
+        "height": 648,
+        "pixels": 900149
+      },
+      "beforeClipBounds": {
+        "x": 0,
+        "y": 1,
+        "width": 192,
+        "height": 88,
+        "pixels": 16717
+      },
+      "clip": null,
+      "outputBounds": {
+        "x": 0,
+        "y": 1,
+        "width": 192,
+        "height": 88,
+        "pixels": 16717
+      },
+      "outputInkBounds": {
+        "x": 0,
+        "y": 1,
+        "width": 192,
+        "height": 88,
+        "pixels": 16705
+      },
+      "boundsConvention": "integer origin and extent; Bounds alpha>0, InkBounds alpha>CUT_ALPHA",
+      "cutAlpha": 16,
+      "key": {
+        "cut": 672463,
+        "softened": 1255,
+        "keyRgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 40,
+        "softTolerance": 110
+      },
+      "sourceCleanup": {
+        "specks": {
+          "healed": 350,
+          "cut": 1,
+          "total": 351
+        },
+        "fringe": {
+          "healed": 4288,
+          "cut": 0,
+          "total": 4288,
+          "threshold": 16
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "outputCleanup": {
+        "specks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "fringe": {
+          "healed": 1,
+          "cut": 0,
+          "total": 1,
+          "threshold": 14
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "chromaMatte": null
+    },
+    {
+      "stem": "terrain_dream_bundle_short_p9",
+      "source": "pack/sources/bonus-refinement/bundle-v2.png",
+      "target": "reproduction/bonus-refinement/terrain_dream_bundle_short_p9.png",
+      "sourceSha256": "b80c909fc1e761cb22bf0f8c49cc89abe0c7bbb8884a6bacd073d8bd9e8e2aa4",
+      "sourceRgbaSha256": "0d60aacd45253140543a6025efbd8ff1414ae3f96aa653e392f422c7ce2a7795",
+      "keyedRgbaSha256": "195fe69d386853fbcd45dfe06fd734520f5692b0b930fa6a7ce2960a2eae082b",
+      "previousTargetSha256": null,
+      "outputSha256": "e1a17a17c6e7c3795ebe3a19729d94aa33db6ee0daed37986b2f51e427ed6d71",
+      "outputRgbaSha256": "83a6a3b966e0a0546cf7947b5ae6fa34c336022e8e6b039167ac325eed0a7a1d",
+      "outputBytes": 20970,
+      "sourceCanvas": {
+        "width": 1536,
+        "height": 1024
+      },
+      "outputCanvas": {
+        "width": 128,
+        "height": 60
+      },
+      "x": [
+        [
+          0,
+          70.01171875
+        ],
+        [
+          127,
+          1469.98828125
+        ]
+      ],
+      "y": [
+        [
+          0,
+          181.80859375
+        ],
+        [
+          59,
+          832.19140625
+        ]
+      ],
+      "sourceBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1536,
+        "height": 1024,
+        "pixels": 1572864
+      },
+      "keyedBounds": {
+        "x": 65,
+        "y": 184,
+        "width": 1471,
+        "height": 840,
+        "pixels": 900400
+      },
+      "keyedInkBounds": {
+        "x": 65,
+        "y": 184,
+        "width": 1412,
+        "height": 648,
+        "pixels": 900149
+      },
+      "beforeClipBounds": {
+        "x": 0,
+        "y": 1,
+        "width": 128,
+        "height": 58,
+        "pixels": 7358
+      },
+      "clip": null,
+      "outputBounds": {
+        "x": 0,
+        "y": 1,
+        "width": 128,
+        "height": 58,
+        "pixels": 7358
+      },
+      "outputInkBounds": {
+        "x": 0,
+        "y": 1,
+        "width": 128,
+        "height": 58,
+        "pixels": 7348
+      },
+      "boundsConvention": "integer origin and extent; Bounds alpha>0, InkBounds alpha>CUT_ALPHA",
+      "cutAlpha": 16,
+      "key": {
+        "cut": 672463,
+        "softened": 1255,
+        "keyRgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 40,
+        "softTolerance": 110
+      },
+      "sourceCleanup": {
+        "specks": {
+          "healed": 350,
+          "cut": 1,
+          "total": 351
+        },
+        "fringe": {
+          "healed": 4288,
+          "cut": 0,
+          "total": 4288,
+          "threshold": 16
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "outputCleanup": {
+        "specks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "fringe": {
+          "healed": 1,
+          "cut": 0,
+          "total": 1,
+          "threshold": 16
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "chromaMatte": null
+    }
+  ]
+}

@@ -1,0 +1,843 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "schema": "ch01TerrainImport@1",
+  "manifestPath": "reproduction/arena-bonus.json",
+  "manifestSha256": "3941a148485ecfdfcf7f7fa44d8a4b049be7ef2dee2ff216daf14c8eaaa07378",
+  "importerSha256": "1c9e3347f2cabd9d5f18c58d982b0a0b6d810359cb61d1697ba7d296bdc201f5",
+  "fringeModuleSha256": "51e4044e953feb7e3af96b2d4b562cf73a97dd596d9b7cb2c7d3d688c0145e80",
+  "node": "v24.20.0",
+  "pngjsVersion": "7.0.0",
+  "convention": "pixel centres; strict monotone inverse map; no extrapolation; outside source transparent; premultiplied bilinear",
+  "assets": [
+    {
+      "stem": "body_p4_buehne_podeste",
+      "source": "pack/sources/arena-bonus/p4-stage-v2.png",
+      "target": "reproduction/arena-bonus/body_p4_buehne_podeste.png",
+      "sourceSha256": "38ccbaa814d346484cecd65af95eb49e4c1100307b9c6ba0d7c799308f986e68",
+      "sourceRgbaSha256": "656692634f2d19274f8483d3f49de91ef00e9d553b46ee54dcdee5b3da07cd3a",
+      "keyedRgbaSha256": "f8e0049d8b5afd6a4fc9b7d0689f92610cf99e87fe83c1dc4f4a7b6fd79ab5e5",
+      "previousTargetSha256": null,
+      "outputSha256": "52a940e1dbd73f26bb7202dfd58f7525f4589d4582f960602c0bc3e03dce5cae",
+      "outputRgbaSha256": "dcea107072c9037fe7b3fe6f164aefe73afdc4cc757f45c35cb6d838224c37a5",
+      "outputBytes": 656120,
+      "sourceCanvas": {
+        "width": 2172,
+        "height": 724
+      },
+      "outputCanvas": {
+        "width": 2304,
+        "height": 284
+      },
+      "x": [
+        [
+          0,
+          34
+        ],
+        [
+          320,
+          317
+        ],
+        [
+          511,
+          600
+        ],
+        [
+          1792,
+          1570
+        ],
+        [
+          1983,
+          1855
+        ],
+        [
+          2303,
+          2138
+        ]
+      ],
+      "y": [
+        [
+          0,
+          232
+        ],
+        [
+          12,
+          240.5
+        ],
+        [
+          140,
+          328
+        ],
+        [
+          267,
+          472
+        ],
+        [
+          283,
+          490
+        ]
+      ],
+      "sourceBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 2172,
+        "height": 724,
+        "pixels": 1572528
+      },
+      "keyedBounds": {
+        "x": 0,
+        "y": 240,
+        "width": 2172,
+        "height": 234,
+        "pixels": 363129
+      },
+      "keyedInkBounds": {
+        "x": 0,
+        "y": 240,
+        "width": 2172,
+        "height": 234,
+        "pixels": 363036
+      },
+      "beforeClipBounds": {
+        "x": 0,
+        "y": 10,
+        "width": 2304,
+        "height": 259,
+        "pixels": 346136
+      },
+      "clip": {
+        "path": "pack/masks/body_p4_buehne_podeste.MASKE.png",
+        "sha256": "794165b634a0a0475cca25664c51375fed9fedd180ea67050b95c3b3ea630df5",
+        "rgbaSha256": "ad66a33b75c18f72d9e03351aea2753ce085b3730831450695d674999a5501c4",
+        "bounds": {
+          "x": 0,
+          "y": 12,
+          "width": 2304,
+          "height": 256,
+          "pixels": 344064
+        },
+        "cut": 2934,
+        "rule": "mask alpha=0 cuts; all nonzero mask alpha leaves source alpha unchanged"
+      },
+      "outputBounds": {
+        "x": 0,
+        "y": 12,
+        "width": 2304,
+        "height": 256,
+        "pixels": 343202
+      },
+      "outputInkBounds": {
+        "x": 0,
+        "y": 12,
+        "width": 2304,
+        "height": 256,
+        "pixels": 343129
+      },
+      "boundsConvention": "integer origin and extent; Bounds alpha>0, InkBounds alpha>CUT_ALPHA",
+      "cutAlpha": 16,
+      "key": {
+        "cut": 1209398,
+        "softened": 2108,
+        "keyRgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 40,
+        "softTolerance": 110
+      },
+      "sourceCleanup": {
+        "specks": {
+          "healed": 117,
+          "cut": 1,
+          "total": 118
+        },
+        "fringe": {
+          "healed": 5153,
+          "cut": 0,
+          "total": 5153,
+          "threshold": 23
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "outputCleanup": {
+        "specks": {
+          "healed": 5,
+          "cut": 0,
+          "total": 5
+        },
+        "fringe": {
+          "healed": 6,
+          "cut": 0,
+          "total": 6,
+          "threshold": 21
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "chromaMatte": null
+    },
+    {
+      "stem": "body_p4_deckenbahn",
+      "source": "pack/sources/arena-bonus/p4-ceiling.png",
+      "target": "reproduction/arena-bonus/body_p4_deckenbahn.png",
+      "sourceSha256": "9ab1cc1c85afa21b7e9fc93396d2df3dbfb5e9b6bdcaa81ef04127cb2874d1b7",
+      "sourceRgbaSha256": "a5b29b253f9c2a715ad15ad9c556d638bfa7938640a5881a0d2e637d55dbd0ce",
+      "keyedRgbaSha256": "3d1bd34e7bf7ade7dd9d52127fa66cc3784b4ebfdacfd8332219d59e4ac42de4",
+      "previousTargetSha256": null,
+      "outputSha256": "eb4981f9461105e499bc83bbcd2f1641898a3b5326225b76b433f6a84137cd5d",
+      "outputRgbaSha256": "043e32b40b3eceb6cb3ba35f035e8cea5b6bfe8b4798f2599200a3c71d9a69eb",
+      "outputBytes": 277493,
+      "sourceCanvas": {
+        "width": 2172,
+        "height": 724
+      },
+      "outputCanvas": {
+        "width": 2304,
+        "height": 92
+      },
+      "x": [
+        [
+          0,
+          0
+        ],
+        [
+          2303,
+          2171
+        ]
+      ],
+      "y": [
+        [
+          0,
+          240
+        ],
+        [
+          12,
+          269.5
+        ],
+        [
+          75,
+          421
+        ],
+        [
+          91,
+          459
+        ]
+      ],
+      "sourceBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 2172,
+        "height": 724,
+        "pixels": 1572528
+      },
+      "keyedBounds": {
+        "x": 0,
+        "y": 269,
+        "width": 2172,
+        "height": 455,
+        "pixels": 334489
+      },
+      "keyedInkBounds": {
+        "x": 0,
+        "y": 269,
+        "width": 2172,
+        "height": 154,
+        "pixels": 334488
+      },
+      "beforeClipBounds": {
+        "x": 0,
+        "y": 12,
+        "width": 2304,
+        "height": 64,
+        "pixels": 147456
+      },
+      "clip": {
+        "path": "pack/masks/body_p4_deckenbahn.MASKE.png",
+        "sha256": "d3b5553657d32be65a6e30f625185a2e63a15c113dd67c0377ca840b479fb38c",
+        "rgbaSha256": "92de90bdaaa57f728591f3bcbfa1f799b6c9e1ae4ba72fb917be0d9c3b8acb56",
+        "bounds": {
+          "x": 0,
+          "y": 12,
+          "width": 2304,
+          "height": 64,
+          "pixels": 147456
+        },
+        "cut": 0,
+        "rule": "mask alpha=0 cuts; all nonzero mask alpha leaves source alpha unchanged"
+      },
+      "outputBounds": {
+        "x": 0,
+        "y": 12,
+        "width": 2304,
+        "height": 64,
+        "pixels": 147456
+      },
+      "outputInkBounds": {
+        "x": 0,
+        "y": 12,
+        "width": 2304,
+        "height": 64,
+        "pixels": 147456
+      },
+      "boundsConvention": "integer origin and extent; Bounds alpha>0, InkBounds alpha>CUT_ALPHA",
+      "cutAlpha": 16,
+      "key": {
+        "cut": 1238039,
+        "softened": 1694,
+        "keyRgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 40,
+        "softTolerance": 110
+      },
+      "sourceCleanup": {
+        "specks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "fringe": {
+          "healed": 5017,
+          "cut": 0,
+          "total": 5017,
+          "threshold": 18
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "outputCleanup": {
+        "specks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "fringe": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0,
+          "threshold": 17
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "chromaMatte": null
+    },
+    {
+      "stem": "body_p9_deckenbahn",
+      "source": "pack/sources/arena-bonus/p9-ceiling.png",
+      "target": "reproduction/arena-bonus/body_p9_deckenbahn.png",
+      "sourceSha256": "f83e0f27590207d1ab2314603ea9e2ceeb845a780dd3855f8dd21170f31b753c",
+      "sourceRgbaSha256": "f4fda68023f6562e6c11eed240c0bb35a4d32ebb1862f2ecc21a9053fd690a54",
+      "keyedRgbaSha256": "e9e0f3a9bf4f33f5e2ff6457ae3f4bdd6fc3bd5cde39d34d6e33c31033894b3a",
+      "previousTargetSha256": null,
+      "outputSha256": "f6643c4cc4a94b9a38ba79a9fa7a6d98648163090c53d707c503635b16dfcf89",
+      "outputRgbaSha256": "b037a7f1ab90582c3e4ea556f5f8ad1952de48fea6bb5f66e5733e68b3c27989",
+      "outputBytes": 277933,
+      "sourceCanvas": {
+        "width": 2173,
+        "height": 724
+      },
+      "outputCanvas": {
+        "width": 2816,
+        "height": 92
+      },
+      "x": [
+        [
+          0,
+          0
+        ],
+        [
+          2815,
+          2172
+        ]
+      ],
+      "y": [
+        [
+          0,
+          218
+        ],
+        [
+          12,
+          252
+        ],
+        [
+          75,
+          428
+        ],
+        [
+          91,
+          473
+        ]
+      ],
+      "sourceBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 2173,
+        "height": 724,
+        "pixels": 1573252
+      },
+      "keyedBounds": {
+        "x": 0,
+        "y": 251,
+        "width": 2173,
+        "height": 473,
+        "pixels": 386821
+      },
+      "keyedInkBounds": {
+        "x": 0,
+        "y": 251,
+        "width": 2173,
+        "height": 179,
+        "pixels": 386796
+      },
+      "beforeClipBounds": {
+        "x": 0,
+        "y": 12,
+        "width": 2816,
+        "height": 64,
+        "pixels": 180224
+      },
+      "clip": {
+        "path": "pack/masks/body_p9_deckenbahn.MASKE.png",
+        "sha256": "a9d5a1f7875165e499693a09d00be9da04c31ac02ec0ad7d88aaefcc2788e6a2",
+        "rgbaSha256": "04d49b43d0050a1bd6fb94891d5e1b0d9ab91e6a79132c7f7011aa33182b7138",
+        "bounds": {
+          "x": 0,
+          "y": 12,
+          "width": 2816,
+          "height": 64,
+          "pixels": 180224
+        },
+        "cut": 0,
+        "rule": "mask alpha=0 cuts; all nonzero mask alpha leaves source alpha unchanged"
+      },
+      "outputBounds": {
+        "x": 0,
+        "y": 12,
+        "width": 2816,
+        "height": 64,
+        "pixels": 180224
+      },
+      "outputInkBounds": {
+        "x": 0,
+        "y": 12,
+        "width": 2816,
+        "height": 64,
+        "pixels": 180224
+      },
+      "boundsConvention": "integer origin and extent; Bounds alpha>0, InkBounds alpha>CUT_ALPHA",
+      "cutAlpha": 16,
+      "key": {
+        "cut": 1186430,
+        "softened": 2201,
+        "keyRgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 40,
+        "softTolerance": 110
+      },
+      "sourceCleanup": {
+        "specks": {
+          "healed": 73,
+          "cut": 1,
+          "total": 74
+        },
+        "fringe": {
+          "healed": 6452,
+          "cut": 0,
+          "total": 6452,
+          "threshold": 21
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "outputCleanup": {
+        "specks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "fringe": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0,
+          "threshold": 20
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "chromaMatte": null
+    },
+    {
+      "stem": "body_p9_kammerboden",
+      "source": "pack/sources/arena-bonus/p9-floor-v1.png",
+      "target": "reproduction/arena-bonus/body_p9_kammerboden.png",
+      "sourceSha256": "5aa44ac047ed00c46660ff2c4e1857e28b70b75bca9587d016775c6f62481c3c",
+      "sourceRgbaSha256": "7f80ec1bdc821bf2d42ef5884b025dec5d4a5904b7eebb141315e75da9105018",
+      "keyedRgbaSha256": "5dd5af0e28e01649b22cccd08ef7d88da3a347deebb3dead948286fecc478c7e",
+      "previousTargetSha256": null,
+      "outputSha256": "920ed05967cfd9f2cc524d854fee66c2b7e0614faab2e5d97d98a1e0a23be573",
+      "outputRgbaSha256": "6ad776fd0072863cc77f71a9c0c04efbe981a6a76db2e1d19d4e5525de3c6c96",
+      "outputBytes": 1183135,
+      "sourceCanvas": {
+        "width": 1315,
+        "height": 1196
+      },
+      "outputCanvas": {
+        "width": 2816,
+        "height": 284
+      },
+      "x": [
+        [
+          0,
+          0
+        ],
+        [
+          2815,
+          1314
+        ]
+      ],
+      "y": [
+        [
+          0,
+          492
+        ],
+        [
+          12,
+          502.5
+        ],
+        [
+          267,
+          718
+        ],
+        [
+          283,
+          732
+        ]
+      ],
+      "sourceBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1315,
+        "height": 1196,
+        "pixels": 1572740
+      },
+      "keyedBounds": {
+        "x": 0,
+        "y": 501,
+        "width": 1315,
+        "height": 695,
+        "pixels": 287473
+      },
+      "keyedInkBounds": {
+        "x": 0,
+        "y": 501,
+        "width": 1315,
+        "height": 220,
+        "pixels": 287053
+      },
+      "beforeClipBounds": {
+        "x": 0,
+        "y": 10,
+        "width": 2816,
+        "height": 261,
+        "pixels": 731094
+      },
+      "clip": {
+        "path": "pack/masks/body_p9_kammerboden.MASKE.png",
+        "sha256": "cfe9d4d560c42d21bdf30401231e6cbdb602d54fcc259856eae5856042961414",
+        "rgbaSha256": "187a376a5204ac8ae312a95303cbf0e200bdc62ceb2ba8f5400bbf50163c3ffa",
+        "bounds": {
+          "x": 0,
+          "y": 12,
+          "width": 2816,
+          "height": 256,
+          "pixels": 720896
+        },
+        "cut": 10198,
+        "rule": "mask alpha=0 cuts; all nonzero mask alpha leaves source alpha unchanged"
+      },
+      "outputBounds": {
+        "x": 0,
+        "y": 12,
+        "width": 2816,
+        "height": 256,
+        "pixels": 720896
+      },
+      "outputInkBounds": {
+        "x": 0,
+        "y": 12,
+        "width": 2816,
+        "height": 256,
+        "pixels": 720896
+      },
+      "boundsConvention": "integer origin and extent; Bounds alpha>0, InkBounds alpha>CUT_ALPHA",
+      "cutAlpha": 16,
+      "key": {
+        "cut": 1285267,
+        "softened": 1773,
+        "keyRgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 40,
+        "softTolerance": 110
+      },
+      "sourceCleanup": {
+        "specks": {
+          "healed": 69,
+          "cut": 0,
+          "total": 69
+        },
+        "fringe": {
+          "healed": 3001,
+          "cut": 0,
+          "total": 3001,
+          "threshold": 22
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "outputCleanup": {
+        "specks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "fringe": {
+          "healed": 2,
+          "cut": 0,
+          "total": 2,
+          "threshold": 19
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "chromaMatte": null
+    },
+    {
+      "stem": "body_p9_oberer_sims",
+      "source": "pack/sources/arena-bonus/p9-sims.png",
+      "target": "reproduction/arena-bonus/body_p9_oberer_sims.png",
+      "sourceSha256": "e4e7bd46e7896543e79919631763e4235aa28932abfb4cfe429861a3e039d85f",
+      "sourceRgbaSha256": "dec971d445e55cb4f76217177c31443e0281e7d0e3511e26d1d6d95f956e3663",
+      "keyedRgbaSha256": "3785acc52c8af6c34afa234c585321e5e1eb47e484d995647566376b98ce5963",
+      "previousTargetSha256": null,
+      "outputSha256": "bbc820e7f226f7c35b3a1e78e0997e548976ca56018519e068336ad27097b34f",
+      "outputRgbaSha256": "e3a66501100086b8ddfeb30b8de6bb4d9caaacae8937d59eadfc1f7ffb67d69b",
+      "outputBytes": 52206,
+      "sourceCanvas": {
+        "width": 2171,
+        "height": 724
+      },
+      "outputCanvas": {
+        "width": 320,
+        "height": 92
+      },
+      "x": [
+        [
+          0,
+          60
+        ],
+        [
+          319,
+          2110
+        ]
+      ],
+      "y": [
+        [
+          0,
+          235
+        ],
+        [
+          12,
+          279
+        ],
+        [
+          75,
+          504
+        ],
+        [
+          91,
+          561
+        ]
+      ],
+      "sourceBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 2171,
+        "height": 724,
+        "pixels": 1571804
+      },
+      "keyedBounds": {
+        "x": 0,
+        "y": 210,
+        "width": 2138,
+        "height": 514,
+        "pixels": 608641
+      },
+      "keyedInkBounds": {
+        "x": 36,
+        "y": 210,
+        "width": 2102,
+        "height": 298,
+        "pixels": 608433
+      },
+      "beforeClipBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 77,
+        "pixels": 24233
+      },
+      "clip": {
+        "path": "pack/masks/body_p9_oberer_sims.MASKE.png",
+        "sha256": "19f3caac62f3b901f327592d665f3fd73740ebf8bcfc3d57377fd416e0f16825",
+        "rgbaSha256": "4b406db36596baa8bf73a45ed393fc1fe196b95da9d538aca2c3261901c0f1a4",
+        "bounds": {
+          "x": 0,
+          "y": 12,
+          "width": 320,
+          "height": 64,
+          "pixels": 20480
+        },
+        "cut": 3753,
+        "rule": "mask alpha=0 cuts; all nonzero mask alpha leaves source alpha unchanged"
+      },
+      "outputBounds": {
+        "x": 0,
+        "y": 12,
+        "width": 320,
+        "height": 64,
+        "pixels": 20480
+      },
+      "outputInkBounds": {
+        "x": 0,
+        "y": 12,
+        "width": 320,
+        "height": 64,
+        "pixels": 20480
+      },
+      "boundsConvention": "integer origin and extent; Bounds alpha>0, InkBounds alpha>CUT_ALPHA",
+      "cutAlpha": 16,
+      "key": {
+        "cut": 963163,
+        "softened": 1077,
+        "keyRgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 40,
+        "softTolerance": 110
+      },
+      "sourceCleanup": {
+        "specks": {
+          "healed": 159,
+          "cut": 0,
+          "total": 159
+        },
+        "fringe": {
+          "healed": 5533,
+          "cut": 0,
+          "total": 5533,
+          "threshold": 17
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "outputCleanup": {
+        "specks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "fringe": {
+          "healed": 6,
+          "cut": 0,
+          "total": 6,
+          "threshold": 15
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "chromaMatte": null
+    }
+  ]
+}

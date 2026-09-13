@@ -1,0 +1,29 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "scope": "Ten final manifest groups; actual importer rerun, no public writes",
+  "result": "40/40 byte-identical to recorded and current public PNGs",
+  "node": "v24.20.0",
+  "command": "nice -n 15 node docs/art/ch01-buecherwelt/reproduce.mjs --dest /private/tmp/codex-ch01-sourcepack-repro-02",
+  "reproducerSha256": "5f651ddba7ba219140445e77956fb4ad482bcb7ceaddf69bc89f8fc1be4604f4",
+  "reproductionSha256": "7133127eb621cd03e3fa49b0818b7de3880cda0277e55a5b7ecb4329a1acdbba",
+  "inventorySha256": "83f922141e0f09d32d05be493b0296ec1aa60da49769cd7dd04f1cb262d19969",
+  "rootPromptSha256Unchanged": "f011c26352e152fa184629aed7ccb0fb8290f519f3debac6d803336edbf7e63b",
+  "toolchain": [
+    {
+      "path": "docs/art/import-ch01-buecherwelt.mjs",
+      "sha256": "1c9e3347f2cabd9d5f18c58d982b0a0b6d810359cb61d1697ba7d296bdc201f5"
+    },
+    {
+      "path": "scripts/key-fringe.mjs",
+      "sha256": "51e4044e953feb7e3af96b2d4b562cf73a97dd596d9b7cb2c7d3d688c0145e80"
+    },
+    {
+      "path": "package.json",
+      "sha256": "8ed9058129870c499e2fe96853a72b574ac20c12468174ffcc16671e51532391"
+    },
+    {
+      "path": "pnpm-lock.yaml",
+      "sha256": "ee9e66a395c9b3e4574b9d7ee60fdac2e82d7ee10487514e626834d877782df4"
+    }
+  ]
+}

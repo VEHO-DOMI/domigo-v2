@@ -1,0 +1,166 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "schema": "ch01TerrainImport@1",
+  "manifestPath": "reproduction/courtyard-plants.json",
+  "manifestSha256": "f3ba2bbd67b5ef0c96f118c37b0d757847ff18813f9ea94363352f6955170ec4",
+  "importerSha256": "1c9e3347f2cabd9d5f18c58d982b0a0b6d810359cb61d1697ba7d296bdc201f5",
+  "fringeModuleSha256": "51e4044e953feb7e3af96b2d4b562cf73a97dd596d9b7cb2c7d3d688c0145e80",
+  "node": "v24.20.0",
+  "pngjsVersion": "7.0.0",
+  "convention": "pixel centres; strict monotone inverse map; no extrapolation; outside source transparent; premultiplied bilinear",
+  "assets": [
+    {
+      "stem": "l2_p3",
+      "source": "pack/sources/courtyard-plants/source-final.png",
+      "target": "reproduction/courtyard-plants/l2_p3.png",
+      "sourceSha256": "190d9b3926b7b658b3d5caa45549c2b466482055209f9465a61fb5515f169877",
+      "sourceRgbaSha256": "34b0b4a47341c098b409a50279c8d9f966dc57ab95f1047e4d0a9adbe8a973ae",
+      "keyedRgbaSha256": "f3102df06f60f600ee2bc722b15ff67e9a1e77807058c4de9bf37d59c61f76dd",
+      "previousTargetSha256": null,
+      "outputSha256": "79f2177c4e86665715e6c13685e0bbfd2e0d4f19fe41b46310f45f59c9ca5d03",
+      "outputRgbaSha256": "0f20917d380decb2e1e6f0f8d317233f2ae23509b6e55dc96d15e9811d85d947",
+      "outputBytes": 792850,
+      "sourceCanvas": {
+        "width": 2079,
+        "height": 756
+      },
+      "outputCanvas": {
+        "width": 2048,
+        "height": 340
+      },
+      "x": [
+        [
+          0,
+          0
+        ],
+        [
+          2047,
+          2078
+        ]
+      ],
+      "y": [
+        [
+          0,
+          240
+        ],
+        [
+          339,
+          584.133854421104
+        ]
+      ],
+      "sourceBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 2079,
+        "height": 756,
+        "pixels": 1571724
+      },
+      "keyedBounds": {
+        "x": 0,
+        "y": 242,
+        "width": 2079,
+        "height": 514,
+        "pixels": 348554
+      },
+      "keyedInkBounds": {
+        "x": 0,
+        "y": 243,
+        "width": 2079,
+        "height": 339,
+        "pixels": 346976
+      },
+      "beforeClipBounds": {
+        "x": 0,
+        "y": 2,
+        "width": 2048,
+        "height": 335,
+        "pixels": 347079
+      },
+      "clip": null,
+      "outputBounds": {
+        "x": 0,
+        "y": 2,
+        "width": 2048,
+        "height": 335,
+        "pixels": 347079
+      },
+      "outputInkBounds": {
+        "x": 0,
+        "y": 3,
+        "width": 2048,
+        "height": 333,
+        "pixels": 341900
+      },
+      "boundsConvention": "integer origin and extent; Bounds alpha>0, InkBounds alpha>CUT_ALPHA",
+      "cutAlpha": 16,
+      "key": {
+        "cut": 1223170,
+        "softened": 16107,
+        "keyRgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 40,
+        "softTolerance": 110
+      },
+      "sourceCleanup": {
+        "specks": {
+          "healed": 292,
+          "cut": 0,
+          "total": 292
+        },
+        "fringe": {
+          "healed": 3729,
+          "cut": 0,
+          "total": 3729,
+          "threshold": 186
+        },
+        "finalSpecks": {
+          "healed": 838,
+          "cut": 0,
+          "total": 838
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "outputCleanup": {
+        "specks": {
+          "healed": 104,
+          "cut": 0,
+          "total": 104
+        },
+        "fringe": {
+          "healed": 379,
+          "cut": 0,
+          "total": 379,
+          "threshold": 180
+        },
+        "finalSpecks": {
+          "healed": 40,
+          "cut": 0,
+          "total": 40
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "chromaMatte": {
+        "mode": "no-violet",
+        "recoloured": 44014,
+        "threshold": 0,
+        "radius": 24,
+        "maxDistanceSquared": 130,
+        "alphaBefore": "48a50c1665fe8340be758984af5c33b46acef813da002722c402bc72e3fdf42d",
+        "alphaAfter": "48a50c1665fe8340be758984af5c33b46acef813da002722c402bc72e3fdf42d",
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      }
+    }
+  ]
+}

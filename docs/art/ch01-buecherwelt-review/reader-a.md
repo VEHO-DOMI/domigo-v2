@@ -1,0 +1,28 @@
+CODEX DRAFT — NOT CANON
+
+Alle 26 Bilder wurden einzeln in Originalauflösung gesichtet.
+
+| Paar | Urteil | Bildvergleich und verbleibende Schwäche |
+|---|---|---|
+| 01 | **B** | B baut den Boden aus klar lesbaren Großbüchern auf; Seitenblöcke, Einbände und schwebende Buchregale bilden eine gemeinsame Materialsprache. A wirkt unten wie eine überladene Archivfestung, während die Plattformen eher Schubladen sind. **B: [deutlich]** Das grelle Fenster und das durchscheinende grüne Band schwächen die Tiefentrennung um Gegner und Figur. |
+| 02 | **B** | B zeigt lange, eindeutig horizontale Bücher mit sichtbaren Seiten und Einbandkanten; Figur, Motte und Landeflächen sind vor dem ruhigen Blau gut lesbar. A setzt Reihen winziger Buchrücken zu flachen Mauerstreifen zusammen. **B: [klein]** Die sehr geraden Plattformbänder bleiben merklich modular wiederholt. |
+| 03 | **B** | B bildet die zentrale Masse vollständig aus verschieden dicken Großbüchern. A mischt diese mit einem dunklen, mechanisch wirkenden Bauteil links und möbelartigen Absätzen. **B: [klein]** Die drei rechten Kleinplattformen ähneln einander stark und wirken etwas gestempelt; das Blattwerk mindert dort den Kontrast. |
+| 04 | **B** | B macht die rechte Höhe als gestaffelten Bücherberg verständlich; Seitenflächen und überstehende Einbände ergeben klare Stufen. A liest sich dort als glatte Kupfer-/Holzarchitektur. **B: [deutlich]** Die winzigen Holzklötze links haben einen anderen Maßstab als der Bücherberg und bleiben Fremdkörper. |
+| 05 | **B, knapp** | Beide Fassungen besitzen eine starke Basis aus geöffneten Büchern. B gewinnt, weil das obere Regal sichtbare Bücher enthält und die warme Holzlampe besser eingebunden ist; A wirkt dort technischer und möbelhafter. **B: [deutlich]** Die schwebenden Pulte und der weiße Hocker gehören weiterhin eher zu einer Möbelkulisse als zur Bücherlandschaft; ihre begehbaren Oberseiten sind teilweise schmal. |
+| 06 | **A** | A hält Boden und Schwebeflächen als große horizontale Bücher lesbar; der dunkle Hintergrund bleibt ruhig und die Figur hebt sich klar ab. B führt schwarze Stoffblöcke, Seil-/Bambusgerüste und eine Wand aus zahllosen Minibüchern ein. **A: [klein]** Die kurzen Schwebebücher sind isoliert und werfen kaum überzeugende Schatten. |
+| 07 | **A** | A besitzt eine einfache, zusammenhängende Reihe großer Bücher; die Stühle bleiben gedämpfter Hintergrund. B kombiniert eine kleinteilige Bücherwand mit einem verschnürten Gerüst und stark vervielfachten Stuhlreihen. **A: [klein]** Der Käfig stößt hart an den rechten Bildrand; der gekippte Tafelgegner beansprucht sehr viel Aufmerksamkeit. |
+| 08 | **visuell identisch** | Aufbau, Figurenpose, Gegenstände, Schatten und Buchformen stimmen sichtbar überein. Die Großbücher unten und kleinen Buchstapel oben sind gut lesbar. **Beide: [deutlich]** Fensterlicht und das breite durchscheinende Band verflachen die Mitte, besonders um das blaue Objekt. |
+| 09 | **B** | B fasst beide Seiten des Abgrunds als große, klar geschichtete Bücher; Einbandüberstände geben gute Kanten und die Spielfigur bleibt erkennbar. A macht die rechte Seite zu einer dichten Archivfassade und den linken Übergang zerklüftet. **B: [deutlich]** Der violette Abgrund endet an sehr harten senkrechten Rechteckkanten ohne glaubhaften Buchriss oder weicheren Übergang. |
+| 10 | **B** | B ersetzt mehrere schrankartige Flächen durch erkennbare Buchstapel und ein Regal mit sichtbaren Bänden. Die blauen Wandflächen bleiben vergleichsweise ruhig. **B: [deutlich]** Sehr viele Figuren, Buchstaben und Gegenstände konkurrieren miteinander; unten angeschnittene Objekte schwächen die Hierarchie der Landeflächen. |
+| 11 | **B** | B zeigt einen übersichtlichen Boden aus wenigen Großbüchern, einen Buchstapel in der Mitte und ein kleines Bücherregal oben. A wirkt darunter wie eine monolithische, kleinteilige Archivwand und verwendet braune Blockplattformen. **B: [deutlich]** Das blasse Flugwesen verliert vor Fensterlicht und durchsichtigem Farbbalken Kontrast; auch die Kante hinter der schwarzen Katze ist nicht sofort eindeutig. |
+| 12 | **A** | A baut den Abstieg aus großen, individuell erkennbaren Büchern mit schrägen Einbandkanten. B ähnelt stärker einer massiven Treppenarchitektur mit Holzrampen und vielen eingemauerten Minibüchern. **A: [deutlich]** Die schwebenden braunen Platten und Zylinder oben passen weder im Maßstab noch im Material vollständig zum Bücherhang. |
+| 13 | **A** | A besitzt eine geschlossene Großbuchwand und farbige Buchstapel als Plattformen. B stellt darauf dunkle Schubladen-/Brettsäulen und setzt unter einen glatten Holzboden eine extrem kleinteilige Archivstruktur. **A: [deutlich]** Das starke Gegenlicht und das breite transparente Band schwächen erneut Raumtiefe und Objektkontrast. |
+
+Wichtigste Gesamtbefunde:
+
+1. Der stärkste wiederkehrende Bruch ist die Verwendung vieler winziger Buchrücken als Mauerwerk. Das verwischt den Buchmaßstab und lässt die Welt wie eine Archivfestung wirken.
+2. Seilgerüste, Schubladenblöcke, Kupferfassaden und schwebende Möbel sind die auffälligsten Fremdmaterialien.
+3. Am überzeugendsten sind wenige große Bücher mit sichtbaren Seitenblöcken, Einbandlippen und unterschiedlichen Dicken.
+4. Die gewählten Fassungen haben überwiegend klarere, breitere Landekanten; problematisch bleiben besonders 05 und die Kleinplattformen in 04 und 12.
+5. Helle Fenster plus breite transparente Farbbänder verflachen mehrere gelbe Szenen und mindern den Kontrast blasser Figuren oder Sammelobjekte.
+6. In den jeweils bevorzugten Bildern sehe ich keinen blockierenden visuellen Fehler, aber mehrere deutliche Inkonsistenzen; insbesondere 05 bleibt trotz des knappen Siegs keine vollständig durchgezogene Bücherlandschaft.

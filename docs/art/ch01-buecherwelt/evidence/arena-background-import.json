@@ -1,0 +1,448 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "schema": "ch01TerrainImport@1",
+  "manifestPath": "reproduction/arena-background.json",
+  "manifestSha256": "4b077b4dad6c423461f5966415f7586e08ca580f5c24bac4f597e50ab4ac6957",
+  "importerSha256": "1c9e3347f2cabd9d5f18c58d982b0a0b6d810359cb61d1697ba7d296bdc201f5",
+  "fringeModuleSha256": "51e4044e953feb7e3af96b2d4b562cf73a97dd596d9b7cb2c7d3d688c0145e80",
+  "node": "v24.20.0",
+  "pngjsVersion": "7.0.0",
+  "convention": "pixel centres; strict monotone inverse map; no extrapolation; outside source transparent; premultiplied bilinear",
+  "assets": [
+    {
+      "stem": "l1_p4_a",
+      "source": "pack/sources/arena-background/l1_p4_a.png",
+      "target": "reproduction/arena-background/l1_p4_a.png",
+      "sourceSha256": "e94dd2ca8267c303962d9ecb7143520254c8312e37c275f24369bbee03540bd6",
+      "sourceRgbaSha256": "f2d4eda7496fb6a86a3d939fd73408afe541eeb42c056f7c7c834f44e5a12528",
+      "keyedRgbaSha256": "f2d4eda7496fb6a86a3d939fd73408afe541eeb42c056f7c7c834f44e5a12528",
+      "previousTargetSha256": null,
+      "outputSha256": "ceaceb89ecc3570c6e9d74f31266a9ed4f55c7b20a57ed5439bd069118029097",
+      "outputRgbaSha256": "7b57346d1f16a128d32569cdf4c75b665f6d73c44c9609435a0ec88e02e904de",
+      "outputBytes": 1480004,
+      "sourceCanvas": {
+        "width": 1131,
+        "height": 1391
+      },
+      "outputCanvas": {
+        "width": 1024,
+        "height": 1260
+      },
+      "x": [
+        [
+          0,
+          0
+        ],
+        [
+          1023,
+          1130
+        ]
+      ],
+      "y": [
+        [
+          0,
+          0
+        ],
+        [
+          1259,
+          1390
+        ]
+      ],
+      "sourceBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1131,
+        "height": 1391,
+        "pixels": 1573221
+      },
+      "keyedBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1131,
+        "height": 1391,
+        "pixels": 1573221
+      },
+      "keyedInkBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1131,
+        "height": 1391,
+        "pixels": 1573221
+      },
+      "beforeClipBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1024,
+        "height": 1260,
+        "pixels": 1290240
+      },
+      "clip": null,
+      "outputBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1024,
+        "height": 1260,
+        "pixels": 1290240
+      },
+      "outputInkBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1024,
+        "height": 1260,
+        "pixels": 1290240
+      },
+      "boundsConvention": "integer origin and extent; Bounds alpha>0, InkBounds alpha>CUT_ALPHA",
+      "cutAlpha": 16,
+      "key": {
+        "cut": 0,
+        "softened": 0,
+        "keyRgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 40,
+        "softTolerance": 110
+      },
+      "sourceCleanup": {
+        "specks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "fringe": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0,
+          "threshold": 12
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "outputCleanup": {
+        "specks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "fringe": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0,
+          "threshold": 12
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "chromaMatte": null
+    },
+    {
+      "stem": "band_p4_audience",
+      "source": "pack/sources/arena-background/chairs-edit2.png",
+      "target": "reproduction/arena-background/band_p4_audience.png",
+      "sourceSha256": "331b6903ff0c13ec50f107b86de84bb3ae818fd1f4194ac4ad3129759d9cd296",
+      "sourceRgbaSha256": "069a48c57780200e179a69893d24595cd4557cee0d3bd4610f199824900718d2",
+      "keyedRgbaSha256": "33e88e845b938ad6042f085bb7fde3357e3bfaba3a7bedfce06b36cbed55f5ed",
+      "previousTargetSha256": null,
+      "outputSha256": "8441712bb07390c6e0c7eafe11a8b02a0a65140c5554b33a6b5391142171b189",
+      "outputRgbaSha256": "5c2a54c5887f099626b6f3262238fd44a3229dc22524597b029c80174242d1ae",
+      "outputBytes": 306563,
+      "sourceCanvas": {
+        "width": 2172,
+        "height": 724
+      },
+      "outputCanvas": {
+        "width": 2048,
+        "height": 384
+      },
+      "x": [
+        [
+          0,
+          0
+        ],
+        [
+          2047,
+          2171
+        ]
+      ],
+      "y": [
+        [
+          0,
+          152.3126526624328
+        ],
+        [
+          383,
+          558.5134342940889
+        ]
+      ],
+      "sourceBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 2172,
+        "height": 724,
+        "pixels": 1572528
+      },
+      "keyedBounds": {
+        "x": 0,
+        "y": 246,
+        "width": 2072,
+        "height": 478,
+        "pixels": 230833
+      },
+      "keyedInkBounds": {
+        "x": 102,
+        "y": 246,
+        "width": 1970,
+        "height": 253,
+        "pixels": 230250
+      },
+      "beforeClipBounds": {
+        "x": 96,
+        "y": 88,
+        "width": 1858,
+        "height": 239,
+        "pixels": 212994
+      },
+      "clip": null,
+      "outputBounds": {
+        "x": 96,
+        "y": 88,
+        "width": 1858,
+        "height": 239,
+        "pixels": 212994
+      },
+      "outputInkBounds": {
+        "x": 96,
+        "y": 88,
+        "width": 1858,
+        "height": 239,
+        "pixels": 210371
+      },
+      "boundsConvention": "integer origin and extent; Bounds alpha>0, InkBounds alpha>CUT_ALPHA",
+      "cutAlpha": 16,
+      "key": {
+        "cut": 1341695,
+        "softened": 7152,
+        "keyRgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 40,
+        "softTolerance": 110
+      },
+      "sourceCleanup": {
+        "specks": {
+          "healed": 1281,
+          "cut": 0,
+          "total": 1281
+        },
+        "fringe": {
+          "healed": 23277,
+          "cut": 0,
+          "total": 23277,
+          "threshold": 15
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "outputCleanup": {
+        "specks": {
+          "healed": 3,
+          "cut": 0,
+          "total": 3
+        },
+        "fringe": {
+          "healed": 122,
+          "cut": 0,
+          "total": 122,
+          "threshold": 15
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "chromaMatte": {
+        "mode": "no-violet",
+        "recoloured": 13830,
+        "threshold": 0,
+        "radius": 24,
+        "maxDistanceSquared": 41,
+        "alphaBefore": "8652828817320f0de01b438e452078d61b2af65bf90bf17096ee010820818e0c",
+        "alphaAfter": "8652828817320f0de01b438e452078d61b2af65bf90bf17096ee010820818e0c",
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      }
+    },
+    {
+      "stem": "l1_p4_b",
+      "source": "pack/sources/arena-background/wall-b-fresh.png",
+      "target": "reproduction/arena-background/l1_p4_b.png",
+      "sourceSha256": "039887c644dd39c4688fc0e48491bf33127e10e953a873d4059d8719d27dfd30",
+      "sourceRgbaSha256": "4b9b1ccdb9bf6d7375e1719b1fdadd914d16d04f6549e6a17e583717fdd171d2",
+      "keyedRgbaSha256": "4b9b1ccdb9bf6d7375e1719b1fdadd914d16d04f6549e6a17e583717fdd171d2",
+      "previousTargetSha256": null,
+      "outputSha256": "a24cc9023e0b9979b232f76a299319bbfc52626c6038d87e58f9da28c9f02de4",
+      "outputRgbaSha256": "43e6d5bd95f1f30df9c499535b61e6803fd899f1cd058964f937d84bc0640893",
+      "outputBytes": 1602097,
+      "sourceCanvas": {
+        "width": 1131,
+        "height": 1391
+      },
+      "outputCanvas": {
+        "width": 1024,
+        "height": 1260
+      },
+      "x": [
+        [
+          0,
+          0
+        ],
+        [
+          1023,
+          1130
+        ]
+      ],
+      "y": [
+        [
+          0,
+          0
+        ],
+        [
+          1259,
+          1390
+        ]
+      ],
+      "sourceBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1131,
+        "height": 1391,
+        "pixels": 1573221
+      },
+      "keyedBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1131,
+        "height": 1391,
+        "pixels": 1573221
+      },
+      "keyedInkBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1131,
+        "height": 1391,
+        "pixels": 1573221
+      },
+      "beforeClipBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1024,
+        "height": 1260,
+        "pixels": 1290240
+      },
+      "clip": null,
+      "outputBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1024,
+        "height": 1260,
+        "pixels": 1290240
+      },
+      "outputInkBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1024,
+        "height": 1260,
+        "pixels": 1290240
+      },
+      "boundsConvention": "integer origin and extent; Bounds alpha>0, InkBounds alpha>CUT_ALPHA",
+      "cutAlpha": 16,
+      "key": {
+        "cut": 0,
+        "softened": 0,
+        "keyRgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 40,
+        "softTolerance": 110
+      },
+      "sourceCleanup": {
+        "specks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "fringe": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0,
+          "threshold": 12
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "outputCleanup": {
+        "specks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "fringe": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0,
+          "threshold": 12
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "chromaMatte": null
+    }
+  ]
+}

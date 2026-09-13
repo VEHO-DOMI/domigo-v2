@@ -1,0 +1,136 @@
+{
+  "reader-a": [
+    {
+      "pair": 1,
+      "name": "p1-east",
+      "new": "B"
+    },
+    {
+      "pair": 2,
+      "name": "p2-middle",
+      "new": "B"
+    },
+    {
+      "pair": 3,
+      "name": "p3-valley",
+      "new": "B"
+    },
+    {
+      "pair": 4,
+      "name": "p3-east",
+      "new": "B"
+    },
+    {
+      "pair": 5,
+      "name": "p2-west",
+      "new": "B"
+    },
+    {
+      "pair": 6,
+      "name": "p9-bonus",
+      "new": "A"
+    },
+    {
+      "pair": 7,
+      "name": "p4-arena",
+      "new": "A"
+    },
+    {
+      "pair": 8,
+      "name": "identical-control",
+      "new": "B"
+    },
+    {
+      "pair": 9,
+      "name": "p1-pit",
+      "new": "B"
+    },
+    {
+      "pair": 10,
+      "name": "p2-east",
+      "new": "B"
+    },
+    {
+      "pair": 11,
+      "name": "p1-middle",
+      "new": "B"
+    },
+    {
+      "pair": 12,
+      "name": "p3-west",
+      "new": "A"
+    },
+    {
+      "pair": 13,
+      "name": "p1-west",
+      "new": "A"
+    }
+  ],
+  "reader-b": [
+    {
+      "pair": 1,
+      "name": "p3-valley",
+      "new": "B"
+    },
+    {
+      "pair": 2,
+      "name": "p2-east",
+      "new": "B"
+    },
+    {
+      "pair": 3,
+      "name": "p1-middle",
+      "new": "A"
+    },
+    {
+      "pair": 4,
+      "name": "p9-bonus",
+      "new": "A"
+    },
+    {
+      "pair": 5,
+      "name": "p3-west",
+      "new": "A"
+    },
+    {
+      "pair": 6,
+      "name": "p1-pit",
+      "new": "B"
+    },
+    {
+      "pair": 7,
+      "name": "p2-west",
+      "new": "A"
+    },
+    {
+      "pair": 8,
+      "name": "p1-east",
+      "new": "A"
+    },
+    {
+      "pair": 9,
+      "name": "identical-control",
+      "new": "B"
+    },
+    {
+      "pair": 10,
+      "name": "p4-arena",
+      "new": "B"
+    },
+    {
+      "pair": 11,
+      "name": "p3-east",
+      "new": "B"
+    },
+    {
+      "pair": 12,
+      "name": "p2-middle",
+      "new": "A"
+    },
+    {
+      "pair": 13,
+      "name": "p1-west",
+      "new": "B"
+    }
+  ]
+}

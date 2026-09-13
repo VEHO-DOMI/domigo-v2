@@ -1,0 +1,1983 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "schema": "ch01TerrainImport@1",
+  "manifestPath": "reproduction/night-classroom.json",
+  "manifestSha256": "c94d711c59bae7af322b9bd7464dbd4e542e656a400c61f49485cd75f5fe7073",
+  "importerSha256": "1c9e3347f2cabd9d5f18c58d982b0a0b6d810359cb61d1697ba7d296bdc201f5",
+  "fringeModuleSha256": "51e4044e953feb7e3af96b2d4b562cf73a97dd596d9b7cb2c7d3d688c0145e80",
+  "node": "v24.20.0",
+  "pngjsVersion": "7.0.0",
+  "convention": "pixel centres; strict monotone inverse map; no extrapolation; outside source transparent; premultiplied bilinear",
+  "assets": [
+    {
+      "stem": "body_p2_tafelgeruest",
+      "source": "pack/sources/night-classroom/tafel-source-v1.png",
+      "target": "reproduction/night-classroom/body_p2_tafelgeruest.png",
+      "sourceSha256": "166cbc9b1d40f772b93ef4f0ca8f3477d1aa14286aa556f5a2e7c59835278b1c",
+      "sourceRgbaSha256": "b8de9e7f1c42014e6a2d80d933417f51834dc1b5c5b68a82c31790acc65d0747",
+      "keyedRgbaSha256": "68544af8ff01c03779b9f9434a1f34b8b885b6dad4c25262ecf8ae4382e2071a",
+      "previousTargetSha256": null,
+      "outputSha256": "e2b6582b4a89e56e569d109ae89a69079e574260b28258452784ffc8df9e1dfc",
+      "outputRgbaSha256": "aa1c51d59e6f2f20529ee2a7fd968c25d4abbb9ba247a7ec8fa6607081b205c9",
+      "outputBytes": 316910,
+      "sourceCanvas": {
+        "width": 2164,
+        "height": 727
+      },
+      "outputCanvas": {
+        "width": 1984,
+        "height": 348
+      },
+      "x": [
+        [
+          0,
+          1
+        ],
+        [
+          384,
+          409
+        ],
+        [
+          448,
+          502
+        ],
+        [
+          704,
+          772
+        ],
+        [
+          768,
+          861
+        ],
+        [
+          1983,
+          2157
+        ]
+      ],
+      "y": [
+        [
+          0,
+          167
+        ],
+        [
+          12,
+          179
+        ],
+        [
+          76,
+          242
+        ],
+        [
+          140,
+          329
+        ],
+        [
+          268,
+          447
+        ],
+        [
+          331,
+          537
+        ],
+        [
+          347,
+          554
+        ]
+      ],
+      "sourceBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 2164,
+        "height": 727,
+        "pixels": 1573228
+      },
+      "keyedBounds": {
+        "x": 0,
+        "y": 179,
+        "width": 2164,
+        "height": 359,
+        "pixels": 243042
+      },
+      "keyedInkBounds": {
+        "x": 0,
+        "y": 179,
+        "width": 2160,
+        "height": 359,
+        "pixels": 242956
+      },
+      "beforeClipBounds": {
+        "x": 0,
+        "y": 12,
+        "width": 1984,
+        "height": 320,
+        "pixels": 161393
+      },
+      "clip": {
+        "path": "pack/masks/body_p2_tafelgeruest.MASKE.png",
+        "sha256": "afcaba81f5fda9c39c3e778931797d4ebdbf71380b4c21192a13f385da0b0e2e",
+        "rgbaSha256": "9e0c2bac86aeb1df23a1156c852c6ad72f12736631526e9e97eda6faddb8a374",
+        "bounds": {
+          "x": 0,
+          "y": 12,
+          "width": 1984,
+          "height": 320,
+          "pixels": 159744
+        },
+        "cut": 2523,
+        "rule": "mask alpha=0 cuts; all nonzero mask alpha leaves source alpha unchanged"
+      },
+      "outputBounds": {
+        "x": 0,
+        "y": 12,
+        "width": 1984,
+        "height": 320,
+        "pixels": 158870
+      },
+      "outputInkBounds": {
+        "x": 0,
+        "y": 12,
+        "width": 1984,
+        "height": 320,
+        "pixels": 158823
+      },
+      "boundsConvention": "integer origin and extent; Bounds alpha>0, InkBounds alpha>CUT_ALPHA",
+      "cutAlpha": 16,
+      "key": {
+        "cut": 1330185,
+        "softened": 2302,
+        "keyRgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 40,
+        "softTolerance": 110
+      },
+      "sourceCleanup": {
+        "specks": {
+          "healed": 91,
+          "cut": 1,
+          "total": 92
+        },
+        "fringe": {
+          "healed": 5958,
+          "cut": 0,
+          "total": 5958,
+          "threshold": 26
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "outputCleanup": {
+        "specks": {
+          "healed": 1,
+          "cut": 0,
+          "total": 1
+        },
+        "fringe": {
+          "healed": 13,
+          "cut": 0,
+          "total": 13,
+          "threshold": 25
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "chromaMatte": null
+    },
+    {
+      "stem": "body_p2_pultreihe_r9",
+      "source": "pack/sources/night-classroom/pult-source-v1.png",
+      "target": "reproduction/night-classroom/body_p2_pultreihe_r9.png",
+      "sourceSha256": "b8ddd6ff7420678f3f0cca69739bf68497ad7917c675c95789177b1461f89ec3",
+      "sourceRgbaSha256": "7d035661d30343a6f0dba4b90890ca4ecb04365a12570403c719fb298faffb08",
+      "keyedRgbaSha256": "771fd0a782cf49cd2e20d4e9198b43512a7818b7ac19f7afb15535dcd634adcf",
+      "previousTargetSha256": null,
+      "outputSha256": "85c25db66dba54618605c5557d5be920b5ea9ff8a7a119ab1af0138b5650901c",
+      "outputRgbaSha256": "ddca01f0ad2c3bc3752fba8d179fd28f630d895b35a1fa6ef1d364a582660462",
+      "outputBytes": 188009,
+      "sourceCanvas": {
+        "width": 2171,
+        "height": 724
+      },
+      "outputCanvas": {
+        "width": 1280,
+        "height": 92
+      },
+      "x": [
+        [
+          0,
+          9
+        ],
+        [
+          1279,
+          2160
+        ]
+      ],
+      "y": [
+        [
+          0,
+          220
+        ],
+        [
+          12,
+          252
+        ],
+        [
+          75,
+          431
+        ],
+        [
+          91,
+          475
+        ]
+      ],
+      "sourceBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 2171,
+        "height": 724,
+        "pixels": 1571804
+      },
+      "keyedBounds": {
+        "x": 0,
+        "y": 249,
+        "width": 2165,
+        "height": 475,
+        "pixels": 394210
+      },
+      "keyedInkBounds": {
+        "x": 6,
+        "y": 249,
+        "width": 2159,
+        "height": 187,
+        "pixels": 394195
+      },
+      "beforeClipBounds": {
+        "x": 0,
+        "y": 11,
+        "width": 1280,
+        "height": 66,
+        "pixels": 83876
+      },
+      "clip": {
+        "path": "pack/masks/body_p2_pultreihe_r9.MASKE.png",
+        "sha256": "4dd643b6e0dc03c8a2b436c2d058fbee951a31c6393e4cc8f08cfdfd741d8257",
+        "rgbaSha256": "f5a554a097ca02d85f8f82dd6b520018aadfabd454b2adfb93509b61a9bd1e44",
+        "bounds": {
+          "x": 0,
+          "y": 12,
+          "width": 1280,
+          "height": 64,
+          "pixels": 81920
+        },
+        "cut": 2447,
+        "rule": "mask alpha=0 cuts; all nonzero mask alpha leaves source alpha unchanged"
+      },
+      "outputBounds": {
+        "x": 0,
+        "y": 12,
+        "width": 1280,
+        "height": 64,
+        "pixels": 81429
+      },
+      "outputInkBounds": {
+        "x": 0,
+        "y": 12,
+        "width": 1280,
+        "height": 64,
+        "pixels": 81421
+      },
+      "boundsConvention": "integer origin and extent; Bounds alpha>0, InkBounds alpha>CUT_ALPHA",
+      "cutAlpha": 16,
+      "key": {
+        "cut": 1177594,
+        "softened": 305,
+        "keyRgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 40,
+        "softTolerance": 110
+      },
+      "sourceCleanup": {
+        "specks": {
+          "healed": 140,
+          "cut": 0,
+          "total": 140
+        },
+        "fringe": {
+          "healed": 4575,
+          "cut": 0,
+          "total": 4575,
+          "threshold": 26
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "outputCleanup": {
+        "specks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "fringe": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0,
+          "threshold": 24
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "chromaMatte": null
+    },
+    {
+      "stem": "body_p2_deckenbahn_west",
+      "source": "pack/sources/night-classroom/west-source-v1.png",
+      "target": "reproduction/night-classroom/body_p2_deckenbahn_west.png",
+      "sourceSha256": "7f27bc1fca4346ca79ec6ecb41e6fa90b7f1c46060971ea731519b72bf44a1c5",
+      "sourceRgbaSha256": "8bbaf05ec3b322c83f5eae7c8b167f241e65c5a03563226b4e232cbd48fd4118",
+      "keyedRgbaSha256": "fc884ce066d885a5d68234d1623f479a30a425fc76bf3c1d320ed9e93904a4fb",
+      "previousTargetSha256": null,
+      "outputSha256": "a6bf6656ad6520e6a0809bb0ca00fffa85683e65c7d7669c27900c2f3b724aba",
+      "outputRgbaSha256": "5312fe1ca955910644b24bdce64edf1928000ce8eff7278ee0336eaba25acc8a",
+      "outputBytes": 283002,
+      "sourceCanvas": {
+        "width": 2149,
+        "height": 731
+      },
+      "outputCanvas": {
+        "width": 1536,
+        "height": 348
+      },
+      "x": [
+        [
+          0,
+          15
+        ],
+        [
+          1408,
+          1865
+        ],
+        [
+          1535,
+          2127
+        ]
+      ],
+      "y": [
+        [
+          0,
+          84
+        ],
+        [
+          12,
+          108
+        ],
+        [
+          76,
+          233
+        ],
+        [
+          331,
+          645
+        ],
+        [
+          347,
+          672
+        ]
+      ],
+      "sourceBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 2149,
+        "height": 731,
+        "pixels": 1570919
+      },
+      "keyedBounds": {
+        "x": 0,
+        "y": 106,
+        "width": 2131,
+        "height": 625,
+        "pixels": 376772
+      },
+      "keyedInkBounds": {
+        "x": 11,
+        "y": 106,
+        "width": 2120,
+        "height": 542,
+        "pixels": 376681
+      },
+      "beforeClipBounds": {
+        "x": 0,
+        "y": 11,
+        "width": 1536,
+        "height": 322,
+        "pixels": 133681
+      },
+      "clip": {
+        "path": "pack/masks/body_p2_deckenbahn_west.MASKE.png",
+        "sha256": "b935a10d29887449760f53f897a7ea24207ed0da7de166e4ebf2017537c3feca",
+        "rgbaSha256": "f52299b5d2c9d4c61f4e1bf3340655f1a34b334a9433a33d6ccac1f014cae198",
+        "bounds": {
+          "x": 0,
+          "y": 12,
+          "width": 1536,
+          "height": 320,
+          "pixels": 131072
+        },
+        "cut": 3634,
+        "rule": "mask alpha=0 cuts; all nonzero mask alpha leaves source alpha unchanged"
+      },
+      "outputBounds": {
+        "x": 0,
+        "y": 12,
+        "width": 1536,
+        "height": 320,
+        "pixels": 130047
+      },
+      "outputInkBounds": {
+        "x": 0,
+        "y": 12,
+        "width": 1536,
+        "height": 320,
+        "pixels": 130007
+      },
+      "boundsConvention": "integer origin and extent; Bounds alpha>0, InkBounds alpha>CUT_ALPHA",
+      "cutAlpha": 16,
+      "key": {
+        "cut": 1194147,
+        "softened": 1527,
+        "keyRgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 40,
+        "softTolerance": 110
+      },
+      "sourceCleanup": {
+        "specks": {
+          "healed": 310,
+          "cut": 0,
+          "total": 310
+        },
+        "fringe": {
+          "healed": 5433,
+          "cut": 0,
+          "total": 5433,
+          "threshold": 47
+        },
+        "finalSpecks": {
+          "healed": 1,
+          "cut": 0,
+          "total": 1
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "outputCleanup": {
+        "specks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "fringe": {
+          "healed": 2,
+          "cut": 0,
+          "total": 2,
+          "threshold": 47
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "chromaMatte": null
+    },
+    {
+      "stem": "body_p2_deckenbahn_mitte",
+      "source": "pack/sources/night-classroom/middle-source-v1.png",
+      "target": "reproduction/night-classroom/body_p2_deckenbahn_mitte.png",
+      "sourceSha256": "33ef9424a2201488681845b70f305dc71829bca876c5af8eb41c7116b839c4b1",
+      "sourceRgbaSha256": "7d6dc6ceca17264d9b527836eabec6595e00dc3a71575a991382a05fbdd66c82",
+      "keyedRgbaSha256": "f09ce85c6451cdc77c11fa5bda240d209f05ec783f17edc59bae6ac9330e5c09",
+      "previousTargetSha256": null,
+      "outputSha256": "9d60e5d1db7c6146286c46e42aa369f8a47f95954088e8de5913b5b8883bdc03",
+      "outputRgbaSha256": "cc0e02dd7eaf6568dbd4c9b632098dd3d4deb89136121446d7dd292bba945f53",
+      "outputBytes": 246230,
+      "sourceCanvas": {
+        "width": 1746,
+        "height": 901
+      },
+      "outputCanvas": {
+        "width": 1984,
+        "height": 92
+      },
+      "x": [
+        [
+          0,
+          26
+        ],
+        [
+          1983,
+          1720
+        ]
+      ],
+      "y": [
+        [
+          0,
+          353
+        ],
+        [
+          12,
+          377
+        ],
+        [
+          75,
+          493
+        ],
+        [
+          91,
+          523
+        ]
+      ],
+      "sourceBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1746,
+        "height": 901,
+        "pixels": 1573146
+      },
+      "keyedBounds": {
+        "x": 0,
+        "y": 373,
+        "width": 1743,
+        "height": 528,
+        "pixels": 206636
+      },
+      "keyedInkBounds": {
+        "x": 3,
+        "y": 373,
+        "width": 1740,
+        "height": 129,
+        "pixels": 206579
+      },
+      "beforeClipBounds": {
+        "x": 0,
+        "y": 10,
+        "width": 1984,
+        "height": 70,
+        "pixels": 129481
+      },
+      "clip": {
+        "path": "pack/masks/body_p2_deckenbahn_mitte.MASKE.png",
+        "sha256": "3bbbc4a3673f14d317fa36d738d03438c5c5e7fa51c9644d0347ba4ed8417b40",
+        "rgbaSha256": "ca4d87982960873d0e757f59d2e29cb85ea87130da857e8dc91655f083904a04",
+        "bounds": {
+          "x": 0,
+          "y": 12,
+          "width": 1984,
+          "height": 64,
+          "pixels": 126976
+        },
+        "cut": 2552,
+        "rule": "mask alpha=0 cuts; all nonzero mask alpha leaves source alpha unchanged"
+      },
+      "outputBounds": {
+        "x": 0,
+        "y": 12,
+        "width": 1984,
+        "height": 64,
+        "pixels": 126929
+      },
+      "outputInkBounds": {
+        "x": 0,
+        "y": 12,
+        "width": 1984,
+        "height": 64,
+        "pixels": 126927
+      },
+      "boundsConvention": "integer origin and extent; Bounds alpha>0, InkBounds alpha>CUT_ALPHA",
+      "cutAlpha": 16,
+      "key": {
+        "cut": 1366510,
+        "softened": 147,
+        "keyRgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 40,
+        "softTolerance": 110
+      },
+      "sourceCleanup": {
+        "specks": {
+          "healed": 138,
+          "cut": 0,
+          "total": 138
+        },
+        "fringe": {
+          "healed": 3662,
+          "cut": 0,
+          "total": 3662,
+          "threshold": 22
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "outputCleanup": {
+        "specks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "fringe": {
+          "healed": 4,
+          "cut": 0,
+          "total": 4,
+          "threshold": 18
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "chromaMatte": null
+    },
+    {
+      "stem": "body_p2_deckenbahn_ost",
+      "source": "pack/sources/night-classroom/east-source-v1.png",
+      "target": "reproduction/night-classroom/body_p2_deckenbahn_ost.png",
+      "sourceSha256": "3b59b76651043f7594dcf823e243d1f2a14ee1cd1bd7e2ff7b21b95743359164",
+      "sourceRgbaSha256": "845d41f5d925694be784d2d1dde22974aff99f97928f8f167de4cb522facba0b",
+      "keyedRgbaSha256": "8fb0df412391d2cdb7e4c48d76e721836741ad97a9baa0eecc5495650f770462",
+      "previousTargetSha256": null,
+      "outputSha256": "f8ff8fa3eb63301d3a82091be7f7e6ae92b41d05fdf7f0b31f910a0d3e317097",
+      "outputRgbaSha256": "7f7b7143fa1ad4ce9c3371ebacb7f0a041bf56a6efdd9e492febe6931d45d403",
+      "outputBytes": 293639,
+      "sourceCanvas": {
+        "width": 1780,
+        "height": 884
+      },
+      "outputCanvas": {
+        "width": 1088,
+        "height": 540
+      },
+      "x": [
+        [
+          0,
+          34
+        ],
+        [
+          128,
+          282
+        ],
+        [
+          1087,
+          1758
+        ]
+      ],
+      "y": [
+        [
+          0,
+          -6
+        ],
+        [
+          12,
+          20
+        ],
+        [
+          76,
+          163
+        ],
+        [
+          523,
+          862
+        ],
+        [
+          539,
+          887
+        ]
+      ],
+      "sourceBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1780,
+        "height": 884,
+        "pixels": 1573520
+      },
+      "keyedBounds": {
+        "x": 21,
+        "y": 15,
+        "width": 1742,
+        "height": 853,
+        "pixels": 442428
+      },
+      "keyedInkBounds": {
+        "x": 21,
+        "y": 15,
+        "width": 1742,
+        "height": 853,
+        "pixels": 442256
+      },
+      "beforeClipBounds": {
+        "x": 0,
+        "y": 10,
+        "width": 1088,
+        "height": 517,
+        "pixels": 135053
+      },
+      "clip": {
+        "path": "pack/masks/body_p2_deckenbahn_ost.MASKE.png",
+        "sha256": "5541e14732431577c63c469dffb4a81dcdc1d7daaab76f6e8b48fbd909f6fdb6",
+        "rgbaSha256": "f346ecb2ab70c0d04bd73fdabbeaf5bbe65ef2f761bb4859b8d06f9dcfa802a4",
+        "bounds": {
+          "x": 0,
+          "y": 12,
+          "width": 1088,
+          "height": 512,
+          "pixels": 126976
+        },
+        "cut": 8270,
+        "rule": "mask alpha=0 cuts; all nonzero mask alpha leaves source alpha unchanged"
+      },
+      "outputBounds": {
+        "x": 0,
+        "y": 12,
+        "width": 1088,
+        "height": 512,
+        "pixels": 126783
+      },
+      "outputInkBounds": {
+        "x": 0,
+        "y": 12,
+        "width": 1088,
+        "height": 512,
+        "pixels": 126722
+      },
+      "boundsConvention": "integer origin and extent; Bounds alpha>0, InkBounds alpha>CUT_ALPHA",
+      "cutAlpha": 16,
+      "key": {
+        "cut": 1131091,
+        "softened": 2379,
+        "keyRgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 40,
+        "softTolerance": 110
+      },
+      "sourceCleanup": {
+        "specks": {
+          "healed": 146,
+          "cut": 1,
+          "total": 147
+        },
+        "fringe": {
+          "healed": 3314,
+          "cut": 0,
+          "total": 3314,
+          "threshold": 61
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "outputCleanup": {
+        "specks": {
+          "healed": 2,
+          "cut": 0,
+          "total": 2
+        },
+        "fringe": {
+          "healed": 1,
+          "cut": 0,
+          "total": 1,
+          "threshold": 74
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "chromaMatte": null
+    },
+    {
+      "stem": "body_p2_ostwand_treppe_boden",
+      "source": "pack/sources/night-classroom/floor-source-v1.png",
+      "target": "reproduction/night-classroom/body_p2_ostwand_treppe_boden.png",
+      "sourceSha256": "94be46f3a5609926f19933c73cfbde6e833868f137876f955b4ac97d905cf3c5",
+      "sourceRgbaSha256": "36661560e9a5c3730a73edf456a9155cf5f60e30e6976765a59d61b7890d8d9f",
+      "keyedRgbaSha256": "8b7add810a651febe592a5eeb225f3c40c3a6ba64a3278b71822c0bd325509e3",
+      "previousTargetSha256": null,
+      "outputSha256": "4507b1d4eefeac581dbef5a7c7574cb07f097610033bcab9272a7981811bf23a",
+      "outputRgbaSha256": "fb93da1be0ea1af4aa19e383500cd63f6ea824ba0403c2afe7f3b14347246ff6",
+      "outputBytes": 1280304,
+      "sourceCanvas": {
+        "width": 1025,
+        "height": 1534
+      },
+      "outputCanvas": {
+        "width": 1088,
+        "height": 1628
+      },
+      "x": [
+        [
+          0,
+          0
+        ],
+        [
+          127,
+          113
+        ],
+        [
+          128,
+          116
+        ],
+        [
+          255,
+          237
+        ],
+        [
+          256,
+          240
+        ],
+        [
+          383,
+          359
+        ],
+        [
+          384,
+          365
+        ],
+        [
+          896,
+          841
+        ],
+        [
+          1024,
+          965
+        ],
+        [
+          1087,
+          1024
+        ]
+      ],
+      "y": [
+        [
+          0,
+          -2
+        ],
+        [
+          12,
+          10
+        ],
+        [
+          716,
+          677
+        ],
+        [
+          908,
+          857
+        ],
+        [
+          1100,
+          1031
+        ],
+        [
+          1164,
+          1097
+        ],
+        [
+          1228,
+          1159
+        ],
+        [
+          1611,
+          1533
+        ],
+        [
+          1627,
+          1548
+        ]
+      ],
+      "sourceBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1025,
+        "height": 1534,
+        "pixels": 1572350
+      },
+      "keyedBounds": {
+        "x": 0,
+        "y": 8,
+        "width": 1025,
+        "height": 1526,
+        "pixels": 574273
+      },
+      "keyedInkBounds": {
+        "x": 0,
+        "y": 8,
+        "width": 1025,
+        "height": 1526,
+        "pixels": 574122
+      },
+      "beforeClipBounds": {
+        "x": 0,
+        "y": 10,
+        "width": 1088,
+        "height": 1602,
+        "pixels": 633559
+      },
+      "clip": {
+        "path": "pack/masks/body_p2_ostwand_treppe_boden.MASKE.png",
+        "sha256": "a0d44e902d7d854ed40a824ee2d6d9299774d22bc8386b9a1bfe61fbcfddb2b3",
+        "rgbaSha256": "7add4173853d4593bc609526765cbf1f3a55dcf0e9fd9578c74a58d91ca81b24",
+        "bounds": {
+          "x": 0,
+          "y": 12,
+          "width": 1088,
+          "height": 1600,
+          "pixels": 626688
+        },
+        "cut": 7309,
+        "rule": "mask alpha=0 cuts; all nonzero mask alpha leaves source alpha unchanged"
+      },
+      "outputBounds": {
+        "x": 0,
+        "y": 12,
+        "width": 1088,
+        "height": 1600,
+        "pixels": 626250
+      },
+      "outputInkBounds": {
+        "x": 0,
+        "y": 12,
+        "width": 1088,
+        "height": 1600,
+        "pixels": 626222
+      },
+      "boundsConvention": "integer origin and extent; Bounds alpha>0, InkBounds alpha>CUT_ALPHA",
+      "cutAlpha": 16,
+      "key": {
+        "cut": 998077,
+        "softened": 1492,
+        "keyRgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 40,
+        "softTolerance": 110
+      },
+      "sourceCleanup": {
+        "specks": {
+          "healed": 183,
+          "cut": 0,
+          "total": 183
+        },
+        "fringe": {
+          "healed": 2895,
+          "cut": 0,
+          "total": 2895,
+          "threshold": 42
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "outputCleanup": {
+        "specks": {
+          "healed": 1,
+          "cut": 0,
+          "total": 1
+        },
+        "fringe": {
+          "healed": 7,
+          "cut": 0,
+          "total": 7,
+          "threshold": 41
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "chromaMatte": null
+    },
+    {
+      "stem": "terrain_night_folio_p2",
+      "source": "pack/sources/night-classroom/folio-source-v2.png",
+      "target": "reproduction/night-classroom/terrain_night_folio_p2.png",
+      "sourceSha256": "d7ecea75677dfa900451853deba5554b9dc1d38b01bbc39810dba50120e8041d",
+      "sourceRgbaSha256": "c7832ea54cd0cfae6e10a479ccd7a942a519f231428354e1b2de978630a39f9b",
+      "keyedRgbaSha256": "2b5ca762b4c2303411a7b0b5a2c3febb2009accf80091951b940e7785d1b961a",
+      "previousTargetSha256": null,
+      "outputSha256": "f9f6f028b1db0411f94f9f27e9d63946a32bf1c807ddbc330e90e4e3960801b5",
+      "outputRgbaSha256": "a5a16ace174e1b72b24d93362529d67fdcccfaf8c3c3a191884086367969a395",
+      "outputBytes": 4523,
+      "sourceCanvas": {
+        "width": 1774,
+        "height": 887
+      },
+      "outputCanvas": {
+        "width": 64,
+        "height": 33
+      },
+      "x": [
+        [
+          0,
+          72
+        ],
+        [
+          63,
+          1701
+        ]
+      ],
+      "y": [
+        [
+          0,
+          340
+        ],
+        [
+          4,
+          371
+        ],
+        [
+          29,
+          577
+        ],
+        [
+          32,
+          601
+        ]
+      ],
+      "sourceBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1774,
+        "height": 887,
+        "pixels": 1573538
+      },
+      "keyedBounds": {
+        "x": 72,
+        "y": 367,
+        "width": 1702,
+        "height": 520,
+        "pixels": 338036
+      },
+      "keyedInkBounds": {
+        "x": 72,
+        "y": 367,
+        "width": 1630,
+        "height": 213,
+        "pixels": 337956
+      },
+      "beforeClipBounds": {
+        "x": 0,
+        "y": 4,
+        "width": 64,
+        "height": 26,
+        "pixels": 1604
+      },
+      "clip": null,
+      "outputBounds": {
+        "x": 0,
+        "y": 4,
+        "width": 64,
+        "height": 26,
+        "pixels": 1604
+      },
+      "outputInkBounds": {
+        "x": 0,
+        "y": 4,
+        "width": 64,
+        "height": 26,
+        "pixels": 1604
+      },
+      "boundsConvention": "integer origin and extent; Bounds alpha>0, InkBounds alpha>CUT_ALPHA",
+      "cutAlpha": 16,
+      "key": {
+        "cut": 1235501,
+        "softened": 1981,
+        "keyRgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 40,
+        "softTolerance": 110
+      },
+      "sourceCleanup": {
+        "specks": {
+          "healed": 214,
+          "cut": 1,
+          "total": 215
+        },
+        "fringe": {
+          "healed": 5002,
+          "cut": 0,
+          "total": 5002,
+          "threshold": 22
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "outputCleanup": {
+        "specks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "fringe": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0,
+          "threshold": 18
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "chromaMatte": null
+    },
+    {
+      "stem": "terrain_night_dictionary_p2",
+      "source": "pack/sources/night-classroom/furniture-source-v1.png",
+      "target": "reproduction/night-classroom/terrain_night_dictionary_p2.png",
+      "sourceSha256": "10a6b1d2accc1c4f738e609aba6d284f45490412db9dd0f5d4c9f4602223c020",
+      "sourceRgbaSha256": "6287798de70f6559c9a6e5fd3f43750b3ed34ea66093900bbeda976422c6eb56",
+      "keyedRgbaSha256": "b3b1d17a58a6c99f97ed65ade8c9aa449b7a34342d3cb787760f486e5cc3d415",
+      "previousTargetSha256": null,
+      "outputSha256": "dce275f748a1f822611a9b82737912d1d910386ea7831c4ac940ee12695a4202",
+      "outputRgbaSha256": "f544cf7af7e6c42f2ec4ce5d0777cc5061d3701db57b7827b08b9fe8ae49f5a6",
+      "outputBytes": 4783,
+      "sourceCanvas": {
+        "width": 1536,
+        "height": 1024
+      },
+      "outputCanvas": {
+        "width": 64,
+        "height": 33
+      },
+      "x": [
+        [
+          0,
+          575
+        ],
+        [
+          63,
+          989
+        ]
+      ],
+      "y": [
+        [
+          0,
+          172
+        ],
+        [
+          4,
+          201
+        ],
+        [
+          29,
+          405
+        ],
+        [
+          32,
+          427
+        ]
+      ],
+      "sourceBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1536,
+        "height": 1024,
+        "pixels": 1572864
+      },
+      "keyedBounds": {
+        "x": 33,
+        "y": 146,
+        "width": 1503,
+        "height": 878,
+        "pixels": 626108
+      },
+      "keyedInkBounds": {
+        "x": 33,
+        "y": 146,
+        "width": 1477,
+        "height": 736,
+        "pixels": 625839
+      },
+      "beforeClipBounds": {
+        "x": 0,
+        "y": 4,
+        "width": 64,
+        "height": 28,
+        "pixels": 1605
+      },
+      "clip": null,
+      "outputBounds": {
+        "x": 0,
+        "y": 4,
+        "width": 64,
+        "height": 28,
+        "pixels": 1605
+      },
+      "outputInkBounds": {
+        "x": 0,
+        "y": 4,
+        "width": 64,
+        "height": 27,
+        "pixels": 1602
+      },
+      "boundsConvention": "integer origin and extent; Bounds alpha>0, InkBounds alpha>CUT_ALPHA",
+      "cutAlpha": 16,
+      "key": {
+        "cut": 946755,
+        "softened": 3340,
+        "keyRgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 40,
+        "softTolerance": 110
+      },
+      "sourceCleanup": {
+        "specks": {
+          "healed": 777,
+          "cut": 1,
+          "total": 778
+        },
+        "fringe": {
+          "healed": 8090,
+          "cut": 0,
+          "total": 8090,
+          "threshold": 51
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "outputCleanup": {
+        "specks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "fringe": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0,
+          "threshold": 37
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "chromaMatte": null
+    },
+    {
+      "stem": "terrain_night_bundle_p2",
+      "source": "pack/sources/night-classroom/furniture-source-v1.png",
+      "target": "reproduction/night-classroom/terrain_night_bundle_p2.png",
+      "sourceSha256": "10a6b1d2accc1c4f738e609aba6d284f45490412db9dd0f5d4c9f4602223c020",
+      "sourceRgbaSha256": "6287798de70f6559c9a6e5fd3f43750b3ed34ea66093900bbeda976422c6eb56",
+      "keyedRgbaSha256": "b3b1d17a58a6c99f97ed65ade8c9aa449b7a34342d3cb787760f486e5cc3d415",
+      "previousTargetSha256": null,
+      "outputSha256": "bf4099a531cfe05a7e49f0fb96fb9febbd14afe0cf922c6343138fb41af336ea",
+      "outputRgbaSha256": "390f7afacf74c304532d71ffdc7c41b2164bd238804cf041903ea980487c1e11",
+      "outputBytes": 33188,
+      "sourceCanvas": {
+        "width": 1536,
+        "height": 1024
+      },
+      "outputCanvas": {
+        "width": 128,
+        "height": 108
+      },
+      "x": [
+        [
+          0,
+          1071
+        ],
+        [
+          127,
+          1471
+        ]
+      ],
+      "y": [
+        [
+          0,
+          135
+        ],
+        [
+          4,
+          156
+        ],
+        [
+          104,
+          408
+        ],
+        [
+          107,
+          416
+        ]
+      ],
+      "sourceBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1536,
+        "height": 1024,
+        "pixels": 1572864
+      },
+      "keyedBounds": {
+        "x": 33,
+        "y": 146,
+        "width": 1503,
+        "height": 878,
+        "pixels": 626108
+      },
+      "keyedInkBounds": {
+        "x": 33,
+        "y": 146,
+        "width": 1477,
+        "height": 736,
+        "pixels": 625839
+      },
+      "beforeClipBounds": {
+        "x": 0,
+        "y": 2,
+        "width": 128,
+        "height": 105,
+        "pixels": 12759
+      },
+      "clip": null,
+      "outputBounds": {
+        "x": 0,
+        "y": 2,
+        "width": 128,
+        "height": 105,
+        "pixels": 12759
+      },
+      "outputInkBounds": {
+        "x": 0,
+        "y": 2,
+        "width": 128,
+        "height": 105,
+        "pixels": 12746
+      },
+      "boundsConvention": "integer origin and extent; Bounds alpha>0, InkBounds alpha>CUT_ALPHA",
+      "cutAlpha": 16,
+      "key": {
+        "cut": 946755,
+        "softened": 3340,
+        "keyRgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 40,
+        "softTolerance": 110
+      },
+      "sourceCleanup": {
+        "specks": {
+          "healed": 777,
+          "cut": 1,
+          "total": 778
+        },
+        "fringe": {
+          "healed": 8090,
+          "cut": 0,
+          "total": 8090,
+          "threshold": 51
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "outputCleanup": {
+        "specks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "fringe": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0,
+          "threshold": 54
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "chromaMatte": null
+    },
+    {
+      "stem": "terrain_night_lectern_p2",
+      "source": "pack/sources/night-classroom/furniture-source-v1.png",
+      "target": "reproduction/night-classroom/terrain_night_lectern_p2.png",
+      "sourceSha256": "10a6b1d2accc1c4f738e609aba6d284f45490412db9dd0f5d4c9f4602223c020",
+      "sourceRgbaSha256": "6287798de70f6559c9a6e5fd3f43750b3ed34ea66093900bbeda976422c6eb56",
+      "keyedRgbaSha256": "b3b1d17a58a6c99f97ed65ade8c9aa449b7a34342d3cb787760f486e5cc3d415",
+      "previousTargetSha256": null,
+      "outputSha256": "71de98ee6982544763685e6a2331de69b1a70a66cb274c3ec3e899658fc15de6",
+      "outputRgbaSha256": "4e42bd553bfa34b6624c1b723b45db23f0068308079e8f04de13b5e95d893b65",
+      "outputBytes": 23047,
+      "sourceCanvas": {
+        "width": 1536,
+        "height": 1024
+      },
+      "outputCanvas": {
+        "width": 128,
+        "height": 110
+      },
+      "x": [
+        [
+          0,
+          40
+        ],
+        [
+          127,
+          486
+        ]
+      ],
+      "y": [
+        [
+          0,
+          530
+        ],
+        [
+          8,
+          584
+        ],
+        [
+          11,
+          601
+        ],
+        [
+          107,
+          881
+        ],
+        [
+          109,
+          887
+        ]
+      ],
+      "sourceBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1536,
+        "height": 1024,
+        "pixels": 1572864
+      },
+      "keyedBounds": {
+        "x": 33,
+        "y": 146,
+        "width": 1503,
+        "height": 878,
+        "pixels": 626108
+      },
+      "keyedInkBounds": {
+        "x": 33,
+        "y": 146,
+        "width": 1477,
+        "height": 736,
+        "pixels": 625839
+      },
+      "beforeClipBounds": {
+        "x": 0,
+        "y": 8,
+        "width": 128,
+        "height": 100,
+        "pixels": 9184
+      },
+      "clip": null,
+      "outputBounds": {
+        "x": 0,
+        "y": 8,
+        "width": 128,
+        "height": 100,
+        "pixels": 9184
+      },
+      "outputInkBounds": {
+        "x": 0,
+        "y": 8,
+        "width": 128,
+        "height": 100,
+        "pixels": 9151
+      },
+      "boundsConvention": "integer origin and extent; Bounds alpha>0, InkBounds alpha>CUT_ALPHA",
+      "cutAlpha": 16,
+      "key": {
+        "cut": 946755,
+        "softened": 3340,
+        "keyRgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 40,
+        "softTolerance": 110
+      },
+      "sourceCleanup": {
+        "specks": {
+          "healed": 777,
+          "cut": 1,
+          "total": 778
+        },
+        "fringe": {
+          "healed": 8090,
+          "cut": 0,
+          "total": 8090,
+          "threshold": 51
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "outputCleanup": {
+        "specks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "fringe": {
+          "healed": 3,
+          "cut": 0,
+          "total": 3,
+          "threshold": 28
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "chromaMatte": null
+    },
+    {
+      "stem": "terrain_night_shelf_p2",
+      "source": "pack/sources/night-classroom/furniture-source-v1.png",
+      "target": "reproduction/night-classroom/terrain_night_shelf_p2.png",
+      "sourceSha256": "10a6b1d2accc1c4f738e609aba6d284f45490412db9dd0f5d4c9f4602223c020",
+      "sourceRgbaSha256": "6287798de70f6559c9a6e5fd3f43750b3ed34ea66093900bbeda976422c6eb56",
+      "keyedRgbaSha256": "b3b1d17a58a6c99f97ed65ade8c9aa449b7a34342d3cb787760f486e5cc3d415",
+      "previousTargetSha256": null,
+      "outputSha256": "c7f6cdc3f2c7e6ca789b7d04936b85cd3c768d5474a04fcc8f8f11f16e8ad8df",
+      "outputRgbaSha256": "48ac67564c4435d3c35987e3afa2ac9883a08309f6c3cb6e7d91e2cc0f4be88f",
+      "outputBytes": 39179,
+      "sourceCanvas": {
+        "width": 1536,
+        "height": 1024
+      },
+      "outputCanvas": {
+        "width": 192,
+        "height": 96
+      },
+      "x": [
+        [
+          0,
+          528
+        ],
+        [
+          191,
+          994
+        ]
+      ],
+      "y": [
+        [
+          0,
+          605
+        ],
+        [
+          4,
+          617
+        ],
+        [
+          92,
+          881
+        ],
+        [
+          95,
+          890
+        ]
+      ],
+      "sourceBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1536,
+        "height": 1024,
+        "pixels": 1572864
+      },
+      "keyedBounds": {
+        "x": 33,
+        "y": 146,
+        "width": 1503,
+        "height": 878,
+        "pixels": 626108
+      },
+      "keyedInkBounds": {
+        "x": 33,
+        "y": 146,
+        "width": 1477,
+        "height": 736,
+        "pixels": 625839
+      },
+      "beforeClipBounds": {
+        "x": 0,
+        "y": 4,
+        "width": 192,
+        "height": 89,
+        "pixels": 16332
+      },
+      "clip": null,
+      "outputBounds": {
+        "x": 0,
+        "y": 4,
+        "width": 192,
+        "height": 89,
+        "pixels": 16332
+      },
+      "outputInkBounds": {
+        "x": 0,
+        "y": 4,
+        "width": 192,
+        "height": 89,
+        "pixels": 16331
+      },
+      "boundsConvention": "integer origin and extent; Bounds alpha>0, InkBounds alpha>CUT_ALPHA",
+      "cutAlpha": 16,
+      "key": {
+        "cut": 946755,
+        "softened": 3340,
+        "keyRgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 40,
+        "softTolerance": 110
+      },
+      "sourceCleanup": {
+        "specks": {
+          "healed": 777,
+          "cut": 1,
+          "total": 778
+        },
+        "fringe": {
+          "healed": 8090,
+          "cut": 0,
+          "total": 8090,
+          "threshold": 51
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "outputCleanup": {
+        "specks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "fringe": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0,
+          "threshold": 49
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "chromaMatte": null
+    },
+    {
+      "stem": "terrain_night_lectern_shelf_p2",
+      "source": "pack/sources/night-classroom/furniture-source-v1.png",
+      "target": "reproduction/night-classroom/terrain_night_lectern_shelf_p2.png",
+      "sourceSha256": "10a6b1d2accc1c4f738e609aba6d284f45490412db9dd0f5d4c9f4602223c020",
+      "sourceRgbaSha256": "6287798de70f6559c9a6e5fd3f43750b3ed34ea66093900bbeda976422c6eb56",
+      "keyedRgbaSha256": "b3b1d17a58a6c99f97ed65ade8c9aa449b7a34342d3cb787760f486e5cc3d415",
+      "previousTargetSha256": null,
+      "outputSha256": "6ccc090e8a3b2de1eefad6ea80e29b9a66230f545dcb024fb15112010ce43892",
+      "outputRgbaSha256": "0ad82291c68eab881a590155da7bded79e01521ffa2a6c870230ed5fe343cf87",
+      "outputBytes": 69936,
+      "sourceCanvas": {
+        "width": 1536,
+        "height": 1024
+      },
+      "outputCanvas": {
+        "width": 256,
+        "height": 170
+      },
+      "x": [
+        [
+          0,
+          1021
+        ],
+        [
+          255,
+          1508
+        ]
+      ],
+      "y": [
+        [
+          0,
+          524
+        ],
+        [
+          4,
+          532
+        ],
+        [
+          66,
+          667
+        ],
+        [
+          166,
+          881
+        ],
+        [
+          169,
+          887
+        ]
+      ],
+      "sourceBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1536,
+        "height": 1024,
+        "pixels": 1572864
+      },
+      "keyedBounds": {
+        "x": 33,
+        "y": 146,
+        "width": 1503,
+        "height": 878,
+        "pixels": 626108
+      },
+      "keyedInkBounds": {
+        "x": 33,
+        "y": 146,
+        "width": 1477,
+        "height": 736,
+        "pixels": 625839
+      },
+      "beforeClipBounds": {
+        "x": 0,
+        "y": 4,
+        "width": 256,
+        "height": 163,
+        "pixels": 31151
+      },
+      "clip": null,
+      "outputBounds": {
+        "x": 0,
+        "y": 4,
+        "width": 256,
+        "height": 163,
+        "pixels": 31151
+      },
+      "outputInkBounds": {
+        "x": 0,
+        "y": 4,
+        "width": 256,
+        "height": 163,
+        "pixels": 31120
+      },
+      "boundsConvention": "integer origin and extent; Bounds alpha>0, InkBounds alpha>CUT_ALPHA",
+      "cutAlpha": 16,
+      "key": {
+        "cut": 946755,
+        "softened": 3340,
+        "keyRgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 40,
+        "softTolerance": 110
+      },
+      "sourceCleanup": {
+        "specks": {
+          "healed": 777,
+          "cut": 1,
+          "total": 778
+        },
+        "fringe": {
+          "healed": 8090,
+          "cut": 0,
+          "total": 8090,
+          "threshold": 51
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "outputCleanup": {
+        "specks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "fringe": {
+          "healed": 34,
+          "cut": 0,
+          "total": 34,
+          "threshold": 44
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "chromaMatte": null
+    }
+  ]
+}
