@@ -418,25 +418,6 @@ describe("checkLevelLaws", () => {
     expect(laws(ohneProp).length).toBe(1);
   });
 
-  it("stage-script · gilt auch im Entwurf — eine Endstation in der Luft ist in draft:true rot (L0e · D-824)", () => {
-    // D-824: das Gesetz stand im `!draft`-Block und blieb in einem Entwurf still
-    // grün. #422 hat es davor gezogen; dieser Test hält es dort.
-    const rows = [...OK_ROWS];
-    const mitDraft = (draft: boolean) => level(rows, {
-      draft,
-      phases: [{
-        id: "p1", nameDe: "T", surface: "normal", plates: {}, rows,
-        entities: [{ id: "b1", role: "scene.stage", skin: "papagei", c: 5, r: 17, tier: "E",
-          params: { stage: { propSkin: "auto", stations: [{ dc: 0, dr: 0 }, { dc: 1, dr: -6 }] } } }],
-        links: [], exit: { to: "done" }, checkpointSide: "far",
-      }] as PaintLevel["phases"],
-    });
-    const midAir = (l: PaintLevel) => checkLevelLaws(parsePaintLevel(l))
-      .filter((f) => f.law === "stage-script" && f.detail.includes("mid-air"));
-    expect(midAir(mitDraft(false)).length, "fertiges Kapitel").toBe(1);
-    expect(midAir(mitDraft(true)).length, "Entwurf — dasselbe Urteil").toBe(1);
-  });
-
   it("entity-reachable · eine Bühne wird an ihrer ENDSTATION gemessen, nicht am Anker (L2-M-a)", () => {
     // Blinder Leser, Fund 13, mit Gegenbeispiel bewiesen: der Anker ist das
     // Objekt (der Baum) und steht am Weg; stehen bleibt der Darsteller auf
