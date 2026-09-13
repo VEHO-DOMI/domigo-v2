@@ -1,0 +1,5 @@
+obj_soundsystem: 512×512; alpha {"x":64,"y":5,"width":384,"height":502,"pixels":180652}; SHA256 f85572ab5074673589eeb7e46fdf2b66bee875eaa0b8ae216032edc813557878
+captive_soundsystem: 512×512; alpha {"x":64,"y":5,"width":384,"height":502,"pixels":180652}; SHA256 f85572ab5074673589eeb7e46fdf2b66bee875eaa0b8ae216032edc813557878
+obj_tablet: 512×512; alpha {"x":32,"y":5,"width":448,"height":502,"pixels":181011}; SHA256 9dbbfcfa65c87df73f853151d69913bbbe9a295b530090965391b29a60dd1356
+captive_tablet: 512×512; alpha {"x":32,"y":5,"width":448,"height":502,"pixels":181011}; SHA256 9dbbfcfa65c87df73f853151d69913bbbe9a295b530090965391b29a60dd1356
+Report: /Users/veho/Code/codex-lab/trial-berichte/CH01_STORY_SPIELPASS/imported-devices-clean/import-ch01-buecherwelt.report.json

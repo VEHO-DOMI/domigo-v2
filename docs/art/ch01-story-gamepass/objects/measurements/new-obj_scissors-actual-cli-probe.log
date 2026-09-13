@@ -1,0 +1,267 @@
+{
+  "scope": "single-source authoring probe, not the chapter gate",
+  "errors": [
+    "single-neutral: invalid or repeated anatomical region",
+    "single-neutral: anatomical mask is only a small detail of the object"
+  ],
+  "regions": [
+    {
+      "id": "left-handle-top",
+      "area": 1674,
+      "coverage": 0.9994026284348865,
+      "componentShare": 0.9994026284348865,
+      "coreShare": 0.7962962962962963,
+      "lumaQuantiles": [
+        139.21259999999998,
+        161.349,
+        168.9238
+      ],
+      "chromaQuantiles": [
+        2,
+        7,
+        9
+      ]
+    },
+    {
+      "id": "left-handle-outer",
+      "area": 3468,
+      "coverage": 0.9025374855824683,
+      "componentShare": 0.9025374855824683,
+      "coreShare": 0.7301038062283737,
+      "lumaQuantiles": [
+        64.996,
+        162.349,
+        168.6338
+      ],
+      "chromaQuantiles": [
+        3,
+        7,
+        8
+      ]
+    },
+    {
+      "id": "left-handle-inner",
+      "area": 2360,
+      "coverage": 0.9771186440677966,
+      "componentShare": 0.9771186440677966,
+      "coreShare": 0.7173728813559322,
+      "lumaQuantiles": [
+        159.0642,
+        165.1364,
+        174.13639999999998
+      ],
+      "chromaQuantiles": [
+        6,
+        7,
+        9
+      ]
+    },
+    {
+      "id": "left-handle-base",
+      "area": 2106,
+      "coverage": 0.9838556505223172,
+      "componentShare": 0.9838556505223172,
+      "coreShare": 0.792022792022792,
+      "lumaQuantiles": [
+        143.0682,
+        163.349,
+        169.992
+      ],
+      "chromaQuantiles": [
+        3,
+        8,
+        9
+      ]
+    },
+    {
+      "id": "left-neck",
+      "area": 1634,
+      "coverage": 0.9638922888616891,
+      "componentShare": 0.9528763769889841,
+      "coreShare": 0.7643818849449204,
+      "lumaQuantiles": [
+        126.06819999999999,
+        163.992,
+        171.8516
+      ],
+      "chromaQuantiles": [
+        4,
+        7,
+        9
+      ]
+    },
+    {
+      "id": "right-handle-top",
+      "area": 1674,
+      "coverage": 0.9946236559139785,
+      "componentShare": 0.9946236559139785,
+      "coreShare": 0.7855436081242533,
+      "lumaQuantiles": [
+        132.85559999999998,
+        160.5616,
+        167.4212
+      ],
+      "chromaQuantiles": [
+        2,
+        7,
+        9
+      ]
+    },
+    {
+      "id": "right-handle-inner",
+      "area": 2420,
+      "coverage": 0.96900826446281,
+      "componentShare": 0.9516528925619835,
+      "coreShare": 0.7301652892561984,
+      "lumaQuantiles": [
+        157.1364,
+        163.992,
+        173.63899999999998
+      ],
+      "chromaQuantiles": [
+        5,
+        7,
+        8
+      ]
+    },
+    {
+      "id": "right-handle-outer",
+      "area": 2310,
+      "coverage": 0.9705627705627705,
+      "componentShare": 0.9705627705627705,
+      "coreShare": 0.7506493506493507,
+      "lumaQuantiles": [
+        142.7834,
+        160.2086,
+        165.0642
+      ],
+      "chromaQuantiles": [
+        3,
+        7,
+        8
+      ]
+    },
+    {
+      "id": "right-handle-base",
+      "area": 2240,
+      "coverage": 0.8901785714285714,
+      "componentShare": 0.8901785714285714,
+      "coreShare": 0.7044642857142858,
+      "lumaQuantiles": [
+        62.20099999999999,
+        162.2086,
+        167.7794
+      ],
+      "chromaQuantiles": [
+        2,
+        7,
+        9
+      ]
+    },
+    {
+      "id": "right-neck",
+      "area": 1368,
+      "coverage": 0.9173976608187134,
+      "componentShare": 0.9108187134502924,
+      "coreShare": 0.6922514619883041,
+      "lumaQuantiles": [
+        44.8504,
+        162.639,
+        171.06419999999997
+      ],
+      "chromaQuantiles": [
+        3,
+        7,
+        8
+      ]
+    },
+    {
+      "id": "right-blade-top",
+      "area": 2397,
+      "coverage": 1,
+      "componentShare": 1,
+      "coreShare": 0.8431372549019608,
+      "lumaQuantiles": [
+        156.27679999999998,
+        163.0642,
+        168.7742
+      ],
+      "chromaQuantiles": [
+        6,
+        7,
+        9
+      ]
+    },
+    {
+      "id": "right-blade-middle",
+      "area": 2346,
+      "coverage": 0.9953111679454391,
+      "componentShare": 0.9953111679454391,
+      "coreShare": 0.8367433930093776,
+      "lumaQuantiles": [
+        154.56160000000003,
+        161.349,
+        167.5616
+      ],
+      "chromaQuantiles": [
+        6,
+        7,
+        9
+      ]
+    },
+    {
+      "id": "right-blade-bottom",
+      "area": 1426,
+      "coverage": 1,
+      "componentShare": 1,
+      "coreShare": 0.7952314165497896,
+      "lumaQuantiles": [
+        152.13639999999998,
+        160.0642,
+        167.8464
+      ],
+      "chromaQuantiles": [
+        6,
+        8,
+        9
+      ]
+    },
+    {
+      "id": "left-blade-top",
+      "area": 1748,
+      "coverage": 0.9965675057208238,
+      "componentShare": 0.9965675057208238,
+      "coreShare": 0.7494279176201373,
+      "lumaQuantiles": [
+        150.706,
+        161.4212,
+        169.8464
+      ],
+      "chromaQuantiles": [
+        5,
+        7,
+        8
+      ]
+    },
+    {
+      "id": "left-blade-middle",
+      "area": 1748,
+      "coverage": 1,
+      "componentShare": 1,
+      "coreShare": 0.816933638443936,
+      "lumaQuantiles": [
+        154.2768,
+        161.13639999999998,
+        168.84640000000002
+      ],
+      "chromaQuantiles": [
+        6,
+        7,
+        9
+      ]
+    }
+  ],
+  "interiorCount": 100372,
+  "maskInteriorShare": 0.30333160642410234,
+  "wholeTargetShare": 0.7633005220579444
+}

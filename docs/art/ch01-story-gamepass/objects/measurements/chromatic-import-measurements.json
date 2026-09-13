@@ -1,0 +1,120 @@
+[
+  {
+    "skin": "obj_book",
+    "width": 631,
+    "height": 471,
+    "dominant": "blue",
+    "warmCentre": 38.53531604098143,
+    "opaque": 184580,
+    "shares": {
+      "blue": 0.783032721253516,
+      "warm": 0.21695621737976656,
+      "green": 0.00001106136673193728
+    },
+    "ratio": 3.609173918638489,
+    "parchmentShare": 0.060398711460216706,
+    "fieldRule": true,
+    "rescuedShare": 0
+  },
+  {
+    "skin": "obj_schoolbag",
+    "width": 480,
+    "height": 512,
+    "dominant": "warm",
+    "warmCentre": 30.476462294542866,
+    "opaque": 168248,
+    "shares": {
+      "warm": 0.8052441685172048,
+      "blue": 0.16800081690146196,
+      "violet": 0.015092049260718849,
+      "green": 0.007628883748999592,
+      "pink": 0.0040340815714210556
+    },
+    "ratio": 4.793096744223019,
+    "parchmentShare": 0.3472137092052961,
+    "fieldRule": true,
+    "rescuedShare": 0
+  },
+  {
+    "skin": "obj_desk",
+    "width": 498,
+    "height": 512,
+    "dominant": "green",
+    "warmCentre": 41.64790805476179,
+    "opaque": 141690,
+    "shares": {
+      "green": 0.790304191895668,
+      "warm": 0.20963231053245404,
+      "pink": 0.00006349757182429053
+    },
+    "ratio": 3.7699541157960845,
+    "parchmentShare": 0.3112236137795079,
+    "fieldRule": true,
+    "rescuedShare": 0
+  },
+  {
+    "skin": "obj_chair",
+    "width": 368,
+    "height": 512,
+    "dominant": "warm",
+    "warmCentre": 40.7692712324958,
+    "opaque": 98300,
+    "shares": {
+      "warm": 0.9999499346057171,
+      "pink": 0.00005006539428281891
+    },
+    "ratio": 19972.87645348422,
+    "parchmentShare": 0.07296497424081153,
+    "fieldRule": true,
+    "rescuedShare": 0
+  },
+  {
+    "skin": "obj_gluestick",
+    "width": 340,
+    "height": 512,
+    "dominant": "warm",
+    "warmCentre": 28.193269019127357,
+    "opaque": 103894,
+    "shares": {
+      "warm": 1
+    },
+    "ratio": null,
+    "parchmentShare": 0.03597346245383181,
+    "fieldRule": true,
+    "rescuedShare": 0
+  },
+  {
+    "skin": "obj_sharpener",
+    "width": 486,
+    "height": 410,
+    "dominant": "warm",
+    "warmCentre": 2.714120764062305,
+    "opaque": 123220,
+    "shares": {
+      "warm": 0.9999507631006366,
+      "pink": 0.00004923689936331342
+    },
+    "ratio": 20308.971036582036,
+    "parchmentShare": 0.04211281369050682,
+    "fieldRule": true,
+    "rescuedShare": 0
+  },
+  {
+    "skin": "eraser",
+    "width": 496,
+    "height": 218,
+    "dominant": "pink",
+    "warmCentre": 347.0265078274861,
+    "opaque": 75138,
+    "shares": {
+      "pink": 0.99216431406024,
+      "warm": 0.005658050598506741,
+      "violet": 0.0020887522660989386,
+      "green": 0.00008888307515314646
+    },
+    "ratio": 175.3544435113552,
+    "parchmentShare": 0.024194307231451745,
+    "fieldRule": true,
+    "rescuedShare": 0
+  }
+]

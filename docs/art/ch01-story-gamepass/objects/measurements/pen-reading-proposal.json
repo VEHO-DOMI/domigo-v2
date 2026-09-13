@@ -1,0 +1,79 @@
+{
+  "word": "black",
+  "sourceSha256": "15ecf4911d18cfbcb6dc9be277b28d4ab2730e3ecb8d3691fa25edbaf69c2b34",
+  "width": 368,
+  "height": 414,
+  "regions": [
+    {
+      "id": "cap-right",
+      "x": 210,
+      "y": 20,
+      "w": 32,
+      "h": 40
+    },
+    {
+      "id": "cap-left",
+      "x": 163,
+      "y": 30,
+      "w": 25,
+      "h": 30
+    },
+    {
+      "id": "barrel-left-upper",
+      "x": 110,
+      "y": 186,
+      "w": 30,
+      "h": 61
+    },
+    {
+      "id": "barrel-right",
+      "x": 235,
+      "y": 182,
+      "w": 20,
+      "h": 70
+    },
+    {
+      "id": "barrel-lower",
+      "x": 90,
+      "y": 296,
+      "w": 123,
+      "h": 50
+    },
+    {
+      "id": "barrel-bottom",
+      "x": 120,
+      "y": 346,
+      "w": 65,
+      "h": 20
+    },
+    {
+      "id": "face-main",
+      "x": 141,
+      "y": 202,
+      "w": 96,
+      "h": 76
+    },
+    {
+      "id": "shoe-right-upper",
+      "x": 233,
+      "y": 332,
+      "w": 50,
+      "h": 20
+    },
+    {
+      "id": "cap-rim",
+      "x": 154,
+      "y": 84,
+      "w": 96,
+      "h": 22
+    },
+    {
+      "id": "barrel-band",
+      "x": 104,
+      "y": 264,
+      "w": 130,
+      "h": 30
+    }
+  ],
+  "why": "Authored anatomical material rectangles on inspected imported painting; excludes eyes, outlines, metal details and background."
+}

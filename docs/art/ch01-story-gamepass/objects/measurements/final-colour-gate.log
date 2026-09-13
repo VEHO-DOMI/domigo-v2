@@ -1,0 +1,26 @@
+✗ /Users/veho/Code/codex-lab/trial-domigo-v2/content/corpus/stories/g1.st.lost-pages/paint/ch01.tasks.v2.json enc.pen.r1: single-neutral: no chapter-qualified anatomical reading
+✗ /Users/veho/Code/codex-lab/trial-domigo-v2/content/corpus/stories/g1.st.lost-pages/paint/ch01.tasks.v2.json enc.heft.r1: single-neutral: no chapter-qualified anatomical reading
+✗ /Users/veho/Code/codex-lab/trial-domigo-v2/content/corpus/stories/g1.st.lost-pages/paint/ch01.tasks.v2.json enc.obj-scissors.r1: single-neutral: no chapter-qualified anatomical reading
+✗ VACUITY: 12 sheets measured but only 9 ratified readings — a skin without a row is a colour word nobody ratified
+
+check-colour-truth · was ausgelassen wurde (namentlich, nie still):
+  · ch03/colour-truth/messung: übersprungen (draft) — obj_holzbein_a.png liegt nicht auf der Platte — die Farbaussage von »rst.holzbein.r1« (»brown«) ist damit UNBELEGT
+  · ch04/colour-truth/messung: übersprungen (draft) — marktfrau_a.png liegt nicht auf der Platte — die Farbaussage von »enc.marktfrau.r1« (»yellow«) ist damit UNBELEGT
+  · ch04/colour-truth/messung: übersprungen (draft) — regenkind_a.png liegt nicht auf der Platte — die Farbaussage von »enc.regenkind.r1« (»blue«) ist damit UNBELEGT
+  · ch04/colour-truth/messung: übersprungen (draft) — nachbarin_a.png liegt nicht auf der Platte — die Farbaussage von »enc.nachbarin.r1« (»green«) ist damit UNBELEGT
+
+check-colour-truth · die Ist-Palette:
+  enc.eraser.r1          gemessen pink   (pink 99% · warm 1% · violet 0% · green 0%)  Warm-Mitte 347.0°  →  Karte sagt pink
+  enc.obj-book.r1        gemessen blue   (blue 78% · warm 22% · green 0%)  Warm-Mitte  38.5°  →  Karte sagt blue
+  enc.obj-schoolbag.r1   gemessen warm   (warm 81% · blue 17% · violet 2% · green 1% · pink 0%)  Warm-Mitte  30.5°  →  Karte sagt brown
+  enc.pen.r1             single neutral black, UNBELEGT — keine gültige Körperlesart
+  enc.heft.r1            single neutral white, UNBELEGT — keine gültige Körperlesart
+  enc.obj-desk.r1        gemessen green  (green 79% · warm 21% · pink 0%)  Warm-Mitte  41.6°  →  Karte sagt green
+  enc.obj-scissors.r1    single neutral grey, UNBELEGT — keine gültige Körperlesart
+  enc.obj-gluestick.r1   gemessen warm   (warm 100%)  Warm-Mitte  28.2°  →  Karte sagt orange
+  enc.obj-sharpener.r1   gemessen warm   (warm 100% · pink 0%)  Warm-Mitte   2.7°  →  Karte sagt red
+  rsc.chair.r1           gemessen warm   (warm 100% · pink 0%)  Warm-Mitte  40.8°  →  Karte sagt yellow
+  a06                    neutral body regions black-flipper:100.0%/core79.5% · black-head:100.0%/core79.5% · white-belly:100.0%/core91.1% → Karte sagt black and white
+  b05                    gemessen warm   (warm 100% · blue 0% · pink 0% · green 0%)  Warm-Mitte  36.6°  →  Karte sagt brown
+
+check-colour-truth: 4 violation(s) over 12 restore sheet(s)

@@ -23,6 +23,8 @@ import { sceneWithActorWash, type SceneSnapshot } from "../scene-v2.ts";
 import React from "react";
 import type { GameTaskV2 } from "@domigo/content-schema";
 import { captiveStem, classmateFreeStem, classmateStem } from "../artManifest.ts";
+import { NumberSwarmPlate } from "../story/NumberSwarmPlate.tsx";
+import { CLASS_PHOTO_WINDOW, DEVICE_WINDOW, PENCILCASE_WINDOW } from "../story/picture-windows.ts";
 import { gapLevelFor, renderGapHint } from "./hint.ts";
 import { QUICKFIRE_MS, focusPctFor } from "./overlay-css.ts";
 import { LETTER_LEAD_MS, LETTER_STAGGER_MS, lettersFor } from "./resolution.ts";
@@ -578,8 +580,25 @@ export function CardShell({
   // R5-W4 · D3 · F-14 · the occupant's cell, when this card is about a cage and
   // the sheet has landed. Keen-art law: a missing cell leaves the shell exactly
   // as it was, so no card hangs on a file.
-  const occupant = task.stimulus.type === "entity" && task.stimulus.artComposition === "complete"
-    ? undefined : art?.[cageCellFor(captive, captiveIsPerson) ?? ""];
+  const portraitStem = task.stimulus.type === "entity" ? task.stimulus.art : undefined;
+  // Action portraits already contain the whole scene, including Merle.
+  const completePicture = task.stimulus.type === "entity"
+    && (task.stimulus.artComposition === "complete" || portraitStem?.startsWith("merle_act_"));
+  // These two authored pages carry a visual count, independent of answer keys.
+  const countPage = (task.id === "g1.paint.ch01.enc.heft.n1" && portraitStem === "heft_count_dots_a")
+    || (task.id === "g1.paint.ch01.enc.heft.n2" && portraitStem === "heft_count_books_a");
+  const photoPortrait = portraitStem === "photo_frame_cage_a" && captive === "picture" && !captiveIsPerson;
+  const behindWindow = !completePicture && photoPortrait ? CLASS_PHOTO_WINDOW
+    : !completePicture && portraitStem?.startsWith("device_locker_")
+    ? DEVICE_WINDOW : !completePicture && portraitStem?.startsWith("pencilcase_")
+      ? PENCILCASE_WINDOW : undefined;
+  const occupantStem = behindWindow === CLASS_PHOTO_WINDOW ? KLASSENFOTO_STEM
+    : behindWindow === DEVICE_WINDOW
+    ? freeCellsFor(captive).find(stem => art?.[stem] !== undefined)
+    : cageCellFor(captive, captiveIsPerson);
+  const occupant = completePicture ? undefined : art?.[occupantStem ?? ""];
+  const curseUrl = task.kind === "restore" && task.curseVisual === "violet-ink"
+    ? art?.curse_violet : undefined;
 
   // ── R5-W1 · D1 · THE GLANCE GRAMMAR ────────────────────────────────────────
   // plate → key → quiet → act → help. Which line is the KEY is decided in
@@ -649,8 +668,10 @@ export function CardShell({
             portrait nor a painted piece leads with its own act mark instead:
             doc 44 §3.1 rules that a bare text card is not a legitimate card
             surface, and „nothing yet" is the state art batches leave behind. */}
-        {portrait !== undefined ? (
-          <Plate url={portrait} behindUrl={occupant} altDe={task.stimulus.type === "entity" ? task.stimulus.showsDe : ""} wash={portraitWash} mark={mark} />
+        {task.kind === "wheel" && task.id.startsWith("g1.paint.ch01.") && task.skins?.includes("moths") ? (
+          <NumberSwarmPlate seed={task.id + ":" + task.shown} />
+        ) : portrait !== undefined ? (
+          <Plate url={portrait} height={photoPortrait ? 210 : countPage ? 180 : undefined} behindUrl={occupant} behindWindow={behindWindow} curseUrl={curseUrl} altDe={task.stimulus.type === "entity" ? task.stimulus.showsDe : ""} wash={portraitWash} mark={mark} />
         ) : picture !== undefined ? (
           <Plate url={picture} altDe={task.stimulus.type === "image" ? task.stimulus.altDe : ""} mark={mark} />
         ) : (
@@ -683,7 +704,7 @@ export function CardShell({
         {/* ZONE 3 · THE QUIET LAYER — the German that is not the ask. Kept, in
             full, one step back: a first-reader needs it, but it stopped being
             the loudest thing on the card. */}
-        {key.text !== task.storyDe && <Quiet>{task.storyDe}</Quiet>}
+        {colourAskDe === undefined && key.text !== task.storyDe && <Quiet>{task.storyDe}</Quiet>}
 
         {/* ZONE 4 · THE ACT — the controls the verb just named */}
         {children}

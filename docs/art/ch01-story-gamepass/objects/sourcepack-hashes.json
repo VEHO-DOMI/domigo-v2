@@ -1,0 +1,225 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "files": [
+    {
+      "file": "README.md",
+      "bytes": 7253,
+      "sha256": "e5e22f4d13b3bd0db62f393ef7b8ce380ac6fb0bee28b4028dc2a6832b8c7820"
+    },
+    {
+      "file": "import-manifest.json",
+      "bytes": 17554,
+      "sha256": "e94dc7a3437f585030e06cbac7ea8e7e039f5f39d956edc2bb0f999d00ae67cb"
+    },
+    {
+      "file": "import-report.json",
+      "bytes": 148391,
+      "sha256": "ad02966de02e9fcf37fc15dba0c20f5d4d4803282163e0afd1c959fa37b3c554"
+    },
+    {
+      "file": "installed-stems.json",
+      "bytes": 8649,
+      "sha256": "816aeb5a5e13854e55335ca290ebfc0f6608ed4faf5bac83b6f39399b93c0229"
+    },
+    {
+      "file": "measurements/chromatic-import-measurements.json",
+      "bytes": 2772,
+      "sha256": "5f86e4f31368981d2b021cd47c7e4cdfa0250061ebde0f941eb31fb0caa975a8"
+    },
+    {
+      "file": "measurements/colour-drift-tamper.log",
+      "bytes": 4154,
+      "sha256": "dfc0302183478e18eb5c3cb89aa00dafa18e94b0c725ba3aca3c3872681a7c83"
+    },
+    {
+      "file": "measurements/final-colour-gate.log",
+      "bytes": 2937,
+      "sha256": "2da3257aea3db95f447bfa7bc13c298019b395df4a0c113b78c4038d767d5499"
+    },
+    {
+      "file": "measurements/final-colour-selftest.log",
+      "bytes": 4159,
+      "sha256": "437b31347644ff61cfab10c38d8d4a364e911433bf1d41dce65caf9bfe3fc73d"
+    },
+    {
+      "file": "measurements/heft-actual-cli-probe.log",
+      "bytes": 3384,
+      "sha256": "9f3e794852e6feee850e940af2f7bd0bb53f6d9f43419221887f39956d297a8d"
+    },
+    {
+      "file": "measurements/heft-reading-measure.json",
+      "bytes": 3317,
+      "sha256": "ed5572c7c501f94c62a2ede6e7fc304a216cb984c96218d37b9448bc430de570"
+    },
+    {
+      "file": "measurements/heft-reading-proposal.json",
+      "bytes": 1140,
+      "sha256": "7309fc95987f9619833f36d64e1991633045ae61bb80531ec0b048d0ddfc7d79"
+    },
+    {
+      "file": "measurements/instrument-preservation.json",
+      "bytes": 402,
+      "sha256": "f88a23f2d7deabb08ecf9e21a6817d839d55cf49daf29eb65d0956c8015477bc"
+    },
+    {
+      "file": "measurements/neutral-material-frozen-plan.json",
+      "bytes": 9029,
+      "sha256": "009de39b9e730777286c320f50d84d18255652787dc679ca6c96af3d5acd0f35"
+    },
+    {
+      "file": "measurements/new-heft-actual-cli-probe.log",
+      "bytes": 3094,
+      "sha256": "d9b7f4e99eb23e9f044c53296832dd4d5f65d369feb49c1ee374f197f69edda4"
+    },
+    {
+      "file": "measurements/new-heft-reading-proposal.json",
+      "bytes": 1310,
+      "sha256": "0cf98ec3554dbf112a6c1d2657f9e0f051c66f15aab1f4b58986c424c458b868"
+    },
+    {
+      "file": "measurements/new-obj_scissors-actual-cli-probe.log",
+      "bytes": 5452,
+      "sha256": "c034e44b0002287e74615afc7aea4cab6c22011b1cccb15f17829b6a81486db9"
+    },
+    {
+      "file": "measurements/new-obj_scissors-reading-proposal.json",
+      "bytes": 2145,
+      "sha256": "cd8f0465c6e35a2869dc0b9382fc399c413abc57966786bf2b1e91b84e95f229"
+    },
+    {
+      "file": "measurements/new-pen-actual-cli-probe.log",
+      "bytes": 3021,
+      "sha256": "e44f88859c1ce76be1f83e50b8011ab71c1a01e356fa606b4e9c022f700b788f"
+    },
+    {
+      "file": "measurements/new-pen-reading-proposal.json",
+      "bytes": 1273,
+      "sha256": "0a1855a559c0b6e17daa023dbc6bfa03dbc13fbb04d63d167fa1dd2e10995940"
+    },
+    {
+      "file": "measurements/obj_scissors-actual-cli-probe.log",
+      "bytes": 8097,
+      "sha256": "a3aacda861bd8dc638069f1da8454c8a792d5fa04152dcd8b1ac61b6f6f64f24"
+    },
+    {
+      "file": "measurements/obj_scissors-reading-measure.json",
+      "bytes": 8030,
+      "sha256": "49e73dc25c42dfa250f421ff08af27f517184e483ac3f21756c3dfa22575af38"
+    },
+    {
+      "file": "measurements/obj_scissors-reading-proposal.json",
+      "bytes": 2605,
+      "sha256": "0006e9673c4b0a06aef07d6fb49b314b680721c79d40c61444b5f31b3cb70330"
+    },
+    {
+      "file": "measurements/pen-actual-cli-probe.log",
+      "bytes": 4157,
+      "sha256": "f81c2181ca95b1c27ebbc4a143d28c8b3bf06706cde1bc33b431ea5e61bb497b"
+    },
+    {
+      "file": "measurements/pen-reading-measure.json",
+      "bytes": 4090,
+      "sha256": "e63018f3d639cff05761854f474ef785147c151486b501ec29fd3aaf745a40e3"
+    },
+    {
+      "file": "measurements/pen-reading-proposal.json",
+      "bytes": 1310,
+      "sha256": "e7f6f6a8fbb6c49039d9e588a3df87672d426183d7fc62b797c37ac2ad86dbb5"
+    },
+    {
+      "file": "neutral-material-import-manifest.json",
+      "bytes": 1194,
+      "sha256": "67dc815141babef09da1054c72eeccd828b78bcab258e5784d979376d84f5033"
+    },
+    {
+      "file": "neutral-material-import-report.json",
+      "bytes": 10650,
+      "sha256": "ba91c2e8a06c44f5d457439bbb7f583a2673f8a67deb07f8bf0ccb854802f86d"
+    },
+    {
+      "file": "prompts/attacker-objects-3x2.corrected.prompt.txt",
+      "bytes": 1511,
+      "sha256": "9a2ea74e5548bf5c4b8ea23fc05204525b638ed54e3408152af421d458f27b84"
+    },
+    {
+      "file": "prompts/attacker-objects-3x2.prompt.txt",
+      "bytes": 3708,
+      "sha256": "88a73910415c881ba70bd0477ab45b826e0a1d1480038a1db124c7afdff25bf1"
+    },
+    {
+      "file": "prompts/attacks-pen-eraser-exercisebook-3x2.prompt.txt",
+      "bytes": 2802,
+      "sha256": "6f19227056493837fc061b1e8eb2dd0bfd77409c7f213045145d683d2937c3c9"
+    },
+    {
+      "file": "prompts/attacks-scissors-glue-sharpener-3x2.corrected.prompt.txt",
+      "bytes": 1026,
+      "sha256": "11e7c165702b18f555b461550f9ce9669980f0d6823a27c3ad8c29942d8e1427"
+    },
+    {
+      "file": "prompts/attacks-scissors-glue-sharpener-3x2.prompt.txt",
+      "bytes": 2490,
+      "sha256": "50b7cc9b5036fb00a85f1dd9bb94fdedd2c9dbf03afea640d46e9bf53c7603e0"
+    },
+    {
+      "file": "prompts/lying-book-and-real-gluestick-2x2.prompt.txt",
+      "bytes": 2532,
+      "sha256": "f4761d09cec539996979effd792531fdb493f5239213e48b838402add9ed073b"
+    },
+    {
+      "file": "prompts/neutral-material-figures.prompt.txt",
+      "bytes": 3552,
+      "sha256": "a1685d2dc62d5dd320da363fc122b831af4a44a9a6ef3307a3ff8fe4155ee300"
+    },
+    {
+      "file": "prompts/passive-objects-2x2.prompt.txt",
+      "bytes": 2557,
+      "sha256": "9188be1e7e0e085bfd178b4ad9c43f3d8ddb0ed80414c17b17d02d58e1d82b11"
+    },
+    {
+      "file": "prompts/skirt-knee-length.prompt.txt",
+      "bytes": 1223,
+      "sha256": "e8cac4641a14fa9b83b6957e0706126ad7c00a293ecd91211603f45d06258547"
+    },
+    {
+      "file": "source-to-stem.json",
+      "bytes": 15409,
+      "sha256": "f095f7d372a8ae5d9d325b82d7c30a0b97d6e547c52a8c28b4ef8cc8dad616de"
+    },
+    {
+      "file": "sources/attacker-objects-3x2.corrected.raw.png",
+      "bytes": 2043825,
+      "sha256": "3f19dfa14f64a14ca53357f457504025fd20f51677af1c8d148ddae519ed41dc"
+    },
+    {
+      "file": "sources/attacks-pen-eraser-exercisebook-3x2.raw.png",
+      "bytes": 1859770,
+      "sha256": "45072b9fc5080968361d3a86fa1f27ee4df6e58955c82c67d4ebb2113b987cbf"
+    },
+    {
+      "file": "sources/attacks-scissors-glue-sharpener-3x2.corrected.raw.png",
+      "bytes": 1811019,
+      "sha256": "7aea6fd4a51cc4a2b552735d7fd06d3099ea2a3fed6f2b9eaa238262f90b4869"
+    },
+    {
+      "file": "sources/lying-book-and-real-gluestick-2x2.raw.png",
+      "bytes": 1780639,
+      "sha256": "1ea702f0b5f09b405cf1d0955f2646a7019f1b1df49f7f719b9191d0ec14f84a"
+    },
+    {
+      "file": "sources/neutral-material-figures.raw.png",
+      "bytes": 1797700,
+      "sha256": "d2b171e48b825a12dd414970b0f545517bd8b6aa0dadb0d78cd6e1333525f1c6"
+    },
+    {
+      "file": "sources/passive-objects-2x2.raw.png",
+      "bytes": 2040895,
+      "sha256": "e69b62a6fcccb2c46832478877eeccf154e440b0e7ff991461e9b993341a270f"
+    },
+    {
+      "file": "sources/skirt-knee-length.raw.png",
+      "bytes": 1948642,
+      "sha256": "75f87f74e77c4a683631b2db016b33d0560b8fc6dd22bb97b904e7e410480312"
+    }
+  ]
+}

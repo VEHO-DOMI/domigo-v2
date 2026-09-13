@@ -1,0 +1,192 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "schema": "ch01TerrainImport@1",
+  "manifestPath": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/curse.manifest.json",
+  "manifestSha256": "09a87f872c2d01699436b5ab7b0f9b8d2c9601d1ad2be4135814e004d39912b4",
+  "importerSha256": "19413e21239e9480dccba9557a1b913be05abe0c72c1681025a7da0f4c058884",
+  "fringeModuleSha256": "51e4044e953feb7e3af96b2d4b562cf73a97dd596d9b7cb2c7d3d688c0145e80",
+  "node": "v24.20.0",
+  "pngjsVersion": "7.0.0",
+  "convention": "pixel centres; strict monotone inverse map; no extrapolation; outside source transparent; premultiplied bilinear",
+  "assets": [
+    {
+      "stem": "curse_violet",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/sources/curse-violet-original.png",
+      "target": "/Users/veho/Code/codex-lab/trial-berichte/CH01_STORY_SPIELPASS/imported-curse/curse_violet.png",
+      "sourceSha256": "c9e5807b4c52f00dcd6029d9f5865b5a4634c7f0028cae0d8e4c5e5515a584ee",
+      "sourceRgbaSha256": "66f5d1a9c6ba0eacce6409b6dc296b953c6397e0a6594b73e36be5a708ce5ea0",
+      "keyedRgbaSha256": "c78bc0557b18da79051f2842349da63fd461d6f0153e47044f4616cd618afb60",
+      "previousTargetSha256": null,
+      "outputSha256": "d5fe70a903a8c9170e58bd9d2476a1ac48148e54f2a4b80b578afc4a898121e6",
+      "outputRgbaSha256": "117f4baa697c8cac40258fff6447a38df7e5cee2a7c2a0e85e5878a3378ac1c8",
+      "outputBytes": 254028,
+      "sourceCanvas": {
+        "width": 1254,
+        "height": 1254
+      },
+      "sourceCrop": null,
+      "croppedCanvas": {
+        "width": 1254,
+        "height": 1254
+      },
+      "croppedBounds": {
+        "x": 0,
+        "y": 13,
+        "width": 1230,
+        "height": 1241,
+        "pixels": 529035
+      },
+      "croppedRgbaSha256": "66f5d1a9c6ba0eacce6409b6dc296b953c6397e0a6594b73e36be5a708ce5ea0",
+      "registeredAxes": {
+        "x": [
+          [
+            0,
+            0
+          ],
+          [
+            511,
+            1253
+          ]
+        ],
+        "y": [
+          [
+            0,
+            0
+          ],
+          [
+            511,
+            1253
+          ]
+        ],
+        "space": "original"
+      },
+      "outputCanvas": {
+        "width": 512,
+        "height": 512
+      },
+      "x": [
+        [
+          0,
+          0
+        ],
+        [
+          511,
+          1253
+        ]
+      ],
+      "y": [
+        [
+          0,
+          0
+        ],
+        [
+          511,
+          1253
+        ]
+      ],
+      "sourceBounds": {
+        "x": 0,
+        "y": 13,
+        "width": 1230,
+        "height": 1241,
+        "pixels": 529035
+      },
+      "keyedBounds": {
+        "x": 0,
+        "y": 13,
+        "width": 1230,
+        "height": 1241,
+        "pixels": 524273
+      },
+      "keyedInkBounds": {
+        "x": 47,
+        "y": 60,
+        "width": 1172,
+        "height": 1118,
+        "pixels": 422446
+      },
+      "beforeClipBounds": {
+        "x": 0,
+        "y": 6,
+        "width": 499,
+        "height": 506,
+        "pixels": 88236
+      },
+      "clip": null,
+      "outputBounds": {
+        "x": 0,
+        "y": 6,
+        "width": 499,
+        "height": 506,
+        "pixels": 88236
+      },
+      "outputInkBounds": {
+        "x": 19,
+        "y": 25,
+        "width": 478,
+        "height": 456,
+        "pixels": 70762
+      },
+      "boundsConvention": "integer origin and extent; Bounds alpha>0, InkBounds alpha>CUT_ALPHA",
+      "cutAlpha": 16,
+      "key": {
+        "cut": 4762,
+        "softened": 31,
+        "keyRgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 40,
+        "softTolerance": 110
+      },
+      "sourceCleanup": {
+        "specks": {
+          "healed": 1396,
+          "cut": 0,
+          "total": 1396
+        },
+        "fringe": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0,
+          "threshold": 108
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "chromaMatte": null,
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "outputCleanup": {
+        "specks": {
+          "healed": 397,
+          "cut": 0,
+          "total": 397
+        },
+        "fringe": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0,
+          "threshold": 106
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "chromaMatte": null,
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "chromaMatte": null
+    }
+  ]
+}

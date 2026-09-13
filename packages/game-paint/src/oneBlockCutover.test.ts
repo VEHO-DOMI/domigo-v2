@@ -160,7 +160,8 @@ describe("massKitUsable — die Wache vor der Masse (N7A1)", () => {
  *
  * Was NICHT gekippt ist: `z` bleibt eine Schraege, nicht solide. Die Kollision ist
  * unveraendert, das Kind rutscht wie zuvor, und `fullyPainted` fragt weiterhin nur
- * nach soliden Zellen (493 + 17 Moebel = 510). Neu ist allein, dass das BILD die
+ * nach soliden Zellen (historisch 493 + 17 Moebel = 510; W36 entfernt
+ * genau das einzelne Türpodest: 492 + 17 = 509). Neu ist allein, dass das BILD die
  * Rampe traegt — und dass der Motor in p3 kein Bausatz-Teil mehr zeichnet.
  */
 describe("die Kreide-Rutsche und der p3-Cutover (N7A2c)", () => {
@@ -176,14 +177,23 @@ describe("die Kreide-Rutsche und der p3-Cutover (N7A2c)", () => {
     expect(isSlope("z")).toBe(true);
   });
 
-  it("die sechs Koerper partitionieren p3: 493 solide + 17 Moebel = 510, dazu 5 gemalte Schraegen", () => {
+  it("die sechs Koerper partitionieren p3 ohne das einzelne Türpodest: 492 + 17 = 509, dazu 5 Schraegen", () => {
     expect(p3).toBeDefined();
     if (p3 === undefined) return;
+    // Koki requested the door on the ground. Its X now occupies the former
+    // podium cell (60,14); the actual supporting ground at row 15 remains.
+    expect(p3.rows[14]?.[60]).toBe("X");
+    expect(isSolid(p3.rows[14]?.[60] ?? ".")).toBe(false);
+    expect(isSolid(p3.rows[15]?.[60] ?? ".")).toBe(true);
+    expect(P3_WAVE_BODIES).toHaveLength(6);
+    const owned = new Set(P3_WAVE_BODIES.flatMap((b) => bodyCells(b).map(({ c, r }) => `${c},${r}`)));
+    expect(owned.has("60,14")).toBe(false);
+    expect(owned.has("60,15")).toBe(true);
     const moebel = claimedPlatformCells(p3.rows, [], new Set());
     const koerper = P3_WAVE_BODIES.reduce((n, b) => n + bodyCells(b).length, 0);
     const schraegen = P3_WAVE_BODIES.reduce((n, b) => n + bodySlopeCells(b).length, 0);
     const solide = p3.rows.join("").split("").filter((g) => isSolid(g)).length;
-    expect({ solide, koerper, schraegen, moebel: moebel.size }).toEqual({ solide: 510, koerper: 493, schraegen: 5, moebel: 17 });
+    expect({ solide, koerper, schraegen, moebel: moebel.size }).toEqual({ solide: 509, koerper: 492, schraegen: 5, moebel: 17 });
     expect(bodyPartitionErrors(p3.rows, P3_WAVE_BODIES, { fullyPainted: true, otherClaimed: moebel })).toEqual([]);
   });
 

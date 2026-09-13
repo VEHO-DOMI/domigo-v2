@@ -1,0 +1,9 @@
+# CODEX DRAFT — NOT CANON
+
+Die normale Produktionsroute `http://localhost:3353/play/1/buch/ch01` wurde aus dem tatsächlichen Bau `1fd980c5f1b8d19e07bf90b952eccccc635c3f6c` geöffnet, ohne phase/perf-Parameter. `/api/version` bestätigt denselben Kopf. Eigener Chrome mit leerem Profil, 1280×900.
+
+Alle sieben tatsächlichen Comicbilder geladen; auf jeder Seite ist der Weiterknopf vollständig im sichtbaren Fenster. Danach wurde Zum ersten Kapitel tatsächlich angeklickt. Die konkrete Prologversion `erste-englischstunde-2` wurde gespeichert. Los geht’s startet die normale Welt. Geschichte öffnet wieder Seite1; Geschichte überspringen kehrt in dieselbe Welt zurück. Nach tatsächlichem Neuladen erscheint die Kapitelansage statt des bereits gelesenen Comics. Klecks ist mit geladenem140px-Porträt sichtbar.
+
+`window.__domigoPaint` und `window.__domigoPaintPerf` sind auf dieser normalen Produktionsroute beide nicht vorhanden. Die zwei persönlich angesehenen Bilder `production-comic-school.png` und `production-world-normal.png` zeigen keine schwarzen Messanzeigen und kein Entwicklungs-N-Symbol. Das bereits bestehende kleine Baukennzeichen unter dem Spiel bleibt sichtbar. Weitere Belege: `production-comic-last.png`, `production-chapter-intro.png`, `production-reloaded-intro.png`, `production-browser-proof.json`, `production-reload-proof.json`.
+
+Ein erster Klickversuch suchte Los geht’s! mit einem nicht vorhandenen Ausrufezeichen und tat nichts; danach wurde der tatsächliche Knopf Los geht’s verwendet. Der Fehler war im Bedienrezept, nicht im Produkt. Das Überspringen eines erneut geöffneten bereits gelesenen Comics wurde bedient; der separate Erstbesuch-ohne-Lesestatus wird weiterhin durch den vorhandenen Speichertest und frühere Bedienbelege abgedeckt, hier nicht erfunden. Kein vollständiger Produktions-Durchspielnachweis behauptet. Browser und Bedienprozess anschließend sauber geschlossen, Exit0.

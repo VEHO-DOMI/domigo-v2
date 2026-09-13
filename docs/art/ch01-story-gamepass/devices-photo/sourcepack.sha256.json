@@ -1,0 +1,53 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "files": [
+    {
+      "file": "README.md",
+      "sha256": "5d85875d5d760b64bbad60299f0cc654156e378b60a782e7dbab493f97bd50b2"
+    },
+    {
+      "file": "classphoto-15-original.png",
+      "sha256": "4ac4e7214d82e0ce775ba0fa14e9755cd2aff2c696813f5411187f8d9f659d83"
+    },
+    {
+      "file": "classphoto-15.prompt.txt",
+      "sha256": "9b763b622fd4aa17f230b915b865cd464adcc420a67dba6b6d5481c17c831901"
+    },
+    {
+      "file": "device-locker-empty-states-v2-original.png",
+      "sha256": "a4f085cdae9bb22f86b1c6f63d7ddaa5b0a9966f5d9debe0e26f430f295adfc2"
+    },
+    {
+      "file": "device-locker-empty-states.prompt.txt",
+      "sha256": "dee96acfafe8e26216885cfdd972cff2a8db037b3024763b4c54e428dd12ad2d"
+    },
+    {
+      "file": "device-locker-hinge-correction.prompt.txt",
+      "sha256": "3b228f68561b1f993d362fdabb136b4fda40680ab5669454d80b845cfb18afbb"
+    },
+    {
+      "file": "import-report.json",
+      "sha256": "acd8c86a6b1e95d0c095045ba6f0f94aec15e4ddc7cc732a0d941a4cae1f0b6c"
+    },
+    {
+      "file": "import.log",
+      "sha256": "581d55bbc5540e62858a912edf4cd406f4ebc6e6cb3fdde5dcb8635c8475440b"
+    },
+    {
+      "file": "import.manifest.json",
+      "sha256": "381df9148b9b8ff7b638c88daf3878e5fa8ae537c97e1074875450fab254b2e1"
+    },
+    {
+      "file": "installed-stems.json",
+      "sha256": "1024d5a8fb3a241bde11881bfa7ca25f804725d71ffe7a01bafbdccb46ffa3a8"
+    },
+    {
+      "file": "originals.manifest.json",
+      "sha256": "1416b512951650c73bdd4f2b11d36d7d11c6404e04564b0ce6d9ebaa706ac15e"
+    },
+    {
+      "file": "window-geometry.json",
+      "sha256": "ee3effa5a8041a8177aad833808d4c66ede35c61461352f3c19a2d63fdfed9bc"
+    }
+  ]
+}

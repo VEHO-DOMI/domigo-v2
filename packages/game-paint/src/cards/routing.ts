@@ -13,8 +13,8 @@
 //   4. FALLBACK— otherwise the UNBOUND cards of that use (no `skins`), which by
 //                the schema's binding law never claim a being on screen
 //
-// Within the resolved pool there is now exactly ONE rule: cycle in file order.
-// FILE ORDER IS SERVE ORDER.
+// Legacy calls cycle in file order. An explicit run seed opts boss and moth
+// quickfire pools into fair shuffled decks; every card is still served once per cycle.
 //
 // R5-W2 · G1 retired the fourth rule — "one deterministic skip so the same kind
 // never lands twice in a row" — and the reason is worth keeping, because it will
@@ -70,10 +70,12 @@ export interface ServeCtx {
 }
 
 export interface RouteState {
-  cursors: Record<string, number>; // per-pool position
+  cursors: Record<string, number>; // per-pool position, or absolute serve count for seeded decks
+  /** Supplied by the app once per run; absent preserves historical tape behaviour. */
+  seed?: string;
 }
 
-export const initRoute = (): RouteState => ({ cursors: {} });
+export const initRoute = (seed?: string): RouteState => ({ cursors: {}, ...(seed === undefined ? {} : { seed }) });
 
 const inPhase = (t: GameTaskV2, phase: string): boolean => t.phases === undefined || t.phases.includes(phase);
 
@@ -138,20 +140,10 @@ export function orderedTask(
  * the next pool's first serve asked ITS card 0, and a child who replayed the
  * chapter met the identical opening three times.
  *
- * What this is NOT: a random start. `routing.ts` is deterministic by repo law
- * (header, line 1), the proof tapes replay recorded input against an exact
- * expected world, and there is no run seed anywhere in the package to seed from
- * — `sim.ts` has none and `PaintGameProps` has none. A per-session shuffle would
- * need a new prop and would invalidate every tape; that is filed for the
- * architect, not smuggled in here.
- *
- * What this IS: the debt entry's own words — „deterministisch gedrehte
- * Startposition JE KAMPF". The pool key already names the fight (`use|phase|
- * skin`), so each pool opens at its own fixed offset instead of all of them
- * opening at zero. Same input, same cards, every time; different pools, different
- * openings. The offset comes from `seededShuffle`, the hash the cards already
- * run on, rather than a third FNV variant of its own — the package has two
- * incompatible ones already, and that is exactly one too many.
+ * Legacy calls keep the historical per-pool start. New runs may explicitly pass
+ * an app-owned seed. This changes only boss and moth quickfire decks, not the
+ * ordered rescue ritual or other field tasks. No ambient randomness enters the
+ * game package, so recording the seed makes the same run reproducible.
  */
 const startOf = (key: string, n: number): number =>
   n <= 1 ? 0 : (seededShuffle(Array.from({ length: n }, (_, i) => i), key)[0] ?? 0);
@@ -167,11 +159,21 @@ export function nextTask(
 ): { task: GameTaskV2 | null; next: RouteState } {
   const { pool, key } = resolvePool(items, use, ctx);
   if (pool.length === 0) return { task: null, next: st };
+  const seeded = st.seed !== undefined && (use === "boss" || (use === "quickfire" && ctx.skin === "moths"));
+  if (seeded) {
+    const served = st.cursors[key] ?? 0;
+    const cycle = Math.floor(served / pool.length);
+    const deck = seededShuffle(pool, JSON.stringify([st.seed, key, cycle]));
+    return {
+      task: deck[served % deck.length]!,
+      next: { ...st, cursors: { ...st.cursors, [key]: served + 1 } },
+    };
+  }
   // exactly one step per serve — the fairness the whole pool depends on: a
   // cursor that ever advances by more than one strands a parity class of cards
   // forever (see the header, and ./variety.ts's reachability law).
   const i = (st.cursors[key] ?? startOf(key, pool.length)) % pool.length;
   const pick = pool[i]!;
-  const next: RouteState = { cursors: { ...st.cursors, [key]: (i + 1) % pool.length } };
+  const next: RouteState = { ...st, cursors: { ...st.cursors, [key]: (i + 1) % pool.length } };
   return { task: pick, next };
 }

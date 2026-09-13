@@ -1,0 +1,57 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "assets": [
+    {
+      "stem": "story_school",
+      "source": "sources/story_school.png",
+      "mode": "byte-copy",
+      "sha256": "0c7eef9dae3c2e3c90863a238d37b6c4bbc2bcef0580e33cd70814c70cffae0a",
+      "sourceOriginal": "/Users/veho/Code/codex-lab/trial-berichte/CH01_STORY_SPIELPASS/art-calibration/panel-01-school-original.png"
+    },
+    {
+      "stem": "story_book",
+      "source": "sources/story_book.png",
+      "mode": "byte-copy",
+      "sha256": "e8576358fb4200586139dc75eb22d4d9826159427eeaf57805820136cd6d22c6",
+      "sourceOriginal": "/Users/veho/Code/codex-lab/trial-berichte/CH01_STORY_SPIELPASS/art-series/story_book-original.png"
+    },
+    {
+      "stem": "story_fall",
+      "source": "sources/story_fall.png",
+      "mode": "byte-copy",
+      "sha256": "599f385f3dcbd0ad7a125c2a7e43c179ad3683da8e03b6c5abcb9d65639cf36e",
+      "sourceOriginal": "/Users/veho/Code/codex-lab/trial-berichte/CH01_STORY_SPIELPASS/art-series/story_fall-original.png"
+    },
+    {
+      "stem": "story_arrival",
+      "source": "sources/story_arrival.png",
+      "mode": "byte-copy",
+      "sha256": "19072f8df4dcfd69c0fb293cafeacb4ee089a1239c86f134827549e0e1de9b73",
+      "sourceOriginal": "/Users/veho/Code/codex-lab/trial-berichte/CH01_STORY_SPIELPASS/art-series/story_arrival-original.png"
+    },
+    {
+      "stem": "story_klecks",
+      "source": "sources/story_klecks.png",
+      "mode": "byte-copy",
+      "sha256": "7de19e4d04dab1645f3585d42a35153189c507c9eb058ae4089f5a900569ffb4",
+      "sourceOriginal": "/Users/veho/Code/codex-lab/trial-berichte/CH01_STORY_SPIELPASS/art-series/story_klecks-original.png"
+    },
+    {
+      "stem": "story_first_step",
+      "source": "sources/story_first_step.png",
+      "mode": "byte-copy",
+      "sha256": "9a8f35af8c9edc11e391303084b6e662bb1f9930cadbf78bb6b90a6c072d4808",
+      "sourceOriginal": "/Users/veho/Code/codex-lab/trial-berichte/CH01_STORY_SPIELPASS/art-series/story_first_step-original.png"
+    },
+    {
+      "stem": "ink_liquid",
+      "source": "sources/ink_liquid.png",
+      "mode": "byte-copy",
+      "sha256": "96e1b28edfbd3f46d9c18b2b73e99946a18be0023d62746b3a1c9231f83e1894",
+      "sourceOriginal": "/Users/veho/.codex/generated_images/01a09269-9f1d-7703-905c-e911ce143254/exec-d368c8e7-d1bf-43ea-8f26-52849dea6be4.png"
+    }
+  ],
+  "status": "superseded",
+  "supersededBy": "panels.manifest.json",
+  "reason": "Historical six-shot manifest before whole-class school-clothing correction and seventh transformation shot. Historical source paths for story_book/story_fall now contain newer originals; historical hashes are retained here, not valid import instructions."
+}

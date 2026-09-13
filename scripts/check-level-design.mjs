@@ -40,6 +40,7 @@ import path from "node:path";
 // bringt seine eigenen Eingaben mit.
 import { paintChapters, skipLedger } from "./paint-chapters.mjs";
 import { checkPaintCoverage } from "../packages/content-schema/src/paint-coverage.ts";
+import { varietyErrors } from "../packages/game-paint/src/cards/variety.ts";
 import { askerUsesOf } from "../packages/game-paint/src/cards/serving.ts";
 import { replayPhaseTape, newChapterShell, worldAssertionErrors } from "../packages/game-paint/src/tape.ts";
 
@@ -184,10 +185,42 @@ export const answerWordsOf = (t) => {
 const saysWord = (haystack, needle) =>
   new RegExp(`(^|[^a-z'])${needle.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}($|[^a-z'])`, "i").test(haystack);
 
+// The user-authorized passive clothing contract reuses the actual variety
+// validator, including its reachability check. Other variety laws are checked
+// by check-game-tasks; only 17p/17q belong to this explicit design claim.
+const VARIETY_POLICY = JSON.parse(fs.readFileSync(path.join(ROOT, "scripts/game-tasks-variety-policy.json"), "utf8"));
+const passiveContext = (level, cp, entries, items) => {
+  if (level.chapter !== "ch01" || cp?.chapter !== "ch01" || !Array.isArray(cp.passiveCoverage)) return null;
+  const errors = varietyErrors({ chapter: "ch01", level, items,
+    policy: { ...VARIETY_POLICY, chapters: { ch01: { families: cp.families ?? [], lexiconClasses: cp.lexiconClasses ?? {}, vocabLedger: cp.vocabLedger ?? {} } } },
+    wordbank: entries.filter(e => e.kind === "wordfile").map(e => ({ id: e.id, en: e.en, forms: [e.en, ...(e.forms ?? [])] })),
+    passiveCoverage: cp.passiveCoverage, fieldForms: cp.fieldForms,
+    structureIds: [], lexicon: new Set(), today: TODAY,
+  }).filter(e => e.law === "17p" || e.law === "17q");
+  return { level, policy: cp, errors };
+};
+const readPassiveContext = (cx, entries, items) => {
+  if (cx.chapter !== "ch01" || !cx.hasPolicy) return null;
+  return passiveContext(cx.level, JSON.parse(fs.readFileSync(cx.policyPath, "utf8")), entries, items);
+};
+const passiveClaimError = (claim, entry, cx) => {
+  if (!cx || cx.level.chapter !== "ch01" || claim.card !== undefined || claim.exception !== undefined)
+    return "requires the explicit chapter-one passive policy, without a quiz or exemption";
+  const linked = cx.policy.passiveCoverage.filter(p => p.wordId === entry.id);
+  if (linked.length !== 1 || claim.wordId !== entry.id || claim.phaseId !== linked[0].phaseId || claim.entityId !== linked[0].entityId)
+    return "does not bind exactly its taught word and original pickup in the actual passive policy";
+  const phase = cx.level.phases.find(p => p.id === claim.phaseId);
+  const body = phase?.entities.find(e => e.id === claim.entityId);
+  if (!body || !Array.isArray(claim.stems) || claim.stems.length !== 1 || claim.stems[0] !== body.skin)
+    return "does not name the actual clothing body stem";
+  return null;
+};
+
 /** Der eine Block, den auch der Selbsttest fährt: Ansprüche gegen Level UND
  *  Karten, plus die Hygiene der Ausnahmen selbst. */
-export const claimFails = (claims, entries, skins, items, today, clothStems = new Set()) => {
+export const claimFails = (claims, entries, skins, items, today, clothStems = new Set(), passive = null) => {
   const out = [];
+  if (passive) for (const e of passive.errors) out.push(`abdeckung passivePickup: ${e.law} ${e.detail}`);
   const answerBlob = items.flatMap((t) => answerWordsOf(t)).join(" | ");
   const byEn = new Map(entries.filter((e) => e.kind === "wordfile").map((e) => [e.en, e]));
 
@@ -205,6 +238,11 @@ export const claimFails = (claims, entries, skins, items, today, clothStems = ne
     if (!claim) { out.push(`abdeckung: wordfile "${entry.en}" ist unklassifiziert (README §Abdeckung nachziehen)`); continue; }
     if ((claim.kind === "being" || claim.kind === "thing") && !claim.stems.some((s) => skins.has(s))) {
       out.push(`abdeckung: "${entry.en}" behauptet ${claim.kind} [${claim.stems.join("|")}], aber kein Stem im Level (B8)`);
+    }
+    if (claim.kind === "passivePickup") {
+      const error = passiveClaimError(claim, entry, passive);
+      if (error) out.push(`abdeckung passivePickup: "${entry.en}" ${error}`);
+      continue;
     }
     // ── R5-W5 · G4 · `pickup`: das Wort liegt als Sammelobjekt IM Level UND
     // steht auf der genannten Benenn-Karte. Beide Hälften, weil jede einzeln
@@ -259,15 +297,17 @@ const coverageFails = (cx, claims) => {
   if (!cx.hasTasks) { ledger.skip(cx.chapter, "abdeckung", `kein ${cx.chapter}.tasks.v2.json`); return []; }
   const wordbank = JSON.parse(fs.readFileSync(cx.wordbankPath, "utf8"));
   const allSkins = new Set(cx.phases.flatMap((ph) => ph.entities.map((e) => e.skin)));
+  const items = JSON.parse(fs.readFileSync(cx.tasksPath, "utf8")).items;
   return claimFails(
     claims,
     wordbank.entries,
     allSkins,
-    JSON.parse(fs.readFileSync(cx.tasksPath, "utf8")).items,
+    items,
     TODAY,
     // nur die Stems, die wirklich als Rolle `cloth` liegen — `pickup` fragt nach
     // dem Sammelobjekt, nicht nach irgendeinem Stem gleichen Namens
     new Set(cx.phases.flatMap((ph) => ph.entities.filter((e) => e.role === "cloth").map((e) => e.skin))),
+    readPassiveContext(cx, wordbank.entries, items),
   ).map((f) => `${cx.chapter} ${f}`);
 };
 
@@ -761,8 +801,34 @@ if (process.argv.includes("--selftest")) {
         wordbank.entries.filter((e) => e.en === "projector"), []),
       (f) => f.length === 0],
     ["NICHT-TAMPER · der echte Anspruchssatz gegen die echte Wortbank und die echten Karten bleibt still",
-      claimFails(CLAIMS, wordbank.entries, allSkins, JSON.parse(fs.readFileSync(TASKS, "utf8")).items, TODAY, new Set(phases.flatMap((ph) => ph.entities.filter((e) => e.role === "cloth").map((e) => e.skin)))),
+      claimFails(CLAIMS, wordbank.entries, allSkins, JSON.parse(fs.readFileSync(TASKS, "utf8")).items, TODAY, new Set(phases.flatMap((ph) => ph.entities.filter((e) => e.role === "cloth").map((e) => e.skin))), readPassiveContext(REAL, wordbank.entries, JSON.parse(fs.readFileSync(TASKS, "utf8")).items)),
       (f) => f.length === 0],
+  );
+  // These paired cases use the actual chapter, policy, wordbank and validator.
+  const passiveProbe = edit => {
+    const level = structuredClone(REAL.level), cp = JSON.parse(fs.readFileSync(REAL.policyPath, "utf8"));
+    const claims = structuredClone(CLAIMS), items = JSON.parse(fs.readFileSync(TASKS, "utf8")).items;
+    const phase = level.phases.find(p => p.id === "p1"), hat = phase.entities.find(e => e.id === "p1-cloth-hat");
+    edit({ level, cp, claims, phase, hat });
+    return claimFails(claims, wordbank.entries, new Set(level.phases.flatMap(p => p.entities.map(e => e.skin))), items, TODAY,
+      new Set(level.phases.flatMap(p => p.entities.filter(e => e.role === "cloth").map(e => e.skin))), passiveContext(level, cp, wordbank.entries, items));
+  };
+  const passiveRed = out => out.some(e => e.includes("passivePickup"));
+  cases.push(
+    ["PASSIVER FUND · tatsächliche neun Funde sind grün", passiveProbe(() => {}), f => f.length === 0],
+    ["PASSIVER FUND · entfernt", passiveProbe(({ phase }) => { phase.entities = phase.entities.filter(e => e.id !== "p1-cloth-hat"); }), passiveRed],
+    ["PASSIVER FUND · falsches Wort", passiveProbe(({ hat }) => { hat.params.wordEn = "pencil"; }), passiveRed],
+    ["PASSIVER FUND · falsche Rolle", passiveProbe(({ hat }) => { hat.role = "drained"; }), passiveRed],
+    ["PASSIVER FUND · verborgen", passiveProbe(({ hat }) => { hat.params.hidden = true; }), passiveRed],
+    ["PASSIVER FUND · Bonus-Duplikat", passiveProbe(({ hat }) => { hat.params.repeatOf = "another-hat"; }), passiveRed],
+    ["PASSIVER FUND · unerreichbar", passiveProbe(({ hat }) => { hat.c = 10000; }), passiveRed],
+    ["PASSIVER FUND · fremdes Kapitel", passiveProbe(({ level }) => { level.chapter = "ch02"; }), passiveRed],
+    ["PASSIVER FUND · Policy fehlt", passiveProbe(({ cp }) => { delete cp.passiveCoverage; }), passiveRed],
+    ["PASSIVER FUND · Policy zeigt auf anderen Fund", passiveProbe(({ cp }) => { cp.passiveCoverage.find(c => c.wordId === "g1u01.w.hat").entityId = "wrong-hat"; }), passiveRed],
+    ["PASSIVER FUND · zusätzlicher Quizanspruch verboten", passiveProbe(({ claims }) => { claims.hat.card = "g1.paint.ch01.uni.hat"; }), passiveRed],
+    ["PASSIVER FUND · alter pickup braucht weiter seine Karte", passiveProbe(({ claims }) => { claims.hat = { kind: "pickup", stems: ["cloth_hat"], card: "g1.paint.ch01.uni.hat" }; }), f => f.some(e => e.includes("Benenn-Karte"))],
+    ["PASSIVER FUND · falscher Stem", passiveProbe(({ claims }) => { claims.hat.stems = ["cloth_shirt"]; }), passiveRed],
+    ["PASSIVER FUND · Doppelanspruch in Policy", passiveProbe(({ cp }) => { cp.passiveCoverage.push({ ...cp.passiveCoverage[0] }); }), passiveRed],
   );
   // ── Block 6 · Buchstaben-Anker (R45) ──────────────────────────────────────
   // Eigene Welt: drei `*` in bekannter Spalten-Ordnung, Wort „ABC".

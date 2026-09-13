@@ -1,0 +1,66 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "method": "builtin imagegen",
+  "images": [
+    {
+      "file": "blackboard-rest-win-original.png",
+      "sha256": "9c33be86f3315a1c5d5a50b1a9b4bfff052374da527ba0010c6fdc84e757a0aa"
+    },
+    {
+      "file": "blackboard-scribble-layers-original.png",
+      "sha256": "0d5315180e17629d83db48a9b81086dc19c4b01915e06ed8ba74f417d54f6cc8"
+    }
+  ],
+  "registration": {
+    "label": "CODEX DRAFT — NOT CANON",
+    "boundsMethod": "Read-only all non-magenta-family pixels (alpha>16; exclude R-G>40 and B-G>40 background). Only a rectangle is derived; source pixels never recoloured by this detector.",
+    "bodies": [
+      {
+        "x": 61,
+        "y": 48,
+        "width": 650,
+        "height": 872,
+        "pixels": 432847
+      },
+      {
+        "x": 828,
+        "y": 48,
+        "width": 651,
+        "height": 872,
+        "pixels": 433082
+      }
+    ],
+    "layers": [
+      {
+        "x": 30,
+        "y": 188,
+        "width": 475,
+        "height": 598,
+        "pixels": 128296
+      },
+      {
+        "x": 555,
+        "y": 206,
+        "width": 437,
+        "height": 594,
+        "pixels": 115705
+      },
+      {
+        "x": 1042,
+        "y": 206,
+        "width": 465,
+        "height": 592,
+        "pixels": 108445
+      }
+    ],
+    "bodyRegistration": {
+      "left": 54,
+      "right": 717,
+      "top": 42,
+      "bottom": 926,
+      "width": 384,
+      "height": 512
+    },
+    "layerSpan": 618
+  }
+}

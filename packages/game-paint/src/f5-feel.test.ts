@@ -156,11 +156,11 @@ describe("R5-F5 · der Kritzel-Anfall (F-6)", () => {
 // Füllfeder „schreibt eine Frage in die Luft". Bis hierher fuhren beide dieselbe
 // Zickzack-Kurve seitwärts.
 describe("R5-F6 · der Anfall der Füllfeder ist ein anderer als der des Bleistifts", () => {
-  it("die Tabelle deckt BEIDE Läufer des Kapitels ab — aus dem Level gelesen, nicht getippt", () => {
+  it("die Tabelle deckt die Läufer samt angreifender Schere ab — aus dem Level gelesen", () => {
     const laeufer = [...phase("p1").entities, ...phase("p2").entities]
       .filter((e) => e.role === "chaser");
-    expect(laeufer.map((e) => e.id)).toEqual(["p1-pencil1", "p2-pen"]);
-    expect(laeufer.map((e) => fitStyleFor(e.skin))).toEqual(["kritzeln", "schreiben"]);
+    expect(laeufer.map((e) => e.id)).toEqual(["p1-pencil1", "p2-pen", "p2-obj-scissors"]);
+    expect(laeufer.map((e) => fitStyleFor(e.skin))).toEqual(["kritzeln", "schreiben", "kritzeln"]);
   });
 
   it("ein unbekanntes Blatt bekommt den Kritzler — die Tabelle nimmt keinem etwas weg", () => {
@@ -466,12 +466,14 @@ describe("R5-F5 · Merle geht herum (F-26, R49)", () => {
   const xOf = (c: number): number => (c * TILE + TILE / 2) * SUBS;
   const cellOf = (xSubs: number): number => Math.floor(xSubs / SUBS / TILE);
 
-  it("★ ihre Zone im AUSGELIEFERTEN p2 ist genau ihr Vierer-Sims — c63…c66", () => {
+  it("★ der verbreiterte Rettungsboden trägt Merles sichere lokale Wartezone", () => {
     const p = phase("p2");
     const merle = p.entities.find((e) => e.id === "merle")!;
     const z = roamZone(p.rows, xOf(merle.c), feetOf(merle.r));
-    expect(cellOf(z.minX)).toBe(63);
-    expect(cellOf(z.maxX)).toBe(66);
+    expect(cellOf(z.minX)).toBe(70);
+    // Without authored bounds the existing six-cell-per-side cap still holds.
+    expect(cellOf(z.maxX)).toBe(82);
+    expect(p.rows[merle.r + 1]?.slice(70, 83)).toBe("#############");
   });
 
   it("ROT ZUERST · über Luft geht sie nicht", () => {

@@ -1,0 +1,9 @@
+# CODEX DRAFT — NOT CANON
+
+Final green school desk, commissioned after blind readers found the earlier short furniture image insufficiently distinct from a stool. The actual desk has a wide writing surface, a clearly open book cubby and four legs. No face or arms. Root generated, inspected and approved the unchanged original before import. `imagegen-call.txt` preserves Root's exact builtin ImageGen call; `originals.manifest.json` identifies the generated source and its hash.
+
+The existing registered importer produces a proportional 560×400 (1.4:1) transparent canvas; it does not squeeze the object into a square. Complete source foreground (114,30,1309,962), source crop with six pixels margin, output alpha bounds (14,5,532,390). Standard key and fringe checks: no remaining fringe or isolated specks, no raster retouching. Registration, source/cropped/output hashes and measurements are preserved in the manifests and import report.
+
+The unchanged colour measurement reports dominant green, green share 0.6659731387396751, warm share 0.33402328003984094, dominance ratio 1.9937925843379556, parchment share 0.04095355418543243, fieldRule=true and rescuedShare=0 over 97707 opaque pixels. The colour gate changes only this stem's source hash and descriptive measurement rationale; existing thresholds and all classification logic remain unchanged. Installed output hash: 4b79954f035891108844b80a4a6a10a898bce10c1b2c709af4d5ff416ac09931.
+
+The naming card now consistently says Schreibtisch (including its policy noun and word hint), matching the taught English desk. The initially greyscale restoration picture intentionally does not show its restored green until the colour step; that step explicitly supplies the original colour. Fresh reader F saw only both actual card views and independently answered desk/green with verdict eindeutig.

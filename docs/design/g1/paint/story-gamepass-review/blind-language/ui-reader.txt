@@ -1,0 +1,507 @@
+001 | Mensch | Die Überschrift klingt natürlich und weckt sofort Interesse.
+
+002 | Mensch | Die beiden kurzen Sätze erzeugen beim Vorlesen ein klares Bild.
+
+003 | Mensch | Die Situation wird direkt, kindgerecht und verständlich erklärt.
+
+004 | Mensch | Als Überschrift ist die kurze Form klar und passend.
+
+005 | geschrieben | „In ihrer ersten Englischstunde sitzen“ ist verständlich, klingt aber deutlich nach einer Bildbeschreibung.
+
+006 | Mensch | Die Handlung lässt sich flüssig vorlesen und gut vorstellen.
+
+007 | Mensch | Die kurzen Sätze steigern die Spannung auf natürliche Weise.
+
+008 | Mensch | Die knappe Überschrift passt gut zum folgenden Geschehen.
+
+009 | geschrieben | Der Satz ist verständlich, wirkt durch „mit ihren Schulsachen“ aber etwas zusammengedrängt.
+
+010 | Mensch | Die beiden Sätze erzählen das überraschende Ereignis klar und lebendig.
+
+011 | Mensch | Die Überschrift spricht das Kind direkt und verständlich an.
+
+012 | geschrieben | Der Satz ist klar, klingt jedoch wie eine sachliche Beschreibung eines Bildes.
+
+013 | Mensch | Die Verwandlung wird anschaulich und unmittelbar erzählt.
+
+014 | Mensch | Der Satz klingt natürlich und lässt sich leicht verstehen.
+
+015 | Mensch | Die kurze Frage eignet sich gut als gesprochene Überschrift.
+
+016 | geschrieben | Die Beschreibung ist verständlich, wirkt aber wie ein Bildtext und nicht wie gesprochene Erzählung.
+
+017 | Mensch | Der Satz klingt lebendig und erzeugt ein klares Bild.
+
+018 | Mensch | Die kurze Feststellung ist natürlich und leicht verständlich.
+
+019 | Mensch | Die Überschrift ist freundlich, kurz und eindeutig.
+
+020 | geschrieben | Der Satz ist verständlich, klingt durch „dem Helden“ jedoch wie eine Bildbeschreibung von außen.
+
+021 | Mensch | Als Figurenname ist das kurz und eindeutig.
+
+022 | Mensch | Klecks stellt sich freundlich und in natürlicher gesprochener Sprache vor.
+
+023 | Mensch | Die Gefahr und das Ziel werden klar und kindgerecht erklärt.
+
+024 | Mensch | Die Ankündigung klingt freundlich und macht neugierig.
+
+025 | Mensch | Die Überschrift ist kurz, vertraut und verständlich.
+
+026 | geschrieben | Der Satz ist klar, wirkt aber wie eine sachliche Beschreibung des sichtbaren Bildes.
+
+027 | Mensch | Klecks erklärt das Ziel in natürlicher und ermutigender Sprache.
+
+028 | Mensch | Die Aufforderung klingt gesprochen und macht den späteren Nutzen verständlich.
+
+029 | Mensch | Die kurze Überschrift fasst die Lage treffend zusammen.
+
+030 | Mensch | Ort und Aufgabe werden einfach und klar benannt.
+
+031 | Mensch | Die Handlungsanweisung ist direkt und ohne Vorwissen verständlich.
+
+032 | Mensch | Der kurze Knopftext klingt motivierend und natürlich.
+
+033 | Mensch | Die Überschrift erklärt die neue Fähigkeit kindgerecht.
+
+034 | geschrieben | Die Fähigkeit ist verständlich, aber „die Faust losschicken“ klingt etwas konstruiert.
+
+035 | Mensch | Die Tastenanweisung ist kurz und für ein Spiel gut verständlich.
+
+036 | Mensch | Die Überschrift benennt die neue Fähigkeit klar.
+
+037 | Mensch | Die magische Wirkung wird anschaulich und verständlich erklärt.
+
+038 | Mensch | Die beiden Handlungsschritte lassen sich gut nachvollziehen.
+
+039 | Mensch | Die Überschrift ist kurz und beschreibt die neue Bewegung klar.
+
+040 | Mensch | Der Vergleich mit einem kleinen Hubschrauber erklärt die Fähigkeit anschaulich.
+
+041 | Mensch | Die Anweisung ist klar, kurz und praktisch verständlich.
+
+042 | Mensch | Die Überschrift benennt die Fähigkeit in natürlicher Sprache.
+
+043 | Mensch | Die Erklärung verbindet die Magie verständlich mit der neuen Fähigkeit.
+
+044 | Mensch | Die beiden Bewegungen werden klar und in sinnvoller Reihenfolge erklärt.
+
+045 | Mensch | Die Überschrift ist einfach und sofort verständlich.
+
+046 | Mensch | Die Erklärung klingt spielerisch und lädt natürlich zum Ausprobieren ein.
+
+047 | Mensch | Der Zusammenhang zwischen längerem Drücken und höherem Springen ist klar.
+
+048 | Mensch | Die Überschrift benennt die Verbesserung direkt.
+
+049 | Mensch | Wirkung und Nutzen der neuen Fähigkeit werden verständlich verbunden.
+
+050 | Mensch | Die kurze Anweisung klingt natürlich und ist leicht umzusetzen.
+
+051 | Mensch | Als einzelner Figurenname ist die Zeile klar.
+
+052 | Mensch | Als einzelner Figurenname ist die Zeile klar.
+
+053 | Mensch | Als einzelner Figurenname ist die Zeile klar.
+
+054 | Mensch | Als einzelner Figurenname ist die Zeile klar.
+
+055 | Mensch | Als einzelner Figurenname ist die Zeile klar.
+
+056 | Mensch | Als einzelner Figurenname ist die Zeile klar.
+
+057 | Mensch | Als einzelner Figurenname ist die Zeile klar.
+
+058 | Mensch | Als einzelner Figurenname ist die Zeile klar.
+
+059 | Mensch | Als einzelner Figurenname ist die Zeile klar.
+
+060 | Mensch | Als einzelner Figurenname ist die Zeile klar.
+
+061 | Mensch | Als einzelner Figurenname ist die Zeile klar.
+
+062 | Mensch | Als einzelner Figurenname ist die Zeile klar.
+
+063 | Mensch | Als einzelner Figurenname ist die Zeile klar.
+
+064 | Mensch | Als einzelner Figurenname ist die Zeile klar.
+
+065 | Mensch | Als einzelner Figurenname ist die Zeile klar.
+
+066 | geschrieben | Die Zusammenfassung ist verständlich, klingt aber lang und stark erklärend.
+
+067 | Mensch | Der Satz verbindet die Englischaufgabe klar mit dem Ziel der Geschichte.
+
+068 | Mensch | Die Sprunganweisung klingt natürlich und erklärt beide Möglichkeiten knapp.
+
+069 | geschrieben | Die Anweisung ist verständlich, aber „drück Pfeil nach oben“ klingt steifer als gesprochene Alltagssprache.
+
+070 | Mensch | Gefahr und Lösung werden kurz und kindgerecht erklärt.
+
+071 | geschrieben | Die Regel ist korrekt verständlich, klingt durch die unpersönliche Form aber wie ein Lehrbuchsatz.
+
+072 | Mensch | Als kurze Überschrift ist die Form klar und passend.
+
+073 | geschrieben | Die Erklärung ist verständlich, wirkt mit „Verb“ und „davor“ jedoch deutlich unterrichtssprachlich.
+
+074 | Mensch | Der Unterschied wird mit zwei kurzen, gut verständlichen Beispielen erklärt.
+
+075 | Mensch | Die beiden Kurzformen werden knapp und klar voneinander abgegrenzt.
+
+076 | geschrieben | Die Regel ist verständlich, klingt mit „Einerzahl“ und „Bindestrich“ aber recht lehrbuchhaft.
+
+077 | Mensch | Das konkrete Beispiel macht die vorherige Regel klar.
+
+078 | Mensch | Als Ortsüberschrift ist die Zeile eindeutig.
+
+079 | Mensch | Der Satz erklärt Ziel und Weg in natürlicher Sprache.
+
+080 | Mensch | Die Überschrift führt das Thema einfach und anschaulich ein.
+
+081 | geschrieben | Die drei Regeln sind verständlich, aber dicht gepackt und stark nach Lehrbuch formuliert.
+
+082 | geschrieben | Die Regel ist klar, klingt jedoch eher geschrieben als gesprochen.
+
+083 | Mensch | Als Erfolgsanzeige ist die kurze Form gut verständlich.
+
+084 | Mensch | Die knappe Überschrift benennt das Thema eindeutig.
+
+085 | Mensch | Die Regel und das Beispiel lassen sich flüssig vorlesen.
+
+086 | geschrieben | Die Regel ist verständlich, aber der Einstieg „Soll jemand etwas nicht tun“ klingt steif.
+
+087 | Mensch | Die Überschrift benennt das Übungsthema klar.
+
+088 | Mensch | Die Überschrift ist kurz und eindeutig.
+
+089 | Mensch | Als kurze Ladeanzeige klingt der Satz natürlich und verständlich.
+
+090 | Mensch | Die einzelne Bezeichnung ist als Menüpunkt eindeutig.
+
+091 | Mensch | Als Aufgabenüberschrift ist die kurze Form klar.
+
+092 | Mensch | Als Bezeichnung eines Spielabschnitts ist das Wort eindeutig.
+
+093 | Mensch | Die Anrede klingt ermunternd und funktioniert auch mit dem Beispielnamen.
+
+094 | Mensch | Die Überschrift ist kurz und kindgerecht.
+
+095 | Mensch | Der Satz erklärt den Zweck des Bereichs freundlich und klar.
+
+096 | Mensch | Als Knopf ist das einzelne Wort eindeutig.
+
+097 | Mensch | Erfolg und Ausblick werden freundlich und natürlich verbunden.
+
+098 | Mensch | Als Knopftext ist die Zeile klar.
+
+099 | Mensch | Die kurze Erfolgsüberschrift ist motivierend und verständlich.
+
+100 | Mensch | Als Aufforderung auf einem Knopf ist das Wort passend.
+
+101 | Mensch | Als kurze Bild- oder Gegenstandsbeschreibung ist die Zeile klar.
+
+102 | Mensch | Der Satz beschreibt das Problem knapp und verständlich.
+
+103 | Mensch | Der Ausruf klingt natürlich und weckt Neugier.
+
+104 | Mensch | Der Ausruf macht sofort klar, wer Hilfe braucht.
+
+105 | Mensch | Der Ausruf macht sofort klar, wer Hilfe braucht.
+
+106 | Mensch | Der Ausruf macht sofort klar, wer Hilfe braucht.
+
+107 | Mensch | Der Ausruf macht sofort klar, wer Hilfe braucht.
+
+108 | Mensch | Der Ausruf macht sofort klar, wer Hilfe braucht.
+
+109 | Mensch | Der Ausruf macht sofort klar, wer Hilfe braucht.
+
+110 | Mensch | Der Ausruf macht sofort klar, wer Hilfe braucht.
+
+111 | Mensch | Der Ausruf macht sofort klar, wer Hilfe braucht.
+
+112 | Mensch | Der Ausruf macht sofort klar, wer Hilfe braucht.
+
+113 | Mensch | Der Ausruf macht sofort klar, wer Hilfe braucht.
+
+114 | Mensch | Der Ausruf macht sofort klar, wer Hilfe braucht.
+
+115 | Mensch | Der Ausruf macht sofort klar, wer Hilfe braucht.
+
+116 | Mensch | Der Ausruf macht sofort klar, wer Hilfe braucht.
+
+117 | Mensch | Der Ausruf macht sofort klar, wer Hilfe braucht.
+
+118 | Mensch | Der Ausruf macht sofort klar, wer Hilfe braucht.
+
+119 | Mensch | Der Satz benennt das eingeschlossene Gerät eindeutig.
+
+120 | Mensch | Der Ausruf beschreibt das Problem klar und natürlich.
+
+121 | stolpere | Das Pfeilsymbol hat beim Vorlesen keine ausgeschriebene Wortform und unterbricht deshalb die Anweisung.
+
+122 | stolpere | Das Pfeilsymbol hat beim Vorlesen keine ausgeschriebene Wortform und unterbricht deshalb die Anweisung.
+
+123 | Mensch | Der kurze Bestätigungsknopf klingt natürlich.
+
+124 | Mensch | Zahl und Mehrzahl passen zusammen und die Meldung ist eindeutig.
+
+125 | Mensch | Die Mehrzahl nach null ist richtig und die Meldung klar.
+
+126 | stolpere | Nach der Zahl eins müsste hier die Einzahl „Buchstabe“ stehen.
+
+127 | Mensch | Zahl und Mehrzahl passen zusammen und die Meldung ist eindeutig.
+
+128 | Mensch | Zahl und Mehrzahl passen zusammen und die Meldung ist eindeutig.
+
+129 | Mensch | Zahl und Mehrzahl passen zusammen und die Meldung ist eindeutig.
+
+130 | Mensch | Zahl und Mehrzahl passen zusammen und die Meldung ist eindeutig.
+
+131 | Mensch | Zahl und Mehrzahl passen zusammen und die Meldung ist eindeutig.
+
+132 | Mensch | Zahl und Mehrzahl passen zusammen und die Meldung ist eindeutig.
+
+133 | Mensch | Zahl und Mehrzahl passen zusammen und die Meldung ist eindeutig.
+
+134 | geschrieben | Die Aufgabe ist verständlich, klingt wegen der vielen Zahlen und Erklärschritte aber wie ein Systemhinweis.
+
+135 | Mensch | Als Knopftext benennt die Zeile die Handlung knapp und klar.
+
+136 | Mensch | Die Erfolgsmeldung ist verständlich und natürlich formuliert.
+
+137 | Mensch | Die Erfolgsmeldung ist verständlich und natürlich formuliert.
+
+138 | Mensch | Die Erfolgsmeldung ist verständlich und natürlich formuliert.
+
+139 | Mensch | Die Erfolgsmeldung ist verständlich und natürlich formuliert.
+
+140 | Mensch | Die Erfolgsmeldung ist verständlich und natürlich formuliert.
+
+141 | Mensch | Die Erfolgsmeldung ist verständlich und natürlich formuliert.
+
+142 | Mensch | Die Erfolgsmeldung ist verständlich und natürlich formuliert.
+
+143 | Mensch | Die Erfolgsmeldung ist verständlich und natürlich formuliert.
+
+144 | Mensch | Die Erfolgsmeldung ist verständlich und natürlich formuliert.
+
+145 | Mensch | Die Erfolgsmeldung ist verständlich und natürlich formuliert.
+
+146 | Mensch | Die Erfolgsmeldung ist verständlich und natürlich formuliert.
+
+147 | Mensch | Die Erfolgsmeldung ist verständlich und natürlich formuliert.
+
+148 | Mensch | Die Erfolgsmeldung ist verständlich und natürlich formuliert.
+
+149 | Mensch | Die Erfolgsmeldung ist verständlich und natürlich formuliert.
+
+150 | Mensch | Die Erfolgsmeldung ist verständlich und natürlich formuliert.
+
+151 | Mensch | Die Begrüßung und der Dank klingen freundlich und natürlich.
+
+152 | Mensch | Die Begrüßung und der Dank klingen freundlich und natürlich.
+
+153 | Mensch | Die Begrüßung und der Dank klingen freundlich und natürlich.
+
+154 | Mensch | Die Begrüßung und der Dank klingen freundlich und natürlich.
+
+155 | Mensch | Die Begrüßung und der Dank klingen freundlich und natürlich.
+
+156 | Mensch | Die Begrüßung und der Dank klingen freundlich und natürlich.
+
+157 | Mensch | Die Begrüßung und der Dank klingen freundlich und natürlich.
+
+158 | Mensch | Die Begrüßung und der Dank klingen freundlich und natürlich.
+
+159 | Mensch | Die Begrüßung und der Dank klingen freundlich und natürlich.
+
+160 | Mensch | Die Begrüßung und der Dank klingen freundlich und natürlich.
+
+161 | Mensch | Die Begrüßung und der Dank klingen freundlich und natürlich.
+
+162 | Mensch | Die Begrüßung und der Dank klingen freundlich und natürlich.
+
+163 | Mensch | Die Begrüßung und der Dank klingen freundlich und natürlich.
+
+164 | Mensch | Die Begrüßung und der Dank klingen freundlich und natürlich.
+
+165 | Mensch | Die Begrüßung und der Dank klingen freundlich und natürlich.
+
+166 | Mensch | Der Satz klingt entschlossen, freundlich und passend zur gemeinsamen Suche.
+
+167 | Mensch | Die kurze Erfolgsmeldung ist eindeutig.
+
+168 | Mensch | Die kurze Erfolgsmeldung ist eindeutig und passend zur Geschichte.
+
+169 | stolpere | „Musikanlage“ ist weiblich, daher passt „seinem Platz“ grammatisch nicht.
+
+170 | Mensch | Das grammatische Geschlecht von „Gerät“ passt zu „seinem Platz“.
+
+171 | Mensch | Das grammatische Geschlecht von „Tablet“ passt zu „seinem Platz“.
+
+172 | Mensch | Der Satz ist kurz und gibt verständlich Orientierung.
+
+173 | Mensch | Als Kapitelüberschrift ist die Zeile eindeutig.
+
+174 | Mensch | Die Begrüßung klingt freundlich und funktioniert mit dem Beispielnamen.
+
+175 | Mensch | Der Dank klingt freundlich und funktioniert mit dem Beispielnamen.
+
+176 | Mensch | Der Satz erklärt das sichtbare Ergebnis klar und natürlich.
+
+177 | Mensch | Die kurze Erfolgsmeldung ist verständlich.
+
+178 | Mensch | Die Handlung ist einfach und anschaulich beschrieben.
+
+179 | Mensch | Die Aufforderung klingt natürlich und führt die Geschichte weiter.
+
+180 | Mensch | Ursache und Folge werden ermutigend und klar verbunden.
+
+181 | Mensch | Die Erfolgsmeldung und der nächste Schritt klingen natürlich.
+
+182 | geschrieben | Die Meldung ist verständlich, klingt mit „Spielrunde“, „Browser“ und „speichern“ aber technisch und steif.
+
+183 | Mensch | Als Knopftext ist das Ziel eindeutig.
+
+184 | Mensch | Die Überschrift klingt freundlich und persönlich.
+
+185 | Mensch | Der Hinweis ist klar und nimmt dem Kind den Zeitdruck.
+
+186 | Mensch | Das Lob klingt natürlich und motivierend.
+
+187 | Mensch | Das freundliche Bild ist kurz und für die Spielwelt gut verständlich.
+
+188 | Mensch | Als Überschrift ist die Zeile klar und passend.
+
+189 | Mensch | Der Satz spricht das Kind direkt an und erklärt das Foto eindeutig.
+
+190 | Mensch | Der Satz erklärt das Foto knapp und verständlich.
+
+191 | geschrieben | Die nominale Form ist klar, klingt aber wie eine Bildunterschrift statt wie gesprochene Sprache.
+
+192 | Mensch | Der Satz erklärt die Zuordnung zum Foto eindeutig.
+
+193 | Mensch | Als kurze Statusüberschrift ist die Zeile verständlich.
+
+194 | Mensch | Als kurze Statusüberschrift ist die Zeile verständlich.
+
+195 | Mensch | Die verbleibende Zahl und der nächste Schritt werden klar genannt.
+
+196 | Mensch | Der kurze Ausruf vermittelt den Erfolg deutlich.
+
+197 | stolpere | Bei genau einer fehlenden Person müsste es gesprochen „einen“ oder „eine“ heißen, während die Ziffer diese Form offenlässt.
+
+198 | Mensch | Die verbleibende Zahl und der nächste Schritt werden klar genannt.
+
+199 | Mensch | Die verbleibende Zahl und der nächste Schritt werden klar genannt.
+
+200 | Mensch | Die verbleibende Zahl und der nächste Schritt werden klar genannt.
+
+201 | Mensch | Die verbleibende Zahl und der nächste Schritt werden klar genannt.
+
+202 | Mensch | Die verbleibende Zahl und der nächste Schritt werden klar genannt.
+
+203 | Mensch | Die verbleibende Zahl und der nächste Schritt werden klar genannt.
+
+204 | Mensch | Die verbleibende Zahl und der nächste Schritt werden klar genannt.
+
+205 | Mensch | Die verbleibende Zahl und der nächste Schritt werden klar genannt.
+
+206 | Mensch | Die verbleibende Zahl und der nächste Schritt werden klar genannt.
+
+207 | Mensch | Die verbleibende Zahl und der nächste Schritt werden klar genannt.
+
+208 | Mensch | Die verbleibende Zahl und der nächste Schritt werden klar genannt.
+
+209 | Mensch | Die verbleibende Zahl und der nächste Schritt werden klar genannt.
+
+210 | Mensch | Die verbleibende Zahl und der nächste Schritt werden klar genannt.
+
+211 | Mensch | Die Überschrift klingt natürlich und weckt Erwartung.
+
+212 | Mensch | Die Überschrift kündigt einen verständlichen Rückblick an.
+
+213 | Mensch | Als Knopftext ist die Handlung eindeutig.
+
+214 | geschrieben | Die Bezeichnung ist verständlich, klingt mit „Sammelbuchstaben“ aber stark nach einer Benutzeroberfläche.
+
+215 | Mensch | Als Knopf ist das einzelne Wort eindeutig.
+
+216 | Mensch | Die Bildnummer lässt sich klar und natürlich vorlesen.
+
+217 | Mensch | Die Bildnummer lässt sich klar und natürlich vorlesen.
+
+218 | Mensch | Die Bildnummer lässt sich klar und natürlich vorlesen.
+
+219 | Mensch | Die Bildnummer lässt sich klar und natürlich vorlesen.
+
+220 | Mensch | Die Bildnummer lässt sich klar und natürlich vorlesen.
+
+221 | Mensch | Die Bildnummer lässt sich klar und natürlich vorlesen.
+
+222 | Mensch | Die Bildnummer lässt sich klar und natürlich vorlesen.
+
+223 | Mensch | Als kurze Fortschrittsanzeige ist die Zeile eindeutig.
+
+224 | Mensch | Als kurze Fortschrittsanzeige ist die Zeile eindeutig.
+
+225 | Mensch | Als kurze Fortschrittsanzeige ist die Zeile eindeutig.
+
+226 | Mensch | Als kurze Fortschrittsanzeige ist die Zeile eindeutig.
+
+227 | Mensch | Als kurze Fortschrittsanzeige ist die Zeile eindeutig.
+
+228 | Mensch | Als kurze Fortschrittsanzeige ist die Zeile eindeutig.
+
+229 | Mensch | Als kurze Fortschrittsanzeige ist die Zeile eindeutig.
+
+230 | Mensch | Als Knopftext ist das Ziel klar.
+
+231 | Mensch | Der Satz kündigt die folgende Frage verständlich an.
+
+232 | Mensch | Die Frage ist natürlich, freundlich und eindeutig.
+
+233 | Mensch | Der Hinweis ist kindgerecht und nimmt möglichen Druck.
+
+234 | Mensch | Als Bestätigungsknopf ist die Aussage klar.
+
+235 | Mensch | Der Satz verbindet die Tafel verständlich mit dem bisherigen Geschehen.
+
+236 | Mensch | Die Anweisung ist spannend und trotz der fantastischen Bewegung verständlich.
+
+237 | Mensch | Zeitpunkt und nächste Handlung werden klar erklärt.
+
+238 | Mensch | Die beiden Schritte stehen in einer verständlichen Reihenfolge.
+
+239 | Mensch | Die kurze Erfolgsmeldung ist eindeutig.
+
+240 | Mensch | Die kurze Erfolgsmeldung ist eindeutig.
+
+241 | Mensch | Der Warnruf klingt natürlich und dringend.
+
+242 | Mensch | Die Aufgabe ist kurz und verständlich formuliert.
+
+243 | stolpere | Man zählt zu einer Zahl und nicht zu einem Wort, weshalb die Anweisung logisch missverständlich klingt.
+
+244 | Mensch | Als kurze Erfolgsanzeige ist die Zeile verständlich.
+
+245 | Mensch | Als kurze Erfolgsanzeige passt die Formulierung zur Geschichte.
+
+246 | geschrieben | Die Erfolgsanzeige ist verständlich, klingt durch „Regel-Seiten“ aber technisch zusammengesetzt.
+
+247 | Mensch | Als kurze Sammelüberschrift ist die Zeile klar.
+
+248 | Mensch | Als Knopftext benennt die Zeile die Handlung eindeutig.
+
+249 | Mensch | Die Fortschrittsanzeige nennt Ziel und Stand verständlich.
+
+250 | Mensch | Die Fortschrittsanzeige nennt Ziel und Stand verständlich.
+
+251 | Mensch | Die Fortschrittsanzeige nennt Ziel und Stand verständlich.
+
+252 | Mensch | Die Fortschrittsanzeige nennt Ziel und Stand verständlich.
+
+Mensch: 226  
+geschrieben: 20  
+stolpere: 6

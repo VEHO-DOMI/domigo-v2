@@ -1,0 +1,61 @@
+{"card":"001","answer":"Listen!","colour":null,"pairs":null,"verdict":"eindeutig","why":"Die passende Aufforderung zum Zuhören lautet „Listen!“."}
+{"card":"002","answer":"Sit down!","colour":null,"pairs":null,"verdict":"eindeutig","why":"„Sit down!“ fordert den Bleistift eindeutig zum Hinsetzen auf."}
+{"card":"003","answer":"Don't write!","colour":null,"pairs":null,"verdict":"eindeutig","why":"Das Kritzeln ins Heft wird mit „Don't write!“ verboten."}
+{"card":"004","answer":"rubber","colour":"pink","pairs":null,"verdict":"eindeutig","why":"Zu sehen ist ein Radiergummi; der zweite Schritt nennt als ursprüngliche Farbe pink."}
+{"card":"005","answer":"It's a book.","colour":null,"pairs":null,"verdict":"eindeutig","why":"Nur „It's a book.“ enthält Apostroph, Artikel und Satzbau korrekt."}
+{"card":"006","answer":"It isn't a window.","colour":null,"pairs":null,"verdict":"eindeutig","why":"Nur dieser Satz ist eine grammatisch korrekte Verneinung."}
+{"card":"007","answer":"book","colour":"blue","pairs":null,"verdict":"eindeutig","why":"Das Bild zeigt ein Buch; der zweite Schritt nennt blue."}
+{"card":"008","answer":"school bag","colour":"brown","pairs":null,"verdict":"eindeutig","why":"Das Bild zeigt eine Schultasche; der zweite Schritt nennt brown."}
+{"card":"009","answer":"It's a sound system.","colour":null,"pairs":null,"verdict":"eindeutig","why":"Im verschlossenen Fach ist sichtbar eine Musikanlage."}
+{"card":"010","answer":"Open!","colour":null,"pairs":null,"verdict":"eindeutig","why":"„Open!“ ist die gesuchte englische Aufforderung zum Öffnen."}
+{"card":"011","answer":"Please!","colour":null,"pairs":null,"verdict":"eindeutig","why":"„Please!“ kennzeichnet eine höfliche Bitte."}
+{"card":"012","answer":"What's your name?","colour":null,"pairs":null,"verdict":"eindeutig","why":"Nur diese Frage erkundigt sich nach dem Namen."}
+{"card":"013","answer":"Close!","colour":null,"pairs":null,"verdict":"eindeutig","why":"„Close!“ ist die passende Aufforderung zum Zumachen."}
+{"card":"014","answer":"Thanks!","colour":null,"pairs":null,"verdict":"eindeutig","why":"„Thanks!“ ist die passende Reaktion auf erhaltene Hilfe."}
+{"card":"015","answer":"How are you?","colour":null,"pairs":null,"verdict":"eindeutig","why":"Nur diese Frage erkundigt sich nach dem Befinden."}
+{"card":"016","answer":"Listen!","colour":null,"pairs":null,"verdict":"eindeutig","why":"„Listen!“ fordert eindeutig zum Zuhören auf."}
+{"card":"017","answer":"Hello!","colour":null,"pairs":null,"verdict":"eindeutig","why":"„Hello!“ ist unter den sichtbaren Wahlen die Begrüßung."}
+{"card":"018","answer":"What's this?","colour":null,"pairs":null,"verdict":"eindeutig","why":"„What's this?“ fragt nach dem gezeigten Gegenstand."}
+{"card":"019","answer":"pen","colour":"black","pairs":null,"verdict":"eindeutig","why":"Die Füllfeder ist als pen zu benennen; der zweite Schritt nennt black."}
+{"card":"020","answer":"How are you?","colour":null,"pairs":null,"verdict":"eindeutig","why":"Die deutsche Frage „Wie geht es dir?“ entspricht „How are you?“."}
+{"card":"021","answer":"What's your address?","colour":null,"pairs":null,"verdict":"eindeutig","why":"Nur diese sichtbare Frage erkundigt sich nach der Adresse."}
+{"card":"022","answer":"door","colour":null,"pairs":null,"verdict":"eindeutig","why":"Watercolours, picture und paintbrush gehören zum Malen; door nicht."}
+{"card":"023","answer":"watercolours","colour":null,"pairs":null,"verdict":"eindeutig","why":"Exercise book, pencil und pen gehören zu den Schreibsachen; watercolours zum Malen."}
+{"card":"024","answer":"exercise book","colour":null,"pairs":null,"verdict":"eindeutig","why":"Ein exercise book gehört normalerweise nicht ins Federpennal."}
+{"card":"025","answer":"book","colour":null,"pairs":null,"verdict":"eindeutig","why":"Ten, seven und twelve sind Zahlen; book ist keine."}
+{"card":"026","answer":"pencil","colour":null,"pairs":null,"verdict":"eindeutig","why":"Socks, school tie und shirt kann man anziehen; pencil nicht."}
+{"card":"027","answer":"ruler","colour":null,"pairs":null,"verdict":"eindeutig","why":"Shoes, sweater und skirt kann man anziehen; ruler nicht."}
+{"card":"028","answer":"exercise book","colour":"white","pairs":null,"verdict":"eindeutig","why":"Das Bild zeigt ein Heft; der zweite Schritt nennt white."}
+{"card":"029","answer":"zero","colour":null,"pairs":null,"verdict":"unlösbar","why":"Auf der abgebildeten Heftseite sind keine Punkte sichtbar; die richtige sichtbare Anzahl zero fehlt in der Auswahl."}
+{"card":"030","answer":"two books","colour":null,"pairs":null,"verdict":"eindeutig","why":"Nur „two books“ ist für die genannte Anzahl grammatisch korrekt; das Bild zeigt die behaupteten zwei Bücher allerdings nicht."}
+{"card":"031","answer":"thirteen","colour":null,"pairs":null,"verdict":"eindeutig","why":"Die vorgegebene große Zahl ist 13, also thirteen; die momentane Radposition ist unerheblich."}
+{"card":"032","answer":"seven","colour":null,"pairs":null,"verdict":"eindeutig","why":"Die vorgegebene große Zahl ist 7, also seven; die momentane Radposition ist unerheblich."}
+{"card":"033","answer":"21","colour":null,"pairs":null,"verdict":"eindeutig","why":"Das vorgegebene große Zahlwort twenty-one entspricht 21."}
+{"card":"034","answer":"4","colour":null,"pairs":null,"verdict":"eindeutig","why":"Das vorgegebene große Zahlwort four entspricht 4."}
+{"card":"035","answer":"Don't sing!","colour":null,"pairs":null,"verdict":"eindeutig","why":"Merle soll mit dem Singen aufhören; dafür passt „Don't sing!“."}
+{"card":"036","answer":"Sit down!","colour":null,"pairs":null,"verdict":"eindeutig","why":"Merle steht auf dem Tisch und soll sich hinsetzen."}
+{"card":"037","answer":"Clean the desk!","colour":null,"pairs":null,"verdict":"eindeutig","why":"Der vollgekritzelte Tisch soll geputzt werden."}
+{"card":"038","answer":"Close the window!","colour":null,"pairs":null,"verdict":"eindeutig","why":"Das Fenster ist offen und soll geschlossen werden."}
+{"card":"039","answer":"Take out your books!","colour":null,"pairs":null,"verdict":"eindeutig","why":"Merle soll ihre Bücher aus der Schultasche herausnehmen."}
+{"card":"040","answer":"Don't go!","colour":null,"pairs":null,"verdict":"eindeutig","why":"Merle soll nicht zur Tür gehen."}
+{"card":"041","answer":"This is a board.","colour":null,"pairs":null,"verdict":"eindeutig","why":"Das Bild zeigt eine Tafel; door muss im Satz durch board ersetzt werden."}
+{"card":"042","answer":"Don't speak!","colour":null,"pairs":null,"verdict":"eindeutig","why":"Ein verneinter Imperativ wird hier mit „Don't speak!“ gebildet."}
+{"card":"043","answer":["nine","ten","eleven","twelve"],"colour":null,"pairs":null,"verdict":"eindeutig","why":"Das ist die aufsteigende Reihenfolge von 9 bis 12."}
+{"card":"044","answer":"Clean!","colour":null,"pairs":null,"verdict":"eindeutig","why":"Unter den sichtbaren Wahlen fordert nur „Clean!“ zum Putzen auf."}
+{"card":"045","answer":"It's a board.","colour":null,"pairs":null,"verdict":"eindeutig","why":"Nur dieser Satz enthält die korrekte Form „It's“ und einen vollständigen Satzbau."}
+{"card":"046","answer":"What's your name?","colour":null,"pairs":null,"verdict":"eindeutig","why":"Nur diese Frage erkundigt sich nach ihrem Namen."}
+{"card":"047","answer":"rubber","colour":null,"pairs":null,"verdict":"eindeutig","why":"Mit pen und pencil kann man schreiben; mit einem rubber nicht."}
+{"card":"048","answer":"Here are two chairs.","colour":null,"pairs":null,"verdict":"eindeutig","why":"Nach two braucht das zählbare Nomen die Mehrzahl chairs."}
+{"card":"049","answer":"Thank you.","colour":null,"pairs":null,"verdict":"eindeutig","why":"„Thank you.“ ist die passende englische Danksagung."}
+{"card":"050","answer":"eight","colour":null,"pairs":null,"verdict":"eindeutig","why":"Auf seven folgt eight."}
+{"card":"051","answer":"window","colour":null,"pairs":null,"verdict":"eindeutig","why":"Green, brown und red sind Farben; window ist keine."}
+{"card":"052","answer":["How","are","you","?"],"colour":null,"pairs":null,"verdict":"eindeutig","why":"Diese Reihenfolge bildet die korrekte Frage „How are you?“."}
+{"card":"053","answer":"3 = three; 7 = seven; 12 = twelve; 9 = nine","colour":null,"pairs":[["3","three"],["7","seven"],["12","twelve"],["9","nine"]],"verdict":"eindeutig","why":"Die acht einzeln aufgedeckten Inhalte ergeben genau diese vier Zahl-Zahlwort-Paare."}
+{"card":"054","answer":"Hello","colour":null,"pairs":null,"verdict":"mehrdeutig","why":"Hello ist die direkte Übersetzung; Hi wäre als englische Begrüßung für „Hallo“ ebenfalls fachlich richtig."}
+{"card":"055","answer":"desk","colour":"green","pairs":null,"verdict":"eindeutig","why":"Das Bild zeigt einen Schultisch; der zweite Schritt nennt green."}
+{"card":"056","answer":"scissors","colour":"grey","pairs":null,"verdict":"eindeutig","why":"Das Bild zeigt eine Schere; der zweite Schritt nennt grey."}
+{"card":"057","answer":"glue stick","colour":"orange","pairs":null,"verdict":"eindeutig","why":"Das Bild zeigt einen Klebestift; der zweite Schritt nennt orange."}
+{"card":"058","answer":"pencil sharpener","colour":"red","pairs":null,"verdict":"eindeutig","why":"Das Bild zeigt einen Spitzer; der zweite Schritt nennt red."}
+{"card":"059","answer":"It's a tablet.","colour":null,"pairs":null,"verdict":"eindeutig","why":"Im verschlossenen Fach ist sichtbar ein Tablet."}
+{"card":"060","answer":"chair","colour":"yellow","pairs":null,"verdict":"eindeutig","why":"Das Bild zeigt einen Stuhl; der zweite Schritt nennt yellow."}
+{"card":"061","answer":"It's a picture.","colour":null,"pairs":null,"verdict":"eindeutig","why":"Hinter dem Schloss ist ein Klassenbild zu sehen."}

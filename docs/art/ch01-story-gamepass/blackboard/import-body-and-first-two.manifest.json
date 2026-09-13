@@ -1,0 +1,993 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "assets": [
+    {
+      "source": "blackboard-rest-win-original.png",
+      "stem": "tafel_a",
+      "width": 384,
+      "height": 512,
+      "sourceCrop": {
+        "x": 55,
+        "y": 42,
+        "width": 662,
+        "height": 884,
+        "foregroundBounds": {
+          "x": 61,
+          "y": 48,
+          "width": 650,
+          "height": 872
+        }
+      },
+      "x": [
+        [
+          0,
+          54
+        ],
+        [
+          383,
+          716
+        ]
+      ],
+      "y": [
+        [
+          0,
+          42
+        ],
+        [
+          511,
+          925
+        ]
+      ]
+    },
+    {
+      "source": "blackboard-rest-win-original.png",
+      "stem": "tafel_b",
+      "width": 384,
+      "height": 512,
+      "sourceCrop": {
+        "x": 55,
+        "y": 42,
+        "width": 662,
+        "height": 884,
+        "foregroundBounds": {
+          "x": 61,
+          "y": 48,
+          "width": 650,
+          "height": 872
+        }
+      },
+      "x": [
+        [
+          0,
+          54
+        ],
+        [
+          383,
+          716
+        ]
+      ],
+      "y": [
+        [
+          0,
+          42
+        ],
+        [
+          511,
+          925
+        ]
+      ]
+    },
+    {
+      "source": "blackboard-rest-win-original.png",
+      "stem": "tafel_c",
+      "width": 384,
+      "height": 512,
+      "sourceCrop": {
+        "x": 55,
+        "y": 42,
+        "width": 662,
+        "height": 884,
+        "foregroundBounds": {
+          "x": 61,
+          "y": 48,
+          "width": 650,
+          "height": 872
+        }
+      },
+      "x": [
+        [
+          0,
+          54
+        ],
+        [
+          383,
+          716
+        ]
+      ],
+      "y": [
+        [
+          0,
+          42
+        ],
+        [
+          511,
+          925
+        ]
+      ]
+    },
+    {
+      "source": "blackboard-rest-win-original.png",
+      "stem": "tafel_d",
+      "width": 384,
+      "height": 512,
+      "sourceCrop": {
+        "x": 55,
+        "y": 42,
+        "width": 662,
+        "height": 884,
+        "foregroundBounds": {
+          "x": 61,
+          "y": 48,
+          "width": 650,
+          "height": 872
+        }
+      },
+      "x": [
+        [
+          0,
+          54
+        ],
+        [
+          383,
+          716
+        ]
+      ],
+      "y": [
+        [
+          0,
+          42
+        ],
+        [
+          511,
+          925
+        ]
+      ]
+    },
+    {
+      "source": "blackboard-rest-win-original.png",
+      "stem": "tafel_roll",
+      "width": 384,
+      "height": 512,
+      "sourceCrop": {
+        "x": 55,
+        "y": 42,
+        "width": 662,
+        "height": 884,
+        "foregroundBounds": {
+          "x": 61,
+          "y": 48,
+          "width": 650,
+          "height": 872
+        }
+      },
+      "x": [
+        [
+          0,
+          54
+        ],
+        [
+          383,
+          716
+        ]
+      ],
+      "y": [
+        [
+          0,
+          42
+        ],
+        [
+          511,
+          925
+        ]
+      ]
+    },
+    {
+      "source": "blackboard-rest-win-original.png",
+      "stem": "tafel_bank_l1",
+      "width": 384,
+      "height": 512,
+      "sourceCrop": {
+        "x": 55,
+        "y": 42,
+        "width": 662,
+        "height": 884,
+        "foregroundBounds": {
+          "x": 61,
+          "y": 48,
+          "width": 650,
+          "height": 872
+        }
+      },
+      "x": [
+        [
+          0,
+          54
+        ],
+        [
+          383,
+          716
+        ]
+      ],
+      "y": [
+        [
+          0,
+          42
+        ],
+        [
+          511,
+          925
+        ]
+      ]
+    },
+    {
+      "source": "blackboard-rest-win-original.png",
+      "stem": "tafel_bank_r0",
+      "width": 384,
+      "height": 512,
+      "sourceCrop": {
+        "x": 55,
+        "y": 42,
+        "width": 662,
+        "height": 884,
+        "foregroundBounds": {
+          "x": 61,
+          "y": 48,
+          "width": 650,
+          "height": 872
+        }
+      },
+      "x": [
+        [
+          0,
+          54
+        ],
+        [
+          383,
+          716
+        ]
+      ],
+      "y": [
+        [
+          0,
+          42
+        ],
+        [
+          511,
+          925
+        ]
+      ]
+    },
+    {
+      "source": "blackboard-rest-win-original.png",
+      "stem": "tafel_bank_r1",
+      "width": 384,
+      "height": 512,
+      "sourceCrop": {
+        "x": 55,
+        "y": 42,
+        "width": 662,
+        "height": 884,
+        "foregroundBounds": {
+          "x": 61,
+          "y": 48,
+          "width": 650,
+          "height": 872
+        }
+      },
+      "x": [
+        [
+          0,
+          54
+        ],
+        [
+          383,
+          716
+        ]
+      ],
+      "y": [
+        [
+          0,
+          42
+        ],
+        [
+          511,
+          925
+        ]
+      ]
+    },
+    {
+      "source": "blackboard-rest-win-original.png",
+      "stem": "tafel_spiral0",
+      "width": 384,
+      "height": 512,
+      "sourceCrop": {
+        "x": 55,
+        "y": 42,
+        "width": 662,
+        "height": 884,
+        "foregroundBounds": {
+          "x": 61,
+          "y": 48,
+          "width": 650,
+          "height": 872
+        }
+      },
+      "x": [
+        [
+          0,
+          54
+        ],
+        [
+          383,
+          716
+        ]
+      ],
+      "y": [
+        [
+          0,
+          42
+        ],
+        [
+          511,
+          925
+        ]
+      ]
+    },
+    {
+      "source": "blackboard-rest-win-original.png",
+      "stem": "tafel_spiral1",
+      "width": 384,
+      "height": 512,
+      "sourceCrop": {
+        "x": 55,
+        "y": 42,
+        "width": 662,
+        "height": 884,
+        "foregroundBounds": {
+          "x": 61,
+          "y": 48,
+          "width": 650,
+          "height": 872
+        }
+      },
+      "x": [
+        [
+          0,
+          54
+        ],
+        [
+          383,
+          716
+        ]
+      ],
+      "y": [
+        [
+          0,
+          42
+        ],
+        [
+          511,
+          925
+        ]
+      ]
+    },
+    {
+      "source": "blackboard-rest-win-original.png",
+      "stem": "tafel_spiral2",
+      "width": 384,
+      "height": 512,
+      "sourceCrop": {
+        "x": 55,
+        "y": 42,
+        "width": 662,
+        "height": 884,
+        "foregroundBounds": {
+          "x": 61,
+          "y": 48,
+          "width": 650,
+          "height": 872
+        }
+      },
+      "x": [
+        [
+          0,
+          54
+        ],
+        [
+          383,
+          716
+        ]
+      ],
+      "y": [
+        [
+          0,
+          42
+        ],
+        [
+          511,
+          925
+        ]
+      ]
+    },
+    {
+      "source": "blackboard-rest-win-original.png",
+      "stem": "tafel_spiral3",
+      "width": 384,
+      "height": 512,
+      "sourceCrop": {
+        "x": 55,
+        "y": 42,
+        "width": 662,
+        "height": 884,
+        "foregroundBounds": {
+          "x": 61,
+          "y": 48,
+          "width": 650,
+          "height": 872
+        }
+      },
+      "x": [
+        [
+          0,
+          54
+        ],
+        [
+          383,
+          716
+        ]
+      ],
+      "y": [
+        [
+          0,
+          42
+        ],
+        [
+          511,
+          925
+        ]
+      ]
+    },
+    {
+      "source": "blackboard-rest-win-original.png",
+      "stem": "tafel_windup0",
+      "width": 384,
+      "height": 512,
+      "sourceCrop": {
+        "x": 55,
+        "y": 42,
+        "width": 662,
+        "height": 884,
+        "foregroundBounds": {
+          "x": 61,
+          "y": 48,
+          "width": 650,
+          "height": 872
+        }
+      },
+      "x": [
+        [
+          0,
+          54
+        ],
+        [
+          383,
+          716
+        ]
+      ],
+      "y": [
+        [
+          0,
+          42
+        ],
+        [
+          511,
+          925
+        ]
+      ]
+    },
+    {
+      "source": "blackboard-rest-win-original.png",
+      "stem": "tafel_windup1",
+      "width": 384,
+      "height": 512,
+      "sourceCrop": {
+        "x": 55,
+        "y": 42,
+        "width": 662,
+        "height": 884,
+        "foregroundBounds": {
+          "x": 61,
+          "y": 48,
+          "width": 650,
+          "height": 872
+        }
+      },
+      "x": [
+        [
+          0,
+          54
+        ],
+        [
+          383,
+          716
+        ]
+      ],
+      "y": [
+        [
+          0,
+          42
+        ],
+        [
+          511,
+          925
+        ]
+      ]
+    },
+    {
+      "source": "blackboard-rest-win-original.png",
+      "stem": "tafel_windup",
+      "width": 384,
+      "height": 512,
+      "sourceCrop": {
+        "x": 55,
+        "y": 42,
+        "width": 662,
+        "height": 884,
+        "foregroundBounds": {
+          "x": 61,
+          "y": 48,
+          "width": 650,
+          "height": 872
+        }
+      },
+      "x": [
+        [
+          0,
+          54
+        ],
+        [
+          383,
+          716
+        ]
+      ],
+      "y": [
+        [
+          0,
+          42
+        ],
+        [
+          511,
+          925
+        ]
+      ]
+    },
+    {
+      "source": "blackboard-rest-win-original.png",
+      "stem": "tafel_throw",
+      "width": 384,
+      "height": 512,
+      "sourceCrop": {
+        "x": 55,
+        "y": 42,
+        "width": 662,
+        "height": 884,
+        "foregroundBounds": {
+          "x": 61,
+          "y": 48,
+          "width": 650,
+          "height": 872
+        }
+      },
+      "x": [
+        [
+          0,
+          54
+        ],
+        [
+          383,
+          716
+        ]
+      ],
+      "y": [
+        [
+          0,
+          42
+        ],
+        [
+          511,
+          925
+        ]
+      ]
+    },
+    {
+      "source": "blackboard-rest-win-original.png",
+      "stem": "tafel_land0",
+      "width": 384,
+      "height": 512,
+      "sourceCrop": {
+        "x": 55,
+        "y": 42,
+        "width": 662,
+        "height": 884,
+        "foregroundBounds": {
+          "x": 61,
+          "y": 48,
+          "width": 650,
+          "height": 872
+        }
+      },
+      "x": [
+        [
+          0,
+          54
+        ],
+        [
+          383,
+          716
+        ]
+      ],
+      "y": [
+        [
+          0,
+          42
+        ],
+        [
+          511,
+          925
+        ]
+      ]
+    },
+    {
+      "source": "blackboard-rest-win-original.png",
+      "stem": "tafel_land1",
+      "width": 384,
+      "height": 512,
+      "sourceCrop": {
+        "x": 55,
+        "y": 42,
+        "width": 662,
+        "height": 884,
+        "foregroundBounds": {
+          "x": 61,
+          "y": 48,
+          "width": 650,
+          "height": 872
+        }
+      },
+      "x": [
+        [
+          0,
+          54
+        ],
+        [
+          383,
+          716
+        ]
+      ],
+      "y": [
+        [
+          0,
+          42
+        ],
+        [
+          511,
+          925
+        ]
+      ]
+    },
+    {
+      "source": "blackboard-rest-win-original.png",
+      "stem": "tafel_rest",
+      "width": 384,
+      "height": 512,
+      "sourceCrop": {
+        "x": 55,
+        "y": 42,
+        "width": 662,
+        "height": 884,
+        "foregroundBounds": {
+          "x": 61,
+          "y": 48,
+          "width": 650,
+          "height": 872
+        }
+      },
+      "x": [
+        [
+          0,
+          54
+        ],
+        [
+          383,
+          716
+        ]
+      ],
+      "y": [
+        [
+          0,
+          42
+        ],
+        [
+          511,
+          925
+        ]
+      ]
+    },
+    {
+      "source": "blackboard-rest-win-original.png",
+      "stem": "tafel_win",
+      "width": 384,
+      "height": 512,
+      "sourceCrop": {
+        "x": 822,
+        "y": 42,
+        "width": 663,
+        "height": 884,
+        "foregroundBounds": {
+          "x": 828,
+          "y": 48,
+          "width": 651,
+          "height": 872
+        }
+      },
+      "x": [
+        [
+          0,
+          822
+        ],
+        [
+          383,
+          1484
+        ]
+      ],
+      "y": [
+        [
+          0,
+          42
+        ],
+        [
+          511,
+          925
+        ]
+      ]
+    },
+    {
+      "source": "blackboard-rest-win-original.png",
+      "stem": "tafel_sad",
+      "width": 384,
+      "height": 512,
+      "sourceCrop": {
+        "x": 55,
+        "y": 42,
+        "width": 662,
+        "height": 884,
+        "foregroundBounds": {
+          "x": 61,
+          "y": 48,
+          "width": 650,
+          "height": 872
+        }
+      },
+      "x": [
+        [
+          0,
+          54
+        ],
+        [
+          383,
+          716
+        ]
+      ],
+      "y": [
+        [
+          0,
+          42
+        ],
+        [
+          511,
+          925
+        ]
+      ]
+    },
+    {
+      "source": "blackboard-rest-win-original.png",
+      "stem": "tafel_dazed",
+      "width": 384,
+      "height": 512,
+      "sourceCrop": {
+        "x": 55,
+        "y": 42,
+        "width": 662,
+        "height": 884,
+        "foregroundBounds": {
+          "x": 61,
+          "y": 48,
+          "width": 650,
+          "height": 872
+        }
+      },
+      "x": [
+        [
+          0,
+          54
+        ],
+        [
+          383,
+          716
+        ]
+      ],
+      "y": [
+        [
+          0,
+          42
+        ],
+        [
+          511,
+          925
+        ]
+      ]
+    },
+    {
+      "source": "blackboard-rest-win-original.png",
+      "stem": "tafel_stagger",
+      "width": 384,
+      "height": 512,
+      "sourceCrop": {
+        "x": 55,
+        "y": 42,
+        "width": 662,
+        "height": 884,
+        "foregroundBounds": {
+          "x": 61,
+          "y": 48,
+          "width": 650,
+          "height": 872
+        }
+      },
+      "x": [
+        [
+          0,
+          54
+        ],
+        [
+          383,
+          716
+        ]
+      ],
+      "y": [
+        [
+          0,
+          42
+        ],
+        [
+          511,
+          925
+        ]
+      ]
+    },
+    {
+      "source": "blackboard-rest-win-original.png",
+      "stem": "tafel_telegraph",
+      "width": 384,
+      "height": 512,
+      "sourceCrop": {
+        "x": 55,
+        "y": 42,
+        "width": 662,
+        "height": 884,
+        "foregroundBounds": {
+          "x": 61,
+          "y": 48,
+          "width": 650,
+          "height": 872
+        }
+      },
+      "x": [
+        [
+          0,
+          54
+        ],
+        [
+          383,
+          716
+        ]
+      ],
+      "y": [
+        [
+          0,
+          42
+        ],
+        [
+          511,
+          925
+        ]
+      ]
+    },
+    {
+      "source": "blackboard-scribble-layers-original.png",
+      "stem": "tafel_scribble1",
+      "width": 256,
+      "height": 256,
+      "sourceCrop": {
+        "x": 24,
+        "y": 182,
+        "width": 487,
+        "height": 610,
+        "foregroundBounds": {
+          "x": 30,
+          "y": 188,
+          "width": 475,
+          "height": 598
+        }
+      },
+      "x": [
+        [
+          0,
+          -41.5
+        ],
+        [
+          255,
+          575.5
+        ]
+      ],
+      "y": [
+        [
+          0,
+          178
+        ],
+        [
+          255,
+          795
+        ]
+      ]
+    },
+    {
+      "source": "blackboard-scribble-layers-original.png",
+      "stem": "tafel_scribble2",
+      "width": 256,
+      "height": 256,
+      "sourceCrop": {
+        "x": 549,
+        "y": 200,
+        "width": 449,
+        "height": 606,
+        "foregroundBounds": {
+          "x": 555,
+          "y": 206,
+          "width": 437,
+          "height": 594
+        }
+      },
+      "x": [
+        [
+          0,
+          464.5
+        ],
+        [
+          255,
+          1081.5
+        ]
+      ],
+      "y": [
+        [
+          0,
+          194
+        ],
+        [
+          255,
+          811
+        ]
+      ]
+    }
+  ]
+}

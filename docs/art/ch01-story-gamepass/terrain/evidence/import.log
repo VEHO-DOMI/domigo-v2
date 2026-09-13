@@ -1,0 +1,4 @@
+body_p2_ostwand_treppe_boden: 2368×1628; alpha {"x":0,"y":12,"width":2368,"height":1600,"pixels":1101824}; SHA256 f6d554fd6e0a3edfd0d8ee6670dd8d938e5265ba0ff3ab18d1f48c914b3d614d
+body_p2_deckenbahn_ost: 2368×540; alpha {"x":0,"y":12,"width":2368,"height":512,"pixels":208896}; SHA256 d121f4b515cb1ed51569df199fcd3f599e3a9e409d70ff5d4e5d82082fc93c73
+body_p3_ostmauer_sims: 1536×796; alpha {"x":0,"y":76,"width":1536,"height":704,"pixels":761856}; SHA256 fd00259664ec65051c2f2d285f73a0f0a2125cc6aca13a4838ef41b64ec859a6
+Report: /Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/terrain/registered/import-ch01-buecherwelt.report.json

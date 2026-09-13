@@ -1,0 +1,501 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "rows": [
+    {
+      "file": "tafel_a.png",
+      "width": 331,
+      "height": 397,
+      "sha256": "26429986482a1c852a9b71c75b0d2bc18994a541dcf8060a6686ab365edf5092",
+      "alpha0": 65883,
+      "alpha255": 65524,
+      "opaquePureMagenta": 0,
+      "opaqueMagentaFamily": 0,
+      "corner": [
+        255,
+        0,
+        255,
+        0
+      ]
+    },
+    {
+      "file": "tafel_b.png",
+      "width": 299,
+      "height": 410,
+      "sha256": "00545f4428235ca5d850d012d774d5e9d8ec93c45fb2218c9a738eb607637eac",
+      "alpha0": 54615,
+      "alpha255": 67975,
+      "opaquePureMagenta": 0,
+      "opaqueMagentaFamily": 0,
+      "corner": [
+        255,
+        0,
+        255,
+        0
+      ]
+    },
+    {
+      "file": "tafel_bank_l1.png",
+      "width": 339,
+      "height": 409,
+      "sha256": "18cb8d6d5d0a38c814ee9c611fbd1caf0b164aebbb6ea5852b7f307b8dd5fbd2",
+      "alpha0": 66108,
+      "alpha255": 72543,
+      "opaquePureMagenta": 0,
+      "opaqueMagentaFamily": 0,
+      "corner": [
+        255,
+        0,
+        255,
+        0
+      ]
+    },
+    {
+      "file": "tafel_bank_r0.png",
+      "width": 353,
+      "height": 394,
+      "sha256": "1b5ad9fc31a993ddaa59ac288cd624435424e4d77d8dbf7cdc6a144184a5b4d5",
+      "alpha0": 65786,
+      "alpha255": 73296,
+      "opaquePureMagenta": 0,
+      "opaqueMagentaFamily": 0,
+      "corner": [
+        255,
+        0,
+        255,
+        0
+      ]
+    },
+    {
+      "file": "tafel_bank_r1.png",
+      "width": 334,
+      "height": 373,
+      "sha256": "be4a3e6484c7dffe2a7a41fd614c093ee3ba5e1b4778ac242a01beb68bbaa197",
+      "alpha0": 59511,
+      "alpha255": 65071,
+      "opaquePureMagenta": 0,
+      "opaqueMagentaFamily": 0,
+      "corner": [
+        255,
+        0,
+        255,
+        0
+      ]
+    },
+    {
+      "file": "tafel_c.png",
+      "width": 310,
+      "height": 392,
+      "sha256": "a24d4a5e2ce8fe5aacb69761cd046509624a6a567809f1ff3500a3cbe293afa1",
+      "alpha0": 52067,
+      "alpha255": 69453,
+      "opaquePureMagenta": 0,
+      "opaqueMagentaFamily": 0,
+      "corner": [
+        255,
+        0,
+        255,
+        0
+      ]
+    },
+    {
+      "file": "tafel_chalk.png",
+      "width": 137,
+      "height": 141,
+      "sha256": "573116990456a602d9b2f9811a54cc6ee5615d13be7c8b19236d73c159ea7d12",
+      "alpha0": 13307,
+      "alpha255": 6010,
+      "opaquePureMagenta": 0,
+      "opaqueMagentaFamily": 0,
+      "corner": [
+        255,
+        0,
+        255,
+        0
+      ]
+    },
+    {
+      "file": "tafel_clean.png",
+      "width": 210,
+      "height": 207,
+      "sha256": "dec85af63095c406c32523d63d360597e2eedb801b2f196e9670fd5484a01281",
+      "alpha0": 35891,
+      "alpha255": 3076,
+      "opaquePureMagenta": 0,
+      "opaqueMagentaFamily": 0,
+      "corner": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "file": "tafel_d.png",
+      "width": 265,
+      "height": 409,
+      "sha256": "b8a43c04c9942ebead5626408bfef0272224ce5b0733215df725f61a17dc825c",
+      "alpha0": 43283,
+      "alpha255": 65102,
+      "opaquePureMagenta": 0,
+      "opaqueMagentaFamily": 0,
+      "corner": [
+        255,
+        0,
+        255,
+        0
+      ]
+    },
+    {
+      "file": "tafel_dazed.png",
+      "width": 273,
+      "height": 446,
+      "sha256": "39af273d2073af38bc0b4a50cfdd6537aae8558313cef47ced90f12d9b682303",
+      "alpha0": 33467,
+      "alpha255": 88291,
+      "opaquePureMagenta": 0,
+      "opaqueMagentaFamily": 0,
+      "corner": [
+        255,
+        0,
+        255,
+        0
+      ]
+    },
+    {
+      "file": "tafel_hand.png",
+      "width": 182,
+      "height": 207,
+      "sha256": "52d1daa398f335bcd68604e078e7339e0f784162c6bc4689f8a04c57724f1e4f",
+      "alpha0": 16094,
+      "alpha255": 21580,
+      "opaquePureMagenta": 0,
+      "opaqueMagentaFamily": 0,
+      "corner": [
+        255,
+        0,
+        255,
+        0
+      ]
+    },
+    {
+      "file": "tafel_land0.png",
+      "width": 357,
+      "height": 341,
+      "sha256": "0c1db587114d36a40236e42da66af4bbf8f4dd81f2a646e1d4f45d4c465d5f97",
+      "alpha0": 56686,
+      "alpha255": 65051,
+      "opaquePureMagenta": 0,
+      "opaqueMagentaFamily": 0,
+      "corner": [
+        255,
+        0,
+        255,
+        0
+      ]
+    },
+    {
+      "file": "tafel_land1.png",
+      "width": 326,
+      "height": 355,
+      "sha256": "23e2cb281262b2980183dd453b340ecc8f74cca43672ec9fcd5e10e8882dbc5d",
+      "alpha0": 49049,
+      "alpha255": 66681,
+      "opaquePureMagenta": 0,
+      "opaqueMagentaFamily": 0,
+      "corner": [
+        255,
+        0,
+        255,
+        0
+      ]
+    },
+    {
+      "file": "tafel_rest.png",
+      "width": 304,
+      "height": 381,
+      "sha256": "0815109c10c04d8b6871861bd6d3d7801beae79393378fe3f60d402332b5c90a",
+      "alpha0": 33044,
+      "alpha255": 82780,
+      "opaquePureMagenta": 0,
+      "opaqueMagentaFamily": 0,
+      "corner": [
+        255,
+        0,
+        255,
+        0
+      ]
+    },
+    {
+      "file": "tafel_roll.png",
+      "width": 330,
+      "height": 406,
+      "sha256": "440ca40a2c0d4dc33725d2e50c87979df9c2abc6b4c68ff70e59b491e134f258",
+      "alpha0": 63481,
+      "alpha255": 70499,
+      "opaquePureMagenta": 0,
+      "opaqueMagentaFamily": 0,
+      "corner": [
+        255,
+        0,
+        255,
+        0
+      ]
+    },
+    {
+      "file": "tafel_sad.png",
+      "width": 273,
+      "height": 446,
+      "sha256": "0de418ad1d43dda9d32cc1f5f0c4df3780ac08ec747d5735d3d077a005a845ab",
+      "alpha0": 33484,
+      "alpha255": 88274,
+      "opaquePureMagenta": 0,
+      "opaqueMagentaFamily": 0,
+      "corner": [
+        255,
+        0,
+        255,
+        0
+      ]
+    },
+    {
+      "file": "tafel_scribble1.png",
+      "width": 181,
+      "height": 210,
+      "sha256": "5f0cc0de6dd8af6fcc0af5b6da7cc1f5b46b8fef4369e6719ebe92d559b943a3",
+      "alpha0": 30525,
+      "alpha255": 699,
+      "opaquePureMagenta": 0,
+      "opaqueMagentaFamily": 0,
+      "corner": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "file": "tafel_scribble2.png",
+      "width": 181,
+      "height": 210,
+      "sha256": "542c7ed6c0465ca806b37d77d173111b04c09e12a8fad88ec6413c1cbf2ed805",
+      "alpha0": 30541,
+      "alpha255": 943,
+      "opaquePureMagenta": 0,
+      "opaqueMagentaFamily": 0,
+      "corner": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "file": "tafel_scribble3.png",
+      "width": 181,
+      "height": 210,
+      "sha256": "b613e821d89b7e15bfbe4cc4c639145fe4781712d155c7356090a4133c259196",
+      "alpha0": 31351,
+      "alpha255": 960,
+      "opaquePureMagenta": 0,
+      "opaqueMagentaFamily": 0,
+      "corner": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "file": "tafel_scribble3b.png",
+      "width": 181,
+      "height": 210,
+      "sha256": "e6af7763c093d16b404e86c3d1c47b519243849b2edd1574b898a3f772ba3411",
+      "alpha0": 31351,
+      "alpha255": 960,
+      "opaquePureMagenta": 0,
+      "opaqueMagentaFamily": 0,
+      "corner": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "file": "tafel_spiral0.png",
+      "width": 309,
+      "height": 329,
+      "sha256": "906c1da64825145c92f56fae364e2531137ffc5fc2306c8b33f0f0cfe1d9423f",
+      "alpha0": 54068,
+      "alpha255": 47593,
+      "opaquePureMagenta": 0,
+      "opaqueMagentaFamily": 0,
+      "corner": [
+        255,
+        0,
+        255,
+        0
+      ]
+    },
+    {
+      "file": "tafel_spiral1.png",
+      "width": 367,
+      "height": 371,
+      "sha256": "1cd99b20920b4cfcac595993fa8c4db7bc845715556c1b6cd5e6c28975a55fbf",
+      "alpha0": 77880,
+      "alpha255": 58277,
+      "opaquePureMagenta": 0,
+      "opaqueMagentaFamily": 0,
+      "corner": [
+        255,
+        0,
+        255,
+        0
+      ]
+    },
+    {
+      "file": "tafel_spiral2.png",
+      "width": 343,
+      "height": 309,
+      "sha256": "629cf82dd5967e03b402bb2f1116fc15a9ec59805c6f2a067a2b645043152d1e",
+      "alpha0": 60229,
+      "alpha255": 45758,
+      "opaquePureMagenta": 0,
+      "opaqueMagentaFamily": 0,
+      "corner": [
+        255,
+        0,
+        255,
+        0
+      ]
+    },
+    {
+      "file": "tafel_spiral3.png",
+      "width": 311,
+      "height": 321,
+      "sha256": "85e9c0998e01f498ab19a8b100e72baab6799c78625b92caba5788b6fb3f3af6",
+      "alpha0": 43341,
+      "alpha255": 56490,
+      "opaquePureMagenta": 0,
+      "opaqueMagentaFamily": 0,
+      "corner": [
+        255,
+        0,
+        255,
+        0
+      ]
+    },
+    {
+      "file": "tafel_stagger.png",
+      "width": 382,
+      "height": 324,
+      "sha256": "bf7ceb2b6f934fcdcbff396e2fb12638f07fb3103bfda88c40466f4a0df50495",
+      "alpha0": 59612,
+      "alpha255": 64156,
+      "opaquePureMagenta": 0,
+      "opaqueMagentaFamily": 0,
+      "corner": [
+        255,
+        0,
+        255,
+        0
+      ]
+    },
+    {
+      "file": "tafel_telegraph.png",
+      "width": 273,
+      "height": 446,
+      "sha256": "0a7fcba961731f3e155f287f18e058d50388d2e87e908f9faf7d47c27d66a637",
+      "alpha0": 33504,
+      "alpha255": 88254,
+      "opaquePureMagenta": 0,
+      "opaqueMagentaFamily": 0,
+      "corner": [
+        255,
+        0,
+        255,
+        0
+      ]
+    },
+    {
+      "file": "tafel_throw.png",
+      "width": 337,
+      "height": 363,
+      "sha256": "92277a0e30ff2b31b2b8b608c6b36bcbbfc448daa90adfe575758d6ce9c23b6a",
+      "alpha0": 61551,
+      "alpha255": 60780,
+      "opaquePureMagenta": 0,
+      "opaqueMagentaFamily": 0,
+      "corner": [
+        255,
+        0,
+        255,
+        0
+      ]
+    },
+    {
+      "file": "tafel_win.png",
+      "width": 287,
+      "height": 381,
+      "sha256": "a192e919b217aaa66cf8b9027910946f4b80f2d4f136ed3e5a71b6f520d263f0",
+      "alpha0": 31402,
+      "alpha255": 77945,
+      "opaquePureMagenta": 0,
+      "opaqueMagentaFamily": 0,
+      "corner": [
+        255,
+        0,
+        255,
+        0
+      ]
+    },
+    {
+      "file": "tafel_windup.png",
+      "width": 320,
+      "height": 440,
+      "sha256": "029632b56d097fb4a391be0e21c9eeebdd5eceb1368a28e38ca0cbbefc593dcd",
+      "alpha0": 70562,
+      "alpha255": 70238,
+      "opaquePureMagenta": 0,
+      "opaqueMagentaFamily": 0,
+      "corner": [
+        255,
+        0,
+        255,
+        0
+      ]
+    },
+    {
+      "file": "tafel_windup0.png",
+      "width": 350,
+      "height": 380,
+      "sha256": "ae06ccd537afafd2ec85fa482945ced55184f2f0cd3f4134003ab23d01c5ac65",
+      "alpha0": 61532,
+      "alpha255": 71468,
+      "opaquePureMagenta": 0,
+      "opaqueMagentaFamily": 0,
+      "corner": [
+        255,
+        0,
+        255,
+        0
+      ]
+    },
+    {
+      "file": "tafel_windup1.png",
+      "width": 320,
+      "height": 422,
+      "sha256": "ab04e10120657327785393d426cb09bcd4c2a9bf6e0c83502183032140b9cda1",
+      "alpha0": 69694,
+      "alpha255": 65346,
+      "opaquePureMagenta": 0,
+      "opaqueMagentaFamily": 0,
+      "corner": [
+        255,
+        0,
+        255,
+        0
+      ]
+    }
+  ]
+}

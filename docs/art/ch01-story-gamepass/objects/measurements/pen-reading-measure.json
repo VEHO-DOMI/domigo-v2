@@ -1,0 +1,187 @@
+{
+  "errors": [
+    "single-neutral: cap-left is not a broad opaque black body material",
+    "single-neutral: barrel-left-upper is not a broad opaque black body material",
+    "single-neutral: overlapping region face-main",
+    "single-neutral: face-main is not a broad opaque black body material",
+    "single-neutral: shoe-right-upper is not a broad opaque black body material",
+    "single-neutral: cap-rim is not a broad opaque black body material",
+    "single-neutral: overlapping region barrel-band",
+    "single-neutral: barrel-band is not a broad opaque black body material"
+  ],
+  "regions": [
+    {
+      "id": "cap-right",
+      "area": 1280,
+      "coverage": 0.97578125,
+      "componentShare": 0.97421875,
+      "coreShare": 0.71484375,
+      "lumaQuantiles": [
+        50.995999999999995,
+        67.13640000000001,
+        93.20979999999999
+      ],
+      "chromaQuantiles": [
+        4,
+        6,
+        10
+      ]
+    },
+    {
+      "id": "cap-left",
+      "area": 750,
+      "coverage": 0.8226666666666667,
+      "componentShare": 0.82,
+      "coreShare": 0.31866666666666665,
+      "lumaQuantiles": [
+        18.2074,
+        60.98799999999999,
+        99.0522
+      ],
+      "chromaQuantiles": [
+        5,
+        13,
+        34
+      ]
+    },
+    {
+      "id": "barrel-left-upper",
+      "area": 1830,
+      "coverage": 0.7978142076502732,
+      "componentShare": 0.7830601092896174,
+      "coreShare": 0.46885245901639344,
+      "lumaQuantiles": [
+        42.8516,
+        67.13239999999999,
+        120.89339999999999
+      ],
+      "chromaQuantiles": [
+        5,
+        11,
+        28
+      ]
+    },
+    {
+      "id": "barrel-right",
+      "area": 1400,
+      "coverage": 0.9521428571428572,
+      "componentShare": 0.9521428571428572,
+      "coreShare": 0.7007142857142857,
+      "lumaQuantiles": [
+        5.7794,
+        45.5026,
+        79.72559999999999
+      ],
+      "chromaQuantiles": [
+        1,
+        4,
+        10
+      ]
+    },
+    {
+      "id": "barrel-lower",
+      "area": 6150,
+      "coverage": 0.9634146341463414,
+      "componentShare": 0.9629268292682926,
+      "coreShare": 0.7460162601626016,
+      "lumaQuantiles": [
+        16.711199999999998,
+        56.99079999999999,
+        98.8476
+      ],
+      "chromaQuantiles": [
+        1,
+        4,
+        12
+      ]
+    },
+    {
+      "id": "barrel-bottom",
+      "area": 1300,
+      "coverage": 0.9553846153846154,
+      "componentShare": 0.9553846153846154,
+      "coreShare": 0.7061538461538461,
+      "lumaQuantiles": [
+        15.357,
+        46.2126,
+        72.8648
+      ],
+      "chromaQuantiles": [
+        1,
+        3,
+        8
+      ]
+    },
+    {
+      "id": "face-main",
+      "area": 7296,
+      "coverage": 0.7351973684210527,
+      "componentShare": 0.7216282894736842,
+      "coreShare": 0.47738486842105265,
+      "lumaQuantiles": [
+        5.7782,
+        70.4212,
+        234.7944
+      ],
+      "chromaQuantiles": [
+        2,
+        8,
+        71
+      ]
+    },
+    {
+      "id": "shoe-right-upper",
+      "area": 1000,
+      "coverage": 0.738,
+      "componentShare": 0.738,
+      "coreShare": 0.352,
+      "lumaQuantiles": [
+        9.7036,
+        80.92379999999999,
+        141.9066
+      ],
+      "chromaQuantiles": [
+        1,
+        6,
+        20
+      ]
+    },
+    {
+      "id": "cap-rim",
+      "area": 2112,
+      "coverage": 0.7698863636363636,
+      "componentShare": 0.7684659090909091,
+      "coreShare": 0.41051136363636365,
+      "lumaQuantiles": [
+        4.4934,
+        49.4762,
+        157.90779999999998
+      ],
+      "chromaQuantiles": [
+        3,
+        8,
+        27
+      ]
+    },
+    {
+      "id": "barrel-band",
+      "area": 3900,
+      "coverage": 0.8084615384615385,
+      "componentShare": 0.4641025641025641,
+      "coreShare": 0.43,
+      "lumaQuantiles": [
+        12.7742,
+        62.2768,
+        154.34500000000003
+      ],
+      "chromaQuantiles": [
+        3,
+        8,
+        24
+      ]
+    }
+  ],
+  "interiorCount": 68627,
+  "maskInteriorShare": 0.36938814169350254,
+  "wholeTargetShare": 0.6654086583997552
+}

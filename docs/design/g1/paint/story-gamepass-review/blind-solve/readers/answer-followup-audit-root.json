@@ -1,0 +1,291 @@
+{
+  "label": "CODEX DRAFT — NOT CANON — ROOT ONLY",
+  "taskSourceSha256": "c2dce3cfd76a7188ce1f9cf2cb8512209e8a2bdc3a8b91aed59ee59f48f264eb",
+  "rows": [
+    {
+      "reader": "C",
+      "card": "029",
+      "expected": {
+        "answer": "three"
+      },
+      "raw": {
+        "card": "029",
+        "answer": "three",
+        "wrongWord": null,
+        "correction": null,
+        "colour": null,
+        "verdict": "eindeutig",
+        "why": "Ich erkenne auf dem offenen Heft drei große blaue Punkte."
+      },
+      "semanticComparison": "match",
+      "exactUiActionText": true,
+      "note": "Full-sentence reader response is evaluated semantically, not claimed as literal button or typed input."
+    },
+    {
+      "reader": "C",
+      "card": "030",
+      "expected": {
+        "answer": "two books"
+      },
+      "raw": {
+        "card": "030",
+        "answer": "two books",
+        "wrongWord": null,
+        "correction": null,
+        "colour": null,
+        "verdict": "eindeutig",
+        "why": "Ich erkenne zwei blaue Bücher; nur „two books“ hat passende Zahl und Mehrzahl."
+      },
+      "semanticComparison": "match",
+      "exactUiActionText": true,
+      "note": "Full-sentence reader response is evaluated semantically, not claimed as literal button or typed input."
+    },
+    {
+      "reader": "C",
+      "card": "041",
+      "expected": {
+        "wrongWord": "door",
+        "correction": "board"
+      },
+      "raw": {
+        "card": "041",
+        "answer": "This is a board.",
+        "wrongWord": "door",
+        "correction": "board",
+        "colour": null,
+        "verdict": "eindeutig",
+        "why": "Schritt 1: „door“ antippen. Schritt 2: „board“ wählen. Das Bild zeigt eine Tafel."
+      },
+      "semanticComparison": "match",
+      "exactUiActionText": false,
+      "note": "Full-sentence reader response is evaluated semantically, not claimed as literal button or typed input."
+    },
+    {
+      "reader": "C",
+      "card": "042",
+      "expected": {
+        "wrongWord": "Not",
+        "correction": "Don't"
+      },
+      "raw": {
+        "card": "042",
+        "answer": "Don't speak!",
+        "wrongWord": "Not",
+        "correction": "Don't",
+        "colour": null,
+        "verdict": "eindeutig",
+        "why": "Schritt 1: „Not“ antippen. Schritt 2: „Don't“ wählen. Der verneinte Befehl lautet vollständig „Don't speak!“"
+      },
+      "semanticComparison": "match",
+      "exactUiActionText": false,
+      "note": "Full-sentence reader response is evaluated semantically, not claimed as literal button or typed input."
+    },
+    {
+      "reader": "C",
+      "card": "048",
+      "expected": {
+        "wrongWord": "chair",
+        "correction": "chairs"
+      },
+      "raw": {
+        "card": "048",
+        "answer": "Here are two chairs.",
+        "wrongWord": "chair",
+        "correction": "chairs",
+        "colour": null,
+        "verdict": "eindeutig",
+        "why": "Schritt 1: „chair“ antippen. Schritt 2: „chairs“ wählen, weil nach „two“ die Mehrzahl stehen muss."
+      },
+      "semanticComparison": "match",
+      "exactUiActionText": false,
+      "note": "Full-sentence reader response is evaluated semantically, not claimed as literal button or typed input."
+    },
+    {
+      "reader": "C",
+      "card": "055",
+      "expected": {
+        "name": "desk",
+        "colour": "green"
+      },
+      "raw": {
+        "card": "055",
+        "answer": "The desk is green.",
+        "wrongWord": null,
+        "correction": null,
+        "colour": "green",
+        "verdict": "mehrdeutig",
+        "why": "Schritt 1: „desk“ wählen. Schritt 2: „green“ wählen. Ich erkenne ein graues tischartiges Möbel; „desk“ ist unter den Optionen gemeint, aber „table“ wäre für „Tisch“ ebenfalls naheliegend und fehlt."
+      },
+      "semanticComparison": "match",
+      "exactUiActionText": false,
+      "note": "Full-sentence reader response is evaluated semantically, not claimed as literal button or typed input."
+    },
+    {
+      "reader": "D",
+      "card": "029",
+      "expected": {
+        "answer": "three"
+      },
+      "raw": {
+        "card": "029",
+        "answer": "There are three dots.",
+        "wrongWord": null,
+        "correction": null,
+        "colour": null,
+        "verdict": "eindeutig",
+        "why": "Ich erkenne in einem offenen Heft drei deutlich getrennte blaue Punkte."
+      },
+      "semanticComparison": "match",
+      "exactUiActionText": false,
+      "note": "Full-sentence reader response is evaluated semantically, not claimed as literal button or typed input."
+    },
+    {
+      "reader": "D",
+      "card": "030",
+      "expected": {
+        "answer": "two books"
+      },
+      "raw": {
+        "card": "030",
+        "answer": "There are two books.",
+        "wrongWord": null,
+        "correction": null,
+        "colour": null,
+        "verdict": "eindeutig",
+        "why": "Ich erkenne zwei blaue Bücher auf einem aufgeschlagenen Heft; daher passt „two books“."
+      },
+      "semanticComparison": "match",
+      "exactUiActionText": false,
+      "note": "Full-sentence reader response is evaluated semantically, not claimed as literal button or typed input."
+    },
+    {
+      "reader": "D",
+      "card": "041",
+      "expected": {
+        "wrongWord": "door",
+        "correction": "board"
+      },
+      "raw": {
+        "card": "041",
+        "answer": "First, select “door”. Then replace it with “board”. Final answer: “This is a board.”",
+        "wrongWord": "door",
+        "correction": "board",
+        "colour": null,
+        "verdict": "eindeutig",
+        "why": "Das Bild zeigt eine Tafel; „board“ ist unter den angebotenen Korrekturen eindeutig passend."
+      },
+      "semanticComparison": "match",
+      "exactUiActionText": false,
+      "note": "Full-sentence reader response is evaluated semantically, not claimed as literal button or typed input."
+    },
+    {
+      "reader": "D",
+      "card": "042",
+      "expected": {
+        "wrongWord": "Not",
+        "correction": "Don't"
+      },
+      "raw": {
+        "card": "042",
+        "answer": "First, select “Not”. Then replace it with “Don't”. Final answer: “Don't speak!”",
+        "wrongWord": "Not",
+        "correction": "Don't",
+        "colour": null,
+        "verdict": "eindeutig",
+        "why": "Der verneinte englische Imperativ wird mit „Don't“ gebildet. Die deutsche Formulierung „falsch geschrieben“ ist etwas ungenau, weil der Fehler grammatisch und kein bloßer Rechtschreibfehler ist."
+      },
+      "semanticComparison": "match",
+      "exactUiActionText": false,
+      "note": "Full-sentence reader response is evaluated semantically, not claimed as literal button or typed input."
+    },
+    {
+      "reader": "D",
+      "card": "048",
+      "expected": {
+        "wrongWord": "chair",
+        "correction": "chairs"
+      },
+      "raw": {
+        "card": "048",
+        "answer": "First, select “chair”. Then replace it with “chairs”. Final answer: “Here are two chairs.”",
+        "wrongWord": "chair",
+        "correction": "chairs",
+        "colour": null,
+        "verdict": "eindeutig",
+        "why": "Nach „two“ muss das zählbare Substantiv im Plural stehen: „chairs“."
+      },
+      "semanticComparison": "match",
+      "exactUiActionText": false,
+      "note": "Full-sentence reader response is evaluated semantically, not claimed as literal button or typed input."
+    },
+    {
+      "reader": "D",
+      "card": "055",
+      "expected": {
+        "name": "desk",
+        "colour": "green"
+      },
+      "raw": {
+        "card": "055",
+        "answer": "First, select “desk”. Then select “green”. Final answer: “It is a green desk.”",
+        "wrongWord": null,
+        "correction": null,
+        "colour": "green",
+        "verdict": "eindeutig",
+        "why": "Ich erkenne ein graues beziehungsweise entfärbtes, tischähnliches Schulmöbel; unter den Namen passt „desk“. Grün ist im Bild nicht sichtbar, wird im zweiten Schritt aber ausdrücklich als ursprüngliche Farbe genannt."
+      },
+      "semanticComparison": "match",
+      "exactUiActionText": false,
+      "note": "Full-sentence reader response is evaluated semantically, not claimed as literal button or typed input."
+    },
+    {
+      "reader": "F",
+      "card": "055",
+      "expected": {
+        "name": "desk",
+        "colour": "green"
+      },
+      "raw": {
+        "card": "055",
+        "answer": "desk",
+        "colour": "green",
+        "verdict": "eindeutig",
+        "why": "Das Bild zeigt eindeutig einen grauen Schreibtisch; die zweite Frage nennt seine ursprüngliche Farbe ausdrücklich als grün."
+      },
+      "semanticComparison": "match",
+      "exactUiActionText": true,
+      "note": "Full-sentence reader response is evaluated semantically, not claimed as literal button or typed input."
+    }
+  ],
+  "languageReaderE": [
+    {
+      "line": 1,
+      "verdict": "passt",
+      "why": "Natürliches, grammatisch korrektes und kindgerechtes Standarddeutsch; die bildhafte Aussage ist im Spielkontext klar.",
+      "suggestion": null
+    },
+    {
+      "line": 2,
+      "verdict": "passt",
+      "why": "Grammatisch korrekt und als Aufforderung verständlich; „die Farbe“ bezieht sich eindeutig auf das zuvor genannte Grün.",
+      "suggestion": null
+    },
+    {
+      "line": 3,
+      "verdict": "passt",
+      "why": "Als eingeblendete Worthilfe ist die kurze Nominalgruppe korrekt, eindeutig und altersgerecht.",
+      "suggestion": null
+    },
+    {
+      "line": 4,
+      "verdict": "passt",
+      "why": "Natürliches und grammatisch korrektes Standarddeutsch; die Zeile macht klar, dass im Satz ein Fehler gefunden werden muss.",
+      "suggestion": null
+    }
+  ],
+  "unresolved": [],
+  "historicalNotes": [
+    "C055 found Tisch/table ambiguity despite correct desk+green; now Schreibtisch and fresh F eindeutig.",
+    "D042 found spelling wording imprecise despite correct Not→Don’t; now In diesem Satz ist ein Fehler, fresh language reader E passt."
+  ]
+}

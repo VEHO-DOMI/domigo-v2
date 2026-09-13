@@ -1,0 +1,112 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "method": "builtinImageGen by Root; originals inspected by Root and importer; crop bound detector read-only excludes magenta family, no pixel recolouring",
+  "images": [
+    {
+      "key": "soundsystem",
+      "file": "soundsystem-original.png",
+      "generatedSource": "/Users/veho/.codex/generated_images/01a09269-9f1d-7703-905c-e911ce143254/exec-7ecb2431-9ed3-40ce-923d-a298594e2a5f.png",
+      "sha256": "3eb361bc1ac7d41e7bf3aea6ebd547466e95d6fc3f116524a170986b1898f6a9",
+      "canvas": {
+        "width": 1254,
+        "height": 1254
+      },
+      "foregroundBounds": {
+        "x": 206,
+        "y": 72,
+        "width": 853,
+        "height": 1115
+      },
+      "registration": {
+        "source": "soundsystem-original.png",
+        "width": 512,
+        "height": 512,
+        "sourceCrop": {
+          "x": 200,
+          "y": 66,
+          "width": 865,
+          "height": 1127,
+          "foregroundBounds": {
+            "x": 206,
+            "y": 72,
+            "width": 853,
+            "height": 1115
+          }
+        },
+        "x": [
+          [
+            0,
+            63
+          ],
+          [
+            511,
+            1201
+          ]
+        ],
+        "y": [
+          [
+            0,
+            60
+          ],
+          [
+            511,
+            1198
+          ]
+        ]
+      }
+    },
+    {
+      "key": "tablet",
+      "file": "tablet-original.png",
+      "generatedSource": "/Users/veho/.codex/generated_images/01a09269-9f1d-7703-905c-e911ce143254/exec-2c5fc914-3b5f-428f-a257-8bc680d8ba74.png",
+      "sha256": "1e6916776cc402599d1d67d7e496b3e7e4f2c92f188bede1f5305f12f9852b73",
+      "canvas": {
+        "width": 1254,
+        "height": 1254
+      },
+      "foregroundBounds": {
+        "x": 183,
+        "y": 113,
+        "width": 940,
+        "height": 1052
+      },
+      "registration": {
+        "source": "tablet-original.png",
+        "width": 512,
+        "height": 512,
+        "sourceCrop": {
+          "x": 177,
+          "y": 107,
+          "width": 952,
+          "height": 1064,
+          "foregroundBounds": {
+            "x": 183,
+            "y": 113,
+            "width": 940,
+            "height": 1052
+          }
+        },
+        "x": [
+          [
+            0,
+            115
+          ],
+          [
+            511,
+            1190
+          ]
+        ],
+        "y": [
+          [
+            0,
+            101
+          ],
+          [
+            511,
+            1176
+          ]
+        ]
+      }
+    }
+  ]
+}

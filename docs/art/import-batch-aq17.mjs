@@ -410,11 +410,12 @@ if (process.argv.includes("--selftest")) {
   }
   if (schlecht > 0) {
     console.error(`\nimport-batch-aq17 --selftest: ${schlecht} Fall/Fälle nicht wie erwartet`);
-    process.exit(1);
+    process.exitCode = 1;
+  } else {
+    console.log("\nimport-batch-aq17 --selftest: OK — die Abnahme sieht ihr rotes Licht am einheitlichen Eckradius und am Magenta, und die Haltung des 9-Slice hat selbst ein rotes Licht");
   }
-  console.log("\nimport-batch-aq17 --selftest: OK — die Abnahme sieht ihr rotes Licht am einheitlichen Eckradius und am Magenta, und die Haltung des 9-Slice hat selbst ein rotes Licht");
-  process.exit(0);
-}
+  // Natürlich beenden: Node 24 muss laufende Compiler-Arbeit abschließen können.
+} else {
 
 // ── DER LAUF ─────────────────────────────────────────────────────────────────
 const src = (batch, f) => {
@@ -546,3 +547,5 @@ ROLLEN.forEach((r, n) => {
 });
 console.log(`  ${DRY ? "[trocken] " : ""}                             →  art/g1/cards/card_plaques.png  ${pw}×${ph} (${ROLLEN.length} × ${ph}er Kasten)  (${zPlaques})`);
 console.log(`import-batch-aq17: OK — Papier ${zPaper}, Knopfblatt ${zButtons}, ${geordnet.length} Plaketten-Zellen zu einem Blatt zugeschnitten, ${HELD.length + 1} Posten im Labor gehalten${DRY ? " (Trockenlauf, nichts geschrieben)" : ""}`);
+
+} // Der Selbsttest darf nie in den Importlauf fallen.

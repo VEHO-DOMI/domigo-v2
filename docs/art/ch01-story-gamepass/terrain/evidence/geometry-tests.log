@@ -1,0 +1,13 @@
+
+ RUN  v3.2.6 /Users/veho/Code/codex-lab/trial-domigo-v2/packages/game-paint
+
+ ✓ src/scene-cutout-sizing.test.ts (4 tests) 74ms
+ ✓ src/visualBodies.test.ts (9 tests) 25ms
+ ✓ src/scene-cutout-bounds.test.ts (7 tests) 564ms
+   ✓ card viewport contains the actual selected scene > includes D09's right-hand visitors without moving the real lion or the welcome-place coordinates  477ms
+
+ Test Files  3 passed (3)
+      Tests  20 passed (20)
+   Start at  13:46:43
+   Duration  4.72s (transform 1.83s, setup 0ms, collect 3.73s, tests 663ms, environment 7ms, prepare 972ms)
+

@@ -1,0 +1,77 @@
+**Status: unabhängige Sichtprüfung im Chat.** Ich habe alle 13 PNGs gelesen, keine anderen Projektdateien geöffnet und nichts verändert.
+
+## Welche Geschichte geschieht?
+
+Der sichtbare Handlungsbogen ist:
+
+1. Eine erste Klasse erlebt ihre erste Englischstunde.
+2. Aus dem neuen Englischbuch quillt dunkle Tinte; ein Tintengeist entsteht und zieht die gesamte Klasse ins Buch.
+3. Die Spielfigur – später als Mira angesprochen – wird selbst Teil der Buchwelt und erhält dort neue Kleidung und Ausrüstung.
+4. Mira landet allein auf riesigen Büchern. Der kleine blaue Klecks erklärt, dass der Tintengeist die Schule verhext und die Mitschüler verstreut beziehungsweise gefangen hat.
+5. Richtige englische Wörter lösen den Zauber; zusätzlich sollen goldene Buchstaben gesammelt werden.
+6. Die späteren Bilder zeigen eine verdunkelte Schul- und Bücherwelt mit einer Tafel-Aufgabe, einer Tintenflut, einer verschlossenen Klassenfotografie und einem Kapitelausgang. Das Klassenfoto nennt 15 vermisste Mitschüler.
+
+Die genaue Reihenfolge der späteren Spielszenen ist aus den Standbildern nicht vollständig belegbar.
+
+## Kleidung, Ausrüstung und Fähigkeiten
+
+Mira trägt im Klassenzimmer einen dunkelblauen Pullover, lange dunkle Hose und braune Schuhe. In [comic-4.png](/Users/veho/Code/codex-lab/trial-berichte/CH01_STORY_SPIELPASS/blind-visual/student/comic-4.png) wird daraus ein Abenteuerkostüm:
+
+- dunkelblaues Oberteil mit goldenem Zickzackband,
+- kurze blaue Hose,
+- weiße Handschuhe,
+- helle Stulpen,
+- größere rotbraune Schuhe,
+- brauner Rucksack mit weißer Feder.
+
+Diese Ausstattung bleibt in [comic-5.png](/Users/veho/Code/codex-lab/trial-berichte/CH01_STORY_SPIELPASS/blind-visual/student/comic-5.png), [comic-6.png](/Users/veho/Code/codex-lab/trial-berichte/CH01_STORY_SPIELPASS/blind-visual/student/comic-6.png), [comic-7.png](/Users/veho/Code/codex-lab/trial-berichte/CH01_STORY_SPIELPASS/blind-visual/student/comic-7.png) und den Spielszenen erkennbar gleich. Das ist eine starke Figurenkontinuität.
+
+Die Fähigkeiten stammen laut Klecks aus der Magie der Buchwelt. Konkret werden richtige englische Wörter als Mittel gegen den Zauber genannt. Die Feder und der Rucksack werden nicht als Kraftquelle erklärt. Wie Handschuhe, Feder oder gesammelte Buchstaben spielmechanisch wirken, ist aus den Bildern nicht prüfbar.
+
+Von den übrigen Schülern existieren keine sichtbaren Buchwelt-Versionen. Deshalb lässt sich nicht beurteilen, ob auch ihre Kleidung verwandelt wird.
+
+## Ist die Klasse als Klasse erkennbar?
+
+Ja. [comic-2.png](/Users/veho/Code/codex-lab/trial-berichte/CH01_STORY_SPIELPASS/blind-visual/student/comic-2.png) und [comic-3.png](/Users/veho/Code/codex-lab/trial-berichte/CH01_STORY_SPIELPASS/blind-visual/student/comic-3.png) zeigen 16 Kinder zusammen mit ihrer Lehrerin. Das spätere [ui-final-photo-overview.png](/Users/veho/Code/codex-lab/trial-berichte/CH01_STORY_SPIELPASS/blind-visual/student/ui-final-photo-overview.png) zeigt genau 15 Kinder und bezeichnet sie als Miras Mitschüler. Damit ergibt sich erneut eine Klasse mit insgesamt 16 Kindern.
+
+Mehrere markante Figuren bleiben wiedererkennbar: etwa das blonde Kind im gelben Pullover, das Kind mit schwarzem Bob und türkisem Oberteil, der Brillenträger, das Kind mit zwei Haarknoten und die Kinder mit grünen, orangefarbenen oder violetten Kleidungsstücken. Das Foto ist in drei Reihen zu je fünf Kindern organisiert; die 15 Namen darunter folgen derselben sichtbaren 5×3-Struktur.
+
+## Sichtbare Fehler
+
+**Blocker** bedeutet: Das Bild beweist, dass Verstehen oder Weiterkommen verhindert wird. **Major** bezeichnet einen zentralen oder wiederholten Bruch; **Minor** einen lokalen Fehler ohne schweren Einfluss auf das Gesamtverständnis. Aus Standbildern ist kein Blocker sicher beweisbar.
+
+| Schwere | Bilddatei | Direkt sichtbarer Befund | Begründeter Lösungsvorschlag |
+|---|---|---|---|
+| **Major** | [comic-2.png](/Users/veho/Code/codex-lab/trial-berichte/CH01_STORY_SPIELPASS/blind-visual/student/comic-2.png) | Der Text kündigt eine „dunkle Gestalt“ an, das Bild zeigt aber nur abstrakte blaue Tintententakel. Eine eigenständige bedrohliche Figur ist nicht lesbar. Die Form ähnelt eher dem späteren Klecks. | Dem Tintengeist eine klare Silhouette, Augen oder ein unverwechselbares Formmerkmal geben. Alternativ den Text zu „Die Tinte beginnt Gestalt anzunehmen“ ändern. |
+| **Major** | [comic-6.png](/Users/veho/Code/codex-lab/trial-berichte/CH01_STORY_SPIELPASS/blind-visual/student/comic-6.png), [cohesion-world-hello.png](/Users/veho/Code/codex-lab/trial-berichte/CH01_STORY_SPIELPASS/blind-visual/student/cohesion-world-hello.png), [cohesion-world-photo-open.png](/Users/veho/Code/codex-lab/trial-berichte/CH01_STORY_SPIELPASS/blind-visual/student/cohesion-world-photo-open.png) | Klecks wird als blaue, runde Tintenfigur eingeführt. In den Spielszenen fehlt diese Figur; stattdessen erscheint links unten wiederholt eine grüne, lächelnde Tafel. Ob sie Klecks darstellen soll, bleibt ungeklärt, obwohl Texte weiterhin Klecks zugeschrieben werden. | Klecks’ blaues Porträt als Dialog- und Begleitzeichen verwenden. Falls die Tafel eine andere Funktion hat, beide Figuren gleichzeitig und eindeutig beschriften. |
+| **Major** | [cohesion-world-photo-closed.png](/Users/veho/Code/codex-lab/trial-berichte/CH01_STORY_SPIELPASS/blind-visual/student/cohesion-world-photo-closed.png), [cohesion-world-photo-open.png](/Users/veho/Code/codex-lab/trial-berichte/CH01_STORY_SPIELPASS/blind-visual/student/cohesion-world-photo-open.png) | Beim Öffnen wechselt die Foto-Sperre von einem grauen, metallischen Gitterrahmen zu einem goldbraunen Holzrahmen. Nicht nur die Türstellung, sondern das Material des ganzen Objekts verändert sich. | Geschlossenen und offenen Zustand aus demselben Grundobjekt ableiten: identischer Rahmen, identische Beschläge und Größe; nur Tür, Riegel und Schloss verändern. |
+| **Major** | Foto-Sperren sowie [ui-final-photo-overview.png](/Users/veho/Code/codex-lab/trial-berichte/CH01_STORY_SPIELPASS/blind-visual/student/ui-final-photo-overview.png) | Oben steht „Befreit 1/4“, während alle 15 Kinder im Klassenfoto weiterhin „Noch im Buch“ tragen. Falls „1/4“ Schlösser meint, ist „Befreit“ falsch beziehungsweise zu ungenau; falls es Kinder meint, widersprechen sich die Anzeigen. | Entweder „Schlösser 1/4“ beziehungsweise „Tafelsperren 1/4“ schreiben oder beim tatsächlich befreiten Kind den Fotostatus ändern. |
+| **Major** | [ui-final-ending-door.png](/Users/veho/Code/codex-lab/trial-berichte/CH01_STORY_SPIELPASS/blind-visual/student/ui-final-ending-door.png) | Der Text meldet: „Die Tafel ist wieder sauber.“ Das Abschlussbild zeigt jedoch eine offene Bibliothekstür; die gereinigte Tafel ist nicht zu sehen. | Zuerst die saubere, erleichterte Tafel zeigen und die Tür als Übergang im Hintergrund ergänzen. So belegt das Bild sowohl Erfolg als auch nächsten Weg. |
+| **Major** | Mehrere Spielszenen, besonders [ui-final-photo-overview.png](/Users/veho/Code/codex-lab/trial-berichte/CH01_STORY_SPIELPASS/blind-visual/student/ui-final-photo-overview.png) | Schwarze Diagnosefelder mit Angaben wie „GPU“, „Shader“ und Ladezeit sowie ein schwarzes „N“-Symbol bleiben sichtbar. Im Klassenfoto-Fenster verdeckt das Diagnosefeld sogar einen Teil des Abschlusstextes. | Sämtliche Entwicklungsanzeigen in der Schüleransicht deaktivieren und alle Bildschirmzustände danach erneut aufnehmen. |
+| **Major** | [comic-2.png](/Users/veho/Code/codex-lab/trial-berichte/CH01_STORY_SPIELPASS/blind-visual/student/comic-2.png), [comic-4.png](/Users/veho/Code/codex-lab/trial-berichte/CH01_STORY_SPIELPASS/blind-visual/student/comic-4.png), [comic-6.png](/Users/veho/Code/codex-lab/trial-berichte/CH01_STORY_SPIELPASS/blind-visual/student/comic-6.png) | Auf den geraden Prologseiten ist kein sichtbarer Vorwärtsknopf vorhanden; auf 1, 3 und 5 steht dagegen deutlich „Weiter“. Seite 4 und 6 reichen zudem bis an den unteren Bildrand. | Den Vorwärtsknopf auf jeder Seite an derselben festen Stelle sichtbar halten. Ob Scrollen oder eine Tastatursteuerung existiert, ist aus den PNGs nicht prüfbar; deshalb kein sicherer Blocker. |
+| **Major** | Prolog-Buchwelt gegenüber allen `cohesion-world-*.png` | Die Buchwelt beginnt als warme, malerische Illustration. Das Spiel wechselt anschließend zu einem sehr kleinen, scharf ausgeschnittenen Helden, Fototexturen, halbtransparenten Stuhlreihen und gekachelten Buchflächen. Der Wechsel betrifft die gesamte Bildsprache, nicht nur ein Detail. | Eine gemeinsame Modellvorlage für Figur, Licht, Konturen und Materialtexturen festlegen. Besonders Hintergrund und Spielfigur sollten dieselbe malerische Tiefe und Farbtemperatur besitzen. |
+| **Minor** | [cohesion-world-p2.png](/Users/veho/Code/codex-lab/trial-berichte/CH01_STORY_SPIELPASS/blind-visual/student/cohesion-world-p2.png) | Am rechten Rand erscheint nur ein sehr schmaler, abgeschnittener Streifen gestapelter Buchtexturen; oben liegt zusätzlich ein fast vollständig abgeschnittenes Buchstück. Das wirkt wie eine versehentlich in den Bildausschnitt geratene Begrenzung. | Die Begrenzung vollständig sichtbar machen oder komplett außerhalb des Bildausschnitts platzieren. |
+| **Minor** | [cohesion-world-hello.png](/Users/veho/Code/codex-lab/trial-berichte/CH01_STORY_SPIELPASS/blind-visual/student/cohesion-world-hello.png), [cohesion-world-p2.png](/Users/veho/Code/codex-lab/trial-berichte/CH01_STORY_SPIELPASS/blind-visual/student/cohesion-world-p2.png) | Die Zielanzeigen wechseln: einmal erscheinen Klassenfoto und „Befreit“, später stattdessen „Buchstaben 0/9“. Der im Prolog betonte Buchstabenauftrag ist somit nicht dauerhaft sichtbar. | Ein unverändertes Kernziel anzeigen und nur raumspezifische Ziele ergänzen. |
+| **Minor** | [comic-6.png](/Users/veho/Code/codex-lab/trial-berichte/CH01_STORY_SPIELPASS/blind-visual/student/comic-6.png) | Zwischen „zu“ und „finden“ entsteht eine ungewöhnlich große Wortlücke. | Den Dialog linksbündig ohne erzwungene Streckung setzen. |
+
+## Räumliche Auflage und nicht prüfbare Bewegung
+
+Direkt sichtbar stützt sich Mira in `comic-5` bis `comic-7` plausibel auf die Oberseite des riesigen roten Buches. Auch in der Tafel- und Foto-Szene stehen Figur, Tafel und Sperre grundsätzlich auf den gezeichneten Buchplattformen. Der geschlossene und offene Fotozustand befinden sich am selben Ort; der Zustandswechsel ist daher trotz des Materialfehlers lesbar.
+
+Nicht aus den PNGs prüfbar sind:
+
+- ob Springen und Klettern funktionieren,
+- ob unsichtbare Begrenzungen zu den gezeichneten Flächen passen,
+- ob Mira in `cohesion-world-p2` absichtlich in die Tinte gefallen oder fehlerhaft verschwunden ist,
+- ob „Platsch!“ zum richtigen Bewegungsmoment erscheint,
+- welche Bedingung die Foto-Sperre öffnet,
+- ob englische Wörter tatsächlich Kräfte auslösen,
+- ob ein bereits befreites Kind später korrekt animiert und im Klassenfoto aktualisiert wird.
+
+## Urteil zur Verständlichkeit des Prologs
+
+Der Prolog vermittelt Ort, Auslöser, Trennung der Klasse, Verwandlung, Helfer, Gegenspieler und Lernziel in einer nachvollziehbaren Kausalkette. Unklar bleibt die wichtigste Figurenunterscheidung: Der angekündigte Tintengeist besitzt keine klar erkennbare Gestalt und ist Klecks farblich und formal zu ähnlich. Die wechselnd fehlende Vorwärtsnavigation schwächt außerdem die praktische Lesbarkeit.
+
+## Urteil zur Bildkohärenz
+
+Die Schülerzahl, zahlreiche Klassenmerkmale und Miras Buchwelt-Kostüm stimmen erfreulich präzise zusammen. Die Gesamtserie ist dennoch nicht durchgehend bildkohärent: Klecks verliert seine sichtbare Identität, die Foto-Sperre wechselt ihr Material, Fortschrittsanzeigen widersprechen beziehungsweise erklären einander nicht, das Abschlussbild zeigt nicht den beschriebenen Erfolg, und Entwicklungsanzeigen verdecken Schülerinhalt. Diese Brüche liegen an zentralen Figuren und Handlungsobjekten, nicht nur an dekorativen Einzelheiten.

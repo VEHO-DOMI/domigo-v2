@@ -126,34 +126,9 @@ _(HISTORISCH: bis 2026-08-14 stand hier „walk 1,25 / run 2,25 px/t". Die 1,25 
    Entscheid beim Architekten. **Der Beschluss „Run wird NICHT gedrosselt" gilt
    unverändert weiter.**
 
-## §Käfig-Zensus v2 (doc 44 §2.3: „restage per dossier" — hier der Restage)
+## §Verschlüsse — autorisierter Koki-Spielpass 2026-09-13
 
-| # | Phase | Hülle | Insasse | Status |
-|---|---|---|---|---|
-| 1 | p1 | satchel | (Welle definiert — Wesen aus §Abdeckung) | Welle |
-| 2 | p2 | satchel | (Welle definiert) | Welle |
-| 3 | p2 | pencilcase (PERSON) | MERLE | Bestand ✓ |
-| 4 | p3 | satchel | DER STUHL (B20) | v2.2 ✓ |
-| 5 | arena | satchel | DAS KLASSENFOTO (picture, B20-Karte; obj_picture → D-21) | v2.1 ✓ |
-Summe v2 = 5 (statt doc-44-„7") — Dichte-Entscheid der Neuableitung, im PR sichtbar.
-
-**★★ KÄFIG-GRÖSSE — D-48 ENTSCHIEDEN (Architekt 2026-08-14, hier als Kanon):
-jeder Käfig rendert 34 px.** Bisher entschied `PaintScene.entTargetH` nach Hülle und
-Inhalt: `holdsAPerson(e) ? 34 : e.skin === "pencilcase" ? 24 : 22`. Bei 22 px waren
-die vier AQ6-Insassen-Zellen (Musikanlage · Tablet · Stuhl · Bild) nicht
-voneinander unterscheidbar — unabhängig von einem blinden Prüfer bestätigt und im
-eigenen 22-px-Render nachgestellt. 34 px ist die Größe, die ein Käfig mit Kind
-schon heute nutzt; ab dort trennen sich Lautsprecher-Kegel und Tablet.
-**Verdrahtet wird das in Session A5, nicht hier** — K1 schreibt nur den Kanon.
-
-⚠ **Was A5 dabei nicht still brechen darf (in K1 gefunden):** die Wackel-Herleitung
-begründet ihren Ausschlag ausdrücklich mit dem GRÖSSENUNTERSCHIED — „ein Käfig mit
-einem Kind darin ist 34 px hoch, ein Ranzen 22 — bei festem Winkel wackelt der
-große automatisch 1,5-mal weiter" (`anim.ts`, wortgleich in `breath.test.ts`).
-Rendern alle Käfige 34 px, ist dieser Faktor 1,0 und die Begründung leer. Der Test
-läuft weiter grün (er misst Pixel proportional zur Höhe), aber der KOMMENTAR wäre
-dann eine Behauptung ohne Fall. A5 leitet ihn neu her oder benennt ihn als
-historisch — beides ist in Ordnung, stilles Stehenlassen nicht.
+**CODEX DRAFT — NOT CANON.** Der bisherige Fünfer-Käfigzensus wird durch vier tatsächliche Schlösser ersetzt: Musikanlage und Tablet in Gerätefächern, Merle als einzige Person im Federpenal, das Klassenfoto im eigenen Holzrahmen. Der Stuhl steht frei und bekommt Gelb zurück. Gerätefächer messen 48 px, Penal/Foto 54 px; normale Käfige anderer Kapitel behalten 34 px. Die gemessenen Innenfenster bestimmen die Insassenplatzierung, nicht eine pauschale Bilddehnung. Die vorherige Hochpult-/vier-Ranzen-/Stuhlrettungserzählung ist für Kapitel eins aufgehoben.
 
 ## §Abdeckung — die Vokabel-Vergabe des Kapitels (B8; **Maschinen-Check LIVE:** `scripts/check-level-design.mjs` Block 2)
 
@@ -175,49 +150,27 @@ Raum-Trennung. Vergabe v2:
 | pen | Läufer (chaser) | p2 | ✓ |
 | board („Wasserfarben" = paint box, unit-nah) | Schütze (gunner) | p2 | ✓ paintbox |
 | desk | Entfärbtes Ding | p2 | ✓ obj_desk |
-| pencil (Objekt) | — GESTRICHEN (Duplikat zu p1-Läufer) → Ersatz: **scissors** | p2 | **Codex D-13** (bis dahin obj_pencil, DEBT) |
+| scissors | angreifende Schere mit grauer Wiederherstellung | p2 | obj_scissors, registrierte neue Kunst |
 | pencil case | Merles Person-Käfig | p2 | ✓ |
-| (Zahlen 1–25) | Motten-SCHWARM-Spießrutenlauf, 3 Schwärme = 3–4 Rad-Aufgaben in Folge (B10-HEIMAT) | p2 Lampen-Korridor | ✓ moths |
+| (Zahlen 1–25) | Zahlenschwarm im Korridor, drei Stationen mit Radaufgaben; Zahlen variieren pro neuem Levelstart | p2 | gezeichnete Ziffern statt Motten |
 | ruler | Fähre (Plattform) | p3 | ✓ |
 | exercise book | Flatterer (flyer) | p3 | ✓ heft |
 | ~~glue stick · sharpener~~ | Entfärbte Dinge `obj_gluestick`/`obj_sharpener` — **die OBJEKTE stehen im Level, die WÖRTER sind kein Unit-Wortschatz** | p3 | ✓ (Kunst da, Anspruch gestrichen) |
-| **chair** | **Käfig-#4-Insasse (Karte B20 „It's a chair")** | p3 | Wesen-Kunst **D-13** |
+| **chair** | frei stehender Stuhl, Benennung und gelbe Wiederherstellung | p3 | obj_chair_a, ohne Gesicht oder Käfig |
 | school bag (2./3. Rolle) | Schaukel + Stampfer | p3 | ✓ (Farb-Trennung D-14) |
 | board | DIE FLIEGENDE TAFEL (Guardian) | p4 | ✓ |
 | door / window | Welt-Architektur (Türen-Serie G11 / p2-Fenster-Ein-und-Ausstieg) | überall | ✓ |
-| **picture** (wordbank g1u01.w.picture) | Käfig-#5-Insasse (Arena, B20-Karte) | p4 | obj_picture **D-21** |
-| **sound system** | Käfig-#1-Insasse (Empfehlung, B20-Klasse — PR-Nick) | p1 | Wesen **D-18** |
-| **tablet** | Käfig-#2-Insasse (Empfehlung — PR-Nick) | p2 | Wesen **D-19** |
+| **picture** (wordbank g1u01.w.picture) | gesperrtes Klassenfoto als letzte Erinnerung | p4 | klassenfoto_a im eigenen photo_frame_cage |
+| **sound system** | Musikanlage im verzauberten Gerätefach | p1 | obj_soundsystem im device_locker |
+| **tablet** | Tablet im verzauberten Gerätefach | p2 | obj_tablet im device_locker |
 | projector | **Welt-Architektur** (`kind:"architecture"`, wie door/window): der Projektor-Turm steht als solides Gelände in p2, Spalten 55–56 über die Reihen 1–7, und sein Kegel stiftet den Zahlen-Grund des Spießrutenlaufs; Trail-Wort PROJECTOR. Kein Sammelobjekt, keine Antwort-Karte — **die datierte Ausnahme ist damit aufgelöst, nicht verlängert** (R5-W6 · G5, R148) | p2 | Turm-Kunst **D-19** |
-| **Uniform-Neun** (hairband · sunglasses · hat · school tie · shirt · sweater · skirt · socks · shoe) | **AB WELLE 5: neun Sammelobjekte, 3/3/3 über p1–p3, plus drei Benenn-Karten** (`UNIFORM_SAMMELN_DESIGN.md`). Heute: sieben davon nur ABLENKER auf `enc.ranzen.q3/q4` (`shoe` seit der Pluralform `shoes`), zwei stehen auf gar keiner Karte → **deklarierte Ausnahme bis 2026-12-31, Besitzer Welle 5 / Uniform** | p1–p3 (ab W5) | Codex **AQ10** |
+| **Uniform-Neun** (hairband · sunglasses · hat · school tie · shirt · sweater · skirt · socks · shoe) | **passivePickup:** neun echte beschriftete Funde, je drei in p1/p2/p3. Fund zeigt das englische Wort und das Kleider-Wortbuch bewahrt es; keine nachgeschobenen Benennkarten. Jede Angabe bindet die tatsächliche Policy, Wortbank und sichtbare erreichbare Original-Entity. | p1–p3 | Koki-Spielpass, keine Kartenabdeckung behauptet |
 
-**★★ EHRLICHKEITS-NACHZUG (R5-W4 · G3, 2026-08-15 — D-77, Kokis Befund).** Diese
-Tabelle behauptete Abdeckung, die niemand nachgemessen hatte. Zwei Klassen von
-Lüge sind jetzt maschinell ausgeschlossen:
-1. **`kind:"cards"` prüfte nichts.** Gemessen an der Antwortfläche aller 54
-   Karten produziert ein Kind **keines** der zehn oben deklarierten Wörter. Sechs
-   der Uniform-Neun stehen als ABLENKER auf `enc.ranzen.q3/q4` — ein Ablenker
-   wird gelesen, nicht erworben. `hairband`, `sunglasses`, `shoe` und `projector`
-   stehen auf gar keiner Karte. Ab jetzt muss ein `cards`-Anspruch eine echte
-   Antwort-Karte haben ODER eine Ausnahme mit `why` + `expires` + `owner` tragen;
-   nach Ablauf wird das Tor rot. (Diese Lesart ist schärfer als Gesetz 17a in
-   `variety.ts`, das ein Wort schon dann als beantwortet zählt, wenn seine ID in
-   irgendeinem `exercises`-Array steht — eine Behauptung, keine Messung.)
-2. **Tote Ansprüche.** `glue stick` und `sharpener` standen in der Tabelle und in
-   `CLAIMS`, ohne dass Unit 1 die Wörter lehrt: die Master-Vokabelliste kennt sie
-   nicht (nachgezählt — 26 Word-File-Einträge, beide nicht dabei), nur die
-   buch­eigene Wortliste führt sie unter `U1/11`. Die Level-OBJEKTE bleiben, der
-   Anspruch ist gestrichen, und ein neues Gesetz verbietet jeden Anspruch auf ein
-   Wort, das die Wortbank nicht führt. → Aufnahme in die Wortbank ist ein
-   Pipeline-Auftrag an den Architekten (der `add`-Pfad kann heute nur
-   v1-Wörter).
+**Abdeckungsverträge:** `cards` verlangt weiter eine tatsächlich beantwortete Vokabel oder eine gültige datierte Ausnahme. Der bisherige `pickup`-Typ verlangt weiterhin Sammelobjekt UND seine genaue Quizkarte und bleibt für andere bestehende Ansprüche unverändert. Nur das ausdrückliche Kapitel-eins-Opt-in `passivePickup` beschreibt die von Koki verlangte passive Wortwiederholung. Es bindet die feste Phase/Entity, ihr Wortbankwort und genau die tatsächliche passive Policy; der gemeinsame Prüfer verwirft fehlende, verborgene, unbeschriftete, falsche oder unerreichbare Kleidungsobjekte und Bonusdoppelungen. Kein Umbuchen nach architecture/debt, keine erfundenen Ersatzkarten und keine neue Ausnahme.
 
-**restoreRoom-OVERRIDE (doc 44 §4 C1, hiermit ausgesprochen):** Die Keen-Sechs
-(desk, school bag, door, board, window, chair) werden NICHT 1:1 restauriert. ch01-v2
-restauriert {school bag, book, desk, scissors→D-13, glue stick, sharpener} als
-Entfärbte-Dinge-Sechs (alle wordfile, alle mit Kunst[-Pfad]); door/window/board leben
-als Architektur bzw. Guardian, chair als Käfig-Insasse. Grund: Vokabel-Vollabdeckung
-(B8) schlägt Keen-Bestandsliste (doc 44 §2.5 fresh-eyes).
+**restoreRoom-OVERRIDE — historische Referenz (D-272, erledigt am 2026-08-17):** Der damals von Koki bestätigte Override ersetzte die Keen-Sechs {desk, school bag, door, board, window, chair} durch die Entfärbte-Dinge-Sechs {school bag, book, desk, scissors, glue stick, sharpener}; der Stuhl war damals Käfiginsasse. D-272 dokumentiert den erledigten Abgleich dieses damaligen Beschlusses mit doc 44. Die Referenz und ihr Erledigt-Status bleiben erhalten. Für den aktuellen, von Koki autorisierten Spielpass gilt die nachfolgende Zehnerliste; sie setzt den alten Sechserumfang und die Stuhlkäfig-Rolle außer Kraft.
+
+**Wiederherstellung im aktuellen Spielpass:** Zehn tatsächlich benannte Farbziele ersetzen die alte Entfärbte-Sechs-Liste: Buch blau, Tasche braun, Schreibtisch grün, Schere grau, Klebestift orange, Spitzer rot, Radiergummi rosa, Füllfeder schwarz, Heft weiß und Stuhl gelb. Der Stuhl ist kein Käfiginsasse. Die Wortbankansprüche bleiben weiterhin auf echte wordfile-Einträge begrenzt; zusätzliche tatsächlich im Korpus belegte Objektwörter werden nicht dadurch erfunden, dass ein Objekt gezeichnet ist.
 
 ## §B-Karte — wo jedes B-Gesetz landet
 
@@ -234,7 +187,7 @@ um die Arena-Dimension (F6).
 
 ## Screen-Lineal-Standard
 
-64-Spalten-Phase = 2,9 Screens (c0–21 · c22–43 · c44–63); 72-Spalten (p2) = 3,3 Screens.
+64-Spalten-Phase = 2,9 Screens (c0–21 · c22–43 · c44–63); 92-Spalten (p2 nach Koki-Spielpass) = etwa 4,2 Screens.
 Dichte-Regler: 0,5–0,75 Wesen-Begegnungen je Screen (Schwarm-Gauntlet p2 = deklarierte
 Ausnahme als EIN Set-Piece). Trails = Sätze (Läufe 3er), Wort pro Phase aus dem Feld.
 

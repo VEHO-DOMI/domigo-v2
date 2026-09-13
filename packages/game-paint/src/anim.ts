@@ -154,10 +154,13 @@ export const awakenWash = (step: number, rounds: number = AWAKEN_ROUNDS): number
  *  card is answered. Under reduced motion a redeemed being is simply already in
  *  colour — the end-states law, applied to the world instead of to CSS. */
 export const washAlphaFor = (
-  e: { role: string; redeemed: boolean; timer: number; awakenStep?: number; freedTick?: number; params?: { artSet?: unknown } },
+  e: { role: string; redeemed: boolean; timer: number; awakenStep?: number; freedTick?: number; params?: { artSet?: unknown; shellArt?: unknown } },
   reducedMotion = false,
 ): number => {
   if (!WASHED_ROLES.has(e.role)) return 0; // furniture was never drained
+  // CH01: these are locks to open, not material-colour restoration tasks.
+  // Preserve the painted wood/metal on both sides of the unlocking beat.
+  if (e.role === "cage" && (e.params?.shellArt === "photo_frame_cage" || e.params?.shellArt === "device_locker")) return 0;
   // PK-R6 · D: a classmate is drained BY DEGREES. Un-redeemed she stands at the
   // degree her rounds have earned (an instant step per round — the world is
   // frozen for the card, so a fade nobody's clock is running would be a change
@@ -571,27 +574,28 @@ export const GUARDIAN_LANDED_CELLS: ReadonlySet<string> = new Set(["rest", "win"
  *    er gebaut wurde — und der Preis dieser Ableitung ist ein Testlauf, nicht
  *    eine Suche am Schirm.
  */
+// Chapter-one story pass: measured from registered green gouache bodies.
 export const GUARDIAN_SLATE: Readonly<Record<string, { cx: number; cy: number; w: number; h: number }>> = {
-  a: { cx: 0.650, cy: 0.438, w: 0.544, h: 0.529 },
-  b: { cx: 0.523, cy: 0.440, w: 0.625, h: 0.529 },
-  c: { cx: 0.610, cy: 0.446, w: 0.600, h: 0.546 },
-  d: { cx: 0.570, cy: 0.455, w: 0.672, h: 0.548 },
-  roll: { cx: 0.579, cy: 0.414, w: 0.661, h: 0.616 },
-  bank_l1: { cx: 0.460, cy: 0.430, w: 0.673, h: 0.606 },
-  bank_r0: { cx: 0.542, cy: 0.435, w: 0.677, h: 0.642 },
-  bank_r1: { cx: 0.419, cy: 0.454, w: 0.647, h: 0.684 },
-  spiral0: { cx: 0.539, cy: 0.351, w: 0.650, h: 0.508 },
-  spiral1: { cx: 0.350, cy: 0.567, w: 0.531, h: 0.601 },
-  spiral2: { cx: 0.459, cy: 0.583, w: 0.615, h: 0.634 },
-  spiral3: { cx: 0.545, cy: 0.453, w: 0.666, h: 0.620 },
-  windup0: { cx: 0.564, cy: 0.434, w: 0.614, h: 0.605 },
-  windup1: { cx: 0.533, cy: 0.475, w: 0.553, h: 0.500 },
-  windup: { cx: 0.595, cy: 0.505, w: 0.609, h: 0.491 },
-  throw: { cx: 0.591, cy: 0.450, w: 0.665, h: 0.565 },
-  land0: { cx: 0.602, cy: 0.472, w: 0.616, h: 0.639 },
-  land1: { cx: 0.521, cy: 0.475, w: 0.644, h: 0.634 },
-  rest: { cx: 0.516, cy: 0.471, w: 0.691, h: 0.528 },
-  win: { cx: 0.516, cy: 0.471, w: 0.697, h: 0.522 },
+  a: {"cx": 0.5091145833333334, "cy": 0.4736328125, "w": 0.6848958333333334, "h": 0.525390625},
+  b: {"cx": 0.5091145833333334, "cy": 0.4736328125, "w": 0.6848958333333334, "h": 0.525390625},
+  c: {"cx": 0.5091145833333334, "cy": 0.4736328125, "w": 0.6848958333333334, "h": 0.525390625},
+  d: {"cx": 0.5091145833333334, "cy": 0.4736328125, "w": 0.6848958333333334, "h": 0.525390625},
+  roll: {"cx": 0.5091145833333334, "cy": 0.4736328125, "w": 0.6848958333333334, "h": 0.525390625},
+  bank_l1: {"cx": 0.5091145833333334, "cy": 0.4736328125, "w": 0.6848958333333334, "h": 0.525390625},
+  bank_r0: {"cx": 0.5091145833333334, "cy": 0.4736328125, "w": 0.6848958333333334, "h": 0.525390625},
+  bank_r1: {"cx": 0.5091145833333334, "cy": 0.4736328125, "w": 0.6848958333333334, "h": 0.525390625},
+  spiral0: {"cx": 0.5091145833333334, "cy": 0.4736328125, "w": 0.6848958333333334, "h": 0.525390625},
+  spiral1: {"cx": 0.5091145833333334, "cy": 0.4736328125, "w": 0.6848958333333334, "h": 0.525390625},
+  spiral2: {"cx": 0.5091145833333334, "cy": 0.4736328125, "w": 0.6848958333333334, "h": 0.525390625},
+  spiral3: {"cx": 0.5091145833333334, "cy": 0.4736328125, "w": 0.6848958333333334, "h": 0.525390625},
+  windup0: {"cx": 0.5091145833333334, "cy": 0.4736328125, "w": 0.6848958333333334, "h": 0.525390625},
+  windup1: {"cx": 0.5091145833333334, "cy": 0.4736328125, "w": 0.6848958333333334, "h": 0.525390625},
+  windup: {"cx": 0.5091145833333334, "cy": 0.4736328125, "w": 0.6848958333333334, "h": 0.525390625},
+  throw: {"cx": 0.5091145833333334, "cy": 0.4736328125, "w": 0.6848958333333334, "h": 0.525390625},
+  land0: {"cx": 0.5091145833333334, "cy": 0.4736328125, "w": 0.6848958333333334, "h": 0.525390625},
+  land1: {"cx": 0.5091145833333334, "cy": 0.4736328125, "w": 0.6848958333333334, "h": 0.525390625},
+  rest: {"cx": 0.5091145833333334, "cy": 0.4736328125, "w": 0.6848958333333334, "h": 0.525390625},
+  win: {"cx": 0.5078125, "cy": 0.4736328125, "w": 0.6875, "h": 0.525390625},
 };
 
 // ── R5-W2 · H1 · HOW BIG SHE IS — one owner, because two owners drifted ──────
@@ -689,6 +693,12 @@ export const BOSS_BEAT_SWELL = 0.13;
 // to one number — the one a cage with a child in it already uses.
 export const CAGE_DISPLAY_H = 34;
 
+/** CH01: match the hero's visible standing body, not transparent frame edges.
+ * hero2_idle: 430 alpha-covered px × (35/423); Merle idle: 421 visible
+ * px in a 428px frame. All Merle poses keep the existing shared idle scale.
+ * Source PNG alpha bounds are independently remeasured by merle-visible-size.test.ts. */
+export const MERLE_DISPLAY_H = (430 * 35 / 423) * 428 / 421;
+
 /** PK-R6 · C1 · display height per drained-object skin, in world px (TILE=16).
  *  Measured against each Batch-AC sheet's aspect so the six read as one set of
  *  classroom things at one scale rather than six unrelated stickers. */
@@ -722,13 +732,13 @@ export const entDisplayH = (e: EntSizeInput): number => {
   if (e.role === "swarm") return 34;
   if (e.role === "crusher") return 30;
   if (e.role === "door.trigger") return e.skin === "klecksdoor" ? 30 : 34;
-  if (e.role === "cage") return CAGE_DISPLAY_H;
+  if (e.role === "cage") return e.params?.classmate === "merle" && e.skin === "pencilcase" ? 54 : e.params?.shellArt === "photo_frame_cage" ? 54 : e.params?.shellArt === "device_locker" ? 48 : CAGE_DISPLAY_H;
   if (e.role === "drained") return DRAINED_DISPLAY_H[e.skin] ?? DRAINED_DISPLAY_H_DEFAULT;
   // PK-R6 · D: a classmate is a CHILD — the same height class as the hero, not
   // a creature. Her act cells carry props (a desk under her shoes, a window,
   // books on the floor) inside the same 512 px frame, so they read at the same
   // scale her idle does; the number is her standing height.
-  if (e.role === "classmate") return 30;
+  if (e.role === "classmate") return e.skin === "merle" ? MERLE_DISPLAY_H : 30;
   if (e.role === "powerup") return 26;
   // R3-16: a torn page, smaller than a being.
   // R5-W9 · F10 · D-611: 18 auf 22. Bei 18 px Hoehe ist das Blatt in Ruhe 14 px
@@ -1009,6 +1019,7 @@ const windupCell = (timer: number): string =>
   timer < WINDUP_DWELL_TICKS ? "windup0" : timer < WINDUP_DWELL_TICKS * 2 ? "windup1" : "windup";
 
 export interface EntPoseInput {
+  companion?: { pose: "stand" | "walk" | "jump" } | null;
   skin?: string;
   freedTick?: number;
   actingCell?: string;
@@ -1108,6 +1119,9 @@ export const entPoseCell = (e: EntPoseInput): string => {
   // put a cell on her that her sheet does not have, and entTex would silently
   // fall back to her idle. A person acting out a wrong action is not a dazed
   // enemy, and a freed friend waving is not a dazed one either.
+  if (e.role === "classmate" && e.state === "follow" && e.companion) {
+    return e.companion.pose === "jump" ? HOP_CELL : e.companion.pose === "walk" ? (ROAM_CELLS[bobFrame(e.timer, ROAM_CELLS.length)] ?? ROAM_CELLS[0]) : classmateCell("rest", e.timer);
+  }
   if (e.role === "classmate") return classmateCell(e.state, e.timer);
   // PK-R6 · D · AN OPENED CAGE IS DRAWN OPEN. Read before the dazed catch-all,
   // which is what a redeemed cage used to fall into: `pencilcase_dazed` does not

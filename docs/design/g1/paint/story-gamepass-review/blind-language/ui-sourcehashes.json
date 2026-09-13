@@ -1,0 +1,145 @@
+{
+  "created": "2026-09-13T14:39:51.411Z",
+  "pins": [
+    {
+      "file": "apps/web/app/(game)/play/[grade]/buch/[chapter]/BuchClient.tsx",
+      "sha256": "9b829460f6e22fd5b4cf8ea72f736c4fe21f98dafeceb588c94a34ebdd3221c6"
+    },
+    {
+      "file": "apps/web/app/(game)/play/[grade]/buch/[chapter]/page.tsx",
+      "sha256": "b866818468e51549c4848568706a48a6636e93c7cb14c330d958a2c7b54d7396"
+    },
+    {
+      "file": "apps/web/lib/paint-art-manifest.json",
+      "sha256": "3a68d799d854aa30198e48dd6c1b68320ef30303f45baa5e3b4ec7d72fdc3e77"
+    },
+    {
+      "file": "apps/web/lib/paint-story-profile.ts",
+      "sha256": "1c68f0cdbb52e4e9b0d11e4991f3be81451e60fde042562719ee41a7a95a815a"
+    },
+    {
+      "file": "apps/web/lib/regelbuch.ts",
+      "sha256": "12c36602558420ffc2d6fac930470ddc12a7ace0cced68169b6894decc411926"
+    },
+    {
+      "file": "content/corpus/stories/g1.st.lost-pages/paint/ch01.level.json",
+      "sha256": "92ec0c2e0c44ee3a8edae8a9d6471cf8612d413fa46349f6f8ed9bd5bfff0b6a"
+    },
+    {
+      "file": "packages/content-schema/src/game-tasks.ts",
+      "sha256": "9794cb305bcdd14bb61e6db8b3c065ab1bfccce414f022cb22e99d2a33efadc7"
+    },
+    {
+      "file": "packages/game-paint/src/PaintGame.tsx",
+      "sha256": "d4f3b3eb556438ebf4f4eb3a84abdfe8d1b023f09dbfc49b769aff7a90fefec8"
+    },
+    {
+      "file": "packages/game-paint/src/PaintScene.ts",
+      "sha256": "ce69fa3103cabbd1018bc1df3504fb84844856f0bbbd3eb7330a7f095ef840b8"
+    },
+    {
+      "file": "packages/game-paint/src/anim.ts",
+      "sha256": "2c4dd5f2f91dfd8a4bd5ae07b0483d35bdb232e74600e3087d6ce4748b983ee0"
+    },
+    {
+      "file": "packages/game-paint/src/artScope.ts",
+      "sha256": "93f2687e7252bb301b345470cb6e594c5b3904f6bb8e10dfb39fc2f4dd0b65c6"
+    },
+    {
+      "file": "packages/game-paint/src/cards/CardHost.tsx",
+      "sha256": "38a98ef2d01d68d130ce0fb033be80a2fe466ebf1a2dde82d97ecd5d09668873"
+    },
+    {
+      "file": "packages/game-paint/src/cards/CardShell.tsx",
+      "sha256": "90286110ed9b7e195f25803ccd49d6514c17e7d13ce942fb746b339247da4e23"
+    },
+    {
+      "file": "packages/game-paint/src/cards/Glance.tsx",
+      "sha256": "7a418aca5fb53fc0f816065e600a72e605833a3e2a5ae113dd3840ee2bf4f5db"
+    },
+    {
+      "file": "packages/game-paint/src/cards/arena.ts",
+      "sha256": "fcfd48d311d99abd0439e47e6abad888514387d40a1b16c203425f216c1d22ca"
+    },
+    {
+      "file": "packages/game-paint/src/cards/routing.ts",
+      "sha256": "0a2393bff04113dd08d6ec0149f1c907cf2d0841f6591944f867de519170b66a"
+    },
+    {
+      "file": "packages/game-paint/src/cards/run-variants.ts",
+      "sha256": "0e08630cf37a1aaa0c5d61be3a240446da828daf321ba020a9d2b7eab419ef88"
+    },
+    {
+      "file": "packages/game-paint/src/cards/variety.ts",
+      "sha256": "b4d27c4fdcd35ce585763e89ac08c7b111a1c566bbaa1a8c894a876bb3095eca"
+    },
+    {
+      "file": "packages/game-paint/src/companion.ts",
+      "sha256": "cd93384dd8a6f06d20d33acff0e7efd16a65a66f811f74a52265a184f3bb50bb"
+    },
+    {
+      "file": "packages/game-paint/src/entities.ts",
+      "sha256": "69ceb208edf558b60b7eaffe5ddcb889e010f7448d3eaea8ba6a2042f34f5e26"
+    },
+    {
+      "file": "packages/game-paint/src/sim.ts",
+      "sha256": "84b36997bcaa59011d78df1e07d6cfc7f30dcaed8e4d3a8b3b090467cc752d2f"
+    },
+    {
+      "file": "packages/game-paint/src/story/ChalkGreeting.tsx",
+      "sha256": "0529659bcfd72b5e29dc797a4512a3d3ebc82eac3213a56ced38ba27435f5fea"
+    },
+    {
+      "file": "packages/game-paint/src/story/ClassPhoto.tsx",
+      "sha256": "5206134f5129442af1bfdecff33bcda7ad9fd55b28697b4b6293364360f0d3e6"
+    },
+    {
+      "file": "packages/game-paint/src/story/KlecksSpeaker.tsx",
+      "sha256": "28874620c15c44378cd9e1028d8c651c08d1d7102b629a7ac9827ac8a1bf0bb0"
+    },
+    {
+      "file": "packages/game-paint/src/story/NumberSwarmPlate.tsx",
+      "sha256": "327104d2c87c6f06cdc4f31ac998db879834ee76502b2be8f8c424b95b3045f8"
+    },
+    {
+      "file": "packages/game-paint/src/story/StoryComic.tsx",
+      "sha256": "ab1613aae383b7a0636e9450c84a785a6538a3f32e7f1864098c67107662a39a"
+    },
+    {
+      "file": "packages/game-paint/src/story/StoryName.tsx",
+      "sha256": "785ce3c31fed60e4b90851d38462bec92b164be2db23ef82f3c17caa46ad4150"
+    },
+    {
+      "file": "packages/game-paint/src/story/ability-lore.ts",
+      "sha256": "930b39c309822b823b5d14bf08127178c0a9293b9b1d9372eaddb158dbf275b3"
+    },
+    {
+      "file": "packages/game-paint/src/story/ch01-story.ts",
+      "sha256": "70abc76d15c26993c87d0ddb2da0a0e966aa51b994ad4e2482f79c3264b7d86f"
+    },
+    {
+      "file": "packages/game-paint/src/story/ink-paint.ts",
+      "sha256": "8c93f9171ac5351977a4237f3c3999a14b8cf19d4eeabaab377cc26bb0e9d461"
+    },
+    {
+      "file": "packages/game-paint/src/story/number-swarm.ts",
+      "sha256": "50a280709513b6fc1852502f2f4c787b3afc4d5834862b607e143ecd64666578"
+    },
+    {
+      "file": "packages/game-paint/src/story/picture-windows.ts",
+      "sha256": "e5f794b8ee65e5f63873d64e5799d799291224ea46bdfa4e78bf81cae958fdb4"
+    },
+    {
+      "file": "packages/game-paint/src/tape.ts",
+      "sha256": "b9022dc721cf4d9995df06061abf80aaa1847989bf2042551e25c753215bdf80"
+    },
+    {
+      "file": "packages/game-paint/src/visualBodies.ts",
+      "sha256": "185514f52d607f758fc11a0e0aa4141b9d9732532b8f1ce43fc87be71eb11bc9"
+    },
+    {
+      "file": "content/corpus/stories/g1.st.lost-pages/paint/ch01.tasks.v2.json",
+      "sha256": "c2dce3cfd76a7188ce1f9cf2cb8512209e8a2bdc3a8b91aed59ee59f48f264eb"
+    }
+  ]
+}

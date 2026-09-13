@@ -1,0 +1,41 @@
+{
+  "method": "Every nonzero stencil-alpha pixel must have255alpha. Outside mask must0alpha. Brightneutral screen is read-only RGBmax>150 and spread<10, components4connected; isolated abrasion highlights are distinguished from repeated checkerboard squares by actual image inspection.",
+  "results": [
+    {
+      "stem": "body_p2_ostwand_treppe_boden",
+      "width": 2368,
+      "height": 1628,
+      "required": 1101824,
+      "missing": 0,
+      "partial": 0,
+      "outside": 0,
+      "brightNeutral": 84,
+      "neutralComponents": 32,
+      "maxNeutralComponent": 13
+    },
+    {
+      "stem": "body_p2_deckenbahn_ost",
+      "width": 2368,
+      "height": 540,
+      "required": 208896,
+      "missing": 0,
+      "partial": 0,
+      "outside": 0,
+      "brightNeutral": 54,
+      "neutralComponents": 27,
+      "maxNeutralComponent": 7
+    },
+    {
+      "stem": "body_p3_ostmauer_sims",
+      "width": 1536,
+      "height": 796,
+      "required": 761856,
+      "missing": 0,
+      "partial": 0,
+      "outside": 0,
+      "brightNeutral": 0,
+      "neutralComponents": 0,
+      "maxNeutralComponent": 0
+    }
+  ]
+}

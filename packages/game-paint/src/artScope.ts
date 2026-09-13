@@ -34,6 +34,7 @@ import { AUFTAKT_STEMS, GLYPH_STEMS, HERO2_STEMS, HERO_STEMS, PAINTED_ICON_NAMES
 import { CANOPY_PHASES, COMPOSITION, compositionStems } from "./composition.ts";
 import { phaseIsOneBlock } from "./mass.ts";
 import { CHALK_PROJECTILE_STEMS } from "./entities.ts";
+import { CH01_COMIC } from "./story/ch01-story.ts";
 
 /** The shape this module needs. Structural on purpose: the CI gate hands it
  *  raw parsed JSON, the scene hands it a PaintLevel, and both must fit. */
@@ -125,6 +126,11 @@ export const ALWAYS_STEMS: readonly string[] = [...HERO_STEMS, ...HERO2_STEMS];
  */
 export const domArtStems = (level: ScopeLevel): Set<string> => {
   const out = new Set<string>();
+  if (level.chapter === "ch01") {
+    for (const panel of CH01_COMIC) out.add(panel.stem);
+    out.add("klecks_mentor");
+    out.add("klassenfoto_a");
+  }
   if (level.goalPlate !== undefined) out.add(level.goalPlate);
   if (level.scorePlate !== undefined) out.add(level.scorePlate);
   if (level.doorPlate !== undefined) out.add(level.doorPlate);
@@ -210,12 +216,23 @@ export const phaseRequiredStems = (level: ScopeLevel, phaseId: string, label = "
   };
   const ph = phaseById(level, phaseId);
   if (ph === null) return out;
+  if (level.chapter === "ch01" && ph.rows.some(row => row.includes("w"))) need("ink_liquid", "painted ink body");
   for (const g of new Set(ph.rows.join(""))) {
     for (const stem of GLYPH_STEMS[g] ?? []) need(stem, `${label} ${ph.id} glyph '${g}'`);
   }
   for (const stem of collectStems(effectiveCollectSkin(level, ph),ph.collectAnimation)) need(stem, `${label} ${ph.id} collectible`);
   if (level.heroArtSet === "zoo-v2") for (const stem of ZOO_HERO_STEMS) need(stem,"zoo hero actions");
   for (const e of ph.entities) {
+    if (e.params?.curseVisual === "violet-ink") need("curse_violet", `${label} ${ph.id} ink curse ${e.id}`);
+    if (e.params?.shellArt === "photo_frame_cage") {
+      for (const suffix of ["a", "open"]) need(`photo_frame_cage_${suffix}`, `${label} ${ph.id} class photo frame`);
+    }
+    if (e.params?.shellArt === "device_locker") {
+      for (const suffix of ["a", "b", "open"]) need(`device_locker_${suffix}`, `${label} ${ph.id} school cabinet`);
+      if (typeof e.params.captive === "string") need(`obj_${e.params.captive}`, `${label} ${ph.id} cabinet contents`);
+    }
+    if (level.chapter === "ch01" && e.role === "cage" && e.params?.captive === "picture") need("klassenfoto_a", `${label} ${ph.id} actual class photo`);
+    if (e.params?.classmate === "merle") need("merle_caged0", `${label} ${ph.id} Merle inside the case`);
     if (e.role === "cage" && e.params?.artSet === "zoo-v2" && isCaptiveKey(e.params?.captive)) {
       need(captiveStem(e.params.captive), `${label} ${ph.id} captive ${e.id}`);
       need(`obj_${e.params.captive}`, `${label} ${ph.id} freed captive ${e.id}`);
@@ -288,7 +305,11 @@ export const levelRequiredStems = (level: ScopeLevel, label = ""): Map<string, s
  *   Zoo opt-ins use the shared registered cells instead; StageV2 pose validation
  *   and the required-stem floor keep that explicit contract covered.
  */
-export const phaseArtScope = (level: ScopeLevel, phaseId: string, present: Iterable<string>): Set<string> => {
+/** Runtime can omit an unearned companion. Without runtime state, audits and
+ * prefetch plans deliberately count the maximum reachable art of the phase. */
+export interface ArtScopeRuntime { freedCageIds: readonly string[] }
+
+export const phaseArtScope = (level: ScopeLevel, phaseId: string, present: Iterable<string>, runtime?: ArtScopeRuntime): Set<string> => {
   const disk = present instanceof Set ? present : new Set(present);
   const out = new Set<string>();
   const add = (s: string): void => {
@@ -308,6 +329,23 @@ export const phaseArtScope = (level: ScopeLevel, phaseId: string, present: Itera
 
   const ph = phaseById(level, phaseId);
   if (ph === null) return out;
+  if (level.chapter === "ch01") {
+    const rescues = allScopePhases(level).flatMap(phase => phase.entities)
+      .filter(e => e.role === "cage" && e.params?.classmate === "merle");
+    if (rescues.some(e => runtime === undefined || (e.id !== undefined && runtime.freedCageIds.includes(e.id)))) closure("merle");
+  }
+  if (level.chapter === "ch01" && ph.rows.some(row => row.includes("w"))) out.add("ink_liquid");
+  for (const e of ph.entities) {
+    if (e.params?.curseVisual === "violet-ink") add("curse_violet");
+    if (e.params?.shellArt === "photo_frame_cage") {
+      for (const suffix of ["a", "open"]) add(`photo_frame_cage_${suffix}`);
+    }
+    if (e.params?.shellArt === "device_locker") {
+      for (const suffix of ["a", "b", "open"]) add(`device_locker_${suffix}`);
+      if (typeof e.params.captive === "string") add(`obj_${e.params.captive}`);
+    }
+    if (e.params?.classmate === "merle") add("merle_caged0");
+  }
   if (level.heroArtSet === "zoo-v2") for (const s of ZOO_HERO_STEMS) add(s);
   for (const s of collectStems(effectiveCollectSkin(level,ph),ph.collectAnimation)) add(s);
 
@@ -351,7 +389,7 @@ export const phaseArtScope = (level: ScopeLevel, phaseId: string, present: Itera
     // R5-W3 · A5 · D-48: the captive is scoped BY KEY, one layer per cage, and
     // deliberately not through `closure` — see the prefix note in artManifest.
     if (e.role === "cage" && isCaptiveKey(e.params?.captive)) {
-      add(captiveStem(e.params.captive));
+      add(level.chapter === "ch01" && e.params.captive === "picture" ? "klassenfoto_a" : captiveStem(e.params.captive));
       if (e.params?.artSet === "zoo-v2") add(`obj_${e.params.captive}`);
     }
   }

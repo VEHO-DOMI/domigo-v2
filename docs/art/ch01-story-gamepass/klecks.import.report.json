@@ -1,0 +1,154 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "schema": "ch01TerrainImport@1",
+  "manifestPath": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/klecks.manifest.json",
+  "manifestSha256": "f961bc65c2daa19083fae9890dc986859d5daea365d0f4c04d0e016bff71c0f2",
+  "importerSha256": "1c9e3347f2cabd9d5f18c58d982b0a0b6d810359cb61d1697ba7d296bdc201f5",
+  "fringeModuleSha256": "51e4044e953feb7e3af96b2d4b562cf73a97dd596d9b7cb2c7d3d688c0145e80",
+  "node": "v24.20.0",
+  "pngjsVersion": "7.0.0",
+  "convention": "pixel centres; strict monotone inverse map; no extrapolation; outside source transparent; premultiplied bilinear",
+  "assets": [
+    {
+      "stem": "klecks_mentor",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/sources/klecks-key.png",
+      "target": "/Users/veho/Code/codex-lab/trial-berichte/CH01_STORY_SPIELPASS/imported-mentor/klecks_mentor.png",
+      "sourceSha256": "8b0b53c811bb00695795725202e1f8480f82c7cd1bdde37cebe7ec3fc218fd98",
+      "sourceRgbaSha256": "ed8caa2951ed34de6a26ffac83366243755874d59ff6b1420fb5906f24fb1fa6",
+      "keyedRgbaSha256": "a33ee092a5eeef2c82ec95df30f25fd8dbb93317fd4740187d01f45a4895174e",
+      "previousTargetSha256": null,
+      "outputSha256": "e357fd1fe3c6a9032ac06c0ce33997a57118a9916de09ada9944cacabcc712c1",
+      "outputRgbaSha256": "b4c0c37399aae219c94b53011ff1836e6d2d4f5c0a3059587568c7616c62469b",
+      "outputBytes": 210279,
+      "sourceCanvas": {
+        "width": 1254,
+        "height": 1254
+      },
+      "outputCanvas": {
+        "width": 512,
+        "height": 512
+      },
+      "x": [
+        [
+          0,
+          0
+        ],
+        [
+          511,
+          1253
+        ]
+      ],
+      "y": [
+        [
+          0,
+          0
+        ],
+        [
+          511,
+          1253
+        ]
+      ],
+      "sourceBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1254,
+        "height": 1254,
+        "pixels": 1572516
+      },
+      "keyedBounds": {
+        "x": 0,
+        "y": 137,
+        "width": 1178,
+        "height": 1117,
+        "pixels": 508140
+      },
+      "keyedInkBounds": {
+        "x": 202,
+        "y": 137,
+        "width": 976,
+        "height": 990,
+        "pixels": 507949
+      },
+      "beforeClipBounds": {
+        "x": 0,
+        "y": 56,
+        "width": 481,
+        "height": 456,
+        "pixels": 85061
+      },
+      "clip": null,
+      "outputBounds": {
+        "x": 0,
+        "y": 56,
+        "width": 481,
+        "height": 456,
+        "pixels": 85061
+      },
+      "outputInkBounds": {
+        "x": 82,
+        "y": 56,
+        "width": 399,
+        "height": 404,
+        "pixels": 84858
+      },
+      "boundsConvention": "integer origin and extent; Bounds alpha>0, InkBounds alpha>CUT_ALPHA",
+      "cutAlpha": 16,
+      "key": {
+        "cut": 1064376,
+        "softened": 2173,
+        "keyRgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 40,
+        "softTolerance": 110
+      },
+      "sourceCleanup": {
+        "specks": {
+          "healed": 1629,
+          "cut": 0,
+          "total": 1629
+        },
+        "fringe": {
+          "healed": 4822,
+          "cut": 0,
+          "total": 4822,
+          "threshold": 19
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "outputCleanup": {
+        "specks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "fringe": {
+          "healed": 2,
+          "cut": 0,
+          "total": 2,
+          "threshold": 19
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "chromaMatte": null
+    }
+  ]
+}

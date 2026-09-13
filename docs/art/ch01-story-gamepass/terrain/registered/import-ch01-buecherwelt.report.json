@@ -1,0 +1,853 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "schema": "ch01TerrainImport@1",
+  "manifestPath": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/terrain/import-manifest.json",
+  "manifestSha256": "f4ac8189ffba18e37b66cb4db112cbfa0932a758909a4e34c7b533e7c4f616c2",
+  "importerSha256": "19413e21239e9480dccba9557a1b913be05abe0c72c1681025a7da0f4c058884",
+  "fringeModuleSha256": "51e4044e953feb7e3af96b2d4b562cf73a97dd596d9b7cb2c7d3d688c0145e80",
+  "node": "v24.20.0",
+  "pngjsVersion": "7.0.0",
+  "convention": "pixel centres; strict monotone inverse map; no extrapolation; outside source transparent; premultiplied bilinear",
+  "assets": [
+    {
+      "stem": "body_p2_ostwand_treppe_boden",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/terrain/sources/body-p2-east-floor-source.png",
+      "target": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/terrain/registered/body_p2_ostwand_treppe_boden.png",
+      "sourceSha256": "edf71bec6a702495a6ca4e17f5081c0b1457df0605c5ea58cf9b582141004e7e",
+      "sourceRgbaSha256": "ccaab27e67b64d0a9523a4d73869a72b82322cad8af42631ffa40c412b246425",
+      "keyedRgbaSha256": "ccaab27e67b64d0a9523a4d73869a72b82322cad8af42631ffa40c412b246425",
+      "previousTargetSha256": "f6d554fd6e0a3edfd0d8ee6670dd8d938e5265ba0ff3ab18d1f48c914b3d614d",
+      "outputSha256": "f6d554fd6e0a3edfd0d8ee6670dd8d938e5265ba0ff3ab18d1f48c914b3d614d",
+      "outputRgbaSha256": "ec8d0438eb8c82c6f9276e753b0f53e443d4c6be2666e2ab805a13e7c2e61eec",
+      "outputBytes": 1874433,
+      "sourceCanvas": {
+        "width": 1512,
+        "height": 1040
+      },
+      "sourceCrop": null,
+      "croppedCanvas": {
+        "width": 1512,
+        "height": 1040
+      },
+      "croppedBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 1040,
+        "pixels": 1572480
+      },
+      "croppedRgbaSha256": "ccaab27e67b64d0a9523a4d73869a72b82322cad8af42631ffa40c412b246425",
+      "registeredAxes": {
+        "x": [
+          [
+            0,
+            20
+          ],
+          [
+            127,
+            130
+          ],
+          [
+            128,
+            141
+          ],
+          [
+            255,
+            203
+          ],
+          [
+            256,
+            215
+          ],
+          [
+            319,
+            242
+          ],
+          [
+            320,
+            260
+          ],
+          [
+            2303,
+            1436
+          ],
+          [
+            2304,
+            1446
+          ],
+          [
+            2367,
+            1498
+          ]
+        ],
+        "y": [
+          [
+            0,
+            8
+          ],
+          [
+            12,
+            22
+          ],
+          [
+            716,
+            486
+          ],
+          [
+            907,
+            559
+          ],
+          [
+            908,
+            579
+          ],
+          [
+            1099,
+            652
+          ],
+          [
+            1100,
+            674
+          ],
+          [
+            1227,
+            745
+          ],
+          [
+            1228,
+            757
+          ],
+          [
+            1611,
+            1016
+          ],
+          [
+            1627,
+            1026
+          ]
+        ],
+        "space": "original"
+      },
+      "outputCanvas": {
+        "width": 2368,
+        "height": 1628
+      },
+      "x": [
+        [
+          0,
+          20
+        ],
+        [
+          127,
+          130
+        ],
+        [
+          128,
+          141
+        ],
+        [
+          255,
+          203
+        ],
+        [
+          256,
+          215
+        ],
+        [
+          319,
+          242
+        ],
+        [
+          320,
+          260
+        ],
+        [
+          2303,
+          1436
+        ],
+        [
+          2304,
+          1446
+        ],
+        [
+          2367,
+          1498
+        ]
+      ],
+      "y": [
+        [
+          0,
+          8
+        ],
+        [
+          12,
+          22
+        ],
+        [
+          716,
+          486
+        ],
+        [
+          907,
+          559
+        ],
+        [
+          908,
+          579
+        ],
+        [
+          1099,
+          652
+        ],
+        [
+          1100,
+          674
+        ],
+        [
+          1227,
+          745
+        ],
+        [
+          1228,
+          757
+        ],
+        [
+          1611,
+          1016
+        ],
+        [
+          1627,
+          1026
+        ]
+      ],
+      "sourceBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 1040,
+        "pixels": 1572480
+      },
+      "keyedBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 1040,
+        "pixels": 1572480
+      },
+      "keyedInkBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 1040,
+        "pixels": 1572480
+      },
+      "beforeClipBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 2368,
+        "height": 1628,
+        "pixels": 3855104
+      },
+      "clip": {
+        "path": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/terrain/masks/body_p2_ostwand_treppe_boden.MASKE.png",
+        "sha256": "7210a87daa9dd8b7178d41c77c6d4582a957b03bc7e58154bbf454be52265396",
+        "rgbaSha256": "9b104a3b7a92bc793f033e939c41b20329bc47b456ace1afff16cbfe5f719ce9",
+        "bounds": {
+          "x": 0,
+          "y": 12,
+          "width": 2368,
+          "height": 1600,
+          "pixels": 1101824
+        },
+        "cut": 2753280,
+        "rule": "mask alpha=0 cuts; all nonzero mask alpha leaves source alpha unchanged"
+      },
+      "outputBounds": {
+        "x": 0,
+        "y": 12,
+        "width": 2368,
+        "height": 1600,
+        "pixels": 1101824
+      },
+      "outputInkBounds": {
+        "x": 0,
+        "y": 12,
+        "width": 2368,
+        "height": 1600,
+        "pixels": 1101824
+      },
+      "boundsConvention": "integer origin and extent; Bounds alpha>0, InkBounds alpha>CUT_ALPHA",
+      "cutAlpha": 16,
+      "key": {
+        "cut": 0,
+        "softened": 0,
+        "keyRgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 40,
+        "softTolerance": 110
+      },
+      "sourceCleanup": {
+        "specks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "fringe": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0,
+          "threshold": 34
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "chromaMatte": null,
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "outputCleanup": {
+        "specks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "fringe": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0,
+          "threshold": 36
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "chromaMatte": null,
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "chromaMatte": null
+    },
+    {
+      "stem": "body_p2_deckenbahn_ost",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/terrain/sources/body-p2-east-ceiling-source.png",
+      "target": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/terrain/registered/body_p2_deckenbahn_ost.png",
+      "sourceSha256": "6ee219f399a75ec1c2cc4b58b91e330a3462cf1e5d7ee1df59e53b002f136158",
+      "sourceRgbaSha256": "aa93e0c3840480e9309995c34b741b2430dddaf3ff2e7df151a089ee34c6ace6",
+      "keyedRgbaSha256": "19045f80e60dac867306e14320697a0fbfadd9d859bfa1ba9b97579a1f8d59ac",
+      "previousTargetSha256": "cd825984f843eef454b98bfd1023bd8abfc2cf9764d0ec529c650a3b824a15a7",
+      "outputSha256": "d121f4b515cb1ed51569df199fcd3f599e3a9e409d70ff5d4e5d82082fc93c73",
+      "outputRgbaSha256": "44e2d73c438cd227b029541af3326499c885b952eba372820c8f569c6365bb70",
+      "outputBytes": 425284,
+      "sourceCanvas": {
+        "width": 1907,
+        "height": 825
+      },
+      "sourceCrop": null,
+      "croppedCanvas": {
+        "width": 1907,
+        "height": 825
+      },
+      "croppedBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1907,
+        "height": 825,
+        "pixels": 1573275
+      },
+      "croppedRgbaSha256": "aa93e0c3840480e9309995c34b741b2430dddaf3ff2e7df151a089ee34c6ace6",
+      "registeredAxes": {
+        "x": [
+          [
+            0,
+            18
+          ],
+          [
+            127,
+            172
+          ],
+          [
+            128,
+            208
+          ],
+          [
+            2367,
+            1878
+          ]
+        ],
+        "y": [
+          [
+            0,
+            38
+          ],
+          [
+            12,
+            54
+          ],
+          [
+            75,
+            130
+          ],
+          [
+            76,
+            184
+          ],
+          [
+            523,
+            770
+          ],
+          [
+            539,
+            790
+          ]
+        ],
+        "space": "original"
+      },
+      "outputCanvas": {
+        "width": 2368,
+        "height": 540
+      },
+      "x": [
+        [
+          0,
+          18
+        ],
+        [
+          127,
+          172
+        ],
+        [
+          128,
+          208
+        ],
+        [
+          2367,
+          1878
+        ]
+      ],
+      "y": [
+        [
+          0,
+          38
+        ],
+        [
+          12,
+          54
+        ],
+        [
+          75,
+          130
+        ],
+        [
+          76,
+          184
+        ],
+        [
+          523,
+          770
+        ],
+        [
+          539,
+          790
+        ]
+      ],
+      "sourceBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1907,
+        "height": 825,
+        "pixels": 1573275
+      },
+      "keyedBounds": {
+        "x": 0,
+        "y": 42,
+        "width": 1891,
+        "height": 741,
+        "pixels": 309063
+      },
+      "keyedInkBounds": {
+        "x": 0,
+        "y": 42,
+        "width": 1891,
+        "height": 741,
+        "pixels": 309019
+      },
+      "beforeClipBounds": {
+        "x": 0,
+        "y": 3,
+        "width": 2368,
+        "height": 531,
+        "pixels": 231488
+      },
+      "clip": {
+        "path": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/terrain/masks/body_p2_deckenbahn_ost.MASKE.png",
+        "sha256": "72c549591cffc9b133f404c37802ecec8e9010a510a5d780b2dfc6ad6c2adce8",
+        "rgbaSha256": "5bea3255222a8e28dff8514fcc6c17fd58d9c8a387b717f508e695c33d111304",
+        "bounds": {
+          "x": 0,
+          "y": 12,
+          "width": 2368,
+          "height": 512,
+          "pixels": 208896
+        },
+        "cut": 22592,
+        "rule": "mask alpha=0 cuts; all nonzero mask alpha leaves source alpha unchanged"
+      },
+      "outputBounds": {
+        "x": 0,
+        "y": 12,
+        "width": 2368,
+        "height": 512,
+        "pixels": 208896
+      },
+      "outputInkBounds": {
+        "x": 0,
+        "y": 12,
+        "width": 2368,
+        "height": 512,
+        "pixels": 208896
+      },
+      "boundsConvention": "integer origin and extent; Bounds alpha>0, InkBounds alpha>CUT_ALPHA",
+      "cutAlpha": 16,
+      "key": {
+        "cut": 1264211,
+        "softened": 898,
+        "keyRgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 40,
+        "softTolerance": 110
+      },
+      "sourceCleanup": {
+        "specks": {
+          "healed": 61,
+          "cut": 1,
+          "total": 62
+        },
+        "fringe": {
+          "healed": 5738,
+          "cut": 0,
+          "total": 5738,
+          "threshold": 27
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "chromaMatte": null,
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "outputCleanup": {
+        "specks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "fringe": {
+          "healed": 2,
+          "cut": 0,
+          "total": 2,
+          "threshold": 24
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "chromaMatte": null,
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "chromaMatte": null
+    },
+    {
+      "stem": "body_p3_ostmauer_sims",
+      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/terrain/sources/body-p3-east-wall-source.png",
+      "target": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/terrain/registered/body_p3_ostmauer_sims.png",
+      "sourceSha256": "8f9cdafa48a0008c73b885a33310086df0fd0d1042af7983120cd45b23727506",
+      "sourceRgbaSha256": "109446734522cfdf52ec13847959cef0be8b6df41ad722236598e0a8b94cc573",
+      "keyedRgbaSha256": "2f2f2b676648419b56b11b15960049a65befec4b50055db1b175a69ee03a54a4",
+      "previousTargetSha256": "544b8db1f08c2dc37fc5a4716c4f17f5152a38695ba020b33b1079d9bbc4fc99",
+      "outputSha256": "fd00259664ec65051c2f2d285f73a0f0a2125cc6aca13a4838ef41b64ec859a6",
+      "outputRgbaSha256": "53b3adf1a907e8bd3a30b59f6f1ae8c19e512b71cc66852a3189c5a9f60ded49",
+      "outputBytes": 1379488,
+      "sourceCanvas": {
+        "width": 1742,
+        "height": 903
+      },
+      "sourceCrop": null,
+      "croppedCanvas": {
+        "width": 1742,
+        "height": 903
+      },
+      "croppedBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1742,
+        "height": 903,
+        "pixels": 1573026
+      },
+      "croppedRgbaSha256": "109446734522cfdf52ec13847959cef0be8b6df41ad722236598e0a8b94cc573",
+      "registeredAxes": {
+        "x": [
+          [
+            0,
+            2
+          ],
+          [
+            639,
+            721
+          ],
+          [
+            640,
+            729
+          ],
+          [
+            1023,
+            1156
+          ],
+          [
+            1024,
+            1165
+          ],
+          [
+            1535,
+            1739
+          ]
+        ],
+        "y": [
+          [
+            0,
+            0
+          ],
+          [
+            76,
+            89
+          ],
+          [
+            267,
+            300
+          ],
+          [
+            268,
+            307
+          ],
+          [
+            459,
+            518
+          ],
+          [
+            460,
+            526
+          ],
+          [
+            779,
+            900
+          ],
+          [
+            795,
+            917
+          ]
+        ],
+        "space": "original"
+      },
+      "outputCanvas": {
+        "width": 1536,
+        "height": 796
+      },
+      "x": [
+        [
+          0,
+          2
+        ],
+        [
+          639,
+          721
+        ],
+        [
+          640,
+          729
+        ],
+        [
+          1023,
+          1156
+        ],
+        [
+          1024,
+          1165
+        ],
+        [
+          1535,
+          1739
+        ]
+      ],
+      "y": [
+        [
+          0,
+          0
+        ],
+        [
+          76,
+          89
+        ],
+        [
+          267,
+          300
+        ],
+        [
+          268,
+          307
+        ],
+        [
+          459,
+          518
+        ],
+        [
+          460,
+          526
+        ],
+        [
+          779,
+          900
+        ],
+        [
+          795,
+          917
+        ]
+      ],
+      "sourceBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1742,
+        "height": 903,
+        "pixels": 1573026
+      },
+      "keyedBounds": {
+        "x": 0,
+        "y": 84,
+        "width": 1742,
+        "height": 819,
+        "pixels": 1015147
+      },
+      "keyedInkBounds": {
+        "x": 0,
+        "y": 84,
+        "width": 1742,
+        "height": 819,
+        "pixels": 1015032
+      },
+      "beforeClipBounds": {
+        "x": 0,
+        "y": 72,
+        "width": 1536,
+        "height": 709,
+        "pixels": 765437
+      },
+      "clip": {
+        "path": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/terrain/masks/body_p3_ostmauer_sims.MASKE.png",
+        "sha256": "83bd9d523ac542d04978b609d4935896108946fee6b4c7e8036e37fe495caa1d",
+        "rgbaSha256": "4341e2622ace2d364a8ebb444e9975639c7528b125ac2d8f375bdd7eb14de60c",
+        "bounds": {
+          "x": 0,
+          "y": 76,
+          "width": 1536,
+          "height": 704,
+          "pixels": 761856
+        },
+        "cut": 3581,
+        "rule": "mask alpha=0 cuts; all nonzero mask alpha leaves source alpha unchanged"
+      },
+      "outputBounds": {
+        "x": 0,
+        "y": 76,
+        "width": 1536,
+        "height": 704,
+        "pixels": 761856
+      },
+      "outputInkBounds": {
+        "x": 0,
+        "y": 76,
+        "width": 1536,
+        "height": 704,
+        "pixels": 761856
+      },
+      "boundsConvention": "integer origin and extent; Bounds alpha>0, InkBounds alpha>CUT_ALPHA",
+      "cutAlpha": 16,
+      "key": {
+        "cut": 557879,
+        "softened": 1211,
+        "keyRgb": [
+          255,
+          0,
+          255
+        ],
+        "tolerance": 40,
+        "softTolerance": 110
+      },
+      "sourceCleanup": {
+        "specks": {
+          "healed": 39,
+          "cut": 0,
+          "total": 39
+        },
+        "fringe": {
+          "healed": 2190,
+          "cut": 0,
+          "total": 2190,
+          "threshold": 22
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "chromaMatte": null,
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "outputCleanup": {
+        "specks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "fringe": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0,
+          "threshold": 21
+        },
+        "finalSpecks": {
+          "healed": 0,
+          "cut": 0,
+          "total": 0
+        },
+        "chromaMatte": null,
+        "remaining": {
+          "fringe": 0,
+          "specks": 0
+        }
+      },
+      "chromaMatte": null
+    }
+  ]
+}

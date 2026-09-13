@@ -1,0 +1,206 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "registration": "Full foreground plus6px source crop; no matte colour treatment. Both locker hulls align to x20..570,y16..676 on identical820x736 canvases. Right-open leaf keeps extra width and depth.",
+  "assets": [
+    {
+      "source": "classphoto-15-original.png",
+      "stem": "klassenfoto_a",
+      "width": 1408,
+      "height": 972,
+      "sourceCrop": {
+        "x": 60,
+        "y": 23,
+        "width": 1415,
+        "height": 977,
+        "foregroundBounds": {
+          "x": 66,
+          "y": 29,
+          "width": 1403,
+          "height": 965
+        }
+      },
+      "x": [
+        [
+          0,
+          60
+        ],
+        [
+          1407,
+          1474
+        ]
+      ],
+      "y": [
+        [
+          0,
+          23
+        ],
+        [
+          971,
+          999
+        ]
+      ]
+    },
+    {
+      "source": "device-locker-empty-states-v2-original.png",
+      "stem": "device_locker_a",
+      "width": 820,
+      "height": 736,
+      "sourceCrop": {
+        "x": 70,
+        "y": 139,
+        "width": 565,
+        "height": 673,
+        "foregroundBounds": {
+          "x": 76,
+          "y": 145,
+          "width": 553,
+          "height": 661
+        }
+      },
+      "x": [
+        [
+          0,
+          55.92727272727272
+        ],
+        [
+          20,
+          76
+        ],
+        [
+          570,
+          628
+        ],
+        [
+          819,
+          877.9054545454545
+        ]
+      ],
+      "y": [
+        [
+          0,
+          129
+        ],
+        [
+          16,
+          145
+        ],
+        [
+          676,
+          805
+        ],
+        [
+          735,
+          864
+        ]
+      ]
+    },
+    {
+      "source": "device-locker-empty-states-v2-original.png",
+      "stem": "device_locker_b",
+      "width": 820,
+      "height": 736,
+      "sourceCrop": {
+        "x": 70,
+        "y": 139,
+        "width": 565,
+        "height": 673,
+        "foregroundBounds": {
+          "x": 76,
+          "y": 145,
+          "width": 553,
+          "height": 661
+        }
+      },
+      "x": [
+        [
+          0,
+          55.92727272727272
+        ],
+        [
+          20,
+          76
+        ],
+        [
+          570,
+          628
+        ],
+        [
+          819,
+          877.9054545454545
+        ]
+      ],
+      "y": [
+        [
+          0,
+          129
+        ],
+        [
+          16,
+          145
+        ],
+        [
+          676,
+          805
+        ],
+        [
+          735,
+          864
+        ]
+      ]
+    },
+    {
+      "source": "device-locker-empty-states-v2-original.png",
+      "stem": "device_locker_open",
+      "width": 820,
+      "height": 736,
+      "sourceCrop": {
+        "x": 734,
+        "y": 139,
+        "width": 762,
+        "height": 715,
+        "foregroundBounds": {
+          "x": 740,
+          "y": 145,
+          "width": 750,
+          "height": 703
+        }
+      },
+      "x": [
+        [
+          0,
+          720.6181818181818
+        ],
+        [
+          20,
+          740
+        ],
+        [
+          570,
+          1273
+        ],
+        [
+          819,
+          1514.3036363636363
+        ]
+      ],
+      "y": [
+        [
+          0,
+          129.14545454545456
+        ],
+        [
+          16,
+          145
+        ],
+        [
+          676,
+          799
+        ],
+        [
+          735,
+          857.4636363636364
+        ]
+      ]
+    }
+  ]
+}

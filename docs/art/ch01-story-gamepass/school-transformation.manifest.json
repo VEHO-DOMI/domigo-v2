@@ -1,0 +1,29 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "assets": [
+    {
+      "stem": "story_book",
+      "source": "/Users/veho/Code/codex-lab/trial-berichte/CH01_STORY_SPIELPASS/art-series/story_book_class-school-v3-original.png",
+      "sourceSha256": "2b6afe8968725847ce98ba211532608814228b4b7733574089ec3dd78e423f74",
+      "method": "Original byte copy, no raster modification",
+      "why": "Normal pupils before book; explicit visible transformation inside book"
+    },
+    {
+      "stem": "story_fall",
+      "source": "/Users/veho/Code/codex-lab/trial-berichte/CH01_STORY_SPIELPASS/art-series/story_fall_class-school-v3-original.png",
+      "sourceSha256": "80a266d61e1cda97ee4ec1032cfaeddaa41522d854fa8ad3c767f232a2a46cb7",
+      "method": "Original byte copy, no raster modification",
+      "why": "Normal pupils before book; explicit visible transformation inside book"
+    },
+    {
+      "stem": "story_transform",
+      "source": "/Users/veho/Code/codex-lab/trial-berichte/CH01_STORY_SPIELPASS/art-series/story_transform-original.png",
+      "sourceSha256": "40c3246bdd4e55b17af83875ab2dd8f5e268e17f3f1749449e147d91c7aacc68",
+      "method": "Original byte copy, no raster modification",
+      "why": "Normal pupils before book; explicit visible transformation inside book"
+    }
+  ],
+  "status": "historical-three-file-replacement-log",
+  "currentManifest": "panels.manifest.json",
+  "note": "Records the actual replacement step; final seven-panel source-to-runtime mapping is panels.manifest.json."
+}

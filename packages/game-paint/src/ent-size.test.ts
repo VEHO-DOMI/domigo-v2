@@ -60,8 +60,8 @@ const levelDateienAufDerPlatte = fs.readdirSync(STORIES)
   .filter((d) => fs.existsSync(d))
   .flatMap((d) => fs.readdirSync(d).filter((x) => /^ch\d{2}\.level\.json$/.test(x)));
 
-// ch01 bleibt der Traeger der KAPITEL-FORM-Gesetze unten (vier Ding-Kaefige, ein
-// Personen-Kaefig): das sind Aussagen ueber DIESES Kapitel, nicht ueber die
+// ch01 bleibt der Traeger der KAPITEL-FORM-Gesetze unten (zwei Gerätefächer,
+// ein Fotokäfig und ein Personen-Penal): das sind Aussagen ueber DIESES Kapitel, nicht ueber die
 // Tabelle. Die Tabellen-Gesetze laufen weiter unten ueber alle Kapitel.
 // Der ZWEITE, FREMDE Leser: die geteilte Kapitel-Aufloesung, die auch die Tore
 // fragen. Sie ist reines JavaScript ohne Typ-Deklaration, deshalb dynamisch
@@ -79,19 +79,40 @@ if (ch01 === undefined) throw new Error("ch01.level.json nicht gefunden — dies
 const everyEntity: Ent[] = ch01.entities;
 const cages = ch01.cages;
 
-describe("D-48 · every cage is drawn at one size", () => {
-  it("the chapter actually has cages (this suite cannot pass vacuously)", () => {
-    expect(cages.length).toBeGreaterThanOrEqual(5);
+// W36: the requested larger device windows and Merle/photo frames have distinct
+// measured registrations. Pin exact authored identities, not just a smaller count.
+const CH01_CAGE_HEIGHTS: Readonly<Record<string, number>> = {
+  "p1-cage1": 48,
+  "p2-cage-tablet": 48,
+  "p2-cage-merle": 54,
+  "p4-cage5": 54,
+};
+
+describe("D-48 · every cage uses its centrally registered size", () => {
+  it("the chapter contains exactly the two device lockers, Merle's case and photo frame", () => {
+    expect(cages.map((e) => ({
+      id: e.id, skin: e.skin, shell: e.params?.shellArt,
+      captive: e.params?.captive, classmate: e.params?.classmate,
+    }))).toEqual([
+      { id: "p1-cage1", skin: "satchel", shell: "device_locker", captive: "soundsystem", classmate: undefined },
+      { id: "p2-cage-tablet", skin: "satchel", shell: "device_locker", captive: "tablet", classmate: undefined },
+      { id: "p2-cage-merle", skin: "pencilcase", shell: undefined, captive: undefined, classmate: "merle" },
+      { id: "p4-cage5", skin: "satchel", shell: "photo_frame_cage", captive: "picture", classmate: undefined },
+    ]);
+    expect(Object.keys(CH01_CAGE_HEIGHTS).sort()).toEqual(cages.map((e) => e.id).sort());
   });
 
-  it("every cage in the shipped chapter draws CAGE_DISPLAY_H", () => {
-    for (const e of cages) expect(entDisplayH(e), `${e.id} (${e.skin})`).toBe(CAGE_DISPLAY_H);
+  it("the shipped frames draw their measured height, while the ordinary cage stays 34", () => {
+    expect(CAGE_DISPLAY_H).toBe(34);
+    expect(entDisplayH({ role: "cage", skin: "satchel" })).toBe(34);
+    for (const e of cages) expect(entDisplayH(e), `${e.id} (${e.skin})`).toBe(CH01_CAGE_HEIGHTS[e.id]);
   });
 
   it("a cage is never drawn smaller than the child it could hold", () => {
-    // the person-cage was raised to 34 for exactly this reason (PK-R6 · H2); the
-    // object-cages inherited the number rather than a second argument
-    expect(CAGE_DISPLAY_H).toBeGreaterThanOrEqual(entDisplayH({ role: "classmate", skin: "merle" }));
+    // Merle lives in the actual 54px pencilcase, not an ordinary object cage.
+    const personCase = cages.find(e => e.params?.classmate === "merle")!;
+    expect(personCase.id).toBe("p2-cage-merle");
+    expect(entDisplayH(personCase)).toBeGreaterThanOrEqual(entDisplayH({ role: "classmate", skin: "merle" }));
   });
 
   it("the size table still answers for every role the chapter ships", () => {
@@ -113,12 +134,12 @@ describe("D-48 · every cage is drawn at one size", () => {
 describe("D-48 · every cage says who is inside it", () => {
   // A cage holds a PERSON or a THING, never both, and the two are told apart by
   // which pointer the level declares: `classmate` for Merle, `captive` for the
-  // four objects. Merle needs no silhouette — she is a being of her own, and the
+  // three non-person finds. Merle needs no silhouette — she is a being of her own, and the
   // cage she is in is the only one whose occupant walks out.
   const objectCages = cages.filter((e) => typeof e.params?.classmate !== "string");
 
   it("the chapter has both kinds, so neither branch is untested", () => {
-    expect(objectCages.length).toBe(4);
+    expect(objectCages.map((e) => e.params?.captive)).toEqual(["soundsystem", "tablet", "picture"]);
     expect(cages.length - objectCages.length).toBe(1);
   });
 
@@ -189,8 +210,14 @@ describe("L0c · P7 · die Groessen-Tabelle antwortet fuer JEDES Kapitel", () =>
       for (const e of c.entities) expect(entDisplayH(e), `${c.name} · ${e.id} (${e.role})`).toBeGreaterThan(0);
     });
 
-    it(`${c.name}${entwurf}: jeder Kaefig wird auf CAGE_DISPLAY_H gezeichnet`, () => {
-      for (const e of c.cages) expect(entDisplayH(e), `${c.name} · ${e.id} (${e.skin})`).toBe(CAGE_DISPLAY_H);
+    it(`${c.name}${entwurf}: jeder Kaefig behält seine ausdrücklich registrierte Höhe`, () => {
+      for (const e of c.cages) {
+        // Only this chapter changed. Foreign chapter expectations stay at their
+        // existing baseline instead of inferring the answer from new params.
+        const expected = c.name === "ch01" ? CH01_CAGE_HEIGHTS[e.id] : CAGE_DISPLAY_H;
+        expect(expected, `${c.name} · ${e.id} fehlt im Größenvertrag`).toBeDefined();
+        expect(entDisplayH(e), `${c.name} · ${e.id} (${e.skin})`).toBe(expected);
+      }
     });
 
     it(`${c.name}${entwurf}: ein Ding-Kaefig nennt seinen Maschinen-Schluessel, ein Personen-Kaefig nicht`, () => {

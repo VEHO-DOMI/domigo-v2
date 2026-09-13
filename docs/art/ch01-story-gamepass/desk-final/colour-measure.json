@@ -1,0 +1,14 @@
+{
+  "dominant": "green",
+  "warmCentre": 56.74231899643538,
+  "opaque": 97707,
+  "shares": {
+    "green": 0.6659731387396751,
+    "warm": 0.33402328003984094,
+    "pink": 0.000003581220501012332
+  },
+  "ratio": 1.9937925843379556,
+  "parchmentShare": 0.04095355418543243,
+  "fieldRule": true,
+  "rescuedShare": 0
+}

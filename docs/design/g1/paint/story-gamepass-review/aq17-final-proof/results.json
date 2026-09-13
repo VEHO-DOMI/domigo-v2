@@ -1,0 +1,20 @@
+[
+  {
+    "case": "control-before",
+    "exit": 0,
+    "successPrinted": true,
+    "importFallthrough": false
+  },
+  {
+    "case": "magenta-disabled",
+    "exit": 1,
+    "successPrinted": false,
+    "importFallthrough": false
+  },
+  {
+    "case": "control-after",
+    "exit": 0,
+    "successPrinted": true,
+    "importFallthrough": false
+  }
+]

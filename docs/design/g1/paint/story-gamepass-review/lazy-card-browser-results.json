@@ -1,0 +1,17 @@
+{
+  "firstTask": {
+    "id": "g1.paint.ch01.enc.obj-book.r1",
+    "kind": "restore"
+  },
+  "stepText": "DomiGo\nENGLISH · VOCABULARY & GRAMMAR\nDie Eingangshalle\nTon\naus\nGeschichte\nRegel-Seiten\n0/5\nKleider\n0/9\nBuchstaben\n0/9\n\nDas Buch hat seine Farbe verloren.\n\nDas Buch war blau. Gib ihm die Farbe zurück.\n\n2 · die Farbe\nbrown\nblue\nred\nSpäter ↩\n\n←→ laufen · SPACE springen (halten = höher)· ↑ hingehen & klettern",
+  "tick": 67,
+  "returned": {
+    "text": "DomiGo\nENGLISH · VOCABULARY & GRAMMAR\nDie Eingangshalle\nTon\naus\nGeschichte\nRegel-Seiten\n0/5\nKleider\n0/9\nBuchstaben\n0/9\n\nDas Buch hat seine Farbe verloren.\n\nDas Buch war blau. Gib ihm die Farbe zurück.\n\n2 · die Farbe\nbrown\nblue\nred\nSpäter ↩\n\n←→ laufen · SPACE springen (halten = höher)· ↑ hingehen & klettern",
+    "tick": 67,
+    "sameButton": true,
+    "task": {
+      "id": "g1.paint.ch01.enc.obj-book.r1",
+      "kind": "restore"
+    }
+  }
+}

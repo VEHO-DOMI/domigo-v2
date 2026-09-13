@@ -1,0 +1,69 @@
+{
+  "label": "CODEX DRAFT \u2014 NOT CANON",
+  "assets": [
+    {
+      "stem": "obj_soundsystem",
+      "previousSha256": "f8293189965e1b821d4a8cf5a69d3a9ee693603673f43014a6d5419c1636e43b",
+      "installedSha256": "f85572ab5074673589eeb7e46fdf2b66bee875eaa0b8ae216032edc813557878",
+      "canvas": {
+        "width": 512,
+        "height": 512
+      },
+      "inkBounds": {
+        "x": 64,
+        "y": 5,
+        "width": 384,
+        "height": 502,
+        "pixels": 180541
+      }
+    },
+    {
+      "stem": "captive_soundsystem",
+      "previousSha256": "cff3a6c572e2faebd7a983f83ea2765585d91f71985652d0870ef57c9d6d8efc",
+      "installedSha256": "f85572ab5074673589eeb7e46fdf2b66bee875eaa0b8ae216032edc813557878",
+      "canvas": {
+        "width": 512,
+        "height": 512
+      },
+      "inkBounds": {
+        "x": 64,
+        "y": 5,
+        "width": 384,
+        "height": 502,
+        "pixels": 180541
+      }
+    },
+    {
+      "stem": "obj_tablet",
+      "previousSha256": "4520fe02e34d3f1cafe6efedb32f084af7cf676bf2d41d110e281019b354ba6b",
+      "installedSha256": "9dbbfcfa65c87df73f853151d69913bbbe9a295b530090965391b29a60dd1356",
+      "canvas": {
+        "width": 512,
+        "height": 512
+      },
+      "inkBounds": {
+        "x": 32,
+        "y": 5,
+        "width": 448,
+        "height": 502,
+        "pixels": 180854
+      }
+    },
+    {
+      "stem": "captive_tablet",
+      "previousSha256": "50dadab8ff59d8a16d0d1d599a2b3d461321671fb7e1505f34c7b45475a007dd",
+      "installedSha256": "9dbbfcfa65c87df73f853151d69913bbbe9a295b530090965391b29a60dd1356",
+      "canvas": {
+        "width": 512,
+        "height": 512
+      },
+      "inkBounds": {
+        "x": 32,
+        "y": 5,
+        "width": 448,
+        "height": 502,
+        "pixels": 180854
+      }
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "tmp": "/Users/veho/Code/codex-lab/trial-berichte/CH01_STORY_SPIELPASS/level-design-fix-tampers/sandbox-fZsjuh",
+  "sourceHashes": {
+    "content/corpus/stories/g1.st.lost-pages/paint/ch01.level.json": "92ec0c2e0c44ee3a8edae8a9d6471cf8612d413fa46349f6f8ed9bd5bfff0b6a",
+    "docs/design/g1/paint/ch01-dossiers-v2/claims.json": "b4cc35228098410c196e03a7e35a32e783a07fe98a34eae802ea18d22bc8ffba",
+    "docs/design/g1/paint/ch01-dossiers-v2/p2.md": "c9a215168e4f51a1fd8ce085f0df6fe224c8ca8ef1d0d49f6814d30259c614d5",
+    "scripts/check-level-design.mjs": "f1fb6ea05b9b1c0fc21685040d79638ecd56828f8d1982366734772cf13f4239"
+  },
+  "results": [
+    {
+      "name": "control",
+      "exit": 0,
+      "expectedExit": 0,
+      "expectedMessage": null,
+      "foundExpected": true
+    },
+    {
+      "name": "control-selftest",
+      "exit": 0,
+      "expectedExit": 0,
+      "expectedMessage": null,
+      "foundExpected": true
+    },
+    {
+      "name": "missing-pickup",
+      "exit": 1,
+      "expectedExit": 1,
+      "expectedMessage": "passivePickup.*17p",
+      "foundExpected": true
+    },
+    {
+      "name": "wrong-word",
+      "exit": 1,
+      "expectedExit": 1,
+      "expectedMessage": "passivePickup.*17p",
+      "foundExpected": true
+    },
+    {
+      "name": "old-quiz-claim",
+      "exit": 1,
+      "expectedExit": 1,
+      "expectedMessage": "Benenn-Karte",
+      "foundExpected": true
+    },
+    {
+      "name": "false-anchor",
+      "exit": 1,
+      "expectedExit": 1,
+      "expectedMessage": "p2-obj-scissors.*B11|B11.*p2-obj-scissors",
+      "foundExpected": true
+    },
+    {
+      "name": "validator-disconnected",
+      "exit": 1,
+      "expectedExit": 1,
+      "expectedMessage": "PASSIVER FUND.*falsches Wort",
+      "foundExpected": true
+    }
+  ]
+}

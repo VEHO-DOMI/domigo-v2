@@ -1,0 +1,6 @@
+{"card":"029","answer":"three","wrongWord":null,"correction":null,"colour":null,"verdict":"eindeutig","why":"Ich erkenne auf dem offenen Heft drei große blaue Punkte."}
+{"card":"030","answer":"two books","wrongWord":null,"correction":null,"colour":null,"verdict":"eindeutig","why":"Ich erkenne zwei blaue Bücher; nur „two books“ hat passende Zahl und Mehrzahl."}
+{"card":"041","answer":"This is a board.","wrongWord":"door","correction":"board","colour":null,"verdict":"eindeutig","why":"Schritt 1: „door“ antippen. Schritt 2: „board“ wählen. Das Bild zeigt eine Tafel."}
+{"card":"042","answer":"Don't speak!","wrongWord":"Not","correction":"Don't","colour":null,"verdict":"eindeutig","why":"Schritt 1: „Not“ antippen. Schritt 2: „Don't“ wählen. Der verneinte Befehl lautet vollständig „Don't speak!“"}
+{"card":"048","answer":"Here are two chairs.","wrongWord":"chair","correction":"chairs","colour":null,"verdict":"eindeutig","why":"Schritt 1: „chair“ antippen. Schritt 2: „chairs“ wählen, weil nach „two“ die Mehrzahl stehen muss."}
+{"card":"055","answer":"The desk is green.","wrongWord":null,"correction":null,"colour":"green","verdict":"mehrdeutig","why":"Schritt 1: „desk“ wählen. Schritt 2: „green“ wählen. Ich erkenne ein graues tischartiges Möbel; „desk“ ist unter den Optionen gemeint, aber „table“ wäre für „Tisch“ ebenfalls naheliegend und fehlt."}

@@ -1,0 +1,126 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "purpose": "Inspection contact sheet only; gamePNG bytes are untouched",
+  "layout": [
+    {
+      "row": 1,
+      "column": 1,
+      "stem": "merle_a",
+      "sha256": "56792853920c585c6fe263cf718009e5984ffaa8c7bf97e361c8ee5b6a9e42fa"
+    },
+    {
+      "row": 1,
+      "column": 2,
+      "stem": "merle_walk1",
+      "sha256": "6f42a019028afd268f92c0ddd3b0a95f9ad7c2a2b355cf6216f54e128b5153ab"
+    },
+    {
+      "row": 1,
+      "column": 3,
+      "stem": "merle_walk2",
+      "sha256": "b63957e8a2e17d30ca127831da702a9cb15499e6c23af72832405ff978bcc7bb"
+    },
+    {
+      "row": 1,
+      "column": 4,
+      "stem": "merle_joy",
+      "sha256": "dad850d0f251ac10f22efa7397daf85d1866eabd1a55de1aa4d39f199d873187"
+    },
+    {
+      "row": 2,
+      "column": 1,
+      "stem": "merle_wave0",
+      "sha256": "d25e6bfce081bdbce7890e244fe0708db38fcd3f75e692cb1411499228042c1a"
+    },
+    {
+      "row": 2,
+      "column": 2,
+      "stem": "merle_settle1",
+      "sha256": "68d484563c557f658e6d39a3d697d59c89d2d8f84b0e50d5ad17f6b3143aed03"
+    },
+    {
+      "row": 2,
+      "column": 3,
+      "stem": "merle_act_sing0",
+      "sha256": "6f7b7d4ed3fe59466a5037f6fbcb6d4840effabfc9695a49cfb852a9ec49197d"
+    },
+    {
+      "row": 2,
+      "column": 4,
+      "stem": "merle_act_sing1",
+      "sha256": "089da0cf12e717b0e394e0417e3f71bbbabe1f39004360f7f8713855880b7816"
+    },
+    {
+      "row": 3,
+      "column": 1,
+      "stem": "merle_act_stand0",
+      "sha256": "0aa5f7de955d36a48db48eb516f5ebede627b7ad84eb5c27814ddfa60df2050a"
+    },
+    {
+      "row": 3,
+      "column": 2,
+      "stem": "merle_act_stand1",
+      "sha256": "fc80fbae4e2331709960bb183d05b509da853c292d230752af72a01e4ca8813a"
+    },
+    {
+      "row": 3,
+      "column": 3,
+      "stem": "merle_act_scribble0",
+      "sha256": "5b40d809caae78bf6e296b685ba632c4c96996e9a2bce2cf3be7091a684d5489"
+    },
+    {
+      "row": 3,
+      "column": 4,
+      "stem": "merle_act_scribble1",
+      "sha256": "c50a42527a157fab2ddcae147bbfad4905fa1233fb8448bbf8f0333f0bd77377"
+    },
+    {
+      "row": 4,
+      "column": 1,
+      "stem": "merle_act_window0",
+      "sha256": "1f95af8710346f3a2b32d6432608f90274ded88bc4936fbc849ecee1305c21f1"
+    },
+    {
+      "row": 4,
+      "column": 2,
+      "stem": "merle_act_window1",
+      "sha256": "3db8ff2d1f22718447a410b9230905a979b491956c63a76110602f35f7e2de1d"
+    },
+    {
+      "row": 4,
+      "column": 3,
+      "stem": "merle_act_books0",
+      "sha256": "973e5de0591fdc139f51410825c220e5eb8fd29e5502a9a2a2f728de211e3484"
+    },
+    {
+      "row": 4,
+      "column": 4,
+      "stem": "merle_act_books1",
+      "sha256": "75526d1da80a5a47531db8bdded4f57fbdcced015ecc1dce8613ca6a2b9a967d"
+    },
+    {
+      "row": 5,
+      "column": 1,
+      "stem": "merle_act_leave0",
+      "sha256": "d1108729ad033a158d3764e960f692c1eb38d28a23f430a3a6d358dd7a3cf86f"
+    },
+    {
+      "row": 5,
+      "column": 2,
+      "stem": "merle_act_leave1",
+      "sha256": "877ed01666010ed34c176222633ac7195c677765057bdf07ae03174a7b5f8379"
+    },
+    {
+      "row": 5,
+      "column": 3,
+      "stem": "pencilcase_a",
+      "sha256": "827e5af46457c69883041d19162ed5894149a83ba7fbb84dacc02a0670e331ef"
+    },
+    {
+      "row": 5,
+      "column": 4,
+      "stem": "pencilcase_open",
+      "sha256": "f292af3460eb138d7128a794a311b9b5c7ed6fd3d2229afe4d03b268854c9724"
+    }
+  ]
+}

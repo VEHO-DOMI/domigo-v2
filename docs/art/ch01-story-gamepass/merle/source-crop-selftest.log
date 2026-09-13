@@ -1,0 +1,18 @@
+ok 1 - undeclared matte leaves legitimate violet and every RGBA byte untouched
+ok 2 - declared matte only borrows existing RGB and preserves every alpha and honest pixel
+ok 3 - actual alpha survives key removal; key and hidden RGB remain empty
+ok 4 - fringe cleanup also heals newly separated specks without deleting paint
+ok 5 - bilinear uses both axes and premultiplied colour, never hidden blue
+ok 6 - nonuniform x/y pass points land on their exact authored pixels
+ok 7 - out-of-canvas mapping stays empty, including fractional coordinates
+ok 8 - bad axes rejected: reversal, duplicates, NaN, malformed, uncovered
+ok 9 - clip mask only removes zero-alpha pixels; partial alpha cannot boost or dim
+ok 10 - source crop preserves original integer and fractional samples and all source bytes
+ok 11 - source crop rejects malformed, out-of-canvas and cut-figure declarations
+ok 12 - declared source crop ignores unused distant corner but preserves the full painted figure
+ok 13 - manifest opt-in affects only its declared asset; genuine violet default stays intact
+ok 14 - real PNG import reports bounds/hashes and repeats with identical pixels/bytes
+ok 15 - duplicate/path stems and source overwrite fail before output
+ok 16 - later bad PNG cannot partially replace an existing earlier output
+ok 17 - manifest clip path is resolved beside manifest; mismatch rejects without replacing output
+import-ch01-buecherwelt --selftest: OK (17 groups)

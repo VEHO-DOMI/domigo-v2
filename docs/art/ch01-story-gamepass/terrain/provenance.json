@@ -1,0 +1,65 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "tool": "builtin image_gen",
+  "sources": [
+    {
+      "file": "sources/body-p2-east-floor-source.png",
+      "original": "/Users/veho/.codex/generated_images/01a09269-9f1d-7703-905c-e911ce143254/exec-cb5271ae-af3c-426f-afff-1ff4265eb2ba.png",
+      "sha256": "edf71bec6a702495a6ca4e17f5081c0b1457df0605c5ea58cf9b582141004e7e",
+      "byteIdentical": true,
+      "prompt": "floor-correction.prompt.txt",
+      "promptSha256": "72af9ccdd21bae8ecf0103ec2849302bc4e669e9d98d62886321aaa646fb1764"
+    },
+    {
+      "file": "sources/body-p2-east-ceiling-source.png",
+      "original": "/Users/veho/.codex/generated_images/01a09a32-134e-7ea3-aca9-497d50209de4/exec-7a3dfb8f-26a9-4954-bd3e-91f892a13c09.png",
+      "sha256": "6ee219f399a75ec1c2cc4b58b91e330a3462cf1e5d7ee1df59e53b002f136158",
+      "byteIdentical": true,
+      "prompt": "ceiling-37.prompt.txt",
+      "promptSha256": "adeaa87de02cd634331c27fe97ed0cacadc91e257dfa997af3660f5b73afd455"
+    },
+    {
+      "file": "sources/body-p3-east-wall-source.png",
+      "original": "/Users/veho/.codex/generated_images/01a09a32-134e-7ea3-aca9-497d50209de4/exec-4f36e870-a400-47b6-93ee-68a58d2244c3.png",
+      "sha256": "8f9cdafa48a0008c73b885a33310086df0fd0d1042af7983120cd45b23727506",
+      "byteIdentical": true,
+      "prompt": "courtyard-remove-pedestal.prompt.txt",
+      "promptSha256": "019cf2cdc23ecac3dfc7b9ce263afd2f43ce8c58595d5526677e859f1b73b4ad"
+    }
+  ],
+  "outputs": [
+    {
+      "stem": "body_p2_ostwand_treppe_boden",
+      "path": "apps/web/public/art/g1/paint/ch01/body_p2_ostwand_treppe_boden.png",
+      "width": 2368,
+      "height": 1628,
+      "bytes": 1874433,
+      "sha256": "f6d554fd6e0a3edfd0d8ee6670dd8d938e5265ba0ff3ab18d1f48c914b3d614d"
+    },
+    {
+      "stem": "body_p2_deckenbahn_ost",
+      "path": "apps/web/public/art/g1/paint/ch01/body_p2_deckenbahn_ost.png",
+      "width": 2368,
+      "height": 540,
+      "bytes": 425284,
+      "sha256": "d121f4b515cb1ed51569df199fcd3f599e3a9e409d70ff5d4e5d82082fc93c73"
+    },
+    {
+      "stem": "body_p3_ostmauer_sims",
+      "path": "apps/web/public/art/g1/paint/ch01/body_p3_ostmauer_sims.png",
+      "width": 1536,
+      "height": 796,
+      "bytes": 1379488,
+      "sha256": "fd00259664ec65051c2f2d285f73a0f0a2125cc6aca13a4838ef41b64ec859a6"
+    }
+  ],
+  "checks": {
+    "silhouetteExit": 0,
+    "partitionExit": 0,
+    "geometryTestsExit": 0,
+    "geometryTests": 20,
+    "alphaMissing": 0,
+    "alphaPartial": 0,
+    "alphaOutside": 0
+  }
+}

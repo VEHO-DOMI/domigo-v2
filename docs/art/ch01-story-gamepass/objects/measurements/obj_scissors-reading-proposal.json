@@ -1,0 +1,163 @@
+{
+  "word": "grey",
+  "sourceSha256": "1359353434183e887b7156c9ea9ccf8678819dee780e7b00bef6f0db56556f35",
+  "width": 392,
+  "height": 492,
+  "regions": [
+    {
+      "id": "left-handle-top",
+      "x": 50,
+      "y": 26,
+      "w": 70,
+      "h": 26
+    },
+    {
+      "id": "left-handle-left",
+      "x": 20,
+      "y": 58,
+      "w": 30,
+      "h": 90
+    },
+    {
+      "id": "left-handle-right",
+      "x": 133,
+      "y": 50,
+      "w": 26,
+      "h": 112
+    },
+    {
+      "id": "left-handle-base",
+      "x": 53,
+      "y": 156,
+      "w": 80,
+      "h": 28
+    },
+    {
+      "id": "right-handle-top",
+      "x": 231,
+      "y": 20,
+      "w": 65,
+      "h": 27
+    },
+    {
+      "id": "right-handle-left",
+      "x": 188,
+      "y": 56,
+      "w": 27,
+      "h": 108
+    },
+    {
+      "id": "right-handle-right",
+      "x": 299,
+      "y": 52,
+      "w": 27,
+      "h": 108
+    },
+    {
+      "id": "right-handle-base",
+      "x": 215,
+      "y": 154,
+      "w": 80,
+      "h": 30
+    },
+    {
+      "id": "left-neck",
+      "x": 116,
+      "y": 184,
+      "w": 40,
+      "h": 40
+    },
+    {
+      "id": "right-neck",
+      "x": 187,
+      "y": 184,
+      "w": 28,
+      "h": 40
+    },
+    {
+      "id": "pivot-shoulder",
+      "x": 131,
+      "y": 225,
+      "w": 40,
+      "h": 25
+    },
+    {
+      "id": "right-blade-upper",
+      "x": 207,
+      "y": 306,
+      "w": 45,
+      "h": 59
+    },
+    {
+      "id": "right-blade-middle",
+      "x": 233,
+      "y": 365,
+      "w": 42,
+      "h": 56
+    },
+    {
+      "id": "right-blade-tip",
+      "x": 263,
+      "y": 421,
+      "w": 20,
+      "h": 35
+    },
+    {
+      "id": "left-blade-upper",
+      "x": 113,
+      "y": 335,
+      "w": 40,
+      "h": 43
+    },
+    {
+      "id": "left-blade-middle",
+      "x": 80,
+      "y": 378,
+      "w": 40,
+      "h": 50
+    },
+    {
+      "id": "left-blade-bottom",
+      "x": 80,
+      "y": 428,
+      "w": 22,
+      "h": 20
+    },
+    {
+      "id": "right-blade-neck",
+      "x": 216,
+      "y": 260,
+      "w": 22,
+      "h": 46
+    },
+    {
+      "id": "blade-joint",
+      "x": 180,
+      "y": 313,
+      "w": 27,
+      "h": 30
+    },
+    {
+      "id": "left-loop-shoulder",
+      "x": 40,
+      "y": 40,
+      "w": 20,
+      "h": 20
+    },
+    {
+      "id": "right-loop-shoulder",
+      "x": 276,
+      "y": 47,
+      "w": 20,
+      "h": 26
+    },
+    {
+      "id": "pivot-side",
+      "x": 124,
+      "y": 257,
+      "w": 25,
+      "h": 40
+    }
+  ],
+  "why": "Authored anatomical material rectangles on inspected imported painting; excludes eyes, outlines, metal details and background."
+}

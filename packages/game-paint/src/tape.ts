@@ -428,7 +428,7 @@ export const replayPhaseTape = (
       // `roam` is the legal post-welcome state: a fully awakened classmate
       // may walk before the tape ends.  Count the completed ceremony, not a
       // photogenic but transient pose.
-      (e) => e.role === "classmate" && e.redeemed && e.awakenStep >= 6 && ["settle", "joy", "rest", "wave", "roam"].includes(e.state),
+      (e) => e.role === "classmate" && e.redeemed && e.awakenStep >= 6 && ["settle", "joy", "rest", "wave", "roam", "follow"].includes(e.state),
     ).length,
     tipsGot,
     booksGot,

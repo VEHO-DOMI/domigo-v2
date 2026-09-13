@@ -275,9 +275,12 @@ describe("L0 · D6 · domArtStems(ch01) ist dieselbe Menge wie vor der Level-Wel
   // sich jede spaetere Bahn erklaeren muss. Ein Blatt mehr als diese zwei laesst
   // den Test weiterhin fallen — die Ratsche haelt, sie hat nur eine benannte
   // Stufe bekommen.
-  const DOM_STEMS_NACH_L0D = [...DOM_STEMS_CH01_VOR_L0, "hero2_crouch", "hero2_jump2"].sort();
+  // User-authorized comic plus the actual shared mentor portrait.
+  // klassenfoto_a already belongs to the preserved historical baseline.
+  const DOM_STEMS_NACH_L0D = [...DOM_STEMS_CH01_VOR_L0, "hero2_crouch", "hero2_jump2",
+    "story_school", "story_book", "story_fall", "story_transform", "story_arrival", "story_klecks", "story_first_step", "klecks_mentor"].sort();
 
-  it("beansprucht die Stems von vorher plus genau die zwei nachgetragenen Helden-Zellen", () => {
+  it("beansprucht die Grundlinie plus zwei Helden-Zellen, sieben Comicbilder und Klecks", () => {
     const now = [...domArtStems(ch01!.level)].sort();
     expect(now).toEqual(DOM_STEMS_NACH_L0D);
   });

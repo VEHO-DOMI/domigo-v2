@@ -1,0 +1,13 @@
+{
+  "label": "CODEX DRAFT \u2014 NOT CANON",
+  "assets": [
+    {
+      "stem": "heft_count_dots_a",
+      "sha256": "e48e4966ae89e26270093ca2309cc8f7336257a63796ceccfe1c24f3c88684e6"
+    },
+    {
+      "stem": "heft_count_books_a",
+      "sha256": "390d7f1bb5b32e46a894cce952c69ed8cb3213a08d2f85c5d274ec7c1e022c0d"
+    }
+  ]
+}

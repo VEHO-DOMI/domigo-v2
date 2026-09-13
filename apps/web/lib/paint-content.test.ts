@@ -328,10 +328,19 @@ describe("M-5 art opt-ins survive browser loading", () => {
 
 describe("chapter restoration copy survives the real loader", () => {
   const restorationDe = { oneDative: "einem entfärbten Tier", manyDative: "entfärbten Tieren", oneSubject: "es", freedLabel: "Sachen zurückgeholt" };
-  it("preserves every form and leaves the existing chapter default absent", () => {
+  it("preserves the authored chapter copy and every overridden form", () => {
     const original = loadPaintLevel(STORY, "ch01");
-    assert.equal(original.restorationDe, undefined);
+    assert.deepEqual(original.restorationDe, {
+      oneDative: "einem grauen Gegenstand",
+      manyDative: "grauen Gegenständen",
+      oneSubject: "es",
+      freedLabel: "Schulsachen wiedergefunden",
+    });
     assert.deepEqual(parsePaintLevelFile({ ...original, restorationDe }).restorationDe, restorationDe);
+  });
+  it("keeps the generic default absent when no chapter copy is authored", () => {
+    const { restorationDe: _authoredCopy, ...withoutCopy } = loadPaintLevel(STORY, "ch01");
+    assert.equal(parsePaintLevelFile(withoutCopy).restorationDe, undefined);
   });
   it("rejects incomplete grammar and an invalid singular pronoun", () => {
     const original = loadPaintLevel(STORY, "ch01");

@@ -125,11 +125,11 @@ export const arenaLines = (beat: ArenaBeat): ArenaLines =>
   beat === "wer"
     ? {
       titleDe: "Die Tafel",
-      showsDe: "Sie fliegt, vollgekritzelt und ziemlich grantig.",
-      storyDe: "Niemand hat sie je geputzt. WISCH sie sauber!",
+      showsDe: "Die Tafel ist verhext und voller Kritzeleien.",
+      storyDe: "Weich der Kreide aus, bis die Tafel landet.",
     }
     : {
       titleDe: "So geht es",
-      showsDe: "Weich ihrer Kreide aus, dann kommt sie herunter.",
-      storyDe: "ANTWORTE ihr, geh hin und WISCH eine Schicht weg!",
+      showsDe: "Wenn sie unten ist, löst du eine Aufgabe.",
+      storyDe: "Geh danach zur Tafel. So wischst du eine Schicht weg.",
     };

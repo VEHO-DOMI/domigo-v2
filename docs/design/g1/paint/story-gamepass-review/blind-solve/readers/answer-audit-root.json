@@ -1,0 +1,2314 @@
+{
+  "label": "CODEX DRAFT — NOT CANON — ROOT ONLY, CONTAINS KEYS",
+  "sourceHash": "8d21c13aeca9b96985619cdbdb84e61bc77f02f97a97826012474453f45ef895",
+  "rows": [
+    {
+      "reader": "a",
+      "card": "001",
+      "taskId": "g1.paint.ch01.enc.pencil.k1",
+      "kind": "choice",
+      "actual": {
+        "card": "001",
+        "answer": "Listen!",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Die passende Aufforderung zum Zuhören lautet „Listen!“."
+      },
+      "expected": "Listen!",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "a",
+      "card": "002",
+      "taskId": "g1.paint.ch01.enc.pencil.k2",
+      "kind": "choice",
+      "actual": {
+        "card": "002",
+        "answer": "Sit down!",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "„Sit down!“ fordert den Bleistift eindeutig zum Hinsetzen auf."
+      },
+      "expected": "Sit down!",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "a",
+      "card": "003",
+      "taskId": "g1.paint.ch01.enc.pencil.k3",
+      "kind": "choice",
+      "actual": {
+        "card": "003",
+        "answer": "Don't write!",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Das Kritzeln ins Heft wird mit „Don't write!“ verboten."
+      },
+      "expected": "Don't write!",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "a",
+      "card": "004",
+      "taskId": "g1.paint.ch01.enc.eraser.r1",
+      "kind": "restore",
+      "actual": {
+        "card": "004",
+        "answer": "rubber",
+        "colour": "pink",
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Zu sehen ist ein Radiergummi; der zweite Schritt nennt als ursprüngliche Farbe pink."
+      },
+      "expected": {
+        "name": "rubber",
+        "colour": "pink"
+      },
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "a",
+      "card": "005",
+      "taskId": "g1.paint.ch01.enc.eraser.k1",
+      "kind": "choice",
+      "actual": {
+        "card": "005",
+        "answer": "It's a book.",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Nur „It's a book.“ enthält Apostroph, Artikel und Satzbau korrekt."
+      },
+      "expected": "It's a book.",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "a",
+      "card": "006",
+      "taskId": "g1.paint.ch01.enc.eraser.k2",
+      "kind": "choice",
+      "actual": {
+        "card": "006",
+        "answer": "It isn't a window.",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Nur dieser Satz ist eine grammatisch korrekte Verneinung."
+      },
+      "expected": "It isn't a window.",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "a",
+      "card": "007",
+      "taskId": "g1.paint.ch01.enc.obj-book.r1",
+      "kind": "restore",
+      "actual": {
+        "card": "007",
+        "answer": "book",
+        "colour": "blue",
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Das Bild zeigt ein Buch; der zweite Schritt nennt blue."
+      },
+      "expected": {
+        "name": "book",
+        "colour": "blue"
+      },
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "a",
+      "card": "008",
+      "taskId": "g1.paint.ch01.enc.obj-schoolbag.r1",
+      "kind": "restore",
+      "actual": {
+        "card": "008",
+        "answer": "school bag",
+        "colour": "brown",
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Das Bild zeigt eine Schultasche; der zweite Schritt nennt brown."
+      },
+      "expected": {
+        "name": "school bag",
+        "colour": "brown"
+      },
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "a",
+      "card": "009",
+      "taskId": "g1.paint.ch01.rsc.soundsystem.r1",
+      "kind": "choice",
+      "actual": {
+        "card": "009",
+        "answer": "It's a sound system.",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Im verschlossenen Fach ist sichtbar eine Musikanlage."
+      },
+      "expected": "It's a sound system.",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "a",
+      "card": "010",
+      "taskId": "g1.paint.ch01.door.p1.d1",
+      "kind": "choice",
+      "actual": {
+        "card": "010",
+        "answer": "Open!",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "„Open!“ ist die gesuchte englische Aufforderung zum Öffnen."
+      },
+      "expected": "Open!",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "a",
+      "card": "011",
+      "taskId": "g1.paint.ch01.door.p1.d2",
+      "kind": "choice",
+      "actual": {
+        "card": "011",
+        "answer": "Please!",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "„Please!“ kennzeichnet eine höfliche Bitte."
+      },
+      "expected": "Please!",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "a",
+      "card": "012",
+      "taskId": "g1.paint.ch01.door.p1.d3",
+      "kind": "choice",
+      "actual": {
+        "card": "012",
+        "answer": "What's your name?",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Nur diese Frage erkundigt sich nach dem Namen."
+      },
+      "expected": "What's your name?",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "a",
+      "card": "013",
+      "taskId": "g1.paint.ch01.door.p2.d1",
+      "kind": "choice",
+      "actual": {
+        "card": "013",
+        "answer": "Close!",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "„Close!“ ist die passende Aufforderung zum Zumachen."
+      },
+      "expected": "Close!",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "a",
+      "card": "014",
+      "taskId": "g1.paint.ch01.door.p2.d2",
+      "kind": "choice",
+      "actual": {
+        "card": "014",
+        "answer": "Thanks!",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "„Thanks!“ ist die passende Reaktion auf erhaltene Hilfe."
+      },
+      "expected": "Thanks!",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "a",
+      "card": "015",
+      "taskId": "g1.paint.ch01.door.p2.d3",
+      "kind": "choice",
+      "actual": {
+        "card": "015",
+        "answer": "How are you?",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Nur diese Frage erkundigt sich nach dem Befinden."
+      },
+      "expected": "How are you?",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "a",
+      "card": "016",
+      "taskId": "g1.paint.ch01.door.p3.d1",
+      "kind": "choice",
+      "actual": {
+        "card": "016",
+        "answer": "Listen!",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "„Listen!“ fordert eindeutig zum Zuhören auf."
+      },
+      "expected": "Listen!",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "a",
+      "card": "017",
+      "taskId": "g1.paint.ch01.door.p3.d2",
+      "kind": "choice",
+      "actual": {
+        "card": "017",
+        "answer": "Hello!",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "„Hello!“ ist unter den sichtbaren Wahlen die Begrüßung."
+      },
+      "expected": "Hello!",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "a",
+      "card": "018",
+      "taskId": "g1.paint.ch01.door.p3.d3",
+      "kind": "choice",
+      "actual": {
+        "card": "018",
+        "answer": "What's this?",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "„What's this?“ fragt nach dem gezeigten Gegenstand."
+      },
+      "expected": "What's this?",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "a",
+      "card": "019",
+      "taskId": "g1.paint.ch01.enc.pen.r1",
+      "kind": "restore",
+      "actual": {
+        "card": "019",
+        "answer": "pen",
+        "colour": "black",
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Die Füllfeder ist als pen zu benennen; der zweite Schritt nennt black."
+      },
+      "expected": {
+        "name": "pen",
+        "colour": "black"
+      },
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "a",
+      "card": "020",
+      "taskId": "g1.paint.ch01.enc.pen.k1",
+      "kind": "choice",
+      "actual": {
+        "card": "020",
+        "answer": "How are you?",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Die deutsche Frage „Wie geht es dir?“ entspricht „How are you?“."
+      },
+      "expected": "How are you?",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "a",
+      "card": "021",
+      "taskId": "g1.paint.ch01.enc.pen.k2",
+      "kind": "choice",
+      "actual": {
+        "card": "021",
+        "answer": "What's your address?",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Nur diese sichtbare Frage erkundigt sich nach der Adresse."
+      },
+      "expected": "What's your address?",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "a",
+      "card": "022",
+      "taskId": "g1.paint.ch01.enc.paintbox.q1",
+      "kind": "oddone",
+      "actual": {
+        "card": "022",
+        "answer": "door",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Watercolours, picture und paintbrush gehören zum Malen; door nicht."
+      },
+      "expected": [
+        "door"
+      ],
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "a",
+      "card": "023",
+      "taskId": "g1.paint.ch01.enc.paintbox.q2",
+      "kind": "oddone",
+      "actual": {
+        "card": "023",
+        "answer": "watercolours",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Exercise book, pencil und pen gehören zu den Schreibsachen; watercolours zum Malen."
+      },
+      "expected": [
+        "watercolours"
+      ],
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "a",
+      "card": "024",
+      "taskId": "g1.paint.ch01.enc.ranzen.q1",
+      "kind": "oddone",
+      "actual": {
+        "card": "024",
+        "answer": "exercise book",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Ein exercise book gehört normalerweise nicht ins Federpennal."
+      },
+      "expected": [
+        "exercise book"
+      ],
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "a",
+      "card": "025",
+      "taskId": "g1.paint.ch01.enc.ranzen.q2",
+      "kind": "oddone",
+      "actual": {
+        "card": "025",
+        "answer": "book",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Ten, seven und twelve sind Zahlen; book ist keine."
+      },
+      "expected": [
+        "book"
+      ],
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "a",
+      "card": "026",
+      "taskId": "g1.paint.ch01.enc.ranzen.q3",
+      "kind": "oddone",
+      "actual": {
+        "card": "026",
+        "answer": "pencil",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Socks, school tie und shirt kann man anziehen; pencil nicht."
+      },
+      "expected": [
+        "pencil"
+      ],
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "a",
+      "card": "027",
+      "taskId": "g1.paint.ch01.enc.ranzen.q4",
+      "kind": "oddone",
+      "actual": {
+        "card": "027",
+        "answer": "ruler",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Shoes, sweater und skirt kann man anziehen; ruler nicht."
+      },
+      "expected": [
+        "ruler"
+      ],
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "a",
+      "card": "028",
+      "taskId": "g1.paint.ch01.enc.heft.r1",
+      "kind": "restore",
+      "actual": {
+        "card": "028",
+        "answer": "exercise book",
+        "colour": "white",
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Das Bild zeigt ein Heft; der zweite Schritt nennt white."
+      },
+      "expected": {
+        "name": "exercise book",
+        "colour": "white"
+      },
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "a",
+      "card": "029",
+      "taskId": "g1.paint.ch01.enc.heft.n1",
+      "kind": "choice",
+      "actual": {
+        "card": "029",
+        "answer": "zero",
+        "colour": null,
+        "pairs": null,
+        "verdict": "unlösbar",
+        "why": "Auf der abgebildeten Heftseite sind keine Punkte sichtbar; die richtige sichtbare Anzahl zero fehlt in der Auswahl."
+      },
+      "expected": "three",
+      "comparison": "mismatch",
+      "reviewNote": "Both readers correctly report no visible countable dots; authored three is not supportable from original image. Authoring/display defect, not learner error."
+    },
+    {
+      "reader": "a",
+      "card": "030",
+      "taskId": "g1.paint.ch01.enc.heft.n2",
+      "kind": "choice",
+      "actual": {
+        "card": "030",
+        "answer": "two books",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Nur „two books“ ist für die genannte Anzahl grammatisch korrekt; das Bild zeigt die behaupteten zwei Bücher allerdings nicht."
+      },
+      "expected": "two books",
+      "comparison": "match",
+      "reviewNote": "Answer is grammatical, but original image does not contain the described two books; reader A explicitly flags this."
+    },
+    {
+      "reader": "a",
+      "card": "031",
+      "taskId": "g1.paint.ch01.qf.moths.w1",
+      "kind": "wheel",
+      "actual": {
+        "card": "031",
+        "answer": "thirteen",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Die vorgegebene große Zahl ist 13, also thirteen; die momentane Radposition ist unerheblich."
+      },
+      "expected": "thirteen",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "a",
+      "card": "032",
+      "taskId": "g1.paint.ch01.qf.moths.w2",
+      "kind": "wheel",
+      "actual": {
+        "card": "032",
+        "answer": "seven",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Die vorgegebene große Zahl ist 7, also seven; die momentane Radposition ist unerheblich."
+      },
+      "expected": "seven",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "a",
+      "card": "033",
+      "taskId": "g1.paint.ch01.qf.moths.p1w1",
+      "kind": "wheel",
+      "actual": {
+        "card": "033",
+        "answer": "21",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Das vorgegebene große Zahlwort twenty-one entspricht 21."
+      },
+      "expected": "21",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "a",
+      "card": "034",
+      "taskId": "g1.paint.ch01.qf.moths.p1w2",
+      "kind": "wheel",
+      "actual": {
+        "card": "034",
+        "answer": "4",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Das vorgegebene große Zahlwort four entspricht 4."
+      },
+      "expected": "4",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "a",
+      "card": "035",
+      "taskId": "g1.paint.ch01.awk.merle.r1",
+      "kind": "choice",
+      "actual": {
+        "card": "035",
+        "answer": "Don't sing!",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Merle soll mit dem Singen aufhören; dafür passt „Don't sing!“."
+      },
+      "expected": "Don't sing!",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "a",
+      "card": "036",
+      "taskId": "g1.paint.ch01.awk.merle.r2",
+      "kind": "choice",
+      "actual": {
+        "card": "036",
+        "answer": "Sit down!",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Merle steht auf dem Tisch und soll sich hinsetzen."
+      },
+      "expected": "Sit down!",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "a",
+      "card": "037",
+      "taskId": "g1.paint.ch01.awk.merle.r3",
+      "kind": "choice",
+      "actual": {
+        "card": "037",
+        "answer": "Clean the desk!",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Der vollgekritzelte Tisch soll geputzt werden."
+      },
+      "expected": "Clean the desk!",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "a",
+      "card": "038",
+      "taskId": "g1.paint.ch01.awk.merle.r4",
+      "kind": "choice",
+      "actual": {
+        "card": "038",
+        "answer": "Close the window!",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Das Fenster ist offen und soll geschlossen werden."
+      },
+      "expected": "Close the window!",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "a",
+      "card": "039",
+      "taskId": "g1.paint.ch01.awk.merle.r5",
+      "kind": "choice",
+      "actual": {
+        "card": "039",
+        "answer": "Take out your books!",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Merle soll ihre Bücher aus der Schultasche herausnehmen."
+      },
+      "expected": "Take out your books!",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "a",
+      "card": "040",
+      "taskId": "g1.paint.ch01.awk.merle.r6",
+      "kind": "choice",
+      "actual": {
+        "card": "040",
+        "answer": "Don't go!",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Merle soll nicht zur Tür gehen."
+      },
+      "expected": "Don't go!",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "a",
+      "card": "041",
+      "taskId": "g1.paint.ch01.boss.m1",
+      "kind": "mistake",
+      "actual": {
+        "card": "041",
+        "answer": "This is a board.",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Das Bild zeigt eine Tafel; door muss im Satz durch board ersetzt werden."
+      },
+      "expected": {
+        "wrongWord": "door",
+        "correction": "board",
+        "correctedSentence": "This is a board ."
+      },
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "a",
+      "card": "042",
+      "taskId": "g1.paint.ch01.boss.m2",
+      "kind": "mistake",
+      "actual": {
+        "card": "042",
+        "answer": "Don't speak!",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Ein verneinter Imperativ wird hier mit „Don't speak!“ gebildet."
+      },
+      "expected": {
+        "wrongWord": "Not",
+        "correction": "Don't",
+        "correctedSentence": "Don't speak !"
+      },
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "a",
+      "card": "043",
+      "taskId": "g1.paint.ch01.boss.o1",
+      "kind": "order",
+      "actual": {
+        "card": "043",
+        "answer": [
+          "nine",
+          "ten",
+          "eleven",
+          "twelve"
+        ],
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Das ist die aufsteigende Reihenfolge von 9 bis 12."
+      },
+      "expected": [
+        "nine",
+        "ten",
+        "eleven",
+        "twelve"
+      ],
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "a",
+      "card": "044",
+      "taskId": "g1.paint.ch01.boss.k1",
+      "kind": "choice",
+      "actual": {
+        "card": "044",
+        "answer": "Clean!",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Unter den sichtbaren Wahlen fordert nur „Clean!“ zum Putzen auf."
+      },
+      "expected": "Clean!",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "a",
+      "card": "045",
+      "taskId": "g1.paint.ch01.boss.k2",
+      "kind": "choice",
+      "actual": {
+        "card": "045",
+        "answer": "It's a board.",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Nur dieser Satz enthält die korrekte Form „It's“ und einen vollständigen Satzbau."
+      },
+      "expected": "It's a board.",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "a",
+      "card": "046",
+      "taskId": "g1.paint.ch01.boss.k3",
+      "kind": "choice",
+      "actual": {
+        "card": "046",
+        "answer": "What's your name?",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Nur diese Frage erkundigt sich nach ihrem Namen."
+      },
+      "expected": "What's your name?",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "a",
+      "card": "047",
+      "taskId": "g1.paint.ch01.boss.q2",
+      "kind": "oddone",
+      "actual": {
+        "card": "047",
+        "answer": "rubber",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Mit pen und pencil kann man schreiben; mit einem rubber nicht."
+      },
+      "expected": [
+        "rubber"
+      ],
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "a",
+      "card": "048",
+      "taskId": "g1.paint.ch01.boss.m3",
+      "kind": "mistake",
+      "actual": {
+        "card": "048",
+        "answer": "Here are two chairs.",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Nach two braucht das zählbare Nomen die Mehrzahl chairs."
+      },
+      "expected": {
+        "wrongWord": "chair",
+        "correction": "chairs",
+        "correctedSentence": "Here are two chairs ."
+      },
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "a",
+      "card": "049",
+      "taskId": "g1.paint.ch01.boss.k4",
+      "kind": "choice",
+      "actual": {
+        "card": "049",
+        "answer": "Thank you.",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "„Thank you.“ ist die passende englische Danksagung."
+      },
+      "expected": "Thank you.",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "a",
+      "card": "050",
+      "taskId": "g1.paint.ch01.boss.k5",
+      "kind": "choice",
+      "actual": {
+        "card": "050",
+        "answer": "eight",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Auf seven folgt eight."
+      },
+      "expected": "eight",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "a",
+      "card": "051",
+      "taskId": "g1.paint.ch01.boss.q1",
+      "kind": "oddone",
+      "actual": {
+        "card": "051",
+        "answer": "window",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Green, brown und red sind Farben; window ist keine."
+      },
+      "expected": [
+        "window"
+      ],
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "a",
+      "card": "052",
+      "taskId": "g1.paint.ch01.boss.o2",
+      "kind": "order",
+      "actual": {
+        "card": "052",
+        "answer": [
+          "How",
+          "are",
+          "you",
+          "?"
+        ],
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Diese Reihenfolge bildet die korrekte Frage „How are you?“."
+      },
+      "expected": [
+        "How",
+        "are",
+        "you",
+        "?"
+      ],
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "a",
+      "card": "053",
+      "taskId": "g1.paint.ch01.boss.me1",
+      "kind": "memory",
+      "actual": {
+        "card": "053",
+        "answer": "3 = three; 7 = seven; 12 = twelve; 9 = nine",
+        "colour": null,
+        "pairs": [
+          [
+            "3",
+            "three"
+          ],
+          [
+            "7",
+            "seven"
+          ],
+          [
+            "12",
+            "twelve"
+          ],
+          [
+            "9",
+            "nine"
+          ]
+        ],
+        "verdict": "eindeutig",
+        "why": "Die acht einzeln aufgedeckten Inhalte ergeben genau diese vier Zahl-Zahlwort-Paare."
+      },
+      "expected": [
+        [
+          "3",
+          "three"
+        ],
+        [
+          "7",
+          "seven"
+        ],
+        [
+          "9",
+          "nine"
+        ],
+        [
+          "12",
+          "twelve"
+        ]
+      ],
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "a",
+      "card": "054",
+      "taskId": "g1.paint.ch01.fin.t1",
+      "kind": "typed",
+      "actual": {
+        "card": "054",
+        "answer": "Hello",
+        "colour": null,
+        "pairs": null,
+        "verdict": "mehrdeutig",
+        "why": "Hello ist die direkte Übersetzung; Hi wäre als englische Begrüßung für „Hallo“ ebenfalls fachlich richtig."
+      },
+      "expected": [
+        "hello",
+        "hello!",
+        "hi",
+        "hi!"
+      ],
+      "comparison": "match",
+      "reviewNote": "Hello and Hi, with either capitalization and optional exclamation mark, are accepted by the actual typed machine; no ambiguity defect in answer acceptance."
+    },
+    {
+      "reader": "a",
+      "card": "055",
+      "taskId": "g1.paint.ch01.enc.obj-desk.r1",
+      "kind": "restore",
+      "actual": {
+        "card": "055",
+        "answer": "desk",
+        "colour": "green",
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Das Bild zeigt einen Schultisch; der zweite Schritt nennt green."
+      },
+      "expected": {
+        "name": "desk",
+        "colour": "green"
+      },
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "a",
+      "card": "056",
+      "taskId": "g1.paint.ch01.enc.obj-scissors.r1",
+      "kind": "restore",
+      "actual": {
+        "card": "056",
+        "answer": "scissors",
+        "colour": "grey",
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Das Bild zeigt eine Schere; der zweite Schritt nennt grey."
+      },
+      "expected": {
+        "name": "scissors",
+        "colour": "grey"
+      },
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "a",
+      "card": "057",
+      "taskId": "g1.paint.ch01.enc.obj-gluestick.r1",
+      "kind": "restore",
+      "actual": {
+        "card": "057",
+        "answer": "glue stick",
+        "colour": "orange",
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Das Bild zeigt einen Klebestift; der zweite Schritt nennt orange."
+      },
+      "expected": {
+        "name": "glue stick",
+        "colour": "orange"
+      },
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "a",
+      "card": "058",
+      "taskId": "g1.paint.ch01.enc.obj-sharpener.r1",
+      "kind": "restore",
+      "actual": {
+        "card": "058",
+        "answer": "pencil sharpener",
+        "colour": "red",
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Das Bild zeigt einen Spitzer; der zweite Schritt nennt red."
+      },
+      "expected": {
+        "name": "pencil sharpener",
+        "colour": "red"
+      },
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "a",
+      "card": "059",
+      "taskId": "g1.paint.ch01.rsc.tablet.r1",
+      "kind": "choice",
+      "actual": {
+        "card": "059",
+        "answer": "It's a tablet.",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Im verschlossenen Fach ist sichtbar ein Tablet."
+      },
+      "expected": "It's a tablet.",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "a",
+      "card": "060",
+      "taskId": "g1.paint.ch01.rsc.chair.r1",
+      "kind": "restore",
+      "actual": {
+        "card": "060",
+        "answer": "chair",
+        "colour": "yellow",
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Das Bild zeigt einen Stuhl; der zweite Schritt nennt yellow."
+      },
+      "expected": {
+        "name": "chair",
+        "colour": "yellow"
+      },
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "a",
+      "card": "061",
+      "taskId": "g1.paint.ch01.rsc.picture.r1",
+      "kind": "choice",
+      "actual": {
+        "card": "061",
+        "answer": "It's a picture.",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Hinter dem Schloss ist ein Klassenbild zu sehen."
+      },
+      "expected": "It's a picture.",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "b",
+      "card": "001",
+      "taskId": "g1.paint.ch01.enc.pencil.k1",
+      "kind": "choice",
+      "actual": {
+        "card": "001",
+        "answer": "Listen!",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Die Aufforderung zum Zuhören lautet „Listen!“."
+      },
+      "expected": "Listen!",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "b",
+      "card": "002",
+      "taskId": "g1.paint.ch01.enc.pencil.k2",
+      "kind": "choice",
+      "actual": {
+        "card": "002",
+        "answer": "Sit down!",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Der Bleistift soll sich setzen."
+      },
+      "expected": "Sit down!",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "b",
+      "card": "003",
+      "taskId": "g1.paint.ch01.enc.pencil.k3",
+      "kind": "choice",
+      "actual": {
+        "card": "003",
+        "answer": "Don't write!",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Das Kritzeln ins Heft soll verboten werden."
+      },
+      "expected": "Don't write!",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "b",
+      "card": "004",
+      "taskId": "g1.paint.ch01.enc.eraser.r1",
+      "kind": "restore",
+      "actual": {
+        "card": "004",
+        "answer": "rubber",
+        "colour": "pink",
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Abgebildet und benannt ist ein Radiergummi; die zweite Ansicht nennt Rosa."
+      },
+      "expected": {
+        "name": "rubber",
+        "colour": "pink"
+      },
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "b",
+      "card": "005",
+      "taskId": "g1.paint.ch01.enc.eraser.k1",
+      "kind": "choice",
+      "actual": {
+        "card": "005",
+        "answer": "It's a book.",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Nur dieser Satz enthält Apostroph, Verb und Artikel korrekt."
+      },
+      "expected": "It's a book.",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "b",
+      "card": "006",
+      "taskId": "g1.paint.ch01.enc.eraser.k2",
+      "kind": "choice",
+      "actual": {
+        "card": "006",
+        "answer": "It isn't a window.",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Dies ist die grammatisch richtige Verneinung."
+      },
+      "expected": "It isn't a window.",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "b",
+      "card": "007",
+      "taskId": "g1.paint.ch01.enc.obj-book.r1",
+      "kind": "restore",
+      "actual": {
+        "card": "007",
+        "answer": "book",
+        "colour": "blue",
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Das Bild zeigt ein Buch; die zweite Ansicht nennt Blau."
+      },
+      "expected": {
+        "name": "book",
+        "colour": "blue"
+      },
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "b",
+      "card": "008",
+      "taskId": "g1.paint.ch01.enc.obj-schoolbag.r1",
+      "kind": "restore",
+      "actual": {
+        "card": "008",
+        "answer": "school bag",
+        "colour": "brown",
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Das Bild zeigt eine Schultasche; die zweite Ansicht nennt Braun."
+      },
+      "expected": {
+        "name": "school bag",
+        "colour": "brown"
+      },
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "b",
+      "card": "009",
+      "taskId": "g1.paint.ch01.rsc.soundsystem.r1",
+      "kind": "choice",
+      "actual": {
+        "card": "009",
+        "answer": "It's a sound system.",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Text und Lautsprecherabbildung bezeichnen eine Musikanlage."
+      },
+      "expected": "It's a sound system.",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "b",
+      "card": "010",
+      "taskId": "g1.paint.ch01.door.p1.d1",
+      "kind": "choice",
+      "actual": {
+        "card": "010",
+        "answer": "Open!",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "„Öffnen“ heißt hier „open“."
+      },
+      "expected": "Open!",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "b",
+      "card": "011",
+      "taskId": "g1.paint.ch01.door.p1.d2",
+      "kind": "choice",
+      "actual": {
+        "card": "011",
+        "answer": "Please!",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "„Please“ verwendet man bei einer höflichen Bitte."
+      },
+      "expected": "Please!",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "b",
+      "card": "012",
+      "taskId": "g1.paint.ch01.door.p1.d3",
+      "kind": "choice",
+      "actual": {
+        "card": "012",
+        "answer": "What's your name?",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Diese Frage erkundigt sich nach dem Namen."
+      },
+      "expected": "What's your name?",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "b",
+      "card": "013",
+      "taskId": "g1.paint.ch01.door.p2.d1",
+      "kind": "choice",
+      "actual": {
+        "card": "013",
+        "answer": "Close!",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "„Zumachen“ heißt hier „close“."
+      },
+      "expected": "Close!",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "b",
+      "card": "014",
+      "taskId": "g1.paint.ch01.door.p2.d2",
+      "kind": "choice",
+      "actual": {
+        "card": "014",
+        "answer": "Thanks!",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "„Thanks“ ist die passende Danksagung."
+      },
+      "expected": "Thanks!",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "b",
+      "card": "015",
+      "taskId": "g1.paint.ch01.door.p2.d3",
+      "kind": "choice",
+      "actual": {
+        "card": "015",
+        "answer": "How are you?",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Diese Frage erkundigt sich nach dem Befinden."
+      },
+      "expected": "How are you?",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "b",
+      "card": "016",
+      "taskId": "g1.paint.ch01.door.p3.d1",
+      "kind": "choice",
+      "actual": {
+        "card": "016",
+        "answer": "Listen!",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Die Aufforderung zum Zuhören lautet „Listen!“."
+      },
+      "expected": "Listen!",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "b",
+      "card": "017",
+      "taskId": "g1.paint.ch01.door.p3.d2",
+      "kind": "choice",
+      "actual": {
+        "card": "017",
+        "answer": "Hello!",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "„Hello“ ist die Begrüßung."
+      },
+      "expected": "Hello!",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "b",
+      "card": "018",
+      "taskId": "g1.paint.ch01.door.p3.d3",
+      "kind": "choice",
+      "actual": {
+        "card": "018",
+        "answer": "What's this?",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Diese Frage fragt, was etwas ist."
+      },
+      "expected": "What's this?",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "b",
+      "card": "019",
+      "taskId": "g1.paint.ch01.enc.pen.r1",
+      "kind": "restore",
+      "actual": {
+        "card": "019",
+        "answer": "pen",
+        "colour": "black",
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Die Füllfeder wird hier als „pen“ bezeichnet; die zweite Ansicht nennt Schwarz."
+      },
+      "expected": {
+        "name": "pen",
+        "colour": "black"
+      },
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "b",
+      "card": "020",
+      "taskId": "g1.paint.ch01.enc.pen.k1",
+      "kind": "choice",
+      "actual": {
+        "card": "020",
+        "answer": "How are you?",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Dies ist die englische Entsprechung von „Wie geht es dir?“."
+      },
+      "expected": "How are you?",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "b",
+      "card": "021",
+      "taskId": "g1.paint.ch01.enc.pen.k2",
+      "kind": "choice",
+      "actual": {
+        "card": "021",
+        "answer": "What's your address?",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Diese Frage erkundigt sich nach der Adresse."
+      },
+      "expected": "What's your address?",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "b",
+      "card": "022",
+      "taskId": "g1.paint.ch01.enc.paintbox.q1",
+      "kind": "oddone",
+      "actual": {
+        "card": "022",
+        "answer": "door",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Die anderen drei Wörter gehören zum Malen oder zu einem Bild."
+      },
+      "expected": [
+        "door"
+      ],
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "b",
+      "card": "023",
+      "taskId": "g1.paint.ch01.enc.paintbox.q2",
+      "kind": "oddone",
+      "actual": {
+        "card": "023",
+        "answer": "watercolours",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Wasserfarben sind keine Schreibsache."
+      },
+      "expected": [
+        "watercolours"
+      ],
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "b",
+      "card": "024",
+      "taskId": "g1.paint.ch01.enc.ranzen.q1",
+      "kind": "oddone",
+      "actual": {
+        "card": "024",
+        "answer": "exercise book",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Ein Heft gehört normalerweise nicht ins Federpennal."
+      },
+      "expected": [
+        "exercise book"
+      ],
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "b",
+      "card": "025",
+      "taskId": "g1.paint.ch01.enc.ranzen.q2",
+      "kind": "oddone",
+      "actual": {
+        "card": "025",
+        "answer": "book",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Die übrigen Wörter sind Zahlwörter."
+      },
+      "expected": [
+        "book"
+      ],
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "b",
+      "card": "026",
+      "taskId": "g1.paint.ch01.enc.ranzen.q3",
+      "kind": "oddone",
+      "actual": {
+        "card": "026",
+        "answer": "pencil",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Einen Bleistift kann man nicht anziehen."
+      },
+      "expected": [
+        "pencil"
+      ],
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "b",
+      "card": "027",
+      "taskId": "g1.paint.ch01.enc.ranzen.q4",
+      "kind": "oddone",
+      "actual": {
+        "card": "027",
+        "answer": "ruler",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Ein Lineal ist kein Kleidungsstück."
+      },
+      "expected": [
+        "ruler"
+      ],
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "b",
+      "card": "028",
+      "taskId": "g1.paint.ch01.enc.heft.r1",
+      "kind": "restore",
+      "actual": {
+        "card": "028",
+        "answer": "exercise book",
+        "colour": "white",
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Das Bild zeigt ein Heft; die zweite Ansicht nennt Weiß."
+      },
+      "expected": {
+        "name": "exercise book",
+        "colour": "white"
+      },
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "b",
+      "card": "029",
+      "taskId": "g1.paint.ch01.enc.heft.n1",
+      "kind": "choice",
+      "actual": {
+        "card": "029",
+        "answer": "No dots are visible.",
+        "colour": null,
+        "pairs": null,
+        "verdict": "unlösbar",
+        "why": "Die abgebildeten Buchseiten zeigen keine zählbaren Punkte; die Augen der Figur sind keine Punkte auf der Seite."
+      },
+      "expected": "three",
+      "comparison": "mismatch",
+      "reviewNote": "Both readers correctly report no visible countable dots; authored three is not supportable from original image. Authoring/display defect, not learner error."
+    },
+    {
+      "reader": "b",
+      "card": "030",
+      "taskId": "g1.paint.ch01.enc.heft.n2",
+      "kind": "choice",
+      "actual": {
+        "card": "030",
+        "answer": "two books",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Nach „two“ muss das zählbare Nomen im Plural stehen."
+      },
+      "expected": "two books",
+      "comparison": "match",
+      "reviewNote": "Answer is grammatical, but original image does not contain the described two books; reader A explicitly flags this."
+    },
+    {
+      "reader": "b",
+      "card": "031",
+      "taskId": "g1.paint.ch01.qf.moths.w1",
+      "kind": "wheel",
+      "actual": {
+        "card": "031",
+        "answer": "thirteen",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Die große Vorgabe ist 13; das englische Zahlwort lautet „thirteen“."
+      },
+      "expected": "thirteen",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "b",
+      "card": "032",
+      "taskId": "g1.paint.ch01.qf.moths.w2",
+      "kind": "wheel",
+      "actual": {
+        "card": "032",
+        "answer": "seven",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Die große Vorgabe ist 7; das englische Zahlwort lautet „seven“."
+      },
+      "expected": "seven",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "b",
+      "card": "033",
+      "taskId": "g1.paint.ch01.qf.moths.p1w1",
+      "kind": "wheel",
+      "actual": {
+        "card": "033",
+        "answer": "21",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Das große Zahlwort „twenty-one“ entspricht der Zahl 21."
+      },
+      "expected": "21",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "b",
+      "card": "034",
+      "taskId": "g1.paint.ch01.qf.moths.p1w2",
+      "kind": "wheel",
+      "actual": {
+        "card": "034",
+        "answer": "4",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Das große Zahlwort „four“ entspricht der Zahl 4."
+      },
+      "expected": "4",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "b",
+      "card": "035",
+      "taskId": "g1.paint.ch01.awk.merle.r1",
+      "kind": "choice",
+      "actual": {
+        "card": "035",
+        "answer": "Don't sing!",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Merle soll mit dem Singen aufhören."
+      },
+      "expected": "Don't sing!",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "b",
+      "card": "036",
+      "taskId": "g1.paint.ch01.awk.merle.r2",
+      "kind": "choice",
+      "actual": {
+        "card": "036",
+        "answer": "Sit down!",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Merle soll sich setzen."
+      },
+      "expected": "Sit down!",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "b",
+      "card": "037",
+      "taskId": "g1.paint.ch01.awk.merle.r3",
+      "kind": "choice",
+      "actual": {
+        "card": "037",
+        "answer": "Clean the desk!",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Merle soll den vollgekritzelten Tisch putzen."
+      },
+      "expected": "Clean the desk!",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "b",
+      "card": "038",
+      "taskId": "g1.paint.ch01.awk.merle.r4",
+      "kind": "choice",
+      "actual": {
+        "card": "038",
+        "answer": "Close the window!",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Das offene Fenster soll geschlossen werden."
+      },
+      "expected": "Close the window!",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "b",
+      "card": "039",
+      "taskId": "g1.paint.ch01.awk.merle.r5",
+      "kind": "choice",
+      "actual": {
+        "card": "039",
+        "answer": "Take out your books!",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Merle soll ihre Bücher aus der Tasche nehmen."
+      },
+      "expected": "Take out your books!",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "b",
+      "card": "040",
+      "taskId": "g1.paint.ch01.awk.merle.r6",
+      "kind": "choice",
+      "actual": {
+        "card": "040",
+        "answer": "Don't go!",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Merle soll nicht zur Tür gehen."
+      },
+      "expected": "Don't go!",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "b",
+      "card": "041",
+      "taskId": "g1.paint.ch01.boss.m1",
+      "kind": "mistake",
+      "actual": {
+        "card": "041",
+        "answer": "This is a board.",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Das Bild zeigt eine Tafel; „door“ muss durch „board“ ersetzt werden."
+      },
+      "expected": {
+        "wrongWord": "door",
+        "correction": "board",
+        "correctedSentence": "This is a board ."
+      },
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "b",
+      "card": "042",
+      "taskId": "g1.paint.ch01.boss.m2",
+      "kind": "mistake",
+      "actual": {
+        "card": "042",
+        "answer": "Don't speak!",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Der negative Imperativ wird mit „Don't“, nicht mit „Not“, gebildet."
+      },
+      "expected": {
+        "wrongWord": "Not",
+        "correction": "Don't",
+        "correctedSentence": "Don't speak !"
+      },
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "b",
+      "card": "043",
+      "taskId": "g1.paint.ch01.boss.o1",
+      "kind": "order",
+      "actual": {
+        "card": "043",
+        "answer": [
+          "nine",
+          "ten",
+          "eleven",
+          "twelve"
+        ],
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Aufsteigend geordnet sind dies 9, 10, 11 und 12."
+      },
+      "expected": [
+        "nine",
+        "ten",
+        "eleven",
+        "twelve"
+      ],
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "b",
+      "card": "044",
+      "taskId": "g1.paint.ch01.boss.k1",
+      "kind": "choice",
+      "actual": {
+        "card": "044",
+        "answer": "Clean!",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "„Clean!“ ist die angebotene Aufforderung zum Putzen."
+      },
+      "expected": "Clean!",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "b",
+      "card": "045",
+      "taskId": "g1.paint.ch01.boss.k2",
+      "kind": "choice",
+      "actual": {
+        "card": "045",
+        "answer": "It's a board.",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Nur diese Schreibweise enthält „It's“ und den nötigen Artikel."
+      },
+      "expected": "It's a board.",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "b",
+      "card": "046",
+      "taskId": "g1.paint.ch01.boss.k3",
+      "kind": "choice",
+      "actual": {
+        "card": "046",
+        "answer": "What's your name?",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Diese Frage erkundigt sich nach ihrem Namen."
+      },
+      "expected": "What's your name?",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "b",
+      "card": "047",
+      "taskId": "g1.paint.ch01.boss.q2",
+      "kind": "oddone",
+      "actual": {
+        "card": "047",
+        "answer": "rubber",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Mit einem Radiergummi kann man nicht schreiben."
+      },
+      "expected": [
+        "rubber"
+      ],
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "b",
+      "card": "048",
+      "taskId": "g1.paint.ch01.boss.m3",
+      "kind": "mistake",
+      "actual": {
+        "card": "048",
+        "answer": "chair",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Nach „two“ müsste das Wort im Plural „chairs“ lauten."
+      },
+      "expected": {
+        "wrongWord": "chair",
+        "correction": "chairs",
+        "correctedSentence": "Here are two chairs ."
+      },
+      "comparison": "correct-first-step",
+      "reviewNote": "First click matches. Explanation also names correct correction; second UI step was not in first packet, so completion is not claimed."
+    },
+    {
+      "reader": "b",
+      "card": "049",
+      "taskId": "g1.paint.ch01.boss.k4",
+      "kind": "choice",
+      "actual": {
+        "card": "049",
+        "answer": "Thank you.",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Dies ist die passende englische Danksagung."
+      },
+      "expected": "Thank you.",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "b",
+      "card": "050",
+      "taskId": "g1.paint.ch01.boss.k5",
+      "kind": "choice",
+      "actual": {
+        "card": "050",
+        "answer": "eight",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Nach „seven“ folgt „eight“."
+      },
+      "expected": "eight",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "b",
+      "card": "051",
+      "taskId": "g1.paint.ch01.boss.q1",
+      "kind": "oddone",
+      "actual": {
+        "card": "051",
+        "answer": "window",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "„Window“ bezeichnet keine Farbe."
+      },
+      "expected": [
+        "window"
+      ],
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "b",
+      "card": "052",
+      "taskId": "g1.paint.ch01.boss.o2",
+      "kind": "order",
+      "actual": {
+        "card": "052",
+        "answer": [
+          "How",
+          "are",
+          "you",
+          "?"
+        ],
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Diese Reihenfolge bildet die korrekte Frage „How are you?“."
+      },
+      "expected": [
+        "How",
+        "are",
+        "you",
+        "?"
+      ],
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "b",
+      "card": "053",
+      "taskId": "g1.paint.ch01.boss.me1",
+      "kind": "memory",
+      "actual": {
+        "card": "053",
+        "answer": "3–three; 7–seven; 12–twelve; 9–nine",
+        "colour": null,
+        "pairs": [
+          [
+            "3",
+            "three"
+          ],
+          [
+            "7",
+            "seven"
+          ],
+          [
+            "12",
+            "twelve"
+          ],
+          [
+            "9",
+            "nine"
+          ]
+        ],
+        "verdict": "eindeutig",
+        "why": "Die acht einzeln aufgedeckten Inhalte ergeben genau diese vier Zahl-Zahlwort-Paare."
+      },
+      "expected": [
+        [
+          "3",
+          "three"
+        ],
+        [
+          "7",
+          "seven"
+        ],
+        [
+          "9",
+          "nine"
+        ],
+        [
+          "12",
+          "twelve"
+        ]
+      ],
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "b",
+      "card": "054",
+      "taskId": "g1.paint.ch01.fin.t1",
+      "kind": "typed",
+      "actual": {
+        "card": "054",
+        "answer": "Hello",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "„Hallo“ heißt auf Englisch „Hello“."
+      },
+      "expected": [
+        "hello",
+        "hello!",
+        "hi",
+        "hi!"
+      ],
+      "comparison": "match",
+      "reviewNote": "Hello and Hi, with either capitalization and optional exclamation mark, are accepted by the actual typed machine; no ambiguity defect in answer acceptance."
+    },
+    {
+      "reader": "b",
+      "card": "055",
+      "taskId": "g1.paint.ch01.enc.obj-desk.r1",
+      "kind": "restore",
+      "actual": {
+        "card": "055",
+        "answer": "desk",
+        "colour": "green",
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Der Text bezeichnet das hockerartig wirkende Bild als Tisch; im Schulwortschatz passt „desk“, und die zweite Ansicht nennt Grün."
+      },
+      "expected": {
+        "name": "desk",
+        "colour": "green"
+      },
+      "comparison": "match",
+      "reviewNote": "Reader describes desk artwork as stool-like and relies on caption/context. Root informed; no unapproved art change."
+    },
+    {
+      "reader": "b",
+      "card": "056",
+      "taskId": "g1.paint.ch01.enc.obj-scissors.r1",
+      "kind": "restore",
+      "actual": {
+        "card": "056",
+        "answer": "scissors",
+        "colour": "grey",
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Das Bild zeigt eine Schere; die zweite Ansicht nennt Grau."
+      },
+      "expected": {
+        "name": "scissors",
+        "colour": "grey"
+      },
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "b",
+      "card": "057",
+      "taskId": "g1.paint.ch01.enc.obj-gluestick.r1",
+      "kind": "restore",
+      "actual": {
+        "card": "057",
+        "answer": "glue stick",
+        "colour": "orange",
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Das Bild und der Text bezeichnen einen Klebestift; die zweite Ansicht nennt Orange."
+      },
+      "expected": {
+        "name": "glue stick",
+        "colour": "orange"
+      },
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "b",
+      "card": "058",
+      "taskId": "g1.paint.ch01.enc.obj-sharpener.r1",
+      "kind": "restore",
+      "actual": {
+        "card": "058",
+        "answer": "pencil sharpener",
+        "colour": "red",
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Das Bild zeigt einen Spitzer; die zweite Ansicht nennt Rot."
+      },
+      "expected": {
+        "name": "pencil sharpener",
+        "colour": "red"
+      },
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "b",
+      "card": "059",
+      "taskId": "g1.paint.ch01.rsc.tablet.r1",
+      "kind": "choice",
+      "actual": {
+        "card": "059",
+        "answer": "It's a tablet.",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Im verschlossenen Fach ist ein Tablet abgebildet."
+      },
+      "expected": "It's a tablet.",
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "b",
+      "card": "060",
+      "taskId": "g1.paint.ch01.rsc.chair.r1",
+      "kind": "restore",
+      "actual": {
+        "card": "060",
+        "answer": "chair",
+        "colour": "yellow",
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Das Bild zeigt einen Stuhl; die zweite Ansicht nennt Gelb."
+      },
+      "expected": {
+        "name": "chair",
+        "colour": "yellow"
+      },
+      "comparison": "match",
+      "reviewNote": ""
+    },
+    {
+      "reader": "b",
+      "card": "061",
+      "taskId": "g1.paint.ch01.rsc.picture.r1",
+      "kind": "choice",
+      "actual": {
+        "card": "061",
+        "answer": "It's a picture.",
+        "colour": null,
+        "pairs": null,
+        "verdict": "eindeutig",
+        "why": "Das sichtbare Klassenfoto ist ein Bild."
+      },
+      "expected": "It's a picture.",
+      "comparison": "match",
+      "reviewNote": ""
+    }
+  ]
+}

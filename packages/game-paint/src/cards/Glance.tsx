@@ -11,63 +11,63 @@
 //   HelpFold — the hint ladder, folded until it is earned
 import React from "react";
 import { ACT_LABEL_DE, type ActMark } from "./glance.ts";
+import { pictureWindowPercent, type PictureWindow } from "../story/picture-windows.ts";
 
 /** The picture a card leads with: the asker's portrait, the image stimulus, or
  *  nothing at all (a card with neither draws its act mark large instead — see
  *  ActPlate). `wash` keeps the portrait exactly as drained as the being in the
  *  world (the desaturation law, doc 41 §2): a full-colour face over a grey desk
  *  would hand a restore card's own answer away. */
-export const Plate = ({ url, behindUrl, altDe, wash = 0, height = 132, mark }: {
-  url: string; behindUrl?: string; altDe: string; wash?: number; height?: number; mark?: ActMark;
-}): React.ReactElement => (
-  <div className="pb-plate-wrap">
-    <div className="pb-plate">
-      {/* R5-W4 · D3 · F-14 · R54 · WHAT IS INSIDE, DRAWN INSIDE. The cage shell
-          is one picture for four different captives, so the occupant is its own
-          layer BEHIND it — the same stacking the world already uses (the bars
-          belong in front of the captive: PaintScene depth 6.99 behind 7, both
-          anchored bottom-centre). Absolute so it cannot change the plate's box,
-          and it wears the SAME wash as the shell: a full-colour thing behind
-          grey bars would hand the restore law's own answer away. */}
-      {behindUrl !== undefined && (
-        <img
-          src={behindUrl}
-          alt=""
-          aria-hidden
+export const Plate = ({ url, behindUrl, behindWindow, curseUrl, altDe, wash = 0, height = 132, mark }: {
+  url: string; behindUrl?: string; behindWindow?: PictureWindow; curseUrl?: string;
+  altDe: string; wash?: number; height?: number; mark?: ActMark;
+}): React.ReactElement => {
+  const window = behindWindow ? pictureWindowPercent(behindWindow) : undefined;
+  return (
+    <div className="pb-plate-wrap">
+      <div className="pb-plate">
+        {/* This box is exactly the shell image's box. A wide card or a tall
+            occupant must never change the registered window's position. */}
+        <div data-picture-frame={behindWindow ? `${behindWindow.frame.width}x${behindWindow.frame.height}` : undefined}
           style={{
-            // The occupant sheets are painted in register with the cage's
-            // resting cell (both 347 x 480), but a cage that is SHAKING shows a
-            // wider cell (385 x 479) — so the layer is fitted into the shell's
-            // own box rather than assumed to match it, anchored bottom-centre
-            // like every being in the world (origin 0.5, 1).
-            position: "absolute", inset: 0,
-            width: "100%", height: "100%",
-            objectFit: "contain", objectPosition: "50% 100%",
-            filter: wash > 0 ? `grayscale(${wash})` : undefined,
-            pointerEvents: "none",
-          }}
-        />
-      )}
-      {/* bounded on BOTH axes: the cells are painted at whatever aspect their
-          being needs, and a wide one sized by height alone grew until it was
-          the whole card (found in the render, first exemplar round) */}
-      <img
-        src={url}
-        alt={altDe}
-        style={{
-          position: "relative",
-          maxHeight: height, maxWidth: "100%", height: "auto", width: "auto",
-          filter: wash > 0 ? `grayscale(${wash})` : undefined,
-        }}
-      />
+            position: "relative", maxWidth: "100%", lineHeight: 0,
+            width: behindWindow ? height * behindWindow.frame.width / behindWindow.frame.height : "fit-content",
+          }}>
+          {behindUrl !== undefined && (
+            <img src={behindUrl} alt="" aria-hidden
+              data-picture-layer="occupant"
+              style={{
+                position: "absolute",
+                left: window ? `${window.x}%` : 0,
+                top: window ? `${window.y}%` : 0,
+                width: window ? `${window.width}%` : "100%",
+                height: window ? `${window.height}%` : "100%",
+                objectFit: "contain", objectPosition: "50% 100%",
+                filter: wash > 0 ? `grayscale(${wash})` : undefined,
+                pointerEvents: "none",
+              }}
+            />
+          )}
+          <img src={url} alt={altDe} data-picture-layer="shell"
+            style={{
+              display: "block", position: "relative",
+              maxHeight: height, maxWidth: "100%", height: "auto",
+              width: behindWindow ? "100%" : "auto",
+              filter: wash > 0 ? `grayscale(${wash})` : undefined,
+            }}
+          />
+          {/* Authored transparent ink, above the object and never desaturated.
+              It shares the image box; CSS supplies placement, not new art. */}
+          {curseUrl !== undefined && <img src={curseUrl} alt="" aria-hidden
+            data-picture-layer="curse"
+            style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "contain", pointerEvents: "none" }}
+          />}
+        </div>
+      </div>
+      {mark !== undefined && <span className="pb-stamp"><ActIcon mark={mark} size={26} /></span>}
     </div>
-    {/* THE VERB, STAMPED ON THE PICTURE (second exemplar round). Beside the ask
-        it floated at the card's left edge and read as a stray control; pressed
-        into the corner of the thing it acts on, it is a seal — and it says what
-        to do about THAT, which is the whole sentence a child needs. */}
-    {mark !== undefined && <span className="pb-stamp"><ActIcon mark={mark} size={26} /></span>}
-  </div>
-);
+  );
+};
 
 /** THE ONE EMPHASIS DEVICE. `en` marks the English ask, which gets the book's
  *  accent ink — on Koki's own screenshot the English was the smallest type on

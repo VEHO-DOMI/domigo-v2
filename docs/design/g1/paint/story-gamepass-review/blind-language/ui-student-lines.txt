@@ -1,0 +1,255 @@
+001. Die erste Englischstunde
+002. Die Schule am Morgen. Durch die Fenster fällt warmes Licht.
+003. Du bist in der ersten Klasse. Heute habt ihr eure erste Englischstunde.
+004. Das neue Englischbuch
+005. Die ganze Klasse sitzt in ihrer ersten Englischstunde. Aus dem neuen Englischbuch auf dem Pult steigt dunkle Tinte.
+006. Euer neues Englischbuch liegt offen auf dem Pult. Plötzlich läuft Tinte über die Seiten.
+007. Sie wird immer mehr. Eine dunkle Gestalt steigt aus dem Buch.
+008. Hinein ins Buch
+009. Ein Tintenwirbel aus dem neuen Englischbuch erfasst die ganze Klasse mit ihren Schulsachen.
+010. Ein Wirbel erfasst das Klassenzimmer. Das Englischbuch verschluckt eure ganze Klasse.
+011. Du wirst Teil der Geschichte
+012. Auf der Buchseite wird der Junge zur gezeichneten Spielfigur. Er entdeckt Handschuhe, einen Rucksack und eine Feder.
+013. Auf der Seite wirst auch du zu einer Zeichnung. An deinen Händen sind plötzlich weiße Handschuhe.
+014. Du spürst einen Rucksack auf deinem Rücken. Oben schaut eine Feder heraus.
+015. Wo sind die anderen?
+016. Der Held steht auf riesigen Buchrücken in einer stillen Halle. Ein kleines Buch hat seine Farbe verloren.
+017. Du landest auf einem riesigen Bücherstapel. Ringsum ist es still.
+018. Von deinen Mitschülern ist nichts zu sehen.
+019. Ein kleiner Helfer
+020. Ein kleiner freundlicher Tintenklecks schaut zwischen den Buchseiten hervor und winkt dem Helden.
+021. Klecks
+022. Hallo! Ich bin Klecks. Ich habe mich von dem Tintengeist losgemacht.
+023. Er hat die Schule verhext. Ich will dir helfen, deine Mitschüler zu finden.
+024. Hier im Buch bekommst du auch magische Kräfte. Ich zeige dir unterwegs, was du damit kannst.
+025. Zeit für die Schule
+026. Klecks zeigt dem Helden das entfärbte Buch und die goldenen Buchstaben in der Eingangshalle.
+027. Fangen wir hier an. Mit den richtigen englischen Wörtern kannst du den Zauber lösen.
+028. Sammle unterwegs die goldenen Buchstaben. Die brauchen wir später noch.
+029. Die verhexte Schule
+030. Wir sind in der Eingangshalle. Dort liegt ein Buch, das seine Farbe verloren hat.
+031. Geh hin und sag den Namen auf Englisch. Dann gib ihm die Farbe zurück.
+032. Los geht’s
+033. Deine Handschuhe können zaubern
+034. Ein Funke aus der Buchseite springt auf deine Handschuhe. Jetzt kannst du deine Faust losschicken. Sie kommt von selbst zurück.
+035. Halte X gedrückt und lass los, um die Faust zu werfen.
+036. Du kannst dich an die Ringe hängen
+037. Die Magie der Seite steckt jetzt auch in deinen Händen. Sie halten dich an den schwebenden Ringen fest.
+038. Spring zu einem Ring. Mit der Sprungtaste lässt du wieder los.
+039. Deine Feder dreht sich
+040. Die Magie der Seite bringt die Feder an deinem Rucksack zum Drehen. Sie hält dich wie ein kleiner Hubschrauber in der Luft.
+041. Halte beim Fallen die Sprungtaste gedrückt. Dann sinkst du langsamer.
+042. Du kannst dich an Kanten festhalten
+043. Die Magie der Seite macht deinen Griff stärker. Jetzt kannst du dich an einer Kante festhalten.
+044. Spring an eine Kante. Mit der Sprungtaste ziehst du dich hinauf.
+045. Du kannst weit springen
+046. In der Buchwelt bist du leicht wie eine Zeichnung. Probier aus, wie weit du springen kannst.
+047. Drück die Sprungtaste. Hältst du sie länger, springst du höher.
+048. Du kannst schneller laufen
+049. Die Magie der Seite macht deine Schritte schneller. So kommst du auch über längere Lücken.
+050. Lauf an und spring im letzten Moment ab.
+051. Merle
+052. Fenn
+053. Ilvy
+054. Piet
+055. Veit
+056. Tammo
+057. Enna
+058. Juno
+059. Quirin
+060. Smilla
+061. Lenz
+062. Edda
+063. Falk
+064. Fritzi
+065. Cleo
+066. Der Tintengeist hat eure Schule verhext. Viele Schulsachen haben ihre Farbe verloren. Deine Mitschülerin Merle sitzt in einem Federpenal fest. Klecks zeigt dir den Weg zu ihr.
+067. Mit Englisch löst du den Zauber und hilfst Merle.
+068. Mit der Leertaste springst du. Halte sie für einen höheren Sprung.
+069. Stell dich vor eine graue Sache und drück Pfeil nach oben.
+070. Manche Schulsachen greifen dich an. Mit Englisch beruhigst du sie.
+071. Der Apostroph zeigt, dass ein oder mehrere Buchstaben ausgelassen wurden.
+072. Befehle auf Englisch
+073. Bei einem englischen Befehl beginnst du gleich mit dem Verb. Du brauchst davor kein you.
+074. Mit I'm sagst du, wie du heißt oder wie es dir geht. Mit It's kannst du eine Sache benennen.
+075. Mit I'm sprichst du über dich. Mit It's benennst du eine Sache.
+076. Von 21 bis 25 kommt zuerst twenty. Danach hängst du die Einerzahl mit einem Bindestrich an.
+077. Für 23 schreibst du twenty-three.
+078. Der Schulhof
+079. Durch diese Tür kommst du zur Tafelbühne.
+080. Ein Buch und viele Bücher
+081. Für mehrere Dinge hängst du oft ein s an. Nach einem Mitlaut wird y zu ies. Aus child wird children.
+082. Nach einem Mitlaut wird y zu ies. Nach einem Selbstlaut bleibt y.
+083. Schulsachen wiedergefunden
+084. Kurzformen
+085. Im Englischen werden zwei Wörter oft zu einer Kurzform. Aus „I am“ wird „I'm“.
+086. Soll jemand etwas nicht tun, stellst du Don't vor das Verb.
+087. Fragen und passende Antworten
+088. Englische Zahlen bis 25
+089. Wir öffnen das Kapitel …
+090. Geschichte
+091. Den Gruß schreiben
+092. Klassenfoto
+093. Schlösser
+094. Befreit
+095. Regel-Seiten
+096. Weiter geht’s, Probe Merle!
+097. Deine Kleidung
+098. Hier kannst du die Wörter noch einmal lesen.
+099. Weiter
+100. Die Tafel ist wieder sauber. Suchen wir die anderen im nächsten Kapitel!
+101. Zur Kapitelübersicht
+102. Du hast eine neue Kraft
+103. Ausprobieren
+104. Ein verschlossenes Schließfach.
+105. Die Musikanlage ist weggesperrt.
+106. Da steckt etwas fest!
+107. Da steckt Merle fest!
+108. Da steckt Fenn fest!
+109. Da steckt Ilvy fest!
+110. Da steckt Piet fest!
+111. Da steckt Veit fest!
+112. Da steckt Tammo fest!
+113. Da steckt Enna fest!
+114. Da steckt Juno fest!
+115. Da steckt Quirin fest!
+116. Da steckt Smilla fest!
+117. Da steckt Lenz fest!
+118. Da steckt Edda fest!
+119. Da steckt Falk fest!
+120. Da steckt Fritzi fest!
+121. Da steckt Cleo fest!
+122. Das Tablet ist weggesperrt.
+123. Da steckt das Klassenfoto fest!
+124. Stell dich davor und öffne die Aufgabe. Mit der richtigen Antwort kannst du das Schließfach öffnen.
+125. Stell dich davor und öffne die Aufgabe. Mit der richtigen Antwort kannst du den Käfig öffnen.
+126. Alles klar!
+127. Du hast 9 Buchstaben gesammelt.
+128. Du hast 0 Buchstaben gesammelt.
+129. Du hast einen Buchstaben gesammelt.
+130. Du hast 2 Buchstaben gesammelt.
+131. Du hast 3 Buchstaben gesammelt.
+132. Du hast 4 Buchstaben gesammelt.
+133. Du hast 5 Buchstaben gesammelt.
+134. Du hast 6 Buchstaben gesammelt.
+135. Du hast 7 Buchstaben gesammelt.
+136. Du hast 8 Buchstaben gesammelt.
+137. Klecks braucht 8 Buchstaben, um diese Tür aufzumachen. Dahinter sind 12 weitere versteckt. Such sie, bevor die Tinte trocken ist.
+138. 8 Buchstaben abgeben
+139. Merle ist nicht mehr verhext.
+140. Fenn ist nicht mehr verhext.
+141. Ilvy ist nicht mehr verhext.
+142. Piet ist nicht mehr verhext.
+143. Veit ist nicht mehr verhext.
+144. Tammo ist nicht mehr verhext.
+145. Enna ist nicht mehr verhext.
+146. Juno ist nicht mehr verhext.
+147. Quirin ist nicht mehr verhext.
+148. Smilla ist nicht mehr verhext.
+149. Lenz ist nicht mehr verhext.
+150. Edda ist nicht mehr verhext.
+151. Falk ist nicht mehr verhext.
+152. Fritzi ist nicht mehr verhext.
+153. Cleo ist nicht mehr verhext.
+154. Hallo! Ich bin Merle. Danke!
+155. Hallo! Ich bin Fenn. Danke!
+156. Hallo! Ich bin Ilvy. Danke!
+157. Hallo! Ich bin Piet. Danke!
+158. Hallo! Ich bin Veit. Danke!
+159. Hallo! Ich bin Tammo. Danke!
+160. Hallo! Ich bin Enna. Danke!
+161. Hallo! Ich bin Juno. Danke!
+162. Hallo! Ich bin Quirin. Danke!
+163. Hallo! Ich bin Smilla. Danke!
+164. Hallo! Ich bin Lenz. Danke!
+165. Hallo! Ich bin Edda. Danke!
+166. Hallo! Ich bin Falk. Danke!
+167. Hallo! Ich bin Fritzi. Danke!
+168. Hallo! Ich bin Cleo. Danke!
+169. Ich komme mit. Suchen wir die anderen!
+170. Das Schließfach ist offen.
+171. Der Zauber ist gelöst.
+172. Die Musikanlage steht wieder an ihrem Platz.
+173. Das Gerät steht wieder an seinem Platz.
+174. Das Tablet steht wieder an seinem Platz.
+175. Klecks zeigt dir den Weg.
+176. Kapitel eins
+177. Schön, dass du da bist, Probe Merle!
+178. Danke, Probe Merle!
+179. Die Tafel ist wieder sauber. Dein Gruß steht darauf.
+180. Die Tafel ist wieder sauber.
+181. Klecks zeigt auf das Klassenfoto neben der Tafel.
+182. Schauen wir nach, wer noch fehlt!
+183. Deine Worte haben geholfen. Jetzt können wir weiter.
+184. Der Weg ist frei. Jetzt können wir weiter.
+185. Dein Name bleibt für diese Spielrunde erhalten. Der Browser konnte ihn nicht für später speichern.
+186. Zum Klassenfoto
+187. Klecks schaut mit dir zurück
+188. Hier gibt es noch etwas zu finden. Du kannst später wiederkommen.
+189. Du hast hier alles gefunden. Gut gemacht!
+190. Die Tafel lächelt.
+191. Unser Klassenfoto
+192. Probe Merle, auf diesem Foto sind deine fünfzehn Mitschüler.
+193. Auf diesem Foto sind deine fünfzehn Mitschüler.
+194. Unsere Klasse mit fünfzehn Mitschülern in drei Reihen.
+195. Die Namen stehen in derselben Reihenfolge wie auf dem Foto.
+196. Noch im Buch
+197. Wieder da
+198. Wir müssen noch 14 finden. Suchen wir im nächsten Kapitel weiter!
+199. Alle sind wieder da!
+200. Wir müssen noch ein Kind finden. Suchen wir im nächsten Kapitel weiter!
+201. Wir müssen noch 2 finden. Suchen wir im nächsten Kapitel weiter!
+202. Wir müssen noch 3 finden. Suchen wir im nächsten Kapitel weiter!
+203. Wir müssen noch 4 finden. Suchen wir im nächsten Kapitel weiter!
+204. Wir müssen noch 5 finden. Suchen wir im nächsten Kapitel weiter!
+205. Wir müssen noch 6 finden. Suchen wir im nächsten Kapitel weiter!
+206. Wir müssen noch 7 finden. Suchen wir im nächsten Kapitel weiter!
+207. Wir müssen noch 8 finden. Suchen wir im nächsten Kapitel weiter!
+208. Wir müssen noch 9 finden. Suchen wir im nächsten Kapitel weiter!
+209. Wir müssen noch 10 finden. Suchen wir im nächsten Kapitel weiter!
+210. Wir müssen noch 11 finden. Suchen wir im nächsten Kapitel weiter!
+211. Wir müssen noch 12 finden. Suchen wir im nächsten Kapitel weiter!
+212. Wir müssen noch 13 finden. Suchen wir im nächsten Kapitel weiter!
+213. Wir müssen noch 15 finden. Suchen wir im nächsten Kapitel weiter!
+214. Die Geschichte beginnt
+215. Wie alles angefangen hat
+216. Geschichte überspringen
+217. Goldene Sammelbuchstaben A, B und C
+218. Zurück
+219. Bild 1 von 7
+220. Bild 2 von 7
+221. Bild 3 von 7
+222. Bild 4 von 7
+223. Bild 5 von 7
+224. Bild 6 von 7
+225. Bild 7 von 7
+226. 1 von 7
+227. 2 von 7
+228. 3 von 7
+229. 4 von 7
+230. 5 von 7
+231. 6 von 7
+232. 7 von 7
+233. Zum ersten Kapitel
+234. Die Tafel fragt dich nach deinem Namen.
+235. Wie heißt du?
+236. Du kannst auch einen Spitznamen nehmen.
+237. Das ist mein Name
+238. Die Tafel ist verhext und voller Kritzeleien.
+239. Weich der Kreide aus, bis die Tafel landet.
+240. Wenn sie unten ist, löst du eine Aufgabe.
+241. Geh danach zur Tafel. So wischst du eine Schicht weg.
+242. Die Farbe ist wieder da.
+243. Der Zauber ist weg.
+244. Weich der Kreide aus!
+245. Zähl auf Englisch bis zu dieser Zahl.
+246. Welche Zahl ist mit dem englischen Wort gemeint?
+247. Klassenkinder befreit
+248. Farbe zurückgegeben
+249. Regel-Seiten gefunden
+250. Bonus-Bücher
+251. Seite umblättern
+252. Schulsachen wiedergefunden 0 von 3
+253. Schulsachen wiedergefunden 3 von 3
+254. Farbe zurückgegeben 0 von 10
+255. Farbe zurückgegeben 10 von 10

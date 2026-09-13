@@ -1,0 +1,275 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "tool": "builtin image_gen",
+  "date": "2026-09-13",
+  "scope": "Generated originals and read-only inspection only. No repository import or pixel modifications.",
+  "measurementMethod": "Read-only PNG scan; foreground = not(r>160 && g<100 && b>150). Not final chromakey implementation.",
+  "images": [
+    {
+      "file": "classphoto-15-original.png",
+      "source": "/Users/veho/.codex/generated_images/01a09a32-134e-7ea3-aca9-497d50209de4/exec-a1e521de-50e6-4e96-b7eb-df7cb2675f6b.png",
+      "bytes": 2404813,
+      "width": 1536,
+      "height": 1024,
+      "sha256": "4ac4e7214d82e0ce775ba0fa14e9755cd2aff2c696813f5411187f8d9f659d83",
+      "sourceByteIdentical": true,
+      "promptFile": "classphoto-15.prompt.txt",
+      "promptSha256": "9b763b622fd4aa17f230b915b865cd464adcc420a67dba6b6d5481c17c831901",
+      "status": "candidate",
+      "superseded": false,
+      "alphaMin": 255,
+      "exactMagentaPixels": 0,
+      "cornerRGBA": [
+        236,
+        12,
+        241,
+        255
+      ],
+      "borderNonKeyPixels": 0,
+      "regions": [
+        {
+          "id": "photo",
+          "sourceWindow": {
+            "x": 0,
+            "y": 0,
+            "width": 1536,
+            "height": 1024
+          },
+          "foregroundBounds": {
+            "minX": 66,
+            "minY": 29,
+            "maxX": 1468,
+            "maxY": 993,
+            "width": 1403,
+            "height": 965
+          }
+        }
+      ]
+    },
+    {
+      "file": "device-locker-empty-states-v2-original.png",
+      "source": "/Users/veho/.codex/generated_images/01a09a32-134e-7ea3-aca9-497d50209de4/exec-cdfaed22-748f-46f0-bd86-dff121c30a28.png",
+      "bytes": 1523737,
+      "width": 1536,
+      "height": 1024,
+      "sha256": "a4f085cdae9bb22f86b1c6f63d7ddaa5b0a9966f5d9debe0e26f430f295adfc2",
+      "sourceByteIdentical": true,
+      "promptFile": "device-locker-hinge-correction.prompt.txt",
+      "promptSha256": "3b228f68561b1f993d362fdabb136b4fda40680ab5669454d80b845cfb18afbb",
+      "status": "candidate",
+      "superseded": false,
+      "alphaMin": 255,
+      "exactMagentaPixels": 0,
+      "cornerRGBA": [
+        232,
+        16,
+        240,
+        255
+      ],
+      "borderNonKeyPixels": 0,
+      "regions": [
+        {
+          "id": "closed",
+          "sourceWindow": {
+            "x": 0,
+            "y": 0,
+            "width": 685,
+            "height": 1024
+          },
+          "foregroundBounds": {
+            "minX": 76,
+            "minY": 145,
+            "maxX": 628,
+            "maxY": 805,
+            "width": 553,
+            "height": 661
+          }
+        },
+        {
+          "id": "open",
+          "sourceWindow": {
+            "x": 685,
+            "y": 0,
+            "width": 851,
+            "height": 1024
+          },
+          "foregroundBounds": {
+            "minX": 740,
+            "minY": 145,
+            "maxX": 1489,
+            "maxY": 847,
+            "width": 750,
+            "height": 703
+          }
+        }
+      ]
+    }
+  ],
+  "photoRoster": [
+    {
+      "row": "top",
+      "leftToRightIndex": 1,
+      "name": "Lenz",
+      "approximateFaceCenter": {
+        "x": 409,
+        "y": 228
+      },
+      "identityAssessment": "visual match by face/hair/clothing colour; ordinary school-clothing version",
+      "source": "canonical raw cast identity + corrected whole-class comic"
+    },
+    {
+      "row": "top",
+      "leftToRightIndex": 2,
+      "name": "Edda",
+      "approximateFaceCenter": {
+        "x": 583,
+        "y": 235
+      },
+      "identityAssessment": "visual match by face/hair/clothing colour; ordinary school-clothing version",
+      "source": "canonical raw cast identity + corrected whole-class comic"
+    },
+    {
+      "row": "top",
+      "leftToRightIndex": 3,
+      "name": "Falk",
+      "approximateFaceCenter": {
+        "x": 770,
+        "y": 230
+      },
+      "identityAssessment": "visual match by face/hair/clothing colour; ordinary school-clothing version",
+      "source": "canonical raw cast identity + corrected whole-class comic"
+    },
+    {
+      "row": "top",
+      "leftToRightIndex": 4,
+      "name": "Fritzi",
+      "approximateFaceCenter": {
+        "x": 949,
+        "y": 235
+      },
+      "identityAssessment": "visual match by face/hair/clothing colour; ordinary school-clothing version",
+      "source": "canonical raw cast identity + corrected whole-class comic"
+    },
+    {
+      "row": "top",
+      "leftToRightIndex": 5,
+      "name": "Cleo",
+      "approximateFaceCenter": {
+        "x": 1131,
+        "y": 253
+      },
+      "identityAssessment": "visual match by face/hair/clothing colour; ordinary school-clothing version",
+      "source": "canonical raw cast identity + corrected whole-class comic"
+    },
+    {
+      "row": "middle",
+      "leftToRightIndex": 1,
+      "name": "Tammo",
+      "approximateFaceCenter": {
+        "x": 379,
+        "y": 410
+      },
+      "identityAssessment": "visual match by face/hair/clothing colour; ordinary school-clothing version",
+      "source": "canonical raw cast identity + corrected whole-class comic"
+    },
+    {
+      "row": "middle",
+      "leftToRightIndex": 2,
+      "name": "Enna",
+      "approximateFaceCenter": {
+        "x": 578,
+        "y": 418
+      },
+      "identityAssessment": "visual match by face/hair/clothing colour; ordinary school-clothing version",
+      "source": "canonical raw cast identity + corrected whole-class comic"
+    },
+    {
+      "row": "middle",
+      "leftToRightIndex": 3,
+      "name": "Juno",
+      "approximateFaceCenter": {
+        "x": 761,
+        "y": 429
+      },
+      "identityAssessment": "visual match by face/hair/clothing colour; ordinary school-clothing version",
+      "source": "canonical raw cast identity + corrected whole-class comic"
+    },
+    {
+      "row": "middle",
+      "leftToRightIndex": 4,
+      "name": "Quirin",
+      "approximateFaceCenter": {
+        "x": 947,
+        "y": 419
+      },
+      "identityAssessment": "visual match by face/hair/clothing colour; ordinary school-clothing version",
+      "source": "canonical raw cast identity + corrected whole-class comic"
+    },
+    {
+      "row": "middle",
+      "leftToRightIndex": 5,
+      "name": "Smilla",
+      "approximateFaceCenter": {
+        "x": 1139,
+        "y": 434
+      },
+      "identityAssessment": "visual match by face/hair/clothing colour; ordinary school-clothing version",
+      "source": "canonical raw cast identity + corrected whole-class comic"
+    },
+    {
+      "row": "bottom",
+      "leftToRightIndex": 1,
+      "name": "Merle",
+      "approximateFaceCenter": {
+        "x": 361,
+        "y": 616
+      },
+      "identityAssessment": "visual match by face/hair/clothing colour; ordinary school-clothing version",
+      "source": "canonical raw cast identity + corrected whole-class comic"
+    },
+    {
+      "row": "bottom",
+      "leftToRightIndex": 2,
+      "name": "Fenn",
+      "approximateFaceCenter": {
+        "x": 567,
+        "y": 624
+      },
+      "identityAssessment": "visual match by face/hair/clothing colour; ordinary school-clothing version",
+      "source": "canonical raw cast identity + corrected whole-class comic"
+    },
+    {
+      "row": "bottom",
+      "leftToRightIndex": 3,
+      "name": "Ilvy",
+      "approximateFaceCenter": {
+        "x": 765,
+        "y": 628
+      },
+      "identityAssessment": "visual match by face/hair/clothing colour; ordinary school-clothing version",
+      "source": "canonical raw cast identity + corrected whole-class comic"
+    },
+    {
+      "row": "bottom",
+      "leftToRightIndex": 4,
+      "name": "Piet",
+      "approximateFaceCenter": {
+        "x": 962,
+        "y": 626
+      },
+      "identityAssessment": "visual match by face/hair/clothing colour; ordinary school-clothing version",
+      "source": "canonical raw cast identity + corrected whole-class comic"
+    },
+    {
+      "row": "bottom",
+      "leftToRightIndex": 5,
+      "name": "Veit",
+      "approximateFaceCenter": {
+        "x": 1164,
+        "y": 626
+      },
+      "identityAssessment": "visual match by face/hair/clothing colour; ordinary school-clothing version",
+      "source": "canonical raw cast identity + corrected whole-class comic"
+    }
+  ]
+}

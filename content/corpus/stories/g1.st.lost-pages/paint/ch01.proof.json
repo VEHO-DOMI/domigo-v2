@@ -129,6 +129,10 @@
           0
         ],
         [
+          1,
+          4
+        ],
+        [
           31,
           2
         ],
@@ -183,7 +187,7 @@
         "exitTo": "p2",
         "cagesFreed": 0,
         "guardianDown": false,
-        "tasksSolved": 3,
+        "tasksSolved": 4,
         "redeemedPresent": true,
         "classmatesAwake": 0,
         "tipsGot": 2,
@@ -225,11 +229,23 @@
           0
         ],
         [
-          43,
+          28,
           2
         ],
         [
-          3,
+          1,
+          4
+        ],
+        [
+          17,
+          0
+        ],
+        [
+          11,
+          2
+        ],
+        [
+          8,
           0
         ],
         [
@@ -333,36 +349,24 @@
           0
         ],
         [
-          72,
+          26,
           2
         ],
         [
-          8,
-          18
-        ],
-        [
-          18,
-          16
-        ],
-        [
-          18,
+          12,
           0
         ],
         [
-          8,
-          18
+          39,
+          2
         ],
         [
-          18,
-          16
-        ],
-        [
-          31,
+          12,
           0
         ],
         [
-          26,
-          1
+          52,
+          2
         ],
         [
           12,
@@ -377,7 +381,7 @@
           0
         ],
         [
-          25,
+          46,
           2
         ],
         [
@@ -385,11 +389,19 @@
           0
         ],
         [
-          24,
+          31,
           2
         ],
         [
-          7,
+          12,
+          0
+        ],
+        [
+          32,
+          2
+        ],
+        [
+          1,
           0
         ]
       ],
@@ -399,12 +411,12 @@
         "exitTo": "p3",
         "cagesFreed": 1,
         "guardianDown": false,
-        "tasksSolved": 12,
+        "tasksSolved": 14,
         "redeemedPresent": true,
         "classmatesAwake": 1,
         "tipsGot": 2,
         "booksGot": 0,
-        "clothGot": 1,
+        "clothGot": 2,
         "scorePageShown": false,
         "guardianPathsFlown": 0,
         "guardianTelegraphs": 0,
@@ -431,6 +443,30 @@
         [
           140,
           2
+        ],
+        [
+          10,
+          1
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          29,
+          0
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          29,
+          0
+        ],
+        [
+          1,
+          4
         ],
         [
           10,
@@ -533,12 +569,8 @@
           18
         ],
         [
-          27,
+          26,
           2
-        ],
-        [
-          6,
-          18
         ]
       ],
       "expect": {
@@ -547,7 +579,7 @@
         "exitTo": "boss",
         "cagesFreed": 0,
         "guardianDown": false,
-        "tasksSolved": 2,
+        "tasksSolved": 4,
         "redeemedPresent": true,
         "classmatesAwake": 0,
         "tipsGot": 0,
@@ -857,15 +889,15 @@
           2
         ],
         [
-          13,
+          15,
           1
         ],
         [
-          28,
+          34,
           2
         ],
         [
-          5,
+          4,
           0
         ],
         [
@@ -927,7 +959,7 @@
         "exitTo": "done",
         "cagesFreed": 1,
         "guardianDown": true,
-        "tasksSolved": 12,
+        "tasksSolved": 5,
         "redeemedPresent": false,
         "classmatesAwake": 0,
         "tipsGot": 0,

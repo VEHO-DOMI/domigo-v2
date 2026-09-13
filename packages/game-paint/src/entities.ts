@@ -1,3 +1,4 @@
+import { stepCompanionTrail, type CompanionLeaderFrame, type CompanionTrail } from "./companion.ts";
 import { stepZooGuardian, stepZooPlate, type ZooState } from "./guardian-zoo.ts";
 import { stepShuttle, type ShuttleState } from "./train-ride.ts";
 import type { StageRuntime } from "./stage-v2.ts";
@@ -22,6 +23,8 @@ import { flightUnitAt, knotIndex, pathForKnot } from "./flight.ts";
 import type { EntitySpec, EntityParams, LinkSpec } from "./level.ts";
 
 export interface EntityState {
+  /** Opt-in after rescue; phase-local, safe replay of the actual hero path. */
+  companion?: CompanionTrail;
   /** Ticks since an actual projectile release or completed dive return. */
   projectileReleaseTick?: number;
   id: string;
@@ -206,6 +209,8 @@ export type EntityEvent =
   | { type: "shooed"; id: string };
 
 export interface WorldInput {
+  /** Post-movement sample from this fixed simulation tick, absent in legacy chapters. */
+  companionLeader?: CompanionLeaderFrame;
   ridingId?: string | null;
   playerX: number; // subs
   playerY: number;
@@ -617,7 +622,22 @@ export const roamZone = (
  *  R5-W4 · F5: …und seit R49 geht sie danach herum, weshalb dieser Schritt das
  *  GITTER braucht. Es ist optional (Vorgabe: leer ⇒ keine Zone ⇒ sie steht wie
  *  bisher), damit kein bestehender Aufrufer und kein Test bricht. */
-const stepRedeemed = (e: EntityState, grid: readonly string[] = []): void => {
+const stepRedeemed = (e: EntityState, grid: readonly string[] = [], leader?: CompanionLeaderFrame): void => {
+  if (e.role === "classmate" && e.companion) {
+    const previousTick = e.companion.lastTick;
+    stepCompanionTrail(e.companion, grid, leader);
+    if (e.companion.lastTick === previousTick) return;
+    const point = e.companion.point;
+    e.vx = point.x - e.x;
+    e.vy = point.y - e.y;
+    e.x = point.x;
+    e.y = point.y;
+    e.dir = point.dir;
+    e.state = "follow";
+    e.timer++;
+    e.freedTick++;
+    return;
+  }
   // R3-15: the timer runs for EVERY redeemed being, not only the ones that fly a
   // lap — a knotted school bag gets its afterlife exactly like a moth does even
   // though it stays put. Before this the timer froze at redemption and a cage
@@ -1006,7 +1026,11 @@ export const DIP_STANDOFF_PX = 68;
  * halbes Kind (8) ⇒ 45. Die Berührung passiert, wenn sich die beiden Körper
  * berühren — was das Kind am Schirm auch sieht.
  */
-export const GUARDIAN_WIPE_REACH_PX = 45;
+// Registered chapter-one body: 88px high × 384/512 wide, plus half-child 8px.
+export const GUARDIAN_WIPE_REACH_PX = 41;
+/** The new narrow blackboard changes only its own body. Both contact and the
+ * player clamp use this value; the other chapter guardians retain 45px. */
+export const guardianWipeReachPx = (skin: string): number => skin === "tafel" ? GUARDIAN_WIPE_REACH_PX : 45;
 /** How long the dip takes. Matched to the evidence beat (PaintScene's
  *  EVIDENCE_BEAT_TICKS, 36 t) so the coming-down and the writing read as one
  *  movement rather than two. */
@@ -1243,7 +1267,7 @@ const inEngageReach = (e: EntityState, playerX: number, playerY: number): boolea
  *  — die Kante, nicht die Mitte). Die Höhen-Bedingung bleibt die gemeinsame:
  *  wischen kann nur ein Kind, das auf derselben Fläche steht wie sie. */
 const inWipeReach = (e: EntityState, playerX: number, playerY: number): boolean =>
-  Math.abs(e.x - playerX) / SUBS < GUARDIAN_WIPE_REACH_PX
+  Math.abs(e.x - playerX) / SUBS < guardianWipeReachPx(e.skin)
   && Math.abs(e.y - playerY) / SUBS < ENGAGE_REACH_Y_PX;
 
 /**
@@ -1468,7 +1492,7 @@ export const stepEntities = (
     // R3-5: a freed friend keeps LIVING (joy → rest); it is no longer skipped
     if (e.redeemed) {
       if (e.zoo) continue;
-      stepRedeemed(e, grid);
+      stepRedeemed(e, grid, inp.companionLeader);
       // R5-W2 · H1 · THE ROAD BACK, and it has to live here rather than in the
       // `cage` case below, because this short-circuit is exactly what made the
       // softlock: a cage is `redeemed` from the moment its lid comes off, so

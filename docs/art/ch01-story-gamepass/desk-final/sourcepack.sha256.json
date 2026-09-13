@@ -1,0 +1,50 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 1851,
+      "sha256": "e5813ff046f8d62ecab9421201486c0ee08b2601a0c0c019bfeaa22432de5cbb"
+    },
+    {
+      "path": "colour-measure.json",
+      "bytes": 314,
+      "sha256": "7f6e513b8386faf5fc3bd4ede2c19ab00ee809eaa98656e8de0ac58aa7f0d799"
+    },
+    {
+      "path": "desk-original.png",
+      "bytes": 1803362,
+      "sha256": "6782311b5266127163094ea4b50f46d721ab35e8f93dac2cc59793be423a1aa0"
+    },
+    {
+      "path": "imagegen-call.txt",
+      "bytes": 1380,
+      "sha256": "1d983250162934dd58fd2cd1f680f793093bd98fc263c840cb2459cde68f899f"
+    },
+    {
+      "path": "import-report.json",
+      "bytes": 4937,
+      "sha256": "ce0615cd81a4e7341073ab35e829036d69c153f3d08f7da05efbfcf5941184c8"
+    },
+    {
+      "path": "import.log",
+      "bytes": 283,
+      "sha256": "e510296962e395b9e08e617981f2af40c548e1890ce12d958c3b8075a12e1a0b"
+    },
+    {
+      "path": "import.manifest.json",
+      "bytes": 685,
+      "sha256": "f59a99474751c2cd538b41ed3f71cf755b0c76f680cce4a5175a5b65c1f4fe9a"
+    },
+    {
+      "path": "installed.manifest.json",
+      "bytes": 247,
+      "sha256": "e79ea811ddf7b28f76281989cb3cd2f27ab4e2df253cc9f503e73629285fc77c"
+    },
+    {
+      "path": "originals.manifest.json",
+      "bytes": 349,
+      "sha256": "36451e9d6e762b4e444031fcde7cb5ef3f58126c3de770451927db1054f9a797"
+    }
+  ]
+}

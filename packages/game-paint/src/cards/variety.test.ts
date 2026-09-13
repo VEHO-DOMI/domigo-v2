@@ -501,3 +501,41 @@ describe("L0c · 13e sieht über einen Apostroph hinweg, aber erfindet keine Dec
     expect(deckt("He's got a dog.", "he's")).toBe(true);
   });
 });
+
+
+// User story pass: a visible collected word is separate from a quiz answer.
+// The actual hat placement is used; invented "offered" cards never enter this test.
+describe("17p passive vocabulary comes from the real pickup", () => {
+  const claim = { wordId: "g1u01.w.hat", phaseId: "p1", entityId: "p1-cloth-hat", reason: "The collected hat displays its English name." };
+  const passiveErrors = (edited = structuredClone(level), claims = [claim]) => varietyErrors({
+    chapter: "ch01", items: [], level: edited, policy: POLICY,
+    wordbank: [{ id: "g1u01.w.hat", en: "hat", forms: ["hat"] }],
+    structureIds: [], lexicon, today: "2026-09-13", passiveCoverage: claims,
+  }).filter(e => e.law.startsWith("17"));
+  const hat = (l = level) => l.phases.find(p => p.id === "p1")!.entities.find(e => e.id === claim.entityId)!;
+
+  it("accepts the reachable, visible labelled hat without manufacturing an answered card", () => {
+    expect(hat().role).toBe("cloth");
+    expect(passiveErrors()).toEqual([]);
+    expect(passiveErrors(structuredClone(level), []).map(e => e.law)).toContain("17a");
+  });
+
+  it.each(["removed", "renamed", "wrong-word", "empty-label", "hidden", "decoration", "unreachable", "bonus-twin"])("rejects a %s pickup and keeps its word uncovered", change => {
+    const edited = structuredClone(level), body = hat(edited);
+    if (change === "removed") edited.phases[0]!.entities = edited.phases[0]!.entities.filter(e => e.id !== claim.entityId);
+    if (change === "renamed") body.id = "other-hat";
+    if (change === "wrong-word") body.params!.wordEn = "pencil";
+    if (change === "empty-label") body.params!.wordEn = "";
+    if (change === "hidden") body.params!.hidden = true;
+    if (change === "decoration") body.role = "drained";
+    if (change === "unreachable") body.c = 10000;
+    if (change === "bonus-twin") body.params!.repeatOf = "some-other-hat";
+    const failures = passiveErrors(edited).map(e => e.law);
+    expect(failures).toContain("17p");
+    expect(failures).toContain("17a");
+  });
+
+  it("rejects a duplicate claim instead of counting one entity twice", () => {
+    expect(passiveErrors(structuredClone(level), [claim, claim]).map(e => e.law)).toContain("17q");
+  });
+});

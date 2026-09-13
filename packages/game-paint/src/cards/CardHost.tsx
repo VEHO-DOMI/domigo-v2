@@ -71,9 +71,11 @@ export function writtenTextOf(state: unknown, task: GameTaskV2): string {
 }
 
 export function CardHost({
-  task, onResolve, onWorldChange, onDismiss, onGrade, align = "center", art, portraitWash, sceneSnapshot, captive, captiveIsPerson, servedUse, clockMs: clockMsProp, round,
+  task, onResolve, onWorldChange, onDismiss, onGrade, align = "center", art, portraitWash, sceneSnapshot, captive, captiveIsPerson, servedUse, clockMs: clockMsProp, round, suspended = false,
 }: {
   task: GameTaskV2;
+  /** Reading a reference preserves this machine and pauses its turn timer. */
+  suspended?: boolean;
   /** the card is finished: close it (and hand on any beat it opened) */
   onResolve: () => void;
   /** the answer is home — CHANGE THE WORLD now, while the card is out of the
@@ -157,17 +159,17 @@ export function CardHost({
 
   const runMs = armedClockMs(clockMs, armCount);
   React.useEffect(() => {
-    if (runMs === 0) return; // ungestartet = voll und still
+    if (suspended || runMs === 0) return; // ungestartet = voll und still
     const t = window.setTimeout(() => {
       if (endedRef.current) return;
       endedRef.current = true;
       cbRef.current.onDismiss(); // the swarm gives up: no reward, no penalty
     }, runMs);
     return () => window.clearTimeout(t);
-  }, [runMs, armCount]);
+  }, [runMs, armCount, suspended]);
 
   const dispatch: Dispatch<unknown> = (a) => {
-    if (endedRef.current) return;
+    if (suspended || endedRef.current) return;
     const actions = Array.isArray(a) ? a : [a];
     let next = state;
     for (const act of actions) next = m.act(next, act);

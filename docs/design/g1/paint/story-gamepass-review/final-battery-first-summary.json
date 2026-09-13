@@ -1,0 +1,1973 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "head": "1fd980c5f1b8d19e07bf90b952eccccc635c3f6c",
+  "status": "failed",
+  "results": [
+    {
+      "id": "001",
+      "command": "pnpm typecheck",
+      "source": ".github/workflows/ci.yml / typecheck / step 5",
+      "job": "typecheck",
+      "status": "passed",
+      "exit": 0,
+      "durationMs": 41328,
+      "last3": [
+        "packages/game-paint typecheck: Done",
+        "apps/web typecheck$ tsc --noEmit",
+        "apps/web typecheck: Done"
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/001-pnpm-typecheck.log",
+      "startedAt": "2026-09-13T14:15:55.146Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "pnpm",
+        "typecheck"
+      ],
+      "finishedAt": "2026-09-13T14:16:36.477Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "002",
+      "command": "pnpm lint",
+      "source": ".github/workflows/ci.yml / lint / step 5",
+      "job": "lint",
+      "status": "passed",
+      "exit": 0,
+      "durationMs": 9160,
+      "last3": [
+        "apps/web lint:   210:31  warning  '_skin' is assigned a value but never used  @typescript-eslint/no-unused-vars",
+        "apps/web lint: ✖ 4 problems (0 errors, 4 warnings)",
+        "apps/web lint: Done"
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/002-pnpm-lint.log",
+      "startedAt": "2026-09-13T14:16:36.680Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "pnpm",
+        "lint"
+      ],
+      "finishedAt": "2026-09-13T14:16:45.842Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "003",
+      "command": "pnpm test",
+      "source": ".github/workflows/ci.yml / unit / step 5",
+      "job": "unit",
+      "status": "failed",
+      "exit": 1,
+      "durationMs": 156076,
+      "last3": [
+        "[ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL] web@0.1.0 test: `node --test \"lib/*.test.ts\"`",
+        "Exit status 1",
+        "[ELIFECYCLE] Test failed. See above for more details."
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/003-pnpm-test.log",
+      "startedAt": "2026-09-13T14:16:46.036Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "pnpm",
+        "test"
+      ],
+      "finishedAt": "2026-09-13T14:19:22.115Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "004",
+      "command": "pnpm content validate",
+      "source": ".github/workflows/ci.yml / content-validate / step 5",
+      "job": "content-validate",
+      "status": "passed",
+      "exit": 0,
+      "durationMs": 19161,
+      "last3": [
+        "  ℹ structures g2: 6 structure(s) without v1 ancestor (new): past-simple, present-simple, past-simple-negation, why-because, going-to-negative, present-perfect-ever-never",
+        "  ℹ structures g3: 1 structure(s) without v1 ancestor (new): present-simple",
+        "content validate: OK — 57 units, 2446 entries, 57 approved, 96 structures, 5898 items in 57 unit(s), 18 traps; schemas valid, ids unique, totals match, V-A…V-F + V-1…V-23 + V-TR green."
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/004-pnpm-content-validate.log",
+      "startedAt": "2026-09-13T14:19:22.322Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "pnpm",
+        "content",
+        "validate"
+      ],
+      "finishedAt": "2026-09-13T14:19:41.484Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "005",
+      "command": "pnpm content validate-story",
+      "source": ".github/workflows/ci.yml / content-validate / step 6",
+      "job": "content-validate",
+      "status": "passed",
+      "exit": 0,
+      "durationMs": 1564,
+      "last3": [
+        "  ℹ g4.st.lost-for-words.ch04.s018: VS-3 — sentence-initial \"Sie\" in scaffoldDe — she/they or formal? human call",
+        "  ℹ g4.st.lost-for-words: release — story parked (0 released chapters)",
+        "content validate-story: OK — 6 story/ies, 78 chapter(s); VS-1…VS-18 + release green."
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/005-pnpm-content-validate-story.log",
+      "startedAt": "2026-09-13T14:19:41.670Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "pnpm",
+        "content",
+        "validate-story"
+      ],
+      "finishedAt": "2026-09-13T14:19:43.235Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "006",
+      "command": "pnpm content validate-listening",
+      "source": ".github/workflows/ci.yml / content-validate / step 7",
+      "job": "content-validate",
+      "status": "passed",
+      "exit": 0,
+      "durationMs": 677,
+      "last3": [
+        "  ℹ g2-u03: V-LC5 — g2u03.li.market.mt.001: out-of-bank token(s) in prompt/distractors [each, get] (advisory)",
+        "  ℹ g2-u03: V-LC5 — g2u03.li.market.ff.001: out-of-bank token(s) in prompt/distractors [mia, shopping] (advisory)",
+        "listening: 7 file(s), 38 item(s), 0 strategy error(s), 4 level warn(s), 0 failure(s); strategy-complete 38/38; audio 7/7 task(s)"
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/006-pnpm-content-validate-listening.log",
+      "startedAt": "2026-09-13T14:19:43.415Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "pnpm",
+        "content",
+        "validate-listening"
+      ],
+      "finishedAt": "2026-09-13T14:19:44.093Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "007",
+      "command": "pnpm content validate-test",
+      "source": ".github/workflows/ci.yml / content-validate / step 8",
+      "job": "content-validate",
+      "status": "passed",
+      "exit": 0,
+      "durationMs": 668,
+      "last3": [
+        "$ node packages/content-pipeline/src/content.ts validate-test",
+        "test: 7 file(s), 35 section(s), 0 wave error(s), 0 failure(s)"
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/007-pnpm-content-validate-test.log",
+      "startedAt": "2026-09-13T14:19:44.266Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "pnpm",
+        "content",
+        "validate-test"
+      ],
+      "finishedAt": "2026-09-13T14:19:44.935Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "008",
+      "command": "node --experimental-strip-types scripts/check-story-grounding.mjs --selftest",
+      "source": ".github/workflows/ci.yml / content-validate / step 9",
+      "job": "content-validate",
+      "status": "passed",
+      "exit": 0,
+      "durationMs": 165,
+      "last3": [
+        "  ✓ eine Zeremonie-Szene traegt eine Aufgabe (no-task-in-cutscene) — rot, genau eine Meldung, und es ist die eingespeiste",
+        "  ✓ NICHT-TAMPER: der echte Korpus ist gruen — gruen",
+        "check-story-grounding --selftest: OK — 5 Faelle, vier rote Lichter an der eingespeisten Stelle, der echte Korpus gruen"
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/008-node-experimental-strip-types-scripts-check-story-grounding-mjs-selftest.log",
+      "startedAt": "2026-09-13T14:19:45.117Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "node",
+        "--experimental-strip-types",
+        "scripts/check-story-grounding.mjs",
+        "--selftest"
+      ],
+      "finishedAt": "2026-09-13T14:19:45.283Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "009",
+      "command": "node --experimental-strip-types scripts/check-story-grounding.mjs",
+      "source": ".github/workflows/ci.yml / content-validate / step 10",
+      "job": "content-validate",
+      "status": "passed",
+      "exit": 0,
+      "durationMs": 149,
+      "last3": [
+        "check-story-grounding: ch05 NICHT geprueft — keine keen/ch05.level.json — dieses Tor prueft die Textkampagne",
+        "check-story-grounding: ch06 NICHT geprueft — keine keen/ch06.level.json — dieses Tor prueft die Textkampagne",
+        "check-story-grounding: OK — prologue, beat scenes, headers, boss and game tasks all grounded, giveaway-free, in register"
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/009-node-experimental-strip-types-scripts-check-story-grounding-mjs.log",
+      "startedAt": "2026-09-13T14:19:45.476Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "node",
+        "--experimental-strip-types",
+        "scripts/check-story-grounding.mjs"
+      ],
+      "finishedAt": "2026-09-13T14:19:45.625Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "010",
+      "command": "node --experimental-strip-types scripts/check-paint-copy.mjs --selftest",
+      "source": ".github/workflows/ci.yml / content-validate / step 11",
+      "job": "content-validate",
+      "status": "passed",
+      "exit": 0,
+      "durationMs": 848,
+      "last3": [
+        "  ✓ NICHT-TAMPER: der echte Stand ist gruen — gruen",
+        "  ✓ ein ENTWURFS-Kapitel ohne Unit-Lexikon — gruen, aber namentlich gemeldet (nie still)",
+        "check-paint-copy --selftest: OK — 9 Faelle + die Entwurfs-Probe: 8 rote Lichter an der eingespeisten Stelle, ein namentlicher Skip, der echte Stand gruen"
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/010-node-experimental-strip-types-scripts-check-paint-copy-mjs-selftest.log",
+      "startedAt": "2026-09-13T14:19:45.809Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "node",
+        "--experimental-strip-types",
+        "scripts/check-paint-copy.mjs",
+        "--selftest"
+      ],
+      "finishedAt": "2026-09-13T14:19:46.658Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "011",
+      "command": "node --experimental-strip-types scripts/check-paint-copy.mjs",
+      "source": ".github/workflows/ci.yml / content-validate / step 12",
+      "job": "content-validate",
+      "status": "passed",
+      "exit": 0,
+      "durationMs": 306,
+      "last3": [
+        "  ℹ phases[0].entities[1].params.beispieleEn[2]: „a lot of fun\" — steht 1:1 in sb/SB Unit 15 What are you going to do?.txt; erlaubt, aber prüfe, ob ein eigener Satz besser passt",
+        "  … 5 von 53 Beispielen stehen 1:1 im Buch (erlaubt seit K-1, aber sichtbar)",
+        "OK — check-paint-copy: cloak, register and quote laws hold over 97 shell files · 12 content files"
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/011-node-experimental-strip-types-scripts-check-paint-copy-mjs.log",
+      "startedAt": "2026-09-13T14:19:46.848Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "node",
+        "--experimental-strip-types",
+        "scripts/check-paint-copy.mjs"
+      ],
+      "finishedAt": "2026-09-13T14:19:47.155Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "012",
+      "command": "node scripts/check-copy-register.mjs --selftest",
+      "source": ".github/workflows/ci.yml / content-validate / step 13",
+      "job": "content-validate",
+      "status": "passed",
+      "exit": 0,
+      "durationMs": 71,
+      "last3": [
+        "  ✓ NON-TAMPER · ein Gleichnis-Muster außerhalb der Farbzeile ist erlaubt",
+        "  ✓ VACUITY · der Stripper behält eine sichtbare Zeile",
+        "check-copy-register --selftest: OK — 12 cases, every red light seen and every green case still green"
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/012-node-scripts-check-copy-register-mjs-selftest.log",
+      "startedAt": "2026-09-13T14:19:47.336Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "node",
+        "scripts/check-copy-register.mjs",
+        "--selftest"
+      ],
+      "finishedAt": "2026-09-13T14:19:47.409Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "013",
+      "command": "node scripts/check-copy-register.mjs",
+      "source": ".github/workflows/ci.yml / content-validate / step 14",
+      "job": "content-validate",
+      "status": "passed",
+      "exit": 0,
+      "durationMs": 195,
+      "last3": [
+        "  gekoppelt an docs/design/g1/paint/LEXIKON_AT.md (7 Begriffe, alle belegt)",
+        "check-copy-register: OK — 6 Kapitel: 770 card lines, 134 level lines and 22344 shell lines are all in the Austrian register (7 Begriffe, 3 Muster)"
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/013-node-scripts-check-copy-register-mjs.log",
+      "startedAt": "2026-09-13T14:19:47.593Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "node",
+        "scripts/check-copy-register.mjs"
+      ],
+      "finishedAt": "2026-09-13T14:19:47.789Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "014",
+      "command": "node scripts/check-design-sheets.mjs --selftest",
+      "source": ".github/workflows/ci.yml / content-validate / step 15",
+      "job": "content-validate",
+      "status": "passed",
+      "exit": 0,
+      "durationMs": 54,
+      "last3": [
+        "  ✓ das nackte Wort bleibt verboten",
+        "  ✓ …und die Ausnahme schaltet die Regel nicht für den REST der Zeile ab",
+        "check-design-sheets --selftest: OK — 12 Fälle, der Schrei wird gefunden und das Schreiben in Ruhe gelassen (D-278)"
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/014-node-scripts-check-design-sheets-mjs-selftest.log",
+      "startedAt": "2026-09-13T14:19:47.974Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "node",
+        "scripts/check-design-sheets.mjs",
+        "--selftest"
+      ],
+      "finishedAt": "2026-09-13T14:19:48.028Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "015",
+      "command": "node scripts/check-design-sheets.mjs",
+      "source": ".github/workflows/ci.yml / content-validate / step 16",
+      "job": "content-validate",
+      "status": "passed",
+      "exit": 0,
+      "durationMs": 67,
+      "last3": [
+        "check-design-sheets: OK — 0 keen + 6 paint sheets, all corpus ids + sections + register green"
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/015-node-scripts-check-design-sheets-mjs.log",
+      "startedAt": "2026-09-13T14:19:48.208Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "node",
+        "scripts/check-design-sheets.mjs"
+      ],
+      "finishedAt": "2026-09-13T14:19:48.276Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "016",
+      "command": "node --experimental-strip-types scripts/check-game-tasks.mjs --selftest",
+      "source": ".github/workflows/ci.yml / content-validate / step 17",
+      "job": "content-validate",
+      "status": "passed",
+      "exit": 0,
+      "durationMs": 276,
+      "last3": [
+        "  ✓ NON-TAMPER · a German word two options share does not spoil",
+        "  ✓ …and the SAME card goes red once the distractors stop sharing it",
+        "check-game-tasks --selftest: OK — 22 cases, every red light seen and both green cases still green"
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/016-node-experimental-strip-types-scripts-check-game-tasks-mjs-selftest.log",
+      "startedAt": "2026-09-13T14:19:48.464Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "node",
+        "--experimental-strip-types",
+        "scripts/check-game-tasks.mjs",
+        "--selftest"
+      ],
+      "finishedAt": "2026-09-13T14:19:48.742Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "017",
+      "command": "node --experimental-strip-types scripts/check-game-tasks.mjs",
+      "source": ".github/workflows/ci.yml / content-validate / step 18",
+      "job": "content-validate",
+      "status": "passed",
+      "exit": 0,
+      "durationMs": 390,
+      "last3": [
+        "  · ch05/19b: übersprungen (draft) — eine Politik-Klasse hat in content/corpus/units/g1-u05/lexicon-classes.json gar kein Gegenstueck (g1u05.x.instruments) — das Verengungs-Gesetz hatte nichts zu vergleichen",
+        "  · ch06/19b: übersprungen (draft) — 3 Politik-Klassen haben in content/corpus/units/g1-u06/lexicon-classes.json gar kein Gegenstueck (g1u06.x.numbers, g1u06.x.beweisstuecke, g1u06.x.present-simple-verbs) — das Verengungs-Gesetz hatte nichts zu vergleichen",
+        "check-game-tasks: OK — 199 tasks across 6 file(s): schema, grounding, giveaway, register, binding, coverage, length, twins, portraits, timer-policy, form, voice, rhythm, distinctness, coverage-ledger, giveaway-class (all nine kinds, both languages, the board) all green"
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/017-node-experimental-strip-types-scripts-check-game-tasks-mjs.log",
+      "startedAt": "2026-09-13T14:19:48.925Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "node",
+        "--experimental-strip-types",
+        "scripts/check-game-tasks.mjs"
+      ],
+      "finishedAt": "2026-09-13T14:19:49.316Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "018",
+      "command": "node scripts/check-level-design.mjs --selftest",
+      "source": ".github/workflows/ci.yml / content-validate / step 19",
+      "job": "content-validate",
+      "status": "failed",
+      "exit": 1,
+      "durationMs": 236,
+      "last3": [
+        "  ✓ SPERRE: der Kamera-Rand ist unerreichbar OHNE Bedingung — keine Behauptung ueber eine Gabe",
+        "  ✓ SPERRE: zwei unabhaengige Aussagen in einer Zeile sind KEINE Sperr-Behauptung (Fehlalarm ch01/p9)",
+        "check-level-design --selftest: 1 Fälle bissen NICHT"
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/018-node-scripts-check-level-design-mjs-selftest.log",
+      "startedAt": "2026-09-13T14:19:49.503Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "node",
+        "scripts/check-level-design.mjs",
+        "--selftest"
+      ],
+      "finishedAt": "2026-09-13T14:19:49.740Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "019",
+      "command": "node scripts/check-level-design.mjs",
+      "source": ".github/workflows/ci.yml / content-validate / step 20",
+      "job": "content-validate",
+      "status": "failed",
+      "exit": 1,
+      "durationMs": 449,
+      "last3": [
+        "  ✗ ch01 manifest: p2/p2-cloth-sweater Anker (67,19) ≠ Level (81,19) (B11)",
+        "  ✗ ch01 manifest: p3/p3-cage4 Anker (47,12) ≠ Level (51,17) (B11)",
+        "  ✗ ch01 manifest: p3/p3-door Anker (60,13) ≠ Level (60,14) (B11)"
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/019-node-scripts-check-level-design-mjs.log",
+      "startedAt": "2026-09-13T14:19:49.939Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "node",
+        "scripts/check-level-design.mjs"
+      ],
+      "finishedAt": "2026-09-13T14:19:50.389Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "020",
+      "command": "node scripts/check-registers.mjs --selftest",
+      "source": ".github/workflows/ci.yml / content-validate / step 21",
+      "job": "content-validate",
+      "status": "passed",
+      "exit": 0,
+      "durationMs": 255,
+      "last3": [
+        "  ✓ NICHT-TAMPER · …keine tote Adresse (Bereiche wie »D-330…D-339« zählen nicht als Verweis)",
+        "  ✓ NICHT-TAMPER · …keine zweite Beschreibung in Prosa",
+        "check-registers --selftest: OK — 16 Fälle: 12 rote Lichter gesehen, 4× der echte Stand grün"
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/020-node-scripts-check-registers-mjs-selftest.log",
+      "startedAt": "2026-09-13T14:19:50.567Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "node",
+        "scripts/check-registers.mjs",
+        "--selftest"
+      ],
+      "finishedAt": "2026-09-13T14:19:50.825Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "021",
+      "command": "node scripts/check-registers.mjs",
+      "source": ".github/workflows/ci.yml / content-validate / step 22",
+      "job": "content-validate",
+      "status": "passed",
+      "exit": 0,
+      "durationMs": 220,
+      "last3": [
+        "check-registers: OK — Dossiers [ch01-dossiers-v2, ch02-dossiers-v2, ch03-dossiers-v2, ch04-dossiers-v2, ch05-dossiers-v2, ch06-dossiers-v2] · 837 D-Nummern eindeutig (Prosa mitgezählt: keine tote Adresse, keine zweite Beschreibung) · 173 PB-Nummern eindeutig und lückenlos · 257 Symbol-Verweise aufgelöst über 49 Dokumente · 48 Zeilennummern-Verweise, davon 48 im Schulden-Register geduldet bis 2026-11-30 (K-Bahn), 0 neu"
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/021-node-scripts-check-registers-mjs.log",
+      "startedAt": "2026-09-13T14:19:51.011Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "node",
+        "scripts/check-registers.mjs"
+      ],
+      "finishedAt": "2026-09-13T14:19:51.233Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "022",
+      "command": "node scripts/check-roster-twins.mjs --selftest",
+      "source": ".github/workflows/ci.yml / content-validate / step 23",
+      "job": "content-validate",
+      "status": "passed",
+      "exit": 0,
+      "durationMs": 57,
+      "last3": [
+        "        B: \"  { label: \\\"plain list, one name per line\\\", input: \\\"Annb Mueller\\\\nBen Ostrowski\\\\nClara Nowak\\\", expect: [\\\"Anna Mueller\\\", \\\"Ben Ostrowski\\\", \\\"Clara Nowak\\\"] },\"",
+        "",
+        "Selbsttest bestanden: die Prüfung ist grün an den echten Dateien und rot an jeder verbogenen Kopie."
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/022-node-scripts-check-roster-twins-mjs-selftest.log",
+      "startedAt": "2026-09-13T14:19:51.417Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "node",
+        "scripts/check-roster-twins.mjs",
+        "--selftest"
+      ],
+      "finishedAt": "2026-09-13T14:19:51.475Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "023",
+      "command": "node scripts/check-roster-twins.mjs",
+      "source": ".github/workflows/ci.yml / content-validate / step 24",
+      "job": "content-validate",
+      "status": "passed",
+      "exit": 0,
+      "durationMs": 56,
+      "last3": [
+        "  OK  TWIN BLOCK (die Parse-Regel): f42a6b2efc8f2b9618b066621ecc7649  (100 Zeilen)",
+        "  OK  FIXTURE-LISTE (die gemeinsamen Fälle): 72aaa60f845d3e493336fd8a9dddc7d8  (33 Zeilen)",
+        "Beide Hälften sind byte-gleich."
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/023-node-scripts-check-roster-twins-mjs.log",
+      "startedAt": "2026-09-13T14:19:51.660Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "node",
+        "scripts/check-roster-twins.mjs"
+      ],
+      "finishedAt": "2026-09-13T14:19:51.717Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "024",
+      "command": "node scripts/check-journal-door.mjs --selftest",
+      "source": ".github/workflows/ci.yml / content-validate / step 25",
+      "job": "content-validate",
+      "status": "passed",
+      "exit": 0,
+      "durationMs": 453,
+      "last3": [
+        "  AUSNAHME VERALTET: packages/db/scripts/seed-dev.mjs schreibt gar keine Journal-Zeile mehr — Eintrag in scripts/check-journal-door.mjs streichen.",
+        "",
+        "Selbsttest bestanden: gruen am echten Baum, rot an jeder Regel und an der Ratsche."
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/024-node-scripts-check-journal-door-mjs-selftest.log",
+      "startedAt": "2026-09-13T14:19:51.901Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "node",
+        "scripts/check-journal-door.mjs",
+        "--selftest"
+      ],
+      "finishedAt": "2026-09-13T14:19:52.355Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "025",
+      "command": "node scripts/check-journal-door.mjs",
+      "source": ".github/workflows/ci.yml / content-validate / step 26",
+      "job": "content-validate",
+      "status": "passed",
+      "exit": 0,
+      "durationMs": 157,
+      "last3": [
+        "Journal-Tuer (roster_events):",
+        "  781 Dateien gelesen · genau eine Schreibstelle, und die ist die Tuer (packages/db/src/roster-events.ts) · 1 deklarierte Ausnahme(n), alle noch zutreffend."
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/025-node-scripts-check-journal-door-mjs.log",
+      "startedAt": "2026-09-13T14:19:52.542Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "node",
+        "scripts/check-journal-door.mjs"
+      ],
+      "finishedAt": "2026-09-13T14:19:52.699Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "026",
+      "command": "node --experimental-strip-types scripts/check-paint-art.mjs --selftest",
+      "source": ".github/workflows/ci.yml / content-validate / step 27",
+      "job": "content-validate",
+      "status": "failed",
+      "exit": 1,
+      "durationMs": 555,
+      "last3": [
+        "  ✓ Aufgabenbilder gehoeren nur zur passenden Kapitelkarte, auch als HTML — gruen",
+        "  ✗ NICHT-TAMPER: der echte Stand ist gruen — der echte Stand ist rot: 59 painted files are loaded by nothing — the ceiling is 57 (perfBudget.ts). Wire them, delete them, or raise deadCeiling in this same PR with a reason. New since the ceiling: ch01/tip_sparks.png, ch01/window_exit.png",
+        "check-paint-art --selftest: FEHLGESCHLAGEN"
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/026-node-experimental-strip-types-scripts-check-paint-art-mjs-selftest.log",
+      "startedAt": "2026-09-13T14:19:52.883Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "node",
+        "--experimental-strip-types",
+        "scripts/check-paint-art.mjs",
+        "--selftest"
+      ],
+      "finishedAt": "2026-09-13T14:19:53.439Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "027",
+      "command": "node --experimental-strip-types scripts/check-paint-art.mjs",
+      "source": ".github/workflows/ci.yml / content-validate / step 28",
+      "job": "content-validate",
+      "status": "failed",
+      "exit": 1,
+      "durationMs": 80536,
+      "last3": [
+        "✗ 59 painted files are loaded by nothing — the ceiling is 57 (perfBudget.ts). Wire them, delete them, or raise deadCeiling in this same PR with a reason. New since the ceiling: ch01/tip_sparks.png, ch01/window_exit.png",
+        "  captive legibility: 3 cages · 3 captives at 34px · closest pair \"ch01/soundsystem/ch01/tablet\" differs by 102.4 px (law: 8)",
+        "check-paint-art: 1 failure(s)"
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/027-node-experimental-strip-types-scripts-check-paint-art-mjs.log",
+      "startedAt": "2026-09-13T14:19:53.619Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "node",
+        "--experimental-strip-types",
+        "scripts/check-paint-art.mjs"
+      ],
+      "finishedAt": "2026-09-13T14:21:14.157Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "028",
+      "command": "node scripts/check-story-art.mjs --selftest",
+      "source": ".github/workflows/ci.yml / content-validate / step 29",
+      "job": "content-validate",
+      "status": "passed",
+      "exit": 0,
+      "durationMs": 63,
+      "last3": [
+        "  ✓ der _neutral-Rueckfall bleibt erlaubt (kein Fehlalarm) — gruen",
+        "  ✓ NICHT-TAMPER: der echte Stand ist gruen — gruen",
+        "check-story-art --selftest: OK — 4 Faelle, zwei rote Lichter an der eingespeisten Stelle, der echte Stand gruen"
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/028-node-scripts-check-story-art-mjs-selftest.log",
+      "startedAt": "2026-09-13T14:21:14.406Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "node",
+        "scripts/check-story-art.mjs",
+        "--selftest"
+      ],
+      "finishedAt": "2026-09-13T14:21:14.470Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "029",
+      "command": "node scripts/check-story-art.mjs",
+      "source": ".github/workflows/ci.yml / content-validate / step 30",
+      "job": "content-validate",
+      "status": "passed",
+      "exit": 0,
+      "durationMs": 180,
+      "last3": [
+        "✓ check-story-art: g3 manifest and prompt library agree (230 stems placed, 235 defined)"
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/029-node-scripts-check-story-art-mjs.log",
+      "startedAt": "2026-09-13T14:21:14.655Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "node",
+        "scripts/check-story-art.mjs"
+      ],
+      "finishedAt": "2026-09-13T14:21:14.838Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "030",
+      "command": "node scripts/check-composition.mjs --selftest",
+      "source": ".github/workflows/ci.yml / content-validate / step 31",
+      "job": "content-validate",
+      "status": "passed",
+      "exit": 0,
+      "durationMs": 2251,
+      "last3": [
+        "✓ eine Farbton-Rechnung: sieben bekannte Winkel stimmen, Grau bekommt keinen, und 17717 Bildpunkte bekommen von beiden Lesern bitgleich denselben Winkel",
+        "✓ waivers expire: a 2020 date is dead, a 2999 date is live, and the audit reads the difference",
+        "✓ selftest: the coherence law passes a kit cut from its own body, and names ΔS, ΔH and the carve window separately when they break."
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/030-node-scripts-check-composition-mjs-selftest.log",
+      "startedAt": "2026-09-13T14:21:15.026Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "node",
+        "scripts/check-composition.mjs",
+        "--selftest"
+      ],
+      "finishedAt": "2026-09-13T14:21:17.278Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "031",
+      "command": "node scripts/check-composition.mjs",
+      "source": ".github/workflows/ci.yml / content-validate / step 32",
+      "job": "content-validate",
+      "status": "passed",
+      "exit": 0,
+      "durationMs": 2152,
+      "last3": [
+        "the L2↔L3 separation stays absolute. Saturation caps are measured and reported.",
+        "",
+        "check-composition: OK — 11 audits green over 5 phase(s)"
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/031-node-scripts-check-composition-mjs.log",
+      "startedAt": "2026-09-13T14:21:17.467Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "node",
+        "scripts/check-composition.mjs"
+      ],
+      "finishedAt": "2026-09-13T14:21:19.620Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "032",
+      "command": "node --experimental-strip-types scripts/check-png-seams.mjs --selftest",
+      "source": ".github/workflows/ci.yml / content-validate / step 33",
+      "job": "content-validate",
+      "status": "passed",
+      "exit": 0,
+      "durationMs": 126,
+      "last3": [
+        "✓ unbelegte Masse ohne Ersatz-Kacheln wird abgewiesen",
+        "✓ geschnittene Blaetter (Rampe, Kante) sind NICHT im Geltungsbereich",
+        "✓ check-png-seams SELFTEST: OK — das rote Licht ist erreichbar, es benennt die Stelle, und echte violette Malerei bleibt gruen."
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/032-node-experimental-strip-types-scripts-check-png-seams-mjs-selftest.log",
+      "startedAt": "2026-09-13T14:21:19.808Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "node",
+        "--experimental-strip-types",
+        "scripts/check-png-seams.mjs",
+        "--selftest"
+      ],
+      "finishedAt": "2026-09-13T14:21:19.936Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "033",
+      "command": "node --experimental-strip-types scripts/check-png-seams.mjs",
+      "source": ".github/workflows/ci.yml / content-validate / step 34",
+      "job": "content-validate",
+      "status": "passed",
+      "exit": 0,
+      "durationMs": 148,
+      "last3": [
+        "check-png-seams: OK — 5/5 Massen durch Level-Gitter als Ein-Block-Welt belegt; 0 tatsaechlich benutzte deckende Kacheln geprueft, 0 davon bluten und sind namentlich mit Datum geduldet, 0 sind sauber."
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/033-node-experimental-strip-types-scripts-check-png-seams-mjs.log",
+      "startedAt": "2026-09-13T14:21:20.120Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "node",
+        "--experimental-strip-types",
+        "scripts/check-png-seams.mjs"
+      ],
+      "finishedAt": "2026-09-13T14:21:20.274Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "034",
+      "command": "node --experimental-strip-types scripts/check-body-silhouette.mjs --selftest",
+      "source": ".github/workflows/ci.yml / content-validate / step 35",
+      "job": "content-validate",
+      "status": "passed",
+      "exit": 0,
+      "durationMs": 197,
+      "last3": [
+        "check-body-silhouette: p4 aus dem Arena-Raster gelesen (Dummy auf (0,0), kein Absturz), unbekannte Phase meldet sich",
+        "check-body-silhouette: Schraege — 1 sauber + 3 Tamper (zugemauert ⇒ Gesetz 2 · fehlend ⇒ Gesetz 1 · 12 px zu hoch ⇒ AUSSCHLIESSLICH Gesetz 3b)",
+        "check-body-silhouette: Selbsttest OK — 2 sauber + 9 Tamper rot + p4/p9-Raster"
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/034-node-experimental-strip-types-scripts-check-body-silhouette-mjs-selftest.log",
+      "startedAt": "2026-09-13T14:21:20.462Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "node",
+        "--experimental-strip-types",
+        "scripts/check-body-silhouette.mjs",
+        "--selftest"
+      ],
+      "finishedAt": "2026-09-13T14:21:20.661Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "035",
+      "command": "node --experimental-strip-types scripts/check-body-silhouette.mjs",
+      "source": ".github/workflows/ci.yml / content-validate / step 36",
+      "job": "content-validate",
+      "status": "passed",
+      "exit": 0,
+      "durationMs": 6395,
+      "last3": [
+        "✓ p9_deckenbahn (44 Zellen): alle fuenf Gesetze halten",
+        "✓ p9_kammerboden (176 Zellen): alle fuenf Gesetze halten",
+        "✓ p9_oberer_sims (5 Zellen): alle fuenf Gesetze halten"
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/035-node-experimental-strip-types-scripts-check-body-silhouette-mjs.log",
+      "startedAt": "2026-09-13T14:21:20.846Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "node",
+        "--experimental-strip-types",
+        "scripts/check-body-silhouette.mjs"
+      ],
+      "finishedAt": "2026-09-13T14:21:27.246Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "036",
+      "command": "node --experimental-strip-types scripts/make-body-stencils.mjs --selftest",
+      "source": ".github/workflows/ci.yml / content-validate / step 37",
+      "job": "content-validate",
+      "status": "failed",
+      "exit": 1,
+      "durationMs": 179,
+      "last3": [
+        "✓ body_p2_deckenbahn_mitte (31 Zellen, 1984x92): 100.000 % Pixel-Gleichheit",
+        "✓ body_p2_tafelgeruest (39 Zellen, 1984x348): 100.000 % Pixel-Gleichheit",
+        "✗ body_p2_deckenbahn_ost: 0.000 % gleich (2368x540 gegen 1088x540) — verlangt sind 99 %"
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/036-node-experimental-strip-types-scripts-make-body-stencils-mjs-selftest.log",
+      "startedAt": "2026-09-13T14:21:27.437Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "node",
+        "--experimental-strip-types",
+        "scripts/make-body-stencils.mjs",
+        "--selftest"
+      ],
+      "finishedAt": "2026-09-13T14:21:27.617Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "037",
+      "command": "node --experimental-strip-types scripts/retire-phase-art.mjs --selftest",
+      "source": ".github/workflows/ci.yml / content-validate / step 38",
+      "job": "content-validate",
+      "status": "passed",
+      "exit": 0,
+      "durationMs": 134,
+      "last3": [
+        "retire-phase-art: Selbsttest OK — 10 Urteile (3 Freigaben, 7 Verweigerungen) + 2 Tamper"
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/037-node-experimental-strip-types-scripts-retire-phase-art-mjs-selftest.log",
+      "startedAt": "2026-09-13T14:21:27.800Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "node",
+        "--experimental-strip-types",
+        "scripts/retire-phase-art.mjs",
+        "--selftest"
+      ],
+      "finishedAt": "2026-09-13T14:21:27.936Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "038",
+      "command": "node --experimental-strip-types scripts/check-ground-plane.mjs --selftest",
+      "source": ".github/workflows/ci.yml / content-validate / step 39",
+      "job": "content-validate",
+      "status": "passed",
+      "exit": 0,
+      "durationMs": 142,
+      "last3": [
+        "ground-plane geometry: 3 positive + 16 negative checks OK; active-plan + 4 waiver-scope checks OK",
+        "check-ground-plane: Selbsttest OK — 1 sauber + 3 Tamper rot · Duldungs-Hygiene 1 sauber + 2 Tamper rot"
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/038-node-experimental-strip-types-scripts-check-ground-plane-mjs-selftest.log",
+      "startedAt": "2026-09-13T14:21:28.146Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "node",
+        "--experimental-strip-types",
+        "scripts/check-ground-plane.mjs",
+        "--selftest"
+      ],
+      "finishedAt": "2026-09-13T14:21:28.290Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "039",
+      "command": "node --experimental-strip-types scripts/check-ground-plane.mjs",
+      "source": ".github/workflows/ci.yml / content-validate / step 40",
+      "job": "content-validate",
+      "status": "passed",
+      "exit": 0,
+      "durationMs": 270,
+      "last3": [
+        "{\"phase\":\"p9\",\"stem\":\"terrain_dream_bundle_short_p9\",\"role\":\"deck\",\"sha256\":\"e1a17a17c6e7c3795ebe3a19729d94aa33db6ee0daed37986b2f51e427ed6d71\",\"ground\":{\"reach\":0.984375,\"tiltDeg\":0,\"span\":128},\"deck\":{\"row\":1,\"first90\":1,\"coverage\":0.90625,\"canvasCoverage\":0.90625,\"supportedSpan\":116,\"reach\":0.984375,\"tiltDeg\":0.01950821020240883,\"errors\":[]}}",
+        "✓ p9/terrain_dream_bundle_short_p9: Lauf-/Kontaktvertrag erfüllt",
+        "check-ground-plane: OK — 13 Steh-Blätter gemessen, 0 Duldung(en) gebraucht und keine schal"
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/039-node-experimental-strip-types-scripts-check-ground-plane-mjs.log",
+      "startedAt": "2026-09-13T14:21:28.489Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "node",
+        "--experimental-strip-types",
+        "scripts/check-ground-plane.mjs"
+      ],
+      "finishedAt": "2026-09-13T14:21:28.760Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "040",
+      "command": "node scripts/check-colour-truth.mjs --selftest",
+      "source": ".github/workflows/ci.yml / content-validate / step 41",
+      "job": "content-validate",
+      "status": "passed",
+      "exit": 0,
+      "durationMs": 208,
+      "last3": [
+        "  ✓ [single-neutral] polygon transparency counts against its full geometric area",
+        "  ✓ [single-neutral] polygon mixed shape declarations are invalid",
+        "check-colour-truth --selftest: OK — 73 Faelle der MESSUNG + 11 Faelle der KOPIE, every red light seen and every green case still green"
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/040-node-scripts-check-colour-truth-mjs-selftest.log",
+      "startedAt": "2026-09-13T14:21:28.957Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "node",
+        "scripts/check-colour-truth.mjs",
+        "--selftest"
+      ],
+      "finishedAt": "2026-09-13T14:21:29.166Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "041",
+      "command": "node scripts/check-colour-truth.mjs",
+      "source": ".github/workflows/ci.yml / content-validate / step 42",
+      "job": "content-validate",
+      "status": "passed",
+      "exit": 0,
+      "durationMs": 604,
+      "last3": [
+        "",
+        "check-colour-truth: OK — Kapitel 1: 12 restore sheet(s) measured; every card's colour word is the family its own sheet carries, every reading is ratified against a measured number",
+        "check-colour-truth: OK — Kapitel 2 (Kopie): 16 restore card(s), 48 German line(s); every colour word the card writes is the colour the card keys"
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/041-node-scripts-check-colour-truth-mjs.log",
+      "startedAt": "2026-09-13T14:21:29.351Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "node",
+        "scripts/check-colour-truth.mjs"
+      ],
+      "finishedAt": "2026-09-13T14:21:29.957Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "042",
+      "command": "node scripts/check-sheet-colours.mjs --selftest",
+      "source": ".github/workflows/ci.yml / content-validate / step 43",
+      "job": "content-validate",
+      "status": "passed",
+      "exit": 0,
+      "durationMs": 89,
+      "last3": [
+        "  ✓ die Messung selbst unterscheidet noch (Vakuitaet)",
+        "  (gemessen: echt 6349 Farben / L 57.1 % · posterisiert 11 / L 39.5 % · aufgehellt L 64.3 %)",
+        "check-sheet-colours --selftest: OK — 8 Faelle: die Posterisierung wird gefunden, der Korridor haelt, und eine Ausnahme ueberlebt ihren Grund nicht"
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/042-node-scripts-check-sheet-colours-mjs-selftest.log",
+      "startedAt": "2026-09-13T14:21:30.136Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "node",
+        "scripts/check-sheet-colours.mjs",
+        "--selftest"
+      ],
+      "finishedAt": "2026-09-13T14:21:30.226Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "043",
+      "command": "node scripts/check-sheet-colours.mjs",
+      "source": ".github/workflows/ci.yml / content-validate / step 44",
+      "job": "content-validate",
+      "status": "passed",
+      "exit": 0,
+      "durationMs": 167,
+      "last3": [
+        "  plate_ch01_rule.png     16773 Farben (Boden  13418)   HSL-L  46.0 %",
+        "",
+        "check-sheet-colours: OK — 5 Zelle(n) einzeln gezaehlt (nie als Summe einer Sammeldatei), keine faellt unter 80 % ihrer Farbzahl, und jede Abweichung vom Korridor 35–60 % traegt eine benannte, datierte Ausnahme"
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/043-node-scripts-check-sheet-colours-mjs.log",
+      "startedAt": "2026-09-13T14:21:30.410Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "node",
+        "scripts/check-sheet-colours.mjs"
+      ],
+      "finishedAt": "2026-09-13T14:21:30.578Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "044",
+      "command": "node docs/art/import-batch-aq12.mjs --selftest",
+      "source": ".github/workflows/ci.yml / content-validate / step 45",
+      "job": "content-validate",
+      "status": "passed",
+      "exit": 0,
+      "durationMs": 84,
+      "last3": [
+        "  ✓ stehengebliebener Flicken wird als Fundort GEMELDET",
+        "",
+        "import-batch-aq12 --selftest: OK — die Probe sieht ihr rotes Licht an der flachen Füllung, meldet den Flicken als Fundort und lässt die ehrliche Umfärbung durch"
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/044-node-docs-art-import-batch-aq12-mjs-selftest.log",
+      "startedAt": "2026-09-13T14:21:30.767Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "node",
+        "docs/art/import-batch-aq12.mjs",
+        "--selftest"
+      ],
+      "finishedAt": "2026-09-13T14:21:30.855Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "045",
+      "command": "node docs/art/import-batch-aq13.mjs --selftest",
+      "source": ".github/workflows/ci.yml / content-validate / step 46",
+      "job": "content-validate",
+      "status": "passed",
+      "exit": 0,
+      "durationMs": 570,
+      "last3": [
+        "import-batch-aq13 --selftest: OK — 62 Faelle, je Paar richtig/plausibel-falsch,",
+        "und jeder rote Fall mit dem Grund geprueft, den er treffen soll (ein Fall, der aus",
+        "dem falschen Grund rot wird, gilt hier als durchgefallen)."
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/045-node-docs-art-import-batch-aq13-mjs-selftest.log",
+      "startedAt": "2026-09-13T14:21:31.039Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "node",
+        "docs/art/import-batch-aq13.mjs",
+        "--selftest"
+      ],
+      "finishedAt": "2026-09-13T14:21:31.611Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "046",
+      "command": "node docs/art/import-batch-aq15.mjs --selftest",
+      "source": ".github/workflows/ci.yml / content-validate / step 47",
+      "job": "content-validate",
+      "status": "passed",
+      "exit": 0,
+      "durationMs": 132,
+      "last3": [
+        "     x 4 Gitterachsen statt 5 — so viele zeigt der Bestand in diesem Fenster; entweder fehlt ein Stab ganz, oder einer ist so zerrissen, dass er nicht mehr als Achse lesbar ist",
+        "",
+        "import-batch-aq15 --selftest: OK — die Abnahme sieht ihr rotes Licht am abgeschnittenen Stabfuss, am Figurenrest und am GANZ fehlenden Stab; sie zaehlt gegen das Soll DIESER Zelle statt gegen eine Konstante, sie verlangt dieses Soll auch wirklich, und sie laesst die ehrliche Vier-Achsen-Leerung durch"
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/046-node-docs-art-import-batch-aq15-mjs-selftest.log",
+      "startedAt": "2026-09-13T14:21:31.784Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "node",
+        "docs/art/import-batch-aq15.mjs",
+        "--selftest"
+      ],
+      "finishedAt": "2026-09-13T14:21:31.917Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "047",
+      "command": "node docs/art/import-batch-aq17.mjs --selftest",
+      "source": ".github/workflows/ci.yml / content-validate / step 48",
+      "job": "content-validate",
+      "status": "failed",
+      "exit": 1,
+      "durationMs": 401815,
+      "last3": [
+        "  ✓ ein 9-Slice, der die vier Radien DOCH trägt, macht die Haltung rot  →  card_buttons_9slice.png: das Blatt trägt JETZT die vier Radien der Karte — die Haltung in diesem Skript ist überholt. Neu entscheiden und den Text hier ändern, nicht das rote Licht wegdrücken.",
+        "",
+        "import-batch-aq17 --selftest: OK — die Abnahme sieht ihr rotes Licht am einheitlichen Eckradius und am Magenta, und die Haltung des 9-Slice hat selbst ein rotes Licht"
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/047-node-docs-art-import-batch-aq17-mjs-selftest.log",
+      "startedAt": "2026-09-13T14:21:32.104Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "node",
+        "docs/art/import-batch-aq17.mjs",
+        "--selftest"
+      ],
+      "finishedAt": "2026-09-13T14:28:13.925Z",
+      "signal": "SIGTERM",
+      "timedOut": false
+    },
+    {
+      "id": "048",
+      "command": "node scripts/check-png-identity.mjs --selftest",
+      "source": ".github/workflows/ci.yml / content-validate / step 49",
+      "job": "content-validate",
+      "status": "passed",
+      "exit": 0,
+      "durationMs": 523,
+      "last3": [
+        "  ✓ apps/web/public/art/g1/cards/card_buttons.png: Farbtyp 6 = RGBA, Meldung=false (echtes RGBA mit echter Durchsichtigkeit — keine Meldung, und das ist richtig)",
+        "  ✓ gebautes RGBA-Blatt, Alpha überall 255: Farbtyp 6, Meldung=true — das rote Licht ist erreichbar",
+        "✓ selftest: one changed channel in one pixel is found and named; a size change is found; identical images pass; die drei Nachverdichtungs-Urteile stimmen (D-98); der Farbtyp kommt aus dem IHDR-Kopf, also meldet ein Palettenblatt sich nicht mehr als RGBA."
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/048-node-scripts-check-png-identity-mjs-selftest.log",
+      "startedAt": "2026-09-13T14:28:14.313Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "node",
+        "scripts/check-png-identity.mjs",
+        "--selftest"
+      ],
+      "finishedAt": "2026-09-13T14:28:14.838Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "049",
+      "command": "node scripts/check-png-identity.mjs --ref origin/main",
+      "source": ".github/workflows/ci.yml / content-validate / step 50",
+      "job": "content-validate",
+      "status": "passed",
+      "exit": 0,
+      "durationMs": 10139,
+      "last3": [
+        "  ⚠ 1 Blatt/Blätter sind vollständig UNDURCHSICHTIG und liegen trotzdem als RGBA auf der Platte — ein Viertel jeder Datei ist ein Alphakanal, der überall 255 ist (E5s Hebel). `node scripts/art-recompress.mjs` holt das verlustfrei heraus. Kein rotes Licht in dieser Runde:",
+        "    · docs/art/ch01-story-gamepass/merle/import-contact-sheet.png (Farbtyp 6 = RGBA)",
+        "check-png-identity: OK — 0 Blatt/Blätter Bildpunkt für Bildpunkt identisch zu 7161948936faabc5eab2fd51457e90616599424d und nicht gewachsen, 93 neu gemalt, 101 neu. 16.3 MB → 148.7 MB (+815.1 %)."
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/049-node-scripts-check-png-identity-mjs-ref-origin-main.log",
+      "startedAt": "2026-09-13T14:28:15.583Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "node",
+        "scripts/check-png-identity.mjs",
+        "--ref",
+        "7161948936faabc5eab2fd51457e90616599424d"
+      ],
+      "finishedAt": "2026-09-13T14:28:25.727Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "050",
+      "command": "node --experimental-strip-types scripts/check-perf-budget.mjs --selftest",
+      "source": ".github/workflows/ci.yml / content-validate / step 51",
+      "job": "content-validate",
+      "status": "passed",
+      "exit": 0,
+      "durationMs": 224,
+      "last3": [
+        "✗ PHASE_ART_MB: the guard document never quotes ≤ 42 as a limit — docs/PERF_WAECHTER.md and perfBudget.ts disagree (die Ziffern irgendwo im Text zählen nicht)",
+        "✗ 59 painted files are loaded by nothing, over the ceiling of 57. Art may land before its wiring — the pile may not grow unnoticed. Wire it, delete it, or raise the ceiling WITH a reason.",
+        "check-perf-budget SELFTEST: OK — beide roten Lichter brennen (2 failure(s): ein Budget gegen das Dokument verstellt, die Tot-Kunst-Decke unter den echten Stapel gesenkt)"
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/050-node-experimental-strip-types-scripts-check-perf-budget-mjs-selftest.log",
+      "startedAt": "2026-09-13T14:28:25.927Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "node",
+        "--experimental-strip-types",
+        "scripts/check-perf-budget.mjs",
+        "--selftest"
+      ],
+      "finishedAt": "2026-09-13T14:28:26.152Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "051",
+      "command": "node --experimental-strip-types scripts/check-perf-budget.mjs",
+      "source": ".github/workflows/ci.yml / content-validate / step 52",
+      "job": "content-validate",
+      "status": "failed",
+      "exit": 1,
+      "durationMs": 197,
+      "last3": [
+        "✗ 59 painted files are loaded by nothing, over the ceiling of 57. Art may land before its wiring — the pile may not grow unnoticed. Wire it, delete it, or raise the ceiling WITH a reason.",
+        "check-perf-budget: 1 failure(s)"
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/051-node-experimental-strip-types-scripts-check-perf-budget-mjs.log",
+      "startedAt": "2026-09-13T14:28:26.352Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "node",
+        "--experimental-strip-types",
+        "scripts/check-perf-budget.mjs"
+      ],
+      "finishedAt": "2026-09-13T14:28:26.550Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "052",
+      "command": "node scripts/check-fonts.mjs --selftest",
+      "source": ".github/workflows/ci.yml / content-validate / step 53",
+      "job": "content-validate",
+      "status": "passed",
+      "exit": 0,
+      "durationMs": 234,
+      "last3": [
+        "✗ apps/web/app/__selftest-layout.tsx imports next/font/google — that downloads .woff2 files at BUILD time. Commit the face under apps/web/app/fonts and load it with next/font/local (see that folder's LICENSE.md).",
+        "    import { Inter } from \"next/font/google\"",
+        "check-fonts SELFTEST: OK — the red light works (1 failure(s) for an import added on purpose)"
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/052-node-scripts-check-fonts-mjs-selftest.log",
+      "startedAt": "2026-09-13T14:28:26.734Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "node",
+        "scripts/check-fonts.mjs",
+        "--selftest"
+      ],
+      "finishedAt": "2026-09-13T14:28:26.968Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "053",
+      "command": "node scripts/check-fonts.mjs",
+      "source": ".github/workflows/ci.yml / content-validate / step 54",
+      "job": "content-validate",
+      "status": "passed",
+      "exit": 0,
+      "durationMs": 184,
+      "last3": [
+        "check-fonts: OK — 613 source files clean of next/font/google, 3 local font file(s) present"
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/053-node-scripts-check-fonts-mjs.log",
+      "startedAt": "2026-09-13T14:28:27.177Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "node",
+        "scripts/check-fonts.mjs"
+      ],
+      "finishedAt": "2026-09-13T14:28:27.362Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "054",
+      "command": "node scripts/check-secrets.mjs --selftest",
+      "source": ".github/workflows/ci.yml / content-validate / step 55",
+      "job": "content-validate",
+      "status": "passed",
+      "exit": 0,
+      "durationMs": 1022,
+      "last3": [
+        "check-secrets SELBSTTEST: OK — 5 rote Lichter brennen (elevenlabs-key, openai-style-key, xi-api-key-header, elevenlabs-env-assignment, domigo-ops-token-assignment), 8 Beinahe-Treffer bleiben still, und die 4823 getrackten Dateien sind sauber."
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/054-node-scripts-check-secrets-mjs-selftest.log",
+      "startedAt": "2026-09-13T14:28:27.558Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "node",
+        "scripts/check-secrets.mjs",
+        "--selftest"
+      ],
+      "finishedAt": "2026-09-13T14:28:28.581Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "055",
+      "command": "node scripts/check-secrets.mjs",
+      "source": ".github/workflows/ci.yml / content-validate / step 56",
+      "job": "content-validate",
+      "status": "passed",
+      "exit": 0,
+      "durationMs": 481,
+      "last3": [
+        "check-secrets: OK — 4823 getrackte Dateien, kein Schluessel in Sicht."
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/055-node-scripts-check-secrets-mjs.log",
+      "startedAt": "2026-09-13T14:28:28.770Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "node",
+        "scripts/check-secrets.mjs"
+      ],
+      "finishedAt": "2026-09-13T14:28:29.258Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "056",
+      "command": "node scripts/check-audio.mjs --selftest",
+      "source": ".github/workflows/ci.yml / content-validate / step 58",
+      "job": "content-validate",
+      "status": "passed",
+      "exit": 0,
+      "durationMs": 1693,
+      "last3": [
+        "  ✓ »absteigender Klang« → rotes Licht bei „`:371` — kein Absteigen\"",
+        "  ✓ »aufsteigender Klang (Kontrolle)« → bleibt gruen (Zentroide 917 → 2150 → 3384)",
+        "check-audio SELBSTTEST: OK — das Instrument stimmt, fuenf rote Lichter brennen, und die aufsteigende Kontrolle bleibt gruen."
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/056-node-scripts-check-audio-mjs-selftest.log",
+      "startedAt": "2026-09-13T14:28:29.448Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "node",
+        "scripts/check-audio.mjs",
+        "--selftest"
+      ],
+      "finishedAt": "2026-09-13T14:28:31.142Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "057",
+      "command": "node scripts/check-audio.mjs",
+      "source": ".github/workflows/ci.yml / content-validate / step 59",
+      "job": "content-validate",
+      "status": "passed",
+      "exit": 0,
+      "durationMs": 10390,
+      "last3": [
+        "check-audio: 78 Dateien · 2.32 MB auf der Platte (Effekte 0.39 MB) · decodierte Spitze 12.15 MB von 16 MB · ffmpeg vorhanden, nachgemessen",
+        "check-audio: OK"
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/057-node-scripts-check-audio-mjs.log",
+      "startedAt": "2026-09-13T14:28:31.348Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "node",
+        "scripts/check-audio.mjs"
+      ],
+      "finishedAt": "2026-09-13T14:28:41.741Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "058",
+      "command": "node scripts/measure-presence.mjs --selftest",
+      "source": ".github/workflows/ci.yml / content-validate / step 60",
+      "job": "content-validate",
+      "status": "passed",
+      "exit": 0,
+      "durationMs": 104,
+      "last3": [
+        "  object 180.00 · ring 100.00 · ΔL 80.00 (analytic 80)",
+        "  ring sampled 4008 px · a wrong-scale frame is refused",
+        "  Kopien gegen ihre Quelle geprueft (LETTER_PX · TILE · RENDER_SCALE · CUE_GAP_PX · Bob-Formel · Versatz) · Kriterium: |dL| >= 50 ODER (|dL| >= 30 UND dH >= 30 Grad), am KANTEN-Ring"
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/058-node-scripts-measure-presence-mjs-selftest.log",
+      "startedAt": "2026-09-13T14:28:41.930Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "node",
+        "scripts/measure-presence.mjs",
+        "--selftest"
+      ],
+      "finishedAt": "2026-09-13T14:28:42.036Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "059",
+      "command": "node scripts/measure-motion.mjs --selftest",
+      "source": ".github/workflows/ci.yml / content-validate / step 61",
+      "job": "content-validate",
+      "status": "passed",
+      "exit": 0,
+      "durationMs": 92,
+      "last3": [
+        "         stillen Anteil (20 %) und rechnet ihn heraus, statt die kleinere Zahl zu melden",
+        "  D-255: im selben Band rastet die UNGEMASKTE Korrelation auf 0 ein, die gemaskte findet die 7 px",
+        "  D-256: ein Wert direkt hinter einer Flagge wird nicht mehr für das Bildverzeichnis gehalten"
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/059-node-scripts-measure-motion-mjs-selftest.log",
+      "startedAt": "2026-09-13T14:28:42.219Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "node",
+        "scripts/measure-motion.mjs",
+        "--selftest"
+      ],
+      "finishedAt": "2026-09-13T14:28:42.312Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "060",
+      "command": "node scripts/measure-veil.mjs --selftest",
+      "source": ".github/workflows/ci.yml / content-validate / step 62",
+      "job": "content-validate",
+      "status": "passed",
+      "exit": 0,
+      "durationMs": 96,
+      "last3": [
+        "  ✓ just under the floor is world: 40.0 %",
+        "  ✓ just over the floor is card",
+        "measure-veil --selftest: OK"
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/060-node-scripts-measure-veil-mjs-selftest.log",
+      "startedAt": "2026-09-13T14:28:42.509Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "node",
+        "scripts/measure-veil.mjs",
+        "--selftest"
+      ],
+      "finishedAt": "2026-09-13T14:28:42.606Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "061",
+      "command": "node scripts/measure-residue.mjs --selftest",
+      "source": ".github/workflows/ci.yml / content-validate / step 63",
+      "job": "content-validate",
+      "status": "passed",
+      "exit": 0,
+      "durationMs": 87,
+      "last3": [
+        "  ✓ die Tabelle nennt das umgefaerbte Material beim Namen",
+        "  ✓ zwei verschiedene Masse brechen ab, statt Punkt fuer Punkt Unsinn zu vergleichen",
+        "measure-residue --selftest: OK — 7 Faelle: Gold und Tusche bleiben in ihren eigenen Zeilen, der Flicken wird gefunden und verortet, Streupunkte bleiben Streupunkte"
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/061-node-scripts-measure-residue-mjs-selftest.log",
+      "startedAt": "2026-09-13T14:28:42.904Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "node",
+        "scripts/measure-residue.mjs",
+        "--selftest"
+      ],
+      "finishedAt": "2026-09-13T14:28:42.991Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "062",
+      "command": "node scripts/frame-sink.mjs --selftest",
+      "source": ".github/workflows/ci.yml / content-validate / step 64",
+      "job": "content-validate",
+      "status": "passed",
+      "exit": 0,
+      "durationMs": 97,
+      "last3": [
+        "frame-sink --selftest: OK",
+        "  Handschlag Pflicht · tote Kamera erkannt · Aufrufer-Fehler getrennt · Dubletten abgewiesen · Zettel mit Tick",
+        "  Standbild: EIN Bild angenommen, das zweite abgewiesen, der Zettel nennt den fehlenden bzw. bestandenen Kamerabeweis — und dieselbe Folge OHNE die Flagge bricht weiter mit 425 ab (P-82)."
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/062-node-scripts-frame-sink-mjs-selftest.log",
+      "startedAt": "2026-09-13T14:28:43.200Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "node",
+        "scripts/frame-sink.mjs",
+        "--selftest"
+      ],
+      "finishedAt": "2026-09-13T14:28:43.298Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "063",
+      "command": "node scripts/shoot-world.mjs --selftest",
+      "source": ".github/workflows/ci.yml / content-validate / step 65",
+      "job": "content-validate",
+      "status": "passed",
+      "exit": 0,
+      "durationMs": 90,
+      "last3": [
+        "  ✓ die Toast-Suche hat eine Zahl, keine Geduld",
+        "  ✓ …und eine halb aufgegangene Blase zaehlt nicht",
+        "shoot-world --selftest: OK — die Takt-Kopien stimmen mit entities.ts überein, die Abtastrate liegt unter beiden Kampf-Takten, der Beipackzettel erscheint genau dann, wenn das Werkzeug mitgespielt hat, und eine EINZIGE geänderte Zelle im Level wird an der ausgelieferten Seite gefunden (D-443). Dazu der Standbild-Plan: mit der Flagge EIN Bild, der Handschlag nur wenn die Welt noch lief — und OHNE die Flagge bricht eine stehende Welt weiter ab (P-82)."
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/063-node-scripts-shoot-world-mjs-selftest.log",
+      "startedAt": "2026-09-13T14:28:43.527Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "node",
+        "scripts/shoot-world.mjs",
+        "--selftest"
+      ],
+      "finishedAt": "2026-09-13T14:28:43.618Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "064",
+      "command": "node scripts/shoot-card-bench.mjs --selftest",
+      "source": ".github/workflows/ci.yml / content-validate / step 66",
+      "job": "content-validate",
+      "status": "passed",
+      "exit": 0,
+      "durationMs": 58,
+      "last3": [
+        "✓ was keine Seite ist, zaehlt nicht gegen die Identitaet",
+        "✓ ohne Angabe wird der Port beim Betriebssystem geholt, nie geraten",
+        "✓ selftest: formatfüllend wird angenommen, zu klein wird rot, Teilmengen decken die Liste, und ein fremder Browser wird als fremd erkannt."
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/064-node-scripts-shoot-card-bench-mjs-selftest.log",
+      "startedAt": "2026-09-13T14:28:43.812Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "node",
+        "scripts/shoot-card-bench.mjs",
+        "--selftest"
+      ],
+      "finishedAt": "2026-09-13T14:28:43.871Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "065",
+      "command": "node scripts/perf-visible.mjs --selftest",
+      "source": ".github/workflows/ci.yml / content-validate / step 67",
+      "job": "content-validate",
+      "status": "passed",
+      "exit": 0,
+      "durationMs": 55,
+      "last3": [
+        "✓ bau+aufbau wird addiert, nicht nur aufbau berichtet (P-77)",
+        "",
+        "perf-visible SELBSTTEST: OK — die Kontrollschwelle hat ihr rotes Licht gesehen."
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/065-node-scripts-perf-visible-mjs-selftest.log",
+      "startedAt": "2026-09-13T14:28:44.068Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "node",
+        "scripts/perf-visible.mjs",
+        "--selftest"
+      ],
+      "finishedAt": "2026-09-13T14:28:44.124Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "066",
+      "command": "node scripts/chrome-hygiene.mjs --selftest",
+      "source": ".github/workflows/ci.yml / content-validate / step 68",
+      "job": "content-validate",
+      "status": "passed",
+      "exit": 0,
+      "durationMs": 164,
+      "last3": [
+        "  ✓ …und der Grund nennt den Port",
+        "  ✓ TAMPER: dieselbe Messung, Schwelle unter den Messwert gebogen ⇒ Makel",
+        "chrome-hygiene --selftest: OK — VERWAISTE eigene Profile werden beendet, eine LAUFENDE fremde Messung mit demselben Präfix nie, fremde Browser nie, und die pgrep -f-Selbstfindung ist ausgeschlossen. Dazu die Maschinen-Lesung (P7 §12.9): fremde Server im Band 3200–3399 werden gefunden, der eigene Port nicht, und der Makel geht an und aus (Last · fremder Browser · fremder Server), mit einer an den Messwert gebogenen Schwelle als Beweis, dass sein rotes Licht erreichbar ist."
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/066-node-scripts-chrome-hygiene-mjs-selftest.log",
+      "startedAt": "2026-09-13T14:28:44.311Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "node",
+        "scripts/chrome-hygiene.mjs",
+        "--selftest"
+      ],
+      "finishedAt": "2026-09-13T14:28:44.476Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "067",
+      "command": "node scripts/art-recompress.mjs --selftest",
+      "source": ".github/workflows/ci.yml / content-validate / step 69",
+      "job": "content-validate",
+      "status": "passed",
+      "exit": 0,
+      "durationMs": 54,
+      "last3": [
+        "  ✓ übernehmen: die Sperrdatei ist unlesbar",
+        "  ✓ belegt schlägt alles: ein laufendes oxipng trotz toter Sperre",
+        "art-recompress --selftest: OK — 6 Fälle: eine tote Sperre wird übernommen, eine lebende hält, und ein laufendes oxipng schlägt beides"
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/067-node-scripts-art-recompress-mjs-selftest.log",
+      "startedAt": "2026-09-13T14:28:44.666Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "node",
+        "scripts/art-recompress.mjs",
+        "--selftest"
+      ],
+      "finishedAt": "2026-09-13T14:28:44.722Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "068",
+      "command": "node scripts/set-plane-value.mjs --selftest",
+      "source": ".github/workflows/ci.yml / content-validate / step 70",
+      "job": "content-validate",
+      "status": "passed",
+      "exit": 0,
+      "durationMs": 133,
+      "last3": [
+        "selftest: das angenommene Band wird verweigert — «angenommene Lieferung — das Wareneingangs-Mass ersetzt das R15-Ziel; Aenderung nur ueber neue Lieferung + Wareneingang»",
+        "selftest: TAMPER — ein Pin auf fremde Bytes sperrt nicht, und EIN geaendertes Byte faellt aus dem Pin heraus (die Sperre sitzt auf den Bytes, nicht auf dem Namen)",
+        "✓ selftest passed"
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/068-node-scripts-set-plane-value-mjs-selftest.log",
+      "startedAt": "2026-09-13T14:28:44.909Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "node",
+        "scripts/set-plane-value.mjs",
+        "--selftest"
+      ],
+      "finishedAt": "2026-09-13T14:28:45.044Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "069",
+      "command": "node scripts/check-ci-gates.mjs --selftest",
+      "source": ".github/workflows/ci.yml / content-validate / step 71",
+      "job": "content-validate",
+      "status": "passed",
+      "exit": 0,
+      "durationMs": 135,
+      "last3": [
+        "  ✓ abgelaufene Importeur-Ausnahme — rot (1)",
+        "  ✓ NICHT-TAMPER: der echte Stand ist grün — grün",
+        "check-ci-gates --selftest: OK — 11 Fälle, 10 rote Lichter gesehen, der echte Stand grün"
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/069-node-scripts-check-ci-gates-mjs-selftest.log",
+      "startedAt": "2026-09-13T14:28:45.267Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "node",
+        "scripts/check-ci-gates.mjs",
+        "--selftest"
+      ],
+      "finishedAt": "2026-09-13T14:28:45.404Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "070",
+      "command": "node scripts/check-ci-gates.mjs",
+      "source": ".github/workflows/ci.yml / content-validate / step 72",
+      "job": "content-validate",
+      "status": "passed",
+      "exit": 0,
+      "durationMs": 95,
+      "last3": [
+        "",
+        "check-ci-gates: OK — 25 Tore laufen in CI an echten Dateien · 13 Werkzeuge fahren dort bewusst nur ihren Selbsttest · 1 Skript(e) sind bewusst kein CI-Tor · 5 Importeur-Selbsttest(s) geprüft (C10)",
+        "check-ci-gates: BILANZ (maschinell gezaehlt, 2026-09-13) — 63 einzeilige `run: node`-Zeilen in ci.yml · 26 check-*.mjs auf der Platte · 22 docs/art/import-batch-*.mjs · 219 Testdateien. Die Zahl der gefahrenen PRUEFUNGEN druckt `pnpm test` selbst (Zeile »Tests  N passed«) — ein Report zitiert diese beiden Quellen, nie sein Gedaechtnis."
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/070-node-scripts-check-ci-gates-mjs.log",
+      "startedAt": "2026-09-13T14:28:45.663Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "node",
+        "scripts/check-ci-gates.mjs"
+      ],
+      "finishedAt": "2026-09-13T14:28:45.760Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "071",
+      "command": "node scripts/check-perf-table.mjs --selftest",
+      "source": ".github/workflows/ci.yml / perf-contract / step 3",
+      "job": "perf-contract",
+      "status": "passed",
+      "exit": 0,
+      "durationMs": 52,
+      "last3": [
+        "✓ Anker · zwei Zeilen zählen zwei: 2 Angabe(n), erwartet 2",
+        "✓ Anker · ein »Bau:« mitten im Satz zählt nicht: 0 Angabe(n), erwartet 0",
+        "✓ selftest: the detector tells a filled table from a blank one and from a missing row; zwei identische Bau-Angaben werden als das erkannt, was sie sind (R183); und eine ausgefüllte Tabelle OHNE Bau-Angabe ist seit Welle 8 rot (D-514 abgelaufen, W7)."
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/071-node-scripts-check-perf-table-mjs-selftest.log",
+      "startedAt": "2026-09-13T14:28:46.025Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "node",
+        "scripts/check-perf-table.mjs",
+        "--selftest"
+      ],
+      "finishedAt": "2026-09-13T14:28:46.079Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "072",
+      "command": "node scripts/check-perf-table.mjs",
+      "source": ".github/workflows/ci.yml / perf-contract / step 4",
+      "job": "perf-contract",
+      "status": "passed",
+      "exit": 0,
+      "durationMs": 96,
+      "last3": [
+        "  ℹ Provenienz: 2 verschiedene Bau-Angaben — vorher und nachher sind unterscheidbar",
+        "check-perf-table: OK — 189 betroffene Datei(en), Tabelle ausgefüllt."
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/072-node-scripts-check-perf-table-mjs.log",
+      "startedAt": "2026-09-13T14:28:46.295Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "node",
+        "scripts/check-perf-table.mjs"
+      ],
+      "finishedAt": "2026-09-13T14:28:46.394Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "073",
+      "command": "pnpm build",
+      "source": ".github/workflows/ci.yml / build / step 5",
+      "job": "build",
+      "status": "passed",
+      "exit": 0,
+      "durationMs": 29183,
+      "last3": [
+        "ƒ  (Dynamic)  server-rendered on demand",
+        "",
+        "Paint function traces: {\"traces\":73,\"largestBytes\":126607020,\"paintFiles\":0}"
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/073-pnpm-build.log",
+      "startedAt": "2026-09-13T14:28:46.856Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "pnpm",
+        "build"
+      ],
+      "finishedAt": "2026-09-13T14:29:16.042Z",
+      "signal": null,
+      "timedOut": false
+    },
+    {
+      "id": "074",
+      "command": "pnpm check:bundle",
+      "source": ".github/workflows/ci.yml / build / step 6",
+      "job": "build",
+      "status": "failed",
+      "exit": 1,
+      "durationMs": 632,
+      "last3": [
+        "check-game-bundle: 43 client chunks · Phaser in 1 chunk (308 KB gz) · largest non-Phaser 150 KB (3gewpw4tptjus.js)",
+        "  ✗ Non-Phaser chunk 3gewpw4tptjus.js is 150 KB gz (budget 150 KB) — Phaser may have leaked into a shared chunk",
+        "[ELIFECYCLE] Command failed with exit code 1."
+      ],
+      "log": "/private/tmp/codex-ch01-story-final-1fd980c5/074-pnpm-check-bundle.log",
+      "startedAt": "2026-09-13T14:29:16.253Z",
+      "executedArgv": [
+        "/usr/bin/nice",
+        "-n",
+        "15",
+        "pnpm",
+        "check:bundle"
+      ],
+      "finishedAt": "2026-09-13T14:29:16.886Z",
+      "signal": null,
+      "timedOut": false
+    }
+  ]
+}

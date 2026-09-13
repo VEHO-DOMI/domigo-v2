@@ -1,0 +1,83 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "assets": [
+    {
+      "stem": "pen_a",
+      "source": "sources/neutral-material-figures.raw.png",
+      "width": 340,
+      "height": 512,
+      "x": [
+        [
+          0,
+          18
+        ],
+        [
+          339,
+          494
+        ]
+      ],
+      "y": [
+        [
+          0,
+          140
+        ],
+        [
+          511,
+          857
+        ]
+      ]
+    },
+    {
+      "stem": "heft_a",
+      "source": "sources/neutral-material-figures.raw.png",
+      "width": 456,
+      "height": 512,
+      "x": [
+        [
+          0,
+          495
+        ],
+        [
+          455,
+          1046
+        ]
+      ],
+      "y": [
+        [
+          0,
+          225
+        ],
+        [
+          511,
+          844
+        ]
+      ]
+    },
+    {
+      "stem": "obj_scissors_a",
+      "source": "sources/neutral-material-figures.raw.png",
+      "width": 365,
+      "height": 512,
+      "x": [
+        [
+          0,
+          1055
+        ],
+        [
+          364,
+          1518
+        ]
+      ],
+      "y": [
+        [
+          0,
+          224
+        ],
+        [
+          511,
+          873
+        ]
+      ]
+    }
+  ]
+}

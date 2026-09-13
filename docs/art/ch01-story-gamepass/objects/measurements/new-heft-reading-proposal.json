@@ -1,0 +1,65 @@
+{
+  "word": "white",
+  "sourceSha256": "5383626da1b13fcf1e6a75259e7d98504cb766fd2e22f8dc3fd434efc8a72cce",
+  "width": 456,
+  "height": 512,
+  "regions": [
+    {
+      "id": "left-cover-upper",
+      "x": 39,
+      "y": 64,
+      "w": 78,
+      "h": 111
+    },
+    {
+      "id": "left-cover-lower",
+      "x": 60,
+      "y": 176,
+      "w": 56,
+      "h": 56
+    },
+    {
+      "id": "left-cover-inner",
+      "x": 118,
+      "y": 142,
+      "w": 28,
+      "h": 90
+    },
+    {
+      "id": "right-cover-upper",
+      "x": 320,
+      "y": 62,
+      "w": 82,
+      "h": 57
+    },
+    {
+      "id": "right-cover-main",
+      "x": 280,
+      "y": 120,
+      "w": 122,
+      "h": 123
+    },
+    {
+      "id": "right-cover-inner",
+      "x": 257,
+      "y": 152,
+      "w": 22,
+      "h": 73
+    },
+    {
+      "id": "blank-page-upper",
+      "x": 179,
+      "y": 211,
+      "w": 73,
+      "h": 45
+    },
+    {
+      "id": "blank-page-lower",
+      "x": 185,
+      "y": 344,
+      "w": 81,
+      "h": 28
+    }
+  ],
+  "why": "Fixed geometric body material planes selected on the complete source before measurement: cap/barrel excluding nib, eyes, hands and shoes; blank cover/page planes excluding face; handle/blade planes excluding eyes, screw and gloves. No targetpixel classification used to construct the mask."
+}

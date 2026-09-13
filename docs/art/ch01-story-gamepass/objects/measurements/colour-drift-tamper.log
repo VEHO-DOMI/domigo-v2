@@ -1,0 +1,64 @@
+  ✓ [Kopie] a hint that names another colour than the answer is caught
+  ✓ [Kopie] NON-TAMPER · the repaired hint names the answer and nothing else
+  ✓ [Kopie] NON-TAMPER · a hint with no colour word at all is allowed
+  ✓ [Kopie] NON-TAMPER · the ask line names its colour
+  ✓ [Kopie] NON-TAMPER · an inflected form still counts
+  ✓ [Kopie] NON-TAMPER · a word that only contains a colour is not that colour
+  ✓ [Kopie] a real colour word beside a compound is still found
+  ✓ [Kopie] two colours in one line are both seen
+  ✓ [Kopie] a two-colour key retains both taught words
+  ✓ [Kopie] an unknown second colour is rejected
+  ✓ [Kopie] repeating one colour does not form two colours
+  ✓ a red sheet cannot be a blue card
+  ✓ violet is measured as violet — no book word claims it
+  ✓ a sheet that is only parchment names no colour
+  ✓ NON-TAMPER · vivid orange survives the parchment cut
+  ✓ the ink outline is not a colour
+  ✗ a repaint that moves the warm centre invalidates the ratified reading → 11.100000000000001
+  ✓ NON-TAMPER · the sheet it was ratified on still passes the drift rule
+  ✓ two warm words among the options give the answer away
+  ✓ NON-TAMPER · one warm word among the options is fine
+  ✓ ROT ZUERST · ohne die zweite Unterscheidung misst das rote Buch seine GOLDECKEN
+  ✓ …und mit ihr misst es das Buch: die Warm-Mitte springt auf Rot
+  ✓ …und sie sagt auch, wie viel sie zurückgeholt hat
+  ✓ NON-TAMPER · eine große CREMEFARBENE Fläche bleibt Grundierung, kein Farbfeld
+  ✓ NON-TAMPER · 12 % verstreute rote Punkte sind kein Feld
+  ✓ ein Blatt, das künstlich zu Pergament geflaut ist, nennt keine Farbe mehr
+  ✓ ohne Nennung UND ohne Blatt ist es dieselbe Auslassung, nicht ein zweiter Fehler
+  ✓ ohne Nennung, aber MIT gemaltem Blatt, ist rot
+  ✓ eine Karte, die ein anderes Blatt nennt, ist rot
+  ✓ eine restore-Karte ohne skin bindet an nichts
+  ✓ ein korrekt genanntes, noch nicht gemaltes Blatt wird ausgelassen statt gemessen
+  ✓ eine Auslassung in einem Kapitel OHNE draft-Flagge wird zur Luecke
+  ✓ dieselbe Auslassung IM Entwurf ist keine Luecke, wird aber benannt
+  ✓ [neutral] broad opaque neutral body and belly
+  ✓ [neutral] opaque white body has no black interior
+  ✓ [neutral] warm ivory is not neutral white
+  ✓ [neutral] transparent white RGB cannot replace belly
+  ✓ [neutral] saturated blue is not black
+  ✓ [neutral] yellow is not neutral white
+  ✓ [neutral] perforated neutral specks cannot replace solid body
+  ✓ [single-neutral] black broad material
+  ✓ [single-neutral] white broad material
+  ✓ [single-neutral] grey broad material
+  ✓ [single-neutral] warm ivory is not white
+  ✓ [single-neutral] dark saturated blue is not black
+  ✓ [single-neutral] coloured blue-grey is not neutral grey
+  ✓ [single-neutral] white does not satisfy grey
+  ✓ [single-neutral] black does not satisfy grey
+  ✓ [single-neutral] transparent white RGB is not painted material
+  ✓ [single-neutral] only an opaque outline is not black material
+  ✓ [single-neutral] a genuine neutral shadow on a coloured body is not the body colour
+  ✓ [single-neutral] a small central eye is not enough even on neutral material
+  ✓ [single-neutral] sparse neutral specks are not a continuous surface
+  ✓ [single-neutral] a large transparent hole cannot count as coverage
+  ✓ [single-neutral] overlapping masks cannot double the covered body
+  ✓ [single-neutral] source drift invalidates ratification
+  ✓ [single-neutral] wrong source dimensions invalidate material coordinates
+  ✓ [single-neutral] missing body regions cannot pass
+  ✓ [single-neutral] a missing violet curse cannot make grey look restored
+  ✓ [single-neutral] a second neutral choice cannot collapse the colour family
+  ✓ [single-neutral] a missing anatomical reading is red
+  ✓ [single-neutral] wrong target name cannot inherit a reading
+  ✓ [single-neutral] a coloured accent does not erase a dominant neutral body
+check-colour-truth --selftest: 1 case(s) did NOT bite (Messung 1 · Kopie 0) — this gate cannot be trusted
