@@ -13,7 +13,7 @@ Nach-Prüfung ch02 (K1, K3). Kokis Entscheid 14.09.: Vorderseite malen, Wörter 
 3. `composite.py`: NUR die Zonen übernommen, 8 px weich überblendet — Auto Nase x≥440/y≥328 und Heck x≤62/y≥330; Bus Nase x≥455/y≥362 und Heck x≤48/y≥362. Alles außerhalb bleibt Bildpunkt für Bildpunkt die alte Ebene. c02: nur die Ballon-Zone (x 357–463, y 55–224).
 4. `strip-key-fringe --specks` (290 bzw. 123 Magenta-Randpixel repariert), `oxipng -o 4 --strip none`, Registrierungs-Trim nachgezogen (Breite +3 px durch den größeren Scheinwerfer/Stoßstange), `paint-art-manifest.json` neu erzeugt.
 
-Geänderte sichtbare Bildpunkte: Auto 12 587 · Bus 6 605 · c02 9 302.
+Geänderte sichtbare Bildpunkte gegen origin/main (größte Kanal-Abweichung > 2, nur Pixel mit Deckung in alt oder neu, an den ausgelieferten Dateien gemessen): Auto 12 573 · Bus 6 605 · c02 8 992.
 Positionen, Beats, Bänder: unverändert.
 
 CODEX-BILDWERKZEUG · Übernahme EXEC welle-035 · Stilurteil bleibt bei Koki (welle-014/027).

@@ -1489,7 +1489,7 @@
       ],
       "hints": {
         "deDesc": "Schau, wie die Wagen zusammenhängen.",
-        "deWord": "Er fährt auf Schienen von Bahnhof zu Bahnhof."
+        "deWord": "Es fährt auf Schienen von Bahnhof zu Bahnhof."
       },
       "grounding": "SB 17, Cotswold Wildlife Park poster; use the pictured park activity. Painted captive train; scale-model vignette, not a full railway inside the cage.",
       "answer": "train",
