@@ -1,0 +1,172 @@
+/* BRAND-2 · srdp-069 · Die Kopfzeile des Dachs »Lauter Einser« in DomiGo (Gestaltungsregel des Dachs §1).
+   Liegt ÜBER DomiGos Marke, nie statt ihr: jede Regel hier trägt .le- im Selektor, liest Farben nur
+   aus --le-* (oder currentColor) und Schrift nur aus --le-font-text; scripts/check-umbrella-tokens.mjs
+   hält das fest. DomiGos Schriftzug (.brand-wordmark) und Glühen (.dg-glow) bleiben unverändert.
+
+   Die Dach-Zonen erscheinen nur außerhalb von /play/[1-4] (BrandHeader.tsx) — dort ist der Grund
+   immer DomiGos :root --bg (#edf4ff), also ein helles Heftblau wie das Token-Papier. Deshalb
+   dürfen Tinte und Grau direkt die gemessenen Dach-Tokens sein (--le-ink, --le-muted).
+
+   Schrift: Literata wird NICHT geladen (check-fonts erlaubt nur lokale Dateien, und dieser
+   Schritt bringt keine neue). var(--le-font-text) fällt deshalb auf Georgia/Times zurück. */
+
+/* ── Raster: links · Mitte · rechts ─────────────────────────────────────── */
+.le-kopf.dg-app-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  grid-template-areas: "links mitte rechts";
+  align-items: center;
+  column-gap: 12px;
+  /* das Menü des Wechslers ragt unter die Kopfzeile; das Glühen clippt sein eigener Rahmen.
+     Kein z-index hier: die Kopfzeile soll keine Überlagerung der Seite (Dialog, Schleier) verdecken —
+     nur das offene Menü selbst liegt oben (z-index 50). */
+  overflow: visible;
+}
+
+.le-glow-rahmen {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.le-zone {
+  position: relative;
+  min-width: 0;
+}
+.le-zone-links { grid-area: links; justify-self: start; text-align: left; }
+.le-zone-mitte { grid-area: mitte; justify-self: center; text-align: center; }
+.le-zone-rechts {
+  grid-area: rechts;
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ── Zone links: Zeichen + Wortmarke ────────────────────────────────────── */
+.le-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  color: var(--le-ink);
+  font-family: var(--le-font-text);
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.15;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.le-stern { flex: none; }
+
+/* ── Zone Mitte: Zugehörigkeit statt Tagline ────────────────────────────── */
+.le-affiliation {
+  font-family: var(--le-font-text);
+  font-size: 12px;
+  line-height: 1.3;
+  color: var(--le-muted);
+  margin-top: 5px;
+  white-space: nowrap;
+}
+
+/* ── Zone rechts: Wechsler + Konto-Knopf ────────────────────────────────── */
+.le-switcher-wrap { position: relative; }
+
+.le-switcher,
+.le-konto {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 0 12px;
+  background: var(--le-paper-panel);
+  color: var(--le-ink);
+  border: 1px solid var(--le-line);
+  border-radius: 8px;
+  font-family: var(--le-font-text);
+  font-size: 15px;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.le-switcher:hover,
+.le-konto:hover { background: var(--le-tint); }
+.le-switcher-pfeil { font-size: 9px; opacity: 0.6; }
+
+.le-brand:focus-visible,
+.le-switcher:focus-visible,
+.le-konto:focus-visible {
+  outline: 2px solid var(--le-focus-ring);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.le-switcher-menu {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  margin-top: 8px;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  width: min(20rem, calc(100vw - 32px));
+  padding: 6px;
+  background: var(--le-paper-panel);
+  color: var(--le-ink);
+  border: 1px solid var(--le-line);
+  border-radius: 8px;
+  text-align: left;
+  white-space: normal;
+}
+.le-switcher-menu[hidden] { display: none; }
+
+.le-switcher-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 12px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--le-ink);
+  font-family: var(--le-font-text);
+  text-align: left;
+  text-decoration: none;
+  cursor: default;
+}
+a.le-switcher-item,
+button.le-switcher-item { cursor: pointer; }
+a.le-switcher-item:hover,
+button.le-switcher-item:hover,
+.le-switcher-item:focus { background: var(--le-tint); }
+.le-switcher-item:focus-visible {
+  outline: 2px solid var(--le-focus-ring);
+  outline-offset: -2px;
+}
+.le-switcher-item[aria-current="page"] { box-shadow: inset 3px 0 0 var(--le-margin); }
+.le-switcher-konto { border-top: 1px solid var(--le-line); border-radius: 0 0 6px 6px; margin-top: 4px; }
+
+.le-switcher-cat { color: var(--le-muted); font-size: 12px; line-height: 1.3; }
+.le-switcher-title { color: var(--le-ink); font-size: 15px; font-weight: 600; line-height: 1.3; }
+.le-switcher-satz { color: var(--le-muted); font-size: 13px; line-height: 1.4; }
+.le-state { color: var(--le-muted); font-size: 12px; font-style: italic; line-height: 1.3; }
+
+/* ── Breit gegen schmal ─────────────────────────────────────────────────── */
+.le-nur-schmal { display: none; }
+
+/* Schmal (unter 720 px; die Abnahme misst 375 px): Zeile 1 = Zeichen links + EIN Menü-Knopf rechts,
+   Zeile 2 = DomiGo mit Zugehörigkeit. Der Konto-Knopf zieht ins Menü; kein Querscrollen.
+   720 statt 640: breit brauchen Wechsler + Abmelden rund 225 px in einer 1fr-Spalte, und bei
+   640 px blieben davon nur ein paar Pixel Luft. */
+@media (max-width: 719.98px) {
+  .le-kopf.dg-app-header {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "links rechts"
+      "mitte mitte";
+    row-gap: 4px;
+  }
+  .le-nur-breit { display: none; }
+  .le-switcher-item.le-nur-schmal { display: flex; }
+}

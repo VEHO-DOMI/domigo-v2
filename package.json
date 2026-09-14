@@ -28,7 +28,8 @@
     "check:roster-twins:selftest": "node scripts/check-roster-twins.mjs --selftest",
     "check:journal-door": "node scripts/check-journal-door.mjs",
     "check:journal-door:selftest": "node scripts/check-journal-door.mjs --selftest",
-    "check:level-design:selftest": "node scripts/check-level-design.mjs --selftest"
+    "check:level-design:selftest": "node scripts/check-level-design.mjs --selftest",
+    "test:umbrella-tokens": "node scripts/check-umbrella-tokens.mjs"
   },
   "devDependencies": {
     "@anthropic-ai/sdk": "^0.110.0",

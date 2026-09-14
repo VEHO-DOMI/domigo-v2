@@ -1,0 +1,107 @@
+{
+  "version": "2026-09-13",
+  "hinweis": "Quelle der Kacheln (Weiche) und des Werkzeug-Wechslers (Kopfzeile). Gepflegt von S2 · Research + Name; Apps vendorn eine Kopie als le-werkzeuge.json und pinnen die sha256 aus tokens.json. Reihenfolge = Anzeige-Reihenfolge: Schüler-Werkzeuge zuerst, Lehrer-Raum und Konto zuletzt. 'stand': live | zieht um | kommt später (nie toter Link).",
+  "schema": {
+    "id": "kurz, stabil",
+    "titel": "Anzeigename (MARKE-16)",
+    "satz": "ein Satz, per du",
+    "kategorie": {
+      "fach": "…",
+      "stufe": "Unterstufe | Oberstufe | leer"
+    },
+    "adresse": "https://…lautereinser.at",
+    "kurzform": "/… (Weiterleitung auf der Weiche)",
+    "sprache": "Sprache der Werkzeug-Oberfläche",
+    "sichtbar_fuer": [
+      "student",
+      "teacher"
+    ],
+    "stand": "live | zieht um | kommt später"
+  },
+  "werkzeuge": [
+    {
+      "id": "eng-us",
+      "titel": "DomiGo",
+      "satz": "Englisch üben für die 1. bis 4. Klasse: Geschichten, Spiele, Übungen.",
+      "kategorie": {
+        "fach": "Englisch",
+        "stufe": "Unterstufe"
+      },
+      "adresse": "https://eng-unterstufe.lautereinser.at",
+      "kurzform": "/eng-us",
+      "sprache": "en",
+      "sichtbar_fuer": [
+        "student",
+        "teacher"
+      ],
+      "stand": "live"
+    },
+    {
+      "id": "eng-os",
+      "titel": "Englisch · Matura",
+      "satz": "Lesen, Hören, Sprachverwendung und Schreiben üben – mit echten Aufgabenformaten und Rückmeldung.",
+      "kategorie": {
+        "fach": "Englisch",
+        "stufe": "Oberstufe"
+      },
+      "adresse": "https://eng-oberstufe.lautereinser.at",
+      "kurzform": "/eng-os",
+      "sprache": "en",
+      "sichtbar_fuer": [
+        "student",
+        "teacher"
+      ],
+      "stand": "live"
+    },
+    {
+      "id": "pup",
+      "titel": "Psychologie und Philosophie",
+      "satz": "Das Buch, das lebendig wird – für die 6. Klasse.",
+      "kategorie": {
+        "fach": "Psychologie und Philosophie",
+        "stufe": "Oberstufe"
+      },
+      "adresse": "https://pup.lautereinser.at",
+      "kurzform": "/pup",
+      "sprache": "de",
+      "sichtbar_fuer": [
+        "student",
+        "teacher"
+      ],
+      "stand": "kommt später"
+    },
+    {
+      "id": "veho",
+      "titel": "Lehrer-Raum VEHO",
+      "satz": "Klassenbuch: Anwesenheit, Hausübungen, Noten – in der Stunde am Handy.",
+      "kategorie": {
+        "fach": "Lehrkräfte",
+        "stufe": ""
+      },
+      "adresse": "https://veho.lautereinser.at",
+      "kurzform": "/veho",
+      "sprache": "de",
+      "sichtbar_fuer": [
+        "teacher"
+      ],
+      "stand": "zieht um"
+    },
+    {
+      "id": "konto",
+      "titel": "Konto",
+      "satz": "Ein Login für alle Werkzeuge.",
+      "kategorie": {
+        "fach": "Alle",
+        "stufe": ""
+      },
+      "adresse": "https://konto.lautereinser.at",
+      "kurzform": "/konto",
+      "sprache": "de",
+      "sichtbar_fuer": [
+        "student",
+        "teacher"
+      ],
+      "stand": "kommt später"
+    }
+  ]
+}
