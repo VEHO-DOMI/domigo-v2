@@ -127,26 +127,31 @@ Tore fragen.
 
 `"draft": true` heisst: dieses Kapitel wird gerade gebaut.
 
-- **`draft:true` klammert GENAU FÜNF Gesetze aus** — nachgezählt im `!draft`-Block
+- **`draft:true` klammert GENAU SECHS Gesetze aus** — nachgezählt im `!draft`-Block
   von `level.ts`, nicht aus dem Rahmen-Text übernommen (der sagte es zu weit):
   `phase-count` · `checkpoint-silent` · `cage-law` · `classmate-cage` ·
-  `classmate-pair`. **Die anderen 32 Gesetze laufen auch im Entwurf** (28 stehen
+  `classmate-pair` · `stage-script`. **Die anderen 31 Gesetze laufen auch im Entwurf** (27 stehen
   direkt in `checkLevelLaws`, dazu `cloth-honesty` · `cloth-reach` ·
   `cloth-spacing` aus `clothLawFailures` und `stage-v2-script` aus
   `stageV2LawErrors`; zusammen kann `checkLevelLaws` 37 verschiedene Gesetze
   melden), und
   `content-levels.test.ts` fährt sie über jedes Level auf der Platte — also auch
   über deins, ab dem Tag, an dem du die Datei anlegst. Das ist Absicht: die
-  ausgeklammerten fünf sind Aussagen über die VOLLSTÄNDIGKEIT eines Kapitels,
+  ausgeklammerten sechs sind Aussagen über die VOLLSTÄNDIGKEIT eines Kapitels,
   alle anderen über die Spielbarkeit eines Raums, und die gilt sofort.
-- **Das Bühnen-Drehbuch (`stage-script`, `stage-sequence`) läuft ebenfalls im
-  Entwurf.** Zwischen #411 und #422 stand `stage-script` im `!draft`-Block und
-  war damit ein undokumentiertes sechstes ausgeklammertes Gesetz (D-824). #422
-  hat es hinter die schliessende Klammer gezogen — der Abschnitt ist aber noch
-  so eingerückt, als stünde er darin. Nachgezählt am 13.09. mit einer AST-Zählung
-  über `checkLevelLaws` (vor #422: 6 ausgeklammert, ab #422: 5) und einer
-  Probe: eine alte Bühne ohne `stageV2`, deren letzte Station in der Luft liegt,
-  ist mit und ohne `draft` rot.
+- **Das Bühnen-Drehbuch ist geteilt.** `stage-script` (die alte Bühne ohne
+  `stageV2`: Drehbuch, zwei Stationen, `propSkin`, Stationen im Gitter, Endstation
+  auf Boden) ist das sechste ausgeklammerte Gesetz: **ein Entwurf darf eine Bühne
+  ohne Drehbuch tragen** (Test `level.test.ts` »stage-script gilt nur für fertige
+  Kapitel; stage-sequence für beide«). `stage-sequence` (eine erklärte
+  `taskSequence`) und `stage-v2-script` laufen auch im Entwurf — was als Daten
+  schon ausführbar ist, darf nicht grün lügen. Geschichte (D-824, Urteil tore-017,
+  14.09.): #411 setzte `stage-script` in den `!draft`-Block, #422 zog es ohne
+  Absicht dahinter, #430 (welle-038) setzte es zurück; #431 hatte die Zahl am
+  Stand vor #430 gemessen (5/32), beide wurden am 14.09. im Abstand von neun
+  Sekunden gemergt. Nachgezählt am 14.09. auf `eec94796` über den Klammer-Bereich
+  von `checkLevelLaws` (Zeilen 1390–1542): 6 ausgeklammert, 27 direkt + 3 `cloth-*`
+  + `stage-v2-script` = 31 weiterlaufend, zusammen 37.
 - **Kunst darf fehlen** (`check-paint-art` überspringt Entwürfe), und **Bänder
   auch** (`proof-tapes.test.ts` ebenso).
 - Die Route zeigt einen Entwurf in **jeder** Umgebung nur hinter der Lehrer-Tür.

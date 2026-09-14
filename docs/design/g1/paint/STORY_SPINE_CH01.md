@@ -321,6 +321,38 @@ stehen als Maßstab hier, nicht als Vorlage zum Abschreiben. Je Karten-Art eine:
 > Zeile folgt dem Lexikon. Eine Ausnahme, die nicht aufgeschrieben ist, wird beim
 > nächsten Sweep still weggeräumt — deshalb steht sie hier und nicht nur im Kopf.
 
+> **★ Amendment 2026-09-14 (Urteil tore-017, Koki; D-991) — die Farb-Rückgabe spricht in
+> JEDEM Kapitel wie ch01, in der 3. Person mit Aufforderung an das Kind.** Kokis Wortlaut:
+> genau so, wie Codex Kapitel 1 zuletzt gebaut hat (#427), in natürlicher Sprache auf dem
+> Niveau der besten Kinderbücher. Das ersetzt für `restore`-Karten die „wer/was"-Zeile
+> (R77) und die Ich-Form von ch02. Andere Karten-Arten bleiben unberührt.
+>
+> **Satzrahmen.** `storyDe`: „Sag den Namen auf Englisch." · `colourAskDe`:
+> „[Der/Die/Das Nomen] war [Farbe]. Gib [ihm/ihr] die Farbe zurück." — *ihm* bei
+> männlich und sächlich, *ihr* bei weiblich. Maßstab sind die zehn ch01-Karten
+> (»Die Schultasche war braun. Gib ihr die Farbe zurück.«).
+>
+> **Formulierungs-Regeln (recherchiert am 14.09., Quellen im Bericht
+> `TORE017_URTEILE_2026-09-14.md`):**
+> 1. Zwei kurze Hauptsätze, je eine Aussage, kein Nebensatz (Netzwerk Leichte Sprache,
+>    Regelwerk 2022, S1/S4).
+> 2. Das Ding steht vorn, im Nominativ: »Die Marktfrau …«, nicht »Der Marktfrau fehlt …«.
+>    Kinder verstehen Sätze lange über die Wortstellung, bevor sie den Fall lesen
+>    (Dittmar u. a. 2008; Brandt u. a. 2016). Ein vorangestellter Dativ ist gutes Deutsch,
+>    aber für junge Leser eine Hürde.
+> 3. Der Auftrag beginnt mit dem Verb, im Du-Imperativ, eine Handlung.
+> 4. Verben statt Nomen, bekannte kurze Wörter; kein Farbton-Kompositum (»Sonnengelb«,
+>    »Tintenblau« sind versteckte Vergleiche, R47).
+> 5. Kein Gedankenstrich, kein Beisatz, kein Ausrufezeichen in der Farbzeile.
+> 6. Derselbe Rahmen auf jeder Karte: wiederkehrende Satzmuster entlasten schwächere
+>    Leser (Johnston 2000), und gelernt wird das englische Wort, nicht das deutsche.
+> 7. Die harte Grenze gilt weiter: ≤ 56 Zeichen. Zwei Farben: »Der Pinguin war
+>    schwarz-weiß. Gib ihm die Farben zurück.« (56).
+>
+> Personen (ch04) folgen demselben Rahmen; ob »war gelb« oder »trug Gelb« bei Menschen
+> natürlicher ist, entscheidet Koki mit der ch04-Bahn (D-991). Kein Tor prüft die Stimme —
+> die Regel lebt hier und im Sprach-Pass jeder Kapitel-Bahn.
+
 **Die harten Grenzen** (Maschinen-geprüft, nicht Ermessen):
 - **≤ 56 Zeichen** — und zwar **genau** für `showsDe`, `storyDe`, `colourAskDe`
   (`MAX_LINE_DE`, geprüft in `check-game-tasks.mjs`). ≤ 78 für einen
