@@ -1,0 +1,4 @@
+Use your built-in image generation tool (image_gen) in EDIT mode with the referenced image c02_ref.png in this folder. Do not write code to draw it; the image must come from the image tool. After it is generated, copy the resulting PNG into this folder as c02_edit_1.png and print its absolute path and pixel size. Nothing else.
+
+Edit prompt for the image tool:
+"Edit this hand-painted storybook zoo sign. Remove ONLY the blue balloon with the number 8 and its string in the upper right. Fill that spot with the same cream painted board texture that surrounds it, as if the balloon had never been there. Keep everything else exactly identical: the same size and position of every frame, the small giraffe silhouette, the big giraffe silhouette in the gold frame, the NOW sign, the small colour giraffe, the empty frame with the dashed outline, the wooden posts, stones and leaves, same colours and brushwork. No new objects, no text changes."

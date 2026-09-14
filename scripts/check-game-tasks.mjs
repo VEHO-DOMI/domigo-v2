@@ -246,6 +246,9 @@ const fail = (where, msg) => {
 let words = new Set();
 let phrases = [];
 let proper = new Set();
+// welle-035 · D-1009: the lexicons of the EARLIER units of the same grade — read
+// only for typed `accept` variants, never for the model answer (see checkEnAccept).
+let earlier = { units: [], words: new Set(), phrases: [], proper: new Set() };
 // L0c · P2 (D-877): woGEGEN gerade geerdet wird. Die Meldung nannte hart
 // »MORE! 1 Unit 1«, auch wenn das Kapitel Unit 4 lehrt — ein Kind-Autor las
 // daraus, sein Wort stehe nicht in Unit 1, und suchte an der falschen Stelle.
@@ -256,6 +259,7 @@ const loadUnitRegisters = (cx) => {
   words = new Set(lex.words.map((w) => w.toLowerCase()));
   phrases = lex.phrases.map((x) => x.toLowerCase());
   proper = new Set(lex.properNouns.map((w) => w.toLowerCase()));
+  earlier = earlierUnitLexicons(cx.lexiconPath);
   wordbank = cx.wordbankPath && fs.existsSync(cx.wordbankPath)
     ? JSON.parse(fs.readFileSync(cx.wordbankPath, "utf8")).entries : [];
   structureIds = cx.grammarPath && fs.existsSync(cx.grammarPath)
@@ -264,13 +268,29 @@ const loadUnitRegisters = (cx) => {
 };
 const FREE = new Set(["oh", "ssh", "psst", "wow", "hey", "but", "now", "do", "too", "yes", "no"]);
 const tokens = (en) => (String(en).toLowerCase().match(/[a-zäöüß'-]+/gi) ?? []).filter((t) => t.length > 0);
-function grounded(tokRaw, extra) {
+function grounded(tokRaw, extra, ws = words, pn = proper) {
   const tok = tokRaw.toLowerCase();
-  if (words.has(tok) || proper.has(tok) || extra.has(tok)) return true;
-  if (tok.endsWith("ies") && words.has(tok.slice(0, -3) + "y")) return true;
-  if (tok.endsWith("es") && words.has(tok.slice(0, -2))) return true;
-  if (tok.endsWith("s") && (words.has(tok.slice(0, -1)) || proper.has(tok.slice(0, -1)))) return true;
+  if (ws.has(tok) || pn.has(tok) || extra.has(tok)) return true;
+  if (tok.endsWith("ies") && ws.has(tok.slice(0, -3) + "y")) return true;
+  if (tok.endsWith("es") && ws.has(tok.slice(0, -2))) return true;
+  if (tok.endsWith("s") && (ws.has(tok.slice(0, -1)) || pn.has(tok.slice(0, -1)))) return true;
   return false;
+}
+/** `u02-lexicon.json` → the lexicons of u01 in the same folder (every uNN below). */
+function earlierUnitLexicons(lexiconPath) {
+  const out = { units: [], words: new Set(), phrases: [], proper: new Set() };
+  const m = /u(\d+)-lexicon\.json$/.exec(lexiconPath ?? "");
+  if (!m) return out;
+  const dir = path.dirname(lexiconPath), n = Number(m[1]);
+  for (const f of fs.readdirSync(dir).filter((x) => /^u\d+-lexicon\.json$/.test(x)).sort()) {
+    if (Number(/^u(\d+)/.exec(f)[1]) >= n) continue;
+    const l = JSON.parse(fs.readFileSync(path.join(dir, f), "utf8"));
+    out.units.push(l.unit ?? f);
+    for (const w of l.words) out.words.add(w.toLowerCase());
+    for (const x of l.phrases) out.phrases.push(x.toLowerCase());
+    for (const w of l.properNouns) out.proper.add(w.toLowerCase());
+  }
+  return out;
 }
 function checkEn(where, en) {
   if (!en) return;
@@ -278,6 +298,25 @@ function checkEn(where, en) {
   const enLow = String(en).toLowerCase();
   for (const p of phrases) if (enLow.includes(p)) for (const t of tokens(p)) extra.add(t);
   for (const t of tokens(en)) if (!FREE.has(t) && !grounded(t, extra)) fail(where, `EN token not in the unit lexicon of ${erdungsQuelle}: "${t}" (in "${en}")`);
+}
+// welle-035 · D-1009 · DIE FREIE ANTWORT DARF, WAS DAS KIND SCHON KANN.
+// Die Nach-Pruefung ch02 liess zwei blinde Loeser die Einladung an den Loewen
+// (d09) frei schreiben: »Come with us!« und »Come to us!« — richtiges Englisch,
+// beide waeren rot gestempelt worden, weil `come` in Unit 1 steht und nicht in
+// Unit 2. Ein Kind im zweiten Kapitel hat Unit 1 aber gelernt. Also darf eine
+// `accept`-Variante Woerter der eigenen ODER einer frueheren Unit derselben
+// Schulstufe tragen (Koki 14.09.). Die Musterantwort `answer` bleibt streng an der
+// eigenen Unit — sie ist das, was die Karte lehrt. Was in KEINER Unit steht
+// (»Join us!«), bleibt draussen und in D-1002: das ist kein Buchwort.
+function checkEnAccept(where, en) {
+  if (!en) return;
+  const extra = new Set();
+  const enLow = String(en).toLowerCase();
+  for (const p of [...phrases, ...earlier.phrases]) if (enLow.includes(p)) for (const t of tokens(p)) extra.add(t);
+  for (const t of tokens(en)) {
+    if (FREE.has(t) || grounded(t, extra) || grounded(t, extra, earlier.words, earlier.proper)) continue;
+    fail(where, `EN token not in the unit lexicon of ${erdungsQuelle} nor in an earlier unit (${earlier.units.join(", ") || "keine"}): "${t}" (in accept "${en}")`);
+  }
 }
 // PK-R3b: the ban list moved into content-schema (registerErrorsDe) so the LEVEL
 // laws can apply the identical rule to the Regel-Seiten' authored German — a
@@ -482,16 +521,14 @@ function giveawayFailures(t, deGloss, declaredFields) {
   const out = [];
   const deciding = decidingWordsOf(t);
   const scaffold = scaffoldFieldsOf(t);
-  for (const { field, text, de } of firstSightOf(t)) {
-    if (!text) continue;
-    if (declaredFields.has(field)) continue;
+  const decidingSet = new Set(deciding);
+  const scan = (field, text, de) => {
     // 18a · the same-language leak
     for (const w of deciding) {
       if (hasWord(text, w)) out.push({ law: "18a", field, detail: `giveaway: the deciding answer word "${w}" already stands in ${field} — "${text}"` });
     }
-    if (!de || scaffold.has(field)) continue;
+    if (!de) return;
     // 18b · the German equivalent of the answer
-    const decidingSet = new Set(deciding);
     for (const [deWord, ens] of deGloss) {
       if (!hasWord(text, deWord)) continue;
       for (const en of ens) {
@@ -501,7 +538,22 @@ function giveawayFailures(t, deGloss, declaredFields) {
         }
       }
     }
+  };
+  for (const { field, text, de } of firstSightOf(t)) {
+    if (!text) continue;
+    if (declaredFields.has(field)) continue;
+    scan(field, text, de && !scaffold.has(field));
   }
+  // R306 (GG-DomiGo, Nach-Pruefung ch02, 2026-09-13) · DIE LEITER ENDET VOR DER
+  // SCHREIBWEISE. Die Hinweis-Leiter bleibt frei (Koki 2026-08-14, Punkt 2 oben) —
+  // fuer Wahl-, Zuordnungs- und Rueckruf-Karten ist das zweite Wort die Hilfe. Eine
+  // Buchstabier-Karte fragt aber nicht die Bedeutung, sondern die SCHREIBWEISE:
+  // »Das ist mein Ticket.« zu `ticket` diktiert die Loesung Buchstabe fuer
+  // Buchstabe, und »Das ist ein Zug.« zu `train` nimmt dem Kind das Erinnern ab,
+  // das die Karte ueben soll. Also gilt bei `kind: spell` fuer `hints.deWord`
+  // 18a UND 18b, ohne Familien-Ausnahme: der Hinweis umschreibt die Bedeutung,
+  // ohne das Wort. `deDesc` bleibt frei (er beschreibt schon ohne Wort).
+  if (t.kind === "spell" && t.hints?.deWord) scan("hints.deWord", t.hints.deWord, true);
   // 18e · the guardian's board
   if (t.evidence) {
     const allowed = new Set(boardAllowanceOf(t).flatMap((s) => tokens(s)));
@@ -719,7 +771,7 @@ function checkItem(chId, t) {
   checkEn(w, t.promptEn);
   switch (t.kind) {
     case "choice": t.options.forEach((o) => checkEn(w, o)); checkEn(w, t.answer); break;
-    case "typed": checkEn(w, t.answer); (t.accept ?? []).forEach((a) => checkEn(w, a)); break;
+    case "typed": checkEn(w, t.answer); (t.accept ?? []).forEach((a) => checkEnAccept(w, a)); break;
     case "spell": checkEn(w, t.answer); break;
     // PK-R6 · F: `shown` is grounded too. On a word-to-digit wheel the ring is
     // digits, so `values` and `answer` carry NO English at all — the datum the
@@ -1440,6 +1492,93 @@ if (process.argv.includes("--selftest")) {
   console.log(`check-game-tasks --selftest: photo-portrait OK — ${cases.length} cases`);
 }
 
+// ── SELFTEST · portrait-scene (welle-035, Nach-Prüfung ch02) ─────────────────
+// `portraitSceneError` grants a scene card the skip past every portrait rule.
+// Until now it was tampered only with throwaway scripts; a later refactor could
+// break it silently. One green case per serving role (stage · classmate · zoo
+// lion) on real ch02 data, and one red case per refusal, each matched to its
+// EXACT message — a red light for the wrong reason does not count.
+if (process.argv.includes("--selftest")) {
+  const cx = CHAPTERS.find(c => c.chapter === "ch02" && c.hasTasks);
+  if (!cx?.level) throw new Error("portrait-scene selftest needs real ch02 with its level");
+  const items = GameTasksFileV2.parse(JSON.parse(fs.readFileSync(cx.tasksPath, "utf8"))).items;
+  const byId = id => {
+    const t = items.find(x => x.id === `g1.paint.ch02.${id}`);
+    if (!t) throw new Error(`portrait-scene selftest lost ch02.${id} — the fixture moved, adjust the probe`);
+    return t;
+  };
+  const stage = byId("a07"), mate = byId("b12"), lion = byId("d01");
+  const run = (original, edit = () => {}) => {
+    const task = structuredClone(original), level = structuredClone(cx.level);
+    const entity = allPhasesOf(level).filter(ph => task.phases?.includes(ph.id))
+      .flatMap(ph => ph.entities).find(e => e.id === task.sceneRef.entityId);
+    if (!entity) throw new Error(`portrait-scene fixture lost the serving entity of ${task.id}`);
+    edit({ task, level, entity });
+    captured = [];
+    try { checkPortraits(cx.tasksPath, [task], { ...cx, level }); return captured; }
+    finally { captured = null; }
+  };
+  const says = msg => m => m.length === 1 && m[0].endsWith(`portrait-scene: ${msg}`);
+  const green = m => m.length === 0;
+  const beatOf = (entity, id) => entity.params.stageV2.beats.find(b => b.taskIds.includes(id));
+  const cases = [
+    ["stage card a07 is served", run(stage), green],
+    ["classmate card b12 is served", run(mate), green],
+    ["zoo-lion card d01 is served", run(lion), green],
+    ["no level means no named beat", (() => { captured = []; try { checkPortraits(cx.tasksPath, [structuredClone(stage)], { ...cx, level: undefined }); return captured; } finally { captured = null; } })(),
+      says("no named observed beat/view")],
+    ["missing beat id", run(stage, ({ task }) => { delete task.sceneRef.beatId; }), says("no named observed beat/view")],
+    ["unknown entity", run(stage, ({ task }) => { task.sceneRef.entityId = "nobody"; }), says("scene entity is missing or ambiguous in the card phases")],
+    ["duplicate entity id", run(stage, ({ level, entity }) => {
+      const ph = allPhasesOf(level).find(p => p.entities.includes(entity)); ph.entities.push({ ...structuredClone(entity) }); }),
+      says("scene entity is missing or ambiguous in the card phases")],
+    ["foreign skin", run(stage, ({ task }) => { task.skins = ["pinguin"]; }), says("scene entity does not match the bound skin")],
+    ["stimulus view differs", run(stage, ({ task }) => { task.stimulus = { type: "scene", altDe: "Der Papagei sitzt am Auto.", viewId: "other" }; }),
+      says("stimulus and reference views differ")],
+    ["classmate wrong station", run(mate, ({ task }) => { task.sceneRef.station = 1; }), says("classmate scene is not a served awakening round")],
+    ["classmate not required", run(mate, ({ task, entity }) => {
+      entity.params.taskSequenceV2.requiredIds = entity.params.taskSequenceV2.requiredIds.filter(id => id !== task.id); }),
+      says("classmate scene is not a served awakening round")],
+    ["drained entity serves no snapshot", run(stage, ({ entity }) => { entity.role = "drained"; }), says("entity does not serve named scene snapshots")],
+    ["guardian of another mode", run(lion, ({ entity }) => { entity.params.guardian.mode = "x"; }), says("entity does not serve named scene snapshots")],
+    ["stage card absent from its sequence", run(stage, ({ task, entity }) => {
+      const seq = entity.params.taskSequenceV2; const out = id => id !== task.id;
+      seq.requiredIds = (seq.requiredIds ?? []).filter(out); seq.variantIds = (seq.variantIds ?? []).filter(out);
+      seq.reserveSlots = (seq.reserveSlots ?? []).filter(s => s.taskId !== task.id); }),
+      says("scene card is absent from its serving sequence")],
+    ["beat view rebound", run(stage, ({ task, entity }) => { beatOf(entity, task.id).viewId = "other"; }), says("scene beat/view does not bind this card")],
+    ["beat bound twice", run(stage, ({ task, entity }) => { entity.params.stageV2.beats.push(structuredClone(beatOf(entity, task.id))); }),
+      says("scene beat/view does not bind this card")],
+  ];
+  let bad = 0;
+  for (const [name, messages, ok] of cases) { const pass = ok(messages); if (!pass) bad++;
+    console.log(`  ${pass ? "✓" : "✗"} portrait-scene · ${name}${pass ? "" : ` → ${JSON.stringify(messages)}`}`); }
+  if (bad) { console.error(`check-game-tasks --selftest: ${bad} portrait-scene case(s) did not bite`); process.exit(1); }
+  console.log(`check-game-tasks --selftest: portrait-scene OK — ${cases.length} cases`);
+}
+
+// ── SELFTEST · accept-Varianten und fruehere Units (welle-035 · D-1009) ──────
+if (process.argv.includes("--selftest")) {
+  const cx = CHAPTERS.find(c => c.chapter === "ch02" && c.lexiconPath && fs.existsSync(c.lexiconPath));
+  if (!cx) throw new Error("accept selftest needs ch02 with its u02 lexicon");
+  loadUnitRegisters(cx);
+  if (words.has("come") || !earlier.words.has("come") || earlier.words.has("join") || words.has("join")) {
+    throw new Error("accept selftest assumes come ∈ u01 \\ u02 and join ∉ u01/u02 — the lexicons moved, adjust the probe");
+  }
+  const said = (fn, en) => { captured = []; try { fn("self.accept", en); return captured; } finally { captured = null; } };
+  const cases = [
+    ["accept may use an earlier unit (»come« from Unit 1)", said(checkEnAccept, "Come with us!"), m => m.length === 0],
+    ["accept with a word from no unit stays red (»join«)", said(checkEnAccept, "Join us!"), m => m.length === 1 && m[0].includes('"join"')],
+    ["the model answer stays strict to its own unit", said(checkEn, "Come with us!"), m => m.length === 1 && m[0].includes('"come"')],
+    ["an earlier unit never leaks into a LATER one (u02 reads u01, not u03)", [earlier.units.join(",")], m => m[0] === "g1-u01"],
+  ];
+  let bad = 0;
+  for (const [name, messages, ok] of cases) { const pass = ok(messages); if (!pass) bad++;
+    console.log(`  ${pass ? "✓" : "✗"} accept-units · ${name}${pass ? "" : ` → ${JSON.stringify(messages)}`}`); }
+  if (bad) { console.error(`check-game-tasks --selftest: ${bad} accept-units case(s) did not bite`); process.exit(1); }
+  console.log(`check-game-tasks --selftest: accept-units OK — ${cases.length} cases`);
+}
+
 // ── SELFTEST · layer 19 (own block, own red light) ──────────────────────────
 // House rule: a gate that has never been seen going red is a claim. Layer 19 is
 // two laws, so it gets two traitors — and, because a tamper that changes nothing
@@ -1576,6 +1715,9 @@ if (process.argv.includes("--selftest")) {
   const card = (over) => ({ id: "self.1", use: "encounter", kind: "choice", storyDe: "Sag es ihr!", stimulus: { type: "entity", showsDe: "Ein Ding steht da" }, ...over });
   const laws = (t, fields = new Set()) => giveawayFailures(t, DE_GLOSS, fields).map((e) => e.law);
   const detail = (t) => giveawayFailures(t, DE_GLOSS, new Set()).map((e) => e.detail).join(" | ");
+  /** R306: a rescue spell card shaped like the three in ch02 (a15 · b18 · c13). */
+  const spellCard = (over) => card({ use: "rescue", kind: "spell", form: "name-it", storyDe: "Wie heißt das Ding im Käfig?",
+    stimulus: { type: "entity", showsDe: "Im Käfig liegt etwas Flaches." }, promptEn: "What is it?", extraLetters: "xy", ...over });
   /** Run the family hygiene over one restore card and hand back what it SAID —
    *  the messages, not a count.
    *
@@ -1703,6 +1845,23 @@ if (process.argv.includes("--selftest")) {
     // ── PB-15: the pair that separates right from plausibly-wrong. Same card,
     //    same German, same answer — only the distractors change. ──
     ["…and the SAME card goes red once the distractors stop sharing it", laws(card({ ...sharedWord, options: ["Clean the board!", "Sit down!", "Close the window!"] })), (l) => l.includes("18b")],
+    // ── R306 (welle-035): die Buchstabier-Karte, deren zweiter Hinweis die Loesung
+    //    sagt. Rot in BEIDEN Sprachen, gruen mit Umschreibung, und die Leiter aller
+    //    anderen Arten bleibt frei (derselbe Hinweis auf einer Wahl-Karte). ──
+    ["R306 · spell · deWord spells the answer (»Das ist mein Tablet.« zu `tablet`)",
+      laws(spellCard({ answer: "tablet", hints: { deDesc: "Du tippst mit dem Finger darauf.", deWord: "Das ist mein Tablet." } })),
+      (l) => l.includes("18a")], // ein Lehnwort ist beides: gleiche Schreibweise (18a) und Glosse (18b)
+    ["R306 · spell · deWord says the German for the answer (»Tafel« zu `board`)",
+      laws(spellCard({ answer: "board", hints: { deDesc: "Sie hängt vorne an der Wand.", deWord: "Das ist die Tafel." } })),
+      (l) => l.length === 1 && l[0] === "18b"],
+    ["R306 · the finding names its field", [detail(spellCard({ answer: "board", hints: { deWord: "Das ist die Tafel." } }))],
+      (d) => d[0].includes("hints.deWord")],
+    ["NON-TAMPER · R306 · spell with a meaning-only deWord stays silent",
+      laws(spellCard({ answer: "board", hints: { deDesc: "Sie hängt vorne an der Wand.", deWord: "Darauf schreibt die Lehrerin mit Kreide." } })),
+      (l) => l.length === 0],
+    ["NON-TAMPER · R306 · the same deWord on a choice card stays free (Koki 2026-08-14)",
+      laws(card({ options: ["It's a board.", "It's a door.", "It's a chair."], answer: "It's a board.", hints: { deDesc: "Sie hängt vorne an der Wand.", deWord: "Das ist die Tafel." } })),
+      (l) => l.length === 0],
   ];
 
   failures = 0;

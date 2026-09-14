@@ -572,7 +572,7 @@
       ],
       "hints": {
         "deDesc": "Das Papier brauchst du, um in den Zoo zu kommen.",
-        "deWord": "Das ist mein Ticket."
+        "deWord": "Du zeigst es an der Kasse, dann darfst du hinein."
       },
       "grounding": "SB 17, Cotswold Wildlife Park poster; use the pictured park activity. Captive picture: admission ticket silhouette, no written noun.",
       "answer": "ticket",
@@ -831,7 +831,7 @@
         "showsDe": "Im Rahmen siehst du Fell und kräftige Löwenpfoten.",
         "art": "affe_count_b03"
       },
-      "storyDe": "Was siehst du auf dem nächsten Bild?",
+      "storyDe": "Was siehst du auf dem Bild?",
       "promptEn": "How many lions?",
       "skins": [
         "affe"
@@ -1489,7 +1489,7 @@
       ],
       "hints": {
         "deDesc": "Schau, wie die Wagen zusammenhängen.",
-        "deWord": "Das ist ein Zug."
+        "deWord": "Es fährt auf Schienen von Bahnhof zu Bahnhof."
       },
       "grounding": "SB 17, Cotswold Wildlife Park poster; use the pictured park activity. Painted captive train; scale-model vignette, not a full railway inside the cage.",
       "answer": "train",
@@ -1811,10 +1811,10 @@
         "deDesc": "Schau, welche Giraffe zum leeren Rahmen gehört.",
         "deWord": "Wo ist die große Giraffe jetzt?"
       },
-      "grounding": "SB 16, zoo story; authored zoo view, no copied dialogue. Authored large/small comparison and changed current view. ART ORDER: Comparison silhouettes establish two giraffe sizes. Larger silhouette is highlighted, its matching current place-frame is empty and marked NOW; completed age icon excludes an age query.",
+      "grounding": "SB 16, zoo story; authored zoo view, no copied dialogue. Authored large/small comparison and changed current view. ART ORDER: Comparison silhouettes establish two giraffe sizes. Larger silhouette is highlighted, its matching current place-frame is empty and marked NOW; the painted size comparison excludes a size question (Is the big giraffe small?); the age balloon was removed to leave one comparison and one question (D-1011, welle-035).",
       "options": [
         "Where is the big giraffe now?",
-        "How old is the big giraffe?",
+        "Is the big giraffe small?",
         "Where is the small giraffe now?"
       ],
       "answer": "Where is the big giraffe now?"
@@ -2272,7 +2272,7 @@
       ],
       "hints": {
         "deDesc": "Schau das graue, runde Ding im Käfig genau an.",
-        "deWord": "Das ist ein Stein."
+        "deWord": "Es ist hart und schwer und liegt oft am Weg."
       },
       "grounding": "SB 21 / WB 19 stone picture; no invented Stones video action.",
       "answer": "stone",
@@ -2309,7 +2309,7 @@
       "grounding": "WB 19/20 stone + beautiful; blue round stone, praise belongs to the child, not an objective taste score.",
       "options": [
         "The stone is beautiful.",
-        "The stone is brown.",
+        "The stone is green.",
         "The stone is long."
       ],
       "answer": "The stone is beautiful."
@@ -2844,7 +2844,7 @@
         "deDesc": "Schau zum Löwen und zum freien Platz bei der Gruppe.",
         "deWord": "Du bist bei uns im Zoo willkommen."
       },
-      "grounding": "SB 17, Cotswold Wildlife Park poster; use the pictured park activity. Welcome phrase expanded into authored invitation; full and short forms accepted. Open invitation: welcome to / welcome at and the natural shorter Welcome to the zoo are all valid. No penalty for optional terminal punctuation. Accepted corpus-grounded invitations also include You can talk to us, Do you want to talk to us and We want to talk to you. Other communicatively sound invitations outside the unit lexicon remain a rubric expansion for M-2/M-6; exact matching cannot cover all free English.",
+      "grounding": "SB 17, Cotswold Wildlife Park poster; use the pictured park activity. Welcome phrase expanded into authored invitation; full and short forms accepted. Open invitation: welcome to / welcome at and the natural shorter Welcome to the zoo are all valid. No penalty for optional terminal punctuation. Accepted corpus-grounded invitations also include You can talk to us, Do you want to talk to us and We want to talk to you. Invitations with come (Unit 1) are accepted too: an accept variant may use an earlier unit of the same grade, the model answer stays in Unit 2 (D-1009, welle-035). Other communicatively sound invitations outside every unit lexicon (Join us!) remain a rubric expansion for M-2/M-6 (D-1002); exact matching cannot cover all free English.",
       "answer": "You're welcome to the zoo.",
       "accept": [
         "You are welcome to the zoo.",
@@ -2865,7 +2865,19 @@
         "Do you want to talk to us?",
         "We want to talk to you.",
         "You can go to the zoo with us.",
-        "Do you want to go to the zoo with us?"
+        "Do you want to go to the zoo with us?",
+        "Come to the zoo!",
+        "Come with us!",
+        "Come to us!",
+        "Come here!",
+        "Come to the zoo with us!",
+        "Please come with us!",
+        "Please come to us!",
+        "Please come to the zoo!",
+        "You can come to the zoo.",
+        "You can come with us.",
+        "Do you want to come with us?",
+        "Do you want to come to the zoo?"
       ],
       "sceneRef": {
         "entityId": "p4-guardian",

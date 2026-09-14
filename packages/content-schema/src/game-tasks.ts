@@ -51,7 +51,7 @@ export type TaskStimulus = z.infer<typeof TaskStimulus>;
 
 export const TaskHints = z.object({
   deDesc: z.string().optional(), // shown at wrong-attempt 1 (the German description)
-  deWord: z.string().optional(), // shown at wrong-attempt 2 (the German word/tip)
+  deWord: z.string().optional(), // shown at wrong-attempt 2 (the German word/tip; on `kind: spell` a meaning-only tip WITHOUT the word — R306, check-game-tasks layer 18)
 });
 export type TaskHints = z.infer<typeof TaskHints>;
 

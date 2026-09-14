@@ -250,6 +250,36 @@ export const analyse = ({ levels, present, files, allow, today, deadCeiling, byt
 // (W5-Falle 4: ein Tamper, der zwei Groessen bewegt, wird am falschen Gesetz
 // rot und beweist ueber das gemeinte nichts). Der fuenfte Fall ist der
 // wichtigste: unverfaelscht muss der Stand gruen sein.
+// ── captive pairing, pure (welle-035) ────────────────────────────────────────
+// The law itself is explained at »THE CAPTIVE MUST SURVIVE ITS OWN CAGE« below.
+// Its chapter branch (#424) keys every mask by chapter and compares only pairs
+// INSIDE one chapter: ch01's tablet and a ch02 tablet are never the same cage
+// wall. It lives up here as two pure functions so `--selftest` can feed it
+// masks directly — before, the branch was tampered only with throwaway scripts.
+const CAPTIVE_MIN_SEPARATION_PX = 8;
+const captiveMaskKey = (chapter, key) => chapter + "/" + key;
+function captivePairing(masks) {
+  const keys = [...masks.keys()].sort();
+  let worst = { d: Infinity, pair: "" };
+  let comparedPairs = 0;
+  for (let i = 0; i < keys.length; i++) {
+    for (let j = i + 1; j < keys.length; j++) {
+      if (keys[i].split("/")[0] !== keys[j].split("/")[0]) continue;
+      comparedPairs++;
+      const p = masks.get(keys[i]);
+      const q = masks.get(keys[j]);
+      let d = 0;
+      for (let k = 0; k < p.a.length; k++) d += Math.abs(p.a[k] - q.a[k]);
+      if (d < worst.d) worst = { d, pair: `${keys[i]}/${keys[j]}` };
+    }
+  }
+  return { keys, comparedPairs, worst };
+}
+function captiveLegibilityFailures({ comparedPairs, worst }, H) {
+  if (comparedPairs === 0 || worst.d >= CAPTIVE_MIN_SEPARATION_PX) return [];
+  return [`captive legibility: at the ${H}px the engine draws a cage, "${worst.pair}" differ by only ${worst.d.toFixed(1)} px on screen (law: ${CAPTIVE_MIN_SEPARATION_PX}) — the cage is too small for the paint inside it (D-48)`];
+}
+
 if (process.argv.includes("--selftest")) {
   const welt = { levels, present, files, allow, today, deadCeiling: DEAD_ART_CEILING, bytesOfDead, alleKapitel, praesentJeKapitel };
   // ein Stem, den ein Level WIRKLICH verlangt und der WIRKLICH liegt — nicht geraten
@@ -347,6 +377,31 @@ if (process.argv.includes("--selftest")) {
       return { failures: good ? [] : ["HTML-Aufgabenbild wird nicht ordnergenau beansprucht"] };
     }, null],
 
+    // welle-035 · der Kapitel-Zweig der Gefangenen-Lesbarkeit (#424), mit
+    // eingespeisten Masken statt Blaettern von der Platte.
+    ["Gefangene: zwei gleiche Masken IN einem Kapitel werden rot", () => {
+      const m = { W: 2, H: 2, a: new Float64Array([1, 1, 0, 0]) };
+      const masks = new Map([[captiveMaskKey("ch02", "a"), m], [captiveMaskKey("ch02", "b"), m]]);
+      return { failures: captiveLegibilityFailures(captivePairing(masks), 2) };
+    }, `"ch02/a/ch02/b" differ by only 0.0 px`],
+
+    ["Gefangene: dieselbe Maske in zwei Kapiteln ist kein Paar", () => {
+      const m = { W: 2, H: 2, a: new Float64Array([1, 1, 0, 0]) };
+      const masks = new Map([[captiveMaskKey("ch01", "tablet"), m], [captiveMaskKey("ch02", "tablet"), m]]);
+      const pairing = captivePairing(masks);
+      const good = masks.size === 2 && pairing.comparedPairs === 0;
+      return { failures: good ? captiveLegibilityFailures(pairing, 2) : ["Kapitel-Schluessel verschmilzt oder vergleicht ueber Kapitel hinweg"] };
+    }, null],
+
+    ["Gefangene: getrennte Masken IN einem Kapitel werden verglichen und bleiben gruen", () => {
+      const W = 4, H = 4, voll = new Float64Array(W * H).fill(1), leer = new Float64Array(W * H);
+      const masks = new Map([[captiveMaskKey("ch03", "a"), { W, H, a: voll }], [captiveMaskKey("ch03", "b"), { W, H, a: leer }],
+        [captiveMaskKey("ch01", "a"), { W, H, a: voll }]]);
+      const pairing = captivePairing(masks);
+      const good = pairing.comparedPairs === 1 && pairing.worst.pair === "ch03/a/ch03/b" && pairing.worst.d === 16;
+      return { failures: good ? captiveLegibilityFailures(pairing, H) : [`Paarung falsch: ${JSON.stringify({ n: pairing.comparedPairs, worst: pairing.worst })}`] };
+    }, null],
+
     ["NICHT-TAMPER: der echte Stand ist gruen", () => analyse(welt), null],
   ];
 
@@ -378,7 +433,7 @@ if (process.argv.includes("--selftest")) {
     }
   }
   if (schlecht > 0) { console.error("check-paint-art --selftest: FEHLGESCHLAGEN"); process.exit(1); }
-  console.log(`check-paint-art --selftest: OK — ${faelle.length} Faelle, fuenf rote Lichter an der `
+  console.log(`check-paint-art --selftest: OK — ${faelle.length} Faelle, sechs rote Lichter an der `
     + `eingespeisten Stelle, der echte Stand gruen (Decke ${DEAD_ART_CEILING}; `
     + `Helden-Fall an ${tamperKapitel ?? "keinem Kapitel"} / ${tamperStem})`);
   process.exit(0);
@@ -458,7 +513,7 @@ for (const stem of [...fringeStems].sort()) {
 //
 // What it does NOT claim: that a child can name them. No script can measure
 // that; the blind critic does, and its verdict is the one that counts.
-const CAPTIVE_MIN_SEPARATION_PX = 8;
+// (CAPTIVE_MIN_SEPARATION_PX = 8 is declared with the pure pairing functions above the selftest.)
 
 /** Box-downscale a sheet's ALPHA to the drawn height — a silhouette's identity
  *  is its shape, and the shape is what the cage's size takes away. */
@@ -492,33 +547,21 @@ if (captiveCages.length > 0) {
   const H = entDisplayH({ role: "cage", skin: "satchel" });
   const masks = new Map();
   for (const { key, chapter } of captiveCages) {
-    const maskKey = chapter + "/" + key;
+    const maskKey = captiveMaskKey(chapter, key);
     if (masks.has(maskKey)) continue;
     const relative = chapterArtFiles(files.keys(), chapter).get(captiveStem(key));
     const file = relative ? files.get(relative) : undefined;
     if (!file) { fail(`captive "${key}" is declared by a cage but ${captiveStem(key)}.png is not on disk`); continue; }
     masks.set(maskKey, maskAt(readPng(file).png, H));
   }
-  const keys = [...masks.keys()].sort();
-  let worst = { d: Infinity, pair: "" };
-  let comparedPairs = 0;
-  for (let i = 0; i < keys.length; i++) {
-    for (let j = i + 1; j < keys.length; j++) {
-      if (keys[i].split("/")[0] !== keys[j].split("/")[0]) continue;
-      comparedPairs++;
-      const p = masks.get(keys[i]);
-      const q = masks.get(keys[j]);
-      let d = 0;
-      for (let k = 0; k < p.a.length; k++) d += Math.abs(p.a[k] - q.a[k]);
-      if (d < worst.d) worst = { d, pair: `${keys[i]}/${keys[j]}` };
-    }
-  }
+  const pairing = captivePairing(masks);
+  const { keys, comparedPairs, worst } = pairing;
   if (comparedPairs === 0) {
     console.log(`  captive legibility: ${keys.length} chapter-specific captives; no chapter has a pair to compare`);
-  } else if (worst.d < CAPTIVE_MIN_SEPARATION_PX) {
-    fail(`captive legibility: at the ${H}px the engine draws a cage, "${worst.pair}" differ by only ${worst.d.toFixed(1)} px on screen (law: ${CAPTIVE_MIN_SEPARATION_PX}) — the cage is too small for the paint inside it (D-48)`);
   } else {
-    console.log(`  captive legibility: ${captiveCages.length} cages · ${keys.length} captives at ${H}px · closest pair "${worst.pair}" differs by ${worst.d.toFixed(1)} px (law: ${CAPTIVE_MIN_SEPARATION_PX})`);
+    const legibility = captiveLegibilityFailures(pairing, H);
+    for (const f of legibility) fail(f);
+    if (legibility.length === 0) console.log(`  captive legibility: ${captiveCages.length} cages · ${keys.length} captives at ${H}px · closest pair "${worst.pair}" differs by ${worst.d.toFixed(1)} px (law: ${CAPTIVE_MIN_SEPARATION_PX})`);
   }
 } else {
   console.log("  captive legibility: no cage declares a captive — nothing measured");
