@@ -1,0 +1,97 @@
+/* Lauter Einser · Token-Quelle (Randnotiz) · Fassung 2026-09-13
+   Quelle: batch-le2/weiterentwicklung/randnotiz/design.css (sha256 af8d4f3e1179d85ce846c8ed7c4c6125ea43f08912a2d75eb5ec8d67763626cf),
+   eingefroren in RANDNOTIZ_FREEZE.json. Gepflegt von S2 · Research + Name. Apps vendorn diese Datei unverändert als
+   le-tokens.css und pinnen die sha256 aus tokens.json (Tor test:umbrella-tokens). Änderungen nur hier, danach neue sha256.
+   Regeln: Schulstufen sind zwei Skalare, nie Farben (die Stufe steht immer als Text daneben). Noten (--le-stamp-*) sind
+   keine Stufen und nie an Go-Farben gekoppelt. --le-margin nur für Linien, Rahmen, Fokus und Text ab 24px (siehe
+   ENTSCHEIDUNGEN.md). Schriftdateien (@font-face) liefert jede App selbst; hier stehen nur die Familien. */
+
+:root {
+  /* Dach = Grundwert ohne data-subject = Heftblau (die Randnotiz hat kein eigenes Neutralpapier) */
+  --le-paper-base: #eef4f8;
+  --le-paper-panel: #f8fbfd;
+  --le-ink: #20394a;
+  --le-muted: #506a79;
+  --le-line: #c2d5e0;
+  --le-margin: #9b4555;
+  --le-accent: #265e78;
+  --le-tint: #dceaf2;
+
+  /* Schulstufe: zwei Skalare */
+  --le-stage-base: #ffffff;
+  --le-stage-mix: 88%;
+  --le-grid-opacity: 0.53;
+  --le-paper: color-mix(in srgb, var(--le-paper-base) var(--le-stage-mix), var(--le-stage-base));
+  --le-line-spacing: 36px;
+
+  /* Notenstempel 1–5: eine Drucksprache, eine Tinte (alle fünf Stempel-SVGs tragen #98485c) */
+  --le-stamp-1: #98485c;
+  --le-stamp-2: #98485c;
+  --le-stamp-3: #98485c;
+  --le-stamp-4: #98485c;
+  --le-stamp-5: #98485c;
+
+  --le-focus-ring: var(--le-margin);
+
+  /* Schriften: Literata für Text und Bedienung; Atkinson Hyperlegible Bold nur für Anzeige (nie Bedienelemente, nie Namen) */
+  --le-font-text: "Literata", Georgia, "Times New Roman", serif;
+  --le-font-display: "Atkinson Hyperlegible", "Literata", Georgia, serif;
+  --le-font-display-weight: 700;
+
+  color-scheme: light;
+}
+
+:root[data-subject="english"] {
+  --le-paper-base: #eef4f8; --le-paper-panel: #f8fbfd; --le-ink: #20394a; --le-muted: #506a79;
+  --le-line: #c2d5e0; --le-margin: #9b4555; --le-accent: #265e78; --le-tint: #dceaf2;
+}
+:root[data-subject="math"] {
+  --le-paper-base: #edf5ef; --le-paper-panel: #f8fcf9; --le-ink: #253e35; --le-muted: #536e60;
+  --le-line: #b8d2c4; --le-margin: #936444; --le-accent: #356653; --le-tint: #dcece1;
+}
+:root[data-subject="german"] {
+  --le-paper-base: #f9f0f3; --le-paper-panel: #fff9fb; --le-ink: #4a2e3a; --le-muted: #775764;
+  --le-line: #dfc5d0; --le-margin: #93475d; --le-accent: #814157; --le-tint: #f0dfe6;
+}
+:root[data-subject="pup"] {
+  --le-paper-base: #f0eff7; --le-paper-panel: #faf9ff; --le-ink: #39364c; --le-muted: #66627b;
+  --le-line: #cecbe0; --le-margin: #80624f; --le-accent: #5d5978; --le-tint: #e3e0ef;
+}
+
+:root[data-stage="1"] { --le-grid-opacity: 0.35; --le-stage-mix: 55%; }
+:root[data-stage="2"] { --le-grid-opacity: 0.45; --le-stage-mix: 72%; }
+:root[data-stage="3"] { --le-grid-opacity: 0.53; --le-stage-mix: 88%; }
+:root[data-stage="4"] { --le-grid-opacity: 0.6; --le-stage-mix: 100%; }
+:root[data-stage="5"] { --le-grid-opacity: 0.3; --le-stage-mix: 80%; }
+
+/* Dunkel: vollständige Zweitdeklaration */
+html.dark {
+  --le-stage-base: #10191e;
+  --le-paper-base: #1d2d36; --le-paper-panel: #243742; --le-ink: #e6eff4; --le-muted: #b0c6d2;
+  --le-line: #435d6b; --le-margin: #bd8793; --le-accent: #b8d7e8; --le-tint: #2c414e;
+  /* Die Vorschau hellt die Stempel mit filter: brightness(1.7) auf; als Farbe gerechnet (sRGB, gekappt) = #ff7a9c */
+  --le-stamp-1: #ff7a9c; --le-stamp-2: #ff7a9c; --le-stamp-3: #ff7a9c; --le-stamp-4: #ff7a9c; --le-stamp-5: #ff7a9c;
+  color-scheme: dark;
+}
+html.dark[data-subject="english"] {
+  --le-paper-base: #1d2d36; --le-paper-panel: #243742; --le-ink: #e6eff4; --le-muted: #b0c6d2;
+  --le-line: #435d6b; --le-margin: #bd8793; --le-accent: #b8d7e8; --le-tint: #2c414e;
+}
+html.dark[data-subject="math"] {
+  --le-paper-base: #21342b; --le-paper-panel: #293e32; --le-ink: #e6efe9; --le-muted: #b5cbbd;
+  --le-line: #456452; --le-margin: #c3a187; --le-accent: #b9d6c5; --le-tint: #314939;
+}
+html.dark[data-subject="german"] {
+  --le-paper-base: #352730; --le-paper-panel: #40313b; --le-ink: #f3e8ee; --le-muted: #d2b8c6;
+  --le-line: #654b59; --le-margin: #c68c9e; --le-accent: #e8bbcd; --le-tint: #4a3642;
+}
+html.dark[data-subject="pup"] {
+  --le-paper-base: #2b2a38; --le-paper-panel: #353344; --le-ink: #eceaf4; --le-muted: #c4bed8;
+  --le-line: #565169; --le-margin: #c3a58f; --le-accent: #c7c1df; --le-tint: #3e3a50;
+}
+
+/* Bewegung: bei reduzierter Bewegung global aus */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}

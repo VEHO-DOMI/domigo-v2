@@ -163,6 +163,8 @@ jobs:
       - run: node --experimental-strip-types scripts/check-perf-budget.mjs # E5: die PERF_WAECHTER-Zahlen, der Code und die Vollstrecker müssen übereinstimmen
       - run: node scripts/check-fonts.mjs --selftest # E5: das rote Licht des Schrift-Wächters muss erreichbar sein
       - run: node scripts/check-fonts.mjs # E5/D-79: kein next/font/google — der Bau darf nicht davon abhängen, dass gstatic läuft
+      - run: node scripts/check-umbrella-tokens.mjs --selftest # BRAND-2 · srdp-069: jede Manipulation im Speicher muss genau ihre eigene Prüfung rot machen
+      - run: node scripts/check-umbrella-tokens.mjs # BRAND-2 · srdp-069: Dach-Tokens byte-gleich zur Quelle, Stufenfarben unberührt, /play ohne Dach-Zonen
       - run: node scripts/check-secrets.mjs --selftest # S1: vier Köder müssen rot werden UND sechs Beinahe-Treffer still bleiben
       - run: node scripts/check-secrets.mjs # S1: kein API-Schlüssel in einer getrackten Datei — die Historie behält, was einmal drin war
 

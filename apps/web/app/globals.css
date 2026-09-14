@@ -1,4 +1,10 @@
 @import "tailwindcss";
+/* BRAND-2 · srdp-069 · Die Dach-Schicht »Lauter Einser« liegt ÜBER DomiGos :root, nie statt ihm:
+   le-tokens.css ist eine byte-gleiche Kopie der Token-Quelle (sha256 gepinnt in
+   scripts/check-umbrella-tokens.mjs) und spricht nur --le-*; le-kopf.css trägt nur .le-*-Regeln.
+   Stufenfarben, :root und die drei [data-grade]-Blöcke darunter bleiben byte-gleich (dasselbe Tor). */
+@import "./le-tokens.css";
+@import "./le-kopf.css";
 
 /*
  * DomiGo design tokens — the brand design system, ported from the legacy trainers
@@ -104,28 +110,11 @@
   --logo-gradient: linear-gradient(140deg, #9b6dff, #c4a8f0 50%, #d4943a 90%);
 }
 
-.dark {
-  --bg:           #0b1120;
-  --bg-raised:    #182640;
-  --bg-sunken:    #121d30;
-  --rule:         rgba(100, 160, 255, 0.14);
-  --rule-strong:  rgba(100, 160, 255, 0.28);
-  --ink:          #eef0f6;
-  --ink-soft:     #b0bdd4;
-  --ink-mute:     #7e92ad;
-  --accent:       #3b82f6;
-  --accent-deep:  #1e63c4;
-  --accent-light: #60a5fa;
-  --accent-soft:  rgba(59, 130, 246, 0.16);
-  --accent-glow:  rgba(59, 130, 246, 0.25);
-  --correct:        #22c55e;
-  --correct-soft:   rgba(34, 197, 94, 0.18);
-  --incorrect:      #ef4444;
-  --incorrect-soft: rgba(239, 68, 68, 0.18);
-  --shadow-card:     0 2px 16px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(59, 130, 246, 0.10);
-  --shadow-elevated: 0 8px 32px rgba(0, 0, 0, 0.50), 0 0 0 1px rgba(59, 130, 246, 0.14);
-  --card-hover: rgba(140, 180, 255, 0.10);
-}
+/* BRAND-2 · srdp-069 · Hier stand ein `.dark`-Block (und unten `html.dark { color-scheme: dark; }`).
+   Entfernt, weil ihn nichts schaltete: kein Code setzt die Klasse `dark`, kein Tor und kein Test
+   liest ihn (repo-weit gegreppt, 14.09.). Er war zudem nicht stufen-bewusst — er hätte die vier
+   Stufenfarben mit einem einzigen Blau überschrieben. Ein DomiGo-Dunkelmodus käme als eigener
+   Schritt mit vier Stufen-Paletten; die Dach-Tokens tragen ihr eigenes `html.dark` schon mit. */
 
 @theme inline {
   --color-background: var(--bg);
@@ -138,7 +127,6 @@ html, body {
   color: var(--ink);
 }
 html { color-scheme: light; }
-html.dark { color-scheme: dark; }
 
 body {
   font-family: var(--font-body);
