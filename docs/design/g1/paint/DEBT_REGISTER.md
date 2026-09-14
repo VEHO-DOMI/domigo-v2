@@ -1,6 +1,7 @@
 # DEBT REGISTER — das bemalte Buch (R5, doc 45 H3)
 
 R295 reserviert für ch02 zusätzlich D-1000–1029 im Block L2-W2.
+R307 reserviert für ch04 zusätzlich D-1040–1069 im Block L4-W (zuerst D-886–889 verbrauchen). Nächster freier Bereich beginnt bei 1070 — neue Blöcke nur per Ruling.
 
 Jede Stelle, an der ein Platzhalter steht oder ein Befund bewusst NICHT in seinem
 Fund-PR behoben wurde, steht hier: Stelle · Zustand · erwartete Auflösung ·
@@ -1361,8 +1362,10 @@ ist eine Adresse, kein Versäumnis.
 
 Blöcke: **ch02 D-800…829 · ch03 D-830…859 · ch04 D-860…889 · ch05 D-890…919 ·
 ch06 D-920…949.** Der Level-1-Sitz hält D-950…979 (nicht hier).
+Zweitblöcke: **ch02 D-1000…1029** (`#### L2-W2`, R295/R307) · **ch04 D-1040…1069**
+(`#### L4-W`, R307). D-1030…1039 gehört Kapitel 1 (`L1-W36`, nicht hier).
 
-### LW · ch02 (D-800…829)
+### LW · ch02 (D-800…829 · D-1000…1029)
 #### L2-G
 **L2-P1 (2026-09-03, Level-2-Architekt; p1-Exemplar, PR `L2-P1:`).** Befunde des Kapitel-Sitzes aus Planung + Bau; je Befund führt die niedrigste Nummer (R253).
 
@@ -1485,9 +1488,9 @@ Nummernblock D-1000–1029 gemäß Trial-Mandat R295; Fortsetzung der ch02-Werks
 | D-856 | **Der Kamera-Handschlag von `shoot-world` kann einen leeren Gerüstraum nicht von einer toten Kamera unterscheiden.** Er verlangt zwei Aufnahmen mit verschiedenen Prüfsummen (P-66); in ch03 p2 — einem noch leeren L0-Gerüstraum — bewegt sich kein Pixel, und der Lauf endet mit »TOTE KAMERA«. Das ist kein Fehler des Werkzeugs, aber eine Falle für jede Bahn, die ein Vorher-Bild eines statischen Raums braucht: `--standbild` ist dort der einzige Weg, und das Bild trägt dann ausdrücklich keinen Kamerabeweis. | L3-M-a, 2026-09-05, zwei Läufe (Basis- und Bahn-Worktree) | Wissen; ggf. eine Handschlag-Variante, die eine bewusst bewegte Testfläche einblendet | offen (Wissen) | L3-M-a |
 #### L3-A
 
-### LW · ch04 (D-860…889)
+### LW · ch04 (D-860…889 · D-1040…1069)
 #### L4-G
-**L4-Planung + L4-G1 (2026-09-02/03; nachgetragen vom Programm-Architekten 2026-09-05, R280 — Quelle `PASSOVER_L4_2026-09-03.md` §2, `L4G1_REPORT_2026-09-03.md`).** Unterblöcke: Architekt 860–867 · G1 868–876 · T1 877–880 · M-a/M-b 881 + 886–889 (D-881 ist bereits vergeben, s. L4-T) · L4-S 882–885 (vergeben 08.09., R294).
+**L4-Planung + L4-G1 (2026-09-02/03; nachgetragen vom Programm-Architekten 2026-09-05, R280 — Quelle `PASSOVER_L4_2026-09-03.md` §2, `L4G1_REPORT_2026-09-03.md`).** Unterblöcke: Architekt 860–867 · G1 868–876 · T1 877–880 · M-a/M-b 881 + 886–889 (D-881 ist bereits vergeben, s. L4-T) · L4-S 882–885 (vergeben 08.09., R294) · Erweiterung W4 1040–1069 (`#### L4-W`, R307, 14.09.).
 
 | D | Befund | Beleg | Route | Status | Bahn |
 |---|---|---|---|---|---|
@@ -1534,6 +1537,13 @@ Nummernblock D-1000–1029 gemäß Trial-Mandat R295; Fortsetzung der ch02-Werks
 
 #### L4-M
 #### L4-A
+
+#### L4-W
+
+Nummernblock D-1040–1069 gemäß R307 (14.09.2026); Befunde der Werkstatt W4. Zuerst D-886–889 aus dem Stammblock verbrauchen.
+
+| D | Befund | Beleg | Stand/Fix | Status · Datum | Quelle |
+|---|---|---|---|---|---|
 
 ### LW · ch05 (D-890…919)
 #### L5-G
