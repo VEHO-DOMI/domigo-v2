@@ -773,7 +773,7 @@
    "kind": "choice",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Ihre Schulter ist leer. Sie schreibt einen Satz."
+    "showsDe": "Ihr Papagei fehlt. Sie schreibt einen Satz darüber."
    },
    "storyDe": "Ein Wort stimmt nicht. Wähl den Satz!",
    "options": [
