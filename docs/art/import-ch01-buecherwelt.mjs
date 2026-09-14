@@ -344,7 +344,7 @@ export function selftest() {
     for (let y = 0; y < 2; y++) for (let x = 0; x < 2; x++) put(p, x, y, [180, 40, 200, 127]);
     const before = Buffer.from(p.data);
     assert.equal(decontaminateMatte(p), null); assert.deepEqual(p.data, before);
-    assert.throws(() => decontaminateMatte(p, true), /TAMPER welle-040 · absichtlich gebrochen, wird im naechsten Commit zurueckgenommen/);
+    assert.throws(() => decontaminateMatte(p, true), /only explicit no-violet/);
     assert.throws(() => decontaminateMatte(p, "no-violet"), /no non-violet painted neighbour/);
     assert.deepEqual(p.data, before);
   });
