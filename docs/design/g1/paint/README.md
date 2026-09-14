@@ -130,11 +130,23 @@ Tore fragen.
 - **`draft:true` klammert GENAU FÜNF Gesetze aus** — nachgezählt im `!draft`-Block
   von `level.ts`, nicht aus dem Rahmen-Text übernommen (der sagte es zu weit):
   `phase-count` · `checkpoint-silent` · `cage-law` · `classmate-cage` ·
-  `classmate-pair`. **Die anderen 23 Gesetze laufen auch im Entwurf**, und
+  `classmate-pair`. **Die anderen 32 Gesetze laufen auch im Entwurf** (28 stehen
+  direkt in `checkLevelLaws`, dazu `cloth-honesty` · `cloth-reach` ·
+  `cloth-spacing` aus `clothLawFailures` und `stage-v2-script` aus
+  `stageV2LawErrors`; zusammen kann `checkLevelLaws` 37 verschiedene Gesetze
+  melden), und
   `content-levels.test.ts` fährt sie über jedes Level auf der Platte — also auch
   über deins, ab dem Tag, an dem du die Datei anlegst. Das ist Absicht: die
   ausgeklammerten fünf sind Aussagen über die VOLLSTÄNDIGKEIT eines Kapitels,
   alle anderen über die Spielbarkeit eines Raums, und die gilt sofort.
+- **Das Bühnen-Drehbuch (`stage-script`, `stage-sequence`) läuft ebenfalls im
+  Entwurf.** Zwischen #411 und #422 stand `stage-script` im `!draft`-Block und
+  war damit ein undokumentiertes sechstes ausgeklammertes Gesetz (D-824). #422
+  hat es hinter die schliessende Klammer gezogen — der Abschnitt ist aber noch
+  so eingerückt, als stünde er darin. Nachgezählt am 13.09. mit einer AST-Zählung
+  über `checkLevelLaws` (vor #422: 6 ausgeklammert, ab #422: 5) und einer
+  Probe: eine alte Bühne ohne `stageV2`, deren letzte Station in der Luft liegt,
+  ist mit und ohne `draft` rot.
 - **Kunst darf fehlen** (`check-paint-art` überspringt Entwürfe), und **Bänder
   auch** (`proof-tapes.test.ts` ebenso).
 - Die Route zeigt einen Entwurf in **jeder** Umgebung nur hinter der Lehrer-Tür.
