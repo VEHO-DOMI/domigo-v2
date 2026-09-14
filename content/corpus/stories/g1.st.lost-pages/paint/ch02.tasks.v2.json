@@ -831,7 +831,7 @@
         "showsDe": "Im Rahmen siehst du Fell und kräftige Löwenpfoten.",
         "art": "affe_count_b03"
       },
-      "storyDe": "Was siehst du auf dem nächsten Bild?",
+      "storyDe": "Was siehst du auf dem Bild?",
       "promptEn": "How many lions?",
       "skins": [
         "affe"
@@ -1811,10 +1811,10 @@
         "deDesc": "Schau, welche Giraffe zum leeren Rahmen gehört.",
         "deWord": "Wo ist die große Giraffe jetzt?"
       },
-      "grounding": "SB 16, zoo story; authored zoo view, no copied dialogue. Authored large/small comparison and changed current view. ART ORDER: Comparison silhouettes establish two giraffe sizes. Larger silhouette is highlighted, its matching current place-frame is empty and marked NOW; completed age icon excludes an age query.",
+      "grounding": "SB 16, zoo story; authored zoo view, no copied dialogue. Authored large/small comparison and changed current view. ART ORDER: Comparison silhouettes establish two giraffe sizes. Larger silhouette is highlighted, its matching current place-frame is empty and marked NOW; the painted size comparison excludes a size question (Is the big giraffe small?); the age balloon was removed to leave one comparison and one question (D-1011, welle-035).",
       "options": [
         "Where is the big giraffe now?",
-        "How old is the big giraffe?",
+        "Is the big giraffe small?",
         "Where is the small giraffe now?"
       ],
       "answer": "Where is the big giraffe now?"
@@ -2309,7 +2309,7 @@
       "grounding": "WB 19/20 stone + beautiful; blue round stone, praise belongs to the child, not an objective taste score.",
       "options": [
         "The stone is beautiful.",
-        "The stone is brown.",
+        "The stone is green.",
         "The stone is long."
       ],
       "answer": "The stone is beautiful."

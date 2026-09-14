@@ -1067,7 +1067,8 @@ export class Sim {
       const ref=task?.sceneRef;
       if(ref?.beatId && ref.viewId) {
         const cells=["awake_name","awake_happy","awake_from","awake_year","awake_group","awake_reunited"];
-        const cell=cells[req.ctx.round-1]!;
+        const cell=cells[req.ctx.round-1];
+        if(cell===undefined)throw new Error(`Sim: classmate ${source.id} round ${req.ctx.round} has no awakening cell (1..${cells.length})`);
         source.actingCell=cell;
         req={...req,sceneSnapshot:{entityId:source.id,beatId:ref.beatId,viewId:ref.viewId,round:req.ctx.round,
           view:{x:source.x/SUBS-80,y:source.y/SUBS-120,width:160,height:120},
