@@ -734,7 +734,7 @@ describe("checkLevelLaws", () => {
           name: "Zeit für die Schule — Das Schulhaus ohne Farbe",
           goalDe: "Der Tinten-Schatten hat dem Schulhaus die Farben genommen. Fünf stecken in Käfigen — mach sie alle wieder frei.",
           whyDe: "Das Buch versteht Englisch: Wer es richtig sagt, holt die Farbe zurück.",
-          hintsDe: ["Springen: SPACE — halten für höher!"],
+          hintsDe: ["Halt SPACE gedrückt, dann springst du höher!", "Ein graues Tier? Stell dich davor und drück Pfeil nach oben!"],
         }))).toEqual([]);
       });
     });

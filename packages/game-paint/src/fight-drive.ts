@@ -57,6 +57,10 @@ export interface FightReading {
   guardian: { state: string; x: number; y: number } | null;
   /** das Kind, in denselben Bildpunkten */
   hero: { x: number; y: number };
+  /** L0e · haelt sich das Kind gerade an einer Kante fest? (`pose === "hang"`,
+   *  das ist `player.ts#hangAt !== null` — `poseFor` leitet die Pose daraus ab).
+   *  Optional: ein Leser, der es nicht meldet, kann am Griff nicht halten. */
+  griff?: boolean;
 }
 
 /**
@@ -108,7 +112,16 @@ export type FightStopReason =
   /** der Shell schuldet eine Karte und liefert sie nicht — H5s Bild */
   | "stillstand"
   /** sie liegt zum Wischen bereit, und das Kind kommt nicht hin */
-  | "nicht-erreicht";
+  | "nicht-erreicht"
+  /** L0e · das Kind hat gerade eine Kante gegriffen (nur mit `haltAmGriff`) —
+   *  der Augenblick, den ein Griff-Foto braucht (L2-P1v2, Antrag R 5) */
+  | "griff";
+
+/** L0e · Wofuer ein Abschnitt ZUSAETZLICH anhalten soll. */
+export interface AdvanceOptions {
+  /** am ersten Takt anhalten, in dem das Kind eine Kante greift */
+  haltAmGriff?: boolean;
+}
 
 export interface FightStop {
   reason: FightStopReason;
@@ -156,7 +169,7 @@ export interface FightDriver {
   /** bis zum nächsten Wisch fahren — oder bis `maxTicks` verbraucht sind.
    *  Hält BEI einem Wisch an, damit ein stehender Augenblick fotografiert
    *  werden kann. */
-  advance: (maxTicks?: number) => Promise<FightStop>;
+  advance: (maxTicks?: number, opts?: AdvanceOptions) => Promise<FightStop>;
   /** der Lesestand, ohne einen Takt zu fahren */
   read: () => FightReading | null;
   /** die eigene Uhr der Welt wieder anlaufen lassen — für einen Aufrufer, der
@@ -223,7 +236,7 @@ export const createFightDriver = (s: FightSurfaces): FightDriver => {
     },
     read: () => s.read(),
     release: () => { s.thaw?.(); },
-    advance: async (maxTicks = Number.POSITIVE_INFINITY) => {
+    advance: async (maxTicks = Number.POSITIVE_INFINITY, opts: AdvanceOptions = {}) => {
       // Ab hier ist DAS BAND die einzige Taktquelle — siehe `freeze`.
       s.freeze?.();
       laengsteWarteMs = 0;
@@ -233,6 +246,9 @@ export const createFightDriver = (s: FightSurfaces): FightDriver => {
       /** Takte am Stück im Zugeh-Zweig — siehe `APPROACH_TICK_CAP`. */
       let zugegangen = 0;
       let vorher = s.read()?.knots ?? -1;
+      /** L0e: der Griff zaehlt als KANTE (nicht gegriffen → gegriffen), damit
+       *  ein Abschnitt, der am Griff beginnt, nicht sofort wieder anhaelt. */
+      let griffVorher = s.read()?.griff === true;
 
       while (spent < maxTicks) {
         const r = s.read();
@@ -296,6 +312,9 @@ export const createFightDriver = (s: FightSurfaces): FightDriver => {
         }
 
         const nach = s.read();
+        // Der Wisch ZUERST: faellt eine Schicht im selben Takt, in dem das Kind
+        // eine Kante greift, gewinnt der Wisch — sonst verschwaende er aus
+        // `wipes`, weil der naechste Abschnitt `vorher` neu liest (L0e-Review).
         if (nach !== null && vorher >= 0 && nach.knots < vorher) {
           wipes.push(nach.knots);
           vorher = nach.knots;
@@ -303,6 +322,11 @@ export const createFightDriver = (s: FightSurfaces): FightDriver => {
           return stop("wisch", wipes, cards, false);
         }
         if (nach !== null) vorher = nach.knots;
+        const griffJetzt = nach?.griff === true;
+        if (opts.haltAmGriff === true && griffJetzt && !griffVorher) {
+          return stop("griff", wipes, cards, cursor >= masks.length);
+        }
+        griffVorher = griffJetzt;
       }
       return stop("takte-auf", wipes, cards, cursor >= masks.length);
     },

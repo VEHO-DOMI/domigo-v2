@@ -37,6 +37,8 @@ import { askerIdOf } from "./sim.ts";
 // R5-W8 · S4 · R209d — der Kampf-Treiber (dev-only; das ganze Prüf-Handle steht
 // hinter `NODE_ENV !== "production"` und fällt im Produktionsbau weg).
 import { createFightDriver, type FightDriver } from "./fight-drive.ts";
+// L0e · K-1b.1 — der frame-freie Treiber (dev-only, dieselbe Grenze).
+import { createFrameFreeDriver, type FrameFreeDriver } from "./frame-free-drive.ts";
 import { InkWipe, PaintedCage, type CardAlign, alignedWrap, cageCellFor, cardBtn, freeCellsFor } from "./cards/CardShell.tsx";
 import { PAINT_OVERLAY_CSS } from "./cards/overlay-css.ts";
 import { PAINT_MOBILE_CSS } from "./mobile-css.ts";
@@ -174,6 +176,10 @@ interface HarnessApi {
   /** R5-W8 · S4 · R209d: der Kampf-Treiber — siehe die Erklärung an seiner
    *  Einbaustelle weiter unten (dev-only, wie der Rest dieses Handles). */
   fight: FightDriver;
+  /** L0e · K-1b.1: der frame-freie Treiber — fährt ein Band ohne
+   *  requestAnimationFrame und ohne Zeitgeber (verstecktes Browser-Pane).
+   *  Siehe `frame-free-drive.ts` und die Einbaustelle unten. */
+  drive: FrameFreeDriver;
 }
 
 /** R5-W1 · E1: the instrument's read seam. Present only behind the teacher
@@ -640,14 +646,20 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
    *  already unmounted. A set beats remembering: `later()` is the only way to
    *  schedule, and the effect's cleanup empties it. */
   const timersRef = useRef<Set<number>>(new Set());
+  /** L0e · …und WAS jeder davon tun wird — damit der frame-freie Treiber einen
+   *  aufgeschobenen Aufruf SOFORT ausführen kann, wo der Zeitgeber im
+   *  verborgenen Tab nicht feuert (K-1b.1). Nur lesend genutzt vom Prüf-Handle. */
+  const laterFnsRef = useRef<Map<number, () => void>>(new Map());
 
   /** setTimeout that cannot outlive the component. */
   const later = (fn: () => void, ms: number): number => {
     const id = window.setTimeout(() => {
       timersRef.current.delete(id);
+      laterFnsRef.current.delete(id);
       fn();
     }, ms);
     timersRef.current.add(id);
+    laterFnsRef.current.set(id, fn);
     return id;
   };
   const mountPhaseRef = useRef<((pid: string) => void) | null>(null);
@@ -1627,6 +1639,44 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
          * H5s dritter Anlauf (D-558). Bleibt die Karte trotzdem aus, meldet der
          * Treiber `reason: "stillstand"` statt zu hängen.
          */
+        // ── L0e · K-1b.1 · DER FRAME-FREIE TREIBER ─────────────────────────
+        // Im versteckten Pane gibt es keinen Frame und keinen Zeitgeber, der
+        // pünktlich feuert. Deshalb: ein GANZER Bildschritt (`game.step`,
+        // Rechnen und Zeichnen) auf eigener Uhr, die aufgeschobenen Aufrufe
+        // der Hülle sofort (`later` merkt sich dafür seine Funktion), und
+        // zwischen den Schritten eine MessageChannel-Runde für React — die
+        // wird im verborgenen Tab nicht gedrosselt.
+        drive: (() => {
+          let frameUhr = performance.now();
+          const kanal = new MessageChannel();
+          const warteschlange: Array<() => void> = [];
+          kanal.port1.onmessage = () => { warteschlange.shift()?.(); };
+          const runde = (): Promise<void> => new Promise((r) => { warteschlange.push(r); kanal.port2.postMessage(0); });
+          return createFrameFreeDriver({
+            press: hPress,
+            frame: () => { frameUhr += 1000 / 60; game.step(frameUhr, 1000 / 60); },
+            flushTimers: () => {
+              const offen = [...laterFnsRef.current.entries()];
+              for (const [id, fn] of offen) {
+                window.clearTimeout(id);
+                timersRef.current.delete(id);
+                laterFnsRef.current.delete(id);
+                fn();
+              }
+              return offen.length;
+            },
+            cardOpen: () => overlayRef.current !== null,
+            solveCard: hSolveTask,
+            read: () => {
+              const st = sceneRef.current?.getState();
+              return st ? { tick: st.tick, overlay: st.overlay, griff: st.pose === "hang" } : null;
+            },
+            // zwei Runden: eine für den Zustand, eine für React, das ihn zeichnet
+            settle: async () => { await runde(); await runde(); },
+            freeze: () => { game.loop.sleep(); },
+            thaw: () => { game.loop.wake(); },
+          });
+        })(),
         fight: createFightDriver({
           press: hPress,
           // ⚠ NICHT `hStep`: der weckt die Bildschirm-Schleife bei jedem Takt
@@ -1659,6 +1709,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
               tick: st.tick, knots: st.knots, knotsTotal: st.knotsTotal, wipeTeil: st.wipeTeil, overlay: st.overlay,
               guardian: g ? { state: g.state, x: g.x, y: g.y } : null,
               hero: { x: st.x, y: st.y },
+              griff: st.pose === "hang",
             };
           },
         }),
@@ -1683,6 +1734,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
       for (const id of timersRef.current) window.clearTimeout(id);
       for (const id of timersRef.current) window.clearInterval(id);
       timersRef.current.clear();
+      laterFnsRef.current.clear();
       if (startTimer !== null) window.clearInterval(startTimer);
       probe?.uninstall();
       delete window.__domigoPaintPerf;

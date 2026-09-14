@@ -200,6 +200,34 @@ const KUNST_FREILISTE = (() => {
   }
 })();
 
+// ── L0e · ZWEI SPERRKLINKEN (Koki 13.09.: der Bestand namentlich, jeder NEUE Fall rot)
+// Beide Befunde gehoeren einer anderen Bahn (D-985 → T2 je Kapitel, D-987 →
+// Kunst-Bahn); geurteilt wird dort. Dieses Tor sorgt nur dafuer, dass die Liste
+// nicht still waechst — und nicht still veraltet: ein Eintrag, der nicht mehr
+// zutrifft, ist rot, bis er hier gestrichen ist.
+/** D-985 · Politik-Klassen ohne Korpus-Gegenstueck (gemessen 13.09., 8). */
+export const D985_BESTAND = new Set([
+  "g1u03.x.colours", "g1u03.x.numbers-small",
+  "g1u04.x.colours", "g1u04.x.days",
+  "g1u05.x.instruments",
+  "g1u06.x.numbers", "g1u06.x.beweisstuecke", "g1u06.x.present-simple-verbs",
+]);
+/** D-987 · Karten, deren Kunst-Stem nur im Ordner eines FREMDEN Kapitels liegt
+ *  (gemessen 13.09., 14 — alle `door_a`, gemalt nur in ch01). */
+export const D987_BESTAND = new Set([
+  ...["d1", "d2", "d3", "d4", "d5", "d6"].map((d) => `g1.paint.ch03.door.p1.${d}`),
+  ...["p1.d1", "p1.d2", "p2.d1", "p3.d1", "p9.d1", "p1.d3"].map((d) => `g1.paint.ch05.door.${d}`),
+  "g1.paint.ch06.door.p1.exit", "g1.paint.ch06.door.p2.me1",
+]);
+const d985Gesehen = new Set();
+const d987Gesehen = new Set();
+/** …und WELCHE Units bzw. Kapitel ueberhaupt bis zu diesen Gesetzen kamen: ein
+ *  Kapitel ohne Karten-Datei (erlaubt, Entwurf) oder eines, das vorher an einem
+ *  anderen Fehler abbricht, hat seinen Bestand nicht bestaetigt — und nicht
+ *  WIDERLEGT. Veraltet heisst nur, was geprueft wurde und nicht zutraf. */
+const d985Units = new Set();
+const d987Kapitel = new Set();
+
 let failures = 0;
 /** When the selftest is driving, failures are COLLECTED instead of printed: a
  *  deliberate red light on stderr reads exactly like a real one, and the cases
@@ -1099,13 +1127,14 @@ function classPhotoPortraitError(task, level, painted) {
   return null;
 }
 
-function checkPortraits(file, items, cx) {
+function checkPortraits(file, items, cx, bestand = D987_BESTAND) {
   const w = path.basename(file);
   // L0c · P9: dieselbe Menge, die der Aufloeser diesem Kapitel gibt — nicht der
   // ganze Kunst-Baum. Ein Blatt im Ordner eines fremden Kapitels ist fuer dieses
   // hier nicht gemalt, auch wenn `paintedStems` es kennt.
   const gemalt = gemaltFuer(cx?.chapter ?? "ch01");
   const entwurf = cx?.draft === true;
+  if (cx?.chapter) d987Kapitel.add(cx.chapter);
   for (const t of items) {
     if (t.sceneRef?.beatId || t.sceneRef?.viewId || t.stimulus?.type === "scene") {
       const error = portraitSceneError(t, cx?.level);
@@ -1131,7 +1160,14 @@ function checkPortraits(file, items, cx) {
       // die Freiliste ist der einzige Weg daran vorbei (Only-Present unveraendert).
       const geduldet = KUNST_FREILISTE.get(stem);
       const nochGueltig = geduldet !== undefined && String(geduldet.until ?? "") >= TODAY;
-      if (entwurf) {
+      // L0e · D-987 · SPERRKLINKE: ein Stem, der NUR fuer ein fremdes Kapitel
+      // gemalt ist, ist keine Kunst, die spaeter kommt (D-880), sondern eine
+      // Karte, die ein Blatt verspricht, das ihr Kapitel nie laden kann.
+      const fremdGemalt = paintedStems.has(stem);
+      if (entwurf && fremdGemalt && !bestand.has(t.id)) {
+        fail(`${w}:${t.id}`, `portrait: Kunst-Stem "${stem}" liegt nur im Ordner eines fremden Kapitels — ${cx.chapter} laedt art/g1/paint/{hero,${cx.chapter}} und kann ihn nie zeigen. Blatt fuer ${cx.chapter} oder hero/ malen, oder stimulus.art streichen; der Bestand D-987 (D987_BESTAND) waechst nicht mehr (L0e)`);
+      } else if (entwurf) {
+        if (fremdGemalt) d987Gesehen.add(t.id);
         kunstBerichte.push(`${w}:${t.id}: Kunst-Stem "${stem}" ist fuer ${cx.chapter} nicht gemalt `
           + `(art/g1/paint/{hero,${cx.chapter}}) — berichtet, nicht rot: das Kapitel ist ein Entwurf`);
       } else if (!nochGueltig) {
@@ -1241,8 +1277,9 @@ function checkNoTwins(file, items) {
  *  The narrowing is policed rather than trusted: a policy class may be a subset
  *  of the corpus class, never wider. A policy word the unit does not teach is
  *  exactly the drift this layer exists to catch. */
-function checkExercisesExist(file, items, reg) {
+function checkExercisesExist(file, items, reg, bestand = D985_BESTAND) {
   const w = path.basename(file);
+  d985Units.add(String(reg.unitSlug ?? "").replace(/-/g, ""));
   for (const t of items) {
     for (const id of t.exercises ?? []) {
       const where = [];
@@ -1263,7 +1300,13 @@ function checkExercisesExist(file, items, reg) {
   const ohneKorpusklasse = [];
   for (const [id, policyWords] of reg.policyClasses) {
     const corpusWords = reg.corpusClasses.get(id);
-    if (corpusWords === undefined) { ohneKorpusklasse.push(id); continue; }
+    if (corpusWords === undefined) {
+      // L0e · D-985 · SPERRKLINKE: nur der gemessene Bestand bleibt ein
+      // namentlicher Skip; eine NEUE Klasse ohne Korpus-Gegenstueck ist rot.
+      if (bestand.has(id)) { d985Gesehen.add(id); ohneKorpusklasse.push(id); continue; }
+      fail(`${w}:${id}`, `19b · die Politik-Klasse "${id}" hat in content/corpus/units/${reg.unitSlug}/lexicon-classes.json kein Gegenstueck — das Verengungs-Gesetz haette nichts zu vergleichen. Korpus-Klasse anlegen oder die Politik-Zeile streichen; der Bestand D-985 (D985_BESTAND) waechst nicht mehr (L0e)`);
+      continue;
+    }
     const extra = policyWords.filter((x) => !corpusWords.has(x.toLowerCase()));
     if (extra.length > 0) {
       fail(`${w}:${id}`, `19b · the variety policy lets "${id}" answer [${extra.join(" · ")}], which the corpus class does not teach — a policy may narrow the corpus (grey is taught but never an answer), never widen it`);
@@ -1444,7 +1487,10 @@ if (process.argv.includes("--selftest")) {
     ["a corpus lexicon class resolves", run([card(["g1u01.x.colours"])]), (m) => m.length === 0],
     // a class the POLICY declares and the corpus does not is still a definition —
     // this is what keeps a class introducible from either side without a red day
-    ["a policy-only class resolves", run([card(["g1u01.x.politeness"])], reg({ corpusClasses: new Map(), policyClasses: new Map([["g1u01.x.politeness", ["please"]]]) })), (m) => m.length === 0],
+    // L0e · D-985: 19a loest sie weiterhin auf — aber 19b nennt sie jetzt beim
+    // Namen, weil sie nicht im gemessenen Bestand steht (Sperrklinke)
+    ["a policy-only class resolves (19a), and a NEW one outside D-985's list is red (19b)", run([card(["g1u01.x.politeness"])], reg({ corpusClasses: new Map(), policyClasses: new Map([["g1u01.x.politeness", ["please"]]]) })), (m) => m.length === 1 && /19b · .*politeness.*D-985/.test(m[0]) && !m.some((x) => /19a/.test(x))],
+    ["…and the SAME policy-only class stays a named skip once it stands in the list", (() => { captured = []; checkExercisesExist("ch01.tasks.v2.json", [card(["g1u01.x.politeness"])], reg({ corpusClasses: new Map(), policyClasses: new Map([["g1u01.x.politeness", ["please"]]]) }), new Set(["g1u01.x.politeness"])); const out = captured; captured = null; return out; })(), (m) => m.length === 0],
     // 19b, in BOTH directions — this is the pair that separates right from
     // plausibly-wrong: same class, same corpus, only the policy list moves
     ["a policy narrower than the corpus is fine", run([card(["g1u01.x.colours"])]), (m) => m.length === 0],
@@ -1461,6 +1507,30 @@ if (process.argv.includes("--selftest")) {
   }
   if (bad19 > 0) { console.error(`check-game-tasks --selftest: ${bad19} layer-19 case(s) did NOT bite`); process.exit(1); }
   console.log(`check-game-tasks --selftest: layer 19 OK — ${cases19.length} cases, both red lights seen, the real corpus still green`);
+}
+
+// ── L0e · D-987 · die Kunst-Sperrklinke, ein PAAR plus die D-880-Grenze ──────
+if (process.argv.includes("--selftest")) {
+  const entwurf = { chapter: "ch03", draft: true };
+  const tuer = (id, art = "door_a") => ({ id, kind: "choice", stimulus: { type: "entity", art }, skins: ["door"] });
+  const probe = (items, bestand) => { captured = []; checkPortraits("ch03.tasks.v2.json", items, entwurf, bestand); const out = captured; captured = null; return out; };
+  const cases987 = [
+    ["ein fremd gemaltes Blatt auf einer NEUEN Karte ist rot (Sperrklinke)", probe([tuer("self.neu")], new Set()), (m) => m.length === 1 && /D-987/.test(m[0])],
+    ["…dieselbe Karte im Bestand bleibt ein berichteter Posten", probe([tuer("self.neu")], new Set(["self.neu"])), (m) => m.length === 0],
+    ["NON-TAMPER · ein Blatt, das nirgends gemalt ist, bleibt D-880 (Kunst kommt spaeter) — nicht rot", probe([tuer("self.neu", "nirgends_gemalt_a")], new Set()), (m) => m.length === 0],
+  ];
+  if (!paintedStems.has("door_a") || gemaltFuer("ch03").has("door_a")) {
+    console.error("check-game-tasks --selftest: D-987-Faelle brauchen door_a in ch01 und NICHT in ch03 — der Bestand hat sich bewegt, Probe anpassen");
+    process.exit(1);
+  }
+  let bad987 = 0;
+  for (const [name, got, ok] of cases987) {
+    const pass = ok(got);
+    if (!pass) bad987++;
+    console.log(`  ${pass ? "✓" : "✗"} D-987 · ${name}${pass ? "" : ` → ${JSON.stringify(got)}`}`);
+  }
+  if (bad987 > 0) { console.error(`check-game-tasks --selftest: ${bad987} D-987 case(s) did NOT bite`); process.exit(1); }
+  console.log(`check-game-tasks --selftest: D-987 OK — ${cases987.length} cases`);
 }
 
 // User story pass: narrow restore-object coverage, with the unchanged hostile
@@ -1749,6 +1819,16 @@ if (kunstBerichte.length > 0) {
 // Abschluss-PR, der `draft` entfernt und die Dossiers oder die Kartendatei
 // vergisst, wäre hier still durchgegangen. `draft:true` bleibt der namentliche
 // Skip; ohne die Flagge ist dasselbe Fehlen ein Loch.
+// L0e · die Sperrklinken veralten nicht still: ein Bestands-Eintrag, der in
+// diesem Lauf nicht mehr zutraf, ist erledigt und muss aus der Liste.
+for (const id of D985_BESTAND) {
+  if (!d985Units.has(id.split(".")[0])) continue; // Unit nicht geprueft — weder bestaetigt noch widerlegt
+  if (!d985Gesehen.has(id)) fail("D985_BESTAND", `"${id}" hat inzwischen ein Korpus-Gegenstueck (oder keine Politik-Zeile mehr) — aus der Liste streichen, sonst deckt der Eintrag den naechsten Fall (D-985)`);
+}
+for (const id of D987_BESTAND) {
+  if (!d987Kapitel.has(id.split(".")[2])) continue; // Kapitel nicht geprueft — weder bestaetigt noch widerlegt
+  if (!d987Gesehen.has(id)) fail("D987_BESTAND", `"${id}" verspricht keine fremde Kunst mehr — aus der Liste streichen, sonst deckt der Eintrag den naechsten Fall (D-987)`);
+}
 for (const g of ledger.gaps()) {
   fail(g.split("/")[0], `${g.slice(g.indexOf("/") + 1)} — das Kapitel trägt KEINE draft-Flagge, ist also fertig: eine fehlende Eingabe ist hier ein Loch, keine Bauphase (D-792)`);
 }

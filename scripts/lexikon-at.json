@@ -56,6 +56,13 @@
       "verboten": [],
       "belegt": "lexikon",
       "bemerkung": "SPANNUNG, im Report an Fable gemeldet: die Wortbank glosst chair → [Stuhl, Sessel], K2s Lexikon führt »der Sessel« als AT-Erstwahl, die ratifizierte Insassen-Tabelle (STORY_SPINE_CH01 §2) sagt »der Stuhl«. Der Spine gewinnt, weil EIN Ding EIN Wort quer über alle Karten trägt; »Sessel« ist zulässige Zweitform, kein Verbot."
+    },
+    {
+      "kern": "violett",
+      "at": "violett",
+      "verboten": ["lila", "Lila"],
+      "belegt": "lexikon",
+      "bemerkung": "L0e · LEXIKON_AT.md:52 »Kein lila neben violett — es gilt violett.« Der Sprach-Pass L3 (05.09.) fand, dass dieses Tor die Regel nicht kannte: lila hätte eine Spielzeile unbemerkt erreicht. Die Wortbank u03 glosst purple → [lila, violett]; das ist die Korpus-Seite (G3) und bleibt."
     }
   ],
   "muster": [

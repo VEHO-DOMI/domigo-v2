@@ -186,6 +186,14 @@ if (selftest) {
     ["…und das artikellose Gleichnis, das die erste Fassung der Regel durchließ",
       registerFailures("„Ich war braun wie warmes Holz!“, brummt er.", "colourAskDe"),
       (f) => f.some((x) => x.law === "gleichnis-in-der-farbzeile")],
+    // L0e · LEXIKON_AT.md:52 — die Regel stand in der Prosa und nicht im Tor
+    // (Sprach-Pass L3, 05.09.): lila muss rot werden, violett grün bleiben.
+    ["lila neben violett — es gilt violett",
+      [...registerFailures("Polly hat lila Haare.", "showsDe"), ...registerFailures("Lila ist ihre Farbe.", "storyDe")],
+      (f) => f.length === 2 && f.every((x) => x.law === "lexikon" && x.detail.includes("violett"))],
+    ["NON-TAMPER · violett und ein Wort, das lila nur enthält, bleiben grün",
+      [...registerFailures("Polly mit den violetten Haaren.", "showsDe"), ...registerFailures("Die Lilaline ist ein Name.", "storyDe")],
+      (f) => f.length === 0],
     ["die Schweizer ss-Form",
       registerFailures("Auf Deutsch: Wie heisst du?", "hints.deWord"),
       (f) => f.some((x) => x.law === "schweizer-ss")],

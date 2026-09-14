@@ -923,6 +923,26 @@ if (process.argv.includes("--selftest")) {
       (f) => f.length === 0],
   );
 
+  // ── L0e · D-986 · der Hauptbuch-Differenz-Melder hatte keinen Selbsttest ──
+  // Ein PAAR: dieselbe Wortbank, dasselbe Hauptbuch, nur die Karte bewegt sich.
+  // (Der Bericht bleibt nicht-rot — warum, steht am Urteil unten.)
+  const buchProbe = (items) => {
+    const dir = fs.mkdtempSync(path.join(tmp, "buch-"));
+    const f = (n, o) => { const p = path.join(dir, n); fs.writeFileSync(p, JSON.stringify(o)); return p; };
+    return ledgerDifferenz({
+      chapter: "ch99", hasTasks: true, hasPolicy: true,
+      wordbankPath: f("wordbank.json", { entries: [{ id: "x.shirt", en: "shirt", forms: ["shirt"] }] }),
+      policyPath: f("policy.json", { vocabLedger: { "x.shirt": { cards: "offered", reason: "r", until: "2026-12-31" } } }),
+      tasksPath: f("tasks.json", { items }),
+    });
+  };
+  cases.push(
+    ["HAUPTBUCH · eine Ausnahme, die eine Karte längst einlöst, ist ein Befund (D-986)",
+      buchProbe([{ id: "k1", kind: "choice", answer: "shirt" }]), (f) => f.length === 1 && /laengst einloest/.test(f[0])],
+    ["HAUPTBUCH · …und dieselbe Ausnahme ohne einlösende Karte schweigt",
+      buchProbe([{ id: "k1", kind: "choice", answer: "socks" }]), (f) => f.length === 0],
+  );
+
   let bad = 0;
   for (const [name, got, ok] of cases) {
     const pass = ok(got);
@@ -1035,8 +1055,16 @@ for (const g of ledger.gaps()) {
 
 // L0c · P18: BERICHTET, mit Zahl — vor dem Urteil, damit ein roter Lauf sie
 // auch zeigt (L0-Lehre: eine Diagnose hinter dem Exit-Code ist keine Diagnose).
+// L0e · D-986 · BLEIBT BERICHTET, NICHT ROT — gemessen, nicht angenommen: die
+// 12 Eintraege vom 13.09. gestrichen, und `check-game-tasks` wird mit genau 12
+// Mal Gesetz 17a rot („exercised by no card and carries no ledger entry").
+// Dieses Tor liest »eine Karte loest das Wort ein« an der ANTWORT-Flaeche
+// (`saysWord`, trifft auch „can" in „can't"), `variety.ts` an der erklaerten
+// Uebung. Solange die zwei Lesarten auseinanderliegen, stuende ein Autor
+// zwischen zwei Toren, von denen jedes das Gegenteil verlangt. Rot erst, wenn
+// EINE Lesart gilt (Befund an GG, L0e-Bericht).
 if (differenzen.length > 0) {
-  console.log(`check-level-design: ${differenzen.length} Hauptbuch-Ausnahmen, die eine Karte laengst einloest (D-840, berichtet — nicht rot):`);
+  console.log(`check-level-design: ${differenzen.length} Hauptbuch-Ausnahmen, die eine Karte laengst einloest (D-840, berichtet — nicht rot, D-986):`);
   for (const d of differenzen) console.log(`  · ${d}`);
 }
 if (warnungen.length > 0) {

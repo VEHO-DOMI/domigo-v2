@@ -144,6 +144,55 @@ describe("R209d · der Treiber fährt dieselbe Kette und hält bei jedem Wisch",
   }, 60_000);
 });
 
+describe("L0e · haltAmGriff: der Abschnitt haelt am ersten Takt, in dem das Kind eine Kante greift", () => {
+  /** Eine Welt ohne Tafel: das Kind greift in Takt 5 eine Kante, laesst in
+   *  Takt 7 los und greift in Takt 9 wieder. Nur `griff` bewegt sich. */
+  const griffShell = (): FightSurfaces => {
+    let t = 0;
+    const griffe = new Set([5, 6, 9]);
+    return {
+      press: () => undefined,
+      step: () => { t++; },
+      cardOpen: () => false,
+      solveCard: () => false,
+      read: () => ({ tick: t, knots: 0, knotsTotal: 0, wipeTeil: 0, overlay: false, guardian: null, hero: { x: 0, y: 0 }, griff: griffe.has(t) }),
+    };
+  };
+  const band: Array<[number, number]> = [[12, 0]];
+
+  it("haelt an jeder GREIF-Kante (5 und 9), nicht an jedem Takt am Griff (6)", async () => {
+    const d = createFightDriver(griffShell());
+    d.load(band);
+    const a = await d.advance(undefined, { haltAmGriff: true });
+    expect([a.reason, a.played]).toEqual(["griff", 5]);
+    const b = await d.advance(undefined, { haltAmGriff: true });
+    expect([b.reason, b.played]).toEqual(["griff", 9]);
+    const c = await d.advance(undefined, { haltAmGriff: true });
+    expect(c.reason).toBe("band-ende");
+  });
+
+  it("faellt im Griff-Takt zugleich eine Schicht, gewinnt der WISCH (er darf nicht aus `wipes` verschwinden)", async () => {
+    let t = 0;
+    const d = createFightDriver({
+      press: () => undefined,
+      step: () => { t++; },
+      cardOpen: () => false,
+      solveCard: () => false,
+      read: () => ({ tick: t, knots: t >= 5 ? 1 : 2, knotsTotal: 2, wipeTeil: 0, overlay: false, guardian: null, hero: { x: 0, y: 0 }, griff: t >= 5 }),
+    });
+    d.load(band);
+    const a = await d.advance(undefined, { haltAmGriff: true });
+    expect([a.reason, a.played, a.wipes]).toEqual(["wisch", 5, [1]]);
+  });
+
+  it("…und OHNE die Option faehrt derselbe Lauf bis ans Bandende (Tamper: die Option traegt)", async () => {
+    const d = createFightDriver(griffShell());
+    d.load(band);
+    const a = await d.advance();
+    expect([a.reason, a.played]).toEqual(["band-ende", 12]);
+  });
+});
+
 // ── 3 · DIE GRENZE ───────────────────────────────────────────────────────────
 //
 // Ein Treiber, der `hp` setzt, beweist nichts. Diese Prüfung liest den

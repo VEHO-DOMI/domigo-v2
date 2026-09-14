@@ -8,9 +8,9 @@
   "goalDe": "Der Tinten-Schatten war im Zoo. Jedes Tier steht am falschen Platz, und die Schilder lügen.",
   "whyDe": "Sag, welches Tier wo ist. Dann darf das Tier wieder in sein Gehege.",
   "hintsDe": [
-    "Springen: SPACE — halten für höher!",
+    "Halt SPACE gedrückt, dann springst du höher!",
     "An Kanten hältst du dich fest. Mit SPACE springst du.",
-    "Ein graues Tier? Stell dich davor und drück ↑!"
+    "Ein graues Tier? Stell dich davor und drück Pfeil nach oben!"
   ],
   "collectNounDe": "Federn",
   "collectSkin": "feather",
