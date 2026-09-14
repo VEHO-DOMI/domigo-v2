@@ -145,25 +145,60 @@ for (const story of fs.existsSync(CONTENT) ? fs.readdirSync(CONTENT) : []) {
   }
 }
 
-const loaded = loadedArtClaims(levels, files.keys());
+/**
+ * welle-035 · DIE BYTE-ADDITION ALS REINE FUNKTION. Seit #424 zaehlt jede Phase die
+ * Kunst IHRES Kapitels (Held zuerst, der eigene Kapitelordner gewinnt) und Entwuerfe
+ * zaehlen mit; ein Stamm ohne Datei traegt 0 Byte bei. Der Zweig war nur mit
+ * Wegwerf-Skripten getampert — hier ist er fuetterbar (`sizeOf` statt `fs.statSync`),
+ * damit `--selftest` ihn dauerhaft rot sehen kann.
+ */
+function phaseArtBytes(levels, files, sizeOf) {
+  const claims = loadedArtClaims(levels, files.keys());
+  const rows = [];
+  for (const { level } of levels) {
+    const resolved = claims.byChapter.get(level.chapter);
+    const present = new Set(resolved.keys());
+    for (const ph of allScopePhases(level)) {
+      let bytes = 0;
+      for (const s of phaseArtScope(level, ph.id, present)) {
+        const f = files.get(resolved.get(s));
+        if (f !== undefined) bytes += sizeOf(f);
+      }
+      rows.push({ id: `${level.chapter}/${ph.id}`, draft: level.draft === true, mb: bytes / MB });
+    }
+  }
+  return { claims, rows };
+}
+const phaseArtFailures = (rows, limit) => rows.filter((r) => r.mb > limit)
+  .map((r) => `phase ${r.id}${r.draft ? " (draft)" : ""} loads ${r.mb.toFixed(3)} MB of art, over the ${limit} MB ceiling`);
+
+const { claims: loaded, rows: phaseRows } = phaseArtBytes(levels, files, (f) => fs.statSync(f).size);
 const phaseMbLimit = budgets.find((b) => b.key === "PHASE_ART_MB")?.limit ?? Infinity;
 const worst = { id: "—", mb: 0 };
-for (const { level } of levels) {
-  const resolved = loaded.byChapter.get(level.chapter);
-  const present = new Set(resolved.keys());
-  for (const ph of allScopePhases(level)) {
-    let bytes = 0;
-    for (const s of phaseArtScope(level, ph.id, present)) {
-      const f = files.get(resolved.get(s));
-      if (f !== undefined) bytes += fs.statSync(f).size;
-    }
-    const mb = bytes / MB;
-    if (mb > worst.mb) {
-      worst.mb = mb;
-      worst.id = `${level.chapter}/${ph.id}`;
-    }
-    if (mb > phaseMbLimit) fail(`phase ${level.chapter}/${ph.id}${level.draft ? " (draft)" : ""} loads ${mb.toFixed(3)} MB of art, over the ${phaseMbLimit} MB ceiling`);
-  }
+for (const r of phaseRows) if (r.mb > worst.mb) { worst.mb = r.mb; worst.id = r.id; }
+for (const msg of phaseArtFailures(phaseRows, phaseMbLimit)) fail(msg);
+
+// SELFTEST · dritter Fall (welle-035): der Kapitel-Zweig der Byte-Addition. Ein echtes
+// Level wird zweimal eingespeist, als ch01 und ch02; beide Kapitel haben DENSELBEN
+// Stamm im eigenen Ordner, ch02 (als Entwurf) schwer (40 MB), ch01 leicht (100 B). Richtig ist:
+// nur ch02-Phasen reissen die echte Decke. Wer wieder flach nach Stamm aufloest,
+// laesst ch01 die ch02-Datei zaehlen (oder umgekehrt) — dann ist das Licht falsch.
+let sawChapterBytes = false;
+if (selftest) {
+  const realLimit = BUDGETS.find((b) => b.key === "PHASE_ART_MB").limit;
+  const base = levels.find(({ level }) => level.chapter === "ch01") ?? levels[0];
+  const as = (chapter, draft) => ({ ...base, level: { ...structuredClone(base.level), chapter, draft } });
+  const twin = [as("ch01", false), as("ch02", true)]; // der Entwurf zaehlt mit (#424)
+  const firstPhase = allScopePhases(twin[0].level)[0].id;
+  const stem = [...phaseArtScope(twin[0].level, firstPhase, new Set())][0];
+  const fake = new Map([[`ch01/${stem}.png`, "fake:ch01"], [`ch02/${stem}.png`, "fake:ch02"]]);
+  const { rows } = phaseArtBytes(twin, fake, (f) => (f === "fake:ch02" ? 40 * MB : 100));
+  const msgs = phaseArtFailures(rows, realLimit);
+  const ch01 = rows.filter((r) => r.id.startsWith("ch01/")), ch02 = rows.filter((r) => r.id.startsWith("ch02/"));
+  sawChapterBytes = ch01.length > 0 && ch02.length === ch01.length
+    && ch01.every((r) => r.mb * MB === 100) && ch02.every((r) => r.mb === 40)
+    && msgs.length === ch02.length && msgs.every((m) => m.startsWith("phase ch02/") && m.includes("(draft)"));
+  console.log(`  ${sawChapterBytes ? "✓" : "✗"} Byte-Addition je Kapitel · Stamm ${stem} · ${msgs.length} rote Phase(n) nur im Entwurf ch02, ch01 zaehlt 100 B, fehlende Staemme 0 B`);
 }
 
 const deadCeiling = budgets.find((b) => b.key === "DEAD_ART_CEILING")?.limit ?? Infinity;
@@ -198,13 +233,17 @@ if (dead.length > deadLimit) {
 if (selftest) {
   const sawQuote = reported.some((m) => m.startsWith("PHASE_ART_MB:"));
   const sawDead = reported.some((m) => m.includes("painted files are loaded by nothing"));
-  if (sawQuote && sawDead) {
+  if (sawQuote && sawDead && sawChapterBytes) {
     console.log(`check-perf-budget SELFTEST: OK — beide roten Lichter brennen (${failures} failure(s): `
-      + "ein Budget gegen das Dokument verstellt, die Tot-Kunst-Decke unter den echten Stapel gesenkt)");
+      + "ein Budget gegen das Dokument verstellt, die Tot-Kunst-Decke unter den echten Stapel gesenkt) + die Byte-Addition je Kapitel an eingespeisten Groessen");
     process.exit(0);
   }
   if (!sawQuote) {
     console.error("✗ SELFTEST FAILED: PHASE_ART_MB was bent out of step with the guard document and this check stayed silent about it");
+  }
+  if (!sawChapterBytes) {
+    console.error("✗ SELFTEST FAILED: die Byte-Addition je Kapitel hat an eingespeisten Groessen falsch gezaehlt "
+      + "— ch01 und ch02 teilen sich eine Datei, oder ein fehlender Stamm zaehlt mit");
   }
   if (!sawDead) {
     console.error("✗ SELFTEST FAILED: die Tot-Kunst-Decke wurde unter den wirklich gemessenen Stapel gesenkt "

@@ -1440,6 +1440,71 @@ if (process.argv.includes("--selftest")) {
   console.log(`check-game-tasks --selftest: photo-portrait OK — ${cases.length} cases`);
 }
 
+// ── SELFTEST · portrait-scene (welle-035, Nach-Prüfung ch02) ─────────────────
+// `portraitSceneError` grants a scene card the skip past every portrait rule.
+// Until now it was tampered only with throwaway scripts; a later refactor could
+// break it silently. One green case per serving role (stage · classmate · zoo
+// lion) on real ch02 data, and one red case per refusal, each matched to its
+// EXACT message — a red light for the wrong reason does not count.
+if (process.argv.includes("--selftest")) {
+  const cx = CHAPTERS.find(c => c.chapter === "ch02" && c.hasTasks);
+  if (!cx?.level) throw new Error("portrait-scene selftest needs real ch02 with its level");
+  const items = GameTasksFileV2.parse(JSON.parse(fs.readFileSync(cx.tasksPath, "utf8"))).items;
+  const byId = id => {
+    const t = items.find(x => x.id === `g1.paint.ch02.${id}`);
+    if (!t) throw new Error(`portrait-scene selftest lost ch02.${id} — the fixture moved, adjust the probe`);
+    return t;
+  };
+  const stage = byId("a07"), mate = byId("b12"), lion = byId("d01");
+  const run = (original, edit = () => {}) => {
+    const task = structuredClone(original), level = structuredClone(cx.level);
+    const entity = allPhasesOf(level).filter(ph => task.phases?.includes(ph.id))
+      .flatMap(ph => ph.entities).find(e => e.id === task.sceneRef.entityId);
+    if (!entity) throw new Error(`portrait-scene fixture lost the serving entity of ${task.id}`);
+    edit({ task, level, entity });
+    captured = [];
+    try { checkPortraits(cx.tasksPath, [task], { ...cx, level }); return captured; }
+    finally { captured = null; }
+  };
+  const says = msg => m => m.length === 1 && m[0].endsWith(`portrait-scene: ${msg}`);
+  const green = m => m.length === 0;
+  const beatOf = (entity, id) => entity.params.stageV2.beats.find(b => b.taskIds.includes(id));
+  const cases = [
+    ["stage card a07 is served", run(stage), green],
+    ["classmate card b12 is served", run(mate), green],
+    ["zoo-lion card d01 is served", run(lion), green],
+    ["no level means no named beat", (() => { captured = []; try { checkPortraits(cx.tasksPath, [structuredClone(stage)], { ...cx, level: undefined }); return captured; } finally { captured = null; } })(),
+      says("no named observed beat/view")],
+    ["missing beat id", run(stage, ({ task }) => { delete task.sceneRef.beatId; }), says("no named observed beat/view")],
+    ["unknown entity", run(stage, ({ task }) => { task.sceneRef.entityId = "nobody"; }), says("scene entity is missing or ambiguous in the card phases")],
+    ["duplicate entity id", run(stage, ({ level, entity }) => {
+      const ph = allPhasesOf(level).find(p => p.entities.includes(entity)); ph.entities.push({ ...structuredClone(entity) }); }),
+      says("scene entity is missing or ambiguous in the card phases")],
+    ["foreign skin", run(stage, ({ task }) => { task.skins = ["pinguin"]; }), says("scene entity does not match the bound skin")],
+    ["stimulus view differs", run(stage, ({ task }) => { task.stimulus = { type: "scene", altDe: "Der Papagei sitzt am Auto.", viewId: "other" }; }),
+      says("stimulus and reference views differ")],
+    ["classmate wrong station", run(mate, ({ task }) => { task.sceneRef.station = 1; }), says("classmate scene is not a served awakening round")],
+    ["classmate not required", run(mate, ({ task, entity }) => {
+      entity.params.taskSequenceV2.requiredIds = entity.params.taskSequenceV2.requiredIds.filter(id => id !== task.id); }),
+      says("classmate scene is not a served awakening round")],
+    ["drained entity serves no snapshot", run(stage, ({ entity }) => { entity.role = "drained"; }), says("entity does not serve named scene snapshots")],
+    ["guardian of another mode", run(lion, ({ entity }) => { entity.params.guardian.mode = "x"; }), says("entity does not serve named scene snapshots")],
+    ["stage card absent from its sequence", run(stage, ({ task, entity }) => {
+      const seq = entity.params.taskSequenceV2; const out = id => id !== task.id;
+      seq.requiredIds = (seq.requiredIds ?? []).filter(out); seq.variantIds = (seq.variantIds ?? []).filter(out);
+      seq.reserveSlots = (seq.reserveSlots ?? []).filter(s => s.taskId !== task.id); }),
+      says("scene card is absent from its serving sequence")],
+    ["beat view rebound", run(stage, ({ task, entity }) => { beatOf(entity, task.id).viewId = "other"; }), says("scene beat/view does not bind this card")],
+    ["beat bound twice", run(stage, ({ task, entity }) => { entity.params.stageV2.beats.push(structuredClone(beatOf(entity, task.id))); }),
+      says("scene beat/view does not bind this card")],
+  ];
+  let bad = 0;
+  for (const [name, messages, ok] of cases) { const pass = ok(messages); if (!pass) bad++;
+    console.log(`  ${pass ? "✓" : "✗"} portrait-scene · ${name}${pass ? "" : ` → ${JSON.stringify(messages)}`}`); }
+  if (bad) { console.error(`check-game-tasks --selftest: ${bad} portrait-scene case(s) did not bite`); process.exit(1); }
+  console.log(`check-game-tasks --selftest: portrait-scene OK — ${cases.length} cases`);
+}
+
 // ── SELFTEST · layer 19 (own block, own red light) ──────────────────────────
 // House rule: a gate that has never been seen going red is a claim. Layer 19 is
 // two laws, so it gets two traitors — and, because a tamper that changes nothing
