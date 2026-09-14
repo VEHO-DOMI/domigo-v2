@@ -135,6 +135,9 @@ export default async function JoinPage({
       <p style={{ marginTop: 20, fontSize: 13, color: "var(--muted)" }}>
         Already joined? <Link href="/signin" style={{ color: "var(--accent)", fontWeight: 600 }}>Sign in here</Link>.
       </p>
+      <p style={{ marginTop: 8, fontSize: 13 }}>
+        <Link href="/datenschutz" style={{ color: "var(--text-secondary)" }}>Datenschutz</Link>
+      </p>
     </main>
   );
 }
