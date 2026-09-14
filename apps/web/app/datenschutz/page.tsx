@@ -10,6 +10,7 @@
 //   · on-device storage  → localStorage/sessionStorage writes in the game clients
 //   · removal            → roster-service.ts `removeStudent` deletes the v2 identity row only
 //   · teacher mail       → lib/mailer.ts (Brevo), studio probe → lib/studio-solve-sandbox.ts
+//   · attempt context    → api/attempts (server-set `trap`), api/assignments/attempt (`sessionId`)
 //   · processors' DPF    → U.S. register as read by S2 on 2026-09-13
 //   · function region    → lib/datenschutz.ts, equal to vercel.json (test-enforced)
 // Deliberately NOT said here: a legal basis (open, DSFA R-01 / gomarke-002), any
@@ -53,7 +54,7 @@ export default function DatenschutzPage() {
       <ul style={list}>
         <li><strong>Konto:</strong> dein selbst gewählter Spitzname, deine Klasse und deine 6-stellige PIN. Die PIN wird nur verschlüsselt gespeichert (bcrypt), niemand kann sie lesen. Konten aus der früheren DomiGo-Version liegen in derselben Datenbank und werden zum Anmelden weiter gelesen.</li>
         <li><strong>Echter Name:</strong> dein Name, wie ihn deine Lehrkraft in die Klassenliste einträgt. Er ist für deine Lehrkraft da, damit sie dich zuordnen kann.</li>
-        <li><strong>Üben:</strong> jede beantwortete Aufgabe mit Zeitpunkt, richtig oder falsch, wie lange du gebraucht hast, ob du einen Hinweis genommen hast, und technische Angaben zur Aufgabe, die dein Browser mitschickt.</li>
+        <li><strong>Üben:</strong> jede beantwortete Aufgabe mit Zeitpunkt, richtig oder falsch, wie lange du gebraucht hast, ob du einen Hinweis genommen hast, bei falschen Antworten die Art des Fehlers und bei Tests, zu welchem Durchgang die Antwort gehört.</li>
         <li><strong>Fortschritt:</strong> Punkte (XP), Serie, Wiederholungskarten, erledigte Schritte im Lernpfad mit Sternen.</li>
         <li><strong>Schreiben:</strong> Texte, die du schreibst und abgibst, mit Wortzahl sowie Punkten und Rückmeldung deiner Lehrkraft.</li>
         <li><strong>Tests und Aufgaben:</strong> wann du begonnen und abgegeben hast, die Zeit je Abschnitt, dein Ergebnis in Prozent und eine Note von 1 bis 5.</li>
@@ -71,7 +72,7 @@ export default function DatenschutzPage() {
       <h2 style={h2}>Daten von Lehrkräften</h2>
       <p>
         Spitzname, gegebenenfalls der echte Name, PIN (verschlüsselt), freiwillig eine E-Mail-Adresse, damit
-        eine vergessene PIN zurückgesetzt werden kann, und ein Protokoll der Änderungen am eigenen Konto.
+        eine vergessene PIN zurückgesetzt werden kann, ein Protokoll der Änderungen am eigenen Konto und die Zahl der Fehlversuche beim Anmelden und beim Zurücksetzen der PIN, gezählt je Spitzname.
       </p>
 
       <h2 style={h2}>Was auf deinem Gerät bleibt</h2>
@@ -99,7 +100,7 @@ export default function DatenschutzPage() {
 
       <h2 style={h2}>Beteiligte Dienste</h2>
       <ul style={list}>
-        <li><strong>Vercel Inc.</strong> (USA) — betreibt die Anwendung. Beim Aufruf einer Seite verarbeitet Vercel technisch deine IP-Adresse. Vercel Inc. ist nach dem EU-US Data Privacy Framework zertifiziert (Stand 2026-09-13).</li>
+        <li><strong>Vercel Inc.</strong> (USA) — betreibt die Anwendung. Beim Aufruf einer Seite verarbeitet Vercel technisch deine IP-Adresse und protokolliert die Zugriffe. Vercel Inc. ist nach dem EU-US Data Privacy Framework zertifiziert (Stand 2026-09-13).</li>
         <li><strong>Neon</strong> (USA) — Datenbank. Neon, LLC ist als Teil von Databricks, Inc. nach dem EU-US Data Privacy Framework zertifiziert (Stand 2026-09-13).</li>
         <li><strong>Brevo</strong> — verschickt E-Mails, aber nur an Lehrkräfte, die eine vergessene PIN zurücksetzen.</li>
         <li><strong>Anthropic PBC</strong> (USA) — Lehrkräfte können eine neue Aufgabe von einer KI probeweise lösen lassen, bevor Kinder sie bekommen. Dabei wird nur die Aufgabe übermittelt, <strong>keine Daten von Kindern</strong>. Die Übermittlung in die USA stützt sich laut Anthropic-Datenschutzerklärung auf Standardvertragsklauseln.</li>
