@@ -572,7 +572,7 @@
       ],
       "hints": {
         "deDesc": "Das Papier brauchst du, um in den Zoo zu kommen.",
-        "deWord": "Das ist mein Ticket."
+        "deWord": "Du zeigst es an der Kasse, dann darfst du hinein."
       },
       "grounding": "SB 17, Cotswold Wildlife Park poster; use the pictured park activity. Captive picture: admission ticket silhouette, no written noun.",
       "answer": "ticket",
@@ -1489,7 +1489,7 @@
       ],
       "hints": {
         "deDesc": "Schau, wie die Wagen zusammenhängen.",
-        "deWord": "Das ist ein Zug."
+        "deWord": "Er fährt auf Schienen von Bahnhof zu Bahnhof."
       },
       "grounding": "SB 17, Cotswold Wildlife Park poster; use the pictured park activity. Painted captive train; scale-model vignette, not a full railway inside the cage.",
       "answer": "train",
@@ -2272,7 +2272,7 @@
       ],
       "hints": {
         "deDesc": "Schau das graue, runde Ding im Käfig genau an.",
-        "deWord": "Das ist ein Stein."
+        "deWord": "Es ist hart und schwer und liegt oft am Weg."
       },
       "grounding": "SB 21 / WB 19 stone picture; no invented Stones video action.",
       "answer": "stone",

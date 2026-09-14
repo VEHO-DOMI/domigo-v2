@@ -482,16 +482,14 @@ function giveawayFailures(t, deGloss, declaredFields) {
   const out = [];
   const deciding = decidingWordsOf(t);
   const scaffold = scaffoldFieldsOf(t);
-  for (const { field, text, de } of firstSightOf(t)) {
-    if (!text) continue;
-    if (declaredFields.has(field)) continue;
+  const decidingSet = new Set(deciding);
+  const scan = (field, text, de) => {
     // 18a · the same-language leak
     for (const w of deciding) {
       if (hasWord(text, w)) out.push({ law: "18a", field, detail: `giveaway: the deciding answer word "${w}" already stands in ${field} — "${text}"` });
     }
-    if (!de || scaffold.has(field)) continue;
+    if (!de) return;
     // 18b · the German equivalent of the answer
-    const decidingSet = new Set(deciding);
     for (const [deWord, ens] of deGloss) {
       if (!hasWord(text, deWord)) continue;
       for (const en of ens) {
@@ -501,7 +499,22 @@ function giveawayFailures(t, deGloss, declaredFields) {
         }
       }
     }
+  };
+  for (const { field, text, de } of firstSightOf(t)) {
+    if (!text) continue;
+    if (declaredFields.has(field)) continue;
+    scan(field, text, de && !scaffold.has(field));
   }
+  // R306 (GG-DomiGo, Nach-Pruefung ch02, 2026-09-13) · DIE LEITER ENDET VOR DER
+  // SCHREIBWEISE. Die Hinweis-Leiter bleibt frei (Koki 2026-08-14, Punkt 2 oben) —
+  // fuer Wahl-, Zuordnungs- und Rueckruf-Karten ist das zweite Wort die Hilfe. Eine
+  // Buchstabier-Karte fragt aber nicht die Bedeutung, sondern die SCHREIBWEISE:
+  // »Das ist mein Ticket.« zu `ticket` diktiert die Loesung Buchstabe fuer
+  // Buchstabe, und »Das ist ein Zug.« zu `train` nimmt dem Kind das Erinnern ab,
+  // das die Karte ueben soll. Also gilt bei `kind: spell` fuer `hints.deWord`
+  // 18a UND 18b, ohne Familien-Ausnahme: der Hinweis umschreibt die Bedeutung,
+  // ohne das Wort. `deDesc` bleibt frei (er beschreibt schon ohne Wort).
+  if (t.kind === "spell" && t.hints?.deWord) scan("hints.deWord", t.hints.deWord, true);
   // 18e · the guardian's board
   if (t.evidence) {
     const allowed = new Set(boardAllowanceOf(t).flatMap((s) => tokens(s)));
@@ -1641,6 +1654,9 @@ if (process.argv.includes("--selftest")) {
   const card = (over) => ({ id: "self.1", use: "encounter", kind: "choice", storyDe: "Sag es ihr!", stimulus: { type: "entity", showsDe: "Ein Ding steht da" }, ...over });
   const laws = (t, fields = new Set()) => giveawayFailures(t, DE_GLOSS, fields).map((e) => e.law);
   const detail = (t) => giveawayFailures(t, DE_GLOSS, new Set()).map((e) => e.detail).join(" | ");
+  /** R306: a rescue spell card shaped like the three in ch02 (a15 · b18 · c13). */
+  const spellCard = (over) => card({ use: "rescue", kind: "spell", form: "name-it", storyDe: "Wie heißt das Ding im Käfig?",
+    stimulus: { type: "entity", showsDe: "Im Käfig liegt etwas Flaches." }, promptEn: "What is it?", extraLetters: "xy", ...over });
   /** Run the family hygiene over one restore card and hand back what it SAID —
    *  the messages, not a count.
    *
@@ -1768,6 +1784,23 @@ if (process.argv.includes("--selftest")) {
     // ── PB-15: the pair that separates right from plausibly-wrong. Same card,
     //    same German, same answer — only the distractors change. ──
     ["…and the SAME card goes red once the distractors stop sharing it", laws(card({ ...sharedWord, options: ["Clean the board!", "Sit down!", "Close the window!"] })), (l) => l.includes("18b")],
+    // ── R306 (welle-035): die Buchstabier-Karte, deren zweiter Hinweis die Loesung
+    //    sagt. Rot in BEIDEN Sprachen, gruen mit Umschreibung, und die Leiter aller
+    //    anderen Arten bleibt frei (derselbe Hinweis auf einer Wahl-Karte). ──
+    ["R306 · spell · deWord spells the answer (»Das ist mein Tablet.« zu `tablet`)",
+      laws(spellCard({ answer: "tablet", hints: { deDesc: "Du tippst mit dem Finger darauf.", deWord: "Das ist mein Tablet." } })),
+      (l) => l.includes("18a")], // ein Lehnwort ist beides: gleiche Schreibweise (18a) und Glosse (18b)
+    ["R306 · spell · deWord says the German for the answer (»Tafel« zu `board`)",
+      laws(spellCard({ answer: "board", hints: { deDesc: "Sie hängt vorne an der Wand.", deWord: "Das ist die Tafel." } })),
+      (l) => l.length === 1 && l[0] === "18b"],
+    ["R306 · the finding names its field", [detail(spellCard({ answer: "board", hints: { deWord: "Das ist die Tafel." } }))],
+      (d) => d[0].includes("hints.deWord")],
+    ["NON-TAMPER · R306 · spell with a meaning-only deWord stays silent",
+      laws(spellCard({ answer: "board", hints: { deDesc: "Sie hängt vorne an der Wand.", deWord: "Darauf schreibt die Lehrerin mit Kreide." } })),
+      (l) => l.length === 0],
+    ["NON-TAMPER · R306 · the same deWord on a choice card stays free (Koki 2026-08-14)",
+      laws(card({ options: ["It's a board.", "It's a door.", "It's a chair."], answer: "It's a board.", hints: { deDesc: "Sie hängt vorne an der Wand.", deWord: "Das ist die Tafel." } })),
+      (l) => l.length === 0],
   ];
 
   failures = 0;
