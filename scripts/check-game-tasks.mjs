@@ -246,6 +246,9 @@ const fail = (where, msg) => {
 let words = new Set();
 let phrases = [];
 let proper = new Set();
+// welle-035 · D-1009: the lexicons of the EARLIER units of the same grade — read
+// only for typed `accept` variants, never for the model answer (see checkEnAccept).
+let earlier = { units: [], words: new Set(), phrases: [], proper: new Set() };
 // L0c · P2 (D-877): woGEGEN gerade geerdet wird. Die Meldung nannte hart
 // »MORE! 1 Unit 1«, auch wenn das Kapitel Unit 4 lehrt — ein Kind-Autor las
 // daraus, sein Wort stehe nicht in Unit 1, und suchte an der falschen Stelle.
@@ -256,6 +259,7 @@ const loadUnitRegisters = (cx) => {
   words = new Set(lex.words.map((w) => w.toLowerCase()));
   phrases = lex.phrases.map((x) => x.toLowerCase());
   proper = new Set(lex.properNouns.map((w) => w.toLowerCase()));
+  earlier = earlierUnitLexicons(cx.lexiconPath);
   wordbank = cx.wordbankPath && fs.existsSync(cx.wordbankPath)
     ? JSON.parse(fs.readFileSync(cx.wordbankPath, "utf8")).entries : [];
   structureIds = cx.grammarPath && fs.existsSync(cx.grammarPath)
@@ -264,13 +268,29 @@ const loadUnitRegisters = (cx) => {
 };
 const FREE = new Set(["oh", "ssh", "psst", "wow", "hey", "but", "now", "do", "too", "yes", "no"]);
 const tokens = (en) => (String(en).toLowerCase().match(/[a-zäöüß'-]+/gi) ?? []).filter((t) => t.length > 0);
-function grounded(tokRaw, extra) {
+function grounded(tokRaw, extra, ws = words, pn = proper) {
   const tok = tokRaw.toLowerCase();
-  if (words.has(tok) || proper.has(tok) || extra.has(tok)) return true;
-  if (tok.endsWith("ies") && words.has(tok.slice(0, -3) + "y")) return true;
-  if (tok.endsWith("es") && words.has(tok.slice(0, -2))) return true;
-  if (tok.endsWith("s") && (words.has(tok.slice(0, -1)) || proper.has(tok.slice(0, -1)))) return true;
+  if (ws.has(tok) || pn.has(tok) || extra.has(tok)) return true;
+  if (tok.endsWith("ies") && ws.has(tok.slice(0, -3) + "y")) return true;
+  if (tok.endsWith("es") && ws.has(tok.slice(0, -2))) return true;
+  if (tok.endsWith("s") && (ws.has(tok.slice(0, -1)) || pn.has(tok.slice(0, -1)))) return true;
   return false;
+}
+/** `u02-lexicon.json` → the lexicons of u01 in the same folder (every uNN below). */
+function earlierUnitLexicons(lexiconPath) {
+  const out = { units: [], words: new Set(), phrases: [], proper: new Set() };
+  const m = /u(\d+)-lexicon\.json$/.exec(lexiconPath ?? "");
+  if (!m) return out;
+  const dir = path.dirname(lexiconPath), n = Number(m[1]);
+  for (const f of fs.readdirSync(dir).filter((x) => /^u\d+-lexicon\.json$/.test(x)).sort()) {
+    if (Number(/^u(\d+)/.exec(f)[1]) >= n) continue;
+    const l = JSON.parse(fs.readFileSync(path.join(dir, f), "utf8"));
+    out.units.push(l.unit ?? f);
+    for (const w of l.words) out.words.add(w.toLowerCase());
+    for (const x of l.phrases) out.phrases.push(x.toLowerCase());
+    for (const w of l.properNouns) out.proper.add(w.toLowerCase());
+  }
+  return out;
 }
 function checkEn(where, en) {
   if (!en) return;
@@ -278,6 +298,25 @@ function checkEn(where, en) {
   const enLow = String(en).toLowerCase();
   for (const p of phrases) if (enLow.includes(p)) for (const t of tokens(p)) extra.add(t);
   for (const t of tokens(en)) if (!FREE.has(t) && !grounded(t, extra)) fail(where, `EN token not in the unit lexicon of ${erdungsQuelle}: "${t}" (in "${en}")`);
+}
+// welle-035 · D-1009 · DIE FREIE ANTWORT DARF, WAS DAS KIND SCHON KANN.
+// Die Nach-Pruefung ch02 liess zwei blinde Loeser die Einladung an den Loewen
+// (d09) frei schreiben: »Come with us!« und »Come to us!« — richtiges Englisch,
+// beide waeren rot gestempelt worden, weil `come` in Unit 1 steht und nicht in
+// Unit 2. Ein Kind im zweiten Kapitel hat Unit 1 aber gelernt. Also darf eine
+// `accept`-Variante Woerter der eigenen ODER einer frueheren Unit derselben
+// Schulstufe tragen (Koki 14.09.). Die Musterantwort `answer` bleibt streng an der
+// eigenen Unit — sie ist das, was die Karte lehrt. Was in KEINER Unit steht
+// (»Join us!«), bleibt draussen und in D-1002: das ist kein Buchwort.
+function checkEnAccept(where, en) {
+  if (!en) return;
+  const extra = new Set();
+  const enLow = String(en).toLowerCase();
+  for (const p of [...phrases, ...earlier.phrases]) if (enLow.includes(p)) for (const t of tokens(p)) extra.add(t);
+  for (const t of tokens(en)) {
+    if (FREE.has(t) || grounded(t, extra) || grounded(t, extra, earlier.words, earlier.proper)) continue;
+    fail(where, `EN token not in the unit lexicon of ${erdungsQuelle} nor in an earlier unit (${earlier.units.join(", ") || "keine"}): "${t}" (in accept "${en}")`);
+  }
 }
 // PK-R3b: the ban list moved into content-schema (registerErrorsDe) so the LEVEL
 // laws can apply the identical rule to the Regel-Seiten' authored German — a
@@ -732,7 +771,7 @@ function checkItem(chId, t) {
   checkEn(w, t.promptEn);
   switch (t.kind) {
     case "choice": t.options.forEach((o) => checkEn(w, o)); checkEn(w, t.answer); break;
-    case "typed": checkEn(w, t.answer); (t.accept ?? []).forEach((a) => checkEn(w, a)); break;
+    case "typed": checkEn(w, t.answer); (t.accept ?? []).forEach((a) => checkEnAccept(w, a)); break;
     case "spell": checkEn(w, t.answer); break;
     // PK-R6 · F: `shown` is grounded too. On a word-to-digit wheel the ring is
     // digits, so `values` and `answer` carry NO English at all — the datum the
@@ -1516,6 +1555,28 @@ if (process.argv.includes("--selftest")) {
     console.log(`  ${pass ? "✓" : "✗"} portrait-scene · ${name}${pass ? "" : ` → ${JSON.stringify(messages)}`}`); }
   if (bad) { console.error(`check-game-tasks --selftest: ${bad} portrait-scene case(s) did not bite`); process.exit(1); }
   console.log(`check-game-tasks --selftest: portrait-scene OK — ${cases.length} cases`);
+}
+
+// ── SELFTEST · accept-Varianten und fruehere Units (welle-035 · D-1009) ──────
+if (process.argv.includes("--selftest")) {
+  const cx = CHAPTERS.find(c => c.chapter === "ch02" && c.lexiconPath && fs.existsSync(c.lexiconPath));
+  if (!cx) throw new Error("accept selftest needs ch02 with its u02 lexicon");
+  loadUnitRegisters(cx);
+  if (words.has("come") || !earlier.words.has("come") || earlier.words.has("join") || words.has("join")) {
+    throw new Error("accept selftest assumes come ∈ u01 \\ u02 and join ∉ u01/u02 — the lexicons moved, adjust the probe");
+  }
+  const said = (fn, en) => { captured = []; try { fn("self.accept", en); return captured; } finally { captured = null; } };
+  const cases = [
+    ["accept may use an earlier unit (»come« from Unit 1)", said(checkEnAccept, "Come with us!"), m => m.length === 0],
+    ["accept with a word from no unit stays red (»join«)", said(checkEnAccept, "Join us!"), m => m.length === 1 && m[0].includes('"join"')],
+    ["the model answer stays strict to its own unit", said(checkEn, "Come with us!"), m => m.length === 1 && m[0].includes('"come"')],
+    ["an earlier unit never leaks into a LATER one (u02 reads u01, not u03)", [earlier.units.join(",")], m => m[0] === "g1-u01"],
+  ];
+  let bad = 0;
+  for (const [name, messages, ok] of cases) { const pass = ok(messages); if (!pass) bad++;
+    console.log(`  ${pass ? "✓" : "✗"} accept-units · ${name}${pass ? "" : ` → ${JSON.stringify(messages)}`}`); }
+  if (bad) { console.error(`check-game-tasks --selftest: ${bad} accept-units case(s) did not bite`); process.exit(1); }
+  console.log(`check-game-tasks --selftest: accept-units OK — ${cases.length} cases`);
 }
 
 // ── SELFTEST · layer 19 (own block, own red light) ──────────────────────────

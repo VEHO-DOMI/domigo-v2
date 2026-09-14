@@ -2844,7 +2844,7 @@
         "deDesc": "Schau zum Löwen und zum freien Platz bei der Gruppe.",
         "deWord": "Du bist bei uns im Zoo willkommen."
       },
-      "grounding": "SB 17, Cotswold Wildlife Park poster; use the pictured park activity. Welcome phrase expanded into authored invitation; full and short forms accepted. Open invitation: welcome to / welcome at and the natural shorter Welcome to the zoo are all valid. No penalty for optional terminal punctuation. Accepted corpus-grounded invitations also include You can talk to us, Do you want to talk to us and We want to talk to you. Other communicatively sound invitations outside the unit lexicon remain a rubric expansion for M-2/M-6; exact matching cannot cover all free English.",
+      "grounding": "SB 17, Cotswold Wildlife Park poster; use the pictured park activity. Welcome phrase expanded into authored invitation; full and short forms accepted. Open invitation: welcome to / welcome at and the natural shorter Welcome to the zoo are all valid. No penalty for optional terminal punctuation. Accepted corpus-grounded invitations also include You can talk to us, Do you want to talk to us and We want to talk to you. Invitations with come (Unit 1) are accepted too: an accept variant may use an earlier unit of the same grade, the model answer stays in Unit 2 (D-1009, welle-035). Other communicatively sound invitations outside every unit lexicon (Join us!) remain a rubric expansion for M-2/M-6 (D-1002); exact matching cannot cover all free English.",
       "answer": "You're welcome to the zoo.",
       "accept": [
         "You are welcome to the zoo.",
@@ -2865,7 +2865,19 @@
         "Do you want to talk to us?",
         "We want to talk to you.",
         "You can go to the zoo with us.",
-        "Do you want to go to the zoo with us?"
+        "Do you want to go to the zoo with us?",
+        "Come to the zoo!",
+        "Come with us!",
+        "Come to us!",
+        "Come here!",
+        "Come to the zoo with us!",
+        "Please come with us!",
+        "Please come to us!",
+        "Please come to the zoo!",
+        "You can come to the zoo.",
+        "You can come with us.",
+        "Do you want to come with us?",
+        "Do you want to come to the zoo?"
       ],
       "sceneRef": {
         "entityId": "p4-guardian",
