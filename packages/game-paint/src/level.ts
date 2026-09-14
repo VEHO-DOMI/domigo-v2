@@ -1502,7 +1502,6 @@ export const checkLevelLaws = (level: PaintLevel): LawFailure[] => {
         failures.push({ phase: m.p.id, law: "classmate-pair", detail: `classmate ${m.e.id} points at "${cageId}", which is not a person-cage in this chapter` });
       }
     }
-  }
 
     // ── L2-M-a · R249 · DAS BUEHNEN-DREHBUCH ─────────────────────────────
     // Eine Buehne ohne Drehbuch ist ein Wesen, das im Nichts steht und nie
@@ -1528,15 +1527,6 @@ export const checkLevelLaws = (level: PaintLevel): LawFailure[] => {
           failures.push({ phase: ph.id, law: "stage-script", detail: `stage ${at} names no propSkin — there is nothing to be behind or in front of` });
         }
         const zellen = st.stations.map((s) => ({ c: e.c + s.dc, r: e.r + s.dr }));
-        if (e.params?.taskSequence !== undefined) {
-          const seq = e.params.taskSequence;
-          if (!Array.isArray(seq) || seq.length === 0 || seq.some((n) => !Number.isInteger(n) || n < 0 || n >= st.stations.length)) {
-            failures.push({ phase: ph.id, law: "stage-sequence", detail: `stage ${at} taskSequence must name existing whole-number station indices` });
-          }
-          if (Array.isArray(seq) && new Set(seq).size !== seq.length) {
-            failures.push({ phase: ph.id, law: "stage-sequence", detail: `stage ${at} taskSequence repeats a station — one witnessed state may ask once` });
-          }
-        }
         for (const [i, z] of zellen.entries()) {
           if (z.c < 0 || z.c >= (ph.rows[0]?.length ?? 0) || z.r < 0 || z.r >= ph.rows.length) {
             failures.push({ phase: ph.id, law: "stage-script", detail: `stage ${at} station ${i} at (${z.c},${z.r}) lies outside the grid` });
@@ -1549,6 +1539,7 @@ export const checkLevelLaws = (level: PaintLevel): LawFailure[] => {
         }
       }
     }
+  }
 
   failures.push(...stageV2LawErrors(level));
 

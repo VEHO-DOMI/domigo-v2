@@ -418,6 +418,32 @@ describe("checkLevelLaws", () => {
     expect(laws(ohneProp).length).toBe(1);
   });
 
+  it("stage-script gilt nur für fertige Kapitel; stage-sequence für beide — und meldet einmal (welle-038, Nachbesserung #422)", () => {
+    // #422 hatte die schliessende Klammer von `if (!draft)` eine Schleife zu
+    // früh gesetzt: das Drehbuch-Gesetz lief still auch über Entwürfe, und die
+    // dort eingefügten taskSequence-Prüfungen doppelten die äussere Schleife.
+    const rows = [...OK_ROWS];
+    const mit = (draft: boolean, params: Record<string, unknown>) => level(rows, {
+      draft,
+      phases: [{
+        id: "p1", nameDe: "T", surface: "normal", plates: {}, rows,
+        entities: [{ id: "b1", role: "scene.stage", skin: "papagei", c: 5, r: 17, tier: "E", params }],
+        links: [], exit: { to: "done" }, checkpointSide: "far",
+      }] as PaintLevel["phases"],
+    });
+    const law = (l: PaintLevel, name: string) => checkLevelLaws(parsePaintLevel(l)).filter((f) => f.law === name);
+
+    // (a) eine halbfertige Bühne ohne Drehbuch: im Entwurf still, im fertigen Kapitel rot
+    expect(law(mit(true, {}), "stage-script").length, "ein Entwurf darf eine Bühne ohne Drehbuch tragen").toBe(0);
+    expect(law(mit(false, {}), "stage-script").length, "ein fertiges Kapitel nicht").toBe(1);
+
+    // (b) eine wiederholte Station ist schon im Entwurf ausführbare Daten — genau EINE Meldung, nie zwei
+    const doppelt = { stage: { propSkin: "auto", stations: [{ dc: 0, dr: 0 }, { dc: 1, dr: 0 }] }, taskSequence: [0, 0] };
+    const repeats = (l: PaintLevel) => law(l, "stage-sequence").filter((f) => f.detail.includes("repeats a station"));
+    expect(repeats(mit(false, doppelt)).length, "fertiges Kapitel: einmal").toBe(1);
+    expect(repeats(mit(true, doppelt)).length, "Entwurf: ebenfalls einmal").toBe(1);
+  });
+
   it("entity-reachable · eine Bühne wird an ihrer ENDSTATION gemessen, nicht am Anker (L2-M-a)", () => {
     // Blinder Leser, Fund 13, mit Gegenbeispiel bewiesen: der Anker ist das
     // Objekt (der Baum) und steht am Weg; stehen bleibt der Darsteller auf
