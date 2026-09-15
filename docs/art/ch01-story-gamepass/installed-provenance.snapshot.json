@@ -440,11 +440,11 @@
     {
       "stem": "merle_walk3",
       "target": "apps/web/public/art/g1/paint/ch01/merle_walk3.png",
-      "sha256": "12e41aaa4df9ce51d434cecaefa61aa7c8646c7fd104b7f0b32e31b8f1f91519",
+      "sha256": "345446ee21a06ab952a35b28b11c098c0271d8ac80bf74fba0d2b9a94009393c",
       "importReport": "../ch01-welle041/README.md",
       "source": "docs/art/ch01-welle041/originals/merle_walk3_edit.png",
       "sourceSha256": "205b160f6f46baa1168d86a3d49f927455d888dea0d176febd00c07e371d3ca2",
-      "method": "Codex image_gen edit of merle_walk1 + zone composite (docs/art/ch01-welle041/run.sh)"
+      "method": "Codex image_gen edit of merle_walk1 + zone composite, then moved down to walk1's ground line (docs/art/ch01-welle041/run.sh)"
     },
     {
       "stem": "merle_wave0",

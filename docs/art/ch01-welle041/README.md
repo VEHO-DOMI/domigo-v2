@@ -17,7 +17,7 @@ Das Quellblatt `merle/merle-motion-v2-original.png` hat nur sechs Posen, alle sc
 **Zweiter Durchgang (blinder Kunst-Leser + Widerleger, welle-041):** Der erste `settle0` (überrascht, Hände offen, aus `merle_a`)
 flackerte im Wechsel mit `settle1` (lachend, Fäuste) und war 5 % kleiner — ersetzt durch eine Zelle aus `settle1` selbst. Der erste
 `walk3` las sich als Kopie von `walk1` (Arme gleich) — ersetzt durch einen Auftrag mit ausdrücklich vertauschtem Armschwung. Die ersten
-Versuche liegen nicht im Repo.
+Versuche liegen nicht im Repo. Die Geh-Schleife läuft seit dieser Runde 1→2→3→2 (`anim.ts` `ROAM_CYCLE`): im alten Kreis 1→2→3→1 folgten zwei Kontaktposen aufeinander, und nahes und fernes Bein sind unter dem Kleid nicht zu unterscheiden — das las sich als Hinken. `walk3` steht 3 px tiefer auf der Bodenlinie von `walk1`.
 
 Bleibt bytegleich und steht NICHT auf der Karte: `merle_joy = merle_joy1` (Hüpfer ohne zweite Zelle) und `merle_a–d` (Leerlauf still).
 
