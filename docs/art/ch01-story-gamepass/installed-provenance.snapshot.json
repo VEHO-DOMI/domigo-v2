@@ -365,18 +365,20 @@
     {
       "stem": "merle_caged0",
       "target": "apps/web/public/art/g1/paint/ch01/merle_caged0.png",
-      "sha256": "56792853920c585c6fe263cf718009e5984ffaa8c7bf97e361c8ee5b6a9e42fa",
-      "importReport": "merle/import-report.json",
-      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/merle/merle-motion-v2-original.png",
-      "sourceSha256": "9bb148ec5279c85e1869c6c5e0a53453eb9ced793462b1c6228f42958c3ececb"
+      "sha256": "9f3a172cf3cd5f203e175b2abe8bc35551787606cc8d4a576ff3611aae29aefd",
+      "importReport": "../ch01-welle041/README.md",
+      "source": "docs/art/ch01-welle041/originals/merle_caged0_edit.png",
+      "sourceSha256": "eaebe1dd3c91cc042e5e9d2c9c0638ad83bee6fbf764fffff8f7a5dd139d96b9",
+      "method": "Codex image_gen edit of merle_a + zone composite (docs/art/ch01-welle041/run.sh)"
     },
     {
       "stem": "merle_caged1",
       "target": "apps/web/public/art/g1/paint/ch01/merle_caged1.png",
-      "sha256": "56792853920c585c6fe263cf718009e5984ffaa8c7bf97e361c8ee5b6a9e42fa",
-      "importReport": "merle/import-report.json",
-      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/merle/merle-motion-v2-original.png",
-      "sourceSha256": "9bb148ec5279c85e1869c6c5e0a53453eb9ced793462b1c6228f42958c3ececb"
+      "sha256": "bf37589cfff552ee17a55d8e785c91662170665b9651ae6a4af4ab772e8453ef",
+      "importReport": "../ch01-welle041/README.md",
+      "source": "docs/art/ch01-welle041/originals/merle_caged1_edit.png",
+      "sourceSha256": "bc82ac28fd591566aa85257be1ec1df817396adffb5b1685c053e71691e258e2",
+      "method": "Codex image_gen edit of merle_a + zone composite (docs/art/ch01-welle041/run.sh)"
     },
     {
       "stem": "merle_d",
@@ -403,20 +405,13 @@
       "sourceSha256": "9bb148ec5279c85e1869c6c5e0a53453eb9ced793462b1c6228f42958c3ececb"
     },
     {
-      "stem": "merle_run",
-      "target": "apps/web/public/art/g1/paint/ch01/merle_run.png",
-      "sha256": "6f42a019028afd268f92c0ddd3b0a95f9ad7c2a2b355cf6216f54e128b5153ab",
-      "importReport": "merle/import-report.json",
-      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/merle/merle-motion-v2-original.png",
-      "sourceSha256": "9bb148ec5279c85e1869c6c5e0a53453eb9ced793462b1c6228f42958c3ececb"
-    },
-    {
       "stem": "merle_settle0",
       "target": "apps/web/public/art/g1/paint/ch01/merle_settle0.png",
-      "sha256": "56792853920c585c6fe263cf718009e5984ffaa8c7bf97e361c8ee5b6a9e42fa",
-      "importReport": "merle/import-report.json",
-      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/merle/merle-motion-v2-original.png",
-      "sourceSha256": "9bb148ec5279c85e1869c6c5e0a53453eb9ced793462b1c6228f42958c3ececb"
+      "sha256": "76776c81b6bc952f818e8dde4101f7614263d83c6a4491402db98d7b3164fb6e",
+      "importReport": "../ch01-welle041/README.md",
+      "source": "docs/art/ch01-welle041/originals/merle_settle0_edit.png",
+      "sourceSha256": "b7fdaba34fa1495e7052456a8781dcc323b44ac3212fc4503d5ed2866db2c383",
+      "method": "Codex image_gen edit of merle_a + zone composite (docs/art/ch01-welle041/run.sh)"
     },
     {
       "stem": "merle_settle1",
@@ -445,10 +440,11 @@
     {
       "stem": "merle_walk3",
       "target": "apps/web/public/art/g1/paint/ch01/merle_walk3.png",
-      "sha256": "b63957e8a2e17d30ca127831da702a9cb15499e6c23af72832405ff978bcc7bb",
-      "importReport": "merle/import-report.json",
-      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/merle/merle-motion-v2-original.png",
-      "sourceSha256": "9bb148ec5279c85e1869c6c5e0a53453eb9ced793462b1c6228f42958c3ececb"
+      "sha256": "43b0cd63a6af045a7a5cf4d5131b381470d9996b27e696ea364da792fc86af9c",
+      "importReport": "../ch01-welle041/README.md",
+      "source": "docs/art/ch01-welle041/originals/merle_walk3_edit.png",
+      "sourceSha256": "07b8642894cd07d89754f4e1db132a80ad466d955f31c2d29c94cce2b15bf20a",
+      "method": "Codex image_gen edit of merle_walk1 + zone composite (docs/art/ch01-welle041/run.sh)"
     },
     {
       "stem": "merle_wave0",
@@ -461,10 +457,11 @@
     {
       "stem": "merle_wave1",
       "target": "apps/web/public/art/g1/paint/ch01/merle_wave1.png",
-      "sha256": "d25e6bfce081bdbce7890e244fe0708db38fcd3f75e692cb1411499228042c1a",
-      "importReport": "merle/import-report.json",
-      "source": "/Users/veho/Code/codex-lab/trial-domigo-v2/docs/art/ch01-story-gamepass/merle/merle-motion-v2-original.png",
-      "sourceSha256": "9bb148ec5279c85e1869c6c5e0a53453eb9ced793462b1c6228f42958c3ececb"
+      "sha256": "3963b2d06e651e7271b0742545bde7ece85b4598dd8b68210bf376afd89aa533",
+      "importReport": "../ch01-welle041/README.md",
+      "source": "docs/art/ch01-welle041/originals/merle_wave1_edit.png",
+      "sourceSha256": "d73bde09ead30fb3ce1110f537ee323fae42212750dce9547227317282f21599",
+      "method": "Codex image_gen edit of merle_wave0 + zone composite (docs/art/ch01-welle041/run.sh)"
     },
     {
       "stem": "obj_book_a",
@@ -1215,7 +1212,43 @@
       "historicalReport": "objects/import-report.json",
       "historicalOutputSha256": "33f6c43f68b65edcc004fa63ce0d01904e50b7c9de253194163f7f38256cfbc3",
       "status": "historical-output-not-current"
+    },
+    {
+      "stem": "merle_caged0",
+      "historicalReport": "merle/import-report.json",
+      "historicalOutputSha256": "56792853920c585c6fe263cf718009e5984ffaa8c7bf97e361c8ee5b6a9e42fa",
+      "status": "historical-output-not-current (welle-041: byte copy replaced by its own pose)"
+    },
+    {
+      "stem": "merle_caged1",
+      "historicalReport": "merle/import-report.json",
+      "historicalOutputSha256": "56792853920c585c6fe263cf718009e5984ffaa8c7bf97e361c8ee5b6a9e42fa",
+      "status": "historical-output-not-current (welle-041: byte copy replaced by its own pose)"
+    },
+    {
+      "stem": "merle_run",
+      "historicalReport": "merle/import-report.json",
+      "historicalOutputSha256": "6f42a019028afd268f92c0ddd3b0a95f9ad7c2a2b355cf6216f54e128b5153ab",
+      "status": "removed-never-rendered (welle-041)"
+    },
+    {
+      "stem": "merle_settle0",
+      "historicalReport": "merle/import-report.json",
+      "historicalOutputSha256": "56792853920c585c6fe263cf718009e5984ffaa8c7bf97e361c8ee5b6a9e42fa",
+      "status": "historical-output-not-current (welle-041: byte copy replaced by its own pose)"
+    },
+    {
+      "stem": "merle_walk3",
+      "historicalReport": "merle/import-report.json",
+      "historicalOutputSha256": "b63957e8a2e17d30ca127831da702a9cb15499e6c23af72832405ff978bcc7bb",
+      "status": "historical-output-not-current (welle-041: byte copy replaced by its own pose)"
+    },
+    {
+      "stem": "merle_wave1",
+      "historicalReport": "merle/import-report.json",
+      "historicalOutputSha256": "d25e6bfce081bdbce7890e244fe0708db38fcd3f75e692cb1411499228042c1a",
+      "status": "historical-output-not-current (welle-041: byte copy replaced by its own pose)"
     }
   ],
-  "refreshedFor": "Final count-dots/count-books task drawings and recognizable school desk, verified against installed PNG and original source bytes."
+  "refreshedFor": "Final count-dots/count-books task drawings and recognizable school desk, verified against installed PNG and original source bytes. · 2026-09-15 welle-041: merle_caged0/caged1/settle0/wave1/walk3 own poses, merle_run removed."
 }

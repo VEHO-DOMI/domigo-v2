@@ -5,7 +5,7 @@
 // array (single-tap-commit kinds fold atomically — no React stale closure).
 import React from "react";
 import { cardBtn } from "./CardShell.tsx";
-import { CardBack } from "./Glance.tsx";
+import { CardBack, cardBackMarkOf } from "./Glance.tsx";
 import { scrollBehavior } from "./motion.ts";
 import {
   WHEEL_ITEM_H, WHEEL_SETTLE_MS, spellSlots, spellTrayDisabled,
@@ -538,10 +538,10 @@ export function MemoryCard({ state, dispatch }: { state: MemoryState; dispatch: 
               color: done ? "#3f6329" : undefined,
               fontSize: 18, fontFamily: "var(--font-display, inherit)",
             }}
-            aria-label={faceUp(i) ? c.v : "umgedrehte Karte"}
+            aria-label={faceUp(i) ? c.v : `umgedrehte Karte, ${cardBackMarkOf(i).name}`}
             onClick={() => dispatch({ flip: i })}
           >
-            {faceUp(i) ? c.v : <CardBack n={i + 1} />}
+            {faceUp(i) ? c.v : <CardBack mark={i} />}
           </button>
         );
       })}

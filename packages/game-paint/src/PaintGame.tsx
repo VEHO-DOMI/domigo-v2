@@ -2337,7 +2337,8 @@ function Overlay({
     // The story beat: a TEASER PICTURE with one line under it, not a paragraph.
     // ⚠ THE CLOAK LAW IS AT ITS SHARPEST HERE (cloakErrorsDe, check-paint-copy):
     // this beat is about the antagonist, and he has no name before ch15. He is
-    // „der Tinten-Schatten" — a description of his ink, never a proper name.
+    // „der Tintengeist" (Koki 15.09., welle-041; bis dahin „der Tinten-Schatten") —
+    // a description of his ink, never a proper name.
     // STORY_SPINE_CH01.md is the authority for every word of it.
     if (o.card === "schatten") {
       return staged(

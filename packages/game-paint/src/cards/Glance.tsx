@@ -326,32 +326,53 @@ export const WordMark = ({ size = 16 }: { size?: number }): React.ReactElement =
   </svg>
 );
 
+/** welle-041 · THE EIGHT BACK MARKS. The back used to carry a digit 1–8 (R5-W1 ·
+ *  D2, below), and on a number↔number-word memory (ch01 `boss.me1`: 3/three,
+ *  7/seven …) both blind solvers of the welle-033 re-check read those digits as
+ *  the task. A mark keeps what the digit was for — every card is nameable, a
+ *  child can say „der Stern" and point — and it can collide with no English
+ *  word on any memory card, because it is a German shape name the card never
+ *  asks for. One ink colour for all eight: colour IS a task in this book. */
+export const CARD_BACK_MARKS: readonly { name: string; d: string }[] = [
+  { name: "Kreis", d: "M8.2 12.8a3.8 3.8 0 1 0 7.6 0a3.8 3.8 0 1 0 -7.6 0Z" },
+  { name: "Dreieck", d: "M12 8.6L16.4 16.6H7.6Z" },
+  { name: "Stern", d: "M12 8.6L13.12 11.46L16.18 11.64L13.81 13.59L14.59 16.56L12 14.9L9.41 16.56L10.19 13.59L7.82 11.64L10.88 11.46Z" },
+  { name: "Herz", d: "M12 16.8C7 13.4 7.4 8.8 10.1 9.2C11.1 9.35 11.7 10.1 12 10.8C12.3 10.1 12.9 9.35 13.9 9.2C16.6 8.8 17 13.4 12 16.8Z" },
+  { name: "Mond", d: "M14.4 8.7A4.3 4.3 0 1 0 14.4 17.1A5.4 5.4 0 0 1 14.4 8.7Z" },
+  { name: "Tropfen", d: "M12 8.4C14.3 11.3 15.6 12.9 15.6 14.2A3.6 3.6 0 0 1 8.4 14.2C8.4 12.9 9.7 11.3 12 8.4Z" },
+  { name: "Blatt", d: "M7.6 16.8C7.6 11.2 10.8 8.6 16.4 8.6C16.4 14.2 13.4 16.8 7.6 16.8ZM8.6 15.8L14.6 10.2" },
+  { name: "Quadrat", d: "M8.7 9.5h6.6v6.6h-6.6Z" },
+];
+export const cardBackMarkOf = (i: number): { name: string; d: string } => CARD_BACK_MARKS[((i % 8) + 8) % 8]!;
+
 /** THE FACE-DOWN CARD (the memory kind). It was „❓" — the reader's own font,
  *  eight times on one card, which the blind critic called the worst surface in
  *  the set: eight identical system glyphs say „error", not „turn me over".
  *  This is the book's own back: ruled paper with an ink flourish. */
-export const CardBack = ({ size = 30, n }: { size?: number; n?: number }): React.ReactElement => (
-  <svg width={size} height={size} viewBox="0 0 24 24" role="img"
-    aria-label={n === undefined ? "umgedrehte Karte" : `umgedrehte Karte ${n}`}
-    style={{ display: "inline-block", flex: "0 0 auto" }}>
-    <rect x="2.6" y="2.6" width="18.8" height="18.8" rx="3.4" fill="#e2cfa2" stroke="#8a6f3c" strokeWidth="1.6" />
-    <g stroke="#b79a63" strokeWidth="1" opacity="0.85">
-      <path d="M5.4 7.2h13.2M5.4 10.4h13.2M5.4 13.6h13.2M5.4 16.8h13.2" />
-    </g>
-    {/* R5-W1 · D2 (blind critic, critical): the back carried only a flourish, so
-        eight of them were eight identical unnameable things — „fails the
-        3-second test outright". A NUMBER makes each card a card: a child can
-        say „drei", point at it, and remember where the pair was. It says
-        nothing about what is under it. */}
-    {n === undefined ? (
-      <path d="M9 15.4c-1.6-1-1.9-3-.6-4.3 1.2-1.2 3.2-1 4.2.4.8 1.2.4 2.6-.7 3.2-.9.5-1.9.1-2.2-.7-.2-.6.1-1.2.7-1.4"
-        fill="none" stroke="#5e4a24" strokeWidth="1.7" strokeLinecap="round" />
-    ) : (
-      <text x="12" y="16.6" textAnchor="middle" fontSize="11" fontWeight="800"
-        fontFamily="var(--font-display, inherit)" fill="#5e4a24">{n}</text>
-    )}
-  </svg>
-);
+export const CardBack = ({ size = 30, mark }: { size?: number; mark?: number }): React.ReactElement => {
+  const m = mark === undefined ? undefined : cardBackMarkOf(mark);
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" role="img"
+      aria-label={m === undefined ? "umgedrehte Karte" : `umgedrehte Karte, ${m.name}`}
+      style={{ display: "inline-block", flex: "0 0 auto" }}>
+      <rect x="2.6" y="2.6" width="18.8" height="18.8" rx="3.4" fill="#e2cfa2" stroke="#8a6f3c" strokeWidth="1.6" />
+      <g stroke="#b79a63" strokeWidth="1" opacity="0.85">
+        <path d="M5.4 7.2h13.2M5.4 10.4h13.2M5.4 13.6h13.2M5.4 16.8h13.2" />
+      </g>
+      {/* R5-W1 · D2 (blind critic, critical): the back carried only a flourish, so
+          eight of them were eight identical unnameable things — „fails the
+          3-second test outright". Each card needs its own name. That name was a
+          NUMBER until welle-041 found it read as the task on a number memory;
+          it is a painted ink MARK now (CARD_BACK_MARKS). */}
+      {m === undefined ? (
+        <path d="M9 15.4c-1.6-1-1.9-3-.6-4.3 1.2-1.2 3.2-1 4.2.4.8 1.2.4 2.6-.7 3.2-.9.5-1.9.1-2.2-.7-.2-.6.1-1.2.7-1.4"
+          fill="none" stroke="#5e4a24" strokeWidth="1.7" strokeLinecap="round" />
+      ) : (
+        <path d={m.d} fill="#5e4a24" stroke="#5e4a24" strokeWidth="0.9" strokeLinejoin="round" strokeLinecap="round" />
+      )}
+    </svg>
+  );
+};
 
 /** the picture-stimulus mark: a painted frame, not 🖼 */
 export const PictureMark = ({ size = 16 }: { size?: number }): React.ReactElement => (

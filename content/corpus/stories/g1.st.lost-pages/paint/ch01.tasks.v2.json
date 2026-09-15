@@ -2134,7 +2134,7 @@
       ],
       "stimulus": {
         "type": "entity",
-        "showsDe": "Das Tablet liegt im verschlossenen Schließfach.",
+        "showsDe": "Ein Gerät mit Bildschirm liegt im Schließfach.",
         "art": "device_locker_a"
       },
       "storyDe": "Was siehst du? Sag es auf Englisch.",
