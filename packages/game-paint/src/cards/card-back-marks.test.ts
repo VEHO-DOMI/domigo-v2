@@ -11,15 +11,18 @@ const require = createRequire(new URL("../../../../apps/web/package.json", impor
 const { renderToStaticMarkup } = require("react-dom/server");
 
 describe("memory backs are nameable without a number (welle-041)", () => {
-  it("eight distinct marks, each with its own German name", () => {
-    expect(CARD_BACK_MARKS).toHaveLength(8);
-    expect(new Set(CARD_BACK_MARKS.map((m) => m.name)).size).toBe(8);
-    expect(new Set(CARD_BACK_MARKS.map((m) => m.d)).size).toBe(8);
+  it("sixteen distinct marks — one per card of the largest tray (8 pairs) — each with its own German name", () => {
+    const schema = fs.readFileSync(new URL("../../../content-schema/src/game-tasks.ts", import.meta.url), "utf8");
+    const maxPairs = Number(/pairs:[^\n]*\.max\((\d+)\)/.exec(schema)?.[1]);
+    expect(maxPairs, "content-schema memory pairs max").toBeGreaterThan(0);
+    expect(CARD_BACK_MARKS.length).toBeGreaterThanOrEqual(2 * maxPairs);
+    expect(new Set(CARD_BACK_MARKS.map((m) => m.name)).size).toBe(CARD_BACK_MARKS.length);
+    expect(new Set(CARD_BACK_MARKS.map((m) => m.d)).size).toBe(CARD_BACK_MARKS.length);
     for (const m of CARD_BACK_MARKS) expect(m.name, m.name).not.toMatch(/\d/);
   });
 
   it("a back draws no text and no digit — not in the picture, not in its label", () => {
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < CARD_BACK_MARKS.length; i++) {
       const html = renderToStaticMarkup(React.createElement(CardBack, { mark: i }));
       expect(html).not.toContain("<text");
       expect(html.replace(/<[^>]*>/g, ""), "text content").not.toMatch(/\d/);
@@ -39,5 +42,14 @@ describe("memory backs are nameable without a number (welle-041)", () => {
     expect(labels.filter((l) => l!.startsWith("umgedrehte Karte, "))).toHaveLength(16);
     expect(labels.join(" ")).not.toMatch(/\d/);
     expect(html).not.toContain("<text");
+  });
+
+  it("a full tray of sixteen cards shows sixteen different backs", () => {
+    const tray = Array.from({ length: 16 }, (_, i) => ({ v: `w${String.fromCharCode(97 + i)}` }));
+    const state = { tray, up: [], matched: [] } as unknown as Parameters<typeof MemoryCard>[0]["state"];
+    const html = renderToStaticMarkup(React.createElement(MemoryCard, { state, dispatch: () => {} }));
+    const buttons = [...html.matchAll(/<button[^>]*aria-label="([^"]*)"/g)].map((m) => m[1]);
+    expect(buttons).toHaveLength(16);
+    expect(new Set(buttons).size).toBe(16);
   });
 });

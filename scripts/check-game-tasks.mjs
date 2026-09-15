@@ -662,25 +662,28 @@ const OBLIGATIONS = {
     // Zwillings-Drift, gegen die dieselbe Datei anderswo eine Byte-Gleichheits-
     // Zusicherung traegt.
     const chNoun = chapterPolicy(CHAPTER_NOW)?.nounDe;
-    // welle-041 · A PAINTED INMATE OWES NO NOUN. When the card picture shows the
-    // being itself (the tablet in DEVICE_WINDOW), the picture says who is inside,
-    // and the German noun — `Tablet`, the answer spelled the same — would only
-    // hand over the answer. Declared per card, with a reason, never twice.
-    if (chNoun?.painted?.[shortId] !== undefined) {
-      if (chNoun?.captives?.[shortId] !== undefined) {
-        return `obliges "nounDe", but "${shortId}" stands under BOTH nounDe.captives and nounDe.painted — a painted inmate owes no noun; pick one`;
+    // welle-041 · A PAINTED INMATE OWES NO NOUN — AND NOTHING ELSE CHANGES.
+    // When the card picture shows the being itself (the tablet in DEVICE_WINDOW),
+    // the picture says who is inside, and the German noun — `Tablet`, the answer
+    // spelled the same — would only hand over the answer. Declared per card, with
+    // a reason, never twice. It lifts duty 1 (name it) ONLY: duties 2 (no English
+    // answer word) and 3 (no simile) below still run on a painted card.
+    const painted = chNoun?.painted?.[shortId] !== undefined;
+    if (painted) {
+      if (chNoun?.captives?.[shortId] !== undefined || chNoun?.pairs?.[skin] !== undefined) {
+        return `obliges "nounDe", but "${shortId}" is declared under nounDe.painted AND owes a noun (captives or pairs."${skin}") — a painted inmate owes no noun; pick one`;
       }
       if (String(chNoun.painted[shortId]).trim().length === 0) {
         return `obliges "nounDe", but nounDe.painted."${shortId}" gives no reason — say where the inmate is painted`;
       }
-      return null;
-    }
-    const noun = chNoun?.pairs?.[skin] ?? chNoun?.captives?.[shortId];
-    if (noun === undefined) {
-      return `obliges "nounDe", but no German noun is declared for "${shortId}" (skin "${skin}") — add it to ${CHAPTER_NOW?.chapter ?? "chNN"}.policy.json under nounDe.pairs (by skin) or nounDe.captives (by card), or the obligation exempts this card for free`;
-    }
-    if (!hasWord(text, noun)) {
-      return `obliges "nounDe", but ${field} never names the being — it must say „${noun}" and instead says "${text}"`;
+    } else {
+      const noun = chNoun?.pairs?.[skin] ?? chNoun?.captives?.[shortId];
+      if (noun === undefined) {
+        return `obliges "nounDe", but no German noun is declared for "${shortId}" (skin "${skin}") — add it to ${CHAPTER_NOW?.chapter ?? "chNN"}.policy.json under nounDe.pairs (by skin) or nounDe.captives (by card), or the obligation exempts this card for free`;
+      }
+      if (!hasWord(text, noun)) {
+        return `obliges "nounDe", but ${field} never names the being — it must say „${noun}" and instead says "${text}"`;
+      }
     }
     // A COGNATE IS NOT A LEAK, AND IT IS NOT DECLARED EITHER — IT IS DERIVED.
     // „Die Schere war orange." carries the English answer word `orange`, and no
@@ -1785,12 +1788,14 @@ if (process.argv.includes("--selftest")) {
    *  law is a law about the POLICY, so its tamper has to edit a policy. */
   const withPolicy = (mutate, fn) => {
     const real = CHAPTER_NOW;
-    const tmp = path.join(fs.mkdtempSync(path.join(process.env.TMPDIR ?? "/tmp", "gt-policy-")), "policy.json");
-    const cp = JSON.parse(fs.readFileSync(real.policyPath, "utf8"));
-    mutate(cp);
-    fs.writeFileSync(tmp, JSON.stringify(cp));
-    CHAPTER_NOW = { ...real, policyPath: tmp };
-    try { return fn(); } finally { CHAPTER_NOW = real; fs.rmSync(path.dirname(tmp), { recursive: true, force: true }); }
+    const dir = fs.mkdtempSync(path.join(process.env.TMPDIR ?? "/tmp", "gt-policy-"));
+    try {
+      const cp = JSON.parse(fs.readFileSync(real.policyPath, "utf8"));
+      mutate(cp);
+      fs.writeFileSync(path.join(dir, "policy.json"), JSON.stringify(cp));
+      CHAPTER_NOW = { ...real, policyPath: path.join(dir, "policy.json") };
+      return fn();
+    } finally { CHAPTER_NOW = real; fs.rmSync(dir, { recursive: true, force: true }); }
   };
   const familyMsgs = (t) => {
     captured = [];
@@ -1885,9 +1890,13 @@ if (process.argv.includes("--selftest")) {
     ["welle-041 · take the tablet out of nounDe.painted and the naming duty is back",
       withPolicy((cp) => { delete cp.nounDe.painted["rsc.tablet.r1"]; }, () => familyMsgs(tabletCard())),
       (m) => m.some((x) => x.includes("18d") && x.includes("no German noun is declared"))],
-    ["welle-041 · a card under BOTH captives and painted is a contradiction",
+    ["welle-041 · a card under painted that also owes a noun is a contradiction",
       withPolicy((cp) => { cp.nounDe.captives["rsc.tablet.r1"] = "Tablet"; }, () => familyMsgs(tabletCard())),
-      (m) => m.some((x) => x.includes("18d") && x.includes("BOTH"))],
+      (m) => m.some((x) => x.includes("18d") && x.includes("AND owes a noun"))],
+    ["welle-041 · painted cannot buy a restore card out of its duties (its noun hangs off the skin)",
+      withPolicy((cp) => { cp.nounDe.painted["enc.obj-gluestick.r1"] = "Klebestift gemalt"; },
+        () => familyMsgs(glueCard({ id: "g1.paint.ch01.enc.obj-gluestick.r1", stimulus: { type: "entity", showsDe: "Ein Ding steht grau im Gras." } }))),
+      (m) => m.some((x) => x.includes("18d") && x.includes("AND owes a noun"))],
     ["welle-041 · a painted entry without a reason is refused",
       withPolicy((cp) => { cp.nounDe.painted["rsc.tablet.r1"] = " "; }, () => familyMsgs(tabletCard())),
       (m) => m.some((x) => x.includes("18d") && x.includes("gives no reason"))],

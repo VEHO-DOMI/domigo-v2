@@ -9,10 +9,15 @@ Das Quellblatt `merle/merle-motion-v2-original.png` hat nur sechs Posen, alle sc
 |---|---|---|---|
 | `merle_caged0` | verhext: Kopf gesenkt, Augen zu, Mund traurig, Arme schlaff (`entities.ts` verspricht genau das) | `merle_a` | oben bis 80 % Höhe |
 | `merle_caged1` | zweite Zelle derselben Seufzer-Schleife: Kopf etwas tiefer und seitlich | `merle_caged0`-Bearbeitung | oben bis 80 % |
-| `merle_settle0` | gerade erwacht: Augen weit, Mund »oh«, Hände halb gehoben | `merle_a` | oben bis 80 % |
+| `merle_settle0` | erste Zelle derselben Erleichterung wie `settle1`: Augen offen, kleineres Lächeln, Fäuste etwas tiefer (die Schleife settle0↔settle1 wechselt alle 12 Takte) | `merle_settle1` | oben bis 62 % |
 | `merle_wave1` | andere Hälfte des Winkens: Unterarm weiter außen, Hand anders geneigt | `merle_wave0` | rechts oben (x ≥ 50 %, y ≤ 55 %), Zelle beidseitig verbreitert |
-| `merle_walk3` | Gegen-Schritt: Beine und Armschwung vertauscht | `merle_walk1` | ab 36 % Höhe (Kopf bleibt), Zelle beidseitig verbreitert |
+| `merle_walk3` | Gegen-Schritt: Beine und Armschwung vertauscht (vorderer Arm schwingt vor die Brust) | `merle_walk1` | ab 36 % Höhe (Kopf bleibt), Zelle beidseitig verbreitert |
 | `merle_run` | **entfernt** — nie gezeichnet: `entPoseCell` gibt für `classmate` vor der Lauf-Regel zurück | — | — |
+
+**Zweiter Durchgang (blinder Kunst-Leser + Widerleger, welle-041):** Der erste `settle0` (überrascht, Hände offen, aus `merle_a`)
+flackerte im Wechsel mit `settle1` (lachend, Fäuste) und war 5 % kleiner — ersetzt durch eine Zelle aus `settle1` selbst. Der erste
+`walk3` las sich als Kopie von `walk1` (Arme gleich) — ersetzt durch einen Auftrag mit ausdrücklich vertauschtem Armschwung. Die ersten
+Versuche liegen nicht im Repo.
 
 Bleibt bytegleich und steht NICHT auf der Karte: `merle_joy = merle_joy1` (Hüpfer ohne zweite Zelle) und `merle_a–d` (Leerlauf still).
 

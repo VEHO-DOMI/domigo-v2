@@ -1,6 +1,8 @@
 # STORY-SPINE ch01 — was das Kind sieht, was es erfährt, was jede Zeile belegen muss
 
 **Status: KANON für die Copy des ersten Kapitels (R5-Welle-1, Session C1, 2026-08-11).**
+
+> **Nachtrag 2026-09-15 (Koki, Karte welle-041):** Der Verursacher heißt ab jetzt **»der Tintengeist«**, nicht mehr »der Tinten-Schatten« — in jeder Zeile, die ein Kind liest (doc 44 §1.10 Nachtrag; `check-paint-copy` hält das alte Wort draußen). Wo unten noch »Tinten-Schatten« steht, ist das die Fassung vom 11.08.; alles andere hier gilt unverändert.
 Abgeleitet aus doc 44 §1 (Story-Bibel) + §2.2/§2.6 (Gesetze) · doc 45 §C/§D (Kokis
 Replay-Verdikt) · den fünf gegateten Dossiers in `ch01-dossiers-v2/` · und dem
 **geschnittenen Level selbst**, gegen das jede Zeile hier geprüft wurde.
