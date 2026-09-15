@@ -599,9 +599,14 @@ const familyMatches = (f, t) =>
   (f.match?.kind === undefined || f.match.kind === t.kind) &&
   (f.match?.use === undefined || f.match.use === t.use) &&
   (f.match?.form === undefined || f.match.form === t.form);
+// welle-041 (Koki 2026-09-15): a family with an EMPTY `exempts` is a duty-only
+// family — its obligations still run on its fields, but it hides no law there.
+// `kaefig-nennt-den-insassen` became one when the tablet stopped being named:
+// the naming duty stays for every unpainted inmate, the cognate licence falls.
+const exemptsAnything = (f) => (f.exempts ?? []).length > 0;
 const declaredFieldsFor = (t) => {
   const out = new Set();
-  for (const f of FAMILIES) if (familyMatches(f, t)) for (const field of f.fields ?? []) out.add(field);
+  for (const f of FAMILIES) if (exemptsAnything(f) && familyMatches(f, t)) for (const field of f.fields ?? []) out.add(field);
   return out;
 };
 
@@ -657,12 +662,28 @@ const OBLIGATIONS = {
     // Zwillings-Drift, gegen die dieselbe Datei anderswo eine Byte-Gleichheits-
     // Zusicherung traegt.
     const chNoun = chapterPolicy(CHAPTER_NOW)?.nounDe;
-    const noun = chNoun?.pairs?.[skin] ?? chNoun?.captives?.[shortId];
-    if (noun === undefined) {
-      return `obliges "nounDe", but no German noun is declared for "${shortId}" (skin "${skin}") — add it to ${CHAPTER_NOW?.chapter ?? "chNN"}.policy.json under nounDe.pairs (by skin) or nounDe.captives (by card), or the obligation exempts this card for free`;
-    }
-    if (!hasWord(text, noun)) {
-      return `obliges "nounDe", but ${field} never names the being — it must say „${noun}" and instead says "${text}"`;
+    // welle-041 · A PAINTED INMATE OWES NO NOUN — AND NOTHING ELSE CHANGES.
+    // When the card picture shows the being itself (the tablet in DEVICE_WINDOW),
+    // the picture says who is inside, and the German noun — `Tablet`, the answer
+    // spelled the same — would only hand over the answer. Declared per card, with
+    // a reason, never twice. It lifts duty 1 (name it) ONLY: duties 2 (no English
+    // answer word) and 3 (no simile) below still run on a painted card.
+    const painted = chNoun?.painted?.[shortId] !== undefined;
+    if (painted) {
+      if (chNoun?.captives?.[shortId] !== undefined || chNoun?.pairs?.[skin] !== undefined) {
+        return `obliges "nounDe", but "${shortId}" is declared under nounDe.painted AND owes a noun (captives or pairs."${skin}") — a painted inmate owes no noun; pick one`;
+      }
+      if (String(chNoun.painted[shortId]).trim().length === 0) {
+        return `obliges "nounDe", but nounDe.painted."${shortId}" gives no reason — say where the inmate is painted`;
+      }
+    } else {
+      const noun = chNoun?.pairs?.[skin] ?? chNoun?.captives?.[shortId];
+      if (noun === undefined) {
+        return `obliges "nounDe", but no German noun is declared for "${shortId}" (skin "${skin}") — add it to ${CHAPTER_NOW?.chapter ?? "chNN"}.policy.json under nounDe.pairs (by skin) or nounDe.captives (by card), or the obligation exempts this card for free`;
+      }
+      if (!hasWord(text, noun)) {
+        return `obliges "nounDe", but ${field} never names the being — it must say „${noun}" and instead says "${text}"`;
+      }
     }
     // A COGNATE IS NOT A LEAK, AND IT IS NOT DECLARED EITHER — IT IS DERIVED.
     // „Die Schere war orange." carries the English answer word `orange`, and no
@@ -741,7 +762,7 @@ function checkGiveawayFamilyTable(label) {
     for (const name of Object.keys(f.obliges ?? {})) {
       if (OBLIGATIONS[name] === undefined) fail(where, `18d · obliges "${name}", which nothing enforces — an obligation nobody checks is a sentence, not a duty`);
     }
-    if (tally.suppressed === 0) fail(where, `18c · exempts ${(f.fields ?? []).join(" · ")}, but nothing on those fields is flagged with or without the family — an exemption nobody needs is dead text. Delete it`);
+    if (exemptsAnything(f) && tally.suppressed === 0) fail(where, `18c · exempts ${(f.fields ?? []).join(" · ")}, but nothing on those fields is flagged with or without the family — an exemption nobody needs is dead text. Delete it`);
   }
 }
 
@@ -1744,15 +1765,38 @@ if (process.argv.includes("--selftest")) {
   });
   /** A cage card, whose portrait is the CAGE — so the German line is the only
    *  thing that says who is inside. `id` is real because the inmate table is
-   *  keyed by card, not by skin (all four cages share the `satchel` skin). */
+   *  keyed by card, not by skin (all four cages share the `satchel` skin).
+   *  welle-041: the sound system, not the tablet — the tablet is PAINTED in its
+   *  locker window now and owes no noun (nounDe.painted). */
   const cageCard = (over) => card({
-    id: "g1.paint.ch01.rsc.tablet.r1", use: "rescue", form: "state-it", skins: ["satchel"],
-    stimulus: { type: "entity", showsDe: "Im Käfig steckt das Tablet — ganz grau." },
+    id: "g1.paint.ch01.rsc.soundsystem.r1", use: "rescue", form: "state-it", skins: ["satchel"],
+    stimulus: { type: "entity", showsDe: "Die Musikanlage steht im verschlossenen Schließfach." },
     storyDe: "Sag, was da drin ist — dann geht der Käfig auf!",
+    options: ["It's a sound system.", "It's a pencil case.", "It's a book."],
+    answer: "It's a sound system.",
+    ...over,
+  });
+  /** welle-041 · the tablet: same cage family, but its inmate is painted. */
+  const tabletCard = (over) => cageCard({
+    id: "g1.paint.ch01.rsc.tablet.r1",
+    stimulus: { type: "entity", showsDe: "Ein Gerät mit Bildschirm liegt im Schließfach." },
     options: ["It's a tablet.", "It's a pencil case.", "It's a book."],
     answer: "It's a tablet.",
     ...over,
   });
+  /** Runs `fn` with the real chapter policy changed by `mutate` — the painted
+   *  law is a law about the POLICY, so its tamper has to edit a policy. */
+  const withPolicy = (mutate, fn) => {
+    const real = CHAPTER_NOW;
+    const dir = fs.mkdtempSync(path.join(process.env.TMPDIR ?? "/tmp", "gt-policy-"));
+    try {
+      const cp = JSON.parse(fs.readFileSync(real.policyPath, "utf8"));
+      mutate(cp);
+      fs.writeFileSync(path.join(dir, "policy.json"), JSON.stringify(cp));
+      CHAPTER_NOW = { ...real, policyPath: path.join(dir, "policy.json") };
+      return fn();
+    } finally { CHAPTER_NOW = real; fs.rmSync(dir, { recursive: true, force: true }); }
+  };
   const familyMsgs = (t) => {
     captured = [];
     // A family that matches NO card reports 18d staleness — a different law than
@@ -1829,13 +1873,33 @@ if (process.argv.includes("--selftest")) {
     ["R47 · …including the article-less simile the first rule let through",
       familyMsgs(restoreCard({ colourAskDe: "Die Füllfeder war gelb wie warmes Holz." })),
       (m) => m.some((x) => x.includes("18d") && x.includes("simile"))],
-    ["a cage that describes its inmate instead of naming it (the line that shipped: »ein flacher Bildschirm«)",
-      familyMsgs(cageCard({ stimulus: { type: "entity", showsDe: "Im Regal-Winkel glimmt ein flacher Bildschirm" } })),
+    ["a cage that describes its UNPAINTED inmate instead of naming it",
+      familyMsgs(cageCard({ stimulus: { type: "entity", showsDe: "Im Regal-Winkel steht ein Kasten mit Lautsprechern." } })),
       (m) => m.some((x) => x.includes("18d") && x.includes("never names the being"))],
     ["NON-TAMPER · a cognate is not a leak — »orange« is the German for `orange`",
       familyMsgs(glueCard()), (m) => m.length === 0],
-    ["NON-TAMPER · …and so is »Tablet«, which is why the cage may name it",
+    ["NON-TAMPER · the cage that names its unpainted inmate says nothing",
       familyMsgs(cageCard()), (m) => m.length === 0],
+    // ── welle-041 (Koki 2026-09-15) · the tablet line that shipped, and why it went ──
+    ["welle-041 · the cage family no longer hides a cognate: »Das Tablet liegt …« for `It's a tablet.` is 18a",
+      (() => { const t = tabletCard({ stimulus: { type: "entity", showsDe: "Das Tablet liegt im verschlossenen Schließfach." } }); return laws(t, declaredFieldsFor(t)); })(),
+      (l) => l.includes("18a")],
+    ["NON-TAMPER · welle-041 · the painted tablet described, not named, is silent in both layers",
+      (() => { const t = tabletCard(); return [...laws(t, declaredFieldsFor(t)), ...familyMsgs(t)]; })(),
+      (m) => m.length === 0],
+    ["welle-041 · take the tablet out of nounDe.painted and the naming duty is back",
+      withPolicy((cp) => { delete cp.nounDe.painted["rsc.tablet.r1"]; }, () => familyMsgs(tabletCard())),
+      (m) => m.some((x) => x.includes("18d") && x.includes("no German noun is declared"))],
+    ["welle-041 · a card under painted that also owes a noun is a contradiction",
+      withPolicy((cp) => { cp.nounDe.captives["rsc.tablet.r1"] = "Tablet"; }, () => familyMsgs(tabletCard())),
+      (m) => m.some((x) => x.includes("18d") && x.includes("AND owes a noun"))],
+    ["welle-041 · painted cannot buy a restore card out of its duties (its noun hangs off the skin)",
+      withPolicy((cp) => { cp.nounDe.painted["enc.obj-gluestick.r1"] = "Klebestift gemalt"; },
+        () => familyMsgs(glueCard({ id: "g1.paint.ch01.enc.obj-gluestick.r1", stimulus: { type: "entity", showsDe: "Ein Ding steht grau im Gras." } }))),
+      (m) => m.some((x) => x.includes("18d") && x.includes("AND owes a noun"))],
+    ["welle-041 · a painted entry without a reason is refused",
+      withPolicy((cp) => { cp.nounDe.painted["rsc.tablet.r1"] = " "; }, () => familyMsgs(tabletCard())),
+      (m) => m.some((x) => x.includes("18d") && x.includes("gives no reason"))],
     ["NON-TAMPER · the honest pair of lines says nothing at all",
       familyMsgs(restoreCard()), (m) => m.length === 0],
     // ── and the cases that must stay GREEN ──

@@ -203,7 +203,7 @@ export const auftaktTasks = (c: AuftaktCounts, group?: "aufgaben" | "sammeln"): 
       // „sie" carries both numbers here (die Seite / die Seiten), so this line
       // needs no branch — and a branch whose two arms are identical is a lie
       // about where the variation is.
-      whyDe: "Der Tinten-Schatten hat sie herausgerissen.",
+      whyDe: "Der Tintengeist hat sie herausgerissen.",
     });
   }
   if (c.books > 0) {

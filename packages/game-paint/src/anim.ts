@@ -1076,6 +1076,14 @@ const CLASSMATE_CELLS: Record<string, readonly [string, string]> = {
 // sie hier eigens und nicht in der Paar-Tabelle darüber. Sie lagen seit dem
 // Import ohne einen einzigen Leser im Repo; das ist der Leser.
 const ROAM_CELLS = ["walk1", "walk2", "walk3"] as const;
+/** welle-041 · DER GANG IST VIER SCHLÄGE, NICHT DREI. `walk1` und `walk3` sind die
+ *  zwei Kontaktposen, `walk2` die Durchgangspose. Im Kreis 1→2→3→1 standen zwei
+ *  Kontaktposen direkt hintereinander (3→1) — der blinde Kunst-Leser las das als
+ *  Hinken. Der Kreis ist deshalb 1→2→3→2, und jede Zelle steht wie vorher
+ *  IDLE_CYCLE_TICKS/3 Takte: dasselbe Tempo, nur ohne Stolpern. */
+export const ROAM_CYCLE = ["walk1", "walk2", "walk3", "walk2"] as const;
+const ROAM_TICKS_PER_CELL = Math.max(1, Math.round(IDLE_CYCLE_TICKS / ROAM_CELLS.length));
+export const roamCell = (timer: number): string => ROAM_CYCLE[bobFrame(timer, ROAM_CYCLE.length, ROAM_TICKS_PER_CELL)] ?? ROAM_CYCLE[0];
 /** Der Hüpfer trägt ihre Freuden-Zelle: es ist die einzige gemalte, in der sie
  *  vom Boden abhebt — und sie stimmt inhaltlich, denn genau darum hüpft sie. */
 const HOP_CELL = "joy";
@@ -1101,7 +1109,7 @@ export const classmateCell = (state: string, timer: number): string => {
   // und er teilt sich die Uhr mit ihm (roamHopT liest denselben `timer`), damit
   // gezeichneter Sprung und gehobener Körper derselbe Moment sind.
   if (state === "roam") {
-    return roamHopT(timer) > 0 ? HOP_CELL : (ROAM_CELLS[bobFrame(timer, ROAM_CELLS.length)] ?? ROAM_CELLS[0]);
+    return roamHopT(timer) > 0 ? HOP_CELL : roamCell(timer);
   }
   const named = CLASSMATE_CELLS[state];
   if (named) return named[bobFrame(timer, 2)] ?? named[0];
@@ -1120,7 +1128,7 @@ export const entPoseCell = (e: EntPoseInput): string => {
   // fall back to her idle. A person acting out a wrong action is not a dazed
   // enemy, and a freed friend waving is not a dazed one either.
   if (e.role === "classmate" && e.state === "follow" && e.companion) {
-    return e.companion.pose === "jump" ? HOP_CELL : e.companion.pose === "walk" ? (ROAM_CELLS[bobFrame(e.timer, ROAM_CELLS.length)] ?? ROAM_CELLS[0]) : classmateCell("rest", e.timer);
+    return e.companion.pose === "jump" ? HOP_CELL : e.companion.pose === "walk" ? roamCell(e.timer) : classmateCell("rest", e.timer);
   }
   if (e.role === "classmate") return classmateCell(e.state, e.timer);
   // PK-R6 · D · AN OPENED CAGE IS DRAWN OPEN. Read before the dazed catch-all,

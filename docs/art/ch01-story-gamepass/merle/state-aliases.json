@@ -4,11 +4,11 @@
   "aliases": {
     "merle_c": "merle_a",
     "merle_d": "merle_a",
-    "merle_run": "merle_walk1",
     "pencilcase_burst": "pencilcase_open",
     "pencilcase_open0": "pencilcase_open",
     "pencilcase_open1": "pencilcase_open",
     "pencilcase_open2": "pencilcase_open",
     "pencilcase_shake": "pencilcase_a"
-  }
+  },
+  "welle041": "2026-09-15: merle_run removed (never rendered — classmateCell answers before the run rule in anim.ts entPoseCell)."
 }

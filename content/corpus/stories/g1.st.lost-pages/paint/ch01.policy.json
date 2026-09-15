@@ -352,8 +352,11 @@
   "captivesReason": "Die Kaefig-Karten teilen sich ALLE denselben Skin (satchel — das Portrait ist der Kaefig, nie der Insasse), also kann ihr Nomen nicht am Skin haengen; es haengt an der Karte. Die Namen sind die ratifizierte Insassen-Tabelle aus STORY_SPINE_CH01 §2 — EIN Ding, EIN Wort quer ueber Lehr-, Rettungs- und Befreiungs-Karte. Genau dort sass der schaerfste Fund einer frueheren Runde: die Lehr-Karte sagte >die Musikanlage<, die Rettungs-Karte zehn Sekunden spaeter >ein Lautsprecher<, und verbrannte damit die Vokabel-Bruecke, die sie eben gebaut hatte.",
   "captives": {
    "rsc.soundsystem.r1": "Musikanlage",
-   "rsc.tablet.r1": "Tablet",
    "rsc.picture.r1": "Klassenfoto"
+  },
+  "paintedReason": "welle-041 (Koki 2026-09-15): Eine Kaefig-Karte, deren Insasse im Kartenbild GEMALT steht, schuldet kein deutsches Nomen — das Bild sagt, wer drinsteckt, und ein gleich geschriebenes Nomen (Tablet = tablet) waere die Antwort zum Abschreiben. Eine Karte steht nie zugleich unter captives und painted.",
+  "painted": {
+   "rsc.tablet.r1": "device_locker_a — DEVICE_WINDOW (packages/game-paint/src/story/picture-windows.ts) zeigt das Tablet im Schliessfach-Fenster gemalt; die Zeile beschreibt das Geraet."
   }
  },
  "passiveCoverage": [

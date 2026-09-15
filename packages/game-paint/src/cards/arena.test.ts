@@ -74,7 +74,7 @@ describe("was die Anleitung sagt", () => {
   });
 
   it("verrät den Antagonisten nicht (Cloak-Gesetz vor ch15)", () => {
-    // Der Verursacher heisst „der Tinten-Schatten" — eine Beschreibung seiner
+    // Der Verursacher heisst „der Tintengeist" (Koki 15.09.) — eine Beschreibung seiner
     // Tinte, kein Eigenname. STORY_SPINE_CH01 §5 ist die Autorität.
     for (const l of all) {
       const text = Object.values(l).join(" ");
