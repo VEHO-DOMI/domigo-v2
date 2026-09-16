@@ -1281,6 +1281,30 @@ export const StoryNames = z.object({
 });
 export type StoryNames = z.infer<typeof StoryNames>;
 
+/**
+ * economy@1 — the story's authored audience curve (welle-049, REVIEWPLAN_YEAR3 §3).
+ * One row per chapter: episode views, like rate, subscribers. These are STORY numbers,
+ * the same for every child — never a player value, never stored, never computed from
+ * performance (VISION 3: the one hidden XP stays the only economy). Likes are derived
+ * for display as round(views × likeRate). Consistency law: scripts/check-g3-economy.mjs.
+ */
+export const StoryEconomy = z.object({
+  schema: z.literal("economy@1"),
+  storyId: StoryId,
+  episodes: z
+    .array(
+      z.object({
+        chapterId: ChapterId,
+        views: z.number().int().min(0),
+        likeRate: z.number().gt(0).max(1),
+        subscribers: z.number().int().min(0),
+        note: z.string(),
+      }),
+    )
+    .min(1),
+});
+export type StoryEconomy = z.infer<typeof StoryEconomy>;
+
 /** flags@1 — the story's declared narrative flags (VS-13 hygiene manifest). */
 export const StoryFlags = z.object({
   schema: z.literal("flags@1"),

@@ -9,7 +9,7 @@
 import dynamic from "next/dynamic";
 import { useEffect, useRef, useState } from "react";
 import type { Chapter } from "@domigo/content-schema";
-import type { GameAttempt, NovelSave, NovelArt } from "@domigo/game-novel";
+import type { EpisodeStats, GameAttempt, NovelSave, NovelArt } from "@domigo/game-novel";
 import type { ResolvedItem } from "@domigo/game-core";
 import { flushOutbox, sendAttempt } from "@/lib/attempt-outbox";
 import { useOutboxFlush } from "@/lib/useOutboxFlush";
@@ -30,6 +30,7 @@ export default function NovelClient(props: {
   reviewItems: ResolvedItem[];
   serverSave: SavePayload | null;
   novelArt: NovelArt | null;
+  economy: EpisodeStats[];
 }) {
   useOutboxFlush();
   const { gameMode, serverSave } = props;
@@ -105,6 +106,7 @@ export default function NovelClient(props: {
         initialSave={initial?.state ?? null}
         onSave={onSave}
         art={props.novelArt}
+        economy={props.economy}
       />
       {paused && (
         <div
