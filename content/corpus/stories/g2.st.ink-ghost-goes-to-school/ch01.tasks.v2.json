@@ -1,0 +1,945 @@
+{
+ "schema": "storyBattery@1",
+ "story": "g2.st.ink-ghost-goes-to-school",
+ "chapter": "ch01",
+ "unit": "g2-u01",
+ "titleDe": "Der falsche Stundenplan",
+ "sources": {
+  "KONZEPT_YEAR2_2026-09-15.md": "md5 4f3c768ce9652a972b2e3566a66f4e5f",
+  "REGISTER_Y2_U1_2026-09-15.md": "md5 c1fcc42ac62f8f903a14a01f8069d7a2",
+  "RULING_TANDEM_2026-09-15.md": "md5 8538f75d849d4018e08b7e4065343eae",
+  "Urteil welle-043 (GG, an GG delegiert von Koki)": "2026-09-15T19:45:01Z"
+ },
+ "cast": [
+  "Merle",
+  "Fenn",
+  "Klecks",
+  "Frau Berger",
+  "Oswin"
+ ],
+ "scenes": [
+  {
+   "id": "vorfall",
+   "lines": [
+    {
+     "speaker": null,
+     "de": "Erster Schultag. Am Stundenplan an der Wand steht bei Montag nur noch „maths, maths, maths, maths“."
+    },
+    {
+     "speaker": null,
+     "de": "Darunter ist ein Gekritzel. Es sieht aus wie Merles Schrift."
+    },
+    {
+     "speaker": "Frau Berger",
+     "en": "Somebody wrote on our timetable. Merle, was it you?"
+    },
+    {
+     "speaker": "Fenn",
+     "en": "Is that your writing, Merle?"
+    },
+    {
+     "speaker": null,
+     "de": "Alle schauen Merle an. Merle wird rot."
+    },
+    {
+     "speaker": "Klecks",
+     "de": "Pssst, das ist Tinte! Nur du siehst sie leuchten."
+    }
+   ]
+  },
+  {
+   "id": "bilanz",
+   "counters": {
+    "spuren": "4/4",
+    "freundeEntlastet": "1/15",
+    "zettel": 1
+   },
+   "lines": [
+    {
+     "speaker": null,
+     "de": "Merle ist nicht mehr verdächtig. Sie geht jetzt mit dir."
+    },
+    {
+     "speaker": null,
+     "de": "Den Zettel von der Tür legst du ins Regelbuch. Vierzehn Freunde warten noch."
+    }
+   ]
+  }
+ ],
+ "cards": [
+  {
+   "id": "ch01.verdacht",
+   "station": "verdacht",
+   "required": true,
+   "placeDe": "Merles Bank",
+   "situationDe": "Merle wehrt sich. Was sagt sie zu Frau Berger?",
+   "before": [
+    {
+     "speaker": "Fenn",
+     "en": "Is that your writing, Merle?"
+    }
+   ],
+   "revealEn": null,
+   "after": [],
+   "plantedError": null,
+   "item": {
+    "id": "g2u01.gi.present-simple.mc.801",
+    "structureId": "g2u01.s.present-simple",
+    "format": "multiple-choice",
+    "rev": 1,
+    "difficulty": 1,
+    "presentation": {
+     "variants": [],
+     "gameMeta": null,
+     "audio": null
+    },
+    "provenance": {
+     "by": "claude-opus-5 · welle-042",
+     "sbRef": "g2/sb/More 2 SB Unit 1.txt#grammar-1",
+     "seedV1": null,
+     "narrative": {
+      "storyId": "g2.st.ink-ghost-goes-to-school",
+      "chapterId": "g2.st.ink-ghost-goes-to-school.ch01"
+     },
+     "note": "KONZEPT §6 Verdacht (»Merle says she didn't do it«) umgebaut: say steht nur in Wendungen des Registers, nicht allein. Merles eigene Verteidigung trägt dieselbe Lage."
+    },
+    "prompt": {
+     "text": "I didn't do it! I ___ on timetables.",
+     "lang": "en",
+     "blanks": 1
+    },
+    "answers": [
+     {
+      "text": "don't write",
+      "tier": "full"
+     }
+    ],
+    "direction": null,
+    "distractors": [
+     "doesn't write",
+     "not write",
+     "am not write"
+    ],
+    "pairs": [],
+    "groups": [],
+    "gloss": [],
+    "hintDe": "Merle spricht von sich selbst: „I …“.",
+    "hintEn": null,
+    "explainDe": "Merle sagt „I don't write on timetables.“ — bei I, you, we und they steht don't.",
+    "explainEn": null,
+    "strict": false
+   }
+  },
+  {
+   "id": "ch01.spur-1",
+   "station": "spur-1",
+   "required": true,
+   "placeDe": "Der Stundenplan an der Wand",
+   "situationDe": "Die Tinte leuchtet auf dem Stundenplan. Stell den echten Montag wieder her.",
+   "before": [],
+   "revealEn": "On Monday we have music and English, not maths, maths, maths, maths.",
+   "after": [],
+   "plantedError": null,
+   "item": {
+    "id": "g2u01.gi.present-simple.gf.802",
+    "structureId": "g2u01.s.present-simple",
+    "format": "gap-fill",
+    "rev": 1,
+    "difficulty": 2,
+    "presentation": {
+     "variants": [],
+     "gameMeta": null,
+     "audio": null
+    },
+    "provenance": {
+     "by": "claude-opus-5 · welle-042",
+     "sbRef": "g2/sb/More 2 SB Unit 1.txt#grammar-1",
+     "seedV1": null,
+     "narrative": {
+      "storyId": "g2.st.ink-ghost-goes-to-school",
+      "chapterId": "g2.st.ink-ghost-goes-to-school.ch01"
+     },
+     "note": null
+    },
+    "prompt": {
+     "text": "On Monday we ___ (have) music first. After the break, Frau Berger ___ (have) an English lesson with us.",
+     "lang": "en",
+     "blanks": 2
+    },
+    "answers": [
+     {
+      "text": "have|has",
+      "tier": "full"
+     }
+    ],
+    "direction": null,
+    "distractors": [],
+    "pairs": [],
+    "groups": [],
+    "gloss": [],
+    "hintDe": "Im ersten Satz sprechen „we“, im zweiten nur Frau Berger.",
+    "hintEn": null,
+    "explainDe": "„we have“, aber „Frau Berger has“ — bei he, she und it wird have zu has.",
+    "explainEn": null,
+    "strict": true
+   }
+  },
+  {
+   "id": "ch01.spur-2",
+   "station": "spur-2",
+   "required": true,
+   "placeDe": "Merles Kalender",
+   "situationDe": "Auf Merles Kalender ist bei gestern ein kleines Haus gemalt. Was war gestern?",
+   "before": [],
+   "revealEn": "Merle stayed at home yesterday.",
+   "after": [],
+   "plantedError": null,
+   "item": {
+    "id": "g2u01.gi.past-simple.mc.803",
+    "structureId": "g2u01.s.past-simple",
+    "format": "multiple-choice",
+    "rev": 1,
+    "difficulty": 1,
+    "presentation": {
+     "variants": [],
+     "gameMeta": null,
+     "audio": null
+    },
+    "provenance": {
+     "by": "claude-opus-5 · welle-042",
+     "sbRef": "g2/sb/More 2 SB Unit 1.txt#grammar-1",
+     "seedV1": null,
+     "narrative": {
+      "storyId": "g2.st.ink-ghost-goes-to-school",
+      "chapterId": "g2.st.ink-ghost-goes-to-school.ch01"
+     },
+     "note": null
+    },
+    "prompt": {
+     "text": "Yesterday Merle ___ at home.",
+     "lang": "en",
+     "blanks": 1
+    },
+    "answers": [
+     {
+      "text": "stayed",
+      "tier": "full"
+     }
+    ],
+    "direction": null,
+    "distractors": [
+     "stays",
+     "stay",
+     "is stay"
+    ],
+    "pairs": [],
+    "groups": [],
+    "gloss": [],
+    "hintDe": "Schau auf das erste Wort: Es geht um gestern.",
+    "hintEn": null,
+    "explainDe": "Gestern ist vorbei, also „Merle stayed at home“ — stay bekommt -ed.",
+    "explainEn": null,
+    "strict": false
+   }
+  },
+  {
+   "id": "ch01.spur-3",
+   "station": "spur-3",
+   "required": true,
+   "placeDe": "Der Tintenfleck auf Merles Bank",
+   "situationDe": "Im Tintenfleck steht ein Satz mit einem Fehler. Schreib ihn richtig.",
+   "before": [],
+   "revealEn": "Somebody sat down here yesterday. It wasn't Merle.",
+   "after": [],
+   "plantedError": "sitted",
+   "item": {
+    "id": "g2u01.gi.past-simple.ec.804",
+    "structureId": "g2u01.s.past-simple",
+    "format": "error-correction",
+    "rev": 1,
+    "difficulty": 2,
+    "presentation": {
+     "variants": [],
+     "gameMeta": null,
+     "audio": null
+    },
+    "provenance": {
+     "by": "claude-opus-5 · welle-042",
+     "sbRef": "g2/sb/More 2 SB Unit 1.txt#grammar-1",
+     "seedV1": null,
+     "narrative": {
+      "storyId": "g2.st.ink-ghost-goes-to-school",
+      "chapterId": "g2.st.ink-ghost-goes-to-school.ch01"
+     },
+     "note": null
+    },
+    "prompt": {
+     "text": "Yesterday somebody sitted down here.",
+     "lang": "en",
+     "blanks": 0
+    },
+    "answers": [
+     {
+      "text": "Yesterday somebody sat down here.",
+      "tier": "full"
+     },
+     {
+      "text": "Somebody sat down here yesterday.",
+      "tier": "full"
+     }
+    ],
+    "direction": null,
+    "distractors": [],
+    "pairs": [],
+    "groups": [],
+    "gloss": [],
+    "hintDe": "Ein Wort ist falsch. Hier hilft kein -ed.",
+    "hintEn": null,
+    "explainDe": "Richtig heißt es „Yesterday somebody sat down here.“ Gestern war die Schule zu, und trotzdem saß jemand hier — Merle war zu Hause.",
+    "explainEn": null,
+    "strict": true
+   }
+  },
+  {
+   "id": "ch01.spur-4",
+   "station": "spur-4",
+   "required": true,
+   "placeDe": "Der Bub in der letzten Bank",
+   "situationDe": "Klecks fragt dich nach dem Buben in der letzten Bank. Welcher Satz stimmt?",
+   "before": [],
+   "revealEn": "The boy at the back doesn't talk. But he looks at the timetable.",
+   "after": [],
+   "plantedError": null,
+   "item": {
+    "id": "g2u01.gi.present-simple.cp.805",
+    "structureId": "g2u01.s.present-simple",
+    "format": "context-picker",
+    "rev": 1,
+    "difficulty": 2,
+    "presentation": {
+     "variants": [],
+     "gameMeta": null,
+     "audio": null
+    },
+    "provenance": {
+     "by": "claude-opus-5 · welle-042",
+     "sbRef": "g2/sb/More 2 SB Unit 1.txt#grammar-1",
+     "seedV1": null,
+     "narrative": {
+      "storyId": "g2.st.ink-ghost-goes-to-school",
+      "chapterId": "g2.st.ink-ghost-goes-to-school.ch01"
+     },
+     "note": null
+    },
+    "prompt": {
+     "text": "What about the boy at the back?",
+     "lang": "en",
+     "blanks": 0
+    },
+    "answers": [
+     {
+      "text": "He doesn't talk to us. He looks out the window.",
+      "tier": "full"
+     }
+    ],
+    "direction": null,
+    "distractors": [
+     "He don't talk to us. He look out the window.",
+     "He doesn't talks to us. He looks out the window.",
+     "He not talk to us. He looking out the window."
+    ],
+    "pairs": [],
+    "groups": [],
+    "gloss": [],
+    "hintDe": "Es geht um „he“. Schau, ob beide Sätze dazu passen.",
+    "hintEn": null,
+    "explainDe": "Bei he heißt es „doesn't talk“ und „looks“: Nach doesn't kommt kein -s, sonst schon.",
+    "explainEn": null,
+    "strict": false
+   }
+  },
+  {
+   "id": "ch01.alibi",
+   "station": "alibi",
+   "required": true,
+   "placeDe": "Die Tafel",
+   "situationDe": "Der Stundenplan stimmt wieder, und alle Spuren zeigen weg von Merle. Sag es der Klasse.",
+   "before": [
+    {
+     "speaker": "Fenn",
+     "en": "So it wasn't Merle?"
+    }
+   ],
+   "revealEn": null,
+   "after": [
+    {
+     "speaker": "Merle",
+     "en": "You asked. You didn't laugh."
+    },
+    {
+     "speaker": null,
+     "de": "Merle lächelt. Ab jetzt geht sie mit dir."
+    }
+   ],
+   "plantedError": null,
+   "item": {
+    "id": "g2u01.gi.past-simple.mc.806",
+    "structureId": "g2u01.s.past-simple",
+    "format": "multiple-choice",
+    "rev": 1,
+    "difficulty": 2,
+    "presentation": {
+     "variants": [],
+     "gameMeta": null,
+     "audio": null
+    },
+    "provenance": {
+     "by": "claude-opus-5 · welle-042",
+     "sbRef": "g2/sb/More 2 SB Unit 1.txt#grammar-1",
+     "seedV1": null,
+     "narrative": {
+      "storyId": "g2.st.ink-ghost-goes-to-school",
+      "chapterId": "g2.st.ink-ghost-goes-to-school.ch01"
+     },
+     "note": "Leser A (welle-042): didn't + Grundform ist nicht §B von U1 (Year-1-Struktur g1u14) — Alibi prüft jetzt die U1-Regel irregular-forms."
+    },
+    "prompt": {
+     "text": "Somebody ___ on the timetable, but it wasn't Merle.",
+     "lang": "en",
+     "blanks": 1
+    },
+    "answers": [
+     {
+      "text": "wrote",
+      "tier": "full"
+     }
+    ],
+    "direction": null,
+    "distractors": [
+     "writed",
+     "writes",
+     "write"
+    ],
+    "pairs": [],
+    "groups": [],
+    "gloss": [],
+    "hintDe": "Es ist schon passiert. Hier hilft kein -ed.",
+    "hintEn": null,
+    "explainDe": "write – wrote: „Somebody wrote on the timetable, but it wasn't Merle.“ Sie war ja zu Hause.",
+    "explainEn": null,
+    "strict": false
+   }
+  },
+  {
+   "id": "ch01.zettel",
+   "station": "zettel",
+   "required": true,
+   "placeDe": "Der Zettel an der Tür",
+   "situationDe": "An der Tür liegt ein Zettel mit durcheinandergewürfelten Wörtern. Leg sie in die richtige Reihenfolge.",
+   "before": [],
+   "revealEn": "I had a timetable once, too.",
+   "after": [],
+   "plantedError": null,
+   "item": {
+    "id": "g2u01.gi.past-simple.sb.807",
+    "structureId": "g2u01.s.past-simple",
+    "format": "sentence-building",
+    "rev": 1,
+    "difficulty": 2,
+    "presentation": {
+     "variants": [],
+     "gameMeta": null,
+     "audio": null
+    },
+    "provenance": {
+     "by": "claude-opus-5 · welle-042",
+     "sbRef": "g2/sb/More 2 SB Unit 1.txt#grammar-1",
+     "seedV1": null,
+     "narrative": {
+      "storyId": "g2.st.ink-ghost-goes-to-school",
+      "chapterId": "g2.st.ink-ghost-goes-to-school.ch01"
+     },
+     "note": null
+    },
+    "prompt": {
+     "text": "I / had / a / timetable / once, / too.",
+     "lang": "en",
+     "blanks": 0
+    },
+    "answers": [
+     {
+      "text": "I had a timetable once, too.",
+      "tier": "full"
+     },
+     {
+      "text": "Once, I had a timetable, too.",
+      "tier": "full"
+     }
+    ],
+    "direction": null,
+    "distractors": [],
+    "pairs": [],
+    "groups": [],
+    "gloss": [],
+    "hintDe": "Wer das geschrieben hat, spricht über sich — und über früher.",
+    "hintEn": null,
+    "explainDe": "„I had a timetable once, too.“ — had ist die Form von have für früher.",
+    "explainEn": null,
+    "strict": true
+   }
+  },
+  {
+   "id": "ch01.frei-1",
+   "station": "frei-1",
+   "required": false,
+   "placeDe": "Fenns Platz",
+   "situationDe": "Fenn erzählt, dass er am Freitag immer Fußball spielt. Frag ihn, ob das stimmt.",
+   "before": [],
+   "revealEn": null,
+   "after": [
+    {
+     "speaker": "Fenn",
+     "en": "Yes, I do. And I have PE on Tuesday."
+    }
+   ],
+   "plantedError": null,
+   "item": {
+    "id": "g2u01.gi.present-simple.qf.808",
+    "structureId": "g2u01.s.present-simple",
+    "format": "question-formation",
+    "rev": 1,
+    "difficulty": 3,
+    "presentation": {
+     "variants": [],
+     "gameMeta": null,
+     "audio": null
+    },
+    "provenance": {
+     "by": "claude-opus-5 · welle-042",
+     "sbRef": "g2/sb/More 2 SB Unit 1.txt#grammar-1",
+     "seedV1": null,
+     "narrative": {
+      "storyId": "g2.st.ink-ghost-goes-to-school",
+      "chapterId": "g2.st.ink-ghost-goes-to-school.ch01"
+     },
+     "note": "Leser A+B (welle-042): Did-Fragen sind g2u02.s.past-simple-questions (U2) — die Karte fragt jetzt im present simple. Teilweise: richtige Frage an die falsche Person / ohne Zeitangabe."
+    },
+    "prompt": {
+     "text": "Fenn plays football on Fridays. Ask Fenn.",
+     "lang": "en",
+     "blanks": 0
+    },
+    "answers": [
+     {
+      "text": "Do you play football on Fridays?",
+      "tier": "full"
+     },
+     {
+      "text": "Do you play football on Fridays, Fenn?",
+      "tier": "full"
+     },
+     {
+      "text": "Fenn, do you play football on Fridays?",
+      "tier": "full"
+     },
+     {
+      "text": "Does Fenn play football on Fridays?",
+      "tier": "partial"
+     },
+     {
+      "text": "Do you play football?",
+      "tier": "partial"
+     }
+    ],
+    "direction": null,
+    "distractors": [],
+    "pairs": [],
+    "groups": [],
+    "gloss": [],
+    "hintDe": "Du sprichst direkt mit Fenn: „… you …?“",
+    "hintEn": null,
+    "explainDe": "„Do you play football on Fridays?“ — bei you steht do, und play bleibt ohne -s.",
+    "explainEn": null,
+    "strict": true
+   }
+  },
+  {
+   "id": "ch01.frei-2",
+   "station": "frei-2",
+   "required": false,
+   "placeDe": "Frau Bergers Pult",
+   "situationDe": "Frau Berger kennt den Buben in der letzten Bank. Frag sie, ob er gern Mathe hat.",
+   "before": [],
+   "revealEn": null,
+   "after": [
+    {
+     "speaker": "Frau Berger",
+     "en": "Yes, he does. He looks at our timetable, too."
+    }
+   ],
+   "plantedError": null,
+   "item": {
+    "id": "g2u01.gi.present-simple.qf.809",
+    "structureId": "g2u01.s.present-simple",
+    "format": "question-formation",
+    "rev": 1,
+    "difficulty": 3,
+    "presentation": {
+     "variants": [],
+     "gameMeta": null,
+     "audio": null
+    },
+    "provenance": {
+     "by": "claude-opus-5 · welle-042",
+     "sbRef": "g2/sb/More 2 SB Unit 1.txt#grammar-1",
+     "seedV1": null,
+     "narrative": {
+      "storyId": "g2.st.ink-ghost-goes-to-school",
+      "chapterId": "g2.st.ink-ghost-goes-to-school.ch01"
+     },
+     "note": null
+    },
+    "prompt": {
+     "text": "The boy at the back likes maths. Ask Frau Berger.",
+     "lang": "en",
+     "blanks": 0
+    },
+    "answers": [
+     {
+      "text": "Does the boy at the back like maths?",
+      "tier": "full"
+     },
+     {
+      "text": "Does he like maths?",
+      "tier": "full"
+     },
+     {
+      "text": "Frau Berger, does the boy at the back like maths?",
+      "tier": "full"
+     },
+     {
+      "text": "Frau Berger, does he like maths?",
+      "tier": "full"
+     },
+     {
+      "text": "Does the boy at the back like maths, Frau Berger?",
+      "tier": "full"
+     },
+     {
+      "text": "Does he like maths, Frau Berger?",
+      "tier": "full"
+     },
+     {
+      "text": "Does the boy in the back like maths?",
+      "tier": "full"
+     },
+     {
+      "text": "Does the boy like maths?",
+      "tier": "full"
+     }
+    ],
+    "direction": null,
+    "distractors": [],
+    "pairs": [],
+    "groups": [],
+    "gloss": [],
+    "hintDe": "Du fragst Frau Berger nach ihm: „… he …?“",
+    "hintEn": null,
+    "explainDe": "„Does he like maths?“ — nach does steht like ohne -s.",
+    "explainEn": null,
+    "strict": true
+   }
+  },
+  {
+   "id": "ch01.frei-3",
+   "station": "frei-3",
+   "required": false,
+   "placeDe": "Das Fenster zum Schulhof",
+   "situationDe": "Draußen beim Tor wartet Fenns Hund. Fenn erzählt dir vom letzten Sonntag.",
+   "before": [],
+   "revealEn": null,
+   "after": [],
+   "plantedError": null,
+   "item": {
+    "id": "g2u01.gi.past-simple.gf.810",
+    "structureId": "g2u01.s.past-simple",
+    "format": "gap-fill",
+    "rev": 1,
+    "difficulty": 2,
+    "presentation": {
+     "variants": [],
+     "gameMeta": null,
+     "audio": null
+    },
+    "provenance": {
+     "by": "claude-opus-5 · welle-042",
+     "sbRef": "g2/sb/More 2 SB Unit 1.txt#grammar-1",
+     "seedV1": null,
+     "narrative": {
+      "storyId": "g2.st.ink-ghost-goes-to-school",
+      "chapterId": "g2.st.ink-ghost-goes-to-school.ch01"
+     },
+     "note": "Leser C (welle-042): Merle ging hier zuerst gestern spazieren — Widerspruch zu spur-2 (gestern zu Hause). Jetzt Fenn, letzter Sonntag."
+    },
+    "prompt": {
+     "text": "Last Sunday Fenn ___ (go) for a walk with his dog.",
+     "lang": "en",
+     "blanks": 1
+    },
+    "answers": [
+     {
+      "text": "went",
+      "tier": "full"
+     }
+    ],
+    "direction": null,
+    "distractors": [],
+    "pairs": [],
+    "groups": [],
+    "gloss": [],
+    "hintDe": "Der Sonntag ist vorbei. Hier hilft kein -ed.",
+    "hintEn": null,
+    "explainDe": "go – went: „Last Sunday Fenn went for a walk with his dog.“",
+    "explainEn": null,
+    "strict": true
+   }
+  },
+  {
+   "id": "ch01.frei-4",
+   "station": "frei-4",
+   "required": false,
+   "placeDe": "Der Schrank",
+   "situationDe": "Klecks versteckt sich im Schrank, weil es in der Klasse so laut ist.",
+   "before": [],
+   "revealEn": null,
+   "after": [
+    {
+     "speaker": "Klecks",
+     "de": "Danke. Ich komm gleich wieder raus."
+    }
+   ],
+   "plantedError": null,
+   "item": {
+    "id": "g2u01.gi.present-simple.gf.811",
+    "structureId": "g2u01.s.present-simple",
+    "format": "gap-fill",
+    "rev": 1,
+    "difficulty": 2,
+    "presentation": {
+     "variants": [],
+     "gameMeta": null,
+     "audio": null
+    },
+    "provenance": {
+     "by": "claude-opus-5 · welle-042",
+     "sbRef": "g2/sb/More 2 SB Unit 1.txt#grammar-1",
+     "seedV1": null,
+     "narrative": {
+      "storyId": "g2.st.ink-ghost-goes-to-school",
+      "chapterId": "g2.st.ink-ghost-goes-to-school.ch01"
+     },
+     "note": null
+    },
+    "prompt": {
+     "text": "Klecks ___ (not like) noisy lessons.",
+     "lang": "en",
+     "blanks": 1
+    },
+    "answers": [
+     {
+      "text": "doesn't like",
+      "tier": "full"
+     },
+     {
+      "text": "does not like",
+      "tier": "full"
+     }
+    ],
+    "direction": null,
+    "distractors": [],
+    "pairs": [],
+    "groups": [],
+    "gloss": [],
+    "hintDe": "Es geht um Klecks, also um „he“.",
+    "hintEn": null,
+    "explainDe": "„Klecks doesn't like noisy lessons.“ — bei he, she und it steht doesn't, danach like ohne -s.",
+    "explainEn": null,
+    "strict": true
+   }
+  },
+  {
+   "id": "ch01.frei-5",
+   "station": "frei-5",
+   "required": false,
+   "placeDe": "Fenns Schultasche",
+   "situationDe": "Auf Fenns Schultasche klebt ein Zettel mit einem Fehler. Schreib den Satz richtig.",
+   "before": [],
+   "revealEn": null,
+   "after": [],
+   "plantedError": "have",
+   "item": {
+    "id": "g2u01.gi.present-simple.ec.812",
+    "structureId": "g2u01.s.present-simple",
+    "format": "error-correction",
+    "rev": 1,
+    "difficulty": 2,
+    "presentation": {
+     "variants": [],
+     "gameMeta": null,
+     "audio": null
+    },
+    "provenance": {
+     "by": "claude-opus-5 · welle-042",
+     "sbRef": "g2/sb/More 2 SB Unit 1.txt#grammar-1",
+     "seedV1": null,
+     "narrative": {
+      "storyId": "g2.st.ink-ghost-goes-to-school",
+      "chapterId": "g2.st.ink-ghost-goes-to-school.ch01"
+     },
+     "note": null
+    },
+    "prompt": {
+     "text": "Fenn have PE on Tuesday.",
+     "lang": "en",
+     "blanks": 0
+    },
+    "answers": [
+     {
+      "text": "Fenn has PE on Tuesday.",
+      "tier": "full"
+     },
+     {
+      "text": "has",
+      "tier": "partial"
+     }
+    ],
+    "direction": null,
+    "distractors": [],
+    "pairs": [],
+    "groups": [],
+    "gloss": [],
+    "hintDe": "Ein Wort passt nicht zu Fenn.",
+    "hintEn": null,
+    "explainDe": "„Fenn has PE on Tuesday.“ — bei he, she und it wird have zu has.",
+    "explainEn": null,
+    "strict": true
+   }
+  },
+  {
+   "id": "ch01.frei-6",
+   "station": "frei-6",
+   "required": false,
+   "placeDe": "Die Uhr über der Tafel",
+   "situationDe": "Klecks will wissen, was du gestern am Abend gemacht hast. Such den richtigen Satz.",
+   "before": [],
+   "revealEn": null,
+   "after": [],
+   "plantedError": null,
+   "item": {
+    "id": "g2u01.gi.past-simple.cp.813",
+    "structureId": "g2u01.s.past-simple",
+    "format": "context-picker",
+    "rev": 1,
+    "difficulty": 2,
+    "presentation": {
+     "variants": [],
+     "gameMeta": null,
+     "audio": null
+    },
+    "provenance": {
+     "by": "claude-opus-5 · welle-042",
+     "sbRef": "g2/sb/More 2 SB Unit 1.txt#grammar-1",
+     "seedV1": null,
+     "narrative": {
+      "storyId": "g2.st.ink-ghost-goes-to-school",
+      "chapterId": "g2.st.ink-ghost-goes-to-school.ch01"
+     },
+     "note": null
+    },
+    "prompt": {
+     "text": "Klecks asks what you did after supper yesterday.",
+     "lang": "en",
+     "blanks": 0
+    },
+    "answers": [
+     {
+      "text": "After supper, I watched TV and went to bed.",
+      "tier": "full"
+     }
+    ],
+    "direction": null,
+    "distractors": [
+     "After supper, I watch TV and go to bed.",
+     "After supper, I watching TV and going to bed.",
+     "After supper, I am watching TV and going to bed."
+    ],
+    "pairs": [],
+    "groups": [],
+    "gloss": [],
+    "hintDe": "Gestern ist vorbei. Beide Teile des Satzes müssen dazu passen.",
+    "hintEn": null,
+    "explainDe": "„After supper, I watched TV and went to bed.“ — gestern ist vorbei: watch wird watched, go wird went.",
+    "explainEn": null,
+    "strict": false
+   }
+  },
+  {
+   "id": "ch01.frei-7",
+   "station": "frei-7",
+   "required": false,
+   "placeDe": "Die Pausenglocke über der Tür",
+   "situationDe": "Die Glocke läutet. Leg die Wörter so, dass der Satz über die Pause stimmt.",
+   "before": [],
+   "revealEn": null,
+   "after": [],
+   "plantedError": null,
+   "item": {
+    "id": "g2u01.gi.present-simple.sb.814",
+    "structureId": "g2u01.s.present-simple",
+    "format": "sentence-building",
+    "rev": 1,
+    "difficulty": 1,
+    "presentation": {
+     "variants": [],
+     "gameMeta": null,
+     "audio": null
+    },
+    "provenance": {
+     "by": "claude-opus-5 · welle-042",
+     "sbRef": "g2/sb/More 2 SB Unit 1.txt#grammar-1",
+     "seedV1": null,
+     "narrative": {
+      "storyId": "g2.st.ink-ghost-goes-to-school",
+      "chapterId": "g2.st.ink-ghost-goes-to-school.ch01"
+     },
+     "note": null
+    },
+    "prompt": {
+     "text": "After / the / break, / we / have / English.",
+     "lang": "en",
+     "blanks": 0
+    },
+    "answers": [
+     {
+      "text": "After the break, we have English.",
+      "tier": "full"
+     },
+     {
+      "text": "We have English after the break.",
+      "tier": "full"
+     }
+    ],
+    "direction": null,
+    "distractors": [],
+    "pairs": [],
+    "groups": [],
+    "gloss": [],
+    "hintDe": "Der Satz sagt, was nach der Pause kommt.",
+    "hintEn": null,
+    "explainDe": "„After the break, we have English.“ — so steht es jetzt wieder im Stundenplan.",
+    "explainEn": null,
+    "strict": true
+   }
+  }
+ ]
+}
