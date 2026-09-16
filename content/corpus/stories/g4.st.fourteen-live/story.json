@@ -18,7 +18,13 @@
      "speaker": "narrator",
      "textEn": "Last year, FOURTEEN lied to Ben — and then put it right, live. Now the show is honest: no lies, no scripts.",
      "scaffoldDe": "Letztes Jahr hat FOURTEEN Ben angelogen — und es dann live wieder gutgemacht. Jetzt ist die Show ehrlich: keine Lügen, keine Drehbücher.",
-     "glosses": [],
+     "glosses": [
+      {
+       "word": "put it right",
+       "de": "wiedergutmachen",
+       "scope": null
+      }
+     ],
      "audio": null,
      "taskSlots": [],
      "next": "g4.st.fourteen-live.ch01.s002"
@@ -74,9 +80,15 @@
     {
      "id": "g4.st.fourteen-live.ch01.s005",
      "speaker": "sara",
-     "textEn": "Our class does the Dublin show on Wednesday. Two days, no tricks.",
-     "scaffoldDe": "Unsere Klasse macht am Mittwoch die Dublin-Show. Zwei Tage, keine Tricks.",
-     "glosses": [],
+     "textEn": "Me? I was checking our Dublin show for Wednesday.",
+     "scaffoldDe": "Ich? Ich hab gerade unsere Dublin-Show für Mittwoch geprüft.",
+     "glosses": [
+      {
+       "word": "checking",
+       "de": "prüfen",
+       "scope": null
+      }
+     ],
      "audio": null,
      "taskSlots": [
       {
@@ -91,7 +103,7 @@
      "id": "g4.st.fourteen-live.ch01.s006",
      "speaker": "leah",
      "textEn": "Guess what? Sara speaks fluent English — she is our Dublin girl.",
-     "scaffoldDe": "Rate mal! Sara spricht fließend Englisch — sie ist unser Dublin-Mädchen.",
+     "scaffoldDe": "Rate mal! Sara spricht fließend Englisch — sie ist bei uns die Dublin-Expertin.",
      "glosses": [],
      "audio": null,
      "taskSlots": [

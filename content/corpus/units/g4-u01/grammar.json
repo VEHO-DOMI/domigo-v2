@@ -661,7 +661,7 @@
           {
             "key": "fourteen-live.ch01.show-notes",
             "prompt": {
-              "text": "Last night we ___ (watch) a story about Dublin for our show.",
+              "text": "When Ben called at ten last night, we ___ (watch) a story about Dublin for our show.",
               "lang": "en"
             },
             "glosses": [],
@@ -1151,7 +1151,7 @@
           {
             "key": "fourteen-live.ch01.the-hall",
             "prompt": {
-              "text": "While our headteacher ___ (talk), the whole hall ___ (listen) — well, not Ben.",
+              "text": "While our headteacher ___ (talk), all the classes ___ (listen) — well, not Ben.",
               "lang": "en"
             },
             "glosses": [],

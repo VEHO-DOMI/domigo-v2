@@ -155,6 +155,13 @@
       "contentHash": "6ce3d77336592b87b5044e26e668916b03acf7c10e4af5fa882a6ec469eb181b",
       "note": "variant mint for g4.st.fourteen-live",
       "at": "2026-09-16T17:03:17.593Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable",
+      "contentHash": "1a0340d749fe6c7a85a2f956d6ea858e12333c240564041c5e004bcdf6c0ec23",
+      "note": "variant mint for g4.st.fourteen-live",
+      "at": "2026-09-16T17:14:40.986Z"
     }
   ]
 }
