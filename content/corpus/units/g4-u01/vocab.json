@@ -1367,7 +1367,27 @@
       "rev": 1,
       "difficulty": 2,
       "presentation": {
-        "variants": [],
+        "variants": [
+          {
+            "key": "fourteen-live.ch01.pitch",
+            "prompt": {
+              "text": "Five days in Dublin can ___ your English.",
+              "lang": "en"
+            },
+            "glosses": [],
+            "audio": null,
+            "provenance": {
+              "by": "fable",
+              "sbRef": null,
+              "seedV1": null,
+              "narrative": {
+                "storyId": "g4.st.fourteen-live",
+                "chapterId": "g4.st.fourteen-live.ch01"
+              },
+              "note": "g4.st.fourteen-live.ch01.s006 · name-it"
+            }
+          }
+        ],
         "gameMeta": {
           "distractorPool": [
             "admire",

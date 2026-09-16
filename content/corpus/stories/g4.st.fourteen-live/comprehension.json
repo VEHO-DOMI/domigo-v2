@@ -4,42 +4,37 @@
  "items": [
   {
    "id": "g4u01.ci.the-poster.mc.001",
-   "rev": 1,
+   "rev": 2,
    "difficulty": 1,
    "format": "multiple-choice",
    "prompt": {
-    "text": "Why is the Sydney poster strange?",
+    "text": "Why is Leo not moving at the office door?",
     "lang": "en",
     "blanks": 0
    },
    "answers": [
     {
-     "text": "The vote is not open now.",
+     "text": "The poster has a winner, but the vote is on Friday.",
      "tier": "full"
     }
    ],
    "direction": null,
    "distractors": [
-    "Sydney is not one of the three cities.",
+    "Carinthia is not one of the three weeks.",
     "The poster is not in English.",
-    "Leo does not like posters."
+    "Leo does not like hiking."
    ],
    "pairs": [],
    "groups": [],
    "gloss": [
-    {
-     "word": "vote",
-     "de": "Abstimmung",
-     "scope": null
-    },
     {
      "word": "poster",
      "de": "Plakat",
      "scope": null
     },
     {
-     "word": "strange",
-     "de": "seltsam",
+     "word": "winner",
+     "de": "Sieger",
      "scope": null
     }
    ],

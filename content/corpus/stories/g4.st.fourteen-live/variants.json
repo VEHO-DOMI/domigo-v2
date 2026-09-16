@@ -1,0 +1,50 @@
+{
+ "schema": "variants@1",
+ "storyId": "g4.st.fourteen-live",
+ "variants": [
+  {
+   "key": "fourteen-live.ch01.ask-amelie",
+   "itemId": "g4u01.gi.past-continuous-revision.gf.014",
+   "scene": "g4.st.fourteen-live.ch01.s003",
+   "slot": "ask-amelie",
+   "prompt": {
+    "text": "___ you ___ (wait) for the break when the news came?",
+    "lang": "en"
+   },
+   "glosses": []
+  },
+  {
+   "key": "fourteen-live.ch01.the-hall",
+   "itemId": "g4u01.gi.past-continuous-revision.gf.015",
+   "scene": "g4.st.fourteen-live.ch01.s004",
+   "slot": "fix-it-hall",
+   "prompt": {
+    "text": "While our headteacher ___ (talk), the whole hall ___ (listen) — well, not Ben.",
+    "lang": "en"
+   },
+   "glosses": []
+  },
+  {
+   "key": "fourteen-live.ch01.show-notes",
+   "itemId": "g4u01.gi.past-continuous-revision.gf.004",
+   "scene": "g4.st.fourteen-live.ch01.s005",
+   "slot": "show-notes",
+   "prompt": {
+    "text": "Last night we ___ (watch) a story about Dublin for our show.",
+    "lang": "en"
+   },
+   "glosses": []
+  },
+  {
+   "key": "fourteen-live.ch01.pitch",
+   "itemId": "g4u01.w.improve",
+   "scene": "g4.st.fourteen-live.ch01.s006",
+   "slot": "name-it",
+   "prompt": {
+    "text": "Five days in Dublin can ___ your English.",
+    "lang": "en"
+   },
+   "glosses": []
+  }
+ ]
+}
