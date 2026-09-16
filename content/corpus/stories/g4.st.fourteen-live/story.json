@@ -52,8 +52,8 @@
     {
      "id": "g4.st.fourteen-live.ch01.s004",
      "speaker": "ben",
-     "textEn": "Me? I was eating. I make mistakes live — nobody dies.",
-     "scaffoldDe": "Ich? Ich hab gerade gegessen. Ich mache live Fehler — davon stirbt keiner.",
+     "textEn": "I was eating. I make mistakes live — nobody dies.",
+     "scaffoldDe": "Ich hab gerade gegessen. Ich mache live Fehler — davon stirbt keiner.",
      "glosses": [
       {
        "word": "mistakes",
@@ -90,8 +90,8 @@
     {
      "id": "g4.st.fourteen-live.ch01.s006",
      "speaker": "leah",
-     "textEn": "Guess what? Sara speaks fluent English. She is our Dublin girl.",
-     "scaffoldDe": "Rate mal! Sara spricht fließend Englisch. Sie ist unser Dublin-Mädchen.",
+     "textEn": "Guess what? Sara speaks fluent English — she is our Dublin girl.",
+     "scaffoldDe": "Rate mal! Sara spricht fließend Englisch — sie ist unser Dublin-Mädchen.",
      "glosses": [],
      "audio": null,
      "taskSlots": [
