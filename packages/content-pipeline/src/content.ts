@@ -18,6 +18,7 @@
  *   pnpm content ingest-review --wordbank [--grade N|--unit slug] [--dry-run]
  *   pnpm content ingest-review --allowlist [--dry-run]
  *   pnpm content story import --grade 1         Track C stage 1: legacy campaignLevels → story-draft@1
+ *   pnpm content story strands --story <id> [--write]  strand manifest (flags.json forks) → docs/handover/strands/<id>.md
  *   pnpm content validate                       CI-safe checks over committed artifacts
  *   pnpm content validate-story                 opt-in: VS-1…VS-10 + release gate over story bundles
  *   pnpm content status                         per-unit state dashboard
@@ -35,6 +36,7 @@ import { runReviewDocWordbank } from "./review-wordbank.ts";
 import { runStatus } from "./status.ts";
 import { runStoryImport } from "./import-story.ts";
 import { runStoryVariants } from "./mint-variants.ts";
+import { runStoryStrands } from "./strand-table.ts";
 import { runV1Snapshot } from "./v1snapshot.ts";
 import { runValidate } from "./validate.ts";
 import { runAuditVariants } from "./audit-variants.ts";
@@ -150,8 +152,12 @@ switch (command) {
       const id = parseStoryId(rest);
       if (id === undefined) throw new Error("story variants needs --story g2.st.<slug>");
       runStoryVariants(id, rest.includes("--dry-run"));
+    } else if (sub === "strands") {
+      const id = parseStoryId(rest);
+      if (id === undefined) throw new Error("story strands needs --story g4.st.<slug>");
+      runStoryStrands(id, rest.includes("--write"));
     } else {
-      throw new Error(`story needs a subcommand: import | variants (got: ${sub ?? "(none)"})`);
+      throw new Error(`story needs a subcommand: import | variants | strands (got: ${sub ?? "(none)"})`);
     }
     break;
   }

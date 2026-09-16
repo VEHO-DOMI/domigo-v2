@@ -1296,6 +1296,29 @@ export const StoryFlags = z.object({
       }),
     )
     .min(1),
+  /**
+   * The strand manifest (welle-050): one row per fork — where each choice
+   * becomes visible later. `visibleIn` is a CLAIM that VS-19 recomputes from
+   * story.json (FlagGate + flagLines), so the table cannot drift from the play.
+   * `planned` forks are designed but not authored yet: their flags must not be
+   * declared or used until the unit that carries them switches them to `built`.
+   */
+  forks: z
+    .array(
+      z.object({
+        id: z.string().regex(/^[A-Z][0-9]+$/),
+        unit: z.number().int().min(1).max(15),
+        question: z.string().min(1),
+        major: z.boolean(),
+        status: z.enum(["built", "planned"]),
+        options: z.array(z.object({ flag: FlagId, label: z.string().min(1) })).min(2),
+        visibleIn: z.array(z.number().int().min(1).max(15)),
+        /** The comprehension check per strand; itemId null = not authored yet. */
+        recap: z.array(z.object({ unit: z.number().int().min(1).max(15), itemId: StoryComprehensionRef.nullable() })),
+        note: z.string().nullable(),
+      }),
+    )
+    .optional(),
 });
 export type StoryFlags = z.infer<typeof StoryFlags>;
 
