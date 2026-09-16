@@ -5,7 +5,7 @@
 //   14 chapter backdrops   — the banner on every scene that has no beat of its own
 //  141 scene beats         — one per scene, the banner for that moment
 //   23 character portraits — the 46px speaker bust, in the emotional state that scene needs
-//   42 task panels         — the picture beside a task (53 slot keys; the 14 recaps share 3)
+//   43 task panels         — the picture beside a task (54 slot keys; the 14 recaps share 3)
 //   16 frames              — the cover, the end card, and the 14 episode cards
 //
 // FIVE RULES EVERY ENTRY OBEYS  (rewritten 2026-07-29 after Koki reviewed the first
@@ -581,6 +581,11 @@ for (const n of Object.keys(SCRIPT_MC)) {
   panel(`panel_ch${n}_script_gap`, [`ch${n}.script-gap`], SCRIPT_GAP[n], Number(n), world);
   panel(`panel_ch${n}_fix`, [`ch${n}.fix-bens-line`], FIX[n], Number(n), world);
 }
+
+// ch01 only: after the first upload the viewers ask questions and the four write back (the
+// exemplar slot of welle-048). The screen shows the comment column as shapes — the app prints the words.
+panel("panel_ch01_reply", ["ch01.reply-comments"],
+  "A phone lying face-up on the studio desk in the dark, its screen glowing with a column of comment bubbles drawn as abstract shapes, one small hand hovering over it, ready to type.", 1, "studio");
 
 // ch12–14: the "fix Ben's line" framing is deliberately retired. These panels carry no
 // channel iconography at all — no viewfinder, no record dot, no phone.
