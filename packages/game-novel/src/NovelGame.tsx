@@ -9,14 +9,14 @@
  * Rewards are the production economy — views (the hidden XP), trending, a Subscriber
  * milestone per episode — never bare "+XP". The app injects onAttempt (mode:"game:g3").
  */
-import { useState, type CSSProperties, type ReactNode } from "react";
+import { useMemo, useState, type CSSProperties, type ReactNode } from "react";
 import type { Chapter, GrammarItem, Scene, VocabItem } from "@domigo/content-schema";
 import { xpForTier, type Tier } from "@domigo/engine";
 import { ChoiceContent, DialogueReveal, GlossReveal, LangToggle, primaryLine, useLangMode } from "@domigo/game-feel";
 import { storyItemKey, type ResolvedItem } from "@domigo/game-core";
 import { GrammarItemView, VocabItemView, type ResultDetail } from "@domigo/task-ui";
 import { CastAvatar, CommentSection, castLook } from "./art.tsx";
-import { COPY, SUBSCRIBERS, episodeComments, resultLine, slotPrompt, trailLabel, type CommentBand } from "./novel-copy.ts";
+import { COPY, episodeComments, fillChapterStats, resultLine, slotPrompt, trailLabel, uploadStats, type CommentBand, type EpisodeStats } from "./novel-copy.ts";
 
 export interface GameAttempt {
   clientAttemptId: string;
@@ -58,6 +58,8 @@ export interface NovelGameProps {
   initialSave?: NovelSave | null;
   onSave?: (s: NovelSave) => void;
   art?: NovelArt | null;
+  /** economy@1 rows (welle-049): fills {{views}}/{{likes}}/{{subscribers}} + the upload screen. */
+  economy: readonly EpisodeStats[];
 }
 
 const wrap: CSSProperties = { maxWidth: 640, margin: "0 auto", fontFamily: "var(--font-body)", color: "var(--text)" };
@@ -111,7 +113,10 @@ function TaskTake({ item, prompt, panelUrl, onAttempt, onContinue, onScored, hid
 }
 
 export function NovelGame(props: NovelGameProps) {
-  const { chapter, castNames, storyItems, onAttempt, onSave, episodeTitle, art } = props;
+  const { castNames, storyItems, onAttempt, onSave, episodeTitle, art, economy } = props;
+  // welle-049: every audience number in the prose comes from economy.json — filled once,
+  // before display AND read-aloud, so the voice never says a placeholder.
+  const chapter = useMemo(() => fillChapterStats(props.chapter, economy), [props.chapter, economy]);
   // L-1: story-language mode (device toggle; grade 3 defaults English-first).
   const mode = useLangMode(props.grade ?? 3);
   const byId = new Map(chapter.scenes.map((s) => [s.id, s]));
@@ -154,14 +159,19 @@ export function NovelGame(props: NovelGameProps) {
   };
 
   if (done) {
-    const subs = SUBSCRIBERS[chapter.id];
+    const stats = uploadStats(economy, chapter.id);
     return (
       <main style={{ ...wrap, padding: "28px 16px" }}>
         {art?.endCard && <img src={art.endCard} alt="" style={{ width: "100%", maxHeight: 260, objectFit: "cover", borderRadius: 16, marginBottom: 14, border: "1px solid var(--card-border)" }} />}
         <h1 style={{ fontSize: 26, margin: "0 0 6px", fontFamily: "var(--font-display)", color: "var(--ink)" }}>Episode uploaded! 🎬</h1>
         <p style={{ fontSize: 18, color: "var(--text)", marginTop: 0 }}>
-          <strong>{episodeTitle}</strong> is live.{subs ? <> The channel just hit <strong>{subs} subscribers</strong>.</> : null}
+          <strong>{episodeTitle}</strong> is live.{stats?.milestone ? <> The channel just hit <strong>{stats.milestone} subscribers</strong>.</> : null}
         </p>
+        {stats && (
+          <p style={{ color: "var(--text-secondary)", fontSize: 14, margin: "0 0 10px" }}>
+            {stats.statsLine}{stats.quietLine ? <><br />{stats.quietLine}</> : null}
+          </p>
+        )}
         <p style={{ color: "var(--text-secondary)", fontSize: 14 }}>You wrote {takes.length} clean take{takes.length === 1 ? "" : "s"} this episode.</p>
         <a href="/play/3" style={{ color: "var(--accent)", fontSize: 14, fontWeight: 700 }}>← Back to the channel</a>
       </main>

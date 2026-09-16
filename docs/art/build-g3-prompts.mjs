@@ -221,25 +221,26 @@ for (const k of panelKeys) {                                                    
 }
 
 // 13b · A PICTURE MAY NOT ARGUE WITH THE RUNNING APP. Now that text is allowed, a baked-in
-// view or subscriber count is a factual claim — and the app prints its own from SUBSCRIBERS
-// in novel-copy.ts. (This is exactly why one legacy image was dropped: it showed 89,000
-// views for a chapter the app says is 11,000.)
-const subsSrc = readFileSync(join(REPO, "packages/game-novel/src/novel-copy.ts"), "utf8");
-const SUBS = Object.fromEntries(
-  [...subsSrc.matchAll(/"g3\.st\.fourteen\.ch(\d\d)":\s*"([\d,]+)"/g)].map((m) => [Number(m[1]), m[2]]));
+// view or subscriber count is a factual claim — and the app prints its own from the ONE
+// audience table, content/corpus/stories/g3.st.fourteen/economy.json (welle-049: the scene
+// prose and the upload screen are both filled from it). "N views" is checked against the
+// episode's views, "N subscribers" against its subscribers. (This is exactly why one legacy
+// image was dropped: it showed 89,000 views for a chapter the app says is 11,000.)
+const ECONOMY = JSON.parse(readFileSync(join(REPO, "content/corpus/stories/g3.st.fourteen/economy.json"), "utf8"));
+const ECO = Object.fromEntries(ECONOMY.episodes.map((e) => [Number(e.chapterId.slice(-2)), e]));
+const fmt = (n) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 for (const [key, v] of Object.entries(BEATS)) {
   const txt = v[4];
   if (!txt) continue;
   const n = Number(key.slice(2, 4));
   for (const m of txt.matchAll(/([\d,]+)\s+(views|subscribers)\b/gi)) {
     const shown = m[1];
-    const app = SUBS[n];
-    if (!app) {
-      bad(`${key}: shows "${shown} ${m[2]}", but the app prints no count for ch${n} — `
-        + `ch09 has none on purpose (the backlash episode), and ch11-14 have none because a `
-        + `triumphant count after the reckoning would be obscene.`);
-    } else if (shown !== app) {
-      bad(`${key}: shows "${shown} ${m[2]}" but the app prints "${app}" for that chapter — `
+    const row = ECO[n];
+    const field = m[2].toLowerCase();
+    if (!row) {
+      bad(`${key}: shows "${shown} ${m[2]}", but economy.json has no row for ch${n}.`);
+    } else if (shown !== fmt(row[field])) {
+      bad(`${key}: shows "${shown} ${m[2]}" but economy.json says ${fmt(row[field])} ${field} for that chapter — `
         + `the picture would contradict the screen next to it.`);
     }
   }

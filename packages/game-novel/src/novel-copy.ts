@@ -58,20 +58,81 @@ export function trailLabel(trail: number): string | null {
   return null;
 }
 
-/** The Subscriber milestone each episode banks (the legacy's per-level count). */
-export const SUBSCRIBERS: Record<string, string> = {
-  "g3.st.fourteen.ch01": "47",
-  "g3.st.fourteen.ch02": "3,200",
-  "g3.st.fourteen.ch03": "11,000",
-  "g3.st.fourteen.ch04": "28,000",
-  "g3.st.fourteen.ch05": "45,000",
-  "g3.st.fourteen.ch06": "55,000",
-  "g3.st.fourteen.ch07": "60,000",
-  "g3.st.fourteen.ch08": "80,000",
-  // ch09 ("My Rules") deliberately has no milestone — it's the backlash episode
-  // (Ben pushes back; the legacy count dips 80k→65k), so no triumphant "hit X" boast.
-  "g3.st.fourteen.ch10": "70,000",
-};
+/**
+ * The audience curve (welle-049). ONE source: content/corpus/stories/g3.st.fourteen/economy.json
+ * (economy@1), loaded server-side and passed in. Every audience number a child sees — the
+ * scene prose ("{{views}} views!") and the upload screen — is filled from that table, so the
+ * story and the screen can never disagree. Story numbers, identical for every child: the
+ * player's performance never moves the curve (VISION 3, band ceiling untouched).
+ * Law + tamper: scripts/check-g3-economy.mjs.
+ */
+export interface EpisodeStats {
+  chapterId: string;
+  views: number;
+  likeRate: number;
+  subscribers: number;
+}
+
+/** The placeholders a scene line may carry; anything else is a gate failure. */
+export const STAT_PLACEHOLDERS = ["views", "likes", "subscribers"] as const;
+
+/** Likes are display-only: round(views × likeRate) — never a pool, never stored. */
+export function likesFor(row: EpisodeStats): number {
+  return Math.round(row.views * row.likeRate);
+}
+
+/** 60000 → "60,000" (en) / "60.000" (de). */
+export function formatCount(n: number, lang: "en" | "de"): string {
+  return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, lang === "de" ? "." : ",");
+}
+
+/** Fill {{views}} · {{likes}} · {{subscribers}} in a scene line from the episode's row. */
+export function fillStats(text: string, row: EpisodeStats, lang: "en" | "de"): string {
+  return text.replace(/\{\{(views|likes|subscribers)\}\}/g, (_m, key: string) =>
+    formatCount(key === "likes" ? likesFor(row) : key === "views" ? row.views : row.subscribers, lang));
+}
+
+/** Fill every scene line (English + German scaffold) of a chapter from its own row. */
+export function fillChapterStats<C extends { id: string; scenes: readonly { textEn: string; scaffoldDe: string | null }[] }>(
+  chapter: C,
+  episodes: readonly EpisodeStats[],
+): C {
+  const row = episodes.find((e) => e.chapterId === chapter.id);
+  if (!row) return chapter;
+  return {
+    ...chapter,
+    scenes: chapter.scenes.map((s) => ({
+      ...s,
+      textEn: fillStats(s.textEn, row, "en"),
+      scaffoldDe: s.scaffoldDe === null ? null : fillStats(s.scaffoldDe, row, "de"),
+    })),
+  };
+}
+
+/**
+ * The upload screen's numbers for one episode. ep01–10 bank a milestone ("the channel just
+ * hit N subscribers") only when subscribers ROSE. A dip (ep09 backlash) and everything from
+ * the reckoning on (ep11–14) get a quiet statistics line instead — after ep11 a triumphant
+ * boast would be obscene (g3.md), but the falling curve must still be visible.
+ */
+export function uploadStats(episodes: readonly EpisodeStats[], chapterId: string): {
+  statsLine: string;
+  milestone: string | null;
+  quietLine: string | null;
+} | null {
+  const i = episodes.findIndex((e) => e.chapterId === chapterId);
+  const row = episodes[i];
+  if (!row) return null;
+  const prev = i > 0 ? episodes[i - 1]!.subscribers : 0;
+  const delta = row.subscribers - prev;
+  const epNo = i + 1;
+  const statsLine = `${formatCount(row.views, "en")} views · ${formatCount(likesFor(row), "en")} likes`;
+  if (epNo <= 10 && delta > 0) {
+    return { statsLine, milestone: formatCount(row.subscribers, "en"), quietLine: null };
+  }
+  const sign = delta < 0 ? "−" : "+";
+  return { statsLine, milestone: null, quietLine: `Subscribers: ${formatCount(row.subscribers, "en")} · ${sign}${formatCount(Math.abs(delta), "en")}` };
+}
 
 /** A rendered comment under the video. `tone` drives its colour/voice. */
 export interface Comment {

@@ -8,7 +8,7 @@
  */
 import { redirect } from "next/navigation";
 import { Encounter, type Chapter, type ComprehensionItem, type GrammarItem, type VocabItem } from "@domigo/content-schema";
-import { loadGameMap, loadReleasedChapters, loadStory, loadStoryCast, loadStoryComprehension, loadStoryFlags, storyIdForGrade } from "@domigo/content-loader";
+import { loadGameMap, loadReleasedChapters, loadStory, loadStoryCast, loadStoryComprehension, loadStoryEconomy, loadStoryFlags, storyIdForGrade } from "@domigo/content-loader";
 import { loadUnitWithOverrides } from "@/lib/content-service";
 import { getDb, getDueRefs, getGameSave, getSolvedGameItemIds } from "@domigo/db";
 import { EVIDENCE, type EvidencePiece } from "@domigo/game-detective";
@@ -169,6 +169,7 @@ export default async function ZonePage({ params, searchParams }: { params: Promi
         reviewItems={[]}
         serverSave={serverSave}
         novelArt={novelArt}
+        economy={loadStoryEconomy(storyId)?.episodes ?? []}
       />
     );
   }

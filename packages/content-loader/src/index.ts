@@ -19,9 +19,9 @@ export { validateFullItem, mergeDrafts } from "./drafts.ts";
 export type { FullValidation, DraftApply } from "./drafts.ts";
 // J-1: the pure item→pool partition (IO-free) — re-exported for the runtime + validator.
 export { assignPool, partitionUnit, itemsInPool } from "./pools.ts";
-import { Cast, GameMap, Journey, StoryFlags, TrapRegistry, GrammarFile, GrammarStructuresFile, ListeningFile, Story, StoryComprehensionFile, TestFile, VocabFile, WordBank } from "@domigo/content-schema";
+import { Cast, GameMap, Journey, StoryEconomy, StoryFlags, TrapRegistry, GrammarFile, GrammarStructuresFile, ListeningFile, Story, StoryComprehensionFile, TestFile, VocabFile, WordBank } from "@domigo/content-schema";
 import type { GrammarItem, GrammarStructure, VocabItem } from "@domigo/content-schema";
-import type { Cast as CastT, GameMap as GameMapT, Story as StoryT, StoryComprehensionFile as StoryComprehensionFileT, StoryFlags as StoryFlagsT, TrapRegistry as TrapRegistryT } from "@domigo/content-schema";
+import type { Cast as CastT, GameMap as GameMapT, StoryEconomy as StoryEconomyT, Story as StoryT, StoryComprehensionFile as StoryComprehensionFileT, StoryFlags as StoryFlagsT, TrapRegistry as TrapRegistryT } from "@domigo/content-schema";
 
 /**
  * Repo root. The pipeline derives it from the module path (paths.ts:22), but a
@@ -198,6 +198,13 @@ export function loadStoryCast(storyId: string): CastT | null {
   if (!STORY_ID.test(storyId)) throw new Error(`content-loader: bad story id "${storyId}"`);
   const raw = readJson<unknown>(path.join(STORIES_DIR, storyId, "cast.json"));
   return raw === null ? null : Cast.parse(raw);
+}
+
+/** economy@1 — the authored audience curve (views · likeRate · subscribers per chapter). Null if none. */
+export function loadStoryEconomy(storyId: string): StoryEconomyT | null {
+  if (!STORY_ID.test(storyId)) throw new Error(`content-loader: bad story id "${storyId}"`);
+  const raw = readJson<unknown>(path.join(STORIES_DIR, storyId, "economy.json"));
+  return raw === null ? null : StoryEconomy.parse(raw);
 }
 
 /** Released chapter ids for a story (release.json); [] if none. */

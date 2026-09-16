@@ -9,5 +9,4 @@ export { NovelGame } from "./NovelGame.tsx";
 export type { NovelGameProps, NovelSave, NovelArt, GameAttempt, AttemptFn } from "./NovelGame.tsx";
 export { CastAvatar, CommentSection } from "./art.tsx";
 export { SeasonBoard, type EpisodeProgress } from "./season-board.tsx";
-export { SUBSCRIBERS } from "./novel-copy.ts";
-export type { Comment, CommentBand } from "./novel-copy.ts";
+export type { Comment, CommentBand, EpisodeStats } from "./novel-copy.ts";
