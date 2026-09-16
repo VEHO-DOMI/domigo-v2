@@ -18,8 +18,8 @@
 //   E6  the upload screen shows the table: views + likes on every episode; the "channel just
 //       hit N subscribers" boast only ep01–10 on a rise; a dip and ep11–14 get the quiet line
 //   E7  no audience number literal in the story (textEn, scaffoldDe, glosses): a number next
-//       to views/likes/subscribers/comments/followers/Aufrufe/Abonnenten/Kommentare must be a
-//       placeholder {{views}} · {{likes}} · {{subscribers}}
+//       to views/likes/subscribers/comments/followers/Aufrufe/Abonnenten/Kommentare — before
+//       it or up to three words after it — must be a placeholder {{views}} · {{likes}} · {{subscribers}}
 //   E8  only known placeholders, only in the two filled fields; after filling none is left and
 //       the filled line carries exactly the table number (en "60,000" · de "60.000")
 //
@@ -44,7 +44,10 @@ export const PEAK_EP = 11;
 const LAST_BOAST_EP = 10;
 
 const STAT_NOUN = String.raw`(?:views?|likes?|subscribers?|comments?|followers?|Aufrufe|Abonnenten|Kommentare|Follower)`;
-const LITERAL = new RegExp(String.raw`(?:\d[\d.,]*\s*k?|\b(?:hundreds?|thousands?|millions?|tausend|Tausende)(?:\s+of)?)\s+${STAT_NOUN}\b`, "i");
+// Both word orders (blind review 16.09.: "Subscribers now stand at 60,000" slipped through a
+// number-first-only pattern): number → noun, and noun → up to three words or a colon → number.
+const LITERAL = new RegExp(String.raw`(?:\d[\d.,]*\s*k?|\b(?:hundreds?|thousands?|millions?|tausend|Tausende)(?:\s+of)?)\s+${STAT_NOUN}\b`
+  + String.raw`|\b${STAT_NOUN}\b[:\s]+(?:[\p{L}']+\s+){0,3}?(?:\d[\d.,]*|hundreds?|thousands?|millions?|tausend|Tausende)`, "iu");
 const PLACEHOLDER = /\{\{\s*([^}]*?)\s*\}\}/g;
 
 const epOf = (chapterId) => Number(chapterId.slice(-2));
@@ -177,6 +180,11 @@ if (process.argv.includes("--selftest")) {
       s.scaffoldDe = s.scaffoldDe.replace("{{views}}", "47");
       return analyse({ economy: economyOnDisk, story: st });
     }, "E7: g3.st.fourteen.ch01.s009 scaffoldDe", "47 Aufrufe"],
+    ["Literal nach dem Wort (ch07.s008 »Subscribers now stand at 60,000«)", () => {
+      const st = klon(storyOnDisk); const s = scene(st, "ch07.s008");
+      s.textEn = s.textEn.replace("We have {{subscribers}} subscribers now.", "Subscribers now stand at 60,000.");
+      return analyse({ economy: economyOnDisk, story: st });
+    }, "E7: g3.st.fourteen.ch07.s008 textEn", "Subscribers now stand at 60"],
     ["unbekannter Platzhalter {{followers}} in ch08.s007", () => {
       const st = klon(storyOnDisk); const s = scene(st, "ch08.s007");
       s.textEn = s.textEn.replace("{{subscribers}}", "{{followers}}");
