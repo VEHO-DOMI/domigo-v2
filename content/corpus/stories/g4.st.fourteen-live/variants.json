@@ -19,7 +19,7 @@
    "scene": "g4.st.fourteen-live.ch01.s004",
    "slot": "fix-it-hall",
    "prompt": {
-    "text": "While our headteacher ___ (talk), all the classes ___ (listen) — well, not Ben.",
+    "text": "While our headteacher ___ (talk), all the classes ___ (listen) — well, not me.",
     "lang": "en"
    },
    "glosses": []
@@ -30,7 +30,7 @@
    "scene": "g4.st.fourteen-live.ch01.s005",
    "slot": "show-notes",
    "prompt": {
-    "text": "When Ben called at ten last night, we ___ (watch) a story about Dublin for our show.",
+    "text": "When the news came, we ___ (watch) a story about Dublin for our show.",
     "lang": "en"
    },
    "glosses": []
