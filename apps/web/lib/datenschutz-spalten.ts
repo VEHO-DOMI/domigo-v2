@@ -72,6 +72,7 @@ const W = {
   lehrerMail: /freiwillig eine E-Mail-Adresse/,
   zeitpunkt: /jede beantwortete Aufgabe mit Zeitpunkt/,
   richtigFalsch: /richtig oder falsch/,
+  wieNah: /wie nah du dran warst/,
   dauer: /wie lange du gebraucht hast/,
   hinweisGenommen: /ob du einen Hinweis genommen hast/,
   fehlerart: /die Art des Fehlers/,
@@ -133,7 +134,11 @@ export const SPALTEN: Record<string, Record<string, Eintrag>> = {
     unit_slug: sachlich(),
     grade: sachlich(),
     mode: sachlich("practice, review or a game — which surface the task was answered on"),
-    tier: sachlich("how the engine graded the answer shape"),
+    // The engine Tier is "correct" | "partial" | "close" | "wrong" (packages/engine/src/index.ts:14):
+    // four grades of how close THIS child's answer was, not a property of the engine. The DS-0
+    // check of 2026-09-17 found it classified sachlich here while its sibling review_queue.last_tier
+    // was person — the same value, two verdicts, and the page said only "richtig oder falsch".
+    tier: person(W.wieNah),
     correct: person(W.richtigFalsch),
     xp_awarded: person(W.xp),
     latency_ms: person(W.dauer),
@@ -152,7 +157,7 @@ export const SPALTEN: Record<string, Record<string, Eintrag>> = {
     grade: sachlich(),
     box: person(W.wiederholung),
     due_at: person(W.wiederholung),
-    last_tier: person(W.wiederholung),
+    last_tier: person(W.wieNah, "the same four grades as practice_attempts.tier"),
     reps: person(W.wiederholung),
     lapses: person(W.wiederholung),
     created_at: sachlich("when the card entered the queue"),

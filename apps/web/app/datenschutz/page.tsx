@@ -86,17 +86,11 @@ export default function DatenschutzPage() {
       </p>
 
       <h2 style={h2}>Welche Daten DomiGo über Schülerinnen und Schüler speichert</h2>
-      <p>
-        Alles, was hier steht, ist deinem Konto zugeordnet: in der Datenbank steht bei jeder
-        Aufzeichnung eine Kennung deines Kontos — eine lange Zufallszahl — und nicht dein Name.
-        Wer deinen echten Namen sehen darf, deine Lehrkraft und der Verwaltungszugang weiter unten,
-        kann beides zusammenbringen; für alle anderen ist die Kennung nur eine Zahl.
-      </p>
       <ul style={list}>
         <li><strong>Konto:</strong> dein selbst gewählter Spitzname, deine Klasse und deine 6-stellige PIN. Die PIN wird nur verschlüsselt gespeichert (bcrypt), niemand kann sie lesen. Konten aus der früheren DomiGo-Version liegen in derselben Datenbank und werden zum Anmelden weiter gelesen.</li>
         <li><strong>Echter Name:</strong> dein Name, wie ihn deine Lehrkraft in die Klassenliste einträgt. Er ist für deine Lehrkraft da, damit sie dich zuordnen kann.</li>
-        <li><strong>Üben:</strong> jede beantwortete Aufgabe mit Zeitpunkt, richtig oder falsch, wie lange du gebraucht hast, ob du einen Hinweis genommen hast, bei falschen Antworten die Art des Fehlers und bei Tests, zu welchem Durchgang die Antwort gehört.</li>
-        <li><strong>Fortschritt:</strong> Punkte (XP), Serie, Hinweis-Funken (damit kannst du dir einen Hinweis leisten), Wiederholungskarten, erledigte Schritte im Lernpfad mit Sternen.</li>
+        <li><strong>Üben:</strong> jede beantwortete Aufgabe mit Zeitpunkt, richtig oder falsch und wie nah du dran warst, wie lange du gebraucht hast, ob du einen Hinweis genommen hast, bei falschen Antworten die Art des Fehlers und bei Tests, zu welchem Durchgang die Antwort gehört.</li>
+        <li><strong>Fortschritt:</strong> Punkte (XP), Serie, Hinweis-Funken (die Funken, die du in einer Runde gesammelt hast; dein Stand steht auf der Weltkarte), Wiederholungskarten, erledigte Schritte im Lernpfad mit Sternen.</li>
         <li><strong>Schreiben:</strong> Texte, die du schreibst und abgibst, mit Wortzahl sowie Punkten und Rückmeldung deiner Lehrkraft.</li>
         <li><strong>Tests und Aufgaben:</strong> wann du begonnen und abgegeben hast, die Zeit je Abschnitt, dein Ergebnis in Prozent und eine Note von 1 bis 5.</li>
         <li><strong>Spiele:</strong> dein Spielstand.</li>
@@ -104,6 +98,15 @@ export default function DatenschutzPage() {
         <li><strong>Schutz vor Erraten:</strong> die Zahl der Fehlversuche beim Anmelden, gezählt je Klassencode und Spitzname.</li>
         <li><strong>Jahres-Stand:</strong> am Ende eines Schuljahres kann ein Stand gespeichert werden (Spitzname, echter Name, Klasse, Punkte und Fortschritt), damit es im nächsten Jahr weitergehen kann.</li>
       </ul>
+      <p>
+        Dein Name steht nur an zwei dieser Stellen: im Eintrag der Klassenliste (»Konto« und
+        »Echter Name«) und, falls am Ende eines Schuljahres ein Stand gespeichert wird, im
+        »Jahres-Stand«. Alles andere ist deinem Konto zugeordnet, ohne deinen Namen: bei jeder
+        Übung, jedem Text, jedem Test und jedem Spielstand steht in der Datenbank nur eine Kennung
+        deines Kontos — eine lange Zufallszahl. Zusammenbringen kann beides, wer deinen echten
+        Namen sehen darf: deine Lehrkraft und der Verwaltungszugang weiter unten. Für alle anderen
+        ist die Kennung nur eine Zahl.
+      </p>
       <p>
         DomiGo speichert <strong>keine</strong> E-Mail-Adressen von Kindern und keine IP-Adressen in seiner
         Datenbank. Vercel, das die Anwendung betreibt, führt davon getrennt ein Zugriffsprotokoll —
@@ -165,7 +168,7 @@ export default function DatenschutzPage() {
       <p>
         Derzeit gibt es <strong>keine feste Löschfrist</strong> und keine automatische Löschung. Wenn eine
         Lehrkraft ein Kind aus der Klasse entfernt, wird heute nur sein Eintrag in der Klassenliste
-        (Spitzname, Name, PIN) gelöscht; Übungsergebnisse, Texte, Noten, ein bereits gespeicherter
+        (Spitzname, echter Name, Klasse und PIN) gelöscht; Übungsergebnisse, Texte, Noten, ein bereits gespeicherter
         Jahres-Stand und ein Konto aus der früheren DomiGo-Version bleiben gespeichert. Auf Anfrage an {DATENSCHUTZ_KONTAKT} werden auch diese Daten
         gelöscht.
       </p>
