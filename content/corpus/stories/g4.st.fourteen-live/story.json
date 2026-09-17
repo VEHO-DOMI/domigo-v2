@@ -32,8 +32,8 @@
     {
      "id": "g4.st.fourteen-live.ch01.s002",
      "speaker": "direktorin",
-     "textEn": "Listen, everybody: all fourth classes vote on Friday for their last school week! Dublin for English, Carinthia for hiking or Vienna for museums.",
-     "scaffoldDe": "Hört alle zu: Alle vierten Klassen stimmen am Freitag über ihre Abschlusswoche ab! Dublin für Englisch, Kärnten zum Wandern oder Wien für die Museen.",
+     "textEn": "Listen, everybody: on Friday the whole school votes on the last week of the fourth classes! Dublin for English, Carinthia for hiking or Vienna for museums.",
+     "scaffoldDe": "Hört alle zu: Am Freitag stimmt die ganze Schule über die Abschlusswoche der vierten Klassen ab! Dublin für Englisch, Kärnten zum Wandern oder Wien für die Museen.",
      "glosses": [],
      "audio": null,
      "taskSlots": [],
@@ -826,6 +826,11 @@
        "word": "gets",
        "de": "bekommt",
        "scope": null
+      },
+      {
+       "word": "project",
+       "de": "Projekt",
+       "scope": null
       }
      ],
      "audio": null,
@@ -835,8 +840,8 @@
     {
      "id": "g4.st.fourteen-live.ch03.s002",
      "speaker": "leah",
-     "textEn": "Their project is about heroes, and the video is GOOD: the plane on the Hudson river. The whole hall goes silent.",
-     "scaffoldDe": "Ihr Projekt handelt von Helden, und das Video ist GUT: das Flugzeug auf dem Hudson. Die ganze Aula wird still.",
+     "textEn": "Their project is about heroes — and their video opens with a story from our English book: the plane on the Hudson river. The whole hall goes silent.",
+     "scaffoldDe": "Ihr Projekt handelt von Helden — und ihr Video beginnt mit einer Geschichte aus unserem Englischbuch: dem Flugzeug auf dem Hudson. Die ganze Aula wird still.",
      "glosses": [
       {
        "word": "plane",
@@ -871,6 +876,11 @@
       {
        "word": "heroes",
        "de": "Helden",
+       "scope": null
+      },
+      {
+       "word": "project",
+       "de": "Projekt",
        "scope": null
       }
      ],
@@ -3492,8 +3502,8 @@
     {
      "id": "g4.st.fourteen-live.ch07.s004",
      "speaker": "narrator",
-     "textEn": "After the assembly, the crew opens the SunWays catalogue Leo photographed at the pizza stand.",
-     "scaffoldDe": "Nach der Versammlung öffnet die Crew den SunWays-Katalog, den Leo am Pizzastand fotografiert hat.",
+     "textEn": "Then 2B shows Carinthia: mountains, a lake, hiking maps. After the assembly, the crew opens the SunWays catalogue Leo photographed at the pizza stand.",
+     "scaffoldDe": "Dann zeigt die 2B Kärnten: Berge, einen See, Wanderkarten. Nach der Versammlung öffnet die Crew den SunWays-Katalog, den Leo am Pizzastand fotografiert hat.",
      "glosses": [
       {
        "word": "catalogue",
