@@ -101,7 +101,13 @@ export function neuerStub(secret = "stub-secret-mindestens-24-zeichen"): StubKon
 
     if (pfad === "/api/handoff/exchange") {
       const token = String(koerper?.token ?? "");
-      if (s.verbraucht.has(token)) return json({ error: "consumed" }, 409);
+      if (s.verbraucht.has(token)) {
+        // 409 MIT wohlgeformtem Koerper: so wie ein fehlerhaftes (oder
+        // feindseliges) konto antworten koennte. Wer hier nur die FORM prueft
+        // und nicht den STATUS, laesst eine zweite Einloesung durch — genau das
+        // misst test:konto-handoff.
+        return json(s.claims.get(token) ?? { error: "consumed" }, 409);
+      }
       const c = s.claims.get(token);
       if (!c) return json({ error: "unknown" }, 409);
       s.verbraucht.add(token);

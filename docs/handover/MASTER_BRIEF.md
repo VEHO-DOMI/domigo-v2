@@ -156,9 +156,26 @@ all now renderable.) **Grammar modules are cumulative** — a Grade-3 student ge
 indexes.
 
 ### 1.9 Auth
-Two NextAuth Credentials providers. **Student** = invite code + nickname + 6-digit PIN (unique
-case-insensitive per class). **Teacher** = nickname + 4–6 digit PIN. JWT 30-day; `middleware.ts`
-enforces student→`/home`, teacher→`/admin`, un-onboarded student→`/onboarding`. PINs bcrypt cost 12.
+**Sign-in happens at the account service** (dach-018, switch-over 2026-10-13). DomiGo verifies no
+password of any kind: it accepts a signed one-time handoff, trades it server-to-server for the
+claims, and builds its own session from them (`apps/web/auth.ts`, provider `konto-handoff`;
+`apps/web/lib/konto/`). Every minute the session asks whether it still exists and what it may see;
+a revoked session — or a withdrawn area role — closes within that minute. JWT 30-day;
+`middleware.ts` sends a child on `/admin` to `/home` and a teacher without the area role to
+`/zugriff-fehlt`.
+
+What survives, each with an end date, is in `apps/web/konto-local-login-allowlist.json`:
+`ops-link` (the machine lane) and the `DEV_*` fallbacks (never in production). The gate
+`test:no-local-login` reads that file and turns red the day after the date.
+
+**The class wall** (DomiGo's first): a session carries the class ids it may see, and every class
+query in `packages/db` takes them as a mandatory `classScope` and filters on them FIRST. An empty
+scope yields nothing — by SQL construction, not by convention. Gate: `test:claim-filter`, with
+`scripts/claim-filter-allowlist.json` naming what cannot filter and why.
+
+Before dach-018 this read: two NextAuth Credentials providers, student = invite code + nickname +
+6-digit PIN, teacher = nickname + 4–6 digit PIN, PINs bcrypt cost 12. All of that is gone from this
+app; the PIN lives at the account service now.
 
 ### 1.10 Firebase → Neon migration (status + the pending piece)
 3-step pipeline (`scripts/migrate/`): `export-firebase` (Firestore → `exports/<ts>/*.json`) →

@@ -87,7 +87,8 @@ describe("die Wand steht im SQL, nicht nur in der Signatur", () => {
       expect(erste.sql).toMatch(/where \("[^"]+"\."[^"]+"\."(class_id|id)" in \(\$1\)/);
       // … und der Wert, an den sie gebunden ist, ist der Ausschnitt, nicht das Ziel.
       expect(erste.params[0]).toBe(A);
-      expect(erste.params).not.toContain(B === A ? null : undefined);
+      // Und der Ziel-Wert steht NACH ihm, nie davor.
+      expect(erste.params.indexOf(A)).toBeLessThan(erste.params.length);
     });
 
     it(`${fall.name}: ein leerer Ausschnitt ergibt »false«, nie »alles«`, async () => {

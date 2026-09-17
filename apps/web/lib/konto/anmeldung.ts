@@ -48,6 +48,22 @@ export type Abweisung = "kein-handoff" | "keine-rolle" | "keine-klasse" | "unbek
 
 export type Ergebnis = { ok: true; nutzer: KontoAnmeldung } | { ok: false; grund: Abweisung };
 
+/**
+ * Darf diese Person hier sein? PUR — keine Datenbank, kein Netz, damit die
+ * Entscheidung geprueft werden kann, ohne eine Datenbank zu stellen. Sie faellt
+ * VOR jedem Schreiben: eine Abweisung darf nie einen halben Nutzer hinterlassen.
+ */
+export function entscheide(claims: Claims): { ok: true; scope: string[]; kindKlasse: string | null } | { ok: false; grund: Abweisung } {
+  const scope = appClassIds(claims);
+  if (claims.kind === "teacher") {
+    return istLehrkraftFuerGo(claims) ? { ok: true, scope, kindKlasse: null } : { ok: false, grund: "keine-rolle" };
+  }
+  // Ein Kind ist genau eine Klasse (SPEC §5, Schuelerfall F6). Keine Bruecke,
+  // kein Kind: die Lehrgruppe gibt es bei konto, aber in DomiGo nie.
+  const kindKlasse = scope[0] ?? null;
+  return kindKlasse ? { ok: true, scope, kindKlasse } : { ok: false, grund: "keine-klasse" };
+}
+
 export async function handoffAnmelden(
   handoff: string,
   melde: (sub: string, appUserId: string) => Promise<boolean>,
@@ -55,18 +71,9 @@ export async function handoffAnmelden(
   const claims = await exchangeHandoff(handoff);
   if (!claims) return { ok: false, grund: "kein-handoff" };
 
-  const scope = appClassIds(claims);
-
-  // L2 and L3 decided BEFORE anything is written.
-  if (claims.kind === "teacher" && !istLehrkraftFuerGo(claims)) {
-    return { ok: false, grund: "keine-rolle" };
-  }
-  // A child is exactly one class (SPEC §5, Schülerfall F6). No bridge, no child:
-  // the group exists at konto but has never been created in DomiGo.
-  const kindKlasse = claims.kind === "student" ? (scope[0] ?? null) : null;
-  if (claims.kind === "student" && !kindKlasse) {
-    return { ok: false, grund: "keine-klasse" };
-  }
+  const urteil = entscheide(claims);
+  if (!urteil.ok) return urteil;
+  const { scope, kindKlasse } = urteil;
   if (kindKlasse && !(await klasseExistiert(getDb(), kindKlasse))) {
     // konto believes in a bridge this database does not have — treat it as no
     // class rather than creating a child into a class that is not there.

@@ -41,6 +41,7 @@ export * from "./scope.ts"; // dach-018: the class scope a session may see — t
 export * from "./konto-identity.ts"; // dach-018: the local person behind a konto account (dual-read, create, class follow)
 export * from "./konto-loeschung.ts"; // dach-018: the complete deletion path konto asks for
 export * from "./konto-class-term.ts"; // dach-018: konto owns name, grade, owner and archive
+export * from "./konto-export.ts"; // dach-018: the dual-read the switch-over export hands over
 export * from "./identity.ts"; // P-1a: pure identity helpers (pickIdentity dual-read precedence, invite-code minting)
 export * from "./v1.ts"; // read-only mirrors of v1's public.users/classes (auth identity)
 export * from "./auth.ts"; // v2→v1 dual-read identity lookups (lookupStudentForAuth/lookupTeacherForAuth) + allocateClassCode
