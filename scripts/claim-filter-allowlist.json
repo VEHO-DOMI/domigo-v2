@@ -1,0 +1,20 @@
+{
+  "warum": "SPEC konto V1.1-FINAL §5 L3 verlangt, dass JEDE Klassenabfrage zuerst auf den Ausschnitt der Sitzung filtert. scripts/check-claim-filter.mjs setzt das durch. Hier stehen die Funktionen, die es nicht koennen — jede mit dem Satz, warum. Eine Ausnahme darf eine bekannte Luecke dulden; sie darf sie nie ueberleben: faellt der Grund weg oder bekommt die Funktion ihren Ausschnitt, wird dieses Blatt rot.",
+  "ausnahmen": {
+    "auth.ts#lookupStudentForAuth": "Laeuft, bevor es eine Sitzung gibt, es gibt also keinen Ausschnitt zum Filtern; der Klassencode und die PIN sind die Wand. Erreichbar ist die Funktion nach dem Umstieg nur noch ueber den Maschinenpfad ops-link.",
+    "ops-links.ts#findOpsClassStudent": "Der Einmal-Anmelde-Link der Test-Bahn loest seine eine Klasse aus OPS_CLASS_CODE auf, bevor eine Sitzung besteht.",
+    "ops-links.ts#loadOpsClass": "Dieselbe Aufloesung, aus derselben Umgebungsvariablen, vor derselben Sitzung.",
+    "ops-links.ts#findOpsStudent": "Maschinenpfad: die uebergebene Klassenkennung kann nur die eine sein, die loadOpsClass gerade aufgeloest hat.",
+    "ops-links.ts#listOpsClassStudents": "Wie findOpsStudent — eine Klasse, aus der Umgebungsvariablen, ohne Sitzung.",
+    "ops-links.ts#createOpsTestStudent": "Legt ein Test-Kind in genau der Ops-Klasse an; ausserhalb ihrer ist der Aufruf per WHERE unerreichbar.",
+    "teacher-claim.ts#listClaimableClasses": "Eine uebernehmbare Klasse ist per Definition noch in niemandes Ausschnitt — genau das macht sie uebernehmbar.",
+    "teacher-claim.ts#claimClassAsTeacher": "Die Uebernahme selbst schafft die Zugehoerigkeit, die ein Ausschnitt spaeter abbilden wuerde; sie kann nicht von ihr abhaengen.",
+    "class-service.ts#listAllClassIds": "Die EINE Lesung, die einen Ausschnitt BAUT statt ihm zu gehorchen (der Verwaltungszugang, Kokis Entscheid 17.09.). Sie kann nicht von dem Ausschnitt gefiltert werden, den sie erzeugt.",
+    "roster-events.ts#writeRosterEvent": "Die eine Journal-Tuer. Ihre Klassenkennung ist immer die, die der rufende, bereits gefilterte Vorgang gerade geschrieben hat; check-journal-door.mjs haelt fest, dass es keine zweite Tuer gibt. DEKLARIERT: das ist ein Versprechen der Aufrufer, keine Wand — der einzige Eintrag dieser Liste, der so gebaut ist, weil ein Ausschnitt hier die Uebernahme einer Klasse (teacher_claim) unmoeglich machen wuerde.",
+    "konto-class-term.ts#createKontoClass": "Legt die Klasse an, die es noch nicht gibt; ihre Kennung kann in keinem bestehenden Ausschnitt stehen. Die Wand ist die Signatur des Konto-Dienstes.",
+    "konto-class-term.ts#applyKontoClassTerm": "Zieht eine Aenderung des Konto-Dienstes nach. Der Ruf kommt nicht aus einer Sitzung, sondern aus einem signierten Push mit aud=go und body_sha256.",
+    "konto-identity.ts#klasseExistiert": "Prueft beim Anmelden, ob die Bruecke des Konto-Dienstes auf eine Klasse zeigt, die es hier gibt — bevor die Sitzung und damit ihr Ausschnitt entsteht.",
+    "konto-identity.ts#createKontoStudent": "Legt das Kind in der Klasse an, die sein Claim nennt; geprueft wurde sie einen Schritt vorher, ebenfalls vor jeder Sitzung.",
+    "konto-identity.ts#syncKontoStudentClass": "Zieht die Klasse des Kindes auf die des Claims nach, waehrend die Sitzung erst entsteht."
+  }
+}
