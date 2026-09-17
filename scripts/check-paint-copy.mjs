@@ -114,6 +114,14 @@ const RETIRED = [
   // quote law above exists to catch, and it terminated this line on first run.
   [/Da steckt jemand fest/i, "»jemand« over a cage that holds a thing (doc 45, Koki 07:26:19)"],
 ];
+// welle-041: the antagonist's designation changed (Koki 2026-09-15, doc 44 §1.10
+// Nachtrag). ch02/04/05/06 kept the old one after ch01 moved — so the old word is
+// retired in the shell AND in the content, where it had actually survived. Only
+// THIS list reaches the content: the phrases above were written against shell
+// cards, and `/ins Lager/` would fire on „ins Lagerfeuer" in a chapter's copy.
+const RETIRED_EVERYWHERE = [
+  [/Tinten-?Schatten/i, "der Verursacher heißt »der Tintengeist« (Koki 2026-09-15, doc 44 §1.10 Nachtrag)"],
+];
 
 /** Every string in a JSON tree, with the dotted path it sits at. */
 const strings = function* (node, at = "") {
@@ -161,7 +169,7 @@ export const analyse = ({ shell, content, corpus, lexika, kapitel = [], probeSrc
       if (rendersToChildren && ASCII_CLOSER.test(line)) {
         fail(where, `quote-law: a German „ closed with an ASCII " — use “ (or »…«) — ${line.trim()}`);
       }
-      for (const [re, why] of RETIRED) {
+      for (const [re, why] of [...RETIRED, ...RETIRED_EVERYWHERE]) {
         if (re.test(line)) fail(where, `retired-phrase: ${re} — ${why}`);
       }
     });
@@ -177,6 +185,9 @@ export const analyse = ({ shell, content, corpus, lexika, kapitel = [], probeSrc
       if (NOT_VISIBLE.test(at)) continue;
       for (const err of cloakErrorsDe(text, chapter)) fail(`${file} ${at}`, err);
       for (const err of registerErrorsDe(text)) fail(`${file} ${at}`, err);
+      for (const [re, why] of RETIRED_EVERYWHERE) {
+        if (re.test(text)) fail(`${file} ${at}`, `retired-phrase: ${re} — ${why}`);
+      }
       if (ASCII_CLOSER.test(text)) {
         fail(`${file} ${at}`, `quote-law: a German „ closed with an ASCII " — use “ — "${text}"`);
       }
@@ -522,6 +533,14 @@ if (process.argv.includes("--selftest")) {
       eineTsx(w).src += '\nconst y = `Sie sagte „hallo" leise`;\n';
       return analyse(w);
     }, "quote-law"],
+
+    ["welle-041 · der alte Gegnername im Inhalt (Gesetz 2b, retired)", () => {
+      const w = kopie(weltAufDerPlatte);
+      const c = einLevel(w);
+      const at = einSichtbaresFeld(c.json);
+      setzeAn(c.json, at, "Der Tinten-Schatten war hier.");
+      return analyse(w);
+    }, "retired-phrase"],
 
     ["ein verbotenes Wort im Inhalt (Gesetz 2, Register)", () => {
       const w = kopie(weltAufDerPlatte);

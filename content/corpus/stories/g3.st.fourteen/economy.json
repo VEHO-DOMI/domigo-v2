@@ -1,0 +1,20 @@
+{
+  "schema": "economy@1",
+  "storyId": "g3.st.fourteen",
+  "episodes": [
+    { "chapterId": "g3.st.fourteen.ch01", "views": 47, "likeRate": 0.06, "subscribers": 12, "note": "start — canon: 47 views" },
+    { "chapterId": "g3.st.fourteen.ch02", "views": 3200, "likeRate": 0.028, "subscribers": 380, "note": "first jump" },
+    { "chapterId": "g3.st.fourteen.ch03", "views": 11000, "likeRate": 0.0364, "subscribers": 1900, "note": "" },
+    { "chapterId": "g3.st.fourteen.ch04", "views": 28000, "likeRate": 0.05357, "subscribers": 6500, "note": "" },
+    { "chapterId": "g3.st.fourteen.ch05", "views": 45000, "likeRate": 0.0711, "subscribers": 14000, "note": "warm band ends" },
+    { "chapterId": "g3.st.fourteen.ch06", "views": 55000, "likeRate": 0.0909, "subscribers": 22000, "note": "" },
+    { "chapterId": "g3.st.fourteen.ch07", "views": 70000, "likeRate": 0.12143, "subscribers": 60000, "note": "canon line: 60,000 subscribers" },
+    { "chapterId": "g3.st.fourteen.ch08", "views": 120000, "likeRate": 0.13333, "subscribers": 80000, "note": "the company offer" },
+    { "chapterId": "g3.st.fourteen.ch09", "views": 95000, "likeRate": 0.09474, "subscribers": 65000, "note": "authorised dip — backlash (canon 80k→65k)" },
+    { "chapterId": "g3.st.fourteen.ch10", "views": 110000, "likeRate": 0.10909, "subscribers": 70000, "note": "the scandal draws (canon 70k)" },
+    { "chapterId": "g3.st.fourteen.ch11", "views": 400000, "likeRate": 0.15, "subscribers": 130000, "note": "peak — the fail video" },
+    { "chapterId": "g3.st.fourteen.ch12", "views": 150000, "likeRate": 0.06, "subscribers": 95000, "note": "authorised dip — crash after Ben leaves" },
+    { "chapterId": "g3.st.fourteen.ch13", "views": 60000, "likeRate": 0.06667, "subscribers": 72000, "note": "authorised dip — channel on pause" },
+    { "chapterId": "g3.st.fourteen.ch14", "views": 80000, "likeRate": 0.0875, "subscribers": 74000, "note": "honest, small rise" }
+  ]
+}

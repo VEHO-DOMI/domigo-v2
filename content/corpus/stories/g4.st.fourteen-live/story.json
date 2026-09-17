@@ -16,32 +16,12 @@
     {
      "id": "g4.st.fourteen-live.ch01.s001",
      "speaker": "narrator",
-     "textEn": "One year later. The channel is real now: no scripts, no lies. 20,000 people watch FOURTEEN.",
-     "scaffoldDe": "Ein Jahr später. Der Kanal ist jetzt echt: keine Drehbücher, keine Lügen. 20.000 Leute schauen FOURTEEN.",
+     "textEn": "Last year, FOURTEEN lied to Ben — and then put it right, live. Now the show is honest: no lies, no scripts.",
+     "scaffoldDe": "Letztes Jahr hat FOURTEEN Ben angelogen — und es dann live wieder gutgemacht. Jetzt ist die Show ehrlich: keine Lügen, keine Drehbücher.",
      "glosses": [
       {
-       "word": "later",
-       "de": "später",
-       "scope": null
-      },
-      {
-       "word": "real",
-       "de": "echt",
-       "scope": null
-      },
-      {
-       "word": "scripts",
-       "de": "Drehbücher",
-       "scope": null
-      },
-      {
-       "word": "lies",
-       "de": "Lügen",
-       "scope": null
-      },
-      {
-       "word": "channel",
-       "de": "Kanal",
+       "word": "put it right",
+       "de": "wiedergutmachen",
        "scope": null
       }
      ],
@@ -51,153 +31,104 @@
     },
     {
      "id": "g4.st.fourteen-live.ch01.s002",
-     "speaker": "leah",
-     "textEn": "Live in three, two, one — hello, we are FOURTEEN. And this is real.",
-     "scaffoldDe": "Live in drei, zwei, eins — hallo, wir sind FOURTEEN. Und das hier ist echt.",
-     "glosses": [
-      {
-       "word": "live",
-       "de": "live",
-       "scope": null
-      },
-      {
-       "word": "real",
-       "de": "echt",
-       "scope": null
-      }
-     ],
+     "speaker": "direktorin",
+     "textEn": "Listen, everybody: on Friday the whole school votes on the last week of the fourth classes! Dublin for English, Carinthia for hiking or Vienna for museums.",
+     "scaffoldDe": "Hört alle zu: Am Freitag stimmt die ganze Schule über die Abschlusswoche der vierten Klassen ab! Dublin für Englisch, Kärnten zum Wandern oder Wien für die Museen.",
+     "glosses": [],
      "audio": null,
      "taskSlots": [],
      "next": "g4.st.fourteen-live.ch01.s003"
     },
     {
      "id": "g4.st.fourteen-live.ch01.s003",
-     "speaker": "narrator",
-     "textEn": "Monday assembly. Direktorin Huber has big news.",
-     "scaffoldDe": "Montag, Versammlung in der Aula. Direktorin Huber hat große Neuigkeiten.",
-     "glosses": [
+     "speaker": "leah",
+     "textEn": "We are live in the hall! Everybody, tell us: what were you doing when the news came?",
+     "scaffoldDe": "Wir sind live in der Aula! Alle, erzählt uns: Was habt ihr gerade gemacht, als die Nachricht kam?",
+     "glosses": [],
+     "audio": null,
+     "taskSlots": [
       {
-       "word": "assembly",
-       "de": "Versammlung",
-       "scope": null
-      },
-      {
-       "word": "news",
-       "de": "Neuigkeiten",
-       "scope": null
+       "slot": "ask-amelie",
+       "itemId": "g4u01.gi.past-continuous-revision.gf.014",
+       "variantKey": "fourteen-live.ch01.ask-amelie"
       }
      ],
-     "audio": null,
-     "taskSlots": [],
      "next": "g4.st.fourteen-live.ch01.s004"
     },
     {
      "id": "g4.st.fourteen-live.ch01.s004",
-     "speaker": "direktorin",
-     "textEn": "There is a class trip for our school — all paid! And you choose where: Dublin, New York or Sydney. The vote opens on Friday.",
-     "scaffoldDe": "Es gibt eine Klassenfahrt für unsere Schule — alles bezahlt! Und ihr wählt, wohin: Dublin, New York oder Sydney. Die Abstimmung startet am Freitag.",
+     "speaker": "ben",
+     "textEn": "I was eating. I make mistakes live — nobody dies.",
+     "scaffoldDe": "Ich hab gerade gegessen. Ich mache live Fehler — davon stirbt keiner.",
      "glosses": [
       {
-       "word": "paid",
-       "de": "bezahlt",
-       "scope": null
-      },
-      {
-       "word": "vote",
-       "de": "Abstimmung",
-       "scope": null
-      },
-      {
-       "word": "choose",
-       "de": "wählen",
-       "scope": null
-      },
-      {
-       "word": "class trip",
-       "de": "Klassenfahrt",
+       "word": "mistakes",
+       "de": "Fehler",
        "scope": null
       }
      ],
      "audio": null,
-     "taskSlots": [],
+     "taskSlots": [
+      {
+       "slot": "fix-it-hall",
+       "itemId": "g4u01.gi.past-continuous-revision.gf.015",
+       "variantKey": "fourteen-live.ch01.the-hall"
+      }
+     ],
      "next": "g4.st.fourteen-live.ch01.s005"
     },
     {
      "id": "g4.st.fourteen-live.ch01.s005",
-     "speaker": "ben",
-     "textEn": "A free trip?! I was still sleeping when the news came. Somebody pinch me!",
-     "scaffoldDe": "Eine gratis Reise?! Ich habe noch geschlafen, als die Nachricht kam. Zwickt mich mal!",
+     "speaker": "sara",
+     "textEn": "Me? I was checking our Dublin show for Wednesday.",
+     "scaffoldDe": "Ich? Ich hab gerade unsere Dublin-Show für Mittwoch geprüft.",
      "glosses": [
       {
-       "word": "news",
-       "de": "Nachricht",
-       "scope": null
-      },
-      {
-       "word": "pinch",
-       "de": "zwicken",
-       "scope": null
-      },
-      {
-       "word": "trip",
-       "de": "Reise",
-       "scope": null
-      },
-      {
-       "word": "sleeping",
-       "de": "schlafen",
+       "word": "checking",
+       "de": "prüfen",
        "scope": null
       }
      ],
      "audio": null,
-     "taskSlots": [],
+     "taskSlots": [
+      {
+       "slot": "show-notes",
+       "itemId": "g4u01.gi.past-continuous-revision.gf.004",
+       "variantKey": "fourteen-live.ch01.show-notes"
+      }
+     ],
      "next": "g4.st.fourteen-live.ch01.s006"
     },
     {
      "id": "g4.st.fourteen-live.ch01.s006",
      "speaker": "leah",
-     "textEn": "This is our story, team. We cover the vote — live.",
-     "scaffoldDe": "Das ist unsere Story, Leute. Wir berichten über die Abstimmung — live.",
-     "glosses": [
+     "textEn": "Guess what? Sara speaks fluent English — she is our Dublin girl.",
+     "scaffoldDe": "Ratet mal! Sara spricht fließend Englisch — sie ist bei uns die Dublin-Expertin.",
+     "glosses": [],
+     "audio": null,
+     "taskSlots": [
       {
-       "word": "cover",
-       "de": "berichten über",
-       "scope": null
-      },
-      {
-       "word": "vote",
-       "de": "Abstimmung",
-       "scope": null
-      },
-      {
-       "word": "team",
-       "de": "Team",
-       "scope": null
+       "slot": "name-it",
+       "itemId": "g4u01.w.improve",
+       "variantKey": "fourteen-live.ch01.pitch"
       }
      ],
-     "audio": null,
-     "taskSlots": [],
      "next": "g4.st.fourteen-live.ch01.s007"
     },
     {
      "id": "g4.st.fourteen-live.ch01.s007",
-     "speaker": "leo",
-     "textEn": "I film. You talk. Sara checks the facts. Like always.",
-     "scaffoldDe": "Ich filme. Du redest. Sara prüft die Fakten. Wie immer.",
+     "speaker": "narrator",
+     "textEn": "Then Leo is at the office door, not moving. In the office window there is a poster: WINNER — HIKING WEEK IN CARINTHIA.",
+     "scaffoldDe": "Dann steht Leo an der Tür zum Sekretariat und rührt sich nicht. Im Bürofenster hängt ein Plakat: SIEGER — WANDERWOCHE IN KÄRNTEN.",
      "glosses": [
       {
-       "word": "facts",
-       "de": "Fakten",
+       "word": "poster",
+       "de": "Plakat",
        "scope": null
       },
       {
-       "word": "film",
-       "de": "filmen",
-       "scope": null
-      },
-      {
-       "word": "checks",
-       "de": "prüft",
+       "word": "winner",
+       "de": "Sieger",
        "scope": null
       }
      ],
@@ -207,23 +138,13 @@
     },
     {
      "id": "g4.st.fourteen-live.ch01.s008",
-     "speaker": "sara",
-     "textEn": "One rule: we show it straight. No cuts, no tricks.",
-     "scaffoldDe": "Eine Regel: Wir zeigen es ehrlich. Keine Schnitte, keine Tricks.",
+     "speaker": "leo",
+     "textEn": "The vote is on Friday. Today is Monday — and I have it on camera.",
+     "scaffoldDe": "Die Abstimmung ist am Freitag. Heute ist Montag — und ich hab es auf Kamera.",
      "glosses": [
       {
-       "word": "straight",
-       "de": "ehrlich",
-       "scope": null
-      },
-      {
-       "word": "cuts",
-       "de": "Schnitte",
-       "scope": null
-      },
-      {
-       "word": "tricks",
-       "de": "Tricks",
+       "word": "camera",
+       "de": "Kamera",
        "scope": null
       }
      ],
@@ -233,274 +154,10 @@
     },
     {
      "id": "g4.st.fourteen-live.ch01.s009",
-     "speaker": "leah",
-     "textEn": "First segment: what were you doing when the news came? Ask the school!",
-     "scaffoldDe": "Erster Beitrag: Was hast du gerade gemacht, als die Nachricht kam? Fragt die Schule!",
-     "glosses": [
-      {
-       "word": "segment",
-       "de": "Beitrag",
-       "scope": null
-      },
-      {
-       "word": "news",
-       "de": "Nachricht",
-       "scope": null
-      }
-     ],
-     "audio": null,
-     "taskSlots": [
-      {
-       "slot": "fix-it",
-       "itemId": "g4u01.gi.past-continuous-revision.cp.002",
-       "variantKey": null
-      }
-     ],
-     "next": "g4.st.fourteen-live.ch01.s010"
-    },
-    {
-     "id": "g4.st.fourteen-live.ch01.s010",
-     "speaker": "narrator",
-     "textEn": "In the corridor, everyone was talking about the trip. Everyone had a favourite city.",
-     "scaffoldDe": "Auf dem Gang haben alle über die Reise geredet. Jeder hatte eine Lieblingsstadt.",
-     "glosses": [
-      {
-       "word": "corridor",
-       "de": "Gang",
-       "scope": null
-      },
-      {
-       "word": "trip",
-       "de": "Reise",
-       "scope": null
-      }
-     ],
-     "audio": null,
-     "taskSlots": [],
-     "next": "g4.st.fourteen-live.ch01.s011"
-    },
-    {
-     "id": "g4.st.fourteen-live.ch01.s011",
-     "speaker": "ben",
-     "textEn": "Nobody knows the winner. But everyone has a tip!",
-     "scaffoldDe": "Niemand kennt den Sieger. Aber jeder hat einen Tipp!",
-     "glosses": [
-      {
-       "word": "winner",
-       "de": "Sieger",
-       "scope": null
-      },
-      {
-       "word": "tip",
-       "de": "Tipp",
-       "scope": null
-      },
-      {
-       "word": "knows",
-       "de": "kennt",
-       "scope": null
-      }
-     ],
-     "audio": null,
-     "taskSlots": [
-      {
-       "slot": "name-it",
-       "itemId": "g4u01.w.guess",
-       "variantKey": null
-      }
-     ],
-     "next": "g4.st.fourteen-live.ch01.s012"
-    },
-    {
-     "id": "g4.st.fourteen-live.ch01.s012",
      "speaker": "sara",
-     "textEn": "Our class presents Dublin. Green hills, old streets — and five days to learn everything.",
-     "scaffoldDe": "Unsere Klasse präsentiert Dublin. Grüne Hügel, alte Straßen — und fünf Tage, um alles zu lernen.",
+     "textEn": "Perhaps it is nothing. We check first.",
+     "scaffoldDe": "Vielleicht ist es nichts. Wir prüfen zuerst.",
      "glosses": [
-      {
-       "word": "presents",
-       "de": "präsentiert",
-       "scope": null
-      },
-      {
-       "word": "hills",
-       "de": "Hügel",
-       "scope": null
-      },
-      {
-       "word": "learn",
-       "de": "lernen",
-       "scope": null
-      }
-     ],
-     "audio": null,
-     "taskSlots": [],
-     "next": "g4.st.fourteen-live.ch01.s013"
-    },
-    {
-     "id": "g4.st.fourteen-live.ch01.s013",
-     "speaker": "leo",
-     "textEn": "Good. My plan for this year: make my English better every week.",
-     "scaffoldDe": "Gut. Mein Plan für dieses Jahr: mein Englisch jede Woche besser machen.",
-     "glosses": [
-      {
-       "word": "plan",
-       "de": "Plan",
-       "scope": null
-      },
-      {
-       "word": "better",
-       "de": "besser",
-       "scope": null
-      }
-     ],
-     "audio": null,
-     "taskSlots": [
-      {
-       "slot": "name-it",
-       "itemId": "g4u01.w.improve",
-       "variantKey": null
-      }
-     ],
-     "next": "g4.st.fourteen-live.ch01.s014"
-    },
-    {
-     "id": "g4.st.fourteen-live.ch01.s014",
-     "speaker": "leah",
-     "textEn": "And Sara? She sounds like a real Dublin girl.",
-     "scaffoldDe": "Und Sara? Die klingt wie ein echtes Dublin-Mädchen.",
-     "glosses": [
-      {
-       "word": "sounds",
-       "de": "klingt",
-       "scope": null
-      },
-      {
-       "word": "real",
-       "de": "echt",
-       "scope": null
-      }
-     ],
-     "audio": null,
-     "taskSlots": [
-      {
-       "slot": "name-it",
-       "itemId": "g4u01.w.fluent",
-       "variantKey": null
-      }
-     ],
-     "next": "g4.st.fourteen-live.ch01.s015"
-    },
-    {
-     "id": "g4.st.fourteen-live.ch01.s015",
-     "speaker": "narrator",
-     "textEn": "Then Leo stops. In the office window there is a poster: WINNER — SYDNEY. But the vote opens on Friday. Today is Monday.",
-     "scaffoldDe": "Dann bleibt Leo stehen. Im Bürofenster hängt ein Plakat: SIEGER — SYDNEY. Aber die Abstimmung startet erst am Freitag. Heute ist Montag.",
-     "glosses": [
-      {
-       "word": "office window",
-       "de": "Bürofenster",
-       "scope": null
-      },
-      {
-       "word": "poster",
-       "de": "Plakat",
-       "scope": null
-      },
-      {
-       "word": "winner",
-       "de": "Sieger",
-       "scope": null
-      },
-      {
-       "word": "vote",
-       "de": "Abstimmung",
-       "scope": null
-      },
-      {
-       "word": "stops",
-       "de": "bleibt stehen",
-       "scope": null
-      }
-     ],
-     "audio": null,
-     "taskSlots": [],
-     "next": "g4.st.fourteen-live.ch01.s016"
-    },
-    {
-     "id": "g4.st.fourteen-live.ch01.s016",
-     "speaker": "leo",
-     "textEn": "I was only walking past. Look — it is on camera.",
-     "scaffoldDe": "Ich bin nur vorbeigegangen. Schaut — ich habe es auf Kamera.",
-     "glosses": [
-      {
-       "word": "camera",
-       "de": "Kamera",
-       "scope": null
-      },
-      {
-       "word": "only",
-       "de": "nur",
-       "scope": null
-      },
-      {
-       "word": "walking",
-       "de": "gehen",
-       "scope": null
-      }
-     ],
-     "audio": null,
-     "taskSlots": [],
-     "next": "g4.st.fourteen-live.ch01.s017"
-    },
-    {
-     "id": "g4.st.fourteen-live.ch01.s017",
-     "speaker": "narrator",
-     "textEn": "Tell it like a reporter: what was happening at the office window?",
-     "scaffoldDe": "Erzähl es wie ein Reporter: Was ist da gerade am Bürofenster passiert?",
-     "glosses": [
-      {
-       "word": "reporter",
-       "de": "Reporter",
-       "scope": null
-      },
-      {
-       "word": "office window",
-       "de": "Bürofenster",
-       "scope": null
-      }
-     ],
-     "audio": null,
-     "taskSlots": [
-      {
-       "slot": "fix-it",
-       "itemId": "g4u01.gi.past-continuous-revision.cp.003",
-       "variantKey": null
-      }
-     ],
-     "next": "g4.st.fourteen-live.ch01.s018"
-    },
-    {
-     "id": "g4.st.fourteen-live.ch01.s018",
-     "speaker": "sara",
-     "textEn": "Maybe it is nothing. A test print. We stay fair — and we check it first.",
-     "scaffoldDe": "Vielleicht ist es nichts. Ein Probedruck. Wir bleiben fair — und wir prüfen es zuerst.",
-     "glosses": [
-      {
-       "word": "test print",
-       "de": "Probedruck",
-       "scope": null
-      },
-      {
-       "word": "fair",
-       "de": "fair",
-       "scope": null
-      },
-      {
-       "word": "maybe",
-       "de": "vielleicht",
-       "scope": null
-      },
       {
        "word": "check",
        "de": "prüfen",
@@ -509,30 +166,14 @@
      ],
      "audio": null,
      "taskSlots": [],
-     "next": "g4.st.fourteen-live.ch01.s019"
+     "next": "g4.st.fourteen-live.ch01.s010"
     },
     {
-     "id": "g4.st.fourteen-live.ch01.s019",
-     "speaker": "narrator",
-     "textEn": "Four friends. One camera. One strange poster.",
-     "scaffoldDe": "Vier Freunde. Eine Kamera. Ein seltsames Plakat.",
-     "glosses": [
-      {
-       "word": "camera",
-       "de": "Kamera",
-       "scope": null
-      },
-      {
-       "word": "strange",
-       "de": "seltsam",
-       "scope": null
-      },
-      {
-       "word": "poster",
-       "de": "Plakat",
-       "scope": null
-      }
-     ],
+     "id": "g4.st.fourteen-live.ch01.s010",
+     "speaker": "leah",
+     "textEn": "FOURTEEN is on this story now. Stay with us.",
+     "scaffoldDe": "FOURTEEN bleibt jetzt an dieser Story dran. Bleibt bei uns.",
+     "glosses": [],
      "audio": null,
      "taskSlots": [
       {
@@ -541,22 +182,6 @@
        "variantKey": null
       }
      ],
-     "next": "g4.st.fourteen-live.ch01.s020"
-    },
-    {
-     "id": "g4.st.fourteen-live.ch01.s020",
-     "speaker": "leah",
-     "textEn": "FOURTEEN is live on this story. Stay with us.",
-     "scaffoldDe": "FOURTEEN ist live an dieser Story dran. Bleibt bei uns.",
-     "glosses": [
-      {
-       "word": "live",
-       "de": "live",
-       "scope": null
-      }
-     ],
-     "audio": null,
-     "taskSlots": [],
      "next": null
     }
    ]
@@ -570,8 +195,8 @@
     {
      "id": "g4.st.fourteen-live.ch02.s001",
      "speaker": "narrator",
-     "textEn": "Monday morning. The poster had disappeared before the first bell. Nobody had touched it — it was simply gone.",
-     "scaffoldDe": "Montag früh. Das Plakat war vor der ersten Glocke verschwunden. Niemand hatte es angefasst — es war einfach weg.",
+     "textEn": "Tuesday morning. The poster had disappeared before the first bell, and the vote had moved to June — after all the pitch rounds.",
+     "scaffoldDe": "Dienstag früh. Das Plakat war vor der ersten Glocke verschwunden, und die Abstimmung war auf Juni verschoben worden — nach allen Pitch-Runden.",
      "glosses": [
       {
        "word": "disappeared",
@@ -584,23 +209,18 @@
        "scope": null
       },
       {
-       "word": "touched",
-       "de": "angefasst",
-       "scope": null
-      },
-      {
-       "word": "simply",
-       "de": "einfach",
-       "scope": null
-      },
-      {
        "word": "poster",
        "de": "Plakat",
        "scope": null
       },
       {
-       "word": "gone",
-       "de": "weg",
+       "word": "pitch",
+       "de": "Pitch",
+       "scope": null
+      },
+      {
+       "word": "rounds",
+       "de": "Runden",
        "scope": null
       }
      ],
@@ -756,8 +376,8 @@
     {
      "id": "g4.st.fourteen-live.ch02.s006",
      "speaker": "you",
-     "textEn": "I write the three words on the studio wall. Under them, one question: who wins if Sydney wins?",
-     "scaffoldDe": "Ich schreibe die drei Wörter an die Studiowand. Darunter eine Frage: Wer gewinnt, wenn Sydney gewinnt?",
+     "textEn": "I write the three words on the studio wall. Under them, one question: who wins if Carinthia wins?",
+     "scaffoldDe": "Ich schreibe die drei Wörter an die Studiowand. Darunter eine Frage: Wer gewinnt, wenn Kärnten gewinnt?",
      "glosses": [
       {
        "word": "studio",
@@ -875,8 +495,8 @@
     {
      "id": "g4.st.fourteen-live.ch02.s009",
      "speaker": "sara",
-     "textEn": "I asked in the office. Friendly, twice. Nobody ordered a poster. Nobody remembers printing one.",
-     "scaffoldDe": "Ich habe im Sekretariat gefragt. Freundlich, zweimal. Niemand hat ein Plakat bestellt. Niemand erinnert sich ans Drucken.",
+     "textEn": "I asked in the office, twice. Nobody ordered a poster, and nobody knows who moved the vote.",
+     "scaffoldDe": "Ich habe im Sekretariat gefragt, zweimal. Niemand hat ein Plakat bestellt, und niemand weiß, wer die Abstimmung verschoben hat.",
      "glosses": [
       {
        "word": "office",
@@ -889,23 +509,13 @@
        "scope": null
       },
       {
-       "word": "remembers",
-       "de": "erinnert sich",
-       "scope": null
-      },
-      {
        "word": "twice",
        "de": "zweimal",
        "scope": null
       },
       {
-       "word": "printing",
-       "de": "das Drucken",
-       "scope": null
-      },
-      {
-       "word": "Friendly",
-       "de": "freundlich",
+       "word": "knows",
+       "de": "weiß",
        "scope": null
       }
      ],
@@ -1169,8 +779,8 @@
     {
      "id": "g4.st.fourteen-live.ch03.s001",
      "speaker": "narrator",
-     "textEn": "Pitch week, round two: New York. Class 4B gets three minutes to sell a whole city.",
-     "scaffoldDe": "Pitch-Woche, Runde zwei: New York. Die 4B bekommt drei Minuten, um eine ganze Stadt zu verkaufen.",
+     "textEn": "Pitch round two: Vienna. Class 4B gets three minutes to sell a whole project week in Vienna.",
+     "scaffoldDe": "Pitch-Runde zwei: Wien. Die 4B bekommt drei Minuten, um eine ganze Projektwoche in Wien zu verkaufen.",
      "glosses": [
       {
        "word": "round",
@@ -1201,6 +811,11 @@
        "word": "gets",
        "de": "bekommt",
        "scope": null
+      },
+      {
+       "word": "project",
+       "de": "Projekt",
+       "scope": null
       }
      ],
      "audio": null,
@@ -1210,8 +825,8 @@
     {
      "id": "g4.st.fourteen-live.ch03.s002",
      "speaker": "leah",
-     "textEn": "Their video is GOOD. They tell the story of the plane on the Hudson river — the whole hall goes silent.",
-     "scaffoldDe": "Ihr Video ist GUT. Sie erzählen die Geschichte vom Flugzeug auf dem Hudson — die ganze Aula wird still.",
+     "textEn": "Their project is about heroes — and their video opens with a story from our English book: the plane on the Hudson river. The whole hall goes silent.",
+     "scaffoldDe": "Ihr Projekt handelt von Helden — und ihr Video beginnt mit einer Geschichte aus unserem Englischbuch: dem Flugzeug auf dem Hudson. Die ganze Aula wird still.",
      "glosses": [
       {
        "word": "plane",
@@ -1242,6 +857,16 @@
        "word": "goes",
        "de": "geht",
        "scope": null
+      },
+      {
+       "word": "heroes",
+       "de": "Helden",
+       "scope": null
+      },
+      {
+       "word": "project",
+       "de": "Projekt",
+       "scope": null
       }
      ],
      "audio": null,
@@ -1251,8 +876,8 @@
     {
      "id": "g4.st.fourteen-live.ch03.s003",
      "speaker": "ben",
-     "textEn": "An emergency landing on water, and every single person got out. New York wins my heart, honestly.",
-     "scaffoldDe": "Eine Notlandung auf dem Wasser, und wirklich jeder kam raus. New York gewinnt mein Herz, ehrlich.",
+     "textEn": "An emergency landing on water, and every single person got out. Vienna wins my heart, honestly.",
+     "scaffoldDe": "Eine Notlandung auf dem Wasser, und wirklich jeder kam raus. Wien gewinnt mein Herz, ehrlich.",
      "glosses": [
       {
        "word": "emergency landing",
@@ -1381,8 +1006,8 @@
     {
      "id": "g4.st.fourteen-live.ch03.s006",
      "speaker": "leo",
-     "textEn": "The pitch lists. Every class was given a city — 'randomly', they said. I wrote down who got what.",
-     "scaffoldDe": "Die Pitch-Listen. Jede Klasse hat eine Stadt bekommen — „zufällig“, hieß es. Ich habe aufgeschrieben, wer was bekommen hat.",
+     "textEn": "The pitch lists. Every class was given a week — 'randomly', they said. I wrote down who got what.",
+     "scaffoldDe": "Die Pitch-Listen. Jede Klasse hat eine Woche bekommen — „zufällig“, hieß es. Ich habe aufgeschrieben, wer was bekommen hat.",
      "glosses": [
       {
        "word": "randomly",
@@ -1427,8 +1052,8 @@
     {
      "id": "g4.st.fourteen-live.ch03.s007",
      "speaker": "leo",
-     "textEn": "The three loudest classes, the ones everyone listens to? All three got Sydney. Random does not look like this.",
-     "scaffoldDe": "Die drei lautesten Klassen, auf die alle hören? Alle drei haben Sydney bekommen. Zufall sieht nicht so aus.",
+     "textEn": "The three loudest classes, the ones everyone listens to? All three got Carinthia. Random does not look like this.",
+     "scaffoldDe": "Die drei lautesten Klassen, auf die alle hören? Alle drei haben Kärnten bekommen. Zufall sieht nicht so aus.",
      "glosses": [
       {
        "word": "loudest",
@@ -1510,8 +1135,8 @@
     {
      "id": "g4.st.fourteen-live.ch03.s009",
      "speaker": "sara",
-     "textEn": "Kevin from 3C told me his class had wanted Dublin. They got Sydney anyway — 'the list said so.'",
-     "scaffoldDe": "Kevin aus der 3C hat mir erzählt, seine Klasse hätte Dublin gewollt. Sie haben trotzdem Sydney bekommen — „die Liste hat es so gesagt.“",
+     "textEn": "Kevin from 3C told me his class had wanted Dublin. They got Carinthia anyway — 'the list said so.'",
+     "scaffoldDe": "Kevin aus der 3C hat mir erzählt, seine Klasse hätte Dublin gewollt. Sie haben trotzdem Kärnten bekommen — „die Liste hat es so gesagt.“",
      "glosses": [
       {
        "word": "anyway",
@@ -1624,8 +1249,8 @@
     {
      "id": "g4.st.fourteen-live.ch03.s012",
      "speaker": "you",
-     "textEn": "I add a line to the wall: the loud classes pitch Sydney. Somebody planned the noise.",
-     "scaffoldDe": "Ich schreibe eine Zeile an die Wand: Die lauten Klassen pitchen Sydney. Jemand hat den Lärm geplant.",
+     "textEn": "I add a line to the wall: the loud classes pitch Carinthia. Somebody planned the noise.",
+     "scaffoldDe": "Ich schreibe eine Zeile an die Wand: Die lauten Klassen pitchen Kärnten. Jemand hat den Lärm geplant.",
      "glosses": [
       {
        "word": "noise",
@@ -1702,8 +1327,8 @@
     {
      "id": "g4.st.fourteen-live.ch03.s014",
      "speaker": "leah",
-     "textEn": "New York got my heart today. The list is trying to give it to Sydney. Let it try.",
-     "scaffoldDe": "New York hat heute mein Herz gewonnen. Die Liste versucht, es Sydney zu geben. Soll sie es versuchen.",
+     "textEn": "Vienna got my heart today. The list is trying to give it to Carinthia. Let it try.",
+     "scaffoldDe": "Wien hat heute mein Herz gewonnen. Die Liste versucht, es Kärnten zu geben. Soll sie es versuchen.",
      "glosses": [
       {
        "word": "trying",
@@ -2294,8 +1919,8 @@
     {
      "id": "g4.st.fourteen-live.ch05.s001",
      "speaker": "narrator",
-     "textEn": "Vote week starts with a smell: free pizza in the schoolyard. A new stand, bright orange, very shiny.",
-     "scaffoldDe": "Die Abstimmungswoche beginnt mit einem Geruch: Gratis-Pizza im Schulhof. Ein neuer Stand, knallorange, sehr glänzend.",
+     "textEn": "Monday starts with a smell: free pizza in the schoolyard. A new stand, bright orange, very shiny.",
+     "scaffoldDe": "Der Montag beginnt mit einem Geruch: Gratis-Pizza im Schulhof. Ein neuer Stand, knallorange, sehr glänzend.",
      "glosses": [
       {
        "word": "smell",
@@ -2429,8 +2054,8 @@
     {
      "id": "g4.st.fourteen-live.ch05.s005",
      "speaker": "narrator",
-     "textEn": "On the stand, small and polite, a logo: a yellow sun over a plane. SunWays.",
-     "scaffoldDe": "Am Stand, klein und höflich, ein Logo: eine gelbe Sonne über einem Flugzeug. SunWays.",
+     "textEn": "On the stand, small and polite, a logo: a yellow sun over mountains. SunWays.",
+     "scaffoldDe": "Am Stand, klein und höflich, ein Logo: eine gelbe Sonne über Bergen. SunWays.",
      "glosses": [
       {
        "word": "polite",
@@ -2440,11 +2065,6 @@
       {
        "word": "logo",
        "de": "Logo",
-       "scope": null
-      },
-      {
-       "word": "plane",
-       "de": "Flugzeug",
        "scope": null
       },
       {
@@ -2640,8 +2260,8 @@
     {
      "id": "g4.st.fourteen-live.ch05.s010",
      "speaker": "leo",
-     "textEn": "Look at the vote posters by the gate. Bottom corner. The sun-and-plane logo — it had been printed on them all along.",
-     "scaffoldDe": "Schaut euch die Abstimmungsplakate beim Tor an. Untere Ecke. Das Sonne-und-Flugzeug-Logo — es war die ganze Zeit daraufgedruckt.",
+     "textEn": "Look at the vote posters by the gate. Bottom corner. The sun-and-mountains logo — it had been printed on them all along.",
+     "scaffoldDe": "Schaut euch die Abstimmungsplakate beim Tor an. Untere Ecke. Das Sonne-und-Berge-Logo — es war die ganze Zeit daraufgedruckt.",
      "glosses": [
       {
        "word": "gate",
@@ -2868,8 +2488,8 @@
     {
      "id": "g4.st.fourteen-live.ch05.s015",
      "speaker": "narrator",
-     "textEn": "On the studio wall, the question changes. Not 'who wins if Sydney wins?' — 'who is MAKING Sydney win?'",
-     "scaffoldDe": "An der Studiowand ändert sich die Frage. Nicht mehr „Wer gewinnt, wenn Sydney gewinnt?“ — „Wer LÄSST Sydney gewinnen?“",
+     "textEn": "On the studio wall, the question changes. Not 'who wins if Carinthia wins?' — 'who is MAKING Carinthia win?'",
+     "scaffoldDe": "An der Studiowand ändert sich die Frage. Nicht mehr „Wer gewinnt, wenn Kärnten gewinnt?“ — „Wer LÄSST Kärnten gewinnen?“",
      "glosses": [
       {
        "word": "changes",
@@ -3679,8 +3299,8 @@
     {
      "id": "g4.st.fourteen-live.ch06.s016",
      "speaker": "ben",
-     "textEn": "For the record: I voted for whichever option has fewer meetings.",
-     "scaffoldDe": "Fürs Protokoll: Ich habe für die Option mit weniger Meetings gestimmt.",
+     "textEn": "For the record: I will vote for whichever option has fewer meetings.",
+     "scaffoldDe": "Fürs Protokoll: Ich stimme für die Option mit weniger Meetings.",
      "glosses": [
       {
        "word": "record",
@@ -3717,14 +3337,14 @@
   {
    "id": "g4.st.fourteen-live.ch07",
    "unit": 7,
-   "titleEn": "The Sydney File",
-   "titleDe": "Die Sydney-Akte",
+   "titleEn": "The Carinthia File",
+   "titleDe": "Die Kärnten-Akte",
    "scenes": [
     {
      "id": "g4.st.fourteen-live.ch07.s001",
      "speaker": "narrator",
-     "textEn": "Pitch week, final round: Sydney. Class 2B brings a real didgeridoo and a slideshow of the outback at sunset.",
-     "scaffoldDe": "Pitch-Woche, letzte Runde: Sydney. Die 2B bringt ein echtes Didgeridoo und eine Slideshow vom Outback bei Sonnenuntergang.",
+     "textEn": "The last pitch round: Carinthia. Class 2B opens with a joke from our English book — 'our dream week' — a real didgeridoo and a slideshow of the outback at sunset.",
+     "scaffoldDe": "Letzte Pitch-Runde: Kärnten. Die 2B beginnt mit einem Scherz aus unserem Englischbuch — „unsere Traumwoche“ — einem echten Didgeridoo und einer Slideshow vom Outback bei Sonnenuntergang.",
      "glosses": [
       {
        "word": "outback",
@@ -3742,12 +3362,7 @@
        "scope": null
       },
       {
-       "word": "final",
-       "de": "letzte",
-       "scope": null
-      },
-      {
-       "word": "Pitch",
+       "word": "pitch",
        "de": "Pitch",
        "scope": null
       },
@@ -3774,8 +3389,8 @@
     {
      "id": "g4.st.fourteen-live.ch07.s002",
      "speaker": "ben",
-     "textEn": "Red earth, ancient stories, spiders the size of my hand. Sydney is amazing AND terrifying. Ten out of ten.",
-     "scaffoldDe": "Rote Erde, uralte Geschichten, Spinnen so groß wie meine Hand. Sydney ist großartig UND furchteinflößend. Zehn von zehn.",
+     "textEn": "Red earth, ancient stories, spiders the size of my hand. Australia is amazing AND terrifying. Ten out of ten.",
+     "scaffoldDe": "Rote Erde, uralte Geschichten, Spinnen so groß wie meine Hand. Australien ist großartig UND furchteinflößend. Zehn von zehn.",
      "glosses": [
       {
        "word": "earth",
@@ -3820,8 +3435,8 @@
     {
      "id": "g4.st.fourteen-live.ch07.s003",
      "speaker": "sara",
-     "textEn": "The pitch teaches the real Australia too — the Aborigines' heritage, the walkabout, the land itself telling stories.",
-     "scaffoldDe": "Der Pitch zeigt auch das echte Australien — das Erbe der Aborigines, den Walkabout, das Land selbst, das Geschichten erzählt.",
+     "textEn": "The joke pitch teaches the real Australia too — the Aborigines' heritage, the walkabout, the land itself telling stories.",
+     "scaffoldDe": "Der Scherz-Pitch zeigt auch das echte Australien — das Erbe der Aborigines, den Walkabout, das Land selbst, das Geschichten erzählt.",
      "glosses": [
       {
        "word": "heritage",
@@ -3867,8 +3482,8 @@
     {
      "id": "g4.st.fourteen-live.ch07.s004",
      "speaker": "narrator",
-     "textEn": "After the assembly, the crew opens the SunWays catalogue Leo photographed at the pizza stand.",
-     "scaffoldDe": "Nach der Versammlung öffnet die Crew den SunWays-Katalog, den Leo am Pizzastand fotografiert hat.",
+     "textEn": "Then 2B shows Carinthia: mountains, a lake, hiking maps. After the assembly, the crew opens the SunWays catalogue Leo photographed at the pizza stand.",
+     "scaffoldDe": "Dann zeigt die 2B Kärnten: Berge, einen See, Wanderkarten. Nach der Versammlung öffnet die Crew den SunWays-Katalog, den Leo am Pizzastand fotografiert hat.",
      "glosses": [
       {
        "word": "catalogue",
@@ -3898,8 +3513,8 @@
     {
      "id": "g4.st.fourteen-live.ch07.s005",
      "speaker": "leo",
-     "textEn": "Dublin: no school package. New York: no school package. Sydney: 'School Special, full service, contact Herr Brandt.'",
-     "scaffoldDe": "Dublin: kein Schulpaket. New York: kein Schulpaket. Sydney: „Schul-Spezial, Komplettservice, Kontakt Herr Brandt.“",
+     "textEn": "Language week in Dublin: no school package. Project week in Vienna: no school package. Hiking week in Carinthia: 'School Special — train, mountain guides, full service, contact Herr Brandt.'",
+     "scaffoldDe": "Sprachwoche in Dublin: kein Schulpaket. Projektwoche in Wien: kein Schulpaket. Wanderwoche in Kärnten: „Schul-Spezial — Zug, Bergführer, Komplettservice, Kontakt Herr Brandt.“",
      "glosses": [
       {
        "word": "package",
@@ -3929,39 +3544,9 @@
     {
      "id": "g4.st.fourteen-live.ch07.s006",
      "speaker": "sara",
-     "textEn": "So whichever city wins, the school books through SunWays — but only ONE city has a ready-made product. The plane leaves for Sydney before anyone votes.",
-     "scaffoldDe": "Egal welche Stadt gewinnt, die Schule bucht über SunWays — aber nur EINE Stadt hat ein fertiges Produkt. Das Flugzeug fliegt nach Sydney, bevor irgendwer abstimmt.",
+     "textEn": "So SunWays can sell only ONE week — and for Carinthia it sells everything: the train, the guides, the beds. The train leaves for Carinthia before anyone votes.",
+     "scaffoldDe": "SunWays kann also nur EINE Woche verkaufen — und für Kärnten verkauft es alles: den Zug, die Bergführer, die Betten. Der Zug fährt nach Kärnten, bevor irgendwer abstimmt.",
      "glosses": [
-      {
-       "word": "books",
-       "de": "bucht",
-       "scope": null
-      },
-      {
-       "word": "ready-made",
-       "de": "fertig",
-       "scope": null
-      },
-      {
-       "word": "product",
-       "de": "Produkt",
-       "scope": null
-      },
-      {
-       "word": "whichever",
-       "de": "egal welche",
-       "scope": null
-      },
-      {
-       "word": "wins",
-       "de": "gewinnt",
-       "scope": null
-      },
-      {
-       "word": "through",
-       "de": "durch",
-       "scope": null
-      },
       {
        "word": "only",
        "de": "nur",
@@ -4319,8 +3904,8 @@
     {
      "id": "g4.st.fourteen-live.ch07.s011",
      "speaker": "narrator",
-     "textEn": "Under the fake stars of pitch season, the real question finally has a shape: not which city — whose signature.",
-     "scaffoldDe": "Unter den falschen Sternen der Pitch-Saison hat die echte Frage endlich eine Form: nicht welche Stadt — wessen Unterschrift.",
+     "textEn": "Under the fake stars of pitch season, the real question finally has a shape: not which week — whose signature.",
+     "scaffoldDe": "Unter den falschen Sternen der Pitch-Saison hat die echte Frage endlich eine Form: nicht welche Woche — wessen Unterschrift.",
      "glosses": [
       {
        "word": "shape",
@@ -5764,8 +5349,8 @@
     {
      "id": "g4.st.fourteen-live.ch10.s004",
      "speaker": "ben",
-     "textEn": "I know these names. Mine is one of them. My family — we were never flying anywhere, whatever city wins.",
-     "scaffoldDe": "Ich kenne diese Namen. Meiner ist einer davon. Meine Familie — wir wären nie irgendwohin geflogen, egal welche Stadt gewinnt.",
+     "textEn": "I know these names. Mine is one of them. My family — we could never pay for a week away, whatever week wins.",
+     "scaffoldDe": "Ich kenne diese Namen. Meiner ist einer davon. Meine Familie — wir könnten uns nie eine Woche weg leisten, egal welche Woche gewinnt.",
      "glosses": [
       {
        "word": "names",
@@ -5783,11 +5368,6 @@
        "scope": null
       },
       {
-       "word": "flying",
-       "de": "fliegen",
-       "scope": null
-      },
-      {
        "word": "whatever",
        "de": "egal welche",
        "scope": null
@@ -5800,11 +5380,6 @@
       {
        "word": "never",
        "de": "nie",
-       "scope": null
-      },
-      {
-       "word": "anywhere",
-       "de": "irgendwohin",
        "scope": null
       }
      ],
@@ -5997,8 +5572,8 @@
     {
      "id": "g4.st.fourteen-live.ch10.s009",
      "speaker": "you",
-     "textEn": "Tomorrow we sit across from him. The file is complete. The question is not WHETHER he answers — it is how we hand him the question.",
-     "scaffoldDe": "Morgen sitzen wir ihm gegenüber. Die Akte ist vollständig. Die Frage ist nicht, OB er antwortet — sondern wie wir ihm die Frage reichen.",
+     "textEn": "Tomorrow we sit across from him. The file is complete for now. The question is not WHETHER he answers — it is how we hand him the question.",
+     "scaffoldDe": "Morgen sitzen wir ihm gegenüber. Die Akte ist fürs Erste vollständig. Die Frage ist nicht, OB er antwortet — sondern wie wir ihm die Frage reichen.",
      "glosses": [
       {
        "word": "across",
@@ -6574,8 +6149,8 @@
     {
      "id": "g4.st.fourteen-live.ch11.s005",
      "speaker": "narrator",
-     "textEn": "Eight years ago: a ski-week vote. Three resorts. And a sponsor's sun-and-plane logo in the corner of the page.",
-     "scaffoldDe": "Vor acht Jahren: eine Abstimmung über die Schiwoche. Drei Schigebiete. Und das Sonne-und-Flugzeug-Logo eines Sponsors in der Ecke der Seite.",
+     "textEn": "Eight years ago: a ski-week vote. Three resorts. And a sponsor's sun-and-mountains logo in the corner of the page.",
+     "scaffoldDe": "Vor acht Jahren: eine Abstimmung über die Schiwoche. Drei Schigebiete. Und das Sonne-und-Berge-Logo eines Sponsors in der Ecke der Seite.",
      "glosses": [
       {
        "word": "resorts",
@@ -7159,8 +6734,8 @@
     {
      "id": "g4.st.fourteen-live.ch12.s006",
      "speaker": "steiner",
-     "textEn": "I signed because twelve kids cannot pay. That is the truth and it is not an excuse. Tomorrow I tell Direktorin Huber myself — you pushed nothing. You waited. Thank you for that.",
-     "scaffoldDe": "Ich habe unterschrieben, weil zwölf Kinder nicht zahlen können. Das ist die Wahrheit, und sie ist keine Entschuldigung. Morgen sage ich es Direktorin Huber selbst — ihr habt nichts erzwungen. Ihr habt gewartet. Danke dafür.",
+     "textEn": "I signed because twelve kids cannot pay. That is the truth and it is not an excuse. On Monday I tell Direktorin Huber myself — you pushed nothing. You waited. Thank you for that.",
+     "scaffoldDe": "Ich habe unterschrieben, weil zwölf Kinder nicht zahlen können. Das ist die Wahrheit, und sie ist keine Entschuldigung. Am Montag sage ich es Direktorin Huber selbst — ihr habt nichts erzwungen. Ihr habt gewartet. Danke dafür.",
      "glosses": [
       {
        "word": "excuse",
@@ -7742,8 +7317,8 @@
     {
      "id": "g4.st.fourteen-live.ch13.s005",
      "speaker": "you",
-     "textEn": "Novak said it in week one: live is a power tool. Power tools need guards. Editor's call — and this time the editor is all of us. I count to three.",
-     "scaffoldDe": "Novak hat es in Woche eins gesagt: Live ist ein Elektrowerkzeug. Elektrowerkzeuge brauchen Schutz. Entscheidung der Redaktion — und diesmal ist die Redaktion wir alle. Ich zähle bis drei.",
+     "textEn": "Novak said it in newspaper week: live is a power tool. Power tools need guards. Editor's call — and this time the editor is all of us. I count to three.",
+     "scaffoldDe": "Novak hat es in der Zeitungswoche gesagt: Live ist ein Elektrowerkzeug. Elektrowerkzeuge brauchen Schutz. Entscheidung der Redaktion — und diesmal ist die Redaktion wir alle. Ich zähle bis drei.",
      "glosses": [
       {
        "word": "power tool",
@@ -8774,8 +8349,8 @@
     {
      "id": "g4.st.fourteen-live.ch13.s016",
      "speaker": "narrator",
-     "textEn": "The result, read aloud twice because the hall will not stop laughing: Sydney. Sydney wins the honest vote.",
-     "scaffoldDe": "Das Ergebnis, zweimal laut vorgelesen, weil die Aula nicht aufhört zu lachen: Sydney. Sydney gewinnt die ehrliche Abstimmung.",
+     "textEn": "The result, read aloud twice because the hall will not stop laughing: Carinthia. Carinthia wins the honest vote.",
+     "scaffoldDe": "Das Ergebnis, zweimal laut vorgelesen, weil die Aula nicht aufhört zu lachen: Kärnten. Kärnten gewinnt die ehrliche Abstimmung.",
      "glosses": [
       {
        "word": "result",
@@ -8805,8 +8380,8 @@
     {
      "id": "g4.st.fourteen-live.ch13.s017",
      "speaker": "ben",
-     "textEn": "Same city. Different school. THAT is the whole story, right there.",
-     "scaffoldDe": "Gleiche Stadt. Andere Schule. DAS ist die ganze Geschichte, genau da.",
+     "textEn": "Same week. Different school. THAT is the whole story, right there.",
+     "scaffoldDe": "Gleiche Woche. Andere Schule. DAS ist die ganze Geschichte, genau da.",
      "glosses": [
       {
        "word": "same",
@@ -8837,14 +8412,9 @@
     {
      "id": "g4.st.fourteen-live.ch13.s018",
      "speaker": "narrator",
-     "textEn": "And the twelve names on Steiner's list are on the passenger list too. Ben checked it himself. Twice.",
-     "scaffoldDe": "Und die zwölf Namen von Steiners Liste stehen auch auf der Passagierliste. Ben hat es selbst geprüft. Zweimal.",
+     "textEn": "And the twelve names on Steiner's list are on the list for Carinthia too. Ben checked it himself. Twice.",
+     "scaffoldDe": "Und die zwölf Namen von Steiners Liste stehen auch auf der Liste für Kärnten. Ben hat es selbst geprüft. Zweimal.",
      "glosses": [
-      {
-       "word": "passenger",
-       "de": "Passagier-",
-       "scope": null
-      },
       {
        "word": "checked",
        "de": "geprüft",

@@ -54,7 +54,8 @@
           "width": 274,
           "height": 420
         }
-      }
+      },
+      "supersededBy": "welle-041 (2026-09-15): no longer this crop — see docs/art/ch01-welle041/README.md"
     },
     {
       "stem": "merle_caged1",
@@ -72,7 +73,8 @@
           "width": 274,
           "height": 420
         }
-      }
+      },
+      "supersededBy": "welle-041 (2026-09-15): no longer this crop — see docs/art/ch01-welle041/README.md"
     },
     {
       "stem": "merle_settle0",
@@ -90,7 +92,8 @@
           "width": 274,
           "height": 420
         }
-      }
+      },
+      "supersededBy": "welle-041 (2026-09-15): no longer this crop — see docs/art/ch01-welle041/README.md"
     },
     {
       "stem": "merle_walk1",
@@ -144,7 +147,8 @@
           "width": 282,
           "height": 420
         }
-      }
+      },
+      "supersededBy": "welle-041 (2026-09-15): no longer this crop — see docs/art/ch01-welle041/README.md"
     },
     {
       "stem": "merle_joy",
@@ -216,7 +220,8 @@
           "width": 303,
           "height": 441
         }
-      }
+      },
+      "supersededBy": "welle-041 (2026-09-15): no longer this crop — see docs/art/ch01-welle041/README.md"
     },
     {
       "stem": "merle_settle1",
@@ -561,7 +566,8 @@
           "height": 413
         }
       },
-      "aliasOf": "merle_walk1"
+      "aliasOf": "merle_walk1",
+      "supersededBy": "welle-041 (2026-09-15): stem removed, never rendered"
     },
     {
       "stem": "pencilcase_burst",

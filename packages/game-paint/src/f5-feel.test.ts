@@ -26,7 +26,7 @@ import {
   treasureSpinSx,
   treasureTurns,
 } from "./cue.ts";
-import { classmateCell } from "./anim.ts";
+import { classmateCell, roamCell } from "./anim.ts";
 import {
   FRENZY_FLIP_TICKS,
   FRENZY_REACH_PX,
@@ -578,6 +578,17 @@ describe("R5-F5 · Merle geht herum (F-26, R49)", () => {
     const zellen = new Set(Array.from({ length: HOP_EVERY_TICKS }, (_, t) => classmateCell("roam", t)));
     for (const c of ["walk1", "walk2", "walk3"]) expect(zellen).toContain(c);
     expect(classmateCell("roam", Math.round(HOP_TICKS / 2))).toBe("joy");
+  });
+
+  it("welle-041 · ihr Gang stolpert nicht: zwischen zwei Kontaktposen steht immer die Durchgangspose, im alten Tempo", () => {
+    const folge: string[] = [];
+    for (let t = 0; t < 96; t++) { const c = roamCell(t); if (folge[folge.length - 1] !== c) folge.push(c); }
+    const kontakt = new Set(["walk1", "walk3"]);
+    for (let i = 1; i < folge.length; i++) expect(kontakt.has(folge[i]!) && kontakt.has(folge[i - 1]!), `${folge[i - 1]}>${folge[i]}`).toBe(false);
+    expect(folge.join(">")).toContain("walk1>walk2>walk3>walk2>walk1");
+    const lauf = Array.from({ length: 64 }, (_, t) => roamCell(t));
+    expect(lauf.slice(0, 8).every((c) => c === "walk1")).toBe(true);
+    expect(lauf[8]).toBe("walk2");
   });
 
   it("nach dem Remount steht sie erst einmal (und geht erst nach ihrer Ruhe los)", () => {

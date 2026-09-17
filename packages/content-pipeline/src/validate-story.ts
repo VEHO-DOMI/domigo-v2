@@ -13,6 +13,8 @@
  *  VS-13 flag hygiene (declared/set-in-place/consumed — a choice that changes
  *        nothing fails CI)
  *  VS-14 spine-tasks (no taskSlot on branch-exclusive scenes)
+ *  VS-19 strand manifest (flags.json forks: visibleIn recomputed from the play,
+ *        >= 2 later units per major fork before the last, planned flags unused)
  *  VS-6  speakers resolve against cast.json
  *  VS-7  gloss correctness (a glossed word actually appears in its line)
  *  VS-8  meta-talk blacklist (EN grammar jargon / tense names in student lines)
@@ -356,6 +358,118 @@ export function endingCoverage(
 }
 
 /**
+ * Where each flag becomes visible: flag -> unit -> the scenes that READ it
+ * (a FlagGate that routes on it, or a flagLine keyed to it). Setting a flag is
+ * not visibility; only a read changes what the player sees.
+ */
+export function flagVisibility(story: Story): Map<string, Map<number, { scene: string; via: "gate" | "line" }[]>> {
+  const vis = new Map<string, Map<number, { scene: string; via: "gate" | "line" }[]>>();
+  const add = (flag: string, unit: number, scene: string, via: "gate" | "line"): void => {
+    const byUnit = vis.get(flag) ?? new Map<number, { scene: string; via: "gate" | "line" }[]>();
+    const reads = byUnit.get(unit) ?? [];
+    if (!reads.some((r) => r.scene === scene && r.via === via)) reads.push({ scene, via });
+    byUnit.set(unit, reads);
+    vis.set(flag, byUnit);
+  };
+  for (const chapter of story.chapters) {
+    for (const scene of chapter.scenes) {
+      const nx = scene.next;
+      if (nx !== null && typeof nx === "object" && !Array.isArray(nx)) add(nx.flag, chapter.unit, scene.id, "gate");
+      for (const l of scene.flagLines ?? []) add(l.flag, chapter.unit, scene.id, "line");
+    }
+  }
+  return vis;
+}
+
+/**
+ * VS-19 — the strand manifest (flags.json `forks`). Runs only when a bundle
+ * declares forks. Every claim in the table is recomputed from the play:
+ *  · a built fork's options are declared flags, set in a chapter of the fork's
+ *    unit, with the fork's major/minor weight; every declared flag sits in
+ *    exactly one built fork;
+ *  · `visibleIn` equals the units where any option is actually read;
+ *  · "well built" (G13): a major fork that is not the last one shows in >= 2
+ *    later units, a minor fork in >= 1, the last major fork chooses the ending
+ *    (visible in its own unit or later);
+ *  · a planned fork's flags are neither declared nor used anywhere yet;
+ *  · a recap with an itemId exists in comprehension.json and is slotted in a
+ *    chapter of that unit.
+ */
+export function strandManifest(
+  story: Story,
+  flags: import("@domigo/content-schema").StoryFlags | null,
+  comprehension: StoryComprehensionFile | null,
+): { errors: string[]; infos: string[] } {
+  const errors: string[] = [];
+  const infos: string[] = [];
+  const forks = flags?.forks;
+  if (forks === undefined || forks.length === 0) return { errors, infos };
+  const at = `${story.id}: VS-19`;
+  const unitOf = new Map(story.chapters.map((c) => [c.id, c.unit]));
+  const declared = new Map((flags?.flags ?? []).map((f) => [f.id, f]));
+  const vis = flagVisibility(story);
+  const used = new Set<string>(vis.keys());
+  for (const chapter of story.chapters) for (const scene of chapter.scenes) {
+    if (Array.isArray(scene.next)) for (const c of scene.next) for (const f of c.sets ?? []) used.add(f);
+  }
+  const slotted = new Map<string, number[]>(); // itemId -> units where a slot uses it
+  for (const chapter of story.chapters) for (const scene of chapter.scenes) for (const ts of scene.taskSlots) {
+    slotted.set(ts.itemId, [...(slotted.get(ts.itemId) ?? []), chapter.unit]);
+  }
+
+  const seenIds = new Set<string>();
+  const owner = new Map<string, string>();
+  const lastMajorUnit = Math.max(0, ...forks.filter((f) => f.major && f.status === "built").map((f) => f.unit));
+  for (const fork of forks) {
+    const tag = `${at} fork ${fork.id}`;
+    if (seenIds.has(fork.id)) errors.push(`${tag} — duplicate fork id`);
+    seenIds.add(fork.id);
+    for (const o of fork.options) {
+      if (owner.has(o.flag)) errors.push(`${tag} — flag "${o.flag}" already belongs to fork ${owner.get(o.flag)}`);
+      owner.set(o.flag, fork.id);
+    }
+    const claimed = [...fork.visibleIn].sort((a, b) => a - b);
+    if (claimed.some((u, i) => i > 0 && u === claimed[i - 1])) errors.push(`${tag} — visibleIn lists a unit twice`);
+
+    if (fork.status === "planned") {
+      for (const o of fork.options) {
+        if (declared.has(o.flag) || used.has(o.flag)) errors.push(`${tag} — planned, but flag "${o.flag}" is already declared or used (switch the fork to built)`);
+      }
+      if (claimed.length === 0 || claimed.some((u) => u <= fork.unit)) errors.push(`${tag} — a planned fork must name the later units where it will show`);
+    } else {
+      for (const o of fork.options) {
+        const d = declared.get(o.flag);
+        if (d === undefined) { errors.push(`${tag} — option "${o.flag}" is not declared in flags`); continue; }
+        if (unitOf.get(d.setIn) !== fork.unit) errors.push(`${tag} — "${o.flag}" is set in ${d.setIn} (unit ${unitOf.get(d.setIn) ?? "?"}), not in unit ${fork.unit}`);
+        if (d.major !== fork.major) errors.push(`${tag} — "${o.flag}" major=${d.major} disagrees with the fork (major=${fork.major})`);
+        if (d.label !== o.label) errors.push(`${tag} — "${o.flag}" label differs from flags[] ("${d.label}")`);
+      }
+      const actual = [...new Set(fork.options.flatMap((o) => [...(vis.get(o.flag)?.keys() ?? [])]))].sort((a, b) => a - b);
+      if (actual.join(",") !== claimed.join(",")) errors.push(`${tag} — visibleIn [${claimed.join(", ")}] but the story reads it in units [${actual.join(", ")}]`);
+      const later = actual.filter((u) => u > fork.unit).length;
+      if (fork.major && fork.unit < lastMajorUnit && later < 2) errors.push(`${tag} — a major fork before the last one must show in >= 2 later units (shows in ${later})`);
+      if (!fork.major && later < 1) errors.push(`${tag} — a minor fork must show in >= 1 later unit`);
+      if (fork.major && fork.unit === lastMajorUnit && actual.length === 0) errors.push(`${tag} — the last fork must be read somewhere (it chooses the ending)`);
+    }
+    for (const r of fork.recap) {
+      if (r.unit < fork.unit) errors.push(`${tag} — recap in unit ${r.unit} comes before the fork`);
+      if (r.itemId === null) continue;
+      if (!(comprehension?.items.some((it) => it.id === r.itemId) ?? false)) errors.push(`${tag} — recap ${r.itemId} is not in comprehension.json`);
+      else if (!(slotted.get(r.itemId) ?? []).includes(r.unit)) errors.push(`${tag} — recap ${r.itemId} is not slotted in unit ${r.unit}`);
+    }
+  }
+  for (const f of declared.keys()) {
+    if (!owner.has(f)) errors.push(`${at} — declared flag "${f}" belongs to no fork in the manifest`);
+    else if (forks.find((k) => k.id === owner.get(f))?.status !== "built") errors.push(`${at} — declared flag "${f}" sits in a planned fork`);
+  }
+  if (errors.length === 0) {
+    const row = (f: (typeof forks)[number]) => `${f.id} U${f.unit}${f.status === "planned" ? " (planned)" : ""} → [${f.visibleIn.join(", ")}]`;
+    infos.push(`${at} — OK (${forks.length} fork(s)): ${forks.map(row).join(" · ")}`);
+  }
+  return { errors, infos };
+}
+
+/**
  * VS-18 — map@1 ↔ story integrity (B-2). A bundle that ships a map.json is an
  * overworld: its zones and chapters must be the SAME set of units (an exact
  * bijection — a zone without a chapter is an unreachable room, a chapter
@@ -526,6 +640,9 @@ export function validateStoryBundle(bundle: StoryBundle, corpus: StoryCorpus): {
   const ec = endingCoverage(story, bundle.flags ?? null); // VS-15 ending coverage
   errors.push(...ec.errors);
   infos.push(...ec.infos);
+  const sm = strandManifest(story, bundle.flags ?? null, bundle.comprehension); // VS-19 strand manifest
+  errors.push(...sm.errors);
+  infos.push(...sm.infos);
   if (bundle.map != null) { // VS-18 map@1 ↔ story integrity (B-2 overworld bundles)
     const mi = mapIntegrityErrors(story, bundle.map, corpus);
     errors.push(...mi.errors);
@@ -799,5 +916,5 @@ export function runValidateStory(): void {
     process.exitCode = 1;
     return;
   }
-  console.log(`content validate-story: OK — ${ids.length} story/ies, ${chapters} chapter(s); VS-1…VS-18 + release green.`);
+  console.log(`content validate-story: OK — ${ids.length} story/ies, ${chapters} chapter(s); VS-1…VS-19 + release green.`);
 }

@@ -688,7 +688,12 @@ if (selftest) {
   // 1 · a red sheet under a card that claims blue must go red on the FAMILY law
   const red = measure(flat(214, 40, 30));
   say("a red sheet cannot be a blue card", red, (m) => m.dominant === "warm" && WORD_FAMILY.blue !== m.dominant);
-  // 2 · violet is no word this book owns
+  // 2 · violet is no word this book owns — URTEIL tore-017 (14.09.): `purple`
+  //     kommt NICHT in DE_COLOUR. Violett ist die Farbe des Fluchs
+  //     (`curseVisual: "violet-ink"`): ein violettes Ding saehe aus wie sein
+  //     eigener Fluch, und die Grenze rosa/violett bei 300° ist an keinem echten
+  //     Blatt gemessen. Dieser Fall haelt das Urteil fest; wer ihn aendert,
+  //     braucht ein neues Urteil (DEBT_REGISTER D-992).
   const violet = measure(flat(140, 60, 200));
   say("violet is measured as violet — no book word claims it", violet,
     (m) => m.dominant === "violet" && Object.values(WORD_FAMILY).every((f) => f !== "violet"));

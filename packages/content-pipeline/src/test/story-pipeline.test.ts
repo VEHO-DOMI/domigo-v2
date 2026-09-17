@@ -2,7 +2,10 @@ import assert from "node:assert/strict";
 import { test } from "node:test";
 import { Cast, GameMap, Story, StoryFlags, StoryItems } from "@domigo/content-schema";
 import { extractArrayLiteral, parseLegacyCampaign } from "../import-story.ts";
-import { endingCoverage, validateStoryBundle, type StoryBundle, type StoryCorpus } from "../validate-story.ts";
+import fs from "node:fs";
+import { loadStrandInputs, renderStrandTable, strandsDocPath } from "../strand-table.ts";
+import { STORIES_DIR } from "../story-common.ts";
+import { endingCoverage, strandManifest, validateStoryBundle, type StoryBundle, type StoryCorpus } from "../validate-story.ts";
 
 // ─────────────────────────────────────────────────────────── importer ────────
 
@@ -263,6 +266,100 @@ test("VS-15: minor-only flags (no major) are a no-op — flagless/minor stories 
   const res = endingCoverage(flagStory(), flagsDecl(false));
   assert.deepEqual(res.errors, []);
   assert.deepEqual(res.infos, []);
+});
+
+// ─────────────────────────────────────────────── VS-19 strand manifest ─────
+
+// Three chapters: fork A (w01.a|w01.b) in ch01, read in ch02 (flagLine) and ch03
+// (FlagGate); the last fork B (w03.a|w03.b) in ch03, read at its own ending.
+const SM = "g4.st.sm";
+const smScene = (ch: number, n: number, next: unknown, extra: Record<string, unknown> = {}) => ({
+  id: `${SM}.ch0${ch}.s${String(n).padStart(3, "0")}`,
+  speaker: "narrator", textEn: "x", scaffoldDe: null, glosses: [], audio: null, taskSlots: [], next, ...extra,
+});
+const smLine = (flag: string) => ({ flag, textEn: "y", scaffoldDe: null, glosses: [] });
+function smStory(opts: { ch03GateOnA?: boolean } = {}) {
+  const gate = opts.ch03GateOnA ?? true;
+  return Story.parse({
+    schema: "story@1", id: SM, grade: 4, title: { en: "X", de: null },
+    chapters: [
+      { id: `${SM}.ch01`, unit: 1, titleEn: "T", titleDe: null, scenes: [
+        smScene(1, 1, [
+          { id: "a", textEn: "A", scaffoldDe: null, next: `${SM}.ch01.s002`, sets: ["w01.a"] },
+          { id: "b", textEn: "B", scaffoldDe: null, next: `${SM}.ch01.s002`, sets: ["w01.b"] },
+        ]),
+        smScene(1, 2, null),
+      ] },
+      { id: `${SM}.ch02`, unit: 2, titleEn: "T", titleDe: null, scenes: [
+        smScene(2, 1, null, { flagLines: [smLine("w01.a"), smLine("w01.b")], taskSlots: [{ slot: "recap", itemId: "g4u02.ci.x.mc.001", variantKey: null }] }),
+      ] },
+      { id: `${SM}.ch03`, unit: 3, titleEn: "T", titleDe: null, scenes: [
+        smScene(3, 1, gate ? { kind: "flag", flag: "w01.a", then: `${SM}.ch03.s002`, else: `${SM}.ch03.s002` } : `${SM}.ch03.s002`),
+        smScene(3, 2, [
+          { id: "a", textEn: "A", scaffoldDe: null, next: `${SM}.ch03.s003`, sets: ["w03.a"] },
+          { id: "b", textEn: "B", scaffoldDe: null, next: `${SM}.ch03.s003`, sets: ["w03.b"] },
+        ]),
+        smScene(3, 3, null, { flagLines: [smLine("w03.a"), smLine("w03.b")] }),
+      ] },
+    ],
+  });
+}
+type Fork = NonNullable<StoryFlags["forks"]>[number];
+function smFlags(forkPatch: (forks: Fork[]) => Fork[] = (f) => f, extraFlags: StoryFlags["flags"] = []) {
+  const flag = (id: string, ch: number) => ({ id, label: id, setIn: `${SM}.ch0${ch}`, major: true });
+  const forks: Fork[] = [
+    { id: "F1", unit: 1, question: "A?", major: true, status: "built", options: [{ flag: "w01.a", label: "w01.a" }, { flag: "w01.b", label: "w01.b" }], visibleIn: [2, 3], recap: [{ unit: 2, itemId: "g4u02.ci.x.mc.001" }], note: null },
+    { id: "F2", unit: 3, question: "B?", major: true, status: "built", options: [{ flag: "w03.a", label: "w03.a" }, { flag: "w03.b", label: "w03.b" }], visibleIn: [3], recap: [], note: null },
+    { id: "N1", unit: 2, question: "C?", major: false, status: "planned", options: [{ flag: "w02.x", label: "x" }, { flag: "w02.y", label: "y" }], visibleIn: [3], recap: [{ unit: 3, itemId: null }], note: null },
+  ];
+  return StoryFlags.parse({ schema: "flags@1", storyId: SM, flags: [flag("w01.a", 1), flag("w01.b", 1), flag("w03.a", 3), flag("w03.b", 3), ...extraFlags], forks: forkPatch(forks) });
+}
+const smComp = { schema: "comprehension@1" as const, storyId: SM, items: [{ id: "g4u02.ci.x.mc.001" }] } as unknown as Parameters<typeof strandManifest>[2];
+
+test("VS-19: a manifest that matches the play passes and reports each fork", () => {
+  const res = strandManifest(smStory(), smFlags(), smComp);
+  assert.deepEqual(res.errors, []);
+  assert.match(res.infos[0]!, /VS-19 — OK \(3 fork\(s\)\): F1 U1 → \[2, 3\] · F2 U3 → \[3\] · N1 U2 \(planned\) → \[3\]/);
+});
+
+test("VS-19 tamper: visibleIn that drops a unit the story reads is red", () => {
+  const res = strandManifest(smStory(), smFlags((f) => f.map((k) => (k.id === "F1" ? { ...k, visibleIn: [2] } : k))), smComp);
+  assert.ok(res.errors.some((e) => /fork F1 — visibleIn \[2\] but the story reads it in units \[2, 3\]/.test(e)), res.errors.join(" | "));
+});
+
+test("VS-19: a major fork before the last one that shows in only one later unit is red", () => {
+  const res = strandManifest(smStory({ ch03GateOnA: false }), smFlags((f) => f.map((k) => (k.id === "F1" ? { ...k, visibleIn: [2] } : k))), smComp);
+  assert.ok(res.errors.some((e) => /fork F1 — a major fork before the last one must show in >= 2 later units \(shows in 1\)/.test(e)), res.errors.join(" | "));
+});
+
+test("VS-19: a planned fork whose flag is already declared is red", () => {
+  const res = strandManifest(smStory(), smFlags(undefined, [{ id: "w02.x", label: "x", setIn: `${SM}.ch02`, major: false }]), smComp);
+  assert.ok(res.errors.some((e) => /fork N1 — planned, but flag "w02.x" is already declared or used/.test(e)), res.errors.join(" | "));
+  assert.ok(res.errors.some((e) => /declared flag "w02.x" sits in a planned fork/.test(e)), res.errors.join(" | "));
+});
+
+test("VS-19: a declared flag outside every fork, and a recap that is not in comprehension.json, are red", () => {
+  const res = strandManifest(smStory(), smFlags((f) => f.filter((k) => k.id !== "F2")), { ...smComp!, items: [] });
+  assert.ok(res.errors.some((e) => /declared flag "w03.a" belongs to no fork/.test(e)), res.errors.join(" | "));
+  assert.ok(res.errors.some((e) => /recap g4u02.ci.x.mc.001 is not in comprehension.json/.test(e)), res.errors.join(" | "));
+});
+
+test("VS-19: no forks declared = no-op (stories without a manifest are untouched)", () => {
+  const res = strandManifest(smStory(), StoryFlags.parse({ ...smFlags(), forks: undefined }), smComp);
+  assert.deepEqual(res, { errors: [], infos: [] });
+});
+
+test("strand table: every committed docs/handover/strands/<id>.md equals its render (no hand drift)", () => {
+  let checked = 0;
+  for (const id of fs.readdirSync(STORIES_DIR).filter((n) => /^g[1-4]\.st\.[a-z0-9-]+$/.test(n))) {
+    const inputs = loadStrandInputs(id);
+    if (inputs === null) continue;
+    const doc = strandsDocPath(id);
+    assert.ok(fs.existsSync(doc), `${id} declares forks but ${doc} is missing — run pnpm content story strands --story ${id} --write`);
+    assert.equal(fs.readFileSync(doc, "utf8"), renderStrandTable(inputs.story, inputs.flags), `${doc} drifted — re-render it`);
+    checked += 1;
+  }
+  assert.ok(checked >= 1, "no story with a strand manifest found");
 });
 
 // ─────────────────────────────────────────────── VS-18 map@1 integrity (B-2) ──

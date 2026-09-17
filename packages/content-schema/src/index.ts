@@ -1281,6 +1281,30 @@ export const StoryNames = z.object({
 });
 export type StoryNames = z.infer<typeof StoryNames>;
 
+/**
+ * economy@1 — the story's authored audience curve (welle-049, REVIEWPLAN_YEAR3 §3).
+ * One row per chapter: episode views, like rate, subscribers. These are STORY numbers,
+ * the same for every child — never a player value, never stored, never computed from
+ * performance (VISION 3: the one hidden XP stays the only economy). Likes are derived
+ * for display as round(views × likeRate). Consistency law: scripts/check-g3-economy.mjs.
+ */
+export const StoryEconomy = z.object({
+  schema: z.literal("economy@1"),
+  storyId: StoryId,
+  episodes: z
+    .array(
+      z.object({
+        chapterId: ChapterId,
+        views: z.number().int().min(0),
+        likeRate: z.number().gt(0).max(1),
+        subscribers: z.number().int().min(0),
+        note: z.string(),
+      }),
+    )
+    .min(1),
+});
+export type StoryEconomy = z.infer<typeof StoryEconomy>;
+
 /** flags@1 — the story's declared narrative flags (VS-13 hygiene manifest). */
 export const StoryFlags = z.object({
   schema: z.literal("flags@1"),
@@ -1296,6 +1320,29 @@ export const StoryFlags = z.object({
       }),
     )
     .min(1),
+  /**
+   * The strand manifest (welle-050): one row per fork — where each choice
+   * becomes visible later. `visibleIn` is a CLAIM that VS-19 recomputes from
+   * story.json (FlagGate + flagLines), so the table cannot drift from the play.
+   * `planned` forks are designed but not authored yet: their flags must not be
+   * declared or used until the unit that carries them switches them to `built`.
+   */
+  forks: z
+    .array(
+      z.object({
+        id: z.string().regex(/^[A-Z][0-9]+$/),
+        unit: z.number().int().min(1).max(15),
+        question: z.string().min(1),
+        major: z.boolean(),
+        status: z.enum(["built", "planned"]),
+        options: z.array(z.object({ flag: FlagId, label: z.string().min(1) })).min(2),
+        visibleIn: z.array(z.number().int().min(1).max(15)),
+        /** The comprehension check per strand; itemId null = not authored yet. */
+        recap: z.array(z.object({ unit: z.number().int().min(1).max(15), itemId: StoryComprehensionRef.nullable() })),
+        note: z.string().nullable(),
+      }),
+    )
+    .optional(),
 });
 export type StoryFlags = z.infer<typeof StoryFlags>;
 

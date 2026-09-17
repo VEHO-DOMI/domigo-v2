@@ -2337,7 +2337,8 @@ function Overlay({
     // The story beat: a TEASER PICTURE with one line under it, not a paragraph.
     // ⚠ THE CLOAK LAW IS AT ITS SHARPEST HERE (cloakErrorsDe, check-paint-copy):
     // this beat is about the antagonist, and he has no name before ch15. He is
-    // „der Tinten-Schatten" — a description of his ink, never a proper name.
+    // „der Tintengeist" (Koki 15.09., welle-041; bis dahin „der Tinten-Schatten") —
+    // a description of his ink, never a proper name.
     // STORY_SPINE_CH01.md is the authority for every word of it.
     if (o.card === "schatten") {
       return staged(
@@ -2672,7 +2673,9 @@ function Overlay({
     return staged(<>
       {device ? <Plate url={art.device_locker_a!} behindUrl={art[`obj_${o.cagehint?.captive}`]} behindWindow={DEVICE_WINDOW} altDe="Ein verschlossenes Schließfach." height={182} />
         : <SceneCut art={art} backdrop={roomStem} pose="stand" heroHeight={88} height={162} subject={<PaintedCage size={104} />} />}
-      <Key>{device ? `${name.charAt(0).toUpperCase()}${name.slice(1)} ist weggesperrt.` : `Da steckt ${name} fest!`}</Key>
+      {/* welle-041: a locker hint never names its device — the plate above paints it behind the window, and
+          „Das Tablet ist weggesperrt." would hand over `It's a tablet.` before the card asks (Koki 15.09.). */}
+      <Key>{device ? "Im Schließfach ist etwas weggesperrt." : `Da steckt ${name} fest!`}</Key>
       <p className="pb-quiet">Stell dich davor und öffne die Aufgabe. Mit der richtigen Antwort kannst du {device ? "das Schließfach" : "den Käfig"} öffnen.</p>
       <button className="pb-btn-primary" style={btn} onClick={() => onDismiss(o)}>Alles klar!</button>
     </>);

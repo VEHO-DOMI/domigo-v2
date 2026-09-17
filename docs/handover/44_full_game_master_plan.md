@@ -198,6 +198,9 @@ deuteragonist + the Blank · Koki's surface-villain whodunit) remain fully const
 choice moves to the G2 design gate. Doc 20 is NOT rewritten this round.
 
 ### 1.10 What the child may call him — »der Tinten-Schatten« (new; sharpens doc 31 §6 "the cloak"; ratifies Koki's Session-C1 gate answer, 2026-08-11)
+
+> **Nachtrag 2026-09-15 (Koki, Karte welle-041):** Die Bezeichnung heißt ab jetzt **»der Tintengeist«** — in jedem Kapitel und in der Regelseiten-Zeile (`cards/auftakt.ts`). Grund: Kokis Kapitel-1-Auftrag an Codex (welle-031, PR #427) hat die alte Lore ersetzt, und Kapitel 2/4/5/6 zogen nicht nach (Nach-Prüfung welle-033). Alles Übrige in §1.10 gilt unverändert: eine Beschreibung, kein Eigenname, keine Vorgeschichte bis zur Enthüllung. »Der Tintengeist« (Einzahl, ohne Bindestrich, der Verursacher) ist NICHT eines der harmlosen **Tinten-Geister** aus §1.6 (Mehrzahl, mit Bindestrich) — `check-design-sheets` hält den Bindestrich-Begriff für die Ambiente-Wesen. Der folgende Text bleibt als Geschichte stehen.
+
 A threat with no designation cannot be written about, and doc 45's C4 caught the copy solving
 that the forbidden way — the mission card said „OSWINs Tinte". So every chapter before the
 unmask uses exactly one designation, and it is **»der Tinten-Schatten«: a description of his

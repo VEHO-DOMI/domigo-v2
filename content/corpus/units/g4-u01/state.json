@@ -148,6 +148,27 @@
       "contentHash": "de70f0e9ad7167a8a97055fef6c911973f0579d7aa5dd025ebfcda68dadab8f9",
       "note": "trusted patch (mechanical): 17 answer-pool fix(es) [g4u01.w.cattle, g4u01.w.crop, g4u01.w.famine, g4u01.w.free-state, g4u01.w.fungus, g4u01.w.government, g4u01.w.grain, g4u01.w.hiking, g4u01.w.incident, g4u01.w.intention, g4u01.w.landlord, g4u01.w.majority, g4u01.w.member, g4u01.w.nonsense, g4u01.w.primary-school, g4u01.w.tax, g4u01.w.thunder] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
       "at": "2026-07-12T11:06:22.377Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable",
+      "contentHash": "6ce3d77336592b87b5044e26e668916b03acf7c10e4af5fa882a6ec469eb181b",
+      "note": "variant mint for g4.st.fourteen-live",
+      "at": "2026-09-16T17:03:17.593Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable",
+      "contentHash": "1a0340d749fe6c7a85a2f956d6ea858e12333c240564041c5e004bcdf6c0ec23",
+      "note": "variant mint for g4.st.fourteen-live",
+      "at": "2026-09-16T17:14:40.986Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable",
+      "contentHash": "875abe98023e154e80b492fa24ee73b223f2676fa90cadd3a17fd3c25f25f404",
+      "note": "variant mint for g4.st.fourteen-live",
+      "at": "2026-09-16T17:19:23.506Z"
     }
   ]
 }

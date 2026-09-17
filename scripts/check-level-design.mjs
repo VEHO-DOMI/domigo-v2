@@ -374,8 +374,9 @@ const playedCoverageFails = (cx) => {
 // Es BERICHTET mit Zahl, statt rot zu werden (Koki, 2026-09-05): der erste Lauf
 // findet 16 solcher Stellen im ausgelieferten Bestand, und ihre Reparatur liegt
 // in `chNN.policy.json` — Kapitel-Dateien, die dieser Bahn gesperrt sind. Die
-// Zeilen gehen namentlich an die T2-Bahnen; wer sie abraeumt, dreht `BERICHTET`
-// auf `fails.push`. Eine Zeile, ein Schalter, kein zweites Register.
+// Zeilen gehen namentlich an die T2-Bahnen. Der fruehere Plan »wer sie abraeumt,
+// dreht auf `fails.push`« ist mit dem Urteil D-986 (tore-017, 14.09.) entfallen:
+// das scharfe Gesetz ist 17c in `variety.ts`, diese Meldung bleibt Hinweis.
 const ledgerDifferenz = (cx) => {
   const out = [];
   if (!cx.hasTasks || !cx.hasPolicy || !cx.wordbankPath || !fs.existsSync(cx.wordbankPath)) return out;
@@ -1055,16 +1056,18 @@ for (const g of ledger.gaps()) {
 
 // L0c · P18: BERICHTET, mit Zahl — vor dem Urteil, damit ein roter Lauf sie
 // auch zeigt (L0-Lehre: eine Diagnose hinter dem Exit-Code ist keine Diagnose).
-// L0e · D-986 · BLEIBT BERICHTET, NICHT ROT — gemessen, nicht angenommen: die
-// 12 Eintraege vom 13.09. gestrichen, und `check-game-tasks` wird mit genau 12
-// Mal Gesetz 17a rot („exercised by no card and carries no ledger entry").
-// Dieses Tor liest »eine Karte loest das Wort ein« an der ANTWORT-Flaeche
-// (`saysWord`, trifft auch „can" in „can't"), `variety.ts` an der erklaerten
-// Uebung. Solange die zwei Lesarten auseinanderliegen, stuende ein Autor
-// zwischen zwei Toren, von denen jedes das Gegenteil verlangt. Rot erst, wenn
-// EINE Lesart gilt (Befund an GG, L0e-Bericht).
+// L0e · D-986 · gemessen 13.09.: die 12 Eintraege gestrichen, und
+// `check-game-tasks` wird mit genau 12 Mal Gesetz 17a rot („exercised by no
+// card and carries no ledger entry"). Dieses Tor liest »eine Karte loest das
+// Wort ein« an der ANTWORT-Flaeche (`saysWord`; ein Apostroph gehoert zum Wort,
+// „can" trifft also NICHT „can't"), `variety.ts` an der erklaerten Uebung.
+// URTEIL tore-017 (14.09.): es gilt EINE Lesart, die ERKLAERTE — eine
+// Feld-Karte nennt die ID in `exercises` (17a/17c; Gesetz 13c: Abdeckung, an
+// Prosa gemessen, ist Abdeckung, der niemand trauen kann). Diese Meldung bleibt
+// deshalb ein HINWEIS und wird NIE rot: sie zeigt die Karte, die das Wort schon
+// sagt; erklaert diese Karte die ID, zwingt 17c den Hauptbuch-Eintrag heraus.
 if (differenzen.length > 0) {
-  console.log(`check-level-design: ${differenzen.length} Hauptbuch-Ausnahmen, die eine Karte laengst einloest (D-840, berichtet — nicht rot, D-986):`);
+  console.log(`check-level-design: ${differenzen.length} Hauptbuch-Ausnahmen, deren Wort eine Karte schon antworten laesst — Hinweis, nie rot (D-840, Urteil D-986): die Karte nimmt die ID in \`exercises\` auf, dann streicht Gesetz 17c den Eintrag:`);
   for (const d of differenzen) console.log(`  · ${d}`);
 }
 if (warnungen.length > 0) {

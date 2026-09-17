@@ -657,7 +657,27 @@
       "rev": 1,
       "difficulty": 1,
       "presentation": {
-        "variants": [],
+        "variants": [
+          {
+            "key": "fourteen-live.ch01.show-notes",
+            "prompt": {
+              "text": "When the news came, we ___ (watch) a story about Dublin for our show.",
+              "lang": "en"
+            },
+            "glosses": [],
+            "audio": null,
+            "provenance": {
+              "by": "fable",
+              "sbRef": null,
+              "seedV1": null,
+              "narrative": {
+                "storyId": "g4.st.fourteen-live",
+                "chapterId": "g4.st.fourteen-live.ch01"
+              },
+              "note": "g4.st.fourteen-live.ch01.s005 · show-notes"
+            }
+          }
+        ],
         "gameMeta": null,
         "audio": null
       },
@@ -1067,7 +1087,27 @@
       "rev": 1,
       "difficulty": 3,
       "presentation": {
-        "variants": [],
+        "variants": [
+          {
+            "key": "fourteen-live.ch01.ask-amelie",
+            "prompt": {
+              "text": "___ you ___ (wait) for the break when the news came?",
+              "lang": "en"
+            },
+            "glosses": [],
+            "audio": null,
+            "provenance": {
+              "by": "fable",
+              "sbRef": null,
+              "seedV1": null,
+              "narrative": {
+                "storyId": "g4.st.fourteen-live",
+                "chapterId": "g4.st.fourteen-live.ch01"
+              },
+              "note": "g4.st.fourteen-live.ch01.s003 · ask-amelie"
+            }
+          }
+        ],
         "gameMeta": null,
         "audio": null
       },
@@ -1107,7 +1147,27 @@
       "rev": 2,
       "difficulty": 2,
       "presentation": {
-        "variants": [],
+        "variants": [
+          {
+            "key": "fourteen-live.ch01.the-hall",
+            "prompt": {
+              "text": "While our headteacher ___ (talk), all the classes ___ (listen) — well, not me.",
+              "lang": "en"
+            },
+            "glosses": [],
+            "audio": null,
+            "provenance": {
+              "by": "fable",
+              "sbRef": null,
+              "seedV1": null,
+              "narrative": {
+                "storyId": "g4.st.fourteen-live",
+                "chapterId": "g4.st.fourteen-live.ch01"
+              },
+              "note": "g4.st.fourteen-live.ch01.s004 · fix-it-hall"
+            }
+          }
+        ],
         "gameMeta": null,
         "audio": null
       },

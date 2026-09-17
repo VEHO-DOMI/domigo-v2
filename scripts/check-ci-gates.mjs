@@ -53,6 +53,15 @@
 // gehalten, in beide Richtungen — mit derselben Ratsche, die SEAM_ALLOW traegt:
 // eine Ausnahme darf eine bekannte Luecke dulden, sie darf sie nie ueberleben.
 //
+// ── welle-040 · #425: DER NAME WAR DAS GESETZ, NICHT DIE SACHE ──────────────
+//
+// Gezaehlt wurden nur Dateien namens `import-batch-*.mjs`. #425 brachte
+// `import-ch01-buecherwelt.mjs` mit einem Selbsttest, und weder ci.yml fuhr ihn
+// noch sah dieses Tor die Luecke — ein Namensfilter ist eine Annahme darueber,
+// wie der naechste Importeur heissen wird. Dieselbe Klasse wie D-957. Gezaehlt
+// wird jetzt jeder `docs/art/import-*.mjs`; ob er einen Selbsttest HAT, entscheidet
+// weiter allein der Aufruf im Code (READS_SELFTEST_FLAG), nie der Name.
+//
 // Run: node scripts/check-ci-gates.mjs            (exit 1 on any gap)
 //      node scripts/check-ci-gates.mjs --selftest (proves the red light works)
 
@@ -127,7 +136,16 @@ const IMPORTER_WITHOUT_CI_LINE = {
  *  Selbsttest, der seine eigene Quelldatei liest, scheitert sonst an seiner
  *  eigenen Prosa, und hier waere der Fehler umgekehrt (ein Kommentar, der das
  *  Flag nur ERWAEHNT, wuerde eine ci.yml-Zeile verlangen, die nichts faehrt). */
-const READS_SELFTEST_FLAG = /includes\(\s*["']--selftest["']\s*\)/;
+//
+// welle-040 · #425: die Vergleichsform zaehlt genauso. `import-ch01-buecherwelt`
+// liest das Flag als `args[0] === "--selftest"`; mit der reinen `includes`-Regel
+// hielt dieses Tor ihn fuer einen Importeur OHNE Selbsttest und verlangte keine
+// Zeile. Beide Formen sind ein AUFRUF, keine Erwaehnung — die Begruendung oben
+// gilt unveraendert.
+const READS_SELFTEST_FLAG = /includes\(\s*["']--selftest["']\s*\)|===\s*["']--selftest["']/;
+/** Die Regel VOR welle-040 — steht nur hier, damit der Selbsttest beweisen kann,
+ *  dass die Erweiterung tragend ist (Fall »die ===-Form des Flags wird gelesen«). */
+const READS_SELFTEST_FLAG_VOR_WELLE040 = /includes\(\s*["']--selftest["']\s*\)/;
 
 /** Scripts that are deliberately NOT CI gates at all. Reason is mandatory. */
 const NOT_A_GATE = {
@@ -224,17 +242,18 @@ const gatesOnDisk = fs
   .filter((f) => f.startsWith("check-") && f.endsWith(".mjs"))
   .sort();
 
-/** Jeder `docs/art/import-batch-*.mjs` mit der Angabe, ob er das Selbsttest-
- *  Flag wirklich LIEST. Die Quelle wird einmal gelesen, damit der Selbsttest
- *  dieselbe Liste verfaelschen kann, die der echte Lauf beurteilt. */
-const importersOnDisk = fs
+/** Jeder `docs/art/import-*.mjs` (welle-040: nicht nur `import-batch-*`) mit der
+ *  Angabe, ob er das Selbsttest-Flag wirklich LIEST. Die Quelle wird einmal
+ *  gelesen, damit der Selbsttest dieselbe Liste verfaelschen kann, die der echte
+ *  Lauf beurteilt — `source` bleibt dafuer am Eintrag. */
+const importerSources = fs
   .readdirSync(ART)
-  .filter((f) => f.startsWith("import-batch-") && f.endsWith(".mjs"))
+  .filter((f) => f.startsWith("import-") && f.endsWith(".mjs"))
   .sort()
-  .map((file) => ({
-    file,
-    hasSelftest: READS_SELFTEST_FLAG.test(fs.readFileSync(path.join(ART, file), "utf8")),
-  }));
+  .map((file) => ({ file, source: fs.readFileSync(path.join(ART, file), "utf8") }));
+const measureImporters = (flagRule) =>
+  importerSources.map(({ file, source }) => ({ file, hasSelftest: flagRule.test(source) }));
+const importersOnDisk = measureImporters(READS_SELFTEST_FLAG);
 
 /** Every `scripts/<file>` mention in a blob of shell/YAML, split by whether
  *  that particular invocation carries `--selftest`. Line by line on purpose:
@@ -243,7 +262,7 @@ const importersOnDisk = fs
 const SCRIPT_REF = /scripts\/([A-Za-z0-9._-]+\.(?:mjs|ts))/g;
 /** dasselbe fuer die Importeure — eigener Ausdruck, damit ein `scripts/`-Pfad
  *  nie als Importeur und ein `docs/art/`-Pfad nie als Tor gezaehlt wird. */
-const ART_REF = /docs\/art\/(import-batch-[A-Za-z0-9._-]*\.mjs)/g;
+const ART_REF = /docs\/art\/(import-[A-Za-z0-9._-]*\.mjs)/g;
 
 /** Welche Importeure ruft ci.yml auf, und faehrt die Zeile den Selbsttest?
  *  Zeilenweise, aus demselben Grund wie oben: eine Zeile ohne `--selftest` ist
@@ -459,7 +478,7 @@ export const analyse = ({ ciText, gates, notAGate, selftestOnly, importers, impo
 };
 
 // ── SELBSTTEST ───────────────────────────────────────────────────────────────
-// Elf Fälle, und der letzte ist der wichtigste: die REALE, unverfälschte
+// Vierzehn Fälle (welle-040: drei neue), und der letzte ist der wichtigste: die REALE, unverfälschte
 // Konfiguration muss GRÜN herauskommen. Ein Selbsttest, der nur rote Lichter
 // beweist, kann ein arbeitendes Tor nicht von einem unterscheiden, das auf
 // alles rot geht.
@@ -538,6 +557,26 @@ if (selftest) {
       importerWaivers: { "import-batch-as.mjs": { reason: "erfunden, damit dieser Fall ein rotes Licht zeigt", until: "2000-01-01" } },
     }), true],
 
+    // ── welle-040 · #425 · der Importeur, den der Namensfilter nicht sah ──────
+    ["welle-040: ein Importeur außerhalb import-batch-* verschwindet aus CI", () => {
+      // Vorbedingung laut: faellt der Anker weg, faerbt der Fall nichts und
+      // beweist nichts (Fixture-Verrottung, siehe D-511-Fall oben).
+      const ch01 = importersOnDisk.find((i) => i.file === "import-ch01-buecherwelt.mjs");
+      if (ch01 === undefined || !ch01.hasSelftest) {
+        throw new Error("import-ch01-buecherwelt.mjs fehlt in der Importeur-Liste oder gilt als ohne Selbsttest — der welle-040-Fall kann nicht gebaut werden");
+      }
+      return analyse({ ...WELT, ciText: ohneZeile("docs/art/import-ch01-buecherwelt.mjs") });
+    }, true],
+    ["welle-040: ein neuer Importeur-Name mit Selbsttest, aber ohne Zeile", () => analyse({
+      ...WELT, importers: [...importersOnDisk, { file: "import-ch09-erfunden.mjs", hasSelftest: true }],
+    }), true],
+    ["welle-040: die ===-Form des Flags wird gelesen (alte Regel ⇒ rot)", () => analyse({
+      // dieselben Dateien, dieselbe ci.yml, nur mit der Regel VOR welle-040
+      // vermessen: dann faehrt ci.yml einen Selbsttest, den das Tor fuer nicht
+      // vorhanden haelt — die Gegenrichtung von Gesetz 5 muss rot werden
+      ...WELT, importers: measureImporters(READS_SELFTEST_FLAG_VOR_WELLE040),
+    }), true],
+
     ["NICHT-TAMPER: der echte Stand ist grün", () => analyse(WELT), false],
   ];
   let bad = 0;
@@ -604,7 +643,7 @@ const ciZeilen = ciOnDisk.split("\n").filter((l) => /^\s+-\s+run:\s+node\s/.test
 console.log(`check-ci-gates: BILANZ (maschinell gezaehlt, ${TODAY}) — `
   + `${ciZeilen} einzeilige \`run: node\`-Zeilen in ci.yml · `
   + `${gatesOnDisk.length} check-*.mjs auf der Platte · `
-  + `${importersOnDisk.length} docs/art/import-batch-*.mjs · `
+  + `${importersOnDisk.length} docs/art/import-*.mjs · `
   + `${zaehleTestdateien(["packages", "apps"])} Testdateien. `
   + "Die Zahl der gefahrenen PRUEFUNGEN druckt `pnpm test` selbst (Zeile »Tests  N passed«) — "
   + "ein Report zitiert diese beiden Quellen, nie sein Gedaechtnis.");

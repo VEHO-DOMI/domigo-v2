@@ -25,7 +25,8 @@ describe("Merle's visible body matches the hero in chapter one",()=>{
   });
   it("keeps the existing common pose scale and preserves complete image margins",()=>{
     const names=fs.readdirSync(new URL("ch01/",art)).filter(n=>/^merle_.+\.png$/.test(n));
-    expect(names.length).toBe(28);
+    // welle-041: 27 — merle_run left the sheet (never rendered: classmateCell answers first).
+    expect(names.length).toBe(27);
     const ref=read("ch01/merle_a");
     const scale=entDisplayH({role:"classmate",skin:"merle"})/ref.height;
     for(const name of names){
