@@ -101,6 +101,10 @@ export default function DatenschutzPage() {
           <li><strong>Datenbank:</strong> Neon Postgres, {DATENBANK_REGION}.</li>
         )}
       </ul>
+      <p>
+        Beides gilt gleichzeitig: die Rechner stehen in Frankfurt, die Firmen, die sie betreiben, sitzen in
+        den USA. Was das für deine Daten bedeutet, steht im nächsten Abschnitt.
+      </p>
 
       <h2 style={h2}>Beteiligte Dienste</h2>
       <ul style={list}>
@@ -114,14 +118,14 @@ export default function DatenschutzPage() {
       <p>
         Derzeit gibt es <strong>keine feste Löschfrist</strong> und keine automatische Löschung. Wenn eine
         Lehrkraft ein Kind aus der Klasse entfernt, wird heute nur sein Eintrag in der Klassenliste
-        (Spitzname, Name, PIN) gelöscht; Übungsergebnisse, Texte, Noten und ein Konto aus der früheren
-        DomiGo-Version bleiben gespeichert. Auf Anfrage an {DATENSCHUTZ_KONTAKT} werden auch diese Daten
+        (Spitzname, Name, PIN) gelöscht; Übungsergebnisse, Texte, Noten, ein bereits gespeicherter
+        Jahres-Stand und ein Konto aus der früheren DomiGo-Version bleiben gespeichert. Auf Anfrage an {DATENSCHUTZ_KONTAKT} werden auch diese Daten
         gelöscht.
       </p>
       {RUECKHOLFENSTER && (
         <p>
-          Die Datenbank hält außerdem eine Sicherungskopie vor, die {RUECKHOLFENSTER} zurückreicht. So lange
-          kann ein gelöschter Eintrag aus dieser Kopie noch wiederhergestellt werden; danach ist er auch dort weg.
+          Die Datenbank hält außerdem eine Sicherungskopie der letzten {RUECKHOLFENSTER} vor. Wird etwas gelöscht,
+          steckt es in dieser Kopie noch so lange — nach {RUECKHOLFENSTER} ist es auch dort weg.
         </p>
       )}
 
