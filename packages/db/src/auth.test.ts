@@ -10,6 +10,12 @@
 import { describe, expect, it, vi } from "vitest";
 import { allocateClassCode, getClassGrade, lookupStudentForAuth, lookupTeacherForAuth } from "./auth.ts";
 import type { Db } from "./index.ts";
+import { classScope } from "./scope.ts";
+
+/** dach-018 · der Klassen-Ausschnitt dieser Sitzung. Die Wand selbst prueft
+ *  scripts/check-claim-filter.mjs; hier steht sie nur, damit die bestehenden
+ *  Zusicherungen dasselbe messen wie vorher. */
+const SCOPE = classScope(["c1"]);
 
 /**
  * Sequential chain-mock (house style, cf. roster-service.test.ts): each
@@ -52,7 +58,7 @@ describe("dual-read degrades to v1 when v2 tables are unreachable", () => {
 
   it("getClassGrade: v2 throws → v1 grade still returned", async () => {
     const db = seqDb([missing(), [{ grade: 2 }]]);
-    expect(await getClassGrade(db, "c1")).toBe(2);
+    expect(await getClassGrade(db, SCOPE, "c1")).toBe(2);
   });
 
   it("allocateClassCode: v2 code read throws → still mints against v1 codes", async () => {

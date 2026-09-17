@@ -7,18 +7,24 @@
  * The decision is a PURE function (`visibleGradesFor`) so it is unit-testable
  * without a DB; `resolveVisibleGrades` is the thin DB wrapper around it.
  *
- * ONE rule, one meaning for `null`: teacher, no player, or a grade we could not
- * resolve (a DB hiccup) ⇒ ALL four years. That is a DELIBERATE degradation —
- * showing too much is a cosmetic miss, showing NOTHING would be a dead page for
- * a child who did nothing wrong. Sign-in itself is not this file's job: the
- * middleware owns the session gate (apps/web/middleware.ts), so a list page
- * never redirects on a missing session.
+ * ONE rule, one meaning for `null` — and dach-018 CHANGED it. Until the switch
+ * to the account service, no resolvable class meant ALL four years: showing too
+ * much was a cosmetic miss, while showing nothing would have been a dead page
+ * for a child who did nothing wrong (P-R1.5). That reasoning is spent. A session
+ * that reaches this code now always came through konto, and a child without a
+ * class never gets a session at all — they see the access card instead
+ * (app/zugriff-fehlt). So no class now means NO year, not every year: the one
+ * case the old fallback protected cannot occur any more, and what remains of it
+ * would be a hole in the class wall rather than a kindness.
+ *
+ * A DB hiccup while resolving a KNOWN class still degrades to all four years:
+ * that is a different case, and there the old argument still holds.
  *
  * Deliberately free of `@/…` path aliases: apps/web's suite runs under plain
  * `node --test`, which resolves real packages (@domigo/db, cf. lib/checkup.ts)
  * but NOT Next's tsconfig aliases.
  */
-import { getClassGrade, getDb } from "@domigo/db";
+import { getClassGrade, getDb, type ClassScope } from "@domigo/db";
 
 /** The Austrian AHS lower cycle — the full, unscoped view. */
 export const ALL_GRADES = [1, 2, 3, 4] as const;
@@ -59,11 +65,12 @@ export function isSlugAllowed(slug: string, grades: readonly number[]): boolean 
  * class, class absent in v1 AND v2, DB unreachable — lands on ALL_GRADES, so
  * this function cannot produce an empty page.
  */
-export async function resolveVisibleGrades(classId: string | null | undefined): Promise<number[]> {
-  if (!classId) return visibleGradesFor(null);
+export async function resolveVisibleGrades(classScope: ClassScope, classId: string | null | undefined): Promise<number[]> {
+  // dach-018 · no class is no longer ALL four years (see the header).
+  if (!classId) return [];
   let grade: number | null = null;
   try {
-    grade = await getClassGrade(getDb(), classId);
+    grade = await getClassGrade(getDb(), classScope, classId);
   } catch {
     /* DB hiccup — degrade to the full view, never to an empty one */
   }

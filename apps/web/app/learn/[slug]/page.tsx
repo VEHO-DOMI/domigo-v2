@@ -5,7 +5,7 @@ import type { Journey, JourneyNode } from "@domigo/content-schema";
 import { loadUnitWithOverrides } from "@/lib/content-service";
 import { isSlugAllowed, resolveVisibleGrades } from "@/lib/grade-scope";
 import { getActingUserForPage } from "@/lib/identity";
-import { bestTierPerItem, buildUnitNodes, deriveJourneyProgress, getDb, getJourneyAttempts, getUnitPathProgress, listReservedForClass, withProgress } from "@domigo/db";
+import { EMPTY_SCOPE, bestTierPerItem, buildUnitNodes, deriveJourneyProgress, getDb, getJourneyAttempts, getUnitPathProgress, listReservedForClass, type ClassScope, withProgress } from "@domigo/db";
 import type { JourneyNodeView, NodeView } from "@domigo/db";
 
 export const dynamic = "force-dynamic";
@@ -18,12 +18,12 @@ export default async function UnitPathPage({ params }: { params: Promise<{ slug:
 
   // P1 (P-R1.5): the deep-link half of the grade scope — a foreign year's unit
   // sends the child back to its own Study Path list.
-  if (!isSlugAllowed(slug, await resolveVisibleGrades(acting.classId))) redirect("/learn");
+  if (!isSlugAllowed(slug, await resolveVisibleGrades(acting?.classScope ?? EMPTY_SCOPE, acting.classId))) redirect("/learn");
 
   // J-1: an AUTHORED journey (J-2 ships them) re-renders /learn as the spine;
   // until a unit has one, the legacy derived Study Path below is the fallback (F10).
   const journey = loadJourney(slug);
-  if (journey) return <JourneySpine slug={slug} journey={journey} userId={acting.userId} classId={acting.classId} />;
+  if (journey) return <JourneySpine classScope={acting.classScope} slug={slug} journey={journey} userId={acting.userId} classId={acting.classId} />;
 
   const unit = await loadUnitWithOverrides(slug);
   const nodes = buildUnitNodes(unit.vocab, unit.grammar);
@@ -56,10 +56,10 @@ export default async function UnitPathPage({ params }: { params: Promise<{ slug:
 
 // ── J-1 · the authored journey spine ─────────────────────────────────────────
 
-async function JourneySpine({ slug, journey, userId, classId }: { slug: string; journey: Journey; userId: string; classId: string }) {
+async function JourneySpine({ slug, journey, userId, classId, classScope }: { slug: string; journey: Journey; userId: string; classId: string; classScope: ClassScope }) {
   const unit = await loadUnitWithOverrides(slug);
   const itemIds = [...unit.vocab.map((v) => v.id), ...unit.grammar.map((g) => g.id)];
-  const reserved = await listReservedForClass(getDb(), classId).catch(() => new Set<string>());
+  const reserved = await listReservedForClass(getDb(), classScope, classId).catch(() => new Set<string>());
 
   // each gating node's items = its pool's slice of this unit (deterministic)
   const nodeItems = new Map<string, readonly string[]>();

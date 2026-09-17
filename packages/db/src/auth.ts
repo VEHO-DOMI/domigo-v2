@@ -6,11 +6,12 @@
  * unchanged. Reads return the row INCLUDING the bcrypt hash for the caller to
  * verify. NEVER writes `public.*`. Keeps drizzle out of the web app.
  */
-import { and, eq, isNull, sql } from "drizzle-orm";
+import { and, eq, inArray, isNull, sql } from "drizzle-orm";
 import { v1Users, v1Classes } from "./v1.ts";
 import { v2Classes, v2IdentityUsers } from "./schema.ts";
 import { nextInviteCode, pickIdentity } from "./identity.ts";
 import type { Db } from "./index.ts";
+import { type ClassScope } from "./scope.ts";
 
 export interface AuthUserRow {
   id: string;
@@ -128,9 +129,9 @@ export async function lookupStudentForAuth(
  * classId, not grade). Dual-read: v2-native class first, then the v1 mirror.
  * Null if the class is absent in both.
  */
-export async function getClassGrade(db: Db, classId: string): Promise<number | null> {
+export async function getClassGrade(db: Db, classScope: ClassScope, classId: string): Promise<number | null> {
   const v2Rows = await v2Safe(
-    () => db.select({ grade: v2Classes.grade }).from(v2Classes).where(eq(v2Classes.id, classId)).limit(1),
+    () => db.select({ grade: v2Classes.grade }).from(v2Classes).where(and(inArray(v2Classes.id, [...classScope]), eq(v2Classes.id, classId))).limit(1),
     [],
   );
   const v2Grade = v2Rows[0]?.grade ?? null;
@@ -138,7 +139,7 @@ export async function getClassGrade(db: Db, classId: string): Promise<number | n
   const rows = await db
     .select({ grade: v1Classes.grade })
     .from(v1Classes)
-    .where(eq(v1Classes.id, classId))
+    .where(and(inArray(v1Classes.id, [...classScope]), eq(v1Classes.id, classId)))
     .limit(1);
   return pickIdentity(v2Grade, rows[0]?.grade ?? null);
 }

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { scopedClassIds } from "@/lib/identity";
 import { redirect } from "next/navigation";
 import { auth } from "@/auth";
 import { listTestUnits } from "@domigo/content-loader";
@@ -15,7 +16,7 @@ export default async function TestsIndex() {
   // P1 (P-R1.5): a child sees only its own class's school year. The viewer here
   // is always a student (no session → /signin, teacher → /admin, both above), so
   // the class's grade decides; an unresolvable grade degrades to all four years.
-  const grades = await resolveVisibleGrades(session.user.classId);
+  const grades = await resolveVisibleGrades(await scopedClassIds(), session.user.classId);
   // Both corpora are still g2-only (2/57 units), so a child of another year now
   // has nothing here — a grade-aware empty state, not a bare page.
   const inScope = units.filter((s) => isSlugAllowed(s, grades));

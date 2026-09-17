@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { scopedClassIds } from "@/lib/identity";
 import { redirect } from "next/navigation";
 import { auth } from "@/auth";
 import { getDb, getDueCounts } from "@domigo/db";
@@ -10,7 +11,7 @@ export default async function ReviewPage() {
   if (!session) redirect("/signin");
   if (session.user.role === "teacher") redirect("/admin");
 
-  const counts = await getDueCounts(getDb(), session.user.id, session.user.classId ?? "");
+  const counts = await getDueCounts(getDb(), await scopedClassIds(), session.user.id, session.user.classId ?? "");
 
   return (
     <main style={{ maxWidth: 520, margin: "0 auto", padding: "28px 20px 48px", fontFamily: "var(--font-body)", color: "var(--text)" }}>

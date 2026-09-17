@@ -70,8 +70,12 @@ describe("Datenschutzseite ↔ Produktion", () => {
     assert.doesNotMatch(page, /new Date\(/, "the Stand date must not compute itself");
   });
 
-  it("is linked from start, sign-in and join, and stays public", () => {
-    for (const door of ["../app/page.tsx", "../app/signin/page.tsx", "../app/join/[code]/page.tsx"]) {
+  it("is linked from every door a reader can stand at, and stays public", () => {
+    // dach-018 · /join/<code> used to be one of those doors; it is a redirect to
+    // the account service now and renders nothing. The access card took its place:
+    // it is where a refused sign-in lands, so it is exactly where someone is most
+    // likely to want to know what is stored about them.
+    for (const door of ["../app/page.tsx", "../app/signin/page.tsx", "../app/zugriff-fehlt/page.tsx"]) {
       assert.match(read(door), /href="\/datenschutz"/, `${door} must link the privacy page`);
     }
     assert.doesNotMatch(read("../middleware.ts"), /["']\/datenschutz/);

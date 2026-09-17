@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { scopedClassIds } from "@/lib/identity";
 import { redirect } from "next/navigation";
 import { auth, signOut } from "@/auth";
 import { listReleasedStories } from "@domigo/content-loader";
@@ -18,7 +19,7 @@ export default async function HomePage() {
   let dueLabel = "Spaced review of past items";
   let dueBadge: string | null = null;
   try {
-    const c = await getDueCounts(getDb(), session.user.id, session.user.classId ?? "");
+    const c = await getDueCounts(getDb(), await scopedClassIds(), session.user.id, session.user.classId ?? "");
     if (c.total > 0) { dueLabel = "Spaced review of past items"; dueBadge = `${c.total} due now`; }
   } catch {
     /* keep default */
@@ -53,7 +54,7 @@ export default async function HomePage() {
   let grade: number | null = null;
   let storyTile = { href: "/play", icon: DEFAULT_STORY_UI.icon, title: "Story", sub: "Story adventures by grade" };
   try {
-    grade = session.user.classId ? await getClassGrade(getDb(), session.user.classId) : null;
+    grade = session.user.classId ? await getClassGrade(getDb(), await scopedClassIds(), session.user.classId) : null;
     const story = grade === null ? undefined : listReleasedStories().find((s) => s.grade === grade);
     if (story) {
       const ui = STORY_UI[story.grade] ?? DEFAULT_STORY_UI;

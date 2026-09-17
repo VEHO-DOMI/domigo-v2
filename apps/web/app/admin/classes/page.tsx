@@ -21,8 +21,8 @@ export default async function ClassesPage() {
   // unreachable. Each read degrades on its own: a failing archive read must not be able
   // to take the working list down with it.
   const [classes, archived] = await Promise.all([
-    listClassesForTeacher(getDb(), teacher.userId).catch(() => []),
-    listArchivedClassesForTeacher(getDb(), teacher.userId).catch(() => []),
+    listClassesForTeacher(getDb(), teacher.classScope, teacher.userId).catch(() => []),
+    listArchivedClassesForTeacher(getDb(), teacher.classScope, teacher.userId).catch(() => []),
   ]);
   return <ClassesManager initialClasses={classes} initialArchived={archived} />;
 }

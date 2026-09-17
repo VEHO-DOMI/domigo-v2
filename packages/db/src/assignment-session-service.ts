@@ -5,8 +5,9 @@
  * endpoint (it needs the content loaders + engine, which the db package must
  * not import).
  */
-import { and, asc, desc, eq, isNotNull, isNull, lte, or } from "drizzle-orm";
+import { and, asc, desc, eq, inArray, isNotNull, isNull, lte, or } from "drizzle-orm";
 import type { Db } from "./index.ts";
+import { type ClassScope } from "./scope.ts";
 import { assignments, assignmentSections, assignmentSessions, practiceAttempts, v2IdentityUsers } from "./schema.ts";
 import { v1Users } from "./v1.ts";
 import { sessionExpiry } from "./assignment-session.ts";
@@ -14,17 +15,21 @@ import type { ScorableAttempt } from "./assignments.ts";
 import type { SubmittedScore } from "./assignment-session.ts";
 
 /** Non-archived, already-started assignments for a class (the student list). */
-export async function listAssignmentsForStudent(db: Db, classId: string, now: Date) {
+export async function listAssignmentsForStudent(db: Db, classScope: ClassScope, classId: string, now: Date) {
   return db
     .select()
     .from(assignments)
-    .where(and(eq(assignments.classId, classId), isNull(assignments.archivedAt), or(isNull(assignments.startsAt), lte(assignments.startsAt, now))))
+    .where(and(inArray(assignments.classId, [...classScope]), eq(assignments.classId, classId), isNull(assignments.archivedAt), or(isNull(assignments.startsAt), lte(assignments.startsAt, now))))
     .orderBy(desc(assignments.createdAt));
 }
 
 /** One assignment + its sections + THIS student's sessions (null if not found). */
-export async function getStudentAssignmentView(db: Db, assignmentId: string, userId: string) {
-  const [a] = await db.select().from(assignments).where(eq(assignments.id, assignmentId)).limit(1);
+export async function getStudentAssignmentView(db: Db, classScope: ClassScope, assignmentId: string, userId: string) {
+  const [a] = await db
+    .select()
+    .from(assignments)
+    .where(and(inArray(assignments.classId, [...classScope]), eq(assignments.id, assignmentId)))
+    .limit(1);
   if (!a) return null;
   const sections = await db.select().from(assignmentSections).where(eq(assignmentSections.assignmentId, assignmentId)).orderBy(asc(assignmentSections.position));
   const sessions = await db
@@ -93,7 +98,15 @@ export async function getSessionAttempts(db: Db, userId: string, assignmentId: s
 // ── M-4 · teacher results roster reads ───────────────────────────────────────
 
 /** Every student's sittings for an assignment (all attempts), for the roster. */
-export async function listSessionsForAssignment(db: Db, assignmentId: string) {
+export async function listSessionsForAssignment(db: Db, classScope: ClassScope, assignmentId: string) {
+  // The sessions of an assignment are a class's children. The wall sits on the
+  // assignment, because assignment_sessions carries no class id of its own.
+  const [gehoert] = await db
+    .select({ id: assignments.id })
+    .from(assignments)
+    .where(and(inArray(assignments.classId, [...classScope]), eq(assignments.id, assignmentId)))
+    .limit(1);
+  if (!gehoert) return [];
   return db
     .select()
     .from(assignmentSessions)
@@ -121,7 +134,7 @@ export interface StudentRow {
  * list with nobody behind it yet — it can hold no session, and printing it as a
  * pupil who scored nothing would be a lie about a child who never sat down.
  */
-export async function listStudentsForClass(db: Db, classId: string): Promise<StudentRow[]> {
+export async function listStudentsForClass(db: Db, classScope: ClassScope, classId: string): Promise<StudentRow[]> {
   const byId = new Map<string, StudentRow>();
 
   const v2Rows = await db
@@ -129,6 +142,7 @@ export async function listStudentsForClass(db: Db, classId: string): Promise<Stu
     .from(v2IdentityUsers)
     .where(
       and(
+        inArray(v2IdentityUsers.classId, [...classScope]),
         eq(v2IdentityUsers.classId, classId),
         eq(v2IdentityUsers.role, "student"),
         isNotNull(v2IdentityUsers.claimedAt),
@@ -140,7 +154,7 @@ export async function listStudentsForClass(db: Db, classId: string): Promise<Stu
   const v1Rows = await db
     .select({ id: v1Users.id, name: v1Users.displayName })
     .from(v1Users)
-    .where(and(eq(v1Users.classId, classId), eq(v1Users.role, "student")));
+    .where(and(inArray(v1Users.classId, [...classScope]), eq(v1Users.classId, classId), eq(v1Users.role, "student")));
   for (const r of v1Rows) if (!byId.has(r.id)) byId.set(r.id, { id: r.id, name: r.name });
 
   return [...byId.values()];

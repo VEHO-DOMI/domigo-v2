@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { EMPTY_SCOPE } from "@domigo/db";
 import { listApprovedUnits } from "@domigo/content-loader";
 import { isSlugAllowed, resolveVisibleGrades } from "@/lib/grade-scope";
 import { getActingUserForPage } from "@/lib/identity";
@@ -13,7 +14,7 @@ export default async function PracticeIndex() {
   // owns that — so a missing identity must NOT redirect here; it degrades to all
   // four years (as does a teacher, who has no classId). Never an empty page.
   const acting = await getActingUserForPage();
-  const grades = await resolveVisibleGrades(acting?.classId);
+  const grades = await resolveVisibleGrades(acting?.classScope ?? EMPTY_SCOPE, acting?.classId);
   const inScope = units.filter((s) => isSlugAllowed(s, grades));
   return (
     <main style={{ maxWidth: 760, margin: "0 auto", padding: "28px 20px 48px", fontFamily: "var(--font-body)", color: "var(--text)" }}>

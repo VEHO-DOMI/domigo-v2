@@ -4,11 +4,12 @@
  * getDueRefs, getDueCounts) are the shared service that powers Smart Review AND
  * game encounters (10_game_layer Law 6).
  */
-import { and, asc, eq, lte, notInArray, sql } from "drizzle-orm";
+import { and, asc, eq, inArray, lte, notInArray, sql } from "drizzle-orm";
 import type { Tier } from "@domigo/engine";
 import { reviewQueue } from "./schema.ts";
 import { listReservedForClass } from "./assignment-service.ts";
 import type { Db } from "./index.ts";
+import { type ClassScope } from "./scope.ts";
 
 export const LEITNER_MAX_BOX = 5;
 const MIN = 60_000;
@@ -117,13 +118,14 @@ export interface DueRef {
  */
 export async function getDueRefs(
   db: Db,
+  classScope: ClassScope,
   userId: string,
   classId: string,
   scope: DueScope,
   limit = 20,
   now: Date = new Date(),
 ): Promise<DueRef[]> {
-  const reserved = await listReservedForClass(db, classId);
+  const reserved = await listReservedForClass(db, classScope, classId);
   const where = [eq(reviewQueue.userId, userId), lte(reviewQueue.dueAt, now)];
   if (scope.kind === "unit") where.push(eq(reviewQueue.unitSlug, scope.slug));
   if (scope.kind === "grade") where.push(eq(reviewQueue.grade, scope.grade));
@@ -153,8 +155,8 @@ export interface DueCounts {
 
 /** How many items are due now, bucketed by kind + grade. `classId` REQUIRED —
  *  the class's reserved (`mock`) items are excluded, matching getDueRefs (F2). */
-export async function getDueCounts(db: Db, userId: string, classId: string, now: Date = new Date()): Promise<DueCounts> {
-  const reserved = await listReservedForClass(db, classId);
+export async function getDueCounts(db: Db, classScope: ClassScope, userId: string, classId: string, now: Date = new Date()): Promise<DueCounts> {
+  const reserved = await listReservedForClass(db, classScope, classId);
   const where = [eq(reviewQueue.userId, userId), lte(reviewQueue.dueAt, now)];
   if (reserved.size > 0) where.push(notInArray(reviewQueue.itemId, [...reserved]));
   const rows = await db
