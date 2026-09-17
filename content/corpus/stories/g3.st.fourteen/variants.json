@@ -2,8 +2,6 @@
   "schema": "variants@1",
   "storyId": "g3.st.fourteen",
   "variants": [
-    { "key": "fourteen.ch01.script-gap", "itemId": "g3u01.gi.present-simple.gf.001", "scene": "g3.st.fourteen.ch01.s005", "slot": "script-gap", "prompt": { "text": "Hi, I'm Leah. I really ___ her songs, and I always sing along! (like)", "lang": "en" }, "glosses": [] },
-    { "key": "fourteen.ch01.script-mc", "itemId": "g3u01.gi.present-simple.cp.002", "scene": "g3.st.fourteen.ch01.s006", "slot": "script-mc", "prompt": { "text": "Leah plays her favourite singer's songs for Leo's dad. He really doesn't enjoy her music at all.", "lang": "en" }, "glosses": [] },
-    { "key": "fourteen.ch01.reply-comments", "itemId": "g3u01.gi.present-simple.mt.001", "scene": "g3.st.fourteen.ch01.s010", "slot": "reply-comments", "prompt": { "text": "People ask about Leah's singer and about the four of you. What do you write back?", "lang": "en" }, "glosses": [] }
+    { "key": "fourteen.ch01.script-gap", "itemId": "g3u01.gi.present-simple.gf.001", "scene": "g3.st.fourteen.ch01.s005", "slot": "script-gap", "prompt": { "text": "Hi, I'm Leah. I really ___ her songs, and I always sing along! (like)", "lang": "en" }, "glosses": [] }
   ]
 }
