@@ -38,6 +38,7 @@ export * from "./assignment-session-service.ts"; // M-3: session CRUD + attempt 
 export * from "./assignment-results.ts"; // M-4: pure teacher-roster aggregation (DB-free)
 export * from "./checkup.ts"; // C-1: pure checkup spine — section/display configs, Σ=20 gate, /20 scorer (DB-free)
 export * from "./scope.ts"; // dach-018: the class scope a session may see — the FIRST filter on every class query
+export * from "./konto-identity.ts"; // dach-018: the local person behind a konto account (dual-read, create, class follow)
 export * from "./identity.ts"; // P-1a: pure identity helpers (pickIdentity dual-read precedence, invite-code minting)
 export * from "./v1.ts"; // read-only mirrors of v1's public.users/classes (auth identity)
 export * from "./auth.ts"; // v2→v1 dual-read identity lookups (lookupStudentForAuth/lookupTeacherForAuth) + allocateClassCode
@@ -47,7 +48,6 @@ export * from "./teacher-claim.ts"; // P2: teacher self-join — claimable pre-c
 export * from "./overrides.ts"; // S-1: Studio content overlay (journal-then-flip publish/revert/fold)
 export * from "./drafts.ts"; // S-2: Studio full-CRUD drafts (blind-solve gate; journal-then-flip)
 export * from "./solve-runs.ts"; // S-2b: async blind-solve runs (Vercel Sandbox orchestration)
-export * from "./bootstrap-teacher.ts"; // one-time v2-native teacher bootstrap (lock-out recovery; token + one-shot gated at /bootstrap)
 export * from "./teacher-identity.ts"; // WS-AUTH Phase A: teacher self-service PIN — promote v1→v2 (reuse id) + change PIN
 export * from "./class-progress.ts"; // K1a: class-scoped teacher progress readers (all modes) + tolerant trap labelling
 export * from "./progress-adjust.ts"; // K1b: the grandmaster's hand — additive XP grant + study-path unit unlock (journal-then-apply)

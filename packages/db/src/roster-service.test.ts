@@ -1,7 +1,5 @@
 import { describe, expect, it } from "vitest";
 import {
-  claimLabel,
-  claimStudent,
   MAX_ROSTER_NAMES,
   MAX_STUDENT_NAME_LENGTH,
   importRoster,
@@ -14,21 +12,6 @@ import {
 } from "./roster-service.ts";
 import type { Db } from "./index.ts";
 
-// Minimal stateful mock of the drizzle Db chain used by claimStudent:
-//   select().from().where().limit() → 1st call = the student lookup, 2nd = the clash check;
-//   insert().values() resolves; update().set().where() resolves or rejects with `updateError`.
-type ClaimDb = Parameters<typeof claimStudent>[0];
-function raceDb(opts: { updateError?: unknown; student?: unknown[]; clash?: unknown[] } = {}): ClaimDb {
-  let selectN = 0;
-  const student = opts.student ?? [{ classId: "c1", claimedAt: null }];
-  const clash = opts.clash ?? [];
-  return {
-    select: () => ({ from: () => ({ where: () => ({ limit: () => { selectN += 1; return Promise.resolve(selectN === 1 ? student : clash); } }) }) }),
-    insert: () => ({ values: () => Promise.resolve(undefined) }),
-    update: () => ({ set: () => ({ where: () => (opts.updateError ? Promise.reject(opts.updateError) : Promise.resolve(undefined)) }) }),
-  } as unknown as ClaimDb;
-}
-const claimInput = { studentId: "s1", displayName: "Anna", pinHash: "h" };
 
 describe("isUniqueViolation — Postgres 23505 across driver error shapes", () => {
   it("detects the code on the error or its cause", () => {
@@ -45,25 +28,6 @@ describe("isUniqueViolation — Postgres 23505 across driver error shapes", () =
     expect(isUniqueViolation(null)).toBe(false);
     expect(isUniqueViolation(undefined)).toBe(false);
     expect(isUniqueViolation({})).toBe(false);
-  });
-});
-
-describe("claimStudent — the duplicate-claim (TOCTOU race) path", () => {
-  it("returns 'taken' when the flip UPDATE raises a unique violation (a concurrent claim won the nickname)", async () => {
-    expect(await claimStudent(raceDb({ updateError: { code: "23505" } }), claimInput)).toBe("taken");
-  });
-  it("returns 'ok' when the flip succeeds", async () => {
-    expect(await claimStudent(raceDb({ updateError: null }), claimInput)).toBe("ok");
-  });
-  it("rethrows a non-unique DB error (never swallows a real failure)", async () => {
-    await expect(claimStudent(raceDb({ updateError: { code: "08006" } }), claimInput)).rejects.toBeTruthy();
-  });
-  it("returns 'gone' when the student is missing or already claimed", async () => {
-    expect(await claimStudent(raceDb({ student: [] }), claimInput)).toBe("gone");
-    expect(await claimStudent(raceDb({ student: [{ classId: "c1", claimedAt: new Date() }] }), claimInput)).toBe("gone");
-  });
-  it("returns 'taken' on the app-code clash (fast path, before any write)", async () => {
-    expect(await claimStudent(raceDb({ clash: [{ id: "other" }] }), claimInput)).toBe("taken");
   });
 });
 
@@ -182,36 +146,6 @@ describe("parseRoster — first cell wins, but never at a name's expense", () =>
     // and directly at the branch that leaked
     expect(parseRoster("Anna Muster ;5B")).toEqual(["Anna Muster"]);
     expect(parseRoster("Anna Muster\t;5B")).toEqual(["Anna Muster"]);
-  });
-});
-
-describe("claimLabel — privacy: first name + last initial", () => {
-  it("reduces a two-part name to first name + last initial", () => {
-    expect(claimLabel("Anna Müller")).toBe("Anna M.");
-    expect(claimLabel("Ben Ostrowski")).toBe("Ben O.");
-  });
-
-  it("returns a single-word name unchanged", () => {
-    expect(claimLabel("Anna")).toBe("Anna");
-    expect(claimLabel("Cher")).toBe("Cher");
-  });
-
-  it("uses the LAST token's initial when there is a middle name", () => {
-    expect(claimLabel("Anna Maria Müller")).toBe("Anna M.");
-    expect(claimLabel("Jean Luc Picard")).toBe("Jean P.");
-  });
-
-  it("uppercases the surname initial even when the source is lowercase", () => {
-    expect(claimLabel("anna müller")).toBe("anna M.");
-  });
-
-  it("collapses extra whitespace and trims", () => {
-    expect(claimLabel("   Anna    Müller   ")).toBe("Anna M.");
-  });
-
-  it("returns an empty string for an empty or whitespace-only name (never throws)", () => {
-    expect(claimLabel("")).toBe("");
-    expect(claimLabel("   ")).toBe("");
   });
 });
 
@@ -418,14 +352,6 @@ describe("importRoster — the ceilings hold even when a caller skips validation
     expect(nutzlast).not.toContain("Wacholder");
     expect(nutzlast).not.toContain("Marisa");
     expect(JSON.parse(nutzlast)).toEqual({ count: 2 });
-  });
-
-  it("P-R8 · claim journals the nickname's LENGTH, never the nickname", async () => {
-    const { db, written } = journalDb([[{ classId: "c1", claimedAt: null }], []]);
-    await claimStudent(db, { studentId: "s1", displayName: "Wackerstein", pinHash: "h" });
-    const nutzlast = JSON.stringify((written[0] as { payload: unknown }).payload);
-    expect(nutzlast).not.toContain("Wackerstein");
-    expect(JSON.parse(nutzlast)).toEqual({ studentId: "s1", displayNameLength: 11 });
   });
 
   it("P-R8 · rename journals the new name's LENGTH, never the new name", async () => {

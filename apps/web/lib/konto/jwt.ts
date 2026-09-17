@@ -25,7 +25,7 @@
  * Node runtime only (jose, and `req.text()` before any parse). Never import
  * this from auth.ts: that file rides into the Edge bundle through middleware.
  */
-import { createRemoteJWKSet, decodeProtectedHeader, jwtVerify, type JWTPayload } from "jose";
+import { createRemoteJWKSet, decodeProtectedHeader, jwtVerify, type JWTPayload, type JWTVerifyGetKey } from "jose";
 import { APP } from "./claims.ts";
 import { kontoBaseUrl } from "./basis.ts";
 
@@ -42,7 +42,7 @@ const HEX_SHA256 = /^[0-9a-f]{64}$/;
 export const PUSH_ARTEN = ["class-term", "account-deleted", "classes"] as const;
 export type PushArt = (typeof PUSH_ARTEN)[number];
 
-let jwks: ReturnType<typeof createRemoteJWKSet> | null = null;
+let jwks: JWTVerifyGetKey | null = null;
 
 function schluessel() {
   if (!jwks) {
@@ -56,7 +56,7 @@ function schluessel() {
 }
 
 /** Only for the gates: point the verifier at the stub's key set. */
-export function _setJwksFuerTest(set: ReturnType<typeof createRemoteJWKSet> | null): void {
+export function _setJwksFuerTest(set: JWTVerifyGetKey | null): void {
   jwks = set;
 }
 

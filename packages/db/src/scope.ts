@@ -1,7 +1,7 @@
 /**
  * dach-018 · THE CLASS SCOPE — the first wall in front of every class query.
  *
- * Until the switch to konto.lautereinser.at, DomiGo had no class wall at all: a
+ * Until the switch to the account service, DomiGo had no class wall at all: a
  * teacher's reads were narrowed by her own `teacherId`, and four grandmaster
  * functions were narrowed by nothing. The account service now issues, per
  * session, the list of class ids that session may see (SPEC konto V1.1-FINAL §5

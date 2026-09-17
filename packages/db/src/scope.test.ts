@@ -54,20 +54,20 @@ describe("the drizzle behaviour this design rests on (pinned, not assumed)", () 
     const { log, db } = recorder();
     await db.select().from(t).where(and(inArray(t.classId, [...EMPTY_SCOPE]), eq(t.userId, "u1")));
     await db.update(t).set({ xpAwarded: 1 }).where(and(inArray(t.classId, [...EMPTY_SCOPE]), eq(t.userId, "u1")));
-    expect(log[0].sql).toContain("where (false and");
-    expect(log[1].sql).toContain("where (false and");
+    expect(log[0]!.sql).toContain("where (false and");
+    expect(log[1]!.sql).toContain("where (false and");
   });
 
   it("a filled scope binds as the FIRST parameter of the FIRST conjunct", async () => {
     const { log, db } = recorder();
     await db.select().from(t).where(and(inArray(t.classId, [...classScope(["A"])]), eq(t.userId, "u1")));
-    expect(log[0].sql).toMatch(/where \("domigo_v2"\."practice_attempts"\."class_id" in \(\$1\)/);
-    expect(log[0].params[0]).toBe("A");
+    expect(log[0]!.sql).toMatch(/where \("domigo_v2"\."practice_attempts"\."class_id" in \(\$1\)/);
+    expect(log[0]!.params[0]).toBe("A");
   });
 
   it("TAMPER: the negative form inverts the wall — an empty notInArray is `true`", async () => {
     const { log, db } = recorder();
     await db.select().from(t).where(and(notInArray(t.classId, [...EMPTY_SCOPE]), eq(t.userId, "u1")));
-    expect(log[0].sql).toContain("where (true and");
+    expect(log[0]!.sql).toContain("where (true and");
   });
 });
