@@ -8,7 +8,8 @@
  *   3. while schema.ts carries a personal-data column, the page names that data;
  *   4. every door a child walks through (start, sign-in, join) links the page,
  *      and middleware.ts never puts the page behind a login.
- * Plus the one fact still open: the database region must be measured before ship.
+ * Plus the two measured facts the reader must actually see: the database region
+ * and — because the page promises deletion — how far a backup still reaches back.
  */
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
@@ -18,6 +19,7 @@ import {
   DATENSCHUTZ_KONTAKT,
   DATENSCHUTZ_STAND,
   FUNKTIONS_REGION,
+  RUECKHOLFENSTER,
 } from "./datenschutz.ts";
 
 const read = (rel: string): string => readFileSync(new URL(rel, import.meta.url), "utf8");
@@ -79,6 +81,16 @@ describe("Datenschutzseite ↔ Produktion", () => {
     assert.ok(
       DATENBANK_REGION,
       "DATENBANK_REGION in lib/datenschutz.ts is still null: read the region of DomiGo's Neon project and enter it",
+    );
+    assert.match(visible, /\{DATENBANK_REGION\}/, "the measured region must reach the reader, not just the file");
+  });
+
+  it("tells the reader how far a backup still reaches back, once that is measured", () => {
+    if (!RUECKHOLFENSTER) return; // not measured → the page says nothing about backups
+    assert.match(
+      visible,
+      /\{RUECKHOLFENSTER\}/,
+      "the page promises deletion on request, so it must say how long a backup still holds the deleted rows",
     );
   });
 });

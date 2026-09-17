@@ -13,6 +13,9 @@
 //   · attempt context    → api/attempts (server-set `trap`), api/assignments/attempt (`sessionId`)
 //   · processors' DPF    → U.S. register as read by S2 on 2026-09-13
 //   · function region    → lib/datenschutz.ts, equal to vercel.json (test-enforced)
+//   · database region,
+//     restore window     → lib/datenschutz.ts, read in the Neon console 2026-09-15 (gomarke-005)
+//   · contact address    → lib/datenschutz.ts, named by Koki 2026-09-17 (gomarke-007)
 // Deliberately NOT said here: a legal basis (open, DSFA R-01 / gomarke-002), any
 // data-processing agreement with Vercel or Neon (not evidenced, DSFA D-18), and
 // "only in the EU" — the providers are US companies.
@@ -23,6 +26,7 @@ import {
   DATENSCHUTZ_KONTAKT,
   DATENSCHUTZ_STAND,
   FUNKTIONS_REGION,
+  RUECKHOLFENSTER,
   VERANTWORTLICHER,
 } from "@/lib/datenschutz";
 
@@ -114,6 +118,12 @@ export default function DatenschutzPage() {
         DomiGo-Version bleiben gespeichert. Auf Anfrage an {DATENSCHUTZ_KONTAKT} werden auch diese Daten
         gelöscht.
       </p>
+      {RUECKHOLFENSTER && (
+        <p>
+          Die Datenbank hält außerdem eine Sicherungskopie vor, die {RUECKHOLFENSTER} zurückreicht. So lange
+          kann ein gelöschter Eintrag aus dieser Kopie noch wiederhergestellt werden; danach ist er auch dort weg.
+        </p>
+      )}
 
       <h2 style={h2}>Deine Rechte</h2>
       <p>
