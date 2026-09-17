@@ -195,8 +195,8 @@
     {
      "id": "g4.st.fourteen-live.ch02.s001",
      "speaker": "narrator",
-     "textEn": "Monday morning. The poster had disappeared before the first bell. Nobody had touched it — it was simply gone.",
-     "scaffoldDe": "Montag früh. Das Plakat war vor der ersten Glocke verschwunden. Niemand hatte es angefasst — es war einfach weg.",
+     "textEn": "Tuesday morning. The poster had disappeared before the first bell, and the vote had moved to June — after all the pitch rounds.",
+     "scaffoldDe": "Dienstag früh. Das Plakat war vor der ersten Glocke verschwunden, und die Abstimmung war auf Juni verschoben worden — nach allen Pitch-Runden.",
      "glosses": [
       {
        "word": "disappeared",
@@ -209,23 +209,18 @@
        "scope": null
       },
       {
-       "word": "touched",
-       "de": "angefasst",
-       "scope": null
-      },
-      {
-       "word": "simply",
-       "de": "einfach",
-       "scope": null
-      },
-      {
        "word": "poster",
        "de": "Plakat",
        "scope": null
       },
       {
-       "word": "gone",
-       "de": "weg",
+       "word": "pitch",
+       "de": "Pitch",
+       "scope": null
+      },
+      {
+       "word": "rounds",
+       "de": "Runden",
        "scope": null
       }
      ],
@@ -500,8 +495,8 @@
     {
      "id": "g4.st.fourteen-live.ch02.s009",
      "speaker": "sara",
-     "textEn": "I asked in the office. Friendly, twice. Nobody ordered a poster. Nobody remembers printing one.",
-     "scaffoldDe": "Ich habe im Sekretariat gefragt. Freundlich, zweimal. Niemand hat ein Plakat bestellt. Niemand erinnert sich ans Drucken.",
+     "textEn": "I asked in the office, twice. Nobody ordered a poster, and nobody knows who moved the vote.",
+     "scaffoldDe": "Ich habe im Sekretariat gefragt, zweimal. Niemand hat ein Plakat bestellt, und niemand weiß, wer die Abstimmung verschoben hat.",
      "glosses": [
       {
        "word": "office",
@@ -514,23 +509,13 @@
        "scope": null
       },
       {
-       "word": "remembers",
-       "de": "erinnert sich",
-       "scope": null
-      },
-      {
        "word": "twice",
        "de": "zweimal",
        "scope": null
       },
       {
-       "word": "printing",
-       "de": "das Drucken",
-       "scope": null
-      },
-      {
-       "word": "Friendly",
-       "de": "freundlich",
+       "word": "knows",
+       "de": "weiß",
        "scope": null
       }
      ],
@@ -794,8 +779,8 @@
     {
      "id": "g4.st.fourteen-live.ch03.s001",
      "speaker": "narrator",
-     "textEn": "Pitch week, round two: Vienna. Class 4B gets three minutes to sell a whole project week.",
-     "scaffoldDe": "Pitch-Woche, Runde zwei: Wien. Die 4B bekommt drei Minuten, um eine ganze Projektwoche zu verkaufen.",
+     "textEn": "Pitch round two: Vienna. Class 4B gets three minutes to sell a whole project week in Vienna.",
+     "scaffoldDe": "Pitch-Runde zwei: Wien. Die 4B bekommt drei Minuten, um eine ganze Projektwoche in Wien zu verkaufen.",
      "glosses": [
       {
        "word": "round",
@@ -1934,8 +1919,8 @@
     {
      "id": "g4.st.fourteen-live.ch05.s001",
      "speaker": "narrator",
-     "textEn": "Vote week starts with a smell: free pizza in the schoolyard. A new stand, bright orange, very shiny.",
-     "scaffoldDe": "Die Abstimmungswoche beginnt mit einem Geruch: Gratis-Pizza im Schulhof. Ein neuer Stand, knallorange, sehr glänzend.",
+     "textEn": "Monday starts with a smell: free pizza in the schoolyard. A new stand, bright orange, very shiny.",
+     "scaffoldDe": "Der Montag beginnt mit einem Geruch: Gratis-Pizza im Schulhof. Ein neuer Stand, knallorange, sehr glänzend.",
      "glosses": [
       {
        "word": "smell",
@@ -3314,8 +3299,8 @@
     {
      "id": "g4.st.fourteen-live.ch06.s016",
      "speaker": "ben",
-     "textEn": "For the record: I voted for whichever option has fewer meetings.",
-     "scaffoldDe": "Fürs Protokoll: Ich habe für die Option mit weniger Meetings gestimmt.",
+     "textEn": "For the record: I will vote for whichever option has fewer meetings.",
+     "scaffoldDe": "Fürs Protokoll: Ich stimme für die Option mit weniger Meetings.",
      "glosses": [
       {
        "word": "record",
@@ -3358,8 +3343,8 @@
     {
      "id": "g4.st.fourteen-live.ch07.s001",
      "speaker": "narrator",
-     "textEn": "Pitch week, final round: Carinthia. Class 2B opens with a joke from our English book — 'our dream week' — a real didgeridoo and a slideshow of the outback at sunset.",
-     "scaffoldDe": "Pitch-Woche, letzte Runde: Kärnten. Die 2B beginnt mit einem Scherz aus unserem Englischbuch — „unsere Traumwoche“ — einem echten Didgeridoo und einer Slideshow vom Outback bei Sonnenuntergang.",
+     "textEn": "The last pitch round: Carinthia. Class 2B opens with a joke from our English book — 'our dream week' — a real didgeridoo and a slideshow of the outback at sunset.",
+     "scaffoldDe": "Letzte Pitch-Runde: Kärnten. Die 2B beginnt mit einem Scherz aus unserem Englischbuch — „unsere Traumwoche“ — einem echten Didgeridoo und einer Slideshow vom Outback bei Sonnenuntergang.",
      "glosses": [
       {
        "word": "outback",
@@ -3377,12 +3362,7 @@
        "scope": null
       },
       {
-       "word": "final",
-       "de": "letzte",
-       "scope": null
-      },
-      {
-       "word": "Pitch",
+       "word": "pitch",
        "de": "Pitch",
        "scope": null
       },
@@ -3533,8 +3513,8 @@
     {
      "id": "g4.st.fourteen-live.ch07.s005",
      "speaker": "leo",
-     "textEn": "Dublin: no school package. Vienna: no school package. Carinthia: 'School Special — mountain guides, full service, contact Herr Brandt.'",
-     "scaffoldDe": "Dublin: kein Schulpaket. Wien: kein Schulpaket. Kärnten: „Schul-Spezial — Bergführer, Komplettservice, Kontakt Herr Brandt.“",
+     "textEn": "Language week in Dublin: no school package. Project week in Vienna: no school package. Hiking week in Carinthia: 'School Special — train, mountain guides, full service, contact Herr Brandt.'",
+     "scaffoldDe": "Sprachwoche in Dublin: kein Schulpaket. Projektwoche in Wien: kein Schulpaket. Wanderwoche in Kärnten: „Schul-Spezial — Zug, Bergführer, Komplettservice, Kontakt Herr Brandt.“",
      "glosses": [
       {
        "word": "package",
@@ -3564,39 +3544,9 @@
     {
      "id": "g4.st.fourteen-live.ch07.s006",
      "speaker": "sara",
-     "textEn": "So whichever week wins, the school books through SunWays — but only ONE week has a ready-made product. The train leaves for Carinthia before anyone votes.",
-     "scaffoldDe": "Egal welche Woche gewinnt, die Schule bucht über SunWays — aber nur EINE Woche hat ein fertiges Produkt. Der Zug fährt nach Kärnten, bevor irgendwer abstimmt.",
+     "textEn": "So SunWays can sell only ONE week — and for Carinthia it sells everything: the train, the guides, the beds. The train leaves for Carinthia before anyone votes.",
+     "scaffoldDe": "SunWays kann also nur EINE Woche verkaufen — und für Kärnten verkauft es alles: den Zug, die Bergführer, die Betten. Der Zug fährt nach Kärnten, bevor irgendwer abstimmt.",
      "glosses": [
-      {
-       "word": "books",
-       "de": "bucht",
-       "scope": null
-      },
-      {
-       "word": "ready-made",
-       "de": "fertig",
-       "scope": null
-      },
-      {
-       "word": "product",
-       "de": "Produkt",
-       "scope": null
-      },
-      {
-       "word": "whichever",
-       "de": "egal welche",
-       "scope": null
-      },
-      {
-       "word": "wins",
-       "de": "gewinnt",
-       "scope": null
-      },
-      {
-       "word": "through",
-       "de": "durch",
-       "scope": null
-      },
       {
        "word": "only",
        "de": "nur",
@@ -5622,8 +5572,8 @@
     {
      "id": "g4.st.fourteen-live.ch10.s009",
      "speaker": "you",
-     "textEn": "Tomorrow we sit across from him. The file is complete. The question is not WHETHER he answers — it is how we hand him the question.",
-     "scaffoldDe": "Morgen sitzen wir ihm gegenüber. Die Akte ist vollständig. Die Frage ist nicht, OB er antwortet — sondern wie wir ihm die Frage reichen.",
+     "textEn": "Tomorrow we sit across from him. The file is complete for now. The question is not WHETHER he answers — it is how we hand him the question.",
+     "scaffoldDe": "Morgen sitzen wir ihm gegenüber. Die Akte ist fürs Erste vollständig. Die Frage ist nicht, OB er antwortet — sondern wie wir ihm die Frage reichen.",
      "glosses": [
       {
        "word": "across",
@@ -6784,8 +6734,8 @@
     {
      "id": "g4.st.fourteen-live.ch12.s006",
      "speaker": "steiner",
-     "textEn": "I signed because twelve kids cannot pay. That is the truth and it is not an excuse. Tomorrow I tell Direktorin Huber myself — you pushed nothing. You waited. Thank you for that.",
-     "scaffoldDe": "Ich habe unterschrieben, weil zwölf Kinder nicht zahlen können. Das ist die Wahrheit, und sie ist keine Entschuldigung. Morgen sage ich es Direktorin Huber selbst — ihr habt nichts erzwungen. Ihr habt gewartet. Danke dafür.",
+     "textEn": "I signed because twelve kids cannot pay. That is the truth and it is not an excuse. On Monday I tell Direktorin Huber myself — you pushed nothing. You waited. Thank you for that.",
+     "scaffoldDe": "Ich habe unterschrieben, weil zwölf Kinder nicht zahlen können. Das ist die Wahrheit, und sie ist keine Entschuldigung. Am Montag sage ich es Direktorin Huber selbst — ihr habt nichts erzwungen. Ihr habt gewartet. Danke dafür.",
      "glosses": [
       {
        "word": "excuse",
@@ -7367,8 +7317,8 @@
     {
      "id": "g4.st.fourteen-live.ch13.s005",
      "speaker": "you",
-     "textEn": "Novak said it in week one: live is a power tool. Power tools need guards. Editor's call — and this time the editor is all of us. I count to three.",
-     "scaffoldDe": "Novak hat es in Woche eins gesagt: Live ist ein Elektrowerkzeug. Elektrowerkzeuge brauchen Schutz. Entscheidung der Redaktion — und diesmal ist die Redaktion wir alle. Ich zähle bis drei.",
+     "textEn": "Novak said it in newspaper week: live is a power tool. Power tools need guards. Editor's call — and this time the editor is all of us. I count to three.",
+     "scaffoldDe": "Novak hat es in der Zeitungswoche gesagt: Live ist ein Elektrowerkzeug. Elektrowerkzeuge brauchen Schutz. Entscheidung der Redaktion — und diesmal ist die Redaktion wir alle. Ich zähle bis drei.",
      "glosses": [
       {
        "word": "power tool",

@@ -66,9 +66,9 @@ def ci(cid, prompt, full, distractors, gloss, hint_de, explain_de):
 # ═══════════════════════════════════════════════════════════════════════════
 CH02 = ("How to Ask Questions", "Wie man Fragen stellt", [
     sc(2, 1, "narrator",
-       "Monday morning. The poster had disappeared before the first bell. Nobody had touched it — it was simply gone.",
-       "Montag früh. Das Plakat war vor der ersten Glocke verschwunden. Niemand hatte es angefasst — es war einfach weg.",
-       [("disappeared", "verschwunden"), ("bell", "Glocke"), ("touched", "angefasst"), ("simply", "einfach"), ("poster", "Plakat")]),
+       "Tuesday morning. The poster had disappeared before the first bell, and the vote had moved to June — after all the pitch rounds.",
+       "Dienstag früh. Das Plakat war vor der ersten Glocke verschwunden, und die Abstimmung war auf Juni verschoben worden — nach allen Pitch-Runden.",
+       [("disappeared", "verschwunden"), ("bell", "Glocke"), ("poster", "Plakat"), ("pitch", "Pitch"), ("rounds", "Runden")]),
     sc(2, 2, "leo",
        "It was there. I filmed it. Things I film do not stop existing.",
        "Es war da. Ich habe es gefilmt. Dinge, die ich filme, hören nicht auf zu existieren.",
@@ -100,9 +100,9 @@ CH02 = ("How to Ask Questions", "Wie man Fragen stellt", [
        [("report", "berichten"), ("vote", "Abstimmung"), ("happened", "passiert"), ("even", "überhaupt")],
        slots=[("fix-it", "g4u02.gi.past-perfect.cp.001")]),
     sc(2, 9, "sara",
-       "I asked in the office. Friendly, twice. Nobody ordered a poster. Nobody remembers printing one.",
-       "Ich habe im Sekretariat gefragt. Freundlich, zweimal. Niemand hat ein Plakat bestellt. Niemand erinnert sich ans Drucken.",
-       [("office", "Sekretariat"), ("ordered", "bestellt"), ("remembers", "erinnert sich"), ("twice", "zweimal"), ("printing", "das Drucken")]),
+       "I asked in the office, twice. Nobody ordered a poster, and nobody knows who moved the vote.",
+       "Ich habe im Sekretariat gefragt, zweimal. Niemand hat ein Plakat bestellt, und niemand weiß, wer die Abstimmung verschoben hat.",
+       [("office", "Sekretariat"), ("ordered", "bestellt"), ("twice", "zweimal"), ("knows", "weiß")]),
     sc(2, 10, "ben",
        "A poster that nobody made, in a window that nobody opened. Great. We live in a ghost story now?",
        "Ein Plakat, das niemand gemacht hat, in einem Fenster, das niemand geöffnet hat. Super. Leben wir jetzt in einer Geistergeschichte?",
@@ -144,8 +144,8 @@ CH02 = ("How to Ask Questions", "Wie man Fragen stellt", [
 # ═══════════════════════════════════════════════════════════════════════════
 CH03 = ("The Second Pitch", "Der zweite Pitch", [
     sc(3, 1, "narrator",
-       "Pitch week, round two: Vienna. Class 4B gets three minutes to sell a whole project week.",
-       "Pitch-Woche, Runde zwei: Wien. Die 4B bekommt drei Minuten, um eine ganze Projektwoche zu verkaufen.",
+       "Pitch round two: Vienna. Class 4B gets three minutes to sell a whole project week in Vienna.",
+       "Pitch-Runde zwei: Wien. Die 4B bekommt drei Minuten, um eine ganze Projektwoche in Wien zu verkaufen.",
        [("round", "Runde"), ("sell", "verkaufen"), ("whole", "ganze"), ("minutes", "Minuten")]),
     sc(3, 2, "leah",
        "Their project is about heroes — and their video opens with a story from our English book: the plane on the Hudson river. The whole hall goes silent.",
@@ -292,8 +292,8 @@ CH04 = ("The Newsroom", "Die Redaktion", [
 # ═══════════════════════════════════════════════════════════════════════════
 CH05 = ("Free Pizza", "Gratis Pizza", [
     sc(5, 1, "narrator",
-       "Vote week starts with a smell: free pizza in the schoolyard. A new stand, bright orange, very shiny.",
-       "Die Abstimmungswoche beginnt mit einem Geruch: Gratis-Pizza im Schulhof. Ein neuer Stand, knallorange, sehr glänzend.",
+       "Monday starts with a smell: free pizza in the schoolyard. A new stand, bright orange, very shiny.",
+       "Der Montag beginnt mit einem Geruch: Gratis-Pizza im Schulhof. Ein neuer Stand, knallorange, sehr glänzend.",
        [("smell", "Geruch"), ("schoolyard", "Schulhof"), ("stand", "Stand"), ("shiny", "glänzend"), ("bright", "knall-")]),
     sc(5, 2, "ben",
        "I will review it live. For the people. Somebody has to do the hard work.",
