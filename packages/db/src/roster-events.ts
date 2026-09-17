@@ -47,7 +47,8 @@ export type RosterEventKind =
   | "progress_adjust" // Grossmeister-Hand: XP-Gutschrift oder Lernweg-Einheit
   | "writing_graded" // eine Schreib-Abgabe wurde benotet
   | "archive" // eine Klasse wurde stillgelegt
-  | "unarchive"; // … und wieder geweckt
+  | "unarchive" // … und wieder geweckt
+  | "konto_sync"; // dach-018: der Konto-Dienst hat Name, Jahrgang oder Archiv nachgezogen
 
 export interface RosterEventInput {
   /** Zu WELCHER Klasse gehoert der Vorgang. NOT NULL in der Tabelle. */
@@ -99,6 +100,11 @@ function istIdListe(value: unknown): boolean {
   return Array.isArray(value) && value.every(istIdFoermig);
 }
 
+/** Ein echter Wahrheitswert — »ist sie jetzt stillgelegt«, nicht mehr. */
+function istBool(value: unknown): boolean {
+  return value === true || value === false;
+}
+
 /** Eine der drei Marken, die den Zweig einer Nutzlast benennen. */
 function istMarke(value: unknown): boolean {
   return value === "xp" || value === "unit" || value === "grade";
@@ -131,6 +137,10 @@ const VOKABULAR: Record<string, (value: unknown) => boolean> = {
   vocabXp: istZahl,
   grammarXp: istZahl,
   stars: istZahl,
+  // dach-018 · was der Konto-Dienst nachgezogen hat. Der NAME der Klasse steht
+  // hier nicht — nur seine Laenge, wie ueberall sonst in diesem Journal.
+  grade: istZahl,
+  archived: istBool,
 };
 
 /** Die Zahl der deklarierten Schluessel — die Batterie haelt sie fest. */
