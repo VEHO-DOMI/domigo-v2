@@ -18,9 +18,11 @@ export const VERANTWORTLICHER = "Orhan Vehabovic, Lehrkraft";
 
 /** Koki's work address at the school, named by him on card gomarke-007
  *  (2026-09-17) and published on the school's own website. It replaces
- *  datenschutz@lautereinser.at, which accepts no mail: an SMTP probe at the MX
- *  mail.lautereinser.at answered `550 relay not permitted` on 2026-09-14, so a
- *  parent writing there would have been answered by a bounce. */
+ *  datenschutz@lautereinser.at, which accepts no mail: an SMTP probe at that
+ *  domain's mail exchanger answered `550 relay not permitted` on 2026-09-14, so
+ *  a parent writing there would have been answered by a bounce. (The host name
+ *  itself is not repeated here — the umbrella gate check-umbrella-tokens.mjs
+ *  keeps every *.lautereinser.at address in app/le-werkzeuge.json alone.) */
 export const DATENSCHUTZ_KONTAKT = "orhan.vehabovic@pgrg13.at";
 
 /** Must equal `regions` in apps/web/vercel.json — the test enforces it. Proven
