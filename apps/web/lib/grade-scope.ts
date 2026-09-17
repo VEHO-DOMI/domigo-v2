@@ -24,7 +24,7 @@
  * `node --test`, which resolves real packages (@domigo/db, cf. lib/checkup.ts)
  * but NOT Next's tsconfig aliases.
  */
-import { getClassGrade, getDb, type ClassScope } from "@domigo/db";
+import { getClassGrade, getDb } from "@domigo/db";
 
 /** The Austrian AHS lower cycle — the full, unscoped view. */
 export const ALL_GRADES = [1, 2, 3, 4] as const;
@@ -65,12 +65,12 @@ export function isSlugAllowed(slug: string, grades: readonly number[]): boolean 
  * class, class absent in v1 AND v2, DB unreachable — lands on ALL_GRADES, so
  * this function cannot produce an empty page.
  */
-export async function resolveVisibleGrades(classScope: ClassScope, classId: string | null | undefined): Promise<number[]> {
+export async function resolveVisibleGrades(classId: string | null | undefined): Promise<number[]> {
   // dach-018 · no class is no longer ALL four years (see the header).
   if (!classId) return [];
   let grade: number | null = null;
   try {
-    grade = await getClassGrade(getDb(), classScope, classId);
+    grade = await getClassGrade(getDb(), classId);
   } catch {
     /* DB hiccup — degrade to the full view, never to an empty one */
   }

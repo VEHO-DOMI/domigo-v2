@@ -226,6 +226,7 @@ export async function reserveItems(db: Db, classScope: ClassScope, classId: stri
 
 /** Release reserved items back into the practice pool (active=false + releasedAt). */
 export async function releaseItems(db: Db, classScope: ClassScope, classId: string, itemIds: readonly string[]): Promise<void> {
+  assertWritableScope(classScope, "releaseItems");
   if (itemIds.length === 0) return;
   await db
     .update(reservedItems)

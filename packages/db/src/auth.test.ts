@@ -58,7 +58,7 @@ describe("dual-read degrades to v1 when v2 tables are unreachable", () => {
 
   it("getClassGrade: v2 throws → v1 grade still returned", async () => {
     const db = seqDb([missing(), [{ grade: 2 }]]);
-    expect(await getClassGrade(db, SCOPE, "c1")).toBe(2);
+    expect(await getClassGrade(db, "c1")).toBe(2);
   });
 
   it("allocateClassCode: v2 code read throws → still mints against v1 codes", async () => {

@@ -15,6 +15,7 @@
     "konto-class-term.ts#applyKontoClassTerm": "Zieht eine Aenderung des Konto-Dienstes nach. Der Ruf kommt nicht aus einer Sitzung, sondern aus einem signierten Push mit aud=go und body_sha256.",
     "konto-identity.ts#klasseExistiert": "Prueft beim Anmelden, ob die Bruecke des Konto-Dienstes auf eine Klasse zeigt, die es hier gibt — bevor die Sitzung und damit ihr Ausschnitt entsteht.",
     "konto-identity.ts#createKontoStudent": "Legt das Kind in der Klasse an, die sein Claim nennt; geprueft wurde sie einen Schritt vorher, ebenfalls vor jeder Sitzung.",
-    "konto-identity.ts#syncKontoStudentClass": "Zieht die Klasse des Kindes auf die des Claims nach, waehrend die Sitzung erst entsteht."
+    "konto-identity.ts#syncKontoStudentClass": "Zieht die Klasse des Kindes auf die des Claims nach, waehrend die Sitzung erst entsteht.",
+    "auth.ts#getClassGrade": "Liefert EINE Zahl (1 bis 4) zu einer Klassenkennung, die immer die der Sitzung selbst ist (session.user.classId, vom Konto-Dienst gesetzt) — keine Zeile, kein Name. Ein Ausschnitt-Parameter haette ueber resolveVisibleGrades bis in apps/web/app/(game) gereicht, und den fasst diese Karte nicht an (Brief §3, Tor perf-contract)."
   }
 }

@@ -1,5 +1,4 @@
 import { notFound, redirect } from "next/navigation";
-import { scopedClassIds } from "@/lib/identity";
 import { auth } from "@/auth";
 import type { AudioRef, GrammarItem, ListeningItem, VocabItem } from "@domigo/content-schema";
 import { listTestUnits, loadListening, loadTest } from "@domigo/content-loader";
@@ -19,7 +18,7 @@ export default async function TestPage({ params }: { params: Promise<{ slug: str
 
   // P1 (P-R1.5): the deep-link half of the grade scope — a foreign year's unit
   // sends the child back to its own list. (Teachers already went to /admin above.)
-  if (!isSlugAllowed(slug, await resolveVisibleGrades(await scopedClassIds(), session.user.classId))) redirect("/tests");
+  if (!isSlugAllowed(slug, await resolveVisibleGrades(session.user.classId))) redirect("/tests");
 
   const file = loadTest(slug);
   if (!file) notFound();

@@ -1,6 +1,6 @@
 import { notFound, redirect } from "next/navigation";
 import { assignPool, listApprovedUnits } from "@domigo/content-loader";
-import { EMPTY_SCOPE, getDb, listReservedForClass } from "@domigo/db";
+import { getDb, listReservedForClass } from "@domigo/db";
 import { loadUnitWithOverrides } from "@/lib/content-service";
 import { isSlugAllowed, resolveVisibleGrades } from "@/lib/grade-scope";
 import { getActingUserForPage } from "@/lib/identity";
@@ -16,7 +16,7 @@ export default async function UnitPracticePage({ params }: { params: Promise<{ s
   // P1 (P-R1.5): the deep-link half of the grade scope — a child that reached a
   // FOREIGN year's unit by URL goes back to its own list. A teacher (no classId)
   // and an unresolvable grade both keep full access, exactly as the list page does.
-  if (!isSlugAllowed(slug, await resolveVisibleGrades(acting?.classScope ?? EMPTY_SCOPE, acting?.classId))) redirect("/practice");
+  if (!isSlugAllowed(slug, await resolveVisibleGrades(acting?.classId))) redirect("/practice");
 
   const unit = await loadUnitWithOverrides(slug);
 

@@ -48,7 +48,7 @@ export default async function NodeRunnerPage({ params }: { params: Promise<{ slu
     // practice / side-quest → the node's pool slice; review → the live due set (mock excluded).
     let ids: string[];
     if (jnode.kind === "review") {
-      const due = await getDueRefs(getDb(), acting.classScope, acting.userId, classId, { kind: "unit", slug }, 20).catch(() => []);
+      const due = await getDueRefs(getDb(), acting.userId, classId, { kind: "unit", slug }, 20).catch(() => []);
       ids = due.map((r) => r.itemId);
     } else {
       ids = [...(nodeItems.get(nodeId) ?? [])];

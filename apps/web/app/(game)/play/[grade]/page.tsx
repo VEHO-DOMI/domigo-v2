@@ -21,7 +21,7 @@ import Link from "next/link";
 import RegelbuchBoard from "./RegelbuchBoard";
 import { redirect } from "next/navigation";
 import { loadGameMap, loadReleasedChapters, loadStory, storyIdForGrade } from "@domigo/content-loader";
-import { EMPTY_SCOPE, getDb, getSolvedGameItemIds } from "@domigo/db";
+import { getDb, getSolvedGameItemIds } from "@domigo/db";
 import { EvidenceGallery, EVIDENCE, type EvidencePiece } from "@domigo/game-detective";
 import { SeasonBoard, type EpisodeProgress } from "@domigo/game-novel";
 import { JournalBoard, tripCopyFor, type DayProgress } from "@domigo/game-trip";
@@ -47,7 +47,7 @@ export default async function HubPage({ params }: { params: Promise<{ grade: str
   const acting = student ?? (await getPlayerForPage());
   if (!acting) redirect("/signin");
   if (student) {
-    const grades = await resolveVisibleGrades(student?.classScope ?? EMPTY_SCOPE, student.classId);
+    const grades = await resolveVisibleGrades(student.classId);
     // Not in scope ⇒ back to the child's own year (never to a blank page: the
     // scope is never empty, so grades[0] always exists).
     if (!grades.includes(grade)) redirect(`/play/${grades[0]}`);

@@ -1,5 +1,4 @@
 import { notFound, redirect } from "next/navigation";
-import { scopedClassIds } from "@/lib/identity";
 import { auth } from "@/auth";
 import { listListeningUnits, loadListening } from "@domigo/content-loader";
 import { isSlugAllowed, resolveVisibleGrades } from "@/lib/grade-scope";
@@ -17,7 +16,7 @@ export default async function ListeningUnitPage({ params }: { params: Promise<{ 
 
   // P1 (P-R1.5): the deep-link half of the grade scope — a foreign year's unit
   // sends the child back to its own list. (Teachers already went to /admin above.)
-  if (!isSlugAllowed(slug, await resolveVisibleGrades(await scopedClassIds(), session.user.classId))) redirect("/listening");
+  if (!isSlugAllowed(slug, await resolveVisibleGrades(session.user.classId))) redirect("/listening");
 
   const file = loadListening(slug);
   if (!file) notFound();

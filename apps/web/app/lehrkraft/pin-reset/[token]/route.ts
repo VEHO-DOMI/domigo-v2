@@ -9,11 +9,11 @@
  * token inspection: the token in an old link must not be answered, only
  * retired. Old bookmarks keep working, they just arrive somewhere else.
  */
-import { NextResponse, type NextRequest } from "next/server";
+import { NextResponse } from "next/server";
 import { kontoBaseUrl } from "@/lib/konto/basis";
 
 export const dynamic = "force-dynamic";
 
-export async function GET(_req: NextRequest) {
+export async function GET() {
   return NextResponse.redirect(`${kontoBaseUrl()}/login?app=go`, 308);
 }

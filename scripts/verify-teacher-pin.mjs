@@ -42,14 +42,23 @@ if (!process.env.DATABASE_URL && !process.env.POSTGRES_URL) {
   console.log("\nTier 2 — SKIPPED (no DATABASE_URL). Point it at the v2-dev Neon branch (pooled), then re-run.");
 } else {
   console.log("\nTier 2 — DB-gated promote + change-PIN + no-orphan:");
-  const { getDb, upsertTeacherIdentity, deleteTeacherIdentity, lookupTeacherAuthById, createClass, listClassesForTeacher, archiveClass } =
+  const { getDb, upsertTeacherIdentity, deleteTeacherIdentity, lookupTeacherAuthById, createKontoClass, listClassesForTeacher, applyKontoClassTerm, classScope } =
     await import("../packages/db/src/index.ts");
   const db = getDb();
 
   const teacherId = crypto.randomUUID(); // stands in for a real teacher's live session id
   let classId = null;
   const cleanup = async () => {
-    if (classId) await archiveClass(db, classId, teacherId).catch(() => {});
+    // dach-018 · Stilllegen ist kein DomiGo-Schreibweg mehr; aufgeraeumt wird
+    // ueber denselben Empfaenger, den der Konto-Dienst benutzt.
+    if (classId)
+      await applyKontoClassTerm(db, {
+        app_class_id: classId,
+        name: "VerifyClass",
+        jahrgang: 2,
+        owner_app_user_id: teacherId,
+        archived_at: new Date().toISOString(),
+      }).catch(() => {});
     await deleteTeacherIdentity(db, teacherId).catch(() => {});
   };
   await cleanup(); // start clean even if a prior run died mid-way
@@ -66,8 +75,17 @@ if (!process.env.DATABASE_URL && !process.env.POSTGRES_URL) {
 
     // Attach a class to that id — exactly what a real teacher owns (assignments.created_by
     // is the identical plain-uuid reference, so the class case proves the property).
-    const cls = await createClass(db, { name: "VerifyClass", grade: 2, teacherId });
-    classId = cls.id;
+    // dach-018 · createClass ist weg — Name und Jahrgang schreibt nur noch der
+    // Konto-Dienst. Die Fixture-Klasse entsteht darum auf demselben Weg, den
+    // sein Empfaenger nimmt.
+    const cls = await createKontoClass(db, {
+      join_code: `V${Math.random().toString(36).slice(2, 7).toUpperCase()}`,
+      name: "VerifyClass",
+      jahrgang: 2,
+      owner_app_user_id: teacherId,
+    });
+    assert.ok(cls.ok, "die Fixture-Klasse entsteht ueber den konto-Empfaenger");
+    classId = cls.app_class_id;
 
     // CHANGE PIN: a second upsert with the SAME id UPDATEs only the hash.
     await upsertTeacherIdentity(db, { id: teacherId, displayName: "IgnoredOnUpdate", pinHash: await hashPin("2222") });
@@ -79,7 +97,7 @@ if (!process.env.DATABASE_URL && !process.env.POSTGRES_URL) {
     ok("change-PIN → same id, displayName kept, new PIN verifies, old rejected");
 
     // NO ORPHAN: the class still resolves under the reused id after the change.
-    const owned = await listClassesForTeacher(db, teacherId);
+    const owned = await listClassesForTeacher(db, classScope([classId]), teacherId);
     assert.ok(owned.some((c) => c.id === classId), "the class still belongs to the teacher after the PIN change");
     ok("no orphan → the teacher's class stays attached across the change (id reuse)");
 

@@ -26,7 +26,6 @@
  * student, so a second-year still lands straight on year two.
  */
 import Link from "next/link";
-import { EMPTY_SCOPE } from "@domigo/db";
 import { redirect } from "next/navigation";
 import { listReleasedStories } from "@domigo/content-loader";
 import { getActingUserForPage, getPlayerForPage } from "@/lib/identity";
@@ -47,7 +46,7 @@ export default async function PlayIndexPage() {
   //
   // A TEACHER is not grade-bound: she passes null and sees every released year,
   // which is the same preview she already gets on /play/[grade].
-  const grades = await resolveVisibleGrades(student?.classScope ?? EMPTY_SCOPE, student ? student.classId : null);
+  const grades = await resolveVisibleGrades(student ? student.classId : null);
   const stories = listReleasedStories().filter((s) => grades.includes(s.grade));
 
   // Fast path: exactly one year in scope and a story released for it. Only a

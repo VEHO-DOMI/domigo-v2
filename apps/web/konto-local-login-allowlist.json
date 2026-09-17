@@ -1,5 +1,5 @@
 {
-  "warum": "SPEC konto V1.1-FINAL §6 + Nachtrag N-11: nach dem Umstieg auf den Konto-Dienst meldet sich in DomiGo nichts mehr mit einem eigenen Passwort an — ausser den zwei hier benannten Resten, und jeder traegt ein festes Ablaufdatum. Gelesen von scripts/check-no-local-login.mjs und vom jwt-Callback in auth.ts: nach `ablauf` ist das Tor rot UND die Sitzung wird abgelehnt. Verlaengert wird das nur ueber eine neue Spec-Fassung, nie durch Aendern dieser Datei allein.",
+  "warum": "SPEC konto V1.1-FINAL §6 + Nachtrag N-11: nach dem Umstieg auf den Konto-Dienst meldet sich in DomiGo nichts mehr mit einem eigenen Passwort an — ausser den zwei hier benannten Resten, und jeder traegt ein festes Ablaufdatum. Gelesen von scripts/check-no-local-login.mjs: nach `ablauf` ist das Tor rot, und der Weg muss weg. ACHTUNG, die beiden Reste werden UNTERSCHIEDLICH durchgesetzt: `ops-link` ist ein echter Provider, den der jwt-Callback in auth.ts nach `ablauf` auch zur Laufzeit ablehnt (restGueltig). `dev-identity` ist KEIN Provider — es setzt nie ein `via` und kann daher vom Callback gar nicht abgelehnt werden; seine Sperre ist der Waechter auf VERCEL_ENV !== 'production', der unabhaengig vom Datum gilt. Das Datum zwingt hier nur dazu, den toten Weg zu entfernen. Verlaengert wird beides nur ueber eine neue Spec-Fassung, nie durch Aendern dieser Datei allein.",
   "umstiegstag": "2026-10-13",
   "entschieden": "Koki, 2026-09-17 (Karte steu-013 Punkt 2A)",
   "reste": [
@@ -10,7 +10,8 @@
       "dateien": [
         "auth.ts",
         "lib/ops.ts"
-      ]
+      ],
+      "durchsetzung": "jwt-Callback (restGueltig) + Tor"
     },
     {
       "provider": "dev-identity",
@@ -20,7 +21,8 @@
         "middleware.ts",
         "lib/identity.ts",
         "lib/teacher.ts"
-      ]
+      ],
+      "durchsetzung": "VERCEL_ENV-Waechter (nicht der jwt-Callback: dieser Weg setzt kein `via`)"
     }
   ],
   "tote_pin_schreiber": {

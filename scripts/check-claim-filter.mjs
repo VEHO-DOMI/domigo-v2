@@ -5,7 +5,7 @@
 // Ausschnitt der Sitzung. Eine Regel ohne Tor rutscht bei der 27. Datei durch —
 // genau dafuer steht dieses Blatt.
 //
-// Drei Pruefungen, und die dritte ist die, ohne die die anderen beiden Deko sind:
+// Vier Pruefungen, und die letzte ist die, ohne die die anderen Deko sind:
 //
 //   pflicht   · jede Funktion mit einer Klassen-Bedingung nimmt `classScope:
 //               ClassScope` als zweiten Parameter (direkt hinter `db`), ohne
@@ -16,6 +16,9 @@
 //               `inArray(spalte, [])` ergibt `false` (leerer Ausschnitt ⇒ kein
 //               Ergebnis), `notInArray(spalte, [])` dagegen `true` — die
 //               verneinte Form kehrt die Wand um, statt sie zu schliessen.
+//   wache     · jeder Schreibweg mit Ausschnitt ruft `assertWritableScope`.
+//               Ein leerer Ausschnitt macht aus einem UPDATE ein `where false`:
+//               null Zeilen geaendert, Erfolg gemeldet.
 //   herkunft  · `classScope(` wird in apps/web NUR in lib/identity.ts gerufen.
 //               Der Typ kann nicht beweisen, woher seine Kennungen kommen:
 //               `classScope([params.id])` uebersetzt sich tadellos und ist
@@ -194,6 +197,27 @@ const PRUEFUNGEN = {
     return raus;
   },
 
+  /**
+   * WACHE — der blinde Leser von dach-018 fand `releaseItems` ohne
+   * `assertWritableScope`, waehrend jeder andere Schreibweg ihn ruft. Das war
+   * kein Einzelfall, sondern eine Regel ohne Tor: `where false` aendert null
+   * Zeilen und meldet Erfolg, und genau davor warnt der Kopf von scope.ts.
+   * Seit diesem Befund haelt eine Pruefung die Regel statt einer Gewohnheit.
+   */
+  wache(state) {
+    const raus = [];
+    for (const [rel, src] of state.db) {
+      for (const f of funktionen(src)) {
+        if (!f.exportiert || !f.koerper.includes("classScope")) continue;
+        const schreibt = /db\s*\.\s*(insert|update|delete)\(/.test(f.koerper);
+        if (schreibt && !f.koerper.includes("assertWritableScope")) {
+          raus.push(`${path.basename(rel)}#${f.name}: schreibt mit einem Ausschnitt, ruft aber keinen assertWritableScope — ein leerer Ausschnitt aendert null Zeilen und meldet Erfolg`);
+        }
+      }
+    }
+    return raus;
+  },
+
   herkunft(state) {
     const raus = [];
     for (const [rel, src] of state.web) {
@@ -250,6 +274,16 @@ const FAELLE = [
     mach: (s) => {
       const c = klon(s);
       c.web.set("apps/web/app/__selftest-scope.tsx", "const s = classScope([params.id]);");
+      return c;
+    },
+  },
+  {
+    name: "ein Schreibweg verliert seinen Waechter",
+    pruefung: "wache",
+    mach: (s) => {
+      const c = klon(s);
+      const rel = `${DB_SRC}/assignment-service.ts`;
+      c.db.set(rel, c.db.get(rel).replace('assertWritableScope(classScope, "releaseItems");', ""));
       return c;
     },
   },

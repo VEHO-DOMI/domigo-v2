@@ -14,12 +14,12 @@
  * 308, not 302: the code on a printed sheet or a sticker is permanent, and the
  * browser should remember where it now goes.
  */
-import { NextResponse, type NextRequest } from "next/server";
+import { NextResponse } from "next/server";
 import { kontoBeitrittUrl } from "@/lib/konto/basis";
 
 export const dynamic = "force-dynamic";
 
-export async function GET(_req: NextRequest, ctx: { params: Promise<{ code: string }> }) {
+export async function GET(_req: Request, ctx: { params: Promise<{ code: string }> }) {
   const { code } = await ctx.params;
   return NextResponse.redirect(kontoBeitrittUrl(code), 308);
 }
