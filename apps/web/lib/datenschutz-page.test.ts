@@ -53,8 +53,15 @@ import { SPALTEN } from "./datenschutz-spalten.ts";
 const read = (rel: string): string => readFileSync(new URL(rel, import.meta.url), "utf8");
 
 const page = read("../app/datenschutz/page.tsx");
-/** The page without its comment header — only what a reader can see counts. */
-const visible = page.replace(/^\s*\/\/.*$/gm, "");
+/**
+ * The page without its comment header — only what a reader can see counts. Runs of
+ * whitespace collapse to one space, because JSX line breaks are arbitrary: a reader
+ * sees one space where the source has a newline plus eight spaces of indentation.
+ * Found the hard way (gomarke-008, 2026-09-17): re-wrapping a paragraph split
+ * »deinem Konto zugeordnet« across two lines and turned eight couplings red on a
+ * page whose visible text had not changed at all.
+ */
+const visible = page.replace(/^\s*\/\/.*$/gm, "").replace(/\s+/g, " ");
 
 /**
  * Every table of domigo_v2 as the RUNNING code defines it, read through drizzle's
