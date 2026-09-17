@@ -10,6 +10,9 @@ export default function Home() {
       <Link href="/signin" className="dg-btn" style={{ marginTop: 20, padding: "12px 24px", fontSize: 16 }}>
         Sign in →
       </Link>
+      <p style={{ marginTop: 40, fontSize: 13 }}>
+        <Link href="/datenschutz" style={{ color: "var(--text-secondary)" }}>Datenschutz</Link>
+      </p>
     </main>
   );
 }

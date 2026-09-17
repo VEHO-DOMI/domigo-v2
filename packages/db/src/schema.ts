@@ -423,9 +423,17 @@ export const v2Classes = v2.table(
 /**
  * The roster journal. Neon HTTP has no multi-statement transactions, so roster
  * mutations use journal-then-flip: append the intent HERE first, then flip the
- * live `users`/`classes` state. `kind` is app-validated; `payload` is the
- * operation's data (imported names, the claimed id, the new name, …); `actorId`
- * is the teacher/actor uuid (nullable — e.g. a self-serve student claim).
+ * live `users`/`classes` state. `kind` is app-validated; `actorId` is the
+ * teacher/actor uuid (nullable — e.g. a self-serve student claim).
+ *
+ * `payload` carries ids, numbers and LENGTHS only — never a name. That was not
+ * always true: until P-R8 it held the import's name list, the claimed nickname
+ * and every corrected first name. Today roster-events.ts is the single door and
+ * scrubs against a 17-key vocabulary, and migration 0019 rewrote the rows that
+ * were already there. This comment used to say "imported names, the claimed id,
+ * the new name" and outlived that change; a careful reader took it for the truth
+ * on 2026-09-17 while auditing the privacy page, which is why it now says what
+ * the code enforces.
  */
 export const v2RosterEvents = v2.table(
   "roster_events",
