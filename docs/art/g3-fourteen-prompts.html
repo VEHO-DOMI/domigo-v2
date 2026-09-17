@@ -38,7 +38,7 @@ requirement. <b>Green-edged cards</b> are ones you already generated for the old
 ticked for you and get imported separately. Nothing here must be done in order, and a missing
 picture never breaks anything — the game just draws its own until yours arrives.</div>
 <div class="bar">
-  <div class="count"><b id="ndone">0</b> / 235 done · <span id="nleft"></span> to go</div>
+  <div class="count"><b id="ndone">0</b> / 236 done · <span id="nleft"></span> to go</div>
   <div class="filters">
     <button data-f="all" aria-pressed="true">All</button>
     <button data-f="todo" aria-pressed="false">Not done</button>
@@ -2325,6 +2325,16 @@ picture never breaks anything — the game just draws its own until yours arrive
   <footer><button class="copy">Copy prompt</button>
     <span class="save">save as <code>panel_ch09_fix.png</code> in <code>docs/art/drop-g3/</code></span></footer>
 </article>
+<article class="card" data-stem="panel_ch01_reply">
+  <header>
+    <label class="tick"><input type="checkbox" data-stem="panel_ch01_reply"> <b>panel_ch01_reply</b></label>
+    <span class="meta">panel · 16:9 · 1024px wide · 3102/5000</span>
+  </header>
+  <p class="what">panel_ch01_reply</p>
+  <textarea readonly rows="5">Semi-realistic European graphic novel illustration. Clean confident ink linework with warm watercolour wash and visible paper texture — every object, edge and figure carries a drawn ink contour of slightly varying weight, and colour sits inside those lines as soft, slightly uneven washes with gentle bleed at the edges. Realistic proportions — normal-sized eyes, natural faces, real teenage bodies. NOT anime, NOT manga, NOT chibi, NOT cartoon, NOT 3D. Warm ink-wash skin rendering with subtle colour variation. Hair with natural weight and individual strands. Clothing with realistic folds and fabric texture. Shading is two or three flat tonal steps, never a smooth photographic gradient; light is PAINTED, so a lamp glows as a soft wash bloom on the paper rather than as a lens effect. A contemporary Austrian school world, unless the scene names somewhere else. All characters aged 12-15 must look their real age. Composition: a 16:9 close study of an object or a pair of hands, no faces — an inset panel from a comic album. Like the backdrop class this one has no face to anchor it, so the drawing must be held on purpose: the object is INKED CRISPLY with a clear contour plus interior detail lines (the grain of a desk, the rings of a spiral binding, the seam of a phone case), then washed in warm watercolour inside those lines. Hands, where present, are drawn with simple confident contours and a flat skin wash — knuckles and nails suggested by line, never modelled with soft shading. The room behind the object is simplified to a few soft washes but is still LINE-DRAWN, never blurred out: reduce it by leaving detail out, not by defocusing it. Keep the key subject in the middle third vertically, with room above and below. Drawn, not photographed: visible ink contours on every surface, flat watercolour washes inside them, warm paper grain showing through. A phone lying face-up on the studio desk in the dark, its screen glowing with a column of comment bubbles drawn as abstract shapes, one small hand hovering over it, ready to type. Setting: a teenager's bedroom turned into a tiny filming studio — a ring light on a stand, a phone clamped on a small tripod, fairy lights, plain flat-pack furniture, band and film posters on the walls. Colour: warm and full — golden lamp light washed over cream paper, ochres and soft reds, the washes generous. Keep the image clearly readable: the paper stays light enough for the ink lines to show everywhere, and no area collapses into flat black. Do not depict or name any real person — no actors, musicians, athletes or other public figures, and no recognisable likeness; describe an impression instead if one must be evoked. Every person shown is a fictional character described above. No watermarks. THIS IS A DRAWING, NOT A PHOTOGRAPH. No photorealism, no camera depth-of-field or bokeh, no lens flare, no film grain, no HDR, no cinematic colour grading, no 3D render. If it could be mistaken for a photo or a film still it is wrong — the ink lines and the paper texture stay visible everywhere, including in empty rooms and object close-ups.</textarea>
+  <footer><button class="copy">Copy prompt</button>
+    <span class="save">save as <code>panel_ch01_reply.png</code> in <code>docs/art/drop-g3/</code></span></footer>
+</article>
 <article class="card" data-stem="panel_ch12_truth_mc">
   <header>
     <label class="tick"><input type="checkbox" data-stem="panel_ch12_truth_mc"> <b>panel_ch12_truth_mc</b></label>
@@ -2426,7 +2436,7 @@ function save(){localStorage.setItem(KEY,JSON.stringify([...done]));paint();}
 let filter="all",q="";
 function paint(){
   document.getElementById('ndone').textContent=done.size;
-  document.getElementById('nleft').textContent=235-done.size;
+  document.getElementById('nleft').textContent=236-done.size;
   document.querySelectorAll('.card').forEach(c=>{
     const d=done.has(c.dataset.stem);
     c.classList.toggle('done',d);

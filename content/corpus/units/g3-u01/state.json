@@ -148,6 +148,13 @@
       "contentHash": "01a135a68231edda1935cf2fc0e0e3af6952d6b5da0198efa95ebab3a5ee7e87",
       "note": "trusted patch (mechanical): 2 answer-pool fix(es) [g3u01.gi.present-simple.ec.002, g3u01.gi.present-simple.gf.003] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
       "at": "2026-07-12T12:03:28.823Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable",
+      "contentHash": "9fad24c2edf38b682f52eea64c7f0ce51bb0e90111dfbeb3415c5bbc8a8b7e73",
+      "note": "variant mint for g3.st.fourteen",
+      "at": "2026-09-16T16:47:55.679Z"
     }
   ]
 }
