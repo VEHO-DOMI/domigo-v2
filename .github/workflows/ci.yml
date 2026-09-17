@@ -124,6 +124,8 @@ jobs:
       - run: node --experimental-strip-types scripts/check-paint-art.mjs # PB-T2: keine stille Platzhalter-Kunst; und die Tot-Kunst-Ratsche (DEAD_ART_CEILING)
       - run: node scripts/check-story-art.mjs --selftest # W6/D-454: beide Richtungen müssen rot werden können (art.json nennt einen Stem ohne Prompt · die Bibliothek definiert einen, den art.json nie nennt) und der _neutral-Rückfall darf keinen Fehlalarm auslösen
       - run: node scripts/check-story-art.mjs # das Story-Kunst-Manifest und die Prompt-Bibliothek stimmen überein, in beide Richtungen
+      - run: node scripts/check-g4-version-a.mjs --selftest # welle-052: das rote Licht muss erreichbar sein — Sydney in einer Szene, ein Flugzeug im Tagesstempel, New York im Generator, eine unnötige Buch-Ausnahme
+      - run: node scripts/check-g4-version-a.mjs # welle-052 (Koki welle-043, Fassung A): FOURTEEN: LIVE spielt die Abschlusswoche Dublin · Kärnten · Wien — kein Sydney/New York/Flug in Bündel, Bild-Prompts, Generatoren und Tagesstempeln
       - run: node scripts/check-composition.mjs --selftest # A6: das rote Licht des Kanten-Kohärenz-Gesetzes muss erreichbar sein · L1/R5-W6: die Buchstaben-Präsenz mit ihrem Tamper (goldene Wand OHNE Hof ⇒ rot) · W5/R5-W6b: EINE Farbton-Rechnung (beide Leser, derselbe Winkel)
       - run: node scripts/check-composition.mjs # PB-C1/doc 36: Ebenen-Abdeckung, geschnittene Masse, Wertbänder, keine nackte Füllung, Kanten-Kohärenz, Buchstaben-Präsenz (R37)
       - run: node --experimental-strip-types scripts/check-png-seams.mjs --selftest # W3/D-199: das rote Licht des Naht-Tors muss erreichbar sein — und echt violette Malerei muss grün bleiben

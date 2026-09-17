@@ -4,7 +4,7 @@
 ch11 the archive (the eight-year-old unfinished story) · ch12 the planetarium
 (keystone confrontation STAGED per w10.* via FlagGate) · ch13 the three-way
 finale (w13.live | w13.print | w13.direktorin) + the honest re-vote epilogue
-(Sydney wins — for real this time) + the sign-off flagLines that consume all
+(Carinthia wins — for real this time) + the sign-off flagLines that consume all
 three F3 flags. VS-14: no taskSlots on branch-exclusive scenes.
 """
 import json, os, sys
@@ -40,8 +40,8 @@ CH11 = ("The Archive", "Das Archiv", link([
        [("novels", "Romane"), ("non-fiction", "Sachliteratur"), ("prefer", "lieber mögen")],
        slots=[("name-it", "g4u11.w.non-fiction")]),
     sc(11, 5, "narrator",
-       "Eight years ago: a ski-week vote. Three resorts. And a sponsor's sun-and-plane logo in the corner of the page.",
-       "Vor acht Jahren: eine Abstimmung über die Schiwoche. Drei Schigebiete. Und das Sonne-und-Flugzeug-Logo eines Sponsors in der Ecke der Seite.",
+       "Eight years ago: a ski-week vote. Three resorts. And a sponsor's sun-and-mountains logo in the corner of the page.",
+       "Vor acht Jahren: eine Abstimmung über die Schiwoche. Drei Schigebiete. Und das Sonne-und-Berge-Logo eines Sponsors in der Ecke der Seite.",
        [("resorts", "Schigebiete"), ("sponsor", "Sponsor"), ("corner", "Ecke"), ("logo", "Logo")]),
     sc(11, 6, "leo",
        "Issue 4 announces a big investigation: 'Was our vote steered? Part two next issue.' There is no part two. Issue 5 has a hole where the article should be.",
@@ -267,18 +267,18 @@ CH13 = ("Print / Live / The Desk", "Druck / Live / Der Schreibtisch", link([
        "Dann stimmt die Schule noch einmal ab. Echte Stimmzettel, versiegelte Box, zwei Eltern als Beobachter und Amelie, die die Auszählung bewacht wie ein Falke aus der zweiten Klasse.",
        [("ballots", "Stimmzettel"), ("sealed", "versiegelt"), ("observers", "Beobachter"), ("count", "Auszählung"), ("hawk", "Falke")]),
     sc(13, 16, "narrator",
-       "The result, read aloud twice because the hall will not stop laughing: Sydney. Sydney wins the honest vote.",
-       "Das Ergebnis, zweimal laut vorgelesen, weil die Aula nicht aufhört zu lachen: Sydney. Sydney gewinnt die ehrliche Abstimmung.",
+       "The result, read aloud twice because the hall will not stop laughing: Carinthia. Carinthia wins the honest vote.",
+       "Das Ergebnis, zweimal laut vorgelesen, weil die Aula nicht aufhört zu lachen: Kärnten. Kärnten gewinnt die ehrliche Abstimmung.",
        [("result", "Ergebnis"), ("aloud", "laut"), ("laughing", "lachen")]),
     sc(13, 17, "ben",
-       "Same city. Different school. THAT is the whole story, right there.",
-       "Gleiche Stadt. Andere Schule. DAS ist die ganze Geschichte, genau da.",
+       "Same week. Different school. THAT is the whole story, right there.",
+       "Gleiche Woche. Andere Schule. DAS ist die ganze Geschichte, genau da.",
        [("same", "gleiche"), ("different", "andere"), ("whole", "ganze")],
        slots=[("recap", "g4u13.ci.the-revote.mc.001")]),
     sc(13, 18, "narrator",
-       "And the twelve names on Steiner's list are on the passenger list too. Ben checked it himself. Twice.",
-       "Und die zwölf Namen von Steiners Liste stehen auch auf der Passagierliste. Ben hat es selbst geprüft. Zweimal.",
-       [("passenger", "Passagier-"), ("checked", "geprüft"), ("twice", "zweimal")],
+       "And the twelve names on Steiner's list are on the list for Carinthia too. Ben checked it himself. Twice.",
+       "Und die zwölf Namen von Steiners Liste stehen auch auf der Liste für Kärnten. Ben hat es selbst geprüft. Zweimal.",
+       [("checked", "geprüft"), ("twice", "zweimal")],
        slots=[("fix-it", "g4u13.gi.word-formation.cp.002")]),
     sc(13, 19, "leah",
        "Last segment of the season. We found a poster, and behind it a plan, and behind the plan a person, and behind the person a reason. We told all four layers. That is the job.",
@@ -322,11 +322,11 @@ CI_ITEMS = [
        "Die Weltraumwoche bringt alle Beteiligten in einen Raum. Genau dort passiert die Konfrontation — so, wie die Crew sie in Kapitel 10 angelegt hat."),
     ci("g4u13.ci.the-revote.mc.001",
        "Who wins the honest re-vote?",
-       "Sydney — the same city, fairly this time.",
-       ["Dublin, because the crew pitched it.", "New York, in Ben's honour.", "Nobody — the trip is cancelled."],
+       "Carinthia — the same week, fairly this time.",
+       ["Dublin, because the crew pitched it.", "Vienna, in Ben's honour.", "Nobody — the trip is cancelled."],
        [("fairly", "fair / ehrlich"), ("honour", "zu Ehren"), ("cancelled", "abgesagt"), ("re-vote", "Neuwahl")],
        "Das Ergebnis wird zweimal vorgelesen, weil die Aula lacht.",
-       "Sydney gewinnt wieder — aber diesmal echt. Ben sagt es am besten: Gleiche Stadt, andere Schule. Es ging nie um das Reiseziel, sondern um die ehrliche Wahl."),
+       "Kärnten gewinnt wieder — aber diesmal echt. Ben sagt es am besten: Gleiche Woche, andere Schule. Es ging nie um das Ziel, sondern um die ehrliche Wahl."),
 ]
 
 

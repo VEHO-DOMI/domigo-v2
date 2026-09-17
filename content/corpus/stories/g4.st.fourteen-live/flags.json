@@ -1,48 +1,172 @@
 {
-  "schema": "flags@1",
-  "storyId": "g4.st.fourteen-live",
-  "flags": [
+ "schema": "flags@1",
+ "storyId": "g4.st.fourteen-live",
+ "flags": [
+  {
+   "id": "w06.open",
+   "label": "Announced the investigation on the channel",
+   "setIn": "g4.st.fourteen-live.ch06",
+   "major": true
+  },
+  {
+   "id": "w06.quiet",
+   "label": "Worked quietly, no announcement",
+   "setIn": "g4.st.fourteen-live.ch06",
+   "major": true
+  },
+  {
+   "id": "w10.private",
+   "label": "Showed Steiner everything first, alone",
+   "setIn": "g4.st.fourteen-live.ch10",
+   "major": true
+  },
+  {
+   "id": "w10.public",
+   "label": "Kept the formal on-camera interview",
+   "setIn": "g4.st.fourteen-live.ch10",
+   "major": true
+  },
+  {
+   "id": "w13.live",
+   "label": "Broke the story as a live special",
+   "setIn": "g4.st.fourteen-live.ch13",
+   "major": true
+  },
+  {
+   "id": "w13.print",
+   "label": "Revived the school mag — the special issue",
+   "setIn": "g4.st.fourteen-live.ch13",
+   "major": true
+  },
+  {
+   "id": "w13.direktorin",
+   "label": "Brought the file to Direktorin Huber first",
+   "setIn": "g4.st.fourteen-live.ch13",
+   "major": true
+  }
+ ],
+ "forks": [
+  {
+   "id": "N1",
+   "unit": 2,
+   "question": "Whodunit: follow the poster, or ask Sara first?",
+   "major": false,
+   "status": "planned",
+   "options": [
     {
-      "id": "w06.open",
-      "label": "Announced the investigation on the channel",
-      "setIn": "g4.st.fourteen-live.ch06",
-      "major": true
+     "flag": "w02.poster",
+     "label": "Followed the poster straight away"
     },
     {
-      "id": "w06.quiet",
-      "label": "Worked quietly, no announcement",
-      "setIn": "g4.st.fourteen-live.ch06",
-      "major": true
-    },
-    {
-      "id": "w10.private",
-      "label": "Showed Steiner everything first, alone",
-      "setIn": "g4.st.fourteen-live.ch10",
-      "major": true
-    },
-    {
-      "id": "w10.public",
-      "label": "Kept the formal on-camera interview",
-      "setIn": "g4.st.fourteen-live.ch10",
-      "major": true
-    },
-    {
-      "id": "w13.live",
-      "label": "Broke the story as a live special",
-      "setIn": "g4.st.fourteen-live.ch13",
-      "major": true
-    },
-    {
-      "id": "w13.print",
-      "label": "Revived the school mag — the special issue",
-      "setIn": "g4.st.fourteen-live.ch13",
-      "major": true
-    },
-    {
-      "id": "w13.direktorin",
-      "label": "Brought the file to Direktorin Huber first",
-      "setIn": "g4.st.fourteen-live.ch13",
-      "major": true
+     "flag": "w02.sara",
+     "label": "Asked Sara to check first"
     }
-  ]
+   ],
+   "visibleIn": [
+    3
+   ],
+   "recap": [
+    {
+     "unit": 3,
+     "itemId": null
+    }
+   ],
+   "note": "Minor fork (Koki, welle-043: yes). One consequence scene in U3, then spent; outside the ending matrix (VS-15 counts major flags only). Switches to built when the U2 battery authors the choice and the U3 line."
+  },
+  {
+   "id": "F1",
+   "unit": 6,
+   "question": "How do we investigate?",
+   "major": true,
+   "status": "built",
+   "options": [
+    {
+     "flag": "w06.open",
+     "label": "Announced the investigation on the channel"
+    },
+    {
+     "flag": "w06.quiet",
+     "label": "Worked quietly, no announcement"
+    }
+   ],
+   "visibleIn": [
+    7,
+    9
+   ],
+   "recap": [
+    {
+     "unit": 7,
+     "itemId": null
+    },
+    {
+     "unit": 9,
+     "itemId": null
+    }
+   ],
+   "note": "U7 sources dry up on camera vs anonymous tips to Leah; U9 pressure from outside vs from inside. Concept sheet §3 also names one U12 line (who speaks to the crew in the planetarium) — not authored yet."
+  },
+  {
+   "id": "F2",
+   "unit": 10,
+   "question": "How do we confront Steiner?",
+   "major": true,
+   "status": "built",
+   "options": [
+    {
+     "flag": "w10.private",
+     "label": "Showed Steiner everything first, alone"
+    },
+    {
+     "flag": "w10.public",
+     "label": "Kept the formal on-camera interview"
+    }
+   ],
+   "visibleIn": [
+    12,
+    13
+   ],
+   "recap": [
+    {
+     "unit": 12,
+     "itemId": null
+    },
+    {
+     "unit": 13,
+     "itemId": null
+    }
+   ],
+   "note": "U12 the planetarium stage (FlagGate: Steiner speaks vs Brandt pushes back); U13 which evidence the crew may send."
+  },
+  {
+   "id": "F3",
+   "unit": 13,
+   "question": "How do we publish?",
+   "major": true,
+   "status": "built",
+   "options": [
+    {
+     "flag": "w13.live",
+     "label": "Broke the story as a live special"
+    },
+    {
+     "flag": "w13.print",
+     "label": "Revived the school mag — the special issue"
+    },
+    {
+     "flag": "w13.direktorin",
+     "label": "Brought the file to Direktorin Huber first"
+    }
+   ],
+   "visibleIn": [
+    13
+   ],
+   "recap": [
+    {
+     "unit": 13,
+     "itemId": null
+    }
+   ],
+   "note": "The last fork chooses the ending: three clusters (live special · Issue #1 · the desk), coloured by F1/F2; 12 combinations + neutral, VS-15."
+  }
+ ]
 }
