@@ -88,7 +88,9 @@ export default function DatenschutzPage() {
       <h2 style={h2}>Welche Daten DomiGo über Schülerinnen und Schüler speichert</h2>
       <p>
         Alles, was hier steht, ist deinem Konto zugeordnet: in der Datenbank steht bei jeder
-        Aufzeichnung eine Kennung deines Kontos, nicht dein Name.
+        Aufzeichnung eine Kennung deines Kontos — eine lange Zufallszahl — und nicht dein Name.
+        Wer deinen echten Namen sehen darf, deine Lehrkraft und der Verwaltungszugang weiter unten,
+        kann beides zusammenbringen; für alle anderen ist die Kennung nur eine Zahl.
       </p>
       <ul style={list}>
         <li><strong>Konto:</strong> dein selbst gewählter Spitzname, deine Klasse und deine 6-stellige PIN. Die PIN wird nur verschlüsselt gespeichert (bcrypt), niemand kann sie lesen. Konten aus der früheren DomiGo-Version liegen in derselben Datenbank und werden zum Anmelden weiter gelesen.</li>
@@ -104,7 +106,8 @@ export default function DatenschutzPage() {
       </ul>
       <p>
         DomiGo speichert <strong>keine</strong> E-Mail-Adressen von Kindern und keine IP-Adressen in seiner
-        Datenbank. Es gibt keine Werbung, keine Analyse- oder Tracking-Dienste, und die Schriften kommen
+        Datenbank. Vercel, das die Anwendung betreibt, führt davon getrennt ein Zugriffsprotokoll —
+        was darin steht, sagt der Abschnitt »Beteiligte Dienste«. Es gibt keine Werbung, keine Analyse- oder Tracking-Dienste, und die Schriften kommen
         vom eigenen Server.
       </p>
 
@@ -118,7 +121,9 @@ export default function DatenschutzPage() {
         Klassenliste, einer Bewertung, einer Änderung am Übungsstoff und einer Probelösung wird
         die Kennung der Lehrkraft gespeichert — nicht ihr Name. Wird ein Verwaltungs-Link benutzt,
         mit dem sich ein Test-Konto ohne PIN anmelden kann, wird festgehalten, welches Konto damit
-        angemeldet wurde und wann; solche Links gelten nur für die Testklasse.
+        angemeldet wurde und wann. Solche Links gelten nur für die eine Testklasse — für das Konto
+        eines echten Kindes funktionieren sie nicht —, sie verfallen nach zehn Minuten und sind nach
+        einer Benutzung verbraucht.
       </p>
 
       <h2 style={h2}>Was auf deinem Gerät bleibt</h2>
