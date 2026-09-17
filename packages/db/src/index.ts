@@ -37,6 +37,7 @@ export * from "./assignment-session.ts"; // M-3: pure session lifecycle + timing
 export * from "./assignment-session-service.ts"; // M-3: session CRUD + attempt read-back (best-effort)
 export * from "./assignment-results.ts"; // M-4: pure teacher-roster aggregation (DB-free)
 export * from "./checkup.ts"; // C-1: pure checkup spine — section/display configs, Σ=20 gate, /20 scorer (DB-free)
+export * from "./scope.ts"; // dach-018: the class scope a session may see — the FIRST filter on every class query
 export * from "./identity.ts"; // P-1a: pure identity helpers (pickIdentity dual-read precedence, invite-code minting)
 export * from "./v1.ts"; // read-only mirrors of v1's public.users/classes (auth identity)
 export * from "./auth.ts"; // v2→v1 dual-read identity lookups (lookupStudentForAuth/lookupTeacherForAuth) + allocateClassCode
