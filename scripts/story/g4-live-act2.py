@@ -111,8 +111,8 @@ CH06 = ("Our Voice", "Unsere Stimme", link([
 # ═══════════════════════════════════════════════════════════════════════════
 CH07 = ("The Carinthia File", "Die Kärnten-Akte", link([
     sc(7, 1, "narrator",
-       "Pitch week, final round: Carinthia. Class 2B opens with a joke — 'our dream week' — a real didgeridoo and a slideshow of the outback at sunset.",
-       "Pitch-Woche, letzte Runde: Kärnten. Die 2B beginnt mit einem Scherz — „unsere Traumwoche“ — einem echten Didgeridoo und einer Slideshow vom Outback bei Sonnenuntergang.",
+       "Pitch week, final round: Carinthia. Class 2B opens with a joke from our English book — 'our dream week' — a real didgeridoo and a slideshow of the outback at sunset.",
+       "Pitch-Woche, letzte Runde: Kärnten. Die 2B beginnt mit einem Scherz aus unserem Englischbuch — „unsere Traumwoche“ — einem echten Didgeridoo und einer Slideshow vom Outback bei Sonnenuntergang.",
        [("outback", "Outback"), ("sunset", "Sonnenuntergang"), ("slideshow", "Slideshow"), ("final", "letzte")]),
     sc(7, 2, "ben",
        "Red earth, ancient stories, spiders the size of my hand. Australia is amazing AND terrifying. Ten out of ten.",
