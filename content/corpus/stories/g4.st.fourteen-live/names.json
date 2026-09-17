@@ -25,15 +25,7 @@
   },
   {
    "name": "Dublin",
-   "note": "candidate destination (u01 pitch)"
-  },
-  {
-   "name": "New York",
-   "note": "candidate destination (u03 pitch)"
-  },
-  {
-   "name": "Sydney",
-   "note": "candidate destination (u07 pitch; the pre-printed winner)"
+   "note": "candidate week: language week (u01 pitch)"
   },
   {
    "name": "Direktorin Huber",
@@ -89,7 +81,7 @@
   },
   {
    "name": "2B",
-   "note": "Sydney pitch class"
+   "note": "Carinthia pitch class (opens with the Australia joke video)"
   },
   {
    "name": "3C",
@@ -97,7 +89,7 @@
   },
   {
    "name": "4B",
-   "note": "New York pitch class"
+   "note": "Vienna pitch class (the Hudson 'real heroes' project)"
   },
   {
    "name": "G. Steiner",
@@ -105,11 +97,11 @@
   },
   {
    "name": "Carinthia",
-   "note": "Kärnten — candidate end-of-year week (hiking), Fassung A (welle-050)"
+   "note": "Kärnten — candidate week: hiking week, the pre-printed winner (SunWays package)"
   },
   {
    "name": "Vienna",
-   "note": "Wien — candidate end-of-year week (museums), Fassung A (welle-050)"
+   "note": "Wien — candidate week: project week (u03 pitch)"
   }
  ]
 }

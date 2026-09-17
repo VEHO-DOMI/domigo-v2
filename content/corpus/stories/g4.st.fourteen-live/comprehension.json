@@ -46,7 +46,7 @@
   },
   {
    "id": "g4u02.ci.the-method.mc.001",
-   "rev": 1,
+   "rev": 2,
    "difficulty": 1,
    "format": "multiple-choice",
    "prompt": {
@@ -63,7 +63,7 @@
    "direction": null,
    "distractors": [
     "Camera, lights, microphone.",
-    "Dublin, New York, Sydney.",
+    "Dublin, Carinthia, Vienna.",
     "Pizza, poster, printer."
    ],
    "pairs": [],
@@ -133,7 +133,7 @@
   },
   {
    "id": "g4u03.ci.the-lists.mc.001",
-   "rev": 1,
+   "rev": 2,
    "difficulty": 1,
    "format": "multiple-choice",
    "prompt": {
@@ -143,15 +143,15 @@
    },
    "answers": [
     {
-     "text": "The loudest classes all got Sydney.",
+     "text": "The loudest classes all got Carinthia.",
      "tier": "full"
     }
    ],
    "direction": null,
    "distractors": [
-    "Every class got its favourite city.",
+    "Every class got its favourite week.",
     "The lists were written in English.",
-    "New York was not on the lists."
+    "Vienna was not on the lists."
    ],
    "pairs": [],
    "groups": [],
@@ -197,9 +197,9 @@
      "scope": null
     }
    ],
-   "hintDe": "Leo hat aufgeschrieben, wer welche Stadt bekommen hat — und ein Muster gesehen.",
+   "hintDe": "Leo hat aufgeschrieben, wer welche Woche bekommen hat — und ein Muster gesehen.",
    "hintEn": null,
-   "explainDe": "Die drei lautesten Klassen haben alle Sydney bekommen. Zufall sieht anders aus — das ist das erste Muster der Investigation.",
+   "explainDe": "Die drei lautesten Klassen haben alle Kärnten bekommen. Zufall sieht anders aus — das ist das erste Muster der Investigation.",
    "explainEn": null,
    "strict": false
   },
@@ -272,7 +272,7 @@
   },
   {
    "id": "g4u05.ci.the-stand.mc.001",
-   "rev": 1,
+   "rev": 2,
    "difficulty": 1,
    "format": "multiple-choice",
    "prompt": {
@@ -336,7 +336,7 @@
      "scope": null
     }
    ],
-   "hintDe": "Schau auf das kleine Logo am Stand: eine Sonne über einem Flugzeug.",
+   "hintDe": "Schau auf das kleine Logo am Stand: eine Sonne über Bergen.",
    "hintEn": null,
    "explainDe": "Der Stand trägt das SunWays-Logo — die Firma, die die Reisen verkauft, füttert die Leute, die abstimmen. Genau das macht die Crew stutzig.",
    "explainEn": null,
@@ -344,7 +344,7 @@
   },
   {
    "id": "g4u06.ci.the-question.mc.001",
-   "rev": 1,
+   "rev": 2,
    "difficulty": 1,
    "format": "multiple-choice",
    "prompt": {
@@ -360,8 +360,8 @@
    ],
    "direction": null,
    "distractors": [
-    "Which city has the best pizza?",
-    "When does the plane leave?",
+    "Which week has the best pizza?",
+    "When does the train leave?",
     "Who runs the community chat?"
    ],
    "pairs": [],
@@ -388,11 +388,6 @@
      "scope": null
     },
     {
-     "word": "plane",
-     "de": "Flugzeug",
-     "scope": null
-    },
-    {
      "word": "question",
      "de": "Frage",
      "scope": null
@@ -406,7 +401,7 @@
   },
   {
    "id": "g4u07.ci.the-package.mc.001",
-   "rev": 1,
+   "rev": 2,
    "difficulty": 1,
    "format": "multiple-choice",
    "prompt": {
@@ -416,15 +411,15 @@
    },
    "answers": [
     {
-     "text": "Only Sydney has a ready school package.",
+     "text": "Only Carinthia has a ready school package.",
      "tier": "full"
     }
    ],
    "direction": null,
    "distractors": [
-    "All three cities have school packages.",
+    "All three weeks have school packages.",
     "The catalogue is eight years old.",
-    "Dublin is the cheapest city."
+    "Dublin is the cheapest week."
    ],
    "pairs": [],
    "groups": [],
@@ -455,9 +450,9 @@
      "scope": null
     }
    ],
-   "hintDe": "Dublin: nichts. New York: nichts. Sydney: „Schul-Spezial, Komplettservice.“",
+   "hintDe": "Dublin: nichts. Wien: nichts. Kärnten: „Schul-Spezial — Bergführer, Komplettservice.“",
    "hintEn": null,
-   "explainDe": "Nur EINE der drei Städte existiert als fertiges SunWays-Produkt — die Reise nach Sydney war geplant, bevor irgendwer abgestimmt hat.",
+   "explainDe": "Nur EINE der drei Wochen existiert als fertiges SunWays-Produkt — die Woche in Kärnten war geplant, bevor irgendwer abgestimmt hat.",
    "explainEn": null,
    "strict": false
   },
@@ -607,7 +602,7 @@
   },
   {
    "id": "g4u10.ci.the-reason.mc.001",
-   "rev": 1,
+   "rev": 2,
    "difficulty": 1,
    "format": "multiple-choice",
    "prompt": {
@@ -623,7 +618,7 @@
    ],
    "direction": null,
    "distractors": [
-    "He wants to fly to Sydney himself.",
+    "He wants a free week in Carinthia himself.",
     "Brandt is his old school friend.",
     "The Direktorin ordered him to sign."
    ],
@@ -823,7 +818,7 @@
   },
   {
    "id": "g4u13.ci.the-revote.mc.001",
-   "rev": 1,
+   "rev": 2,
    "difficulty": 1,
    "format": "multiple-choice",
    "prompt": {
@@ -833,14 +828,14 @@
    },
    "answers": [
     {
-     "text": "Sydney — the same city, fairly this time.",
+     "text": "Carinthia — the same week, fairly this time.",
      "tier": "full"
     }
    ],
    "direction": null,
    "distractors": [
     "Dublin, because the crew pitched it.",
-    "New York, in Ben's honour.",
+    "Vienna, in Ben's honour.",
     "Nobody — the trip is cancelled."
    ],
    "pairs": [],
@@ -889,7 +884,7 @@
    ],
    "hintDe": "Das Ergebnis wird zweimal vorgelesen, weil die Aula lacht.",
    "hintEn": null,
-   "explainDe": "Sydney gewinnt wieder — aber diesmal echt. Ben sagt es am besten: Gleiche Stadt, andere Schule. Es ging nie um das Reiseziel, sondern um die ehrliche Wahl.",
+   "explainDe": "Kärnten gewinnt wieder — aber diesmal echt. Ben sagt es am besten: Gleiche Woche, andere Schule. Es ging nie um das Ziel, sondern um die ehrliche Wahl.",
    "explainEn": null,
    "strict": false
   }

@@ -7,7 +7,7 @@ crew member a personal stake students can identify with:
 
   1. BEN IS ON THE LIST — ch05 seed (the joke has a floor), ch10 reveal
      (he knows the names because one is his), the dignity beat (Leo's slice),
-     ch10 promise + ch13 passenger-list check now read as his own arc.
+     ch10 promise + ch13 list check now read as his own arc.
   2. LEAH'S G3 SCAR — ch08: her 3 a.m. line ties the obsession to what the
      crew did to Ben in Season 1 ("never that person again. Tonight I was her.").
   3. SARA'S RULES HAVE AN ORIGIN — ch09: people-first exists because she
@@ -38,9 +38,9 @@ PATCH = {
     # ── 1 · The reveal (ch10 s004): Sara's line becomes Ben's own
     f"{S}.ch10.s004": {
         "speaker": "ben",
-        "textEn": "I know these names. Mine is one of them. My family — we were never flying anywhere, whatever city wins.",
-        "scaffoldDe": "Ich kenne diese Namen. Meiner ist einer davon. Meine Familie — wir wären nie irgendwohin geflogen, egal welche Stadt gewinnt.",
-        "glosses_add": [("mine", "meiner"), ("family", "Familie"), ("flying", "fliegen"), ("whatever", "egal welche"), ("names", "Namen"), ("wins", "gewinnt"), ("never", "nie")],
+        "textEn": "I know these names. Mine is one of them. My family — we could never pay for a week away, whatever week wins.",
+        "scaffoldDe": "Ich kenne diese Namen. Meiner ist einer davon. Meine Familie — wir könnten uns nie eine Woche weg leisten, egal welche Woche gewinnt.",
+        "glosses_add": [("mine", "meiner"), ("family", "Familie"), ("whatever", "egal welche"), ("names", "Namen"), ("wins", "gewinnt"), ("never", "nie")],
         "glosses_drop": ["afford", "families", "sponsor"],
     },
     # ── 1 · The dignity beat (ch10 s005): nobody makes it weird
