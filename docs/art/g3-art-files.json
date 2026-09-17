@@ -2,7 +2,7 @@
   "schema": "art-files@1",
   "grade": 3,
   "storyId": "g3.st.fourteen",
-  "count": 236,
+  "count": 237,
   "stems": [
     {
       "stem": "cover_title",
@@ -394,6 +394,13 @@
       "class": "beat",
       "maxPx": 1280,
       "legacy": "g3-prologue-04"
+    },
+    {
+      "stem": "beat_ch01_s012",
+      "file": "beat_ch01_s012.png",
+      "section": "D · ch01",
+      "class": "beat",
+      "maxPx": 1280
     },
     {
       "stem": "beat_ch01_s004",

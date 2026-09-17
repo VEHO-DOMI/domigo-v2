@@ -147,20 +147,20 @@ export type CommentBand = "warm" | "tense" | "reckoning";
 
 // Content-praise comments (shown when the player kept Ben's script clean).
 const KIND: Comment[] = [
-  { author: "musicfan_07", text: "Ben explains it so well! 🎸", tone: "kind" },
+  { author: "musicfan_07", text: "Ben reads it so well! 🎸", tone: "kind" },
   { author: "lena_b", text: "This helped me with my homework. Subscribed!", tone: "kind" },
   { author: "mr_keller", text: "Great video. Keep going! 👏", tone: "kind" },
 ];
 // WARM band: if an error airs, the internet finds Ben charming (L01–02 "hilarious"), not cruel.
 const TEASE_WARM: Comment[] = [
-  { author: "haha_no", text: "Ben said “the Beatles was” 😅", tone: "tease" },
+  { author: "haha_no", text: "one wrong word 😅 still charming", tone: "tease" },
   { author: "smiley22", text: "his little mistakes are kind of cute tbh", tone: "tease" },
 ];
 // TENSE band (L06–10): the channel is now KNOWN for Ben's slip-ups — the laughs turn
 // pitying, then pointed. Not yet cruel (that's the reckoning band, L11+).
 const TEASE_TENSE: Comment[] = [
   { author: "lol_marco", text: "Poor Ben 😬 we only watch for the fails now", tone: "tease" },
-  { author: "study_girl", text: "the Grammar Fix guy again 😅", tone: "tease" },
+  { author: "study_girl", text: "the mistakes guy again 😅", tone: "tease" },
   { author: "anon_42", text: "do they laugh WITH him or AT him?", tone: "cruel" },
 ];
 // RECKONING band (L11, the compilation): the cruelty is structural now — a clean take
