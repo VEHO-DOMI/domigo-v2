@@ -1,25 +1,20 @@
 /**
- * P-2 · Roster import and roster management (Neon, server-only) over the
- * v2-native identity tables. TEACHERS import a class list and manage it
- * (rename / reset-PIN / remove); every teacher call is scoped by `teacherId` —
- * the authorization IS the WHERE clause (a class the teacher doesn't own
- * updates zero rows), exactly like class-service.ts.
- *
- * dach-018 · THE SECOND AUDIENCE IS GONE. Until the switch-over to the
- * account service this file also served the PUBLIC /join page, where a
- * child picked themselves off a list and chose a nickname and a PIN
- * (`findActiveClassByCode`, `unclaimedForClaim`, `claimStudent`, and the
- * privacy label `claimLabel`). Signing up moved to konto, /join/<code> is a
- * redirect, and those four are deleted rather than left to rot: an unreachable
- * function that can still create a sign-in is the kind of door nobody
- * remembers to close.
+ * P-2 · Roster import + student self-claim (Neon, server-only) over the v2-native
+ * identity tables. Two audiences share this file:
+ *   • TEACHERS import a class list and manage it (rename / reset-PIN / remove).
+ *     Every teacher call is scoped by `teacherId` — the authorization IS the WHERE
+ *     clause (a class the teacher doesn't own updates zero rows), exactly like
+ *     class-service.ts.
+ *   • STUDENTS self-claim a provisional row on the PUBLIC /join page. Those reads
+ *     expose ONLY a privacy label (first name + last initial) and never a PIN,
+ *     hash, or another student's data.
  *
  * A PROVISIONAL (unclaimed) student is a `v2IdentityUsers` row with `pinHash=''`
  * (the empty-string sentinel — verifyPin returns false for an empty hash, so a
  * provisional student physically CANNOT log in), `givenName` = the roster name,
  * `displayName` = that same name (a placeholder so the teacher's roster shows the
- * real name), and `claimedAt=null`. Since dach-018 the row is flipped live by the
- * konto handoff instead (lib/konto/anmeldung.ts), never on a page of DomiGo's own.
+ * real name), and `claimedAt=null`. Claiming flips it live: a chosen nickname
+ * into `displayName`, a real `pinHash`, and `claimedAt=now`.
  *
  * journal-then-flip (Neon HTTP has NO multi-statement transactions — see the
  * roster_events schema note): EVERY mutation appends a journal row FIRST — through
@@ -28,7 +23,7 @@
  * harmless orphan journal row, never an unhistoried live change. Writes land ONLY
  * in `domigo_v2`; v1's `public` is never touched.
  *
- * The pure helper `parseRoster` is DB-free and unit-tested in
+ * Pure helpers (`parseRoster`, `claimLabel`) are DB-free and unit-tested in
  * roster-service.test.ts, so the endpoint and the service share one gate.
  *
  * P3 · `actorId` — WHO acted, as opposed to WHOSE authorization was used. Every
@@ -41,19 +36,18 @@
  * only name the hand that pulled the lever. The journal must not be able to lie
  * about who acted.
  */
-import { and, eq, inArray, isNull, ne, sql } from "drizzle-orm";
+import { and, eq, isNull, ne, sql } from "drizzle-orm";
 import type { Db } from "./index.ts";
 import { writeRosterEvent } from "./roster-events.ts";
 import { v2Classes, v2IdentityUsers } from "./schema.ts";
-import { assertWritableScope, type ClassScope } from "./scope.ts";
 
 // ── Pure helpers (DB-free, unit-tested) ───────────────────────────────────────
 
 /**
  * True when `err` is a Postgres UNIQUE-violation (SQLSTATE 23505). The neon-http
  * driver's error shape varies, so check the code on the error and its `cause`,
- * with a message fallback. teacher-claim.ts uses this as the DB-level backstop for
- * the TOCTOU race an app-code name check can't close (Neon has no transactions).
+ * with a message fallback. claimStudent uses this as the DB-level backstop for the
+ * TOCTOU race the app-code nickname check can't close (Neon has no transactions).
  */
 export function isUniqueViolation(err: unknown): boolean {
   const e = err as { code?: unknown; cause?: { code?: unknown }; message?: unknown } | null | undefined;
@@ -177,6 +171,21 @@ export function parseRoster(text: string): string[] {
   return dedupeClean(splitLines(text));
 }
 
+/**
+ * The PUBLIC claim label: reduce a real name to first name + last initial
+ * ("Anna Müller" ⇒ "Anna M.") so the /join list never exposes a full surname.
+ * A single-word name is returned as-is; a middle name is ignored (first token +
+ * the LAST token's initial). PURE — the privacy rule in one tested place.
+ */
+export function claimLabel(givenName: string): string {
+  const parts = givenName.trim().split(/\s+/).filter(Boolean);
+  if (parts.length === 0) return "";
+  if (parts.length === 1) return parts[0]!;
+  const first = parts[0]!;
+  const last = parts[parts.length - 1]!;
+  return `${first} ${last.charAt(0).toUpperCase()}.`;
+}
+
 // ── Types ─────────────────────────────────────────────────────────────────────
 
 /** One roster row for the TEACHER view (the real↔display mapping is theirs to see). */
@@ -186,6 +195,22 @@ export interface RosterEntry {
   displayName: string;
   claimed: boolean;
 }
+
+/** One PUBLIC claim candidate — only an opaque id + the privacy label, nothing else. */
+export interface ClaimCandidate {
+  id: string;
+  label: string;
+}
+
+/** The active class behind an invite code (public claim page needs its name/grade). */
+export interface ActiveClass {
+  id: string;
+  name: string;
+  grade: number;
+}
+
+/** claimStudent outcome: claimed OK / that nickname is taken / the row is gone or already claimed. */
+export type ClaimResult = "ok" | "taken" | "gone";
 
 // ── Teacher-owned helpers (authz by teacherId) ────────────────────────────────
 
@@ -199,7 +224,6 @@ export interface RosterEntry {
  */
 async function ownedStudent(
   db: Db,
-  classScope: ClassScope,
   studentId: string,
   teacherId: string,
 ): Promise<{ classId: string; claimedAt: Date | null } | null> {
@@ -207,7 +231,7 @@ async function ownedStudent(
     .select({ classId: v2Classes.id, claimedAt: v2IdentityUsers.claimedAt })
     .from(v2IdentityUsers)
     .innerJoin(v2Classes, eq(v2IdentityUsers.classId, v2Classes.id))
-    .where(and(inArray(v2Classes.id, [...classScope]), eq(v2IdentityUsers.id, studentId), eq(v2Classes.teacherId, teacherId)))
+    .where(and(eq(v2IdentityUsers.id, studentId), eq(v2Classes.teacherId, teacherId)))
     .limit(1);
   return rows[0] ?? null;
 }
@@ -224,10 +248,8 @@ async function ownedStudent(
  */
 export async function importRoster(
   db: Db,
-  classScope: ClassScope,
   input: { classId: string; teacherId: string; names: string[]; actorId?: string },
 ): Promise<number> {
-  assertWritableScope(classScope, "importRoster");
   const { classId, teacherId } = input;
   const actorId = input.actorId ?? teacherId;
 
@@ -235,7 +257,7 @@ export async function importRoster(
   const owned = await db
     .select({ id: v2Classes.id })
     .from(v2Classes)
-    .where(and(inArray(v2Classes.id, [...classScope]), eq(v2Classes.id, classId), eq(v2Classes.teacherId, teacherId)))
+    .where(and(eq(v2Classes.id, classId), eq(v2Classes.teacherId, teacherId)))
     .limit(1);
   if (!owned[0]) return 0;
 
@@ -287,11 +309,11 @@ export async function importRoster(
  * the chosen (or placeholder) displayName, and a `claimed` flag. Ordered by
  * givenName for a stable, scannable roster.
  */
-export async function listRoster(db: Db, classScope: ClassScope, classId: string, teacherId: string): Promise<RosterEntry[]> {
+export async function listRoster(db: Db, classId: string, teacherId: string): Promise<RosterEntry[]> {
   const owned = await db
     .select({ id: v2Classes.id })
     .from(v2Classes)
-    .where(and(inArray(v2Classes.id, [...classScope]), eq(v2Classes.id, classId), eq(v2Classes.teacherId, teacherId)))
+    .where(and(eq(v2Classes.id, classId), eq(v2Classes.teacherId, teacherId)))
     .limit(1);
   if (!owned[0]) return [];
 
@@ -315,14 +337,119 @@ export async function listRoster(db: Db, classScope: ClassScope, classId: string
 }
 
 /**
+ * The active class behind an invite code (null if absent or archived). A public,
+ * read-only lookup — exposes only the class's name + grade, never any student data.
+ */
+export async function findActiveClassByCode(db: Db, inviteCode: string): Promise<ActiveClass | null> {
+  const rows = await db
+    .select({ id: v2Classes.id, name: v2Classes.name, grade: v2Classes.grade })
+    .from(v2Classes)
+    .where(and(eq(v2Classes.inviteCode, inviteCode), isNull(v2Classes.archivedAt)))
+    .limit(1);
+  return rows[0] ?? null;
+}
+
+/**
+ * PUBLIC claim list: the UNCLAIMED students of the active class behind `inviteCode`,
+ * each as { id, label } where label is first name + last initial. Empty when the
+ * class is absent/archived. PRIVACY: never returns full names, PINs, or hashes.
+ */
+export async function unclaimedForClaim(db: Db, inviteCode: string): Promise<ClaimCandidate[]> {
+  const cls = await findActiveClassByCode(db, inviteCode);
+  if (!cls) return [];
+
+  const rows = await db
+    .select({ id: v2IdentityUsers.id, givenName: v2IdentityUsers.givenName, displayName: v2IdentityUsers.displayName })
+    .from(v2IdentityUsers)
+    .where(
+      and(
+        eq(v2IdentityUsers.classId, cls.id),
+        eq(v2IdentityUsers.role, "student"),
+        isNull(v2IdentityUsers.claimedAt),
+      ),
+    )
+    .orderBy(v2IdentityUsers.givenName);
+
+  // Label from givenName (fall back to displayName only if a givenName is somehow null).
+  return rows.map((r) => ({ id: r.id, label: claimLabel(r.givenName ?? r.displayName) }));
+}
+
+/**
+ * Claim a provisional student (the student's own action on /join). Re-checks the
+ * row exists, is still unclaimed, and has a class ('gone' otherwise — the roster
+ * moved under them). Then enforces that NO OTHER student in the same class holds
+ * that displayName (case-insensitive) → 'taken'; this keeps the auth handle unique
+ * so login is never ambiguous. journal-then-flip: a 'claim' event FIRST, then the
+ * live flip (chosen displayName + pinHash + claimedAt=now). The caller hashes the
+ * PIN (bcrypt stays out of @domigo/db), and the hash is NEVER written to the journal.
+ */
+export async function claimStudent(
+  db: Db,
+  input: { studentId: string; displayName: string; pinHash: string },
+): Promise<ClaimResult> {
+  const { studentId, pinHash } = input;
+  const displayName = input.displayName.trim();
+
+  const rows = await db
+    .select({ classId: v2IdentityUsers.classId, claimedAt: v2IdentityUsers.claimedAt })
+    .from(v2IdentityUsers)
+    .where(and(eq(v2IdentityUsers.id, studentId), eq(v2IdentityUsers.role, "student")))
+    .limit(1);
+  const student = rows[0];
+  if (!student || student.claimedAt != null || !student.classId) return "gone";
+  const classId = student.classId;
+
+  // Nickname must be unique within the class (case-insensitive), ignoring self.
+  const clash = await db
+    .select({ id: v2IdentityUsers.id })
+    .from(v2IdentityUsers)
+    .where(
+      and(
+        eq(v2IdentityUsers.classId, classId),
+        eq(v2IdentityUsers.role, "student"),
+        ne(v2IdentityUsers.id, studentId),
+        sql`lower(${v2IdentityUsers.displayName}) = lower(${displayName})`,
+      ),
+    )
+    .limit(1);
+  if (clash[0]) return "taken";
+
+  // journal-then-flip: the 'claim' intent (no secret, no name in the payload) lands
+  // FIRST. P-R8: the chosen nickname is a name a child picked for itself — the
+  // LENGTH records that a nickname was chosen without storing what it says; the
+  // nickname itself lives one statement below, in the row it belongs to.
+  await writeRosterEvent(db, {
+    classId,
+    kind: "claim",
+    actorId: null, // self-serve student action — no teacher actor
+    payload: { studentId, displayNameLength: displayName.length },
+  });
+  // … then the live flip to an active, loggable student. The partial unique index
+  // `users_class_claimed_nickname_unique` (class_id, lower(display_name) WHERE claimed)
+  // is the DB-level backstop the app-code clash check can't guarantee: two students
+  // claiming the same nickname at once (no transactions) both pass the SELECT, but
+  // only one UPDATE can commit — the loser raises 23505, which we surface as 'taken'
+  // (its journal row stays as a harmless orphan, per journal-then-flip).
+  try {
+    await db
+      .update(v2IdentityUsers)
+      .set({ displayName, pinHash, claimedAt: new Date() })
+      .where(eq(v2IdentityUsers.id, studentId));
+  } catch (err) {
+    if (isUniqueViolation(err)) return "taken";
+    throw err;
+  }
+  return "ok";
+}
+
+/**
  * Reset a student's PIN back to provisional (they must re-claim): pinHash='' +
  * claimedAt=null. Authz'd — the student's class must be the teacher's, else a
  * silent no-op. journal-then-flip: 'reset_pin' event FIRST, then the flip.
  * `actorId` (optional, defaults to teacherId) only names the actor in the journal.
  */
-export async function resetStudentPin(db: Db, classScope: ClassScope, studentId: string, teacherId: string, actorId?: string): Promise<void> {
-  assertWritableScope(classScope, "resetStudentPin");
-  const owned = await ownedStudent(db, classScope, studentId, teacherId);
+export async function resetStudentPin(db: Db, studentId: string, teacherId: string, actorId?: string): Promise<void> {
+  const owned = await ownedStudent(db, studentId, teacherId);
   if (!owned) return;
 
   await writeRosterEvent(db, {
@@ -346,14 +473,12 @@ export async function resetStudentPin(db: Db, classScope: ClassScope, studentId:
  */
 export async function renameStudentGiven(
   db: Db,
-  classScope: ClassScope,
   studentId: string,
   teacherId: string,
   givenName: string,
   actorId?: string,
 ): Promise<void> {
-  assertWritableScope(classScope, "renameStudentGiven");
-  const owned = await ownedStudent(db, classScope, studentId, teacherId);
+  const owned = await ownedStudent(db, studentId, teacherId);
   if (!owned) return;
   const trimmed = givenName.trim();
   if (trimmed === "") return;
@@ -380,9 +505,8 @@ export async function renameStudentGiven(
  * FIRST, then the delete.
  * `actorId` (optional, defaults to teacherId) only names the actor in the journal.
  */
-export async function removeStudent(db: Db, classScope: ClassScope, studentId: string, teacherId: string, actorId?: string): Promise<void> {
-  assertWritableScope(classScope, "removeStudent");
-  const owned = await ownedStudent(db, classScope, studentId, teacherId);
+export async function removeStudent(db: Db, studentId: string, teacherId: string, actorId?: string): Promise<void> {
+  const owned = await ownedStudent(db, studentId, teacherId);
   if (!owned) return;
 
   await writeRosterEvent(db, {

@@ -8,7 +8,6 @@ import {
   trapLabel,
 } from "./class-progress.ts";
 import type { Db } from "./index.ts";
-import { classScope } from "./scope.ts";
 import { eq, sql } from "drizzle-orm";
 import { v2Classes } from "./schema.ts";
 
@@ -105,15 +104,10 @@ function projectionAtoms(selection: unknown): string[] {
 
 const CLASS = "class-2er";
 
-/** dach-018 · der Klassen-Ausschnitt dieser Sitzung. Die Wand selbst prueft
- *  scripts/check-claim-filter.mjs; hier steht sie nur, damit die bestehenden
- *  Zusicherungen dasselbe messen wie vorher. */
-const SCOPE = classScope([CLASS]);
-
 describe("listStudentProgress", () => {
   it("is scoped to ONE class, and to no other coordinate", async () => {
     const { db, conditions } = seqDb([[]]);
-    await listStudentProgress(db, SCOPE, CLASS);
+    await listStudentProgress(db, CLASS);
     const where = atomsOf(conditions[0]);
     expect(where).toContain("col:class_id");
     expect(where).toContain(CLASS); // the bound value, not just the column
@@ -124,7 +118,7 @@ describe("listStudentProgress", () => {
 
   it("counts an item as solved when it was better than wrong, and correct only when correct", async () => {
     const { db, selections } = seqDb([[]]);
-    await listStudentProgress(db, SCOPE, CLASS);
+    await listStudentProgress(db, CLASS);
     const proj = projectionAtoms(selections[0]);
     expect(proj.join(" ")).toContain("<> 'wrong'"); // itemsSolved admits partial/close
     expect(proj.join(" ")).toContain("= 'correct'"); // the rate does not
@@ -133,7 +127,7 @@ describe("listStudentProgress", () => {
 
   it("derives the rate in JS with a zero-guard (no rows ⇒ 0, never NaN)", async () => {
     const { db } = seqDb([[{ userId: "u1", attempts: 0, itemsSolved: 0, correct: 0, lastActiveAt: null }]]);
-    const [row] = await listStudentProgress(db, SCOPE, CLASS);
+    const [row] = await listStudentProgress(db, CLASS);
     expect(row!.correctRate).toBe(0);
     expect(row!.lastActiveAt).toBeNull();
   });
@@ -142,7 +136,7 @@ describe("listStudentProgress", () => {
 describe("listStudentPathSummary", () => {
   it("is scoped to ONE class", async () => {
     const { db, conditions } = seqDb([[]]);
-    await listStudentPathSummary(db, SCOPE, CLASS);
+    await listStudentPathSummary(db, CLASS);
     const where = atomsOf(conditions[0]);
     expect(where).toContain("col:class_id");
     expect(where).toContain(CLASS);
@@ -151,7 +145,7 @@ describe("listStudentPathSummary", () => {
 
   it("keys the map by student", async () => {
     const { db } = seqDb([[{ userId: "u1", completed: 3, stars: 7 }]]);
-    const m = await listStudentPathSummary(db, SCOPE, CLASS);
+    const m = await listStudentPathSummary(db, CLASS);
     expect(m.get("u1")).toEqual({ completedNodes: 3, totalStars: 7 });
   });
 });
@@ -159,23 +153,19 @@ describe("listStudentPathSummary", () => {
 describe("listStudentMeta", () => {
   it("short-circuits an EMPTY id list without touching the database", async () => {
     const { db, calls } = seqDb([[], []]);
-    const m = await listStudentMeta(db, SCOPE, []);
+    const m = await listStudentMeta(db, []);
     expect(m.size).toBe(0);
     expect(calls()).toBe(0); // `IN ()` is a syntax error — it must never be built
   });
 
   it("filters BOTH reads on the id list, and the due read on the due date", async () => {
-    // dach-018 · Abfrage 0 ist jetzt die Scope-Pruefung der Kennungen (user_progress
-    // und review_queue tragen keine Klassen-Kennung, also sitzt die Wand davor).
-    const { db, conditions } = seqDb([[{ id: "u1" }, { id: "u2" }], [], []]);
-    await listStudentMeta(db, SCOPE, ["u1", "u2"]);
-    const scopeWhere = atomsOf(conditions[0]);
-    expect(scopeWhere).toContain("col:class_id");
-    const progressWhere = atomsOf(conditions[1]);
+    const { db, conditions } = seqDb([[], []]);
+    await listStudentMeta(db, ["u1", "u2"]);
+    const progressWhere = atomsOf(conditions[0]);
     expect(progressWhere).toContain("col:user_id");
     expect(progressWhere).toContain("u1");
     expect(progressWhere).toContain("u2");
-    const dueWhere = atomsOf(conditions[2]);
+    const dueWhere = atomsOf(conditions[1]);
     expect(dueWhere).toContain("col:user_id");
     expect(dueWhere).toContain("col:due_at");
     expect(dueWhere.join(" ")).toContain("<= now()");
@@ -183,24 +173,23 @@ describe("listStudentMeta", () => {
 
   it("merges the due count onto a student who has an XP row, and onto one who has none", async () => {
     const { db } = seqDb([
-      [{ id: "u1" }, { id: "u2" }],
       [{ userId: "u1", xp: 40, grammarXp: 10, streak: 3 }],
       [{ userId: "u1", due: 5 }, { userId: "u2", due: 2 }],
     ]);
-    const m = await listStudentMeta(db, SCOPE, ["u1", "u2"]);
+    const m = await listStudentMeta(db, ["u1", "u2"]);
     expect(m.get("u1")).toEqual({ xp: 40, grammarXp: 10, streak: 3, dueCount: 5 });
     expect(m.get("u2")).toEqual({ xp: 0, grammarXp: 0, streak: 0, dueCount: 2 });
   });
 
   it("de-duplicates repeated ids", async () => {
-    const { db, conditions } = seqDb([[{ id: "u1" }], [], []]);
-    await listStudentMeta(db, SCOPE, ["u1", "u1"]);
+    const { db, conditions } = seqDb([[], []]);
+    await listStudentMeta(db, ["u1", "u1"]);
     expect(atomsOf(conditions[0]).filter((a) => a === "u1")).toHaveLength(1);
   });
 
   it("treats a list of only blank ids as empty — no query, not an `IN (\'\')`", async () => {
     const { db, calls } = seqDb([[], []]);
-    const m = await listStudentMeta(db, SCOPE, ["", ""]);
+    const m = await listStudentMeta(db, ["", ""]);
     expect(m.size).toBe(0);
     expect(calls()).toBe(0);
   });
@@ -209,7 +198,7 @@ describe("listStudentMeta", () => {
 describe("listClassUnitProgress", () => {
   it("is scoped to ONE class and to NO mode — every way of practising counts", async () => {
     const { db, conditions } = seqDb([[]]);
-    await listClassUnitProgress(db, SCOPE, CLASS);
+    await listClassUnitProgress(db, CLASS);
     const where = atomsOf(conditions[0]);
     expect(where).toContain("col:class_id");
     expect(where).toContain(CLASS);
@@ -225,7 +214,7 @@ describe("listClassUnitProgress", () => {
       { unitSlug: "g2-u03", attempts: 1, itemsSolved: 1, correct: 1 },
       { unitSlug: "g2-u01", attempts: 2, itemsSolved: 2, correct: 1 },
     ]]);
-    const rows = await listClassUnitProgress(db, SCOPE, CLASS);
+    const rows = await listClassUnitProgress(db, CLASS);
     expect(rows.map((r) => r.unitSlug)).toEqual(["g2-u01", "g2-u03"]);
     expect(rows[1]!.correctRate).toBe(1);
   });
@@ -234,7 +223,7 @@ describe("listClassUnitProgress", () => {
 describe("listClassTraps", () => {
   it("counts only WRONG attempts that actually carry a trap, in this class", async () => {
     const { db, conditions } = seqDb([[]]);
-    await listClassTraps(db, SCOPE, CLASS);
+    await listClassTraps(db, CLASS);
     const where = atomsOf(conditions[0]);
     expect(where).toContain("col:class_id");
     expect(where).toContain(CLASS);
@@ -247,7 +236,7 @@ describe("listClassTraps", () => {
 
   it("reads the trap out of the context jsonb, not out of a column", async () => {
     const { db, selections } = seqDb([[]]);
-    await listClassTraps(db, SCOPE, CLASS);
+    await listClassTraps(db, CLASS);
     const proj = projectionAtoms(selections[0]);
     expect(proj).toContain("col:context");
     expect(proj.join(" ")).toContain("->>'trap'");
@@ -255,7 +244,7 @@ describe("listClassTraps", () => {
 
   it("returns the counted pairs", async () => {
     const { db } = seqDb([[{ trapId: "wilde-verben", count: 4 }]]);
-    expect(await listClassTraps(db, SCOPE, CLASS)).toEqual([{ trapId: "wilde-verben", count: 4 }]);
+    expect(await listClassTraps(db, CLASS)).toEqual([{ trapId: "wilde-verben", count: 4 }]);
   });
 });
 
@@ -303,35 +292,33 @@ describe("Rider A · a broken read is a rejection, never an empty result", () =>
 
   it("listStudentProgress rejects", async () => {
     const { db } = seqDb([boom()]);
-    await expect(listStudentProgress(db, SCOPE, CLASS)).rejects.toThrow(/does not exist/);
+    await expect(listStudentProgress(db, CLASS)).rejects.toThrow(/does not exist/);
   });
 
   it("listStudentPathSummary rejects", async () => {
     const { db } = seqDb([boom()]);
-    await expect(listStudentPathSummary(db, SCOPE, CLASS)).rejects.toThrow(/does not exist/);
+    await expect(listStudentPathSummary(db, CLASS)).rejects.toThrow(/does not exist/);
   });
 
   it("listClassUnitProgress rejects", async () => {
     const { db } = seqDb([boom()]);
-    await expect(listClassUnitProgress(db, SCOPE, CLASS)).rejects.toThrow(/does not exist/);
+    await expect(listClassUnitProgress(db, CLASS)).rejects.toThrow(/does not exist/);
   });
 
   it("listClassTraps rejects", async () => {
     const { db } = seqDb([boom()]);
-    await expect(listClassTraps(db, SCOPE, CLASS)).rejects.toThrow(/does not exist/);
+    await expect(listClassTraps(db, CLASS)).rejects.toThrow(/does not exist/);
   });
 
   it("listStudentMeta rejects on the progress half AND on the due-count half", async () => {
-    // dach-018 · die erste Abfrage ist jetzt die Scope-Pruefung der Kennungen;
-    // die beiden gepruefen Haelften liegen danach.
-    await expect(listStudentMeta(seqDb([[{ id: "u1" }], boom()]).db, SCOPE, ["u1"])).rejects.toThrow(/does not exist/);
+    await expect(listStudentMeta(seqDb([boom()]).db, ["u1"])).rejects.toThrow(/does not exist/);
     // The second query is the one a partial repair would leave unguarded.
-    await expect(listStudentMeta(seqDb([[{ id: "u1" }], [], boom()]).db, SCOPE, ["u1"])).rejects.toThrow(/does not exist/);
+    await expect(listStudentMeta(seqDb([[], boom()]).db, ["u1"])).rejects.toThrow(/does not exist/);
   });
 
   it("still answers an EMPTY roster without a query — an empty class is not a failure", async () => {
     const { db, calls } = seqDb([]);
-    expect(await listStudentMeta(db, SCOPE, [])).toEqual(new Map());
+    expect(await listStudentMeta(db, [])).toEqual(new Map());
     expect(calls()).toBe(0); // and the page's two states stay distinguishable
   });
 });

@@ -41,7 +41,7 @@ export default async function GrandmasterPage() {
   // happened is not a gate, it is a disclosure with a redirect on the end.
   if (!isGrandmaster(teacher.userId)) redirect("/admin");
 
-  const { v2, legacy, v2Failed, legacyFailed } = await listAllClassesForGrandmaster(getDb(), teacher.classScope);
+  const { v2, legacy, v2Failed, legacyFailed } = await listAllClassesForGrandmaster(getDb());
   const students = v2.reduce((n, c) => n + c.studentCount, 0);
   const claimed = v2.reduce((n, c) => n + c.claimedCount, 0);
 

@@ -15,7 +15,7 @@
  */
 import { NextResponse } from "next/server";
 import { z } from "zod";
-import { getDb, getOwnerIdForStudentForGrandmaster, removeStudent, renameStudentGiven, resetStudentPin, type ClassScope } from "@domigo/db";
+import { getDb, getOwnerIdForStudentForGrandmaster, removeStudent, renameStudentGiven, resetStudentPin } from "@domigo/db";
 import { getTeacher } from "@/lib/teacher";
 import { isGrandmaster } from "@/lib/grandmaster";
 
@@ -30,9 +30,9 @@ export const dynamic = "force-dynamic";
  * unresolvable student falls back to the caller's own id, i.e. the pre-P3 behaviour:
  * the owner-scoped service then simply updates zero rows.
  */
-async function authorizingTeacherId(callerId: string, classScope: ClassScope, studentId: string): Promise<string> {
+async function authorizingTeacherId(callerId: string, studentId: string): Promise<string> {
   if (!isGrandmaster(callerId)) return callerId;
-  const ownerId = await getOwnerIdForStudentForGrandmaster(getDb(), classScope, studentId);
+  const ownerId = await getOwnerIdForStudentForGrandmaster(getDb(), studentId);
   return ownerId ?? callerId;
 }
 
@@ -51,8 +51,8 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ studen
   }
 
   try {
-    const ownerId = await authorizingTeacherId(teacher.userId, teacher.classScope, studentId);
-    await renameStudentGiven(getDb(), teacher.classScope, studentId, ownerId, parsed.data.givenName, teacher.userId);
+    const ownerId = await authorizingTeacherId(teacher.userId, studentId);
+    await renameStudentGiven(getDb(), studentId, ownerId, parsed.data.givenName, teacher.userId);
     return NextResponse.json({ ok: true });
   } catch {
     return NextResponse.json({ ok: false, error: "persist_failed" }, { status: 500 });
@@ -68,8 +68,8 @@ export async function POST(req: Request, { params }: { params: Promise<{ student
   if (!parsed.success) return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
 
   try {
-    const ownerId = await authorizingTeacherId(teacher.userId, teacher.classScope, studentId);
-    await resetStudentPin(getDb(), teacher.classScope, studentId, ownerId, teacher.userId);
+    const ownerId = await authorizingTeacherId(teacher.userId, studentId);
+    await resetStudentPin(getDb(), studentId, ownerId, teacher.userId);
     return NextResponse.json({ ok: true });
   } catch {
     return NextResponse.json({ ok: false, error: "persist_failed" }, { status: 500 });
@@ -82,8 +82,8 @@ export async function DELETE(req: Request, { params }: { params: Promise<{ stude
 
   const { studentId } = await params;
   try {
-    const ownerId = await authorizingTeacherId(teacher.userId, teacher.classScope, studentId);
-    await removeStudent(getDb(), teacher.classScope, studentId, ownerId, teacher.userId);
+    const ownerId = await authorizingTeacherId(teacher.userId, studentId);
+    await removeStudent(getDb(), studentId, ownerId, teacher.userId);
     return NextResponse.json({ ok: true });
   } catch {
     return NextResponse.json({ ok: false, error: "persist_failed" }, { status: 500 });

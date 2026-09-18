@@ -7,7 +7,7 @@
  * posting any classId was harmless. Since the invite link there are real other
  * teachers, and this endpoint would happily create work in a stranger's class for
  * anyone who posted its id directly. The gate reuses the SAME function that fills
- * the builder's class picker — `listClasses` for a teacher, `listClassesInScope`
+ * the builder's class picker — `listClasses` for a teacher, `listClassesForGrandmaster`
  * for the operator — so the picker and the door can never disagree about which
  * classes this caller may write to. That single definition also preserves the
  * documented status quo for the v1 legacy register: those classes predate ownership,
@@ -20,7 +20,7 @@ import {
   createAssignment,
   getDb,
   listClasses,
-  listClassesInScope,
+  listClassesForGrandmaster,
   listReservedForClass,
   validateAssignmentDraft,
   type AssignmentDraft,
@@ -90,20 +90,20 @@ export async function POST(req: Request): Promise<Response> {
   // May this caller create work in that class at all? Fail CLOSED: a class list we
   // could not read is not permission, it is an unanswered question.
   const allowed = isGrandmaster(teacher.userId)
-    ? await listClassesInScope(getDb(), teacher.classScope).catch(() => null)
-    : await listClasses(getDb(), teacher.classScope, teacher.userId).catch(() => null);
+    ? await listClassesForGrandmaster(getDb()).catch(() => null)
+    : await listClasses(getDb(), teacher.userId).catch(() => null);
   if (!allowed) return NextResponse.json({ ok: false, error: "class_check_failed" }, { status: 503 });
   if (!allowed.some((c) => c.id === draft.classId)) {
     return NextResponse.json({ ok: false, error: "not_your_class" }, { status: 403 });
   }
 
   // Server-authoritative validation, including the class's reserved items.
-  const reserved = await listReservedForClass(getDb(), teacher.classScope, draft.classId).catch(() => new Set<string>());
+  const reserved = await listReservedForClass(getDb(), draft.classId).catch(() => new Set<string>());
   const errors = validateAssignmentDraft(draft, { reservedIds: reserved });
   if (errors.length > 0) return NextResponse.json({ ok: false, error: "invalid", errors }, { status: 422 });
 
   try {
-    const id = await createAssignment(getDb(), teacher.classScope, draft, teacher.userId);
+    const id = await createAssignment(getDb(), draft, teacher.userId);
     return NextResponse.json({ ok: true, id });
   } catch {
     return NextResponse.json({ ok: false, error: "persist_failed" }, { status: 500 });

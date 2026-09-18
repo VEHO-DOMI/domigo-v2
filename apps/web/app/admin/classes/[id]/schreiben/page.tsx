@@ -103,14 +103,14 @@ export default async function SchreibAbgabenPage({ params }: { params: Promise<{
   const { id } = await params;
   // Der Rang: eine reine Umgebungs-Lese, VOR jeder Abfrage.
   const grossmeister = isGrandmaster(teacher.userId);
-  let cls: OwnedClass | null = await getClassForTeacher(getDb(), teacher.classScope, id, teacher.userId).catch(() => null);
+  let cls: OwnedClass | null = await getClassForTeacher(getDb(), id, teacher.userId).catch(() => null);
   // Unter WESSEN Autorisierung die besitzer-skopierten Dienste laufen.
   let authorizingTeacherId = teacher.userId;
   let ueberschrift = cls?.name ?? "";
   let fremd = false;
 
   if (!cls && grossmeister) {
-    const foreign = await getClassForGrandmaster(getDb(), teacher.classScope, id).catch(() => null);
+    const foreign = await getClassForGrandmaster(getDb(), id).catch(() => null);
     if (foreign) {
       cls = foreign;
       authorizingTeacherId = foreign.teacherId;
@@ -129,7 +129,7 @@ export default async function SchreibAbgabenPage({ params }: { params: Promise<{
   // Tür: der Dienst trägt die Bedingung selbst.
   let abgaben: Awaited<ReturnType<typeof listSubmissionsForClass>> | null = null;
   try {
-    abgaben = await listSubmissionsForClass(getDb(), teacher.classScope, id, authorizingTeacherId);
+    abgaben = await listSubmissionsForClass(getDb(), id, authorizingTeacherId);
   } catch (err) {
     console.error(
       "[admin/classes/[id]/schreiben] Leser gescheitert:",
@@ -138,7 +138,7 @@ export default async function SchreibAbgabenPage({ params }: { params: Promise<{
   }
 
   // Namen getrennt, über die Id-Liste — der Abgaben-Leser fasst kein Namensregister an.
-  const namen = await listStudentsForClass(getDb(), teacher.classScope, id)
+  const namen = await listStudentsForClass(getDb(), id)
     .then((rows) => new Map(rows.map((r) => [r.id, r.name])))
     .catch(() => new Map<string, string>());
 

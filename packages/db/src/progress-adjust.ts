@@ -28,9 +28,8 @@
  * child sees a card again (Koki's decision, P-R5). A hand-granted unit is "you have
  * been here", never "you have proven this".
  */
-import { inArray, sql } from "drizzle-orm";
+import { sql } from "drizzle-orm";
 import type { Db } from "./index.ts";
-import { assertWritableScope, inScope, type ClassScope } from "./scope.ts";
 import { writeRosterEvent } from "./roster-events.ts";
 import { userProgress } from "./schema.ts";
 import { recordNodeCompletion } from "./studypath.ts";
@@ -68,12 +67,7 @@ export interface GrantXpInput {
  * Throws on a non-integer, a negative value, or a total of zero — a no-op write
  * that still journals would fill the history with events that changed nothing.
  */
-export async function grantXp(db: Db, classScope: ClassScope, input: GrantXpInput): Promise<void> {
-  assertWritableScope(classScope, "grantXp");
-  if (!inScope(classScope, input.classId)) {
-    throw new Error("[@domigo/db] grantXp: refused — class outside this session's scope (dach-018)");
-  }
-
+export async function grantXp(db: Db, input: GrantXpInput): Promise<void> {
   const { studentId, classId, vocabXp, grammarXp, actorId } = input;
   for (const [name, n] of [["vocabXp", vocabXp], ["grammarXp", grammarXp]] as const) {
     if (!Number.isInteger(n)) throw new Error(`grantXp: ${name} must be a whole number.`);
@@ -146,12 +140,7 @@ export interface MarkUnitDoneInput {
  * Throws on a malformed slug or an empty node list — both mean the caller resolved
  * nothing, and journaling an empty intent would be history about nothing.
  */
-export async function markUnitDone(db: Db, classScope: ClassScope, input: MarkUnitDoneInput): Promise<{ nodesMarked: number }> {
-  assertWritableScope(classScope, "markUnitDone");
-  if (!inScope(classScope, input.classId)) {
-    throw new Error("[@domigo/db] markUnitDone: refused — class outside this session's scope (dach-018)");
-  }
-
+export async function markUnitDone(db: Db, input: MarkUnitDoneInput): Promise<{ nodesMarked: number }> {
   const { studentId, classId, unitSlug, nodes, actorId } = input;
   const m = UNIT_SLUG.exec(unitSlug);
   if (!m) throw new Error("markUnitDone: unitSlug must look like g2-u03.");
@@ -167,7 +156,7 @@ export async function markUnitDone(db: Db, classScope: ClassScope, input: MarkUn
   });
   // … then the nodes, through the ordinary completion primitive.
   for (const node of nodes) {
-    await recordNodeCompletion(db, classScope, {
+    await recordNodeCompletion(db, {
       userId: studentId,
       classId,
       unitSlug,

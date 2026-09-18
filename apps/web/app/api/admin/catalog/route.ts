@@ -21,7 +21,7 @@ export async function GET(req: Request): Promise<Response> {
   const classId = new URL(req.url).searchParams.get("classId");
   let reserved = new Set<string>();
   if (classId) {
-    reserved = await listReservedForClass(getDb(), teacher.classScope, classId).catch(() => new Set<string>());
+    reserved = await listReservedForClass(getDb(), classId).catch(() => new Set<string>());
   }
 
   const units = catalogForGrade(grade, reserved);

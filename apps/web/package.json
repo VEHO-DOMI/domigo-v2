@@ -8,8 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
-    "konto:export": "node --experimental-strip-types scripts/konto-export.ts",
-    "test": "node --import ./scripts/lib/alias-register.mjs --test \"lib/*.test.ts\" \"lib/**/*.test.ts\""
+    "test": "node --test \"lib/*.test.ts\""
   },
   "dependencies": {
     "@domigo/art-gen": "workspace:*",
@@ -27,7 +26,6 @@
     "@domigo/task-ui": "workspace:*",
     "@vercel/sandbox": "^1.10.2",
     "bcryptjs": "^3.0.3",
-    "jose": "^6.2.12",
     "next": "16.2.7",
     "next-auth": "5.0.0-beta.31",
     "react": "19.2.4",
