@@ -1,7 +1,5 @@
 {
   "schema": "variants@1",
   "storyId": "g3.st.fourteen",
-  "variants": [
-    { "key": "fourteen.ch01.script-gap", "itemId": "g3u01.gi.present-simple.gf.001", "scene": "g3.st.fourteen.ch01.s005", "slot": "script-gap", "prompt": { "text": "Hi, I'm Leah. I really ___ her songs, and I always sing along! (like)", "lang": "en" }, "glosses": [] }
-  ]
+  "variants": []
 }
