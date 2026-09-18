@@ -15,7 +15,7 @@ import type { Db } from "./index.ts";
 import { writeRosterEvent } from "./roster-events.ts";
 import { v2Classes, v2IdentityUsers } from "./schema.ts";
 import { v1Classes, v1Users } from "./v1.ts";
-import { type ClassScope } from "./scope.ts";
+import { assertWritableScope, type ClassScope } from "./scope.ts";
 import { allocateClassCode } from "./auth.ts";
 
 /** Longest allowed class name (a roster label, not prose). */
@@ -161,6 +161,157 @@ export async function listArchivedClassesForTeacher(db: Db, classScope: ClassSco
   // archivedAt is non-null by the WHERE clause; the column type stays nullable.
   return classes.map((c) => ({ ...c, archivedAt: c.archivedAt!, studentCount: byClass.get(c.id) ?? 0 }));
 }
+
+// ─────────────────────────────────────────────────────────────────────────────
+// dach-074 · THE LOCAL CLASS WRITERS, as a dated fallback — main's four, back.
+//
+// Until the switch-over day a PIN teacher creates, renames, archives and
+// unarchives classes here, exactly as on main; the routes in
+// apps/web/app/api/admin/classes refuse with 405 from 00:00 Vienna that day
+// (lib/konto/rueckfall.ts), and from then on classes are made at konto. The
+// three writers on an existing class now also take the class wall (scope
+// first, never empty) like every other writer on this branch; createClass
+// makes a class no scope can contain yet, so it cannot take one.
+// ─────────────────────────────────────────────────────────────────────────────
+
+/**
+ * Create a class owned by `teacherId`. Re-validates name/grade (defense in depth —
+ * the endpoint already 400s bad input) and mints a globally-unique invite code
+ * (unique across v1 AND v2 — the single code space a student types), then inserts
+ * and returns the created row (studentCount 0 — a fresh class has no roster yet).
+ */
+export async function createClass(
+  db: Db,
+  input: { name: string; grade: number; teacherId: string },
+): Promise<ClassSummary> {
+  const nameError = validateClassName(input.name);
+  if (nameError) throw new Error(`createClass: ${nameError}`);
+  if (!validateGrade(input.grade)) throw new Error("createClass: grade must be between 1 and 4.");
+
+  const inviteCode = await allocateClassCode(db);
+  const [row] = await db
+    .insert(v2Classes)
+    .values({ name: input.name.trim(), inviteCode, grade: input.grade, teacherId: input.teacherId })
+    .returning({
+      id: v2Classes.id,
+      name: v2Classes.name,
+      inviteCode: v2Classes.inviteCode,
+      grade: v2Classes.grade,
+      createdAt: v2Classes.createdAt,
+    });
+  return { id: row!.id, name: row!.name, inviteCode: row!.inviteCode, grade: row!.grade, studentCount: 0, createdAt: row!.createdAt };
+}
+
+/**
+ * Rename a class — only when `id` AND `teacherId` match AND it isn't archived, so
+ * a teacher can't touch another's (or a retired) class. A non-matching id updates
+ * zero rows (a silent no-op, like archiveAssignment). No `updatedAt` column on
+ * this table, so none is set.
+ */
+export async function renameClass(db: Db, classScope: ClassScope, id: string, teacherId: string, name: string): Promise<void> {
+  assertWritableScope(classScope, "renameClass");
+  const nameError = validateClassName(name);
+  if (nameError) throw new Error(`renameClass: ${nameError}`);
+  await db
+    .update(v2Classes)
+    .set({ name: name.trim() })
+    .where(and(inArray(v2Classes.id, classScope), eq(v2Classes.id, id), eq(v2Classes.teacherId, teacherId), isNull(v2Classes.archivedAt)));
+}
+
+/**
+ * Soft-archive a class (never a hard delete — a class anchors rosters, attempts
+ * and assignments that must resolve). Scoped to the owning teacher; archiving a
+ * class the teacher doesn't own touches nothing and returns false.
+ *
+ * K9b · NO GRANDMASTER BRANCH, and the reason has CHANGED. The old reason was
+ * "archiving cannot be corrected" — that premise died with unarchiveClass below,
+ * which restores a class completely (one column back to NULL; nothing cascades).
+ * What remains is narrower and still holds: retiring a colleague's class is a
+ * decision about HER teaching year, not an operational repair, so the rank does not
+ * reach here. The operator's power sits on the correcting side — he may bring a
+ * class BACK for her, never take one away.
+ *
+ * journal-then-flip (Neon HTTP has no transactions): ownership is read first, the
+ * `archive` event lands second, the guarded flip third. Reading first is what keeps
+ * the journal honest — journaling before the ownership check would let any teacher
+ * write "class X was archived" into a class they cannot touch. The flip repeats the
+ * full WHERE, so nothing can slip through between the two statements.
+ */
+export async function archiveClass(db: Db, classScope: ClassScope, id: string, teacherId: string): Promise<boolean> {
+  assertWritableScope(classScope, "archiveClass");
+  const owned = await db
+    .select({ id: v2Classes.id })
+    .from(v2Classes)
+    .where(and(inArray(v2Classes.id, classScope), eq(v2Classes.id, id), eq(v2Classes.teacherId, teacherId), isNull(v2Classes.archivedAt)))
+    .limit(1);
+  if (!owned[0]) return false;
+
+  await writeRosterEvent(db, {
+    classId: id,
+    kind: ARCHIVE_KIND,
+    actorId: teacherId,
+    payload: { classId: id },
+  });
+
+  const flipped = await db
+    .update(v2Classes)
+    .set({ archivedAt: new Date() })
+    .where(and(inArray(v2Classes.id, classScope), eq(v2Classes.id, id), eq(v2Classes.teacherId, teacherId), isNull(v2Classes.archivedAt)))
+    .returning({ id: v2Classes.id });
+  return flipped.length > 0;
+}
+
+/**
+ * Bring an archived class back to life (K9b) — the correction archiveClass never had.
+ * Setting `archived_at` back to NULL is COMPLETE by construction: archiving writes
+ * exactly that one column and nothing cascades, every read in the codebase filters on
+ * `archived_at IS NULL`, and the invite code cannot have been re-issued in the meantime
+ * (the unique index spans archived rows too). So the children can sign in again, the
+ * join link works again, and the roster is exactly as they left it.
+ *
+ * The condition `archived_at IS NOT NULL` makes this idempotent AND informative: a
+ * class that is foreign, missing, or simply not archived returns zero rows, and the
+ * caller learns "nothing to do here" instead of reporting a success that never was.
+ *
+ * `actorId` (optional, defaults to teacherId) names the HAND in the journal without
+ * widening any authorization — the grandmaster pattern from roster-service.ts. He IS
+ * allowed here: this is the correcting direction (see archiveClass above).
+ */
+export async function unarchiveClass(db: Db, classScope: ClassScope, id: string, teacherId: string, actorId?: string): Promise<boolean> {
+  assertWritableScope(classScope, "unarchiveClass");
+  const owned = await db
+    .select({ id: v2Classes.id })
+    .from(v2Classes)
+    .where(and(inArray(v2Classes.id, classScope), eq(v2Classes.id, id), eq(v2Classes.teacherId, teacherId), isNotNull(v2Classes.archivedAt)))
+    .limit(1);
+  if (!owned[0]) return false;
+
+  await writeRosterEvent(db, {
+    classId: id,
+    kind: UNARCHIVE_KIND,
+    actorId: actorId ?? teacherId,
+    payload: { classId: id },
+  });
+
+  const flipped = await db
+    .update(v2Classes)
+    .set({ archivedAt: null })
+    .where(and(inArray(v2Classes.id, classScope), eq(v2Classes.id, id), eq(v2Classes.teacherId, teacherId), isNotNull(v2Classes.archivedAt)))
+    .returning({ id: v2Classes.id });
+  return flipped.length > 0;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// P3 · GRANDMASTER READS — the platform operator's all-classes view.
+//
+// Everything above this line is owner-scoped by construction. The functions below
+// are deliberately UNSCOPED, and every one of them carries `ForGrandmaster` in its
+// name so a call site that has NOT checked `isGrandmaster` first reads as wrong at
+// a glance. The rank check itself lives in the web app (apps/web/lib/grandmaster.ts,
+// an env allowlist) and is performed server-side BEFORE any of these run.
+// ─────────────────────────────────────────────────────────────────────────────
+
+/** Shown instead of an owner's name when the teacher row is in neither register. */
 
 // ─────────────────────────────────────────────────────────────────────────────
 // P3 · GRANDMASTER READS — the platform operator's all-classes view.
@@ -431,6 +582,36 @@ export async function listAllClassIds(db: Db): Promise<string[]> {
     for (const r of await db.select({ id: v2Classes.id }).from(v2Classes)) ids.add(r.id);
   } catch (err) {
     console.error("[class-service] v2 class ids unreadable:", err instanceof Error ? err.message.slice(0, 200) : String(err).slice(0, 200));
+  }
+  try {
+    for (const r of await db.select({ id: v1Classes.id }).from(v1Classes)) ids.add(r.id);
+  } catch (err) {
+    console.error("[class-service] legacy class ids unreadable:", err instanceof Error ? err.message.slice(0, 200) : String(err).slice(0, 200));
+  }
+  return [...ids];
+}
+
+/**
+ * dach-074 · THE SCOPE OF A PIN TEACHER, until the switch-over day.
+ *
+ * A teacher who signs in with the fallback PIN has no konto claims, so nobody
+ * hands this session a list of classes. What main did instead was ownership:
+ * every teacher query filtered on `teacher_id = me`, and every teacher could
+ * assign to the legacy v1 classes, which have no owner column. This builds
+ * exactly that list — the teacher's own v2 classes, archived ones included
+ * (the archive page reads them), plus every v1 class — so the class wall
+ * gives a PIN teacher the view main gave them, no more.
+ *
+ * Called only from lib/identity.ts (the one place a scope is built), and only
+ * while lib/konto/rueckfall.ts says the fallback is open.
+ */
+export async function listClassIdsForPinTeacher(db: Db, teacherId: string): Promise<string[]> {
+  const ids = new Set<string>();
+  try {
+    const eigene = await db.select({ id: v2Classes.id }).from(v2Classes).where(eq(v2Classes.teacherId, teacherId));
+    for (const r of eigene) ids.add(r.id);
+  } catch (err) {
+    console.error("[class-service] own class ids unreadable:", err instanceof Error ? err.message.slice(0, 200) : String(err).slice(0, 200));
   }
   try {
     for (const r of await db.select({ id: v1Classes.id }).from(v1Classes)) ids.add(r.id);

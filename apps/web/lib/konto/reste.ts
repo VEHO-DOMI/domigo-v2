@@ -15,7 +15,18 @@
 import liste from "../../konto-local-login-allowlist.json" with { type: "json" };
 import { wienerTag } from "./umstieg.ts";
 
-export type Rest = { provider: string; grund: string; ablauf: string; dateien: string[] };
+export type Rest = {
+  provider: string;
+  grund: string;
+  ablauf: string;
+  dateien: string[];
+  /**
+   * dach-074 · a FALLBACK entry (student, teacher) ends ON its date, not after
+   * it: `ablauf` is the switch-over day itself, and at 00:00 Vienna that day
+   * the PIN is over. The 90-day leftovers keep their inclusive last day.
+   */
+  rueckfall?: boolean;
+};
 
 export const RESTE: Rest[] = liste.reste as Rest[];
 export const ALLOWLIST_UMSTIEGSTAG: string = liste.umstiegstag;
@@ -31,5 +42,6 @@ export function rest(provider: string): Rest | null {
  */
 export function restGueltig(provider: string, now: Date = new Date()): boolean {
   const r = rest(provider);
-  return r ? wienerTag(now) <= r.ablauf : false;
+  if (!r) return false;
+  return r.rueckfall === true ? wienerTag(now) < r.ablauf : wienerTag(now) <= r.ablauf;
 }

@@ -5,7 +5,8 @@ import { listReleasedStories } from "@domigo/content-loader";
 import { loadKeenBoss, loadKeenLevel } from "@/lib/keen-content";
 import { listPaintChapters } from "@/lib/paint-content";
 import { getDb, getUnitMastery } from "@domigo/db";
-import { auth, signOut } from "@/auth";
+import { auth } from "@/auth";
+import { abmelden } from "../le/konto-aktion";
 import { isGrandmaster } from "@/lib/grandmaster";
 
 export const dynamic = "force-dynamic";
@@ -31,9 +32,11 @@ export default async function AdminPage() {
   // doc 31: the painted-book preview list grows the same corpus-probing way
   const paintChapters = listPaintChapters("g1.st.lost-pages");
 
+  // dach-074 · the one sign-out of the app: a konto session goes on to konto's
+  // /logout, a PIN session ends here (app/le/konto-aktion.ts).
   async function doSignOut() {
     "use server";
-    await signOut({ redirectTo: "/" });
+    await abmelden();
   }
 
   // Story mastery per released grade — derived from the corpus (a new grade's game
