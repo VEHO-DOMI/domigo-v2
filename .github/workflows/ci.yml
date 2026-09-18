@@ -176,6 +176,8 @@ jobs:
       - run: node scripts/check-umbrella-tokens.mjs # BRAND-2 · srdp-069: Dach-Tokens byte-gleich zur Quelle, Stufenfarben unberührt, /play ohne Dach-Zonen
       - run: node scripts/check-secrets.mjs --selftest # S1: vier Köder müssen rot werden UND sechs Beinahe-Treffer still bleiben
       - run: node scripts/check-secrets.mjs # S1: kein API-Schlüssel in einer getrackten Datei — die Historie behält, was einmal drin war
+      - run: node scripts/check-datenschutz-claims.mjs --selftest # gomarke-008: vier erfundene Defekte müssen rot werden (Analyse-Paket · Google-Schrift in CSS · Adresse mit Kommentar dahinter · zweite Schreibstelle für users.email) UND fünf Beinahe-Treffer still bleiben
+      - run: node scripts/check-datenschutz-claims.mjs # gomarke-008: die Datenschutzseite behauptet »keine Analyse- oder Tracking-Dienste, Schriften vom eigenen Server« und »keine E-Mail-Adressen von Kindern« — hier wird beides gemessen, über jede eingecheckte Datei unter apps/ und packages/
 
       # ── Klang ───────────────────────────────────────────────────────────────
       # S1: das Klang-Tor MISST Klang (Lautheit, Spitze, Klangfarbe, Schleifen-Naht) und braucht dafür
