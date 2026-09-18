@@ -34,7 +34,7 @@ const LEHRKRAFT = "0a1b2c3d-0000-4000-8000-000000000003";
 const ABGABE = "0a1b2c3d-0000-4000-8000-000000000004";
 
 /**
- * DIE ELF ECHTEN NUTZLASTEN, in der Form, die die fuenf Dienst-Module nach P-R8
+ * DIE ZWOELF ECHTEN NUTZLASTEN, in der Form, die die fuenf Dienst-Module nach P-R8
  * bauen. Sie stehen hier AUSGESCHRIEBEN und nicht aus dem Pruefling abgeleitet:
  * eine Erwartung, die sich aus dem Geprueften speist, prueft nichts (K7a-Gesetz).
  * Waechst das Vokabular, ohne dass diese Liste waechst, faellt die Zaehlung unten.
@@ -57,6 +57,10 @@ const ECHTE_NUTZLASTEN: { stelle: string; payload: Record<string, unknown> }[] =
     stelle: "writing-review · writing_graded",
     payload: { op: "grade", submissionId: ABGABE, score: 78, feedbackLength: 61, onBehalfOf: null },
   },
+  {
+    stelle: "konto-class-term · konto_sync",
+    payload: { classId: KLASSE, displayNameLength: 2, grade: 3, archived: false },
+  },
 ];
 
 describe("das Vokabular laesst die echte Arbeit durch", () => {
@@ -66,8 +70,8 @@ describe("das Vokabular laesst die echte Arbeit durch", () => {
     });
   }
 
-  it("kennt genau 17 Schluessel — ein neuer wird hier bewusst eingetragen, nie nebenbei", () => {
-    expect(VOKABULAR_UMFANG).toBe(17);
+  it("kennt genau 19 Schluessel — ein neuer wird hier bewusst eingetragen, nie nebenbei", () => {
+    expect(VOKABULAR_UMFANG).toBe(19);
   });
 
   it("laesst auch die lesbaren Bezeichner der Testbatterie durch (kleingeschrieben, mit Trenner)", () => {

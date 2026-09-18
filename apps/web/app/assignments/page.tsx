@@ -13,7 +13,7 @@ export default async function AssignmentsPage() {
   const acting = await getActingUserForPage();
   if (!acting) redirect("/signin");
 
-  const rows = await listAssignmentsForStudent(getDb(), acting.classId, new Date()).catch(() => []);
+  const rows = await listAssignmentsForStudent(getDb(), acting.classScope, acting.classId, new Date()).catch(() => []);
 
   return (
     <main style={{ maxWidth: 640, margin: "0 auto", padding: "28px 20px 48px", fontFamily: "var(--font-body)", color: "var(--text)" }}>

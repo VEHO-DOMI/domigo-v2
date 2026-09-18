@@ -6,7 +6,7 @@
  * unchanged. Reads return the row INCLUDING the bcrypt hash for the caller to
  * verify. NEVER writes `public.*`. Keeps drizzle out of the web app.
  */
-import { and, eq, isNull, sql } from "drizzle-orm";
+import { and, eq, inArray, isNull, sql } from "drizzle-orm";
 import { v1Users, v1Classes } from "./v1.ts";
 import { v2Classes, v2IdentityUsers } from "./schema.ts";
 import { nextInviteCode, pickIdentity } from "./identity.ts";

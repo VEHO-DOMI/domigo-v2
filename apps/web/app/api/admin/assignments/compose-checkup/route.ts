@@ -14,7 +14,7 @@
  */
 import { NextResponse } from "next/server";
 import { z } from "zod";
-import { getDb, listClasses, listClassesForGrandmaster, listReservedForClass } from "@domigo/db";
+import { getDb, listClasses, listClassesInScope, listReservedForClass } from "@domigo/db";
 import { composeCheckup, GRADE_STRUCTURES } from "@/lib/checkup";
 import { getTeacher } from "@/lib/teacher";
 import { isGrandmaster } from "@/lib/grandmaster";
@@ -50,8 +50,8 @@ export async function POST(req: Request): Promise<Response> {
 
   // Fail closed — an unreadable class list is not permission (see the sibling route).
   const allowed = isGrandmaster(teacher.userId)
-    ? await listClassesForGrandmaster(getDb()).catch(() => null)
-    : await listClasses(getDb(), teacher.userId).catch(() => null);
+    ? await listClassesInScope(getDb(), teacher.classScope).catch(() => null)
+    : await listClasses(getDb(), teacher.classScope, teacher.userId).catch(() => null);
   if (!allowed) return NextResponse.json({ ok: false, error: "class_check_failed" }, { status: 503 });
   if (!allowed.some((c) => c.id === classId)) {
     return NextResponse.json({ ok: false, error: "not_your_class" }, { status: 403 });
@@ -59,7 +59,7 @@ export async function POST(req: Request): Promise<Response> {
 
   const grade = Number(unitSlug[1]) as 1 | 2 | 3 | 4;
   const seed = parsed.data.seed ?? crypto.randomUUID();
-  const reserved = await listReservedForClass(getDb(), classId).catch(() => new Set<string>());
+  const reserved = await listReservedForClass(getDb(), teacher.classScope, classId).catch(() => new Set<string>());
 
   const result = composeCheckup(unitSlug, grade, seed, {
     reservedIds: reserved,
