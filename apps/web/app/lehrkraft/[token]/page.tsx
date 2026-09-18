@@ -22,7 +22,7 @@ import { claimClassAsTeacher, getDb, inviteTokenMatches, listClaimableClasses } 
 import { signIn } from "@/auth";
 import { grandmasterIds } from "@/lib/grandmaster";
 import { hashPin, STUDENT_PIN_PATTERN } from "@/lib/pin";
-import { assertRueckfallOffen, tuerZiel } from "@/lib/konto/rueckfall";
+import { tuerZiel } from "@/lib/konto/rueckfall";
 
 export const dynamic = "force-dynamic";
 
@@ -65,7 +65,10 @@ export default async function LehrkraftBeitrittSeite({
 
   async function beitreten(formData: FormData) {
     "use server";
-    assertRueckfallOffen(); // a tab left open across midnight must not still write
+    // A tab left open across midnight must not still write: from the day on the
+    // submit follows the door to konto (307) instead of throwing an error page.
+    const zu = tuerZiel("lehrkraft", "");
+    if (zu) redirect(zu);
     const classId = String(formData.get("classId") ?? "");
     const displayName = String(formData.get("displayName") ?? "").trim();
     const pin = String(formData.get("pin") ?? "");

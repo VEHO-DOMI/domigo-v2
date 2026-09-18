@@ -30,22 +30,13 @@ import { kontoBaseUrl, kontoBeitrittUrl } from "./basis.ts";
 /** The two providers of the fallback — declared in konto-local-login-allowlist.json. */
 export const RUECKFALL_PROVIDER = ["student", "teacher"] as const;
 
-/** The sentence every local class/roster writer answers with once the day has come. */
+/** The sentence every local class/roster writer answers with once the day has come (lib/konto/rueckfall-antwort.ts). */
 export const GESCHLOSSEN_SATZ =
   "Klassen und Klassenlisten pflegst du im Lehrerzimmer von Lauter Einser.";
 
 /** True while the old PIN sign-in and the local class writers still work. */
 export function rueckfallOffen(now: Date = new Date()): boolean {
   return wienerTag(now) < UMSTIEGSTAG;
-}
-
-/**
- * For the server actions and routes that write locally. They are reachable by
- * anyone with the form, so the date is checked on the SERVER, not only by
- * hiding the form: a tab left open across midnight must not still write.
- */
-export function assertRueckfallOffen(now: Date = new Date()): void {
-  if (!rueckfallOffen(now)) throw new Error(GESCHLOSSEN_SATZ);
 }
 
 /**

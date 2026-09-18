@@ -17,7 +17,7 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { signIn } from "@/auth";
-import { assertRueckfallOffen, rueckfallOffen } from "@/lib/konto/rueckfall";
+import { rueckfallOffen } from "@/lib/konto/rueckfall";
 import { CALLBACK_PFAD, eigeneBasis, kontoLoginUrl } from "@/lib/konto/basis";
 import { hinweisFaellig } from "@/lib/konto/umstieg";
 
@@ -36,7 +36,9 @@ export default async function AdminSignInPage({
   // dach-074 · main's PIN sign-in, until the switch-over day only.
   async function teacherSignIn(formData: FormData) {
     "use server";
-    assertRueckfallOffen(); // a tab left open across midnight must not still sign in
+    // A tab left open across midnight must not still sign in: from the day on the
+    // submit lands back on this page, which then shows only the konto button.
+    if (!rueckfallOffen()) redirect("/admin/signin");
     const nickname = String(formData.get("nickname") ?? "");
     const pin = String(formData.get("pin") ?? "");
     const dest = String(formData.get("from") ?? "/admin");

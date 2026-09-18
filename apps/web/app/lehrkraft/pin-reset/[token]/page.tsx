@@ -35,7 +35,7 @@ import {
 import { consumeResetToken, peekResetToken } from "@domigo/db/reset-tokens";
 import { signIn } from "@/auth";
 import { hashPin, STUDENT_PIN_PATTERN } from "@/lib/pin";
-import { assertRueckfallOffen, tuerZiel } from "@/lib/konto/rueckfall";
+import { tuerZiel } from "@/lib/konto/rueckfall";
 
 export const dynamic = "force-dynamic";
 
@@ -114,7 +114,10 @@ export default async function PinResetSeite({
 
   async function setzen(formData: FormData) {
     "use server";
-    assertRueckfallOffen(); // a tab left open across midnight must not still write
+    // A tab left open across midnight must not still write: from the day on the
+    // submit follows the door to konto (307) instead of throwing an error page.
+    const zu = tuerZiel("pin-reset", "");
+    if (zu) redirect(zu);
     const pin = String(formData.get("pin") ?? "");
     const pin2 = String(formData.get("pin2") ?? "");
 

@@ -20,7 +20,7 @@ import { createHash, timingSafeEqual } from "node:crypto";
 import { redirect } from "next/navigation";
 import { adoptAssignments, createV2Teacher, getDb, hasV2Teacher } from "@domigo/db";
 import { hashPin, TEACHER_PIN_PATTERN } from "@/lib/pin";
-import { assertRueckfallOffen, tuerZiel } from "@/lib/konto/rueckfall";
+import { tuerZiel } from "@/lib/konto/rueckfall";
 
 export const dynamic = "force-dynamic";
 
@@ -138,7 +138,10 @@ export default async function BootstrapPage({
 
   async function bootstrap(formData: FormData) {
     "use server";
-    assertRueckfallOffen(); // a tab left open across midnight must not still write
+    // A tab left open across midnight must not still write: from the day on the
+    // submit follows the door to konto (307) instead of throwing an error page.
+    const zu = tuerZiel("bootstrap", "");
+    if (zu) redirect(zu);
     const token = String(formData.get("token") ?? "");
     const nickname = String(formData.get("nickname") ?? "").trim();
     const pin = String(formData.get("pin") ?? "");

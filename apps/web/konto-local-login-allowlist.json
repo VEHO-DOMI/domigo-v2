@@ -32,7 +32,7 @@
         "app/lehrkraft/pin-vergessen/page.tsx",
         "app/bootstrap/page.tsx"
       ],
-      "durchsetzung": "Wie `student`: authorize, jwt-Callback, Formular, Türen, Klassen-Schreiber (assertRueckfallOffen) — alles am Umstiegstag um 00:00 Wien zu"
+      "durchsetzung": "Wie `student`: authorize, jwt-Callback, Formular, Türen, Klassen-Schreiber (lokalesSchreibenZu, 405) — alles am Umstiegstag um 00:00 Wien zu"
     },
     {
       "provider": "ops-link",

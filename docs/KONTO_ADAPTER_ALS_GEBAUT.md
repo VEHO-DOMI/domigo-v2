@@ -37,9 +37,10 @@ ist der letzte Rückfall-Tag, am 13.10. um 00:01 ist die PIN zu).
 | Klassenwand einer PIN-Sitzung (`lib/identity.ts`) | Kind: seine Klasse · Lehrkraft: eigene Klassen + v1 (`listClassIdsForPinTeacher`) | — (die Sitzung gibt es nicht mehr) |
 | Abmelden (`app/le/konto-aktion.ts`) | konto-Sitzung → konto `/logout?return=<eng-us-Adresse>/`, PIN-Sitzung → `/` | ebenso |
 
-Jede Server-Aktion einer alten Seite fragt das Datum selbst
-(`assertRueckfallOffen`) — ein Tab, der über Mitternacht offen bleibt, schreibt
-nicht mehr. Das Tor `scripts/check-no-local-login.mjs` ist **datumsabhängig**:
+Jede Server-Aktion einer alten Seite fragt das Datum selbst — ein Tab, der über
+Mitternacht offen bleibt, schreibt nicht mehr: sein Absenden folgt der Tür zu
+konto (307) bzw. landet wieder auf der Anmeldeseite, statt eine Fehlerseite zu
+zeigen (Befund des blinden Lesers, 18.09.). Das Tor `scripts/check-no-local-login.mjs` ist **datumsabhängig**:
 vor dem Tag erlaubt es genau die zwei Rückfall-Anbieter, und nur mit
 Datumsprüfung; ab dem Tag ist ihr Vorhandensein rot — dann muss der Code weg.
 `--selftest` stellt die Uhr auf 23:59 am Vorabend (grün) und 00:01 am Tag (rot).

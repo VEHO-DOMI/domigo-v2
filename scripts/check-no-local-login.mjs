@@ -195,8 +195,8 @@ const PRUEFUNGEN = {
       if (!vorher && /@domigo\/db/.test(src)) raus.push(`${t.rel}: greift nach dem Umstiegstag noch auf die Datenbank zu — die Tuer gehoert jetzt ganz zu konto`);
       // Jede Server-Aktion einer Tuer fragt das Datum selbst (ein offener Tab ueber Mitternacht).
       const aktionen = (src.match(/"use server";/g) ?? []).length;
-      const wachen = (src.match(/assertRueckfallOffen\(\)/g) ?? []).length;
-      if (wachen < aktionen) raus.push(`${t.rel}: ${aktionen} Server-Aktionen, aber nur ${wachen} fragen assertRueckfallOffen()`);
+      const wachen = (src.match(/if \(zu\) redirect\(zu\)/g) ?? []).length;
+      if (wachen < aktionen) raus.push(`${t.rel}: ${aktionen} Server-Aktionen, aber nur ${wachen} fragen das Datum (tuerZiel → redirect(zu))`);
     }
     const rf = state.files.get(RUECKFALL);
     if (/permanentRedirect\(|status:\s*308/.test(rf)) raus.push("lib/konto/rueckfall.ts: eine dauerhafte Weiterleitung (308)");
@@ -324,7 +324,7 @@ if (selftest) {
       mach: () => {
         const c = klon(echt);
         const rel = "apps/web/app/join/[code]/page.tsx";
-        c.files.set(rel, c.files.get(rel).replace('tuerZiel("join"', 'keinZiel("join"'));
+        c.files.set(rel, c.files.get(rel).replaceAll('tuerZiel("join"', 'keinZiel("join"'));
         return c;
       },
     },
@@ -344,7 +344,7 @@ if (selftest) {
       mach: () => {
         const c = klon(echt);
         const rel = "apps/web/app/bootstrap/page.tsx";
-        c.files.set(rel, c.files.get(rel).replace(/assertRueckfallOffen\(\);[^\n]*\n/, ""));
+        c.files.set(rel, c.files.get(rel).replace("if (zu) redirect(zu);", ""));
         return c;
       },
     },

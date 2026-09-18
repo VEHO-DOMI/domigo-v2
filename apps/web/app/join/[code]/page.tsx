@@ -13,7 +13,7 @@ import { claimStudent, findActiveClassByCode, getDb, unclaimedForClaim } from "@
 import { signIn } from "@/auth";
 import { hashPin, STUDENT_PIN_PATTERN } from "@/lib/pin";
 import { normalizeInviteCode } from "@/lib/invite-code";
-import { assertRueckfallOffen, tuerZiel } from "@/lib/konto/rueckfall";
+import { tuerZiel } from "@/lib/konto/rueckfall";
 
 export const dynamic = "force-dynamic";
 
@@ -53,7 +53,10 @@ export default async function JoinPage({
 
   async function claim(formData: FormData) {
     "use server";
-    assertRueckfallOffen(); // a tab left open across midnight must not still write
+    // A tab left open across midnight must not still write: from the day on the
+    // submit follows the door to konto (307) instead of throwing an error page.
+    const zu = tuerZiel("join", code);
+    if (zu) redirect(zu);
     const studentId = String(formData.get("studentId") ?? "");
     const displayName = String(formData.get("displayName") ?? "").trim();
     const pin = String(formData.get("pin") ?? "");
