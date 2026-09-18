@@ -3,6 +3,24 @@
   "storyId": "g3.st.fourteen",
   "items": [
     {
+      "id": "g3u01.ci.saras-channel.gf.001",
+      "rev": 1,
+      "difficulty": 1,
+      "format": "gap-fill",
+      "prompt": { "text": "Hi, I'm Leah. Sara ___ a channel, and everyone knows her! (have)", "lang": "en", "blanks": 1 },
+      "answers": [{ "text": "has", "tier": "full" }],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [{ "word": "channel", "de": "Kanal", "scope": null }, { "word": "everyone", "de": "alle", "scope": null }, { "word": "knows", "de": "kennt", "scope": null }],
+      "hintDe": "Sara ist wie she. Was wird dann aus have?",
+      "hintEn": null,
+      "explainDe": "Bei she, he und it wird have zu has: Sara has a channel.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
       "id": "g3u01.ci.dads-line.cp.001",
       "rev": 1,
       "difficulty": 2,
