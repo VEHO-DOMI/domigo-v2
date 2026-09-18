@@ -61,6 +61,86 @@ function args(argv: string[]): Args {
 type Klasse = ExportKlasse;
 type Person = ExportPerson;
 
+export type Ruf = { pfad: string; koerper: Record<string, unknown> };
+
+/**
+ * dach-018 · WAS HINAUSGEHT — pur, damit es geprueft werden kann, ohne dass
+ * etwas hinausgeht.
+ *
+ * Die Reihenfolge ist kein Geschmack (SPEC §10 E3): Lehrgruppen zuerst, weil
+ * die Bruecke aus ihrer Antwort geschrieben wird; dann Lehrkraefte, weil eine
+ * Gruppe eine Besitzerin braucht, die es schon gibt; dann die Kinder.
+ *
+ * Und was NICHT hinausgeht, ist genauso festgeschrieben: keine E-Mail (konto
+ * antwortet darauf mit 400), kein `is_test`, kein Feld, das die Positivliste
+ * nicht kennt. Der Test unten haelt beides fest.
+ */
+export function baueRufe(a: Args, klassen: Klasse[], lehrkraefte: Person[], kinder: Person[]): Ruf[] {
+  return [
+    {
+      pfad: "/api/import/lehrgruppen",
+      koerper: {
+        lehrgruppen: klassen.map((k) => ({
+          app_class_id: k.id,
+          fach: "Englisch",
+          gruppe_name: k.name,
+          name: k.name,
+          owner_app_user_id: k.teacherId,
+          join_code: k.inviteCode,
+          jahrgang: k.grade,
+          archived_at: k.archivedAt ? new Date(k.archivedAt).toISOString() : null,
+        })),
+      },
+    },
+    {
+      pfad: "/api/import/konten",
+      koerper: {
+        konten: lehrkraefte.map((t) => ({
+          app_user_id: t.id,
+          nick: t.displayName,
+          credential_hash: t.pinHash,
+          role: "teacher",
+          kuerzel: a.kuerzel.get(t.id),
+        })),
+      },
+    },
+    {
+      pfad: "/api/import/konten",
+      koerper: {
+        konten: kinder.map((s) => ({
+          app_user_id: s.id,
+          nick: s.displayName,
+          credential_hash: s.pinHash,
+          role: "student",
+          app_class_id: s.classId,
+        })),
+      },
+    },
+  ];
+}
+
+/**
+ * Wer mitfaehrt und wer hier bleibt. Die Ops-Klasse und ihre Kinder bleiben:
+ * konto legt seine eigenen Test-Konten an (SPEC §3, I-7), und ein importiertes
+ * Test-Kind waere dort ein echtes.
+ */
+export function waehleAus(
+  klassen: Klasse[],
+  leute: Person[],
+  opsCode: string,
+): { echteKlassen: Klasse[]; lehrkraefte: Person[]; kinder: Person[]; opsKlasse: Klasse | undefined } {
+  const opsKlasse = klassen.find((k) => k.inviteCode === opsCode);
+  const ausgelassen = new Set(opsKlasse ? [opsKlasse.id] : []);
+  return {
+    opsKlasse,
+    echteKlassen: klassen.filter((k) => !ausgelassen.has(k.id)),
+    lehrkraefte: leute.filter((p) => p.role === "teacher"),
+    kinder: leute.filter((p) => p.role !== "teacher" && p.classId && !ausgelassen.has(p.classId)),
+  };
+}
+
+export { args as _argsFuerTest };
+
 async function schicke(a: Args, pfad: string, koerper: unknown): Promise<number> {
   if (a.dryRun) return 200;
   const res = await fetch(`${a.konto.replace(/\/+$/, "")}${pfad}`, {
@@ -80,12 +160,7 @@ async function main() {
   }
 
   const { klassen, leute, nurV1 } = await readKontoExport(getDb());
-  const opsKlasse = klassen.find((k) => k.inviteCode === a.opsCode);
-  const ausgelassen = new Set(opsKlasse ? [opsKlasse.id] : []);
-
-  const echteKlassen = klassen.filter((k) => !ausgelassen.has(k.id));
-  const lehrkraefte = leute.filter((p) => p.role === "teacher");
-  const kinder = leute.filter((p) => p.role !== "teacher" && p.classId && !ausgelassen.has(p.classId));
+  const { echteKlassen, lehrkraefte, kinder, opsKlasse } = waehleAus(klassen, leute, a.opsCode);
 
   const ohneKuerzel = lehrkraefte.filter((t) => !a.kuerzel.has(t.id));
   if (ohneKuerzel.length > 0) {
@@ -95,41 +170,10 @@ async function main() {
     process.exit(3);
   }
 
-  // 1 · Lehrgruppen
-  await schicke(a, "/api/import/lehrgruppen", {
-    lehrgruppen: echteKlassen.map((k) => ({
-      app_class_id: k.id,
-      fach: "Englisch",
-      gruppe_name: k.name,
-      name: k.name,
-      owner_app_user_id: k.teacherId,
-      join_code: k.inviteCode,
-      jahrgang: k.grade,
-      archived_at: k.archivedAt ? new Date(k.archivedAt).toISOString() : null,
-    })),
-  });
-
-  // 2 · Lehrkraefte
-  await schicke(a, "/api/import/konten", {
-    konten: lehrkraefte.map((t) => ({
-      app_user_id: t.id,
-      nick: t.displayName,
-      credential_hash: t.pinHash,
-      role: "teacher",
-      kuerzel: a.kuerzel.get(t.id),
-    })),
-  });
-
-  // 3 · Kinder
-  await schicke(a, "/api/import/konten", {
-    konten: kinder.map((s) => ({
-      app_user_id: s.id,
-      nick: s.displayName,
-      credential_hash: s.pinHash,
-      role: "student",
-      app_class_id: s.classId,
-    })),
-  });
+  // Die drei Rufe, in der Reihenfolge, die SPEC §10 E3 vorschreibt.
+  for (const ruf of baueRufe(a, echteKlassen, lehrkraefte, kinder)) {
+    await schicke(a, ruf.pfad, ruf.koerper);
+  }
 
   console.log(
     [
@@ -143,4 +187,9 @@ async function main() {
   );
 }
 
-await main();
+// Nur laufen, wenn das Skript aufgerufen wird. Beim Import durch einen Test
+// wird hier nichts gestartet — sonst spraeche ein `node --test` mit dem
+// Konto-Dienst, sobald jemand die Datei anfasst.
+if (process.argv[1] && process.argv[1].endsWith("konto-export.ts")) {
+  await main();
+}

@@ -23,25 +23,26 @@ import { NextResponse, type NextRequest } from "next/server";
 import { AuthError } from "next-auth";
 
 import { KONTO_PROVIDER, signIn } from "@/auth";
+import { RUECKKEHR_STATUS, zielNachRueckkehr } from "@/lib/konto/callback";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 
-/** Where a fresh session lands. A teacher is bounced on to /admin by /home. */
-const ZIEL = "/home";
-const ABGEWIESEN = "/zugriff-fehlt";
-
 export async function GET(req: NextRequest) {
   const handoff = req.nextUrl.searchParams.get("handoff");
   if (!handoff) {
-    return NextResponse.redirect(new URL(ABGEWIESEN, req.nextUrl.origin), 303);
+    return NextResponse.redirect(new URL(zielNachRueckkehr(false), req.nextUrl.origin), RUECKKEHR_STATUS);
   }
 
   try {
     await signIn(KONTO_PROVIDER, { handoff, redirect: false });
   } catch (err) {
+    // NUR eine AuthError wird geschluckt: das ist die Absage des Providers.
+    // Alles andere ist ein Fehler dieser Anwendung und muss sichtbar bleiben —
+    // eine Datenbank, die nicht antwortet, darf nicht wie eine abgelehnte
+    // Anmeldung aussehen.
     if (err instanceof AuthError) {
-      return NextResponse.redirect(new URL(ABGEWIESEN, req.nextUrl.origin), 303);
+      return NextResponse.redirect(new URL(zielNachRueckkehr(false), req.nextUrl.origin), RUECKKEHR_STATUS);
     }
     throw err;
   }
@@ -50,5 +51,5 @@ export async function GET(req: NextRequest) {
   // just wrote into the request-scoped store has to ride along, or the browser
   // is redirected while still signed out (the same trap as
   // /api/ops/session-link).
-  return NextResponse.redirect(new URL(ZIEL, req.nextUrl.origin), 303);
+  return NextResponse.redirect(new URL(zielNachRueckkehr(true), req.nextUrl.origin), RUECKKEHR_STATUS);
 }

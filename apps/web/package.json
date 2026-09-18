@@ -9,7 +9,7 @@
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
     "konto:export": "node --experimental-strip-types scripts/konto-export.ts",
-    "test": "node --test \"lib/*.test.ts\" \"lib/**/*.test.ts\""
+    "test": "node --import ./scripts/lib/alias-register.mjs --test \"lib/*.test.ts\" \"lib/**/*.test.ts\""
   },
   "dependencies": {
     "@domigo/art-gen": "workspace:*",
