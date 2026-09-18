@@ -2,12 +2,13 @@
  * Attempt persistence — the one entry point the app calls. Encapsulates the
  * idempotent insert + Leitner upsert + XP bump so callers never touch drizzle.
  */
-import { and, eq, sql } from "drizzle-orm";
+import { and, eq, inArray, sql } from "drizzle-orm";
 import type { Tier } from "@domigo/engine";
 import { practiceAttempts, reviewQueue, userProgress, writingSubmissions } from "./schema.ts";
 import { updateReviewQueue, type ReviewRef } from "./review.ts";
 import { computeNextStreak, viennaDayBefore, viennaDayString } from "./streak.ts";
 import type { Db } from "./index.ts";
+import { assertWritableScope, inScope, type ClassScope } from "./scope.ts";
 
 export interface RecordAttemptInput {
   userId: string;
@@ -37,7 +38,12 @@ export interface RecordAttemptResult {
  * Idempotent on `(userId, clientAttemptId)`. Side effects (queue upsert, XP bump)
  * are gated on the FIRST insert, so a replay can't double-count.
  */
-export async function recordAttempt(db: Db, a: RecordAttemptInput): Promise<RecordAttemptResult> {
+export async function recordAttempt(db: Db, classScope: ClassScope, a: RecordAttemptInput): Promise<RecordAttemptResult> {
+  assertWritableScope(classScope, "recordAttempt");
+  if (!inScope(classScope, a.classId)) {
+    throw new Error("[@domigo/db] recordAttempt: refused — class outside this session's scope (dach-018)");
+  }
+
   const inserted = await db
     .insert(practiceAttempts)
     .values({
@@ -159,7 +165,12 @@ export interface RecordWritingInput {
 }
 
 /** Append-only capture of a mock-test writing submission (teacher-graded later, B2b). */
-export async function recordWritingSubmission(db: Db, w: RecordWritingInput): Promise<void> {
+export async function recordWritingSubmission(db: Db, classScope: ClassScope, w: RecordWritingInput): Promise<void> {
+  assertWritableScope(classScope, "recordWritingSubmission");
+  if (!inScope(classScope, w.classId)) {
+    throw new Error("[@domigo/db] recordWritingSubmission: refused — class outside this session's scope (dach-018)");
+  }
+
   await db.insert(writingSubmissions).values({
     userId: w.userId,
     classId: w.classId,

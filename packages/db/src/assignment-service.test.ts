@@ -9,9 +9,15 @@
  * broken v2 side degrades to the v1 list instead of an empty picker.
  */
 import { describe, expect, it } from "vitest";
-import { LEGACY_CLASS_LABEL_SUFFIX, listClasses, listClassesForGrandmaster } from "./assignment-service.ts";
+import { LEGACY_CLASS_LABEL_SUFFIX, listClasses, listClassesInScope } from "./assignment-service.ts";
 import { UNKNOWN_TEACHER_LABEL } from "./class-service.ts";
 import type { Db } from "./index.ts";
+import { classScope } from "./scope.ts";
+
+/** dach-018 · der Klassen-Ausschnitt dieser Sitzung. Die Wand selbst prueft
+ *  scripts/check-claim-filter.mjs; hier steht sie nur, damit die bestehenden
+ *  Zusicherungen dasselbe messen wie vorher. */
+const SCOPE = classScope(["v2-a", "v2-b", "v1-a", "v1-b", "c1", "klasse-1"]);
 
 /**
  * Sequential chain-mock (house style, cf. auth.test.ts:seqDb): each db.select()
@@ -74,7 +80,7 @@ describe("listClasses — v2 classes of the teacher, then the v1 legacy classes"
   it("returns the teacher's v2 classes FIRST, the v1 legacy ones behind them", async () => {
     // 1: v2 classes · 2: their roster counts · 3: v1 classes
     const { db } = seqDb([[v2Class], [{ classId: "v2-a", n: 3 }], [v1Class]]);
-    const rows = await listClasses(db, "T-1");
+    const rows = await listClasses(db, SCOPE, "T-1");
     expect(rows).toEqual([
       { id: "v2-a", name: "TEST-2A", grade: 2 },
       { id: "v1-a", name: `2B (alt)${LEGACY_CLASS_LABEL_SUFFIX}`, grade: 2 },
@@ -83,7 +89,7 @@ describe("listClasses — v2 classes of the teacher, then the v1 legacy classes"
 
   it("scopes the v2 half to THIS teacher and skips archived classes", async () => {
     const { db, conditions } = seqDb([[v2Class], [], [v1Class]]);
-    await listClasses(db, "T-1");
+    await listClasses(db, SCOPE, "T-1");
     const v2Where = conditionAtoms(conditions[0]);
     expect(v2Where).toContain("T-1"); // bound as a parameter ⇒ the query IS teacher-scoped
     expect(v2Where).toContain(" is null"); // archived rows filtered OUT, not IN
@@ -91,7 +97,7 @@ describe("listClasses — v2 classes of the teacher, then the v1 legacy classes"
 
   it("leaves the v1 half UNSCOPED (Koki era) but still archive-filtered", async () => {
     const { db, conditions } = seqDb([[v2Class], [], [v1Class]]);
-    await listClasses(db, "T-1");
+    await listClasses(db, SCOPE, "T-1");
     const v1Where = conditionAtoms(conditions[conditions.length - 1]);
     expect(v1Where).toContain("col:archived_at");
     expect(v1Where).toContain(" is null");
@@ -102,7 +108,7 @@ describe("listClasses — v2 classes of the teacher, then the v1 legacy classes"
     // Measured on production 2026-08-22: "2A" exists as a v1 row AND a v2 row.
     const sameName2A = { id: "v2-2a", name: "2A", inviteCode: "AAA111", grade: 2, createdAt: new Date(0) };
     const { db } = seqDb([[sameName2A], [], [{ id: "v1-2a", name: "2A", grade: 2 }]]);
-    const rows = await listClasses(db, "T-1");
+    const rows = await listClasses(db, SCOPE, "T-1");
     expect(rows).toHaveLength(2); // BOTH survive — no de-duplication by name
     expect(rows[0]).toEqual({ id: "v2-2a", name: "2A", grade: 2 }); // v2 first, unsuffixed
     expect(rows[1]).toEqual({ id: "v1-2a", name: `2A${LEGACY_CLASS_LABEL_SUFFIX}`, grade: 2 });
@@ -112,19 +118,19 @@ describe("listClasses — v2 classes of the teacher, then the v1 legacy classes"
 
   it("degrades to the v1 list when the domigo_v2 tables are unreachable (never an empty picker)", async () => {
     const { db } = seqDb([new Error('relation "domigo_v2.classes" does not exist'), [v1Class]]);
-    const rows = await listClasses(db, "T-1");
+    const rows = await listClasses(db, SCOPE, "T-1");
     expect(rows).toEqual([{ id: "v1-a", name: `2B (alt)${LEGACY_CLASS_LABEL_SUFFIX}`, grade: 2 }]);
   });
 
   it("returns the v1 classes alone for a teacher who owns no v2 class yet", async () => {
     const { db } = seqDb([[], [v1Class]]); // no v2 rows ⇒ the count query never runs
-    const rows = await listClasses(db, "T-new");
+    const rows = await listClasses(db, SCOPE, "T-new");
     expect(rows).toEqual([{ id: "v1-a", name: `2B (alt)${LEGACY_CLASS_LABEL_SUFFIX}`, grade: 2 }]);
   });
 });
 
 /**
- * P3 · listClassesForGrandmaster — the operator's picker.
+ * P3 · listClassesInScope — the operator's picker.
  *
  * listClasses answers "which classes may THIS teacher assign work to". This one
  * answers "which classes exist at all", and each v2 label has to say whose class
@@ -137,7 +143,7 @@ describe("listClasses — v2 classes of the teacher, then the v1 legacy classes"
 const gmV2A = { id: "v2-a", name: "TEST-K1", grade: 1, inviteCode: "TSTK1A", teacherId: "T-2", createdAt: new Date(0) };
 const gmV2B = { id: "v2-b", name: "TEST-2A", grade: 2, inviteCode: "TST2ER", teacherId: "T-1", createdAt: new Date(1) };
 
-describe("listClassesForGrandmaster — every class on the platform, each labelled with its owner", () => {
+describe("listClassesInScope — every class on the platform, each labelled with its owner", () => {
   it("lists classes of DIFFERENT teachers, each suffixed with its owner, legacy behind", async () => {
     const { db } = seqDb([
       [gmV2A, gmV2B],
@@ -146,7 +152,7 @@ describe("listClassesForGrandmaster — every class on the platform, each labell
       [v1Class],
       [{ classId: "v1-a", total: 21 }],
     ]);
-    const rows = await listClassesForGrandmaster(db);
+    const rows = await listClassesInScope(db, SCOPE);
     expect(rows).toEqual([
       { id: "v2-a", name: "TEST-K1 · TEST-Kollegin", grade: 1 },
       { id: "v2-b", name: "TEST-2A · TEST-Lehrkraft", grade: 2 },
@@ -163,11 +169,11 @@ describe("listClassesForGrandmaster — every class on the platform, each labell
       [],
       [],
     ]);
-    const rows = await listClassesForGrandmaster(db);
+    const rows = await listClassesInScope(db, SCOPE);
     expect(rows.map((r) => r.id)).toEqual(["v2-a"]);
     expect(conditionAtoms(conditions[0])).not.toContain("T-1");
-    // …and the signature itself takes no teacher id: listClassesForGrandmaster(db).
-    expect(listClassesForGrandmaster.length).toBe(1);
+    // …and the signature itself takes no teacher id: listClassesInScope(db, scope).
+    expect(listClassesInScope.length).toBe(2);
   });
 
   it("keeps the two registers apart: v2 carries the owner, v1 carries the legacy marker", async () => {
@@ -178,7 +184,7 @@ describe("listClassesForGrandmaster — every class on the platform, each labell
       [v1Class],
       [{ classId: "v1-a", total: 21 }],
     ]);
-    const rows = await listClassesForGrandmaster(db);
+    const rows = await listClassesInScope(db, SCOPE);
     expect(rows[0]!.name.endsWith(LEGACY_CLASS_LABEL_SUFFIX)).toBe(false);
     expect(rows[0]!.name).toContain("TEST-Kollegin");
     expect(rows[1]!.name.endsWith(LEGACY_CLASS_LABEL_SUFFIX)).toBe(true);
@@ -194,7 +200,7 @@ describe("listClassesForGrandmaster — every class on the platform, each labell
       [],
       [],
     ]);
-    const rows = await listClassesForGrandmaster(db);
+    const rows = await listClassesInScope(db, SCOPE);
     expect(rows).toEqual([{ id: "v2-a", name: `TEST-K1 · ${UNKNOWN_TEACHER_LABEL}`, grade: 1 }]);
   });
 
@@ -204,7 +210,7 @@ describe("listClassesForGrandmaster — every class on the platform, each labell
       [v1Class],
       [{ classId: "v1-a", total: 21 }],
     ]);
-    const rows = await listClassesForGrandmaster(db);
+    const rows = await listClassesInScope(db, SCOPE);
     expect(rows).toEqual([{ id: "v1-a", name: `2B (alt)${LEGACY_CLASS_LABEL_SUFFIX}`, grade: 2 }]);
   });
 });
@@ -225,7 +231,7 @@ describe("listClassesForGrandmaster — every class on the platform, each labell
 // ─────────────────────────────────────────────────────────────────────────────
 describe("K1b · which classes a caller may create work in", () => {
   const ownIds = async (teacherId: string, results: (unknown[] | Error)[]) =>
-    (await listClasses(seqDb(results).db, teacherId)).map((c) => c.id);
+    (await listClasses(seqDb(results).db, SCOPE, teacherId)).map((c) => c.id);
 
   it("ADMITS the teacher's own v2 class", async () => {
     expect(await ownIds("T-1", [[v2Class], [{ classId: "v2-a", n: 3 }], []])).toContain("v2-a");
@@ -235,7 +241,7 @@ describe("K1b · which classes a caller may create work in", () => {
     // The class exists and belongs to T-2. T-1 asks: the teacher-scoped query
     // returns nothing, so its id is simply not in the list the door checks.
     const { db, conditions } = seqDb([[], []]); // v2 half empty for T-1 · v1 half empty
-    const rows = await listClasses(db, "T-1");
+    const rows = await listClasses(db, SCOPE, "T-1");
     expect(rows.map((c) => c.id)).not.toContain("v2-fremd");
     // …and the emptiness is caused by the scope, not by the mock: the teacher id
     // is bound INTO the query, so no foreign row could have come back.
@@ -252,7 +258,7 @@ describe("K1b · which classes a caller may create work in", () => {
 
   it("keeps the legacy DISPLAY suffix out of the id the door compares", async () => {
     const { db } = seqDb([[], [v1Class]]);
-    const [row] = await listClasses(db, "T-new");
+    const [row] = await listClasses(db, SCOPE, "T-new");
     expect(row!.name).toContain(LEGACY_CLASS_LABEL_SUFFIX); // decoration…
     expect(row!.id).toBe("v1-a"); // …never reaches the identity the gate matches on
   });
@@ -265,7 +271,7 @@ describe("K1b · which classes a caller may create work in", () => {
       [v1Class],
       [{ classId: "v1-a", total: 21 }],
     ]);
-    const ids = (await listClassesForGrandmaster(db)).map((c) => c.id);
+    const ids = (await listClassesInScope(db, SCOPE)).map((c) => c.id);
     expect(ids).toContain("v2-a"); // not his, and open to him anyway
     expect(ids).toContain("v1-a");
   });

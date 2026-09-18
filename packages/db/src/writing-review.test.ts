@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { classScope } from "./scope.ts";
 import {
   MAX_FEEDBACK_LENGTH,
   WRITING_GRADED_KIND,
@@ -134,6 +135,10 @@ const EIGEN = "lehrkraft-eigen";
 const FREMD = "lehrkraft-fremd";
 const GM = "grossmeister";
 
+/** dach-018 · der Klassen-Ausschnitt dieser Sitzung (die Wand selbst prueft
+ *  scripts/check-claim-filter.mjs; hier nur, damit die Zusicherungen halten). */
+const SCOPE = classScope([CLASS, "klasse-fremd"]);
+
 /** The resolving read finds the row (it belongs to this teacher). */
 const gefunden = () => recDb({ selectResults: [[{ classId: CLASS }]] });
 /** The resolving read finds nothing — foreign, or gone. Same answer, by design. */
@@ -153,7 +158,7 @@ const fehlendeTabelle = Object.assign(new Error('relation "domigo_v2.writing_sub
 describe("gradeSubmission — die Punkte-Grenzen", () => {
   const versuch = (score: number) => {
     const m = gefunden();
-    return { m, lauf: gradeSubmission(m.db, { submissionId: SUB, score, feedback: null, teacherId: EIGEN, actorId: EIGEN }) };
+    return { m, lauf: gradeSubmission(m.db, SCOPE, { submissionId: SUB, score, feedback: null, teacherId: EIGEN, actorId: EIGEN }) };
   };
 
   it("weist -1 ab — und schreibt nichts, auch nicht ins Journal", async () => {
@@ -187,7 +192,7 @@ describe("gradeSubmission — die Punkte-Grenzen", () => {
   it("weist einen zu langen Kommentar ab, und zwar bei 2001 Zeichen", async () => {
     const m = gefunden();
     await expect(
-      gradeSubmission(m.db, { submissionId: SUB, score: 50, feedback: "x".repeat(2001), teacherId: EIGEN, actorId: EIGEN }),
+      gradeSubmission(m.db, SCOPE, { submissionId: SUB, score: 50, feedback: "x".repeat(2001), teacherId: EIGEN, actorId: EIGEN }),
     ).rejects.toThrow(/at most 2000/i);
     expect(m.statements).toHaveLength(0);
     // …und die Konstante des Moduls stimmt mit der hier ausgeschriebenen Zahl überein.
@@ -198,7 +203,7 @@ describe("gradeSubmission — die Punkte-Grenzen", () => {
   it("nimmt genau 2000 Zeichen an", async () => {
     const m = gefunden();
     await expect(
-      gradeSubmission(m.db, { submissionId: SUB, score: 50, feedback: "x".repeat(2000), teacherId: EIGEN, actorId: EIGEN }),
+      gradeSubmission(m.db, SCOPE, { submissionId: SUB, score: 50, feedback: "x".repeat(2000), teacherId: EIGEN, actorId: EIGEN }),
     ).resolves.toEqual({ ok: true, classId: CLASS });
   });
 });
@@ -208,7 +213,7 @@ describe("gradeSubmission — die Punkte-Grenzen", () => {
 describe("gradeSubmission — die Autorisierung steht in der Anweisung, nicht in einem if", () => {
   it("trägt die Eigentums-Bedingung in BEIDEN Anweisungen (Auflösung UND Schreiben)", async () => {
     const m = gefunden();
-    await gradeSubmission(m.db, { submissionId: SUB, score: 78, feedback: null, teacherId: EIGEN, actorId: EIGEN });
+    await gradeSubmission(m.db, SCOPE, { submissionId: SUB, score: 78, feedback: null, teacherId: EIGEN, actorId: EIGEN });
     const lese = m.statements.find((s) => s.art === "select")!;
     const schreib = m.statements.find((s) => s.art === "update")!;
     for (const st of [lese, schreib]) {
@@ -222,7 +227,7 @@ describe("gradeSubmission — die Autorisierung steht in der Anweisung, nicht in
 
   it("eine fremde Abgabe trifft NULL Zeilen — kein Journal, kein Schreiben", async () => {
     const m = nichtGefunden();
-    const res = await gradeSubmission(m.db, { submissionId: SUB, score: 78, feedback: "egal", teacherId: FREMD, actorId: FREMD });
+    const res = await gradeSubmission(m.db, SCOPE, { submissionId: SUB, score: 78, feedback: "egal", teacherId: FREMD, actorId: FREMD });
     expect(res).toEqual({ ok: false, reason: "not_found" });
     expect(m.statements.filter((s) => s.art === "insert")).toHaveLength(0);
     expect(m.statements.filter((s) => s.art === "update")).toHaveLength(0);
@@ -231,8 +236,8 @@ describe("gradeSubmission — die Autorisierung steht in der Anweisung, nicht in
   it("»gibt es nicht« und »gehört dir nicht« sind DIESELBE Antwort", async () => {
     // Sonst wäre die Route ein Orakel: wer Ids durchprobiert, erführe, welche
     // Abgaben es bei anderen Lehrkräften gibt.
-    const fremd = await gradeSubmission(nichtGefunden().db, { submissionId: SUB, score: 1, feedback: null, teacherId: FREMD, actorId: FREMD });
-    const weg = await gradeSubmission(nichtGefunden().db, { submissionId: "gibt-es-nicht", score: 1, feedback: null, teacherId: EIGEN, actorId: EIGEN });
+    const fremd = await gradeSubmission(nichtGefunden().db, SCOPE, { submissionId: SUB, score: 1, feedback: null, teacherId: FREMD, actorId: FREMD });
+    const weg = await gradeSubmission(nichtGefunden().db, SCOPE, { submissionId: "gibt-es-nicht", score: 1, feedback: null, teacherId: EIGEN, actorId: EIGEN });
     expect(fremd).toEqual(weg);
   });
 
@@ -240,7 +245,7 @@ describe("gradeSubmission — die Autorisierung steht in der Anweisung, nicht in
     // Zwischen Auflösung und Schreiben kann die Zeile verschwinden. Die ZEILENZAHL
     // des UPDATE ist das Urteil, nicht die Vorab-Lese.
     const m = recDb({ selectResults: [[{ classId: CLASS }]], updateResult: [] });
-    const res = await gradeSubmission(m.db, { submissionId: SUB, score: 78, feedback: null, teacherId: EIGEN, actorId: EIGEN });
+    const res = await gradeSubmission(m.db, SCOPE, { submissionId: SUB, score: 78, feedback: null, teacherId: EIGEN, actorId: EIGEN });
     expect(res).toEqual({ ok: false, reason: "not_found" });
   });
 });
@@ -250,7 +255,7 @@ describe("gradeSubmission — die Autorisierung steht in der Anweisung, nicht in
 describe("gradeSubmission — die Geschichte steht vor der Änderung", () => {
   it("schreibt das Journal ZUERST und die Note danach", async () => {
     const m = gefunden();
-    await gradeSubmission(m.db, { submissionId: SUB, score: 78, feedback: "Zwei Sätze.", teacherId: EIGEN, actorId: EIGEN });
+    await gradeSubmission(m.db, SCOPE, { submissionId: SUB, score: 78, feedback: "Zwei Sätze.", teacherId: EIGEN, actorId: EIGEN });
     const schreibende = m.statements.filter((s) => s.art !== "select");
     expect(schreibende.map((s) => s.art)).toEqual(["insert", "update"]);
     expect(schreibende[0]!.table).toBe(v2RosterEvents);
@@ -260,7 +265,7 @@ describe("gradeSubmission — die Geschichte steht vor der Änderung", () => {
   it("nennt Klasse, Art und HAND — und trägt weder den Text des Kindes noch einen Namen", async () => {
     const KINDERTEXT = "My favourite subject is English because our teacher is funny.";
     const m = gefunden();
-    await gradeSubmission(m.db, { submissionId: SUB, score: 78, feedback: KINDERTEXT, teacherId: EIGEN, actorId: EIGEN });
+    await gradeSubmission(m.db, SCOPE, { submissionId: SUB, score: 78, feedback: KINDERTEXT, teacherId: EIGEN, actorId: EIGEN });
     const journal = m.statements.find((s) => s.art === "insert")!.values as Record<string, unknown>;
     expect(journal.classId).toBe(CLASS);
     expect(journal.kind).toBe(WRITING_GRADED_KIND);
@@ -281,7 +286,7 @@ describe("gradeSubmission — die Geschichte steht vor der Änderung", () => {
 
   it("unterscheidet die Hand von der Vollmacht, wenn der Großmeister in fremder Klasse arbeitet", async () => {
     const m = gefunden();
-    await gradeSubmission(m.db, { submissionId: SUB, score: 78, feedback: null, teacherId: EIGEN, actorId: GM });
+    await gradeSubmission(m.db, SCOPE, { submissionId: SUB, score: 78, feedback: null, teacherId: EIGEN, actorId: GM });
     const journal = m.statements.find((s) => s.art === "insert")!.values as Record<string, unknown>;
     expect(journal.actorId).toBe(GM); // wessen HAND
     expect((journal.payload as Record<string, unknown>).onBehalfOf).toBe(EIGEN); // wessen VOLLMACHT
@@ -289,16 +294,16 @@ describe("gradeSubmission — die Geschichte steht vor der Änderung", () => {
 
   it("darf überschreiben — jede Korrektur bekommt ihre eigene Journal-Zeile", async () => {
     const erst = gefunden();
-    await gradeSubmission(erst.db, { submissionId: SUB, score: 87, feedback: null, teacherId: EIGEN, actorId: EIGEN });
+    await gradeSubmission(erst.db, SCOPE, { submissionId: SUB, score: 87, feedback: null, teacherId: EIGEN, actorId: EIGEN });
     const dann = gefunden();
-    await gradeSubmission(dann.db, { submissionId: SUB, score: 78, feedback: null, teacherId: EIGEN, actorId: EIGEN });
+    await gradeSubmission(dann.db, SCOPE, { submissionId: SUB, score: 78, feedback: null, teacherId: EIGEN, actorId: EIGEN });
     expect((erst.statements.find((s) => s.art === "insert")!.values as { payload: { score: number } }).payload.score).toBe(87);
     expect((dann.statements.find((s) => s.art === "insert")!.values as { payload: { score: number } }).payload.score).toBe(78);
   });
 
   it("rührt beim Benoten NUR die vier Noten-Spalten an — nie den Text, nie die Klasse", async () => {
     const m = gefunden();
-    await gradeSubmission(m.db, { submissionId: SUB, score: 78, feedback: "gut", teacherId: EIGEN, actorId: EIGEN });
+    await gradeSubmission(m.db, SCOPE, { submissionId: SUB, score: 78, feedback: "gut", teacherId: EIGEN, actorId: EIGEN });
     const gesetzt = m.statements.find((s) => s.art === "update")!.set as Record<string, unknown>;
     expect(Object.keys(gesetzt).sort()).toEqual(["feedback", "gradedAt", "gradedBy", "score"]);
     expect(gesetzt.gradedBy).toBe(EIGEN);
@@ -307,7 +312,7 @@ describe("gradeSubmission — die Geschichte steht vor der Änderung", () => {
 
   it("macht aus einem leeren Kommentar ein null, nicht ein leeres Feld", async () => {
     const m = gefunden();
-    await gradeSubmission(m.db, { submissionId: SUB, score: 78, feedback: "   ", teacherId: EIGEN, actorId: EIGEN });
+    await gradeSubmission(m.db, SCOPE, { submissionId: SUB, score: 78, feedback: "   ", teacherId: EIGEN, actorId: EIGEN });
     const gesetzt = m.statements.find((s) => s.art === "update")!.set as Record<string, unknown>;
     expect(gesetzt.feedback).toBeNull();
   });
@@ -318,7 +323,7 @@ describe("gradeSubmission — die Geschichte steht vor der Änderung", () => {
 describe("listSubmissionsForClass — die Liste holt keine Personen-Spalte", () => {
   it("liest ausschließlich writing_submissions, ohne jeden Join", async () => {
     const m = recDb({ selectResults: [[]] });
-    await listSubmissionsForClass(m.db, CLASS, EIGEN);
+    await listSubmissionsForClass(m.db, SCOPE, CLASS, EIGEN);
     const st = m.statements.find((s) => s.art === "select")!;
     expect(st.table).toBe(writingSubmissions);
     expect(st.joined).toBe(false); // ein Join auf ein Namensregister ist die Art, wie Namen leaken
@@ -326,7 +331,7 @@ describe("listSubmissionsForClass — die Liste holt keine Personen-Spalte", () 
 
   it("wählt exakt die Spalten der Abgabe — keine, die es woanders gibt", async () => {
     const m = recDb({ selectResults: [[]] });
-    await listSubmissionsForClass(m.db, CLASS, EIGEN);
+    await listSubmissionsForClass(m.db, SCOPE, CLASS, EIGEN);
     const felder = Object.keys(m.statements.find((s) => s.art === "select")!.selection as object);
     expect(felder.sort()).toEqual(
       ["feedback", "gradedAt", "gradedBy", "id", "promptId", "score", "submittedAt", "testId", "text", "unitSlug", "userId", "wordCount"],
@@ -343,7 +348,7 @@ describe("listSubmissionsForClass — die Liste holt keine Personen-Spalte", () 
     // der Aufrufer vorher nachgesehen hat. Wer als Nächstes hier hereingreift, erbt
     // die Bedingung, ob er sie kennt oder nicht.
     const m = recDb({ selectResults: [[]] });
-    await listSubmissionsForClass(m.db, CLASS, EIGEN);
+    await listSubmissionsForClass(m.db, SCOPE, CLASS, EIGEN);
     const atome = atomsOf(m.statements.find((s) => s.art === "select")!.where);
     expect(atome).toContain("col:class_id");
     expect(atome).toContain(CLASS);
@@ -357,7 +362,7 @@ describe("listSubmissionsForClass — die Liste holt keine Personen-Spalte", () 
     // Absicherung mit weglassen — sonst wäre ausgerechnet das Fenster, in dem
     // niemand hinschaut, das offene.
     const m = recDb({ selectResults: [fehlendeSpalte, []] });
-    await listSubmissionsForClass(m.db, CLASS, EIGEN);
+    await listSubmissionsForClass(m.db, SCOPE, CLASS, EIGEN);
     const schmal = m.statements.filter((s) => s.art === "select")[1]!;
     const atome = atomsOf(schmal.where);
     expect(atome).toContain("col:teacher_id");
@@ -372,7 +377,7 @@ describe("listSubmissionsForClass — die Liste holt keine Personen-Spalte", () 
       submittedAt: at, score: null, feedback: null, gradedAt: null, gradedBy: null,
     });
     const m = recDb({ selectResults: [[zeile("neu", jung), zeile("alt", alt)]] });
-    const res = await listSubmissionsForClass(m.db, CLASS, EIGEN);
+    const res = await listSubmissionsForClass(m.db, SCOPE, CLASS, EIGEN);
     expect(res.rows.map((r) => r.id)).toEqual(["neu", "alt"]);
   });
 });
@@ -386,7 +391,7 @@ describe("das Fenster zwischen Merge und Migration", () => {
       text: "Mein Schultag", wordCount: 2, submittedAt: new Date("2026-08-24T10:00:00Z"),
     };
     const m = recDb({ selectResults: [fehlendeSpalte, [schmal]] });
-    const res = await listSubmissionsForClass(m.db, CLASS, EIGEN);
+    const res = await listSubmissionsForClass(m.db, SCOPE, CLASS, EIGEN);
     expect(res.gradingAvailable).toBe(false);
     expect(res.rows).toHaveLength(1);
     expect(res.rows[0]!.text).toBe("Mein Schultag"); // die Arbeit des Kindes ist weiter da …
@@ -399,7 +404,7 @@ describe("das Fenster zwischen Merge und Migration", () => {
 
   it("überlebt sogar eine fehlende TABELLE (42P01) auf demselben Weg", async () => {
     const m = recDb({ selectResults: [fehlendeTabelle, []] });
-    await expect(listSubmissionsForClass(m.db, CLASS, EIGEN)).resolves.toEqual({ gradingAvailable: false, rows: [] });
+    await expect(listSubmissionsForClass(m.db, SCOPE, CLASS, EIGEN)).resolves.toEqual({ gradingAvailable: false, rows: [] });
   });
 
   it("meldet beim Benoten den Zustand statt eines 500 — und schreibt KEINE Waisen-Zeile", async () => {
@@ -408,7 +413,7 @@ describe("das Fenster zwischen Merge und Migration", () => {
     // scheitert. Sonst behauptet die Geschichte eine Note, die es nie gab.
     const m = recDb({ selectResults: [fehlendeSpalte] });
     await expect(
-      gradeSubmission(m.db, { submissionId: SUB, score: 78, feedback: null, teacherId: EIGEN, actorId: EIGEN }),
+      gradeSubmission(m.db, SCOPE, { submissionId: SUB, score: 78, feedback: null, teacherId: EIGEN, actorId: EIGEN }),
     ).resolves.toEqual({ ok: false, reason: "no_grading_columns" });
     expect(m.statements.filter((s) => s.art === "insert")).toHaveLength(0);
     expect(m.statements.filter((s) => s.art === "update")).toHaveLength(0);
@@ -422,7 +427,7 @@ describe("das Fenster zwischen Merge und Migration", () => {
     // prüft, ist grün und wertlos. Was den Fall möglich macht, ist die Projektion —
     // also wird die Projektion geprüft, nicht das Verhalten. (Zug-Review, K6a.)
     const m = gefunden();
-    await gradeSubmission(m.db, { submissionId: SUB, score: 78, feedback: null, teacherId: EIGEN, actorId: EIGEN });
+    await gradeSubmission(m.db, SCOPE, { submissionId: SUB, score: 78, feedback: null, teacherId: EIGEN, actorId: EIGEN });
     const aufloesend = m.statements.find((s) => s.art === "select")!;
     const felder = Object.values(aufloesend.selection as Record<string, unknown>);
     const NACH_0018 = [writingSubmissions.score, writingSubmissions.feedback, writingSubmissions.gradedAt, writingSubmissions.gradedBy];
@@ -433,9 +438,9 @@ describe("das Fenster zwischen Merge und Migration", () => {
     // Das ist die Hälfte, die zählt: ein Rettungsnetz, das jeden Fehler auffängt,
     // verwandelt einen Datenbank-Ausfall in eine leere, plausible Seite.
     const echt = Object.assign(new Error("connection terminated"), { code: "08006" });
-    await expect(listSubmissionsForClass(recDb({ selectResults: [echt] }).db, CLASS, EIGEN)).rejects.toThrow(/connection terminated/);
+    await expect(listSubmissionsForClass(recDb({ selectResults: [echt] }).db, SCOPE, CLASS, EIGEN)).rejects.toThrow(/connection terminated/);
     await expect(
-      gradeSubmission(recDb({ selectResults: [echt] }).db, { submissionId: SUB, score: 78, feedback: null, teacherId: EIGEN, actorId: EIGEN }),
+      gradeSubmission(recDb({ selectResults: [echt] }).db, SCOPE, { submissionId: SUB, score: 78, feedback: null, teacherId: EIGEN, actorId: EIGEN }),
     ).rejects.toThrow(/connection terminated/);
   });
 });

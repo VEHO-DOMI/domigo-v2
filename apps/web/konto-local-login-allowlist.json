@@ -1,0 +1,36 @@
+{
+  "warum": "SPEC konto V1.1-FINAL §6 + Nachtrag N-11: nach dem Umstieg auf den Konto-Dienst meldet sich in DomiGo nichts mehr mit einem eigenen Passwort an — ausser den zwei hier benannten Resten, und jeder traegt ein festes Ablaufdatum. Gelesen von scripts/check-no-local-login.mjs: nach `ablauf` ist das Tor rot, und der Weg muss weg. ACHTUNG, die beiden Reste werden UNTERSCHIEDLICH durchgesetzt: `ops-link` ist ein echter Provider, den der jwt-Callback in auth.ts nach `ablauf` auch zur Laufzeit ablehnt (restGueltig). `dev-identity` ist KEIN Provider — es setzt nie ein `via` und kann daher vom Callback gar nicht abgelehnt werden; seine Sperre ist der Waechter auf VERCEL_ENV !== 'production', der unabhaengig vom Datum gilt. Das Datum zwingt hier nur dazu, den toten Weg zu entfernen. Verlaengert wird beides nur ueber eine neue Spec-Fassung, nie durch Aendern dieser Datei allein.",
+  "umstiegstag": "2026-10-13",
+  "entschieden": "Koki, 2026-09-17 (Karte steu-013 Punkt 2A)",
+  "reste": [
+    {
+      "provider": "ops-link",
+      "grund": "Maschinenpfad: der Einmal-Anmelde-Link der Test-Bahn (/api/ops/session-link) haelt die Test-Identitaeten und die Baenke am Leben, solange konto keinen Agenten-Handoff hat. Reicht nur in die eine Ops-Klasse.",
+      "ablauf": "2027-01-11",
+      "dateien": [
+        "auth.ts",
+        "lib/ops.ts"
+      ],
+      "durchsetzung": "jwt-Callback (restGueltig) + Tor"
+    },
+    {
+      "provider": "dev-identity",
+      "grund": "Entwicklung, nie production: DEV_USER_ID / DEV_CLASS_ID / DEV_TEACHER_ID rendern die Seiten ohne Anmeldung. Der Waechter auf VERCEL_ENV !== 'production' ist gemessen (middleware.ts, lib/identity.ts, lib/teacher.ts) und wird vom Tor geprueft.",
+      "ablauf": "2027-01-11",
+      "dateien": [
+        "middleware.ts",
+        "lib/identity.ts",
+        "lib/teacher.ts"
+      ],
+      "durchsetzung": "VERCEL_ENV-Waechter (nicht der jwt-Callback: dieser Weg setzt kein `via`)"
+    }
+  ],
+  "tote_pin_schreiber": {
+    "warum": "Stellen, die noch einen bcrypt-Hash schreiben, obwohl ihn nach dem Umstieg NIEMAND mehr prueft — DomiGo hat keinen Provider mehr, der eine PIN einloest. Sie koennen also keine Anmeldung erzeugen; sie erzeugen totes Gewicht. Zwei davon liegen ausserhalb der Mauer dieser Karte (der Brief nennt fuenf Tueren, diese sind nicht darunter) und stehen deshalb hier benannt statt still.",
+    "stellen": {
+      "apps/web/app/api/ops/test-students/route.ts": "Der Maschinenpfad: er legt Test-Kinder der Ops-Klasse an, die sich ueber den Einmal-Link anmelden — derselbe deklarierte Rest wie ops-link, mit demselben Ablauf.",
+      "apps/web/app/api/admin/teacher/pin/route.ts": "Die Lehrkraft kann hier weiter eine DomiGo-PIN setzen, die nichts mehr oeffnet. Ausserhalb der Mauer dieser Karte; als Befund an den GG gemeldet (Folgekarte: Formular in /admin/settings entfernen).",
+      "apps/web/app/api/admin/teacher-pin/reset/route.ts": "Dasselbe fuer das Zuruecksetzen durch den Verwaltungszugang. Ausserhalb der Mauer dieser Karte; als Befund gemeldet."
+    }
+  }
+}

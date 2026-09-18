@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { scopedClassIds } from "@/lib/identity";
 import { redirect } from "next/navigation";
 import { listReleasedStories } from "@domigo/content-loader";
 import { loadKeenBoss, loadKeenLevel } from "@/lib/keen-content";
@@ -39,7 +40,8 @@ export default async function AdminPage() {
   // appears here the moment it releases) and rolled up from the attempts ledger.
   // Each query is wrapped: one grade's DB hiccup must never blank the whole view.
   const stories = listReleasedStories();
-  const mastery = await Promise.all(stories.map((s) => getUnitMastery(getDb(), s.grade).catch(() => [])));
+  const klassen = await scopedClassIds();
+  const mastery = await Promise.all(stories.map((s) => getUnitMastery(getDb(), klassen, s.grade).catch(() => [])));
   const th = { padding: "7px 8px", fontFamily: "var(--font-label)", fontWeight: 700, letterSpacing: "0.03em", textTransform: "uppercase", fontSize: 12 } as const;
 
   return (

@@ -5,7 +5,7 @@
  * and posts the finished draft to /api/admin/assignments.
  */
 import { redirect } from "next/navigation";
-import { getDb, listClasses, listClassesForGrandmaster } from "@domigo/db";
+import { getDb, listClasses, listClassesInScope } from "@domigo/db";
 import { GRADE_STRUCTURES } from "@/lib/checkup";
 import { getTeacherForPage } from "@/lib/identity";
 import { isGrandmaster } from "@/lib/grandmaster";
@@ -23,8 +23,8 @@ export default async function NewAssignmentPage() {
   // her own. A default would silently rebind future callers, which is exactly the
   // defect P1 had to repair in listClasses.
   const classes = await (isGrandmaster(teacher.userId)
-    ? listClassesForGrandmaster(getDb())
-    : listClasses(getDb(), teacher.userId)
+    ? listClassesInScope(getDb(), teacher.classScope)
+    : listClasses(getDb(), teacher.classScope, teacher.userId)
   ).catch(() => []);
   // C-1: the §4 grade presets travel as plain DATA — the builder is a client
   // component and never imports @domigo/db or the server-only lib (P-29b).
