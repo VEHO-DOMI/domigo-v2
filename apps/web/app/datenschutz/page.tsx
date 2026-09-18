@@ -16,6 +16,37 @@
 //   · database region,
 //     restore window     → lib/datenschutz.ts, read in the Neon console 2026-09-15 (gomarke-005)
 //   · contact address    → lib/datenschutz.ts, named by Koki 2026-09-17 (gomarke-007)
+//
+// gomarke-008 (2026-09-17). PR #437 listed four sentences here that NO machine
+// held to the code; a new column or a new dependency would have made this page
+// quietly untrue. What guards them now:
+//   · the data list        → lib/datenschutz-spalten.ts classifies EVERY column
+//                            of domigo_v2 (226 today) and lib/datenschutz-page.test.ts
+//                            reads the schema at runtime: a new column that nobody
+//                            classified turns the gate red, and so does a
+//                            classification that points at nothing (no more
+//                            one-directional positive list of ten)
+//   · no ads/analytics,
+//     fonts from our own
+//     server               → scripts/check-datenschutz-claims.mjs, law 1 (every
+//                            tracked file under apps/ and packages/, which is why
+//                            it also sees next.config.ts and package.json —
+//                            check-fonts.mjs guards only next/font/google, in a
+//                            narrower set of roots)
+//   · no e-mail addresses
+//     of children          → scripts/check-datenschutz-claims.mjs, law 2: the
+//                            column users.email has exactly ONE writer
+//                            (packages/db/src/teacher-identity.ts). NOT a database
+//                            CHECK constraint — that is proposed as a Neon sheet
+//                            (Koki's decision on card gomarke-008), so this page
+//                            says who can enter one, not that the database forbids it
+//   · who may see all
+//     classes              → lib/grandmaster.ts (an env-var allowlist, unset ⇒
+//                            nobody). That it is Koki ALONE is HIS statement of
+//                            2026-09-17, not a code measurement: the list lives in
+//                            Vercel and no test can read it
+//   · one-month answer     → a LEGAL deadline (Art. 12 (3) GDPR), not a measured
+//     for a request          number, and nothing in the code enforces it
 // Deliberately NOT said here: a legal basis (open, DSFA R-01 / gomarke-002), any
 // data-processing agreement with Vercel or Neon (not evidenced, DSFA D-18), and
 // "only in the EU" — the providers are US companies.
@@ -58,8 +89,8 @@ export default function DatenschutzPage() {
       <ul style={list}>
         <li><strong>Konto:</strong> dein selbst gewählter Spitzname, deine Klasse und deine 6-stellige PIN. Die PIN wird nur verschlüsselt gespeichert (bcrypt), niemand kann sie lesen. Konten aus der früheren DomiGo-Version liegen in derselben Datenbank und werden zum Anmelden weiter gelesen.</li>
         <li><strong>Echter Name:</strong> dein Name, wie ihn deine Lehrkraft in die Klassenliste einträgt. Er ist für deine Lehrkraft da, damit sie dich zuordnen kann.</li>
-        <li><strong>Üben:</strong> jede beantwortete Aufgabe mit Zeitpunkt, richtig oder falsch, wie lange du gebraucht hast, ob du einen Hinweis genommen hast, bei falschen Antworten die Art des Fehlers und bei Tests, zu welchem Durchgang die Antwort gehört.</li>
-        <li><strong>Fortschritt:</strong> Punkte (XP), Serie, Wiederholungskarten, erledigte Schritte im Lernpfad mit Sternen.</li>
+        <li><strong>Üben:</strong> jede beantwortete Aufgabe mit Zeitpunkt, richtig oder falsch und wie nah du dran warst, wie lange du gebraucht hast, ob du einen Hinweis genommen hast, bei falschen Antworten die Art des Fehlers und bei Tests, zu welchem Durchgang die Antwort gehört.</li>
+        <li><strong>Fortschritt:</strong> Punkte (XP), Serie, Hinweis-Funken (die Funken, die du in einer Runde gesammelt hast; dein Stand wird auf der Weltkarte angezeigt und sonst nicht verwendet), Wiederholungskarten, erledigte Schritte im Lernpfad mit Sternen.</li>
         <li><strong>Schreiben:</strong> Texte, die du schreibst und abgibst, mit Wortzahl sowie Punkten und Rückmeldung deiner Lehrkraft.</li>
         <li><strong>Tests und Aufgaben:</strong> wann du begonnen und abgegeben hast, die Zeit je Abschnitt, dein Ergebnis in Prozent und eine Note von 1 bis 5.</li>
         <li><strong>Spiele:</strong> dein Spielstand.</li>
@@ -68,8 +99,18 @@ export default function DatenschutzPage() {
         <li><strong>Jahres-Stand:</strong> am Ende eines Schuljahres kann ein Stand gespeichert werden (Spitzname, echter Name, Klasse, Punkte und Fortschritt), damit es im nächsten Jahr weitergehen kann.</li>
       </ul>
       <p>
+        Dein echter Name steht nur an zwei Stellen: im Punkt »Echter Name« und, falls am Ende eines
+        Schuljahres ein Stand gespeichert wird, im »Jahres-Stand«. Alles andere ist deinem Konto
+        zugeordnet, ohne deinen Namen: bei jeder Übung, jedem Text, jedem Test und jedem Spielstand
+        steht in der Datenbank nur eine Kennung deines Kontos — eine lange Zufallszahl. Diese
+        Kennung mit deinem Namen zusammenbringen kann nur, wer den Namen sehen darf: deine
+        Lehrkraft und der Verwaltungszugang weiter unten. Wer deinen Namen sonst noch zu sehen
+        bekommt, steht unter »Wer was sieht«.
+      </p>
+      <p>
         DomiGo speichert <strong>keine</strong> E-Mail-Adressen von Kindern und keine IP-Adressen in seiner
-        Datenbank. Es gibt keine Werbung, keine Analyse- oder Tracking-Dienste, und die Schriften kommen
+        Datenbank. Vercel, das die Anwendung betreibt, führt davon getrennt ein Zugriffsprotokoll —
+        was darin steht, sagt der Abschnitt »Beteiligte Dienste«. Es gibt keine Werbung, keine Analyse- oder Tracking-Dienste, und die Schriften kommen
         vom eigenen Server.
       </p>
 
@@ -77,6 +118,15 @@ export default function DatenschutzPage() {
       <p>
         Spitzname, gegebenenfalls der echte Name, PIN (verschlüsselt), freiwillig eine E-Mail-Adresse, damit
         eine vergessene PIN zurückgesetzt werden kann, ein Protokoll der Änderungen am eigenen Konto und die Zahl der Fehlversuche beim Anmelden und beim Zurücksetzen der PIN, gezählt je Spitzname.
+      </p>
+      <p>
+        Dazu hält DomiGo fest, wer etwas getan hat: bei einer Aufgabe, einer Änderung an der
+        Klassenliste, einer Bewertung, einer Änderung am Übungsstoff und einer Probelösung wird
+        die Kennung der Lehrkraft gespeichert — nicht ihr Name. Wird ein Verwaltungs-Link benutzt,
+        mit dem sich ein Test-Konto ohne PIN anmelden kann, wird festgehalten, welches Konto damit
+        angemeldet wurde und wann. Solche Links gelten nur für die eine Testklasse — für das Konto
+        eines echten Kindes funktionieren sie nicht —, sie verfallen nach zehn Minuten und sind nach
+        einer Benutzung verbraucht.
       </p>
 
       <h2 style={h2}>Was auf deinem Gerät bleibt</h2>
@@ -91,7 +141,7 @@ export default function DatenschutzPage() {
         <li><strong>Deine Lehrkraft</strong> sieht deinen echten Namen, deine Ergebnisse, deine Texte, deine Tests und deinen Fortschritt.</li>
         <li><strong>Deine Mitschülerinnen und Mitschüler</strong> sehen deine Ergebnisse nicht. Es gibt keine Rangliste.</li>
         <li><strong>Beim Beitreten:</strong> Wer den Klassencode kennt, sieht auf der Beitrittsseite die Kinder, die sich noch nicht angemeldet haben — mit Vornamen und dem ersten Buchstaben des Nachnamens, damit sich jedes Kind selbst finden kann.</li>
-        <li><strong>Ein eigens freigeschalteter Verwaltungszugang</strong> kann alle Klassen aller Lehrkräfte einsehen.</li>
+        <li><strong>Ein eigens freigeschalteter Verwaltungszugang</strong> kann alle Klassen aller Lehrkräfte einsehen. Diesen Zugang hat allein {VERANTWORTLICHER}, um die Plattform zu betreuen. Er wird außerhalb der App freigeschaltet, hängt an keinem Lehrkraft-Konto, und ohne Freischaltung hat ihn niemand.</li>
       </ul>
 
       <h2 style={h2}>Wo die Daten verarbeitet werden</h2>
@@ -118,8 +168,9 @@ export default function DatenschutzPage() {
       <p>
         Derzeit gibt es <strong>keine feste Löschfrist</strong> und keine automatische Löschung. Wenn eine
         Lehrkraft ein Kind aus der Klasse entfernt, wird heute nur sein Eintrag in der Klassenliste
-        (Spitzname, Name, PIN) gelöscht; Übungsergebnisse, Texte, Noten, ein bereits gespeicherter
-        Jahres-Stand und ein Konto aus der früheren DomiGo-Version bleiben gespeichert. Auf Anfrage an {DATENSCHUTZ_KONTAKT} werden auch diese Daten
+        (Spitzname, echter Name, Klasse und PIN) gelöscht; Übungsergebnisse, Texte, Noten, ein bereits gespeicherter
+        Jahres-Stand — in dem auch dein echter Name steht — und ein Konto aus der früheren
+        DomiGo-Version bleiben gespeichert. Auf Anfrage an {DATENSCHUTZ_KONTAKT} werden auch diese Daten
         gelöscht.
       </p>
       {RUECKHOLFENSTER && (
@@ -134,7 +185,8 @@ export default function DatenschutzPage() {
         Du kannst Auskunft über deine Daten verlangen, falsche Daten berichtigen und Daten löschen lassen,
         die Verarbeitung einschränken lassen, ihr widersprechen und deine Daten in einem gängigen Format
         bekommen. Für Kinder unter 14 Jahren können das die Eltern tun. Schreib dafür an{" "}
-        {DATENSCHUTZ_KONTAKT}.
+        {DATENSCHUTZ_KONTAKT}. Solche Anfragen — auch eine Löschanfrage — beantworten wir so
+        schnell wie möglich, spätestens innerhalb eines Monats.
       </p>
       <p>
         Du hast außerdem das Recht, dich bei der Österreichischen Datenschutzbehörde zu beschweren
