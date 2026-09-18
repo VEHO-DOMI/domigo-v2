@@ -348,6 +348,7 @@ export const BEATS = {
   "ch01.s001": ["Leah holds her phone out to the others, a stranger's channel open on it, her whole body a question: why not us?", "leah you", "studio", "screen"],
   "ch01.s002": ["YOU, from behind, hold up a battered English schoolbook next to the phone, making the case — the book and the camera in the same frame for the first time.", "you leah", "studio", ""],
   "ch01.s003": ["Leo, unconvinced, arms folded, headphones around his neck, looking at the setup rather than the people.", "leo", "studio", "state:leo=uneasy"],
+  "ch01.s012": ["Leo, still unconvinced, tips his head toward the hallway where a wall of his dad's rock records and an old turntable are visible through the open door — the first outsider the channel could use.", "leo", "studio", ""],
   "ch01.s004": ["Ben raises a hand, in without hesitating, his grin wide and slightly nervous at the same time.", "ben", "studio", ""],
   "ch01.s005": ["Leah bent over a fresh script page on the desk, pen poised, looking up to ask for help.", "leah", "studio", ""],
   "ch01.s006": ["A hand slides the script across the desk toward YOU; two heads over one page.", "you leah", "studio", ""],

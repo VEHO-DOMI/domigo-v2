@@ -526,6 +526,17 @@ export function taskInvariantErrors(t: GameTaskV2): string[] {
  *  guards the next line written, not an existing one. */
 export const BANNED_DE: readonly RegExp[] = [/Monster/, /Blut/, /böse/, /Bösewicht/, /schrei(?!b)/, /sterben/, /tot /, /verhedder/];
 
+/** Meta-talk a child must never read: the machinery of the lesson, named out loud (VS-8).
+ *  Lived as a private const in validate-story.ts until welle-053 needed the SAME list for
+ *  the G3 comment bank (check-g3-comments.mjs) — one list, two gates, per D-123: a rule with
+ *  two copies is a rule with one enforced copy. */
+export const EN_META: readonly string[] = [
+  "grammar", "vocabulary", "exercise", "task", "unit", "lesson",
+  "past simple", "simple past", "present perfect", "past continuous",
+  "present simple", "present continuous", "will-future", "imperative",
+  "modal verb", "auxiliary", "infinitive", "preposition", "plural", "singular",
+];
+
 /** Register violations in a German string (empty = clean). */
 export function registerErrorsDe(text: string | undefined): string[] {
   if (text === undefined) return [];

@@ -35,6 +35,7 @@ import path from "node:path";
 import { THEMES } from "@domigo/art-gen";
 import {
   Cast,
+  EN_META,
   type Chapter,
   GameMap,
   type Gloss,
@@ -89,12 +90,8 @@ export interface StoryBundle {
 
 // ── du-form + meta-talk (mirrors validate-items V-12/V-13, story carriers) ────
 const SIE_RE = /^(Sie|Ihnen|Ihr(?:e|em|en|er|es)?)$/;
-const EN_META = [
-  "grammar", "vocabulary", "exercise", "task", "unit", "lesson",
-  "past simple", "simple past", "present perfect", "past continuous",
-  "present simple", "present continuous", "will-future", "imperative",
-  "modal verb", "auxiliary", "infinitive", "preposition", "plural", "singular",
-];
+// EN_META now lives in content-schema (game-tasks.ts) — welle-053 needed the same list for
+// the G3 comment gate, and a rule with two copies is a rule with one enforced copy (D-123).
 
 function dieFormHits(text: string): { mid: string[]; initial: string[] } {
   const mid: string[] = [];
