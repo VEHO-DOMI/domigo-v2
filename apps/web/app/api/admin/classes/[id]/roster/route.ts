@@ -73,10 +73,10 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
     // owner IS the caller — one path, no special case.
     let ownerTeacherId = teacher.userId;
     if (isGrandmaster(teacher.userId)) {
-      const cls = await getClassForGrandmaster(getDb(), teacher.classScope, id);
+      const cls = await getClassForGrandmaster(getDb(), id);
       if (cls) ownerTeacherId = cls.teacherId;
     }
-    const imported = await importRoster(getDb(), teacher.classScope, {
+    const imported = await importRoster(getDb(), {
       classId: id,
       teacherId: ownerTeacherId,
       names,

@@ -59,11 +59,11 @@ export async function POST(req: Request): Promise<Response> {
   // WHOSE classes may be reached — read from the database, not from the body.
   // Owner first; only a grandmaster gets the un-scoped second look.
   let authorizingTeacherId: string | null = null;
-  const eigen = await getClassForTeacher(getDb(), teacher.classScope, classId, teacher.userId).catch(() => null);
+  const eigen = await getClassForTeacher(getDb(), classId, teacher.userId).catch(() => null);
   if (eigen) {
     authorizingTeacherId = teacher.userId;
   } else if (isGrandmaster(teacher.userId)) {
-    const fremd = await getClassForGrandmaster(getDb(), teacher.classScope, classId).catch(() => null);
+    const fremd = await getClassForGrandmaster(getDb(), classId).catch(() => null);
     if (fremd) authorizingTeacherId = fremd.teacherId;
   }
   if (!authorizingTeacherId) {
@@ -71,7 +71,7 @@ export async function POST(req: Request): Promise<Response> {
   }
 
   try {
-    const res = await gradeSubmission(getDb(), teacher.classScope, {
+    const res = await gradeSubmission(getDb(), {
       submissionId,
       score,
       feedback: feedback ?? null,

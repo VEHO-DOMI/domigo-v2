@@ -1,20 +1,13 @@
 "use client";
 /**
- * The teacher's class list (P-1b) — since dach-018 a LIST, not a manager.
- *
- * Creating, renaming, archiving and un-archiving a class all wrote
- * `classes.name`, `classes.grade` or `classes.archived_at`. After the switch to
- * the account service those columns have exactly one writer, and it is not
- * DomiGo (SPEC konto V1.1-FINAL §10 E1). Two writers on one field is how a
- * rename comes back by itself the next night and nobody understands why — and
- * an archive here would have been worse still: locked in DomiGo while the
- * account service happily kept signing the children in.
- *
- * So the four buttons are gone and one sentence stands where they were. What
- * stays is everything a teacher reads on this page: the classes, their sizes,
- * their class codes to copy, and the way into a class.
+ * The teacher's class manager (P-1b). Pure client state over a server-fetched
+ * list: create a class, rename it, or archive it, each calling /api/admin/classes
+ * then router.refresh() so the server re-reads the authoritative list (the roster
+ * counts + any minted invite code come back from the server, never guessed here).
+ * The API re-validates authoritatively — the inline checks are only live feedback.
  */
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState, type CSSProperties } from "react";
 
 interface ClassSummary {
@@ -33,19 +26,107 @@ interface ArchivedClassSummary extends ClassSummary {
 
 const card: CSSProperties = { border: "1px solid var(--card-border)", borderRadius: 16, padding: 16, background: "var(--card)", boxShadow: "var(--shadow-card)", marginTop: 14 };
 const label: CSSProperties = { fontFamily: "var(--font-label)", fontSize: 12, fontWeight: 700, letterSpacing: "0.04em", textTransform: "uppercase", color: "var(--muted)", display: "block", marginBottom: 4 };
+const input: CSSProperties = { fontFamily: "var(--font-body)", fontSize: 15, padding: "8px 11px", borderRadius: 10, border: "1px solid var(--card-border)", background: "var(--bg-sunken)", color: "var(--text)", width: "100%" };
 const codeStyle: CSSProperties = { fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace", fontSize: 22, fontWeight: 800, letterSpacing: "0.16em", color: "var(--ink)" };
+
+const GRADES = [1, 2, 3, 4] as const;
 
 export default function ClassesManager({
   initialClasses,
   initialArchived,
-  lehrerraumUrl,
 }: {
   initialClasses: ClassSummary[];
   initialArchived: ArchivedClassSummary[];
-  /** Where classes are made now. Resolved on the server — no address in client code. */
-  lehrerraumUrl: string;
 }) {
+  const router = useRouter();
+
+  // Create form
+  const [name, setName] = useState("");
+  const [grade, setGrade] = useState<number>(1);
+  const [creating, setCreating] = useState(false);
+  const [createErrors, setCreateErrors] = useState<string[]>([]);
+
+  // Per-row rename + archive
+  const [editingId, setEditingId] = useState<string | null>(null);
+  const [editName, setEditName] = useState("");
+  const [savingId, setSavingId] = useState<string | null>(null);
+  const [rowError, setRowError] = useState<string | null>(null);
   const [copiedId, setCopiedId] = useState<string | null>(null);
+  const [showArchived, setShowArchived] = useState(false);
+
+  const create = async () => {
+    setCreating(true);
+    setCreateErrors([]);
+    try {
+      const res = await fetch("/api/admin/classes", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ name, grade }) });
+      const d = await res.json().catch(() => ({}));
+      if (res.ok && d.ok) { setName(""); setGrade(1); router.refresh(); return; }
+      setCreateErrors(d.errors ?? [d.error ?? "Could not create the class."]);
+    } catch {
+      setCreateErrors(["Network error — try again."]);
+    } finally {
+      setCreating(false);
+    }
+  };
+
+  const startRename = (c: ClassSummary) => { setRowError(null); setEditingId(c.id); setEditName(c.name); };
+  const cancelRename = () => { setEditingId(null); setEditName(""); };
+
+  const saveRename = async (id: string) => {
+    setSavingId(id);
+    setRowError(null);
+    try {
+      const res = await fetch(`/api/admin/classes/${id}`, { method: "PATCH", headers: { "content-type": "application/json" }, body: JSON.stringify({ name: editName }) });
+      const d = await res.json().catch(() => ({}));
+      if (res.ok && d.ok) { setEditingId(null); setEditName(""); router.refresh(); return; }
+      setRowError((d.errors?.[0] as string | undefined) ?? d.error ?? "Could not rename the class.");
+    } catch {
+      setRowError("Network error — try again.");
+    } finally {
+      setSavingId(null);
+    }
+  };
+
+  const archive = async (c: ClassSummary) => {
+    if (!window.confirm(`Archive »${c.name}«? Students can no longer join or sign in with code ${c.inviteCode}. Existing work is kept, and you can reactivate the class later under »Archivierte Klassen«.`)) return;
+    setSavingId(c.id);
+    setRowError(null);
+    try {
+      const res = await fetch(`/api/admin/classes/${c.id}`, { method: "DELETE" });
+      const d = await res.json().catch(() => ({}));
+      if (res.ok && d.ok) { router.refresh(); return; }
+      setRowError(d.error === "not_active" ? "Diese Klasse ist bereits archiviert (oder nicht mehr da) — lade die Seite neu." : "Could not archive the class — try again.");
+    } catch {
+      setRowError("Network error — try again.");
+    } finally {
+      setSavingId(null);
+    }
+  };
+
+  /**
+   * Bring an archived class back. The confirmation says what actually changes, because
+   * "un-archive" tells a teacher nothing: the children can sign in again and the join
+   * link works again — the class returns exactly as she left it.
+   */
+  const unarchive = async (c: ArchivedClassSummary) => {
+    if (!window.confirm(`»${c.name}« wieder aktivieren? Die Kinder dieser Klasse können sich wieder anmelden, und der Beitritts-Link mit dem Code ${c.inviteCode} lebt wieder. Der Roster ist unverändert.`)) return;
+    setSavingId(c.id);
+    setRowError(null);
+    try {
+      const res = await fetch(`/api/admin/classes/${c.id}`, {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ action: "unarchive" }),
+      });
+      const d = await res.json().catch(() => ({}));
+      if (res.ok && d.ok) { router.refresh(); return; }
+      setRowError(d.error === "not_archived" ? "Diese Klasse ist nicht (mehr) archiviert — lade die Seite neu." : "Could not reactivate the class — try again.");
+    } catch {
+      setRowError("Network error — try again.");
+    } finally {
+      setSavingId(null);
+    }
+  };
 
   const copyCode = async (c: ClassSummary) => {
     try {
@@ -64,42 +145,78 @@ export default function ClassesManager({
         <Link href="/admin" style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← Teacher home</Link>
       </div>
       <p style={{ color: "var(--text-secondary)", marginTop: 0 }}>
-        Share a class code — students type it to join. Progress and rosters are here.
+        Create a class, then share its invite code — students type it to join. Rename or archive a class any time.
       </p>
 
+      {/* create */}
       <div style={card}>
-        <p style={{ margin: 0, fontSize: 15 }}>
-          Klassen legen Sie im Lehrer-Raum an — dort geben Sie ihnen auch einen neuen Namen, einen
-          Jahrgang oder ein Archiv.
-        </p>
-        <a href={lehrerraumUrl} className="dg-btn" style={{ display: "inline-block", marginTop: 12, padding: "10px 16px", textDecoration: "none" }}>
-          Zum Lehrer-Raum
-        </a>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: 14, alignItems: "end" }}>
+          <div>
+            <label style={label}>Class name</label>
+            <input style={input} value={name} onChange={(e) => setName(e.target.value)} placeholder="e.g. 2A Englisch" maxLength={80} />
+          </div>
+          <div>
+            <label style={label}>Grade</label>
+            <div style={{ display: "flex", gap: 6 }}>
+              {GRADES.map((g) => (
+                <button key={g} type="button" onClick={() => setGrade(g)}
+                  style={{ ...input, width: 44, textAlign: "center", cursor: "pointer", fontWeight: 700, background: grade === g ? "var(--accent)" : "var(--bg-sunken)", color: grade === g ? "#fff" : "var(--text-secondary)", border: grade === g ? "none" : "1px solid var(--card-border)" }}>
+                  {g}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+        <div style={{ marginTop: 14 }}>
+          <button type="button" className="dg-btn" disabled={creating || name.trim() === ""} onClick={create} style={{ opacity: name.trim() === "" ? 0.5 : 1 }}>
+            {creating ? "Creating…" : "Create class"}
+          </button>
+        </div>
+        {createErrors.length > 0 && (
+          <ul style={{ marginTop: 12, paddingLeft: 18, color: "var(--incorrect)", fontSize: 13 }}>
+            {createErrors.map((e, k) => <li key={k}>{e}</li>)}
+          </ul>
+        )}
       </div>
 
+      {/* list */}
       {initialClasses.length === 0 ? (
-        <p style={{ color: "var(--muted)", marginTop: 24 }}>Noch keine Klasse. Der Lehrer-Raum legt die erste an.</p>
+        <p style={{ color: "var(--muted)", marginTop: 24 }}>No classes yet. Create your first one above.</p>
       ) : (
         <div style={{ marginTop: 24, display: "flex", flexDirection: "column", gap: 12 }}>
           {initialClasses.map((c) => (
             <div key={c.id} className="dg-card">
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 12 }}>
                 <div style={{ flex: 1, minWidth: 0 }}>
-                  <div style={{ fontWeight: 700, fontSize: 17, color: "var(--ink)", fontFamily: "var(--font-display)" }}>
-                    {c.name} <span style={{ fontWeight: 400, fontSize: 13, color: "var(--muted)" }}>· Grade {c.grade}</span>
-                  </div>
+                  {editingId === c.id ? (
+                    <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
+                      <input style={{ ...input, maxWidth: 300 }} value={editName} onChange={(e) => setEditName(e.target.value)} maxLength={80} autoFocus />
+                      <button type="button" className="dg-btn" disabled={savingId === c.id || editName.trim() === ""} onClick={() => saveRename(c.id)} style={{ padding: "0.5rem 1rem" }}>
+                        {savingId === c.id ? "Saving…" : "Save"}
+                      </button>
+                      <button type="button" className="dg-btn-secondary" onClick={cancelRename} style={{ padding: "0.5rem 1rem" }}>Cancel</button>
+                    </div>
+                  ) : (
+                    <div style={{ fontWeight: 700, fontSize: 17, color: "var(--ink)", fontFamily: "var(--font-display)" }}>
+                      {c.name} <span style={{ fontWeight: 400, fontSize: 13, color: "var(--muted)" }}>· Grade {c.grade}</span>
+                    </div>
+                  )}
                   <div style={{ fontSize: 13, color: "var(--text-secondary)", marginTop: 4 }}>
                     {c.studentCount === 0 ? "No students yet" : `${c.studentCount} ${c.studentCount === 1 ? "student" : "students"}`}
                     {" · created "}{new Date(c.createdAt).toLocaleDateString("de-AT")}
                   </div>
                 </div>
-                <div style={{ display: "flex", gap: 10, alignItems: "center", flexShrink: 0 }}>
-                  <Link href={`/admin/classes/${c.id}`} style={{ color: "var(--accent)", fontSize: 13, fontWeight: 700 }}>Fortschritt</Link>
-                  <Link href={`/admin/classes/${c.id}/roster`} style={{ color: "var(--accent)", fontSize: 13, fontWeight: 700 }}>Roster</Link>
-                </div>
+                {editingId !== c.id && (
+                  <div style={{ display: "flex", gap: 10, alignItems: "center", flexShrink: 0 }}>
+                    <Link href={`/admin/classes/${c.id}`} style={{ color: "var(--accent)", fontSize: 13, fontWeight: 700 }}>Fortschritt</Link>
+                    <Link href={`/admin/classes/${c.id}/roster`} style={{ color: "var(--accent)", fontSize: 13, fontWeight: 700 }}>Roster</Link>
+                    <button type="button" onClick={() => startRename(c)} style={{ background: "none", border: "none", color: "var(--accent)", cursor: "pointer", fontSize: 13, fontWeight: 700 }}>Rename</button>
+                    <button type="button" disabled={savingId === c.id} onClick={() => archive(c)} style={{ background: "none", border: "none", color: "var(--incorrect)", cursor: "pointer", fontSize: 13, fontWeight: 700 }}>Archive</button>
+                  </div>
+                )}
               </div>
 
-              {/* class code — prominent; students type it at the account service */}
+              {/* invite code — prominent; students type it to join */}
               <div style={{ marginTop: 12, display: "flex", alignItems: "center", gap: 12, background: "var(--bg-sunken)", border: "1px solid var(--card-border)", borderRadius: 12, padding: "10px 14px" }}>
                 <div>
                   <div style={label}>Invite code</div>
@@ -114,26 +231,49 @@ export default function ClassesManager({
         </div>
       )}
 
+      {rowError && (
+        <p style={{ marginTop: 12, color: "var(--incorrect)", fontSize: 13 }}>{rowError}</p>
+      )}
+
+      {/* archived classes — collapsed, because this is a repair drawer, not daily work */}
       {initialArchived.length > 0 && (
-        <div style={{ marginTop: 32 }}>
-          <h2 style={{ fontSize: 18, fontFamily: "var(--font-display)", color: "var(--ink)", margin: "0 0 4px" }}>Archiviert</h2>
-          <p style={{ color: "var(--muted)", fontSize: 13, marginTop: 0 }}>
-            Eine archivierte Klasse weckt der Lehrer-Raum wieder; danach koennen sich die Kinder wieder anmelden.
-          </p>
-          <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-            {initialArchived.map((c) => (
-              <div key={c.id} className="dg-card" style={{ opacity: 0.75 }}>
-                <div style={{ fontWeight: 700, fontSize: 16, color: "var(--ink)", fontFamily: "var(--font-display)" }}>
-                  {c.name} <span style={{ fontWeight: 400, fontSize: 13, color: "var(--muted)" }}>· Grade {c.grade}</span>
+        <section style={{ marginTop: 32 }}>
+          <button
+            type="button"
+            onClick={() => setShowArchived((v) => !v)}
+            aria-expanded={showArchived}
+            style={{ background: "none", border: "none", padding: 0, cursor: "pointer", color: "var(--text-secondary)", fontFamily: "var(--font-label)", fontSize: 13, fontWeight: 700, letterSpacing: "0.03em", textTransform: "uppercase" }}
+          >
+            {showArchived ? "▾" : "▸"} Archivierte Klassen ({initialArchived.length})
+          </button>
+          {showArchived && (
+            <div style={{ marginTop: 12, display: "flex", flexDirection: "column", gap: 10 }}>
+              <p style={{ margin: 0, fontSize: 13, color: "var(--muted)", lineHeight: 1.5 }}>
+                Eine archivierte Klasse ist stillgelegt, nicht gelöscht: die Kinder können sich nicht anmelden und
+                der Beitritts-Link ist tot. »Wieder aktivieren« macht das rückgängig — der Roster und die ganze
+                bisherige Arbeit sind unverändert da.
+              </p>
+              {initialArchived.map((c) => (
+                <div key={c.id} className="dg-card" style={{ opacity: 0.85 }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 12, flexWrap: "wrap" }}>
+                    <div style={{ flex: 1, minWidth: 0 }}>
+                      <div style={{ fontWeight: 700, fontSize: 16, color: "var(--ink)", fontFamily: "var(--font-display)" }}>
+                        {c.name} <span style={{ fontWeight: 400, fontSize: 13, color: "var(--muted)" }}>· Grade {c.grade} · Code {c.inviteCode}</span>
+                      </div>
+                      <div style={{ fontSize: 13, color: "var(--text-secondary)", marginTop: 4 }}>
+                        {c.studentCount === 0 ? "No students" : `${c.studentCount} ${c.studentCount === 1 ? "student" : "students"}`}
+                        {" · archiviert am "}{new Date(c.archivedAt).toLocaleDateString("de-AT")}
+                      </div>
+                    </div>
+                    <button type="button" className="dg-btn" disabled={savingId === c.id} onClick={() => unarchive(c)} style={{ padding: "0.5rem 1rem", flexShrink: 0 }}>
+                      {savingId === c.id ? "…" : "Wieder aktivieren"}
+                    </button>
+                  </div>
                 </div>
-                <div style={{ fontSize: 13, color: "var(--text-secondary)", marginTop: 4 }}>
-                  {c.studentCount === 0 ? "No students" : `${c.studentCount} ${c.studentCount === 1 ? "student" : "students"}`}
-                  {" · archiviert "}{new Date(c.archivedAt).toLocaleDateString("de-AT")}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+              ))}
+            </div>
+          )}
+        </section>
       )}
     </main>
   );

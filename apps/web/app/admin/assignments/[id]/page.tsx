@@ -51,7 +51,7 @@ export default async function AssignmentResultsPage({ params }: { params: Promis
 
   // The rank first — a pure env read, before anything expensive is fetched.
   const grandmaster = isGrandmaster(teacher.userId);
-  const view = await getAssignmentWithSections(getDb(), teacher.classScope, id).catch(() => null);
+  const view = await getAssignmentWithSections(getDb(), id).catch(() => null);
   const mine = view !== null && view.assignment.createdBy === teacher.userId;
   if (!view || !(mine || grandmaster)) redirect("/admin/assignments");
   const { assignment, sections } = view;
@@ -61,8 +61,8 @@ export default async function AssignmentResultsPage({ params }: { params: Promis
   const fremd = !mine;
 
   const [students, allSessions] = await Promise.all([
-    listStudentsForClass(getDb(), teacher.classScope, assignment.classId).catch(() => []),
-    listSessionsForAssignment(getDb(), teacher.classScope, id).catch(() => []),
+    listStudentsForClass(getDb(), assignment.classId).catch(() => []),
+    listSessionsForAssignment(getDb(), id).catch(() => []),
   ]);
 
   const specs: SectionSpec[] = sections.map((s) => ({

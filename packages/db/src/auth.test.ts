@@ -10,12 +10,6 @@
 import { describe, expect, it, vi } from "vitest";
 import { allocateClassCode, getClassGrade, lookupStudentForAuth, lookupTeacherForAuth } from "./auth.ts";
 import type { Db } from "./index.ts";
-import { classScope } from "./scope.ts";
-
-/** dach-018 · der Klassen-Ausschnitt dieser Sitzung. Die Wand selbst prueft
- *  scripts/check-claim-filter.mjs; hier steht sie nur, damit die bestehenden
- *  Zusicherungen dasselbe messen wie vorher. */
-const SCOPE = classScope(["c1"]);
 
 /**
  * Sequential chain-mock (house style, cf. roster-service.test.ts): each

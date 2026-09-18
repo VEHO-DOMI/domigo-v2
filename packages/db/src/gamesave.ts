@@ -5,10 +5,9 @@
  * only cursor position. The LWW resolution is a pure function (`resolveGameSave`)
  * so it unit-tests without Neon, mirroring streak.ts / studypath.ts.
  */
-import { and, eq, inArray, sql } from "drizzle-orm";
+import { and, eq, sql } from "drizzle-orm";
 import { gameSaves } from "./schema.ts";
 import type { Db } from "./index.ts";
-import { assertWritableScope, inScope, type ClassScope } from "./scope.ts";
 
 /** Cosmetic game state — opaque to the server, shape owned per grade by game-core. */
 export type GameSaveState = Record<string, unknown>;
@@ -72,12 +71,7 @@ export async function getGameSave(db: Db, userId: string, gameMode: string): Pro
  * the stored rev; clientRev becomes the max. Returns the resulting row, so a
  * stale write gets the authoritative state back to reconcile against.
  */
-export async function upsertGameSave(db: Db, classScope: ClassScope, a: GameSaveInput): Promise<GameSaveRow> {
-  assertWritableScope(classScope, "upsertGameSave");
-  if (!inScope(classScope, a.classId)) {
-    throw new Error("[@domigo/db] upsertGameSave: refused — class outside this session's scope (dach-018)");
-  }
-
+export async function upsertGameSave(db: Db, a: GameSaveInput): Promise<GameSaveRow> {
   const now = new Date();
   const rows = await db
     .insert(gameSaves)

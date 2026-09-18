@@ -19,9 +19,8 @@
  * so no person column of the legacy register can leak through this file.
  */
 import { and, desc, eq, inArray, sql } from "drizzle-orm";
-import { practiceAttempts, reviewQueue, studyPathProgress, userProgress, v2IdentityUsers } from "./schema.ts";
+import { practiceAttempts, reviewQueue, studyPathProgress, userProgress } from "./schema.ts";
 import type { Db } from "./index.ts";
-import { type ClassScope } from "./scope.ts";
 
 /** One student's attempt-ledger roll-up. `lastActiveAt` null ⇒ never practised. */
 export interface StudentProgressRow {
@@ -40,7 +39,7 @@ export interface StudentProgressRow {
  * all simply does not appear — the caller pairs this with the roster and renders
  * the missing ones as "—", which is the honest reading of "no attempt yet".
  */
-export async function listStudentProgress(db: Db, classScope: ClassScope, classId: string): Promise<StudentProgressRow[]> {
+export async function listStudentProgress(db: Db, classId: string): Promise<StudentProgressRow[]> {
   const rows = await db
     .select({
       userId: practiceAttempts.userId,
@@ -50,7 +49,7 @@ export async function listStudentProgress(db: Db, classScope: ClassScope, classI
       lastActiveAt: sql<Date | null>`max(${practiceAttempts.createdAt})`,
     })
     .from(practiceAttempts)
-    .where(and(inArray(practiceAttempts.classId, [...classScope]), eq(practiceAttempts.classId, classId)))
+    .where(eq(practiceAttempts.classId, classId))
     .groupBy(practiceAttempts.userId);
   return rows.map((r) => ({
     userId: r.userId,
@@ -72,7 +71,7 @@ export interface StudentPathSummary {
  * per STUDENT instead of per unit, so one query covers the whole class. Returns a
  * Map keyed by userId (the shape its per-user sibling already uses).
  */
-export async function listStudentPathSummary(db: Db, classScope: ClassScope, classId: string): Promise<Map<string, StudentPathSummary>> {
+export async function listStudentPathSummary(db: Db, classId: string): Promise<Map<string, StudentPathSummary>> {
   const rows = await db
     .select({
       userId: studyPathProgress.userId,
@@ -80,7 +79,7 @@ export async function listStudentPathSummary(db: Db, classScope: ClassScope, cla
       stars: sql<number>`coalesce(sum(${studyPathProgress.stars}),0)::int`,
     })
     .from(studyPathProgress)
-    .where(and(inArray(studyPathProgress.classId, [...classScope]), eq(studyPathProgress.classId, classId)))
+    .where(eq(studyPathProgress.classId, classId))
     .groupBy(studyPathProgress.userId);
   const m = new Map<string, StudentPathSummary>();
   for (const r of rows) m.set(r.userId, { completedNodes: Number(r.completed), totalStars: Number(r.stars) });
@@ -106,20 +105,9 @@ export interface StudentMeta {
  * `IN ()`, which is a syntax error, and a class whose roster is still empty is an
  * ordinary state, not a failure.
  */
-export async function listStudentMeta(db: Db, classScope: ClassScope, userIds: readonly string[]): Promise<Map<string, StudentMeta>> {
+export async function listStudentMeta(db: Db, userIds: readonly string[]): Promise<Map<string, StudentMeta>> {
   const out = new Map<string, StudentMeta>();
-  const roh = [...new Set(userIds.filter((id) => id))];
-  if (roh.length === 0) return out;
-
-  // dach-018 · user_progress and review_queue carry no class id, so the wall
-  // cannot sit on them. It sits one step earlier: an id only survives if the
-  // person it names is in a class this session may see. "The caller already
-  // checked" is exactly the promise this card abolishes.
-  const erlaubt = await db
-    .select({ id: v2IdentityUsers.id })
-    .from(v2IdentityUsers)
-    .where(and(inArray(v2IdentityUsers.classId, [...classScope]), inArray(v2IdentityUsers.id, roh)));
-  const ids = erlaubt.map((r) => r.id);
+  const ids = [...new Set(userIds.filter((id) => id))];
   if (ids.length === 0) return out;
 
   const progress = await db
@@ -159,7 +147,7 @@ export interface ClassUnitProgress {
  * Per-unit roll-up for ONE class, across EVERY mode (practice, review, study
  * path, game). Deliberately without a `mode` filter — see the file header.
  */
-export async function listClassUnitProgress(db: Db, classScope: ClassScope, classId: string): Promise<ClassUnitProgress[]> {
+export async function listClassUnitProgress(db: Db, classId: string): Promise<ClassUnitProgress[]> {
   const rows = await db
     .select({
       unitSlug: practiceAttempts.unitSlug,
@@ -168,7 +156,7 @@ export async function listClassUnitProgress(db: Db, classScope: ClassScope, clas
       correct: sql<number>`count(*) filter (where ${practiceAttempts.tier} = 'correct')::int`,
     })
     .from(practiceAttempts)
-    .where(and(inArray(practiceAttempts.classId, [...classScope]), eq(practiceAttempts.classId, classId)))
+    .where(eq(practiceAttempts.classId, classId))
     .groupBy(practiceAttempts.unitSlug);
   return rows
     .map((r) => ({
@@ -196,14 +184,13 @@ export interface ClassTrapCount {
  * `->>` on a non-object yields NULL, and the IS NOT NULL filter drops it — so a
  * foreign shape can never become a trap row.
  */
-export async function listClassTraps(db: Db, classScope: ClassScope, classId: string, limit = 5): Promise<ClassTrapCount[]> {
+export async function listClassTraps(db: Db, classId: string, limit = 5): Promise<ClassTrapCount[]> {
   const trapId = sql<string>`${practiceAttempts.context}->>'trap'`;
   const rows = await db
     .select({ trapId, count: sql<number>`count(*)::int` })
     .from(practiceAttempts)
     .where(
       and(
-        inArray(practiceAttempts.classId, [...classScope]),
         eq(practiceAttempts.classId, classId),
         eq(practiceAttempts.tier, "wrong"),
         sql`${practiceAttempts.context}->>'trap' is not null`,
