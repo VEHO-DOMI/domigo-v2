@@ -19,7 +19,7 @@ export function gameModeFor(grade: number): string {
  * Distinct item ids the user has solved (tier <> 'wrong') in this grade's game
  * mode. The caller does set membership; empty set when there are no rows.
  */
-export async function getSolvedGameItemIds(db: Db, userId: string, grade: number): Promise<Set<string>> {
+export async function getSolvedGameItemIds(db: Db, userId: string, grade: number, requireCorrect = false): Promise<Set<string>> {
   const rows = await db
     .selectDistinct({ itemId: practiceAttempts.itemId })
     .from(practiceAttempts)
@@ -28,7 +28,7 @@ export async function getSolvedGameItemIds(db: Db, userId: string, grade: number
         eq(practiceAttempts.userId, userId),
         eq(practiceAttempts.grade, grade),
         eq(practiceAttempts.mode, gameModeFor(grade)),
-        ne(practiceAttempts.tier, "wrong"),
+        requireCorrect ? eq(practiceAttempts.tier, "correct") : ne(practiceAttempts.tier, "wrong"),
       ),
     );
   return new Set(rows.map((r) => r.itemId));
