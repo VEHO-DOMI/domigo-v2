@@ -66,7 +66,26 @@ const REQUIRED = "scripts/claim-filter-required.json";
 // zaehlt NICHT — die Wache verweigert einen leeren Ausschnitt, sie filtert nicht.
 const FILTERSTELLE =
   /inArray\(\s*[A-Za-z0-9_.]+\s*,\s*(?:\[\.\.\.classScope\]|classScope)\s*\)|inScope\(\s*classScope\s*,|\(\s*db\s*,\s*classScope\s*[,)]/g;
-const filterstellen = (k) => (k.match(FILTERSTELLE) ?? []).length;
+// Eine Filterstelle zaehlt nur, wenn sie die Abfrage auch EINSCHRAENKT. Der blinde
+// Leser von dach-063 schrieb `or(eq(id), and(inArray(…[...classScope]), eq(id)))` —
+// der Ausschnitt steht noch da, wirkt aber nicht mehr, und die Zahl stimmte. Deshalb:
+// keine umschliessende Klammer darf `or(` oder `not(` sein.
+const AUFHEBER = new Set(["or", "not"]);
+function umschliessendeAufrufe(k, bis) {
+  const raus = [];
+  let tiefe = 0;
+  for (let i = bis - 1; i >= 0; i--) {
+    if (k[i] === ")") tiefe++;
+    else if (k[i] === "(") {
+      if (tiefe > 0) { tiefe--; continue; }
+      const m = /([A-Za-z0-9_$]+)\s*$/.exec(k.slice(Math.max(0, i - 40), i));
+      raus.push(m ? m[1] : "");
+    } else if (k[i] === ";" && tiefe === 0) break;
+  }
+  return raus;
+}
+const filterstellen = (k) =>
+  [...k.matchAll(FILTERSTELLE)].filter((m) => !umschliessendeAufrufe(k, m.index).some((n) => AUFHEBER.has(n))).length;
 
 /** Die Tabellen mit einer Klassen-Spalte (plus die Klassen-Tabellen selbst) — aus dem Schema gelesen, nicht getippt. */
 function klassenTabellen(state) {
@@ -370,6 +389,19 @@ const FAELLE = [
       const vorher = "and(inArray(assignments.classId, [...classScope]), eq(assignments.id, id))";
       if (!c.db.get(rel).includes(vorher)) throw new Error(`Selbsttest: ${rel} traegt die erwartete Zeile nicht mehr`);
       c.db.set(rel, c.db.get(rel).replace(vorher, "eq(assignments.id, id)"));
+      return c;
+    },
+  },
+  {
+    // Der Umgehungsweg des blinden Lesers (dach-063): der Ausschnitt bleibt als Text
+    // stehen, ein umschliessendes or() hebt ihn auf.
+    name: "ein or() hebt den Ausschnitt auf, der Text bleibt stehen",
+    pruefung: "liste",
+    mach: (s) => {
+      const c = klon(s);
+      const rel = `${DB_SRC}/assignment-service.ts`;
+      const vorher = "and(inArray(assignments.classId, [...classScope]), eq(assignments.id, id))";
+      c.db.set(rel, c.db.get(rel).replace(vorher, `or(eq(assignments.id, id), ${vorher})`));
       return c;
     },
   },
