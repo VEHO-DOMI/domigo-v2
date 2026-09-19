@@ -21,9 +21,10 @@ export type Werkzeug = {
   id: string;
   titel: string;
   /**
-   * Fassung 3 (18.09.): fertiger Kopfzeilen-Wortlaut aus der Quelle — »Fach · Stufe — titel«,
-   * ohne Stufe nur der Titel. DomiGo zeigt ihn heute nicht; das Feld steht hier, damit der
-   * Typ die Datei vollständig beschreibt und eine spätere Kopfzeilen-Karte nichts umbauen muss.
+   * Seit Fassung 3 (18.09.): fertiger Kopfzeilen-Wortlaut aus der Quelle — »Fach · Stufe — titel«,
+   * ohne Stufe nur der Titel. DomiGo zeigt ihn heute nicht (Kopfzeile Mitte = Wortmarke, vom Tor
+   * check-umbrella-tokens gehalten); das Feld steht hier, damit der Typ die Datei vollständig
+   * beschreibt und eine spätere Kopfzeilen-Karte nichts umbauen muss.
    */
   anzeige: string;
   satz: string;
@@ -38,6 +39,12 @@ export type Werkzeug = {
   /** Die eine Rückkehr-Adresse, die konto für konto_app zulässt, oder null. */
   konto_return: string | null;
 };
+
+/**
+ * Der Name des Menüs in der Kopfzeile (Fassung 4: »Bereiche«) — aus der Datei gelesen, nie
+ * getippt: die Quelle nennt ihn, und jede Lauter-Einser-App zeigt denselben.
+ */
+export const MENUE_TITEL: string = data.menue_titel;
 
 /** DomiGos eigener Eintrag: mit aria-current gezeigt, nie als Sprung. */
 export const EIGENES_WERKZEUG = "eng-us";

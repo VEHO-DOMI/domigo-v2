@@ -51,9 +51,10 @@ const SELF = "scripts/check-umbrella-tokens.mjs";
 // ── Die Pins ────────────────────────────────────────────────────────────────
 // Quelle: CODEX-ABLAGE-MARKE/tokens/tokens.json, Fassung 2026-09-18 (S2). Dieselben zwei
 // Werte stehen in jeder Lauter-Einser-App (Gestaltungsregel §6 Zusatz 2).
-// le-werkzeuge.json: Bereichs-Liste Fassung 3 (Kokis Namen 18.09., Board marke-032).
+// le-werkzeuge.json: Bereichs-Liste Fassung 4 (19.09., dach-063: eng-us meldet über konto an —
+// konto_app »go« + konto_return; 4119 B).
 const SHA256_LE_TOKENS = "993eff17957e302356067bab76fa592717c76c69a3673be0f44841ea7d9fdf2a";
-const SHA256_LE_WERKZEUGE = "95d505542c190db8d6df4deeaa47d4bbc9e32edcb6fd8e72cff3a6a377d0ccce";
+const SHA256_LE_WERKZEUGE = "797ae117e6621d5987d2a536308165aa8f917b68e42926d026381eab8e4042ee";
 
 // :root + die drei [data-grade]-Blöcke, von `:root {` bis zur schließenden Klammer von
 // [data-grade="4"], gemessen an main 4de2fc9d (globals.css Z. 11–105 vor BRAND-2).

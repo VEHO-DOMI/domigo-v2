@@ -1,5 +1,5 @@
 {
-  "version": "2026-09-18",
+  "version": "2026-09-19",
   "menue_titel": "Bereiche",
   "hinweis": "Quelle der Kacheln (Weiche, Mein Bereich) und des Menüs »Bereiche« (Kopfzeile). Gepflegt von S2 · Research + Name; Apps vendorn eine Kopie als le-werkzeuge.json und pinnen die sha256 aus tokens.json. Reihenfolge = Anzeige-Reihenfolge: Bereiche für Schüler zuerst, Lehrer-Notizbuch und Mein Bereich zuletzt. 'anzeige' ist der fertige Kopfzeilen-Wortlaut — keine App baut ihn selbst. 'stand': live | zieht um | kommt später (nie toter Link).",
   "schema": {
@@ -40,8 +40,8 @@
         "teacher"
       ],
       "stand": "live",
-      "konto_app": null,
-      "konto_return": null
+      "konto_app": "go",
+      "konto_return": "https://eng-unterstufe.lautereinser.at/api/auth/callback-konto"
     },
     {
       "id": "eng-os",
