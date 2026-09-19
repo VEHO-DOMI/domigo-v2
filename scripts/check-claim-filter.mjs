@@ -119,6 +119,41 @@ const KLASSEN_ROHSQL = /sql`[^`]*\$\{v2Classes\.id\}/;
 
 const lies = (rel) => fs.readFileSync(path.join(R, rel), "utf8");
 
+/**
+ * Kommentare weg, Zeichenketten bleiben (KLASSEN_ROHSQL liest in sql`…`). dach-063,
+ * blinder Leser: `// alter Filter: inArray(x.classId, [...classScope])` zaehlte als
+ * Filterstelle, nachdem der echte Filter geloescht war. Zeilenumbrueche bleiben, damit
+ * Zeilennummern stimmen.
+ */
+function ohneKommentare(src) {
+  let raus = "";
+  let str = null;
+  for (let i = 0; i < src.length; i++) {
+    const c = src[i];
+    if (str) {
+      raus += c;
+      if (c === "\\") { raus += src[++i] ?? ""; continue; }
+      if (c === str) str = null;
+      continue;
+    }
+    if (c === "/" && src[i + 1] === "/") {
+      while (i < src.length && src[i] !== "\n") i++;
+      raus += "\n";
+      continue;
+    }
+    if (c === "/" && src[i + 1] === "*") {
+      const ende = src.indexOf("*/", i + 2);
+      const stueck = src.slice(i, ende < 0 ? src.length : ende + 2);
+      raus += stueck.replace(/[^\n]/g, " ");
+      i += stueck.length - 1;
+      continue;
+    }
+    if (c === "'" || c === '"' || c === "`") str = c;
+    raus += c;
+  }
+  return raus;
+}
+
 function dbDateien() {
   return fs
     .readdirSync(path.join(R, DB_SRC))
@@ -364,7 +399,7 @@ const PRUEFUNGEN = {
 
 function laden() {
   const files = new Map([[ALLOWLIST, lies(ALLOWLIST)], [REQUIRED, lies(REQUIRED)]]);
-  const db = new Map(dbDateien().map((rel) => [rel, lies(rel)]));
+  const db = new Map(dbDateien().map((rel) => [rel, ohneKommentare(lies(rel))]));
   const web = new Map(webDateien().map((rel) => [rel, lies(rel)]));
   return { files, db, web };
 }
@@ -402,6 +437,20 @@ const FAELLE = [
       const rel = `${DB_SRC}/assignment-service.ts`;
       const vorher = "and(inArray(assignments.classId, [...classScope]), eq(assignments.id, id))";
       c.db.set(rel, c.db.get(rel).replace(vorher, `or(eq(assignments.id, id), ${vorher})`));
+      return c;
+    },
+  },
+  {
+    // Zweiter Umgehungsweg des blinden Lesers: Filter geloescht, sein Text bleibt
+    // als Kommentar stehen. laden() entfernt Kommentare; der Fall laeuft durch dieselbe Tuer.
+    name: "der Filter ist geloescht, sein Text steht noch im Kommentar",
+    pruefung: "liste",
+    mach: (s) => {
+      const c = klon(s);
+      const rel = `${DB_SRC}/assignment-service.ts`;
+      const vorher = "and(inArray(assignments.classId, [...classScope]), eq(assignments.id, id))";
+      const roh = lies(rel).replace(vorher, "eq(assignments.id, id) // alt: inArray(assignments.classId, [...classScope])");
+      c.db.set(rel, ohneKommentare(roh));
       return c;
     },
   },
