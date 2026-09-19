@@ -59,6 +59,13 @@ niemand laufen lässt, wäre nur ein zweiter, ungeprüfter Weg in die Daten.
   (`https://eng-unterstufe.lautereinser.at`, der `eng-us`-Eintrag in
   `apps/web/app/le-werkzeuge.json`): konto lässt als Rücksprung nur exakt diesen
   Host zu.
+- `docs/runbooks/deploy.md` (Schritt 2) nennt seit dach-074 dieselbe Adresse für `AUTH_URL` und `NEXTAUTH_URL`.
+- **Ops-Testweg:** ein Ops-Cookie, das **vor** dem Merge erzeugt wurde, trägt kein `via` und stirbt am
+  13.10. um 00:00 mit allen anderen alten Cookies; ein **neuer** Einmal-Link (`ops-link`) wirkt bis zu
+  seinem eigenen Ablauf (2027-01-11) weiter. Wer am 13.10. einen Testlauf hat: frischen Link ziehen.
+- `/lehrkraft/<token>` (alter Einladungs-Link für Lehrkräfte) leitet ab dem Tag nicht kontextlos zu
+  konto, sondern auf `/lehrkraft/umgezogen`: ein Satz, warum der Link nicht mehr gilt, und der Knopf
+  »Sign in with Lauter Einser« (Befund GG 19.09., NEBEN-3).
 - `GRANDMASTER_TEACHER_IDS` braucht nach dem Start Kokis **neue** Nutzer-id (die
   lokale id, die sein erster konto-Handoff anlegt) — sonst verliert der
   Verwaltungszugang seinen weiten Blick.

@@ -85,6 +85,20 @@ function plusTage(iso, tage) {
   return d.toISOString().slice(0, 10);
 }
 
+/**
+ * Der erste Augenblick eines Wiener Kalendertags, als UTC-Zeitpunkt. Wien liegt bei
+ * UTC+1 oder UTC+2; der Tag beginnt also 22:00 oder 23:00 UTC am Vortag — genommen
+ * wird der fruehere Kandidat, der schon auf den gesuchten Tag faellt.
+ */
+export function wienerMitternacht(iso) {
+  for (const stunde of [22, 23]) {
+    const t = new Date(`${iso}T00:00:00Z`);
+    t.setUTCHours(t.getUTCHours() - 24 + stunde);
+    if (wienerTag(t) === iso && wienerTag(new Date(t.getTime() - 60_000)) < iso) return t;
+  }
+  throw new Error(`wienerMitternacht: kein Tagesbeginn gefunden fuer ${iso}`);
+}
+
 function umstiegstag(state) {
   return (state.files.get(UMSTIEG).match(/UMSTIEGSTAG = "(\d{4}-\d{2}-\d{2})"/) ?? [])[1] ?? null;
 }
@@ -118,15 +132,30 @@ const PRUEFUNGEN = {
     for (const id of ids) if (!erlaubt.has(id)) raus.push(`auth.ts: Provider »${id}« steht in keiner Rest-Liste`);
     if (anzahl > ids.length) raus.push(`auth.ts: ${anzahl} Credentials-Provider, aber nur ${ids.length} benannte Kennungen`);
 
-    for (const id of ids) {
-      if (!rueckfallListe.has(id)) continue;
+    // dach-074 · Nachbesserung GG 19.09. (ERNST-1, NEBEN-2): die Datumspflicht haengt an
+    // BEIDEN Quellen — an der Skript-Konstante RUECKFALL_PROVIDER und an `rueckfall: true`
+    // in der Liste. Wer eine Quelle aendert, macht das ECHTE Tor rot, nicht nur den Selbsttest.
+    const vorher = offen(state, jetzt);
+    const pflichtig = new Set([...RUECKFALL_PROVIDER, ...rueckfallListe]);
+    for (const id of pflichtig) {
       if (!RUECKFALL_PROVIDER.includes(id)) {
         raus.push(`auth.ts: »${id}« ist als Rueckfall deklariert, aber nur student/teacher duerfen einer sein`);
         continue;
       }
-      if (!offen(state, jetzt)) {
-        raus.push(`auth.ts: der Rueckfall-Anbieter »${id}« steht noch da, der Umstiegstag ist vorbei — der Weg muss weg`);
+      const eintrag = liste.reste.find((r) => r.provider === id);
+      const da = ids.includes(id);
+      if (!vorher) {
+        if (da) raus.push(`auth.ts: der Rueckfall-Anbieter »${id}« steht noch da, der Umstiegstag ist vorbei — der Weg muss weg`);
         continue;
+      }
+      // Vor dem Tag MUSS jeder Rueckfall-Anbieter da sein: sein Fehlen ist genau die
+      // Gestalt von #448 (18.09.) — die Anmeldung aller Kinder bzw. Lehrkraefte ist weg.
+      if (!da) {
+        raus.push(`auth.ts: der Rueckfall-Anbieter »${id}« ist verschwunden — vor dem Umstiegstag muss er da sein, sonst ist jede PIN-Anmeldung zu (Vorfall #448)`);
+        continue;
+      }
+      if (!eintrag || eintrag.rueckfall !== true) {
+        raus.push(`Allowlist: der Rueckfall-Anbieter »${id}« braucht einen Eintrag mit rueckfall: true — ohne ihn endet er nicht am Umstiegstag`);
       }
       const block = anbieterBlock(src, id) ?? "";
       if (!DATUMSFRAGE.test(block)) raus.push(`auth.ts: der Rueckfall-Anbieter »${id}« fragt in authorize nicht rueckfallOffen()`);
@@ -242,6 +271,9 @@ const PRUEFUNGEN = {
     const soll = plusTage(konstante, REST_TAGE);
     const heute = wienerTag(jetzt);
     for (const r of liste.reste) {
+      if (RUECKFALL_PROVIDER.includes(r.provider) && r.rueckfall !== true) {
+        raus.push(`Rest »${r.provider}«: ist ein Rueckfall-Anbieter (Skript-Konstante) und muss rueckfall: true mit ablauf = Umstiegstag tragen`);
+      }
       if (r.rueckfall === true) {
         if (r.ablauf !== konstante) raus.push(`Rueckfall »${r.provider}«: ablauf ${r.ablauf}, muss der Umstiegstag ${konstante} sein`);
         if (heute >= r.ablauf) raus.push(`Rueckfall »${r.provider}«: abgelaufen am ${r.ablauf} (00:00 Wien) — der Weg muss weg, nicht das Datum`);
@@ -294,11 +326,16 @@ const echt = laden();
 if (selftest) {
   let schlecht = 0;
   const konstante = umstiegstag(echt);
-  // Die zwei Uhren um den Schnitt: 23:59 am Vortag und 00:01 am Umstiegstag, Wien.
-  const vorAbend = new Date(`${konstante}T00:00:00+02:00`);
-  vorAbend.setUTCMinutes(vorAbend.getUTCMinutes() - 1);
-  const nachMitternacht = new Date(`${konstante}T00:01:00+02:00`);
-  const VOR = vorAbend;
+  // Die zwei Uhren um den Schnitt: 23:59 am Vortag und 00:01 am Umstiegstag, Wien —
+  // gerechnet mit derselben Intl-Uhr wie der Produktivcode, nicht mit einem festen
+  // Versatz (GG 19.09., NEBEN-1: +02:00 stimmte nur bis zum Ende der Sommerzeit).
+  const mitternacht = wienerMitternacht(konstante);
+  const VOR = new Date(mitternacht.getTime() - 60_000);
+  const nachMitternacht = new Date(mitternacht.getTime() + 60_000);
+  if (wienerTag(VOR) >= konstante || wienerTag(nachMitternacht) !== konstante) {
+    console.error(`✗ Selbsttest unbrauchbar: die Uhren liegen nicht um den Schnitt (${wienerTag(VOR)} / ${wienerTag(nachMitternacht)})`);
+    process.exit(1);
+  }
 
   const alle = (b) => Object.values(b).flat();
   const jetzt = lauf(echt, VOR);
@@ -386,8 +423,36 @@ if (selftest) {
         const c = klon(echt);
         const src = c.files.get(AUTH);
         const ab = src.indexOf('id: "student"');
-        const block = anbieterBlock(src, "student");
+        const block = anbieterBlock(src, "student") ?? "";
         c.files.set(AUTH, src.slice(0, ab) + block.replaceAll("rueckfallOffen()", "true") + src.slice(ab + block.length));
+        return c;
+      },
+    },
+    {
+      name: "die zwei Rueckfall-Anbieter verschwinden aus auth.ts (die Gestalt von #448)",
+      pruefung: "provider",
+      mach: () => {
+        const c = klon(echt);
+        let src = c.files.get(AUTH);
+        for (const id of RUECKFALL_PROVIDER) {
+          const ab = src.lastIndexOf("Credentials(", src.indexOf(`id: "${id}"`));
+          const bis = src.indexOf("Credentials(", src.indexOf(`id: "${id}"`));
+          if (ab >= 0 && bis > ab) src = src.slice(0, ab) + src.slice(bis);
+        }
+        c.files.set(AUTH, src);
+        return c;
+      },
+    },
+    {
+      name: "rueckfall: true faellt weg und die PIN soll 90 Tage laenger leben",
+      pruefung: "provider",
+      mach: () => {
+        const c = klon(echt);
+        const j = JSON.parse(c.files.get(ALLOWLIST));
+        const e = j.reste.find((r) => r.provider === "student");
+        delete e.rueckfall;
+        e.ablauf = "2027-01-11";
+        c.files.set(ALLOWLIST, JSON.stringify(j, null, 2));
         return c;
       },
     },

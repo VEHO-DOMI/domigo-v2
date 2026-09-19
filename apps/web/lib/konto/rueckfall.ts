@@ -76,6 +76,9 @@ export function pinScopeArt(
   return role === "teacher" ? "lehrkraft" : "kind";
 }
 
+/** Where /lehrkraft/<token> leads from the day on: app/lehrkraft/umgezogen/page.tsx. */
+export const EINLADUNG_UMGEZOGEN = "/lehrkraft/umgezogen";
+
 /** The five old doors that took a PIN (scripts/check-no-local-login.mjs, TUEREN). */
 export type Tuer = "join" | "lehrkraft" | "pin-reset" | "pin-vergessen" | "bootstrap";
 
@@ -88,5 +91,9 @@ export type Tuer = "join" | "lehrkraft" | "pin-reset" | "pin-vergessen" | "boots
 export function tuerZiel(tuer: Tuer, code: string, now: Date = new Date()): string | null {
   if (rueckfallOffen(now)) return null;
   if (tuer === "join") return kontoBeitrittUrl(code);
+  // An old teacher invitation names a class that konto does not know by this
+  // token; landing on konto's sign-in without a word left teachers guessing
+  // (GG 19.09., NEBEN-3). Our own page says why, then offers the sign-in.
+  if (tuer === "lehrkraft") return EINLADUNG_UMGEZOGEN;
   return `${kontoBaseUrl()}/login?app=go`;
 }

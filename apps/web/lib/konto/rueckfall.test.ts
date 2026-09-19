@@ -22,7 +22,7 @@ import { afterEach, describe, it } from "node:test";
 process.env.DATABASE_URL ??= "postgres://test:test@127.0.0.1:1/test";
 
 import { redirect } from "next/navigation.js"; // .js: Node löst den Unterpfad ohne Bundler nicht ohne Endung auf
-import { pinScopeArt, rueckfallOffen, sitzungsRegel, tuerZiel, GESCHLOSSEN_SATZ, type Tuer } from "./rueckfall.ts";
+import { EINLADUNG_UMGEZOGEN, pinScopeArt, rueckfallOffen, sitzungsRegel, tuerZiel, GESCHLOSSEN_SATZ, type Tuer } from "./rueckfall.ts";
 import { restGueltig } from "./reste.ts";
 import { verifyStudent, verifyTeacher } from "./pin-rueckfall.ts";
 import { lokalesSchreibenZu } from "./rueckfall-antwort.ts";
@@ -133,12 +133,18 @@ describe("PIN-Anmeldung: vor dem Tag erreicht sie die Datenbank, ab dem Tag nich
 describe("die fuenf alten Tueren: vor dem Tag main, danach 307 zu konto", () => {
   const TUEREN: Tuer[] = ["join", "lehrkraft", "pin-reset", "pin-vergessen", "bootstrap"];
 
+  it("die Erklaerseite der alten Einladung gibt es wirklich, ohne Datenbank und mit dem Satz", () => {
+    const seite = fs.readFileSync(path.join(import.meta.dirname, "../../app", EINLADUNG_UMGEZOGEN.slice(1), "page.tsx"), "utf8");
+    assert.match(seite, /Dieser Einladungs-Link stammt aus der Zeit vor Lauter Einser\./);
+    assert.doesNotMatch(seite, /@domigo\/db/);
+  });
   it("vor dem Tag fuehrt keine Tuer weg — die Seite ist die von main", () => {
     for (const t of TUEREN) assert.equal(tuerZiel(t, "ABC123", VORABEND), null, t);
   });
-  it("ab dem Tag: /join/<code> zum Beitritt bei konto, die vier Lehrkraft-Tueren zur Anmeldung", () => {
+  it("ab dem Tag: /join/<code> zum Beitritt bei konto, die Einladung auf die Erklaerseite, der Rest zur Anmeldung", () => {
     assert.equal(tuerZiel("join", "ABC 12", NACHT), `${kontoBaseUrl()}/beitritt/ABC%2012`);
-    for (const t of TUEREN.filter((x) => x !== "join")) {
+    assert.equal(tuerZiel("lehrkraft", "", NACHT), EINLADUNG_UMGEZOGEN);
+    for (const t of TUEREN.filter((x) => x !== "join" && x !== "lehrkraft")) {
       assert.equal(tuerZiel(t, "", NACHT), `${kontoBaseUrl()}/login?app=go`, t);
     }
   });
