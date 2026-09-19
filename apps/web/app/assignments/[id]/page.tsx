@@ -9,7 +9,17 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import type { GrammarItem, VocabItem } from "@domigo/content-schema";
 import { loadUnitWithOverrides, type UnitContent } from "@/lib/content-service";
-import { CHECKUP_DEFAULT_DISPLAY, EMPTY_SCOPE, formatCheckupPoints, getDb, getStudentAssignmentView, isSessionLive, parseCheckupSectionConfig, parseDisplayConfig, startOrResumeSession, type CheckupKind } from "@domigo/db";
+import {
+  formatCheckupPoints,
+  getDb,
+  getStudentAssignmentView,
+  isSessionLive,
+  parseCheckupSectionConfig,
+  parseDisplayConfig,
+  startOrResumeSession,
+  CHECKUP_DEFAULT_DISPLAY,
+  type CheckupKind,
+} from "@domigo/db";
 import { sectionItemPools } from "@/lib/checkup";
 import { getActingUserForPage } from "@/lib/identity";
 import { parseItemRef } from "@/lib/itemRef";
@@ -49,13 +59,13 @@ export default async function AssignmentPage({ params }: { params: Promise<{ id:
   const acting = await getActingUserForPage();
   if (!acting) redirect("/signin");
 
-  const view = await getStudentAssignmentView(getDb(), acting?.classScope ?? EMPTY_SCOPE, id, acting.userId).catch(() => null);
+  const view = await getStudentAssignmentView(getDb(), id, acting.userId).catch(() => null);
   if (!view || view.assignment.classId !== acting.classId) redirect("/assignments");
   const { assignment, sections, sessions } = view;
 
   async function begin() {
     "use server";
-    const a = await getStudentAssignmentView(getDb(), acting?.classScope ?? EMPTY_SCOPE, id, acting!.userId).catch(() => null);
+    const a = await getStudentAssignmentView(getDb(), id, acting!.userId).catch(() => null);
     if (a && a.assignment.classId === acting!.classId) {
       await startOrResumeSession(getDb(), a.assignment, acting!.userId, new Date()).catch(() => null);
     }

@@ -1,5 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
+  claimLabel,
+  claimStudent,
   MAX_ROSTER_NAMES,
   MAX_STUDENT_NAME_LENGTH,
   importRoster,
@@ -11,13 +13,22 @@ import {
   resetStudentPin,
 } from "./roster-service.ts";
 import type { Db } from "./index.ts";
-import { classScope } from "./scope.ts";
 
-/** dach-018 · der Klassen-Ausschnitt dieser Sitzung. Die Wand selbst prueft
- *  scripts/check-claim-filter.mjs; hier steht sie nur, damit die bestehenden
- *  Zusicherungen dasselbe messen wie vorher. */
-const SCOPE = classScope(["c1", "klasse-1", "klasse-2"]);
-
+// Minimal stateful mock of the drizzle Db chain used by claimStudent:
+//   select().from().where().limit() → 1st call = the student lookup, 2nd = the clash check;
+//   insert().values() resolves; update().set().where() resolves or rejects with `updateError`.
+type ClaimDb = Parameters<typeof claimStudent>[0];
+function raceDb(opts: { updateError?: unknown; student?: unknown[]; clash?: unknown[] } = {}): ClaimDb {
+  let selectN = 0;
+  const student = opts.student ?? [{ classId: "c1", claimedAt: null }];
+  const clash = opts.clash ?? [];
+  return {
+    select: () => ({ from: () => ({ where: () => ({ limit: () => { selectN += 1; return Promise.resolve(selectN === 1 ? student : clash); } }) }) }),
+    insert: () => ({ values: () => Promise.resolve(undefined) }),
+    update: () => ({ set: () => ({ where: () => (opts.updateError ? Promise.reject(opts.updateError) : Promise.resolve(undefined)) }) }),
+  } as unknown as ClaimDb;
+}
+const claimInput = { studentId: "s1", displayName: "Anna", pinHash: "h" };
 
 describe("isUniqueViolation — Postgres 23505 across driver error shapes", () => {
   it("detects the code on the error or its cause", () => {
@@ -34,6 +45,25 @@ describe("isUniqueViolation — Postgres 23505 across driver error shapes", () =
     expect(isUniqueViolation(null)).toBe(false);
     expect(isUniqueViolation(undefined)).toBe(false);
     expect(isUniqueViolation({})).toBe(false);
+  });
+});
+
+describe("claimStudent — the duplicate-claim (TOCTOU race) path", () => {
+  it("returns 'taken' when the flip UPDATE raises a unique violation (a concurrent claim won the nickname)", async () => {
+    expect(await claimStudent(raceDb({ updateError: { code: "23505" } }), claimInput)).toBe("taken");
+  });
+  it("returns 'ok' when the flip succeeds", async () => {
+    expect(await claimStudent(raceDb({ updateError: null }), claimInput)).toBe("ok");
+  });
+  it("rethrows a non-unique DB error (never swallows a real failure)", async () => {
+    await expect(claimStudent(raceDb({ updateError: { code: "08006" } }), claimInput)).rejects.toBeTruthy();
+  });
+  it("returns 'gone' when the student is missing or already claimed", async () => {
+    expect(await claimStudent(raceDb({ student: [] }), claimInput)).toBe("gone");
+    expect(await claimStudent(raceDb({ student: [{ classId: "c1", claimedAt: new Date() }] }), claimInput)).toBe("gone");
+  });
+  it("returns 'taken' on the app-code clash (fast path, before any write)", async () => {
+    expect(await claimStudent(raceDb({ clash: [{ id: "other" }] }), claimInput)).toBe("taken");
   });
 });
 
@@ -155,6 +185,36 @@ describe("parseRoster — first cell wins, but never at a name's expense", () =>
   });
 });
 
+describe("claimLabel — privacy: first name + last initial", () => {
+  it("reduces a two-part name to first name + last initial", () => {
+    expect(claimLabel("Anna Müller")).toBe("Anna M.");
+    expect(claimLabel("Ben Ostrowski")).toBe("Ben O.");
+  });
+
+  it("returns a single-word name unchanged", () => {
+    expect(claimLabel("Anna")).toBe("Anna");
+    expect(claimLabel("Cher")).toBe("Cher");
+  });
+
+  it("uses the LAST token's initial when there is a middle name", () => {
+    expect(claimLabel("Anna Maria Müller")).toBe("Anna M.");
+    expect(claimLabel("Jean Luc Picard")).toBe("Jean P.");
+  });
+
+  it("uppercases the surname initial even when the source is lowercase", () => {
+    expect(claimLabel("anna müller")).toBe("anna M.");
+  });
+
+  it("collapses extra whitespace and trims", () => {
+    expect(claimLabel("   Anna    Müller   ")).toBe("Anna M.");
+  });
+
+  it("returns an empty string for an empty or whitespace-only name (never throws)", () => {
+    expect(claimLabel("")).toBe("");
+    expect(claimLabel("   ")).toBe("");
+  });
+});
+
 // ─────────────────────────────────────────────────────────────────────────────
 // P3 · actorId — WHO acted vs WHOSE authorization was used.
 //
@@ -238,7 +298,7 @@ const journalRow = (written: unknown[]) => written[0] as { actorId?: string | nu
 describe("actorId — the journal names the actor, the WHERE clause keeps the owner", () => {
   it("renameStudentGiven: journal = grandmaster, authorization = owner", async () => {
     const { db, conditions, written } = journalDb();
-    await renameStudentGiven(db, SCOPE, "s1", OWNER, "Piet Wacholder", GRANDMASTER);
+    await renameStudentGiven(db, "s1", OWNER, "Piet Wacholder", GRANDMASTER);
     expect(journalRow(written).kind).toBe("rename");
     expect(journalRow(written).actorId).toBe(GRANDMASTER);
     expect(allFilteredValues(conditions)).toContain(OWNER);
@@ -247,7 +307,7 @@ describe("actorId — the journal names the actor, the WHERE clause keeps the ow
 
   it("resetStudentPin: journal = grandmaster, authorization = owner", async () => {
     const { db, conditions, written } = journalDb();
-    await resetStudentPin(db, SCOPE, "s1", OWNER, GRANDMASTER);
+    await resetStudentPin(db, "s1", OWNER, GRANDMASTER);
     expect(journalRow(written).kind).toBe("reset_pin");
     expect(journalRow(written).actorId).toBe(GRANDMASTER);
     expect(allFilteredValues(conditions)).toContain(OWNER);
@@ -256,7 +316,7 @@ describe("actorId — the journal names the actor, the WHERE clause keeps the ow
 
   it("removeStudent: journal = grandmaster, authorization = owner", async () => {
     const { db, conditions, written } = journalDb();
-    await removeStudent(db, SCOPE, "s1", OWNER, GRANDMASTER);
+    await removeStudent(db, "s1", OWNER, GRANDMASTER);
     expect(journalRow(written).kind).toBe("remove");
     expect(journalRow(written).actorId).toBe(GRANDMASTER);
     expect(allFilteredValues(conditions)).toContain(OWNER);
@@ -266,7 +326,7 @@ describe("actorId — the journal names the actor, the WHERE clause keeps the ow
   it("importRoster: journal = grandmaster, authorization = owner", async () => {
     // 1st select = the class-ownership check, 2nd = the already-present names.
     const { db, conditions, written } = journalDb([[{ id: "c1" }], []]);
-    const imported = await importRoster(db, SCOPE, { classId: "c1", teacherId: OWNER, names: ["Piet Wacholder"], actorId: GRANDMASTER });
+    const imported = await importRoster(db, { classId: "c1", teacherId: OWNER, names: ["Piet Wacholder"], actorId: GRANDMASTER });
     expect(imported).toBe(1);
     expect(journalRow(written).kind).toBe("import");
     expect(journalRow(written).actorId).toBe(GRANDMASTER);
@@ -276,10 +336,10 @@ describe("actorId — the journal names the actor, the WHERE clause keeps the ow
 
   it("leaves the ordinary teacher case untouched: no actorId ⇒ the teacher IS the actor", async () => {
     for (const run of [
-      async () => { const m = journalDb(); await renameStudentGiven(m.db, SCOPE, "s1", OWNER, "Piet Wacholder"); return m; },
-      async () => { const m = journalDb(); await resetStudentPin(m.db, SCOPE, "s1", OWNER); return m; },
-      async () => { const m = journalDb(); await removeStudent(m.db, SCOPE, "s1", OWNER); return m; },
-      async () => { const m = journalDb([[{ id: "c1" }], []]); await importRoster(m.db, SCOPE, { classId: "c1", teacherId: OWNER, names: ["Piet Wacholder"] }); return m; },
+      async () => { const m = journalDb(); await renameStudentGiven(m.db, "s1", OWNER, "Piet Wacholder"); return m; },
+      async () => { const m = journalDb(); await resetStudentPin(m.db, "s1", OWNER); return m; },
+      async () => { const m = journalDb(); await removeStudent(m.db, "s1", OWNER); return m; },
+      async () => { const m = journalDb([[{ id: "c1" }], []]); await importRoster(m.db, { classId: "c1", teacherId: OWNER, names: ["Piet Wacholder"] }); return m; },
     ]) {
       const { written } = await run();
       expect(journalRow(written).actorId).toBe(OWNER);
@@ -288,7 +348,7 @@ describe("actorId — the journal names the actor, the WHERE clause keeps the ow
 
   it("writes the journal row BEFORE the live change, actor and all (journal-then-flip)", async () => {
     const { db, written } = journalDb([[{ id: "c1" }], []]);
-    await importRoster(db, SCOPE, { classId: "c1", teacherId: OWNER, names: ["Piet Wacholder"], actorId: GRANDMASTER });
+    await importRoster(db, { classId: "c1", teacherId: OWNER, names: ["Piet Wacholder"], actorId: GRANDMASTER });
     expect(written).toHaveLength(2); // [0] the event, [1] the student rows
     expect(journalRow(written).actorId).toBe(GRANDMASTER);
     expect(Array.isArray(written[1])).toBe(true); // the flip came second
@@ -299,7 +359,7 @@ describe("actorId — the journal names the actor, the WHERE clause keeps the ow
     // and crucially NO journal row — an unauthorized action leaves no trace of
     // having been authorized.
     const { db, written } = journalDb([[]]);
-    await renameStudentGiven(db, SCOPE, "s1", "some-other-teacher", "Piet Wacholder", GRANDMASTER);
+    await renameStudentGiven(db, "s1", "some-other-teacher", "Piet Wacholder", GRANDMASTER);
     expect(written).toHaveLength(0);
   });
 });
@@ -316,7 +376,7 @@ describe("importRoster — the ceilings hold even when a caller skips validation
   it("drops a name longer than the cap and keeps the rest", async () => {
     const { db, written } = journalDb([[{ id: "c1" }], []]);
     const zuLang = "x".repeat(MAX_STUDENT_NAME_LENGTH + 1);
-    const n = await importRoster(db, SCOPE, { classId: "c1", teacherId: OWNER, names: [zuLang, "Piet Wacholder"] });
+    const n = await importRoster(db, { classId: "c1", teacherId: OWNER, names: [zuLang, "Piet Wacholder"] });
     expect(n).toBe(1);
     const rows = written[1] as { givenName: string }[];
     expect(rows.map((r) => r.givenName)).toEqual(["Piet Wacholder"]);
@@ -325,20 +385,20 @@ describe("importRoster — the ceilings hold even when a caller skips validation
   it("accepts a name EXACTLY at the cap — the boundary is inclusive", async () => {
     const { db } = journalDb([[{ id: "c1" }], []]);
     const genau = "x".repeat(MAX_STUDENT_NAME_LENGTH);
-    expect(await importRoster(db, SCOPE, { classId: "c1", teacherId: OWNER, names: [genau] })).toBe(1);
+    expect(await importRoster(db, { classId: "c1", teacherId: OWNER, names: [genau] })).toBe(1);
   });
 
   it("never inserts more than MAX_ROSTER_NAMES in one call", async () => {
     const { db, written } = journalDb([[{ id: "c1" }], []]);
     const viele = Array.from({ length: MAX_ROSTER_NAMES + 25 }, (_, i) => `Kind ${i}`);
-    expect(await importRoster(db, SCOPE, { classId: "c1", teacherId: OWNER, names: viele })).toBe(MAX_ROSTER_NAMES);
+    expect(await importRoster(db, { classId: "c1", teacherId: OWNER, names: viele })).toBe(MAX_ROSTER_NAMES);
     expect((written[1] as unknown[]).length).toBe(MAX_ROSTER_NAMES);
   });
 
   it("journals only what it actually writes — the record must not overstate the act", async () => {
     const { db, written } = journalDb([[{ id: "c1" }], []]);
     const zuLang = "x".repeat(MAX_STUDENT_NAME_LENGTH + 1);
-    await importRoster(db, SCOPE, { classId: "c1", teacherId: OWNER, names: [zuLang, "Piet Wacholder"] });
+    await importRoster(db, { classId: "c1", teacherId: OWNER, names: [zuLang, "Piet Wacholder"] });
     // Der Zaehler zaehlt die ANGELEGTEN Zeilen, nicht die eingereichten Namen:
     // zwei kamen an, einer war zu lang, EINE Zeile entstand.
     expect((written[0] as { payload: { count: number } }).payload.count).toBe(1);
@@ -352,7 +412,7 @@ describe("importRoster — the ceilings hold even when a caller skips validation
   // spaeter ergaenzt — die Lehre aus writing-review.test.ts.
   it("P-R8 · import journals the COUNT and never a single name", async () => {
     const { db, written } = journalDb([[{ id: "c1" }], []]);
-    await importRoster(db, SCOPE, { classId: "c1", teacherId: OWNER, names: ["Piet Wacholder", "Marisa Dohlenfeld"] });
+    await importRoster(db, { classId: "c1", teacherId: OWNER, names: ["Piet Wacholder", "Marisa Dohlenfeld"] });
     const nutzlast = JSON.stringify((written[0] as { payload: unknown }).payload);
     expect(nutzlast).not.toContain("Piet");
     expect(nutzlast).not.toContain("Wacholder");
@@ -360,9 +420,17 @@ describe("importRoster — the ceilings hold even when a caller skips validation
     expect(JSON.parse(nutzlast)).toEqual({ count: 2 });
   });
 
+  it("P-R8 · claim journals the nickname's LENGTH, never the nickname", async () => {
+    const { db, written } = journalDb([[{ classId: "c1", claimedAt: null }], []]);
+    await claimStudent(db, { studentId: "s1", displayName: "Wackerstein", pinHash: "h" });
+    const nutzlast = JSON.stringify((written[0] as { payload: unknown }).payload);
+    expect(nutzlast).not.toContain("Wackerstein");
+    expect(JSON.parse(nutzlast)).toEqual({ studentId: "s1", displayNameLength: 11 });
+  });
+
   it("P-R8 · rename journals the new name's LENGTH, never the new name", async () => {
     const { db, written } = journalDb();
-    await renameStudentGiven(db, SCOPE, "s1", OWNER, "  Piet Wacholder  ");
+    await renameStudentGiven(db, "s1", OWNER, "  Piet Wacholder  ");
     const nutzlast = JSON.stringify((written[0] as { payload: unknown }).payload);
     expect(nutzlast).not.toContain("Piet");
     expect(nutzlast).not.toContain("Wacholder");

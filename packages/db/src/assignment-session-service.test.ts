@@ -1,7 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { listStudentsForClass } from "./assignment-session-service.ts";
 import type { Db } from "./index.ts";
-import { classScope } from "./scope.ts";
 import { eq, sql } from "drizzle-orm";
 import { v2Classes } from "./schema.ts";
 
@@ -80,11 +79,6 @@ function projectionAtoms(selection: unknown): string[] {
 
 const CLASS = "class-2er";
 
-/** dach-018 · der Klassen-Ausschnitt dieser Sitzung. Die Wand selbst prueft
- *  scripts/check-claim-filter.mjs; hier steht sie nur, damit die bestehenden
- *  Zusicherungen dasselbe messen wie vorher. */
-const SCOPE = classScope([CLASS]);
-
 describe("listStudentsForClass", () => {
   it("finds the students of a NEW (v2) class — the defect this fixes", async () => {
     // v2 has two, v1 has none: before the fix this returned [] and the whole
@@ -93,7 +87,7 @@ describe("listStudentsForClass", () => {
       [{ id: "s1", name: "Test2" }, { id: "s2", name: "Test2b" }],
       [],
     ]);
-    expect(await listStudentsForClass(db, SCOPE, CLASS)).toEqual([
+    expect(await listStudentsForClass(db, CLASS)).toEqual([
       { id: "s1", name: "Test2" },
       { id: "s2", name: "Test2b" },
     ]);
@@ -109,7 +103,7 @@ describe("listStudentsForClass", () => {
       [], // no v2 rows: a legacy class has none by construction
       [{ id: "v1-a", name: "Anouk" }, { id: "v1-b", name: "Bela" }, { id: "v1-c", name: "Cem" }],
     ]);
-    expect(await listStudentsForClass(db, SCOPE, CLASS)).toEqual([
+    expect(await listStudentsForClass(db, CLASS)).toEqual([
       { id: "v1-a", name: "Anouk" },
       { id: "v1-b", name: "Bela" },
       { id: "v1-c", name: "Cem" },
@@ -123,7 +117,7 @@ describe("listStudentsForClass", () => {
       [{ id: "shared", name: "Neuer Spitzname" }],
       [{ id: "shared", name: "Alter Name" }, { id: "only-v1", name: "Nur Alt" }],
     ]);
-    expect(await listStudentsForClass(db, SCOPE, CLASS)).toEqual([
+    expect(await listStudentsForClass(db, CLASS)).toEqual([
       { id: "shared", name: "Neuer Spitzname" },
       { id: "only-v1", name: "Nur Alt" },
     ]);
@@ -131,13 +125,13 @@ describe("listStudentsForClass", () => {
 
   it("reads BOTH registers, in that order, always", async () => {
     const { db, calls } = seqDb([[], []]);
-    await listStudentsForClass(db, SCOPE, CLASS);
+    await listStudentsForClass(db, CLASS);
     expect(calls()).toBe(2); // a v2 hit must not short-circuit the legacy half
   });
 
   it("scopes the v2 half to the class, to students, and to CLAIMED rows only", async () => {
     const { db, conditions } = seqDb([[], []]);
-    await listStudentsForClass(db, SCOPE, CLASS);
+    await listStudentsForClass(db, CLASS);
     const where = atomsOf(conditions[0]);
     expect(where).toContain("col:class_id");
     expect(where).toContain(CLASS);
@@ -151,7 +145,7 @@ describe("listStudentsForClass", () => {
 
   it("never selects the PIN hash from either register", async () => {
     const { db, selections } = seqDb([[], []]);
-    await listStudentsForClass(db, SCOPE, CLASS);
+    await listStudentsForClass(db, CLASS);
     for (const sel of selections) {
       expect(projectionAtoms(sel)).not.toContain("col:pin_hash");
     }

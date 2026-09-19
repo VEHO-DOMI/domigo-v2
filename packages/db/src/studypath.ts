@@ -7,13 +7,12 @@
  * pure `withProgress`. The pure half (buildUnitNodes / nodeItemIds /
  * checkpointItemIds / starsFor / withProgress) is unit-tested without a DB.
  */
-import { and, eq, inArray, sql } from "drizzle-orm";
+import { and, eq, sql } from "drizzle-orm";
 import { XP_WEIGHT } from "@domigo/engine";
 import type { Tier } from "@domigo/engine";
 import type { GrammarItem, VocabItem } from "@domigo/content-schema";
 import { studyPathProgress } from "./schema.ts";
 import type { Db } from "./index.ts";
-import { assertWritableScope, inScope, type ClassScope } from "./scope.ts";
 
 // ── node model (string unions — erasableSyntaxOnly: no enums) ───────────────
 export type NodeKind = "vocab-intro" | "vocab-practice" | "grammar-intro" | "grammar-practice" | "checkpoint";
@@ -148,12 +147,7 @@ export interface NodeCompletionInput {
 }
 
 /** Idempotent + monotonic: keep the BEST stars for a (user, unit, node). */
-export async function recordNodeCompletion(db: Db, classScope: ClassScope, a: NodeCompletionInput): Promise<{ stars: number }> {
-  assertWritableScope(classScope, "recordNodeCompletion");
-  if (!inScope(classScope, a.classId)) {
-    throw new Error("[@domigo/db] recordNodeCompletion: refused — class outside this session's scope (dach-018)");
-  }
-
+export async function recordNodeCompletion(db: Db, a: NodeCompletionInput): Promise<{ stars: number }> {
   const now = new Date();
   const rows = await db
     .insert(studyPathProgress)

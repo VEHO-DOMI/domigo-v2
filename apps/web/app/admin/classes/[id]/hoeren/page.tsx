@@ -65,12 +65,12 @@ export default async function HoerAufgabenPage({ params }: { params: Promise<{ i
   const { id } = await params;
   // Der Rang: eine reine Umgebungs-Lese, VOR jeder Abfrage.
   const grossmeister = isGrandmaster(teacher.userId);
-  let cls: OwnedClass | null = await getClassForTeacher(getDb(), teacher.classScope, id, teacher.userId).catch(() => null);
+  let cls: OwnedClass | null = await getClassForTeacher(getDb(), id, teacher.userId).catch(() => null);
   let ueberschrift = cls?.name ?? "";
   let fremd = false;
 
   if (!cls && grossmeister) {
-    const foreign = await getClassForGrandmaster(getDb(), teacher.classScope, id).catch(() => null);
+    const foreign = await getClassForGrandmaster(getDb(), id).catch(() => null);
     if (foreign) {
       cls = foreign;
       const names = await resolveTeacherNames(getDb(), [foreign.teacherId]).catch(() => new Map<string, string>());

@@ -2,7 +2,6 @@ import { describe, expect, it } from "vitest";
 import { grantXp, markUnitDone, HAND_MARK_STARS, PROGRESS_ADJUST_KIND, type AdjustableNode } from "./progress-adjust.ts";
 import { studyPathProgress, userProgress, v2RosterEvents } from "./schema.ts";
 import type { Db } from "./index.ts";
-import { classScope } from "./scope.ts";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // K1b · the grandmaster's hand-adjustment.
@@ -84,11 +83,6 @@ const GM = "gm-koki";
 const STUDENT = "kind-1";
 const CLASS = "klasse-2er";
 
-/** dach-018 · der Klassen-Ausschnitt dieser Sitzung. Die Wand selbst prueft
- *  scripts/check-claim-filter.mjs; hier steht sie nur, damit die bestehenden
- *  Zusicherungen dasselbe messen wie vorher. */
-const SCOPE = classScope([CLASS]);
-
 const NODES: AdjustableNode[] = [
   { id: "vocab-intro", kind: "vocab-intro", graded: false },
   { id: "vocab-practice-1", kind: "vocab-practice", graded: true },
@@ -98,24 +92,24 @@ const NODES: AdjustableNode[] = [
 describe("grantXp — points can only ever grow", () => {
   it("refuses a negative grant (there is no subtract path, and the door says so)", async () => {
     const { db, writes } = recDb();
-    await expect(grantXp(db, SCOPE, { studentId: STUDENT, classId: CLASS, vocabXp: -10, grammarXp: 0, actorId: GM })).rejects.toThrow(/negative/i);
+    await expect(grantXp(db, { studentId: STUDENT, classId: CLASS, vocabXp: -10, grammarXp: 0, actorId: GM })).rejects.toThrow(/negative/i);
     expect(writes).toHaveLength(0); // and nothing was journalled for a call that never happened
   });
 
   it("refuses a grant of nothing at all (no history about no change)", async () => {
     const { db, writes } = recDb();
-    await expect(grantXp(db, SCOPE, { studentId: STUDENT, classId: CLASS, vocabXp: 0, grammarXp: 0, actorId: GM })).rejects.toThrow(/at least one/i);
+    await expect(grantXp(db, { studentId: STUDENT, classId: CLASS, vocabXp: 0, grammarXp: 0, actorId: GM })).rejects.toThrow(/at least one/i);
     expect(writes).toHaveLength(0);
   });
 
   it("refuses a fractional grant (XP is whole points)", async () => {
     const { db } = recDb();
-    await expect(grantXp(db, SCOPE, { studentId: STUDENT, classId: CLASS, vocabXp: 2.5, grammarXp: 0, actorId: GM })).rejects.toThrow(/whole number/i);
+    await expect(grantXp(db, { studentId: STUDENT, classId: CLASS, vocabXp: 2.5, grammarXp: 0, actorId: GM })).rejects.toThrow(/whole number/i);
   });
 
   it("writes the journal FIRST and the pools second (journal-then-apply)", async () => {
     const { db, writes } = recDb();
-    await grantXp(db, SCOPE, { studentId: STUDENT, classId: CLASS, vocabXp: 50, grammarXp: 0, actorId: GM });
+    await grantXp(db, { studentId: STUDENT, classId: CLASS, vocabXp: 50, grammarXp: 0, actorId: GM });
     expect(writes).toHaveLength(2);
     expect(writes[0]!.table).toBe(v2RosterEvents);
     expect(writes[1]!.table).toBe(userProgress);
@@ -123,7 +117,7 @@ describe("grantXp — points can only ever grow", () => {
 
   it("names the hand and the class in the journal — and no person's name", async () => {
     const { db, writes } = recDb();
-    await grantXp(db, SCOPE, { studentId: STUDENT, classId: CLASS, vocabXp: 50, grammarXp: 7, actorId: GM });
+    await grantXp(db, { studentId: STUDENT, classId: CLASS, vocabXp: 50, grammarXp: 7, actorId: GM });
     const ev = writes[0]!.values as { classId: string; kind: string; actorId: string; payload: Record<string, unknown> };
     expect(ev.kind).toBe(PROGRESS_ADJUST_KIND);
     expect(ev.actorId).toBe(GM); // the grandmaster, not the class owner
@@ -135,7 +129,7 @@ describe("grantXp — points can only ever grow", () => {
 
   it("ADDS to both pools and never assigns (the atoms of the conflict clause say +)", async () => {
     const { db, writes } = recDb();
-    await grantXp(db, SCOPE, { studentId: STUDENT, classId: CLASS, vocabXp: 50, grammarXp: 7, actorId: GM });
+    await grantXp(db, { studentId: STUDENT, classId: CLASS, vocabXp: 50, grammarXp: 7, actorId: GM });
     const set = writes[1]!.set as Record<string, unknown>;
     const xp = atomsOf(set.xp).join(" ");
     const gxp = atomsOf(set.grammarXp).join(" ");
@@ -152,7 +146,7 @@ describe("grantXp — points can only ever grow", () => {
 
   it("never invents a streak day — a grant is not a child showing up", async () => {
     const { db, writes } = recDb();
-    await grantXp(db, SCOPE, { studentId: STUDENT, classId: CLASS, vocabXp: 50, grammarXp: 0, actorId: GM });
+    await grantXp(db, { studentId: STUDENT, classId: CLASS, vocabXp: 50, grammarXp: 0, actorId: GM });
     const set = writes[1]!.set as Record<string, unknown>;
     const values = writes[1]!.values as Record<string, unknown>;
     for (const key of ["streak", "lastSessionDate"]) {
@@ -163,7 +157,7 @@ describe("grantXp — points can only ever grow", () => {
 
   it("seeds a child that has no progress row yet with exactly the granted points", async () => {
     const { db, writes } = recDb();
-    await grantXp(db, SCOPE, { studentId: STUDENT, classId: CLASS, vocabXp: 50, grammarXp: 7, actorId: GM });
+    await grantXp(db, { studentId: STUDENT, classId: CLASS, vocabXp: 50, grammarXp: 7, actorId: GM });
     const values = writes[1]!.values as Record<string, unknown>;
     expect(values.userId).toBe(STUDENT);
     expect(values.xp).toBe(50);
@@ -174,19 +168,19 @@ describe("grantXp — points can only ever grow", () => {
 describe("markUnitDone — a hand may assert existence, never performance", () => {
   it("refuses a malformed unit slug", async () => {
     const { db, writes } = recDb();
-    await expect(markUnitDone(db, SCOPE, { studentId: STUDENT, classId: CLASS, unitSlug: "u03", nodes: NODES, actorId: GM })).rejects.toThrow(/g2-u03/);
+    await expect(markUnitDone(db, { studentId: STUDENT, classId: CLASS, unitSlug: "u03", nodes: NODES, actorId: GM })).rejects.toThrow(/g2-u03/);
     expect(writes).toHaveLength(0);
   });
 
   it("refuses an empty node list (an intent about nothing)", async () => {
     const { db, writes } = recDb();
-    await expect(markUnitDone(db, SCOPE, { studentId: STUDENT, classId: CLASS, unitSlug: "g2-u03", nodes: [], actorId: GM })).rejects.toThrow(/no nodes/i);
+    await expect(markUnitDone(db, { studentId: STUDENT, classId: CLASS, unitSlug: "g2-u03", nodes: [], actorId: GM })).rejects.toThrow(/no nodes/i);
     expect(writes).toHaveLength(0);
   });
 
   it("journals FIRST, then writes one row per node", async () => {
     const { db, writes } = recDb();
-    const res = await markUnitDone(db, SCOPE, { studentId: STUDENT, classId: CLASS, unitSlug: "g2-u03", nodes: NODES, actorId: GM });
+    const res = await markUnitDone(db, { studentId: STUDENT, classId: CLASS, unitSlug: "g2-u03", nodes: NODES, actorId: GM });
     expect(res.nodesMarked).toBe(3);
     expect(writes).toHaveLength(1 + NODES.length);
     expect(writes[0]!.table).toBe(v2RosterEvents);
@@ -195,7 +189,7 @@ describe("markUnitDone — a hand may assert existence, never performance", () =
 
   it("gives a GRADED node one star and an intro card none — the stars a real child gets", async () => {
     const { db, writes } = recDb();
-    await markUnitDone(db, SCOPE, { studentId: STUDENT, classId: CLASS, unitSlug: "g2-u03", nodes: NODES, actorId: GM });
+    await markUnitDone(db, { studentId: STUDENT, classId: CLASS, unitSlug: "g2-u03", nodes: NODES, actorId: GM });
     const byNode = new Map(writes.slice(1).map((w) => {
       const v = w.values as { nodeId: string; stars: number };
       return [v.nodeId, v.stars];
@@ -209,7 +203,7 @@ describe("markUnitDone — a hand may assert existence, never performance", () =
 
   it("derives the school year from the slug and carries the class onto every row", async () => {
     const { db, writes } = recDb();
-    await markUnitDone(db, SCOPE, { studentId: STUDENT, classId: CLASS, unitSlug: "g4-u11", nodes: NODES, actorId: GM });
+    await markUnitDone(db, { studentId: STUDENT, classId: CLASS, unitSlug: "g4-u11", nodes: NODES, actorId: GM });
     for (const w of writes.slice(1)) {
       const v = w.values as { grade: number; classId: string; userId: string; unitSlug: string };
       expect(v.grade).toBe(4);
@@ -221,7 +215,7 @@ describe("markUnitDone — a hand may assert existence, never performance", () =
 
   it("is idempotent by construction: every node row keeps the BEST stars (GREATEST)", async () => {
     const { db, writes } = recDb();
-    await markUnitDone(db, SCOPE, { studentId: STUDENT, classId: CLASS, unitSlug: "g2-u03", nodes: NODES, actorId: GM });
+    await markUnitDone(db, { studentId: STUDENT, classId: CLASS, unitSlug: "g2-u03", nodes: NODES, actorId: GM });
     for (const w of writes.slice(1)) {
       const stars = atomsOf((w.set as Record<string, unknown>).stars).join(" ");
       expect(stars).toContain("GREATEST(");
@@ -231,7 +225,7 @@ describe("markUnitDone — a hand may assert existence, never performance", () =
 
   it("journals the unit and its nodes — ids and numbers, no names", async () => {
     const { db, writes } = recDb();
-    await markUnitDone(db, SCOPE, { studentId: STUDENT, classId: CLASS, unitSlug: "g2-u03", nodes: NODES, actorId: GM });
+    await markUnitDone(db, { studentId: STUDENT, classId: CLASS, unitSlug: "g2-u03", nodes: NODES, actorId: GM });
     const ev = writes[0]!.values as { kind: string; actorId: string; classId: string; payload: Record<string, unknown> };
     expect(ev.kind).toBe(PROGRESS_ADJUST_KIND);
     expect(ev.actorId).toBe(GM);
@@ -247,8 +241,8 @@ describe("markUnitDone — a hand may assert existence, never performance", () =
 
   it("never touches the review queue — hand-set Leitner boxes would corrupt the spacing", async () => {
     const { db, writes } = recDb();
-    await markUnitDone(db, SCOPE, { studentId: STUDENT, classId: CLASS, unitSlug: "g2-u03", nodes: NODES, actorId: GM });
-    await grantXp(db, SCOPE, { studentId: STUDENT, classId: CLASS, vocabXp: 50, grammarXp: 0, actorId: GM });
+    await markUnitDone(db, { studentId: STUDENT, classId: CLASS, unitSlug: "g2-u03", nodes: NODES, actorId: GM });
+    await grantXp(db, { studentId: STUDENT, classId: CLASS, vocabXp: 50, grammarXp: 0, actorId: GM });
     const tables = new Set(writes.map((w) => w.table));
     expect(tables).toEqual(new Set([v2RosterEvents, studyPathProgress, userProgress]));
   });

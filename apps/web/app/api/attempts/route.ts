@@ -163,7 +163,7 @@ export async function POST(req: Request): Promise<Response> {
 
   // 7. Best-effort persist (idempotent; side-effects gated on first insert).
   try {
-    const { duplicate, box, dueAt, streak } = await recordAttempt(getDb(), acting.classScope, {
+    const { duplicate, box, dueAt, streak } = await recordAttempt(getDb(), {
       userId: acting.userId,
       classId: acting.classId,
       itemId,

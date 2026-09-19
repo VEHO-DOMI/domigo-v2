@@ -57,7 +57,7 @@ export async function PUT(req: Request): Promise<Response> {
   }
 
   try {
-    const save = await upsertGameSave(getDb(), acting.classScope, {
+    const save = await upsertGameSave(getDb(), {
       userId: acting.userId,
       classId: acting.classId,
       gameMode,

@@ -63,12 +63,12 @@ export async function POST(req: Request): Promise<Response> {
   }
 
   // Who this class really is, and who owns it — read from the database, not the body.
-  const cls = await getClassForGrandmaster(getDb(), teacher.classScope, classId).catch(() => null);
+  const cls = await getClassForGrandmaster(getDb(), classId).catch(() => null);
   if (!cls) return NextResponse.json({ ok: false, error: "class_not_found" }, { status: 404 });
 
   // Membership, under the OWNER's authorization: listRoster is owner-scoped, so a
   // class that does not belong to `cls.teacherId` yields an empty list by construction.
-  const roster = await listRoster(getDb(), teacher.classScope, classId, cls.teacherId).catch(() => []);
+  const roster = await listRoster(getDb(), classId, cls.teacherId).catch(() => []);
   if (!roster.some((r) => r.id === studentId)) {
     return NextResponse.json({ ok: false, error: "not_in_class" }, { status: 404 });
   }
@@ -94,11 +94,11 @@ export async function POST(req: Request): Promise<Response> {
 
   try {
     if (vocabXp + grammarXp > 0) {
-      await grantXp(getDb(), teacher.classScope, { studentId, classId, vocabXp, grammarXp, actorId: teacher.userId });
+      await grantXp(getDb(), { studentId, classId, vocabXp, grammarXp, actorId: teacher.userId });
     }
     let nodesMarked = 0;
     if (unitSlug) {
-      const res = await markUnitDone(getDb(), teacher.classScope, {
+      const res = await markUnitDone(getDb(), {
         studentId,
         classId,
         unitSlug,

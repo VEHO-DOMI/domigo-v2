@@ -46,7 +46,7 @@ export async function POST(req: Request): Promise<Response> {
   }
 
   try {
-    const res = await recordNodeCompletion(getDb(), acting.classScope, {
+    const res = await recordNodeCompletion(getDb(), {
       userId: acting.userId,
       classId: acting.classId,
       unitSlug,

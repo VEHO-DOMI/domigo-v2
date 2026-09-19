@@ -43,7 +43,7 @@ export async function POST(req: Request): Promise<Response> {
 
   const wordCount = text.trim().split(/\s+/).filter(Boolean).length;
   try {
-    await recordWritingSubmission(getDb(), acting.classScope, {
+    await recordWritingSubmission(getDb(), {
       userId: acting.userId,
       classId: acting.classId,
       unitSlug,

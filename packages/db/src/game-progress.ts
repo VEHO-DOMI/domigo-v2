@@ -5,10 +5,9 @@
  * non-wrong (tier <> 'wrong') graded attempt for the item in the grade's game
  * mode. Powers the persistent hub Evidence Board (and the Phase-6 finale).
  */
-import { and, eq, inArray, ne, sql } from "drizzle-orm";
+import { and, eq, ne, sql } from "drizzle-orm";
 import { practiceAttempts } from "./schema.ts";
 import type { Db } from "./index.ts";
-import { assertWritableScope, inScope, type ClassScope } from "./scope.ts";
 
 /** The attempt `mode` string for a grade's game surface (matches DetectiveGame's "game:g2"). */
 export function gameModeFor(grade: number): string {
@@ -44,15 +43,11 @@ export interface UnitMastery {
 }
 
 /**
- * Phase 7 — teacher mastery view. Rolls up a grade's game attempts into per-unit
- * numbers (attempts, distinct items solved, correct rate).
- *
- * dach-018 · it used to roll up the WHOLE COHORT, on the stated grounds that "the
- * teacher session is not class-scoped". It is now. What leaks here is statistics
- * rather than names, which is exactly why it would have been waved through: the
- * class wall applies to counts as much as to rows.
+ * Phase 7 — teacher mastery view. Rolls up the whole cohort's game attempts for a
+ * grade into per-unit numbers (attempts, distinct items solved, correct rate). The
+ * teacher session is not class-scoped (classId is null), so this is grade-wide.
  */
-export async function getUnitMastery(db: Db, classScope: ClassScope, grade: number): Promise<UnitMastery[]> {
+export async function getUnitMastery(db: Db, grade: number): Promise<UnitMastery[]> {
   const rows = await db
     .select({
       unitSlug: practiceAttempts.unitSlug,
@@ -61,7 +56,7 @@ export async function getUnitMastery(db: Db, classScope: ClassScope, grade: numb
       correct: sql<number>`count(*) filter (where ${practiceAttempts.tier} = 'correct')::int`,
     })
     .from(practiceAttempts)
-    .where(and(inArray(practiceAttempts.classId, [...classScope]), eq(practiceAttempts.grade, grade), eq(practiceAttempts.mode, gameModeFor(grade))))
+    .where(and(eq(practiceAttempts.grade, grade), eq(practiceAttempts.mode, gameModeFor(grade))))
     .groupBy(practiceAttempts.unitSlug);
   return rows
     .map((r) => ({ unitSlug: r.unitSlug, attempts: r.attempts, itemsSolved: r.itemsSolved, correctRate: r.attempts > 0 ? r.correct / r.attempts : 0 }))

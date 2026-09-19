@@ -86,21 +86,16 @@ if (!process.env.DATABASE_URL && !process.env.POSTGRES_URL) {
   console.log("\nTier 2 — SKIPPED (no DATABASE_URL). Point it at the v2-dev Neon branch (pooled), then re-run.");
 } else {
   console.log("\nTier 2 — DB-gated (attempt round-trip · journey-mode scope F4 · reserved exclusion F2):");
-  const { getDb, recordAttempt, getJourneyAttempts, updateReviewQueue, getDueRefs, reserveItems, releaseItems, classScope } = await import("../packages/db/src/index.ts");
+  const { getDb, recordAttempt, getJourneyAttempts, updateReviewQueue, getDueRefs, reserveItems, releaseItems } = await import("../packages/db/src/index.ts");
   const db = getDb();
   const userId = crypto.randomUUID();
   const classId = crypto.randomUUID();
-  // dach-018 · Dieses Skript IST seine eigene Sitzung: es legt die Wegwerf-Klasse
-  // selbst an, also ist ihr Ausschnitt genau sie. In der Anwendung baut nur
-  // lib/identity.ts einen Ausschnitt; hier gibt es keine Sitzung, aus der einer
-  // kaeme, und das Tor prueft apps/web, nicht scripts/.
-  const scope = classScope([classId]);
   const [a, b] = [ids[2], ids[3]];
   const kindOf = (id) => (unit.vocab.some((v) => v.id === id) ? "vocab" : "grammar");
 
   // seed a JOURNEY attempt for `a`, and a non-journey (practice) attempt for `b`
-  await recordAttempt(db, scope, { userId, classId, itemId: a, kind: kindOf(a), unitSlug: "g2-u03", grade: 2, mode: journeyModeFor("g2-u03", "p1"), tier: "correct", clientAttemptId: crypto.randomUUID() });
-  await recordAttempt(db, scope, { userId, classId, itemId: b, kind: kindOf(b), unitSlug: "g2-u03", grade: 2, mode: "practice", tier: "correct", clientAttemptId: crypto.randomUUID() });
+  await recordAttempt(db, { userId, classId, itemId: a, kind: kindOf(a), unitSlug: "g2-u03", grade: 2, mode: journeyModeFor("g2-u03", "p1"), tier: "correct", clientAttemptId: crypto.randomUUID() });
+  await recordAttempt(db, { userId, classId, itemId: b, kind: kindOf(b), unitSlug: "g2-u03", grade: 2, mode: "practice", tier: "correct", clientAttemptId: crypto.randomUUID() });
 
   const best = bestTierPerItem(await getJourneyAttempts(db, userId, "g2-u03"));
   assert.ok(best.has(a), "the journey attempt is counted");
@@ -114,10 +109,10 @@ if (!process.env.DATABASE_URL && !process.env.POSTGRES_URL) {
   // F2 · a reserved item is excluded from getDueRefs (make it due first)
   await updateReviewQueue(db, userId, { itemId: a, kind: kindOf(a), unitSlug: "g2-u03", grade: 2 }, "correct", new Date(Date.now() - 100 * 86_400_000));
   assert.ok((await getDueRefs(db, userId, classId, { kind: "unit", slug: "g2-u03" }, 50)).some((r) => r.itemId === a), "a is due before reserving");
-  await reserveItems(db, scope, classId, [a]);
+  await reserveItems(db, classId, [a]);
   assert.ok(!(await getDueRefs(db, userId, classId, { kind: "unit", slug: "g2-u03" }, 50)).some((r) => r.itemId === a), "a is EXCLUDED after reserving");
   ok("getDueRefs excludes a reserved item (F2 — the mock pool never leaks)");
-  await releaseItems(db, scope, classId, [a]); // cleanup (attempt/queue rows keyed to a throwaway user)
+  await releaseItems(db, classId, [a]); // cleanup (attempt/queue rows keyed to a throwaway user)
 }
 
 console.log(`\n${pass} checks passed.`);
