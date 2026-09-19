@@ -22,8 +22,9 @@ export async function POST(req: Request) {
       solvedIds: () => getSolvedGameItemIds(getDb(), access.player.userId, 2, true),
       save: async (card, result) => {
         if (access.preview) throw new Error("preview cannot write");
-        await recordAttempt(getDb(), access.player.classScope, {
-          userId: access.player.userId, classId: access.player.classId, itemId: card.item.id,
+        const player = access.player;
+        await recordAttempt(getDb(), {
+          userId: player.userId, classId: player.classId, itemId: card.item.id,
           kind: "grammar", unitSlug: b.unit, grade: 2, mode: "game:g2", tier: result.tier,
           xpAwarded: xpForTier(card.item.difficulty * 10, result.tier),
           clientAttemptId: parsed.data.clientAttemptId, reviewContext: "story",

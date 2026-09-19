@@ -1,7 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { drizzle } from "drizzle-orm/neon-http";
 import * as schema from "./schema.ts";
-import { classScope } from "./scope.ts";
 import type { Db } from "./index.ts";
 import { recordAttempt, type RecordAttemptInput } from "./persist.ts";
 import { getSolvedGameItemIds } from "./game-progress.ts";
@@ -24,19 +23,17 @@ describe("school ledger integration with the actual SQL driver", () => {
     expect(b.log[0]!.params).toEqual([input.userId, 2, "game:g2", "wrong"]);
   });
   it("saves story attempts and XP without enqueueing unrenderable unit-review cards", async () => {
-    const a = recorder(); await recordAttempt(a.db, classScope([input.classId]), input);
+    const a = recorder(); await recordAttempt(a.db, input);
     const inserts = a.log.filter(x => x.sql.startsWith("insert"));
     expect(inserts.some(x => x.sql.includes('"practice_attempts"'))).toBe(true);
     expect(inserts.some(x => x.sql.includes('"user_progress"'))).toBe(true);
     expect(inserts.some(x => x.sql.includes('"review_queue"'))).toBe(false);
-    const b = recorder(); await recordAttempt(b.db, classScope([input.classId]), { ...input, reviewContext: "unit" });
+    const b = recorder(); await recordAttempt(b.db, { ...input, reviewContext: "unit" });
     expect(b.log.some(x => x.sql.startsWith("insert") && x.sql.includes('"review_queue"'))).toBe(true);
   });
-  it("does not reward duplicate requests or accept an out-of-scope class", async () => {
-    const a = recorder(false); const result = await recordAttempt(a.db, classScope([input.classId]), input);
+  it("does not reward duplicate requests", async () => {
+    const a = recorder(false); const result = await recordAttempt(a.db, input);
     expect(result.duplicate).toBe(true);
     expect(a.log.filter(x => x.sql.startsWith("insert"))).toHaveLength(1);
-    const b = recorder(); await expect(recordAttempt(b.db, classScope([input.userId]), input)).rejects.toThrow("outside");
-    expect(b.log).toHaveLength(0);
   });
 });
