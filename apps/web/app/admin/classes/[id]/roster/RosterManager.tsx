@@ -129,7 +129,7 @@ export default function RosterManager({
       </p>
       {archived && (
         <p style={{ background: "var(--bg-sunken)", border: "1px solid var(--card-border)", color: "var(--muted)", padding: "9px 13px", borderRadius: 12, fontSize: 13 }}>
-          This class is archived — students can no longer join or sign in. You can bring it back: Classes → »Archivierte Klassen« → »Wieder aktivieren«.
+          This class is archived — students can no longer join or sign in. It is brought back in the Lehrerzimmer at Lauter Einser.
         </p>
       )}
 
