@@ -22,6 +22,7 @@ import { claimClassAsTeacher, getDb, inviteTokenMatches, listClaimableClasses } 
 import { signIn } from "@/auth";
 import { grandmasterIds } from "@/lib/grandmaster";
 import { hashPin, STUDENT_PIN_PATTERN } from "@/lib/pin";
+import { tuerZiel } from "@/lib/konto/rueckfall";
 
 export const dynamic = "force-dynamic";
 
@@ -49,6 +50,10 @@ export default async function LehrkraftBeitrittSeite({
   params: Promise<{ token: string }>;
   searchParams: Promise<{ fehler?: string }>;
 }) {
+  // dach-074 · the fallback: before the switch-over day this page is main's,
+  // unchanged; from 00:00 Vienna that day it is a 307 to konto (never 308).
+  const ziel = tuerZiel("lehrkraft", "");
+  if (ziel) redirect(ziel);
   const { token } = await params;
   const sp = await searchParams;
 
@@ -60,6 +65,10 @@ export default async function LehrkraftBeitrittSeite({
 
   async function beitreten(formData: FormData) {
     "use server";
+    // A tab left open across midnight must not still write: from the day on the
+    // submit follows the door to konto (307) instead of throwing an error page.
+    const zu = tuerZiel("lehrkraft", "");
+    if (zu) redirect(zu);
     const classId = String(formData.get("classId") ?? "");
     const displayName = String(formData.get("displayName") ?? "").trim();
     const pin = String(formData.get("pin") ?? "");

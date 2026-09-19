@@ -20,6 +20,7 @@ import { createHash, timingSafeEqual } from "node:crypto";
 import { redirect } from "next/navigation";
 import { adoptAssignments, createV2Teacher, getDb, hasV2Teacher } from "@domigo/db";
 import { hashPin, TEACHER_PIN_PATTERN } from "@/lib/pin";
+import { tuerZiel } from "@/lib/konto/rueckfall";
 
 export const dynamic = "force-dynamic";
 
@@ -59,6 +60,10 @@ export default async function BootstrapPage({
 }: {
   searchParams: Promise<{ error?: string; done?: string; adopted?: string; name?: string }>;
 }) {
+  // dach-074 · the fallback: before the switch-over day this page is main's,
+  // unchanged; from 00:00 Vienna that day it is a 307 to konto (never 308).
+  const ziel = tuerZiel("bootstrap", "");
+  if (ziel) redirect(ziel);
   const sp = await searchParams;
   const tokenConfigured = !!process.env.TEACHER_BOOTSTRAP_TOKEN;
 
@@ -133,6 +138,10 @@ export default async function BootstrapPage({
 
   async function bootstrap(formData: FormData) {
     "use server";
+    // A tab left open across midnight must not still write: from the day on the
+    // submit follows the door to konto (307) instead of throwing an error page.
+    const zu = tuerZiel("bootstrap", "");
+    if (zu) redirect(zu);
     const token = String(formData.get("token") ?? "");
     const nickname = String(formData.get("nickname") ?? "").trim();
     const pin = String(formData.get("pin") ?? "");

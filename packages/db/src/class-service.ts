@@ -15,6 +15,7 @@ import type { Db } from "./index.ts";
 import { writeRosterEvent } from "./roster-events.ts";
 import { v2Classes, v2IdentityUsers } from "./schema.ts";
 import { v1Classes, v1Users } from "./v1.ts";
+import { assertWritableScope, type ClassScope } from "./scope.ts";
 import { allocateClassCode } from "./auth.ts";
 
 /** Longest allowed class name (a roster label, not prose). */
@@ -71,7 +72,7 @@ export interface OwnedClass {
  * gate for a per-class detail page (the roster view). Includes `archivedAt` so the
  * page can flag an archived class rather than 404 a still-valid bookmark.
  */
-export async function getClassForTeacher(db: Db, id: string, teacherId: string): Promise<OwnedClass | null> {
+export async function getClassForTeacher(db: Db, classScope: ClassScope, id: string, teacherId: string): Promise<OwnedClass | null> {
   const rows = await db
     .select({
       id: v2Classes.id,
@@ -82,10 +83,96 @@ export async function getClassForTeacher(db: Db, id: string, teacherId: string):
       createdAt: v2Classes.createdAt,
     })
     .from(v2Classes)
-    .where(and(eq(v2Classes.id, id), eq(v2Classes.teacherId, teacherId)))
+    .where(and(inArray(v2Classes.id, [...classScope]), eq(v2Classes.id, id), eq(v2Classes.teacherId, teacherId)))
     .limit(1);
   return rows[0] ?? null;
 }
+
+/**
+ * The teacher's own active (non-archived) classes, oldest first, each with a
+ * studentCount. Two queries then joined in JS (Neon HTTP has no cheap correlated
+ * count here, and the codebase already aggregates rosters this way): the classes,
+ * then one grouped head-count over their rosters. Only students carry a classId
+ * (teachers are null — see schema), so counting by classId IS the roster size.
+ */
+export async function listClassesForTeacher(db: Db, classScope: ClassScope, teacherId: string): Promise<ClassSummary[]> {
+  const classes = await db
+    .select({
+      id: v2Classes.id,
+      name: v2Classes.name,
+      inviteCode: v2Classes.inviteCode,
+      grade: v2Classes.grade,
+      createdAt: v2Classes.createdAt,
+    })
+    .from(v2Classes)
+    .where(and(inArray(v2Classes.id, [...classScope]), eq(v2Classes.teacherId, teacherId), isNull(v2Classes.archivedAt)))
+    .orderBy(v2Classes.createdAt);
+  if (classes.length === 0) return [];
+
+  const ids = classes.map((c) => c.id);
+  const counts = await db
+    .select({ classId: v2IdentityUsers.classId, n: sql<number>`count(*)::int` })
+    .from(v2IdentityUsers)
+    .where(inArray(v2IdentityUsers.classId, ids))
+    .groupBy(v2IdentityUsers.classId);
+  const byClass = new Map(counts.map((r) => [r.classId, r.n]));
+
+  return classes.map((c) => ({ ...c, studentCount: byClass.get(c.id) ?? 0 }));
+}
+
+/** An archived class the teacher owns — a ClassSummary plus WHEN it was retired. */
+export interface ArchivedClassSummary extends ClassSummary {
+  archivedAt: Date;
+}
+
+/**
+ * The teacher's own ARCHIVED classes, most recently retired first (K9b). The sibling
+ * listClassesForTeacher filters archived rows OUT, which is correct for the working
+ * list and is also why the platform had nothing to click: an archived class was
+ * invisible everywhere, so no un-archive button could exist. This reader is the other
+ * half of that filter, nothing more — same owner scope, same head count, same shape.
+ *
+ * The count is taken exactly as the active list takes it, so the two sections of the
+ * Classes page can never print different numbers for the same roster.
+ */
+export async function listArchivedClassesForTeacher(db: Db, classScope: ClassScope, teacherId: string): Promise<ArchivedClassSummary[]> {
+  const classes = await db
+    .select({
+      id: v2Classes.id,
+      name: v2Classes.name,
+      inviteCode: v2Classes.inviteCode,
+      grade: v2Classes.grade,
+      archivedAt: v2Classes.archivedAt,
+      createdAt: v2Classes.createdAt,
+    })
+    .from(v2Classes)
+    .where(and(inArray(v2Classes.id, [...classScope]), eq(v2Classes.teacherId, teacherId), isNotNull(v2Classes.archivedAt)))
+    .orderBy(desc(v2Classes.archivedAt));
+  if (classes.length === 0) return [];
+
+  const ids = classes.map((c) => c.id);
+  const counts = await db
+    .select({ classId: v2IdentityUsers.classId, n: sql<number>`count(*)::int` })
+    .from(v2IdentityUsers)
+    .where(inArray(v2IdentityUsers.classId, ids))
+    .groupBy(v2IdentityUsers.classId);
+  const byClass = new Map(counts.map((r) => [r.classId, r.n]));
+
+  // archivedAt is non-null by the WHERE clause; the column type stays nullable.
+  return classes.map((c) => ({ ...c, archivedAt: c.archivedAt!, studentCount: byClass.get(c.id) ?? 0 }));
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// dach-074 · THE LOCAL CLASS WRITERS, as a dated fallback — main's four, back.
+//
+// Until the switch-over day a PIN teacher creates, renames, archives and
+// unarchives classes here, exactly as on main; the routes in
+// apps/web/app/api/admin/classes refuse with 405 from 00:00 Vienna that day
+// (lib/konto/rueckfall.ts), and from then on classes are made at konto. The
+// three writers on an existing class now also take the class wall (scope
+// first, never empty) like every other writer on this branch; createClass
+// makes a class no scope can contain yet, so it cannot take one.
+// ─────────────────────────────────────────────────────────────────────────────
 
 /**
  * Create a class owned by `teacherId`. Re-validates name/grade (defense in depth —
@@ -116,92 +203,19 @@ export async function createClass(
 }
 
 /**
- * The teacher's own active (non-archived) classes, oldest first, each with a
- * studentCount. Two queries then joined in JS (Neon HTTP has no cheap correlated
- * count here, and the codebase already aggregates rosters this way): the classes,
- * then one grouped head-count over their rosters. Only students carry a classId
- * (teachers are null — see schema), so counting by classId IS the roster size.
- */
-export async function listClassesForTeacher(db: Db, teacherId: string): Promise<ClassSummary[]> {
-  const classes = await db
-    .select({
-      id: v2Classes.id,
-      name: v2Classes.name,
-      inviteCode: v2Classes.inviteCode,
-      grade: v2Classes.grade,
-      createdAt: v2Classes.createdAt,
-    })
-    .from(v2Classes)
-    .where(and(eq(v2Classes.teacherId, teacherId), isNull(v2Classes.archivedAt)))
-    .orderBy(v2Classes.createdAt);
-  if (classes.length === 0) return [];
-
-  const ids = classes.map((c) => c.id);
-  const counts = await db
-    .select({ classId: v2IdentityUsers.classId, n: sql<number>`count(*)::int` })
-    .from(v2IdentityUsers)
-    .where(inArray(v2IdentityUsers.classId, ids))
-    .groupBy(v2IdentityUsers.classId);
-  const byClass = new Map(counts.map((r) => [r.classId, r.n]));
-
-  return classes.map((c) => ({ ...c, studentCount: byClass.get(c.id) ?? 0 }));
-}
-
-/** An archived class the teacher owns — a ClassSummary plus WHEN it was retired. */
-export interface ArchivedClassSummary extends ClassSummary {
-  archivedAt: Date;
-}
-
-/**
- * The teacher's own ARCHIVED classes, most recently retired first (K9b). The sibling
- * listClassesForTeacher filters archived rows OUT, which is correct for the working
- * list and is also why the platform had nothing to click: an archived class was
- * invisible everywhere, so no un-archive button could exist. This reader is the other
- * half of that filter, nothing more — same owner scope, same head count, same shape.
- *
- * The count is taken exactly as the active list takes it, so the two sections of the
- * Classes page can never print different numbers for the same roster.
- */
-export async function listArchivedClassesForTeacher(db: Db, teacherId: string): Promise<ArchivedClassSummary[]> {
-  const classes = await db
-    .select({
-      id: v2Classes.id,
-      name: v2Classes.name,
-      inviteCode: v2Classes.inviteCode,
-      grade: v2Classes.grade,
-      archivedAt: v2Classes.archivedAt,
-      createdAt: v2Classes.createdAt,
-    })
-    .from(v2Classes)
-    .where(and(eq(v2Classes.teacherId, teacherId), isNotNull(v2Classes.archivedAt)))
-    .orderBy(desc(v2Classes.archivedAt));
-  if (classes.length === 0) return [];
-
-  const ids = classes.map((c) => c.id);
-  const counts = await db
-    .select({ classId: v2IdentityUsers.classId, n: sql<number>`count(*)::int` })
-    .from(v2IdentityUsers)
-    .where(inArray(v2IdentityUsers.classId, ids))
-    .groupBy(v2IdentityUsers.classId);
-  const byClass = new Map(counts.map((r) => [r.classId, r.n]));
-
-  // archivedAt is non-null by the WHERE clause; the column type stays nullable.
-  return classes.map((c) => ({ ...c, archivedAt: c.archivedAt!, studentCount: byClass.get(c.id) ?? 0 }));
-}
-
-/**
  * Rename a class — only when `id` AND `teacherId` match AND it isn't archived, so
  * a teacher can't touch another's (or a retired) class. A non-matching id updates
  * zero rows (a silent no-op, like archiveAssignment). No `updatedAt` column on
  * this table, so none is set.
  */
-export async function renameClass(db: Db, id: string, teacherId: string, name: string): Promise<void> {
+export async function renameClass(db: Db, classScope: ClassScope, id: string, teacherId: string, name: string): Promise<void> {
+  assertWritableScope(classScope, "renameClass");
   const nameError = validateClassName(name);
   if (nameError) throw new Error(`renameClass: ${nameError}`);
   await db
     .update(v2Classes)
     .set({ name: name.trim() })
-    .where(and(eq(v2Classes.id, id), eq(v2Classes.teacherId, teacherId), isNull(v2Classes.archivedAt)));
+    .where(and(inArray(v2Classes.id, classScope), eq(v2Classes.id, id), eq(v2Classes.teacherId, teacherId), isNull(v2Classes.archivedAt)));
 }
 
 /**
@@ -223,11 +237,12 @@ export async function renameClass(db: Db, id: string, teacherId: string, name: s
  * write "class X was archived" into a class they cannot touch. The flip repeats the
  * full WHERE, so nothing can slip through between the two statements.
  */
-export async function archiveClass(db: Db, id: string, teacherId: string): Promise<boolean> {
+export async function archiveClass(db: Db, classScope: ClassScope, id: string, teacherId: string): Promise<boolean> {
+  assertWritableScope(classScope, "archiveClass");
   const owned = await db
     .select({ id: v2Classes.id })
     .from(v2Classes)
-    .where(and(eq(v2Classes.id, id), eq(v2Classes.teacherId, teacherId), isNull(v2Classes.archivedAt)))
+    .where(and(inArray(v2Classes.id, classScope), eq(v2Classes.id, id), eq(v2Classes.teacherId, teacherId), isNull(v2Classes.archivedAt)))
     .limit(1);
   if (!owned[0]) return false;
 
@@ -241,7 +256,7 @@ export async function archiveClass(db: Db, id: string, teacherId: string): Promi
   const flipped = await db
     .update(v2Classes)
     .set({ archivedAt: new Date() })
-    .where(and(eq(v2Classes.id, id), eq(v2Classes.teacherId, teacherId), isNull(v2Classes.archivedAt)))
+    .where(and(inArray(v2Classes.id, classScope), eq(v2Classes.id, id), eq(v2Classes.teacherId, teacherId), isNull(v2Classes.archivedAt)))
     .returning({ id: v2Classes.id });
   return flipped.length > 0;
 }
@@ -262,11 +277,12 @@ export async function archiveClass(db: Db, id: string, teacherId: string): Promi
  * widening any authorization — the grandmaster pattern from roster-service.ts. He IS
  * allowed here: this is the correcting direction (see archiveClass above).
  */
-export async function unarchiveClass(db: Db, id: string, teacherId: string, actorId?: string): Promise<boolean> {
+export async function unarchiveClass(db: Db, classScope: ClassScope, id: string, teacherId: string, actorId?: string): Promise<boolean> {
+  assertWritableScope(classScope, "unarchiveClass");
   const owned = await db
     .select({ id: v2Classes.id })
     .from(v2Classes)
-    .where(and(eq(v2Classes.id, id), eq(v2Classes.teacherId, teacherId), isNotNull(v2Classes.archivedAt)))
+    .where(and(inArray(v2Classes.id, classScope), eq(v2Classes.id, id), eq(v2Classes.teacherId, teacherId), isNotNull(v2Classes.archivedAt)))
     .limit(1);
   if (!owned[0]) return false;
 
@@ -280,10 +296,22 @@ export async function unarchiveClass(db: Db, id: string, teacherId: string, acto
   const flipped = await db
     .update(v2Classes)
     .set({ archivedAt: null })
-    .where(and(eq(v2Classes.id, id), eq(v2Classes.teacherId, teacherId), isNotNull(v2Classes.archivedAt)))
+    .where(and(inArray(v2Classes.id, classScope), eq(v2Classes.id, id), eq(v2Classes.teacherId, teacherId), isNotNull(v2Classes.archivedAt)))
     .returning({ id: v2Classes.id });
   return flipped.length > 0;
 }
+
+// ─────────────────────────────────────────────────────────────────────────────
+// P3 · GRANDMASTER READS — the platform operator's all-classes view.
+//
+// Everything above this line is owner-scoped by construction. The functions below
+// are deliberately UNSCOPED, and every one of them carries `ForGrandmaster` in its
+// name so a call site that has NOT checked `isGrandmaster` first reads as wrong at
+// a glance. The rank check itself lives in the web app (apps/web/lib/grandmaster.ts,
+// an env allowlist) and is performed server-side BEFORE any of these run.
+// ─────────────────────────────────────────────────────────────────────────────
+
+/** Shown instead of an owner's name when the teacher row is in neither register. */
 
 // ─────────────────────────────────────────────────────────────────────────────
 // P3 · GRANDMASTER READS — the platform operator's all-classes view.
@@ -401,7 +429,7 @@ function errText(err: unknown): string {
  * grouping key is ever selected — the legacy register is a head count here, never
  * a list of people.
  */
-export async function listAllClassesForGrandmaster(db: Db): Promise<GrandmasterOverview> {
+export async function listAllClassesForGrandmaster(db: Db, classScope: ClassScope): Promise<GrandmasterOverview> {
   let v2: GrandmasterClassRow[] = [];
   let v2Failed = false;
   try {
@@ -415,7 +443,7 @@ export async function listAllClassesForGrandmaster(db: Db): Promise<GrandmasterO
         createdAt: v2Classes.createdAt,
       })
       .from(v2Classes)
-      .where(isNull(v2Classes.archivedAt))
+      .where(and(inArray(v2Classes.id, [...classScope]), isNull(v2Classes.archivedAt)))
       .orderBy(v2Classes.createdAt);
 
     if (classes.length > 0) {
@@ -482,13 +510,17 @@ export interface ForeignClass extends OwnedClass {
 }
 
 /**
- * ONE v2 class by id, WITHOUT the owner scope — the god-mode entry point. Returns
- * the owning `teacherId` so the caller can run the ordinary, owner-scoped services
- * with the OWNER's id: the WHERE-clause authorization stays untouched as the single
- * truth, and only the id it runs with is resolved server-side. Callers gate on
- * isGrandmaster first; this function itself is deliberately unscoped.
+ * ONE v2 class by id, without the OWNER filter — the entry point for a session
+ * whose scope is wider than its own classes. Returns the owning `teacherId` so
+ * the caller can run the ordinary, owner-scoped services with the OWNER's id.
+ *
+ * dach-018 · it is no longer unscoped. Until the switch-over this function asked
+ * nothing at all and the guard lived in eight pages that promised to call
+ * `isGrandmaster` first. Now the class wall applies here like everywhere else:
+ * the rank widens the SCOPE (lib/identity.ts), and a class outside it is not
+ * found — by the WHERE clause, not by a promise.
  */
-export async function getClassForGrandmaster(db: Db, id: string): Promise<ForeignClass | null> {
+export async function getClassForGrandmaster(db: Db, classScope: ClassScope, id: string): Promise<ForeignClass | null> {
   const rows = await db
     .select({
       id: v2Classes.id,
@@ -500,7 +532,7 @@ export async function getClassForGrandmaster(db: Db, id: string): Promise<Foreig
       createdAt: v2Classes.createdAt,
     })
     .from(v2Classes)
-    .where(eq(v2Classes.id, id))
+    .where(and(inArray(v2Classes.id, [...classScope]), eq(v2Classes.id, id)))
     .limit(1);
   return rows[0] ?? null;
 }
@@ -511,13 +543,80 @@ export async function getClassForGrandmaster(db: Db, id: string): Promise<Foreig
  * endpoints (/api/admin/roster/[studentId]) never see a class id. Unscoped by
  * design; the caller gates on isGrandmaster. Null when the student has no class or
  * does not exist.
+ *
+ * dach-018 · the class wall applies to the JOIN: a student whose class is not in
+ * the scope resolves to no owner, so the per-student endpoints cannot be steered
+ * at a child outside the session's reach.
  */
-export async function getOwnerIdForStudentForGrandmaster(db: Db, studentId: string): Promise<string | null> {
+export async function getOwnerIdForStudentForGrandmaster(db: Db, classScope: ClassScope, studentId: string): Promise<string | null> {
   const rows = await db
     .select({ teacherId: v2Classes.teacherId })
     .from(v2IdentityUsers)
     .innerJoin(v2Classes, eq(v2IdentityUsers.classId, v2Classes.id))
-    .where(eq(v2IdentityUsers.id, studentId))
+    .where(and(inArray(v2Classes.id, [...classScope]), eq(v2IdentityUsers.id, studentId)))
     .limit(1);
   return rows[0]?.teacherId ?? null;
+}
+
+/**
+ * dach-018 · EVERY class id, both halves of the dual-read — and nothing else.
+ *
+ * This is the ONE read that BUILDS a scope instead of obeying one, so it is the
+ * one entry in scripts/claim-filter-allowlist.json that is a read rather than a
+ * pre-session lookup. It exists because Koki's administration access (the
+ * grandmaster rank, apps/web/lib/grandmaster.ts) has to keep seeing every class
+ * after the switch-over (his decision, 2026-09-17) — and the honest way to give
+ * a wide view is a WIDE SCOPE, not four functions that answer without asking.
+ *
+ * The difference matters: with a wide scope the class wall stays TOTAL (there is
+ * exactly one way a class becomes visible, and it is the session's scope), the
+ * rank stays a fact about the SESSION rather than about the code, and the
+ * central, time-limited, logged insight that replaces it later (K-MASTER,
+ * dach-021) changes this one function instead of forty signatures.
+ *
+ * Ids only: no names, no counts, no owners. A scope is a list of keys.
+ */
+export async function listAllClassIds(db: Db): Promise<string[]> {
+  const ids = new Set<string>();
+  try {
+    for (const r of await db.select({ id: v2Classes.id }).from(v2Classes)) ids.add(r.id);
+  } catch (err) {
+    console.error("[class-service] v2 class ids unreadable:", err instanceof Error ? err.message.slice(0, 200) : String(err).slice(0, 200));
+  }
+  try {
+    for (const r of await db.select({ id: v1Classes.id }).from(v1Classes)) ids.add(r.id);
+  } catch (err) {
+    console.error("[class-service] legacy class ids unreadable:", err instanceof Error ? err.message.slice(0, 200) : String(err).slice(0, 200));
+  }
+  return [...ids];
+}
+
+/**
+ * dach-074 · THE SCOPE OF A PIN TEACHER, until the switch-over day.
+ *
+ * A teacher who signs in with the fallback PIN has no konto claims, so nobody
+ * hands this session a list of classes. What main did instead was ownership:
+ * every teacher query filtered on `teacher_id = me`, and every teacher could
+ * assign to the legacy v1 classes, which have no owner column. This builds
+ * exactly that list — the teacher's own v2 classes, archived ones included
+ * (the archive page reads them), plus every v1 class — so the class wall
+ * gives a PIN teacher the view main gave them, no more.
+ *
+ * Called only from lib/identity.ts (the one place a scope is built), and only
+ * while lib/konto/rueckfall.ts says the fallback is open.
+ */
+export async function listClassIdsForPinTeacher(db: Db, teacherId: string): Promise<string[]> {
+  const ids = new Set<string>();
+  try {
+    const eigene = await db.select({ id: v2Classes.id }).from(v2Classes).where(eq(v2Classes.teacherId, teacherId));
+    for (const r of eigene) ids.add(r.id);
+  } catch (err) {
+    console.error("[class-service] own class ids unreadable:", err instanceof Error ? err.message.slice(0, 200) : String(err).slice(0, 200));
+  }
+  try {
+    for (const r of await db.select({ id: v1Classes.id }).from(v1Classes)) ids.add(r.id);
+  } catch (err) {
+    console.error("[class-service] legacy class ids unreadable:", err instanceof Error ? err.message.slice(0, 200) : String(err).slice(0, 200));
+  }
+  return [...ids];
 }

@@ -23,6 +23,7 @@ import {
 } from "@domigo/db";
 import { getTeacher } from "@/lib/teacher";
 import { isGrandmaster } from "@/lib/grandmaster";
+import { lokalesSchreibenZu } from "@/lib/konto/rueckfall-antwort";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -46,6 +47,12 @@ const ImportSchema = z.object({
 });
 
 export async function POST(req: Request, { params }: { params: Promise<{ id: string }> }): Promise<Response> {
+  // dach-074 · a dated fallback: until the switch-over day a teacher imports a
+  // class list here as on main; from 00:00 Vienna that day this answers 405 —
+  // under konto the children come from konto, and a list imported here would
+  // create a second, unlinked copy of every child.
+  const zu = lokalesSchreibenZu();
+  if (zu) return zu;
   const teacher = await getTeacher(req);
   if (!teacher) return NextResponse.json({ ok: false, error: "forbidden" }, { status: 403 });
 
@@ -73,10 +80,10 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
     // owner IS the caller — one path, no special case.
     let ownerTeacherId = teacher.userId;
     if (isGrandmaster(teacher.userId)) {
-      const cls = await getClassForGrandmaster(getDb(), id);
+      const cls = await getClassForGrandmaster(getDb(), teacher.classScope, id);
       if (cls) ownerTeacherId = cls.teacherId;
     }
-    const imported = await importRoster(getDb(), {
+    const imported = await importRoster(getDb(), teacher.classScope, {
       classId: id,
       teacherId: ownerTeacherId,
       names,

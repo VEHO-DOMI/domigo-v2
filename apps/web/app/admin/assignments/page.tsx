@@ -5,7 +5,7 @@
  */
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { getDb, listAssignmentsByCreator, listClasses, listClassesForGrandmaster } from "@domigo/db";
+import { getDb, listAssignmentsByCreator, listClasses, listClassesInScope } from "@domigo/db";
 import { getTeacherForPage } from "@/lib/identity";
 import { isGrandmaster } from "@/lib/grandmaster";
 
@@ -21,10 +21,10 @@ export default async function AssignmentsPage() {
   // her own. A default would silently rebind future callers, which is exactly the
   // defect P1 had to repair in listClasses.
   const [rows, classes] = await Promise.all([
-    listAssignmentsByCreator(getDb(), teacher.userId).catch(() => []),
+    listAssignmentsByCreator(getDb(), teacher.classScope, teacher.userId).catch(() => []),
     (isGrandmaster(teacher.userId)
-      ? listClassesForGrandmaster(getDb())
-      : listClasses(getDb(), teacher.userId)
+      ? listClassesInScope(getDb(), teacher.classScope)
+      : listClasses(getDb(), teacher.classScope, teacher.userId)
     ).catch(() => []),
   ]);
   const className = new Map(classes.map((c) => [c.id, c.name]));

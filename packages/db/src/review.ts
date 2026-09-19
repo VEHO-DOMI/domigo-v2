@@ -4,10 +4,9 @@
  * getDueRefs, getDueCounts) are the shared service that powers Smart Review AND
  * game encounters (10_game_layer Law 6).
  */
-import { and, asc, eq, lte, notInArray, sql } from "drizzle-orm";
+import { and, asc, eq, inArray, lte, notInArray, sql } from "drizzle-orm";
 import type { Tier } from "@domigo/engine";
-import { reviewQueue } from "./schema.ts";
-import { listReservedForClass } from "./assignment-service.ts";
+import { reservedItems, reviewQueue } from "./schema.ts";
 import type { Db } from "./index.ts";
 
 export const LEITNER_MAX_BOX = 5;
@@ -105,6 +104,24 @@ export interface DueRef {
 }
 
 /**
+ * dach-018 · Die reservierten Items EINER Klasse, ohne Ausschnitt — modul-privat.
+ *
+ * Der exportierte Zwilling `listReservedForClass` traegt die Wand, weil ihn eine
+ * Lehrer-Flaeche ruft. Hier drin ist die Klassenkennung immer die, die die
+ * Sitzung selbst aufgeloest hat, und was zurueckkommt, verlaesst die Funktion
+ * nie: es wird nur ABGEZOGEN. Ein Ausschnitt-Parameter an `getDueRefs` haette
+ * bis in den Spielpfad gereicht — und den fasst diese Karte nicht an. Der Brief
+ * sagt es, und das Tor `perf-contract` sagt dasselbe.
+ */
+async function reservierteFuerKlasse(db: Db, classId: string): Promise<Set<string>> {
+  const rows = await db
+    .select({ itemId: reservedItems.itemId })
+    .from(reservedItems)
+    .where(and(eq(reservedItems.classId, classId), eq(reservedItems.active, true)));
+  return new Set(rows.map((r) => r.itemId));
+}
+
+/**
  * Due items for a user within a scope, soonest-due first. Returns refs, not items.
  *
  * `classId` is REQUIRED (J-1, F2): the class's active reserved items — the `mock`
@@ -123,7 +140,7 @@ export async function getDueRefs(
   limit = 20,
   now: Date = new Date(),
 ): Promise<DueRef[]> {
-  const reserved = await listReservedForClass(db, classId);
+  const reserved = await reservierteFuerKlasse(db, classId);
   const where = [eq(reviewQueue.userId, userId), lte(reviewQueue.dueAt, now)];
   if (scope.kind === "unit") where.push(eq(reviewQueue.unitSlug, scope.slug));
   if (scope.kind === "grade") where.push(eq(reviewQueue.grade, scope.grade));
@@ -154,7 +171,7 @@ export interface DueCounts {
 /** How many items are due now, bucketed by kind + grade. `classId` REQUIRED —
  *  the class's reserved (`mock`) items are excluded, matching getDueRefs (F2). */
 export async function getDueCounts(db: Db, userId: string, classId: string, now: Date = new Date()): Promise<DueCounts> {
-  const reserved = await listReservedForClass(db, classId);
+  const reserved = await reservierteFuerKlasse(db, classId);
   const where = [eq(reviewQueue.userId, userId), lte(reviewQueue.dueAt, now)];
   if (reserved.size > 0) where.push(notInArray(reviewQueue.itemId, [...reserved]));
   const rows = await db

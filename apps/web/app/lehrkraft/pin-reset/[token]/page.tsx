@@ -35,6 +35,7 @@ import {
 import { consumeResetToken, peekResetToken } from "@domigo/db/reset-tokens";
 import { signIn } from "@/auth";
 import { hashPin, STUDENT_PIN_PATTERN } from "@/lib/pin";
+import { tuerZiel } from "@/lib/konto/rueckfall";
 
 export const dynamic = "force-dynamic";
 
@@ -86,6 +87,10 @@ export default async function PinResetSeite({
   params: Promise<{ token: string }>;
   searchParams: Promise<{ fehler?: string }>;
 }) {
+  // dach-074 · the fallback: before the switch-over day this page is main's,
+  // unchanged; from 00:00 Vienna that day it is a 307 to konto (never 308).
+  const ziel = tuerZiel("pin-reset", "");
+  if (ziel) redirect(ziel);
   const { token } = await params;
   const sp = await searchParams;
   const blick = await peekResetToken(getDb(), token);
@@ -109,6 +114,10 @@ export default async function PinResetSeite({
 
   async function setzen(formData: FormData) {
     "use server";
+    // A tab left open across midnight must not still write: from the day on the
+    // submit follows the door to konto (307) instead of throwing an error page.
+    const zu = tuerZiel("pin-reset", "");
+    if (zu) redirect(zu);
     const pin = String(formData.get("pin") ?? "");
     const pin2 = String(formData.get("pin2") ?? "");
 

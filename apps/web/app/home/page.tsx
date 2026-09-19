@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { auth, signOut } from "@/auth";
+import { auth } from "@/auth";
+import { abmelden } from "../le/konto-aktion";
 import { listReleasedStories } from "@domigo/content-loader";
 import { getClassGrade, getDb, getDueCounts, getUserProgress, isStreakActive } from "@domigo/db";
 import { registerFor } from "@/lib/levels";
@@ -63,9 +64,11 @@ export default async function HomePage() {
     /* keep the chooser fallback */
   }
 
+  // dach-074 · the one sign-out of the app: a konto session goes on to konto's
+  // /logout, a PIN session ends here (app/le/konto-aktion.ts).
   async function doSignOut() {
     "use server";
-    await signOut({ redirectTo: "/" });
+    await abmelden();
   }
 
   const items: { href: string; icon: string; title: string; sub: string; badge?: string | null }[] = [

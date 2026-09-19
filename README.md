@@ -77,3 +77,9 @@ ahead of the [game layer](docs/handover/10_game_layer.md) (four standalone grade
   `pg_dump` first.
 - Never enable per-PR Neon branches (free-tier 10-branch cap — the v1 trap). CI uses a Postgres
   service container.
+
+## Anmeldung (dach-018)
+
+DomiGo meldet ueber den Konto-Dienst an; drei Variablen (Werte nur in Vercel):
+`KONTO_BASE_URL` · `KONTO_APP_SECRET` · `CRON_SECRET`. Was gebaut ist und welche
+Auslegungen getroffen wurden: `docs/KONTO_ADAPTER_ALS_GEBAUT.md`.

@@ -35,7 +35,7 @@ export async function POST(req: Request): Promise<Response> {
   if (!parsed.success) return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
   const { assignmentId, sessionId } = parsed.data;
 
-  const view = await getStudentAssignmentView(getDb(), assignmentId, acting.userId).catch(() => null);
+  const view = await getStudentAssignmentView(getDb(), acting.classScope, assignmentId, acting.userId).catch(() => null);
   if (!view || view.assignment.classId !== acting.classId) {
     return NextResponse.json({ ok: false, error: "forbidden" }, { status: 403 });
   }

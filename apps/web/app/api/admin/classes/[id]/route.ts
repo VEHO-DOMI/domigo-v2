@@ -10,12 +10,21 @@
  * the unchanged, owner-scoped service runs with HER id — but the journal records HIM.
  * Archiving deliberately has no such branch (see archiveClass's own note): the rank
  * reaches into the correcting direction, never the retiring one.
+ *
+ * dach-074 · all three are a dated fallback. Until the switch-over day they work
+ * as on main (now inside the class wall, like every writer on this branch). From
+ * 00:00 Vienna that day each answers 405 with the address of the Lehrer-Raum
+ * (lib/konto/rueckfall-antwort.ts): after the switch-over `classes.name` and
+ * `classes.archived_at` have ONE writer, the account service (SPEC §10 E1, B1-5).
+ * Archiving here alone would lock the class in DomiGo while konto kept signing
+ * the children in.
  */
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { archiveClass, getClassForGrandmaster, getDb, renameClass, unarchiveClass, validateClassName } from "@domigo/db";
 import { getTeacher } from "@/lib/teacher";
 import { isGrandmaster } from "@/lib/grandmaster";
+import { lokalesSchreibenZu } from "@/lib/konto/rueckfall-antwort";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -24,6 +33,8 @@ const RenameSchema = z.object({ name: z.string() });
 const ActionSchema = z.object({ action: z.literal("unarchive") });
 
 export async function PATCH(req: Request, { params }: { params: Promise<{ id: string }> }): Promise<Response> {
+  const zu = lokalesSchreibenZu();
+  if (zu) return zu;
   const teacher = await getTeacher(req);
   if (!teacher) return NextResponse.json({ ok: false, error: "forbidden" }, { status: 403 });
 
@@ -35,7 +46,7 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ id: st
   if (nameError) return NextResponse.json({ ok: false, error: "invalid", errors: [nameError] }, { status: 400 });
 
   try {
-    await renameClass(getDb(), id, teacher.userId, parsed.data.name);
+    await renameClass(getDb(), teacher.classScope, id, teacher.userId, parsed.data.name);
     return NextResponse.json({ ok: true });
   } catch {
     return NextResponse.json({ ok: false, error: "persist_failed" }, { status: 500 });
@@ -43,6 +54,8 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ id: st
 }
 
 export async function POST(req: Request, { params }: { params: Promise<{ id: string }> }): Promise<Response> {
+  const zu = lokalesSchreibenZu();
+  if (zu) return zu;
   const teacher = await getTeacher(req);
   if (!teacher) return NextResponse.json({ ok: false, error: "forbidden" }, { status: 403 });
 
@@ -56,10 +69,10 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
     // resolved owner IS the caller — one path, no special case.
     let ownerTeacherId = teacher.userId;
     if (isGrandmaster(teacher.userId)) {
-      const cls = await getClassForGrandmaster(getDb(), id);
+      const cls = await getClassForGrandmaster(getDb(), teacher.classScope, id);
       if (cls) ownerTeacherId = cls.teacherId;
     }
-    const restored = await unarchiveClass(getDb(), id, ownerTeacherId, teacher.userId);
+    const restored = await unarchiveClass(getDb(), teacher.classScope, id, ownerTeacherId, teacher.userId);
     // Zero rows is an honest state, not a crash: the class is someone else's, gone, or
     // was never archived. Saying "ok" there would report a restore that never happened.
     if (!restored) return NextResponse.json({ ok: false, error: "not_archived" }, { status: 404 });
@@ -70,12 +83,14 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
 }
 
 export async function DELETE(req: Request, { params }: { params: Promise<{ id: string }> }): Promise<Response> {
+  const zu = lokalesSchreibenZu();
+  if (zu) return zu;
   const teacher = await getTeacher(req);
   if (!teacher) return NextResponse.json({ ok: false, error: "forbidden" }, { status: 403 });
 
   const { id } = await params;
   try {
-    const archived = await archiveClass(getDb(), id, teacher.userId);
+    const archived = await archiveClass(getDb(), teacher.classScope, id, teacher.userId);
     // K9b review · the same shape as the un-archive branch above. archiveClass
     // returns false for exactly one situation — the class is not this teacher's, is
     // gone, or is already archived — and answering {ok:true} there would report a

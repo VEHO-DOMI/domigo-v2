@@ -1,33 +1,59 @@
-// NextAuth v5 (Auth.js) — two Credentials providers, ported from v1 lib/auth.ts.
-// Pseudonymous classroom auth: students = class code + nickname + 6-digit PIN;
-// teachers = nickname + PIN. Reuses the EXISTING Neon accounts (reads
-// public.users/classes via @domigo/db's read-only mirrors) and NEVER writes
-// public.* — so v1's lastSeenAt bump + onboardedAt writes are dropped and the
-// callbacks are pure.
+// NextAuth v5 (Auth.js) — sign-in happens at the account service (dach-018),
+// with the old PIN sign-in kept beside it as a DATED FALLBACK (dach-074).
+// Its address is never written here: check-umbrella-tokens keeps every tool
+// address in app/le-werkzeuge.json alone, so lib/konto/basis.ts reads it.
+//
+// Until the switch-over day (lib/konto/umstieg.ts, UMSTIEGSTAG) this file keeps
+// the two Credentials providers DomiGo always had: students sign in with a class
+// code, a nickname and a 6-digit PIN, teachers with a nickname and a PIN, both
+// against bcrypt hashes in this database (lib/konto/pin-rueckfall.ts). Each of
+// them refuses by itself from 00:00 Vienna on that day, and the session callback
+// drops their sessions at the same minute (lib/konto/rueckfall.ts). Why: on
+// 18.09. the adapter without this fallback was merged by mistake and nobody
+// could sign in for two hours — a merge must never lock anyone out again.
+//
+// What survives, and why, is written down in konto-local-login-allowlist.json —
+// one entry per leftover, each with an end date. `student`/`teacher` end ON the
+// switch-over day; `ops-link` is the machine lane for the test bank; the DEV_*
+// fallbacks live in middleware.ts and lib/identity.ts and can never run in
+// production.
+//
+// Still true, and still load-bearing: middleware.ts imports this file, so
+// everything it imports rides into the EDGE bundle. lib/konto/{basis,claims,
+// reste,umstieg,rueckfall}.ts are fetch-and-strings only for exactly that
+// reason. lib/konto/anmeldung.ts and lib/konto/pin-rueckfall.ts (bcrypt,
+// @domigo/db) are reached only from inside `authorize`, which NextAuth serves
+// from /api/auth/[...nextauth] with `runtime = "nodejs"` — the same way
+// bcryptjs was always reached here.
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
-import {
-  bumpAndCheck,
-  claimOpsLinkUse,
-  clearThrottle,
-  findOpsClassStudent,
-  getDb,
-  lookupStudentForAuth,
-  lookupTeacherForAuth,
-  SIGNIN_POLICY,
-  studentThrottleKey,
-  teacherThrottleKey,
-} from "@domigo/db";
-import { normalizeInviteCode } from "@/lib/invite-code";
+import { claimOpsLinkUse, findOpsClassStudent, getDb } from "@domigo/db";
 import { opsClassCode, opsLinkUseRow, parseOpsSessionLinkToken } from "@/lib/ops";
-import { verifyPin } from "@/lib/pin";
+import { fetchClaims, istLehrkraftFuerGo, meldeAppLink } from "@/lib/konto/claims";
+import { handoffAnmelden } from "@/lib/konto/anmeldung";
+import { restGueltig } from "@/lib/konto/reste";
+import { rueckfallOffen, sitzungsRegel } from "@/lib/konto/rueckfall";
+import { verifyStudent, verifyTeacher } from "@/lib/konto/pin-rueckfall";
 
 export type Role = "student" | "teacher";
+
+/** The provider name the whole adapter keys on. */
+export const KONTO_PROVIDER = "konto-handoff";
+/** The machine lane that outlives the switch-over, per the allowlist. */
+export const OPS_PROVIDER = "ops-link";
+/** How often a live session asks konto whether it still exists (SPEC §4.6). */
+export const CLAIMS_INTERVALL_MS = 60_000;
 
 declare module "next-auth" {
   interface User {
     role: Role;
     classId?: string | null;
+    /** konto session id — present only for a session built from a handoff. */
+    kontoSid?: string | null;
+    /** The class ids this session may see (SPEC §5 L3). */
+    scope?: string[];
+    /** Holds {area:"go", role:"teacher"} at konto — the area gate (SPEC §5 L2). */
+    goTeacher?: boolean;
   }
   interface Session {
     user: {
@@ -35,43 +61,14 @@ declare module "next-auth" {
       name?: string | null;
       role: Role;
       classId?: string | null;
+      /** Which door this session came through. Never absent on a live session. */
+      via?: string | null;
+      /** The class wall, carried from the claims. Empty means: nothing. */
+      scope?: string[];
+      /** May this session open the teacher surface at all (SPEC §5 L2)? */
+      goTeacher?: boolean;
     };
   }
-}
-
-// K2a · THE BRAKE SITS HERE, and not on the sign-in pages, because these two
-// functions are the floor BOTH doors stand on: the server actions on /signin and
-// /admin/signin, and the raw POST to /api/auth/callback/{student,teacher} that
-// NextAuth exposes and that no page code can guard. Counting an attempt before
-// bcrypt runs is also the point — a refusal must be cheap, and it must not tell
-// the caller by its timing whether the account exists.
-//
-// Both functions still return plain `null` on refusal, exactly like a wrong PIN, so
-// the sign-in page's message stays generic and a guesser learns nothing from being
-// stopped. And the brake is fail-open (auth-throttle.ts): if it cannot count, the
-// attempt proceeds.
-
-async function verifyStudent(classCode: string, nickname: string, pin: string) {
-  const code = normalizeInviteCode(classCode);
-  const nick = nickname.trim();
-  if (!code || !nick || !pin) return null;
-  const key = studentThrottleKey(code, nick);
-  if (!(await bumpAndCheck(getDb(), key, SIGNIN_POLICY))) return null;
-  const row = await lookupStudentForAuth(getDb(), code, nick);
-  if (!row || !(await verifyPin(pin, row.pinHash))) return null;
-  await clearThrottle(getDb(), key); // she got in — the slate is wiped
-  return { id: row.id, name: row.displayName, role: "student" as const, classId: row.classId };
-}
-
-async function verifyTeacher(nickname: string, pin: string) {
-  const nick = nickname.trim();
-  if (!nick || !pin) return null;
-  const key = teacherThrottleKey(nick);
-  if (!(await bumpAndCheck(getDb(), key, SIGNIN_POLICY))) return null;
-  const row = await lookupTeacherForAuth(getDb(), nick);
-  if (!row || !(await verifyPin(pin, row.pinHash))) return null;
-  await clearThrottle(getDb(), key);
-  return { id: row.id, name: row.displayName, role: "teacher" as const, classId: null };
 }
 
 /**
@@ -118,11 +115,41 @@ async function verifyOpsLink(token: string) {
       name: student.displayName,
       role: "student" as const,
       classId: student.classId,
+      // The machine lane sees exactly the one class it was minted for.
+      scope: student.classId ? [student.classId] : [],
+      goTeacher: false,
+      kontoSid: null,
     };
   } catch {
     // A database hiccup must not become an unretirable link (gate 4).
     return null;
   }
+}
+
+/**
+ * The handoff. ONE credential, because the signed one-time token IS the
+ * credential — the same shape as the ops link above, and for the same reason.
+ * Everything it decides lives in lib/konto/anmeldung.ts; every refusal comes
+ * back as plain `null`, so the page shows one message and a caller learns
+ * nothing about which check said no.
+ */
+async function verifyKontoHandoff(handoff: string) {
+  if (!handoff) return null;
+  const r = await handoffAnmelden(handoff, meldeAppLink);
+  if (!r.ok) {
+    console.error(`[konto] sign-in refused: ${r.grund}`);
+    return null;
+  }
+  const { nutzer } = r;
+  return {
+    id: nutzer.id,
+    name: nutzer.name,
+    role: nutzer.role,
+    classId: nutzer.classId,
+    kontoSid: nutzer.kontoSid,
+    scope: nutzer.scope,
+    goTeacher: nutzer.goTeacher,
+  };
 }
 
 export const { auth, handlers, signIn, signOut } = NextAuth({
@@ -131,39 +158,112 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
   trustHost: true,
   providers: [
     Credentials({
+      // dach-074 · FALLBACK until the switch-over day: the child's PIN sign-in
+      // from main. rueckfallOffen() is asked here AND inside verifyStudent — the
+      // gate check-no-local-login turns red on a fallback provider without it.
       id: "student",
       name: "Student",
       credentials: { classCode: {}, nickname: {}, pin: {} },
       authorize: (raw) =>
-        verifyStudent(String(raw?.classCode ?? ""), String(raw?.nickname ?? ""), String(raw?.pin ?? "")),
+        rueckfallOffen()
+          ? verifyStudent(String(raw?.classCode ?? ""), String(raw?.nickname ?? ""), String(raw?.pin ?? ""))
+          : null,
     }),
     Credentials({
+      // dach-074 · the same fallback for teachers.
       id: "teacher",
       name: "Teacher",
       credentials: { nickname: {}, pin: {} },
-      authorize: (raw) => verifyTeacher(String(raw?.nickname ?? ""), String(raw?.pin ?? "")),
+      authorize: (raw) =>
+        rueckfallOffen() ? verifyTeacher(String(raw?.nickname ?? ""), String(raw?.pin ?? "")) : null,
+    }),
+    Credentials({
+      id: KONTO_PROVIDER,
+      name: "Lauter Einser",
+      credentials: { handoff: {} },
+      authorize: (raw) => verifyKontoHandoff(String(raw?.handoff ?? "")),
     }),
     Credentials({
       // K2b · the ops sign-in link. ONE credential, because the signed token IS
       // the credential — see verifyOpsLink above for the four gates it passes.
-      id: "ops-link",
+      id: OPS_PROVIDER,
       name: "Ops link",
       credentials: { token: {} },
       authorize: (raw) => verifyOpsLink(String(raw?.token ?? "")),
     }),
   ],
   callbacks: {
-    jwt({ token, user }) {
+    /**
+     * SPEC §4.6 (R-F10), with the dach-074 fallback — decided by sitzungsRegel
+     * (lib/konto/rueckfall.ts), in this order and no other:
+     *
+     *   via = konto-handoff  ⇒ a konto session id is mandatory; every 60 s the
+     *                          app asks konto whether the session still exists
+     *                          and what it may now see.
+     *   via = a declared leftover, still inside its end date
+     *                        ⇒ no question is asked; that provider's own limits
+     *                          apply. `student`/`teacher` are leftovers until
+     *                          the switch-over day (exclusive).
+     *   no via at all        ⇒ a cookie minted before this PR — a PIN session.
+     *                          It lives until the switch-over day and not a
+     *                          minute longer.
+     *   anything else        ⇒ null.
+     *
+     * An UNREACHABLE konto is deliberately not a refusal. A revoked session and a
+     * refused call both end the session; a network hiccup does not, or one slow
+     * minute at konto would sign a whole class out mid-lesson. The check simply
+     * has not happened, so it is not stamped, and the next request tries again.
+     */
+    async jwt({ token, user, account }) {
       if (user) {
         token.role = (user as { role: Role }).role;
         token.classId = (user as { classId?: string | null }).classId ?? null;
+        token.scope = (user as { scope?: string[] }).scope ?? [];
+        token.go_teacher = (user as { goTeacher?: boolean }).goTeacher ?? false;
+        token.konto_sid = (user as { kontoSid?: string | null }).kontoSid ?? null;
+        token.app_user_id = (user as { id?: string }).id ?? null;
       }
-      return token;
+      if (account?.provider) token.via = account.provider;
+
+      const via = typeof token.via === "string" ? token.via : null;
+      const regel = sitzungsRegel(via, new Date(), KONTO_PROVIDER, restGueltig);
+
+      if (regel === "konto") {
+        const sid = typeof token.konto_sid === "string" ? token.konto_sid : null;
+        if (!sid) return null;
+        const zuletzt = typeof token.konto_checked_at === "number" ? token.konto_checked_at : 0;
+        const jetzt = Date.now();
+        if (jetzt - zuletzt >= CLAIMS_INTERVALL_MS) {
+          const antwort = await fetchClaims(sid);
+          if (antwort.status === "revoked") return null;
+          if (antwort.status === "ok") {
+            const c = antwort.claims;
+            token.scope = c.scope.classes
+              .map((k) => k.app_class_id)
+              .filter((id): id is string => typeof id === "string" && id.length > 0);
+            token.role = c.kind;
+            // The area gate is re-asked every minute, not only at sign-in: a
+            // role withdrawn at konto has to close the teacher surface here
+            // within the same minute a revoked session would close it.
+            token.go_teacher = istLehrkraftFuerGo(c);
+            // The old field the 14 existing read sites still use. A child is one
+            // class; a teacher is none, exactly as before the switch-over.
+            token.classId = c.kind === "student" ? ((token.scope as string[])[0] ?? null) : null;
+            token.konto_checked_at = jetzt;
+          }
+        }
+        return token;
+      }
+
+      return regel === "rest" ? token : null;
     },
     session({ session, token }) {
       if (token.sub) session.user.id = token.sub;
       session.user.role = token.role as Role;
       session.user.classId = (token.classId as string | null | undefined) ?? null;
+      session.user.via = (token.via as string | null | undefined) ?? null;
+      session.user.scope = (token.scope as string[] | undefined) ?? [];
+      session.user.goTeacher = token.go_teacher === true;
       return session;
     },
   },

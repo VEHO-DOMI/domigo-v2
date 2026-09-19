@@ -52,7 +52,7 @@ export async function POST(req: Request): Promise<Response> {
   const { clientAttemptId, assignmentId, sessionId, itemId, input } = parsed.data;
 
   // Load the assignment (its item set) + this student's sessions.
-  const view = await getStudentAssignmentView(getDb(), assignmentId, acting.userId).catch(() => null);
+  const view = await getStudentAssignmentView(getDb(), acting.classScope, assignmentId, acting.userId).catch(() => null);
   if (!view || view.assignment.classId !== acting.classId) {
     return NextResponse.json({ ok: false, error: "forbidden" }, { status: 403 });
   }
@@ -91,7 +91,7 @@ export async function POST(req: Request): Promise<Response> {
 
   // Persist under mode assign:<id> + {sessionId} so the sitting is scorable.
   try {
-    await recordAttempt(getDb(), {
+    await recordAttempt(getDb(), acting.classScope, {
       userId: acting.userId,
       classId: acting.classId,
       itemId,
