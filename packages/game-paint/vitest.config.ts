@@ -35,6 +35,10 @@ import { defineConfig } from "vitest/config";
 // fails on a busy machine.
 export default defineConfig({
   test: {
+    // codex-001: bound contention on the MacBook Air. A passing suite can
+    // otherwise still exit 1 when a worker's onTaskUpdate message times out.
+    minWorkers: 1,
+    maxWorkers: 1,
     testTimeout: 120_000,
     hookTimeout: 120_000,
   },
