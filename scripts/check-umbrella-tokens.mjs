@@ -49,10 +49,11 @@ const selftest = process.argv.includes("--selftest");
 const SELF = "scripts/check-umbrella-tokens.mjs";
 
 // ── Die Pins ────────────────────────────────────────────────────────────────
-// Quelle: CODEX-ABLAGE-MARKE/tokens/tokens.json, Fassung 2026-09-13 (S2). Dieselben zwei
+// Quelle: CODEX-ABLAGE-MARKE/tokens/tokens.json, Fassung 2026-09-18 (S2). Dieselben zwei
 // Werte stehen in jeder Lauter-Einser-App (Gestaltungsregel §6 Zusatz 2).
+// le-werkzeuge.json: Bereichs-Liste Fassung 3 (Kokis Namen 18.09., Board marke-032).
 const SHA256_LE_TOKENS = "993eff17957e302356067bab76fa592717c76c69a3673be0f44841ea7d9fdf2a";
-const SHA256_LE_WERKZEUGE = "33e11c57f2b0478cab259b8922fd70b937cab7a3c74c9e5d5e31102825712441";
+const SHA256_LE_WERKZEUGE = "95d505542c190db8d6df4deeaa47d4bbc9e32edcb6fd8e72cff3a6a377d0ccce";
 
 // :root + die drei [data-grade]-Blöcke, von `:root {` bis zur schließenden Klammer von
 // [data-grade="4"], gemessen an main 4de2fc9d (globals.css Z. 11–105 vor BRAND-2).

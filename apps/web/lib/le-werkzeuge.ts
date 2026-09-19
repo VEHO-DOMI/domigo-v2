@@ -20,6 +20,12 @@ export type Rolle = "student" | "teacher";
 export type Werkzeug = {
   id: string;
   titel: string;
+  /**
+   * Fassung 3 (18.09.): fertiger Kopfzeilen-Wortlaut aus der Quelle — »Fach · Stufe — titel«,
+   * ohne Stufe nur der Titel. DomiGo zeigt ihn heute nicht; das Feld steht hier, damit der
+   * Typ die Datei vollständig beschreibt und eine spätere Kopfzeilen-Karte nichts umbauen muss.
+   */
+  anzeige: string;
   satz: string;
   kategorie: { fach: string; stufe: string };
   adresse: string;
@@ -27,14 +33,18 @@ export type Werkzeug = {
   sprache: string;
   sichtbar_fuer: Rolle[];
   stand: WerkzeugStand;
+  /** Anmelde-App bei konto (»srdp« | »go« | »tracker«), oder null: meldet nicht über konto an. */
+  konto_app: string | null;
+  /** Die eine Rückkehr-Adresse, die konto für konto_app zulässt, oder null. */
+  konto_return: string | null;
 };
 
 /** DomiGos eigener Eintrag: mit aria-current gezeigt, nie als Sprung. */
 export const EIGENES_WERKZEUG = "eng-us";
 
 /**
- * Die Einträge, die eine Rolle sehen darf, in Datei-Reihenfolge (Schüler-Werkzeuge
- * zuerst, Lehrer-Raum und Konto zuletzt). Gäste (null) sehen, was Schüler sehen.
+ * Die Einträge, die eine Rolle sehen darf, in Datei-Reihenfolge (Bereiche für Schüler
+ * zuerst, Lehrer-Notizbuch und Mein Bereich zuletzt). Gäste (null) sehen, was Schüler sehen.
  */
 export function werkzeugeFuer(rolle: Rolle | null): Werkzeug[] {
   const r: Rolle = rolle ?? "student";
