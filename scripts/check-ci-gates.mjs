@@ -244,7 +244,7 @@ const ciOnDisk = fs.readFileSync(CI, "utf8");
 const DEBT = path.join(R, "docs/design/g1/paint/DEBT_REGISTER.md");
 const offenePunkte = new Set(
   fs.readFileSync(DEBT, "utf8").split("\n")
-    .map((l) => l.match(/^\| (D-\d+) \|.*\boffen\b/))
+    .map((l) => l.match(/^\| (D-\d+) \|.*\|\s*offen\b/))
     .filter(Boolean)
     .map((m) => m[1]),
 );

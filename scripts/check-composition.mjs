@@ -304,7 +304,7 @@ const COHERENCE_WAIVERS = {
 // Verzichtslisten dieser Datei kennen weiter die `until`-Form.
 const OFFENE_PUNKTE = new Set(
   fs.readFileSync(path.join(process.cwd(), "docs/design/g1/paint/DEBT_REGISTER.md"), "utf8").split("\n")
-    .map((l) => l.match(/^\| (D-\d+) \|.*\boffen\b/))
+    .map((l) => l.match(/^\| (D-\d+) \|.*\|\s*offen\b/))
     .filter(Boolean)
     .map((m) => m[1]),
 );

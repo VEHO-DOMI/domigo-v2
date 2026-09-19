@@ -333,7 +333,7 @@ function offenLaw(text, id, anzahl) {
   if (anzahl === 0) return [];
   const zeile = text.split("\n").find((l) => l.startsWith(`| ${id} |`));
   if (!zeile) return [`Die Ausnahmeliste des Schulden-Registers (${anzahl} Einträge, Eigentümer ${LINE_REF_OWNER}) nennt ${id}, aber das Register hat keine Zeile ${id} — ungedeckte Duldung`];
-  if (!/\boffen\b/.test(zeile)) return [`${id} ist nicht mehr »offen« — die Ausnahmeliste gehört dann geleert, nicht still weitergeführt`];
+  if (!/\|\s*offen\b/.test(zeile)) return [`${id} ist nicht mehr »offen« — die Ausnahmeliste gehört dann geleert, nicht still weitergeführt`];
   return [];
 }
 
