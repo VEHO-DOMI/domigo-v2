@@ -1,0 +1,210 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "board": "welle-047",
+  "base": "34a1e545",
+  "tool": "built-in imagegen",
+  "portraits": [
+    {
+      "file": "ben.png",
+      "name": "Ben",
+      "md5": "ca2322ca6a879a888f48471c135b5ef8",
+      "bytes": 3025369,
+      "lock": "13 · sandblonde Wellen · Sommersprossen · orange Steppweste",
+      "acceptedByKoki": false
+    },
+    {
+      "file": "leah.png",
+      "name": "Leah",
+      "md5": "ec4bbc161fbdcb470a57799653daef1d",
+      "bytes": 3072198,
+      "lock": "13 · dunkler Lockendutt · runde Brille · Jeansjacke und Jeans",
+      "acceptedByKoki": false
+    },
+    {
+      "file": "leo.png",
+      "name": "Leo",
+      "md5": "7064d1bef5b558e714714993697306e8",
+      "bytes": 2883558,
+      "lock": "13 · schwarzer Hoodie · Kopfhörer · linkes Auge verdeckt",
+      "acceptedByKoki": false
+    },
+    {
+      "file": "sara.png",
+      "name": "Sara",
+      "md5": "4d2180962bfba5f39a76c6fe52c68fbf",
+      "bytes": 2852839,
+      "lock": "13 gemäß Karte · monochrom · Silbersträhne an linker Schläfe",
+      "acceptedByKoki": false
+    },
+    {
+      "file": "you.png",
+      "name": "DU",
+      "md5": "db5fb90056d65c79d666bb4ec30b4cdd",
+      "bytes": 2957716,
+      "lock": "13 · grauer Hoodie · ausschließlich Rückenansicht · kein Gesicht",
+      "acceptedByKoki": false
+    }
+  ],
+  "targetImages": [
+    {
+      "stem": "cover_title",
+      "characters": [
+        "leah",
+        "leo",
+        "ben",
+        "you"
+      ],
+      "status": "not-generated-awaiting-cast-verdict",
+      "note": ""
+    },
+    {
+      "stem": "card_ch01",
+      "characters": [
+        "leah",
+        "leo",
+        "ben",
+        "you"
+      ],
+      "status": "not-generated-awaiting-cast-verdict",
+      "note": "Ep. 1 vor Generation gegen fertige Geschichte prüfen; der Bibliotheksprompt wurde vor den Story-Items geschrieben."
+    },
+    {
+      "stem": "card_ch02",
+      "characters": [
+        "ben",
+        "leo",
+        "leah"
+      ],
+      "status": "not-generated-awaiting-cast-verdict",
+      "note": ""
+    },
+    {
+      "stem": "card_ch03",
+      "characters": [
+        "leah",
+        "ben"
+      ],
+      "status": "not-generated-awaiting-cast-verdict",
+      "note": ""
+    },
+    {
+      "stem": "card_ch04",
+      "characters": [
+        "ben",
+        "leo",
+        "leah"
+      ],
+      "status": "not-generated-awaiting-cast-verdict",
+      "note": ""
+    },
+    {
+      "stem": "card_ch05",
+      "characters": [
+        "ben",
+        "leah",
+        "leo"
+      ],
+      "status": "not-generated-awaiting-cast-verdict",
+      "note": ""
+    },
+    {
+      "stem": "card_ch06",
+      "characters": [
+        "leah",
+        "leo",
+        "ben",
+        "you"
+      ],
+      "status": "not-generated-awaiting-cast-verdict",
+      "note": "Gruppenfoto so komponieren, dass DU strikt von hinten bleibt."
+    },
+    {
+      "stem": "card_ch07",
+      "characters": [
+        "leah",
+        "leo",
+        "ben",
+        "you"
+      ],
+      "status": "not-generated-awaiting-cast-verdict",
+      "note": ""
+    },
+    {
+      "stem": "card_ch08",
+      "characters": [
+        "leah"
+      ],
+      "status": "not-generated-awaiting-cast-verdict",
+      "note": ""
+    },
+    {
+      "stem": "card_ch09",
+      "characters": [
+        "ben",
+        "leah",
+        "leo"
+      ],
+      "status": "not-generated-awaiting-cast-verdict",
+      "note": ""
+    },
+    {
+      "stem": "card_ch10",
+      "characters": [
+        "you",
+        "sara"
+      ],
+      "status": "not-generated-awaiting-cast-verdict",
+      "note": "Bankgespräch mit DU von hinten; Saras Alter vor Welle bestätigen."
+    },
+    {
+      "stem": "card_ch11",
+      "characters": [
+        "you"
+      ],
+      "status": "not-generated-awaiting-cast-verdict",
+      "note": "QUELLKONFLIKT: Prompt beleuchtet ein erschrockenes Gesicht, Besetzung nur DU. Vor Welle als Rückenansicht mit zitternder Hand neu formulieren."
+    },
+    {
+      "stem": "card_ch12",
+      "characters": [
+        "ben",
+        "leah",
+        "leo"
+      ],
+      "status": "not-generated-awaiting-cast-verdict",
+      "note": ""
+    },
+    {
+      "stem": "card_ch13",
+      "characters": [
+        "leah",
+        "leo",
+        "sara",
+        "you"
+      ],
+      "status": "not-generated-awaiting-cast-verdict",
+      "note": "Saras Alter bestätigen; DU im Sitzkreis strikt von hinten."
+    },
+    {
+      "stem": "card_ch14",
+      "characters": [
+        "leah",
+        "leo",
+        "ben",
+        "you"
+      ],
+      "status": "not-generated-awaiting-cast-verdict",
+      "note": "QUELLKONFLIKT: Prosa „four plus Ben“ nennt fünf, chars enthält vier ohne Sara. Besetzung vor Welle durch GG klären."
+    },
+    {
+      "stem": "end_episode",
+      "characters": [
+        "ben",
+        "leah",
+        "leo"
+      ],
+      "status": "not-generated-awaiting-cast-verdict",
+      "note": ""
+    }
+  ]
+}
