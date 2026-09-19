@@ -13,6 +13,7 @@ import { claimStudent, findActiveClassByCode, getDb, unclaimedForClaim } from "@
 import { signIn } from "@/auth";
 import { hashPin, STUDENT_PIN_PATTERN } from "@/lib/pin";
 import { normalizeInviteCode } from "@/lib/invite-code";
+import { tuerZiel } from "@/lib/konto/rueckfall";
 
 export const dynamic = "force-dynamic";
 
@@ -26,6 +27,10 @@ export default async function JoinPage({
   searchParams: Promise<{ error?: string }>;
 }) {
   const { code } = await params;
+  // dach-074 · the fallback: before the switch-over day this page is main's,
+  // unchanged; from 00:00 Vienna that day it is a 307 to konto (never 308).
+  const ziel = tuerZiel("join", code);
+  if (ziel) redirect(ziel);
   const sp = await searchParams;
   const normalized = normalizeInviteCode(code);
 
@@ -48,6 +53,10 @@ export default async function JoinPage({
 
   async function claim(formData: FormData) {
     "use server";
+    // A tab left open across midnight must not still write: from the day on the
+    // submit follows the door to konto (307) instead of throwing an error page.
+    const zu = tuerZiel("join", code);
+    if (zu) redirect(zu);
     const studentId = String(formData.get("studentId") ?? "");
     const displayName = String(formData.get("displayName") ?? "").trim();
     const pin = String(formData.get("pin") ?? "");

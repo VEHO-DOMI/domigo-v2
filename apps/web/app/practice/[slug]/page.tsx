@@ -23,7 +23,7 @@ export default async function UnitPracticePage({ params }: { params: Promise<{ s
   // J-1 (F2): free practice EXCLUDES the class's reserved items (the `mock` pool),
   // so a teacher's held-out assessment items never surface in self-study — the
   // same reserve integrity Smart Review + game encounters enforce.
-  const reserved = acting ? await listReservedForClass(getDb(), acting.classId).catch(() => new Set<string>()) : new Set<string>();
+  const reserved = acting ? await listReservedForClass(getDb(), acting.classScope, acting.classId).catch(() => new Set<string>()) : new Set<string>();
   const vocab = unit.vocab.filter((v) => assignPool(v.id, reserved) !== "mock");
   const grammar = unit.grammar.filter((g) => assignPool(g.id, reserved) !== "mock");
 

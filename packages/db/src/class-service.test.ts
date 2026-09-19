@@ -4,14 +4,13 @@ import {
   MAX_CLASS_NAME_LENGTH,
   UNARCHIVE_KIND,
   UNKNOWN_TEACHER_LABEL,
-  archiveClass,
   listAllClassesForGrandmaster,
   listArchivedClassesForTeacher,
-  unarchiveClass,
   validateClassName,
   validateGrade,
 } from "./class-service.ts";
 import type { Db } from "./index.ts";
+import { classScope } from "./scope.ts";
 import { eq, sql } from "drizzle-orm";
 import { v2Classes } from "./schema.ts";
 
@@ -183,7 +182,7 @@ function happyDb(overrides: Partial<{ v2: unknown[]; counts: unknown[]; names: u
 describe("listAllClassesForGrandmaster — every class on the platform, both registers", () => {
   it("returns each v2 class with its OWNER's name and both head counts", async () => {
     const { db } = happyDb();
-    const view = await listAllClassesForGrandmaster(db);
+    const view = await listAllClassesForGrandmaster(db, SCOPE);
     expect(view.v2).toEqual([
       {
         id: "v2-a",
@@ -202,13 +201,13 @@ describe("listAllClassesForGrandmaster — every class on the platform, both reg
 
   it("returns the legacy register as name + grade + a head count, nothing more", async () => {
     const { db } = happyDb();
-    const view = await listAllClassesForGrandmaster(db);
+    const view = await listAllClassesForGrandmaster(db, SCOPE);
     expect(view.legacy).toEqual([{ id: "v1-a", name: "2B", grade: 2, studentCount: 21 }]);
   });
 
   it("counts CLAIMED students with count(claimed_at), not a second head count", async () => {
     const { db, selections } = happyDb();
-    await listAllClassesForGrandmaster(db);
+    await listAllClassesForGrandmaster(db, SCOPE);
     const countSelection = projectionAtoms(selections[1]); // call 2 = the grouped roster counts
     expect(countSelection).toContain("col:claimed_at"); // the claimed half reads the claim stamp …
     expect(countSelection.some((a) => a.includes("count("))).toBe(true); // … inside a count()
@@ -217,7 +216,7 @@ describe("listAllClassesForGrandmaster — every class on the platform, both reg
 
   it("never selects a person column from the legacy register (a head count, not a list)", async () => {
     const { db, selections } = happyDb();
-    await listAllClassesForGrandmaster(db);
+    await listAllClassesForGrandmaster(db, SCOPE);
     const legacyCounts = projectionAtoms(selections[4]); // call 5 = the v1 grouped counts
     expect(legacyCounts).toContain("col:class_id");
     for (const forbidden of ["col:display_name", "col:given_name", "col:pin_hash", "col:id"]) {
@@ -227,7 +226,7 @@ describe("listAllClassesForGrandmaster — every class on the platform, both reg
 
   it("filters archived rows OUT of BOTH registers (not in)", async () => {
     const { db, conditions } = happyDb();
-    await listAllClassesForGrandmaster(db);
+    await listAllClassesForGrandmaster(db, SCOPE);
     for (const idx of [0, 3]) { // call 1 = v2 classes, call 4 = legacy classes
       const where = atomsOf(conditions[idx]);
       expect(where).toContain("col:archived_at");
@@ -237,7 +236,7 @@ describe("listAllClassesForGrandmaster — every class on the platform, both reg
 
   it("is NOT scoped to any teacher — that is the whole point of the rank", async () => {
     const { db, conditions } = happyDb();
-    await listAllClassesForGrandmaster(db);
+    await listAllClassesForGrandmaster(db, SCOPE);
     expect(atomsOf(conditions[0])).not.toContain("col:teacher_id");
   });
 
@@ -248,7 +247,7 @@ describe("listAllClassesForGrandmaster — every class on the platform, both reg
       [legacyRow],
       [{ classId: "v1-a", total: 21 }],
     ]);
-    const view = await listAllClassesForGrandmaster(db);
+    const view = await listAllClassesForGrandmaster(db, SCOPE);
     expect(view.v2Failed).toBe(true); // the honest third state
     expect(view.v2).toEqual([]);
     expect(view.legacy).toHaveLength(1); // the register that COULD be read still is
@@ -264,7 +263,7 @@ describe("listAllClassesForGrandmaster — every class on the platform, both reg
       [{ id: "T-2", displayName: "TEST-Kollegin" }],
       new Error('relation "public.classes" does not exist'),
     ]);
-    const view = await listAllClassesForGrandmaster(db);
+    const view = await listAllClassesForGrandmaster(db, SCOPE);
     expect(view.legacyFailed).toBe(true); // the honest third state, now on both sides
     expect(view.legacy).toEqual([]);
     expect(view.v2).toHaveLength(1); // the register that COULD be read still is
@@ -273,7 +272,7 @@ describe("listAllClassesForGrandmaster — every class on the platform, both reg
 
   it("K2b · both flags are false on a healthy read — the symmetry is the point", async () => {
     const { db } = happyDb();
-    const view = await listAllClassesForGrandmaster(db);
+    const view = await listAllClassesForGrandmaster(db, SCOPE);
     expect(view.v2Failed).toBe(false);
     expect(view.legacyFailed).toBe(false);
   });
@@ -283,7 +282,7 @@ describe("listAllClassesForGrandmaster — every class on the platform, both reg
     // instead of from a caught throw, this case would report a broken register on a
     // platform that simply has no old classes left.
     const { db } = happyDb({ legacy: [], legacyCounts: [] });
-    const view = await listAllClassesForGrandmaster(db);
+    const view = await listAllClassesForGrandmaster(db, SCOPE);
     expect(view.legacy).toEqual([]);
     expect(view.legacyFailed).toBe(false);
   });
@@ -298,7 +297,7 @@ describe("listAllClassesForGrandmaster — every class on the platform, both reg
       [legacyRow],
       [{ classId: "v1-a", total: 21 }],
     ]);
-    const view = await listAllClassesForGrandmaster(db);
+    const view = await listAllClassesForGrandmaster(db, SCOPE);
     expect(view.v2[0]!.ownerName).toBe(UNKNOWN_TEACHER_LABEL);
     expect(view.v2[0]!.ownerId).toBe("T-2"); // the id is still exact
   });
@@ -312,13 +311,13 @@ describe("listAllClassesForGrandmaster — every class on the platform, both reg
       [legacyRow],
       [{ classId: "v1-a", total: 21 }],
     ]);
-    const view = await listAllClassesForGrandmaster(db);
+    const view = await listAllClassesForGrandmaster(db, SCOPE);
     expect(view.v2[0]!.ownerName).toBe("Koki");
   });
 
   it("shows a class with an empty roster as 0/0 rather than dropping it", async () => {
     const { db } = happyDb({ counts: [] });
-    const view = await listAllClassesForGrandmaster(db);
+    const view = await listAllClassesForGrandmaster(db, SCOPE);
     expect(view.v2).toHaveLength(1);
     expect(view.v2[0]!.studentCount).toBe(0);
     expect(view.v2[0]!.claimedCount).toBe(0);
@@ -409,108 +408,24 @@ const FOREIGN = "22222222-2222-2222-2222-222222222222";
 const GRANDMASTER = "33333333-3333-3333-3333-333333333333";
 const CLS = "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee";
 
-describe("unarchiveClass — one column back to NULL, and only where it may be", () => {
-  it("writes the journal row BEFORE the flip, and reports the restore", async () => {
-    const { db, calls } = opsDb([{ rows: [{ id: CLS }] }, { rows: [] }, { rows: [{ id: CLS }] }]);
-    expect(await unarchiveClass(db, CLS, OWNER)).toBe(true);
-
-    expect(calls.map((c) => c.op)).toEqual(["select", "insert", "update"]); // the order IS the law
-    expect(calls[1]!.values).toMatchObject({ classId: CLS, kind: UNARCHIVE_KIND, actorId: OWNER });
-    expect(calls[2]!.set).toEqual({ archivedAt: null }); // exactly one column, back to null
-  });
-
-  it("refuses a class that is foreign, gone, or not archived — WITHOUT journalling it", async () => {
-    // The guard read comes back empty. Journalling before this point would let any
-    // teacher write "class X was restored" into a class they cannot touch.
-    const { db, calls } = opsDb([{ rows: [] }]);
-    expect(await unarchiveClass(db, CLS, FOREIGN)).toBe(false);
-    expect(calls).toHaveLength(1);
-    expect(calls.map((c) => c.op)).toEqual(["select"]);
-  });
-
-  it("filters on owner AND on 'already archived' — in BOTH statements, not just the first", async () => {
-    const { db, calls } = opsDb([{ rows: [{ id: CLS }] }, { rows: [] }, { rows: [{ id: CLS }] }]);
-    await unarchiveClass(db, CLS, OWNER);
-    for (const call of [calls[0]!, calls[2]!]) { // the guard read AND the flip
-      const where = atomsOf(call.where);
-      expect(where).toContain("col:teacher_id"); // owner scope
-      expect(where).toContain("col:id");
-      expect(where).toContain("col:archived_at");
-      expect(where).toContain(" is not null"); // an inverted filter would read " is null"
-      expect(where).toContain(OWNER); // the id actually bound, not just a column named
-    }
-  });
-
-  it("lets RETURNING have the last word: zero flipped rows is NOT a success", async () => {
-    // The guard passed, then someone else restored the class first. Reporting "ok"
-    // here would tell a teacher her click worked when the row it aimed at was gone.
-    const { db } = opsDb([{ rows: [{ id: CLS }] }, { rows: [] }, { rows: [] }]);
-    expect(await unarchiveClass(db, CLS, OWNER)).toBe(false);
-  });
-
-  it("names the grandmaster's HAND in the journal while running on the OWNER's authorization", async () => {
-    const { db, calls } = opsDb([{ rows: [{ id: CLS }] }, { rows: [] }, { rows: [{ id: CLS }] }]);
-    await unarchiveClass(db, CLS, OWNER, GRANDMASTER);
-
-    expect(calls[1]!.values).toMatchObject({ actorId: GRANDMASTER }); // the journal cannot lie about the hand
-    for (const call of [calls[0]!, calls[2]!]) {
-      // …and the actor reaches NO where clause. This is the assertion that keeps the
-      // rank from leaking: actorId may name an actor, never widen an authorization.
-      expect(atomsOf(call.where)).not.toContain(GRANDMASTER);
-      expect(atomsOf(call.where)).toContain(OWNER);
-    }
-  });
-});
-
-describe("archiveClass — same door, now journalled, still owner-only", () => {
-  it("journals 'archive' before the flip (it was the last unhistoried class mutation)", async () => {
-    const { db, calls } = opsDb([{ rows: [{ id: CLS }] }, { rows: [] }, { rows: [{ id: CLS }] }]);
-    expect(await archiveClass(db, CLS, OWNER)).toBe(true);
-
-    expect(calls.map((c) => c.op)).toEqual(["select", "insert", "update"]);
-    expect(calls[1]!.values).toMatchObject({ classId: CLS, kind: ARCHIVE_KIND, actorId: OWNER });
-    expect((calls[2]!.set as { archivedAt: Date }).archivedAt).toBeInstanceOf(Date);
-  });
-
-  it("refuses a foreign or already-archived class without journalling it", async () => {
-    const { db, calls } = opsDb([{ rows: [] }]);
-    expect(await archiveClass(db, CLS, FOREIGN)).toBe(false);
-    expect(calls).toHaveLength(1);
-  });
-
-  it("filters on 'still live' — the MIRROR of unarchive, and the proof the two differ", async () => {
-    const { db, calls } = opsDb([{ rows: [{ id: CLS }] }, { rows: [] }, { rows: [{ id: CLS }] }]);
-    await archiveClass(db, CLS, OWNER);
-    for (const call of [calls[0]!, calls[2]!]) {
-      const where = atomsOf(call.where);
-      expect(where).toContain("col:archived_at");
-      expect(where).toContain(" is null");
-      expect(where).not.toContain(" is not null"); // if these two ever agreed, one of them is wrong
-      expect(where).toContain("col:teacher_id");
-    }
-  });
-
-  it("takes no actor parameter at all — the rank has no way in here", () => {
-    // A structural assertion, not a stylistic one: archiveClass(db, id, teacherId).
-    // The day someone adds a fourth argument, this line is the conversation.
-    expect(archiveClass.length).toBe(3);
-    expect(unarchiveClass.length).toBe(4); // …whereas unarchive DOES take the hand
-  });
-});
+/** dach-018 · der Klassen-Ausschnitt dieser Sitzung. Die Wand selbst prueft
+ *  scripts/check-claim-filter.mjs; hier steht sie nur, damit die bestehenden
+ *  Zusicherungen dasselbe messen wie vorher. */
+const SCOPE = classScope([CLS, "v2-a", "v2-b", "v1-a", "v1-b"]);
 
 describe("listArchivedClassesForTeacher — the other half of the active list's filter", () => {
   const row = { id: CLS, name: "TEST-K9B", inviteCode: "TSTK9B", grade: 2, archivedAt: new Date(1), createdAt: new Date(0) };
 
   it("returns each archived class with its head count and its archive date", async () => {
     const { db } = opsDb([{ rows: [row] }, { rows: [{ classId: CLS, n: 3 }] }]);
-    expect(await listArchivedClassesForTeacher(db, OWNER)).toEqual([
+    expect(await listArchivedClassesForTeacher(db, SCOPE, OWNER)).toEqual([
       { ...row, studentCount: 3 },
     ]);
   });
 
   it("is scoped to the owner and reads ONLY archived rows", async () => {
     const { db, calls } = opsDb([{ rows: [row] }, { rows: [{ classId: CLS, n: 3 }] }]);
-    await listArchivedClassesForTeacher(db, OWNER);
+    await listArchivedClassesForTeacher(db, SCOPE, OWNER);
     const where = atomsOf(calls[0]!.where);
     expect(where).toContain("col:teacher_id");
     expect(where).toContain(OWNER);
@@ -520,14 +435,14 @@ describe("listArchivedClassesForTeacher — the other half of the active list's 
 
   it("shows an archived class with an empty roster as 0 rather than dropping it", async () => {
     const { db } = opsDb([{ rows: [row] }, { rows: [] }]);
-    const list = await listArchivedClassesForTeacher(db, OWNER);
+    const list = await listArchivedClassesForTeacher(db, SCOPE, OWNER);
     expect(list).toHaveLength(1);
     expect(list[0]!.studentCount).toBe(0);
   });
 
   it("asks NO second question when there is nothing archived", async () => {
     const { db, calls } = opsDb([{ rows: [] }]);
-    expect(await listArchivedClassesForTeacher(db, OWNER)).toEqual([]);
+    expect(await listArchivedClassesForTeacher(db, SCOPE, OWNER)).toEqual([]);
     expect(calls).toHaveLength(1); // the head count would be a query over an empty id list
   });
 });

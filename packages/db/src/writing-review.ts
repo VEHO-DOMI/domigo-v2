@@ -59,8 +59,9 @@
  * a missing column or table is a real outage and is re-thrown. ⚠ The degradation
  * protects READERS ONLY; it cannot protect the writer above. Ordering does.
  */
-import { and, desc, eq, sql } from "drizzle-orm";
+import { and, desc, eq, inArray, sql } from "drizzle-orm";
 import type { Db } from "./index.ts";
+import { assertWritableScope, type ClassScope } from "./scope.ts";
 import { writeRosterEvent } from "./roster-events.ts";
 import { v2Classes, writingSubmissions } from "./schema.ts";
 import { isMissingDbObject } from "./teacher-events.ts";
@@ -153,8 +154,12 @@ const GRADED_COLUMNS = {
  *
  * Newest first because a teacher's question is "what came in?", not "what is oldest?".
  */
-export async function listSubmissionsForClass(db: Db, classId: string, teacherId: string): Promise<ClassSubmissions> {
-  const wem = and(eq(writingSubmissions.classId, classId), gehoertZuLehrkraft(teacherId));
+export async function listSubmissionsForClass(db: Db, classScope: ClassScope, classId: string, teacherId: string): Promise<ClassSubmissions> {
+  const wem = and(
+    inArray(writingSubmissions.classId, [...classScope]),
+    eq(writingSubmissions.classId, classId),
+    gehoertZuLehrkraft(teacherId),
+  );
   try {
     const rows = await db
       .select(GRADED_COLUMNS)
@@ -239,7 +244,8 @@ export type GradeSubmissionResult =
  * error, and a programming error that returns a tidy result object is a programming
  * error nobody finds (house shape, cf. grantXp).
  */
-export async function gradeSubmission(db: Db, input: GradeSubmissionInput): Promise<GradeSubmissionResult> {
+export async function gradeSubmission(db: Db, classScope: ClassScope, input: GradeSubmissionInput): Promise<GradeSubmissionResult> {
+  assertWritableScope(classScope, "gradeSubmission");
   const { submissionId, score, feedback, teacherId, actorId } = input;
   if (!Number.isInteger(score)) throw new Error("gradeSubmission: score must be a whole number.");
   if (score < MIN_SCORE || score > MAX_SCORE) {
@@ -268,7 +274,7 @@ export async function gradeSubmission(db: Db, input: GradeSubmissionInput): Prom
     gehoert = await db
       .select({ classId: writingSubmissions.classId, probe0018: writingSubmissions.score })
       .from(writingSubmissions)
-      .where(and(eq(writingSubmissions.id, submissionId), gehoertZuLehrkraft(teacherId)))
+      .where(and(inArray(writingSubmissions.classId, [...classScope]), eq(writingSubmissions.id, submissionId), gehoertZuLehrkraft(teacherId)))
       .limit(1);
   } catch (err) {
     if (isMissingDbObject(err)) return { ok: false, reason: "no_grading_columns" };
@@ -299,7 +305,7 @@ export async function gradeSubmission(db: Db, input: GradeSubmissionInput): Prom
     const rows = await db
       .update(writingSubmissions)
       .set({ score, feedback: kommentar, gradedAt: new Date(), gradedBy: actorId })
-      .where(and(eq(writingSubmissions.id, submissionId), gehoertZuLehrkraft(teacherId)))
+      .where(and(inArray(writingSubmissions.classId, [...classScope]), eq(writingSubmissions.id, submissionId), gehoertZuLehrkraft(teacherId)))
       .returning({ classId: writingSubmissions.classId });
     const gewonnen = rows[0];
     return gewonnen ? { ok: true, classId: gewonnen.classId } : { ok: false, reason: "not_found" };

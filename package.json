@@ -29,7 +29,11 @@
     "check:journal-door": "node scripts/check-journal-door.mjs",
     "check:journal-door:selftest": "node scripts/check-journal-door.mjs --selftest",
     "check:level-design:selftest": "node scripts/check-level-design.mjs --selftest",
-    "test:umbrella-tokens": "node scripts/check-umbrella-tokens.mjs"
+    "test:umbrella-tokens": "node scripts/check-umbrella-tokens.mjs",
+    "test:claim-filter": "node scripts/check-claim-filter.mjs",
+    "test:claim-filter:selftest": "node scripts/check-claim-filter.mjs --selftest",
+    "test:no-local-login": "node scripts/check-no-local-login.mjs",
+    "test:no-local-login:selftest": "node scripts/check-no-local-login.mjs --selftest"
   },
   "devDependencies": {
     "@anthropic-ai/sdk": "^0.110.0",

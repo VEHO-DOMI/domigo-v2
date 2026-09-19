@@ -120,7 +120,7 @@ export default async function ClassProgressPage({ params }: { params: Promise<{ 
   // zweierlei — ob eine fremde Klasse überhaupt aufgelöst wird, und ob die
   // Anpassungs-Zelle gerendert wird.
   const grossmeister = isGrandmaster(teacher.userId);
-  let cls: OwnedClass | null = await getClassForTeacher(getDb(), id, teacher.userId).catch(() => null);
+  let cls: OwnedClass | null = await getClassForTeacher(getDb(), teacher.classScope, id, teacher.userId).catch(() => null);
   // Unter WESSEN Autorisierung die besitzer-skopierten Dienste laufen. Für jede
   // gewöhnliche Lehrkraft — und für den Großmeister in seiner EIGENEN Klasse —
   // ist das er selbst.
@@ -129,7 +129,7 @@ export default async function ClassProgressPage({ params }: { params: Promise<{ 
   let fremd = false;
 
   if (!cls && grossmeister) {
-    const foreign = await getClassForGrandmaster(getDb(), id).catch(() => null);
+    const foreign = await getClassForGrandmaster(getDb(), teacher.classScope, id).catch(() => null);
     if (foreign) {
       cls = foreign;
       authorizingTeacherId = foreign.teacherId;
@@ -142,14 +142,14 @@ export default async function ClassProgressPage({ params }: { params: Promise<{ 
 
   if (!cls) redirect("/admin/classes"); // nicht die Klasse dieser Lehrkraft (oder es gibt sie nicht)
 
-  const rosterR = await lies(listRoster(getDb(), id, authorizingTeacherId), []);
+  const rosterR = await lies(listRoster(getDb(), teacher.classScope, id, authorizingTeacherId), []);
   const [attemptsR, pfadeR, einheitenR, fallenR] = await Promise.all([
-    lies(listStudentProgress(getDb(), id), []),
-    lies(listStudentPathSummary(getDb(), id), new Map()),
-    lies(listClassUnitProgress(getDb(), id), []),
-    lies(listClassTraps(getDb(), id), []),
+    lies(listStudentProgress(getDb(), teacher.classScope, id), []),
+    lies(listStudentPathSummary(getDb(), teacher.classScope, id), new Map()),
+    lies(listClassUnitProgress(getDb(), teacher.classScope, id), []),
+    lies(listClassTraps(getDb(), teacher.classScope, id), []),
   ]);
-  const metaR = await lies(listStudentMeta(getDb(), rosterR.wert.map((r) => r.id)), new Map());
+  const metaR = await lies(listStudentMeta(getDb(), teacher.classScope, rosterR.wert.map((r) => r.id)), new Map());
   const roster = rosterR.wert;
   const attempts = attemptsR.wert;
   const pfade = pfadeR.wert;

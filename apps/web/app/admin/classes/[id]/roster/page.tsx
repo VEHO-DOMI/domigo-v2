@@ -40,14 +40,14 @@ export default async function RosterPage({ params }: { params: Promise<{ id: str
   if (!teacher) redirect("/admin/signin");
 
   const { id } = await params;
-  let cls: OwnedClass | null = await getClassForTeacher(getDb(), id, teacher.userId).catch(() => null);
+  let cls: OwnedClass | null = await getClassForTeacher(getDb(), teacher.classScope, id, teacher.userId).catch(() => null);
   // Whose authorization the roster reads/writes run under. Identical to the caller
   // for every ordinary teacher, and also for a grandmaster in his OWN class.
   let authorizingTeacherId = teacher.userId;
   let heading = cls?.name ?? "";
 
   if (!cls && isGrandmaster(teacher.userId)) {
-    const foreign = await getClassForGrandmaster(getDb(), id).catch(() => null);
+    const foreign = await getClassForGrandmaster(getDb(), teacher.classScope, id).catch(() => null);
     if (foreign) {
       cls = foreign;
       authorizingTeacherId = foreign.teacherId;
@@ -59,7 +59,7 @@ export default async function RosterPage({ params }: { params: Promise<{ id: str
 
   if (!cls) redirect("/admin/classes"); // not this teacher's class (or doesn't exist)
 
-  const roster = await listRoster(getDb(), id, authorizingTeacherId).catch(() => []);
+  const roster = await listRoster(getDb(), teacher.classScope, id, authorizingTeacherId).catch(() => []);
 
   return (
     <RosterManager

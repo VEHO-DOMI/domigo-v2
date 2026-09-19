@@ -1,14 +1,20 @@
 /**
  * GET/POST /api/admin/classes — the teacher's own classes.
- * GET lists them (with roster counts); POST creates one, minting its invite code.
- * Teacher-only; every row is scoped to the acting teacher in the service, so a
- * teacher only ever reads or writes their own classes. The body is re-validated
- * server-side with the same pure rule the service enforces (never trust the client).
+ * GET lists them (with roster counts, inside the class wall); POST creates one,
+ * minting its invite code.
+ *
+ * dach-074 · POST is a dated fallback. Until the switch-over day it works as on
+ * main, so a PIN teacher can still set up a class. From 00:00 Vienna that day it
+ * answers 405 with the address of the Lehrer-Raum (lib/konto/rueckfall-antwort.ts):
+ * after the switch-over `classes.name` and `classes.grade` have exactly ONE
+ * writer, the account service (SPEC §10 E1) — a class renamed here would be
+ * renamed back by the next nightly sync, and nobody would understand why.
  */
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { createClass, getDb, listClassesForTeacher, validateClassName, validateGrade } from "@domigo/db";
 import { getTeacher } from "@/lib/teacher";
+import { lokalesSchreibenZu } from "@/lib/konto/rueckfall-antwort";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -23,7 +29,7 @@ export async function GET(req: Request): Promise<Response> {
   if (!teacher) return NextResponse.json({ ok: false, error: "forbidden" }, { status: 403 });
 
   try {
-    const classes = await listClassesForTeacher(getDb(), teacher.userId);
+    const classes = await listClassesForTeacher(getDb(), teacher.classScope, teacher.userId);
     return NextResponse.json({ ok: true, classes });
   } catch {
     return NextResponse.json({ ok: false, error: "read_failed" }, { status: 500 });
@@ -31,6 +37,8 @@ export async function GET(req: Request): Promise<Response> {
 }
 
 export async function POST(req: Request): Promise<Response> {
+  const zu = lokalesSchreibenZu();
+  if (zu) return zu;
   const teacher = await getTeacher(req);
   if (!teacher) return NextResponse.json({ ok: false, error: "forbidden" }, { status: 403 });
 

@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { auth } from "@/auth";
+import { auth, KONTO_PROVIDER } from "@/auth";
 
 // Auth-aware middleware (ported from v1, onboarding gate dropped — reused accounts):
 //  1. Redirect un-authenticated requests for protected paths → /signin (or /admin/signin).
@@ -31,8 +31,21 @@ export default auth((req) => {
     return NextResponse.redirect(url);
   }
 
-  if (pathname.startsWith("/admin") && session.user.role !== "teacher") {
-    return NextResponse.redirect(new URL("/home", req.nextUrl));
+  // dach-018 · THE AREA GATE (SPEC konto V1.1-FINAL §5 L2). Two different
+  // refusals, because they are two different situations:
+  //   · a CHILD on /admin is not being refused — they are simply somewhere that
+  //     is not theirs, and /home is where they belong. Unchanged.
+  //   · a TEACHER without the role `teacher` in the area `go` IS being refused,
+  //     and sending them to /home would be a lie: the answer is not "your page is
+  //     over there" but "this access is granted centrally, and you do not have
+  //     it". That is the access card.
+  // The role is re-read from konto every minute (auth.ts), so a withdrawal closes
+  // this door within the same minute it closes the session.
+  if (pathname.startsWith("/admin")) {
+    if (session.user.role !== "teacher") return NextResponse.redirect(new URL("/home", req.nextUrl));
+    if (session.user.via === KONTO_PROVIDER && session.user.goTeacher !== true) {
+      return NextResponse.redirect(new URL("/zugriff-fehlt", req.nextUrl));
+    }
   }
 
   return NextResponse.next();

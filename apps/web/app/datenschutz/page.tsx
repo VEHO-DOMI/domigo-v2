@@ -16,6 +16,12 @@
 //   · database region,
 //     restore window     → lib/datenschutz.ts, read in the Neon console 2026-09-15 (gomarke-005)
 //   · contact address    → lib/datenschutz.ts, named by Koki 2026-09-17 (gomarke-007)
+//   · sign-in, deletion  → dach-018: from the switch-over day the account service
+//     (from 2026-10-13)     signs in (auth.ts konto-handoff), and konto's deletion
+//                           announcement removes everything (konto-loeschung.ts).
+//                           The two wordings live side by side and lib/konto/umstieg.ts
+//                           decides which is true — the page may never describe
+//                           something that is not live yet (DATEN-7 §4).
 //
 // gomarke-008 (2026-09-17). PR #437 listed four sentences here that NO machine
 // held to the code; a new column or a new dependency would have made this page
@@ -52,6 +58,8 @@
 // "only in the EU" — the providers are US companies.
 
 import Link from "next/link";
+import { kontoBaseUrl } from "@/lib/konto/basis";
+import { umgestiegen } from "@/lib/konto/umstieg";
 import {
   DATENBANK_REGION,
   DATENSCHUTZ_KONTAKT,
@@ -69,6 +77,13 @@ const code = { fontFamily: "ui-monospace, monospace", fontSize: 14 } as const;
 const link = { color: "var(--accent-deep)" } as const;
 
 export default function DatenschutzPage() {
+  // dach-018 · Die Seite beschreibt nur, was LIVE ist (DATEN-7 §4). Vor dem
+  // Umstiegstag stimmt der alte Wortlaut, ab ihm der neue — beide stehen hier,
+  // und die eine Konstante in lib/konto/umstieg.ts entscheidet, welcher gilt.
+  // So gibt es keinen Tag, an dem die Seite etwas Falsches sagt, und keinen
+  // zweiten Einsatz, den jemand vergessen koennte.
+  const konto = umgestiegen();
+  const kontoHost = new URL(kontoBaseUrl()).host;
   return (
     <main style={{ maxWidth: 680, margin: "0 auto", padding: "32px 20px 56px", fontFamily: "var(--font-body)", color: "var(--text)", fontSize: 16, lineHeight: 1.6 }}>
       <h1 style={{ fontFamily: "var(--font-display)", fontSize: 32, color: "var(--ink)", margin: "0 0 12px" }}>Datenschutz</h1>
@@ -87,8 +102,16 @@ export default function DatenschutzPage() {
 
       <h2 style={h2}>Welche Daten DomiGo über Schülerinnen und Schüler speichert</h2>
       <ul style={list}>
-        <li><strong>Konto:</strong> dein selbst gewählter Spitzname, deine Klasse und deine 6-stellige PIN. Die PIN wird nur verschlüsselt gespeichert (bcrypt), niemand kann sie lesen. Konten aus der früheren DomiGo-Version liegen in derselben Datenbank und werden zum Anmelden weiter gelesen.</li>
-        <li><strong>Echter Name:</strong> dein Name, wie ihn deine Lehrkraft in die Klassenliste einträgt. Er ist für deine Lehrkraft da, damit sie dich zuordnen kann.</li>
+        {konto ? (
+          <li><strong>Konto:</strong> dein Spitzname und deine Klasse. Deine PIN liegt <strong>nicht mehr hier</strong>: angemeldet wirst du bei {kontoHost}, und DomiGo prüft überhaupt kein Passwort mehr. Konten aus der früheren DomiGo-Version liegen weiter in derselben Datenbank.</li>
+        ) : (
+          <li><strong>Konto:</strong> dein selbst gewählter Spitzname, deine Klasse und deine 6-stellige PIN. Die PIN wird nur verschlüsselt gespeichert (bcrypt), niemand kann sie lesen. Konten aus der früheren DomiGo-Version liegen in derselben Datenbank und werden zum Anmelden weiter gelesen.</li>
+        )}
+        {konto ? (
+          <li><strong>Echter Name:</strong> für Konten aus der früheren DomiGo-Version steht er noch hier; für alle neuen steht er bei {kontoHost} und nicht mehr in DomiGo. Sehen kann ihn nur deine Lehrkraft.</li>
+        ) : (
+          <li><strong>Echter Name:</strong> dein Name, wie ihn deine Lehrkraft in die Klassenliste einträgt. Er ist für deine Lehrkraft da, damit sie dich zuordnen kann.</li>
+        )}
         <li><strong>Üben:</strong> jede beantwortete Aufgabe mit Zeitpunkt, richtig oder falsch und wie nah du dran warst, wie lange du gebraucht hast, ob du einen Hinweis genommen hast, bei falschen Antworten die Art des Fehlers und bei Tests, zu welchem Durchgang die Antwort gehört.</li>
         <li><strong>Fortschritt:</strong> Punkte (XP), Serie, Hinweis-Funken (die Funken, die du in einer Runde gesammelt hast; dein Stand wird auf der Weltkarte angezeigt und sonst nicht verwendet), Wiederholungskarten, erledigte Schritte im Lernpfad mit Sternen.</li>
         <li><strong>Schreiben:</strong> Texte, die du schreibst und abgibst, mit Wortzahl sowie Punkten und Rückmeldung deiner Lehrkraft.</li>
@@ -114,10 +137,30 @@ export default function DatenschutzPage() {
         vom eigenen Server.
       </p>
 
+      {konto && (
+        <>
+          <h2 style={h2}>Wie du dich anmeldest</h2>
+          <p>
+            Angemeldet wirst du bei {kontoHost} — einem Konto für alle Werkzeuge. DomiGo speichert
+            selbst kein Passwort mehr und prüft auch keines. Nach der Anmeldung schickt {kontoHost} DomiGo
+            nur, wer du bist, in welcher Klasse du bist und welche Rolle du hast; deinen echten Namen
+            schickt es nicht mit.
+          </p>
+          <p>
+            <strong>Aus der Klassenliste</strong> — Vor- und Nachname, Katalognummer und deine Lerngruppe
+            trägt deine Lehrkraft aus der Klassenliste ein. Andere Angaben aus der Liste (etwa Geburtsdatum
+            oder Adresse) werden gar nicht erst übernommen. Hast du im laufenden Schuljahr keine Klasse mehr
+            auf der Plattform, wird dein Konto nach dem 30. November gelöscht, außer deine Lehrkraft trägt
+            einen Grund ein, es länger zu behalten. Fragen dazu beantwortet deine Lehrkraft.
+          </p>
+        </>
+      )}
+
       <h2 style={h2}>Daten von Lehrkräften</h2>
       <p>
-        Spitzname, gegebenenfalls der echte Name, PIN (verschlüsselt), freiwillig eine E-Mail-Adresse, damit
-        eine vergessene PIN zurückgesetzt werden kann, ein Protokoll der Änderungen am eigenen Konto und die Zahl der Fehlversuche beim Anmelden und beim Zurücksetzen der PIN, gezählt je Spitzname.
+        {konto
+          ? "Kürzel, ein Protokoll der Änderungen am eigenen Konto und — für Konten aus der Zeit davor — Spitzname, PIN und eine freiwillig hinterlegte E-Mail-Adresse. Angemeldet und das Passwort zurückgesetzt wird seit dem Umstieg nicht mehr hier."
+          : "Spitzname, gegebenenfalls der echte Name, PIN (verschlüsselt), freiwillig eine E-Mail-Adresse, damit eine vergessene PIN zurückgesetzt werden kann, ein Protokoll der Änderungen am eigenen Konto und die Zahl der Fehlversuche beim Anmelden und beim Zurücksetzen der PIN, gezählt je Spitzname."}
       </p>
       <p>
         Dazu hält DomiGo fest, wer etwas getan hat: bei einer Aufgabe, einer Änderung an der
@@ -140,7 +183,11 @@ export default function DatenschutzPage() {
       <ul style={list}>
         <li><strong>Deine Lehrkraft</strong> sieht deinen echten Namen, deine Ergebnisse, deine Texte, deine Tests und deinen Fortschritt.</li>
         <li><strong>Deine Mitschülerinnen und Mitschüler</strong> sehen deine Ergebnisse nicht. Es gibt keine Rangliste.</li>
-        <li><strong>Beim Beitreten:</strong> Wer den Klassencode kennt, sieht auf der Beitrittsseite die Kinder, die sich noch nicht angemeldet haben — mit Vornamen und dem ersten Buchstaben des Nachnamens, damit sich jedes Kind selbst finden kann.</li>
+        {konto ? (
+          <li><strong>Beim Beitreten:</strong> Die Beitrittsseite liegt bei {kontoHost}. Wer den Klassencode hat, landet dort; DomiGo leitet nur weiter und erfährt dabei nichts.</li>
+        ) : (
+          <li><strong>Beim Beitreten:</strong> Wer den Klassencode kennt, sieht auf der Beitrittsseite die Kinder, die sich noch nicht angemeldet haben — mit Vornamen und dem ersten Buchstaben des Nachnamens, damit sich jedes Kind selbst finden kann.</li>
+        )}
         <li><strong>Ein eigens freigeschalteter Verwaltungszugang</strong> kann alle Klassen aller Lehrkräfte einsehen. Diesen Zugang hat allein {VERANTWORTLICHER}, um die Plattform zu betreuen. Er wird außerhalb der App freigeschaltet, hängt an keinem Lehrkraft-Konto, und ohne Freischaltung hat ihn niemand.</li>
       </ul>
 
@@ -166,12 +213,25 @@ export default function DatenschutzPage() {
 
       <h2 style={h2}>Wie lange die Daten bleiben</h2>
       <p>
-        Derzeit gibt es <strong>keine feste Löschfrist</strong> und keine automatische Löschung. Wenn eine
-        Lehrkraft ein Kind aus der Klasse entfernt, wird heute nur sein Eintrag in der Klassenliste
-        (Spitzname, echter Name, Klasse und PIN) gelöscht; Übungsergebnisse, Texte, Noten, ein bereits gespeicherter
-        Jahres-Stand — in dem auch dein echter Name steht — und ein Konto aus der früheren
-        DomiGo-Version bleiben gespeichert. Auf Anfrage an {DATENSCHUTZ_KONTAKT} werden auch diese Daten
-        gelöscht.
+        {konto ? (
+          <>
+            Hast du im laufenden Schuljahr keine Klasse mehr, kommt dein Konto <strong>am 31. Oktober</strong> auf
+            eine Liste für deine Lehrkraft und wird <strong>ohne Einspruch am 30. November gelöscht</strong> —
+            und zwar vollständig: Übungsergebnisse, Texte, Noten, Spielstände und ein gespeicherter
+            Jahres-Stand gehen mit. Deine Lehrkraft kann eintragen, dass dein Konto länger bleiben soll,
+            mit einem Grund. Entfernt sie dich nur aus der Klasse, bleiben deine Daten zunächst; gelöscht
+            wird über {kontoHost}, und auf Anfrage an {DATENSCHUTZ_KONTAKT} jederzeit sofort.
+          </>
+        ) : (
+          <>
+            Derzeit gibt es <strong>keine feste Löschfrist</strong> und keine automatische Löschung. Wenn eine
+            Lehrkraft ein Kind aus der Klasse entfernt, wird heute nur sein Eintrag in der Klassenliste
+            (Spitzname, echter Name, Klasse und PIN) gelöscht; Übungsergebnisse, Texte, Noten, ein bereits gespeicherter
+            Jahres-Stand — in dem auch dein echter Name steht — und ein Konto aus der früheren
+            DomiGo-Version bleiben gespeichert. Auf Anfrage an {DATENSCHUTZ_KONTAKT} werden auch diese Daten
+            gelöscht.
+          </>
+        )}
       </p>
       {RUECKHOLFENSTER && (
         <p>

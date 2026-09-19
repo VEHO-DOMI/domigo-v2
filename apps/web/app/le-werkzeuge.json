@@ -1,9 +1,11 @@
 {
-  "version": "2026-09-13",
-  "hinweis": "Quelle der Kacheln (Weiche) und des Werkzeug-Wechslers (Kopfzeile). Gepflegt von S2 · Research + Name; Apps vendorn eine Kopie als le-werkzeuge.json und pinnen die sha256 aus tokens.json. Reihenfolge = Anzeige-Reihenfolge: Schüler-Werkzeuge zuerst, Lehrer-Raum und Konto zuletzt. 'stand': live | zieht um | kommt später (nie toter Link).",
+  "version": "2026-09-19",
+  "menue_titel": "Bereiche",
+  "hinweis": "Quelle der Kacheln (Weiche, Mein Bereich) und des Menüs »Bereiche« (Kopfzeile). Gepflegt von S2 · Research + Name; Apps vendorn eine Kopie als le-werkzeuge.json und pinnen die sha256 aus tokens.json. Reihenfolge = Anzeige-Reihenfolge: Bereiche für Schüler zuerst, Lehrer-Notizbuch und Mein Bereich zuletzt. 'anzeige' ist der fertige Kopfzeilen-Wortlaut — keine App baut ihn selbst. 'stand': live | zieht um | kommt später (nie toter Link).",
   "schema": {
     "id": "kurz, stabil",
-    "titel": "Anzeigename (MARKE-16)",
+    "titel": "Eigenname (MARKE-16, Koki 18.09.)",
+    "anzeige": "Kopfzeilen-Wortlaut: mit Stufe »Fach · Stufe — titel«, ohne Stufe = titel",
     "satz": "ein Satz, per du",
     "kategorie": {
       "fach": "…",
@@ -11,17 +13,20 @@
     },
     "adresse": "https://…lautereinser.at",
     "kurzform": "/… (Weiterleitung auf der Weiche)",
-    "sprache": "Sprache der Werkzeug-Oberfläche",
+    "sprache": "Sprache der Oberfläche",
     "sichtbar_fuer": [
       "student",
       "teacher"
     ],
-    "stand": "live | zieht um | kommt später"
+    "stand": "live | zieht um | kommt später",
+    "konto_app": "srdp | go | tracker | null (meldet nicht über konto an)",
+    "konto_return": "exakte Rückkehr-Adresse, die konto für konto_app zulässt, oder null"
   },
   "werkzeuge": [
     {
       "id": "eng-us",
       "titel": "DomiGo",
+      "anzeige": "Englisch · Unterstufe — DomiGo",
       "satz": "Englisch üben für die 1. bis 4. Klasse: Geschichten, Spiele, Übungen.",
       "kategorie": {
         "fach": "Englisch",
@@ -34,11 +39,14 @@
         "student",
         "teacher"
       ],
-      "stand": "live"
+      "stand": "live",
+      "konto_app": "go",
+      "konto_return": "https://eng-unterstufe.lautereinser.at/api/auth/callback-konto"
     },
     {
       "id": "eng-os",
-      "titel": "Englisch · Matura",
+      "titel": "Finale",
+      "anzeige": "Englisch · Oberstufe — Finale",
       "satz": "Lesen, Hören, Sprachverwendung und Schreiben üben – mit echten Aufgabenformaten und Rückmeldung.",
       "kategorie": {
         "fach": "Englisch",
@@ -51,11 +59,14 @@
         "student",
         "teacher"
       ],
-      "stand": "live"
+      "stand": "live",
+      "konto_app": "srdp",
+      "konto_return": "https://eng-oberstufe.lautereinser.at/api/auth/callback-konto"
     },
     {
       "id": "pup",
-      "titel": "Psychologie und Philosophie",
+      "titel": "Denkraum",
+      "anzeige": "Psychologie und Philosophie · Oberstufe — Denkraum",
       "satz": "Das Buch, das lebendig wird – für die 6. Klasse.",
       "kategorie": {
         "fach": "Psychologie und Philosophie",
@@ -68,11 +79,14 @@
         "student",
         "teacher"
       ],
-      "stand": "kommt später"
+      "stand": "kommt später",
+      "konto_app": null,
+      "konto_return": null
     },
     {
       "id": "veho",
-      "titel": "Lehrer-Raum VEHO",
+      "titel": "Lehrer-Notizbuch VEHO",
+      "anzeige": "Lehrer-Notizbuch VEHO",
       "satz": "Klassenbuch: Anwesenheit, Hausübungen, Noten – in der Stunde am Handy.",
       "kategorie": {
         "fach": "Lehrkräfte",
@@ -84,12 +98,15 @@
       "sichtbar_fuer": [
         "teacher"
       ],
-      "stand": "zieht um"
+      "stand": "live",
+      "konto_app": "tracker",
+      "konto_return": "https://veho.lautereinser.at/login"
     },
     {
       "id": "konto",
-      "titel": "Konto",
-      "satz": "Ein Login für alle Werkzeuge.",
+      "titel": "Mein Bereich",
+      "anzeige": "Mein Bereich",
+      "satz": "Deine Bereiche und Abmelden an einem Ort.",
       "kategorie": {
         "fach": "Alle",
         "stufe": ""
@@ -101,7 +118,9 @@
         "student",
         "teacher"
       ],
-      "stand": "kommt später"
+      "stand": "live",
+      "konto_app": null,
+      "konto_return": null
     }
   ]
 }

@@ -33,6 +33,7 @@ import {
 } from "@domigo/db";
 import { RESET_TOKEN_TTL_MINUTES, mintResetToken } from "@domigo/db/reset-tokens";
 import { buildResetMail, mailerState, sendMail } from "@/lib/mailer";
+import { tuerZiel } from "@/lib/konto/rueckfall";
 
 export const dynamic = "force-dynamic";
 
@@ -72,12 +73,20 @@ export default async function PinVergessenSeite({
 }: {
   searchParams: Promise<{ gesendet?: string; zustand?: string }>;
 }) {
+  // dach-074 · the fallback: before the switch-over day this page is main's,
+  // unchanged; from 00:00 Vienna that day it is a 307 to konto (never 308).
+  const ziel = tuerZiel("pin-vergessen", "");
+  if (ziel) redirect(ziel);
   const sp = await searchParams;
   const versand = mailerState();
   const eingerichtet = versand.kind !== "off" && sp.zustand !== "nicht-eingerichtet";
 
   async function anfordern(formData: FormData) {
     "use server";
+    // A tab left open across midnight must not still write: from the day on the
+    // submit follows the door to konto (307) instead of throwing an error page.
+    const zu = tuerZiel("pin-vergessen", "");
+    if (zu) redirect(zu);
     const name = String(formData.get("nickname") ?? "").trim();
     // Auch ein leeres Feld bekommt die neutrale Antwort — eine Eingabe-Rüge wäre
     // harmlos, aber zwei verschiedene Antworten sind ein Unterschied, den jemand messen kann.
