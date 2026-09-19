@@ -1,8 +1,9 @@
 /**
- * PATCH/POST/DELETE /api/admin/roster/[studentId] — manage one roster student.
+ * PATCH/DELETE /api/admin/roster/[studentId] — manage one roster student.
  *   • PATCH  { givenName }        → correct the student's real name
- *   • POST   { action:"reset_pin" } → reset to provisional (student must re-claim)
  *   • DELETE                       → remove the student from the roster
+ * (dach-108 · POST { action:"reset_pin" } is gone with the PIN sign-in: a reset
+ * child re-claimed through /join, which leads to Lauter Einser now.)
  * Teacher-only; each service call is authz'd by teacherId (the student's class must
  * belong to the acting teacher, else a silent no-op). journal-then-flip is enforced
  * inside the service (a roster_event is written before every flip).
@@ -15,7 +16,7 @@
  */
 import { NextResponse } from "next/server";
 import { z } from "zod";
-import { getDb, getOwnerIdForStudentForGrandmaster, removeStudent, renameStudentGiven, resetStudentPin, type ClassScope } from "@domigo/db";
+import { getDb, getOwnerIdForStudentForGrandmaster, removeStudent, renameStudentGiven, type ClassScope } from "@domigo/db";
 import { getTeacher } from "@/lib/teacher";
 import { isGrandmaster } from "@/lib/grandmaster";
 
@@ -37,7 +38,6 @@ async function authorizingTeacherId(callerId: string, classScope: ClassScope, st
 }
 
 const RenameSchema = z.object({ givenName: z.string() });
-const PostSchema = z.object({ action: z.literal("reset_pin") });
 
 export async function PATCH(req: Request, { params }: { params: Promise<{ studentId: string }> }): Promise<Response> {
   const teacher = await getTeacher(req);
@@ -53,23 +53,6 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ studen
   try {
     const ownerId = await authorizingTeacherId(teacher.userId, teacher.classScope, studentId);
     await renameStudentGiven(getDb(), teacher.classScope, studentId, ownerId, parsed.data.givenName, teacher.userId);
-    return NextResponse.json({ ok: true });
-  } catch {
-    return NextResponse.json({ ok: false, error: "persist_failed" }, { status: 500 });
-  }
-}
-
-export async function POST(req: Request, { params }: { params: Promise<{ studentId: string }> }): Promise<Response> {
-  const teacher = await getTeacher(req);
-  if (!teacher) return NextResponse.json({ ok: false, error: "forbidden" }, { status: 403 });
-
-  const { studentId } = await params;
-  const parsed = PostSchema.safeParse(await req.json().catch(() => null));
-  if (!parsed.success) return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
-
-  try {
-    const ownerId = await authorizingTeacherId(teacher.userId, teacher.classScope, studentId);
-    await resetStudentPin(getDb(), teacher.classScope, studentId, ownerId, teacher.userId);
     return NextResponse.json({ ok: true });
   } catch {
     return NextResponse.json({ ok: false, error: "persist_failed" }, { status: 500 });

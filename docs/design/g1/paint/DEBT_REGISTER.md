@@ -1,7 +1,7 @@
 # DEBT REGISTER — das bemalte Buch (R5, doc 45 H3)
 
 R295 reserviert für ch02 zusätzlich D-1000–1029 im Block L2-W2.
-R307 reserviert für ch04 zusätzlich D-1040–1069 im Block L4-W (zuerst D-886–889 verbrauchen). Nächster freier Bereich beginnt bei 1070 — neue Blöcke nur per Ruling.
+R307 reserviert für ch04 zusätzlich D-1040–1069 im Block L4-W (zuerst D-886–889 verbrauchen). Nächster freier Bereich beginnt bei 1073 — neue Blöcke nur per Ruling. (D-1070–1072: dach-108, Koki-Entscheid E-8 vom 19.09.)
 
 Jede Stelle, an der ein Platzhalter steht oder ein Befund bewusst NICHT in seinem
 Fund-PR behoben wurde, steht hier: Stelle · Zustand · erwartete Auflösung ·
@@ -1673,3 +1673,13 @@ Eigenständiger Kapitel-1-Block D-1030–1039; die Reservierungen D-985–999 f�
 | D-1035 | Merle als Begleiterin in späteren Räumen | Kapitel 1 besitzt sichere zusammenhängende Begleiterwege und die tatsächlichen Merle-Bilder. Ein universeller Vertrag für alle zukünftigen beweglichen Raumkonstruktionen ist noch kein Bestandteil dieses Kapitels. | Folgekapitel verwenden den dokumentierten Vertrag und prüfen sichere Wege, sichtbar passende Größe und reale Bildbudgets jeweils am gebauten Raum. | offen · Übertragung auf Folgekapitel | CHAPTER_STORY_PRINCIPLES.md; implementation-companion.md |
 | D-1036 | Körpermaß und Wischkante | Die neue schmälere Tafelfläche verlangt 41 px Wischreichweite; eine globale Verwendung hätte andere Wächter auf dieselbe Kante gesetzt. | Gebaut: eine gemeinsame hautabhängige Reichweite für Wischprüfung und Bewegungsklammer, andere Wächter behalten 45 px. Zehn Bänder ch01/ch02 und tatsächliche Gegenproben grün. | geschlossen · Spielpass | implementation-preflight-mechanics.md |
 | D-1037 | Mobile Geräteabnahme | Die neue Kapitel-1-Aufteilung wurde in Desktop-Chromium mit Mobilmaßen und Touch-Eingaben geprüft. Echte iPhone-/iPad-Safari- und Android-Läufe, Bildschirmtastatur, Browserleisten, Kamerakerben und ein vollständiger Touch-Durchgang sind noch nicht belegt. | Auf realen Geräten Hoch-/Querformat, Nachschlagen während einer Aufgabe, Namenseingabe und den Weg bis zum Ausgang prüfen; mobile Bildrate und Unterbrechungen separat messen. Desktop-Leistungswerte sind keine Mobilfreigabe. | offen · Geräteprüfung | CODEX-LAB Trial-Bericht CH01_MOBILE_FIX/BERICHT.md |
+
+## dach-108 · Werkstatt-Duldungen OHNE Datum (Koki-Entscheid E-8, 2026-09-19)
+
+Koki 19.09.: »Keine Werkstatt-Fristen« — kein Prüf-Tor wird mehr an einem Datum von selbst rot. Die drei bisher datierten Duldungen bleiben stehen, aber als benannte offene Punkte: ein Tor duldet nur noch, was hier als Zeile steht, und fällt die Zeile, ist das Tor wieder streng. Block D-1070–1072 (Ruling: Brief WP-C, GG 19.09.).
+
+| # | Stelle | Zustand / Befund | Erwartete Auflösung | Einbau-Schritt | Quelle |
+|---|---|---|---|---|---|
+| D-1070 | `check-ci-gates.mjs#IMPORTER_WITHOUT_CI_LINE` · `import-batch-as.mjs` | Selbsttest des Importeurs läuft ohne CI-Zeile: seine Prüfplatte (p1-Innen-Kit) ist vom Ein-Block-Cutover zurückgezogen; das geteilte Kit fällt aus dem eigenen Fenster (3 von 4 Blättern). War befristet bis 15.10. | Eine eingecheckte Fixture-Platte (Architekten-Entscheid), dann CI-Zeile anhängen und den Eintrag streichen | offen, ohne Datum — Koki 19.09. | dach-108 |
+| D-1071 | `check-composition.mjs#COHERENCE_WAIVERS` · `ch01/p4`, `ch01/p9` | Kanten-Kohärenz: Laufkurs steht vom geteilten Körper ab (p4 Bühne, p9 Kleckskammer), AS5b nicht importierbar; Reparaturpfad AS5F §10.6. War befristet bis 30.11. | Phasen-eigene Körperfamilie gemalt und importiert; das Tor meldet die Duldung dann selbst als schal | offen, ohne Datum — Koki 19.09. | dach-108 |
+| D-1072 | `check-registers.mjs#LINE_REF_ALLOW` | Die geduldeten Zeilennummern-Verweise im Schulden-Register (Ratsche, R195); Eigentümer K-Bahn. War befristet bis 30.11. | Verweise auf `datei#symbol` heben; die Ratsche meldet jeden gehobenen Eintrag als schal | offen, ohne Datum — Koki 19.09. | dach-108 |

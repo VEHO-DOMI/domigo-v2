@@ -143,7 +143,7 @@ export default async function AdminPage() {
       <section className="dg-card" style={{ marginTop: 16 }}>
         <h2 style={{ fontSize: 17, margin: "0 0 10px", fontFamily: "var(--font-display)", color: "var(--ink)" }}>Kurzanleitung</h2>
         <p style={{ color: "var(--text-secondary)", fontSize: 14, margin: "0 0 12px" }}>
-          Die vier Schritte von der fertigen Klasse bis zu den Ergebnissen — eine Seite, zum Ausdrucken.
+          Die drei Schritte von der fertigen Klasse bis zu den Ergebnissen — eine Seite, zum Ausdrucken.
         </p>
         <Link href="/admin/hilfe" className="dg-btn" style={{ display: "inline-block" }}>Kurzanleitung öffnen →</Link>
       </section>
@@ -178,7 +178,7 @@ export default async function AdminPage() {
       <section className="dg-card" style={{ marginTop: 16 }}>
         <h2 style={{ fontSize: 17, margin: "0 0 10px", fontFamily: "var(--font-display)", color: "var(--ink)" }}>Account settings</h2>
         <p style={{ color: "var(--text-secondary)", fontSize: 14, margin: "0 0 12px" }}>
-          Change your PIN yourself — no more asking for a database edit.
+          Your account id. Your password and sign-in are managed at Lauter Einser.
         </p>
         <Link href="/admin/settings" className="dg-btn" style={{ display: "inline-block" }}>Account settings →</Link>
       </section>

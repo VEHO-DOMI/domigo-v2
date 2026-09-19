@@ -1,9 +1,9 @@
 /**
  * /admin/classes/[id]/roster — the teacher's roster for ONE class. Server resolves
  * the class (owner-scoped: a class this teacher doesn't own redirects back to the
- * class list) and its students; the interactive import / rename / reset-PIN / remove
- * UI runs client-side and calls /api/admin/classes/[id]/roster and
- * /api/admin/roster/[studentId]. Teacher-only (getTeacherForPage — a real session
+ * class list) and its students; the rename / remove UI runs client-side and calls
+ * /api/admin/roster/[studentId]. dach-108 · lists are imported at Lauter Einser: the
+ * page shows the fixed sentence and the Lehrer-Raum link where the import box stood. Teacher-only (getTeacherForPage — a real session
  * or the non-prod dev fallback).
  *
  * P3 · GOD MODE. The platform operator (isGrandmaster — an env allowlist, checked
@@ -31,6 +31,8 @@ import {
 } from "@domigo/db";
 import { getTeacherForPage } from "@/lib/identity";
 import { isGrandmaster } from "@/lib/grandmaster";
+import { kontoBaseUrl, kontoBeitrittUrl } from "@/lib/konto/basis";
+import { GESCHLOSSEN_SATZ } from "@/lib/konto/regeln";
 import RosterManager from "./RosterManager";
 
 export const dynamic = "force-dynamic";
@@ -68,7 +70,9 @@ export default async function RosterPage({ params }: { params: Promise<{ id: str
       grade={cls.grade}
       inviteCode={cls.inviteCode}
       archived={cls.archivedAt != null}
-      joinPath={`/join/${cls.inviteCode}`}
+      joinUrl={kontoBeitrittUrl(cls.inviteCode)}
+      lehrerraumUrl={`${kontoBaseUrl()}/lehrerraum/lehrgruppen`}
+      satz={GESCHLOSSEN_SATZ}
       initialRoster={roster}
     />
   );

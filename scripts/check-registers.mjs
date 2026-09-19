@@ -121,7 +121,12 @@ const WATCHED = [
 // Diese Bahn hat beim Sweep gehoben, was sie ohnehin angefasst hat — gemessen
 // waren das NULL der 49 Verweise: keiner liegt in einer Zeile, die K6 anfassen
 // darf (die Zahl steht im Report, statt als Vorsatz behauptet zu werden).
-const LINE_REF_UNTIL = "2026-11-30";
+// ── dach-108 · OHNE DATUM (Koki-Entscheid E-8, 2026-09-19) ──────────────────
+// »Keine Werkstatt-Fristen«: die Frist 2026-11-30 ist gefallen. Die Duldung
+// bleibt, aber als benannter offener Punkt im Register selbst (D-1072, »offen,
+// ohne Datum«). Fällt die Zeile oder ihr »offen«, ist die Liste nicht mehr
+// gedeckt und das Tor rot — gedeckt wird durch eine Zeile, nie durch einen Tag.
+const LINE_REF_OFFEN = "D-1072";
 const LINE_REF_OWNER = "K-Bahn";
 const LINE_REF_ALLOW = [
   // Der einzige Eintrag, der niemals fällt: D-242 nennt die verbotene Form beim Namen.
@@ -321,6 +326,17 @@ for (const { n, line } of mentions.proseDefs) {
 const ANCHOR = /`([A-Za-z0-9_./ -]+\.(?:ts|tsx|mjs|js|json|md))#([^`]+)`/g;
 const LINE_REF = /`([A-Za-z0-9_./-]+\.(?:ts|tsx|mjs|js|json|md)):(\d+)`/g;
 
+/** dach-108 · Gesetz 4c: eine nicht leere Duldungsliste braucht ihren offenen Punkt
+ *  im Register — eine Zeile `| D-n | … |`, die »offen« sagt. Rein, damit der
+ *  Selbsttest gegen den echten Registertext tampern kann. */
+function offenLaw(text, id, anzahl) {
+  if (anzahl === 0) return [];
+  const zeile = text.split("\n").find((l) => l.startsWith(`| ${id} |`));
+  if (!zeile) return [`Die Ausnahmeliste des Schulden-Registers (${anzahl} Einträge, Eigentümer ${LINE_REF_OWNER}) nennt ${id}, aber das Register hat keine Zeile ${id} — ungedeckte Duldung`];
+  if (!/\boffen\b/.test(zeile)) return [`${id} ist nicht mehr »offen« — die Ausnahmeliste gehört dann geleert, nicht still weitergeführt`];
+  return [];
+}
+
 /** Gesetz 4 über EINEN Text, rein — damit der Selbsttest gegen den ECHTEN
  *  Registertext tampern kann statt gegen eine erfundene Konfiguration (P-71). */
 export const lineRefLaw = (text, allow, label = "dok") => {
@@ -357,7 +373,6 @@ export const staleAllowLaw = (seen, allow) =>
 
 let anchors = 0;
 let lineRefs = 0;
-const today = new Date().toISOString().slice(0, 10);
 const allowByRef = new Map(LINE_REF_ALLOW.map((a) => [a.ref, a]));
 const seenAllowed = new Map();
 for (const doc of WATCHED) {
@@ -398,11 +413,7 @@ for (const doc of WATCHED) {
 // ── Gesetz 4b · keine schale Ausnahme ───────────────────────────────────────
 const geduldet = [...seenAllowed.values()].reduce((a, b) => a + b, 0);
 for (const msg of staleAllowLaw(seenAllowed, LINE_REF_ALLOW)) fail(msg);
-if (LINE_REF_ALLOW.length > 0 && LINE_REF_UNTIL < today) {
-  fail(`Die Ausnahmeliste des Schulden-Registers ist am ${LINE_REF_UNTIL} abgelaufen `
-    + `(${geduldet} Verweise, Eigentümer ${LINE_REF_OWNER}). Verlängerung nur als ausdrücklicher Beschluss, `
-    + "nie still — die Zitate auf `datei#symbol` heben");
-}
+for (const msg of offenLaw(debtText, LINE_REF_OFFEN, LINE_REF_ALLOW.length)) fail(msg);
 
 // ── Selbsttest: jedes rote Licht einmal wirklich gesehen ────────────────────
 if (selftest) {
@@ -447,6 +458,14 @@ if (selftest) {
       const t = `${debtText}\n**D-45** · und hier steht dieselbe Nummer noch einmal, anders beschrieben.`;
       if (debtMentions(t).proseDefs.some((d) => d.n === 45)) fail("x");
     }],
+    ["dach-108 · die Duldungsliste verliert ihren offenen Punkt im Register", () => {
+      const t = debtText.split("\n").filter((l) => !l.startsWith(`| ${LINE_REF_OFFEN} |`)).join("\n");
+      for (const msg of offenLaw(t, LINE_REF_OFFEN, LINE_REF_ALLOW.length)) fail(msg);
+    }],
+    ["dach-108 · der offene Punkt ist erledigt, die Liste aber noch voll", () => {
+      const t = debtText.replace(/^(\| D-1072 \|.*)offen, ohne Datum/m, "$1erledigt");
+      for (const msg of offenLaw(t, LINE_REF_OFFEN, LINE_REF_ALLOW.length)) fail(msg);
+    }],
     ["D-242(b) · eine DURCHGESTRICHENE Zeile ist trotzdem vergeben", () => {
       // Vorher unsichtbar: `| ~~D-52~~ |`. Wird sie ein zweites Mal vergeben,
       // muss Gesetz 1 das sehen.
@@ -473,6 +492,7 @@ if (selftest) {
     ["…keine schale Ausnahme", staleAllowLaw(echt.allowedSeen, LINE_REF_ALLOW).length === 0],
     ["…keine tote Adresse (Bereiche wie »D-330…D-339« zählen nicht als Verweis)", echtMentions.dangling.length === 0],
     ["…keine zweite Beschreibung in Prosa", echtMentions.proseDefs.length === 0],
+    ["…die Duldungsliste hat ihren offenen Punkt (dach-108)", offenLaw(debtText, LINE_REF_OFFEN, LINE_REF_ALLOW.length).length === 0],
   ];
   for (const [name, ok] of nichtTamper) {
     if (ok) { console.log(`  ✓ NICHT-TAMPER · ${name}`); gruen++; }
@@ -495,6 +515,6 @@ console.log(
   `check-registers: OK — Dossiers [${DOSSIER_DIRS.join(", ") || "keine"}] · ${debt.count} D-Nummern eindeutig (Prosa mitgezählt: keine tote Adresse, `
   + `keine zweite Beschreibung) · ${pit.count} PB-Nummern eindeutig und lückenlos · `
   + `${anchors} Symbol-Verweise aufgelöst über ${WATCHED.length} Dokumente · `
-  + `${lineRefs} Zeilennummern-Verweise, davon ${geduldet} im Schulden-Register geduldet bis ${LINE_REF_UNTIL} `
+  + `${lineRefs} Zeilennummern-Verweise, davon ${geduldet} im Schulden-Register geduldet als offener Punkt ${LINE_REF_OFFEN} `
   + `(${LINE_REF_OWNER}), ${lineRefs - geduldet} neu`,
 );
