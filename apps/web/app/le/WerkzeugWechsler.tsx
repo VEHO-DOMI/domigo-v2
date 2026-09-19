@@ -8,7 +8,7 @@
  * kennt keinen Titel und keine Adresse selbst. Die Texte sind Deutsch (die Sprache des
  * Dachs, lang="de") und stehen so da, wie die Datei sie hat.
  *
- * Bedienung: ein Menü-Knopf »Werkzeuge« mit aria-expanded + aria-controls. Enter/Leertaste
+ * Bedienung: ein Menü-Knopf (Name aus der Datei, MENUE_TITEL — Fassung 4: »Bereiche«) mit aria-expanded + aria-controls. Enter/Leertaste
  * oder Pfeil ab öffnen und setzen den Fokus auf den ersten Eintrag; Pfeile und
  * Tab/Umschalt+Tab bleiben im Menü (Fokusfalle), Pos1/Ende springen, Escape schließt und
  * gibt den Fokus an den Knopf zurück; ein Klick daneben schließt.
@@ -21,7 +21,7 @@
  * letzter Eintrag in dieses Menü (le-nur-schmal); breit steht er daneben (BrandHeader).
  */
 import { useEffect, useId, useRef, useState } from "react";
-import { EIGENES_WERKZEUG, istSprung, kategorieLabel, type Werkzeug } from "@/lib/le-werkzeuge";
+import { EIGENES_WERKZEUG, istSprung, kategorieLabel, MENUE_TITEL, type Werkzeug } from "@/lib/le-werkzeuge";
 
 function EintragInhalt({ w }: { w: Werkzeug }) {
   return (
@@ -121,13 +121,13 @@ export default function WerkzeugWechsler({
           }
         }}
       >
-        Werkzeuge <span aria-hidden="true" className="le-switcher-pfeil">▼</span>
+        {MENUE_TITEL} <span aria-hidden="true" className="le-switcher-pfeil">▼</span>
       </button>
       <div
         ref={menuRef}
         id={menuId}
         role="menu"
-        aria-label="Werkzeuge"
+        aria-label={MENUE_TITEL}
         hidden={!open}
         className="le-switcher-menu"
         onKeyDown={onMenuKeyDown}
