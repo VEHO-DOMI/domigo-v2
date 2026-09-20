@@ -20,7 +20,7 @@
 import Link from "next/link";
 import RegelbuchBoard from "./RegelbuchBoard";
 import { redirect } from "next/navigation";
-import { loadGameMap, loadReleasedChapters, loadStory, storyIdForGrade } from "@domigo/content-loader";
+import { loadGameMap, loadReleasedChapters, loadStory, loadStoryEconomy, storyIdForGrade } from "@domigo/content-loader";
 import { getDb, getSolvedGameItemIds } from "@domigo/db";
 import { EvidenceGallery, EVIDENCE, type EvidencePiece } from "@domigo/game-detective";
 import { SeasonBoard, type EpisodeProgress } from "@domigo/game-novel";
@@ -201,7 +201,7 @@ export default async function HubPage({ params }: { params: Promise<{ grade: str
       }
     }
   }
-  const doneLabel = inkHub ? "✨ Wieder da!" : grade === 1 ? "✨ Zurück!" : grade === 2 ? "CLOSED" : grade === 3 ? "✓ uploaded" : "✓ stamped";
+  const doneLabel = inkHub ? "✨ Wieder da!" : grade === 1 ? "✨ Zurück!" : grade === 2 ? "CLOSED" : grade === 3 ? "✓ complete" : "✓ stamped";
   const emblem = inkHub ? "🖋" : (STORY_UI[grade] ?? DEFAULT_STORY_UI).icon;
 
   // Doc 22 §1 — the ink hub's level select is the school FLOOR PLAN: three
@@ -289,7 +289,7 @@ export default async function HubPage({ params }: { params: Promise<{ grade: str
 
       {episodes.length > 0 && (
         <section style={{ marginTop: 28 }}>
-          <SeasonBoard episodes={episodes} label="The season so far" />
+          <SeasonBoard episodes={episodes} label="The season so far" economy={storyId ? loadStoryEconomy(storyId)?.episodes ?? [] : []} />
         </section>
       )}
 

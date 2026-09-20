@@ -641,7 +641,7 @@ function ChoiceDropdown({ options, selected, onSelect, disabled, corrects, revea
   );
 }
 
-export function GrammarItemView({ item, onResult, onTier, hideHint, autoFocus, hideXp, tactile, singleAttempt, hideFeedback, bank, choiceRender }: { item: GrammarItem; onResult?: (tier: Tier, detail: ResultDetail) => void; onTier?: (tier: Tier, wrongCount: number) => void; hideHint?: boolean; autoFocus?: boolean; hideXp?: boolean; tactile?: boolean; singleAttempt?: boolean; hideFeedback?: boolean; bank?: string[] | null; choiceRender?: "buttons" | "dropdown" }) {
+export function GrammarItemView({ item, onResult, onTier, hideHint, autoFocus, hideXp, hideMeta, tactile, singleAttempt, hideFeedback, bank, choiceRender }: { item: GrammarItem; onResult?: (tier: Tier, detail: ResultDetail) => void; onTier?: (tier: Tier, wrongCount: number) => void; hideHint?: boolean; autoFocus?: boolean; hideXp?: boolean; hideMeta?: boolean; tactile?: boolean; singleAttempt?: boolean; hideFeedback?: boolean; bank?: string[] | null; choiceRender?: "buttons" | "dropdown" }) {
   const promptId = useId();
   const firstFull = item.answers.find((a) => a.tier === "full")?.text ?? "";
   const blankCount = Math.max(1, firstFull.split("|").length);
@@ -688,7 +688,7 @@ export function GrammarItemView({ item, onResult, onTier, hideHint, autoFocus, h
 
   return (
     <div style={card} role="group" aria-labelledby={promptId}>
-      <div style={metaLabel}>{item.format} · level {item.difficulty}</div>
+      {!hideMeta && <div style={metaLabel}>{item.format} · level {item.difficulty}</div>}
       <Prompt id={promptId} text={item.prompt.text} />
       {isChoice && choiceRender !== "dropdown" && <Choices options={choiceOptions} selected={choice} onSelect={setChoice} disabled={done} corrects={fullAnswers} reveal={!hideFeedback} />}
       {isChoice && choiceRender === "dropdown" && <ChoiceDropdown options={choiceOptions} selected={choice} onSelect={setChoice} disabled={done} corrects={fullAnswers} reveal={!hideFeedback} />}
@@ -728,7 +728,7 @@ export function GrammarItemView({ item, onResult, onTier, hideHint, autoFocus, h
 
 // ---- vocab item ----------------------------------------------------------
 
-export function VocabItemView({ item, onResult, onTier, hideHint, autoFocus, hideXp, singleAttempt, pool = "carrier", mask, hideFeedback, bank }: { item: VocabItem; onResult?: (tier: Tier, detail: ResultDetail) => void; onTier?: (tier: Tier, wrongCount: number) => void; hideHint?: boolean; autoFocus?: boolean; hideXp?: boolean; singleAttempt?: boolean; pool?: VocabPool; mask?: "first-letter"; hideFeedback?: boolean; bank?: string[] | null }) {
+export function VocabItemView({ item, onResult, onTier, hideHint, autoFocus, hideXp, hideMeta, singleAttempt, pool = "carrier", mask, hideFeedback, bank }: { item: VocabItem; onResult?: (tier: Tier, detail: ResultDetail) => void; onTier?: (tier: Tier, wrongCount: number) => void; hideHint?: boolean; autoFocus?: boolean; hideXp?: boolean; hideMeta?: boolean; singleAttempt?: boolean; pool?: VocabPool; mask?: "first-letter"; hideFeedback?: boolean; bank?: string[] | null }) {
   const promptId = useId();
   const inputRef = useRef<HTMLInputElement>(null);
   const [value, setValue] = useState("");
@@ -757,7 +757,7 @@ export function VocabItemView({ item, onResult, onTier, hideHint, autoFocus, hid
   const showBank = !masked && bank != null && bank.length > 0;
   return (
     <div style={card} role="group" aria-labelledby={promptId}>
-      <div style={metaLabel}>vocab · {VOCAB_POOL_LABEL[pool]} · level {item.difficulty}</div>
+      {!hideMeta && <div style={metaLabel}>vocab · {VOCAB_POOL_LABEL[pool]} · level {item.difficulty}</div>}
       {ask.context !== null && <div style={{ fontSize: 14, color: "var(--text-secondary)" }}>{ask.context}</div>}
       {ask.instruction !== "" && <div style={{ fontSize: 13, color: "var(--text-secondary)", fontWeight: 600 }}>{ask.instruction}</div>}
       {masked ? <MaskedPrompt id={promptId} text={ask.text} segments={maskSegments} /> : <Prompt id={promptId} text={ask.text} />}

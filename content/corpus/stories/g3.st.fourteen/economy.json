@@ -2,19 +2,19 @@
   "schema": "economy@1",
   "storyId": "g3.st.fourteen",
   "episodes": [
-    { "chapterId": "g3.st.fourteen.ch01", "views": 47, "likeRate": 0.06, "subscribers": 12, "note": "start — canon: 47 views" },
-    { "chapterId": "g3.st.fourteen.ch02", "views": 3200, "likeRate": 0.028, "subscribers": 380, "note": "first jump" },
-    { "chapterId": "g3.st.fourteen.ch03", "views": 11000, "likeRate": 0.0364, "subscribers": 1900, "note": "" },
-    { "chapterId": "g3.st.fourteen.ch04", "views": 28000, "likeRate": 0.05357, "subscribers": 6500, "note": "" },
-    { "chapterId": "g3.st.fourteen.ch05", "views": 45000, "likeRate": 0.0711, "subscribers": 14000, "note": "warm band ends" },
-    { "chapterId": "g3.st.fourteen.ch06", "views": 55000, "likeRate": 0.0909, "subscribers": 22000, "note": "" },
-    { "chapterId": "g3.st.fourteen.ch07", "views": 70000, "likeRate": 0.12143, "subscribers": 60000, "note": "canon line: 60,000 subscribers" },
-    { "chapterId": "g3.st.fourteen.ch08", "views": 120000, "likeRate": 0.13333, "subscribers": 80000, "note": "the company offer" },
-    { "chapterId": "g3.st.fourteen.ch09", "views": 95000, "likeRate": 0.09474, "subscribers": 65000, "note": "authorised dip — backlash (canon 80k→65k)" },
-    { "chapterId": "g3.st.fourteen.ch10", "views": 110000, "likeRate": 0.10909, "subscribers": 70000, "note": "the scandal draws (canon 70k)" },
-    { "chapterId": "g3.st.fourteen.ch11", "views": 400000, "likeRate": 0.15, "subscribers": 130000, "note": "peak — the fail video" },
-    { "chapterId": "g3.st.fourteen.ch12", "views": 150000, "likeRate": 0.06, "subscribers": 95000, "note": "authorised dip — crash after Ben leaves" },
-    { "chapterId": "g3.st.fourteen.ch13", "views": 60000, "likeRate": 0.06667, "subscribers": 72000, "note": "authorised dip — channel on pause" },
-    { "chapterId": "g3.st.fourteen.ch14", "views": 80000, "likeRate": 0.0875, "subscribers": 74000, "note": "honest, small rise" }
+    { "chapterId": "g3.st.fourteen.ch01", "views": 47, "likeRate": 0.06, "subscribers": 12, "note": "start — canon: 47 views", "shares": 2, "comments": 3 },
+    { "chapterId": "g3.st.fourteen.ch02", "views": 3200, "likeRate": 0.028, "subscribers": 380, "note": "first jump", "shares": 96, "comments": 35 },
+    { "chapterId": "g3.st.fourteen.ch03", "views": 11000, "likeRate": 0.0364, "subscribers": 1900, "note": "", "shares": 440, "comments": 110 },
+    { "chapterId": "g3.st.fourteen.ch04", "views": 28000, "likeRate": 0.05357, "subscribers": 6500, "note": "", "shares": 1260, "comments": 280 },
+    { "chapterId": "g3.st.fourteen.ch05", "views": 45000, "likeRate": 0.0711, "subscribers": 14000, "note": "warm band ends", "shares": 2250, "comments": 630 },
+    { "chapterId": "g3.st.fourteen.ch06", "views": 55000, "likeRate": 0.0909, "subscribers": 22000, "note": "", "shares": 3300, "comments": 880 },
+    { "chapterId": "g3.st.fourteen.ch07", "views": 70000, "likeRate": 0.12143, "subscribers": 60000, "note": "canon line: 60,000 subscribers", "shares": 5600, "comments": 1400 },
+    { "chapterId": "g3.st.fourteen.ch08", "views": 120000, "likeRate": 0.13333, "subscribers": 80000, "note": "the company offer", "shares": 10800, "comments": 3000 },
+    { "chapterId": "g3.st.fourteen.ch09", "views": 95000, "likeRate": 0.09474, "subscribers": 65000, "note": "authorised dip — backlash (canon 80k→65k)", "shares": 6650, "comments": 2850 },
+    { "chapterId": "g3.st.fourteen.ch10", "views": 110000, "likeRate": 0.10909, "subscribers": 70000, "note": "the scandal draws (canon 70k)", "shares": 8800, "comments": 3300 },
+    { "chapterId": "g3.st.fourteen.ch11", "views": 400000, "likeRate": 0.15, "subscribers": 130000, "note": "peak — the fail video", "shares": 36000, "comments": 16000 },
+    { "chapterId": "g3.st.fourteen.ch12", "views": 150000, "likeRate": 0.06, "subscribers": 95000, "note": "authorised dip — crash after Ben leaves", "shares": 4500, "comments": 6000 },
+    { "chapterId": "g3.st.fourteen.ch13", "views": 60000, "likeRate": 0.06667, "subscribers": 72000, "note": "authorised dip — channel on pause", "shares": 900, "comments": 1200 },
+    { "chapterId": "g3.st.fourteen.ch14", "views": 80000, "likeRate": 0.0875, "subscribers": 74000, "note": "honest, small rise", "shares": 1600, "comments": 2400 }
   ]
 }
