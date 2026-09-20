@@ -1,7 +1,7 @@
 /**
  * /admin/hilfe — die eine Seite, die eine Lehrkraft zum Loslegen braucht.
  *
- * Vier Schritte, zwei Warnungen, sonst nichts. Reine Server-Komponente (keine
+ * Drei Schritte, zwei Warnungen, sonst nichts. Reine Server-Komponente (keine
  * Datenbank, kein Zustand), damit sie sich zuverlässig ausdrucken lässt: die
  * Druckregeln unten blenden die Navigation aus und setzen schwarz auf weiß, weil
  * die Farbtoken des Bildschirms im Ausdruck grau werden.
@@ -14,33 +14,33 @@ import Link from "next/link";
 
 export const dynamic = "force-dynamic";
 
+// dach-108 · Klassen, Klassenlisten und die Anmeldung liegen bei Lauter Einser
+// (Koki 19.09., E-3): die Schritte »Schülerliste einfügen«, »PIN wählen« und die
+// Warnungen zu Archivieren und »Reset PIN« beschrieben Wege, die es in DomiGo nicht
+// mehr gibt. Diese Seite sagt, wo es jetzt geht.
 const schritte: { titel: string; text: string }[] = [
   {
-    titel: "1 · Deine Klasse ist schon da",
-    text: "Du musst nichts anlegen. Hinter der Schaltfläche »Manage classes →« steht deine Klasse bereits — mit Namen und Stufe, so wie sie im Stundenplan heißt. Die Oberfläche ist noch auf Englisch beschriftet; die Wege sind dieselben.",
+    titel: "1 · Deine Klasse kommt aus Lauter Einser",
+    text: "Klassen und Klassenlisten legst du im Lehrerzimmer von Lauter Einser an. In DomiGo erscheint die Klasse danach von selbst hinter der Schaltfläche »Manage classes →« — anlegen, umbenennen oder eine Liste einfügen musst und kannst du hier nicht.",
   },
   {
-    titel: "2 · Schülerliste einfügen",
-    text: "Bei deiner Klasse auf »Roster« gehen. Zwei Wege: entweder eine Datei auswählen (»Choose File«) oder die Namen ins große Feld einfügen — ein Name je Zeile. Aus Excel: Datei → Speichern unter → CSV; aus Word: die Liste markieren, kopieren und unten einfügen. Zusätzliche Spalten wie Klasse oder E-Mail stören nicht, es zählt die erste. Danach zeigt dir die Seite JEDE Zeile einzeln zum Prüfen: Namen ausbessern, jemanden abwählen — erst der letzte Klick legt die Kinder wirklich an.",
+    titel: "2 · Beitritts-Link austeilen",
+    text: "Auf der Roster-Seite deiner Klasse steht der Beitritts-Link samt Code, mit einer Schaltfläche »Copy join link«. Er führt zur Beitrittsseite bei Lauter Einser; dort meldet sich jedes Kind an. DomiGo selbst nimmt keine PIN und kein Passwort entgegen.",
   },
   {
-    titel: "3 · Beitritts-Link austeilen",
-    text: "Ganz oben auf der Roster-Seite steht der Beitritts-Link samt Code, mit einer Schaltfläche »Copy join link«. Den gibst du den Kindern — jedes sucht sich in der Liste, wählt einen Spitznamen und eine 6-stellige PIN, und ist drin. Du trägst dafür nichts ein und siehst keine PIN.",
-  },
-  {
-    titel: "4 · Ergebnisse lesen",
+    titel: "3 · Ergebnisse lesen",
     text: "Im Baukasten (»Open the assignment builder →«) stellst du Übungen und Schularbeits-Proben zusammen und siehst danach, wer wie weit gekommen ist. Auf der Lehrer-Startseite steht außerdem je Einheit, wie sicher deine Klasse schon ist.",
   },
 ];
 
 const warnungen: { titel: string; text: string }[] = [
   {
-    titel: "Archivieren legt eine Klasse still — und lässt sich rückgängig machen",
-    text: "Die rote Schaltfläche »Archive« in der Klassenliste sperrt alle Kinder dieser Klasse aus: sie können sich nicht mehr anmelden, und der Beitritts-Link ist tot. Gelöscht wird nichts. Unten auf derselben Seite steht »Archivierte Klassen«, und dahinter bringt »Wieder aktivieren« die Klasse samt Roster und aller bisherigen Arbeit zurück. Für ein Schuljahr, das zu Ende ist, ist Archivieren genau richtig.",
+    titel: "Klassen pflegst du bei Lauter Einser",
+    text: "Eine Klasse anlegen, umbenennen oder archivieren und eine Klassenliste einfügen geht nur im Lehrerzimmer von Lauter Einser. An diesen Stellen zeigt DomiGo den Satz »Klassen und Klassenlisten pflegst du im Lehrerzimmer von Lauter Einser.« mit einem Link dorthin.",
   },
   {
-    titel: "PIN vergessen? Für Kinder im Roster, für dich per E-Mail",
-    text: "Bei jedem Kind im Roster steht »Reset PIN«. Danach steht das Kind wieder auf der Beitritts-Seite und wählt Spitzname und PIN neu. Du siehst nie eine PIN und musst dir auch keine ausdenken. Für deine EIGENE PIN lohnt es sich, unter »Account settings« einmal eine E-Mail-Adresse zu hinterlegen: dann kommst du mit »PIN vergessen?« auf der Anmeldeseite selbst wieder hinein, per Link. Ohne hinterlegte Adresse geht es weiterhin — dann setzt dir Koki eine Übergangs-PIN.",
+    titel: "Passwort vergessen?",
+    text: "Angemeldet wird nur über das Konto bei Lauter Einser — für dich und für die Kinder. Ein vergessenes Passwort wird dort zurückgesetzt, nicht in DomiGo. Eine DomiGo-PIN gibt es nicht mehr.",
   },
 ];
 
@@ -67,7 +67,7 @@ export default function HilfeSeite() {
       </Link>
 
       <h1 style={{ fontSize: 28, margin: "8px 0 4px", fontFamily: "var(--font-display)", color: "var(--ink)" }}>
-        In vier Schritten startklar
+        In drei Schritten startklar
       </h1>
       <p style={{ ...p, marginBottom: 8 }}>Eine Seite, zum Ausdrucken oder Danebenlegen.</p>
 

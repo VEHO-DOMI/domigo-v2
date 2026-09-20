@@ -8,19 +8,16 @@
  * it) SERVER-SIDE, BEFORE the database is touched at all. Hiding the entry card on
  * /admin is convenience; this redirect is the security.
  *
- * Read-only WAS the design: it listed, linked and counted, handing every action off
- * to the existing owner-scoped surfaces. K1b adds the ONE action that has no other
- * home — the transitional PIN for a locked-out colleague (pulled forward from K2).
- * It sits in a client component beside this page; this page stays a server component
- * and hands it only display names and ids. The rank is checked here before any
- * query AND again inside the route the form posts to.
+ * Read-only by design: it lists, links and counts, handing every action off to the
+ * existing owner-scoped surfaces. (K1b's transitional PIN for a locked-out colleague
+ * is gone with the PIN sign-in, dach-108 — a locked-out colleague is helped at
+ * Lauter Einser.)
  */
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getDb, listAllClassesForGrandmaster } from "@domigo/db";
 import { getTeacherForPage } from "@/lib/identity";
 import { isGrandmaster } from "@/lib/grandmaster";
-import TeacherPinReset, { type TeacherRow } from "./TeacherPinReset";
 
 export const dynamic = "force-dynamic";
 
@@ -49,14 +46,6 @@ export default async function GrandmasterPage() {
   // hier nur an der Stelle, an der der Betreiber ohnehin steht.
   const deployedSha = process.env.VERCEL_GIT_COMMIT_SHA ?? "lokal (kein Vercel-Bau)";
   const dbEndpoint = dbEndpointLabel(process.env.DATABASE_URL ?? process.env.POSTGRES_URL);
-
-  // Die Lehrkräfte des neuen Registers — aus den Eigentümerinnen der Klassenliste,
-  // je Id einmal. Wer (noch) keine v2-Klasse besitzt, steht hier nicht: diese Seite
-  // kennt Klassen, kein Lehrer-Register. Das ist eine bewusste Grenze, keine Lücke
-  // im Rang — ein Lehrer-Register ist ein K2-Thema.
-  const lehrkraefte: TeacherRow[] = [...new Map(v2.map((c) => [c.ownerId, c])).values()]
-    .map((c) => ({ id: c.ownerId, name: c.ownerName, self: c.ownerId === teacher.userId }))
-    .sort((a, b) => a.name.localeCompare(b.name, "de"));
 
   return (
     <main style={{ maxWidth: 900, margin: "0 auto", padding: "28px 20px 48px", fontFamily: "var(--font-body)", color: "var(--text)" }}>
@@ -126,8 +115,6 @@ export default async function GrandmasterPage() {
           </div>
         )}
       </section>
-
-      {lehrkraefte.length > 0 && <TeacherPinReset teachers={lehrkraefte} />}
 
       <section className="dg-card" style={{ marginTop: 16 }}>
         <h2 style={{ fontSize: 17, margin: "0 0 4px", fontFamily: "var(--font-display)", color: "var(--ink)" }}>

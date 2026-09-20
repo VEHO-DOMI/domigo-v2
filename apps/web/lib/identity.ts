@@ -20,21 +20,14 @@
  *                    administration access keeps its view; the honest way to give
  *                    one is a wide scope, so the wall stays total and the door has
  *                    a name (listAllClassIds, one line in the gate's allowlist).
- *   · PIN session  — dach-074, until the switch-over day only: a child signed
- *                    in with the fallback PIN (or holding a cookie from before
- *                    the adapter, which carries no `via`) sees its one class; a
- *                    PIN teacher sees their own classes, as main's ownership
- *                    filter did (listClassIdsForPinTeacher, one allowlist line).
- *                    From the day on these sessions no longer exist (auth.ts).
  *   · ops machine  — the one test class its link was minted for
  *   · dev fallback — never in production; the same two builders, so a dev page
  *                    exercises the wall instead of tiptoeing around it.
  */
-import { classScope, EMPTY_SCOPE, getDb, listAllClassIds, listClassIdsForPinTeacher, type ClassScope } from "@domigo/db";
+import { classScope, EMPTY_SCOPE, getDb, listAllClassIds, type ClassScope } from "@domigo/db";
 import type { Session } from "next-auth";
 import { auth } from "@/auth";
 import { isGrandmaster } from "@/lib/grandmaster";
-import { pinScopeArt } from "@/lib/konto/rueckfall";
 
 export interface ActingUser {
   userId: string;
@@ -48,9 +41,6 @@ async function scopeAus(session: Session): Promise<ClassScope> {
   if (session.user.role === "teacher" && isGrandmaster(session.user.id)) {
     return classScope(await listAllClassIds(getDb()));
   }
-  const pin = pinScopeArt(session.user.via ?? null, session.user.role);
-  if (pin === "kind") return classScope(session.user.classId ? [session.user.classId] : []);
-  if (pin === "lehrkraft") return classScope(await listClassIdsForPinTeacher(getDb(), session.user.id));
   return classScope(session.user.scope ?? []);
 }
 

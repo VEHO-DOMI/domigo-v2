@@ -34,8 +34,8 @@ Settings → Environment Variables → **Production**:
   **dach-074 (19.09.2026):** früher stand hier `https://domigo-v2.vercel.app`. Seit dem konto-Anschluss
   baut DomiGo aus `AUTH_URL` die Rücksprung-Adresse für »Sign in with Lauter Einser«, und konto lässt als
   Rücksprung **nur exakt diesen Host** zu (konto `lib/return-allowlist.ts`, `APP_HOSTS.go`). Mit der alten
-  vercel.app-Adresse scheitert jeder konto-Handoff still — bis zum 13.10. merkt es niemand (die PIN trägt),
-  ab dem 13.10. kommt dann niemand mehr hinein. Siehe `docs/KONTO_ADAPTER_ALS_GEBAUT.md` §0.
+  vercel.app-Adresse scheitert jeder konto-Handoff — und seit dach-108 (keine PIN-Anmeldung mehr)
+  kommt dann niemand hinein. Siehe `docs/KONTO_ADAPTER_ALS_GEBAUT.md` §0.
 - Do **NOT** set `DEV_USER_ID` / `DEV_CLASS_ID` / `DEV_TEACHER_ID` in production.
 
 > **Warum zwei Namensfamilien — und warum das KEIN Fehler ist** (gemessen 2026-08-23, an

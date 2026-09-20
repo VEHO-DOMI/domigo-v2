@@ -292,15 +292,32 @@ const COHERENCE_WAIVERS = {
   //   · Kohärent heißt NICHT fertig. p3 zieht weiterhin das geteilte warme
   //     Buchpapier unter seinem eigenen Laufkurs; die Bestellung §10 bleibt
   //     offen. Was hier fiel, ist der GEMESSENE Fugen-Befund, nicht das Motiv.
-  "ch01/p4": { until: "2026-11-30", why: "Bühnen-Laufkurs steht 55° vom geteilten Körper ab — AS5b nicht importierbar (A7). Reparaturpfad AS5F §10.6 (R201, A8 2026-08-22) — vierte Bestellung, c/d/e zurückgewiesen, Lieferung meldet sich selbst als INCOMPLETE; Import A9. Gemessen nach R194: ΔH 56° -> 55°, ΔS 15,5 -> 15,8 — der Farbton-Bruch ist Malerei, nicht Motor" },
-  "ch01/p9": { until: "2026-11-30", why: "Kleckskammer zieht denselben warmen Körper unter einem tintigen Laufkurs — AS5b nicht importierbar (A7). Reparaturpfad AS5F §10.6 (R201, A8 2026-08-22) — vierte Bestellung, c/d/e zurückgewiesen, Lieferung meldet sich selbst als INCOMPLETE; Import A9. ⚠ Gemessen nach R194: ΔH 139° -> 132°, aber ΔS 24,3 -> 25,6 — dieser eine Wert wird SCHLECHTER und reißt jetzt auch die 25er-Linie. Genannt, nicht verschwiegen: p9 war und bleibt wegen ΔH ausgenommen, der Posten fällt mit derselben Bestellung" },
+  "ch01/p4": { offen: "D-1071", why: "Bühnen-Laufkurs steht 55° vom geteilten Körper ab — AS5b nicht importierbar (A7). Reparaturpfad AS5F §10.6 (R201, A8 2026-08-22) — vierte Bestellung, c/d/e zurückgewiesen, Lieferung meldet sich selbst als INCOMPLETE; Import A9. Gemessen nach R194: ΔH 56° -> 55°, ΔS 15,5 -> 15,8 — der Farbton-Bruch ist Malerei, nicht Motor" },
+  "ch01/p9": { offen: "D-1071", why: "Kleckskammer zieht denselben warmen Körper unter einem tintigen Laufkurs — AS5b nicht importierbar (A7). Reparaturpfad AS5F §10.6 (R201, A8 2026-08-22) — vierte Bestellung, c/d/e zurückgewiesen, Lieferung meldet sich selbst als INCOMPLETE; Import A9. ⚠ Gemessen nach R194: ΔH 139° -> 132°, aber ΔS 24,3 -> 25,6 — dieser eine Wert wird SCHLECHTER und reißt jetzt auch die 25er-Linie. Genannt, nicht verschwiegen: p9 war und bleibt wegen ΔH ausgenommen, der Posten fällt mit derselben Bestellung" },
 };
 
-/** an expiry that is a DATE, not a sentence */
-const waiverExpired = (w) => {
+// ── dach-108 · OHNE DATUM (Koki-Entscheid E-8, 2026-09-19) ─────────────────
+// »Keine Werkstatt-Fristen«: p4 und p9 trugen `until: "2026-11-30"`. Die Frist
+// ist gefallen; die Duldung zeigt jetzt auf ihren offenen Punkt im Schulden-
+// Register (D-1071, »offen, ohne Datum«). Fällt die Zeile oder ihr »offen«, ist
+// die Duldung ungedeckt und das Tor rot — kein Tag macht es rot. Die übrigen
+// Verzichtslisten dieser Datei kennen weiter die `until`-Form.
+const OFFENE_PUNKTE = new Set(
+  fs.readFileSync(path.join(process.cwd(), "docs/design/g1/paint/DEBT_REGISTER.md"), "utf8").split("\n")
+    .map((l) => l.match(/^\| (D-\d+) \|.*\|\s*offen\b/))
+    .filter(Boolean)
+    .map((m) => m[1]),
+);
+
+/** Is this waiver no longer covered? An `offen` waiver: when its register row is
+ *  gone or no longer open. An `until` waiver: when its DATE (not a sentence) passed. */
+const waiverExpired = (w, offen = OFFENE_PUNKTE) => {
+  if (w.offen !== undefined) return !offen.has(w.offen);
   const until = Date.parse(`${w.until}T23:59:59Z`);
   return Number.isNaN(until) || Date.now() > until;
 };
+/** How a waiver is covered, for the notes and the failure lines. */
+const deckung = (w) => (w.offen !== undefined ? `open point ${w.offen} (no date)` : `until ${w.until}`);
 
 /**
  * ── R5-T10 · DIE TIEFEN-AUSNAHME DER ARENA IST BEZAHLT — die Tabelle ist mit
@@ -1940,6 +1957,13 @@ if (process.argv.includes("--selftest")) {
   if (!waiverExpired({ until: "2020-01-01" })) { bad++; console.error("✗ a waiver dated 2020 was still considered live — the expiry is decorative"); }
   else if (waiverExpired({ until: "2999-01-01" })) { bad++; console.error("✗ a waiver dated 2999 was considered expired — the expiry misreads dates"); }
   else console.log("✓ waivers expire: a 2020 date is dead, a 2999 date is live, and the audit reads the difference");
+  // dach-108 · a waiver pointing at an open register row is covered on EVERY day;
+  // a row that is gone (or no longer open) uncovers it at once. The real p4/p9
+  // rows must be covered by the real register, or the gate would pass on paper.
+  if (waiverExpired({ offen: "D-1071" }, new Set(["D-1071"]))) { bad++; console.error("✗ a waiver on an open register row was considered expired"); }
+  else if (!waiverExpired({ offen: "D-1071" }, new Set())) { bad++; console.error("✗ a waiver whose register row is gone was still considered covered — the open point is decorative"); }
+  else if (["ch01/p4", "ch01/p9"].some((k) => COHERENCE_WAIVERS[k] && waiverExpired(COHERENCE_WAIVERS[k]))) { bad++; console.error("✗ the real p4/p9 waivers are not covered by the real DEBT_REGISTER"); }
+  else console.log("✓ open-point waivers: covered while the register row is open, uncovered the moment it is gone — no date involved");
   if (bad > 0) { console.error("✗ check-composition selftest: the edge-coherence law does not discriminate"); process.exit(1); }
   console.log("✓ selftest: the coherence law passes a kit cut from its own body, and names ΔS, ΔH and the carve window separately when they break.");
   process.exit(0);
@@ -1972,9 +1996,9 @@ for (const { label, ph, spec } of withSpec) {
   if (waiver === undefined) {
     fail("edge-coherence", `${worstLine} — ${over.length} joint(s) out of family: ${detail}`);
   } else if (waiverExpired(waiver)) {
-    fail("edge-coherence", `${label}: its coherence waiver EXPIRED on ${waiver.until} — ${waiver.why}. Paint it, re-tint it, or have the architect re-date it. (${detail})`);
+    fail("edge-coherence", `${label}: its coherence waiver is no longer covered (${deckung(waiver)}) — ${waiver.why}. Paint it, re-tint it, or re-open its row in DEBT_REGISTER. (${detail})`);
   } else {
-    note(`${worstLine} — WAIVED until ${waiver.until}: ${waiver.why} (${detail})`);
+    note(`${worstLine} — WAIVED, ${deckung(waiver)}: ${waiver.why} (${detail})`);
   }
 }
 
