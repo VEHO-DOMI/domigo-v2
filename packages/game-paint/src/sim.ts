@@ -1947,6 +1947,9 @@ export class Sim {
     // chapter's one cage would simply never fire.
     for (const e of this.world.entities) {
       if (e.role !== "cage" || e.redeemed || e.hidden) continue;
+      // Chapter one's device lockers already show the local ↑ cue. Passing
+      // them must not open a card or consume the later person-rescue hint.
+      if (this.cfg.level.chapter === "ch01" && (e.params.captive === "soundsystem" || e.params.captive === "tablet")) continue;
       const dx = Math.abs(fromSubs(e.x) - fromSubs(this.player.x));
       const dy = Math.abs(fromSubs(e.y) - fromSubs(this.player.y));
       if (dx <= 48 && dy <= 40) {
