@@ -338,7 +338,6 @@
   "reason": "R5-W4 · C2 · Das deutsche Nomen jedes entfaerbten Wesens — die Pflicht, die die Ausnahme unten kauft. Es steht HIER und nicht in der Wortbank, weil die Wortbank die KORPUS-Glosse fuehrt (pen -> Kugelschreiber, glue stick -> Klebestift) und diese Tabelle die ERZAEHLSTIMME regelt: Koki spricht oesterreichisch (die Fuellfeder, der Spitzer, der Radiergummi). Zwei Listen, zwei Zustaendigkeiten — G3 besitzt die Glossen, C2 die Spielzeilen (LEXIKON_AT.md).",
   "gluestick": "obj_gluestick sagt >Klebestift< und NICHT Kokis >Uhu-Stick<, und zwar aus einem gemessenen Grund: die englische Antwort ist >glue stick<, und >Uhu-Stick< traegt das Antwortwort >stick< im eigenen Namen (Schicht 18a hat es angeschlagen, als die Zeile zum ersten Mal stand). Ein Kind liest >Stick< und tippt >glue stick<, ohne ein Wort gelernt zu haben. Kokis Wort bleibt im Hinweis (>Auf Deutsch: der Klebestift — der Uhu-Stick.<), wo die Leiter absichtlich frei ist, und ueberall sonst im Kapitel.",
   "pairs": {
-   "obj_book": "Buch",
    "eraser": "Radiergummi",
    "obj_schoolbag": "Schultasche",
    "pen": "Füllfeder",
@@ -356,6 +355,7 @@
   },
   "paintedReason": "welle-041 (Koki 2026-09-15): Eine Kaefig-Karte, deren Insasse im Kartenbild GEMALT steht, schuldet kein deutsches Nomen — das Bild sagt, wer drinsteckt, und ein gleich geschriebenes Nomen (Tablet = tablet) waere die Antwort zum Abschreiben. Eine Karte steht nie zugleich unter captives und painted.",
   "painted": {
+   "enc.obj-book.r1": "welle-058: Koki verlangt, dass das Kind den verlorenen Namen selbst erkennt. obj_book_a zeigt das Buch auf der Namenskarte; die deutsche Aufloesung bleibt als zweiter Hinweis und in der anschliessenden Farbfrage. Der vorhandene painted-Vertrag hebt nur die Pflicht zum vorweg genannten deutschen Nomen auf, nicht die Antwortwort- oder Farbregeln.",
    "rsc.tablet.r1": "device_locker_a — DEVICE_WINDOW (packages/game-paint/src/story/picture-windows.ts) zeigt das Tablet im Schliessfach-Fenster gemalt; die Zeile beschreibt das Geraet."
   }
  },
