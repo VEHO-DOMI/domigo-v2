@@ -1,14 +1,8 @@
 /**
- * G3 "FOURTEEN" UI text bank — the production-crew economy (Koki's "reward system
- * is solid" → we re-label the ONE hidden XP, Law 5, never a new pool). The student
- * is the channel's WRITER: solving a task = a clean take; hidden XP shows as
- * "+N views"; the streak is "trending"; each episode banks a Subscriber milestone.
- *
- * The signature mechanic lives here too: episodeComments() turns the player's
- * fix-Ben's-script accuracy into the comment section — high accuracy shields Ben
- * (the aired line is correct → kind comments), slips let his error air. The TONE
- * is bounded by the episode's authored BAND (warm early → tense → reckoning), so
- * accuracy modulates *how much you protected Ben*, never the plot (story-first).
+ * FOURTEEN copy and authored audience curve. Learning rewards come from the
+ * existing server attempt ledger (displayed as Writing), never from this table.
+ * Views/likes/shares/comments/subscribers describe the fictional channel.
+ * The comment tone follows the authored arc; mistakes never change the plot.
  */
 import type { Tier } from "@domigo/engine";
 
@@ -18,9 +12,9 @@ export const COPY = {
   deShow: "Auf Deutsch?",
   deHide: "Hide German",
   continue: "Next →",
-  finishEpisode: "Upload the episode →",
+  finishEpisode: "Finish this episode →",
   next: "Next →",
-  channelProgress: "Episode views",
+  channelProgress: "Your part in the story",
   // glossed-on-use brand words (Law 1): shown once near the channel bar
   viewsGloss: "views (= Aufrufe)",
 };
@@ -42,13 +36,13 @@ export function slotPrompt(slot: string): string {
   return COPY.taskPrompt;
 }
 
-/** Themed result line by item kind + grade tier. `views` = the XP that was awarded. */
-export function resultLine(kind: "grammar" | "vocab", tier: Tier, views: number): { text: string; good: boolean } {
-  if (tier === "wrong") return { text: "That line aired with a mistake. Check the answer.", good: false };
-  if (tier === "close") return { text: `Almost — a rough take. +${views} views`, good: true };
-  const lead = tier === "partial" ? "Good — nearly there. " : "";
-  const win = kind === "vocab" ? "Word locked in!" : "Clean take!";
-  return { text: `${lead}${win} +${views} views`, good: true };
+/** Acknowledged learning points, never invented audience views. */
+export function resultLine(kind: "grammar" | "vocab", tier: Tier, points?: number): { text: string; good: boolean } {
+  const reward = points === undefined ? "" : ` Writing +${points}.`;
+  if (tier === "wrong") return { text: "Read the answer. You can try this line again.", good: false };
+  if (tier === "close") return { text: `Almost there. Read the small change.${reward}`, good: true };
+  if (tier === "partial") return { text: `Part of it is right. Read the full answer.${reward}`, good: true };
+  return { text: `${kind === "vocab" ? "That word fits." : "That line works."}${reward}`, good: true };
 }
 
 /** "Trending" label for a run of consecutive non-combo-breaking answers. */
@@ -72,6 +66,9 @@ export interface EpisodeStats {
   views: number;
   likeRate: number;
   subscribers: number;
+  /** Authored story counts, not live analytics or player rewards. */
+  shares?: number;
+  comments?: number;
 }
 
 /** The placeholders a scene line may carry; anything else is a gate failure. */
@@ -161,14 +158,14 @@ const TEASE_WARM: Comment[] = [
 const TEASE_TENSE: Comment[] = [
   { author: "lol_marco", text: "Poor Ben 😬 we only watch for the fails now", tone: "tease" },
   { author: "study_girl", text: "the mistakes guy again 😅", tone: "tease" },
-  { author: "anon_42", text: "do they laugh WITH him or AT him?", tone: "cruel" },
+  { author: "anon_42", text: "do they laugh WITH him or AT him?", tone: "kind" },
 ];
 // RECKONING band (L11, the compilation): the cruelty is structural now — a clean take
 // can't undo it. This is the gut-punch the whole comment arc has been building to.
 const CRUEL: Comment[] = [
   { author: "clip_farm", text: "made a compilation of all his fails 💀", tone: "cruel" },
   { author: "h8r_x", text: "this kid is so dumb lol", tone: "cruel" },
-  { author: "noname_99", text: "200k views and they're all laughing AT him", tone: "cruel" },
+  { author: "noname_99", text: "they're all laughing AT him", tone: "cruel" },
 ];
 
 /**
@@ -190,5 +187,5 @@ export function episodeComments(correct: number, total: number, band: CommentBan
   }
   // RECKONING (L11): the cruelty is structural now — a compilation exists, made from old clips.
   // A clean take changes nothing; that futility IS the point. The comments are cruel regardless.
-  return { comments: CRUEL, clean, line: "You kept this take clean. It doesn't matter — the cruelty has a life of its own now." };
+  return { comments: CRUEL, clean, line: "Those clips are from earlier videos. One line today cannot change what the group did to Ben." };
 }

@@ -73,6 +73,9 @@ export const analyse = ({ economy, story, render = uploadStats, fill = fillChapt
     if (!Number.isInteger(e.views) || e.views < 0) bad(`E2: ${tag} views must be a whole number ≥ 0 (is ${e.views})`);
     if (!Number.isInteger(e.subscribers) || e.subscribers < 0) bad(`E2: ${tag} subscribers must be a whole number ≥ 0 (is ${e.subscribers})`);
     if (typeof e.likeRate !== "number" || !(e.likeRate > 0 && e.likeRate <= 1)) bad(`E2: ${tag} likeRate must be in (0, 1] (is ${e.likeRate})`);
+    for (const field of ["shares", "comments"]) {
+      if (!Number.isInteger(e[field]) || e[field] < 0) bad(`E2: ${tag} ${field} must be a whole number ≥ 0 (is ${e[field]})`);
+    }
     // E3
     const likes = likesFor(e);
     if (likes > e.views) bad(`E3: ${tag} likes ${formatCount(likes, "en")} > views ${formatCount(e.views, "en")}`);
@@ -210,6 +213,14 @@ if (process.argv.includes("--selftest")) {
         ? { ...chapter, id: chapter.id.replace("ch10", "ch09") } : chapter, eps);
       return analyse({ economy: economyOnDisk, story: storyOnDisk, fill });
     }, "E8: g3.st.fourteen.ch10.s010 textEn", "the table says 70,000"],
+    ["fehlende Shares-Zahl", () => {
+      const eco = klon(economyOnDisk); delete row(eco, "ch02").shares;
+      return analyse({ economy: eco, story: storyOnDisk });
+    }, "E2: ch02 shares", "whole number"],
+    ["negative Kommentar-Zahl", () => {
+      const eco = klon(economyOnDisk); row(eco, "ch11").comments = -1;
+      return analyse({ economy: eco, story: storyOnDisk });
+    }, "E2: ch11 comments", "whole number"],
     ["NICHT-TAMPER: der echte Stand ist gruen", () => analyse({ economy: economyOnDisk, story: storyOnDisk }), null, null],
   ];
   let schlecht = 0;

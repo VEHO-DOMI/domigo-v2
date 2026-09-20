@@ -18,6 +18,9 @@ export interface AttemptBody {
 }
 
 export interface AttemptResult {
+  /** Confirmed by the shared server grader, absent while offline. */
+  tier?: "correct" | "partial" | "close" | "wrong";
+  xpAwarded?: number;
   /** Server accepted + persisted (or an idempotent duplicate). */
   ok: boolean;
   /** Stored in the outbox for a later retry. */
@@ -27,6 +30,9 @@ export interface AttemptResult {
 }
 
 interface AttemptResponse {
+  tier?: AttemptResult["tier"];
+  xpAwarded?: number;
+  duplicate?: boolean;
   ok?: boolean;
   error?: string;
   streak?: number;
@@ -56,19 +62,21 @@ function runTx<T>(mode: IDBTransactionMode, op: (store: IDBObjectStore) => IDBRe
       new Promise<T>((resolve, reject) => {
         const t = db.transaction(STORE, mode);
         const req = op(t.objectStore(STORE));
-        req.onsuccess = () => resolve(req.result);
         req.onerror = () => reject(req.error);
-        t.oncomplete = () => db.close();
+        t.oncomplete = () => { db.close(); resolve(req.result); };
+        t.onabort = () => { db.close(); reject(t.error ?? new Error("Attempt storage aborted")); };
+        t.onerror = () => { db.close(); reject(t.error); };
       }),
   );
 }
 
-async function enqueue(body: AttemptBody): Promise<void> {
-  if (!hasIDB()) return;
+async function enqueue(body: AttemptBody): Promise<boolean> {
+  if (!hasIDB()) return false;
   try {
     await runTx("readwrite", (s) => s.put(body));
+    return true;
   } catch {
-    /* IndexedDB blocked (private mode, quota) — drop silently; feedback already shown. */
+    return false; // caller must not claim the answer was saved
   }
 }
 
@@ -121,12 +129,15 @@ export async function sendAttempt(body: AttemptBody): Promise<AttemptResult> {
   const data = res ? ((await res.json().catch(() => null)) as AttemptResponse | null) : null;
 
   if (isTransient(res, data)) {
-    await enqueue(body);
-    return { ok: false, queued: true };
+    const queued = await enqueue(body);
+    return { ok: false, queued };
   }
   if (data?.ok) {
     void flushOutbox(); // a live response means we're online — opportunistically drain any backlog
-    return { ok: true, queued: false, streak: data.streak };
+    const tier = ["correct", "partial", "close", "wrong"].includes(data.tier ?? "") ? data.tier : undefined;
+    const xpAwarded = Number.isFinite(data.xpAwarded) && data.xpAwarded! >= 0
+      ? (data.duplicate ? 0 : data.xpAwarded) : undefined;
+    return { ok: true, queued: false, streak: data.streak, tier, xpAwarded };
   }
   return { ok: false, queued: false }; // permanent 4xx — nothing to retry
 }

@@ -158,6 +158,9 @@ export default async function ZonePage({ params, searchParams }: { params: Promi
     const unit = await loadUnitWithOverrides(slug);
     const storyItems = storyItemsFor(chapter, unit, loadStoryComprehension(storyId)?.items ?? []);
     const novelArt = resolveNovelArt(storyId, grade, chapter);
+    const following = story?.chapters[(story?.chapters.findIndex((c) => c.id === chapter.id) ?? -1) + 1];
+    const nextEpisode = following && released.includes(following.id)
+      ? { href: `/play/3/${following.id.split(".").at(-1)}`, title: following.titleEn } : null;
     const serverSave = saved ? { clientRev: saved.clientRev, state: saved.state as unknown as import("@domigo/game-novel").NovelSave } : null;
     return (
       <NovelClient
@@ -169,6 +172,7 @@ export default async function ZonePage({ params, searchParams }: { params: Promi
         reviewItems={[]}
         serverSave={serverSave}
         novelArt={novelArt}
+        nextEpisode={nextEpisode}
         economy={loadStoryEconomy(storyId)?.episodes ?? []}
       />
     );
