@@ -71,6 +71,31 @@ function freedChapter() {
 }
 
 describe("ch01 story mechanics in the actual chapter", () => {
+  it("follows spatially after rescuing Merle first, returning to the scissors, and entering the courtyard", () => {
+    const d = driver("p2");
+    for (const mask of decodePads(proof.phases.p2!.pads).slice(0, 720)) d.tick(maskToPad(mask));
+    const run = (runs: Array<[number, number]>) => {
+      for (const mask of decodePads(runs)) d.tick(maskToPad(mask));
+    };
+    // Jump over the still-cursed scissors, rescue Merle, then return on foot.
+    run([[26, 18], [40, 2], [25, 0], [1, 4], [50, 0]]);
+    expect(d.remembered.freed).toContain("p2-cage-merle");
+    expect(d.sim.world.entities.find(e => e.id === "p2-obj-scissors")?.redeemed).toBe(false);
+    run([[40, 1], [30, 0], [1, 4], [60, 0]]);
+    expect(d.requests.some(r => r.ctx.type === "entity" && r.ctx.id === "p2-obj-scissors")).toBe(true);
+    expect(d.sim.world.entities.find(e => e.id === "p2-obj-scissors")?.redeemed).toBe(true);
+    const x = merle(d.sim)!.x;
+    run([[35, 2], [14, 18], [30, 2], [180, 0]]);
+    expect(merle(d.sim)!.x - x).toBeGreaterThan(8 * TILE * SUBS);
+    expect([merle(d.sim)!.x, merle(d.sim)!.y]).toEqual([d.sim.player.x, d.sim.player.y]);
+    const court = driver("p3", d.remembered);
+    for (const mask of decodePads(proof.phases.p3!.pads).slice(0, 630)) court.tick(maskToPad(mask));
+    expect(court.requests.some(r => r.ctx.type === "entity")).toBe(true);
+    for (let t = 0; t < 180; t++) court.tick();
+    expect(merle(court.sim)!.x).toBeGreaterThan(40 * TILE * SUBS);
+    expect([merle(court.sim)!.x, merle(court.sim)!.y]).toEqual([court.sim.player.x, court.sim.player.y]);
+  });
+
   it("earns all six Merle rounds, then follows beyond her old local roaming area", () => {
     const d = freedChapter(), mate = merle(d.sim)!;
     const rounds = d.requests.filter(r => r.ctx.type === "classmate").map(r => r.ctx.type === "classmate" ? r.ctx.round : -1);
