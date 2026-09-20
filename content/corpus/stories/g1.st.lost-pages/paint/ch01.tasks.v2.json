@@ -2134,7 +2134,7 @@
       ],
       "stimulus": {
         "type": "entity",
-        "showsDe": "Der Tintengeist hat dieses Schließfach verzaubert.",
+        "showsDe": "Der Tintengeist hält ein Gerät mit Bildschirm gefangen.",
         "art": "device_locker_a"
       },
       "storyDe": "Was siehst du? Sag es auf Englisch.",
