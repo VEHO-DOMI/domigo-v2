@@ -34,7 +34,7 @@ describe("Eintragsregeln", () => {
   });
   it("Titel aus der Liste, seit Fassung 3 (Kokis Namen 18.09.)", () => {
     const titel = werkzeugeFuer("teacher").map((w) => w.titel);
-    assert.deepEqual(titel, ["DomiGo", "Finale", "Denkraum", "Lehrer-Notizbuch VEHO", "Mein Bereich"]);
+    assert.deepEqual(titel, ["DomiGo", "DomiLingo", "LautGedacht", "Lehrer-Notizbuch VEHO", "Mein Bereich"]);
   });
   it("nur »live« wird ein Link — »kommt später« und »zieht um« nie", () => {
     const sprung = werkzeugeFuer("teacher").filter(istSprung).map((w) => w.id);

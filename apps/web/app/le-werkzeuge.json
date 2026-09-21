@@ -1,5 +1,5 @@
 {
-  "version": "2026-09-19",
+  "version": "2026-09-21",
   "menue_titel": "Bereiche",
   "hinweis": "Quelle der Kacheln (Weiche, Mein Bereich) und des Menüs »Bereiche« (Kopfzeile). Gepflegt von S2 · Research + Name; Apps vendorn eine Kopie als le-werkzeuge.json und pinnen die sha256 aus tokens.json. Reihenfolge = Anzeige-Reihenfolge: Bereiche für Schüler zuerst, Lehrer-Notizbuch und Mein Bereich zuletzt. 'anzeige' ist der fertige Kopfzeilen-Wortlaut — keine App baut ihn selbst. 'stand': live | zieht um | kommt später (nie toter Link).",
   "schema": {
@@ -45,8 +45,8 @@
     },
     {
       "id": "eng-os",
-      "titel": "Finale",
-      "anzeige": "Englisch · Oberstufe — Finale",
+      "titel": "DomiLingo",
+      "anzeige": "Englisch · Oberstufe — DomiLingo",
       "satz": "Lesen, Hören, Sprachverwendung und Schreiben üben – mit echten Aufgabenformaten und Rückmeldung.",
       "kategorie": {
         "fach": "Englisch",
@@ -65,9 +65,9 @@
     },
     {
       "id": "pup",
-      "titel": "Denkraum",
-      "anzeige": "Psychologie und Philosophie · Oberstufe — Denkraum",
-      "satz": "Das Buch, das lebendig wird – für die 6. Klasse.",
+      "titel": "LautGedacht",
+      "anzeige": "Psychologie und Philosophie · Oberstufe — LautGedacht",
+      "satz": "Psychologie und Philosophie für die 6. Klasse.",
       "kategorie": {
         "fach": "Psychologie und Philosophie",
         "stufe": "Oberstufe"
