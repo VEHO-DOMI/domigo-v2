@@ -7,7 +7,7 @@
  * never the wipeable cosmetic save (Law 2). Brand-styled (g3 blue), not the
  * detective corkboard. Server passes the derived progress; this only renders.
  */
-import type { CSSProperties } from "react";
+import { useId, useState, type CSSProperties } from "react";
 import { Audience } from "./audience.tsx";
 import { formatCount, type EpisodeStats } from "./novel-copy.ts";
 import "./novel.css";
@@ -33,9 +33,13 @@ const card: CSSProperties = {
 };
 
 export function SeasonBoard({ episodes, label, economy = [] }: { episodes: EpisodeProgress[]; label: string; economy?: readonly EpisodeStats[] }) {
+  const comparisonId = useId();
+  const [selectedChapter, setSelectedChapter] = useState<string | null>(null);
   const last = episodes.filter((e) => e.finished && e.released).at(-1);
   const rowIndex = economy.findIndex((e) => e.chapterId === last?.chapterId);
   const history = rowIndex < 0 ? [] : economy.slice(0, rowIndex + 1);
+  const selectedIndex = history.findIndex((row) => row.chapterId === selectedChapter);
+  const shownIndex = selectedIndex < 0 ? history.length - 1 : selectedIndex;
   const peak = Math.max(1, ...history.map((e) => e.views));
   const done = episodes.filter((e) => e.finished).length;
   const complete = done === episodes.length && episodes.length > 0;
@@ -71,7 +75,13 @@ export function SeasonBoard({ episodes, label, economy = [] }: { episodes: Episo
         ))}
       </div>
       {history.length > 0 && <>
-        <Audience current={history.at(-1) ?? null} previous={history.at(-2)} quiet={(last?.epNo ?? 0) >= 9} />
+        <div className="fourteen-compare-control">
+          <label htmlFor={comparisonId}>Kanalstand vergleichen</label>
+          <select id={comparisonId} className="dg-input" value={history[shownIndex]?.chapterId} onChange={(event) => setSelectedChapter(event.target.value)}>
+            {history.map((row) => <option key={row.chapterId} value={row.chapterId}>Nach Folge {Number(row.chapterId.slice(-2))}</option>)}
+          </select>
+        </div>
+        <Audience current={history[shownIndex] ?? null} previous={history[shownIndex - 1]} quiet={(last?.epNo ?? 0) >= 9} />
         <details style={{ marginTop: 12 }}>
           <summary style={{ cursor: "pointer", minHeight: 44, paddingTop: 12 }}>Views by episode (= Aufrufe je Folge)</summary>
           <ol style={{ padding: 0, listStyle: "none" }}>

@@ -7,8 +7,8 @@ import { ChoiceContent, DialogueReveal, GlossReveal, LangToggle, primaryLine, us
 import { storyItemKey, type ResolvedItem } from "@domigo/game-core";
 import { GrammarItemView, VocabItemView, type ResultDetail } from "@domigo/task-ui";
 import { CastAvatar, CommentSection } from "./art.tsx";
-import { COPY, episodeComments, fillChapterStats, resultLine, slotPrompt, type EpisodeStats } from "./novel-copy.ts";
-import { audienceAt, bandForUnit, commentsAfter, episodeEnding, isFixSlot, validTakes, type SavedTake } from "./episode-state.ts";
+import { COPY, episodeComments, fillChapterStats, resultLine, slotHelp, slotPrompt, type EpisodeStats } from "./novel-copy.ts";
+import { audienceAt, bandForUnit, commentsAfter, episodeEnding, isFixSlot, restoredTakes, validTakes, type SavedTake } from "./episode-state.ts";
 import { Audience } from "./audience.tsx";
 import "./novel.css";
 
@@ -42,13 +42,13 @@ function speak(text: string): void {
   window.speechSynthesis.speak(u);
 }
 
-type TakeResult = { tier: Tier; status: "saving" | "saved" | "queued" | "failed"; points?: number };
-function TaskTake({ item, prompt, onAttempt, onContinue, onScored, initialTier }: {
-  item: ResolvedItem; prompt: string; onAttempt: AttemptFn; onContinue: () => void;
-  onScored: (tier: Tier) => void; initialTier?: Tier;
+type TakeResult = { tier: Tier; status: "saving" | "saved" | "queued" | "failed" | "unknown"; points?: number };
+function TaskTake({ item, prompt, promptHelp, onAttempt, onContinue, onScored, initialResult }: {
+  item: ResolvedItem; prompt: string; promptHelp: string; onAttempt: AttemptFn; onContinue: () => void;
+  onScored: (tier: Tier, status: "saved" | "queued") => void; initialResult?: SavedTake;
 }) {
-  const [res, setRes] = useState<TakeResult | null>(initialTier ? { tier: initialTier, status: "saved" } : null);
-  const [restoredAtMount] = useState(initialTier !== undefined);
+  const [res, setRes] = useState<TakeResult | null>(initialResult ? { tier: initialResult.tier, status: initialResult.status === "saved" || initialResult.status === "queued" ? initialResult.status : "unknown" } : null);
+  const [restoredAtMount] = useState(initialResult !== undefined);
   const [replaying, setReplaying] = useState(false);
   const [round, setRound] = useState(0);
   const attempt = useRef<GameAttempt | null>(null);
@@ -65,7 +65,7 @@ function TaskTake({ item, prompt, onAttempt, onContinue, onScored, initialTier }
       const tier = reply.tier ?? localTier;
       const status = reply.ok ? "saved" : reply.queued ? "queued" : "failed";
       setRes({ tier, status, points: reply.ok ? reply.xpAwarded : undefined });
-      if (reply.ok || reply.queued) onScored(tier);
+      if (reply.ok || reply.queued) onScored(tier, reply.ok ? "saved" : "queued");
     } catch { if (active.current) setRes({ tier: localTier, status: "failed" }); }
     finally { busy.current = false; }
   };
@@ -77,19 +77,23 @@ function TaskTake({ item, prompt, onAttempt, onContinue, onScored, initialTier }
   const line = res ? resultLine(item.kind, res.tier, res.points) : null;
   const restored = restoredAtMount && !replaying;
   return <div className="fourteen-task" data-task-id={item.item.id}>
-    <div className="fourteen-task-label">{prompt}</div>
-    {restored ? <div><p>You have already worked on this line. (= Du hast diese Zeile schon bearbeitet.)</p><p>{item.kind === "grammar" ? (item.item as GrammarItem).explainDe : (item.item as VocabItem).g}</p></div> : item.kind === "grammar"
-      ? <GrammarItemView key={`${item.item.id}:${round}`} item={item.item as GrammarItem} onResult={onResult} hideXp hideMeta tactile />
+    <div className="fourteen-task-label">{prompt}<details className="fourteen-end-help"><summary>Auf Deutsch?</summary><p>{promptHelp}</p></details></div>
+    {restored ? <div><p>You have already worked on this line. (= Du hast diese Zeile schon bearbeitet.)</p></div> : item.kind === "grammar"
+      ? <GrammarItemView key={`${item.item.id}:${round}`} item={item.item as GrammarItem} onResult={onResult} hideXp hideMeta hideExplanation retryMessage="Du kannst diese Zeile noch einmal versuchen." tactile />
       : <VocabItemView key={`${item.item.id}:${round}`} item={item.item as VocabItem} onResult={onResult} hideXp hideMeta />}
     {res && line && <div className="fourteen-result" role="status" aria-live="polite">
+      <strong>{res.tier === "correct" ? "Das ist dir gelungen" : res.tier === "wrong" ? "So passt der Text" : "Das passt schon teilweise"}</strong>
+      <p>{item.kind === "grammar" ? (item.item as GrammarItem).explainDe : (item.item as VocabItem).g}</p>
       <p>{line.text}</p>
       {res.points !== undefined && <p className="fourteen-caption">Writing = deine Lernpunkte. Views = Aufrufe des Kanals.</p>}
-      {res.status === "saving" && <p className="fourteen-caption">Saving your answer… (= Deine Antwort wird gespeichert.)</p>}
-      {res.status === "queued" && <p className="fourteen-caption">Saved on this device. Points follow when you are online. (= Hier gespeichert. Punkte folgen, sobald du online bist.)</p>}
-      {res.status === "failed" && <><p>Your answer could not be saved. (= Deine Antwort konnte nicht gespeichert werden.)</p>
+      {res.status === "saving" && <p className="fourteen-save-state" data-save-state="saving">Deine Antwort wird gespeichert …</p>}
+      {res.status === "saved" && <p className="fourteen-save-state" data-save-state="saved">Antwort gespeichert — online bestätigt.</p>}
+      {res.status === "unknown" && <p className="fourteen-save-state" data-save-state="unknown">Frühere Antwort. Eine Online-Speicherbestätigung ist hier nicht hinterlegt.</p>}
+      {res.status === "queued" && <p className="fourteen-save-state" data-save-state="queued">Auf diesem Gerät gespeichert — wartet auf Online-Bestätigung. Noch keine Lernpunkte bestätigt.</p>}
+      {res.status === "failed" && <><p className="fourteen-save-state" data-save-state="failed">Speichern fehlgeschlagen. Deine Antwort ist noch hier; versuche es erneut.</p>
         <button className="dg-btn-secondary" onClick={() => { if (attempt.current) void submit(attempt.current, res.tier); }}>Try saving again (= Noch einmal speichern)</button></>}
     </div>}
-    {res && (res.status === "saved" || res.status === "queued") && <div className="fourteen-actions">
+    {res && (res.status === "saved" || res.status === "queued" || res.status === "unknown") && <div className="fourteen-actions">
       <button className="dg-btn" onClick={onContinue}>{COPY.continue}</button>
       {(res.tier !== "correct" || restored) && <button className="dg-btn-secondary" onClick={() => { setRes(null); setReplaying(true); setRound((r) => r + 1); }}>Try this line again</button>}
     </div>}
@@ -105,8 +109,9 @@ export function NovelGame(props: NovelGameProps) {
   const first = chapter.scenes[0]?.id ?? "";
   const allSlots = chapter.scenes.flatMap((s) => s.taskSlots.map((t) => t.slot));
   const [sceneId, setSceneId] = useState(resume && byId.has(resume.sceneId) ? resume.sceneId : first);
-  const [takes, setTakes] = useState<string[]>(() => [...new Set((Array.isArray(resume?.takes) ? resume.takes : []).filter((s) => typeof s === "string" && allSlots.includes(s)))]);
   const [results, setResults] = useState<Record<string, SavedTake>>(() => validTakes(chapter, resume?.results));
+  const [takes, setTakes] = useState<string[]>(() => restoredTakes(chapter, resume?.takes, results, resume?.results));
+  const [counterUpdated] = useState(() => Array.isArray(resume?.takes) && resume.takes.some((slot) => allSlots.includes(slot) && !takes.includes(slot)));
   const resumeScene = byId.get(sceneId);
   const resumeComments = resume?.stage === "comments" && resumeScene?.taskSlots.some((slot) => commentsAfter(chapter.unit, slot.slot)) === true;
   const resumeStage = resume?.stage === "finished" ? "finished" : resumeComments ? "comments" : "scene";
@@ -126,6 +131,7 @@ export function NovelGame(props: NovelGameProps) {
     if (nextId === null) { setStage("finished"); save({ stage: "finished" }); return; }
     setStage("scene"); setSceneId(nextId); save({ sceneId: nextId, stage: "scene" });
   };
+  const counterNote = counterUpdated ? <p className="fourteen-caption">Einige Aufgaben sind neu. Dein Platz in der Geschichte bleibt erhalten; der Zähler zählt die neuen Aufgaben erst nach dem Bearbeiten.</p> : null;
   const header = <header className="fourteen-header"><span className="fourteen-brand">FOURTEEN</span><nav><LangToggle grade={props.grade ?? 3} /><a href="/play/3">← Channel</a></nav></header>;
 
   if (done || !scene) return <main className="fourteen" data-episode={chapter.unit} data-scene={sceneId}>
@@ -134,8 +140,9 @@ export function NovelGame(props: NovelGameProps) {
     {art?.endCard && <img className="fourteen-beat" src={art.endCard} alt="" />}
     <blockquote className="fourteen-end-quote">{primaryLine(mode, chapter.scenes.at(-1)?.textEn ?? "", chapter.scenes.at(-1)?.scaffoldDe ?? null)}</blockquote>
     <p>{ending.note}</p>
+    <details className="fourteen-end-help"><summary>Auf Deutsch?</summary><p>{ending.de}</p></details>
     <p className="fourteen-caption">{takes.length} / {allSlots.length} parts worked on (= bearbeitet).</p>
-    <Audience current={audience} previous={previousAudience} quiet={chapter.unit >= 9} />
+    {counterNote}<Audience current={audience} previous={previousAudience} quiet={chapter.unit >= 9} />
     <div className="fourteen-actions">
       {props.nextEpisode && <a className="dg-btn" href={props.nextEpisode.href}>Next episode → {props.nextEpisode.title}</a>}
       <a className="dg-btn-secondary" href="/play/3">Back to the channel</a>
@@ -155,12 +162,12 @@ export function NovelGame(props: NovelGameProps) {
   const fixResults = Object.entries(results).filter(([name]) => isFixSlot(name)).map(([, r]) => r.tier);
   const comments = commentBeat ? episodeComments(fixResults.filter((t) => t === "correct").length, fixResults.length, bandForUnit(chapter.unit)) : null;
   let taskOrNav: ReactNode;
-  if (comments) taskOrNav = <div className="fourteen-task"><CommentSection comments={comments.comments} line={comments.line} label="Under the video (= Unter dem Video)" />
+  if (comments) taskOrNav = <div className="fourteen-task"><CommentSection comments={comments.comments} line={comments.line} lineHelp={chapter.unit === 11 ? "Die Ausschnitte stammen aus früheren Videos. Ein Satz heute kann nicht ändern, was die Gruppe Ben angetan hat." : undefined} label="Under the video (= Unter dem Video)" />
     <div className="fourteen-actions"><button className="dg-btn" onClick={() => go(typeof next === "string" ? next : null)}>{COPY.continue}</button></div></div>;
   else if (slot && !slotItem) taskOrNav = <p role="alert">This part could not load. Open the channel and try again. (= Dieser Teil konnte nicht geladen werden. Öffne den Kanal und versuche es noch einmal.)</p>;
-  else if (slot && slotItem && !taskDone) taskOrNav = <TaskTake key={`${scene.id}:${slot.itemId}`} item={slotItem} prompt={slotPrompt(slot.slot)}
-    onAttempt={onAttempt} initialTier={results[slot.slot]?.tier}
-    onScored={(tier) => { const updated = { ...results, [slot.slot]: { tier } }; setResults(updated); save({ results: updated }); }}
+  else if (slot && slotItem && !taskDone) taskOrNav = <TaskTake key={`${scene.id}:${slot.itemId}`} item={slotItem} prompt={slotPrompt(slot.slot, chapter.unit)} promptHelp={slotHelp(slot.slot, chapter.unit)}
+    onAttempt={onAttempt} initialResult={results[slot.slot]}
+    onScored={(tier, status) => { const updated = { ...results, [slot.slot]: { tier, status, itemKey: storyItemKey(slot.itemId, slot.variantKey) } }; setResults(updated); save({ results: updated }); }}
     onContinue={() => { const updated = takes.includes(slot.slot) ? takes : [...takes, slot.slot]; const phase = commentsHere ? "comments" : "scene"; setTakes(updated); setTaskDone(true); setStage(phase); save({ takes: updated, stage: phase }); }} />;
   else if (Array.isArray(next)) taskOrNav = <div className="fourteen-actions">{next.map((c) => <button key={c.id} className="dg-btn-secondary" onClick={() => go(c.next)}><ChoiceContent mode={mode} textEn={c.textEn} scaffoldDe={c.scaffoldDe} /></button>)}</div>;
   else taskOrNav = <div className="fourteen-actions"><button className="dg-btn" onClick={() => go(next)}>{next === null ? ending.action : COPY.next}</button></div>;
@@ -169,7 +176,7 @@ export function NovelGame(props: NovelGameProps) {
   const name = castNames[scene.speaker] ?? scene.speaker;
   const topImg = art?.beats[scene.id] ?? art?.backdrop;
   return <main className="fourteen" data-episode={chapter.unit} data-scene={sceneId}>
-    {header}<div className="fourteen-eyebrow">Episode {chapter.unit}</div><h1>{chapter.titleEn}</h1>
+    {header}<div className="fourteen-eyebrow">Episode {chapter.unit}</div><h1>{chapter.titleEn}</h1>{chapter.titleDe && <p className="fourteen-caption">{chapter.titleDe}</p>}
     <div className="fourteen-progress"><div className="fourteen-progress-label"><span>Scene {sceneIndex + 1} / {chapter.scenes.length}</span><span>{takes.length} / {allSlots.length} parts worked on (= bearbeitet)</span></div>
       <progress max={chapter.scenes.length} value={sceneIndex + 1} aria-label="Position in this episode" /></div>
     <article className={`fourteen-scene${narrator ? " fourteen-narrator" : ""}`}>
@@ -183,6 +190,6 @@ export function NovelGame(props: NovelGameProps) {
         {taskOrNav}
       </div>
     </article>
-    <Audience current={audience} quiet={chapter.unit >= 9} />
+    {counterNote}<Audience current={audience} previous={previousAudience} quiet={chapter.unit >= 9} />
   </main>;
 }

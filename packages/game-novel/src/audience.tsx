@@ -10,16 +10,19 @@ export function Audience({ current, previous, quiet = false }: { current: Episod
     { label: "Subscribers", de: "Abos", value: current?.subscribers, before: previous?.subscribers },
   ];
   return <section className="fourteen-audience" aria-label="FOURTEEN channel" data-quiet={quiet || undefined}>
-    <div className="fourteen-eyebrow">FOURTEEN · {current ? `after episode ${Number(current.chapterId.slice(-2))}` : "before our first video"}</div>
+    <div className="fourteen-eyebrow">FOURTEEN · {current ? `Stand nach Folge ${Number(current.chapterId.slice(-2))}` : "Vor unserem ersten Video"}</div>
+    <p className="fourteen-caption">Zahlen aus der Geschichte. Sie zeigen den Kanal, nicht deine Lernpunkte.</p>
+    {previous && current && <p className="fourteen-comparison">Folge {Number(previous.chapterId.slice(-2))} → Folge {Number(current.chapterId.slice(-2))}</p>}
     <dl className="fourteen-metrics">
       {metrics.map((m) => <div key={m.label}>
         <dt>{m.label}<span className="fourteen-gloss">{m.de}</span></dt>
         <dd>{m.value === undefined ? "—" : formatCount(m.value, "en")}</dd>
-        {m.value !== undefined && m.before !== undefined && <span className="fourteen-delta">
-          {m.value === m.before ? "No change" : `${m.value > m.before ? "+" : "−"}${formatCount(Math.abs(m.value - m.before), "en")}`}
-        </span>}
+        {m.value !== undefined && m.before !== undefined && <>
+          <span className="fourteen-before">vorher {formatCount(m.before, "en")}</span>
+          <span className="fourteen-delta">{m.value === m.before ? "unverändert" : `${m.value > m.before ? "+" : "−"}${formatCount(Math.abs(m.value - m.before), "en")} ${m.value > m.before ? "mehr" : "weniger"}`}</span>
+        </>}
       </div>)}
     </dl>
-    {previous && <p className="fourteen-caption">Change since the last episode (= Veränderung seit der letzten Folge).</p>}
+    {current && !previous && <p className="fourteen-caption">Unser erster Kanalstand. Es gibt noch keine vorige Folge zum Vergleichen.</p>}
   </section>;
 }
