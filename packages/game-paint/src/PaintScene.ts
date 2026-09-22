@@ -1,3 +1,4 @@
+import { liberationCallTarget, liberationCallMotion } from "./liberation-call.ts";
 import { sceneImagePlacement } from "./scene-v2.ts";
 import { applyZooLionDisplaySize } from "./zoo-lion-size.ts";
 import { classmatePresentationProps } from "./classmate-presentation.ts";
@@ -298,6 +299,7 @@ export interface PaintSceneCfg {
   runSeed?: string;
   tasks?: readonly GameTaskV2[];
   learningProgress?: ChapterLearningState;
+  liberationProgress?: Record<string, "named" | "coloured" | "peaceful">;
   level: PaintLevel;
   phaseId: string;
   art: Record<string, string>; // stem → url (only-present)
@@ -1021,6 +1023,7 @@ export class PaintScene extends Phaser.Scene {
   private trail: Array<{ x: number; y: number; t: number }> = [];
   private trailAt = -1;
   /** PK-R6 · C1: the ↑ cue over the being a press would engage. */
+  private callAuraG!: Phaser.GameObjects.Graphics;
   private engageCueG!: Phaser.GameObjects.Graphics;
   /** R3-4: pooled chalk sprites (one per live projectile, reused per frame). */
   private projImgs: Phaser.GameObjects.Image[] = [];
@@ -1199,6 +1202,7 @@ export class PaintScene extends Phaser.Scene {
       // the ledger silently does nothing. One line, and it is load-bearing.
       resolvedEntityIds: cfg.resolvedEntityIds,
       learningProgress: cfg.learningProgress,
+      liberationProgress: cfg.liberationProgress,
       tasks: cfg.tasks,
       // R5-W6 · S2: die gefalteten EntityEvents hören mit — vier Klänge hätten
       // sonst keinen Auslöser (siehe SimCfg#onEntityAudio).
@@ -1420,6 +1424,7 @@ export class PaintScene extends Phaser.Scene {
     // PK-R6 · C1: the ↑ cue rides ABOVE the beings it points at (depth 7) and
     // below the hero (11), so it never hides the thing it is advertising.
     this.engageCueG = this.add.graphics().setDepth(9.5);
+    this.callAuraG = this.add.graphics().setDepth(6.9);
     // PK-R6 · H1: the boss's separation halo and the gift's bloom share one
     // canvas BEHIND her (entities sit at 7, her trail at 6.9) — a glow drawn in
     // front of a boss is a veil over the thing it was meant to reveal.
@@ -1827,6 +1832,9 @@ export class PaintScene extends Phaser.Scene {
     this.sim.setHold(open);
   }
 
+  nameRestore(ctx: TaskRequest["ctx"], answer: string): boolean { return this.sim.nameRestore(ctx, answer); }
+  liberationProgress(): Record<string, "named" | "coloured" | "peaceful"> { return this.sim.liberationProgress(); }
+
   /** Called by React when the task for `ctx` is SOLVED. */
   resolveTask(ctx: TaskRequest["ctx"]): void {
     // PK-R6 · H2 · THE CONTACT BEAT IS OVER (round-2 finding 1). The burst
@@ -2205,7 +2213,10 @@ export class PaintScene extends Phaser.Scene {
   }
 
   private renderEngageCue(): void {
-    const id = engageTargetId(this.world, this.player.x, this.player.y);
+    const reachableId = engageTargetId(this.world, this.player.x, this.player.y);
+    const callerId = this.cfg.level.chapter === "ch01" ? liberationCallTarget(this.world.entities, this.player.x, this.player.y) : null;
+    const first = this.world.entities.find(e => e.id === callerId && e.params.firstCall && !e.approached);
+    const id = reachableId ?? first?.id ?? null;
     const e = id === null ? null : this.world.entities.find((x) => x.id === id);
     this.engageCueG.clear();
     // An open question already owns the interaction; its cue would cover the observed evidence.
@@ -2225,7 +2236,7 @@ export class PaintScene extends Phaser.Scene {
     const heroTopPx = (this.heroFull.visible ? this.heroFull : this.rigRoot).getBounds().top;
     const y = cueMarkY(fromSubs(e.y) - this.entTargetH(e), heroTopPx);
     const seed = entSeed(e.id);
-    const cue = chalkArrow(x, y, 11, seed, this.tickCount, this.cfg.reducedMotion);
+    const cue = chalkArrow(x, y, e.params.firstCall && e.callPassed && !e.approached ? 17 : 11, seed, this.tickCount, this.cfg.reducedMotion);
     const g = this.engageCueG;
     // the gilded light first, behind everything: the same glow the collectible
     // letters wear, so an affordance is an affordance wherever the child meets it
@@ -2351,6 +2362,9 @@ export class PaintScene extends Phaser.Scene {
   }
 
   private renderEntities(): void {
+    this.callAuraG.clear();
+    const callingId = !this.overlayOpen && this.cfg.level.chapter === "ch01"
+      ? liberationCallTarget(this.world.entities, this.player.x, this.player.y) : null;
     for (const e of this.world.entities) {
       const swarm = this.numberSwarmImgs.get(e.id);
       if (swarm) {
@@ -2533,9 +2547,18 @@ export class PaintScene extends Phaser.Scene {
         // Quetschung — ein Besitzer für die Transformation eines Sprites — und
         // sie gilt nur für die entfärbten Dinge: Käfige haben ihr Atmen, die
         // Regel-Seiten ihren Auftritt, und ein erlöstes Ding hat seinen Frieden.
-        const wg = e.role === "drained" && !e.redeemed && !e.hidden
-          ? idleWiggle(this.tickCount, entSeed(e.id), targetH, this.cfg.reducedMotion)
-          : WIGGLE_AT_REST;
+        const call = e.id === callingId
+          ? liberationCallMotion(this.tickCount, !!e.params.firstCall && !!e.callPassed && !e.approached, this.cfg.reducedMotion) : null;
+        const wg = e.params.fullDrain ? call ?? WIGGLE_AT_REST
+          : e.role === "drained" && !e.redeemed && !e.hidden
+            ? idleWiggle(this.tickCount, entSeed(e.id), targetH, this.cfg.reducedMotion) : WIGGLE_AT_REST;
+        if (call) {
+          // Soft light behind the object, never a colour painted over its answer.
+          for (let ring = 5; ring >= 1; ring--) {
+            this.callAuraG.fillStyle(CUE_HALO, call.auraAlpha / 3);
+            this.callAuraG.fillEllipse(img.x, img.y - targetH / 2, targetH * (1 + ring * .16), targetH * (1 + ring * .1));
+          }
+        }
         // R5-W4 · F5 · DIE PIROUETTE DER REGEL-SEITE (F-16) reitet auf derselben
         // Zeile wie alles andere — ein Besitzer für die Transformation eines
         // Sprites. Sie ist eine reine Funktion in cue.ts, hier steht nur ihr
@@ -2552,13 +2575,13 @@ export class PaintScene extends Phaser.Scene {
         const lift = e.role === "tip" && !e.redeemed && !e.hidden
           ? treasureBobPx(this.tickCount, entSeed(e.id), this.cfg.reducedMotion)
           : 0;
-        img.y += br.dy - lift;
+        img.y += br.dy - lift + (call?.dy ?? 0);
         if (pop > 0) img.setRotation(0.13 * pop);
         else if (e.role === "cage") img.setRotation(e.redeemed ? 0 : br.rot);
         // …und die Wippe dreht um den FUSS, weil jedes Wesen mit origin (0.5, 1)
         // gezeichnet wird: die Drehachse IST die Standlinie. Um die Mitte gedreht
         // führe eine Ecke in den Boden.
-        else if (e.role === "drained") img.setRotation(wg.rot);
+        else if (e.role === "drained" || e.params.liberation) img.setRotation(wg.rot);
         // R5-W3 · W1: was hier gezeichnet wird, ist ab jetzt zitierfähig — samt
         // der Stelle IM BILD, an der es steht. Ohne die muss ein Messgerät die
         // Kamera-Mathematik nachbauen, und ein nachgebautes Fenster misst
@@ -2645,8 +2668,11 @@ export class PaintScene extends Phaser.Scene {
       const wash = this.washImgs.get(e.id);
       if (wash) {
         const a = washAlphaFor(e, this.cfg.reducedMotion);
-        wash.setVisible(img.visible && a > 0);
-        if (a > 0) {
+        wash.setVisible(img.visible && a > 0 && a < 1);
+        // At full desaturation replace the base too: stacking translucent edges
+        // over coloured pixels otherwise leaks the original hue through them.
+        if (a === 1) { img.setTexture(this.greyTexOf(img.texture.key)); img.clearTint(); }
+        if (a > 0 && a < 1) {
           // the DRAINED copy of whatever cell the being is showing this tick —
           // built once per cell, so a being that changes pose mid-wash (Merle
           // acting out a round) is greyed by its own drawing rather than by the

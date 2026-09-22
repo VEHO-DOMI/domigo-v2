@@ -76,10 +76,11 @@
           "r": 17,
           "tier": "E",
           "params": {
+            "liberation": true,
             "taskSequenceV2": {
               "requiredIds": [
-                "g1.paint.ch01.enc.eraser.k1",
-                "g1.paint.ch01.enc.eraser.r1"
+                "g1.paint.ch01.enc.eraser.r1",
+                "g1.paint.ch01.enc.eraser.k1"
               ],
               "variantIds": [
                 "g1.paint.ch01.enc.eraser.k2"
@@ -173,7 +174,14 @@
           "c": 7,
           "r": 15,
           "tier": "E",
-          "params": {}
+          "params": {
+            "liberation": true,
+            "firstCall": true,
+            "taskSequenceV2": {
+              "requiredIds": ["g1.paint.ch01.enc.obj-book.r1"],
+              "variantIds": []
+            }
+          }
         },
         {
           "id": "p1-obj-schoolbag",

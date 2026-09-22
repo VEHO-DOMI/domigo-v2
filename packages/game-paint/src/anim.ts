@@ -154,9 +154,12 @@ export const awakenWash = (step: number, rounds: number = AWAKEN_ROUNDS): number
  *  card is answered. Under reduced motion a redeemed being is simply already in
  *  colour — the end-states law, applied to the world instead of to CSS. */
 export const washAlphaFor = (
-  e: { role: string; redeemed: boolean; timer: number; awakenStep?: number; freedTick?: number; params?: { artSet?: unknown; shellArt?: unknown } },
+  e: { role: string; redeemed: boolean; timer: number; awakenStep?: number; freedTick?: number; colourTick?: number; liberation?: string; params?: { artSet?: unknown; shellArt?: unknown; fullDrain?: boolean } },
   reducedMotion = false,
 ): number => {
+  if (e.liberation === "coloured" || e.liberation === "peaceful") {
+    return reducedMotion ? 0 : 1 - Math.min(e.colourTick ?? COLOUR_FLOOD_TICKS, COLOUR_FLOOD_TICKS) / COLOUR_FLOOD_TICKS;
+  }
   if (!WASHED_ROLES.has(e.role)) return 0; // furniture was never drained
   // CH01: these are locks to open, not material-colour restoration tasks.
   // Preserve the painted wood/metal on both sides of the unlocking beat.
@@ -170,7 +173,7 @@ export const washAlphaFor = (
   // Zoo restore asks for missing colours. A residual brown dog would already
   // show its answer. The opt-in changes world and card together; older art
   // retains its existing wash.
-  const full = e.role === "classmate" ? awakenWash(Math.max((e.awakenStep ?? 0) - (e.redeemed ? 1 : 0), 0)) : e.role === "drained" && e.params?.artSet === "zoo-v2" ? 1 : WASH_ALPHA;
+  const full = e.role === "classmate" ? awakenWash(Math.max((e.awakenStep ?? 0) - (e.redeemed ? 1 : 0), 0)) : e.params?.fullDrain || e.role === "drained" && e.params?.artSet === "zoo-v2" ? 1 : WASH_ALPHA;
   if (!e.redeemed) return full;
   if (reducedMotion) return 0;
   return full * (1 - floodT(e));
