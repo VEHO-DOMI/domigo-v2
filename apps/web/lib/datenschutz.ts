@@ -10,7 +10,7 @@
 
 /** Fixed date of this text. Never computed: a `Stand:` that rewrites itself
  *  daily claims a review that did not happen (srdp DS-0 found exactly that). */
-export const DATENSCHUTZ_STAND = "2026-09-19";
+export const DATENSCHUTZ_STAND = "2026-09-22";
 
 /** The controller as recorded in the processing register (S2, 2026-09-13,
  *  section A: Koki as a private person). */

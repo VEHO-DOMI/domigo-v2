@@ -73,8 +73,18 @@ export type StubKonto = {
   verbraucht: Set<string>;
   /** Sessions the test has revoked. */
   widerrufen: Set<string>;
-  /** Every call the adapter made, for counting (»app-links exactly once«). */
-  rufe: { pfad: string; koerper: unknown }[];
+  /**
+   * Every call the adapter made, for counting (»app-links exactly once«).
+   * `pfad` and `koerper` are load-bearing for anmeldung.test.ts and stay as they
+   * are; dach-123 ADDED `methode` and `cache`, because a class list fetched with
+   * the wrong verb or with a cache would break a promise no body can show.
+   */
+  rufe: { pfad: string; koerper: unknown; methode: string; cache: string }[];
+  /**
+   * dach-123 · what `/api/app-roster` answers, settable per test. `roh` wins
+   * over `body` and is sent verbatim — that is how a broken-JSON answer is made.
+   */
+  rosterAntwort: { status: number; body?: unknown; roh?: string };
   secret: string;
   fetch: typeof fetch;
 };
@@ -85,6 +95,7 @@ export function neuerStub(secret = "stub-secret-mindestens-24-zeichen"): StubKon
     verbraucht: new Set(),
     widerrufen: new Set(),
     rufe: [],
+    rosterAntwort: { status: 200, body: { namen_gesperrt: false, kinder: [] } },
     secret,
     fetch: (() => {}) as unknown as typeof fetch,
   };
@@ -94,7 +105,7 @@ export function neuerStub(secret = "stub-secret-mindestens-24-zeichen"): StubKon
     const pfad = url.pathname;
     const auth = new Headers(init?.headers).get("authorization");
     const koerper = init?.body ? JSON.parse(String(init.body)) : null;
-    s.rufe.push({ pfad, koerper });
+    s.rufe.push({ pfad, koerper, methode: String(init?.method ?? "GET"), cache: String(init?.cache ?? "") });
 
     const json = (b: unknown, status = 200) => new Response(JSON.stringify(b), { status, headers: { "content-type": "application/json" } });
     if (auth !== `Bearer ${s.secret}`) return json({ error: "app secret" }, 401);
@@ -118,6 +129,11 @@ export function neuerStub(secret = "stub-secret-mindestens-24-zeichen"): StubKon
       if (s.widerrufen.has(sid)) return json({ status: "revoked" });
       const c = s.claims.get(`sid:${sid}`);
       return c ? json(c) : json({ status: "revoked" });
+    }
+    if (pfad === "/api/app-roster") {
+      const a = s.rosterAntwort;
+      if (typeof a.roh === "string") return new Response(a.roh, { status: a.status, headers: { "content-type": "application/json" } });
+      return json(a.body, a.status);
     }
     if (pfad === "/api/app-links") return json({ ok: true }, 201);
     if (pfad === "/api/app-class-links") return json({ ok: true }, 201);

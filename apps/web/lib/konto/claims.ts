@@ -174,3 +174,88 @@ export function istLehrkraftFuerGo(claims: Claims): boolean {
 export function appClassIds(claims: Claims): string[] {
   return claims.scope.classes.map((c) => c.app_class_id).filter((id): id is string => typeof id === "string" && id.length > 0);
 }
+
+// ── dach-123 · K6-Go: die Klassenliste der Lehrkraft, zur ANZEIGE ────────────
+
+/**
+ * One child as konto names it on the class list. Exactly five fields — what the
+ * roof sends beyond them never reaches DomiGo (see `projiziereKinder`).
+ * `app_user_id` is set only for `angekommen`, and then it IS the local user id.
+ */
+export type KontoKind = {
+  platz: number | null;
+  last_name: string;
+  first_name: string;
+  status: "offen" | "name_gewaehlt" | "angekommen";
+  app_user_id: string | null;
+};
+
+/** Never an exception: every refusal has a name the pages can render a sentence for. */
+export type KlassenlisteErgebnis =
+  | { ok: true; namenGesperrt: boolean; kinder: KontoKind[] }
+  | { ok: false; grund: "unreachable" | "refused" | "unknown-class" };
+
+const STATUS = new Set(["offen", "name_gewaehlt", "angekommen"]);
+
+/**
+ * Field by field, never by spread: a new field at konto must be classified here
+ * before it can reach a page. A child without a valid status or without both
+ * name strings is dropped rather than half-built.
+ */
+function projiziereKinder(roh: unknown): KontoKind[] {
+  if (!Array.isArray(roh)) return [];
+  const out: KontoKind[] = [];
+  for (const k of roh) {
+    if (!k || typeof k !== "object") continue;
+    const q = k as Record<string, unknown>;
+    if (typeof q.status !== "string" || !STATUS.has(q.status)) continue;
+    if (typeof q.last_name !== "string" || typeof q.first_name !== "string") continue;
+    out.push({
+      platz: typeof q.platz === "number" && Number.isInteger(q.platz) ? q.platz : null,
+      last_name: q.last_name,
+      first_name: q.first_name,
+      status: q.status as KontoKind["status"],
+      app_user_id: typeof q.app_user_id === "string" && q.app_user_id.length > 0 ? q.app_user_id : null,
+    });
+  }
+  return out;
+}
+
+/**
+ * The class list of ONE class, asked in the name of the person who is looking
+ * right now (dach-123 · E1). konto decides for itself who may see a list —
+ * owner, head teacher, co-teacher, grant — and writes the TRUE caller into its
+ * own log; asking with the owner's id would be lying to the roof. That is why
+ * the first argument is the acting teacher OBJECT and never a loose id.
+ *
+ * POST, not GET: no identifier belongs in an address and therefore in an
+ * access log. Nothing here is stored, cached or logged — not even a status:
+ * a rule without exceptions is one a gate can prove (E6), so this function is
+ * the one in this file that never writes a console line.
+ */
+export async function holeKlassenliste(
+  schauende: { userId: string },
+  appClassId: string,
+): Promise<KlassenlisteErgebnis> {
+  const secret = appSecret();
+  if (!secret) return { ok: false, grund: "unreachable" };
+  if (!schauende.userId || !appClassId) return { ok: false, grund: "unreachable" };
+  try {
+    const res = await fetch(`${kontoBaseUrl()}/api/app-roster`, {
+      method: "POST",
+      headers: { authorization: `Bearer ${secret}`, "content-type": "application/json" },
+      body: JSON.stringify({ app_class_id: appClassId, app_user_id: schauende.userId }),
+      cache: "no-store",
+      signal: AbortSignal.timeout(5000),
+    });
+    if (res.status === 404) return { ok: false, grund: "unknown-class" };
+    if (res.status === 401 || res.status === 403) return { ok: false, grund: "refused" };
+    if (res.status !== 200) return { ok: false, grund: "unreachable" };
+    const body = (await res.json()) as unknown;
+    if (!body || typeof body !== "object") return { ok: false, grund: "unreachable" };
+    const b = body as Record<string, unknown>;
+    return { ok: true, namenGesperrt: b.namen_gesperrt === true, kinder: projiziereKinder(b.kinder) };
+  } catch {
+    return { ok: false, grund: "unreachable" };
+  }
+}

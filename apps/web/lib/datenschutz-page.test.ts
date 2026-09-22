@@ -264,6 +264,26 @@ describe("Datenschutzseite ↔ Produktion", () => {
     );
   });
 
+  it("dach-123 · the class-list sentence and the call that makes it true stand or fall together", () => {
+    // Both directions, and that is the point. The one-directional couplings above
+    // let a sentence outlive its cause; this flow has no schema column behind it
+    // (the names are shown and never stored), so datenschutz-spalten.ts cannot
+    // hold it — nothing to key on. What is left is the CALL: if either teacher
+    // page asks Lauter Einser for a class list, the visible page must say so in
+    // the present tense; and if the page says it, the call must exist.
+    const ruft = [read("../app/admin/classes/[id]/roster/page.tsx"), read("../app/admin/classes/[id]/page.tsx")].some((q) =>
+      /holeKlassenliste\(/.test(q),
+    );
+    const satz = /Klassenliste deiner Schule.*speichert ihn nicht/.test(visible);
+    assert.equal(
+      ruft,
+      satz,
+      ruft
+        ? "a teacher page fetches the school's class list, so the page must say where the name comes from and that it is not stored"
+        : "the page promises a data flow that no page performs any more — an unexplained sentence is as bad as an unexplained flow",
+    );
+  });
+
   it("promises an answer to a request within a month", () => {
     assert.match(
       visible,
