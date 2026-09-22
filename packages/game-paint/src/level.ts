@@ -118,6 +118,10 @@ export const PICKUP_ROLES = new Set<EntityRole>(["tip", "book", "cloth"]);
  * instead of a level that ships with a door nobody can pay.
  */
 export interface EntityParams {
+  /** B1 opt-in: name/colour progress precedes peaceful completion. */
+  liberation?: boolean;
+  fullDrain?: boolean;
+  firstCall?: boolean;
   /** scene.stage: station numbers at which the witnessed scene may ask.  The
    * list is explicit so a moving picture cannot quietly serve an unrelated
    * playlist card. */

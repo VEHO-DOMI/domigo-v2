@@ -127,6 +127,10 @@ export interface EntityState {
   shuttle?: ShuttleState;
   stageRuntime?: StageRuntime;
   friendly?: boolean;
+  liberation?: "unnamed" | "named" | "coloured" | "peaceful";
+  approached?: boolean;
+  callPassed?: boolean;
+  colourTick?: number;
   engagePending?: boolean;
   actingCell?: string;
   classmateScene?: import("./scene-v2.ts").SceneSnapshot;
@@ -1470,8 +1474,20 @@ export const stepEntities = (
     if (e.hidden) continue;
     if (e.role === "scene.stage" && e.params.stageV2) continue; // Sim owns observation and card delivery.
     const sequencedSpeaker=e.params.taskSequenceV2 && ["chaser","gunner","flyer","bouncer","crusher","swarm","drained"].includes(e.role);
-    if(sequencedSpeaker && e.id===engageId) {e.friendly=true;e.engagePending=true;}
-    if(sequencedSpeaker && e.friendly) {
+    if(sequencedSpeaker && e.id===engageId) {
+      if (e.params.liberation) e.approached = true; else e.friendly=true;
+      e.engagePending=true;
+    }
+    if (sequencedSpeaker && e.params.liberation && e.redeemed) {
+      stepRedeemed(e, grid, inp.companionLeader);
+      if (e.colourTick !== undefined) e.colourTick++;
+      if (e.engagePending) {
+        e.engagePending = false;
+        events.push({ type: "engaged", id: e.id, role: e.role, skin: e.skin });
+      }
+      continue;
+    }
+    if(sequencedSpeaker && (e.friendly || e.approached)) {
       e.timer++; e.vx=0;e.vy=0;
       const observer=e.params.encounterObserver;
       if(observer) {
@@ -1480,6 +1496,7 @@ export const stepEntities = (
         e.vx=Math.round(dx*f);e.vy=Math.round(dy*f);e.x+=e.vx;e.y+=e.vy;
       }
       e.state=e.redeemed?"rest":"ready";
+      if (e.colourTick !== undefined) e.colourTick++;
       if(e.engagePending && (!observer || Math.hypot(e.x-(observer.c+.5)*TILE*SUBS,e.y-(observer.r+1)*TILE*SUBS)<2*SUBS)) {
         e.engagePending=false;events.push({type:"engaged",id:e.id,role:e.role,skin:e.skin});
       }

@@ -60,7 +60,11 @@ import { ClassPhoto } from "./story/ClassPhoto.tsx";
 import { ChalkGreeting } from "./story/ChalkGreeting.tsx";
 import { StoryName } from "./story/StoryName.tsx";
 
+export type LiberationProgress = Record<string, "named" | "coloured" | "peaceful">;
 export interface PaintGameProps {
+  liberationProgress?: LiberationProgress;
+  onLiberationProgress?: (progress: LiberationProgress) => void;
+  onLiberationRestart?: () => void;
   storySeen?: boolean;
   classPhotoUnlocked?: boolean;
   onClassPhotoFound?: () => void;
@@ -462,7 +466,7 @@ const auftaktCountsFor = (level: PaintLevel): AuftaktCounts => ({
   books: chapterRoleCount(level, "book"),
 });
 
-export default function PaintGame({ level, art, tasks, hubHref, buildSha, startPhase, debugGrid, debugPerf, noWarm, onTipCollected, archivedTips = [], openingSeen, onOpeningRead, storySeen, runSeed, displayName = "", rescuedClassmateIds = [], profilePersisted = true, onStoryRead, onNameChosen, onClassmateRescued, classPhotoUnlocked = false, onClassPhotoFound }: PaintGameProps): React.ReactElement {
+export default function PaintGame({ liberationProgress = {}, onLiberationProgress, onLiberationRestart, level, art, tasks, hubHref, buildSha, startPhase, debugGrid, debugPerf, noWarm, onTipCollected, archivedTips = [], openingSeen, onOpeningRead, storySeen, runSeed, displayName = "", rescuedClassmateIds = [], profilePersisted = true, onStoryRead, onNameChosen, onClassmateRescued, classPhotoUnlocked = false, onClassPhotoFound }: PaintGameProps): React.ReactElement {
   const hostRef = useRef<HTMLDivElement | null>(null);
   const shellRef = useRef<HTMLDivElement | null>(null);
   const hudRef = useRef<HTMLDivElement | null>(null);
@@ -591,8 +595,9 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
    *  the whole chapter, so they need no phase key, while a cell like „18,8"
    *  exists in every phase and would collide without one. */
   const resolvedEntitiesRef = useRef<string[]>([]);
-  const restoredEntitiesRef = useRef(new Set<string>());
+  const restoredEntitiesRef = useRef(new Set<string>(Object.entries(liberationProgress).filter(([, stage]) => stage !== "named").map(([id]) => id)));
   const learningRef = useRef(newChapterLearning());
+  const liberationRef = useRef(liberationProgress);
   /** PB-F3: the cage hint is a once-per-chapter teacher, not a nag. */
   const cageHintShownRef = useRef(false);
   /** R5-W2 · H1 (Teil 3): die Arena-Anleitung, einmal je Kapitel. */
@@ -623,7 +628,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
   /** R5-W7 · D5 · B15: die entfärbten Dinge, denen das Kind die Farbe
    *  zurückgegeben hat. KEIN neues Sim-Feld: gezählt aus dem Hauptbuch, das
    *  `onEntityResolved` seit B4 ohnehin führt, gefiltert auf die Rolle. */
-  const [drainedCount, setDrainedCount] = useState(0);
+  const [drainedCount, setDrainedCount] = useState(restoredEntitiesRef.current.size);
   const [tipsCount, setTipsCount] = useState(0);
   /** R5-W2 · I1: the same pages as a rendered value. The ref above is the one
    *  that survives a phase remount; this is what the Merkseite reads, because a
@@ -741,6 +746,16 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
     openCard({ req: { use: "quickfire", ctx: { type: "ceremony", beat: "goal" } }, item: null, card, attempts: 0, typed: "", align: "center" });
   };
 
+  const rememberLiberation = (): void => {
+    const current = sceneRef.current?.liberationProgress();
+    if (!current) return;
+    liberationRef.current = { ...liberationRef.current, ...current };
+    onLiberationProgress?.(liberationRef.current);
+  };
+  const nameRestored = (o: OverlayState, answer: string): void => {
+    if (sceneRef.current?.nameRestore(o.req.ctx, answer)) rememberLiberation();
+  };
+
   /** Beat 2: the world changes, and is watched. */
   const applyWorldChange = (o: OverlayState, written = ""): void => {
     if (changedRef.current) return;
@@ -748,6 +763,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
     holdRef.current = true;
     sceneRef.current?.clearEvidence(); // R3-12: the board wipes itself
     sceneRef.current?.resolveTask(o.req.ctx);
+    rememberLiberation();
     if (level.chapter === "ch01" && o.item?.kind === "restore") {
       const restoredId = askerIdOf(o.req.ctx);
       if (restoredId !== null) restoredEntitiesRef.current.add(restoredId);
@@ -1194,6 +1210,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
         collectedPickupIds: () => [...tipsTakenRef.current.map((t) => t.id), ...booksTakenRef.current, ...clothIdsRef.current],
         resolvedEntityIds: () => resolvedEntitiesRef.current,
         learningProgress: learningRef.current,
+        liberationProgress: liberationRef.current,
         tasks,
         airModel,
         spawnCell: fromBonus ? ret.spawn : undefined,
@@ -1836,7 +1853,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
 
   // task grading now lives in the card machines (cards/) — CardHost calls
   // resolveCorrect on a correct answer and dismissCard on „Später".
-  const restart = (): void => window.location.reload();
+  const restart = (): void => { onLiberationRestart?.(); window.location.reload(); };
   const inBonus = level.bonus !== undefined && phaseId === level.bonus.id;
   // R3-16/17 · every denominator on screen is COUNTED from the level, never
   // typed into the copy. The HUD said „/6" while the chapter actually holds
@@ -2012,7 +2029,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
           <div key={index === 0 ? "main-overlay" : "reference-overlay"} style={{ display: index === 0 && referenceReturn.current ? "none" : "contents" }}>
           <Overlay
             o={shown} suspended={index === 0 && referenceReturn.current !== null} level={level} art={art} phaseId={phaseId}
-            onResolve={resolveCorrect} onWorldChange={applyWorldChange} onDismiss={dismissCard} onBack={backCard} onPay={payBonus}
+            onResolve={resolveCorrect} onNameRestored={nameRestored} onWorldChange={applyWorldChange} onDismiss={dismissCard} onBack={backCard} onPay={payBonus}
             onGrade={cardGrade}
             letters={letters.got} bonusTotal={bonusLetterTotal(level)}
             bilanz={bilanz} hubHref={hubHref} onRestart={restart}
@@ -2067,7 +2084,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
 // ── the overlay card ──────────────────────────────────────────────────────────
 
 function Overlay({
-  o, level, art, phaseId, onResolve, onWorldChange, onDismiss, onBack = () => {}, onGrade = () => {}, onPay, letters, bonusTotal, bilanz, hubHref, onRestart,
+  o, level, art, phaseId, onResolve, onWorldChange, onNameRestored, onDismiss, onBack = () => {}, onGrade = () => {}, onPay, letters, bonusTotal, bilanz, hubHref, onRestart,
   collectedTips, displayName = "", rescuedClassmateIds = [], profilePersisted = true, onNameChosen, onStoryRead, suspended = false,
 }: {
   suspended?: boolean;
@@ -2086,6 +2103,7 @@ function Overlay({
   art: Record<string, string>;
   onResolve: (o: OverlayState) => void;
   onWorldChange: (o: OverlayState, written?: string) => void;
+  onNameRestored?: (o: OverlayState, answer: string) => void;
   onDismiss: (o: OverlayState) => void;
   /** R5-W2 · J1-B: one beat back inside the opening. OPTIONAL and defaulted,
    *  because dev/CardGallery hands this component a structurally-typed prop bag
@@ -2887,6 +2905,8 @@ function Overlay({
       align={o.align}
       art={art}
       portraitWash={o.wash}
+      restoreNamed={o.req.restoreNamed}
+      onNameRestored={o.req.restoreNamed !== undefined ? answer => onNameRestored?.(o, answer) : undefined}
       // R5-W4 · D3 · F-14 · R54 · WHO IS IN THE CAGE, handed to the card.
       // Koki, 15 August: „das Bild soll zeigen, was drin ist." The world has
       // known this since A5 (`params.captive` per cage, drawn behind the bars);

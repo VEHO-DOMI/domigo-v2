@@ -83,6 +83,7 @@ const LANDING_SETTLE_TICKS = 18;
  *     NO task and never touches a card pool — it is a panel the shell opens
  *     and closes. */
 export interface TaskRequest {
+  restoreNamed?: boolean;
   sceneSnapshot?: SceneSnapshot;
   // R5-W2 · H1: `finale` gehörte immer schon dazu — `cards/serving.ts` erklärt
   // die Tafel seit jeher zur Sprecherin von `["boss", "finale"]`, und der Shell
@@ -266,6 +267,7 @@ export type SimEvent =
 export interface SimCfg {
   tasks?: readonly GameTaskV2[];
   learningProgress?: ChapterLearningState;
+  liberationProgress?: Record<string, "named" | "coloured" | "peaceful">;
   level: PaintLevel;
   phaseId: string;
   grantedAbilities: () => readonly string[];
@@ -666,9 +668,25 @@ export class Sim {
     this.camX = clampScroll(cameraTargetX(this.player.x, this.player.facing), this.worldWpx, LOGICAL_W);
     this.camY = clampScroll(this.player.y - Math.round(LOGICAL_H * 0.57) * SUBS, this.worldHpx, LOGICAL_H);
     for (const [i, e] of this.world.entities.entries()) {
+      if (cfg.level.chapter === "ch01" && ["drained", "bouncer", "chaser", "flyer", "gunner", "crusher"].includes(e.role)) {
+        e.params = { ...e.params, fullDrain: true };
+      }
       if (!e.params.taskSequenceV2 && !e.params.stageV2 && !e.params.ride) continue;
       const saved = this.learning.entities[e.id];
       const current = saved ? { ...structuredClone(saved), params: e.params } : e;
+      if (current.params.liberation && current.params.taskSequenceV2) {
+        const ids = current.params.taskSequenceV2.requiredIds;
+        const prior = current.liberation ?? cfg.liberationProgress?.[current.id];
+        if (prior === "coloured" || prior === "peaceful") this.solvedTaskIds.add(ids[0]!);
+        if (prior === "peaceful") for (const id of ids) this.solvedTaskIds.add(id);
+        current.liberation = ids.every(id => this.solvedTaskIds.has(id)) ? "peaceful"
+          : this.solvedTaskIds.has(ids[0]!) ? "coloured" : prior === "named" ? "named" : "unnamed";
+        current.friendly = current.liberation === "peaceful";
+        current.redeemed = current.friendly;
+        current.approached = current.approached || current.liberation !== "unnamed";
+        if (current.liberation === "coloured" || current.redeemed) current.colourTick = COLOUR_FLOOD_TICKS;
+        if (current.redeemed) this.completedSequences.add(current.id);
+      }
       if (current.stageRuntime) current.stageRuntime.scene.returning = restoredStageUsesHomeView(current.state, current.stageRuntime);
       if (current.stageRuntime && current.state === "asking") current.stageRuntime.retry = true;
       if (current.zoo) {
@@ -790,6 +808,10 @@ export class Sim {
 
   /** Advance ONE 60Hz tick. Returns the events the shell must react to. */
   step(pad: Pad): SimEvent[] {
+    if (!this.overlayOpen) for (const e of this.world.entities) {
+      if (e.params.firstCall && !e.approached && !e.redeemed
+        && this.player.x > e.homeX + 32 * SUBS && Math.abs(this.player.y - e.homeY) < 110 * SUBS) e.callPassed = true;
+    }
     const events: SimEvent[] = [];
     if (this.overlayOpen) {
       // …except during a restore-hold, where the whole point is that the change
@@ -1078,6 +1100,12 @@ export class Sim {
         events.push({type:"sceneBeatSeen",entityId:source.id,beatId:ref.beatId,viewId:ref.viewId});
       }
     }
+    if (source?.params.liberation) {
+      req = { ...req, restoreNamed: source.liberation === "named" };
+      // A quick second ↑ must not freeze the colour flood halfway through the
+      // grammar card. The earned colour is already the semantic end state.
+      if (source.liberation === "coloured") source.colourTick = COLOUR_FLOOD_TICKS;
+    }
     if (!this.canServe(req.ctx)) { this.pendingAsk = req; return; }
     this.overlayOpen = true;
     this.activeTask = structuredClone(req);
@@ -1180,6 +1208,28 @@ export class Sim {
     this.holdOpen = open;
   }
 
+  /** Partial success is checked against the active task; it never completes a card. */
+  nameRestore(ctx: TaskRequest["ctx"], answer: string): boolean {
+    const source = this.world.entities.find(e => e.id === askerIdOf(ctx));
+    const active = this.activeTask?.ctx;
+    if (!source?.params.liberation || ctx.type !== "entity" || active?.type !== "entity"
+      || active.id !== ctx.id || active.taskId !== ctx.taskId) return false;
+    const task = this.cfg.tasks?.find(t => t.id === ctx.taskId);
+    if (task?.kind !== "restore" || task.name !== answer || source.liberation !== "unnamed") return false;
+    source.liberation = "named";
+    source.approached = true;
+    this.saveLearning();
+    return true;
+  }
+
+  liberationProgress(): Record<string, "named" | "coloured" | "peaceful"> {
+    const result: Record<string, "named" | "coloured" | "peaceful"> = {};
+    for (const e of Object.values(this.learning.entities)) {
+      if (e.params.liberation && e.liberation && e.liberation !== "unnamed") result[e.id] = e.liberation;
+    }
+    return result;
+  }
+
   /** The shell reports the task for `ctx` SOLVED. */
   solveTask(ctx: TaskRequest["ctx"], events: SimEvent[] = []): SimEvent[] {
     const source=this.world.entities.find(e=>e.id===askerIdOf(ctx)), sequence=source?.params.taskSequenceV2;
@@ -1193,7 +1243,13 @@ export class Sim {
         this.learning.optionalCursors[source.id]=(this.learning.optionalCursors[source.id]??0)+1;
         this.saveLearning();this.setOverlay(false);return events;
       }
-      source.friendly=true;
+      if (source.params.liberation) {
+        source.approached = true;
+        const task = this.cfg.tasks?.find(t => t.id === ctx.taskId);
+        if (task?.kind === "restore") { source.liberation = "coloured"; source.colourTick = 0; }
+        if (!nextRequiredTask(sequence, this.solvedTaskIds)) source.liberation = "peaceful";
+        source.friendly = source.liberation === "peaceful";
+      } else source.friendly=true;
       this.world.projectiles=this.world.projectiles.filter(p=>p.fromId!==source.id);
       const next=nextRequiredTask(sequence,this.solvedTaskIds);
       this.saveLearning();
@@ -1578,7 +1634,7 @@ export class Sim {
         const src = this.world.entities.find((e) => e.id === ev.id);
         if(src?.params.taskSequenceV2) {
           if(this.overlayOpen)break;
-          src.friendly=true;
+          if (src.params.liberation) src.approached = true; else src.friendly=true;
           this.world.projectiles=this.world.projectiles.filter(p=>p.fromId!==src.id);
         }
         // R5-F2 · DER RÜCKSTOSS GEHÖRT DEM BOSS (Architekten-Ruling 11.08.).
