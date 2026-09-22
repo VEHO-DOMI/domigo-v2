@@ -1354,7 +1354,12 @@
         },
         {
           "word": "been",
-          "de": "gewesen",
+          "de": "Teil von have been + -ing: etwas hat früher begonnen und dauert noch an",
+          "scope": null
+        },
+        {
+          "word": "still",
+          "de": "immer noch",
           "scope": null
         }
       ],
@@ -1426,7 +1431,7 @@
         },
         {
           "word": "been",
-          "de": "gewesen",
+          "de": "Teil von have been + -ing: etwas hat früher begonnen und dauert noch an",
           "scope": null
         },
         {
@@ -1442,6 +1447,21 @@
         {
           "word": "stopped",
           "de": "aufgehört",
+          "scope": null
+        },
+        {
+          "word": "whole story",
+          "de": "die ganze Geschichte",
+          "scope": null
+        },
+        {
+          "word": "for the first time",
+          "de": "zum ersten Mal",
+          "scope": null
+        },
+        {
+          "word": "once",
+          "de": "einmal",
           "scope": null
         }
       ],
@@ -1584,6 +1604,21 @@
           "word": "camera",
           "de": "Kamera",
           "scope": null
+        },
+        {
+          "word": "below",
+          "de": "darunter",
+          "scope": null
+        },
+        {
+          "word": "note",
+          "de": "Notiz",
+          "scope": null
+        },
+        {
+          "word": "was laughed at",
+          "de": "wurde ausgelacht",
+          "scope": null
         }
       ],
       "hintDe": "Was wurde vor der Kamera aufgenommen? Was stand in den Kommentaren darunter?",
@@ -1619,7 +1654,7 @@
       "gloss": [
         {
           "word": "imagine",
-          "de": "stell dir vor",
+          "de": "mir vorstellen",
           "scope": null
         },
         {
@@ -1707,6 +1742,11 @@
           "word": "photo",
           "de": "Foto",
           "scope": null
+        },
+        {
+          "word": "wanted some time",
+          "de": "etwas Zeit für sich haben wollte",
+          "scope": null
         }
       ],
       "hintDe": "Ordne nach dem Inhalt: Gesprächspause, Foto oder Zuhören. Nach dem if-Satz folgt die vorgestellte Reaktion mit would.",
@@ -1757,7 +1797,7 @@
         },
         {
           "word": "start",
-          "de": "Anfang; beginne",
+          "de": "starten; beginnen",
           "scope": null
         },
         {
@@ -1778,6 +1818,11 @@
         {
           "word": "phone",
           "de": "Handy",
+          "scope": null
+        },
+        {
+          "word": "is about to happen",
+          "de": "wird gleich passieren",
           "scope": null
         }
       ],
@@ -2399,6 +2444,16 @@
           "word": "page",
           "de": "Seite",
           "scope": null
+        },
+        {
+          "word": "still",
+          "de": "immer noch",
+          "scope": null
+        },
+        {
+          "word": "an hour ago",
+          "de": "vor einer Stunde",
+          "scope": null
         }
       ]
     },
@@ -2425,6 +2480,11 @@
         {
           "word": "describe",
           "de": "beschreiben",
+          "scope": null
+        },
+        {
+          "word": "keep doing",
+          "de": "immer wieder tun",
           "scope": null
         }
       ]
@@ -2469,6 +2529,16 @@
         {
           "word": "face",
           "de": "sich stellen",
+          "scope": null
+        },
+        {
+          "word": "below",
+          "de": "darunter",
+          "scope": null
+        },
+        {
+          "word": "face what happened",
+          "de": "sich dem stellen, was passiert ist",
           "scope": null
         }
       ]
@@ -2562,6 +2632,348 @@
         {
           "word": "bullying",
           "de": "Mobbing",
+          "scope": null
+        }
+      ]
+    },
+    {
+      "id": "g3.st.fourteen.ch11.s002",
+      "glosses": [
+        {
+          "word": "been",
+          "de": "Teil von have been + -ing: etwas hat früher begonnen und dauert noch an",
+          "scope": null
+        },
+        {
+          "word": "thinking",
+          "de": "nachdenken",
+          "scope": null
+        },
+        {
+          "word": "words",
+          "de": "Worte",
+          "scope": null
+        },
+        {
+          "word": "have been thinking",
+          "de": "denke schon seit … nach",
+          "scope": null
+        }
+      ]
+    },
+    {
+      "id": "g3.st.fourteen.ch11.s006",
+      "glosses": [
+        {
+          "word": "been",
+          "de": "Teil von has been + -ing: etwas hat früher begonnen und dauert noch an",
+          "scope": null
+        },
+        {
+          "word": "guitar",
+          "de": "Gitarre",
+          "scope": null
+        },
+        {
+          "word": "since",
+          "de": "seit",
+          "scope": null
+        }
+      ]
+    },
+    {
+      "id": "g3.st.fourteen.ch11.s008",
+      "glosses": [
+        {
+          "word": "been",
+          "de": "Teil von has been + -ing: etwas hat früher begonnen und dauert noch an",
+          "scope": null
+        },
+        {
+          "word": "sister",
+          "de": "Schwester",
+          "scope": null
+        },
+        {
+          "word": "counting",
+          "de": "zählen",
+          "scope": null
+        },
+        {
+          "word": "mistakes",
+          "de": "Fehler",
+          "scope": null
+        },
+        {
+          "word": "video",
+          "de": "Video",
+          "scope": null
+        },
+        {
+          "word": "has been counting",
+          "de": "zählt schon seit …",
+          "scope": null
+        }
+      ]
+    },
+    {
+      "id": "g3.st.fourteen.ch11.s010",
+      "glosses": [
+        {
+          "word": "been",
+          "de": "Teil von have been + -ing: etwas hat früher begonnen und dauert noch an",
+          "scope": null
+        },
+        {
+          "word": "hands",
+          "de": "Hände",
+          "scope": null
+        },
+        {
+          "word": "shaking",
+          "de": "zittern",
+          "scope": null
+        },
+        {
+          "word": "hurting",
+          "de": "weh tun",
+          "scope": null
+        },
+        {
+          "word": "start",
+          "de": "Anfang",
+          "scope": null
+        },
+        {
+          "word": "have been hurting",
+          "de": "tun schon seit … weh",
+          "scope": null
+        }
+      ]
+    },
+    {
+      "id": "g3.st.fourteen.ch12.s005",
+      "glosses": [
+        {
+          "word": "walks",
+          "de": "geht",
+          "scope": null
+        },
+        {
+          "word": "quiet",
+          "de": "leise",
+          "scope": null
+        },
+        {
+          "word": "voice",
+          "de": "Stimme",
+          "scope": null
+        }
+      ]
+    },
+    {
+      "id": "g3.st.fourteen.ch12.s007",
+      "glosses": [
+        {
+          "word": "laughed",
+          "de": "lachten",
+          "scope": null
+        },
+        {
+          "word": "by",
+          "de": "von",
+          "scope": null
+        },
+        {
+          "word": "thousands",
+          "de": "Tausende",
+          "scope": null
+        },
+        {
+          "word": "name",
+          "de": "Name",
+          "scope": null
+        },
+        {
+          "word": "joke",
+          "de": "Witz",
+          "scope": null
+        },
+        {
+          "word": "was laughed at",
+          "de": "wurde ausgelacht",
+          "scope": null
+        }
+      ]
+    },
+    {
+      "id": "g3.st.fourteen.ch12.s008",
+      "glosses": [
+        {
+          "word": "treated",
+          "de": "behandelt",
+          "scope": null
+        },
+        {
+          "word": "content",
+          "de": "Material für Videos und Posts im Internet",
+          "scope": null
+        }
+      ],
+      "scaffoldDe": "Ich wurde wie Material für Videos behandelt. Nicht wie ein Freund."
+    },
+    {
+      "id": "g3.st.fourteen.ch13.s002",
+      "glosses": [
+        {
+          "word": "sit",
+          "de": "sitzen",
+          "scope": null
+        },
+        {
+          "word": "floor",
+          "de": "Boden",
+          "scope": null
+        },
+        {
+          "word": "nobody",
+          "de": "niemand",
+          "scope": null
+        },
+        {
+          "word": "script",
+          "de": "vorher aufgeschriebener Text für das Video",
+          "scope": null
+        }
+      ]
+    },
+    {
+      "id": "g3.st.fourteen.ch13.s004",
+      "glosses": [
+        {
+          "word": "differently",
+          "de": "anders",
+          "scope": null
+        },
+        {
+          "word": "go back",
+          "de": "hier: in der Zeit zurückgehen",
+          "scope": null
+        }
+      ]
+    },
+    {
+      "id": "g3.st.fourteen.ch13.s007",
+      "glosses": [
+        {
+          "word": "serious",
+          "de": "ernst",
+          "scope": null
+        },
+        {
+          "word": "something",
+          "de": "etwas",
+          "scope": null
+        },
+        {
+          "word": "real",
+          "de": "echt",
+          "scope": null
+        },
+        {
+          "word": "make this about something real",
+          "de": "mit dem Kanal etwas Echtes zeigen",
+          "scope": null
+        }
+      ],
+      "scaffoldDe": "Wenn es dir ernst wäre, würdest du mit dem Kanal etwas Echtes zeigen."
+    },
+    {
+      "id": "g3.st.fourteen.ch13.s010",
+      "glosses": [
+        {
+          "word": "phone",
+          "de": "Handy",
+          "scope": null
+        },
+        {
+          "word": "numbers",
+          "de": "hier: Zahlen zu Aufrufen und Abonnenten",
+          "scope": null
+        },
+        {
+          "word": "call",
+          "de": "anrufen",
+          "scope": null
+        }
+      ]
+    },
+    {
+      "id": "g3.st.fourteen.ch14.s001",
+      "glosses": [
+        {
+          "word": "script",
+          "de": "vorher aufgeschriebener Text für das Video",
+          "scope": null
+        }
+      ]
+    },
+    {
+      "id": "g3.st.fourteen.ch14.s007",
+      "glosses": [
+        {
+          "word": "mistakes",
+          "de": "Fehler",
+          "scope": null
+        },
+        {
+          "word": "nobody",
+          "de": "niemand",
+          "scope": null
+        },
+        {
+          "word": "laugh",
+          "de": "lachen",
+          "scope": null
+        },
+        {
+          "word": "laugh at me",
+          "de": "mich auslachen",
+          "scope": null
+        }
+      ]
+    },
+    {
+      "id": "g3.st.fourteen.ch14.s009",
+      "glosses": [
+        {
+          "word": "live",
+          "de": "direkt im Internet übertragen",
+          "scope": null
+        },
+        {
+          "word": "messy",
+          "de": "chaotisch",
+          "scope": null
+        },
+        {
+          "word": "honest",
+          "de": "ehrlich",
+          "scope": null
+        },
+        {
+          "word": "teaches",
+          "de": "unterrichtet",
+          "scope": null
+        },
+        {
+          "word": "go live",
+          "de": "eine Live-Übertragung starten",
+          "scope": null
+        },
+        {
+          "word": "his way",
+          "de": "auf seine Weise; so, wie es für ihn passt",
           "scope": null
         }
       ]
@@ -2790,7 +3202,7 @@
     }
   ],
   "status": "CODEX DRAFT — NOT CANON",
-  "revisionNote": "Root revision after two independent blind solves: accepted alternative word orders; replaced answer-copy tasks in ch08/ch10; changed abstract sort labels to story pages and video/comment evidence; removed classroom terminology; ch02 wrote → described. Full source is the items/scenes/bindings above; original drafter notes are provenance only.",
+  "revisionNote": "welle-069 / Y3-B: ergänzte Wort- und Wendungshilfen für Folgen 11–14 und zwei natürliche deutsche Szenenfassungen. Englische Geschichte, Aufgaben, Antwortschlüssel und Varianten unverändert. Die verfassten items/scenes/chapters sind die aktuelle Quelle.",
   "retiredDraftIds": [
     "g3u07.ci.friendship-time-notes.gs.001",
     "g3u08.ci.three-minute-update.gf.001"
@@ -2862,6 +3274,136 @@
       "explainDe": "Der Kommentar sagt, es ist Mobbing, kein Lernen.",
       "explainEn": null,
       "strict": false
+    },
+    {
+      "id": "g3u13.ci.sara-advice.mc.001",
+      "rev": 1,
+      "difficulty": 3,
+      "format": "multiple-choice",
+      "prompt": {
+        "text": "What does Sara say to do?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Make it about something real.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Make more fail videos.",
+        "Delete everything.",
+        "Blame Ben."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "real",
+          "de": "echt",
+          "scope": null
+        },
+        {
+          "word": "videos",
+          "de": "Videos",
+          "scope": null
+        },
+        {
+          "word": "delete",
+          "de": "löschen",
+          "scope": null
+        },
+        {
+          "word": "blame",
+          "de": "beschuldigen",
+          "scope": null
+        },
+        {
+          "word": "say",
+          "de": "sagen",
+          "scope": null
+        },
+        {
+          "word": "something",
+          "de": "etwas",
+          "scope": null
+        },
+        {
+          "word": "Make it about something real",
+          "de": "Zeig mit dem Kanal etwas Echtes",
+          "scope": null
+        }
+      ],
+      "hintDe": "Sara will, dass der Kanal echt wird.",
+      "hintEn": null,
+      "explainDe": "Sara sagt, sie sollen den Kanal um etwas Echtes machen, nicht um Bens Fehler.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u14.ci.whats-different.mc.001",
+      "rev": 1,
+      "difficulty": 3,
+      "format": "multiple-choice",
+      "prompt": {
+        "text": "How is the new channel different?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "It is honest and live.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "It is faster.",
+        "It has more music.",
+        "It is shorter."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "channel",
+          "de": "Kanal",
+          "scope": null
+        },
+        {
+          "word": "honest",
+          "de": "ehrlich",
+          "scope": null
+        },
+        {
+          "word": "live",
+          "de": "wird gerade direkt im Internet übertragen",
+          "scope": null
+        },
+        {
+          "word": "music",
+          "de": "Musik",
+          "scope": null
+        },
+        {
+          "word": "different",
+          "de": "anders",
+          "scope": null
+        }
+      ],
+      "hintDe": "Der neue Kanal ist anders als vorher.",
+      "hintEn": null,
+      "explainDe": "Der neue Kanal ist ehrlich und live, ohne geplante Fehler.",
+      "explainEn": null,
+      "strict": false
+    }
+  ],
+  "chapters": [
+    {
+      "id": "g3.st.fourteen.ch11",
+      "titleDe": "Ein Video verbreitet sich im Internet"
     }
   ]
 }

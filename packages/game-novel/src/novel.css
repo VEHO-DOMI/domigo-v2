@@ -37,3 +37,12 @@
 .fourteen button:focus-visible, .fourteen a:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
 @media (max-width: 480px) { .fourteen { padding: 14px 12px 32px; } .fourteen-dialogue { padding: 15px; } .fourteen-metrics { grid-template-columns: repeat(3, minmax(0, 1fr)); } .fourteen-line { font-size: 18px; } }
 @media (prefers-reduced-motion: reduce) { .fourteen *, .fourteen *::before, .fourteen *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
+.fourteen-before, .fourteen-delta { display: block; margin-top: 5px; overflow-wrap: anywhere; }
+.fourteen-before { font-size: 11px; color: var(--text-secondary); }
+.fourteen-comparison { font-weight: 700; color: var(--ink); margin: 12px 0 0; }
+.fourteen-save-state { padding-top: 10px; border-top: 1px solid var(--card-border); margin-top: 12px !important; font-size: 13px; line-height: 1.5; }
+.fourteen-compare-control { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 18px; }
+.fourteen-compare-control label { font-size: 14px; font-weight: 600; }
+.fourteen-compare-control select { min-height: 44px; max-width: 100%; }
+.fourteen-end-help summary { min-height: 44px; padding: 12px 0; cursor: pointer; font-weight: 600; }
+.fourteen-end-help p { margin-top: 0; line-height: 1.5; }

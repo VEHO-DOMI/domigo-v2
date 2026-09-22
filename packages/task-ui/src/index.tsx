@@ -143,7 +143,7 @@ function AnswerDiff({ input, answer }: { input: string; answer: string }) {
  * fires through @domigo/game-feel (opt-in, default OFF — silent in class).
  * Decoration never gates content: everything renders frame 0.
  */
-function FeedbackCard({ tier, xp, hideXp, item, input, correct, others, explainDe }: {
+function FeedbackCard({ tier, xp, hideXp, item, input, correct, others, explainDe, retryMessage }: {
   tier: Tier;
   xp: number;
   hideXp?: boolean;
@@ -156,6 +156,7 @@ function FeedbackCard({ tier, xp, hideXp, item, input, correct, others, explainD
   /** remaining accepted answers, shown after the diff */
   others?: string[];
   explainDe?: string | null;
+  retryMessage?: string;
 }) {
   const traps = useContext(TrapContext);
   useEffect(() => { playTier(tier); }, [tier]);
@@ -178,7 +179,7 @@ function FeedbackCard({ tier, xp, hideXp, item, input, correct, others, explainD
           <strong>{trap.nameDe}</strong> — {trap.oneLinerDe}
         </div>
       )}
-      {tier === "wrong" && <div style={{ fontSize: 13, color: "var(--accent-deep)", fontWeight: 600 }}>Das kommt gleich nochmal!</div>}
+      {tier === "wrong" && <div style={{ fontSize: 13, color: "var(--accent-deep)", fontWeight: 600 }}>{retryMessage ?? "Das kommt gleich nochmal!"}</div>}
       {explainDe && <div style={{ fontSize: 13, color: "var(--muted)" }}>{explainDe}</div>}
     </div>
   );
@@ -641,7 +642,7 @@ function ChoiceDropdown({ options, selected, onSelect, disabled, corrects, revea
   );
 }
 
-export function GrammarItemView({ item, onResult, onTier, hideHint, autoFocus, hideXp, hideMeta, tactile, singleAttempt, hideFeedback, bank, choiceRender }: { item: GrammarItem; onResult?: (tier: Tier, detail: ResultDetail) => void; onTier?: (tier: Tier, wrongCount: number) => void; hideHint?: boolean; autoFocus?: boolean; hideXp?: boolean; hideMeta?: boolean; tactile?: boolean; singleAttempt?: boolean; hideFeedback?: boolean; bank?: string[] | null; choiceRender?: "buttons" | "dropdown" }) {
+export function GrammarItemView({ item, onResult, onTier, hideHint, autoFocus, hideXp, hideMeta, hideExplanation, retryMessage, tactile, singleAttempt, hideFeedback, bank, choiceRender }: { item: GrammarItem; onResult?: (tier: Tier, detail: ResultDetail) => void; onTier?: (tier: Tier, wrongCount: number) => void; hideHint?: boolean; autoFocus?: boolean; hideXp?: boolean; hideMeta?: boolean; hideExplanation?: boolean; retryMessage?: string; tactile?: boolean; singleAttempt?: boolean; hideFeedback?: boolean; bank?: string[] | null; choiceRender?: "buttons" | "dropdown" }) {
   const promptId = useId();
   const firstFull = item.answers.find((a) => a.tier === "full")?.text ?? "";
   const blankCount = Math.max(1, firstFull.split("|").length);
@@ -719,7 +720,8 @@ export function GrammarItemView({ item, onResult, onTier, hideHint, autoFocus, h
           input={isText ? text.join(" | ") : null}
           correct={fullAnswers[0] ?? ""}
           others={fullAnswers.slice(1)}
-          explainDe={item.explainDe}
+          explainDe={hideExplanation ? undefined : item.explainDe}
+          retryMessage={retryMessage}
         />
       )}
     </div>
