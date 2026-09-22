@@ -52,6 +52,8 @@ import {
 } from "@domigo/db";
 import { listApprovedUnits, listJourneyUnits, loadTrapRegistry } from "@domigo/content-loader";
 import { getTeacherForPage } from "@/lib/identity";
+import { holeKlassenliste } from "@/lib/konto/claims";
+import { mergeKlassenliste } from "@/lib/konto/klassenliste-merge";
 import { isGrandmaster } from "@/lib/grandmaster";
 import { isSlugAllowed, visibleGradesFor } from "@/lib/grade-scope";
 import ProgressAdjustCell from "./ProgressAdjustCell";
@@ -142,7 +144,17 @@ export default async function ClassProgressPage({ params }: { params: Promise<{ 
 
   if (!cls) redirect("/admin/classes"); // nicht die Klasse dieser Lehrkraft (oder es gibt sie nicht)
 
-  const rosterR = await lies(listRoster(getDb(), teacher.classScope, id, authorizingTeacherId), []);
+  // dach-123 · E1 + E6. Die Klassenliste wird im Namen der Person geholt, die
+  // gerade SCHAUT — konto entscheidet selbst, wer sie sehen darf, und
+  // protokolliert den wahren Abrufer; mit der id der Besitzerin zu fragen hiesse,
+  // konto anzulügen. NICHT in `lies(...)`: die Hilfsfunktion schreibt im
+  // Fehlerfall bis zu 200 Zeichen der Meldung ins Server-Protokoll, und aus
+  // diesem Abruf darf nie eine Zeile entstehen. `holeKlassenliste` wirft nie und
+  // bringt sein Urteil selbst mit.
+  const [rosterR, liste] = await Promise.all([
+    lies(listRoster(getDb(), teacher.classScope, id, authorizingTeacherId), []),
+    holeKlassenliste(teacher, cls.id),
+  ]);
   const [attemptsR, pfadeR, einheitenR, fallenR] = await Promise.all([
     lies(listStudentProgress(getDb(), teacher.classScope, id), []),
     lies(listStudentPathSummary(getDb(), teacher.classScope, id), new Map()),
@@ -157,6 +169,15 @@ export default async function ClassProgressPage({ params }: { params: Promise<{ 
   const fallen = fallenR.wert;
   const meta = metaR.wert;
   const proSchueler = new Map(attempts.map((a) => [a.userId, a]));
+  // Der Name aus der Schulliste, nur für Kinder, die schon da sind. Die
+  // REIHENFOLGE dieser Seite ändert sich dadurch nicht: die Tabelle läuft
+  // weiter über `roster` in der Sortierung von listRoster, und diese Karte wird
+  // nur nachgeschlagen. Nichts davon wird gespeichert.
+  const abgleich = liste.ok && !liste.namenGesperrt ? mergeKlassenliste(roster, liste.kinder) : null;
+  const kontoNamen = new Map<string, string>(
+    (abgleich?.rows ?? []).flatMap((z) => (z.art === "joined" ? [[z.id, z.kontoName] as [string, string]] : [])),
+  );
+  const fehlen = abgleich ? abgleich.listCount - abgleich.joinedCount : 0;
   // Ein Platzhalter je Leser: »—« heißt »noch nichts getan«, »?« heißt »nicht
   // gelesen«. Die beiden zu vermischen wäre genau der geschluckte Fehler eine
   // Ebene tiefer — eine Zahl, die es nicht gibt, sähe aus wie eine Null.
@@ -255,11 +276,16 @@ export default async function ClassProgressPage({ params }: { params: Promise<{ 
                   const a = proSchueler.get(r.id);
                   const m = meta.get(r.id);
                   const p = pfade.get(r.id);
+                  // dach-123 · steht das Kind auf der Schulliste, steht ihr Name vorn und
+                  // der Spitzname grau dahinter — dasselbe Zwei-Namen-Muster wie unten.
+                  const listenName = kontoNamen.get(r.id);
                   return (
                     <tr key={r.id}>
                       <td style={{ ...td, fontWeight: 700, color: "var(--ink)" }}>
-                        {r.givenName ?? r.displayName}
-                        {r.givenName && r.givenName !== r.displayName ? (
+                        {listenName ?? r.givenName ?? r.displayName}
+                        {listenName ? (
+                          <span style={{ fontWeight: 400, color: "var(--muted)" }}> · {r.displayName}</span>
+                        ) : r.givenName && r.givenName !== r.displayName ? (
                           // Vor dem Beitritt IST der Spitzname der Platzhalter-Vorname — ihn dann zweimal
                           // zu drucken sähe aus wie zwei Namen für ein Kind.
                           <span style={{ fontWeight: 400, color: "var(--muted)" }}> · {r.displayName}</span>
@@ -292,6 +318,14 @@ export default async function ClassProgressPage({ params }: { params: Promise<{ 
                 })}
               </tbody>
             </table>
+            {fehlen > 0 && (
+              <p style={{ color: "var(--text-secondary)", fontSize: 13, margin: "10px 0 0" }}>
+                {fehlen} on the class list have not joined yet.{" "}
+                <Link href={`/admin/classes/${cls.id}/roster`} style={{ color: "var(--accent)", fontWeight: 600 }}>
+                  Namensliste →
+                </Link>
+              </p>
+            )}
           </div>
         )}
       </section>

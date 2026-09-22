@@ -166,6 +166,7 @@ export default function DatenschutzPage() {
       <h2 style={h2}>Wer was sieht</h2>
       <ul style={list}>
         <li><strong>Deine Lehrkraft</strong> sieht deinen echten Namen, deine Ergebnisse, deine Texte, deine Tests und deinen Fortschritt.</li>
+        <li><strong>Deine Klassenliste:</strong> Deine Lehrkraft sieht in DomiGo auch deinen Namen aus der Klassenliste deiner Schule. Er kommt in dem Moment von {kontoHost}, in dem sie die Liste öffnet. DomiGo zeigt ihn nur an und speichert ihn nicht.</li>
         <li><strong>Deine Mitschülerinnen und Mitschüler</strong> sehen deine Ergebnisse nicht. Es gibt keine Rangliste.</li>
         <li><strong>Beim Beitreten:</strong> Die Beitrittsseite liegt bei {kontoHost}. Wer den Klassencode hat, landet dort; DomiGo leitet nur weiter und erfährt dabei nichts.</li>
         <li><strong>Ein eigens freigeschalteter Verwaltungszugang</strong> kann alle Klassen aller Lehrkräfte einsehen. Diesen Zugang hat allein {VERANTWORTLICHER}, um die Plattform zu betreuen. Er wird außerhalb der App freigeschaltet, hängt an keinem Lehrkraft-Konto, und ohne Freischaltung hat ihn niemand.</li>
