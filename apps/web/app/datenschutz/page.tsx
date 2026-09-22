@@ -214,11 +214,8 @@ export default function DatenschutzPage() {
         die Verarbeitung einschränken lassen, ihr widersprechen und deine Daten in einem gängigen Format
         bekommen. Für Kinder unter 14 Jahren können das die Eltern tun. Schreib dafür an{" "}
         {DATENSCHUTZ_KONTAKT}. Solche Anfragen — auch eine Löschanfrage — beantworten wir so
-        schnell wie möglich, spätestens innerhalb eines Monats.
-      </p>
-      <p>
-        Du hast außerdem das Recht, dich bei der Österreichischen Datenschutzbehörde zu beschweren
-        (Barichgasse 40–42, 1030 Wien, <a href="https://www.dsb.gv.at" style={link}>dsb.gv.at</a>).
+        schnell wie möglich, spätestens innerhalb eines Monats. Du kannst dich auch bei der
+        Datenschutzbehörde beschweren.
       </p>
 
       <p style={{ marginTop: 34, fontSize: 14, color: "var(--text-secondary)" }}>
