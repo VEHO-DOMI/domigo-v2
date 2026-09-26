@@ -10,7 +10,13 @@ export const dynamic = "force-dynamic";
 const Body = z.object({ station: z.string().max(30), value: z.string().max(2000), clientAttemptId: z.uuid(),
   previewSolved: z.array(z.string().max(30)).max(14).default([]) });
 export async function POST(req: Request) {
-  const access = await schoolAccess(req);
+  let access: Awaited<ReturnType<typeof schoolAccess>>;
+  try {
+    access = await schoolAccess(req);
+  } catch {
+    // Failure to resolve a class is retryable; a resolved denial below is not.
+    return NextResponse.json({ error: "retry" }, { status: 503 });
+  }
   if (!access) return NextResponse.json({ error: "not_available" }, { status: 403 });
   const parsed = Body.safeParse(await req.json().catch(() => null));
   if (!parsed.success) return NextResponse.json({ error: "bad_request" }, { status: 400 });

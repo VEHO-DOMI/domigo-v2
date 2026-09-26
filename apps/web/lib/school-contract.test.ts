@@ -2,8 +2,9 @@ import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import fs from "node:fs";
 import { createHash } from "node:crypto";
-import { SchoolBattery, schoolCardView, schoolView, gradeSchoolCard } from "./school-contract.ts";
-import { schoolAttempt } from "./school-attempt.ts";
+import "../scripts/lib/school-test-harness.mjs";
+const { SchoolBattery, schoolCardView, schoolView, gradeSchoolCard } = await import("./school-contract.ts");
+const { schoolAttempt } = await import("./school-attempt.ts");
 const source = fs.readFileSync(new URL("../../../content/corpus/stories/g2.st.ink-ghost-goes-to-school/ch01.tasks.v2.json", import.meta.url));
 const battery = SchoolBattery.parse(JSON.parse(source.toString()));
 describe("Year 2 immutable battery integration", () => {
@@ -16,7 +17,7 @@ describe("Year 2 immutable battery integration", () => {
     assert.deepEqual(view.recovered, {});
     assert.deepEqual(view.ending, []);
     for (const card of view.cards) {
-      assert.deepEqual(Object.keys(card).sort(), ["before", "glosses", "hintDe", "id", "input", "placeDe", "prompt", "required", "situationDe", "station"].sort());
+      assert.deepEqual(Object.keys(card).sort(), ["before", "glosses", "id", "input", "placeDe", "prompt", "required", "situationDe", "station"].sort());
       assert.ok(!JSON.stringify(card).includes('"answers"'));
     }
     // Tamper by injecting a key into the server record: explicit projection strips it.
@@ -53,10 +54,23 @@ describe("school attempt boundary", () => {
     const result = await schoolAttempt(battery, body, true, { solvedIds: forbidden, save: forbidden });
     assert.deepEqual(result!.view.solved, [card.station]);
   });
-  it("ignores forged student progress and cannot bypass the alibi", async () => {
+  it("ignores forged student progress and cannot bypass the initial suspicion", async () => {
     let saves = 0;
     const result = await schoolAttempt(battery, { ...body, station: "zettel", previewSolved: battery.cards.map(c => c.station) }, false, { solvedIds: async () => new Set(), save: async () => { saves++; } });
     assert.equal(result, null); assert.equal(saves, 0);
+  });
+  it("requires the alibi before the note even after every clue is solved", async () => {
+    const clues = battery.cards.filter(c => ["verdacht", "spur-1", "spur-2", "spur-3", "spur-4"].includes(c.station));
+    const ids = new Set(clues.map(c => c.item.id));
+    let saves = 0;
+    const ledger = { solvedIds: async () => ids, save: async () => { saves++; } };
+    const note = battery.cards.find(c => c.station === "zettel")!;
+    const request = { station: note.station, value: note.item.answers[0]!.text, previewSolved: ["alibi"] };
+    assert.equal(await schoolAttempt(battery, request, false, ledger), null);
+    assert.equal(saves, 0);
+    ids.add(battery.cards.find(c => c.station === "alibi")!.item.id);
+    assert.ok(await schoolAttempt(battery, request, false, ledger));
+    assert.equal(saves, 1);
   });
   it("reads authoritative progress after duplicate writes and propagates storage errors", async () => {
     const result = await schoolAttempt(battery, body, false, { solvedIds: async () => new Set(), save: async () => {} });

@@ -1,3 +1,4 @@
+import "server-only";
 import { availableStation } from "@domigo/game-2d/school";
 import { gradeSchoolCard, schoolView, type SchoolBatteryData } from "./school-contract.ts";
 /** Teachers never call either ledger operation. Student progress is read back

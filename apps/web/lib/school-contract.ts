@@ -1,4 +1,5 @@
 /** Server projection contract. No answer key ever crosses the page boundary. */
+import "server-only";
 import { z } from "zod";
 import { GrammarItem } from "@domigo/content-schema";
 import { gradeGrammar } from "@domigo/engine";
@@ -27,7 +28,7 @@ export function schoolCardView(c: SchoolBatteryData["cards"][number]): SchoolCar
     input: choice ? { kind: "choice", options: shuffle([...new Set([...full, ...c.item.distractors])], c.id) }
       : chips ? { kind: "chips", chips: shuffle(c.item.prompt.text.split(" / "), c.id) }
       : { kind: "text", blanks: Math.max(1, (full[0] ?? "").split("|").length) },
-    glosses: c.item.gloss.map((g) => `${g.word} = ${g.de}`), hintDe: c.item.hintDe ?? "",
+    glosses: c.item.gloss.map((g) => `${g.word} = ${g.de}`),
   };
 }
 export function schoolView(b: SchoolBatteryData, solved: string[], preview: boolean): SchoolView {
