@@ -13,11 +13,8 @@
  *   · alles andere Schülerseiten: DEV_USER_ID.
  * Edge-safe: nur Strings.
  */
-export type DevUmgebung = {
-  VERCEL_ENV?: string;
-  DEV_USER_ID?: string;
-  DEV_TEACHER_ID?: string;
-};
+/** Liest nur VERCEL_ENV, DEV_USER_ID, DEV_TEACHER_ID — `process.env` passt direkt hinein. */
+export type DevUmgebung = Readonly<Record<string, string | undefined>>;
 
 export function devDurchlass(pathname: string, env: DevUmgebung): boolean {
   if (env.VERCEL_ENV === "production") return false;
