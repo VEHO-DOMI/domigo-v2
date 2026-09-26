@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { auth, KONTO_PROVIDER } from "@/auth";
+import { devDurchlass } from "@/lib/dev-durchlass";
 
 // Auth-aware middleware (ported from v1, onboarding gate dropped — reused accounts):
 //  1. Redirect un-authenticated requests for protected paths → /signin (or /admin/signin).
@@ -19,12 +20,11 @@ export default auth((req) => {
   if (!session) {
     // The documented dev-identity fallbacks (lib/identity.ts) also pass the
     // middleware, non-prod only (never in production, same guard): DEV_USER_ID
-    // renders student pages; DEV_TEACHER_ID renders the /admin surface. This is
-    // the ONLY way /admin opens without a session, and it's dev-gated.
-    const nonProd = process.env.VERCEL_ENV !== "production";
+    // renders student pages; DEV_TEACHER_ID renders the /admin surface — and,
+    // since welle-076, the /play/<n> hub a teacher may preview. This is the ONLY
+    // way /admin opens without a session, and it's dev-gated (lib/dev-durchlass.ts).
     const isAdmin = pathname.startsWith("/admin");
-    const devPass = nonProd && (isAdmin ? !!process.env.DEV_TEACHER_ID : !!process.env.DEV_USER_ID);
-    if (devPass) return NextResponse.next();
+    if (devDurchlass(pathname, process.env)) return NextResponse.next();
     const signinPath = isAdmin ? "/admin/signin" : "/signin";
     const url = new URL(signinPath, req.nextUrl);
     url.searchParams.set("from", pathname + (search ?? ""));

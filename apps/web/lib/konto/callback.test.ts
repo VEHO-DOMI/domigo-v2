@@ -15,6 +15,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { describe, it } from "node:test";
 
+import { devDurchlass } from "../dev-durchlass.ts";
 import { ZIEL_ABGEWIESEN, ZIEL_NACH_ANMELDUNG, zielAusFrom, zielNachRueckkehr } from "./callback.ts";
 
 const lies = (rel: string) => fs.readFileSync(path.resolve(import.meta.dirname, rel), "utf8");
@@ -101,5 +102,29 @@ describe("die Verdrahtung (am Quelltext)", () => {
     const quelle = lies("../../middleware.ts");
     const matcher = /matcher:\s*\[([^\]]*)\]/.exec(quelle)?.[1] ?? "";
     assert.match(matcher, /"\/play\/:grade"/);
+  });
+});
+
+describe("die Lehrer-Tür bleibt offen (dev, nie in Produktion)", () => {
+  it("/play/<n> öffnet auch DEV_TEACHER_ID allein — wie getPlayerForPage", () => {
+    assert.equal(devDurchlass("/play/1", { DEV_TEACHER_ID: "t" }), true);
+    assert.equal(devDurchlass("/play/2", { DEV_USER_ID: "s" }), true);
+    assert.equal(devDurchlass("/play/2", {}), false);
+  });
+
+  it("/admin nur DEV_TEACHER_ID, Schülerseiten nur DEV_USER_ID — unverändert", () => {
+    assert.equal(devDurchlass("/admin", { DEV_TEACHER_ID: "t" }), true);
+    assert.equal(devDurchlass("/admin", { DEV_USER_ID: "s" }), false);
+    assert.equal(devDurchlass("/home", { DEV_USER_ID: "s" }), true);
+    assert.equal(devDurchlass("/home", { DEV_TEACHER_ID: "t" }), false);
+  });
+
+  it("in Produktion öffnet keine Entwicklungs-Identität irgendetwas", () => {
+    const alle = { VERCEL_ENV: "production", DEV_USER_ID: "s", DEV_TEACHER_ID: "t" };
+    for (const p of ["/play/1", "/admin", "/home"]) assert.equal(devDurchlass(p, alle), false, p);
+  });
+
+  it("die Middleware fragt genau diese Funktion", () => {
+    assert.match(lies("../../middleware.ts"), /devDurchlass\(pathname, process\.env\)/);
   });
 });
