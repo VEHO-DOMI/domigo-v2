@@ -1,306 +1,188 @@
 "use client";
-/**
- * @domigo/game-novel — the G3 "FOURTEEN" surface (DOM + SVG panels, no Phaser).
- * Walks a story@1 chapter as an episode of a YouTube grammar channel: comic-panel
- * dialogue (EN, German + word-glosses on tap — G3 is A2/A2+), embedded taskSlots
- * rendered by the ONE task renderer (@domigo/task-ui), and — the signature beat —
- * a COMMENT SECTION that renders after the "fix Ben's script" tasks, toned by how
- * accurately the player protected him (Law-2 derived from the in-session takes).
- * Rewards are the production economy — views (the hidden XP), trending, a Subscriber
- * milestone per episode — never bare "+XP". The app injects onAttempt (mode:"game:g3").
- */
-import { useMemo, useState, type CSSProperties, type ReactNode } from "react";
-import type { Chapter, GrammarItem, Scene, VocabItem } from "@domigo/content-schema";
-import { xpForTier, type Tier } from "@domigo/engine";
+/** FOURTEEN: authored audience, confirmed learning rewards, one shared grader. */
+import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import type { Chapter, GrammarItem, VocabItem } from "@domigo/content-schema";
+import type { Tier } from "@domigo/engine";
 import { ChoiceContent, DialogueReveal, GlossReveal, LangToggle, primaryLine, useLangMode } from "@domigo/game-feel";
 import { storyItemKey, type ResolvedItem } from "@domigo/game-core";
 import { GrammarItemView, VocabItemView, type ResultDetail } from "@domigo/task-ui";
-import { CastAvatar, CommentSection, castLook } from "./art.tsx";
-import { COPY, episodeComments, fillChapterStats, resultLine, slotPrompt, trailLabel, uploadStats, type CommentBand, type EpisodeStats } from "./novel-copy.ts";
+import { CastAvatar, CommentSection } from "./art.tsx";
+import { COPY, episodeComments, fillChapterStats, resultLine, slotPrompt, type EpisodeStats } from "./novel-copy.ts";
+import { audienceAt, bandForUnit, commentsAfter, episodeEnding, isFixSlot, validTakes, type SavedTake } from "./episode-state.ts";
+import { Audience } from "./audience.tsx";
+import "./novel.css";
 
 export interface GameAttempt {
-  clientAttemptId: string;
-  itemId: string;
-  mode: string;
-  input: unknown;
-  latencyMs: number | null;
-  hintUsed: boolean;
+  clientAttemptId: string; itemId: string; mode: string; input: unknown; latencyMs: number | null; hintUsed: boolean;
 }
-export type AttemptFn = (a: GameAttempt) => Promise<{ ok: boolean; queued: boolean; streak?: number }>;
-
-/** Cosmetic save — where in the episode + which "takes" (solved slots) are in the can. */
+export type AttemptFn = (a: GameAttempt) => Promise<{ ok: boolean; queued: boolean; streak?: number; tier?: Tier; xpAwarded?: number }>;
+/** Cosmetic only. The season board still derives completion from the server ledger. */
 export interface NovelSave {
-  chapterId: string;
-  sceneId: string;
-  takes: string[];
+  chapterId: string; sceneId: string; takes: string[];
+  results?: Record<string, SavedTake>;
+  stage?: "scene" | "comments" | "finished";
 }
-
-/** Server-resolved art URLs (only stems present on disk; missing → procedural fallback). */
 export interface NovelArt {
-  base: string;
-  backdrop: string | null;
-  endCard: string | null;
-  portraits: Record<string, string>; // sceneId → url
-  beats: Record<string, string>; // sceneId → url
-  panels: Record<string, string>; // slot → url
+  base: string; backdrop: string | null; endCard: string | null;
+  portraits: Record<string, string>; beats: Record<string, string>; panels: Record<string, string>;
 }
-
 export interface NovelGameProps {
-  episodeTitle: string;
-  /** L-1: drives the story-language default (defaults to 3 — today's only novel game). */
-  grade?: number;
-  chapter: Chapter;
-  castNames: Record<string, string>;
-  storyItems: Record<string, ResolvedItem>;
-  /** Due-item review beat (Phase 4 spaced retrieval) — lands in a later PR; optional. */
-  reviewItems?: ResolvedItem[];
-  onAttempt: AttemptFn;
-  initialSave?: NovelSave | null;
-  onSave?: (s: NovelSave) => void;
-  art?: NovelArt | null;
-  /** economy@1 rows (welle-049): fills {{views}}/{{likes}}/{{subscribers}} + the upload screen. */
+  episodeTitle: string; grade?: number; chapter: Chapter; castNames: Record<string, string>;
+  storyItems: Record<string, ResolvedItem>; reviewItems?: ResolvedItem[]; onAttempt: AttemptFn;
+  initialSave?: NovelSave | null; onSave?: (s: NovelSave) => void; art?: NovelArt | null;
   economy: readonly EpisodeStats[];
+  /** Resolved against the release list on the server, never inferred from the URL. */
+  nextEpisode?: { href: string; title: string } | null;
 }
 
-const wrap: CSSProperties = { maxWidth: 640, margin: "0 auto", fontFamily: "var(--font-body)", color: "var(--text)" };
-const panel: CSSProperties = { background: "var(--card)", borderWidth: 1, borderStyle: "solid", borderColor: "var(--card-border)", borderRadius: 20, padding: "16px 18px", boxShadow: "var(--shadow-card)", backdropFilter: "blur(20px)" };
-
-/** A slot whose name starts with "fix" is an on-camera "fix Ben's line" task — the
- *  ones whose accuracy drives the comment section. Lets content opt in per episode. */
-function isFixSlot(slot: string): boolean {
-  return /^fix(-|$)/.test(slot);
-}
-
-/** The authored emotional band of an episode (the consequence's ceiling). */
-function bandForUnit(unit: number): CommentBand {
-  if (unit <= 5) return "warm";
-  if (unit <= 10) return "tense";
-  return "reckoning";
-}
-
-/** Read a line aloud via the browser voice (A2 pace). No TTS provider needed. */
 function speak(text: string): void {
   if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
   window.speechSynthesis.cancel();
-  const u = new SpeechSynthesisUtterance(text);
-  u.lang = "en-GB";
-  u.rate = 0.9;
+  const u = new SpeechSynthesisUtterance(text); u.lang = "en-GB"; u.rate = 0.9;
   window.speechSynthesis.speak(u);
 }
 
-function TaskTake({ item, prompt, panelUrl, onAttempt, onContinue, onScored, hideHint }: {
-  item: ResolvedItem; prompt: string; panelUrl?: string; onAttempt: AttemptFn; onContinue: () => void; onScored: (tier: Tier) => void; hideHint?: boolean;
+type TakeResult = { tier: Tier; status: "saving" | "saved" | "queued" | "failed"; points?: number };
+function TaskTake({ item, prompt, onAttempt, onContinue, onScored, initialTier }: {
+  item: ResolvedItem; prompt: string; onAttempt: AttemptFn; onContinue: () => void;
+  onScored: (tier: Tier) => void; initialTier?: Tier;
 }) {
-  const [res, setRes] = useState<{ tier: Tier; views: number } | null>(null);
-  const onResult = (tier: Tier, detail: ResultDetail) => {
-    const views = xpForTier((item.item.difficulty ?? 1) * 10, tier);
-    setRes({ tier, views });
-    void onAttempt({ clientAttemptId: crypto.randomUUID(), itemId: detail.itemId, mode: "game:g3", input: detail.input, latencyMs: null, hintUsed: false });
-    onScored(tier);
+  const [res, setRes] = useState<TakeResult | null>(initialTier ? { tier: initialTier, status: "saved" } : null);
+  const [restoredAtMount] = useState(initialTier !== undefined);
+  const [replaying, setReplaying] = useState(false);
+  const [round, setRound] = useState(0);
+  const attempt = useRef<GameAttempt | null>(null);
+  const busy = useRef(false);
+  const active = useRef(true);
+  useEffect(() => { active.current = true; return () => { active.current = false; }; }, []);
+  const submit = async (body: GameAttempt, localTier: Tier) => {
+    if (busy.current) return;
+    busy.current = true;
+    setRes({ tier: localTier, status: "saving" });
+    try {
+      const reply = await onAttempt(body);
+      if (!active.current) return;
+      const tier = reply.tier ?? localTier;
+      const status = reply.ok ? "saved" : reply.queued ? "queued" : "failed";
+      setRes({ tier, status, points: reply.ok ? reply.xpAwarded : undefined });
+      if (reply.ok || reply.queued) onScored(tier);
+    } catch { if (active.current) setRes({ tier: localTier, status: "failed" }); }
+    finally { busy.current = false; }
   };
-  const line = res ? resultLine(item.kind, res.tier, res.views) : null;
-  return (
-    <div style={{ marginTop: 14, borderTop: "1px dashed var(--card-border)", paddingTop: 12 }}>
-      <div style={{ fontSize: 12, color: "var(--accent)", fontWeight: 700, marginBottom: 6, fontFamily: "var(--font-label)", letterSpacing: "0.02em" }}>{prompt}</div>
-      {panelUrl && <img src={panelUrl} alt="" style={{ width: "100%", aspectRatio: "16 / 9", objectFit: "cover", borderRadius: 12, marginBottom: 10, border: "1px solid var(--card-border)" }} />}
-      {item.kind === "grammar"
-        ? <GrammarItemView key={item.item.id} item={item.item as GrammarItem} onResult={onResult} hideXp hideHint={hideHint} />
-        : <VocabItemView key={item.item.id} item={item.item as VocabItem} onResult={onResult} hideXp hideHint={hideHint} />}
-      {line && <div style={{ marginTop: 10, fontWeight: 700, fontSize: 14, color: line.good ? "var(--correct)" : "var(--incorrect)" }}>{line.text}</div>}
-      {res && <button className="dg-btn" style={{ marginTop: 14 }} onClick={onContinue}>{COPY.continue}</button>}
-    </div>
-  );
+  const onResult = (tier: Tier, detail: ResultDetail) => {
+    const body = { clientAttemptId: crypto.randomUUID(), itemId: detail.itemId, mode: "game:g3", input: detail.input, latencyMs: null, hintUsed: false };
+    attempt.current = body;
+    void submit(body, tier);
+  };
+  const line = res ? resultLine(item.kind, res.tier, res.points) : null;
+  const restored = restoredAtMount && !replaying;
+  return <div className="fourteen-task" data-task-id={item.item.id}>
+    <div className="fourteen-task-label">{prompt}</div>
+    {restored ? <div><p>You have already worked on this line. (= Du hast diese Zeile schon bearbeitet.)</p><p>{item.kind === "grammar" ? (item.item as GrammarItem).explainDe : (item.item as VocabItem).g}</p></div> : item.kind === "grammar"
+      ? <GrammarItemView key={`${item.item.id}:${round}`} item={item.item as GrammarItem} onResult={onResult} hideXp hideMeta tactile />
+      : <VocabItemView key={`${item.item.id}:${round}`} item={item.item as VocabItem} onResult={onResult} hideXp hideMeta />}
+    {res && line && <div className="fourteen-result" role="status" aria-live="polite">
+      <p>{line.text}</p>
+      {res.points !== undefined && <p className="fourteen-caption">Writing = deine Lernpunkte. Views = Aufrufe des Kanals.</p>}
+      {res.status === "saving" && <p className="fourteen-caption">Saving your answer… (= Deine Antwort wird gespeichert.)</p>}
+      {res.status === "queued" && <p className="fourteen-caption">Saved on this device. Points follow when you are online. (= Hier gespeichert. Punkte folgen, sobald du online bist.)</p>}
+      {res.status === "failed" && <><p>Your answer could not be saved. (= Deine Antwort konnte nicht gespeichert werden.)</p>
+        <button className="dg-btn-secondary" onClick={() => { if (attempt.current) void submit(attempt.current, res.tier); }}>Try saving again (= Noch einmal speichern)</button></>}
+    </div>}
+    {res && (res.status === "saved" || res.status === "queued") && <div className="fourteen-actions">
+      <button className="dg-btn" onClick={onContinue}>{COPY.continue}</button>
+      {(res.tier !== "correct" || restored) && <button className="dg-btn-secondary" onClick={() => { setRes(null); setReplaying(true); setRound((r) => r + 1); }}>Try this line again</button>}
+    </div>}
+  </div>;
 }
 
 export function NovelGame(props: NovelGameProps) {
-  const { castNames, storyItems, onAttempt, onSave, episodeTitle, art, economy } = props;
-  // welle-049: every audience number in the prose comes from economy.json — filled once,
-  // before display AND read-aloud, so the voice never says a placeholder.
+  const { castNames, storyItems, onAttempt, onSave, art, economy } = props;
   const chapter = useMemo(() => fillChapterStats(props.chapter, economy), [props.chapter, economy]);
-  // L-1: story-language mode (device toggle; grade 3 defaults English-first).
   const mode = useLangMode(props.grade ?? 3);
   const byId = new Map(chapter.scenes.map((s) => [s.id, s]));
-  const resume = props.initialSave && props.initialSave.chapterId === chapter.id ? props.initialSave : null;
+  const resume = props.initialSave?.chapterId === chapter.id ? props.initialSave : null;
   const first = chapter.scenes[0]?.id ?? "";
-  const band = bandForUnit(chapter.unit);
-
+  const allSlots = chapter.scenes.flatMap((s) => s.taskSlots.map((t) => t.slot));
   const [sceneId, setSceneId] = useState(resume && byId.has(resume.sceneId) ? resume.sceneId : first);
-  const [takes, setTakes] = useState<string[]>(resume?.takes ?? []);
-  const [taskDone, setTaskDone] = useState(false);
-  const [trail, setTrail] = useState<number>(() => {
-    if (typeof window === "undefined") return 0;
-    return Number(sessionStorage.getItem("domigo:g3:trail")) || 0;
-  });
-  const [done, setDone] = useState(false);
-  // The signature mechanic: tiers of the on-camera "fix Ben's line" tasks this run.
-  const [fixTiers, setFixTiers] = useState<Tier[]>([]);
-  const [showComments, setShowComments] = useState(false);
-  const fadeHints = chapter.unit >= 8; // scaffold fade for the later half of G3
-
-  const onScored = (tier: Tier): void => setTrail((t) => {
-    const next = tier === "correct" || tier === "partial" ? t + 1 : 0;
-    try { sessionStorage.setItem("domigo:g3:trail", String(next)); } catch { /* private mode */ }
-    return next;
-  });
-
-  const scene: Scene | undefined = byId.get(sceneId);
-  const save = (over: Partial<NovelSave>) => onSave?.({ chapterId: chapter.id, sceneId, takes, ...over });
-
-  const addTake = (slot: string): void => {
-    setTakes((prev) => (prev.includes(slot) ? prev : (() => { const n = [...prev, slot]; save({ takes: n }); return n; })()));
-  };
-
+  const [takes, setTakes] = useState<string[]>(() => [...new Set((Array.isArray(resume?.takes) ? resume.takes : []).filter((s) => typeof s === "string" && allSlots.includes(s)))]);
+  const [results, setResults] = useState<Record<string, SavedTake>>(() => validTakes(chapter, resume?.results));
+  const resumeScene = byId.get(sceneId);
+  const resumeComments = resume?.stage === "comments" && resumeScene?.taskSlots.some((slot) => commentsAfter(chapter.unit, slot.slot)) === true;
+  const resumeStage = resume?.stage === "finished" ? "finished" : resumeComments ? "comments" : "scene";
+  const [stage, setStage] = useState<"scene" | "comments" | "finished">(resumeStage);
+  const [taskDone, setTaskDone] = useState(resumeComments);
+  const scene = byId.get(sceneId);
+  const sceneIndex = chapter.scenes.findIndex((s) => s.id === sceneId);
+  const done = stage === "finished";
+  const ending = episodeEnding(chapter.unit);
+  const audience = audienceAt(props.chapter, sceneId, done, economy);
+  const audienceIndex = audience ? economy.findIndex((e) => e.chapterId === audience.chapterId) : -1;
+  const previousAudience = economy[audienceIndex - 1] ?? null;
+  const save = (over: Partial<NovelSave>) => onSave?.({ chapterId: chapter.id, sceneId, takes, results, stage, ...over });
   const go = (nextId: string | null): void => {
+    if (typeof window !== "undefined" && "speechSynthesis" in window) window.speechSynthesis.cancel();
     setTaskDone(false);
-    setShowComments(false);
-    if (nextId === null) { setDone(true); return; }
-    setSceneId(nextId);
-    save({ sceneId: nextId });
+    if (nextId === null) { setStage("finished"); save({ stage: "finished" }); return; }
+    setStage("scene"); setSceneId(nextId); save({ sceneId: nextId, stage: "scene" });
   };
+  const header = <header className="fourteen-header"><span className="fourteen-brand">FOURTEEN</span><nav><LangToggle grade={props.grade ?? 3} /><a href="/play/3">← Channel</a></nav></header>;
 
-  if (done) {
-    const stats = uploadStats(economy, chapter.id);
-    return (
-      <main style={{ ...wrap, padding: "28px 16px" }}>
-        {art?.endCard && <img src={art.endCard} alt="" style={{ width: "100%", maxHeight: 260, objectFit: "cover", borderRadius: 16, marginBottom: 14, border: "1px solid var(--card-border)" }} />}
-        <h1 style={{ fontSize: 26, margin: "0 0 6px", fontFamily: "var(--font-display)", color: "var(--ink)" }}>Episode uploaded! 🎬</h1>
-        <p style={{ fontSize: 18, color: "var(--text)", marginTop: 0 }}>
-          <strong>{episodeTitle}</strong> is live.{stats?.milestone ? <> The channel just hit <strong>{stats.milestone} subscribers</strong>.</> : null}
-        </p>
-        {stats && (
-          <p style={{ color: "var(--text-secondary)", fontSize: 14, margin: "0 0 10px" }}>
-            {stats.statsLine}{stats.quietLine ? <><br />{stats.quietLine}</> : null}
-          </p>
-        )}
-        <p style={{ color: "var(--text-secondary)", fontSize: 14 }}>You wrote {takes.length} clean take{takes.length === 1 ? "" : "s"} this episode.</p>
-        <a href="/play/3" style={{ color: "var(--accent)", fontSize: 14, fontWeight: 700 }}>← Back to the channel</a>
-      </main>
-    );
-  }
-
-  if (!scene) {
-    return (
-      <main style={{ ...wrap, padding: "28px 16px" }}>
-        <h1 style={{ fontSize: 22, fontFamily: "var(--font-display)", color: "var(--ink)" }}>Episode complete! 🎬</h1>
-        <a href="/play/3" style={{ color: "var(--accent)", fontSize: 14, fontWeight: 700 }}>← Back to the channel</a>
-      </main>
-    );
-  }
+  if (done || !scene) return <main className="fourteen" data-episode={chapter.unit} data-scene={sceneId}>
+    {header}<div className="fourteen-eyebrow">Episode {chapter.unit} · {chapter.titleEn}</div>
+    <h1>{ending.title}</h1>
+    {art?.endCard && <img className="fourteen-beat" src={art.endCard} alt="" />}
+    <blockquote className="fourteen-end-quote">{primaryLine(mode, chapter.scenes.at(-1)?.textEn ?? "", chapter.scenes.at(-1)?.scaffoldDe ?? null)}</blockquote>
+    <p>{ending.note}</p>
+    <p className="fourteen-caption">{takes.length} / {allSlots.length} parts worked on (= bearbeitet).</p>
+    <Audience current={audience} previous={previousAudience} quiet={chapter.unit >= 9} />
+    <div className="fourteen-actions">
+      {props.nextEpisode && <a className="dg-btn" href={props.nextEpisode.href}>Next episode → {props.nextEpisode.title}</a>}
+      <a className="dg-btn-secondary" href="/play/3">Back to the channel</a>
+      <button className="dg-btn-secondary" onClick={() => {
+        setSceneId(first); setStage("scene"); setTakes([]); setResults({}); setTaskDone(false);
+        save({ sceneId: first, stage: "scene", takes: [], results: {} });
+      }}>Read this episode again (= Noch einmal spielen)</button>
+    </div>
+  </main>;
 
   const slot = scene.taskSlots[0];
   const slotItem = slot ? storyItems[storyItemKey(slot.itemId, slot.variantKey)] : undefined;
-  const taskBlocks = slot !== undefined && slotItem !== undefined && !taskDone;
-  // FlagGate resolves to its `else` path here (the authored neutral default —
-  // wiped-save doctrine); the flag-aware runtime arrives with the G4 package.
   const rawNext = scene.next;
-  const sNext = rawNext !== null && typeof rawNext === "object" && !Array.isArray(rawNext) ? rawNext.else : rawNext;
-  const isNarrator = scene.speaker === "narrator";
-  const speakerName = castNames[scene.speaker] ?? scene.speaker;
-  const look = castLook(scene.speaker);
-  const portraitUrl = art?.portraits[scene.id];
-  const topImg = art?.beats[scene.id] ?? art?.backdrop ?? null;
-  const totalTasks = chapter.scenes.reduce((n, s) => n + s.taskSlots.length, 0);
-  const pct = totalTasks ? Math.round((takes.length / totalTasks) * 100) : 0;
-  const trailMsg = trailLabel(trail);
-
-  // The comment beat fires once, after a finished on-camera "fix Ben" take.
-  const fixHere = slot !== undefined && isFixSlot(slot.slot);
-  const commentBeat = fixHere && taskDone && showComments;
-  const cmt = commentBeat ? episodeComments(fixTiers.filter((t) => t === "correct").length, fixTiers.length, band) : null;
-
-  const scaffoldNode = (
-    <>
-      <DialogueReveal key={`de-${scene.id}`} mode={mode} textEn={scene.textEn} scaffoldDe={scene.scaffoldDe} />
-      <GlossReveal key={`gl-${scene.id}`} mode={mode} glosses={scene.glosses} />
-    </>
-  );
-
+  const next = rawNext !== null && typeof rawNext === "object" && !Array.isArray(rawNext) ? rawNext.else : rawNext;
+  const commentsHere = slot !== undefined && commentsAfter(chapter.unit, slot.slot);
+  const commentBeat = commentsHere && stage === "comments";
+  const fixResults = Object.entries(results).filter(([name]) => isFixSlot(name)).map(([, r]) => r.tier);
+  const comments = commentBeat ? episodeComments(fixResults.filter((t) => t === "correct").length, fixResults.length, bandForUnit(chapter.unit)) : null;
   let taskOrNav: ReactNode;
-  if (commentBeat && cmt) {
-    // The consequence beat: the comment section, then continue to the next scene.
-    const after = typeof sNext === "string" ? sNext : null;
-    taskOrNav = (
-      <div style={{ marginTop: 6 }}>
-        <CommentSection comments={cmt.comments} line={cmt.line} label="The comments are in…" />
-        <button className="dg-btn" style={{ marginTop: 14 }} onClick={() => go(after)}>{COPY.continue}</button>
-      </div>
-    );
-  } else if (taskBlocks && slot && slotItem) {
-    const fix = isFixSlot(slot.slot);
-    taskOrNav = (
-      <TaskTake
-        item={slotItem}
-        prompt={slotPrompt(slot.slot)}
-        panelUrl={art?.panels[slot.slot]}
-        onAttempt={onAttempt}
-        onScored={(tier) => { onScored(tier); if (fix) setFixTiers((p) => [...p, tier]); }}
-        onContinue={() => { addTake(slot.slot); setTaskDone(true); if (fix) setShowComments(true); }}
-        hideHint={fadeHints}
-      />
-    );
-  } else if (Array.isArray(sNext)) {
-    taskOrNav = (
-      <div style={{ display: "flex", flexDirection: "column", gap: 8, marginTop: 14 }}>
-        {sNext.map((c) => (
-          <button key={c.id} className="dg-btn-secondary" style={{ textAlign: "left", justifyContent: "flex-start", display: "block" }} onClick={() => go(c.next)}>
-            <ChoiceContent mode={mode} textEn={c.textEn} scaffoldDe={c.scaffoldDe} />
-          </button>
-        ))}
-      </div>
-    );
-  } else {
-    taskOrNav = <button className="dg-btn" style={{ marginTop: 14 }} onClick={() => go(sNext)}>{sNext === null ? COPY.finishEpisode : COPY.next}</button>;
-  }
+  if (comments) taskOrNav = <div className="fourteen-task"><CommentSection comments={comments.comments} line={comments.line} label="Under the video (= Unter dem Video)" />
+    <div className="fourteen-actions"><button className="dg-btn" onClick={() => go(typeof next === "string" ? next : null)}>{COPY.continue}</button></div></div>;
+  else if (slot && !slotItem) taskOrNav = <p role="alert">This part could not load. Open the channel and try again. (= Dieser Teil konnte nicht geladen werden. Öffne den Kanal und versuche es noch einmal.)</p>;
+  else if (slot && slotItem && !taskDone) taskOrNav = <TaskTake key={`${scene.id}:${slot.itemId}`} item={slotItem} prompt={slotPrompt(slot.slot)}
+    onAttempt={onAttempt} initialTier={results[slot.slot]?.tier}
+    onScored={(tier) => { const updated = { ...results, [slot.slot]: { tier } }; setResults(updated); save({ results: updated }); }}
+    onContinue={() => { const updated = takes.includes(slot.slot) ? takes : [...takes, slot.slot]; const phase = commentsHere ? "comments" : "scene"; setTakes(updated); setTaskDone(true); setStage(phase); save({ takes: updated, stage: phase }); }} />;
+  else if (Array.isArray(next)) taskOrNav = <div className="fourteen-actions">{next.map((c) => <button key={c.id} className="dg-btn-secondary" onClick={() => go(c.next)}><ChoiceContent mode={mode} textEn={c.textEn} scaffoldDe={c.scaffoldDe} /></button>)}</div>;
+  else taskOrNav = <div className="fourteen-actions"><button className="dg-btn" onClick={() => go(next)}>{next === null ? ending.action : COPY.next}</button></div>;
 
-  return (
-    <main style={{ ...wrap, padding: "16px 12px" }}>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 10 }}>
-        <h1 style={{ fontSize: 21, margin: 0, fontFamily: "var(--font-display)", fontWeight: 700, color: "var(--ink)" }}>FOURTEEN <span style={{ color: "var(--muted)", fontSize: 14, fontWeight: 400, fontFamily: "var(--font-body)" }}>· {chapter.titleEn}</span></h1>
-        <span style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
-          <LangToggle grade={props.grade ?? 3} />
-          <a href="/play/3" style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← Channel</a>
-        </span>
+  const narrator = scene.speaker === "narrator";
+  const name = castNames[scene.speaker] ?? scene.speaker;
+  const topImg = art?.beats[scene.id] ?? art?.backdrop;
+  return <main className="fourteen" data-episode={chapter.unit} data-scene={sceneId}>
+    {header}<div className="fourteen-eyebrow">Episode {chapter.unit}</div><h1>{chapter.titleEn}</h1>
+    <div className="fourteen-progress"><div className="fourteen-progress-label"><span>Scene {sceneIndex + 1} / {chapter.scenes.length}</span><span>{takes.length} / {allSlots.length} parts worked on (= bearbeitet)</span></div>
+      <progress max={chapter.scenes.length} value={sceneIndex + 1} aria-label="Position in this episode" /></div>
+    <article className={`fourteen-scene${narrator ? " fourteen-narrator" : ""}`}>
+      {topImg && <img className="fourteen-beat" src={topImg} alt="" />}
+      <div className="fourteen-dialogue">
+        <div className="fourteen-speaker">{!narrator && (art?.portraits[scene.id] ? <img src={art.portraits[scene.id]} alt="" width={44} height={44} /> : <CastAvatar charKey={scene.speaker} name={name} />)}
+          <span>{narrator ? "FOURTEEN" : name}</span><button className="fourteen-voice" onClick={() => speak(scene.textEn)} aria-label="Read aloud">▷</button></div>
+        <p className="fourteen-line">{primaryLine(mode, scene.textEn, scene.scaffoldDe)}</p>
+        <DialogueReveal key={`de-${scene.id}`} mode={mode} textEn={scene.textEn} scaffoldDe={scene.scaffoldDe} />
+        <GlossReveal key={`gl-${scene.id}`} mode={mode} glosses={scene.glosses} />
+        {taskOrNav}
       </div>
-
-      <div style={{ marginBottom: 12 }}>
-        <div style={{ display: "flex", justifyContent: "space-between", fontSize: 12, marginBottom: 5 }}>
-          <span style={{ color: "var(--muted)", fontFamily: "var(--font-label)", fontWeight: 700, letterSpacing: "0.04em", textTransform: "uppercase" }}>{COPY.channelProgress}</span>
-          <span style={{ fontWeight: 700, color: trailMsg ? "var(--accent)" : "var(--text-secondary)" }}>{trailMsg ?? `${takes.length}/${totalTasks} takes`}</span>
-        </div>
-        <div className="xp-track">
-          <div className="xp-fill" style={{ width: `${pct}%` }} />
-        </div>
-      </div>
-
-      {/* 16:9 box, not a fixed 220px crop: the library is commissioned at 16:9, and a
-          height clamp on a 640px column cropped away a third of every beat's height. */}
-      {topImg && <img src={topImg} alt="" style={{ width: "100%", aspectRatio: "16 / 9", objectFit: "cover", borderRadius: 16, marginBottom: 12, border: "1px solid var(--card-border)" }} />}
-
-      {isNarrator ? (
-        <section style={{ ...panel, background: "var(--accent-soft)", color: "var(--ink-soft)" }}>
-          <div style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
-            <p style={{ fontSize: 16, margin: 0, lineHeight: 1.45, flex: 1, fontStyle: "italic" }}>{primaryLine(mode, scene.textEn, scene.scaffoldDe)}</p>
-            <button onClick={() => speak(scene.textEn)} aria-label="Read aloud" title="Read aloud" style={{ background: "none", border: "none", cursor: "pointer", fontSize: 17, padding: 2 }}>🔊</button>
-          </div>
-          {scaffoldNode}
-          {taskOrNav}
-        </section>
-      ) : (
-        <section style={{ ...panel, boxShadow: `inset 5px 0 0 ${look.shirt}, var(--shadow-card)` }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
-            {portraitUrl
-              ? <img src={portraitUrl} alt={speakerName} width={46} height={46} style={{ borderRadius: "50%", objectFit: "cover", flex: "0 0 auto", border: `2px solid ${look.shirt}` }} />
-              : <CastAvatar charKey={scene.speaker} name={speakerName} />}
-            <div style={{ fontSize: 15, fontWeight: 700, color: look.shirt, fontFamily: "var(--font-display)" }}>{speakerName}</div>
-            <button onClick={() => speak(scene.textEn)} aria-label="Read the line aloud" title="Read aloud" style={{ marginLeft: "auto", background: "none", border: "none", cursor: "pointer", fontSize: 18, lineHeight: 1, padding: 2 }}>🔊</button>
-          </div>
-          <div style={{ background: "var(--bg-sunken)", border: "1px solid var(--card-border)", borderRadius: 14, padding: "11px 15px" }}>
-            <p style={{ fontSize: 19, margin: 0, lineHeight: 1.4, color: "var(--text)" }}>{primaryLine(mode, scene.textEn, scene.scaffoldDe)}</p>
-          </div>
-          {scaffoldNode}
-          {taskOrNav}
-        </section>
-      )}
-    </main>
-  );
+    </article>
+    <Audience current={audience} quiet={chapter.unit >= 9} />
+  </main>;
 }

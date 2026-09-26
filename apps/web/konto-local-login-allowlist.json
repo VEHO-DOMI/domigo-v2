@@ -1,53 +1,19 @@
 {
-  "warum": "SPEC konto V1.1-FINAL §6 + Nachtrag N-11: nach dem Umstieg auf den Konto-Dienst meldet sich in DomiGo nichts mehr mit einem eigenen Passwort an — ausser den zwei hier benannten Resten, und jeder traegt ein festes Ablaufdatum. Gelesen von scripts/check-no-local-login.mjs: nach `ablauf` ist das Tor rot, und der Weg muss weg. ACHTUNG, die beiden Reste werden UNTERSCHIEDLICH durchgesetzt: `ops-link` ist ein echter Provider, den der jwt-Callback in auth.ts nach `ablauf` auch zur Laufzeit ablehnt (restGueltig). `dev-identity` ist KEIN Provider — es setzt nie ein `via` und kann daher vom Callback gar nicht abgelehnt werden; seine Sperre ist der Waechter auf VERCEL_ENV !== 'production', der unabhaengig vom Datum gilt. Das Datum zwingt hier nur dazu, den toten Weg zu entfernen. Verlaengert wird beides nur ueber eine neue Spec-Fassung, nie durch Aendern dieser Datei allein. dach-074: dazu kommen die zwei Rückfall-Einträge `student`/`teacher` (rueckfall: true) — sie enden AM Umstiegstag selbst, nicht 90 Tage danach: sie sind die Brücke zwischen Merge und Umstieg, kein Rest, der ihn überlebt.",
-  "umstiegstag": "2026-10-13",
-  "entschieden": "Koki, 2026-09-17 (Karte steu-013 Punkt 2A)",
+  "warum": "SPEC konto V1.1-FINAL §6 + Nachtrag N-11, seit Kokis Entscheid vom 19.09. (E-3, E-8) ohne jedes Datum: DomiGo meldet niemanden mehr mit einem eigenen Passwort an. Angemeldet wird nur über das Konto bei Lauter Einser — ausser den zwei hier benannten Resten, und keiner traegt ein Ablaufdatum: ein Rest bleibt, bis ihn jemand aus dieser Liste nimmt, nie weil ein Tag gekommen ist. Gelesen von scripts/check-no-local-login.mjs. ACHTUNG, die beiden Reste werden UNTERSCHIEDLICH durchgesetzt: `ops-link` ist ein echter Provider, den der jwt-Callback in auth.ts nur zulaesst, weil er hier steht (restZulaessig). `dev-identity` ist KEIN Provider — es setzt nie ein `via`; seine Sperre ist der Waechter auf VERCEL_ENV !== 'production'. Erweitert wird die Liste nur ueber eine neue Spec-Fassung, nie durch Aendern dieser Datei allein.",
+  "entschieden": "Koki, Entscheid E-3/E-8 vom 19.09. (Tabula rasa, kein Datum schliesst etwas von selbst)",
   "reste": [
-    {
-      "provider": "student",
-      "rueckfall": true,
-      "grund": "Rückfall bis zum Umstiegstag (dach-074, GG 18.09.): am 18.09. sperrte der versehentlich gemergte Adapter zwei Stunden lang alle aus, weil noch niemand ein mit DomiGo verknüpftes Konto hat. Bis zum Umstiegstag bleibt deshalb die PIN-Anmeldung der Kinder neben dem konto-Knopf offen — und jedes Cookie von vor diesem PR (es trägt kein `via`) gilt als PIN-Sitzung weiter.",
-      "ablauf": "2026-10-13",
-      "dateien": [
-        "auth.ts",
-        "lib/konto/pin-rueckfall.ts",
-        "lib/konto/rueckfall.ts",
-        "app/signin/page.tsx",
-        "app/join/[code]/page.tsx"
-      ],
-      "durchsetzung": "Endet AM Tag selbst (00:00 Wien), nicht danach: authorize verweigert (pin-rueckfall.ts, rueckfallOffen) · jwt-Callback gibt null (sitzungsRegel + restGueltig mit rueckfall:true) · das Formular rendert nicht mehr · die Tür leitet 307 zu konto · Tor check-no-local-login wird ab dem Tag rot, solange der Weg noch da ist"
-    },
-    {
-      "provider": "teacher",
-      "rueckfall": true,
-      "grund": "Derselbe Rückfall für Lehrkräfte (dach-074): ohne ihn könnte Koki zwischen Merge und Umstieg seine eigene Plattform nicht öffnen, keine Klasse anlegen und keine Lehrkraft einladen.",
-      "ablauf": "2026-10-13",
-      "dateien": [
-        "auth.ts",
-        "lib/konto/pin-rueckfall.ts",
-        "lib/konto/rueckfall.ts",
-        "app/admin/signin/page.tsx",
-        "app/lehrkraft/[token]/page.tsx",
-        "app/lehrkraft/pin-reset/[token]/page.tsx",
-        "app/lehrkraft/pin-vergessen/page.tsx",
-        "app/bootstrap/page.tsx"
-      ],
-      "durchsetzung": "Wie `student`: authorize, jwt-Callback, Formular, Türen, Klassen-Schreiber (lokalesSchreibenZu, 405) — alles am Umstiegstag um 00:00 Wien zu"
-    },
     {
       "provider": "ops-link",
       "grund": "Maschinenpfad: der Einmal-Anmelde-Link der Test-Bahn (/api/ops/session-link) haelt die Test-Identitaeten und die Baenke am Leben, solange konto keinen Agenten-Handoff hat. Reicht nur in die eine Ops-Klasse.",
-      "ablauf": "2027-01-11",
       "dateien": [
         "auth.ts",
         "lib/ops.ts"
       ],
-      "durchsetzung": "jwt-Callback (restGueltig) + Tor"
+      "durchsetzung": "jwt-Callback (sitzungsRegel + restZulaessig) + Tor"
     },
     {
       "provider": "dev-identity",
       "grund": "Entwicklung, nie production: DEV_USER_ID / DEV_CLASS_ID / DEV_TEACHER_ID rendern die Seiten ohne Anmeldung. Der Waechter auf VERCEL_ENV !== 'production' ist gemessen (middleware.ts, lib/identity.ts, lib/teacher.ts) und wird vom Tor geprueft.",
-      "ablauf": "2027-01-11",
       "dateien": [
         "middleware.ts",
         "lib/identity.ts",
@@ -57,11 +23,9 @@
     }
   ],
   "tote_pin_schreiber": {
-    "warum": "Stellen ausserhalb der fuenf Tueren, die einen bcrypt-Hash schreiben. dach-074: BIS zum Umstiegstag oeffnet eine solche PIN noch etwas (die Rueckfall-Anbieter student/teacher); AB dem Tag prueft sie niemand mehr — dann erzeugen diese Stellen nur totes Gewicht und gehoeren entfernt. Sie liegen ausserhalb der Mauer dieser Karte und stehen deshalb hier benannt statt still.",
+    "warum": "Stellen ausserhalb der fuenf Tueren, die einen bcrypt-Hash schreiben. Seit dem 19.09. prueft DomiGo keine PIN mehr; eine solche Stelle erzeugt nur Gewicht, das niemand liest, und steht deshalb hier benannt statt still.",
     "stellen": {
-      "apps/web/app/api/ops/test-students/route.ts": "Der Maschinenpfad: er legt Test-Kinder der Ops-Klasse an, die sich ueber den Einmal-Link anmelden — derselbe deklarierte Rest wie ops-link, mit demselben Ablauf.",
-      "apps/web/app/api/admin/teacher/pin/route.ts": "Die Lehrkraft setzt hier ihre DomiGo-PIN — bis zum Umstiegstag die Rueckfall-PIN, danach eine, die nichts mehr oeffnet. Ausserhalb der Mauer dieser Karte; Folgekarte an den GG: Formular in /admin/settings ab dem Tag entfernen.",
-      "apps/web/app/api/admin/teacher-pin/reset/route.ts": "Dasselbe fuer das Zuruecksetzen durch den Verwaltungszugang: bis zum Umstiegstag lebendig, danach tot. Ausserhalb der Mauer dieser Karte; als Befund gemeldet."
+      "apps/web/app/api/ops/test-students/route.ts": "Der Maschinenpfad: er legt Test-Kinder der Ops-Klasse an, die sich ueber den Einmal-Link anmelden — derselbe deklarierte Rest wie ops-link; die PIN, die er schreibt, prueft niemand."
     }
   }
 }

@@ -1,12 +1,11 @@
 /**
- * dach-074 · /lehrkraft/umgezogen — where an old teacher invitation lands from the
- * switch-over day on (Befund GG 19.09., NEBEN-3).
+ * dach-074 / dach-108 · /lehrkraft/umgezogen — where an old teacher invitation lands
+ * (Befund GG 19.09., NEBEN-3).
  *
- * Until that day /lehrkraft/<token> is main's invitation page. From 00:00 Vienna on
- * UMSTIEGSTAG it answers 307 to here (lib/konto/rueckfall.ts, tuerZiel) instead of
- * dropping the teacher on konto's sign-in page without a word: one sentence says why
- * the link no longer works, and the button leads to the sign-in that does. No
- * database, no session — the token is not even read.
+ * /lehrkraft/<token> answers 307 to here, always (lib/konto/regeln.ts, tuerZiel),
+ * instead of dropping the teacher on konto's sign-in page without a word: one
+ * sentence says why the link no longer works, and the button leads to the sign-in
+ * that does. No database, no session — the token is not even read.
  */
 import Link from "next/link";
 import { CALLBACK_PFAD, eigeneBasis, kontoLoginUrl } from "@/lib/konto/basis";

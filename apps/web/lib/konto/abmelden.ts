@@ -19,7 +19,7 @@
 import { werkzeugeFuer, EIGENES_WERKZEUG } from "../le-werkzeuge.ts";
 import { kontoBaseUrl } from "./basis.ts";
 
-/** Must equal KONTO_PROVIDER in auth.ts (which next-auth keeps out of the tests); rueckfall.test.ts compares the two. */
+/** Must equal KONTO_PROVIDER in auth.ts (which next-auth keeps out of the tests); regeln.test.ts compares the two. */
 export const KONTO_VIA = "konto-handoff";
 
 /** DomiGo's own public address, as konto knows it — with the trailing slash. */

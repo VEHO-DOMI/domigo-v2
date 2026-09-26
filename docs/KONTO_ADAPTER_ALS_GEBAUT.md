@@ -3,8 +3,9 @@
 Karte dach-018 · Brief `OPUS_ADAPTER_DOMIGO_2026-09-16_V1.md` (md5 7659b0fc…) ·
 Kanon `SPEC_KONTO_DIENST_2026-09-15_V1.1-FINAL.md` (md5 75b1f29f…) + Nachtrag
 N-1…N-17 (a6e77afe…) und N-18…N-20.
-Gebaut gegen `origin/main` 40caad44. **Umstiegstag: Montag, 13.10.2026** (Koki,
-steu-013 Punkt 2A) — eine Konstante, `apps/web/lib/konto/umstieg.ts`.
+Gebaut gegen `origin/main` 40caad44. **Seit dach-108 (Koki-Entscheid E-3/E-8,
+19.09.2026) gibt es keinen Umstiegstag mehr:** angemeldet wird nur über konto,
+fest, ohne Datum — siehe §0.
 
 Dieses Blatt sagt, was jemand wissen muss, der den Adapter später anfasst: die
 Auslegungen, die der Brief offen ließ, die Stellen, an denen ich anders gebaut
@@ -12,38 +13,34 @@ habe als er sagt, und was NICHT verifiziert ist.
 
 ---
 
-## 0 · Der datierte PIN-Rückfall (dach-074, 18.09.2026)
+## 0 · Tabula rasa — nur noch konto, ohne Datum (dach-108, 19.09.2026)
 
-**Warum.** Am 18.09. wurde der Adapter versehentlich gemergt (#448). Er entfernte
-die PIN-Anmeldung, und weil noch niemand ein mit DomiGo verknüpftes konto-Konto
-hatte, kam zwei Stunden lang niemand hinein (Revert #450). Seit dach-074 darf ein
-Merge niemanden mehr aussperren: der konto-Knopf ist ab dem Merge da, die alte
-PIN-Tür bleibt daneben — bis **Di 13.10.2026, 00:00 Wien** (`UMSTIEGSTAG` in
-`apps/web/lib/konto/umstieg.ts`). Vorbild: srdp `lib/konto/rueckfall.ts`.
+**Warum.** Nach dem versehentlichen Merge des Adapters (#448, Revert #450) stand
+seit dach-074 (#451) die alte PIN-Anmeldung als **datierter Rückfall** neben dem
+konto-Knopf, und an einem Stichtag (13.10.) hing ein Sammelschalter: PIN aus, alte
+Cookies ungültig, fünf Türen leiten weg, Klassenpflege 405, Datenschutzseite
+schaltet um, Prüf-Tor rot. Koki am 19.09.: »Die alte Anmeldung kann sofort
+ausgehen — es benützt gerade kein einziger Schüler das. Tabula rasa … Kein Datum
+schließt etwas von selbst.« Der Zustand, der erst ab dem Stichtag gegolten hätte,
+ist jetzt der Dauerzustand — ohne Datum, ohne Uhr.
 
-**Die eine Regel** steht in `apps/web/lib/konto/rueckfall.ts`
-(`rueckfallOffen(now)` = `wienerTag(now) < UMSTIEGSTAG`, **exklusiv**: der 12.10.
-ist der letzte Rückfall-Tag, am 13.10. um 00:01 ist die PIN zu).
-
-| Was | vor dem Umstiegstag | ab 00:00 Wien am Umstiegstag |
+| Was | fest, seit dach-108 | wo |
 |---|---|---|
-| Anbieter `student`/`teacher` (`lib/konto/pin-rueckfall.ts`) | prüfen die PIN wie main | `null`, ohne Datenbank-Ruf |
-| Sitzung mit `via` = student/teacher | lebt (`restGueltig`, Eintrag `rueckfall: true`) | `null` |
-| **Cookie ohne `via`** (alle Sitzungen von vor diesem PR) | gilt als PIN-Sitzung weiter | `null` |
-| konto-Sitzung | wie im Adapter (60-s-Abfrage) | unverändert |
-| `/signin`, `/admin/signin` | PIN-Formular **und** Knopf »Sign in with Lauter Einser« | nur Knopf + Hinweissatz (`hinweisFaellig`) |
-| `/join/<code>`, `/lehrkraft/*` (3), `/bootstrap` | Seite wie main | **307** zu konto (`tuerZiel`; nie 308 — ein Browser merkt sich eine dauerhafte Weiterleitung über jeden Rückfall hinaus) |
-| Klasse anlegen/umbenennen/archivieren/zurückholen, Klassenliste importieren | wie main (jetzt in der Klassenwand) | **405** + Satz »Klassen und Klassenlisten pflegst du im Lehrerzimmer von Lauter Einser.« |
-| Klassenwand einer PIN-Sitzung (`lib/identity.ts`) | Kind: seine Klasse · Lehrkraft: eigene Klassen + v1 (`listClassIdsForPinTeacher`) | — (die Sitzung gibt es nicht mehr) |
-| Abmelden (`app/le/konto-aktion.ts`) | konto-Sitzung → konto `/logout?return=<eng-us-Adresse>/`, PIN-Sitzung → `/` | ebenso |
+| Anbieter `student`/`teacher` | **entfernt** (samt ihrem Modul) | `apps/web/auth.ts` |
+| Cookie ohne `via`, Sitzung mit `via` = student/teacher | keine Sitzung (`null`) | `sitzungsRegel` in `apps/web/lib/konto/regeln.ts` |
+| konto-Sitzung | 60-s-Abfrage bei konto (unverändert) | `auth.ts` |
+| `ops-link` | deklarierter Rest, **ohne Ablaufdatum** (`restZulaessig`) | `apps/web/lib/konto/reste.ts`, Allowlist |
+| `/signin`, `/admin/signin` | nur Knopf »Sign in with Lauter Einser« (+ Beitritts-Code → konto) | Seiten |
+| `/join/<code>`, `/lehrkraft/<token>`, `/lehrkraft/pin-reset/<token>`, `/lehrkraft/pin-vergessen`, `/bootstrap` | **immer 307** zum festen Ziel (`tuerZiel`), nie 308; keine Datenbank, keine Aktion | `regeln.ts`, die fünf `page.tsx` |
+| Klasse anlegen/umbenennen/archivieren/zurückholen, Klassenliste importieren | **immer 405** + Satz + Lehrer-Raum-Link; die Oberfläche zeigt statt der Knöpfe den Satz | `apps/web/lib/konto/klassen-antwort.ts` |
+| PIN ändern, Wiederherstellungs-Mail, PIN-Reset durch den Verwaltungszugang, »Reset PIN« beim Kind | **entfernt** (Koki 19.09.) | — |
+| Klassenwand | nur aus konto-Claims (oder Verwaltungszugang) | `apps/web/lib/identity.ts` |
+| Abmelden | konto-Sitzung → konto `/logout`, alles andere → `/` (unverändert) | `apps/web/lib/konto/abmelden.ts` |
 
-Jede Server-Aktion einer alten Seite fragt das Datum selbst — ein Tab, der über
-Mitternacht offen bleibt, schreibt nicht mehr: sein Absenden folgt der Tür zu
-konto (307) bzw. landet wieder auf der Anmeldeseite, statt eine Fehlerseite zu
-zeigen (Befund des blinden Lesers, 18.09.). Das Tor `scripts/check-no-local-login.mjs` ist **datumsabhängig**:
-vor dem Tag erlaubt es genau die zwei Rückfall-Anbieter, und nur mit
-Datumsprüfung; ab dem Tag ist ihr Vorhandensein rot — dann muss der Code weg.
-`--selftest` stellt die Uhr auf 23:59 am Vorabend (grün) und 00:01 am Tag (rot).
+Das Tor `scripts/check-no-local-login.mjs` prüft ohne Uhr (sieben Gesetze: provider ·
+formen · umleitung · klassen · datum · dev · reste); `--selftest` beweist 18 rote
+Lichter. Alte PIN-Konten bleiben als Zeilen in der Datenbank (keine Migration, keine
+Löschung); niemand prüft ihre PIN.
 
 **Neustart ohne Import (Koki, 18.09.).** Das Export-Skript
 (`apps/web/scripts/konto-export.ts`, `packages/db/src/konto-export.ts`, Tests,
@@ -60,10 +57,9 @@ niemand laufen lässt, wäre nur ein zweiter, ungeprüfter Weg in die Daten.
   `apps/web/app/le-werkzeuge.json`): konto lässt als Rücksprung nur exakt diesen
   Host zu.
 - `docs/runbooks/deploy.md` (Schritt 2) nennt seit dach-074 dieselbe Adresse für `AUTH_URL` und `NEXTAUTH_URL`.
-- **Ops-Testweg:** ein Ops-Cookie, das **vor** dem Merge erzeugt wurde, trägt kein `via` und stirbt am
-  13.10. um 00:00 mit allen anderen alten Cookies; ein **neuer** Einmal-Link (`ops-link`) wirkt bis zu
-  seinem eigenen Ablauf (2027-01-11) weiter. Wer am 13.10. einen Testlauf hat: frischen Link ziehen.
-- `/lehrkraft/<token>` (alter Einladungs-Link für Lehrkräfte) leitet ab dem Tag nicht kontextlos zu
+- **Ops-Testweg:** ein Ops-Cookie ohne `via` (von vor #451) ist keine Sitzung mehr; ein **neuer**
+  Einmal-Link (`ops-link`) wirkt — ohne Ablaufdatum der Allowlist, nur mit seinen eigenen zehn Minuten.
+- `/lehrkraft/<token>` (alter Einladungs-Link für Lehrkräfte) leitet nicht kontextlos zu
   konto, sondern auf `/lehrkraft/umgezogen`: ein Satz, warum der Link nicht mehr gilt, und der Knopf
   »Sign in with Lauter Einser« (Befund GG 19.09., NEBEN-3).
 - `GRANDMASTER_TEACHER_IDS` braucht nach dem Start Kokis **neue** Nutzer-id (die
@@ -98,11 +94,11 @@ In dieser Reihenfolge, und in keiner anderen:
 | `via` | was passiert |
 |---|---|
 | `konto-handoff` | `konto_sid` ist Pflicht; alle 60 s `GET /api/claims?sid=`. »revoked« oder 401 ⇒ die Sitzung endet. Sonst werden Ausschnitt, Rolle und Bereichs-Rolle erneuert. |
-| ein Rest aus der Allowlist, vor seinem Ablauf | kein Abruf; es gelten die Grenzen dieses Providers |
+| ein Rest aus der Allowlist (ohne Ablaufdatum, dach-108) | kein Abruf; es gelten die Grenzen dieses Providers |
 | alles andere | die Sitzung endet |
 
-Die letzte Zeile ist es, die am Umstiegstag jede selbst gebaute Sitzung
-zurückzieht: ein altes Kind- oder Lehrer-Cookie trägt gar kein `via`.
+Die letzte Zeile ist es, die jede selbst gebaute Sitzung zurückzieht: ein altes
+Kind- oder Lehrer-Cookie trägt gar kein `via` (seit dach-108 fest, ohne Datum).
 
 **Ein unerreichbarer Konto-Dienst meldet NICHT ab.** Nur »revoked« und 401 tun
 das. Eine langsame Minute darf keine Klasse mitten in der Stunde aussperren; die
@@ -191,14 +187,11 @@ ein Kind ohne Klasse bekommt seit dem Umstieg die Zugriff-fehlt-Karte.
 
 ## 7 · Befunde außerhalb der Mauer dieser Karte
 
-1. `/api/admin/teacher/pin` und `/api/admin/teacher-pin/reset` schreiben weiter
-   einen bcrypt-Hash — bis zum Umstiegstag die Rückfall-PIN, danach einen, den
-   niemand mehr prüft (totes Gewicht, ab dem Tag entfernen). Beide stehen benannt in
-   `apps/web/konto-local-login-allowlist.json`.
-2. `importRoster` und die Klassenlisten-Maske: seit dach-074 bis zum
-   Umstiegstag wie main (mit `claimStudent` auf `/join`), ab dem Tag antwortet
-   die Route 405 — unter konto erzeugte ein Import Doppelgänger. Die Maske
-   selbst bleibt sichtbar und zeigt dann die Antwort; sie zu entfernen ist
-   eine Folgekarte.
-3. `reset-tokens.ts` und `lib/mailer.ts` haben bis zum Umstiegstag wieder
-   Aufrufer (die PIN-Vergessen-Seiten); ab dem Tag sind sie tot.
+1. ~~`/api/admin/teacher/pin`, `/api/admin/teacher-pin/reset`~~ — mit dach-108 entfernt
+   (samt `/api/admin/teacher/email` und den Formularen in Einstellungen und Verwaltungsbereich).
+2. ~~`importRoster` und die Klassenlisten-Maske~~ — mit dach-108: die Route antwortet
+   fest 405, und die Maske zeigt statt des Import-Kastens den Satz mit dem Link.
+   Die Dienstfunktionen in `packages/db` (`importRoster`, `createClass` …) bleiben
+   ungenutzt stehen.
+3. `reset-tokens.ts` in `packages/db` ist seit dach-108 ohne Aufrufer (`lib/mailer.ts`
+   ist entfernt).

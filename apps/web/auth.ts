@@ -1,45 +1,37 @@
-// NextAuth v5 (Auth.js) — sign-in happens at the account service (dach-018),
-// with the old PIN sign-in kept beside it as a DATED FALLBACK (dach-074).
+// NextAuth v5 (Auth.js) — sign-in happens at the account service (dach-018).
 // Its address is never written here: check-umbrella-tokens keeps every tool
 // address in app/le-werkzeuge.json alone, so lib/konto/basis.ts reads it.
 //
-// Until the switch-over day (lib/konto/umstieg.ts, UMSTIEGSTAG) this file keeps
-// the two Credentials providers DomiGo always had: students sign in with a class
-// code, a nickname and a 6-digit PIN, teachers with a nickname and a PIN, both
-// against bcrypt hashes in this database (lib/konto/pin-rueckfall.ts). Each of
-// them refuses by itself from 00:00 Vienna on that day, and the session callback
-// drops their sessions at the same minute (lib/konto/rueckfall.ts). Why: on
-// 18.09. the adapter without this fallback was merged by mistake and nobody
-// could sign in for two hours — a merge must never lock anyone out again.
+// Since Koki's decision of 19.09. (E-3, »Tabula rasa«) DomiGo checks no password
+// of its own and knows no switch-over date: the PIN providers `student` and
+// `teacher` are gone, and a cookie they (or anything before the konto
+// handoff) minted is no session (lib/konto/regeln.ts, sitzungsRegel).
 //
 // What survives, and why, is written down in konto-local-login-allowlist.json —
-// one entry per leftover, each with an end date. `student`/`teacher` end ON the
-// switch-over day; `ops-link` is the machine lane for the test bank; the DEV_*
-// fallbacks live in middleware.ts and lib/identity.ts and can never run in
-// production.
+// one entry per leftover, none with an end date: `ops-link` is the machine lane
+// for the test bank; the DEV_* fallbacks live in middleware.ts and
+// lib/identity.ts and can never run in production.
 //
 // Still true, and still load-bearing: middleware.ts imports this file, so
 // everything it imports rides into the EDGE bundle. lib/konto/{basis,claims,
-// reste,umstieg,rueckfall}.ts are fetch-and-strings only for exactly that
-// reason. lib/konto/anmeldung.ts and lib/konto/pin-rueckfall.ts (bcrypt,
-// @domigo/db) are reached only from inside `authorize`, which NextAuth serves
-// from /api/auth/[...nextauth] with `runtime = "nodejs"` — the same way
-// bcryptjs was always reached here.
+// reste,regeln}.ts are fetch-and-strings only for exactly that reason.
+// lib/konto/anmeldung.ts (bcrypt, @domigo/db) is reached only from inside
+// `authorize`, which NextAuth serves from /api/auth/[...nextauth] with
+// `runtime = "nodejs"`.
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import { claimOpsLinkUse, findOpsClassStudent, getDb } from "@domigo/db";
 import { opsClassCode, opsLinkUseRow, parseOpsSessionLinkToken } from "@/lib/ops";
 import { fetchClaims, istLehrkraftFuerGo, meldeAppLink } from "@/lib/konto/claims";
 import { handoffAnmelden } from "@/lib/konto/anmeldung";
-import { restGueltig } from "@/lib/konto/reste";
-import { rueckfallOffen, sitzungsRegel } from "@/lib/konto/rueckfall";
-import { verifyStudent, verifyTeacher } from "@/lib/konto/pin-rueckfall";
+import { restZulaessig } from "@/lib/konto/reste";
+import { sitzungsRegel } from "@/lib/konto/regeln";
 
 export type Role = "student" | "teacher";
 
 /** The provider name the whole adapter keys on. */
 export const KONTO_PROVIDER = "konto-handoff";
-/** The machine lane that outlives the switch-over, per the allowlist. */
+/** The machine lane, a declared leftover in the allowlist. */
 export const OPS_PROVIDER = "ops-link";
 /** How often a live session asks konto whether it still exists (SPEC §4.6). */
 export const CLAIMS_INTERVALL_MS = 60_000;
@@ -158,26 +150,6 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
   trustHost: true,
   providers: [
     Credentials({
-      // dach-074 · FALLBACK until the switch-over day: the child's PIN sign-in
-      // from main. rueckfallOffen() is asked here AND inside verifyStudent — the
-      // gate check-no-local-login turns red on a fallback provider without it.
-      id: "student",
-      name: "Student",
-      credentials: { classCode: {}, nickname: {}, pin: {} },
-      authorize: (raw) =>
-        rueckfallOffen()
-          ? verifyStudent(String(raw?.classCode ?? ""), String(raw?.nickname ?? ""), String(raw?.pin ?? ""))
-          : null,
-    }),
-    Credentials({
-      // dach-074 · the same fallback for teachers.
-      id: "teacher",
-      name: "Teacher",
-      credentials: { nickname: {}, pin: {} },
-      authorize: (raw) =>
-        rueckfallOffen() ? verifyTeacher(String(raw?.nickname ?? ""), String(raw?.pin ?? "")) : null,
-    }),
-    Credentials({
       id: KONTO_PROVIDER,
       name: "Lauter Einser",
       credentials: { handoff: {} },
@@ -194,20 +166,17 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
   ],
   callbacks: {
     /**
-     * SPEC §4.6 (R-F10), with the dach-074 fallback — decided by sitzungsRegel
-     * (lib/konto/rueckfall.ts), in this order and no other:
+     * SPEC §4.6 (R-F10) — decided by sitzungsRegel (lib/konto/regeln.ts), in
+     * this order and no other, without any date:
      *
      *   via = konto-handoff  ⇒ a konto session id is mandatory; every 60 s the
      *                          app asks konto whether the session still exists
      *                          and what it may now see.
-     *   via = a declared leftover, still inside its end date
+     *   via = a declared leftover (the allowlist: ops-link)
      *                        ⇒ no question is asked; that provider's own limits
-     *                          apply. `student`/`teacher` are leftovers until
-     *                          the switch-over day (exclusive).
-     *   no via at all        ⇒ a cookie minted before this PR — a PIN session.
-     *                          It lives until the switch-over day and not a
-     *                          minute longer.
-     *   anything else        ⇒ null.
+     *                          apply.
+     *   no via at all        ⇒ a cookie from DomiGo's old PIN sign-in — null.
+     *   anything else        ⇒ null (`student`, `teacher` included).
      *
      * An UNREACHABLE konto is deliberately not a refusal. A revoked session and a
      * refused call both end the session; a network hiccup does not, or one slow
@@ -226,7 +195,7 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
       if (account?.provider) token.via = account.provider;
 
       const via = typeof token.via === "string" ? token.via : null;
-      const regel = sitzungsRegel(via, new Date(), KONTO_PROVIDER, restGueltig);
+      const regel = sitzungsRegel(via, KONTO_PROVIDER, restZulaessig);
 
       if (regel === "konto") {
         const sid = typeof token.konto_sid === "string" ? token.konto_sid : null;

@@ -180,8 +180,8 @@ describe("Datenschutzseite ↔ Produktion", () => {
   });
 
   it("is linked from every door a reader can stand at, and stays public", () => {
-    // dach-018 · /join/<code> used to be one of those doors; it is a redirect to
-    // the account service now and renders nothing. The access card took its place:
+    // dach-018 / dach-108 · /join/<code> used to be one of those doors; it is a
+    // fixed 307 to the account service and renders nothing. The access card took its place:
     // it is where a refused sign-in lands, so it is exactly where someone is most
     // likely to want to know what is stored about them.
     for (const door of ["../app/page.tsx", "../app/signin/page.tsx", "../app/zugriff-fehlt/page.tsx"]) {
@@ -261,6 +261,26 @@ describe("Datenschutzseite ↔ Produktion", () => {
       /\{VERANTWORTLICHER\}/,
       "the page says the administration access belongs to the controller, so it must name the controller " +
         "(Koki's statement of 2026-09-17 — the allowlist lives in Vercel and no test can read it)",
+    );
+  });
+
+  it("dach-123 · the class-list sentence and the call that makes it true stand or fall together", () => {
+    // Both directions, and that is the point. The one-directional couplings above
+    // let a sentence outlive its cause; this flow has no schema column behind it
+    // (the names are shown and never stored), so datenschutz-spalten.ts cannot
+    // hold it — nothing to key on. What is left is the CALL: if either teacher
+    // page asks Lauter Einser for a class list, the visible page must say so in
+    // the present tense; and if the page says it, the call must exist.
+    const ruft = [read("../app/admin/classes/[id]/roster/page.tsx"), read("../app/admin/classes/[id]/page.tsx")].some((q) =>
+      /holeKlassenliste\(/.test(q),
+    );
+    const satz = /Klassenliste deiner Schule.*speichert ihn nicht/.test(visible);
+    assert.equal(
+      ruft,
+      satz,
+      ruft
+        ? "a teacher page fetches the school's class list, so the page must say where the name comes from and that it is not stored"
+        : "the page promises a data flow that no page performs any more — an unexplained sentence is as bad as an unexplained flow",
     );
   });
 

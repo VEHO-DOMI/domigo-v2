@@ -1,17 +1,13 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { getDb, getTeacherEmail } from "@domigo/db";
 import { getTeacherForPage } from "@/lib/identity";
-import ChangePinForm from "./ChangePinForm";
-import SetEmailForm from "./SetEmailForm";
 
 export const dynamic = "force-dynamic";
 
 /**
- * Teacher account settings (WS-AUTH Phase A). Today: change your own PIN — no more
- * asking for a database edit. The first time you change it, your account quietly
- * moves to the platform's writable accounts system (your classes and assignments
- * come with it). More account controls land here as Phase C ships.
+ * Teacher account settings. dach-108 · the PIN and the recovery email are gone with
+ * DomiGo's own sign-in (Koki 19.09., E-3): password and account live at Lauter
+ * Einser, and one fixed sentence here says so. What stays is the account id.
  *
  * Teacher-only via getTeacherForPage (a real session or the non-prod dev fallback),
  * the same guard the class/assignment/Studio pages use.
@@ -19,10 +15,6 @@ export const dynamic = "force-dynamic";
 export default async function TeacherSettingsPage() {
   const teacher = await getTeacherForPage();
   if (!teacher) redirect("/admin/signin");
-
-  // Tolerant by construction: before migration 0016 is applied this returns null and
-  // the section simply reads "nothing yet" — the page never falls over for it.
-  const email = await getTeacherEmail(getDb(), teacher.userId);
 
   return (
     <main style={{ maxWidth: 640, margin: "0 auto", padding: "28px 20px 48px", fontFamily: "var(--font-body)", color: "var(--text)" }}>
@@ -33,23 +25,10 @@ export default async function TeacherSettingsPage() {
       </p>
 
       <section className="dg-card" style={{ marginTop: 24 }}>
-        <h2 style={{ fontSize: 17, margin: "0 0 6px", fontFamily: "var(--font-display)", color: "var(--ink)" }}>Change your PIN</h2>
-        <p style={{ color: "var(--text-secondary)", fontSize: 14, margin: "0 0 16px" }}>
-          Enter your current PIN, then choose a new one (4–6 digits). You’ll sign in with the new PIN from now on.
+        <h2 style={{ fontSize: 17, margin: "0 0 6px", fontFamily: "var(--font-display)", color: "var(--ink)" }}>Password</h2>
+        <p style={{ color: "var(--text-secondary)", fontSize: 14, margin: 0 }}>
+          DomiGo uses your Lauter Einser account. Your password is changed and reset there.
         </p>
-        <ChangePinForm />
-      </section>
-
-      {/* K2a · the address that makes "PIN vergessen" work without asking a human.
-          It is optional on purpose: without one, the operator's transitional PIN
-          (K1b) is still the way back in — the same way it is today. */}
-      <section className="dg-card" style={{ marginTop: 16 }}>
-        <h2 style={{ fontSize: 17, margin: "0 0 6px", fontFamily: "var(--font-display)", color: "var(--ink)" }}>Recovery email</h2>
-        <p style={{ color: "var(--text-secondary)", fontSize: 14, margin: "0 0 16px" }}>
-          Store an address and you can reset a forgotten PIN yourself, from the sign-in page. We only ever send a
-          one-time link to it — never your PIN.
-        </p>
-        <SetEmailForm initialEmail={email} />
       </section>
 
       {/* P3 · self-service for the grandmaster rank. The rank is granted by an env

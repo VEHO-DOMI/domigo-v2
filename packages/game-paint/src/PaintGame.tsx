@@ -2004,7 +2004,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
           <div className="pb-building" role="status" aria-live="polite">
             <div className="pb-building-panel">
               <p className="pb-building-title">Wir öffnen das Kapitel …</p>
-              <p className="pb-building-quiet">Die Farbe wird noch aufgetragen.</p>
+              <p className="pb-building-quiet">Gleich geht es im Buch weiter.</p>
             </div>
           </div>
         )}
@@ -2776,7 +2776,7 @@ function Overlay({
     <p className="pb-quiet">Kapitel eins</p>
     <h2>{CH01_BOOT.titleDe}</h2>
     <p className="pb-quiet">Klecks</p>
-    {displayName && <p>Schön, dass du da bist, {displayName}!</p>}
+    <p>Du bist im Buch gelandet. Ich bin Klecks. Ich helfe dir.</p>
     {CH01_BOOT.linesDe.map(line => <p key={line}>{line}</p>)}
   </>, "", <button className="pb-btn-primary" style={btn} onClick={() => onDismiss(o)}>{CH01_BOOT.actionDe}</button>);
   if (o.card === "class-photo") return <ClassPhoto art={art} rescuedIds={rescuedClassmateIds} displayName={displayName} onClose={() => onDismiss(o)} />;

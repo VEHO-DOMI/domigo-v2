@@ -1297,6 +1297,8 @@ export const StoryEconomy = z.object({
         chapterId: ChapterId,
         views: z.number().int().min(0),
         likeRate: z.number().gt(0).max(1),
+        shares: z.number().int().min(0).optional(),
+        comments: z.number().int().min(0).optional(),
         subscribers: z.number().int().min(0),
         note: z.string(),
       }),

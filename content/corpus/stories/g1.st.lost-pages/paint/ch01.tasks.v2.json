@@ -79,7 +79,7 @@
       ],
       "stimulus": {
         "type": "entity",
-        "showsDe": "Der Bleistift will in dein Heft kritzeln.",
+        "showsDe": "Der verhexte Bleistift will in dein Heft kritzeln.",
         "art": "pencil_a"
       },
       "storyDe": "Verbiete es ihm auf Englisch.",
@@ -215,7 +215,7 @@
       ],
       "stimulus": {
         "type": "entity",
-        "showsDe": "Das Buch hat seine Farbe verloren.",
+        "showsDe": "Dieser Gegenstand hat Namen und Farbe verloren.",
         "art": "obj_book_a"
       },
       "storyDe": "Sag den Namen auf Englisch.",
@@ -294,7 +294,7 @@
       ],
       "stimulus": {
         "type": "entity",
-        "showsDe": "Die Musikanlage steht im verschlossenen Schließfach.",
+        "showsDe": "Der Tintengeist hat die Musikanlage weggeschlossen.",
         "art": "device_locker_a"
       },
       "storyDe": "Was siehst du? Sag es auf Englisch.",
@@ -653,7 +653,7 @@
       ],
       "stimulus": {
         "type": "entity",
-        "showsDe": "Die Füllfeder möchte eine Frage aufschreiben.",
+        "showsDe": "Die verhexte Füllfeder möchte eine Frage aufschreiben.",
         "art": "pen_act"
       },
       "storyDe": "Wie heißt „Wie geht es dir?“ auf Englisch?",
@@ -2013,7 +2013,7 @@
       ],
       "stimulus": {
         "type": "entity",
-        "showsDe": "Die Schere schnappt nach dir.",
+        "showsDe": "Die verhexte Schere schnappt nach dir.",
         "art": "obj_scissors_a"
       },
       "storyDe": "Sag den Namen auf Englisch.",
@@ -2054,7 +2054,7 @@
       ],
       "stimulus": {
         "type": "entity",
-        "showsDe": "Der Klebestift kommt auf dich zu.",
+        "showsDe": "Der verhexte Klebestift kommt auf dich zu.",
         "art": "obj_gluestick_a"
       },
       "storyDe": "Sag den Namen auf Englisch.",
@@ -2094,7 +2094,7 @@
       ],
       "stimulus": {
         "type": "entity",
-        "showsDe": "Der Spitzer kommt auf dich zu.",
+        "showsDe": "Der verhexte Spitzer kommt auf dich zu.",
         "art": "obj_sharpener_a"
       },
       "storyDe": "Sag den Namen auf Englisch.",
@@ -2134,7 +2134,7 @@
       ],
       "stimulus": {
         "type": "entity",
-        "showsDe": "Ein Gerät mit Bildschirm liegt im Schließfach.",
+        "showsDe": "Der Tintengeist hält ein Gerät mit Bildschirm gefangen.",
         "art": "device_locker_a"
       },
       "storyDe": "Was siehst du? Sag es auf Englisch.",

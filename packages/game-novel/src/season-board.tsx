@@ -8,6 +8,9 @@
  * detective corkboard. Server passes the derived progress; this only renders.
  */
 import type { CSSProperties } from "react";
+import { Audience } from "./audience.tsx";
+import { formatCount, type EpisodeStats } from "./novel-copy.ts";
+import "./novel.css";
 
 export interface EpisodeProgress {
   chapterId: string;
@@ -29,14 +32,18 @@ const card: CSSProperties = {
   boxShadow: "var(--shadow-card)",
 };
 
-export function SeasonBoard({ episodes, label }: { episodes: EpisodeProgress[]; label: string }) {
+export function SeasonBoard({ episodes, label, economy = [] }: { episodes: EpisodeProgress[]; label: string; economy?: readonly EpisodeStats[] }) {
+  const last = episodes.filter((e) => e.finished && e.released).at(-1);
+  const rowIndex = economy.findIndex((e) => e.chapterId === last?.chapterId);
+  const history = rowIndex < 0 ? [] : economy.slice(0, rowIndex + 1);
+  const peak = Math.max(1, ...history.map((e) => e.views));
   const done = episodes.filter((e) => e.finished).length;
   const complete = done === episodes.length && episodes.length > 0;
   return (
     <div style={card}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 12, gap: 8 }}>
         <span style={{ fontSize: 13, fontWeight: 700, color: "var(--ink)", fontFamily: "var(--font-label)", letterSpacing: "0.03em" }}>📺 {label}</span>
-        <span style={{ fontSize: 12, color: "var(--text-secondary)", whiteSpace: "nowrap", fontWeight: 600 }}>{done} / {episodes.length} wrapped</span>
+        <span style={{ fontSize: 12, color: "var(--text-secondary)", whiteSpace: "nowrap", fontWeight: 600 }}>{done} / {episodes.length} complete</span>
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(138px, 1fr))", gap: 10 }}>
         {episodes.map((e) => (
@@ -63,6 +70,19 @@ export function SeasonBoard({ episodes, label }: { episodes: EpisodeProgress[]; 
           </div>
         ))}
       </div>
+      {history.length > 0 && <>
+        <Audience current={history.at(-1) ?? null} previous={history.at(-2)} quiet={(last?.epNo ?? 0) >= 9} />
+        <details style={{ marginTop: 12 }}>
+          <summary style={{ cursor: "pointer", minHeight: 44, paddingTop: 12 }}>Views by episode (= Aufrufe je Folge)</summary>
+          <ol style={{ padding: 0, listStyle: "none" }}>
+            {history.map((row) => <li key={row.chapterId} style={{ display: "grid", gridTemplateColumns: "45px 1fr 75px", gap: 10, alignItems: "center", margin: "10px 0", fontSize: 12 }}>
+              <span>Ep {Number(row.chapterId.slice(-2))}</span>
+              <span aria-hidden="true" style={{ height: 6, background: "var(--card-border)", borderRadius: 3 }}><span style={{ display: "block", height: 6, width: `${row.views / peak * 100}%`, background: "var(--accent)", borderRadius: 3 }} /></span>
+              <span style={{ textAlign: "right", fontVariantNumeric: "tabular-nums" }}>{formatCount(row.views, "en")}</span>
+            </li>)}
+          </ol>
+        </details>
+      </>}
       {complete && (
         <p style={{ marginTop: 12, fontSize: 13, fontWeight: 700, color: "var(--accent-deep)" }}>
           🎬 Season complete — you saw Ben&apos;s whole story through.

@@ -163,15 +163,14 @@ export async function listArchivedClassesForTeacher(db: Db, classScope: ClassSco
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// dach-074 · THE LOCAL CLASS WRITERS, as a dated fallback — main's four, back.
+// dach-074 · THE LOCAL CLASS WRITERS — main's four, kept as functions.
 //
-// Until the switch-over day a PIN teacher creates, renames, archives and
-// unarchives classes here, exactly as on main; the routes in
-// apps/web/app/api/admin/classes refuse with 405 from 00:00 Vienna that day
-// (lib/konto/rueckfall.ts), and from then on classes are made at konto. The
-// three writers on an existing class now also take the class wall (scope
-// first, never empty) like every other writer on this branch; createClass
-// makes a class no scope can contain yet, so it cannot take one.
+// dach-108 · no route calls them any more: apps/web/app/api/admin/classes answers
+// 405 always (lib/konto/klassen-antwort.ts), and classes are made at konto. They
+// stay here, unwired, because removing them is a packages/db change outside that
+// card. The three writers on an existing class take the class wall (scope
+// first, never empty) like every other writer; createClass makes a class no
+// scope can contain yet, so it cannot take one.
 // ─────────────────────────────────────────────────────────────────────────────
 
 /**
@@ -602,8 +601,9 @@ export async function listAllClassIds(db: Db): Promise<string[]> {
  * (the archive page reads them), plus every v1 class — so the class wall
  * gives a PIN teacher the view main gave them, no more.
  *
- * Called only from lib/identity.ts (the one place a scope is built), and only
- * while lib/konto/rueckfall.ts says the fallback is open.
+ * dach-108 · no caller any more: the PIN sign-in is gone (Koki 19.09., E-3), and
+ * lib/identity.ts builds every scope from konto claims (or the grandmaster list).
+ * Kept, unwired, because removing it is a packages/db change outside that card.
  */
 export async function listClassIdsForPinTeacher(db: Db, teacherId: string): Promise<string[]> {
   const ids = new Set<string>();

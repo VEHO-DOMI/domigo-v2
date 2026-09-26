@@ -31,6 +31,7 @@ export default function NovelClient(props: {
   serverSave: SavePayload | null;
   novelArt: NovelArt | null;
   economy: EpisodeStats[];
+  nextEpisode: { href: string; title: string } | null;
 }) {
   useOutboxFlush();
   const { gameMode, serverSave } = props;
@@ -107,6 +108,7 @@ export default function NovelClient(props: {
         onSave={onSave}
         art={props.novelArt}
         economy={props.economy}
+        nextEpisode={props.nextEpisode}
       />
       {paused && (
         <div
@@ -121,7 +123,7 @@ export default function NovelClient(props: {
           <button
             autoFocus
             onClick={() => setPaused(false)}
-            style={{ background: "#dc2626", color: "#fff", border: "none", borderRadius: 10, padding: "12px 28px", fontSize: 17, fontWeight: 600, cursor: "pointer" }}
+            style={{ background: "var(--accent)", color: "#fff", border: "none", borderRadius: 10, padding: "12px 28px", fontSize: 17, fontWeight: 600, cursor: "pointer" }}
           >
             ▶ Continue
           </button>

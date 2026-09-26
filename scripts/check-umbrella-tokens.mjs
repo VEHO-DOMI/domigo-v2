@@ -51,10 +51,17 @@ const SELF = "scripts/check-umbrella-tokens.mjs";
 // ── Die Pins ────────────────────────────────────────────────────────────────
 // Quelle: CODEX-ABLAGE-MARKE/tokens/tokens.json, Fassung 2026-09-18 (S2). Dieselben zwei
 // Werte stehen in jeder Lauter-Einser-App (Gestaltungsregel §6 Zusatz 2).
-// le-werkzeuge.json: Bereichs-Liste Fassung 4 (19.09., dach-063: eng-us meldet über konto an —
-// konto_app »go« + konto_return; 4119 B).
+// le-werkzeuge.json: Bereichs-Liste Fassung 6 (26.09., dach-137: pup zeigt »Psychologie und
+// Philosophie — LautGedacht«, ohne Stufe; 4138 B). Davor 83194a51… = Fassung 5 (marke-038).
 const SHA256_LE_TOKENS = "993eff17957e302356067bab76fa592717c76c69a3673be0f44841ea7d9fdf2a";
-const SHA256_LE_WERKZEUGE = "797ae117e6621d5987d2a536308165aa8f917b68e42926d026381eab8e4042ee";
+const SHA256_LE_WERKZEUGE = "bb96e3828e17c1fdeffc3902b2be2b094c1a9bb85798b58bf70b73a209ca4dc6";
+
+// Alte Bereichsnamen (marke-038). ⚠ »Finale« ist in diesem Repo überwiegend ein SPIELWORT — die
+// letzte Karte eines Kapitels (isFinale, answerFinale, postponedFinale, »Finale-Karte«).
+// Gemessen am 21.09.: 17 Fundstellen außerhalb von docs/, davon EINE der Bereichsname.
+// Die Prüfung sieht deshalb nur die Dach-Flächen, nie packages/ und nie apps/web/app/(game)/.
+const ALTE_NAMEN = ["Finale", "Denkraum", "Englisch · Matura"];
+const DACH_FLAECHEN = ["apps/web/app/le/", "apps/web/app/le-kopf.css", "apps/web/app/BrandHeader.tsx", "apps/web/lib/"];
 
 // :root + die drei [data-grade]-Blöcke, von `:root {` bis zur schließenden Klammer von
 // [data-grade="4"], gemessen an main 4de2fc9d (globals.css Z. 11–105 vor BRAND-2).
@@ -279,6 +286,20 @@ const CHECKS = {
     }
     return out;
   },
+
+  namen(state) {
+    const out = [];
+    for (const [rel, src] of state.scan) {
+      if (rel === P.werkzeuge) continue; // die EINE Heimat der Namen
+      if (!DACH_FLAECHEN.some((pfad) => rel === pfad || rel.startsWith(pfad))) continue;
+      src.split("\n").forEach((line, i) => {
+        for (const alt of ALTE_NAMEN) {
+          if (line.includes(alt)) out.push(`${rel}:${i + 1} alter Bereichsname »${alt}« — der Name kommt aus ${P.werkzeuge}`);
+        }
+      });
+    }
+    return out;
+  },
 };
 
 function run(state) {
@@ -327,6 +348,10 @@ const FAELLE = [
     make: (s) => { const c = clone(s); c.scan.set("apps/web/app/__selftest-alt.tsx", `const u = "https://app.lautereinser.at/home";`); return c; } },
   { name: "Werkzeug-Adresse außerhalb der JSON", check: "hosts",
     make: (s) => { const c = clone(s); c.scan.set("apps/web/app/__selftest-host.tsx", `<a href="https://veho.lautereinser.at">VEHO</a>`); return c; } },
+  { name: "alter Bereichsname in einer Dach-Datei", check: "namen",
+    make: (s) => { const c = clone(s); c.scan.set("apps/web/lib/__selftest-namen.ts", `export const T = "Englisch · Oberstufe — Finale";`); return c; } },
+  { name: "Spielwort »Finale« in packages/ bleibt unangetastet", check: "namen", erwartet: "gruen",
+    make: (s) => { const c = clone(s); c.scan.set("packages/game-paint/src/__selftest-spielwort.ts", `const postponedFinale = null; // Finale-Karte`); return c; } },
 ];
 
 const real = readReal();
@@ -347,14 +372,19 @@ if (selftest) {
       probleme.push(`»${fall.name}«: ${e.message}`);
       continue;
     }
-    if (got[fall.check].length === 0) probleme.push(`»${fall.name}«: die Prüfung ${fall.check} blieb GRÜN`);
-    else ok++;
+    // Die meisten Fälle sind Manipulationen, die rot werden MÜSSEN. Ein Fall mit `erwartet: "gruen"`
+    // ist das Gegenteil: er beweist die Trennschärfe einer Prüfung — etwas, das sie NICHT fangen darf.
+    const rot = got[fall.check].length > 0;
+    const sollRot = fall.erwartet !== "gruen";
+    if (rot !== sollRot) {
+      probleme.push(`»${fall.name}«: die Prüfung ${fall.check} ${rot ? `wurde ROT, sollte aber grün bleiben (${got[fall.check].join("; ")})` : "blieb GRÜN"}`);
+    } else ok++;
   }
   if (probleme.length) {
     for (const p of probleme) console.error(`✗ SELBSTTEST: ${p}`);
     process.exit(1);
   }
-  console.log(`check-umbrella-tokens SELFTEST: OK — ${ok}/${FAELLE.length} Manipulationen je von ihrer eigenen Prüfung erkannt`);
+  console.log(`check-umbrella-tokens SELFTEST: OK — ${ok}/${FAELLE.length} Fälle wie erwartet (rot, wo manipuliert; grün, wo die Trennschärfe es verlangt)`);
   process.exit(0);
 }
 

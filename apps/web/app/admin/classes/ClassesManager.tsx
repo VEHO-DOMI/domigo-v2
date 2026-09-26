@@ -69,16 +69,16 @@ export default function ClassesManager({
 
       <div style={card}>
         <p style={{ margin: 0, fontSize: 15 }}>
-          Klassen legen Sie im Lehrer-Raum an — dort geben Sie ihnen auch einen neuen Namen, einen
+          Klassen legen Sie im Lehrerzimmer von Lauter Einser an — dort geben Sie ihnen auch einen neuen Namen, einen
           Jahrgang oder ein Archiv.
         </p>
         <a href={lehrerraumUrl} className="dg-btn" style={{ display: "inline-block", marginTop: 12, padding: "10px 16px", textDecoration: "none" }}>
-          Zum Lehrer-Raum
+          Zum Lehrerzimmer
         </a>
       </div>
 
       {initialClasses.length === 0 ? (
-        <p style={{ color: "var(--muted)", marginTop: 24 }}>Noch keine Klasse. Der Lehrer-Raum legt die erste an.</p>
+        <p style={{ color: "var(--muted)", marginTop: 24 }}>Noch keine Klasse. Das Lehrerzimmer von Lauter Einser legt die erste an.</p>
       ) : (
         <div style={{ marginTop: 24, display: "flex", flexDirection: "column", gap: 12 }}>
           {initialClasses.map((c) => (
@@ -118,7 +118,7 @@ export default function ClassesManager({
         <div style={{ marginTop: 32 }}>
           <h2 style={{ fontSize: 18, fontFamily: "var(--font-display)", color: "var(--ink)", margin: "0 0 4px" }}>Archiviert</h2>
           <p style={{ color: "var(--muted)", fontSize: 13, marginTop: 0 }}>
-            Eine archivierte Klasse weckt der Lehrer-Raum wieder; danach koennen sich die Kinder wieder anmelden.
+            Eine archivierte Klasse weckt das Lehrerzimmer von Lauter Einser wieder; danach koennen sich die Kinder wieder anmelden.
           </p>
           <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
             {initialArchived.map((c) => (

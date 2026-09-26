@@ -1,0 +1,2867 @@
+{
+  "items": [
+    {
+      "id": "g3u02.ci.book-before-ship.cp.001",
+      "rev": 1,
+      "difficulty": 2,
+      "format": "context-picker",
+      "prompt": {
+        "text": "Choose the opening that matches Leah's strange-but-true story.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "A book from 1898 described a ship like the Titanic.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "The Titanic was a ship in a film from 1898.",
+        "A book from 1898 described a train like the Titanic.",
+        "The Titanic was the name of the writer's book."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "opening",
+          "de": "Anfang",
+          "scope": null
+        },
+        {
+          "word": "described",
+          "de": "beschrieb",
+          "scope": null
+        },
+        {
+          "word": "writer",
+          "de": "Autor",
+          "scope": null
+        },
+        {
+          "word": "choose",
+          "de": "wähle",
+          "scope": null
+        },
+        {
+          "word": "strange",
+          "de": "seltsam",
+          "scope": null
+        },
+        {
+          "word": "film",
+          "de": "filmen; Film",
+          "scope": null
+        },
+        {
+          "word": "name",
+          "de": "Name; benenne",
+          "scope": null
+        }
+      ],
+      "hintDe": "Vergleiche Jahr, Buch und Schiff mit Leahs Information. Welche Zusammenfassung stimmt?",
+      "hintEn": null,
+      "explainDe": "Leah nennt ein Buch von 1898 über ein Schiff wie die Titanic. Die anderen Einstiege vertauschen Buch und Schiff oder ändern das Thema.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u02.ci.reading-for-camera.gf.001",
+      "rev": 1,
+      "difficulty": 2,
+      "format": "gap-fill",
+      "prompt": {
+        "text": "Leo asks about yesterday: 'What were you doing while I was checking the camera?' Finish your reply: 'I ___ the story about the ship.' (read)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "was reading",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "checking",
+          "de": "überprüfen",
+          "scope": null
+        },
+        {
+          "word": "reply",
+          "de": "Antwort",
+          "scope": null
+        },
+        {
+          "word": "camera",
+          "de": "Kamera",
+          "scope": null
+        },
+        {
+          "word": "finish",
+          "de": "vervollständige",
+          "scope": null
+        }
+      ],
+      "hintDe": "Du beschreibst, was gestern gerade ablief. Verbinde die passende Form von be mit der -ing-Form des vorgegebenen Verbs.",
+      "hintEn": null,
+      "explainDe": "Mit I steht was: I was reading. Beide Tätigkeiten liefen während der Vorbereitung gleichzeitig ab.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u03.ci.travel-video-timing.mt.001",
+      "rev": 1,
+      "difficulty": 2,
+      "format": "matching",
+      "prompt": {
+        "text": "Plan the travel video. Match each start to its ending so the order is clear.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "Before we start filming,",
+          "right": "we need the travel script."
+        },
+        {
+          "left": "While Ben is speaking,",
+          "right": "the rest of us stay quiet."
+        },
+        {
+          "left": "After we finish filming,",
+          "right": "we can watch the whole video."
+        }
+      ],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "script",
+          "de": "Text für die Aufnahme",
+          "scope": null
+        },
+        {
+          "word": "the rest of us",
+          "de": "wir anderen",
+          "scope": null
+        },
+        {
+          "word": "whole",
+          "de": "ganz",
+          "scope": null
+        },
+        {
+          "word": "plan",
+          "de": "Plan; planen",
+          "scope": null
+        },
+        {
+          "word": "video",
+          "de": "Video",
+          "scope": null
+        },
+        {
+          "word": "each",
+          "de": "jeder einzelne",
+          "scope": null
+        },
+        {
+          "word": "start",
+          "de": "Anfang; beginne",
+          "scope": null
+        },
+        {
+          "word": "clear",
+          "de": "klar",
+          "scope": null
+        },
+        {
+          "word": "filming",
+          "de": "filmen",
+          "scope": null
+        },
+        {
+          "word": "quiet",
+          "de": "ruhig",
+          "scope": null
+        },
+        {
+          "word": "finish",
+          "de": "beenden",
+          "scope": null
+        }
+      ],
+      "hintDe": "before heißt vorher, while verbindet gleichzeitige Handlungen, after heißt nachher. Achte auch darauf, wer gerade spricht.",
+      "hintEn": null,
+      "explainDe": "Vor der Aufnahme muss der Text bereit sein. Während Ben spricht, bleiben die anderen leise. Erst nach der fertigen Aufnahme kann die Gruppe sie anschauen.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u03.ci.travel-question.sb.001",
+      "rev": 1,
+      "difficulty": 2,
+      "format": "sentence-building",
+      "prompt": {
+        "text": "Build Leo's question for a traveller. Start with How. Your words: take / long / the / does / trip / how / ?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "How long does the trip take?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "traveller",
+          "de": "reisende Person",
+          "scope": null
+        },
+        {
+          "word": "trip",
+          "de": "Reise",
+          "scope": null
+        },
+        {
+          "word": "build",
+          "de": "baue",
+          "scope": null
+        },
+        {
+          "word": "question",
+          "de": "Frage",
+          "scope": null
+        },
+        {
+          "word": "start",
+          "de": "Anfang; beginne",
+          "scope": null
+        },
+        {
+          "word": "words",
+          "de": "Wörter",
+          "scope": null
+        }
+      ],
+      "hintDe": "Beginne mit How long. Danach brauchst du das Hilfsverb, dann das Subjekt und die Grundform des Verbs.",
+      "hintEn": null,
+      "explainDe": "How long does the trip take? fragt nach der Dauer der Reise. Nach does steht die Grundform take.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u04.ci.hard-lines-comparison.sb.001",
+      "rev": 1,
+      "difficulty": 2,
+      "format": "sentence-building",
+      "prompt": {
+        "text": "Write a note about Ben's script. Start with Ben's. Your words: today / much / are / harder / lines / Ben's / .",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "Ben's lines are much harder today.",
+          "tier": "full"
+        },
+        {
+          "text": "Ben's lines today are much harder.",
+          "tier": "full"
+        },
+        {
+          "text": "Ben's lines are today much harder.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "lines",
+          "de": "Textzeilen",
+          "scope": null
+        },
+        {
+          "word": "script",
+          "de": "Text für die Aufnahme",
+          "scope": null
+        },
+        {
+          "word": "start",
+          "de": "Anfang; beginne",
+          "scope": null
+        },
+        {
+          "word": "words",
+          "de": "Wörter",
+          "scope": null
+        },
+        {
+          "word": "harder",
+          "de": "schwieriger",
+          "scope": null
+        }
+      ],
+      "hintDe": "Beim Vergleichen bekommt hard die Endung -er. Ein Verstärker steht direkt davor; die Zeitangabe kann am Satzende stehen.",
+      "hintEn": null,
+      "explainDe": "Leah macht Bens Text heute besonders schwer. much harder bedeutet viel schwerer. today kann auch nach lines stehen.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u04.ci.animal-video-opening.cp.001",
+      "rev": 1,
+      "difficulty": 2,
+      "format": "context-picker",
+      "prompt": {
+        "text": "Leah wants to warn people: an animal can look safe and still be dangerous. Choose our opening line.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Some animals are much more dangerous than they look.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Some animals are much faster than people.",
+        "Some animals are nearly as heavy as a car.",
+        "Some animals live much longer than people."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "dangerous",
+          "de": "gefährlich",
+          "scope": null
+        },
+        {
+          "word": "than they look",
+          "de": "als sie aussehen",
+          "scope": null
+        },
+        {
+          "word": "warn",
+          "de": "warnen",
+          "scope": null
+        },
+        {
+          "word": "safe",
+          "de": "ungefährlich",
+          "scope": null
+        },
+        {
+          "word": "choose",
+          "de": "wähle",
+          "scope": null
+        },
+        {
+          "word": "line",
+          "de": "Zeile",
+          "scope": null
+        },
+        {
+          "word": "animals",
+          "de": "Tiere",
+          "scope": null
+        },
+        {
+          "word": "nearly",
+          "de": "fast",
+          "scope": null
+        },
+        {
+          "word": "as",
+          "de": "wie",
+          "scope": null
+        }
+      ],
+      "hintDe": "Bei einem langen Eigenschaftswort bildest du den Vergleich mit more. Der Verstärker steht davor; than leitet den Vergleich ein.",
+      "hintEn": null,
+      "explainDe": "Der Anfang soll vor einem gefährlichen Tier warnen, das harmlos aussieht. Nur der Satz mit more dangerous than they look sagt das. Die anderen Sätze vergleichen Geschwindigkeit, Gewicht oder Lebensdauer.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.ci.filming-conditions.mt.001",
+      "rev": 1,
+      "difficulty": 2,
+      "format": "matching",
+      "prompt": {
+        "text": "Episode 5 is about lucky and unlucky days. Match the problems on your filming checklist to the plans.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "If the phone has no space left,",
+          "right": "we'll delete an old test video."
+        },
+        {
+          "left": "If the traffic outside is too loud,",
+          "right": "we'll close the window."
+        },
+        {
+          "left": "If it starts raining outside,",
+          "right": "we'll bring the camera inside."
+        }
+      ],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "checklist",
+          "de": "Checkliste",
+          "scope": null
+        },
+        {
+          "word": "space",
+          "de": "Speicherplatz",
+          "scope": null
+        },
+        {
+          "word": "delete",
+          "de": "löschen",
+          "scope": null
+        },
+        {
+          "word": "traffic",
+          "de": "Verkehr",
+          "scope": null
+        },
+        {
+          "word": "lucky",
+          "de": "glücklich",
+          "scope": null
+        },
+        {
+          "word": "problems",
+          "de": "Probleme",
+          "scope": null
+        },
+        {
+          "word": "filming",
+          "de": "filmen",
+          "scope": null
+        },
+        {
+          "word": "phone",
+          "de": "Handy",
+          "scope": null
+        },
+        {
+          "word": "left",
+          "de": "übrig",
+          "scope": null
+        },
+        {
+          "word": "we'll",
+          "de": "wir werden",
+          "scope": null
+        },
+        {
+          "word": "old",
+          "de": "alt",
+          "scope": null
+        },
+        {
+          "word": "test",
+          "de": "Probe",
+          "scope": null
+        },
+        {
+          "word": "video",
+          "de": "Video",
+          "scope": null
+        },
+        {
+          "word": "loud",
+          "de": "laut",
+          "scope": null
+        },
+        {
+          "word": "starts",
+          "de": "beginnt",
+          "scope": null
+        },
+        {
+          "word": "raining",
+          "de": "regnet",
+          "scope": null
+        },
+        {
+          "word": "camera",
+          "de": "Kamera",
+          "scope": null
+        }
+      ],
+      "hintDe": "Im if-Teil steht die Gegenwart. Im zweiten Teil steht will + Grundform. Ordne nach dem konkreten Problem bei der Aufnahme.",
+      "hintEn": null,
+      "explainDe": "Ohne Speicherplatz muss die Gruppe Platz schaffen, bei Verkehrslärm das Fenster schließen und bei Regen die Kamera hereinholen. Es sind mögliche Situationen, keine bereits erzählten Ereignisse.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.ci.leahs-click-plan.sb.001",
+      "rev": 1,
+      "difficulty": 2,
+      "format": "sentence-building",
+      "prompt": {
+        "text": "Put Leah's plan into a sentence. Start with If. Your words: mistakes / people / video / Ben / will / if / makes / watch / our / .",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "If Ben makes mistakes, people will watch our video.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "mistakes",
+          "de": "Fehler",
+          "scope": null
+        },
+        {
+          "word": "plan",
+          "de": "Plan; planen",
+          "scope": null
+        },
+        {
+          "word": "start",
+          "de": "Anfang; beginne",
+          "scope": null
+        },
+        {
+          "word": "words",
+          "de": "Wörter",
+          "scope": null
+        },
+        {
+          "word": "video",
+          "de": "Video",
+          "scope": null
+        }
+      ],
+      "hintDe": "Der if-Teil nennt die Bedingung in der Gegenwart. Danach folgt Leahs erwartetes Ergebnis mit will + Grundform.",
+      "hintEn": null,
+      "explainDe": "If Ben makes mistakes, people will watch our video. Das gibt Leahs Plan wieder: Bens Fehler sollen Aufrufe bringen. Im if-Teil steht makes, nicht will make.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u06.ci.london-video-line.sb.001",
+      "rev": 1,
+      "difficulty": 2,
+      "format": "sentence-building",
+      "prompt": {
+        "text": "Build the opening for the London video. Start with London. Your words: city / about / is / video / which / our / the / is / London / .",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "London is the city which our video is about.",
+          "tier": "full"
+        },
+        {
+          "text": "London is the city about which our video is.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "build",
+          "de": "baue",
+          "scope": null
+        },
+        {
+          "word": "video",
+          "de": "Video",
+          "scope": null
+        },
+        {
+          "word": "start",
+          "de": "Anfang; beginne",
+          "scope": null
+        },
+        {
+          "word": "words",
+          "de": "Wörter",
+          "scope": null
+        }
+      ],
+      "hintDe": "Der Zusatz beschreibt ein Ding beziehungsweise einen Ort. Setze zuerst den Hauptsatz zusammen und schließe dann den Zusatz mit which an.",
+      "hintEn": null,
+      "explainDe": "London is the city which our video is about. Der Zusatz which our video is about erklärt, welche Stadt gemeint ist.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u06.ci.london-crew-labels.mt.001",
+      "rev": 1,
+      "difficulty": 2,
+      "format": "matching",
+      "prompt": {
+        "text": "Add labels to your notes for the London video. Match each person to the description we know is true.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "Sara",
+          "right": "the person who has the famous channel"
+        },
+        {
+          "left": "Ben",
+          "right": "the boy who said his English was not so good"
+        },
+        {
+          "left": "Leo",
+          "right": "the boy who named Big Ben, the Tower and the Globe"
+        }
+      ],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "labels",
+          "de": "Beschriftungen",
+          "scope": null
+        },
+        {
+          "word": "description",
+          "de": "Beschreibung",
+          "scope": null
+        },
+        {
+          "word": "famous",
+          "de": "bekannt",
+          "scope": null
+        },
+        {
+          "word": "named",
+          "de": "genannt hat",
+          "scope": null
+        },
+        {
+          "word": "video",
+          "de": "Video",
+          "scope": null
+        },
+        {
+          "word": "each",
+          "de": "jeder einzelne",
+          "scope": null
+        },
+        {
+          "word": "person",
+          "de": "Person",
+          "scope": null
+        },
+        {
+          "word": "know",
+          "de": "wissen; kennen",
+          "scope": null
+        },
+        {
+          "word": "channel",
+          "de": "Kanal",
+          "scope": null
+        },
+        {
+          "word": "said",
+          "de": "sagte",
+          "scope": null
+        }
+      ],
+      "hintDe": "Die Zusätze mit who beschreiben Personen. Wer hat den bekannten Kanal, wer ist seit Folge 1 unsicher, und wer hat gerade die Londoner Orte genannt?",
+      "hintEn": null,
+      "explainDe": "Sara hat den bekannten Kanal. Ben hat in Folge 1 gesagt, dass sein Englisch nicht so gut ist. Leo hat gerade Big Ben, den Tower und den Globe genannt.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u07.ci.ask-about-friends.cp.001",
+      "rev": 1,
+      "difficulty": 2,
+      "format": "context-picker",
+      "prompt": {
+        "text": "Ben wants people to say how long they have known their best friend. Which question should go under the video?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "How long have you known your best friend?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Where did you meet your best friend?",
+        "What does your best friend look like?",
+        "When did you last see your best friend?"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "say",
+          "de": "sagen",
+          "scope": null
+        },
+        {
+          "word": "known",
+          "de": "gekannt",
+          "scope": null
+        },
+        {
+          "word": "question",
+          "de": "Frage",
+          "scope": null
+        },
+        {
+          "word": "should",
+          "de": "sollte",
+          "scope": null
+        },
+        {
+          "word": "video",
+          "de": "Video",
+          "scope": null
+        },
+        {
+          "word": "see",
+          "de": "sehen",
+          "scope": null
+        }
+      ],
+      "hintDe": "Ben möchte wissen, wie lange die Freundschaft schon besteht. Welche Frage passt dazu?",
+      "hintEn": null,
+      "explainDe": "How long fragt nach der Dauer bis jetzt. Where fragt nach dem Ort, What ... look like nach dem Aussehen und When ... last see nach dem letzten Treffen.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u07.ci.ben-since-first-video.sb.001",
+      "rev": 1,
+      "difficulty": 2,
+      "format": "sentence-building",
+      "prompt": {
+        "text": "Write one true line about Ben and our channel. Start with Ben. Your words: been / our / since / Ben / videos / has / in / first / episode / the / .",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "Ben has been in our videos since the first episode.",
+          "tier": "full"
+        },
+        {
+          "text": "Ben has been in the videos since our first episode.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "episode",
+          "de": "Folge",
+          "scope": null
+        },
+        {
+          "word": "channel",
+          "de": "Kanal",
+          "scope": null
+        },
+        {
+          "word": "line",
+          "de": "Zeile",
+          "scope": null
+        },
+        {
+          "word": "start",
+          "de": "Anfang; beginne",
+          "scope": null
+        },
+        {
+          "word": "words",
+          "de": "Wörter",
+          "scope": null
+        },
+        {
+          "word": "been",
+          "de": "gewesen",
+          "scope": null
+        },
+        {
+          "word": "videos",
+          "de": "Videos",
+          "scope": null
+        }
+      ],
+      "hintDe": "Beginne mit Ben und verwende das Present perfect: passende Form von have + dritte Verbform. Danach kommt der Anfangspunkt mit since.",
+      "hintEn": null,
+      "explainDe": "Ben ist seit der ersten Folge dabei und immer noch im Kanal: has been ... since the first episode. since nennt den Anfangspunkt.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u08.ci.channel-time-notes.gs.001",
+      "rev": 1,
+      "difficulty": 2,
+      "format": "group-sort",
+      "prompt": {
+        "text": "I put two pages next to each other: our first video and our channel now. Put each note on the right page.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "Our first video",
+          "members": [
+            "We made our first video that evening.",
+            "Ben read his first line for the camera."
+          ]
+        },
+        {
+          "label": "Our channel now",
+          "members": [
+            "Ben's part has grown to three minutes.",
+            "Our channel has become popular."
+          ]
+        }
+      ],
+      "gloss": [
+        {
+          "word": "has grown",
+          "de": "ist länger geworden",
+          "scope": null
+        },
+        {
+          "word": "has become",
+          "de": "ist geworden",
+          "scope": null
+        },
+        {
+          "word": "popular",
+          "de": "beliebt",
+          "scope": null
+        },
+        {
+          "word": "pages",
+          "de": "Seiten",
+          "scope": null
+        },
+        {
+          "word": "each",
+          "de": "jeder einzelne",
+          "scope": null
+        },
+        {
+          "word": "other",
+          "de": "andere",
+          "scope": null
+        },
+        {
+          "word": "video",
+          "de": "Video",
+          "scope": null
+        },
+        {
+          "word": "channel",
+          "de": "Kanal",
+          "scope": null
+        },
+        {
+          "word": "right",
+          "de": "richtig",
+          "scope": null
+        },
+        {
+          "word": "page",
+          "de": "Seite",
+          "scope": null
+        },
+        {
+          "word": "made",
+          "de": "gemacht",
+          "scope": null
+        },
+        {
+          "word": "line",
+          "de": "Zeile",
+          "scope": null
+        },
+        {
+          "word": "camera",
+          "de": "Kamera",
+          "scope": null
+        },
+        {
+          "word": "part",
+          "de": "Teil",
+          "scope": null
+        },
+        {
+          "word": "minutes",
+          "de": "Minuten",
+          "scope": null
+        }
+      ],
+      "hintDe": "Die erste Seite hält unseren Anfang fest. Auf die zweite kommen die Veränderungen, die jetzt zu sehen sind.",
+      "hintEn": null,
+      "explainDe": "Der erste Abend und Bens erste Aufnahme gehören zum Anfang. Der gewachsene Videoteil und der bekannte Kanal zeigen den Stand heute.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u08.ci.channel-reaches-people.gf.001",
+      "rev": 1,
+      "difficulty": 2,
+      "format": "gap-fill",
+      "prompt": {
+        "text": "Our channel is popular now. Finish my note: So far, our videos ___ many people. (reach)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "have reached",
+          "tier": "full"
+        },
+        {
+          "text": "have been reaching",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "channel",
+          "de": "Kanal",
+          "scope": null
+        },
+        {
+          "word": "finish",
+          "de": "vervollständige",
+          "scope": null
+        },
+        {
+          "word": "far",
+          "de": "weit; so far = bis jetzt",
+          "scope": null
+        },
+        {
+          "word": "videos",
+          "de": "Videos",
+          "scope": null
+        },
+        {
+          "word": "been",
+          "de": "gewesen",
+          "scope": null
+        }
+      ],
+      "hintDe": "So far bedeutet bis jetzt: Die Wirkung reicht bis in die Gegenwart. Our videos ist Mehrzahl. Du brauchst have und die dritte Form von reach.",
+      "hintEn": null,
+      "explainDe": "Our videos have reached many people. So far bezieht sich auf die Zeit bis jetzt. Reach ist regelmäßig: reached.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u09.ci.camera-permission.sb.001",
+      "rev": 1,
+      "difficulty": 2,
+      "format": "sentence-building",
+      "prompt": {
+        "text": "Ask Ben for permission to film him. Start with Are: allowed / you / Are / to film / we",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "Are we allowed to film you?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "permission",
+          "de": "Erlaubnis",
+          "scope": null
+        },
+        {
+          "word": "film",
+          "de": "filmen; Film",
+          "scope": null
+        },
+        {
+          "word": "start",
+          "de": "Anfang; beginne",
+          "scope": null
+        },
+        {
+          "word": "allowed",
+          "de": "erlaubt",
+          "scope": null
+        }
+      ],
+      "hintDe": "Eine Frage nach Erlaubnis beginnt mit einer Form von be. Danach kommen die Person und allowed to mit der Grundform.",
+      "hintEn": null,
+      "explainDe": "Are we allowed to film you? fragt Ben nach seiner Erlaubnis. Die Frage legt seine Antwort nicht fest.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u09.ci.school-filming-rules.mt.001",
+      "rev": 1,
+      "difficulty": 2,
+      "format": "matching",
+      "prompt": {
+        "text": "In my draft, what does each question ask permission for? Match the questions to the notes.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "Are we allowed to film Ben?",
+          "right": "Ben in front of the camera."
+        },
+        {
+          "left": "Are we allowed to show his mistakes?",
+          "right": "Choosing what people see of Ben."
+        },
+        {
+          "left": "Are we allowed to put this clip online?",
+          "right": "Putting the video online."
+        }
+      ],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "draft",
+          "de": "Entwurf",
+          "scope": null
+        },
+        {
+          "word": "permission",
+          "de": "Erlaubnis",
+          "scope": null
+        },
+        {
+          "word": "clip",
+          "de": "kurzer Videoausschnitt",
+          "scope": null
+        },
+        {
+          "word": "each",
+          "de": "jeder einzelne",
+          "scope": null
+        },
+        {
+          "word": "question",
+          "de": "Frage",
+          "scope": null
+        },
+        {
+          "word": "questions",
+          "de": "Fragen",
+          "scope": null
+        },
+        {
+          "word": "allowed",
+          "de": "erlaubt",
+          "scope": null
+        },
+        {
+          "word": "film",
+          "de": "filmen; Film",
+          "scope": null
+        },
+        {
+          "word": "camera",
+          "de": "Kamera",
+          "scope": null
+        },
+        {
+          "word": "mistakes",
+          "de": "Fehler",
+          "scope": null
+        },
+        {
+          "word": "choosing",
+          "de": "auswählen",
+          "scope": null
+        },
+        {
+          "word": "see",
+          "de": "sehen",
+          "scope": null
+        },
+        {
+          "word": "online",
+          "de": "im Internet",
+          "scope": null
+        },
+        {
+          "word": "putting",
+          "de": "stellen; putting online = ins Internet stellen",
+          "scope": null
+        },
+        {
+          "word": "video",
+          "de": "Video",
+          "scope": null
+        }
+      ],
+      "hintDe": "Was möchten wir tun: Ben filmen, seine Fehler zeigen oder das Video ins Internet stellen?",
+      "hintEn": null,
+      "explainDe": "Film Ben fragt nach Ben vor der Kamera. Show his mistakes fragt danach, welche Seite von Ben andere sehen. Put this clip online fragt nach der Veröffentlichung.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u10.ci.permission-timeline.mt.001",
+      "rev": 1,
+      "difficulty": 2,
+      "format": "matching",
+      "prompt": {
+        "text": "Before we film again, I make a list of questions. Match each note to what we need to ask.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "An old clip of Ben on our channel",
+          "right": "Were we allowed to share it?"
+        },
+        {
+          "left": "Leo's camera in the classroom now",
+          "right": "Are we allowed to film here?"
+        },
+        {
+          "left": "A song we want in tomorrow's video",
+          "right": "Will we be allowed to use it?"
+        }
+      ],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "clip",
+          "de": "kurzer Videoausschnitt",
+          "scope": null
+        },
+        {
+          "word": "film",
+          "de": "filmen; Film",
+          "scope": null
+        },
+        {
+          "word": "list",
+          "de": "Liste",
+          "scope": null
+        },
+        {
+          "word": "questions",
+          "de": "Fragen",
+          "scope": null
+        },
+        {
+          "word": "each",
+          "de": "jeder einzelne",
+          "scope": null
+        },
+        {
+          "word": "channel",
+          "de": "Kanal",
+          "scope": null
+        },
+        {
+          "word": "allowed",
+          "de": "erlaubt",
+          "scope": null
+        },
+        {
+          "word": "camera",
+          "de": "Kamera",
+          "scope": null
+        },
+        {
+          "word": "video",
+          "de": "Video",
+          "scope": null
+        }
+      ],
+      "hintDe": "Ein alter Ausschnitt, der Raum jetzt und ein Lied für morgen: Achte darauf, wann wir die Erlaubnis brauchen.",
+      "hintEn": null,
+      "explainDe": "Der alte Ausschnitt gehört zur Frage mit were. Beim Filmen jetzt steht are. Das Lied für morgen gehört zu will ... be allowed to.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u10.ci.ask-before-showing.sb.001",
+      "rev": 1,
+      "difficulty": 2,
+      "format": "sentence-building",
+      "prompt": {
+        "text": "Ask about Ben's part in our old videos. Start with Was: allowed / his own lines / Was / to choose / Ben",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "Was Ben allowed to choose his own lines?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "part",
+          "de": "Teil",
+          "scope": null
+        },
+        {
+          "word": "videos",
+          "de": "Videos",
+          "scope": null
+        },
+        {
+          "word": "start",
+          "de": "Anfang; beginne",
+          "scope": null
+        },
+        {
+          "word": "allowed",
+          "de": "erlaubt",
+          "scope": null
+        },
+        {
+          "word": "lines",
+          "de": "Textzeilen",
+          "scope": null
+        },
+        {
+          "word": "choose",
+          "de": "wähle",
+          "scope": null
+        }
+      ],
+      "hintDe": "Du fragst nach früher. Bei Ben steht was. Danach folgen Ben, allowed to und die Handlung.",
+      "hintEn": null,
+      "explainDe": "Was Ben allowed to choose his own lines? Bei Fragen nach früherer Erlaubnis steht was oder were vor der Person. Ben ist eine einzelne Person: was.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u11.ci.saras-words-stay.gf.001",
+      "rev": 1,
+      "difficulty": 2,
+      "format": "gap-fill",
+      "prompt": {
+        "text": "The clips are still playing. Complete my note to myself: I have been ___ our old clips for an hour. (watch)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "watching",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "for an hour",
+          "de": "seit einer Stunde",
+          "scope": null
+        },
+        {
+          "word": "note to myself",
+          "de": "Notiz für mich selbst",
+          "scope": null
+        },
+        {
+          "word": "clips",
+          "de": "kurze Videoausschnitte",
+          "scope": null
+        },
+        {
+          "word": "complete",
+          "de": "ergänze",
+          "scope": null
+        },
+        {
+          "word": "been",
+          "de": "gewesen",
+          "scope": null
+        }
+      ],
+      "hintDe": "Nach have been brauchst du bei dieser andauernden Tätigkeit die ing-Form. Die Handlung begann früher und geht noch weiter.",
+      "hintEn": null,
+      "explainDe": "I have been watching our old clips for an hour zeigt: Ich schaue seit einer Stunde und bin noch nicht fertig. Watching ergänzt die laufende Tätigkeit.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u11.ci.recording-all-along.cp.001",
+      "rev": 1,
+      "difficulty": 2,
+      "format": "context-picker",
+      "prompt": {
+        "text": "I need a line for our old clips: we started filming Ben's mistakes in episode 1 and we still do it. Which line tells the whole story?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "We have been filming his mistakes since episode 1.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "We filmed his mistakes once in episode 1.",
+        "We are going to film his mistakes for the first time.",
+        "We stopped filming his mistakes after episode 1."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "since",
+          "de": "seit",
+          "scope": null
+        },
+        {
+          "word": "line",
+          "de": "Zeile",
+          "scope": null
+        },
+        {
+          "word": "clips",
+          "de": "Videoausschnitte",
+          "scope": null
+        },
+        {
+          "word": "started",
+          "de": "begann",
+          "scope": null
+        },
+        {
+          "word": "filming",
+          "de": "filmen",
+          "scope": null
+        },
+        {
+          "word": "mistakes",
+          "de": "Fehler",
+          "scope": null
+        },
+        {
+          "word": "tells",
+          "de": "erzählt",
+          "scope": null
+        },
+        {
+          "word": "been",
+          "de": "gewesen",
+          "scope": null
+        },
+        {
+          "word": "filmed",
+          "de": "gefilmt",
+          "scope": null
+        },
+        {
+          "word": "film",
+          "de": "filmen; Film",
+          "scope": null
+        },
+        {
+          "word": "stopped",
+          "de": "aufgehört",
+          "scope": null
+        }
+      ],
+      "hintDe": "Die Zeile soll sagen: Es begann damals und passiert noch immer. Welche lässt weder den Anfang noch das Weitergehen weg?",
+      "hintEn": null,
+      "explainDe": "We have been filming his mistakes since episode 1. Die Handlung begann in Folge 1 und dauert noch an. Once sagt nur einmal; for the first time behauptet einen neuen Anfang; stopped behauptet ein Ende.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u12.ci.name-our-responsibility.sb.001",
+      "rev": 1,
+      "difficulty": 2,
+      "format": "sentence-building",
+      "prompt": {
+        "text": "Name what happened and who did it. Start with His mistakes: by us / filmed / His mistakes / were",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "His mistakes were filmed by us.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "by us",
+          "de": "von uns",
+          "scope": null
+        },
+        {
+          "word": "name",
+          "de": "Name; benenne",
+          "scope": null
+        },
+        {
+          "word": "start",
+          "de": "Anfang; beginne",
+          "scope": null
+        },
+        {
+          "word": "mistakes",
+          "de": "Fehler",
+          "scope": null
+        },
+        {
+          "word": "filmed",
+          "de": "gefilmt",
+          "scope": null
+        }
+      ],
+      "hintDe": "Im Passiv steht das, was betroffen ist, am Anfang. Danach folgen be in der passenden Vergangenheit und die dritte Verbform. By nennt, wer es getan hat.",
+      "hintEn": null,
+      "explainDe": "His mistakes were filmed by us nennt die Aufnahmen und unsere Verantwortung ausdrücklich. Were passt zur Mehrzahl mistakes.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u12.ci.who-did-what.gs.001",
+      "rev": 1,
+      "difficulty": 2,
+      "format": "group-sort",
+      "prompt": {
+        "text": "I collect what happened, in our videos and below them. Put each note where I found it.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "In our videos",
+          "members": [
+            "Ben's mistakes were filmed.",
+            "Ben was shown on camera."
+          ]
+        },
+        {
+          "label": "Below our videos",
+          "members": [
+            "A comment about bullying was written.",
+            "Ben was laughed at in the comments."
+          ]
+        }
+      ],
+      "gloss": [
+        {
+          "word": "bullying",
+          "de": "Mobbing",
+          "scope": null
+        },
+        {
+          "word": "was written",
+          "de": "wurde geschrieben",
+          "scope": null
+        },
+        {
+          "word": "collect",
+          "de": "sammle",
+          "scope": null
+        },
+        {
+          "word": "videos",
+          "de": "Videos",
+          "scope": null
+        },
+        {
+          "word": "each",
+          "de": "jeder einzelne",
+          "scope": null
+        },
+        {
+          "word": "found",
+          "de": "gefunden",
+          "scope": null
+        },
+        {
+          "word": "mistakes",
+          "de": "Fehler",
+          "scope": null
+        },
+        {
+          "word": "filmed",
+          "de": "gefilmt",
+          "scope": null
+        },
+        {
+          "word": "shown",
+          "de": "gezeigt",
+          "scope": null
+        },
+        {
+          "word": "camera",
+          "de": "Kamera",
+          "scope": null
+        }
+      ],
+      "hintDe": "Was wurde vor der Kamera aufgenommen? Was stand in den Kommentaren darunter?",
+      "hintEn": null,
+      "explainDe": "Die Kamera zeigt Ben und seine Fehler. Der Kommentar, der das Mobbing kritisiert, und das Auslachen stehen unter den Videos. Nicht jeder Kommentar verletzt Ben: Manche machen auf das Unrecht aufmerksam.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u13.ci.listen-if-he-asks.gf.001",
+      "rev": 1,
+      "difficulty": 2,
+      "format": "gap-fill",
+      "prompt": {
+        "text": "I imagine Ben asks us to stop talking. Finish my thought: If Ben asked us to stop, I ___ and listen. (stop)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "would stop",
+          "tier": "full"
+        },
+        {
+          "text": "'d stop",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "imagine",
+          "de": "stell dir vor",
+          "scope": null
+        },
+        {
+          "word": "asked us to stop",
+          "de": "uns bitten würde aufzuhören",
+          "scope": null
+        },
+        {
+          "word": "finish",
+          "de": "vervollständige",
+          "scope": null
+        },
+        {
+          "word": "thought",
+          "de": "Gedanke",
+          "scope": null
+        },
+        {
+          "word": "'d",
+          "de": "würde (Kurzform von would)",
+          "scope": null
+        }
+      ],
+      "hintDe": "Bei einer vorgestellten Situation steht nach if die Vergangenheitsform. Für die vorgestellte Reaktion brauchst du would und die Grundform.",
+      "hintEn": null,
+      "explainDe": "If Ben asked us to stop, I would stop and listen. Es ist eine vorgestellte Gesprächssituation; would stop beschreibt meine Reaktion.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u13.ci.private-conversation-plan.mt.001",
+      "rev": 1,
+      "difficulty": 2,
+      "format": "matching",
+      "prompt": {
+        "text": "Before I call Ben, I write a plan for listening. Match what he might want with what I would do.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "If Ben wanted some time,",
+          "right": "I would call him later."
+        },
+        {
+          "left": "If Ben asked us not to take a photo,",
+          "right": "I would keep the camera off."
+        },
+        {
+          "left": "If Ben wanted to speak,",
+          "right": "I would listen without interrupting."
+        }
+      ],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "without interrupting",
+          "de": "ohne zu unterbrechen",
+          "scope": null
+        },
+        {
+          "word": "keep the camera off",
+          "de": "die Kamera ausgeschaltet lassen",
+          "scope": null
+        },
+        {
+          "word": "plan",
+          "de": "Plan; planen",
+          "scope": null
+        },
+        {
+          "word": "might",
+          "de": "könnte",
+          "scope": null
+        },
+        {
+          "word": "later",
+          "de": "später",
+          "scope": null
+        },
+        {
+          "word": "photo",
+          "de": "Foto",
+          "scope": null
+        }
+      ],
+      "hintDe": "Ordne nach dem Inhalt: Gesprächspause, Foto oder Zuhören. Nach dem if-Satz folgt die vorgestellte Reaktion mit would.",
+      "hintEn": null,
+      "explainDe": "Want some time passt zum späteren Anrufen; take a photo zum Bild; want to speak zum Zuhören. Die Sätze üben vorgestellte Situationen und behaupten nicht, dass Ben sie schon verlangt hat.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u14.ci.live-button-evidence.cp.001",
+      "rev": 1,
+      "difficulty": 2,
+      "format": "context-picker",
+      "prompt": {
+        "text": "Ben's finger is just above the live button. What is about to happen?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He is going to start a live video.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "He started a live video yesterday.",
+        "He starts a live video every morning.",
+        "He is going to put the phone in his pocket."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "live button",
+          "de": "Knopf für die Live-Übertragung",
+          "scope": null
+        },
+        {
+          "word": "pocket",
+          "de": "Hosentasche",
+          "scope": null
+        },
+        {
+          "word": "above",
+          "de": "über",
+          "scope": null
+        },
+        {
+          "word": "start",
+          "de": "Anfang; beginne",
+          "scope": null
+        },
+        {
+          "word": "video",
+          "de": "Video",
+          "scope": null
+        },
+        {
+          "word": "started",
+          "de": "begann",
+          "scope": null
+        },
+        {
+          "word": "starts",
+          "de": "beginnt",
+          "scope": null
+        },
+        {
+          "word": "phone",
+          "de": "Handy",
+          "scope": null
+        }
+      ],
+      "hintDe": "Schau auf das, was jetzt zu sehen ist. Welche Zeile sagt die unmittelbar folgende Handlung voraus?",
+      "hintEn": null,
+      "explainDe": "Sein Finger ist schon über dem Live-Knopf. He is going to start a live video passt zu diesem sichtbaren Anzeichen. Die anderen Sätze erzählen von gestern, einer Gewohnheit oder einer anderen Handlung.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u14.ci.steady-the-phone.sb.001",
+      "rev": 1,
+      "difficulty": 2,
+      "format": "sentence-building",
+      "prompt": {
+        "text": "The phone is slipping. Build my warning from what I can see. Start with The phone: fall / going / The phone / to / is",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "The phone is going to fall.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "slipping",
+          "de": "am Rutschen",
+          "scope": null
+        },
+        {
+          "word": "warning",
+          "de": "Warnung",
+          "scope": null
+        },
+        {
+          "word": "fall",
+          "de": "herunterfallen",
+          "scope": null
+        },
+        {
+          "word": "phone",
+          "de": "Handy",
+          "scope": null
+        },
+        {
+          "word": "build",
+          "de": "baue",
+          "scope": null
+        },
+        {
+          "word": "see",
+          "de": "sehen",
+          "scope": null
+        },
+        {
+          "word": "start",
+          "de": "Anfang; beginne",
+          "scope": null
+        }
+      ],
+      "hintDe": "Bei einer Vorhersage mit sichtbarem Zeichen steht zuerst das Subjekt, dann be + going to + Grundform.",
+      "hintEn": null,
+      "explainDe": "The phone is going to fall ist eine Warnung aufgrund des rutschenden Handys. Helfen kann den Sturz verhindern; die Vorhersage muss also nicht wahr werden.",
+      "explainEn": null,
+      "strict": false
+    }
+  ],
+  "bindings": [
+    {
+      "sceneId": "g3.st.fourteen.ch02.s003",
+      "slot": "script-mc",
+      "itemId": "g3u02.ci.book-before-ship.cp.001"
+    },
+    {
+      "sceneId": "g3.st.fourteen.ch02.s004",
+      "slot": "script-gap",
+      "itemId": "g3u02.ci.reading-for-camera.gf.001"
+    },
+    {
+      "sceneId": "g3.st.fourteen.ch03.s003",
+      "slot": "script-mc",
+      "itemId": "g3u03.ci.travel-video-timing.mt.001"
+    },
+    {
+      "sceneId": "g3.st.fourteen.ch03.s004",
+      "slot": "script-gap",
+      "itemId": "g3u03.ci.travel-question.sb.001"
+    },
+    {
+      "sceneId": "g3.st.fourteen.ch04.s003",
+      "slot": "script-mc",
+      "itemId": "g3u04.ci.hard-lines-comparison.sb.001"
+    },
+    {
+      "sceneId": "g3.st.fourteen.ch04.s004",
+      "slot": "script-gap",
+      "itemId": "g3u04.ci.animal-video-opening.cp.001"
+    },
+    {
+      "sceneId": "g3.st.fourteen.ch05.s003",
+      "slot": "script-mc",
+      "itemId": "g3u05.ci.filming-conditions.mt.001"
+    },
+    {
+      "sceneId": "g3.st.fourteen.ch05.s004",
+      "slot": "script-gap",
+      "itemId": "g3u05.ci.leahs-click-plan.sb.001"
+    },
+    {
+      "sceneId": "g3.st.fourteen.ch06.s003",
+      "slot": "script-mc",
+      "itemId": "g3u06.ci.london-video-line.sb.001"
+    },
+    {
+      "sceneId": "g3.st.fourteen.ch06.s004",
+      "slot": "script-gap",
+      "itemId": "g3u06.ci.london-crew-labels.mt.001"
+    },
+    {
+      "sceneId": "g3.st.fourteen.ch07.s003",
+      "slot": "script-mc",
+      "itemId": "g3u07.ci.ask-about-friends.cp.001"
+    },
+    {
+      "sceneId": "g3.st.fourteen.ch07.s004",
+      "slot": "script-gap",
+      "itemId": "g3u07.ci.ben-since-first-video.sb.001"
+    },
+    {
+      "sceneId": "g3.st.fourteen.ch08.s003",
+      "slot": "script-mc",
+      "itemId": "g3u08.ci.channel-time-notes.gs.001"
+    },
+    {
+      "sceneId": "g3.st.fourteen.ch08.s004",
+      "slot": "script-gap",
+      "itemId": "g3u08.ci.channel-reaches-people.gf.001"
+    },
+    {
+      "sceneId": "g3.st.fourteen.ch09.s003",
+      "slot": "script-mc",
+      "itemId": "g3u09.ci.camera-permission.sb.001"
+    },
+    {
+      "sceneId": "g3.st.fourteen.ch09.s004",
+      "slot": "script-gap",
+      "itemId": "g3u09.ci.school-filming-rules.mt.001"
+    },
+    {
+      "sceneId": "g3.st.fourteen.ch10.s003",
+      "slot": "script-mc",
+      "itemId": "g3u10.ci.permission-timeline.mt.001"
+    },
+    {
+      "sceneId": "g3.st.fourteen.ch10.s004",
+      "slot": "script-gap",
+      "itemId": "g3u10.ci.ask-before-showing.sb.001"
+    },
+    {
+      "sceneId": "g3.st.fourteen.ch11.s003",
+      "slot": "script-mc",
+      "itemId": "g3u11.ci.saras-words-stay.gf.001"
+    },
+    {
+      "sceneId": "g3.st.fourteen.ch11.s004",
+      "slot": "script-gap",
+      "itemId": "g3u11.ci.recording-all-along.cp.001"
+    },
+    {
+      "sceneId": "g3.st.fourteen.ch12.s002",
+      "slot": "truth-mc",
+      "itemId": "g3u12.ci.name-our-responsibility.sb.001"
+    },
+    {
+      "sceneId": "g3.st.fourteen.ch12.s003",
+      "slot": "truth-gap",
+      "itemId": "g3u12.ci.who-did-what.gs.001"
+    },
+    {
+      "sceneId": "g3.st.fourteen.ch13.s004",
+      "slot": "regret-gap",
+      "itemId": "g3u13.ci.listen-if-he-asks.gf.001"
+    },
+    {
+      "sceneId": "g3.st.fourteen.ch13.s007",
+      "slot": "regret-mc",
+      "itemId": "g3u13.ci.private-conversation-plan.mt.001"
+    },
+    {
+      "sceneId": "g3.st.fourteen.ch14.s006",
+      "slot": "promise-mc",
+      "itemId": "g3u14.ci.live-button-evidence.cp.001"
+    },
+    {
+      "sceneId": "g3.st.fourteen.ch14.s008",
+      "slot": "promise-gap",
+      "itemId": "g3u14.ci.steady-the-phone.sb.001"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "g3.st.fourteen.ch02.s003",
+      "textEn": "Let's get the opening right. What did Leah tell us?",
+      "scaffoldDe": "Der Anfang muss stimmen. Was hat Leah uns erzählt?",
+      "glosses": [
+        {
+          "word": "opening",
+          "de": "Anfang",
+          "scope": null
+        },
+        {
+          "word": "get",
+          "de": "bekommen; get it right = richtig machen",
+          "scope": null
+        },
+        {
+          "word": "right",
+          "de": "richtig",
+          "scope": null
+        }
+      ]
+    },
+    {
+      "id": "g3.st.fourteen.ch02.s004",
+      "textEn": "Add a note about how we prepared the ship story.",
+      "scaffoldDe": "Ergänze eine Notiz dazu, wie wir die Schiffsgeschichte vorbereitet haben.",
+      "glosses": [
+        {
+          "word": "note",
+          "de": "Notiz",
+          "scope": null
+        }
+      ]
+    },
+    {
+      "id": "g3.st.fourteen.ch03.s003",
+      "textEn": "Let's plan when everyone does their part in the travel video.",
+      "scaffoldDe": "Planen wir, wann alle ihren Teil im Reisevideo übernehmen.",
+      "glosses": [
+        {
+          "word": "plan",
+          "de": "Plan; planen",
+          "scope": null
+        },
+        {
+          "word": "everyone",
+          "de": "alle",
+          "scope": null
+        },
+        {
+          "word": "part",
+          "de": "Teil",
+          "scope": null
+        },
+        {
+          "word": "video",
+          "de": "Video",
+          "scope": null
+        }
+      ]
+    },
+    {
+      "id": "g3.st.fourteen.ch03.s004",
+      "textEn": "Leo needs one short question about the long trip.",
+      "scaffoldDe": "Leo braucht eine kurze Frage zur langen Reise.",
+      "glosses": [
+        {
+          "word": "trip",
+          "de": "Reise",
+          "scope": null
+        },
+        {
+          "word": "question",
+          "de": "Frage",
+          "scope": null
+        }
+      ]
+    },
+    {
+      "id": "g3.st.fourteen.ch04.s003",
+      "textEn": "Before we record, look at what Leah has done to Ben's lines.",
+      "scaffoldDe": "Schau vor der Aufnahme, was Leah mit Bens Text gemacht hat.",
+      "glosses": [
+        {
+          "word": "lines",
+          "de": "Textzeilen",
+          "scope": null
+        },
+        {
+          "word": "record",
+          "de": "aufnehmen",
+          "scope": null
+        }
+      ]
+    },
+    {
+      "id": "g3.st.fourteen.ch04.s004",
+      "textEn": "Our animal video needs an opening that sounds right.",
+      "scaffoldDe": "Unser Tiervideo braucht einen Anfangssatz, der richtig klingt.",
+      "glosses": [
+        {
+          "word": "video",
+          "de": "Video",
+          "scope": null
+        },
+        {
+          "word": "sounds",
+          "de": "klingt",
+          "scope": null
+        },
+        {
+          "word": "right",
+          "de": "richtig",
+          "scope": null
+        }
+      ]
+    },
+    {
+      "id": "g3.st.fourteen.ch05.s003",
+      "textEn": "Even filming can go wrong. Let's have a plan.",
+      "scaffoldDe": "Auch bei einer Aufnahme kann etwas schiefgehen. Machen wir einen Plan.",
+      "glosses": [
+        {
+          "word": "even",
+          "de": "sogar",
+          "scope": null
+        },
+        {
+          "word": "filming",
+          "de": "filmen",
+          "scope": null
+        },
+        {
+          "word": "wrong",
+          "de": "falsch; go wrong = schiefgehen",
+          "scope": null
+        },
+        {
+          "word": "plan",
+          "de": "Plan; planen",
+          "scope": null
+        }
+      ]
+    },
+    {
+      "id": "g3.st.fourteen.ch05.s004",
+      "textEn": "Write down what Leah expects from Ben's mistakes.",
+      "scaffoldDe": "Schreib auf, was Leah von Bens Fehlern erwartet.",
+      "glosses": [
+        {
+          "word": "expects",
+          "de": "erwartet",
+          "scope": null
+        },
+        {
+          "word": "mistakes",
+          "de": "Fehler",
+          "scope": null
+        }
+      ]
+    },
+    {
+      "id": "g3.st.fourteen.ch06.s003",
+      "textEn": "Give our London video one clear opening line.",
+      "scaffoldDe": "Gib unserem London-Video einen klaren Anfangssatz.",
+      "glosses": [
+        {
+          "word": "opening line",
+          "de": "Anfangssatz",
+          "scope": null
+        },
+        {
+          "word": "video",
+          "de": "Video",
+          "scope": null
+        },
+        {
+          "word": "clear",
+          "de": "klar",
+          "scope": null
+        }
+      ]
+    },
+    {
+      "id": "g3.st.fourteen.ch06.s004",
+      "textEn": "Keep the people in our notes clear too.",
+      "scaffoldDe": "Auch bei den Personen in unseren Notizen soll alles klar sein.",
+      "glosses": [
+        {
+          "word": "clear",
+          "de": "klar",
+          "scope": null
+        }
+      ]
+    },
+    {
+      "id": "g3.st.fourteen.ch07.s003",
+      "textEn": "Ben wants to hear about other people’s best friends too. Help him ask.",
+      "scaffoldDe": "Ben möchte auch von den besten Freunden der anderen hören. Hilf ihm, danach zu fragen.",
+      "glosses": [
+        {
+          "word": "hear",
+          "de": "hören",
+          "scope": null
+        },
+        {
+          "word": "other",
+          "de": "andere",
+          "scope": null
+        }
+      ]
+    },
+    {
+      "id": "g3.st.fourteen.ch07.s004",
+      "textEn": "Now write how long Ben has been part of our videos.",
+      "scaffoldDe": "Schreib jetzt, seit wann Ben in unseren Videos dabei ist.",
+      "glosses": [
+        {
+          "word": "been",
+          "de": "gewesen",
+          "scope": null
+        },
+        {
+          "word": "part",
+          "de": "Teil",
+          "scope": null
+        },
+        {
+          "word": "videos",
+          "de": "Videos",
+          "scope": null
+        }
+      ]
+    },
+    {
+      "id": "g3.st.fourteen.ch08.s003",
+      "textEn": "Before we film, I look back at our channel. Help me sort these notes.",
+      "scaffoldDe": "Bevor wir filmen, schaue ich auf unseren Kanal zurück. Hilf mir, diese Notizen zu ordnen.",
+      "glosses": [
+        {
+          "word": "notes",
+          "de": "Notizen",
+          "scope": null
+        },
+        {
+          "word": "film",
+          "de": "filmen; Film",
+          "scope": null
+        },
+        {
+          "word": "channel",
+          "de": "Kanal",
+          "scope": null
+        },
+        {
+          "word": "sort",
+          "de": "ordne",
+          "scope": null
+        }
+      ]
+    },
+    {
+      "id": "g3.st.fourteen.ch08.s004",
+      "textEn": "The channel is growing. Help me write what has changed.",
+      "scaffoldDe": "Der Kanal wächst. Hilf mir aufzuschreiben, was sich verändert hat.",
+      "glosses": [
+        {
+          "word": "channel",
+          "de": "Kanal",
+          "scope": null
+        },
+        {
+          "word": "growing",
+          "de": "wächst",
+          "scope": null
+        },
+        {
+          "word": "changed",
+          "de": "verändert",
+          "scope": null
+        }
+      ]
+    },
+    {
+      "id": "g3.st.fourteen.ch09.s003",
+      "textEn": "Before we switch on the camera, there is something we need to ask Ben.",
+      "scaffoldDe": "Bevor wir die Kamera einschalten, müssen wir Ben etwas fragen.",
+      "glosses": [
+        {
+          "word": "switch",
+          "de": "schalten",
+          "scope": null
+        },
+        {
+          "word": "camera",
+          "de": "Kamera",
+          "scope": null
+        },
+        {
+          "word": "something",
+          "de": "etwas",
+          "scope": null
+        }
+      ]
+    },
+    {
+      "id": "g3.st.fourteen.ch09.s004",
+      "textEn": "I add three questions to a draft for our next video.",
+      "scaffoldDe": "Ich ergänze drei Fragen in einem Entwurf für unser nächstes Video.",
+      "glosses": [
+        {
+          "word": "draft",
+          "de": "Entwurf",
+          "scope": null
+        },
+        {
+          "word": "questions",
+          "de": "Fragen",
+          "scope": null
+        },
+        {
+          "word": "next",
+          "de": "nächste; next to = neben",
+          "scope": null
+        },
+        {
+          "word": "video",
+          "de": "Video",
+          "scope": null
+        }
+      ]
+    },
+    {
+      "id": "g3.st.fourteen.ch10.s003",
+      "textEn": "Today’s topic makes me think about our own videos. Help me sort these questions.",
+      "scaffoldDe": "Das heutige Thema lässt mich an unsere eigenen Videos denken. Hilf mir, diese Fragen zu ordnen.",
+      "glosses": [
+        {
+          "word": "topic",
+          "de": "Thema",
+          "scope": null
+        },
+        {
+          "word": "videos",
+          "de": "Videos",
+          "scope": null
+        },
+        {
+          "word": "sort",
+          "de": "ordne",
+          "scope": null
+        },
+        {
+          "word": "questions",
+          "de": "Fragen",
+          "scope": null
+        }
+      ]
+    },
+    {
+      "id": "g3.st.fourteen.ch10.s004",
+      "textEn": "I look at Ben's old lines. There is a question I did not ask.",
+      "scaffoldDe": "Ich schaue auf Bens alten Text. Eine Frage habe ich nicht gestellt.",
+      "glosses": [
+        {
+          "word": "lines",
+          "de": "Textzeilen",
+          "scope": null
+        },
+        {
+          "word": "question",
+          "de": "Frage",
+          "scope": null
+        }
+      ]
+    },
+    {
+      "id": "g3.st.fourteen.ch11.s003",
+      "textEn": "I started watching our old clips an hour ago. Another clip starts. I still cannot close the page.",
+      "scaffoldDe": "Vor einer Stunde habe ich angefangen, unsere alten Videoausschnitte anzuschauen. Noch einer beginnt. Ich schaffe es immer noch nicht, die Seite zu schließen.",
+      "glosses": [
+        {
+          "word": "clips",
+          "de": "kurze Videoausschnitte",
+          "scope": null
+        },
+        {
+          "word": "started",
+          "de": "begann",
+          "scope": null
+        },
+        {
+          "word": "hour",
+          "de": "Stunde",
+          "scope": null
+        },
+        {
+          "word": "another",
+          "de": "ein weiterer",
+          "scope": null
+        },
+        {
+          "word": "clip",
+          "de": "Videoausschnitt",
+          "scope": null
+        },
+        {
+          "word": "starts",
+          "de": "beginnt",
+          "scope": null
+        },
+        {
+          "word": "page",
+          "de": "Seite",
+          "scope": null
+        }
+      ]
+    },
+    {
+      "id": "g3.st.fourteen.ch11.s004",
+      "textEn": "I look at our old clips. It started with the first video. Help me describe what we keep doing.",
+      "scaffoldDe": "Ich schaue auf unsere alten Videoausschnitte. Es begann mit dem ersten Video. Hilf mir zu beschreiben, was wir immer wieder tun.",
+      "glosses": [
+        {
+          "word": "clips",
+          "de": "kurze Videoausschnitte",
+          "scope": null
+        },
+        {
+          "word": "started",
+          "de": "begann",
+          "scope": null
+        },
+        {
+          "word": "video",
+          "de": "Video",
+          "scope": null
+        },
+        {
+          "word": "describe",
+          "de": "beschreiben",
+          "scope": null
+        }
+      ]
+    },
+    {
+      "id": "g3.st.fourteen.ch12.s002",
+      "textEn": "Before I write anything else, I look at our old clips. We filmed Ben. I have to say that.",
+      "scaffoldDe": "Bevor ich etwas anderes schreibe, sehe ich mir unsere alten Videoausschnitte an. Wir haben Ben gefilmt. Das muss ich aussprechen.",
+      "glosses": [
+        {
+          "word": "clips",
+          "de": "kurze Videoausschnitte",
+          "scope": null
+        },
+        {
+          "word": "filmed",
+          "de": "gefilmt",
+          "scope": null
+        },
+        {
+          "word": "say",
+          "de": "sagen",
+          "scope": null
+        }
+      ]
+    },
+    {
+      "id": "g3.st.fourteen.ch12.s003",
+      "textEn": "I look at the videos and the words below them. I need to face what happened.",
+      "scaffoldDe": "Ich sehe mir die Videos und die Worte darunter an. Ich muss mich dem stellen, was passiert ist.",
+      "glosses": [
+        {
+          "word": "videos",
+          "de": "Videos",
+          "scope": null
+        },
+        {
+          "word": "words",
+          "de": "Worte",
+          "scope": null
+        },
+        {
+          "word": "face",
+          "de": "sich stellen",
+          "scope": null
+        }
+      ]
+    },
+    {
+      "id": "g3.st.fourteen.ch14.s006",
+      "textEn": "Ben’s finger is just above the live button. I look at his face. This is his choice.",
+      "scaffoldDe": "Bens Finger ist direkt über dem Knopf für die Live-Übertragung. Ich schaue in sein Gesicht. Das ist seine Entscheidung.",
+      "glosses": [
+        {
+          "word": "live button",
+          "de": "Knopf für die Live-Übertragung",
+          "scope": null
+        },
+        {
+          "word": "choice",
+          "de": "Entscheidung",
+          "scope": null
+        },
+        {
+          "word": "above",
+          "de": "über",
+          "scope": null
+        },
+        {
+          "word": "face",
+          "de": "Gesicht",
+          "scope": null
+        }
+      ]
+    },
+    {
+      "id": "g3.st.fourteen.ch14.s008",
+      "textEn": "The phone is slipping from Ben’s hand. I reach out to help.",
+      "scaffoldDe": "Das Handy rutscht aus Bens Hand. Ich strecke die Hand aus, um zu helfen.",
+      "glosses": [
+        {
+          "word": "is slipping",
+          "de": "rutscht",
+          "scope": null
+        },
+        {
+          "word": "reach out",
+          "de": "die Hand ausstrecken",
+          "scope": null
+        },
+        {
+          "word": "phone",
+          "de": "Handy",
+          "scope": null
+        },
+        {
+          "word": "hand",
+          "de": "Hand",
+          "scope": null
+        }
+      ]
+    },
+    {
+      "id": "g3.st.fourteen.ch02.s002",
+      "glosses": [
+        {
+          "word": "described",
+          "de": "beschrieb",
+          "scope": null
+        }
+      ],
+      "textEn": "A book from 1898 described a ship like the Titanic.",
+      "scaffoldDe": "Ein Buch von 1898 beschrieb ein Schiff wie die Titanic."
+    },
+    {
+      "id": "g3.st.fourteen.ch08.s008",
+      "textEn": "One comment says: this is not teaching, it is bullying.",
+      "scaffoldDe": "Ein Kommentar sagt: Das ist kein Lernen, das ist Mobbing.",
+      "glosses": [
+        {
+          "word": "comment",
+          "de": "Kommentar",
+          "scope": null
+        },
+        {
+          "word": "says",
+          "de": "sagt",
+          "scope": null
+        },
+        {
+          "word": "teaching",
+          "de": "unterrichten",
+          "scope": null
+        },
+        {
+          "word": "bullying",
+          "de": "Mobbing",
+          "scope": null
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "CODEX DRAFT — NOT CANON. Hand-authored ch02–07 overlay; source story and unit grammar read directly. Own author check only, no independent blind-check claim. Existing fix-bens-line, recap, metrics, plot reveals and final sentences remain unchanged.",
+    {
+      "itemId": "g3u02.ci.book-before-ship.cp.001",
+      "sceneEvidence": "ch02.s001–s002 and task-local filming instruction; s002 supplies 1898 / book / ship-like-Titanic; comprehension avoids unsupported historical detail. Deliberately immediate receptive fidelity check before writing an opening, not delayed recall; source distance one retained to avoid moving plot beats. No productive answer is exposed.",
+      "format": "context-picker",
+      "learningGoal": "Vergleiche Jahr, Buch und Schiff mit Leahs Information. Welche Zusammenfassung stimmt?",
+      "validVariants": [
+        "A book from 1898 described a ship like the Titanic."
+      ]
+    },
+    {
+      "itemId": "g3u02.ci.reading-for-camera.gf.001",
+      "sceneEvidence": "ch02.s001–s002 and task-local filming instruction; Task introduces a small production note, not a new historical fact or plot event; past continuous matches g3-u02. Revision: no English grammar formula; Leo’s what-were-you-doing question establishes the ongoing-past reply.",
+      "format": "gap-fill",
+      "learningGoal": "Du beschreibst, was gestern gerade ablief. Verbinde die passende Form von be mit der -ing-Form des vorgegebenen Verbs.",
+      "validVariants": [
+        "was reading"
+      ]
+    },
+    {
+      "itemId": "g3u03.ci.travel-video-timing.mt.001",
+      "sceneEvidence": "ch03.s001–s002 and task-local filming instruction; s001 travel topic / s002 long trips; task is a prospective shoot plan, not a report of unseen travel events; time-connectors g3-u03.",
+      "format": "matching",
+      "learningGoal": "before heißt vorher, while verbindet gleichzeitige Handlungen, after heißt nachher. Achte auch darauf, wer gerade spricht.",
+      "validVariants": "All listed pairs/group memberships; no alternative mapping."
+    },
+    {
+      "itemId": "g3u03.ci.travel-question.sb.001",
+      "sceneEvidence": "ch03.s001–s002 and task-local filming instruction; s002 Leo asks about long trips; it-takes / duration question g3-u03; every supplied word used once.",
+      "format": "sentence-building",
+      "learningGoal": "Beginne mit How long. Danach brauchst du das Hilfsverb, dann das Subjekt und die Grundform des Verbs.",
+      "validVariants": [
+        "How long does the trip take?"
+      ]
+    },
+    {
+      "itemId": "g3u04.ci.hard-lines-comparison.sb.001",
+      "sceneEvidence": "ch04.s001–s002 and task-local filming instruction; s002 explicitly extra hard today; comparative intensifier much + harder g3-u04; both natural word orders accepted.",
+      "format": "sentence-building",
+      "learningGoal": "Beim Vergleichen bekommt hard die Endung -er. Ein Verstärker steht direkt davor; die Zeitangabe kann am Satzende stehen.",
+      "validVariants": [
+        "Ben's lines are much harder today.",
+        "Ben's lines today are much harder."
+      ]
+    },
+    {
+      "itemId": "g3u04.ci.animal-video-opening.cp.001",
+      "sceneEvidence": "ch04.s001 dangerous-animal video; task writes its opening without inventing a specific animal fact.",
+      "format": "context-picker",
+      "learningGoal": "much + more + long adjective, g3-u04",
+      "validVariants": [
+        "Some animals are much more dangerous than they look."
+      ]
+    },
+    {
+      "itemId": "g3u05.ci.filming-conditions.mt.001",
+      "sceneEvidence": "ch05.s001–s002 and task-local filming instruction; s001 luck/unlucky theme; hypothetical filming checklist targets first-conditional without altering recording/plot; distinct causal pairs.",
+      "format": "matching",
+      "learningGoal": "Im if-Teil steht die Gegenwart. Im zweiten Teil steht will + Grundform. Ordne nach dem konkreten Problem bei der Aufnahme.",
+      "validVariants": "All listed pairs/group memberships; no alternative mapping."
+    },
+    {
+      "itemId": "g3u05.ci.leahs-click-plan.sb.001",
+      "sceneEvidence": "ch05.s002 filming mistakes is their brand; ch02.s008/ch03.s008 more mistakes more clicks. Formulates Leah’s established expectation, not a moral right/wrong choice.",
+      "format": "sentence-building",
+      "learningGoal": "first conditional g3-u05",
+      "validVariants": [
+        "If Ben makes mistakes, people will watch our video."
+      ]
+    },
+    {
+      "itemId": "g3u06.ci.london-video-line.sb.001",
+      "sceneEvidence": "ch06.s001–s002 and task-local filming instruction; s001 London episode; relative-clause structure g3-u06; supplied words fix which (that also grammatical but not in this exact word bank).",
+      "format": "sentence-building",
+      "learningGoal": "Der Zusatz beschreibt ein Ding beziehungsweise einen Ort. Setze zuerst den Hauptsatz zusammen und schließe dann den Zusatz mit which an.",
+      "validVariants": [
+        "London is the city which our video is about."
+      ]
+    },
+    {
+      "itemId": "g3u06.ci.london-crew-labels.mt.001",
+      "sceneEvidence": "ch06.s001–s002 and task-local filming instruction; ch01.s001/s004 and current ch06.s002; relative who g3-u06; only existing information, no premature Sara warning.",
+      "format": "matching",
+      "learningGoal": "Die Zusätze mit who beschreiben Personen. Wer hat den bekannten Kanal, wer ist seit Folge 1 unsicher, und wer hat gerade die Londoner Orte genannt?",
+      "validVariants": "All listed pairs/group memberships; no alternative mapping."
+    },
+    {
+      "itemId": "g3u07.ci.ask-about-friends.cp.001",
+      "sceneEvidence": "ch07.s001–s002 and task-local filming instruction; s001 friendship topic; phrases are explicitly draft options, not invented friendship dates; for/since g3-u07; real group-sort renderer checked. Revision: two production notes sort duration versus starting point; no abstract for/since bucket instruction.",
+      "format": "group-sort",
+      "learningGoal": "Unterscheide Zeitspannen von Anfangspunkten. Eine Zeitspanne sagt, wie lange etwas dauert; ein Anfangspunkt sagt, wann es begonnen hat.",
+      "validVariants": "All listed pairs/group memberships; no alternative mapping."
+    },
+    {
+      "itemId": "g3u07.ci.ben-since-first-video.sb.001",
+      "sceneEvidence": "ch07.s001–s002 and task-local filming instruction; ch01 Ben joins and records, ch07 ongoing filming; present-perfect/since g3-u07, no invented dates or friendships.",
+      "format": "sentence-building",
+      "learningGoal": "Beginne mit Ben und verwende das Present perfect: passende Form von have + dritte Verbform. Danach kommt der Anfangspunkt mit since.",
+      "validVariants": [
+        "Ben has been in our videos since the first episode."
+      ]
+    },
+    "CODEX DRAFT — NOT CANON. Hand-authored story tasks for chapters 08–14. Author self-review only; independent blind verification remains external.",
+    {
+      "itemId": "g3u08.ci.channel-time-notes.gs.001",
+      "sceneEvidence": "Existing ch01 filming evening; ch07 is previous episode; ch08.s002 states three-minute mistake segment, existing popularity. Sort temporal meaning, not moral approval.",
+      "format": "group-sort",
+      "learningGoal": "Achte auf abgeschlossene Zeitangaben und auf Veränderungen bis jetzt.",
+      "acceptedVariants": "Exact authored pair/group mapping; three distinct pairs or two groups with two members."
+    },
+    {
+      "itemId": "g3u08.ci.channel-reaches-people.gf.001",
+      "sceneEvidence": "ch08.s002 three-minute segment; productive grown with has supplied. No English grammar label and no unrestricted tense ambiguity.",
+      "format": "gap-fill",
+      "learningGoal": "Nach has brauchst du hier die dritte Verbform. Bei grow ist sie unregelmäßig.",
+      "acceptedVariants": [
+        "grown"
+      ]
+    },
+    {
+      "itemId": "g3u09.ci.camera-permission.sb.001",
+      "sceneEvidence": "ch09.s002 existing Ben tired / break request motivates real consent question; no new school rules, no invented permission granted. Five chips parse to one Are-initial question.",
+      "format": "sentence-building",
+      "learningGoal": "Eine Frage nach Erlaubnis beginnt mit einer Form von be. Danach kommen die Person und allowed to mit der Grundform.",
+      "acceptedVariants": [
+        "Are we allowed to film you?"
+      ]
+    },
+    {
+      "itemId": "g3u09.ci.school-filming-rules.mt.001",
+      "sceneEvidence": "ch09.s004 explicitly a draft for the next video; matching describes what each permission question asks, without asserting a school rule or consent. Distinct recording / publishing / music meanings.",
+      "format": "matching",
+      "learningGoal": "Ordne nach der Handlung: jemanden aufnehmen, einen Videoausschnitt teilen oder ein Lied verwenden. Die Fragen lassen die Antwort offen.",
+      "acceptedVariants": "Exact authored pair/group mapping."
+    },
+    {
+      "itemId": "g3u10.ci.permission-timeline.mt.001",
+      "sceneEvidence": "ch10.s001–002 rights topic; prior episodes show Ben’s clips. Questions avoid inventing consent; past/present/future be allowed to are unit10 structures.",
+      "format": "matching",
+      "learningGoal": "Bei allowed to trägt die Form von be die Zeit: Vergangenheit, Gegenwart oder Zukunft.",
+      "acceptedVariants": "Exact authored pair/group mapping; three distinct pairs or two groups with two members."
+    },
+    {
+      "itemId": "g3u10.ci.ask-before-showing.sb.001",
+      "sceneEvidence": "ch10.s004 replacement refers to existing old video clips without inventing a date or new event. Explicit Were opening; exact six-chip question.",
+      "format": "sentence-building",
+      "learningGoal": "Eine Frage nach vergangener Erlaubnis beginnt mit was oder were. Danach kommen die Person und allowed to mit der Grundform.",
+      "acceptedVariants": [
+        "Were we allowed to show that clip?"
+      ]
+    },
+    {
+      "itemId": "g3u11.ci.saras-words-stay.gf.001",
+      "sceneEvidence": "ch11.s003 small ongoing-viewing addition, not a repeated answer from s002. Gap asks watching; has/have agreement not tested by this single gap. Original s002 thinking line preserved.",
+      "format": "gap-fill",
+      "learningGoal": "Nach have been brauchst du bei dieser andauernden Tätigkeit die ing-Form. Die Handlung begann früher und geht noch weiter.",
+      "acceptedVariants": [
+        "watching"
+      ]
+    },
+    {
+      "itemId": "g3u11.ci.recording-all-along.cp.001",
+      "sceneEvidence": "Existing ch01 camera mistake + ensuing episode pattern. No sister/compilation spoiler; parallels final responsibility recognition without changing final sentence.",
+      "format": "context-picker",
+      "learningGoal": "Achte auf die Tätigkeit, die damals begann und noch weitergeht: have oder has + been + ing-Form.",
+      "acceptedVariants": [
+        "We have been filming his mistakes since episode 1."
+      ]
+    },
+    {
+      "itemId": "g3u12.ci.name-our-responsibility.sb.001",
+      "sceneEvidence": "Own group recorded mistakes throughout ch01–11. Does not ask Ben to perform or correct him; no upload.",
+      "format": "sentence-building",
+      "learningGoal": "Im Passiv steht das, was betroffen ist, am Anfang. Danach folgen be in der passenden Vergangenheit und die dritte Verbform. By nennt, wer es getan hat.",
+      "acceptedVariants": [
+        "His mistakes were filmed by us."
+      ]
+    },
+    {
+      "itemId": "g3u12.ci.who-did-what.gs.001",
+      "sceneEvidence": "ch01–11 existing recordings/public channel; ch11.s009 says They made compilation; ch08.s008 external bullying comment. Groups distinguish actions done by us/others for factual responsibility, not grammatical labels or moral scoring.",
+      "format": "group-sort",
+      "learningGoal": "Erinnere dich: Wer filmte für unseren Kanal? Wer machte danach ein neues Video aus unseren Ausschnitten? Eine fremde Tat macht die eigene nicht ungeschehen.",
+      "acceptedVariants": "Exact authored pair/group mapping."
+    },
+    {
+      "itemId": "g3u13.ci.listen-if-he-asks.gf.001",
+      "sceneEvidence": "ch13.s004 regret remains verbatim; imagined listening promise before s010 call. No English grammar instruction naming would; promise establishes committed hypothetical reaction.",
+      "format": "gap-fill",
+      "learningGoal": "Bei einer vorgestellten Situation steht nach if die Vergangenheitsform. Für die vorgestellte Reaktion brauchst du would und die Grundform.",
+      "acceptedVariants": [
+        "would stop",
+        "'d stop"
+      ]
+    },
+    {
+      "itemId": "g3u13.ci.private-conversation-plan.mt.001",
+      "sceneEvidence": "ch13.s007 Sara asks for real change, ch13.s010 phone call pending. Three semantically distinct hypothetical plans, no filming/upload event introduced. Original Sara line preserved.",
+      "format": "matching",
+      "learningGoal": "Ordne nach dem Inhalt: Gesprächspause, Foto oder Zuhören. Nach dem if-Satz folgt die vorgestellte Reaktion mit would.",
+      "acceptedVariants": "Exact authored pair/group mapping; three distinct pairs or two groups with two members."
+    },
+    {
+      "itemId": "g3u14.ci.live-button-evidence.cp.001",
+      "sceneEvidence": "Short added physical evidence in replacement ch14.s006; existing s009 goes live. Ben’s s005 dialogue remains verbatim. Prediction fits immediate evidence rather than intention alone. Distractors past, habit, unsupported next action.",
+      "format": "context-picker",
+      "learningGoal": "Ein sichtbares Zeichen kann eine Vorhersage begründen. Dafür brauchst du be + going to + Grundform.",
+      "acceptedVariants": [
+        "He is going to start a live video."
+      ]
+    },
+    {
+      "itemId": "g3u14.ci.steady-the-phone.sb.001",
+      "sceneEvidence": "New non-plot physical assistance replaces generic writing-Ben’s-line scene. Prediction from visible slippage; supportive practical role; preserves Ben’s s007 line and s009/s010 ending verbatim.",
+      "format": "sentence-building",
+      "learningGoal": "Bei einer Vorhersage mit sichtbarem Zeichen steht zuerst das Subjekt, dann be + going to + Grundform.",
+      "acceptedVariants": [
+        "The phone is going to fall."
+      ]
+    }
+  ],
+  "status": "CODEX DRAFT — NOT CANON",
+  "revisionNote": "Root revision after two independent blind solves: accepted alternative word orders; replaced answer-copy tasks in ch08/ch10; changed abstract sort labels to story pages and video/comment evidence; removed classroom terminology; ch02 wrote → described. Full source is the items/scenes/bindings above; original drafter notes are provenance only.",
+  "retiredDraftIds": [
+    "g3u07.ci.friendship-time-notes.gs.001",
+    "g3u08.ci.three-minute-update.gf.001"
+  ],
+  "revisedExistingItems": [
+    {
+      "id": "g3u08.ci.cruel-comment.mc.001",
+      "rev": 2,
+      "difficulty": 3,
+      "format": "multiple-choice",
+      "prompt": {
+        "text": "What does the comment say about our videos?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "It is bullying, not teaching.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "The video is boring.",
+        "Ben is great.",
+        "The music is bad."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "comment",
+          "de": "Kommentar",
+          "scope": null
+        },
+        {
+          "word": "bullying",
+          "de": "Mobbing",
+          "scope": null
+        },
+        {
+          "word": "teaching",
+          "de": "Lernen",
+          "scope": null
+        },
+        {
+          "word": "video",
+          "de": "Video",
+          "scope": null
+        },
+        {
+          "word": "music",
+          "de": "Musik",
+          "scope": null
+        },
+        {
+          "word": "say",
+          "de": "sagen",
+          "scope": null
+        },
+        {
+          "word": "videos",
+          "de": "Videos",
+          "scope": null
+        }
+      ],
+      "hintDe": "Ein Kommentar nennt es Mobbing.",
+      "hintEn": null,
+      "explainDe": "Der Kommentar sagt, es ist Mobbing, kein Lernen.",
+      "explainEn": null,
+      "strict": false
+    }
+  ]
+}

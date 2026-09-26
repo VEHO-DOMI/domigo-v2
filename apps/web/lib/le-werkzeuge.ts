@@ -22,9 +22,10 @@ export type Werkzeug = {
   titel: string;
   /**
    * Seit Fassung 3 (18.09.): fertiger Kopfzeilen-Wortlaut aus der Quelle — »Fach · Stufe — titel«,
-   * ohne Stufe nur der Titel. DomiGo zeigt ihn heute nicht (Kopfzeile Mitte = Wortmarke, vom Tor
-   * check-umbrella-tokens gehalten); das Feld steht hier, damit der Typ die Datei vollständig
-   * beschreibt und eine spätere Kopfzeilen-Karte nichts umbauen muss.
+   * seit Fassung 6 (26.09.) auch »Fach — titel«, ohne Stufe nur der Titel. DomiGo zeigt ihn heute
+   * nicht (Kopfzeile Mitte = Wortmarke, vom Tor check-umbrella-tokens gehalten); das Feld steht
+   * hier, damit der Typ die Datei vollständig beschreibt und eine spätere Kopfzeilen-Karte nichts
+   * umbauen muss.
    */
   anzeige: string;
   satz: string;

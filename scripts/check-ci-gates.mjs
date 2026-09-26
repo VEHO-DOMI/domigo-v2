@@ -123,9 +123,14 @@ const IMPORTER_WITHOUT_CI_LINE = {
   // hat ihre Platte jetzt zweimal an eine Aussenwelt verloren — erst an einen
   // Mac (R204), jetzt an einen Cutover. Eine Platte, die im Repo liegt, kann das
   // nicht noch einmal passieren. Das ist ein Architekten-Entscheid, kein
-  // Nebenbei-Bau, deshalb steht hier eine Frist und keine Loesung.
+  // Nebenbei-Bau, deshalb steht hier ein offener Punkt und keine Loesung.
+  //
+  // dach-108 (Koki-Entscheid E-8, 2026-09-19) · »Keine Werkstatt-Fristen«: die
+  // Frist 2026-10-15 ist gefallen. Die Duldung haengt jetzt an ihrer Zeile im
+  // Schulden-Register (D-1070, »offen, ohne Datum«) — faellt die Zeile oder ihr
+  // »offen«, ist der Eintrag ungedeckt und das Tor rot. Kein Tag macht es rot.
   "import-batch-as.mjs": {
-    until: "2026-10-15",
+    offen: "D-1070",
     reason: "Pruefplatte war das p1-Innen-Kit, vom Ein-Block-Cutover zurueckgezogen; vom geteilten Kit wurden 3 von 4 Blaettern von der eigenen Vorrichtung zurueckgewiesen (mass_body_a n1 1,00 % gegen 1,5-9,5 %), eine andere Platte waere ein Schwellen-Verschieben. Endet mit einer eingecheckten Fixture-Platte (Architekten-Entscheid).",
   },
 };
@@ -234,6 +239,15 @@ const selftest = process.argv.includes("--selftest");
 const TODAY = new Date().toISOString().slice(0, 10);
 
 const ciOnDisk = fs.readFileSync(CI, "utf8");
+// dach-108 · die offenen Punkte, auf die eine Duldung zeigen darf: Zeilen des
+// Schulden-Registers, die »offen« sagen.
+const DEBT = path.join(R, "docs/design/g1/paint/DEBT_REGISTER.md");
+const offenePunkte = new Set(
+  fs.readFileSync(DEBT, "utf8").split("\n")
+    .map((l) => l.match(/^\| (D-\d+) \|.*\|\s*offen\b/))
+    .filter(Boolean)
+    .map((m) => m[1]),
+);
 const pkg = JSON.parse(fs.readFileSync(PKG, "utf8"));
 const pkgScripts = pkg.scripts ?? {};
 
@@ -337,7 +351,7 @@ const scanInvoked = (ciText) => {
  * ci.yml — the real one, with one line taken out — instead of a made-up
  * configuration. P-71: tamper against the measurement, never against the config.
  */
-export const analyse = ({ ciText, gates, notAGate, selftestOnly, importers, importerWaivers, today }) => {
+export const analyse = ({ ciText, gates, notAGate, selftestOnly, importers, importerWaivers, today, offen = new Set() }) => {
   const failures = [];
   const rows = [];
   const fail = (msg) => failures.push(msg);
@@ -451,13 +465,23 @@ export const analyse = ({ ciText, gates, notAGate, selftestOnly, importers, impo
         + "IMPORTER_WITHOUT_CI_LINE eintragen");
       continue;
     }
-    if (!waiver.reason || waiver.reason.length < 20 || !waiver.until) {
-      fail(`IMPORTER_WITHOUT_CI_LINE-Eintrag fuer ${file} braucht einen echten Grund UND eine Frist`);
+    if (!waiver.reason || waiver.reason.length < 20 || (!waiver.until && !waiver.offen)) {
+      fail(`IMPORTER_WITHOUT_CI_LINE-Eintrag fuer ${file} braucht einen echten Grund UND einen offenen Punkt im Schulden-Register`);
+      continue;
+    }
+    // dach-108 · gedeckt wird durch eine offene Register-Zeile, nicht durch einen Tag.
+    if (waiver.offen !== undefined) {
+      if (!offen.has(waiver.offen)) {
+        fail(`IMPORTER_WITHOUT_CI_LINE fuer ${file} zeigt auf ${waiver.offen}, aber das Schulden-Register hat dazu `
+          + "keine offene Zeile — Zeile anhaengen oder den offenen Punkt eintragen");
+        continue;
+      }
+      rows.push(`  ○ docs/art/${file} — Selbsttest ohne CI-Zeile, offener Punkt ${waiver.offen} (ohne Datum): ${waiver.reason}`);
       continue;
     }
     if (waiver.until < today) {
       fail(`IMPORTER_WITHOUT_CI_LINE fuer ${file} ist ABGELAUFEN (bis ${waiver.until}) `
-        + "— Zeile anhaengen oder die Frist mit neuem Grund verlaengern");
+        + "— Zeile anhaengen oder einen offenen Punkt im Schulden-Register eintragen");
       continue;
     }
     rows.push(`  ○ docs/art/${file} — Selbsttest ohne CI-Zeile, befristet bis ${waiver.until}: ${waiver.reason}`);
@@ -494,6 +518,7 @@ const WELT = {
   importers: importersOnDisk,
   importerWaivers: IMPORTER_WITHOUT_CI_LINE,
   today: TODAY,
+  offen: offenePunkte,
 };
 
 if (selftest) {
@@ -552,6 +577,14 @@ if (selftest) {
       ...WELT,
       importerWaivers: { ...IMPORTER_WITHOUT_CI_LINE, "import-batch-aq12.mjs": { reason: "erfunden, damit dieser Fall ein rotes Licht zeigt", until: "2099-01-01" } },
     }), true],
+    ["dach-108: die Duldung zeigt auf keinen offenen Register-Punkt", () => analyse({
+      ...WELT, offen: new Set(),
+    }), true],
+    ["dach-108: die Uhr auf 2099-12-31 — der echte Stand bleibt grün (kein Tag macht dieses Tor rot)", () => {
+      // Derselbe echte Stand, die Uhr weit hinter jeder alten Frist: bleibt gruen,
+      // weil keine Duldung mehr an einem Tag haengt. (Erwartet: GRUEN.)
+      return analyse({ ...WELT, today: "2099-12-31" });
+    }, false],
     ["abgelaufene Importeur-Ausnahme", () => analyse({
       ...WELT,
       importerWaivers: { "import-batch-as.mjs": { reason: "erfunden, damit dieser Fall ein rotes Licht zeigt", until: "2000-01-01" } },
