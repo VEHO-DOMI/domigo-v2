@@ -104,6 +104,7 @@ jobs:
       - run: node --experimental-strip-types scripts/check-g3-economy.mjs # welle-049/G12: jede Zuschauerzahl in FOURTEEN kommt aus economy.json — Kurve wie geurteilt, Likes ≤ Views, Upload-Schirm = Tabelle, keine Zahl in der Prosa
       - run: node --experimental-strip-types scripts/check-g3-comments.mjs --selftest # welle-053: vier echte Defekte muessen rot werden (Meta-Wort · erfundene Handlung einer Figur · erfundenes Zitat · unsichtbare Bank) und der echte Stand gruen bleiben
       - run: node --experimental-strip-types scripts/check-g3-comments.mjs # welle-053/GG: kein Kommentar unter einem FOURTEEN-Video behauptet etwas, das keine Szenenzeile zeigt
+      - run: node scripts/story/apply-g3-feedback.mjs --check # welle-070/Y3-A: FOURTEEN-Aufgaben und Szenenbindungen stimmen mit der handverfassten Quelle überein
       - run: node --experimental-strip-types scripts/check-paint-copy.mjs --selftest # W6/D-454: sechs echte Defekte müssen rot werden (Umhang · Zitat · Register · zurückgezogene Wendung · Grounding eines Beispiels · ein Streifer, der die Kopie frisst) und der echte Stand grün bleiben
       - run: node --experimental-strip-types scripts/check-paint-copy.mjs # C1: Umhang-, Register- und Zitat-Gesetz über der Schalen-Kopie
       - run: node scripts/check-copy-register.mjs --selftest # C2: das rote Licht des Register-Tors muss erreichbar sein
