@@ -52,6 +52,10 @@ export default auth((req) => {
 });
 
 // Everything else (the public landing, /signin, the /api/auth handlers) is unguarded.
+// welle-076: "/play/:grade" (one segment — the four years the landing page links
+// to) so a signed-out child goes to /signin WITH `from`, and comes back to that year
+// (lib/konto/callback.ts decides which `from` counts). Deeper /play paths still
+// redirect on their own, as before.
 export const config = {
-  matcher: ["/home", "/practice", "/practice/:path*", "/review", "/review/:path*", "/learn", "/learn/:path*", "/listening", "/listening/:path*", "/tests", "/tests/:path*", "/assignments", "/assignments/:path*", "/admin", "/admin/:path*"],
+  matcher: ["/home", "/play/:grade", "/practice", "/practice/:path*", "/review", "/review/:path*", "/learn", "/learn/:path*", "/listening", "/listening/:path*", "/tests", "/tests/:path*", "/assignments", "/assignments/:path*", "/admin", "/admin/:path*"],
 };
