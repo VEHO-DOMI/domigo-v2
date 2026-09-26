@@ -51,10 +51,10 @@ const SELF = "scripts/check-umbrella-tokens.mjs";
 // ── Die Pins ────────────────────────────────────────────────────────────────
 // Quelle: CODEX-ABLAGE-MARKE/tokens/tokens.json, Fassung 2026-09-18 (S2). Dieselben zwei
 // Werte stehen in jeder Lauter-Einser-App (Gestaltungsregel §6 Zusatz 2).
-// le-werkzeuge.json: Bereichs-Liste Fassung 5 (21.09., marke-038: eng-os heißt DomiLingo,
-// pup heißt LautGedacht, der pup-Untertitel ist sachlich; 4127 B).
+// le-werkzeuge.json: Bereichs-Liste Fassung 6 (26.09., dach-137: pup zeigt »Psychologie und
+// Philosophie — LautGedacht«, ohne Stufe; 4138 B). Davor 83194a51… = Fassung 5 (marke-038).
 const SHA256_LE_TOKENS = "993eff17957e302356067bab76fa592717c76c69a3673be0f44841ea7d9fdf2a";
-const SHA256_LE_WERKZEUGE = "83194a51003c0bb1dbd34376e88cfd82c47ef472682e30e0b8795c5569a5b63b";
+const SHA256_LE_WERKZEUGE = "bb96e3828e17c1fdeffc3902b2be2b094c1a9bb85798b58bf70b73a209ca4dc6";
 
 // Alte Bereichsnamen (marke-038). ⚠ »Finale« ist in diesem Repo überwiegend ein SPIELWORT — die
 // letzte Karte eines Kapitels (isFinale, answerFinale, postponedFinale, »Finale-Karte«).
