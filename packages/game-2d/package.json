@@ -11,7 +11,10 @@
     "./boss": "./src/boss.ts",
     "./dialogue": "./src/dialogue.tsx",
     "./cutscene": "./src/cutscene.tsx",
-    "./fullscreen": "./src/fullscreen.ts"
+    "./fullscreen": "./src/fullscreen.ts",
+    "./school": "./src/school.ts",
+    "./school-types": "./src/school-types.ts",
+    "./SchoolGame": "./src/SchoolGame.tsx"
   },
   "scripts": {
     "typecheck": "tsc --noEmit",
