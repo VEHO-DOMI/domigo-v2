@@ -51,5 +51,8 @@ export async function GET(req: NextRequest) {
   // just wrote into the request-scoped store has to ride along, or the browser
   // is redirected while still signed out (the same trap as
   // /api/ops/session-link).
-  return NextResponse.redirect(new URL(zielNachRueckkehr(true), req.nextUrl.origin), RUECKKEHR_STATUS);
+  // welle-076: `from` (set by /signin) may send a child straight to their year —
+  // but only a path on the list in lib/konto/callback.ts; anything else is /home.
+  const from = req.nextUrl.searchParams.get("from");
+  return NextResponse.redirect(new URL(zielNachRueckkehr(true, from), req.nextUrl.origin), RUECKKEHR_STATUS);
 }
