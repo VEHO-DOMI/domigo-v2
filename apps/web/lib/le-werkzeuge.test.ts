@@ -9,7 +9,7 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { CALLBACK_PFAD } from "./konto/basis.ts";
-import { EIGENES_WERKZEUG, istSprung, kategorieLabel, MENUE_TITEL, werkzeugeFuer } from "./le-werkzeuge.ts";
+import { EIGENES_WERKZEUG, istSprung, MENUE_TITEL, werkzeugeFuer, zeileUeberDemNamen } from "./le-werkzeuge.ts";
 
 const ids = (rolle: "student" | "teacher" | null) => werkzeugeFuer(rolle).map((w) => w.id).join(",");
 
@@ -44,10 +44,20 @@ describe("Eintragsregeln", () => {
       if (w.stand !== "live") assert.equal(istSprung(w), false, `${w.id} (${w.stand}) darf kein Link sein`);
     }
   });
-  it("Kategorie-Label: »Fach · Stufe«, bei leerer Stufe nur das Fach", () => {
-    const byId = Object.fromEntries(werkzeugeFuer("teacher").map((w) => [w.id, w]));
-    assert.equal(kategorieLabel(byId["eng-us"]), "Englisch · Unterstufe");
-    assert.equal(kategorieLabel(byId["veho"]), "Lehrkräfte");
+  it("Zeile über dem Namen aus »anzeige« (Fassung 6, dach-140) — ohne Fach keine Zeile", () => {
+    const zeilen = Object.fromEntries(werkzeugeFuer("teacher").map((w) => [w.id, zeileUeberDemNamen(w)]));
+    assert.deepEqual(zeilen, {
+      "eng-us": "Englisch · Unterstufe",
+      "eng-os": "Englisch · Oberstufe",
+      pup: "Psychologie und Philosophie",
+      veho: "",
+      konto: "",
+    });
+  });
+  it("für LautGedacht (pup) erscheint keine Stufe (Kokis Entscheid pup-016a)", () => {
+    const pup = werkzeugeFuer("student").find((w) => w.id === "pup");
+    assert.ok(pup, "pup fehlt in der Werkzeug-Liste");
+    assert.doesNotMatch(zeileUeberDemNamen(pup), /Oberstufe|Unterstufe/);
   });
 });
 
