@@ -21,12 +21,13 @@
  * letzter Eintrag in dieses Menü (le-nur-schmal); breit steht er daneben (BrandHeader).
  */
 import { useEffect, useId, useRef, useState } from "react";
-import { EIGENES_WERKZEUG, istSprung, kategorieLabel, MENUE_TITEL, type Werkzeug } from "@/lib/le-werkzeuge";
+import { EIGENES_WERKZEUG, istSprung, MENUE_TITEL, zeileUeberDemNamen, type Werkzeug } from "@/lib/le-werkzeuge";
 
 function EintragInhalt({ w }: { w: Werkzeug }) {
+  const zeile = zeileUeberDemNamen(w);
   return (
     <>
-      <span className="le-switcher-cat">{kategorieLabel(w)}</span>
+      {zeile && <span className="le-switcher-cat">{zeile}</span>}
       <span className="le-switcher-title">{w.titel}</span>
       <span className="le-switcher-satz">{w.satz}</span>
       {w.stand !== "live" && <span className="le-state">{w.stand}</span>}
