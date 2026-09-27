@@ -24,6 +24,8 @@ export interface RecordAttemptInput {
   hintUsed?: boolean;
   context?: unknown;
   clientAttemptId: string;
+  /** Story-only grammar needs its original scene and cannot render in unit review. */
+  reviewContext?: "unit" | "story";
 }
 
 export interface RecordAttemptResult {
@@ -69,8 +71,9 @@ export async function recordAttempt(db: Db, classScope: ClassScope, a: RecordAtt
   let streak = 0;
   if (!duplicate) {
     // Listening items can't be re-rendered in /review (they need their audio), so they
-    // earn XP + streak but never enter the Leitner queue. vocab/grammar always queue.
-    if (a.kind === "vocab" || a.kind === "grammar") {
+    // earn XP + streak but never enter the Leitner queue. Story grammar also
+    // needs its scene; only ordinary unit vocab/grammar enters unit review.
+    if ((a.kind === "vocab" || a.kind === "grammar") && a.reviewContext !== "story") {
       const ref: ReviewRef = { itemId: a.itemId, kind: a.kind, unitSlug: a.unitSlug, grade: a.grade };
       await updateReviewQueue(db, a.userId, ref, a.tier);
     }
@@ -181,4 +184,3 @@ export async function recordWritingSubmission(db: Db, classScope: ClassScope, w:
     wordCount: w.wordCount,
   });
 }
-

@@ -55,6 +55,7 @@ export default async function HubPage({ params }: { params: Promise<{ grade: str
   // the Keen story-mode preview is teacher-only until the year-1 release —
   // this card is its ONLY navigation entry (students never see it)
   const teacher = grade === 1 ? await getTeacherForPage() : null;
+  const schoolTeacher = grade === 2 ? await getTeacherForPage() : null;
 
   // One released story per grade, derived from the corpus (no stale hand-maintained
   // maps). Non-prod: DEV_STORY_G<grade> previews an unreleased bundle (story-dev.ts).
@@ -222,6 +223,7 @@ export default async function HubPage({ params }: { params: Promise<{ grade: str
         <a href="/home" style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← Home</a>
       </div>
       <p style={{ color: "var(--text-secondary)", marginTop: 0 }}>{tagline}</p>
+      {schoolTeacher && <Link href="/play/2/school" className="dg-btn" style={{ display: "block", marginBottom: 20 }}>Lehrer-Vorschau · Der Tintengeist geht zur Schule</Link>}
       {hubArt?.cover && <img src={hubArt.cover} alt="" style={{ display: "block", width: "100%", height: 180, objectFit: "cover", borderRadius: 16, margin: "4px 0 8px", border: "1px solid var(--card-border)" }} />}
 
       {(() => {

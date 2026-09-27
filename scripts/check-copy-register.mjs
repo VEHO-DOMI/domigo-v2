@@ -16,12 +16,14 @@
 // Run: node scripts/check-copy-register.mjs            (exit 1 on any violation)
 //      node scripts/check-copy-register.mjs --selftest (proves the red light works)
 //
-// ── THE THREE SURFACES ───────────────────────────────────────────────────────
+// ── THE FOUR SURFACES ────────────────────────────────────────────────────────
 // Exactly the places a child reads German, and nothing else:
 //   1. the cards      — ch01.tasks.v2.json: showsDe · storyDe · colourAskDe · hints
 //   2. the level      — ch01.level.json: name · goalDe · whyDe · hintsDe ·
 //                       captiveDe · topicDe · merksatzDe · erklaerungDe
-//   3. the shell      — packages/game-paint/src/**/*.ts(x), comments stripped
+//   3. the shells     — packages/{game-paint,game-2d}/src/**/*.ts(x), comments stripped
+//   4. storyBattery@1 — every JSON below content/corpus/stories, German fields
+//                       (…De · de · speaker · text with lang=de), recursively
 //
 // The CORPUS (content/corpus/units/**) is deliberately OUT. There the wordbank
 // carries the translation gloss (pencil case → Federmäppchen) and that belongs
@@ -45,6 +47,7 @@
 // anyone can ask which rules have ever caught anything.
 
 import fs from "node:fs";
+import os from "node:os";
 import path from "node:path";
 
 import { paintChapters, skipLedger } from "./paint-chapters.mjs";
@@ -57,7 +60,8 @@ const LEXICON = "scripts/lexikon-at.json";
 // Register-Gesetz gilt jeder deutschen Zeile, die ein Kind liest — und ein
 // Kapitel im Entwurf schreibt seine Zeilen JETZT, nicht erst zur Freigabe.
 // Deshalb laufen Entwürfe hier voll mit; ausgelassen wird nur, was fehlt.
-const SHELL_ROOT = "packages/game-paint/src";
+const SHELL_ROOTS = ["packages/game-paint/src", "packages/game-2d/src"];
+const STORY_ROOT = "content/corpus/stories";
 const selftest = process.argv.includes("--selftest");
 
 let failures = 0;
@@ -146,6 +150,142 @@ export function registerFailures(text, field) {
   return out;
 }
 
+// Discovery and field selection are shared by the real gate and the disk
+// selftests. Testing registerFailures alone cannot catch a missing directory,
+// a hard-coded chapter name or a forgotten battery field (welle-044 · A3).
+function* filesBelow(dir, accepts) {
+  for (const e of fs.readdirSync(dir, { withFileTypes: true }).sort((a, b) => a.name.localeCompare(b.name))) {
+    const full = path.join(dir, e.name);
+    if (e.isDirectory()) yield* filesBelow(full, accepts);
+    else if (e.isFile() && accepts(e.name)) yield full;
+  }
+}
+
+function scanShells(root, report) {
+  return SHELL_ROOTS.map((rel) => {
+    let files = 0;
+    let lines = 0;
+    for (const file of filesBelow(path.join(root, rel), (name) => /\.tsx?$/.test(name) && !/\.test\.tsx?$/.test(name))) {
+      files++;
+      codeOnly(fs.readFileSync(file, "utf8")).forEach((line, i) => {
+        if (line.trim().length === 0) return;
+        lines++;
+        for (const e of registerFailures(line, "shell")) report(`${path.relative(root, file)}:${i + 1}`, `${e.detail} — ${line.trim()}`);
+      });
+    }
+    return { root: rel, files, lines };
+  });
+}
+
+function* batteryLines(node, at = "", field = "") {
+  if (typeof node === "string") {
+    if (field === "de" || field === "speaker" || field.endsWith("De")) yield [at, field, node];
+    return;
+  }
+  if (Array.isArray(node)) {
+    for (const [i, value] of node.entries()) yield* batteryLines(value, `${at}[${i}]`, field);
+  } else if (node !== null && typeof node === "object") {
+    for (const [key, value] of Object.entries(node)) {
+      const next = at === "" ? key : `${at}.${key}`;
+      // Grammar prompts can be German without a De-suffixed property.
+      if (key === "text" && node.lang === "de" && typeof value === "string") yield [next, "de", value];
+      else yield* batteryLines(value, next, key);
+    }
+  }
+}
+
+function scanStoryBatteries(root, report) {
+  const scanned = [];
+  // Schema selects the battery, never a year, story, chapter or filename.
+  // Unlike paintChapters, this does not require a matching level file.
+  for (const file of filesBelow(path.join(root, STORY_ROOT), (name) => name.endsWith(".json"))) {
+    const battery = JSON.parse(fs.readFileSync(file, "utf8"));
+    if (battery?.schema !== "storyBattery@1") continue;
+    const rel = path.relative(root, file);
+    let lines = 0;
+    for (const [at, field, text] of batteryLines(battery)) {
+      lines++;
+      for (const e of registerFailures(text, field)) report(`${rel} ${at}`, `${e.detail} — „${text}"`);
+    }
+    if (lines === 0) report(rel, "VACUITY: storyBattery@1 has no German lines — the battery walk missed its fields");
+    scanned.push({ file: rel, lines });
+  }
+  return scanned;
+}
+
+function discoverySelftests() {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), "copy-register-"));
+  const cases = [];
+  const write = (rel, value) => {
+    const file = path.join(root, rel);
+    fs.mkdirSync(path.dirname(file), { recursive: true });
+    fs.writeFileSync(file, value);
+  };
+  const run = () => {
+    const hits = [];
+    const report = (where, detail) => hits.push({ where, detail });
+    return { shells: scanShells(root, report), batteries: scanStoryBatteries(root, report), hits };
+  };
+  const check = (name, ok) => cases.push([name, run(), ok]);
+  const batteryPath = `${STORY_ROOT}/g2.st.fixture/ch01.tasks.v2.json`;
+  const green = {
+    schema: "storyBattery@1", titleDe: "Die Füllfeder",
+    scenes: [{ lines: [{ speaker: "Merle", de: "Die Füllfeder", en: "Füller" }] }],
+    cards: [{ placeDe: "Die Füllfeder", situationDe: "Die Füllfeder",
+      before: [{ speaker: "Merle", de: "Die Füllfeder" }], after: [{ speaker: "Merle", de: "Die Füllfeder" }],
+      item: { hintDe: "Die Füllfeder", explainDe: "Die Füllfeder", gloss: [{ word: "pen", de: "Füllfeder" }],
+        prompt: { text: "Die Füllfeder", lang: "de" }, provenance: { note: "Füller" } } }],
+    hintsDe: ["Die Füllfeder"], future: { futureDe: "Die Füllfeder" },
+  };
+  try {
+    for (const rel of SHELL_ROOTS) write(`${rel}/nested/Copy.tsx`, 'export const copy = "Die Füllfeder"; // Füller\n');
+    write("packages/game-2d/src/Copy.test.tsx", 'const fixture = "Füller";\n');
+    write(`${STORY_ROOT}/g2.st.fixture/other.json`, JSON.stringify({ schema: "other@1", titleDe: "Füller" }));
+    // Same forbidden vocabulary in the teaching corpus remains outside scope.
+    write("content/corpus/units/g2-u01/wordbank.json", JSON.stringify({ de: "Füller" }));
+    write(batteryPath, JSON.stringify(green));
+    check("DISCOVERY · positive controls cover both shells and every German battery field", (got) =>
+      got.hits.length === 0 && got.shells.length === 2 && got.shells.every((s) => s.files === 1 && s.lines === 1)
+      && got.batteries.length === 1 && got.batteries[0].lines === 15);
+    for (const rel of SHELL_ROOTS) {
+      for (const ext of ["ts", "tsx"]) {
+        const file = `${rel}/nested/Forbidden.${ext}`;
+        write(file, 'export const copy = "Füller";\n');
+        check(`DISCOVERY · forbidden word in ${file}`, (got) => got.hits.length === 1 && got.hits[0].where === `${file}:1` && got.hits[0].detail.includes("Füllfeder"));
+        fs.unlinkSync(path.join(root, file));
+      }
+    }
+    // Independent list: removing a production selector must make its test red.
+    const fields = [
+      ["titleDe"], ["scenes", 0, "lines", 0, "speaker"], ["scenes", 0, "lines", 0, "de"],
+      ["cards", 0, "placeDe"], ["cards", 0, "situationDe"],
+      ["cards", 0, "before", 0, "speaker"], ["cards", 0, "before", 0, "de"],
+      ["cards", 0, "after", 0, "speaker"], ["cards", 0, "after", 0, "de"],
+      ["cards", 0, "item", "hintDe"], ["cards", 0, "item", "explainDe"],
+      ["cards", 0, "item", "gloss", 0, "de"], ["cards", 0, "item", "prompt", "text"],
+      ["hintsDe", 0], ["future", "futureDe"],
+    ];
+    for (const keys of fields) {
+      const altered = structuredClone(green);
+      keys.slice(0, -1).reduce((node, key) => node[key], altered)[keys.at(-1)] = "Füller";
+      write(batteryPath, JSON.stringify(altered));
+      const field = keys.reduce((at, key) => typeof key === "number" ? `${at}[${key}]` : `${at}${at ? "." : ""}${key}`, "");
+      check(`DISCOVERY · forbidden word in battery ${field}`, (got) => got.hits.length === 1 && got.hits[0].where === `${batteryPath} ${field}` && got.hits[0].detail.includes("Füllfeder"));
+    }
+    write(batteryPath, JSON.stringify(green));
+    const otherPath = `${STORY_ROOT}/g3.st.another/nested/next-battery.json`;
+    write(otherPath, JSON.stringify({ schema: "storyBattery@1", titleDe: "Füller" }));
+    check("DISCOVERY · another year, nested directory and arbitrary JSON filename", (got) =>
+      got.batteries.length === 2 && got.hits.length === 1 && got.hits[0].where === `${otherPath} titleDe`);
+    write(otherPath, JSON.stringify({ schema: "storyBattery@1", cards: [] }));
+    check("VACUITY · an empty battery is an error even beside a populated battery", (got) =>
+      got.hits.length === 1 && got.hits[0].where === otherPath && got.hits[0].detail.includes("VACUITY"));
+    return cases;
+  } finally {
+    fs.rmSync(root, { recursive: true, force: true });
+  }
+}
+
 // ── the coupling to K2's prose ───────────────────────────────────────────────
 // The JSON mirrors LEXIKON_AT.md. A mirror nobody compares is two documents.
 const PROSE = lex.prosaQuelle;
@@ -218,6 +358,7 @@ if (selftest) {
     ["VACUITY · der Stripper behält eine sichtbare Zeile",
       codeOnly('const s = "Los geht\'s!"; // Der Füller').join("\n"),
       (s) => s.includes("Los geht") && !s.includes("Der Füller")],
+    ...discoverySelftests(),
   ];
 
   let bad = 0;
@@ -284,35 +425,26 @@ for (const cx of CHAPTERS) {
   }
 }
 
-// ── 3 · the shell ────────────────────────────────────────────────────────────
-const shellFiles = [];
-const walk = (dir) => {
-  for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
-    const full = path.join(dir, e.name);
-    if (e.isDirectory()) walk(full);
-    else if (/\.tsx?$/.test(e.name) && !/\.test\.tsx?$/.test(e.name)) shellFiles.push(full);
-  }
-};
-walk(SHELL_ROOT);
-let shellLines = 0;
-for (const file of shellFiles) {
-  const lines = codeOnly(fs.readFileSync(file, "utf8"));
-  lines.forEach((line, i) => {
-    if (line.trim().length === 0) return;
-    shellLines++;
-    for (const e of registerFailures(line, "shell")) fail(`${file}:${i + 1}`, `${e.detail} — ${line.trim()}`);
-  });
-}
+// ── 3 · the shells ───────────────────────────────────────────────────────────
+const shells = scanShells(R, fail);
+const shellLines = shells.reduce((n, s) => n + s.lines, 0);
+// ── 4 · the story batteries ──────────────────────────────────────────────────
+const batteries = scanStoryBatteries(R, fail);
+const batteryLinesScanned = batteries.reduce((n, b) => n + b.lines, 0);
 
 // ── VACUITY — the gate proves it still sees ──────────────────────────────────
-// Each of the three walks can silently find nothing: a renamed field, a moved
+// Each walk can silently find nothing: a renamed field, a moved
 // file, a lexicon that failed to parse into an empty list. Every one of those
 // reads as a green gate.
 if (entries.length === 0) fail("VACUITY", `${LEXICON} carries no entries — every lexicon rule is asleep`);
 if (patterns.length === 0) fail("VACUITY", `${LEXICON} carries no patterns — the epithet and simile rules are asleep`);
 if (cardLines < 100) fail("VACUITY", `only ${cardLines} German card lines were scanned — the card walk missed the fields`);
 if (levelLines < 4) fail("VACUITY", `only ${levelLines} German level lines were scanned — the level walk missed the fields`);
-if (shellLines < 500) fail("VACUITY", `only ${shellLines} shell lines survived the stripper — that is not a comment strip, that is a hole`);
+for (const shell of shells) {
+  const minimum = shell.root === "packages/game-paint/src" ? 500 : 1;
+  if (shell.lines < minimum) fail("VACUITY", `only ${shell.lines} shell lines survived in ${shell.root} — the shell walk missed its input`);
+}
+if (batteries.length === 0) fail("VACUITY", `no storyBattery@1 file found below ${STORY_ROOT} — the battery walk missed its input`);
 // …and the laws must be able to REFUTE, not only to confirm. A matcher that
 // matched nothing at all would report a clean repo forever.
 if (registerFailures("Der Füller steht grau da", "showsDe").length === 0) {
@@ -320,8 +452,10 @@ if (registerFailures("Der Füller steht grau da", "showsDe").length === 0) {
 }
 
 console.log(`  ${proseState}`);
+for (const shell of shells) console.log(`  ${shell.root}: ${shell.files} files, ${shell.lines} shell lines`);
+for (const battery of batteries) console.log(`  ${battery.file}: ${battery.lines} German battery lines`);
 if (failures > 0) {
-  console.error(`\ncheck-copy-register: ${failures} violation(s) over ${cardLines} card lines · ${levelLines} level lines · ${shellLines} shell lines`);
+  console.error(`\ncheck-copy-register: ${failures} violation(s) over ${cardLines} card lines · ${levelLines} level lines · ${shellLines} shell lines · ${batteryLinesScanned} battery lines`);
 }
 // ★ L0 · DER SKIP-BERICHT STEHT VOR DEM URTEIL, NICHT DANACH.
 // Ein blinder Leser fand ihn hinter `process.exit(1)`: im ROTEN Lauf wurde er
@@ -330,4 +464,4 @@ if (failures > 0) {
 // war selbst still, sobald es darauf ankam.
 ledger.print();
 if (failures > 0) process.exit(1);
-console.log(`check-copy-register: OK — ${CHAPTERS.length} Kapitel: ${cardLines} card lines, ${levelLines} level lines and ${shellLines} shell lines are all in the Austrian register (${entries.length} Begriffe, ${patterns.length} Muster)`);
+console.log(`check-copy-register: OK — ${CHAPTERS.length} Kapitel: ${cardLines} card lines, ${levelLines} level lines, ${shellLines} shell lines and ${batteryLinesScanned} battery lines (${batteries.length} batteries) are all in the Austrian register (${entries.length} Begriffe, ${patterns.length} Muster)`);
