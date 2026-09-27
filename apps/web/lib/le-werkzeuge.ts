@@ -22,10 +22,8 @@ export type Werkzeug = {
   titel: string;
   /**
    * Seit Fassung 3 (18.09.): fertiger Kopfzeilen-Wortlaut aus der Quelle — »Fach · Stufe — titel«,
-   * seit Fassung 6 (26.09.) auch »Fach — titel«, ohne Stufe nur der Titel. DomiGo zeigt ihn heute
-   * nicht (Kopfzeile Mitte = Wortmarke, vom Tor check-umbrella-tokens gehalten); das Feld steht
-   * hier, damit der Typ die Datei vollständig beschreibt und eine spätere Kopfzeilen-Karte nichts
-   * umbauen muss.
+   * seit Fassung 6 (26.09.) auch »Fach — titel«, ohne Fach nur der Titel. Der Wechsler liest daraus
+   * die Zeile über dem Namen (zeileUeberDemNamen); die Kopfzeile Mitte bleibt die Wortmarke.
    */
   anzeige: string;
   satz: string;
@@ -64,7 +62,13 @@ export function istSprung(w: Werkzeug): boolean {
   return w.stand === "live" && w.id !== EIGENES_WERKZEUG;
 }
 
-/** »Fach · Stufe«, oder nur das Fach, wenn die Stufe leer ist. */
-export function kategorieLabel(w: Werkzeug): string {
-  return w.kategorie.stufe ? `${w.kategorie.fach} · ${w.kategorie.stufe}` : w.kategorie.fach;
+/**
+ * dach-140 · Die Zeile über dem Namen im Wechsler — nur aus »anzeige«, nie aus »kategorie« gebaut
+ * (Kokis Dach-Entscheid pup-016a: die Quelle entscheidet, wo eine Stufe steht). »anzeige« endet auf
+ * » — titel«; was davor steht, ist die Zeile. Ist »anzeige« nur der Titel, gibt es keine Zeile ("").
+ * Dieselbe Regel wie wortmarkeTeilen in srdp-practice (components/le/MarkenZone.tsx).
+ */
+export function zeileUeberDemNamen(w: Werkzeug): string {
+  const schluss = ` — ${w.titel}`;
+  return w.titel && w.anzeige.endsWith(schluss) ? w.anzeige.slice(0, w.anzeige.length - schluss.length) : "";
 }
