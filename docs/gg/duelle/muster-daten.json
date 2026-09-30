@@ -1,0 +1,72 @@
+{
+  "state": "GEPLANT · CODEX DRAFT — NOT CANON",
+  "sourceHead": "269ee986ccdc1ae7c3b070cbed7014f20e532365",
+  "sourcePath": "content/corpus/stories/g1.st.lost-pages/paint/ch01.tasks.v2.json",
+  "sourceMd5": "879ee7cfc187b8f64aa9968383ffc8e5",
+  "items": [
+    {
+      "id": "g1.paint.ch01.enc.pencil.k1",
+      "use": "encounter",
+      "kind": "choice",
+      "form": "command",
+      "exercises": [
+        "g1u01.w.to-listen",
+        "g1u01.s.imperatives"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Der Bleistift kritzelt einfach weiter.",
+        "art": "pencil_act"
+      },
+      "storyDe": "Sag ihm auf Englisch, dass er zuhören soll.",
+      "options": [
+        "Listen!",
+        "Look!",
+        "Come on!"
+      ],
+      "answer": "Listen!",
+      "skins": [
+        "pencil"
+      ],
+      "phases": [
+        "p1"
+      ],
+      "hints": {
+        "deDesc": "Er soll dir zuhören.",
+        "deWord": "Hör zu!"
+      }
+    },
+    {
+      "id": "g1.paint.ch01.enc.pencil.k2",
+      "use": "encounter",
+      "kind": "choice",
+      "form": "command",
+      "exercises": [
+        "g1u01.w.to-sit-down",
+        "g1u01.s.imperatives"
+      ],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Der Bleistift rennt auf dich zu.",
+        "art": "pencil_run"
+      },
+      "storyDe": "Sag ihm auf Englisch, dass er sich setzen soll.",
+      "options": [
+        "Sit down!",
+        "Stand up!",
+        "Come on!"
+      ],
+      "answer": "Sit down!",
+      "skins": [
+        "pencil"
+      ],
+      "phases": [
+        "p1"
+      ],
+      "hints": {
+        "deDesc": "Er soll sich hinsetzen.",
+        "deWord": "Setz dich!"
+      }
+    }
+  ]
+}
