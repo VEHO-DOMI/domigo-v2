@@ -1,0 +1,82 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "authority": "X014 / cgo-025 Nachtrag9",
+  "inventoryResponsibility": "cgo-025: übergreifende Herkunft, historische geprüfte Merkmale, Varianten, Lernstandplanung und konkrete Implementationslücken. Katalog ist Suchhilfe, kein Ersatz für Originalprüfung.",
+  "architectures": [
+    {
+      "card": "cgo-033",
+      "grade": 1,
+      "title": "Jahrgangsarchitekt 1: Bücher, Unterrichtsmaterialien und Checkups vollständig in einen eigenen Bauplan übersetzen",
+      "scope": "Dein Jahrgangsschwerpunkt: Der Anfängerweg braucht eine eigene begründete Folge deutscher Orientierung und eingeführter englischer Redemittel. Die ganze Buchfolge prüfen, nicht nur die 18 bereits vom GG gesehenen Seiten. Das konkrete032-Muster ist ein überprüfbarer Kandidat, kein Vorbild mit allgemeiner Freigabe; dessen technische Arbeit nicht duplizieren. Die Befreiungs-/Buch-/Storypläne008/010/014/015/016 anhand ihrer Quellen erhalten und fachlich einsortieren. Checkups müssen einfachen Lernzuwachs nach tatsächlich eingeführtem Stoff prüfen und dürfen den Vokabellernstand nicht aus bloßem Wiedererkennen ableiten.",
+      "documentFence": "docs/gg/jahrgang-01/**",
+      "cardTextSha256": "2dc5ce7114f5dbdd1a0b67b7fe01b96096b21d0217ef69dadfe91c9646069338",
+      "sourceReviewByInventory": "Auftragsumfang, Zuständigkeit und Quellenwurzeln gelesen; Unterrichtsoriginale werden vom jeweiligen Architekten selbst gelesen und angesehen.",
+      "acceptance": "offen; keine Vorwegnahme einer fachlichen oder technischen Annahme"
+    },
+    {
+      "card": "cgo-034",
+      "grade": 2,
+      "title": "Jahrgangsarchitekt 2: Bücher, Unterrichtsmaterialien und Checkups vollständig in einen eigenen Bauplan übersetzen",
+      "scope": "Dein Jahrgangsschwerpunkt: Eigenen Übergang von Year1 zu Year2 rekonstruieren: Vorwissen am Material belegen, Wiederholung und neue Zielstrukturen auseinanderhalten. Deine Quellen umfassen insbesondere Units MORE 2,2A Materials,2A Schularbeiten einschließlich Test Practice sowie MORE2-Ressourcen. Nicht die Year1-Sprache pauschal vereinfachen oder nur Vokabeln austauschen. Eigene Aufgabenfolgen, Bilder, Einführung von Grammatik und Checkup-Serien begründen; ausdrücklich sichern, was bisher im Programm durch Fokus 1/3 unterrepräsentiert blieb.",
+      "documentFence": "docs/gg/jahrgang-02/**",
+      "cardTextSha256": "54cd4b473a3abe63b84d390ff538b890dd8ced29b9520c110fa9d61721b374f4",
+      "sourceReviewByInventory": "Auftragsumfang, Zuständigkeit und Quellenwurzeln gelesen; Unterrichtsoriginale werden vom jeweiligen Architekten selbst gelesen und angesehen.",
+      "acceptance": "offen; keine Vorwegnahme einer fachlichen oder technischen Annahme"
+    },
+    {
+      "card": "cgo-035",
+      "grade": 3,
+      "title": "Jahrgangsarchitekt 3: Bücher, Unterrichtsmaterialien und Checkups vollständig in einen eigenen Bauplan übersetzen",
+      "scope": "Dein Jahrgangsschwerpunkt: MORE3 ALT und NEW EDITION sowie ältere Testbuilder bestehen nebeneinander: Ausgabe und Kapitelzuordnung zuerst klären, nichts still mischen. Eigene Klassenmaterialien, Einführungen und Test Practice gleichrangig mit Buch/WB betrachten. Geplante Story-Grammatik011 benötigt den Originalkontext und tatsächliche Sprachhandlung; eine Textzeile oder Antwortlücke allein ersetzt die Geschichte nicht. Wiederholung und Transfer sowie zulässige Varianten pro Format herleiten. Bestehende frische W0-Prüfung liefert begrenzte Befunde, keine Jahrgangsabnahme.",
+      "documentFence": "docs/gg/jahrgang-03/**",
+      "cardTextSha256": "27a615c3715aa01e6ad6f5b7b3397a10b322f82ebc270b5c13a0dbe7945f8456",
+      "sourceReviewByInventory": "Auftragsumfang, Zuständigkeit und Quellenwurzeln gelesen; Unterrichtsoriginale werden vom jeweiligen Architekten selbst gelesen und angesehen.",
+      "acceptance": "offen; keine Vorwegnahme einer fachlichen oder technischen Annahme"
+    },
+    {
+      "card": "cgo-036",
+      "grade": 4,
+      "title": "Jahrgangsarchitekt 4: Bücher, Unterrichtsmaterialien und Checkups vollständig in einen eigenen Bauplan übersetzen",
+      "scope": "Dein Jahrgangsschwerpunkt: MORE4 aktuelle Edition und historische Jahrgangsmaterialien/Schularbeiten getrennt binden. Eigenständigen Jahresabschluss, Wiederholung früherer Lernziele und Checkup-/Probeprüfungsfolge aus den echten Quellen herleiten. Keine vorschnelle Matura-Aufgabensprache oder pauschale B2-Niveauforderung aus DomiLingo übernehmen. Story-/Spielpläne wie FOURTEEN nur gemäß belegter tatsächlicher Jahrgangszuordnung aufnehmen; bei abweichender Zuordnung an GG rückmelden statt verschieben. Fachliche Tiefe und Eigenständigkeit dieses bislang weniger bearbeiteten Jahrgangs ausdrücklich ausarbeiten.",
+      "documentFence": "docs/gg/jahrgang-04/**",
+      "cardTextSha256": "023583ccbefe2e51d26384d1f181f01e8394f263e8b32bf141ef5ba2a4ce694a",
+      "sourceReviewByInventory": "Auftragsumfang, Zuständigkeit und Quellenwurzeln gelesen; Unterrichtsoriginale werden vom jeweiligen Architekten selbst gelesen und angesehen.",
+      "acceptance": "offen; keine Vorwegnahme einer fachlichen oder technischen Annahme"
+    }
+  ],
+  "requiredDeliverables": [
+    {
+      "id": "A1",
+      "requirement": "Vollständiges Quellenregister mit Ausgabe, Prüfsummen, Materialart und tatsächlichem Lese-/Sichtstatus; private Schülerunterlagen ausschließen.",
+      "state": "offen"
+    },
+    {
+      "id": "A2",
+      "requirement": "Eigene Jahresfolge jedes Chapters mit Voraussetzungen, Sprache, Bild-/Hörhandlung, Einführung, Übung, selbstständiger Anwendung und Wiederholung.",
+      "state": "offen"
+    },
+    {
+      "id": "A3",
+      "requirement": "Jedes Chapter × jede relevante Modalität: Handlung, Hilfe, Feedback, seltene und fehlerhafte Zustände; Nichtanwendbarkeit begründen.",
+      "state": "offen"
+    },
+    {
+      "id": "A4",
+      "requirement": "Eigenständiger Checkup-Vertrag samt öffentlichem kleinem Entwurf und privatem Schlüssel: Umfang, Mischung, Antworten/Varianten/Teilpunkte, Hilfen, Zeit, Lehrersicht, Lernstand und Speicherwirkung; keine erfundenen Notengrenzen.",
+      "state": "offen"
+    },
+    {
+      "id": "A5",
+      "requirement": "Früher geprüftes Merkmal → heutiger Stand → konkrete Weiterbehandlung; tatsächliche Bewertungs- und Speicherkette, kein Lernstand aus simuliertem Erfolg.",
+      "state": "offen"
+    },
+    {
+      "id": "A6",
+      "requirement": "Umsetzbare Baupakete mit Dateizäunen, Abhängigkeiten und Akzeptanzkriterien; GG legt Karten und Schnittstellen fest.",
+      "state": "offen"
+    }
+  ],
+  "verificationBoundary": "G1 Vollständigkeit mit wirksamer Weglass-Gegenprobe; G2 Originaltreue; G3 eigene fachliche Selbstprüfung; G4 belegte DomiLingo-Lehren; G5 Dokumentzaun und zugeteilte Pflichtbatterie; G6 gesonderte Quellenprüfung und schlüsselfreies Lösen. Keine Übertragung eines Jahrgangs-Ja auf andere Jahrgänge.",
+  "donorVersionBoundary": "Architekturbriefe nennen zusätzlichen späteren DomiLingo-Pin b61bcbb729f7a6ba447d91a1b213c77ef5eda496. Die neun hier gelesenen Fehlerketten bleiben exakt am e0c8b32d47d7abe4780835c0dd69e234dbba1005 gebunden; keine ungelesene Gleichsetzung der beiden Stände.",
+  "latestContentBoundary": "Nachtrag9: Leser030/031 fertig, vier konvergierende Befunde; p017 sperrt unveränderte Übernahme. cgo-006 wertet aus. Kein neues W0-Gesamt-Ja."
+}

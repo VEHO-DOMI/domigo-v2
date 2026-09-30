@@ -792,6 +792,105 @@
       "disposition": "Studiengrenze, populationsbasierte Schwierigkeit und nichts-stirbt als eigene übertragbare Prinzipien erhalten; einzelnen Pogo-/Siegel-/Quickfire-Plan nicht zurückbauen. Spätere Paint-Phasen haben eigenen Vertrag.",
       "evidenceRefs": [],
       "replacement": null
+    },
+    {
+      "id": "ws-hint",
+      "subject": "WS-HINT — erhaltene Vokabel-Intelligence-Zusagen",
+      "state": "teilgebaut",
+      "missingEvidence": "Einzelbelege und offene Unterverträge: commitments.json H1, H2, H3. Kein End-to-end-Ja aus dem Vorhandensein einzelner wiederverwendbarer Teile.",
+      "disposition": "Die einzelnen Zusagen bleiben erhalten. Didaktische Ausarbeitung in cgo-033–036, gemeinsame Lernstand-/Bewertungsarchitektur mit cgo-018 und GG abstimmen; keine Durchführung alter Produktionsbefehle. Die bestehende Zusagenmatrix nennt jeden fehlenden Beleg und die Weiterbehandlung.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "ws-method",
+      "subject": "WS-METHOD — erhaltene Vokabel-Intelligence-Zusagen",
+      "state": "offen",
+      "missingEvidence": "Einzelbelege und offene Unterverträge: commitments.json M1, M2. Kein End-to-end-Ja aus dem Vorhandensein einzelner wiederverwendbarer Teile.",
+      "disposition": "Die einzelnen Zusagen bleiben erhalten. Didaktische Ausarbeitung in cgo-033–036, gemeinsame Lernstand-/Bewertungsarchitektur mit cgo-018 und GG abstimmen; keine Durchführung alter Produktionsbefehle. Die bestehende Zusagenmatrix nennt jeden fehlenden Beleg und die Weiterbehandlung.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "ws-cal",
+      "subject": "WS-CAL — erhaltene Vokabel-Intelligence-Zusagen",
+      "state": "offen",
+      "missingEvidence": "Einzelbelege und offene Unterverträge: commitments.json C1, C2, C3, C4. Kein End-to-end-Ja aus dem Vorhandensein einzelner wiederverwendbarer Teile.",
+      "disposition": "Die einzelnen Zusagen bleiben erhalten. Didaktische Ausarbeitung in cgo-033–036, gemeinsame Lernstand-/Bewertungsarchitektur mit cgo-018 und GG abstimmen; keine Durchführung alter Produktionsbefehle. Die bestehende Zusagenmatrix nennt jeden fehlenden Beleg und die Weiterbehandlung.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "ws-cold",
+      "subject": "WS-COLD — erhaltene Vokabel-Intelligence-Zusagen",
+      "state": "offen",
+      "missingEvidence": "Einzelbelege und offene Unterverträge: commitments.json CO1, CO2. Kein End-to-end-Ja aus dem Vorhandensein einzelner wiederverwendbarer Teile.",
+      "disposition": "Die einzelnen Zusagen bleiben erhalten. Didaktische Ausarbeitung in cgo-033–036, gemeinsame Lernstand-/Bewertungsarchitektur mit cgo-018 und GG abstimmen; keine Durchführung alter Produktionsbefehle. Die bestehende Zusagenmatrix nennt jeden fehlenden Beleg und die Weiterbehandlung.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "ws-intro",
+      "subject": "WS-INTRO — erhaltene Vokabel-Intelligence-Zusagen",
+      "state": "teilgebaut",
+      "missingEvidence": "Einzelbelege und offene Unterverträge: commitments.json I1, I2. Kein End-to-end-Ja aus dem Vorhandensein einzelner wiederverwendbarer Teile.",
+      "disposition": "Die einzelnen Zusagen bleiben erhalten. Didaktische Ausarbeitung in cgo-033–036, gemeinsame Lernstand-/Bewertungsarchitektur mit cgo-018 und GG abstimmen; keine Durchführung alter Produktionsbefehle. Die bestehende Zusagenmatrix nennt jeden fehlenden Beleg und die Weiterbehandlung.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "ws-index",
+      "subject": "WS-INDEX — erhaltene Vokabel-Intelligence-Zusagen",
+      "state": "offen",
+      "missingEvidence": "Einzelbelege und offene Unterverträge: commitments.json IX1, IX2, IX3. Kein End-to-end-Ja aus dem Vorhandensein einzelner wiederverwendbarer Teile.",
+      "disposition": "Die einzelnen Zusagen bleiben erhalten. Didaktische Ausarbeitung in cgo-033–036, gemeinsame Lernstand-/Bewertungsarchitektur mit cgo-018 und GG abstimmen; keine Durchführung alter Produktionsbefehle. Die bestehende Zusagenmatrix nennt jeden fehlenden Beleg und die Weiterbehandlung.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "ws-vault",
+      "subject": "WS-VAULT — erhaltene Vokabel-Intelligence-Zusagen",
+      "state": "offen",
+      "missingEvidence": "Einzelbelege und offene Unterverträge: commitments.json V1, V2, V3. Kein End-to-end-Ja aus dem Vorhandensein einzelner wiederverwendbarer Teile.",
+      "disposition": "Die einzelnen Zusagen bleiben erhalten. Didaktische Ausarbeitung in cgo-033–036, gemeinsame Lernstand-/Bewertungsarchitektur mit cgo-018 und GG abstimmen; keine Durchführung alter Produktionsbefehle. Die bestehende Zusagenmatrix nennt jeden fehlenden Beleg und die Weiterbehandlung.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "ws-prog",
+      "subject": "WS-PROG — erhaltene Vokabel-Intelligence-Zusagen",
+      "state": "teilgebaut",
+      "missingEvidence": "Einzelbelege und offene Unterverträge: commitments.json P1, P2. Kein End-to-end-Ja aus dem Vorhandensein einzelner wiederverwendbarer Teile.",
+      "disposition": "Die einzelnen Zusagen bleiben erhalten. Didaktische Ausarbeitung in cgo-033–036, gemeinsame Lernstand-/Bewertungsarchitektur mit cgo-018 und GG abstimmen; keine Durchführung alter Produktionsbefehle. Die bestehende Zusagenmatrix nennt jeden fehlenden Beleg und die Weiterbehandlung.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "ws-grammar",
+      "subject": "WS-GRAMMAR — erhaltene Vokabel-Intelligence-Zusagen",
+      "state": "offen",
+      "missingEvidence": "Einzelbelege und offene Unterverträge: commitments.json G1. Kein End-to-end-Ja aus dem Vorhandensein einzelner wiederverwendbarer Teile.",
+      "disposition": "Die einzelnen Zusagen bleiben erhalten. Didaktische Ausarbeitung in cgo-033–036, gemeinsame Lernstand-/Bewertungsarchitektur mit cgo-018 und GG abstimmen; keine Durchführung alter Produktionsbefehle. Die bestehende Zusagenmatrix nennt jeden fehlenden Beleg und die Weiterbehandlung.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "ws-unknown",
+      "subject": "WS-UNKNOWN — erhaltene Vokabel-Intelligence-Zusagen",
+      "state": "geparkt",
+      "missingEvidence": "Einzelbelege und offene Unterverträge: commitments.json U1. Kein End-to-end-Ja aus dem Vorhandensein einzelner wiederverwendbarer Teile.",
+      "disposition": "Die einzelnen Zusagen bleiben erhalten. Didaktische Ausarbeitung in cgo-033–036, gemeinsame Lernstand-/Bewertungsarchitektur mit cgo-018 und GG abstimmen; keine Durchführung alter Produktionsbefehle. Die bestehende Zusagenmatrix nennt jeden fehlenden Beleg und die Weiterbehandlung.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "donor-review",
+      "subject": "DomiLingo: wiederverwendbare Wiederholungsplanung und historische Prüfverfahren",
+      "state": "unverifiziert",
+      "missingEvidence": "S246 ist fremder Leitner-Code, nicht heutiger DomiGo-Code. S247 ist eine ältere Stempelregel; aktueller gelesener Donor X013 verschärft insbesondere die dort noch folgenlose Sidecar-Drift.",
+      "disposition": "Planung aus richtig/falsch, Zeit und Wortidentität als Herkunft erhalten. Best-effort-Schreiben ohne Fehlermeldung nicht als bewiesene Speicherung übernehmen. Aktuelle unabhängige Prüfung und Originalbelege in didactics-and-donor-history.json; keine Matura-Schwellen auf Anfänger übertragen.",
+      "evidenceRefs": [],
+      "replacement": null
     }
   ]
 }

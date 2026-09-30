@@ -1,6 +1,6 @@
 {
   "label": "CODEX DRAFT — NOT CANON",
-  "authoritySource": "X012",
+  "authoritySource": "X014",
   "authorityMd5": "c08c057040cf008cd4efb3b01624378b",
   "donorPin": "e0c8b32d47d7abe4780835c0dd69e234dbba1005",
   "productPin": "269ee986ccdc1ae7c3b070cbed7014f20e532365",
@@ -92,6 +92,14 @@
       "target": "GG Programmsteuerung",
       "currentStateAndMissingEvidence": "Diese Bestandskarte nennt weiterhin HIGH; keine unbelegte Behauptung einer Laufzeitänderung. Kein Serienfreigabe-Ja aus technischem Merge; keine Planänderung durch Executor.",
       "state": "offen"
+    },
+    {
+      "id": "Vier eigenständige Jahrgänge",
+      "sourceSection": "§7 / Nachtrag9",
+      "requirement": "Alle vier Jahrgänge, jede Modalität und jedes Schülerseitenelement einschließlich eigener Unterrichtseinführungen, Grammatik-/Vokabelmaterialien, Checkups und Probeprüfungen. Keine didaktische Formel aus dem ersten Muster ableiten.",
+      "target": "cgo-033/034/035/036; globale Herkunft weiterhin cgo-025",
+      "state": "offen",
+      "currentStateAndMissingEvidence": "Architekturaufträge vorhanden; genaue Jahresfolge, vollständige Originalsicht und getrennte Checkup-Verträge werden dort erst erarbeitet und unabhängig geprüft. Ein Auftrag ist kein fertiger Bauplan."
     }
   ],
   "lessons": [
@@ -110,7 +118,7 @@
       "subject": "Schlüsselleck in echter Schüleransicht",
       "source": "docs/audit/AUDIT_REPORT.md",
       "sourceScope": "A10/B; scripts/quality-audit/blindpack.py:32–107",
-      "historicalFailure": "85 Lückentexte enthielten ungelückten Volltext; verschachtelte Lückenfelder enthielten Antworten; Pilotlöser fanden zwei Paketlecks.",
+      "historicalFailure": "85 Lückentexte enthielten nicht mit Lücken versehenen Volltext; verschachtelte Lückenfelder enthielten Antworten; Pilotlöser fanden zwei Paketlecks.",
       "missedBecause": "Oberflächliches Entfernen bekannter Antwortfelder übersah andere Darstellung und Verschachtelung.",
       "effectiveEvidenceOrCorrection": "Blindpack entfernt Schlüssel rekursiv aus Segmenten, lässt Volltext bei Segmentansicht weg, behält nur richtige Beispielantworten; sauberer Blindlauf nach Pilotfund.",
       "applicationAndLimit": "DomiGo: tatsächliche Darstellung und Variantenfenster ohne Schlüssel prüfen, nicht nur JSON-Felder. Codelektüre ersetzt keine aktuelle Schülersichtprüfung."
@@ -186,5 +194,6 @@
       "applicationAndLimit": "DomiGo: verwandte Ansichten und Hilfestufen inventarisieren, Ausnahmen begründen. Nicht ausgeführter Build/Browser ist hier keine bestandene Prüfung; offene24 Donor-Funde nicht als behoben erben."
     }
   ],
-  "limits": "Dokumentierte historische Befunde und Implementierungslektüre. Kein neuer Donor-Testlauf, keine neue Produkt-/Buchbildprüfung, kein unabhängiger Leser dieser Inventur."
+  "limits": "Dokumentierte historische Befunde und Implementierungslektüre. Kein neuer Donor-Testlauf, keine neue Produkt-/Buchbildprüfung, kein unabhängiger Leser dieser Inventur.",
+  "previousAuthoritySource": "X012"
 }

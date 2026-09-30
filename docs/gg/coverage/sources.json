@@ -231,7 +231,9 @@
         "path": "requirements/S001.json",
         "records": 266,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S001.json",
+      "requirementsCount": 266
     },
     {
       "id": "S002",
@@ -414,7 +416,9 @@
         "path": "requirements/S002.json",
         "records": 208,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S002.json",
+      "requirementsCount": 208
     },
     {
       "id": "S003",
@@ -435,7 +439,9 @@
         "path": "requirements/S003.json",
         "records": 82,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S003.json",
+      "requirementsCount": 82
     },
     {
       "id": "S004",
@@ -478,7 +484,9 @@
         "path": "requirements/S005.json",
         "records": 28,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S005.json",
+      "requirementsCount": 28
     },
     {
       "id": "S006",
@@ -505,7 +513,9 @@
         "path": "requirements/S006.json",
         "records": 9,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S006.json",
+      "requirementsCount": 9
     },
     {
       "id": "S007",
@@ -526,7 +536,9 @@
         "path": "requirements/S007.json",
         "records": 28,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S007.json",
+      "requirementsCount": 28
     },
     {
       "id": "S008",
@@ -547,7 +559,9 @@
         "path": "requirements/S008.json",
         "records": 20,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S008.json",
+      "requirementsCount": 20
     },
     {
       "id": "S009",
@@ -568,7 +582,9 @@
         "path": "requirements/S009.json",
         "records": 45,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S009.json",
+      "requirementsCount": 45
     },
     {
       "id": "S010",
@@ -589,7 +605,9 @@
         "path": "requirements/S010.json",
         "records": 24,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S010.json",
+      "requirementsCount": 24
     },
     {
       "id": "S011",
@@ -610,7 +628,9 @@
         "path": "requirements/S011.json",
         "records": 9,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S011.json",
+      "requirementsCount": 9
     },
     {
       "id": "S012",
@@ -631,7 +651,9 @@
         "path": "requirements/S012.json",
         "records": 22,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S012.json",
+      "requirementsCount": 22
     },
     {
       "id": "S013",
@@ -652,7 +674,9 @@
         "path": "requirements/S013.json",
         "records": 21,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S013.json",
+      "requirementsCount": 21
     },
     {
       "id": "S014",
@@ -673,7 +697,9 @@
         "path": "requirements/S014.json",
         "records": 24,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S014.json",
+      "requirementsCount": 24
     },
     {
       "id": "S015",
@@ -694,7 +720,9 @@
         "path": "requirements/S015.json",
         "records": 12,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S015.json",
+      "requirementsCount": 12
     },
     {
       "id": "S016",
@@ -715,7 +743,9 @@
         "path": "requirements/S016.json",
         "records": 22,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S016.json",
+      "requirementsCount": 22
     },
     {
       "id": "S017",
@@ -736,7 +766,9 @@
         "path": "requirements/S017.json",
         "records": 22,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S017.json",
+      "requirementsCount": 22
     },
     {
       "id": "S018",
@@ -757,7 +789,9 @@
         "path": "requirements/S018.json",
         "records": 22,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S018.json",
+      "requirementsCount": 22
     },
     {
       "id": "S019",
@@ -778,7 +812,9 @@
         "path": "requirements/S019.json",
         "records": 37,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S019.json",
+      "requirementsCount": 37
     },
     {
       "id": "S020",
@@ -799,7 +835,9 @@
         "path": "requirements/S020.json",
         "records": 40,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S020.json",
+      "requirementsCount": 40
     },
     {
       "id": "S021",
@@ -820,7 +858,9 @@
         "path": "requirements/S021.json",
         "records": 36,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S021.json",
+      "requirementsCount": 36
     },
     {
       "id": "S022",
@@ -841,7 +881,9 @@
         "path": "requirements/S022.json",
         "records": 11,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S022.json",
+      "requirementsCount": 11
     },
     {
       "id": "S023",
@@ -862,7 +904,9 @@
         "path": "requirements/S023.json",
         "records": 14,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S023.json",
+      "requirementsCount": 14
     },
     {
       "id": "S024",
@@ -883,7 +927,9 @@
         "path": "requirements/S024.json",
         "records": 26,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S024.json",
+      "requirementsCount": 26
     },
     {
       "id": "S025",
@@ -904,7 +950,9 @@
         "path": "requirements/S025.json",
         "records": 4,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S025.json",
+      "requirementsCount": 4
     },
     {
       "id": "S026",
@@ -925,7 +973,9 @@
         "path": "requirements/S026.json",
         "records": 6,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S026.json",
+      "requirementsCount": 6
     },
     {
       "id": "S027",
@@ -946,7 +996,9 @@
         "path": "requirements/S027.json",
         "records": 18,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S027.json",
+      "requirementsCount": 18
     },
     {
       "id": "S028",
@@ -967,7 +1019,9 @@
         "path": "requirements/S028.json",
         "records": 2,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S028.json",
+      "requirementsCount": 2
     },
     {
       "id": "S029",
@@ -988,7 +1042,9 @@
         "path": "requirements/S029.json",
         "records": 4,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S029.json",
+      "requirementsCount": 4
     },
     {
       "id": "S030",
@@ -1009,7 +1065,9 @@
         "path": "requirements/S030.json",
         "records": 15,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S030.json",
+      "requirementsCount": 15
     },
     {
       "id": "S031",
@@ -1030,7 +1088,9 @@
         "path": "requirements/S031.json",
         "records": 38,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S031.json",
+      "requirementsCount": 38
     },
     {
       "id": "S032",
@@ -1051,7 +1111,9 @@
         "path": "requirements/S032.json",
         "records": 5,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S032.json",
+      "requirementsCount": 5
     },
     {
       "id": "S033",
@@ -1072,7 +1134,9 @@
         "path": "requirements/S033.json",
         "records": 7,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S033.json",
+      "requirementsCount": 7
     },
     {
       "id": "S034",
@@ -1093,7 +1157,9 @@
         "path": "requirements/S034.json",
         "records": 14,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S034.json",
+      "requirementsCount": 14
     },
     {
       "id": "S035",
@@ -1114,7 +1180,9 @@
         "path": "requirements/S035.json",
         "records": 10,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S035.json",
+      "requirementsCount": 10
     },
     {
       "id": "S036",
@@ -1141,7 +1209,9 @@
         "path": "requirements/S036.json",
         "records": 6,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S036.json",
+      "requirementsCount": 6
     },
     {
       "id": "S037",
@@ -1168,7 +1238,9 @@
         "path": "requirements/S037.json",
         "records": 34,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S037.json",
+      "requirementsCount": 34
     },
     {
       "id": "S038",
@@ -1195,7 +1267,9 @@
         "path": "requirements/S038.json",
         "records": 6,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S038.json",
+      "requirementsCount": 6
     },
     {
       "id": "S039",
@@ -1356,7 +1430,9 @@
         "path": "requirements/S046.json",
         "records": 986,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S046.json",
+      "requirementsCount": 986
     },
     {
       "id": "S047",
@@ -1371,8 +1447,8 @@
       "target": "cgo-010/014/015/016/017",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Vollständige Filed-Tabelle inhaltlich durchgegangen; alle Einzelzeilen mit historischem Urteil, heutigen Registeradressen und Weiterbehandlung verbunden. Kein neuer Bau-/Bildabschluss.",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "inspection": "Einzelstellen erhalten und quellenbezogen zugeordnet; aktuelle Sachabnahme nur innerhalb konkreter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege je Einzelstelle/Vertragsprofil; Vollständigkeitsabgleich des Restkatalogs bleibt in Arbeit.",
       "detailedDispositions": [
         {
           "register": "commitments.json",
@@ -1674,7 +1750,9 @@
           "register": "filed-lineage.json",
           "id": "S047:74"
         }
-      ]
+      ],
+      "requirementsRegister": "requirements/S047.json",
+      "requirementsCount": 90
     },
     {
       "id": "S048",
@@ -1689,8 +1767,8 @@
       "target": "cgo-010/014/015/016/017",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Vollständige Filed-Tabelle inhaltlich durchgegangen; alle Einzelzeilen mit historischem Urteil, heutigen Registeradressen und Weiterbehandlung verbunden. Kein neuer Bau-/Bildabschluss.",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "inspection": "Einzelstellen erhalten und quellenbezogen zugeordnet; aktuelle Sachabnahme nur innerhalb konkreter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege je Einzelstelle/Vertragsprofil; Vollständigkeitsabgleich des Restkatalogs bleibt in Arbeit.",
       "detailedDispositions": [
         {
           "register": "commitments.json",
@@ -2080,7 +2158,9 @@
           "register": "filed-lineage.json",
           "id": "S048:96"
         }
-      ]
+      ],
+      "requirementsRegister": "requirements/S048.json",
+      "requirementsCount": 116
     },
     {
       "id": "S049",
@@ -2095,8 +2175,8 @@
       "target": "cgo-010/014/015/016/017",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Vollständige Filed-Tabelle inhaltlich durchgegangen; alle Einzelzeilen mit historischem Urteil, heutigen Registeradressen und Weiterbehandlung verbunden. Kein neuer Bau-/Bildabschluss.",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "inspection": "Einzelstellen erhalten und quellenbezogen zugeordnet; aktuelle Sachabnahme nur innerhalb konkreter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege je Einzelstelle/Vertragsprofil; Vollständigkeitsabgleich des Restkatalogs bleibt in Arbeit.",
       "detailedDispositions": [
         {
           "register": "commitments.json",
@@ -2526,7 +2606,9 @@
           "register": "filed-lineage.json",
           "id": "S049:106"
         }
-      ]
+      ],
+      "requirementsRegister": "requirements/S049.json",
+      "requirementsCount": 121
     },
     {
       "id": "S050",
@@ -2541,8 +2623,8 @@
       "target": "cgo-010/014/015/016/017",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Vollständige Filed-Tabelle inhaltlich durchgegangen; alle Einzelzeilen mit historischem Urteil, heutigen Registeradressen und Weiterbehandlung verbunden. Kein neuer Bau-/Bildabschluss.",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "inspection": "Einzelstellen erhalten und quellenbezogen zugeordnet; aktuelle Sachabnahme nur innerhalb konkreter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege je Einzelstelle/Vertragsprofil; Vollständigkeitsabgleich des Restkatalogs bleibt in Arbeit.",
       "detailedDispositions": [
         {
           "register": "commitments.json",
@@ -2984,7 +3066,9 @@
           "register": "filed-lineage.json",
           "id": "S050:P16"
         }
-      ]
+      ],
+      "requirementsRegister": "requirements/S050.json",
+      "requirementsCount": 120
     },
     {
       "id": "S051",
@@ -5011,7 +5095,9 @@
         "path": "requirements/S170.json",
         "records": 45,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S170.json",
+      "requirementsCount": 45
     },
     {
       "id": "S171",
@@ -5106,7 +5192,9 @@
         "path": "requirements/S174.json",
         "records": 28,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S174.json",
+      "requirementsCount": 28
     },
     {
       "id": "S175",
@@ -5137,7 +5225,9 @@
         "path": "requirements/S175.json",
         "records": 36,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S175.json",
+      "requirementsCount": 36
     },
     {
       "id": "S176",
@@ -5168,7 +5258,9 @@
         "path": "requirements/S176.json",
         "records": 27,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S176.json",
+      "requirementsCount": 27
     },
     {
       "id": "S177",
@@ -5195,7 +5287,9 @@
         "path": "requirements/S177.json",
         "records": 17,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S177.json",
+      "requirementsCount": 17
     },
     {
       "id": "S178",
@@ -5216,7 +5310,9 @@
         "path": "requirements/S178.json",
         "records": 22,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S178.json",
+      "requirementsCount": 22
     },
     {
       "id": "S179",
@@ -5237,7 +5333,9 @@
         "path": "requirements/S179.json",
         "records": 16,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S179.json",
+      "requirementsCount": 16
     },
     {
       "id": "S180",
@@ -5258,7 +5356,9 @@
         "path": "requirements/S180.json",
         "records": 24,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S180.json",
+      "requirementsCount": 24
     },
     {
       "id": "S181",
@@ -5289,7 +5389,9 @@
         "path": "requirements/S181.json",
         "records": 22,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S181.json",
+      "requirementsCount": 22
     },
     {
       "id": "S182",
@@ -5316,7 +5418,9 @@
         "path": "requirements/S182.json",
         "records": 12,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S182.json",
+      "requirementsCount": 12
     },
     {
       "id": "S183",
@@ -5337,7 +5441,9 @@
         "path": "requirements/S183.json",
         "records": 22,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S183.json",
+      "requirementsCount": 22
     },
     {
       "id": "S184",
@@ -5364,7 +5470,9 @@
         "path": "requirements/S184.json",
         "records": 35,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S184.json",
+      "requirementsCount": 35
     },
     {
       "id": "S185",
@@ -5391,7 +5499,9 @@
         "path": "requirements/S185.json",
         "records": 52,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S185.json",
+      "requirementsCount": 52
     },
     {
       "id": "S186",
@@ -5418,7 +5528,9 @@
         "path": "requirements/S186.json",
         "records": 43,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S186.json",
+      "requirementsCount": 43
     },
     {
       "id": "S187",
@@ -5439,7 +5551,9 @@
         "path": "requirements/S187.json",
         "records": 56,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S187.json",
+      "requirementsCount": 56
     },
     {
       "id": "S188",
@@ -5460,7 +5574,9 @@
         "path": "requirements/S188.json",
         "records": 52,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S188.json",
+      "requirementsCount": 52
     },
     {
       "id": "S189",
@@ -5487,7 +5603,9 @@
         "path": "requirements/S189.json",
         "records": 60,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S189.json",
+      "requirementsCount": 60
     },
     {
       "id": "S190",
@@ -5514,7 +5632,9 @@
         "path": "requirements/S190.json",
         "records": 42,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S190.json",
+      "requirementsCount": 42
     },
     {
       "id": "S191",
@@ -5535,7 +5655,9 @@
         "path": "requirements/S191.json",
         "records": 54,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S191.json",
+      "requirementsCount": 54
     },
     {
       "id": "S192",
@@ -5562,7 +5684,9 @@
         "path": "requirements/S192.json",
         "records": 65,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S192.json",
+      "requirementsCount": 65
     },
     {
       "id": "S193",
@@ -5589,7 +5713,9 @@
         "path": "requirements/S193.json",
         "records": 60,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S193.json",
+      "requirementsCount": 60
     },
     {
       "id": "S194",
@@ -5620,7 +5746,9 @@
         "path": "requirements/S194.json",
         "records": 75,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S194.json",
+      "requirementsCount": 75
     },
     {
       "id": "S195",
@@ -5647,7 +5775,9 @@
         "path": "requirements/S195.json",
         "records": 53,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S195.json",
+      "requirementsCount": 53
     },
     {
       "id": "S196",
@@ -5668,7 +5798,9 @@
         "path": "requirements/S196.json",
         "records": 22,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S196.json",
+      "requirementsCount": 22
     },
     {
       "id": "S197",
@@ -5695,7 +5827,9 @@
         "path": "requirements/S197.json",
         "records": 25,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S197.json",
+      "requirementsCount": 25
     },
     {
       "id": "S198",
@@ -5716,7 +5850,9 @@
         "path": "requirements/S198.json",
         "records": 111,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S198.json",
+      "requirementsCount": 111
     },
     {
       "id": "S199",
@@ -5737,7 +5873,9 @@
         "path": "requirements/S199.json",
         "records": 28,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S199.json",
+      "requirementsCount": 28
     },
     {
       "id": "S200",
@@ -5752,8 +5890,10 @@
       "target": "cgo-008/010/014/015/016/017/021; GG Zyklus 3",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "inspection": "Einzelstellen erhalten und quellenbezogen zugeordnet; aktuelle Sachabnahme nur innerhalb konkreter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege je Einzelstelle/Vertragsprofil; Vollständigkeitsabgleich des Restkatalogs bleibt in Arbeit.",
+      "requirementsRegister": "requirements/S200.json",
+      "requirementsCount": 106
     },
     {
       "id": "S201",
@@ -5768,8 +5908,10 @@
       "target": "cgo-008/010/014/015/016/017/021; GG Zyklus 3",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "inspection": "Einzelstellen erhalten und quellenbezogen zugeordnet; aktuelle Sachabnahme nur innerhalb konkreter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege je Einzelstelle/Vertragsprofil; Vollständigkeitsabgleich des Restkatalogs bleibt in Arbeit.",
+      "requirementsRegister": "requirements/S201.json",
+      "requirementsCount": 61
     },
     {
       "id": "S202",
@@ -5790,7 +5932,9 @@
         "path": "requirements/S202.json",
         "records": 47,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S202.json",
+      "requirementsCount": 47
     },
     {
       "id": "S203",
@@ -5811,7 +5955,9 @@
         "path": "requirements/S203.json",
         "records": 33,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S203.json",
+      "requirementsCount": 33
     },
     {
       "id": "S204",
@@ -5826,8 +5972,10 @@
       "target": "cgo-008/010/014/015/016/017/021; GG Zyklus 3",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "inspection": "Einzelstellen erhalten und quellenbezogen zugeordnet; aktuelle Sachabnahme nur innerhalb konkreter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege je Einzelstelle/Vertragsprofil; Vollständigkeitsabgleich des Restkatalogs bleibt in Arbeit.",
+      "requirementsRegister": "requirements/S204.json",
+      "requirementsCount": 83
     },
     {
       "id": "S205",
@@ -5842,8 +5990,10 @@
       "target": "cgo-008/010/014/015/016/017/021; GG Zyklus 3",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "inspection": "Einzelstellen erhalten und quellenbezogen zugeordnet; aktuelle Sachabnahme nur innerhalb konkreter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege je Einzelstelle/Vertragsprofil; Vollständigkeitsabgleich des Restkatalogs bleibt in Arbeit.",
+      "requirementsRegister": "requirements/S205.json",
+      "requirementsCount": 25
     },
     {
       "id": "S206",
@@ -5858,8 +6008,10 @@
       "target": "cgo-008/010/014/015/016/017/021; GG Zyklus 3",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "inspection": "Einzelstellen erhalten und quellenbezogen zugeordnet; aktuelle Sachabnahme nur innerhalb konkreter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege je Einzelstelle/Vertragsprofil; Vollständigkeitsabgleich des Restkatalogs bleibt in Arbeit.",
+      "requirementsRegister": "requirements/S206.json",
+      "requirementsCount": 68
     },
     {
       "id": "S207",
@@ -5874,8 +6026,10 @@
       "target": "cgo-008/010/014/015/016/017/021; GG Zyklus 3",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "inspection": "Einzelstellen erhalten und quellenbezogen zugeordnet; aktuelle Sachabnahme nur innerhalb konkreter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege je Einzelstelle/Vertragsprofil; Vollständigkeitsabgleich des Restkatalogs bleibt in Arbeit.",
+      "requirementsRegister": "requirements/S207.json",
+      "requirementsCount": 92
     },
     {
       "id": "S208",
@@ -5906,14 +6060,16 @@
       "target": "cgo-008/010/014/015/016/017/021; GG Zyklus 3",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "inspection": "Einzelstellen erhalten und quellenbezogen zugeordnet; aktuelle Sachabnahme nur innerhalb konkreter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege je Einzelstelle/Vertragsprofil; Vollständigkeitsabgleich des Restkatalogs bleibt in Arbeit.",
       "detailedDispositions": [
         {
           "register": "commitments.json",
           "id": "Y1E"
         }
-      ]
+      ],
+      "requirementsRegister": "requirements/S209.json",
+      "requirementsCount": 33
     },
     {
       "id": "S210",
@@ -5928,8 +6084,10 @@
       "target": "cgo-008/010/014/015/016/017/021; GG Zyklus 3",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "inspection": "Einzelstellen erhalten und quellenbezogen zugeordnet; aktuelle Sachabnahme nur innerhalb konkreter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege je Einzelstelle/Vertragsprofil; Vollständigkeitsabgleich des Restkatalogs bleibt in Arbeit.",
+      "requirementsRegister": "requirements/S210.json",
+      "requirementsCount": 62
     },
     {
       "id": "S211",
@@ -5944,8 +6102,10 @@
       "target": "cgo-008/010/014/015/016/017/021; GG Zyklus 3",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "inspection": "Einzelstellen erhalten und quellenbezogen zugeordnet; aktuelle Sachabnahme nur innerhalb konkreter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege je Einzelstelle/Vertragsprofil; Vollständigkeitsabgleich des Restkatalogs bleibt in Arbeit.",
+      "requirementsRegister": "requirements/S211.json",
+      "requirementsCount": 26
     },
     {
       "id": "S212",
@@ -5960,8 +6120,10 @@
       "target": "cgo-008/010/014/015/016/017/021; GG Zyklus 3",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "inspection": "Einzelstellen erhalten und quellenbezogen zugeordnet; aktuelle Sachabnahme nur innerhalb konkreter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege je Einzelstelle/Vertragsprofil; Vollständigkeitsabgleich des Restkatalogs bleibt in Arbeit.",
+      "requirementsRegister": "requirements/S212.json",
+      "requirementsCount": 30
     },
     {
       "id": "S213",
@@ -5976,14 +6138,16 @@
       "target": "cgo-008/010/014/015/016/017/021; GG Zyklus 3",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "inspection": "Einzelstellen erhalten und quellenbezogen zugeordnet; aktuelle Sachabnahme nur innerhalb konkreter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege je Einzelstelle/Vertragsprofil; Vollständigkeitsabgleich des Restkatalogs bleibt in Arbeit.",
       "detailedDispositions": [
         {
           "register": "commitments.json",
           "id": "Y1E"
         }
-      ]
+      ],
+      "requirementsRegister": "requirements/S213.json",
+      "requirementsCount": 37
     },
     {
       "id": "S214",
@@ -5998,8 +6162,10 @@
       "target": "cgo-008/010/014/015/016/017/021; GG Zyklus 3",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "inspection": "Einzelstellen erhalten und quellenbezogen zugeordnet; aktuelle Sachabnahme nur innerhalb konkreter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege je Einzelstelle/Vertragsprofil; Vollständigkeitsabgleich des Restkatalogs bleibt in Arbeit.",
+      "requirementsRegister": "requirements/S214.json",
+      "requirementsCount": 45
     },
     {
       "id": "S215",
@@ -6014,8 +6180,10 @@
       "target": "cgo-008/010/014/015/016/017/021; GG Zyklus 3",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "inspection": "Einzelstellen erhalten und quellenbezogen zugeordnet; aktuelle Sachabnahme nur innerhalb konkreter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege je Einzelstelle/Vertragsprofil; Vollständigkeitsabgleich des Restkatalogs bleibt in Arbeit.",
+      "requirementsRegister": "requirements/S215.json",
+      "requirementsCount": 30
     },
     {
       "id": "S216",
@@ -6030,14 +6198,16 @@
       "target": "cgo-008/010/014/015/016/017/021; GG Zyklus 3",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "inspection": "Einzelstellen erhalten und quellenbezogen zugeordnet; aktuelle Sachabnahme nur innerhalb konkreter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege je Einzelstelle/Vertragsprofil; Vollständigkeitsabgleich des Restkatalogs bleibt in Arbeit.",
       "detailedDispositions": [
         {
           "register": "commitments.json",
           "id": "B3"
         }
-      ]
+      ],
+      "requirementsRegister": "requirements/S216.json",
+      "requirementsCount": 30
     },
     {
       "id": "S217",
@@ -6068,7 +6238,9 @@
         "path": "requirements/S217.json",
         "records": 268,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S217.json",
+      "requirementsCount": 268
     },
     {
       "id": "S218",
@@ -6095,7 +6267,9 @@
         "path": "requirements/S218.json",
         "records": 173,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S218.json",
+      "requirementsCount": 173
     },
     {
       "id": "S219",
@@ -6126,7 +6300,9 @@
         "path": "requirements/S219.json",
         "records": 266,
         "authorPassComplete": true
-      }
+      },
+      "requirementsRegister": "requirements/S219.json",
+      "requirementsCount": 266
     },
     {
       "id": "S220",
@@ -6567,8 +6743,8 @@
       "target": "GG: Vokabelprogramm P0–P5 / Empfehlungen V1–V6",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Vertiefte inhaltliche Zuordnung; Einzelgrenzen im Hauptdokument",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "inspection": "Einzelstellen erhalten und quellenbezogen zugeordnet; aktuelle Sachabnahme nur innerhalb konkreter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege je Einzelstelle/Vertragsprofil; Vollständigkeitsabgleich des Restkatalogs bleibt in Arbeit.",
       "detailedDispositions": [
         {
           "register": "commitments.json",
@@ -6662,7 +6838,9 @@
           "register": "commitments.json",
           "id": "U1"
         }
-      ]
+      ],
+      "requirementsRegister": "requirements/S242.json",
+      "requirementsCount": 56
     },
     {
       "id": "S243",
@@ -6677,8 +6855,8 @@
       "target": "GG: Vokabelprogramm P0–P5 / Empfehlungen V1–V6",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Vertiefte inhaltliche Zuordnung; Einzelgrenzen im Hauptdokument",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "inspection": "Einzelstellen erhalten und quellenbezogen zugeordnet; aktuelle Sachabnahme nur innerhalb konkreter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege je Einzelstelle/Vertragsprofil; Vollständigkeitsabgleich des Restkatalogs bleibt in Arbeit.",
       "detailedDispositions": [
         {
           "register": "commitments.json",
@@ -6772,7 +6950,9 @@
           "register": "commitments.json",
           "id": "U1"
         }
-      ]
+      ],
+      "requirementsRegister": "requirements/S243.json",
+      "requirementsCount": 31
     },
     {
       "id": "S244",
@@ -6787,8 +6967,8 @@
       "target": "GG: Vokabelprogramm P0–P5 / Empfehlungen V1–V6",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Vertiefte inhaltliche Zuordnung; Einzelgrenzen im Hauptdokument",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "inspection": "Einzelstellen erhalten und quellenbezogen zugeordnet; aktuelle Sachabnahme nur innerhalb konkreter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege je Einzelstelle/Vertragsprofil; Vollständigkeitsabgleich des Restkatalogs bleibt in Arbeit.",
       "detailedDispositions": [
         {
           "register": "commitments.json",
@@ -6882,7 +7062,9 @@
           "register": "commitments.json",
           "id": "U1"
         }
-      ]
+      ],
+      "requirementsRegister": "requirements/S244.json",
+      "requirementsCount": 14
     },
     {
       "id": "S245",
@@ -6897,8 +7079,10 @@
       "target": "GG: Vokabelprogramm P0–P5 / Empfehlungen V1–V6",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Vertiefte inhaltliche Zuordnung; Einzelgrenzen im Hauptdokument",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "inspection": "Einzelstellen erhalten und quellenbezogen zugeordnet; aktuelle Sachabnahme nur innerhalb konkreter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege je Einzelstelle/Vertragsprofil; Vollständigkeitsabgleich des Restkatalogs bleibt in Arbeit.",
+      "requirementsRegister": "requirements/S245.json",
+      "requirementsCount": 117
     },
     {
       "id": "S246",
@@ -6913,14 +7097,16 @@
       "target": "cgo-006/009/018; aktueller Donor X-DONOR",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Vertiefte inhaltliche Zuordnung; Einzelgrenzen im Hauptdokument",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "inspection": "Einzelstellen erhalten und quellenbezogen zugeordnet; aktuelle Sachabnahme nur innerhalb konkreter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege je Einzelstelle/Vertragsprofil; Vollständigkeitsabgleich des Restkatalogs bleibt in Arbeit.",
       "detailedDispositions": [
         {
           "register": "commitments.json",
           "id": "DL1"
         }
-      ]
+      ],
+      "requirementsRegister": "requirements/S246.json",
+      "requirementsCount": 13
     },
     {
       "id": "S247",
@@ -6935,14 +7121,16 @@
       "target": "cgo-006/009/018; aktueller Donor X-DONOR",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Vertiefte inhaltliche Zuordnung; Einzelgrenzen im Hauptdokument",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "inspection": "Einzelstellen erhalten und quellenbezogen zugeordnet; aktuelle Sachabnahme nur innerhalb konkreter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege je Einzelstelle/Vertragsprofil; Vollständigkeitsabgleich des Restkatalogs bleibt in Arbeit.",
       "detailedDispositions": [
         {
           "register": "commitments.json",
           "id": "DL1"
         }
-      ]
+      ],
+      "requirementsRegister": "requirements/S247.json",
+      "requirementsCount": 31
     }
   ]
 }

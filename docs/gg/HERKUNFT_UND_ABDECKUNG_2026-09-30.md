@@ -196,7 +196,7 @@ Die leichte Prüfung muss Herkunftskennungen/Hashes/Dateizaun sowie absichtlich 
 
 ## Späteres Koki-Urteil: Sprache und Didaktik (Nachtrag 7)
 
-Die technische Übernahme von cgo-007/PR473 ist **keine sprachliche oder didaktische Annahme**. Kokis späteres Urteil verlangt ein neues geprüftes Muster; Serienarbeit bleibt gesperrt. Kunst/Figuren sind nicht pauschal verworfen. [Die ergänzte Zuordnung](coverage/didactics-and-donor-history.json) erhält elf Anforderungsgruppen und neun konkrete DomiLingo-Fehlerketten mit Originalbeleg, wirksamer Prüfung und Übertragungsgrenze.
+Die technische Übernahme von cgo-007/PR473 ist **keine sprachliche oder didaktische Annahme**. Kokis späteres Urteil verlangt ein neues geprüftes Muster; Serienarbeit bleibt gesperrt. Kunst/Figuren sind nicht pauschal verworfen. [Die ergänzte Zuordnung](coverage/didactics-and-donor-history.json) erhält zwölf Anforderungsgruppen und neun konkrete DomiLingo-Fehlerketten mit Originalbeleg, wirksamer Prüfung und Übertragungsgrenze.
 
 Sichtbar heißt es **Chapter**; interne Schlüssel bleiben erhalten. Frühes Year 1 braucht deutsche Orientierung und je englischem Text belegte Voraussetzungen. Maßgeblich sind tatsächliche Student’s-Book- und Workbook-Seiten samt Bildern und Aufgabenfolge. Für diese Dokumentkarte wurde kein neuer Lernweg entworfen und kein PDF-Sichtstudium behauptet. Der notwendige Sichtbeleg bleibt bei der Muster-/Inhaltsarbeit offen, obwohl die PDFs laut GG verfügbar sind.
 
@@ -204,4 +204,10 @@ DomiLingo liefert konkrete Gegenbeispiele gegen pauschale Qualitätsbehauptungen
 
 ### Arbeitsstand der fortgesetzten Einzelzuordnung
 
-70 Quellen enthalten jetzt 4.074 gebundene Einzelstellen; 17 konkrete Produktbeleggruppen ergänzen die Quellenurteile. Der Restkatalog wird weiter zugeordnet; dies ist weiterhin **kein Vollständigkeits-Ja**. Bei matching und group-sort fehlt die früher verlangte Teilwertung nachweislich im heutigen Bewerter (Beleg P17). Zwei Quellenstellen mit historischen Zugangsdaten bleiben nur über Fundstelle und Originalprüfsumme gebunden; die Werte werden nicht weiterveröffentlicht.
+94 Quellen enthalten jetzt 5.511 gebundene Einzelstellen; 17 konkrete Produktbeleggruppen ergänzen die Quellenurteile. Der Restkatalog wird weiter zugeordnet; dies ist weiterhin **kein Vollständigkeits-Ja**. Bei matching und group-sort fehlt die früher verlangte Teilwertung nachweislich im heutigen Bewerter (Beleg P17). Zwei Quellenstellen mit historischen Zugangsdaten bleiben nur über Fundstelle und Originalprüfsumme gebunden; die Werte werden nicht weiterveröffentlicht.
+
+## Vier Jahrgänge: Zuständigkeiten nach Nachtrag 9
+
+CODEX DRAFT — NOT CANON. Die globale Herkunft bleibt bei cgo-025. Die eigenständige didaktische Ausarbeitung übernehmen **cgo-033 (Jahrgang 1), cgo-034 (Jahrgang 2), cgo-035 (Jahrgang 3) und cgo-036 (Jahrgang 4)**, jeweils im eigenen Dokumentbereich. [Zuständigkeiten und sechs Lieferpflichten](coverage/grade-architecture-handoff.json) erhalten den vollständigen Auftrag einschließlich Kokis eigener Unterrichtseinführungen, Grammatik-/Vokabelmaterialien, Probeprüfungen und Checkups. Die Architekten prüfen Originale selbst; diese Inventur behauptet weder gelesene Unterrichtsoriginale noch fertige Jahrespläne.
+
+Ein Checkup erhält einen eigenen Vertrag für Hilfen, Antwortformen, Teilpunkte und Lernstandsfolgen. Das erste Gestaltungsmuster ist keine allgemeine Schablone. Die späteren Inhaltsleser030/031 haben laut Nachtrag9 insbesondere p017 beanstandet; unveränderte Inhaltsübernahme bleibt bis zur Auswertung durch cgo-006 gesperrt.
