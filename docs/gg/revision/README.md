@@ -7,6 +7,13 @@ Dateikorpus, bindet Belege an konkrete Aufgabenfassungen und liefert zwei kleine
 Muster. Sie ändert weder Aufgaben noch Bewertung, Schülerfreigaben oder Datenbank.
 Eine bestandene Selbstprüfung ist kein fachliches Qualitätssiegel.
 
+**Nachtrag 11:** Kokis Nein zum sprachlich/didaktischen Gestaltungsmuster bleibt
+maßgeblich. Die [Anforderungslücken](ANFORDERUNGSLUECKEN.md) ordnen neue Regel,
+ursprüngliche Zusagen und tatsächliche W0-Belege zu. Die
+[DomiLingo-Fehlergeschichte](DOMILINGO-LEHREN.md) begründet Prüfschritte mit festen
+Originaldateien. Das Löserpaket bleibt unverändert; PR 472 liefert eine
+Quellen-/Prüfgrundlage, kein fachliches Serien-Ja.
+
 **Nachtrag 6:** Beide unabhängigen Inhaltsleser sagen Nein zur unveränderten
 Kalibrierung. Das vollständige [Befundregister](BEFUNDE.md) und der
 [Entscheidungs-/Prüfweg](BEFUNDWEG.md) bewahren alle Antworten, Originalbefunde

@@ -3,6 +3,12 @@
 **CODEX DRAFT — NOT CANON.** Dieser Text ist für GG und Koki; den unabhängigen
 Lösern wird ausschließlich das eingefrorene `solver/`-Paket gegeben.
 
+**Nachtrag 11:** Die Beispiele unten sind historische W0-Entwürfe, keine fertigen
+oder angenommenen Unterrichtsmuster. Vor der folgenden Fassung gelten sämtliche
+[Anforderungslücken](ANFORDERUNGSLUECKEN.md), einschließlich Originalbuch-Bildsichtung
+und getrennter Quellen-/Didaktikprüfung. Bestehende Löser erhalten weder eine
+Umformulierung noch neue Autorenhinweise.
+
 Je Unit stehen neun bestehende Aufgaben plus eine neue Transferfrage bereit.
 Die Auswahl ist in `scripts/gg-revision/pilots.json` ausführbar festgelegt.
 Die Transferaufgaben entstehen nur als Muster im Arbeitsspeicher; keine

@@ -6,6 +6,13 @@ Eine technische Neuordnung erlaubt keine stille Vereinfachung aller Formate zu
 Multiple Choice. Die Muster verwenden deshalb die vorhandenen tatsächlichen
 Vokabel-, Grammatik- und Paint-Komponenten ohne produktive Änderungen.
 
+**Reichweite nach N8/N11:** Die unten genannten früheren Funktionsbelege bleiben
+historisch. Der aktuelle N8-Lauf zeigte Name→Farbe; nach dem Farbklick erschien
+keine neue sichtbare Endquittung. Ein vollständig bestätigter Abschluss oder
+gespeicherter Fortschritt wird damit nicht behauptet. Vollständiger Quellen-/
+Sprach-/Didaktikpass bleibt gemäß [ANFORDERUNGSLUECKEN.md](ANFORDERUNGSLUECKEN.md)
+vor einem folgenden Muster offen.
+
 Zusätzliche Vergleichsquellen sind die Originaltrainer
 [Jahrgang 1](https://veho-domi.github.io/1st-grade-vocab-trainer/),
 [Jahrgang 2](https://veho-domi.github.io/2nd-grade-vocab-trainer/),

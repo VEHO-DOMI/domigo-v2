@@ -32,6 +32,13 @@ noch das fachliche Gegenlesen der konkreten Aussage und des Lernzeitpunkts.
 Die folgenden Sprachregeln sind zur Beurteilung durch Koki vorgelegt. Sie sind
 keine neue Norm für den ganzen Korpus und keine pauschale CEFR-Einstufung.
 
+**Stand nach Nachtrag 11:** Historische Entwürfe, nicht zur fertigen Vorlage
+freigegeben. Im frühen Jahrgang 1 ist deutsche Orientierung samt Aufgabenanweisung
+und gezielter Hilfe verbindlich; das folgende alte „wenn“ begrenzt diese Regel
+nicht. Originalbuchseiten/Bilder wurden durch den DOCX-Abgleich nicht gesehen.
+Fehlende Ausgaben-/Bild-/Lernfolgebelege und der Status jedes englischen Textes
+sind in [ANFORDERUNGSLUECKEN.md](ANFORDERUNGSLUECKEN.md) ausdrücklich offen.
+
 | Jahrgang und Originalwortliste | Gewünschter Ton und Anspruch |
 |---|---|
 | **1 · MORE1_Master_Vocabulary_List_Units_1-15.docx** · md5 `6306d5208f27514ab7179fd337c403f8` | Kurze konkrete Sätze; eine Handlung je Auftrag. Deutsche Arbeitsanweisung, wenn sonst das Lesen die eigentliche Aufgabe verdeckt. Korrekturen zeigen zuerst das brauchbare englische Beispiel; höchstens eine kurze Regel. Keine Fachwortkette, kein infantiler Ton. |
