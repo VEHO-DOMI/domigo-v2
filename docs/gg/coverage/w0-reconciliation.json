@@ -69,26 +69,6 @@
           "card": "cgo-028",
           "state": "done",
           "validity": "Altes Paket; beide Nein zum Antwortumfang p019. Nicht an neuen Export übertragbar."
-        },
-        {
-          "card": "cgo-030",
-          "state": "done",
-          "validity": "Nein zur unveränderten Musterübernahme: p017 verlangt Formwahl, bietet aber nur Pronomen-Gruppierung.",
-          "packetSha256": "853165922030fb01941fd97e5d56f420bd3851ce417b2fae0097afb0972ea28e",
-          "views": 20,
-          "followUpViews": 1,
-          "candidates": 41,
-          "noLiveSaveProof": true
-        },
-        {
-          "card": "cgo-031",
-          "state": "done",
-          "validity": "Begrenztes Ja zur schlüsselfreien Lösbarkeit, vier SHOULD-FIX-Befunde; automatische Annahme unbekannt.",
-          "packetSha256": "853165922030fb01941fd97e5d56f420bd3851ce417b2fae0097afb0972ea28e",
-          "views": 20,
-          "followUpViews": 1,
-          "candidates": 36,
-          "noLiveSaveProof": true
         }
       ],
       "technicalVerdict": "pnpm test Exit1, Restbatterie abgebrochen/nicht gestartet laut cgo-006 Bericht; kein eigener Lauf dieser Karte.",

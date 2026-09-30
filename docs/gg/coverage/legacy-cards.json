@@ -7,7 +7,14 @@
     "disposition": "Datenschutz-Abgleich mit daten-008 in Zugangskarte; nicht ohne vollständigen Deckungsbeleg schließen.",
     "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
     "boardPin": "a2de5ff614240f0b0a3b5f6880611bddda1089d5",
-    "closedByThisAddendum": false
+    "closedByThisAddendum": false,
+    "laterComparison": {
+      "boardPin": "68138cba66ff21d6634c0d7879d19901e3642265",
+      "state": "open",
+      "held": true,
+      "unchanged": true,
+      "scope": "Erneuter Abgleich von Zustand und Hold; keine neue Sachabnahme oder Kartenschließung."
+    }
   },
   {
     "id": "gomarke-003",
@@ -17,7 +24,14 @@
     "disposition": "Konto-Anschluss existiert; verbliebene Klassen-/Testvertragslücken in cgo-Zugang prüfen.",
     "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
     "boardPin": "a2de5ff614240f0b0a3b5f6880611bddda1089d5",
-    "closedByThisAddendum": false
+    "closedByThisAddendum": false,
+    "laterComparison": {
+      "boardPin": "68138cba66ff21d6634c0d7879d19901e3642265",
+      "state": "open",
+      "held": true,
+      "unchanged": true,
+      "scope": "Erneuter Abgleich von Zustand und Hold; keine neue Sachabnahme oder Kartenschließung."
+    }
   },
   {
     "id": "platt-002",
@@ -27,7 +41,14 @@
     "disposition": "Durch cgo-Plan neu geordnet; alte K13–K15 bei jeweiliger Plattformkarte gegen Code messen.",
     "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
     "boardPin": "a2de5ff614240f0b0a3b5f6880611bddda1089d5",
-    "closedByThisAddendum": false
+    "closedByThisAddendum": false,
+    "laterComparison": {
+      "boardPin": "68138cba66ff21d6634c0d7879d19901e3642265",
+      "state": "open",
+      "held": true,
+      "unchanged": true,
+      "scope": "Erneuter Abgleich von Zustand und Hold; keine neue Sachabnahme oder Kartenschließung."
+    }
   },
   {
     "id": "platt-003",
@@ -37,7 +58,14 @@
     "disposition": "Kein zusätzlicher Koordinator nötig; einzelne Revisionsaufträge über cgo.",
     "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
     "boardPin": "a2de5ff614240f0b0a3b5f6880611bddda1089d5",
-    "closedByThisAddendum": false
+    "closedByThisAddendum": false,
+    "laterComparison": {
+      "boardPin": "68138cba66ff21d6634c0d7879d19901e3642265",
+      "state": "open",
+      "held": true,
+      "unchanged": true,
+      "scope": "Erneuter Abgleich von Zustand und Hold; keine neue Sachabnahme oder Kartenschließung."
+    }
   },
   {
     "id": "siegel-001",
@@ -47,7 +75,14 @@
     "disposition": "Arena-Kunst nach B1/B2/C/F neu schneiden, nicht den veralteten Werkstattauftrag booten.",
     "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
     "boardPin": "a2de5ff614240f0b0a3b5f6880611bddda1089d5",
-    "closedByThisAddendum": false
+    "closedByThisAddendum": false,
+    "laterComparison": {
+      "boardPin": "68138cba66ff21d6634c0d7879d19901e3642265",
+      "state": "open",
+      "held": true,
+      "unchanged": true,
+      "scope": "Erneuter Abgleich von Zustand und Hold; keine neue Sachabnahme oder Kartenschließung."
+    }
   },
   {
     "id": "siegel-002",
@@ -57,7 +92,14 @@
     "disposition": "Kleckskammer-Kunst folgt Raumfreigabe; kein Kalenderdruck.",
     "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
     "boardPin": "a2de5ff614240f0b0a3b5f6880611bddda1089d5",
-    "closedByThisAddendum": false
+    "closedByThisAddendum": false,
+    "laterComparison": {
+      "boardPin": "68138cba66ff21d6634c0d7879d19901e3642265",
+      "state": "open",
+      "held": true,
+      "unchanged": true,
+      "scope": "Erneuter Abgleich von Zustand und Hold; keine neue Sachabnahme oder Kartenschließung."
+    }
   },
   {
     "id": "siegel-003",
@@ -67,7 +109,14 @@
     "disposition": "Aufräumen erst nach neuem Aufgaben-/Lernspurbestand; nie Lernabdeckung still entfernen.",
     "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
     "boardPin": "a2de5ff614240f0b0a3b5f6880611bddda1089d5",
-    "closedByThisAddendum": false
+    "closedByThisAddendum": false,
+    "laterComparison": {
+      "boardPin": "68138cba66ff21d6634c0d7879d19901e3642265",
+      "state": "open",
+      "held": true,
+      "unchanged": true,
+      "scope": "Erneuter Abgleich von Zustand und Hold; keine neue Sachabnahme oder Kartenschließung."
+    }
   },
   {
     "id": "siegel-004",
@@ -77,7 +126,14 @@
     "disposition": "Alte Merge-Sammelkarte ist kein Ausführungsweg mehr; Charta-Mergekette pro PR.",
     "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
     "boardPin": "a2de5ff614240f0b0a3b5f6880611bddda1089d5",
-    "closedByThisAddendum": false
+    "closedByThisAddendum": false,
+    "laterComparison": {
+      "boardPin": "68138cba66ff21d6634c0d7879d19901e3642265",
+      "state": "open",
+      "held": true,
+      "unchanged": true,
+      "scope": "Erneuter Abgleich von Zustand und Hold; keine neue Sachabnahme oder Kartenschließung."
+    }
   },
   {
     "id": "siegel-005",
@@ -87,7 +143,14 @@
     "disposition": "Kapitel-1-Playtest bleibt menschliche Endabnahme; erst mit konkretem geprüften Stand freischalten.",
     "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
     "boardPin": "a2de5ff614240f0b0a3b5f6880611bddda1089d5",
-    "closedByThisAddendum": false
+    "closedByThisAddendum": false,
+    "laterComparison": {
+      "boardPin": "68138cba66ff21d6634c0d7879d19901e3642265",
+      "state": "open",
+      "held": false,
+      "unchanged": true,
+      "scope": "Erneuter Abgleich von Zustand und Hold; keine neue Sachabnahme oder Kartenschließung."
+    }
   },
   {
     "id": "tore-006",
@@ -97,7 +160,14 @@
     "disposition": "cgo-Register-/Kalenderhygiene, Zustand je Altposten statt geschätzter Summe.",
     "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
     "boardPin": "a2de5ff614240f0b0a3b5f6880611bddda1089d5",
-    "closedByThisAddendum": false
+    "closedByThisAddendum": false,
+    "laterComparison": {
+      "boardPin": "68138cba66ff21d6634c0d7879d19901e3642265",
+      "state": "open",
+      "held": true,
+      "unchanged": true,
+      "scope": "Erneuter Abgleich von Zustand und Hold; keine neue Sachabnahme oder Kartenschließung."
+    }
   },
   {
     "id": "tore-011",
@@ -107,7 +177,14 @@
     "disposition": "cgo-Register-/Kalenderhygiene; tatsächliche Ausnahme bleibt fachlich sichtbar, kein Zeitablauf.",
     "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
     "boardPin": "a2de5ff614240f0b0a3b5f6880611bddda1089d5",
-    "closedByThisAddendum": false
+    "closedByThisAddendum": false,
+    "laterComparison": {
+      "boardPin": "68138cba66ff21d6634c0d7879d19901e3642265",
+      "state": "open",
+      "held": true,
+      "unchanged": true,
+      "scope": "Erneuter Abgleich von Zustand und Hold; keine neue Sachabnahme oder Kartenschließung."
+    }
   },
   {
     "id": "tore-018",
@@ -117,7 +194,14 @@
     "disposition": "cgo-Register-/Kalenderhygiene; 180 ist Altbericht, neu zählen.",
     "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
     "boardPin": "a2de5ff614240f0b0a3b5f6880611bddda1089d5",
-    "closedByThisAddendum": false
+    "closedByThisAddendum": false,
+    "laterComparison": {
+      "boardPin": "68138cba66ff21d6634c0d7879d19901e3642265",
+      "state": "open",
+      "held": true,
+      "unchanged": true,
+      "scope": "Erneuter Abgleich von Zustand und Hold; keine neue Sachabnahme oder Kartenschließung."
+    }
   },
   {
     "id": "vision-001",
@@ -127,7 +211,14 @@
     "disposition": "Optionales Drehbuchurteil bleibt erhalten; kein technischer Blocker.",
     "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
     "boardPin": "a2de5ff614240f0b0a3b5f6880611bddda1089d5",
-    "closedByThisAddendum": false
+    "closedByThisAddendum": false,
+    "laterComparison": {
+      "boardPin": "68138cba66ff21d6634c0d7879d19901e3642265",
+      "state": "open",
+      "held": true,
+      "unchanged": true,
+      "scope": "Erneuter Abgleich von Zustand und Hold; keine neue Sachabnahme oder Kartenschließung."
+    }
   },
   {
     "id": "vision-002",
@@ -137,7 +228,14 @@
     "disposition": "Klang/Feedback nach Kapitel-1-Siegel als getrennte spätere Pakete.",
     "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
     "boardPin": "a2de5ff614240f0b0a3b5f6880611bddda1089d5",
-    "closedByThisAddendum": false
+    "closedByThisAddendum": false,
+    "laterComparison": {
+      "boardPin": "68138cba66ff21d6634c0d7879d19901e3642265",
+      "state": "open",
+      "held": true,
+      "unchanged": true,
+      "scope": "Erneuter Abgleich von Zustand und Hold; keine neue Sachabnahme oder Kartenschließung."
+    }
   },
   {
     "id": "welle-016",
@@ -147,7 +245,14 @@
     "disposition": "Kapitel 4 später individuell kalibrieren; neue cgo-Einzelkarte erst auf geprüfter Vorgängerbasis.",
     "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
     "boardPin": "a2de5ff614240f0b0a3b5f6880611bddda1089d5",
-    "closedByThisAddendum": false
+    "closedByThisAddendum": false,
+    "laterComparison": {
+      "boardPin": "68138cba66ff21d6634c0d7879d19901e3642265",
+      "state": "open",
+      "held": true,
+      "unchanged": true,
+      "scope": "Erneuter Abgleich von Zustand und Hold; keine neue Sachabnahme oder Kartenschließung."
+    }
   },
   {
     "id": "welle-017",
@@ -157,7 +262,14 @@
     "disposition": "Kapitel 5 folgt Kapitel 4; Takt/Parade/Boss-Duo als eigene Signatur erhalten.",
     "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
     "boardPin": "a2de5ff614240f0b0a3b5f6880611bddda1089d5",
-    "closedByThisAddendum": false
+    "closedByThisAddendum": false,
+    "laterComparison": {
+      "boardPin": "68138cba66ff21d6634c0d7879d19901e3642265",
+      "state": "open",
+      "held": true,
+      "unchanged": true,
+      "scope": "Erneuter Abgleich von Zustand und Hold; keine neue Sachabnahme oder Kartenschließung."
+    }
   },
   {
     "id": "welle-018",
@@ -167,7 +279,14 @@
     "disposition": "Kapitel 6 folgt Kapitel 5; Nachweis/Lupe als eigenes Lernverb, keine ch01-Schablone.",
     "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
     "boardPin": "a2de5ff614240f0b0a3b5f6880611bddda1089d5",
-    "closedByThisAddendum": false
+    "closedByThisAddendum": false,
+    "laterComparison": {
+      "boardPin": "68138cba66ff21d6634c0d7879d19901e3642265",
+      "state": "open",
+      "held": true,
+      "unchanged": true,
+      "scope": "Erneuter Abgleich von Zustand und Hold; keine neue Sachabnahme oder Kartenschließung."
+    }
   },
   {
     "id": "welle-019",
@@ -177,7 +296,14 @@
     "disposition": "Kunst je Raum erst nach grünem Spielband und freigegebenem Muster; später einzelne cgo-Karten.",
     "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
     "boardPin": "a2de5ff614240f0b0a3b5f6880611bddda1089d5",
-    "closedByThisAddendum": false
+    "closedByThisAddendum": false,
+    "laterComparison": {
+      "boardPin": "68138cba66ff21d6634c0d7879d19901e3642265",
+      "state": "open",
+      "held": true,
+      "unchanged": true,
+      "scope": "Erneuter Abgleich von Zustand und Hold; keine neue Sachabnahme oder Kartenschließung."
+    }
   },
   {
     "id": "welle-028",
@@ -187,7 +313,14 @@
     "disposition": "Y1-Kapitel 3 nach ch01-Zyklus und geprüftem ch02-Muster neu briefen; kein alter Trial-Boot.",
     "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
     "boardPin": "a2de5ff614240f0b0a3b5f6880611bddda1089d5",
-    "closedByThisAddendum": false
+    "closedByThisAddendum": false,
+    "laterComparison": {
+      "boardPin": "68138cba66ff21d6634c0d7879d19901e3642265",
+      "state": "open",
+      "held": true,
+      "unchanged": true,
+      "scope": "Erneuter Abgleich von Zustand und Hold; keine neue Sachabnahme oder Kartenschließung."
+    }
   },
   {
     "id": "welle-046",
@@ -197,7 +330,14 @@
     "disposition": "Y2-U2/U3 warten weiterhin auf steu-020 und angenommene U1; keine Vorratswelle.",
     "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
     "boardPin": "a2de5ff614240f0b0a3b5f6880611bddda1089d5",
-    "closedByThisAddendum": false
+    "closedByThisAddendum": false,
+    "laterComparison": {
+      "boardPin": "68138cba66ff21d6634c0d7879d19901e3642265",
+      "state": "open",
+      "held": true,
+      "unchanged": true,
+      "scope": "Erneuter Abgleich von Zustand und Hold; keine neue Sachabnahme oder Kartenschließung."
+    }
   },
   {
     "id": "welle-051",
@@ -207,7 +347,14 @@
     "disposition": "Kokis Year-4-Hold bleibt; Wiederaufnahme nur auf seinen späteren Auftrag.",
     "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
     "boardPin": "a2de5ff614240f0b0a3b5f6880611bddda1089d5",
-    "closedByThisAddendum": false
+    "closedByThisAddendum": false,
+    "laterComparison": {
+      "boardPin": "68138cba66ff21d6634c0d7879d19901e3642265",
+      "state": "open",
+      "held": true,
+      "unchanged": true,
+      "scope": "Erneuter Abgleich von Zustand und Hold; keine neue Sachabnahme oder Kartenschließung."
+    }
   },
   {
     "id": "welle-057",
@@ -217,7 +364,14 @@
     "disposition": "Bestehende Gestaltungsentscheidung in cgo-Mockup umsetzen; kein zweites Richtungsurteil.",
     "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
     "boardPin": "a2de5ff614240f0b0a3b5f6880611bddda1089d5",
-    "closedByThisAddendum": false
+    "closedByThisAddendum": false,
+    "laterComparison": {
+      "boardPin": "68138cba66ff21d6634c0d7879d19901e3642265",
+      "state": "open",
+      "held": true,
+      "unchanged": true,
+      "scope": "Erneuter Abgleich von Zustand und Hold; keine neue Sachabnahme oder Kartenschließung."
+    }
   },
   {
     "id": "welle-060",
@@ -227,7 +381,14 @@
     "disposition": "Year-4-Statusbericht bleibt zurückgestellt; Inventur markiert die Dokumentdrift.",
     "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
     "boardPin": "a2de5ff614240f0b0a3b5f6880611bddda1089d5",
-    "closedByThisAddendum": false
+    "closedByThisAddendum": false,
+    "laterComparison": {
+      "boardPin": "68138cba66ff21d6634c0d7879d19901e3642265",
+      "state": "open",
+      "held": true,
+      "unchanged": true,
+      "scope": "Erneuter Abgleich von Zustand und Hold; keine neue Sachabnahme oder Kartenschließung."
+    }
   },
   {
     "id": "welle-063",
@@ -237,7 +398,14 @@
     "disposition": "B1-Messkarte + unabhängige Prüfung; bestehender PR bleibt vorerst unverändert.",
     "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
     "boardPin": "a2de5ff614240f0b0a3b5f6880611bddda1089d5",
-    "closedByThisAddendum": false
+    "closedByThisAddendum": false,
+    "laterComparison": {
+      "boardPin": "68138cba66ff21d6634c0d7879d19901e3642265",
+      "state": "review",
+      "held": true,
+      "unchanged": true,
+      "scope": "Erneuter Abgleich von Zustand und Hold; keine neue Sachabnahme oder Kartenschließung."
+    }
   },
   {
     "id": "welle-064",
@@ -247,7 +415,14 @@
     "disposition": "Y1-B2 nach tatsächlichem B1-Spielurteil und geprüftem D1-Blatt.",
     "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
     "boardPin": "a2de5ff614240f0b0a3b5f6880611bddda1089d5",
-    "closedByThisAddendum": false
+    "closedByThisAddendum": false,
+    "laterComparison": {
+      "boardPin": "68138cba66ff21d6634c0d7879d19901e3642265",
+      "state": "open",
+      "held": true,
+      "unchanged": true,
+      "scope": "Erneuter Abgleich von Zustand und Hold; keine neue Sachabnahme oder Kartenschließung."
+    }
   },
   {
     "id": "welle-065",
@@ -257,7 +432,14 @@
     "disposition": "Y1-C nach B2, eigener Karten-/Textzaun.",
     "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
     "boardPin": "a2de5ff614240f0b0a3b5f6880611bddda1089d5",
-    "closedByThisAddendum": false
+    "closedByThisAddendum": false,
+    "laterComparison": {
+      "boardPin": "68138cba66ff21d6634c0d7879d19901e3642265",
+      "state": "open",
+      "held": true,
+      "unchanged": true,
+      "scope": "Erneuter Abgleich von Zustand und Hold; keine neue Sachabnahme oder Kartenschließung."
+    }
   },
   {
     "id": "welle-067",
@@ -267,7 +449,14 @@
     "disposition": "Y1-F nach C, eigener Raum- und Spiellogiknachweis.",
     "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
     "boardPin": "a2de5ff614240f0b0a3b5f6880611bddda1089d5",
-    "closedByThisAddendum": false
+    "closedByThisAddendum": false,
+    "laterComparison": {
+      "boardPin": "68138cba66ff21d6634c0d7879d19901e3642265",
+      "state": "open",
+      "held": true,
+      "unchanged": true,
+      "scope": "Erneuter Abgleich von Zustand und Hold; keine neue Sachabnahme oder Kartenschließung."
+    }
   },
   {
     "id": "welle-068",
@@ -277,7 +466,14 @@
     "disposition": "Y1-Lernspur; Warten auf PR 452 ist überholt, fachliche Arbeit bleibt offen.",
     "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
     "boardPin": "a2de5ff614240f0b0a3b5f6880611bddda1089d5",
-    "closedByThisAddendum": false
+    "closedByThisAddendum": false,
+    "laterComparison": {
+      "boardPin": "68138cba66ff21d6634c0d7879d19901e3642265",
+      "state": "open",
+      "held": true,
+      "unchanged": true,
+      "scope": "Erneuter Abgleich von Zustand und Hold; keine neue Sachabnahme oder Kartenschließung."
+    }
   },
   {
     "id": "welle-069",
@@ -287,7 +483,14 @@
     "disposition": "Erreichbare Y3-Musterfolge; bestehender PR und Zusatzlabor separat behandeln.",
     "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
     "boardPin": "a2de5ff614240f0b0a3b5f6880611bddda1089d5",
-    "closedByThisAddendum": false
+    "closedByThisAddendum": false,
+    "laterComparison": {
+      "boardPin": "68138cba66ff21d6634c0d7879d19901e3642265",
+      "state": "review",
+      "held": true,
+      "unchanged": true,
+      "scope": "Erneuter Abgleich von Zustand und Hold; keine neue Sachabnahme oder Kartenschließung."
+    }
   },
   {
     "id": "welle-071",
@@ -297,7 +500,14 @@
     "disposition": "Kunstkalibrierung nach Cast-Korrektur, kein sofortiger Serienauftrag.",
     "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
     "boardPin": "a2de5ff614240f0b0a3b5f6880611bddda1089d5",
-    "closedByThisAddendum": false
+    "closedByThisAddendum": false,
+    "laterComparison": {
+      "boardPin": "68138cba66ff21d6634c0d7879d19901e3642265",
+      "state": "open",
+      "held": true,
+      "unchanged": true,
+      "scope": "Erneuter Abgleich von Zustand und Hold; keine neue Sachabnahme oder Kartenschließung."
+    }
   },
   {
     "id": "welle-072",
@@ -307,7 +517,14 @@
     "disposition": "Y3-Freigabe-Reife nach Vorschau, Urteil und Lernspur.",
     "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
     "boardPin": "a2de5ff614240f0b0a3b5f6880611bddda1089d5",
-    "closedByThisAddendum": false
+    "closedByThisAddendum": false,
+    "laterComparison": {
+      "boardPin": "68138cba66ff21d6634c0d7879d19901e3642265",
+      "state": "open",
+      "held": true,
+      "unchanged": true,
+      "scope": "Erneuter Abgleich von Zustand und Hold; keine neue Sachabnahme oder Kartenschließung."
+    }
   },
   {
     "id": "welle-073",
@@ -317,7 +534,14 @@
     "disposition": "Avatar-Auswahl erst nach geklärter Spielstart-/Punkteoberfläche; eigener späterer Auftrag, keine implizite Migration.",
     "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
     "boardPin": "a2de5ff614240f0b0a3b5f6880611bddda1089d5",
-    "closedByThisAddendum": false
+    "closedByThisAddendum": false,
+    "laterComparison": {
+      "boardPin": "68138cba66ff21d6634c0d7879d19901e3642265",
+      "state": "open",
+      "held": true,
+      "unchanged": true,
+      "scope": "Erneuter Abgleich von Zustand und Hold; keine neue Sachabnahme oder Kartenschließung."
+    }
   },
   {
     "id": "welle-074",
@@ -327,7 +551,14 @@
     "disposition": "In cgo-Y3-Vorschau übertragen; Ziel ausdrücklich codex/main statt main.",
     "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
     "boardPin": "a2de5ff614240f0b0a3b5f6880611bddda1089d5",
-    "closedByThisAddendum": false
+    "closedByThisAddendum": false,
+    "laterComparison": {
+      "boardPin": "68138cba66ff21d6634c0d7879d19901e3642265",
+      "state": "open",
+      "held": true,
+      "unchanged": true,
+      "scope": "Erneuter Abgleich von Zustand und Hold; keine neue Sachabnahme oder Kartenschließung."
+    }
   },
   {
     "id": "welle-075",
@@ -337,7 +568,14 @@
     "disposition": "In cgo-Kunstkalibrierung übertragen; steu-023 bleibt bereits erteiltes Urteil.",
     "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
     "boardPin": "a2de5ff614240f0b0a3b5f6880611bddda1089d5",
-    "closedByThisAddendum": false
+    "closedByThisAddendum": false,
+    "laterComparison": {
+      "boardPin": "68138cba66ff21d6634c0d7879d19901e3642265",
+      "state": "open",
+      "held": true,
+      "unchanged": true,
+      "scope": "Erneuter Abgleich von Zustand und Hold; keine neue Sachabnahme oder Kartenschließung."
+    }
   },
   {
     "id": "welle-077",
@@ -347,6 +585,13 @@
     "disposition": "Mit B1-Gegenmessung bündeln; ruhige Maschine ist Voraussetzung.",
     "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
     "boardPin": "a2de5ff614240f0b0a3b5f6880611bddda1089d5",
-    "closedByThisAddendum": false
+    "closedByThisAddendum": false,
+    "laterComparison": {
+      "boardPin": "68138cba66ff21d6634c0d7879d19901e3642265",
+      "state": "open",
+      "held": true,
+      "unchanged": true,
+      "scope": "Erneuter Abgleich von Zustand und Hold; keine neue Sachabnahme oder Kartenschließung."
+    }
   }
 ]
