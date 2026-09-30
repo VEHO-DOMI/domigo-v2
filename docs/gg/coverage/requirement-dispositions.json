@@ -1,0 +1,703 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "productPin": "269ee986ccdc1ae7c3b070cbed7014f20e532365",
+  "note": "Belegumfang gilt ausschließlich für die benannten Teilkriterien. Der Zustand teilgebaut bedeutet NICHT, dass jedes Unterkriterium gebaut ist. Nicht belegt bleibt ausdrücklich beim individuellen Vollwortlaut erhalten.",
+  "profiles": [
+    {
+      "id": "history",
+      "state": "unverifiziert",
+      "subject": "Historischer Lage-/Prozessbefund",
+      "missingEvidence": "Die datierten Bestandszahlen, Produktionszustände und Arbeitsbefehle werden ausschließlich als damalige Aussage erhalten; eine auf 269ee gebundene Bestätigung dieser jeweiligen Aussage fehlt.",
+      "disposition": "Nicht in heutige Fertigzahlen umrechnen. Ausführung und Rollen richten sich ausschließlich nach cgo-025/Nachtrag5, nicht nach historischen Bootbefehlen.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "principles",
+      "state": "unverifiziert",
+      "subject": "Weitergeltende Produkt-/Didaktikgesetze",
+      "missingEvidence": "Der Einzelwortlaut nennt die Abnahmebedingung; ein aktueller vollständiger Nachweis über alle betroffenen Lernpfade, Klassen, Offlinereaktionen und Aufgabentypen fehlt.",
+      "disposition": "Als Abnahmebedingung der jeweils konkret folgenden Produktphase erhalten. Ausführungs-/Mergebefehle ersetzt nur durch aktuellen Kartenauftrag.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "doc",
+      "state": "unverifiziert",
+      "subject": "Blueprint-Verankerung und frische Übergabefähigkeit",
+      "missingEvidence": "Ein historischer Dokumenteintrag beweist den DOC-2-Versuch mit einer frischen Sitzung und überprüftem Runbook nicht.",
+      "disposition": "Dokumentbindung erhalten; damalige Sitzungsschritte nicht ausführen. GG beurteilt den erforderlichen neuen Einstieg separat.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "home",
+      "state": "teilgebaut",
+      "subject": "Storyzugang, Admin-Einstieg und verwaiste Review-Verbindungen",
+      "missingEvidence": "Story-Kachel ist belegt; aktueller Nachweis für sämtliche Admin-/G3-Orphan-Unterpunkte und reale Gerätewege fehlt.",
+      "disposition": "Storyzugang wiederverwenden; verbleibende Orphan-/Admin-Unterpunkte einzeln im Plattform-/Y3-Pass abnehmen.",
+      "evidenceRefs": [
+        "P08"
+      ],
+      "replacement": null
+    },
+    {
+      "id": "grading",
+      "state": "teilgebaut",
+      "subject": "Strict, Abschriftsperre, vier Richtungspools und Varianten",
+      "missingEvidence": "Codebeleg deckt die benannten Bewertungszweige. Vollständiger frischer Testlauf, alle Sprachpools und damalige Variantenkalibrierung sind getrennt; historische Behauptung von zwei gemischten Pools nicht als neuen Fund übernehmen.",
+      "disposition": "Bestehenden Grader erhalten. Abweichende Items benötigen eine auf geänderte Felder begrenzte Inhaltsprüfung gemäß review-lineage; keine Neubewertung aller 5898 Items.",
+      "evidenceRefs": [
+        "P01"
+      ],
+      "replacement": null
+    },
+    {
+      "id": "variant",
+      "state": "teilgebaut",
+      "subject": "Vollständige akzeptierte Antworten R1–R5 und menschliche Kalibrierung",
+      "missingEvidence": "934 Fingerprint-Abweichungen sind feldgenau erfasst; das liefert keine semantische Freigabe der 905 tatsächlich geänderten Inhalte und ersetzt die menschliche Festlegung der Kreditregeln nicht.",
+      "disposition": "Alte unveränderte Reviewanteile erhalten; 109 Antworten/8 Prompts separat behandeln. Bare-Noun-Regel aus S002/K-4 vor pauschalem R1-Fix beachten.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "blind",
+      "state": "teilgebaut",
+      "subject": "Blindlösen ohne Schlüssel, echte Engine-Wertung und null ungeklärte Abweichungen",
+      "missingEvidence": "Historischer Harness-/Dryrun-Status ist kein neuer echter Modelllauf mit Kosten, gleicher sichtbarer Aufgabe und vollständiger Abweichungsauflösung.",
+      "disposition": "Bestehende Verfahren/Urteile erhalten; nur geänderte Ansicht/Antwortmenge erneut prüfen. Neue cgo-006-Inhaltsansicht braucht eigenes Leserurteil.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "listening-review",
+      "state": "offen",
+      "subject": "Listening mit echter Audiodatei in passende Wiederholung einbinden",
+      "missingEvidence": "persist.ts schließt Listening weiterhin aus; benötigt nachgewiesenen Audio-Replay, Queue-Eintrag, Fälligkeitsabruf und beantwortbaren Wiederholungsbildschirm.",
+      "disposition": "Eigenständige erhaltene Listening-Phase; nicht aus MP3-Dateipräsenz oder allgemeiner Queue als gebaut ableiten.",
+      "evidenceRefs": [
+        "P02"
+      ],
+      "replacement": null
+    },
+    {
+      "id": "human",
+      "state": "unverifiziert",
+      "subject": "Buchtreue und physische Geräte-/Didaktikabnahme",
+      "missingEvidence": "Auf den jeweiligen Jahrgang und Gegenstand gebundene Lehrkraftstichprobe bzw. echte iOS/Android-/WebKit-/Hilfsneutralitätsbelege fehlen hier.",
+      "disposition": "Historische menschliche Gates erhalten; Y1/Y3-Pilot und Automaten ersetzen sie nicht. GG disponiert die konkrete Abnahme.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "wave",
+      "state": "unverifiziert",
+      "subject": "A-Level-Autorierung einschließlich Vorhersage, Gist/Detail, Cue, Ablenker und Schreibexemplar",
+      "missingEvidence": "Benötigt die einzelnen Schemafelder, kausale Einbindung in die Darstellung und die ausdrücklich vor Menge liegende Stimmen-/Registerkalibrierung. 57 Bestandsregister allein belegen diese Zusatzdidaktik nicht.",
+      "disposition": "Jede Unterzusage vor der jeweiligen Listening-/Testwelle mit dem angegebenen Pilot prüfen; nicht durch heutiges W0-Vokabelpilot gleichsetzen.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "audio",
+      "state": "unverifiziert",
+      "subject": "Vorgenerierte Stimmen, Skripthash, Kosten, Qualitätsstichprobe und Story-Hören",
+      "missingEvidence": "Für jeden AU-Unterpunkt fehlen zusammenpassende Provider-/Sprecherzuordnung, Hash/Cache-Erneuerung, Budget und 20%-Qualitätsbeleg. D-482 betrifft ausschließlich vier Spielklänge.",
+      "disposition": "TTS-/Listening-/Storyaudio getrennt erhalten; reale Paint-Klänge ersetzen diese Sprach-Audios nicht.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "g4-old",
+      "state": "geparkt",
+      "subject": "Die alte Lost-for-Words-Erzählung samt 13 Kapitelbeats",
+      "missingEvidence": "S002 Part I ersetzt/parkt diese Erzählrichtung; es fehlt keine neue Baupflicht für gerade diese verworfene Erzählung. Allgemeine Erzähl-/Lernmechaniken bleiben separat erhalten.",
+      "disposition": "Als historische Alternative erhalten, keine Kapitelstilllegung anderer Kampagnen daraus ableiten.",
+      "evidenceRefs": [
+        "P14"
+      ],
+      "replacement": {
+        "source": "S002",
+        "section": "Part I / G4 narrative reversal",
+        "scope": "alte Erzählung und eigener Produktionszeitplan, nicht narrative-unabhängige Mechaniken"
+      }
+    },
+    {
+      "id": "g4-mechanics",
+      "state": "teilgebaut",
+      "subject": "Flag-/Konsequenz-/Bossmechaniken unabhängig vom alten G4-Stoff",
+      "missingEvidence": "Die Quellen verlangen Wahlfolgen ohne Bewertung, neutrale Else-Pfade, gebündelte Enden, pfadunabhängige Übungsabdeckung, hilfsneutrale XP und nicht verlierbare Bossleiter. Einzelmechaniken existieren; ein aktueller vollständiger Vertragsnachweis je genannter Unterbedingung fehlt.",
+      "disposition": "In G4-Weiterführung ausdrücklich erhalten; Lost-for-Words-Parkung ist keine Mechanikstreichung. story-context/Flagpfade getrennt in learning-paths berücksichtigen.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "gx",
+      "state": "unverifiziert",
+      "subject": "Spielvertiefung B1–B12 mit eigener Wirkung je Unterpunkt",
+      "missingEvidence": "ALIVE absorbiert laut S001 nur Teile von B1/B2/B3/B12. Re-Fog, Due-Chips, genaue Wiederaufnahmezeile, Audioevidenz, Zusatz-CI, G2-Callbacks und G3-Varianten benötigen je ihren eigenen heutigen Beleg.",
+      "disposition": "Jeden B-Unterpunkt erhalten; Y3-Lernspur cgo-011 und spätere Spielphase müssen den konkret genannten Rest nachweisen. Ein Animationseffekt schließt keinen Lernpfad.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "feedback",
+      "state": "teilgebaut",
+      "subject": "Lehrreiche Rückmeldung in drei Momenten und Kinder-Trapregister",
+      "missingEvidence": "Vorhandene Antwort-/Fehlerkarte ist belegt. Benötigt zusätzlich Der-Punkt-Fallback, einklappbare Vertiefung, Wortbudget/Kindersprache, Ablenkergründe und vollständige strukturenbezogene Trap-Zuordnung.",
+      "disposition": "Bestehende Karte/klassifizierte Fehler wiederverwenden; fehlende didaktische Oberfläche und Inhaltswelle ausdrücklich separat erhalten.",
+      "evidenceRefs": [
+        "P03"
+      ],
+      "replacement": null
+    },
+    {
+      "id": "listen-ped",
+      "state": "unverifiziert",
+      "subject": "Hörstrategie: Vorhersage, zwei Hördurchgänge, Hinweise und Übungskliniken",
+      "missingEvidence": "Benötigt sichtbaren predict→gist→detail-Ablauf, wörtlichen Cue im Transkript, Ablenkergründe und passende Strategiekliniken; normale Audio-Abspielbarkeit reicht nicht.",
+      "disposition": "Als eigene Listening-Didaktikphase erhalten, gekoppelt an W-0-Felder und Audio-Wiederholung.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "lesson",
+      "state": "unverifiziert",
+      "subject": "Fünfteilige Mikro-Lektionen, Beispiele, Minichecks und Kalibrierung",
+      "missingEvidence": "Die Existenz von rules/commonErrors oder einer Lesson-Seite belegt weder 300–450 Wörter noch drei unbenotete Minichecks, alle fünf Bausteine, Wellenabdeckung und das 10+20%-Humangate.",
+      "disposition": "Vorhandene Lehrinhalte als Quelle weiterverwenden; fehlende Lektionsabnahme nicht als fertige Grammatikdidaktik verkaufen.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "write-ped",
+      "state": "teilgebaut",
+      "subject": "Schreibcheckliste, erst nach Abgabe sichtbares Exemplar und Revision",
+      "missingEvidence": "Textabgabe/Lehrkraftwertung sind belegt; Checkliste mit 3–5 Punkten, Exemplar mit höchstens drei Anmerkungen, Sperre vor erster Abgabe und Revisionsstern benötigen eigene Belege.",
+      "disposition": "Schreibpädagogik und Korrekturtechnik separat fortführen; KI-Korrektur ist keine Voraussetzung zum Erhalt dieser menschlichen Didaktik.",
+      "evidenceRefs": [
+        "P06"
+      ],
+      "replacement": null
+    },
+    {
+      "id": "autonomy",
+      "state": "offen",
+      "subject": "Drei-Schritt-Tagesplan, bewusster Übungsfehler im Einstieg und Aufholen",
+      "missingEvidence": "Startseite hat Menükacheln; nachgewiesener Drei-Karten-Plan, selbsterklärender Onboardinglauf und 14-Tage-Aufholsteuerung mit begrenzter Neuplanung fehlen.",
+      "disposition": "Als Plattformautonomie erhalten; Storyzugang ersetzt weder Tagesplanung noch Aufholmodus.",
+      "evidenceRefs": [
+        "P08"
+      ],
+      "replacement": null
+    },
+    {
+      "id": "placement",
+      "state": "unverifiziert",
+      "subject": "Einstufung ohne Note und ohne erfundene Lernfortschritte",
+      "missingEvidence": "Benötigt etwa 18 Aufgaben in drei Regelstufen, Zuweisungsentscheidung und Beleg, dass übersprungene Inhalte nicht als gelöst gespeichert werden.",
+      "disposition": "Eigene Einstufungsphase; bestehende solved-/stars-Daten nicht als Einstufungsergebnis hochrechnen.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "mastery",
+      "state": "teilgebaut",
+      "subject": "Beherrschung aus Genauigkeit, Abdeckung, Aktualität und Unsicherheit",
+      "missingEvidence": "Journey-Versuchsabdeckung existiert, bildet aber kein accuracy×coverage×recency-Modell mit vier Vertrauensbändern; Lehrerübereinstimmung und drei adressatengerechte Ansichten fehlen als Beleg.",
+      "disposition": "V1–V6/WS-PROG erhalten: Lernziel und nachgewiesenes Antwortformat führen, kein Übertragen eines richtigen Formats auf ungeübte Formate.",
+      "evidenceRefs": [
+        "P04"
+      ],
+      "replacement": null
+    },
+    {
+      "id": "assign",
+      "state": "unverifiziert",
+      "subject": "Lehrkraftaufträge, Abschnitte, Reserven, Zeitwand und Notenschlüssel",
+      "missingEvidence": "Benötigt zusammenhängenden Klassen-/Autorisierungsnachweis vom Lehrerauftrag über reservierte Auswahl, serverseitiges Ende und Gewichtung bis Lehrkraftauswertung; einzelne vorhandene DB-Tabellen reichen nicht.",
+      "disposition": "M-Welle als Plattformphase behalten. Reserviertes Material nicht in Übung/Review verlieren; cgo-009-Zugang ist nur ein Teil.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "writing",
+      "state": "teilgebaut",
+      "subject": "Erfassung, Lehrkraftkorrektur, KI/OCR, Telemetrie und Revision",
+      "missingEvidence": "Aktuelle einfache Textabgabe und Lehrerbewertung belegt. Jeder Foto-/EXIF-/Größen-/Autosave-/Telemetrie-/Unit-Coverage-/Partition-/Kosten-/Freigabe-Unterpunkt braucht einen eigenen Nachweis. Keine automatisch veröffentlichte KI-Note.",
+      "disposition": "Schreiben vollständig erhalten: manueller Grundpfad, dann beaufsichtigte KI/OCR-Stufe; Datenschutz-/Register-/Kostengates vor Freischaltung.",
+      "evidenceRefs": [
+        "P06"
+      ],
+      "replacement": null
+    },
+    {
+      "id": "studio",
+      "state": "teilgebaut",
+      "subject": "Studio-Prosaoverlay und vollständige Aufgabenverwaltung mit Journal/Prüfung/Rückführung",
+      "missingEvidence": "Belegt sind Journal vor Statuswechsel und differenzierter Create/Replace/Remove-Ablauf. Passthrough über 57 Einheiten, negative Feldangriffe, echter Blindlauf, UI-Rundgang und Rückführung in kanonische Quellen sind getrennt unbestätigt.",
+      "disposition": "Vorhandene Schutzlogik erhalten; keine Gleichsetzung von Entfernung mit blind geprüften Antwortschlüsseln. Studio-Phase braucht vollständigen Publikationsnachweis.",
+      "evidenceRefs": [
+        "P07"
+      ],
+      "replacement": null
+    },
+    {
+      "id": "ops",
+      "state": "unverifiziert",
+      "subject": "Datenmigration, Last-/Offline-/Datenschutz-/Beta-Nachweise",
+      "missingEvidence": "Historische Checkliste enthält eigene Einzelbedingungen (zweiter Import, unverändertes public-Schema, Klassenspitze, Datenschutznick, vollständiger Beta-Rundgang); deren heutige Ausführungsbelege fehlen in dieser Inventur.",
+      "disposition": "Als Betriebsphase erhalten, keine Produktionsaktion ausführen. Migrationsnummern nur gegen Journal lesen. Manifest ist keine volle Offline-Abnahme.",
+      "evidenceRefs": [
+        "P05"
+      ],
+      "replacement": null
+    },
+    {
+      "id": "parity",
+      "state": "unverifiziert",
+      "subject": "V1-Komfortfunktionen unter heutigen Lern-/Datenschutzgesetzen",
+      "missingEvidence": "Arcade nur auf beherrschtem Stoff, tägliche Aufgabe, Profile/Badges/Avatare, Wort des Tages, Wörterbuch, duale Bestenlisten-Zustimmung und Lehrkraftaktivität benötigen jeweils Funktions- und Datenwegbelege.",
+      "disposition": "V1 als zusätzliche Referenz erhalten. Keine automatische Freigabe alter Timer-/Scoremodelle; Vokabel-/Grammatikhandlung einzeln in learning-paths.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "alive",
+      "state": "unverifiziert",
+      "subject": "ALIVE-Paket mit Interaktion, Präsenz, Sound und Arcade-Unterverträgen",
+      "missingEvidence": "Jeder A-/T-/Arcade-Unterpunkt behält seine konkrete Quelle; Funktionspräsenz des game-feel-Pakets beweist nicht alle Interaktionen, Tastaturwege, reduzierte Bewegung oder Beherrschungsfilter.",
+      "disposition": "Wiederverwendbare Bausteine erhalten. Nur Paint-Soundvorgabe ist durch R124 zu echtem leisen Ton mit Mute geändert; andere Spiele werden dadurch nicht ungefragt laut.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "sequencing",
+      "state": "geparkt",
+      "subject": "Alter datierter Ablauf und historische Zuständigkeiten",
+      "missingEvidence": "S002 verwirft den September-Zeitplan. Die genannten Produktzusagen verschwinden dadurch nicht.",
+      "disposition": "Historische Reihenfolge archivieren; aktuelle Karten/GG bestimmen Zuteilung und Merge. Kein automatischer Agenten-/Bau-/Migrationsstart.",
+      "evidenceRefs": [],
+      "replacement": {
+        "source": "S002 Part I und cgo-025/Nachtrag5",
+        "scope": "Datums-/Ausführungsregeln, keine Produktfunktion"
+      }
+    },
+    {
+      "id": "language",
+      "state": "teilgebaut",
+      "subject": "Klasse 1 zuerst Deutsch, auswählbare Sprachschicht und Plattformtexte",
+      "missingEvidence": "Sprachauflösung vorhanden; die vollständige grade-1-Menüumstellung ist am Home-Beispiel nicht erfüllt. Alle deutschen Begleittexte brauchen weiterhin Register-/Stufengrenzen.",
+      "disposition": "Story-Sprachfunktion wiederverwenden, Plattform-Deutschführung als eigenen offenen Umfang erhalten.",
+      "evidenceRefs": [
+        "P08",
+        "P13"
+      ],
+      "replacement": null
+    },
+    {
+      "id": "curation",
+      "state": "unverifiziert",
+      "subject": "Kuratierrubrik vor Schlüsselreparatur",
+      "missingEvidence": "Die schriftliche Rubrik ist die normative Quelle; ein heutiger Nachweis, dass jeder geänderte Schlüssel diese Rubrik und das menschliche Kalibrierurteil erfüllt, ist nicht gegeben.",
+      "disposition": "Historisch geprüfte unveränderte Arbeit erhalten. Neue Frage nur bei geändertem Feld/Ansicht oder konkretem Befund; kein Reset aller Reviewwellen.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "campaign",
+      "state": "teilgebaut",
+      "subject": "Kampagnenwechsel mit erhaltener Mechanik und gestaffelter Veröffentlichung",
+      "missingEvidence": "Vorhandene Kampagnen/Spielstände sind nicht identisch mit allen hier versprochenen Figuren-, Enden-, Flag-, Kunst- und Release-Gates. Die späteren Paint-/FOURTEEN-Pläne präzisieren den Stoff.",
+      "disposition": "Vorgängerhistorie bewahren; heutige Y1/Y3-Phase wiederverwenden, Y4-Nachfolger bleibt erhalten. Keine alte verworfene Erzählung reaktivieren.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "look",
+      "state": "unverifiziert",
+      "subject": "Figurenkanon, Bildresolver, Importpipeline, Stilkalibrierung und Bewegung",
+      "missingEvidence": "Dateien/Importberichte sind keine neue Kunstfreigabe. Benötigt jeweils Stilentscheidung, tatsächlichen Engine-Ausschnitt, Importzuordnung und Bewegungs-/Reduktionsbeleg.",
+      "disposition": "LauterEinser-Rahmen und begrenzte cgo-007-Kalibrierung respektieren; art-first nicht als Erlaubnis zu Bildproduktion in cgo-025 lesen.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "identity",
+      "state": "teilgebaut",
+      "subject": "Native Identität, Klassen und Schüleranspruch",
+      "missingEvidence": "Alte v2/v1-Fallback-Architektur ist nicht mehr alleinige heutige Zugangswahrheit; Konto-Anbindung benötigt ihren aktuellen Berechtigungs-/Klassenbeleg. roster.ts fehlt am Pin, was andere Implementierung nicht ausschließt.",
+      "disposition": "Erhaltenen Claim-/Privacy-/Lehrkraftvertrag explizit an cgo-009/Konto-Abnahme binden; keine alten Auth-Tabellen eigenmächtig wiederbauen.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "checkup",
+      "state": "teilgebaut",
+      "subject": "/20-Checkup mit Richtungspools und Reservenschutz",
+      "missingEvidence": "S002 As-built + S194 korrigieren reserved-first zu reserved-EXCLUDED, picture-mc zu zurückgestellt, Note zu points-only und Runner zu Ein-Seite. Aktueller Lehrer→Schüler→Zeitwand-DB-Beleg fehlt.",
+      "disposition": "Diese vier expliziten Korrekturen übernehmen; Rest wie Summe20, eigene Richtung, serverseitige Zeitgrenze und Gewichtung erhalten. Kein bloßes Häkchen als reale Klassenabnahme.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "journey",
+      "state": "teilgebaut",
+      "subject": "Pools, reservierte Aufgaben und aus Versuchen abgeleitete Stationen",
+      "missingEvidence": "Journey-Code belegt versuchsbezogene Stationen. Vollständige Poolintegrität über alle Feeds, echte Speicherung und autorisierte 57-Einheiten-Welle sind eigene Lücken.",
+      "disposition": "Pilot/Generator wiederverwenden; J2-Welle bleibt vom menschlichen Pilotgate abhängig. Kein Stationsabschluss als Wortbeherrschung.",
+      "evidenceRefs": [
+        "P04"
+      ],
+      "replacement": null
+    },
+    {
+      "id": "visual",
+      "state": "unverifiziert",
+      "subject": "Lokale und veröffentlichte visuelle Gleichheit",
+      "missingEvidence": "Erfordert die acht benannten Routen in beiden Ansichten, geladene Schriften, Masken, genaue Tokenprüfung und wirksame 1px-Gegenprobe auf demselben Stand. Ein vorhandener Screenshotordner beweist dies nicht.",
+      "disposition": "Als spätere Plattform-Designabnahme erhalten; keine Bild-/Browserprüfung in dieser Dokumentkarte vor Prüfplatzfreigabe.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "paint-canon",
+      "subject": "Figuren, Namensschutz, Herkunft und ambivalentes Ende",
+      "state": "unverifiziert",
+      "missingEvidence": "Für den jeweils zitierten Satz fehlt ein vollständiger Abgleich aller Schülertexte, Figurenabbildungen und späteren Kapitel. Interner Figurenname ist kein Freibrief für frühe Namensenthüllung.",
+      "disposition": "Heutigen Tintengeist-Namen und ambivalentes Finale erhalten; spätere Kapitel dürfen weder automatisch alte Erlösung noch G2-Fortsetzung übernehmen. Korpustext und Sichtbarkeit getrennt prüfen.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "paint-anchor",
+      "subject": "Stille Wiederaufnahmepunkte und optionale Ratgeber",
+      "state": "teilgebaut",
+      "missingEvidence": "ch01 setzt checkpointStyle=silent. Vollständiger Wiedereintritts-/Save-/Anti-Softlock-Beleg und Autorenentscheidung für optionale Ratgeber anderer Kapitel fehlen hier.",
+      "disposition": "Stille Anker übernehmen. S218:T8/R179 korrigiert p2 zu near; alte far-Angabe in S217 nicht reaktivieren. Kein automatischer Entfall anderer Ratgeber.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "paint-variety",
+      "subject": "Abwechslung, verschiedene Verben und unaufgeregte Kapitel",
+      "state": "unverifiziert",
+      "missingEvidence": "Benötigt je Kapitel die versprochenen ein bis zwei neuen Dynamiken, eigenständige Bossform, Spielanteile und deren funktionierenden Durchlauf. Gemeinsame Engine ist keine 15-Kapitel-Abnahme.",
+      "disposition": "Kapitel-Dossiers als einzelne Verbraucher erhalten; Nudel-Küche darf bewusst ruhig sein. Kein künstliches neues Verb nur zur Listenfüllung.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "paint-free",
+      "subject": "Befreien statt Benennen und thematisch richtige Käfigzahl",
+      "state": "unverifiziert",
+      "missingEvidence": "Die Worte und Mechaniken müssen je Ort zusammenpassen: Kleidung/Wesen, fünf Käfige in ch01, eine Person im Finale und keine XP für bloßes Aufheben. Vollständige Gegenstands-/Ereigniszuordnung fehlt.",
+      "disposition": "cgo-010/Y1-Lernspur braucht produktive Englischhandlung getrennt vom Weltkontakt; entfernte Kleidungskarten bleiben über removed-clothing-tasks erhalten.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "paint-palette",
+      "subject": "Kapitelpalette und unverzerrte Farbfamilie",
+      "state": "teilgebaut",
+      "missingEvidence": "Achromatischer nearPlaneTint ist belegt. Keine neue Abnahme aller warm/kalt-Paletten, Materialzugehörigkeiten oder verkleinerter Screenshots.",
+      "disposition": "Den technischen Farbfix bewahren; Künstlervorgabe/ganze Szene einzeln prüfen, nicht nur einen neutralen Faktor.",
+      "evidenceRefs": [
+        "P10"
+      ],
+      "replacement": null
+    },
+    {
+      "id": "paint-frame",
+      "subject": "Ziele, Collectibles und bedeutungstragende Weltoberfläche",
+      "state": "unverifiziert",
+      "missingEvidence": "Benötigt den jeweils benannten Zielauftrag, begründete Sammelobjekte, sichtbare Verbrauchs-/Belohnungsbeziehung und reduzierte Bewegungsform. Die Existenz eines Plattentitels erfüllt diese Handlung nicht.",
+      "disposition": "Y1-Raum-/Spielvertrag fortführen; Ziel- und Belohnungstext müssen die tatsächliche Handlung tragen, nicht künstliche Versprechen.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "paint-boss",
+      "subject": "Bossleiter, Projektil-/Ausweichmechanik und persistenter Begleiter",
+      "state": "unverifiziert",
+      "missingEvidence": "Benötigt je Boss eine echte steigende Rezeptfolge, richtige Antwort→Weltänderung, falsche Antwort ohne Fortschrittsverlust sowie bleibendes freies Wesen. Einzelne Sim-Methoden belegen kein finales Duell.",
+      "disposition": "Bau-/Abnahmeschritte von cgo-008/014/016/021 bzw. späterem Kapitel an genau diesen Bossvertrag binden. Kein bloßes sechsfaches Wiederholen als Vielfalt.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "paint-timer",
+      "subject": "Zeitgefühl ohne benoteten Geschwindigkeitsdruck",
+      "state": "unverifiziert",
+      "missingEvidence": "Benötigt erreichbare ungetimte/reduzierte Alternative und nachgewiesene Noten-/XP-Neutralität; sichtbarer Countdown allein genügt nicht.",
+      "disposition": "Fiktive Dringlichkeit erhalten, nie neuen Stoff unter leistungssenkenden Timer stellen. Arcade-Ausnahme nur auf beherrschtem Material.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "paint-xp",
+      "subject": "Erfahrungspunkte ausschließlich für Englisch, kosmetische Freischaltungen",
+      "state": "unverifiziert",
+      "missingEvidence": "Paint-Lernspur ist nicht automatisch practice_attempts. Benötigt serverbestätigte Bewertung mit neutralen Hilfen, keine Punkte für Sammeln und nachvollziehbare Stufe/Avatar-Freischaltung.",
+      "disposition": "cgo-010 und WS-PROG: Weltfortschritt, kosmetische Belohnung und nachgewiesene Lernbeherrschung getrennt führen.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "paint-sound",
+      "subject": "Echter leiser Spielklang, wirklicher Mute und getrennte Sprache",
+      "state": "teilgebaut",
+      "missingEvidence": "Vier Faust-/Käfigklänge sind ch02 zugeordnet. Aktueller Hörnachweis für Genauigkeit, Pegel, Einmal-Auslösung, Musik und Mute aller Tonquellen fehlt.",
+      "disposition": "R124 gilt nur Painted Book. Die alte ALIVE-Vorgabe default-off wird hier ersetzt, nicht bei allen Spielen. AU-Sprachausgabe und Listening bleiben eigenständig.",
+      "evidenceRefs": [
+        "P12"
+      ],
+      "replacement": {
+        "source": "S217 §2.11 / R124; S001 L378",
+        "scope": "Paint-Sounddefault, nicht globales TTS/Listening"
+      }
+    },
+    {
+      "id": "paint-overlay",
+      "subject": "Bewohnte Aufgabenkarte, eindeutige Englischhandlung und direkte Weltantwort",
+      "state": "teilgebaut",
+      "missingEvidence": "Benötigt je Kartenart die vollständige Schüleransicht, Porträt-/Text-/Wahlkontext, Tastaturbedienung und Weltwirkung. Die aktuelle direkte Schließung ist belegt; alte Mehrschritt-Wartezeit ist aufgehoben.",
+      "disposition": "cgo-006/018-Ansicht mit Originalhandlung verbinden. R241 entfernt nur die blockierende Wartezeit; sichtbare Weltfolgen und reduced motion bleiben.",
+      "evidenceRefs": [
+        "P09"
+      ],
+      "replacement": null
+    },
+    {
+      "id": "paint-interlude",
+      "subject": "Zwischenszenen und Originalgeschichte",
+      "state": "unverifiziert",
+      "missingEvidence": "Benötigt tatsächlichen Übergang nach Kapitelabschluss, wiederaufgenommenen Dialogkontext und Anschluss ans nächste Kapitel. Eine Bilddatei oder Platzhalter-Route ersetzt keinen Storypfad.",
+      "disposition": "Originalgeschichte und jeweilige Szene als Herkunft erhalten; Prolog zuletzt ist historische Reihenfolge, kein Grund für dauerhaften Verlust.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "paint-modality",
+      "subject": "Kapitelgebundene neue Aufgabenhandlung",
+      "state": "unverifiziert",
+      "missingEvidence": "Je erster Verbraucher muss der vollständige Weg Auftrag→Antwort→Wertung→Speicherung→Wiederholung belegt werden; Konzeptwörter wie Sortieren/Wheel/Clock sind noch keine bedienbare Aufgabe.",
+      "disposition": "Erst mit dem konkreten Verbraucher bauen; verb-table und Wortpartner zusätzlich als erhaltene OG-Anforderungen entscheiden, nicht in vorhandene Formate umdeuten.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "paint-production",
+      "subject": "Historische Produktions-/Kunstwellen und aktuelle Abnahmeverträge",
+      "state": "unverifiziert",
+      "missingEvidence": "Alte PK-R-Schritte und Rollen sind historische Zuordnung. Aktuelle Auslieferung braucht tatsächlichen Quelldatensatz, Import, Engine-Abbildung und gültiges Urteil, nicht allein eine damalige Wellenadresse.",
+      "disposition": "Aktueller GG-Plan ersetzt Start-/Merge-Reihenfolge. Kunstunterkriterien und Quellenbelege bleiben für die jeweilige Verbraucherphase erhalten.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "paint-process",
+      "subject": "Mess- und Übergabepflichten aus dem Replay",
+      "state": "unverifiziert",
+      "missingEvidence": "Für die konkret benannte Mess-/Kritikregel fehlt eine heute ausgeführte Abnahme am jeweiligen geänderten Gegenstand. Historisches Negativurteil bleibt gültige Warnung innerhalb seines Umfangs.",
+      "disposition": "Regel in der betreffenden Bau-/Messbahn anwenden. cgo-017 trägt Prüfregeln; cgo-025 startet weder Kunstläufe noch Agenten noch eine zweite Batterie.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "paint-physics",
+      "subject": "Replay-Bug mit konkretem Auslösezustand",
+      "state": "unverifiziert",
+      "missingEvidence": "Für den genau beschriebenen Sprung-, Rückstoß-, Blockade-, Transport- oder Wiedereintrittszustand fehlt ein auf 269ee gebundener reproduzierbarer Vorher/Nachher-Beleg. Historischer Fund ist kein aktueller Regressionsnachweis.",
+      "disposition": "Den einzelnen Auslöser und geforderten Endzustand erhalten; nur bei relevanter Änderung erneut prüfen. Keine stillschweigende Reparatur in dieser Dokumentkarte.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "paint-level",
+      "subject": "Replay-Levelgestaltung und tatsächliche Erreichbarkeit",
+      "state": "unverifiziert",
+      "missingEvidence": "Für den jeweiligen Objekt-/Weg-/Abwechslungsbefund fehlt der zusammenhängende tatsächliche Spielweg mit vollständiger Wort-/Objektabdeckung; geänderte Koordinaten allein schließen den Befund nicht.",
+      "disposition": "Raumvertrag mit Bedeutung jedes Wegs und jeder Englischhandlung erhalten; Karten-/Objekt-Entfernung braucht explizite Herkunft und Ersatzentscheidung.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "paint-copy",
+      "subject": "Replay-Sprache und Bedienauftrag",
+      "state": "unverifiziert",
+      "missingEvidence": "Benötigt wörtlichen heutigen Schülertext samt dargestelltem Gegenstand und prüfbarer Lösungsmenge. Ein Wortersatz ohne Genus-/Kontextprüfung kann neue Fehler verursachen.",
+      "disposition": "Gültige Korpus-/Namens-/Registerregel erhalten. Kein globales Ersetzen über alle Geschichten; Paint-spezifische Zurück-im-Buch-Regel nicht auf alte Lost-Pages-Texte hochrechnen.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "paint-book",
+      "subject": "Regelseiten, Buchwissen und Belohnung nach wirklicher Handlung",
+      "state": "unverifiziert",
+      "missingEvidence": "Benötigt alle fünf Lehrseiten, belegte passende Buchbeispiele, keine irreführenden Credits/IPA, tatsächliche Sammel-/Rückkehrbelohnung und deren Beleg im Lernpfad.",
+      "disposition": "Nicht als Dekor abbuchen. Quellenbezug und Kinderverständlichkeit erhalten; falsches Buchbeispiel wird nicht durch ein schönes Heft geheilt.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "paint-style",
+      "subject": "Erkundungs-/Kartenstil mit Lesbarkeit in tatsächlicher Größe",
+      "state": "unverifiziert",
+      "missingEvidence": "Benötigt unmaskierten Engine-Ausschnitt und isolierte Anwendungsgröße, Semantik/Flächenanteil des Raums sowie menschliches Urteil. Stilreferenz oder 1024-Konvention ist keine Größenabnahme.",
+      "disposition": "Aktuelle LauterEinser-Weiterführung und cgo-007 nur in ihrem begrenzten Umfang nutzen. Alte Canvas-/Rahmenlösungen dürfen nur mit neuerer expliziter Entscheidung weichen.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "paint-deadline",
+      "subject": "Ausnahmeregister ohne erfundene neue Frist",
+      "state": "offen",
+      "missingEvidence": "Aktuell bindende D-1070/1071/1072-Abnahmebedingungen bleiben offen. Frühere Novemberfristen sind nicht mehr die operative Schließregel.",
+      "disposition": "E8 vom19.09.: Fixture+CI-Zeile, echte Kunstlieferung bzw. Symbolanker nachweisen. Kein Fristverlängern durch cgo-025.",
+      "evidenceRefs": [
+        "P11"
+      ],
+      "replacement": {
+        "source": "S046 Schlussnachtrag E8 / D-1070–1072",
+        "scope": "kalenderbasierte Altwaiver, nicht Aufhebung der offenen Schuld"
+      }
+    },
+    {
+      "id": "paint-ch01",
+      "subject": "Schulhaus: U1, fünf Käfige, Schulgegenstände, keine Faust/Schrägen",
+      "state": "teilgebaut",
+      "missingEvidence": "Am Pin gibt es ch01–ch06-Leveldaten, ch02–ch06 als draft; der Einzelwortlaut bleibt vollständiger Vertrag für Szene, Vokabular/Grammatik, Modalität, Boss, Fähigkeit, befreite Person, Interlude und Kunst. Kein vollständiger tatsächlicher End-to-End-Abnahmebeleg dieses Dossiers.",
+      "disposition": "Jeden genannten Unterpunkt in der zugehörigen Kapitelphase erhalten. Reale vorhandene Engine-Bausteine wiederverwenden; Textplanung und Leveldatei sind keine ausgelieferte Vollabnahme.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "paint-ch02",
+      "subject": "Zoo: U2, Löwe, hang/punch",
+      "state": "teilgebaut",
+      "missingEvidence": "Am Pin gibt es ch01–ch06-Leveldaten, ch02–ch06 als draft; der Einzelwortlaut bleibt vollständiger Vertrag für Szene, Vokabular/Grammatik, Modalität, Boss, Fähigkeit, befreite Person, Interlude und Kunst. Kein vollständiger tatsächlicher End-to-End-Abnahmebeleg dieses Dossiers.",
+      "disposition": "Jeden genannten Unterpunkt in der zugehörigen Kapitelphase erhalten. Reale vorhandene Engine-Bausteine wiederverwenden; Textplanung und Leveldatei sind keine ausgelieferte Vollabnahme.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "paint-ch03",
+      "subject": "Piratenschiff: U3, Galionsfigur, swing",
+      "state": "teilgebaut",
+      "missingEvidence": "Am Pin gibt es ch01–ch06-Leveldaten, ch02–ch06 als draft; der Einzelwortlaut bleibt vollständiger Vertrag für Szene, Vokabular/Grammatik, Modalität, Boss, Fähigkeit, befreite Person, Interlude und Kunst. Kein vollständiger tatsächlicher End-to-End-Abnahmebeleg dieses Dossiers.",
+      "disposition": "Jeden genannten Unterpunkt in der zugehörigen Kapitelphase erhalten. Reale vorhandene Engine-Bausteine wiederverwenden; Textplanung und Leveldatei sind keine ausgelieferte Vollabnahme.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "paint-ch04",
+      "subject": "Graue Woche: U4, Gefühle, hover",
+      "state": "teilgebaut",
+      "missingEvidence": "Am Pin gibt es ch01–ch06-Leveldaten, ch02–ch06 als draft; der Einzelwortlaut bleibt vollständiger Vertrag für Szene, Vokabular/Grammatik, Modalität, Boss, Fähigkeit, befreite Person, Interlude und Kunst. Kein vollständiger tatsächlicher End-to-End-Abnahmebeleg dieses Dossiers.",
+      "disposition": "Jeden genannten Unterpunkt in der zugehörigen Kapitelphase erhalten. Reale vorhandene Engine-Bausteine wiederverwenden; Textplanung und Leveldatei sind keine ausgelieferte Vollabnahme.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "paint-ch05",
+      "subject": "Konzert: U5, Musik, rutschende Notenlinien und Rhythmus",
+      "state": "teilgebaut",
+      "missingEvidence": "Am Pin gibt es ch01–ch06-Leveldaten, ch02–ch06 als draft; der Einzelwortlaut bleibt vollständiger Vertrag für Szene, Vokabular/Grammatik, Modalität, Boss, Fähigkeit, befreite Person, Interlude und Kunst. Kein vollständiger tatsächlicher End-to-End-Abnahmebeleg dieses Dossiers.",
+      "disposition": "Jeden genannten Unterpunkt in der zugehörigen Kapitelphase erhalten. Reale vorhandene Engine-Bausteine wiederverwenden; Textplanung und Leveldatei sind keine ausgelieferte Vollabnahme.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "paint-ch06",
+      "subject": "Detektiv: U6, falsche Hinweise, Gate CP14",
+      "state": "teilgebaut",
+      "missingEvidence": "Am Pin gibt es ch01–ch06-Leveldaten, ch02–ch06 als draft; der Einzelwortlaut bleibt vollständiger Vertrag für Szene, Vokabular/Grammatik, Modalität, Boss, Fähigkeit, befreite Person, Interlude und Kunst. Kein vollständiger tatsächlicher End-to-End-Abnahmebeleg dieses Dossiers.",
+      "disposition": "Jeden genannten Unterpunkt in der zugehörigen Kapitelphase erhalten. Reale vorhandene Engine-Bausteine wiederverwenden; Textplanung und Leveldatei sind keine ausgelieferte Vollabnahme.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "paint-ch07",
+      "subject": "Nudelküche: U7, Häufigkeitsrad, ruhiges Kapitel, WB62",
+      "state": "offen",
+      "missingEvidence": "Am Pin gibt es kein Paint-Level ch07; der Einzelwortlaut bleibt vollständiger Vertrag für Szene, Vokabular/Grammatik, Modalität, Boss, Fähigkeit, befreite Person, Interlude und Kunst. Kein vollständiger tatsächlicher End-to-End-Abnahmebeleg dieses Dossiers.",
+      "disposition": "Jeden genannten Unterpunkt in der zugehörigen Kapitelphase erhalten. Reale vorhandene Engine-Bausteine wiederverwenden; Textplanung und Leveldatei sind keine ausgelieferte Vollabnahme.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "paint-ch08",
+      "subject": "Kleiderzimmer: U8, do/does statt this/that, Kleidung",
+      "state": "offen",
+      "missingEvidence": "Am Pin gibt es kein Paint-Level ch08; der Einzelwortlaut bleibt vollständiger Vertrag für Szene, Vokabular/Grammatik, Modalität, Boss, Fähigkeit, befreite Person, Interlude und Kunst. Kein vollständiger tatsächlicher End-to-End-Abnahmebeleg dieses Dossiers.",
+      "disposition": "Jeden genannten Unterpunkt in der zugehörigen Kapitelphase erhalten. Reale vorhandene Engine-Bausteine wiederverwenden; Textplanung und Leveldatei sind keine ausgelieferte Vollabnahme.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "paint-ch09",
+      "subject": "Garten: U9, Habitat-Zuordnung, Pflege und Objektpronomen",
+      "state": "offen",
+      "missingEvidence": "Am Pin gibt es kein Paint-Level ch09; der Einzelwortlaut bleibt vollständiger Vertrag für Szene, Vokabular/Grammatik, Modalität, Boss, Fähigkeit, befreite Person, Interlude und Kunst. Kein vollständiger tatsächlicher End-to-End-Abnahmebeleg dieses Dossiers.",
+      "disposition": "Jeden genannten Unterpunkt in der zugehörigen Kapitelphase erhalten. Reale vorhandene Engine-Bausteine wiederverwenden; Textplanung und Leveldatei sind keine ausgelieferte Vollabnahme.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "paint-ch10",
+      "subject": "Geschäft: U10, Zahlen 25–1000 und this/that",
+      "state": "offen",
+      "missingEvidence": "Am Pin gibt es kein Paint-Level ch10; der Einzelwortlaut bleibt vollständiger Vertrag für Szene, Vokabular/Grammatik, Modalität, Boss, Fähigkeit, befreite Person, Interlude und Kunst. Kein vollständiger tatsächlicher End-to-End-Abnahmebeleg dieses Dossiers.",
+      "disposition": "Jeden genannten Unterpunkt in der zugehörigen Kapitelphase erhalten. Reale vorhandene Engine-Bausteine wiederverwenden; Textplanung und Leveldatei sind keine ausgelieferte Vollabnahme.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "paint-ch11",
+      "subject": "Zeit: U11, Uhrstellen per Ziehen, falsche Geschwindigkeit",
+      "state": "offen",
+      "missingEvidence": "Am Pin gibt es kein Paint-Level ch11; der Einzelwortlaut bleibt vollständiger Vertrag für Szene, Vokabular/Grammatik, Modalität, Boss, Fähigkeit, befreite Person, Interlude und Kunst. Kein vollständiger tatsächlicher End-to-End-Abnahmebeleg dieses Dossiers.",
+      "disposition": "Jeden genannten Unterpunkt in der zugehörigen Kapitelphase erhalten. Reale vorhandene Engine-Bausteine wiederverwenden; Textplanung und Leveldatei sind keine ausgelieferte Vollabnahme.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "paint-ch12",
+      "subject": "Geburtstagshaus: U12, Räume/was-were/Party",
+      "state": "offen",
+      "missingEvidence": "Am Pin gibt es kein Paint-Level ch12; der Einzelwortlaut bleibt vollständiger Vertrag für Szene, Vokabular/Grammatik, Modalität, Boss, Fähigkeit, befreite Person, Interlude und Kunst. Kein vollständiger tatsächlicher End-to-End-Abnahmebeleg dieses Dossiers.",
+      "disposition": "Jeden genannten Unterpunkt in der zugehörigen Kapitelphase erhalten. Reale vorhandene Engine-Bausteine wiederverwenden; Textplanung und Leveldatei sind keine ausgelieferte Vollabnahme.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "paint-ch13",
+      "subject": "Notruf: U13, steigende Gefahr/Jetpack/regelmäßige Vergangenheit",
+      "state": "offen",
+      "missingEvidence": "Am Pin gibt es kein Paint-Level ch13; der Einzelwortlaut bleibt vollständiger Vertrag für Szene, Vokabular/Grammatik, Modalität, Boss, Fähigkeit, befreite Person, Interlude und Kunst. Kein vollständiger tatsächlicher End-to-End-Abnahmebeleg dieses Dossiers.",
+      "disposition": "Jeden genannten Unterpunkt in der zugehörigen Kapitelphase erhalten. Reale vorhandene Engine-Bausteine wiederverwenden; Textplanung und Leveldatei sind keine ausgelieferte Vollabnahme.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "paint-ch14",
+      "subject": "Lieblingskino: U14, Genres/unregelmäßige Vergangenheit/Fluchthinweis",
+      "state": "offen",
+      "missingEvidence": "Am Pin gibt es kein Paint-Level ch14; der Einzelwortlaut bleibt vollständiger Vertrag für Szene, Vokabular/Grammatik, Modalität, Boss, Fähigkeit, befreite Person, Interlude und Kunst. Kein vollständiger tatsächlicher End-to-End-Abnahmebeleg dieses Dossiers.",
+      "disposition": "Jeden genannten Unterpunkt in der zugehörigen Kapitelphase erhalten. Reale vorhandene Engine-Bausteine wiederverwenden; Textplanung und Leveldatei sind keine ausgelieferte Vollabnahme.",
+      "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "paint-ch15",
+      "subject": "Finale: U15, going-to ohne will/Lehrkraftbefreiung/ambivalentes Ende",
+      "state": "offen",
+      "missingEvidence": "Am Pin gibt es kein Paint-Level ch15; der Einzelwortlaut bleibt vollständiger Vertrag für Szene, Vokabular/Grammatik, Modalität, Boss, Fähigkeit, befreite Person, Interlude und Kunst. Kein vollständiger tatsächlicher End-to-End-Abnahmebeleg dieses Dossiers.",
+      "disposition": "Jeden genannten Unterpunkt in der zugehörigen Kapitelphase erhalten. Reale vorhandene Engine-Bausteine wiederverwenden; Textplanung und Leveldatei sind keine ausgelieferte Vollabnahme.",
+      "evidenceRefs": [],
+      "replacement": null
+    }
+  ]
+}

@@ -19,8 +19,8 @@
       "target": "GG: Zyklus 3 / erhaltene Blueprint-Arbeitsstränge",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Vertiefte inhaltliche Zuordnung; Einzelgrenzen im Hauptdokument",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "inspection": "Einzelstellen-Zuordnung mit fachlichen Vertragsprofilen/konkreter Auflösungsbedingung; heutige Sachabnahme nur innerhalb ausdrücklich belegten Umfangs",
+      "remaining": "Produkt-/Urteils-/Laufbelege je Einzelstelle wie dort benannt; Gesamt-Katalogabgleich bleibt Arbeit dieser Inventur.",
       "detailedDispositions": [
         {
           "register": "commitments.json",
@@ -221,6 +221,10 @@
         {
           "register": "blueprint-lineage.json",
           "id": "S001:420"
+        },
+        {
+          "register": "requirements/S001.json",
+          "id": "alle Einzelstellen einschließlich Unterkriterien"
         }
       ]
     },
@@ -237,8 +241,8 @@
       "target": "GG: Zyklus 3 / erhaltene Blueprint-Arbeitsstränge",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Vertiefte inhaltliche Zuordnung; Einzelgrenzen im Hauptdokument",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "inspection": "Einzelstellen-Zuordnung mit fachlichen Vertragsprofilen/konkreter Auflösungsbedingung; heutige Sachabnahme nur innerhalb ausdrücklich belegten Umfangs",
+      "remaining": "Produkt-/Urteils-/Laufbelege je Einzelstelle wie dort benannt; Gesamt-Katalogabgleich bleibt Arbeit dieser Inventur.",
       "detailedDispositions": [
         {
           "register": "commitments.json",
@@ -395,6 +399,10 @@
         {
           "register": "blueprint-lineage.json",
           "id": "S002:300"
+        },
+        {
+          "register": "requirements/S002.json",
+          "id": "alle Einzelstellen einschließlich Unterkriterien"
         }
       ]
     },
@@ -1147,12 +1155,16 @@
       "target": "cgo-010/014/015/016/017",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "inspection": "Einzelstellen-Zuordnung mit fachlichen Vertragsprofilen/konkreter Auflösungsbedingung; heutige Sachabnahme nur innerhalb ausdrücklich belegten Umfangs",
+      "remaining": "Produkt-/Urteils-/Laufbelege je Einzelstelle wie dort benannt; Gesamt-Katalogabgleich bleibt Arbeit dieser Inventur.",
       "detailedDispositions": [
         {
           "register": "commitments.json",
           "id": "Y1D"
+        },
+        {
+          "register": "requirements/S046.json",
+          "id": "alle Einzelstellen einschließlich Unterkriterien"
         }
       ]
     },
@@ -5705,12 +5717,16 @@
       "target": "cgo-008/010/014/015/016/017/021; GG Zyklus 3",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "inspection": "Einzelstellen-Zuordnung mit fachlichen Vertragsprofilen/konkreter Auflösungsbedingung; heutige Sachabnahme nur innerhalb ausdrücklich belegten Umfangs",
+      "remaining": "Produkt-/Urteils-/Laufbelege je Einzelstelle wie dort benannt; Gesamt-Katalogabgleich bleibt Arbeit dieser Inventur.",
       "detailedDispositions": [
         {
           "register": "commitments.json",
           "id": "Y1C"
+        },
+        {
+          "register": "requirements/S217.json",
+          "id": "alle Einzelstellen einschließlich Unterkriterien"
         }
       ]
     },
@@ -5727,8 +5743,14 @@
       "target": "cgo-008/010/014/015/016/017/021; GG Zyklus 3",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "inspection": "Einzelstellen-Zuordnung mit fachlichen Vertragsprofilen/konkreter Auflösungsbedingung; heutige Sachabnahme nur innerhalb ausdrücklich belegten Umfangs",
+      "remaining": "Produkt-/Urteils-/Laufbelege je Einzelstelle wie dort benannt; Gesamt-Katalogabgleich bleibt Arbeit dieser Inventur.",
+      "detailedDispositions": [
+        {
+          "register": "requirements/S218.json",
+          "id": "alle Einzelstellen einschließlich Unterkriterien"
+        }
+      ]
     },
     {
       "id": "S219",
@@ -5743,12 +5765,16 @@
       "target": "cgo-008/010/014/015/016/017/021; GG Zyklus 3",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "inspection": "Einzelstellen-Zuordnung mit fachlichen Vertragsprofilen/konkreter Auflösungsbedingung; heutige Sachabnahme nur innerhalb ausdrücklich belegten Umfangs",
+      "remaining": "Produkt-/Urteils-/Laufbelege je Einzelstelle wie dort benannt; Gesamt-Katalogabgleich bleibt Arbeit dieser Inventur.",
       "detailedDispositions": [
         {
           "register": "commitments.json",
           "id": "Y1D"
+        },
+        {
+          "register": "requirements/S219.json",
+          "id": "alle Einzelstellen einschließlich Unterkriterien"
         }
       ]
     },
