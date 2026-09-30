@@ -2,7 +2,7 @@
   "label": "CODEX DRAFT — NOT CANON",
   "boardPin": "a2de5ff614240f0b0a3b5f6880611bddda1089d5",
   "pr": 472,
-  "head": "fcbfee51ed3a0f0043a21c2540cc141943c2244f",
+  "head": "38f950008d4a6e2be3b56a32c6ea0df6d2b920ce",
   "state": "review",
   "held": true,
   "finalAcceptance": false,
@@ -21,8 +21,120 @@
       "card": "cgo-028",
       "state": "done",
       "validity": "Altes Paket; beide Nein zum Antwortumfang p019. Nicht an neuen Export übertragbar."
+    },
+    {
+      "card": "cgo-030",
+      "state": "done",
+      "validity": "Nein zur unveränderten Musterübernahme: p017 verlangt Formwahl, bietet aber nur Pronomen-Gruppierung.",
+      "packetSha256": "853165922030fb01941fd97e5d56f420bd3851ce417b2fae0097afb0972ea28e",
+      "views": 20,
+      "followUpViews": 1,
+      "candidates": 41,
+      "noLiveSaveProof": true
+    },
+    {
+      "card": "cgo-031",
+      "state": "done",
+      "validity": "Begrenztes Ja zur schlüsselfreien Lösbarkeit, vier SHOULD-FIX-Befunde; automatische Annahme unbekannt.",
+      "packetSha256": "853165922030fb01941fd97e5d56f420bd3851ce417b2fae0097afb0972ea28e",
+      "views": 20,
+      "followUpViews": 1,
+      "candidates": 36,
+      "noLiveSaveProof": true
     }
   ],
-  "technicalVerdict": "pnpm test Exit1, Restbatterie abgebrochen/nicht gestartet laut cgo-006 Bericht; kein eigener Lauf dieser Karte.",
-  "remaining": "Finale cgo-006-Fassung, aktuelle Leserannahme und GG-Entscheid vor unbeschränkter Übergabe abgleichen."
+  "technicalVerdict": "Historisches N8: build/typecheck/lint/check:bundle 0, test 1 trotz 2029 bestandener Tests wegen unbehandeltem Timeout; paint-art abgebrochen, 22 Resttore ungestartet. N9 ausgesetzt. Neuer Kopf dokumentarisch fertig, technische Restprüfung/GG-Integration/unabhängige technische Abnahme offen.",
+  "remaining": "Dokumentarischer Schlussabgleich mit verfügbarem cgo-006-Ergebnis erfolgt. Kein Inhalts-/Serien-/Merge-Ja; technische Freigabe weiterhin offen. Keine schwere Phase durch diesen Abgleich.",
+  "history": [
+    {
+      "label": "CODEX DRAFT — NOT CANON",
+      "boardPin": "a2de5ff614240f0b0a3b5f6880611bddda1089d5",
+      "pr": 472,
+      "head": "fcbfee51ed3a0f0043a21c2540cc141943c2244f",
+      "state": "review",
+      "held": true,
+      "finalAcceptance": false,
+      "sourceAgreement": {
+        "ERBE": "Alte Facharbeit/Varianten und getrennte Juli-Unterzusagen erhalten; keine pauschale W0-Ersetzung historischer Gates.",
+        "currentDelta": "W0 bezeichnet 934 Feldgeschichten unverifiziert; cgo-025 rekonstruiert alle 934 mechanisch einschließlich 34 vor PR14 nicht erfasster hintDe-Felder. Keine zusätzliche semantische Freigabe.",
+        "ORIGINALVERGLEICH": "Beide Dokumente nennen Originalparität/Speicherung offen; späterer PR-Bericht begrenzt den Restore-Klicknachweis ausdrücklich."
+      },
+      "independentReaders": [
+        {
+          "card": "cgo-027",
+          "state": "done",
+          "validity": "Altes Paket; beide Nein zum Antwortumfang p019. Nicht an neuen Export übertragbar."
+        },
+        {
+          "card": "cgo-028",
+          "state": "done",
+          "validity": "Altes Paket; beide Nein zum Antwortumfang p019. Nicht an neuen Export übertragbar."
+        },
+        {
+          "card": "cgo-030",
+          "state": "done",
+          "validity": "Nein zur unveränderten Musterübernahme: p017 verlangt Formwahl, bietet aber nur Pronomen-Gruppierung.",
+          "packetSha256": "853165922030fb01941fd97e5d56f420bd3851ce417b2fae0097afb0972ea28e",
+          "views": 20,
+          "followUpViews": 1,
+          "candidates": 41,
+          "noLiveSaveProof": true
+        },
+        {
+          "card": "cgo-031",
+          "state": "done",
+          "validity": "Begrenztes Ja zur schlüsselfreien Lösbarkeit, vier SHOULD-FIX-Befunde; automatische Annahme unbekannt.",
+          "packetSha256": "853165922030fb01941fd97e5d56f420bd3851ce417b2fae0097afb0972ea28e",
+          "views": 20,
+          "followUpViews": 1,
+          "candidates": 36,
+          "noLiveSaveProof": true
+        }
+      ],
+      "technicalVerdict": "pnpm test Exit1, Restbatterie abgebrochen/nicht gestartet laut cgo-006 Bericht; kein eigener Lauf dieser Karte.",
+      "remaining": "Finale cgo-006-Fassung, aktuelle Leserannahme und GG-Entscheid vor unbeschränkter Übergabe abgleichen."
+    }
+  ],
+  "boardPinScope": "boardPin bindet den früheren Stand; neuer Abgleich an cgo-025 Nachtrag12 und cgo-006 Nachtrag13, Originalausgabe card006-final.txt.",
+  "packetSha256": "853165922030fb01941fd97e5d56f420bd3851ce417b2fae0097afb0972ea28e",
+  "documentRead": "docs/gg/revision/BEFUNDE-N12.md am neuen Kopf vollständig gelesen; beide Originalberichte und Antwortdateien selbst gelesen. Keine eigene neue Browser-/Bewerterprüfung.",
+  "sourcePins": [
+    {
+      "card": "cgo-030",
+      "file": "/Users/veho/Code/_codex/cgo-030-evidence/bericht.md",
+      "md5": "2e7fa8d76e04bd23318c0d172ca634a5",
+      "sha256": "5250206106d1c33678851c938a6b71672c921b2c4fc9c517f451fdfa9ecd6668"
+    },
+    {
+      "card": "cgo-030",
+      "file": "/Users/veho/Code/_codex/cgo-030-evidence/antworten.json",
+      "md5": "841fab274d0f69d4f8ef1d03f960655b",
+      "sha256": "c186da1b0d67107da5df1d5d02bee65725da1417833d531bedb9578e4f81d4fa"
+    },
+    {
+      "card": "cgo-031",
+      "file": "/Users/veho/Code/_codex/cgo-031-evidence/bericht.md",
+      "md5": "dc41c6594101da8aed05a408c423b2a0",
+      "sha256": "bfc8c99f6cfea912da1c41103fb40872d969f3b1b3138ed9c1faa108a9682f21"
+    },
+    {
+      "card": "cgo-031",
+      "file": "/Users/veho/Code/_codex/cgo-031-evidence/antworten.json",
+      "md5": "99078bf262be54c78be3697984ffe644",
+      "sha256": "c97c3e19f2855ab7540dcdfc45bc57258cd3e5dc860375e22772872ed59daf47"
+    }
+  ],
+  "consequences": {
+    "p002": "Radierbezug sprachlich präzisieren; richtige Antwort pencil repariert den Auftrag nicht.",
+    "p011": "Auswahlzweck der audition fehlt; tryout als kontextuelle US-Variante prüfen, performance nicht blind zum Synonym machen.",
+    "p017": "GG bestätigt Sperre vor unveränderter Übernahme: technisch richtige Subjektgruppierung ist kein Beleg gebildeter Verbformen. Lernziel/Handlung klären, keine pauschale Umwandlung aller Formate.",
+    "p019": "Wort, korrigierter Satz oder Gesamttext sind unterschiedliche Eingabeumfänge. Satzfassungen angenommen, sings abgewiesen; Auftrag muss Umfang nennen, Schlüsselzusatz allein genügt nicht.",
+    "variants": "77 Kandidaten sind 41+36 einschließlich Überschneidungen. Acht/sechs Aufgaben mit nicht voll angenommenem Kandidaten sind weder acht/sechs unlösbare Aufgaben noch bewiesene Schlüsseldefekte.",
+    "p010": "Stop talking! erfüllt Kommunikationszweck, zeigt nicht die Don’t-Regel. Sechs gemeinsame Don’t/do-not/please-Varianten angenommen; keine vollständige Prüfung aller zwölf implementierten Varianten.",
+    "p012": "Offene song/tune/melody-Definition, tatsächlicher Schlüssel nur tune: bedingtes Ja bei offener Annahme erfüllt diese Bedingung nicht.",
+    "p014": "beherzt/unerschrocken kontextuell mit Bedeutungsnuancen prüfen, keine universelle Synonymsetzung.",
+    "p020": "Doesn’t | write ist grammatische Erwartungsfrage, keine bedeutungsgleiche neutrale Informationsfrage. Fragebildung als zusätzliche Voraussetzung nachweisen.",
+    "olderFindings": "Alte p007-Einführungs-, p015-Zeitrahmen- und weitere Variantenbefunde bleiben erhalten. Alte Leser027/028 nicht auf neues Paket übertragen.",
+    "architecture": "cgo-033–036 erarbeiten Originalquellen-/Jahres-/Modalitätenspezifikation; cgo-025 erhält Herkunft. Kokis didaktisches Nein bleibt maßgeblich."
+  }
 }

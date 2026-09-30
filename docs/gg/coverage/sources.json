@@ -456,8 +456,10 @@
       "target": "GG: Zyklus 3 / erhaltene Blueprint-Arbeitsstränge",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Vertiefte inhaltliche Zuordnung; Einzelgrenzen im Hauptdokument",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "inspection": "Vollständiger Quelltext und Einzelstellen mit historischer Weitergeltung zugeordnet; heutige Sachabnahme nur innerhalb benannter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege gemäß Einzelstelle und Vertragsprofil; Restkatalog noch in Arbeit.",
+      "requirementsRegister": "requirements/S004.json",
+      "requirementsCount": 84
     },
     {
       "id": "S005",
@@ -1302,14 +1304,16 @@
       "target": "cgo-010/014/015/016/017",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "inspection": "Vollständiger Quelltext und Einzelstellen mit historischer Weitergeltung zugeordnet; heutige Sachabnahme nur innerhalb benannter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege gemäß Einzelstelle und Vertragsprofil; Restkatalog noch in Arbeit.",
       "detailedDispositions": [
         {
           "register": "commitments.json",
           "id": "Y1E"
         }
-      ]
+      ],
+      "requirementsRegister": "requirements/S040.json",
+      "requirementsCount": 232
     },
     {
       "id": "S041",
@@ -1324,14 +1328,16 @@
       "target": "cgo-010/014/015/016/017",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "inspection": "Vollständiger Quelltext und Einzelstellen mit historischer Weitergeltung zugeordnet; heutige Sachabnahme nur innerhalb benannter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege gemäß Einzelstelle und Vertragsprofil; Restkatalog noch in Arbeit.",
       "detailedDispositions": [
         {
           "register": "commitments.json",
           "id": "Y1E"
         }
-      ]
+      ],
+      "requirementsRegister": "requirements/S041.json",
+      "requirementsCount": 110
     },
     {
       "id": "S042",
@@ -3153,14 +3159,16 @@
       "target": "cgo-010/014/015/016/017",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "inspection": "Vollständiger Quelltext und Einzelstellen mit historischer Weitergeltung zugeordnet; heutige Sachabnahme nur innerhalb benannter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege gemäß Einzelstelle und Vertragsprofil; Restkatalog noch in Arbeit.",
       "detailedDispositions": [
         {
           "register": "commitments.json",
           "id": "Y1E"
         }
-      ]
+      ],
+      "requirementsRegister": "requirements/S054.json",
+      "requirementsCount": 174
     },
     {
       "id": "S055",
@@ -3175,14 +3183,16 @@
       "target": "cgo-010/014/015/016/017",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "inspection": "Vollständiger Quelltext und Einzelstellen mit historischer Weitergeltung zugeordnet; heutige Sachabnahme nur innerhalb benannter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege gemäß Einzelstelle und Vertragsprofil; Restkatalog noch in Arbeit.",
       "detailedDispositions": [
         {
           "register": "commitments.json",
           "id": "Y1B"
         }
-      ]
+      ],
+      "requirementsRegister": "requirements/S055.json",
+      "requirementsCount": 127
     },
     {
       "id": "S056",
@@ -3197,14 +3207,16 @@
       "target": "cgo-010/014/015/016/017",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "inspection": "Vollständiger Quelltext und Einzelstellen mit historischer Weitergeltung zugeordnet; heutige Sachabnahme nur innerhalb benannter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege gemäß Einzelstelle und Vertragsprofil; Restkatalog noch in Arbeit.",
       "detailedDispositions": [
         {
           "register": "commitments.json",
           "id": "Y1B"
         }
-      ]
+      ],
+      "requirementsRegister": "requirements/S056.json",
+      "requirementsCount": 195
     },
     {
       "id": "S057",
@@ -3219,8 +3231,10 @@
       "target": "cgo-010/014/015/016/017",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "inspection": "Vollständiger Quelltext und Einzelstellen mit historischer Weitergeltung zugeordnet; heutige Sachabnahme nur innerhalb benannter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege gemäß Einzelstelle und Vertragsprofil; Restkatalog noch in Arbeit.",
+      "requirementsRegister": "requirements/S057.json",
+      "requirementsCount": 69
     },
     {
       "id": "S058",
@@ -3235,14 +3249,16 @@
       "target": "cgo-008/010/014/015/016/021",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "inspection": "Vollständiger Quelltext und Einzelstellen mit historischer Weitergeltung zugeordnet; heutige Sachabnahme nur innerhalb benannter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege gemäß Einzelstelle und Vertragsprofil; Restkatalog noch in Arbeit.",
       "detailedDispositions": [
         {
           "register": "commitments.json",
           "id": "Y1A"
         }
-      ]
+      ],
+      "requirementsRegister": "requirements/S058.json",
+      "requirementsCount": 51
     },
     {
       "id": "S059",
@@ -3257,8 +3273,10 @@
       "target": "cgo-008/010/014/015/016/021",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "inspection": "Vollständiger Quelltext und Einzelstellen mit historischer Weitergeltung zugeordnet; heutige Sachabnahme nur innerhalb benannter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege gemäß Einzelstelle und Vertragsprofil; Restkatalog noch in Arbeit.",
+      "requirementsRegister": "requirements/S059.json",
+      "requirementsCount": 101
     },
     {
       "id": "S060",
@@ -3273,8 +3291,10 @@
       "target": "cgo-008/010/014/015/016/021",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "inspection": "Vollständiger Quelltext und Einzelstellen mit historischer Weitergeltung zugeordnet; heutige Sachabnahme nur innerhalb benannter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege gemäß Einzelstelle und Vertragsprofil; Restkatalog noch in Arbeit.",
+      "requirementsRegister": "requirements/S060.json",
+      "requirementsCount": 60
     },
     {
       "id": "S061",
@@ -3289,8 +3309,10 @@
       "target": "cgo-008/010/014/015/016/021",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "inspection": "Vollständiger Quelltext und Einzelstellen mit historischer Weitergeltung zugeordnet; heutige Sachabnahme nur innerhalb benannter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege gemäß Einzelstelle und Vertragsprofil; Restkatalog noch in Arbeit.",
+      "requirementsRegister": "requirements/S061.json",
+      "requirementsCount": 78
     },
     {
       "id": "S062",
@@ -3305,8 +3327,10 @@
       "target": "cgo-008/010/014/015/016/021",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "inspection": "Vollständiger Quelltext und Einzelstellen mit historischer Weitergeltung zugeordnet; heutige Sachabnahme nur innerhalb benannter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege gemäß Einzelstelle und Vertragsprofil; Restkatalog noch in Arbeit.",
+      "requirementsRegister": "requirements/S062.json",
+      "requirementsCount": 53
     },
     {
       "id": "S063",
@@ -3321,8 +3345,10 @@
       "target": "cgo-008/010/014/015/016/021",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "inspection": "Vollständiger Quelltext und Einzelstellen mit historischer Weitergeltung zugeordnet; heutige Sachabnahme nur innerhalb benannter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege gemäß Einzelstelle und Vertragsprofil; Restkatalog noch in Arbeit.",
+      "requirementsRegister": "requirements/S063.json",
+      "requirementsCount": 66
     },
     {
       "id": "S064",
@@ -3337,8 +3363,10 @@
       "target": "cgo-008/010/014/015/016/021",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "inspection": "Vollständiger Quelltext und Einzelstellen mit historischer Weitergeltung zugeordnet; heutige Sachabnahme nur innerhalb benannter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege gemäß Einzelstelle und Vertragsprofil; Restkatalog noch in Arbeit.",
+      "requirementsRegister": "requirements/S064.json",
+      "requirementsCount": 20
     },
     {
       "id": "S065",
@@ -3353,8 +3381,10 @@
       "target": "cgo-008/010/014/015/016/021",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "inspection": "Vollständiger Quelltext und Einzelstellen mit historischer Weitergeltung zugeordnet; heutige Sachabnahme nur innerhalb benannter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege gemäß Einzelstelle und Vertragsprofil; Restkatalog noch in Arbeit.",
+      "requirementsRegister": "requirements/S065.json",
+      "requirementsCount": 23
     },
     {
       "id": "S066",
@@ -3369,8 +3399,10 @@
       "target": "cgo-008/010/014/015/016/021",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "inspection": "Vollständiger Quelltext und Einzelstellen mit historischer Weitergeltung zugeordnet; heutige Sachabnahme nur innerhalb benannter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege gemäß Einzelstelle und Vertragsprofil; Restkatalog noch in Arbeit.",
+      "requirementsRegister": "requirements/S066.json",
+      "requirementsCount": 12
     },
     {
       "id": "S067",
@@ -3385,8 +3417,10 @@
       "target": "cgo-008/010/014/015/016/021",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "inspection": "Vollständiger Quelltext und Einzelstellen mit historischer Weitergeltung zugeordnet; heutige Sachabnahme nur innerhalb benannter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege gemäß Einzelstelle und Vertragsprofil; Restkatalog noch in Arbeit.",
+      "requirementsRegister": "requirements/S067.json",
+      "requirementsCount": 41
     },
     {
       "id": "S068",
@@ -3401,8 +3435,10 @@
       "target": "cgo-008/010/014/015/016/021",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "inspection": "Vollständiger Quelltext und Einzelstellen mit historischer Weitergeltung zugeordnet; heutige Sachabnahme nur innerhalb benannter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege gemäß Einzelstelle und Vertragsprofil; Restkatalog noch in Arbeit.",
+      "requirementsRegister": "requirements/S068.json",
+      "requirementsCount": 30
     },
     {
       "id": "S069",
@@ -3417,8 +3453,10 @@
       "target": "cgo-008/010/014/015/016/021",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "inspection": "Vollständiger Quelltext und Einzelstellen mit historischer Weitergeltung zugeordnet; heutige Sachabnahme nur innerhalb benannter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege gemäß Einzelstelle und Vertragsprofil; Restkatalog noch in Arbeit.",
+      "requirementsRegister": "requirements/S069.json",
+      "requirementsCount": 28
     },
     {
       "id": "S070",
@@ -3433,8 +3471,10 @@
       "target": "cgo-008/010/014/015/016/021",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "inspection": "Vollständiger Quelltext und Einzelstellen mit historischer Weitergeltung zugeordnet; heutige Sachabnahme nur innerhalb benannter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege gemäß Einzelstelle und Vertragsprofil; Restkatalog noch in Arbeit.",
+      "requirementsRegister": "requirements/S070.json",
+      "requirementsCount": 26
     },
     {
       "id": "S071",
@@ -3449,14 +3489,16 @@
       "target": "cgo-008/010/014/015/016/021",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "inspection": "Vollständiger Quelltext und Einzelstellen mit historischer Weitergeltung zugeordnet; heutige Sachabnahme nur innerhalb benannter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege gemäß Einzelstelle und Vertragsprofil; Restkatalog noch in Arbeit.",
       "detailedDispositions": [
         {
           "register": "commitments.json",
           "id": "Y1B"
         }
-      ]
+      ],
+      "requirementsRegister": "requirements/S071.json",
+      "requirementsCount": 36
     },
     {
       "id": "S072",
@@ -3471,8 +3513,10 @@
       "target": "cgo-008/010/014/015/016/021",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "inspection": "Vollständiger Quelltext und Einzelstellen mit historischer Weitergeltung zugeordnet; heutige Sachabnahme nur innerhalb benannter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege gemäß Einzelstelle und Vertragsprofil; Restkatalog noch in Arbeit.",
+      "requirementsRegister": "requirements/S072.json",
+      "requirementsCount": 89
     },
     {
       "id": "S073",
@@ -3487,14 +3531,16 @@
       "target": "GG: Zyklus 3, eigenes ch02-Muster",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "inspection": "Vollständiger Quelltext und Einzelstellen mit historischer Weitergeltung zugeordnet; heutige Sachabnahme nur innerhalb benannter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege gemäß Einzelstelle und Vertragsprofil; Restkatalog noch in Arbeit.",
       "detailedDispositions": [
         {
           "register": "commitments.json",
           "id": "Y1C"
         }
-      ]
+      ],
+      "requirementsRegister": "requirements/S073.json",
+      "requirementsCount": 33
     },
     {
       "id": "S074",
@@ -3509,8 +3555,10 @@
       "target": "GG: Zyklus 3, eigenes ch02-Muster",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "inspection": "Vollständiger Quelltext und Einzelstellen mit historischer Weitergeltung zugeordnet; heutige Sachabnahme nur innerhalb benannter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege gemäß Einzelstelle und Vertragsprofil; Restkatalog noch in Arbeit.",
+      "requirementsRegister": "requirements/S074.json",
+      "requirementsCount": 22
     },
     {
       "id": "S075",
@@ -3525,8 +3573,10 @@
       "target": "GG: Zyklus 3, eigenes ch02-Muster",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "inspection": "Vollständiger Quelltext und Einzelstellen mit historischer Weitergeltung zugeordnet; heutige Sachabnahme nur innerhalb benannter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege gemäß Einzelstelle und Vertragsprofil; Restkatalog noch in Arbeit.",
+      "requirementsRegister": "requirements/S075.json",
+      "requirementsCount": 72
     },
     {
       "id": "S076",
@@ -3541,8 +3591,10 @@
       "target": "GG: Zyklus 3, eigenes ch02-Muster",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "inspection": "Vollständiger Quelltext und Einzelstellen mit historischer Weitergeltung zugeordnet; heutige Sachabnahme nur innerhalb benannter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege gemäß Einzelstelle und Vertragsprofil; Restkatalog noch in Arbeit.",
+      "requirementsRegister": "requirements/S076.json",
+      "requirementsCount": 35
     },
     {
       "id": "S077",
@@ -3557,8 +3609,10 @@
       "target": "GG: Zyklus 3, eigenes ch02-Muster",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "inspection": "Vollständiger Quelltext und Einzelstellen mit historischer Weitergeltung zugeordnet; heutige Sachabnahme nur innerhalb benannter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege gemäß Einzelstelle und Vertragsprofil; Restkatalog noch in Arbeit.",
+      "requirementsRegister": "requirements/S077.json",
+      "requirementsCount": 38
     },
     {
       "id": "S078",
@@ -3573,8 +3627,10 @@
       "target": "GG: Zyklus 3, eigenes ch02-Muster",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "inspection": "Vollständiger Quelltext und Einzelstellen mit historischer Weitergeltung zugeordnet; heutige Sachabnahme nur innerhalb benannter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege gemäß Einzelstelle und Vertragsprofil; Restkatalog noch in Arbeit.",
+      "requirementsRegister": "requirements/S078.json",
+      "requirementsCount": 36
     },
     {
       "id": "S079",
@@ -3589,8 +3645,10 @@
       "target": "GG: Zyklus 3, eigenes ch02-Muster",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "inspection": "Vollständiger Quelltext und Einzelstellen mit historischer Weitergeltung zugeordnet; heutige Sachabnahme nur innerhalb benannter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege gemäß Einzelstelle und Vertragsprofil; Restkatalog noch in Arbeit.",
+      "requirementsRegister": "requirements/S079.json",
+      "requirementsCount": 22
     },
     {
       "id": "S080",
@@ -3605,8 +3663,10 @@
       "target": "GG: Zyklus 3, eigenes ch02-Muster",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "inspection": "Vollständiger Quelltext und Einzelstellen mit historischer Weitergeltung zugeordnet; heutige Sachabnahme nur innerhalb benannter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege gemäß Einzelstelle und Vertragsprofil; Restkatalog noch in Arbeit.",
+      "requirementsRegister": "requirements/S080.json",
+      "requirementsCount": 7
     },
     {
       "id": "S081",
@@ -3621,8 +3681,10 @@
       "target": "GG: Zyklus 3, eigenes ch02-Muster",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "inspection": "Vollständiger Quelltext und Einzelstellen mit historischer Weitergeltung zugeordnet; heutige Sachabnahme nur innerhalb benannter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege gemäß Einzelstelle und Vertragsprofil; Restkatalog noch in Arbeit.",
+      "requirementsRegister": "requirements/S081.json",
+      "requirementsCount": 12
     },
     {
       "id": "S082",
@@ -3637,8 +3699,10 @@
       "target": "GG: Zyklus 3, eigenes ch02-Muster",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "inspection": "Vollständiger Quelltext und Einzelstellen mit historischer Weitergeltung zugeordnet; heutige Sachabnahme nur innerhalb benannter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege gemäß Einzelstelle und Vertragsprofil; Restkatalog noch in Arbeit.",
+      "requirementsRegister": "requirements/S082.json",
+      "requirementsCount": 34
     },
     {
       "id": "S083",
@@ -3653,14 +3717,16 @@
       "target": "GG: Zyklus 3 / welle-028",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "inspection": "Vollständiger Quelltext und Einzelstellen mit historischer Weitergeltung zugeordnet; heutige Sachabnahme nur innerhalb benannter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege gemäß Einzelstelle und Vertragsprofil; Restkatalog noch in Arbeit.",
       "detailedDispositions": [
         {
           "register": "commitments.json",
           "id": "Y1C"
         }
-      ]
+      ],
+      "requirementsRegister": "requirements/S083.json",
+      "requirementsCount": 12
     },
     {
       "id": "S084",
@@ -3675,8 +3741,10 @@
       "target": "GG: Zyklus 3 / welle-028",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "inspection": "Vollständiger Quelltext und Einzelstellen mit historischer Weitergeltung zugeordnet; heutige Sachabnahme nur innerhalb benannter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege gemäß Einzelstelle und Vertragsprofil; Restkatalog noch in Arbeit.",
+      "requirementsRegister": "requirements/S084.json",
+      "requirementsCount": 12
     },
     {
       "id": "S085",
@@ -3691,8 +3759,10 @@
       "target": "GG: Zyklus 3 / welle-028",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "inspection": "Vollständiger Quelltext und Einzelstellen mit historischer Weitergeltung zugeordnet; heutige Sachabnahme nur innerhalb benannter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege gemäß Einzelstelle und Vertragsprofil; Restkatalog noch in Arbeit.",
+      "requirementsRegister": "requirements/S085.json",
+      "requirementsCount": 81
     },
     {
       "id": "S086",
@@ -3707,8 +3777,10 @@
       "target": "GG: Zyklus 3 / welle-028",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "inspection": "Vollständiger Quelltext und Einzelstellen mit historischer Weitergeltung zugeordnet; heutige Sachabnahme nur innerhalb benannter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege gemäß Einzelstelle und Vertragsprofil; Restkatalog noch in Arbeit.",
+      "requirementsRegister": "requirements/S086.json",
+      "requirementsCount": 11
     },
     {
       "id": "S087",
@@ -3723,8 +3795,10 @@
       "target": "GG: Zyklus 3 / welle-028",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "inspection": "Vollständiger Quelltext und Einzelstellen mit historischer Weitergeltung zugeordnet; heutige Sachabnahme nur innerhalb benannter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege gemäß Einzelstelle und Vertragsprofil; Restkatalog noch in Arbeit.",
+      "requirementsRegister": "requirements/S087.json",
+      "requirementsCount": 11
     },
     {
       "id": "S088",
@@ -3739,8 +3813,10 @@
       "target": "GG: Zyklus 3 / welle-028",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "inspection": "Vollständiger Quelltext und Einzelstellen mit historischer Weitergeltung zugeordnet; heutige Sachabnahme nur innerhalb benannter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege gemäß Einzelstelle und Vertragsprofil; Restkatalog noch in Arbeit.",
+      "requirementsRegister": "requirements/S088.json",
+      "requirementsCount": 12
     },
     {
       "id": "S089",
@@ -3755,8 +3831,10 @@
       "target": "GG: Zyklus 3 / welle-028",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "inspection": "Vollständiger Quelltext und Einzelstellen mit historischer Weitergeltung zugeordnet; heutige Sachabnahme nur innerhalb benannter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege gemäß Einzelstelle und Vertragsprofil; Restkatalog noch in Arbeit.",
+      "requirementsRegister": "requirements/S089.json",
+      "requirementsCount": 22
     },
     {
       "id": "S090",
@@ -3771,8 +3849,10 @@
       "target": "GG: Zyklus 3 / welle-028",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "inspection": "Vollständiger Quelltext und Einzelstellen mit historischer Weitergeltung zugeordnet; heutige Sachabnahme nur innerhalb benannter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege gemäß Einzelstelle und Vertragsprofil; Restkatalog noch in Arbeit.",
+      "requirementsRegister": "requirements/S090.json",
+      "requirementsCount": 44
     },
     {
       "id": "S091",
@@ -3787,8 +3867,10 @@
       "target": "GG: Zyklus 3 / welle-028",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "inspection": "Vollständiger Quelltext und Einzelstellen mit historischer Weitergeltung zugeordnet; heutige Sachabnahme nur innerhalb benannter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege gemäß Einzelstelle und Vertragsprofil; Restkatalog noch in Arbeit.",
+      "requirementsRegister": "requirements/S091.json",
+      "requirementsCount": 44
     },
     {
       "id": "S092",
@@ -3803,14 +3885,16 @@
       "target": "GG: Zyklus 3 / welle-016",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz.",
+      "inspection": "Vollständiger Quelltext und Einzelstellen mit historischer Weitergeltung zugeordnet; heutige Sachabnahme nur innerhalb benannter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege gemäß Einzelstelle und Vertragsprofil; Restkatalog noch in Arbeit.",
       "detailedDispositions": [
         {
           "register": "commitments.json",
           "id": "Y1C"
         }
-      ]
+      ],
+      "requirementsRegister": "requirements/S092.json",
+      "requirementsCount": 10
     },
     {
       "id": "S093",
@@ -3825,8 +3909,10 @@
       "target": "GG: Zyklus 3 / welle-016",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "inspection": "Vollständiger Quelltext und Einzelstellen mit historischer Weitergeltung zugeordnet; heutige Sachabnahme nur innerhalb benannter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege gemäß Einzelstelle und Vertragsprofil; Restkatalog noch in Arbeit.",
+      "requirementsRegister": "requirements/S093.json",
+      "requirementsCount": 7
     },
     {
       "id": "S094",
@@ -3841,8 +3927,10 @@
       "target": "GG: Zyklus 3 / welle-016",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "inspection": "Vollständiger Quelltext und Einzelstellen mit historischer Weitergeltung zugeordnet; heutige Sachabnahme nur innerhalb benannter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege gemäß Einzelstelle und Vertragsprofil; Restkatalog noch in Arbeit.",
+      "requirementsRegister": "requirements/S094.json",
+      "requirementsCount": 55
     },
     {
       "id": "S095",
@@ -3857,8 +3945,10 @@
       "target": "GG: Zyklus 3 / welle-016",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "inspection": "Vollständiger Quelltext und Einzelstellen mit historischer Weitergeltung zugeordnet; heutige Sachabnahme nur innerhalb benannter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege gemäß Einzelstelle und Vertragsprofil; Restkatalog noch in Arbeit.",
+      "requirementsRegister": "requirements/S095.json",
+      "requirementsCount": 15
     },
     {
       "id": "S096",
@@ -3873,8 +3963,10 @@
       "target": "GG: Zyklus 3 / welle-016",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "inspection": "Vollständiger Quelltext und Einzelstellen mit historischer Weitergeltung zugeordnet; heutige Sachabnahme nur innerhalb benannter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege gemäß Einzelstelle und Vertragsprofil; Restkatalog noch in Arbeit.",
+      "requirementsRegister": "requirements/S096.json",
+      "requirementsCount": 6
     },
     {
       "id": "S097",
@@ -3889,8 +3981,10 @@
       "target": "GG: Zyklus 3 / welle-016",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "inspection": "Vollständiger Quelltext und Einzelstellen mit historischer Weitergeltung zugeordnet; heutige Sachabnahme nur innerhalb benannter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege gemäß Einzelstelle und Vertragsprofil; Restkatalog noch in Arbeit.",
+      "requirementsRegister": "requirements/S097.json",
+      "requirementsCount": 7
     },
     {
       "id": "S098",
@@ -3905,8 +3999,10 @@
       "target": "GG: Zyklus 3 / welle-016",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "inspection": "Vollständiger Quelltext und Einzelstellen mit historischer Weitergeltung zugeordnet; heutige Sachabnahme nur innerhalb benannter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege gemäß Einzelstelle und Vertragsprofil; Restkatalog noch in Arbeit.",
+      "requirementsRegister": "requirements/S098.json",
+      "requirementsCount": 12
     },
     {
       "id": "S099",
@@ -3921,8 +4017,10 @@
       "target": "GG: Zyklus 3 / welle-016",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "inspection": "Vollständiger Quelltext und Einzelstellen mit historischer Weitergeltung zugeordnet; heutige Sachabnahme nur innerhalb benannter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege gemäß Einzelstelle und Vertragsprofil; Restkatalog noch in Arbeit.",
+      "requirementsRegister": "requirements/S099.json",
+      "requirementsCount": 26
     },
     {
       "id": "S100",
@@ -3937,8 +4035,10 @@
       "target": "GG: Zyklus 3 / welle-016",
       "decision": "erhalten; kein heutiger Erledigungsnachweis allein aus Dokumentstatus",
       "semanticClosure": "offen",
-      "inspection": "Titel/Gliederung und thematische Zuordnung; keine vollständige Einzelzusagen-Abnahme",
-      "remaining": "Vor endgültiger Vollständigkeitsfreigabe jede offene/bedingte Einzelzusage dieser Fassung gegen Nachfolger und Produktbeleg schließen; Quelltext bleibt Referenz."
+      "inspection": "Vollständiger Quelltext und Einzelstellen mit historischer Weitergeltung zugeordnet; heutige Sachabnahme nur innerhalb benannter Beleggrenzen.",
+      "remaining": "Fehlende Sachbelege gemäß Einzelstelle und Vertragsprofil; Restkatalog noch in Arbeit.",
+      "requirementsRegister": "requirements/S100.json",
+      "requirementsCount": 45
     },
     {
       "id": "S101",
