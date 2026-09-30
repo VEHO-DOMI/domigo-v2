@@ -307,11 +307,13 @@ if (process.argv.includes("--selftest")) {
     }, `missing stem "${echterStem}"`],
 
     ["eine Ausnahme ist schal: das Blatt liegt inzwischen doch", () =>
-      analyse({ ...welt, allow: [...allow, { stem: echterStem, reason: "erfunden, damit dieser Fall rot wird", offen: "D-0" }] }),
+      analyse({ ...welt, allow: [...allow, { stem: echterStem, reason: "erfunden, damit dieser Fall rot wird", offen: "D-0" }],
+        openFindings: new Map([...OPEN_FINDINGS, ["D-0", artFindingScope(echterStem)]]) }),
       `allowlist STALE: ${echterStem}`],
 
     ["eine Ausnahme wird von niemandem gebraucht", () =>
-      analyse({ ...welt, allow: [...allow, { stem: "gibt-es-nicht-und-braucht-niemand", reason: "erfunden, damit dieser Fall rot wird", offen: "D-0" }] }),
+      analyse({ ...welt, allow: [...allow, { stem: "gibt-es-nicht-und-braucht-niemand", reason: "erfunden, damit dieser Fall rot wird", offen: "D-0" }],
+        openFindings: new Map([...OPEN_FINDINGS, ["D-0", artFindingScope("gibt-es-nicht-und-braucht-niemand")]]) }),
       "is needed by nothing"],
 
     ["die Tot-Kunst-Ratsche: ein Blatt mehr, als die Decke traegt", () => {
