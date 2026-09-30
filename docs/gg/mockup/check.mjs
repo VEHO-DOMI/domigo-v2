@@ -1,64 +1,74 @@
-// CODEX DRAFT — NOT CANON. Bounded source/HTTP checks; no production battery.
+// CODEX DRAFT — NOT CANON. Bounded source/render/HTTP checks; no product battery.
 import assert from 'node:assert/strict';
 import { readFile, mkdtemp } from 'node:fs/promises';
-import { spawn } from 'node:child_process';
+import { spawn, execFileSync } from 'node:child_process';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { once } from 'node:events';
-import { createHash } from 'node:crypto';
-import { execFileSync } from 'node:child_process';
-import { build, repo, sourceDir } from './build.mjs';
-
-const pos = process.argv.indexOf('--out');
-const out = pos < 0 ? await mkdtemp(path.join(tmpdir(), 'cgo-007-check-')) : path.resolve(process.argv[pos + 1]);
-if (!process.argv.includes('--no-build')) await build(out);
-const actual = JSON.parse(await readFile(path.join(out, 'tasks.private.json'), 'utf8'));
-const original = async (name, id) => JSON.parse(await readFile(path.join(repo, `content/corpus/units/g1-u01/${name}.json`), 'utf8')).items.find((x) => x.id === id);
-const vocab = await original('vocab', 'g1u01.w.book');
-const grammar = await original('grammar', 'g1u01.gi.contractions.mc.006');
-assert.deepEqual(actual.originals, { vocab, grammar }, 'Quelltreue: vollständige Originalitems');
-assert.deepEqual(actual.answers, { vocab: vocab.dAnswers, grammar: grammar.answers }, 'Quelltreue: unveränderte vollständige Schlüssel');
-assert.equal(actual.tasks.vocab.context, vocab.d, 'Definition wortgetreu');
-assert.deepEqual([...actual.tasks.vocab.options].sort(), [vocab.w, ...vocab.mc].sort(), 'Alle vier Vokabeloptionen');
-assert.deepEqual([...actual.tasks.grammar.options].sort(), [...grammar.answers.map((x) => x.text), ...grammar.distractors].sort(), 'Alle vier Grammatikoptionen');
-const port = Number(process.env.MOCKUP_CHECK_PORT || 4178);
-const server = spawn(process.execPath, [path.join(sourceDir, 'serve.mjs'), '--no-build', '--out', out, '--port', String(port)], { stdio: ['ignore', 'pipe', 'pipe'] });
-const base = `http://127.0.0.1:${port}`;
-try {
-  await Promise.race([once(server.stdout, 'data'), once(server, 'exit').then(() => { throw new Error('Preview failed to start'); })]);
-  const response = await fetch(base + '/api/tasks');
-  assert.equal(response.status, 200);
-  const publicTasks = await response.json();
-  assert.deepEqual(publicTasks, actual.tasks);
-  assert.ok(!/"(answers|correct|explanation|originals)"/.test(JSON.stringify(publicTasks)), 'Keine Schlüsselmarkierung im Lösermaterial');
-  let graded = 0;
-  for (const [name, item] of Object.entries(publicTasks)) {
-    const key = name === 'vocab' ? vocab.dAnswers : grammar.answers;
-    for (const choice of item.options) {
-      const r = await fetch(base + '/api/answer', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ task: name, choice }) });
-      assert.equal(r.status, 200);
-      assert.equal((await r.json()).correct, key.some((x) => x.text === choice && x.tier === 'full'), `${name}: ${choice}`);
-      graded++;
-    }
-  }
-  for (const file of ['/tasks.private.json', '/source-pins.json', '/content/corpus/units/g1-u01/grammar.json']) assert.equal((await fetch(base + file)).status, 404, `Private file ${file}`);
-  const alien = await fetch(base + '/api/answer', { method: 'POST', headers: { Origin: 'https://example.invalid' }, body: '{}' });
-  assert.equal(alien.status, 403, 'Fremde Herkunft');
-  const bad = await fetch(base + '/api/answer', { method: 'POST', body: JSON.stringify({ task: 'grammar', choice: 'invalid' }) });
-  assert.equal(bad.status, 400, 'Ungültige Auswahl');
-  const version = await (await fetch(base + '/api/version')).json();
-  assert.equal(version.head, execFileSync('git', ['rev-parse', 'HEAD'], { cwd: repo, encoding: 'utf8' }).trim(), 'Bau gehört zum aktuellen Kopf');
-  const manifest = version.files;
-  assert.deepEqual(Object.keys(manifest).sort(), ['index.html', 'style.css', 'app.js', 'assets/object.png', 'assets/mentor.png', 'assets/fredoka.woff2', 'assets/FONT-LICENSE.md'].sort(), 'Vollständige Auslieferung');
-  for (const [file, info] of Object.entries(manifest)) {
-    const response = await fetch(base + '/' + file);
-    assert.equal(response.status, 200, `Built file ${file}`);
-    const bytes = Buffer.from(await response.arrayBuffer());
-    assert.equal(bytes.length, info.bytes, `Delivered size ${file}`);
-    assert.equal(createHash('md5').update(bytes).digest('hex'), info.md5, `Delivered fingerprint ${file}`);
-  }
-  console.log(JSON.stringify({ verdict: 'PASS', originalItems: 2, gradedChoices: graded, privateFilesDenied: 3, invalidRequestsDenied: 2, deliveredFiles: Object.keys(manifest).length, out }));
-} finally {
-  server.kill('SIGTERM');
-  await once(server, 'exit');
+import { createServer } from 'node:net';
+import { build, inputs, repo, sourceDir, fingerprint, publicFiles } from './build.mjs';
+import { inventory } from './inventory.mjs';
+import { allCopy, publicCopy } from './copy.mjs';
+import { scenarioList } from './model.mjs';
+import { render } from './render.mjs';
+const n=process.argv.indexOf('--out');
+const out=n<0?await mkdtemp(path.join(tmpdir(),'cgo-032-check-')):path.resolve(process.argv[n+1]);
+if(!process.argv.includes('--no-build'))await build(out);
+const read=async name=>JSON.parse(await readFile(path.join(out,name),'utf8'));
+const {source}=await inputs();
+const actual=await read('tasks.private.json');
+assert.deepEqual(actual,source,'Originale, volle Schlüssel und Musterdefinition an Quellen gebunden');
+const lesson=await read('lesson.public.json');
+assert.deepEqual(lesson.tasks,source.tasks,'Öffentlicher Aufgabenreiz entspricht dem tatsächlich gebauten Quellvertrag');
+assert.deepEqual(lesson.copy,publicCopy,'Öffentliche Textdatei entspricht dem vollständigen Textregister');
+assert.deepEqual(lesson.scenes,scenarioList(source).map(({id,label})=>({id,label})),'Zustandsliste aus tatsächlichem Modell');
+const manifest=await read('build.json');
+for(const [file,md5] of Object.entries(manifest.implementation))assert.equal(fingerprint(await readFile(path.join(sourceDir,file))),md5,`Build passt zu Implementierung ${file}`);
+const inv=await inventory();
+assert.deepEqual(JSON.parse(await readFile(path.resolve(sourceDir,'../pedagogy/student-texts.json'),'utf8')),inv,'Dauerhaftes Textregister entspricht tatsächlichen Renderwegen');
+const forbidden=new Set(['answers','answer','correct','correctLetter','acceptedAnswers','rationale','explanation','originals','tier','provenance','copy']);
+function noPrivate(value){if(Array.isArray(value))value.forEach(noPrivate);else if(value&&typeof value==='object')for(const [k,v]of Object.entries(value)){assert.ok(!forbidden.has(k),`Löserpaket enthält kein privates Feld ${k}`);noPrivate(v);}}
+for(const key of ['word','grammar']){
+  const solver=await read(`solver-${key}.public.json`);noPrivate(solver);assert.deepEqual(solver.task,source.tasks[key],'Löser sieht denselben Aufgabenreiz');
+  assert.equal(fingerprint(await readFile(path.join(out,`solver-${key}.public.json`))),manifest.solver[key]);
 }
+const wordSolver=await read('solver-word.public.json');
+assert.ok(!JSON.stringify(wordSolver).toLowerCase().includes(source.originals.vocab.w.toLowerCase()),'Wortpaket enthält das Zielwort weder im Reiz noch in Kennungen/Metadaten');
+const html=await readFile(path.join(out,'index.html'),'utf8');
+assert.ok(html.includes('lang="de"')&&html.includes(allCopy['ui.loading']),'Deutsche anfängliche Ladeansicht');
+const app=await readFile(path.join(out,'app.js'),'utf8');
+for(const key of ['ui.loadError','ui.loadAdvice','ui.reload'])assert.ok(app.includes(allCopy[key]),`Auch Offline-Ladefehler an Textregister gebunden ${key}`);
+for(const item of lesson.scenes){
+  // HTTP states are exercised below; pure render is additionally enumerated by inventory.
+  assert.ok(inv.states.includes(item.id));
+}
+const port=Number(process.env.MOCKUP_CHECK_PORT||4199);
+const probe=createServer();await new Promise((resolve,reject)=>{probe.once('error',reject);probe.listen(port,'127.0.0.1',resolve);});await new Promise(resolve=>probe.close(resolve));
+const server=spawn(process.execPath,[path.join(sourceDir,'serve.mjs'),'--no-build','--out',out,'--port',String(port)],{stdio:['ignore','pipe','pipe']});
+let serverErrors='';server.stderr.on('data',x=>{serverErrors+=x;});
+const base=`http://127.0.0.1:${port}`;
+let graded=0;
+try{
+  await Promise.race([once(server.stdout,'data'),once(server,'exit').then(()=>{throw new Error('Preview failed: '+serverErrors);})]);
+  const post=(url,body)=>fetch(base+url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+  assert.deepEqual(await(await fetch(base+'/api/tasks')).json(),source.tasks);
+  const cases=[['book',true],['Book',true],['  book  ',true],['a book',true],['the book',true],['A   BOOK',true],['books',false],['textbook',false],['English book',false],['exercise book',false],['notebook',false],['Buch',false],['bok',false],['boook',false],['boock',false],['pen',false],['<script>alert(1)</script>',false]];
+  for(const [answer,correct]of cases){const r=await post('/api/answer',{task:'word',answer});assert.equal(r.status,200);assert.equal((await r.json()).correct,correct,`Worteingabe ${answer}`);graded++;}
+  for(const answer of source.tasks.grammar.options){const r=await post('/api/answer',{task:'grammar',answer});assert.equal(r.status,200);assert.equal((await r.json()).correct,source.answers.grammar.some(x=>x.tier==='full'&&x.text===answer));graded++;}
+  for(const {id}of lesson.scenes){
+    const r=await post('/api/scenario',{scene:id});assert.equal(r.status,200,`Szenario ${id}`);const state=await r.json();
+    const output=render(state,{copy:allCopy,tasks:source.tasks});assert.ok(output.includes('<h1'),`Gerenderter Zustand ${id}`);
+    if(id==='summary-pending')assert.ok(!output.includes('id="again"')&&!output.includes('id="retry-save"'),'Während Warten keine Abschlussaktion');
+    if(id==='word-wrong')assert.ok(output.includes('value="pen"'),'Fehlantwort bleibt erhalten');
+  }
+  const privatePaths=['/tasks.private.json','/build.json','/source-pins.json','/copy.mjs','/model.mjs','/solver-word.public.json','/solver-grammar.public.json','/content/corpus/units/g1-u01/grammar.json'];
+  for(const file of privatePaths)assert.equal((await fetch(base+file)).status,404,`Private Datei ${file}`);
+  for(const body of [null,{},[],{task:'word',answer:''},{task:'grammar',answer:'invalid'},{task:'word',answer:'a'.repeat(101)}])assert.equal((await post('/api/answer',body)).status,400,'Ungültige Anfrage');
+  assert.equal((await fetch(base+'/api/answer',{method:'POST',headers:{Origin:'https://example.invalid'},body:'{}'})).status,403,'Fremde Herkunft');
+  const version=await(await fetch(base+'/api/version')).json();assert.deepEqual(version,manifest);
+  assert.equal(version.head,execFileSync('git',['rev-parse','HEAD'],{cwd:repo,encoding:'utf8'}).trim(),'Bau gehört zum aktuellen Kopf');
+  assert.deepEqual(Object.keys(version.files).sort(),[...publicFiles].sort());
+  for(const [file,info]of Object.entries(version.files)){const r=await fetch(base+'/'+file);assert.equal(r.status,200,`Auslieferung ${file}`);const b=Buffer.from(await r.arrayBuffer());assert.equal(b.length,info.bytes);assert.equal(fingerprint(b),info.md5);}
+  const png=await readFile(path.join(out,'assets/object.png'));assert.equal(png.readUInt32BE(16),631);assert.equal(png.readUInt32BE(20),471);
+  console.log(JSON.stringify({verdict:'PASS',originalItems:2,newMockupTasks:2,gradedAnswers:graded,states:inv.states.length,registeredTexts:inv.rows.length,privateFilesDenied:privatePaths.length,deliveredFiles:publicFiles.length,out}));
+}finally{server.kill('SIGTERM');if(server.exitCode===null)await once(server,'exit');}

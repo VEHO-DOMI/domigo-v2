@@ -1,0 +1,2375 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "scope": "Maschinelle Vollständigkeit und Bindung, keine Stilfreigabe",
+  "states": [
+    "intro",
+    "word-card",
+    "word",
+    "word-empty",
+    "word-selected",
+    "word-correct",
+    "word-article",
+    "word-plural",
+    "word-near",
+    "word-related",
+    "word-german",
+    "word-wrong",
+    "word-assisted",
+    "word-help-1",
+    "word-help-2",
+    "word-help-3",
+    "word-help-4",
+    "word-checking",
+    "word-error",
+    "sentence",
+    "grammar",
+    "grammar-empty",
+    "grammar-selected",
+    "grammar-result-0",
+    "grammar-result-1",
+    "grammar-result-2",
+    "grammar-result-3",
+    "grammar-assisted",
+    "grammar-help",
+    "grammar-checking",
+    "grammar-error",
+    "summary-pending",
+    "summary-error",
+    "summary-saved",
+    "load-error"
+  ],
+  "rows": [
+    {
+      "id": "ui.chapter",
+      "text": "Chapter 1",
+      "places": [
+        "Schülerfläche/grammar",
+        "Schülerfläche/grammar-assisted",
+        "Schülerfläche/grammar-checking",
+        "Schülerfläche/grammar-empty",
+        "Schülerfläche/grammar-error",
+        "Schülerfläche/grammar-help",
+        "Schülerfläche/grammar-result-0",
+        "Schülerfläche/grammar-result-1",
+        "Schülerfläche/grammar-result-2",
+        "Schülerfläche/grammar-result-3",
+        "Schülerfläche/grammar-selected",
+        "Schülerfläche/intro",
+        "Schülerfläche/load-error",
+        "Schülerfläche/sentence",
+        "Schülerfläche/summary-error",
+        "Schülerfläche/summary-pending",
+        "Schülerfläche/summary-saved",
+        "Schülerfläche/word",
+        "Schülerfläche/word-article",
+        "Schülerfläche/word-assisted",
+        "Schülerfläche/word-card",
+        "Schülerfläche/word-checking",
+        "Schülerfläche/word-correct",
+        "Schülerfläche/word-empty",
+        "Schülerfläche/word-error",
+        "Schülerfläche/word-german",
+        "Schülerfläche/word-help-1",
+        "Schülerfläche/word-help-2",
+        "Schülerfläche/word-help-3",
+        "Schülerfläche/word-help-4",
+        "Schülerfläche/word-near",
+        "Schülerfläche/word-plural",
+        "Schülerfläche/word-related",
+        "Schülerfläche/word-selected",
+        "Schülerfläche/word-wrong"
+      ],
+      "function": "Deutsche Orientierung und Bedienung",
+      "language": "de",
+      "bookEvidence": "WB4–10: deutsche Arbeitsaufträge; Musterautorenschaft",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "ui.topic",
+      "text": "Ein Buch beschreiben",
+      "places": [
+        "Schülerfläche/grammar",
+        "Schülerfläche/grammar-assisted",
+        "Schülerfläche/grammar-checking",
+        "Schülerfläche/grammar-empty",
+        "Schülerfläche/grammar-error",
+        "Schülerfläche/grammar-help",
+        "Schülerfläche/grammar-result-0",
+        "Schülerfläche/grammar-result-1",
+        "Schülerfläche/grammar-result-2",
+        "Schülerfläche/grammar-result-3",
+        "Schülerfläche/grammar-selected",
+        "Schülerfläche/intro",
+        "Schülerfläche/load-error",
+        "Schülerfläche/sentence",
+        "Schülerfläche/summary-error",
+        "Schülerfläche/summary-pending",
+        "Schülerfläche/summary-saved",
+        "Schülerfläche/word",
+        "Schülerfläche/word-article",
+        "Schülerfläche/word-assisted",
+        "Schülerfläche/word-card",
+        "Schülerfläche/word-checking",
+        "Schülerfläche/word-correct",
+        "Schülerfläche/word-empty",
+        "Schülerfläche/word-error",
+        "Schülerfläche/word-german",
+        "Schülerfläche/word-help-1",
+        "Schülerfläche/word-help-2",
+        "Schülerfläche/word-help-3",
+        "Schülerfläche/word-help-4",
+        "Schülerfläche/word-near",
+        "Schülerfläche/word-plural",
+        "Schülerfläche/word-related",
+        "Schülerfläche/word-selected",
+        "Schülerfläche/word-wrong"
+      ],
+      "function": "Deutsche Orientierung und Bedienung",
+      "language": "de",
+      "bookEvidence": "WB4–10: deutsche Arbeitsaufträge; Musterautorenschaft",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "ui.practice",
+      "text": "Englisch üben",
+      "places": [
+        "Laufzeit/Status"
+      ],
+      "function": "Deutsche Orientierung und Bedienung",
+      "language": "de",
+      "bookEvidence": "WB4–10: deutsche Arbeitsaufträge; Musterautorenschaft",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "ui.start",
+      "text": "Wort anschauen",
+      "places": [
+        "Schülerfläche/intro"
+      ],
+      "function": "Deutsche Orientierung und Bedienung",
+      "language": "de",
+      "bookEvidence": "WB4–10: deutsche Arbeitsaufträge; Musterautorenschaft",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "ui.back",
+      "text": "Zurück",
+      "places": [
+        "Schülerfläche/grammar",
+        "Schülerfläche/grammar-assisted",
+        "Schülerfläche/grammar-checking",
+        "Schülerfläche/grammar-empty",
+        "Schülerfläche/grammar-error",
+        "Schülerfläche/grammar-help",
+        "Schülerfläche/grammar-result-0",
+        "Schülerfläche/grammar-result-1",
+        "Schülerfläche/grammar-result-2",
+        "Schülerfläche/grammar-result-3",
+        "Schülerfläche/grammar-selected",
+        "Schülerfläche/load-error",
+        "Schülerfläche/sentence",
+        "Schülerfläche/summary-error",
+        "Schülerfläche/summary-pending",
+        "Schülerfläche/summary-saved",
+        "Schülerfläche/word",
+        "Schülerfläche/word-article",
+        "Schülerfläche/word-assisted",
+        "Schülerfläche/word-card",
+        "Schülerfläche/word-checking",
+        "Schülerfläche/word-correct",
+        "Schülerfläche/word-empty",
+        "Schülerfläche/word-error",
+        "Schülerfläche/word-german",
+        "Schülerfläche/word-help-1",
+        "Schülerfläche/word-help-2",
+        "Schülerfläche/word-help-3",
+        "Schülerfläche/word-help-4",
+        "Schülerfläche/word-near",
+        "Schülerfläche/word-plural",
+        "Schülerfläche/word-related",
+        "Schülerfläche/word-selected",
+        "Schülerfläche/word-wrong"
+      ],
+      "function": "Deutsche Orientierung und Bedienung",
+      "language": "de",
+      "bookEvidence": "WB4–10: deutsche Arbeitsaufträge; Musterautorenschaft",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "ui.home",
+      "text": "Zum Einstieg",
+      "places": [
+        "Rahmen/Browserstatus",
+        "Schülerfläche/grammar",
+        "Schülerfläche/grammar-assisted",
+        "Schülerfläche/grammar-checking",
+        "Schülerfläche/grammar-empty",
+        "Schülerfläche/grammar-error",
+        "Schülerfläche/grammar-help",
+        "Schülerfläche/grammar-result-0",
+        "Schülerfläche/grammar-result-1",
+        "Schülerfläche/grammar-result-2",
+        "Schülerfläche/grammar-result-3",
+        "Schülerfläche/grammar-selected",
+        "Schülerfläche/load-error",
+        "Schülerfläche/sentence",
+        "Schülerfläche/summary-error",
+        "Schülerfläche/summary-pending",
+        "Schülerfläche/summary-saved",
+        "Schülerfläche/word",
+        "Schülerfläche/word-article",
+        "Schülerfläche/word-assisted",
+        "Schülerfläche/word-card",
+        "Schülerfläche/word-checking",
+        "Schülerfläche/word-correct",
+        "Schülerfläche/word-empty",
+        "Schülerfläche/word-error",
+        "Schülerfläche/word-german",
+        "Schülerfläche/word-help-1",
+        "Schülerfläche/word-help-2",
+        "Schülerfläche/word-help-3",
+        "Schülerfläche/word-help-4",
+        "Schülerfläche/word-near",
+        "Schülerfläche/word-plural",
+        "Schülerfläche/word-related",
+        "Schülerfläche/word-selected",
+        "Schülerfläche/word-wrong"
+      ],
+      "function": "Deutsche Orientierung und Bedienung",
+      "language": "de",
+      "bookEvidence": "WB4–10: deutsche Arbeitsaufträge; Musterautorenschaft",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "ui.check",
+      "text": "Antwort prüfen",
+      "places": [
+        "Schülerfläche/grammar",
+        "Schülerfläche/grammar-checking",
+        "Schülerfläche/grammar-empty",
+        "Schülerfläche/grammar-error",
+        "Schülerfläche/grammar-help",
+        "Schülerfläche/grammar-selected",
+        "Schülerfläche/word",
+        "Schülerfläche/word-checking",
+        "Schülerfläche/word-empty",
+        "Schülerfläche/word-error",
+        "Schülerfläche/word-help-1",
+        "Schülerfläche/word-help-2",
+        "Schülerfläche/word-help-3",
+        "Schülerfläche/word-help-4",
+        "Schülerfläche/word-selected"
+      ],
+      "function": "Deutsche Orientierung und Bedienung",
+      "language": "de",
+      "bookEvidence": "WB4–10: deutsche Arbeitsaufträge; Musterautorenschaft",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "ui.retry",
+      "text": "Antwort ändern",
+      "places": [
+        "Schülerfläche/grammar-result-0",
+        "Schülerfläche/grammar-result-1",
+        "Schülerfläche/grammar-result-3",
+        "Schülerfläche/word-german",
+        "Schülerfläche/word-near",
+        "Schülerfläche/word-plural",
+        "Schülerfläche/word-related",
+        "Schülerfläche/word-wrong"
+      ],
+      "function": "Deutsche Orientierung und Bedienung",
+      "language": "de",
+      "bookEvidence": "WB4–10: deutsche Arbeitsaufträge; Musterautorenschaft",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "ui.help",
+      "text": "Hilfe ansehen",
+      "places": [
+        "Schülerfläche/grammar",
+        "Schülerfläche/grammar-empty",
+        "Schülerfläche/grammar-error",
+        "Schülerfläche/grammar-result-0",
+        "Schülerfläche/grammar-result-1",
+        "Schülerfläche/grammar-result-3",
+        "Schülerfläche/grammar-selected",
+        "Schülerfläche/word",
+        "Schülerfläche/word-empty",
+        "Schülerfläche/word-error",
+        "Schülerfläche/word-german",
+        "Schülerfläche/word-near",
+        "Schülerfläche/word-plural",
+        "Schülerfläche/word-related",
+        "Schülerfläche/word-selected",
+        "Schülerfläche/word-wrong"
+      ],
+      "function": "Deutsche Orientierung und Bedienung",
+      "language": "de",
+      "bookEvidence": "WB4–10: deutsche Arbeitsaufträge; Musterautorenschaft",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "ui.more",
+      "text": "Mehr Hilfe",
+      "places": [
+        "Schülerfläche/word-help-1",
+        "Schülerfläche/word-help-2",
+        "Schülerfläche/word-help-3"
+      ],
+      "function": "Deutsche Orientierung und Bedienung",
+      "language": "de",
+      "bookEvidence": "WB4–10: deutsche Arbeitsaufträge; Musterautorenschaft",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "ui.hide",
+      "text": "Hilfe schließen",
+      "places": [
+        "Schülerfläche/grammar-help",
+        "Schülerfläche/word-help-1",
+        "Schülerfläche/word-help-2",
+        "Schülerfläche/word-help-3",
+        "Schülerfläche/word-help-4"
+      ],
+      "function": "Deutsche Orientierung und Bedienung",
+      "language": "de",
+      "bookEvidence": "WB4–10: deutsche Arbeitsaufträge; Musterautorenschaft",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "ui.card",
+      "text": "Wortkarte ansehen",
+      "places": [
+        "Schülerfläche/word-help-4"
+      ],
+      "function": "Deutsche Orientierung und Bedienung",
+      "language": "de",
+      "bookEvidence": "WB4–10: deutsche Arbeitsaufträge; Musterautorenschaft",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "ui.recall",
+      "text": "Wort selbst schreiben",
+      "places": [
+        "Schülerfläche/word-card"
+      ],
+      "function": "Deutsche Orientierung und Bedienung",
+      "language": "de",
+      "bookEvidence": "WB4–10: deutsche Arbeitsaufträge; Musterautorenschaft",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "ui.sentence",
+      "text": "Satz anschauen",
+      "places": [
+        "Schülerfläche/word-article",
+        "Schülerfläche/word-assisted",
+        "Schülerfläche/word-correct"
+      ],
+      "function": "Deutsche Orientierung und Bedienung",
+      "language": "de",
+      "bookEvidence": "WB4–10: deutsche Arbeitsaufträge; Musterautorenschaft",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "ui.choose",
+      "text": "Kurzform auswählen",
+      "places": [
+        "Schülerfläche/sentence"
+      ],
+      "function": "Deutsche Orientierung und Bedienung",
+      "language": "de",
+      "bookEvidence": "WB4–10: deutsche Arbeitsaufträge; Musterautorenschaft",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "ui.finish",
+      "text": "Zur Rückmeldung",
+      "places": [
+        "Schülerfläche/grammar-assisted",
+        "Schülerfläche/grammar-result-2"
+      ],
+      "function": "Deutsche Orientierung und Bedienung",
+      "language": "de",
+      "bookEvidence": "WB4–10: deutsche Arbeitsaufträge; Musterautorenschaft",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "ui.again",
+      "text": "Noch einmal üben",
+      "places": [
+        "Schülerfläche/summary-saved"
+      ],
+      "function": "Deutsche Orientierung und Bedienung",
+      "language": "de",
+      "bookEvidence": "WB4–10: deutsche Arbeitsaufträge; Musterautorenschaft",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "ui.loading",
+      "text": "Die Übung wird geladen …",
+      "places": [
+        "Rahmen/Browserstatus"
+      ],
+      "function": "Deutsche Orientierung und Bedienung",
+      "language": "de",
+      "bookEvidence": "WB4–10: deutsche Arbeitsaufträge; Musterautorenschaft",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "ui.loadError",
+      "text": "Die Übung konnte nicht geladen werden.",
+      "places": [
+        "Schülerfläche/load-error"
+      ],
+      "function": "Deutsche Orientierung und Bedienung",
+      "language": "de",
+      "bookEvidence": "WB4–10: deutsche Arbeitsaufträge; Musterautorenschaft",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "ui.loadAdvice",
+      "text": "Öffne die Seite erneut.",
+      "places": [
+        "Schülerfläche/load-error"
+      ],
+      "function": "Deutsche Orientierung und Bedienung",
+      "language": "de",
+      "bookEvidence": "WB4–10: deutsche Arbeitsaufträge; Musterautorenschaft",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "ui.reload",
+      "text": "Erneut laden",
+      "places": [
+        "Schülerfläche/load-error"
+      ],
+      "function": "Deutsche Orientierung und Bedienung",
+      "language": "de",
+      "bookEvidence": "WB4–10: deutsche Arbeitsaufträge; Musterautorenschaft",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "ui.checkError",
+      "text": "Deine Antwort konnte nicht geprüft werden. Sie steht noch im Feld. Versuche es erneut.",
+      "places": [
+        "Schülerfläche/word-error"
+      ],
+      "function": "Deutsche Orientierung und Bedienung",
+      "language": "de",
+      "bookEvidence": "WB4–10: deutsche Arbeitsaufträge; Musterautorenschaft",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "ui.checkGrammarError",
+      "text": "Deine Auswahl konnte nicht geprüft werden. Sie bleibt markiert. Versuche es erneut.",
+      "places": [
+        "Schülerfläche/grammar-error"
+      ],
+      "function": "Deutsche Orientierung und Bedienung",
+      "language": "de",
+      "bookEvidence": "WB4–10: deutsche Arbeitsaufträge; Musterautorenschaft",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "ui.emptyWord",
+      "text": "Schreib zuerst das englische Wort in das Feld.",
+      "places": [
+        "Schülerfläche/word-empty"
+      ],
+      "function": "Deutsche Orientierung und Bedienung",
+      "language": "de",
+      "bookEvidence": "WB4–10: deutsche Arbeitsaufträge; Musterautorenschaft",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "ui.emptyGrammar",
+      "text": "Wähle zuerst eine Kurzform aus.",
+      "places": [
+        "Schülerfläche/grammar-empty"
+      ],
+      "function": "Deutsche Orientierung und Bedienung",
+      "language": "de",
+      "bookEvidence": "WB4–10: deutsche Arbeitsaufträge; Musterautorenschaft",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "ui.checking",
+      "text": "Deine Antwort wird geprüft …",
+      "places": [
+        "Schülerfläche/grammar-checking",
+        "Schülerfläche/word-checking"
+      ],
+      "function": "Deutsche Orientierung und Bedienung",
+      "language": "de",
+      "bookEvidence": "WB4–10: deutsche Arbeitsaufträge; Musterautorenschaft",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "ui.answer",
+      "text": "Deine Antwort",
+      "places": [
+        "Schülerfläche/word",
+        "Schülerfläche/word-article",
+        "Schülerfläche/word-assisted",
+        "Schülerfläche/word-checking",
+        "Schülerfläche/word-correct",
+        "Schülerfläche/word-empty",
+        "Schülerfläche/word-error",
+        "Schülerfläche/word-german",
+        "Schülerfläche/word-help-1",
+        "Schülerfläche/word-help-2",
+        "Schülerfläche/word-help-3",
+        "Schülerfläche/word-help-4",
+        "Schülerfläche/word-near",
+        "Schülerfläche/word-plural",
+        "Schülerfläche/word-related",
+        "Schülerfläche/word-selected",
+        "Schülerfläche/word-wrong"
+      ],
+      "function": "Deutsche Orientierung und Bedienung",
+      "language": "de",
+      "bookEvidence": "WB4–10: deutsche Arbeitsaufträge; Musterautorenschaft",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "ui.placeholder",
+      "text": "Englisches Wort",
+      "places": [
+        "Schülerfläche/word",
+        "Schülerfläche/word-article",
+        "Schülerfläche/word-assisted",
+        "Schülerfläche/word-checking",
+        "Schülerfläche/word-correct",
+        "Schülerfläche/word-empty",
+        "Schülerfläche/word-error",
+        "Schülerfläche/word-german",
+        "Schülerfläche/word-help-1",
+        "Schülerfläche/word-help-2",
+        "Schülerfläche/word-help-3",
+        "Schülerfläche/word-help-4",
+        "Schülerfläche/word-near",
+        "Schülerfläche/word-plural",
+        "Schülerfläche/word-related",
+        "Schülerfläche/word-selected",
+        "Schülerfläche/word-wrong"
+      ],
+      "function": "Deutsche Orientierung und Bedienung",
+      "language": "de",
+      "bookEvidence": "WB4–10: deutsche Arbeitsaufträge; Musterautorenschaft",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "ui.progressWord",
+      "text": "Wort üben",
+      "places": [
+        "Schülerfläche/word",
+        "Schülerfläche/word-article",
+        "Schülerfläche/word-assisted",
+        "Schülerfläche/word-checking",
+        "Schülerfläche/word-correct",
+        "Schülerfläche/word-empty",
+        "Schülerfläche/word-error",
+        "Schülerfläche/word-german",
+        "Schülerfläche/word-help-1",
+        "Schülerfläche/word-help-2",
+        "Schülerfläche/word-help-3",
+        "Schülerfläche/word-help-4",
+        "Schülerfläche/word-near",
+        "Schülerfläche/word-plural",
+        "Schülerfläche/word-related",
+        "Schülerfläche/word-selected",
+        "Schülerfläche/word-wrong"
+      ],
+      "function": "Deutsche Orientierung und Bedienung",
+      "language": "de",
+      "bookEvidence": "WB4–10: deutsche Arbeitsaufträge; Musterautorenschaft",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "ui.progressSentence",
+      "text": "Satz üben",
+      "places": [
+        "Schülerfläche/grammar",
+        "Schülerfläche/grammar-assisted",
+        "Schülerfläche/grammar-checking",
+        "Schülerfläche/grammar-empty",
+        "Schülerfläche/grammar-error",
+        "Schülerfläche/grammar-help",
+        "Schülerfläche/grammar-result-0",
+        "Schülerfläche/grammar-result-1",
+        "Schülerfläche/grammar-result-2",
+        "Schülerfläche/grammar-result-3",
+        "Schülerfläche/grammar-selected"
+      ],
+      "function": "Deutsche Orientierung und Bedienung",
+      "language": "de",
+      "bookEvidence": "WB4–10: deutsche Arbeitsaufträge; Musterautorenschaft",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "ui.learnedHelp",
+      "text": "Mit Hilfe geübt",
+      "places": [
+        "Schülerfläche/grammar-assisted",
+        "Schülerfläche/word-assisted"
+      ],
+      "function": "Deutsche Orientierung und Bedienung",
+      "language": "de",
+      "bookEvidence": "WB4–10: deutsche Arbeitsaufträge; Musterautorenschaft",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "ui.learnedAlone",
+      "text": "Ohne zusätzliche Hilfe geübt",
+      "places": [
+        "Schülerfläche/grammar-result-2",
+        "Schülerfläche/summary-error",
+        "Schülerfläche/summary-pending",
+        "Schülerfläche/summary-saved",
+        "Schülerfläche/word-article",
+        "Schülerfläche/word-correct"
+      ],
+      "function": "Deutsche Orientierung und Bedienung",
+      "language": "de",
+      "bookEvidence": "WB4–10: deutsche Arbeitsaufträge; Musterautorenschaft",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "ui.wordAlt",
+      "text": "Ein geschlossenes Buch mit blauem Einband und einem dicken Seitenblock.",
+      "places": [
+        "Schülerfläche/grammar",
+        "Schülerfläche/grammar-assisted",
+        "Schülerfläche/grammar-checking",
+        "Schülerfläche/grammar-empty",
+        "Schülerfläche/grammar-error",
+        "Schülerfläche/grammar-help",
+        "Schülerfläche/grammar-result-0",
+        "Schülerfläche/grammar-result-1",
+        "Schülerfläche/grammar-result-2",
+        "Schülerfläche/grammar-result-3",
+        "Schülerfläche/grammar-selected",
+        "Schülerfläche/intro",
+        "Schülerfläche/sentence",
+        "Schülerfläche/word",
+        "Schülerfläche/word-article",
+        "Schülerfläche/word-assisted",
+        "Schülerfläche/word-card",
+        "Schülerfläche/word-checking",
+        "Schülerfläche/word-correct",
+        "Schülerfläche/word-empty",
+        "Schülerfläche/word-error",
+        "Schülerfläche/word-german",
+        "Schülerfläche/word-help-1",
+        "Schülerfläche/word-help-2",
+        "Schülerfläche/word-help-3",
+        "Schülerfläche/word-help-4",
+        "Schülerfläche/word-near",
+        "Schülerfläche/word-plural",
+        "Schülerfläche/word-related",
+        "Schülerfläche/word-selected",
+        "Schülerfläche/word-wrong"
+      ],
+      "function": "Deutsche Orientierung und Bedienung",
+      "language": "de",
+      "bookEvidence": "WB4–10: deutsche Arbeitsaufträge; Musterautorenschaft",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "intro.title",
+      "text": "Ein Buch auf deinem Tisch",
+      "places": [
+        "Schülerfläche/intro"
+      ],
+      "function": "Konkretes Vorhaben vor dem Beginn",
+      "language": "de",
+      "bookEvidence": "SB14, WB5/6; eigener enger Lernweg",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "intro.description",
+      "text": "Du lernst ein englisches Wort und schreibst es anschließend selbst. Danach verkürzt du zwei Wörter in einem Satz.",
+      "places": [
+        "Schülerfläche/intro"
+      ],
+      "function": "Konkretes Vorhaben vor dem Beginn",
+      "language": "de",
+      "bookEvidence": "SB14, WB5/6; eigener enger Lernweg",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "intro.plan",
+      "text": "Erst anschauen, dann selbst probieren.",
+      "places": [
+        "Schülerfläche/intro"
+      ],
+      "function": "Konkretes Vorhaben vor dem Beginn",
+      "language": "de",
+      "bookEvidence": "SB14, WB5/6; eigener enger Lernweg",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "word.title",
+      "text": "Das Wort kennenlernen",
+      "places": [
+        "Schülerfläche/word-card"
+      ],
+      "function": "Wort zunächst kennenlernen, dann selbst abrufen",
+      "language": "de + ausdrücklich eingeführtes book",
+      "bookEvidence": "SB14/WB5: Buchbild; WB6: book; Original g1u01.w.book rev2",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "word.look",
+      "text": "Schau dir das Bild und das Wort an.",
+      "places": [
+        "Schülerfläche/word-card"
+      ],
+      "function": "Wort zunächst kennenlernen, dann selbst abrufen",
+      "language": "de + ausdrücklich eingeführtes book",
+      "bookEvidence": "SB14/WB5: Buchbild; WB6: book; Original g1u01.w.book rev2",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "word.label",
+      "text": "book",
+      "places": [
+        "Schülerfläche/word-card"
+      ],
+      "function": "Wort zunächst kennenlernen, dann selbst abrufen",
+      "language": "de + ausdrücklich eingeführtes book",
+      "bookEvidence": "SB14/WB5: Buchbild; WB6: book; Original g1u01.w.book rev2",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "word.meaning",
+      "text": "Buch",
+      "places": [
+        "Schülerfläche/word-card"
+      ],
+      "function": "Wort zunächst kennenlernen, dann selbst abrufen",
+      "language": "de + ausdrücklich eingeführtes book",
+      "bookEvidence": "SB14/WB5: Buchbild; WB6: book; Original g1u01.w.book rev2",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "word.recallTitle",
+      "text": "Wie heißt „Buch“ auf Englisch?",
+      "places": [
+        "Schülerfläche/word",
+        "Schülerfläche/word-article",
+        "Schülerfläche/word-assisted",
+        "Schülerfläche/word-checking",
+        "Schülerfläche/word-correct",
+        "Schülerfläche/word-empty",
+        "Schülerfläche/word-error",
+        "Schülerfläche/word-german",
+        "Schülerfläche/word-help-1",
+        "Schülerfläche/word-help-2",
+        "Schülerfläche/word-help-3",
+        "Schülerfläche/word-help-4",
+        "Schülerfläche/word-near",
+        "Schülerfläche/word-plural",
+        "Schülerfläche/word-related",
+        "Schülerfläche/word-selected",
+        "Schülerfläche/word-wrong"
+      ],
+      "function": "Wort zunächst kennenlernen, dann selbst abrufen",
+      "language": "de + ausdrücklich eingeführtes book",
+      "bookEvidence": "SB14/WB5: Buchbild; WB6: book; Original g1u01.w.book rev2",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "word.instruction",
+      "text": "Schreib das Wort von der Wortkarte aus dem Kopf.",
+      "places": [
+        "Schülerfläche/word",
+        "Schülerfläche/word-article",
+        "Schülerfläche/word-assisted",
+        "Schülerfläche/word-checking",
+        "Schülerfläche/word-correct",
+        "Schülerfläche/word-empty",
+        "Schülerfläche/word-error",
+        "Schülerfläche/word-german",
+        "Schülerfläche/word-help-1",
+        "Schülerfläche/word-help-2",
+        "Schülerfläche/word-help-3",
+        "Schülerfläche/word-help-4",
+        "Schülerfläche/word-near",
+        "Schülerfläche/word-plural",
+        "Schülerfläche/word-related",
+        "Schülerfläche/word-selected",
+        "Schülerfläche/word-wrong"
+      ],
+      "function": "Wort zunächst kennenlernen, dann selbst abrufen",
+      "language": "de + ausdrücklich eingeführtes book",
+      "bookEvidence": "SB14/WB5: Buchbild; WB6: book; Original g1u01.w.book rev2",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "word.help1",
+      "text": "Gesucht ist das Wort für einen Gegenstand, in dem du liest. Er hat viele Seiten.",
+      "places": [
+        "Schülerfläche/word-help-1"
+      ],
+      "function": "Wort zunächst kennenlernen, dann selbst abrufen",
+      "language": "de + ausdrücklich eingeführtes book",
+      "bookEvidence": "SB14/WB5: Buchbild; WB6: book; Original g1u01.w.book rev2",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "word.help2",
+      "text": "Das Wort beginnt mit b.",
+      "places": [
+        "Schülerfläche/word-help-2"
+      ],
+      "function": "Wort zunächst kennenlernen, dann selbst abrufen",
+      "language": "de + ausdrücklich eingeführtes book",
+      "bookEvidence": "SB14/WB5: Buchbild; WB6: book; Original g1u01.w.book rev2",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "word.help3",
+      "text": "Das Wort hat vier Buchstaben: b _ _ _.",
+      "places": [
+        "Schülerfläche/word-help-3"
+      ],
+      "function": "Wort zunächst kennenlernen, dann selbst abrufen",
+      "language": "de + ausdrücklich eingeführtes book",
+      "bookEvidence": "SB14/WB5: Buchbild; WB6: book; Original g1u01.w.book rev2",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "word.help4",
+      "text": "Die Wortkarte zeigt die Lösung. Schau sie dir an und schreibe das Wort danach noch einmal selbst.",
+      "places": [
+        "Schülerfläche/word-help-4"
+      ],
+      "function": "Wort zunächst kennenlernen, dann selbst abrufen",
+      "language": "de + ausdrücklich eingeführtes book",
+      "bookEvidence": "SB14/WB5: Buchbild; WB6: book; Original g1u01.w.book rev2",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "word.helpTitle",
+      "text": "Hilfe zum Wort",
+      "places": [
+        "Schülerfläche/word-help-1",
+        "Schülerfläche/word-help-2",
+        "Schülerfläche/word-help-3",
+        "Schülerfläche/word-help-4"
+      ],
+      "function": "Wort zunächst kennenlernen, dann selbst abrufen",
+      "language": "de + ausdrücklich eingeführtes book",
+      "bookEvidence": "SB14/WB5: Buchbild; WB6: book; Original g1u01.w.book rev2",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "sentence.title",
+      "text": "Zwei Wörter werden kürzer",
+      "places": [
+        "Schülerfläche/sentence"
+      ],
+      "function": "Bedeutungsgestützte Einführung der Kurzform",
+      "language": "de + neue englische Beispiele mit Übersetzung",
+      "bookEvidence": "SB12 Farben; SB13 it’s = it is im Farbsatz; SB14 Farbantwort. Satzpaar hier neu.",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "sentence.intro",
+      "text": "Der Einband ist blau. So kannst du ihn auf Englisch beschreiben:",
+      "places": [
+        "Schülerfläche/sentence"
+      ],
+      "function": "Bedeutungsgestützte Einführung der Kurzform",
+      "language": "de + neue englische Beispiele mit Übersetzung",
+      "bookEvidence": "SB12 Farben; SB13 it’s = it is im Farbsatz; SB14 Farbantwort. Satzpaar hier neu.",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "sentence.colour",
+      "text": "blue",
+      "places": [
+        "Schülerfläche/sentence"
+      ],
+      "function": "Bedeutungsgestützte Einführung der Kurzform",
+      "language": "de + neue englische Beispiele mit Übersetzung",
+      "bookEvidence": "SB12 Farben; SB13 it’s = it is im Farbsatz; SB14 Farbantwort. Satzpaar hier neu.",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "sentence.colourMeaning",
+      "text": "blau",
+      "places": [
+        "Schülerfläche/sentence"
+      ],
+      "function": "Bedeutungsgestützte Einführung der Kurzform",
+      "language": "de + neue englische Beispiele mit Übersetzung",
+      "bookEvidence": "SB12 Farben; SB13 it’s = it is im Farbsatz; SB14 Farbantwort. Satzpaar hier neu.",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "sentence.long",
+      "text": "It is blue.",
+      "places": [
+        "Schülerfläche/sentence"
+      ],
+      "function": "Bedeutungsgestützte Einführung der Kurzform",
+      "language": "de + neue englische Beispiele mit Übersetzung",
+      "bookEvidence": "SB12 Farben; SB13 it’s = it is im Farbsatz; SB14 Farbantwort. Satzpaar hier neu.",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "sentence.short",
+      "text": "It’s blue.",
+      "places": [
+        "Schülerfläche/sentence"
+      ],
+      "function": "Bedeutungsgestützte Einführung der Kurzform",
+      "language": "de + neue englische Beispiele mit Übersetzung",
+      "bookEvidence": "SB12 Farben; SB13 it’s = it is im Farbsatz; SB14 Farbantwort. Satzpaar hier neu.",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "sentence.meaning",
+      "text": "Beides heißt: Es ist blau.",
+      "places": [
+        "Schülerfläche/sentence"
+      ],
+      "function": "Bedeutungsgestützte Einführung der Kurzform",
+      "language": "de + neue englische Beispiele mit Übersetzung",
+      "bookEvidence": "SB12 Farben; SB13 it’s = it is im Farbsatz; SB14 Farbantwort. Satzpaar hier neu.",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "sentence.explanation",
+      "text": "Aus it is wird it’s. Das i von is fällt weg. An seiner Stelle steht das kleine Zeichen ’, der Apostroph.",
+      "places": [
+        "Schülerfläche/sentence"
+      ],
+      "function": "Bedeutungsgestützte Einführung der Kurzform",
+      "language": "de + neue englische Beispiele mit Übersetzung",
+      "bookEvidence": "SB12 Farben; SB13 it’s = it is im Farbsatz; SB14 Farbantwort. Satzpaar hier neu.",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "sentence.example",
+      "text": "Beispiel zum Anschauen",
+      "places": [
+        "Schülerfläche/sentence"
+      ],
+      "function": "Bedeutungsgestützte Einführung der Kurzform",
+      "language": "de + neue englische Beispiele mit Übersetzung",
+      "bookEvidence": "SB12 Farben; SB13 it’s = it is im Farbsatz; SB14 Farbantwort. Satzpaar hier neu.",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "grammar.title",
+      "text": "Verkürze den Satz",
+      "places": [
+        "Schülerfläche/grammar",
+        "Schülerfläche/grammar-assisted",
+        "Schülerfläche/grammar-checking",
+        "Schülerfläche/grammar-empty",
+        "Schülerfläche/grammar-error",
+        "Schülerfläche/grammar-help",
+        "Schülerfläche/grammar-result-0",
+        "Schülerfläche/grammar-result-1",
+        "Schülerfläche/grammar-result-2",
+        "Schülerfläche/grammar-result-3",
+        "Schülerfläche/grammar-selected"
+      ],
+      "function": "Die eingeführte Kurzform im Sachkontext auswählen",
+      "language": "de + gestütztes Englisch; Optionen aus Original",
+      "bookEvidence": "Original g1u01.gi.contractions.mc.006 rev1; SB13/14; eigener Kontextsatz",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "grammar.instruction",
+      "text": "Ersetze nur „It is“ durch seine Kurzform. Wähle aus.",
+      "places": [
+        "Schülerfläche/grammar",
+        "Schülerfläche/grammar-assisted",
+        "Schülerfläche/grammar-checking",
+        "Schülerfläche/grammar-empty",
+        "Schülerfläche/grammar-error",
+        "Schülerfläche/grammar-help",
+        "Schülerfläche/grammar-result-0",
+        "Schülerfläche/grammar-result-1",
+        "Schülerfläche/grammar-result-2",
+        "Schülerfläche/grammar-result-3",
+        "Schülerfläche/grammar-selected"
+      ],
+      "function": "Die eingeführte Kurzform im Sachkontext auswählen",
+      "language": "de + gestütztes Englisch; Optionen aus Original",
+      "bookEvidence": "Original g1u01.gi.contractions.mc.006 rev1; SB13/14; eigener Kontextsatz",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "grammar.long",
+      "text": "It is a book.",
+      "places": [
+        "Schülerfläche/grammar",
+        "Schülerfläche/grammar-assisted",
+        "Schülerfläche/grammar-checking",
+        "Schülerfläche/grammar-empty",
+        "Schülerfläche/grammar-error",
+        "Schülerfläche/grammar-help",
+        "Schülerfläche/grammar-result-0",
+        "Schülerfläche/grammar-result-1",
+        "Schülerfläche/grammar-result-2",
+        "Schülerfläche/grammar-result-3",
+        "Schülerfläche/grammar-selected"
+      ],
+      "function": "Die eingeführte Kurzform im Sachkontext auswählen",
+      "language": "de + gestütztes Englisch; Optionen aus Original",
+      "bookEvidence": "Original g1u01.gi.contractions.mc.006 rev1; SB13/14; eigener Kontextsatz",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "grammar.gap",
+      "text": "___ a book.",
+      "places": [
+        "Schülerfläche/grammar",
+        "Schülerfläche/grammar-assisted",
+        "Schülerfläche/grammar-checking",
+        "Schülerfläche/grammar-empty",
+        "Schülerfläche/grammar-error",
+        "Schülerfläche/grammar-help",
+        "Schülerfläche/grammar-result-0",
+        "Schülerfläche/grammar-result-1",
+        "Schülerfläche/grammar-result-2",
+        "Schülerfläche/grammar-result-3",
+        "Schülerfläche/grammar-selected"
+      ],
+      "function": "Die eingeführte Kurzform im Sachkontext auswählen",
+      "language": "de + gestütztes Englisch; Optionen aus Original",
+      "bookEvidence": "Original g1u01.gi.contractions.mc.006 rev1; SB13/14; eigener Kontextsatz",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "grammar.meaning",
+      "text": "Es ist ein Buch.",
+      "places": [
+        "Schülerfläche/grammar",
+        "Schülerfläche/grammar-assisted",
+        "Schülerfläche/grammar-checking",
+        "Schülerfläche/grammar-empty",
+        "Schülerfläche/grammar-error",
+        "Schülerfläche/grammar-help",
+        "Schülerfläche/grammar-result-0",
+        "Schülerfläche/grammar-result-1",
+        "Schülerfläche/grammar-result-2",
+        "Schülerfläche/grammar-result-3",
+        "Schülerfläche/grammar-selected"
+      ],
+      "function": "Die eingeführte Kurzform im Sachkontext auswählen",
+      "language": "de + gestütztes Englisch; Optionen aus Original",
+      "bookEvidence": "Original g1u01.gi.contractions.mc.006 rev1; SB13/14; eigener Kontextsatz",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "grammar.legend",
+      "text": "Welche Kurzform setzt du ein?",
+      "places": [
+        "Schülerfläche/grammar",
+        "Schülerfläche/grammar-assisted",
+        "Schülerfläche/grammar-checking",
+        "Schülerfläche/grammar-empty",
+        "Schülerfläche/grammar-error",
+        "Schülerfläche/grammar-help",
+        "Schülerfläche/grammar-result-0",
+        "Schülerfläche/grammar-result-1",
+        "Schülerfläche/grammar-result-2",
+        "Schülerfläche/grammar-result-3",
+        "Schülerfläche/grammar-selected"
+      ],
+      "function": "Die eingeführte Kurzform im Sachkontext auswählen",
+      "language": "de + gestütztes Englisch; Optionen aus Original",
+      "bookEvidence": "Original g1u01.gi.contractions.mc.006 rev1; SB13/14; eigener Kontextsatz",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "grammar.helpTitle",
+      "text": "Hilfe zur Kurzform",
+      "places": [
+        "Schülerfläche/grammar-help"
+      ],
+      "function": "Die eingeführte Kurzform im Sachkontext auswählen",
+      "language": "de + gestütztes Englisch; Optionen aus Original",
+      "bookEvidence": "Original g1u01.gi.contractions.mc.006 rev1; SB13/14; eigener Kontextsatz",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "grammar.help",
+      "text": "Die Bedeutung soll gleich bleiben. Gesucht sind die Wörter it und is zusammen. Ein Apostroph steht dort, wo ein Buchstabe wegfällt.",
+      "places": [
+        "Schülerfläche/grammar-help"
+      ],
+      "function": "Die eingeführte Kurzform im Sachkontext auswählen",
+      "language": "de + gestütztes Englisch; Optionen aus Original",
+      "bookEvidence": "Original g1u01.gi.contractions.mc.006 rev1; SB13/14; eigener Kontextsatz",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "grammar.example",
+      "text": "Beispiel noch einmal ansehen",
+      "places": [
+        "Schülerfläche/grammar-help"
+      ],
+      "function": "Die eingeführte Kurzform im Sachkontext auswählen",
+      "language": "de + gestütztes Englisch; Optionen aus Original",
+      "bookEvidence": "Original g1u01.gi.contractions.mc.006 rev1; SB13/14; eigener Kontextsatz",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "feedback.correctTitle",
+      "text": "Das passt.",
+      "places": [
+        "Schülerfläche/grammar-assisted",
+        "Schülerfläche/grammar-result-2",
+        "Schülerfläche/word-assisted",
+        "Schülerfläche/word-correct"
+      ],
+      "function": "Antwortbezogene Rückmeldung, nur nach Prüfung ausgeliefert",
+      "language": "de; Zielwörter werden erklärt",
+      "bookEvidence": "Eigene lokale Bewertungsregeln; source item + Modalitätsvertrag chapter-1-sources.md",
+      "exposure": "nach Antwortprüfung"
+    },
+    {
+      "id": "feedback.retryTitle",
+      "text": "Schau noch einmal hin.",
+      "places": [
+        "Schülerfläche/grammar-result-0",
+        "Schülerfläche/grammar-result-1",
+        "Schülerfläche/grammar-result-3",
+        "Schülerfläche/word-german",
+        "Schülerfläche/word-near",
+        "Schülerfläche/word-plural",
+        "Schülerfläche/word-related",
+        "Schülerfläche/word-wrong"
+      ],
+      "function": "Antwortbezogene Rückmeldung, nur nach Prüfung ausgeliefert",
+      "language": "de; Zielwörter werden erklärt",
+      "bookEvidence": "Eigene lokale Bewertungsregeln; source item + Modalitätsvertrag chapter-1-sources.md",
+      "exposure": "nach Antwortprüfung"
+    },
+    {
+      "id": "feedback.variantTitle",
+      "text": "Das passt zur Bedeutung.",
+      "places": [
+        "Schülerfläche/word-article"
+      ],
+      "function": "Antwortbezogene Rückmeldung, nur nach Prüfung ausgeliefert",
+      "language": "de; Zielwörter werden erklärt",
+      "bookEvidence": "Eigene lokale Bewertungsregeln; source item + Modalitätsvertrag chapter-1-sources.md",
+      "exposure": "nach Antwortprüfung"
+    },
+    {
+      "id": "feedback.wordCorrect",
+      "text": "book heißt Buch. Du hast das Wort selbst geschrieben.",
+      "places": [
+        "Schülerfläche/word-assisted",
+        "Schülerfläche/word-correct"
+      ],
+      "function": "Antwortbezogene Rückmeldung, nur nach Prüfung ausgeliefert",
+      "language": "de; Zielwörter werden erklärt",
+      "bookEvidence": "Eigene lokale Bewertungsregeln; source item + Modalitätsvertrag chapter-1-sources.md",
+      "exposure": "nach Antwortprüfung"
+    },
+    {
+      "id": "feedback.wordArticle",
+      "text": "Das Wort book stimmt. a book heißt ein Buch, the book heißt das Buch.",
+      "places": [
+        "Schülerfläche/word-article"
+      ],
+      "function": "Antwortbezogene Rückmeldung, nur nach Prüfung ausgeliefert",
+      "language": "de; Zielwörter werden erklärt",
+      "bookEvidence": "Eigene lokale Bewertungsregeln; source item + Modalitätsvertrag chapter-1-sources.md",
+      "exposure": "nach Antwortprüfung"
+    },
+    {
+      "id": "feedback.wordPlural",
+      "text": "books heißt mehrere Bücher. Gesucht ist das Wort für ein einzelnes Buch.",
+      "places": [
+        "Schülerfläche/word-plural"
+      ],
+      "function": "Antwortbezogene Rückmeldung, nur nach Prüfung ausgeliefert",
+      "language": "de; Zielwörter werden erklärt",
+      "bookEvidence": "Eigene lokale Bewertungsregeln; source item + Modalitätsvertrag chapter-1-sources.md",
+      "exposure": "nach Antwortprüfung"
+    },
+    {
+      "id": "feedback.wordNear",
+      "text": "Du bist nah am Wort. In der Mitte stehen zwei gleiche Buchstaben. Du kannst die Wortkarte noch einmal ansehen.",
+      "places": [
+        "Schülerfläche/word-near"
+      ],
+      "function": "Antwortbezogene Rückmeldung, nur nach Prüfung ausgeliefert",
+      "language": "de; Zielwörter werden erklärt",
+      "bookEvidence": "Eigene lokale Bewertungsregeln; source item + Modalitätsvertrag chapter-1-sources.md",
+      "exposure": "nach Antwortprüfung"
+    },
+    {
+      "id": "feedback.wordRelated",
+      "text": "Dein Ausdruck bezeichnet eine bestimmte Art von Buch oder ein Heft. Hier übst du das einfache Wort von der Wortkarte.",
+      "places": [
+        "Schülerfläche/word-related"
+      ],
+      "function": "Antwortbezogene Rückmeldung, nur nach Prüfung ausgeliefert",
+      "language": "de; Zielwörter werden erklärt",
+      "bookEvidence": "Eigene lokale Bewertungsregeln; source item + Modalitätsvertrag chapter-1-sources.md",
+      "exposure": "nach Antwortprüfung"
+    },
+    {
+      "id": "feedback.wordGerman",
+      "text": "Buch ist das deutsche Wort. Schreib nun das englische Wort von der Wortkarte.",
+      "places": [
+        "Schülerfläche/word-german"
+      ],
+      "function": "Antwortbezogene Rückmeldung, nur nach Prüfung ausgeliefert",
+      "language": "de; Zielwörter werden erklärt",
+      "bookEvidence": "Eigene lokale Bewertungsregeln; source item + Modalitätsvertrag chapter-1-sources.md",
+      "exposure": "nach Antwortprüfung"
+    },
+    {
+      "id": "feedback.wordWrong",
+      "text": "Dieses Wort passt noch nicht zum Buch auf der Wortkarte. Unter „Hilfe ansehen“ findest du Hinweise.",
+      "places": [
+        "Schülerfläche/word-wrong"
+      ],
+      "function": "Antwortbezogene Rückmeldung, nur nach Prüfung ausgeliefert",
+      "language": "de; Zielwörter werden erklärt",
+      "bookEvidence": "Eigene lokale Bewertungsregeln; source item + Modalitätsvertrag chapter-1-sources.md",
+      "exposure": "nach Antwortprüfung"
+    },
+    {
+      "id": "feedback.grammarCorrect",
+      "text": "It’s steht für It is. „It’s a book.“ bedeutet „Es ist ein Buch.“",
+      "places": [
+        "Schülerfläche/grammar-assisted",
+        "Schülerfläche/grammar-result-2"
+      ],
+      "function": "Antwortbezogene Rückmeldung, nur nach Prüfung ausgeliefert",
+      "language": "de; Zielwörter werden erklärt",
+      "bookEvidence": "Eigene lokale Bewertungsregeln; source item + Modalitätsvertrag chapter-1-sources.md",
+      "exposure": "nach Antwortprüfung"
+    },
+    {
+      "id": "feedback.grammarIts",
+      "text": "Bei Its fehlt der Apostroph. Ohne dieses Zeichen ist es keine Kurzform von it is.",
+      "places": [
+        "Schülerfläche/grammar-result-0"
+      ],
+      "function": "Antwortbezogene Rückmeldung, nur nach Prüfung ausgeliefert",
+      "language": "de; Zielwörter werden erklärt",
+      "bookEvidence": "Eigene lokale Bewertungsregeln; source item + Modalitätsvertrag chapter-1-sources.md",
+      "exposure": "nach Antwortprüfung"
+    },
+    {
+      "id": "feedback.grammarHe",
+      "text": "He’s steht für he is, also „er ist“. Im Satz steht aber it is: „es ist“.",
+      "places": [
+        "Schülerfläche/grammar-result-1"
+      ],
+      "function": "Antwortbezogene Rückmeldung, nur nach Prüfung ausgeliefert",
+      "language": "de; Zielwörter werden erklärt",
+      "bookEvidence": "Eigene lokale Bewertungsregeln; source item + Modalitätsvertrag chapter-1-sources.md",
+      "exposure": "nach Antwortprüfung"
+    },
+    {
+      "id": "feedback.grammarThat",
+      "text": "That’s steht für that is: „das ist“. Das kann auch einen Satz ergeben. Hier sollst du aber nur it is verkürzen.",
+      "places": [
+        "Schülerfläche/grammar-result-3"
+      ],
+      "function": "Antwortbezogene Rückmeldung, nur nach Prüfung ausgeliefert",
+      "language": "de; Zielwörter werden erklärt",
+      "bookEvidence": "Eigene lokale Bewertungsregeln; source item + Modalitätsvertrag chapter-1-sources.md",
+      "exposure": "nach Antwortprüfung"
+    },
+    {
+      "id": "summary.title",
+      "text": "Wort und Kurzform geübt",
+      "places": [
+        "Schülerfläche/summary-error",
+        "Schülerfläche/summary-pending",
+        "Schülerfläche/summary-saved"
+      ],
+      "function": "Ergebnis ohne erfundene Lernpunkte, nächster Übungsschritt",
+      "language": "de",
+      "bookEvidence": "Eigenes Lehrer-Muster; SB15 Rückblick ohne Übertragung seiner Gesamtkönnen-Ziele",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "summary.word",
+      "text": "Du hast das Wort zum Buch geschrieben.",
+      "places": [
+        "Schülerfläche/summary-error",
+        "Schülerfläche/summary-pending",
+        "Schülerfläche/summary-saved"
+      ],
+      "function": "Ergebnis ohne erfundene Lernpunkte, nächster Übungsschritt",
+      "language": "de",
+      "bookEvidence": "Eigenes Lehrer-Muster; SB15 Rückblick ohne Übertragung seiner Gesamtkönnen-Ziele",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "summary.grammar",
+      "text": "Du hast eine Kurzform ausgewählt.",
+      "places": [
+        "Schülerfläche/summary-error",
+        "Schülerfläche/summary-pending",
+        "Schülerfläche/summary-saved"
+      ],
+      "function": "Ergebnis ohne erfundene Lernpunkte, nächster Übungsschritt",
+      "language": "de",
+      "bookEvidence": "Eigenes Lehrer-Muster; SB15 Rückblick ohne Übertragung seiner Gesamtkönnen-Ziele",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "summary.next",
+      "text": "Schreib das Wort noch einmal aus dem Kopf und setze die Kurzform erneut ein.",
+      "places": [
+        "Schülerfläche/summary-saved"
+      ],
+      "function": "Ergebnis ohne erfundene Lernpunkte, nächster Übungsschritt",
+      "language": "de",
+      "bookEvidence": "Eigenes Lehrer-Muster; SB15 Rückblick ohne Übertragung seiner Gesamtkönnen-Ziele",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "summary.pending",
+      "text": "Bitte warten …",
+      "places": [
+        "Schülerfläche/summary-pending"
+      ],
+      "function": "Ergebnis ohne erfundene Lernpunkte, nächster Übungsschritt",
+      "language": "de",
+      "bookEvidence": "Eigenes Lehrer-Muster; SB15 Rückblick ohne Übertragung seiner Gesamtkönnen-Ziele",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "summary.pendingText",
+      "text": "Die Rückmeldung ist noch nicht abgeschlossen.",
+      "places": [
+        "Schülerfläche/summary-pending"
+      ],
+      "function": "Ergebnis ohne erfundene Lernpunkte, nächster Übungsschritt",
+      "language": "de",
+      "bookEvidence": "Eigenes Lehrer-Muster; SB15 Rückblick ohne Übertragung seiner Gesamtkönnen-Ziele",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "summary.error",
+      "text": "Die Rückmeldung konnte nicht abgeschlossen werden.",
+      "places": [
+        "Schülerfläche/summary-error"
+      ],
+      "function": "Ergebnis ohne erfundene Lernpunkte, nächster Übungsschritt",
+      "language": "de",
+      "bookEvidence": "Eigenes Lehrer-Muster; SB15 Rückblick ohne Übertragung seiner Gesamtkönnen-Ziele",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "summary.errorText",
+      "text": "Deine Antworten bleiben in dieser Ansicht sichtbar.",
+      "places": [
+        "Schülerfläche/summary-error"
+      ],
+      "function": "Ergebnis ohne erfundene Lernpunkte, nächster Übungsschritt",
+      "language": "de",
+      "bookEvidence": "Eigenes Lehrer-Muster; SB15 Rückblick ohne Übertragung seiner Gesamtkönnen-Ziele",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "summary.retry",
+      "text": "Erneut versuchen",
+      "places": [
+        "Schülerfläche/summary-error"
+      ],
+      "function": "Ergebnis ohne erfundene Lernpunkte, nächster Übungsschritt",
+      "language": "de",
+      "bookEvidence": "Eigenes Lehrer-Muster; SB15 Rückblick ohne Übertragung seiner Gesamtkönnen-Ziele",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "summary.saved",
+      "text": "Du kannst jetzt noch einmal üben.",
+      "places": [
+        "Schülerfläche/summary-saved"
+      ],
+      "function": "Ergebnis ohne erfundene Lernpunkte, nächster Übungsschritt",
+      "language": "de",
+      "bookEvidence": "Eigenes Lehrer-Muster; SB15 Rückblick ohne Übertragung seiner Gesamtkönnen-Ziele",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "teacher.brand",
+      "text": "Englisch · Unterstufe — DomiGo",
+      "places": [
+        "Rahmen/Browserstatus"
+      ],
+      "function": "Lehrer-Simulator außerhalb der Schülerfläche",
+      "language": "de",
+      "bookEvidence": "cgo-032 A4, keine Datenbank",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "teacher.areas",
+      "text": "Bereiche",
+      "places": [
+        "Rahmen/Browserstatus"
+      ],
+      "function": "Lehrer-Simulator außerhalb der Schülerfläche",
+      "language": "de",
+      "bookEvidence": "cgo-032 A4, keine Datenbank",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "teacher.title",
+      "text": "Lehrer-Muster",
+      "places": [
+        "Rahmen/Browserstatus"
+      ],
+      "function": "Lehrer-Simulator außerhalb der Schülerfläche",
+      "language": "de",
+      "bookEvidence": "cgo-032 A4, keine Datenbank",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "teacher.noPoints",
+      "text": "Keine echten Lernpunkte. Lernspeichern ist nachgestellt.",
+      "places": [
+        "Rahmen/Browserstatus"
+      ],
+      "function": "Lehrer-Simulator außerhalb der Schülerfläche",
+      "language": "de",
+      "bookEvidence": "cgo-032 A4, keine Datenbank",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "teacher.controlsTitle",
+      "text": "Am Muster ausprobieren",
+      "places": [
+        "Lehrerbereich"
+      ],
+      "function": "Lehrer-Simulator außerhalb der Schülerfläche",
+      "language": "de",
+      "bookEvidence": "cgo-032 A4, keine Datenbank",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "teacher.draft",
+      "text": "CODEX DRAFT — NOT CANON",
+      "places": [
+        "Lehrerbereich"
+      ],
+      "function": "Lehrer-Simulator außerhalb der Schülerfläche",
+      "language": "de",
+      "bookEvidence": "cgo-032 A4, keine Datenbank",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "teacher.description",
+      "text": "Das Wort wird erst eingeführt, dann frei eingegeben. Die Kurzform wird nach einem Beispiel ausgewählt. Die Aufgaben sind neue Musterfassungen zweier unveränderter Originalitems. Diese Lernfolge ist kein Test.",
+      "places": [
+        "Lehrerbereich"
+      ],
+      "function": "Lehrer-Simulator außerhalb der Schülerfläche",
+      "language": "de",
+      "bookEvidence": "cgo-032 A4, keine Datenbank",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "teacher.storage",
+      "text": "Der Schalter stellt Warten, Fehler oder Erfolg des Lernspeicherns nach. Er schreibt keinen Lernstand. Notizen und die aktuelle Ansicht werden dagegen tatsächlich nur in diesem Browser gesichert.",
+      "places": [
+        "Lehrerbereich"
+      ],
+      "function": "Lehrer-Simulator außerhalb der Schülerfläche",
+      "language": "de",
+      "bookEvidence": "cgo-032 A4, keine Datenbank",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "teacher.sceneError",
+      "text": "Der Musterzustand konnte nicht geladen werden. Prüfe, ob die lokale Vorschau noch läuft.",
+      "places": [
+        "Laufzeit/Status"
+      ],
+      "function": "Lehrer-Simulator außerhalb der Schülerfläche",
+      "language": "de",
+      "bookEvidence": "cgo-032 A4, keine Datenbank",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "teacher.scene",
+      "text": "Ansicht nachstellen",
+      "places": [
+        "Lehrerbereich"
+      ],
+      "function": "Lehrer-Simulator außerhalb der Schülerfläche",
+      "language": "de",
+      "bookEvidence": "cgo-032 A4, keine Datenbank",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "teacher.saveMode",
+      "text": "Lernspeichern nachstellen",
+      "places": [
+        "Lehrerbereich"
+      ],
+      "function": "Lehrer-Simulator außerhalb der Schülerfläche",
+      "language": "de",
+      "bookEvidence": "cgo-032 A4, keine Datenbank",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "teacher.successMode",
+      "text": "Erfolg",
+      "places": [
+        "Lehrerbereich"
+      ],
+      "function": "Lehrer-Simulator außerhalb der Schülerfläche",
+      "language": "de",
+      "bookEvidence": "cgo-032 A4, keine Datenbank",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "teacher.pendingMode",
+      "text": "Warten",
+      "places": [
+        "Lehrerbereich"
+      ],
+      "function": "Lehrer-Simulator außerhalb der Schülerfläche",
+      "language": "de",
+      "bookEvidence": "cgo-032 A4, keine Datenbank",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "teacher.errorMode",
+      "text": "Fehler",
+      "places": [
+        "Lehrerbereich"
+      ],
+      "function": "Lehrer-Simulator außerhalb der Schülerfläche",
+      "language": "de",
+      "bookEvidence": "cgo-032 A4, keine Datenbank",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "teacher.theme",
+      "text": "Farben",
+      "places": [
+        "Lehrerbereich"
+      ],
+      "function": "Lehrer-Simulator außerhalb der Schülerfläche",
+      "language": "de",
+      "bookEvidence": "cgo-032 A4, keine Datenbank",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "teacher.system",
+      "text": "Wie das Gerät",
+      "places": [
+        "Lehrerbereich"
+      ],
+      "function": "Lehrer-Simulator außerhalb der Schülerfläche",
+      "language": "de",
+      "bookEvidence": "cgo-032 A4, keine Datenbank",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "teacher.light",
+      "text": "Hell",
+      "places": [
+        "Lehrerbereich"
+      ],
+      "function": "Lehrer-Simulator außerhalb der Schülerfläche",
+      "language": "de",
+      "bookEvidence": "cgo-032 A4, keine Datenbank",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "teacher.dark",
+      "text": "Dunkel",
+      "places": [
+        "Lehrerbereich"
+      ],
+      "function": "Lehrer-Simulator außerhalb der Schülerfläche",
+      "language": "de",
+      "bookEvidence": "cgo-032 A4, keine Datenbank",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "teacher.motion",
+      "text": "Bewegung",
+      "places": [
+        "Lehrerbereich"
+      ],
+      "function": "Lehrer-Simulator außerhalb der Schülerfläche",
+      "language": "de",
+      "bookEvidence": "cgo-032 A4, keine Datenbank",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "teacher.reduce",
+      "text": "Reduziert",
+      "places": [
+        "Lehrerbereich"
+      ],
+      "function": "Lehrer-Simulator außerhalb der Schülerfläche",
+      "language": "de",
+      "bookEvidence": "cgo-032 A4, keine Datenbank",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "teacher.note",
+      "text": "Meine Notizen zum Muster",
+      "places": [
+        "Lehrerbereich"
+      ],
+      "function": "Lehrer-Simulator außerhalb der Schülerfläche",
+      "language": "de",
+      "bookEvidence": "cgo-032 A4, keine Datenbank",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "teacher.notePlaceholder",
+      "text": "Beobachtungen zur Aufgabe und Bedienung. Keine Schülerdaten eintragen.",
+      "places": [
+        "Lehrerbereich"
+      ],
+      "function": "Lehrer-Simulator außerhalb der Schülerfläche",
+      "language": "de",
+      "bookEvidence": "cgo-032 A4, keine Datenbank",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "teacher.saveNote",
+      "text": "Notiz lokal speichern",
+      "places": [
+        "Lehrerbereich"
+      ],
+      "function": "Lehrer-Simulator außerhalb der Schülerfläche",
+      "language": "de",
+      "bookEvidence": "cgo-032 A4, keine Datenbank",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "teacher.preset",
+      "text": "Ansicht durch Lehrerschalter gesetzt.",
+      "places": [
+        "Rahmen/Browserstatus"
+      ],
+      "function": "Lehrer-Simulator außerhalb der Schülerfläche",
+      "language": "de",
+      "bookEvidence": "cgo-032 A4, keine Datenbank",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "teacher.real",
+      "text": "Lernweg selbst bedient.",
+      "places": [
+        "Rahmen/Browserstatus"
+      ],
+      "function": "Lehrer-Simulator außerhalb der Schülerfläche",
+      "language": "de",
+      "bookEvidence": "cgo-032 A4, keine Datenbank",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "teacher.pending",
+      "text": "Nachgestelltes Lernspeichern: wartet.",
+      "places": [
+        "Rahmen/Browserstatus"
+      ],
+      "function": "Lehrer-Simulator außerhalb der Schülerfläche",
+      "language": "de",
+      "bookEvidence": "cgo-032 A4, keine Datenbank",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "teacher.error",
+      "text": "Nachgestelltes Lernspeichern: fehlgeschlagen.",
+      "places": [
+        "Rahmen/Browserstatus"
+      ],
+      "function": "Lehrer-Simulator außerhalb der Schülerfläche",
+      "language": "de",
+      "bookEvidence": "cgo-032 A4, keine Datenbank",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "teacher.saved",
+      "text": "Nachgestelltes Lernspeichern: Erfolg.",
+      "places": [
+        "Rahmen/Browserstatus"
+      ],
+      "function": "Lehrer-Simulator außerhalb der Schülerfläche",
+      "language": "de",
+      "bookEvidence": "cgo-032 A4, keine Datenbank",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "teacher.idle",
+      "text": "Lernspeichern noch nicht gezeigt.",
+      "places": [
+        "Rahmen/Browserstatus"
+      ],
+      "function": "Lehrer-Simulator außerhalb der Schülerfläche",
+      "language": "de",
+      "bookEvidence": "cgo-032 A4, keine Datenbank",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "teacher.fault",
+      "text": "Lokale Notizspeicherung prüfen",
+      "places": [
+        "Lehrerbereich"
+      ],
+      "function": "Lehrer-Simulator außerhalb der Schülerfläche",
+      "language": "de",
+      "bookEvidence": "cgo-032 A4, keine Datenbank",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "teacher.normal",
+      "text": "Verfügbar",
+      "places": [
+        "Lehrerbereich"
+      ],
+      "function": "Lehrer-Simulator außerhalb der Schülerfläche",
+      "language": "de",
+      "bookEvidence": "cgo-032 A4, keine Datenbank",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "teacher.fail",
+      "text": "Fehler nachstellen",
+      "places": [
+        "Lehrerbereich"
+      ],
+      "function": "Lehrer-Simulator außerhalb der Schülerfläche",
+      "language": "de",
+      "bookEvidence": "cgo-032 A4, keine Datenbank",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "teacher.faultLabel",
+      "text": "Lokaler Speicherfehler ist absichtlich nachgestellt. Änderungen bleiben bis zur Wiederherstellung nur im offenen Fenster.",
+      "places": [
+        "Lehrerbereich"
+      ],
+      "function": "Lehrer-Simulator außerhalb der Schülerfläche",
+      "language": "de",
+      "bookEvidence": "cgo-032 A4, keine Datenbank",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "teacher.responseMode",
+      "text": "Antwortprüfung nachstellen",
+      "places": [
+        "Lehrerbereich"
+      ],
+      "function": "Lehrer-Simulator außerhalb der Schülerfläche",
+      "language": "de",
+      "bookEvidence": "cgo-032 A4, keine Datenbank",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "teacher.responseOk",
+      "text": "Verfügbar",
+      "places": [
+        "Lehrerbereich"
+      ],
+      "function": "Lehrer-Simulator außerhalb der Schülerfläche",
+      "language": "de",
+      "bookEvidence": "cgo-032 A4, keine Datenbank",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "teacher.responseError",
+      "text": "Fehler",
+      "places": [
+        "Lehrerbereich"
+      ],
+      "function": "Lehrer-Simulator außerhalb der Schülerfläche",
+      "language": "de",
+      "bookEvidence": "cgo-032 A4, keine Datenbank",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "teacher.sources",
+      "text": "Quellen und Grenzen",
+      "places": [
+        "Lehrerbereich"
+      ],
+      "function": "Lehrer-Simulator außerhalb der Schülerfläche",
+      "language": "de",
+      "bookEvidence": "cgo-032 A4, keine Datenbank",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "teacher.sourceDetail",
+      "text": "MORE! 1: SB 8–15, WB 4–13. Vorlagen: g1u01.w.book, Revision 2, und g1u01.gi.contractions.mc.006, Revision 1. Neue Musterkennungen trennen die geänderte Lernhandlung von den Originalitems. Buchseiten und unabhängige Prüfung gelten nicht automatisch als neue Musterannahme.",
+      "places": [
+        "Lehrerbereich"
+      ],
+      "function": "Lehrer-Simulator außerhalb der Schülerfläche",
+      "language": "de",
+      "bookEvidence": "cgo-032 A4, keine Datenbank",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "local.idle",
+      "text": "Keine ungespeicherte Notiz.",
+      "places": [
+        "Lehrerbereich",
+        "Rahmen/Browserstatus"
+      ],
+      "function": "Echte Notiz- und Entwurfszustände im Lehrerbereich",
+      "language": "de",
+      "bookEvidence": "Eigene lokale Browserpersistenz; keine Produkt-Lernspur",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "local.draft",
+      "text": "Ungespeicherte Notiz.",
+      "places": [
+        "Rahmen/Browserstatus"
+      ],
+      "function": "Echte Notiz- und Entwurfszustände im Lehrerbereich",
+      "language": "de",
+      "bookEvidence": "Eigene lokale Browserpersistenz; keine Produkt-Lernspur",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "local.restored",
+      "text": "Ungespeicherter Entwurf wiederhergestellt. Bitte Notiz lokal speichern.",
+      "places": [
+        "Laufzeit/Status",
+        "Rahmen/Browserstatus"
+      ],
+      "function": "Echte Notiz- und Entwurfszustände im Lehrerbereich",
+      "language": "de",
+      "bookEvidence": "Eigene lokale Browserpersistenz; keine Produkt-Lernspur",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "local.saved",
+      "text": "Notiz lokal gespeichert.",
+      "places": [
+        "Laufzeit/Status",
+        "Rahmen/Browserstatus"
+      ],
+      "function": "Echte Notiz- und Entwurfszustände im Lehrerbereich",
+      "language": "de",
+      "bookEvidence": "Eigene lokale Browserpersistenz; keine Produkt-Lernspur",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "local.recovered",
+      "text": "Entwurf zur Wiederherstellung gesichert; noch nicht als Notiz gespeichert.",
+      "places": [
+        "Laufzeit/Status",
+        "Rahmen/Browserstatus"
+      ],
+      "function": "Echte Notiz- und Entwurfszustände im Lehrerbereich",
+      "language": "de",
+      "bookEvidence": "Eigene lokale Browserpersistenz; keine Produkt-Lernspur",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "local.stored",
+      "text": "Ansicht lokal in diesem Browser gesichert.",
+      "places": [
+        "Laufzeit/Status",
+        "Rahmen/Browserstatus"
+      ],
+      "function": "Echte Notiz- und Entwurfszustände im Lehrerbereich",
+      "language": "de",
+      "bookEvidence": "Eigene lokale Browserpersistenz; keine Produkt-Lernspur",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "local.failure",
+      "text": "Lokal nicht gespeichert. Lass die Seite offen und kopiere deine Notiz, bevor du sie schließt.",
+      "places": [
+        "Laufzeit/Status",
+        "Rahmen/Browserstatus"
+      ],
+      "function": "Echte Notiz- und Entwurfszustände im Lehrerbereich",
+      "language": "de",
+      "bookEvidence": "Eigene lokale Browserpersistenz; keine Produkt-Lernspur",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "local.invalid",
+      "text": "Die gespeicherte Ansicht war nicht lesbar. Die Übung beginnt neu.",
+      "places": [
+        "Laufzeit/Status",
+        "Rahmen/Browserstatus"
+      ],
+      "function": "Echte Notiz- und Entwurfszustände im Lehrerbereich",
+      "language": "de",
+      "bookEvidence": "Eigene lokale Browserpersistenz; keine Produkt-Lernspur",
+      "exposure": "Lern-/Bedienansicht"
+    },
+    {
+      "id": "mockup.ch1.it-is.context-mc.v1/option/Its",
+      "text": "Its",
+      "places": [
+        "Schülerfläche/grammar"
+      ],
+      "function": "Auswahlwert, keine englische Bedienvoraussetzung",
+      "language": "en; Originaloption",
+      "bookEvidence": "g1u01.gi.contractions.mc.006 rev1; SB13/14",
+      "exposure": "unmarkierte Antwortoption"
+    },
+    {
+      "id": "mockup.ch1.it-is.context-mc.v1/option/He's",
+      "text": "He's",
+      "places": [
+        "Schülerfläche/grammar"
+      ],
+      "function": "Auswahlwert, keine englische Bedienvoraussetzung",
+      "language": "en; Originaloption",
+      "bookEvidence": "g1u01.gi.contractions.mc.006 rev1; SB13/14",
+      "exposure": "unmarkierte Antwortoption"
+    },
+    {
+      "id": "mockup.ch1.it-is.context-mc.v1/option/It's",
+      "text": "It's",
+      "places": [
+        "Schülerfläche/grammar"
+      ],
+      "function": "Auswahlwert, keine englische Bedienvoraussetzung",
+      "language": "en; Originaloption",
+      "bookEvidence": "g1u01.gi.contractions.mc.006 rev1; SB13/14",
+      "exposure": "unmarkierte Antwortoption"
+    },
+    {
+      "id": "mockup.ch1.it-is.context-mc.v1/option/That's",
+      "text": "That's",
+      "places": [
+        "Schülerfläche/grammar"
+      ],
+      "function": "Auswahlwert, keine englische Bedienvoraussetzung",
+      "language": "en; Originaloption",
+      "bookEvidence": "g1u01.gi.contractions.mc.006 rev1; SB13/14",
+      "exposure": "unmarkierte Antwortoption"
+    },
+    {
+      "id": "render/grammar-filled",
+      "text": "It's a book.",
+      "places": [
+        "Schülerfläche/grammar-result-2",
+        "Schülerfläche/grammar-assisted"
+      ],
+      "function": "Korrekte Auswahl erscheint im vollständigen Satz",
+      "language": "en; vorher eingeführtes Satzmuster",
+      "bookEvidence": "SB13/14, eigener Kontext",
+      "exposure": "nach richtiger Antwort"
+    },
+    {
+      "id": "static/noscript",
+      "text": "Dieses anklickbare Lehrer-Muster benötigt JavaScript.",
+      "places": [
+        "index.html/noscript"
+      ],
+      "function": "Startvoraussetzung außerhalb der Lernhandlung",
+      "language": "de",
+      "bookEvidence": "technische Rahmeninformation",
+      "exposure": "Rahmen"
+    },
+    {
+      "id": "teacher/scene/intro",
+      "text": "Einstieg",
+      "places": [
+        "Lehrerbereich/Ansicht"
+      ],
+      "function": "Zustand gezielt nachstellen",
+      "language": "de; technische Zustandsnamen im Lehrerbereich",
+      "bookEvidence": "Musterautorenschaft",
+      "exposure": "Lehrerbereich"
+    },
+    {
+      "id": "teacher/scene/word-card",
+      "text": "Wortkarte · Lernbeispiel",
+      "places": [
+        "Lehrerbereich/Ansicht"
+      ],
+      "function": "Zustand gezielt nachstellen",
+      "language": "de; technische Zustandsnamen im Lehrerbereich",
+      "bookEvidence": "Musterautorenschaft",
+      "exposure": "Lehrerbereich"
+    },
+    {
+      "id": "teacher/scene/word",
+      "text": "Wort · offen",
+      "places": [
+        "Lehrerbereich/Ansicht"
+      ],
+      "function": "Zustand gezielt nachstellen",
+      "language": "de; technische Zustandsnamen im Lehrerbereich",
+      "bookEvidence": "Musterautorenschaft",
+      "exposure": "Lehrerbereich"
+    },
+    {
+      "id": "teacher/scene/word-empty",
+      "text": "Wort · keine Eingabe",
+      "places": [
+        "Lehrerbereich/Ansicht"
+      ],
+      "function": "Zustand gezielt nachstellen",
+      "language": "de; technische Zustandsnamen im Lehrerbereich",
+      "bookEvidence": "Musterautorenschaft",
+      "exposure": "Lehrerbereich"
+    },
+    {
+      "id": "teacher/scene/word-selected",
+      "text": "Wort · Eingabe begonnen",
+      "places": [
+        "Lehrerbereich/Ansicht"
+      ],
+      "function": "Zustand gezielt nachstellen",
+      "language": "de; technische Zustandsnamen im Lehrerbereich",
+      "bookEvidence": "Musterautorenschaft",
+      "exposure": "Lehrerbereich"
+    },
+    {
+      "id": "teacher/scene/word-correct",
+      "text": "Wort · richtig",
+      "places": [
+        "Lehrerbereich/Ansicht"
+      ],
+      "function": "Zustand gezielt nachstellen",
+      "language": "de; technische Zustandsnamen im Lehrerbereich",
+      "bookEvidence": "Musterautorenschaft",
+      "exposure": "Lehrerbereich"
+    },
+    {
+      "id": "teacher/scene/word-article",
+      "text": "Wort · mit Artikel",
+      "places": [
+        "Lehrerbereich/Ansicht"
+      ],
+      "function": "Zustand gezielt nachstellen",
+      "language": "de; technische Zustandsnamen im Lehrerbereich",
+      "bookEvidence": "Musterautorenschaft",
+      "exposure": "Lehrerbereich"
+    },
+    {
+      "id": "teacher/scene/word-plural",
+      "text": "Wort · Mehrzahl",
+      "places": [
+        "Lehrerbereich/Ansicht"
+      ],
+      "function": "Zustand gezielt nachstellen",
+      "language": "de; technische Zustandsnamen im Lehrerbereich",
+      "bookEvidence": "Musterautorenschaft",
+      "exposure": "Lehrerbereich"
+    },
+    {
+      "id": "teacher/scene/word-near",
+      "text": "Wort · Schreibfehler",
+      "places": [
+        "Lehrerbereich/Ansicht"
+      ],
+      "function": "Zustand gezielt nachstellen",
+      "language": "de; technische Zustandsnamen im Lehrerbereich",
+      "bookEvidence": "Musterautorenschaft",
+      "exposure": "Lehrerbereich"
+    },
+    {
+      "id": "teacher/scene/word-related",
+      "text": "Wort · verwandtes Wort",
+      "places": [
+        "Lehrerbereich/Ansicht"
+      ],
+      "function": "Zustand gezielt nachstellen",
+      "language": "de; technische Zustandsnamen im Lehrerbereich",
+      "bookEvidence": "Musterautorenschaft",
+      "exposure": "Lehrerbereich"
+    },
+    {
+      "id": "teacher/scene/word-german",
+      "text": "Wort · deutsches Wort",
+      "places": [
+        "Lehrerbereich/Ansicht"
+      ],
+      "function": "Zustand gezielt nachstellen",
+      "language": "de; technische Zustandsnamen im Lehrerbereich",
+      "bookEvidence": "Musterautorenschaft",
+      "exposure": "Lehrerbereich"
+    },
+    {
+      "id": "teacher/scene/word-wrong",
+      "text": "Wort · falsches Wort",
+      "places": [
+        "Lehrerbereich/Ansicht"
+      ],
+      "function": "Zustand gezielt nachstellen",
+      "language": "de; technische Zustandsnamen im Lehrerbereich",
+      "bookEvidence": "Musterautorenschaft",
+      "exposure": "Lehrerbereich"
+    },
+    {
+      "id": "teacher/scene/word-assisted",
+      "text": "Wort · richtig mit Hilfe",
+      "places": [
+        "Lehrerbereich/Ansicht"
+      ],
+      "function": "Zustand gezielt nachstellen",
+      "language": "de; technische Zustandsnamen im Lehrerbereich",
+      "bookEvidence": "Musterautorenschaft",
+      "exposure": "Lehrerbereich"
+    },
+    {
+      "id": "teacher/scene/word-help-1",
+      "text": "Wort · Hilfe 1",
+      "places": [
+        "Lehrerbereich/Ansicht"
+      ],
+      "function": "Zustand gezielt nachstellen",
+      "language": "de; technische Zustandsnamen im Lehrerbereich",
+      "bookEvidence": "Musterautorenschaft",
+      "exposure": "Lehrerbereich"
+    },
+    {
+      "id": "teacher/scene/word-help-2",
+      "text": "Wort · Hilfe 2",
+      "places": [
+        "Lehrerbereich/Ansicht"
+      ],
+      "function": "Zustand gezielt nachstellen",
+      "language": "de; technische Zustandsnamen im Lehrerbereich",
+      "bookEvidence": "Musterautorenschaft",
+      "exposure": "Lehrerbereich"
+    },
+    {
+      "id": "teacher/scene/word-help-3",
+      "text": "Wort · Hilfe 3",
+      "places": [
+        "Lehrerbereich/Ansicht"
+      ],
+      "function": "Zustand gezielt nachstellen",
+      "language": "de; technische Zustandsnamen im Lehrerbereich",
+      "bookEvidence": "Musterautorenschaft",
+      "exposure": "Lehrerbereich"
+    },
+    {
+      "id": "teacher/scene/word-help-4",
+      "text": "Wort · Hilfe 4",
+      "places": [
+        "Lehrerbereich/Ansicht"
+      ],
+      "function": "Zustand gezielt nachstellen",
+      "language": "de; technische Zustandsnamen im Lehrerbereich",
+      "bookEvidence": "Musterautorenschaft",
+      "exposure": "Lehrerbereich"
+    },
+    {
+      "id": "teacher/scene/word-checking",
+      "text": "Wort · Prüfung wartet",
+      "places": [
+        "Lehrerbereich/Ansicht"
+      ],
+      "function": "Zustand gezielt nachstellen",
+      "language": "de; technische Zustandsnamen im Lehrerbereich",
+      "bookEvidence": "Musterautorenschaft",
+      "exposure": "Lehrerbereich"
+    },
+    {
+      "id": "teacher/scene/word-error",
+      "text": "Wort · Prüfungsfehler",
+      "places": [
+        "Lehrerbereich/Ansicht"
+      ],
+      "function": "Zustand gezielt nachstellen",
+      "language": "de; technische Zustandsnamen im Lehrerbereich",
+      "bookEvidence": "Musterautorenschaft",
+      "exposure": "Lehrerbereich"
+    },
+    {
+      "id": "teacher/scene/sentence",
+      "text": "Satz · Lernbeispiel",
+      "places": [
+        "Lehrerbereich/Ansicht"
+      ],
+      "function": "Zustand gezielt nachstellen",
+      "language": "de; technische Zustandsnamen im Lehrerbereich",
+      "bookEvidence": "Musterautorenschaft",
+      "exposure": "Lehrerbereich"
+    },
+    {
+      "id": "teacher/scene/grammar",
+      "text": "Kurzform · offen",
+      "places": [
+        "Lehrerbereich/Ansicht"
+      ],
+      "function": "Zustand gezielt nachstellen",
+      "language": "de; technische Zustandsnamen im Lehrerbereich",
+      "bookEvidence": "Musterautorenschaft",
+      "exposure": "Lehrerbereich"
+    },
+    {
+      "id": "teacher/scene/grammar-empty",
+      "text": "Kurzform · keine Auswahl",
+      "places": [
+        "Lehrerbereich/Ansicht"
+      ],
+      "function": "Zustand gezielt nachstellen",
+      "language": "de; technische Zustandsnamen im Lehrerbereich",
+      "bookEvidence": "Musterautorenschaft",
+      "exposure": "Lehrerbereich"
+    },
+    {
+      "id": "teacher/scene/grammar-selected",
+      "text": "Kurzform · ausgewählt",
+      "places": [
+        "Lehrerbereich/Ansicht"
+      ],
+      "function": "Zustand gezielt nachstellen",
+      "language": "de; technische Zustandsnamen im Lehrerbereich",
+      "bookEvidence": "Musterautorenschaft",
+      "exposure": "Lehrerbereich"
+    },
+    {
+      "id": "teacher/scene/grammar-result-0",
+      "text": "Kurzform · Rückmeldung 1",
+      "places": [
+        "Lehrerbereich/Ansicht"
+      ],
+      "function": "Zustand gezielt nachstellen",
+      "language": "de; technische Zustandsnamen im Lehrerbereich",
+      "bookEvidence": "Musterautorenschaft",
+      "exposure": "Lehrerbereich"
+    },
+    {
+      "id": "teacher/scene/grammar-result-1",
+      "text": "Kurzform · Rückmeldung 2",
+      "places": [
+        "Lehrerbereich/Ansicht"
+      ],
+      "function": "Zustand gezielt nachstellen",
+      "language": "de; technische Zustandsnamen im Lehrerbereich",
+      "bookEvidence": "Musterautorenschaft",
+      "exposure": "Lehrerbereich"
+    },
+    {
+      "id": "teacher/scene/grammar-result-2",
+      "text": "Kurzform · Rückmeldung 3",
+      "places": [
+        "Lehrerbereich/Ansicht"
+      ],
+      "function": "Zustand gezielt nachstellen",
+      "language": "de; technische Zustandsnamen im Lehrerbereich",
+      "bookEvidence": "Musterautorenschaft",
+      "exposure": "Lehrerbereich"
+    },
+    {
+      "id": "teacher/scene/grammar-result-3",
+      "text": "Kurzform · Rückmeldung 4",
+      "places": [
+        "Lehrerbereich/Ansicht"
+      ],
+      "function": "Zustand gezielt nachstellen",
+      "language": "de; technische Zustandsnamen im Lehrerbereich",
+      "bookEvidence": "Musterautorenschaft",
+      "exposure": "Lehrerbereich"
+    },
+    {
+      "id": "teacher/scene/grammar-assisted",
+      "text": "Kurzform · richtig mit Hilfe",
+      "places": [
+        "Lehrerbereich/Ansicht"
+      ],
+      "function": "Zustand gezielt nachstellen",
+      "language": "de; technische Zustandsnamen im Lehrerbereich",
+      "bookEvidence": "Musterautorenschaft",
+      "exposure": "Lehrerbereich"
+    },
+    {
+      "id": "teacher/scene/grammar-help",
+      "text": "Kurzform · Hilfe",
+      "places": [
+        "Lehrerbereich/Ansicht"
+      ],
+      "function": "Zustand gezielt nachstellen",
+      "language": "de; technische Zustandsnamen im Lehrerbereich",
+      "bookEvidence": "Musterautorenschaft",
+      "exposure": "Lehrerbereich"
+    },
+    {
+      "id": "teacher/scene/grammar-checking",
+      "text": "Kurzform · Prüfung wartet",
+      "places": [
+        "Lehrerbereich/Ansicht"
+      ],
+      "function": "Zustand gezielt nachstellen",
+      "language": "de; technische Zustandsnamen im Lehrerbereich",
+      "bookEvidence": "Musterautorenschaft",
+      "exposure": "Lehrerbereich"
+    },
+    {
+      "id": "teacher/scene/grammar-error",
+      "text": "Kurzform · Prüfungsfehler",
+      "places": [
+        "Lehrerbereich/Ansicht"
+      ],
+      "function": "Zustand gezielt nachstellen",
+      "language": "de; technische Zustandsnamen im Lehrerbereich",
+      "bookEvidence": "Musterautorenschaft",
+      "exposure": "Lehrerbereich"
+    },
+    {
+      "id": "teacher/scene/summary-pending",
+      "text": "Rückmeldung · wartet",
+      "places": [
+        "Lehrerbereich/Ansicht"
+      ],
+      "function": "Zustand gezielt nachstellen",
+      "language": "de; technische Zustandsnamen im Lehrerbereich",
+      "bookEvidence": "Musterautorenschaft",
+      "exposure": "Lehrerbereich"
+    },
+    {
+      "id": "teacher/scene/summary-error",
+      "text": "Rückmeldung · Fehler",
+      "places": [
+        "Lehrerbereich/Ansicht"
+      ],
+      "function": "Zustand gezielt nachstellen",
+      "language": "de; technische Zustandsnamen im Lehrerbereich",
+      "bookEvidence": "Musterautorenschaft",
+      "exposure": "Lehrerbereich"
+    },
+    {
+      "id": "teacher/scene/summary-saved",
+      "text": "Rückmeldung · fertig",
+      "places": [
+        "Lehrerbereich/Ansicht"
+      ],
+      "function": "Zustand gezielt nachstellen",
+      "language": "de; technische Zustandsnamen im Lehrerbereich",
+      "bookEvidence": "Musterautorenschaft",
+      "exposure": "Lehrerbereich"
+    },
+    {
+      "id": "teacher/scene/load-error",
+      "text": "Ladefehler",
+      "places": [
+        "Lehrerbereich/Ansicht"
+      ],
+      "function": "Zustand gezielt nachstellen",
+      "language": "de; technische Zustandsnamen im Lehrerbereich",
+      "bookEvidence": "Musterautorenschaft",
+      "exposure": "Lehrerbereich"
+    }
+  ]
+}

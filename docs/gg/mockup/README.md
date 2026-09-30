@@ -1,69 +1,60 @@
-# DomiGo · ein Blatt zum Anfassen
+# Chapter 1 · ein Wort und eine Kurzform
 
-**CODEX DRAFT — NOT CANON · cgo-007 · nur Lehrer-Muster.**
+**CODEX DRAFT — NOT CANON · cgo-032 · Lehrer-Muster.**
 
-Ein vollständiger Weg: Einstieg → Wort erkennen → Kurzform wählen → Rückmeldung → erneut üben. Bs Heftpapier trägt As farbige Aufgabenkarte. Fredoka aus dem freigegebenen Repository bleibt die Schrift für Antippbares; Georgia ersetzt die dort fehlende Literata. Keine neue Kunst, keine produktive Route, keine Paketabhängigkeit.
+Dieses Muster ersetzt die didaktisch abgelehnte Fassung von cgo-007. Deutsch führt durch die Aufgabe; Englisch wird gezielt eingeführt und verwendet. Ein Buchbild trägt die Wortbedeutung und den Farbkontext. Erst Wortkarte, dann freie Worteingabe, danach ein erklärtes Satzbeispiel und eine eigene Kurzformauswahl. Das ist ein begrenzter Lernweg, keine Prüfung und keine Serienvorlage.
 
-## Starten
+## Lokal starten
 
-Node 24 oder neuer reicht. Dieser Befehl baut das Muster aus den gepinnten Quellen in einen temporären Ordner und startet es ausschließlich auf diesem Rechner:
+Node 24 genügt; keine Installation erforderlich. Ausgabe immer außerhalb des Produktrepos. Den Port vorher auf freie Belegung prüfen; fremde Prozesse nicht beenden.
 
 ```sh
-node /Users/veho/Code/_codex/cgo-007/docs/gg/mockup/serve.mjs --port 4177 --out /Users/veho/Code/_codex/cgo-007-evidence/preview
+node docs/gg/mockup/build.mjs --out /Users/veho/Code/_codex/cgo-032-evidence/preview
+node docs/gg/mockup/serve.mjs --no-build --out /Users/veho/Code/_codex/cgo-032-evidence/preview --port 4198
 ```
 
-Solange der Befehl läuft: `http://127.0.0.1:4177`. Beenden mit Strg+C. Der Koordinator kann in seinem eigenen Klon denselben relativen Befehl `node docs/gg/mockup/serve.mjs --port 4177` ausführen. Ein alleiniger localhost-Link ist keine Übergabe. Koki erhält seine erreichbare Urteilskarte erst nach dem Sichtpass des GG.
+Danach `http://127.0.0.1:4198`. Der Server bindet ausschließlich an diesen Rechner. Beenden mit Strg+C. Nach Quelländerung neu bauen und Server neu starten. Die alte GG-Vorschau auf 4197 bleibt unberührt. Ein lokaler Link allein ist keine Musterübergabe: GG liest den fertigen Weg und stellt ihn erst nach den unabhängigen Prüfungen für Koki bereit.
 
-Separat bauen: `node docs/gg/mockup/build.mjs --out /absoluter/pfad/preview`. Gebauten Stand starten: `node docs/gg/mockup/serve.mjs --no-build --out /absoluter/pfad/preview --port 4177`. Im gebauten Ordner dürfen Dateien nicht manuell editiert werden; nach einer Quellenänderung neu bauen und Server neu starten.
+## Inhalt und Quellen
 
-## Die fünf Auftragspunkte
+[Quellenpass und Lernvertrag](../pedagogy/chapter-1-sources.md) dokumentiert 18 selbst gesehene Originalseiten, Bildfunktion, Sprachvoraussetzungen, Varianten und Herkunft. [DomiLingo-Lehren](../pedagogy/domilingo-lessons.md) trennt historische Befunde von neuen Prüfungen. [Anforderungszuordnung](../pedagogy/requirements.md) benennt Umsetzung, Prüfung und verbleibende Grenzen.
 
-1. **Quelle und Weg:** Basis `df258ae8952cf5e5747e7507759d4d7b61e094b5`; angenommene Richtung aus welle-057 am Boardstand `a4c0ff4075e352bc33631a0ac91c1484bcddbcde`. `source-pins.json` bindet die tatsächlich gelesenen Dateien mit MD5 (Fingerabdruck der Bytes). `build.mjs` verweigert fehlende oder geänderte Eingänge.
-2. **Ansichten:** 390/1440 Pixel, hell/dunkel und reduzierte Bewegung. Die Lehrerleiste benennt jeden Zustand, die Schülerfläche bleibt Englisch. Genau eine hervorgehobene Aktion pro Lernschritt; während des Wartens keine aktive Abschlussaktion. Fehler → Auswahl erhalten → erneut versuchen.
-3. **Zwei reale Aufgaben:** `content/corpus/units/g1-u01/vocab.json`, `g1u01.w.book`, Revision 2, Definitionsansicht `d` mit vollständigem `dAnswers` und den drei bestehenden `mc`-Ablenkern. `grammar.json`, `g1u01.gi.contractions.mc.006`, Revision 1, vollständige Antwort-/Ablenkerauswahl. Deutsche Frage „Welche Kurzform gehört zu it is?“ → „Which short form means ‘it is’?“; Erklärung sinngleich übersetzt. Ergänzender Kontext „It is a book.“ verbindet beide Schritte. Schlüssel und Korpus bleiben unverändert. Die lokale Bewertung vergleicht ausschließlich die vier festen Auswahlwerte; sie ist kein Ersatz für den produktiven Bewerter. Keine Antwortmarkierung im anfänglich ausgelieferten Aufgabenmaterial; private Schlüsseldatei wird nicht über HTTP ausgeliefert. Die Lehrer-Simulatorfunktion ist ausdrücklich keine sichere Prüfungsumgebung.
-4. **Wiederöffnen:** Auswahl, Ansicht, Erscheinungsbild und ausdrücklich gespeicherte Notiz bleiben in `localStorage` (Speicher dieses Browsers). Notizentwürfe werden zusätzlich zur Wiederherstellung gesichert, bleiben aber als ungespeicherte Änderungen markiert, bis „Notiz lokal speichern“ gewählt wird. Bei ungespeichertem Text oder Speicherfehler fordert `beforeunload` die Browserwarnung an; Browser können sie insbesondere auf Mobilgeräten unterdrücken. Deshalb wird auch ein unbestätigter Entwurf beim Wiederöffnen sichtbar wiederhergestellt. Ein Klick innerhalb des Musters verliert keinen Notiztext. Der nachgestellte Lernspeicher ist davon unabhängig und speichert niemals Lernpunkte.
-5. **Prüfen:** `node docs/gg/mockup/check.mjs` prüft Quellenbindung, acht Auswahlbewertungen, Geheimhaltung des Schlüssels und tatsächlich gebaute Auslieferung. Sicht-/Bedienpass und zwei geforderte Gegenproben stehen im Boardbericht und PR, Rohlogs/Bilder außerhalb des Repos. Die volle Produktbatterie ist zusätzlich erforderlich, erst nach reserviertem Prüfplatz.
+Die Originalitems `g1u01.w.book` Revision 2 und `g1u01.gi.contractions.mc.006` Revision 1 sowie ihre vollständigen Schlüssel sind unverändert. Die neue freie Bild-/Übersetzungseingabe und die kontextgestützte Kurzformauswahl haben eigene Musterkennungen. Sie sind keine still geänderten Originalrevisionen. Die Auswahlwerte der Grammatik bleiben vollständig erhalten. Der lokale Bewerter ist ausdrücklich kein neuer Produktbewerter.
 
-## Kunst, Schrift und Grenzen
+Wortkarte und Satzbeispiel zeigen Antworten **absichtlich zum Lernen**. Die Hilfsfolge ist eine aufrufbare Bedeutungsstütze, Anfangsbuchstabe, Wortlänge, danach bewusst aufgerufene Wortkarte. Sie ist nur für diesen Lernweg gebaut, nicht für Checkups oder Prüfungen. Fehler lassen die Eingabe sichtbar; die Hilfe öffnet einen erneuten Eingabeversuch. Es gibt keine Punkte oder automatische Behauptung langfristigen Könnens.
 
-Unveränderte Dateien aus der Basis: `apps/web/public/art/g1/paint/ch01/obj_book_a.png` (Buch als Wortbedeutung), `klecks_mentor.png` (Einladung in den Lernweg), `apps/web/app/fonts/fredoka-var-latin.woff2` und dessen Lizenzhinweis. Nichts aus dem historischen Referenzordner importiert. Bildaufträge: keine; Ansichtsaufnahmen dokumentieren die tatsächliche Aktion statt eines Generierungs-Prompts.
+## Texte und Zustände prüfen
 
-Die private Quelldatei im Build dient dem lokalen Server. Er liefert nur seine feste Dateiliste aus, bindet nur an `127.0.0.1` und hat keinen Datenbankzugang. Notizen enthalten keine Schülerdaten. Ein Start auf einem anderen Port oder in einem anderen Browser benutzt einen anderen lokalen Speicher.
+```sh
+node docs/gg/mockup/inventory.mjs --write
+MOCKUP_CHECK_PORT=4199 node docs/gg/mockup/check.mjs --no-build --out /Users/veho/Code/_codex/cgo-032-evidence/preview
+```
 
-Der Spiel-Renderer und alle fünf Paint-Phasen sind unverändert. GG-DomiGo hat in Nachtrag 2 zu cgo-007 am 30.09.2026 die Fünf-Phasen-Tabelle für diesen konkreten isolierten Acht-Dateien-Diff als **nicht anwendbar** eingeordnet: Das Muster besitzt keine Paint-Phasen. `docs/PERF_WAECHTER.md` bleibt für den späteren produktiven Einbau bindend. Statt erfundener Spiel-Messwerte werden Baukennung, einzelne Dateigewichte, Bildabmessungen und die sichtbaren Musterprüfungen berichtet. Ein ausgenommenes Phasentor ist kein Leistungsnachweis. Dieses Muster beweist weder die produktive Speicherung noch mobile Browserwarnungen, echte Touchgeräte, das Geschmacksurteil oder eine unabhängige Prüfung. Es öffnet keine Serienwelle.
+`copy.mjs` enthält die verfassten Texte mit Sprachfunktion und Buchbezug. `render.mjs` erzeugt dieselben Ansichten für Browser und Prüfskript. `inventory.mjs` sammelt die tatsächlich in diesen Renderwegen verwendeten Texte, ergänzt Browser-/Rahmenzustände und Originaloptionen und schreibt [student-texts.json](../pedagogy/student-texts.json). Das Prüfskript verlangt die byteinhaltliche Übereinstimmung dieser dauerhaften Liste mit dem aktuellen Code. Benutzerantworten/Notizen sind variable Nutzereingaben und keine Autoren-Schülertexte.
 
+Die Inventur zählt technische Textabdeckung, **nicht** Verständlichkeit oder natürlichen Stil. Auch seltene Fehler- und Speicherzustände gehören zum Browserpass. Die tatsächlichen Ergebnisse, Bildschirmbilder, Fingerprints und Gegenproben werden am finalen Kopf im PR und auf der Karte belegt, niemals als Rohlogs im Repo.
 
-## Originalbedienung: begrenzter Vergleich (Nachtrag 3)
+## Unabhängige Aufgabenprüfung
 
-Die integrierte Studie `docs/handover/design-study-og-trainers.md` vom **13.07.2026** ist eine historische Quelle, kein heutiger Live-Nachweis. §6 benennt Multiple Choice ausdrücklich als eigenen Vokabelmodus mit vier Optionen; die anderen Modi (Tippen, Karteikarten, Buchstabenlegen usw.) bleiben eigenständige Formate. Dieses Muster kalibriert ausschließlich **Vokabel: MC-Definition** und **Grammatik: multiple-choice**. Es ersetzt weder die getippte Definition aus `VocabItemView` noch irgendein anderes Aufgabenformat durch Auswahlknöpfe.
+Der Build erzeugt zwei getrennte Dateien außerhalb der HTTP-Auslieferung:
 
-| Schritt | Beibehalten / bewusst verändert | Beleg und Grenze |
-|---|---|---|
-| Reiz | Definition zum Wort; grammatische Kurzformfrage mit vier Optionen | Korpusitems unverändert, Frage übersetzt; zusätzlich vorhandenes erklärendes Buchbild |
-| Schüleraktion | Genau eine Option wählen, bewusst bestätigen | Bestehendes `packages/task-ui/src/index.tsx`, `Choices` + `Check`; native Radiofelder ergänzen Pfeiltastenbedienung |
-| Hilfe / Fehlversuch | Fehlversuch hält Reiz und Auswahl sichtbar, gibt einen konkreten Hinweis, erneuter Versuch möglich | Eigene begrenzte Musterentscheidung: erst „Try again“, dann neu wählen; keine automatische Weiterleitung. Kein universeller Ersatz für die bestehende Wiederholungs-/Hilfelogik |
-| Rückmeldung | Konkrete Erklärung nach richtigem Versuch; Fehlerauswahl in Fehlerfarbe statt Erfolgsgrün | Keine Lösung vor dem Versuch markiert. Originalschlüssel bleibt auf dem lokalen Server |
-| Wiederholung | Beide Aufgaben erneut erreichbar | Bewusst ein kurzer Zwei-Aufgaben-Weg; keine Behauptung über Smart Review, langfristiges Vokabeltracking oder alle Originaltrainer |
+1. `solver-word.public.json`: nur freie Wortaufgabe mit neutraler Kennung plus neutrales `assets/object.png`; keine vorangegangene Wortkarte.
+2. `solver-grammar.public.json`: nur Kurzformaufgabe mit allen unmarkierten Auswahlwerten.
 
-**Die Vokabelwahl weist Erkennen nach, keinen produktiven Wortabruf.** Die bestehende Definitions-/Tippeingabe ist fachlich eine andere Lernhandlung und bleibt unverändert. Das steht auch sichtbar im Lehrerbereich. Das Zusatzbild unterstützt Erkennen; damit wird keine neue Prüfung des freien Abrufs behauptet. Kein früher geprüftes Produktformat wurde verändert. Die Auswahl von zwei Auswahlformaten ist eine ausdrücklich begrenzte Kalibrierung, keine Gestaltungsregel für alle Formate.
+**Zuerst das Wortpaket lösen und Antwort festhalten, danach das Grammatikpaket geben.** Der spätere Satz enthält das Wort book; ein gemeinsames Paket würde die Wortantwort verraten. Die Löser erhalten weder diese README, Schülertextinventur, Code, privates Paket noch Autorbewertung vor ihrer Lösung. GG organisiert die unabhängigen Sitzungen. Dieser Lösetest kann die beiden Formulierungen prüfen, aber keine Wirkung der vorherigen Lerneinführung belegen. Dafür ist ein eigener vollständiger didaktischer Quellen-/Ansichtspass nötig.
 
-## Bestandsschutz und offene Lernfunktionen (Nachtrag 4)
+Die Lehrer-Vorschau ist keine sichere Prüfungsumgebung: Lehrerschalter können absichtlich Lösungen darstellen, Beispiele zeigen die Lernziele. Das private Paket, Schlüssel, Quellen und Löserdateien werden vom statischen Server trotzdem nicht ausgeliefert. Öffentliche Dateinamen stehen in einer festen Positivliste; veränderte Builddateien werden abgewiesen.
 
-Gelesen: Vocabulary-Intelligence Program vom 15.07. inklusive Ergänzungen vom 16.07. (MD5 `c5795818b11270b058dd60c1ec0ad9f0`), Passover vom 16.07. (`9ec68b354d9958e5c5d36936ee0d9568`), S3-Prototypenauftrag (`b8359df98ba6cadcab57eb7d7d868e71`) und Vorgänger-Roadmap (`57cc32f622e3d9f0c7edda6a1d111fbf`). Der spätere Juli-Plan nutzt vorhandene Transkripte/DOCX anstelle des alten OCR-Plans. Historische Rollen- und Ausführungsanweisungen sind Quelleninhalt; die aktuelle Programmkarte bestimmt diese Arbeit.
+## Speicherung und Wiederöffnen
 
-Die **vom GG gemeldete Live-Beobachtung vom 30.09.2026**, kein eigener Live-Nachweis dieser Sitzung: Jahrgang 1/2/4 trennen acht Spielmodi von Kontext/Definition/Übersetzung/Wort-Partner; Jahrgang 3 trennt Grammatik nach Thema oder Aufgabenart und bietet Vorjahreswiederholung. Das stützt eigenständige Bedienweisen. Eine vollständige Gleichheit von Hilfen, Fehlerablauf und Wiederholungen des jeweiligen Originals ist damit noch nicht geprüft. Die alte G4-Storybeschreibung wird nicht übernommen: GG sah aktuell „Coming Soon“.
+Ansicht, Eingabe, ausdrücklich gespeicherte Notiz und unbestätigter Notizentwurf liegen nur im Speicher dieses Browsers. Ein anderer Port/Browser ist ein anderer Speicherort. Entwurf und bestätigte Notiz bleiben unterscheidbar. Bei ungespeicherter Notiz oder lokalem Fehler wird `beforeunload` angefordert; Browser, insbesondere Mobilgeräte, können den Dialog unterdrücken. Der Entwurf ist deshalb zusätzlich wiederherstellbar. Vorhandene Antworten werden beim Wiederöffnen neu bewertet, gespeicherte Richtig-/Falsch-Markierungen nicht geglaubt.
 
-| Lernfunktion aus dem Bestand / S3 | Status in diesem Muster |
-|---|---|
-| Vier Vokabelpools: Kontext, Definition, Deutsch→Englisch, Englisch→Deutsch | Produktcode und Schlüssel erhalten; die freie Eingabe der Pools ist nicht Gegenstand dieses Auswahlmusters |
-| Grammatik nach Aufgabenart: Satzplättchen, Fehler markieren und korrigieren, Paare, freie Eingabe | Bestehende Formate erhalten; ausschließlich die reale Multiple-Choice-Kurzformaufgabe wird gezeigt |
-| Selbstständig lösbarer Reiz und kalibrierte Schwierigkeit | Definition und vollständige vier Optionen gegen Original geprüft; eigene Sichtprüfung ist keine unabhängige didaktische Abnahme |
-| Gestufte Hilfe: Bedeutungsstütze → Anfangsbuchstabe → Länge → Lösung | Hier nur ein konkreter Fehlhinweis und Wiederholen; keine Umsetzung oder Abnahme der Hilfsleiter |
-| Wiederholungsbudget, Formatmix und Wechsel des Pools | Hier nur zwei erneut erreichbare Beispiele; keine langfristige Wiederholungslogik behauptet |
-| Wörter kennenlernen in Gruppen, Suchliste als Ergänzung | Ein erklärendes vorhandenes Buchbild; keine vollständige Lernwort-Einführung |
-| Wortindex mit erster Buchstelle, Wortkarte und „Später üben“ | Offen außerhalb des Auftrags; keine persönliche Wort-Sammlung eingebaut oder vorgetäuscht |
-| Lernstandsabhängige Hilfe; spätere Grammatik- und Fremdwortbahnen | Offen außerhalb des Auftrags |
-| Zentraler Bewerter, Versuchsprotokoll und Wiederholungsplanung | Bestehender Produktweg unverändert; lokale Prüfung der festen Auswahl ist ausschließlich Demonstration |
-| Frühere Inhaltsprüfungen | Herkunft und Originalitems erhalten; kein früheres Urteil als neues Ansichts- oder Integrationssiegel ausgegeben |
+Der Lehrerschalter für Lernspeichern stellt Warten/Fehler/Erfolg nach und ist davon unabhängig. Keine Datenbank, kein Konto und keine Produkt-Lernspur. Beim Warten keine aktive Abschluss-/Wiederholungsaktion. Notizfehler- und Antwortprüfungsfehler-Schalter sind ausdrücklich gekennzeichnete Bedienproben.
 
-Der neue Markenrahmen besteht aus Heftblatt, Aufgabenkarte, vorhandener Kunst und runden Bedienelementen. Er ist unabhängig von diesen Lernfunktionen zu beurteilen. Alte Originalfarben und Punktestrafen sind nicht übernommen; neue produktive Lernlogik wurde nicht aus DomiLingo kopiert. Die umfassende Zuordnung der historischen Zusagen führt der GG.
+## Erhalten und bewusst geändert
+
+Heftblatt, Rand, eine Aufgabenkarte, Fredoka für Bedienung, das unveränderte Buch und Klecks bleiben erhalten. Das Buch hat 631 × 471 PNG-Pixel; HTML-Abmessungen ersetzen keinen Bildnachweis. Georgia bleibt Systemersatz für die im Repo fehlende Literata. Keine neue Kunst und keine neuen Abhängigkeiten.
+
+Geändert: deutsche Orientierung, sichtbares Chapter 1, konkrete Ziele, Einführung vor Abruf, freie Worteingabe statt zweier Auswahlaufgaben, aufgabenspezifische Fehlertexte, ausdrückliche Variantenbehandlung und vollständige Text-/Quellenbindung. Klecks begleitet nur die Erklärung; das Buch erklärt den Gegenstand. Die vier Produkt-Vokabelpools und anderen Grammatikformate bleiben unangetastet. Persönliche Sammlung, Wortindex, Langzeitwiederholung und andere Jahrgänge bleiben außerhalb des Zauns.
+
+Keine neuen Paint-Spielphasen, kein Produkt-Renderer geändert. Dateigewichte und tatsächliche Musterbilder sind messbar; Spiel-fps, Klassenlast, reale Touchgeräte, Aussprache/Hören und produktive Speicherung werden hier nicht behauptet. Unabhängige fachliche Prüfung, technische Integration und Kokis Urteil sind getrennte Schritte.
