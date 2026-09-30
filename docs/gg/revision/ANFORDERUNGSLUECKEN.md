@@ -10,6 +10,12 @@ Geschichten und Figuren bleiben grundsätzlich möglich; Kokis Urteil ist weder
 eine pauschale Kunstablehnung noch eine Annahme des Rahmens. Frühere technische
 Prüfungen behalten ihren tatsächlichen Umfang.
 
+**Nachtrag 12:** [Neue abgeschlossene Leserdiagnose](BEFUNDE-N12.md) ergänzt die
+Beleglage, schließt diese Anforderungslücken aber nicht. 030-Nein und begrenztes
+031-Ja bleiben getrennt, p017 ist durch GG als sperrend bestätigt. Die vollständige
+Didaktikspezifikation liegt bei den Jahrgangsaufträgen cgo-033–036, Herkunft bei
+cgo-025. Der schwere N9-Restversuch ist ausdrücklich ausgesetzt.
+
 Verbindliche Quelle: `PLATFORM MASTER/SESSION-PROMPTS/GG_DOMIGO/` →
 `SCHUELERSPRACHE_UND_DIDAKTIK_2026-09-30.md`, vollständig gelesen;
 einschließlich des während dieses Abgleichs hinzugefügten §7;
@@ -31,8 +37,8 @@ Beide Lesefassungen und der konkrete Unterschied bleiben im externen Beleg erhal
 | N8-Paket nach eigener Transferkorrektur | `853165922030fb01941fd97e5d56f420bd3851ce417b2fae0097afb0972ea28e`, erzeugt an `fcbfee51ed3a0f0043a21c2540cc141943c2244f`; 20 Grundansichten, ein Farb-Folgeschritt, acht Assets, insgesamt 32 Dateien. Keine Umformulierung durch N11. |
 | N8-Archiv | SHA-256 `8fe2688a66838503b368f06c8e2fe196f9b1bbb9b6307574dc2499c8e195d10e`, MD5 `29d60aad81507d6bbcd94705ab12083c`. |
 | Eigene N8-Sichtprüfung | 40 Grundansichten bei 390/1440 Pixeln und sieben bediente Zustände. Autorenselbstprüfung; kein unabhängiges Quellen-/Didaktikurteil und keine vollständige Zustandsabdeckung. |
-| Laufende kalte Leser | Nur ihr von GG eingefrorenes Paket, keine neuen Hinweise, Schlüssel, Autorbefunde oder Antworten anderer Leser. Rückgaben diagnostizieren diesen Stand; kein Urteil zu einer künftigen Fassung vorwegnehmen. |
-| Technische Restprüfung | N8: build/typecheck/lint/check:bundle jeweils Exit 0; test Exit 1, paint-art abgebrochen, 22 Tore ungestartet. N9 erlaubt einen kontrollierten Versuch am freigegebenen Kopf nach erfüllter Lastbedingung. N11 schafft keinen weiteren Versuch. |
+| Nun abgeschlossene kalte Leser | cgo-030/031 diagnostizieren ihr unverändertes Paket. Erst nach beiden Rückgaben zusammengeführt; keine neuen Hinweise/Schlüssel an sie gesendet. Kein Urteil zu einer künftigen Fassung. |
+| Technische Restprüfung | N8: build/typecheck/lint/check:bundle jeweils Exit 0; test Exit 1, paint-art abgebrochen, 22 Tore ungestartet. N12 setzt den früheren N9-Auftrag aus. Erst eine neue ausdrückliche GG-Zuteilung am fertigen Dokumentkopf erlaubt den schweren Restversuch. |
 
 N11 verändert ausschließlich Dokumentation. Ein Dokumentations-Commit ändert
 trotzdem den PR-Kopf: Der technische Prüfkopf oben bleibt erhalten; eine

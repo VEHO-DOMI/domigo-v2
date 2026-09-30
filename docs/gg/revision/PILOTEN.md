@@ -120,3 +120,13 @@ begründet die Entscheidungen. Nur im eigenen neuen Jg.-1-Transfer werden
 speak/talk samt Do not-/please-Varianten ergänzt. Der neue Antwortvertrag erhält
 neue Pins; kein altes Urteil wird zu einem neuen Ja. Inhaltsfreigabe bleibt
 gesperrt, auch wenn mechanische Prüfungen erfolgreich sind.
+
+## Nachtrag 12 · zweiter abgeschlossener Lesedurchgang
+
+Die neuen Leser cgo-030/031 haben das unveränderte Paket `85316592…` unabhängig
+zurückgegeben. [BEFUNDE-N12.md](BEFUNDE-N12.md) enthält alle 77 Kandidaten,
+ihre frische technische Annahme und getrennte fachliche Konsequenzen. 030-Nein
+und begrenztes 031-Ja bleiben getrennt. GG bestätigt p017 als Sperre, obwohl
+die sichtbare Subjektgruppierung technisch korrekt lösbar ist. Antworten dienen
+der Diagnose; keine Aufgaben-/Schlüsseländerung in diesem Nachtrag. Der schwere
+Restversuch N9 ist ausgesetzt bis zu einer neuen ausdrücklichen GG-Zuteilung.

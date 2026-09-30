@@ -1,6 +1,11 @@
-# W0 nach den beiden unabhängigen Inhaltslesungen
+# W0 nach dem ersten unabhängigen Lesedurchgang
 
 **CODEX DRAFT — NOT CANON · IN REVIEW, PR 472 · Inhaltsfreigabe NEIN.**
+
+**Aktueller Nachtrag 12:** Die [zweite Leserzusammenführung](BEFUNDE-N12.md)
+ergänzt diesen historischen N6-Befundweg. 030-Nein und begrenztes 031-Ja beziehen
+sich auf das neue unveränderte Paket; p017 ist nach GG-Gegenlesen sperrend.
+Das alte Register samt Kandidaten, Annahme und Urteilen wird nicht überschrieben.
 
 Das [vollständige Register](BEFUNDE.md) enthält jede der 20 Ansichten, beide
 getrennten Lösungsräume in ursprünglicher Reihenfolge, tatsächliche Annahme,
@@ -25,9 +30,10 @@ Freigabesiegel. Offene Punkte sperren die unveränderte Kalibrierung weiterhin.
 3. Nachtrag 6 erweitert ausschließlich den eigenen Transfer p010 und seine
    Rückmeldung. `codex/main` bei `269ee986ccdc1ae7c3b070cbed7014f20e532365`
    ist ohne Umschreiben der Geschichte eingefaltet. Die neuen Antwort- und
-   Darstellungspins müssen frisch exportiert werden. Alte Urteile werden nicht
-   auf diese Fassung übertragen. Aktuelle Paket-/Kopfwerte und Prüfbelege stehen
-   im PR und im Boardbericht; ein neues blindes Ja liegt nicht vor.
+   Darstellungspins wurden anschließend in N8 frisch exportiert. Alte Urteile
+   werden nicht auf diese Fassung übertragen. Die erst danach erhobenen neuen
+   Leserurteile und aktuellen Bindungen stehen in [BEFUNDE-N12.md](BEFUNDE-N12.md).
+   Aus dem begrenzten Ja eines Lesers folgt keine Gesamtfreigabe.
 
 Kein bestehendes Korpusitem, produktiver Bewerter, produktiver Renderer oder
 Veröffentlichungszustand wird durch diese Nachbesserung geändert. Auch die

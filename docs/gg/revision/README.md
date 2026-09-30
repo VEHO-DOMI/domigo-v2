@@ -14,7 +14,13 @@ ursprüngliche Zusagen und tatsächliche W0-Belege zu. Die
 Originaldateien. Das Löserpaket bleibt unverändert; PR 472 liefert eine
 Quellen-/Prüfgrundlage, kein fachliches Serien-Ja.
 
-**Nachtrag 6:** Beide unabhängigen Inhaltsleser sagen Nein zur unveränderten
+**Nachtrag 12:** Die zweite [Leserzusammenführung](BEFUNDE-N12.md) bewahrt alle
+77 Kandidaten aus cgo-030/031 am unveränderten neuen Paket. 030 sagt Nein, 031
+ein begrenztes Ja; GG bestätigt p017 als Sperre vor unveränderter Musterübernahme.
+Kein Gesamt-Ja und keine automatische Schlüsselergänzung. N9 ist ausdrücklich
+ausgesetzt; ein schwerer Restversuch braucht eine neue GG-Zuteilung am fertigen Kopf.
+
+**Historischer Nachtrag 6:** Beide damaligen Inhaltsleser sagen Nein zur unveränderten
 Kalibrierung. Das vollständige [Befundregister](BEFUNDE.md) und der
 [Entscheidungs-/Prüfweg](BEFUNDWEG.md) bewahren alle Antworten, Originalbefunde
 und gezielten Korrekturvorschläge. Nur der eigene Transfer p010 wird erweitert.
