@@ -1,7 +1,7 @@
 // CODEX DRAFT — NOT CANON. No production account, score or learning write.
 const $ = (id) => document.getElementById(id);
 const storageKey = 'domigo-cgo-007-notebook-v1';
-const initial = () => ({ version: 1, stage: 'intro', selections: { vocab: '', grammar: '' }, results: {}, note: '', theme: 'system', motion: 'system', saveMode: 'success', saveState: 'idle', simulated: false });
+const initial = () => ({ version: 1, stage: 'intro', selections: { vocab: '', grammar: '' }, results: {}, note: '', noteDraft: '', theme: 'system', motion: 'system', saveMode: 'success', saveState: 'idle', simulated: false });
 let state = initial();
 let localError = '';
 let dirty = false;
@@ -16,6 +16,7 @@ try {
   if (saved) {
     if (saved.version !== 1 || !['intro', 'vocab', 'grammar', 'summary'].includes(saved.stage) || typeof saved.note !== 'string' || !saved.selections || !saved.results) throw new Error('saved data');
     state = { ...initial(), ...saved };
+    state.noteDraft = typeof saved.noteDraft === 'string' ? saved.noteDraft : saved.note;
   }
 } catch { localError = 'Lokaler Speicher nicht verfügbar oder gespeicherte Auswahl nicht lesbar. Diese Ansicht beginnt neu.'; }
 
@@ -57,7 +58,7 @@ function render(focus = true) {
   const main = $('learning');
   main.setAttribute('aria-busy', 'false');
   if (state.stage === 'intro') {
-    main.innerHTML = `${pageTop(0)}<h1 tabindex="-1">A little English.<br>A new page.</h1><p class="intro-copy">Find a word for something in your school bag. Then make a sentence a little shorter.</p><section class="card hero" aria-label="Your next activity"><div><h2>What’s in your bag?</h2><p>One word.<br>One little sentence.<br>Let’s have a look.</p><button class="primary" id="start">Let’s start <span aria-hidden="true">→</span></button></div><img class="mentor" src="/assets/mentor.png" width="500" height="500" alt="A friendly ink creature waving you over."></section><p class="below-card">Take your time. You can try again.</p>`;
+    main.innerHTML = `${pageTop(0)}<h1 tabindex="-1">A little English.<br>A new page.</h1><p class="intro-copy">Find a word for something in your school bag. Then make a sentence a little shorter.</p><section class="card hero" aria-label="Your next activity"><div><h2>What’s in your bag?</h2><p>One word.<br>One little sentence.<br>Let’s have a look.</p><button class="primary" id="start">Let’s start <span aria-hidden="true">→</span></button></div><img class="mentor" src="/assets/mentor.png" width="512" height="512" alt="A friendly ink creature waving you over."></section><p class="below-card">Take your time. You can try again.</p>`;
     $('start').onclick = () => { state.stage = 'vocab'; persist(); render(); };
   } else if (state.stage === 'summary') {
     renderSummary();
@@ -71,7 +72,7 @@ function renderTask() {
   const key = state.stage;
   const task = tasks[key];
   const result = state.results[key];
-  $('learning').innerHTML = `${pageTop(key === 'vocab' ? 0 : 1)}<h1 tabindex="-1">${key === 'vocab' ? 'What is it?' : 'A little shorter.'}</h1><section class="card"><div class="task-head"><p class="eyebrow">${key === 'vocab' ? 'Find the word' : 'Put the words together'}</p><p class="eyebrow">${key === 'vocab' ? '1' : '2'} of 2</p></div><div class="task-visual"><img src="/assets/object.png" width="628" height="466" alt="Blue covers around a thick stack of pages."><p class="${key === 'grammar' ? 'speech' : ''}">${escape(task.context)}</p></div><form id="answer"><fieldset class="choices" ${result ? 'disabled' : ''}><legend>${escape(task.question)}</legend>${task.options.map((option, i) => `<label class="choice"><input type="radio" name="answer" value="${escape(option)}" ${state.selections[key] === option ? 'checked' : ''}><span>${escape(option)}</span></label>`).join('')}</fieldset>${result ? `<div class="feedback ${result.correct ? '' : 'wrong'}" role="status"><strong>${result.correct ? 'That’s it.' : 'Not quite yet.'}</strong><p>${escape(result.explanation)}</p></div>` : ''}<div class="actions"><button class="primary" id="advance" ${!result && !state.selections[key] ? 'disabled' : ''}>${result ? (result.correct ? (key === 'vocab' ? 'Try the sentence' : 'Finish this page') : 'Try again') : 'Check my answer'}<span aria-hidden="true">→</span></button>${!result ? '<p>Choose one.</p>' : ''}</div><p id="answer-error" role="alert" hidden></p></form></section>`;
+  $('learning').innerHTML = `${pageTop(key === 'vocab' ? 0 : 1)}<h1 tabindex="-1">${key === 'vocab' ? 'What is it?' : 'A little shorter.'}</h1><section class="card"><div class="task-head"><p class="eyebrow">${key === 'vocab' ? 'Find the word' : 'Put the words together'}</p><p class="eyebrow">${key === 'vocab' ? '1' : '2'} of 2</p></div><div class="task-visual"><img src="/assets/object.png" width="628" height="466" alt="Blue covers around a thick stack of pages."><p class="${key === 'grammar' ? 'speech' : ''}">${escape(task.context)}</p></div><form id="answer"><fieldset class="choices" ${result ? 'disabled' : ''}><legend>${escape(task.question)}</legend>${task.options.map((option) => `<label class="choice ${result && !result.correct && state.selections[key] === option ? 'wrong-choice' : ''}"><input type="radio" name="answer" value="${escape(option)}" ${state.selections[key] === option ? 'checked' : ''}><span>${escape(option)}</span></label>`).join('')}</fieldset>${result ? `<div class="feedback ${result.correct ? '' : 'wrong'}" role="status"><strong>${result.correct ? 'That’s it.' : 'Not quite yet.'}</strong><p>${escape(result.explanation)}</p></div>` : ''}<div class="actions"><button class="primary" id="advance" ${!result && !state.selections[key] ? 'disabled' : ''}>${result ? (result.correct ? (key === 'vocab' ? 'Try the sentence' : 'Finish this page') : 'Try again') : 'Check my answer'}<span aria-hidden="true">→</span></button>${!result ? '<p>Choose one.</p>' : ''}</div><p id="answer-error" role="alert" hidden></p></form></section>`;
   $('answer').onchange = (event) => {
     if (event.target.name !== 'answer') return;
     state.selections[key] = event.target.value;
@@ -160,11 +161,19 @@ async function setScene(value) {
   state.simulated = true; persist(); render(false);
 }
 
-$('note').value = state.note;
+$('note').value = state.noteDraft;
+dirty = state.noteDraft !== state.note;
+if (dirty) {
+  $('note-status').textContent = 'Ungespeicherter Entwurf wiederhergestellt. Bitte Notiz lokal speichern.';
+  $('note-status').className = 'warning';
+}
 $('note').oninput = () => {
+  state.noteDraft = $('note').value;
   dirty = $('note').value !== state.note;
   $('note-status').textContent = dirty ? 'Ungespeicherte Notiz.' : 'Keine ungespeicherte Notiz.';
   $('note-status').className = dirty ? 'warning' : '';
+  // Recoverable draft even in browsers that suppress the unload dialog.
+  if (persist()) $('local-status').textContent = dirty ? 'Entwurf zur Wiederherstellung gesichert; noch nicht als Notiz gespeichert.' : 'Notiz und Entwurf stimmen überein.';
 };
 $('save-note').onclick = () => {
   const previous = state.note;

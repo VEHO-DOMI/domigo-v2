@@ -5,6 +5,8 @@ import { spawn } from 'node:child_process';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { once } from 'node:events';
+import { createHash } from 'node:crypto';
+import { execFileSync } from 'node:child_process';
 import { build, repo, sourceDir } from './build.mjs';
 
 const pos = process.argv.indexOf('--out');
@@ -44,8 +46,17 @@ try {
   assert.equal(alien.status, 403, 'Fremde Herkunft');
   const bad = await fetch(base + '/api/answer', { method: 'POST', body: JSON.stringify({ task: 'grammar', choice: 'invalid' }) });
   assert.equal(bad.status, 400, 'Ungültige Auswahl');
-  const manifest = (await (await fetch(base + '/api/version')).json()).files;
-  for (const file of Object.keys(manifest)) assert.equal((await fetch(base + '/' + file)).status, 200, `Built file ${file}`);
+  const version = await (await fetch(base + '/api/version')).json();
+  assert.equal(version.head, execFileSync('git', ['rev-parse', 'HEAD'], { cwd: repo, encoding: 'utf8' }).trim(), 'Bau gehört zum aktuellen Kopf');
+  const manifest = version.files;
+  assert.deepEqual(Object.keys(manifest).sort(), ['index.html', 'style.css', 'app.js', 'assets/object.png', 'assets/mentor.png', 'assets/fredoka.woff2', 'assets/FONT-LICENSE.md'].sort(), 'Vollständige Auslieferung');
+  for (const [file, info] of Object.entries(manifest)) {
+    const response = await fetch(base + '/' + file);
+    assert.equal(response.status, 200, `Built file ${file}`);
+    const bytes = Buffer.from(await response.arrayBuffer());
+    assert.equal(bytes.length, info.bytes, `Delivered size ${file}`);
+    assert.equal(createHash('md5').update(bytes).digest('hex'), info.md5, `Delivered fingerprint ${file}`);
+  }
   console.log(JSON.stringify({ verdict: 'PASS', originalItems: 2, gradedChoices: graded, privateFilesDenied: 3, invalidRequestsDenied: 2, deliveredFiles: Object.keys(manifest).length, out }));
 } finally {
   server.kill('SIGTERM');
