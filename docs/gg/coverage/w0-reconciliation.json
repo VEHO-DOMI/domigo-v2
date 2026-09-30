@@ -1,0 +1,28 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "boardPin": "a2de5ff614240f0b0a3b5f6880611bddda1089d5",
+  "pr": 472,
+  "head": "fcbfee51ed3a0f0043a21c2540cc141943c2244f",
+  "state": "review",
+  "held": true,
+  "finalAcceptance": false,
+  "sourceAgreement": {
+    "ERBE": "Alte Facharbeit/Varianten und getrennte Juli-Unterzusagen erhalten; keine pauschale W0-Ersetzung historischer Gates.",
+    "currentDelta": "W0 bezeichnet 934 Feldgeschichten unverifiziert; cgo-025 rekonstruiert alle 934 mechanisch einschließlich 34 vor PR14 nicht erfasster hintDe-Felder. Keine zusätzliche semantische Freigabe.",
+    "ORIGINALVERGLEICH": "Beide Dokumente nennen Originalparität/Speicherung offen; späterer PR-Bericht begrenzt den Restore-Klicknachweis ausdrücklich."
+  },
+  "independentReaders": [
+    {
+      "card": "cgo-027",
+      "state": "done",
+      "validity": "Altes Paket; beide Nein zum Antwortumfang p019. Nicht an neuen Export übertragbar."
+    },
+    {
+      "card": "cgo-028",
+      "state": "done",
+      "validity": "Altes Paket; beide Nein zum Antwortumfang p019. Nicht an neuen Export übertragbar."
+    }
+  ],
+  "technicalVerdict": "pnpm test Exit1, Restbatterie abgebrochen/nicht gestartet laut cgo-006 Bericht; kein eigener Lauf dieser Karte.",
+  "remaining": "Finale cgo-006-Fassung, aktuelle Leserannahme und GG-Entscheid vor unbeschränkter Übergabe abgleichen."
+}

@@ -1,0 +1,272 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "type": "Neue Rekonstruktion aus Gitständen, NICHT verlorenes S136-Original oder altes Reviewerurteil",
+  "oldCount": 70,
+  "newCount": 61,
+  "items": [
+    {
+      "id": "g1.paint.ch01.uni.hairband",
+      "formerKind": "choice",
+      "formerUse": "pickupset",
+      "word": "hairband",
+      "previousSource": "content/corpus/stories/g1.st.lost-pages/paint/ch01.tasks.v2.json",
+      "previousVersion": "7161948936faabc5eab2fd51457e90616599424d",
+      "removalCommit": "08122e1edac911555770a3b8d0eadcb05c0a8573",
+      "replacement": "Wort/Bild/Fundstatus an Kleidungsentität und Fundübersicht; kein automatischer Sprachnachweis",
+      "currentEvidence": "packages/game-paint/src/PaintGame.tsx clothing overview; ch01.level.json cloth entities",
+      "target": "cgo-010 Lernabdeckungsnachweis; kein stiller Quiz-Neubau",
+      "closure": "Lernkontakt erhalten als Designauftrag; Gleichwertigkeit mit früherem aktivem Benennen UNVERIFIZIERT",
+      "formerAcceptedAnswers": [
+        "hairband"
+      ],
+      "formerExerciseRefs": [
+        "g1u01.w.hairband"
+      ],
+      "currentEntities": [
+        {
+          "id": "p1-cloth-hairband",
+          "word": "hairband"
+        },
+        {
+          "id": "p9-cloth-hairband",
+          "word": "hairband"
+        }
+      ]
+    },
+    {
+      "id": "g1.paint.ch01.uni.hat",
+      "formerKind": "choice",
+      "formerUse": "pickupset",
+      "word": "hat",
+      "previousSource": "content/corpus/stories/g1.st.lost-pages/paint/ch01.tasks.v2.json",
+      "previousVersion": "7161948936faabc5eab2fd51457e90616599424d",
+      "removalCommit": "08122e1edac911555770a3b8d0eadcb05c0a8573",
+      "replacement": "Wort/Bild/Fundstatus an Kleidungsentität und Fundübersicht; kein automatischer Sprachnachweis",
+      "currentEvidence": "packages/game-paint/src/PaintGame.tsx clothing overview; ch01.level.json cloth entities",
+      "target": "cgo-010 Lernabdeckungsnachweis; kein stiller Quiz-Neubau",
+      "closure": "Lernkontakt erhalten als Designauftrag; Gleichwertigkeit mit früherem aktivem Benennen UNVERIFIZIERT",
+      "formerAcceptedAnswers": [
+        "hat"
+      ],
+      "formerExerciseRefs": [
+        "g1u01.w.hat"
+      ],
+      "currentEntities": [
+        {
+          "id": "p1-cloth-hat",
+          "word": "hat"
+        },
+        {
+          "id": "p9-cloth-hat",
+          "word": "hat"
+        }
+      ]
+    },
+    {
+      "id": "g1.paint.ch01.uni.school-tie",
+      "formerKind": "choice",
+      "formerUse": "pickupset",
+      "word": "school tie",
+      "previousSource": "content/corpus/stories/g1.st.lost-pages/paint/ch01.tasks.v2.json",
+      "previousVersion": "7161948936faabc5eab2fd51457e90616599424d",
+      "removalCommit": "08122e1edac911555770a3b8d0eadcb05c0a8573",
+      "replacement": "Wort/Bild/Fundstatus an Kleidungsentität und Fundübersicht; kein automatischer Sprachnachweis",
+      "currentEvidence": "packages/game-paint/src/PaintGame.tsx clothing overview; ch01.level.json cloth entities",
+      "target": "cgo-010 Lernabdeckungsnachweis; kein stiller Quiz-Neubau",
+      "closure": "Lernkontakt erhalten als Designauftrag; Gleichwertigkeit mit früherem aktivem Benennen UNVERIFIZIERT",
+      "formerAcceptedAnswers": [
+        "school tie"
+      ],
+      "formerExerciseRefs": [
+        "g1u01.w.school-tie"
+      ],
+      "currentEntities": [
+        {
+          "id": "p2-cloth-school-tie",
+          "word": "school tie"
+        },
+        {
+          "id": "p9-cloth-school-tie",
+          "word": "school tie"
+        }
+      ]
+    },
+    {
+      "id": "g1.paint.ch01.uni.shirt",
+      "formerKind": "choice",
+      "formerUse": "pickupset",
+      "word": "shirt",
+      "previousSource": "content/corpus/stories/g1.st.lost-pages/paint/ch01.tasks.v2.json",
+      "previousVersion": "7161948936faabc5eab2fd51457e90616599424d",
+      "removalCommit": "08122e1edac911555770a3b8d0eadcb05c0a8573",
+      "replacement": "Wort/Bild/Fundstatus an Kleidungsentität und Fundübersicht; kein automatischer Sprachnachweis",
+      "currentEvidence": "packages/game-paint/src/PaintGame.tsx clothing overview; ch01.level.json cloth entities",
+      "target": "cgo-010 Lernabdeckungsnachweis; kein stiller Quiz-Neubau",
+      "closure": "Lernkontakt erhalten als Designauftrag; Gleichwertigkeit mit früherem aktivem Benennen UNVERIFIZIERT",
+      "formerAcceptedAnswers": [
+        "shirt"
+      ],
+      "formerExerciseRefs": [
+        "g1u01.w.shirt"
+      ],
+      "currentEntities": [
+        {
+          "id": "p2-cloth-shirt",
+          "word": "shirt"
+        },
+        {
+          "id": "p9-cloth-shirt",
+          "word": "shirt"
+        }
+      ]
+    },
+    {
+      "id": "g1.paint.ch01.uni.shoe",
+      "formerKind": "typed",
+      "formerUse": "pickupset",
+      "word": "shoe",
+      "previousSource": "content/corpus/stories/g1.st.lost-pages/paint/ch01.tasks.v2.json",
+      "previousVersion": "7161948936faabc5eab2fd51457e90616599424d",
+      "removalCommit": "08122e1edac911555770a3b8d0eadcb05c0a8573",
+      "replacement": "Wort/Bild/Fundstatus an Kleidungsentität und Fundübersicht; kein automatischer Sprachnachweis",
+      "currentEvidence": "packages/game-paint/src/PaintGame.tsx clothing overview; ch01.level.json cloth entities",
+      "target": "cgo-010 Lernabdeckungsnachweis; kein stiller Quiz-Neubau",
+      "closure": "Lernkontakt erhalten als Designauftrag; Gleichwertigkeit mit früherem aktivem Benennen UNVERIFIZIERT",
+      "formerAcceptedAnswers": [
+        "shoe",
+        "one shoe",
+        "a shoe"
+      ],
+      "formerExerciseRefs": [
+        "g1u01.w.shoe"
+      ],
+      "currentEntities": [
+        {
+          "id": "p3-cloth-shoe",
+          "word": "shoe"
+        },
+        {
+          "id": "p9-cloth-shoe",
+          "word": "shoe"
+        }
+      ]
+    },
+    {
+      "id": "g1.paint.ch01.uni.skirt",
+      "formerKind": "typed",
+      "formerUse": "pickupset",
+      "word": "skirt",
+      "previousSource": "content/corpus/stories/g1.st.lost-pages/paint/ch01.tasks.v2.json",
+      "previousVersion": "7161948936faabc5eab2fd51457e90616599424d",
+      "removalCommit": "08122e1edac911555770a3b8d0eadcb05c0a8573",
+      "replacement": "Wort/Bild/Fundstatus an Kleidungsentität und Fundübersicht; kein automatischer Sprachnachweis",
+      "currentEvidence": "packages/game-paint/src/PaintGame.tsx clothing overview; ch01.level.json cloth entities",
+      "target": "cgo-010 Lernabdeckungsnachweis; kein stiller Quiz-Neubau",
+      "closure": "Lernkontakt erhalten als Designauftrag; Gleichwertigkeit mit früherem aktivem Benennen UNVERIFIZIERT",
+      "formerAcceptedAnswers": [
+        "skirt",
+        "a skirt"
+      ],
+      "formerExerciseRefs": [
+        "g1u01.w.skirt"
+      ],
+      "currentEntities": [
+        {
+          "id": "p3-cloth-skirt",
+          "word": "skirt"
+        },
+        {
+          "id": "p9-cloth-skirt",
+          "word": "skirt"
+        }
+      ]
+    },
+    {
+      "id": "g1.paint.ch01.uni.socks",
+      "formerKind": "typed",
+      "formerUse": "pickupset",
+      "word": "socks",
+      "previousSource": "content/corpus/stories/g1.st.lost-pages/paint/ch01.tasks.v2.json",
+      "previousVersion": "7161948936faabc5eab2fd51457e90616599424d",
+      "removalCommit": "08122e1edac911555770a3b8d0eadcb05c0a8573",
+      "replacement": "Wort/Bild/Fundstatus an Kleidungsentität und Fundübersicht; kein automatischer Sprachnachweis",
+      "currentEvidence": "packages/game-paint/src/PaintGame.tsx clothing overview; ch01.level.json cloth entities",
+      "target": "cgo-010 Lernabdeckungsnachweis; kein stiller Quiz-Neubau",
+      "closure": "Lernkontakt erhalten als Designauftrag; Gleichwertigkeit mit früherem aktivem Benennen UNVERIFIZIERT",
+      "formerAcceptedAnswers": [
+        "socks"
+      ],
+      "formerExerciseRefs": [
+        "g1u01.w.socks"
+      ],
+      "currentEntities": [
+        {
+          "id": "p3-cloth-socks",
+          "word": "socks"
+        },
+        {
+          "id": "p9-cloth-socks",
+          "word": "socks"
+        }
+      ]
+    },
+    {
+      "id": "g1.paint.ch01.uni.sunglasses",
+      "formerKind": "choice",
+      "formerUse": "pickupset",
+      "word": "sunglasses",
+      "previousSource": "content/corpus/stories/g1.st.lost-pages/paint/ch01.tasks.v2.json",
+      "previousVersion": "7161948936faabc5eab2fd51457e90616599424d",
+      "removalCommit": "08122e1edac911555770a3b8d0eadcb05c0a8573",
+      "replacement": "Wort/Bild/Fundstatus an Kleidungsentität und Fundübersicht; kein automatischer Sprachnachweis",
+      "currentEvidence": "packages/game-paint/src/PaintGame.tsx clothing overview; ch01.level.json cloth entities",
+      "target": "cgo-010 Lernabdeckungsnachweis; kein stiller Quiz-Neubau",
+      "closure": "Lernkontakt erhalten als Designauftrag; Gleichwertigkeit mit früherem aktivem Benennen UNVERIFIZIERT",
+      "formerAcceptedAnswers": [
+        "sunglasses"
+      ],
+      "formerExerciseRefs": [
+        "g1u01.w.sunglasses"
+      ],
+      "currentEntities": [
+        {
+          "id": "p1-cloth-sunglasses",
+          "word": "sunglasses"
+        },
+        {
+          "id": "p9-cloth-sunglasses",
+          "word": "sunglasses"
+        }
+      ]
+    },
+    {
+      "id": "g1.paint.ch01.uni.sweater",
+      "formerKind": "choice",
+      "formerUse": "pickupset",
+      "word": "sweater",
+      "previousSource": "content/corpus/stories/g1.st.lost-pages/paint/ch01.tasks.v2.json",
+      "previousVersion": "7161948936faabc5eab2fd51457e90616599424d",
+      "removalCommit": "08122e1edac911555770a3b8d0eadcb05c0a8573",
+      "replacement": "Wort/Bild/Fundstatus an Kleidungsentität und Fundübersicht; kein automatischer Sprachnachweis",
+      "currentEvidence": "packages/game-paint/src/PaintGame.tsx clothing overview; ch01.level.json cloth entities",
+      "target": "cgo-010 Lernabdeckungsnachweis; kein stiller Quiz-Neubau",
+      "closure": "Lernkontakt erhalten als Designauftrag; Gleichwertigkeit mit früherem aktivem Benennen UNVERIFIZIERT",
+      "formerAcceptedAnswers": [
+        "sweater"
+      ],
+      "formerExerciseRefs": [
+        "g1u01.w.sweater"
+      ],
+      "currentEntities": [
+        {
+          "id": "p2-cloth-sweater",
+          "word": "sweater"
+        },
+        {
+          "id": "p9-cloth-sweater",
+          "word": "sweater"
+        }
+      ]
+    }
+  ]
+}

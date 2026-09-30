@@ -78,5 +78,336 @@
     "lines": 43,
     "scope": "Aktuelle Programmautorität und Rückmeldeweg",
     "closure": "nur benannte Abschnitte zugeordnet; keine blanket-Freigabe aller referenzierten Quellen"
+  },
+  {
+    "id": "X-DONOR",
+    "path": "/Users/veho/Code/_codex/cgo-001-r12-evidence/domilingo-source-pins.json",
+    "md5": "c6dbca5647c28917eb25ce4367fdfaa9",
+    "scope": "Gefrorene Donor-Referenz",
+    "closure": "Dateien bytegeprüft; keine fachliche Gesamtfreigabe",
+    "sources": [
+      {
+        "repo": "VEHO-DOMI/srdp-practice",
+        "head": "e0c8b32d47d7abe4780835c0dd69e234dbba1005",
+        "path": "docs/revision/README.md",
+        "md5": "9021a853a2ebb5a072e33783c038421e",
+        "sha256": "985a9cad3002671038424fab74dcccb3625427208fc256f2fef92e2885df8627"
+      },
+      {
+        "repo": "VEHO-DOMI/srdp-practice",
+        "head": "e0c8b32d47d7abe4780835c0dd69e234dbba1005",
+        "path": "lib/auth.ts",
+        "md5": "c7c4e92709bd3d363abfc3b1cef5c0f5",
+        "sha256": "9618fba563912587c42f57819f961d8fc680c000faa02e9f8743b6c0bd23d3d6"
+      },
+      {
+        "repo": "VEHO-DOMI/srdp-practice",
+        "head": "e0c8b32d47d7abe4780835c0dd69e234dbba1005",
+        "path": "lib/konto/backchannel.ts",
+        "md5": "a10afa4d0811ec76679be399ffef41ce",
+        "sha256": "d6e6aab99d328ca8f3e9ef0952ff2b77cc4ab62aa87dd2f91bf330e5bd609630"
+      },
+      {
+        "repo": "VEHO-DOMI/srdp-practice",
+        "head": "e0c8b32d47d7abe4780835c0dd69e234dbba1005",
+        "path": "lib/konto/claims.ts",
+        "md5": "5bfd254103d9f89bba459c9432fa9889",
+        "sha256": "1a3ad73f76c51e324a9d7eb3af60f312ccf6aa85942e1435cbe70061e8855995"
+      },
+      {
+        "repo": "VEHO-DOMI/srdp-practice",
+        "head": "e0c8b32d47d7abe4780835c0dd69e234dbba1005",
+        "path": "lib/konto/class-term.ts",
+        "md5": "0a523546a99f282f5eb8df5765669e93",
+        "sha256": "920201518afd9f30480bddd6e01b1424605c015a96fcc88bb223520f86b764b2"
+      },
+      {
+        "repo": "VEHO-DOMI/srdp-practice",
+        "head": "e0c8b32d47d7abe4780835c0dd69e234dbba1005",
+        "path": "lib/konto/client.ts",
+        "md5": "d536fe798853980641bb5778ff9a00a3",
+        "sha256": "4a120068417e7e24eaa3ca0bd6cbd1b0cca6dced6eb839a2b9626a282fa287c5"
+      },
+      {
+        "repo": "VEHO-DOMI/srdp-practice",
+        "head": "e0c8b32d47d7abe4780835c0dd69e234dbba1005",
+        "path": "lib/konto/config.ts",
+        "md5": "5889359e542f952f85de0ea0e41fe757",
+        "sha256": "a0f42e42ea59b9f803fd3a03750e3f0c3fa7602fbd177159d0d8d6911f8834ef"
+      },
+      {
+        "repo": "VEHO-DOMI/srdp-practice",
+        "head": "e0c8b32d47d7abe4780835c0dd69e234dbba1005",
+        "path": "lib/konto/export.ts",
+        "md5": "953a208dd2b52d2461bdb5b40fa5f929",
+        "sha256": "baf30e5a19227277dce53e82e2266883e87fe643495ef43a8eb276543276803d"
+      },
+      {
+        "repo": "VEHO-DOMI/srdp-practice",
+        "head": "e0c8b32d47d7abe4780835c0dd69e234dbba1005",
+        "path": "lib/konto/link-first.ts",
+        "md5": "427c2fdfcb728ffb451c554b39b2b6a1",
+        "sha256": "7c16454ccae6c55b3e97e011464d7c3234d856f38e26869e5d4af21f1924dea2"
+      },
+      {
+        "repo": "VEHO-DOMI/srdp-practice",
+        "head": "e0c8b32d47d7abe4780835c0dd69e234dbba1005",
+        "path": "lib/konto/links.ts",
+        "md5": "bf86a5abd12d5b9d1640187b02331ba8",
+        "sha256": "e833c47100e7ea857a2e52c32c337fd7a6eaa10d9469306c69530740b31628af"
+      },
+      {
+        "repo": "VEHO-DOMI/srdp-practice",
+        "head": "e0c8b32d47d7abe4780835c0dd69e234dbba1005",
+        "path": "lib/konto/receive-server.ts",
+        "md5": "af8d35bb940bef8b53e77081a1f33f88",
+        "sha256": "921c9434bcc86192785de3e24672327595022b94dc87430cba9378e51f2e6f19"
+      },
+      {
+        "repo": "VEHO-DOMI/srdp-practice",
+        "head": "e0c8b32d47d7abe4780835c0dd69e234dbba1005",
+        "path": "lib/konto/refusal.ts",
+        "md5": "b65785dac39d89e3da8384b0af52d95e",
+        "sha256": "f21b22d8d1d47745304a8b42ef191bc5eb0a46b60a72d94320b31e2f1c9ff6f2"
+      },
+      {
+        "repo": "VEHO-DOMI/srdp-practice",
+        "head": "e0c8b32d47d7abe4780835c0dd69e234dbba1005",
+        "path": "lib/konto/reste.ts",
+        "md5": "2cb0a1c1eaab5b7c631bdfe84b6b8b32",
+        "sha256": "33ae4dd2c45fd7dd47b7053a1ed179600501bd1054f4f77b951fb158a9658164"
+      },
+      {
+        "repo": "VEHO-DOMI/srdp-practice",
+        "head": "e0c8b32d47d7abe4780835c0dd69e234dbba1005",
+        "path": "lib/konto/roster-merge.ts",
+        "md5": "2a60f918a6edb3d7c90a46c12e056c59",
+        "sha256": "775062ef5f72f33a3a0a849b269740597475bab5398f8a380789d182a70d7df1"
+      },
+      {
+        "repo": "VEHO-DOMI/srdp-practice",
+        "head": "e0c8b32d47d7abe4780835c0dd69e234dbba1005",
+        "path": "lib/konto/session.ts",
+        "md5": "d0ea96abcd15466cd7c78b6e511df8f5",
+        "sha256": "748257988907c5d5965963a3ffb6dc2254294391f6db1295ddb3dc8d4309983d"
+      },
+      {
+        "repo": "VEHO-DOMI/srdp-practice",
+        "head": "e0c8b32d47d7abe4780835c0dd69e234dbba1005",
+        "path": "lib/konto/signin-server.ts",
+        "md5": "03e9c162ddc3520aea95e1d2a43b1d45",
+        "sha256": "511ca621f14c55da955e889bcc5a8900d24511eb0e0d97a1e066e25e393975ff"
+      },
+      {
+        "repo": "VEHO-DOMI/srdp-practice",
+        "head": "e0c8b32d47d7abe4780835c0dd69e234dbba1005",
+        "path": "lib/konto/signin.ts",
+        "md5": "bd94a6164da49cd01212ba0978449069",
+        "sha256": "4887b5fd506936e2760b0d48e7a91eb167a5610839a52c6a6c46925278f49356"
+      },
+      {
+        "repo": "VEHO-DOMI/srdp-practice",
+        "head": "e0c8b32d47d7abe4780835c0dd69e234dbba1005",
+        "path": "lib/konto/signout-decision.ts",
+        "md5": "e1c46f388e223b83702fadec09d5214c",
+        "sha256": "8df985490a37365f2f30e83ee324aa69aa0be0b6bfc8c18a9b3728ff2d14ff15"
+      },
+      {
+        "repo": "VEHO-DOMI/srdp-practice",
+        "head": "e0c8b32d47d7abe4780835c0dd69e234dbba1005",
+        "path": "lib/konto/signout.ts",
+        "md5": "dc7bd6d3caa2f669c7f5cec68c619390",
+        "sha256": "70f6944238ecbe6cfd57f206277344ad87d5ef48847e31b9905d03a3b6063c4c"
+      },
+      {
+        "repo": "VEHO-DOMI/srdp-practice",
+        "head": "e0c8b32d47d7abe4780835c0dd69e234dbba1005",
+        "path": "lib/konto/sync.ts",
+        "md5": "87886e2c0969cb549e9d605b16733be3",
+        "sha256": "01395b373e868410f68f9e65c25de2fc5ce498670ae2c36d58ccf1c52dd808bb"
+      },
+      {
+        "repo": "VEHO-DOMI/srdp-practice",
+        "head": "e0c8b32d47d7abe4780835c0dd69e234dbba1005",
+        "path": "lib/konto/user-store.ts",
+        "md5": "5d90a85b5caf5e673b065824e4682c9e",
+        "sha256": "6aefef755c9951a4e4d4a15d9d89317734dca53397e22c582307f565709baaae"
+      },
+      {
+        "repo": "VEHO-DOMI/srdp-practice",
+        "head": "e0c8b32d47d7abe4780835c0dd69e234dbba1005",
+        "path": "lib/konto/verify.ts",
+        "md5": "f0d46a43d4a62decf5f701d7333d7bc4",
+        "sha256": "4177c01360f5e9fabcb8b88e6800ff10f56c30706fc8d47f1f256a10d5f306b4"
+      },
+      {
+        "repo": "VEHO-DOMI/srdp-practice",
+        "head": "e0c8b32d47d7abe4780835c0dd69e234dbba1005",
+        "path": "lib/vocab-review.ts",
+        "md5": "052aab9bc364b6200bc68acccf4f4696",
+        "sha256": "1d0e67933c7f76c0dedfe665ce185aef4199c67c73e6cad94ca9cfff47c95dc0"
+      },
+      {
+        "repo": "VEHO-DOMI/srdp-practice",
+        "head": "e0c8b32d47d7abe4780835c0dd69e234dbba1005",
+        "path": "scripts/test-klassen-zugang.ts",
+        "md5": "c02870e81a06413532f220803831e934",
+        "sha256": "c98aa063ae0b9a116cfdce0b98cf7bcc6e3e96ca0d2cc5ae9f6bfadb46c97724"
+      },
+      {
+        "repo": "VEHO-DOMI/srdp-practice",
+        "head": "e0c8b32d47d7abe4780835c0dd69e234dbba1005",
+        "path": "scripts/test-konto-class-link.ts",
+        "md5": "82887bf2209e1549811624fea3a306a5",
+        "sha256": "8559b36991437682f5c1a744d93d1f6ad4fb329fcdd1b8a23b979cbde11c16f2"
+      }
+    ]
+  },
+  {
+    "id": "X-W0",
+    "path": "/Users/veho/Code/_codex/cgo-001-r12-evidence/w0-source-pins.json",
+    "md5": "95d4546a2d68e9e8a2c31e7f5dffa790",
+    "scope": "Ausdrücklich vorläufiges W0-Paket; keine Annahme",
+    "closure": "Dateien bytegeprüft; keine fachliche Gesamtfreigabe",
+    "sources": [
+      {
+        "repo": "VEHO-DOMI/domigo-v2",
+        "head": "9d78767323ea207bc56ba72212953a3163418c0e",
+        "path": "docs/gg/revision/ERBE.md",
+        "md5": "d4c57b7b0c572b98b604fc213123ffd2"
+      },
+      {
+        "repo": "VEHO-DOMI/domigo-v2",
+        "head": "9d78767323ea207bc56ba72212953a3163418c0e",
+        "path": "docs/gg/revision/ITEM-SIEGEL.md",
+        "md5": "4002a0a8880234b50be252d1e8e891af"
+      },
+      {
+        "repo": "VEHO-DOMI/domigo-v2",
+        "head": "9d78767323ea207bc56ba72212953a3163418c0e",
+        "path": "docs/gg/revision/ORIGINALVERGLEICH.md",
+        "md5": "84ead97c075239f1619581703b30017b"
+      },
+      {
+        "repo": "VEHO-DOMI/domigo-v2",
+        "head": "9d78767323ea207bc56ba72212953a3163418c0e",
+        "path": "docs/gg/revision/PILOTEN.md",
+        "md5": "cdc8cc257f5cceceaf08ad86c52bafc8"
+      },
+      {
+        "repo": "VEHO-DOMI/domigo-v2",
+        "head": "9d78767323ea207bc56ba72212953a3163418c0e",
+        "path": "docs/gg/revision/QUELLENREGISTER.md",
+        "md5": "815ee81d1dcc0bc4d2a4c46b5029e68c"
+      },
+      {
+        "repo": "VEHO-DOMI/domigo-v2",
+        "head": "9d78767323ea207bc56ba72212953a3163418c0e",
+        "path": "docs/gg/revision/README.md",
+        "md5": "5d924cd73a6a1631ba6a2671bc6ea354"
+      },
+      {
+        "repo": "VEHO-DOMI/domigo-v2",
+        "head": "9d78767323ea207bc56ba72212953a3163418c0e",
+        "path": "scripts/gg-revision/PilotView.tsx",
+        "md5": "ee788ac879dfbdbcdeac5b6c69b89ae1"
+      },
+      {
+        "repo": "VEHO-DOMI/domigo-v2",
+        "head": "9d78767323ea207bc56ba72212953a3163418c0e",
+        "path": "scripts/gg-revision/browser.tsx",
+        "md5": "a9d3a890a39b20ba13545d2afde87026"
+      },
+      {
+        "repo": "VEHO-DOMI/domigo-v2",
+        "head": "9d78767323ea207bc56ba72212953a3163418c0e",
+        "path": "scripts/gg-revision/capture.mjs",
+        "md5": "a3864664d55b88657611baeffe5ee56a"
+      },
+      {
+        "repo": "VEHO-DOMI/domigo-v2",
+        "head": "9d78767323ea207bc56ba72212953a3163418c0e",
+        "path": "scripts/gg-revision/census.mjs",
+        "md5": "e83949504458e6b2e1b464c351b640ce"
+      },
+      {
+        "repo": "VEHO-DOMI/domigo-v2",
+        "head": "9d78767323ea207bc56ba72212953a3163418c0e",
+        "path": "scripts/gg-revision/check-archive.py",
+        "md5": "79280900ff7a3ee5e6f8e7ca8976a990"
+      },
+      {
+        "repo": "VEHO-DOMI/domigo-v2",
+        "head": "9d78767323ea207bc56ba72212953a3163418c0e",
+        "path": "scripts/gg-revision/core.mjs",
+        "md5": "6345207c0c1878f504ee230ae2e9ec27"
+      },
+      {
+        "repo": "VEHO-DOMI/domigo-v2",
+        "head": "9d78767323ea207bc56ba72212953a3163418c0e",
+        "path": "scripts/gg-revision/core.test.mjs",
+        "md5": "823ec6e1863d9b47f8df07a4230ada68"
+      },
+      {
+        "repo": "VEHO-DOMI/domigo-v2",
+        "head": "9d78767323ea207bc56ba72212953a3163418c0e",
+        "path": "scripts/gg-revision/grade-candidates.mjs",
+        "md5": "0c339f48b8099e723be84dc207f1e010"
+      },
+      {
+        "repo": "VEHO-DOMI/domigo-v2",
+        "head": "9d78767323ea207bc56ba72212953a3163418c0e",
+        "path": "scripts/gg-revision/pilot-data.mjs",
+        "md5": "6f84e80718f986cd9df99e6d505b3396"
+      },
+      {
+        "repo": "VEHO-DOMI/domigo-v2",
+        "head": "9d78767323ea207bc56ba72212953a3163418c0e",
+        "path": "scripts/gg-revision/pilots.json",
+        "md5": "12e8afd025cfe9a791cb20b4285b4fad"
+      },
+      {
+        "repo": "VEHO-DOMI/domigo-v2",
+        "head": "9d78767323ea207bc56ba72212953a3163418c0e",
+        "path": "scripts/gg-revision/prepare-views.mjs",
+        "md5": "ed479f46bd005e82f55de090de9fba81"
+      },
+      {
+        "repo": "VEHO-DOMI/domigo-v2",
+        "head": "9d78767323ea207bc56ba72212953a3163418c0e",
+        "path": "scripts/gg-revision/register.mjs",
+        "md5": "768b88c345e6dea11794612091994819"
+      },
+      {
+        "repo": "VEHO-DOMI/domigo-v2",
+        "head": "9d78767323ea207bc56ba72212953a3163418c0e",
+        "path": "scripts/gg-revision/serve.mjs",
+        "md5": "3590eb7b2c74f165f66118c1fda2a08e"
+      },
+      {
+        "repo": "VEHO-DOMI/domigo-v2",
+        "head": "9d78767323ea207bc56ba72212953a3163418c0e",
+        "path": "scripts/gg-revision/solver-packet.mjs",
+        "md5": "627ed6f6ebcff7a6fb5d1aba060198a9"
+      },
+      {
+        "repo": "VEHO-DOMI/domigo-v2",
+        "head": "9d78767323ea207bc56ba72212953a3163418c0e",
+        "path": "scripts/gg-revision/solver-packet.test.mjs",
+        "md5": "9c8990149f1c3cda7b6f29b9da12db6d"
+      },
+      {
+        "repo": "VEHO-DOMI/domigo-v2",
+        "head": "9d78767323ea207bc56ba72212953a3163418c0e",
+        "path": "scripts/gg-revision/source-scan.py",
+        "md5": "ed7c0b51997533808c80795da77902b9"
+      },
+      {
+        "repo": "VEHO-DOMI/domigo-v2",
+        "head": "9d78767323ea207bc56ba72212953a3163418c0e",
+        "path": "scripts/gg-revision/verify.mjs",
+        "md5": "c3a479953b94690e20964e8394a0208e"
+      }
+    ]
   }
 ]

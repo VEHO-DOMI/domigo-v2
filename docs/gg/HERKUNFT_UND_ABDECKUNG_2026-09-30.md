@@ -17,12 +17,15 @@ Ein Fingerabdruck bezeichnet hier einen aus Dateiinhalten berechneten Vergleichs
 | [version-chains.json](coverage/version-chains.json) | 14 ausdrücklich begrenzte Vorgänger-/Nachfolgerbeziehungen. Unterschiedliche Fassungen bleiben erhalten. |
 | [commitments.json](coverage/commitments.json) | 41 vertieft zugeordnete Zusagen: 23 Unterzusagen der zehn Juli-Arbeitsstränge und 18 weitere Erhaltungsaufträge. Kein erschöpfender Ersatz der Originaldokumente. |
 | [review-lineage.json](coverage/review-lineage.json) | 57 Einheiten, Vergleich der vorhandenen Zeilenregister und vier konkrete Y1/Y3-Fälle; Inhalt, Antwortschlüssel, Ansicht und Integration getrennt. |
-| [legacy-cards.json](coverage/legacy-cards.json) | Alle 35 Altkarten aus Inventar §9 gegen Boardstand `471ccf212d2fa1c6b02033e633e6ab35bcff96d0`; bisherige Disposition erhalten, keine Karte dadurch geschlossen. |
+| [legacy-cards.json](coverage/legacy-cards.json) | Alle 35 Altkarten aus Inventar §9 gegen Boardstand `a2de5ff614240f0b0a3b5f6880611bddda1089d5`; bisherige Disposition erhalten, keine Karte dadurch geschlossen. |
 | [source-gaps.json](coverage/source-gaps.json) | Fünf einzelne fehlende Quellen und die gesonderte Plan-PR-Lücke: zitierende Quelle, behaupteter Lieferstand, tatsächlich durchsuchter Raum und fehlender Nachweis. GG bestätigt ihren offenen Status in Nachtrag 2. |
 | [review-drift-groups.json](coverage/review-drift-groups.json) | Alle 934 Abweichungen nach tatsächlich betroffenen Feldern, mit alter/neuer Zelle und historischem Vergleichsstand; keine pauschale Artikelkorrektur-Freigabe. |
 | [learning-paths.json](coverage/learning-paths.json) | Vier exemplarische Lernwege und ihre konkreten Speicher-/Kontextgrenzen als fachliche Dispositionsdaten. |
+| [removed-clothing-tasks.json](coverage/removed-clothing-tasks.json) | Neue Git-Rekonstruktion der neun entfernten Kleideraufgaben, ihrer alten Antwortvarianten und heutigen Wort-/Bildanschlüsse; ausdrücklich kein Ersatz der verlorenen S136-Originale. |
 
 Die 247 Eingänge bestehen aus fünf Wurzeldokumenten, 33 Kunst-, 131 Design-, vier Feedback-, 56 Handover-, einem Plan- und elf Runbook-Dokumenten sowie sechs externen Eingängen. Klassen: 30 Plan, 19 Review, 136 Bau-/Kunstspezifikation, 14 Urteil, 43 Beleg, fünf exakte Duplikate. Es gibt 242 unterschiedliche MD5-Werte. Nur die fünf bytegleichen Paare sind zusammengeführt; die zweite Kennung bleibt erreichbar. Insbesondere sind Blueprint-Fassungen, Juli-Programm/Passover/S3 und alte/aktuelle DomiLingo-Fassung **keine** Duplikate.
+
+Die 41 vertieften Zusagen sind 13-mal teilgebaut, 25-mal offen, einmal hinsichtlich der benannten Quelle unverifiziert und zweimal geparkt. Keine ist als vollständig gebaut, unabhängig verifiziert oder pauschal ersetzt verbucht. Gebaute **Teilfunktionen** stehen jeweils separat als Codebeleg. Dazu kommen zwölf ergänzende Quellen-/Paketdatensätze; die 25 Donor- und 23 vorläufigen W0-Dateien wurden bytegleich gegen ihre GG-Pins geprüft.
 
 Alle Quellen sind administrativ zugeordnet; alle 247 Einzelabschlussfelder bleiben bis zum vollständigen Zusagenabgleich offen. Das ist bewusst strenger als „Datei gelesen“. Die großen Register S046/S217/S218/S219 und die Filed-Listen S047–S050 dürfen nicht durch diese Übersicht geschlossen werden. Ihre Einzelkennungen bleiben Arbeitsbestand von cgo-017 bzw. der jeweiligen späteren Raumkarte. Ein inzwischen alter Rotbefund wird weder automatisch aktuell noch automatisch erledigt.
 
@@ -49,6 +52,8 @@ Syntaxia → Lost for Words → FOURTEEN LIVE betrifft die Y4-Kampagne. Die gepa
 S245 → S242/S243 ersetzt die geplante erneute Texterkennung aus Bildern durch bereits vorhandene Kurswort-Transkriptionen. Es ersetzt nicht Wortindex, Sammlung oder Lernstand. S244 verändert die historische Ausführungsreihenfolge zu „erst alle Prototypen, dann Replikationsbrief v3“. Die fachlichen Tore bleiben ausdrücklich bestehen. Heutige Rollen-, Merge- und Prüfplatzregeln kommen ausschließlich aus der aktuellen Programmkarte.
 
 Bei den September-Orders sind Fassung 1 und aktuelle Fassung getrennt gepinnt. Besonders Y3: Der frühere Auftrag, zehn Buchplätze story-eigen zu ersetzen, darf nicht gegen die spätere Entscheidung ausgespielt werden, diese zehn Plätze zu erhalten und die Lernspur samt Szene sauber zu entwerfen (X004/S170/heutiger Plan). Ein Dokumentkommentar allein begründet keine neue fachliche Ablösung.
+
+**S136-Rekonstruktion:** Der Vergleich `7161948936faabc5eab2fd51457e90616599424d` → `08122e1edac911555770a3b8d0eadcb05c0a8573` bestätigt 70 → 61 Karten durch Entfernung von genau neun `pickupset`-Aufgaben: hairband, hat, school tie, shirt, shoe, skirt, socks, sunglasses, sweater. Sechs waren Auswahl-, drei Schreibaufgaben; `shoe` akzeptierte auch `one shoe`/`a shoe`, `skirt` auch `a skirt`. Alle neun Wörter existieren heute an Kleidungsentitäten; die Fundübersicht in `PaintGame.tsx` zeigt Bild und englisches Wort. Dieser Lesekontakt ist **kein belegter Ersatz aktiver Wortproduktion**. cgo-010 muss die Lernabdeckung ausdrücklich beurteilen. Die Rekonstruktion erhält entfernte Themen/Varianten, behauptet aber weder den Text der verlorenen Anhänge noch deren damaliges Reviewerurteil.
 
 ## 2. Vorhandene Facharbeit bleibt gültig in ihrem tatsächlichen Umfang
 
@@ -148,6 +153,8 @@ DomiLingo am gefrorenen Kopf `e0c8…1005` liefert zwei brauchbare Muster: `lib/
 Die 35 Altkarten bleiben zusätzlich vollständig in `legacy-cards.json` erreichbar. B1/B2/C/F → cgo-008/014/015/016, Y1/Y3-Lernspur → cgo-010/011, Y3 Vorschau/Kunst/Reife → cgo-012/013/019, Registerhygiene → cgo-017, Zugang → cgo-009. Kapitel 3–6, Klang, spätere Plattformarbeiten und Y4-Hold verschwinden nicht hinter der aktuellen Y1/Y3-Fokussierung. Neue Karten oder Planprioritäten legt ausschließlich GG fest.
 
 ## 6. W0-Abgleich und Nachweisgrenzen
+
+Der aktuelle feste Boardabgleich ist in [w0-reconciliation.json](coverage/w0-reconciliation.json) gebunden; cgo-006 steht auf review mit Hold, nicht done. Die 35 Altkarten wurden am selben Boardpin erneut gelesen: keine Zustandsänderung gegenüber der ersten eigenen Aufnahme.
 
 Die anfänglich gelieferten 23 W0-Dateien am Kopf `9d787…8c0e` waren ausdrücklich vorläufig. Die damaligen kalten Leser cgo-027 und cgo-028 meldeten **Nein** zum unklaren Antwortumfang von p019. Das ist kein rückwirkendes Nein zum gesamten alten Korpus.
 
