@@ -36,7 +36,7 @@ Die zehn Paint-Kartenarten werden auf die wirklich erreichten Wege abgebildet. F
 
 ## Lokales geplantes Urteilsmuster separat
 
-Vorbereitung → fehlende Zustimmung verhindert Start → unbekanntes Material führt zurück zur Übung → beide bereit → erste Auswahl falsch → Quellvergleich → erneute Auswahl → Rollenwechsel → zweite Aufgabe → Rückschau. Zusätzlich Alleinweg, Pause nach Auswahl, Beenden aus Pause abbrechen und fortsetzen, bestätigtes Beenden, Neuladen. Jede Aufnahme trägt sichtbar GEPLANT. Keine dieser Aufnahmen zählt für eine Produktzeile oben.
+Bedeutungsvorbereitung ohne kartenspezifischen Schlüssel → fehlende Zustimmung verhindert Start → unbekanntes Material führt zurück zur Übung → beide bereit → erste Auswahl falsch → Quellvergleich → erneute Auswahl → Rollenwechsel → zweite Aufgabe → Rückschau. Zusätzlich Alleinweg, Pause nach Auswahl, Beenden aus Pause abbrechen und fortsetzen, bestätigtes Beenden, Neuladen. Zusätzlich alle 83 erfassten Texteinträge gegen die wirklichen Ansichten abgleichen: kein verlorener Tastaturfokus beim Ankreuzen, passende Sprache auch im Alleinweg, Hilfe verfügbar, keine kartenspezifische Lösung vor der Erstwahl. Die Zahl ist der Stand des gegenwärtigen Katalogs und wird nach Änderungen neu ermittelt. Ladefehler mit wirklich fehlender Musterdatei im eigenen temporären Testverzeichnis prüfen; keine Produktquelle sabotieren. Richtig, plausible mündliche Variante und Fehler nach `DIDAKTIK.md` prüfen. Getrennter kalter Löser erhält keine vorbereiteten Antwortbeispiele oder Quellenkommentare. Jede Aufnahme trägt sichtbar GEPLANT. Keine dieser Aufnahmen zählt für eine Produktzeile oben.
 
 ## Abschluss
 

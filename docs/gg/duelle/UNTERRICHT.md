@@ -1,16 +1,16 @@
 # Ein fairer sozialer Spielrahmen
 
-**CODEX DRAFT — NOT CANON · GEPLANT · cgo-018.** Spezifikation, keine Freigabe für Kinder. Vorläufige Inhalte dürfen erst nach dem aktuellen Muster-/Herkunfts-/Lookabgleich übernommen werden.
+**CODEX DRAFT — NOT CANON · GEPLANT · cgo-018.** Spezifikation, keine Freigabe für Kinder. Vorläufige Inhalte dürfen erst nach dem aktuellen Muster-/Herkunfts-/Lookabgleich übernommen werden. Nach GG-Nachtrag 5 ist das bisherige Programmmuster sprachlich und didaktisch nicht angenommen; dieser Entwurf ist ebenfalls noch nicht vorlagefertig. Buchbilder, Lernfolge und jede sichtbare Sprache sind in [DIDAKTIK.md](DIDAKTIK.md) und `texte.mjs` eingeordnet.
 
 ## Gemeinsamer Vertrag
 
-**Freiwilligkeit:** Jede Person stimmt selbst zu. „Lieber allein“ führt zu denselben Aufgaben und Hilfen, ohne Nachteil, Vermerk oder öffentliche Begründung. Die Lehrkraft darf einladen, nicht Zustimmung stellvertretend setzen. Keine echten Namen, Ranglisten oder öffentliche Fehleranzeigen. Keine zweite Punktewährung; im lokalen Muster werden überhaupt keine Produktpunkte gelesen oder geschrieben.
+**Freiwilligkeit:** Jede Person stimmt selbst zu. „Allein üben“ führt zu denselben Aufgaben und Hilfen, ohne Nachteil, Vermerk oder öffentliche Begründung. Die Lehrkraft darf einladen, nicht Zustimmung stellvertretend setzen. Keine echten Namen, Ranglisten oder öffentliche Fehleranzeigen. Keine zweite Punktewährung; im lokalen Muster werden überhaupt keine Produktpunkte gelesen oder geschrieben.
 
-**Vorwissen:** Vor einer sozialen Runde erhalten beide denselben ungewerteten Einführungs-/Wiederholungsdurchgang mit allen benötigten Wörtern, Handlungen und Hilfen. Beide können „noch üben“ wählen. Eine bloße Kapitelzugehörigkeit, eine zufällige Aufgabenauswahl oder die technische Markierung „fällig“ beweist keine gemeinsame Vorwissensbasis. Auch nach gemeinsamem Lesen wird kein identischer Lernstand behauptet. Die Wahl „noch üben“ verhindert die soziale Runde und öffnet Übung. Kein Countdown und keine Zeitwertung auf neuem Material; das bevorzugte Muster verzichtet vollständig auf Zeitwertung.
+**Vorwissen:** Vor einer sozialen Runde erhalten beide denselben ungewerteten Einführungs-/Wiederholungsdurchgang mit allen benötigten Wörtern, Handlungen und Hilfen. Beide können über „Zurück zu den Bedeutungen“ weiterüben. Eine bloße Kapitelzugehörigkeit, eine zufällige Aufgabenauswahl oder die technische Markierung „fällig“ beweist keine gemeinsame Vorwissensbasis. Auch nach gemeinsamem Lesen wird kein identischer Lernstand behauptet. Die Rückkehr zu den Bedeutungen verhindert den direkten Start und öffnet die Vorbereitung. Kein Countdown und keine Zeitwertung auf neuem Material; das bevorzugte Muster verzichtet vollständig auf Zeitwertung.
 
 **Vergleichbarkeit:** Beide bearbeiten denselben eingefrorenen Satz in derselben Darstellung mit denselben Hilfen. Gleiches Kapitel oder dieselbe Zahl an Aufgaben reicht nicht. Andere Satzversion, Hilfen, Eingabeform, Antwortumfang oder unklarer Reiz sperren einen wertenden Vergleich. Bei notwendiger individueller Anpassung bleibt gemeinsames Lernen möglich; eine Rangordnung ist ausgeschlossen. Auch bei einem gleichen Satz darf ein späterer Zug nicht als gleich schwerer individueller Test bezeichnet werden: Erklärungen aus dem ersten Zug helfen dem zweiten.
 
-**Rückmeldung:** Das Muster nennt die gemeinsame Auswahl und die Quelllösung. Die Lernenden vergleichen, erklären die Bedeutung und dürfen verbessern. Es erteilt keine neue automatische Sprachbewertung. Eine spätere Produktfassung verwendet den vorhandenen zentralen Bewerter einschließlich gültiger Varianten; Finger- und Tastaturtempo gehen weder in Sprachrichtigkeit noch Lernstand ein. Richtige Storyentscheidungen gibt es nicht: erzählerische Wahl bleibt ohne Sprachurteil.
+**Rückmeldung:** Das Muster nennt die tatsächliche Auswahl und die passende Aufforderung jeweils mit ihrer deutschen Bedeutung. Die Lernenden vergleichen, erklären die Bedeutung und dürfen verbessern. Es erteilt keine neue automatische Sprachbewertung. Eine spätere Produktfassung verwendet den vorhandenen zentralen Bewerter einschließlich gültiger Varianten; Finger- und Tastaturtempo gehen weder in Sprachrichtigkeit noch Lernstand ein. Richtige Storyentscheidungen gibt es nicht: erzählerische Wahl bleibt ohne Sprachurteil.
 
 **Pause/Abbruch:** Pause hält Antworten und Rollen im geöffneten lokalen Modell fest. Beenden zeigt vor dem Verwerfen ausdrücklich, dass die Sitzung lokal bleibt und nicht dauerhaft gespeichert wird. Es zieht weder Punkte ab noch erklärt es jemanden zum Verlierer. Ein Neuladen verliert das lokale Modell; das wird vor Start sichtbar gesagt. In einer späteren gespeicherten Variante bleiben bestätigte Einzelversuche erhalten, eine unvollständige soziale Runde zählt nicht als Niederlage. Verbindungsabbruch ist kein Sprachfehler.
 
@@ -18,16 +18,16 @@
 
 **Lernziel:** Englische Aufforderungen passend zur dargestellten Handlung auswählen und dem Gegenüber begründen. Die soziale Handlung besteht im Beraten und Erklären; „wer schneller tippt“ liefert dazu keinen Nachweis.
 
-1. Einstieg: „Gemeinsam gegen die Aufgabe“. Beide lesen den lokalen Status und wählen einzeln Mitmachen oder Alleinüben. Keine Kontenanmeldung, keine Namenseingabe.
-2. Gemeinsame Vorbereitung: derselbe Satz wird beiden gezeigt. Der aktuelle Entwurf verwendet zwei vorhandene ruhige Paint-Begegnungen, `g1.paint.ch01.enc.pencil.k1` und `g1.paint.ch01.enc.pencil.k2`, einschließlich Originalreiz, Optionen und Lösung. Beide sprechen über den Unterschied zwischen *Listen!* und *Sit down!* sowie den Ablenkern. Dies ist ein **Textmodell der Lernhandlung**, keine nachgebaute Weltbegegnung; Bildreiz/Weltbezug bleiben gesonderte Abnahme.
-3. Beide bestätigen unabhängig, dass sie die Wörter vorher geübt haben und jetzt mitmachen möchten. „Noch üben“ bleibt jederzeit möglich. Das Modell prüft vor Beginn denselben Satz-/Hilfestand, keine Uhr und keinen Abzug bei Abbruch.
-4. Runde 1: Person A bedient, B erklärt; beide beraten die Auswahl. Eine Auswahl darf vor Aufdecken geändert werden. Nach Aufdecken zeigt das Modell Auswahl und Quelllösung nebeneinander in Textform. Kein Sieger, kein Punkt.
+1. Einstieg: „Was soll der Bleistift tun?“ unter „Chapter 1 · Kapitel 1: Aufforderungen“. Beide lesen die deutschen Hinweise zur Übung und wählen Zusammen- oder Alleinüben. Die individuelle Zustimmung folgt nach der Vorbereitung. Keine Kontenanmeldung, keine Namenseingabe.
+2. Gemeinsame Vorbereitung: beide erhalten dieselben fünf Aufforderungen mit deutschen Bedeutungen. Sie erklären einander den Unterschied. Eine kartenspezifische Lösung wird noch nicht gezeigt. Anschließend verwendet der Entwurf zwei vorhandene ruhige Paint-Begegnungen, `g1.paint.ch01.enc.pencil.k1` und `g1.paint.ch01.enc.pencil.k2`, mit unverändertem Originalreiz, Optionen und Lösung nach eigener Auswahl. Dies ist ein **Textmodell der Lernhandlung**, keine nachgebaute Weltbegegnung; Bildreiz/Weltbezug bleiben gesonderte Abnahme. Es übt Auswahl und Bedeutungserklärung; die produktiven Schreibschritte aus dem Workbook bleiben eigenständige, hier nicht abgedeckte Lernhandlungen.
+3. Beide bestätigen unabhängig, dass sie die fünf Aufforderungen auf Deutsch erklären können und jetzt mitmachen möchten. Vor dem Start bleibt „Zurück zu den Bedeutungen“ möglich; während der Aufgabe kann dieselbe Wortschatzhilfe wieder geöffnet werden. Das Modell prüft vor Beginn denselben Satz-/Hilfestand, keine Uhr und keinen Abzug bei Abbruch.
+4. Runde 1: Person A bedient, B erklärt; beide beraten die Auswahl. Eine Auswahl darf vor Aufdecken geändert werden. Nach Aufdecken zeigt das Modell Auswahl und passende Aufforderung untereinander, jeweils mit deutscher Bedeutung. Kein Sieger, kein Punkt.
 5. Bei Abweichung: die beiden lesen den Bedeutungsunterschied, schließen die Lösung und versuchen dieselbe Aufgabe erneut. Bei Übereinstimmung: B erklärt, warum die Aufforderung zum Reiz passt. Die Erklärung wird von den Lernenden beurteilt, nicht vom Modell als korrekt gespeichert.
-6. Rollenwechsel: Gerät bleibt liegen, B bedient, A erklärt. Die nächste vorhandene Aufforderung hat dieselbe Auswahlform. Der erste Zug ist kein versteckter Vorsprung, da beide die Vorbereitung und Antworten gemeinsam kennen.
-7. Rückschau: beide ausgewählten Antworten und Quelllösungen werden gezeigt. „Sagt euch eine der Aufforderungen und erklärt, wann sie passt.“ Eine neue Anwendung im wirklichen Raum kann Koki beobachten; das Modell behauptet keinen Transfererfolg.
-8. Ende: erneut freiwillig üben oder lokal beenden. Jederzeit Pause und Abbruch, ohne Produktpunkt-Verlust. Alleinübung führt durch denselben Inhalt ohne soziale Rollen.
+6. Rollenwechsel: Gerät bleibt liegen, B bedient, A erklärt. Die nächste vorhandene Aufforderung hat dieselbe Auswahlform. Beide kennen dieselbe Vorbereitung und haben den ersten Vergleich gemeinsam erlebt. Die Züge werden deshalb nicht als gleich schwere individuelle Tests verglichen.
+7. Rückschau: beide ausgewählten Antworten und passenden Aufforderungen werden gezeigt. „Sagt euch eine der Aufforderungen und erklärt auf Deutsch, was zu tun ist.“ Eine neue Anwendung im wirklichen Raum kann Koki beobachten; das Modell behauptet keinen Transfererfolg.
+8. Ende: erneut freiwillig üben oder lokal beenden. In den Aufgaben, beim Vergleichen und beim Rollenwechsel ist eine Pause möglich; Beenden bleibt auch in den übrigen begonnenen Zuständen zugänglich, ohne Produktpunkt-Verlust. Alleinübung führt durch denselben Inhalt ohne soziale Rollen.
 
-**Warum dieses Muster zuerst:** Es zeigt Zustimmung, geteiltes Vorwissen, konkrete Sprache, Fehlerkorrektur, Rollenwechsel und Ende in einem kurzen bedienbaren Ablauf. Es braucht keinen neuen Konten-, Netzwerk- oder Bewertungsweg. Die Gestaltung dient zunächst der Verständlichkeit; sie ist kein Ersatz für Kokis Urteil über DomiGo-Kunst.
+**Warum dieses Muster zuerst:** Es zeigt Zustimmung, geteiltes Vorwissen, konkrete Sprache, Fehlerkorrektur, Rollenwechsel und Ende in einem kurzen zu prüfenden Ablauf. Es braucht keinen neuen Konten-, Netzwerk- oder Bewertungsweg. Die Gestaltung dient zunächst der Verständlichkeit; sie ist kein Ersatz für Kokis Urteil über DomiGo-Kunst.
 
 ## B · Asynchron — vollständig GEPLANT, nicht im lokalen Modell gebaut
 
@@ -63,3 +63,17 @@
 | A4 Abschluss | alle vorgeschriebenen Befehle am eigenen endgültigen Kopf mit Exit-Code; unabhängiger Leserstatus ehrlich | altes grünes Urteil nach Änderung des Eingangs; ausgelassenes teures Tor |
 
 Eigene Gegenlesung heißt Selbstprüfung. Keine fremden früheren Prüfungen werden zu eigenen Läufen. Ein negatives oder fehlendes Fachurteil, die offene Herkunftsmatrix und fehlendes Lookurteil bleiben sichtbar, auch wenn die technische Batterie grün wird.
+
+## Zusätzliche Tore aus Kokis Sprach-/Didaktikurteil
+
+| Anforderung | Konkrete Stelle / tatsächlicher Stand | Noch erforderlicher Beleg / Gegenprobe |
+|---|---|---|
+| Chapter, deutsche Orientierung, bekannte oder gestützte Lernsprache | `index.html`, `texte.mjs`; fünf englische Aufforderungen mit Status/Buchstelle/Bedeutung | Gerenderte Schüleransicht; sichtbares Unit oder unklassifizierte englische Option muss auffallen |
+| SB und WB einschließlich Bilder/Abfolge selbst studieren | `DIDAKTIK.md`, gesamtes relevantes Chapter-1-Material beider Bücher und Impressum gesichtet | Getrennter Quellen-/Didaktikprüfer; Hörmaterial und Produktweltbilder bleiben offen |
+| Aufgabenhandlungen erhalten | Buchvergleich und Originaltrainerabschnitt; Auswahl ist ausdrücklich nur Teilstrecke | „Sag“ nicht als gemessene Aussprache ausgeben; Schreiben nicht als durch Auswahl ersetzt behaupten |
+| Sämtliche Schülertexte erfassen | gemeinsamer Katalog und maschinell abgeleitete Liste aus Katalog und Originalfeldern | Liste gegen wirkliche Ansichten schließen; fehlende Hilfe/Fehlermeldung als Gegenprobe |
+| Antwortbezogene Rückmeldung | Auswahl plus konkrete Bedeutung, passende Aufforderung plus Bedeutung, erneuter Versuch | Richtig/falsch/plausible mündliche Variante und leere Auswahl tatsächlich bedienen |
+| DomiLingo-Lehren an Originalen | fünf konkrete Fehler-/Prüfgrenzen in `DIDAKTIK.md`, fester Spenderkopf | Menschliche Semantikprüfung zusätzlich; keine automatische Matura-Schwellenübernahme |
+| Zwei getrennte unabhängige Rollen vor Koki | Löser ohne Schlüssel; Quellen-/Didaktikprüfer mit Originalseiten spezifiziert | Beide aktuellen Urteile fehlen; eigener Pass bleibt Selbstprüfung |
+
+Keine technische Freigabe hebt offene didaktische oder persönliche Annahme auf. Keine Produkt-/Serienübertragung aus diesem Arbeitsstand.

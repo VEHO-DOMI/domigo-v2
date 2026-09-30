@@ -1,11 +1,12 @@
 // CODEX DRAFT — NOT CANON. Local specification model; no product scoring/storage.
-export const revision = 'cgo-018-textmodell-1';
+import { text } from './texte.mjs';
+export const revision = 'cgo-018-textmodell-2';
 export function admission(config) {
-  if (!config.consentA || !config.consentB) return { ok: false, reason: 'Teilnahme ist freiwillig. Ihr könnt allein üben.' };
-  if (!config.knownA || !config.knownB) return { ok: false, reason: 'Zuerst gemeinsam ohne Uhr üben.' };
-  if (config.timeScoring !== false) return { ok: false, reason: 'In diesem Muster gibt es keine Zeitwertung.' };
-  if (config.abortPenalty !== 0) return { ok: false, reason: 'Ein Abbruch darf keine Punkte kosten.' };
-  if (!config.deckA || config.deckA !== config.deckB || !config.helpA || config.helpA !== config.helpB) return { ok: false, reason: 'Aufgaben und Hilfen stimmen nicht überein. Gemeinsam neu vorbereiten.' };
+  if (!config.consentA || !config.consentB) return { ok: false, reason: text('noConsent') };
+  if (!config.knownA || !config.knownB) return { ok: false, reason: text('notKnown') };
+  if (config.timeScoring !== false) return { ok: false, reason: text('timeForbidden') };
+  if (config.abortPenalty !== 0) return { ok: false, reason: text('penaltyForbidden') };
+  if (!config.deckA || config.deckA !== config.deckB || !config.helpA || config.helpA !== config.helpB) return { ok: false, reason: text('mismatch') };
   return { ok: true, reason: '' };
 }
 export function initial() { return { stage: 'welcome', mode: 'pair', round: 0, answers: ['', ''], revealed: [false, false], returnStage: null, endReturnStage: null, consentA: false, consentB: false, knownA: false, knownB: false }; }
@@ -16,7 +17,7 @@ export function reduce(state, action) {
   if (action.type === 'keep' && state.stage === 'end-confirm') return { ...state, stage: state.endReturnStage, endReturnStage: null };
   if (action.type === 'end' && state.stage === 'end-confirm') return { ...initial(), stage: 'ended' };
   if (action.type === 'restart') return initial();
-  if (action.type === 'prepare' && state.stage === 'welcome') return { ...state, mode: action.mode === 'solo' ? 'solo' : 'pair', stage: 'prepare' };
+  if (action.type === 'prepare' && ['welcome', 'ready'].includes(state.stage)) return { ...initial(), mode: action.mode === 'solo' ? 'solo' : 'pair', stage: 'prepare' };
   if (action.type === 'ready' && state.stage === 'prepare') return { ...state, stage: 'ready' };
   if (action.type === 'confirm' && state.stage === 'ready' && ['consentA','consentB','knownA','knownB'].includes(action.field)) return { ...state, [action.field]: action.value === true };
   if (action.type === 'practice' && state.stage === 'ready') return { ...state, stage: 'prepare', knownA: false, knownB: false };
