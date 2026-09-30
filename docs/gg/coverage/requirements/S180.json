@@ -8,30 +8,622 @@
   "scope": "Kriterien-/Befundstellen einschließlich Unterlisten und Tabellen. Historische Aussagen bleiben getrennt von aktuellem Nachweis. Jede Beleglücke bindet an ihren eigenen vollständigen Wortlaut; Dateifund ist kein Erfüllungsbeweis. Noch kein Abschluss der Autoren-Durchsicht.",
   "authorPassComplete": true,
   "records": [
-    {"id": "S180:L3", "sourceLine": 3, "sourceEndLine": 4, "section": "06 — Vision Pillars (what v2 builds after P0)", "requirementOrFinding": "After the content is correct (`04`) and the data is complete (`03`), build these. All content roots in the MORE! 1–4 textbooks (`05`) and obeys the guardrails (`08`).", "subcriteria": [{"n": 1, "from": 0, "to": 166}], "sourceTextSha256": "dddf8d896e5e9114e933bbbb1bb52fac5a19c2da016b74e0212ca86f4445cd87", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "unverifiziert", "citedFilesAtProductPin": [], "unresolvedCitedFiles": [], "historicalIds": [], "dispositionRef": "principles", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"},
-    {"id": "S180:L7", "sourceLine": 7, "sourceEndLine": 9, "section": "06 — Vision Pillars (what v2 builds after P0) / 3.1 Foundational — textbook-rooted content + per-unit word bank (do this first, it underpins all)", "requirementOrFinding": "- Produce a **master vocabulary list** and a **per-unit \"word bank\" (words + phrases)** for **every unit of every grade**, derived from the MORE! master vocab lists + SB/WB transcripts. This is the canonical source the whole app draws from and the level gate for `04`.", "subcriteria": [{"n": 1, "from": 0, "to": 268}], "sourceTextSha256": "b92235eb1157da4ab2cbcbaa1ab285629ea8714cd7f8b60d591afa880157e0f1", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "teilgebaut", "citedFilesAtProductPin": [], "unresolvedCitedFiles": [], "historicalIds": [], "dispositionRef": "variant", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"},
-    {"id": "S180:L10", "sourceLine": 10, "sourceEndLine": 11, "section": "06 — Vision Pillars (what v2 builds after P0) / 3.1 Foundational — textbook-rooted content + per-unit word bank (do this first, it underpins all)", "requirementOrFinding": "- Re-derive/validate the practice corpus from the transcripts (textbook-faithful, level-correct) through a regenerable pipeline + validation gate.", "subcriteria": [{"n": 1, "from": 0, "to": 146}], "sourceTextSha256": "48b6b428faf0d504612f95decb17921d80998257656fde423fd22b768996fa6f", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "teilgebaut", "citedFilesAtProductPin": [], "unresolvedCitedFiles": [], "historicalIds": [], "dispositionRef": "variant", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"},
-    {"id": "S180:L14", "sourceLine": 14, "sourceEndLine": 15, "section": "06 — Vision Pillars (what v2 builds after P0) / 3.2 Study Path (guided, game-like progression)", "requirementOrFinding": "A linear, unlockable path through each unit so a student can **play the whole unit and learn via every task type**, not just free-pick a mode.", "subcriteria": [{"n": 1, "from": 0, "to": 142}], "sourceTextSha256": "78e93714ce3b87e5392e78dc0c8be0d92200136f618e3266fe94b34e4869acee", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "teilgebaut", "currentCodeEvidence": ["P04"], "citedFilesAtProductPin": [], "unresolvedCitedFiles": [], "historicalIds": [], "dispositionRef": "journey", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"},
-    {"id": "S180:L16", "sourceLine": 16, "sourceEndLine": 18, "section": "06 — Vision Pillars (what v2 builds after P0) / 3.2 Study Path (guided, game-like progression)", "requirementOrFinding": "- Per unit: **vocabulary intro** (the word bank, taught) → **grammar intro** (the unit's structures, taught — not just drilled) → **graduated practice across all task types** with **varied contexts** (not the single basic template v1 uses) → **unit checkpoint** (from the Check-up material).", "subcriteria": [{"n": 1, "from": 0, "to": 291}], "sourceTextSha256": "5adcb0a77bc9dcccbf2f71bddf30f4ee1ad269f7694e761073cd6b3291e07e92", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "teilgebaut", "currentCodeEvidence": ["P04"], "citedFilesAtProductPin": [], "unresolvedCitedFiles": [], "historicalIds": [], "dispositionRef": "journey", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"},
-    {"id": "S180:L19", "sourceLine": 19, "sourceEndLine": 20, "section": "06 — Vision Pillars (what v2 builds after P0) / 3.2 Study Path (guided, game-like progression)", "requirementOrFinding": "- Game feel: a visible path/map, per-node stars/mastery, unlock-on-completion, and **spaced re-practice** (this is where **Smart Review** lives). The \"learn\" spine of the app.", "subcriteria": [{"n": 1, "from": 0, "to": 175}], "sourceTextSha256": "68375f2bf1275cb5413f707a23dce2979643172d8d377664d38046b0e5eb5fbf", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "teilgebaut", "currentCodeEvidence": ["P04"], "citedFilesAtProductPin": [], "unresolvedCitedFiles": [], "historicalIds": [], "dispositionRef": "journey", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"},
-    {"id": "S180:L23", "sourceLine": 23, "sourceEndLine": 23, "section": "06 — Vision Pillars (what v2 builds after P0) / 3.3 Story / RPG Mode (the engagement spine — \"sky's the limit\")", "requirementOrFinding": "A genuinely fun narrative experience for ages ~10–14, distinct from the Study Path.", "subcriteria": [{"n": 1, "from": 0, "to": 83}], "sourceTextSha256": "94b075ac69015e9e21883a9f34cca9ee935ca08dbc1defbe78c9f569887e1287", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "teilgebaut", "citedFilesAtProductPin": [], "unresolvedCitedFiles": [], "historicalIds": [], "dispositionRef": "campaign", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"},
-    {"id": "S180:L24", "sourceLine": 24, "sourceEndLine": 27, "section": "06 — Vision Pillars (what v2 builds after P0) / 3.3 Story / RPG Mode (the engagement spine — \"sky's the limit\")", "requirementOrFinding": "- **Not greenfield — REWORK what already exists.** The legacy trainers each ship a story / adventure / quest mode (`{1,2,3,4}*-grade-vocab-trainer/index.html`, ~11–24 references each) that **v1 dropped in the migration**. Study these as the baseline and expand far beyond them — this is what Koki means by \"the story modes need to be reworked.\"", "subcriteria": [{"n": 1, "from": 0, "to": 344}], "sourceTextSha256": "239a0f43e5f71461189b72a6440dc8670f77547b69b4c89743cc42043d705687", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "teilgebaut", "citedFilesAtProductPin": [], "unresolvedCitedFiles": ["{1,2,3,4}*-grade-vocab-trainer/index.html"], "historicalIds": [], "dispositionRef": "campaign", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"},
-    {"id": "S180:L28", "sourceLine": 28, "sourceEndLine": 29, "section": "06 — Vision Pillars (what v2 builds after P0) / 3.3 Story / RPG Mode (the engagement spine — \"sky's the limit\")", "requirementOrFinding": "- **Interactive elements, RPG mechanics, level/world design** — the ambition includes a **navigable (potentially 3D) world** the student moves through, solving language tasks woven into the story.", "subcriteria": [{"n": 1, "from": 0, "to": 196}], "sourceTextSha256": "065f7360739ad22c47d92845db808573442ff5190fd3853568fec62c38f8c79f", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "teilgebaut", "citedFilesAtProductPin": [], "unresolvedCitedFiles": [], "historicalIds": [], "dispositionRef": "campaign", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"},
-    {"id": "S180:L30", "sourceLine": 30, "sourceEndLine": 30, "section": "06 — Vision Pillars (what v2 builds after P0) / 3.3 Story / RPG Mode (the engagement spine — \"sky's the limit\")", "requirementOrFinding": "- Story content still draws on the unit's vocab/grammar, so play = practice.", "subcriteria": [{"n": 1, "from": 0, "to": 76}], "sourceTextSha256": "f323f28a9b26568871ffc3f79636f0fed20d03c895076c18040a228588414170", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "teilgebaut", "citedFilesAtProductPin": [], "unresolvedCitedFiles": [], "historicalIds": [], "dispositionRef": "campaign", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"},
-    {"id": "S180:L31", "sourceLine": 31, "sourceEndLine": 33, "section": "06 — Vision Pillars (what v2 builds after P0) / 3.3 Story / RPG Mode (the engagement spine — \"sky's the limit\")", "requirementOrFinding": "- **Start with a tech spike + design brief:** 2D scene engine vs. lightweight 3D (e.g. Phaser, or React-Three-Fiber/Three.js); how tasks embed in scenes; art/asset pipeline; scope vs. effort; how it shares the content engine with Study Path. Decide scope with Koki before committing build effort.", "subcriteria": [{"n": 1, "from": 0, "to": 125}, {"n": 2, "from": 127, "to": 152}, {"n": 3, "from": 154, "to": 172}, {"n": 4, "from": 174, "to": 190}, {"n": 5, "from": 192, "to": 296}], "sourceTextSha256": "5519dc97a2ddbb8c284e289adf5243636f1ac7d34e57fb48dcf049e8a84d0874", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "teilgebaut", "citedFilesAtProductPin": [], "unresolvedCitedFiles": [], "historicalIds": [], "dispositionRef": "campaign", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"},
-    {"id": "S180:L36", "sourceLine": 36, "sourceEndLine": 36, "section": "06 — Vision Pillars (what v2 builds after P0) / 3.4 Mock Test mode (teacher-curated)", "requirementOrFinding": "Let **Koki assemble and assign a mock test** that mirrors his real Schularbeiten.", "subcriteria": [{"n": 1, "from": 0, "to": 81}], "sourceTextSha256": "cf2724617fe8c0c2b386f3adf59e8c026bce6ec6dbb0226f0dac451434a3cb57", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "unverifiziert", "citedFilesAtProductPin": [], "unresolvedCitedFiles": [], "historicalIds": [], "dispositionRef": "assign", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"},
-    {"id": "S180:L37", "sourceLine": 37, "sourceEndLine": 39, "section": "06 — Vision Pillars (what v2 builds after P0) / 3.4 Mock Test mode (teacher-curated)", "requirementOrFinding": "- Teacher picks from **item banks** (Vocab / Grammar / Listening / Reading / Writing) per the MORE! Test-Builder structure, assigns to a class, sets timing; the app auto-grades the objective parts and supports hand-grading writing; results return to teacher + student.", "subcriteria": [{"n": 1, "from": 0, "to": 155}, {"n": 2, "from": 157, "to": 230}, {"n": 3, "from": 232, "to": 268}], "sourceTextSha256": "758212b56763eb7a92b6b6e3d43fbf7b970f148f08589d38212a7a8b73403057", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "unverifiziert", "citedFilesAtProductPin": [], "unresolvedCitedFiles": [], "historicalIds": [], "dispositionRef": "assign", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"},
-    {"id": "S180:L40", "sourceLine": 40, "sourceEndLine": 42, "section": "06 — Vision Pillars (what v2 builds after P0) / 3.4 Mock Test mode (teacher-curated)", "requirementOrFinding": "- **Source:** the `Schularbeiten` archives + `Test Builder` task libraries (`05`). Reuse the real exam formats so practice ≈ the real test. (Reading/Writing formats may borrow from the `srdp-reading-comprehension` / writing skills, leveled to A1–A2.)", "subcriteria": [{"n": 1, "from": 0, "to": 250}], "sourceTextSha256": "800119803b85cfee0307e463ebdd6a3c41ddef43640256f62c5d0c820428acaa", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "unverifiziert", "citedFilesAtProductPin": [], "unresolvedCitedFiles": [], "historicalIds": ["A1", "A2"], "dispositionRef": "assign", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"},
-    {"id": "S180:L45", "sourceLine": 45, "sourceEndLine": 45, "section": "06 — Vision Pillars (what v2 builds after P0) / 3.5 Listening comprehension (new skill)", "requirementOrFinding": "A1–A2, MORE!-faithful.", "subcriteria": [{"n": 1, "from": 0, "to": 22}], "sourceTextSha256": "c7a841aa0254eccb5919e925d6c34aada84de7fdf852294e9a64780ed531fa4b", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "unverifiziert", "citedFilesAtProductPin": [], "unresolvedCitedFiles": [], "historicalIds": ["A1", "A2"], "dispositionRef": "listen-ped", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"},
-    {"id": "S180:L46", "sourceLine": 46, "sourceEndLine": 48, "section": "06 — Vision Pillars (what v2 builds after P0) / 3.5 Listening comprehension (new skill)", "requirementOrFinding": "- **Methodology** from the `srdp-listening-comprehension` skill (finds a fitting passage, scrapes its transcript, generates tasks in the book's format) — **adapt it down** to A1–A2 and the **MORE! Test-Builder LC formats** (use the LC subsections + MORE! audio scripts as the format oracle).", "subcriteria": [{"n": 1, "from": 0, "to": 291}], "sourceTextSha256": "2a413544a5af3d49fefd65d1f562cf14a005f9a5360c9f9d9bc8a41ce4053605", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "unverifiziert", "citedFilesAtProductPin": [], "unresolvedCitedFiles": [], "historicalIds": ["A1", "A2"], "dispositionRef": "listen-ped", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"},
-    {"id": "S180:L49", "sourceLine": 49, "sourceEndLine": 50, "section": "06 — Vision Pillars (what v2 builds after P0) / 3.5 Listening comprehension (new skill)", "requirementOrFinding": "- **Task formats** to support: see `07` (multiple-choice, true/false, gap/sentence-completion, matching speakers/sentences, short-answer).", "subcriteria": [{"n": 1, "from": 0, "to": 138}], "sourceTextSha256": "07c84ff1134467df5b3bc71bc967bc6ced7cc5e815b40568aa4515000d4f057e", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "unverifiziert", "citedFilesAtProductPin": [], "unresolvedCitedFiles": [], "historicalIds": [], "dispositionRef": "listen-ped", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"},
-    {"id": "S180:L51", "sourceLine": 51, "sourceEndLine": 51, "section": "06 — Vision Pillars (what v2 builds after P0) / 3.5 Listening comprehension (new skill)", "requirementOrFinding": "- **Open decision:** audio source — MORE! Test-Builder audio (rights?) vs. generated TTS.", "subcriteria": [{"n": 1, "from": 0, "to": 89}], "sourceTextSha256": "43fc8eb6efbfc85f1e224ee7ef3850269c28ff7eb9e1d77e4363056d6af5163a", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "unverifiziert", "citedFilesAtProductPin": [], "unresolvedCitedFiles": [], "historicalIds": [], "dispositionRef": "listen-ped", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"},
-    {"id": "S180:L54", "sourceLine": 54, "sourceEndLine": 56, "section": "06 — Vision Pillars (what v2 builds after P0) / 3.6 Complete or drop the flagged features", "requirementOrFinding": "v1 has dead toggles. Decide and either build or remove: **Smart Review** (recommended — pairs with Study Path), **Battle Arena** (live duels), **Class Quiz** (Kahoot-style), **Study Buddies** (pair messaging). Don't ship toggles with no backend.", "subcriteria": [{"n": 1, "from": 0, "to": 245}], "sourceTextSha256": "ecbd3020997d55caf9212d3c8b8a89a0bc1e9e4e0bc04559672d76aeb46eecae", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "unverifiziert", "citedFilesAtProductPin": [], "unresolvedCitedFiles": [], "historicalIds": [], "dispositionRef": "parity", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"},
-    {"id": "S180:L59", "sourceLine": 59, "sourceEndLine": 61, "section": "06 — Vision Pillars (what v2 builds after P0) / 3.7 UX / UI overhaul", "requirementOrFinding": "A full redesign pass for delight + clarity for the age group: consistent design system, motion, instant feedback, dark mode, accessibility (young readers), mobile-first, no dead ends. Treat v1's look as a reference, not a constraint.", "subcriteria": [{"n": 1, "from": 0, "to": 233}], "sourceTextSha256": "53df09d1b25e2f9c25ef4a2f38dec52736eed866a5e5ef3d5651477c6ae6aab8", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "unverifiziert", "citedFilesAtProductPin": [], "unresolvedCitedFiles": [], "historicalIds": [], "dispositionRef": "look", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"},
-    {"id": "S180:L64", "sourceLine": 64, "sourceEndLine": 65, "section": "06 — Vision Pillars (what v2 builds after P0) / 3.8 Platform — explore hosting + \"make it a real app\" (PWA-first → native)", "requirementOrFinding": "This is Koki's ask to *explore different hosting options / build it into an actual app on the app stores*. Recommended path (decide native timing with Koki):", "subcriteria": [{"n": 1, "from": 0, "to": 157}], "sourceTextSha256": "324b91cdffcd0c7a7439c546d9b59b81062554a0919155e3336eaa6432869f1e", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "unverifiziert", "currentCodeEvidence": ["P05"], "citedFilesAtProductPin": [], "unresolvedCitedFiles": [], "historicalIds": [], "dispositionRef": "ops", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"},
-    {"id": "S180:L66", "sourceLine": 66, "sourceEndLine": 67, "section": "06 — Vision Pillars (what v2 builds after P0) / 3.8 Platform — explore hosting + \"make it a real app\" (PWA-first → native)", "requirementOrFinding": "- Ship an **installable PWA on Vercel**: offline-tolerant, home-screen install, fast on cheap phones, no app-store friction → students play immediately.", "subcriteria": [{"n": 1, "from": 0, "to": 152}], "sourceTextSha256": "83cd580259d36f53aefbee859510f10967adfbb0b67040d33ea6599a2462cd80", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "unverifiziert", "currentCodeEvidence": ["P05"], "citedFilesAtProductPin": [], "unresolvedCitedFiles": [], "historicalIds": [], "dispositionRef": "ops", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"},
-    {"id": "S180:L68", "sourceLine": 68, "sourceEndLine": 70, "section": "06 — Vision Pillars (what v2 builds after P0) / 3.8 Platform — explore hosting + \"make it a real app\" (PWA-first → native)", "requirementOrFinding": "- **Document** the native path for later: Capacitor wrapper (fastest reuse of the web app) or Expo/ React-Native; App-Store / Play-Store requirements; push notifications; what changes. Decide native timing with Koki.", "subcriteria": [{"n": 1, "from": 0, "to": 112}, {"n": 2, "from": 114, "to": 149}, {"n": 3, "from": 151, "to": 169}, {"n": 4, "from": 171, "to": 216}], "sourceTextSha256": "3f0ed878c67bfac8d62c14cadf67cbd40eb1cfedcdde15f16dd6918b40cbbeaa", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "unverifiziert", "currentCodeEvidence": ["P05"], "citedFilesAtProductPin": [], "unresolvedCitedFiles": [], "historicalIds": [], "dispositionRef": "ops", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"},
-    {"id": "S180:L73", "sourceLine": 73, "sourceEndLine": 74, "section": "06 — Vision Pillars (what v2 builds after P0) / 3.9 Migration completion (also P0 — see `03`)", "requirementOrFinding": "Re-run Firebase→Neon to import post-2026-05-17 signups without clobbering claimed accounts; keep the claim flow live; plan Firebase decommission.", "subcriteria": [{"n": 1, "from": 0, "to": 90}, {"n": 2, "from": 92, "to": 116}, {"n": 3, "from": 118, "to": 145}], "sourceTextSha256": "48149443a78fdbfb780675cd82331c63db58abae8a0a7146cdd3ae052a34df92", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "unverifiziert", "citedFilesAtProductPin": [], "unresolvedCitedFiles": [], "historicalIds": [], "dispositionRef": "migration-history", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"}
+    {
+      "id": "S180:L3",
+      "sourceLine": 3,
+      "sourceEndLine": 4,
+      "section": "06 — Vision Pillars (what v2 builds after P0)",
+      "requirementOrFinding": "After the content is correct (`04`) and the data is complete (`03`), build these. All content roots in the MORE! 1–4 textbooks (`05`) and obeys the guardrails (`08`).",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 166
+        }
+      ],
+      "sourceTextSha256": "dddf8d896e5e9114e933bbbb1bb52fac5a19c2da016b74e0212ca86f4445cd87",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "unverifiziert",
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "principles",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"
+    },
+    {
+      "id": "S180:L7",
+      "sourceLine": 7,
+      "sourceEndLine": 9,
+      "section": "06 — Vision Pillars (what v2 builds after P0) / 3.1 Foundational — textbook-rooted content + per-unit word bank (do this first, it underpins all)",
+      "requirementOrFinding": "- Produce a **master vocabulary list** and a **per-unit \"word bank\" (words + phrases)** for **every unit of every grade**, derived from the MORE! master vocab lists + SB/WB transcripts. This is the canonical source the whole app draws from and the level gate for `04`.",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 268
+        }
+      ],
+      "sourceTextSha256": "b92235eb1157da4ab2cbcbaa1ab285629ea8714cd7f8b60d591afa880157e0f1",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "teilgebaut",
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "variant",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"
+    },
+    {
+      "id": "S180:L10",
+      "sourceLine": 10,
+      "sourceEndLine": 11,
+      "section": "06 — Vision Pillars (what v2 builds after P0) / 3.1 Foundational — textbook-rooted content + per-unit word bank (do this first, it underpins all)",
+      "requirementOrFinding": "- Re-derive/validate the practice corpus from the transcripts (textbook-faithful, level-correct) through a regenerable pipeline + validation gate.",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 146
+        }
+      ],
+      "sourceTextSha256": "48b6b428faf0d504612f95decb17921d80998257656fde423fd22b768996fa6f",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "teilgebaut",
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "variant",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"
+    },
+    {
+      "id": "S180:L14",
+      "sourceLine": 14,
+      "sourceEndLine": 15,
+      "section": "06 — Vision Pillars (what v2 builds after P0) / 3.2 Study Path (guided, game-like progression)",
+      "requirementOrFinding": "A linear, unlockable path through each unit so a student can **play the whole unit and learn via every task type**, not just free-pick a mode.",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 142
+        }
+      ],
+      "sourceTextSha256": "78e93714ce3b87e5392e78dc0c8be0d92200136f618e3266fe94b34e4869acee",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "teilgebaut",
+      "currentCodeEvidence": [
+        "P04"
+      ],
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "journey",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"
+    },
+    {
+      "id": "S180:L16",
+      "sourceLine": 16,
+      "sourceEndLine": 18,
+      "section": "06 — Vision Pillars (what v2 builds after P0) / 3.2 Study Path (guided, game-like progression)",
+      "requirementOrFinding": "- Per unit: **vocabulary intro** (the word bank, taught) → **grammar intro** (the unit's structures, taught — not just drilled) → **graduated practice across all task types** with **varied contexts** (not the single basic template v1 uses) → **unit checkpoint** (from the Check-up material).",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 291
+        }
+      ],
+      "sourceTextSha256": "5adcb0a77bc9dcccbf2f71bddf30f4ee1ad269f7694e761073cd6b3291e07e92",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "teilgebaut",
+      "currentCodeEvidence": [
+        "P04"
+      ],
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "journey",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"
+    },
+    {
+      "id": "S180:L19",
+      "sourceLine": 19,
+      "sourceEndLine": 20,
+      "section": "06 — Vision Pillars (what v2 builds after P0) / 3.2 Study Path (guided, game-like progression)",
+      "requirementOrFinding": "- Game feel: a visible path/map, per-node stars/mastery, unlock-on-completion, and **spaced re-practice** (this is where **Smart Review** lives). The \"learn\" spine of the app.",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 175
+        }
+      ],
+      "sourceTextSha256": "68375f2bf1275cb5413f707a23dce2979643172d8d377664d38046b0e5eb5fbf",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "teilgebaut",
+      "currentCodeEvidence": [
+        "P04"
+      ],
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "journey",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"
+    },
+    {
+      "id": "S180:L23",
+      "sourceLine": 23,
+      "sourceEndLine": 23,
+      "section": "06 — Vision Pillars (what v2 builds after P0) / 3.3 Story / RPG Mode (the engagement spine — \"sky's the limit\")",
+      "requirementOrFinding": "A genuinely fun narrative experience for ages ~10–14, distinct from the Study Path.",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 83
+        }
+      ],
+      "sourceTextSha256": "94b075ac69015e9e21883a9f34cca9ee935ca08dbc1defbe78c9f569887e1287",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "teilgebaut",
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "campaign",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"
+    },
+    {
+      "id": "S180:L24",
+      "sourceLine": 24,
+      "sourceEndLine": 27,
+      "section": "06 — Vision Pillars (what v2 builds after P0) / 3.3 Story / RPG Mode (the engagement spine — \"sky's the limit\")",
+      "requirementOrFinding": "- **Not greenfield — REWORK what already exists.** The legacy trainers each ship a story / adventure / quest mode (`{1,2,3,4}*-grade-vocab-trainer/index.html`, ~11–24 references each) that **v1 dropped in the migration**. Study these as the baseline and expand far beyond them — this is what Koki means by \"the story modes need to be reworked.\"",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 344
+        }
+      ],
+      "sourceTextSha256": "239a0f43e5f71461189b72a6440dc8670f77547b69b4c89743cc42043d705687",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "teilgebaut",
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [
+        "{1,2,3,4}*-grade-vocab-trainer/index.html"
+      ],
+      "historicalIds": [],
+      "dispositionRef": "campaign",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"
+    },
+    {
+      "id": "S180:L28",
+      "sourceLine": 28,
+      "sourceEndLine": 29,
+      "section": "06 — Vision Pillars (what v2 builds after P0) / 3.3 Story / RPG Mode (the engagement spine — \"sky's the limit\")",
+      "requirementOrFinding": "- **Interactive elements, RPG mechanics, level/world design** — the ambition includes a **navigable (potentially 3D) world** the student moves through, solving language tasks woven into the story.",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 196
+        }
+      ],
+      "sourceTextSha256": "065f7360739ad22c47d92845db808573442ff5190fd3853568fec62c38f8c79f",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "teilgebaut",
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "campaign",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"
+    },
+    {
+      "id": "S180:L30",
+      "sourceLine": 30,
+      "sourceEndLine": 30,
+      "section": "06 — Vision Pillars (what v2 builds after P0) / 3.3 Story / RPG Mode (the engagement spine — \"sky's the limit\")",
+      "requirementOrFinding": "- Story content still draws on the unit's vocab/grammar, so play = practice.",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 76
+        }
+      ],
+      "sourceTextSha256": "f323f28a9b26568871ffc3f79636f0fed20d03c895076c18040a228588414170",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "teilgebaut",
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "campaign",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"
+    },
+    {
+      "id": "S180:L31",
+      "sourceLine": 31,
+      "sourceEndLine": 33,
+      "section": "06 — Vision Pillars (what v2 builds after P0) / 3.3 Story / RPG Mode (the engagement spine — \"sky's the limit\")",
+      "requirementOrFinding": "- **Start with a tech spike + design brief:** 2D scene engine vs. lightweight 3D (e.g. Phaser, or React-Three-Fiber/Three.js); how tasks embed in scenes; art/asset pipeline; scope vs. effort; how it shares the content engine with Study Path. Decide scope with Koki before committing build effort.",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 125
+        },
+        {
+          "n": 2,
+          "from": 127,
+          "to": 152
+        },
+        {
+          "n": 3,
+          "from": 154,
+          "to": 172
+        },
+        {
+          "n": 4,
+          "from": 174,
+          "to": 190
+        },
+        {
+          "n": 5,
+          "from": 192,
+          "to": 296
+        }
+      ],
+      "sourceTextSha256": "5519dc97a2ddbb8c284e289adf5243636f1ac7d34e57fb48dcf049e8a84d0874",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "teilgebaut",
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "campaign",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"
+    },
+    {
+      "id": "S180:L36",
+      "sourceLine": 36,
+      "sourceEndLine": 36,
+      "section": "06 — Vision Pillars (what v2 builds after P0) / 3.4 Mock Test mode (teacher-curated)",
+      "requirementOrFinding": "Let **Koki assemble and assign a mock test** that mirrors his real Schularbeiten.",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 81
+        }
+      ],
+      "sourceTextSha256": "cf2724617fe8c0c2b386f3adf59e8c026bce6ec6dbb0226f0dac451434a3cb57",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "unverifiziert",
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "assign",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"
+    },
+    {
+      "id": "S180:L37",
+      "sourceLine": 37,
+      "sourceEndLine": 39,
+      "section": "06 — Vision Pillars (what v2 builds after P0) / 3.4 Mock Test mode (teacher-curated)",
+      "requirementOrFinding": "- Teacher picks from **item banks** (Vocab / Grammar / Listening / Reading / Writing) per the MORE! Test-Builder structure, assigns to a class, sets timing; the app auto-grades the objective parts and supports hand-grading writing; results return to teacher + student.",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 155
+        },
+        {
+          "n": 2,
+          "from": 157,
+          "to": 230
+        },
+        {
+          "n": 3,
+          "from": 232,
+          "to": 268
+        }
+      ],
+      "sourceTextSha256": "758212b56763eb7a92b6b6e3d43fbf7b970f148f08589d38212a7a8b73403057",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "unverifiziert",
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "assign",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"
+    },
+    {
+      "id": "S180:L40",
+      "sourceLine": 40,
+      "sourceEndLine": 42,
+      "section": "06 — Vision Pillars (what v2 builds after P0) / 3.4 Mock Test mode (teacher-curated)",
+      "requirementOrFinding": "- **Source:** the `Schularbeiten` archives + `Test Builder` task libraries (`05`). Reuse the real exam formats so practice ≈ the real test. (Reading/Writing formats may borrow from the `srdp-reading-comprehension` / writing skills, leveled to A1–A2.)",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 250
+        }
+      ],
+      "sourceTextSha256": "800119803b85cfee0307e463ebdd6a3c41ddef43640256f62c5d0c820428acaa",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "unverifiziert",
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [
+        "A1",
+        "A2"
+      ],
+      "dispositionRef": "assign",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"
+    },
+    {
+      "id": "S180:L45",
+      "sourceLine": 45,
+      "sourceEndLine": 45,
+      "section": "06 — Vision Pillars (what v2 builds after P0) / 3.5 Listening comprehension (new skill)",
+      "requirementOrFinding": "A1–A2, MORE!-faithful.",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 22
+        }
+      ],
+      "sourceTextSha256": "c7a841aa0254eccb5919e925d6c34aada84de7fdf852294e9a64780ed531fa4b",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "unverifiziert",
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [
+        "A1",
+        "A2"
+      ],
+      "dispositionRef": "listen-ped",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"
+    },
+    {
+      "id": "S180:L46",
+      "sourceLine": 46,
+      "sourceEndLine": 48,
+      "section": "06 — Vision Pillars (what v2 builds after P0) / 3.5 Listening comprehension (new skill)",
+      "requirementOrFinding": "- **Methodology** from the `srdp-listening-comprehension` skill (finds a fitting passage, scrapes its transcript, generates tasks in the book's format) — **adapt it down** to A1–A2 and the **MORE! Test-Builder LC formats** (use the LC subsections + MORE! audio scripts as the format oracle).",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 291
+        }
+      ],
+      "sourceTextSha256": "2a413544a5af3d49fefd65d1f562cf14a005f9a5360c9f9d9bc8a41ce4053605",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "unverifiziert",
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [
+        "A1",
+        "A2"
+      ],
+      "dispositionRef": "listen-ped",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"
+    },
+    {
+      "id": "S180:L49",
+      "sourceLine": 49,
+      "sourceEndLine": 50,
+      "section": "06 — Vision Pillars (what v2 builds after P0) / 3.5 Listening comprehension (new skill)",
+      "requirementOrFinding": "- **Task formats** to support: see `07` (multiple-choice, true/false, gap/sentence-completion, matching speakers/sentences, short-answer).",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 138
+        }
+      ],
+      "sourceTextSha256": "07c84ff1134467df5b3bc71bc967bc6ced7cc5e815b40568aa4515000d4f057e",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "unverifiziert",
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "listen-ped",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"
+    },
+    {
+      "id": "S180:L51",
+      "sourceLine": 51,
+      "sourceEndLine": 51,
+      "section": "06 — Vision Pillars (what v2 builds after P0) / 3.5 Listening comprehension (new skill)",
+      "requirementOrFinding": "- **Open decision:** audio source — MORE! Test-Builder audio (rights?) vs. generated TTS.",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 89
+        }
+      ],
+      "sourceTextSha256": "43fc8eb6efbfc85f1e224ee7ef3850269c28ff7eb9e1d77e4363056d6af5163a",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "unverifiziert",
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "listen-ped",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"
+    },
+    {
+      "id": "S180:L54",
+      "sourceLine": 54,
+      "sourceEndLine": 56,
+      "section": "06 — Vision Pillars (what v2 builds after P0) / 3.6 Complete or drop the flagged features",
+      "requirementOrFinding": "v1 has dead toggles. Decide and either build or remove: **Smart Review** (recommended — pairs with Study Path), **Battle Arena** (live duels), **Class Quiz** (Kahoot-style), **Study Buddies** (pair messaging). Don't ship toggles with no backend.",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 245
+        }
+      ],
+      "sourceTextSha256": "ecbd3020997d55caf9212d3c8b8a89a0bc1e9e4e0bc04559672d76aeb46eecae",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "unverifiziert",
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "parity",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"
+    },
+    {
+      "id": "S180:L59",
+      "sourceLine": 59,
+      "sourceEndLine": 61,
+      "section": "06 — Vision Pillars (what v2 builds after P0) / 3.7 UX / UI overhaul",
+      "requirementOrFinding": "A full redesign pass for delight + clarity for the age group: consistent design system, motion, instant feedback, dark mode, accessibility (young readers), mobile-first, no dead ends. Treat v1's look as a reference, not a constraint.",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 233
+        }
+      ],
+      "sourceTextSha256": "53df09d1b25e2f9c25ef4a2f38dec52736eed866a5e5ef3d5651477c6ae6aab8",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "unverifiziert",
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "look",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"
+    },
+    {
+      "id": "S180:L64",
+      "sourceLine": 64,
+      "sourceEndLine": 65,
+      "section": "06 — Vision Pillars (what v2 builds after P0) / 3.8 Platform — explore hosting + \"make it a real app\" (PWA-first → native)",
+      "requirementOrFinding": "This is Koki's ask to *explore different hosting options / build it into an actual app on the app stores*. Recommended path (decide native timing with Koki):",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 157
+        }
+      ],
+      "sourceTextSha256": "324b91cdffcd0c7a7439c546d9b59b81062554a0919155e3336eaa6432869f1e",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "unverifiziert",
+      "currentCodeEvidence": [
+        "P05"
+      ],
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "ops",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"
+    },
+    {
+      "id": "S180:L66",
+      "sourceLine": 66,
+      "sourceEndLine": 67,
+      "section": "06 — Vision Pillars (what v2 builds after P0) / 3.8 Platform — explore hosting + \"make it a real app\" (PWA-first → native)",
+      "requirementOrFinding": "- Ship an **installable PWA on Vercel**: offline-tolerant, home-screen install, fast on cheap phones, no app-store friction → students play immediately.",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 152
+        }
+      ],
+      "sourceTextSha256": "83cd580259d36f53aefbee859510f10967adfbb0b67040d33ea6599a2462cd80",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "unverifiziert",
+      "currentCodeEvidence": [
+        "P05"
+      ],
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "ops",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"
+    },
+    {
+      "id": "S180:L68",
+      "sourceLine": 68,
+      "sourceEndLine": 70,
+      "section": "06 — Vision Pillars (what v2 builds after P0) / 3.8 Platform — explore hosting + \"make it a real app\" (PWA-first → native)",
+      "requirementOrFinding": "- **Document** the native path for later: Capacitor wrapper (fastest reuse of the web app) or Expo/ React-Native; App-Store / Play-Store requirements; push notifications; what changes. Decide native timing with Koki.",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 112
+        },
+        {
+          "n": 2,
+          "from": 114,
+          "to": 149
+        },
+        {
+          "n": 3,
+          "from": 151,
+          "to": 169
+        },
+        {
+          "n": 4,
+          "from": 171,
+          "to": 216
+        }
+      ],
+      "sourceTextSha256": "3f0ed878c67bfac8d62c14cadf67cbd40eb1cfedcdde15f16dd6918b40cbbeaa",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "unverifiziert",
+      "currentCodeEvidence": [
+        "P05"
+      ],
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "ops",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"
+    },
+    {
+      "id": "S180:L73",
+      "sourceLine": 73,
+      "sourceEndLine": 74,
+      "section": "06 — Vision Pillars (what v2 builds after P0) / 3.9 Migration completion (also P0 — see `03`)",
+      "requirementOrFinding": "Re-run Firebase→Neon to import post-2026-05-17 signups without clobbering claimed accounts; keep the claim flow live; plan Firebase decommission.",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 90
+        },
+        {
+          "n": 2,
+          "from": 92,
+          "to": 116
+        },
+        {
+          "n": 3,
+          "from": 118,
+          "to": 145
+        }
+      ],
+      "sourceTextSha256": "48149443a78fdbfb780675cd82331c63db58abae8a0a7146cdd3ae052a34df92",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "geparkt",
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "migration-history",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf",
+      "replacement": {
+        "source": "S234:L158–164 (P-R4, 2026-08-23)",
+        "decision": "Nur Firebase-Nachimport, alter Claim und Archivlöschung ersetzt; Datenbewahrung/Snapshot bleibt unter rollover-preservation. Gemischte Zeilen behalten alle übrigen Kriterien."
+      }
+    }
   ],
   "previousDispositions": [],
   "sourceSpecificAssessment": "Neun Säulen werden nicht durch neue Oberfläche ersetzt: Wortbank, gelehrte Einführungen, verschiedene Übungsformen, Story, Lehrer-Tests, Hören, Entscheidung über tote Features, native/PWA und Migration. Eine installierbare Manifestdatei ist kein Offlinebetrieb.",

@@ -1,0 +1,17 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "source": "S126",
+  "sourcePath": "docs/design/g1/paint/story-gamepass-review/final-gate-aq17-fix.md",
+  "sourceVersion": "df258ae8952cf5e5747e7507759d4d7b61e094b5",
+  "sourceMd5": "b3df254b94207074052044c659851688",
+  "productPin": "269ee986ccdc1ae7c3b070cbed7014f20e532365",
+  "scope": "Vollständiger Quelltext gelesen; Einzelzusagen mit historischer Grenze und weitergeltendem Vertrag erfasst. Keine pauschale heutige Sachabnahme.",
+  "authorPassComplete": true,
+  "records": [
+    {"id": "S126:L3", "sourceLine": 3, "sourceEndLine": 3, "section": "CODEX DRAFT — NOT CANON", "requirementOrFinding": "Der unveränderte AQ17-Selbsttest druckte fünf bestandene Fälle, blieb aber im erzwungenen Node-24-Prozessabschluss hängen. Die native Stichprobe zeigt NodePlatform::Shutdown/uv_thread_join und einen auf Speicherbereinigung wartenden Compiler-Arbeiter. Ein unveränderter Kontrolllauf reproduzierte dies; beide ausschließlich eigenen Prozesse wurden beendet. Der erste Gesamtlauf zählt das Tor deshalb als fehlgeschlagen.", "subcriteria": [{"n": 1, "from": 0, "to": 301}, {"n": 2, "from": 303, "to": 419}], "sourceTextSha256": "a718e50fa9cc7ee8efc5ac71c323f722e53d44ecae3db56b8ac6b546d0d577ca", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "unverifiziert", "currentCodeEvidence": [], "citedFilesAtProductPin": [], "unresolvedCitedFiles": [], "historicalIds": [], "dispositionRef": "paint-process", "authorPass": "Originalstelle und quellenbezogene Weitergeltung gelesen"},
+    {"id": "S126:L5", "sourceLine": 5, "sourceEndLine": 5, "section": "CODEX DRAFT — NOT CANON", "requirementOrFinding": "Die Selbsttest-Verzweigung setzt jetzt den Exit-Code und lässt Node natürlich beenden. Ein ausdrücklicher else-Zweig verhindert jeden anschließenden echten Import. Alle fünf Prüfungen, Messungen und Grenzwerte bleiben unverändert. Node24 ohne Sonderflags endet mit Exit0. Eine isolierte Kopie setzt ausschließlich die gemessene Magentapunktzahl auf null: der vorhandene negative Fall wird rot, Exit1, ohne Erfolgsmeldung und ohne Importdurchlauf. Unveränderte Kontrollen davor und danach enden mit Exit0. Belege aq17-final-proof/results.json und zugehörige Logs; Produktionsdatei bei den Negativproben unverändert.", "subcriteria": [{"n": 1, "from": 0, "to": 561}, {"n": 2, "from": 563, "to": 614}], "sourceTextSha256": "356e970a9090795e86fa37892de4954e374ef4189b080937bb43e24a9d45a634", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "unverifiziert", "currentCodeEvidence": [], "citedFilesAtProductPin": [], "unresolvedCitedFiles": [], "historicalIds": [], "dispositionRef": "paint-process", "authorPass": "Originalstelle und quellenbezogene Weitergeltung gelesen"}
+  ],
+  "previousDispositions": [],
+  "sourceSpecificAssessment": "Fünf gedruckte Test-Erfolge bedeuteten wegen hängendem Prozess noch Exitfehler. Später natürliche Beendigung statt erzwungenem process.exit, else verhindert echten Import; isolierter Magenta-Gegenfall bleibt rot. Historisch enge Prozesskorrektur ohne gelockerte Grenze, kein neuer Lauf hier.",
+  "subcriteriaEncoding": "Unicode-Zeichenpositionen [from,to)."
+}

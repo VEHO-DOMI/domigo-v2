@@ -1,0 +1,16 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "source": "S167",
+  "sourcePath": "docs/design/g1/paint/story-gamepass-review/implementation-unused-art-retirement.md",
+  "sourceVersion": "df258ae8952cf5e5747e7507759d4d7b61e094b5",
+  "sourceMd5": "959bb0595a6401e5f737be4e8b64cc54",
+  "productPin": "269ee986ccdc1ae7c3b070cbed7014f20e532365",
+  "scope": "Vollständiger Quelltext gelesen; Einzelzusagen mit historischer Grenze und weitergeltendem Vertrag erfasst. Keine pauschale heutige Sachabnahme.",
+  "authorPassComplete": true,
+  "records": [
+    {"id": "S167:L3", "sourceLine": 3, "sourceEndLine": 3, "section": "CODEX DRAFT — NOT CANON", "requirementOrFinding": "Die aktuelle Gesamtprüfung fand59 unbenutzte Gemälde bei unveränderter Grenze57. Genau zwei durch den neuen Kapitelausgang/Tintenentwurf abgelöste Dateien wurden entfernt: ch01/tip_sparks.png und ch01/window_exit.png. loadedArtClaims prüfte zuvor sämtliche sechs Kapitel, ihre tatsächlichen Aufgaben und die vorhandenen PNGs: beide haben keine Ladestelle. Nach Entfernung bleiben sämtliche anderen beanspruchten Dateischlüssel identisch und57 unbenutzte Dateien. Keine fingierte Referenz, kein erhöhter Grenzwert. Größe und SHA256 stehen in retire-unused-ch01-applied.json. Historische Bilddateien bleiben in der Git-Geschichte. Das erzeugte Bildverzeichnis wurde mit dem bestehenden Generator aktualisiert.", "subcriteria": [{"n": 1, "from": 0, "to": 707}], "sourceTextSha256": "12a71dccf3e44de033ecdc0c0e35b01500c3337ac7505a6afff536c95fab58fd", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "unverifiziert", "currentCodeEvidence": [], "citedFilesAtProductPin": [], "unresolvedCitedFiles": [], "historicalIds": [], "dispositionRef": "art-sourcepack", "authorPass": "Originalstelle und quellenbezogene Weitergeltung gelesen"}
+  ],
+  "previousDispositions": [],
+  "sourceSpecificAssessment": "Spätere tatsächlich gemessene Totkunst 59→57 durch exakt tip_sparks/window_exit entfernt, beide ohne Ladestelle in sechs Kapiteln. Keine höhere Grenze oder erfundene Referenz; Geschichte bewahrt alte Dateien. S045 frühere53 zählt andere Zeitfassung, nicht widersprüchliche gleichzeitige Wahrheit und keine nachträglich zu wiederherstellenden Bilder.",
+  "subcriteriaEncoding": "Unicode-Zeichenpositionen [from,to)."
+}

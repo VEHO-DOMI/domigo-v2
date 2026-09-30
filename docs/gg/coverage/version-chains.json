@@ -82,5 +82,11 @@
     "successor": "X004",
     "scope": "Y3 Fassung1 ersetzt im Auftragsumfang: zehn Buchplätze erhalten statt heimlich austauschen",
     "authority": "aktuelle Order Y3-A; S170 und aktueller GG-Plan"
+  },
+  {
+    "predecessor": "S235",
+    "successor": "S234",
+    "scope": "P-R4 streicht Nachimport und Claim; Firebase bleibt dauerhaftes Archiv. Snapshot S240 bewahrt begrenzten Neon-Bestand, späterer Wiederimport nicht gebaut. Keine pauschale Aufgabe von Inhalt oder Lernstand.",
+    "authority": "S234:L158–164; S240:L3–10/L147–150; S004:L12"
   }
 ]

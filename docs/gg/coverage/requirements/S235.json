@@ -1,0 +1,992 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "source": "S235",
+  "sourcePath": "docs/runbooks/firebase-final-import.md",
+  "sourceVersion": "df258ae8952cf5e5747e7507759d4d7b61e094b5",
+  "sourceMd5": "4d56ea16f4695fd93c1e26e4f6adb7c0",
+  "productPin": "269ee986ccdc1ae7c3b070cbed7014f20e532365",
+  "scope": "Kriterien-/Befundstellen einschließlich Unterlisten und Tabellen. Historische Aussagen bleiben getrennt von aktuellem Nachweis. Jede Beleglücke bindet an ihren eigenen vollständigen Wortlaut; Dateifund ist kein Erfüllungsbeweis. Noch kein Abschluss der Autoren-Durchsicht.",
+  "authorPassComplete": true,
+  "records": [
+    {
+      "id": "S235:L3",
+      "sourceLine": 3,
+      "sourceEndLine": 5,
+      "section": "Runbook — Firebase final import (Workstream 2)",
+      "requirementOrFinding": "**Status:** Firebase stays OPEN through school year 2025/26 (Koki's decision, 2026-06-10). This runbook is written now, executed at cutover (late August 2026). A catch-up run is safe **any time** (everything is idempotent); the *final* run happens after the freeze.",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 222
+        },
+        {
+          "n": 2,
+          "from": 224,
+          "to": 265
+        }
+      ],
+      "sourceTextSha256": "4fd49697773f88b20d10459f76e5782ed79726f76e99430e22670ce3ff597e59",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "geparkt",
+      "currentCodeEvidence": [],
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "migration-history",
+      "authorPass": "Datiertes Urteil, spätere ausdrückliche Ablösung und fehlender heutiger Beleg einzeln unterschieden",
+      "replacement": {
+        "source": "S234:L158–164 (P-R4, 2026-08-23)",
+        "decision": "Nur Firebase-Nachimport, alter Claim und Archivlöschung ersetzt; Datenbewahrung/Snapshot bleibt unter rollover-preservation. Gemischte Zeilen behalten alle übrigen Kriterien."
+      }
+    },
+    {
+      "id": "S235:L7",
+      "sourceLine": 7,
+      "sourceEndLine": 9,
+      "section": "Runbook — Firebase final import (Workstream 2)",
+      "requirementOrFinding": "**What it does:** carries every legacy-trainer student who registered in Firebase after the 2026-05-17 export into Neon `legacy_students`, without touching anyone who already claimed an account, so they can claim at `/signin/migrate`.",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 234
+        }
+      ],
+      "sourceTextSha256": "e9742b0f5b41c9befb6d7f70e635f7ec8fc264f28292ca27c48a4d1d47eb831e",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "geparkt",
+      "currentCodeEvidence": [],
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "migration-history",
+      "authorPass": "Datiertes Urteil, spätere ausdrückliche Ablösung und fehlender heutiger Beleg einzeln unterschieden",
+      "replacement": {
+        "source": "S234:L158–164 (P-R4, 2026-08-23)",
+        "decision": "Nur Firebase-Nachimport, alter Claim und Archivlöschung ersetzt; Datenbewahrung/Snapshot bleibt unter rollover-preservation. Gemischte Zeilen behalten alle übrigen Kriterien."
+      }
+    },
+    {
+      "id": "S235:L13",
+      "sourceLine": 13,
+      "sourceEndLine": 15,
+      "section": "Runbook — Firebase final import (Workstream 2) / Ground truth (from v1 / docs/handover/03_migration.md)",
+      "requirementOrFinding": "- 2026-05-17 export: **110 students** across 12 class slugs (`1st-grade`, `1b`, `1c`, `2nd-grade`, `2b`, `2c`, `3rd-grade`, `3b`, `3c`, `4a`, `4th-grade`, `4c`), all PINs `plain` → re-bcrypted; applied to Neon. VEHO teacher owns the 12 mapped classes.",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 192
+        },
+        {
+          "n": 2,
+          "from": 194,
+          "to": 251
+        }
+      ],
+      "sourceTextSha256": "598a6820bbab868e94141e020368c506495114c4211296cbcffa2c05b39afd85",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "geparkt",
+      "currentCodeEvidence": [],
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "migration-history",
+      "authorPass": "Datiertes Urteil, spätere ausdrückliche Ablösung und fehlender heutiger Beleg einzeln unterschieden",
+      "replacement": {
+        "source": "S234:L158–164 (P-R4, 2026-08-23)",
+        "decision": "Nur Firebase-Nachimport, alter Claim und Archivlöschung ersetzt; Datenbewahrung/Snapshot bleibt unter rollover-preservation. Gemischte Zeilen behalten alle übrigen Kriterien."
+      }
+    },
+    {
+      "id": "S235:L16",
+      "sourceLine": 16,
+      "sourceEndLine": 16,
+      "section": "Runbook — Firebase final import (Workstream 2) / Ground truth (from v1 / docs/handover/03_migration.md)",
+      "requirementOrFinding": "Historische Zugangsdaten und Kontenhinweise werden aus Datenschutzgründen nicht weiterveröffentlicht; genaue Originalstelle ist gebunden.",
+      "subcriteria": [],
+      "sourceTextSha256": "ebf1ddb594e2de94ab48c4429d7b45211478fbcdbc6ae4c0fa2db6414c87c8b4",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "geparkt",
+      "currentCodeEvidence": [],
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "migration-history",
+      "authorPass": "Datiertes Urteil, spätere ausdrückliche Ablösung und fehlender heutiger Beleg einzeln unterschieden",
+      "redaction": "credential-values",
+      "replacement": {
+        "source": "S234:L158–164 (P-R4, 2026-08-23)",
+        "decision": "Nur Firebase-Nachimport, alter Claim und Archivlöschung ersetzt; Datenbewahrung/Snapshot bleibt unter rollover-preservation. Gemischte Zeilen behalten alle übrigen Kriterien."
+      }
+    },
+    {
+      "id": "S235:L17",
+      "sourceLine": 17,
+      "sourceEndLine": 18,
+      "section": "Runbook — Firebase final import (Workstream 2) / Ground truth (from v1 / docs/handover/03_migration.md)",
+      "requirementOrFinding": "- Firestore project `veho-vocab`, layout `classes/*/students/*`. Export needs Google ADC (`gcloud auth application-default login`) — read-only.",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 143
+        }
+      ],
+      "sourceTextSha256": "210ac8c8d74595f92469db66b8c3033e68a09d71cce6ffd5debebd028928d7cc",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "geparkt",
+      "currentCodeEvidence": [],
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "migration-history",
+      "authorPass": "Datiertes Urteil, spätere ausdrückliche Ablösung und fehlender heutiger Beleg einzeln unterschieden",
+      "replacement": {
+        "source": "S234:L158–164 (P-R4, 2026-08-23)",
+        "decision": "Nur Firebase-Nachimport, alter Claim und Archivlöschung ersetzt; Datenbewahrung/Snapshot bleibt unter rollover-preservation. Gemischte Zeilen behalten alle übrigen Kriterien."
+      }
+    },
+    {
+      "id": "S235:L19",
+      "sourceLine": 19,
+      "sourceEndLine": 19,
+      "section": "Runbook — Firebase final import (Workstream 2) / Ground truth (from v1 / docs/handover/03_migration.md)",
+      "requirementOrFinding": "- Pipeline scripts (v1 repo `scripts/migrate/`, to be ported here in Phase 1):",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 78
+        }
+      ],
+      "sourceTextSha256": "36773949edd8681949de5719b479f4bdf069b9e91b05ca045dee67dbb63ce5f6",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "geparkt",
+      "currentCodeEvidence": [],
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "migration-history",
+      "authorPass": "Datiertes Urteil, spätere ausdrückliche Ablösung und fehlender heutiger Beleg einzeln unterschieden",
+      "replacement": {
+        "source": "S234:L158–164 (P-R4, 2026-08-23)",
+        "decision": "Nur Firebase-Nachimport, alter Claim und Archivlöschung ersetzt; Datenbewahrung/Snapshot bleibt unter rollover-preservation. Gemischte Zeilen behalten alle übrigen Kriterien."
+      }
+    },
+    {
+      "id": "S235:L20",
+      "sourceLine": 20,
+      "sourceEndLine": 20,
+      "section": "Runbook — Firebase final import (Workstream 2) / Ground truth (from v1 / docs/handover/03_migration.md)",
+      "requirementOrFinding": "1. `migrate:export` — Firestore → `exports/<ISO>/firestore-<classSlug>.json` + `summary.json` (read-only)",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 105
+        }
+      ],
+      "sourceTextSha256": "0f2a9edab20b653af108a5bb5b9750c48b3d8e60351e9b205a9402ce6ab8534d",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "geparkt",
+      "currentCodeEvidence": [],
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [
+        "exports/<ISO>/firestore-<classSlug>.json",
+        "summary.json"
+      ],
+      "historicalIds": [],
+      "dispositionRef": "migration-history",
+      "authorPass": "Datiertes Urteil, spätere ausdrückliche Ablösung und fehlender heutiger Beleg einzeln unterschieden",
+      "replacement": {
+        "source": "S234:L158–164 (P-R4, 2026-08-23)",
+        "decision": "Nur Firebase-Nachimport, alter Claim und Archivlöschung ersetzt; Datenbewahrung/Snapshot bleibt unter rollover-preservation. Gemischte Zeilen behalten alle übrigen Kriterien."
+      }
+    },
+    {
+      "id": "S235:L21",
+      "sourceLine": 21,
+      "sourceEndLine": 22,
+      "section": "Runbook — Firebase final import (Workstream 2) / Ground truth (from v1 / docs/handover/03_migration.md)",
+      "requirementOrFinding": "2. `migrate:build` — export + `class_legacy_map` → idempotent `legacy-students.sql` (`ON CONFLICT (legacyClassSlug, legacyUsernameLower) DO NOTHING`) + audit JSONs (read-only)",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 175
+        }
+      ],
+      "sourceTextSha256": "6b5c6fdb1b8b7c75fdd324c65a9623f9ece28b11729818288e17dc9b2da40e40",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "geparkt",
+      "currentCodeEvidence": [],
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "migration-history",
+      "authorPass": "Datiertes Urteil, spätere ausdrückliche Ablösung und fehlender heutiger Beleg einzeln unterschieden",
+      "replacement": {
+        "source": "S234:L158–164 (P-R4, 2026-08-23)",
+        "decision": "Nur Firebase-Nachimport, alter Claim und Archivlöschung ersetzt; Datenbewahrung/Snapshot bleibt unter rollover-preservation. Gemischte Zeilen behalten alle übrigen Kriterien."
+      }
+    },
+    {
+      "id": "S235:L23",
+      "sourceLine": 23,
+      "sourceEndLine": 23,
+      "section": "Runbook — Firebase final import (Workstream 2) / Ground truth (from v1 / docs/handover/03_migration.md)",
+      "requirementOrFinding": "3. `migrate:apply` — the one write step; inserts into `legacy_students`; safe to re-run",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 39
+        },
+        {
+          "n": 2,
+          "from": 41,
+          "to": 71
+        },
+        {
+          "n": 3,
+          "from": 73,
+          "to": 87
+        }
+      ],
+      "sourceTextSha256": "b750d4ed0a79a94bb43135e769332b7453de18521cee38edb2710239eaca9b58",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "geparkt",
+      "currentCodeEvidence": [],
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "migration-history",
+      "authorPass": "Datiertes Urteil, spätere ausdrückliche Ablösung und fehlender heutiger Beleg einzeln unterschieden",
+      "replacement": {
+        "source": "S234:L158–164 (P-R4, 2026-08-23)",
+        "decision": "Nur Firebase-Nachimport, alter Claim und Archivlöschung ersetzt; Datenbewahrung/Snapshot bleibt unter rollover-preservation. Gemischte Zeilen behalten alle übrigen Kriterien."
+      }
+    },
+    {
+      "id": "S235:L24",
+      "sourceLine": 24,
+      "sourceEndLine": 25,
+      "section": "Runbook — Firebase final import (Workstream 2) / Ground truth (from v1 / docs/handover/03_migration.md)",
+      "requirementOrFinding": "- Claim flow: `/signin/migrate` → legacy username + 4-digit PIN → new 6-digit PIN + realName → `legacy_students.newUserId` linked, XP/badges/streak copied into `users`.",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 168
+        }
+      ],
+      "sourceTextSha256": "3ced37f4004bd7f8299ac6a64e4f7b1221ad227c2496c2594b42252f768052d0",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "geparkt",
+      "currentCodeEvidence": [],
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "migration-history",
+      "authorPass": "Datiertes Urteil, spätere ausdrückliche Ablösung und fehlender heutiger Beleg einzeln unterschieden",
+      "replacement": {
+        "source": "S234:L158–164 (P-R4, 2026-08-23)",
+        "decision": "Nur Firebase-Nachimport, alter Claim und Archivlöschung ersetzt; Datenbewahrung/Snapshot bleibt unter rollover-preservation. Gemischte Zeilen behalten alle übrigen Kriterien."
+      }
+    },
+    {
+      "id": "S235:L29",
+      "sourceLine": 29,
+      "sourceEndLine": 29,
+      "section": "Runbook — Firebase final import (Workstream 2) / Pre-flight (any run)",
+      "requirementOrFinding": "- [ ] Working from a clean clone of THIS repo (never the iCloud v1 tree).",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 73
+        }
+      ],
+      "sourceTextSha256": "9150255f343ef118770e3246743367eff2b9f59acbaef2d0610de6886b651bbd",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "geparkt",
+      "currentCodeEvidence": [],
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "migration-history",
+      "authorPass": "Datiertes Urteil, spätere ausdrückliche Ablösung und fehlender heutiger Beleg einzeln unterschieden",
+      "replacement": {
+        "source": "S234:L158–164 (P-R4, 2026-08-23)",
+        "decision": "Nur Firebase-Nachimport, alter Claim und Archivlöschung ersetzt; Datenbewahrung/Snapshot bleibt unter rollover-preservation. Gemischte Zeilen behalten alle übrigen Kriterien."
+      }
+    },
+    {
+      "id": "S235:L30",
+      "sourceLine": 30,
+      "sourceEndLine": 30,
+      "section": "Runbook — Firebase final import (Workstream 2) / Pre-flight (any run)",
+      "requirementOrFinding": "- [ ] `gcloud auth application-default login` done; `migrate:export` smoke-reads one class.",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 50
+        },
+        {
+          "n": 2,
+          "from": 52,
+          "to": 91
+        }
+      ],
+      "sourceTextSha256": "aebfda7819ad279a6056a22539b93d8e6cb98283f6fd21eecc3d4b558f94a732",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "geparkt",
+      "currentCodeEvidence": [],
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "migration-history",
+      "authorPass": "Datiertes Urteil, spätere ausdrückliche Ablösung und fehlender heutiger Beleg einzeln unterschieden",
+      "replacement": {
+        "source": "S234:L158–164 (P-R4, 2026-08-23)",
+        "decision": "Nur Firebase-Nachimport, alter Claim und Archivlöschung ersetzt; Datenbewahrung/Snapshot bleibt unter rollover-preservation. Gemischte Zeilen behalten alle übrigen Kriterien."
+      }
+    },
+    {
+      "id": "S235:L31",
+      "sourceLine": 31,
+      "sourceEndLine": 32,
+      "section": "Runbook — Firebase final import (Workstream 2) / Pre-flight (any run)",
+      "requirementOrFinding": "- [ ] Confirm target DB: catch-up/rehearsal runs go to the Neon `rehearsal` or `dev` branch first; only the final run targets prod, with Koki present.",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 97
+        },
+        {
+          "n": 2,
+          "from": 99,
+          "to": 150
+        }
+      ],
+      "sourceTextSha256": "aab9ac69adec814929fad31947c0e3e79950391df5dbccb87cd4db563ab10a2b",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "geparkt",
+      "currentCodeEvidence": [],
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "migration-history",
+      "authorPass": "Datiertes Urteil, spätere ausdrückliche Ablösung und fehlender heutiger Beleg einzeln unterschieden",
+      "replacement": {
+        "source": "S234:L158–164 (P-R4, 2026-08-23)",
+        "decision": "Nur Firebase-Nachimport, alter Claim und Archivlöschung ersetzt; Datenbewahrung/Snapshot bleibt unter rollover-preservation. Gemischte Zeilen behalten alle übrigen Kriterien."
+      }
+    },
+    {
+      "id": "S235:L33",
+      "sourceLine": 33,
+      "sourceEndLine": 33,
+      "section": "Runbook — Firebase final import (Workstream 2) / Pre-flight (any run)",
+      "requirementOrFinding": "- [ ] `pg_dump` of `legacy_students` + `users` taken and stored locally before any prod apply.",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 94
+        }
+      ],
+      "sourceTextSha256": "063eb7567ba2711bc02d8c7e334e0f6f00c9f5d8934e543963a963abe628fe52",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "geparkt",
+      "currentCodeEvidence": [],
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "migration-history",
+      "authorPass": "Datiertes Urteil, spätere ausdrückliche Ablösung und fehlender heutiger Beleg einzeln unterschieden",
+      "replacement": {
+        "source": "S234:L158–164 (P-R4, 2026-08-23)",
+        "decision": "Nur Firebase-Nachimport, alter Claim und Archivlöschung ersetzt; Datenbewahrung/Snapshot bleibt unter rollover-preservation. Gemischte Zeilen behalten alle übrigen Kriterien."
+      }
+    },
+    {
+      "id": "S235:L37",
+      "sourceLine": 37,
+      "sourceEndLine": 37,
+      "section": "Runbook — Firebase final import (Workstream 2) / Catch-up run (optional, any time — e.g. to test v2's claim flow with realistic data)",
+      "requirementOrFinding": "1. `npm run migrate:export` → note new export dir.",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 50
+        }
+      ],
+      "sourceTextSha256": "93097a46cea63be7d01e1b8cf429956fb29c68623e05f105d0c1217a671ec1c0",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "geparkt",
+      "currentCodeEvidence": [],
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "migration-history",
+      "authorPass": "Datiertes Urteil, spätere ausdrückliche Ablösung und fehlender heutiger Beleg einzeln unterschieden",
+      "replacement": {
+        "source": "S234:L158–164 (P-R4, 2026-08-23)",
+        "decision": "Nur Firebase-Nachimport, alter Claim und Archivlöschung ersetzt; Datenbewahrung/Snapshot bleibt unter rollover-preservation. Gemischte Zeilen behalten alle übrigen Kriterien."
+      }
+    },
+    {
+      "id": "S235:L38",
+      "sourceLine": 38,
+      "sourceEndLine": 39,
+      "section": "Runbook — Firebase final import (Workstream 2) / Catch-up run (optional, any time — e.g. to test v2's claim flow with realistic data)",
+      "requirementOrFinding": "2. `npm run migrate:build` → review `summary.json`: new-student count per slug, PIN-kind histogram (`plain`/`bcrypt`/`unknown` — `unknown` rows need a teacher PIN reset after claim).",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 182
+        }
+      ],
+      "sourceTextSha256": "00bccf616f9ff08f717c1e0913780cbe475f5fc15445b037d16e1ca201da6ea1",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "geparkt",
+      "currentCodeEvidence": [],
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [
+        "summary.json"
+      ],
+      "historicalIds": [],
+      "dispositionRef": "migration-history",
+      "authorPass": "Datiertes Urteil, spätere ausdrückliche Ablösung und fehlender heutiger Beleg einzeln unterschieden",
+      "replacement": {
+        "source": "S234:L158–164 (P-R4, 2026-08-23)",
+        "decision": "Nur Firebase-Nachimport, alter Claim und Archivlöschung ersetzt; Datenbewahrung/Snapshot bleibt unter rollover-preservation. Gemischte Zeilen behalten alle übrigen Kriterien."
+      }
+    },
+    {
+      "id": "S235:L40",
+      "sourceLine": 40,
+      "sourceEndLine": 40,
+      "section": "Runbook — Firebase final import (Workstream 2) / Catch-up run (optional, any time — e.g. to test v2's claim flow with realistic data)",
+      "requirementOrFinding": "3. `npm run migrate:apply` against the **rehearsal** branch; run `verify-no-clobber` (below).",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 59
+        },
+        {
+          "n": 2,
+          "from": 61,
+          "to": 93
+        }
+      ],
+      "sourceTextSha256": "573401fbfd7489658c51abbd8a189fdaac03a507f292191e7d98166a77ed99e5",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "geparkt",
+      "currentCodeEvidence": [],
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "migration-history",
+      "authorPass": "Datiertes Urteil, spätere ausdrückliche Ablösung und fehlender heutiger Beleg einzeln unterschieden",
+      "replacement": {
+        "source": "S234:L158–164 (P-R4, 2026-08-23)",
+        "decision": "Nur Firebase-Nachimport, alter Claim und Archivlöschung ersetzt; Datenbewahrung/Snapshot bleibt unter rollover-preservation. Gemischte Zeilen behalten alle übrigen Kriterien."
+      }
+    },
+    {
+      "id": "S235:L41",
+      "sourceLine": 41,
+      "sourceEndLine": 41,
+      "section": "Runbook — Firebase final import (Workstream 2) / Catch-up run (optional, any time — e.g. to test v2's claim flow with realistic data)",
+      "requirementOrFinding": "4. Nothing else. Prod stays untouched.",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 38
+        }
+      ],
+      "sourceTextSha256": "a40f5bf2b667541133217faea5309dc4f2157de0486b70f5e835c2e80e3ed8fd",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "geparkt",
+      "currentCodeEvidence": [],
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "migration-history",
+      "authorPass": "Datiertes Urteil, spätere ausdrückliche Ablösung und fehlender heutiger Beleg einzeln unterschieden",
+      "replacement": {
+        "source": "S234:L158–164 (P-R4, 2026-08-23)",
+        "decision": "Nur Firebase-Nachimport, alter Claim und Archivlöschung ersetzt; Datenbewahrung/Snapshot bleibt unter rollover-preservation. Gemischte Zeilen behalten alle übrigen Kriterien."
+      }
+    },
+    {
+      "id": "S235:L45",
+      "sourceLine": 45,
+      "sourceEndLine": 47,
+      "section": "Runbook — Firebase final import (Workstream 2) / Final run (cutover day, outside school hours, Koki present)",
+      "requirementOrFinding": "1. **Freeze**: stop sending students to the legacy trainers (announce in class/Schoolfox; the trainers are static GitHub Pages — practically the freeze is social, not technical). Record the freeze timestamp here: `____________`.",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 88
+        },
+        {
+          "n": 2,
+          "from": 90,
+          "to": 228
+        }
+      ],
+      "sourceTextSha256": "133d478dd06921e26007745242a415374bf7b8df7ecdef4aefa9fd1f60eca10e",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "geparkt",
+      "currentCodeEvidence": [],
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "migration-history",
+      "authorPass": "Datiertes Urteil, spätere ausdrückliche Ablösung und fehlender heutiger Beleg einzeln unterschieden",
+      "replacement": {
+        "source": "S234:L158–164 (P-R4, 2026-08-23)",
+        "decision": "Nur Firebase-Nachimport, alter Claim und Archivlöschung ersetzt; Datenbewahrung/Snapshot bleibt unter rollover-preservation. Gemischte Zeilen behalten alle übrigen Kriterien."
+      }
+    },
+    {
+      "id": "S235:L48",
+      "sourceLine": 48,
+      "sourceEndLine": 48,
+      "section": "Runbook — Firebase final import (Workstream 2) / Final run (cutover day, outside school hours, Koki present)",
+      "requirementOrFinding": "2. `npm run migrate:export` — the definitive export. Archive the export dir (cold storage copy).",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 96
+        }
+      ],
+      "sourceTextSha256": "81bdf4135a25bdc4744287433372d5eb557e02659f7d07a08680710b1302718b",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "geparkt",
+      "currentCodeEvidence": [],
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "migration-history",
+      "authorPass": "Datiertes Urteil, spätere ausdrückliche Ablösung und fehlender heutiger Beleg einzeln unterschieden",
+      "replacement": {
+        "source": "S234:L158–164 (P-R4, 2026-08-23)",
+        "decision": "Nur Firebase-Nachimport, alter Claim und Archivlöschung ersetzt; Datenbewahrung/Snapshot bleibt unter rollover-preservation. Gemischte Zeilen behalten alle übrigen Kriterien."
+      }
+    },
+    {
+      "id": "S235:L49",
+      "sourceLine": 49,
+      "sourceEndLine": 50,
+      "section": "Runbook — Firebase final import (Workstream 2) / Final run (cutover day, outside school hours, Koki present)",
+      "requirementOrFinding": "3. `npm run migrate:build` — review `summary.json`. Expected: every slug's count ≥ its 2026-05-17 count; investigate any slug that shrank (renames/deletions in Firebase).",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 103
+        },
+        {
+          "n": 2,
+          "from": 105,
+          "to": 170
+        }
+      ],
+      "sourceTextSha256": "a7d8da454a4efde431a67884da6a55c07fb00f81b613b1ad97463a0d403e2da4",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "geparkt",
+      "currentCodeEvidence": [],
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [
+        "summary.json"
+      ],
+      "historicalIds": [],
+      "dispositionRef": "migration-history",
+      "authorPass": "Datiertes Urteil, spätere ausdrückliche Ablösung und fehlender heutiger Beleg einzeln unterschieden",
+      "replacement": {
+        "source": "S234:L158–164 (P-R4, 2026-08-23)",
+        "decision": "Nur Firebase-Nachimport, alter Claim und Archivlöschung ersetzt; Datenbewahrung/Snapshot bleibt unter rollover-preservation. Gemischte Zeilen behalten alle übrigen Kriterien."
+      }
+    },
+    {
+      "id": "S235:L51",
+      "sourceLine": 51,
+      "sourceEndLine": 51,
+      "section": "Runbook — Firebase final import (Workstream 2) / Final run (cutover day, outside school hours, Koki present)",
+      "requirementOrFinding": "4. `npm run migrate:apply` against **prod** (after the pre-flight `pg_dump`).",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 77
+        }
+      ],
+      "sourceTextSha256": "37a505a815c7e119ff30e43da3d9859d59ebbd8d818446178f69c41f4a3d3a51",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "geparkt",
+      "currentCodeEvidence": [],
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "migration-history",
+      "authorPass": "Datiertes Urteil, spätere ausdrückliche Ablösung und fehlender heutiger Beleg einzeln unterschieden",
+      "replacement": {
+        "source": "S234:L158–164 (P-R4, 2026-08-23)",
+        "decision": "Nur Firebase-Nachimport, alter Claim und Archivlöschung ersetzt; Datenbewahrung/Snapshot bleibt unter rollover-preservation. Gemischte Zeilen behalten alle übrigen Kriterien."
+      }
+    },
+    {
+      "id": "S235:L52",
+      "sourceLine": 52,
+      "sourceEndLine": 52,
+      "section": "Runbook — Firebase final import (Workstream 2) / Final run (cutover day, outside school hours, Koki present)",
+      "requirementOrFinding": "5. **`verify-no-clobber`** (script ported in Phase 1, `scripts/migrate/verify-no-clobber.mjs`):",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 95
+        }
+      ],
+      "sourceTextSha256": "5c13ed149b4ac35ada63f6d7288eb3f3e83eb5c60e28a657af2c67cf6cf9a3f3",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "geparkt",
+      "currentCodeEvidence": [],
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [
+        "scripts/migrate/verify-no-clobber.mjs"
+      ],
+      "historicalIds": [],
+      "dispositionRef": "migration-history",
+      "authorPass": "Datiertes Urteil, spätere ausdrückliche Ablösung und fehlender heutiger Beleg einzeln unterschieden",
+      "replacement": {
+        "source": "S234:L158–164 (P-R4, 2026-08-23)",
+        "decision": "Nur Firebase-Nachimport, alter Claim und Archivlöschung ersetzt; Datenbewahrung/Snapshot bleibt unter rollover-preservation. Gemischte Zeilen behalten alle übrigen Kriterien."
+      }
+    },
+    {
+      "id": "S235:L53",
+      "sourceLine": 53,
+      "sourceEndLine": 54,
+      "section": "Runbook — Firebase final import (Workstream 2) / Final run (cutover day, outside school hours, Koki present)",
+      "requirementOrFinding": "- every `legacy_students` row that had `migratedAt`/`newUserId` set before the apply is byte-identical after it (claimed accounts untouched);",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 141
+        }
+      ],
+      "sourceTextSha256": "d35fea4ed304547261cd642ef25d8b080175f80c68ff3eade89f9914513f0d1d",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "geparkt",
+      "currentCodeEvidence": [],
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "migration-history",
+      "authorPass": "Datiertes Urteil, spätere ausdrückliche Ablösung und fehlender heutiger Beleg einzeln unterschieden",
+      "replacement": {
+        "source": "S234:L158–164 (P-R4, 2026-08-23)",
+        "decision": "Nur Firebase-Nachimport, alter Claim und Archivlöschung ersetzt; Datenbewahrung/Snapshot bleibt unter rollover-preservation. Gemischte Zeilen behalten alle übrigen Kriterien."
+      }
+    },
+    {
+      "id": "S235:L55",
+      "sourceLine": 55,
+      "sourceEndLine": 55,
+      "section": "Runbook — Firebase final import (Workstream 2) / Final run (cutover day, outside school hours, Koki present)",
+      "requirementOrFinding": "- every post-2026-05-17 Firebase signup now has a `legacy_students` row;",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 72
+        }
+      ],
+      "sourceTextSha256": "a5d8858c7ffacf2695827c78f264172094a8815f00c7864f6b27ed8e397047cc",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "geparkt",
+      "currentCodeEvidence": [],
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "migration-history",
+      "authorPass": "Datiertes Urteil, spätere ausdrückliche Ablösung und fehlender heutiger Beleg einzeln unterschieden",
+      "replacement": {
+        "source": "S234:L158–164 (P-R4, 2026-08-23)",
+        "decision": "Nur Firebase-Nachimport, alter Claim und Archivlöschung ersetzt; Datenbewahrung/Snapshot bleibt unter rollover-preservation. Gemischte Zeilen behalten alle übrigen Kriterien."
+      }
+    },
+    {
+      "id": "S235:L56",
+      "sourceLine": 56,
+      "sourceEndLine": 56,
+      "section": "Runbook — Firebase final import (Workstream 2) / Final run (cutover day, outside school hours, Koki present)",
+      "requirementOrFinding": "- row count delta == new-signup count from `summary.json`.",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 58
+        }
+      ],
+      "sourceTextSha256": "30b9889ef5020ea01ab0ea658fbce9254f7b86a94968550e3d5895c1260658fc",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "geparkt",
+      "currentCodeEvidence": [],
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [
+        "summary.json"
+      ],
+      "historicalIds": [],
+      "dispositionRef": "migration-history",
+      "authorPass": "Datiertes Urteil, spätere ausdrückliche Ablösung und fehlender heutiger Beleg einzeln unterschieden",
+      "replacement": {
+        "source": "S234:L158–164 (P-R4, 2026-08-23)",
+        "decision": "Nur Firebase-Nachimport, alter Claim und Archivlöschung ersetzt; Datenbewahrung/Snapshot bleibt unter rollover-preservation. Gemischte Zeilen behalten alle übrigen Kriterien."
+      }
+    },
+    {
+      "id": "S235:L57",
+      "sourceLine": 57,
+      "sourceEndLine": 58,
+      "section": "Runbook — Firebase final import (Workstream 2) / Final run (cutover day, outside school hours, Koki present)",
+      "requirementOrFinding": "6. **End-to-end claim test**: one real post-May-17 student (coordinated with Koki) claims at `/signin/migrate` on v2 prod; their XP/badges/streak land; sign-out/in works.",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 121
+        },
+        {
+          "n": 2,
+          "from": 123,
+          "to": 150
+        },
+        {
+          "n": 3,
+          "from": 152,
+          "to": 170
+        }
+      ],
+      "sourceTextSha256": "b8e482e875ccb30a190830547565835d9846ab4f2fadc801499328bb02c9450b",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "geparkt",
+      "currentCodeEvidence": [],
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "migration-history",
+      "authorPass": "Datiertes Urteil, spätere ausdrückliche Ablösung und fehlender heutiger Beleg einzeln unterschieden",
+      "replacement": {
+        "source": "S234:L158–164 (P-R4, 2026-08-23)",
+        "decision": "Nur Firebase-Nachimport, alter Claim und Archivlöschung ersetzt; Datenbewahrung/Snapshot bleibt unter rollover-preservation. Gemischte Zeilen behalten alle übrigen Kriterien."
+      }
+    },
+    {
+      "id": "S235:L59",
+      "sourceLine": 59,
+      "sourceEndLine": 59,
+      "section": "Runbook — Firebase final import (Workstream 2) / Final run (cutover day, outside school hours, Koki present)",
+      "requirementOrFinding": "7. Teacher pass: Koki signs in (`VEHO`), checks rosters; resets PINs for any `unknown`-hash rows.",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 55
+        },
+        {
+          "n": 2,
+          "from": 57,
+          "to": 97
+        }
+      ],
+      "sourceTextSha256": "b1b7a9f28b9bd3b40abf507242782b45497ed429a1129e0419a0a5232f5f0111",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "geparkt",
+      "currentCodeEvidence": [],
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "migration-history",
+      "authorPass": "Datiertes Urteil, spätere ausdrückliche Ablösung und fehlender heutiger Beleg einzeln unterschieden",
+      "replacement": {
+        "source": "S234:L158–164 (P-R4, 2026-08-23)",
+        "decision": "Nur Firebase-Nachimport, alter Claim und Archivlöschung ersetzt; Datenbewahrung/Snapshot bleibt unter rollover-preservation. Gemischte Zeilen behalten alle übrigen Kriterien."
+      }
+    },
+    {
+      "id": "S235:L63",
+      "sourceLine": 63,
+      "sourceEndLine": 63,
+      "section": "Runbook — Firebase final import (Workstream 2) / Decommission (T+3–6 months after cutover, per 03_migration.md)",
+      "requirementOrFinding": "- [ ] Claims have settled (track: `SELECT count(*) FROM legacy_students WHERE migratedAt IS NULL`).",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 99
+        }
+      ],
+      "sourceTextSha256": "bd40caafc8ea344d3ca51cbbe15c930b82f2eeef062d76259025e4673a192d5a",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "geparkt",
+      "currentCodeEvidence": [],
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "migration-history",
+      "authorPass": "Datiertes Urteil, spätere ausdrückliche Ablösung und fehlender heutiger Beleg einzeln unterschieden",
+      "replacement": {
+        "source": "S234:L158–164 (P-R4, 2026-08-23)",
+        "decision": "Nur Firebase-Nachimport, alter Claim und Archivlöschung ersetzt; Datenbewahrung/Snapshot bleibt unter rollover-preservation. Gemischte Zeilen behalten alle übrigen Kriterien."
+      }
+    },
+    {
+      "id": "S235:L64",
+      "sourceLine": 64,
+      "sourceEndLine": 64,
+      "section": "Runbook — Firebase final import (Workstream 2) / Decommission (T+3–6 months after cutover, per 03_migration.md)",
+      "requirementOrFinding": "- [ ] Final Firestore export archived to cold storage (keep `firebaseRawDoc` snapshots until here).",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 99
+        }
+      ],
+      "sourceTextSha256": "a33062607809db494565a544b8d238bf0cd23b912ec5a8dceb664c1c990b0003",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "geparkt",
+      "currentCodeEvidence": [],
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "migration-history",
+      "authorPass": "Datiertes Urteil, spätere ausdrückliche Ablösung und fehlender heutiger Beleg einzeln unterschieden",
+      "replacement": {
+        "source": "S234:L158–164 (P-R4, 2026-08-23)",
+        "decision": "Nur Firebase-Nachimport, alter Claim und Archivlöschung ersetzt; Datenbewahrung/Snapshot bleibt unter rollover-preservation. Gemischte Zeilen behalten alle übrigen Kriterien."
+      }
+    },
+    {
+      "id": "S235:L65",
+      "sourceLine": 65,
+      "sourceEndLine": 65,
+      "section": "Runbook — Firebase final import (Workstream 2) / Decommission (T+3–6 months after cutover, per 03_migration.md)",
+      "requirementOrFinding": "- [ ] Firebase project `veho-vocab` deleted / downgraded; legacy trainer pages get a redirect note.",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 56
+        },
+        {
+          "n": 2,
+          "from": 58,
+          "to": 99
+        }
+      ],
+      "sourceTextSha256": "ded4ef2885a7c5a3c2b7029a3411b12e7a8426cfb2211a40731d7104bcaecef8",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "geparkt",
+      "currentCodeEvidence": [],
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "migration-history",
+      "authorPass": "Datiertes Urteil, spätere ausdrückliche Ablösung und fehlender heutiger Beleg einzeln unterschieden",
+      "replacement": {
+        "source": "S234:L158–164 (P-R4, 2026-08-23)",
+        "decision": "Nur Firebase-Nachimport, alter Claim und Archivlöschung ersetzt; Datenbewahrung/Snapshot bleibt unter rollover-preservation. Gemischte Zeilen behalten alle übrigen Kriterien."
+      }
+    },
+    {
+      "id": "S235:L66",
+      "sourceLine": 66,
+      "sourceEndLine": 67,
+      "section": "Runbook — Firebase final import (Workstream 2) / Decommission (T+3–6 months after cutover, per 03_migration.md)",
+      "requirementOrFinding": "- [ ] Schema cleanup migration: drop `legacy_students.firebaseRawDoc`; then the wider v1-table cleanup per the cutover runbook.",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 69
+        },
+        {
+          "n": 2,
+          "from": 71,
+          "to": 127
+        }
+      ],
+      "sourceTextSha256": "0d76c25fadc4f353c423e4a10390b3b04ea4cb2265a45c502362de09dd146952",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "geparkt",
+      "currentCodeEvidence": [],
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "migration-history",
+      "authorPass": "Datiertes Urteil, spätere ausdrückliche Ablösung und fehlender heutiger Beleg einzeln unterschieden",
+      "replacement": {
+        "source": "S234:L158–164 (P-R4, 2026-08-23)",
+        "decision": "Nur Firebase-Nachimport, alter Claim und Archivlöschung ersetzt; Datenbewahrung/Snapshot bleibt unter rollover-preservation. Gemischte Zeilen behalten alle übrigen Kriterien."
+      }
+    },
+    {
+      "id": "S235:L71",
+      "sourceLine": 71,
+      "sourceEndLine": 75,
+      "section": "Runbook — Firebase final import (Workstream 2) / Rollback",
+      "requirementOrFinding": "- Export/build are read-only; apply is insert-only (`DO NOTHING` on conflict). Worst case after a bad apply: `DELETE FROM legacy_students WHERE migratedAt IS NULL AND created_at > <freeze ts>` then restore from the pre-flight `pg_dump` if anything else looks off. Claimed rows are never updated by the pipeline, so student progress is not at risk by construction — `verify-no-clobber` exists to prove that, not to fix it.",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 28
+        },
+        {
+          "n": 2,
+          "from": 30,
+          "to": 421
+        }
+      ],
+      "sourceTextSha256": "ddb2bbc8080b1389ae7d5b4ca652d5366839056fe1572298d03929caf8fe6c67",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "geparkt",
+      "currentCodeEvidence": [],
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "migration-history",
+      "authorPass": "Datiertes Urteil, spätere ausdrückliche Ablösung und fehlender heutiger Beleg einzeln unterschieden",
+      "replacement": {
+        "source": "S234:L158–164 (P-R4, 2026-08-23)",
+        "decision": "Nur Firebase-Nachimport, alter Claim und Archivlöschung ersetzt; Datenbewahrung/Snapshot bleibt unter rollover-preservation. Gemischte Zeilen behalten alle übrigen Kriterien."
+      }
+    }
+  ],
+  "previousDispositions": [
+    {
+      "register": "commitments.json",
+      "id": "PL3"
+    }
+  ],
+  "sourceSpecificAssessment": "Alter Catch-up-/Endimportplan ist durch S234:L158–164 ausdrücklich abgelöst. Nichtüberschreiben bereits beanspruchter Konten bleibt Erhaltungsprinzip. Geplantes späteres Löschen/Downgrade von Firebase ist durch dauerhaftes Archiv ersetzt. Keine Export-, Claim-, Lösch- oder Produktionsaktion ausführen; historische Zugangsdaten nicht weiterveröffentlichen.",
+  "subcriteriaEncoding": "Unicode-Zeichenpositionen [from,to); ausdrückliche Zugangsdaten-Redaktion erhält die genaue Originalstelle samt Prüfsumme."
+}

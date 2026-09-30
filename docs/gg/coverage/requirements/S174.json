@@ -8,34 +8,803 @@
   "scope": "Kriterien-/Befundstellen einschließlich Unterlisten und Tabellen. Historische Aussagen bleiben getrennt von aktuellem Nachweis. Jede Beleglücke bindet an ihren eigenen vollständigen Wortlaut; Dateifund ist kein Erfüllungsbeweis. Noch kein Abschluss der Autoren-Durchsicht.",
   "authorPassComplete": true,
   "records": [
-    {"id": "S174:L3", "sourceLine": 3, "sourceEndLine": 3, "section": "DomiGo v2 — START HERE (handover for Fable)", "requirementOrFinding": "> **📋 Reviewing or picking up this project? Read [`../HANDOVER_FOR_REVIEW.md`](../HANDOVER_FOR_REVIEW.md) first** — the review-oriented master handover (scope · intent · execution · how-it-works · **known gaps / risks / review-targets** · open decisions · how-to-pick-up). This doc (`00`) is the original design entry-point; the review guide is the current, gap-focused overlay on top of it.", "subcriteria": [{"n": 1, "from": 0, "to": 158}, {"n": 2, "from": 161, "to": 167}, {"n": 3, "from": 170, "to": 179}, {"n": 4, "from": 182, "to": 194}, {"n": 5, "from": 197, "to": 236}, {"n": 6, "from": 239, "to": 253}, {"n": 7, "from": 256, "to": 323}, {"n": 8, "from": 325, "to": 391}], "sourceTextSha256": "49f28b63c81a9f46fc0eeabb72c23bbe56ff8aec4ed4473a92259ebbcde8a973", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "unverifiziert", "citedFilesAtProductPin": ["docs/HANDOVER_FOR_REVIEW.md"], "unresolvedCitedFiles": [], "historicalIds": [], "dispositionRef": "principles", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"},
-    {"id": "S174:L5", "sourceLine": 5, "sourceEndLine": 7, "section": "DomiGo v2 — START HERE (handover for Fable)", "requirementOrFinding": "You are picking up **DomiGo**, an EFL practice app for **Austrian AHS Klasse 1–4 (MORE! 1–4, level A1→A2, ages ~10–14)** at the Gymnasium der Dominikanerinnen. A working **v1** exists; you are **rebuilding it from scratch**, keeping the durable foundations and fixing what beta testing exposed.", "subcriteria": [{"n": 1, "from": 0, "to": 183}, {"n": 2, "from": 185, "to": 294}], "sourceTextSha256": "096a5e9734b0195b75f19bb66f586f53de728a8df13d2ab8dd3878397ec5b490", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "unverifiziert", "citedFilesAtProductPin": [], "unresolvedCitedFiles": [], "historicalIds": ["A1", "A2"], "dispositionRef": "principles", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"},
-    {"id": "S174:L10", "sourceLine": 10, "sourceEndLine": 14, "section": "DomiGo v2 — START HERE (handover for Fable) / The mission in one paragraph", "requirementOrFinding": "Rebuild DomiGo as a richer, bulletproof learning app for grades 1–4, **rooted entirely in the original MORE! 1–4 textbooks**. First make the **content correct and the student data complete** (P0), then build the new pillars: a guided **Study Path**, an engaging **Story/RPG mode**, teacher **Mock Tests**, and **Listening**. Ship a **PWA on Vercel** first; document a native path. Keep grades **1–4 only** — drop 5B (grades 5–8 are a separate app).", "subcriteria": [{"n": 1, "from": 0, "to": 355}, {"n": 2, "from": 357, "to": 448}], "sourceTextSha256": "9348e0068381eaefa280cc67bd0ca0a98169dfdbafd14a5ede87a7aaa92a05ac", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "unverifiziert", "citedFilesAtProductPin": [], "unresolvedCitedFiles": [], "historicalIds": [], "dispositionRef": "principles", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"},
-    {"id": "S174:L17", "sourceLine": 17, "sourceEndLine": 18, "section": "DomiGo v2 — START HERE (handover for Fable) / Decision log (confirmed by Koki, 2026-06-10)", "requirementOrFinding": "1. **Rebuild from scratch.** v1 is reference/prior-art. What carries forward: the corrected content corpus, the migrated student data, the task-format + grading specs, and the guardrails (`08`).", "subcriteria": [{"n": 1, "from": 0, "to": 194}], "sourceTextSha256": "924f84be24b12755b55d05dc7b93d1713bfae903d741593312c7367d7180a649", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "unverifiziert", "citedFilesAtProductPin": [], "unresolvedCitedFiles": [], "historicalIds": [], "dispositionRef": "principles", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"},
-    {"id": "S174:L19", "sourceLine": 19, "sourceEndLine": 19, "section": "DomiGo v2 — START HERE (handover for Fable) / Decision log (confirmed by Koki, 2026-06-10)", "requirementOrFinding": "2. **Content correctness + migration first (P0).** Vision pillars come after.", "subcriteria": [{"n": 1, "from": 0, "to": 77}], "sourceTextSha256": "615aa18ee44d8800a3299ca53712b8507f0f3cd0cbed241f0cff7ce6bca0221b", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "unverifiziert", "citedFilesAtProductPin": [], "unresolvedCitedFiles": [], "historicalIds": [], "dispositionRef": "principles", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"},
-    {"id": "S174:L20", "sourceLine": 20, "sourceEndLine": 20, "section": "DomiGo v2 — START HERE (handover for Fable) / Decision log (confirmed by Koki, 2026-06-10)", "requirementOrFinding": "3. **PWA-first on Vercel**; native/App-Store documented for later.", "subcriteria": [{"n": 1, "from": 0, "to": 26}, {"n": 2, "from": 28, "to": 66}], "sourceTextSha256": "9e273f3286f7a582033ae99abb2c11d14ba0a4693712d7c4e7a7065b5546fe7e", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "unverifiziert", "citedFilesAtProductPin": [], "unresolvedCitedFiles": [], "historicalIds": [], "dispositionRef": "principles", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"},
-    {"id": "S174:L21", "sourceLine": 21, "sourceEndLine": 22, "section": "DomiGo v2 — START HERE (handover for Fable) / Decision log (confirmed by Koki, 2026-06-10)", "requirementOrFinding": "4. **Docs live in** `docs/handover/` (this folder) **+** a copy in iCloud at `…/Domi Gym/Claude/Cowork Space/Claude Code/DomiGo v2 Handover/`.", "subcriteria": [{"n": 1, "from": 0, "to": 142}], "sourceTextSha256": "d5385442bdd65ecee3ea4426be1c48d0d639baf83c70782d5f0f684acaaa58b1", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "unverifiziert", "citedFilesAtProductPin": [], "unresolvedCitedFiles": [], "historicalIds": [], "dispositionRef": "principles", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"},
-    {"id": "S174:L25", "sourceLine": 25, "sourceEndLine": 25, "section": "DomiGo v2 — START HERE (handover for Fable) / Read order", "requirementOrFinding": "1. `01_status_quo.md` — what v1 already does (the reference implementation), with build status.", "subcriteria": [{"n": 1, "from": 0, "to": 95}], "sourceTextSha256": "9699fa0e7898a2fd21b9df95c1e3d1ec7715011ca791d010b4322e46df6d11b8", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "unverifiziert", "citedFilesAtProductPin": ["docs/handover/01_status_quo.md"], "unresolvedCitedFiles": [], "historicalIds": [], "dispositionRef": "principles", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"},
-    {"id": "S174:L26", "sourceLine": 26, "sourceEndLine": 26, "section": "DomiGo v2 — START HERE (handover for Fable) / Read order", "requirementOrFinding": "2. `02_architecture_and_data_model.md` — stack, DB schema, auth, content model, item types + grading.", "subcriteria": [{"n": 1, "from": 0, "to": 101}], "sourceTextSha256": "435840ec828bc9cf617213965bcd8288db72d30d6f5ca9147302572ca8ef436a", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "unverifiziert", "citedFilesAtProductPin": ["docs/handover/02_architecture_and_data_model.md"], "unresolvedCitedFiles": [], "historicalIds": [], "dispositionRef": "principles", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"},
-    {"id": "S174:L27", "sourceLine": 27, "sourceEndLine": 27, "section": "DomiGo v2 — START HERE (handover for Fable) / Read order", "requirementOrFinding": "3. `03_migration.md` — Firebase→Neon pipeline + the **pending** new-signup import.", "subcriteria": [{"n": 1, "from": 0, "to": 82}], "sourceTextSha256": "d27754a55a3b3bee2116dcbac28da13a934158b6cad4fb8ed0bcf1079023b33c", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "unverifiziert", "citedFilesAtProductPin": ["docs/handover/03_migration.md"], "unresolvedCitedFiles": [], "historicalIds": [], "dispositionRef": "principles", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"},
-    {"id": "S174:L28", "sourceLine": 28, "sourceEndLine": 28, "section": "DomiGo v2 — START HERE (handover for Fable) / Read order", "requirementOrFinding": "4. `04_content_rework.md` — **the P0 work**: item-by-item content fixes + methodology + rules.", "subcriteria": [{"n": 1, "from": 0, "to": 94}], "sourceTextSha256": "daf9a832c368e465b19b29273050869022b3dc9e6224b9aab1478b30d494e309", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "unverifiziert", "citedFilesAtProductPin": ["docs/handover/04_content_rework.md"], "unresolvedCitedFiles": [], "historicalIds": [], "dispositionRef": "principles", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"},
-    {"id": "S174:L29", "sourceLine": 29, "sourceEndLine": 29, "section": "DomiGo v2 — START HERE (handover for Fable) / Read order", "requirementOrFinding": "5. `05_source_materials_map.md` — where the MORE! 1–4 textbooks / tests / audio live (root everything here).", "subcriteria": [{"n": 1, "from": 0, "to": 108}], "sourceTextSha256": "76e52725e71274eddce4aa5340c67135459920924b4a38a4d0b74e82f5ead97a", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "unverifiziert", "citedFilesAtProductPin": ["docs/handover/05_source_materials_map.md"], "unresolvedCitedFiles": [], "historicalIds": [], "dispositionRef": "principles", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"},
-    {"id": "S174:L30", "sourceLine": 30, "sourceEndLine": 30, "section": "DomiGo v2 — START HERE (handover for Fable) / Read order", "requirementOrFinding": "6. `06_vision_pillars.md` — Study Path, Story/RPG, Mock Tests, Listening, UX/UI, platform.", "subcriteria": [{"n": 1, "from": 0, "to": 90}], "sourceTextSha256": "a770bd608da246d0311e24d4b405230653b9c1547a063ff872be9eb424e9b7ef", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "unverifiziert", "citedFilesAtProductPin": ["docs/handover/06_vision_pillars.md"], "unresolvedCitedFiles": [], "historicalIds": [], "dispositionRef": "principles", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"},
-    {"id": "S174:L31", "sourceLine": 31, "sourceEndLine": 31, "section": "DomiGo v2 — START HERE (handover for Fable) / Read order", "requirementOrFinding": "7. `07_task_formats.md` — the item/task format catalog the content engine must support.", "subcriteria": [{"n": 1, "from": 0, "to": 87}], "sourceTextSha256": "756010561a08eba287190c81389ec3ec9a0e0c0c9950aa18d31ea43d0c94afd3", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "unverifiziert", "citedFilesAtProductPin": ["docs/handover/07_task_formats.md"], "unresolvedCitedFiles": [], "historicalIds": [], "dispositionRef": "principles", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"},
-    {"id": "S174:L32", "sourceLine": 32, "sourceEndLine": 32, "section": "DomiGo v2 — START HERE (handover for Fable) / Read order", "requirementOrFinding": "8. `08_design_principles.md` — the durable guardrails. **Non-negotiable. Re-read before every change.**", "subcriteria": [{"n": 1, "from": 0, "to": 103}], "sourceTextSha256": "75c5bcb7e3160f6dcd6d0ab5bd63a0175f2ba9e65867d65b92fa9dfb14611724", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "unverifiziert", "citedFilesAtProductPin": ["docs/handover/08_design_principles.md"], "unresolvedCitedFiles": [], "historicalIds": [], "dispositionRef": "principles", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"},
-    {"id": "S174:L33", "sourceLine": 33, "sourceEndLine": 33, "section": "DomiGo v2 — START HERE (handover for Fable) / Read order", "requirementOrFinding": "9. `09_roadmap_and_open_decisions.md` — sequencing, open decisions, the bulletproof-beta checklist.", "subcriteria": [{"n": 1, "from": 0, "to": 99}], "sourceTextSha256": "7a13d145f71310f94d0dd2aa6e716b0f34f0020d54349ad79a2fafd32b930655", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "unverifiziert", "citedFilesAtProductPin": ["docs/handover/09_roadmap_and_open_decisions.md"], "unresolvedCitedFiles": [], "historicalIds": [], "dispositionRef": "principles", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"},
-    {"id": "S174:L34", "sourceLine": 34, "sourceEndLine": 34, "section": "DomiGo v2 — START HERE (handover for Fable) / Read order", "requirementOrFinding": "10. `PASSOVER_PROMPT.md` — a self-contained kickoff message (also embeds the guardrails).", "subcriteria": [{"n": 1, "from": 0, "to": 89}], "sourceTextSha256": "7880405d552156b2f168bfb33df89b5c94f901dc559113126a8cca87aedbb077", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "unverifiziert", "citedFilesAtProductPin": ["docs/handover/PASSOVER_PROMPT.md"], "unresolvedCitedFiles": [], "historicalIds": [], "dispositionRef": "principles", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"},
-    {"id": "S174:L35", "sourceLine": 35, "sourceEndLine": 35, "section": "DomiGo v2 — START HERE (handover for Fable) / Read order", "requirementOrFinding": "11. `10_game_layer.md` — the four grade games (G1/G2/G3 done; **G4 Syntaxia** remains). `../STATUS_AND_ROADMAP.md` (live build status) + `11_remaining_work.md` (remaining-work passover: G4 · content waves · B2b · TTS · Track D).", "subcriteria": [{"n": 1, "from": 0, "to": 60}, {"n": 2, "from": 62, "to": 188}, {"n": 3, "from": 191, "to": 204}, {"n": 4, "from": 207, "to": 210}, {"n": 5, "from": 213, "to": 216}, {"n": 6, "from": 219, "to": 228}], "sourceTextSha256": "5d7a08273bab8d593741b08fe9d5554e91054ccc78e7b04d15aa902dd66bd1b0", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "unverifiziert", "citedFilesAtProductPin": ["docs/STATUS_AND_ROADMAP.md", "docs/handover/10_game_layer.md", "docs/handover/11_remaining_work.md"], "unresolvedCitedFiles": [], "historicalIds": ["G1", "G2", "G3", "G4"], "dispositionRef": "principles", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"},
-    {"id": "S174:L36", "sourceLine": 36, "sourceEndLine": 36, "section": "DomiGo v2 — START HERE (handover for Fable) / Read order", "requirementOrFinding": "12. `12_g2_passover.md` — the G2 \"The Wrong Name\" detective + pedagogy passover (now **complete**, #40–#60).", "subcriteria": [{"n": 1, "from": 0, "to": 108}], "sourceTextSha256": "d2d9df9bb9b7e2d58ae6108e5cb75e8f2325d358d4c2c6a7aa85fdc5d90cd110", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "unverifiziert", "citedFilesAtProductPin": ["docs/handover/12_g2_passover.md"], "unresolvedCitedFiles": [], "historicalIds": ["G2"], "dispositionRef": "principles", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"},
-    {"id": "S174:L37", "sourceLine": 37, "sourceEndLine": 37, "section": "DomiGo v2 — START HERE (handover for Fable) / Read order", "requirementOrFinding": "13. `13_g4_syntaxia.md` — **the G4 \"Syntaxia\" design + build plan** (the last grade game; PLANNED, not started — one narrative decision open for Koki).", "subcriteria": [{"n": 1, "from": 0, "to": 88}, {"n": 2, "from": 90, "to": 151}], "sourceTextSha256": "e611b724a79d362053a30af02021082f3544cfc194433e6f50992964f16ff355", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "unverifiziert", "citedFilesAtProductPin": ["docs/handover/13_g4_syntaxia.md"], "unresolvedCitedFiles": [], "historicalIds": ["G4"], "dispositionRef": "principles", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"},
-    {"id": "S174:L40", "sourceLine": 40, "sourceEndLine": 43, "section": "DomiGo v2 — START HERE (handover for Fable) / The single most important warning", "requirementOrFinding": "Beta failed on **content quality**, not features. Students hit words they hadn't learned, answers that were marked wrong though correct, and a shaky translation task. **Do not trust that the existing corpus or any sub-agent import is right — verify item by item, against the textbook.** A broken item in front of a real 10-year-old is the failure mode that matters. See `04` and `08`.", "subcriteria": [{"n": 1, "from": 0, "to": 384}], "sourceTextSha256": "3b04ebf1a30daa6166ddd444f3e2e8a6af48fb46fc4ed78eccdd814477f73712", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "unverifiziert", "citedFilesAtProductPin": [], "unresolvedCitedFiles": [], "historicalIds": [], "dispositionRef": "history", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"},
-    {"id": "S174:L46", "sourceLine": 46, "sourceEndLine": 46, "section": "DomiGo v2 — START HERE (handover for Fable) / Status (live: [`../STATUS_AND_ROADMAP.md`](../STATUS_AND_ROADMAP.md) — read it first)", "requirementOrFinding": "- **2026-06-30 — most of the build is done (78 PRs on `main`).** The full **P0 content** (57 units / 5,898 items), the entire **P1 learning track** (Smart Review + Study Path + Listening + Mock Tests + auth + streaks/outbox), **three of the four grade games** (G1 \"Lost Pages\" — a full 15-zone uplift #72–#78 · G2 \"The Wrong Name\" — 15 ch + complete Part-6 pedagogy #40–#60 · G3 \"FOURTEEN\" — 14 episodes #61–#71), and a brand **design system** across all 4 grades (#62/#63) are all merged. No open PRs.", "subcriteria": [{"n": 1, "from": 0, "to": 308}, {"n": 2, "from": 311, "to": 373}, {"n": 3, "from": 376, "to": 502}], "sourceTextSha256": "d055600f2d3234fa19e309d0feb88d02d337f7ee59d5f2eef72cb501b4ea432a", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "unverifiziert", "citedFilesAtProductPin": [], "unresolvedCitedFiles": [], "historicalIds": ["G1", "G2", "G3"], "dispositionRef": "history", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"},
-    {"id": "S174:L47", "sourceLine": 47, "sourceEndLine": 47, "section": "DomiGo v2 — START HERE (handover for Fable) / Status (live: [`../STATUS_AND_ROADMAP.md`](../STATUS_AND_ROADMAP.md) — read it first)", "requirementOrFinding": "- **What's left:** **G4 \"Syntaxia\"** (the last game) · the **listening/test content waves** (1/57 units authored) · **TTS** audio · **B2b** teacher writing-grading · **Track D** (migration cutover + bulletproof-beta + PWA install + cheap-Android perf — gates the Sept-2026 go-live). Full breakdown in `../STATUS_AND_ROADMAP.md` §4 + `11_remaining_work.md`.", "subcriteria": [{"n": 1, "from": 0, "to": 52}, {"n": 2, "from": 55, "to": 113}, {"n": 3, "from": 116, "to": 129}, {"n": 4, "from": 132, "to": 163}, {"n": 5, "from": 166, "to": 356}], "sourceTextSha256": "0fd05bec399d792f49f489c33f3e8b94daf59d700d0bae5a24626506b8b414f0", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "unverifiziert", "citedFilesAtProductPin": ["docs/STATUS_AND_ROADMAP.md", "docs/handover/11_remaining_work.md"], "unresolvedCitedFiles": [], "historicalIds": ["G4"], "dispositionRef": "history", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"},
-    {"id": "S174:L48", "sourceLine": 48, "sourceEndLine": 48, "section": "DomiGo v2 — START HERE (handover for Fable) / Status (live: [`../STATUS_AND_ROADMAP.md`](../STATUS_AND_ROADMAP.md) — read it first)", "requirementOrFinding": "- **G2 pedagogy passover:** [`12_g2_passover.md`](12_g2_passover.md). The grade-game plans (`~/.claude/plans/passover-g2-the-wrong-precious-forest.md` G1, `domigo-v2-velvet-squid.md` G2) are COMPLETE.", "subcriteria": [{"n": 1, "from": 0, "to": 200}], "sourceTextSha256": "28ab3bcc8c4d3af3555fee81cbde480dc1fe84ee0e0ddcd64f15af785ca31c7f", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "unverifiziert", "citedFilesAtProductPin": ["docs/handover/12_g2_passover.md"], "unresolvedCitedFiles": ["domigo-v2-velvet-squid.md", "~/.claude/plans/passover-g2-the-wrong-precious-forest.md"], "historicalIds": ["G1", "G2"], "dispositionRef": "history", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"},
-    {"id": "S174:L49", "sourceLine": 49, "sourceEndLine": 49, "section": "DomiGo v2 — START HERE (handover for Fable) / Status (live: [`../STATUS_AND_ROADMAP.md`](../STATUS_AND_ROADMAP.md) — read it first)", "requirementOrFinding": "- **Live content-wave status → [`docs/runbooks/items-wave.md`](../runbooks/items-wave.md):** the items wave is ✅ **COMPLETE (2026-06-17) — 57/57 units approved at 0.0% reject** (G1 ✓, G2 ✓, G3 ✓, G4 ✓), all 4 structure catalogs generated, **5,898 items** (`pnpm content status` → `approved=57`). That runbook is the source of truth for the wave receipt, the per-unit rhythm, recurring fixes, and the now-resolved song/band bank gap (§7). Next tracks (runbook §4): merge `feat/items-wave-g2`, then wire items into the trainer surfaces (the foundation harness — loader + all-format renderer + grader).", "subcriteria": [{"n": 1, "from": 0, "to": 599}], "sourceTextSha256": "aa803a9154653c7ddb39f864e36b6c1428dfebd20b0ef9faeace98f8e953420e", "historicalVerdict": "Historische Bau-/Abschlussbehauptung im erhaltenen Wortlaut; muss vom heutigen Nachweis getrennt bleiben.", "state": "unverifiziert", "citedFilesAtProductPin": ["docs/runbooks/items-wave.md"], "unresolvedCitedFiles": [], "historicalIds": ["G1", "G2", "G3", "G4"], "dispositionRef": "history", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"},
-    {"id": "S174:L50", "sourceLine": 50, "sourceEndLine": 50, "section": "DomiGo v2 — START HERE (handover for Fable) / Status (live: [`../STATUS_AND_ROADMAP.md`](../STATUS_AND_ROADMAP.md) — read it first)", "requirementOrFinding": "- v1 is live at `https://domigo-silk.vercel.app` (repo `VEHO-DOMI/domigo`, private).", "subcriteria": [{"n": 1, "from": 0, "to": 84}], "sourceTextSha256": "f466c1ad21ffdff220d0dab4fae93b34361d3b3ce210df8116fef3727b7cb41b", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "unverifiziert", "citedFilesAtProductPin": [], "unresolvedCitedFiles": [], "historicalIds": [], "dispositionRef": "history", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"},
-    {"id": "S174:L51", "sourceLine": 51, "sourceEndLine": 52, "section": "DomiGo v2 — START HERE (handover for Fable) / Status (live: [`../STATUS_AND_ROADMAP.md`](../STATUS_AND_ROADMAP.md) — read it first)", "requirementOrFinding": "- Latest corpus fix merged: [#41 — grammar matching data](https://github.com/VEHO-DOMI/domigo/pull/41) (all 115 `matching` items now render).", "subcriteria": [{"n": 1, "from": 0, "to": 141}], "sourceTextSha256": "5d49d2ebb6396f51ec30022bc4051c13f842cdf4e5c918949f2d257d4787e40e", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "unverifiziert", "citedFilesAtProductPin": [], "unresolvedCitedFiles": [], "historicalIds": [], "dispositionRef": "history", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"},
-    {"id": "S174:L53", "sourceLine": 53, "sourceEndLine": 54, "section": "DomiGo v2 — START HERE (handover for Fable) / Status (live: [`../STATUS_AND_ROADMAP.md`](../STATUS_AND_ROADMAP.md) — read it first)", "requirementOrFinding": "- The local iCloud working copy is **concurrently edited by other sessions + iCloud-synced** — do git work in a fresh `/tmp` clone (`gh repo clone VEHO-DOMI/domigo`), never in the iCloud tree.", "subcriteria": [{"n": 1, "from": 0, "to": 192}], "sourceTextSha256": "fb0ecc77ef4d8b4541c731433526e789f9cd0c33120ad6907649fd275c2817bc", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "unverifiziert", "citedFilesAtProductPin": [], "unresolvedCitedFiles": [], "historicalIds": [], "dispositionRef": "history", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"}
+    {
+      "id": "S174:L3",
+      "sourceLine": 3,
+      "sourceEndLine": 3,
+      "section": "DomiGo v2 — START HERE (handover for Fable)",
+      "requirementOrFinding": "> **📋 Reviewing or picking up this project? Read [`../HANDOVER_FOR_REVIEW.md`](../HANDOVER_FOR_REVIEW.md) first** — the review-oriented master handover (scope · intent · execution · how-it-works · **known gaps / risks / review-targets** · open decisions · how-to-pick-up). This doc (`00`) is the original design entry-point; the review guide is the current, gap-focused overlay on top of it.",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 158
+        },
+        {
+          "n": 2,
+          "from": 161,
+          "to": 167
+        },
+        {
+          "n": 3,
+          "from": 170,
+          "to": 179
+        },
+        {
+          "n": 4,
+          "from": 182,
+          "to": 194
+        },
+        {
+          "n": 5,
+          "from": 197,
+          "to": 236
+        },
+        {
+          "n": 6,
+          "from": 239,
+          "to": 253
+        },
+        {
+          "n": 7,
+          "from": 256,
+          "to": 323
+        },
+        {
+          "n": 8,
+          "from": 325,
+          "to": 391
+        }
+      ],
+      "sourceTextSha256": "49f28b63c81a9f46fc0eeabb72c23bbe56ff8aec4ed4473a92259ebbcde8a973",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "unverifiziert",
+      "citedFilesAtProductPin": [
+        "docs/HANDOVER_FOR_REVIEW.md"
+      ],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "principles",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"
+    },
+    {
+      "id": "S174:L5",
+      "sourceLine": 5,
+      "sourceEndLine": 7,
+      "section": "DomiGo v2 — START HERE (handover for Fable)",
+      "requirementOrFinding": "You are picking up **DomiGo**, an EFL practice app for **Austrian AHS Klasse 1–4 (MORE! 1–4, level A1→A2, ages ~10–14)** at the Gymnasium der Dominikanerinnen. A working **v1** exists; you are **rebuilding it from scratch**, keeping the durable foundations and fixing what beta testing exposed.",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 183
+        },
+        {
+          "n": 2,
+          "from": 185,
+          "to": 294
+        }
+      ],
+      "sourceTextSha256": "096a5e9734b0195b75f19bb66f586f53de728a8df13d2ab8dd3878397ec5b490",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "unverifiziert",
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [
+        "A1",
+        "A2"
+      ],
+      "dispositionRef": "principles",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"
+    },
+    {
+      "id": "S174:L10",
+      "sourceLine": 10,
+      "sourceEndLine": 14,
+      "section": "DomiGo v2 — START HERE (handover for Fable) / The mission in one paragraph",
+      "requirementOrFinding": "Rebuild DomiGo as a richer, bulletproof learning app for grades 1–4, **rooted entirely in the original MORE! 1–4 textbooks**. First make the **content correct and the student data complete** (P0), then build the new pillars: a guided **Study Path**, an engaging **Story/RPG mode**, teacher **Mock Tests**, and **Listening**. Ship a **PWA on Vercel** first; document a native path. Keep grades **1–4 only** — drop 5B (grades 5–8 are a separate app).",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 355
+        },
+        {
+          "n": 2,
+          "from": 357,
+          "to": 448
+        }
+      ],
+      "sourceTextSha256": "9348e0068381eaefa280cc67bd0ca0a98169dfdbafd14a5ede87a7aaa92a05ac",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "unverifiziert",
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "principles",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"
+    },
+    {
+      "id": "S174:L17",
+      "sourceLine": 17,
+      "sourceEndLine": 18,
+      "section": "DomiGo v2 — START HERE (handover for Fable) / Decision log (confirmed by Koki, 2026-06-10)",
+      "requirementOrFinding": "1. **Rebuild from scratch.** v1 is reference/prior-art. What carries forward: the corrected content corpus, the migrated student data, the task-format + grading specs, and the guardrails (`08`).",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 194
+        }
+      ],
+      "sourceTextSha256": "924f84be24b12755b55d05dc7b93d1713bfae903d741593312c7367d7180a649",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "unverifiziert",
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "principles",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"
+    },
+    {
+      "id": "S174:L19",
+      "sourceLine": 19,
+      "sourceEndLine": 19,
+      "section": "DomiGo v2 — START HERE (handover for Fable) / Decision log (confirmed by Koki, 2026-06-10)",
+      "requirementOrFinding": "2. **Content correctness + migration first (P0).** Vision pillars come after.",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 77
+        }
+      ],
+      "sourceTextSha256": "615aa18ee44d8800a3299ca53712b8507f0f3cd0cbed241f0cff7ce6bca0221b",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "unverifiziert",
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "principles",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"
+    },
+    {
+      "id": "S174:L20",
+      "sourceLine": 20,
+      "sourceEndLine": 20,
+      "section": "DomiGo v2 — START HERE (handover for Fable) / Decision log (confirmed by Koki, 2026-06-10)",
+      "requirementOrFinding": "3. **PWA-first on Vercel**; native/App-Store documented for later.",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 26
+        },
+        {
+          "n": 2,
+          "from": 28,
+          "to": 66
+        }
+      ],
+      "sourceTextSha256": "9e273f3286f7a582033ae99abb2c11d14ba0a4693712d7c4e7a7065b5546fe7e",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "unverifiziert",
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "principles",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"
+    },
+    {
+      "id": "S174:L21",
+      "sourceLine": 21,
+      "sourceEndLine": 22,
+      "section": "DomiGo v2 — START HERE (handover for Fable) / Decision log (confirmed by Koki, 2026-06-10)",
+      "requirementOrFinding": "4. **Docs live in** `docs/handover/` (this folder) **+** a copy in iCloud at `…/Domi Gym/Claude/Cowork Space/Claude Code/DomiGo v2 Handover/`.",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 142
+        }
+      ],
+      "sourceTextSha256": "d5385442bdd65ecee3ea4426be1c48d0d639baf83c70782d5f0f684acaaa58b1",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "unverifiziert",
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "principles",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"
+    },
+    {
+      "id": "S174:L25",
+      "sourceLine": 25,
+      "sourceEndLine": 25,
+      "section": "DomiGo v2 — START HERE (handover for Fable) / Read order",
+      "requirementOrFinding": "1. `01_status_quo.md` — what v1 already does (the reference implementation), with build status.",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 95
+        }
+      ],
+      "sourceTextSha256": "9699fa0e7898a2fd21b9df95c1e3d1ec7715011ca791d010b4322e46df6d11b8",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "unverifiziert",
+      "citedFilesAtProductPin": [
+        "docs/handover/01_status_quo.md"
+      ],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "principles",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"
+    },
+    {
+      "id": "S174:L26",
+      "sourceLine": 26,
+      "sourceEndLine": 26,
+      "section": "DomiGo v2 — START HERE (handover for Fable) / Read order",
+      "requirementOrFinding": "2. `02_architecture_and_data_model.md` — stack, DB schema, auth, content model, item types + grading.",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 101
+        }
+      ],
+      "sourceTextSha256": "435840ec828bc9cf617213965bcd8288db72d30d6f5ca9147302572ca8ef436a",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "unverifiziert",
+      "citedFilesAtProductPin": [
+        "docs/handover/02_architecture_and_data_model.md"
+      ],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "principles",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"
+    },
+    {
+      "id": "S174:L27",
+      "sourceLine": 27,
+      "sourceEndLine": 27,
+      "section": "DomiGo v2 — START HERE (handover for Fable) / Read order",
+      "requirementOrFinding": "3. `03_migration.md` — Firebase→Neon pipeline + the **pending** new-signup import.",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 82
+        }
+      ],
+      "sourceTextSha256": "d27754a55a3b3bee2116dcbac28da13a934158b6cad4fb8ed0bcf1079023b33c",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "unverifiziert",
+      "citedFilesAtProductPin": [
+        "docs/handover/03_migration.md"
+      ],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "ops",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf",
+      "replacement": {
+        "source": "S234:L158–164 (P-R4, 2026-08-23)",
+        "decision": "Nur Firebase-Nachimport, alter Claim und Archivlöschung ersetzt; Datenbewahrung/Snapshot bleibt unter rollover-preservation. Gemischte Zeilen behalten alle übrigen Kriterien."
+      },
+      "nextAction": "Gemischte Zusage: nur der Firebase-Import/Archivlöschanteil ist ersetzt. Alle weiteren Speicher-, Last-, Lernstand- und UI-Kriterien bleiben erhalten und benötigen ihre jeweiligen Belege."
+    },
+    {
+      "id": "S174:L28",
+      "sourceLine": 28,
+      "sourceEndLine": 28,
+      "section": "DomiGo v2 — START HERE (handover for Fable) / Read order",
+      "requirementOrFinding": "4. `04_content_rework.md` — **the P0 work**: item-by-item content fixes + methodology + rules.",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 94
+        }
+      ],
+      "sourceTextSha256": "daf9a832c368e465b19b29273050869022b3dc9e6224b9aab1478b30d494e309",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "unverifiziert",
+      "citedFilesAtProductPin": [
+        "docs/handover/04_content_rework.md"
+      ],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "principles",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"
+    },
+    {
+      "id": "S174:L29",
+      "sourceLine": 29,
+      "sourceEndLine": 29,
+      "section": "DomiGo v2 — START HERE (handover for Fable) / Read order",
+      "requirementOrFinding": "5. `05_source_materials_map.md` — where the MORE! 1–4 textbooks / tests / audio live (root everything here).",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 108
+        }
+      ],
+      "sourceTextSha256": "76e52725e71274eddce4aa5340c67135459920924b4a38a4d0b74e82f5ead97a",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "unverifiziert",
+      "citedFilesAtProductPin": [
+        "docs/handover/05_source_materials_map.md"
+      ],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "principles",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"
+    },
+    {
+      "id": "S174:L30",
+      "sourceLine": 30,
+      "sourceEndLine": 30,
+      "section": "DomiGo v2 — START HERE (handover for Fable) / Read order",
+      "requirementOrFinding": "6. `06_vision_pillars.md` — Study Path, Story/RPG, Mock Tests, Listening, UX/UI, platform.",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 90
+        }
+      ],
+      "sourceTextSha256": "a770bd608da246d0311e24d4b405230653b9c1547a063ff872be9eb424e9b7ef",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "unverifiziert",
+      "citedFilesAtProductPin": [
+        "docs/handover/06_vision_pillars.md"
+      ],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "principles",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"
+    },
+    {
+      "id": "S174:L31",
+      "sourceLine": 31,
+      "sourceEndLine": 31,
+      "section": "DomiGo v2 — START HERE (handover for Fable) / Read order",
+      "requirementOrFinding": "7. `07_task_formats.md` — the item/task format catalog the content engine must support.",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 87
+        }
+      ],
+      "sourceTextSha256": "756010561a08eba287190c81389ec3ec9a0e0c0c9950aa18d31ea43d0c94afd3",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "unverifiziert",
+      "citedFilesAtProductPin": [
+        "docs/handover/07_task_formats.md"
+      ],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "principles",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"
+    },
+    {
+      "id": "S174:L32",
+      "sourceLine": 32,
+      "sourceEndLine": 32,
+      "section": "DomiGo v2 — START HERE (handover for Fable) / Read order",
+      "requirementOrFinding": "8. `08_design_principles.md` — the durable guardrails. **Non-negotiable. Re-read before every change.**",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 103
+        }
+      ],
+      "sourceTextSha256": "75c5bcb7e3160f6dcd6d0ab5bd63a0175f2ba9e65867d65b92fa9dfb14611724",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "unverifiziert",
+      "citedFilesAtProductPin": [
+        "docs/handover/08_design_principles.md"
+      ],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "principles",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"
+    },
+    {
+      "id": "S174:L33",
+      "sourceLine": 33,
+      "sourceEndLine": 33,
+      "section": "DomiGo v2 — START HERE (handover for Fable) / Read order",
+      "requirementOrFinding": "9. `09_roadmap_and_open_decisions.md` — sequencing, open decisions, the bulletproof-beta checklist.",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 99
+        }
+      ],
+      "sourceTextSha256": "7a13d145f71310f94d0dd2aa6e716b0f34f0020d54349ad79a2fafd32b930655",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "unverifiziert",
+      "citedFilesAtProductPin": [
+        "docs/handover/09_roadmap_and_open_decisions.md"
+      ],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "principles",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"
+    },
+    {
+      "id": "S174:L34",
+      "sourceLine": 34,
+      "sourceEndLine": 34,
+      "section": "DomiGo v2 — START HERE (handover for Fable) / Read order",
+      "requirementOrFinding": "10. `PASSOVER_PROMPT.md` — a self-contained kickoff message (also embeds the guardrails).",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 89
+        }
+      ],
+      "sourceTextSha256": "7880405d552156b2f168bfb33df89b5c94f901dc559113126a8cca87aedbb077",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "unverifiziert",
+      "citedFilesAtProductPin": [
+        "docs/handover/PASSOVER_PROMPT.md"
+      ],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "principles",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"
+    },
+    {
+      "id": "S174:L35",
+      "sourceLine": 35,
+      "sourceEndLine": 35,
+      "section": "DomiGo v2 — START HERE (handover for Fable) / Read order",
+      "requirementOrFinding": "11. `10_game_layer.md` — the four grade games (G1/G2/G3 done; **G4 Syntaxia** remains). `../STATUS_AND_ROADMAP.md` (live build status) + `11_remaining_work.md` (remaining-work passover: G4 · content waves · B2b · TTS · Track D).",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 60
+        },
+        {
+          "n": 2,
+          "from": 62,
+          "to": 188
+        },
+        {
+          "n": 3,
+          "from": 191,
+          "to": 204
+        },
+        {
+          "n": 4,
+          "from": 207,
+          "to": 210
+        },
+        {
+          "n": 5,
+          "from": 213,
+          "to": 216
+        },
+        {
+          "n": 6,
+          "from": 219,
+          "to": 228
+        }
+      ],
+      "sourceTextSha256": "5d7a08273bab8d593741b08fe9d5554e91054ccc78e7b04d15aa902dd66bd1b0",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "unverifiziert",
+      "citedFilesAtProductPin": [
+        "docs/STATUS_AND_ROADMAP.md",
+        "docs/handover/10_game_layer.md",
+        "docs/handover/11_remaining_work.md"
+      ],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [
+        "G1",
+        "G2",
+        "G3",
+        "G4"
+      ],
+      "dispositionRef": "principles",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"
+    },
+    {
+      "id": "S174:L36",
+      "sourceLine": 36,
+      "sourceEndLine": 36,
+      "section": "DomiGo v2 — START HERE (handover for Fable) / Read order",
+      "requirementOrFinding": "12. `12_g2_passover.md` — the G2 \"The Wrong Name\" detective + pedagogy passover (now **complete**, #40–#60).",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 108
+        }
+      ],
+      "sourceTextSha256": "d2d9df9bb9b7e2d58ae6108e5cb75e8f2325d358d4c2c6a7aa85fdc5d90cd110",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "unverifiziert",
+      "citedFilesAtProductPin": [
+        "docs/handover/12_g2_passover.md"
+      ],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [
+        "G2"
+      ],
+      "dispositionRef": "principles",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"
+    },
+    {
+      "id": "S174:L37",
+      "sourceLine": 37,
+      "sourceEndLine": 37,
+      "section": "DomiGo v2 — START HERE (handover for Fable) / Read order",
+      "requirementOrFinding": "13. `13_g4_syntaxia.md` — **the G4 \"Syntaxia\" design + build plan** (the last grade game; PLANNED, not started — one narrative decision open for Koki).",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 88
+        },
+        {
+          "n": 2,
+          "from": 90,
+          "to": 151
+        }
+      ],
+      "sourceTextSha256": "e611b724a79d362053a30af02021082f3544cfc194433e6f50992964f16ff355",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "unverifiziert",
+      "citedFilesAtProductPin": [
+        "docs/handover/13_g4_syntaxia.md"
+      ],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [
+        "G4"
+      ],
+      "dispositionRef": "principles",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"
+    },
+    {
+      "id": "S174:L40",
+      "sourceLine": 40,
+      "sourceEndLine": 43,
+      "section": "DomiGo v2 — START HERE (handover for Fable) / The single most important warning",
+      "requirementOrFinding": "Beta failed on **content quality**, not features. Students hit words they hadn't learned, answers that were marked wrong though correct, and a shaky translation task. **Do not trust that the existing corpus or any sub-agent import is right — verify item by item, against the textbook.** A broken item in front of a real 10-year-old is the failure mode that matters. See `04` and `08`.",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 384
+        }
+      ],
+      "sourceTextSha256": "3b04ebf1a30daa6166ddd444f3e2e8a6af48fb46fc4ed78eccdd814477f73712",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "unverifiziert",
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "history",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"
+    },
+    {
+      "id": "S174:L46",
+      "sourceLine": 46,
+      "sourceEndLine": 46,
+      "section": "DomiGo v2 — START HERE (handover for Fable) / Status (live: [`../STATUS_AND_ROADMAP.md`](../STATUS_AND_ROADMAP.md) — read it first)",
+      "requirementOrFinding": "- **2026-06-30 — most of the build is done (78 PRs on `main`).** The full **P0 content** (57 units / 5,898 items), the entire **P1 learning track** (Smart Review + Study Path + Listening + Mock Tests + auth + streaks/outbox), **three of the four grade games** (G1 \"Lost Pages\" — a full 15-zone uplift #72–#78 · G2 \"The Wrong Name\" — 15 ch + complete Part-6 pedagogy #40–#60 · G3 \"FOURTEEN\" — 14 episodes #61–#71), and a brand **design system** across all 4 grades (#62/#63) are all merged. No open PRs.",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 308
+        },
+        {
+          "n": 2,
+          "from": 311,
+          "to": 373
+        },
+        {
+          "n": 3,
+          "from": 376,
+          "to": 502
+        }
+      ],
+      "sourceTextSha256": "d055600f2d3234fa19e309d0feb88d02d337f7ee59d5f2eef72cb501b4ea432a",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "unverifiziert",
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [
+        "G1",
+        "G2",
+        "G3"
+      ],
+      "dispositionRef": "history",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"
+    },
+    {
+      "id": "S174:L47",
+      "sourceLine": 47,
+      "sourceEndLine": 47,
+      "section": "DomiGo v2 — START HERE (handover for Fable) / Status (live: [`../STATUS_AND_ROADMAP.md`](../STATUS_AND_ROADMAP.md) — read it first)",
+      "requirementOrFinding": "- **What's left:** **G4 \"Syntaxia\"** (the last game) · the **listening/test content waves** (1/57 units authored) · **TTS** audio · **B2b** teacher writing-grading · **Track D** (migration cutover + bulletproof-beta + PWA install + cheap-Android perf — gates the Sept-2026 go-live). Full breakdown in `../STATUS_AND_ROADMAP.md` §4 + `11_remaining_work.md`.",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 52
+        },
+        {
+          "n": 2,
+          "from": 55,
+          "to": 113
+        },
+        {
+          "n": 3,
+          "from": 116,
+          "to": 129
+        },
+        {
+          "n": 4,
+          "from": 132,
+          "to": 163
+        },
+        {
+          "n": 5,
+          "from": 166,
+          "to": 356
+        }
+      ],
+      "sourceTextSha256": "0fd05bec399d792f49f489c33f3e8b94daf59d700d0bae5a24626506b8b414f0",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "unverifiziert",
+      "citedFilesAtProductPin": [
+        "docs/STATUS_AND_ROADMAP.md",
+        "docs/handover/11_remaining_work.md"
+      ],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [
+        "G4"
+      ],
+      "dispositionRef": "history",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"
+    },
+    {
+      "id": "S174:L48",
+      "sourceLine": 48,
+      "sourceEndLine": 48,
+      "section": "DomiGo v2 — START HERE (handover for Fable) / Status (live: [`../STATUS_AND_ROADMAP.md`](../STATUS_AND_ROADMAP.md) — read it first)",
+      "requirementOrFinding": "- **G2 pedagogy passover:** [`12_g2_passover.md`](12_g2_passover.md). The grade-game plans (`~/.claude/plans/passover-g2-the-wrong-precious-forest.md` G1, `domigo-v2-velvet-squid.md` G2) are COMPLETE.",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 200
+        }
+      ],
+      "sourceTextSha256": "28ab3bcc8c4d3af3555fee81cbde480dc1fe84ee0e0ddcd64f15af785ca31c7f",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "unverifiziert",
+      "citedFilesAtProductPin": [
+        "docs/handover/12_g2_passover.md"
+      ],
+      "unresolvedCitedFiles": [
+        "domigo-v2-velvet-squid.md",
+        "~/.claude/plans/passover-g2-the-wrong-precious-forest.md"
+      ],
+      "historicalIds": [
+        "G1",
+        "G2"
+      ],
+      "dispositionRef": "history",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"
+    },
+    {
+      "id": "S174:L49",
+      "sourceLine": 49,
+      "sourceEndLine": 49,
+      "section": "DomiGo v2 — START HERE (handover for Fable) / Status (live: [`../STATUS_AND_ROADMAP.md`](../STATUS_AND_ROADMAP.md) — read it first)",
+      "requirementOrFinding": "- **Live content-wave status → [`docs/runbooks/items-wave.md`](../runbooks/items-wave.md):** the items wave is ✅ **COMPLETE (2026-06-17) — 57/57 units approved at 0.0% reject** (G1 ✓, G2 ✓, G3 ✓, G4 ✓), all 4 structure catalogs generated, **5,898 items** (`pnpm content status` → `approved=57`). That runbook is the source of truth for the wave receipt, the per-unit rhythm, recurring fixes, and the now-resolved song/band bank gap (§7). Next tracks (runbook §4): merge `feat/items-wave-g2`, then wire items into the trainer surfaces (the foundation harness — loader + all-format renderer + grader).",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 599
+        }
+      ],
+      "sourceTextSha256": "aa803a9154653c7ddb39f864e36b6c1428dfebd20b0ef9faeace98f8e953420e",
+      "historicalVerdict": "Historische Bau-/Abschlussbehauptung im erhaltenen Wortlaut; muss vom heutigen Nachweis getrennt bleiben.",
+      "state": "unverifiziert",
+      "citedFilesAtProductPin": [
+        "docs/runbooks/items-wave.md"
+      ],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [
+        "G1",
+        "G2",
+        "G3",
+        "G4"
+      ],
+      "dispositionRef": "history",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"
+    },
+    {
+      "id": "S174:L50",
+      "sourceLine": 50,
+      "sourceEndLine": 50,
+      "section": "DomiGo v2 — START HERE (handover for Fable) / Status (live: [`../STATUS_AND_ROADMAP.md`](../STATUS_AND_ROADMAP.md) — read it first)",
+      "requirementOrFinding": "- v1 is live at `https://domigo-silk.vercel.app` (repo `VEHO-DOMI/domigo`, private).",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 84
+        }
+      ],
+      "sourceTextSha256": "f466c1ad21ffdff220d0dab4fae93b34361d3b3ce210df8116fef3727b7cb41b",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "unverifiziert",
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "history",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"
+    },
+    {
+      "id": "S174:L51",
+      "sourceLine": 51,
+      "sourceEndLine": 52,
+      "section": "DomiGo v2 — START HERE (handover for Fable) / Status (live: [`../STATUS_AND_ROADMAP.md`](../STATUS_AND_ROADMAP.md) — read it first)",
+      "requirementOrFinding": "- Latest corpus fix merged: [#41 — grammar matching data](https://github.com/VEHO-DOMI/domigo/pull/41) (all 115 `matching` items now render).",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 141
+        }
+      ],
+      "sourceTextSha256": "5d49d2ebb6396f51ec30022bc4051c13f842cdf4e5c918949f2d257d4787e40e",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "unverifiziert",
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "history",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"
+    },
+    {
+      "id": "S174:L53",
+      "sourceLine": 53,
+      "sourceEndLine": 54,
+      "section": "DomiGo v2 — START HERE (handover for Fable) / Status (live: [`../STATUS_AND_ROADMAP.md`](../STATUS_AND_ROADMAP.md) — read it first)",
+      "requirementOrFinding": "- The local iCloud working copy is **concurrently edited by other sessions + iCloud-synced** — do git work in a fresh `/tmp` clone (`gh repo clone VEHO-DOMI/domigo`), never in the iCloud tree.",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 192
+        }
+      ],
+      "sourceTextSha256": "fb0ecc77ef4d8b4541c731433526e789f9cd0c33120ad6907649fd275c2817bc",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "unverifiziert",
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "history",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"
+    }
   ],
   "previousDispositions": [],
   "sourceSpecificAssessment": "Originalauftrag: vollständige Inhalte, Daten und Lernhandlungen; historische Juni-Zahlen/Spielnamen sind keine heutige Freigabe. Sommer-/Septemberfristen, Produktionsbefehle und Rollen gelten nicht als heutige Erlaubnis.",

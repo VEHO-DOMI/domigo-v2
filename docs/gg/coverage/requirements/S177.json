@@ -8,25 +8,473 @@
   "scope": "Kriterien-/Befundstellen einschließlich Unterlisten und Tabellen. Historische Aussagen bleiben getrennt von aktuellem Nachweis. Jede Beleglücke bindet an ihren eigenen vollständigen Wortlaut; Dateifund ist kein Erfüllungsbeweis. Noch kein Abschluss der Autoren-Durchsicht.",
   "authorPassComplete": true,
   "records": [
-    {"id": "S177:L3", "sourceLine": 3, "sourceEndLine": 5, "section": "03 — Firebase → Neon Migration (status + the pending piece)", "requirementOrFinding": "The legacy trainers were Firebase-backed. Students had accounts (username + 4-digit PIN) with XP, badges, streaks. v1 built a pipeline to carry those into Neon so students keep their progress. **The pipeline ran once (2026-05-17); new signups since then are NOT yet imported.**", "subcriteria": [{"n": 1, "from": 0, "to": 229}, {"n": 2, "from": 231, "to": 277}], "sourceTextSha256": "808693541e0cb6225ddd4cff2418915d3b87a6a07a76a91600aa426b41985701", "historicalVerdict": "Historische Bau-/Abschlussbehauptung im erhaltenen Wortlaut; muss vom heutigen Nachweis getrennt bleiben.", "state": "unverifiziert", "citedFilesAtProductPin": [], "unresolvedCitedFiles": [], "historicalIds": [], "dispositionRef": "migration-history", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"},
-    {"id": "S177:L8", "sourceLine": 8, "sourceEndLine": 15, "section": "03 — Firebase → Neon Migration (status + the pending piece) / Complete, \"pixel-perfect\" import (Koki's words)", "requirementOrFinding": "\"Finish the migration to Vercel, pixel-perfect imported\" = the move off the legacy trainers + Firebase to v2 must carry **everything over with nothing dropped or mangled**: the **complete content corpus** (every word / item / mode), **every feature** (including ones v1 dropped in its own migration — e.g. the legacy **story mode**, see `06`/3.3), and **all student data + progress**. Treat the legacy trainers + v1 as the parity oracle and **diff against them** so coverage is provably complete before any go-live. (Whether \"pixel-perfect\" also means matching the legacy *visual* design is a question for Koki — the UX is being overhauled (`06`/3.7), so the safe reading is total **content/feature/data fidelity**, with the legacy look as reference, not a constraint.)", "subcriteria": [{"n": 1, "from": 0, "to": 769}], "sourceTextSha256": "54776b2c9e18c2ea7b3f1cf14bf6c8ead93c5ee42aabf17ebbc1879a84bd49c5", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "unverifiziert", "citedFilesAtProductPin": [], "unresolvedCitedFiles": [], "historicalIds": [], "dispositionRef": "migration-history", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"},
-    {"id": "S177:L18", "sourceLine": 18, "sourceEndLine": 18, "section": "03 — Firebase → Neon Migration (status + the pending piece) / The pipeline (`scripts/migrate/`)", "requirementOrFinding": "Three idempotent, read-until-the-last-step scripts:", "subcriteria": [{"n": 1, "from": 0, "to": 51}], "sourceTextSha256": "40bd635354c50cd70032e590c4049ddfa14dc14079df48b5ca6eeba9b1d4513d", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "unverifiziert", "citedFilesAtProductPin": [], "unresolvedCitedFiles": [], "historicalIds": [], "dispositionRef": "migration-history", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"},
-    {"id": "S177:L19", "sourceLine": 19, "sourceEndLine": 21, "section": "03 — Firebase → Neon Migration (status + the pending piece) / The pipeline (`scripts/migrate/`)", "requirementOrFinding": "1. **`export-firebase.mjs`** (`npm run migrate:export`) — reads Firestore (project `veho-vocab`, `classes/*/students/*`), writes `exports/<ISO>/firestore-<classSlug>.json` + `summary.json`. Needs Google ADC (`gcloud auth application-default login` or `GOOGLE_APPLICATION_CREDENTIALS`). Read-only.", "subcriteria": [{"n": 1, "from": 0, "to": 296}], "sourceTextSha256": "d31c2e90a506798dda4b448bcab053b2a51de29fd4de63249bbe903ac32c6199", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "unverifiziert", "citedFilesAtProductPin": [], "unresolvedCitedFiles": ["export-firebase.mjs", "exports/<ISO>/firestore-<classSlug>.json", "summary.json"], "historicalIds": [], "dispositionRef": "migration-history", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"},
-    {"id": "S177:L22", "sourceLine": 22, "sourceEndLine": 25, "section": "03 — Firebase → Neon Migration (status + the pending piece) / The pipeline (`scripts/migrate/`)", "requirementOrFinding": "2. **`build-legacy-students.mjs`** (`npm run migrate:build`) — reads the export + `class_legacy_map` (from Neon, populated via the `/admin/legacy-map` wizard), classifies each PIN (`plain`→re-bcrypt / `bcrypt`→keep / `unknown`→teacher must reset), de-dupes by latest session, writes idempotent `legacy-students.sql` (`ON CONFLICT DO NOTHING`) + audit JSONs. Read-only.", "subcriteria": [{"n": 1, "from": 0, "to": 368}], "sourceTextSha256": "9d0b1de352ae80dc9f9350b6c989698b79e6f9aa05a253e347f592f1f5a04b73", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "unverifiziert", "citedFilesAtProductPin": [], "unresolvedCitedFiles": ["build-legacy-students.mjs"], "historicalIds": [], "dispositionRef": "migration-history", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"},
-    {"id": "S177:L26", "sourceLine": 26, "sourceEndLine": 27, "section": "03 — Firebase → Neon Migration (status + the pending piece) / The pipeline (`scripts/migrate/`)", "requirementOrFinding": "3. **`apply-legacy-students.mjs`** (`npm run migrate:apply`) — the one write step; inserts into `legacy_students`. Safe to re-run.", "subcriteria": [{"n": 1, "from": 0, "to": 81}, {"n": 2, "from": 83, "to": 130}], "sourceTextSha256": "464d74d7044af11a73a774886fc69537cc17b034b7d6d0e253e20563c55289f3", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "unverifiziert", "citedFilesAtProductPin": [], "unresolvedCitedFiles": ["apply-legacy-students.mjs"], "historicalIds": [], "dispositionRef": "migration-history", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"},
-    {"id": "S177:L29", "sourceLine": 29, "sourceEndLine": 31, "section": "03 — Firebase → Neon Migration (status + the pending piece) / The pipeline (`scripts/migrate/`)", "requirementOrFinding": "Orchestrator: `npm run migrate:recipe`. A migrated student **claims** their account at `/signin/migrate`: legacy username + 4-digit PIN → set a new 6-digit PIN → `realName` → `legacy_students.newUserId` linked, XP/badges/streak copied into the new `users` row.", "subcriteria": [{"n": 1, "from": 0, "to": 260}], "sourceTextSha256": "7991ff97e74625c90341ea9b25636d3cae6d1fcda01b174a2c0648e1ae54efef", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "unverifiziert", "citedFilesAtProductPin": [], "unresolvedCitedFiles": [], "historicalIds": [], "dispositionRef": "migration-history", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"},
-    {"id": "S177:L34", "sourceLine": 34, "sourceEndLine": 36, "section": "03 — Firebase → Neon Migration (status + the pending piece) / Current state", "requirementOrFinding": "- **2026-05-17 export:** 110 students across 12 class slugs (`1st-grade`, `1b`, `1c`, `2nd-grade`, `2b`, `2c`, `3rd-grade`, `3b`, `3c`, `4a`, `4th-grade`, `4c`), 0 errors, all PINs `plain` (re-bcrypted). Applied to Neon `legacy_students`. VEHO teacher owns 12 classes; slug map populated.", "subcriteria": [{"n": 1, "from": 0, "to": 267}, {"n": 2, "from": 269, "to": 288}], "sourceTextSha256": "62b5b30c7df6783c68e4c4f4f16cf621b8857b73c9fb454c53883e95913dfb45", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "unverifiziert", "citedFilesAtProductPin": [], "unresolvedCitedFiles": [], "historicalIds": [], "dispositionRef": "migration-history", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"},
-    {"id": "S177:L37", "sourceLine": 37, "sourceEndLine": 37, "section": "03 — Firebase → Neon Migration (status + the pending piece) / Current state", "requirementOrFinding": "Historische Zugangsdaten und Kontenhinweise werden aus Datenschutzgründen nicht weiterveröffentlicht; genaue Originalstelle ist gebunden.", "subcriteria": [], "sourceTextSha256": "e462734a546cc31c8c864db8046ac09fbfe066076ce9579a7d713d2f4b31def4", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "unverifiziert", "citedFilesAtProductPin": [], "unresolvedCitedFiles": [], "historicalIds": [], "dispositionRef": "migration-history", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf", "redaction": "credential-values"},
-    {"id": "S177:L38", "sourceLine": 38, "sourceEndLine": 39, "section": "03 — Firebase → Neon Migration (status + the pending piece) / Current state", "requirementOrFinding": "- Counts at export time (students per slug): 1st-grade 6, 1b 4, 1c 2, 2nd-grade 31, 2b 2, 2c 2, 3rd-grade 40, 3b 1, 3c 5, 4a 1, 4th-grade 16, 4c 0 → **110**.", "subcriteria": [{"n": 1, "from": 0, "to": 157}], "sourceTextSha256": "1f9de40795d2cbfd51e16c0e8d14ca4c9ac751b143df74dc8aa938abf3628fc5", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "unverifiziert", "citedFilesAtProductPin": [], "unresolvedCitedFiles": [], "historicalIds": [], "dispositionRef": "migration-history", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"},
-    {"id": "S177:L42", "sourceLine": 42, "sourceEndLine": 42, "section": "03 — Firebase → Neon Migration (status + the pending piece) / PENDING — \"the new data that needs migrating\"", "requirementOrFinding": "Students who **registered in Firebase after 2026-05-17** are not in Neon. To capture them:", "subcriteria": [{"n": 1, "from": 0, "to": 90}], "sourceTextSha256": "38f90b6b15862dff7d45a0673772113461c88accfe758b3aaf6f92202bd2f42c", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "unverifiziert", "citedFilesAtProductPin": [], "unresolvedCitedFiles": [], "historicalIds": [], "dispositionRef": "migration-history", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"},
-    {"id": "S177:L43", "sourceLine": 43, "sourceEndLine": 44, "section": "03 — Firebase → Neon Migration (status + the pending piece) / PENDING — \"the new data that needs migrating\"", "requirementOrFinding": "1. Re-run `migrate:export` → `migrate:build` → `migrate:apply`. Idempotent inserts mean already-imported rows are skipped (`ON CONFLICT DO NOTHING`).", "subcriteria": [{"n": 1, "from": 0, "to": 149}], "sourceTextSha256": "17949312f90021e263c8d2ede6c141bb1f4de699562bb5e0bd99227b00dcf349", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "unverifiziert", "citedFilesAtProductPin": [], "unresolvedCitedFiles": [], "historicalIds": [], "dispositionRef": "migration-history", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"},
-    {"id": "S177:L45", "sourceLine": 45, "sourceEndLine": 48, "section": "03 — Firebase → Neon Migration (status + the pending piece) / PENDING — \"the new data that needs migrating\"", "requirementOrFinding": "2. **Do not clobber already-claimed accounts.** Before applying, check which `legacy_students` rows have `migratedAt`/`newUserId` set (students who already moved to Neon) and ensure the re-import doesn't reset their PIN/progress. The `ON CONFLICT DO NOTHING` on `(legacyClassSlug, legacyUsernameLower)` protects existing rows, but verify.", "subcriteria": [{"n": 1, "from": 0, "to": 338}], "sourceTextSha256": "e561ccbd0efc890f9f36383ace9cc99bace1310addd7d3b0fed20084a4b7b07e", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "unverifiziert", "citedFilesAtProductPin": [], "unresolvedCitedFiles": [], "historicalIds": [], "dispositionRef": "migration-history", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"},
-    {"id": "S177:L49", "sourceLine": 49, "sourceEndLine": 49, "section": "03 — Firebase → Neon Migration (status + the pending piece) / PENDING — \"the new data that needs migrating\"", "requirementOrFinding": "3. Confirm with Koki the **cutover moment** (when Firebase signups stop) so the final export is complete.", "subcriteria": [{"n": 1, "from": 0, "to": 105}], "sourceTextSha256": "4fa41a1834598e8eebae11fdc13c907ce105a19b6d8ec2709611e98e176a6c5f", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "unverifiziert", "citedFilesAtProductPin": [], "unresolvedCitedFiles": [], "historicalIds": [], "dispositionRef": "migration-history", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"},
-    {"id": "S177:L50", "sourceLine": 50, "sourceEndLine": 51, "section": "03 — Firebase → Neon Migration (status + the pending piece) / PENDING — \"the new data that needs migrating\"", "requirementOrFinding": "4. Spot-check: a post-May-17 student appears in `legacy_students`, can claim at `/signin/migrate`, and their XP/badges land correctly.", "subcriteria": [{"n": 1, "from": 0, "to": 134}], "sourceTextSha256": "5bdfda11fd027b38c830c3c389ba78393e13e1ae5e97003350a744a68937dc4d", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "unverifiziert", "citedFilesAtProductPin": [], "unresolvedCitedFiles": [], "historicalIds": [], "dispositionRef": "migration-history", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"},
-    {"id": "S177:L54", "sourceLine": 54, "sourceEndLine": 55, "section": "03 — Firebase → Neon Migration (status + the pending piece) / Decommission (Phase E, later)", "requirementOrFinding": "Once Neon is the system of record and claims have settled (the original plan allowed a 3–6 month Firebase read-only archive window), retire Firebase. Keep `firebaseRawDoc` snapshots for audit.", "subcriteria": [{"n": 1, "from": 0, "to": 192}], "sourceTextSha256": "d80915f1250b333917def49b3815b5b826c75ffbdd140854190dc6e87b1231d0", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "unverifiziert", "citedFilesAtProductPin": [], "unresolvedCitedFiles": [], "historicalIds": [], "dispositionRef": "migration-history", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"},
-    {"id": "S177:L58", "sourceLine": 58, "sourceEndLine": 60, "section": "03 — Firebase → Neon Migration (status + the pending piece) / For v2", "requirementOrFinding": "Whatever the new architecture, **preserve the migrated `users` + `legacy_students` data** (it's the real students' real progress) and keep the `/signin/migrate` claim path working until every legacy student has moved. Migration data is a **P0 durable asset** — design the v2 schema so this data ports cleanly.", "subcriteria": [{"n": 1, "from": 0, "to": 309}], "sourceTextSha256": "91280ef13ea777029b78c836d6b8ac685d3f507d00f85a966a22a183cff31e60", "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.", "state": "unverifiziert", "citedFilesAtProductPin": [], "unresolvedCitedFiles": [], "historicalIds": [], "dispositionRef": "migration-history", "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf"}
+    {
+      "id": "S177:L3",
+      "sourceLine": 3,
+      "sourceEndLine": 5,
+      "section": "03 — Firebase → Neon Migration (status + the pending piece)",
+      "requirementOrFinding": "The legacy trainers were Firebase-backed. Students had accounts (username + 4-digit PIN) with XP, badges, streaks. v1 built a pipeline to carry those into Neon so students keep their progress. **The pipeline ran once (2026-05-17); new signups since then are NOT yet imported.**",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 229
+        },
+        {
+          "n": 2,
+          "from": 231,
+          "to": 277
+        }
+      ],
+      "sourceTextSha256": "808693541e0cb6225ddd4cff2418915d3b87a6a07a76a91600aa426b41985701",
+      "historicalVerdict": "Historische Bau-/Abschlussbehauptung im erhaltenen Wortlaut; muss vom heutigen Nachweis getrennt bleiben.",
+      "state": "geparkt",
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "migration-history",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf",
+      "replacement": {
+        "source": "S234:L158–164 (P-R4, 2026-08-23)",
+        "decision": "Nur Firebase-Nachimport, alter Claim und Archivlöschung ersetzt; Datenbewahrung/Snapshot bleibt unter rollover-preservation. Gemischte Zeilen behalten alle übrigen Kriterien."
+      }
+    },
+    {
+      "id": "S177:L8",
+      "sourceLine": 8,
+      "sourceEndLine": 15,
+      "section": "03 — Firebase → Neon Migration (status + the pending piece) / Complete, \"pixel-perfect\" import (Koki's words)",
+      "requirementOrFinding": "\"Finish the migration to Vercel, pixel-perfect imported\" = the move off the legacy trainers + Firebase to v2 must carry **everything over with nothing dropped or mangled**: the **complete content corpus** (every word / item / mode), **every feature** (including ones v1 dropped in its own migration — e.g. the legacy **story mode**, see `06`/3.3), and **all student data + progress**. Treat the legacy trainers + v1 as the parity oracle and **diff against them** so coverage is provably complete before any go-live. (Whether \"pixel-perfect\" also means matching the legacy *visual* design is a question for Koki — the UX is being overhauled (`06`/3.7), so the safe reading is total **content/feature/data fidelity**, with the legacy look as reference, not a constraint.)",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 769
+        }
+      ],
+      "sourceTextSha256": "54776b2c9e18c2ea7b3f1cf14bf6c8ead93c5ee42aabf17ebbc1879a84bd49c5",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "geparkt",
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "migration-history",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf",
+      "replacement": {
+        "source": "S234:L158–164 (P-R4, 2026-08-23)",
+        "decision": "Nur Firebase-Nachimport, alter Claim und Archivlöschung ersetzt; Datenbewahrung/Snapshot bleibt unter rollover-preservation. Gemischte Zeilen behalten alle übrigen Kriterien."
+      }
+    },
+    {
+      "id": "S177:L18",
+      "sourceLine": 18,
+      "sourceEndLine": 18,
+      "section": "03 — Firebase → Neon Migration (status + the pending piece) / The pipeline (`scripts/migrate/`)",
+      "requirementOrFinding": "Three idempotent, read-until-the-last-step scripts:",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 51
+        }
+      ],
+      "sourceTextSha256": "40bd635354c50cd70032e590c4049ddfa14dc14079df48b5ca6eeba9b1d4513d",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "geparkt",
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "migration-history",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf",
+      "replacement": {
+        "source": "S234:L158–164 (P-R4, 2026-08-23)",
+        "decision": "Nur Firebase-Nachimport, alter Claim und Archivlöschung ersetzt; Datenbewahrung/Snapshot bleibt unter rollover-preservation. Gemischte Zeilen behalten alle übrigen Kriterien."
+      }
+    },
+    {
+      "id": "S177:L19",
+      "sourceLine": 19,
+      "sourceEndLine": 21,
+      "section": "03 — Firebase → Neon Migration (status + the pending piece) / The pipeline (`scripts/migrate/`)",
+      "requirementOrFinding": "1. **`export-firebase.mjs`** (`npm run migrate:export`) — reads Firestore (project `veho-vocab`, `classes/*/students/*`), writes `exports/<ISO>/firestore-<classSlug>.json` + `summary.json`. Needs Google ADC (`gcloud auth application-default login` or `GOOGLE_APPLICATION_CREDENTIALS`). Read-only.",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 296
+        }
+      ],
+      "sourceTextSha256": "d31c2e90a506798dda4b448bcab053b2a51de29fd4de63249bbe903ac32c6199",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "geparkt",
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [
+        "export-firebase.mjs",
+        "exports/<ISO>/firestore-<classSlug>.json",
+        "summary.json"
+      ],
+      "historicalIds": [],
+      "dispositionRef": "migration-history",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf",
+      "replacement": {
+        "source": "S234:L158–164 (P-R4, 2026-08-23)",
+        "decision": "Nur Firebase-Nachimport, alter Claim und Archivlöschung ersetzt; Datenbewahrung/Snapshot bleibt unter rollover-preservation. Gemischte Zeilen behalten alle übrigen Kriterien."
+      }
+    },
+    {
+      "id": "S177:L22",
+      "sourceLine": 22,
+      "sourceEndLine": 25,
+      "section": "03 — Firebase → Neon Migration (status + the pending piece) / The pipeline (`scripts/migrate/`)",
+      "requirementOrFinding": "2. **`build-legacy-students.mjs`** (`npm run migrate:build`) — reads the export + `class_legacy_map` (from Neon, populated via the `/admin/legacy-map` wizard), classifies each PIN (`plain`→re-bcrypt / `bcrypt`→keep / `unknown`→teacher must reset), de-dupes by latest session, writes idempotent `legacy-students.sql` (`ON CONFLICT DO NOTHING`) + audit JSONs. Read-only.",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 368
+        }
+      ],
+      "sourceTextSha256": "9d0b1de352ae80dc9f9350b6c989698b79e6f9aa05a253e347f592f1f5a04b73",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "geparkt",
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [
+        "build-legacy-students.mjs"
+      ],
+      "historicalIds": [],
+      "dispositionRef": "migration-history",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf",
+      "replacement": {
+        "source": "S234:L158–164 (P-R4, 2026-08-23)",
+        "decision": "Nur Firebase-Nachimport, alter Claim und Archivlöschung ersetzt; Datenbewahrung/Snapshot bleibt unter rollover-preservation. Gemischte Zeilen behalten alle übrigen Kriterien."
+      }
+    },
+    {
+      "id": "S177:L26",
+      "sourceLine": 26,
+      "sourceEndLine": 27,
+      "section": "03 — Firebase → Neon Migration (status + the pending piece) / The pipeline (`scripts/migrate/`)",
+      "requirementOrFinding": "3. **`apply-legacy-students.mjs`** (`npm run migrate:apply`) — the one write step; inserts into `legacy_students`. Safe to re-run.",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 81
+        },
+        {
+          "n": 2,
+          "from": 83,
+          "to": 130
+        }
+      ],
+      "sourceTextSha256": "464d74d7044af11a73a774886fc69537cc17b034b7d6d0e253e20563c55289f3",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "geparkt",
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [
+        "apply-legacy-students.mjs"
+      ],
+      "historicalIds": [],
+      "dispositionRef": "migration-history",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf",
+      "replacement": {
+        "source": "S234:L158–164 (P-R4, 2026-08-23)",
+        "decision": "Nur Firebase-Nachimport, alter Claim und Archivlöschung ersetzt; Datenbewahrung/Snapshot bleibt unter rollover-preservation. Gemischte Zeilen behalten alle übrigen Kriterien."
+      }
+    },
+    {
+      "id": "S177:L29",
+      "sourceLine": 29,
+      "sourceEndLine": 31,
+      "section": "03 — Firebase → Neon Migration (status + the pending piece) / The pipeline (`scripts/migrate/`)",
+      "requirementOrFinding": "Orchestrator: `npm run migrate:recipe`. A migrated student **claims** their account at `/signin/migrate`: legacy username + 4-digit PIN → set a new 6-digit PIN → `realName` → `legacy_students.newUserId` linked, XP/badges/streak copied into the new `users` row.",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 260
+        }
+      ],
+      "sourceTextSha256": "7991ff97e74625c90341ea9b25636d3cae6d1fcda01b174a2c0648e1ae54efef",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "geparkt",
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "migration-history",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf",
+      "replacement": {
+        "source": "S234:L158–164 (P-R4, 2026-08-23)",
+        "decision": "Nur Firebase-Nachimport, alter Claim und Archivlöschung ersetzt; Datenbewahrung/Snapshot bleibt unter rollover-preservation. Gemischte Zeilen behalten alle übrigen Kriterien."
+      }
+    },
+    {
+      "id": "S177:L34",
+      "sourceLine": 34,
+      "sourceEndLine": 36,
+      "section": "03 — Firebase → Neon Migration (status + the pending piece) / Current state",
+      "requirementOrFinding": "- **2026-05-17 export:** 110 students across 12 class slugs (`1st-grade`, `1b`, `1c`, `2nd-grade`, `2b`, `2c`, `3rd-grade`, `3b`, `3c`, `4a`, `4th-grade`, `4c`), 0 errors, all PINs `plain` (re-bcrypted). Applied to Neon `legacy_students`. VEHO teacher owns 12 classes; slug map populated.",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 267
+        },
+        {
+          "n": 2,
+          "from": 269,
+          "to": 288
+        }
+      ],
+      "sourceTextSha256": "62b5b30c7df6783c68e4c4f4f16cf621b8857b73c9fb454c53883e95913dfb45",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "geparkt",
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "migration-history",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf",
+      "replacement": {
+        "source": "S234:L158–164 (P-R4, 2026-08-23)",
+        "decision": "Nur Firebase-Nachimport, alter Claim und Archivlöschung ersetzt; Datenbewahrung/Snapshot bleibt unter rollover-preservation. Gemischte Zeilen behalten alle übrigen Kriterien."
+      }
+    },
+    {
+      "id": "S177:L37",
+      "sourceLine": 37,
+      "sourceEndLine": 37,
+      "section": "03 — Firebase → Neon Migration (status + the pending piece) / Current state",
+      "requirementOrFinding": "Historische Zugangsdaten und Kontenhinweise werden aus Datenschutzgründen nicht weiterveröffentlicht; genaue Originalstelle ist gebunden.",
+      "subcriteria": [],
+      "sourceTextSha256": "e462734a546cc31c8c864db8046ac09fbfe066076ce9579a7d713d2f4b31def4",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "geparkt",
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "migration-history",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf",
+      "redaction": "credential-values",
+      "replacement": {
+        "source": "S234:L158–164 (P-R4, 2026-08-23)",
+        "decision": "Nur Firebase-Nachimport, alter Claim und Archivlöschung ersetzt; Datenbewahrung/Snapshot bleibt unter rollover-preservation. Gemischte Zeilen behalten alle übrigen Kriterien."
+      }
+    },
+    {
+      "id": "S177:L38",
+      "sourceLine": 38,
+      "sourceEndLine": 39,
+      "section": "03 — Firebase → Neon Migration (status + the pending piece) / Current state",
+      "requirementOrFinding": "- Counts at export time (students per slug): 1st-grade 6, 1b 4, 1c 2, 2nd-grade 31, 2b 2, 2c 2, 3rd-grade 40, 3b 1, 3c 5, 4a 1, 4th-grade 16, 4c 0 → **110**.",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 157
+        }
+      ],
+      "sourceTextSha256": "1f9de40795d2cbfd51e16c0e8d14ca4c9ac751b143df74dc8aa938abf3628fc5",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "geparkt",
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "migration-history",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf",
+      "replacement": {
+        "source": "S234:L158–164 (P-R4, 2026-08-23)",
+        "decision": "Nur Firebase-Nachimport, alter Claim und Archivlöschung ersetzt; Datenbewahrung/Snapshot bleibt unter rollover-preservation. Gemischte Zeilen behalten alle übrigen Kriterien."
+      }
+    },
+    {
+      "id": "S177:L42",
+      "sourceLine": 42,
+      "sourceEndLine": 42,
+      "section": "03 — Firebase → Neon Migration (status + the pending piece) / PENDING — \"the new data that needs migrating\"",
+      "requirementOrFinding": "Students who **registered in Firebase after 2026-05-17** are not in Neon. To capture them:",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 90
+        }
+      ],
+      "sourceTextSha256": "38f90b6b15862dff7d45a0673772113461c88accfe758b3aaf6f92202bd2f42c",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "geparkt",
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "migration-history",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf",
+      "replacement": {
+        "source": "S234:L158–164 (P-R4, 2026-08-23)",
+        "decision": "Nur Firebase-Nachimport, alter Claim und Archivlöschung ersetzt; Datenbewahrung/Snapshot bleibt unter rollover-preservation. Gemischte Zeilen behalten alle übrigen Kriterien."
+      }
+    },
+    {
+      "id": "S177:L43",
+      "sourceLine": 43,
+      "sourceEndLine": 44,
+      "section": "03 — Firebase → Neon Migration (status + the pending piece) / PENDING — \"the new data that needs migrating\"",
+      "requirementOrFinding": "1. Re-run `migrate:export` → `migrate:build` → `migrate:apply`. Idempotent inserts mean already-imported rows are skipped (`ON CONFLICT DO NOTHING`).",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 149
+        }
+      ],
+      "sourceTextSha256": "17949312f90021e263c8d2ede6c141bb1f4de699562bb5e0bd99227b00dcf349",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "geparkt",
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "migration-history",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf",
+      "replacement": {
+        "source": "S234:L158–164 (P-R4, 2026-08-23)",
+        "decision": "Nur Firebase-Nachimport, alter Claim und Archivlöschung ersetzt; Datenbewahrung/Snapshot bleibt unter rollover-preservation. Gemischte Zeilen behalten alle übrigen Kriterien."
+      }
+    },
+    {
+      "id": "S177:L45",
+      "sourceLine": 45,
+      "sourceEndLine": 48,
+      "section": "03 — Firebase → Neon Migration (status + the pending piece) / PENDING — \"the new data that needs migrating\"",
+      "requirementOrFinding": "2. **Do not clobber already-claimed accounts.** Before applying, check which `legacy_students` rows have `migratedAt`/`newUserId` set (students who already moved to Neon) and ensure the re-import doesn't reset their PIN/progress. The `ON CONFLICT DO NOTHING` on `(legacyClassSlug, legacyUsernameLower)` protects existing rows, but verify.",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 338
+        }
+      ],
+      "sourceTextSha256": "e561ccbd0efc890f9f36383ace9cc99bace1310addd7d3b0fed20084a4b7b07e",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "geparkt",
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "migration-history",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf",
+      "replacement": {
+        "source": "S234:L158–164 (P-R4, 2026-08-23)",
+        "decision": "Nur Firebase-Nachimport, alter Claim und Archivlöschung ersetzt; Datenbewahrung/Snapshot bleibt unter rollover-preservation. Gemischte Zeilen behalten alle übrigen Kriterien."
+      }
+    },
+    {
+      "id": "S177:L49",
+      "sourceLine": 49,
+      "sourceEndLine": 49,
+      "section": "03 — Firebase → Neon Migration (status + the pending piece) / PENDING — \"the new data that needs migrating\"",
+      "requirementOrFinding": "3. Confirm with Koki the **cutover moment** (when Firebase signups stop) so the final export is complete.",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 105
+        }
+      ],
+      "sourceTextSha256": "4fa41a1834598e8eebae11fdc13c907ce105a19b6d8ec2709611e98e176a6c5f",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "geparkt",
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "migration-history",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf",
+      "replacement": {
+        "source": "S234:L158–164 (P-R4, 2026-08-23)",
+        "decision": "Nur Firebase-Nachimport, alter Claim und Archivlöschung ersetzt; Datenbewahrung/Snapshot bleibt unter rollover-preservation. Gemischte Zeilen behalten alle übrigen Kriterien."
+      }
+    },
+    {
+      "id": "S177:L50",
+      "sourceLine": 50,
+      "sourceEndLine": 51,
+      "section": "03 — Firebase → Neon Migration (status + the pending piece) / PENDING — \"the new data that needs migrating\"",
+      "requirementOrFinding": "4. Spot-check: a post-May-17 student appears in `legacy_students`, can claim at `/signin/migrate`, and their XP/badges land correctly.",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 134
+        }
+      ],
+      "sourceTextSha256": "5bdfda11fd027b38c830c3c389ba78393e13e1ae5e97003350a744a68937dc4d",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "geparkt",
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "migration-history",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf",
+      "replacement": {
+        "source": "S234:L158–164 (P-R4, 2026-08-23)",
+        "decision": "Nur Firebase-Nachimport, alter Claim und Archivlöschung ersetzt; Datenbewahrung/Snapshot bleibt unter rollover-preservation. Gemischte Zeilen behalten alle übrigen Kriterien."
+      }
+    },
+    {
+      "id": "S177:L54",
+      "sourceLine": 54,
+      "sourceEndLine": 55,
+      "section": "03 — Firebase → Neon Migration (status + the pending piece) / Decommission (Phase E, later)",
+      "requirementOrFinding": "Once Neon is the system of record and claims have settled (the original plan allowed a 3–6 month Firebase read-only archive window), retire Firebase. Keep `firebaseRawDoc` snapshots for audit.",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 192
+        }
+      ],
+      "sourceTextSha256": "d80915f1250b333917def49b3815b5b826c75ffbdd140854190dc6e87b1231d0",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "geparkt",
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "migration-history",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf",
+      "replacement": {
+        "source": "S234:L158–164 (P-R4, 2026-08-23)",
+        "decision": "Nur Firebase-Nachimport, alter Claim und Archivlöschung ersetzt; Datenbewahrung/Snapshot bleibt unter rollover-preservation. Gemischte Zeilen behalten alle übrigen Kriterien."
+      }
+    },
+    {
+      "id": "S177:L58",
+      "sourceLine": 58,
+      "sourceEndLine": 60,
+      "section": "03 — Firebase → Neon Migration (status + the pending piece) / For v2",
+      "requirementOrFinding": "Whatever the new architecture, **preserve the migrated `users` + `legacy_students` data** (it's the real students' real progress) and keep the `/signin/migrate` claim path working until every legacy student has moved. Migration data is a **P0 durable asset** — design the v2 schema so this data ports cleanly.",
+      "subcriteria": [
+        {
+          "n": 1,
+          "from": 0,
+          "to": 309
+        }
+      ],
+      "sourceTextSha256": "91280ef13ea777029b78c836d6b8ac685d3f507d00f85a966a22a183cff31e60",
+      "historicalVerdict": "Quelle formuliert Anforderung oder Befund; keine aktuelle Produktabnahme daraus abgeleitet.",
+      "state": "geparkt",
+      "citedFilesAtProductPin": [],
+      "unresolvedCitedFiles": [],
+      "historicalIds": [],
+      "dispositionRef": "migration-history",
+      "authorPass": "Quellenfassung, konkrete Aussage und spätere Begrenzung zugeordnet; kein neuer Produktlauf",
+      "replacement": {
+        "source": "S234:L158–164 (P-R4, 2026-08-23)",
+        "decision": "Nur Firebase-Nachimport, alter Claim und Archivlöschung ersetzt; Datenbewahrung/Snapshot bleibt unter rollover-preservation. Gemischte Zeilen behalten alle übrigen Kriterien."
+      }
+    }
   ],
-  "previousDispositions": [{"register": "commitments.json", "id": "PL3"}],
+  "previousDispositions": [
+    {
+      "register": "commitments.json",
+      "id": "PL3"
+    }
+  ],
   "sourceSpecificAssessment": "Import vom17.05. samt späteren Neuanmeldungen, idempotentem Claim und Nichtüberschreiben bereits migrierter Konten sind getrennte Nachweise. Aufbewahrungs-/Abschaltfenster historischer Plan, keine aktuelle Freigabe; keinen Export ausführen.",
   "subcriteriaEncoding": "Unicode-Zeichenpositionen [from,to); explizite Zugangsdaten-Redaktion behält nur Originalstellenhash."
 }

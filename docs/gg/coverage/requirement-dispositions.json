@@ -777,10 +777,10 @@
     },
     {
       "id": "migration-history",
-      "subject": "Vollständige Migration und Erhalt bereits beanspruchter Konten",
-      "state": "unverifiziert",
-      "missingEvidence": "Historischer110-Konten-Import ist keine heutige Vollständigkeitsquittung: benötigt finalen export/cutover-Vergleich, Schutz bereits beanspruchter Konten und belegten eigenen Anspruch samt Fortschritt. Keine Produktionsdaten werden hier gelesen.",
-      "disposition": "cgo-009/Konto-Abgleich und GG-Betrieb: Altfortschritt nicht überschreiben, anonyme aggregierte Nachweise und tatsächlichen Fehlerpfad prüfen. Historische Anmeldedaten werden nicht weiterveröffentlicht.",
+      "subject": "Früherer Firebase-Nachimport ausdrücklich abgelöst",
+      "state": "geparkt",
+      "missingEvidence": "S234:L158–164: Koki-Ruling P-R4 vom23.08. streicht Nachimport und Claim-Fluss; neue Konten/Klassen, manuelle Anpassung bei Bedarf, Firebase dauerhaftes Archiv. S240 hält Sicherung und noch nicht vorhandenen Wiederimport auseinander.",
+      "disposition": "Keinen alten Import/Archivlöschauftrag neu ausführen. Datenbewahrung, belegte Sicherung und spätere Nutzung unter rollover-preservation weiterführen. Alte Nichtüberschreib-Regel bleibt Erhaltungsprinzip, kein Auftrag zum gestrichenen Import.",
       "evidenceRefs": [],
       "replacement": null
     },
@@ -890,6 +890,17 @@
       "missingEvidence": "S246 ist fremder Leitner-Code, nicht heutiger DomiGo-Code. S247 ist eine ältere Stempelregel; aktueller gelesener Donor X013 verschärft insbesondere die dort noch folgenlose Sidecar-Drift.",
       "disposition": "Planung aus richtig/falsch, Zeit und Wortidentität als Herkunft erhalten. Best-effort-Schreiben ohne Fehlermeldung nicht als bewiesene Speicherung übernehmen. Aktuelle unabhängige Prüfung und Originalbelege in didactics-and-donor-history.json; keine Matura-Schwellen auf Anfänger übertragen.",
       "evidenceRefs": [],
+      "replacement": null
+    },
+    {
+      "id": "rollover-preservation",
+      "subject": "Gesicherter alter Lernstand ohne erfundenen Wiederimport",
+      "state": "teilgebaut",
+      "missingEvidence": "S240: gesichert werden Neon-Bestandsschüler, nicht nur in Firebase existierende Konten; Zähler/Queue/Versuchssummen sind getrennt. S004:L12 berichtet historisch zwei Snapshot-Zeilen und Produktionstest, kein frischer Zugriff. Wiederimport ausdrücklich nicht gebaut.",
+      "disposition": "Vor späterer Nutzung vollständige Herkunft und Übertragungsregeln mit GG/cgo-009/018 klären. Kein heutiges Produktions-Ja aus Schema oder altem Bericht. Keine Schülerdaten auslesen.",
+      "evidenceRefs": [
+        "P18"
+      ],
       "replacement": null
     }
   ]

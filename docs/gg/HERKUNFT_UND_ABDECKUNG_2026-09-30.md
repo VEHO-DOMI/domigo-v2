@@ -204,10 +204,16 @@ DomiLingo liefert konkrete Gegenbeispiele gegen pauschale Qualitätsbehauptungen
 
 ### Arbeitsstand der fortgesetzten Einzelzuordnung
 
-94 Quellen enthalten jetzt 5.511 gebundene Einzelstellen; 17 konkrete Produktbeleggruppen ergänzen die Quellenurteile. Der Restkatalog wird weiter zugeordnet; dies ist weiterhin **kein Vollständigkeits-Ja**. Bei matching und group-sort fehlt die früher verlangte Teilwertung nachweislich im heutigen Bewerter (Beleg P17). Zwei Quellenstellen mit historischen Zugangsdaten bleiben nur über Fundstelle und Originalprüfsumme gebunden; die Werte werden nicht weiterveröffentlicht.
+169 Quellen enthalten jetzt 8.151 gebundene Einzelstellen; 18 konkrete Produktbeleggruppen ergänzen die Quellenurteile. Der Restkatalog wird weiter zugeordnet; dies ist weiterhin **kein Vollständigkeits-Ja**. Bei matching und group-sort fehlt die früher verlangte Teilwertung nachweislich im heutigen Bewerter (Beleg P17). Fünf Quellenstellen mit historischen Zugangsdaten bleiben nur über Fundstelle und Originalprüfsumme gebunden; die Werte werden nicht weiterveröffentlicht.
 
 ## Vier Jahrgänge: Zuständigkeiten nach Nachtrag 9
 
 CODEX DRAFT — NOT CANON. Die globale Herkunft bleibt bei cgo-025. Die eigenständige didaktische Ausarbeitung übernehmen **cgo-033 (Jahrgang 1), cgo-034 (Jahrgang 2), cgo-035 (Jahrgang 3) und cgo-036 (Jahrgang 4)**, jeweils im eigenen Dokumentbereich. [Zuständigkeiten und sechs Lieferpflichten](coverage/grade-architecture-handoff.json) erhalten den vollständigen Auftrag einschließlich Kokis eigener Unterrichtseinführungen, Grammatik-/Vokabelmaterialien, Probeprüfungen und Checkups. Die Architekten prüfen Originale selbst; diese Inventur behauptet weder gelesene Unterrichtsoriginale noch fertige Jahrespläne.
 
 Ein Checkup erhält einen eigenen Vertrag für Hilfen, Antwortformen, Teilpunkte und Lernstandsfolgen. Das erste Gestaltungsmuster ist keine allgemeine Schablone. Die späteren Inhaltsleser030/031 haben laut Nachtrag9 insbesondere p017 beanstandet; unveränderte Inhaltsübernahme bleibt bis zur Auswertung durch cgo-006 gesperrt.
+
+## Datenbewahrung: spätere Ablösung des alten Importplans
+
+Kokis P-R4 vom 23.08. ersetzt den früheren Firebase-Nachimport und Claim-Fluss ausdrücklich: neue Klassen/Konten, bei Bedarf manuelle Lernstandanpassung, **Firebase bleibt dauerhaftes Archiv** (S234:158–164). Die alte spätere Archivlöschung darf daher nicht als offener Auftrag wiederkehren. Der Snapshot-Vertrag S240 bleibt gesondert: Konto-Zähler, v2-Fortschritt, Karteikasten und Versuchssummen der Neon-Bestandsschüler; ausschließlich in Firebase vorhandene Konten sind damit nicht erfasst.
+
+S004:12 berichtet den historischen Produktionslauf mit zwei Snapshot-Zeilen; Beleg P18 bestätigt heute das Schema und den Prüfhelfer, **keinen neuen Datenbanklauf**. Ein späterer Wiederimport wird im Runbook ausdrücklich als noch nicht gebaut bezeichnet. Erhaltungs- und Zuordnungsfragen bleiben bei GG sowie Konto-/Lernstandarchitektur; diese Inventur liest keine Schülerdaten und führt keinen alten Betriebsbefehl aus.

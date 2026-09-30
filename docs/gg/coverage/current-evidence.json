@@ -305,6 +305,27 @@
           "excerpt": "\nfunction gradeChoice(selected: string, answers: TieredAnswer[]): Tier {\n  const c = canonical(selected);\n  return answers.some((a) => a.tier === \"full\" && canonical(a.text) === c) ? \"correct\" : \"wrong\";\n}\n\n/** matching / matching-pairs: a left->right map; all pairs correct, all-or-nothing. */\nfunction gradeMatching(map: Record<string, string>, pairs: GrammarItem[\"pairs\"]): Tier {\n  if (pairs.length === 0) return \"wrong\";\n  if (Object.keys(map).length !== pairs.length) return \"wrong\";\n  return pairs.every((p) => canonical(map[p.left] ?? \"\") === canonical(p.right)) ? \"correct\" : \"wrong\";\n}\n\n/** group-sort: a member->label map; every member in its group, all-or-nothing. */\nfunction gradeGroupSort(map: Record<string, string>, groups: GrammarItem[\"groups\"]): Tier {\n  const total = groups.reduce((n, g) => n + g.members.length, 0);\n  if (total === 0 || Object.keys(map).length !== total) return \"wrong\";\n  return groups.every((g) => g.members.every((m) => canonical(map[m] ?? \"\") === canonical(g.label)))"
         }
       ]
+    },
+    {
+      "id": "P18",
+      "state": "teilgebaut",
+      "finding": "Snapshot-Schema mit Eindeutigkeit je Etikett/Konto vorhanden; Entwicklungsprüfer liest dieselben Runbook-Blöcke und vergleicht SQL mit Migration.",
+      "limits": "Code tatsächlich gelesen; kein Datenbanklauf oder heutiger Beleg der vollständigen Sicherung. Wiederimport wird dadurch nicht gebaut.",
+      "method": "Quellcodelektüre",
+      "evidence": [
+        {
+          "path": "packages/db/drizzle/0014_black_agent_zero.sql",
+          "start": 1,
+          "end": 18,
+          "excerpt": "CREATE TABLE \"domigo_v2\".\"rollover_snapshots\" (\n\t\"id\" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,\n\t\"label\" text NOT NULL,\n\t\"v1_user_id\" uuid NOT NULL,\n\t\"real_name\" text,\n\t\"display_name\" text NOT NULL,\n\t\"class_name\" text,\n\t\"grade\" smallint,\n\t\"v1_stats\" jsonb NOT NULL,\n\t\"v2_progress\" jsonb,\n\t\"leitner\" jsonb,\n\t\"attempts_summary\" jsonb,\n\t\"study_path_done\" integer,\n\t\"created_at\" timestamp with time zone DEFAULT now() NOT NULL\n);\n--> statement-breakpoint\nCREATE UNIQUE INDEX \"rollover_snapshots_label_user_unique\" ON \"domigo_v2\".\"rollover_snapshots\" USING btree (\"label\",\"v1_user_id\");--> statement-breakpoint\nCREATE INDEX \"rollover_snapshots_label_idx\" ON \"domigo_v2\".\"rollover_snapshots\" USING btree (\"label\");"
+        },
+        {
+          "path": "packages/db/scripts/snapshot-dev-proof.mjs",
+          "start": 42,
+          "end": 80,
+          "excerpt": "\n// ── Die Runbook-Bloecke einlesen ─────────────────────────────────────────────\n/** Liest jeden ```sql-Block aus dem Runbook und schluesselt ihn auf seine Marke. */\nfunction runbookBloecke(pfad) {\n  const text = fs.readFileSync(pfad, \"utf8\");\n  const bloecke = new Map();\n  for (const m of text.matchAll(/```sql\\n([\\s\\S]*?)```/g)) {\n    const body = m[1];\n    const marke = body.match(/^--\\s*\\[([A-Za-z0-9]+)\\]/m);\n    if (!marke) throw new Error(\"SQL-Block ohne Marke im Runbook gefunden\");\n    if (bloecke.has(marke[1])) throw new Error(`Marke [${marke[1]}] kommt doppelt vor`);\n    bloecke.set(marke[1], body.trimEnd());\n  }\n  return bloecke;\n}\nconst R = runbookBloecke(RUNBOOK);\nconsole.log(\"Runbook-Bloecke gelesen:\", [...R.keys()].join(\" \"));\nfor (const marke of [\"R0\", \"R1a\", \"R1b\", \"R1c\", \"R1v\", \"R2\", \"R3\", \"R4\", \"R5\"]) {\n  if (!R.has(marke)) { console.error(`ABBRUCH: Runbook-Block [${marke}] fehlt`); process.exit(1); }\n}\n\n// ── Beweis 1: die DDL im Runbook ist byte-gleich mit der Migrationsdatei ─────\n/** Entfernt Kommentarzeilen und Randraum — verglichen wird das SQL selbst. */\nconst nurSql = (s) => s.split(\"\\n\").filter((l) => !l.trimStart().startsWith(\"--\")).join(\"\\n\").trim();\nconst migStatements = fs.readFileSync(MIGRATION, \"utf8\")\n  .split(\"--> statement-breakpoint\").map((s) => s.trim()).filter(Boolean);\nconst ddlMarken = [\"R1a\", \"R1b\", \"R1c\"];\nif (migStatements.length !== ddlMarken.length) {\n  console.error(`ABBRUCH: Migration hat ${migStatements.length} Anweisungen, Runbook ${ddlMarken.length}`);\n  process.exit(1);\n}\nddlMarken.forEach((marke, i) => {\n  const a = nurSql(R.get(marke));\n  const b = migStatements[i].trim();\n  console.log(`  DDL [${marke}] == Migration Anweisung ${i + 1}: ${a === b ? \"JA\" : \"NEIN\"}`);\n  if (a !== b) {\n    console.error(\"ABBRUCH: Runbook und Migration sind auseinandergelaufen.\");\n    console.error(\"Runbook :\", JSON.stringify(a));\n    console.error(\"Migration:\", JSON.stringify(b));"
+        }
+      ]
     }
   ]
 }
