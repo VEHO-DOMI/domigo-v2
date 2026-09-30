@@ -34,7 +34,7 @@
    ],
    "exception": {
     "why": "die Karte dazu schreibt L4-T2 (Blaupause L4 v5 §6: restore ×6, rescue ×11); G1 baut nur p1 und die Geruest-Wesen, das Wort hat im Level noch keinen Traeger",
-    "expires": "2026-12-31",
+    "offen": "D-1256",
     "owner": "L4-T2"
    }
   },
@@ -45,7 +45,7 @@
    ],
    "exception": {
     "why": "die Karte dazu schreibt L4-T2 (Blaupause L4 v5 §6: restore ×6, rescue ×11); G1 baut nur p1 und die Geruest-Wesen, das Wort hat im Level noch keinen Traeger",
-    "expires": "2026-12-31",
+    "offen": "D-1253",
     "owner": "L4-T2"
    }
   },
@@ -56,7 +56,7 @@
    ],
    "exception": {
     "why": "die Karte dazu schreibt L4-T2 (Blaupause L4 v5 §6: restore ×6, rescue ×11); G1 baut nur p1 und die Geruest-Wesen, das Wort hat im Level noch keinen Traeger",
-    "expires": "2026-12-31",
+    "offen": "D-1254",
     "owner": "L4-T2"
    }
   },
@@ -67,7 +67,7 @@
    ],
    "exception": {
     "why": "die Karte dazu schreibt L4-T2 (Blaupause L4 v5 §6: restore ×6, rescue ×11); G1 baut nur p1 und die Geruest-Wesen, das Wort hat im Level noch keinen Traeger",
-    "expires": "2026-12-31",
+    "offen": "D-1258",
     "owner": "L4-T2"
    }
   },
@@ -86,7 +86,7 @@
    ],
    "exception": {
     "why": "die Karte dazu schreibt L4-T2 (Blaupause L4 v5 §6: restore ×6, rescue ×11); G1 baut nur p1 und die Geruest-Wesen, das Wort hat im Level noch keinen Traeger",
-    "expires": "2026-12-31",
+    "offen": "D-1260",
     "owner": "L4-T2"
    }
   },
@@ -119,7 +119,7 @@
    ],
    "exception": {
     "why": "die Karte dazu schreibt L4-T2 (Blaupause L4 v5 §6: restore ×6, rescue ×11); G1 baut nur p1 und die Geruest-Wesen, das Wort hat im Level noch keinen Traeger",
-    "expires": "2026-12-31",
+    "offen": "D-1255",
     "owner": "L4-T2"
    }
   },
@@ -138,7 +138,7 @@
    ],
    "exception": {
     "why": "die Karte dazu schreibt L4-T2 (Blaupause L4 v5 §6: restore ×6, rescue ×11); G1 baut nur p1 und die Geruest-Wesen, das Wort hat im Level noch keinen Traeger",
-    "expires": "2026-12-31",
+    "offen": "D-1257",
     "owner": "L4-T2"
    }
   },
@@ -150,7 +150,7 @@
    ],
    "exception": {
     "why": "die Karte dazu schreibt L4-T2 (Blaupause L4 v5 §6: restore ×6, rescue ×11); G1 baut nur p1 und die Geruest-Wesen, das Wort hat im Level noch keinen Traeger",
-    "expires": "2026-12-31",
+    "offen": "D-1259",
     "owner": "L4-T2"
    }
   },

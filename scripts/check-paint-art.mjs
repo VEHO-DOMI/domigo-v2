@@ -2,17 +2,17 @@
 // PB-T2 · the RENDERER HONESTY GATE: every stem a shipped paint level needs
 // (per packages/game-paint/src/artManifest.ts) must exist as a PNG under
 // apps/web/public/art/g1/paint/** — or sit on the EXPLICIT allowlist
-// (scripts/paint-art-allowlist.json: [{stem, reason, until}]). Silent
+// (scripts/paint-art-allowlist.json: [{stem, reason, offen}]). Silent
 // procedural placeholders shipping to students was the playtest's F13 class.
 // Allowlist hygiene is enforced both ways: an entry whose art now exists
-// fails (stale), and an entry past its `until` date fails (expired).
+// fails (stale); a missing, closed or mismatched finding fails too.
 // Run: node scripts/check-paint-art.mjs            (exit 1 on any failure)
 //      node scripts/check-paint-art.mjs --selftest (proves the red light works)
 //
 // ── R5-W7 · W6 · D-454: DAS TEUERSTE TOR KANN JETZT ROT ZEIGEN ──────────────
 // An diesem Tor haengt die Tot-Kunst-Ratsche, und bis heute konnte es nur
 // gruen. Die MENGENLOGIK (jeder benoetigte Stem liegt oder steht mit Grund auf
-// der Allowlist · keine schale und keine abgelaufene Ausnahme · die
+// der Allowlist · keine schale oder ungedeckte Ausnahme · die
 // Scope-Loecher · die DEAD_ART-Ratsche) ist deshalb eine REINE FUNKTION ueber
 // die geladene Welt geworden. Der Selbsttest reicht ihr die ECHTE Welt mit
 // genau EINER Verfaelschung herein (P-71) und prueft, dass GENAU der
@@ -24,7 +24,7 @@
 
 import fs from "node:fs";
 import path from "node:path";
-import { PLACEHOLDER_UNTIL, isPlaceholderStem } from "../packages/game-paint/src/composition.ts";
+import { isPlaceholderStem } from "../packages/game-paint/src/composition.ts";
 // R5-W1 · E1: the required set and the LOADED set are derived by ONE module,
 // so the gate can no longer demand a stem the loader would never fetch (and
 // vice versa) — Audit A below is that assertion.
@@ -33,7 +33,7 @@ import { captiveStem, isCaptiveKey } from "../packages/game-paint/src/artManifes
 import { entDisplayH } from "../packages/game-paint/src/anim.ts";
 import { keyFringe, readPng } from "./key-fringe.mjs";
 import { DEAD_ART_CEILING } from "../packages/game-paint/src/perfBudget.ts";
-import { chapterArtFiles, loadedArtClaims } from "./paint-art-claims.mjs";
+import { chapterArtFiles, loadedArtClaims, openFindingMap, findingError, artFindingScope } from "./paint-art-claims.mjs";
 
 const R = process.cwd();
 const ART_ROOT = path.join(R, "apps/web/public/art/g1/paint");
@@ -57,6 +57,7 @@ walk(ART_ROOT);
 
 const allow = fs.existsSync(ALLOW_PATH) ? JSON.parse(fs.readFileSync(ALLOW_PATH, "utf8")) : [];
 const today = new Date().toISOString().slice(0, 10);
+const OPEN_FINDINGS = openFindingMap(fs.readFileSync(path.join(R, "docs/design/g1/paint/DEBT_REGISTER.md"), "utf8"));
 
 // All levels claim real loaded files; missing-art obligations remain shipped-only.
 const levels = [];
@@ -118,12 +119,12 @@ const bytesOfDead = (dead) => {
  * eine heruntergedrehte Decke).
  *
  * @param {{levels:{file:string,level:object}[], present:Set<string>, files:Map<string,string>,
- *          allow:{stem:string,reason?:string,until?:string}[], today:string,
+ *          allow:{stem:string,reason?:string,offen?:string}[], today:string,
  *          deadCeiling:number, bytesOfDead?:(dead:string[])=>string,
  *          alleKapitel:{file:string,chapter:string,draft:boolean}[],
  *          praesentJeKapitel:Map<string,Set<string>>}} welt
  */
-export const analyse = ({ levels, present, files, allow, today, deadCeiling, bytesOfDead = () => "? MB", alleKapitel = [], praesentJeKapitel = new Map() }) => {
+export const analyse = ({ levels, present, files, allow, today, deadCeiling, bytesOfDead = () => "? MB", alleKapitel = [], praesentJeKapitel = new Map(), openFindings = OPEN_FINDINGS }) => {
     const shippedLevels = levels.filter(({ level }) => level.draft !== true);
     const loaded = loadedArtClaims(levels, files.keys());
     const allowByStem = new Map(allow.map((a) => [a.stem, a]));
@@ -140,6 +141,14 @@ export const analyse = ({ levels, present, files, allow, today, deadCeiling, byt
       }
     }
 
+  const allowSeen = new Set();
+  for (const entry of allow) {
+    if (allowSeen.has(entry.stem)) fail(`allowlist duplicate stem ${entry.stem}`);
+    allowSeen.add(entry.stem);
+    if (typeof entry.reason !== "string" || !entry.reason.trim() || entry.until !== undefined) fail(`allowlist entry for ${entry.stem} needs a reason, without calendar expiry`);
+    const error = findingError(entry.offen, artFindingScope(entry.stem), openFindings);
+    if (error) fail(`allowlist ${entry.stem}: ${error}`);
+  }
   const staleReported = new Set();
   for (const { stem, where, chapter } of requiredLocations.values()) {
     const listed = allowByStem.get(stem);
@@ -147,12 +156,10 @@ export const analyse = ({ levels, present, files, allow, today, deadCeiling, byt
       if (listed && !staleReported.has(stem)) { fail(`allowlist STALE: ${stem} exists now — remove its entry`); staleReported.add(stem); }
       continue;
     }
-    if (!listed) { fail(`missing stem "${stem}" (needed by ${where}) — paint it or allowlist it with a reason+until`); continue; }
-    if (!listed.reason || !listed.until) { fail(`allowlist entry for ${stem} needs reason AND until`); continue; }
-    if (listed.until < today) fail(`allowlist EXPIRED for ${stem} (until ${listed.until}) — paint it or extend with a new reason`);
+    if (!listed) { fail(`missing stem "${stem}" (needed by ${where}) — paint it or allowlist it with a reason and exact open finding`); continue; }
   }
   for (const a of allow) {
-    if (!required.has(a.stem) && !present.has(a.stem)) fail(`allowlist entry ${a.stem} is needed by nothing — remove it`);
+    if (!required.has(a.stem)) fail(`allowlist entry ${a.stem} is needed by nothing — remove it`);
   }
 
   // ── R5-W1 · E1 · AUDIT A · THE GATE AND THE LOADER MUST AGREE ───────────────
@@ -204,15 +211,10 @@ export const analyse = ({ levels, present, files, allow, today, deadCeiling, byt
   // PB-C1 · THE PLACEHOLDER GUARD. The composition kit currently points at
   // generated flat-tone stand-ins so the geometry laws could be proven before
   // Batch AF exists. They are stamped PLACEHOLDER on the piece and they must not
-  // outlive the art: past the deadline this HARD-FAILS, so "we'll swap it later"
-  // cannot quietly become "we shipped it".
+  // pass as accepted art. This HARD-FAILS independently of the calendar.
   const placeholders = [...required.keys()].filter(isPlaceholderStem);
   if (placeholders.length > 0) {
-    if (today > PLACEHOLDER_UNTIL) {
-      fail(`${placeholders.length} PLACEHOLDER stems are still wired (deadline ${PLACEHOLDER_UNTIL} passed) — land Batch AF and re-point the composition manifest`);
-    } else {
-      warnings.push(`check-paint-art: ⚠ ${placeholders.length} placeholder stems wired (PK-C2 replaces them; hard deadline ${PLACEHOLDER_UNTIL})`);
-    }
+    fail(`${placeholders.length} PLACEHOLDER stems are still wired — land accepted art and re-point the composition manifest; a calendar date cannot approve placeholders`);
   }
 
 
@@ -305,11 +307,11 @@ if (process.argv.includes("--selftest")) {
     }, `missing stem "${echterStem}"`],
 
     ["eine Ausnahme ist schal: das Blatt liegt inzwischen doch", () =>
-      analyse({ ...welt, allow: [...allow, { stem: echterStem, reason: "erfunden, damit dieser Fall rot wird", until: "2099-01-01" }] }),
+      analyse({ ...welt, allow: [...allow, { stem: echterStem, reason: "erfunden, damit dieser Fall rot wird", offen: "D-0" }] }),
       `allowlist STALE: ${echterStem}`],
 
     ["eine Ausnahme wird von niemandem gebraucht", () =>
-      analyse({ ...welt, allow: [...allow, { stem: "gibt-es-nicht-und-braucht-niemand", reason: "erfunden, damit dieser Fall rot wird", until: "2099-01-01" }] }),
+      analyse({ ...welt, allow: [...allow, { stem: "gibt-es-nicht-und-braucht-niemand", reason: "erfunden, damit dieser Fall rot wird", offen: "D-0" }] }),
       "is needed by nothing"],
 
     ["die Tot-Kunst-Ratsche: ein Blatt mehr, als die Decke traegt", () => {
@@ -402,6 +404,16 @@ if (process.argv.includes("--selftest")) {
       return { failures: good ? captiveLegibilityFailures(pairing, H) : [`Paarung falsch: ${JSON.stringify({ n: pairing.comparedPairs, worst: pairing.worst })}`] };
     }, null],
 
+    ["KALENDER: echte Welt im Jahr 2099 entscheidet gleich", () => ({ failures:
+      JSON.stringify(analyse({ ...welt, today: "2099-01-01" })) === JSON.stringify(analyse(welt)) ? [] : ["Kalender beeinflusst das Tor"] }), null],
+    ["FREILISTE: ein falscher Befund kann fehlende Kunst nicht freigeben", () => {
+      const ohne = new Map(files); ohne.delete(echteDatei);
+      return analyse({ ...welt, files: ohne, allow: [{ stem: echterStem, reason: "Test", offen: "D-0" }] });
+    }, "Befund"],
+    ["FREILISTE: genaue offene Bindung erlaubt nur den fehlenden Stem", () => {
+      const ohne = new Map(files); ohne.delete(echteDatei);
+      return analyse({ ...welt, files: ohne, allow: [{ stem: echterStem, reason: "Test", offen: "D-0" }], openFindings: new Map([["D-0", artFindingScope(echterStem)]]) });
+    }, null],
     ["NICHT-TAMPER: der echte Stand ist gruen", () => analyse(welt), null],
   ];
 
