@@ -1,0 +1,61 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "schema": "revision-pilots@1",
+  "basis": "df258ae8952cf5e5747e7507759d4d7b61e094b5",
+  "pilots": [
+    {
+      "unit": "g1-u01",
+      "cases": [
+        { "itemId": "g1u01.w.book", "kind": "vocab", "pool": "carrier" },
+        { "itemId": "g1u01.w.pencil", "kind": "vocab", "pool": "definition" },
+        { "itemId": "g1u01.w.rubber", "kind": "vocab", "pool": "deToEn" },
+        { "itemId": "g1u01.w.chair", "kind": "vocab", "pool": "enToDe" },
+        { "itemId": "g1u01.gi.imperatives.cp.002", "kind": "grammar" },
+        { "itemId": "g1u01.gi.plurals.gf.001", "kind": "grammar" },
+        { "itemId": "g1u01.gi.plurals.mp.001", "kind": "grammar" },
+        { "itemId": "g1.paint.ch01.enc.eraser.r1", "kind": "paint", "chapter": "ch01", "storyId": "g1.st.lost-pages" },
+        { "itemId": "g1.paint.ch01.enc.pencil.k3", "kind": "paint", "chapter": "ch01", "storyId": "g1.st.lost-pages" }
+      ],
+      "pair": {
+        "wrong": "Not open the window!",
+        "right": "Don't open the window!",
+        "explanation": "Soll jemand etwas nicht tun, beginnst du mit Don't.",
+        "source": "MORE! 1 SB Unit 1, Seite 15: Imperatives; Seite 14, Übung 16",
+        "sourceSha256": "370cf19411e5c5babc48d9d071acb0f0291a8fb2ee345ec69aa0f31f3aead4f1"
+      },
+      "transfer": {
+        "itemId": "g1u01.gi.imperatives.tr.900",
+        "templateId": "g1u01.gi.imperatives.cp.002",
+        "prompt": "Die Klasse hört gerade zu. Dein Freund redet dazwischen. Sag ihm auf Englisch, dass er nicht sprechen soll.",
+        "answers": ["Don't speak!", "Do not speak!", "Don't speak, please.", "Please don't speak."]
+      }
+    },
+    {
+      "unit": "g3-u01",
+      "cases": [
+        { "itemId": "g3u01.w.audition", "kind": "vocab", "pool": "carrier" },
+        { "itemId": "g3u01.w.tune", "kind": "vocab", "pool": "definition" },
+        { "itemId": "g3u01.w.lyrics", "kind": "vocab", "pool": "deToEn" },
+        { "itemId": "g3u01.w.brave", "kind": "vocab", "pool": "enToDe" },
+        { "itemId": "g3u01.gi.present-simple.gf.002", "kind": "grammar" },
+        { "itemId": "g3u01.gi.present-simple.mt.001", "kind": "grammar" },
+        { "itemId": "g3u01.gi.present-simple.gs.004", "kind": "grammar" },
+        { "itemId": "g3u01.gi.present-simple.ag.001", "kind": "grammar" },
+        { "itemId": "g3u01.ci.bens-line.ec.001", "kind": "story", "storyId": "g3.st.fourteen", "sceneId": "g3.st.fourteen.ch01.s008" }
+      ],
+      "pair": {
+        "wrong": "She doesn't likes this song.",
+        "right": "She doesn't like this song.",
+        "explanation": "Das -s steckt schon in doesn't. Dahinter bleibt das Verb in der Grundform.",
+        "source": "MORE! 3 SB Unit 1, Seiten 12–13: Present simple; Fragen und Verneinung",
+        "sourceSha256": "161ac01f4d983264baf200d4607d8c185c18fb38c6da4a8e160af9ecdb818d88"
+      },
+      "transfer": {
+        "itemId": "g3u01.gi.present-simple.gf.900",
+        "templateId": "g3u01.gi.present-simple.gf.002",
+        "prompt": "Du möchtest mehr über den Sänger wissen: ___ he ___ his own lyrics? (write)",
+        "answers": ["Does | write"]
+      }
+    }
+  ]
+}
