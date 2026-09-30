@@ -238,6 +238,7 @@ export const claimFails = (claims, entries, skins, items, today, clothStems = ne
     if (entry.kind !== "wordfile") continue;
     const claim = claims[entry.en];
     if (!claim) { out.push(`abdeckung: wordfile "${entry.en}" ist unklassifiziert (README §Abdeckung nachziehen)`); continue; }
+    if (claim.exception !== undefined && claim.kind !== "cards") out.push(`abdeckung: "${entry.en}" trägt eine unnötige Ausnahme außerhalb eines cards-Anspruchs (D-77)`);
     if ((claim.kind === "being" || claim.kind === "thing") && !claim.stems.some((s) => skins.has(s))) {
       out.push(`abdeckung: "${entry.en}" behauptet ${claim.kind} [${claim.stems.join("|")}], aber kein Stem im Level (B8)`);
     }
@@ -740,6 +741,9 @@ if (process.argv.includes("--selftest")) {
     ["ABDECKUNG · …und dieselbe oddone-Karte wird grün, sobald das Wort die LÖSUNG ist",
       claims2({ shirt: { kind: "cards" } }, [ENTRY("shirt")], [{ ...oddoneShirt, correct: ["shirt"] }]),
       (f) => f.length === 0],
+    ["ABDECKUNG · Ausnahme auf anderem Anspruchstyp ist unnötig",
+      claims2({ shirt: { kind: "architecture", exception: EX } }, [ENTRY("shirt")], []),
+      f => f.some(x => /unnötige Ausnahme/.test(x))],
     ["ABDECKUNG · eine deklarierte, gültige Ausnahme schweigt",
       claims2({ shirt: { kind: "cards", exception: EX } }, [ENTRY("shirt")], []),
       (f) => f.length === 0],
