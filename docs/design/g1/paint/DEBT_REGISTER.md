@@ -13,6 +13,28 @@ abgeleitet. Die 202 folgenden Befundbindungen benennen aktuelle Ausnahmedeklarat
 keine Kunst- oder Lernfreigabe. Ein Befund schließt erst mit geprüftem Wegfall seiner
 Bedingung; dann muss zugleich die Ausnahme verschwinden. Kein Datum schaltet ein Tor.
 
+### Leseschlüssel zur Inventur
+
+| Gruppe | Anzahl | Aussage |
+|---|---:|---|
+| Exakt gebundene aktive Ausnahmen | 202 | Bedarf wird vom jeweiligen Sachgesetz geprüft; keine Kunstfreigabe |
+| Altzeilen mit überliefertem explizitem Status | 116 | Status erhalten, heutiger Sachstand UNVERIFIZIERT |
+| Historisch durchgestrichene Altzeile | 1 | Historische Schließung erhalten, heute nicht erneut geprüft |
+| Übrige Altzeilen | 731 | Historisch ungeklärt; nicht als heutige Offen-Zahl zählen |
+
+| Kapitel | Wortschatzdeklarationen | Abdeckungsansprüche | Zusammen |
+|---|---:|---:|---:|
+| ch01 | 33 | 0 | 33 |
+| ch02 | 0 | 0 | 0 |
+| ch03 | 19 | 0 | 19 |
+| ch04 | 52 | 8 | 60 |
+| ch05 | 32 | 0 | 32 |
+| ch06 | 44 | 14 | 58 |
+| Gesamt | 180 | 22 | 202 |
+
+Die bisherige Form der Altzeilen folgt unverändert nach der zusätzlichen Statusspalte.
+Die aktuellen Ausnahmebindungen stehen im letzten Abschnitt „cgo-017“.
+
 Jede Stelle, an der ein Platzhalter steht oder ein Befund bewusst NICHT in seinem
 Fund-PR behoben wurde, steht hier: Stelle · Zustand · erwartete Auflösung ·
 Einbau-Schritt. Beim Eintreffen des Assets/Pakets wird nichts gesucht.
