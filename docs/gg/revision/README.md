@@ -60,7 +60,7 @@ GG-Prüfplatz. Alle Ausgaben gehören außerhalb des Produktrepos, beispielsweis
 REV_EVIDENCE=/Users/veho/Code/_codex/cgo-006-evidence
 REV_SOURCES='/Users/veho/Library/Mobile Documents/com~apple~CloudDocs/Domi Gym/Domi Gym 2025:26'
 python3 scripts/gg-revision/source-scan.py --source-root "$REV_SOURCES" --out "$REV_EVIDENCE/source-register.json"
-node --test scripts/gg-revision/core.test.mjs
+node --test scripts/gg-revision/core.test.mjs scripts/gg-revision/solver-packet.test.mjs
 node --import ./scripts/gg-revision/register.mjs scripts/gg-revision/census.mjs "$REV_EVIDENCE/source-register.json" "$REV_EVIDENCE/census.json"
 node --import ./scripts/gg-revision/register.mjs scripts/gg-revision/prepare-views.mjs "$REV_EVIDENCE/views"
 node scripts/gg-revision/serve.mjs "$REV_EVIDENCE/views"
@@ -79,6 +79,26 @@ auch den zweiten Schritt der Restore-Karte ein. Erst danach ist das Löserpaket
 vollständig. Änderungen an Werkzeugen, Komponenten, Quellen oder Ansichten
 erfordern neue Prüfsummen und neue zugehörige Urteile.
 
+Der Export verlangt einen frischen Ausgabeordner, damit kein alter sprechender
+Dateiname liegen bleibt. `verify.mjs` prüft den gesamten öffentlichen Ordner und
+`private-mapping.json`, die private Zuordnung zu den echten Aufgaben. Nach dem
+Packen zusätzlich die Archiveinträge und ihre Bytes prüfen:
+
+```sh
+python3 scripts/gg-revision/check-archive.py "$REV_EVIDENCE/views/solver" "$REV_EVIDENCE/solver.zip"
+```
+
+Für eine reine Metadatenkorrektur kann ein schon tatsächlich aufgenommener
+Folgezustand ausdrücklich wiederverwendet werden:
+
+```sh
+node --import ./scripts/gg-revision/register.mjs scripts/gg-revision/prepare-views.mjs "$REV_EVIDENCE/views-new" "$REV_EVIDENCE/views-old" --reuse-unchanged-state
+```
+
+Dabei müssen Originalzustand, Aufgabeninhalt und sämtliche damaligen
+Darstellungskomponenten unverändert sein. Die private Exportquittung nennt den
+übernommenen Zustand und die geprüften Dateien. Das ist kein neuer Browserlauf.
+
 `register.mjs` ist ein Adapter für das isolierte Lesen: Er löst vorhandene
 Workspace-Pakete auf und übersetzt TSX, also Komponenten mit eingebauter
 Ansichtsbeschreibung, nur im Speicher. `server-only` wird ausschließlich für
@@ -87,8 +107,9 @@ diesen lokalen Lauf überbrückt. Es entsteht kein neuer Produktendpunkt.
 ## Löserübergabe und Sperre
 
 Je Pilot neun vorhandene Aufgaben plus eine Transferfrage, insgesamt 20. Nur den
-Ordner `views/solver/` an die beiden getrennten Löserkarten geben. Die Dateien
-`private-data.json`, `browser.js`, `private-view-manifest.json`, `pilots.json`, das
+Ordner `views/solver/` an die beiden getrennten Löserkarten geben. Öffentliche
+Kennungen heißen `p001` usw.; auch Zustands- und Bildnamen sind neutral. Die Dateien
+`private-mapping.json`, `private-asset-map.json`, `private-data.json`, `browser.js`, `private-view-manifest.json`, `pilots.json`, das
 Rohregister und Selbstprüfberichte enthalten Autorwissen und bleiben beim GG.
 
 Die schlüsselfreien HTML-Seiten verwenden die echten Aufgabenkomponenten samt
@@ -104,6 +125,15 @@ Verständnisprobleme. Das technische Antwortformat und die nachgelagerte Bewertu
 stehen in [PILOTEN.md](PILOTEN.md). Anschließend folgen Quellengegenlesen,
 Klärung von Abweichungen und Kokis Urteil zu Register und Beispielen. Keine Welle
 oder Veröffentlichung aus einem Datum, einer Selbstprüfung oder bloßer Zustellung.
+
+**Nachtrag 4: Der erste Export wurde vom GG zu Recht gesperrt.** Sechs englische
+Zielwörter standen in Dateinamen, Links und öffentlichen Item-Kennungen. Die frühere
+Behauptung „schlüsselfrei“ für Paket
+`5c5217d07a86cfe884bbbbec721b42e6aa5dc86784848dff4b4974b75cc203cd`
+ist zurückgenommen; dieser Stand darf nicht an Löser gehen. Niemand hatte ihn
+unabhängig gelöst. Das korrigierte Schema `revision-solver-packet@2` prüft
+Dateinamen, Manifest, HTML-Metadaten, Links, Assets und die private Zuordnung
+gemeinsam; `check-archive.py` prüft das daraus erzeugte Archiv.
 
 ## Grenzen
 

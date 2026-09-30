@@ -15,6 +15,7 @@ nur `draft` und besitzt keinen Schreibweg für Veröffentlichung oder Datenbank.
 | Inhalt | vollständiges geladenes Item einschließlich Aufgabenauftrag |
 | Antworten | alle vier Vokabelpools bzw. Lösungen, Paare/Gruppen und Paint-Schlüssel |
 | Schüleransicht | tatsächliche Komponentenansichten; eingefrorenes HTML, explizite Folgezustände, ursprünglicher Storykontext, Beispielpaar, CSS und Bild-/Schriftdateien |
+| Öffentliche Identität | neutrales Paketmanifest und privat gebundene Zuordnung von `p001` usw. zur echten Itemfassung; keine sprechenden Item-/Assetnamen im Löserpaket |
 | Darstellungscode | Prüfsummen der verwendeten Komponenten, Abhängigkeitssperrdatei und W0-Werkzeuge |
 
 SHA-256 bezeichnet die dabei verwendete Prüfsumme. Objektfelder werden in eine
@@ -62,7 +63,21 @@ zweiten Paint-Zustand entfernen und alte Leserurteile auf geänderte Bindung
 anwenden. Die jeweilige Sperre muss anschlagen.
 
 Der HTML-Wächter verbietet Skripte, Ereignishandler, Schlüssel-Metadaten und
-vorausgefüllte Eingaben. Er erkennt nicht jede denkbare sprachliche Lösungshilfe.
+vorausgefüllte Eingaben. **Er reichte allein nicht aus:** GG wies im ersten Export
+sechs durch Dateinamen/öffentliche Item-Kennungen verratene Zielwörter nach. Dieser
+Befund bleibt erhalten, der damalige Paketpin ist gesperrt.
+
+Der ergänzende Paketwächter `solver-packet.mjs` prüft die vollständige Dateimenge,
+neutrale Aufgaben-/Zustands-/Assetnamen, Manifestfelder, Titel, Links, HTML-Metadaten
+(auch kodierte und anders zitierte Attributwerte), CSS-Verweise, Dateiprüfsummen
+und die private Zuordnung gegen die aktuellen Aufgabeneingänge. Das Siegel bindet
+die Paket- und private Zuordnungsprüfsumme. Sprechende Namen, öffentliche Quell-IDs,
+vertauschte/fehlende private Zuordnungen und zusätzliche versteckte Dateien
+werden gezielt sabotiert. Der Archivprüfer verlangt genau dieselben neutralen
+Dateinamen und Bytes im ZIP. Legitime sichtbare Wörter und Auswahlwerte bleiben
+unverändert; ein Test schützt ausdrücklich deren Erhalt.
+
+Auch diese Prüfungen erkennen nicht jede denkbare sprachliche Lösungshilfe.
 Eine schon vor dem Einfrieren versehentlich verratene Antwort muss durch
 schlüsselfreies Gegenlesen erkannt werden. Die Antwort-Einschmuggel-Gegenprobe
 beweist konkret, dass eine **nachträglich veränderte** Ansicht ihr altes Siegel

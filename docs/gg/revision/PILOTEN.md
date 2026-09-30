@@ -49,7 +49,10 @@ Entwurfsurteile, die Koki noch bestätigen muss.
 
 1. GG friert den vollständigen Ordner `solver/` einschließlich Farb-Folgezustand,
    Stil und Bildern ein. Die SHA-256 des kanonisch geordneten `manifest.json`
-   bezeichnet das Paket. Beide Löser erhalten denselben Stand, keine Schlüssel,
+   bezeichnet das Paket. Öffentliche Aufgaben heißen `p001` bis `p020`, Folgeschritte
+   beispielsweise `p008-s01.html`, Assets `assets/a001.png`. Die echte Item-Kennung
+   und ihre Zuordnung stehen ausschließlich in `private-mapping.json` außerhalb
+   des Löserordners. Beide Löser erhalten denselben Stand, keine Schlüssel,
    Rohregister, private Prüfumgebung oder Autorbefunde.
 2. Jeder Löser beantwortet alle 20 Aufgaben eigenständig und nennt weitere
    plausible Lösungen, unklare Reize, fehlenden Kontext und hinderliche Bedienung.
@@ -62,14 +65,14 @@ Entwurfsurteile, die Koki noch bestätigen muss.
 4. Abweichungen und gültige zusätzliche Antworten gehen ins Quellengegenlesen.
    Keine neue Serienarbeit vor beiden unabhängigen Urteilen und Kokis Registerurteil.
 
-Antwortdatei (Platzhalter ersetzen; alle 20 Kennungen aus dem Manifest aufführen):
+Antwortdatei (Platzhalter ersetzen; alle 20 **öffentlichen** Kennungen aus dem Manifest aufführen):
 
 ```json
 {
   "readerSession": "VON-GG-BEAUFTRAGTE-LOESERSITZUNG",
   "packetSha256": "SHA256-DES-KANONISCHEN-MANIFESTS",
   "items": [
-    {"itemId": "KENNUNG", "candidates": ["eigene Antwort"], "note": "Begründung oder Unsicherheit"}
+    {"publicId": "p001", "candidates": ["eigene Antwort"], "note": "Begründung oder Unsicherheit"}
   ]
 }
 ```
@@ -82,10 +85,17 @@ Jeder Eintrag darf mehrere Antwortkandidaten enthalten. Keine Antwortbeispiele
 mit realen Schlüsseln an Löser weitergeben.
 
 ```sh
-node --import ./scripts/gg-revision/register.mjs scripts/gg-revision/grade-candidates.mjs /EXTERN/solver/manifest.json /EXTERN/antworten.json /EXTERN/auswertung.json
+node --import ./scripts/gg-revision/register.mjs scripts/gg-revision/grade-candidates.mjs /EXTERN/solver/manifest.json /EXTERN/private-mapping.json /EXTERN/antworten.json /EXTERN/auswertung.json
 ```
 
-Die Auswertung prüft Paketkennung und vollständige Aufgabenmenge. Vor Verwendung
+Die Auswertung prüft zunächst das gesamte Paket, seinen Darstellungscode und die
+private Zuordnung gegen die aktuellen ausgewählten Aufgaben. Erst danach übersetzt
+sie öffentliche Kennungen in echte Item-Kennungen. Vertauschte oder fehlende
+Zuordnungen scheitern auch dann, wenn die Datei weiterhin die aktuelle Paketkennung
+nennt. Die Prüfsumme der privaten Zuordnung steht im internen Bewertungsbericht.
+Die Auswertung prüft außerdem Paketkennung und vollständige Antwortenmenge. Vor Verwendung
 als Siegelbeleg muss außerdem `verify.mjs` bestätigen, dass aktuelle Quellen und
 Darstellung noch zum Paket passen. Weder Antwortdatei noch Sitzungskürzel sind
 eine Beglaubigung: GG gleicht die echte getrennte Board-Sitzung und deren Urteil ab.
+Das erste, durch sprechende Kennungen verräterische W0-Paket ist ausdrücklich
+ungültig; alte Paketkennungen und Urteile sind für den neuen Stand nicht verwendbar.
