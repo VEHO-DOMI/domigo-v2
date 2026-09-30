@@ -96,7 +96,7 @@ function validSaved(saved){
 }
 async function boot(){
   const response=await fetch('/lesson.public.json');if(!response.ok)throw new Error('Lesson unavailable');data=await response.json();state=structuredClone(data.initial);
-  $('teacher').innerHTML=renderTeacher(data);$('teacher').hidden=false;
+  $('teacher').innerHTML=renderTeacher(data);$('teacher').hidden=false;document.querySelector('.areas').hidden=false;
   for(const [id,key] of [['brand','teacher.brand'],['areas-label','teacher.areas'],['top-home','ui.home'],['teacher-link','teacher.title'],['teacher-label','teacher.title'],['simulation-warning','teacher.noPoints']])$(id).textContent=t(key);
   $('learning').setAttribute('aria-label',t('ui.practice'));
   let restored=false;

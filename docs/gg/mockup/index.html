@@ -9,8 +9,8 @@
   <script type="module" src="/app.js"></script>
 </head>
 <body>
-  <header class="masthead"><div class="brand" id="brand"></div><details class="areas"><summary id="areas-label"></summary><nav><button id="top-home"></button><a href="#teacher" id="teacher-link"></a></nav></details></header>
-  <div class="teacher-banner"><strong id="teacher-label"></strong><span id="simulation-label" role="status"></span><span id="simulation-warning"></span></div>
+  <header class="masthead"><div class="brand" id="brand" data-static-copy="teacher.brand">Englisch · Unterstufe — DomiGo</div><details class="areas" hidden><summary id="areas-label">Bereiche</summary><nav><button id="top-home">Zum Einstieg</button><a href="#teacher" id="teacher-link">Lehrer-Muster</a></nav></details></header>
+  <div class="teacher-banner"><strong id="teacher-label" data-static-copy="teacher.title">Lehrer-Muster</strong><span id="simulation-label" role="status" data-static-copy="teacher.idle">Lernspeichern noch nicht gezeigt.</span><span id="simulation-warning" data-static-copy="teacher.noPoints">Keine echten Lernpunkte. Lernspeichern ist nachgestellt.</span></div>
   <div class="notebook">
     <main id="learning" aria-busy="true"><p data-static-copy="ui.loading">Die Übung wird geladen …</p></main>
     <section class="teacher" id="teacher" aria-labelledby="teacher-title" hidden></section>

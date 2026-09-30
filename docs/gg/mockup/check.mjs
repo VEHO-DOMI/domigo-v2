@@ -36,6 +36,8 @@ const wordSolver=await read('solver-word.public.json');
 assert.ok(!JSON.stringify(wordSolver).toLowerCase().includes(source.originals.vocab.w.toLowerCase()),'Wortpaket enthält das Zielwort weder im Reiz noch in Kennungen/Metadaten');
 const html=await readFile(path.join(out,'index.html'),'utf8');
 assert.ok(html.includes('lang="de"')&&html.includes(allCopy['ui.loading']),'Deutsche anfängliche Ladeansicht');
+for(const key of ['teacher.brand','teacher.title','teacher.idle','teacher.noPoints','ui.loading'])assert.ok(html.includes(`data-static-copy="${key}">${allCopy[key]}<`),`Statische Start-/Fehlerbeschriftung ${key}`);
+assert.ok(html.includes('<details class="areas" hidden>'),'Navigation erst nach erfolgreichem Laden bedienbar');
 const app=await readFile(path.join(out,'app.js'),'utf8');
 for(const key of ['ui.loadError','ui.loadAdvice','ui.reload'])assert.ok(app.includes(allCopy[key]),`Auch Offline-Ladefehler an Textregister gebunden ${key}`);
 for(const item of lesson.scenes){
