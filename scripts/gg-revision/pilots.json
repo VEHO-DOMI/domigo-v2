@@ -1,7 +1,7 @@
 {
   "label": "CODEX DRAFT — NOT CANON",
   "schema": "revision-pilots@1",
-  "basis": "df258ae8952cf5e5747e7507759d4d7b61e094b5",
+  "basis": "269ee986ccdc1ae7c3b070cbed7014f20e532365",
   "pilots": [
     {
       "unit": "g1-u01",
@@ -27,7 +27,7 @@
         "itemId": "g1u01.gi.imperatives.tr.900",
         "templateId": "g1u01.gi.imperatives.cp.002",
         "prompt": "Die Klasse hört gerade zu. Dein Freund redet dazwischen. Sag ihm auf Englisch, dass er nicht sprechen soll.",
-        "answers": ["Don't speak!", "Do not speak!", "Don't speak, please.", "Please don't speak."]
+        "answers": ["Don't speak!", "Do not speak!", "Don't speak, please.", "Please don't speak.", "Do not speak, please.", "Please do not speak.", "Don't talk!", "Do not talk!", "Don't talk, please.", "Please don't talk.", "Do not talk, please.", "Please do not talk."]
       }
     },
     {

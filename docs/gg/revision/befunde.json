@@ -1,0 +1,694 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "schema": "revision-findings@1",
+  "reviewedHead": "9d78767323ea207bc56ba72212953a3163418c0e",
+  "reviewedPacketSha256": "6941a9bb09d624f220c764c67291b19e877824357da34e2a1170a0acf3865065",
+  "integrationBasis": "269ee986ccdc1ae7c3b070cbed7014f20e532365",
+  "readerVerdicts": {
+    "A": "no",
+    "B": "no"
+  },
+  "contentRelease": false,
+  "rows": [
+    {
+      "publicId": "p001",
+      "itemId": "g1u01.w.book",
+      "originalPath": "content/corpus/units/g1-u01/vocab.json",
+      "title": "kein Einzelbefund",
+      "readers": {
+        "A": [
+          {
+            "answer": "book",
+            "tier": "correct"
+          }
+        ],
+        "B": [
+          {
+            "answer": "book",
+            "tier": "correct"
+          }
+        ]
+      },
+      "sourceAssessment": "M1 Unit 1 book/Buch; SB1 S.14 English book. Der erfundene Trägersatz verlangt book. story book ist durch die Ziellücke getrennt; kein zweites gleich starkes Ziel aus der Ansicht.",
+      "reviewHistory": "content/corpus/units/g1-u01/review/items.reviewed.json Runde 2: a93918ae224f → 6edaf3ccaf22; Feld-/Korrekturgeschichte offen, nicht pauschal entwertet. Wortbank: 07834aebf8b8 = 07834aebf8b8, Beleg erhalten.",
+      "status": "erhalten",
+      "nextRepair": "GG: kein lokaler Inhaltsfix; bestehende Reviewfelder und Erstvorkommen weiterführen.",
+      "contentRelease": false
+    },
+    {
+      "publicId": "p002",
+      "itemId": "g1u01.w.pencil",
+      "originalPath": "content/corpus/units/g1-u01/vocab.json",
+      "title": "Sprache offen",
+      "readers": {
+        "A": [
+          {
+            "answer": "pencil",
+            "tier": "correct"
+          }
+        ],
+        "B": [
+          {
+            "answer": "pencil",
+            "tier": "correct"
+          }
+        ]
+      },
+      "sourceAssessment": "M1 Unit 1 pencil/Bleistift; SB1 S.12 zeigt den Gegenstand, liefert aber diese Definition nicht. clean it verweist auf den Stift statt seine Bleistiftspuren. Beide Leser erkennen pencil dennoch.",
+      "reviewHistory": "content/corpus/units/g1-u01/review/items.reviewed.json Runde 2: 8a16fa73f452 → d1599b0676e3; Feld-/Korrekturgeschichte offen, nicht pauschal entwertet. Wortbank: 70395779ef96 = 70395779ef96, Beleg erhalten.",
+      "status": "offen",
+      "nextRepair": "GG → spätere Vokabelrevision: Definition „You write or draw with it. You can rub out what you write.“; auch erfundenen carrier-Satz getrennt prüfen. Kein bloßer Schlüsselzusatz.",
+      "contentRelease": false
+    },
+    {
+      "publicId": "p003",
+      "itemId": "g1u01.w.rubber",
+      "originalPath": "content/corpus/units/g1-u01/vocab.json",
+      "title": "Antwortumfang offen",
+      "readers": {
+        "A": [
+          {
+            "answer": "rubber",
+            "tier": "correct"
+          },
+          {
+            "answer": "eraser",
+            "tier": "wrong"
+          }
+        ],
+        "B": [
+          {
+            "answer": "rubber",
+            "tier": "correct"
+          },
+          {
+            "answer": "eraser",
+            "tier": "wrong"
+          }
+        ]
+      },
+      "sourceAssessment": "M1/SB1 S.12 belegen rubber. eraser bezeichnet denselben Radiergummi; die offene deutsche Vorgabe legt kein britisches Zielwort fest. Im Definitionspool ist eraser schon partial, im hier geprüften DE→EN-Pool fehlt es vollständig.",
+      "reviewHistory": "content/corpus/units/g1-u01/review/items.reviewed.json Runde 2: f41f6d0faeeb → cb9a321cd7b8; Feld-/Korrekturgeschichte offen, nicht pauschal entwertet. Wortbank: e06c7328fdd1 = e06c7328fdd1, Beleg erhalten.",
+      "status": "offen",
+      "nextRepair": "GG → spätere Vokabelrevision: eraser als volle DE→EN-Variante begründen/prüfen; Poolunterschied separat behandeln, keine pauschale Vier-Pool-Erweiterung.",
+      "contentRelease": false
+    },
+    {
+      "publicId": "p004",
+      "itemId": "g1u01.w.chair",
+      "originalPath": "content/corpus/units/g1-u01/vocab.json",
+      "title": "kein Einzelbefund",
+      "readers": {
+        "A": [
+          {
+            "answer": "Stuhl",
+            "tier": "correct"
+          },
+          {
+            "answer": "Sessel",
+            "tier": "correct"
+          }
+        ],
+        "B": [
+          {
+            "answer": "Stuhl",
+            "tier": "correct"
+          },
+          {
+            "answer": "Sessel",
+            "tier": "correct"
+          }
+        ]
+      },
+      "sourceAssessment": "M1 chair/Stuhl; SB1 S.14 Gegenstand. Stuhl und österreichisches Sessel passen zur offenen Möbelbedeutung und werden beide angenommen.",
+      "reviewHistory": "content/corpus/units/g1-u01/review/items.reviewed.json Runde 2: 32aa53c95213 → 0e3d6e1a9005; Feld-/Korrekturgeschichte offen, nicht pauschal entwertet. Wortbank: c318e4e22b25 = c318e4e22b25, Beleg erhalten.",
+      "status": "erhalten",
+      "nextRepair": "GG: bestehende regionalen Varianten erhalten; kein lokaler Fix.",
+      "contentRelease": false
+    },
+    {
+      "publicId": "p005",
+      "itemId": "g1u01.gi.imperatives.cp.002",
+      "originalPath": "content/corpus/units/g1-u01/grammar.json",
+      "title": "kein Einzelbefund",
+      "readers": {
+        "A": [
+          {
+            "answer": "Close the window!",
+            "tier": "correct"
+          }
+        ],
+        "B": [
+          {
+            "answer": "Close the window!",
+            "tier": "correct"
+          }
+        ]
+      },
+      "sourceAssessment": "SB1 S.14 Üb.16/S.15 Imperatives: Aufforderung mit Grundform. Offenes Fenster und Kälte machen Close the window unter dem Angebot eindeutig; You close the window würde einen anderen Sprechkontext benötigen.",
+      "reviewHistory": "content/corpus/units/g1-u01/review/items.reviewed.json Runde 2: 35828f0dde61 → 35828f0dde61; Tabellenfelder unverändert, kein automatisches Ansichtsurteil.",
+      "status": "erhalten",
+      "nextRepair": "GG: Situationsauswahl erhalten; keine Umwandlung in freie Produktion.",
+      "contentRelease": false
+    },
+    {
+      "publicId": "p006",
+      "itemId": "g1u01.gi.plurals.gf.001",
+      "originalPath": "content/corpus/units/g1-u01/grammar.json",
+      "title": "kein Einzelbefund",
+      "readers": {
+        "A": [
+          {
+            "answer": "pens",
+            "tier": "correct"
+          }
+        ],
+        "B": [
+          {
+            "answer": "pens",
+            "tier": "correct"
+          }
+        ]
+      },
+      "sourceAssessment": "SB1 S.15 regulärer Plural -s; M1 pen. two und pen binden pens; Herkunft seedV1 m1-u1-plurals-gf-008, keine behauptete wörtliche Buchaufgabe.",
+      "reviewHistory": "content/corpus/units/g1-u01/review/items.reviewed.json Runde 2: 41e2df32db38 → 41e2df32db38; Tabellenfelder unverändert, kein automatisches Ansichtsurteil.",
+      "status": "erhalten",
+      "nextRepair": "GG: Tipplücke erhalten; kein lokaler Fix.",
+      "contentRelease": false
+    },
+    {
+      "publicId": "p007",
+      "itemId": "g1u01.gi.plurals.mp.001",
+      "originalPath": "content/corpus/units/g1-u01/grammar.json",
+      "title": "Lernzeitpunkt offen",
+      "readers": {
+        "A": [
+          {
+            "answer": {
+              "child": "children",
+              "fish": "fish",
+              "box": "boxes",
+              "desk": "desks",
+              "pen": "pens",
+              "class": "classes"
+            },
+            "tier": "correct"
+          }
+        ],
+        "B": [
+          {
+            "answer": {
+              "child": "children",
+              "fish": "fish",
+              "box": "boxes",
+              "desk": "desks",
+              "pen": "pens",
+              "class": "classes"
+            },
+            "tier": "correct"
+          }
+        ]
+      },
+      "sourceAssessment": "SB1 S.15 belegt -s, children und fish; -es für boxes/classes steht dort nicht. Alle angebotenen Paare sind korrekt zuordenbar. Der Grammatik-Anhang ist Regelquelle, aber kein Nachweis, dass -es in Unit 1 bereits eingeführt wurde.",
+      "reviewHistory": "content/corpus/units/g1-u01/review/items.reviewed.json Runde 2: d34084a535ae → d34084a535ae; Tabellenfelder unverändert, kein automatisches Ansichtsurteil.",
+      "status": "offen",
+      "nextRepair": "GG → spätere Curriculumrevision: Lernzeitpunkt boxes/classes gegen Unterricht/Anhang klären; Paarhandlung und vorhandenes Review erhalten.",
+      "contentRelease": false
+    },
+    {
+      "publicId": "p008",
+      "itemId": "g1.paint.ch01.enc.eraser.r1",
+      "originalPath": "content/corpus/stories/g1.st.lost-pages/paint/ch01.tasks.v2.json",
+      "title": "Handlung dokumentiert",
+      "readers": {
+        "A": [
+          {
+            "answer": {
+              "name": "rubber",
+              "colour": "pink"
+            },
+            "tier": "correct"
+          }
+        ],
+        "B": [
+          {
+            "answer": {
+              "name": "rubber",
+              "colour": "pink"
+            },
+            "tier": "correct"
+          }
+        ]
+      },
+      "sourceAssessment": "SB1 S.12 belegt rubber und pink. Die genaue Zweischrittaufgabe stammt aus Paint ch01.tasks.v2.json, nicht wörtlich aus dem Buch. Rosa ist schon im Bild und im Folgesatz genannt: Benennung plus Farbwortzuordnung, keine Rekonstruktion verborgener Farbe.",
+      "reviewHistory": "content/corpus/stories/g1.st.lost-pages/paint/ch01.proof.json erhalten; kein neues Buch-/Ansichtssiegel aus Kapitelprüfband.",
+      "status": "erhalten",
+      "nextRepair": "GG: zweistufige Handlung erhalten; Bild-/Schwierigkeitsurteil Koki. Keine falsche Gedächtnisleistungsbehauptung.",
+      "contentRelease": false
+    },
+    {
+      "publicId": "p009",
+      "itemId": "g1.paint.ch01.enc.pencil.k3",
+      "originalPath": "content/corpus/stories/g1.st.lost-pages/paint/ch01.tasks.v2.json",
+      "title": "kein Einzelbefund",
+      "readers": {
+        "A": [
+          {
+            "answer": "Don't write!",
+            "tier": "correct"
+          }
+        ],
+        "B": [
+          {
+            "answer": "Don't write!",
+            "tier": "correct"
+          }
+        ]
+      },
+      "sourceAssessment": "SB1 S.14–15 Verbot/Grundform, M1 to write. Die Fantasiesituation stammt aus Paint. Don’t write passt unter den drei angebotenen Verboten; Don’t scribble ist hier kein auswählbarer Kandidat.",
+      "reviewHistory": "content/corpus/stories/g1.st.lost-pages/paint/ch01.proof.json erhalten; kein neues Buch-/Ansichtssiegel aus Kapitelprüfband.",
+      "status": "erhalten",
+      "nextRepair": "GG: situative Verbotsauswahl erhalten; kein lokaler Fix.",
+      "contentRelease": false
+    },
+    {
+      "publicId": "p010",
+      "itemId": "g1u01.gi.imperatives.tr.900",
+      "originalPath": "scripts/gg-revision/pilots.json",
+      "title": "eigener Entwurf korrigiert; neu prüfen",
+      "readers": {
+        "A": [
+          {
+            "answer": "Don't talk!",
+            "tier": "wrong"
+          },
+          {
+            "answer": "Don't speak!",
+            "tier": "correct"
+          },
+          {
+            "answer": "Do not talk!",
+            "tier": "wrong"
+          },
+          {
+            "answer": "Do not speak!",
+            "tier": "correct"
+          },
+          {
+            "answer": "Please don't talk!",
+            "tier": "wrong"
+          },
+          {
+            "answer": "Please don't speak!",
+            "tier": "correct"
+          }
+        ],
+        "B": [
+          {
+            "answer": "Don't speak!",
+            "tier": "correct"
+          },
+          {
+            "answer": "Don't talk!",
+            "tier": "wrong"
+          },
+          {
+            "answer": "Do not speak!",
+            "tier": "correct"
+          },
+          {
+            "answer": "Do not talk!",
+            "tier": "wrong"
+          },
+          {
+            "answer": "Please don't speak!",
+            "tier": "correct"
+          },
+          {
+            "answer": "Please don't talk!",
+            "tier": "wrong"
+          }
+        ]
+      },
+      "sourceAssessment": "SB1 S.14 Don’t speak und S.15 Do not stützen den negativen Imperativ. talk passt ebenso zum Dazwischenreden; SB1 S.8 enthält Talk to them, auch wenn die M1-Liste to talk erst später führt. Bereits bekannte Variante akzeptieren heißt nicht, sie als sicher eingeführtes Pflichtwort auszugeben. please ist eine Höflichkeitsvariante.",
+      "reviewHistory": "Neuer W0-Entwurf ohne historisches Review. Alte kalte Leserurteile bleiben ausschließlich am alten Paket; kein neues blindes Ja.",
+      "status": "gezielt-neu-pruefen",
+      "nextRepair": "CODEX cgo-006: nur eigenen Entwurf um speak/talk, Do not und please erweitern; GG beauftragt gezielte neue Prüfung. Stop talking ist kommunikativ möglich, zeigt aber nicht die erklärte Don’t/do not-Regel; falsche Verben/Formen bleiben abgewiesen.",
+      "contentRelease": false
+    },
+    {
+      "publicId": "p011",
+      "itemId": "g3u01.w.audition",
+      "originalPath": "content/corpus/units/g3-u01/vocab.json",
+      "title": "Definition/Kontext offen",
+      "readers": {
+        "A": [
+          {
+            "answer": "audition",
+            "tier": "correct"
+          },
+          {
+            "answer": "tryout",
+            "tier": "wrong"
+          },
+          {
+            "answer": "performance",
+            "tier": "wrong"
+          }
+        ],
+        "B": [
+          {
+            "answer": "audition",
+            "tier": "correct"
+          },
+          {
+            "answer": "performance",
+            "tier": "wrong"
+          }
+        ]
+      },
+      "sourceAssessment": "M3 audition = Vorsprechen/Vorsingen; SB3 S.10–11 zeigt tatsächlich critics in einer TV-Talentshow. critics ist daher kein erfundener Lehrbuchfehler. Der W0-carrier überträgt es jedoch auf eine school show; sein kompletter Satz ist in den gelesenen Originalen nicht belegt. Die Definition nennt keine Auswahlabsicht. tryout passt als US-Auswahlprobe; performance passt zur zu breiten sichtbaren Definition, ist aber kein bedeutungsgleiches Ersatzwort für audition.",
+      "reviewHistory": "content/corpus/units/g3-u01/review/items.reviewed.json Runde 1: c6393ca53a60 → 8f5fe7e394bc; Feld-/Korrekturgeschichte offen, nicht pauschal entwertet. Wortbank: a09851b039fa = a09851b039fa, Beleg erhalten.",
+      "status": "offen",
+      "nextRepair": "GG → spätere Vokabelrevision: Auswahl für Rolle/Show explizit machen und school-show-Kontext mit judges/panel stimmig fassen. tryout dann gezielt prüfen; performance nicht blind als Synonym eintragen. Kennzeichnung sSource=sb auf Satzebene klären; critics im Original bewahren.",
+      "contentRelease": false
+    },
+    {
+      "publicId": "p012",
+      "itemId": "g3u01.w.tune",
+      "originalPath": "content/corpus/units/g3-u01/vocab.json",
+      "title": "Definitions-/Antwortkonflikt",
+      "readers": {
+        "A": [
+          {
+            "answer": "song",
+            "tier": "wrong"
+          },
+          {
+            "answer": "tune",
+            "tier": "correct"
+          }
+        ],
+        "B": [
+          {
+            "answer": "song",
+            "tier": "wrong"
+          },
+          {
+            "answer": "tune",
+            "tier": "correct"
+          },
+          {
+            "answer": "melody",
+            "tier": "wrong"
+          }
+        ]
+      },
+      "sourceAssessment": "M3 tune = Melodie; Originalbeispiel unterscheidet songs und good tune. Die aktuelle Definition „a piece of music that you can sing along to“ grenzt die Melodie nicht vom ganzen Lied ab. Beide Leser bevorzugen song; nur tune wird angenommen. melody trifft die Melodiebedeutung, song den zu weit gefassten sichtbaren Reiz.",
+      "reviewHistory": "content/corpus/units/g3-u01/review/items.reviewed.json Runde 1: 34fdfadd00b5 → 78b1ae5cf200; Feld-/Korrekturgeschichte offen, nicht pauschal entwertet. Wortbank: f5b871629be1 = f5b871629be1, Beleg erhalten.",
+      "status": "offen",
+      "nextRepair": "GG → spätere Vokabelrevision: Definition auf Melodie präzisieren und tune/melody fachlich bewerten; song nicht als falsche englische Antwort auf die bisherige Definition behandeln, aber auch nicht als Synonym von tune kopieren.",
+      "contentRelease": false
+    },
+    {
+      "publicId": "p013",
+      "itemId": "g3u01.w.lyrics",
+      "originalPath": "content/corpus/units/g3-u01/vocab.json",
+      "title": "Antwortumfang offen",
+      "readers": {
+        "A": [
+          {
+            "answer": "lyrics",
+            "tier": "correct"
+          },
+          {
+            "answer": "song lyrics",
+            "tier": "wrong"
+          },
+          {
+            "answer": "words of a song",
+            "tier": "wrong"
+          },
+          {
+            "answer": "the words of a song",
+            "tier": "wrong"
+          }
+        ],
+        "B": [
+          {
+            "answer": "lyrics",
+            "tier": "correct"
+          },
+          {
+            "answer": "song lyrics",
+            "tier": "wrong"
+          },
+          {
+            "answer": "the lyrics",
+            "tier": "wrong"
+          },
+          {
+            "answer": "the words of a song",
+            "tier": "wrong"
+          }
+        ]
+      },
+      "sourceAssessment": "M3 lyrics/Liedtext; Originalbeispiel „The lyrics in a song should be meaningful.“ song lyrics präzisiert korrekt. words of a song und the words of a song sind passende Umschreibungen; die offene Übersetzung verlangt kein einzelnes Wort. the lyrics ist mit bestimmtem Lied idiomatisch; der isolierte Reiz schließt den Artikel nicht aus.",
+      "reviewHistory": "content/corpus/units/g3-u01/review/items.reviewed.json Runde 1: 93b95cffa436 → c94b802bfbfc; Feld-/Korrekturgeschichte offen, nicht pauschal entwertet. Wortbank: 252e14ab46e7 = 252e14ab46e7, Beleg erhalten.",
+      "status": "offen",
+      "nextRepair": "GG → spätere Vokabelrevision: genannten DE→EN-Lösungsraum einschließlich Artikel/Mehrwortantworten gezielt prüfen. Andere Pools und Originalwortliste erhalten.",
+      "contentRelease": false
+    },
+    {
+      "publicId": "p014",
+      "itemId": "g3u01.w.brave",
+      "originalPath": "content/corpus/units/g3-u01/vocab.json",
+      "title": "Antwortumfang offen",
+      "readers": {
+        "A": [
+          {
+            "answer": "mutig",
+            "tier": "correct"
+          },
+          {
+            "answer": "tapfer",
+            "tier": "wrong"
+          },
+          {
+            "answer": "couragiert",
+            "tier": "wrong"
+          }
+        ],
+        "B": [
+          {
+            "answer": "mutig",
+            "tier": "correct"
+          },
+          {
+            "answer": "tapfer",
+            "tier": "wrong"
+          }
+        ]
+      },
+      "sourceAssessment": "M3 brave/mutig mit „You’re a brave man.“ tapfer und couragiert sind in der offenen Adjektivübersetzung semantisch passende Varianten. couragiert ist stilistisch gehobener; kein erforderlicher Jg.-3-Produktionswortschatz. Fehlende Listenvariante macht die Übersetzung nicht falsch.",
+      "reviewHistory": "content/corpus/units/g3-u01/review/items.reviewed.json Runde 1: 78c3394d64ce → 78c3394d64ce; Tabellenfelder unverändert, kein automatisches Ansichtsurteil. Wortbank: 8f91deda06d2 = 8f91deda06d2, Beleg erhalten.",
+      "status": "offen",
+      "nextRepair": "GG → spätere Vokabelrevision: tapfer und couragiert als Übersetzungsvarianten prüfen; keine Unterrichtspflicht aus seltenem Synonym ableiten. Altes unverändertes Itemreview erhalten, neuer Antwortumfangsbefund daneben.",
+      "contentRelease": false
+    },
+    {
+      "publicId": "p015",
+      "itemId": "g3u01.gi.present-simple.gf.002",
+      "originalPath": "content/corpus/units/g3-u01/grammar.json",
+      "title": "Zeitrahmen offen",
+      "readers": {
+        "A": [
+          {
+            "answer": "plays | sings",
+            "tier": "correct"
+          }
+        ],
+        "B": [
+          {
+            "answer": "plays | sings",
+            "tier": "correct"
+          },
+          {
+            "answer": "played | sang",
+            "tier": "close"
+          }
+        ]
+      },
+      "sourceAssessment": "SB3 S.12–13 wiederholt sowohl present simple als auch past simple. Aktuelle Struktur und Hinweis zielen auf gegenwärtige Gewohnheit; plays | sings ist dafür richtig. played | sang verschiebt die Gewohnheit in die Vergangenheit, die every week allein nicht ausschließt. Leser A nimmt die gewöhnliche Präsenslesart, B nennt zusätzlich Vergangenheit. close ist nur das technische Ergebnis, kein fachlicher Kompromiss.",
+      "reviewHistory": "content/corpus/units/g3-u01/review/items.reviewed.json Runde 1: 4e2e3100aae7 → 4e2e3100aae7; Tabellenfelder unverändert, kein automatisches Ansichtsurteil.",
+      "status": "offen",
+      "nextRepair": "GG → spätere Grammatikrevision: sichtbaren Rahmen ergänzen, z.B. „So ist es heute jede Woche: …“ bzw. klar bezeichnete Präsensübung. Vergangenheit nicht automatisch zum Schlüssel der Präsensaufgabe hinzufügen; Auftrag zuerst klären.",
+      "contentRelease": false
+    },
+    {
+      "publicId": "p016",
+      "itemId": "g3u01.gi.present-simple.mt.001",
+      "originalPath": "content/corpus/units/g3-u01/grammar.json",
+      "title": "kein Einzelbefund",
+      "readers": {
+        "A": [
+          {
+            "answer": {
+              "Do you like pop music?": "Yes, I do.",
+              "Does she write her own lyrics?": "Yes, she does.",
+              "Do your friends play the guitar?": "No, they don't.",
+              "Does he sing along?": "No, he doesn't."
+            },
+            "tier": "correct"
+          }
+        ],
+        "B": [
+          {
+            "answer": {
+              "Do you like pop music?": "Yes, I do.",
+              "Does she write her own lyrics?": "Yes, she does.",
+              "Do your friends play the guitar?": "No, they don't.",
+              "Does he sing along?": "No, he doesn't."
+            },
+            "tier": "correct"
+          }
+        ]
+      },
+      "sourceAssessment": "SB3 S.12–13 Fragen mit do/does + Person + Grundform. Angebotene Kurzantworten sind nach Person/Hilfsverb eindeutig zuzuordnen; keine behauptete persönliche Wahrheitsauskunft. Hier Grundansicht, nicht die hinterlegte Story-Variante reply-comments.",
+      "reviewHistory": "content/corpus/units/g3-u01/review/items.reviewed.json Runde 1: 5fb4bd9e4d61 → 5fb4bd9e4d61; Tabellenfelder unverändert, kein automatisches Ansichtsurteil.",
+      "status": "erhalten",
+      "nextRepair": "GG: Zuordnungsformat und getrennten Geltungsbereich der Story-Variante erhalten.",
+      "contentRelease": false
+    },
+    {
+      "publicId": "p017",
+      "itemId": "g3u01.gi.present-simple.gs.004",
+      "originalPath": "content/corpus/units/g3-u01/grammar.json",
+      "title": "Auftrag/Handlung offen",
+      "readers": {
+        "A": [
+          {
+            "answer": {
+              "She ___ great lyrics.": "She / He / It",
+              "I ___ great lyrics.": "I / You / We / They",
+              "My friends ___ the guitar.": "I / You / We / They",
+              "He ___ in a concert tonight.": "She / He / It",
+              "Tom ___ the guitar.": "She / He / It",
+              "You ___ in a concert tonight.": "I / You / We / They"
+            },
+            "tier": "correct"
+          }
+        ],
+        "B": [
+          {
+            "answer": {
+              "She ___ great lyrics.": "She / He / It",
+              "I ___ great lyrics.": "I / You / We / They",
+              "My friends ___ the guitar.": "I / You / We / They",
+              "He ___ in a concert tonight.": "She / He / It",
+              "Tom ___ the guitar.": "She / He / It",
+              "You ___ in a concert tonight.": "I / You / We / They"
+            },
+            "tier": "correct"
+          }
+        ]
+      },
+      "sourceAssessment": "SB3 S.12–13 beschreibt Grundform bzw. -s. Sichtbar angeboten werden jedoch nur She/He/It und I/You/We/They. Der Auftrag verspricht Verbformen, tatsächliche Handlung ist Subjektgruppierung. tonight allein erklärt keine Gewohnheit. Historisches Review stimmt weiterhin mit seinen Tabellenfeldern überein.",
+      "reviewHistory": "content/corpus/units/g3-u01/review/items.reviewed.json Runde 1: d18206a5ac82 → d18206a5ac82; Tabellenfelder unverändert, kein automatisches Ansichtsurteil.",
+      "status": "offen",
+      "nextRepair": "GG → spätere Grammatikrevision: Handlung als Personengruppierung ehrlich benennen, z.B. „Zu welcher Gruppe gehört die Person oder gehören die Personen im Satz? Ordne zu.“ Lücken/tonight passend überarbeiten. Keine pauschale Umwandlung in Multiple Choice oder Behauptung freier Formbildung.",
+      "contentRelease": false
+    },
+    {
+      "publicId": "p018",
+      "itemId": "g3u01.gi.present-simple.ag.001",
+      "originalPath": "content/corpus/units/g3-u01/grammar.json",
+      "title": "kein Einzelbefund",
+      "readers": {
+        "A": [
+          {
+            "answer": "plays",
+            "tier": "correct"
+          }
+        ],
+        "B": [
+          {
+            "answer": "plays",
+            "tier": "correct"
+          }
+        ]
+      },
+      "sourceAssessment": "SB3 S.12–13 he/she/it + -s. Sichtbare Buchstaben und Auftrag binden plays; trainiert Formen-/Schreibwissen, keine freie Satzproduktion.",
+      "reviewHistory": "content/corpus/units/g3-u01/review/items.reviewed.json Runde 1: 9e828fb84667 → 9e828fb84667; Tabellenfelder unverändert, kein automatisches Ansichtsurteil.",
+      "status": "erhalten",
+      "nextRepair": "GG: Buchstabenordnen erhalten; Live-Umschalter war nicht Gegenstand der kalten statischen Prüfung.",
+      "contentRelease": false
+    },
+    {
+      "publicId": "p019",
+      "itemId": "g3u01.ci.bens-line.ec.001",
+      "originalPath": "content/corpus/stories/g3.st.fourteen/comprehension.json",
+      "title": "Eingabeumfang offen; SPERRE",
+      "readers": {
+        "A": [
+          {
+            "answer": "And this is Leah. She always sings along!",
+            "tier": "correct"
+          },
+          {
+            "answer": "She always sings along!",
+            "tier": "correct"
+          },
+          {
+            "answer": "sings",
+            "tier": "wrong"
+          }
+        ],
+        "B": [
+          {
+            "answer": "And this is Leah. She always sings along!",
+            "tier": "correct"
+          },
+          {
+            "answer": "She always sings along!",
+            "tier": "correct"
+          },
+          {
+            "answer": "sings",
+            "tier": "wrong"
+          }
+        ]
+      },
+      "sourceAssessment": "Original ist g3.st.fourteen: Szenen s007/s008 plus comprehension.json; kein wörtlicher Buchdialog. SB3 stützt nur die Regel she + -s. sing → sings ist eindeutig. Originalansicht sagt nur ERROR-CORRECTION/Your answer, zeigt das Zitat doppelt und lässt Wort, fehlerhaften Satz oder ganze Äußerung offen. Zwei Satzfassungen correct; sings wrong.",
+      "reviewHistory": "Original comprehension.json und Szenen erhalten; kein gesondertes heutiges Itemreview nachgewiesen. Beide kalten Leser lehnen die unveränderte Ansicht ab.",
+      "status": "offen",
+      "nextRepair": "GG → spätere Story-/Auftragsrevision: „In Bens zweitem Satz steckt ein Fehler. Schreibe diesen Satz richtig auf.“ Erwartete Lernhandlung bleibt Fehler finden und ganzen Satz frei berichtigen. Beide bisherigen Satzfassungen zunächst weiter akzeptieren; altes Wort-Nein dokumentieren. Anweisung erst in beauftragter Produktänderung, niemals in den angeblich unveränderten Export schmuggeln.",
+      "contentRelease": false
+    },
+    {
+      "publicId": "p020",
+      "itemId": "g3u01.gi.present-simple.gf.900",
+      "originalPath": "scripts/gg-revision/pilots.json",
+      "title": "Voraussetzung dokumentiert; Urteil offen",
+      "readers": {
+        "A": [
+          {
+            "answer": "Does | write",
+            "tier": "correct"
+          }
+        ],
+        "B": [
+          {
+            "answer": "Does | write",
+            "tier": "correct"
+          }
+        ]
+      },
+      "sourceAssessment": "SB3 S.12–13 nennt Fragebildung do/does + Person + Grundform gesondert. Does | write ist der nahe Transfer von Hilfsverb + Grundform, setzt aber eingeführte Fragen und deren Wortstellung voraus. Der kurze Verneinungsmerksatz allein lehrt diese Reihenfolge nicht. Reale Unterrichtsvoraussetzung UNVERIFIZIERT.",
+      "reviewHistory": "Neuer W0-Entwurf ohne historisches Review. Alte kalte Leserurteile bleiben ausschließlich am alten Paket; kein neues blindes Ja.",
+      "status": "Voraussetzung-offen",
+      "nextRepair": "CODEX cgo-006: Lehrerregister benennt do/does-Fragen als Voraussetzung; GG/Koki bestätigen Lernstand und Muster. Keine Behauptung, Merksatz allein reiche oder Did/can seien dieselbe Struktur.",
+      "contentRelease": false
+    }
+  ]
+}

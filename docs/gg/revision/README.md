@@ -1,10 +1,17 @@
 # Revision W0 · ausführbare Kalibriergrundlage
 
 **CODEX DRAFT — NOT CANON · cgo-006.** Ausgang und PR-Ziel: `codex/main`,
-Basis `df258ae8952cf5e5747e7507759d4d7b61e094b5`. Diese Grundlage zählt den
+Ursprungsbasis `df258ae8952cf5e5747e7507759d4d7b61e094b5`; nach Nachtrag 6
+Integration von `269ee986ccdc1ae7c3b070cbed7014f20e532365`. Diese Grundlage zählt den
 Dateikorpus, bindet Belege an konkrete Aufgabenfassungen und liefert zwei kleine
 Muster. Sie ändert weder Aufgaben noch Bewertung, Schülerfreigaben oder Datenbank.
 Eine bestandene Selbstprüfung ist kein fachliches Qualitätssiegel.
+
+**Nachtrag 6:** Beide unabhängigen Inhaltsleser sagen Nein zur unveränderten
+Kalibrierung. Das vollständige [Befundregister](BEFUNDE.md) und der
+[Entscheidungs-/Prüfweg](BEFUNDWEG.md) bewahren alle Antworten, Originalbefunde
+und gezielten Korrekturvorschläge. Nur der eigene Transfer p010 wird erweitert.
+Inhalts-/Serienfreigabe bleibt gesperrt; alte grüne Mechanik ist kein neues Ja.
 
 ## Bestand und Geltungsbereich
 

@@ -26,7 +26,7 @@ export function pilotData() {
       answers: pilot.transfer.answers.map(text => ({ text, tier: 'full' })), distractors: [], pairs: [], groups: [], gloss: [],
       direction: pilot.unit === 'g1-u01' ? 'deToEn' : null,
       hintDe: 'Denk an das Beispiel darüber.', hintEn: null,
-      explainDe: pilot.unit === 'g1-u01' ? "Don't speak! bedeutet: Sprich nicht!" : 'Does he write …? Nach does steht write ohne -s.', explainEn: null,
+      explainDe: pilot.unit === 'g1-u01' ? "Don't speak! und Don't talk! passen beide: Sprich nicht! / Rede nicht! Do not ist die ausgeschriebene Form. Mit please wird die Bitte höflicher." : 'Does he write …? Nach does steht write ohne -s.', explainEn: null,
       presentation: { variants: [], gameMeta: null, audio: null },
       provenance: { ...template.provenance, by: 'codex', note: 'cgo-006 DRAFT fixture only; no publication' } };
     return [...cases, { itemId: transfer.id, item: transfer, unit: pilot.unit, kind: 'transfer', pair: pilot.pair, context: null }];

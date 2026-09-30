@@ -1,0 +1,40 @@
+{
+  "reviewedHead": "9d78767323ea207bc56ba72212953a3163418c0e",
+  "reviewedPacketSha256": "6941a9bb09d624f220c764c67291b19e877824357da34e2a1170a0acf3865065",
+  "readers": {
+    "A": {
+      "answers": {
+        "path": "cgo-027-evidence/antworten.json",
+        "sha256": "0634c80f227aabd220bbea1c767a045a795485077ec94a8467ed796c19a206fe",
+        "md5": "27c002658e646a050ce2f9bd1d795c30"
+      },
+      "report": {
+        "path": "cgo-027-evidence/bericht.md",
+        "sha256": "8b7b71f66a83fec2a6946f250895cc5043b491f34c9ee5836f98ee2a05b6f7d8",
+        "md5": "8294437dd7bc58adfd089cb874313924"
+      },
+      "comparison": {
+        "path": "cgo-001-r12-evidence/cgo-027-mechanical-comparison.json",
+        "sha256": "605dcf9bd23a07d21f12be278bf3826ca5b8bb5086c33d0af840a23a4ba5901b",
+        "md5": "1ab8c649170c3febed90cd319ca101f6"
+      }
+    },
+    "B": {
+      "answers": {
+        "path": "cgo-028-evidence/antworten.json",
+        "sha256": "28873e913884b8c59e11232eedca8cb0418a81d36c504e110ec5738c2e9e90fd",
+        "md5": "2784f2c316831a16175d0a8a937ba5d1"
+      },
+      "report": {
+        "path": "cgo-028-evidence/bericht.md",
+        "sha256": "3da3be8c34e99173b4a20dee41541158888198dfc491ff2a77e906a4385ccb65",
+        "md5": "a7e595d468289ec9df1bcb6fcaea1d0c"
+      },
+      "comparison": {
+        "path": "cgo-001-r12-evidence/cgo-028-mechanical-comparison.json",
+        "sha256": "067629e8a71f063f108f762de0f150a6cb3c1837e7e13ab7d0890495e357f04e",
+        "md5": "b4380fa9ec96aa667362476700b6f851"
+      }
+    }
+  }
+}

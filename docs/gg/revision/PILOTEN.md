@@ -41,6 +41,11 @@ Das **-s** steckt schon in **doesn't**. Dahinter bleibt das Verb in der Grundfor
 Neue Transferfrage: *Du möchtest mehr über den Sänger wissen:
 ___ he ___ his own lyrics? (write)*
 
+**Voraussetzung Jahrgang 3:** Fragen mit do/does und Hilfsverb vor dem Subjekt
+müssen bereits eingeführt sein (SB3 Unit 1, S.12–13). Der Merksatz zur Verneinung
+allein erklärt diese Wortstellung nicht. Der konkrete Unterrichtsstand ist
+UNVERIFIZIERT; die Frage ist ein Transfer nach Einführung.
+
 Das Beispiel zeigt eine Regel; die anschließende Frage verlangt ihre Anwendung
 auf eine neue Situation. Natürlichkeit, sprachliches Register und Lernwert sind
 Entwurfsurteile, die Koki noch bestätigen muss.
@@ -99,3 +104,13 @@ Darstellung noch zum Paket passen. Weder Antwortdatei noch Sitzungskürzel sind
 eine Beglaubigung: GG gleicht die echte getrennte Board-Sitzung und deren Urteil ab.
 Das erste, durch sprechende Kennungen verräterische W0-Paket ist ausdrücklich
 ungültig; alte Paketkennungen und Urteile sind für den neuen Stand nicht verwendbar.
+
+## Nachtrag 6 · tatsächliche Leserurteile
+
+Beide getrennten Inhaltsleser (cgo-027/cgo-028) haben den alten Paketstand
+`6941a9bb…` mit Nein zurückgegeben. [BEFUNDE.md](BEFUNDE.md) bewahrt alle 20
+Lösungsräume samt tatsächlicher Annahme und Herkunft; [BEFUNDWEG.md](BEFUNDWEG.md)
+begründet die Entscheidungen. Nur im eigenen neuen Jg.-1-Transfer werden
+speak/talk samt Do not-/please-Varianten ergänzt. Der neue Antwortvertrag erhält
+neue Pins; kein altes Urteil wird zu einem neuen Ja. Inhaltsfreigabe bleibt
+gesperrt, auch wenn mechanische Prüfungen erfolgreich sind.

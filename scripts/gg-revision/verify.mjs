@@ -56,7 +56,7 @@ for(const entry of entries){
  }
  const sourceRecords=sources.filter(s=>s.grade===grade && (s.role==='master-list'||(s.role==='sb-transcript'&&/Unit 1(?:-|\.|\.docx)/i.test(path.basename(s.relPath)))));
  assert.ok(sourceRecords.length>=2,`Pilot original sources missing: ${entry.unit}`);
- const source={records:sourceRecords,semanticVerdict:'UNVERIFIZIERT; author source notes and two blind judgements still required'};
+ const source={records:sourceRecords,semanticVerdict:'UNVERIFIZIERT for release; historical readers both No, see BEFUNDE.md; current binding requires fresh targeted review'};
  const art=entry.kind==='paint'?paintArt(entry.chapter):undefined;
  const html=renderToStaticMarkup(createElement(PilotView,{entry,art}));
  assert.deepEqual(solverHtmlErrors(html),[]);

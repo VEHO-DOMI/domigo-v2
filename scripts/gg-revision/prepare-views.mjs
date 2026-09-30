@@ -5,7 +5,7 @@ import assert from 'node:assert/strict';
 import { createRequire } from 'node:module';
 import { createElement } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { pilotData } from './pilot-data.mjs';
+import { pilotData, selection } from './pilot-data.mjs';
 import { PilotView } from './PilotView.tsx';
 import { PAINT_OVERLAY_CSS } from '../../packages/game-paint/src/cards/overlay-css.ts';
 import { ROOT, outside, paintArt, rendererFingerprint } from './census.mjs';
@@ -50,7 +50,7 @@ for(const name of ['inter-var-latin.woff2','fredoka-var-latin.woff2','quicksand-
 for(const match of css.matchAll(/url\(['"]?(\/art\/[^)'"\s]+)['"]?\)/g)) asset(match[1],path.join(ROOT,'apps/web/public',match[1]));
 let publicCss=css;for(const a of assets)publicCss=publicCss.replaceAll(a.sourceUrl,a.file);
 fs.writeFileSync(path.join(solver,'style.css'),publicCss);
-const manifest={label:'CODEX DRAFT — NOT CANON',schema:'revision-solver-packet@2',basis:'df258ae8952cf5e5747e7507759d4d7b61e094b5',cssSha256:sha256(publicCss),indexSha256:'',rendererSha256:digest(renderer),views,states:[],assets:assets.map(({file,sha256})=>({file,sha256}))};
+const manifest={label:'CODEX DRAFT — NOT CANON',schema:'revision-solver-packet@2',basis:selection.basis,cssSha256:sha256(publicCss),indexSha256:'',rendererSha256:digest(renderer),views,states:[],assets:assets.map(({file,sha256})=>({file,sha256}))};
 fs.writeFileSync(path.join(solver,'manifest.json'),JSON.stringify(manifest,null,2)+'\n');
 fs.writeFileSync(path.join(out,'private-asset-map.json'),JSON.stringify(assets,null,2)+'\n');
 let packet=finalizePacket(out,entries,assets),reuseReceipt=null;

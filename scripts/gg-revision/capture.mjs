@@ -61,6 +61,14 @@ try{
   if(solverHtmlErrors(info.html).length)throw new Error('Unexpected key payload in rendered DOM');
   checks.push({itemId:entry.itemId,width,frozenMatchesActual:match,imagesLoaded:info.images.every(i=>i.ok)});
  }
+ // N6 changes only our own transfer. Exercise its actual input/grader connection.
+ const transfer=entries.find(e=>e.itemId==='g1u01.gi.imperatives.tr.900');
+ await navigate(transfer,390);await input(0,"Don't talk!");await clickText('Check');await sleep(100);
+ checks.push({state:'transfer-talk',events:await evaluate('window.revisionEvents')});
+ await shot('transfer-talk-correct-390',"typed Don't talk! in own transfer; Check");
+ await navigate(transfer,1440);await input(0,"Don't listen!");await clickText('Check');await sleep(100);
+ checks.push({state:'transfer-wrong-action',retryButton:await evaluate(`document.body.innerText.includes('Try again')`),value:await evaluate(`document.querySelector('input').value`),events:await evaluate('window.revisionEvents')});
+ await shot('transfer-wrong-action-1440',"typed Don't listen! in own transfer; Check; retry retained");
  // Real input preservation -> failed attempt -> correction -> real component feedback.
  const vocab=entries.find(e=>e.itemId==='g1u01.w.rubber');await navigate(vocab,390);
  await input(0,'xyz');await clickText('Check');await sleep(100);
@@ -93,6 +101,8 @@ try{
  const assertions={
    allFrozenMatch:checks.filter(c=>c.itemId).every(c=>c.frozenMatchesActual.text&&c.frozenMatchesActual.inputs),
    allImagesLoaded:checks.filter(c=>c.itemId).every(c=>c.imagesLoaded),
+   transferTalk:checks.some(c=>c.state==='transfer-talk'&&c.events.some(e=>e.tier==='correct')),
+   transferWrongAction:checks.some(c=>c.state==='transfer-wrong-action'&&c.retryButton&&c.value==="Don't listen!"&&!c.events.some(e=>e.tier==='correct')),
    retry:checks.some(c=>c.state==='wrong-retry'&&c.retryButton&&c.value==='xyz'),
    corrected:checks.some(c=>c.state==='correct-after-retry'&&c.events.some(e=>e.tier==='correct')),
    bothInputs:checks.some(c=>c.state==='two-inputs-retained'&&JSON.stringify(c.values)==='["plays","sings"]'),
