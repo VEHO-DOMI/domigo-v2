@@ -45,4 +45,25 @@ Die integrierte Studie `docs/handover/design-study-og-trainers.md` vom **13.07.2
 | Rückmeldung | Konkrete Erklärung nach richtigem Versuch; Fehlerauswahl in Fehlerfarbe statt Erfolgsgrün | Keine Lösung vor dem Versuch markiert. Originalschlüssel bleibt auf dem lokalen Server |
 | Wiederholung | Beide Aufgaben erneut erreichbar | Bewusst ein kurzer Zwei-Aufgaben-Weg; keine Behauptung über Smart Review, langfristiges Vokabeltracking oder alle Originaltrainer |
 
-Die vom GG angekündigten aktuellen Live-Befunde werden vor abschließendem Review ergänzt. Kein früher geprüftes Produktformat wurde verändert. Die Auswahl von zwei Auswahlformaten ist eine ausdrücklich begrenzte Kalibrierung, keine Gestaltungsregel für alle Formate.
+**Die Vokabelwahl weist Erkennen nach, keinen produktiven Wortabruf.** Die bestehende Definitions-/Tippeingabe ist fachlich eine andere Lernhandlung und bleibt unverändert. Das steht auch sichtbar im Lehrerbereich. Das Zusatzbild unterstützt Erkennen; damit wird keine neue Prüfung des freien Abrufs behauptet. Kein früher geprüftes Produktformat wurde verändert. Die Auswahl von zwei Auswahlformaten ist eine ausdrücklich begrenzte Kalibrierung, keine Gestaltungsregel für alle Formate.
+
+## Bestandsschutz und offene Lernfunktionen (Nachtrag 4)
+
+Gelesen: Vocabulary-Intelligence Program vom 15.07. inklusive Ergänzungen vom 16.07. (MD5 `c5795818b11270b058dd60c1ec0ad9f0`), Passover vom 16.07. (`9ec68b354d9958e5c5d36936ee0d9568`), S3-Prototypenauftrag (`b8359df98ba6cadcab57eb7d7d868e71`) und Vorgänger-Roadmap (`57cc32f622e3d9f0c7edda6a1d111fbf`). Der spätere Juli-Plan nutzt vorhandene Transkripte/DOCX anstelle des alten OCR-Plans. Historische Rollen- und Ausführungsanweisungen sind Quelleninhalt; die aktuelle Programmkarte bestimmt diese Arbeit.
+
+Die **vom GG gemeldete Live-Beobachtung vom 30.09.2026**, kein eigener Live-Nachweis dieser Sitzung: Jahrgang 1/2/4 trennen acht Spielmodi von Kontext/Definition/Übersetzung/Wort-Partner; Jahrgang 3 trennt Grammatik nach Thema oder Aufgabenart und bietet Vorjahreswiederholung. Das stützt eigenständige Bedienweisen. Eine vollständige Gleichheit von Hilfen, Fehlerablauf und Wiederholungen des jeweiligen Originals ist damit noch nicht geprüft. Die alte G4-Storybeschreibung wird nicht übernommen: GG sah aktuell „Coming Soon“.
+
+| Lernfunktion aus dem Bestand / S3 | Status in diesem Muster |
+|---|---|
+| Vier Vokabelpools: Kontext, Definition, Deutsch→Englisch, Englisch→Deutsch | Produktcode und Schlüssel erhalten; die freie Eingabe der Pools ist nicht Gegenstand dieses Auswahlmusters |
+| Grammatik nach Aufgabenart: Satzplättchen, Fehler markieren und korrigieren, Paare, freie Eingabe | Bestehende Formate erhalten; ausschließlich die reale Multiple-Choice-Kurzformaufgabe wird gezeigt |
+| Selbstständig lösbarer Reiz und kalibrierte Schwierigkeit | Definition und vollständige vier Optionen gegen Original geprüft; eigene Sichtprüfung ist keine unabhängige didaktische Abnahme |
+| Gestufte Hilfe: Bedeutungsstütze → Anfangsbuchstabe → Länge → Lösung | Hier nur ein konkreter Fehlhinweis und Wiederholen; keine Umsetzung oder Abnahme der Hilfsleiter |
+| Wiederholungsbudget, Formatmix und Wechsel des Pools | Hier nur zwei erneut erreichbare Beispiele; keine langfristige Wiederholungslogik behauptet |
+| Wörter kennenlernen in Gruppen, Suchliste als Ergänzung | Ein erklärendes vorhandenes Buchbild; keine vollständige Lernwort-Einführung |
+| Wortindex mit erster Buchstelle, Wortkarte und „Später üben“ | Offen außerhalb des Auftrags; keine persönliche Wort-Sammlung eingebaut oder vorgetäuscht |
+| Lernstandsabhängige Hilfe; spätere Grammatik- und Fremdwortbahnen | Offen außerhalb des Auftrags |
+| Zentraler Bewerter, Versuchsprotokoll und Wiederholungsplanung | Bestehender Produktweg unverändert; lokale Prüfung der festen Auswahl ist ausschließlich Demonstration |
+| Frühere Inhaltsprüfungen | Herkunft und Originalitems erhalten; kein früheres Urteil als neues Ansichts- oder Integrationssiegel ausgegeben |
+
+Der neue Markenrahmen besteht aus Heftblatt, Aufgabenkarte, vorhandener Kunst und runden Bedienelementen. Er ist unabhängig von diesen Lernfunktionen zu beurteilen. Alte Originalfarben und Punktestrafen sind nicht übernommen; neue produktive Lernlogik wurde nicht aus DomiLingo kopiert. Die umfassende Zuordnung der historischen Zusagen führt der GG.
