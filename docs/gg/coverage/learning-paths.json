@@ -1,0 +1,54 @@
+[
+  {
+    "id": "practice-book",
+    "source": "content/corpus/units/g1-u01/vocab.json + overlays",
+    "action": "task-ui VocabItemView + PracticeSession",
+    "grader": "apps/web/app/api/attempts/route.ts → engine.gradeVocab",
+    "persistence": "packages/db/src/persist.ts recordAttempt",
+    "confirmation": "code-return-only",
+    "confirmedEndToEnd": false,
+    "review": "review_queue regular vocab",
+    "sceneRequired": false,
+    "scenePreserved": null,
+    "status": "teilgebaut"
+  },
+  {
+    "id": "novel-bens-line",
+    "source": "g3.st.fourteen story + .ci item",
+    "action": "game-novel TaskTake in original scene",
+    "grader": "api/attempts comprehension grading",
+    "persistence": "recordAttempt as reading",
+    "confirmation": "UI saving/saved/queued/failed; not own live check",
+    "confirmedEndToEnd": false,
+    "review": "target grammar replay open cgo-011",
+    "sceneRequired": true,
+    "scenePreserved": true,
+    "status": "teilgebaut"
+  },
+  {
+    "id": "paint-restore",
+    "source": "g1 paint ch01.tasks.v2 + object",
+    "action": "name then colour in original game",
+    "grader": "local card/game contract",
+    "persistence": "cosmetic profile/tips via BuchClient; central language attempt not established",
+    "confirmation": "no central learning confirmation established",
+    "confirmedEndToEnd": false,
+    "review": "planned cgo-010",
+    "sceneRequired": true,
+    "scenePreserved": true,
+    "status": "offen"
+  },
+  {
+    "id": "private-word-vault",
+    "source": "planned first-occurrence word index",
+    "action": "planned word card save-for-later",
+    "grader": "existing pools only reusable",
+    "persistence": "planned student_word_vault; review_queue is NOT this collection",
+    "confirmation": "not built",
+    "confirmedEndToEnd": false,
+    "review": "different-from-save pool planned",
+    "sceneRequired": false,
+    "scenePreserved": null,
+    "status": "offen"
+  }
+]

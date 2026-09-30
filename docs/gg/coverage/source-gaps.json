@@ -1,0 +1,68 @@
+[
+  {
+    "id": "GAP-PLAN",
+    "citingSource": "S244: governing plan / S242 mirror",
+    "missing": "~/.claude/plans/you-are-opus-4-8-concurrent-cupcake.md",
+    "claimedDeliveryStatus": "Original referenziert; Spiegel vorhanden, Originaldatei nicht nachgewiesen",
+    "searched": "Erwarteter lokaler Pfad: fehlt; GG bestätigt. Keine globale Abwesenheitsbehauptung.",
+    "status": "UNVERIFIZIERT",
+    "ggDecision": "cgo-025 Nachtrag 2: einzeln offen bestätigt, unabhängige Zuordnung fortsetzen",
+    "needed": "Original mit Pin/MD5 und zutreffendem Urteil oder ausdrücklich dokumentierte begrenzte Rekonstruktion; niemals Originalbeleg erfinden",
+    "blocks": "Historische Abschlussbehauptung und davon abhängige Freigabe; nicht Quelleninventur"
+  },
+  {
+    "id": "GAP-METHOD",
+    "citingSource": "S244 stage 3 / WS-METHOD",
+    "missing": "fable-method-test-design",
+    "claimedDeliveryStatus": "Zu liefernder kanonischer Methodenskill; Abschluss nicht belegt",
+    "searched": "Eigene Pfadsuche mission-control/.claude/plans; GG frischer Boardquellbaum, lokale Dateipfadhistorie und Skillordner ohne Treffer.",
+    "status": "UNVERIFIZIERT",
+    "ggDecision": "cgo-025 Nachtrag 2: einzeln offen bestätigt, unabhängige Zuordnung fortsetzen",
+    "needed": "Original mit Pin/MD5 und zutreffendem Urteil oder ausdrücklich dokumentierte begrenzte Rekonstruktion; niemals Originalbeleg erfinden",
+    "blocks": "Historische Abschlussbehauptung und davon abhängige Freigabe; nicht Quelleninventur"
+  },
+  {
+    "id": "GAP-V3",
+    "citingSource": "S244 stage 8",
+    "missing": "OPUS REPLICATION PASSOVER v3",
+    "claimedDeliveryStatus": "Nach Prototypen zu liefern; kein Pin/Abschlussbeleg",
+    "searched": "Benannte Plan-/Spiegelordner, GG kein belegter Pin; breite Cloudsuche abgebrochen zählt nicht als Nichtvorhandensbeweis.",
+    "status": "UNVERIFIZIERT",
+    "ggDecision": "cgo-025 Nachtrag 2: einzeln offen bestätigt, unabhängige Zuordnung fortsetzen",
+    "needed": "Original mit Pin/MD5 und zutreffendem Urteil oder ausdrücklich dokumentierte begrenzte Rekonstruktion; niemals Originalbeleg erfinden",
+    "blocks": "Historische Abschlussbehauptung und davon abhängige Freigabe; nicht Quelleninventur"
+  },
+  {
+    "id": "GAP-S136-LITERAL",
+    "citingSource": "S136 Redaktionelle Belege",
+    "missing": "docs/design/g1/paint/story-gamepass-review/literal-content-inventory.md",
+    "claimedDeliveryStatus": "S136 behauptet vollständige wörtliche Aufnahme der damaligen 70 Karten; Datei fehlt",
+    "searched": "Am Startpin fehlt; GG komplette verfügbare lokale Historie des exakten Pfads ohne Treffer.",
+    "status": "UNVERIFIZIERT",
+    "ggDecision": "cgo-025 Nachtrag 2: einzeln offen bestätigt, unabhängige Zuordnung fortsetzen",
+    "needed": "Original mit Pin/MD5 und zutreffendem Urteil oder ausdrücklich dokumentierte begrenzte Rekonstruktion; niemals Originalbeleg erfinden",
+    "blocks": "Historische Abschlussbehauptung und davon abhängige Freigabe; nicht Quelleninventur"
+  },
+  {
+    "id": "GAP-S136-AUDIT",
+    "citingSource": "S136 Redaktionelle Belege",
+    "missing": "docs/design/g1/paint/story-gamepass-review/audit-content.md",
+    "claimedDeliveryStatus": "S136 referenziert Ursachenaudit; Text/Urteil nicht rekonstruierbar bestätigt",
+    "searched": "Am Startpin fehlt; GG komplette verfügbare lokale Historie des exakten Pfads ohne Treffer.",
+    "status": "UNVERIFIZIERT",
+    "ggDecision": "cgo-025 Nachtrag 2: einzeln offen bestätigt, unabhängige Zuordnung fortsetzen",
+    "needed": "Original mit Pin/MD5 und zutreffendem Urteil oder ausdrücklich dokumentierte begrenzte Rekonstruktion; niemals Originalbeleg erfinden",
+    "blocks": "Historische Abschlussbehauptung und davon abhängige Freigabe; nicht Quelleninventur"
+  },
+  {
+    "id": "GAP-PR",
+    "citingSource": "Kartenauftrag cgo-025 / S242–245",
+    "missing": "Erinnerte Juli15-Plan-PR",
+    "claimedDeliveryStatus": "Nicht identifiziert; PR117 gehört ausschließlich Juli10",
+    "searched": "Git-Planpfadhistorie und PR-Suchen vocab/S3/intelligence/vault; GG bestätigt PR117 Merge a8714a9d92e97a8d0dbbe1ae040a6af36be163bd.",
+    "status": "UNVERIFIZIERT",
+    "ggDecision": "cgo-025 Nachtrag 2: einzeln offen bestätigt, unabhängige Zuordnung fortsetzen",
+    "needed": "Original mit Pin/MD5 und zutreffendem Urteil oder ausdrücklich dokumentierte begrenzte Rekonstruktion; niemals Originalbeleg erfinden",
+    "blocks": "Historische Abschlussbehauptung und davon abhängige Freigabe; nicht Quelleninventur"
+  }
+]

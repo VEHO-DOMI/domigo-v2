@@ -1,0 +1,737 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "semanticCompleteness": false,
+  "scope": "Explizit vertiefte Zusagen; Quelleninventar trägt zusätzlich ungeschlossene Einzelzusagen. Kein erschöpfender Ersatz der Originale.",
+  "commitments": [
+    {
+      "id": "H1",
+      "workstream": "WS-HINT",
+      "promise": "Üben/Review: deutsche Bedeutung → erster Buchstabe → Buchstabenanzahl → Antwort; Mehr Hilfe aktiv abrufen",
+      "sources": [
+        "S242",
+        "S243",
+        "S244"
+      ],
+      "previousVerdict": "Historischer Auftrag; keine Erledigung aus Planstatus abgeleitet",
+      "state": "teilgebaut",
+      "currentEvidence": "task-ui useRetryGrading: statischer hintDe; game-2d HintLadder und game-paint cards/hint.ts haben eigene Leitern",
+      "target": "GG-Empfehlung V1",
+      "reuseOrReplacement": "Spiel-Leitern wiederverwenden, aber Unterschiede zu Juli-Leiter nicht verschweigen.",
+      "replacementAuthority": null,
+      "independentlyVerified": false
+    },
+    {
+      "id": "H2",
+      "workstream": "WS-HINT",
+      "promise": "Beide Varianten hintDe sofort/als erste Stufe rendern und Koki am P1 wählen lassen",
+      "sources": [
+        "S242",
+        "S243",
+        "S244"
+      ],
+      "previousVerdict": "Historischer Auftrag; keine Erledigung aus Planstatus abgeleitet",
+      "state": "offen",
+      "currentEvidence": "Kein belegtes P1-Urteil zur allgemeinen Übungsleiter",
+      "target": "GG-Empfehlung V1",
+      "reuseOrReplacement": "Y1/Y3-Piloten und cgo-007 ersetzen diese Entscheidung nicht.",
+      "replacementAuthority": null,
+      "independentlyVerified": false
+    },
+    {
+      "id": "H3",
+      "workstream": "WS-HINT",
+      "promise": "Tests behalten feste Anti-Leak-Maske; Hilfestufe in attempts.context ohne neue Schemaänderung",
+      "sources": [
+        "S242",
+        "S243",
+        "S244"
+      ],
+      "previousVerdict": "Historischer Auftrag; keine Erledigung aus Planstatus abgeleitet",
+      "state": "teilgebaut",
+      "currentEvidence": "attempts Body.context vorhanden; PracticeSession und ReviewSession senden hintUsed:false",
+      "target": "GG-Empfehlung V1",
+      "reuseOrReplacement": "Kontextfeld ist Infrastruktur, kein Nachweis aufgezeichneter Hilfen.",
+      "replacementAuthority": null,
+      "independentlyVerified": false
+    },
+    {
+      "id": "M1",
+      "workstream": "WS-METHOD",
+      "promise": "Methode an echten Validatoren und eingefrorenem Kalibrierexemplar verankern",
+      "sources": [
+        "S242",
+        "S243",
+        "S244"
+      ],
+      "previousVerdict": "Historischer Auftrag; keine Erledigung aus Planstatus abgeleitet",
+      "state": "unverifiziert",
+      "currentEvidence": "Genannter kanonischer fable-method-test-design-Pfad nicht gefunden",
+      "target": "GG-Empfehlung V1",
+      "reuseOrReplacement": "Bestehende content-pipeline wiederverwenden; fehlende Quelle an GG.",
+      "replacementAuthority": null,
+      "independentlyVerified": false
+    },
+    {
+      "id": "M2",
+      "workstream": "WS-METHOD",
+      "promise": "Kaltlösbarkeit, Denkbelastung, Eindeutigkeit, plausible Alternativen, Distraktoren und sichtbare Lecks prüfen",
+      "sources": [
+        "S242",
+        "S243",
+        "S244"
+      ],
+      "previousVerdict": "Historischer Auftrag; keine Erledigung aus Planstatus abgeleitet",
+      "state": "offen",
+      "currentEvidence": "S190 curation; bestehende Hashregister belegen anderen Prüfgegenstand",
+      "target": "GG-Empfehlung V1",
+      "reuseOrReplacement": "Keine neue pauschale Entwertung der früheren Inhaltsprüfungen.",
+      "replacementAuthority": null,
+      "independentlyVerified": false
+    },
+    {
+      "id": "C1",
+      "workstream": "WS-CAL",
+      "promise": "Alle 34 g2-u03-Vokabeln; besonders guys/wild/shall/keep/apple-bobbing",
+      "sources": [
+        "S242",
+        "S243",
+        "S244"
+      ],
+      "previousVerdict": "Historischer Auftrag; keine Erledigung aus Planstatus abgeleitet",
+      "state": "offen",
+      "currentEvidence": "S237 Juni-Pilot PASSED; S242 Juli negative Kaltbefunde",
+      "target": "GG-Empfehlung V1",
+      "reuseOrReplacement": "Juni-Schlüsselfreigabe erhalten, Juli-Selbständigkeit zusätzlich prüfen.",
+      "replacementAuthority": null,
+      "independentlyVerified": false
+    },
+    {
+      "id": "C2",
+      "workstream": "WS-CAL",
+      "promise": "Easy/medium/hard durch Schlusslast; Phrase, unregelmäßige Form, nahe Distraktoren",
+      "sources": [
+        "S242",
+        "S243",
+        "S244"
+      ],
+      "previousVerdict": "Historischer Auftrag; keine Erledigung aus Planstatus abgeleitet",
+      "state": "offen",
+      "currentEvidence": "S242/243/244 Kalibrierauftrag; final angenommener Ersatz nicht nachgewiesen",
+      "target": "GG-Empfehlung V1",
+      "reuseOrReplacement": "Durch gen→verify→review; Prosaänderung nicht als vertrauter Schlüsselpatch tarnen.",
+      "replacementAuthority": null,
+      "independentlyVerified": false
+    },
+    {
+      "id": "C3",
+      "workstream": "WS-CAL",
+      "promise": "V4: Budget je Wort und Abwechslung der Abrufformate",
+      "sources": [
+        "S242",
+        "S243",
+        "S244"
+      ],
+      "previousVerdict": "Historischer Auftrag; keine Erledigung aus Planstatus abgeleitet",
+      "state": "offen",
+      "currentEvidence": "vocab-pool.ts rotiert vier Pools; Rotation allein zählt Wiederholungsbudget nicht",
+      "target": "GG-Empfehlung V1",
+      "reuseOrReplacement": "Eigener Nachweis pro Wort und Sitzung erforderlich.",
+      "replacementAuthority": null,
+      "independentlyVerified": false
+    },
+    {
+      "id": "C4",
+      "workstream": "WS-CAL",
+      "promise": "Gerenderte P1-Abnahme vor jeder Mengenwelle",
+      "sources": [
+        "S242",
+        "S243",
+        "S244"
+      ],
+      "previousVerdict": "Historischer Auftrag; keine Erledigung aus Planstatus abgeleitet",
+      "state": "offen",
+      "currentEvidence": "Historisches menschliches Gate im S3-Auftrag",
+      "target": "GG-Empfehlung V1",
+      "reuseOrReplacement": "Heutige W0-Inhaltsprüfung keine automatische Übertragung des Koki-Urteils.",
+      "replacementAuthority": null,
+      "independentlyVerified": false
+    },
+    {
+      "id": "CO1",
+      "workstream": "WS-COLD",
+      "promise": "Kalter Durchgang ohne Wortliste/hintDe und separater Leiterdurchgang je Stufe",
+      "sources": [
+        "S242",
+        "S243",
+        "S244"
+      ],
+      "previousVerdict": "Historischer Auftrag; keine Erledigung aus Planstatus abgeleitet",
+      "state": "offen",
+      "currentEvidence": "S244 zwei benannte Blindprüfungen; historisch jeweils drei frische Löser",
+      "target": "GG-Empfehlung V1",
+      "reuseOrReplacement": "Aktuelle zwei W0-Leser prüfen einen anderen Gegenstand; Ersatz nur mit GG-Entscheid.",
+      "replacementAuthority": null,
+      "independentlyVerified": false
+    },
+    {
+      "id": "CO2",
+      "workstream": "WS-COLD",
+      "promise": "Große Kaltprüfung erst nach angenommenem Exemplar; bei Uneinigkeit Aufgabe neu gestalten",
+      "sources": [
+        "S242",
+        "S243",
+        "S244"
+      ],
+      "previousVerdict": "Historischer Auftrag; keine Erledigung aus Planstatus abgeleitet",
+      "state": "offen",
+      "currentEvidence": "S242 P5; S244 replication v3 nicht nachgewiesen",
+      "target": "GG-Empfehlung V6",
+      "reuseOrReplacement": "Schlüssel nicht passend machen; alte unveränderte Qualität nur gezielt neu fragen.",
+      "replacementAuthority": null,
+      "independentlyVerified": false
+    },
+    {
+      "id": "I1",
+      "workstream": "WS-INTRO",
+      "promise": "Wortgruppen/Themen, Gruppenillustration, gestaffelte Wortkarten und suchbarer Rückfall",
+      "sources": [
+        "S242",
+        "S243",
+        "S244"
+      ],
+      "previousVerdict": "Historischer Auftrag; keine Erledigung aus Planstatus abgeleitet",
+      "state": "teilgebaut",
+      "currentEvidence": "studypath.ts vocab-intro Knoten vorhanden; keine gleichwertige Szene damit belegt",
+      "target": "GG-Empfehlung V4",
+      "reuseOrReplacement": "Knoten-/Wortbankgrundlage wiederverwenden, fertige Einführungswelt nicht behaupten.",
+      "replacementAuthority": null,
+      "independentlyVerified": false
+    },
+    {
+      "id": "I2",
+      "workstream": "WS-INTRO",
+      "promise": "Erste gerenderte Szene von Koki freigeben, erst danach Bildmenge",
+      "sources": [
+        "S242",
+        "S243",
+        "S244"
+      ],
+      "previousVerdict": "Historischer Auftrag; keine Erledigung aus Planstatus abgeleitet",
+      "state": "offen",
+      "currentEvidence": "S244 eigener SCENE GATE; cgo-007 nur begrenzte Stilkalibrierung",
+      "target": "GG-Empfehlung V4",
+      "reuseOrReplacement": "Kein Bildbau auf cgo-025; später eigenes Muster.",
+      "replacementAuthority": null,
+      "independentlyVerified": false
+    },
+    {
+      "id": "IX1",
+      "workstream": "WS-INDEX",
+      "promise": "Vorhandene Kurswort-Transkriptionen aller vier Jahrgänge nutzen, keine erneute OCR",
+      "sources": [
+        "S242",
+        "S243",
+        "S244"
+      ],
+      "previousVerdict": "Historischer Auftrag; keine Erledigung aus Planstatus abgeleitet",
+      "state": "offen",
+      "currentEvidence": "S243 WORD-LIST nennt g1 txt, g2/g3/g4 docx",
+      "target": "GG-Empfehlung V2",
+      "reuseOrReplacement": "Vorgänger S245 PDF/OCR-Ingestion in diesem Teil durch S242/243 ersetzt.",
+      "replacementAuthority": null,
+      "independentlyVerified": false
+    },
+    {
+      "id": "IX2",
+      "workstream": "WS-INDEX",
+      "promise": "Jede Quellzeile mit Wortbankkennung abgleichen; unmatched/duplicate/conflict sichtbar",
+      "sources": [
+        "S242",
+        "S243",
+        "S244"
+      ],
+      "previousVerdict": "Historischer Auftrag; keine Erledigung aus Planstatus abgeleitet",
+      "state": "offen",
+      "currentEvidence": "57 Wortbankregister erhalten; vollständiger Indexabgleich nicht nachgewiesen",
+      "target": "GG-Empfehlung V2",
+      "reuseOrReplacement": "Schema erst nach P0-Reconciliation einfrieren.",
+      "replacementAuthority": null,
+      "independentlyVerified": false
+    },
+    {
+      "id": "IX3",
+      "workstream": "WS-INDEX",
+      "promise": "Stabile wordId, erste Buchstelle U#/Position, weitere Vorkommen, Quelle/Flags/Item-IDs",
+      "sources": [
+        "S242",
+        "S243",
+        "S244"
+      ],
+      "previousVerdict": "Historischer Auftrag; keine Erledigung aus Planstatus abgeleitet",
+      "state": "offen",
+      "currentEvidence": "wordbank vorhanden; jahrgangsübergreifender first-occurrence-Index nicht nachgewiesen",
+      "target": "GG-Empfehlung V2",
+      "reuseOrReplacement": "Quellen und Versionen erhalten; Wiederholung ist keine erste Buchstelle.",
+      "replacementAuthority": null,
+      "independentlyVerified": false
+    },
+    {
+      "id": "V1",
+      "workstream": "WS-VAULT",
+      "promise": "Wortkarte per Tap/Langdruck: Übersetzung, Definition, erste Stelle, Später üben",
+      "sources": [
+        "S242",
+        "S243",
+        "S244"
+      ],
+      "previousVerdict": "Historischer Auftrag; keine Erledigung aus Planstatus abgeleitet",
+      "state": "offen",
+      "currentEvidence": "Kein vollständiger Wortkarten-/Vault-Datenweg am Startpin nachgewiesen",
+      "target": "GG-Empfehlung V3",
+      "reuseOrReplacement": "Bestehende Wörter/Definitionen wiederverwenden; Rechtsklick kein Pflichtweg auf Touch.",
+      "replacementAuthority": null,
+      "independentlyVerified": false
+    },
+    {
+      "id": "V2",
+      "workstream": "WS-VAULT",
+      "promise": "Private student_word_vault; nur bestätigte Speicherung, offline und doppelte Übermittlung sicher",
+      "sources": [
+        "S242",
+        "S243",
+        "S244"
+      ],
+      "previousVerdict": "Historischer Auftrag; keine Erledigung aus Planstatus abgeleitet",
+      "state": "offen",
+      "currentEvidence": "practice_attempts/review_queue existieren, sind kein student_word_vault",
+      "target": "GG-Empfehlung V3",
+      "reuseOrReplacement": "Nur additive geprüfte spätere Migration; keine heutige DB-Aktion.",
+      "replacementAuthority": null,
+      "independentlyVerified": false
+    },
+    {
+      "id": "V3",
+      "workstream": "WS-VAULT",
+      "promise": "Gespeichertes Wort in anderem als dem Speicher-Pool abrufen",
+      "sources": [
+        "S242",
+        "S243",
+        "S244"
+      ],
+      "previousVerdict": "Historischer Auftrag; keine Erledigung aus Planstatus abgeleitet",
+      "state": "offen",
+      "currentEvidence": "PR128 vier Pools vorhanden; keine Vault-Verknüpfung belegt",
+      "target": "GG-Empfehlung V3",
+      "reuseOrReplacement": "DomiLingo gemeinsamer Wiederholungsdienst als Muster; Fehler nicht stumm übergehen.",
+      "replacementAuthority": null,
+      "independentlyVerified": false
+    },
+    {
+      "id": "P1",
+      "workstream": "WS-PROG",
+      "promise": "Statische Unit-Wort-/Grammatikprogression mit getPathSummary verbinden",
+      "sources": [
+        "S242",
+        "S243",
+        "S244"
+      ],
+      "previousVerdict": "Historischer Auftrag; keine Erledigung aus Planstatus abgeleitet",
+      "state": "teilgebaut",
+      "currentEvidence": "studypath.ts Knoten/Schwierigkeit/Sterne und getPathSummary",
+      "target": "GG-Empfehlung V5",
+      "reuseOrReplacement": "Knotenabschluss nicht Wort-/Formatbeherrschung nennen.",
+      "replacementAuthority": null,
+      "independentlyVerified": false
+    },
+    {
+      "id": "P2",
+      "workstream": "WS-PROG",
+      "promise": "Bekanntes Lernziel steuert Hilfen, z.B. water; konkrete Abrufe statt berührter Unit",
+      "sources": [
+        "S242",
+        "S243",
+        "S244"
+      ],
+      "previousVerdict": "Historischer Auftrag; keine Erledigung aus Planstatus abgeleitet",
+      "state": "offen",
+      "currentEvidence": "OG isWordMastered gute Absicht; migrateWordProgress schätzt Formate aus Erfolgszahl",
+      "target": "GG-Empfehlung V5",
+      "reuseOrReplacement": "Alte Aufzählungen gelöster Formate nicht aus synthetischer Migration übernehmen.",
+      "replacementAuthority": null,
+      "independentlyVerified": false
+    },
+    {
+      "id": "G1",
+      "workstream": "WS-GRAMMAR",
+      "promise": "Grammatikindex mit erster Unterrichtsstelle und verständlicher deutscher Erklärung",
+      "sources": [
+        "S242",
+        "S243",
+        "S244"
+      ],
+      "previousVerdict": "Historischer Auftrag; keine Erledigung aus Planstatus abgeleitet",
+      "state": "offen",
+      "currentEvidence": "Strukturkatalog existiert; vollständiger Erstlernindex nicht belegt",
+      "target": "GG-Empfehlung V5 später",
+      "reuseOrReplacement": "Erst nach bewiesenem Wortindex/Vault, kein stilles Streichen.",
+      "replacementAuthority": null,
+      "independentlyVerified": false
+    },
+    {
+      "id": "U1",
+      "workstream": "WS-UNKNOWN",
+      "promise": "Unbekannte Wörter privat isoliert erzeugen, nie ungeprüft in gemeinsamen Korpus",
+      "sources": [
+        "S242",
+        "S243",
+        "S244"
+      ],
+      "previousVerdict": "Historischer Auftrag; keine Erledigung aus Planstatus abgeleitet",
+      "state": "geparkt",
+      "currentEvidence": "S242/244 spätere policy-gated lane",
+      "target": "GG-Empfehlung V6 später",
+      "reuseOrReplacement": "Erst Qualität/Datenschutz/Kosten explizit entscheiden; keine Laufzeit-Generierung hier.",
+      "replacementAuthority": null,
+      "independentlyVerified": false
+    },
+    {
+      "id": "B1",
+      "workstream": "Blueprint",
+      "promise": "Ein Bewertungsweg, authored-not-programmed, vollwertige plausible Antworten",
+      "sources": [
+        "S001",
+        "S002",
+        "S005",
+        "S190"
+      ],
+      "previousVerdict": "Historischer Auftrag; keine Erledigung aus Planstatus abgeleitet",
+      "state": "teilgebaut",
+      "currentEvidence": "packages/engine; task-ui; content-pipeline",
+      "target": "cgo-006/018",
+      "reuseOrReplacement": "Schema-grün ersetzt Sinnprüfung nicht.",
+      "replacementAuthority": null,
+      "independentlyVerified": false
+    },
+    {
+      "id": "B2",
+      "workstream": "Blueprint",
+      "promise": "Listening/Test-Wellen und Audio, Diktat/Lehrkraft/Writing/Studio/Parity nicht verlieren",
+      "sources": [
+        "S001",
+        "S002",
+        "S185",
+        "S194",
+        "S197",
+        "S233"
+      ],
+      "previousVerdict": "Historischer Auftrag; keine Erledigung aus Planstatus abgeleitet",
+      "state": "offen",
+      "currentEvidence": "S233 Wellenbeleg; keine heutige vollständige Abnahme aller WS",
+      "target": "GG Zyklus 3",
+      "reuseOrReplacement": "Unbenannte Blueprint-III-Spezifikationen bleiben erhalten; S002 Part I ist kein Gesamtwiderruf.",
+      "replacementAuthority": null,
+      "independentlyVerified": false
+    },
+    {
+      "id": "B3",
+      "workstream": "Blueprint",
+      "promise": "Duologien; Wrong Name als Bonus, Lost for Words geparkt, historische Versuche erhalten",
+      "sources": [
+        "S002",
+        "S186",
+        "S189",
+        "S192",
+        "S193",
+        "S195",
+        "S216"
+      ],
+      "previousVerdict": "Historischer Auftrag; keine Erledigung aus Planstatus abgeleitet",
+      "state": "teilgebaut",
+      "currentEvidence": "story bundles, game-detective/game-trip; Y4-Hold",
+      "target": "GG Zyklus 3",
+      "reuseOrReplacement": "Erzählwechsel betrifft Kampagne, nicht Löschen alter Lernhistorie.",
+      "replacementAuthority": null,
+      "independentlyVerified": false
+    },
+    {
+      "id": "Y1A",
+      "workstream": "Y1",
+      "promise": "B1→B2→C→F, reale Raumhandlungen und Lernabdeckung vor Umbau",
+      "sources": [
+        "S058",
+        "S171",
+        "S172",
+        "X003"
+      ],
+      "previousVerdict": "Historischer Auftrag; keine Erledigung aus Planstatus abgeleitet",
+      "state": "offen",
+      "currentEvidence": "PR464 Altkopf nicht aktuelle Gesamtfreigabe",
+      "target": "cgo-008/014/015/016/021",
+      "reuseOrReplacement": "Keine Räume oder Lernkontakte mit reinem Punkteersatz entfernen.",
+      "replacementAuthority": null,
+      "independentlyVerified": false
+    },
+    {
+      "id": "Y1B",
+      "workstream": "Y1",
+      "promise": "Kleiderfund, Farbrestauration, Heft-/Zahlen-/Merle-Handlung und Merkseiten in ihren Kontexten erhalten",
+      "sources": [
+        "S055",
+        "S056",
+        "S071",
+        "S136",
+        "S140",
+        "S143",
+        "S161",
+        "S168"
+      ],
+      "previousVerdict": "Historischer Auftrag; keine Erledigung aus Planstatus abgeleitet",
+      "state": "teilgebaut",
+      "currentEvidence": "game-paint + BuchClient; Spielprofil ist keine zentrale Lernspur",
+      "target": "cgo-010/014/015/016",
+      "reuseOrReplacement": "Fehlende Quellenanhänge und offene Integrationsauflagen gesondert klären.",
+      "replacementAuthority": null,
+      "independentlyVerified": false
+    },
+    {
+      "id": "Y1C",
+      "workstream": "Y1",
+      "promise": "Kapitel 2 Zoo, 3 Pirat, 4 Kalender/Farbe, 5 Takt, 6 Nachweis jeweils eigenständig",
+      "sources": [
+        "S073",
+        "S083",
+        "S092",
+        "S101",
+        "S110",
+        "S217"
+      ],
+      "previousVerdict": "Historischer Auftrag; keine Erledigung aus Planstatus abgeleitet",
+      "state": "geparkt",
+      "currentEvidence": "paint ch02–06 Entwürfe; je Raum-/Maschinen-/Kartenauftrag",
+      "target": "GG Zyklus 3 / Altkarten",
+      "reuseOrReplacement": "Keine ch01-Schablone, keine Anerkennung ungebauter pending tasks.",
+      "replacementAuthority": null,
+      "independentlyVerified": false
+    },
+    {
+      "id": "Y1D",
+      "workstream": "Y1",
+      "promise": "Filed/Schulden/Pitfalls je Einzelkennung schließen, nie nur Zählersumme",
+      "sources": [
+        "S046",
+        "S047",
+        "S048",
+        "S049",
+        "S050",
+        "S219",
+        "X006"
+      ],
+      "previousVerdict": "Historischer Auftrag; keine Erledigung aus Planstatus abgeleitet",
+      "state": "offen",
+      "currentEvidence": "Bestehende Register, cgo-017 parallel",
+      "target": "cgo-017",
+      "reuseOrReplacement": "Veraltete Datumstore durch Entscheidungen ersetzen; Einzelhistorie bewahren.",
+      "replacementAuthority": null,
+      "independentlyVerified": false
+    },
+    {
+      "id": "Y1E",
+      "workstream": "Y1",
+      "promise": "Klang und naive Kunst dienen einer sichtbaren Ursache; Freigabe im Spiel",
+      "sources": [
+        "S006",
+        "S040",
+        "S041",
+        "S044",
+        "S051",
+        "S054",
+        "S209",
+        "S213"
+      ],
+      "previousVerdict": "Historischer Auftrag; keine Erledigung aus Planstatus abgeleitet",
+      "state": "offen",
+      "currentEvidence": "Historische Kunst-/Klangbelege keine neue Gesamtfreigabe",
+      "target": "cgo-020; GG spätere Kunst/Klang",
+      "reuseOrReplacement": "Nicht neu generieren; geteilte LauterEinser-Tokens bei eigener altersgemäßer DomiGo-Identität.",
+      "replacementAuthority": null,
+      "independentlyVerified": false
+    },
+    {
+      "id": "Y3A",
+      "workstream": "Y3",
+      "promise": "Geschichte erhalten; Zielstruktur und Originalszene bei Wiederholung, zehn .gi-Plätze nicht heimlich austauschen",
+      "sources": [
+        "S170",
+        "S173",
+        "X004"
+      ],
+      "previousVerdict": "Historischer Auftrag; keine Erledigung aus Planstatus abgeleitet",
+      "state": "offen",
+      "currentEvidence": "NovelGame/NovelClient; .ci zählt reading; reviewItems ohne Nutzung",
+      "target": "cgo-011",
+      "reuseOrReplacement": "Aktuelle Order präzisiert X002; Szenenkontext ist Teil der Aufgabe.",
+      "replacementAuthority": null,
+      "independentlyVerified": false
+    },
+    {
+      "id": "Y3B",
+      "workstream": "Y3",
+      "promise": "Kanalzahlen Erzählung, Lernpunkte nur bestätigte sprachliche Leistung; Varianten/been-Hilfe prüfen",
+      "sources": [
+        "S173",
+        "X002",
+        "X004"
+      ],
+      "previousVerdict": "Historischer Auftrag; keine Erledigung aus Planstatus abgeleitet",
+      "state": "teilgebaut",
+      "currentEvidence": "PR460 + TaskTake saving/saved/queued/failed",
+      "target": "cgo-011/012/019",
+      "reuseOrReplacement": "Kosmetischer Spielstand nicht als serverbestätigte Lernhistorie verkaufen.",
+      "replacementAuthority": null,
+      "independentlyVerified": false
+    },
+    {
+      "id": "Y3C",
+      "workstream": "Y3",
+      "promise": "Cast-Korrektur, Kunstkalibrierung, Vorschau und menschliches Gesamturteil",
+      "sources": [
+        "S036",
+        "S037",
+        "S038",
+        "S173",
+        "X004"
+      ],
+      "previousVerdict": "Historischer Auftrag; keine Erledigung aus Planstatus abgeleitet",
+      "state": "offen",
+      "currentEvidence": "Alte PR456/461 nur eng begrenzte Belege",
+      "target": "cgo-012/013/019",
+      "reuseOrReplacement": "Erteiltes steu-023-Urteil respektieren; kein Serienauftrag vor Muster.",
+      "replacementAuthority": null,
+      "independentlyVerified": false
+    },
+    {
+      "id": "PL1",
+      "workstream": "Plattform",
+      "promise": "Identität/Rollen/Klasse, reservierte Prüfaufgaben und Tests strikt trennen",
+      "sources": [
+        "S176",
+        "S182",
+        "S194",
+        "S231",
+        "X010"
+      ],
+      "previousVerdict": "Historischer Auftrag; keine Erledigung aus Planstatus abgeleitet",
+      "state": "teilgebaut",
+      "currentEvidence": "getActingUser; db scope; review.getDueRefs reservierteFuerKlasse",
+      "target": "cgo-009/018",
+      "reuseOrReplacement": "Keine fremden Daten/DB; Donor-Muster an eigene Rollen anpassen.",
+      "replacementAuthority": null,
+      "independentlyVerified": false
+    },
+    {
+      "id": "PL2",
+      "workstream": "Plattform",
+      "promise": "Einmalige Wertung, Offline-Wiederzustellung, bestätigte Speicherung und Re-Entry",
+      "sources": [
+        "S176",
+        "S184",
+        "S231"
+      ],
+      "previousVerdict": "Historischer Auftrag; keine Erledigung aus Planstatus abgeleitet",
+      "state": "teilgebaut",
+      "currentEvidence": "attempt-outbox; /api/attempts; persist.recordAttempt; game-save getrennt",
+      "target": "cgo-009/010/011/018",
+      "reuseOrReplacement": "Teilschreibfehler über mehrere DB-Schritte nicht aus onConflictDoNothing als gelöst ableiten.",
+      "replacementAuthority": null,
+      "independentlyVerified": false
+    },
+    {
+      "id": "PL3",
+      "workstream": "Plattform",
+      "promise": "Betrieb, Migration/Schuljahrswechsel, Aufbewahrung und Kosten vor Freigabe",
+      "sources": [
+        "S177",
+        "S220",
+        "S234",
+        "S235",
+        "S240",
+        "X010"
+      ],
+      "previousVerdict": "Historischer Auftrag; keine Erledigung aus Planstatus abgeleitet",
+      "state": "offen",
+      "currentEvidence": "Historische Runbooks; cgo-005 done keine pauschale heutige Betriebsabnahme",
+      "target": "cgo-009/018; GG Betrieb",
+      "reuseOrReplacement": "Keine Produktionsdaten oder Geheimnisse lesen/schreiben; echte Preis-/Kostenmessung gesondert.",
+      "replacementAuthority": null,
+      "independentlyVerified": false
+    },
+    {
+      "id": "RV1",
+      "workstream": "Review",
+      "promise": "57 Aufgaben- und 57 Wortbankurteile erhalten; Änderungen gezielt statt flächig neu prüfen",
+      "sources": [
+        "S232",
+        "S236",
+        "S237",
+        "S238"
+      ],
+      "previousVerdict": "Historischer Auftrag; keine Erledigung aus Planstatus abgeleitet",
+      "state": "teilgebaut",
+      "currentEvidence": "review-lineage.json; row-Hashvergleich",
+      "target": "cgo-006/018",
+      "reuseOrReplacement": "Inhalt/Schlüssel/Ansicht/Integration getrennt; 934 Driftfälle kein automatisches Nein oder Ja.",
+      "replacementAuthority": null,
+      "independentlyVerified": false
+    },
+    {
+      "id": "DL1",
+      "workstream": "Donor",
+      "promise": "Gemeinsamer Wiederholungsdienst pro Nutzer und geprüfter Revisionsstempel",
+      "sources": [
+        "S246",
+        "S247"
+      ],
+      "previousVerdict": "Historischer Auftrag; keine Erledigung aus Planstatus abgeleitet",
+      "state": "teilgebaut",
+      "currentEvidence": "X-DONOR e0c8: lib/vocab-review.ts; docs/revision/README.md",
+      "target": "cgo-006/009/018; GG V3",
+      "reuseOrReplacement": "Stille catch-Pfade nicht übernehmen; reale Schüleransicht und Antwortmenge binden.",
+      "replacementAuthority": null,
+      "independentlyVerified": false
+    },
+    {
+      "id": "OG1",
+      "workstream": "Originale",
+      "promise": "Kontext, Definition, beide Übersetzungsrichtungen und Wortpartner erhalten",
+      "sources": [
+        "S175",
+        "S181",
+        "S223"
+      ],
+      "previousVerdict": "Historischer Auftrag; keine Erledigung aus Planstatus abgeleitet",
+      "state": "teilgebaut",
+      "currentEvidence": "OG vier HTML-Pins; v2 vocab-pool vier Pools",
+      "target": "cgo-018; GG V1/V5",
+      "reuseOrReplacement": "Vier Pools sind nicht vier OG-Kategorien: enToDe/deToEn trennen; collocation nicht damit bewiesen.",
+      "replacementAuthority": null,
+      "independentlyVerified": false
+    },
+    {
+      "id": "OG2",
+      "workstream": "Originale",
+      "promise": "Grammatik Bedienformen und Modi auseinanderhalten; verb-table-Verbleib entscheiden",
+      "sources": [
+        "S175",
+        "S181",
+        "S223"
+      ],
+      "previousVerdict": "Historischer Auftrag; keine Erledigung aus Planstatus abgeleitet",
+      "state": "offen",
+      "currentEvidence": "OG Y2 verb-table; v2 13 Schemaformate ohne verb-table",
+      "target": "GG Formatentscheidung; cgo-018",
+      "reuseOrReplacement": "Omission in S181 ist keine belegte fachliche Ablösung; nicht kommentarlos löschen.",
+      "replacementAuthority": null,
+      "independentlyVerified": false
+    }
+  ]
+}

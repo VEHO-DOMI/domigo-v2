@@ -1,0 +1,82 @@
+[
+  {
+    "id": "X001",
+    "path": "/Users/veho/Library/Mobile Documents/com~apple~CloudDocs/Domi Gym/PLATFORM MASTER/SESSION-PROMPTS/CODEX-ORDERS/ORDER_DOMIGO_SPIELFEEDBACK_2026-09-20.md",
+    "md5": "aaee68946a706a5664c4b510d31514a6",
+    "lines": 28,
+    "scope": "Historische Entscheidungen und Aufträge; heutige Ausführung ausschließlich aktuelle Programmregel",
+    "closure": "nur benannte Abschnitte zugeordnet; keine blanket-Freigabe aller referenzierten Quellen"
+  },
+  {
+    "id": "X002",
+    "path": "/Users/veho/Library/Mobile Documents/com~apple~CloudDocs/Domi Gym/PLATFORM MASTER/SESSION-PROMPTS/CODEX-ORDERS/ORDER_DOMIGO_Y3_FERTIGSTELLEN_2026-09-20.FASSUNG1_76ee0071.md",
+    "md5": "76ee00714bef48df08d71741cc1f981a",
+    "lines": 21,
+    "scope": "Historische Entscheidungen und Aufträge; heutige Ausführung ausschließlich aktuelle Programmregel",
+    "closure": "nur benannte Abschnitte zugeordnet; keine blanket-Freigabe aller referenzierten Quellen"
+  },
+  {
+    "id": "X003",
+    "path": "/Users/veho/Library/Mobile Documents/com~apple~CloudDocs/Domi Gym/PLATFORM MASTER/SESSION-PROMPTS/CODEX-ORDERS/ORDER_DOMIGO_Y1_CH01_UMBAU_2026-09-20.md",
+    "md5": "67fa4f2611d43ab15b438bc8bbb6b9df",
+    "lines": 25,
+    "scope": "Historische Entscheidungen und Aufträge; heutige Ausführung ausschließlich aktuelle Programmregel",
+    "closure": "nur benannte Abschnitte zugeordnet; keine blanket-Freigabe aller referenzierten Quellen"
+  },
+  {
+    "id": "X004",
+    "path": "/Users/veho/Library/Mobile Documents/com~apple~CloudDocs/Domi Gym/PLATFORM MASTER/SESSION-PROMPTS/CODEX-ORDERS/ORDER_DOMIGO_Y3_FERTIGSTELLEN_2026-09-20.md",
+    "md5": "472859cfe6bafd5f8603783d88e87b69",
+    "lines": 25,
+    "scope": "Historische Entscheidungen und Aufträge; heutige Ausführung ausschließlich aktuelle Programmregel",
+    "closure": "nur benannte Abschnitte zugeordnet; keine blanket-Freigabe aller referenzierten Quellen"
+  },
+  {
+    "id": "X005",
+    "path": "/Users/veho/Library/Mobile Documents/com~apple~CloudDocs/Domi Gym/PLATFORM MASTER/SESSION-PROMPTS/CODEX-ORDERS/ORDER_DOMIGO_Y1_CH01_UMBAU_2026-09-20.FASSUNG1_a0743310.md",
+    "md5": "a074331083f4eacc7b1bf8e0ce2596c0",
+    "lines": 23,
+    "scope": "Historische Entscheidungen und Aufträge; heutige Ausführung ausschließlich aktuelle Programmregel",
+    "closure": "nur benannte Abschnitte zugeordnet; keine blanket-Freigabe aller referenzierten Quellen"
+  },
+  {
+    "id": "X006",
+    "path": "/Users/veho/Library/Mobile Documents/com~apple~CloudDocs/Domi Gym/PLATFORM MASTER/SESSION-PROMPTS/LEVELWELLE/RULINGS.md",
+    "md5": "4d16702634369b7c050aa19a309ecb84",
+    "lines": 232,
+    "scope": "Historische Entscheidungen und Aufträge; heutige Ausführung ausschließlich aktuelle Programmregel",
+    "closure": "nur benannte Abschnitte zugeordnet; keine blanket-Freigabe aller referenzierten Quellen"
+  },
+  {
+    "id": "X007",
+    "path": "/Users/veho/Library/Mobile Documents/com~apple~CloudDocs/Domi Gym/PLATFORM MASTER/EXPORT/GG-DOMIGO-PAKET_2026-09-08/REPORTS/GG_DOMIGO_BOOT_STAND_2026-09-13.md",
+    "md5": "4001a0734a781ed916498aa7dc8811bc",
+    "lines": 19,
+    "scope": "Historische Entscheidungen und Aufträge; heutige Ausführung ausschließlich aktuelle Programmregel",
+    "closure": "nur benannte Abschnitte zugeordnet; keine blanket-Freigabe aller referenzierten Quellen"
+  },
+  {
+    "id": "X009",
+    "path": "/Users/veho/Library/Mobile Documents/com~apple~CloudDocs/Domi Gym/PLATFORM MASTER/SESSION-PROMPTS/GG_DOMIGO/PARALLELPLAN_2026-09-30.md",
+    "md5": "7f084ad6ede204f5c2d8eaddce6efedc",
+    "lines": 33,
+    "scope": "Aktuelle Programmautorität und Rückmeldeweg",
+    "closure": "nur benannte Abschnitte zugeordnet; keine blanket-Freigabe aller referenzierten Quellen"
+  },
+  {
+    "id": "X010",
+    "path": "/Users/veho/Library/Mobile Documents/com~apple~CloudDocs/Domi Gym/PLATFORM MASTER/SESSION-PROMPTS/GG_DOMIGO/GG_DOMIGO_BOOT_2026-09-29.md",
+    "md5": "47260e7929cb79603b30b2bc6087a7c6",
+    "lines": 45,
+    "scope": "Aktuelle Programmautorität und Rückmeldeweg",
+    "closure": "nur benannte Abschnitte zugeordnet; keine blanket-Freigabe aller referenzierten Quellen"
+  },
+  {
+    "id": "X011",
+    "path": "/Users/veho/Library/Mobile Documents/com~apple~CloudDocs/Domi Gym/PLATFORM MASTER/SESSION-PROMPTS/GG_DOMIGO/RUECKMELDEWEG.md",
+    "md5": "a187db2516ab40a7b821a5556b4a8de0",
+    "lines": 43,
+    "scope": "Aktuelle Programmautorität und Rückmeldeweg",
+    "closure": "nur benannte Abschnitte zugeordnet; keine blanket-Freigabe aller referenzierten Quellen"
+  }
+]

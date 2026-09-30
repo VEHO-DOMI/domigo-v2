@@ -1,0 +1,352 @@
+[
+  {
+    "id": "gomarke-002",
+    "previousState": "open · gehalten",
+    "currentState": "open",
+    "held": true,
+    "disposition": "Datenschutz-Abgleich mit daten-008 in Zugangskarte; nicht ohne vollständigen Deckungsbeleg schließen.",
+    "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
+    "boardPin": "471ccf212d2fa1c6b02033e633e6ab35bcff96d0",
+    "closedByThisAddendum": false
+  },
+  {
+    "id": "gomarke-003",
+    "previousState": "open · gehalten",
+    "currentState": "open",
+    "held": true,
+    "disposition": "Konto-Anschluss existiert; verbliebene Klassen-/Testvertragslücken in cgo-Zugang prüfen.",
+    "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
+    "boardPin": "471ccf212d2fa1c6b02033e633e6ab35bcff96d0",
+    "closedByThisAddendum": false
+  },
+  {
+    "id": "platt-002",
+    "previousState": "open · gehalten",
+    "currentState": "open",
+    "held": true,
+    "disposition": "Durch cgo-Plan neu geordnet; alte K13–K15 bei jeweiliger Plattformkarte gegen Code messen.",
+    "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
+    "boardPin": "471ccf212d2fa1c6b02033e633e6ab35bcff96d0",
+    "closedByThisAddendum": false
+  },
+  {
+    "id": "platt-003",
+    "previousState": "open · gehalten",
+    "currentState": "open",
+    "held": true,
+    "disposition": "Kein zusätzlicher Koordinator nötig; einzelne Revisionsaufträge über cgo.",
+    "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
+    "boardPin": "471ccf212d2fa1c6b02033e633e6ab35bcff96d0",
+    "closedByThisAddendum": false
+  },
+  {
+    "id": "siegel-001",
+    "previousState": "open · gehalten",
+    "currentState": "open",
+    "held": true,
+    "disposition": "Arena-Kunst nach B1/B2/C/F neu schneiden, nicht den veralteten Werkstattauftrag booten.",
+    "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
+    "boardPin": "471ccf212d2fa1c6b02033e633e6ab35bcff96d0",
+    "closedByThisAddendum": false
+  },
+  {
+    "id": "siegel-002",
+    "previousState": "open · gehalten",
+    "currentState": "open",
+    "held": true,
+    "disposition": "Kleckskammer-Kunst folgt Raumfreigabe; kein Kalenderdruck.",
+    "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
+    "boardPin": "471ccf212d2fa1c6b02033e633e6ab35bcff96d0",
+    "closedByThisAddendum": false
+  },
+  {
+    "id": "siegel-003",
+    "previousState": "open · gehalten",
+    "currentState": "open",
+    "held": true,
+    "disposition": "Aufräumen erst nach neuem Aufgaben-/Lernspurbestand; nie Lernabdeckung still entfernen.",
+    "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
+    "boardPin": "471ccf212d2fa1c6b02033e633e6ab35bcff96d0",
+    "closedByThisAddendum": false
+  },
+  {
+    "id": "siegel-004",
+    "previousState": "open · gehalten",
+    "currentState": "open",
+    "held": true,
+    "disposition": "Alte Merge-Sammelkarte ist kein Ausführungsweg mehr; Charta-Mergekette pro PR.",
+    "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
+    "boardPin": "471ccf212d2fa1c6b02033e633e6ab35bcff96d0",
+    "closedByThisAddendum": false
+  },
+  {
+    "id": "siegel-005",
+    "previousState": "open",
+    "currentState": "open",
+    "held": false,
+    "disposition": "Kapitel-1-Playtest bleibt menschliche Endabnahme; erst mit konkretem geprüften Stand freischalten.",
+    "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
+    "boardPin": "471ccf212d2fa1c6b02033e633e6ab35bcff96d0",
+    "closedByThisAddendum": false
+  },
+  {
+    "id": "tore-006",
+    "previousState": "open · gehalten",
+    "currentState": "open",
+    "held": true,
+    "disposition": "cgo-Register-/Kalenderhygiene, Zustand je Altposten statt geschätzter Summe.",
+    "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
+    "boardPin": "471ccf212d2fa1c6b02033e633e6ab35bcff96d0",
+    "closedByThisAddendum": false
+  },
+  {
+    "id": "tore-011",
+    "previousState": "open · gehalten",
+    "currentState": "open",
+    "held": true,
+    "disposition": "cgo-Register-/Kalenderhygiene; tatsächliche Ausnahme bleibt fachlich sichtbar, kein Zeitablauf.",
+    "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
+    "boardPin": "471ccf212d2fa1c6b02033e633e6ab35bcff96d0",
+    "closedByThisAddendum": false
+  },
+  {
+    "id": "tore-018",
+    "previousState": "open · gehalten",
+    "currentState": "open",
+    "held": true,
+    "disposition": "cgo-Register-/Kalenderhygiene; 180 ist Altbericht, neu zählen.",
+    "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
+    "boardPin": "471ccf212d2fa1c6b02033e633e6ab35bcff96d0",
+    "closedByThisAddendum": false
+  },
+  {
+    "id": "vision-001",
+    "previousState": "open · gehalten",
+    "currentState": "open",
+    "held": true,
+    "disposition": "Optionales Drehbuchurteil bleibt erhalten; kein technischer Blocker.",
+    "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
+    "boardPin": "471ccf212d2fa1c6b02033e633e6ab35bcff96d0",
+    "closedByThisAddendum": false
+  },
+  {
+    "id": "vision-002",
+    "previousState": "open · gehalten",
+    "currentState": "open",
+    "held": true,
+    "disposition": "Klang/Feedback nach Kapitel-1-Siegel als getrennte spätere Pakete.",
+    "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
+    "boardPin": "471ccf212d2fa1c6b02033e633e6ab35bcff96d0",
+    "closedByThisAddendum": false
+  },
+  {
+    "id": "welle-016",
+    "previousState": "open · gehalten",
+    "currentState": "open",
+    "held": true,
+    "disposition": "Kapitel 4 später individuell kalibrieren; neue cgo-Einzelkarte erst auf geprüfter Vorgängerbasis.",
+    "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
+    "boardPin": "471ccf212d2fa1c6b02033e633e6ab35bcff96d0",
+    "closedByThisAddendum": false
+  },
+  {
+    "id": "welle-017",
+    "previousState": "open · gehalten",
+    "currentState": "open",
+    "held": true,
+    "disposition": "Kapitel 5 folgt Kapitel 4; Takt/Parade/Boss-Duo als eigene Signatur erhalten.",
+    "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
+    "boardPin": "471ccf212d2fa1c6b02033e633e6ab35bcff96d0",
+    "closedByThisAddendum": false
+  },
+  {
+    "id": "welle-018",
+    "previousState": "open · gehalten",
+    "currentState": "open",
+    "held": true,
+    "disposition": "Kapitel 6 folgt Kapitel 5; Nachweis/Lupe als eigenes Lernverb, keine ch01-Schablone.",
+    "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
+    "boardPin": "471ccf212d2fa1c6b02033e633e6ab35bcff96d0",
+    "closedByThisAddendum": false
+  },
+  {
+    "id": "welle-019",
+    "previousState": "open · gehalten",
+    "currentState": "open",
+    "held": true,
+    "disposition": "Kunst je Raum erst nach grünem Spielband und freigegebenem Muster; später einzelne cgo-Karten.",
+    "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
+    "boardPin": "471ccf212d2fa1c6b02033e633e6ab35bcff96d0",
+    "closedByThisAddendum": false
+  },
+  {
+    "id": "welle-028",
+    "previousState": "open · gehalten",
+    "currentState": "open",
+    "held": true,
+    "disposition": "Y1-Kapitel 3 nach ch01-Zyklus und geprüftem ch02-Muster neu briefen; kein alter Trial-Boot.",
+    "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
+    "boardPin": "471ccf212d2fa1c6b02033e633e6ab35bcff96d0",
+    "closedByThisAddendum": false
+  },
+  {
+    "id": "welle-046",
+    "previousState": "open · gehalten",
+    "currentState": "open",
+    "held": true,
+    "disposition": "Y2-U2/U3 warten weiterhin auf steu-020 und angenommene U1; keine Vorratswelle.",
+    "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
+    "boardPin": "471ccf212d2fa1c6b02033e633e6ab35bcff96d0",
+    "closedByThisAddendum": false
+  },
+  {
+    "id": "welle-051",
+    "previousState": "open · gehalten",
+    "currentState": "open",
+    "held": true,
+    "disposition": "Kokis Year-4-Hold bleibt; Wiederaufnahme nur auf seinen späteren Auftrag.",
+    "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
+    "boardPin": "471ccf212d2fa1c6b02033e633e6ab35bcff96d0",
+    "closedByThisAddendum": false
+  },
+  {
+    "id": "welle-057",
+    "previousState": "open · gehalten",
+    "currentState": "open",
+    "held": true,
+    "disposition": "Bestehende Gestaltungsentscheidung in cgo-Mockup umsetzen; kein zweites Richtungsurteil.",
+    "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
+    "boardPin": "471ccf212d2fa1c6b02033e633e6ab35bcff96d0",
+    "closedByThisAddendum": false
+  },
+  {
+    "id": "welle-060",
+    "previousState": "open · gehalten",
+    "currentState": "open",
+    "held": true,
+    "disposition": "Year-4-Statusbericht bleibt zurückgestellt; Inventur markiert die Dokumentdrift.",
+    "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
+    "boardPin": "471ccf212d2fa1c6b02033e633e6ab35bcff96d0",
+    "closedByThisAddendum": false
+  },
+  {
+    "id": "welle-063",
+    "previousState": "review · gehalten",
+    "currentState": "review",
+    "held": true,
+    "disposition": "B1-Messkarte + unabhängige Prüfung; bestehender PR bleibt vorerst unverändert.",
+    "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
+    "boardPin": "471ccf212d2fa1c6b02033e633e6ab35bcff96d0",
+    "closedByThisAddendum": false
+  },
+  {
+    "id": "welle-064",
+    "previousState": "open · gehalten",
+    "currentState": "open",
+    "held": true,
+    "disposition": "Y1-B2 nach tatsächlichem B1-Spielurteil und geprüftem D1-Blatt.",
+    "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
+    "boardPin": "471ccf212d2fa1c6b02033e633e6ab35bcff96d0",
+    "closedByThisAddendum": false
+  },
+  {
+    "id": "welle-065",
+    "previousState": "open · gehalten",
+    "currentState": "open",
+    "held": true,
+    "disposition": "Y1-C nach B2, eigener Karten-/Textzaun.",
+    "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
+    "boardPin": "471ccf212d2fa1c6b02033e633e6ab35bcff96d0",
+    "closedByThisAddendum": false
+  },
+  {
+    "id": "welle-067",
+    "previousState": "open · gehalten",
+    "currentState": "open",
+    "held": true,
+    "disposition": "Y1-F nach C, eigener Raum- und Spiellogiknachweis.",
+    "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
+    "boardPin": "471ccf212d2fa1c6b02033e633e6ab35bcff96d0",
+    "closedByThisAddendum": false
+  },
+  {
+    "id": "welle-068",
+    "previousState": "open · gehalten",
+    "currentState": "open",
+    "held": true,
+    "disposition": "Y1-Lernspur; Warten auf PR 452 ist überholt, fachliche Arbeit bleibt offen.",
+    "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
+    "boardPin": "471ccf212d2fa1c6b02033e633e6ab35bcff96d0",
+    "closedByThisAddendum": false
+  },
+  {
+    "id": "welle-069",
+    "previousState": "review · gehalten",
+    "currentState": "review",
+    "held": true,
+    "disposition": "Erreichbare Y3-Musterfolge; bestehender PR und Zusatzlabor separat behandeln.",
+    "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
+    "boardPin": "471ccf212d2fa1c6b02033e633e6ab35bcff96d0",
+    "closedByThisAddendum": false
+  },
+  {
+    "id": "welle-071",
+    "previousState": "open · gehalten",
+    "currentState": "open",
+    "held": true,
+    "disposition": "Kunstkalibrierung nach Cast-Korrektur, kein sofortiger Serienauftrag.",
+    "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
+    "boardPin": "471ccf212d2fa1c6b02033e633e6ab35bcff96d0",
+    "closedByThisAddendum": false
+  },
+  {
+    "id": "welle-072",
+    "previousState": "open · gehalten",
+    "currentState": "open",
+    "held": true,
+    "disposition": "Y3-Freigabe-Reife nach Vorschau, Urteil und Lernspur.",
+    "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
+    "boardPin": "471ccf212d2fa1c6b02033e633e6ab35bcff96d0",
+    "closedByThisAddendum": false
+  },
+  {
+    "id": "welle-073",
+    "previousState": "open · gehalten",
+    "currentState": "open",
+    "held": true,
+    "disposition": "Avatar-Auswahl erst nach geklärter Spielstart-/Punkteoberfläche; eigener späterer Auftrag, keine implizite Migration.",
+    "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
+    "boardPin": "471ccf212d2fa1c6b02033e633e6ab35bcff96d0",
+    "closedByThisAddendum": false
+  },
+  {
+    "id": "welle-074",
+    "previousState": "open",
+    "currentState": "open",
+    "held": true,
+    "disposition": "In cgo-Y3-Vorschau übertragen; Ziel ausdrücklich codex/main statt main.",
+    "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
+    "boardPin": "471ccf212d2fa1c6b02033e633e6ab35bcff96d0",
+    "closedByThisAddendum": false
+  },
+  {
+    "id": "welle-075",
+    "previousState": "open",
+    "currentState": "open",
+    "held": true,
+    "disposition": "In cgo-Kunstkalibrierung übertragen; steu-023 bleibt bereits erteiltes Urteil.",
+    "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
+    "boardPin": "471ccf212d2fa1c6b02033e633e6ab35bcff96d0",
+    "closedByThisAddendum": false
+  },
+  {
+    "id": "welle-077",
+    "previousState": "open",
+    "currentState": "open",
+    "held": true,
+    "disposition": "Mit B1-Gegenmessung bündeln; ruhige Maschine ist Voraussetzung.",
+    "source": "INVENTAR_2026-09-29.md §9; unverändert erhalten",
+    "boardPin": "471ccf212d2fa1c6b02033e633e6ab35bcff96d0",
+    "closedByThisAddendum": false
+  }
+]

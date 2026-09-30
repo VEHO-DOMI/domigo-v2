@@ -1,0 +1,541 @@
+{
+  "label": "CODEX DRAFT — NOT CANON",
+  "productBase": "269ee986ccdc1ae7c3b070cbed7014f20e532365",
+  "method": "Originale row-Funktionen aus review-items.ts/review-wordbank.ts und applyFixes aus content-loader; SHA256 über JSON-Zellen, erste 12 Zeichen; kein Schema-/Sinn-/Sichttest.",
+  "units": 57,
+  "itemRows": 5898,
+  "itemMatches": 4964,
+  "itemDrift": 934,
+  "wordbankRows": 2446,
+  "wordbankMatches": 2446,
+  "semanticApproval": false,
+  "examples": [
+    {
+      "unit": "g1-u01",
+      "kind": "vocab",
+      "id": "g1u01.w.book",
+      "round": 2,
+      "old": "a93918ae224f",
+      "current": "6edaf3ccaf22",
+      "matches": false,
+      "cells": {
+        "ref": "book",
+        "en": "book",
+        "d": "You read it. It has many pages and pictures.",
+        "s": "I am reading a funny story ___ with many pictures.",
+        "answers": "s: book | d: book",
+        "mc": "pen ; ruler ; chair",
+        "translation": "→EN book | →DE Buch ; das Buch",
+        "gloss": "pages (= Seiten) ; story (= Geschichte) ; funny (= lustig)",
+        "hintDe": "Das liest du; es hat viele Seiten.",
+        "src": "invented",
+        "diff": "1"
+      },
+      "matchingHistorical": {
+        "commit": "d6150c5ffe54d460df7df9809ad2203f3d238b8b",
+        "subject": "content(core-allowlist): admit song/band (g3-u01 harvesting gap)",
+        "cells": {
+          "ref": "book",
+          "en": "book",
+          "d": "You read it. It has many pages and pictures.",
+          "s": "I am reading a funny story ___ with many pictures.",
+          "answers": "s: book | d: book",
+          "mc": "pen ; ruler ; chair",
+          "translation": "→EN book | →DE Buch",
+          "gloss": "pages (= Seiten) ; story (= Geschichte) ; funny (= lustig)",
+          "hintDe": "Das liest du; es hat viele Seiten.",
+          "src": "invented",
+          "diff": "1"
+        }
+      },
+      "diff": [
+        {
+          "field": "translation",
+          "previous": "→EN book | →DE Buch",
+          "current": "→EN book | →DE Buch ; das Buch"
+        }
+      ]
+    },
+    {
+      "unit": "g1-u01",
+      "kind": "grammar",
+      "id": "g1u01.gi.imperatives.cp.002",
+      "round": 2,
+      "old": "35828f0dde61",
+      "current": "35828f0dde61",
+      "matches": true,
+      "cells": {
+        "ref": "imperatives.cp.002",
+        "str": "imperatives",
+        "fmt": "context-picker",
+        "diff": "3",
+        "prompt": "Das Fenster ist offen und es ist kalt. Was sagst du?",
+        "answers": "Close the window!",
+        "distractors": "Open the window! ; Don't close the window! ; You close the window.",
+        "hintDe": "Welcher Befehl passt, wenn es kalt ist und das Fenster offen ist?",
+        "gloss": "—",
+        "src": "sb"
+      },
+      "matchingHistorical": {
+        "commit": "26ee19c515fd6c96419d0de380d26fe5b82b71fd",
+        "subject": "A-5 R2 wave 1 (grade 1, calibration) + R1/R2 audit-rule tidy (#138)",
+        "cells": {
+          "ref": "imperatives.cp.002",
+          "str": "imperatives",
+          "fmt": "context-picker",
+          "diff": "3",
+          "prompt": "Das Fenster ist offen und es ist kalt. Was sagst du?",
+          "answers": "Close the window!",
+          "distractors": "Open the window! ; Don't close the window! ; You close the window.",
+          "hintDe": "Welcher Befehl passt, wenn es kalt ist und das Fenster offen ist?",
+          "gloss": "—",
+          "src": "sb"
+        }
+      },
+      "diff": []
+    },
+    {
+      "unit": "g3-u01",
+      "kind": "vocab",
+      "id": "g3u01.w.audition",
+      "round": 1,
+      "old": "c6393ca53a60",
+      "current": "8f5fe7e394bc",
+      "matches": false,
+      "cells": {
+        "ref": "audition",
+        "en": "audition",
+        "d": "a short show where people watch you and tell you if you are good at music",
+        "s": "She played a pop tune on the flute at her ___ for the school show, and the critics liked it.",
+        "answers": "s: audition | d: audition ; auditions",
+        "mc": "singer ; critic ; tune",
+        "translation": "→EN audition | →DE Vorsingen ; Vorsprechen ; das Vorsingen ; das Vorsprechen",
+        "gloss": "—",
+        "hintDe": "Da zeigst du kurz, was du kannst, damit man dich auswählt.",
+        "src": "sb",
+        "diff": "2"
+      },
+      "matchingHistorical": {
+        "commit": "80b590e4a4cd9c62e262dfc8790ba8c547623da4",
+        "subject": "content(g3-u01): items approved at 0.0% reject — music / present simple",
+        "cells": {
+          "ref": "audition",
+          "en": "audition",
+          "d": "a short show where people watch you and tell you if you are good at music",
+          "s": "She played a pop tune on the flute at her ___ for the school show, and the critics liked it.",
+          "answers": "s: audition | d: audition ; auditions",
+          "mc": "singer ; critic ; tune",
+          "translation": "→EN audition | →DE Vorsingen ; Vorsprechen",
+          "gloss": "—",
+          "hintDe": "Da zeigst du kurz, was du kannst, damit man dich auswählt.",
+          "src": "sb",
+          "diff": "2"
+        }
+      },
+      "diff": [
+        {
+          "field": "translation",
+          "previous": "→EN audition | →DE Vorsingen ; Vorsprechen",
+          "current": "→EN audition | →DE Vorsingen ; Vorsprechen ; das Vorsingen ; das Vorsprechen"
+        }
+      ]
+    },
+    {
+      "unit": "g3-u01",
+      "kind": "vocab",
+      "id": "g3u01.w.brave",
+      "round": 1,
+      "old": "78c3394d64ce",
+      "current": "78c3394d64ce",
+      "matches": true,
+      "cells": {
+        "ref": "brave",
+        "en": "brave",
+        "d": "not scared, ready for anything scary",
+        "s": "You're a ___ man to get up and play music in front of the whole school — well done!",
+        "answers": "s: brave | d: brave",
+        "mc": "unhappy ; talented ; successful",
+        "translation": "→EN brave | →DE mutig",
+        "gloss": "ready (= bereit)",
+        "hintDe": "Du hast keine Angst und traust dich was.",
+        "src": "sb",
+        "diff": "1"
+      },
+      "matchingHistorical": {
+        "commit": "df617a26c1d4c445a5dbfe1bd16eaf2be544322f",
+        "subject": "A-5 R1 wave 4 (grade 3 complete): article variants across 13 g3 units via content patch (143 items) (#136)",
+        "cells": {
+          "ref": "brave",
+          "en": "brave",
+          "d": "not scared, ready for anything scary",
+          "s": "You're a ___ man to get up and play music in front of the whole school — well done!",
+          "answers": "s: brave | d: brave",
+          "mc": "unhappy ; talented ; successful",
+          "translation": "→EN brave | →DE mutig",
+          "gloss": "ready (= bereit)",
+          "hintDe": "Du hast keine Angst und traust dich was.",
+          "src": "sb",
+          "diff": "1"
+        }
+      },
+      "diff": []
+    }
+  ],
+  "validity": {
+    "content": "nur von Hash erfasste Zellen",
+    "answerSet": "bei Drift gezielte neue Prüfung und belegte Korrekturhistorie",
+    "view": "eigener Sichtfingerabdruck erforderlich; altes Register deckt Rendereränderung nicht",
+    "integration": "Speicherung/Review/Autorisierung nicht durch Inhaltsreview bewiesen"
+  },
+  "perUnit": [
+    {
+      "unit": "g1-u01",
+      "items": 239,
+      "itemDrift": 37,
+      "words": 68
+    },
+    {
+      "unit": "g1-u02",
+      "items": 238,
+      "itemDrift": 20,
+      "words": 52
+    },
+    {
+      "unit": "g1-u03",
+      "items": 84,
+      "itemDrift": 20,
+      "words": 42
+    },
+    {
+      "unit": "g1-u04",
+      "items": 105,
+      "itemDrift": 24,
+      "words": 61
+    },
+    {
+      "unit": "g1-u05",
+      "items": 94,
+      "itemDrift": 18,
+      "words": 44
+    },
+    {
+      "unit": "g1-u06",
+      "items": 103,
+      "itemDrift": 11,
+      "words": 49
+    },
+    {
+      "unit": "g1-u07",
+      "items": 145,
+      "itemDrift": 47,
+      "words": 67
+    },
+    {
+      "unit": "g1-u08",
+      "items": 57,
+      "itemDrift": 18,
+      "words": 30
+    },
+    {
+      "unit": "g1-u09",
+      "items": 146,
+      "itemDrift": 36,
+      "words": 57
+    },
+    {
+      "unit": "g1-u10",
+      "items": 107,
+      "itemDrift": 13,
+      "words": 44
+    },
+    {
+      "unit": "g1-u11",
+      "items": 96,
+      "itemDrift": 17,
+      "words": 58
+    },
+    {
+      "unit": "g1-u12",
+      "items": 161,
+      "itemDrift": 31,
+      "words": 74
+    },
+    {
+      "unit": "g1-u13",
+      "items": 138,
+      "itemDrift": 28,
+      "words": 58
+    },
+    {
+      "unit": "g1-u14",
+      "items": 121,
+      "itemDrift": 25,
+      "words": 59
+    },
+    {
+      "unit": "g1-u15",
+      "items": 58,
+      "itemDrift": 14,
+      "words": 23
+    },
+    {
+      "unit": "g2-u01",
+      "items": 70,
+      "itemDrift": 29,
+      "words": 48
+    },
+    {
+      "unit": "g2-u02",
+      "items": 96,
+      "itemDrift": 17,
+      "words": 36
+    },
+    {
+      "unit": "g2-u03",
+      "items": 61,
+      "itemDrift": 34,
+      "words": 34
+    },
+    {
+      "unit": "g2-u04",
+      "items": 116,
+      "itemDrift": 25,
+      "words": 50
+    },
+    {
+      "unit": "g2-u05",
+      "items": 75,
+      "itemDrift": 0,
+      "words": 49
+    },
+    {
+      "unit": "g2-u06",
+      "items": 79,
+      "itemDrift": 1,
+      "words": 51
+    },
+    {
+      "unit": "g2-u07",
+      "items": 64,
+      "itemDrift": 8,
+      "words": 30
+    },
+    {
+      "unit": "g2-u08",
+      "items": 62,
+      "itemDrift": 4,
+      "words": 32
+    },
+    {
+      "unit": "g2-u09",
+      "items": 104,
+      "itemDrift": 5,
+      "words": 56
+    },
+    {
+      "unit": "g2-u10",
+      "items": 67,
+      "itemDrift": 8,
+      "words": 22
+    },
+    {
+      "unit": "g2-u11",
+      "items": 124,
+      "itemDrift": 38,
+      "words": 56
+    },
+    {
+      "unit": "g2-u12",
+      "items": 63,
+      "itemDrift": 18,
+      "words": 33
+    },
+    {
+      "unit": "g2-u13",
+      "items": 100,
+      "itemDrift": 18,
+      "words": 53
+    },
+    {
+      "unit": "g2-u14",
+      "items": 71,
+      "itemDrift": 21,
+      "words": 37
+    },
+    {
+      "unit": "g2-u15",
+      "items": 59,
+      "itemDrift": 1,
+      "words": 24
+    },
+    {
+      "unit": "g3-u01",
+      "items": 64,
+      "itemDrift": 7,
+      "words": 40
+    },
+    {
+      "unit": "g3-u02",
+      "items": 93,
+      "itemDrift": 12,
+      "words": 42
+    },
+    {
+      "unit": "g3-u03",
+      "items": 168,
+      "itemDrift": 8,
+      "words": 54
+    },
+    {
+      "unit": "g3-u04",
+      "items": 90,
+      "itemDrift": 17,
+      "words": 46
+    },
+    {
+      "unit": "g3-u05",
+      "items": 142,
+      "itemDrift": 30,
+      "words": 41
+    },
+    {
+      "unit": "g3-u06",
+      "items": 100,
+      "itemDrift": 26,
+      "words": 45
+    },
+    {
+      "unit": "g3-u07",
+      "items": 81,
+      "itemDrift": 9,
+      "words": 34
+    },
+    {
+      "unit": "g3-u08",
+      "items": 97,
+      "itemDrift": 20,
+      "words": 47
+    },
+    {
+      "unit": "g3-u09",
+      "items": 132,
+      "itemDrift": 12,
+      "words": 39
+    },
+    {
+      "unit": "g3-u10",
+      "items": 170,
+      "itemDrift": 20,
+      "words": 53
+    },
+    {
+      "unit": "g3-u11",
+      "items": 65,
+      "itemDrift": 18,
+      "words": 37
+    },
+    {
+      "unit": "g3-u12",
+      "items": 79,
+      "itemDrift": 2,
+      "words": 50
+    },
+    {
+      "unit": "g3-u13",
+      "items": 66,
+      "itemDrift": 4,
+      "words": 34
+    },
+    {
+      "unit": "g3-u14",
+      "items": 65,
+      "itemDrift": 12,
+      "words": 37
+    },
+    {
+      "unit": "g4-u01",
+      "items": 91,
+      "itemDrift": 17,
+      "words": 36
+    },
+    {
+      "unit": "g4-u02",
+      "items": 128,
+      "itemDrift": 16,
+      "words": 46
+    },
+    {
+      "unit": "g4-u03",
+      "items": 105,
+      "itemDrift": 20,
+      "words": 32
+    },
+    {
+      "unit": "g4-u04",
+      "items": 120,
+      "itemDrift": 20,
+      "words": 45
+    },
+    {
+      "unit": "g4-u05",
+      "items": 91,
+      "itemDrift": 11,
+      "words": 34
+    },
+    {
+      "unit": "g4-u06",
+      "items": 130,
+      "itemDrift": 2,
+      "words": 18
+    },
+    {
+      "unit": "g4-u07",
+      "items": 147,
+      "itemDrift": 18,
+      "words": 30
+    },
+    {
+      "unit": "g4-u08",
+      "items": 89,
+      "itemDrift": 1,
+      "words": 31
+    },
+    {
+      "unit": "g4-u09",
+      "items": 101,
+      "itemDrift": 21,
+      "words": 43
+    },
+    {
+      "unit": "g4-u10",
+      "items": 91,
+      "itemDrift": 7,
+      "words": 37
+    },
+    {
+      "unit": "g4-u11",
+      "items": 97,
+      "itemDrift": 9,
+      "words": 33
+    },
+    {
+      "unit": "g4-u12",
+      "items": 106,
+      "itemDrift": 8,
+      "words": 36
+    },
+    {
+      "unit": "g4-u13",
+      "items": 87,
+      "itemDrift": 1,
+      "words": 29
+    }
+  ],
+  "driftInterpretation": {
+    "currentFormulaMismatch": 934,
+    "historicalFormulaOnly": 29,
+    "changedReviewedFields": 905,
+    "pilotHintOutsideOldFingerprint": 34,
+    "source": "PR13 56d98945c1eeb20c5a7a640db99af3eb95f07378; PR14 9e54b782d8aa36f070ab7713babe5346fb7f84d1; review-drift-groups.json"
+  }
+}

@@ -1,0 +1,86 @@
+[
+  {
+    "predecessor": "S001",
+    "successor": "S002",
+    "scope": "Part V Fristen/Floor/Cut-order ersetzt; übrige Prinzipien und ausdrücklich erhaltene III-Arbeitsstränge bleiben",
+    "authority": "S002 Part I"
+  },
+  {
+    "predecessor": "S230",
+    "successor": "S002",
+    "scope": "Juli10 archivierter Ursprungsplan → ausgearbeiteter Blueprint V2; kein Duplikat",
+    "authority": "PR117; S002 Kopf"
+  },
+  {
+    "predecessor": "S187",
+    "successor": "S189",
+    "scope": "Syntaxia-Erzählung → Lost for Words; Mechanik nicht pauschal verworfen",
+    "authority": "S189 Kopf"
+  },
+  {
+    "predecessor": "S189",
+    "successor": "S192",
+    "scope": "Lost-for-Words-Kampagne geparkt → FOURTEEN LIVE; alte Versuche und mechanische Verträge erhalten",
+    "authority": "S002 Part I/Prinzip 15"
+  },
+  {
+    "predecessor": "S199",
+    "successor": "S204",
+    "scope": "Keen-Bauplan durch Painted Book abgelöst; Ideen/Altspiel erhalten",
+    "authority": "S199/S204 Supersession"
+  },
+  {
+    "predecessor": "S204",
+    "successor": "S217",
+    "scope": "Painted-Book-Grundgestalt → ergänzter Gesamtplan, keine pauschale Löschung von Story/Unit-Magic",
+    "authority": "S217 §0/§1"
+  },
+  {
+    "predecessor": "S064",
+    "successor": "S058",
+    "scope": "Kapitel1-Dossiers v1 → v2; konkrete Raumfassungen in beiden Ordnern erhalten",
+    "authority": "S058 Kanon/Supersessions"
+  },
+  {
+    "predecessor": "S245",
+    "successor": "S242",
+    "scope": "Vorläufer konkretisiert; neue OCR-Planung durch bestehende Transkriptionen ersetzt, nicht die Lernfunktionen",
+    "authority": "S242 Amendments; S243 WORD-LIST"
+  },
+  {
+    "predecessor": "S242",
+    "successor": "S243",
+    "scope": "Programm → Passover v2 mit Ausführungsdetails; unterschiedliche Fassung",
+    "authority": "S243"
+  },
+  {
+    "predecessor": "S243",
+    "successor": "S244",
+    "scope": "Prototypen zuerst; historische Rollenübergabe geändert, Sachgates erhalten",
+    "authority": "S244 RE-SCOPE"
+  },
+  {
+    "predecessor": "S246",
+    "successor": "X-DONOR",
+    "scope": "ältere lokale Implementierung → gefrorener Donor e0c8; keine Hash-Deduplikation über Fassungen",
+    "authority": "domilingo-source-pins.json"
+  },
+  {
+    "predecessor": "S247",
+    "successor": "X-DONOR",
+    "scope": "älteres Revisionsverfahren → gefrorener Donor e0c8; Stempelgrenzen gegen aktuellen Code prüfen",
+    "authority": "domilingo-source-pins.json"
+  },
+  {
+    "predecessor": "X005",
+    "successor": "X003",
+    "scope": "Y1 Fassung1 präzisiert; Datenpfadplan vor Lernspurbau",
+    "authority": "datierte Orders Fassung1/aktuell"
+  },
+  {
+    "predecessor": "X002",
+    "successor": "X004",
+    "scope": "Y3 Fassung1 ersetzt im Auftragsumfang: zehn Buchplätze erhalten statt heimlich austauschen",
+    "authority": "aktuelle Order Y3-A; S170 und aktueller GG-Plan"
+  }
+]
