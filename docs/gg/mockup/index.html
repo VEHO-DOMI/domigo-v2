@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DomiGo · Lehrer-Muster</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/style.css">
+  <script type="module" src="/app.js"></script>
+</head>
+<body>
+  <header class="masthead" lang="de">
+    <div class="brand"><span>Englisch · Unterstufe</span><span class="dash"> — </span><strong>DomiGo</strong></div>
+    <details class="areas"><summary>Bereiche</summary><nav aria-label="Bereiche"><button id="home">Zum Einstieg</button><a href="#teacher">Lehrer-Muster</a></nav></details>
+  </header>
+  <div class="teacher-banner" lang="de"><strong>Lehrer-Muster</strong><span id="simulation-label" role="status">Wird geladen …</span><span>Keine echten Lernpunkte.</span></div>
+  <div class="notebook">
+    <main id="learning" aria-label="English practice" aria-busy="true"><p>Opening your page …</p></main>
+    <section class="teacher" id="teacher" lang="de" aria-labelledby="teacher-title">
+      <h2 id="teacher-title">Am Muster ausprobieren</h2>
+      <p class="draft">CODEX DRAFT — NOT CANON</p>
+      <p>Die Aufgaben stammen aus dem Korpus. Das Vokabelbeispiel prüft Erkennen durch Auswahl, nicht den freien Wortabruf einer getippten Definitionsaufgabe. Alle Lern- und Speicherzustände sind nachgestellt. Deine Auswahl und gespeicherten Notizen bleiben nur in diesem Browser; es gibt kein Konto und keine Verbindung zur Lerndatenbank.</p>
+      <div class="controls">
+        <label>Ansicht<select id="scene"><option value="intro">Einstieg</option><option value="vocab">Vokabel · offen</option><option value="vocab-wrong">Vokabel · Fehlantwort</option><option value="vocab-correct">Vokabel · richtig</option><option value="grammar">Grammatik · offen</option><option value="grammar-wrong">Grammatik · Fehlantwort</option><option value="grammar-correct">Grammatik · richtig</option><option value="pending">Speichern · wartet</option><option value="error">Speichern · fehlgeschlagen</option><option value="saved">Rückmeldung · gespeichert</option></select></label>
+        <label>Speichern nach der Aufgabe<select id="save-mode"><option value="success">Erfolg nachstellen</option><option value="pending">Warten nachstellen</option><option value="error">Fehler nachstellen</option></select></label>
+        <label>Farben<select id="theme"><option value="system">Wie das Gerät</option><option value="light">Hell</option><option value="dark">Dunkel</option></select></label>
+        <label>Bewegung<select id="motion"><option value="system">Wie das Gerät</option><option value="reduce">Reduziert</option></select></label>
+      </div>
+      <label class="note-label" for="note">Meine Notizen zum Muster</label>
+      <textarea id="note" rows="3" maxlength="4000" placeholder="Was hilft? Wo bleibst du hängen? Keine Schülerdaten eintragen."></textarea>
+      <div class="note-actions"><button id="save-note">Notiz lokal speichern</button><span id="note-status" role="status">Keine ungespeicherte Notiz.</span></div>
+      <p id="local-status" role="status"></p>
+      <details class="sources"><summary>Quellen und Grenzen</summary><p>Jahrgang 1, Unit 1: g1u01.w.book (Definition, Revision 2) und g1u01.gi.contractions.mc.006 (Revision 1). Die deutsche Grammatikfrage und ihre Erklärung wurden für diese englische Oberfläche sinngleich übersetzt; die Antwortauswahl und die Schlüssel bleiben unverändert.</p><p>Die Lehrerschalter stellen die bezeichnete Lage gezielt nach. „Gespeichert“ in der Aufgabenkarte ist immer nur ein Musterzustand. Die lokalen Notizen werden dagegen tatsächlich im Browser gespeichert. Keine allgemeine Freigabe der Aufgaben oder der neuen Oberfläche.</p></details>
+    </section>
+  </div>
+  <noscript><p>Dieses anklickbare Lehrer-Muster benötigt JavaScript.</p></noscript>
+</body>
+</html>
